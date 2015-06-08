@@ -14,8 +14,12 @@
 <<<<<<< HEAD
  *  - Revision G, 05/23/2011; ADSP-BF531/BF532/BF533 Blackfin Processor Anomaly List
 =======
+<<<<<<< HEAD
+ *  - Revision G, 05/23/2011; ADSP-BF531/BF532/BF533 Blackfin Processor Anomaly List
+=======
  *  - Revision F, 05/25/2010; ADSP-BF531/BF532/BF533 Blackfin Processor Anomaly List
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _MACH_ANOMALY_H_
@@ -159,8 +163,12 @@
 <<<<<<< HEAD
 /* False Hardware Error when ISR Context Is Not Restored */
 =======
+<<<<<<< HEAD
+/* False Hardware Error when ISR Context Is Not Restored */
+=======
 /* False Hardware Error Exception when ISR Context Is Not Restored */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000281 (__SILICON_REVISION__ < 6)
 /* Memory DMA Corruption with 32-Bit Data and Traffic Control */
 #define ANOMALY_05000282 (__SILICON_REVISION__ < 6)
@@ -223,16 +231,25 @@
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition when Modifying PLL from External Memory */
 =======
+<<<<<<< HEAD
+/* Interrupted SPORT Receive Data Register Read Results In Underflow when SLEN > 15 */
+#define ANOMALY_05000473 (1)
+/* Possible Lockup Condition when Modifying PLL from External Memory */
+=======
 /* Interrupted 32-Bit SPORT Data Register Access Results In Underflow */
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition whem Modifying PLL from External Memory */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000475 (1)
 /* TESTSET Instruction Cannot Be Interrupted */
 #define ANOMALY_05000477 (1)
 /* Reads of ITEST_COMMAND and ITEST_DATA Registers Cause Cache Corruption */
 #define ANOMALY_05000481 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLL May Latch Incorrect Values Coming Out of Reset */
 #define ANOMALY_05000489 (1)
 /* Instruction Memory Stalls Can Cause IFLUSH to Fail */
@@ -244,12 +261,15 @@
 
 /*
  * These anomalies have been "phased" out of analog.com anomaly sheets and are
+<<<<<<< HEAD
+=======
 =======
 /* IFLUSH sucks at life */
 #define ANOMALY_05000491 (1)
 
 /* These anomalies have been "phased" out of analog.com anomaly sheets and are
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * here to show running on older silicon just isn't feasible.
  */
 

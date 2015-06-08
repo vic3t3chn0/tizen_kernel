@@ -636,8 +636,12 @@ static const struct net_device_ops iss_netdev_ops = {
 <<<<<<< HEAD
 	.ndo_set_rx_mode	= iss_net_set_multicast_list,
 =======
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= iss_net_set_multicast_list,
+=======
 	.ndo_set_multicast_list = iss_net_set_multicast_list,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int iss_net_configure(int index, char *init)

@@ -408,8 +408,12 @@ int msp_pcibios_config_access(unsigned char access_type,
 <<<<<<< HEAD
 				IRQF_SHARED,
 =======
+<<<<<<< HEAD
+				IRQF_SHARED,
+=======
 				IRQF_SHARED | IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"PMC MSP PCI Host",
 				preg);
 		if (ret != 0)

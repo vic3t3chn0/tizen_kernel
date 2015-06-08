@@ -21,6 +21,14 @@
  *	Includes, defines, variables, module parameters, ...
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/types.h>
@@ -41,7 +49,14 @@
 #define TCO_VERSION "0.01"
 #define TCO_MODULE_NAME "NV_TCO"
 #define TCO_DRIVER_NAME   TCO_MODULE_NAME ", v" TCO_VERSION
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define PFX TCO_MODULE_NAME ": "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PFX TCO_MODULE_NAME ": "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* internal variables */
 static unsigned int tcobase;
@@ -60,8 +75,18 @@ module_param(heartbeat, int, 0);
 MODULE_PARM_DESC(heartbeat, "Watchdog heartbeat in seconds. (2<heartbeat<39, "
 			    "default=" __MODULE_STRING(WATCHDOG_HEARTBEAT) ")");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, bool, 0);
+=======
 static int nowayout = WATCHDOG_NOWAYOUT;
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started"
 		" (default=" __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
 
@@ -169,8 +194,17 @@ static int nv_tco_release(struct inode *inode, struct file *file)
 	if (tco_expect_close == 42) {
 		tco_timer_stop();
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_crit("Unexpected close, not stopping watchdog!\n");
+=======
 		printk(KERN_CRIT PFX "Unexpected close, not stopping "
 		       "watchdog!\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_CRIT PFX "Unexpected close, not stopping "
+		       "watchdog!\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tco_timer_keepalive();
 	}
 	clear_bit(0, &timer_alive);
@@ -323,15 +357,32 @@ static unsigned char __devinit nv_tco_getdevice(void)
 	val &= 0xffff;
 	if (val == 0x0001 || val == 0x0000) {
 		/* Something is wrong here, bar isn't setup */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("failed to get tcobase address\n");
+=======
 		printk(KERN_ERR PFX "failed to get tcobase address\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "failed to get tcobase address\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 	val &= 0xff00;
 	tcobase = val + 0x40;
 
 	if (!request_region(tcobase, 0x10, "NV TCO")) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("I/O address 0x%04x already in use\n", tcobase);
+=======
 		printk(KERN_ERR PFX "I/O address 0x%04x already in use\n",
 		       tcobase);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "I/O address 0x%04x already in use\n",
+		       tcobase);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -347,7 +398,15 @@ static unsigned char __devinit nv_tco_getdevice(void)
 
 	/* Disable SMI caused by TCO */
 	if (!request_region(MCP51_SMI_EN(tcobase), 4, "NV TCO")) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("I/O address 0x%04x already in use\n",
+=======
 		printk(KERN_ERR PFX "I/O address 0x%04x already in use\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "I/O address 0x%04x already in use\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       MCP51_SMI_EN(tcobase));
 		goto out;
 	}
@@ -357,7 +416,15 @@ static unsigned char __devinit nv_tco_getdevice(void)
 	val = inl(MCP51_SMI_EN(tcobase));
 	release_region(MCP51_SMI_EN(tcobase), 4);
 	if (val & MCP51_SMI_EN_TCO) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Could not disable SMI caused by TCO\n");
+=======
 		printk(KERN_ERR PFX "Could not disable SMI caused by TCO\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "Could not disable SMI caused by TCO\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -367,8 +434,17 @@ static unsigned char __devinit nv_tco_getdevice(void)
 	pci_write_config_dword(tco_pci, MCP51_SMBUS_SETUP_B, val);
 	pci_read_config_dword(tco_pci, MCP51_SMBUS_SETUP_B, &val);
 	if (!(val & MCP51_SMBUS_SETUP_B_TCO_REBOOT)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("failed to reset NO_REBOOT flag, reboot disabled by hardware\n");
+=======
 		printk(KERN_ERR PFX "failed to reset NO_REBOOT flag, reboot "
 		       "disabled by hardware\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "failed to reset NO_REBOOT flag, reboot "
+		       "disabled by hardware\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -387,8 +463,18 @@ static int __devinit nv_tco_init(struct platform_device *dev)
 		return -ENODEV;
 
 	/* Check to see if last reboot was due to watchdog timeout */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Watchdog reboot %sdetected\n",
+		inl(TCO_STS(tcobase)) & TCO_STS_TCO2TO_STS ? "" : "not ");
+=======
 	printk(KERN_INFO PFX "Watchdog reboot %sdetected.\n",
 	       inl(TCO_STS(tcobase)) & TCO_STS_TCO2TO_STS ? "" : "not ");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO PFX "Watchdog reboot %sdetected.\n",
+	       inl(TCO_STS(tcobase)) & TCO_STS_TCO2TO_STS ? "" : "not ");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Clear out the old status */
 	outl(TCO_STS_RESET, TCO_STS(tcobase));
@@ -400,14 +486,34 @@ static int __devinit nv_tco_init(struct platform_device *dev)
 	if (tco_timer_set_heartbeat(heartbeat)) {
 		heartbeat = WATCHDOG_HEARTBEAT;
 		tco_timer_set_heartbeat(heartbeat);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("heartbeat value must be 2<heartbeat<39, using %d\n",
+			heartbeat);
+=======
 		printk(KERN_INFO PFX "heartbeat value must be 2<heartbeat<39, "
 		       "using %d\n", heartbeat);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO PFX "heartbeat value must be 2<heartbeat<39, "
+		       "using %d\n", heartbeat);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ret = misc_register(&nv_tco_miscdev);
 	if (ret != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("cannot register miscdev on minor=%d (err=%d)\n",
+		       WATCHDOG_MINOR, ret);
+=======
 		printk(KERN_ERR PFX "cannot register miscdev on minor=%d "
 		       "(err=%d)\n", WATCHDOG_MINOR, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "cannot register miscdev on minor=%d "
+		       "(err=%d)\n", WATCHDOG_MINOR, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto unreg_region;
 	}
 
@@ -415,8 +521,18 @@ static int __devinit nv_tco_init(struct platform_device *dev)
 
 	tco_timer_stop();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("initialized (0x%04x). heartbeat=%d sec (nowayout=%d)\n",
+		tcobase, heartbeat, nowayout);
+=======
 	printk(KERN_INFO PFX "initialized (0x%04x). heartbeat=%d sec "
 	       "(nowayout=%d)\n", tcobase, heartbeat, nowayout);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO PFX "initialized (0x%04x). heartbeat=%d sec "
+	       "(nowayout=%d)\n", tcobase, heartbeat, nowayout);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -439,8 +555,17 @@ static void __devexit nv_tco_cleanup(void)
 	pci_write_config_dword(tco_pci, MCP51_SMBUS_SETUP_B, val);
 	pci_read_config_dword(tco_pci, MCP51_SMBUS_SETUP_B, &val);
 	if (val & MCP51_SMBUS_SETUP_B_TCO_REBOOT) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_crit("Couldn't unset REBOOT bit.  Machine may soon reset\n");
+=======
 		printk(KERN_CRIT PFX "Couldn't unset REBOOT bit.  Machine may "
 		       "soon reset\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_CRIT PFX "Couldn't unset REBOOT bit.  Machine may "
+		       "soon reset\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Deregister */
@@ -458,7 +583,23 @@ static int __devexit nv_tco_remove(struct platform_device *dev)
 
 static void nv_tco_shutdown(struct platform_device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 val;
+
 	tco_timer_stop();
+
+	/* Some BIOSes fail the POST (once) if the NO_REBOOT flag is not
+	 * unset during shutdown. */
+	pci_read_config_dword(tco_pci, MCP51_SMBUS_SETUP_B, &val);
+	val &= ~MCP51_SMBUS_SETUP_B_TCO_REBOOT;
+	pci_write_config_dword(tco_pci, MCP51_SMBUS_SETUP_B, val);
+=======
+	tco_timer_stop();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tco_timer_stop();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct platform_driver nv_tco_driver = {
@@ -475,8 +616,17 @@ static int __init nv_tco_init_module(void)
 {
 	int err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("NV TCO WatchDog Timer Driver v%s\n", TCO_VERSION);
+=======
 	printk(KERN_INFO PFX "NV TCO WatchDog Timer Driver v%s\n",
 	       TCO_VERSION);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO PFX "NV TCO WatchDog Timer Driver v%s\n",
+	       TCO_VERSION);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = platform_driver_register(&nv_tco_driver);
 	if (err)
@@ -500,7 +650,15 @@ static void __exit nv_tco_cleanup_module(void)
 {
 	platform_device_unregister(nv_tco_platform_device);
 	platform_driver_unregister(&nv_tco_driver);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("NV TCO Watchdog Module Unloaded\n");
+=======
 	printk(KERN_INFO PFX "NV TCO Watchdog Module Unloaded.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO PFX "NV TCO Watchdog Module Unloaded.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init(nv_tco_init_module);

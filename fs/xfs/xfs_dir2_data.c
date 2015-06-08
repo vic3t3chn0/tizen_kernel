@@ -24,6 +24,9 @@
 #include "xfs_sb.h"
 #include "xfs_ag.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_mount.h"
 #include "xfs_da_btree.h"
 #include "xfs_bmap_btree.h"
@@ -36,6 +39,8 @@
 STATIC xfs_dir2_data_free_t *
 xfs_dir2_data_freefind(xfs_dir2_data_hdr_t *hdr, xfs_dir2_data_unused_t *dup);
 
+<<<<<<< HEAD
+=======
 =======
 #include "xfs_dir2.h"
 #include "xfs_mount.h"
@@ -50,6 +55,7 @@ xfs_dir2_data_freefind(xfs_dir2_data_hdr_t *hdr, xfs_dir2_data_unused_t *dup);
 #include "xfs_error.h"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 /*
  * Check the consistency of the data block.
@@ -68,8 +74,12 @@ xfs_dir2_data_check(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
+=======
 	xfs_dir2_data_t		*d;		/* data block pointer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_entry_t	*dep;		/* data entry */
 	xfs_dir2_data_free_t	*dfp;		/* bestfree entry */
 	xfs_dir2_data_unused_t	*dup;		/* unused entry */
@@ -86,6 +96,9 @@ xfs_dir2_data_check(
 
 	mp = dp->i_mount;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr = bp->data;
 	bf = hdr->bestfree;
 	p = (char *)(hdr + 1);
@@ -99,6 +112,8 @@ xfs_dir2_data_check(
 		endp = (char *)hdr + mp->m_dirblksize;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	d = bp->data;
 	ASSERT(be32_to_cpu(d->hdr.magic) == XFS_DIR2_DATA_MAGIC ||
@@ -112,6 +127,7 @@ xfs_dir2_data_check(
 	} else
 		endp = (char *)d + mp->m_dirblksize;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	count = lastfree = freeseen = 0;
 	/*
 	 * Account for zero bestfree entries.
@@ -147,9 +163,14 @@ xfs_dir2_data_check(
 			       (char *)dup - (char *)hdr);
 			dfp = xfs_dir2_data_freefind(hdr, dup);
 =======
+<<<<<<< HEAD
+			       (char *)dup - (char *)hdr);
+			dfp = xfs_dir2_data_freefind(hdr, dup);
+=======
 			       (char *)dup - (char *)d);
 			dfp = xfs_dir2_data_freefind(d, dup);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dfp) {
 				i = (int)(dfp - bf);
 				ASSERT((freeseen & (1 << i)) == 0);
@@ -173,6 +194,9 @@ xfs_dir2_data_check(
 		ASSERT(xfs_dir_ino_validate(mp, be64_to_cpu(dep->inumber)) == 0);
 		ASSERT(be16_to_cpu(*xfs_dir2_data_entry_tag_p(dep)) ==
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       (char *)dep - (char *)hdr);
 		count++;
 		lastfree = 0;
@@ -180,6 +204,8 @@ xfs_dir2_data_check(
 			addr = xfs_dir2_db_off_to_dataptr(mp, mp->m_dirdatablk,
 				(xfs_dir2_data_aoff_t)
 				((char *)dep - (char *)hdr));
+<<<<<<< HEAD
+=======
 =======
 		       (char *)dep - (char *)d);
 		count++;
@@ -189,6 +215,7 @@ xfs_dir2_data_check(
 				(xfs_dir2_data_aoff_t)
 				((char *)dep - (char *)d));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			name.name = dep->name;
 			name.len = dep->namelen;
 			hash = mp->m_dirnameops->hashname(&name);
@@ -206,15 +233,21 @@ xfs_dir2_data_check(
 	 */
 	ASSERT(freeseen == 7);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC)) {
 		for (i = stale = 0; i < be32_to_cpu(btp->count); i++) {
 			if (lep[i].address ==
 			    cpu_to_be32(XFS_DIR2_NULL_DATAPTR))
+<<<<<<< HEAD
+=======
 =======
 	if (be32_to_cpu(d->hdr.magic) == XFS_DIR2_BLOCK_MAGIC) {
 		for (i = stale = 0; i < be32_to_cpu(btp->count); i++) {
 			if (be32_to_cpu(lep[i].address) == XFS_DIR2_NULL_DATAPTR)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				stale++;
 			if (i > 0)
 				ASSERT(be32_to_cpu(lep[i].hashval) >= be32_to_cpu(lep[i - 1].hashval));
@@ -234,10 +267,16 @@ STATIC xfs_dir2_data_free_t *
 xfs_dir2_data_freefind(
 	xfs_dir2_data_hdr_t	*hdr,		/* data block */
 =======
+<<<<<<< HEAD
+STATIC xfs_dir2_data_free_t *
+xfs_dir2_data_freefind(
+	xfs_dir2_data_hdr_t	*hdr,		/* data block */
+=======
 xfs_dir2_data_free_t *
 xfs_dir2_data_freefind(
 	xfs_dir2_data_t		*d,		/* data block */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_unused_t	*dup)		/* data unused entry */
 {
 	xfs_dir2_data_free_t	*dfp;		/* bestfree entry */
@@ -250,8 +289,12 @@ xfs_dir2_data_freefind(
 <<<<<<< HEAD
 	off = (xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr);
 =======
+<<<<<<< HEAD
+	off = (xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr);
+=======
 	off = (xfs_dir2_data_aoff_t)((char *)dup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(DEBUG) && defined(__KERNEL__)
 	/*
 	 * Validate some consistency in the bestfree table.
@@ -259,16 +302,22 @@ xfs_dir2_data_freefind(
 	 * one we're looking for it has to be exact.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
 	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
 	for (dfp = &hdr->bestfree[0], seenzero = matched = 0;
 	     dfp < &hdr->bestfree[XFS_DIR2_DATA_FD_COUNT];
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(be32_to_cpu(d->hdr.magic) == XFS_DIR2_DATA_MAGIC ||
 	       be32_to_cpu(d->hdr.magic) == XFS_DIR2_BLOCK_MAGIC);
 	for (dfp = &d->hdr.bestfree[0], seenzero = matched = 0;
 	     dfp < &d->hdr.bestfree[XFS_DIR2_DATA_FD_COUNT];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	     dfp++) {
 		if (!dfp->offset) {
 			ASSERT(!dfp->length);
@@ -287,8 +336,12 @@ xfs_dir2_data_freefind(
 <<<<<<< HEAD
 		if (dfp > &hdr->bestfree[0])
 =======
+<<<<<<< HEAD
+		if (dfp > &hdr->bestfree[0])
+=======
 		if (dfp > &d->hdr.bestfree[0])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ASSERT(be16_to_cpu(dfp[-1].length) >= be16_to_cpu(dfp[0].length));
 	}
 #endif
@@ -300,8 +353,12 @@ xfs_dir2_data_freefind(
 <<<<<<< HEAD
 	    be16_to_cpu(hdr->bestfree[XFS_DIR2_DATA_FD_COUNT - 1].length))
 =======
+<<<<<<< HEAD
+	    be16_to_cpu(hdr->bestfree[XFS_DIR2_DATA_FD_COUNT - 1].length))
+=======
 	    be16_to_cpu(d->hdr.bestfree[XFS_DIR2_DATA_FD_COUNT - 1].length))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	/*
 	 * Look at the three bestfree entries for our guy.
@@ -310,9 +367,14 @@ xfs_dir2_data_freefind(
 	for (dfp = &hdr->bestfree[0];
 	     dfp < &hdr->bestfree[XFS_DIR2_DATA_FD_COUNT];
 =======
+<<<<<<< HEAD
+	for (dfp = &hdr->bestfree[0];
+	     dfp < &hdr->bestfree[XFS_DIR2_DATA_FD_COUNT];
+=======
 	for (dfp = &d->hdr.bestfree[0];
 	     dfp < &d->hdr.bestfree[XFS_DIR2_DATA_FD_COUNT];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	     dfp++) {
 		if (!dfp->offset)
 			return NULL;
@@ -333,8 +395,12 @@ xfs_dir2_data_freeinsert(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr,		/* data block pointer */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr,		/* data block pointer */
+=======
 	xfs_dir2_data_t		*d,		/* data block pointer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_unused_t	*dup,		/* unused space */
 	int			*loghead)	/* log the data header (out) */
 {
@@ -343,6 +409,9 @@ xfs_dir2_data_freeinsert(
 
 #ifdef __KERNEL__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
 	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
 #endif
@@ -350,6 +419,8 @@ xfs_dir2_data_freeinsert(
 	new.length = dup->length;
 	new.offset = cpu_to_be16((char *)dup - (char *)hdr);
 
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(be32_to_cpu(d->hdr.magic) == XFS_DIR2_DATA_MAGIC ||
 	       be32_to_cpu(d->hdr.magic) == XFS_DIR2_BLOCK_MAGIC);
@@ -358,6 +429,7 @@ xfs_dir2_data_freeinsert(
 	new.length = dup->length;
 	new.offset = cpu_to_be16((char *)dup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Insert at position 0, 1, or 2; or not at all.
 	 */
@@ -390,8 +462,12 @@ xfs_dir2_data_freeremove(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr,		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr,		/* data block header */
+=======
 	xfs_dir2_data_t		*d,		/* data block pointer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_free_t	*dfp,		/* bestfree entry pointer */
 	int			*loghead)	/* out: log data header */
 {
@@ -400,9 +476,14 @@ xfs_dir2_data_freeremove(
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
 	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
+	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
+=======
 	ASSERT(be32_to_cpu(d->hdr.magic) == XFS_DIR2_DATA_MAGIC ||
 	       be32_to_cpu(d->hdr.magic) == XFS_DIR2_BLOCK_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/*
 	 * It's the first entry, slide the next 2 up.
@@ -412,10 +493,16 @@ xfs_dir2_data_freeremove(
 		hdr->bestfree[0] = hdr->bestfree[1];
 		hdr->bestfree[1] = hdr->bestfree[2];
 =======
+<<<<<<< HEAD
+	if (dfp == &hdr->bestfree[0]) {
+		hdr->bestfree[0] = hdr->bestfree[1];
+		hdr->bestfree[1] = hdr->bestfree[2];
+=======
 	if (dfp == &d->hdr.bestfree[0]) {
 		d->hdr.bestfree[0] = d->hdr.bestfree[1];
 		d->hdr.bestfree[1] = d->hdr.bestfree[2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/*
 	 * It's the second entry, slide the 3rd entry up.
@@ -424,20 +511,30 @@ xfs_dir2_data_freeremove(
 	else if (dfp == &hdr->bestfree[1])
 		hdr->bestfree[1] = hdr->bestfree[2];
 =======
+<<<<<<< HEAD
+	else if (dfp == &hdr->bestfree[1])
+		hdr->bestfree[1] = hdr->bestfree[2];
+=======
 	else if (dfp == &d->hdr.bestfree[1])
 		d->hdr.bestfree[1] = d->hdr.bestfree[2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Must be the last entry.
 	 */
 	else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(dfp == &hdr->bestfree[2]);
 	/*
 	 * Clear the 3rd entry, must be zero now.
 	 */
 	hdr->bestfree[2].length = 0;
 	hdr->bestfree[2].offset = 0;
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(dfp == &d->hdr.bestfree[2]);
 	/*
@@ -446,6 +543,7 @@ xfs_dir2_data_freeremove(
 	d->hdr.bestfree[2].length = 0;
 	d->hdr.bestfree[2].offset = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*loghead = 1;
 }
 
@@ -458,8 +556,12 @@ xfs_dir2_data_freescan(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr,		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr,		/* data block header */
+=======
 	xfs_dir2_data_t		*d,		/* data block pointer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			*loghead)	/* out: log data header */
 {
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
@@ -473,9 +575,14 @@ xfs_dir2_data_freescan(
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
 	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
+	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
+=======
 	ASSERT(be32_to_cpu(d->hdr.magic) == XFS_DIR2_DATA_MAGIC ||
 	       be32_to_cpu(d->hdr.magic) == XFS_DIR2_BLOCK_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/*
 	 * Start by clearing the table.
@@ -483,19 +590,28 @@ xfs_dir2_data_freescan(
 <<<<<<< HEAD
 	memset(hdr->bestfree, 0, sizeof(hdr->bestfree));
 =======
+<<<<<<< HEAD
+	memset(hdr->bestfree, 0, sizeof(hdr->bestfree));
+=======
 	memset(d->hdr.bestfree, 0, sizeof(d->hdr.bestfree));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*loghead = 1;
 	/*
 	 * Set up pointers.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p = (char *)(hdr + 1);
 	if (hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC)) {
 		btp = xfs_dir2_block_tail_p(mp, hdr);
 		endp = (char *)xfs_dir2_block_leaf_p(btp);
 	} else
 		endp = (char *)hdr + mp->m_dirblksize;
+<<<<<<< HEAD
+=======
 =======
 	p = (char *)d->u;
 	if (be32_to_cpu(d->hdr.magic) == XFS_DIR2_BLOCK_MAGIC) {
@@ -504,6 +620,7 @@ xfs_dir2_data_freescan(
 	} else
 		endp = (char *)d + mp->m_dirblksize;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Loop over the block's entries.
 	 */
@@ -518,10 +635,16 @@ xfs_dir2_data_freescan(
 			       be16_to_cpu(*xfs_dir2_data_unused_tag_p(dup)));
 			xfs_dir2_data_freeinsert(hdr, dup, loghead);
 =======
+<<<<<<< HEAD
+			ASSERT((char *)dup - (char *)hdr ==
+			       be16_to_cpu(*xfs_dir2_data_unused_tag_p(dup)));
+			xfs_dir2_data_freeinsert(hdr, dup, loghead);
+=======
 			ASSERT((char *)dup - (char *)d ==
 			       be16_to_cpu(*xfs_dir2_data_unused_tag_p(dup)));
 			xfs_dir2_data_freeinsert(d, dup, loghead);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			p += be16_to_cpu(dup->length);
 		}
 		/*
@@ -532,8 +655,12 @@ xfs_dir2_data_freescan(
 <<<<<<< HEAD
 			ASSERT((char *)dep - (char *)hdr ==
 =======
+<<<<<<< HEAD
+			ASSERT((char *)dep - (char *)hdr ==
+=======
 			ASSERT((char *)dep - (char *)d ==
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       be16_to_cpu(*xfs_dir2_data_entry_tag_p(dep)));
 			p += xfs_dir2_data_entsize(dep->namelen);
 		}
@@ -554,8 +681,12 @@ xfs_dir2_data_init(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
+=======
 	xfs_dir2_data_t		*d;		/* pointer to block */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_inode_t		*dp;		/* incore directory inode */
 	xfs_dir2_data_unused_t	*dup;		/* unused entry pointer */
 	int			error;		/* error return value */
@@ -577,6 +708,9 @@ xfs_dir2_data_init(
 	}
 	ASSERT(bp != NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Initialize the header.
@@ -599,6 +733,8 @@ xfs_dir2_data_init(
 	hdr->bestfree[0].length = cpu_to_be16(t);
 	dup->length = cpu_to_be16(t);
 	*xfs_dir2_data_unused_tag_p(dup) = cpu_to_be16((char *)dup - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Initialize the header.
@@ -621,6 +757,7 @@ xfs_dir2_data_init(
 	dup->length = cpu_to_be16(t);
 	*xfs_dir2_data_unused_tag_p(dup) = cpu_to_be16((char *)dup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Log it and return it.
 	 */
@@ -640,6 +777,9 @@ xfs_dir2_data_log_entry(
 	xfs_dir2_data_entry_t	*dep)		/* data entry pointer */
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_hdr_t	*hdr = bp->data;
 
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
@@ -648,6 +788,8 @@ xfs_dir2_data_log_entry(
 	xfs_da_log_buf(tp, bp, (uint)((char *)dep - (char *)hdr),
 		(uint)((char *)(xfs_dir2_data_entry_tag_p(dep) + 1) -
 		       (char *)hdr - 1));
+<<<<<<< HEAD
+=======
 =======
 	xfs_dir2_data_t		*d;		/* data block pointer */
 
@@ -658,6 +800,7 @@ xfs_dir2_data_log_entry(
 		(uint)((char *)(xfs_dir2_data_entry_tag_p(dep) + 1) -
 		       (char *)d - 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -669,12 +812,17 @@ xfs_dir2_data_log_header(
 	xfs_dabuf_t		*bp)		/* block buffer */
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_hdr_t	*hdr = bp->data;
 
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
 	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
 
 	xfs_da_log_buf(tp, bp, 0, sizeof(*hdr) - 1);
+<<<<<<< HEAD
+=======
 =======
 	xfs_dir2_data_t		*d;		/* data block pointer */
 
@@ -684,6 +832,7 @@ xfs_dir2_data_log_header(
 	xfs_da_log_buf(tp, bp, (uint)((char *)&d->hdr - (char *)d),
 		(uint)(sizeof(d->hdr) - 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -696,6 +845,9 @@ xfs_dir2_data_log_unused(
 	xfs_dir2_data_unused_t	*dup)		/* data unused pointer */
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_hdr_t	*hdr = bp->data;
 
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
@@ -707,6 +859,8 @@ xfs_dir2_data_log_unused(
 	xfs_da_log_buf(tp, bp, (uint)((char *)dup - (char *)hdr),
 		(uint)((char *)&dup->length + sizeof(dup->length) -
 		       1 - (char *)hdr));
+<<<<<<< HEAD
+=======
 =======
 	xfs_dir2_data_t		*d;		/* data block pointer */
 
@@ -720,6 +874,7 @@ xfs_dir2_data_log_unused(
 		(uint)((char *)&dup->length + sizeof(dup->length) -
 		       1 - (char *)d));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Log the end (tag) of the unused entry.
 	 */
@@ -728,9 +883,14 @@ xfs_dir2_data_log_unused(
 		(uint)((char *)xfs_dir2_data_unused_tag_p(dup) - (char *)hdr),
 		(uint)((char *)xfs_dir2_data_unused_tag_p(dup) - (char *)hdr +
 =======
+<<<<<<< HEAD
+		(uint)((char *)xfs_dir2_data_unused_tag_p(dup) - (char *)hdr),
+		(uint)((char *)xfs_dir2_data_unused_tag_p(dup) - (char *)hdr +
+=======
 		(uint)((char *)xfs_dir2_data_unused_tag_p(dup) - (char *)d),
 		(uint)((char *)xfs_dir2_data_unused_tag_p(dup) - (char *)d +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       sizeof(xfs_dir2_data_off_t) - 1));
 }
 
@@ -750,8 +910,12 @@ xfs_dir2_data_make_free(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* data block pointer */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* data block pointer */
+=======
 	xfs_dir2_data_t		*d;		/* data block pointer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_free_t	*dfp;		/* bestfree pointer */
 	char			*endptr;	/* end of data area */
 	xfs_mount_t		*mp;		/* filesystem mount point */
@@ -762,6 +926,9 @@ xfs_dir2_data_make_free(
 
 	mp = tp->t_mountp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr = bp->data;
 
 	/*
@@ -774,6 +941,8 @@ xfs_dir2_data_make_free(
 
 		ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
 		btp = xfs_dir2_block_tail_p(mp, hdr);
+<<<<<<< HEAD
+=======
 =======
 	d = bp->data;
 	/*
@@ -787,6 +956,7 @@ xfs_dir2_data_make_free(
 		ASSERT(be32_to_cpu(d->hdr.magic) == XFS_DIR2_BLOCK_MAGIC);
 		btp = xfs_dir2_block_tail_p(mp, (xfs_dir2_block_t *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		endptr = (char *)xfs_dir2_block_leaf_p(btp);
 	}
 	/*
@@ -794,11 +964,16 @@ xfs_dir2_data_make_free(
 	 * the previous entry and see if it's free.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (offset > sizeof(*hdr)) {
 		__be16			*tagp;	/* tag just before us */
 
 		tagp = (__be16 *)((char *)hdr + offset) - 1;
 		prevdup = (xfs_dir2_data_unused_t *)((char *)hdr + be16_to_cpu(*tagp));
+<<<<<<< HEAD
+=======
 =======
 	if (offset > sizeof(d->hdr)) {
 		__be16			*tagp;	/* tag just before us */
@@ -806,6 +981,7 @@ xfs_dir2_data_make_free(
 		tagp = (__be16 *)((char *)d + offset) - 1;
 		prevdup = (xfs_dir2_data_unused_t *)((char *)d + be16_to_cpu(*tagp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (be16_to_cpu(prevdup->freetag) != XFS_DIR2_DATA_FREE_TAG)
 			prevdup = NULL;
 	} else
@@ -819,10 +995,16 @@ xfs_dir2_data_make_free(
 		postdup =
 			(xfs_dir2_data_unused_t *)((char *)hdr + offset + len);
 =======
+<<<<<<< HEAD
+	if ((char *)hdr + offset + len < endptr) {
+		postdup =
+			(xfs_dir2_data_unused_t *)((char *)hdr + offset + len);
+=======
 	if ((char *)d + offset + len < endptr) {
 		postdup =
 			(xfs_dir2_data_unused_t *)((char *)d + offset + len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (be16_to_cpu(postdup->freetag) != XFS_DIR2_DATA_FREE_TAG)
 			postdup = NULL;
 	} else
@@ -843,9 +1025,14 @@ xfs_dir2_data_make_free(
 		dfp = xfs_dir2_data_freefind(hdr, prevdup);
 		dfp2 = xfs_dir2_data_freefind(hdr, postdup);
 =======
+<<<<<<< HEAD
+		dfp = xfs_dir2_data_freefind(hdr, prevdup);
+		dfp2 = xfs_dir2_data_freefind(hdr, postdup);
+=======
 		dfp = xfs_dir2_data_freefind(d, prevdup);
 		dfp2 = xfs_dir2_data_freefind(d, postdup);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * We need a rescan unless there are exactly 2 free entries
 		 * namely our two.  Then we know what's happening, otherwise
@@ -855,8 +1042,12 @@ xfs_dir2_data_make_free(
 <<<<<<< HEAD
 		needscan = (hdr->bestfree[2].length != 0);
 =======
+<<<<<<< HEAD
+		needscan = (hdr->bestfree[2].length != 0);
+=======
 		needscan = (d->hdr.bestfree[2].length != 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Fix up the new big freespace.
 		 */
@@ -865,8 +1056,12 @@ xfs_dir2_data_make_free(
 <<<<<<< HEAD
 			cpu_to_be16((char *)prevdup - (char *)hdr);
 =======
+<<<<<<< HEAD
+			cpu_to_be16((char *)prevdup - (char *)hdr);
+=======
 			cpu_to_be16((char *)prevdup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_log_unused(tp, bp, prevdup);
 		if (!needscan) {
 			/*
@@ -877,6 +1072,9 @@ xfs_dir2_data_make_free(
 			 */
 			ASSERT(dfp && dfp2);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dfp == &hdr->bestfree[1]) {
 				dfp = &hdr->bestfree[0];
 				ASSERT(dfp2 == dfp);
@@ -889,6 +1087,8 @@ xfs_dir2_data_make_free(
 			 */
 			dfp = xfs_dir2_data_freeinsert(hdr, prevdup, needlogp);
 			ASSERT(dfp == &hdr->bestfree[0]);
+<<<<<<< HEAD
+=======
 =======
 			if (dfp == &d->hdr.bestfree[1]) {
 				dfp = &d->hdr.bestfree[0];
@@ -903,6 +1103,7 @@ xfs_dir2_data_make_free(
 			dfp = xfs_dir2_data_freeinsert(d, prevdup, needlogp);
 			ASSERT(dfp == &d->hdr.bestfree[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ASSERT(dfp->length == prevdup->length);
 			ASSERT(!dfp[1].length);
 			ASSERT(!dfp[2].length);
@@ -913,16 +1114,22 @@ xfs_dir2_data_make_free(
 	 */
 	else if (prevdup) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dfp = xfs_dir2_data_freefind(hdr, prevdup);
 		be16_add_cpu(&prevdup->length, len);
 		*xfs_dir2_data_unused_tag_p(prevdup) =
 			cpu_to_be16((char *)prevdup - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 		dfp = xfs_dir2_data_freefind(d, prevdup);
 		be16_add_cpu(&prevdup->length, len);
 		*xfs_dir2_data_unused_tag_p(prevdup) =
 			cpu_to_be16((char *)prevdup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_log_unused(tp, bp, prevdup);
 		/*
 		 * If the previous entry was in the table, the new entry
@@ -934,9 +1141,14 @@ xfs_dir2_data_make_free(
 			xfs_dir2_data_freeremove(hdr, dfp, needlogp);
 			xfs_dir2_data_freeinsert(hdr, prevdup, needlogp);
 =======
+<<<<<<< HEAD
+			xfs_dir2_data_freeremove(hdr, dfp, needlogp);
+			xfs_dir2_data_freeinsert(hdr, prevdup, needlogp);
+=======
 			xfs_dir2_data_freeremove(d, dfp, needlogp);
 			(void)xfs_dir2_data_freeinsert(d, prevdup, needlogp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		/*
 		 * Otherwise we need a scan if the new entry is big enough.
@@ -946,8 +1158,12 @@ xfs_dir2_data_make_free(
 <<<<<<< HEAD
 				   be16_to_cpu(hdr->bestfree[2].length);
 =======
+<<<<<<< HEAD
+				   be16_to_cpu(hdr->bestfree[2].length);
+=======
 				   be16_to_cpu(d->hdr.bestfree[2].length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	/*
@@ -955,12 +1171,17 @@ xfs_dir2_data_make_free(
 	 */
 	else if (postdup) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dfp = xfs_dir2_data_freefind(hdr, postdup);
 		newdup = (xfs_dir2_data_unused_t *)((char *)hdr + offset);
 		newdup->freetag = cpu_to_be16(XFS_DIR2_DATA_FREE_TAG);
 		newdup->length = cpu_to_be16(len + be16_to_cpu(postdup->length));
 		*xfs_dir2_data_unused_tag_p(newdup) =
 			cpu_to_be16((char *)newdup - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 		dfp = xfs_dir2_data_freefind(d, postdup);
 		newdup = (xfs_dir2_data_unused_t *)((char *)d + offset);
@@ -969,6 +1190,7 @@ xfs_dir2_data_make_free(
 		*xfs_dir2_data_unused_tag_p(newdup) =
 			cpu_to_be16((char *)newdup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_log_unused(tp, bp, newdup);
 		/*
 		 * If the following entry was in the table, the new entry
@@ -980,9 +1202,14 @@ xfs_dir2_data_make_free(
 			xfs_dir2_data_freeremove(hdr, dfp, needlogp);
 			xfs_dir2_data_freeinsert(hdr, newdup, needlogp);
 =======
+<<<<<<< HEAD
+			xfs_dir2_data_freeremove(hdr, dfp, needlogp);
+			xfs_dir2_data_freeinsert(hdr, newdup, needlogp);
+=======
 			xfs_dir2_data_freeremove(d, dfp, needlogp);
 			(void)xfs_dir2_data_freeinsert(d, newdup, needlogp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		/*
 		 * Otherwise we need a scan if the new entry is big enough.
@@ -992,8 +1219,12 @@ xfs_dir2_data_make_free(
 <<<<<<< HEAD
 				   be16_to_cpu(hdr->bestfree[2].length);
 =======
+<<<<<<< HEAD
+				   be16_to_cpu(hdr->bestfree[2].length);
+=======
 				   be16_to_cpu(d->hdr.bestfree[2].length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	/*
@@ -1001,6 +1232,9 @@ xfs_dir2_data_make_free(
 	 */
 	else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		newdup = (xfs_dir2_data_unused_t *)((char *)hdr + offset);
 		newdup->freetag = cpu_to_be16(XFS_DIR2_DATA_FREE_TAG);
 		newdup->length = cpu_to_be16(len);
@@ -1008,6 +1242,8 @@ xfs_dir2_data_make_free(
 			cpu_to_be16((char *)newdup - (char *)hdr);
 		xfs_dir2_data_log_unused(tp, bp, newdup);
 		xfs_dir2_data_freeinsert(hdr, newdup, needlogp);
+<<<<<<< HEAD
+=======
 =======
 		newdup = (xfs_dir2_data_unused_t *)((char *)d + offset);
 		newdup->freetag = cpu_to_be16(XFS_DIR2_DATA_FREE_TAG);
@@ -1017,6 +1253,7 @@ xfs_dir2_data_make_free(
 		xfs_dir2_data_log_unused(tp, bp, newdup);
 		(void)xfs_dir2_data_freeinsert(d, newdup, needlogp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	*needscanp = needscan;
 }
@@ -1037,8 +1274,12 @@ xfs_dir2_data_use_free(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
+=======
 	xfs_dir2_data_t		*d;		/* data block */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_free_t	*dfp;		/* bestfree pointer */
 	int			matchback;	/* matches end of freespace */
 	int			matchfront;	/* matches start of freespace */
@@ -1048,6 +1289,9 @@ xfs_dir2_data_use_free(
 	int			oldlen;		/* old unused entry's length */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr = bp->data;
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC) ||
 	       hdr->magic == cpu_to_be32(XFS_DIR2_BLOCK_MAGIC));
@@ -1066,6 +1310,8 @@ xfs_dir2_data_use_free(
 	 */
 	matchfront = (char *)dup - (char *)hdr == offset;
 	matchback = (char *)dup + oldlen - (char *)hdr == offset + len;
+<<<<<<< HEAD
+=======
 =======
 	d = bp->data;
 	ASSERT(be32_to_cpu(d->hdr.magic) == XFS_DIR2_DATA_MAGIC ||
@@ -1086,6 +1332,7 @@ xfs_dir2_data_use_free(
 	matchfront = (char *)dup - (char *)d == offset;
 	matchback = (char *)dup + oldlen - (char *)d == offset + len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(*needscanp == 0);
 	needscan = 0;
 	/*
@@ -1099,10 +1346,16 @@ xfs_dir2_data_use_free(
 			if (!needscan)
 				xfs_dir2_data_freeremove(hdr, dfp, needlogp);
 =======
+<<<<<<< HEAD
+			needscan = (hdr->bestfree[2].offset != 0);
+			if (!needscan)
+				xfs_dir2_data_freeremove(hdr, dfp, needlogp);
+=======
 			needscan = (d->hdr.bestfree[2].offset != 0);
 			if (!needscan)
 				xfs_dir2_data_freeremove(d, dfp, needlogp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	/*
@@ -1111,11 +1364,16 @@ xfs_dir2_data_use_free(
 	 */
 	else if (matchfront) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		newdup = (xfs_dir2_data_unused_t *)((char *)hdr + offset + len);
 		newdup->freetag = cpu_to_be16(XFS_DIR2_DATA_FREE_TAG);
 		newdup->length = cpu_to_be16(oldlen - len);
 		*xfs_dir2_data_unused_tag_p(newdup) =
 			cpu_to_be16((char *)newdup - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 		newdup = (xfs_dir2_data_unused_t *)((char *)d + offset + len);
 		newdup->freetag = cpu_to_be16(XFS_DIR2_DATA_FREE_TAG);
@@ -1123,17 +1381,23 @@ xfs_dir2_data_use_free(
 		*xfs_dir2_data_unused_tag_p(newdup) =
 			cpu_to_be16((char *)newdup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_log_unused(tp, bp, newdup);
 		/*
 		 * If it was in the table, remove it and add the new one.
 		 */
 		if (dfp) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_dir2_data_freeremove(hdr, dfp, needlogp);
 			dfp = xfs_dir2_data_freeinsert(hdr, newdup, needlogp);
 			ASSERT(dfp != NULL);
 			ASSERT(dfp->length == newdup->length);
 			ASSERT(be16_to_cpu(dfp->offset) == (char *)newdup - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 			xfs_dir2_data_freeremove(d, dfp, needlogp);
 			dfp = xfs_dir2_data_freeinsert(d, newdup, needlogp);
@@ -1141,6 +1405,7 @@ xfs_dir2_data_use_free(
 			ASSERT(dfp->length == newdup->length);
 			ASSERT(be16_to_cpu(dfp->offset) == (char *)newdup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * If we got inserted at the last slot,
 			 * that means we don't know if there was a better
@@ -1149,8 +1414,12 @@ xfs_dir2_data_use_free(
 <<<<<<< HEAD
 			needscan = dfp == &hdr->bestfree[2];
 =======
+<<<<<<< HEAD
+			needscan = dfp == &hdr->bestfree[2];
+=======
 			needscan = dfp == &d->hdr.bestfree[2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	/*
@@ -1164,21 +1433,32 @@ xfs_dir2_data_use_free(
 		*xfs_dir2_data_unused_tag_p(newdup) =
 			cpu_to_be16((char *)newdup - (char *)hdr);
 =======
+<<<<<<< HEAD
+		newdup->length = cpu_to_be16(((char *)hdr + offset) - (char *)newdup);
+		*xfs_dir2_data_unused_tag_p(newdup) =
+			cpu_to_be16((char *)newdup - (char *)hdr);
+=======
 		newdup->length = cpu_to_be16(((char *)d + offset) - (char *)newdup);
 		*xfs_dir2_data_unused_tag_p(newdup) =
 			cpu_to_be16((char *)newdup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_log_unused(tp, bp, newdup);
 		/*
 		 * If it was in the table, remove it and add the new one.
 		 */
 		if (dfp) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_dir2_data_freeremove(hdr, dfp, needlogp);
 			dfp = xfs_dir2_data_freeinsert(hdr, newdup, needlogp);
 			ASSERT(dfp != NULL);
 			ASSERT(dfp->length == newdup->length);
 			ASSERT(be16_to_cpu(dfp->offset) == (char *)newdup - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 			xfs_dir2_data_freeremove(d, dfp, needlogp);
 			dfp = xfs_dir2_data_freeinsert(d, newdup, needlogp);
@@ -1186,6 +1466,7 @@ xfs_dir2_data_use_free(
 			ASSERT(dfp->length == newdup->length);
 			ASSERT(be16_to_cpu(dfp->offset) == (char *)newdup - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * If we got inserted at the last slot,
 			 * that means we don't know if there was a better
@@ -1194,8 +1475,12 @@ xfs_dir2_data_use_free(
 <<<<<<< HEAD
 			needscan = dfp == &hdr->bestfree[2];
 =======
+<<<<<<< HEAD
+			needscan = dfp == &hdr->bestfree[2];
+=======
 			needscan = dfp == &d->hdr.bestfree[2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	/*
@@ -1205,6 +1490,9 @@ xfs_dir2_data_use_free(
 	else {
 		newdup = dup;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		newdup->length = cpu_to_be16(((char *)hdr + offset) - (char *)newdup);
 		*xfs_dir2_data_unused_tag_p(newdup) =
 			cpu_to_be16((char *)newdup - (char *)hdr);
@@ -1214,6 +1502,8 @@ xfs_dir2_data_use_free(
 		newdup2->length = cpu_to_be16(oldlen - len - be16_to_cpu(newdup->length));
 		*xfs_dir2_data_unused_tag_p(newdup2) =
 			cpu_to_be16((char *)newdup2 - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 		newdup->length = cpu_to_be16(((char *)d + offset) - (char *)newdup);
 		*xfs_dir2_data_unused_tag_p(newdup) =
@@ -1225,6 +1515,7 @@ xfs_dir2_data_use_free(
 		*xfs_dir2_data_unused_tag_p(newdup2) =
 			cpu_to_be16((char *)newdup2 - (char *)d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_log_unused(tp, bp, newdup2);
 		/*
 		 * If the old entry was in the table, we need to scan
@@ -1236,12 +1527,17 @@ xfs_dir2_data_use_free(
 		 */
 		if (dfp) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			needscan = (hdr->bestfree[2].length != 0);
 			if (!needscan) {
 				xfs_dir2_data_freeremove(hdr, dfp, needlogp);
 				xfs_dir2_data_freeinsert(hdr, newdup, needlogp);
 				xfs_dir2_data_freeinsert(hdr, newdup2,
 							 needlogp);
+<<<<<<< HEAD
+=======
 =======
 			needscan = (d->hdr.bestfree[2].length != 0);
 			if (!needscan) {
@@ -1251,6 +1547,7 @@ xfs_dir2_data_use_free(
 				(void)xfs_dir2_data_freeinsert(d, newdup2,
 					needlogp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 	}

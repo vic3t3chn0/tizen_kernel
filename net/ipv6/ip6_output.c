@@ -103,8 +103,11 @@ static int ip6_finish_output2(struct sk_buff *skb)
 	struct neighbour *neigh;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int res;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb->protocol = htons(ETH_P_IPV6);
 	skb->dev = dev;
@@ -141,6 +144,9 @@ static int ip6_finish_output2(struct sk_buff *skb)
 
 	rcu_read_lock();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	neigh = dst_get_neighbour_noref(dst);
 	if (neigh) {
 		int res = neigh_output(neigh, skb);
@@ -149,6 +155,8 @@ static int ip6_finish_output2(struct sk_buff *skb)
 		return res;
 	}
 	rcu_read_unlock();
+<<<<<<< HEAD
+=======
 =======
 	if (dst->hh) {
 		res = neigh_hh_output(dst->hh, skb);
@@ -167,6 +175,7 @@ static int ip6_finish_output2(struct sk_buff *skb)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IP6_INC_STATS_BH(dev_net(dst->dev),
 			 ip6_dst_idev(dst), IPSTATS_MIB_OUTNOROUTES);
 	kfree_skb(skb);
@@ -206,8 +215,12 @@ int ip6_xmit(struct sock *sk, struct sk_buff *skb, struct flowi6 *fl6,
 <<<<<<< HEAD
 	     struct ipv6_txoptions *opt, int tclass)
 =======
+<<<<<<< HEAD
+	     struct ipv6_txoptions *opt, int tclass)
+=======
 	     struct ipv6_txoptions *opt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net *net = sock_net(sk);
 	struct ipv6_pinfo *np = inet6_sk(sk);
@@ -219,8 +232,11 @@ int ip6_xmit(struct sock *sk, struct sk_buff *skb, struct flowi6 *fl6,
 	int hlimit = -1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int tclass = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 mtu;
 
 	if (opt) {
@@ -262,11 +278,16 @@ int ip6_xmit(struct sock *sk, struct sk_buff *skb, struct flowi6 *fl6,
 	if (np)
 		hlimit = np->hop_limit;
 =======
+<<<<<<< HEAD
+	if (np)
+		hlimit = np->hop_limit;
+=======
 	if (np) {
 		tclass = np->tclass;
 		hlimit = np->hop_limit;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hlimit < 0)
 		hlimit = ip6_dst_hoplimit(dst);
 
@@ -280,9 +301,14 @@ int ip6_xmit(struct sock *sk, struct sk_buff *skb, struct flowi6 *fl6,
 	hdr->saddr = fl6->saddr;
 	hdr->daddr = *first_hop;
 =======
+<<<<<<< HEAD
+	hdr->saddr = fl6->saddr;
+	hdr->daddr = *first_hop;
+=======
 	ipv6_addr_copy(&hdr->saddr, &fl6->saddr);
 	ipv6_addr_copy(&hdr->daddr, first_hop);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb->priority = sk->sk_priority;
 	skb->mark = sk->sk_mark;
@@ -337,9 +363,14 @@ int ip6_nd_hdr(struct sock *sk, struct sk_buff *skb, struct net_device *dev,
 	hdr->saddr = *saddr;
 	hdr->daddr = *daddr;
 =======
+<<<<<<< HEAD
+	hdr->saddr = *saddr;
+	hdr->daddr = *daddr;
+=======
 	ipv6_addr_copy(&hdr->saddr, saddr);
 	ipv6_addr_copy(&hdr->daddr, daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -378,17 +409,23 @@ static int ip6_forward_proxy_check(struct sk_buff *skb)
 	struct ipv6hdr *hdr = ipv6_hdr(skb);
 	u8 nexthdr = hdr->nexthdr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be16 frag_off;
 	int offset;
 
 	if (ipv6_ext_hdr(nexthdr)) {
 		offset = ipv6_skip_exthdr(skb, sizeof(*hdr), &nexthdr, &frag_off);
+<<<<<<< HEAD
+=======
 =======
 	int offset;
 
 	if (ipv6_ext_hdr(nexthdr)) {
 		offset = ipv6_skip_exthdr(skb, sizeof(*hdr), &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (offset < 0)
 			return 0;
 	} else
@@ -445,8 +482,11 @@ int ip6_forward(struct sk_buff *skb)
 	struct net *net = dev_net(dst->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct neighbour *n;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 mtu;
 
 	if (net->ipv6.devconf_all->forwarding == 0)
@@ -504,9 +544,15 @@ int ip6_forward(struct sk_buff *skb)
 	    pneigh_lookup(&nd_tbl, net, &hdr->daddr, skb->dev, 0))
 	    || net->ipv6.devconf_all->proxy_ndp >= 2) {
 =======
+<<<<<<< HEAD
+	if ((net->ipv6.devconf_all->proxy_ndp == 1 &&
+	    pneigh_lookup(&nd_tbl, net, &hdr->daddr, skb->dev, 0))
+	    || net->ipv6.devconf_all->proxy_ndp >= 2) {
+=======
 	if (net->ipv6.devconf_all->proxy_ndp &&
 	    pneigh_lookup(&nd_tbl, net, &hdr->daddr, skb->dev, 0)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int proxied = ip6_forward_proxy_check(skb);
 		if (proxied > 0)
 			return ip6_input(skb);
@@ -530,9 +576,13 @@ int ip6_forward(struct sk_buff *skb)
 <<<<<<< HEAD
 	if (skb->dev == dst->dev && opt->srcrt == 0 && !skb_sec_path(skb)) {
 =======
+<<<<<<< HEAD
+	if (skb->dev == dst->dev && opt->srcrt == 0 && !skb_sec_path(skb)) {
+=======
 	n = dst_get_neighbour(dst);
 	if (skb->dev == dst->dev && n && opt->srcrt == 0 && !skb_sec_path(skb)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct in6_addr *target = NULL;
 		struct rt6_info *rt;
 
@@ -546,9 +596,14 @@ int ip6_forward(struct sk_buff *skb)
 		if (rt->rt6i_flags & RTF_GATEWAY)
 			target = &rt->rt6i_gateway;
 =======
+<<<<<<< HEAD
+		if (rt->rt6i_flags & RTF_GATEWAY)
+			target = &rt->rt6i_gateway;
+=======
 		if ((rt->rt6i_flags & RTF_GATEWAY))
 			target = (struct in6_addr*)&n->primary_key;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			target = &hdr->daddr;
 
@@ -562,8 +617,12 @@ int ip6_forward(struct sk_buff *skb)
 <<<<<<< HEAD
 			ndisc_send_redirect(skb, target);
 =======
+<<<<<<< HEAD
+			ndisc_send_redirect(skb, target);
+=======
 			ndisc_send_redirect(skb, n, target);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		int addrtype = ipv6_addr_type(&hdr->saddr);
 
@@ -677,6 +736,9 @@ int ip6_find_1stfragopt(struct sk_buff *skb, u8 **nexthdr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ipv6_select_ident(struct frag_hdr *fhdr, struct rt6_info *rt)
 {
 	static atomic_t ipv6_fragmentation_id;
@@ -700,6 +762,8 @@ void ipv6_select_ident(struct frag_hdr *fhdr, struct rt6_info *rt)
 			new = 1;
 	} while (atomic_cmpxchg(&ipv6_fragmentation_id, old, new) != old);
 	fhdr->identification = htonl(new);
+<<<<<<< HEAD
+=======
 =======
 static u32 hashidentrnd __read_mostly;
 #define FID_HASH_SZ 16
@@ -729,6 +793,7 @@ void ipv6_select_ident(struct frag_hdr *fhdr, struct in6_addr *addr)
 {
 	fhdr->identification = htonl(__ipv6_select_ident(addr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int ip6_fragment(struct sk_buff *skb, int (*output)(struct sk_buff *))
@@ -742,7 +807,11 @@ int ip6_fragment(struct sk_buff *skb, int (*output)(struct sk_buff *))
 <<<<<<< HEAD
 	int hroom, troom;
 =======
+<<<<<<< HEAD
+	int hroom, troom;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be32 frag_id = 0;
 	int ptr, offset = 0, err=0;
 	u8 *prevhdr, nexthdr = 0;
@@ -822,8 +891,12 @@ int ip6_fragment(struct sk_buff *skb, int (*output)(struct sk_buff *))
 <<<<<<< HEAD
 		ipv6_select_ident(fh, rt);
 =======
+<<<<<<< HEAD
+		ipv6_select_ident(fh, rt);
+=======
 		ipv6_select_ident(fh, &rt->rt6i_dst.addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fh->nexthdr = nexthdr;
 		fh->reserved = 0;
 		fh->frag_off = htons(IP6_MF);
@@ -917,7 +990,12 @@ slow_path:
 	hroom = LL_RESERVED_SPACE(rt->dst.dev);
 	troom = rt->dst.dev->needed_tailroom;
 =======
+<<<<<<< HEAD
+	hroom = LL_RESERVED_SPACE(rt->dst.dev);
+	troom = rt->dst.dev->needed_tailroom;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 *	Keep copying data until we run out.
@@ -940,8 +1018,13 @@ slow_path:
 		if ((frag = alloc_skb(len + hlen + sizeof(struct frag_hdr) +
 				      hroom + troom, GFP_ATOMIC)) == NULL) {
 =======
+<<<<<<< HEAD
+		if ((frag = alloc_skb(len + hlen + sizeof(struct frag_hdr) +
+				      hroom + troom, GFP_ATOMIC)) == NULL) {
+=======
 		if ((frag = alloc_skb(len+hlen+sizeof(struct frag_hdr)+LL_ALLOCATED_SPACE(rt->dst.dev), GFP_ATOMIC)) == NULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			NETDEBUG(KERN_INFO "IPv6: frag: no memory for new fragment!\n");
 			IP6_INC_STATS(net, ip6_dst_idev(skb_dst(skb)),
 				      IPSTATS_MIB_FRAGFAILS);
@@ -957,8 +1040,12 @@ slow_path:
 <<<<<<< HEAD
 		skb_reserve(frag, hroom);
 =======
+<<<<<<< HEAD
+		skb_reserve(frag, hroom);
+=======
 		skb_reserve(frag, LL_RESERVED_SPACE(rt->dst.dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		skb_put(frag, len + hlen + sizeof(struct frag_hdr));
 		skb_reset_network_header(frag);
 		fh = (struct frag_hdr *)(skb_network_header(frag) + hlen);
@@ -986,8 +1073,12 @@ slow_path:
 <<<<<<< HEAD
 			ipv6_select_ident(fh, rt);
 =======
+<<<<<<< HEAD
+			ipv6_select_ident(fh, rt);
+=======
 			ipv6_select_ident(fh, &rt->rt6i_dst.addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			frag_id = fh->identification;
 		} else
 			fh->identification = frag_id;
@@ -1046,12 +1137,18 @@ static struct dst_entry *ip6_sk_dst_check(struct sock *sk,
 <<<<<<< HEAD
 	struct rt6_info *rt = (struct rt6_info *)dst;
 =======
+<<<<<<< HEAD
+	struct rt6_info *rt = (struct rt6_info *)dst;
+=======
 	struct rt6_info *rt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dst)
 		goto out;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (dst->ops->family != AF_INET6) {
@@ -1061,6 +1158,7 @@ static struct dst_entry *ip6_sk_dst_check(struct sock *sk,
 
 	rt = (struct rt6_info *)dst;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Yes, checking route validity in not connected
 	 * case is not very simple. Take into account,
 	 * that we do not support routing by source, TOS,
@@ -1128,8 +1226,12 @@ static int ip6_dst_lookup_tail(struct sock *sk,
 <<<<<<< HEAD
 	n = dst_get_neighbour_noref(*dst);
 =======
+<<<<<<< HEAD
+	n = dst_get_neighbour_noref(*dst);
+=======
 	n = dst_get_neighbour(*dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (n && !(n->nud_state & NUD_VALID)) {
 		struct inet6_ifaddr *ifp;
 		struct flowi6 fl_gw6;
@@ -1213,8 +1315,12 @@ struct dst_entry *ip6_dst_lookup_flow(struct sock *sk, struct flowi6 *fl6,
 <<<<<<< HEAD
 		fl6->daddr = *final_dst;
 =======
+<<<<<<< HEAD
+		fl6->daddr = *final_dst;
+=======
 		ipv6_addr_copy(&fl6->daddr, final_dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (can_sleep)
 		fl6->flowi6_flags |= FLOWI_FLAG_CAN_SLEEP;
 
@@ -1253,8 +1359,12 @@ struct dst_entry *ip6_sk_dst_lookup_flow(struct sock *sk, struct flowi6 *fl6,
 <<<<<<< HEAD
 		fl6->daddr = *final_dst;
 =======
+<<<<<<< HEAD
+		fl6->daddr = *final_dst;
+=======
 		ipv6_addr_copy(&fl6->daddr, final_dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (can_sleep)
 		fl6->flowi6_flags |= FLOWI_FLAG_CAN_SLEEP;
 
@@ -1280,9 +1390,12 @@ static inline int ip6_ufo_append_data(struct sock *sk,
 	if ((skb = skb_peek_tail(&sk->sk_write_queue)) == NULL) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct frag_hdr fhdr;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		skb = sock_alloc_send_skb(sk,
 			hh_len + fragheaderlen + transhdrlen + 20,
 			(flags & MSG_DONTWAIT), &err);
@@ -1290,8 +1403,12 @@ static inline int ip6_ufo_append_data(struct sock *sk,
 <<<<<<< HEAD
 			return err;
 =======
+<<<<<<< HEAD
+			return err;
+=======
 			return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* reserve space for Hardware header */
 		skb_reserve(skb, hh_len);
@@ -1308,14 +1425,20 @@ static inline int ip6_ufo_append_data(struct sock *sk,
 		skb->ip_summed = CHECKSUM_PARTIAL;
 		skb->csum = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	err = skb_append_datato_frags(sk,skb, getfrag, from,
 				      (length - transhdrlen));
 	if (!err) {
 		struct frag_hdr fhdr;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Specify the length of each IPv6 datagram fragment.
 		 * It has to be a multiple of 8.
@@ -1324,6 +1447,9 @@ static inline int ip6_ufo_append_data(struct sock *sk,
 					     sizeof(struct frag_hdr)) & ~7;
 		skb_shinfo(skb)->gso_type = SKB_GSO_UDP;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ipv6_select_ident(&fhdr, rt);
 		skb_shinfo(skb)->ip6_frag_id = fhdr.identification;
 		__skb_queue_tail(&sk->sk_write_queue, skb);
@@ -1336,6 +1462,8 @@ static inline int ip6_ufo_append_data(struct sock *sk,
 	kfree_skb(skb);
 
 	return err;
+<<<<<<< HEAD
+=======
 =======
 		ipv6_select_ident(&fhdr, &rt->rt6i_dst.addr);
 		skb_shinfo(skb)->ip6_frag_id = fhdr.identification;
@@ -1345,6 +1473,7 @@ static inline int ip6_ufo_append_data(struct sock *sk,
 	return skb_append_datato_frags(sk, skb, getfrag, from,
 				       (length - transhdrlen));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline struct ipv6_opt_hdr *ip6_opt_dup(struct ipv6_opt_hdr *src,
@@ -1359,6 +1488,8 @@ static inline struct ipv6_rt_hdr *ip6_rthdr_dup(struct ipv6_rt_hdr *src,
 	return src ? kmemdup(src, (src->hdrlen + 1) * 8, gfp) : NULL;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void ip6_append_data_mtu(int *mtu,
@@ -1385,6 +1516,7 @@ static void ip6_append_data_mtu(int *mtu,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 	int offset, int len, int odd, struct sk_buff *skb),
 	void *from, int length, int transhdrlen,
@@ -1395,15 +1527,21 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 	struct ipv6_pinfo *np = inet6_sk(sk);
 	struct inet_cork *cork;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *skb;
 	unsigned int maxfraglen, fragheaderlen;
 	int exthdrlen;
 	int dst_exthdrlen;
+<<<<<<< HEAD
+=======
 =======
 	struct sk_buff *skb, *skb_prev = NULL;
 	unsigned int maxfraglen, fragheaderlen;
 	int exthdrlen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int hh_len;
 	int mtu;
 	int copy;
@@ -1462,6 +1600,10 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 		mtu = np->pmtudisc == IPV6_PMTUDISC_PROBE ?
 		      rt->dst.dev->mtu : dst_mtu(&rt->dst);
 =======
+<<<<<<< HEAD
+		mtu = np->pmtudisc == IPV6_PMTUDISC_PROBE ?
+		      rt->dst.dev->mtu : dst_mtu(&rt->dst);
+=======
 		if (rt->dst.flags & DST_XFRM_TUNNEL)
 			mtu = np->pmtudisc == IPV6_PMTUDISC_PROBE ?
 			      rt->dst.dev->mtu : dst_mtu(&rt->dst);
@@ -1469,6 +1611,7 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 			mtu = np->pmtudisc == IPV6_PMTUDISC_PROBE ?
 			      rt->dst.dev->mtu : dst_mtu(rt->dst.path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (np->frag_size < mtu) {
 			if (np->frag_size)
 				mtu = np->frag_size;
@@ -1480,16 +1623,22 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 		sk->sk_sndmsg_page = NULL;
 		sk->sk_sndmsg_off = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		exthdrlen = (opt ? opt->opt_flen : 0) - rt->rt6i_nfheader_len;
 		length += exthdrlen;
 		transhdrlen += exthdrlen;
 		dst_exthdrlen = rt->dst.header_len;
+<<<<<<< HEAD
+=======
 =======
 		exthdrlen = rt->dst.header_len + (opt ? opt->opt_flen : 0) -
 			    rt->rt6i_nfheader_len;
 		length += exthdrlen;
 		transhdrlen += exthdrlen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		rt = (struct rt6_info *)cork->dst;
 		fl6 = &inet->cork.fl.u.ip6;
@@ -1499,7 +1648,11 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 <<<<<<< HEAD
 		dst_exthdrlen = 0;
 =======
+<<<<<<< HEAD
+		dst_exthdrlen = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mtu = cork->fragsize;
 	}
 
@@ -1540,6 +1693,9 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cork->length += length;
 	if (length > mtu) {
 		int proto = sk->sk_protocol;
@@ -1561,6 +1717,8 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 	}
 
 	if ((skb = skb_peek_tail(&sk->sk_write_queue)) == NULL)
+<<<<<<< HEAD
+=======
 =======
 	if ((length > mtu) && dontfrag && (sk->sk_protocol == IPPROTO_UDP ||
 					   sk->sk_protocol == IPPROTO_RAW)) {
@@ -1584,6 +1742,7 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 
 	if (!skb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto alloc_new_skb;
 
 	while (length > 0) {
@@ -1599,6 +1758,9 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 			unsigned int fraggap;
 			unsigned int alloclen;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct sk_buff *skb_prev;
 alloc_new_skb:
 			skb_prev = skb;
@@ -1608,6 +1770,8 @@ alloc_new_skb:
 				fraggap = skb_prev->len - maxfraglen;
 			else
 				fraggap = 0;
+<<<<<<< HEAD
+=======
 =======
 alloc_new_skb:
 			/* There's no room in the current skb */
@@ -1622,6 +1786,7 @@ alloc_new_skb:
 
 			skb_prev = skb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/*
 			 * If remaining data exceeds the mtu,
@@ -1629,15 +1794,21 @@ alloc_new_skb:
 			 */
 			datalen = length + fraggap;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (datalen > (cork->length <= mtu && !(cork->flags & IPCORK_ALLFRAG) ? mtu : maxfraglen) - fragheaderlen)
 				datalen = maxfraglen - fragheaderlen;
 
 			fraglen = datalen + fragheaderlen;
+<<<<<<< HEAD
+=======
 =======
 
 			if (datalen > (cork->length <= mtu && !(cork->flags & IPCORK_ALLFRAG) ? mtu : maxfraglen) - fragheaderlen)
 				datalen = maxfraglen - fragheaderlen - rt->dst.trailer_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((flags & MSG_MORE) &&
 			    !(rt->dst.dev->features&NETIF_F_SG))
 				alloclen = mtu;
@@ -1645,6 +1816,9 @@ alloc_new_skb:
 				alloclen = datalen + fragheaderlen;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			alloclen += dst_exthdrlen;
 
 			/*
@@ -1654,6 +1828,8 @@ alloc_new_skb:
 			 */
 			if (datalen == length + fraggap)
 				alloclen += rt->dst.trailer_len;
+<<<<<<< HEAD
+=======
 =======
 			if (datalen != length + fraggap) {
 				/*
@@ -1666,6 +1842,7 @@ alloc_new_skb:
 			alloclen += rt->dst.trailer_len;
 			fraglen = datalen + fragheaderlen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/*
 			 * We just reserve space for fragment header.
@@ -1706,9 +1883,15 @@ alloc_new_skb:
 			skb_reserve(skb, hh_len + sizeof(struct frag_hdr) +
 				    dst_exthdrlen);
 =======
+<<<<<<< HEAD
+			/* reserve for fragmentation and ipsec header */
+			skb_reserve(skb, hh_len + sizeof(struct frag_hdr) +
+				    dst_exthdrlen);
+=======
 			/* reserve for fragmentation */
 			skb_reserve(skb, hh_len+sizeof(struct frag_hdr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (sk->sk_type == SOCK_DGRAM)
 				skb_shinfo(skb)->tx_flags = tx_flags;
@@ -1734,7 +1917,11 @@ alloc_new_skb:
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (copy < 0) {
 				err = -EINVAL;
 				kfree_skb(skb);
@@ -1752,7 +1939,11 @@ alloc_new_skb:
 <<<<<<< HEAD
 			dst_exthdrlen = 0;
 =======
+<<<<<<< HEAD
+			dst_exthdrlen = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			csummode = CHECKSUM_NONE;
 
 			/*
@@ -1788,8 +1979,12 @@ alloc_new_skb:
 <<<<<<< HEAD
 				if (page != skb_frag_page(frag)) {
 =======
+<<<<<<< HEAD
+				if (page != skb_frag_page(frag)) {
+=======
 				if (page != frag->page) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					if (i == MAX_SKB_FRAGS) {
 						err = -EMSGSIZE;
 						goto error;
@@ -1798,9 +1993,14 @@ alloc_new_skb:
 					skb_fill_page_desc(skb, i, page, sk->sk_sndmsg_off, 0);
 					skb_frag_ref(skb, i);
 =======
+<<<<<<< HEAD
+					skb_fill_page_desc(skb, i, page, sk->sk_sndmsg_off, 0);
+					skb_frag_ref(skb, i);
+=======
 					get_page(page);
 					skb_fill_page_desc(skb, i, page, sk->sk_sndmsg_off, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					frag = &skb_shinfo(skb)->frags[i];
 				}
 			} else if(i < MAX_SKB_FRAGS) {
@@ -1825,8 +2025,14 @@ alloc_new_skb:
 				    skb_frag_address(frag) + skb_frag_size(frag),
 				    offset, copy, skb->len, skb) < 0) {
 =======
+<<<<<<< HEAD
+			if (getfrag(from,
+				    skb_frag_address(frag) + skb_frag_size(frag),
+				    offset, copy, skb->len, skb) < 0) {
+=======
 			if (getfrag(from, page_address(frag->page)+frag->page_offset+frag->size, offset, copy, skb->len, skb) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				err = -EFAULT;
 				goto error;
 			}
@@ -1834,8 +2040,12 @@ alloc_new_skb:
 <<<<<<< HEAD
 			skb_frag_size_add(frag, copy);
 =======
+<<<<<<< HEAD
+			skb_frag_size_add(frag, copy);
+=======
 			frag->size += copy;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			skb->len += copy;
 			skb->data_len += copy;
 			skb->truesize += copy;
@@ -1910,8 +2120,12 @@ int ip6_push_pending_frames(struct sock *sk)
 <<<<<<< HEAD
 	*final_dst = fl6->daddr;
 =======
+<<<<<<< HEAD
+	*final_dst = fl6->daddr;
+=======
 	ipv6_addr_copy(final_dst, &fl6->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__skb_pull(skb, skb_network_header_len(skb));
 	if (opt && opt->opt_flen)
 		ipv6_push_frag_opts(skb, opt, &proto);
@@ -1931,9 +2145,14 @@ int ip6_push_pending_frames(struct sock *sk)
 	hdr->saddr = fl6->saddr;
 	hdr->daddr = *final_dst;
 =======
+<<<<<<< HEAD
+	hdr->saddr = fl6->saddr;
+	hdr->daddr = *final_dst;
+=======
 	ipv6_addr_copy(&hdr->saddr, &fl6->saddr);
 	ipv6_addr_copy(&hdr->daddr, final_dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb->priority = sk->sk_priority;
 	skb->mark = sk->sk_mark;

@@ -59,6 +59,24 @@ void hold_module_trace_bprintk_format(const char **start, const char **end)
 			continue;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fmt = NULL;
+		tb_fmt = kmalloc(sizeof(*tb_fmt), GFP_KERNEL);
+		if (tb_fmt) {
+			fmt = kmalloc(strlen(*iter) + 1, GFP_KERNEL);
+			if (fmt) {
+				list_add_tail(&tb_fmt->list, &trace_bprintk_fmt_list);
+				strcpy(fmt, *iter);
+				tb_fmt->fmt = fmt;
+			} else
+				kfree(tb_fmt);
+		}
+		*iter = fmt;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tb_fmt = kmalloc(sizeof(*tb_fmt), GFP_KERNEL);
 		if (tb_fmt)
 			fmt = kmalloc(strlen(*iter) + 1, GFP_KERNEL);
@@ -71,6 +89,10 @@ void hold_module_trace_bprintk_format(const char **start, const char **end)
 			kfree(tb_fmt);
 			*iter = NULL;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	mutex_unlock(&btrace_mutex);
 }

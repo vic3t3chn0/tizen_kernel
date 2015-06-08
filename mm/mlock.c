@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/rmap.h>
 #include <linux/mmzone.h>
 #include <linux/hugetlb.h>
@@ -115,6 +119,9 @@ void munlock_vma_page(struct page *page)
 		dec_zone_page_state(page, NR_MLOCK);
 		if (!isolate_lru_page(page)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			int ret = SWAP_AGAIN;
 
 			/*
@@ -124,9 +131,12 @@ void munlock_vma_page(struct page *page)
 			 */
 			if (page_mapcount(page) > 1)
 				ret = try_to_munlock(page);
+<<<<<<< HEAD
+=======
 =======
 			int ret = try_to_munlock(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * did try_to_unlock() succeed or punt?
 			 */
@@ -242,8 +252,14 @@ long mlock_vma_pages_range(struct vm_area_struct *vma,
 			((use_user_accessible_timers() &&
 				(vma == get_user_timers_vma(current->mm)))))) {
 =======
+<<<<<<< HEAD
+			vma == get_gate_vma(current->mm) ||
+			((use_user_accessible_timers() &&
+				(vma == get_user_timers_vma(current->mm)))))) {
+=======
 			vma == get_gate_vma(current->mm))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		__mlock_vma_pages_range(vma, start, end, NULL);
 
@@ -343,8 +359,14 @@ static int mlock_fixup(struct vm_area_struct *vma, struct vm_area_struct **prev,
 	    ((use_user_accessible_timers()) &&
 		(vma == get_user_timers_vma(current->mm))))
 =======
+<<<<<<< HEAD
+	    is_vm_hugetlb_page(vma) || vma == get_gate_vma(current->mm) ||
+	    ((use_user_accessible_timers()) &&
+		(vma == get_user_timers_vma(current->mm))))
+=======
 	    is_vm_hugetlb_page(vma) || vma == get_gate_vma(current->mm))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;	/* don't set VM_LOCKED,  don't count */
 
 	pgoff = vma->vm_pgoff + ((start - vma->vm_start) >> PAGE_SHIFT);
@@ -406,17 +428,23 @@ static int do_mlock(unsigned long start, size_t len, int on)
 	if (end == start)
 		return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vma = find_vma(current->mm, start);
 	if (!vma || vma->vm_start > start)
 		return -ENOMEM;
 
 	prev = vma->vm_prev;
+<<<<<<< HEAD
+=======
 =======
 	vma = find_vma_prev(current->mm, start, &prev);
 	if (!vma || vma->vm_start > start)
 		return -ENOMEM;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (start > vma->vm_start)
 		prev = vma;
 
@@ -589,8 +617,13 @@ SYSCALL_DEFINE1(mlockall, int, flags)
 	if (flags & MCL_CURRENT)
 		lru_add_drain_all();	/* flush pagevec */
 =======
+<<<<<<< HEAD
+	if (flags & MCL_CURRENT)
+		lru_add_drain_all();	/* flush pagevec */
+=======
 	lru_add_drain_all();	/* flush pagevec */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	down_write(&current->mm->mmap_sem);
 

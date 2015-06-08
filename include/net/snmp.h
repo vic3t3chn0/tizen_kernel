@@ -70,8 +70,12 @@ struct icmpmsg_mib {
 <<<<<<< HEAD
 	atomic_long_t	mibs[ICMPMSG_MIB_MAX];
 =======
+<<<<<<< HEAD
+	atomic_long_t	mibs[ICMPMSG_MIB_MAX];
+=======
 	unsigned long	mibs[ICMPMSG_MIB_MAX];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ICMP6 (IPv6-ICMP) */
@@ -91,8 +95,12 @@ struct icmpv6msg_mib {
 <<<<<<< HEAD
 	atomic_long_t	mibs[ICMP6MSG_MIB_MAX];
 =======
+<<<<<<< HEAD
+	atomic_long_t	mibs[ICMP6MSG_MIB_MAX];
+=======
 	unsigned long	mibs[ICMP6MSG_MIB_MAX];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 /* per device counters, (shared on all cpus) */
 struct icmpv6msg_mib_device {
@@ -125,6 +133,9 @@ struct linux_xfrm_mib {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SNMP_ARRAY_SZ 1
 
 #define DEFINE_SNMP_STAT(type, name)	\
@@ -157,6 +168,8 @@ struct linux_xfrm_mib {
 
 #define SNMP_ADD_STATS(mib, field, addend)	\
 			this_cpu_add(mib[0]->mibs[field], addend)
+<<<<<<< HEAD
+=======
 =======
 /* 
  * FIXME: On x86 and some other CPUs the split into user and softirq parts
@@ -191,6 +204,7 @@ struct linux_xfrm_mib {
 #define SNMP_ADD_STATS(mib, field, addend)	\
 			this_cpu_add(mib[!in_softirq()]->mibs[field], addend)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Use "__typeof__(*mib[0]) *ptr" instead of "__typeof__(mib[0]) ptr"
  * to make @ptr a non-percpu pointer.
@@ -198,6 +212,9 @@ struct linux_xfrm_mib {
 #define SNMP_UPD_PO_STATS(mib, basefield, addend)	\
 	do { \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		this_cpu_inc(mib[0]->mibs[basefield##PKTS]);		\
 		this_cpu_add(mib[0]->mibs[basefield##OCTETS], addend);	\
 	} while (0)
@@ -205,6 +222,8 @@ struct linux_xfrm_mib {
 	do { \
 		__this_cpu_inc(mib[0]->mibs[basefield##PKTS]);		\
 		__this_cpu_add(mib[0]->mibs[basefield##OCTETS], addend);	\
+<<<<<<< HEAD
+=======
 =======
 		__typeof__(*mib[0]) *ptr; \
 		preempt_disable(); \
@@ -220,6 +239,7 @@ struct linux_xfrm_mib {
 		ptr->mibs[basefield##PKTS]++; \
 		ptr->mibs[basefield##OCTETS] += addend;\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (0)
 
 
@@ -233,6 +253,9 @@ struct linux_xfrm_mib {
 		u64_stats_update_end(&ptr->syncp);			\
 	} while (0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SNMP_ADD_STATS64_USER(mib, field, addend) 			\
 	do {								\
@@ -251,6 +274,8 @@ struct linux_xfrm_mib {
 	do {								\
 		__typeof__(*mib[0]) *ptr;				\
 		ptr = __this_cpu_ptr((mib)[0]);				\
+<<<<<<< HEAD
+=======
 =======
 #define SNMP_ADD_STATS64_USER(mib, field, addend) 			\
 	do {								\
@@ -281,17 +306,23 @@ struct linux_xfrm_mib {
 		preempt_disable();					\
 		ptr = __this_cpu_ptr((mib)[!in_softirq()]);		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u64_stats_update_begin(&ptr->syncp);			\
 		ptr->mibs[basefield##PKTS]++;				\
 		ptr->mibs[basefield##OCTETS] += addend;			\
 		u64_stats_update_end(&ptr->syncp);			\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (0)
 #define SNMP_UPD_PO_STATS64(mib, basefield, addend)			\
 	do {								\
 		local_bh_disable();					\
 		SNMP_UPD_PO_STATS64_BH(mib, basefield, addend);		\
 		local_bh_enable();					\
+<<<<<<< HEAD
+=======
 =======
 		preempt_enable();					\
 	} while (0)
@@ -304,6 +335,7 @@ struct linux_xfrm_mib {
 		ptr->mibs[basefield##OCTETS] += addend;			\
 		u64_stats_update_end(&ptr->syncp);			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (0)
 #else
 #define SNMP_INC_STATS64_BH(mib, field)		SNMP_INC_STATS_BH(mib, field)

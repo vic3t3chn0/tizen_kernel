@@ -424,8 +424,12 @@ void ext2_init_block_alloc_info(struct inode *inode)
 <<<<<<< HEAD
 	struct ext2_block_alloc_info *block_i;
 =======
+<<<<<<< HEAD
+	struct ext2_block_alloc_info *block_i;
+=======
 	struct ext2_block_alloc_info *block_i = ei->i_block_alloc_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct super_block *sb = inode->i_sb;
 
 	block_i = kmalloc(sizeof(*block_i), GFP_NOFS);

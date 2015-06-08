@@ -61,8 +61,12 @@ int btrfs_del_orphan_item(struct btrfs_trans_handle *trans,
 <<<<<<< HEAD
 	if (ret) { /* JDM: Really? */
 =======
+<<<<<<< HEAD
+	if (ret) { /* JDM: Really? */
+=======
 	if (ret) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -ENOENT;
 		goto out;
 	}

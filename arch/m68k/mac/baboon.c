@@ -12,6 +12,10 @@
 #include <linux/irq.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+
+=======
 #include <linux/mm.h>
 #include <linux/delay.h>
 #include <linux/init.h>
@@ -19,12 +23,17 @@
 #include <asm/traps.h>
 #include <asm/bootinfo.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/macintosh.h>
 #include <asm/macints.h>
 #include <asm/mac_baboon.h>
 
 /* #define DEBUG_IRQS */
 
+<<<<<<< HEAD
+int baboon_present;
+static volatile struct baboon *baboon;
+=======
 <<<<<<< HEAD
 int baboon_present;
 static volatile struct baboon *baboon;
@@ -36,6 +45,7 @@ int baboon_present;
 static volatile struct baboon *baboon;
 static unsigned char baboon_disabled;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if 0
 extern int macide_ack_intr(struct ata_channel *);
@@ -66,8 +76,12 @@ void __init baboon_init(void)
 <<<<<<< HEAD
 static void baboon_irq(unsigned int irq, struct irq_desc *desc)
 =======
+<<<<<<< HEAD
+static void baboon_irq(unsigned int irq, struct irq_desc *desc)
+=======
 static irqreturn_t baboon_irq(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq_bit, irq_num;
 	unsigned char events;
@@ -83,9 +97,15 @@ static irqreturn_t baboon_irq(int irq, void *dev_id)
 	if (!events)
 		return;
 =======
+<<<<<<< HEAD
+	events = baboon->mb_ifr & 0x07;
+	if (!events)
+		return;
+=======
 	if (!(events = baboon->mb_ifr & 0x07))
 		return IRQ_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irq_num = IRQ_BABOON_0;
 	irq_bit = 1;
@@ -95,8 +115,12 @@ static irqreturn_t baboon_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 			generic_handle_irq(irq_num);
 =======
+<<<<<<< HEAD
+			generic_handle_irq(irq_num);
+=======
 			m68k_handle_int(irq_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		irq_bit <<= 1;
 		irq_num++;
@@ -108,8 +132,11 @@ static irqreturn_t baboon_irq(int irq, void *dev_id)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -119,6 +146,9 @@ static irqreturn_t baboon_irq(int irq, void *dev_id)
 void __init baboon_register_interrupts(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_set_chained_handler(IRQ_NUBUS_C, baboon_irq);
 }
 
@@ -129,6 +159,8 @@ void __init baboon_register_interrupts(void)
  * either figure out how to mask them individually or else implement the
  * same workaround that's used for NuBus slots (see nubus_disabled and
  * via_nubus_irq_shutdown).
+<<<<<<< HEAD
+=======
 =======
 	baboon_disabled = 0;
 	if (request_irq(IRQ_NUBUS_C, baboon_irq, 0, "baboon", (void *)baboon))
@@ -139,15 +171,19 @@ void __init baboon_register_interrupts(void)
  * The means for masking individual baboon interrupts remains a mystery, so
  * enable the umbrella interrupt only when no baboon interrupt is disabled.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 void baboon_irq_enable(int irq)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int irq_idx = IRQ_IDX(irq);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG_IRQUSE
 	printk("baboon_irq_enable(%d)\n", irq);
 #endif
@@ -155,23 +191,33 @@ void baboon_irq_enable(int irq)
 <<<<<<< HEAD
 	mac_irq_enable(irq_get_irq_data(IRQ_NUBUS_C));
 =======
+<<<<<<< HEAD
+	mac_irq_enable(irq_get_irq_data(IRQ_NUBUS_C));
+=======
 	baboon_disabled &= ~(1 << irq_idx);
 	if (!baboon_disabled)
 		mac_enable_irq(IRQ_NUBUS_C);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void baboon_irq_disable(int irq)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int irq_idx = IRQ_IDX(irq);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG_IRQUSE
 	printk("baboon_irq_disable(%d)\n", irq);
 #endif
 
+<<<<<<< HEAD
+	mac_irq_disable(irq_get_irq_data(IRQ_NUBUS_C));
+=======
 <<<<<<< HEAD
 	mac_irq_disable(irq_get_irq_data(IRQ_NUBUS_C));
 =======
@@ -193,4 +239,5 @@ int baboon_irq_pending(int irq)
 
 	return baboon->mb_ifr & (1 << irq_idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -53,8 +53,18 @@
 #include <linux/moduleparam.h>
 #include <asm/idals.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "ctcm_main.h"
+#include "ctcm_mpc.h"
+=======
 #include "ctcm_mpc.h"
 #include "ctcm_main.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "ctcm_mpc.h"
+#include "ctcm_main.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ctcm_fsms.h"
 
 static const struct xid2 init_xid = {
@@ -132,7 +142,15 @@ void ctcmpc_dumpit(char *buf, int len)
 	__u32	ct, sw, rm, dup;
 	char	*ptr, *rptr;
 	char	tbuf[82], tdup[82];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	#ifdef CONFIG_64BIT
+=======
 	#if (UTS_MACHINE == s390x)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	#if (UTS_MACHINE == s390x)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char	addr[22];
 	#else
 	char	addr[12];
@@ -149,8 +167,18 @@ void ctcmpc_dumpit(char *buf, int len)
 
 	for (ct = 0; ct < len; ct++, ptr++, rptr++) {
 		if (sw == 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			#ifdef CONFIG_64BIT
+			sprintf(addr, "%16.16llx", (__u64)rptr);
+=======
 			#if (UTS_MACHINE == s390x)
 			sprintf(addr, "%16.16lx", (__u64)rptr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			#if (UTS_MACHINE == s390x)
+			sprintf(addr, "%16.16lx", (__u64)rptr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			#else
 			sprintf(addr, "%8.8X", (__u32)rptr);
 			#endif
@@ -164,8 +192,18 @@ void ctcmpc_dumpit(char *buf, int len)
 		if (sw == 8)
 			strcat(bhex, "	");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		#if CONFIG_64BIT
+		sprintf(tbuf, "%2.2llX", (__u64)*ptr);
+=======
 		#if (UTS_MACHINE == s390x)
 		sprintf(tbuf, "%2.2lX", (__u64)*ptr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		#if (UTS_MACHINE == s390x)
+		sprintf(tbuf, "%2.2lX", (__u64)*ptr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		#else
 		sprintf(tbuf, "%2.2X", (__u32)*ptr);
 		#endif

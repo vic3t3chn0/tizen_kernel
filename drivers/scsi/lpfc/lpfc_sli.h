@@ -69,6 +69,13 @@ struct lpfc_iocbq {
 #define LPFC_USE_FCPWQIDX	0x80    /* Submit to specified FCPWQ index */
 #define DSS_SECURITY_OP		0x100	/* security IO */
 #define LPFC_IO_ON_Q		0x200	/* The IO is still on the TXCMPLQ */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define LPFC_IO_DIF		0x400	/* T10 DIF IO */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define LPFC_FIP_ELS_ID_MASK	0xc000	/* ELS_ID range 0-3, non-shifted mask */
 #define LPFC_FIP_ELS_ID_SHIFT	14
@@ -293,6 +300,19 @@ struct lpfc_sli {
 	struct lpfc_lnk_stat lnk_stat_offsets;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Timeout for normal outstanding mbox command (Seconds) */
+#define LPFC_MBOX_TMO				30
+/* Timeout for non-flash-based outstanding sli_config mbox command (Seconds) */
+#define LPFC_MBOX_SLI4_CONFIG_TMO		60
+/* Timeout for flash-based outstanding sli_config mbox command (Seconds) */
+#define LPFC_MBOX_SLI4_CONFIG_EXTENDED_TMO	300
+/* Timeout for other flash-based outstanding mbox command (Seconds) */
+#define LPFC_MBOX_TMO_FLASH_CMD			300
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define LPFC_MBOX_TMO           30	/* Sec tmo for outstanding mbox
 					   command */
 #define LPFC_MBOX_SLI4_CONFIG_TMO 60	/* Sec tmo for outstanding mbox
@@ -303,3 +323,7 @@ struct lpfc_sli {
 					 * multiple flash erases that can be
 					 * spawned.
 					 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

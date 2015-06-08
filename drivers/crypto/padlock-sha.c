@@ -22,6 +22,13 @@
 #include <linux/interrupt.h>
 #include <linux/kernel.h>
 #include <linux/scatterlist.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/cpu_device_id.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/i387.h>
 
 struct padlock_sha_desc {
@@ -526,6 +533,18 @@ static struct shash_alg sha256_alg_nano = {
 	}
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct x86_cpu_id padlock_sha_ids[] = {
+	X86_FEATURE_MATCH(X86_FEATURE_PHE),
+	{}
+};
+MODULE_DEVICE_TABLE(x86cpu, padlock_sha_ids);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init padlock_init(void)
 {
 	int rc = -ENODEV;
@@ -533,6 +552,13 @@ static int __init padlock_init(void)
 	struct shash_alg *sha1;
 	struct shash_alg *sha256;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!x86_match_cpu(padlock_sha_ids) || !cpu_has_phe_enabled)
+		return -ENODEV;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cpu_has_phe) {
 		printk(KERN_NOTICE PFX "VIA PadLock Hash Engine not detected.\n");
 		return -ENODEV;
@@ -542,6 +568,10 @@ static int __init padlock_init(void)
 		printk(KERN_NOTICE PFX "VIA PadLock detected, but not enabled. Hmm, strange...\n");
 		return -ENODEV;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Register the newly added algorithm module if on *
 	* VIA Nano processor, or else just do as before */

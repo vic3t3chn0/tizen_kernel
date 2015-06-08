@@ -13,8 +13,12 @@
 <<<<<<< HEAD
 #include <video/vga.h>
 =======
+<<<<<<< HEAD
+#include <video/vga.h>
+=======
 #include <linux/mbus.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/pci.h>
 #include <asm/mach/arch.h>
 #include <asm/setup.h>
@@ -25,7 +29,11 @@
 <<<<<<< HEAD
 #include <plat/addr-map.h>
 =======
+<<<<<<< HEAD
+#include <plat/addr-map.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 
 struct pcie_port {
@@ -60,8 +68,12 @@ static int __init dove_pcie_setup(int nr, struct pci_sys_data *sys)
 <<<<<<< HEAD
 	orion_pcie_setup(pp->base);
 =======
+<<<<<<< HEAD
+	orion_pcie_setup(pp->base);
+=======
 	orion_pcie_setup(pp->base, &dove_mbus_dram_info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * IORESOURCE_IO
@@ -83,8 +95,12 @@ static int __init dove_pcie_setup(int nr, struct pci_sys_data *sys)
 <<<<<<< HEAD
 	pci_add_resource_offset(&sys->resources, &pp->res[0], sys->io_offset);
 =======
+<<<<<<< HEAD
+	pci_add_resource_offset(&sys->resources, &pp->res[0], sys->io_offset);
+=======
 	sys->resource[0] = &pp->res[0];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * IORESOURCE_MEM
@@ -106,10 +122,14 @@ static int __init dove_pcie_setup(int nr, struct pci_sys_data *sys)
 <<<<<<< HEAD
 	pci_add_resource_offset(&sys->resources, &pp->res[1], sys->mem_offset);
 =======
+<<<<<<< HEAD
+	pci_add_resource_offset(&sys->resources, &pp->res[1], sys->mem_offset);
+=======
 	sys->resource[1] = &pp->res[1];
 
 	sys->resource[2] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
@@ -207,8 +227,13 @@ dove_pcie_scan_bus(int nr, struct pci_sys_data *sys)
 		bus = pci_scan_root_bus(NULL, sys->busnr, &pcie_ops, sys,
 					&sys->resources);
 =======
+<<<<<<< HEAD
+		bus = pci_scan_root_bus(NULL, sys->busnr, &pcie_ops, sys,
+					&sys->resources);
+=======
 		bus = pci_scan_bus(sys->busnr, &pcie_ops, sys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		bus = NULL;
 		BUG();
@@ -220,8 +245,12 @@ dove_pcie_scan_bus(int nr, struct pci_sys_data *sys)
 <<<<<<< HEAD
 static int __init dove_pcie_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+static int __init dove_pcie_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 static int __init dove_pcie_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pcie_port *pp = bus_to_port(dev->bus->number);
 
@@ -261,7 +290,12 @@ void __init dove_pcie_init(int init_port0, int init_port1)
 	vga_base = DOVE_PCIE0_MEM_PHYS_BASE;
 
 =======
+<<<<<<< HEAD
+	vga_base = DOVE_PCIE0_MEM_PHYS_BASE;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (init_port0)
 		add_pcie_port(0, DOVE_PCIE0_VIRT_BASE);
 

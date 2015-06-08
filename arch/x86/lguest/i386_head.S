@@ -7,6 +7,9 @@
 
 /*G:020
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
  * Our story starts with the bzImage: booting starts at startup_32 in
  * arch/x86/boot/compressed/head_32.S.  This merely uncompresses the real
@@ -23,6 +26,8 @@
  *
  * WARNING: be very careful here!  We're running at addresses equal to physical
  * addresses (around 0), not above PAGE_OFFSET as most code expects
+<<<<<<< HEAD
+=======
 =======
  * Our story starts with the kernel booting into startup_32 in
  * arch/x86/kernel/head_32.S.  It expects a boot header, which is created by
@@ -37,6 +42,7 @@
  * WARNING: be very careful here!  We're running at addresses equal to physical
  * addesses (around 0), not above PAGE_OFFSET as most code expectes
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * (eg. 0xC0000000).  Jumps are relative, so they're OK, but we can't touch any
  * data without remembering to subtract __PAGE_OFFSET!
  *
@@ -50,22 +56,33 @@ ENTRY(lguest_entry)
 	 * We make the "initialization" hypercall now to tell the Host where
 	 * our lguest_data struct is.
 =======
+<<<<<<< HEAD
+	 * We make the "initialization" hypercall now to tell the Host where
+	 * our lguest_data struct is.
+=======
 	 * We make the "initialization" hypercall now to tell the Host about
 	 * us, and also find out where it put our page tables.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	movl $LHCALL_LGUEST_INIT, %eax
 	movl $lguest_data - __PAGE_OFFSET, %ebx
 	int $LGUEST_TRAP_ENTRY
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Now turn our pagetables on; setup by arch/x86/kernel/head_32.S. */
 	movl $LHCALL_NEW_PGTABLE, %eax
 	movl $(initial_page_table - __PAGE_OFFSET), %ebx
 	int $LGUEST_TRAP_ENTRY
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set up the initial stack so we can run C code. */
 	movl $(init_thread_union+THREAD_SIZE),%esp
 
@@ -132,6 +149,10 @@ send_interrupts:
 	/* This is the actual hypercall trap. */
 	int  $LGUEST_TRAP_ENTRY
 =======
+<<<<<<< HEAD
+	/* This is the actual hypercall trap. */
+	int  $LGUEST_TRAP_ENTRY
+=======
 	/*
 	 * This is a vmcall instruction (same thing that KVM uses).  Older
 	 * assembler versions might not know the "vmcall" instruction, so we
@@ -139,6 +160,7 @@ send_interrupts:
 	 */
 	.byte 0x0f,0x01,0xc1 /* KVM_HYPERCALL */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Put eax back the way we found it. */
 	popl %eax
 	ret

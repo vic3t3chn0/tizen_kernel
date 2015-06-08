@@ -6,6 +6,8 @@
  * for more details.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *
  * 07/03/96: Timer initialization, and thus mach_sched_init(),
  *           removed from request_irq() and moved to init_time().
@@ -26,6 +28,7 @@
  *           you're doing, since it might handle different other irq sources
  *           which must be served                               /Roman Zippel
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/module.h>
@@ -39,8 +42,11 @@
 #include <asm/setup.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <asm/traps.h>
 #include <asm/page.h>
@@ -54,6 +60,9 @@
 
 extern u32 auto_irqhandler_fixup[];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern u16 user_irqvec_fixup[];
 
 static int m68k_first_user_vec;
@@ -70,6 +79,8 @@ static struct irq_chip user_irq_chip = {
 	.irq_shutdown	= m68k_irq_shutdown,
 };
 
+<<<<<<< HEAD
+=======
 =======
 extern u32 user_irqhandler_fixup[];
 extern u16 user_irqvec_fixup[];
@@ -99,6 +110,7 @@ static struct irq_controller user_irq_controller = {
 static irq_node_t nodes[NUM_IRQ_NODES];
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * void init_IRQ(void)
  *
@@ -124,8 +136,12 @@ void __init init_IRQ(void)
 <<<<<<< HEAD
 		irq_set_chip_and_handler(i, &auto_irq_chip, handle_simple_irq);
 =======
+<<<<<<< HEAD
+		irq_set_chip_and_handler(i, &auto_irq_chip, handle_simple_irq);
+=======
 		irq_controller[i] = &auto_irq_controller;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mach_init_IRQ();
 }
@@ -138,8 +154,12 @@ void __init init_IRQ(void)
 <<<<<<< HEAD
  * standard do_IRQ(), it will be called with irq numbers in the range
 =======
+<<<<<<< HEAD
+ * standard do_IRQ(), it will be called with irq numbers in the range
+=======
  * standard __m68k_handle_int(), it will be called with irq numbers in the range
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * from IRQ_AUTO_1 - IRQ_AUTO_7.
  */
 void __init m68k_setup_auto_interrupt(void (*handler)(unsigned int, struct pt_regs *))
@@ -154,12 +174,17 @@ void __init m68k_setup_auto_interrupt(void (*handler)(unsigned int, struct pt_re
  * @vec: first user vector interrupt to handle
  * @cnt: number of active user vector interrupts
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * setup user vector interrupts, this includes activating the specified range
  * of interrupts, only then these interrupts can be requested (note: this is
  * different from auto vector interrupts).
  */
 void __init m68k_setup_user_interrupt(unsigned int vec, unsigned int cnt)
+<<<<<<< HEAD
+=======
 =======
  * @handler: called from user vector interrupts
  *
@@ -172,6 +197,7 @@ void __init m68k_setup_user_interrupt(unsigned int vec, unsigned int cnt)
 void __init m68k_setup_user_interrupt(unsigned int vec, unsigned int cnt,
 				      void (*handler)(unsigned int, struct pt_regs *))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -182,25 +208,36 @@ void __init m68k_setup_user_interrupt(unsigned int vec, unsigned int cnt,
 		irq_set_chip(IRQ_USER + i, &user_irq_chip);
 	*user_irqvec_fixup = vec - IRQ_USER;
 =======
+<<<<<<< HEAD
+		irq_set_chip(IRQ_USER + i, &user_irq_chip);
+	*user_irqvec_fixup = vec - IRQ_USER;
+=======
 		irq_controller[IRQ_USER + i] = &user_irq_controller;
 	*user_irqvec_fixup = vec - IRQ_USER;
 	if (handler)
 		*user_irqhandler_fixup = (u32)handler;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flush_icache();
 }
 
 /**
  * m68k_setup_irq_controller
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @chip: irq chip which controls specified irq
  * @handle: flow handler which handles specified irq
  * @irq: first irq to be managed by the controller
  * @cnt: number of irqs to be managed by the controller
+<<<<<<< HEAD
+=======
 =======
  * @contr: irq controller which controls specified irq
  * @irq: first irq to be managed by the controller
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Change the controller for the specified range of irq, which will be used to
  * manage these irq. auto/user irq already have a default controller, which can
@@ -211,13 +248,21 @@ void __init m68k_setup_user_interrupt(unsigned int vec, unsigned int cnt,
 void m68k_setup_irq_controller(struct irq_chip *chip,
 			       irq_flow_handler_t handle, unsigned int irq,
 =======
+<<<<<<< HEAD
+void m68k_setup_irq_controller(struct irq_chip *chip,
+			       irq_flow_handler_t handle, unsigned int irq,
+=======
 void m68k_setup_irq_controller(struct irq_controller *contr, unsigned int irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       unsigned int cnt)
 {
 	int i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < cnt; i++) {
 		irq_set_chip(irq + i, chip);
 		if (handle)
@@ -243,6 +288,8 @@ void m68k_irq_shutdown(struct irq_data *data)
 {
 	unsigned int irq = data->irq;
 
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < cnt; i++)
 		irq_controller[irq + i] = contr;
@@ -428,6 +475,7 @@ int m68k_irq_startup(unsigned int irq)
 void m68k_irq_shutdown(unsigned int irq)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (irq <= IRQ_AUTO_7)
 		vectors[VEC_SPUR + irq] = bad_inthandler;
 	else
@@ -435,6 +483,8 @@ void m68k_irq_shutdown(unsigned int irq)
 }
 
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -465,6 +515,7 @@ int probe_irq_off (unsigned long irqs)
 EXPORT_SYMBOL(probe_irq_off);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned int irq_canonicalize(unsigned int irq)
 {
 #ifdef CONFIG_Q40
@@ -477,12 +528,17 @@ unsigned int irq_canonicalize(unsigned int irq)
 EXPORT_SYMBOL(irq_canonicalize);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 asmlinkage void handle_badint(struct pt_regs *regs)
 {
 	atomic_inc(&irq_err_count);
 	pr_warn("unexpected interrupt from %u\n", regs->vector);
 }
+<<<<<<< HEAD
+=======
 =======
 asmlinkage void m68k_handle_int(unsigned int irq)
 {
@@ -534,3 +590,4 @@ void init_irq_proc(void)
 }
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

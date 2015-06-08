@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <asm/hardware/vic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/vic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
@@ -38,8 +42,11 @@
 #include <mach/regs-srom.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/s3c6410.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/adc.h>
 #include <plat/cpu.h>
@@ -56,7 +63,12 @@
 #include "common.h"
 
 =======
+<<<<<<< HEAD
+#include "common.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UCON S3C2410_UCON_DEFAULT
 #define ULCON (S3C2410_LCON_CS8 | S3C2410_LCON_PNONE | S3C2410_LCON_STOPB)
 #define UFCON (S3C2410_UFCON_RXTRIG8 | S3C2410_UFCON_FIFOMODE)
@@ -219,6 +231,8 @@ static struct platform_device mini6410_lcd_powerdev = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct s3c2410_ts_mach_info s3c_ts_platform __initdata = {
 	.delay			= 10000,
 	.presc			= 49,
@@ -226,6 +240,7 @@ static struct s3c2410_ts_mach_info s3c_ts_platform __initdata = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *mini6410_devices[] __initdata = {
 	&mini6410_device_eth,
 	&s3c_device_hsmmc0,
@@ -337,8 +352,12 @@ static void __init mini6410_machine_init(void)
 <<<<<<< HEAD
 	s3c24xx_ts_set_platdata(NULL);
 =======
+<<<<<<< HEAD
+	s3c24xx_ts_set_platdata(NULL);
+=======
 	s3c24xx_ts_set_platdata(&s3c_ts_platform);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* configure nCS1 width to 16 bits */
 
@@ -369,6 +388,9 @@ static void __init mini6410_machine_init(void)
 MACHINE_START(MINI6410, "MINI6410")
 	/* Maintainer: Darius Augulis <augulis.darius@gmail.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_irq	= s3c6410_init_irq,
 	.handle_irq	= vic_handle_irq,
@@ -376,6 +398,8 @@ MACHINE_START(MINI6410, "MINI6410")
 	.init_machine	= mini6410_machine_init,
 	.timer		= &s3c24xx_timer,
 	.restart	= s3c64xx_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= S3C64XX_PA_SDRAM + 0x100,
 	.init_irq	= s3c6410_init_irq,
@@ -383,4 +407,5 @@ MACHINE_START(MINI6410, "MINI6410")
 	.init_machine	= mini6410_machine_init,
 	.timer		= &s3c24xx_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

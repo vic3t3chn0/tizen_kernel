@@ -401,8 +401,12 @@ static void ip_nat_q931_expect(struct nf_conn *new,
 <<<<<<< HEAD
 	struct nf_nat_ipv4_range range;
 =======
+<<<<<<< HEAD
+	struct nf_nat_ipv4_range range;
+=======
 	struct nf_nat_range range;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (this->tuple.src.u3.ip != 0) {	/* Only accept calls from GK */
 		nf_nat_follow_master(new, this);
@@ -414,6 +418,9 @@ static void ip_nat_q931_expect(struct nf_conn *new,
 
 	/* Change src to where master sends to */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	range.flags = NF_NAT_RANGE_MAP_IPS;
 	range.min_ip = range.max_ip = new->tuplehash[!this->dir].tuple.src.u3.ip;
 	nf_nat_setup_info(new, &range, NF_NAT_MANIP_SRC);
@@ -424,6 +431,8 @@ static void ip_nat_q931_expect(struct nf_conn *new,
 	range.min_ip = range.max_ip =
 	    new->master->tuplehash[!this->dir].tuple.src.u3.ip;
 	nf_nat_setup_info(new, &range, NF_NAT_MANIP_DST);
+<<<<<<< HEAD
+=======
 =======
 	range.flags = IP_NAT_RANGE_MAP_IPS;
 	range.min_ip = range.max_ip = new->tuplehash[!this->dir].tuple.src.u3.ip;
@@ -436,6 +445,7 @@ static void ip_nat_q931_expect(struct nf_conn *new,
 	    new->master->tuplehash[!this->dir].tuple.src.u3.ip;
 	nf_nat_setup_info(new, &range, IP_NAT_MANIP_DST);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /****************************************************************************/
@@ -516,14 +526,21 @@ static void ip_nat_callforwarding_expect(struct nf_conn *new,
 <<<<<<< HEAD
 	struct nf_nat_ipv4_range range;
 =======
+<<<<<<< HEAD
+	struct nf_nat_ipv4_range range;
+=======
 	struct nf_nat_range range;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* This must be a fresh one. */
 	BUG_ON(new->status & IPS_NAT_DONE_MASK);
 
 	/* Change src to where master sends to */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	range.flags = NF_NAT_RANGE_MAP_IPS;
 	range.min_ip = range.max_ip = new->tuplehash[!this->dir].tuple.src.u3.ip;
 	nf_nat_setup_info(new, &range, NF_NAT_MANIP_SRC);
@@ -533,6 +550,8 @@ static void ip_nat_callforwarding_expect(struct nf_conn *new,
 	range.min = range.max = this->saved_proto;
 	range.min_ip = range.max_ip = this->saved_ip;
 	nf_nat_setup_info(new, &range, NF_NAT_MANIP_DST);
+<<<<<<< HEAD
+=======
 =======
 	range.flags = IP_NAT_RANGE_MAP_IPS;
 	range.min_ip = range.max_ip = new->tuplehash[!this->dir].tuple.src.u3.ip;
@@ -544,6 +563,7 @@ static void ip_nat_callforwarding_expect(struct nf_conn *new,
 	range.min_ip = range.max_ip = this->saved_ip;
 	nf_nat_setup_info(new, &range, IP_NAT_MANIP_DST);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /****************************************************************************/
@@ -602,6 +622,9 @@ static int nat_callforwarding(struct sk_buff *skb, struct nf_conn *ct,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct nf_ct_helper_expectfn q931_nat = {
 	.name		= "Q.931",
 	.expectfn	= ip_nat_q931_expect,
@@ -612,8 +635,11 @@ static struct nf_ct_helper_expectfn callforwarding_nat = {
 	.expectfn	= ip_nat_callforwarding_expect,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /****************************************************************************/
 static int __init init(void)
 {
@@ -628,6 +654,9 @@ static int __init init(void)
 	BUG_ON(nat_q931_hook != NULL);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RCU_INIT_POINTER(set_h245_addr_hook, set_h245_addr);
 	RCU_INIT_POINTER(set_h225_addr_hook, set_h225_addr);
 	RCU_INIT_POINTER(set_sig_addr_hook, set_sig_addr);
@@ -639,6 +668,8 @@ static int __init init(void)
 	RCU_INIT_POINTER(nat_q931_hook, nat_q931);
 	nf_ct_helper_expectfn_register(&q931_nat);
 	nf_ct_helper_expectfn_register(&callforwarding_nat);
+<<<<<<< HEAD
+=======
 =======
 	rcu_assign_pointer(set_h245_addr_hook, set_h245_addr);
 	rcu_assign_pointer(set_h225_addr_hook, set_h225_addr);
@@ -650,6 +681,7 @@ static int __init init(void)
 	rcu_assign_pointer(nat_callforwarding_hook, nat_callforwarding);
 	rcu_assign_pointer(nat_q931_hook, nat_q931);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -657,6 +689,9 @@ static int __init init(void)
 static void __exit fini(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RCU_INIT_POINTER(set_h245_addr_hook, NULL);
 	RCU_INIT_POINTER(set_h225_addr_hook, NULL);
 	RCU_INIT_POINTER(set_sig_addr_hook, NULL);
@@ -668,6 +703,8 @@ static void __exit fini(void)
 	RCU_INIT_POINTER(nat_q931_hook, NULL);
 	nf_ct_helper_expectfn_unregister(&q931_nat);
 	nf_ct_helper_expectfn_unregister(&callforwarding_nat);
+<<<<<<< HEAD
+=======
 =======
 	rcu_assign_pointer(set_h245_addr_hook, NULL);
 	rcu_assign_pointer(set_h225_addr_hook, NULL);
@@ -679,6 +716,7 @@ static void __exit fini(void)
 	rcu_assign_pointer(nat_callforwarding_hook, NULL);
 	rcu_assign_pointer(nat_q931_hook, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	synchronize_rcu();
 }
 

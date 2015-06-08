@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/init.h>
 #include <linux/smp.h>
@@ -31,8 +35,11 @@
 #include <asm/processor.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/apic.h>
 #include <asm/idle.h>
 #include <asm/mce.h>
@@ -76,6 +83,9 @@ static u32 lvtthmr_init __read_mostly;
 
 #ifdef CONFIG_SYSFS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define define_therm_throt_device_one_ro(_name)				\
 	static DEVICE_ATTR(_name, 0444,					\
 			   therm_throt_device_show_##_name,		\
@@ -86,6 +96,8 @@ static u32 lvtthmr_init __read_mostly;
 static ssize_t therm_throt_device_show_##event##_##name(		\
 			struct device *dev,				\
 			struct device_attribute *attr,			\
+<<<<<<< HEAD
+=======
 =======
 #define define_therm_throt_sysdev_one_ro(_name)				\
 	static SYSDEV_ATTR(_name, 0444,					\
@@ -98,6 +110,7 @@ static ssize_t therm_throt_sysdev_show_##event##_##name(		\
 			struct sys_device *dev,				\
 			struct sysdev_attribute *attr,			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			char *buf)					\
 {									\
 	unsigned int cpu = dev->id;					\
@@ -115,6 +128,9 @@ static ssize_t therm_throt_sysdev_show_##event##_##name(		\
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 define_therm_throt_device_show_func(core_throttle, count);
 define_therm_throt_device_one_ro(core_throttle_count);
 
@@ -129,6 +145,8 @@ define_therm_throt_device_one_ro(package_power_limit_count);
 
 static struct attribute *thermal_throttle_attrs[] = {
 	&dev_attr_core_throttle_count.attr,
+<<<<<<< HEAD
+=======
 =======
 define_therm_throt_sysdev_show_func(core_throttle, count);
 define_therm_throt_sysdev_one_ro(core_throttle_count);
@@ -145,6 +163,7 @@ define_therm_throt_sysdev_one_ro(package_power_limit_count);
 static struct attribute *thermal_throttle_attrs[] = {
 	&attr_core_throttle_count.attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
@@ -262,8 +281,12 @@ static int thresh_event_valid(int event)
 <<<<<<< HEAD
 static __cpuinit int thermal_throttle_add_dev(struct device *dev,
 =======
+<<<<<<< HEAD
+static __cpuinit int thermal_throttle_add_dev(struct device *dev,
+=======
 static __cpuinit int thermal_throttle_add_dev(struct sys_device *sys_dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				unsigned int cpu)
 {
 	int err;
@@ -272,13 +295,20 @@ static __cpuinit int thermal_throttle_add_dev(struct sys_device *sys_dev,
 <<<<<<< HEAD
 	err = sysfs_create_group(&dev->kobj, &thermal_attr_group);
 =======
+<<<<<<< HEAD
+	err = sysfs_create_group(&dev->kobj, &thermal_attr_group);
+=======
 	err = sysfs_create_group(&sys_dev->kobj, &thermal_attr_group);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 
 	if (cpu_has(c, X86_FEATURE_PLN))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = sysfs_add_file_to_group(&dev->kobj,
 					      &dev_attr_core_power_limit_count.attr,
 					      thermal_attr_group.name);
@@ -289,6 +319,8 @@ static __cpuinit int thermal_throttle_add_dev(struct sys_device *sys_dev,
 		if (cpu_has(c, X86_FEATURE_PLN))
 			err = sysfs_add_file_to_group(&dev->kobj,
 					&dev_attr_package_power_limit_count.attr,
+<<<<<<< HEAD
+=======
 =======
 		err = sysfs_add_file_to_group(&sys_dev->kobj,
 					      &attr_core_power_limit_count.attr,
@@ -301,6 +333,7 @@ static __cpuinit int thermal_throttle_add_dev(struct sys_device *sys_dev,
 			err = sysfs_add_file_to_group(&sys_dev->kobj,
 					&attr_package_power_limit_count.attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					thermal_attr_group.name);
 	}
 
@@ -312,10 +345,16 @@ static __cpuinit void thermal_throttle_remove_dev(struct device *dev)
 {
 	sysfs_remove_group(&dev->kobj, &thermal_attr_group);
 =======
+<<<<<<< HEAD
+static __cpuinit void thermal_throttle_remove_dev(struct device *dev)
+{
+	sysfs_remove_group(&dev->kobj, &thermal_attr_group);
+=======
 static __cpuinit void thermal_throttle_remove_dev(struct sys_device *sys_dev)
 {
 	sysfs_remove_group(&sys_dev->kobj, &thermal_attr_group);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Mutex protecting device creation against CPU hotplug: */
@@ -329,16 +368,22 @@ thermal_throttle_cpu_callback(struct notifier_block *nfb,
 {
 	unsigned int cpu = (unsigned long)hcpu;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev;
 	int err = 0;
 
 	dev = get_cpu_device(cpu);
+<<<<<<< HEAD
+=======
 =======
 	struct sys_device *sys_dev;
 	int err = 0;
 
 	sys_dev = get_cpu_sysdev(cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (action) {
 	case CPU_UP_PREPARE:
@@ -347,8 +392,12 @@ thermal_throttle_cpu_callback(struct notifier_block *nfb,
 <<<<<<< HEAD
 		err = thermal_throttle_add_dev(dev, cpu);
 =======
+<<<<<<< HEAD
+		err = thermal_throttle_add_dev(dev, cpu);
+=======
 		err = thermal_throttle_add_dev(sys_dev, cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&therm_cpu_lock);
 		WARN_ON(err);
 		break;
@@ -360,8 +409,12 @@ thermal_throttle_cpu_callback(struct notifier_block *nfb,
 <<<<<<< HEAD
 		thermal_throttle_remove_dev(dev);
 =======
+<<<<<<< HEAD
+		thermal_throttle_remove_dev(dev);
+=======
 		thermal_throttle_remove_dev(sys_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&therm_cpu_lock);
 		break;
 	}
@@ -391,8 +444,12 @@ static __init int thermal_throttle_init_device(void)
 <<<<<<< HEAD
 		err = thermal_throttle_add_dev(get_cpu_device(cpu), cpu);
 =======
+<<<<<<< HEAD
+		err = thermal_throttle_add_dev(get_cpu_device(cpu), cpu);
+=======
 		err = thermal_throttle_add_dev(get_cpu_sysdev(cpu), cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		WARN_ON(err);
 	}
 #ifdef CONFIG_HOTPLUG_CPU
@@ -468,9 +525,14 @@ asmlinkage void smp_thermal_interrupt(struct pt_regs *regs)
 	irq_enter();
 	exit_idle();
 =======
+<<<<<<< HEAD
+	irq_enter();
+	exit_idle();
+=======
 	exit_idle();
 	irq_enter();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inc_irq_stat(irq_thermal_count);
 	smp_thermal_vector();
 	irq_exit();

@@ -28,7 +28,15 @@
 #include <linux/platform_device.h>
 #include <linux/workqueue.h>
 #include <linux/i2c/twl.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/mfd/twl4030-audio.h>
+=======
 #include <linux/mfd/twl4030-codec.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/mfd/twl4030-codec.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/input.h>
 #include <linux/slab.h>
 
@@ -67,7 +75,15 @@ static void vibra_enable(struct vibra_info *info)
 {
 	u8 reg;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	twl4030_audio_enable_resource(TWL4030_AUDIO_RES_POWER);
+=======
 	twl4030_codec_enable_resource(TWL4030_CODEC_RES_POWER);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	twl4030_codec_enable_resource(TWL4030_CODEC_RES_POWER);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* turn H-Bridge on */
 	twl_i2c_read_u8(TWL4030_MODULE_AUDIO_VOICE,
@@ -75,7 +91,15 @@ static void vibra_enable(struct vibra_info *info)
 	twl_i2c_write_u8(TWL4030_MODULE_AUDIO_VOICE,
 			 (reg | TWL4030_VIBRA_EN), TWL4030_REG_VIBRA_CTL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	twl4030_audio_enable_resource(TWL4030_AUDIO_RES_APLL);
+=======
 	twl4030_codec_enable_resource(TWL4030_CODEC_RES_APLL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	twl4030_codec_enable_resource(TWL4030_CODEC_RES_APLL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info->enabled = true;
 }
@@ -90,8 +114,18 @@ static void vibra_disable(struct vibra_info *info)
 	twl_i2c_write_u8(TWL4030_MODULE_AUDIO_VOICE,
 			 (reg & ~TWL4030_VIBRA_EN), TWL4030_REG_VIBRA_CTL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	twl4030_audio_disable_resource(TWL4030_AUDIO_RES_APLL);
+	twl4030_audio_disable_resource(TWL4030_AUDIO_RES_POWER);
+=======
 	twl4030_codec_disable_resource(TWL4030_CODEC_RES_APLL);
 	twl4030_codec_disable_resource(TWL4030_CODEC_RES_POWER);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	twl4030_codec_disable_resource(TWL4030_CODEC_RES_APLL);
+	twl4030_codec_disable_resource(TWL4030_CODEC_RES_POWER);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info->enabled = false;
 }
@@ -172,7 +206,15 @@ static void twl4030_vibra_close(struct input_dev *input)
 }
 
 /*** Module ***/
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+=======
 #if CONFIG_PM
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#if CONFIG_PM
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int twl4030_vibra_suspend(struct device *dev)
 {
 	struct platform_device *pdev = to_platform_device(dev);
@@ -189,6 +231,19 @@ static int twl4030_vibra_resume(struct device *dev)
 	vibra_disable_leds();
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+
+static SIMPLE_DEV_PM_OPS(twl4030_vibra_pm_ops,
+			 twl4030_vibra_suspend, twl4030_vibra_resume);
+
+static int __devinit twl4030_vibra_probe(struct platform_device *pdev)
+{
+	struct twl4030_vibra_data *pdata = pdev->dev.platform_data;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static SIMPLE_DEV_PM_OPS(twl4030_vibra_pm_ops,
 			 twl4030_vibra_suspend, twl4030_vibra_resume);
@@ -197,6 +252,10 @@ static SIMPLE_DEV_PM_OPS(twl4030_vibra_pm_ops,
 static int __devinit twl4030_vibra_probe(struct platform_device *pdev)
 {
 	struct twl4030_codec_vibra_data *pdata = pdev->dev.platform_data;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct vibra_info *info;
 	int ret;
 
@@ -273,6 +332,17 @@ static struct platform_driver twl4030_vibra_driver = {
 	.driver		= {
 		.name	= "twl4030-vibra",
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.pm	= &twl4030_vibra_pm_ops,
+	},
+};
+module_platform_driver(twl4030_vibra_driver);
+
+MODULE_ALIAS("platform:twl4030-vibra");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 		.pm	= &twl4030_vibra_pm_ops,
 #endif
@@ -293,6 +363,10 @@ module_exit(twl4030_vibra_exit);
 
 MODULE_ALIAS("platform:twl4030-vibra");
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_DESCRIPTION("TWL4030 Vibra driver");
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Nokia Corporation");

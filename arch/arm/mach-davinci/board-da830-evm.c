@@ -380,8 +380,12 @@ static struct davinci_nand_pdata da830_evm_nand_pdata = {
 <<<<<<< HEAD
 	.bbt_options	= NAND_BBT_USE_FLASH,
 =======
+<<<<<<< HEAD
+	.bbt_options	= NAND_BBT_USE_FLASH,
+=======
 	.options	= NAND_USE_FLASH_BBT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.bbt_td		= &da830_evm_nand_bbt_main_descr,
 	.bbt_md		= &da830_evm_nand_bbt_mirror_descr,
 	.timing         = &da830_evm_nandflash_timing,
@@ -683,8 +687,12 @@ MACHINE_START(DAVINCI_DA830_EVM, "DaVinci DA830/OMAP-L137/AM17x EVM")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= (DA8XX_DDR_BASE + 0x100),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= da830_evm_map_io,
 	.init_irq	= cp_intc_init,
 	.timer		= &davinci_timer,
@@ -693,5 +701,10 @@ MACHINE_START(DAVINCI_DA830_EVM, "DaVinci DA830/OMAP-L137/AM17x EVM")
 	.dma_zone_size	= SZ_128M,
 	.restart	= da8xx_restart,
 =======
+<<<<<<< HEAD
+	.dma_zone_size	= SZ_128M,
+	.restart	= da8xx_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -716,7 +716,11 @@ static int llc_ui_recvmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 	unsigned long cpu_flags;
 =======
+<<<<<<< HEAD
+	unsigned long cpu_flags;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t copied = 0;
 	u32 peek_seq = 0;
 	u32 *seq;
@@ -847,8 +851,14 @@ static int llc_ui_recvmsg(struct kiocb *iocb, struct socket *sock,
 			sk_eat_skb(sk, skb, 0);
 			spin_unlock_irqrestore(&sk->sk_receive_queue.lock, cpu_flags);
 =======
+<<<<<<< HEAD
+			spin_lock_irqsave(&sk->sk_receive_queue.lock, cpu_flags);
+			sk_eat_skb(sk, skb, 0);
+			spin_unlock_irqrestore(&sk->sk_receive_queue.lock, cpu_flags);
+=======
 			sk_eat_skb(sk, skb, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*seq = 0;
 		}
 
@@ -874,8 +884,14 @@ copy_uaddr:
 			sk_eat_skb(sk, skb, 0);
 			spin_unlock_irqrestore(&sk->sk_receive_queue.lock, cpu_flags);
 =======
+<<<<<<< HEAD
+			spin_lock_irqsave(&sk->sk_receive_queue.lock, cpu_flags);
+			sk_eat_skb(sk, skb, 0);
+			spin_unlock_irqrestore(&sk->sk_receive_queue.lock, cpu_flags);
+=======
 			sk_eat_skb(sk, skb, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*seq = 0;
 	}
 
@@ -985,8 +1001,12 @@ static int llc_ui_getname(struct socket *sock, struct sockaddr *uaddr,
 <<<<<<< HEAD
 	int rc = 0;
 =======
+<<<<<<< HEAD
+	int rc = 0;
+=======
 	int rc = -EBADF;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(&sllc, 0, sizeof(sllc));
 	lock_sock(sk);
@@ -996,7 +1016,11 @@ static int llc_ui_getname(struct socket *sock, struct sockaddr *uaddr,
 <<<<<<< HEAD
 	memset(uaddr, 0, *uaddrlen);
 =======
+<<<<<<< HEAD
+	memset(uaddr, 0, *uaddrlen);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (peer) {
 		rc = -ENOTCONN;
 		if (sk->sk_state != TCP_ESTABLISHED)

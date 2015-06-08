@@ -8,6 +8,9 @@
 #include <linux/mmc/card.h>
 #include <linux/mmc/sdio_func.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/gpio.h>
 #include <mach/msm_bus.h>
 
@@ -15,8 +18,11 @@
 #define SDC_DAT1_ENABLE  1
 #define SDC_DAT1_ENWAKE  2
 #define SDC_DAT1_DISWAKE 3
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct embedded_sdio_data {
         struct sdio_cis cis;
@@ -26,6 +32,9 @@ struct embedded_sdio_data {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* This structure keeps information per regulator */
 struct msm_mmc_reg_data {
 	/* voltage regulator handle */
@@ -131,8 +140,11 @@ struct msm_mmc_bus_voting_data {
 	unsigned int bw_vecs_size;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mmc_platform_data {
 	unsigned int ocr_mask;			/* available voltages */
 	int built_in;				/* built-in device flag */
@@ -142,6 +154,9 @@ struct mmc_platform_data {
 	struct embedded_sdio_data *embedded_sdio;
 	int (*register_status_notify)(void (*callback)(int card_present, void *dev_id), void *dev_id);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * XPC controls the maximum current in the
 	 * default speed mode of SDXC card.
@@ -177,8 +192,11 @@ struct mmc_platform_data {
 	bool disable_cmd23;
 	u32 cpu_dma_latency;
 	struct msm_mmc_bus_voting_data *msm_bus_voting_data;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif

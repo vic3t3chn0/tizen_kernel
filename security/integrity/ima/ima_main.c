@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/ima.h>
 =======
+<<<<<<< HEAD
+#include <linux/ima.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "ima.h"
 
@@ -87,11 +91,16 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ima_check_last_writer(struct integrity_iint_cache *iint,
 				  struct inode *inode,
 				  struct file *file)
 {
 	fmode_t mode = file->f_mode;
+<<<<<<< HEAD
+=======
 =======
 static void ima_check_last_writer(struct ima_iint_cache *iint,
 				  struct inode *inode,
@@ -99,6 +108,7 @@ static void ima_check_last_writer(struct ima_iint_cache *iint,
 {
 	mode_t mode = file->f_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&iint->mutex);
 	if (mode & FMODE_WRITE &&
@@ -120,8 +130,12 @@ void ima_file_free(struct file *file)
 <<<<<<< HEAD
 	struct integrity_iint_cache *iint;
 =======
+<<<<<<< HEAD
+	struct integrity_iint_cache *iint;
+=======
 	struct ima_iint_cache *iint;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!iint_initialized || !S_ISREG(inode->i_mode))
 		return;
@@ -129,8 +143,12 @@ void ima_file_free(struct file *file)
 <<<<<<< HEAD
 	iint = integrity_iint_find(inode);
 =======
+<<<<<<< HEAD
+	iint = integrity_iint_find(inode);
+=======
 	iint = ima_iint_find(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!iint)
 		return;
 
@@ -144,8 +162,12 @@ static int process_measurement(struct file *file, const unsigned char *filename,
 <<<<<<< HEAD
 	struct integrity_iint_cache *iint;
 =======
+<<<<<<< HEAD
+	struct integrity_iint_cache *iint;
+=======
 	struct ima_iint_cache *iint;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc = 0;
 
 	if (!ima_initialized || !S_ISREG(inode->i_mode))
@@ -160,10 +182,16 @@ retry:
 	if (!iint) {
 		rc = integrity_inode_alloc(inode);
 =======
+<<<<<<< HEAD
+	iint = integrity_iint_find(inode);
+	if (!iint) {
+		rc = integrity_inode_alloc(inode);
+=======
 	iint = ima_iint_find(inode);
 	if (!iint) {
 		rc = ima_inode_alloc(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rc || rc == -EEXIST)
 			goto retry;
 		return rc;

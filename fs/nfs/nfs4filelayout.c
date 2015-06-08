@@ -32,16 +32,22 @@
 #include <linux/nfs_fs.h>
 #include <linux/nfs_page.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 
 #include <linux/sunrpc/metrics.h>
 
 #include "internal.h"
 #include "delegation.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "internal.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "nfs4filelayout.h"
 
 #define NFSDBG_FACILITY         NFSDBG_PNFS_LD
@@ -58,6 +64,9 @@ filelayout_get_dense_offset(struct nfs4_filelayout_segment *flseg,
 {
 	u32 stripe_width = flseg->stripe_unit * flseg->dsaddr->stripe_count;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 stripe_no;
 	u32 rem;
 
@@ -66,6 +75,8 @@ filelayout_get_dense_offset(struct nfs4_filelayout_segment *flseg,
 	div_u64_rem(offset, flseg->stripe_unit, &rem);
 
 	return stripe_no * flseg->stripe_unit + rem;
+<<<<<<< HEAD
+=======
 =======
 	u64 tmp;
 
@@ -75,6 +86,7 @@ filelayout_get_dense_offset(struct nfs4_filelayout_segment *flseg,
 
 	return tmp * flseg->stripe_unit + do_div(offset, flseg->stripe_unit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* This function is used by the layout driver to calculate the
@@ -99,6 +111,8 @@ filelayout_get_dserver_offset(struct pnfs_layout_segment *lseg, loff_t offset)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* For data server errors we don't recover from */
 static void
 filelayout_set_lo_fail(struct pnfs_layout_segment *lseg)
@@ -113,12 +127,16 @@ filelayout_set_lo_fail(struct pnfs_layout_segment *lseg)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int filelayout_async_handle_error(struct rpc_task *task,
 					 struct nfs4_state *state,
 					 struct nfs_client *clp,
 					 int *reset)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nfs_server *mds_server = NFS_SERVER(state->inode);
 	struct nfs_client *mds_client = mds_server->nfs_client;
 
@@ -140,6 +158,8 @@ static int filelayout_async_handle_error(struct rpc_task *task,
 		nfs4_schedule_lease_recovery(mds_client);
 		goto wait_on_recovery;
 	/* DS session errors */
+<<<<<<< HEAD
+=======
 =======
 	if (task->tk_status >= 0)
 		return 0;
@@ -148,6 +168,7 @@ static int filelayout_async_handle_error(struct rpc_task *task,
 
 	switch (task->tk_status) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case -NFS4ERR_BADSESSION:
 	case -NFS4ERR_BADSLOT:
 	case -NFS4ERR_BAD_HIGH_SLOT:
@@ -174,6 +195,9 @@ static int filelayout_async_handle_error(struct rpc_task *task,
 		break;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	task->tk_status = 0;
 	return -EAGAIN;
@@ -182,10 +206,13 @@ wait_on_recovery:
 	if (test_bit(NFS4CLNT_MANAGER_RUNNING, &mds_client->cl_state) == 0)
 		rpc_wake_up_queued_task(&mds_client->cl_rpcwaitq, task);
 	goto out;
+<<<<<<< HEAD
+=======
 =======
 	task->tk_status = 0;
 	return -EAGAIN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* NFS_PROTO call done callback routines */
@@ -195,8 +222,11 @@ static int filelayout_read_done_cb(struct rpc_task *task,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct nfs_client *clp = data->ds_clp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int reset = 0;
 
 	dprintk("%s DS read\n", __func__);
@@ -207,10 +237,15 @@ static int filelayout_read_done_cb(struct rpc_task *task,
 			__func__, data->ds_clp, data->ds_clp->cl_session);
 		if (reset) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pnfs_set_lo_fail(data->lseg);
 			nfs4_reset_read(task, data);
 		}
 		rpc_restart_call_prepare(task);
+<<<<<<< HEAD
+=======
 =======
 			filelayout_set_lo_fail(data->lseg);
 			nfs4_reset_read(task, data);
@@ -218,6 +253,7 @@ static int filelayout_read_done_cb(struct rpc_task *task,
 		}
 		nfs_restart_rpc(task, clp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EAGAIN;
 	}
 
@@ -257,8 +293,12 @@ static void filelayout_read_prepare(struct rpc_task *task, void *data)
 <<<<<<< HEAD
 				task))
 =======
+<<<<<<< HEAD
+				task))
+=======
 				0, task))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	rpc_call_start(task);
@@ -275,6 +315,9 @@ static void filelayout_read_call_done(struct rpc_task *task, void *data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void filelayout_read_count_stats(struct rpc_task *task, void *data)
 {
 	struct nfs_read_data *rdata = (struct nfs_read_data *)data;
@@ -282,8 +325,11 @@ static void filelayout_read_count_stats(struct rpc_task *task, void *data)
 	rpc_count_iostats(task, NFS_SERVER(rdata->inode)->client->cl_metrics);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void filelayout_read_release(void *data)
 {
 	struct nfs_read_data *rdata = (struct nfs_read_data *)data;
@@ -291,7 +337,11 @@ static void filelayout_read_release(void *data)
 <<<<<<< HEAD
 	put_lseg(rdata->lseg);
 =======
+<<<<<<< HEAD
+	put_lseg(rdata->lseg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rdata->mds_ops->rpc_release(data);
 }
 
@@ -303,6 +353,9 @@ static int filelayout_write_done_cb(struct rpc_task *task,
 	if (filelayout_async_handle_error(task, data->args.context->state,
 					  data->ds_clp, &reset) == -EAGAIN) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dprintk("%s calling restart ds_clp %p ds_clp->cl_session %p\n",
 			__func__, data->ds_clp, data->ds_clp->cl_session);
 		if (reset) {
@@ -310,6 +363,8 @@ static int filelayout_write_done_cb(struct rpc_task *task,
 			nfs4_reset_write(task, data);
 		}
 		rpc_restart_call_prepare(task);
+<<<<<<< HEAD
+=======
 =======
 		struct nfs_client *clp;
 
@@ -323,6 +378,7 @@ static int filelayout_write_done_cb(struct rpc_task *task,
 			clp = data->ds_clp;
 		nfs_restart_rpc(task, clp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EAGAIN;
 	}
 
@@ -357,10 +413,16 @@ static int filelayout_commit_done_cb(struct rpc_task *task,
 		} else
 			rpc_restart_call_prepare(task);
 =======
+<<<<<<< HEAD
+			pnfs_set_lo_fail(data->lseg);
+		} else
+			rpc_restart_call_prepare(task);
+=======
 			filelayout_set_lo_fail(data->lseg);
 		} else
 			nfs_restart_rpc(task, data->ds_clp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EAGAIN;
 	}
 
@@ -376,8 +438,12 @@ static void filelayout_write_prepare(struct rpc_task *task, void *data)
 <<<<<<< HEAD
 				task))
 =======
+<<<<<<< HEAD
+				task))
+=======
 				0, task))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	rpc_call_start(task);
@@ -392,6 +458,9 @@ static void filelayout_write_call_done(struct rpc_task *task, void *data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void filelayout_write_count_stats(struct rpc_task *task, void *data)
 {
 	struct nfs_write_data *wdata = (struct nfs_write_data *)data;
@@ -399,8 +468,11 @@ static void filelayout_write_count_stats(struct rpc_task *task, void *data)
 	rpc_count_iostats(task, NFS_SERVER(wdata->inode)->client->cl_metrics);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void filelayout_write_release(void *data)
 {
 	struct nfs_write_data *wdata = (struct nfs_write_data *)data;
@@ -408,7 +480,11 @@ static void filelayout_write_release(void *data)
 <<<<<<< HEAD
 	put_lseg(wdata->lseg);
 =======
+<<<<<<< HEAD
+	put_lseg(wdata->lseg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wdata->mds_ops->rpc_release(data);
 }
 
@@ -420,6 +496,9 @@ static void filelayout_commit_release(void *data)
 	if (atomic_dec_and_test(&NFS_I(wdata->inode)->commits_outstanding))
 		nfs_commit_clear_lock(NFS_I(wdata->inode));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	put_lseg(wdata->lseg);
 	nfs_commitdata_release(wdata);
 }
@@ -442,6 +521,8 @@ static const struct rpc_call_ops filelayout_commit_call_ops = {
 	.rpc_call_prepare = filelayout_write_prepare,
 	.rpc_call_done = filelayout_write_call_done,
 	.rpc_count_stats = filelayout_write_count_stats,
+<<<<<<< HEAD
+=======
 =======
 	nfs_commitdata_release(wdata);
 }
@@ -462,6 +543,7 @@ struct rpc_call_ops filelayout_commit_call_ops = {
 	.rpc_call_prepare = filelayout_write_prepare,
 	.rpc_call_done = filelayout_write_call_done,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rpc_release = filelayout_commit_release,
 };
 
@@ -484,7 +566,13 @@ filelayout_read_pagelist(struct nfs_read_data *data)
 		return PNFS_NOT_ATTEMPTED;
 
 =======
+<<<<<<< HEAD
+	if (test_bit(NFS_DEVICEID_INVALID, &FILELAYOUT_DEVID_NODE(lseg)->flags))
+		return PNFS_NOT_ATTEMPTED;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Retrieve the correct rpc_client for the byte range */
 	j = nfs4_fl_calc_j_index(lseg, offset);
 	idx = nfs4_fl_calc_ds_index(lseg, j);
@@ -498,9 +586,13 @@ filelayout_read_pagelist(struct nfs_read_data *data)
 <<<<<<< HEAD
 	dprintk("%s USE DS: %s\n", __func__, ds->ds_remotestr);
 =======
+<<<<<<< HEAD
+	dprintk("%s USE DS: %s\n", __func__, ds->ds_remotestr);
+=======
 	dprintk("%s USE DS:ip %x %hu\n", __func__,
 		ntohl(ds->ds_ip_addr), ntohs(ds->ds_port));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* No multipath support. Use first DS */
 	data->ds_clp = ds->ds_clp;
@@ -534,7 +626,13 @@ filelayout_write_pagelist(struct nfs_write_data *data, int sync)
 		return PNFS_NOT_ATTEMPTED;
 
 =======
+<<<<<<< HEAD
+	if (test_bit(NFS_DEVICEID_INVALID, &FILELAYOUT_DEVID_NODE(lseg)->flags))
+		return PNFS_NOT_ATTEMPTED;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Retrieve the correct rpc_client for the byte range */
 	j = nfs4_fl_calc_j_index(lseg, offset);
 	idx = nfs4_fl_calc_ds_index(lseg, j);
@@ -544,8 +642,13 @@ filelayout_write_pagelist(struct nfs_write_data *data, int sync)
 		printk(KERN_ERR "NFS: %s: prepare_ds failed, use MDS\n",
 			__func__);
 =======
+<<<<<<< HEAD
+		printk(KERN_ERR "NFS: %s: prepare_ds failed, use MDS\n",
+			__func__);
+=======
 		printk(KERN_ERR "%s: prepare_ds failed, use MDS\n", __func__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_bit(lo_fail_bit(IOMODE_RW), &lseg->pls_layout->plh_flags);
 		set_bit(lo_fail_bit(IOMODE_READ), &lseg->pls_layout->plh_flags);
 		return PNFS_NOT_ATTEMPTED;
@@ -555,10 +658,16 @@ filelayout_write_pagelist(struct nfs_write_data *data, int sync)
 		data->inode->i_ino, sync, (size_t) data->args.count, offset,
 		ds->ds_remotestr);
 =======
+<<<<<<< HEAD
+	dprintk("%s ino %lu sync %d req %Zu@%llu DS: %s\n", __func__,
+		data->inode->i_ino, sync, (size_t) data->args.count, offset,
+		ds->ds_remotestr);
+=======
 	dprintk("%s ino %lu sync %d req %Zu@%llu DS:%x:%hu\n", __func__,
 		data->inode->i_ino, sync, (size_t) data->args.count, offset,
 		ntohl(ds->ds_ip_addr), ntohs(ds->ds_port));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	data->write_done_cb = filelayout_write_done_cb;
 	data->ds_clp = ds->ds_clp;
@@ -630,6 +739,9 @@ filelayout_check_layout(struct pnfs_layout_hdr *lo,
 	} else
 		dsaddr = container_of(d, struct nfs4_file_layout_dsaddr, id_node);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Found deviceid is being reaped */
 	if (test_bit(NFS_DEVICEID_INVALID, &dsaddr->id_node.flags))
 			goto out_put;
@@ -638,6 +750,8 @@ filelayout_check_layout(struct pnfs_layout_hdr *lo,
 
 	if (fl->first_stripe_index >= dsaddr->stripe_count) {
 		dprintk("%s Bad first_stripe_index %u\n",
+<<<<<<< HEAD
+=======
 =======
 	fl->dsaddr = dsaddr;
 
@@ -645,6 +759,7 @@ filelayout_check_layout(struct pnfs_layout_hdr *lo,
 	    fl->first_stripe_index >= dsaddr->stripe_count) {
 		dprintk("%s Bad first_stripe_index %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				__func__, fl->first_stripe_index);
 		goto out_put;
 	}
@@ -748,8 +863,12 @@ filelayout_decode_layout(struct pnfs_layout_hdr *flo,
 <<<<<<< HEAD
 	if (fl->num_fh >
 =======
+<<<<<<< HEAD
+	if (fl->num_fh >
+=======
 	if (fl->num_fh < 0 || fl->num_fh >
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    max(NFS4_PNFS_MAX_STRIPE_CNT, NFS4_PNFS_MAX_MULTI_CNT))
 		goto out_err;
 
@@ -774,8 +893,12 @@ filelayout_decode_layout(struct pnfs_layout_hdr *flo,
 <<<<<<< HEAD
 			printk(KERN_ERR "NFS: Too big fh %d received %d\n",
 =======
+<<<<<<< HEAD
+			printk(KERN_ERR "NFS: Too big fh %d received %d\n",
+=======
 			printk(KERN_ERR "Too big fh %d received %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       i, fl->fh_array[i]->size);
 			goto out_err_free;
 		}
@@ -843,22 +966,32 @@ filelayout_alloc_lseg(struct pnfs_layout_hdr *layoutid,
 <<<<<<< HEAD
 		fl->commit_buckets = kcalloc(size, sizeof(struct nfs4_fl_commit_bucket), gfp_flags);
 =======
+<<<<<<< HEAD
+		fl->commit_buckets = kcalloc(size, sizeof(struct nfs4_fl_commit_bucket), gfp_flags);
+=======
 		fl->commit_buckets = kcalloc(size, sizeof(struct list_head), gfp_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!fl->commit_buckets) {
 			filelayout_free_lseg(&fl->generic_hdr);
 			return NULL;
 		}
 		fl->number_of_buckets = size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (i = 0; i < size; i++) {
 			INIT_LIST_HEAD(&fl->commit_buckets[i].written);
 			INIT_LIST_HEAD(&fl->commit_buckets[i].committing);
 		}
+<<<<<<< HEAD
+=======
 =======
 		for (i = 0; i < size; i++)
 			INIT_LIST_HEAD(&fl->commit_buckets[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return &fl->generic_hdr;
 }
@@ -872,8 +1005,12 @@ filelayout_alloc_lseg(struct pnfs_layout_hdr *layoutid,
 <<<<<<< HEAD
 static bool
 =======
+<<<<<<< HEAD
+static bool
+=======
 bool
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 filelayout_pg_test(struct nfs_pageio_descriptor *pgio, struct nfs_page *prev,
 		   struct nfs_page *req)
 {
@@ -886,9 +1023,12 @@ filelayout_pg_test(struct nfs_pageio_descriptor *pgio, struct nfs_page *prev,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!pgio->pg_lseg)
 		return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p_stripe = (u64)prev->wb_index << PAGE_CACHE_SHIFT;
 	r_stripe = (u64)req->wb_index << PAGE_CACHE_SHIFT;
 	stripe_unit = FILELAYOUT_LSEG(pgio->pg_lseg)->stripe_unit;
@@ -900,6 +1040,9 @@ filelayout_pg_test(struct nfs_pageio_descriptor *pgio, struct nfs_page *prev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 filelayout_pg_init_read(struct nfs_pageio_descriptor *pgio,
 			struct nfs_page *req)
@@ -946,6 +1089,8 @@ static const struct nfs_pageio_ops filelayout_pg_write_ops = {
 	.pg_doio = pnfs_generic_pg_writepages,
 };
 
+<<<<<<< HEAD
+=======
 =======
 static bool filelayout_mark_pnfs_commit(struct pnfs_layout_segment *lseg)
 {
@@ -953,6 +1098,7 @@ static bool filelayout_mark_pnfs_commit(struct pnfs_layout_segment *lseg)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 select_bucket_index(struct nfs4_filelayout_segment *fl, u32 j)
 {
 	if (fl->stripe_type == STRIPE_SPARSE)
@@ -962,6 +1108,9 @@ static u32 select_bucket_index(struct nfs4_filelayout_segment *fl, u32 j)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The generic layer is about to remove the req from the commit list.
  * If this will make the bucket empty, it will need to put the lseg reference.
  */
@@ -997,11 +1146,14 @@ static struct list_head *
 filelayout_choose_commit_list(struct nfs_page *req,
 			      struct pnfs_layout_segment *lseg)
 {
+<<<<<<< HEAD
+=======
 =======
 struct list_head *filelayout_choose_commit_list(struct nfs_page *req)
 {
 	struct pnfs_layout_segment *lseg = req->wb_commit_lseg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nfs4_filelayout_segment *fl = FILELAYOUT_LSEG(lseg);
 	u32 i, j;
 	struct list_head *list;
@@ -1011,7 +1163,13 @@ struct list_head *filelayout_choose_commit_list(struct nfs_page *req)
 		return &NFS_I(req->wb_context->dentry->d_inode)->commit_list;
 
 =======
+<<<<<<< HEAD
+	if (fl->commit_through_mds)
+		return &NFS_I(req->wb_context->dentry->d_inode)->commit_list;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Note that we are calling nfs4_fl_calc_j_index on each page
 	 * that ends up being committed to a data server.  An attractive
 	 * alternative is to add a field to nfs_write_data and nfs_page
@@ -1022,6 +1180,9 @@ struct list_head *filelayout_choose_commit_list(struct nfs_page *req)
 				 (loff_t)req->wb_index << PAGE_CACHE_SHIFT);
 	i = select_bucket_index(fl, j);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list = &fl->commit_buckets[i].written;
 	if (list_empty(list)) {
 		/* Non-empty buckets hold a reference on the lseg.  That ref
@@ -1046,6 +1207,8 @@ filelayout_mark_request_commit(struct nfs_page *req,
 	nfs_request_add_commit_list(req, list);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	list = &fl->commit_buckets[i];
 	if (list_empty(list)) {
@@ -1056,6 +1219,7 @@ filelayout_mark_request_commit(struct nfs_page *req,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 calc_ds_index_from_commit(struct pnfs_layout_segment *lseg, u32 i)
 {
 	struct nfs4_filelayout_segment *flseg = FILELAYOUT_LSEG(lseg);
@@ -1092,12 +1256,17 @@ static int filelayout_initiate_commit(struct nfs_write_data *data, int how)
 	ds = nfs4_fl_prepare_ds(lseg, idx);
 	if (!ds) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "NFS: %s: prepare_ds failed, use MDS\n",
 			__func__);
 		set_bit(lo_fail_bit(IOMODE_RW), &lseg->pls_layout->plh_flags);
 		set_bit(lo_fail_bit(IOMODE_READ), &lseg->pls_layout->plh_flags);
 		prepare_to_resend_writes(data);
 		filelayout_commit_release(data);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_ERR "%s: prepare_ds failed, use MDS\n", __func__);
 		set_bit(lo_fail_bit(IOMODE_RW), &lseg->pls_layout->plh_flags);
@@ -1105,6 +1274,7 @@ static int filelayout_initiate_commit(struct nfs_write_data *data, int how)
 		prepare_to_resend_writes(data);
 		data->mds_ops->rpc_release(data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EAGAIN;
 	}
 	dprintk("%s ino %lu, how %d\n", __func__, data->inode->i_ino, how);
@@ -1121,6 +1291,9 @@ static int filelayout_initiate_commit(struct nfs_write_data *data, int how)
  * This is only useful while we are using whole file layouts.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pnfs_layout_segment *
 find_only_write_lseg_locked(struct inode *inode)
 {
@@ -1140,6 +1313,8 @@ static struct pnfs_layout_segment *find_only_write_lseg(struct inode *inode)
 	rv = find_only_write_lseg_locked(inode);
 	if (rv)
 		get_lseg(rv);
+<<<<<<< HEAD
+=======
 =======
 static struct pnfs_layout_segment *find_only_write_lseg(struct inode *inode)
 {
@@ -1150,11 +1325,15 @@ static struct pnfs_layout_segment *find_only_write_lseg(struct inode *inode)
 		if (lseg->pls_range.iomode == IOMODE_RW)
 			rv = get_lseg(lseg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&inode->i_lock);
 	return rv;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 filelayout_scan_ds_commit_list(struct nfs4_fl_commit_bucket *bucket, int max,
 		spinlock_t *lock)
@@ -1207,9 +1386,12 @@ out_done:
 
 static unsigned int
 alloc_ds_commits(struct inode *inode, struct list_head *list)
+<<<<<<< HEAD
+=======
 =======
 static int alloc_ds_commits(struct inode *inode, struct list_head *list)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pnfs_layout_segment *lseg;
 	struct nfs4_filelayout_segment *fl;
@@ -1218,7 +1400,11 @@ static int alloc_ds_commits(struct inode *inode, struct list_head *list)
 <<<<<<< HEAD
 	unsigned int nreq = 0;
 =======
+<<<<<<< HEAD
+	unsigned int nreq = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Won't need this when non-whole file layout segments are supported
 	 * instead we will use a pnfs_layout_hdr structure */
@@ -1228,6 +1414,9 @@ static int alloc_ds_commits(struct inode *inode, struct list_head *list)
 	fl = FILELAYOUT_LSEG(lseg);
 	for (i = 0; i < fl->number_of_buckets; i++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (list_empty(&fl->commit_buckets[i].committing))
 			continue;
 		data = nfs_commitdata_alloc();
@@ -1244,6 +1433,8 @@ static int alloc_ds_commits(struct inode *inode, struct list_head *list)
 		if (list_empty(&fl->commit_buckets[i].committing))
 			continue;
 		nfs_retry_commit(&fl->commit_buckets[i].committing, lseg);
+<<<<<<< HEAD
+=======
 =======
 		if (list_empty(&fl->commit_buckets[i]))
 			continue;
@@ -1263,6 +1454,7 @@ out_bad:
 			continue;
 		nfs_retry_commit(&fl->commit_buckets[i], lseg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		put_lseg(lseg);  /* associated with emptying bucket */
 	}
 	put_lseg(lseg);
@@ -1270,8 +1462,12 @@ out_bad:
 <<<<<<< HEAD
 	return nreq;
 =======
+<<<<<<< HEAD
+	return nreq;
+=======
 	return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* This follows nfs_commit_list pretty closely */
@@ -1282,6 +1478,9 @@ filelayout_commit_pagelist(struct inode *inode, struct list_head *mds_pages,
 	struct nfs_write_data	*data, *tmp;
 	LIST_HEAD(list);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int nreq = 0;
 
 	if (!list_empty(mds_pages)) {
@@ -1305,6 +1504,8 @@ filelayout_commit_pagelist(struct inode *inode, struct list_head *mds_pages,
 
 	list_for_each_entry_safe(data, tmp, &list, pages) {
 		list_del_init(&data->pages);
+<<<<<<< HEAD
+=======
 =======
 
 	if (!list_empty(mds_pages)) {
@@ -1322,18 +1523,24 @@ filelayout_commit_pagelist(struct inode *inode, struct list_head *mds_pages,
 		list_del_init(&data->pages);
 		atomic_inc(&NFS_I(inode)->commits_outstanding);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!data->lseg) {
 			nfs_init_commit(data, mds_pages, NULL);
 			nfs_initiate_commit(data, NFS_CLIENT(inode),
 					    data->mds_ops, how);
 		} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			nfs_init_commit(data, &FILELAYOUT_LSEG(data->lseg)->commit_buckets[data->ds_commit_index].committing, data->lseg);
 			filelayout_initiate_commit(data, how);
 		}
 	}
 out:
 	return PNFS_ATTEMPTED;
+<<<<<<< HEAD
+=======
 =======
 			nfs_init_commit(data, &FILELAYOUT_LSEG(data->lseg)->commit_buckets[data->ds_commit_index], data->lseg);
 			filelayout_initiate_commit(data, how);
@@ -1350,6 +1557,7 @@ out:
 	nfs_commit_clear_lock(NFS_I(inode));
 	return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -1365,16 +1573,22 @@ static struct pnfs_layoutdriver_type filelayout_type = {
 	.alloc_lseg		= filelayout_alloc_lseg,
 	.free_lseg		= filelayout_free_lseg,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pg_read_ops		= &filelayout_pg_read_ops,
 	.pg_write_ops		= &filelayout_pg_write_ops,
 	.mark_request_commit	= filelayout_mark_request_commit,
 	.clear_request_commit	= filelayout_clear_request_commit,
 	.scan_commit_lists	= filelayout_scan_commit_lists,
+<<<<<<< HEAD
+=======
 =======
 	.pg_test		= filelayout_pg_test,
 	.mark_pnfs_commit	= filelayout_mark_pnfs_commit,
 	.choose_commit_list	= filelayout_choose_commit_list,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.commit_pagelist	= filelayout_commit_pagelist,
 	.read_pagelist		= filelayout_read_pagelist,
 	.write_pagelist		= filelayout_write_pagelist,
@@ -1399,6 +1613,11 @@ static void __exit nfs4filelayout_exit(void)
 MODULE_ALIAS("nfs-layouttype4-1");
 
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("nfs-layouttype4-1");
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_init(nfs4filelayout_init);
 module_exit(nfs4filelayout_exit);

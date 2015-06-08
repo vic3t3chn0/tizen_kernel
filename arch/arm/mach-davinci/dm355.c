@@ -15,8 +15,11 @@
 #include <linux/dma-mapping.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/spi/spi.h>
 
@@ -24,8 +27,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/dm355.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cputype.h>
 #include <mach/edma.h>
 #include <mach/psc.h>
@@ -41,8 +47,14 @@
 
 #include "davinci.h"
 =======
+<<<<<<< HEAD
+#include <mach/gpio-davinci.h>
+
+#include "davinci.h"
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "clock.h"
 #include "mux.h"
 
@@ -606,7 +618,11 @@ static struct edma_soc_info edma_cc0_info = {
 <<<<<<< HEAD
 	.default_queue		= EVENTQ_1,
 =======
+<<<<<<< HEAD
+	.default_queue		= EVENTQ_1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct edma_soc_info *dm355_edma_info[EDMA_MAX_CC] = {
@@ -870,8 +886,11 @@ static struct davinci_soc_info davinci_soc_info_dm355 = {
 	.sram_len		= SZ_32K,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.reset_device		= &davinci_wdt_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init dm355_init_asp1(u32 evt_enable, struct snd_platform_data *pdata)
@@ -893,7 +912,11 @@ void __init dm355_init(void)
 <<<<<<< HEAD
 	davinci_map_sysmod();
 =======
+<<<<<<< HEAD
+	davinci_map_sysmod();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init dm355_init_devices(void)

@@ -20,6 +20,9 @@
 #include <asm-generic/sections.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(KBUILD_MCOUNT_RA_ADDRESS) && defined(CONFIG_32BIT)
 #define MCOUNT_OFFSET_INSNS 5
 #else
@@ -40,8 +43,11 @@ static inline int in_kernel_space(unsigned long ip)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DYNAMIC_FTRACE
 
 #define JAL 0x0c000000		/* jump & link: ip --> ra, jump to target */
@@ -79,6 +85,8 @@ static inline void ftrace_dyn_arch_init_insns(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Check if the address is in kernel space
  *
@@ -94,6 +102,7 @@ static inline int in_kernel_space(unsigned long ip)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ftrace_modify_code(unsigned long ip, unsigned int new_code)
 {
 	int faulted;
@@ -140,12 +149,15 @@ static int ftrace_modify_code(unsigned long ip, unsigned int new_code)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(KBUILD_MCOUNT_RA_ADDRESS) && defined(CONFIG_32BIT)
 #define MCOUNT_OFFSET_INSNS 5
 #else
 #define MCOUNT_OFFSET_INSNS 4
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INSN_B_1F (0x10000000 | MCOUNT_OFFSET_INSNS)
 
 int ftrace_make_nop(struct module *mod,

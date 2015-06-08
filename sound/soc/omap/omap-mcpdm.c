@@ -2,12 +2,17 @@
  * omap-mcpdm.c  --  OMAP ALSA SoC DAI driver using McPDM port
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2009 - 2011 Texas Instruments
  *
  * Author: Misael Lopez Cruz <misael.lopez@ti.com>
  * Contact: Jorge Eduardo Candelaria <x0107209@ti.com>
  *          Margarita Olaya <magi.olaya@ti.com>
  *          Peter Ujfalusi <peter.ujfalusi@ti.com>
+<<<<<<< HEAD
+=======
 =======
  * Copyright (C) 2009 Texas Instruments
  *
@@ -15,6 +20,7 @@
  * Contact: Jorge Eduardo Candelaria <x0107209@ti.com>
  *          Margarita Olaya <magi.olaya@ti.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -35,6 +41,9 @@
 #include <linux/init.h>
 #include <linux/module.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/interrupt.h>
 #include <linux/err.h>
@@ -71,6 +80,8 @@ struct omap_mcpdm {
 
 	/* McPDM dn offsets for rx1, and 2 channels */
 	u32 dn_rx_offset;
+<<<<<<< HEAD
+=======
 =======
 #include <linux/device.h>
 #include <sound/core.h>
@@ -108,6 +119,7 @@ static struct omap_mcpdm_data mcpdm_data = {
 	.links = omap_mcpdm_links,
 	.active = 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -122,9 +134,13 @@ static struct omap_pcm_dma_data omap_mcpdm_dai_dma_params[] = {
 <<<<<<< HEAD
 		.port_addr = OMAP44XX_MCPDM_L3_BASE + MCPDM_REG_DN_DATA,
 =======
+<<<<<<< HEAD
+		.port_addr = OMAP44XX_MCPDM_L3_BASE + MCPDM_REG_DN_DATA,
+=======
 		.packet_size = 16,
 		.port_addr = OMAP44XX_MCPDM_L3_BASE + MCPDM_DN_DATA,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.name = "Audio capture",
@@ -132,6 +148,9 @@ static struct omap_pcm_dma_data omap_mcpdm_dai_dma_params[] = {
 		.data_type = OMAP_DMA_DATA_TYPE_S32,
 		.sync_mode = OMAP_DMA_SYNC_PACKET,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.port_addr = OMAP44XX_MCPDM_L3_BASE + MCPDM_REG_UP_DATA,
 	},
 };
@@ -348,6 +367,8 @@ static void omap_mcpdm_dai_shutdown(struct snd_pcm_substream *substream,
 	}
 
 	mutex_unlock(&mcpdm->mutex);
+<<<<<<< HEAD
+=======
 =======
 		.packet_size = 16,
 		.port_addr = OMAP44XX_MCPDM_L3_BASE + MCPDM_UP_DATA,
@@ -399,6 +420,7 @@ static int omap_mcpdm_dai_trigger(struct snd_pcm_substream *substream, int cmd,
 
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int omap_mcpdm_dai_hw_params(struct snd_pcm_substream *substream,
@@ -406,6 +428,9 @@ static int omap_mcpdm_dai_hw_params(struct snd_pcm_substream *substream,
 				    struct snd_soc_dai *dai)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_mcpdm *mcpdm = snd_soc_dai_get_drvdata(dai);
 	int stream = substream->stream;
 	struct omap_pcm_dma_data *dma_data;
@@ -425,6 +450,8 @@ static int omap_mcpdm_dai_hw_params(struct snd_pcm_substream *substream,
 			return -EINVAL;
 		link_mask |= 1 << 3;
 	case 3:
+<<<<<<< HEAD
+=======
 =======
 	struct omap_mcpdm_data *mcpdm_priv = snd_soc_dai_get_drvdata(dai);
 	struct omap_mcpdm_link *mcpdm_links = mcpdm_priv->links;
@@ -446,6 +473,7 @@ static int omap_mcpdm_dai_hw_params(struct snd_pcm_substream *substream,
 			/* up to 2 channels for capture */
 			return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		link_mask |= 1 << 2;
 	case 2:
 		link_mask |= 1 << 1;
@@ -458,6 +486,9 @@ static int omap_mcpdm_dai_hw_params(struct snd_pcm_substream *substream,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_data = &omap_mcpdm_dai_dma_params[stream];
 
 	/* Configure McPDM channels, and DMA packet size */
@@ -553,6 +584,8 @@ static struct snd_soc_dai_driver omap_mcpdm_dai = {
 		.rates = OMAP_MCPDM_RATES,
 		.formats = OMAP_MCPDM_FORMATS,
 		.sig_bits = 24,
+<<<<<<< HEAD
+=======
 =======
 	if (stream == SNDRV_PCM_STREAM_PLAYBACK) {
 		mcpdm_links[stream].channels = link_mask << 3;
@@ -612,11 +645,15 @@ static struct snd_soc_dai_driver omap_mcpdm_dai = {
 		.rates = OMAP_MCPDM_RATES,
 		.formats = OMAP_MCPDM_FORMATS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.ops = &omap_mcpdm_dai_ops,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void omap_mcpdm_configure_dn_offsets(struct snd_soc_pcm_runtime *rtd,
 				    u8 rx1, u8 rx2)
 {
@@ -675,6 +712,8 @@ err_iomap:
 	release_mem_region(res->start, resource_size(res));
 err_res:
 	kfree(mcpdm);
+<<<<<<< HEAD
+=======
 =======
 static __devinit int asoc_mcpdm_probe(struct platform_device *pdev)
 {
@@ -687,12 +726,16 @@ static __devinit int asoc_mcpdm_probe(struct platform_device *pdev)
 	if (ret < 0)
 		omap_mcpdm_remove(pdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static int __devexit asoc_mcpdm_remove(struct platform_device *pdev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_mcpdm *mcpdm = platform_get_drvdata(pdev);
 	struct resource *res;
 
@@ -703,16 +746,22 @@ static int __devexit asoc_mcpdm_remove(struct platform_device *pdev)
 	release_mem_region(res->start, resource_size(res));
 
 	kfree(mcpdm);
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_dai(&pdev->dev);
 	omap_mcpdm_remove(pdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static struct platform_driver asoc_mcpdm_driver = {
 	.driver = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name	= "omap-mcpdm",
 		.owner	= THIS_MODULE,
 	},
@@ -724,6 +773,8 @@ static struct platform_driver asoc_mcpdm_driver = {
 module_platform_driver(asoc_mcpdm_driver);
 
 MODULE_AUTHOR("Misael Lopez Cruz <misael.lopez@ti.com>");
+<<<<<<< HEAD
+=======
 =======
 			.name = "omap-mcpdm-dai",
 			.owner = THIS_MODULE,
@@ -747,5 +798,6 @@ module_exit(snd_omap_mcpdm_exit);
 
 MODULE_AUTHOR("Misael Lopez Cruz <x0052729@ti.com>");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_DESCRIPTION("OMAP PDM SoC Interface");
 MODULE_LICENSE("GPL");

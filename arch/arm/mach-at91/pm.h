@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * AT91 Power Management
  *
@@ -15,10 +18,13 @@
 #include <mach/at91_ramc.h>
 #ifdef CONFIG_ARCH_AT91RM9200
 #include <mach/at91rm9200_sdramc.h>
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_ARCH_AT91RM9200
 #include <mach/at91rm9200_mc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The AT91RM9200 goes into self-refresh mode with this command, and will
@@ -31,6 +37,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void at91rm9200_standby(void)
 {
 	u32 lpr = at91_ramc_read(0, AT91RM9200_SDRAMC_LPR);
@@ -52,6 +61,8 @@ static inline void at91rm9200_standby(void)
 #define at91_standby at91rm9200_standby
 
 #elif defined(CONFIG_ARCH_AT91SAM9G45)
+<<<<<<< HEAD
+=======
 =======
 static inline u32 sdram_selfrefresh_enable(void)
 {
@@ -87,17 +98,23 @@ static inline u32 sdram_selfrefresh_enable(void)
 #elif defined(CONFIG_ARCH_AT91SAM9G45)
 #include <mach/at91sam9_ddrsdr.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* We manage both DDRAM/SDRAM controllers, we need more than one value to
  * remember.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void at91sam9g45_standby(void)
 {
 	/* Those two values allow us to delay self-refresh activation
 	 * to the maximum. */
 	u32 lpr0, lpr1;
 	u32 saved_lpr0, saved_lpr1;
+<<<<<<< HEAD
+=======
 =======
 static u32 saved_lpr1;
 
@@ -108,6 +125,7 @@ static inline u32 sdram_selfrefresh_enable(void)
 	u32 lpr0, lpr1;
 	u32 saved_lpr0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	saved_lpr1 = at91_ramc_read(1, AT91_DDRSDRC_LPR);
 	lpr1 = saved_lpr1 & ~AT91_DDRSDRC_LPCB;
@@ -122,6 +140,9 @@ static inline u32 sdram_selfrefresh_enable(void)
 	at91_ramc_write(1, AT91_DDRSDRC_LPR, lpr1);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpu_do_idle();
 
 	at91_ramc_write(0, AT91_DDRSDRC_LPR, saved_lpr0);
@@ -131,6 +152,8 @@ static inline u32 sdram_selfrefresh_enable(void)
 #define at91_standby at91sam9g45_standby
 
 #else
+<<<<<<< HEAD
+=======
 =======
 	return saved_lpr0;
 }
@@ -145,6 +168,7 @@ static inline u32 sdram_selfrefresh_enable(void)
 #else
 #include <mach/at91sam9_sdramc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_ARCH_AT91SAM9263
 /*
@@ -157,8 +181,12 @@ static inline u32 sdram_selfrefresh_enable(void)
 <<<<<<< HEAD
 static inline void at91sam9_standby(void)
 =======
+<<<<<<< HEAD
+static inline void at91sam9_standby(void)
+=======
 static inline u32 sdram_selfrefresh_enable(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 saved_lpr, lpr;
 
@@ -166,6 +194,9 @@ static inline u32 sdram_selfrefresh_enable(void)
 
 	lpr = saved_lpr & ~AT91_SDRAMC_LPCB;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_ramc_write(0, AT91_SDRAMC_LPR, lpr |
 			AT91_SDRAMC_LPCB_SELF_REFRESH);
 
@@ -177,6 +208,8 @@ static inline u32 sdram_selfrefresh_enable(void)
 #define at91_standby at91sam9_standby
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 	at91_ramc_write(0, AT91_SDRAMC_LPR, lpr | AT91_SDRAMC_LPCB_SELF_REFRESH);
 	return saved_lpr;
@@ -185,5 +218,6 @@ static inline u32 sdram_selfrefresh_enable(void)
 #define sdram_selfrefresh_disable(saved_lpr)	at91_ramc_write(0, AT91_SDRAMC_LPR, saved_lpr)
 #define wait_for_interrupt_enable()		cpu_do_idle()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

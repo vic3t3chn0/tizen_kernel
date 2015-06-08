@@ -27,8 +27,13 @@ config BLUESTONE
 	select PPC4xx_PCI_EXPRESS
 	select IBM_EMAC_RGMII
 =======
+<<<<<<< HEAD
+	select PPC4xx_PCI_EXPRESS
+	select IBM_EMAC_RGMII
+=======
 	select IBM_NEW_EMAC_RGMII
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option enables support for the APM APM821xx Evaluation board.
 
@@ -83,8 +88,12 @@ config KATMAI
 <<<<<<< HEAD
 	select PPC4xx_MSI
 =======
+<<<<<<< HEAD
+	select PPC4xx_MSI
+=======
 	select PCC4xx_MSI
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option enables support for the AMCC PPC440SPe evaluation board.
 
@@ -135,9 +144,14 @@ config CANYONLANDS
 	select IBM_EMAC_RGMII
 	select IBM_EMAC_ZMII
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_RGMII
+	select IBM_EMAC_ZMII
+=======
 	select IBM_NEW_EMAC_RGMII
 	select IBM_NEW_EMAC_ZMII
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option enables support for the AMCC PPC460EX evaluation board.
 
@@ -153,9 +167,14 @@ config GLACIER
 	select IBM_EMAC_RGMII
 	select IBM_EMAC_ZMII
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_RGMII
+	select IBM_EMAC_ZMII
+=======
 	select IBM_NEW_EMAC_RGMII
 	select IBM_NEW_EMAC_ZMII
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option enables support for the AMCC PPC460GT evaluation board.
 
@@ -183,8 +202,12 @@ config EIGER
 <<<<<<< HEAD
 	select IBM_EMAC_RGMII
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_RGMII
+=======
 	select IBM_NEW_EMAC_RGMII
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option enables support for the AMCC PPC460SX evaluation board.
 
@@ -210,6 +233,9 @@ config ISS4xx
 	  This option enables support for the IBM ISS simulation environment
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CURRITUCK
 	bool "IBM Currituck (476fpe) Support"
 	depends on PPC_47x
@@ -220,8 +246,11 @@ config CURRITUCK
 	help
 	  This option enables support for the IBM Currituck (476fpe) evaluation board
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ICON
 	bool "Icon"
 	depends on 44x
@@ -233,6 +262,8 @@ config ICON
 	help
 	  This option enables support for the AMCC PPC440SPe evaluation board.
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #config LUAN
@@ -252,6 +283,7 @@ config ICON
 #	  This option enables support for the IBM PPC440GX evaluation board.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config XILINX_VIRTEX440_GENERIC_BOARD
 	bool "Generic Xilinx Virtex 5 FXT board support"
 	depends on 44x
@@ -302,14 +334,21 @@ config 440EP
 <<<<<<< HEAD
 	select IBM_EMAC_ZMII
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_ZMII
+=======
 	select IBM_NEW_EMAC_ZMII
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select USB_ARCH_HAS_OHCI
 
 config 440EPX
 	bool
 	select PPC_FPU
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IBM_EMAC_EMAC4
 	select IBM_EMAC_RGMII
 	select IBM_EMAC_ZMII
@@ -330,6 +369,8 @@ config 440GX
 	select IBM_EMAC_RGMII
 	select IBM_EMAC_ZMII #test only
 	select IBM_EMAC_TAH  #test only
+<<<<<<< HEAD
+=======
 =======
 	select IBM_NEW_EMAC_EMAC4
 	select IBM_NEW_EMAC_RGMII
@@ -352,6 +393,7 @@ config 440GX
 	select IBM_NEW_EMAC_ZMII #test only
 	select IBM_NEW_EMAC_TAH  #test only
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config 440SP
 	bool
@@ -361,8 +403,12 @@ config 440SPe
 <<<<<<< HEAD
 	select IBM_EMAC_EMAC4
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_EMAC4
+=======
 	select IBM_NEW_EMAC_EMAC4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config 460EX
 	bool
@@ -371,14 +417,22 @@ config 460EX
 	select IBM_EMAC_EMAC4
 	select IBM_EMAC_TAH
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_EMAC4
+	select IBM_EMAC_TAH
+=======
 	select IBM_NEW_EMAC_EMAC4
 	select IBM_NEW_EMAC_TAH
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config 460SX
 	bool
 	select PPC_FPU
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IBM_EMAC_EMAC4
 	select IBM_EMAC_RGMII
 	select IBM_EMAC_ZMII
@@ -387,12 +441,15 @@ config 460SX
 config 476FPE
 	bool
 	select PPC_FPU
+<<<<<<< HEAD
+=======
 =======
 	select IBM_NEW_EMAC_EMAC4
 	select IBM_NEW_EMAC_RGMII
 	select IBM_NEW_EMAC_ZMII
 	select IBM_NEW_EMAC_TAH
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config APM821xx
 	bool
@@ -401,9 +458,14 @@ config APM821xx
 	select IBM_EMAC_EMAC4
 	select IBM_EMAC_TAH
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_EMAC4
+	select IBM_EMAC_TAH
+=======
 	select IBM_NEW_EMAC_EMAC4
 	select IBM_NEW_EMAC_TAH
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # 44x errata/workaround config symbols, selected by the CPU models above
 config IBM440EP_ERR42

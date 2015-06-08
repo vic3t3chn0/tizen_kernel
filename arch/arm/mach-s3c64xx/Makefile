@@ -11,11 +11,16 @@ obj-n				:=
 obj-				:=
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Core
 
 obj-y				+= common.o clock.o
 
 # Core support
+<<<<<<< HEAD
+=======
 =======
 # Core files
 obj-y				+= cpu.o
@@ -24,15 +29,21 @@ obj-y				+= gpiolib.o
 
 # Core support for S3C6400 system
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-$(CONFIG_CPU_S3C6400)	+= s3c6400.o
 obj-$(CONFIG_CPU_S3C6410)	+= s3c6410.o
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # PM
 
 obj-$(CONFIG_PM)		+= pm.o irq-pm.o sleep.o
 obj-$(CONFIG_CPU_IDLE)		+= cpuidle.o
+<<<<<<< HEAD
+=======
 =======
 obj-y				+= irq.o
 obj-y				+= irq-eint.o
@@ -41,12 +52,16 @@ obj-y				+= irq-eint.o
 
 obj-$(CONFIG_CPU_FREQ_S3C64XX)  += cpufreq.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # DMA support
 
 obj-$(CONFIG_S3C64XX_DMA)	+= dma.o
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Device support
 
 obj-y				+= dev-uart.o
@@ -77,6 +92,8 @@ obj-$(CONFIG_MACH_SMARTQ7)		+= mach-smartq7.o
 obj-$(CONFIG_MACH_SMDK6400)		+= mach-smdk6400.o
 obj-$(CONFIG_MACH_SMDK6410)		+= mach-smdk6410.o
 obj-$(CONFIG_MACH_WLF_CRAGG_6410)	+= mach-crag6410.o mach-crag6410-module.o
+<<<<<<< HEAD
+=======
 =======
 # Device setup
 
@@ -115,3 +132,4 @@ obj-$(CONFIG_S3C64XX_DEV_SPI)	+= dev-spi.o
 obj-$(CONFIG_S3C64XX_DEV_TS)	+= dev-ts.o
 obj-$(CONFIG_S3C64XX_DEV_ONENAND1)	+= dev-onenand1.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

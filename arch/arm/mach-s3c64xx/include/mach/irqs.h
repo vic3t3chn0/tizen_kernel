@@ -29,6 +29,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* UART interrupts, each UART has 4 intterupts per channel so
  * use the space between the ISA and S3C main interrupts. Note, these
  * are not in the same order as the S3C24XX series! */
@@ -60,6 +62,7 @@
 #define IRQ_S3CUART_ERR3	(IRQ_S3CUART_BASE3 + UART_IRQ_ERR)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* VIC based IRQs */
 
 #define S3C64XX_IRQ_VIC0(x)	(IRQ_VIC0_BASE + (x))
@@ -206,8 +209,14 @@
 #define IRQ_BOARD_NR 160
 #elif defined(CONFIG_SMDK6410_WM1190_EV1)
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_MACH_WLF_CRAGG_6410
+#define IRQ_BOARD_NR 160
+#elif defined(CONFIG_SMDK6410_WM1190_EV1)
+=======
 #ifdef CONFIG_SMDK6410_WM1190_EV1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_BOARD_NR 64
 #elif defined(CONFIG_SMDK6410_WM1192_EV1)
 #define IRQ_BOARD_NR 64
@@ -227,7 +236,11 @@
 <<<<<<< HEAD
 #define IRQ_I2S0	IRQ_S3C6410_IIS
 =======
+<<<<<<< HEAD
+#define IRQ_I2S0	IRQ_S3C6410_IIS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_MACH_S3C64XX_IRQS_H */
 

@@ -52,9 +52,12 @@ static void *lib80211_wep_init(int keyidx)
 	if (IS_ERR(priv->tx_tfm)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_DEBUG "lib80211_crypt_wep: could not allocate "
 		       "crypto API arc4\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->tx_tfm = NULL;
 		goto fail;
 	}
@@ -63,9 +66,12 @@ static void *lib80211_wep_init(int keyidx)
 	if (IS_ERR(priv->rx_tfm)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_DEBUG "lib80211_crypt_wep: could not allocate "
 		       "crypto API arc4\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->rx_tfm = NULL;
 		goto fail;
 	}

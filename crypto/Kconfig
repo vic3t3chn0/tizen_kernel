@@ -26,12 +26,19 @@ config CRYPTO_FIPS
 <<<<<<< HEAD
 	depends on CRYPTO_ANSI_CPRNG && !CRYPTO_MANAGER_DISABLE_TESTS
 =======
+<<<<<<< HEAD
+	depends on CRYPTO_ANSI_CPRNG && !CRYPTO_MANAGER_DISABLE_TESTS
+=======
 	depends on CRYPTO_ANSI_CPRNG
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This options enables the fips boot option which is
 	  required if you want to system to operate in a FIPS 200
 	  certification.  You should say no unless you know what
+<<<<<<< HEAD
+	  this is.
+=======
 <<<<<<< HEAD
 	  this is.
 =======
@@ -47,6 +54,7 @@ config CRYPTO_FIPS_INTEG_OFFSET
           to system to operate in FIPS mode, which enables
 	  kernel crypto module.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config CRYPTO_ALGAPI
 	tristate
@@ -119,6 +127,9 @@ config CRYPTO_MANAGER2
 	select CRYPTO_PCOMP2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_USER
 	tristate "Userspace cryptographic algorithm configuration"
 	depends on NET
@@ -137,6 +148,8 @@ config CRYPTO_MANAGER_DISABLE_TESTS
 
 config CRYPTO_GF128MUL
 	tristate "GF(2^128) multiplication functions"
+<<<<<<< HEAD
+=======
 =======
 config CRYPTO_MANAGER_TESTS
 	bool "Run algolithms' self-tests"
@@ -149,6 +162,7 @@ config CRYPTO_MANAGER_TESTS
 config CRYPTO_GF128MUL
 	tristate "GF(2^128) multiplication functions (EXPERIMENTAL)"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Efficient table driven implementation of multiplications in the
 	  field GF(2^128).  This is needed by some cypher modes. This
@@ -203,7 +217,11 @@ config CRYPTO_TEST
 <<<<<<< HEAD
 	depends on m
 =======
+<<<<<<< HEAD
+	depends on m
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_MANAGER
 	help
 	  Quick & dirty crypto test module.
@@ -278,9 +296,13 @@ config CRYPTO_LRW
 <<<<<<< HEAD
 	tristate "LRW support"
 =======
+<<<<<<< HEAD
+	tristate "LRW support"
+=======
 	tristate "LRW support (EXPERIMENTAL)"
 	depends on EXPERIMENTAL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_BLKCIPHER
 	select CRYPTO_MANAGER
 	select CRYPTO_GF128MUL
@@ -303,9 +325,13 @@ config CRYPTO_XTS
 <<<<<<< HEAD
 	tristate "XTS support"
 =======
+<<<<<<< HEAD
+	tristate "XTS support"
+=======
 	tristate "XTS support (EXPERIMENTAL)"
 	depends on EXPERIMENTAL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_BLKCIPHER
 	select CRYPTO_MANAGER
 	select CRYPTO_GF128MUL
@@ -374,8 +400,11 @@ config CRYPTO_GHASH
 	tristate "GHASH digest algorithm"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	select CRYPTO_SHASH
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_GF128MUL
 	help
 	  GHASH is message digest algorithm for GCM (Galois/Counter Mode).
@@ -411,8 +440,12 @@ config CRYPTO_RMD128
 <<<<<<< HEAD
 	  be used as a secure replacement for RIPEMD. For other use cases,
 =======
+<<<<<<< HEAD
+	  be used as a secure replacement for RIPEMD. For other use cases,
+=======
 	  to be used as a secure replacement for RIPEMD. For other use cases
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  RIPEMD-160 should be used.
 
 	  Developed by Hans Dobbertin, Antoon Bosselaers and Bart Preneel.
@@ -466,6 +499,9 @@ config CRYPTO_SHA1
 	  SHA-1 secure hash standard (FIPS 180-1/DFIPS 180-2).
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_SHA1_SSSE3
 	tristate "SHA1 digest algorithm (SSSE3/AVX)"
 	depends on X86 && 64BIT
@@ -476,8 +512,11 @@ config CRYPTO_SHA1_SSSE3
 	  using Supplemental SSE3 (SSSE3) instructions or Advanced Vector
 	  Extensions (AVX), when available.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_SHA256
 	tristate "SHA224 and SHA256 digest algorithm"
 	select CRYPTO_HASH
@@ -532,9 +571,13 @@ config CRYPTO_GHASH_CLMUL_NI_INTEL
 <<<<<<< HEAD
 	depends on X86 && 64BIT
 =======
+<<<<<<< HEAD
+	depends on X86 && 64BIT
+=======
 	depends on (X86 || UML_X86) && 64BIT
 	select CRYPTO_SHASH
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_CRYPTD
 	help
 	  GHASH is message digest algorithm for GCM (Galois/Counter Mode).
@@ -611,8 +654,12 @@ config CRYPTO_AES_NI_INTEL
 <<<<<<< HEAD
 	depends on X86
 =======
+<<<<<<< HEAD
+	depends on X86
+=======
 	depends on (X86 || UML_X86)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_AES_X86_64 if 64BIT
 	select CRYPTO_AES_586 if !64BIT
 	select CRYPTO_CRYPTD
@@ -642,6 +689,9 @@ config CRYPTO_AES_NI_INTEL
 	  acceleration for CTR.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_AES_ARM
 	tristate "AES cipher algorithms (ARM-asm)"
 	depends on ARM
@@ -666,8 +716,11 @@ config CRYPTO_AES_ARM
 
 	  See <http://csrc.nist.gov/encryption/aes/> for more information.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_ANUBIS
 	tristate "Anubis cipher algorithm"
 	select CRYPTO_ALGAPI
@@ -699,7 +752,11 @@ config CRYPTO_BLOWFISH
 <<<<<<< HEAD
 	select CRYPTO_BLOWFISH_COMMON
 =======
+<<<<<<< HEAD
+	select CRYPTO_BLOWFISH_COMMON
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Blowfish cipher algorithm, by Bruce Schneier.
 
@@ -711,6 +768,9 @@ config CRYPTO_BLOWFISH
 	  <http://www.schneier.com/blowfish.html>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_BLOWFISH_COMMON
 	tristate
 	help
@@ -735,8 +795,11 @@ config CRYPTO_BLOWFISH_X86_64
 	  See also:
 	  <http://www.schneier.com/blowfish.html>
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_CAMELLIA
 	tristate "Camellia cipher algorithms"
 	depends on CRYPTO
@@ -753,6 +816,9 @@ config CRYPTO_CAMELLIA
 	  <https://info.isl.ntt.co.jp/crypt/eng/camellia/index_s.html>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_CAMELLIA_X86_64
 	tristate "Camellia cipher algorithm (x86_64)"
 	depends on X86 && 64BIT
@@ -771,8 +837,11 @@ config CRYPTO_CAMELLIA_X86_64
 	  See also:
 	  <https://info.isl.ntt.co.jp/crypt/eng/camellia/index_s.html>
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_CAST5
 	tristate "CAST5 (CAST-128) cipher algorithm"
 	select CRYPTO_ALGAPI
@@ -882,6 +951,9 @@ config CRYPTO_SERPENT
 	  <http://www.cl.cam.ac.uk/~rja14/serpent.html>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_SERPENT_SSE2_X86_64
 	tristate "Serpent cipher algorithm (x86_64/SSE2)"
 	depends on X86 && 64BIT
@@ -922,8 +994,11 @@ config CRYPTO_SERPENT_SSE2_586
 	  See also:
 	  <http://www.cl.cam.ac.uk/~rja14/serpent.html>
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_TEA
 	tristate "TEA, XTEA and XETA cipher algorithms"
 	select CRYPTO_ALGAPI
@@ -995,6 +1070,9 @@ config CRYPTO_TWOFISH_X86_64
 	  <http://www.schneier.com/twofish.html>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CRYPTO_TWOFISH_X86_64_3WAY
 	tristate "Twofish cipher algorithm (x86_64, 3-way parallel)"
 	depends on X86 && 64BIT
@@ -1017,8 +1095,11 @@ config CRYPTO_TWOFISH_X86_64_3WAY
 	  See also:
 	  <http://www.schneier.com/twofish.html>
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "Compression"
 
 config CRYPTO_DEFLATE

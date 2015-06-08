@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/sh_fsi.h>
 
 static int fsi_da7210_init(struct snd_soc_pcm_runtime *rtd)
@@ -50,7 +54,11 @@ static struct snd_soc_card fsi_soc_card = {
 <<<<<<< HEAD
 	.owner		= THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner		= THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link	= &fsi_da7210_dai,
 	.num_links	= 1,
 };

@@ -33,9 +33,15 @@
 
 #define NUM_RX_DATA_QUEUES	16
 =======
+<<<<<<< HEAD
+#define CMAC_PN_LEN		6
+
+#define NUM_RX_DATA_QUEUES	16
+=======
 
 #define NUM_RX_DATA_QUEUES	17
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct ieee80211_local;
 struct ieee80211_sub_if_data;
@@ -47,16 +53,22 @@ struct sta_info;
  * @KEY_FLAG_UPLOADED_TO_HARDWARE: Indicates that this key is present
  *	in the hardware for TX crypto hardware acceleration.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @KEY_FLAG_TAINTED: Key is tainted and packets should be dropped.
  */
 enum ieee80211_internal_key_flags {
 	KEY_FLAG_UPLOADED_TO_HARDWARE	= BIT(0),
 	KEY_FLAG_TAINTED		= BIT(1),
+<<<<<<< HEAD
+=======
 =======
  */
 enum ieee80211_internal_key_flags {
 	KEY_FLAG_UPLOADED_TO_HARDWARE	= BIT(0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum ieee80211_internal_tkip_state {
@@ -67,15 +79,21 @@ enum ieee80211_internal_tkip_state {
 
 struct tkip_ctx {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 iv32;	/* current iv32 */
 	u16 iv16;	/* current iv16 */
 	u16 p1k[5];	/* p1k cache */
 	u32 p1k_iv32;	/* iv32 for which p1k computed */
+<<<<<<< HEAD
+=======
 =======
 	u32 iv32;
 	u16 iv16;
 	u16 p1k[5];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum ieee80211_internal_tkip_state state;
 };
 
@@ -97,7 +115,13 @@ struct ieee80211_key {
 			spinlock_t txlock;
 
 =======
+<<<<<<< HEAD
+			/* protects tx context */
+			spinlock_t txlock;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* last used TSC */
 			struct tkip_ctx tx;
 
@@ -108,8 +132,12 @@ struct ieee80211_key {
 <<<<<<< HEAD
 			atomic64_t tx_pn;
 =======
+<<<<<<< HEAD
+			atomic64_t tx_pn;
+=======
 			u8 tx_pn[6];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Last received packet number. The first
 			 * NUM_RX_DATA_QUEUES counters are used with Data
@@ -117,6 +145,9 @@ struct ieee80211_key {
 			 * Management frames.
 			 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			u8 rx_pn[NUM_RX_DATA_QUEUES + 1][CCMP_PN_LEN];
 			struct crypto_cipher *tfm;
 			u32 replays; /* dot11RSNAStatsCCMPReplays */
@@ -127,6 +158,8 @@ struct ieee80211_key {
 			struct crypto_cipher *tfm;
 			u32 replays; /* dot11RSNAStatsCMACReplays */
 			u32 icverrors; /* dot11RSNAStatsCMACICVErrors */
+<<<<<<< HEAD
+=======
 =======
 			u8 rx_pn[NUM_RX_DATA_QUEUES + 1][6];
 			struct crypto_cipher *tfm;
@@ -148,6 +181,7 @@ struct ieee80211_key {
 			u8 tx_crypto_buf[2 * AES_BLOCK_LEN];
 			u8 rx_crypto_buf[2 * AES_BLOCK_LEN];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} aes_cmac;
 	} u;
 

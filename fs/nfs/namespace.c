@@ -39,8 +39,11 @@ static struct vfsmount *nfs_do_submount(struct dentry *dentry,
  * @buflen - length of buffer
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @flags - options (see below)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Helper function for constructing the server pathname
  * by arbitrary hashed dentry.
@@ -48,6 +51,10 @@ static struct vfsmount *nfs_do_submount(struct dentry *dentry,
  * This is mainly for use in figuring out the path on the
  * server side when automounting on top of an existing partition
  * and in generating /proc/mounts and friends.
+<<<<<<< HEAD
+ */
+char *nfs_path(char **p, struct dentry *dentry, char *buffer, ssize_t buflen)
+=======
 <<<<<<< HEAD
  */
 char *nfs_path(char **p, struct dentry *dentry, char *buffer, ssize_t buflen)
@@ -61,6 +68,7 @@ char *nfs_path(char **p, struct dentry *dentry, char *buffer, ssize_t buflen)
 char *nfs_path(char **p, struct dentry *dentry, char *buffer, ssize_t buflen,
 	       unsigned flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *end;
 	int namelen;
@@ -96,8 +104,12 @@ rename_retry:
 <<<<<<< HEAD
 	if (*end != '/') {
 =======
+<<<<<<< HEAD
+	if (*end != '/') {
+=======
 	if ((flags & NFS_PATH_CANONICAL) && *end != '/') {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (--buflen < 0) {
 			spin_unlock(&dentry->d_lock);
 			rcu_read_unlock();
@@ -119,12 +131,18 @@ rename_retry:
 	while (namelen > 0 && base[namelen - 1] == '/')
 		namelen--;
 =======
+<<<<<<< HEAD
+	/* Strip off excess slashes in base string */
+	while (namelen > 0 && base[namelen - 1] == '/')
+		namelen--;
+=======
 	if (flags & NFS_PATH_CANONICAL) {
 		/* Strip off excess slashes in base string */
 		while (namelen > 0 && base[namelen - 1] == '/')
 			namelen--;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	buflen -= namelen;
 	if (buflen < 0) {
 		spin_unlock(&dentry->d_lock);
@@ -149,8 +167,12 @@ Elong:
 <<<<<<< HEAD
 rpc_authflavor_t nfs_find_best_sec(struct nfs4_secinfo_flavors *flavors)
 =======
+<<<<<<< HEAD
+rpc_authflavor_t nfs_find_best_sec(struct nfs4_secinfo_flavors *flavors)
+=======
 static rpc_authflavor_t nfs_find_best_sec(struct nfs4_secinfo_flavors *flavors)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct gss_api_mech *mech;
 	struct xdr_netobj oid;
@@ -180,6 +202,9 @@ static rpc_authflavor_t nfs_find_best_sec(struct nfs4_secinfo_flavors *flavors)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct rpc_clnt *nfs_lookup_mountpoint(struct inode *dir,
 					      struct qstr *name,
 					      struct nfs_fh *fh,
@@ -205,6 +230,8 @@ static inline struct rpc_clnt *nfs_lookup_mountpoint(struct inode *dir,
 	if (err)
 		return ERR_PTR(err);
 	return rpc_clone_client(NFS_SERVER(dir)->client);
+<<<<<<< HEAD
+=======
 =======
 static int nfs_negotiate_security(const struct dentry *parent,
 				  const struct dentry *dentry,
@@ -267,6 +294,7 @@ static inline int nfs_lookup_with_sec(struct nfs_server *server,
 {
 	return -EPERM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif /* CONFIG_NFS_V4 */
 
@@ -286,10 +314,15 @@ struct vfsmount *nfs_d_automount(struct path *path)
 {
 	struct vfsmount *mnt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *parent;
 	struct nfs_fh *fh = NULL;
 	struct nfs_fattr *fattr = NULL;
 	struct rpc_clnt *client;
+<<<<<<< HEAD
+=======
 =======
 	struct nfs_server *server = NFS_SERVER(path->dentry->d_inode);
 	struct dentry *parent;
@@ -298,6 +331,7 @@ struct vfsmount *nfs_d_automount(struct path *path)
 	int err;
 	rpc_authflavor_t flavor = RPC_AUTH_UNIX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprintk("--> nfs_d_automount()\n");
 
@@ -316,10 +350,15 @@ struct vfsmount *nfs_d_automount(struct path *path)
 	/* Look it up again to get its attributes */
 	parent = dget_parent(path->dentry);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	client = nfs_lookup_mountpoint(parent->d_inode, &path->dentry->d_name, fh, fattr);
 	dput(parent);
 	if (IS_ERR(client)) {
 		mnt = ERR_CAST(client);
+<<<<<<< HEAD
+=======
 =======
 	err = server->nfs_client->rpc_ops->lookup(server->client, parent->d_inode,
 						  &path->dentry->d_name,
@@ -330,21 +369,28 @@ struct vfsmount *nfs_d_automount(struct path *path)
 	if (err != 0) {
 		mnt = ERR_PTR(err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
 	if (fattr->valid & NFS_ATTR_FATTR_V4_REFERRAL)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mnt = nfs_do_refmount(client, path->dentry);
 	else
 		mnt = nfs_do_submount(path->dentry, fh, fattr, client->cl_auth->au_flavor);
 	rpc_shutdown_client(client);
 
+<<<<<<< HEAD
+=======
 =======
 		mnt = nfs_do_refmount(path->dentry);
 	else
 		mnt = nfs_do_submount(path->dentry, fh, fattr, flavor);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(mnt))
 		goto out;
 
@@ -358,13 +404,19 @@ out:
 	nfs_free_fhandle(fh);
 out_nofree:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(mnt))
 		dprintk("<-- %s(): error %ld\n", __func__, PTR_ERR(mnt));
 	else
 		dprintk("<-- %s() = %p\n", __func__, mnt);
+<<<<<<< HEAD
+=======
 =======
 	dprintk("<-- nfs_follow_mountpoint() = %p\n", mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mnt;
 }
 

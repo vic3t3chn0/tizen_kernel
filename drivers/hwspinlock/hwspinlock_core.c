@@ -117,7 +117,15 @@ int __hwspin_trylock(struct hwspinlock *hwlock, int mode, unsigned long *flags)
 		return -EBUSY;
 
 	/* try to take the hwspinlock device */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = hwlock->bank->ops->trylock(hwlock);
+=======
 	ret = hwlock->ops->trylock(hwlock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = hwlock->ops->trylock(hwlock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* if hwlock is already taken, undo spin_trylock_* and exit */
 	if (!ret) {
@@ -199,8 +207,18 @@ int __hwspin_lock_timeout(struct hwspinlock *hwlock, unsigned int to,
 		 * Allow platform-specific relax handlers to prevent
 		 * hogging the interconnect (no sleeping, though)
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (hwlock->bank->ops->relax)
+			hwlock->bank->ops->relax(hwlock);
+=======
 		if (hwlock->ops->relax)
 			hwlock->ops->relax(hwlock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (hwlock->ops->relax)
+			hwlock->ops->relax(hwlock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return ret;
@@ -245,7 +263,15 @@ void __hwspin_unlock(struct hwspinlock *hwlock, int mode, unsigned long *flags)
 	 */
 	mb();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hwlock->bank->ops->unlock(hwlock);
+=======
 	hwlock->ops->unlock(hwlock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hwlock->ops->unlock(hwlock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Undo the spin_trylock{_irq, _irqsave} called while locking */
 	if (mode == HWLOCK_IRQSTATE)
@@ -257,6 +283,12 @@ void __hwspin_unlock(struct hwspinlock *hwlock, int mode, unsigned long *flags)
 }
 EXPORT_SYMBOL_GPL(__hwspin_unlock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int hwspin_lock_register_single(struct hwspinlock *hwlock, int id)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * hwspin_lock_register() - register a new hw spinlock
  * @hwlock: hwspinlock to register.
@@ -269,10 +301,30 @@ EXPORT_SYMBOL_GPL(__hwspin_unlock);
  * Returns 0 on success, or an appropriate error code on failure
  */
 int hwspin_lock_register(struct hwspinlock *hwlock)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hwspinlock *tmp;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&hwspinlock_tree_lock);
+
+	ret = radix_tree_insert(&hwspinlock_tree, id, hwlock);
+	if (ret) {
+		if (ret == -EEXIST)
+			pr_err("hwspinlock id %d already exists!\n", id);
+		goto out;
+	}
+
+	/* mark this hwspinlock as available */
+	tmp = radix_tree_tag_set(&hwspinlock_tree, id, HWSPINLOCK_UNUSED);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!hwlock || !hwlock->ops ||
 		!hwlock->ops->trylock || !hwlock->ops->unlock) {
 		pr_err("invalid parameters\n");
@@ -290,12 +342,25 @@ int hwspin_lock_register(struct hwspinlock *hwlock)
 	/* mark this hwspinlock as available */
 	tmp = radix_tree_tag_set(&hwspinlock_tree, hwlock->id,
 							HWSPINLOCK_UNUSED);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* self-sanity check which should never fail */
 	WARN_ON(tmp != hwlock);
 
 out:
 	mutex_unlock(&hwspinlock_tree_lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+}
+
+static struct hwspinlock *hwspin_lock_unregister_single(unsigned int id)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL_GPL(hwspin_lock_register);
@@ -312,6 +377,10 @@ EXPORT_SYMBOL_GPL(hwspin_lock_register);
  * Returns the address of hwspinlock @id on success, or NULL on failure
  */
 struct hwspinlock *hwspin_lock_unregister(unsigned int id)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hwspinlock *hwlock = NULL;
 	int ret;
@@ -335,6 +404,94 @@ out:
 	mutex_unlock(&hwspinlock_tree_lock);
 	return hwlock;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/**
+ * hwspin_lock_register() - register a new hw spinlock device
+ * @bank: the hwspinlock device, which usually provides numerous hw locks
+ * @dev: the backing device
+ * @ops: hwspinlock handlers for this device
+ * @base_id: id of the first hardware spinlock in this bank
+ * @num_locks: number of hwspinlocks provided by this device
+ *
+ * This function should be called from the underlying platform-specific
+ * implementation, to register a new hwspinlock device instance.
+ *
+ * Should be called from a process context (might sleep)
+ *
+ * Returns 0 on success, or an appropriate error code on failure
+ */
+int hwspin_lock_register(struct hwspinlock_device *bank, struct device *dev,
+		const struct hwspinlock_ops *ops, int base_id, int num_locks)
+{
+	struct hwspinlock *hwlock;
+	int ret = 0, i;
+
+	if (!bank || !ops || !dev || !num_locks || !ops->trylock ||
+							!ops->unlock) {
+		pr_err("invalid parameters\n");
+		return -EINVAL;
+	}
+
+	bank->dev = dev;
+	bank->ops = ops;
+	bank->base_id = base_id;
+	bank->num_locks = num_locks;
+
+	for (i = 0; i < num_locks; i++) {
+		hwlock = &bank->lock[i];
+
+		spin_lock_init(&hwlock->lock);
+		hwlock->bank = bank;
+
+		ret = hwspin_lock_register_single(hwlock, i);
+		if (ret)
+			goto reg_failed;
+	}
+
+	return 0;
+
+reg_failed:
+	while (--i >= 0)
+		hwspin_lock_unregister_single(i);
+	return ret;
+}
+EXPORT_SYMBOL_GPL(hwspin_lock_register);
+
+/**
+ * hwspin_lock_unregister() - unregister an hw spinlock device
+ * @bank: the hwspinlock device, which usually provides numerous hw locks
+ *
+ * This function should be called from the underlying platform-specific
+ * implementation, to unregister an existing (and unused) hwspinlock.
+ *
+ * Should be called from a process context (might sleep)
+ *
+ * Returns 0 on success, or an appropriate error code on failure
+ */
+int hwspin_lock_unregister(struct hwspinlock_device *bank)
+{
+	struct hwspinlock *hwlock, *tmp;
+	int i;
+
+	for (i = 0; i < bank->num_locks; i++) {
+		hwlock = &bank->lock[i];
+
+		tmp = hwspin_lock_unregister_single(bank->base_id + i);
+		if (!tmp)
+			return -EBUSY;
+
+		/* self-sanity check that should never fail */
+		WARN_ON(tmp != hwlock);
+	}
+
+	return 0;
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(hwspin_lock_unregister);
 
 /**
@@ -349,24 +506,61 @@ EXPORT_SYMBOL_GPL(hwspin_lock_unregister);
  */
 static int __hwspin_lock_request(struct hwspinlock *hwlock)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct device *dev = hwlock->bank->dev;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hwspinlock *tmp;
 	int ret;
 
 	/* prevent underlying implementation from being removed */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!try_module_get(dev->driver->owner)) {
+		dev_err(dev, "%s: can't get owner\n", __func__);
+=======
 	if (!try_module_get(hwlock->owner)) {
 		dev_err(hwlock->dev, "%s: can't get owner\n", __func__);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!try_module_get(hwlock->owner)) {
+		dev_err(hwlock->dev, "%s: can't get owner\n", __func__);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
 	/* notify PM core that power is now needed */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = pm_runtime_get_sync(dev);
+	if (ret < 0) {
+		dev_err(dev, "%s: can't power on device\n", __func__);
+=======
 	ret = pm_runtime_get_sync(hwlock->dev);
 	if (ret < 0) {
 		dev_err(hwlock->dev, "%s: can't power on device\n", __func__);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = pm_runtime_get_sync(hwlock->dev);
+	if (ret < 0) {
+		dev_err(hwlock->dev, "%s: can't power on device\n", __func__);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
 	/* mark hwspinlock as used, should not fail */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tmp = radix_tree_tag_clear(&hwspinlock_tree, hwlock_to_id(hwlock),
+=======
 	tmp = radix_tree_tag_clear(&hwspinlock_tree, hwlock->id,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tmp = radix_tree_tag_clear(&hwspinlock_tree, hwlock->id,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							HWSPINLOCK_UNUSED);
 
 	/* self-sanity check that should never fail */
@@ -388,7 +582,15 @@ int hwspin_lock_get_id(struct hwspinlock *hwlock)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return hwlock_to_id(hwlock);
+=======
 	return hwlock->id;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return hwlock->id;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(hwspin_lock_get_id);
 
@@ -463,7 +665,15 @@ struct hwspinlock *hwspin_lock_request_specific(unsigned int id)
 	}
 
 	/* sanity check (this shouldn't happen) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	WARN_ON(hwlock_to_id(hwlock) != id);
+=======
 	WARN_ON(hwlock->id != id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	WARN_ON(hwlock->id != id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* make sure this hwspinlock is unused */
 	ret = radix_tree_tag_get(&hwspinlock_tree, id, HWSPINLOCK_UNUSED);
@@ -498,6 +708,13 @@ EXPORT_SYMBOL_GPL(hwspin_lock_request_specific);
  */
 int hwspin_lock_free(struct hwspinlock *hwlock)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct device *dev = hwlock->bank->dev;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hwspinlock *tmp;
 	int ret;
 
@@ -509,28 +726,65 @@ int hwspin_lock_free(struct hwspinlock *hwlock)
 	mutex_lock(&hwspinlock_tree_lock);
 
 	/* make sure the hwspinlock is used */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = radix_tree_tag_get(&hwspinlock_tree, hwlock_to_id(hwlock),
+							HWSPINLOCK_UNUSED);
+	if (ret == 1) {
+		dev_err(dev, "%s: hwlock is already free\n", __func__);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = radix_tree_tag_get(&hwspinlock_tree, hwlock->id,
 							HWSPINLOCK_UNUSED);
 	if (ret == 1) {
 		dev_err(hwlock->dev, "%s: hwlock is already free\n", __func__);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dump_stack();
 		ret = -EINVAL;
 		goto out;
 	}
 
 	/* notify the underlying device that power is not needed */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = pm_runtime_put(dev);
+=======
 	ret = pm_runtime_put(hwlock->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = pm_runtime_put(hwlock->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		goto out;
 
 	/* mark this hwspinlock as available */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tmp = radix_tree_tag_set(&hwspinlock_tree, hwlock_to_id(hwlock),
+=======
 	tmp = radix_tree_tag_set(&hwspinlock_tree, hwlock->id,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tmp = radix_tree_tag_set(&hwspinlock_tree, hwlock->id,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							HWSPINLOCK_UNUSED);
 
 	/* sanity check (this shouldn't happen) */
 	WARN_ON(tmp != hwlock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	module_put(dev->driver->owner);
+=======
 	module_put(hwlock->owner);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	module_put(hwlock->owner);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	mutex_unlock(&hwspinlock_tree_lock);

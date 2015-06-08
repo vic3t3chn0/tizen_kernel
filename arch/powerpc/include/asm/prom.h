@@ -19,10 +19,15 @@
 #include <linux/types.h>
 #include <asm/irq.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/atomic.h>
 
 #define HAVE_ARCH_DEVTREE_FIXUPS
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/atomic.h>
 
@@ -43,6 +48,7 @@ extern void pci_create_OF_bus_map(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * OF address retreival & translation
  */

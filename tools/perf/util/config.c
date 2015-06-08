@@ -1,12 +1,18 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * config.c
  *
  * Helper functions for parsing config items.
  * Originally copied from GIT source.
+<<<<<<< HEAD
+=======
 =======
  * GIT - The information manager from hell
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (C) Linus Torvalds, 2005
  * Copyright (C) Johannes Schindelin, 2005
@@ -351,8 +357,12 @@ static int perf_default_core_config(const char *var __used, const char *value __
 <<<<<<< HEAD
 	/* Add other config variables here. */
 =======
+<<<<<<< HEAD
+	/* Add other config variables here. */
+=======
 	/* Add other config variables here and to Documentation/config.txt. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -364,8 +374,12 @@ int perf_default_config(const char *var, const char *value, void *dummy __used)
 <<<<<<< HEAD
 	/* Add other config variables here. */
 =======
+<<<<<<< HEAD
+	/* Add other config variables here. */
+=======
 	/* Add other config variables here and to Documentation/config.txt. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -429,6 +443,9 @@ int perf_config(config_fn_t fn, void *data)
 	if (perf_config_global() && home) {
 		char *user_config = strdup(mkpath("%s/.perfconfig", home));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct stat st;
 
 		if (user_config == NULL) {
@@ -455,6 +472,8 @@ out_free:
 		free(user_config);
 	}
 out:
+<<<<<<< HEAD
+=======
 =======
 		if (!access(user_config, R_OK)) {
 			ret += perf_config_from_file(fn, user_config, data);
@@ -464,6 +483,7 @@ out:
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (found == 0)
 		return -1;
 	return ret;

@@ -26,7 +26,12 @@
 #include <asm/cp15.h>
 #include <asm/system_info.h>
 =======
+<<<<<<< HEAD
+#include <asm/cp15.h>
+#include <asm/system_info.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/unaligned.h>
 
 #include "fault.h"
@@ -91,6 +96,9 @@ core_param(alignment, ai_usermode, int, 0600);
 #define UM_SIGNAL	(1 << 2)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Return true if and only if the ARMv6 unaligned access model is in use. */
 static bool cpu_is_v6_unaligned(void)
 {
@@ -118,8 +126,11 @@ static int safe_usermode(int new_usermode, bool warn)
 	return new_usermode;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PROC_FS
 static const char *usermode_action[] = {
 	"ignored",
@@ -163,8 +174,12 @@ static ssize_t alignment_proc_write(struct file *file, const char __user *buffer
 <<<<<<< HEAD
 			ai_usermode = safe_usermode(mode - '0', true);
 =======
+<<<<<<< HEAD
+			ai_usermode = safe_usermode(mode - '0', true);
+=======
 			ai_usermode = mode - '0';
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return count;
 }
@@ -757,23 +772,32 @@ static int
 do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	union offset_union offset;
 	unsigned long instr = 0, instrptr;
 	int (*handler)(unsigned long addr, unsigned long instr, struct pt_regs *regs);
 	unsigned int type;
 	mm_segment_t fs;
+<<<<<<< HEAD
+=======
 =======
         union offset_union offset = {.un = 0};
 	unsigned long instr = 0, instrptr;
 	int (*handler)(unsigned long addr, unsigned long instr, struct pt_regs *regs);
 	unsigned int type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int fault;
 	u16 tinstr = 0;
 	int isize = 4;
 	int thumb2_32b = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (interrupts_enabled(regs))
 		local_irq_enable();
 
@@ -783,6 +807,8 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 	set_fs(KERNEL_DS);
 	if (thumb_mode(regs)) {
 		fault = __get_user(tinstr, (u16 *)(instrptr & ~1));
+<<<<<<< HEAD
+=======
 =======
 	instrptr = instruction_pointer(regs);
 
@@ -790,6 +816,7 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 		u16 *ptr = (u16 *)(instrptr & ~1);
 		fault = probe_kernel_address(ptr, tinstr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!fault) {
 			if (cpu_architecture() >= CPU_ARCH_ARMv7 &&
 			    IS_T32(tinstr)) {
@@ -798,8 +825,12 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 <<<<<<< HEAD
 				fault = __get_user(tinst2, (u16 *)(instrptr+2));
 =======
+<<<<<<< HEAD
+				fault = __get_user(tinst2, (u16 *)(instrptr+2));
+=======
 				fault = probe_kernel_address(ptr + 1, tinst2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				instr = (tinstr << 16) | tinst2;
 				thumb2_32b = 1;
 			} else {
@@ -812,8 +843,13 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 		fault = __get_user(instr, (u32 *)instrptr);
 	set_fs(fs);
 =======
+<<<<<<< HEAD
+		fault = __get_user(instr, (u32 *)instrptr);
+	set_fs(fs);
+=======
 		fault = probe_kernel_address(instrptr, instr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (fault) {
 		type = TYPE_FAULT;
@@ -890,14 +926,20 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 		if (thumb2_32b)
 			handler = do_alignment_t32_to_handler(&instr, regs, &offset);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else {
 			handler = do_alignment_ldmstm;
 			offset.un = 0;
 		}
+<<<<<<< HEAD
+=======
 =======
 		else
 			handler = do_alignment_ldmstm;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	default:
@@ -956,6 +998,9 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 		goto fixup;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ai_usermode & UM_SIGNAL) {
 		siginfo_t si;
 
@@ -966,11 +1011,14 @@ do_alignment(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
 
 		force_sig_info(si.si_signo, &si, current);
 	} else {
+<<<<<<< HEAD
+=======
 =======
 	if (ai_usermode & UM_SIGNAL)
 		force_sig(SIGBUS, current);
 	else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * We're about to disable the alignment trap and return to
 		 * user space.  But if an interrupt occurs before actually
@@ -1002,8 +1050,12 @@ static int __init alignment_init(void)
 <<<<<<< HEAD
 #ifdef CONFIG_PROC_FS
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PROC_FS
+=======
 #if defined(CONFIG_PROC_FS) && !defined(CONFIG_FAST_RESUME)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct proc_dir_entry *res;
 
 	res = proc_create("cpu/alignment", S_IWUSR | S_IRUGO, NULL,
@@ -1013,6 +1065,9 @@ static int __init alignment_init(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_is_v6_unaligned()) {
 		cr_alignment &= ~CR_A;
 		cr_no_alignment &= ~CR_A;
@@ -1021,6 +1076,8 @@ static int __init alignment_init(void)
 	}
 
 	hook_fault_code(FAULT_CODE_ALIGNMENT, do_alignment, SIGBUS, BUS_ADRALN,
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * ARMv6 and later CPUs can perform unaligned accesses for
@@ -1040,6 +1097,7 @@ static int __init alignment_init(void)
 
 	hook_fault_code(1, do_alignment, SIGBUS, BUS_ADRALN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"alignment exception");
 
 	/*
@@ -1060,9 +1118,14 @@ static int __init alignment_init(void)
 
 fs_initcall(alignment_init);
 =======
+<<<<<<< HEAD
+
+fs_initcall(alignment_init);
+=======
 #ifdef CONFIG_FAST_RESUME
 beforeresume_initcall(alignment_init);
 #else
 fs_initcall(alignment_init);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

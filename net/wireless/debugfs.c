@@ -15,6 +15,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int cfg80211_open_file_generic(struct inode *inode, struct file *file)
 {
 	file->private_data = inode->i_private;
@@ -22,6 +24,7 @@ static int cfg80211_open_file_generic(struct inode *inode, struct file *file)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DEBUGFS_READONLY_FILE(name, buflen, fmt, value...)		\
 static ssize_t name## _read(struct file *file, char __user *userbuf,	\
 			    size_t count, loff_t *ppos)			\
@@ -39,8 +42,12 @@ static const struct file_operations name## _ops = {			\
 <<<<<<< HEAD
 	.open = simple_open,						\
 =======
+<<<<<<< HEAD
+	.open = simple_open,						\
+=======
 	.open = cfg80211_open_file_generic,				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = generic_file_llseek,					\
 };
 
@@ -112,8 +119,12 @@ static const struct file_operations ht40allow_map_ops = {
 <<<<<<< HEAD
 	.open = simple_open,
 =======
+<<<<<<< HEAD
+	.open = simple_open,
+=======
 	.open = cfg80211_open_file_generic,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = default_llseek,
 };
 

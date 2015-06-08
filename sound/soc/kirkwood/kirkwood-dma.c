@@ -58,8 +58,12 @@ static struct snd_pcm_hardware kirkwood_dma_snd_hw = {
 <<<<<<< HEAD
 static u64 kirkwood_dma_dmamask = DMA_BIT_MASK(32);
 =======
+<<<<<<< HEAD
+static u64 kirkwood_dma_dmamask = DMA_BIT_MASK(32);
+=======
 static u64 kirkwood_dma_dmamask = 0xFFFFFFFFUL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static irqreturn_t kirkwood_dma_irq(int irq, void *dev_id)
 {
@@ -99,15 +103,21 @@ static irqreturn_t kirkwood_dma_irq(int irq, void *dev_id)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 kirkwood_dma_conf_mbus_windows(void __iomem *base, int win,
 			       unsigned long dma,
 			       const struct mbus_dram_target_info *dram)
+<<<<<<< HEAD
+=======
 =======
 static void kirkwood_dma_conf_mbus_windows(void __iomem *base, int win,
 					unsigned long dma,
 					struct mbus_dram_target_info *dram)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -120,8 +130,12 @@ static void kirkwood_dma_conf_mbus_windows(void __iomem *base, int win,
 <<<<<<< HEAD
 		const struct mbus_dram_window *cs = dram->cs + i;
 =======
+<<<<<<< HEAD
+		const struct mbus_dram_window *cs = dram->cs + i;
+=======
 		struct mbus_dram_window *cs = dram->cs + i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((cs->base & 0xffff0000) < (dma & 0xffff0000)) {
 			writel(cs->base & 0xffff0000,
 				base + KIRKWOOD_AUDIO_WIN_BASE_REG(win));
@@ -145,7 +159,11 @@ static int kirkwood_dma_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	const struct mbus_dram_target_info *dram;
 =======
+<<<<<<< HEAD
+	const struct mbus_dram_target_info *dram;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long addr;
 
 	priv = snd_soc_dai_get_dma_data(cpu_dai, substream);
@@ -197,17 +215,26 @@ static int kirkwood_dma_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	dram = mv_mbus_dram_info();
 =======
+<<<<<<< HEAD
+	dram = mv_mbus_dram_info();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addr = virt_to_phys(substream->dma_buffer.area);
 	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
 		prdata->play_stream = substream;
 		kirkwood_dma_conf_mbus_windows(priv->io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			KIRKWOOD_PLAYBACK_WIN, addr, dram);
 	} else {
 		prdata->rec_stream = substream;
 		kirkwood_dma_conf_mbus_windows(priv->io,
 			KIRKWOOD_RECORD_WIN, addr, dram);
+<<<<<<< HEAD
+=======
 =======
 			KIRKWOOD_PLAYBACK_WIN, addr, priv->dram);
 	} else {
@@ -215,6 +242,7 @@ static int kirkwood_dma_open(struct snd_pcm_substream *substream)
 		kirkwood_dma_conf_mbus_windows(priv->io,
 			KIRKWOOD_RECORD_WIN, addr, priv->dram);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -344,15 +372,21 @@ static int kirkwood_dma_preallocate_dma_buffer(struct snd_pcm *pcm,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int kirkwood_dma_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static int kirkwood_dma_new(struct snd_card *card,
 		struct snd_soc_dai *dai, struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	if (!card->dev->dma_mask)
@@ -363,10 +397,16 @@ static int kirkwood_dma_new(struct snd_card *card,
 
 	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
 =======
+<<<<<<< HEAD
+		card->dev->coherent_dma_mask = DMA_BIT_MASK(32);
+
+	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
+=======
 		card->dev->coherent_dma_mask = 0xffffffff;
 
 	if (dai->driver->playback.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = kirkwood_dma_preallocate_dma_buffer(pcm,
 				SNDRV_PCM_STREAM_PLAYBACK);
 		if (ret)
@@ -376,8 +416,12 @@ static int kirkwood_dma_new(struct snd_card *card,
 <<<<<<< HEAD
 	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
 =======
+<<<<<<< HEAD
+	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
+=======
 	if (dai->driver->capture.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = kirkwood_dma_preallocate_dma_buffer(pcm,
 				SNDRV_PCM_STREAM_CAPTURE);
 		if (ret)
@@ -437,6 +481,9 @@ static struct platform_driver kirkwood_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(kirkwood_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(kirkwood_pcm_driver);
+=======
 static int __init kirkwood_pcm_init(void)
 {
 	return platform_driver_register(&kirkwood_pcm_driver);
@@ -449,6 +496,7 @@ static void __exit kirkwood_pcm_exit(void)
 }
 module_exit(kirkwood_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Arnaud Patard <arnaud.patard@rtp-net.org>");
 MODULE_DESCRIPTION("Marvell Kirkwood Audio DMA module");

@@ -34,7 +34,15 @@ static void x25_connect_disconnect(struct net_device *dev, int reason, int code)
 	unsigned char *ptr;
 
 	if ((skb = dev_alloc_skb(1)) == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		netdev_err(dev, "out of memory\n");
+=======
 		printk(KERN_ERR "%s: out of memory\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "%s: out of memory\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -106,9 +114,20 @@ static netdev_tx_t x25_xmit(struct sk_buff *skb, struct net_device *dev)
 				/* Send connect confirm. msg to level 3 */
 				x25_connected(dev, 0);
 			else
+<<<<<<< HEAD
+<<<<<<< HEAD
+				netdev_err(dev, "LAPB connect request failed, error code = %i\n",
+					   result);
+=======
 				printk(KERN_ERR "%s: LAPB connect request "
 				       "failed, error code = %i\n",
 				       dev->name, result);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				printk(KERN_ERR "%s: LAPB connect request "
+				       "failed, error code = %i\n",
+				       dev->name, result);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
@@ -118,9 +137,20 @@ static netdev_tx_t x25_xmit(struct sk_buff *skb, struct net_device *dev)
 				/* Send disconnect confirm. msg to level 3 */
 				x25_disconnected(dev, 0);
 			else
+<<<<<<< HEAD
+<<<<<<< HEAD
+				netdev_err(dev, "LAPB disconnect request failed, error code = %i\n",
+					   result);
+=======
 				printk(KERN_ERR "%s: LAPB disconnect request "
 				       "failed, error code = %i\n",
 				       dev->name, result);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				printk(KERN_ERR "%s: LAPB disconnect request "
+				       "failed, error code = %i\n",
+				       dev->name, result);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
@@ -136,6 +166,20 @@ static netdev_tx_t x25_xmit(struct sk_buff *skb, struct net_device *dev)
 
 static int x25_open(struct net_device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int result;
+	static const struct lapb_register_struct cb = {
+		.connect_confirmation = x25_connected,
+		.connect_indication = x25_connected,
+		.disconnect_confirmation = x25_disconnected,
+		.disconnect_indication = x25_disconnected,
+		.data_indication = x25_data_indication,
+		.data_transmit = x25_data_transmit,
+	};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct lapb_register_struct cb;
 	int result;
 
@@ -145,6 +189,10 @@ static int x25_open(struct net_device *dev)
 	cb.disconnect_indication = x25_disconnected;
 	cb.data_indication = x25_data_indication;
 	cb.data_transmit = x25_data_transmit;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	result = lapb_register(dev, &cb);
 	if (result != LAPB_OK)

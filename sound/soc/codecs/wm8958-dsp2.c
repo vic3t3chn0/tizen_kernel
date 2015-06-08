@@ -59,8 +59,13 @@ static int wm8958_dsp2_fw(struct snd_soc_codec *codec, const char *name,
 		dev_err(codec->dev, "%s: firmware too short (%zd bytes)\n",
 			name, fw->size);
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev, "%s: firmware too short (%zd bytes)\n",
+			name, fw->size);
+=======
 		dev_err(codec->dev, "%s: firmware too short\n", name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err;
 	}
 
@@ -69,7 +74,12 @@ static int wm8958_dsp2_fw(struct snd_soc_codec *codec, const char *name,
 		memcpy(&data32, fw->data, sizeof(data32));
 		data32 = be32_to_cpu(data32);
 =======
+<<<<<<< HEAD
+		memcpy(&data32, fw->data, sizeof(data32));
+		data32 = be32_to_cpu(data32);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(codec->dev, "%s: firmware has bad file magic %08x\n",
 			name, data32);
 		goto err;
@@ -928,11 +938,16 @@ void wm8958_dsp2_init(struct snd_soc_codec *codec)
 	wm8994->dsp_active = -1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_add_codec_controls(codec, wm8958_mbc_snd_controls,
 			     ARRAY_SIZE(wm8958_mbc_snd_controls));
 	snd_soc_add_codec_controls(codec, wm8958_vss_snd_controls,
 			     ARRAY_SIZE(wm8958_vss_snd_controls));
 	snd_soc_add_codec_controls(codec, wm8958_enh_eq_snd_controls,
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_add_controls(codec, wm8958_mbc_snd_controls,
 			     ARRAY_SIZE(wm8958_mbc_snd_controls));
@@ -940,6 +955,7 @@ void wm8958_dsp2_init(struct snd_soc_codec *codec)
 			     ARRAY_SIZE(wm8958_vss_snd_controls));
 	snd_soc_add_controls(codec, wm8958_enh_eq_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(wm8958_enh_eq_snd_controls));
 
 
@@ -976,8 +992,12 @@ void wm8958_dsp2_init(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
 =======
+<<<<<<< HEAD
+		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
+=======
 		ret = snd_soc_add_controls(wm8994->codec, control, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret != 0)
 			dev_err(wm8994->codec->dev,
 				"Failed to add MBC mode controls: %d\n", ret);
@@ -1008,8 +1028,12 @@ void wm8958_dsp2_init(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
 =======
+<<<<<<< HEAD
+		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
+=======
 		ret = snd_soc_add_controls(wm8994->codec, control, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret != 0)
 			dev_err(wm8994->codec->dev,
 				"Failed to add VSS mode controls: %d\n", ret);
@@ -1041,8 +1065,12 @@ void wm8958_dsp2_init(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
 =======
+<<<<<<< HEAD
+		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
+=======
 		ret = snd_soc_add_controls(wm8994->codec, control, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret != 0)
 			dev_err(wm8994->codec->dev,
 				"Failed to add VSS HPFmode controls: %d\n",
@@ -1075,8 +1103,12 @@ void wm8958_dsp2_init(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
 =======
+<<<<<<< HEAD
+		ret = snd_soc_add_codec_controls(wm8994->codec, control, 1);
+=======
 		ret = snd_soc_add_controls(wm8994->codec, control, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret != 0)
 			dev_err(wm8994->codec->dev,
 				"Failed to add enhanced EQ controls: %d\n",

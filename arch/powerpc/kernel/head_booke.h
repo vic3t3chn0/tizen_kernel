@@ -21,6 +21,9 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Macro used to get to thread save registers.
  * Note that entries 0-3 are used for the prolog code, and the remaining
@@ -58,6 +61,8 @@
 	mfspr	r9,SPRN_SRR1;						     \
 	stw	r1, 0(r11);						     \
 	mr	r1, r11;						     \
+<<<<<<< HEAD
+=======
 =======
 #define NORMAL_EXCEPTION_PROLOG						     \
 	mtspr	SPRN_SPRG_WSCRATCH0,r10;/* save two registers to work with */\
@@ -87,6 +92,7 @@
 	mfspr	r9,SPRN_SRR1;						     \
 	stw	r10,0(r11);						     \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rlwinm	r9,r9,0,14,12;		/* clear MSR_WE (necessary?)	   */\
 	stw	r0,GPR0(r11);						     \
 	lis	r10, STACK_FRAME_REGS_MARKER@ha;/* exception frame marker */ \
@@ -392,8 +398,12 @@ label:
 <<<<<<< HEAD
 	EXC_XFER_LITE(0x0300, handle_page_fault)
 =======
+<<<<<<< HEAD
+	EXC_XFER_LITE(0x0300, handle_page_fault)
+=======
 	EXC_XFER_EE_LITE(0x0300, handle_page_fault)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define INSTRUCTION_STORAGE_EXCEPTION					      \
 	START_EXCEPTION(InstructionStorage)				      \
@@ -405,8 +415,12 @@ label:
 <<<<<<< HEAD
 	EXC_XFER_LITE(0x0400, handle_page_fault)
 =======
+<<<<<<< HEAD
+	EXC_XFER_LITE(0x0400, handle_page_fault)
+=======
 	EXC_XFER_EE_LITE(0x0400, handle_page_fault)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ALIGNMENT_EXCEPTION						      \
 	START_EXCEPTION(Alignment)					      \

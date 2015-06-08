@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sysrq.h>
 #include <linux/interrupt.h>
 #include <linux/irq.h>
@@ -48,10 +52,16 @@
 #include <asm/reg.h>
 #include <asm/debug.h>
 =======
+<<<<<<< HEAD
+#include <asm/setjmp.h>
+#include <asm/reg.h>
+#include <asm/debug.h>
+=======
 #include <asm/firmware.h>
 #include <asm/setjmp.h>
 #include <asm/reg.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC64
 #include <asm/hvcall.h>
@@ -239,11 +249,16 @@ Commands:\n\
   x	exit monitor and recover\n\
   X	exit monitor and dont recover\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_PPC64) && !defined(CONFIG_PPC_BOOK3E)
 "  u	dump segment table or SLB\n"
 #elif defined(CONFIG_PPC_STD_MMU_32)
 "  u	dump segment registers\n"
 #elif defined(CONFIG_44x) || defined(CONFIG_PPC_BOOK3E)
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_PPC64
 "  u	dump segment table or SLB\n"
@@ -253,6 +268,7 @@ Commands:\n\
 #endif
 #ifdef CONFIG_44x
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 "  u	dump TLB\n"
 #endif
 "  ?	help\n"
@@ -362,9 +378,14 @@ static inline int unrecoverable_excp(struct pt_regs *regs)
 #if defined(CONFIG_4xx) || defined(CONFIG_PPC_BOOK3E)
 	/* We have no MSR_RI bit on 4xx or Book3e, so we simply return false */
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_4xx) || defined(CONFIG_PPC_BOOK3E)
+	/* We have no MSR_RI bit on 4xx or Book3e, so we simply return false */
+=======
 #ifdef CONFIG_4xx
 	/* We have no MSR_RI bit on 4xx, so we simply return false */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 #else
 	return ((regs->msr & MSR_RI) == 0);
@@ -909,11 +930,16 @@ cmds(struct pt_regs *excp)
 			dump_segments();
 			break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_4xx)
 		case 'u':
 			dump_tlb_44x();
 			break;
 #elif defined(CONFIG_PPC_BOOK3E)
+<<<<<<< HEAD
+=======
 =======
 #endif
 #ifdef CONFIG_4xx
@@ -923,6 +949,7 @@ cmds(struct pt_regs *excp)
 #endif
 #ifdef CONFIG_PPC_BOOK3E
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case 'u':
 			dump_tlb_book3e();
 			break;
@@ -1009,8 +1036,12 @@ static int cpu_cmd(void)
 <<<<<<< HEAD
 		for (cpu = 0; cpu < NR_CPUS; ++cpu) {
 =======
+<<<<<<< HEAD
+		for (cpu = 0; cpu < NR_CPUS; ++cpu) {
+=======
 		for_each_possible_cpu(cpu) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (cpumask_test_cpu(cpu, &cpus_in_xmon)) {
 				if (count == 0)
 					printf(" %x", cpu);
@@ -1480,8 +1511,13 @@ static void excprint(struct pt_regs *fp)
 	printf("  paca    = 0x%lx\t softe: %d\t irq_happened: 0x%02x\n",
 	       local_paca, local_paca->soft_enabled, local_paca->irq_happened);
 =======
+<<<<<<< HEAD
+	printf("  paca    = 0x%lx\t softe: %d\t irq_happened: 0x%02x\n",
+	       local_paca, local_paca->soft_enabled, local_paca->irq_happened);
+=======
 	printf("  paca    = 0x%lx\n", get_paca());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	if (current) {
 		printf("    pid   = %ld, comm = %s\n",
@@ -1680,6 +1716,8 @@ static void super_regs(void)
 		printf("toc  = "REG"  dar  = "REG"\n", toc, mfspr(SPRN_DAR));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ISERIES
 		if (firmware_has_feature(FW_FEATURE_ISERIES)) {
 			struct paca_struct *ptrPaca;
@@ -1700,6 +1738,7 @@ static void super_regs(void)
 		}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		return;
 	}
@@ -2694,8 +2733,12 @@ static void dump_stab(void)
 <<<<<<< HEAD
 	unsigned long *tmp = (unsigned long *)local_paca->stab_addr;
 =======
+<<<<<<< HEAD
+	unsigned long *tmp = (unsigned long *)local_paca->stab_addr;
+=======
 	unsigned long *tmp = (unsigned long *)get_paca()->stab_addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printf("Segment table contents of cpu %x\n", smp_processor_id());
 
@@ -2908,11 +2951,14 @@ static void xmon_init(int enable)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ISERIES
 	if (firmware_has_feature(FW_FEATURE_ISERIES))
 		return;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (enable) {
 		__debugger = xmon;
 		__debugger_ipi = xmon_ipi;
@@ -2951,11 +2997,14 @@ static int __init setup_xmon_sysrq(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ISERIES
 	if (firmware_has_feature(FW_FEATURE_ISERIES))
 		return 0;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	register_sysrq_key('x', &sysrq_xmon_op);
 	return 0;
 }

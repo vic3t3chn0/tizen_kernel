@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/core.h>
 #include "hda_codec.h"
@@ -35,7 +39,11 @@
 <<<<<<< HEAD
 #include "hda_jack.h"
 =======
+<<<<<<< HEAD
+#include "hda_jack.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct ad198x_spec {
 	const struct snd_kcontrol_new *mixers[6];
@@ -60,7 +68,12 @@ struct ad198x_spec {
 	int independent_hp;
 	int num_active_streams;
 =======
+<<<<<<< HEAD
+	int independent_hp;
+	int num_active_streams;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* capture */
 	unsigned int num_adc_nids;
@@ -94,7 +107,11 @@ struct ad198x_spec {
 <<<<<<< HEAD
 	unsigned int avoid_init_slave_vol:1;
 =======
+<<<<<<< HEAD
+	unsigned int avoid_init_slave_vol:1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SND_HDA_POWER_SAVE
 	struct hda_loopback_check loopback;
@@ -151,6 +168,9 @@ static int ad198x_init(struct hda_codec *codec)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char * const ad_slave_pfxs[] = {
 	"Front", "Surround", "Center", "LFE", "Side",
 	"Headphone", "Mono", "Speaker", "IEC958",
@@ -162,6 +182,8 @@ static const char * const ad1988_6stack_fp_slave_pfxs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+=======
 =======
 static const char * const ad_slave_vols[] = {
 	"Front Playback Volume",
@@ -209,6 +231,7 @@ static const char * const ad1988_6stack_fp_slave_sws[] = {
 	NULL
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ad198x_free_kctls(struct hda_codec *codec);
 
 #ifdef CONFIG_SND_HDA_INPUT_BEEP
@@ -249,8 +272,14 @@ static int ad198x_build_controls(struct hda_codec *codec)
 						    spec->multiout.dig_out_nid,
 						    spec->multiout.dig_out_nid);
 =======
+<<<<<<< HEAD
+		err = snd_hda_create_spdif_out_ctls(codec,
+						    spec->multiout.dig_out_nid,
+						    spec->multiout.dig_out_nid);
+=======
 		err = snd_hda_create_spdif_out_ctls(codec, spec->multiout.dig_out_nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 		err = snd_hda_create_spdif_share_sw(codec,
@@ -289,18 +318,24 @@ static int ad198x_build_controls(struct hda_codec *codec)
 		snd_hda_set_vmaster_tlv(codec, spec->vmaster_nid,
 					HDA_OUTPUT, vmaster_tlv);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = __snd_hda_add_vmaster(codec, "Master Playback Volume",
 					  vmaster_tlv,
 					  (spec->slave_vols ?
 					   spec->slave_vols : ad_slave_pfxs),
 					  "Playback Volume",
 					  !spec->avoid_init_slave_vol, NULL);
+<<<<<<< HEAD
+=======
 =======
 		err = snd_hda_add_vmaster(codec, "Master Playback Volume",
 					  vmaster_tlv,
 					  (spec->slave_vols ?
 					   spec->slave_vols : ad_slave_vols));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 	}
@@ -312,8 +347,13 @@ static int ad198x_build_controls(struct hda_codec *codec)
 					   spec->slave_sws : ad_slave_pfxs),
 					  "Playback Switch");
 =======
+<<<<<<< HEAD
+					   spec->slave_sws : ad_slave_pfxs),
+					  "Playback Switch");
+=======
 					   spec->slave_sws : ad_slave_sws));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 	}
@@ -352,6 +392,9 @@ static int ad198x_check_power_status(struct hda_codec *codec, hda_nid_t nid)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void activate_ctl(struct hda_codec *codec, const char *name, int active)
 {
 	struct snd_kcontrol *ctl = snd_hda_find_mixer_ctl(codec, name);
@@ -418,8 +461,11 @@ static int ad1988_independent_hp_put(struct snd_kcontrol *kcontrol,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Analog playback callbacks
  */
@@ -429,6 +475,9 @@ static int ad198x_playback_pcm_open(struct hda_pcm_stream *hinfo,
 {
 	struct ad198x_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	set_stream_active(codec, true);
 	err = snd_hda_multi_out_analog_open(codec, &spec->multiout, substream,
@@ -438,10 +487,13 @@ static int ad198x_playback_pcm_open(struct hda_pcm_stream *hinfo,
 		return err;
 	}
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return snd_hda_multi_out_analog_open(codec, &spec->multiout, substream,
 					     hinfo);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ad198x_playback_pcm_prepare(struct hda_pcm_stream *hinfo,
@@ -464,6 +516,9 @@ static int ad198x_playback_pcm_cleanup(struct hda_pcm_stream *hinfo,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ad198x_playback_pcm_close(struct hda_pcm_stream *hinfo,
 				 struct hda_codec *codec,
 				 struct snd_pcm_substream *substream)
@@ -491,20 +546,29 @@ static int ad1988_alt_playback_pcm_close(struct hda_pcm_stream *hinfo,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hda_pcm_stream ad198x_pcm_analog_alt_playback = {
 	.substreams = 1,
 	.channels_min = 2,
 	.channels_max = 2,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = {
 		.open  = ad1988_alt_playback_pcm_open,
 		.close = ad1988_alt_playback_pcm_close
 	},
+<<<<<<< HEAD
+=======
 =======
 	/* NID is set in ad198x_build_pcms */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -571,8 +635,11 @@ static int ad198x_capture_pcm_cleanup(struct hda_pcm_stream *hinfo,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  */
 static const struct hda_pcm_stream ad198x_pcm_analog_playback = {
@@ -587,8 +654,13 @@ static const struct hda_pcm_stream ad198x_pcm_analog_playback = {
 		.cleanup = ad198x_playback_pcm_cleanup,
 		.close = ad198x_playback_pcm_close
 =======
+<<<<<<< HEAD
+		.cleanup = ad198x_playback_pcm_cleanup,
+		.close = ad198x_playback_pcm_close
+=======
 		.cleanup = ad198x_playback_pcm_cleanup
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -644,8 +716,11 @@ static int ad198x_build_pcms(struct hda_codec *codec)
 		codec->num_pcms++;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		codec->spdif_status_reset = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info->name = "AD198x Digital";
 		info->pcm_type = HDA_PCM_TYPE_SPDIF;
 		info->stream[SNDRV_PCM_STREAM_PLAYBACK] = ad198x_pcm_digital_playback;
@@ -745,8 +820,12 @@ static void ad198x_free(struct hda_codec *codec)
 <<<<<<< HEAD
 #ifdef CONFIG_PM
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+=======
 #ifdef SND_HDA_NEEDS_RESUME
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ad198x_suspend(struct hda_codec *codec, pm_message_t state)
 {
 	ad198x_shutup(codec);
@@ -765,8 +844,12 @@ static const struct hda_codec_ops ad198x_patch_ops = {
 <<<<<<< HEAD
 #ifdef CONFIG_PM
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+=======
 #ifdef SND_HDA_NEEDS_RESUME
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.suspend = ad198x_suspend,
 #endif
 	.reboot_notify = ad198x_shutup,
@@ -2113,8 +2196,13 @@ static int patch_ad1981(struct hda_codec *codec)
 		if (!is_jack_available(codec, 0x0a))
 			spec->multiout.dig_out_nid = 0;
 =======
+<<<<<<< HEAD
+		if (!is_jack_available(codec, 0x0a))
+			spec->multiout.dig_out_nid = 0;
+=======
 		spec->multiout.dig_out_nid = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spec->input_mux = &ad1981_hp_capture_source;
 
 		codec->patch_ops.init = ad1981_hp_init;
@@ -2251,8 +2339,11 @@ enum {
 	AD1988_6STACK_DIG,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	AD1988_6STACK_DIG_FP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	AD1988_3STACK,
 	AD1988_3STACK_DIG,
 	AD1988_LAPTOP,
@@ -2363,6 +2454,9 @@ static int ad198x_ch_mode_put(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_kcontrol_new ad1988_hp_mixers[] = {
 	{
 		.iface = SNDRV_CTL_ELEM_IFACE_MIXER,
@@ -2374,8 +2468,11 @@ static const struct snd_kcontrol_new ad1988_hp_mixers[] = {
 	{ } /* end */
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 6-stack mode */
 static const struct snd_kcontrol_new ad1988_6stack_mixers1[] = {
 	HDA_CODEC_VOLUME("Front Playback Volume", 0x04, 0x0, HDA_OUTPUT),
@@ -2399,7 +2496,11 @@ static const struct snd_kcontrol_new ad1988_6stack_mixers2[] = {
 <<<<<<< HEAD
 	HDA_CODEC_VOLUME("Headphone Playback Volume", 0x03, 0x0, HDA_OUTPUT),
 =======
+<<<<<<< HEAD
+	HDA_CODEC_VOLUME("Headphone Playback Volume", 0x03, 0x0, HDA_OUTPUT),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HDA_BIND_MUTE("Front Playback Switch", 0x29, 2, HDA_INPUT),
 	HDA_BIND_MUTE("Surround Playback Switch", 0x2a, 2, HDA_INPUT),
 	HDA_BIND_MUTE_MONO("Center Playback Switch", 0x27, 1, 2, HDA_INPUT),
@@ -2424,6 +2525,8 @@ static const struct snd_kcontrol_new ad1988_6stack_mixers2[] = {
 	HDA_CODEC_VOLUME("Mic Boost Volume", 0x3c, 0x0, HDA_OUTPUT),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	{ } /* end */
 };
@@ -2432,6 +2535,7 @@ static const struct snd_kcontrol_new ad1988_6stack_fp_mixers[] = {
 	HDA_CODEC_VOLUME("Headphone Playback Volume", 0x03, 0x0, HDA_OUTPUT),
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ } /* end */
 };
 
@@ -2456,7 +2560,11 @@ static const struct snd_kcontrol_new ad1988_3stack_mixers2[] = {
 <<<<<<< HEAD
 	HDA_CODEC_VOLUME("Headphone Playback Volume", 0x03, 0x0, HDA_OUTPUT),
 =======
+<<<<<<< HEAD
+	HDA_CODEC_VOLUME("Headphone Playback Volume", 0x03, 0x0, HDA_OUTPUT),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HDA_BIND_MUTE("Front Playback Switch", 0x29, 2, HDA_INPUT),
 	HDA_BIND_MUTE("Surround Playback Switch", 0x2c, 2, HDA_INPUT),
 	HDA_BIND_MUTE_MONO("Center Playback Switch", 0x26, 1, 2, HDA_INPUT),
@@ -2494,7 +2602,11 @@ static const struct snd_kcontrol_new ad1988_laptop_mixers[] = {
 <<<<<<< HEAD
 	HDA_CODEC_VOLUME("Headphone Playback Volume", 0x03, 0x0, HDA_OUTPUT),
 =======
+<<<<<<< HEAD
+	HDA_CODEC_VOLUME("Headphone Playback Volume", 0x03, 0x0, HDA_OUTPUT),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HDA_CODEC_VOLUME("PCM Playback Volume", 0x04, 0x0, HDA_OUTPUT),
 	HDA_CODEC_MUTE("PCM Playback Switch", 0x29, 0x0, HDA_INPUT),
 	HDA_BIND_MUTE("Mono Playback Switch", 0x1e, 2, HDA_INPUT),
@@ -2672,8 +2784,12 @@ static const struct hda_verb ad1988_6stack_init_verbs[] = {
 <<<<<<< HEAD
 	{0x37, AC_VERB_SET_CONNECT_SEL, 0x00}, /* DAC0:03h */
 =======
+<<<<<<< HEAD
+	{0x37, AC_VERB_SET_CONNECT_SEL, 0x00}, /* DAC0:03h */
+=======
 	{0x37, AC_VERB_SET_CONNECT_SEL, 0x01}, /* DAC1:04h */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0x22, AC_VERB_SET_AMP_GAIN_MUTE, AMP_IN_MUTE(0)},
 	{0x22, AC_VERB_SET_AMP_GAIN_MUTE, AMP_IN_MUTE(1)},
 	{0x11, AC_VERB_SET_AMP_GAIN_MUTE, AMP_OUT_UNMUTE},
@@ -2824,8 +2940,12 @@ static const struct hda_verb ad1988_3stack_init_verbs[] = {
 <<<<<<< HEAD
 	{0x37, AC_VERB_SET_CONNECT_SEL, 0x00}, /* DAC0:03h */
 =======
+<<<<<<< HEAD
+	{0x37, AC_VERB_SET_CONNECT_SEL, 0x00}, /* DAC0:03h */
+=======
 	{0x37, AC_VERB_SET_CONNECT_SEL, 0x01}, /* DAC1:04h */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0x22, AC_VERB_SET_AMP_GAIN_MUTE, AMP_IN_MUTE(0)},
 	{0x22, AC_VERB_SET_AMP_GAIN_MUTE, AMP_IN_MUTE(1)},
 	{0x11, AC_VERB_SET_AMP_GAIN_MUTE, AMP_OUT_UNMUTE},
@@ -2903,8 +3023,12 @@ static const struct hda_verb ad1988_laptop_init_verbs[] = {
 <<<<<<< HEAD
 	{0x37, AC_VERB_SET_CONNECT_SEL, 0x00}, /* DAC0:03h */
 =======
+<<<<<<< HEAD
+	{0x37, AC_VERB_SET_CONNECT_SEL, 0x00}, /* DAC0:03h */
+=======
 	{0x37, AC_VERB_SET_CONNECT_SEL, 0x01}, /* DAC1:04h */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0x22, AC_VERB_SET_AMP_GAIN_MUTE, AMP_IN_MUTE(0)},
 	{0x22, AC_VERB_SET_AMP_GAIN_MUTE, AMP_IN_MUTE(1)},
 	{0x11, AC_VERB_SET_AMP_GAIN_MUTE, AMP_OUT_UNMUTE},
@@ -3018,11 +3142,16 @@ static inline hda_nid_t ad1988_idx_to_dac(struct hda_codec *codec, int idx)
 	static const hda_nid_t idx_to_dac[8] = {
 		/* A     B     C     D     E     F     G     H */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		0x03, 0x06, 0x05, 0x04, 0x0a, 0x06, 0x05, 0x0a
 	};
 	static const hda_nid_t idx_to_dac_rev2[8] = {
 		/* A     B     C     D     E     F     G     H */
 		0x03, 0x05, 0x0a, 0x04, 0x06, 0x05, 0x0a, 0x06
+<<<<<<< HEAD
+=======
 =======
 		0x04, 0x06, 0x05, 0x04, 0x0a, 0x06, 0x05, 0x0a
 	};
@@ -3030,6 +3159,7 @@ static inline hda_nid_t ad1988_idx_to_dac(struct hda_codec *codec, int idx)
 		/* A     B     C     D     E     F     G     H */
 		0x04, 0x05, 0x0a, 0x04, 0x06, 0x05, 0x0a, 0x06
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 	if (is_rev2(codec))
 		return idx_to_dac_rev2[idx];
@@ -3270,9 +3400,14 @@ static void ad1988_auto_set_output_and_unmute(struct hda_codec *codec,
 	case 0x11: /* port-A - DAC 03 */
 		snd_hda_codec_write(codec, 0x37, 0, AC_VERB_SET_CONNECT_SEL, 0x00);
 =======
+<<<<<<< HEAD
+	case 0x11: /* port-A - DAC 03 */
+		snd_hda_codec_write(codec, 0x37, 0, AC_VERB_SET_CONNECT_SEL, 0x00);
+=======
 	case 0x11: /* port-A - DAC 04 */
 		snd_hda_codec_write(codec, 0x37, 0, AC_VERB_SET_CONNECT_SEL, 0x01);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case 0x14: /* port-B - DAC 06 */
 		snd_hda_codec_write(codec, 0x30, 0, AC_VERB_SET_CONNECT_SEL, 0x02);
@@ -3400,8 +3535,11 @@ static const char * const ad1988_models[AD1988_MODEL_LAST] = {
 	[AD1988_6STACK_DIG]	= "6stack-dig",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	[AD1988_6STACK_DIG_FP]	= "6stack-dig-fp",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[AD1988_3STACK]		= "3stack",
 	[AD1988_3STACK_DIG]	= "3stack-dig",
 	[AD1988_LAPTOP]		= "laptop",
@@ -3460,17 +3598,23 @@ static int patch_ad1988(struct hda_codec *codec)
 	set_beep_amp(spec, 0x10, 0, HDA_OUTPUT);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!spec->multiout.hp_nid)
 		spec->multiout.hp_nid = ad1988_alt_dac_nid[0];
 	switch (board_config) {
 	case AD1988_6STACK:
 	case AD1988_6STACK_DIG:
+<<<<<<< HEAD
+=======
 =======
 	switch (board_config) {
 	case AD1988_6STACK:
 	case AD1988_6STACK_DIG:
 	case AD1988_6STACK_DIG_FP:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spec->multiout.max_channels = 8;
 		spec->multiout.num_dacs = 4;
 		if (is_rev2(codec))
@@ -3489,6 +3633,9 @@ static int patch_ad1988(struct hda_codec *codec)
 <<<<<<< HEAD
 		if (board_config == AD1988_6STACK_DIG) {
 =======
+<<<<<<< HEAD
+		if (board_config == AD1988_6STACK_DIG) {
+=======
 		if (board_config == AD1988_6STACK_DIG_FP) {
 			spec->num_mixers++;
 			spec->mixers[2] = ad1988_6stack_fp_mixers;
@@ -3503,6 +3650,7 @@ static int patch_ad1988(struct hda_codec *codec)
 		if ((board_config == AD1988_6STACK_DIG) ||
 			(board_config == AD1988_6STACK_DIG_FP)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spec->multiout.dig_out_nid = AD1988_SPDIF_OUT;
 			spec->dig_in_nid = AD1988_SPDIF_IN;
 		}
@@ -3546,6 +3694,9 @@ static int patch_ad1988(struct hda_codec *codec)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (spec->autocfg.hp_pins[0]) {
 		spec->mixers[spec->num_mixers++] = ad1988_hp_mixers;
 		spec->slave_vols = ad1988_6stack_fp_slave_pfxs;
@@ -3555,8 +3706,11 @@ static int patch_ad1988(struct hda_codec *codec)
 			&ad198x_pcm_analog_alt_playback;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->num_adc_nids = ARRAY_SIZE(ad1988_adc_nids);
 	spec->adc_nids = ad1988_adc_nids;
 	spec->capsrc_nids = ad1988_capsrc_nids;
@@ -3763,6 +3917,10 @@ static const char * const ad1884_slave_vols[] = {
 	"PCM", "Mic", "Mono", "Front Mic", "Mic", "CD",
 	"Internal Mic", "Docking Mic", /* "Beep", */ "IEC958",
 =======
+<<<<<<< HEAD
+	"PCM", "Mic", "Mono", "Front Mic", "Mic", "CD",
+	"Internal Mic", "Docking Mic", /* "Beep", */ "IEC958",
+=======
 	"PCM Playback Volume",
 	"Mic Playback Volume",
 	"Mono Playback Volume",
@@ -3774,6 +3932,7 @@ static const char * const ad1884_slave_vols[] = {
 	/* "Beep Playback Volume", */
 	"IEC958 Playback Volume",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
@@ -3818,7 +3977,12 @@ static int patch_ad1884(struct hda_codec *codec)
 	/* slaves may contain input volumes, so we can't raise to 0dB blindly */
 	spec->avoid_init_slave_vol = 1;
 =======
+<<<<<<< HEAD
+	/* slaves may contain input volumes, so we can't raise to 0dB blindly */
+	spec->avoid_init_slave_vol = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	codec->patch_ops = ad198x_patch_ops;
 

@@ -23,6 +23,11 @@ unsigned int __machine_arch_type;
 #include <linux/types.h>
 #include <linux/linkage.h>
 =======
+<<<<<<< HEAD
+#include <linux/compiler.h>	/* for inline */
+#include <linux/types.h>
+#include <linux/linkage.h>
+=======
 #define _LINUX_STRING_H_
 
 #include <linux/compiler.h>	/* for inline */
@@ -32,6 +37,7 @@ unsigned int __machine_arch_type;
 #include <asm/string.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void putstr(const char *ptr);
 extern void error(char *x);
@@ -109,6 +115,8 @@ static void putstr(const char *ptr)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 void *memcpy(void *__dest, __const void *__src, size_t __n)
 {
@@ -145,6 +153,7 @@ void *memcpy(void *__dest, __const void *__src, size_t __n)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * gzip declarations
  */

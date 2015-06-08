@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include "entry.h"
 =======
+<<<<<<< HEAD
+#include "entry.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static DEFINE_PER_CPU(struct vtimer_queue, virt_cpu_timer);
 
@@ -128,6 +132,9 @@ void account_system_vtime(struct task_struct *tsk)
 EXPORT_SYMBOL_GPL(account_system_vtime);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __kprobes vtime_stop_cpu(void)
 {
 	struct s390_idle_data *idle = &__get_cpu_var(s390_idle);
@@ -158,6 +165,8 @@ void __kprobes vtime_stop_cpu(void)
 	idle->idle_enter = idle->idle_exit = 0ULL;
 	idle->idle_count++;
 	account_idle_time(idle_time);
+<<<<<<< HEAD
+=======
 =======
 void __kprobes vtime_start_cpu(__u64 int_clock, __u64 enter_timer)
 {
@@ -196,11 +205,15 @@ void __kprobes vtime_start_cpu(__u64 int_clock, __u64 enter_timer)
 	idle->idle_enter = 0ULL;
 	idle->idle_count++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	smp_wmb();
 	idle->sequence++;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 cputime64_t s390_get_idle_time(int cpu)
 {
 	struct s390_idle_data *idle = &per_cpu(s390_idle, cpu);
@@ -214,6 +227,8 @@ cputime64_t s390_get_idle_time(int cpu)
 		idle_exit = ACCESS_ONCE(idle->idle_exit);
 	} while ((sequence & 1) || (idle->sequence != sequence));
 	return idle_enter ? ((idle_exit ? : now) - idle_enter) : 0;
+<<<<<<< HEAD
+=======
 =======
 void __kprobes vtime_stop_cpu(void)
 {
@@ -320,6 +335,7 @@ repeat:
 		goto repeat;
 	return idle_time;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -372,8 +388,12 @@ static void do_callbacks(struct list_head *cb_list)
 <<<<<<< HEAD
 static void do_cpu_timer_interrupt(struct ext_code ext_code,
 =======
+<<<<<<< HEAD
+static void do_cpu_timer_interrupt(struct ext_code ext_code,
+=======
 static void do_cpu_timer_interrupt(unsigned int ext_int_code,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   unsigned int param32, unsigned long param64)
 {
 	struct vtimer_queue *vq;
@@ -402,8 +422,11 @@ static void do_cpu_timer_interrupt(unsigned int ext_int_code,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	vq->do_spt = list_empty(&cb_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	do_callbacks(&cb_list);
 
 	/* next event is first in list */
@@ -415,9 +438,13 @@ static void do_cpu_timer_interrupt(unsigned int ext_int_code,
 <<<<<<< HEAD
 	}
 =======
+<<<<<<< HEAD
+	}
+=======
 	} else
 		vq->do_spt = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&vq->lock);
 	/*
 	 * To improve precision add the time spent by the
@@ -525,8 +552,12 @@ EXPORT_SYMBOL(add_virt_timer_periodic);
 <<<<<<< HEAD
 static int __mod_vtimer(struct vtimer_list *timer, __u64 expires, int periodic)
 =======
+<<<<<<< HEAD
+static int __mod_vtimer(struct vtimer_list *timer, __u64 expires, int periodic)
+=======
 int __mod_vtimer(struct vtimer_list *timer, __u64 expires, int periodic)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vtimer_queue *vq;
 	unsigned long flags;
@@ -640,7 +671,13 @@ void init_cpu_vtimer(void)
 	/* set initial cpu timer */
 	set_vtimer(0x7fffffffffffffffULL);
 =======
+<<<<<<< HEAD
+
+	/* set initial cpu timer */
+	set_vtimer(0x7fffffffffffffffULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __cpuinit s390_nohz_notify(struct notifier_block *self,

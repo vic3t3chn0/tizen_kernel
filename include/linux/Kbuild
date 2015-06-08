@@ -6,7 +6,11 @@ header-y += hdlc/
 <<<<<<< HEAD
 header-y += hsi/
 =======
+<<<<<<< HEAD
+header-y += hsi/
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += isdn/
 header-y += mmc/
 header-y += nfsd/
@@ -25,7 +29,11 @@ header-y += wimax/
 <<<<<<< HEAD
 header-y += mfd/
 =======
+<<<<<<< HEAD
+header-y += mfd/
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 objhdr-y += version.h
 
@@ -56,7 +64,11 @@ header-y += arcfb.h
 <<<<<<< HEAD
 header-y += ashmem.h
 =======
+<<<<<<< HEAD
+header-y += ashmem.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += atalk.h
 header-y += atm.h
 header-y += atm_eni.h
@@ -134,8 +146,11 @@ header-y += ethtool.h
 header-y += eventpoll.h
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 header-y += ext2_fs.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += fadvise.h
 header-y += falloc.h
 header-y += fanotify.h
@@ -153,7 +168,11 @@ header-y += fs.h
 <<<<<<< HEAD
 header-y += fsl_hypervisor.h
 =======
+<<<<<<< HEAD
+header-y += fsl_hypervisor.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += fuse.h
 header-y += futex.h
 header-y += gameport.h
@@ -202,15 +221,21 @@ header-y += if_ppp.h
 header-y += if_pppol2tp.h
 header-y += if_pppox.h
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += if_pppolac.h
 header-y += if_pppopns.h
 header-y += if_slip.h
 header-y += if_strip.h
 header-y += if_team.h
+<<<<<<< HEAD
+=======
 =======
 header-y += if_slip.h
 header-y += if_strip.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += if_tr.h
 header-y += if_tun.h
 header-y += if_tunnel.h
@@ -221,6 +246,9 @@ header-y += in.h
 header-y += in6.h
 header-y += in_route.h
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += sock_diag.h
 header-y += inet_diag.h
 header-y += unix_diag.h
@@ -229,12 +257,15 @@ header-y += input.h
 header-y += ioctl.h
 header-y += ion.h
 header-y += ioprio.h
+<<<<<<< HEAD
+=======
 =======
 header-y += inet_diag.h
 header-y += inotify.h
 header-y += input.h
 header-y += ioctl.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += ip.h
 header-y += ip6_tunnel.h
 header-y += ip_vs.h
@@ -269,7 +300,11 @@ header-y += llc.h
 <<<<<<< HEAD
 header-y += l2tp.h
 =======
+<<<<<<< HEAD
+header-y += l2tp.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += loop.h
 header-y += lp.h
 header-y += magic.h
@@ -279,7 +314,11 @@ header-y += matroxfb.h
 <<<<<<< HEAD
 header-y += mdio.h
 =======
+<<<<<<< HEAD
+header-y += mdio.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += media.h
 header-y += mempolicy.h
 header-y += meye.h
@@ -293,12 +332,18 @@ header-y += mroute6.h
 header-y += msdos_fs.h
 header-y += msg.h
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += msm_adc.h
 header-y += msm_dsps.h
 header-y += msm_ion.h
 header-y += epm_adc.h
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += mtio.h
 header-y += n_r3964.h
 header-y += nbd.h
@@ -356,7 +401,11 @@ header-y += ppp-comp.h
 <<<<<<< HEAD
 header-y += ppp-ioctl.h
 =======
+<<<<<<< HEAD
+header-y += ppp-ioctl.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += ppp_defs.h
 header-y += pps.h
 header-y += prctl.h
@@ -367,7 +416,11 @@ header-y += qnxtypes.h
 <<<<<<< HEAD
 header-y += qrng.h
 =======
+<<<<<<< HEAD
+header-y += qrng.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += quota.h
 header-y += radeonfb.h
 header-y += random.h
@@ -415,7 +468,11 @@ header-y += sysctl.h
 <<<<<<< HEAD
 header-y += sysinfo.h
 =======
+<<<<<<< HEAD
+header-y += sysinfo.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += taskstats.h
 header-y += tcp.h
 header-y += telephony.h
@@ -430,7 +487,11 @@ header-y += toshiba.h
 <<<<<<< HEAD
 header-y += tspp.h
 =======
+<<<<<<< HEAD
+header-y += tspp.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += tty.h
 header-y += types.h
 header-y += udf_fs_i.h
@@ -438,7 +499,11 @@ header-y += udp.h
 <<<<<<< HEAD
 header-y += uhid.h
 =======
+<<<<<<< HEAD
+header-y += uhid.h
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += uinput.h
 header-y += uio.h
 header-y += ultrasound.h
@@ -473,6 +538,9 @@ header-y += x25.h
 header-y += xattr.h
 header-y += xfrm.h
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 header-y += msm_adsp.h
 header-y += msm_mdp.h
 header-y += msm_kgsl.h
@@ -507,5 +575,8 @@ header-y += msm_audio_amrwbplus.h
 header-y += avtimer.h
 header-y += msm_ipa.h
 header-y += msm_thermal_ioctl.h
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

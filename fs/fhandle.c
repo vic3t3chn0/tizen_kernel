@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include "mount.h"
 =======
+<<<<<<< HEAD
+#include "mount.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static long do_sys_name_to_handle(struct path *path,
 				  struct file_handle __user *ufh,
@@ -32,9 +36,14 @@ static long do_sys_name_to_handle(struct path *path,
 	if (!path->dentry->d_sb->s_export_op ||
 	    !path->dentry->d_sb->s_export_op->fh_to_dentry)
 =======
+<<<<<<< HEAD
+	if (!path->dentry->d_sb->s_export_op ||
+	    !path->dentry->d_sb->s_export_op->fh_to_dentry)
+=======
 	if (!path->mnt->mnt_sb->s_export_op ||
 	    !path->mnt->mnt_sb->s_export_op->fh_to_dentry)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EOPNOTSUPP;
 
 	if (copy_from_user(&f_handle, ufh, sizeof(struct file_handle)))
@@ -79,8 +88,13 @@ static long do_sys_name_to_handle(struct path *path,
 	if (copy_to_user(mnt_id, &real_mount(path->mnt)->mnt_id,
 			 sizeof(*mnt_id)) ||
 =======
+<<<<<<< HEAD
+	if (copy_to_user(mnt_id, &real_mount(path->mnt)->mnt_id,
+			 sizeof(*mnt_id)) ||
+=======
 	if (copy_to_user(mnt_id, &path->mnt->mnt_id, sizeof(*mnt_id)) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    copy_to_user(ufh, handle,
 			 sizeof(struct file_handle) + handle_bytes))
 		retval = -EFAULT;

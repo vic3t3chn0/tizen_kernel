@@ -109,10 +109,24 @@ static int tda18218_rd_reg(struct tda18218_priv *priv, u8 reg, u8 *val)
 	return tda18218_rd_regs(priv, reg, val, 1);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int tda18218_set_params(struct dvb_frontend *fe)
+{
+	struct tda18218_priv *priv = fe->tuner_priv;
+	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
+	u32 bw = c->bandwidth_hz;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tda18218_set_params(struct dvb_frontend *fe,
 	struct dvb_frontend_parameters *params)
 {
 	struct tda18218_priv *priv = fe->tuner_priv;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	u8 buf[3], i, BP_Filter, LP_Fc;
 	u32 LO_Frac;
@@ -138,6 +152,24 @@ static int tda18218_set_params(struct dvb_frontend *fe,
 		fe->ops.i2c_gate_ctrl(fe, 1); /* open I2C-gate */
 
 	/* low-pass filter cut-off frequency */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (bw <= 6000000) {
+		LP_Fc = 0;
+		priv->if_frequency = 3000000;
+	} else if (bw <= 7000000) {
+		LP_Fc = 1;
+		priv->if_frequency = 3500000;
+	} else {
+		LP_Fc = 2;
+		priv->if_frequency = 4000000;
+	}
+
+	LO_Frac = c->frequency + priv->if_frequency;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (params->u.ofdm.bandwidth) {
 	case BANDWIDTH_6_MHZ:
 		LP_Fc = 0;
@@ -154,6 +186,10 @@ static int tda18218_set_params(struct dvb_frontend *fe,
 		break;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* band-pass filter */
 	if (LO_Frac < 188000000)
 		BP_Filter = 3;
@@ -206,6 +242,20 @@ error:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int tda18218_get_if_frequency(struct dvb_frontend *fe, u32 *frequency)
+{
+	struct tda18218_priv *priv = fe->tuner_priv;
+	*frequency = priv->if_frequency;
+	dbg("%s: if=%d", __func__, *frequency);
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tda18218_sleep(struct dvb_frontend *fe)
 {
 	struct tda18218_priv *priv = fe->tuner_priv;
@@ -268,6 +318,14 @@ static const struct dvb_tuner_ops tda18218_tuner_ops = {
 	.sleep         = tda18218_sleep,
 
 	.set_params    = tda18218_set_params,
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	.get_if_frequency = tda18218_get_if_frequency,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct dvb_frontend *tda18218_attach(struct dvb_frontend *fe,

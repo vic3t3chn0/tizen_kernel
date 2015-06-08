@@ -329,8 +329,12 @@ static void sp_cleanup(void)
 <<<<<<< HEAD
 		set = fdt->open_fds[j++];
 =======
+<<<<<<< HEAD
+		set = fdt->open_fds[j++];
+=======
 		set = fdt->open_fds->fds_bits[j++];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (set) {
 			if (set & 1) {
 				struct file * file = xchg(&fdt->fd[i], NULL);

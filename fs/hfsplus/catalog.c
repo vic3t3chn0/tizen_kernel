@@ -217,8 +217,14 @@ int hfsplus_create_cat(u32 cnid, struct inode *dir,
 	if (err)
 		return err;
 =======
+<<<<<<< HEAD
+	err = hfs_find_init(HFSPLUS_SB(sb)->cat_tree, &fd);
+	if (err)
+		return err;
+=======
 	hfs_find_init(HFSPLUS_SB(sb)->cat_tree, &fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hfsplus_cat_build_key(sb, fd.search_key, cnid, NULL);
 	entry_size = hfsplus_fill_cat_thread(sb, &entry,
@@ -280,8 +286,14 @@ int hfsplus_delete_cat(u32 cnid, struct inode *dir, struct qstr *str)
 	if (err)
 		return err;
 =======
+<<<<<<< HEAD
+	err = hfs_find_init(HFSPLUS_SB(sb)->cat_tree, &fd);
+	if (err)
+		return err;
+=======
 	hfs_find_init(HFSPLUS_SB(sb)->cat_tree, &fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!str) {
 		int len;
@@ -362,8 +374,12 @@ int hfsplus_rename_cat(u32 cnid,
 <<<<<<< HEAD
 	int err;
 =======
+<<<<<<< HEAD
+	int err;
+=======
 	int err = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprint(DBG_CAT_MOD, "rename_cat: %u - %lu,%s - %lu,%s\n",
 		cnid, src_dir->i_ino, src_name->name,
@@ -373,8 +389,14 @@ int hfsplus_rename_cat(u32 cnid,
 	if (err)
 		return err;
 =======
+<<<<<<< HEAD
+	err = hfs_find_init(HFSPLUS_SB(sb)->cat_tree, &src_fd);
+	if (err)
+		return err;
+=======
 	hfs_find_init(HFSPLUS_SB(sb)->cat_tree, &src_fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dst_fd = src_fd;
 
 	/* find the old dir entry and read the data */

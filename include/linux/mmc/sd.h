@@ -13,9 +13,14 @@
 #ifndef LINUX_MMC_SD_H
 #define LINUX_MMC_SD_H
 =======
+<<<<<<< HEAD
+#ifndef LINUX_MMC_SD_H
+#define LINUX_MMC_SD_H
+=======
 #ifndef MMC_SD_H
 #define MMC_SD_H
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* SD commands                           type  argument     response */
   /* class 0 */
@@ -99,6 +104,10 @@
 <<<<<<< HEAD
 #endif /* LINUX_MMC_SD_H */
 =======
+<<<<<<< HEAD
+#endif /* LINUX_MMC_SD_H */
+=======
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

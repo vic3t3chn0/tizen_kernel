@@ -134,8 +134,12 @@ int __nf_ct_try_assign_helper(struct nf_conn *ct, struct nf_conn *tmpl,
 <<<<<<< HEAD
 			RCU_INIT_POINTER(help->helper, NULL);
 =======
+<<<<<<< HEAD
+			RCU_INIT_POINTER(help->helper, NULL);
+=======
 			rcu_assign_pointer(help->helper, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -169,8 +173,12 @@ static inline int unhelp(struct nf_conntrack_tuple_hash *i,
 <<<<<<< HEAD
 		RCU_INIT_POINTER(help->helper, NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(help->helper, NULL);
+=======
 		rcu_assign_pointer(help->helper, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -190,6 +198,9 @@ void nf_ct_helper_destroy(struct nf_conn *ct)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static LIST_HEAD(nf_ct_helper_expectfn_list);
 
 void nf_ct_helper_expectfn_register(struct nf_ct_helper_expectfn *n)
@@ -244,8 +255,11 @@ nf_ct_helper_expectfn_find_by_symbol(const void *symbol)
 }
 EXPORT_SYMBOL_GPL(nf_ct_helper_expectfn_find_by_symbol);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int nf_conntrack_helper_register(struct nf_conntrack_helper *me)
 {
 	unsigned int h = helper_hash(&me->tuple);

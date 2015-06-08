@@ -16,21 +16,30 @@
 #include <linux/mm.h>
 #include <linux/err.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/mm.h>
+#include <linux/err.h>
+=======
 #include <linux/module.h>
 #include <linux/mm.h>
 #include <linux/err.h>
 #include <linux/srcu.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/rcupdate.h>
 #include <linux/sched.h>
 #include <linux/slab.h>
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* global SRCU for all MMs */
 static struct srcu_struct srcu;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This function can't run concurrently against mmu_notifier_register
  * because mm->mm_users > 0 during mmu_notifier_register and exit_mmap
@@ -42,15 +51,22 @@ static struct srcu_struct srcu;
  * the mmu_notifier_mm->lock in addition to RCU and it serializes
  * against the other mmu notifiers with RCU. struct mmu_notifier_mm
 =======
+<<<<<<< HEAD
+ * the mmu_notifier_mm->lock in addition to RCU and it serializes
+ * against the other mmu notifiers with RCU. struct mmu_notifier_mm
+=======
  * the mmu_notifier_mm->lock in addition to SRCU and it serializes
  * against the other mmu notifiers with SRCU. struct mmu_notifier_mm
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * can't go away from under us as exit_mmap holds an mm_count pin
  * itself.
  */
 void __mmu_notifier_release(struct mm_struct *mm)
 {
 	struct mmu_notifier *mn;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	struct hlist_node *node;
@@ -72,6 +88,7 @@ void __mmu_notifier_release(struct mm_struct *mm)
 			mn->ops->release(mn, mm);
 	srcu_read_unlock(&srcu, id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&mm->mmu_notifier_mm->lock);
 	while (unlikely(!hlist_empty(&mm->mmu_notifier_mm->list))) {
@@ -81,6 +98,9 @@ void __mmu_notifier_release(struct mm_struct *mm)
 		/*
 		 * We arrived before mmu_notifier_unregister so
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * mmu_notifier_unregister will do nothing other than
 		 * to wait ->release to finish and
 		 * mmu_notifier_unregister to return.
@@ -103,6 +123,8 @@ void __mmu_notifier_release(struct mm_struct *mm)
 			mn->ops->release(mn, mm);
 		rcu_read_unlock();
 		spin_lock(&mm->mmu_notifier_mm->lock);
+<<<<<<< HEAD
+=======
 =======
 		 * mmu_notifier_unregister will do nothing other than to wait
 		 * for ->release to finish and for mmu_notifier_unregister to
@@ -110,11 +132,15 @@ void __mmu_notifier_release(struct mm_struct *mm)
 		 */
 		hlist_del_init_rcu(&mn->hlist);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_unlock(&mm->mmu_notifier_mm->lock);
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * synchronize_rcu here prevents mmu_notifier_release to
 	 * return to exit_mmap (which would proceed freeing all pages
 	 * in the mm) until the ->release method returns, if it was
@@ -124,6 +150,8 @@ void __mmu_notifier_release(struct mm_struct *mm)
 	 * mm_count is hold by exit_mmap.
 	 */
 	synchronize_rcu();
+<<<<<<< HEAD
+=======
 =======
 	 * synchronize_srcu here prevents mmu_notifier_release from returning to
 	 * exit_mmap (which would proceed with freeing all pages in the mm)
@@ -135,6 +163,7 @@ void __mmu_notifier_release(struct mm_struct *mm)
 	 */
 	synchronize_srcu(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -152,10 +181,16 @@ int __mmu_notifier_clear_flush_young(struct mm_struct *mm,
 
 	rcu_read_lock();
 =======
+<<<<<<< HEAD
+	int young = 0;
+
+	rcu_read_lock();
+=======
 	int young = 0, id;
 
 	id = srcu_read_lock(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_rcu(mn, n, &mm->mmu_notifier_mm->list, hlist) {
 		if (mn->ops->clear_flush_young)
 			young |= mn->ops->clear_flush_young(mn, mm, address);
@@ -163,8 +198,12 @@ int __mmu_notifier_clear_flush_young(struct mm_struct *mm,
 <<<<<<< HEAD
 	rcu_read_unlock();
 =======
+<<<<<<< HEAD
+	rcu_read_unlock();
+=======
 	srcu_read_unlock(&srcu, id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return young;
 }
@@ -179,10 +218,16 @@ int __mmu_notifier_test_young(struct mm_struct *mm,
 
 	rcu_read_lock();
 =======
+<<<<<<< HEAD
+	int young = 0;
+
+	rcu_read_lock();
+=======
 	int young = 0, id;
 
 	id = srcu_read_lock(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_rcu(mn, n, &mm->mmu_notifier_mm->list, hlist) {
 		if (mn->ops->test_young) {
 			young = mn->ops->test_young(mn, mm, address);
@@ -193,8 +238,12 @@ int __mmu_notifier_test_young(struct mm_struct *mm,
 <<<<<<< HEAD
 	rcu_read_unlock();
 =======
+<<<<<<< HEAD
+	rcu_read_unlock();
+=======
 	srcu_read_unlock(&srcu, id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return young;
 }
@@ -208,10 +257,15 @@ void __mmu_notifier_change_pte(struct mm_struct *mm, unsigned long address,
 
 	rcu_read_lock();
 =======
+<<<<<<< HEAD
+
+	rcu_read_lock();
+=======
 	int id;
 
 	id = srcu_read_lock(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_rcu(mn, n, &mm->mmu_notifier_mm->list, hlist) {
 		if (mn->ops->change_pte)
 			mn->ops->change_pte(mn, mm, address, pte);
@@ -225,8 +279,12 @@ void __mmu_notifier_change_pte(struct mm_struct *mm, unsigned long address,
 <<<<<<< HEAD
 	rcu_read_unlock();
 =======
+<<<<<<< HEAD
+	rcu_read_unlock();
+=======
 	srcu_read_unlock(&srcu, id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __mmu_notifier_invalidate_page(struct mm_struct *mm,
@@ -238,10 +296,15 @@ void __mmu_notifier_invalidate_page(struct mm_struct *mm,
 
 	rcu_read_lock();
 =======
+<<<<<<< HEAD
+
+	rcu_read_lock();
+=======
 	int id;
 
 	id = srcu_read_lock(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_rcu(mn, n, &mm->mmu_notifier_mm->list, hlist) {
 		if (mn->ops->invalidate_page)
 			mn->ops->invalidate_page(mn, mm, address);
@@ -249,8 +312,12 @@ void __mmu_notifier_invalidate_page(struct mm_struct *mm,
 <<<<<<< HEAD
 	rcu_read_unlock();
 =======
+<<<<<<< HEAD
+	rcu_read_unlock();
+=======
 	srcu_read_unlock(&srcu, id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __mmu_notifier_invalidate_range_start(struct mm_struct *mm,
@@ -262,10 +329,15 @@ void __mmu_notifier_invalidate_range_start(struct mm_struct *mm,
 
 	rcu_read_lock();
 =======
+<<<<<<< HEAD
+
+	rcu_read_lock();
+=======
 	int id;
 
 	id = srcu_read_lock(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_rcu(mn, n, &mm->mmu_notifier_mm->list, hlist) {
 		if (mn->ops->invalidate_range_start)
 			mn->ops->invalidate_range_start(mn, mm, start, end);
@@ -273,8 +345,12 @@ void __mmu_notifier_invalidate_range_start(struct mm_struct *mm,
 <<<<<<< HEAD
 	rcu_read_unlock();
 =======
+<<<<<<< HEAD
+	rcu_read_unlock();
+=======
 	srcu_read_unlock(&srcu, id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __mmu_notifier_invalidate_range_end(struct mm_struct *mm,
@@ -286,10 +362,15 @@ void __mmu_notifier_invalidate_range_end(struct mm_struct *mm,
 
 	rcu_read_lock();
 =======
+<<<<<<< HEAD
+
+	rcu_read_lock();
+=======
 	int id;
 
 	id = srcu_read_lock(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_rcu(mn, n, &mm->mmu_notifier_mm->list, hlist) {
 		if (mn->ops->invalidate_range_end)
 			mn->ops->invalidate_range_end(mn, mm, start, end);
@@ -297,8 +378,12 @@ void __mmu_notifier_invalidate_range_end(struct mm_struct *mm,
 <<<<<<< HEAD
 	rcu_read_unlock();
 =======
+<<<<<<< HEAD
+	rcu_read_unlock();
+=======
 	srcu_read_unlock(&srcu, id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int do_mmu_notifier_register(struct mmu_notifier *mn,
@@ -312,6 +397,8 @@ static int do_mmu_notifier_register(struct mmu_notifier *mn,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	* Verify that mmu_notifier_init() already run and the global srcu is
 	* initialized.
@@ -319,6 +406,7 @@ static int do_mmu_notifier_register(struct mmu_notifier *mn,
 	BUG_ON(!srcu.per_cpu_ref);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = -ENOMEM;
 	mmu_notifier_mm = kmalloc(sizeof(struct mmu_notifier_mm), GFP_KERNEL);
 	if (unlikely(!mmu_notifier_mm))
@@ -405,9 +493,14 @@ void __mmu_notifier_mm_destroy(struct mm_struct *mm)
  * running mmu notifiers with RCU and against mmu_notifier_unregister
  * with the unregister lock + RCU. All sptes must be dropped before
 =======
+<<<<<<< HEAD
+ * running mmu notifiers with RCU and against mmu_notifier_unregister
+ * with the unregister lock + RCU. All sptes must be dropped before
+=======
  * running mmu notifiers with SRCU and against mmu_notifier_unregister
  * with the unregister lock + SRCU. All sptes must be dropped before
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * calling mmu_notifier_unregister. ->release or any other notifier
  * method may be invoked concurrently with mmu_notifier_unregister,
  * and only after mmu_notifier_unregister returned we're guaranteed
@@ -418,6 +511,9 @@ void mmu_notifier_unregister(struct mmu_notifier *mn, struct mm_struct *mm)
 	BUG_ON(atomic_read(&mm->mm_count) <= 0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&mm->mmu_notifier_mm->lock);
 	if (!hlist_unhashed(&mn->hlist)) {
 		hlist_del_rcu(&mn->hlist);
@@ -444,6 +540,8 @@ void mmu_notifier_unregister(struct mmu_notifier *mn, struct mm_struct *mm)
 	 * ->release if it was run by mmu_notifier_relase instead of us.
 	 */
 	synchronize_rcu();
+<<<<<<< HEAD
+=======
 =======
 	if (!hlist_unhashed(&mn->hlist)) {
 		/*
@@ -476,12 +574,15 @@ void mmu_notifier_unregister(struct mmu_notifier *mn, struct mm_struct *mm)
 	 */
 	synchronize_srcu(&srcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(atomic_read(&mm->mm_count) <= 0);
 
 	mmdrop(mm);
 }
 EXPORT_SYMBOL_GPL(mmu_notifier_unregister);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -492,3 +593,4 @@ static int __init mmu_notifier_init(void)
 
 module_init(mmu_notifier_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

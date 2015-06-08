@@ -231,10 +231,13 @@ void __init pas_pci_init(void)
 	pci_devs_phb_init();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/* Use the common resource allocation mechanism */
 	pci_probe_only = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __iomem *pasemi_pci_getcfgaddr(struct pci_dev *dev, int offset)

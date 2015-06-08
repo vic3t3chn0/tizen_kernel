@@ -1,7 +1,15 @@
 /*
  * slcan.c - serial line CAN interface driver (using tty line discipline)
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This file is derived from linux/drivers/net/slip/slip.c
+=======
  * This file is derived from linux/drivers/net/slip.c
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * This file is derived from linux/drivers/net/slip.c
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * slip.c Authors  : Laurence Culhane <loz@holmes.demon.co.uk>
  *                   Fred N. van Kempen <waltje@uwalt.nl.mugnet.org>
@@ -35,14 +43,29 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
  * DAMAGE.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  * Send feedback to <socketcan-users@lists.berlios.de>
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Send feedback to <socketcan-users@lists.berlios.de>
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/uaccess.h>
 #include <linux/bitops.h>
 #include <linux/string.h>
@@ -56,6 +79,13 @@
 #include <linux/sched.h>
 #include <linux/delay.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/kernel.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/can.h>
 
 static __initdata const char banner[] =
@@ -95,10 +125,19 @@ struct slcan {
 	unsigned long		flags;		/* Flag values/ mode etc     */
 #define SLF_INUSE		0		/* Channel in use            */
 #define SLF_ERROR		1               /* Parity, etc. error        */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned char		leased;
 	dev_t			line;
 	pid_t			pid;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct net_device **slcan_devs;
@@ -142,6 +181,11 @@ static struct net_device **slcan_devs;
   *			STANDARD SLCAN DECAPSULATION			 *
   ************************************************************************/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int asc2nibble(char c)
 {
 
@@ -157,6 +201,10 @@ static int asc2nibble(char c)
 	return 16; /* error */
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Send one completely decapsulated can_frame to the network layer */
 static void slc_bump(struct slcan *sl)
 {
@@ -195,6 +243,17 @@ static void slc_bump(struct slcan *sl)
 	*(u64 *) (&cf.data) = 0; /* clear payload */
 
 	for (i = 0, dlc_pos++; i < cf.can_dlc; i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tmp = hex_to_bin(sl->rbuff[dlc_pos++]);
+		if (tmp < 0)
+			return;
+		cf.data[i] = (tmp << 4);
+		tmp = hex_to_bin(sl->rbuff[dlc_pos++]);
+		if (tmp < 0)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		tmp = asc2nibble(sl->rbuff[dlc_pos++]);
 		if (tmp > 0x0F)
@@ -202,11 +261,22 @@ static void slc_bump(struct slcan *sl)
 		cf.data[i] = (tmp << 4);
 		tmp = asc2nibble(sl->rbuff[dlc_pos++]);
 		if (tmp > 0x0F)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		cf.data[i] |= tmp;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb = dev_alloc_skb(sizeof(struct can_frame));
 	if (!skb)
 		return;
@@ -217,7 +287,15 @@ static void slc_bump(struct slcan *sl)
 	skb->ip_summed = CHECKSUM_UNNECESSARY;
 	memcpy(skb_put(skb, sizeof(struct can_frame)),
 	       &cf, sizeof(struct can_frame));
+<<<<<<< HEAD
+<<<<<<< HEAD
+	netif_rx_ni(skb);
+=======
 	netif_rx(skb);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	netif_rx(skb);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sl->dev->stats.rx_packets++;
 	sl->dev->stats.rx_bytes += cf.can_dlc;
@@ -409,7 +487,15 @@ static void slc_setup(struct net_device *dev)
 
 	/* New-style flags. */
 	dev->flags		= IFF_NOARP;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->features           = NETIF_F_HW_CSUM;
+=======
 	dev->features           = NETIF_F_NO_CSUM;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev->features           = NETIF_F_NO_CSUM;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /******************************************
@@ -462,7 +548,15 @@ static void slc_sync(void)
 			break;
 
 		sl = netdev_priv(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (sl->tty)
+=======
 		if (sl->tty || sl->leased)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (sl->tty || sl->leased)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		if (dev->flags & IFF_UP)
 			dev_close(dev);
@@ -473,12 +567,25 @@ static void slc_sync(void)
 static struct slcan *slc_alloc(dev_t line)
 {
 	int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	char name[IFNAMSIZ];
+	struct net_device *dev = NULL;
+	struct slcan       *sl;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net_device *dev = NULL;
 	struct slcan       *sl;
 
 	if (slcan_devs == NULL)
 		return NULL;	/* Master array missing ! */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < maxdev; i++) {
 		dev = slcan_devs[i];
 		if (dev == NULL)
@@ -490,6 +597,17 @@ static struct slcan *slc_alloc(dev_t line)
 	if (i >= maxdev)
 		return NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sprintf(name, "slcan%d", i);
+	dev = alloc_netdev(sizeof(*sl), name, slc_setup);
+	if (!dev)
+		return NULL;
+
+	dev->base_addr  = i;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev) {
 		sl = netdev_priv(dev);
 		if (test_bit(SLF_INUSE, &sl->flags)) {
@@ -509,6 +627,10 @@ static struct slcan *slc_alloc(dev_t line)
 		dev->base_addr  = i;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sl = netdev_priv(dev);
 
 	/* Initialize channel control data */
@@ -565,8 +687,16 @@ static int slcan_open(struct tty_struct *tty)
 
 	sl->tty = tty;
 	tty->disc_data = sl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	sl->line = tty_devnum(tty);
 	sl->pid = current->pid;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sl->line = tty_devnum(tty);
+	sl->pid = current->pid;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!test_bit(SLF_INUSE, &sl->flags)) {
 		/* Perform the low-level SLCAN initialization. */
@@ -617,8 +747,16 @@ static void slcan_close(struct tty_struct *tty)
 
 	tty->disc_data = NULL;
 	sl->tty = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (!sl->leased)
 		sl->line = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!sl->leased)
+		sl->line = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Flush network side */
 	unregister_netdev(sl->dev);
@@ -680,10 +818,21 @@ static int __init slcan_init(void)
 	printk(KERN_INFO "slcan: %d dynamic interface channels.\n", maxdev);
 
 	slcan_devs = kzalloc(sizeof(struct net_device *)*maxdev, GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!slcan_devs)
+		return -ENOMEM;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!slcan_devs) {
 		printk(KERN_ERR "slcan: can't allocate slcan device array!\n");
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Fill in our line protocol discipline, and register it */
 	status = tty_register_ldisc(N_SLCAN, &slc_ldisc);

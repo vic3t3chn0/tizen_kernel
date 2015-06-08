@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <asm-generic/mm_hooks.h>
 =======
+<<<<<<< HEAD
+#include <asm-generic/mm_hooks.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __check_kvm_seq(struct mm_struct *mm);
 
@@ -139,6 +143,8 @@ switch_mm(struct mm_struct *prev, struct mm_struct *next,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * We are inserting a "fake" vma for the user-accessible vector page so
  * gdb and friends can get to it through ptrace and /proc/<pid>/mem.
@@ -168,4 +174,5 @@ static inline void arch_dup_mmap(struct mm_struct *oldmm,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

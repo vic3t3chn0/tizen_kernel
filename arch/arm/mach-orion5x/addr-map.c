@@ -18,9 +18,14 @@
 #include <mach/hardware.h>
 #include <plat/addr-map.h>
 =======
+<<<<<<< HEAD
+#include <mach/hardware.h>
+#include <plat/addr-map.h>
+=======
 #include <linux/errno.h>
 #include <mach/hardware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 
 /*
@@ -48,8 +53,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TARGET_DDR		0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TARGET_DEV_BUS		1
 #define TARGET_PCI		3
 #define TARGET_PCIE		4
@@ -66,10 +74,15 @@
 #define ATTR_SRAM		0x0
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __initdata win_alloc_count;
 
 static int __init cpu_win_can_remap(const struct orion_addr_map_cfg *cfg,
 		  const int win)
+<<<<<<< HEAD
+=======
 =======
 /*
  * Helpers to get DDR bank info
@@ -93,6 +106,7 @@ static int __initdata win_alloc_count;
 
 static int __init orion5x_cpu_win_can_remap(int win)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 dev, rev;
 
@@ -107,6 +121,9 @@ static int __init orion5x_cpu_win_can_remap(int win)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Description of the windows needed by the platform code
  */
@@ -142,6 +159,8 @@ void __init orion5x_setup_cpu_mbus_bridge(void)
 	 * Disable, clear and configure windows.
 	 */
 	orion_config_wins(&addr_map_cfg, addr_map_info);
+<<<<<<< HEAD
+=======
 =======
 static int __init setup_cpu_win(int win, u32 base, u32 size,
 				 u8 target, u8 attr, int remap)
@@ -195,11 +214,15 @@ void __init orion5x_setup_cpu_mbus_bridge(void)
 	setup_cpu_win(3, ORION5X_PCI_MEM_PHYS_BASE, ORION5X_PCI_MEM_SIZE,
 		TARGET_PCI, ATTR_PCI_MEM, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	win_alloc_count = 4;
 
 	/*
 	 * Setup MBUS dram target info.
 	 */
+<<<<<<< HEAD
+	orion_setup_cpu_mbus_target(&addr_map_cfg, ORION5X_DDR_WINDOW_CPU_BASE);
+=======
 <<<<<<< HEAD
 	orion_setup_cpu_mbus_target(&addr_map_cfg, ORION5X_DDR_WINDOW_CPU_BASE);
 =======
@@ -224,6 +247,7 @@ void __init orion5x_setup_cpu_mbus_bridge(void)
 	}
 	orion5x_mbus_dram_info.num_cs = cs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init orion5x_setup_dev_boot_win(u32 base, u32 size)
@@ -232,9 +256,14 @@ void __init orion5x_setup_dev_boot_win(u32 base, u32 size)
 	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
 			    TARGET_DEV_BUS, ATTR_DEV_BOOT, -1);
 =======
+<<<<<<< HEAD
+	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
+			    TARGET_DEV_BUS, ATTR_DEV_BOOT, -1);
+=======
 	setup_cpu_win(win_alloc_count++, base, size,
 		      TARGET_DEV_BUS, ATTR_DEV_BOOT, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init orion5x_setup_dev0_win(u32 base, u32 size)
@@ -243,9 +272,14 @@ void __init orion5x_setup_dev0_win(u32 base, u32 size)
 	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
 			    TARGET_DEV_BUS, ATTR_DEV_CS0, -1);
 =======
+<<<<<<< HEAD
+	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
+			    TARGET_DEV_BUS, ATTR_DEV_CS0, -1);
+=======
 	setup_cpu_win(win_alloc_count++, base, size,
 		      TARGET_DEV_BUS, ATTR_DEV_CS0, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init orion5x_setup_dev1_win(u32 base, u32 size)
@@ -254,9 +288,14 @@ void __init orion5x_setup_dev1_win(u32 base, u32 size)
 	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
 			    TARGET_DEV_BUS, ATTR_DEV_CS1, -1);
 =======
+<<<<<<< HEAD
+	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
+			    TARGET_DEV_BUS, ATTR_DEV_CS1, -1);
+=======
 	setup_cpu_win(win_alloc_count++, base, size,
 		      TARGET_DEV_BUS, ATTR_DEV_CS1, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init orion5x_setup_dev2_win(u32 base, u32 size)
@@ -265,14 +304,22 @@ void __init orion5x_setup_dev2_win(u32 base, u32 size)
 	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
 			    TARGET_DEV_BUS, ATTR_DEV_CS2, -1);
 =======
+<<<<<<< HEAD
+	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
+			    TARGET_DEV_BUS, ATTR_DEV_CS2, -1);
+=======
 	setup_cpu_win(win_alloc_count++, base, size,
 		      TARGET_DEV_BUS, ATTR_DEV_CS2, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init orion5x_setup_pcie_wa_win(u32 base, u32 size)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++, base, size,
 			    TARGET_PCIE, ATTR_PCIE_WA, -1);
 }
@@ -282,6 +329,8 @@ void __init orion5x_setup_sram_win(void)
 	orion_setup_cpu_win(&addr_map_cfg, win_alloc_count++,
 			    ORION5X_SRAM_PHYS_BASE, ORION5X_SRAM_SIZE,
 			    TARGET_SRAM, ATTR_SRAM, -1);
+<<<<<<< HEAD
+=======
 =======
 	setup_cpu_win(win_alloc_count++, base, size,
 		      TARGET_PCIE, ATTR_PCIE_WA, -1);
@@ -292,4 +341,5 @@ int __init orion5x_setup_sram_win(void)
 	return setup_cpu_win(win_alloc_count++, ORION5X_SRAM_PHYS_BASE,
 			ORION5X_SRAM_SIZE, TARGET_SRAM, ATTR_SRAM, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

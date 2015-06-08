@@ -919,8 +919,12 @@ static int clk_debugfs_register_one(struct clk *c)
 <<<<<<< HEAD
 	struct dentry *d;
 =======
+<<<<<<< HEAD
+	struct dentry *d;
+=======
 	struct dentry *d, *child;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk *pa = c->pclk;
 	char s[255];
 	char *p = s;
@@ -958,11 +962,15 @@ err_out:
 <<<<<<< HEAD
 	debugfs_remove_recursive(c->dent);
 =======
+<<<<<<< HEAD
+	debugfs_remove_recursive(c->dent);
+=======
 	d = c->dent;
 	list_for_each_entry(child, &d->d_subdirs, d_u.d_child)
 		debugfs_remove(child);
 	debugfs_remove(c->dent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 

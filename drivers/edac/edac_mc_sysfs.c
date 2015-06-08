@@ -452,7 +452,15 @@ static ssize_t mci_sdram_scrub_rate_store(struct mem_ctl_info *mci,
 	int new_bw = 0;
 
 	if (!mci->set_sdram_scrub_rate)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -ENODEV;
+=======
 		return -EINVAL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return -EINVAL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (strict_strtoul(data, 10, &bandwidth) < 0)
 		return -EINVAL;
@@ -475,7 +483,15 @@ static ssize_t mci_sdram_scrub_rate_show(struct mem_ctl_info *mci, char *data)
 	int bandwidth = 0;
 
 	if (!mci->get_sdram_scrub_rate)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -ENODEV;
+=======
 		return -EINVAL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return -EINVAL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bandwidth = mci->get_sdram_scrub_rate(mci);
 	if (bandwidth < 0) {
@@ -1021,6 +1037,19 @@ void edac_remove_sysfs_mci_device(struct mem_ctl_info *mci)
 int edac_sysfs_setup_mc_kset(void)
 {
 	int err = -EINVAL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct bus_type *edac_subsys;
+
+	debugf1("%s()\n", __func__);
+
+	/* get the /sys/devices/system/edac subsys reference */
+	edac_subsys = edac_get_sysfs_subsys();
+	if (edac_subsys == NULL) {
+		debugf1("%s() no edac_subsys error=%d\n", __func__, err);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sysdev_class *edac_class;
 
 	debugf1("%s()\n", __func__);
@@ -1029,11 +1058,23 @@ int edac_sysfs_setup_mc_kset(void)
 	edac_class = edac_get_sysfs_class();
 	if (edac_class == NULL) {
 		debugf1("%s() no edac_class error=%d\n", __func__, err);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail_out;
 	}
 
 	/* Init the MC's kobject */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mc_kset = kset_create_and_add("mc", NULL, &edac_subsys->dev_root->kobj);
+=======
 	mc_kset = kset_create_and_add("mc", NULL, &edac_class->kset.kobj);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mc_kset = kset_create_and_add("mc", NULL, &edac_class->kset.kobj);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!mc_kset) {
 		err = -ENOMEM;
 		debugf1("%s() Failed to register '.../edac/mc'\n", __func__);
@@ -1045,7 +1086,15 @@ int edac_sysfs_setup_mc_kset(void)
 	return 0;
 
 fail_kset:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	edac_put_sysfs_subsys();
+=======
 	edac_put_sysfs_class();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	edac_put_sysfs_class();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 fail_out:
 	return err;
@@ -1059,6 +1108,14 @@ fail_out:
 void edac_sysfs_teardown_mc_kset(void)
 {
 	kset_unregister(mc_kset);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	edac_put_sysfs_subsys();
+=======
 	edac_put_sysfs_class();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	edac_put_sysfs_class();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

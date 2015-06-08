@@ -218,6 +218,27 @@ config USB_TEST
 	  See <http://www.linux-usb.org/usbtest/> for more information,
 	  including sample test device firmware and "how to use it".
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config USB_EHSET_TEST_FIXTURE
+	tristate "USB EHSET Test Fixture Driver"
+	depends on USB && USB_EHCI_EHSET
+	default n
+	help
+	  Say Y here if you want to use EHSET Test Fixture device for host
+	  compliance testing.
+
+	  This driver initiates test modes on the downstream port to which the
+	  test fixture is attached.
+
+	  See <http://www.usb.org/developers/onthego/EHSET_v1.01.pdf>
+	  for more information.
+
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config USB_ISIGHTFW
 	tristate "iSight firmware loading support"
 	depends on USB
@@ -244,6 +265,11 @@ config USB_YUREX
 	  To compile this driver as a module, choose M here: the
 	  module will be called yurex.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config USB_EXYNOS_SWITCH
 	bool "EXYNOS USB SWITCH driver"
 	depends on USB_EHCI_S5P || USB_OHCI_S5P || USB_XHCI_EXYNOS
@@ -252,6 +278,10 @@ config USB_EXYNOS_SWITCH
 	help
 	  This driver is for switching host & device controller software.
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config USB_QCOM_DIAG_BRIDGE
 	tristate "USB Qualcomm diagnostic bridge driver"
 	depends on USB
@@ -286,3 +316,19 @@ config USB_QCOM_MDM_BRIDGE
 	  driver for dial up network and RMNET.
 	  To compile this driver as a module, choose M here: the module
 	  will be called mdm_bridge. If unsure, choose N.
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+config USB_QCOM_KS_BRIDGE
+	tristate "USB Qualcomm kick start bridge"
+	depends on USB
+	help
+	  Say Y here if you have a Qualcomm modem device connected via USB that
+	  will be bridged in kernel space. This driver works as a bridge to pass
+	  boot images, ram-dumps and efs sync
+	  To compile this driver as a module, choose M here: the module
+	  will be called ks_bridge. If unsure, choose N.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

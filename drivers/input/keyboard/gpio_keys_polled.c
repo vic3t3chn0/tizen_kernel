@@ -241,6 +241,12 @@ static struct platform_driver gpio_keys_polled_driver = {
 		.owner	= THIS_MODULE,
 	},
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(gpio_keys_polled_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init gpio_keys_polled_init(void)
 {
@@ -254,6 +260,10 @@ static void __exit gpio_keys_polled_exit(void)
 
 module_init(gpio_keys_polled_init);
 module_exit(gpio_keys_polled_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("Gabor Juhos <juhosg@openwrt.org>");

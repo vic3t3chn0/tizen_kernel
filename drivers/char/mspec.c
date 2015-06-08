@@ -44,9 +44,20 @@
 #include <linux/slab.h>
 #include <linux/numa.h>
 #include <asm/page.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/pgtable.h>
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/pgtable.h>
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+#include <asm/pgtable.h>
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/tlbflush.h>
 #include <asm/uncached.h>
 #include <asm/sn/addrs.h>
@@ -284,7 +295,15 @@ mspec_mmap(struct file *file, struct vm_area_struct *vma,
 	vdata->flags = flags;
 	vdata->type = type;
 	spin_lock_init(&vdata->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	vdata->refcnt = ATOMIC_INIT(1);
+=======
 	atomic_set(&vdata->refcnt, 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_set(&vdata->refcnt, 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vma->vm_private_data = vdata;
 
 	vma->vm_flags |= (VM_IO | VM_RESERVED | VM_PFNMAP | VM_DONTEXPAND);

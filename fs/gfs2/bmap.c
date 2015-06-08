@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/blkdev.h>
 =======
+<<<<<<< HEAD
+#include <linux/blkdev.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gfs2_ondisk.h>
 #include <linux/crc32.h>
 
@@ -42,12 +46,15 @@ struct metapath {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 typedef int (*block_call_t) (struct gfs2_inode *ip, struct buffer_head *dibh,
 			     struct buffer_head *bh, __be64 *top,
 			     __be64 *bottom, unsigned int height,
 			     void *data);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct strip_mine {
 	int sm_first;
 	unsigned int sm_height;
@@ -74,8 +81,12 @@ static int gfs2_unstuffer_page(struct gfs2_inode *ip, struct buffer_head *dibh,
 <<<<<<< HEAD
 		page = find_or_create_page(inode->i_mapping, 0, GFP_NOFS);
 =======
+<<<<<<< HEAD
+		page = find_or_create_page(inode->i_mapping, 0, GFP_NOFS);
+=======
 		page = grab_cache_page(inode->i_mapping, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!page)
 			return -ENOMEM;
 		release = 1;
@@ -151,8 +162,12 @@ int gfs2_unstuff_dinode(struct gfs2_inode *ip, struct page *page)
 <<<<<<< HEAD
 		error = gfs2_alloc_blocks(ip, &block, &n, 0, NULL);
 =======
+<<<<<<< HEAD
+		error = gfs2_alloc_blocks(ip, &block, &n, 0, NULL);
+=======
 		error = gfs2_alloc_block(ip, &block, &n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_brelse;
 		if (isdir) {
@@ -289,6 +304,9 @@ static inline __be64 *metapointer(unsigned int height, const struct metapath *mp
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void gfs2_metapath_ra(struct gfs2_glock *gl,
 			     const struct buffer_head *bh, const __be64 *pos)
 {
@@ -313,8 +331,11 @@ static void gfs2_metapath_ra(struct gfs2_glock *gl,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * lookup_metapath - Walk the metadata tree to a specific point
  * @ip: The inode
@@ -477,7 +498,11 @@ static int gfs2_bmap_alloc(struct inode *inode, const sector_t lblock,
 <<<<<<< HEAD
 	struct super_block *sb = sdp->sd_vfs;
 =======
+<<<<<<< HEAD
+	struct super_block *sb = sdp->sd_vfs;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct buffer_head *dibh = mp->mp_bh[0];
 	u64 bn, dblock = 0;
 	unsigned n, i, blks, alloced = 0, iblks = 0, branch_start = 0;
@@ -487,7 +512,11 @@ static int gfs2_bmap_alloc(struct inode *inode, const sector_t lblock,
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int eob = 0;
 	enum alloc_state state;
 	__be64 *ptr;
@@ -534,8 +563,12 @@ static int gfs2_bmap_alloc(struct inode *inode, const sector_t lblock,
 <<<<<<< HEAD
 		error = gfs2_alloc_blocks(ip, &bn, &n, 0, NULL);
 =======
+<<<<<<< HEAD
+		error = gfs2_alloc_blocks(ip, &bn, &n, 0, NULL);
+=======
 		error = gfs2_alloc_block(ip, &bn, &n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			return error;
 		alloced += n;
@@ -595,6 +628,9 @@ static int gfs2_bmap_alloc(struct inode *inode, const sector_t lblock,
 			while (n-- > 0)
 				*ptr++ = cpu_to_be64(bn++);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (buffer_zeronew(bh_map)) {
 				ret = sb_issue_zeroout(sb, dblock, dblks,
 						       GFP_NOFS);
@@ -604,8 +640,11 @@ static int gfs2_bmap_alloc(struct inode *inode, const sector_t lblock,
 					clear_buffer_zeronew(bh_map);
 				}
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	} while ((state != ALLOC_DATA) || !dblock);
@@ -736,6 +775,8 @@ int gfs2_extent_map(struct inode *inode, u64 lblock, int *new, u64 *dblock, unsi
 /**
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * recursive_scan - recursively scan through the end of a file
  * @ip: the inode
  * @dibh: the dinode buffer
@@ -807,6 +848,7 @@ out:
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * do_strip - Look for a layer a particular layer of the file and strip it off
  * @ip: the inode
  * @dibh: the dinode buffer
@@ -825,10 +867,15 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 		    unsigned int height, struct strip_mine *sm)
 {
 =======
+<<<<<<< HEAD
+		    unsigned int height, struct strip_mine *sm)
+{
+=======
 		    unsigned int height, void *data)
 {
 	struct strip_mine *sm = data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gfs2_sbd *sdp = GFS2_SB(&ip->i_inode);
 	struct gfs2_rgrp_list rlist;
 	u64 bn, bstart;
@@ -839,14 +886,20 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 	unsigned int revokes = 0;
 	int x;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	error = gfs2_rindex_update(sdp);
 	if (error)
 		return error;
+<<<<<<< HEAD
+=======
 =======
 	int error = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!*top)
 		sm->sm_first = 0;
@@ -867,6 +920,8 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ip != GFS2_I(sdp->sd_rindex))
 		error = gfs2_rindex_hold(sdp, &ip->i_alloc->al_ri_gh);
 	else if (!sdp->sd_rgrps)
@@ -876,6 +931,7 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 		return error;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&rlist, 0, sizeof(struct gfs2_rgrp_list));
 	bstart = 0;
 	blen = 0;
@@ -893,8 +949,12 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 <<<<<<< HEAD
 				gfs2_rlist_add(ip, &rlist, bstart);
 =======
+<<<<<<< HEAD
+				gfs2_rlist_add(ip, &rlist, bstart);
+=======
 				gfs2_rlist_add(sdp, &rlist, bstart);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			bstart = bn;
 			blen = 1;
@@ -905,8 +965,12 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 <<<<<<< HEAD
 		gfs2_rlist_add(ip, &rlist, bstart);
 =======
+<<<<<<< HEAD
+		gfs2_rlist_add(ip, &rlist, bstart);
+=======
 		gfs2_rlist_add(sdp, &rlist, bstart);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		goto out; /* Nothing to do */
 
@@ -950,12 +1014,16 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 <<<<<<< HEAD
 				__gfs2_free_blocks(ip, bstart, blen, metadata);
 =======
+<<<<<<< HEAD
+				__gfs2_free_blocks(ip, bstart, blen, metadata);
+=======
 				if (metadata)
 					__gfs2_free_meta(ip, bstart, blen);
 				else
 					__gfs2_free_data(ip, bstart, blen);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				btotal += blen;
 			}
 
@@ -970,12 +1038,16 @@ static int do_strip(struct gfs2_inode *ip, struct buffer_head *dibh,
 <<<<<<< HEAD
 		__gfs2_free_blocks(ip, bstart, blen, metadata);
 =======
+<<<<<<< HEAD
+		__gfs2_free_blocks(ip, bstart, blen, metadata);
+=======
 		if (metadata)
 			__gfs2_free_meta(ip, bstart, blen);
 		else
 			__gfs2_free_data(ip, bstart, blen);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		btotal += blen;
 	}
 
@@ -998,14 +1070,20 @@ out_rlist:
 out:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ip != GFS2_I(sdp->sd_rindex))
 		gfs2_glock_dq_uninit(&ip->i_alloc->al_ri_gh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * recursive_scan - recursively scan through the end of a file
  * @ip: the inode
  * @dibh: the dinode buffer
@@ -1078,8 +1156,11 @@ out:
 
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * gfs2_block_truncate_page - Deal with zeroing out data for truncate
  *
  * This is partly borrowed from ext3.
@@ -1098,8 +1179,12 @@ static int gfs2_block_truncate_page(struct address_space *mapping, loff_t from)
 <<<<<<< HEAD
 	page = find_or_create_page(mapping, index, GFP_NOFS);
 =======
+<<<<<<< HEAD
+	page = find_or_create_page(mapping, index, GFP_NOFS);
+=======
 	page = grab_cache_page(mapping, index);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!page)
 		return 0;
 
@@ -1213,8 +1298,12 @@ static int trunc_dealloc(struct gfs2_inode *ip, u64 size)
 <<<<<<< HEAD
 	if (!gfs2_qadata_get(ip))
 =======
+<<<<<<< HEAD
+	if (!gfs2_qadata_get(ip))
+=======
 	if (!gfs2_alloc_get(ip))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 
 	error = gfs2_quota_hold(ip, NO_QUOTA_CHANGE, NO_QUOTA_CHANGE);
@@ -1229,8 +1318,12 @@ static int trunc_dealloc(struct gfs2_inode *ip, u64 size)
 <<<<<<< HEAD
 		error = recursive_scan(ip, NULL, &mp, 0, 0, 1, &sm);
 =======
+<<<<<<< HEAD
+		error = recursive_scan(ip, NULL, &mp, 0, 0, 1, &sm);
+=======
 		error = recursive_scan(ip, NULL, &mp, 0, 0, 1, do_strip, &sm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			break;
 	}
@@ -1241,8 +1334,12 @@ out:
 <<<<<<< HEAD
 	gfs2_qadata_put(ip);
 =======
+<<<<<<< HEAD
+	gfs2_qadata_put(ip);
+=======
 	gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1347,8 +1444,12 @@ static int do_grow(struct inode *inode, u64 size)
 <<<<<<< HEAD
 	struct gfs2_qadata *qa = NULL;
 =======
+<<<<<<< HEAD
+	struct gfs2_qadata *qa = NULL;
+=======
 	struct gfs2_alloc *al = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	if (gfs2_is_stuffed(ip) &&
@@ -1357,9 +1458,14 @@ static int do_grow(struct inode *inode, u64 size)
 		qa = gfs2_qadata_get(ip);
 		if (qa == NULL)
 =======
+<<<<<<< HEAD
+		qa = gfs2_qadata_get(ip);
+		if (qa == NULL)
+=======
 		al = gfs2_alloc_get(ip);
 		if (al == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 
 		error = gfs2_quota_lock_check(ip);
@@ -1369,9 +1475,13 @@ static int do_grow(struct inode *inode, u64 size)
 <<<<<<< HEAD
 		error = gfs2_inplace_reserve(ip, 1);
 =======
+<<<<<<< HEAD
+		error = gfs2_inplace_reserve(ip, 1);
+=======
 		al->al_requested = 1;
 		error = gfs2_inplace_reserve(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto do_grow_qunlock;
 	}
@@ -1383,8 +1493,12 @@ static int do_grow(struct inode *inode, u64 size)
 <<<<<<< HEAD
 	if (qa) {
 =======
+<<<<<<< HEAD
+	if (qa) {
+=======
 	if (al) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = gfs2_unstuff_dinode(ip, NULL);
 		if (error)
 			goto do_end_trans;
@@ -1406,8 +1520,12 @@ do_grow_release:
 <<<<<<< HEAD
 	if (qa) {
 =======
+<<<<<<< HEAD
+	if (qa) {
+=======
 	if (al) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gfs2_inplace_release(ip);
 do_grow_qunlock:
 		gfs2_quota_unlock(ip);
@@ -1415,8 +1533,12 @@ do_grow_alloc_put:
 <<<<<<< HEAD
 		gfs2_qadata_put(ip);
 =======
+<<<<<<< HEAD
+		gfs2_qadata_put(ip);
+=======
 		gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return error;
 }
@@ -1448,7 +1570,12 @@ int gfs2_setattr_size(struct inode *inode, u64 newsize)
 	inode_dio_wait(inode);
 
 =======
+<<<<<<< HEAD
+	inode_dio_wait(inode);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	oldsize = inode->i_size;
 	if (newsize >= oldsize)
 		return do_grow(inode, newsize);

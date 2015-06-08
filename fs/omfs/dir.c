@@ -96,8 +96,12 @@ int omfs_make_empty(struct inode *inode, struct super_block *sb)
 <<<<<<< HEAD
 	if (S_ISDIR(inode->i_mode)) {
 =======
+<<<<<<< HEAD
+	if (S_ISDIR(inode->i_mode)) {
+=======
 	if (inode->i_mode & S_IFDIR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memset(&bh->b_data[OMFS_DIR_START], 0xff,
 			sbi->s_sys_blocksize - OMFS_DIR_START);
 	} else
@@ -262,8 +266,12 @@ static int omfs_remove(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 static int omfs_add_node(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int omfs_add_node(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int omfs_add_node(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	struct inode *inode = omfs_new_inode(dir, mode);
@@ -290,8 +298,12 @@ out_free_inode:
 <<<<<<< HEAD
 static int omfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int omfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int omfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return omfs_add_node(dir, dentry, mode | S_IFDIR);
 }
@@ -299,8 +311,12 @@ static int omfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 static int omfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int omfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int omfs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct nameidata *nd)
 {
 	return omfs_add_node(dir, dentry, mode | S_IFREG);

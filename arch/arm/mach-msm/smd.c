@@ -4,7 +4,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2013, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -20,9 +24,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/module.h>
 #include <linux/fs.h>
@@ -34,6 +41,9 @@
 #include <linux/list.h>
 #include <linux/slab.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/io.h>
 #include <linux/termios.h>
@@ -497,6 +507,8 @@ static void handle_modem_crash(void)
 	if (msm_reset_hook)
 		msm_reset_hook();
 	*/
+<<<<<<< HEAD
+=======
 =======
 #include <linux/debugfs.h>
 #include <linux/delay.h>
@@ -577,6 +589,7 @@ static void handle_modem_crash(void)
 	if (msm_hw_reset_hook)
 		msm_hw_reset_hook();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* in this case the modem or watchdog should reboot us */
 	for (;;)
@@ -584,6 +597,9 @@ static void handle_modem_crash(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int smsm_check_for_modem_crash(void)
 {
 	/* if the modem's not ready yet, we have to hope for the best */
@@ -591,6 +607,8 @@ int smsm_check_for_modem_crash(void)
 		return 0;
 
 	if (__raw_readl(SMSM_STATE_ADDR(SMSM_MODEM_STATE)) & SMSM_RESET) {
+<<<<<<< HEAD
+=======
 =======
 uint32_t raw_smsm_get_state(enum smsm_state_item item)
 {
@@ -601,6 +619,7 @@ static int check_for_modem_crash(void)
 {
 	if (raw_smsm_get_state(SMSM_STATE_MODEM) & SMSM_RESET) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		handle_modem_crash();
 		return -1;
 	}
@@ -609,7 +628,11 @@ static int check_for_modem_crash(void)
 <<<<<<< HEAD
 EXPORT_SYMBOL(smsm_check_for_modem_crash);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(smsm_check_for_modem_crash);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* the spinlock is used to synchronize between the
  * irq handler and code that mutates the channel
@@ -618,8 +641,12 @@ EXPORT_SYMBOL(smsm_check_for_modem_crash);
 <<<<<<< HEAD
 static DEFINE_SPINLOCK(smd_lock);
 =======
+<<<<<<< HEAD
+static DEFINE_SPINLOCK(smd_lock);
+=======
 DEFINE_SPINLOCK(smd_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DEFINE_SPINLOCK(smem_lock);
 
 /* the mutex is used during open() and close()
@@ -631,6 +658,9 @@ static DEFINE_MUTEX(smd_creation_mutex);
 static int smd_initialized;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct smd_shared_v1 {
 	struct smd_half_channel ch0;
 	unsigned char data0[SMD_BUF_SIZE];
@@ -3470,6 +3500,8 @@ int __init msm_smd_init(void)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 LIST_HEAD(smd_ch_closed_list);
 LIST_HEAD(smd_ch_list_modem);
@@ -4367,6 +4399,7 @@ static int __init msm_smd_init(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_init(msm_smd_init);
 
 MODULE_DESCRIPTION("MSM Shared Memory Core");

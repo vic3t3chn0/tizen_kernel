@@ -64,7 +64,16 @@ static void iscsi_boot_kobj_release(struct kobject *kobj)
 	struct iscsi_boot_kobj *boot_kobj =
 			container_of(kobj, struct iscsi_boot_kobj, kobj);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (boot_kobj->release)
+		boot_kobj->release(boot_kobj->data);
+=======
 	kfree(boot_kobj->data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(boot_kobj->data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(boot_kobj);
 }
 
@@ -111,7 +120,15 @@ static struct attribute *target_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t iscsi_boot_tgt_attr_is_visible(struct kobject *kobj,
+=======
 static mode_t iscsi_boot_tgt_attr_is_visible(struct kobject *kobj,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t iscsi_boot_tgt_attr_is_visible(struct kobject *kobj,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     struct attribute *attr, int i)
 {
 	struct iscsi_boot_kobj *boot_kobj =
@@ -192,7 +209,15 @@ static struct attribute *ethernet_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t iscsi_boot_eth_attr_is_visible(struct kobject *kobj,
+=======
 static mode_t iscsi_boot_eth_attr_is_visible(struct kobject *kobj,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t iscsi_boot_eth_attr_is_visible(struct kobject *kobj,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     struct attribute *attr, int i)
 {
 	struct iscsi_boot_kobj *boot_kobj =
@@ -264,7 +289,15 @@ static struct attribute *initiator_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t iscsi_boot_ini_attr_is_visible(struct kobject *kobj,
+=======
 static mode_t iscsi_boot_ini_attr_is_visible(struct kobject *kobj,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t iscsi_boot_ini_attr_is_visible(struct kobject *kobj,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     struct attribute *attr, int i)
 {
 	struct iscsi_boot_kobj *boot_kobj =
@@ -305,7 +338,16 @@ iscsi_boot_create_kobj(struct iscsi_boot_kset *boot_kset,
 		       struct attribute_group *attr_group,
 		       const char *name, int index, void *data,
 		       ssize_t (*show) (void *data, int type, char *buf),
+<<<<<<< HEAD
+<<<<<<< HEAD
+		       umode_t (*is_visible) (void *data, int type),
+		       void (*release) (void *data))
+=======
 		       mode_t (*is_visible) (void *data, int type))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		       mode_t (*is_visible) (void *data, int type))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct iscsi_boot_kobj *boot_kobj;
 
@@ -323,6 +365,13 @@ iscsi_boot_create_kobj(struct iscsi_boot_kset *boot_kset,
 	boot_kobj->data = data;
 	boot_kobj->show = show;
 	boot_kobj->is_visible = is_visible;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	boot_kobj->release = release;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sysfs_create_group(&boot_kobj->kobj, attr_group)) {
 		/*
@@ -331,7 +380,15 @@ iscsi_boot_create_kobj(struct iscsi_boot_kset *boot_kset,
 		 * the boot kobj was not setup and the normal release
 		 * path is not being run.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		boot_kobj->release = NULL;
+=======
 		boot_kobj->data = NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		boot_kobj->data = NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kobject_put(&boot_kobj->kobj);
 		return NULL;
 	}
@@ -357,6 +414,13 @@ static void iscsi_boot_remove_kobj(struct iscsi_boot_kobj *boot_kobj)
  * @data: driver specific data for target
  * @show: attr show function
  * @is_visible: attr visibility function
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @release: release function
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note: The boot sysfs lib will free the data passed in for the caller
  * when all refs to the target kobject have been released.
@@ -365,10 +429,25 @@ struct iscsi_boot_kobj *
 iscsi_boot_create_target(struct iscsi_boot_kset *boot_kset, int index,
 			 void *data,
 			 ssize_t (*show) (void *data, int type, char *buf),
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 umode_t (*is_visible) (void *data, int type),
+			 void (*release) (void *data))
+{
+	return iscsi_boot_create_kobj(boot_kset, &iscsi_boot_target_attr_group,
+				      "target%d", index, data, show, is_visible,
+				      release);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 mode_t (*is_visible) (void *data, int type))
 {
 	return iscsi_boot_create_kobj(boot_kset, &iscsi_boot_target_attr_group,
 				      "target%d", index, data, show, is_visible);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(iscsi_boot_create_target);
 
@@ -379,6 +458,13 @@ EXPORT_SYMBOL_GPL(iscsi_boot_create_target);
  * @data: driver specific data
  * @show: attr show function
  * @is_visible: attr visibility function
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @release: release function
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note: The boot sysfs lib will free the data passed in for the caller
  * when all refs to the initiator kobject have been released.
@@ -387,12 +473,29 @@ struct iscsi_boot_kobj *
 iscsi_boot_create_initiator(struct iscsi_boot_kset *boot_kset, int index,
 			    void *data,
 			    ssize_t (*show) (void *data, int type, char *buf),
+<<<<<<< HEAD
+<<<<<<< HEAD
+			    umode_t (*is_visible) (void *data, int type),
+			    void (*release) (void *data))
+=======
 			    mode_t (*is_visible) (void *data, int type))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			    mode_t (*is_visible) (void *data, int type))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return iscsi_boot_create_kobj(boot_kset,
 				      &iscsi_boot_initiator_attr_group,
 				      "initiator", index, data, show,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				      is_visible, release);
+=======
 				      is_visible);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				      is_visible);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(iscsi_boot_create_initiator);
 
@@ -403,6 +506,13 @@ EXPORT_SYMBOL_GPL(iscsi_boot_create_initiator);
  * @data: driver specific data
  * @show: attr show function
  * @is_visible: attr visibility function
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @release: release function
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note: The boot sysfs lib will free the data passed in for the caller
  * when all refs to the ethernet kobject have been released.
@@ -411,12 +521,29 @@ struct iscsi_boot_kobj *
 iscsi_boot_create_ethernet(struct iscsi_boot_kset *boot_kset, int index,
 			   void *data,
 			   ssize_t (*show) (void *data, int type, char *buf),
+<<<<<<< HEAD
+<<<<<<< HEAD
+			   umode_t (*is_visible) (void *data, int type),
+			   void (*release) (void *data))
+=======
 			   mode_t (*is_visible) (void *data, int type))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			   mode_t (*is_visible) (void *data, int type))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return iscsi_boot_create_kobj(boot_kset,
 				      &iscsi_boot_ethernet_attr_group,
 				      "ethernet%d", index, data, show,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				      is_visible, release);
+=======
 				      is_visible);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				      is_visible);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(iscsi_boot_create_ethernet);
 
@@ -472,6 +599,15 @@ void iscsi_boot_destroy_kset(struct iscsi_boot_kset *boot_kset)
 {
 	struct iscsi_boot_kobj *boot_kobj, *tmp_kobj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!boot_kset)
+		return;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(boot_kobj, tmp_kobj,
 				 &boot_kset->kobj_list, list)
 		iscsi_boot_remove_kobj(boot_kobj);

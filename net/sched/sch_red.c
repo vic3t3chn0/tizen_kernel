@@ -44,8 +44,14 @@ struct red_sched_data {
 	struct red_parms	parms;
 	struct red_vars		vars;
 =======
+<<<<<<< HEAD
+	struct timer_list	adapt_timer;
+	struct red_parms	parms;
+	struct red_vars		vars;
+=======
 	struct red_parms	parms;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct red_stats	stats;
 	struct Qdisc		*qdisc;
 };
@@ -67,6 +73,9 @@ static int red_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	q->vars.qavg = red_calc_qavg(&q->parms,
 				     &q->vars,
 				     child->qstats.backlog);
@@ -75,6 +84,8 @@ static int red_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 		red_end_of_idle_period(&q->vars);
 
 	switch (red_action(&q->parms, &q->vars, q->vars.qavg)) {
+<<<<<<< HEAD
+=======
 =======
 	q->parms.qavg = red_calc_qavg(&q->parms, child->qstats.backlog);
 
@@ -83,6 +94,7 @@ static int red_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 
 	switch (red_action(&q->parms, q->parms.qavg)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case RED_DONT_MARK:
 		break;
 
@@ -137,9 +149,14 @@ static struct sk_buff *red_dequeue(struct Qdisc *sch)
 		if (!red_is_idling(&q->vars))
 			red_start_of_idle_period(&q->vars);
 =======
+<<<<<<< HEAD
+		if (!red_is_idling(&q->vars))
+			red_start_of_idle_period(&q->vars);
+=======
 		if (!red_is_idling(&q->parms))
 			red_start_of_idle_period(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return skb;
 }
@@ -169,9 +186,14 @@ static unsigned int red_drop(struct Qdisc *sch)
 	if (!red_is_idling(&q->vars))
 		red_start_of_idle_period(&q->vars);
 =======
+<<<<<<< HEAD
+	if (!red_is_idling(&q->vars))
+		red_start_of_idle_period(&q->vars);
+=======
 	if (!red_is_idling(&q->parms))
 		red_start_of_idle_period(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -185,8 +207,12 @@ static void red_reset(struct Qdisc *sch)
 <<<<<<< HEAD
 	red_restart(&q->vars);
 =======
+<<<<<<< HEAD
+	red_restart(&q->vars);
+=======
 	red_restart(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void red_destroy(struct Qdisc *sch)
@@ -196,7 +222,12 @@ static void red_destroy(struct Qdisc *sch)
 
 	del_timer_sync(&q->adapt_timer);
 =======
+<<<<<<< HEAD
+
+	del_timer_sync(&q->adapt_timer);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	qdisc_destroy(q->qdisc);
 }
 
@@ -206,7 +237,11 @@ static const struct nla_policy red_policy[TCA_RED_MAX + 1] = {
 <<<<<<< HEAD
 	[TCA_RED_MAX_P] = { .type = NLA_U32 },
 =======
+<<<<<<< HEAD
+	[TCA_RED_MAX_P] = { .type = NLA_U32 },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int red_change(struct Qdisc *sch, struct nlattr *opt)
@@ -219,7 +254,11 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 <<<<<<< HEAD
 	u32 max_P;
 =======
+<<<<<<< HEAD
+	u32 max_P;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (opt == NULL)
 		return -EINVAL;
@@ -236,7 +275,12 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 	max_P = tb[TCA_RED_MAX_P] ? nla_get_u32(tb[TCA_RED_MAX_P]) : 0;
 
 =======
+<<<<<<< HEAD
+	max_P = tb[TCA_RED_MAX_P] ? nla_get_u32(tb[TCA_RED_MAX_P]) : 0;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctl = nla_data(tb[TCA_RED_PARMS]);
 
 	if (ctl->limit > 0) {
@@ -255,6 +299,9 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	red_set_parms(&q->parms,
 		      ctl->qth_min, ctl->qth_max, ctl->Wlog,
 		      ctl->Plog, ctl->Scell_log,
@@ -268,6 +315,8 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 
 	if (!q->qdisc->q.qlen)
 		red_start_of_idle_period(&q->vars);
+<<<<<<< HEAD
+=======
 =======
 	red_set_parms(&q->parms, ctl->qth_min, ctl->qth_max, ctl->Wlog,
 				 ctl->Plog, ctl->Scell_log,
@@ -276,12 +325,16 @@ static int red_change(struct Qdisc *sch, struct nlattr *opt)
 	if (skb_queue_empty(&sch->q))
 		red_end_of_idle_period(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sch_tree_unlock(sch);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void red_adaptative_timer(unsigned long arg)
 {
 	struct Qdisc *sch = (struct Qdisc *)arg;
@@ -294,8 +347,11 @@ static inline void red_adaptative_timer(unsigned long arg)
 	spin_unlock(root_lock);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int red_init(struct Qdisc *sch, struct nlattr *opt)
 {
 	struct red_sched_data *q = qdisc_priv(sch);
@@ -304,7 +360,11 @@ static int red_init(struct Qdisc *sch, struct nlattr *opt)
 <<<<<<< HEAD
 	setup_timer(&q->adapt_timer, red_adaptative_timer, (unsigned long)sch);
 =======
+<<<<<<< HEAD
+	setup_timer(&q->adapt_timer, red_adaptative_timer, (unsigned long)sch);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return red_change(sch, opt);
 }
 
@@ -330,7 +390,11 @@ static int red_dump(struct Qdisc *sch, struct sk_buff *skb)
 <<<<<<< HEAD
 	NLA_PUT_U32(skb, TCA_RED_MAX_P, q->parms.max_P);
 =======
+<<<<<<< HEAD
+	NLA_PUT_U32(skb, TCA_RED_MAX_P, q->parms.max_P);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return nla_nest_end(skb, opts);
 
 nla_put_failure:

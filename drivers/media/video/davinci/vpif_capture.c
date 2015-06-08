@@ -33,7 +33,14 @@
 #include <linux/i2c.h>
 #include <linux/platform_device.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <media/v4l2-device.h>
 #include <media/v4l2-ioctl.h>
@@ -44,6 +51,13 @@
 
 MODULE_DESCRIPTION("TI DaVinci VPIF Capture driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_VERSION(VPIF_CAPTURE_VERSION);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define vpif_err(fmt, arg...)	v4l2_err(&vpif_obj.v4l2_dev, fmt, ## arg)
 #define vpif_dbg(level, debug, fmt, arg...)	\
@@ -1677,7 +1691,14 @@ static int vpif_querycap(struct file *file, void  *priv,
 {
 	struct vpif_capture_config *config = vpif_dev->platform_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	cap->version = VPIF_CAPTURE_VERSION_CODE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cap->version = VPIF_CAPTURE_VERSION_CODE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap->capabilities = V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_STREAMING;
 	strlcpy(cap->driver, "vpif capture", sizeof(cap->driver));
 	strlcpy(cap->bus_info, "DM646x Platform", sizeof(cap->bus_info));
@@ -2178,6 +2199,18 @@ static __init int vpif_probe(struct platform_device *pdev)
 		return err;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = v4l2_device_register(vpif_dev, &vpif_obj.v4l2_dev);
+	if (err) {
+		v4l2_err(vpif_dev->driver, "Error registering v4l2 device\n");
+		return err;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	k = 0;
 	while ((res = platform_get_resource(pdev, IORESOURCE_IRQ, k))) {
 		for (i = res->start; i <= res->end; i++) {
@@ -2211,10 +2244,21 @@ static __init int vpif_probe(struct platform_device *pdev)
 		vfd->v4l2_dev = &vpif_obj.v4l2_dev;
 		vfd->release = video_device_release;
 		snprintf(vfd->name, sizeof(vfd->name),
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 "DM646x_VPIFCapture_DRIVER_V%s",
+			 VPIF_CAPTURE_VERSION);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 "DM646x_VPIFCapture_DRIVER_V%d.%d.%d",
 			 (VPIF_CAPTURE_VERSION_CODE >> 16) & 0xff,
 			 (VPIF_CAPTURE_VERSION_CODE >> 8) & 0xff,
 			 (VPIF_CAPTURE_VERSION_CODE) & 0xff);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Set video_dev to the video device */
 		ch->video_dev = vfd;
 	}
@@ -2249,12 +2293,21 @@ static __init int vpif_probe(struct platform_device *pdev)
 		goto probe_out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = v4l2_device_register(vpif_dev, &vpif_obj.v4l2_dev);
 	if (err) {
 		v4l2_err(vpif_dev->driver, "Error registering v4l2 device\n");
 		goto probe_subdev_out;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < subdev_count; i++) {
 		subdevdata = &config->subdev_info[i];
 		vpif_obj.sd[i] =
@@ -2284,7 +2337,14 @@ probe_subdev_out:
 
 	j = VPIF_CAPTURE_MAX_DEVICES;
 probe_out:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	v4l2_device_unregister(&vpif_obj.v4l2_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	v4l2_device_unregister(&vpif_obj.v4l2_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (k = 0; k < j; k++) {
 		/* Get the pointer to the channel object */
 		ch = vpif_obj.dev[k];
@@ -2306,6 +2366,13 @@ vpif_int_err:
 		if (res)
 			i = res->end;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	v4l2_device_unregister(&vpif_obj.v4l2_dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 

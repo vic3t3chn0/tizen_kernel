@@ -23,6 +23,8 @@
 #include <linux/stringify.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * module.h includes tracepoints, and because ftrace.h
  * pulls in module.h:
@@ -34,6 +36,7 @@
  */
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef TRACE_EVENT
 #define TRACE_EVENT(name, proto, args, tstruct, assign, print)	\

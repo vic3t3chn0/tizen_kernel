@@ -76,9 +76,14 @@ static int xfrm6_beet_output(struct xfrm_state *x, struct sk_buff *skb)
 	top_iph->saddr = *(struct in6_addr *)&x->props.saddr;
 	top_iph->daddr = *(struct in6_addr *)&x->id.daddr;
 =======
+<<<<<<< HEAD
+	top_iph->saddr = *(struct in6_addr *)&x->props.saddr;
+	top_iph->daddr = *(struct in6_addr *)&x->id.daddr;
+=======
 	ipv6_addr_copy(&top_iph->saddr, (struct in6_addr *)&x->props.saddr);
 	ipv6_addr_copy(&top_iph->daddr, (struct in6_addr *)&x->id.daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -104,9 +109,14 @@ static int xfrm6_beet_input(struct xfrm_state *x, struct sk_buff *skb)
 	ip6h->daddr = *(struct in6_addr *)&x->sel.daddr.a6;
 	ip6h->saddr = *(struct in6_addr *)&x->sel.saddr.a6;
 =======
+<<<<<<< HEAD
+	ip6h->daddr = *(struct in6_addr *)&x->sel.daddr.a6;
+	ip6h->saddr = *(struct in6_addr *)&x->sel.saddr.a6;
+=======
 	ipv6_addr_copy(&ip6h->daddr, (struct in6_addr *) &x->sel.daddr.a6);
 	ipv6_addr_copy(&ip6h->saddr, (struct in6_addr *) &x->sel.saddr.a6);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = 0;
 out:
 	return err;

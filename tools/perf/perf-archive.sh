@@ -32,7 +32,11 @@ MANIFEST=$(mktemp /tmp/perf-archive-manifest.XXXXXX)
 <<<<<<< HEAD
 PERF_BUILDID_LINKDIR=$(readlink -f $PERF_BUILDID_DIR)/
 =======
+<<<<<<< HEAD
+PERF_BUILDID_LINKDIR=$(readlink -f $PERF_BUILDID_DIR)/
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 cut -d ' ' -f 1 $BUILDIDS | \
 while read build_id ; do
@@ -42,8 +46,12 @@ while read build_id ; do
 <<<<<<< HEAD
 	echo ${filename#$PERF_BUILDID_LINKDIR} >> $MANIFEST
 =======
+<<<<<<< HEAD
+	echo ${filename#$PERF_BUILDID_LINKDIR} >> $MANIFEST
+=======
 	echo ${filename#$PERF_BUILDID_DIR} >> $MANIFEST
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 done
 
 tar cfj $PERF_DATA.tar.bz2 -C $PERF_BUILDID_DIR -T $MANIFEST

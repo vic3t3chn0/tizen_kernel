@@ -21,16 +21,22 @@
 #include <linux/spinlock.h>
 #include <linux/bootmem.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 
 #include <asm/machvec.h>
 #include <asm/page.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/machvec.h>
 #include <asm/page.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/sal.h>
 #include <asm/smp.h>
@@ -143,7 +149,11 @@ struct pci_root_info {
 <<<<<<< HEAD
 	struct list_head resources;
 =======
+<<<<<<< HEAD
+	struct list_head resources;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *name;
 };
 
@@ -326,6 +336,9 @@ static __devinit acpi_status add_window(struct acpi_resource *res, void *data)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* HP's firmware has a hack to work around a Windows bug.
 	 * Ignore these tiny memory ranges */
 	if (!((window->resource.flags & IORESOURCE_MEM) &&
@@ -336,6 +349,8 @@ static __devinit acpi_status add_window(struct acpi_resource *res, void *data)
 	return AE_OK;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	return AE_OK;
 }
@@ -358,6 +373,7 @@ pcibios_setup_root_windows(struct pci_bus *bus, struct pci_controller *ctrl)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pci_bus * __devinit
 pci_acpi_scan_root(struct acpi_pci_root *root)
 {
@@ -369,7 +385,11 @@ pci_acpi_scan_root(struct acpi_pci_root *root)
 <<<<<<< HEAD
 	struct pci_root_info info;
 =======
+<<<<<<< HEAD
+	struct pci_root_info info;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pci_bus *pbus;
 	char *name;
 	int pxm;
@@ -387,10 +407,15 @@ pci_acpi_scan_root(struct acpi_pci_root *root)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&info.resources);
 	acpi_walk_resources(device->handle, METHOD_NAME__CRS, count_window,
 			&windows);
 	if (windows) {
+<<<<<<< HEAD
+=======
 =======
 	acpi_walk_resources(device->handle, METHOD_NAME__CRS, count_window,
 			&windows);
@@ -398,6 +423,7 @@ pci_acpi_scan_root(struct acpi_pci_root *root)
 		struct pci_root_info info;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		controller->window =
 			kmalloc_node(sizeof(*controller->window) * windows,
 				     GFP_KERNEL, controller->node);
@@ -422,6 +448,9 @@ pci_acpi_scan_root(struct acpi_pci_root *root)
 	 * such quirk. So we just ignore the case now.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pbus = pci_create_root_bus(NULL, bus, &pci_root_ops, controller,
 				   &info.resources);
 	if (!pbus) {
@@ -430,10 +459,13 @@ pci_acpi_scan_root(struct acpi_pci_root *root)
 	}
 
 	pbus->subordinate = pci_scan_child_bus(pbus);
+<<<<<<< HEAD
+=======
 =======
 	pbus = pci_scan_bus_parented(NULL, bus, &pci_root_ops, controller);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return pbus;
 
 out3:
@@ -444,6 +476,8 @@ out1:
 	return NULL;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void pcibios_resource_to_bus(struct pci_dev *dev,
@@ -495,6 +529,7 @@ void pcibios_bus_to_resource(struct pci_dev *dev,
 EXPORT_SYMBOL(pcibios_bus_to_resource);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit is_valid_resource(struct pci_dev *dev, int idx)
 {
 	unsigned int i, type_mask = IORESOURCE_IO | IORESOURCE_MEM;
@@ -518,8 +553,11 @@ pcibios_fixup_resources(struct pci_dev *dev, int start, int limit)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct pci_bus_region region;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	for (i = start; i < limit; i++) {
@@ -527,10 +565,13 @@ pcibios_fixup_resources(struct pci_dev *dev, int start, int limit)
 			continue;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		region.start = dev->resource[i].start;
 		region.end = dev->resource[i].end;
 		pcibios_bus_to_resource(dev, &dev->resource[i], &region);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((is_valid_resource(dev, i)))
 			pci_claim_resource(dev, i);
 	}
@@ -560,23 +601,32 @@ pcibios_fixup_bus (struct pci_bus *b)
 		pcibios_fixup_bridge_resources(b->self);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	} else {
 		pcibios_setup_root_windows(b, b->sysdata);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	list_for_each_entry(dev, &b->devices, bus_list)
 		pcibios_fixup_device_resources(dev);
 	platform_pci_fixup_bus(b);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void pcibios_set_master (struct pci_dev *dev)
 {
 	/* No special bus mastering setup handling */
+<<<<<<< HEAD
+=======
 =======
 
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __devinit

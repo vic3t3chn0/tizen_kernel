@@ -16,7 +16,14 @@ asmlinkage long sys_ni_syscall(void)
 	return -ENOSYS;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 cond_syscall(sys_nfsservctl);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+cond_syscall(sys_nfsservctl);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 cond_syscall(sys_quotactl);
 cond_syscall(sys32_quotactl);
 cond_syscall(sys_acct);
@@ -146,6 +153,16 @@ cond_syscall(sys_io_submit);
 cond_syscall(sys_io_cancel);
 cond_syscall(sys_io_getevents);
 cond_syscall(sys_syslog);
+<<<<<<< HEAD
+<<<<<<< HEAD
+cond_syscall(sys_process_vm_readv);
+cond_syscall(sys_process_vm_writev);
+cond_syscall(compat_sys_process_vm_readv);
+cond_syscall(compat_sys_process_vm_writev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* arch-specific weak syscall entries */
 cond_syscall(sys_pciconfig_read);

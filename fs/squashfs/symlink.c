@@ -93,8 +93,12 @@ static int squashfs_symlink_readpage(struct file *file, struct page *page)
 <<<<<<< HEAD
 		pageaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+		pageaddr = kmap_atomic(page);
+=======
 		pageaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		copied = squashfs_copy_data(pageaddr + bytes, entry, offset,
 								length - bytes);
 		if (copied == length - bytes)
@@ -104,8 +108,12 @@ static int squashfs_symlink_readpage(struct file *file, struct page *page)
 <<<<<<< HEAD
 		kunmap_atomic(pageaddr);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(pageaddr);
+=======
 		kunmap_atomic(pageaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		squashfs_cache_put(entry);
 	}
 

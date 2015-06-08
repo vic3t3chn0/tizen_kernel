@@ -114,6 +114,9 @@ typedef struct page *pgtable_t;
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * PHYSICAL_OFFSET is the offset in physical memory where the base
  * of the kernel is loaded.
  */
@@ -124,8 +127,11 @@ typedef struct page *pgtable_t;
 #endif
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * PAGE_OFFSET is the virtual address of the start of kernel address
  * space.
  */

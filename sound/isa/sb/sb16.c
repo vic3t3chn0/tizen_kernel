@@ -27,8 +27,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/sb.h>
 #include <sound/sb16_csp.h>
@@ -77,10 +81,16 @@ static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP; /* Enable this ca
 #ifdef CONFIG_PNP
 static bool isapnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP; /* Enable this card */
+#ifdef CONFIG_PNP
+static bool isapnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP; /* Enable this card */
 #ifdef CONFIG_PNP
 static int isapnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 static long port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;	/* 0x220,0x240,0x260,0x280 */
 static long mpu_port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;	/* 0x330,0x300 */
@@ -409,9 +419,15 @@ static int __devinit snd_sb16_probe(struct snd_card *card, int dev)
 					       MPU401_INFO_IRQ_HOOK, -1,
 					       &chip->rmidi)) < 0)
 =======
+<<<<<<< HEAD
+					       chip->mpu_port,
+					       MPU401_INFO_IRQ_HOOK, -1,
+					       &chip->rmidi)) < 0)
+=======
 					       chip->mpu_port, 0,
 					       xirq, 0, &chip->rmidi)) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return err;
 		chip->rmidi_callback = snd_mpu401_uart_interrupt;
 	}

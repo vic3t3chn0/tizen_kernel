@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/io.h>
 =======
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>
 #include <mach/pm.h>
@@ -175,7 +179,11 @@ struct battery_thresh sharpsl_battery_levels_noac[] = {
 <<<<<<< HEAD
 extern int max1111_read_channel(int);
 =======
+<<<<<<< HEAD
+extern int max1111_read_channel(int);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Read MAX1111 ADC
  */
@@ -187,9 +195,12 @@ int sharpsl_pm_pxa_read_max1111(int channel)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	extern int max1111_read_channel(int);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* max1111 accepts channels from 0-3, however,
 	 * it is encoded from 0-7 here in the code.
 	 */
@@ -919,6 +930,9 @@ static int __devinit sharpsl_pm_probe(struct platform_device *pdev)
 
 	/* Register interrupt handlers */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (request_irq(PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_acin), sharpsl_ac_isr, IRQF_DISABLED | IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING, "AC Input Detect", sharpsl_ac_isr)) {
 		dev_err(sharpsl_pm.dev, "Could not get irq %d.\n", PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_acin));
 	}
@@ -930,6 +944,8 @@ static int __devinit sharpsl_pm_probe(struct platform_device *pdev)
 	if (sharpsl_pm.machinfo->gpio_fatal) {
 		if (request_irq(PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_fatal), sharpsl_fatal_isr, IRQF_DISABLED | IRQF_TRIGGER_FALLING, "Fatal Battery", sharpsl_fatal_isr)) {
 			dev_err(sharpsl_pm.dev, "Could not get irq %d.\n", PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_fatal));
+<<<<<<< HEAD
+=======
 =======
 	if (request_irq(IRQ_GPIO(sharpsl_pm.machinfo->gpio_acin), sharpsl_ac_isr, IRQF_DISABLED | IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING, "AC Input Detect", sharpsl_ac_isr)) {
 		dev_err(sharpsl_pm.dev, "Could not get irq %d.\n", IRQ_GPIO(sharpsl_pm.machinfo->gpio_acin));
@@ -943,6 +959,7 @@ static int __devinit sharpsl_pm_probe(struct platform_device *pdev)
 		if (request_irq(IRQ_GPIO(sharpsl_pm.machinfo->gpio_fatal), sharpsl_fatal_isr, IRQF_DISABLED | IRQF_TRIGGER_FALLING, "Fatal Battery", sharpsl_fatal_isr)) {
 			dev_err(sharpsl_pm.dev, "Could not get irq %d.\n", IRQ_GPIO(sharpsl_pm.machinfo->gpio_fatal));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -952,9 +969,14 @@ static int __devinit sharpsl_pm_probe(struct platform_device *pdev)
 		if (request_irq(PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_batfull), sharpsl_chrg_full_isr, IRQF_DISABLED | IRQF_TRIGGER_RISING, "CO", sharpsl_chrg_full_isr)) {
 			dev_err(sharpsl_pm.dev, "Could not get irq %d.\n", PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_batfull));
 =======
+<<<<<<< HEAD
+		if (request_irq(PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_batfull), sharpsl_chrg_full_isr, IRQF_DISABLED | IRQF_TRIGGER_RISING, "CO", sharpsl_chrg_full_isr)) {
+			dev_err(sharpsl_pm.dev, "Could not get irq %d.\n", PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_batfull));
+=======
 		if (request_irq(IRQ_GPIO(sharpsl_pm.machinfo->gpio_batfull), sharpsl_chrg_full_isr, IRQF_DISABLED | IRQF_TRIGGER_RISING, "CO", sharpsl_chrg_full_isr)) {
 			dev_err(sharpsl_pm.dev, "Could not get irq %d.\n", IRQ_GPIO(sharpsl_pm.machinfo->gpio_batfull));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -984,6 +1006,9 @@ static int sharpsl_pm_remove(struct platform_device *pdev)
 	led_trigger_unregister_simple(sharpsl_charge_led_trigger);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_irq(PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_acin), sharpsl_ac_isr);
 	free_irq(PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_batlock), sharpsl_fatal_isr);
 
@@ -992,6 +1017,8 @@ static int sharpsl_pm_remove(struct platform_device *pdev)
 
 	if (sharpsl_pm.machinfo->batfull_irq)
 		free_irq(PXA_GPIO_TO_IRQ(sharpsl_pm.machinfo->gpio_batfull), sharpsl_chrg_full_isr);
+<<<<<<< HEAD
+=======
 =======
 	free_irq(IRQ_GPIO(sharpsl_pm.machinfo->gpio_acin), sharpsl_ac_isr);
 	free_irq(IRQ_GPIO(sharpsl_pm.machinfo->gpio_batlock), sharpsl_fatal_isr);
@@ -1002,6 +1029,7 @@ static int sharpsl_pm_remove(struct platform_device *pdev)
 	if (sharpsl_pm.machinfo->batfull_irq)
 		free_irq(IRQ_GPIO(sharpsl_pm.machinfo->gpio_batfull), sharpsl_chrg_full_isr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	gpio_free(sharpsl_pm.machinfo->gpio_batlock);
 	gpio_free(sharpsl_pm.machinfo->gpio_batfull);

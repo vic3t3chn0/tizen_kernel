@@ -257,7 +257,11 @@ extern int get_signal_to_deliver(siginfo_t *info, struct k_sigaction *return_ka,
 <<<<<<< HEAD
 extern void block_sigmask(struct k_sigaction *ka, int signr);
 =======
+<<<<<<< HEAD
+extern void block_sigmask(struct k_sigaction *ka, int signr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void exit_signals(struct task_struct *tsk);
 
 extern struct kmem_cache *sighand_cachep;

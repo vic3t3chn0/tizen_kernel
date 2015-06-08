@@ -158,6 +158,9 @@ static int dlm_protocol_compare(struct dlm_protocol_version *existing,
 static void dlm_unregister_domain_handlers(struct dlm_ctxt *dlm);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __dlm_unhash_lockres(struct dlm_ctxt *dlm, struct dlm_lock_resource *res)
 {
 	if (hlist_unhashed(&res->hash_node))
@@ -170,6 +173,8 @@ void __dlm_unhash_lockres(struct dlm_ctxt *dlm, struct dlm_lock_resource *res)
 }
 
 void __dlm_insert_lockres(struct dlm_ctxt *dlm, struct dlm_lock_resource *res)
+<<<<<<< HEAD
+=======
 =======
 void __dlm_unhash_lockres(struct dlm_lock_resource *lockres)
 {
@@ -182,6 +187,7 @@ void __dlm_unhash_lockres(struct dlm_lock_resource *lockres)
 void __dlm_insert_lockres(struct dlm_ctxt *dlm,
 		       struct dlm_lock_resource *res)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hlist_head *bucket;
 	struct qstr *q;
@@ -200,7 +206,13 @@ void __dlm_insert_lockres(struct dlm_ctxt *dlm,
 	mlog(0, "%s: Hash res %.*s\n", dlm->name, res->lockname.len,
 	     res->lockname.name);
 =======
+<<<<<<< HEAD
+
+	mlog(0, "%s: Hash res %.*s\n", dlm->name, res->lockname.len,
+	     res->lockname.name);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct dlm_lock_resource * __dlm_lookup_lockres_full(struct dlm_ctxt *dlm,
@@ -561,6 +573,9 @@ again:
 static void __dlm_print_nodes(struct dlm_ctxt *dlm)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int node = -1, num = 0;
 
 	assert_spin_locked(&dlm->spinlock);
@@ -572,6 +587,8 @@ static void __dlm_print_nodes(struct dlm_ctxt *dlm)
 		++num;
 	}
 	printk(") %u nodes\n", num);
+<<<<<<< HEAD
+=======
 =======
 	int node = -1;
 
@@ -585,6 +602,7 @@ static void __dlm_print_nodes(struct dlm_ctxt *dlm)
 	}
 	printk("\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int dlm_exit_domain_handler(struct o2net_msg *msg, u32 len, void *data,
@@ -602,10 +620,15 @@ static int dlm_exit_domain_handler(struct o2net_msg *msg, u32 len, void *data,
 	node = exit_msg->node_idx;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&dlm->spinlock);
 	clear_bit(node, dlm->domain_map);
 	clear_bit(node, dlm->exit_domain_map);
 	printk(KERN_NOTICE "o2dlm: Node %u leaves domain %s ", node, dlm->name);
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_NOTICE "o2dlm: Node %u leaves domain %s\n", node, dlm->name);
 
@@ -613,6 +636,7 @@ static int dlm_exit_domain_handler(struct o2net_msg *msg, u32 len, void *data,
 	clear_bit(node, dlm->domain_map);
 	clear_bit(node, dlm->exit_domain_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__dlm_print_nodes(dlm);
 
 	/* notify anything attached to the heartbeat events */
@@ -800,7 +824,11 @@ void dlm_unregister_domain(struct dlm_ctxt *dlm)
 <<<<<<< HEAD
 		printk(KERN_NOTICE "o2dlm: Leaving domain %s\n", dlm->name);
 =======
+<<<<<<< HEAD
+		printk(KERN_NOTICE "o2dlm: Leaving domain %s\n", dlm->name);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dlm_force_free_mles(dlm);
 		dlm_complete_dlm_shutdown(dlm);
 	}
@@ -1019,8 +1047,12 @@ static int dlm_assert_joined_handler(struct o2net_msg *msg, u32 len, void *data,
 <<<<<<< HEAD
 		printk(KERN_NOTICE "o2dlm: Node %u joins domain %s ",
 =======
+<<<<<<< HEAD
+		printk(KERN_NOTICE "o2dlm: Node %u joins domain %s ",
+=======
 		printk(KERN_NOTICE "o2dlm: Node %u joins domain %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       assert->node_idx, dlm->name);
 		__dlm_print_nodes(dlm);
 
@@ -1752,14 +1784,20 @@ bail:
 	spin_lock(&dlm->spinlock);
 	__dlm_set_joining_node(dlm, DLM_LOCK_RES_OWNER_UNKNOWN);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!status) {
 		printk(KERN_NOTICE "o2dlm: Joining domain %s ", dlm->name);
 		__dlm_print_nodes(dlm);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!status)
 		__dlm_print_nodes(dlm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&dlm->spinlock);
 
 	if (ctxt) {
@@ -2190,6 +2228,8 @@ struct dlm_ctxt * dlm_register_domain(const char *domain,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!o2hb_check_local_node_heartbeating()) {
 		mlog(ML_ERROR, "the local node has not been configured, or is "
 		     "not heartbeating\n");
@@ -2198,6 +2238,7 @@ struct dlm_ctxt * dlm_register_domain(const char *domain,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mlog(0, "register called for domain \"%s\"\n", domain);
 
 retry:

@@ -10,7 +10,12 @@
 #ifndef _LINUX_PMU_H
 #define _LINUX_PMU_H
 =======
+<<<<<<< HEAD
+#ifndef _LINUX_PMU_H
+#define _LINUX_PMU_H
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PMU_DRIVER_VERSION	2
 
@@ -216,4 +221,9 @@ extern int pmu_sys_suspended;
 
 #endif /* _LINUX_PMU_H */
 =======
+<<<<<<< HEAD
+
+#endif /* _LINUX_PMU_H */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

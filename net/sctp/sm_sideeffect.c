@@ -669,7 +669,11 @@ static void sctp_cmd_transport_on(sctp_cmd_seq_t *cmds,
 <<<<<<< HEAD
 	int was_unconfirmed = 0;
 =======
+<<<<<<< HEAD
+	int was_unconfirmed = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* 8.3 Upon the receipt of the HEARTBEAT ACK, the sender of the
 	 * HEARTBEAT should clear the error counter of the destination
@@ -697,16 +701,22 @@ static void sctp_cmd_transport_on(sctp_cmd_seq_t *cmds,
 	 * marked.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((t->state == SCTP_INACTIVE) || (t->state == SCTP_UNCONFIRMED)) {
 		was_unconfirmed = 1;
 		sctp_assoc_control_transport(asoc, t, SCTP_TRANSPORT_UP,
 					     SCTP_HEARTBEAT_SUCCESS);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if ((t->state == SCTP_INACTIVE) || (t->state == SCTP_UNCONFIRMED))
 		sctp_assoc_control_transport(asoc, t, SCTP_TRANSPORT_UP,
 					     SCTP_HEARTBEAT_SUCCESS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* The receiver of the HEARTBEAT ACK should also perform an
 	 * RTT measurement for that destination transport address
@@ -729,7 +739,13 @@ static void sctp_cmd_transport_on(sctp_cmd_seq_t *cmds,
 	if (was_unconfirmed && asoc->peer.transport_count == 1)
 		sctp_transport_immediate_rtx(t);
 =======
+<<<<<<< HEAD
+
+	if (was_unconfirmed && asoc->peer.transport_count == 1)
+		sctp_transport_immediate_rtx(t);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -1231,8 +1247,12 @@ static int sctp_cmd_interpreter(sctp_event_t event_type,
 <<<<<<< HEAD
 		chunk = event_arg;
 =======
+<<<<<<< HEAD
+		chunk = event_arg;
+=======
 		chunk = (struct sctp_chunk *) event_arg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Note:  This whole file is a huge candidate for rework.
 	 * For example, each command could either have its own handler, so
@@ -1712,13 +1732,19 @@ static int sctp_cmd_interpreter(sctp_event_t event_type,
 			sctp_asconf_queue_teardown(asoc);
 			break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		case SCTP_CMD_SET_ASOC:
 			asoc = cmd->obj.asoc;
 			break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		default:
 			pr_warn("Impossible command: %u, %p\n",
 				cmd->verb, cmd->obj.ptr);

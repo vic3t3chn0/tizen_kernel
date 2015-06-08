@@ -113,6 +113,11 @@ static u32 notrace mxc_read_sched_clock(void)
 {
 	return sched_clock_reg ? __raw_readl(sched_clock_reg) : 0;
 =======
+<<<<<<< HEAD
+static u32 notrace mxc_read_sched_clock(void)
+{
+	return sched_clock_reg ? __raw_readl(sched_clock_reg) : 0;
+=======
 static DEFINE_CLOCK_DATA(cd);
 unsigned long long notrace sched_clock(void)
 {
@@ -126,6 +131,7 @@ static void notrace mxc_update_sched_clock(void)
 	cycle_t cyc = sched_clock_reg ? __raw_readl(sched_clock_reg) : 0;
 	update_sched_clock(&cd, cyc, (u32)~0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init mxc_clocksource_init(struct clk *timer_clk)
@@ -138,8 +144,12 @@ static int __init mxc_clocksource_init(struct clk *timer_clk)
 <<<<<<< HEAD
 	setup_sched_clock(mxc_read_sched_clock, 32, c);
 =======
+<<<<<<< HEAD
+	setup_sched_clock(mxc_read_sched_clock, 32, c);
+=======
 	init_sched_clock(&cd, mxc_update_sched_clock, 32, c);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return clocksource_mmio_init(reg, "mxc_timer1", c, 200, 32,
 			clocksource_mmio_readl_up);
 }
@@ -305,8 +315,12 @@ void __init mxc_timer_init(struct clk *timer_clk, void __iomem *base, int irq)
 <<<<<<< HEAD
 	clk_prepare_enable(timer_clk);
 =======
+<<<<<<< HEAD
+	clk_prepare_enable(timer_clk);
+=======
 	clk_enable(timer_clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	timer_base = base;
 

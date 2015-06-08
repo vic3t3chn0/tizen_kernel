@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/time.h>
 #include <sound/core.h>
@@ -45,10 +49,13 @@ static DEFINE_MUTEX(sound_oss_mutex);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* NOTE: This function increments the refcount of the associated card like
  * snd_lookup_minor_data(); the caller must call snd_card_unref() appropriately
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void *snd_lookup_oss_minor_data(unsigned int minor, int type)
 {
 	struct snd_minor *mreg;
@@ -63,12 +70,18 @@ void *snd_lookup_oss_minor_data(unsigned int minor, int type)
 		private_data = mreg->private_data;
 	else
 =======
+<<<<<<< HEAD
+	if (mreg && mreg->type == type)
+		private_data = mreg->private_data;
+	else
+=======
 	if (mreg && mreg->type == type) {
 		private_data = mreg->private_data;
 		if (private_data && mreg->card_ptr)
 			atomic_inc(&mreg->card_ptr->refcount);
 	} else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		private_data = NULL;
 	mutex_unlock(&sound_oss_mutex);
 	return private_data;
@@ -142,8 +155,11 @@ int snd_register_oss_device(int type, struct snd_card *card, int dev,
 	preg->private_data = private_data;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	preg->card_ptr = card;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&sound_oss_mutex);
 	snd_oss_minors[minor] = preg;
 	minor_unit = SNDRV_MINOR_OSS_DEVICE(minor);

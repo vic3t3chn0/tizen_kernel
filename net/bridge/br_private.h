@@ -30,13 +30,19 @@
 #define BR_VERSION	"2.3"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Control of forwarding link local multicast */
 #define BR_GROUPFWD_DEFAULT	0
 /* Don't allow forwarding control protocols like STP and LLDP */
 #define BR_GROUPFWD_RESTRICTED	0x4007u
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Path to usermode spanning tree program */
 #define BR_STP_PROG	"/sbin/bridge-stp"
 
@@ -62,8 +68,12 @@ struct br_ip
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct in6_addr ip6;
 #endif
 	} u;
@@ -205,7 +215,12 @@ struct net_bridge
 	u16				group_fwd_mask;
 
 =======
+<<<<<<< HEAD
+	u16				group_fwd_mask;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* STP */
 	bridge_id			designated_root;
 	bridge_id			bridge_id;
@@ -357,7 +372,11 @@ extern void br_fdb_changeaddr(struct net_bridge_port *p,
 <<<<<<< HEAD
 extern void br_fdb_change_mac_address(struct net_bridge *br, const u8 *newaddr);
 =======
+<<<<<<< HEAD
+extern void br_fdb_change_mac_address(struct net_bridge *br, const u8 *newaddr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void br_fdb_cleanup(unsigned long arg);
 extern void br_fdb_delete_by_port(struct net_bridge *br,
 				  const struct net_bridge_port *p, int do_all);
@@ -401,8 +420,13 @@ extern int br_min_mtu(const struct net_bridge *br);
 extern netdev_features_t br_features_recompute(struct net_bridge *br,
 	netdev_features_t features);
 =======
+<<<<<<< HEAD
+extern netdev_features_t br_features_recompute(struct net_bridge *br,
+	netdev_features_t features);
+=======
 extern u32 br_features_recompute(struct net_bridge *br, u32 features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* br_input.c */
 extern int br_handle_frame_finish(struct sk_buff *skb);
@@ -520,8 +544,11 @@ extern void br_become_designated_port(struct net_bridge_port *p);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void __br_set_forward_delay(struct net_bridge *br, unsigned long t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int br_set_forward_delay(struct net_bridge *br, unsigned long x);
 extern int br_set_hello_time(struct net_bridge *br, unsigned long x);
 extern int br_set_max_age(struct net_bridge *br, unsigned long x);
@@ -557,16 +584,23 @@ extern unsigned long br_timer_value(const struct timer_list *timer);
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_ATM_LANE)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_ATM_LANE)
+=======
 #if defined(CONFIG_ATM_LANE) || defined(CONFIG_ATM_LANE_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int (*br_fdb_test_addr_hook)(struct net_device *dev, unsigned char *addr);
 #endif
 
 /* br_netlink.c */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct rtnl_link_ops br_link_ops;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int br_netlink_init(void);
 extern void br_netlink_fini(void);
 extern void br_ifinfo_notify(int event, struct net_bridge_port *port);

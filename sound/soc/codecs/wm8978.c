@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <linux/regmap.h>
 =======
+<<<<<<< HEAD
+#include <linux/regmap.h>
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -35,6 +39,9 @@
 #include "wm8978.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct reg_default wm8978_reg_defaults[] = {
 	{ 1, 0x0000 },
 	{ 2, 0x0000 },
@@ -103,6 +110,8 @@ static bool wm8978_volatile(struct device *dev, unsigned int reg)
 /* codec private data */
 struct wm8978_priv {
 	struct regmap *regmap;
+<<<<<<< HEAD
+=======
 =======
 /* wm8978 register cache. Note that register 0 is not included in the cache. */
 static const u16 wm8978_reg[WM8978_CACHEREGNUM] = {
@@ -128,6 +137,7 @@ struct wm8978_priv {
 	enum snd_soc_control_type control_type;
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int f_pllout;
 	unsigned int f_mclk;
 	unsigned int f_256fs;
@@ -383,8 +393,12 @@ static const struct snd_soc_dapm_widget wm8978_dapm_widgets[] = {
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route wm8978_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route wm8978_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Output mixer */
 	{"Right Output Mixer", "PCM Playback Switch", "Right DAC"},
 	{"Right Output Mixer", "Aux Playback Switch", "RAUX"},
@@ -435,6 +449,8 @@ static const struct snd_soc_dapm_route audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int wm8978_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -448,6 +464,7 @@ static int wm8978_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLL divisors */
 struct wm8978_pll_div {
 	u32 k;
@@ -835,8 +852,12 @@ static int wm8978_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		if (!wm8978->f_pllout) {
 =======
+<<<<<<< HEAD
+		if (!wm8978->f_pllout) {
+=======
 		if (!wm8978->f_opclk) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* We only enter here, if OPCLK is not used */
 			int ret = wm8978_configure_pll(codec);
 			if (ret < 0)
@@ -955,8 +976,12 @@ static int wm8978_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8978_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8978_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8978_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= wm8978_hw_params,
 	.digital_mute	= wm8978_mute,
 	.set_fmt	= wm8978_set_dai_fmt,
@@ -985,14 +1010,20 @@ static struct snd_soc_dai_driver wm8978_dai = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8978_suspend(struct snd_soc_codec *codec)
 {
 	struct wm8978_priv *wm8978 = snd_soc_codec_get_drvdata(codec);
 
+<<<<<<< HEAD
+=======
 =======
 static int wm8978_suspend(struct snd_soc_codec *codec, pm_message_t state)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8978_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	/* Also switch PLL off */
 	snd_soc_write(codec, WM8978_POWER_MANAGEMENT_1, 0);
@@ -1001,13 +1032,23 @@ static int wm8978_suspend(struct snd_soc_codec *codec, pm_message_t state)
 	regcache_mark_dirty(wm8978->regmap);
 
 =======
+<<<<<<< HEAD
+	regcache_mark_dirty(wm8978->regmap);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int wm8978_resume(struct snd_soc_codec *codec)
 {
 	struct wm8978_priv *wm8978 = snd_soc_codec_get_drvdata(codec);
+<<<<<<< HEAD
+
+	/* Sync reg_cache with the hardware */
+	regcache_sync(wm8978->regmap);
+=======
 <<<<<<< HEAD
 
 	/* Sync reg_cache with the hardware */
@@ -1024,6 +1065,7 @@ static int wm8978_resume(struct snd_soc_codec *codec)
 			snd_soc_write(codec, i, cache[i]);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wm8978_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
@@ -1067,9 +1109,14 @@ static int wm8978_probe(struct snd_soc_codec *codec)
 	codec->control_data = wm8978->regmap;
 	ret = snd_soc_codec_set_cache_io(codec, 7, 9, SND_SOC_REGMAP);
 =======
+<<<<<<< HEAD
+	codec->control_data = wm8978->regmap;
+	ret = snd_soc_codec_set_cache_io(codec, 7, 9, SND_SOC_REGMAP);
+=======
 	codec->control_data = wm8978->control_data;
 	ret = snd_soc_codec_set_cache_io(codec, 7, 9, SND_SOC_I2C);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		dev_err(codec->dev, "Failed to set cache I/O: %d\n", ret);
 		return ret;
@@ -1083,6 +1130,10 @@ static int wm8978_probe(struct snd_soc_codec *codec)
 	for (i = 0; i < ARRAY_SIZE(update_reg); i++)
 		snd_soc_update_bits(codec, update_reg[i], 0x100, 0x100);
 
+<<<<<<< HEAD
+	wm8978_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
+
+=======
 <<<<<<< HEAD
 	wm8978_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
@@ -1101,6 +1152,7 @@ static int wm8978_probe(struct snd_soc_codec *codec)
 	wm8978_add_widgets(codec);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1118,6 +1170,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8978 = {
 	.resume =	wm8978_resume,
 	.set_bias_level = wm8978_set_bias_level,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = wm8978_snd_controls,
 	.num_controls = ARRAY_SIZE(wm8978_snd_controls),
@@ -1139,6 +1194,8 @@ static const struct regmap_config wm8978_regmap_config = {
 	.num_reg_defaults = ARRAY_SIZE(wm8978_reg_defaults),
 };
 
+<<<<<<< HEAD
+=======
 =======
 	.reg_cache_size = ARRAY_SIZE(wm8978_reg),
 	.reg_word_size = sizeof(u16),
@@ -1147,6 +1204,7 @@ static const struct regmap_config wm8978_regmap_config = {
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __devinit int wm8978_i2c_probe(struct i2c_client *i2c,
 				      const struct i2c_device_id *id)
 {
@@ -1154,6 +1212,9 @@ static __devinit int wm8978_i2c_probe(struct i2c_client *i2c,
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8978 = devm_kzalloc(&i2c->dev, sizeof(struct wm8978_priv),
 			      GFP_KERNEL);
 	if (wm8978 == NULL)
@@ -1186,6 +1247,8 @@ static __devinit int wm8978_i2c_probe(struct i2c_client *i2c,
 
 err:
 	regmap_exit(wm8978->regmap);
+<<<<<<< HEAD
+=======
 =======
 	wm8978 = kzalloc(sizeof(struct wm8978_priv), GFP_KERNEL);
 	if (wm8978 == NULL)
@@ -1199,21 +1262,28 @@ err:
 	if (ret < 0)
 		kfree(wm8978);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static __devexit int wm8978_i2c_remove(struct i2c_client *client)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8978_priv *wm8978 = i2c_get_clientdata(client);
 
 	snd_soc_unregister_codec(&client->dev);
 	regmap_exit(wm8978->regmap);
 
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_codec(&client->dev);
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1234,16 +1304,22 @@ static struct i2c_driver wm8978_i2c_driver = {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init wm8978_modinit(void)
 {
 	int ret = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = i2c_add_driver(&wm8978_i2c_driver);
 	if (ret != 0) {
 		printk(KERN_ERR "Failed to register WM8978 I2C driver: %d\n",
@@ -1251,8 +1327,11 @@ static int __init wm8978_modinit(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 module_init(wm8978_modinit);
@@ -1262,10 +1341,14 @@ static void __exit wm8978_exit(void)
 <<<<<<< HEAD
 	i2c_del_driver(&wm8978_i2c_driver);
 =======
+<<<<<<< HEAD
+	i2c_del_driver(&wm8978_i2c_driver);
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	i2c_del_driver(&wm8978_i2c_driver);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(wm8978_exit);
 

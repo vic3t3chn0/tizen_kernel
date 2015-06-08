@@ -1,6 +1,14 @@
 /******************************************************************************
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright(c) 2009-2012  Realtek Corporation.
+=======
  * Copyright(c) 2009-2010  Realtek Corporation.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright(c) 2009-2010  Realtek Corporation.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of version 2 of the GNU General Public License as
@@ -27,6 +35,13 @@
  *
  *****************************************************************************/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "wifi.h"
 #include "base.h"
 #include "ps.h"
@@ -43,10 +58,24 @@ bool rtl_ps_enable_nic(struct ieee80211_hw *hw)
 
 	if (is_hal_stop(rtlhal))
 		RT_TRACE(rtlpriv, COMP_ERR, DBG_WARNING,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 "Driver is already down!\n");
+
+	/*<2> Enable Adapter */
+	if (rtlpriv->cfg->ops->hw_init(hw))
+		return 1;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 ("Driver is already down!\n"));
 
 	/*<2> Enable Adapter */
 	rtlpriv->cfg->ops->hw_init(hw);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RT_CLEAR_PS_LEVEL(ppsc, RT_RF_OFF_LEVL_HALT_NIC);
 
 	/*<3> Enable Interrupt */
@@ -68,6 +97,13 @@ bool rtl_ps_disable_nic(struct ieee80211_hw *hw)
 
 	/*<2> Disable Interrupt */
 	rtlpriv->cfg->ops->disable_interrupt(hw);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tasklet_kill(&rtlpriv->works.irq_tasklet);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*<3> Disable Adapter */
 	rtlpriv->cfg->ops->hw_disable(hw);
@@ -78,6 +114,16 @@ EXPORT_SYMBOL(rtl_ps_disable_nic);
 
 bool rtl_ps_set_rf_state(struct ieee80211_hw *hw,
 			 enum rf_pwrstate state_toset,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 u32 changesource)
+{
+	struct rtl_priv *rtlpriv = rtl_priv(hw);
+	struct rtl_ps_ctl *ppsc = rtl_psc(rtl_priv(hw));
+	bool actionallowed = false;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 u32 changesource, bool protect_or_not)
 {
 	struct rtl_priv *rtlpriv = rtl_priv(hw);
@@ -130,13 +176,25 @@ bool rtl_ps_set_rf_state(struct ieee80211_hw *hw,
 
 no_protect:
 	rtstate = ppsc->rfpwr_state;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (state_toset) {
 	case ERFON:
 		ppsc->rfoff_reason &= (~changesource);
 
 		if ((changesource == RF_CHANGE_BY_HW) &&
+<<<<<<< HEAD
+<<<<<<< HEAD
+		    (ppsc->hwradiooff)) {
+=======
 		    (ppsc->hwradiooff == true)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		    (ppsc->hwradiooff == true)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ppsc->hwradiooff = false;
 		}
 
@@ -149,8 +207,17 @@ no_protect:
 
 	case ERFOFF:
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((changesource == RF_CHANGE_BY_HW) && !ppsc->hwradiooff) {
+=======
 		if ((changesource == RF_CHANGE_BY_HW)
 		    && (ppsc->hwradiooff == false)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((changesource == RF_CHANGE_BY_HW)
+		    && (ppsc->hwradiooff == false)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ppsc->hwradiooff = true;
 		}
 
@@ -165,19 +232,36 @@ no_protect:
 
 	default:
 		RT_TRACE(rtlpriv, COMP_ERR, DBG_EMERG,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 "switch case not processed\n");
+=======
 			 ("switch case not process\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			 ("switch case not process\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
 	if (actionallowed)
 		rtlpriv->cfg->ops->set_rf_power_state(hw, state_toset);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!protect_or_not) {
 		spin_lock_irqsave(&rtlpriv->locks.rf_ps_lock, flag);
 		ppsc->rfchange_inprogress = false;
 		spin_unlock_irqrestore(&rtlpriv->locks.rf_ps_lock, flag);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return actionallowed;
 }
 EXPORT_SYMBOL(rtl_ps_set_rf_state);
@@ -200,8 +284,17 @@ static void _rtl_ps_inactive_ps(struct ieee80211_hw *hw)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rtl_ps_set_rf_state(hw, ppsc->inactive_pwrstate, RF_CHANGE_BY_IPS);
+=======
 	rtl_ps_set_rf_state(hw, ppsc->inactive_pwrstate,
 			    RF_CHANGE_BY_IPS, false);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rtl_ps_set_rf_state(hw, ppsc->inactive_pwrstate,
+			    RF_CHANGE_BY_IPS, false);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ppsc->inactive_pwrstate == ERFOFF &&
 	    rtlhal->interface == INTF_PCI) {
@@ -228,7 +321,15 @@ void rtl_ips_nic_off_wq_callback(void *data)
 
 	if (mac->opmode != NL80211_IFTYPE_STATION) {
 		RT_TRACE(rtlpriv, COMP_ERR, DBG_WARNING,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 "not station return\n");
+=======
 			 ("not station return\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			 ("not station return\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -259,7 +360,15 @@ void rtl_ips_nic_off_wq_callback(void *data)
 		    (mac->link_state == MAC80211_NOLINK) &&
 		    !mac->act_scanning) {
 			RT_TRACE(rtlpriv, COMP_RF, DBG_TRACE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 "IPSEnter(): Turn off RF\n");
+=======
 				 ("IPSEnter(): Turn off RF.\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				 ("IPSEnter(): Turn off RF.\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			ppsc->inactive_pwrstate = ERFOFF;
 			ppsc->in_powersavemode = true;
@@ -332,8 +441,17 @@ static bool rtl_get_fwlps_doze(struct ieee80211_hw *hw)
 
 	if (ps_timediff < 2000) {
 		RT_TRACE(rtlpriv, COMP_POWER, DBG_LOUD,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 "Delay enter Fw LPS for DHCP, ARP, or EAPOL exchanging state\n");
+=======
 			 ("Delay enter Fw LPS for DHCP, ARP,"
 			  " or EAPOL exchanging state.\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			 ("Delay enter Fw LPS for DHCP, ARP,"
+			  " or EAPOL exchanging state.\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return false;
 	}
 
@@ -380,8 +498,18 @@ static void rtl_lps_set_psmode(struct ieee80211_hw *hw, u8 rt_psmode)
 		bool fw_current_inps;
 		if (ppsc->dot11_psmode == EACTIVE) {
 			RT_TRACE(rtlpriv, COMP_RF, DBG_DMESG,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 "FW LPS leave ps_mode:%x\n",
+				 FW_PS_ACTIVE_MODE);
+=======
 				 ("FW LPS leave ps_mode:%x\n",
 				  FW_PS_ACTIVE_MODE));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				 ("FW LPS leave ps_mode:%x\n",
+				  FW_PS_ACTIVE_MODE));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			rpwm_val = 0x0C;	/* RF on */
 			fw_pwrmode = FW_PS_ACTIVE_MODE;
@@ -399,8 +527,18 @@ static void rtl_lps_set_psmode(struct ieee80211_hw *hw, u8 rt_psmode)
 		} else {
 			if (rtl_get_fwlps_doze(hw)) {
 				RT_TRACE(rtlpriv, COMP_RF, DBG_DMESG,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					 "FW LPS enter ps_mode:%x\n",
+					 ppsc->fwctrl_psmode);
+=======
 						("FW LPS enter ps_mode:%x\n",
 						 ppsc->fwctrl_psmode));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						("FW LPS enter ps_mode:%x\n",
+						 ppsc->fwctrl_psmode));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				rpwm_val = 0x02;	/* RF off */
 				fw_current_inps = true;
@@ -428,7 +566,14 @@ void rtl_lps_enter(struct ieee80211_hw *hw)
 	struct rtl_mac *mac = rtl_mac(rtl_priv(hw));
 	struct rtl_ps_ctl *ppsc = rtl_psc(rtl_priv(hw));
 	struct rtl_priv *rtlpriv = rtl_priv(hw);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flag;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flag;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!ppsc->fwctrl_lps)
 		return;
@@ -449,19 +594,43 @@ void rtl_lps_enter(struct ieee80211_hw *hw)
 	if (mac->link_state != MAC80211_LINKED)
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&rtlpriv->locks.ps_mutex);
+=======
 	spin_lock_irqsave(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Idle for a while if we connect to AP a while ago. */
 	if (mac->cnt_after_linked >= 2) {
 		if (ppsc->dot11_psmode == EACTIVE) {
 			RT_TRACE(rtlpriv, COMP_POWER, DBG_LOUD,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 "Enter 802.11 power save mode...\n");
+=======
 					("Enter 802.11 power save mode...\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					("Enter 802.11 power save mode...\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			rtl_lps_set_psmode(hw, EAUTOPS);
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&rtlpriv->locks.ps_mutex);
+=======
 	spin_unlock_irqrestore(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*Leave the leisure power save mode.*/
@@ -470,9 +639,20 @@ void rtl_lps_leave(struct ieee80211_hw *hw)
 	struct rtl_priv *rtlpriv = rtl_priv(hw);
 	struct rtl_ps_ctl *ppsc = rtl_psc(rtl_priv(hw));
 	struct rtl_hal *rtlhal = rtl_hal(rtl_priv(hw));
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	mutex_lock(&rtlpriv->locks.ps_mutex);
+=======
 	unsigned long flag;
 
 	spin_lock_irqsave(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flag;
+
+	spin_lock_irqsave(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ppsc->fwctrl_lps) {
 		if (ppsc->dot11_psmode != EACTIVE) {
@@ -488,12 +668,28 @@ void rtl_lps_leave(struct ieee80211_hw *hw)
 			}
 
 			RT_TRACE(rtlpriv, COMP_POWER, DBG_LOUD,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 "Busy Traffic,Leave 802.11 power save..\n");
+=======
 				 ("Busy Traffic,Leave 802.11 power save..\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				 ("Busy Traffic,Leave 802.11 power save..\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			rtl_lps_set_psmode(hw, EACTIVE);
 		}
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&rtlpriv->locks.ps_mutex);
+=======
 	spin_unlock_irqrestore(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* For sw LPS*/
@@ -572,8 +768,18 @@ void rtl_swlps_beacon(struct ieee80211_hw *hw, void *data, unsigned int len)
 		queue_delayed_work(rtlpriv->works.rtl_wq,
 				&rtlpriv->works.ps_work, MSECS(5));
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		RT_TRACE(rtlpriv, COMP_POWER, DBG_DMESG,
+			 "u_bufferd: %x, m_buffered: %x\n", u_buffed, m_buffed);
+=======
 		RT_TRACE(rtlpriv, COMP_POWER, DBG_DMESG, ("u_bufferd: %x, "
 				"m_buffered: %x\n", u_buffed, m_buffed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		RT_TRACE(rtlpriv, COMP_POWER, DBG_DMESG, ("u_bufferd: %x, "
+				"m_buffered: %x\n", u_buffed, m_buffed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -582,7 +788,14 @@ void rtl_swlps_rf_awake(struct ieee80211_hw *hw)
 	struct rtl_priv *rtlpriv = rtl_priv(hw);
 	struct rtl_ps_ctl *ppsc = rtl_psc(rtl_priv(hw));
 	struct rtl_mac *mac = rtl_mac(rtl_priv(hw));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flag;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flag;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!rtlpriv->psc.swctrl_lps)
 		return;
@@ -595,9 +808,21 @@ void rtl_swlps_rf_awake(struct ieee80211_hw *hw)
 		RT_CLEAR_PS_LEVEL(ppsc, RT_PS_LEVEL_ASPM);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&rtlpriv->locks.ps_mutex);
+	rtl_ps_set_rf_state(hw, ERFON, RF_CHANGE_BY_PS);
+	mutex_unlock(&rtlpriv->locks.ps_mutex);
+=======
 	spin_lock_irqsave(&rtlpriv->locks.lps_lock, flag);
 	rtl_ps_set_rf_state(hw, ERFON, RF_CHANGE_BY_PS, false);
 	spin_unlock_irqrestore(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&rtlpriv->locks.lps_lock, flag);
+	rtl_ps_set_rf_state(hw, ERFON, RF_CHANGE_BY_PS, false);
+	spin_unlock_irqrestore(&rtlpriv->locks.lps_lock, flag);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void rtl_swlps_rfon_wq_callback(void *data)
@@ -614,7 +839,14 @@ void rtl_swlps_rf_sleep(struct ieee80211_hw *hw)
 	struct rtl_priv *rtlpriv = rtl_priv(hw);
 	struct rtl_mac *mac = rtl_mac(rtl_priv(hw));
 	struct rtl_ps_ctl *ppsc = rtl_psc(rtl_priv(hw));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flag;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flag;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 sleep_intv;
 
 	if (!rtlpriv->psc.sw_ps_enabled)
@@ -631,6 +863,14 @@ void rtl_swlps_rf_sleep(struct ieee80211_hw *hw)
 	if (rtlpriv->link_info.busytraffic)
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&rtlpriv->locks.ps_mutex);
+	rtl_ps_set_rf_state(hw, ERFSLEEP, RF_CHANGE_BY_PS);
+	mutex_unlock(&rtlpriv->locks.ps_mutex);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&rtlpriv->locks.rf_ps_lock, flag);
 	if (rtlpriv->psc.rfchange_inprogress) {
 		spin_unlock_irqrestore(&rtlpriv->locks.rf_ps_lock, flag);
@@ -641,6 +881,10 @@ void rtl_swlps_rf_sleep(struct ieee80211_hw *hw)
 	spin_lock_irqsave(&rtlpriv->locks.lps_lock, flag);
 	rtl_ps_set_rf_state(hw, ERFSLEEP, RF_CHANGE_BY_PS, false);
 	spin_unlock_irqrestore(&rtlpriv->locks.lps_lock, flag);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ppsc->reg_rfps_level & RT_RF_OFF_LEVL_ASPM &&
 		!RT_IN_PS_LEVEL(ppsc, RT_PS_LEVEL_ASPM)) {
@@ -670,8 +914,18 @@ void rtl_swlps_rf_sleep(struct ieee80211_hw *hw)
 	 * sleep  = dtim_period, that meaons, we should
 	 * awake before every dtim */
 	RT_TRACE(rtlpriv, COMP_POWER, DBG_DMESG,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 "dtim_counter:%x will sleep :%d beacon_intv\n",
+		 rtlpriv->psc.dtim_counter, sleep_intv);
+=======
 		 ("dtim_counter:%x will sleep :%d"
 		 " beacon_intv\n", rtlpriv->psc.dtim_counter, sleep_intv));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 ("dtim_counter:%x will sleep :%d"
+		 " beacon_intv\n", rtlpriv->psc.dtim_counter, sleep_intv));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* we tested that 40ms is enough for sw & hw sw delay */
 	queue_delayed_work(rtlpriv->works.rtl_wq, &rtlpriv->works.ps_rfon_wq,

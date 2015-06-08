@@ -32,16 +32,22 @@
 #include <linux/init.h>
 #include <linux/compiler.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/blktrace_api.h>
 #include <linux/hash.h>
 #include <linux/uaccess.h>
 #include <linux/pm_runtime.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/delay.h>
 #include <linux/blktrace_api.h>
 #include <linux/hash.h>
 #include <linux/uaccess.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <trace/events/block.h>
 
@@ -73,9 +79,14 @@ static int elv_iosched_allow_merge(struct request *rq, struct bio *bio)
 	if (e->type->ops.elevator_allow_merge_fn)
 		return e->type->ops.elevator_allow_merge_fn(q, rq, bio);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_allow_merge_fn)
+		return e->type->ops.elevator_allow_merge_fn(q, rq, bio);
+=======
 	if (e->ops->elevator_allow_merge_fn)
 		return e->ops->elevator_allow_merge_fn(q, rq, bio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
@@ -86,8 +97,12 @@ static int elv_iosched_allow_merge(struct request *rq, struct bio *bio)
 <<<<<<< HEAD
 bool elv_rq_merge_ok(struct request *rq, struct bio *bio)
 =======
+<<<<<<< HEAD
+bool elv_rq_merge_ok(struct request *rq, struct bio *bio)
+=======
 int elv_rq_merge_ok(struct request *rq, struct bio *bio)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!rq_mergeable(rq))
 		return 0;
@@ -106,14 +121,20 @@ int elv_rq_merge_ok(struct request *rq, struct bio *bio)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Don't merge sanitize requests
 	 */
 	if ((bio->bi_rw & REQ_SANITIZE) != (rq->bio->bi_rw & REQ_SANITIZE))
 		return 0;
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * different data direction or already started, don't merge
 	 */
 	if (bio_data_dir(bio) != rq_data_dir(rq))
@@ -140,6 +161,8 @@ EXPORT_SYMBOL(elv_rq_merge_ok);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int elv_try_merge(struct request *__rq, struct bio *bio)
 {
 	int ret = ELEVATOR_NO_MERGE;
@@ -158,6 +181,7 @@ int elv_try_merge(struct request *__rq, struct bio *bio)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct elevator_type *elevator_find(const char *name)
 {
 	struct elevator_type *e;
@@ -198,6 +222,9 @@ static struct elevator_type *elevator_get(const char *name)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int elevator_init_queue(struct request_queue *q,
 			       struct elevator_queue *eq)
 {
@@ -208,6 +235,8 @@ static int elevator_init_queue(struct request_queue *q,
 }
 
 static char chosen_elevator[ELV_NAME_MAX];
+<<<<<<< HEAD
+=======
 =======
 static void *elevator_init_queue(struct request_queue *q,
 				 struct elevator_queue *eq)
@@ -224,6 +253,7 @@ static void elevator_attach(struct request_queue *q, struct elevator_queue *eq,
 
 static char chosen_elevator[16];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init elevator_setup(char *str)
 {
@@ -252,9 +282,13 @@ static struct elevator_queue *elevator_alloc(struct request_queue *q,
 <<<<<<< HEAD
 	eq->type = e;
 =======
+<<<<<<< HEAD
+	eq->type = e;
+=======
 	eq->ops = &e->ops;
 	eq->elevator_type = e;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kobject_init(&eq->kobj, &elv_ktype);
 	mutex_init(&eq->sysfs_lock);
 
@@ -281,8 +315,12 @@ static void elevator_release(struct kobject *kobj)
 <<<<<<< HEAD
 	elevator_put(e->type);
 =======
+<<<<<<< HEAD
+	elevator_put(e->type);
+=======
 	elevator_put(e->elevator_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(e->hash);
 	kfree(e);
 }
@@ -294,8 +332,12 @@ int elevator_init(struct request_queue *q, char *name)
 <<<<<<< HEAD
 	int err;
 =======
+<<<<<<< HEAD
+	int err;
+=======
 	void *data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(q->elevator))
 		return 0;
@@ -333,6 +375,9 @@ int elevator_init(struct request_queue *q, char *name)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = elevator_init_queue(q, eq);
 	if (err) {
 		kobject_put(&eq->kobj);
@@ -340,6 +385,8 @@ int elevator_init(struct request_queue *q, char *name)
 	}
 
 	q->elevator = eq;
+<<<<<<< HEAD
+=======
 =======
 	data = elevator_init_queue(q, eq);
 	if (!data) {
@@ -349,6 +396,7 @@ int elevator_init(struct request_queue *q, char *name)
 
 	elevator_attach(q, eq, data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL(elevator_init);
@@ -360,10 +408,15 @@ void elevator_exit(struct elevator_queue *e)
 	if (e->type->ops.elevator_exit_fn)
 		e->type->ops.elevator_exit_fn(e);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_exit_fn)
+		e->type->ops.elevator_exit_fn(e);
+=======
 	if (e->ops->elevator_exit_fn)
 		e->ops->elevator_exit_fn(e);
 	e->ops = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&e->sysfs_lock);
 
 	kobject_put(&e->kobj);
@@ -424,8 +477,12 @@ static struct request *elv_rqhash_find(struct request_queue *q, sector_t offset)
 <<<<<<< HEAD
 void elv_rb_add(struct rb_root *root, struct request *rq)
 =======
+<<<<<<< HEAD
+void elv_rb_add(struct rb_root *root, struct request *rq)
+=======
 struct request *elv_rb_add(struct rb_root *root, struct request *rq)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rb_node **p = &root->rb_node;
 	struct rb_node *parent = NULL;
@@ -441,19 +498,27 @@ struct request *elv_rb_add(struct rb_root *root, struct request *rq)
 		else if (blk_rq_pos(rq) >= blk_rq_pos(__rq))
 			p = &(*p)->rb_right;
 =======
+<<<<<<< HEAD
+		else if (blk_rq_pos(rq) >= blk_rq_pos(__rq))
+			p = &(*p)->rb_right;
+=======
 		else if (blk_rq_pos(rq) > blk_rq_pos(__rq))
 			p = &(*p)->rb_right;
 		else
 			return __rq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rb_link_node(&rq->rb_node, parent, p);
 	rb_insert_color(&rq->rb_node, root);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(elv_rb_add);
 
@@ -572,9 +637,14 @@ int elv_merge(struct request_queue *q, struct request **req, struct bio *bio)
 	if (q->last_merge && elv_rq_merge_ok(q->last_merge, bio)) {
 		ret = blk_try_merge(q->last_merge, bio);
 =======
+<<<<<<< HEAD
+	if (q->last_merge && elv_rq_merge_ok(q->last_merge, bio)) {
+		ret = blk_try_merge(q->last_merge, bio);
+=======
 	if (q->last_merge) {
 		ret = elv_try_merge(q->last_merge, bio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret != ELEVATOR_NO_MERGE) {
 			*req = q->last_merge;
 			return ret;
@@ -597,9 +667,14 @@ int elv_merge(struct request_queue *q, struct request **req, struct bio *bio)
 	if (e->type->ops.elevator_merge_fn)
 		return e->type->ops.elevator_merge_fn(q, req, bio);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_merge_fn)
+		return e->type->ops.elevator_merge_fn(q, req, bio);
+=======
 	if (e->ops->elevator_merge_fn)
 		return e->ops->elevator_merge_fn(q, req, bio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ELEVATOR_NO_MERGE;
 }
@@ -646,9 +721,14 @@ void elv_merged_request(struct request_queue *q, struct request *rq, int type)
 	if (e->type->ops.elevator_merged_fn)
 		e->type->ops.elevator_merged_fn(q, rq, type);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_merged_fn)
+		e->type->ops.elevator_merged_fn(q, rq, type);
+=======
 	if (e->ops->elevator_merged_fn)
 		e->ops->elevator_merged_fn(q, rq, type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (type == ELEVATOR_BACK_MERGE)
 		elv_rqhash_reposition(q, rq);
@@ -666,9 +746,14 @@ void elv_merge_requests(struct request_queue *q, struct request *rq,
 	if (next_sorted && e->type->ops.elevator_merge_req_fn)
 		e->type->ops.elevator_merge_req_fn(q, rq, next);
 =======
+<<<<<<< HEAD
+	if (next_sorted && e->type->ops.elevator_merge_req_fn)
+		e->type->ops.elevator_merge_req_fn(q, rq, next);
+=======
 	if (next_sorted && e->ops->elevator_merge_req_fn)
 		e->ops->elevator_merge_req_fn(q, rq, next);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	elv_rqhash_reposition(q, rq);
 
@@ -686,6 +771,9 @@ void elv_bio_merged(struct request_queue *q, struct request *rq,
 	struct elevator_queue *e = q->elevator;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (e->type->ops.elevator_bio_merged_fn)
 		e->type->ops.elevator_bio_merged_fn(q, rq, bio);
 }
@@ -711,12 +799,15 @@ static inline void blk_pm_add_request(struct request_queue *q,
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	if (e->ops->elevator_bio_merged_fn)
 		e->ops->elevator_bio_merged_fn(q, rq, bio);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void elv_requeue_request(struct request_queue *q, struct request *rq)
 {
 	/*
@@ -732,6 +823,9 @@ void elv_requeue_request(struct request_queue *q, struct request *rq)
 	rq->cmd_flags &= ~REQ_STARTED;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blk_pm_requeue_request(rq);
 
 	__elv_add_request(q, rq, ELEVATOR_INSERT_REQUEUE);
@@ -787,6 +881,8 @@ void elv_drain_elevator(struct request_queue *q)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 	__elv_add_request(q, rq, ELEVATOR_INSERT_REQUEUE);
 }
@@ -809,17 +905,23 @@ void elv_drain_elevator(struct request_queue *q)
  * Call with queue lock held, interrupts disabled
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void elv_quiesce_start(struct request_queue *q)
 {
 	if (!q->elevator)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irq(q->queue_lock);
 	queue_flag_set(QUEUE_FLAG_ELVSWITCH, q);
 	spin_unlock_irq(q->queue_lock);
 
 	blk_drain_queue(q, false);
+<<<<<<< HEAD
+=======
 =======
 	queue_flag_set(QUEUE_FLAG_ELVSWITCH, q);
 
@@ -835,6 +937,7 @@ void elv_quiesce_start(struct request_queue *q)
 		elv_drain_elevator(q);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void elv_quiesce_end(struct request_queue *q)
@@ -844,8 +947,14 @@ void elv_quiesce_end(struct request_queue *q)
 	queue_flag_clear(QUEUE_FLAG_ELVSWITCH, q);
 	spin_unlock_irq(q->queue_lock);
 =======
+<<<<<<< HEAD
+	spin_lock_irq(q->queue_lock);
+	queue_flag_clear(QUEUE_FLAG_ELVSWITCH, q);
+	spin_unlock_irq(q->queue_lock);
+=======
 	queue_flag_clear(QUEUE_FLAG_ELVSWITCH, q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __elv_add_request(struct request_queue *q, struct request *rq, int where)
@@ -856,7 +965,12 @@ void __elv_add_request(struct request_queue *q, struct request *rq, int where)
 	blk_pm_add_request(q, rq);
 
 =======
+<<<<<<< HEAD
+	blk_pm_add_request(q, rq);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rq->q = q;
 
 	if (rq->cmd_flags & REQ_SOFTBARRIER) {
@@ -865,8 +979,12 @@ void __elv_add_request(struct request_queue *q, struct request *rq, int where)
 <<<<<<< HEAD
 		    (rq->cmd_flags & (REQ_DISCARD | REQ_SANITIZE))) {
 =======
+<<<<<<< HEAD
+		    (rq->cmd_flags & (REQ_DISCARD | REQ_SANITIZE))) {
+=======
 		    (rq->cmd_flags & REQ_DISCARD)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			q->end_sector = rq_end_sector(rq);
 			q->boundary_rq = rq;
 		}
@@ -926,8 +1044,12 @@ void __elv_add_request(struct request_queue *q, struct request *rq, int where)
 <<<<<<< HEAD
 		q->elevator->type->ops.elevator_add_req_fn(q, rq);
 =======
+<<<<<<< HEAD
+		q->elevator->type->ops.elevator_add_req_fn(q, rq);
+=======
 		q->elevator->ops->elevator_add_req_fn(q, rq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case ELEVATOR_INSERT_FLUSH:
@@ -960,9 +1082,14 @@ struct request *elv_latter_request(struct request_queue *q, struct request *rq)
 	if (e->type->ops.elevator_latter_req_fn)
 		return e->type->ops.elevator_latter_req_fn(q, rq);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_latter_req_fn)
+		return e->type->ops.elevator_latter_req_fn(q, rq);
+=======
 	if (e->ops->elevator_latter_req_fn)
 		return e->ops->elevator_latter_req_fn(q, rq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -974,9 +1101,14 @@ struct request *elv_former_request(struct request_queue *q, struct request *rq)
 	if (e->type->ops.elevator_former_req_fn)
 		return e->type->ops.elevator_former_req_fn(q, rq);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_former_req_fn)
+		return e->type->ops.elevator_former_req_fn(q, rq);
+=======
 	if (e->ops->elevator_former_req_fn)
 		return e->ops->elevator_former_req_fn(q, rq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -988,11 +1120,16 @@ int elv_set_request(struct request_queue *q, struct request *rq, gfp_t gfp_mask)
 	if (e->type->ops.elevator_set_req_fn)
 		return e->type->ops.elevator_set_req_fn(q, rq, gfp_mask);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_set_req_fn)
+		return e->type->ops.elevator_set_req_fn(q, rq, gfp_mask);
+=======
 	if (e->ops->elevator_set_req_fn)
 		return e->ops->elevator_set_req_fn(q, rq, gfp_mask);
 
 	rq->elevator_private[0] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1004,9 +1141,14 @@ void elv_put_request(struct request_queue *q, struct request *rq)
 	if (e->type->ops.elevator_put_req_fn)
 		e->type->ops.elevator_put_req_fn(rq);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_put_req_fn)
+		e->type->ops.elevator_put_req_fn(rq);
+=======
 	if (e->ops->elevator_put_req_fn)
 		e->ops->elevator_put_req_fn(rq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int elv_may_queue(struct request_queue *q, int rw)
@@ -1017,9 +1159,14 @@ int elv_may_queue(struct request_queue *q, int rw)
 	if (e->type->ops.elevator_may_queue_fn)
 		return e->type->ops.elevator_may_queue_fn(q, rw);
 =======
+<<<<<<< HEAD
+	if (e->type->ops.elevator_may_queue_fn)
+		return e->type->ops.elevator_may_queue_fn(q, rw);
+=======
 	if (e->ops->elevator_may_queue_fn)
 		return e->ops->elevator_may_queue_fn(q, rw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ELV_MQUEUE_MAY;
 }
@@ -1049,13 +1196,19 @@ void elv_completed_request(struct request_queue *q, struct request *rq)
 	struct elevator_queue *e = q->elevator;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rq->cmd_flags & REQ_URGENT) {
 		q->notified_urgent = false;
 		WARN_ON(!q->dispatched_urgent);
 		q->dispatched_urgent = false;
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * request is released from the driver, io must be done
 	 */
@@ -1066,9 +1219,14 @@ void elv_completed_request(struct request_queue *q, struct request *rq)
 		    e->type->ops.elevator_completed_req_fn)
 			e->type->ops.elevator_completed_req_fn(q, rq);
 =======
+<<<<<<< HEAD
+		    e->type->ops.elevator_completed_req_fn)
+			e->type->ops.elevator_completed_req_fn(q, rq);
+=======
 		    e->ops->elevator_completed_req_fn)
 			e->ops->elevator_completed_req_fn(q, rq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1089,8 +1247,12 @@ elv_attr_show(struct kobject *kobj, struct attribute *attr, char *page)
 <<<<<<< HEAD
 	error = e->type ? entry->show(e, page) : -ENOENT;
 =======
+<<<<<<< HEAD
+	error = e->type ? entry->show(e, page) : -ENOENT;
+=======
 	error = e->ops ? entry->show(e, page) : -ENOENT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&e->sysfs_lock);
 	return error;
 }
@@ -1111,8 +1273,12 @@ elv_attr_store(struct kobject *kobj, struct attribute *attr,
 <<<<<<< HEAD
 	error = e->type ? entry->store(e, page, length) : -ENOENT;
 =======
+<<<<<<< HEAD
+	error = e->type ? entry->store(e, page, length) : -ENOENT;
+=======
 	error = e->ops ? entry->store(e, page, length) : -ENOENT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&e->sysfs_lock);
 	return error;
 }
@@ -1131,10 +1297,15 @@ static struct kobj_type elv_ktype = {
 int __elv_register_queue(struct request_queue *q, struct elevator_queue *e)
 {
 =======
+<<<<<<< HEAD
+int __elv_register_queue(struct request_queue *q, struct elevator_queue *e)
+{
+=======
 int elv_register_queue(struct request_queue *q)
 {
 	struct elevator_queue *e = q->elevator;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	error = kobject_add(&e->kobj, &q->kobj, "%s", "iosched");
@@ -1142,8 +1313,12 @@ int elv_register_queue(struct request_queue *q)
 <<<<<<< HEAD
 		struct elv_fs_entry *attr = e->type->elevator_attrs;
 =======
+<<<<<<< HEAD
+		struct elv_fs_entry *attr = e->type->elevator_attrs;
+=======
 		struct elv_fs_entry *attr = e->elevator_type->elevator_attrs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (attr) {
 			while (attr->attr.name) {
 				if (sysfs_create_file(&e->kobj, &attr->attr))
@@ -1157,6 +1332,9 @@ int elv_register_queue(struct request_queue *q)
 	return error;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int elv_register_queue(struct request_queue *q)
 {
@@ -1206,6 +1384,8 @@ int elv_register(struct elevator_type *e)
 	spin_unlock(&elv_list_lock);
 
 	/* print pretty message */
+<<<<<<< HEAD
+=======
 =======
 EXPORT_SYMBOL(elv_register_queue);
 
@@ -1233,6 +1413,7 @@ void elv_register(struct elevator_type *e)
 	spin_unlock(&elv_list_lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!strcmp(e->elevator_name, chosen_elevator) ||
 			(!*chosen_elevator &&
 			 !strcmp(e->elevator_name, CONFIG_DEFAULT_IOSCHED)))
@@ -1243,13 +1424,20 @@ void elv_register(struct elevator_type *e)
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(elv_register);
 
 void elv_unregister(struct elevator_type *e)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* unregister */
 	spin_lock(&elv_list_lock);
 	list_del_init(&e->list);
@@ -1264,6 +1452,8 @@ void elv_unregister(struct elevator_type *e)
 		kmem_cache_destroy(e->icq_cache);
 		e->icq_cache = NULL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct task_struct *g, *p;
 
@@ -1285,6 +1475,7 @@ void elv_unregister(struct elevator_type *e)
 	list_del_init(&e->list);
 	spin_unlock(&elv_list_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(elv_unregister);
 
@@ -1302,6 +1493,11 @@ static int elevator_switch(struct request_queue *q, struct elevator_type *new_e)
 
 	/* allocate new elevator */
 =======
+<<<<<<< HEAD
+	int err;
+
+	/* allocate new elevator */
+=======
 	void *data;
 	int err;
 
@@ -1309,11 +1505,15 @@ static int elevator_switch(struct request_queue *q, struct elevator_type *new_e)
 	 * Allocate new elevator
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	e = elevator_alloc(q, new_e);
 	if (!e)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = elevator_init_queue(q, e);
 	if (err) {
 		kobject_put(&e->kobj);
@@ -1327,6 +1527,8 @@ static int elevator_switch(struct request_queue *q, struct elevator_type *new_e)
 	if (q->elevator->registered) {
 		elv_unregister_queue(q);
 		err = __elv_register_queue(q, e);
+<<<<<<< HEAD
+=======
 =======
 	data = elevator_init_queue(q, e);
 	if (!data) {
@@ -1357,11 +1559,15 @@ static int elevator_switch(struct request_queue *q, struct elevator_type *new_e)
 
 		err = elv_register_queue(q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			goto fail_register;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* done, clear io_cq's, switch elevators and turn off BYPASS */
 	spin_lock_irq(q->queue_lock);
 	ioc_clear_queue(q);
@@ -1373,6 +1579,8 @@ static int elevator_switch(struct request_queue *q, struct elevator_type *new_e)
 	elv_quiesce_end(q);
 
 	blk_add_trace_msg(q, "elv switch: %s", e->type->elevator_name);
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * finally exit old elevator and turn off BYPASS.
@@ -1384,6 +1592,7 @@ static int elevator_switch(struct request_queue *q, struct elevator_type *new_e)
 
 	blk_add_trace_msg(q, "elv switch: %s", e->elevator_type->elevator_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -1397,6 +1606,10 @@ fail_register:
 	elv_register_queue(q);
 	elv_quiesce_end(q);
 =======
+<<<<<<< HEAD
+	elv_register_queue(q);
+	elv_quiesce_end(q);
+=======
 	q->elevator = old_elevator;
 	elv_register_queue(q);
 
@@ -1404,6 +1617,7 @@ fail_register:
 	queue_flag_clear(QUEUE_FLAG_ELVSWITCH, q);
 	spin_unlock_irq(q->queue_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -1429,8 +1643,12 @@ int elevator_change(struct request_queue *q, const char *name)
 <<<<<<< HEAD
 	if (!strcmp(elevator_name, q->elevator->type->elevator_name)) {
 =======
+<<<<<<< HEAD
+	if (!strcmp(elevator_name, q->elevator->type->elevator_name)) {
+=======
 	if (!strcmp(elevator_name, q->elevator->elevator_type->elevator_name)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		elevator_put(e);
 		return 0;
 	}
@@ -1468,8 +1686,12 @@ ssize_t elv_iosched_show(struct request_queue *q, char *name)
 <<<<<<< HEAD
 	elv = e->type;
 =======
+<<<<<<< HEAD
+	elv = e->type;
+=======
 	elv = e->elevator_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&elv_list_lock);
 	list_for_each_entry(__e, &elv_list, list) {

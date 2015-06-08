@@ -20,6 +20,11 @@
  *
  * Supported readers: USB TWIN, KAAN Standard Plus and SecOVID Reader Plus
  * (Adapter K), B1 Professional and KAAN Professional (Adapter B)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * (21/05/2004) tw
  *      Fix bug with P'n'P readers
@@ -32,6 +37,10 @@
  *
  * (11/08/2002) tw
  *      Initial version.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 
@@ -50,7 +59,15 @@
 #include <linux/ioctl.h>
 #include "kobil_sct.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Version Information */
 #define DRIVER_VERSION "21/05/2004"
@@ -102,7 +119,14 @@ static struct usb_driver kobil_driver = {
 	.probe =	usb_serial_probe,
 	.disconnect =	usb_serial_disconnect,
 	.id_table =	id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -112,7 +136,14 @@ static struct usb_serial_driver kobil_device = {
 		.name =		"kobil",
 	},
 	.description =		"KOBIL USB smart card terminal",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver = 		&kobil_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver = 		&kobil_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table =		id_table,
 	.num_ports =		1,
 	.attach =		kobil_startup,
@@ -129,6 +160,15 @@ static struct usb_serial_driver kobil_device = {
 	.read_int_callback =	kobil_read_int_callback,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&kobil_device, NULL
+};
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct kobil_private {
 	int write_int_endpoint_address;
@@ -231,9 +271,18 @@ static int kobil_open(struct tty_struct *tty, struct usb_serial_port *port)
 	dbg("%s - port %d", __func__, port->number);
 	priv = usb_get_serial_port_data(port);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* someone sets the dev to 0 if the close method has been called */
 	port->interrupt_in_urb->dev = port->serial->dev;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* someone sets the dev to 0 if the close method has been called */
+	port->interrupt_in_urb->dev = port->serial->dev;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* allocate memory for transfer buffer */
 	transfer_buffer = kzalloc(transfer_buffer_length, GFP_KERNEL);
 	if (!transfer_buffer)
@@ -393,8 +442,16 @@ static void kobil_read_int_callback(struct urb *urb)
 		tty_flip_buffer_push(tty);
 	}
 	tty_kref_put(tty);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* someone sets the dev to 0 if the close method has been called */
 	port->interrupt_in_urb->dev = port->serial->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* someone sets the dev to 0 if the close method has been called */
+	port->interrupt_in_urb->dev = port->serial->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	result = usb_submit_urb(port->interrupt_in_urb, GFP_ATOMIC);
 	dbg("%s - port %d Send read URB returns: %i",
@@ -475,6 +532,14 @@ static int kobil_write(struct tty_struct *tty, struct usb_serial_port *port,
 		priv->filled = 0;
 		priv->cur_pos = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* start reading (except TWIN and KAAN SIM) */
+		if (priv->device_type == KOBIL_ADAPTER_B_PRODUCT_ID ||
+			priv->device_type == KOBIL_ADAPTER_K_PRODUCT_ID) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* someone sets the dev to 0 if the close method
 		   has been called */
 		port->interrupt_in_urb->dev = port->serial->dev;
@@ -486,6 +551,10 @@ static int kobil_write(struct tty_struct *tty, struct usb_serial_port *port,
 			   been called */
 			port->interrupt_in_urb->dev = port->serial->dev;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			result = usb_submit_urb(port->interrupt_in_urb,
 								GFP_NOIO);
 			dbg("%s - port %d Send read URB returns: %i",
@@ -707,6 +776,12 @@ static int kobil_ioctl(struct tty_struct *tty,
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_serial_driver(kobil_driver, serial_drivers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init kobil_init(void)
 {
 	int retval;
@@ -736,6 +811,10 @@ static void __exit kobil_exit(void)
 
 module_init(kobil_init);
 module_exit(kobil_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

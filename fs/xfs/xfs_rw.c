@@ -94,6 +94,8 @@ xfs_do_force_shutdown(
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Prints out an ALERT message about I/O error.
  */
 void
@@ -113,6 +115,7 @@ xfs_ioerror_alert(
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This isn't an absolute requirement, but it is
  * just a good idea to call xfs_read_buf instead of
  * directly doing a read_buf call. For one, we shouldn't
@@ -144,9 +147,14 @@ xfs_read_buf(
 	error = bp->b_error;
 	if (!error && !XFS_FORCED_SHUTDOWN(mp)) {
 =======
+<<<<<<< HEAD
+	error = bp->b_error;
+	if (!error && !XFS_FORCED_SHUTDOWN(mp)) {
+=======
 	error = XFS_BUF_GETERROR(bp);
 	if (bp && !error && !XFS_FORCED_SHUTDOWN(mp)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*bpp = bp;
 	} else {
 		*bpp = NULL;
@@ -154,8 +162,12 @@ xfs_read_buf(
 <<<<<<< HEAD
 			xfs_buf_ioerror_alert(bp, __func__);
 =======
+<<<<<<< HEAD
+			xfs_buf_ioerror_alert(bp, __func__);
+=======
 			xfs_ioerror_alert("xfs_read_buf", mp, bp, XFS_BUF_ADDR(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			error = XFS_ERROR(EIO);
 		}
@@ -164,9 +176,13 @@ xfs_read_buf(
 <<<<<<< HEAD
 			xfs_buf_stale(bp);
 =======
+<<<<<<< HEAD
+			xfs_buf_stale(bp);
+=======
 			XFS_BUF_UNDELAYWRITE(bp);
 			XFS_BUF_STALE(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * brelse clears B_ERROR and b_error
 			 */

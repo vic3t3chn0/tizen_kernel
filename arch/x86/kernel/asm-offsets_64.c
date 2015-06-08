@@ -1,6 +1,9 @@
 #include <asm/ia32.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __SYSCALL_64(nr, sym, compat) [nr] = 1,
 #define __SYSCALL_COMMON(nr, sym, compat) [nr] = 1,
 #ifdef CONFIG_X86_X32_ABI
@@ -14,6 +17,8 @@ static char syscalls_64[] = {
 #define __SYSCALL_I386(nr, sym, compat) [nr] = 1,
 static char syscalls_ia32[] = {
 #include <asm/syscalls_32.h>
+<<<<<<< HEAD
+=======
 =======
 #define __NO_STUBS 1
 #undef __SYSCALL
@@ -22,6 +27,7 @@ static char syscalls_ia32[] = {
 static char syscalls[] = {
 #include <asm/unistd.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int main(void)
@@ -89,14 +95,20 @@ int main(void)
 	BLANK();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(__NR_syscall_max, sizeof(syscalls_64) - 1);
 	DEFINE(NR_syscalls, sizeof(syscalls_64));
 
 	DEFINE(__NR_ia32_syscall_max, sizeof(syscalls_ia32) - 1);
 	DEFINE(IA32_NR_syscalls, sizeof(syscalls_ia32));
+<<<<<<< HEAD
+=======
 =======
 	DEFINE(__NR_syscall_max, sizeof(syscalls) - 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

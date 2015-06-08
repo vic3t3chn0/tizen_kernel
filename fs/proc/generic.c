@@ -286,8 +286,12 @@ static int proc_getattr(struct vfsmount *mnt, struct dentry *dentry,
 <<<<<<< HEAD
 		set_nlink(inode, de->nlink);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, de->nlink);
+=======
 		inode->i_nlink = de->nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	generic_fillattr(inode, stat);
 	return 0;
@@ -604,8 +608,12 @@ static struct proc_dir_entry *__proc_create(struct proc_dir_entry **parent,
 <<<<<<< HEAD
 					  umode_t mode,
 =======
+<<<<<<< HEAD
+					  umode_t mode,
+=======
 					  mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  nlink_t nlink)
 {
 	struct proc_dir_entry *ent = NULL;
@@ -631,9 +639,13 @@ static struct proc_dir_entry *__proc_create(struct proc_dir_entry **parent,
 <<<<<<< HEAD
 	memcpy(ent->name, fn, len + 1);
 =======
+<<<<<<< HEAD
+	memcpy(ent->name, fn, len + 1);
+=======
 	memcpy(((char *) ent) + sizeof(struct proc_dir_entry), fn, len + 1);
 	ent->name = ((char *) ent) + sizeof(*ent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ent->namelen = len;
 	ent->mode = mode;
 	ent->nlink = nlink;
@@ -675,8 +687,12 @@ EXPORT_SYMBOL(proc_symlink);
 <<<<<<< HEAD
 struct proc_dir_entry *proc_mkdir_mode(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+struct proc_dir_entry *proc_mkdir_mode(const char *name, umode_t mode,
+=======
 struct proc_dir_entry *proc_mkdir_mode(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct proc_dir_entry *parent)
 {
 	struct proc_dir_entry *ent;
@@ -719,8 +735,12 @@ EXPORT_SYMBOL(proc_mkdir);
 <<<<<<< HEAD
 struct proc_dir_entry *create_proc_entry(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+struct proc_dir_entry *create_proc_entry(const char *name, umode_t mode,
+=======
 struct proc_dir_entry *create_proc_entry(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 struct proc_dir_entry *parent)
 {
 	struct proc_dir_entry *ent;
@@ -752,8 +772,12 @@ EXPORT_SYMBOL(create_proc_entry);
 <<<<<<< HEAD
 struct proc_dir_entry *proc_create_data(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+struct proc_dir_entry *proc_create_data(const char *name, umode_t mode,
+=======
 struct proc_dir_entry *proc_create_data(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					struct proc_dir_entry *parent,
 					const struct file_operations *proc_fops,
 					void *data)

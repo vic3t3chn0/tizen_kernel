@@ -46,9 +46,23 @@ static struct platform_device *pdev;
 
 #define DRVNAME "pc87427"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * The lock mutex protects both the I/O accesses (needed because the
+ * device is using banked registers) and the register cache (needed to keep
+ * the data in the registers and the cache in sync at any time).
+ */
+=======
 /* The lock mutex protects both the I/O accesses (needed because the
    device is using banked registers) and the register cache (needed to keep
    the data in the registers and the cache in sync at any time). */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* The lock mutex protects both the I/O accesses (needed because the
+   device is using banked registers) and the register cache (needed to keep
+   the data in the registers and the cache in sync at any time). */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pc87427_data {
 	struct device *hwmon_dev;
 	struct mutex lock;
@@ -173,10 +187,25 @@ static inline void pc87427_write8_bank(struct pc87427_data *data, u8 ldi,
 #define FAN_STATUS_LOSPD		(1 << 1)
 #define FAN_STATUS_MONEN		(1 << 0)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Dedicated function to read all registers related to a given fan input.
+ * This saves us quite a few locks and bank selections.
+ * Must be called with data->lock held.
+ * nr is from 0 to 7
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Dedicated function to read all registers related to a given fan input.
    This saves us quite a few locks and bank selections.
    Must be called with data->lock held.
    nr is from 0 to 7 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void pc87427_readall_fan(struct pc87427_data *data, u8 nr)
 {
 	int iobase = data->address[LD_FAN];
@@ -189,8 +218,20 @@ static void pc87427_readall_fan(struct pc87427_data *data, u8 nr)
 	outb(data->fan_status[nr], iobase + PC87427_REG_FAN_STATUS);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * The 2 LSB of fan speed registers are used for something different.
+ * The actual 2 LSB of the measurements are not available.
+ */
+=======
 /* The 2 LSB of fan speed registers are used for something different.
    The actual 2 LSB of the measurements are not available. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* The 2 LSB of fan speed registers are used for something different.
+   The actual 2 LSB of the measurements are not available. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline unsigned long fan_from_reg(u16 reg)
 {
 	reg &= 0xfffc;
@@ -224,10 +265,25 @@ static inline u16 fan_to_reg(unsigned long val)
 #define PWM_MODE_OFF			(2 << 4)
 #define PWM_MODE_ON			(7 << 4)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Dedicated function to read all registers related to a given PWM output.
+ * This saves us quite a few locks and bank selections.
+ * Must be called with data->lock held.
+ * nr is from 0 to 3
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Dedicated function to read all registers related to a given PWM output.
    This saves us quite a few locks and bank selections.
    Must be called with data->lock held.
    nr is from 0 to 3 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void pc87427_readall_pwm(struct pc87427_data *data, u8 nr)
 {
 	int iobase = data->address[LD_FAN];
@@ -286,10 +342,25 @@ static inline u8 pwm_enable_to_reg(unsigned long val, u8 pwmval)
 #define TEMP_TYPE_REMOTE_DIODE		(2 << 5)
 #define TEMP_TYPE_LOCAL_DIODE		(3 << 5)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Dedicated function to read all registers related to a given temperature
+ * input. This saves us quite a few locks and bank selections.
+ * Must be called with data->lock held.
+ * nr is from 0 to 5
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Dedicated function to read all registers related to a given temperature
    input. This saves us quite a few locks and bank selections.
    Must be called with data->lock held.
    nr is from 0 to 5 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void pc87427_readall_temp(struct pc87427_data *data, u8 nr)
 {
 	int iobase = data->address[LD_TEMP];
@@ -318,8 +389,20 @@ static inline unsigned int temp_type_from_reg(u8 reg)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * We assume 8-bit thermal sensors; 9-bit thermal sensors are possible
+ * too, but I have no idea how to figure out when they are used.
+ */
+=======
 /* We assume 8-bit thermal sensors; 9-bit thermal sensors are possible
    too, but I have no idea how to figure out when they are used. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* We assume 8-bit thermal sensors; 9-bit thermal sensors are possible
+   too, but I have no idea how to figure out when they are used. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline long temp_from_reg(s16 reg)
 {
 	return reg * 1000 / 256;
@@ -418,14 +501,36 @@ static ssize_t set_fan_min(struct device *dev, struct device_attribute
 	unsigned long val;
 	int iobase = data->address[LD_FAN];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &val) < 0)
+=======
 	if (strict_strtoul(buf, 10, &val) < 0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &val) < 0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	mutex_lock(&data->lock);
 	outb(BANK_FM(nr), iobase + PC87427_REG_BANK);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * The low speed limit registers are read-only while monitoring
+	 * is enabled, so we have to disable monitoring, then change the
+	 * limit, and finally enable monitoring again.
+	 */
+=======
 	/* The low speed limit registers are read-only while monitoring
 	   is enabled, so we have to disable monitoring, then change the
 	   limit, and finally enable monitoring again. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* The low speed limit registers are read-only while monitoring
+	   is enabled, so we have to disable monitoring, then change the
+	   limit, and finally enable monitoring again. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	outb(0, iobase + PC87427_REG_FAN_STATUS);
 	data->fan_min[nr] = fan_to_reg(val);
 	outw(data->fan_min[nr], iobase + PC87427_REG_FAN_MIN);
@@ -542,8 +647,20 @@ static const struct attribute_group pc87427_group_fan[8] = {
 	{ .attrs = pc87427_attributes_fan[7] },
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Must be called with data->lock held and pc87427_readall_pwm() freshly
+ * called
+ */
+=======
 /* Must be called with data->lock held and pc87427_readall_pwm() freshly
    called */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Must be called with data->lock held and pc87427_readall_pwm() freshly
+   called */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void update_pwm_enable(struct pc87427_data *data, int nr, u8 mode)
 {
 	int iobase = data->address[LD_FAN];
@@ -572,7 +689,15 @@ static ssize_t set_pwm_enable(struct device *dev, struct device_attribute
 	int nr = to_sensor_dev_attr(devattr)->index;
 	unsigned long val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &val) < 0 || val > 2)
+=======
 	if (strict_strtoul(buf, 10, &val) < 0 || val > 2)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &val) < 0 || val > 2)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	/* Can't go to automatic mode if it isn't configured */
 	if (val == 2 && !(data->pwm_auto_ok & (1 << nr)))
@@ -604,7 +729,15 @@ static ssize_t set_pwm(struct device *dev, struct device_attribute
 	int iobase = data->address[LD_FAN];
 	u8 mode;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &val) < 0 || val > 0xff)
+=======
 	if (strict_strtoul(buf, 10, &val) < 0 || val > 0xff)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &val) < 0 || val > 0xff)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	mutex_lock(&data->lock);
@@ -1023,9 +1156,23 @@ static void __devinit pc87427_init_device(struct device *dev)
 		if (reg & PWM_ENABLE_CTLEN)
 			data->pwm_enabled |= (1 << i);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/*
+		 * We don't expose an interface to reconfigure the automatic
+		 * fan control mode, so only allow to return to this mode if
+		 * it was originally set.
+		 */
+=======
 		/* We don't expose an interface to reconfigure the automatic
 		   fan control mode, so only allow to return to this mode if
 		   it was originally set. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* We don't expose an interface to reconfigure the automatic
+		   fan control mode, so only allow to return to this mode if
+		   it was originally set. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((reg & PWM_ENABLE_MODE_MASK) == PWM_MODE_AUTO) {
 			dev_dbg(dev, "PWM%d is in automatic control mode\n",
 				i + 1);

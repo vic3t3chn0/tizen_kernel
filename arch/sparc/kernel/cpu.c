@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/smp.h>
 #include <linux/threads.h>
@@ -486,6 +490,9 @@ static void __init sun4v_cpu_probe(void)
 		break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SUN4V_CHIP_NIAGARA4:
 		sparc_cpu_type = "UltraSparc T4 (Niagara4)";
 		sparc_fpu_type = "UltraSparc T4 integrated FPU";
@@ -498,8 +505,11 @@ static void __init sun4v_cpu_probe(void)
 		sparc_pmu_type = "niagara5";
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		printk(KERN_WARNING "CPU: Unknown sun4v cpu type [%s]\n",
 		       prom_cpu_compatible);

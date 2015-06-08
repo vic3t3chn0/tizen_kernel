@@ -15,8 +15,11 @@
 #include <linux/magic.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/mnt_namespace.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mount.h>
 #include <linux/namei.h>
 #include <linux/nsproxy.h>
@@ -88,6 +91,9 @@ static int d_namespace_path(struct path *path, char *buf, int buflen,
 		get_fs_root(current->fs, &root);
 		res = __d_path(path, &root, buf, buflen);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		path_put(&root);
 	} else {
 		res = d_absolute_path(path, buf, buflen);
@@ -111,6 +117,8 @@ static int d_namespace_path(struct path *path, char *buf, int buflen,
 
 	*name = res;
 
+<<<<<<< HEAD
+=======
 =======
 		if (res && !IS_ERR(res)) {
 			/* everything's fine */
@@ -138,6 +146,7 @@ static int d_namespace_path(struct path *path, char *buf, int buflen,
 
 ok:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Handle two cases:
 	 * 1. A deleted dentry && profile is not allowing mediation of deleted
 	 * 2. On some filesystems, newly allocated dentries appear to the
@@ -171,8 +180,12 @@ ok:
 <<<<<<< HEAD
 			error = -EACCES;
 =======
+<<<<<<< HEAD
+			error = -EACCES;
+=======
 			error = -ESTALE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (*res == '/')
 				*name = res + 1;
 		}
@@ -196,8 +209,12 @@ static int get_name_to_buffer(struct path *path, int flags, char *buffer,
 <<<<<<< HEAD
 			      int size, char **name, const char **info)
 =======
+<<<<<<< HEAD
+			      int size, char **name, const char **info)
+=======
 			      int size, char **name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int adjust = (flags & PATH_IS_DIR) ? 1 : 0;
 	int error = d_namespace_path(path, buffer, size - adjust, name, flags);
@@ -210,6 +227,9 @@ static int get_name_to_buffer(struct path *path, int flags, char *buffer,
 		strcpy(&buffer[size - 2], "/");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (info && error) {
 		if (error == -ENOENT)
 			*info = "Failed name lookup - deleted entry";
@@ -221,8 +241,11 @@ static int get_name_to_buffer(struct path *path, int flags, char *buffer,
 			*info = "Failed name lookup";
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -230,8 +253,12 @@ static int get_name_to_buffer(struct path *path, int flags, char *buffer,
 <<<<<<< HEAD
  * aa_path_name - compute the pathname of a file
 =======
+<<<<<<< HEAD
+ * aa_path_name - compute the pathname of a file
+=======
  * aa_get_name - compute the pathname of a file
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @path: path the file  (NOT NULL)
  * @flags: flags controlling path name generation
  * @buffer: buffer that aa_get_name() allocated  (NOT NULL)
@@ -239,7 +266,11 @@ static int get_name_to_buffer(struct path *path, int flags, char *buffer,
 <<<<<<< HEAD
  * @info: Returns - information on why the path lookup failed (MAYBE NULL)
 =======
+<<<<<<< HEAD
+ * @info: Returns - information on why the path lookup failed (MAYBE NULL)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * @name is a pointer to the beginning of the pathname (which usually differs
  * from the beginning of the buffer), or NULL.  If there is an error @name
@@ -256,8 +287,13 @@ static int get_name_to_buffer(struct path *path, int flags, char *buffer,
 int aa_path_name(struct path *path, int flags, char **buffer, const char **name,
 		 const char **info)
 =======
+<<<<<<< HEAD
+int aa_path_name(struct path *path, int flags, char **buffer, const char **name,
+		 const char **info)
+=======
 int aa_get_name(struct path *path, int flags, char **buffer, const char **name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *buf, *str = NULL;
 	int size = 256;
@@ -274,8 +310,12 @@ int aa_get_name(struct path *path, int flags, char **buffer, const char **name)
 <<<<<<< HEAD
 		error = get_name_to_buffer(path, flags, buf, size, &str, info);
 =======
+<<<<<<< HEAD
+		error = get_name_to_buffer(path, flags, buf, size, &str, info);
+=======
 		error = get_name_to_buffer(path, flags, buf, size, &str);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error != -ENAMETOOLONG)
 			break;
 
@@ -286,7 +326,11 @@ int aa_get_name(struct path *path, int flags, char **buffer, const char **name)
 <<<<<<< HEAD
 		*info = NULL;
 =======
+<<<<<<< HEAD
+		*info = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	*buffer = buf;
 	*name = str;

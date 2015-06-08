@@ -2,12 +2,17 @@
 #define _NF_NAT_H
 #include <linux/netfilter_ipv4.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/netfilter/nf_nat.h>
 #include <net/netfilter/nf_conntrack_tuple.h>
 
 enum nf_nat_manip_type {
 	NF_NAT_MANIP_SRC,
 	NF_NAT_MANIP_DST
+<<<<<<< HEAD
+=======
 =======
 #include <net/netfilter/nf_conntrack_tuple.h>
 
@@ -17,6 +22,7 @@ enum nf_nat_manip_type {
 	IP_NAT_MANIP_SRC,
 	IP_NAT_MANIP_DST
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* SRC manip occurs POST_ROUTING or LOCAL_IN */
@@ -25,12 +31,15 @@ enum nf_nat_manip_type {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IP_NAT_RANGE_MAP_IPS 1
 #define IP_NAT_RANGE_PROTO_SPECIFIED 2
 #define IP_NAT_RANGE_PROTO_RANDOM 4
 #define IP_NAT_RANGE_PERSISTENT 8
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* NAT sequence number modifications */
 struct nf_nat_seq {
 	/* position of the last TCP sequence number modification (if any) */
@@ -40,6 +49,8 @@ struct nf_nat_seq {
 	int16_t offset_before, offset_after;
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Single range specification. */
@@ -63,6 +74,7 @@ struct nf_nat_multi_range_compat {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/list.h>
 #include <linux/netfilter/nf_conntrack_pptp.h>
 #include <net/netfilter/nf_conntrack_extend.h>
@@ -94,8 +106,12 @@ extern unsigned int nf_nat_setup_info(struct nf_conn *ct,
 <<<<<<< HEAD
 				      const struct nf_nat_ipv4_range *range,
 =======
+<<<<<<< HEAD
+				      const struct nf_nat_ipv4_range *range,
+=======
 				      const struct nf_nat_range *range,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      enum nf_nat_manip_type maniptype);
 
 /* Is this tuple already taken? (not by us)*/

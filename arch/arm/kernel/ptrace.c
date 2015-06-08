@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/elf.h>
 =======
+<<<<<<< HEAD
+#include <linux/elf.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/smp.h>
 #include <linux/ptrace.h>
 #include <linux/user.h>
@@ -27,15 +31,21 @@
 #include <linux/hw_breakpoint.h>
 #include <linux/regset.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/audit.h>
 #include <linux/unistd.h>
 
 #include <asm/pgtable.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/pgtable.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/traps.h>
 
 #define REG_PC	15
@@ -240,12 +250,17 @@ static struct undef_hook thumb_break_hook = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct undef_hook thumb2_break_hook = {
 	.instr_mask	= 0xffffffff,
 	.instr_val	= 0xf7f0a000,
 	.cpsr_mask	= PSR_T_BIT,
 	.cpsr_val	= PSR_T_BIT,
 	.fn		= break_trap,
+<<<<<<< HEAD
+=======
 =======
 static int thumb2_break_trap(struct pt_regs *regs, unsigned int instr)
 {
@@ -276,6 +291,7 @@ static struct undef_hook thumb2_break_hook = {
 	.cpsr_val	= PSR_T_BIT,
 	.fn		= thumb2_break_trap,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init ptrace_break_init(void)
@@ -300,8 +316,12 @@ static int ptrace_read_user(struct task_struct *tsk, unsigned long off,
 <<<<<<< HEAD
 	if (off & 3)
 =======
+<<<<<<< HEAD
+	if (off & 3)
+=======
 	if (off & 3 || off >= sizeof(struct user))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 
 	tmp = 0;
@@ -317,7 +337,12 @@ static int ptrace_read_user(struct task_struct *tsk, unsigned long off,
 	else if (off >= sizeof(struct user))
 		return -EIO;
 =======
+<<<<<<< HEAD
+	else if (off >= sizeof(struct user))
+		return -EIO;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return put_user(tmp, ret);
 }
@@ -428,8 +453,12 @@ static long ptrace_hbp_idx_to_num(int idx)
 <<<<<<< HEAD
 static void ptrace_hbptriggered(struct perf_event *bp,
 =======
+<<<<<<< HEAD
+static void ptrace_hbptriggered(struct perf_event *bp,
+=======
 static void ptrace_hbptriggered(struct perf_event *bp, int unused,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     struct perf_sample_data *data,
 				     struct pt_regs *regs)
 {
@@ -516,8 +545,13 @@ static struct perf_event *ptrace_hbp_create(struct task_struct *tsk, int type)
 	return register_user_hw_breakpoint(&attr, ptrace_hbptriggered, NULL,
 					   tsk);
 =======
+<<<<<<< HEAD
+	return register_user_hw_breakpoint(&attr, ptrace_hbptriggered, NULL,
+					   tsk);
+=======
 	return register_user_hw_breakpoint(&attr, ptrace_hbptriggered, tsk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ptrace_gethbpregs(struct task_struct *tsk, long num,
@@ -903,8 +937,12 @@ long arch_ptrace(struct task_struct *child, long request,
 <<<<<<< HEAD
 			ret = put_user(task_thread_info(child)->tp_value[0],
 =======
+<<<<<<< HEAD
+			ret = put_user(task_thread_info(child)->tp_value[0],
+=======
 			ret = put_user(task_thread_info(child)->tp_value,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       datap);
 			break;
 
@@ -971,6 +1009,9 @@ asmlinkage int syscall_trace(int why, struct pt_regs *regs, int scno)
 	unsigned long ip;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (why)
 		audit_syscall_exit(regs);
 	else
@@ -979,33 +1020,45 @@ asmlinkage int syscall_trace(int why, struct pt_regs *regs, int scno)
 
 	if (why == 0 && test_and_clear_thread_flag(TIF_SYSCALL_RESTARTSYS))
 		scno = __NR_restart_syscall - __NR_SYSCALL_BASE;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!test_thread_flag(TIF_SYSCALL_TRACE))
 		return scno;
 	if (!(current->ptrace & PT_PTRACED))
 		return scno;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	current_thread_info()->syscall = scno;
 
 	/*
 	 * IP is used to denote syscall entry/exit:
 	 * IP = 0 -> entry, =1 -> exit
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Save IP.  IP is used to denote syscall entry/exit:
 	 *  IP = 0 -> entry, = 1 -> exit
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	ip = regs->ARM_ip;
 	regs->ARM_ip = why;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current_thread_info()->syscall = scno;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* the 0x80 provides a way for the tracing parent to distinguish
 	   between a syscall stop and SIGTRAP delivery */
 	ptrace_notify(SIGTRAP | ((current->ptrace & PT_TRACESYSGOOD)

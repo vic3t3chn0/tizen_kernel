@@ -13,6 +13,9 @@
 #include <linux/smp.h>
 #include <linux/io.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/of_fdt.h>
 
 #include <asm/smp_scu.h>
@@ -20,6 +23,8 @@
 #include <asm/mach/map.h>
 
 #include <mach/motherboard.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/unified.h>
@@ -27,12 +32,16 @@
 #include <mach/motherboard.h>
 #define V2M_PA_CS7 0x10000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "core.h"
 
 extern void versatile_secondary_startup(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_OF)
 
 static enum {
@@ -172,8 +181,11 @@ void __init vexpress_dt_smp_prepare_cpus(unsigned int max_cpus)
 
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Initialise the CPU possible map early - this describes the CPUs
  * which may be present or become present in the system.
@@ -181,14 +193,20 @@ void __init vexpress_dt_smp_prepare_cpus(unsigned int max_cpus)
 void __init smp_init_cpus(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ct_desc)
 		ct_desc->init_cpu_map();
 	else
 		vexpress_dt_smp_init_cpus();
 
+<<<<<<< HEAD
+=======
 =======
 	ct_desc->init_cpu_map();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init platform_smp_prepare_cpus(unsigned int max_cpus)
@@ -198,13 +216,19 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 	 * actually populated at the present time.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ct_desc)
 		ct_desc->smp_enable(max_cpus);
 	else
 		vexpress_dt_smp_prepare_cpus(max_cpus);
+<<<<<<< HEAD
+=======
 =======
 	ct_desc->smp_enable(max_cpus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Write the address of secondary startup into the
@@ -215,8 +239,12 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 <<<<<<< HEAD
 	v2m_flags_set(virt_to_phys(versatile_secondary_startup));
 =======
+<<<<<<< HEAD
+	v2m_flags_set(virt_to_phys(versatile_secondary_startup));
+=======
 	writel(~0, MMIO_P2V(V2M_SYS_FLAGSCLR));
 	writel(BSYM(virt_to_phys(versatile_secondary_startup)),
 		MMIO_P2V(V2M_SYS_FLAGSSET));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

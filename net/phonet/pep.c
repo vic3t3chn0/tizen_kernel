@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/phonet/phonet.h>
 #include <net/phonet/pep.h>
 #include <net/phonet/gprs.h>
@@ -538,6 +542,9 @@ static int pep_connresp_rcv(struct sock *sk, struct sk_buff *skb)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pep_enableresp_rcv(struct sock *sk, struct sk_buff *skb)
 {
 	struct pnpipehdr *hdr = pnp_hdr(skb);
@@ -561,8 +568,11 @@ static void pipe_start_flow_control(struct sock *sk)
 	pipe_grant_credits(sk, GFP_ATOMIC);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Queue an skb to an actively connected sock.
  * Socket lock must be held. */
 static int pipe_handler_do_rcv(struct sock *sk, struct sk_buff *skb)
@@ -609,6 +619,9 @@ static int pipe_handler_do_rcv(struct sock *sk, struct sk_buff *skb)
 			break;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pn->init_enable == PN_PIPE_DISABLE)
 			sk->sk_state = TCP_SYN_RECV;
 		else {
@@ -628,6 +641,8 @@ static int pipe_handler_do_rcv(struct sock *sk, struct sk_buff *skb)
 
 		sk->sk_state = TCP_ESTABLISHED;
 		pipe_start_flow_control(sk);
+<<<<<<< HEAD
+=======
 =======
 
 		sk->sk_state = TCP_ESTABLISHED;
@@ -637,6 +652,7 @@ static int pipe_handler_do_rcv(struct sock *sk, struct sk_buff *skb)
 		}
 		pipe_grant_credits(sk, GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case PNS_PEP_DISCONNECT_RESP:
@@ -916,21 +932,30 @@ static int pep_sock_connect(struct sock *sk, struct sockaddr *addr, int len)
 	u8 data[4] = { 0 /* sub-blocks */, PAD, PAD, PAD };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pn->pipe_handle == PN_PIPE_INVALID_HANDLE)
 		pn->pipe_handle = 1; /* anything but INVALID_HANDLE */
 
 	err = pipe_handler_request(sk, PNS_PEP_CONNECT_REQ,
 				pn->init_enable, data, 4);
+<<<<<<< HEAD
+=======
 =======
 	pn->pipe_handle = 1; /* anything but INVALID_HANDLE */
 	err = pipe_handler_request(sk, PNS_PEP_CONNECT_REQ,
 					PN_PIPE_ENABLE, data, 4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		pn->pipe_handle = PN_PIPE_INVALID_HANDLE;
 		return err;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sk->sk_state = TCP_SYN_SENT;
 
@@ -948,9 +973,12 @@ static int pep_sock_enable(struct sock *sk, struct sockaddr *addr, int len)
 
 	sk->sk_state = TCP_SYN_SENT;
 
+<<<<<<< HEAD
+=======
 =======
 	sk->sk_state = TCP_SYN_SENT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -959,6 +987,9 @@ static int pep_ioctl(struct sock *sk, int cmd, unsigned long arg)
 	struct pep_sock *pn = pep_sk(sk);
 	int answ;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = -ENOIOCTLCMD;
 
 	switch (cmd) {
@@ -967,6 +998,8 @@ static int pep_ioctl(struct sock *sk, int cmd, unsigned long arg)
 			ret = -EINVAL;
 			break;
 		}
+<<<<<<< HEAD
+=======
 =======
 
 	switch (cmd) {
@@ -974,6 +1007,7 @@ static int pep_ioctl(struct sock *sk, int cmd, unsigned long arg)
 		if (sk->sk_state == TCP_LISTEN)
 			return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		lock_sock(sk);
 		if (sock_flag(sk, SOCK_URGINLINE) &&
@@ -985,6 +1019,9 @@ static int pep_ioctl(struct sock *sk, int cmd, unsigned long arg)
 			answ = 0;
 		release_sock(sk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = put_user(answ, (int __user *)arg);
 		break;
 
@@ -1001,12 +1038,15 @@ static int pep_ioctl(struct sock *sk, int cmd, unsigned long arg)
 	}
 
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 		return put_user(answ, (int __user *)arg);
 	}
 
 	return -ENOIOCTLCMD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int pep_init(struct sock *sk)
@@ -1070,6 +1110,9 @@ static int pep_setsockopt(struct sock *sk, int level, int optname,
 		goto out_norel;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PNPIPE_HANDLE:
 		if ((sk->sk_state == TCP_CLOSE) &&
 			(val >= 0) && (val < PN_PIPE_INVALID_HANDLE))
@@ -1082,8 +1125,11 @@ static int pep_setsockopt(struct sock *sk, int level, int optname,
 		pn->init_enable = !!val;
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		err = -ENOPROTOOPT;
 	}
@@ -1120,12 +1166,18 @@ static int pep_getsockopt(struct sock *sk, int level, int optname,
 		break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PNPIPE_INITSTATE:
 		val = pn->init_enable;
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return -ENOPROTOOPT;
 	}

@@ -56,11 +56,16 @@ static struct dentry *exofs_lookup(struct inode *dir, struct dentry *dentry,
 
 	ino = exofs_inode_by_name(dir, dentry);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode = ino ? exofs_iget(dir->i_sb, ino) : NULL;
 	return d_splice_alias(inode, dentry);
 }
 
 static int exofs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+<<<<<<< HEAD
+=======
 =======
 	inode = NULL;
 	if (ino) {
@@ -73,6 +78,7 @@ static int exofs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 
 static int exofs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 struct nameidata *nd)
 {
 	struct inode *inode = exofs_new_inode(dir, mode);
@@ -90,8 +96,12 @@ static int exofs_create(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 static int exofs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int exofs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int exofs_mknod(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       dev_t rdev)
 {
 	struct inode *inode;
@@ -162,10 +172,13 @@ static int exofs_link(struct dentry *old_dentry, struct inode *dir,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (inode->i_nlink >= EXOFS_LINK_MAX)
 		return -EMLINK;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_ctime = CURRENT_TIME;
 	inode_inc_link_count(inode);
 	ihold(inode);
@@ -174,10 +187,15 @@ static int exofs_link(struct dentry *old_dentry, struct inode *dir,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int exofs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 {
 	struct inode *inode;
 	int err;
+<<<<<<< HEAD
+=======
 =======
 static int exofs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 {
@@ -187,6 +205,7 @@ static int exofs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 	if (dir->i_nlink >= EXOFS_LINK_MAX)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inode_inc_link_count(dir);
 
@@ -304,12 +323,15 @@ static int exofs_rename(struct inode *old_dir, struct dentry *old_dentry,
 	} else {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (dir_de) {
 			err = -EMLINK;
 			if (new_dir->i_nlink >= EXOFS_LINK_MAX)
 				goto out_dir;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = exofs_add_link(new_dentry, old_inode);
 		if (err)
 			goto out_dir;

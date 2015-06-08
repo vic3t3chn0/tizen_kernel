@@ -49,8 +49,12 @@ static int ceph_encode_fh(struct dentry *dentry, u32 *rawfh, int *max_len,
 <<<<<<< HEAD
 	struct dentry *parent;
 =======
+<<<<<<< HEAD
+	struct dentry *parent;
+=======
 	struct dentry *parent = dentry->d_parent;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode = dentry->d_inode;
 	int connected_handle_length = sizeof(*cfh)/4;
 	int handle_length = sizeof(*fh)/4;
@@ -63,7 +67,12 @@ static int ceph_encode_fh(struct dentry *dentry, u32 *rawfh, int *max_len,
 	spin_lock(&dentry->d_lock);
 	parent = dentry->d_parent;
 =======
+<<<<<<< HEAD
+	spin_lock(&dentry->d_lock);
+	parent = dentry->d_parent;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (*max_len >= connected_handle_length) {
 		dout("encode_fh %p connectable\n", dentry);
 		cfh->ino = ceph_ino(dentry->d_inode);
@@ -72,14 +81,22 @@ static int ceph_encode_fh(struct dentry *dentry, u32 *rawfh, int *max_len,
 		cfh->parent_name_hash = ceph_dentry_hash(parent->d_inode,
 							 dentry);
 =======
+<<<<<<< HEAD
+		cfh->parent_name_hash = ceph_dentry_hash(parent->d_inode,
+							 dentry);
+=======
 		cfh->parent_name_hash = ceph_dentry_hash(parent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*max_len = connected_handle_length;
 		type = 2;
 	} else if (*max_len >= handle_length) {
 		if (connectable) {
 			*max_len = connected_handle_length;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			type = 255;
 		} else {
 			dout("encode_fh %p\n", dentry);
@@ -92,6 +109,8 @@ static int ceph_encode_fh(struct dentry *dentry, u32 *rawfh, int *max_len,
 		type = 255;
 	}
 	spin_unlock(&dentry->d_lock);
+<<<<<<< HEAD
+=======
 =======
 			return 255;
 		}
@@ -104,6 +123,7 @@ static int ceph_encode_fh(struct dentry *dentry, u32 *rawfh, int *max_len,
 		return 255;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return type;
 }
 
@@ -116,8 +136,12 @@ static struct dentry *__fh_to_dentry(struct super_block *sb,
 <<<<<<< HEAD
 				     struct ceph_nfs_fh *fh)
 =======
+<<<<<<< HEAD
+				     struct ceph_nfs_fh *fh)
+=======
 				     struct ceph_nfs_fh *fh, int fh_len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_mds_client *mdsc = ceph_sb_to_client(sb)->mdsc;
 	struct inode *inode;
@@ -127,10 +151,13 @@ static struct dentry *__fh_to_dentry(struct super_block *sb,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (fh_len < sizeof(*fh) / 4)
 		return ERR_PTR(-ESTALE);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("__fh_to_dentry %llx\n", fh->ino);
 	vino.ino = fh->ino;
 	vino.snap = CEPH_NOSNAP;
@@ -164,8 +191,11 @@ static struct dentry *__fh_to_dentry(struct super_block *sb,
 	err = ceph_init_dentry(dentry);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		iput(inode);
 		return ERR_PTR(err);
@@ -181,8 +211,12 @@ static struct dentry *__cfh_to_dentry(struct super_block *sb,
 <<<<<<< HEAD
 				      struct ceph_nfs_confh *cfh)
 =======
+<<<<<<< HEAD
+				      struct ceph_nfs_confh *cfh)
+=======
 				      struct ceph_nfs_confh *cfh, int fh_len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_mds_client *mdsc = ceph_sb_to_client(sb)->mdsc;
 	struct inode *inode;
@@ -192,10 +226,13 @@ static struct dentry *__cfh_to_dentry(struct super_block *sb,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (fh_len < sizeof(*cfh) / 4)
 		return ERR_PTR(-ESTALE);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("__cfh_to_dentry %llx (%llx/%x)\n",
 	     cfh->ino, cfh->parent_ino, cfh->parent_name_hash);
 
@@ -250,12 +287,18 @@ static struct dentry *ceph_fh_to_dentry(struct super_block *sb, struct fid *fid,
 	else
 		return __cfh_to_dentry(sb, (struct ceph_nfs_confh *)fid->raw);
 =======
+<<<<<<< HEAD
+		return __fh_to_dentry(sb, (struct ceph_nfs_fh *)fid->raw);
+	else
+		return __cfh_to_dentry(sb, (struct ceph_nfs_confh *)fid->raw);
+=======
 		return __fh_to_dentry(sb, (struct ceph_nfs_fh *)fid->raw,
 								fh_len);
 	else
 		return __cfh_to_dentry(sb, (struct ceph_nfs_confh *)fid->raw,
 								fh_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -278,9 +321,12 @@ static struct dentry *ceph_fh_to_parent(struct super_block *sb,
 		return ERR_PTR(-ESTALE);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (fh_len < sizeof(*cfh) / 4)
 		return ERR_PTR(-ESTALE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("fh_to_parent %llx/%d\n", cfh->parent_ino,
 		 cfh->parent_name_hash);

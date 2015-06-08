@@ -4,6 +4,9 @@
 #include <linux/platform_device.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Version 2 of the I2C peripheral unit has a different register
  * layout and extra registers.  The ID register in the V2 peripheral
@@ -36,6 +39,8 @@ struct omap_i2c_bus_platform_data {
 	u32		rev;
 	u32		flags;
 	void		(*set_mpu_wkup_lat)(struct device *dev, long set);
+<<<<<<< HEAD
+=======
 =======
 struct omap_i2c_bus_platform_data {
 	u32		clkrate;
@@ -44,6 +49,7 @@ struct omap_i2c_bus_platform_data {
 	int		(*device_shutdown) (struct platform_device *pdev);
 	int		(*device_idle) (struct platform_device *pdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif

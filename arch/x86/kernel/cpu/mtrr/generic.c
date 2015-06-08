@@ -14,8 +14,11 @@
 #include <asm/tlbflush.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mtrr.h>
 #include <asm/msr.h>
 #include <asm/pat.h>
@@ -553,7 +556,11 @@ static void generic_get_mtrr(unsigned int reg, unsigned long *base,
 <<<<<<< HEAD
 			add_taint(TAINT_FIRMWARE_WORKAROUND);
 =======
+<<<<<<< HEAD
+			add_taint(TAINT_FIRMWARE_WORKAROUND);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mask_lo = tmp;
 		}
 	}
@@ -703,7 +710,11 @@ static void prepare_set(void) __acquires(set_atomicity_lock)
 <<<<<<< HEAD
 	wbinvd();
 =======
+<<<<<<< HEAD
+	wbinvd();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void post_set(void) __releases(set_atomicity_lock)

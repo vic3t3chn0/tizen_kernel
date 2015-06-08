@@ -5,8 +5,11 @@
  *
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *  Derived from "include/asm-i386/posix_types.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef __ARCH_S390_POSIX_TYPES_H
@@ -19,11 +22,16 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef unsigned long   __kernel_size_t;
 #define __kernel_size_t __kernel_size_t
 
 typedef unsigned short	__kernel_old_dev_t;
 #define __kernel_old_dev_t __kernel_old_dev_t
+<<<<<<< HEAD
+=======
 =======
 typedef long            __kernel_off_t;
 typedef int             __kernel_pid_t;
@@ -42,6 +50,7 @@ typedef unsigned short	__kernel_gid16_t;
 typedef long long       __kernel_loff_t;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __s390x__
 
@@ -55,12 +64,15 @@ typedef int             __kernel_ssize_t;
 typedef int             __kernel_ptrdiff_t;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 typedef unsigned int	__kernel_uid32_t;
 typedef unsigned int	__kernel_gid32_t;
 typedef unsigned short	__kernel_old_uid_t;
 typedef unsigned short	__kernel_old_gid_t;
 typedef unsigned short	__kernel_old_dev_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* __s390x__ */
 
@@ -74,6 +86,9 @@ typedef long            __kernel_ssize_t;
 typedef long            __kernel_ptrdiff_t;
 typedef unsigned long   __kernel_sigset_t;      /* at least 32 bits */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __s390x__ */
 
@@ -85,6 +100,8 @@ typedef unsigned long   __kernel_sigset_t;      /* at least 32 bits */
 #define __kernel_gid_t __kernel_gid_t
 
 #include <asm-generic/posix_types.h>
+<<<<<<< HEAD
+=======
 =======
 typedef __kernel_uid_t __kernel_old_uid_t;
 typedef __kernel_gid_t __kernel_old_gid_t;
@@ -131,5 +148,6 @@ static inline int __FD_ISSET(unsigned long fd, const __kernel_fd_set *fdsetp)
 
 #endif     /* __KERNEL__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

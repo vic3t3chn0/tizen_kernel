@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 OUTPUT := ./
 ifeq ("$(origin O)", "command line")
   ifneq ($(O),)
@@ -6,8 +9,11 @@ ifeq ("$(origin O)", "command line")
   endif
 endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MAN1_TXT= \
 	$(filter-out $(addsuffix .txt, $(ARTICLES) $(SP_ARTICLES)), \
 		$(wildcard perf-*.txt)) \
@@ -17,17 +23,23 @@ MAN7_TXT=
 
 MAN_TXT = $(MAN1_TXT) $(MAN5_TXT) $(MAN7_TXT)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 _MAN_XML=$(patsubst %.txt,%.xml,$(MAN_TXT))
 _MAN_HTML=$(patsubst %.txt,%.html,$(MAN_TXT))
 
 MAN_XML=$(addprefix $(OUTPUT),$(_MAN_XML))
 MAN_HTML=$(addprefix $(OUTPUT),$(_MAN_HTML))
+<<<<<<< HEAD
+=======
 =======
 MAN_XML=$(patsubst %.txt,%.xml,$(MAN_TXT))
 MAN_HTML=$(patsubst %.txt,%.html,$(MAN_TXT))
 
 DOC_HTML=$(MAN_HTML)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ARTICLES =
 # with their own formatting rules.
@@ -37,6 +49,9 @@ SP_ARTICLES += $(API_DOCS)
 SP_ARTICLES += technical/api-index
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 _DOC_HTML = $(_MAN_HTML)
 _DOC_HTML+=$(patsubst %,%.html,$(ARTICLES) $(SP_ARTICLES))
 DOC_HTML=$(addprefix $(OUTPUT),$(_DOC_HTML))
@@ -48,6 +63,8 @@ _DOC_MAN7=$(patsubst %.txt,%.7,$(MAN7_TXT))
 DOC_MAN1=$(addprefix $(OUTPUT),$(_DOC_MAN1))
 DOC_MAN5=$(addprefix $(OUTPUT),$(_DOC_MAN5))
 DOC_MAN7=$(addprefix $(OUTPUT),$(_DOC_MAN7))
+<<<<<<< HEAD
+=======
 =======
 DOC_HTML += $(patsubst %,%.html,$(ARTICLES) $(SP_ARTICLES))
 
@@ -55,6 +72,7 @@ DOC_MAN1=$(patsubst %.txt,%.1,$(MAN1_TXT))
 DOC_MAN5=$(patsubst %.txt,%.5,$(MAN5_TXT))
 DOC_MAN7=$(patsubst %.txt,%.7,$(MAN7_TXT))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # Make the path relative to DESTDIR, not prefix
 ifndef DESTDIR
@@ -187,10 +205,16 @@ info: $(OUTPUT)perf.info $(OUTPUT)perfman.info
 
 pdf: $(OUTPUT)user-manual.pdf
 =======
+<<<<<<< HEAD
+info: $(OUTPUT)perf.info $(OUTPUT)perfman.info
+
+pdf: $(OUTPUT)user-manual.pdf
+=======
 info: perf.info perfman.info
 
 pdf: user-manual.pdf
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 install: install-man
 
@@ -207,8 +231,12 @@ install-info: info
 <<<<<<< HEAD
 	$(INSTALL) -m 644 $(OUTPUT)perf.info $(OUTPUT)perfman.info $(DESTDIR)$(infodir)
 =======
+<<<<<<< HEAD
+	$(INSTALL) -m 644 $(OUTPUT)perf.info $(OUTPUT)perfman.info $(DESTDIR)$(infodir)
+=======
 	$(INSTALL) -m 644 perf.info perfman.info $(DESTDIR)$(infodir)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if test -r $(DESTDIR)$(infodir)/dir; then \
 	  $(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) perf.info ;\
 	  $(INSTALL_INFO) --info-dir=$(DESTDIR)$(infodir) perfman.info ;\
@@ -221,8 +249,12 @@ install-pdf: pdf
 <<<<<<< HEAD
 	$(INSTALL) -m 644 $(OUTPUT)user-manual.pdf $(DESTDIR)$(pdfdir)
 =======
+<<<<<<< HEAD
+	$(INSTALL) -m 644 $(OUTPUT)user-manual.pdf $(DESTDIR)$(pdfdir)
+=======
 	$(INSTALL) -m 644 user-manual.pdf $(DESTDIR)$(pdfdir)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #install-html: html
 #	'$(SHELL_PATH_SQ)' ./install-webdoc.sh $(DESTDIR)$(htmldir)
@@ -238,8 +270,12 @@ install-pdf: pdf
 <<<<<<< HEAD
 $(OUTPUT)doc.dep : $(wildcard *.txt) build-docdep.perl
 =======
+<<<<<<< HEAD
+$(OUTPUT)doc.dep : $(wildcard *.txt) build-docdep.perl
+=======
 doc.dep : $(wildcard *.txt) build-docdep.perl
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(QUIET_GEN)$(RM) $@+ $@ && \
 	$(PERL_PATH) ./build-docdep.perl >$@+ $(QUIET_STDERR) && \
 	mv $@+ $@
@@ -249,10 +285,16 @@ doc.dep : $(wildcard *.txt) build-docdep.perl
 
 _cmds_txt = cmds-ancillaryinterrogators.txt \
 =======
+<<<<<<< HEAD
+-include $(OUPTUT)doc.dep
+
+_cmds_txt = cmds-ancillaryinterrogators.txt \
+=======
 -include doc.dep
 
 cmds_txt = cmds-ancillaryinterrogators.txt \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cmds-ancillarymanipulators.txt \
 	cmds-mainporcelain.txt \
 	cmds-plumbinginterrogators.txt \
@@ -262,23 +304,32 @@ cmds_txt = cmds-ancillaryinterrogators.txt \
 	cmds-purehelpers.txt \
 	cmds-foreignscminterface.txt
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 cmds_txt=$(addprefix $(OUTPUT),$(_cmds_txt))
 
 $(cmds_txt): $(OUTPUT)cmd-list.made
 
 $(OUTPUT)cmd-list.made: cmd-list.perl ../command-list.txt $(MAN1_TXT)
+<<<<<<< HEAD
+=======
 =======
 
 $(cmds_txt): cmd-list.made
 
 cmd-list.made: cmd-list.perl ../command-list.txt $(MAN1_TXT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(QUIET_GEN)$(RM) $@ && \
 	$(PERL_PATH) ./cmd-list.perl ../command-list.txt $(QUIET_STDERR) && \
 	date >$@
 
 clean:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(RM) $(MAN_XML) $(addsuffix +,$(MAN_XML))
 	$(RM) $(MAN_HTML) $(addsuffix +,$(MAN_HTML))
 	$(RM) $(DOC_HTML) $(DOC_MAN1) $(DOC_MAN5) $(DOC_MAN7)
@@ -289,6 +340,8 @@ clean:
 	$(RM) $(cmds_txt) $(OUTPUT)*.made
 
 $(MAN_HTML): $(OUTPUT)%.html : %.txt
+<<<<<<< HEAD
+=======
 =======
 	$(RM) *.xml *.xml+ *.html *.html+ *.1 *.5 *.7
 	$(RM) *.texi *.texi+ *.texi++ perf.info perfman.info
@@ -298,17 +351,23 @@ $(MAN_HTML): $(OUTPUT)%.html : %.txt
 
 $(MAN_HTML): %.html : %.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(QUIET_ASCIIDOC)$(RM) $@+ $@ && \
 	$(ASCIIDOC) -b xhtml11 -d manpage -f asciidoc.conf \
 		$(ASCIIDOC_EXTRA) -aperf_version=$(PERF_VERSION) -o $@+ $< && \
 	mv $@+ $@
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 $(OUTPUT)%.1 $(OUTPUT)%.5 $(OUTPUT)%.7 : $(OUTPUT)%.xml
 	$(QUIET_XMLTO)$(RM) $@ && \
 	xmlto -o $(OUTPUT) -m $(MANPAGE_XSL) $(XMLTO_EXTRA) man $<
 
 $(OUTPUT)%.xml : %.txt
+<<<<<<< HEAD
+=======
 =======
 %.1 %.5 %.7 : %.xml
 	$(QUIET_XMLTO)$(RM) $@ && \
@@ -316,6 +375,7 @@ $(OUTPUT)%.xml : %.txt
 
 %.xml : %.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(QUIET_ASCIIDOC)$(RM) $@+ $@ && \
 	$(ASCIIDOC) -b docbook -d manpage -f asciidoc.conf \
 		$(ASCIIDOC_EXTRA) -aperf_version=$(PERF_VERSION) -o $@+ $< && \
@@ -325,6 +385,9 @@ XSLT = docbook.xsl
 XSLTOPTS = --xinclude --stringparam html.stylesheet docbook-xsl.css
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 $(OUTPUT)user-manual.html: $(OUTPUT)user-manual.xml
 	$(QUIET_XSLTPROC)xsltproc $(XSLTOPTS) -o $@ $(XSLT) $<
 
@@ -334,6 +397,8 @@ $(OUTPUT)perf.info: $(OUTPUT)user-manual.texi
 $(OUTPUT)user-manual.texi: $(OUTPUT)user-manual.xml
 	$(QUIET_DB2TEXI)$(RM) $@+ $@ && \
 	$(DOCBOOK2X_TEXI) $(OUTPUT)user-manual.xml --encoding=UTF-8 --to-stdout >$@++ && \
+<<<<<<< HEAD
+=======
 =======
 user-manual.html: user-manual.xml
 	$(QUIET_XSLTPROC)xsltproc $(XSLTOPTS) -o $@ $(XSLT) $<
@@ -345,6 +410,7 @@ user-manual.texi: user-manual.xml
 	$(QUIET_DB2TEXI)$(RM) $@+ $@ && \
 	$(DOCBOOK2X_TEXI) user-manual.xml --encoding=UTF-8 --to-stdout >$@++ && \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(PERL_PATH) fix-texi.perl <$@++ >$@+ && \
 	rm $@++ && \
 	mv $@+ $@
@@ -352,8 +418,12 @@ user-manual.texi: user-manual.xml
 <<<<<<< HEAD
 $(OUTPUT)user-manual.pdf: $(OUTPUT)user-manual.xml
 =======
+<<<<<<< HEAD
+$(OUTPUT)user-manual.pdf: $(OUTPUT)user-manual.xml
+=======
 user-manual.pdf: user-manual.xml
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(QUIET_DBLATEX)$(RM) $@+ $@ && \
 	$(DBLATEX) -o $@+ -p /etc/asciidoc/dblatex/asciidoc-dblatex.xsl -s /etc/asciidoc/dblatex/asciidoc-dblatex.sty $< && \
 	mv $@+ $@
@@ -361,8 +431,12 @@ user-manual.pdf: user-manual.xml
 <<<<<<< HEAD
 $(OUTPUT)perfman.texi: $(MAN_XML) cat-texi.perl
 =======
+<<<<<<< HEAD
+$(OUTPUT)perfman.texi: $(MAN_XML) cat-texi.perl
+=======
 perfman.texi: $(MAN_XML) cat-texi.perl
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(QUIET_DB2TEXI)$(RM) $@+ $@ && \
 	($(foreach xml,$(MAN_XML),$(DOCBOOK2X_TEXI) --encoding=UTF-8 \
 		--to-stdout $(xml) &&) true) > $@++ && \
@@ -373,8 +447,12 @@ perfman.texi: $(MAN_XML) cat-texi.perl
 <<<<<<< HEAD
 $(OUTPUT)perfman.info: $(OUTPUT)perfman.texi
 =======
+<<<<<<< HEAD
+$(OUTPUT)perfman.info: $(OUTPUT)perfman.texi
+=======
 perfman.info: perfman.texi
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(QUIET_MAKEINFO)$(MAKEINFO) --no-split --no-validate $*.texi
 
 $(patsubst %.txt,%.texi,$(MAN_TXT)): %.texi : %.xml

@@ -16,7 +16,11 @@ struct olpc_platform_t {
 <<<<<<< HEAD
 #define OLPC_F_EC_WIDE_SCI	0x04
 =======
+<<<<<<< HEAD
+#define OLPC_F_EC_WIDE_SCI	0x04
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_OLPC
 
@@ -67,6 +71,9 @@ static inline int olpc_board_at_least(uint32_t rev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void olpc_ec_wakeup_set(u16 value);
 extern void olpc_ec_wakeup_clear(u16 value);
 extern bool olpc_ec_wakeup_available(void);
@@ -74,8 +81,11 @@ extern bool olpc_ec_wakeup_available(void);
 extern int olpc_ec_mask_write(u16 bits);
 extern int olpc_ec_sci_query(u16 *sci_value);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 
 static inline int machine_is_olpc(void)
@@ -89,6 +99,9 @@ static inline int olpc_has_dcon(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void olpc_ec_wakeup_set(u16 value) { }
 static inline void olpc_ec_wakeup_clear(u16 value) { }
 
@@ -103,8 +116,11 @@ static inline bool olpc_ec_wakeup_available(void)
 extern void do_olpc_suspend_lowlevel(void);
 extern void olpc_xo1_pm_wakeup_set(u16 value);
 extern void olpc_xo1_pm_wakeup_clear(u16 value);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 extern int pci_olpc_init(void);
@@ -115,6 +131,9 @@ extern int olpc_ec_cmd(unsigned char cmd, unsigned char *inbuf, size_t inlen,
 		unsigned char *outbuf, size_t outlen);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* EC commands */
 
 #define EC_FIRMWARE_REV			0x08
@@ -128,6 +147,8 @@ extern int olpc_ec_cmd(unsigned char cmd, unsigned char *inbuf, size_t inlen,
 #define EC_WRITE_EXT_SCI_MASK		0x38
 #define EC_SCI_QUERY			0x84
 #define EC_EXT_SCI_QUERY		0x85
+<<<<<<< HEAD
+=======
 =======
 extern int olpc_ec_mask_set(uint8_t bits);
 extern int olpc_ec_mask_unset(uint8_t bits);
@@ -138,6 +159,7 @@ extern int olpc_ec_mask_unset(uint8_t bits);
 #define EC_WLAN_ENTER_RESET	0x35
 #define EC_WLAN_LEAVE_RESET	0x25
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* SCI source values */
 
@@ -147,18 +169,24 @@ extern int olpc_ec_mask_unset(uint8_t bits);
 #define EC_SCI_SRC_BATSOC	0x04
 #define EC_SCI_SRC_BATERR	0x08
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EC_SCI_SRC_EBOOK	0x10	/* XO-1 only */
 #define EC_SCI_SRC_WLAN		0x20	/* XO-1 only */
 #define EC_SCI_SRC_ACPWR	0x40
 #define EC_SCI_SRC_BATCRIT	0x80
 #define EC_SCI_SRC_GPWAKE	0x100	/* XO-1.5 only */
 #define EC_SCI_SRC_ALL		0x1FF
+<<<<<<< HEAD
+=======
 =======
 #define EC_SCI_SRC_EBOOK	0x10
 #define EC_SCI_SRC_WLAN		0x20
 #define EC_SCI_SRC_ACPWR	0x40
 #define EC_SCI_SRC_ALL		0x7F
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* GPIO assignments */
 
@@ -176,8 +204,13 @@ extern int olpc_ec_mask_unset(uint8_t bits);
 #define OLPC_GPIO_LID		26
 #define OLPC_GPIO_ECSCI		27
 =======
+<<<<<<< HEAD
+#define OLPC_GPIO_LID		26
+#define OLPC_GPIO_ECSCI		27
+=======
 #define OLPC_GPIO_LID		geode_gpio(26)
 #define OLPC_GPIO_ECSCI		geode_gpio(27)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _ASM_X86_OLPC_H */

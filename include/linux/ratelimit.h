@@ -11,8 +11,12 @@ struct ratelimit_state {
 <<<<<<< HEAD
 	raw_spinlock_t	lock;		/* protect the state */
 =======
+<<<<<<< HEAD
+	raw_spinlock_t	lock;		/* protect the state */
+=======
 	spinlock_t	lock;		/* protect the state */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int		interval;
 	int		burst;
@@ -27,8 +31,12 @@ struct ratelimit_state {
 <<<<<<< HEAD
 		.lock		= __RAW_SPIN_LOCK_UNLOCKED(name.lock),	\
 =======
+<<<<<<< HEAD
+		.lock		= __RAW_SPIN_LOCK_UNLOCKED(name.lock),	\
+=======
 		.lock		= __SPIN_LOCK_UNLOCKED(name.lock),	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.interval	= interval_init,			\
 		.burst		= burst_init,				\
 	}
@@ -39,8 +47,12 @@ static inline void ratelimit_state_init(struct ratelimit_state *rs,
 <<<<<<< HEAD
 	raw_spin_lock_init(&rs->lock);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_init(&rs->lock);
+=======
 	spin_lock_init(&rs->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rs->interval = interval;
 	rs->burst = burst;
 	rs->printed = 0;

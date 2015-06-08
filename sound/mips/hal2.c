@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/sgi/hpc3.h>
 #include <asm/sgi/ip22.h>
@@ -941,6 +945,9 @@ static struct platform_driver hal2_driver = {
 <<<<<<< HEAD
 module_platform_driver(hal2_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(hal2_driver);
+=======
 static int __init alsa_card_hal2_init(void)
 {
 	return platform_driver_register(&hal2_driver);
@@ -954,3 +961,4 @@ static void __exit alsa_card_hal2_exit(void)
 module_init(alsa_card_hal2_init);
 module_exit(alsa_card_hal2_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

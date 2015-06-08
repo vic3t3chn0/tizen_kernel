@@ -74,6 +74,26 @@ static struct tracer_flags tracer_flags = {
 
 static struct trace_array *graph_array;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * DURATION column is being also used to display IRQ signs,
+ * following values are used by print_graph_irq and others
+ * to fill in space into DURATION column.
+ */
+enum {
+	DURATION_FILL_FULL  = -1,
+	DURATION_FILL_START = -2,
+	DURATION_FILL_END   = -3,
+};
+
+static enum print_line_t
+print_graph_duration(unsigned long long duration, struct trace_seq *s,
+		     u32 flags);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Add a function return address to the trace stack on thread info.*/
 int
@@ -213,7 +233,15 @@ int __trace_graph_entry(struct trace_array *tr,
 
 static inline int ftrace_graph_ignore_irqs(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!ftrace_graph_skip_irqs || trace_recursion_test(TRACE_IRQ_BIT))
+=======
 	if (!ftrace_graph_skip_irqs)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!ftrace_graph_skip_irqs)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	return in_irq();
@@ -577,6 +605,11 @@ get_return_for_leaf(struct trace_iterator *iter,
 	return next;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Signal a overhead of time execution to the output */
 static int
 print_graph_overhead(unsigned long long duration, struct trace_seq *s,
@@ -603,6 +636,10 @@ print_graph_overhead(unsigned long long duration, struct trace_seq *s,
 	return trace_seq_printf(s, "  ");
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int print_graph_abs_time(u64 t, struct trace_seq *s)
 {
 	unsigned long usecs_rem;
@@ -625,6 +662,41 @@ print_graph_irq(struct trace_iterator *iter, unsigned long addr,
 		addr >= (unsigned long)__irqentry_text_end)
 		return TRACE_TYPE_UNHANDLED;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (trace_flags & TRACE_ITER_CONTEXT_INFO) {
+		/* Absolute time */
+		if (flags & TRACE_GRAPH_PRINT_ABS_TIME) {
+			ret = print_graph_abs_time(iter->ts, s);
+			if (!ret)
+				return TRACE_TYPE_PARTIAL_LINE;
+		}
+
+		/* Cpu */
+		if (flags & TRACE_GRAPH_PRINT_CPU) {
+			ret = print_graph_cpu(s, cpu);
+			if (ret == TRACE_TYPE_PARTIAL_LINE)
+				return TRACE_TYPE_PARTIAL_LINE;
+		}
+
+		/* Proc */
+		if (flags & TRACE_GRAPH_PRINT_PROC) {
+			ret = print_graph_proc(s, pid);
+			if (ret == TRACE_TYPE_PARTIAL_LINE)
+				return TRACE_TYPE_PARTIAL_LINE;
+			ret = trace_seq_printf(s, " | ");
+			if (!ret)
+				return TRACE_TYPE_PARTIAL_LINE;
+		}
+	}
+
+	/* No overhead */
+	ret = print_graph_duration(DURATION_FILL_START, s, flags);
+	if (ret != TRACE_TYPE_HANDLED)
+		return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Absolute time */
 	if (flags & TRACE_GRAPH_PRINT_ABS_TIME) {
 		ret = print_graph_abs_time(iter->ts, s);
@@ -653,6 +725,10 @@ print_graph_irq(struct trace_iterator *iter, unsigned long addr,
 	ret = print_graph_overhead(-1, s, flags);
 	if (!ret)
 		return TRACE_TYPE_PARTIAL_LINE;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (type == TRACE_GRAPH_ENT)
 		ret = trace_seq_printf(s, "==========>");
@@ -662,9 +738,22 @@ print_graph_irq(struct trace_iterator *iter, unsigned long addr,
 	if (!ret)
 		return TRACE_TYPE_PARTIAL_LINE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = print_graph_duration(DURATION_FILL_END, s, flags);
+	if (ret != TRACE_TYPE_HANDLED)
+		return ret;
+
+=======
 	/* Don't close the duration column if haven't one */
 	if (flags & TRACE_GRAPH_PRINT_DURATION)
 		trace_seq_printf(s, " |");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Don't close the duration column if haven't one */
+	if (flags & TRACE_GRAPH_PRINT_DURATION)
+		trace_seq_printf(s, " |");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = trace_seq_printf(s, "\n");
 
 	if (!ret)
@@ -716,9 +805,61 @@ trace_print_graph_duration(unsigned long long duration, struct trace_seq *s)
 }
 
 static enum print_line_t
+<<<<<<< HEAD
+<<<<<<< HEAD
+print_graph_duration(unsigned long long duration, struct trace_seq *s,
+		     u32 flags)
+{
+	int ret = -1;
+
+	if (!(flags & TRACE_GRAPH_PRINT_DURATION) ||
+	    !(trace_flags & TRACE_ITER_CONTEXT_INFO))
+			return TRACE_TYPE_HANDLED;
+
+	/* No real adata, just filling the column with spaces */
+	switch (duration) {
+	case DURATION_FILL_FULL:
+		ret = trace_seq_printf(s, "              |  ");
+		return ret ? TRACE_TYPE_HANDLED : TRACE_TYPE_PARTIAL_LINE;
+	case DURATION_FILL_START:
+		ret = trace_seq_printf(s, "  ");
+		return ret ? TRACE_TYPE_HANDLED : TRACE_TYPE_PARTIAL_LINE;
+	case DURATION_FILL_END:
+		ret = trace_seq_printf(s, " |");
+		return ret ? TRACE_TYPE_HANDLED : TRACE_TYPE_PARTIAL_LINE;
+	}
+
+	/* Signal a overhead of time execution to the output */
+	if (flags & TRACE_GRAPH_PRINT_OVERHEAD) {
+		/* Duration exceeded 100 msecs */
+		if (duration > 100000ULL)
+			ret = trace_seq_printf(s, "! ");
+		/* Duration exceeded 10 msecs */
+		else if (duration > 10000ULL)
+			ret = trace_seq_printf(s, "+ ");
+	}
+
+	/*
+	 * The -1 means we either did not exceed the duration tresholds
+	 * or we dont want to print out the overhead. Either way we need
+	 * to fill out the space.
+	 */
+	if (ret == -1)
+		ret = trace_seq_printf(s, "  ");
+
+	/* Catching here any failure happenned above */
+	if (!ret)
+		return TRACE_TYPE_PARTIAL_LINE;
+=======
 print_graph_duration(unsigned long long duration, struct trace_seq *s)
 {
 	int ret;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+print_graph_duration(unsigned long long duration, struct trace_seq *s)
+{
+	int ret;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = trace_print_graph_duration(duration, s);
 	if (ret != TRACE_TYPE_HANDLED)
@@ -767,6 +908,16 @@ print_graph_entry_leaf(struct trace_iterator *iter,
 			cpu_data->enter_funcs[call->depth] = 0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Overhead and duration */
+	ret = print_graph_duration(duration, s, flags);
+	if (ret == TRACE_TYPE_PARTIAL_LINE)
+		return TRACE_TYPE_PARTIAL_LINE;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Overhead */
 	ret = print_graph_overhead(duration, s, flags);
 	if (!ret)
@@ -779,6 +930,10 @@ print_graph_entry_leaf(struct trace_iterator *iter,
 			return TRACE_TYPE_PARTIAL_LINE;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Function */
 	for (i = 0; i < call->depth * TRACE_GRAPH_INDENT; i++) {
 		ret = trace_seq_printf(s, " ");
@@ -815,6 +970,15 @@ print_graph_entry_nested(struct trace_iterator *iter,
 			cpu_data->enter_funcs[call->depth] = call->func;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* No time */
+	ret = print_graph_duration(DURATION_FILL_FULL, s, flags);
+	if (ret != TRACE_TYPE_HANDLED)
+		return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* No overhead */
 	ret = print_graph_overhead(-1, s, flags);
 	if (!ret)
@@ -826,6 +990,10 @@ print_graph_entry_nested(struct trace_iterator *iter,
 		if (!ret)
 			return TRACE_TYPE_PARTIAL_LINE;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Function */
 	for (i = 0; i < call->depth * TRACE_GRAPH_INDENT; i++) {
@@ -865,6 +1033,15 @@ print_graph_prologue(struct trace_iterator *iter, struct trace_seq *s,
 			return TRACE_TYPE_PARTIAL_LINE;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!(trace_flags & TRACE_ITER_CONTEXT_INFO))
+		return 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Absolute time */
 	if (flags & TRACE_GRAPH_PRINT_ABS_TIME) {
 		ret = print_graph_abs_time(iter->ts, s);
@@ -1078,6 +1255,16 @@ print_graph_return(struct ftrace_graph_ret *trace, struct trace_seq *s,
 	if (print_graph_prologue(iter, s, 0, 0, flags))
 		return TRACE_TYPE_PARTIAL_LINE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Overhead and duration */
+	ret = print_graph_duration(duration, s, flags);
+	if (ret == TRACE_TYPE_PARTIAL_LINE)
+		return TRACE_TYPE_PARTIAL_LINE;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Overhead */
 	ret = print_graph_overhead(duration, s, flags);
 	if (!ret)
@@ -1090,6 +1277,10 @@ print_graph_return(struct ftrace_graph_ret *trace, struct trace_seq *s,
 			return TRACE_TYPE_PARTIAL_LINE;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Closing brace */
 	for (i = 0; i < trace->depth * TRACE_GRAPH_INDENT; i++) {
 		ret = trace_seq_printf(s, " ");
@@ -1146,6 +1337,15 @@ print_graph_comment(struct trace_seq *s, struct trace_entry *ent,
 	if (print_graph_prologue(iter, s, 0, 0, flags))
 		return TRACE_TYPE_PARTIAL_LINE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* No time */
+	ret = print_graph_duration(DURATION_FILL_FULL, s, flags);
+	if (ret != TRACE_TYPE_HANDLED)
+		return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* No overhead */
 	ret = print_graph_overhead(-1, s, flags);
 	if (!ret)
@@ -1157,6 +1357,10 @@ print_graph_comment(struct trace_seq *s, struct trace_entry *ent,
 		if (!ret)
 			return TRACE_TYPE_PARTIAL_LINE;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Indentation */
 	if (depth > 0)
@@ -1207,7 +1411,15 @@ print_graph_comment(struct trace_seq *s, struct trace_entry *ent,
 
 
 enum print_line_t
+<<<<<<< HEAD
+<<<<<<< HEAD
+print_graph_function_flags(struct trace_iterator *iter, u32 flags)
+=======
 __print_graph_function_flags(struct trace_iterator *iter, u32 flags)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+__print_graph_function_flags(struct trace_iterator *iter, u32 flags)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ftrace_graph_ent_entry *field;
 	struct fgraph_data *data = iter->private;
@@ -1270,6 +1482,12 @@ __print_graph_function_flags(struct trace_iterator *iter, u32 flags)
 static enum print_line_t
 print_graph_function(struct trace_iterator *iter)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return print_graph_function_flags(iter, tracer_flags.val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return __print_graph_function_flags(iter, tracer_flags.val);
 }
 
@@ -1282,6 +1500,10 @@ enum print_line_t print_graph_function_flags(struct trace_iterator *iter,
 		flags |= TRACE_GRAPH_PRINT_ABS_TIME;
 
 	return __print_graph_function_flags(iter, flags);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static enum print_line_t
@@ -1309,8 +1531,17 @@ static void print_lat_header(struct seq_file *s, u32 flags)
 	seq_printf(s, "#%.*s / _----=> need-resched    \n", size, spaces);
 	seq_printf(s, "#%.*s| / _---=> hardirq/softirq \n", size, spaces);
 	seq_printf(s, "#%.*s|| / _--=> preempt-depth   \n", size, spaces);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	seq_printf(s, "#%.*s||| /                      \n", size, spaces);
+=======
 	seq_printf(s, "#%.*s||| / _-=> lock-depth      \n", size, spaces);
 	seq_printf(s, "#%.*s|||| /                     \n", size, spaces);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	seq_printf(s, "#%.*s||| / _-=> lock-depth      \n", size, spaces);
+	seq_printf(s, "#%.*s|||| /                     \n", size, spaces);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __print_graph_headers_flags(struct seq_file *s, u32 flags)
@@ -1329,7 +1560,15 @@ static void __print_graph_headers_flags(struct seq_file *s, u32 flags)
 	if (flags & TRACE_GRAPH_PRINT_PROC)
 		seq_printf(s, "  TASK/PID       ");
 	if (lat)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		seq_printf(s, "||||");
+=======
 		seq_printf(s, "|||||");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		seq_printf(s, "|||||");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (flags & TRACE_GRAPH_PRINT_DURATION)
 		seq_printf(s, "  DURATION   ");
 	seq_printf(s, "               FUNCTION CALLS\n");
@@ -1343,7 +1582,15 @@ static void __print_graph_headers_flags(struct seq_file *s, u32 flags)
 	if (flags & TRACE_GRAPH_PRINT_PROC)
 		seq_printf(s, "   |    |        ");
 	if (lat)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		seq_printf(s, "||||");
+=======
 		seq_printf(s, "|||||");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		seq_printf(s, "|||||");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (flags & TRACE_GRAPH_PRINT_DURATION)
 		seq_printf(s, "   |   |      ");
 	seq_printf(s, "               |   |   |   |\n");
@@ -1358,15 +1605,34 @@ void print_graph_headers_flags(struct seq_file *s, u32 flags)
 {
 	struct trace_iterator *iter = s->private;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!(trace_flags & TRACE_ITER_CONTEXT_INFO))
+		return;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (trace_flags & TRACE_ITER_LATENCY_FMT) {
 		/* print nothing if the buffers are empty */
 		if (trace_empty(iter))
 			return;
 
 		print_trace_header(s, iter);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	}
+=======
 		flags |= TRACE_GRAPH_PRINT_DURATION;
 	} else
 		flags |= TRACE_GRAPH_PRINT_ABS_TIME;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		flags |= TRACE_GRAPH_PRINT_DURATION;
+	} else
+		flags |= TRACE_GRAPH_PRINT_ABS_TIME;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__print_graph_headers_flags(s, flags);
 }

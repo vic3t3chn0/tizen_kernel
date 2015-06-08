@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/io.h>
 =======
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <plat/clock.h>
 #include <mach/misc_regs.h>
@@ -649,9 +653,14 @@ static struct clk_lookup spear_clk_lookups[] = {
 	{ .dev_id = "d0000000.serial",	.clk = &uart0_clk},
 	{ .dev_id = "d0080000.serial",	.clk = &uart1_clk},
 =======
+<<<<<<< HEAD
+	{ .dev_id = "d0000000.serial",	.clk = &uart0_clk},
+	{ .dev_id = "d0080000.serial",	.clk = &uart1_clk},
+=======
 	{ .dev_id = "uart0",		.clk = &uart0_clk},
 	{ .dev_id = "uart1",		.clk = &uart1_clk},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ .dev_id = "firda",		.clk = &firda_clk},
 	{ .dev_id = "clcd",		.clk = &clcd_clk},
 	{ .dev_id = "gpt0",		.clk = &gpt0_clk},
@@ -667,8 +676,12 @@ static struct clk_lookup spear_clk_lookups[] = {
 <<<<<<< HEAD
 	{ .dev_id = "d0200000.i2c",	.clk = &i2c_clk},
 =======
+<<<<<<< HEAD
+	{ .dev_id = "d0200000.i2c",	.clk = &i2c_clk},
+=======
 	{ .dev_id = "i2c_designware.0",	.clk = &i2c_clk},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ .dev_id = "dma",		.clk = &dma_clk},
 	{ .dev_id = "jpeg",		.clk = &jpeg_clk},
 	{ .dev_id = "gmac",		.clk = &gmac_clk},
@@ -676,8 +689,12 @@ static struct clk_lookup spear_clk_lookups[] = {
 <<<<<<< HEAD
 	{ .dev_id = "fsmc-nand",	.clk = &fsmc_clk},
 =======
+<<<<<<< HEAD
+	{ .dev_id = "fsmc-nand",	.clk = &fsmc_clk},
+=======
 	{ .con_id = "fsmc",		.clk = &fsmc_clk},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* clock derived from apb clk */
 	{ .dev_id = "adc",		.clk = &adc_clk},
 	{ .dev_id = "ssp-pl022.0",	.clk = &ssp0_clk},
@@ -688,10 +705,16 @@ static struct clk_lookup spear_clk_lookups[] = {
 	{ .dev_id = "fc980000.gpio",	.clk = &gpio1_clk},
 	{ .dev_id = "d8100000.gpio",	.clk = &gpio2_clk},
 =======
+<<<<<<< HEAD
+	{ .dev_id = "f0100000.gpio",	.clk = &gpio0_clk},
+	{ .dev_id = "fc980000.gpio",	.clk = &gpio1_clk},
+	{ .dev_id = "d8100000.gpio",	.clk = &gpio2_clk},
+=======
 	{ .dev_id = "gpio0",		.clk = &gpio0_clk},
 	{ .dev_id = "gpio1",		.clk = &gpio1_clk},
 	{ .dev_id = "gpio2",		.clk = &gpio2_clk},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init spear6xx_clk_init(void)

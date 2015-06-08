@@ -42,9 +42,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_SOC_AU1000) || defined(CONFIG_SOC_AU1500) || \
     defined(CONFIG_SOC_AU1100)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * A note on resource allocation:
  *
@@ -92,12 +95,17 @@ static const struct dma_dev {
 	{ AU1000_UART3_PHYS_ADDR + 0x04, DMA_DW8 | DMA_NC },	/* UART3_TX */
 	{ AU1000_UART3_PHYS_ADDR + 0x00, DMA_DW8 | DMA_NC | DMA_DR }, /* UART3_RX */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ AU1000_USB_UDC_PHYS_ADDR + 0x00, DMA_DW8 | DMA_NC | DMA_DR }, /* EP0RD */
 	{ AU1000_USB_UDC_PHYS_ADDR + 0x04, DMA_DW8 | DMA_NC }, /* EP0WR */
 	{ AU1000_USB_UDC_PHYS_ADDR + 0x08, DMA_DW8 | DMA_NC }, /* EP2WR */
 	{ AU1000_USB_UDC_PHYS_ADDR + 0x0c, DMA_DW8 | DMA_NC }, /* EP3WR */
 	{ AU1000_USB_UDC_PHYS_ADDR + 0x10, DMA_DW8 | DMA_NC | DMA_DR }, /* EP4RD */
 	{ AU1000_USB_UDC_PHYS_ADDR + 0x14, DMA_DW8 | DMA_NC | DMA_DR }, /* EP5RD */
+<<<<<<< HEAD
+=======
 =======
 	{ AU1000_USBD_PHYS_ADDR + 0x00, DMA_DW8 | DMA_NC | DMA_DR }, /* EP0RD */
 	{ AU1000_USBD_PHYS_ADDR + 0x04, DMA_DW8 | DMA_NC }, /* EP0WR */
@@ -106,6 +114,7 @@ static const struct dma_dev {
 	{ AU1000_USBD_PHYS_ADDR + 0x10, DMA_DW8 | DMA_NC | DMA_DR }, /* EP4RD */
 	{ AU1000_USBD_PHYS_ADDR + 0x14, DMA_DW8 | DMA_NC | DMA_DR }, /* EP5RD */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* on Au1500, these 2 are DMA_REQ2/3 (GPIO208/209) instead! */
 	{ AU1000_I2S_PHYS_ADDR + 0x00, DMA_DW32 | DMA_NC},	/* I2S TX */
 	{ AU1000_I2S_PHYS_ADDR + 0x00, DMA_DW32 | DMA_NC | DMA_DR}, /* I2S RX */
@@ -183,6 +192,9 @@ int request_au1000_dma(int dev_id, const char *dev_str,
 	int i, ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (alchemy_get_cputype() == ALCHEMY_CPU_AU1100) {
 		if (dev_id < 0 || dev_id >= (DMA_NUM_DEV + DMA_NUM_DEV_BANK2))
 			return -EINVAL;
@@ -190,6 +202,8 @@ int request_au1000_dma(int dev_id, const char *dev_str,
 		if (dev_id < 0 || dev_id >= DMA_NUM_DEV)
 			return -EINVAL;
 	}
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SOC_AU1100)
 	if (dev_id < 0 || dev_id >= (DMA_NUM_DEV + DMA_NUM_DEV_BANK2))
@@ -199,6 +213,7 @@ int request_au1000_dma(int dev_id, const char *dev_str,
 		return -EINVAL;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < NUM_AU1000_DMA_CHANNELS; i++)
 		if (au1000_dma_table[i].dev_id < 0)
@@ -262,6 +277,9 @@ EXPORT_SYMBOL(free_au1000_dma);
 static int __init au1000_dma_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int base, i;
 
 	switch (alchemy_get_cputype()) {
@@ -287,6 +305,8 @@ out:
 	return 0;
 }
 arch_initcall(au1000_dma_init);
+<<<<<<< HEAD
+=======
 =======
         int base, i;
 
@@ -316,3 +336,4 @@ arch_initcall(au1000_dma_init);
 
 #endif /* AU1000 AU1500 AU1100 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

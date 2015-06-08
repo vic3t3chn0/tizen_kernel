@@ -70,8 +70,12 @@ static inline void outl(u32 v, u16 port)
 <<<<<<< HEAD
 static inline u32 inl(u16 port)
 =======
+<<<<<<< HEAD
+static inline u32 inl(u16 port)
+=======
 static inline u32 inl(u32 port)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 v;
 	asm volatile("inl %1,%0" : "=a" (v) : "dN" (port));

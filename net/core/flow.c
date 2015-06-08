@@ -25,8 +25,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/security.h>
 
 struct flow_cache_entry {
@@ -37,7 +41,11 @@ struct flow_cache_entry {
 <<<<<<< HEAD
 	struct net			*net;
 =======
+<<<<<<< HEAD
+	struct net			*net;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16				family;
 	u8				dir;
 	u32				genid;
@@ -247,8 +255,13 @@ flow_cache_lookup(struct net *net, const struct flowi *key, u16 family, u8 dir,
 		if (tfle->net == net &&
 		    tfle->family == family &&
 =======
+<<<<<<< HEAD
+		if (tfle->net == net &&
+		    tfle->family == family &&
+=======
 		if (tfle->family == family &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    tfle->dir == dir &&
 		    flow_key_compare(key, &tfle->key, keysize) == 0) {
 			fle = tfle;
@@ -265,7 +278,11 @@ flow_cache_lookup(struct net *net, const struct flowi *key, u16 family, u8 dir,
 <<<<<<< HEAD
 			fle->net = net;
 =======
+<<<<<<< HEAD
+			fle->net = net;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fle->family = family;
 			fle->dir = dir;
 			memcpy(&fle->key, key, keysize * sizeof(flow_compare_t));
@@ -373,6 +390,9 @@ void flow_cache_flush(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void flow_cache_flush_task(struct work_struct *work)
 {
 	flow_cache_flush();
@@ -385,8 +405,11 @@ void flow_cache_flush_deferred(void)
 	schedule_work(&flow_cache_flush_work);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __cpuinit flow_cache_cpu_prepare(struct flow_cache *fc, int cpu)
 {
 	struct flow_cache_percpu *fcp = per_cpu_ptr(fc->percpu, cpu);
@@ -441,15 +464,21 @@ static int __init flow_cache_init(struct flow_cache *fc)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	get_online_cpus();
 	for_each_online_cpu(i) {
 		if (flow_cache_cpu_prepare(fc, i))
 			goto err;
+<<<<<<< HEAD
+=======
 =======
 	for_each_online_cpu(i) {
 		if (flow_cache_cpu_prepare(fc, i))
 			return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	fc->hotcpu_notifier = (struct notifier_block){
 		.notifier_call = flow_cache_cpu,
@@ -458,7 +487,11 @@ static int __init flow_cache_init(struct flow_cache *fc)
 <<<<<<< HEAD
 	put_online_cpus();
 =======
+<<<<<<< HEAD
+	put_online_cpus();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setup_timer(&fc->rnd_timer, flow_cache_new_hashrnd,
 		    (unsigned long) fc);
@@ -467,6 +500,9 @@ static int __init flow_cache_init(struct flow_cache *fc)
 
 	return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 err:
 	put_online_cpus();
@@ -480,8 +516,11 @@ err:
 	fc->percpu = NULL;
 
 	return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init flow_cache_init_global(void)

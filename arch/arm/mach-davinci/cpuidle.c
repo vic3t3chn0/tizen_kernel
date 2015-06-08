@@ -17,18 +17,24 @@
 #include <linux/cpuidle.h>
 #include <linux/io.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <asm/proc-fns.h>
 #include <asm/cpuidle.h>
 
 #include <mach/cpuidle.h>
 #include <mach/ddr2.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/proc-fns.h>
 
 #include <mach/cpuidle.h>
 #include <mach/memory.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DAVINCI_CPUIDLE_MAX_STATES	2
 
@@ -39,6 +45,9 @@ struct davinci_ops {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Actual code that puts the SoC in different idle states */
 static int davinci_enter_idle(struct cpuidle_device *dev,
 				struct cpuidle_driver *drv,
@@ -59,13 +68,19 @@ static int davinci_enter_idle(struct cpuidle_device *dev,
 	return index;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* fields in davinci_ops.flags */
 #define DAVINCI_CPUIDLE_FLAGS_DDR2_PWDN	BIT(0)
 
 static struct cpuidle_driver davinci_idle_driver = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name			= "cpuidle-davinci",
 	.owner			= THIS_MODULE,
 	.en_core_tk_irqen	= 1,
@@ -79,10 +94,13 @@ static struct cpuidle_driver davinci_idle_driver = {
 		.desc			= "WFI and DDR Self Refresh",
 	},
 	.state_count = DAVINCI_CPUIDLE_MAX_STATES,
+<<<<<<< HEAD
+=======
 =======
 	.name	= "cpuidle-davinci",
 	.owner	= THIS_MODULE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static DEFINE_PER_CPU(struct cpuidle_device, davinci_cpuidle_device);
@@ -126,6 +144,8 @@ static struct davinci_ops davinci_states[DAVINCI_CPUIDLE_MAX_STATES] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Actual code that puts the SoC in different idle states */
 static int davinci_enter_idle(struct cpuidle_device *dev,
 						struct cpuidle_state *state)
@@ -152,6 +172,7 @@ static int davinci_enter_idle(struct cpuidle_device *dev,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init davinci_cpuidle_probe(struct platform_device *pdev)
 {
 	int ret;
@@ -168,20 +189,28 @@ static int __init davinci_cpuidle_probe(struct platform_device *pdev)
 	ddr2_reg_base = pdata->ddr2_ctlr_base;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pdata->ddr2_pdown)
 		davinci_states[1].flags |= DAVINCI_CPUIDLE_FLAGS_DDR2_PWDN;
 	cpuidle_set_statedata(&device->states_usage[1], &davinci_states[1]);
 
 	device->state_count = DAVINCI_CPUIDLE_MAX_STATES;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = cpuidle_register_driver(&davinci_idle_driver);
 	if (ret) {
 		dev_err(&pdev->dev, "failed to register driver\n");
 		return ret;
 	}
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Wait for interrupt state */
@@ -206,6 +235,7 @@ static int __init davinci_cpuidle_probe(struct platform_device *pdev)
 	device->state_count = DAVINCI_CPUIDLE_MAX_STATES;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = cpuidle_register_device(device);
 	if (ret) {
 		dev_err(&pdev->dev, "failed to register device\n");

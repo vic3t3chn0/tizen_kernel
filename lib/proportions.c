@@ -193,8 +193,12 @@ int prop_local_init_percpu(struct prop_local_percpu *pl)
 <<<<<<< HEAD
 	raw_spin_lock_init(&pl->lock);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_init(&pl->lock);
+=======
 	spin_lock_init(&pl->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pl->shift = 0;
 	pl->period = 0;
 	return percpu_counter_init(&pl->events, 0);
@@ -233,8 +237,12 @@ void prop_norm_percpu(struct prop_global *pg, struct prop_local_percpu *pl)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&pl->lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&pl->lock, flags);
+=======
 	spin_lock_irqsave(&pl->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prop_adjust_shift(&pl->shift, &pl->period, pg->shift);
 
 	/*
@@ -258,8 +266,12 @@ void prop_norm_percpu(struct prop_global *pg, struct prop_local_percpu *pl)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&pl->lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&pl->lock, flags);
+=======
 	spin_unlock_irqrestore(&pl->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -339,8 +351,12 @@ int prop_local_init_single(struct prop_local_single *pl)
 <<<<<<< HEAD
 	raw_spin_lock_init(&pl->lock);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_init(&pl->lock);
+=======
 	spin_lock_init(&pl->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pl->shift = 0;
 	pl->period = 0;
 	pl->events = 0;
@@ -375,8 +391,12 @@ void prop_norm_single(struct prop_global *pg, struct prop_local_single *pl)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&pl->lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&pl->lock, flags);
+=======
 	spin_lock_irqsave(&pl->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prop_adjust_shift(&pl->shift, &pl->period, pg->shift);
 	/*
 	 * For each missed period, we half the local counter.
@@ -390,8 +410,12 @@ void prop_norm_single(struct prop_global *pg, struct prop_local_single *pl)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&pl->lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&pl->lock, flags);
+=======
 	spin_unlock_irqrestore(&pl->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

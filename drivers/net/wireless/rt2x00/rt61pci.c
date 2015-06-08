@@ -41,7 +41,15 @@
 /*
  * Allow hardware encryption to be disabled.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool modparam_nohwcrypt = false;
+=======
 static int modparam_nohwcrypt = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int modparam_nohwcrypt = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_named(nohwcrypt, modparam_nohwcrypt, bool, S_IRUGO);
 MODULE_PARM_DESC(nohwcrypt, "Disable hardware encryption.");
 
@@ -1142,11 +1150,20 @@ static void rt61pci_start_queue(struct data_queue *queue)
 		rt2x00pci_register_write(rt2x00dev, TXRX_CSR0, reg);
 		break;
 	case QID_BEACON:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Allow the tbtt tasklet to be scheduled.
 		 */
 		tasklet_enable(&rt2x00dev->tbtt_tasklet);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rt2x00pci_register_read(rt2x00dev, TXRX_CSR9, &reg);
 		rt2x00_set_field32(&reg, TXRX_CSR9_TSF_TICKING, 1);
 		rt2x00_set_field32(&reg, TXRX_CSR9_TBTT_ENABLE, 1);
@@ -1230,7 +1247,15 @@ static void rt61pci_stop_queue(struct data_queue *queue)
 		/*
 		 * Wait for possibly running tbtt tasklets.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tasklet_kill(&rt2x00dev->tbtt_tasklet);
+=======
 		tasklet_disable(&rt2x00dev->tbtt_tasklet);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		tasklet_disable(&rt2x00dev->tbtt_tasklet);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		break;
@@ -1731,6 +1756,11 @@ static void rt61pci_toggle_irq(struct rt2x00_dev *rt2x00dev,
 
 		rt2x00pci_register_read(rt2x00dev, MCU_INT_SOURCE_CSR, &reg);
 		rt2x00pci_register_write(rt2x00dev, MCU_INT_SOURCE_CSR, reg);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Enable tasklets.
@@ -1738,6 +1768,10 @@ static void rt61pci_toggle_irq(struct rt2x00_dev *rt2x00dev,
 		tasklet_enable(&rt2x00dev->txstatus_tasklet);
 		tasklet_enable(&rt2x00dev->rxdone_tasklet);
 		tasklet_enable(&rt2x00dev->autowake_tasklet);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1772,9 +1806,22 @@ static void rt61pci_toggle_irq(struct rt2x00_dev *rt2x00dev,
 		/*
 		 * Ensure that all tasklets are finished.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tasklet_kill(&rt2x00dev->txstatus_tasklet);
+		tasklet_kill(&rt2x00dev->rxdone_tasklet);
+		tasklet_kill(&rt2x00dev->autowake_tasklet);
+		tasklet_kill(&rt2x00dev->tbtt_tasklet);
+=======
 		tasklet_disable(&rt2x00dev->txstatus_tasklet);
 		tasklet_disable(&rt2x00dev->rxdone_tasklet);
 		tasklet_disable(&rt2x00dev->autowake_tasklet);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		tasklet_disable(&rt2x00dev->txstatus_tasklet);
+		tasklet_disable(&rt2x00dev->rxdone_tasklet);
+		tasklet_disable(&rt2x00dev->autowake_tasklet);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -2254,7 +2301,16 @@ static void rt61pci_txdone(struct rt2x00_dev *rt2x00dev)
 
 static void rt61pci_wakeup(struct rt2x00_dev *rt2x00dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ieee80211_conf conf = { .flags = 0 };
+	struct rt2x00lib_conf libconf = { .conf = &conf };
+=======
 	struct rt2x00lib_conf libconf = { .conf = &rt2x00dev->hw->conf };
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct rt2x00lib_conf libconf = { .conf = &rt2x00dev->hw->conf };
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rt61pci_config(rt2x00dev, &libconf, IEEE80211_CONF_CHANGE_PS);
 }
@@ -2299,22 +2355,50 @@ static void rt61pci_txstatus_tasklet(unsigned long data)
 {
 	struct rt2x00_dev *rt2x00dev = (struct rt2x00_dev *)data;
 	rt61pci_txdone(rt2x00dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
+		rt61pci_enable_interrupt(rt2x00dev, INT_MASK_CSR_TXDONE);
+=======
 	rt61pci_enable_interrupt(rt2x00dev, INT_MASK_CSR_TXDONE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rt61pci_enable_interrupt(rt2x00dev, INT_MASK_CSR_TXDONE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void rt61pci_tbtt_tasklet(unsigned long data)
 {
 	struct rt2x00_dev *rt2x00dev = (struct rt2x00_dev *)data;
 	rt2x00lib_beacondone(rt2x00dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
+		rt61pci_enable_interrupt(rt2x00dev, INT_MASK_CSR_BEACON_DONE);
+=======
 	rt61pci_enable_interrupt(rt2x00dev, INT_MASK_CSR_BEACON_DONE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rt61pci_enable_interrupt(rt2x00dev, INT_MASK_CSR_BEACON_DONE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void rt61pci_rxdone_tasklet(unsigned long data)
 {
 	struct rt2x00_dev *rt2x00dev = (struct rt2x00_dev *)data;
 	if (rt2x00pci_rxdone(rt2x00dev))
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tasklet_schedule(&rt2x00dev->rxdone_tasklet);
+	else if (test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
+=======
 		rt2x00pci_rxdone(rt2x00dev);
 	else
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rt2x00pci_rxdone(rt2x00dev);
+	else
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rt61pci_enable_interrupt(rt2x00dev, INT_MASK_CSR_RXDONE);
 }
 
@@ -2324,7 +2408,16 @@ static void rt61pci_autowake_tasklet(unsigned long data)
 	rt61pci_wakeup(rt2x00dev);
 	rt2x00pci_register_write(rt2x00dev,
 				 M2H_CMD_DONE_CSR, 0xffffffff);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
+		rt61pci_enable_mcu_interrupt(rt2x00dev, MCU_INT_MASK_CSR_TWAKEUP);
+=======
 	rt61pci_enable_mcu_interrupt(rt2x00dev, MCU_INT_MASK_CSR_TWAKEUP);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rt61pci_enable_mcu_interrupt(rt2x00dev, MCU_INT_MASK_CSR_TWAKEUP);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static irqreturn_t rt61pci_interrupt(int irq, void *dev_instance)
@@ -2830,8 +2923,17 @@ static int rt61pci_probe_hw_mode(struct rt2x00_dev *rt2x00dev)
 		tx_power = rt2x00_eeprom_addr(rt2x00dev, EEPROM_TXPOWER_A_START);
 		for (i = 14; i < spec->num_channels; i++) {
 			info[i].max_power = MAX_TXPOWER;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			info[i].default_power1 = TXPOWER_FROM_DEV(tx_power[i]);
+=======
 			info[i].default_power1 =
 					TXPOWER_FROM_DEV(tx_power[i - 14]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			info[i].default_power1 =
+					TXPOWER_FROM_DEV(tx_power[i - 14]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -2841,7 +2943,14 @@ static int rt61pci_probe_hw_mode(struct rt2x00_dev *rt2x00dev)
 static int rt61pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 {
 	int retval;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u32 reg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 reg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Disable power saving.
@@ -2860,6 +2969,11 @@ static int rt61pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 		return retval;
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Enable rfkill polling by setting GPIO direction of the
 	 * rfkill switch GPIO pin correctly.
 	 */
@@ -2868,6 +2982,10 @@ static int rt61pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 	rt2x00pci_register_write(rt2x00dev, MAC_CSR13, reg);
 
 	/*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Initialize hw specifications.
 	 */
 	retval = rt61pci_probe_hw_mode(rt2x00dev);
@@ -2900,7 +3018,16 @@ static int rt61pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 /*
  * IEEE80211 stack callback functions.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int rt61pci_conf_tx(struct ieee80211_hw *hw,
+			   struct ieee80211_vif *vif, u16 queue_idx,
+=======
 static int rt61pci_conf_tx(struct ieee80211_hw *hw, u16 queue_idx,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int rt61pci_conf_tx(struct ieee80211_hw *hw, u16 queue_idx,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   const struct ieee80211_tx_queue_params *params)
 {
 	struct rt2x00_dev *rt2x00dev = hw->priv;
@@ -2916,7 +3043,15 @@ static int rt61pci_conf_tx(struct ieee80211_hw *hw, u16 queue_idx,
 	 * we are free to update the registers based on the value
 	 * in the queue parameter.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	retval = rt2x00mac_conf_tx(hw, vif, queue_idx, params);
+=======
 	retval = rt2x00mac_conf_tx(hw, queue_idx, params);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	retval = rt2x00mac_conf_tx(hw, queue_idx, params);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval)
 		return retval;
 
@@ -2957,7 +3092,15 @@ static int rt61pci_conf_tx(struct ieee80211_hw *hw, u16 queue_idx,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u64 rt61pci_get_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+=======
 static u64 rt61pci_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u64 rt61pci_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rt2x00_dev *rt2x00dev = hw->priv;
 	u64 tsf;
@@ -2991,6 +3134,13 @@ static const struct ieee80211_ops rt61pci_mac80211_ops = {
 	.set_antenna		= rt2x00mac_set_antenna,
 	.get_antenna		= rt2x00mac_get_antenna,
 	.get_ringparam		= rt2x00mac_get_ringparam,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.tx_frames_pending	= rt2x00mac_tx_frames_pending,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct rt2x00lib_ops rt61pci_rt2x00_ops = {

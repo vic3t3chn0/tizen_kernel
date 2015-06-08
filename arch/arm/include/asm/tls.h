@@ -3,6 +3,9 @@
 
 #ifdef __ASSEMBLY__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/asm-offsets.h>
 	.macro switch_tls_none, base, tp, tpuser, tmp1, tmp2
 	.endm
@@ -15,6 +18,8 @@
 	.endm
 
 	.macro switch_tls_v6, base, tp, tpuser, tmp1, tmp2
+<<<<<<< HEAD
+=======
 =======
 	.macro set_tls_none, tp, tmp1, tmp2
 	.endm
@@ -27,11 +32,15 @@
 
 	.macro set_tls_v6, tp, tmp1, tmp2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	\tmp1, =elf_hwcap
 	ldr	\tmp1, [\tmp1, #0]
 	mov	\tmp2, #0xffff0fff
 	tst	\tmp1, #HWCAP_TLS		@ hardware TLS available?
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	streq	\tp, [\tmp2, #-15]		@ set TLS value at 0xffff0ff0
 	mrcne	p15, 0, \tmp2, c13, c0, 2	@ get the user r/w register
 	mcrne	p15, 0, \tp, c13, c0, 3		@ yes, set TLS register
@@ -40,6 +49,8 @@
 	.endm
 
 	.macro switch_tls_software, base, tp, tpuser, tmp1, tmp2
+<<<<<<< HEAD
+=======
 =======
 	mcrne	p15, 0, \tp, c13, c0, 3		@ yes, set TLS register
 	movne	\tmp1, #0
@@ -49,6 +60,7 @@
 
 	.macro set_tls_software, tp, tmp1, tmp2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	\tmp1, #0xffff0fff
 	str	\tp, [\tmp1, #-15]		@ set TLS value at 0xffff0ff0
 	.endm
@@ -58,6 +70,9 @@
 #define tls_emu		1
 #define has_tls_reg		1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define switch_tls	switch_tls_none
 #elif defined(CONFIG_CPU_V6)
 #define tls_emu		0
@@ -84,6 +99,8 @@ static inline unsigned long get_tpuser(void)
 	return reg;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define set_tls		set_tls_none
 #elif defined(CONFIG_CPU_V6)
@@ -101,4 +118,5 @@ static inline unsigned long get_tpuser(void)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __ASMARM_TLS_H */

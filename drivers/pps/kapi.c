@@ -52,6 +52,20 @@ static void pps_add_offset(struct pps_ktime *ts, struct pps_ktime *offset)
 	ts->sec += offset->sec;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void pps_echo_client_default(struct pps_device *pps, int event,
+		void *data)
+{
+	dev_info(pps->dev, "echo %s %s\n",
+		event & PPS_CAPTUREASSERT ? "assert" : "",
+		event & PPS_CAPTURECLEAR ? "clear" : "");
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Exported functions
  */
@@ -80,6 +94,11 @@ struct pps_device *pps_register_source(struct pps_source_info *info,
 		err = -EINVAL;
 		goto pps_register_source_exit;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((info->mode & (PPS_ECHOASSERT | PPS_ECHOCLEAR)) != 0 &&
 			info->echo == NULL) {
 		pr_err("%s: echo function is not defined\n",
@@ -87,6 +106,10 @@ struct pps_device *pps_register_source(struct pps_source_info *info,
 		err = -EINVAL;
 		goto pps_register_source_exit;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((info->mode & (PPS_TSFMT_TSPEC | PPS_TSFMT_NTPFP)) == 0) {
 		pr_err("%s: unspecified time format\n",
 					info->name);
@@ -108,6 +131,17 @@ struct pps_device *pps_register_source(struct pps_source_info *info,
 	pps->params.mode = default_params;
 	pps->info = *info;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* check for default echo function */
+	if ((pps->info.mode & (PPS_ECHOASSERT | PPS_ECHOCLEAR)) &&
+			pps->info.echo == NULL)
+		pps->info.echo = pps_echo_client_default;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_waitqueue_head(&pps->queue);
 	spin_lock_init(&pps->lock);
 

@@ -57,9 +57,12 @@ ENTRY(atomic64_xchg_cx8)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	movl %ebx, %eax
 	movl %ecx, %edx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:
 	LOCK_PREFIX
 	cmpxchg8b (%esi)
@@ -84,8 +87,12 @@ ENTRY(atomic64_\func\()_return_cx8)
 <<<<<<< HEAD
 	read64 %ecx
 =======
+<<<<<<< HEAD
+	read64 %ecx
+=======
 	read64 %ebp
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:
 	movl %eax, %ebx
 	movl %edx, %ecx
@@ -167,12 +174,17 @@ ENTRY(atomic64_add_unless_cx8)
 /* these just push these two parameters on the stack */
 	SAVE edi
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SAVE ecx
 
 	movl %eax, %ebp
 	movl %edx, %edi
 
 	read64 %esi
+<<<<<<< HEAD
+=======
 =======
 	SAVE esi
 
@@ -182,6 +194,7 @@ ENTRY(atomic64_add_unless_cx8)
 
 	read64 %ebp
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:
 	cmpl %eax, 0(%esp)
 	je 4f
@@ -189,16 +202,22 @@ ENTRY(atomic64_add_unless_cx8)
 	movl %eax, %ebx
 	movl %edx, %ecx
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addl %ebp, %ebx
 	adcl %edi, %ecx
 	LOCK_PREFIX
 	cmpxchg8b (%esi)
+<<<<<<< HEAD
+=======
 =======
 	addl %esi, %ebx
 	adcl %edi, %ecx
 	LOCK_PREFIX
 	cmpxchg8b (%ebp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jne 1b
 
 	movl $1, %eax
@@ -223,6 +242,9 @@ ENTRY(atomic64_inc_not_zero_cx8)
 	read64 %esi
 1:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movl %eax, %ecx
 	orl %edx, %ecx
 	jz 3f
@@ -230,6 +252,8 @@ ENTRY(atomic64_inc_not_zero_cx8)
 	xorl %ecx, %ecx
 	addl $1, %ebx
 	adcl %edx, %ecx
+<<<<<<< HEAD
+=======
 =======
 	testl %eax, %eax
 	je 4f
@@ -239,6 +263,7 @@ ENTRY(atomic64_inc_not_zero_cx8)
 	addl $1, %ebx
 	adcl $0, %ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LOCK_PREFIX
 	cmpxchg8b (%esi)
 	jne 1b
@@ -249,10 +274,13 @@ ENTRY(atomic64_inc_not_zero_cx8)
 	ret
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 4:
 	testl %edx, %edx
 	jne 2b
 	jmp 3b
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CFI_ENDPROC
 ENDPROC(atomic64_inc_not_zero_cx8)

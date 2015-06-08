@@ -18,6 +18,11 @@
 #include "os.h"
 #include "skas_ptrace.h"
 =======
+<<<<<<< HEAD
+#include "longjmp.h"
+#include "os.h"
+#include "skas_ptrace.h"
+=======
 #include "kern_constants.h"
 #include "longjmp.h"
 #include "os.h"
@@ -25,6 +30,7 @@
 #include "skas_ptrace.h"
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ARBITRARY_ADDR -1
 #define FAILURE_PID    -1
@@ -244,6 +250,9 @@ out:
 void init_new_thread_signals(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_handler(SIGSEGV);
 	set_handler(SIGTRAP);
 	set_handler(SIGFPE);
@@ -251,6 +260,8 @@ void init_new_thread_signals(void)
 	set_handler(SIGBUS);
 	signal(SIGHUP, SIG_IGN);
 	set_handler(SIGIO);
+<<<<<<< HEAD
+=======
 =======
 	set_handler(SIGSEGV, (__sighandler_t) sig_handler, SA_ONSTACK,
 		    SIGUSR1, SIGIO, SIGWINCH, SIGVTALRM, -1);
@@ -268,6 +279,7 @@ void init_new_thread_signals(void)
 		    SA_ONSTACK | SA_RESTART, SIGUSR1, SIGIO, SIGWINCH, SIGALRM,
 		    SIGVTALRM, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	signal(SIGWINCH, SIG_IGN);
 	signal(SIGTERM, SIG_DFL);
 }

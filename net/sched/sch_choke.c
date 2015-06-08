@@ -22,11 +22,15 @@
 <<<<<<< HEAD
 #include <net/flow_keys.h>
 =======
+<<<<<<< HEAD
+#include <net/flow_keys.h>
+=======
 #include <linux/ip.h>
 #include <net/ip.h>
 #include <linux/ipv6.h>
 #include <net/ipv6.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
    CHOKe stateless AQM for fair bandwidth allocation
@@ -67,7 +71,11 @@ struct choke_sched_data {
 <<<<<<< HEAD
 	struct red_vars  vars;
 =======
+<<<<<<< HEAD
+	struct red_vars  vars;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tcf_proto *filter_list;
 	struct {
 		u32	prob_drop;	/* Early probability drops */
@@ -151,10 +159,15 @@ static void choke_drop_by_idx(struct Qdisc *sch, unsigned int idx)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct choke_skb_cb {
 	u16			classid;
 	u8			keys_valid;
 	struct flow_keys	keys;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Compare flow of two packets
@@ -236,6 +249,7 @@ static bool choke_match_flow(struct sk_buff *skb1,
 struct choke_skb_cb {
 	u16 classid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct choke_skb_cb *choke_skb_cb(const struct sk_buff *skb)
@@ -256,6 +270,9 @@ static u16 choke_get_classid(const struct sk_buff *skb)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Compare flow of two packets
  *  Returns true only if source and destination address and port match.
  *          false for special cases
@@ -282,8 +299,11 @@ static bool choke_match_flow(struct sk_buff *skb1,
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Classify flow using either:
  *  1. pre-existing classification result in skb
  *  2. fast internal classification
@@ -363,8 +383,12 @@ static int choke_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 <<<<<<< HEAD
 	const struct red_parms *p = &q->parms;
 =======
+<<<<<<< HEAD
+	const struct red_parms *p = &q->parms;
+=======
 	struct red_parms *p = &q->parms;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = NET_XMIT_SUCCESS | __NET_XMIT_BYPASS;
 
 	if (q->filter_list) {
@@ -374,6 +398,9 @@ static int choke_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	choke_skb_cb(skb)->keys_valid = 0;
 	/* Compute average queue usage (see RED) */
 	q->vars.qavg = red_calc_qavg(p, &q->vars, sch->q.qlen);
@@ -383,6 +410,8 @@ static int choke_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 	/* Is queue small? */
 	if (q->vars.qavg <= p->qth_min)
 		q->vars.qcount = -1;
+<<<<<<< HEAD
+=======
 =======
 	/* Compute average queue usage (see RED) */
 	p->qavg = red_calc_qavg(p, sch->q.qlen);
@@ -393,6 +422,7 @@ static int choke_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 	if (p->qavg <= p->qth_min)
 		p->qcount = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else {
 		unsigned int idx;
 
@@ -408,9 +438,14 @@ static int choke_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 		if (q->vars.qavg > p->qth_max) {
 			q->vars.qcount = -1;
 =======
+<<<<<<< HEAD
+		if (q->vars.qavg > p->qth_max) {
+			q->vars.qcount = -1;
+=======
 		if (p->qavg > p->qth_max) {
 			p->qcount = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			sch->qstats.overlimits++;
 			if (use_harddrop(q) || !use_ecn(q) ||
@@ -421,16 +456,22 @@ static int choke_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 
 			q->stats.forced_mark++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (++q->vars.qcount) {
 			if (red_mark_probability(p, &q->vars, q->vars.qavg)) {
 				q->vars.qcount = 0;
 				q->vars.qR = red_random(p);
+<<<<<<< HEAD
+=======
 =======
 		} else if (++p->qcount) {
 			if (red_mark_probability(p, p->qavg)) {
 				p->qcount = 0;
 				p->qR = red_random(p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				sch->qstats.overlimits++;
 				if (!use_ecn(q) || !INET_ECN_set_ce(skb)) {
@@ -444,8 +485,12 @@ static int choke_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 <<<<<<< HEAD
 			q->vars.qR = red_random(p);
 =======
+<<<<<<< HEAD
+			q->vars.qR = red_random(p);
+=======
 			p->qR = red_random(p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Admit new packet */
@@ -483,9 +528,14 @@ static struct sk_buff *choke_dequeue(struct Qdisc *sch)
 		if (!red_is_idling(&q->vars))
 			red_start_of_idle_period(&q->vars);
 =======
+<<<<<<< HEAD
+		if (!red_is_idling(&q->vars))
+			red_start_of_idle_period(&q->vars);
+=======
 		if (!red_is_idling(&q->parms))
 			red_start_of_idle_period(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 
@@ -512,9 +562,14 @@ static unsigned int choke_drop(struct Qdisc *sch)
 		if (!red_is_idling(&q->vars))
 			red_start_of_idle_period(&q->vars);
 =======
+<<<<<<< HEAD
+		if (!red_is_idling(&q->vars))
+			red_start_of_idle_period(&q->vars);
+=======
 		if (!red_is_idling(&q->parms))
 			red_start_of_idle_period(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return len;
@@ -527,8 +582,12 @@ static void choke_reset(struct Qdisc *sch)
 <<<<<<< HEAD
 	red_restart(&q->vars);
 =======
+<<<<<<< HEAD
+	red_restart(&q->vars);
+=======
 	red_restart(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const struct nla_policy choke_policy[TCA_CHOKE_MAX + 1] = {
@@ -537,7 +596,11 @@ static const struct nla_policy choke_policy[TCA_CHOKE_MAX + 1] = {
 <<<<<<< HEAD
 	[TCA_CHOKE_MAX_P]	= { .type = NLA_U32 },
 =======
+<<<<<<< HEAD
+	[TCA_CHOKE_MAX_P]	= { .type = NLA_U32 },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -562,7 +625,11 @@ static int choke_change(struct Qdisc *sch, struct nlattr *opt)
 <<<<<<< HEAD
 	u32 max_P;
 =======
+<<<<<<< HEAD
+	u32 max_P;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (opt == NULL)
 		return -EINVAL;
@@ -579,7 +646,12 @@ static int choke_change(struct Qdisc *sch, struct nlattr *opt)
 	max_P = tb[TCA_CHOKE_MAX_P] ? nla_get_u32(tb[TCA_CHOKE_MAX_P]) : 0;
 
 =======
+<<<<<<< HEAD
+	max_P = tb[TCA_CHOKE_MAX_P] ? nla_get_u32(tb[TCA_CHOKE_MAX_P]) : 0;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctl = nla_data(tb[TCA_CHOKE_PARMS]);
 
 	if (ctl->limit > CHOKE_MAX_QUEUE)
@@ -630,18 +702,24 @@ static int choke_change(struct Qdisc *sch, struct nlattr *opt)
 	red_set_parms(&q->parms, ctl->qth_min, ctl->qth_max, ctl->Wlog,
 		      ctl->Plog, ctl->Scell_log,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      nla_data(tb[TCA_CHOKE_STAB]),
 		      max_P);
 	red_set_vars(&q->vars);
 
 	if (q->head == q->tail)
 		red_end_of_idle_period(&q->vars);
+<<<<<<< HEAD
+=======
 =======
 		      nla_data(tb[TCA_CHOKE_STAB]));
 
 	if (q->head == q->tail)
 		red_end_of_idle_period(&q->parms);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sch_tree_unlock(sch);
 	choke_free(old);
@@ -675,7 +753,11 @@ static int choke_dump(struct Qdisc *sch, struct sk_buff *skb)
 <<<<<<< HEAD
 	NLA_PUT_U32(skb, TCA_CHOKE_MAX_P, q->parms.max_P);
 =======
+<<<<<<< HEAD
+	NLA_PUT_U32(skb, TCA_CHOKE_MAX_P, q->parms.max_P);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return nla_nest_end(skb, opts);
 
 nla_put_failure:

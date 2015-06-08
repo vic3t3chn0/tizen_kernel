@@ -555,8 +555,12 @@
 <<<<<<< HEAD
 	.macro		do_alias	spc,tmp,tmp1,va,pte,prot,fault
 =======
+<<<<<<< HEAD
+	.macro		do_alias	spc,tmp,tmp1,va,pte,prot,fault
+=======
 	.macro		do_alias	spc,tmp,tmp1,va,pte,prot,fault,patype
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cmpib,COND(<>),n 0,\spc,\fault
 	ldil		L%(TMPALIAS_MAP_START),\tmp
 #if defined(CONFIG_64BIT) && (TMPALIAS_MAP_START >= 0x80000000)
@@ -586,11 +590,16 @@
 	cmpiclr,=	0x01,\tmp,%r0
 	ldi		(_PAGE_DIRTY|_PAGE_READ|_PAGE_WRITE),\prot
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_64BIT
 	depd,z		\prot,8,7,\prot
 #else
 	depw,z		\prot,8,7,\prot
 #endif
+<<<<<<< HEAD
+=======
 =======
 .ifc \patype,20
 	depd,z		\prot,8,7,\prot
@@ -602,6 +611,7 @@
 .endif
 .endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * OK, it is in the temp alias region, check whether "from" or "to".
 	 * Check "subtle" note in pacache.S re: r23/r26.
@@ -1208,8 +1218,12 @@ dtlb_check_alias_20w:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault
+=======
 	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault,20
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	idtlbt          pte,prot
 
@@ -1236,8 +1250,12 @@ nadtlb_check_alias_20w:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate
+=======
 	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate,20
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	idtlbt          pte,prot
 
@@ -1272,8 +1290,12 @@ dtlb_check_alias_11:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault
+=======
 	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault,11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	idtlba          pte,(va)
 	idtlbp          prot,(va)
@@ -1308,8 +1330,12 @@ nadtlb_check_alias_11:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate
+=======
 	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate,11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	idtlba          pte,(va)
 	idtlbp          prot,(va)
@@ -1339,8 +1365,12 @@ dtlb_check_alias_20:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault
+=======
 	do_alias	spc,t0,t1,va,pte,prot,dtlb_fault,20
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	
 	idtlbt          pte,prot
 
@@ -1369,8 +1399,12 @@ nadtlb_check_alias_20:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate
+=======
 	do_alias	spc,t0,t1,va,pte,prot,nadtlb_emulate,20
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	idtlbt          pte,prot
 
@@ -1500,8 +1534,12 @@ naitlb_check_alias_20w:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,naitlb_fault
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,naitlb_fault
+=======
 	do_alias	spc,t0,t1,va,pte,prot,naitlb_fault,20
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iitlbt		pte,prot
 
@@ -1558,8 +1596,12 @@ naitlb_check_alias_11:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,itlb_fault
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,itlb_fault
+=======
 	do_alias	spc,t0,t1,va,pte,prot,itlb_fault,11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iitlba          pte,(%sr0, va)
 	iitlbp          prot,(%sr0, va)
@@ -1608,8 +1650,12 @@ naitlb_check_alias_20:
 <<<<<<< HEAD
 	do_alias	spc,t0,t1,va,pte,prot,naitlb_fault
 =======
+<<<<<<< HEAD
+	do_alias	spc,t0,t1,va,pte,prot,naitlb_fault
+=======
 	do_alias	spc,t0,t1,va,pte,prot,naitlb_fault,20
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iitlbt          pte,prot
 

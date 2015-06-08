@@ -3,7 +3,15 @@
  *
  * Module interface and handling of zfcp data structures.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright IBM Corporation 2002, 2010
+=======
  * Copyright IBM Corp. 2002, 2013
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright IBM Corp. 2002, 2013
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /*
@@ -23,7 +31,14 @@
  *            Christof Schmitt
  *            Martin Petermann
  *            Sven Schuetz
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *            Steffen Maier
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *            Steffen Maier
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #define KMSG_COMPONENT "zfcp"
@@ -32,6 +47,13 @@
 #include <linux/miscdevice.h>
 #include <linux/seq_file.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "zfcp_ext.h"
 #include "zfcp_fc.h"
 #include "zfcp_reqlist.h"
@@ -415,8 +437,16 @@ struct zfcp_adapter *zfcp_adapter_enqueue(struct ccw_device *ccw_device)
 	adapter->dma_parms.max_segment_size = ZFCP_QDIO_SBALE_LEN;
 	adapter->ccw_device->dev.dma_parms = &adapter->dma_parms;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	adapter->stat_read_buf_num = FSF_STATUS_READS_RECOM;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	adapter->stat_read_buf_num = FSF_STATUS_READS_RECOM;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!zfcp_scsi_adapter_register(adapter))
 		return adapter;
 
@@ -521,7 +551,14 @@ struct zfcp_port *zfcp_port_enqueue(struct zfcp_adapter *adapter, u64 wwpn,
 
 	rwlock_init(&port->unit_list_lock);
 	INIT_LIST_HEAD(&port->unit_list);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	atomic_set(&port->units, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_set(&port->units, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	INIT_WORK(&port->gid_pn_work, zfcp_fc_port_did_lookup);
 	INIT_WORK(&port->test_link_work, zfcp_fc_link_test_work);

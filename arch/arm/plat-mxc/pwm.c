@@ -63,8 +63,12 @@ int pwm_config(struct pwm_device *pwm, int duty_ns, int period_ns)
 <<<<<<< HEAD
 	if (!(cpu_is_mx1() || cpu_is_mx21())) {
 =======
+<<<<<<< HEAD
+	if (!(cpu_is_mx1() || cpu_is_mx21())) {
+=======
 	if (cpu_is_mx27() || cpu_is_mx3() || cpu_is_mx25() || cpu_is_mx51()) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long long c;
 		unsigned long period_cycles, duty_cycles, prescale;
 		u32 cr;
@@ -139,8 +143,12 @@ int pwm_enable(struct pwm_device *pwm)
 <<<<<<< HEAD
 		rc = clk_prepare_enable(pwm->clk);
 =======
+<<<<<<< HEAD
+		rc = clk_prepare_enable(pwm->clk);
+=======
 		rc = clk_enable(pwm->clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rc)
 			pwm->clk_enabled = 1;
 	}
@@ -156,8 +164,12 @@ void pwm_disable(struct pwm_device *pwm)
 <<<<<<< HEAD
 		clk_disable_unprepare(pwm->clk);
 =======
+<<<<<<< HEAD
+		clk_disable_unprepare(pwm->clk);
+=======
 		clk_disable(pwm->clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pwm->clk_enabled = 0;
 	}
 }
@@ -243,8 +255,12 @@ static int __devinit mxc_pwm_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	r = request_mem_region(r->start, resource_size(r), pdev->name);
 =======
+<<<<<<< HEAD
+	r = request_mem_region(r->start, resource_size(r), pdev->name);
+=======
 	r = request_mem_region(r->start, r->end - r->start + 1, pdev->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (r == NULL) {
 		dev_err(&pdev->dev, "failed to request memory resource\n");
 		ret = -EBUSY;
@@ -254,8 +270,12 @@ static int __devinit mxc_pwm_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	pwm->mmio_base = ioremap(r->start, resource_size(r));
 =======
+<<<<<<< HEAD
+	pwm->mmio_base = ioremap(r->start, resource_size(r));
+=======
 	pwm->mmio_base = ioremap(r->start, r->end - r->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pwm->mmio_base == NULL) {
 		dev_err(&pdev->dev, "failed to ioremap() registers\n");
 		ret = -ENODEV;
@@ -273,8 +293,12 @@ err_free_mem:
 <<<<<<< HEAD
 	release_mem_region(r->start, resource_size(r));
 =======
+<<<<<<< HEAD
+	release_mem_region(r->start, resource_size(r));
+=======
 	release_mem_region(r->start, r->end - r->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_free_clk:
 	clk_put(pwm->clk);
 err_free:
@@ -301,8 +325,12 @@ static int __devexit mxc_pwm_remove(struct platform_device *pdev)
 <<<<<<< HEAD
 	release_mem_region(r->start, resource_size(r));
 =======
+<<<<<<< HEAD
+	release_mem_region(r->start, resource_size(r));
+=======
 	release_mem_region(r->start, r->end - r->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clk_put(pwm->clk);
 

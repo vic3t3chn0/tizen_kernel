@@ -4,6 +4,9 @@
 #ifdef __KERNEL__
 #include <asm-generic/pci-dma-compat.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm-generic/pci-bridge.h>
 
 #include <asm/mach/pci.h> /* for pci_sys_data */
@@ -17,11 +20,14 @@ static inline int pcibios_assign_all_busses(void)
 {
 	return pci_has_flag(PCI_REASSIGN_ALL_RSRC);
 }
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/mach/pci.h> /* for pci_sys_data */
 #include <mach/hardware.h> /* for PCIBIOS_MIN_* */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PCI_DOMAINS
 static inline int pci_domain_nr(struct pci_bus *bus)
@@ -39,6 +45,8 @@ static inline int pci_proc_domain(struct pci_bus *bus)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PCI_HOST_ITE8152
 /* ITE bridge requires setting latency timer to avoid early bus access
    termination by PIC bus mater devices
@@ -52,6 +60,7 @@ static inline void pcibios_set_master(struct pci_dev *dev)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void pcibios_penalize_isa_irq(int irq, int active)
 {
 	/* We don't do dynamic PCI IRQ allocation */
@@ -80,6 +89,8 @@ extern int pci_mmap_page_range(struct pci_dev *dev, struct vm_area_struct *vma,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void
 pcibios_resource_to_bus(struct pci_dev *dev, struct pci_bus_region *region,
 			 struct resource *res);
@@ -89,6 +100,7 @@ pcibios_bus_to_resource(struct pci_dev *dev, struct resource *res,
 			struct pci_bus_region *region);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Dummy implementation; always return 0.
  */

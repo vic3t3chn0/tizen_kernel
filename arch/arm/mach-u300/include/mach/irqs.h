@@ -13,6 +13,9 @@
 #define __MACH_IRQS_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_U300_INTCON0_START		1
 #define IRQ_U300_INTCON1_START		33
 /* These are on INTCON0 - 30 lines */
@@ -55,6 +58,8 @@
 #define IRQ_U300_GPIO_PORT0		33
 #define IRQ_U300_GPIO_PORT1		34
 #define IRQ_U300_GPIO_PORT2		35
+<<<<<<< HEAD
+=======
 =======
 #define IRQ_U300_INTCON0_START		0
 #define IRQ_U300_INTCON1_START		32
@@ -99,11 +104,15 @@
 #define IRQ_U300_GPIO_PORT1		33
 #define IRQ_U300_GPIO_PORT2		34
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_MACH_U300_BS2X) || defined(CONFIG_MACH_U300_BS330) || \
     defined(CONFIG_MACH_U300_BS335)
 /* These are for DB3150, DB3200 and DB3350 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_U300_WDOG			36
 #define IRQ_U300_EVHIST			37
 #define IRQ_U300_MSPRO			38
@@ -114,6 +123,8 @@
 #define IRQ_U300_RTC			43
 #define IRQ_U300_NFIF			44
 #define IRQ_U300_NFIF2			45
+<<<<<<< HEAD
+=======
 =======
 #define IRQ_U300_WDOG			35
 #define IRQ_U300_EVHIST			36
@@ -126,6 +137,7 @@
 #define IRQ_U300_NFIF			43
 #define IRQ_U300_NFIF2			44
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /* DB3150 and DB3200 have only 45 IRQs */
@@ -133,13 +145,20 @@
 <<<<<<< HEAD
 #define U300_VIC_IRQS_END		46
 =======
+<<<<<<< HEAD
+#define U300_VIC_IRQS_END		46
+=======
 #define U300_NR_IRQS			45
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /* The DB3350-specific interrupt lines */
 #ifdef CONFIG_MACH_U300_BS335
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_U300_ISP_F0			46
 #define IRQ_U300_ISP_F1			47
 #define IRQ_U300_ISP_F2			48
@@ -152,6 +171,8 @@
 #define IRQ_U300_GPIO_PORT5		55
 #define IRQ_U300_GPIO_PORT6		56
 #define U300_VIC_IRQS_END		57
+<<<<<<< HEAD
+=======
 =======
 #define IRQ_U300_ISP_F0			45
 #define IRQ_U300_ISP_F1			46
@@ -166,11 +187,15 @@
 #define IRQ_U300_GPIO_PORT6		55
 #define U300_NR_IRQS			56
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /* The DB3210-specific interrupt lines */
 #ifdef CONFIG_MACH_U300_BS365
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_U300_GPIO_PORT3		36
 #define IRQ_U300_GPIO_PORT4		37
 #define IRQ_U300_WDOG			38
@@ -197,6 +222,8 @@
 
 #define NR_IRQS				(IRQ_U300_GPIO_END - IRQ_U300_INTCON0_START)
 
+<<<<<<< HEAD
+=======
 =======
 #define IRQ_U300_GPIO_PORT3		35
 #define IRQ_U300_GPIO_PORT4		36
@@ -224,4 +251,5 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

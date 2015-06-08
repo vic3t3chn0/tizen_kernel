@@ -47,8 +47,12 @@ static inline u64 pvclock_scale_delta(u64 delta, u32 mul_frac, int shift)
 <<<<<<< HEAD
 		"mulq %[mul_frac] ; shrd $32, %[hi], %[lo]"
 =======
+<<<<<<< HEAD
+		"mulq %[mul_frac] ; shrd $32, %[hi], %[lo]"
+=======
 		"mul %[mul_frac] ; shrd $32, %[hi], %[lo]"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		: [lo]"=a"(product),
 		  [hi]"=d"(tmp)
 		: "0"(delta),

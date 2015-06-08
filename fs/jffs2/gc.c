@@ -14,7 +14,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/mtd/mtd.h>
 #include <linux/slab.h>
@@ -59,13 +64,20 @@ again:
 <<<<<<< HEAD
 		jffs2_dbg(1, "Picking block from bad_used_list to GC next\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Picking block from bad_used_list to GC next\n");
+=======
 		D1(printk(KERN_DEBUG "Picking block from bad_used_list to GC next\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nextlist = &c->bad_used_list;
 	} else if (n < 50 && !list_empty(&c->erasable_list)) {
 		/* Note that most of them will have gone directly to be erased.
 		   So don't favour the erasable_list _too_ much. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		jffs2_dbg(1, "Picking block from erasable_list to GC next\n");
 		nextlist = &c->erasable_list;
 	} else if (n < 110 && !list_empty(&c->very_dirty_list)) {
@@ -87,6 +99,8 @@ again:
 		nextlist = &c->very_dirty_list;
 	} else if (!list_empty(&c->erasable_list)) {
 		jffs2_dbg(1, "Picking block from erasable_list to GC next (clean_list and {very_,}dirty_list were empty)\n");
+<<<<<<< HEAD
+=======
 =======
 		D1(printk(KERN_DEBUG "Picking block from erasable_list to GC next\n"));
 		nextlist = &c->erasable_list;
@@ -110,6 +124,7 @@ again:
 	} else if (!list_empty(&c->erasable_list)) {
 		D1(printk(KERN_DEBUG "Picking block from erasable_list to GC next (clean_list and {very_,}dirty_list were empty)\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		nextlist = &c->erasable_list;
 	} else if (!list_empty(&c->erasable_pending_wbuf_list)) {
@@ -117,8 +132,12 @@ again:
 <<<<<<< HEAD
 		jffs2_dbg(1, "Synching wbuf in order to reuse erasable_pending_wbuf_list blocks\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Synching wbuf in order to reuse erasable_pending_wbuf_list blocks\n");
+=======
 		D1(printk(KERN_DEBUG "Synching wbuf in order to reuse erasable_pending_wbuf_list blocks\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&c->erase_completion_lock);
 		jffs2_flush_wbuf_pad(c);
 		spin_lock(&c->erase_completion_lock);
@@ -128,8 +147,12 @@ again:
 <<<<<<< HEAD
 		jffs2_dbg(1, "No clean, dirty _or_ erasable blocks to GC from! Where are they all?\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "No clean, dirty _or_ erasable blocks to GC from! Where are they all?\n");
+=======
 		D1(printk(KERN_NOTICE "jffs2: No clean, dirty _or_ erasable blocks to GC from! Where are they all?\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 
@@ -142,8 +165,13 @@ again:
 		pr_warn("Eep. ret->gc_node for block at 0x%08x is NULL\n",
 			ret->offset);
 =======
+<<<<<<< HEAD
+		pr_warn("Eep. ret->gc_node for block at 0x%08x is NULL\n",
+			ret->offset);
+=======
 		printk(KERN_WARNING "Eep. ret->gc_node for block at 0x%08x is NULL\n", ret->offset);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG();
 	}
 
@@ -153,8 +181,13 @@ again:
 		jffs2_dbg(1, "Converting wasted_size %08x to dirty_size\n",
 			  ret->wasted_size);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Converting wasted_size %08x to dirty_size\n",
+			  ret->wasted_size);
+=======
 		D1(printk(KERN_DEBUG "Converting wasted_size %08x to dirty_size\n", ret->wasted_size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret->dirty_size += ret->wasted_size;
 		c->wasted_size -= ret->wasted_size;
 		c->dirty_size += ret->wasted_size;
@@ -195,9 +228,14 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			pr_crit("Checked all inodes but still 0x%x bytes of unchecked space?\n",
 				c->unchecked_size);
 =======
+<<<<<<< HEAD
+			pr_crit("Checked all inodes but still 0x%x bytes of unchecked space?\n",
+				c->unchecked_size);
+=======
 			printk(KERN_CRIT "Checked all inodes but still 0x%x bytes of unchecked space?\n",
 			       c->unchecked_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			jffs2_dbg_dump_block_lists_nolock(c);
 			spin_unlock(&c->erase_completion_lock);
 			mutex_unlock(&c->alloc_sem);
@@ -223,9 +261,14 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			jffs2_dbg(1, "Skipping check of ino #%d with nlink/pino zero\n",
 				  ic->ino);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Skipping check of ino #%d with nlink/pino zero\n",
+				  ic->ino);
+=======
 			D1(printk(KERN_DEBUG "Skipping check of ino #%d with nlink/pino zero\n",
 				  ic->ino));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&c->inocache_lock);
 			jffs2_xattr_delete_inode(c, ic);
 			continue;
@@ -237,8 +280,13 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			jffs2_dbg(1, "Skipping ino #%u already checked\n",
 				  ic->ino);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Skipping ino #%u already checked\n",
+				  ic->ino);
+=======
 			D1(printk(KERN_DEBUG "Skipping ino #%u already checked\n", ic->ino));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&c->inocache_lock);
 			continue;
 
@@ -248,8 +296,13 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			pr_warn("Inode #%u is in state %d during CRC check phase!\n",
 				ic->ino, ic->state);
 =======
+<<<<<<< HEAD
+			pr_warn("Inode #%u is in state %d during CRC check phase!\n",
+				ic->ino, ic->state);
+=======
 			printk(KERN_WARNING "Inode #%u is in state %d during CRC check phase!\n", ic->ino, ic->state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&c->inocache_lock);
 			BUG();
 
@@ -261,8 +314,13 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			jffs2_dbg(1, "Waiting for ino #%u to finish reading\n",
 				  ic->ino);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Waiting for ino #%u to finish reading\n",
+				  ic->ino);
+=======
 			D1(printk(KERN_DEBUG "Waiting for ino #%u to finish reading\n", ic->ino));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* We need to come back again for the _same_ inode. We've
 			 made no progress in this case, but that should be OK */
 			c->checked_ino--;
@@ -281,6 +339,9 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		spin_unlock(&c->inocache_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		jffs2_dbg(1, "%s(): triggering inode scan of ino#%u\n",
 			  __func__, ic->ino);
 
@@ -288,6 +349,8 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		if (ret)
 			pr_warn("Returned error for crccheck of ino #%u. Expect badness...\n",
 				ic->ino);
+<<<<<<< HEAD
+=======
 =======
 		D1(printk(KERN_DEBUG "jffs2_garbage_collect_pass() triggering inode scan of ino#%u\n", ic->ino));
 
@@ -295,6 +358,7 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		if (ret)
 			printk(KERN_WARNING "Returned error for crccheck of ino #%u. Expect badness...\n", ic->ino);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		jffs2_set_inocache_state(c, ic, INO_STATE_CHECKEDABSENT);
 		mutex_unlock(&c->alloc_sem);
@@ -307,11 +371,16 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		spin_unlock(&c->erase_completion_lock);
 		mutex_unlock(&c->alloc_sem);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		jffs2_dbg(1, "%s(): erasing pending blocks\n", __func__);
 		if (jffs2_erase_pending_blocks(c, 1))
 			return 0;
 
 		jffs2_dbg(1, "No progress from erasing block; doing GC anyway\n");
+<<<<<<< HEAD
+=======
 =======
 		D1(printk(KERN_DEBUG "jffs2_garbage_collect_pass() erasing pending blocks\n"));
 		if (jffs2_erase_pending_blocks(c, 1))
@@ -319,6 +388,7 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 
 		D1(printk(KERN_DEBUG "No progress from erasing blocks; doing GC anyway\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_lock(&c->alloc_sem);
 		spin_lock(&c->erase_completion_lock);
 	}
@@ -339,8 +409,12 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 <<<<<<< HEAD
 		jffs2_dbg(1, "Couldn't find erase block to garbage collect!\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Couldn't find erase block to garbage collect!\n");
+=======
 		D1(printk(KERN_NOTICE "jffs2: Couldn't find erase block to garbage collect!\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&c->erase_completion_lock);
 		mutex_unlock(&c->alloc_sem);
 		return -EIO;
@@ -350,8 +424,13 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 	jffs2_dbg(1, "GC from block %08x, used_size %08x, dirty_size %08x, free_size %08x\n",
 		  jeb->offset, jeb->used_size, jeb->dirty_size, jeb->free_size);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "GC from block %08x, used_size %08x, dirty_size %08x, free_size %08x\n",
+		  jeb->offset, jeb->used_size, jeb->dirty_size, jeb->free_size);
+=======
 	D1(printk(KERN_DEBUG "GC from block %08x, used_size %08x, dirty_size %08x, free_size %08x\n", jeb->offset, jeb->used_size, jeb->dirty_size, jeb->free_size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	D1(if (c->nextblock)
 	   printk(KERN_DEBUG "Nextblock at  %08x, used_size %08x, dirty_size %08x, wasted_size %08x, free_size %08x\n", c->nextblock->offset, c->nextblock->used_size, c->nextblock->dirty_size, c->nextblock->wasted_size, c->nextblock->free_size));
 
@@ -365,6 +444,9 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 
 	while(ref_obsolete(raw)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		jffs2_dbg(1, "Node at 0x%08x is obsolete... skipping\n",
 			  ref_offset(raw));
 		raw = ref_next(raw);
@@ -373,6 +455,8 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			pr_warn("erase block at 0x%08x. free_size 0x%08x, dirty_size 0x%08x, used_size 0x%08x\n",
 				jeb->offset, jeb->free_size,
 				jeb->dirty_size, jeb->used_size);
+<<<<<<< HEAD
+=======
 =======
 		D1(printk(KERN_DEBUG "Node at 0x%08x is obsolete... skipping\n", ref_offset(raw)));
 		raw = ref_next(raw);
@@ -381,6 +465,7 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			printk(KERN_WARNING "erase block at 0x%08x. free_size 0x%08x, dirty_size 0x%08x, used_size 0x%08x\n",
 			       jeb->offset, jeb->free_size, jeb->dirty_size, jeb->used_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			jeb->gc_node = raw;
 			spin_unlock(&c->erase_completion_lock);
 			mutex_unlock(&c->alloc_sem);
@@ -393,8 +478,13 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 	jffs2_dbg(1, "Going to garbage collect node at 0x%08x\n",
 		  ref_offset(raw));
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "Going to garbage collect node at 0x%08x\n",
+		  ref_offset(raw));
+=======
 	D1(printk(KERN_DEBUG "Going to garbage collect node at 0x%08x\n", ref_offset(raw)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!raw->next_in_ino) {
 		/* Inode-less node. Clean marker, snapshot or something like that */
@@ -440,8 +530,14 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		  __func__, jeb->offset, ref_offset(raw), ref_flags(raw),
 		  ic->ino);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "%s(): collecting from block @0x%08x. Node @0x%08x(%d), ino #%u\n",
+		  __func__, jeb->offset, ref_offset(raw), ref_flags(raw),
+		  ic->ino);
+=======
 	D1(printk(KERN_DEBUG "jffs2_garbage_collect_pass collecting from block @0x%08x. Node @0x%08x(%d), ino #%u\n", jeb->offset, ref_offset(raw), ref_flags(raw), ic->ino));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Three possibilities:
 	   1. Inode is already in-core. We must iget it and do proper
@@ -465,9 +561,14 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 			jffs2_dbg(1, "Ino #%u is absent but node not REF_PRISTINE. Reading.\n",
 				  ic->ino);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Ino #%u is absent but node not REF_PRISTINE. Reading.\n",
+				  ic->ino);
+=======
 			D1(printk(KERN_DEBUG "Ino #%u is absent but node not REF_PRISTINE. Reading.\n",
 				  ic->ino));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
@@ -487,9 +588,14 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		pr_crit("Inode #%u already in state %d in jffs2_garbage_collect_pass()!\n",
 			ic->ino, ic->state);
 =======
+<<<<<<< HEAD
+		pr_crit("Inode #%u already in state %d in jffs2_garbage_collect_pass()!\n",
+			ic->ino, ic->state);
+=======
 		printk(KERN_CRIT "Inode #%u already in state %d in jffs2_garbage_collect_pass()!\n",
 		       ic->ino, ic->state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&c->alloc_sem);
 		spin_unlock(&c->inocache_lock);
 		BUG();
@@ -506,9 +612,14 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		jffs2_dbg(1, "%s(): waiting for ino #%u in state %d\n",
 			  __func__, ic->ino, ic->state);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "%s(): waiting for ino #%u in state %d\n",
+			  __func__, ic->ino, ic->state);
+=======
 		D1(printk(KERN_DEBUG "jffs2_garbage_collect_pass() waiting for ino #%u in state %d\n",
 			  ic->ino, ic->state));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sleep_on_spinunlock(&c->inocache_wq, &c->inocache_lock);
 		/* And because we dropped the alloc_sem we must start again from the
 		   beginning. Ponder chance of livelock here -- we're returning success
@@ -577,8 +688,13 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		pr_err("Error garbage collecting node at %08x!\n",
 		       ref_offset(jeb->gc_node));
 =======
+<<<<<<< HEAD
+		pr_err("Error garbage collecting node at %08x!\n",
+		       ref_offset(jeb->gc_node));
+=======
 		printk(KERN_ERR "Error garbage collecting node at %08x!\n", ref_offset(jeb->gc_node));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -ENOSPC;
 	}
  release_sem:
@@ -594,8 +710,13 @@ int jffs2_garbage_collect_pass(struct jffs2_sb_info *c)
 		jffs2_dbg(1, "Block at 0x%08x completely obsoleted by GC. Moving to erase_pending_list\n",
 			  c->gcblock->offset);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Block at 0x%08x completely obsoleted by GC. Moving to erase_pending_list\n",
+			  c->gcblock->offset);
+=======
 		D1(printk(KERN_DEBUG "Block at 0x%08x completely obsoleted by GC. Moving to erase_pending_list\n", c->gcblock->offset));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* We're GC'ing an empty block? */
 		list_add_tail(&c->gcblock->list, &c->erase_pending_list);
 		c->gcblock = NULL;
@@ -628,8 +749,12 @@ static int jffs2_garbage_collect_live(struct jffs2_sb_info *c,  struct jffs2_era
 <<<<<<< HEAD
 		jffs2_dbg(1, "GC block is no longer gcblock. Restart\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "GC block is no longer gcblock. Restart\n");
+=======
 		D1(printk(KERN_DEBUG "GC block is no longer gcblock. Restart\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto upnout;
 	}
 	if (ref_obsolete(raw)) {
@@ -637,8 +762,12 @@ static int jffs2_garbage_collect_live(struct jffs2_sb_info *c,  struct jffs2_era
 <<<<<<< HEAD
 		jffs2_dbg(1, "node to be GC'd was obsoleted in the meantime.\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "node to be GC'd was obsoleted in the meantime.\n");
+=======
 		D1(printk(KERN_DEBUG "node to be GC'd was obsoleted in the meantime.\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* They'll call again */
 		goto upnout;
 	}
@@ -695,16 +824,22 @@ static int jffs2_garbage_collect_live(struct jffs2_sb_info *c,  struct jffs2_era
 		ret = jffs2_garbage_collect_deletion_dirent(c, jeb, f, fd);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_warn("Raw node at 0x%08x wasn't in node lists for ino #%u\n",
 			ref_offset(raw), f->inocache->ino);
 		if (ref_obsolete(raw)) {
 			pr_warn("But it's obsolete so we don't mind too much\n");
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_WARNING "Raw node at 0x%08x wasn't in node lists for ino #%u\n",
 		       ref_offset(raw), f->inocache->ino);
 		if (ref_obsolete(raw)) {
 			printk(KERN_WARNING "But it's obsolete so we don't mind too much\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			jffs2_dbg_dump_node(c, ref_offset(raw));
 			BUG();
@@ -731,8 +866,13 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 	jffs2_dbg(1, "Going to GC REF_PRISTINE node at 0x%08x\n",
 		  ref_offset(raw));
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "Going to GC REF_PRISTINE node at 0x%08x\n",
+		  ref_offset(raw));
+=======
 	D1(printk(KERN_DEBUG "Going to GC REF_PRISTINE node at 0x%08x\n", ref_offset(raw)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	alloclen = rawlen = ref_totlen(c, c->gcblock, raw);
 
@@ -769,9 +909,14 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 		pr_warn("Header CRC failed on REF_PRISTINE node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
 			ref_offset(raw), je32_to_cpu(node->u.hdr_crc), crc);
 =======
+<<<<<<< HEAD
+		pr_warn("Header CRC failed on REF_PRISTINE node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
+			ref_offset(raw), je32_to_cpu(node->u.hdr_crc), crc);
+=======
 		printk(KERN_WARNING "Header CRC failed on REF_PRISTINE node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
 		       ref_offset(raw), je32_to_cpu(node->u.hdr_crc), crc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto bail;
 	}
 
@@ -784,9 +929,15 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 				ref_offset(raw), je32_to_cpu(node->i.node_crc),
 				crc);
 =======
+<<<<<<< HEAD
+			pr_warn("Node CRC failed on REF_PRISTINE data node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
+				ref_offset(raw), je32_to_cpu(node->i.node_crc),
+				crc);
+=======
 			printk(KERN_WARNING "Node CRC failed on REF_PRISTINE data node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
 			       ref_offset(raw), je32_to_cpu(node->i.node_crc), crc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto bail;
 		}
 
@@ -798,9 +949,15 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 					ref_offset(raw),
 					je32_to_cpu(node->i.data_crc), crc);
 =======
+<<<<<<< HEAD
+				pr_warn("Data CRC failed on REF_PRISTINE data node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
+					ref_offset(raw),
+					je32_to_cpu(node->i.data_crc), crc);
+=======
 				printk(KERN_WARNING "Data CRC failed on REF_PRISTINE data node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
 				       ref_offset(raw), je32_to_cpu(node->i.data_crc), crc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto bail;
 			}
 		}
@@ -814,9 +971,15 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 				ref_offset(raw),
 				je32_to_cpu(node->d.node_crc), crc);
 =======
+<<<<<<< HEAD
+			pr_warn("Node CRC failed on REF_PRISTINE dirent node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
+				ref_offset(raw),
+				je32_to_cpu(node->d.node_crc), crc);
+=======
 			printk(KERN_WARNING "Node CRC failed on REF_PRISTINE dirent node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
 			       ref_offset(raw), je32_to_cpu(node->d.node_crc), crc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto bail;
 		}
 
@@ -825,8 +988,13 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 			pr_warn("Name in dirent node at 0x%08x contains zeroes\n",
 				ref_offset(raw));
 =======
+<<<<<<< HEAD
+			pr_warn("Name in dirent node at 0x%08x contains zeroes\n",
+				ref_offset(raw));
+=======
 			printk(KERN_WARNING "Name in dirent node at 0x%08x contains zeroes\n", ref_offset(raw));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto bail;
 		}
 
@@ -838,9 +1006,15 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 					ref_offset(raw),
 					je32_to_cpu(node->d.name_crc), crc);
 =======
+<<<<<<< HEAD
+				pr_warn("Name CRC failed on REF_PRISTINE dirent node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
+					ref_offset(raw),
+					je32_to_cpu(node->d.name_crc), crc);
+=======
 				printk(KERN_WARNING "Name CRC failed on REF_PRISTINE dirent node at 0x%08x: Read 0x%08x, calculated 0x%08x\n",
 				       ref_offset(raw), je32_to_cpu(node->d.name_crc), crc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto bail;
 			}
 		}
@@ -852,9 +1026,14 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 			pr_warn("Unknown node type for REF_PRISTINE node at 0x%08x: 0x%04x\n",
 				ref_offset(raw), je16_to_cpu(node->u.nodetype));
 =======
+<<<<<<< HEAD
+			pr_warn("Unknown node type for REF_PRISTINE node at 0x%08x: 0x%04x\n",
+				ref_offset(raw), je16_to_cpu(node->u.nodetype));
+=======
 			printk(KERN_WARNING "Unknown node type for REF_PRISTINE node at 0x%08x: 0x%04x\n",
 			       ref_offset(raw), je16_to_cpu(node->u.nodetype));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto bail;
 		}
 	}
@@ -867,6 +1046,9 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 
 	if (ret || (retlen != rawlen)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_notice("Write of %d bytes at 0x%08x failed. returned %d, retlen %zd\n",
 			  rawlen, phys_ofs, ret, retlen);
 		if (retlen) {
@@ -874,6 +1056,8 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 		} else {
 			pr_notice("Not marking the space at 0x%08x as dirty because the flash driver returned retlen zero\n",
 				  phys_ofs);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_NOTICE "Write of %d bytes at 0x%08x failed. returned %d, retlen %zd\n",
 		       rawlen, phys_ofs, ret, retlen);
@@ -882,6 +1066,7 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 		} else {
 			printk(KERN_NOTICE "Not marking the space at 0x%08x as dirty because the flash driver returned retlen zero\n", phys_ofs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if (!retried) {
 			/* Try to reallocate space and retry */
@@ -893,8 +1078,12 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 <<<<<<< HEAD
 			jffs2_dbg(1, "Retrying failed write of REF_PRISTINE node.\n");
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Retrying failed write of REF_PRISTINE node.\n");
+=======
 			D1(printk(KERN_DEBUG "Retrying failed write of REF_PRISTINE node.\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			jffs2_dbg_acct_sanity_check(c,jeb);
 			jffs2_dbg_acct_paranoia_check(c, jeb);
@@ -908,8 +1097,13 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 				jffs2_dbg(1, "Allocated space at 0x%08x to retry failed write.\n",
 					  phys_ofs);
 =======
+<<<<<<< HEAD
+				jffs2_dbg(1, "Allocated space at 0x%08x to retry failed write.\n",
+					  phys_ofs);
+=======
 				D1(printk(KERN_DEBUG "Allocated space at 0x%08x to retry failed write.\n", phys_ofs));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				jffs2_dbg_acct_sanity_check(c,jeb);
 				jffs2_dbg_acct_paranoia_check(c, jeb);
@@ -920,8 +1114,13 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 			jffs2_dbg(1, "Failed to allocate space to retry failed write: %d!\n",
 				  ret);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Failed to allocate space to retry failed write: %d!\n",
+				  ret);
+=======
 			D1(printk(KERN_DEBUG "Failed to allocate space to retry failed write: %d!\n", ret));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		if (!ret)
@@ -935,8 +1134,13 @@ static int jffs2_garbage_collect_pristine(struct jffs2_sb_info *c,
 	jffs2_dbg(1, "WHEEE! GC REF_PRISTINE node at 0x%08x succeeded\n",
 		  ref_offset(raw));
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "WHEEE! GC REF_PRISTINE node at 0x%08x succeeded\n",
+		  ref_offset(raw));
+=======
 	D1(printk(KERN_DEBUG "WHEEE! GC REF_PRISTINE node at 0x%08x succeeded\n", ref_offset(raw)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
  out_node:
 	kfree(node);
@@ -967,8 +1171,13 @@ static int jffs2_garbage_collect_metadata(struct jffs2_sb_info *c, struct jffs2_
 		jffs2_dbg(1, "%s(): Writing %d bytes of kdev_t\n",
 			  __func__, mdatalen);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "%s(): Writing %d bytes of kdev_t\n",
+			  __func__, mdatalen);
+=======
 		D1(printk(KERN_DEBUG "jffs2_garbage_collect_metadata(): Writing %d bytes of kdev_t\n", mdatalen));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (S_ISLNK(JFFS2_F_I_MODE(f))) {
 		mdatalen = fn->size;
 		mdata = kmalloc(fn->size, GFP_KERNEL);
@@ -976,13 +1185,20 @@ static int jffs2_garbage_collect_metadata(struct jffs2_sb_info *c, struct jffs2_
 <<<<<<< HEAD
 			pr_warn("kmalloc of mdata failed in jffs2_garbage_collect_metadata()\n");
 =======
+<<<<<<< HEAD
+			pr_warn("kmalloc of mdata failed in jffs2_garbage_collect_metadata()\n");
+=======
 			printk(KERN_WARNING "kmalloc of mdata failed in jffs2_garbage_collect_metadata()\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 		}
 		ret = jffs2_read_dnode(c, f, fn, mdata, 0, mdatalen);
 		if (ret) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_warn("read of old metadata failed in jffs2_garbage_collect_metadata(): %d\n",
 				ret);
 			kfree(mdata);
@@ -990,6 +1206,8 @@ static int jffs2_garbage_collect_metadata(struct jffs2_sb_info *c, struct jffs2_
 		}
 		jffs2_dbg(1, "%s(): Writing %d bites of symlink target\n",
 			  __func__, mdatalen);
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_WARNING "read of old metadata failed in jffs2_garbage_collect_metadata(): %d\n", ret);
 			kfree(mdata);
@@ -997,6 +1215,7 @@ static int jffs2_garbage_collect_metadata(struct jffs2_sb_info *c, struct jffs2_
 		}
 		D1(printk(KERN_DEBUG "jffs2_garbage_collect_metadata(): Writing %d bites of symlink target\n", mdatalen));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	}
 
@@ -1007,9 +1226,14 @@ static int jffs2_garbage_collect_metadata(struct jffs2_sb_info *c, struct jffs2_
 		pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_metadata failed: %d\n",
 			sizeof(ri) + mdatalen, ret);
 =======
+<<<<<<< HEAD
+		pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_metadata failed: %d\n",
+			sizeof(ri) + mdatalen, ret);
+=======
 		printk(KERN_WARNING "jffs2_reserve_space_gc of %zd bytes for garbage_collect_metadata failed: %d\n",
 		       sizeof(ri)+ mdatalen, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -1049,8 +1273,12 @@ static int jffs2_garbage_collect_metadata(struct jffs2_sb_info *c, struct jffs2_
 <<<<<<< HEAD
 		pr_warn("Error writing new dnode: %ld\n", PTR_ERR(new_fn));
 =======
+<<<<<<< HEAD
+		pr_warn("Error writing new dnode: %ld\n", PTR_ERR(new_fn));
+=======
 		printk(KERN_WARNING "Error writing new dnode: %ld\n", PTR_ERR(new_fn));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = PTR_ERR(new_fn);
 		goto out;
 	}
@@ -1097,9 +1325,14 @@ static int jffs2_garbage_collect_dirent(struct jffs2_sb_info *c, struct jffs2_er
 		pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_dirent failed: %d\n",
 			sizeof(rd)+rd.nsize, ret);
 =======
+<<<<<<< HEAD
+		pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_dirent failed: %d\n",
+			sizeof(rd)+rd.nsize, ret);
+=======
 		printk(KERN_WARNING "jffs2_reserve_space_gc of %zd bytes for garbage_collect_dirent failed: %d\n",
 		       sizeof(rd)+rd.nsize, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 	new_fd = jffs2_write_dirent(c, f, &rd, fd->name, rd.nsize, ALLOC_GC);
@@ -1109,8 +1342,13 @@ static int jffs2_garbage_collect_dirent(struct jffs2_sb_info *c, struct jffs2_er
 		pr_warn("jffs2_write_dirent in garbage_collect_dirent failed: %ld\n",
 			PTR_ERR(new_fd));
 =======
+<<<<<<< HEAD
+		pr_warn("jffs2_write_dirent in garbage_collect_dirent failed: %ld\n",
+			PTR_ERR(new_fd));
+=======
 		printk(KERN_WARNING "jffs2_write_dirent in garbage_collect_dirent failed: %ld\n", PTR_ERR(new_fd));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return PTR_ERR(new_fd);
 	}
 	jffs2_add_fd_to_list(c, new_fd, &f->dents);
@@ -1167,8 +1405,13 @@ static int jffs2_garbage_collect_deletion_dirent(struct jffs2_sb_info *c, struct
 			jffs2_dbg(1, "Check potential deletion dirent at %08x\n",
 				  ref_offset(raw));
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Check potential deletion dirent at %08x\n",
+				  ref_offset(raw));
+=======
 			D1(printk(KERN_DEBUG "Check potential deletion dirent at %08x\n", ref_offset(raw)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* This is an obsolete node belonging to the same directory, and it's of the right
 			   length. We need to take a closer look...*/
@@ -1178,8 +1421,13 @@ static int jffs2_garbage_collect_deletion_dirent(struct jffs2_sb_info *c, struct
 				pr_warn("%s(): Read error (%d) reading obsolete node at %08x\n",
 					__func__, ret, ref_offset(raw));
 =======
+<<<<<<< HEAD
+				pr_warn("%s(): Read error (%d) reading obsolete node at %08x\n",
+					__func__, ret, ref_offset(raw));
+=======
 				printk(KERN_WARNING "jffs2_g_c_deletion_dirent(): Read error (%d) reading obsolete node at %08x\n", ret, ref_offset(raw));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* If we can't read it, we don't need to continue to obsolete it. Continue */
 				continue;
 			}
@@ -1189,9 +1437,15 @@ static int jffs2_garbage_collect_deletion_dirent(struct jffs2_sb_info *c, struct
 					__func__, retlen, rawlen,
 					ref_offset(raw));
 =======
+<<<<<<< HEAD
+				pr_warn("%s(): Short read (%zd not %u) reading header from obsolete node at %08x\n",
+					__func__, retlen, rawlen,
+					ref_offset(raw));
+=======
 				printk(KERN_WARNING "jffs2_g_c_deletion_dirent(): Short read (%zd not %u) reading header from obsolete node at %08x\n",
 				       retlen, rawlen, ref_offset(raw));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			}
 
@@ -1220,9 +1474,15 @@ static int jffs2_garbage_collect_deletion_dirent(struct jffs2_sb_info *c, struct
 				  ref_offset(fd->raw), fd->name,
 				  ref_offset(raw), je32_to_cpu(rd->ino));
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Deletion dirent at %08x still obsoletes real dirent \"%s\" at %08x for ino #%u\n",
+				  ref_offset(fd->raw), fd->name,
+				  ref_offset(raw), je32_to_cpu(rd->ino));
+=======
 			D1(printk(KERN_DEBUG "Deletion dirent at %08x still obsoletes real dirent \"%s\" at %08x for ino #%u\n",
 				  ref_offset(fd->raw), fd->name, ref_offset(raw), je32_to_cpu(rd->ino)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			kfree(rd);
 
 			return jffs2_garbage_collect_dirent(c, jeb, f, fd);
@@ -1249,8 +1509,13 @@ static int jffs2_garbage_collect_deletion_dirent(struct jffs2_sb_info *c, struct
 		pr_warn("Deletion dirent \"%s\" not found in list for ino #%u\n",
 			fd->name, f->inocache->ino);
 =======
+<<<<<<< HEAD
+		pr_warn("Deletion dirent \"%s\" not found in list for ino #%u\n",
+			fd->name, f->inocache->ino);
+=======
 		printk(KERN_WARNING "Deletion dirent \"%s\" not found in list for ino #%u\n", fd->name, f->inocache->ino);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	jffs2_mark_node_obsolete(c, fd->raw);
 	jffs2_free_full_dirent(fd);
@@ -1271,9 +1536,14 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 	jffs2_dbg(1, "Writing replacement hole node for ino #%u from offset 0x%x to 0x%x\n",
 		  f->inocache->ino, start, end);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "Writing replacement hole node for ino #%u from offset 0x%x to 0x%x\n",
+		  f->inocache->ino, start, end);
+=======
 	D1(printk(KERN_DEBUG "Writing replacement hole node for ino #%u from offset 0x%x to 0x%x\n",
 		  f->inocache->ino, start, end));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(&ri, 0, sizeof(ri));
 
@@ -1285,6 +1555,9 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 		ret = jffs2_flash_read(c, ref_offset(fn->raw), sizeof(ri), &readlen, (char *)&ri);
 		if (readlen != sizeof(ri) || ret) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_warn("Node read failed in jffs2_garbage_collect_hole. Ret %d, retlen %zd. Data will be lost by writing new hole node\n",
 				ret, readlen);
 			goto fill;
@@ -1299,6 +1572,8 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 			pr_warn("%s(): Node at 0x%08x had totlen 0x%x instead of expected 0x%zx\n",
 				__func__, ref_offset(fn->raw),
 				je32_to_cpu(ri.totlen), sizeof(ri));
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_WARNING "Node read failed in jffs2_garbage_collect_hole. Ret %d, retlen %zd. Data will be lost by writing new hole node\n", ret, readlen);
 			goto fill;
@@ -1314,11 +1589,15 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 			       ref_offset(fn->raw),
 			       je32_to_cpu(ri.totlen), sizeof(ri));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EIO;
 		}
 		crc = crc32(0, &ri, sizeof(ri)-8);
 		if (crc != je32_to_cpu(ri.node_crc)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_warn("%s: Node at 0x%08x had CRC 0x%08x which doesn't match calculated CRC 0x%08x\n",
 				__func__, ref_offset(fn->raw),
 				je32_to_cpu(ri.node_crc), crc);
@@ -1332,6 +1611,8 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 				__func__, ref_offset(fn->raw));
 			pr_warn("Data in the range 0x%08x to 0x%08x of inode #%u will be lost\n",
 				start, end, f->inocache->ino);
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_WARNING "jffs2_garbage_collect_hole: Node at 0x%08x had CRC 0x%08x which doesn't match calculated CRC 0x%08x\n",
 			       ref_offset(fn->raw),
@@ -1346,6 +1627,7 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 			printk(KERN_WARNING "Data in the range 0x%08x to 0x%08x of inode #%u will be lost\n",
 			       start, end, f->inocache->ino);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto fill;
 		}
 	} else {
@@ -1388,9 +1670,14 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 		pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_hole failed: %d\n",
 			sizeof(ri), ret);
 =======
+<<<<<<< HEAD
+		pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_hole failed: %d\n",
+			sizeof(ri), ret);
+=======
 		printk(KERN_WARNING "jffs2_reserve_space_gc of %zd bytes for garbage_collect_hole failed: %d\n",
 		       sizeof(ri), ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 	new_fn = jffs2_write_dnode(c, f, &ri, NULL, 0, ALLOC_GC);
@@ -1399,8 +1686,12 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 <<<<<<< HEAD
 		pr_warn("Error writing new hole node: %ld\n", PTR_ERR(new_fn));
 =======
+<<<<<<< HEAD
+		pr_warn("Error writing new hole node: %ld\n", PTR_ERR(new_fn));
+=======
 		printk(KERN_WARNING "Error writing new hole node: %ld\n", PTR_ERR(new_fn));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return PTR_ERR(new_fn);
 	}
 	if (je32_to_cpu(ri.version) == f->highest_version) {
@@ -1425,10 +1716,16 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 				__func__, fn->frags, je32_to_cpu(ri.version),
 				f->highest_version, je32_to_cpu(ri.ino));
 =======
+<<<<<<< HEAD
+			pr_warn("%s(): Replacing fn with %d frag(s) but new ver %d != highest_version %d of ino #%d\n",
+				__func__, fn->frags, je32_to_cpu(ri.version),
+				f->highest_version, je32_to_cpu(ri.ino));
+=======
 		printk(KERN_WARNING "jffs2_garbage_collect_hole: Replacing fn with %d frag(s) but new ver %d != highest_version %d of ino #%d\n",
 		       fn->frags, je32_to_cpu(ri.version), f->highest_version,
 		       je32_to_cpu(ri.ino));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	});
 
 	/* This is a partially-overlapped hole node. Mark it REF_NORMAL not REF_PRISTINE */
@@ -1446,11 +1743,16 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 	}
 	if (fn->frags) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_warn("%s(): Old node still has frags!\n", __func__);
 		BUG();
 	}
 	if (!new_fn->frags) {
 		pr_warn("%s(): New node has no frags!\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_WARNING "jffs2_garbage_collect_hole: Old node still has frags!\n");
 		BUG();
@@ -1458,6 +1760,7 @@ static int jffs2_garbage_collect_hole(struct jffs2_sb_info *c, struct jffs2_eras
 	if (!new_fn->frags) {
 		printk(KERN_WARNING "jffs2_garbage_collect_hole: New node has no frags!\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG();
 	}
 
@@ -1485,9 +1788,14 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 	jffs2_dbg(1, "Writing replacement dnode for ino #%u from offset 0x%x to 0x%x\n",
 		  f->inocache->ino, start, end);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "Writing replacement dnode for ino #%u from offset 0x%x to 0x%x\n",
+		  f->inocache->ino, start, end);
+=======
 	D1(printk(KERN_DEBUG "Writing replacement dnode for ino #%u from offset 0x%x to 0x%x\n",
 		  f->inocache->ino, start, end));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	orig_end = end;
 	orig_start = start;
@@ -1522,9 +1830,14 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 				jffs2_dbg(1, "Expanding down to cover partial frag (0x%x-0x%x)\n",
 					  frag->ofs, frag->ofs+frag->size);
 =======
+<<<<<<< HEAD
+				jffs2_dbg(1, "Expanding down to cover partial frag (0x%x-0x%x)\n",
+					  frag->ofs, frag->ofs+frag->size);
+=======
 				D1(printk(KERN_DEBUG "Expanding down to cover partial frag (0x%x-0x%x)\n",
 					  frag->ofs, frag->ofs+frag->size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				start = frag->ofs;
 				continue;
 			}
@@ -1534,9 +1847,14 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 				jffs2_dbg(1, "First frag in page is hole (0x%x-0x%x). Not expanding down.\n",
 					  frag->ofs, frag->ofs+frag->size);
 =======
+<<<<<<< HEAD
+				jffs2_dbg(1, "First frag in page is hole (0x%x-0x%x). Not expanding down.\n",
+					  frag->ofs, frag->ofs+frag->size);
+=======
 				D1(printk(KERN_DEBUG "First frag in page is hole (0x%x-0x%x). Not expanding down.\n",
 					  frag->ofs, frag->ofs+frag->size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			} else {
 
@@ -1551,19 +1869,28 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 
 				if (jeb == c->gcblock) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					jffs2_dbg(1, "Expanding down to cover frag (0x%x-0x%x) in gcblock at %08x\n",
 						  frag->ofs,
 						  frag->ofs + frag->size,
 						  ref_offset(raw));
+<<<<<<< HEAD
+=======
 =======
 					D1(printk(KERN_DEBUG "Expanding down to cover frag (0x%x-0x%x) in gcblock at %08x\n",
 						  frag->ofs, frag->ofs+frag->size, ref_offset(raw)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					start = frag->ofs;
 					break;
 				}
 				if (!ISDIRTY(jeb->dirty_size + jeb->wasted_size)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					jffs2_dbg(1, "Not expanding down to cover frag (0x%x-0x%x) in clean block %08x\n",
 						  frag->ofs,
 						  frag->ofs + frag->size,
@@ -1575,6 +1902,8 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 					  frag->ofs,
 					  frag->ofs + frag->size,
 					  jeb->offset);
+<<<<<<< HEAD
+=======
 =======
 					D1(printk(KERN_DEBUG "Not expanding down to cover frag (0x%x-0x%x) in clean block %08x\n",
 						  frag->ofs, frag->ofs+frag->size, jeb->offset));
@@ -1584,6 +1913,7 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 				D1(printk(KERN_DEBUG "Expanding down to cover frag (0x%x-0x%x) in dirty block %08x\n",
 						  frag->ofs, frag->ofs+frag->size, jeb->offset));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				start = frag->ofs;
 				break;
 			}
@@ -1603,9 +1933,14 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 				jffs2_dbg(1, "Expanding up to cover partial frag (0x%x-0x%x)\n",
 					  frag->ofs, frag->ofs+frag->size);
 =======
+<<<<<<< HEAD
+				jffs2_dbg(1, "Expanding up to cover partial frag (0x%x-0x%x)\n",
+					  frag->ofs, frag->ofs+frag->size);
+=======
 				D1(printk(KERN_DEBUG "Expanding up to cover partial frag (0x%x-0x%x)\n",
 					  frag->ofs, frag->ofs+frag->size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				end = frag->ofs + frag->size;
 				continue;
 			}
@@ -1615,9 +1950,14 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 				jffs2_dbg(1, "Last frag in page is hole (0x%x-0x%x). Not expanding up.\n",
 					  frag->ofs, frag->ofs+frag->size);
 =======
+<<<<<<< HEAD
+				jffs2_dbg(1, "Last frag in page is hole (0x%x-0x%x). Not expanding up.\n",
+					  frag->ofs, frag->ofs+frag->size);
+=======
 				D1(printk(KERN_DEBUG "Last frag in page is hole (0x%x-0x%x). Not expanding up.\n",
 					  frag->ofs, frag->ofs+frag->size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			} else {
 
@@ -1632,19 +1972,28 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 
 				if (jeb == c->gcblock) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					jffs2_dbg(1, "Expanding up to cover frag (0x%x-0x%x) in gcblock at %08x\n",
 						  frag->ofs,
 						  frag->ofs + frag->size,
 						  ref_offset(raw));
+<<<<<<< HEAD
+=======
 =======
 					D1(printk(KERN_DEBUG "Expanding up to cover frag (0x%x-0x%x) in gcblock at %08x\n",
 						  frag->ofs, frag->ofs+frag->size, ref_offset(raw)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					end = frag->ofs + frag->size;
 					break;
 				}
 				if (!ISDIRTY(jeb->dirty_size + jeb->wasted_size)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					jffs2_dbg(1, "Not expanding up to cover frag (0x%x-0x%x) in clean block %08x\n",
 						  frag->ofs,
 						  frag->ofs + frag->size,
@@ -1656,6 +2005,8 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 					  frag->ofs,
 					  frag->ofs + frag->size,
 					  jeb->offset);
+<<<<<<< HEAD
+=======
 =======
 					D1(printk(KERN_DEBUG "Not expanding up to cover frag (0x%x-0x%x) in clean block %08x\n",
 						  frag->ofs, frag->ofs+frag->size, jeb->offset));
@@ -1665,6 +2016,7 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 				D1(printk(KERN_DEBUG "Expanding up to cover frag (0x%x-0x%x) in dirty block %08x\n",
 						  frag->ofs, frag->ofs+frag->size, jeb->offset));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				end = frag->ofs + frag->size;
 				break;
 			}
@@ -1673,9 +2025,14 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 		jffs2_dbg(1, "Expanded dnode to write from (0x%x-0x%x) to (0x%x-0x%x)\n",
 			  orig_start, orig_end, start, end);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Expanded dnode to write from (0x%x-0x%x) to (0x%x-0x%x)\n",
+			  orig_start, orig_end, start, end);
+=======
 		D1(printk(KERN_DEBUG "Expanded dnode to write from (0x%x-0x%x) to (0x%x-0x%x)\n",
 			  orig_start, orig_end, start, end));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		D1(BUG_ON(end > frag_last(&f->fragtree)->ofs + frag_last(&f->fragtree)->size));
 		BUG_ON(end < orig_end);
@@ -1696,8 +2053,13 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 		pr_warn("read_cache_page() returned error: %ld\n",
 			PTR_ERR(pg_ptr));
 =======
+<<<<<<< HEAD
+		pr_warn("read_cache_page() returned error: %ld\n",
+			PTR_ERR(pg_ptr));
+=======
 		printk(KERN_WARNING "read_cache_page() returned error: %ld\n", PTR_ERR(pg_ptr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return PTR_ERR(pg_ptr);
 	}
 
@@ -1715,9 +2077,14 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 			pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_dnode failed: %d\n",
 				sizeof(ri) + JFFS2_MIN_DATA_LEN, ret);
 =======
+<<<<<<< HEAD
+			pr_warn("jffs2_reserve_space_gc of %zd bytes for garbage_collect_dnode failed: %d\n",
+				sizeof(ri) + JFFS2_MIN_DATA_LEN, ret);
+=======
 			printk(KERN_WARNING "jffs2_reserve_space_gc of %zd bytes for garbage_collect_dnode failed: %d\n",
 			       sizeof(ri)+ JFFS2_MIN_DATA_LEN, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 		cdatalen = min_t(uint32_t, alloclen - sizeof(ri), end - offset);
@@ -1758,8 +2125,13 @@ static int jffs2_garbage_collect_dnode(struct jffs2_sb_info *c, struct jffs2_era
 			pr_warn("Error writing new dnode: %ld\n",
 				PTR_ERR(new_fn));
 =======
+<<<<<<< HEAD
+			pr_warn("Error writing new dnode: %ld\n",
+				PTR_ERR(new_fn));
+=======
 			printk(KERN_WARNING "Error writing new dnode: %ld\n", PTR_ERR(new_fn));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = PTR_ERR(new_fn);
 			break;
 		}

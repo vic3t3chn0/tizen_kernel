@@ -52,10 +52,16 @@
 #else
 #define ext_debug(fmt, ...)	no_printk(fmt, ##__VA_ARGS__)
 =======
+<<<<<<< HEAD
+#define ext_debug(fmt, ...)	printk(fmt, ##__VA_ARGS__)
+#else
+#define ext_debug(fmt, ...)	no_printk(fmt, ##__VA_ARGS__)
+=======
 #define ext_debug(a...)		printk(a)
 #else
 #define ext_debug(a...)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -300,6 +306,11 @@ extern int ext4_ext_check_inode(struct inode *inode);
 extern int ext4_find_delalloc_cluster(struct inode *inode, ext4_lblk_t lblk,
 				      int search_hint_reverse);
 =======
+<<<<<<< HEAD
+extern int ext4_find_delalloc_cluster(struct inode *inode, ext4_lblk_t lblk,
+				      int search_hint_reverse);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _EXT4_EXTENTS */
 

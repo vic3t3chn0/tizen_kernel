@@ -30,16 +30,22 @@ trace_seq_init(struct trace_seq *s)
  */
 #ifdef CONFIG_TRACING
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __printf(2, 3)
 int trace_seq_printf(struct trace_seq *s, const char *fmt, ...);
 extern __printf(2, 0)
 int trace_seq_vprintf(struct trace_seq *s, const char *fmt, va_list args);
+<<<<<<< HEAD
+=======
 =======
 extern int trace_seq_printf(struct trace_seq *s, const char *fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
 extern int trace_seq_vprintf(struct trace_seq *s, const char *fmt, va_list args)
 	__attribute__ ((format (printf, 2, 0)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int
 trace_seq_bprintf(struct trace_seq *s, const char *fmt, const u32 *binary);
 extern int trace_print_seq(struct seq_file *m, struct trace_seq *s);
@@ -54,8 +60,12 @@ extern void *trace_seq_reserve(struct trace_seq *s, size_t len);
 <<<<<<< HEAD
 extern int trace_seq_path(struct trace_seq *s, const struct path *path);
 =======
+<<<<<<< HEAD
+extern int trace_seq_path(struct trace_seq *s, const struct path *path);
+=======
 extern int trace_seq_path(struct trace_seq *s, struct path *path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* CONFIG_TRACING */
 static inline int trace_seq_printf(struct trace_seq *s, const char *fmt, ...)
@@ -102,8 +112,12 @@ static inline void *trace_seq_reserve(struct trace_seq *s, size_t len)
 <<<<<<< HEAD
 static inline int trace_seq_path(struct trace_seq *s, const struct path *path)
 =======
+<<<<<<< HEAD
+static inline int trace_seq_path(struct trace_seq *s, const struct path *path)
+=======
 static inline int trace_seq_path(struct trace_seq *s, struct path *path)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 0;
 }

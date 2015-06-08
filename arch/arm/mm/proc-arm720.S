@@ -104,7 +104,11 @@ ENTRY(cpu_arm720_set_pte_ext)
 <<<<<<< HEAD
 		.pushsection	.idmap.text, "ax"
 =======
+<<<<<<< HEAD
+		.pushsection	.idmap.text, "ax"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(cpu_arm720_reset)
 		mov	ip, #0
 		mcr	p15, 0, ip, c7, c7, 0		@ invalidate cache
@@ -120,7 +124,12 @@ ENTRY(cpu_arm720_reset)
 ENDPROC(cpu_arm720_reset)
 		.popsection
 =======
+<<<<<<< HEAD
+ENDPROC(cpu_arm720_reset)
+		.popsection
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__CPUINIT
 

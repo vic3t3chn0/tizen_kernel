@@ -16,8 +16,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/slab.h>
@@ -346,10 +350,16 @@ static int sq_dev_add(struct device *dev, struct subsys_interface *sif)
 {
 	unsigned int cpu = dev->id;
 =======
+<<<<<<< HEAD
+static int sq_dev_add(struct device *dev, struct subsys_interface *sif)
+{
+	unsigned int cpu = dev->id;
+=======
 static int __devinit sq_sysdev_add(struct sys_device *sysdev)
 {
 	unsigned int cpu = sysdev->id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kobject *kobj;
 	int error;
 
@@ -361,8 +371,12 @@ static int __devinit sq_sysdev_add(struct sys_device *sysdev)
 <<<<<<< HEAD
 	error = kobject_init_and_add(kobj, &ktype_percpu_entry, &dev->kobj,
 =======
+<<<<<<< HEAD
+	error = kobject_init_and_add(kobj, &ktype_percpu_entry, &dev->kobj,
+=======
 	error = kobject_init_and_add(kobj, &ktype_percpu_entry, &sysdev->kobj,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     "%s", "sq");
 	if (!error)
 		kobject_uevent(kobj, KOBJ_ADD);
@@ -374,10 +388,16 @@ static int sq_dev_remove(struct device *dev, struct subsys_interface *sif)
 {
 	unsigned int cpu = dev->id;
 =======
+<<<<<<< HEAD
+static int sq_dev_remove(struct device *dev, struct subsys_interface *sif)
+{
+	unsigned int cpu = dev->id;
+=======
 static int __devexit sq_sysdev_remove(struct sys_device *sysdev)
 {
 	unsigned int cpu = sysdev->id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kobject *kobj = sq_kobject[cpu];
 
 	kobject_put(kobj);
@@ -385,16 +405,22 @@ static int __devexit sq_sysdev_remove(struct sys_device *sysdev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct subsys_interface sq_interface = {
 	.name		= "sq",
 	.subsys		= &cpu_subsys,
 	.add_dev	= sq_dev_add,
 	.remove_dev	= sq_dev_remove,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_driver sq_sysdev_driver = {
 	.add		= sq_sysdev_add,
 	.remove		= __devexit_p(sq_sysdev_remove),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init sq_api_init(void)
@@ -417,8 +443,12 @@ static int __init sq_api_init(void)
 <<<<<<< HEAD
 	ret = subsys_interface_register(&sq_interface);
 =======
+<<<<<<< HEAD
+	ret = subsys_interface_register(&sq_interface);
+=======
 	ret = sysdev_driver_register(&cpu_sysdev_class, &sq_sysdev_driver);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(ret != 0))
 		goto out;
 
@@ -436,8 +466,12 @@ static void __exit sq_api_exit(void)
 <<<<<<< HEAD
 	subsys_interface_unregister(&sq_interface);
 =======
+<<<<<<< HEAD
+	subsys_interface_unregister(&sq_interface);
+=======
 	sysdev_driver_unregister(&cpu_sysdev_class, &sq_sysdev_driver);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(sq_bitmap);
 	kmem_cache_destroy(sq_cache);
 }

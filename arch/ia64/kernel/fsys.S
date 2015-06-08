@@ -23,8 +23,11 @@
 #include <asm/signal.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/unistd.h>
 
 #include "entry.h"
@@ -180,8 +183,12 @@ END(fsys_set_tid_address)
 <<<<<<< HEAD
 #if IA64_GTOD_SEQ_OFFSET !=0
 =======
+<<<<<<< HEAD
+#if IA64_GTOD_SEQ_OFFSET !=0
+=======
 #if IA64_GTOD_LOCK_OFFSET !=0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #error fsys_gettimeofday incompatible with changes to struct fsyscall_gtod_data_t
 #endif
 #if IA64_ITC_JITTER_OFFSET !=0

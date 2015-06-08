@@ -232,10 +232,16 @@ static void nilfs_segbuf_fill_in_data_crc(struct nilfs_segment_buffer *segbuf,
 		crc = crc32_le(crc, kaddr + bh_offset(bh), bh->b_size);
 		kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+		kaddr = kmap_atomic(bh->b_page);
+		crc = crc32_le(crc, kaddr + bh_offset(bh), bh->b_size);
+		kunmap_atomic(kaddr);
+=======
 		kaddr = kmap_atomic(bh->b_page, KM_USER0);
 		crc = crc32_le(crc, kaddr + bh_offset(bh), bh->b_size);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	raw_sum->ss_datasum = cpu_to_le32(crc);
 }
@@ -355,8 +361,13 @@ static void nilfs_end_bio_write(struct bio *bio, int err)
 		bio_put(bio);
 		/* to be detected by submit_seg_bio() */
 =======
+<<<<<<< HEAD
+		bio_put(bio);
+		/* to be detected by submit_seg_bio() */
+=======
 		/* to be detected by nilfs_segbuf_submit_bio() */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!uptodate)
@@ -389,8 +400,11 @@ static int nilfs_segbuf_submit_bio(struct nilfs_segment_buffer *segbuf,
 	submit_bio(mode, bio);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	segbuf->sb_nbio++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bio_flagged(bio, BIO_EOPNOTSUPP)) {
 		bio_put(bio);
 		err = -EOPNOTSUPP;
@@ -399,7 +413,11 @@ static int nilfs_segbuf_submit_bio(struct nilfs_segment_buffer *segbuf,
 <<<<<<< HEAD
 	segbuf->sb_nbio++;
 =======
+<<<<<<< HEAD
+	segbuf->sb_nbio++;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bio_put(bio);
 
 	wi->bio = NULL;

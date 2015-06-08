@@ -2,6 +2,9 @@
 
 #include <asm/cputype.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/idmap.h>
 #include <asm/pgalloc.h>
 #include <asm/pgtable.h>
@@ -35,11 +38,14 @@ static void idmap_add_pmd(pud_t *pud, unsigned long addr, unsigned long end,
 	} while (pmd++, addr = next, addr != end);
 }
 #else	/* !CONFIG_ARM_LPAE */
+<<<<<<< HEAD
+=======
 =======
 #include <asm/pgalloc.h>
 #include <asm/pgtable.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void idmap_add_pmd(pud_t *pud, unsigned long addr, unsigned long end,
 	unsigned long prot)
 {
@@ -54,7 +60,11 @@ static void idmap_add_pmd(pud_t *pud, unsigned long addr, unsigned long end,
 <<<<<<< HEAD
 #endif	/* CONFIG_ARM_LPAE */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_ARM_LPAE */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void idmap_add_pud(pgd_t *pgd, unsigned long addr, unsigned long end,
 	unsigned long prot)
@@ -69,11 +79,16 @@ static void idmap_add_pud(pgd_t *pgd, unsigned long addr, unsigned long end,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void identity_mapping_add(pgd_t *pgd, unsigned long addr, unsigned long end)
 {
 	unsigned long prot, next;
 
 	prot = PMD_TYPE_SECT | PMD_SECT_AP_WRITE | PMD_SECT_AF;
+<<<<<<< HEAD
+=======
 =======
 void identity_mapping_add(pgd_t *pgd, unsigned long addr, unsigned long end)
 {
@@ -81,6 +96,7 @@ void identity_mapping_add(pgd_t *pgd, unsigned long addr, unsigned long end)
 
 	prot = PMD_TYPE_SECT | PMD_SECT_AP_WRITE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_architecture() <= CPU_ARCH_ARMv5TEJ && !cpu_is_xscale())
 		prot |= PMD_BIT4;
 
@@ -92,6 +108,9 @@ void identity_mapping_add(pgd_t *pgd, unsigned long addr, unsigned long end)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern char  __idmap_text_start[], __idmap_text_end[];
 
 static int __init init_static_idmap(void)
@@ -128,6 +147,8 @@ void setup_mm_for_reboot(void)
 	cpu_switch_mm(idmap_pgd, &init_mm);
 
 	/* Flush the TLB. */
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SMP
 static void idmap_del_pmd(pud_t *pud, unsigned long addr, unsigned long end)
@@ -173,5 +194,6 @@ void setup_mm_for_reboot(char mode)
 	 */
 	identity_mapping_add(current->active_mm->pgd, 0, TASK_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_flush_tlb_all();
 }

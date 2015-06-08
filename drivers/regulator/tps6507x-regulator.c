@@ -90,12 +90,21 @@ static const u16 LDO2_VSEL_table[] = {
 	3000, 3100, 3200, 3300,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int num_voltages[] = {ARRAY_SIZE(VDCDCx_VSEL_table),
 				ARRAY_SIZE(VDCDCx_VSEL_table),
 				ARRAY_SIZE(VDCDCx_VSEL_table),
 				ARRAY_SIZE(LDO1_VSEL_table),
 				ARRAY_SIZE(LDO2_VSEL_table)};
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tps_info {
 	const char *name;
 	unsigned min_uV;
@@ -244,6 +253,21 @@ static int tps6507x_pmic_reg_write(struct tps6507x_pmic *tps, u8 reg, u8 val)
 	return err;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int tps6507x_pmic_is_enabled(struct regulator_dev *dev)
+{
+	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
+	int data, rid = rdev_get_id(dev);
+	u8 shift;
+
+	if (rid < TPS6507X_DCDC_1 || rid > TPS6507X_LDO_2)
+		return -EINVAL;
+
+	shift = TPS6507X_MAX_REG_ID - rid;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tps6507x_pmic_dcdc_is_enabled(struct regulator_dev *dev)
 {
 	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
@@ -272,6 +296,10 @@ static int tps6507x_pmic_ldo_is_enabled(struct regulator_dev *dev)
 		return -EINVAL;
 
 	shift = TPS6507X_MAX_REG_ID - ldo;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data = tps6507x_pmic_reg_read(tps, TPS6507X_REG_CON_CTRL1);
 
 	if (data < 0)
@@ -280,6 +308,34 @@ static int tps6507x_pmic_ldo_is_enabled(struct regulator_dev *dev)
 		return (data & 1<<shift) ? 1 : 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int tps6507x_pmic_enable(struct regulator_dev *dev)
+{
+	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
+	int rid = rdev_get_id(dev);
+	u8 shift;
+
+	if (rid < TPS6507X_DCDC_1 || rid > TPS6507X_LDO_2)
+		return -EINVAL;
+
+	shift = TPS6507X_MAX_REG_ID - rid;
+	return tps6507x_pmic_set_bits(tps, TPS6507X_REG_CON_CTRL1, 1 << shift);
+}
+
+static int tps6507x_pmic_disable(struct regulator_dev *dev)
+{
+	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
+	int rid = rdev_get_id(dev);
+	u8 shift;
+
+	if (rid < TPS6507X_DCDC_1 || rid > TPS6507X_LDO_2)
+		return -EINVAL;
+
+	shift = TPS6507X_MAX_REG_ID - rid;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tps6507x_pmic_dcdc_enable(struct regulator_dev *dev)
 {
 	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
@@ -303,10 +359,51 @@ static int tps6507x_pmic_dcdc_disable(struct regulator_dev *dev)
 		return -EINVAL;
 
 	shift = TPS6507X_MAX_REG_ID - dcdc;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tps6507x_pmic_clear_bits(tps, TPS6507X_REG_CON_CTRL1,
 					1 << shift);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int tps6507x_pmic_get_voltage(struct regulator_dev *dev)
+{
+	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
+	int data, rid = rdev_get_id(dev);
+	u8 reg, mask;
+
+	switch (rid) {
+	case TPS6507X_DCDC_1:
+		reg = TPS6507X_REG_DEFDCDC1;
+		mask = TPS6507X_DEFDCDCX_DCDC_MASK;
+		break;
+	case TPS6507X_DCDC_2:
+		if (tps->info[rid]->defdcdc_default)
+			reg = TPS6507X_REG_DEFDCDC2_HIGH;
+		else
+			reg = TPS6507X_REG_DEFDCDC2_LOW;
+		mask = TPS6507X_DEFDCDCX_DCDC_MASK;
+		break;
+	case TPS6507X_DCDC_3:
+		if (tps->info[rid]->defdcdc_default)
+			reg = TPS6507X_REG_DEFDCDC3_HIGH;
+		else
+			reg = TPS6507X_REG_DEFDCDC3_LOW;
+		mask = TPS6507X_DEFDCDCX_DCDC_MASK;
+		break;
+	case TPS6507X_LDO_1:
+		reg = TPS6507X_REG_LDO_CTRL1;
+		mask = TPS6507X_REG_LDO_CTRL1_LDO1_MASK;
+		break;
+	case TPS6507X_LDO_2:
+		reg = TPS6507X_REG_DEFLDO2;
+		mask = TPS6507X_REG_DEFLDO2_LDO2_MASK;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tps6507x_pmic_ldo_enable(struct regulator_dev *dev)
 {
 	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
@@ -355,6 +452,10 @@ static int tps6507x_pmic_dcdc_get_voltage(struct regulator_dev *dev)
 			reg = TPS6507X_REG_DEFDCDC3_HIGH;
 		else
 			reg = TPS6507X_REG_DEFDCDC3_LOW;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		return -EINVAL;
@@ -364,6 +465,48 @@ static int tps6507x_pmic_dcdc_get_voltage(struct regulator_dev *dev)
 	if (data < 0)
 		return data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data &= mask;
+	return tps->info[rid]->table[data] * 1000;
+}
+
+static int tps6507x_pmic_set_voltage_sel(struct regulator_dev *dev,
+					  unsigned selector)
+{
+	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
+	int data, rid = rdev_get_id(dev);
+	u8 reg, mask;
+
+	switch (rid) {
+	case TPS6507X_DCDC_1:
+		reg = TPS6507X_REG_DEFDCDC1;
+		mask = TPS6507X_DEFDCDCX_DCDC_MASK;
+		break;
+	case TPS6507X_DCDC_2:
+		if (tps->info[rid]->defdcdc_default)
+			reg = TPS6507X_REG_DEFDCDC2_HIGH;
+		else
+			reg = TPS6507X_REG_DEFDCDC2_LOW;
+		mask = TPS6507X_DEFDCDCX_DCDC_MASK;
+		break;
+	case TPS6507X_DCDC_3:
+		if (tps->info[rid]->defdcdc_default)
+			reg = TPS6507X_REG_DEFDCDC3_HIGH;
+		else
+			reg = TPS6507X_REG_DEFDCDC3_LOW;
+		mask = TPS6507X_DEFDCDCX_DCDC_MASK;
+		break;
+	case TPS6507X_LDO_1:
+		reg = TPS6507X_REG_LDO_CTRL1;
+		mask = TPS6507X_REG_LDO_CTRL1_LDO1_MASK;
+		break;
+	case TPS6507X_LDO_2:
+		reg = TPS6507X_REG_DEFLDO2;
+		mask = TPS6507X_REG_DEFLDO2_LDO2_MASK;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data &= TPS6507X_DEFDCDCX_DCDC_MASK;
 	return tps->info[dcdc]->table[data] * 1000;
 }
@@ -391,11 +534,20 @@ static int tps6507x_pmic_dcdc_set_voltage(struct regulator_dev *dev,
 			reg = TPS6507X_REG_DEFDCDC3_HIGH;
 		else
 			reg = TPS6507X_REG_DEFDCDC3_LOW;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (min_uV < tps->info[dcdc]->min_uV
 		|| min_uV > tps->info[dcdc]->max_uV)
 		return -EINVAL;
@@ -489,16 +641,58 @@ static int tps6507x_pmic_ldo_set_voltage(struct regulator_dev *dev,
 
 	*selector = vsel;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data = tps6507x_pmic_reg_read(tps, reg);
 	if (data < 0)
 		return data;
 
 	data &= ~mask;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data |= selector;
+=======
 	data |= vsel;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	data |= vsel;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return tps6507x_pmic_reg_write(tps, reg, data);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int tps6507x_pmic_list_voltage(struct regulator_dev *dev,
+					unsigned selector)
+{
+	struct tps6507x_pmic *tps = rdev_get_drvdata(dev);
+	int rid = rdev_get_id(dev);
+
+	if (rid < TPS6507X_DCDC_1 || rid > TPS6507X_LDO_2)
+		return -EINVAL;
+
+	if (selector >= tps->info[rid]->table_len)
+		return -EINVAL;
+	else
+		return tps->info[rid]->table[selector] * 1000;
+}
+
+static struct regulator_ops tps6507x_pmic_ops = {
+	.is_enabled = tps6507x_pmic_is_enabled,
+	.enable = tps6507x_pmic_enable,
+	.disable = tps6507x_pmic_disable,
+	.get_voltage = tps6507x_pmic_get_voltage,
+	.set_voltage_sel = tps6507x_pmic_set_voltage_sel,
+	.list_voltage = tps6507x_pmic_list_voltage,
+};
+
+static __devinit int tps6507x_pmic_probe(struct platform_device *pdev)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tps6507x_pmic_dcdc_list_voltage(struct regulator_dev *dev,
 					unsigned selector)
 {
@@ -551,6 +745,10 @@ static struct regulator_ops tps6507x_pmic_ldo_ops = {
 
 static __devinit
 int tps6507x_pmic_probe(struct platform_device *pdev)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tps6507x_dev *tps6507x_dev = dev_get_drvdata(pdev->dev.parent);
 	struct tps_info *info = &tps6507x_pmic_regs[0];
@@ -598,14 +796,33 @@ int tps6507x_pmic_probe(struct platform_device *pdev)
 
 		tps->desc[i].name = info->name;
 		tps->desc[i].id = i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tps->desc[i].n_voltages = info->table_len;
+		tps->desc[i].ops = &tps6507x_pmic_ops;
+=======
 		tps->desc[i].n_voltages = num_voltages[i];
 		tps->desc[i].ops = (i > TPS6507X_DCDC_3 ?
 		&tps6507x_pmic_ldo_ops : &tps6507x_pmic_dcdc_ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		tps->desc[i].n_voltages = num_voltages[i];
+		tps->desc[i].ops = (i > TPS6507X_DCDC_3 ?
+		&tps6507x_pmic_ldo_ops : &tps6507x_pmic_dcdc_ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tps->desc[i].type = REGULATOR_VOLTAGE;
 		tps->desc[i].owner = THIS_MODULE;
 
 		rdev = regulator_register(&tps->desc[i],
+<<<<<<< HEAD
+<<<<<<< HEAD
+					tps6507x_dev->dev, init_data, tps, NULL);
+=======
 					tps6507x_dev->dev, init_data, tps);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					tps6507x_dev->dev, init_data, tps);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_ERR(rdev)) {
 			dev_err(tps6507x_dev->dev,
 				"failed to register %s regulator\n",
@@ -654,22 +871,40 @@ static struct platform_driver tps6507x_pmic_driver = {
 	.remove = __devexit_p(tps6507x_pmic_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tps6507x_pmic_init
  *
  * Module init function
  */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init tps6507x_pmic_init(void)
 {
 	return platform_driver_register(&tps6507x_pmic_driver);
 }
 subsys_initcall(tps6507x_pmic_init);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tps6507x_pmic_cleanup
  *
  * Module exit function
  */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __exit tps6507x_pmic_cleanup(void)
 {
 	platform_driver_unregister(&tps6507x_pmic_driver);

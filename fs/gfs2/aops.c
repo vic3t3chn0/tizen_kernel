@@ -437,8 +437,12 @@ static int stuffed_readpage(struct gfs2_inode *ip, struct page *page)
 <<<<<<< HEAD
 	kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(page);
+=======
 	kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dsize > (dibh->b_size - sizeof(struct gfs2_dinode)))
 		dsize = (dibh->b_size - sizeof(struct gfs2_dinode));
 	memcpy(kaddr, dibh->b_data + sizeof(struct gfs2_dinode), dsize);
@@ -446,8 +450,12 @@ static int stuffed_readpage(struct gfs2_inode *ip, struct page *page)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flush_dcache_page(page);
 	brelse(dibh);
 	SetPageUptodate(page);
@@ -555,10 +563,16 @@ int gfs2_internal_read(struct gfs2_inode *ip, struct file_ra_state *ra_state,
 		memcpy(buf + copied, p + offset, amt);
 		kunmap_atomic(p);
 =======
+<<<<<<< HEAD
+		p = kmap_atomic(page);
+		memcpy(buf + copied, p + offset, amt);
+		kunmap_atomic(p);
+=======
 		p = kmap_atomic(page, KM_USER0);
 		memcpy(buf + copied, p + offset, amt);
 		kunmap_atomic(p, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mark_page_accessed(page);
 		page_cache_release(page);
 		copied += amt;
@@ -632,8 +646,12 @@ static int gfs2_write_begin(struct file *file, struct address_space *mapping,
 <<<<<<< HEAD
 	struct gfs2_qadata *qa = NULL;
 =======
+<<<<<<< HEAD
+	struct gfs2_qadata *qa = NULL;
+=======
 	struct gfs2_alloc *al = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pgoff_t index = pos >> PAGE_CACHE_SHIFT;
 	unsigned from = pos & (PAGE_CACHE_SIZE - 1);
 	struct page *page;
@@ -661,9 +679,14 @@ static int gfs2_write_begin(struct file *file, struct address_space *mapping,
 		qa = gfs2_qadata_get(ip);
 		if (!qa) {
 =======
+<<<<<<< HEAD
+		qa = gfs2_qadata_get(ip);
+		if (!qa) {
+=======
 		al = gfs2_alloc_get(ip);
 		if (!al) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = -ENOMEM;
 			goto out_unlock;
 		}
@@ -675,9 +698,13 @@ static int gfs2_write_begin(struct file *file, struct address_space *mapping,
 <<<<<<< HEAD
 		error = gfs2_inplace_reserve(ip, data_blocks + ind_blocks);
 =======
+<<<<<<< HEAD
+		error = gfs2_inplace_reserve(ip, data_blocks + ind_blocks);
+=======
 		al->al_requested = data_blocks + ind_blocks;
 		error = gfs2_inplace_reserve(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_qunlock;
 	}
@@ -693,8 +720,12 @@ static int gfs2_write_begin(struct file *file, struct address_space *mapping,
 <<<<<<< HEAD
 		rblocks += gfs2_rg_blocks(ip);
 =======
+<<<<<<< HEAD
+		rblocks += gfs2_rg_blocks(ip);
+=======
 		rblocks += gfs2_rg_blocks(al);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = gfs2_trans_begin(sdp, rblocks,
 				 PAGE_CACHE_SIZE/sdp->sd_sb.sb_bsize);
@@ -745,8 +776,12 @@ out_alloc_put:
 <<<<<<< HEAD
 		gfs2_qadata_put(ip);
 =======
+<<<<<<< HEAD
+		gfs2_qadata_put(ip);
+=======
 		gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 out_unlock:
 	if (&ip->i_inode == sdp->sd_rindex) {
@@ -823,6 +858,9 @@ static int gfs2_stuffed_write_end(struct inode *inode, struct buffer_head *dibh,
 	void *kaddr;
 	unsigned char *buf = dibh->b_data + sizeof(struct gfs2_dinode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON((pos + len) > (dibh->b_size - sizeof(struct gfs2_dinode)));
 	kaddr = kmap_atomic(page);
@@ -830,6 +868,8 @@ static int gfs2_stuffed_write_end(struct inode *inode, struct buffer_head *dibh,
 	memset(kaddr + pos + copied, 0, len - copied);
 	flush_dcache_page(page);
 	kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 	struct gfs2_dinode *di = (struct gfs2_dinode *)dibh->b_data;
 
@@ -840,6 +880,7 @@ static int gfs2_stuffed_write_end(struct inode *inode, struct buffer_head *dibh,
 	flush_dcache_page(page);
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!PageUptodate(page))
 		SetPageUptodate(page);
@@ -851,8 +892,11 @@ static int gfs2_stuffed_write_end(struct inode *inode, struct buffer_head *dibh,
 			i_size_write(inode, to);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		gfs2_dinode_out(ip, di);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mark_inode_dirty(inode);
 	}
 
@@ -861,8 +905,12 @@ static int gfs2_stuffed_write_end(struct inode *inode, struct buffer_head *dibh,
 <<<<<<< HEAD
 		sdp->sd_rindex_uptodate = 0;
 =======
+<<<<<<< HEAD
+		sdp->sd_rindex_uptodate = 0;
+=======
 		ip->i_gh.gh_flags |= GL_NOCACHE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	brelse(dibh);
@@ -905,8 +953,12 @@ static int gfs2_write_end(struct file *file, struct address_space *mapping,
 <<<<<<< HEAD
 	struct gfs2_qadata *qa = ip->i_qadata;
 =======
+<<<<<<< HEAD
+	struct gfs2_qadata *qa = ip->i_qadata;
+=======
 	struct gfs2_alloc *al = ip->i_alloc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int from = pos & (PAGE_CACHE_SIZE - 1);
 	unsigned int to = from + len;
 	int ret;
@@ -930,10 +982,15 @@ static int gfs2_write_end(struct file *file, struct address_space *mapping,
 
 	ret = generic_write_end(file, mapping, pos, len, copied, page, fsdata);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (inode == sdp->sd_rindex) {
 		adjust_fs_space(inode);
 		sdp->sd_rindex_uptodate = 0;
+<<<<<<< HEAD
+=======
 =======
 	if (ret > 0) {
 		gfs2_dinode_out(ip, dibh->b_data);
@@ -944,23 +1001,30 @@ static int gfs2_write_end(struct file *file, struct address_space *mapping,
 		adjust_fs_space(inode);
 		ip->i_gh.gh_flags |= GL_NOCACHE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	brelse(dibh);
 failed:
 	gfs2_trans_end(sdp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ip->i_res)
 		gfs2_inplace_release(ip);
 	if (qa) {
 		gfs2_quota_unlock(ip);
 		gfs2_qadata_put(ip);
+<<<<<<< HEAD
+=======
 =======
 	if (al) {
 		gfs2_inplace_release(ip);
 		gfs2_quota_unlock(ip);
 		gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (inode == sdp->sd_rindex) {
 		gfs2_glock_dq(&m_ip->i_gh);

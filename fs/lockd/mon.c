@@ -50,8 +50,12 @@ struct nsm_res {
 <<<<<<< HEAD
 static const struct rpc_program	nsm_program;
 =======
+<<<<<<< HEAD
+static const struct rpc_program	nsm_program;
+=======
 static struct rpc_program	nsm_program;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static				LIST_HEAD(nsm_handles);
 static				DEFINE_SPINLOCK(nsm_lock);
 
@@ -62,8 +66,12 @@ u32	__read_mostly		nsm_local_state;
 <<<<<<< HEAD
 bool	__read_mostly		nsm_use_hostnames;
 =======
+<<<<<<< HEAD
+bool	__read_mostly		nsm_use_hostnames;
+=======
 int	__read_mostly		nsm_use_hostnames;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct sockaddr *nsm_addr(const struct nsm_handle *nsm)
 {
@@ -73,8 +81,12 @@ static inline struct sockaddr *nsm_addr(const struct nsm_handle *nsm)
 <<<<<<< HEAD
 static struct rpc_clnt *nsm_create(struct net *net)
 =======
+<<<<<<< HEAD
+static struct rpc_clnt *nsm_create(struct net *net)
+=======
 static struct rpc_clnt *nsm_create(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sockaddr_in sin = {
 		.sin_family		= AF_INET,
@@ -84,8 +96,12 @@ static struct rpc_clnt *nsm_create(void)
 <<<<<<< HEAD
 		.net			= net,
 =======
+<<<<<<< HEAD
+		.net			= net,
+=======
 		.net			= &init_net,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.protocol		= XPRT_TRANSPORT_UDP,
 		.address		= (struct sockaddr *)&sin,
 		.addrsize		= sizeof(sin),
@@ -103,8 +119,13 @@ static struct rpc_clnt *nsm_create(void)
 static int nsm_mon_unmon(struct nsm_handle *nsm, u32 proc, struct nsm_res *res,
 			 struct net *net)
 =======
+<<<<<<< HEAD
+static int nsm_mon_unmon(struct nsm_handle *nsm, u32 proc, struct nsm_res *res,
+			 struct net *net)
+=======
 static int nsm_mon_unmon(struct nsm_handle *nsm, u32 proc, struct nsm_res *res)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rpc_clnt	*clnt;
 	int		status;
@@ -123,8 +144,12 @@ static int nsm_mon_unmon(struct nsm_handle *nsm, u32 proc, struct nsm_res *res)
 <<<<<<< HEAD
 	clnt = nsm_create(net);
 =======
+<<<<<<< HEAD
+	clnt = nsm_create(net);
+=======
 	clnt = nsm_create();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(clnt)) {
 		status = PTR_ERR(clnt);
 		dprintk("lockd: failed to create NSM upcall transport, "
@@ -177,8 +202,12 @@ int nsm_monitor(const struct nlm_host *host)
 <<<<<<< HEAD
 	status = nsm_mon_unmon(nsm, NSMPROC_MON, &res, host->net);
 =======
+<<<<<<< HEAD
+	status = nsm_mon_unmon(nsm, NSMPROC_MON, &res, host->net);
+=======
 	status = nsm_mon_unmon(nsm, NSMPROC_MON, &res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(res.status != 0))
 		status = -EIO;
 	if (unlikely(status < 0)) {
@@ -215,8 +244,12 @@ void nsm_unmonitor(const struct nlm_host *host)
 <<<<<<< HEAD
 		status = nsm_mon_unmon(nsm, NSMPROC_UNMON, &res, host->net);
 =======
+<<<<<<< HEAD
+		status = nsm_mon_unmon(nsm, NSMPROC_UNMON, &res, host->net);
+=======
 		status = nsm_mon_unmon(nsm, NSMPROC_UNMON, &res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (res.status != 0)
 			status = -EIO;
 		if (status < 0)
@@ -570,8 +603,12 @@ static struct rpc_procinfo	nsm_procedures[] = {
 <<<<<<< HEAD
 static const struct rpc_version nsm_version1 = {
 =======
+<<<<<<< HEAD
+static const struct rpc_version nsm_version1 = {
+=======
 static struct rpc_version	nsm_version1 = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.number		= 1,
 		.nrprocs	= ARRAY_SIZE(nsm_procedures),
 		.procs		= nsm_procedures
@@ -580,8 +617,12 @@ static struct rpc_version	nsm_version1 = {
 <<<<<<< HEAD
 static const struct rpc_version *nsm_version[] = {
 =======
+<<<<<<< HEAD
+static const struct rpc_version *nsm_version[] = {
+=======
 static struct rpc_version *	nsm_version[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[1] = &nsm_version1,
 };
 
@@ -590,8 +631,12 @@ static struct rpc_stat		nsm_stats;
 <<<<<<< HEAD
 static const struct rpc_program nsm_program = {
 =======
+<<<<<<< HEAD
+static const struct rpc_program nsm_program = {
+=======
 static struct rpc_program	nsm_program = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name		= "statd",
 		.number		= NSM_PROGRAM,
 		.nrvers		= ARRAY_SIZE(nsm_version),

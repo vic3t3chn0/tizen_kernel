@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2010-2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010-2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2010 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2010 Nokia Corporation
  * Benoît Cousson
  * Paul Walmsley
@@ -21,17 +25,23 @@
 #include <linux/io.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 #include <plat/cpu.h>
 #include <plat/prcm.h>
 #include <plat/irqs.h>
 
 #include "vp.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/cpu.h>
 #include <plat/prcm.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "prm2xxx_3xxx.h"
 #include "cm2xxx_3xxx.h"
@@ -39,6 +49,9 @@
 #include "prm-regbits-34xx.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct omap_prcm_irq omap3_prcm_irqs[] = {
 	OMAP_PRCM_IRQ("wkup",	0,	0),
 	OMAP_PRCM_IRQ("io",	9,	1),
@@ -57,8 +70,11 @@ static struct omap_prcm_irq_setup omap3_prcm_irq_setup = {
 	.restore_irqen		= &omap3xxx_prm_restore_irqen,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u32 omap2_prm_read_mod_reg(s16 module, u16 idx)
 {
 	return __raw_readl(prm_base + module + idx);
@@ -191,6 +207,9 @@ int omap2_prm_deassert_hardreset(s16 prm_mod, u8 rst_shift, u8 st_shift)
 	return (c == MAX_MODULE_HARDRESET_WAIT) ? -EBUSY : 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* PRM VP */
 
@@ -322,5 +341,8 @@ static int __init omap3xxx_prcm_init(void)
 	return 0;
 }
 subsys_initcall(omap3xxx_prcm_init);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

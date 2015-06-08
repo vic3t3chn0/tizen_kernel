@@ -4,7 +4,11 @@
 <<<<<<< HEAD
  *  Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ *  Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -14,6 +18,9 @@
 #include <linux/errno.h>
 #include <linux/smp.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/cpu.h>
 #include <linux/ratelimit.h>
 
@@ -33,6 +40,8 @@ static cpumask_t cpu_dying_mask;
 
 static DEFINE_PER_CPU(unsigned int, warm_boot_flag);
 
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/cacheflush.h>
@@ -40,6 +49,7 @@ static DEFINE_PER_CPU(unsigned int, warm_boot_flag);
 extern volatile int pen_release;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void cpu_enter_lowpower(void)
 {
 	/* Just flush the cache. Changing the coherency is not yet
@@ -52,6 +62,9 @@ static inline void cpu_leave_lowpower(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void platform_do_lowpower(unsigned int cpu, int *spurious)
 {
 	/* Just enter wfi for now. TODO: Properly shut off the cpu. */
@@ -59,6 +72,8 @@ static inline void platform_do_lowpower(unsigned int cpu, int *spurious)
 
 		msm_pm_cpu_enter_lowpower(cpu);
 		if (pen_release == cpu_logical_map(cpu)) {
+<<<<<<< HEAD
+=======
 =======
 static inline void platform_do_lowpower(unsigned int cpu)
 {
@@ -74,6 +89,7 @@ static inline void platform_do_lowpower(unsigned int cpu)
 
 		if (pen_release == cpu) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * OK, proper wakeup, we're done
 			 */
@@ -91,23 +107,33 @@ static inline void platform_do_lowpower(unsigned int cpu)
 <<<<<<< HEAD
 		(*spurious)++;
 =======
+<<<<<<< HEAD
+		(*spurious)++;
+=======
 		pr_debug("CPU%u: spurious wakeup call\n", cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
 int platform_cpu_kill(unsigned int cpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (cpumask_test_and_clear_cpu(cpu, &cpu_dying_mask))
 		ret = msm_pm_wait_cpu_shutdown(cpu);
 
 	return ret ? 0 : 1;
+<<<<<<< HEAD
+=======
 =======
 	return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -118,6 +144,9 @@ int platform_cpu_kill(unsigned int cpu)
 void platform_cpu_die(unsigned int cpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int spurious = 0;
 
 	if (unlikely(cpu != smp_processor_id())) {
@@ -125,13 +154,19 @@ void platform_cpu_die(unsigned int cpu)
 			__func__, smp_processor_id(), cpu);
 		BUG();
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * we're ready for shutdown now, so do it
 	 */
 	cpu_enter_lowpower();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_do_lowpower(cpu, &spurious);
 
 	pr_debug("CPU%u: %s: normal wakeup\n", cpu, __func__);
@@ -139,6 +174,8 @@ void platform_cpu_die(unsigned int cpu)
 
 	if (spurious)
 		pr_warn("CPU%u: %u spurious wakeup calls\n", cpu, spurious);
+<<<<<<< HEAD
+=======
 =======
 	platform_do_lowpower(cpu);
 
@@ -148,6 +185,7 @@ void platform_cpu_die(unsigned int cpu)
 	 */
 	cpu_leave_lowpower();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int platform_cpu_disable(unsigned int cpu)
@@ -159,6 +197,9 @@ int platform_cpu_disable(unsigned int cpu)
 	return cpu == 0 ? -EPERM : 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CPU_SHIFT	0
 #define CPU_MASK	0xF
@@ -252,5 +293,8 @@ static int __init init_hotplug(void)
 	return register_hotcpu_notifier(&hotplug_cpu_check_notifier);
 }
 early_initcall(init_hotplug);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

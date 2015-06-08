@@ -234,8 +234,12 @@ static struct i2c_board_info zylonite_i2c_board_info[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(18),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(18),
+=======
 		.irq		= IRQ_GPIO(18),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.type		= "pca9539",
 		.addr		= 0x75,
@@ -243,8 +247,12 @@ static struct i2c_board_info zylonite_i2c_board_info[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(19),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(19),
+=======
 		.irq		= IRQ_GPIO(19),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 

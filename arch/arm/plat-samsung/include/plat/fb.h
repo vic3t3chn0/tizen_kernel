@@ -17,9 +17,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/gpio-cfg.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* S3C_FB_MAX_WIN
  * Set to the maximum number of windows that any of the supported hardware
  * can use. Since the platform data uses this for an array size, having it
@@ -27,6 +30,8 @@
  */
 #define S3C_FB_MAX_WIN	(5)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #if defined(CONFIG_MACH_P11) || defined(CONFIG_MACH_P10)
@@ -45,6 +50,7 @@
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct s3c_fb_pd_win - per window setup data
  * @win_mode: The display parameters to initialise (not for window 0)
@@ -52,9 +58,12 @@
  * @virtual_y: The virtual Y size.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @width: The width of display in mm
  * @height: The height of display in mm
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct s3c_fb_pd_win {
 	struct fb_videomode	win_mode;
@@ -65,9 +74,12 @@ struct s3c_fb_pd_win {
 	unsigned short		virtual_y;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned short		width;
 	unsigned short		height;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -117,6 +129,8 @@ extern void s5p_fimd0_set_platdata(struct s3c_fb_platdata *pd);
 /**
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * s5p_fimd1_set_platdata() - Setup the FB device with platform data.
  * @pd: The platform data to set. The data is copied from the passed structure
  *      so the machine data can mark the data __initdata so that any unused
@@ -126,6 +140,7 @@ extern void s5p_fimd1_set_platdata(struct s3c_fb_platdata *pd);
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * s3c64xx_fb_gpio_setup_24bpp() - S3C64XX setup function for 24bpp LCD
  *
  * Initialise the GPIO for an 24bpp LCD display on the RGB interface.
@@ -155,12 +170,17 @@ extern void exynos4_fimd0_gpio_setup_24bpp(void);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * s5p64x0_fb_gpio_setup_24bpp() - S5P6440/S5P6450 setup function for 24bpp LCD
  *
  * Initialise the GPIO for an 24bpp LCD display on the RGB interface.
  */
 extern void s5p64x0_fb_gpio_setup_24bpp(void);
 
+<<<<<<< HEAD
+=======
 =======
  * exynos4_fimd_cfg_gpios() - Exynos4 setup function for 24bpp LCD
  *
@@ -181,4 +201,5 @@ int __init exynos4_fimd0_setup_clock(struct device *dev, const char *parent,
 int __init exynos4_fimd_setup_clock(struct device *dev, const char *bus_clk,
 					const char *parent, unsigned long clk_rate);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __PLAT_S3C_FB_H */

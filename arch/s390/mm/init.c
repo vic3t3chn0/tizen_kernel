@@ -31,10 +31,16 @@
 #include <linux/gfp.h>
 #include <asm/processor.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/gfp.h>
+#include <asm/processor.h>
+=======
 #include <linux/gfp.h>
 #include <asm/processor.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/pgtable.h>
 #include <asm/pgalloc.h>
@@ -46,7 +52,11 @@
 <<<<<<< HEAD
 #include <asm/ctl_reg.h>
 =======
+<<<<<<< HEAD
+#include <asm/ctl_reg.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 pgd_t swapper_pg_dir[PTRS_PER_PGD] __attribute__((__aligned__(PAGE_SIZE)));
 
@@ -103,6 +113,9 @@ void __init paging_init(void)
 {
 	unsigned long max_zone_pfns[MAX_NR_ZONES];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long pgd_type, asce_bits;
 
 	init_mm.pgd = swapper_pg_dir;
@@ -119,6 +132,8 @@ void __init paging_init(void)
 	pgd_type = _SEGMENT_ENTRY_EMPTY;
 #endif
 	S390_lowcore.kernel_asce = (__pa(init_mm.pgd) & PAGE_MASK) | asce_bits;
+<<<<<<< HEAD
+=======
 =======
 	unsigned long pgd_type;
 
@@ -133,6 +148,7 @@ void __init paging_init(void)
 	pgd_type = _SEGMENT_ENTRY_EMPTY;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_table((unsigned long *) init_mm.pgd, pgd_type,
 		    sizeof(unsigned long)*2048);
 	vmem_map_init();
@@ -248,6 +264,9 @@ void free_initrd_mem(unsigned long start, unsigned long end)
 int arch_add_memory(int nid, u64 start, u64 size)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long zone_start_pfn, zone_end_pfn, nr_pages;
 	unsigned long start_pfn = PFN_DOWN(start);
 	unsigned long size_pages = PFN_DOWN(size);
@@ -280,6 +299,8 @@ int arch_add_memory(int nid, u64 start, u64 size)
 		if (!size_pages)
 			break;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct pglist_data *pgdat;
 	struct zone *zone;
@@ -292,6 +313,7 @@ int arch_add_memory(int nid, u64 start, u64 size)
 		return rc;
 	rc = __add_pages(nid, zone, PFN_DOWN(start), PFN_DOWN(size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc)
 		vmem_remove_mapping(start, size);
 	return rc;

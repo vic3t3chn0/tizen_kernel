@@ -45,7 +45,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/timer.h>
@@ -77,6 +84,12 @@
 #define DRIVER_ALIAS "USBVision"
 #define DRIVER_DESC "USBVision USB Video Device Driver for Linux"
 #define DRIVER_LICENSE "GPL"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define USBVISION_VERSION_STRING "0.9.11"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define USBVISION_DRIVER_VERSION_MAJOR 0
 #define USBVISION_DRIVER_VERSION_MINOR 9
 #define USBVISION_DRIVER_VERSION_PATCHLEVEL 10
@@ -86,6 +99,10 @@ USBVISION_DRIVER_VERSION_PATCHLEVEL)
 #define USBVISION_VERSION_STRING __stringify(USBVISION_DRIVER_VERSION_MAJOR) \
 "." __stringify(USBVISION_DRIVER_VERSION_MINOR) \
 "." __stringify(USBVISION_DRIVER_VERSION_PATCHLEVEL)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define	ENABLE_HEXDUMP	0	/* Enable if you need it */
 
@@ -516,7 +533,14 @@ static int vidioc_querycap(struct file *file, void  *priv,
 		usbvision_device_data[usbvision->dev_model].model_string,
 		sizeof(vc->card));
 	usb_make_path(usbvision->dev, vc->bus_info, sizeof(vc->bus_info));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	vc->version = USBVISION_DRIVER_VERSION;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	vc->version = USBVISION_DRIVER_VERSION;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vc->capabilities = V4L2_CAP_VIDEO_CAPTURE |
 		V4L2_CAP_AUDIO |
 		V4L2_CAP_READWRITE |

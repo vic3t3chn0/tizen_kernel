@@ -37,7 +37,11 @@ void ixp23xx_sys_init(void);
 <<<<<<< HEAD
 void ixp23xx_restart(char, const char *);
 =======
+<<<<<<< HEAD
+void ixp23xx_restart(char, const char *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ixp23xx_pci_setup(int, struct pci_sys_data *);
 void ixp23xx_pci_preinit(void);
 struct pci_bus *ixp23xx_pci_scan_bus(int, struct pci_sys_data*);

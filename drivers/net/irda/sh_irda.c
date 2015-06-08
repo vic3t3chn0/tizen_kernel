@@ -2,7 +2,15 @@
  * SuperH IrDA Driver
  *
  * Copyright (C) 2010 Renesas Solutions Corp.
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+=======
  * Kuninori Morimoto <morimoto.kuninori@renesas.com>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Kuninori Morimoto <morimoto.kuninori@renesas.com>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Based on sh_sir.c
  * Copyright (C) 2009 Renesas Solutions Corp.
@@ -22,8 +30,21 @@
  *  - DMA transfer support
  *  - FIFO mode support
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/io.h>
+#include <linux/interrupt.h>
 #include <linux/module.h>
 #include <linux/platform_device.h>
+#include <linux/pm_runtime.h>
+=======
+#include <linux/module.h>
+#include <linux/platform_device.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/module.h>
+#include <linux/platform_device.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clk.h>
 #include <net/irda/wrapper.h>
 #include <net/irda/irda_device.h>
@@ -142,8 +163,18 @@ struct sh_irda_xir_func {
 
 struct sh_irda_self {
 	void __iomem		*membase;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int		irq;
+	struct platform_device	*pdev;
+=======
 	unsigned int		 irq;
 	struct clk		*clk;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned int		 irq;
+	struct clk		*clk;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct net_device	*ndev;
 
@@ -262,7 +293,15 @@ static int sh_irda_set_baudrate(struct sh_irda_self *self, int baudrate)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_get_rcv_length(struct sh_irda_self *self)
+=======
 static int xir_get_rcv_length(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xir_get_rcv_length(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return RFL_MASK & sh_irda_read(self, IRRFLR);
 }
@@ -272,47 +311,102 @@ static int xir_get_rcv_length(struct sh_irda_self *self)
  *		NONE MODE
  *
  *=====================================*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_xir_fre(struct sh_irda_self *self)
+=======
 static int xir_fre(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xir_fre(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 	dev_err(dev, "none mode: frame recv\n");
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_xir_trov(struct sh_irda_self *self)
+=======
 static int xir_trov(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xir_trov(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 	dev_err(dev, "none mode: buffer ram over\n");
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_xir_9(struct sh_irda_self *self)
+=======
 static int xir_9(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xir_9(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 	dev_err(dev, "none mode: time over\n");
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_xir_8(struct sh_irda_self *self)
+=======
 static int xir_8(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xir_8(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 	dev_err(dev, "none mode: framing error\n");
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_xir_fte(struct sh_irda_self *self)
+=======
 static int xir_fte(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xir_fte(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 	dev_err(dev, "none mode: frame transmit end\n");
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct sh_irda_xir_func sh_irda_xir_func = {
+	.xir_fre	= sh_irda_xir_fre,
+	.xir_trov	= sh_irda_xir_trov,
+	.xir_9		= sh_irda_xir_9,
+	.xir_8		= sh_irda_xir_8,
+	.xir_fte	= sh_irda_xir_fte,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_irda_xir_func xir_func = {
 	.xir_fre	= xir_fre,
 	.xir_trov	= xir_trov,
 	.xir_9		= xir_9,
 	.xir_8		= xir_8,
 	.xir_fte	= xir_fte,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*=====================================
@@ -321,12 +415,27 @@ static struct sh_irda_xir_func xir_func = {
  *
  * MIR/FIR are not supported now
  *=====================================*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct sh_irda_xir_func sh_irda_mfir_func = {
+	.xir_fre	= sh_irda_xir_fre,
+	.xir_trov	= sh_irda_xir_trov,
+	.xir_9		= sh_irda_xir_9,
+	.xir_8		= sh_irda_xir_8,
+	.xir_fte	= sh_irda_xir_fte,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_irda_xir_func mfir_func = {
 	.xir_fre	= xir_fre,
 	.xir_trov	= xir_trov,
 	.xir_9		= xir_9,
 	.xir_8		= xir_8,
 	.xir_fte	= xir_fte,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*=====================================
@@ -334,12 +443,28 @@ static struct sh_irda_xir_func mfir_func = {
  *		SIR MODE
  *
  *=====================================*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_sir_fre(struct sh_irda_self *self)
+=======
 static int sir_fre(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sir_fre(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 	u16 data16;
 	u8  *data = (u8 *)&data16;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int len = sh_irda_get_rcv_length(self);
+=======
 	int len = xir_get_rcv_length(self);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int len = xir_get_rcv_length(self);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, j;
 
 	if (len > IRDARAM_LEN)
@@ -362,7 +487,15 @@ static int sir_fre(struct sh_irda_self *self)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_sir_trov(struct sh_irda_self *self)
+=======
 static int sir_trov(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sir_trov(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 
@@ -371,7 +504,15 @@ static int sir_trov(struct sh_irda_self *self)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_sir_tot(struct sh_irda_self *self)
+=======
 static int sir_tot(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sir_tot(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 
@@ -381,7 +522,15 @@ static int sir_tot(struct sh_irda_self *self)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_sir_fer(struct sh_irda_self *self)
+=======
 static int sir_fer(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sir_fer(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 
@@ -390,7 +539,15 @@ static int sir_fer(struct sh_irda_self *self)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_sir_fte(struct sh_irda_self *self)
+=======
 static int sir_fte(struct sh_irda_self *self)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sir_fte(struct sh_irda_self *self)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *dev = &self->ndev->dev;
 
@@ -400,12 +557,27 @@ static int sir_fte(struct sh_irda_self *self)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct sh_irda_xir_func sh_irda_sir_func = {
+	.xir_fre	= sh_irda_sir_fre,
+	.xir_trov	= sh_irda_sir_trov,
+	.xir_9		= sh_irda_sir_tot,
+	.xir_8		= sh_irda_sir_fer,
+	.xir_fte	= sh_irda_sir_fte,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_irda_xir_func sir_func = {
 	.xir_fre	= sir_fre,
 	.xir_trov	= sir_trov,
 	.xir_9		= sir_tot,
 	.xir_8		= sir_fer,
 	.xir_fte	= sir_fte,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void sh_irda_set_mode(struct sh_irda_self *self, enum sh_irda_mode mode)
@@ -419,22 +591,53 @@ static void sh_irda_set_mode(struct sh_irda_self *self, enum sh_irda_mode mode)
 	case SH_IRDA_SIR:
 		name	= "SIR";
 		data	= TMD_SIR;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		func	= &sh_irda_sir_func;
+=======
 		func	= &sir_func;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		func	= &sir_func;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SH_IRDA_MIR:
 		name	= "MIR";
 		data	= TMD_MIR;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		func	= &sh_irda_mfir_func;
+=======
 		func	= &mfir_func;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		func	= &mfir_func;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SH_IRDA_FIR:
 		name	= "FIR";
 		data	= TMD_FIR;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		func	= &sh_irda_mfir_func;
+		break;
+	default:
+		name	= "NONE";
+		data	= 0;
+		func	= &sh_irda_xir_func;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		func	= &mfir_func;
 		break;
 	default:
 		name = "NONE";
 		data = 0;
 		func = &xir_func;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -692,7 +895,15 @@ static int sh_irda_open(struct net_device *ndev)
 	struct sh_irda_self *self = netdev_priv(ndev);
 	int err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_get_sync(&self->pdev->dev);
+=======
 	clk_enable(self->clk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_enable(self->clk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = sh_irda_crc_init(self);
 	if (err)
 		goto open_err;
@@ -716,7 +927,15 @@ static int sh_irda_open(struct net_device *ndev)
 	return 0;
 
 open_err:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_put_sync(&self->pdev->dev);
+=======
 	clk_disable(self->clk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_disable(self->clk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -732,6 +951,13 @@ static int sh_irda_stop(struct net_device *ndev)
 	}
 
 	netif_stop_queue(ndev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_put_sync(&self->pdev->dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_info(&ndev->dev, "stoped\n");
 
@@ -784,11 +1010,22 @@ static int __devinit sh_irda_probe(struct platform_device *pdev)
 	if (err)
 		goto err_mem_2;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	self->pdev = pdev;
+	pm_runtime_enable(&pdev->dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	self->clk = clk_get(&pdev->dev, NULL);
 	if (IS_ERR(self->clk)) {
 		dev_err(&pdev->dev, "cannot get irda clock\n");
 		goto err_mem_3;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irda_init_max_qos_capabilies(&self->qos);
 
@@ -818,8 +1055,17 @@ static int __devinit sh_irda_probe(struct platform_device *pdev)
 	goto exit;
 
 err_mem_4:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_disable(&pdev->dev);
+=======
 	clk_put(self->clk);
 err_mem_3:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_put(self->clk);
+err_mem_3:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sh_irda_remove_iobuf(self);
 err_mem_2:
 	iounmap(self->membase);
@@ -838,7 +1084,15 @@ static int __devexit sh_irda_remove(struct platform_device *pdev)
 		return 0;
 
 	unregister_netdev(ndev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_disable(&pdev->dev);
+=======
 	clk_put(self->clk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_put(self->clk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sh_irda_remove_iobuf(self);
 	iounmap(self->membase);
 	free_netdev(ndev);
@@ -847,6 +1101,40 @@ static int __devexit sh_irda_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_irda_runtime_nop(struct device *dev)
+{
+	/* Runtime PM callback shared between ->runtime_suspend()
+	 * and ->runtime_resume(). Simply returns success.
+	 *
+	 * This driver re-initializes all registers after
+	 * pm_runtime_get_sync() anyway so there is no need
+	 * to save and restore registers here.
+	 */
+	return 0;
+}
+
+static const struct dev_pm_ops sh_irda_pm_ops = {
+	.runtime_suspend	= sh_irda_runtime_nop,
+	.runtime_resume		= sh_irda_runtime_nop,
+};
+
+static struct platform_driver sh_irda_driver = {
+	.probe	= sh_irda_probe,
+	.remove	= __devexit_p(sh_irda_remove),
+	.driver	= {
+		.name	= DRIVER_NAME,
+		.pm	= &sh_irda_pm_ops,
+	},
+};
+
+module_platform_driver(sh_irda_driver);
+
+MODULE_AUTHOR("Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver sh_irda_driver = {
 	.probe   = sh_irda_probe,
 	.remove  = __devexit_p(sh_irda_remove),
@@ -869,5 +1157,9 @@ module_init(sh_irda_init);
 module_exit(sh_irda_exit);
 
 MODULE_AUTHOR("Kuninori Morimoto <morimoto.kuninori@renesas.com>");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_DESCRIPTION("SuperH IrDA driver");
 MODULE_LICENSE("GPL");

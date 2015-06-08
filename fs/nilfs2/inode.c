@@ -196,6 +196,9 @@ static int nilfs_writepage(struct page *page, struct writeback_control *wbc)
 static int nilfs_set_page_dirty(struct page *page)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = __set_page_dirty_buffers(page);
 
 	if (ret) {
@@ -203,6 +206,8 @@ static int nilfs_set_page_dirty(struct page *page)
 		unsigned nr_dirty = 1 << (PAGE_SHIFT - inode->i_blkbits);
 
 		nilfs_set_file_dirty(inode, nr_dirty);
+<<<<<<< HEAD
+=======
 =======
 	int ret = __set_page_dirty_nobuffers(page);
 
@@ -231,6 +236,7 @@ static int nilfs_set_page_dirty(struct page *page)
 		if (nr_dirty)
 			nilfs_set_file_dirty(inode, nr_dirty);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return ret;
 }
@@ -292,9 +298,14 @@ nilfs_direct_IO(int rw, struct kiocb *iocb, const struct iovec *iov,
 	size = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
 				  nilfs_get_block);
 =======
+<<<<<<< HEAD
+	size = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
+				  nilfs_get_block);
+=======
 	size = blockdev_direct_IO(rw, iocb, inode, inode->i_sb->s_bdev, iov,
 				  offset, nr_segs, nilfs_get_block, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * In case of error extending write may have instantiated a few
@@ -328,8 +339,12 @@ const struct address_space_operations nilfs_aops = {
 <<<<<<< HEAD
 struct inode *nilfs_new_inode(struct inode *dir, umode_t mode)
 =======
+<<<<<<< HEAD
+struct inode *nilfs_new_inode(struct inode *dir, umode_t mode)
+=======
 struct inode *nilfs_new_inode(struct inode *dir, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = dir->i_sb;
 	struct the_nilfs *nilfs = sb->s_fs_info;
@@ -395,8 +410,12 @@ struct inode *nilfs_new_inode(struct inode *dir, int mode)
 <<<<<<< HEAD
 	clear_nlink(inode);
 =======
+<<<<<<< HEAD
+	clear_nlink(inode);
+=======
 	inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iput(inode);  /* raw_inode will be deleted through
 			 generic_delete_inode() */
 	goto failed;
@@ -441,8 +460,12 @@ int nilfs_read_inode_common(struct inode *inode,
 <<<<<<< HEAD
 	set_nlink(inode, le16_to_cpu(raw_inode->i_links_count));
 =======
+<<<<<<< HEAD
+	set_nlink(inode, le16_to_cpu(raw_inode->i_links_count));
+=======
 	inode->i_nlink = le16_to_cpu(raw_inode->i_links_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_size = le64_to_cpu(raw_inode->i_size);
 	inode->i_atime.tv_sec = le64_to_cpu(raw_inode->i_mtime);
 	inode->i_ctime.tv_sec = le64_to_cpu(raw_inode->i_ctime);
@@ -828,7 +851,12 @@ int nilfs_setattr(struct dentry *dentry, struct iattr *iattr)
 		inode_dio_wait(inode);
 
 =======
+<<<<<<< HEAD
+		inode_dio_wait(inode);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = vmtruncate(inode, iattr->ia_size);
 		if (unlikely(err))
 			goto out_err;
@@ -853,8 +881,12 @@ out_err:
 <<<<<<< HEAD
 int nilfs_permission(struct inode *inode, int mask)
 =======
+<<<<<<< HEAD
+int nilfs_permission(struct inode *inode, int mask)
+=======
 int nilfs_permission(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct nilfs_root *root = NILFS_I(inode)->i_root;
 	if ((mask & MAY_WRITE) && root &&
@@ -864,8 +896,12 @@ int nilfs_permission(struct inode *inode, int mask, unsigned int flags)
 <<<<<<< HEAD
 	return generic_permission(inode, mask);
 =======
+<<<<<<< HEAD
+	return generic_permission(inode, mask);
+=======
 	return generic_permission(inode, mask, flags, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int nilfs_load_inode_block(struct inode *inode, struct buffer_head **pbh)

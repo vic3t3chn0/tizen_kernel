@@ -38,10 +38,16 @@
 #include <linux/mutex.h>
 #include <linux/rbtree.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/mutex.h>
+#include <linux/rbtree.h>
+=======
 #include <linux/mutex.h>
 #include <linux/rbtree.h>
 #include <linux/shmem_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/swap.h>
 #include <linux/swapops.h>
@@ -60,7 +66,12 @@
 #include <net/sock.h>
 #include <net/tcp_memcontrol.h>
 =======
+<<<<<<< HEAD
+#include <net/sock.h>
+#include <net/tcp_memcontrol.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/uaccess.h>
 
@@ -100,8 +111,11 @@ enum mem_cgroup_stat_index {
 	MEM_CGROUP_STAT_DATA, /* end of data requires synchronization */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	MEM_CGROUP_ON_MOVE,	/* someone is moving account between groups */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MEM_CGROUP_STAT_NSTATS,
 };
 
@@ -136,6 +150,9 @@ struct mem_cgroup_stat_cpu {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mem_cgroup_reclaim_iter {
 	/* css_id of the last scanned hierarchy member */
 	int position;
@@ -143,17 +160,25 @@ struct mem_cgroup_reclaim_iter {
 	unsigned int generation;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * per-zone information in memory controller.
  */
 struct mem_cgroup_per_zone {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct lruvec		lruvec;
 	unsigned long		lru_size[NR_LRU_LISTS];
 
 	struct mem_cgroup_reclaim_iter reclaim_iter[DEF_PRIORITY + 1];
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * spin_lock to protect the per cgroup LRU
@@ -161,6 +186,7 @@ struct mem_cgroup_per_zone {
 	struct list_head	lists[NR_LRU_LISTS];
 	unsigned long		count[NR_LRU_LISTS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct zone_reclaim_stat reclaim_stat;
 	struct rb_node		tree_node;	/* RB tree node */
@@ -172,12 +198,18 @@ struct mem_cgroup_per_zone {
 						/* use container_of	   */
 };
 =======
+<<<<<<< HEAD
+	struct mem_cgroup	*memcg;		/* Back pointer, we cannot */
+						/* use container_of	   */
+};
+=======
 	struct mem_cgroup	*mem;		/* Back pointer, we cannot */
 						/* use container_of	   */
 };
 /* Macro for accessing counter */
 #define MEM_CGROUP_ZSTAT(mz, idx)	((mz)->count[(idx)])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct mem_cgroup_per_node {
 	struct mem_cgroup_per_zone zoneinfo[MAX_NR_ZONES];
@@ -243,9 +275,14 @@ struct mem_cgroup_eventfd_list {
 static void mem_cgroup_threshold(struct mem_cgroup *memcg);
 static void mem_cgroup_oom_notify(struct mem_cgroup *memcg);
 =======
+<<<<<<< HEAD
+static void mem_cgroup_threshold(struct mem_cgroup *memcg);
+static void mem_cgroup_oom_notify(struct mem_cgroup *memcg);
+=======
 static void mem_cgroup_threshold(struct mem_cgroup *mem);
 static void mem_cgroup_oom_notify(struct mem_cgroup *mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The memory controller data structure. The memory controller controls both
@@ -265,6 +302,9 @@ struct mem_cgroup {
 	 */
 	struct res_counter res;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	union {
 		/*
@@ -289,17 +329,22 @@ struct mem_cgroup {
 		struct work_struct work_freeing;
 	};
 
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * the counter to account for mem+swap usage.
 	 */
 	struct res_counter memsw;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Per cgroup active and inactive list, similar to the
 	 * per zone LRU lists.
 	 */
 	struct mem_cgroup_lru_info info;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/*
@@ -308,6 +353,7 @@ struct mem_cgroup {
 	 */
 	int last_scanned_child;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int last_scanned_node;
 #if MAX_NUMNODES > 1
 	nodemask_t	scan_nodes;
@@ -319,6 +365,9 @@ struct mem_cgroup {
 	 */
 	bool use_hierarchy;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bool		oom_lock;
 	atomic_t	under_oom;
@@ -326,12 +375,15 @@ struct mem_cgroup {
 	atomic_t	refcnt;
 
 	int	swappiness;
+<<<<<<< HEAD
+=======
 =======
 	atomic_t	oom_lock;
 	atomic_t	refcnt;
 
 	unsigned int	swappiness;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* OOM-Killer disable */
 	int		oom_kill_disable;
 
@@ -357,14 +409,20 @@ struct mem_cgroup {
 	unsigned long 	move_charge_at_immigrate;
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * set > 0 if pages under this cgroup are moving to other cgroup.
 	 */
 	atomic_t	moving_account;
 	/* taken only while moving_account > 0 */
 	spinlock_t	move_lock;
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * percpu counter.
 	 */
 	struct mem_cgroup_stat_cpu *stat;
@@ -375,12 +433,18 @@ struct mem_cgroup {
 	struct mem_cgroup_stat_cpu nocpu_base;
 	spinlock_t pcp_counter_lock;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_INET
 	struct tcp_memcontrol tcp_mem;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Stuffs for move charges at task migration. */
@@ -456,6 +520,9 @@ enum charge_type {
 #define MEM_CGROUP_RECLAIM_SHRINK_BIT	0x1
 #define MEM_CGROUP_RECLAIM_SHRINK	(1 << MEM_CGROUP_RECLAIM_SHRINK_BIT)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void mem_cgroup_get(struct mem_cgroup *memcg);
 static void mem_cgroup_put(struct mem_cgroup *memcg);
@@ -535,6 +602,8 @@ struct cgroup_subsys_state *mem_cgroup_css(struct mem_cgroup *memcg)
 
 static struct mem_cgroup_per_zone *
 page_cgroup_zoneinfo(struct mem_cgroup *memcg, struct page *page)
+<<<<<<< HEAD
+=======
 =======
 #define MEM_CGROUP_RECLAIM_SOFT_BIT	0x2
 #define MEM_CGROUP_RECLAIM_SOFT		(1 << MEM_CGROUP_RECLAIM_SOFT_BIT)
@@ -558,6 +627,7 @@ struct cgroup_subsys_state *mem_cgroup_css(struct mem_cgroup *mem)
 static struct mem_cgroup_per_zone *
 page_cgroup_zoneinfo(struct mem_cgroup *mem, struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int nid = page_to_nid(page);
 	int zid = page_zonenum(page);
@@ -565,8 +635,12 @@ page_cgroup_zoneinfo(struct mem_cgroup *mem, struct page *page)
 <<<<<<< HEAD
 	return mem_cgroup_zoneinfo(memcg, nid, zid);
 =======
+<<<<<<< HEAD
+	return mem_cgroup_zoneinfo(memcg, nid, zid);
+=======
 	return mem_cgroup_zoneinfo(mem, nid, zid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct mem_cgroup_tree_per_zone *
@@ -588,8 +662,12 @@ static void
 <<<<<<< HEAD
 __mem_cgroup_insert_exceeded(struct mem_cgroup *memcg,
 =======
+<<<<<<< HEAD
+__mem_cgroup_insert_exceeded(struct mem_cgroup *memcg,
+=======
 __mem_cgroup_insert_exceeded(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct mem_cgroup_per_zone *mz,
 				struct mem_cgroup_tree_per_zone *mctz,
 				unsigned long long new_usage_in_excess)
@@ -626,8 +704,12 @@ static void
 <<<<<<< HEAD
 __mem_cgroup_remove_exceeded(struct mem_cgroup *memcg,
 =======
+<<<<<<< HEAD
+__mem_cgroup_remove_exceeded(struct mem_cgroup *memcg,
+=======
 __mem_cgroup_remove_exceeded(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct mem_cgroup_per_zone *mz,
 				struct mem_cgroup_tree_per_zone *mctz)
 {
@@ -641,8 +723,12 @@ static void
 <<<<<<< HEAD
 mem_cgroup_remove_exceeded(struct mem_cgroup *memcg,
 =======
+<<<<<<< HEAD
+mem_cgroup_remove_exceeded(struct mem_cgroup *memcg,
+=======
 mem_cgroup_remove_exceeded(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct mem_cgroup_per_zone *mz,
 				struct mem_cgroup_tree_per_zone *mctz)
 {
@@ -650,8 +736,12 @@ mem_cgroup_remove_exceeded(struct mem_cgroup *mem,
 <<<<<<< HEAD
 	__mem_cgroup_remove_exceeded(memcg, mz, mctz);
 =======
+<<<<<<< HEAD
+	__mem_cgroup_remove_exceeded(memcg, mz, mctz);
+=======
 	__mem_cgroup_remove_exceeded(mem, mz, mctz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&mctz->lock);
 }
 
@@ -659,8 +749,12 @@ mem_cgroup_remove_exceeded(struct mem_cgroup *mem,
 <<<<<<< HEAD
 static void mem_cgroup_update_tree(struct mem_cgroup *memcg, struct page *page)
 =======
+<<<<<<< HEAD
+static void mem_cgroup_update_tree(struct mem_cgroup *memcg, struct page *page)
+=======
 static void mem_cgroup_update_tree(struct mem_cgroup *mem, struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long long excess;
 	struct mem_cgroup_per_zone *mz;
@@ -678,10 +772,16 @@ static void mem_cgroup_update_tree(struct mem_cgroup *mem, struct page *page)
 		mz = mem_cgroup_zoneinfo(memcg, nid, zid);
 		excess = res_counter_soft_limit_excess(&memcg->res);
 =======
+<<<<<<< HEAD
+	for (; memcg; memcg = parent_mem_cgroup(memcg)) {
+		mz = mem_cgroup_zoneinfo(memcg, nid, zid);
+		excess = res_counter_soft_limit_excess(&memcg->res);
+=======
 	for (; mem; mem = parent_mem_cgroup(mem)) {
 		mz = mem_cgroup_zoneinfo(mem, nid, zid);
 		excess = res_counter_soft_limit_excess(&mem->res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * We have to update the tree if mz is on RB-tree or
 		 * mem is over its softlimit.
@@ -693,8 +793,12 @@ static void mem_cgroup_update_tree(struct mem_cgroup *mem, struct page *page)
 <<<<<<< HEAD
 				__mem_cgroup_remove_exceeded(memcg, mz, mctz);
 =======
+<<<<<<< HEAD
+				__mem_cgroup_remove_exceeded(memcg, mz, mctz);
+=======
 				__mem_cgroup_remove_exceeded(mem, mz, mctz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Insert again. mz->usage_in_excess will be updated.
 			 * If excess is 0, no tree ops.
@@ -702,8 +806,12 @@ static void mem_cgroup_update_tree(struct mem_cgroup *mem, struct page *page)
 <<<<<<< HEAD
 			__mem_cgroup_insert_exceeded(memcg, mz, mctz, excess);
 =======
+<<<<<<< HEAD
+			__mem_cgroup_insert_exceeded(memcg, mz, mctz, excess);
+=======
 			__mem_cgroup_insert_exceeded(mem, mz, mctz, excess);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&mctz->lock);
 		}
 	}
@@ -712,19 +820,28 @@ static void mem_cgroup_update_tree(struct mem_cgroup *mem, struct page *page)
 <<<<<<< HEAD
 static void mem_cgroup_remove_from_trees(struct mem_cgroup *memcg)
 =======
+<<<<<<< HEAD
+static void mem_cgroup_remove_from_trees(struct mem_cgroup *memcg)
+=======
 static void mem_cgroup_remove_from_trees(struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int node, zone;
 	struct mem_cgroup_per_zone *mz;
 	struct mem_cgroup_tree_per_zone *mctz;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_node(node) {
 		for (zone = 0; zone < MAX_NR_ZONES; zone++) {
 			mz = mem_cgroup_zoneinfo(memcg, node, zone);
 			mctz = soft_limit_tree_node_zone(node, zone);
 			mem_cgroup_remove_exceeded(memcg, mz, mctz);
+<<<<<<< HEAD
+=======
 =======
 	for_each_node_state(node, N_POSSIBLE) {
 		for (zone = 0; zone < MAX_NR_ZONES; zone++) {
@@ -732,6 +849,7 @@ static void mem_cgroup_remove_from_trees(struct mem_cgroup *mem)
 			mctz = soft_limit_tree_node_zone(node, zone);
 			mem_cgroup_remove_exceeded(mem, mz, mctz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -759,10 +877,16 @@ retry:
 	if (!res_counter_soft_limit_excess(&mz->memcg->res) ||
 		!css_tryget(&mz->memcg->css))
 =======
+<<<<<<< HEAD
+	__mem_cgroup_remove_exceeded(mz->memcg, mz, mctz);
+	if (!res_counter_soft_limit_excess(&mz->memcg->res) ||
+		!css_tryget(&mz->memcg->css))
+=======
 	__mem_cgroup_remove_exceeded(mz->mem, mz, mctz);
 	if (!res_counter_soft_limit_excess(&mz->mem->res) ||
 		!css_tryget(&mz->mem->css))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto retry;
 done:
 	return mz;
@@ -801,8 +925,12 @@ mem_cgroup_largest_soft_limit_node(struct mem_cgroup_tree_per_zone *mctz)
 <<<<<<< HEAD
 static long mem_cgroup_read_stat(struct mem_cgroup *memcg,
 =======
+<<<<<<< HEAD
+static long mem_cgroup_read_stat(struct mem_cgroup *memcg,
+=======
 static long mem_cgroup_read_stat(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 enum mem_cgroup_stat_index idx)
 {
 	long val = 0;
@@ -811,11 +939,16 @@ static long mem_cgroup_read_stat(struct mem_cgroup *mem,
 	get_online_cpus();
 	for_each_online_cpu(cpu)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val += per_cpu(memcg->stat->count[idx], cpu);
 #ifdef CONFIG_HOTPLUG_CPU
 	spin_lock(&memcg->pcp_counter_lock);
 	val += memcg->nocpu_base.count[idx];
 	spin_unlock(&memcg->pcp_counter_lock);
+<<<<<<< HEAD
+=======
 =======
 		val += per_cpu(mem->stat->count[idx], cpu);
 #ifdef CONFIG_HOTPLUG_CPU
@@ -823,12 +956,16 @@ static long mem_cgroup_read_stat(struct mem_cgroup *mem,
 	val += mem->nocpu_base.count[idx];
 	spin_unlock(&mem->pcp_counter_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	put_online_cpus();
 	return val;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mem_cgroup_swap_statistics(struct mem_cgroup *memcg,
 					 bool charge)
 {
@@ -837,6 +974,8 @@ static void mem_cgroup_swap_statistics(struct mem_cgroup *memcg,
 }
 
 static unsigned long mem_cgroup_read_events(struct mem_cgroup *memcg,
+<<<<<<< HEAD
+=======
 =======
 static void mem_cgroup_swap_statistics(struct mem_cgroup *mem,
 					 bool charge)
@@ -857,6 +996,7 @@ void mem_cgroup_pgmajfault(struct mem_cgroup *mem, int val)
 
 static unsigned long mem_cgroup_read_events(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    enum mem_cgroup_events_index idx)
 {
 	unsigned long val = 0;
@@ -864,11 +1004,16 @@ static unsigned long mem_cgroup_read_events(struct mem_cgroup *mem,
 
 	for_each_online_cpu(cpu)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val += per_cpu(memcg->stat->events[idx], cpu);
 #ifdef CONFIG_HOTPLUG_CPU
 	spin_lock(&memcg->pcp_counter_lock);
 	val += memcg->nocpu_base.events[idx];
 	spin_unlock(&memcg->pcp_counter_lock);
+<<<<<<< HEAD
+=======
 =======
 		val += per_cpu(mem->stat->events[idx], cpu);
 #ifdef CONFIG_HOTPLUG_CPU
@@ -876,11 +1021,15 @@ static unsigned long mem_cgroup_read_events(struct mem_cgroup *mem,
 	val += mem->nocpu_base.events[idx];
 	spin_unlock(&mem->pcp_counter_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	return val;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mem_cgroup_charge_statistics(struct mem_cgroup *memcg,
 					 bool anon, int nr_pages)
 {
@@ -906,6 +1055,8 @@ static void mem_cgroup_charge_statistics(struct mem_cgroup *memcg,
 	}
 
 	__this_cpu_add(memcg->stat->events[MEM_CGROUP_EVENTS_COUNT], nr_pages);
+<<<<<<< HEAD
+=======
 =======
 static void mem_cgroup_charge_statistics(struct mem_cgroup *mem,
 					 bool file, int nr_pages)
@@ -927,11 +1078,15 @@ static void mem_cgroup_charge_statistics(struct mem_cgroup *mem,
 
 	__this_cpu_add(mem->stat->events[MEM_CGROUP_EVENTS_COUNT], nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	preempt_enable();
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long
 mem_cgroup_zone_nr_lru_pages(struct mem_cgroup *memcg, int nid, int zid,
 			unsigned int lru_mask)
@@ -965,6 +1120,8 @@ mem_cgroup_node_nr_lru_pages(struct mem_cgroup *memcg,
 
 static unsigned long mem_cgroup_nr_lru_pages(struct mem_cgroup *memcg,
 			unsigned int lru_mask)
+<<<<<<< HEAD
+=======
 =======
 static unsigned long
 mem_cgroup_get_zonestat_node(struct mem_cgroup *mem, int nid, enum lru_list idx)
@@ -982,11 +1139,15 @@ mem_cgroup_get_zonestat_node(struct mem_cgroup *mem, int nid, enum lru_list idx)
 static unsigned long mem_cgroup_get_local_zonestat(struct mem_cgroup *mem,
 					enum lru_list idx)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int nid;
 	u64 total = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_node_state(nid, N_HIGH_MEMORY)
 		total += mem_cgroup_node_nr_lru_pages(memcg, nid, lru_mask);
 	return total;
@@ -1018,6 +1179,8 @@ static bool mem_cgroup_event_ratelimit(struct mem_cgroup *memcg,
 		return true;
 	}
 	return false;
+<<<<<<< HEAD
+=======
 =======
 	for_each_online_node(nid)
 		total += mem_cgroup_get_zonestat_node(mem, nid, idx);
@@ -1056,6 +1219,7 @@ static void __mem_cgroup_target_update(struct mem_cgroup *mem, int target)
 
 	this_cpu_write(mem->stat->targets[target], next);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1063,6 +1227,9 @@ static void __mem_cgroup_target_update(struct mem_cgroup *mem, int target)
  *
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void memcg_check_events(struct mem_cgroup *memcg, struct page *page)
 {
 	preempt_disable();
@@ -1092,6 +1259,8 @@ static void memcg_check_events(struct mem_cgroup *memcg, struct page *page)
 }
 
 struct mem_cgroup *mem_cgroup_from_cont(struct cgroup *cont)
+<<<<<<< HEAD
+=======
 =======
 static void memcg_check_events(struct mem_cgroup *mem, struct page *page)
 {
@@ -1118,6 +1287,7 @@ static void memcg_check_events(struct mem_cgroup *mem, struct page *page)
 
 static struct mem_cgroup *mem_cgroup_from_cont(struct cgroup *cont)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return container_of(cgroup_subsys_state(cont,
 				mem_cgroup_subsys_id), struct mem_cgroup,
@@ -1143,8 +1313,12 @@ struct mem_cgroup *try_get_mem_cgroup_from_mm(struct mm_struct *mm)
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = NULL;
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = NULL;
+=======
 	struct mem_cgroup *mem = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!mm)
 		return NULL;
@@ -1156,6 +1330,9 @@ struct mem_cgroup *try_get_mem_cgroup_from_mm(struct mm_struct *mm)
 	rcu_read_lock();
 	do {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcg = mem_cgroup_from_task(rcu_dereference(mm->owner));
 		if (unlikely(!memcg))
 			break;
@@ -1278,6 +1455,8 @@ void mem_cgroup_iter_break(struct mem_cgroup *root,
 static inline bool mem_cgroup_is_root(struct mem_cgroup *memcg)
 {
 	return (memcg == root_mem_cgroup);
+<<<<<<< HEAD
+=======
 =======
 		mem = mem_cgroup_from_task(rcu_dereference(mm->owner));
 		if (unlikely(!mem))
@@ -1369,6 +1548,7 @@ static inline bool mem_cgroup_is_root(struct mem_cgroup *mem)
 {
 	return (mem == root_mem_cgroup);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void mem_cgroup_count_vm_event(struct mm_struct *mm, enum vm_event_item idx)
@@ -1376,14 +1556,21 @@ void mem_cgroup_count_vm_event(struct mm_struct *mm, enum vm_event_item idx)
 <<<<<<< HEAD
 	struct mem_cgroup *memcg;
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg;
+=======
 	struct mem_cgroup *mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!mm)
 		return;
 
 	rcu_read_lock();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcg = mem_cgroup_from_task(rcu_dereference(mm->owner));
 	if (unlikely(!memcg))
 		goto out;
@@ -1394,6 +1581,8 @@ void mem_cgroup_count_vm_event(struct mm_struct *mm, enum vm_event_item idx)
 		break;
 	case PGMAJFAULT:
 		this_cpu_inc(memcg->stat->events[MEM_CGROUP_EVENTS_PGMAJFAULT]);
+<<<<<<< HEAD
+=======
 =======
 	mem = mem_cgroup_from_task(rcu_dereference(mm->owner));
 	if (unlikely(!mem))
@@ -1406,6 +1595,7 @@ void mem_cgroup_count_vm_event(struct mm_struct *mm, enum vm_event_item idx)
 	case PGFAULT:
 		mem_cgroup_pgfault(mem, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		BUG();
@@ -1416,6 +1606,9 @@ out:
 EXPORT_SYMBOL(mem_cgroup_count_vm_event);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mem_cgroup_zone_lruvec - get the lru list vector for a zone and memcg
  * @zone: zone of the wanted lruvec
@@ -1437,8 +1630,11 @@ struct lruvec *mem_cgroup_zone_lruvec(struct zone *zone,
 	return &mz->lruvec;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Following LRU functions are allowed to be used without PCG_LOCK.
  * Operations are called by routine of global LRU independently from memcg.
@@ -1454,6 +1650,9 @@ struct lruvec *mem_cgroup_zone_lruvec(struct zone *zone,
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mem_cgroup_lru_add_list - account for adding an lru page and return lruvec
  * @zone: zone of the page
@@ -1512,6 +1711,8 @@ void mem_cgroup_lru_del_list(struct page *page, enum lru_list lru)
 	struct mem_cgroup_per_zone *mz;
 	struct mem_cgroup *memcg;
 	struct page_cgroup *pc;
+<<<<<<< HEAD
+=======
 =======
 void mem_cgroup_del_lru_list(struct page *page, enum lru_list lru)
 {
@@ -1554,12 +1755,16 @@ void mem_cgroup_rotate_reclaimable_page(struct page *page)
 	struct page_cgroup *pc;
 	enum lru_list lru = page_lru(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mem_cgroup_disabled())
 		return;
 
 	pc = lookup_page_cgroup(page);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcg = pc->mem_cgroup;
 	VM_BUG_ON(!memcg);
 	mz = page_cgroup_zoneinfo(memcg, page);
@@ -1618,6 +1823,8 @@ static bool mem_cgroup_same_or_subtree(const struct mem_cgroup *root_memcg,
 }
 
 int task_in_mem_cgroup(struct task_struct *task, const struct mem_cgroup *memcg)
+<<<<<<< HEAD
+=======
 =======
 	/* unused or root page is not rotated. */
 	if (!PageCgroupUsed(pc))
@@ -1733,6 +1940,7 @@ void mem_cgroup_move_lists(struct page *page,
 
 int task_in_mem_cgroup(struct task_struct *task, const struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	struct mem_cgroup *curr = NULL;
@@ -1740,6 +1948,9 @@ int task_in_mem_cgroup(struct task_struct *task, const struct mem_cgroup *mem)
 
 	p = find_lock_task_mm(task);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (p) {
 		curr = try_get_mem_cgroup_from_mm(p->mm);
 		task_unlock(p);
@@ -1764,6 +1975,8 @@ int task_in_mem_cgroup(struct task_struct *task, const struct mem_cgroup *mem)
 	 * hierarchy(even if use_hierarchy is disabled in "memcg").
 	 */
 	ret = mem_cgroup_same_or_subtree(memcg, curr);
+<<<<<<< HEAD
+=======
 =======
 	if (!p)
 		return 0;
@@ -1782,11 +1995,15 @@ int task_in_mem_cgroup(struct task_struct *task, const struct mem_cgroup *mem)
 	else
 		ret = (curr == mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	css_put(&curr->css);
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mem_cgroup_inactive_anon_is_low(struct mem_cgroup *memcg, struct zone *zone)
 {
 	unsigned long inactive_ratio;
@@ -1800,6 +2017,8 @@ int mem_cgroup_inactive_anon_is_low(struct mem_cgroup *memcg, struct zone *zone)
 						BIT(LRU_INACTIVE_ANON));
 	active = mem_cgroup_zone_nr_lru_pages(memcg, nid, zid,
 					      BIT(LRU_ACTIVE_ANON));
+<<<<<<< HEAD
+=======
 =======
 static int calc_inactive_ratio(struct mem_cgroup *memcg, unsigned long *present_pages)
 {
@@ -1811,6 +2030,7 @@ static int calc_inactive_ratio(struct mem_cgroup *memcg, unsigned long *present_
 	inactive = mem_cgroup_get_local_zonestat(memcg, LRU_INACTIVE_ANON);
 	active = mem_cgroup_get_local_zonestat(memcg, LRU_ACTIVE_ANON);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	gb = (inactive + active) >> (30 - PAGE_SHIFT);
 	if (gb)
@@ -1819,6 +2039,9 @@ static int calc_inactive_ratio(struct mem_cgroup *memcg, unsigned long *present_
 		inactive_ratio = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return inactive * inactive_ratio < active;
 }
 
@@ -1833,6 +2056,27 @@ int mem_cgroup_inactive_file_is_low(struct mem_cgroup *memcg, struct zone *zone)
 						BIT(LRU_INACTIVE_FILE));
 	active = mem_cgroup_zone_nr_lru_pages(memcg, nid, zid,
 					      BIT(LRU_ACTIVE_FILE));
+<<<<<<< HEAD
+
+	return (active > inactive);
+}
+
+struct zone_reclaim_stat *mem_cgroup_get_reclaim_stat(struct mem_cgroup *memcg,
+						      struct zone *zone)
+{
+	int nid = zone_to_nid(zone);
+	int zid = zone_idx(zone);
+	struct mem_cgroup_per_zone *mz = mem_cgroup_zoneinfo(memcg, nid, zid);
+
+	return &mz->reclaim_stat;
+}
+
+struct zone_reclaim_stat *
+mem_cgroup_get_reclaim_stat_from_page(struct page *page)
+{
+	struct page_cgroup *pc;
+	struct mem_cgroup_per_zone *mz;
+=======
 =======
 	if (present_pages) {
 		present_pages[0] = inactive;
@@ -1987,6 +2231,7 @@ mem_cgroup_get_reclaim_stat_from_page(struct page *page)
 {
 	struct page_cgroup *pc;
 	struct mem_cgroup_per_zone *mz;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mem_cgroup_disabled())
 		return NULL;
@@ -2000,6 +2245,8 @@ mem_cgroup_get_reclaim_stat_from_page(struct page *page)
 	return &mz->reclaim_stat;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 unsigned long mem_cgroup_isolate_pages(unsigned long nr_to_scan,
@@ -2065,6 +2312,7 @@ unsigned long mem_cgroup_isolate_pages(unsigned long nr_to_scan,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define mem_cgroup_from_res_counter(counter, member)	\
 	container_of(counter, struct mem_cgroup, member)
 
@@ -2076,6 +2324,9 @@ unsigned long mem_cgroup_isolate_pages(unsigned long nr_to_scan,
  * pages.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long mem_cgroup_margin(struct mem_cgroup *memcg)
 {
 	unsigned long long margin;
@@ -2087,6 +2338,8 @@ static unsigned long mem_cgroup_margin(struct mem_cgroup *memcg)
 }
 
 int mem_cgroup_swappiness(struct mem_cgroup *memcg)
+<<<<<<< HEAD
+=======
 =======
 static unsigned long mem_cgroup_margin(struct mem_cgroup *mem)
 {
@@ -2100,6 +2353,7 @@ static unsigned long mem_cgroup_margin(struct mem_cgroup *mem)
 
 static unsigned int get_swappiness(struct mem_cgroup *memcg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cgroup *cgrp = memcg->css.cgroup;
 
@@ -2111,6 +2365,9 @@ static unsigned int get_swappiness(struct mem_cgroup *memcg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * memcg->moving_account is used for checking possibility that some thread is
  * calling move_account(). When a thread on CPU-A starts moving pages under
@@ -2153,6 +2410,8 @@ static void mem_cgroup_end_move(struct mem_cgroup *memcg)
  *
  * mem_cgroup_stolen() -  checking whether a cgroup is mc.from or not. This
  *			  is used for avoiding races in accounting.  If true,
+<<<<<<< HEAD
+=======
 =======
 static void mem_cgroup_start_move(struct mem_cgroup *mem)
 {
@@ -2189,6 +2448,7 @@ static void mem_cgroup_end_move(struct mem_cgroup *mem)
  * mem_cgroup_stealed() - checking a cgroup is mc.from or not. This is used
  *			  for avoiding race in accounting. If true,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *			  pc->mem_cgroup may be overwritten.
  *
  * mem_cgroup_under_move() - checking a cgroup is mc.from or mc.to or
@@ -2197,6 +2457,9 @@ static void mem_cgroup_end_move(struct mem_cgroup *mem)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool mem_cgroup_stolen(struct mem_cgroup *memcg)
 {
 	VM_BUG_ON(!rcu_read_lock_held());
@@ -2204,6 +2467,8 @@ static bool mem_cgroup_stolen(struct mem_cgroup *memcg)
 }
 
 static bool mem_cgroup_under_move(struct mem_cgroup *memcg)
+<<<<<<< HEAD
+=======
 =======
 static bool mem_cgroup_stealed(struct mem_cgroup *mem)
 {
@@ -2213,6 +2478,7 @@ static bool mem_cgroup_stealed(struct mem_cgroup *mem)
 
 static bool mem_cgroup_under_move(struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mem_cgroup *from;
 	struct mem_cgroup *to;
@@ -2231,27 +2497,39 @@ static bool mem_cgroup_under_move(struct mem_cgroup *mem)
 	ret = mem_cgroup_same_or_subtree(memcg, from)
 		|| mem_cgroup_same_or_subtree(memcg, to);
 =======
+<<<<<<< HEAD
+
+	ret = mem_cgroup_same_or_subtree(memcg, from)
+		|| mem_cgroup_same_or_subtree(memcg, to);
+=======
 	if (from == mem || to == mem
 	    || (mem->use_hierarchy && css_is_ancestor(&from->css, &mem->css))
 	    || (mem->use_hierarchy && css_is_ancestor(&to->css,	&mem->css)))
 		ret = true;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unlock:
 	spin_unlock(&mc.lock);
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool mem_cgroup_wait_acct_move(struct mem_cgroup *memcg)
 {
 	if (mc.moving_task && current != mc.moving_task) {
 		if (mem_cgroup_under_move(memcg)) {
+<<<<<<< HEAD
+=======
 =======
 static bool mem_cgroup_wait_acct_move(struct mem_cgroup *mem)
 {
 	if (mc.moving_task && current != mc.moving_task) {
 		if (mem_cgroup_under_move(mem)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			DEFINE_WAIT(wait);
 			prepare_to_wait(&mc.waitq, &wait, TASK_INTERRUPTIBLE);
 			/* moving charge context might have finished. */
@@ -2265,6 +2543,9 @@ static bool mem_cgroup_wait_acct_move(struct mem_cgroup *mem)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Take this lock when
  * - a code tries to modify page's memcg while it's USED.
@@ -2283,8 +2564,11 @@ static void move_unlock_mem_cgroup(struct mem_cgroup *memcg,
 	spin_unlock_irqrestore(&memcg->move_lock, *flags);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mem_cgroup_print_oom_info: Called from OOM with tasklist_lock held in read mode.
  * @memcg: The memory cgroup that went over limit
@@ -2310,8 +2594,11 @@ void mem_cgroup_print_oom_info(struct mem_cgroup *memcg, struct task_struct *p)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 
 	mem_cgrp = memcg->css.cgroup;
@@ -2362,8 +2649,12 @@ done:
 <<<<<<< HEAD
 static int mem_cgroup_count_children(struct mem_cgroup *memcg)
 =======
+<<<<<<< HEAD
+static int mem_cgroup_count_children(struct mem_cgroup *memcg)
+=======
 static int mem_cgroup_count_children(struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int num = 0;
 	struct mem_cgroup *iter;
@@ -2371,8 +2662,12 @@ static int mem_cgroup_count_children(struct mem_cgroup *mem)
 <<<<<<< HEAD
 	for_each_mem_cgroup_tree(iter, memcg)
 =======
+<<<<<<< HEAD
+	for_each_mem_cgroup_tree(iter, memcg)
+=======
 	for_each_mem_cgroup_tree(iter, mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		num++;
 	return num;
 }
@@ -2397,6 +2692,9 @@ u64 mem_cgroup_get_limit(struct mem_cgroup *memcg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long mem_cgroup_reclaim(struct mem_cgroup *memcg,
 					gfp_t gfp_mask,
 					unsigned long flags)
@@ -2431,6 +2729,8 @@ static unsigned long mem_cgroup_reclaim(struct mem_cgroup *memcg,
 			break;
 	}
 	return total;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Visit the first child (need not be the first child as per the ordering
@@ -2468,6 +2768,7 @@ mem_cgroup_select_victim(struct mem_cgroup *root_mem)
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2481,6 +2782,9 @@ mem_cgroup_select_victim(struct mem_cgroup *root_mem)
  * pages in the node.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool test_mem_cgroup_node_reclaimable(struct mem_cgroup *memcg,
 		int nid, bool noswap)
 {
@@ -2489,6 +2793,8 @@ static bool test_mem_cgroup_node_reclaimable(struct mem_cgroup *memcg,
 	if (noswap || !total_swap_pages)
 		return false;
 	if (mem_cgroup_node_nr_lru_pages(memcg, nid, LRU_ALL_ANON))
+<<<<<<< HEAD
+=======
 =======
 static bool test_mem_cgroup_node_reclaimable(struct mem_cgroup *mem,
 		int nid, bool noswap)
@@ -2499,6 +2805,7 @@ static bool test_mem_cgroup_node_reclaimable(struct mem_cgroup *mem,
 		return false;
 	if (mem_cgroup_node_nr_anon_lru_pages(mem, nid))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 	return false;
 
@@ -2514,8 +2821,12 @@ static bool test_mem_cgroup_node_reclaimable(struct mem_cgroup *mem,
 <<<<<<< HEAD
 static void mem_cgroup_may_update_nodemask(struct mem_cgroup *memcg)
 =======
+<<<<<<< HEAD
+static void mem_cgroup_may_update_nodemask(struct mem_cgroup *memcg)
+=======
 static void mem_cgroup_may_update_nodemask(struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int nid;
 	/*
@@ -2523,6 +2834,9 @@ static void mem_cgroup_may_update_nodemask(struct mem_cgroup *mem)
 	 * pagein/pageout changes since the last update.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!atomic_read(&memcg->numainfo_events))
 		return;
 	if (atomic_inc_return(&memcg->numainfo_updating) > 1)
@@ -2539,6 +2853,8 @@ static void mem_cgroup_may_update_nodemask(struct mem_cgroup *mem)
 
 	atomic_set(&memcg->numainfo_events, 0);
 	atomic_set(&memcg->numainfo_updating, 0);
+<<<<<<< HEAD
+=======
 =======
 	if (!atomic_read(&mem->numainfo_events))
 		return;
@@ -2557,6 +2873,7 @@ static void mem_cgroup_may_update_nodemask(struct mem_cgroup *mem)
 	atomic_set(&mem->numainfo_events, 0);
 	atomic_set(&mem->numainfo_updating, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2572,6 +2889,9 @@ static void mem_cgroup_may_update_nodemask(struct mem_cgroup *mem)
  * Now, we use round-robin. Better algorithm is welcomed.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mem_cgroup_select_victim_node(struct mem_cgroup *memcg)
 {
 	int node;
@@ -2582,6 +2902,8 @@ int mem_cgroup_select_victim_node(struct mem_cgroup *memcg)
 	node = next_node(node, memcg->scan_nodes);
 	if (node == MAX_NUMNODES)
 		node = first_node(memcg->scan_nodes);
+<<<<<<< HEAD
+=======
 =======
 int mem_cgroup_select_victim_node(struct mem_cgroup *mem)
 {
@@ -2594,6 +2916,7 @@ int mem_cgroup_select_victim_node(struct mem_cgroup *mem)
 	if (node == MAX_NUMNODES)
 		node = first_node(mem->scan_nodes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We call this when we hit limit, not when pages are added to LRU.
 	 * No LRU may hold pages because all pages are UNEVICTABLE or
@@ -2606,8 +2929,12 @@ int mem_cgroup_select_victim_node(struct mem_cgroup *mem)
 <<<<<<< HEAD
 	memcg->last_scanned_node = node;
 =======
+<<<<<<< HEAD
+	memcg->last_scanned_node = node;
+=======
 	mem->last_scanned_node = node;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return node;
 }
 
@@ -2620,8 +2947,12 @@ int mem_cgroup_select_victim_node(struct mem_cgroup *mem)
 <<<<<<< HEAD
 bool mem_cgroup_reclaimable(struct mem_cgroup *memcg, bool noswap)
 =======
+<<<<<<< HEAD
+bool mem_cgroup_reclaimable(struct mem_cgroup *memcg, bool noswap)
+=======
 bool mem_cgroup_reclaimable(struct mem_cgroup *mem, bool noswap)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int nid;
 
@@ -2630,12 +2961,17 @@ bool mem_cgroup_reclaimable(struct mem_cgroup *mem, bool noswap)
 	 * We can skip unused nodes.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!nodes_empty(memcg->scan_nodes)) {
 		for (nid = first_node(memcg->scan_nodes);
 		     nid < MAX_NUMNODES;
 		     nid = next_node(nid, memcg->scan_nodes)) {
 
 			if (test_mem_cgroup_node_reclaimable(memcg, nid, noswap))
+<<<<<<< HEAD
+=======
 =======
 	if (!nodes_empty(mem->scan_nodes)) {
 		for (nid = first_node(mem->scan_nodes);
@@ -2644,6 +2980,7 @@ bool mem_cgroup_reclaimable(struct mem_cgroup *mem, bool noswap)
 
 			if (test_mem_cgroup_node_reclaimable(mem, nid, noswap))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return true;
 		}
 	}
@@ -2656,10 +2993,16 @@ bool mem_cgroup_reclaimable(struct mem_cgroup *mem, bool noswap)
 			continue;
 		if (test_mem_cgroup_node_reclaimable(memcg, nid, noswap))
 =======
+<<<<<<< HEAD
+		if (node_isset(nid, memcg->scan_nodes))
+			continue;
+		if (test_mem_cgroup_node_reclaimable(memcg, nid, noswap))
+=======
 		if (node_isset(nid, mem->scan_nodes))
 			continue;
 		if (test_mem_cgroup_node_reclaimable(mem, nid, noswap))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return true;
 	}
 	return false;
@@ -2669,13 +3012,20 @@ bool mem_cgroup_reclaimable(struct mem_cgroup *mem, bool noswap)
 <<<<<<< HEAD
 int mem_cgroup_select_victim_node(struct mem_cgroup *memcg)
 =======
+<<<<<<< HEAD
+int mem_cgroup_select_victim_node(struct mem_cgroup *memcg)
+=======
 int mem_cgroup_select_victim_node(struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool mem_cgroup_reclaimable(struct mem_cgroup *memcg, bool noswap)
 {
 	return test_mem_cgroup_node_reclaimable(memcg, 0, noswap);
@@ -2703,6 +3053,8 @@ static int mem_cgroup_soft_reclaim(struct mem_cgroup *root_memcg,
 		victim = mem_cgroup_iter(root_memcg, victim, &reclaim);
 		if (!victim) {
 			loop++;
+<<<<<<< HEAD
+=======
 =======
 bool mem_cgroup_reclaimable(struct mem_cgroup *mem, bool noswap)
 {
@@ -2756,6 +3108,7 @@ static int mem_cgroup_hierarchical_reclaim(struct mem_cgroup *root_mem,
 			if (!check_soft && loop >= 1)
 				drain_all_stock_async(root_mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (loop >= 2) {
 				/*
 				 * If we have not been able to reclaim
@@ -2766,11 +3119,16 @@ static int mem_cgroup_hierarchical_reclaim(struct mem_cgroup *root_mem,
 				if (!total)
 					break;
 =======
+<<<<<<< HEAD
+				if (!total)
+					break;
+=======
 				if (!check_soft || !total) {
 					css_put(&victim->css);
 					break;
 				}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/*
 				 * We want to do more targeted reclaim.
 				 * excess >> 2 is not to excessive so as to
@@ -2779,6 +3137,9 @@ static int mem_cgroup_hierarchical_reclaim(struct mem_cgroup *root_mem,
 				 */
 				if (total >= (excess >> 2) ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					(loop > MEM_CGROUP_MAX_RECLAIM_LOOPS))
 					break;
 			}
@@ -2793,6 +3154,8 @@ static int mem_cgroup_hierarchical_reclaim(struct mem_cgroup *root_mem,
 			break;
 	}
 	mem_cgroup_iter_break(root_memcg, victim);
+<<<<<<< HEAD
+=======
 =======
 					(loop > MEM_CGROUP_MAX_RECLAIM_LOOPS)) {
 					css_put(&victim->css);
@@ -2830,6 +3193,7 @@ static int mem_cgroup_hierarchical_reclaim(struct mem_cgroup *root_mem,
 			return total;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return total;
 }
 
@@ -2837,6 +3201,9 @@ static int mem_cgroup_hierarchical_reclaim(struct mem_cgroup *root_mem,
  * Check OOM-Killer is already running under our hierarchy.
  * If someone is running, return false.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Has to be called with memcg_oom_lock
  */
 static bool mem_cgroup_oom_lock(struct mem_cgroup *memcg)
@@ -2894,6 +3261,8 @@ static void mem_cgroup_mark_under_oom(struct mem_cgroup *memcg)
 }
 
 static void mem_cgroup_unmark_under_oom(struct mem_cgroup *memcg)
+<<<<<<< HEAD
+=======
 =======
  */
 static bool mem_cgroup_oom_lock(struct mem_cgroup *mem)
@@ -2913,6 +3282,7 @@ static bool mem_cgroup_oom_lock(struct mem_cgroup *mem)
 
 static int mem_cgroup_oom_unlock(struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mem_cgroup *iter;
 
@@ -2922,6 +3292,9 @@ static int mem_cgroup_oom_unlock(struct mem_cgroup *mem)
 	 * atomic_add_unless() here.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_mem_cgroup_tree(iter, memcg)
 		atomic_add_unless(&iter->under_oom, -1, 0);
 }
@@ -2931,6 +3304,8 @@ static DECLARE_WAIT_QUEUE_HEAD(memcg_oom_waitq);
 
 struct oom_wait_info {
 	struct mem_cgroup *memcg;
+<<<<<<< HEAD
+=======
 =======
 	for_each_mem_cgroup_tree(iter, mem)
 		atomic_add_unless(&iter->oom_lock, -1, 0);
@@ -2944,6 +3319,7 @@ static DECLARE_WAIT_QUEUE_HEAD(memcg_oom_waitq);
 struct oom_wait_info {
 	struct mem_cgroup *mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wait_queue_t	wait;
 };
 
@@ -2951,6 +3327,9 @@ static int memcg_oom_wake_function(wait_queue_t *wait,
 	unsigned mode, int sync, void *arg)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup *wake_memcg = (struct mem_cgroup *)arg;
 	struct mem_cgroup *oom_wait_memcg;
 	struct oom_wait_info *oom_wait_info;
@@ -2978,6 +3357,8 @@ static void memcg_oom_recover(struct mem_cgroup *memcg)
 {
 	if (memcg && atomic_read(&memcg->under_oom))
 		memcg_wakeup_oom(memcg);
+<<<<<<< HEAD
+=======
 =======
 	struct mem_cgroup *wake_mem = (struct mem_cgroup *)arg;
 	struct oom_wait_info *oom_wait_info;
@@ -3012,6 +3393,7 @@ static void memcg_oom_recover(struct mem_cgroup *mem)
 	if (mem && atomic_read(&mem->oom_lock))
 		memcg_wakeup_oom(mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -3020,8 +3402,12 @@ static void memcg_oom_recover(struct mem_cgroup *mem)
 <<<<<<< HEAD
 bool mem_cgroup_handle_oom(struct mem_cgroup *memcg, gfp_t mask, int order)
 =======
+<<<<<<< HEAD
+bool mem_cgroup_handle_oom(struct mem_cgroup *memcg, gfp_t mask, int order)
+=======
 bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct oom_wait_info owait;
 	bool locked, need_to_kill;
@@ -3029,24 +3415,34 @@ bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
 <<<<<<< HEAD
 	owait.memcg = memcg;
 =======
+<<<<<<< HEAD
+	owait.memcg = memcg;
+=======
 	owait.mem = mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	owait.wait.flags = 0;
 	owait.wait.func = memcg_oom_wake_function;
 	owait.wait.private = current;
 	INIT_LIST_HEAD(&owait.wait.task_list);
 	need_to_kill = true;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mem_cgroup_mark_under_oom(memcg);
 
 	/* At first, try to OOM lock hierarchy under memcg.*/
 	spin_lock(&memcg_oom_lock);
 	locked = mem_cgroup_oom_lock(memcg);
+<<<<<<< HEAD
+=======
 =======
 	/* At first, try to OOM lock hierarchy under mem.*/
 	mutex_lock(&memcg_oom_mutex);
 	locked = mem_cgroup_oom_lock(mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Even if signal_pending(), we can't quit charge() loop without
 	 * accounting. So, UNINTERRUPTIBLE is appropriate. But SIGKILL
@@ -3054,6 +3450,9 @@ bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
 	 */
 	prepare_to_wait(&memcg_oom_waitq, &owait.wait, TASK_KILLABLE);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!locked || memcg->oom_kill_disable)
 		need_to_kill = false;
 	if (locked)
@@ -3063,6 +3462,8 @@ bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
 	if (need_to_kill) {
 		finish_wait(&memcg_oom_waitq, &owait.wait);
 		mem_cgroup_out_of_memory(memcg, mask, order);
+<<<<<<< HEAD
+=======
 =======
 	if (!locked || mem->oom_kill_disable)
 		need_to_kill = false;
@@ -3074,11 +3475,15 @@ bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
 		finish_wait(&memcg_oom_waitq, &owait.wait);
 		mem_cgroup_out_of_memory(mem, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		schedule();
 		finish_wait(&memcg_oom_waitq, &owait.wait);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&memcg_oom_lock);
 	if (locked)
 		mem_cgroup_oom_unlock(memcg);
@@ -3086,12 +3491,15 @@ bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
 	spin_unlock(&memcg_oom_lock);
 
 	mem_cgroup_unmark_under_oom(memcg);
+<<<<<<< HEAD
+=======
 =======
 	mutex_lock(&memcg_oom_mutex);
 	mem_cgroup_oom_unlock(mem);
 	memcg_wakeup_oom(mem);
 	mutex_unlock(&memcg_oom_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_thread_flag(TIF_MEMDIE) || fatal_signal_pending(current))
 		return false;
@@ -3099,8 +3507,12 @@ bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
 <<<<<<< HEAD
 	schedule_timeout_uninterruptible(1);
 =======
+<<<<<<< HEAD
+	schedule_timeout_uninterruptible(1);
+=======
 	schedule_timeout(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return true;
 }
 
@@ -3125,6 +3537,9 @@ bool mem_cgroup_handle_oom(struct mem_cgroup *mem, gfp_t mask)
  *
  * Considering "move", this is an only case we see a race. To make the race
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * small, we check mm->moving_account and detect there are possibility of race
  * If there is, we take a lock.
  */
@@ -3185,6 +3600,8 @@ void mem_cgroup_update_page_stat(struct page *page,
 
 	switch (idx) {
 	case MEMCG_NR_FILE_MAPPED:
+<<<<<<< HEAD
+=======
 =======
  * small, we check MEM_CGROUP_ON_MOVE percpu value and detect there are
  * possibility of race condition. If there is, we take a lock.
@@ -3222,12 +3639,17 @@ void mem_cgroup_update_page_stat(struct page *page,
 		else if (!page_mapped(page))
 			ClearPageCgroupFileMapped(pc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		idx = MEM_CGROUP_STAT_FILE_MAPPED;
 		break;
 	default:
 		BUG();
 	}
 
+<<<<<<< HEAD
+	this_cpu_add(memcg->stat->count[idx], val);
+}
+=======
 <<<<<<< HEAD
 	this_cpu_add(memcg->stat->count[idx], val);
 }
@@ -3242,6 +3664,7 @@ out:
 }
 EXPORT_SYMBOL(mem_cgroup_update_page_stat);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * size of first charge trial. "32" comes from vmscan.c's magic value.
@@ -3267,8 +3690,12 @@ static DEFINE_MUTEX(percpu_charge_mutex);
 <<<<<<< HEAD
 static bool consume_stock(struct mem_cgroup *memcg)
 =======
+<<<<<<< HEAD
+static bool consume_stock(struct mem_cgroup *memcg)
+=======
 static bool consume_stock(struct mem_cgroup *mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct memcg_stock_pcp *stock;
 	bool ret = true;
@@ -3277,8 +3704,12 @@ static bool consume_stock(struct mem_cgroup *mem)
 <<<<<<< HEAD
 	if (memcg == stock->cached && stock->nr_pages)
 =======
+<<<<<<< HEAD
+	if (memcg == stock->cached && stock->nr_pages)
+=======
 	if (mem == stock->cached && stock->nr_pages)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		stock->nr_pages--;
 	else /* need to call res_counter_charge */
 		ret = false;
@@ -3320,6 +3751,9 @@ static void drain_local_stock(struct work_struct *dummy)
  * This will be consumed by consume_stock() function, later.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void refill_stock(struct mem_cgroup *memcg, unsigned int nr_pages)
 {
 	struct memcg_stock_pcp *stock = &get_cpu_var(memcg_stock);
@@ -3327,6 +3761,8 @@ static void refill_stock(struct mem_cgroup *memcg, unsigned int nr_pages)
 	if (stock->cached != memcg) { /* reset if necessary */
 		drain_stock(stock);
 		stock->cached = memcg;
+<<<<<<< HEAD
+=======
 =======
 static void refill_stock(struct mem_cgroup *mem, unsigned int nr_pages)
 {
@@ -3336,6 +3772,7 @@ static void refill_stock(struct mem_cgroup *mem, unsigned int nr_pages)
 		drain_stock(stock);
 		stock->cached = mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	stock->nr_pages += nr_pages;
 	put_cpu_var(memcg_stock);
@@ -3343,6 +3780,9 @@ static void refill_stock(struct mem_cgroup *mem, unsigned int nr_pages)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Drains all per-CPU charge caches for given root_memcg resp. subtree
  * of the hierarchy under it. sync flag says whether we should block
  * until the work is done.
@@ -3385,8 +3825,11 @@ out:
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Tries to drain stocked charges in other cpus. This function is asynchronous
  * and just put a work per cpu for draining localy on each cpu. Caller can
  * expects some charges will be back to res_counter later but cannot wait for
@@ -3396,16 +3839,24 @@ out:
 static void drain_all_stock_async(struct mem_cgroup *root_memcg)
 {
 =======
+<<<<<<< HEAD
+static void drain_all_stock_async(struct mem_cgroup *root_memcg)
+{
+=======
 static void drain_all_stock_async(struct mem_cgroup *root_mem)
 {
 	int cpu, curcpu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If someone calls draining, avoid adding more kworker runs.
 	 */
 	if (!mutex_trylock(&percpu_charge_mutex))
 		return;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	drain_all_stock(root_memcg, false);
 	mutex_unlock(&percpu_charge_mutex);
 }
@@ -3416,6 +3867,8 @@ static void drain_all_stock_sync(struct mem_cgroup *root_memcg)
 	/* called when force_empty is called */
 	mutex_lock(&percpu_charge_mutex);
 	drain_all_stock(root_memcg, true);
+<<<<<<< HEAD
+=======
 =======
 	/* Notify other cpus that system-wide "drain" is running */
 	get_online_cpus();
@@ -3458,6 +3911,7 @@ static void drain_all_stock_sync(void)
 	mutex_lock(&percpu_charge_mutex);
 	schedule_on_each_cpu(drain_local_stock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&percpu_charge_mutex);
 }
 
@@ -3466,6 +3920,9 @@ static void drain_all_stock_sync(void)
  * move it to local cpu. Note that this function can be preempted.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mem_cgroup_drain_pcp_counter(struct mem_cgroup *memcg, int cpu)
 {
 	int i;
@@ -3484,6 +3941,8 @@ static void mem_cgroup_drain_pcp_counter(struct mem_cgroup *memcg, int cpu)
 		memcg->nocpu_base.events[i] += x;
 	}
 	spin_unlock(&memcg->pcp_counter_lock);
+<<<<<<< HEAD
+=======
 =======
 static void mem_cgroup_drain_pcp_counter(struct mem_cgroup *mem, int cpu)
 {
@@ -3515,6 +3974,7 @@ static void synchronize_mem_cgroup_on_move(struct mem_cgroup *mem, int cpu)
 	per_cpu(mem->stat->count[idx], cpu) = mem->nocpu_base.count[idx];
 	spin_unlock(&mem->pcp_counter_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __cpuinit memcg_cpu_hotplug_callback(struct notifier_block *nb,
@@ -3526,6 +3986,9 @@ static int __cpuinit memcg_cpu_hotplug_callback(struct notifier_block *nb,
 	struct mem_cgroup *iter;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (action == CPU_ONLINE)
 		return NOTIFY_OK;
 
@@ -3533,6 +3996,8 @@ static int __cpuinit memcg_cpu_hotplug_callback(struct notifier_block *nb,
 		return NOTIFY_OK;
 
 	for_each_mem_cgroup(iter)
+<<<<<<< HEAD
+=======
 =======
 	if ((action == CPU_ONLINE)) {
 		for_each_mem_cgroup_all(iter)
@@ -3545,6 +4010,7 @@ static int __cpuinit memcg_cpu_hotplug_callback(struct notifier_block *nb,
 
 	for_each_mem_cgroup_all(iter)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem_cgroup_drain_pcp_counter(iter, cpu);
 
 	stock = &per_cpu(memcg_stock, cpu);
@@ -3565,8 +4031,12 @@ enum {
 <<<<<<< HEAD
 static int mem_cgroup_do_charge(struct mem_cgroup *memcg, gfp_t gfp_mask,
 =======
+<<<<<<< HEAD
+static int mem_cgroup_do_charge(struct mem_cgroup *memcg, gfp_t gfp_mask,
+=======
 static int mem_cgroup_do_charge(struct mem_cgroup *mem, gfp_t gfp_mask,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				unsigned int nr_pages, bool oom_check)
 {
 	unsigned long csize = nr_pages * PAGE_SIZE;
@@ -3578,18 +4048,27 @@ static int mem_cgroup_do_charge(struct mem_cgroup *mem, gfp_t gfp_mask,
 <<<<<<< HEAD
 	ret = res_counter_charge(&memcg->res, csize, &fail_res);
 =======
+<<<<<<< HEAD
+	ret = res_counter_charge(&memcg->res, csize, &fail_res);
+=======
 	ret = res_counter_charge(&mem->res, csize, &fail_res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (likely(!ret)) {
 		if (!do_swap_account)
 			return CHARGE_OK;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = res_counter_charge(&memcg->memsw, csize, &fail_res);
 		if (likely(!ret))
 			return CHARGE_OK;
 
 		res_counter_uncharge(&memcg->res, csize);
+<<<<<<< HEAD
+=======
 =======
 		ret = res_counter_charge(&mem->memsw, csize, &fail_res);
 		if (likely(!ret))
@@ -3597,6 +4076,7 @@ static int mem_cgroup_do_charge(struct mem_cgroup *mem, gfp_t gfp_mask,
 
 		res_counter_uncharge(&mem->res, csize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem_over_limit = mem_cgroup_from_res_counter(fail_res, memsw);
 		flags |= MEM_CGROUP_RECLAIM_NOSWAP;
 	} else
@@ -3617,9 +4097,13 @@ static int mem_cgroup_do_charge(struct mem_cgroup *mem, gfp_t gfp_mask,
 <<<<<<< HEAD
 	ret = mem_cgroup_reclaim(mem_over_limit, gfp_mask, flags);
 =======
+<<<<<<< HEAD
+	ret = mem_cgroup_reclaim(mem_over_limit, gfp_mask, flags);
+=======
 	ret = mem_cgroup_hierarchical_reclaim(mem_over_limit, NULL,
 					      gfp_mask, flags, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mem_cgroup_margin(mem_over_limit) >= nr_pages)
 		return CHARGE_RETRY;
 	/*
@@ -3648,8 +4132,12 @@ static int mem_cgroup_do_charge(struct mem_cgroup *mem, gfp_t gfp_mask,
 <<<<<<< HEAD
 	if (!mem_cgroup_handle_oom(mem_over_limit, gfp_mask, get_order(csize)))
 =======
+<<<<<<< HEAD
+	if (!mem_cgroup_handle_oom(mem_over_limit, gfp_mask, get_order(csize)))
+=======
 	if (!mem_cgroup_handle_oom(mem_over_limit, gfp_mask))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return CHARGE_OOM_DIE;
 
 	return CHARGE_RETRY;
@@ -3657,6 +4145,9 @@ static int mem_cgroup_do_charge(struct mem_cgroup *mem, gfp_t gfp_mask,
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * __mem_cgroup_try_charge() does
  * 1. detect memcg to be charged against from passed *mm and *ptr,
  * 2. update res_counter
@@ -3676,10 +4167,13 @@ static int mem_cgroup_do_charge(struct mem_cgroup *mem, gfp_t gfp_mask,
  *
  * Unlike the exported interface, an "oom" parameter is added. if oom==true,
  * the oom-killer can be invoked.
+<<<<<<< HEAD
+=======
 =======
  * Unlike exported interface, "oom" parameter is added. if oom==true,
  * oom-killer can be invoked.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int __mem_cgroup_try_charge(struct mm_struct *mm,
 				   gfp_t gfp_mask,
@@ -3687,8 +4181,12 @@ static int __mem_cgroup_try_charge(struct mm_struct *mm,
 <<<<<<< HEAD
 				   struct mem_cgroup **ptr,
 =======
+<<<<<<< HEAD
+				   struct mem_cgroup **ptr,
+=======
 				   struct mem_cgroup **memcg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   bool oom)
 {
 	unsigned int batch = max(CHARGE_BATCH, nr_pages);
@@ -3696,8 +4194,12 @@ static int __mem_cgroup_try_charge(struct mm_struct *mm,
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = NULL;
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = NULL;
+=======
 	struct mem_cgroup *mem = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	/*
@@ -3716,6 +4218,9 @@ static int __mem_cgroup_try_charge(struct mm_struct *mm,
 	 * set, if so charge the init_mm (happens for pagecache usage).
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!*ptr && !mm)
 		*ptr = root_mem_cgroup;
 again:
@@ -3727,6 +4232,8 @@ again:
 		if (nr_pages == 1 && consume_stock(memcg))
 			goto done;
 		css_get(&memcg->css);
+<<<<<<< HEAD
+=======
 =======
 	if (!*memcg && !mm)
 		goto bypass;
@@ -3740,6 +4247,7 @@ again:
 			goto done;
 		css_get(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		struct task_struct *p;
 
@@ -3750,8 +4258,12 @@ again:
 <<<<<<< HEAD
 		 * In that case, "memcg" can point to root or p can be NULL with
 =======
+<<<<<<< HEAD
+		 * In that case, "memcg" can point to root or p can be NULL with
+=======
 		 * In that case, "mem" can point to root or p can be NULL with
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * race with swapoff. Then, we have small risk of mis-accouning.
 		 * But such kind of mis-account by race always happens because
 		 * we don't have cgroup_mutex(). It's overkill and we allo that
@@ -3760,6 +4272,9 @@ again:
 		 * task-struct. So, mm->owner can be NULL.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcg = mem_cgroup_from_task(p);
 		if (!memcg)
 			memcg = root_mem_cgroup;
@@ -3768,6 +4283,8 @@ again:
 			goto done;
 		}
 		if (nr_pages == 1 && consume_stock(memcg)) {
+<<<<<<< HEAD
+=======
 =======
 		mem = mem_cgroup_from_task(p);
 		if (!mem || mem_cgroup_is_root(mem)) {
@@ -3776,6 +4293,7 @@ again:
 		}
 		if (nr_pages == 1 && consume_stock(mem)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * It seems dagerous to access memcg without css_get().
 			 * But considering how consume_stok works, it's not
@@ -3791,8 +4309,12 @@ again:
 <<<<<<< HEAD
 		if (!css_tryget(&memcg->css)) {
 =======
+<<<<<<< HEAD
+		if (!css_tryget(&memcg->css)) {
+=======
 		if (!css_tryget(&mem->css)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rcu_read_unlock();
 			goto again;
 		}
@@ -3807,8 +4329,12 @@ again:
 <<<<<<< HEAD
 			css_put(&memcg->css);
 =======
+<<<<<<< HEAD
+			css_put(&memcg->css);
+=======
 			css_put(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto bypass;
 		}
 
@@ -3821,14 +4347,21 @@ again:
 <<<<<<< HEAD
 		ret = mem_cgroup_do_charge(memcg, gfp_mask, batch, oom_check);
 =======
+<<<<<<< HEAD
+		ret = mem_cgroup_do_charge(memcg, gfp_mask, batch, oom_check);
+=======
 		ret = mem_cgroup_do_charge(mem, gfp_mask, batch, oom_check);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (ret) {
 		case CHARGE_OK:
 			break;
 		case CHARGE_RETRY: /* not in OOM situation but retry */
 			batch = nr_pages;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			css_put(&memcg->css);
 			memcg = NULL;
 			goto again;
@@ -3838,6 +4371,8 @@ again:
 		case CHARGE_NOMEM: /* OOM routine works */
 			if (!oom) {
 				css_put(&memcg->css);
+<<<<<<< HEAD
+=======
 =======
 			css_put(&mem->css);
 			mem = NULL;
@@ -3849,6 +4384,7 @@ again:
 			if (!oom) {
 				css_put(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto nomem;
 			}
 			/* If oom, we never return -ENOMEM */
@@ -3858,14 +4394,21 @@ again:
 <<<<<<< HEAD
 			css_put(&memcg->css);
 =======
+<<<<<<< HEAD
+			css_put(&memcg->css);
+=======
 			css_put(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto bypass;
 		}
 	} while (ret != CHARGE_OK);
 
 	if (batch > nr_pages)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		refill_stock(memcg, batch - nr_pages);
 	css_put(&memcg->css);
 done:
@@ -3877,6 +4420,8 @@ nomem:
 bypass:
 	*ptr = root_mem_cgroup;
 	return -EINTR;
+<<<<<<< HEAD
+=======
 =======
 		refill_stock(mem, batch - nr_pages);
 	css_put(&mem->css);
@@ -3890,6 +4435,7 @@ bypass:
 	*memcg = NULL;
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -3898,6 +4444,9 @@ bypass:
  * gotten by try_charge().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __mem_cgroup_cancel_charge(struct mem_cgroup *memcg,
 				       unsigned int nr_pages)
 {
@@ -3907,6 +4456,8 @@ static void __mem_cgroup_cancel_charge(struct mem_cgroup *memcg,
 		res_counter_uncharge(&memcg->res, bytes);
 		if (do_swap_account)
 			res_counter_uncharge(&memcg->memsw, bytes);
+<<<<<<< HEAD
+=======
 =======
 static void __mem_cgroup_cancel_charge(struct mem_cgroup *mem,
 				       unsigned int nr_pages)
@@ -3918,6 +4469,7 @@ static void __mem_cgroup_cancel_charge(struct mem_cgroup *mem,
 		if (do_swap_account)
 			res_counter_uncharge(&mem->memsw, bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -3945,8 +4497,12 @@ struct mem_cgroup *try_get_mem_cgroup_from_page(struct page *page)
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = NULL;
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = NULL;
+=======
 	struct mem_cgroup *mem = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page_cgroup *pc;
 	unsigned short id;
 	swp_entry_t ent;
@@ -3957,6 +4513,9 @@ struct mem_cgroup *try_get_mem_cgroup_from_page(struct page *page)
 	lock_page_cgroup(pc);
 	if (PageCgroupUsed(pc)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcg = pc->mem_cgroup;
 		if (memcg && !css_tryget(&memcg->css))
 			memcg = NULL;
@@ -3988,6 +4547,8 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *memcg,
 	if (unlikely(PageCgroupUsed(pc))) {
 		unlock_page_cgroup(pc);
 		__mem_cgroup_cancel_charge(memcg, nr_pages);
+<<<<<<< HEAD
+=======
 =======
 		mem = pc->mem_cgroup;
 		if (mem && !css_tryget(&mem->css))
@@ -4016,6 +4577,7 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *mem,
 		unlock_page_cgroup(pc);
 		__mem_cgroup_cancel_charge(mem, nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	/*
@@ -4023,6 +4585,9 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *mem,
 	 * accessed by any other context at this point.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * In some cases, SwapCache and FUSE(splice_buf->radixtree), the page
@@ -4039,9 +4604,12 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *mem,
 	}
 
 	pc->mem_cgroup = memcg;
+<<<<<<< HEAD
+=======
 =======
 	pc->mem_cgroup = mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We access a page_cgroup asynchronously without lock_page_cgroup().
 	 * Especially when a page_cgroup is taken from a page, pc->mem_cgroup
@@ -4051,6 +4619,9 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *mem,
  	 */
 	smp_wmb();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SetPageCgroupUsed(pc);
 
 	if (lrucare) {
@@ -4070,6 +4641,8 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *mem,
 	mem_cgroup_charge_statistics(memcg, anon, nr_pages);
 	unlock_page_cgroup(pc);
 
+<<<<<<< HEAD
+=======
 =======
 	switch (ctype) {
 	case MEM_CGROUP_CHARGE_TYPE_CACHE:
@@ -4088,6 +4661,7 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *mem,
 	mem_cgroup_charge_statistics(mem, PageCgroupCache(pc), nr_pages);
 	unlock_page_cgroup(pc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * "charge_statistics" updated event counter. Then, check it.
 	 * Insert ancestor (and ancestor's ancestors), to softlimit RB-tree.
@@ -4096,13 +4670,20 @@ static void __mem_cgroup_commit_charge(struct mem_cgroup *mem,
 <<<<<<< HEAD
 	memcg_check_events(memcg, page);
 =======
+<<<<<<< HEAD
+	memcg_check_events(memcg, page);
+=======
 	memcg_check_events(mem, page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PCGF_NOCOPY_AT_SPLIT ((1 << PCG_LOCK) | (1 << PCG_MIGRATION))
 /*
  * Because tail pages are not marked as "used", set it. We're under
@@ -4126,6 +4707,8 @@ void mem_cgroup_split_huge_fixup(struct page *head)
 	}
 }
 #endif /* CONFIG_TRANSPARENT_HUGEPAGE */
+<<<<<<< HEAD
+=======
 =======
 #define PCGF_NOCOPY_AT_SPLIT ((1 << PCG_LOCK) | (1 << PCG_MOVE_LOCK) |\
 			(1 << PCG_ACCT_LRU) | (1 << PCG_MIGRATION))
@@ -4167,6 +4750,7 @@ void mem_cgroup_split_huge_fixup(struct page *head, struct page *tail)
 }
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * mem_cgroup_move_account - move account of the page
@@ -4198,7 +4782,11 @@ static int mem_cgroup_move_account(struct page *page,
 <<<<<<< HEAD
 	bool anon = PageAnon(page);
 =======
+<<<<<<< HEAD
+	bool anon = PageAnon(page);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	VM_BUG_ON(from == to);
 	VM_BUG_ON(PageLRU(page));
@@ -4223,10 +4811,16 @@ static int mem_cgroup_move_account(struct page *page,
 
 	if (!anon && page_mapped(page)) {
 =======
+<<<<<<< HEAD
+	move_lock_mem_cgroup(from, &flags);
+
+	if (!anon && page_mapped(page)) {
+=======
 	move_lock_page_cgroup(pc, &flags);
 
 	if (PageCgroupFileMapped(pc)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Update mapped_file data for mem_cgroup */
 		preempt_disable();
 		__this_cpu_dec(from->stat->count[MEM_CGROUP_STAT_FILE_MAPPED]);
@@ -4236,8 +4830,12 @@ static int mem_cgroup_move_account(struct page *page,
 <<<<<<< HEAD
 	mem_cgroup_charge_statistics(from, anon, -nr_pages);
 =======
+<<<<<<< HEAD
+	mem_cgroup_charge_statistics(from, anon, -nr_pages);
+=======
 	mem_cgroup_charge_statistics(from, PageCgroupCache(pc), -nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (uncharge)
 		/* This is not "cancel", but cancel_charge does all we need. */
 		__mem_cgroup_cancel_charge(from, nr_pages);
@@ -4247,8 +4845,12 @@ static int mem_cgroup_move_account(struct page *page,
 <<<<<<< HEAD
 	mem_cgroup_charge_statistics(to, anon, nr_pages);
 =======
+<<<<<<< HEAD
+	mem_cgroup_charge_statistics(to, anon, nr_pages);
+=======
 	mem_cgroup_charge_statistics(to, PageCgroupCache(pc), nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We charges against "to" which may not have any tasks. Then, "to"
 	 * can be under rmdir(). But in current implementation, caller of
@@ -4259,8 +4861,12 @@ static int mem_cgroup_move_account(struct page *page,
 <<<<<<< HEAD
 	move_unlock_mem_cgroup(from, &flags);
 =======
+<<<<<<< HEAD
+	move_unlock_mem_cgroup(from, &flags);
+=======
 	move_unlock_page_cgroup(pc, &flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 0;
 unlock:
 	unlock_page_cgroup(pc);
@@ -4306,8 +4912,12 @@ static int mem_cgroup_move_parent(struct page *page,
 <<<<<<< HEAD
 	if (ret)
 =======
+<<<<<<< HEAD
+	if (ret)
+=======
 	if (ret || !parent)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto put_back;
 
 	if (nr_pages > 1)
@@ -4340,10 +4950,15 @@ static int mem_cgroup_charge_common(struct page *page, struct mm_struct *mm,
 	struct mem_cgroup *memcg = NULL;
 	unsigned int nr_pages = 1;
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = NULL;
+	unsigned int nr_pages = 1;
+=======
 	struct mem_cgroup *mem = NULL;
 	unsigned int nr_pages = 1;
 	struct page_cgroup *pc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool oom = true;
 	int ret;
 
@@ -4358,10 +4973,15 @@ static int mem_cgroup_charge_common(struct page *page, struct mm_struct *mm,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = __mem_cgroup_try_charge(mm, gfp_mask, nr_pages, &memcg, oom);
 	if (ret == -ENOMEM)
 		return ret;
 	__mem_cgroup_commit_charge(memcg, page, nr_pages, ctype, false);
+<<<<<<< HEAD
+=======
 =======
 	pc = lookup_page_cgroup(page);
 	BUG_ON(!pc); /* XXX: remove this and move pc lookup into commit */
@@ -4372,6 +4992,7 @@ static int mem_cgroup_charge_common(struct page *page, struct mm_struct *mm,
 
 	__mem_cgroup_commit_charge(mem, page, nr_pages, pc, ctype);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -4381,11 +5002,16 @@ int mem_cgroup_newpage_charge(struct page *page,
 	if (mem_cgroup_disabled())
 		return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	VM_BUG_ON(page_mapped(page));
 	VM_BUG_ON(page->mapping && !PageAnon(page));
 	VM_BUG_ON(!mm);
 	return mem_cgroup_charge_common(page, mm, gfp_mask,
 					MEM_CGROUP_CHARGE_TYPE_MAPPED);
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * If already mapped, we don't have to account.
@@ -4401,6 +5027,7 @@ int mem_cgroup_newpage_charge(struct page *page,
 	return mem_cgroup_charge_common(page, mm, gfp_mask,
 				MEM_CGROUP_CHARGE_TYPE_MAPPED);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -4408,11 +5035,16 @@ __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *ptr,
 					enum charge_type ctype);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mem_cgroup_cache_charge(struct page *page, struct mm_struct *mm,
 				gfp_t gfp_mask)
 {
 	struct mem_cgroup *memcg = NULL;
 	enum charge_type type = MEM_CGROUP_CHARGE_TYPE_CACHE;
+<<<<<<< HEAD
+=======
 =======
 static void
 __mem_cgroup_commit_charge_lrucare(struct page *page, struct mem_cgroup *mem,
@@ -4435,6 +5067,7 @@ int mem_cgroup_cache_charge(struct page *page, struct mm_struct *mm,
 {
 	struct mem_cgroup *mem = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	if (mem_cgroup_disabled())
@@ -4442,6 +5075,9 @@ int mem_cgroup_cache_charge(struct page *page, struct mm_struct *mm,
 	if (PageCompound(page))
 		return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(!mm))
 		mm = &init_mm;
@@ -4455,6 +5091,8 @@ int mem_cgroup_cache_charge(struct page *page, struct mm_struct *mm,
 		if (!ret)
 			__mem_cgroup_commit_charge_swapin(page, memcg, type);
 	}
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Corner case handling. This is called from add_to_page_cache()
@@ -4509,6 +5147,7 @@ int mem_cgroup_cache_charge(struct page *page, struct mm_struct *mm,
 					MEM_CGROUP_CHARGE_TYPE_SHMEM);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -4521,12 +5160,17 @@ int mem_cgroup_cache_charge(struct page *page, struct mm_struct *mm,
 int mem_cgroup_try_charge_swapin(struct mm_struct *mm,
 				 struct page *page,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 gfp_t mask, struct mem_cgroup **memcgp)
 {
 	struct mem_cgroup *memcg;
 	int ret;
 
 	*memcgp = NULL;
+<<<<<<< HEAD
+=======
 =======
 				 gfp_t mask, struct mem_cgroup **ptr)
 {
@@ -4535,6 +5179,7 @@ int mem_cgroup_try_charge_swapin(struct mm_struct *mm,
 
 	*ptr = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mem_cgroup_disabled())
 		return 0;
@@ -4550,6 +5195,9 @@ int mem_cgroup_try_charge_swapin(struct mm_struct *mm,
 	if (!PageSwapCache(page))
 		goto charge_cur_mm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcg = try_get_mem_cgroup_from_page(page);
 	if (!memcg)
 		goto charge_cur_mm;
@@ -4558,6 +5206,8 @@ int mem_cgroup_try_charge_swapin(struct mm_struct *mm,
 	css_put(&memcg->css);
 	if (ret == -EINTR)
 		ret = 0;
+<<<<<<< HEAD
+=======
 =======
 	mem = try_get_mem_cgroup_from_page(page);
 	if (!mem)
@@ -4566,11 +5216,15 @@ int mem_cgroup_try_charge_swapin(struct mm_struct *mm,
 	ret = __mem_cgroup_try_charge(NULL, mask, 1, ptr, true);
 	css_put(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 charge_cur_mm:
 	if (unlikely(!mm))
 		mm = &init_mm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = __mem_cgroup_try_charge(mm, mask, 1, memcgp, true);
 	if (ret == -EINTR)
 		ret = 0;
@@ -4579,6 +5233,8 @@ charge_cur_mm:
 
 static void
 __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *memcg,
+<<<<<<< HEAD
+=======
 =======
 	return __mem_cgroup_try_charge(mm, mask, 1, ptr, true);
 }
@@ -4586,16 +5242,22 @@ __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *memcg,
 static void
 __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *ptr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					enum charge_type ctype)
 {
 	if (mem_cgroup_disabled())
 		return;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!memcg)
 		return;
 	cgroup_exclude_rmdir(&memcg->css);
 
 	__mem_cgroup_commit_charge(memcg, page, 1, ctype, true);
+<<<<<<< HEAD
+=======
 =======
 	if (!ptr)
 		return;
@@ -4603,6 +5265,7 @@ __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *ptr,
 
 	__mem_cgroup_commit_charge_lrucare(page, ptr, ctype);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Now swap is on-memory. This means this page may be
 	 * counted both as mem and swap....double count.
@@ -4613,11 +5276,18 @@ __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *ptr,
 	if (do_swap_account && PageSwapCache(page)) {
 		swp_entry_t ent = {.val = page_private(page)};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mem_cgroup *swap_memcg;
 		unsigned short id;
 
 		id = swap_cgroup_record(ent, 0);
 		rcu_read_lock();
+<<<<<<< HEAD
+		swap_memcg = mem_cgroup_lookup(id);
+		if (swap_memcg) {
+=======
 		swap_memcg = mem_cgroup_lookup(id);
 		if (swap_memcg) {
 =======
@@ -4629,22 +5299,29 @@ __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *ptr,
 		memcg = mem_cgroup_lookup(id);
 		if (memcg) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * This recorded memcg can be obsolete one. So, avoid
 			 * calling css_tryget
 			 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!mem_cgroup_is_root(swap_memcg))
 				res_counter_uncharge(&swap_memcg->memsw,
 						     PAGE_SIZE);
 			mem_cgroup_swap_statistics(swap_memcg, false);
 			mem_cgroup_put(swap_memcg);
+<<<<<<< HEAD
+=======
 =======
 			if (!mem_cgroup_is_root(memcg))
 				res_counter_uncharge(&memcg->memsw, PAGE_SIZE);
 			mem_cgroup_swap_statistics(memcg, false);
 			mem_cgroup_put(memcg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		rcu_read_unlock();
 	}
@@ -4654,6 +5331,9 @@ __mem_cgroup_commit_charge_swapin(struct page *page, struct mem_cgroup *ptr,
 	 * In that case, we need to call pre_destroy() again. check it here.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cgroup_release_and_wakeup_rmdir(&memcg->css);
 }
 
@@ -4674,6 +5354,8 @@ void mem_cgroup_cancel_charge_swapin(struct mem_cgroup *memcg)
 }
 
 static void mem_cgroup_do_uncharge(struct mem_cgroup *memcg,
+<<<<<<< HEAD
+=======
 =======
 	cgroup_release_and_wakeup_rmdir(&ptr->css);
 }
@@ -4695,6 +5377,7 @@ void mem_cgroup_cancel_charge_swapin(struct mem_cgroup *mem)
 
 static void mem_cgroup_do_uncharge(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   unsigned int nr_pages,
 				   const enum charge_type ctype)
 {
@@ -4715,8 +5398,12 @@ static void mem_cgroup_do_uncharge(struct mem_cgroup *mem,
 <<<<<<< HEAD
 		batch->memcg = memcg;
 =======
+<<<<<<< HEAD
+		batch->memcg = memcg;
+=======
 		batch->memcg = mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * do_batch > 0 when unmapping pages or inode invalidate/truncate.
 	 * In those cases, all pages freed continuously can be expected to be in
@@ -4739,8 +5426,12 @@ static void mem_cgroup_do_uncharge(struct mem_cgroup *mem,
 <<<<<<< HEAD
 	if (batch->memcg != memcg)
 =======
+<<<<<<< HEAD
+	if (batch->memcg != memcg)
+=======
 	if (batch->memcg != mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto direct_uncharge;
 	/* remember freed charge and uncharge it later */
 	batch->nr_pages++;
@@ -4749,11 +5440,16 @@ static void mem_cgroup_do_uncharge(struct mem_cgroup *mem,
 	return;
 direct_uncharge:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	res_counter_uncharge(&memcg->res, nr_pages * PAGE_SIZE);
 	if (uncharge_memsw)
 		res_counter_uncharge(&memcg->memsw, nr_pages * PAGE_SIZE);
 	if (unlikely(batch->memcg != memcg))
 		memcg_oom_recover(memcg);
+<<<<<<< HEAD
+=======
 =======
 	res_counter_uncharge(&mem->res, nr_pages * PAGE_SIZE);
 	if (uncharge_memsw)
@@ -4762,6 +5458,7 @@ direct_uncharge:
 		memcg_oom_recover(mem);
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -4771,15 +5468,21 @@ static struct mem_cgroup *
 __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup *memcg = NULL;
 	unsigned int nr_pages = 1;
 	struct page_cgroup *pc;
 	bool anon;
+<<<<<<< HEAD
+=======
 =======
 	struct mem_cgroup *mem = NULL;
 	unsigned int nr_pages = 1;
 	struct page_cgroup *pc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mem_cgroup_disabled())
 		return NULL;
@@ -4798,8 +5501,12 @@ __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 <<<<<<< HEAD
 	if (unlikely(!PageCgroupUsed(pc)))
 =======
+<<<<<<< HEAD
+	if (unlikely(!PageCgroupUsed(pc)))
+=======
 	if (unlikely(!pc || !PageCgroupUsed(pc)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 
 	lock_page_cgroup(pc);
@@ -4807,13 +5514,20 @@ __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 <<<<<<< HEAD
 	memcg = pc->mem_cgroup;
 =======
+<<<<<<< HEAD
+	memcg = pc->mem_cgroup;
+=======
 	mem = pc->mem_cgroup;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!PageCgroupUsed(pc))
 		goto unlock_out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	anon = PageAnon(page);
 
 	switch (ctype) {
@@ -4825,10 +5539,13 @@ __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 		 */
 		anon = true;
 		/* fallthrough */
+<<<<<<< HEAD
+=======
 =======
 	switch (ctype) {
 	case MEM_CGROUP_CHARGE_TYPE_MAPPED:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case MEM_CGROUP_CHARGE_TYPE_DROP:
 		/* See mem_cgroup_prepare_migration() */
 		if (page_mapped(page) || PageCgroupMigration(pc))
@@ -4848,8 +5565,12 @@ __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 <<<<<<< HEAD
 	mem_cgroup_charge_statistics(memcg, anon, -nr_pages);
 =======
+<<<<<<< HEAD
+	mem_cgroup_charge_statistics(memcg, anon, -nr_pages);
+=======
 	mem_cgroup_charge_statistics(mem, PageCgroupCache(pc), -nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ClearPageCgroupUsed(pc);
 	/*
@@ -4862,6 +5583,9 @@ __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 	unlock_page_cgroup(pc);
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * even after unlock, we have memcg->res.usage here and this memcg
 	 * will never be freed.
 	 */
@@ -4874,6 +5598,8 @@ __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 		mem_cgroup_do_uncharge(memcg, nr_pages, ctype);
 
 	return memcg;
+<<<<<<< HEAD
+=======
 =======
 	 * even after unlock, we have mem->res.usage here and this memcg
 	 * will never be freed.
@@ -4888,6 +5614,7 @@ __mem_cgroup_uncharge_common(struct page *page, enum charge_type ctype)
 
 	return mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unlock_out:
 	unlock_page_cgroup(pc);
@@ -4902,9 +5629,13 @@ void mem_cgroup_uncharge_page(struct page *page)
 <<<<<<< HEAD
 	VM_BUG_ON(page->mapping && !PageAnon(page));
 =======
+<<<<<<< HEAD
+	VM_BUG_ON(page->mapping && !PageAnon(page));
+=======
 	if (page->mapping && !PageAnon(page))
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__mem_cgroup_uncharge_common(page, MEM_CGROUP_CHARGE_TYPE_MAPPED);
 }
 
@@ -5084,10 +5815,16 @@ int mem_cgroup_prepare_migration(struct page *page,
 {
 	struct mem_cgroup *memcg = NULL;
 =======
+<<<<<<< HEAD
+	struct page *newpage, struct mem_cgroup **memcgp, gfp_t gfp_mask)
+{
+	struct mem_cgroup *memcg = NULL;
+=======
 	struct page *newpage, struct mem_cgroup **ptr, gfp_t gfp_mask)
 {
 	struct mem_cgroup *mem = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page_cgroup *pc;
 	enum charge_type ctype;
 	int ret = 0;
@@ -5095,8 +5832,12 @@ int mem_cgroup_prepare_migration(struct page *page,
 <<<<<<< HEAD
 	*memcgp = NULL;
 =======
+<<<<<<< HEAD
+	*memcgp = NULL;
+=======
 	*ptr = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	VM_BUG_ON(PageTransHuge(page));
 	if (mem_cgroup_disabled())
@@ -5109,9 +5850,14 @@ int mem_cgroup_prepare_migration(struct page *page,
 		memcg = pc->mem_cgroup;
 		css_get(&memcg->css);
 =======
+<<<<<<< HEAD
+		memcg = pc->mem_cgroup;
+		css_get(&memcg->css);
+=======
 		mem = pc->mem_cgroup;
 		css_get(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * At migrating an anonymous page, its mapcount goes down
 		 * to 0 and uncharge() will be called. But, even if it's fully
@@ -5150,6 +5896,9 @@ int mem_cgroup_prepare_migration(struct page *page,
 	 * we return here.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!memcg)
 		return 0;
 
@@ -5157,6 +5906,8 @@ int mem_cgroup_prepare_migration(struct page *page,
 	ret = __mem_cgroup_try_charge(NULL, gfp_mask, 1, memcgp, false);
 	css_put(&memcg->css);/* drop extra refcnt */
 	if (ret) {
+<<<<<<< HEAD
+=======
 =======
 	if (!mem)
 		return 0;
@@ -5166,6 +5917,7 @@ int mem_cgroup_prepare_migration(struct page *page,
 	css_put(&mem->css);/* drop extra refcnt */
 	if (ret || *ptr == NULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (PageAnon(page)) {
 			lock_page_cgroup(pc);
 			ClearPageCgroupMigration(pc);
@@ -5178,7 +5930,11 @@ int mem_cgroup_prepare_migration(struct page *page,
 <<<<<<< HEAD
 		/* we'll need to revisit this error code (we have -EINTR) */
 =======
+<<<<<<< HEAD
+		/* we'll need to revisit this error code (we have -EINTR) */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 	/*
@@ -5189,8 +5945,11 @@ int mem_cgroup_prepare_migration(struct page *page,
 	 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	pc = lookup_page_cgroup(newpage);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (PageAnon(page))
 		ctype = MEM_CGROUP_CHARGE_TYPE_MAPPED;
 	else if (page_is_file_cache(page))
@@ -5200,8 +5959,12 @@ int mem_cgroup_prepare_migration(struct page *page,
 <<<<<<< HEAD
 	__mem_cgroup_commit_charge(memcg, newpage, 1, ctype, false);
 =======
+<<<<<<< HEAD
+	__mem_cgroup_commit_charge(memcg, newpage, 1, ctype, false);
+=======
 	__mem_cgroup_commit_charge(mem, page, 1, pc, ctype);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -5209,19 +5972,28 @@ int mem_cgroup_prepare_migration(struct page *page,
 <<<<<<< HEAD
 void mem_cgroup_end_migration(struct mem_cgroup *memcg,
 =======
+<<<<<<< HEAD
+void mem_cgroup_end_migration(struct mem_cgroup *memcg,
+=======
 void mem_cgroup_end_migration(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page *oldpage, struct page *newpage, bool migration_ok)
 {
 	struct page *used, *unused;
 	struct page_cgroup *pc;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool anon;
 
 	if (!memcg)
 		return;
 	/* blocks rmdir() */
 	cgroup_exclude_rmdir(&memcg->css);
+<<<<<<< HEAD
+=======
 =======
 
 	if (!mem)
@@ -5229,6 +6001,7 @@ void mem_cgroup_end_migration(struct mem_cgroup *mem,
 	/* blocks rmdir() */
 	cgroup_exclude_rmdir(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!migration_ok) {
 		used = oldpage;
 		unused = newpage;
@@ -5246,14 +6019,20 @@ void mem_cgroup_end_migration(struct mem_cgroup *mem,
 	ClearPageCgroupMigration(pc);
 	unlock_page_cgroup(pc);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	anon = PageAnon(used);
 	__mem_cgroup_uncharge_common(unused,
 		anon ? MEM_CGROUP_CHARGE_TYPE_MAPPED
 		     : MEM_CGROUP_CHARGE_TYPE_CACHE);
+<<<<<<< HEAD
+=======
 =======
 
 	__mem_cgroup_uncharge_common(unused, MEM_CGROUP_CHARGE_TYPE_FORCE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If a page is a file cache, radix-tree replacement is very atomic
@@ -5266,8 +6045,12 @@ void mem_cgroup_end_migration(struct mem_cgroup *mem,
 <<<<<<< HEAD
 	if (anon)
 =======
+<<<<<<< HEAD
+	if (anon)
+=======
 	if (PageAnon(used))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem_cgroup_uncharge_page(used);
 	/*
 	 * At migration, we may charge account against cgroup which has no
@@ -5275,6 +6058,9 @@ void mem_cgroup_end_migration(struct mem_cgroup *mem,
 	 * So, rmdir()->pre_destroy() can be called while we do this charge.
 	 * In that case, we need to call pre_destroy() again. check it here.
 	 */
+<<<<<<< HEAD
+	cgroup_release_and_wakeup_rmdir(&memcg->css);
+=======
 <<<<<<< HEAD
 	cgroup_release_and_wakeup_rmdir(&memcg->css);
 =======
@@ -5305,6 +6091,7 @@ int mem_cgroup_shmem_charge_fallback(struct page *page,
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -5320,10 +6107,14 @@ void mem_cgroup_replace_page_cache(struct page *oldpage,
 <<<<<<< HEAD
 	enum charge_type type = MEM_CGROUP_CHARGE_TYPE_CACHE;
 =======
+<<<<<<< HEAD
+	enum charge_type type = MEM_CGROUP_CHARGE_TYPE_CACHE;
+=======
 	struct zone *zone;
 	enum charge_type type = MEM_CGROUP_CHARGE_TYPE_CACHE;
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mem_cgroup_disabled())
 		return;
@@ -5335,8 +6126,12 @@ void mem_cgroup_replace_page_cache(struct page *oldpage,
 <<<<<<< HEAD
 	mem_cgroup_charge_statistics(memcg, false, -1);
 =======
+<<<<<<< HEAD
+	mem_cgroup_charge_statistics(memcg, false, -1);
+=======
 	mem_cgroup_charge_statistics(memcg, PageCgroupCache(pc), -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ClearPageCgroupUsed(pc);
 	unlock_page_cgroup(pc);
 
@@ -5345,14 +6140,20 @@ void mem_cgroup_replace_page_cache(struct page *oldpage,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	zone = page_zone(newpage);
 	pc = lookup_page_cgroup(newpage);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Even if newpage->mapping was NULL before starting replacement,
 	 * the newpage may be on LRU(or pagevec for LRU) already. We lock
 	 * LRU while we overwrite pc->mem_cgroup.
 	 */
+<<<<<<< HEAD
+	__mem_cgroup_commit_charge(memcg, newpage, 1, type, true);
+=======
 <<<<<<< HEAD
 	__mem_cgroup_commit_charge(memcg, newpage, 1, type, true);
 =======
@@ -5364,6 +6165,7 @@ void mem_cgroup_replace_page_cache(struct page *oldpage,
 		add_page_to_lru_list(zone, newpage, page_lru(newpage));
 	spin_unlock_irqrestore(&zone->lru_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_DEBUG_VM
@@ -5373,13 +6175,19 @@ static struct page_cgroup *lookup_page_cgroup_used(struct page *page)
 
 	pc = lookup_page_cgroup(page);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Can be NULL while feeding pages into the page allocator for
 	 * the first time, i.e. during boot or memory hotplug;
 	 * or when mem_cgroup_disabled().
 	 */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (likely(pc) && PageCgroupUsed(pc))
 		return pc;
 	return NULL;
@@ -5403,6 +6211,10 @@ void mem_cgroup_print_bad_page(struct page *page)
 		printk(KERN_ALERT "pc:%p pc->flags:%lx pc->mem_cgroup:%p\n",
 		       pc, pc->flags, pc->mem_cgroup);
 =======
+<<<<<<< HEAD
+		printk(KERN_ALERT "pc:%p pc->flags:%lx pc->mem_cgroup:%p\n",
+		       pc, pc->flags, pc->mem_cgroup);
+=======
 		int ret = -1;
 		char *path;
 
@@ -5421,6 +6233,7 @@ void mem_cgroup_print_bad_page(struct page *page)
 				(ret < 0) ? "cannot get the path" : path);
 		kfree(path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 #endif
@@ -5458,8 +6271,12 @@ static int mem_cgroup_resize_limit(struct mem_cgroup *memcg,
 <<<<<<< HEAD
 		 * We have to guarantee memcg->res.limit < memcg->memsw.limit.
 =======
+<<<<<<< HEAD
+		 * We have to guarantee memcg->res.limit < memcg->memsw.limit.
+=======
 		 * We have to guarantee mem->res.limit < mem->memsw.limit.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 */
 		mutex_lock(&set_limit_mutex);
 		memswlimit = res_counter_read_u64(&memcg->memsw, RES_LIMIT);
@@ -5489,10 +6306,15 @@ static int mem_cgroup_resize_limit(struct mem_cgroup *memcg,
 		mem_cgroup_reclaim(memcg, GFP_KERNEL,
 				   MEM_CGROUP_RECLAIM_SHRINK);
 =======
+<<<<<<< HEAD
+		mem_cgroup_reclaim(memcg, GFP_KERNEL,
+				   MEM_CGROUP_RECLAIM_SHRINK);
+=======
 		mem_cgroup_hierarchical_reclaim(memcg, NULL, GFP_KERNEL,
 						MEM_CGROUP_RECLAIM_SHRINK,
 						NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		curusage = res_counter_read_u64(&memcg->res, RES_USAGE);
 		/* Usage is reduced ? */
   		if (curusage >= oldusage)
@@ -5529,8 +6351,12 @@ static int mem_cgroup_resize_memsw_limit(struct mem_cgroup *memcg,
 <<<<<<< HEAD
 		 * We have to guarantee memcg->res.limit < memcg->memsw.limit.
 =======
+<<<<<<< HEAD
+		 * We have to guarantee memcg->res.limit < memcg->memsw.limit.
+=======
 		 * We have to guarantee mem->res.limit < mem->memsw.limit.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 */
 		mutex_lock(&set_limit_mutex);
 		memlimit = res_counter_read_u64(&memcg->res, RES_LIMIT);
@@ -5559,11 +6385,17 @@ static int mem_cgroup_resize_memsw_limit(struct mem_cgroup *memcg,
 				   MEM_CGROUP_RECLAIM_NOSWAP |
 				   MEM_CGROUP_RECLAIM_SHRINK);
 =======
+<<<<<<< HEAD
+		mem_cgroup_reclaim(memcg, GFP_KERNEL,
+				   MEM_CGROUP_RECLAIM_NOSWAP |
+				   MEM_CGROUP_RECLAIM_SHRINK);
+=======
 		mem_cgroup_hierarchical_reclaim(memcg, NULL, GFP_KERNEL,
 						MEM_CGROUP_RECLAIM_NOSWAP |
 						MEM_CGROUP_RECLAIM_SHRINK,
 						NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		curusage = res_counter_read_u64(&memcg->memsw, RES_USAGE);
 		/* Usage is reduced ? */
 		if (curusage >= oldusage)
@@ -5610,11 +6442,16 @@ unsigned long mem_cgroup_soft_limit_reclaim(struct zone *zone, int order,
 		reclaimed = mem_cgroup_soft_reclaim(mz->memcg, zone,
 						    gfp_mask, &nr_scanned);
 =======
+<<<<<<< HEAD
+		reclaimed = mem_cgroup_soft_reclaim(mz->memcg, zone,
+						    gfp_mask, &nr_scanned);
+=======
 		reclaimed = mem_cgroup_hierarchical_reclaim(mz->mem, zone,
 						gfp_mask,
 						MEM_CGROUP_RECLAIM_SOFT,
 						&nr_scanned);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nr_reclaimed += reclaimed;
 		*total_scanned += nr_scanned;
 		spin_lock(&mctz->lock);
@@ -5643,8 +6480,12 @@ unsigned long mem_cgroup_soft_limit_reclaim(struct zone *zone, int order,
 <<<<<<< HEAD
 					css_put(&next_mz->memcg->css);
 =======
+<<<<<<< HEAD
+					css_put(&next_mz->memcg->css);
+=======
 					css_put(&next_mz->mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				else /* next_mz == NULL or other memcg */
 					break;
 			} while (1);
@@ -5653,9 +6494,14 @@ unsigned long mem_cgroup_soft_limit_reclaim(struct zone *zone, int order,
 		__mem_cgroup_remove_exceeded(mz->memcg, mz, mctz);
 		excess = res_counter_soft_limit_excess(&mz->memcg->res);
 =======
+<<<<<<< HEAD
+		__mem_cgroup_remove_exceeded(mz->memcg, mz, mctz);
+		excess = res_counter_soft_limit_excess(&mz->memcg->res);
+=======
 		__mem_cgroup_remove_exceeded(mz->mem, mz, mctz);
 		excess = res_counter_soft_limit_excess(&mz->mem->res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * One school of thought says that we should not add
 		 * back the node to the tree if reclaim returns 0.
@@ -5670,10 +6516,16 @@ unsigned long mem_cgroup_soft_limit_reclaim(struct zone *zone, int order,
 		spin_unlock(&mctz->lock);
 		css_put(&mz->memcg->css);
 =======
+<<<<<<< HEAD
+		__mem_cgroup_insert_exceeded(mz->memcg, mz, mctz, excess);
+		spin_unlock(&mctz->lock);
+		css_put(&mz->memcg->css);
+=======
 		__mem_cgroup_insert_exceeded(mz->mem, mz, mctz, excess);
 		spin_unlock(&mctz->lock);
 		css_put(&mz->mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		loop++;
 		/*
 		 * Could not reclaim anything and there are no more
@@ -5689,8 +6541,12 @@ unsigned long mem_cgroup_soft_limit_reclaim(struct zone *zone, int order,
 <<<<<<< HEAD
 		css_put(&next_mz->memcg->css);
 =======
+<<<<<<< HEAD
+		css_put(&next_mz->memcg->css);
+=======
 		css_put(&next_mz->mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return nr_reclaimed;
 }
 
@@ -5699,6 +6555,9 @@ unsigned long mem_cgroup_soft_limit_reclaim(struct zone *zone, int order,
  * *And* this routine doesn't reclaim page itself, just removes page_cgroup.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mem_cgroup_force_empty_list(struct mem_cgroup *memcg,
 				int node, int zid, enum lru_list lru)
 {
@@ -5714,6 +6573,8 @@ static int mem_cgroup_force_empty_list(struct mem_cgroup *memcg,
 	list = &mz->lruvec.lists[lru];
 
 	loop = mz->lru_size[lru];
+<<<<<<< HEAD
+=======
 =======
 static int mem_cgroup_force_empty_list(struct mem_cgroup *mem,
 				int node, int zid, enum lru_list lru)
@@ -5731,6 +6592,7 @@ static int mem_cgroup_force_empty_list(struct mem_cgroup *mem,
 
 	loop = MEM_CGROUP_ZSTAT(mz, lru);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* give some margin against EBUSY etc...*/
 	loop += 256;
 	busy = NULL;
@@ -5738,7 +6600,11 @@ static int mem_cgroup_force_empty_list(struct mem_cgroup *mem,
 <<<<<<< HEAD
 		struct page_cgroup *pc;
 =======
+<<<<<<< HEAD
+		struct page_cgroup *pc;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct page *page;
 
 		ret = 0;
@@ -5752,10 +6618,16 @@ static int mem_cgroup_force_empty_list(struct mem_cgroup *mem,
 		if (busy == page) {
 			list_move(&page->lru, list);
 =======
+<<<<<<< HEAD
+		page = list_entry(list->prev, struct page, lru);
+		if (busy == page) {
+			list_move(&page->lru, list);
+=======
 		pc = list_entry(list->prev, struct page_cgroup, lru);
 		if (busy == pc) {
 			list_move(&pc->lru, list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			busy = NULL;
 			spin_unlock_irqrestore(&zone->lru_lock, flags);
 			continue;
@@ -5763,16 +6635,22 @@ static int mem_cgroup_force_empty_list(struct mem_cgroup *mem,
 		spin_unlock_irqrestore(&zone->lru_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pc = lookup_page_cgroup(page);
 
 		ret = mem_cgroup_move_parent(page, pc, memcg, GFP_KERNEL);
 		if (ret == -ENOMEM || ret == -EINTR)
+<<<<<<< HEAD
+=======
 =======
 		page = lookup_cgroup_page(pc);
 
 		ret = mem_cgroup_move_parent(page, pc, mem, GFP_KERNEL);
 		if (ret == -ENOMEM)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		if (ret == -EBUSY || ret == -EINVAL) {
@@ -5780,8 +6658,12 @@ static int mem_cgroup_force_empty_list(struct mem_cgroup *mem,
 <<<<<<< HEAD
 			busy = page;
 =======
+<<<<<<< HEAD
+			busy = page;
+=======
 			busy = pc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cond_resched();
 		} else
 			busy = NULL;
@@ -5799,8 +6681,12 @@ static int mem_cgroup_force_empty_list(struct mem_cgroup *mem,
 <<<<<<< HEAD
 static int mem_cgroup_force_empty(struct mem_cgroup *memcg, bool free_all)
 =======
+<<<<<<< HEAD
+static int mem_cgroup_force_empty(struct mem_cgroup *memcg, bool free_all)
+=======
 static int mem_cgroup_force_empty(struct mem_cgroup *mem, bool free_all)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	int node, zid, shrink;
@@ -5810,10 +6696,16 @@ static int mem_cgroup_force_empty(struct mem_cgroup *mem, bool free_all)
 
 	css_get(&memcg->css);
 =======
+<<<<<<< HEAD
+	struct cgroup *cgrp = memcg->css.cgroup;
+
+	css_get(&memcg->css);
+=======
 	struct cgroup *cgrp = mem->css.cgroup;
 
 	css_get(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	shrink = 0;
 	/* should free all ? */
@@ -5830,6 +6722,9 @@ move_account:
 		/* This is for making all *used* pages to be on LRU. */
 		lru_add_drain_all();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		drain_all_stock_sync(memcg);
 		ret = 0;
 		mem_cgroup_start_move(memcg);
@@ -5839,6 +6734,8 @@ move_account:
 				for_each_lru(lru) {
 					ret = mem_cgroup_force_empty_list(memcg,
 							node, zid, lru);
+<<<<<<< HEAD
+=======
 =======
 		drain_all_stock_sync();
 		ret = 0;
@@ -5850,6 +6747,7 @@ move_account:
 					ret = mem_cgroup_force_empty_list(mem,
 							node, zid, l);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					if (ret)
 						break;
 				}
@@ -5861,9 +6759,14 @@ move_account:
 		mem_cgroup_end_move(memcg);
 		memcg_oom_recover(memcg);
 =======
+<<<<<<< HEAD
+		mem_cgroup_end_move(memcg);
+		memcg_oom_recover(memcg);
+=======
 		mem_cgroup_end_move(mem);
 		memcg_oom_recover(mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* it seems parent cgroup doesn't have enough mem */
 		if (ret == -ENOMEM)
 			goto try_to_free;
@@ -5874,10 +6777,16 @@ move_account:
 out:
 	css_put(&memcg->css);
 =======
+<<<<<<< HEAD
+	} while (res_counter_read_u64(&memcg->res, RES_USAGE) > 0 || ret);
+out:
+	css_put(&memcg->css);
+=======
 	} while (mem->res.usage > 0 || ret);
 out:
 	css_put(&mem->css);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 
 try_to_free:
@@ -5893,8 +6802,12 @@ try_to_free:
 <<<<<<< HEAD
 	while (nr_retries && res_counter_read_u64(&memcg->res, RES_USAGE) > 0) {
 =======
+<<<<<<< HEAD
+	while (nr_retries && res_counter_read_u64(&memcg->res, RES_USAGE) > 0) {
+=======
 	while (nr_retries && mem->res.usage > 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int progress;
 
 		if (signal_pending(current)) {
@@ -5905,9 +6818,14 @@ try_to_free:
 		progress = try_to_free_mem_cgroup_pages(memcg, GFP_KERNEL,
 						false);
 =======
+<<<<<<< HEAD
+		progress = try_to_free_mem_cgroup_pages(memcg, GFP_KERNEL,
+						false);
+=======
 		progress = try_to_free_mem_cgroup_pages(mem, GFP_KERNEL,
 						false, get_swappiness(mem));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!progress) {
 			nr_retries--;
 			/* maybe some writeback is necessary */
@@ -5936,12 +6854,17 @@ static int mem_cgroup_hierarchy_write(struct cgroup *cont, struct cftype *cft,
 {
 	int retval = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cont);
 	struct cgroup *parent = cont->parent;
 	struct mem_cgroup *parent_memcg = NULL;
 
 	if (parent)
 		parent_memcg = mem_cgroup_from_cont(parent);
+<<<<<<< HEAD
+=======
 =======
 	struct mem_cgroup *mem = mem_cgroup_from_cont(cont);
 	struct cgroup *parent = cont->parent;
@@ -5950,6 +6873,7 @@ static int mem_cgroup_hierarchy_write(struct cgroup *cont, struct cftype *cft,
 	if (parent)
 		parent_mem = mem_cgroup_from_cont(parent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cgroup_lock();
 	/*
@@ -5961,16 +6885,22 @@ static int mem_cgroup_hierarchy_write(struct cgroup *cont, struct cftype *cft,
 	 * set if there are no children.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((!parent_memcg || !parent_memcg->use_hierarchy) &&
 				(val == 1 || val == 0)) {
 		if (list_empty(&cont->children))
 			memcg->use_hierarchy = val;
+<<<<<<< HEAD
+=======
 =======
 	if ((!parent_mem || !parent_mem->use_hierarchy) &&
 				(val == 1 || val == 0)) {
 		if (list_empty(&cont->children))
 			mem->use_hierarchy = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			retval = -EBUSY;
 	} else
@@ -5984,8 +6914,12 @@ static int mem_cgroup_hierarchy_write(struct cgroup *cont, struct cftype *cft,
 <<<<<<< HEAD
 static unsigned long mem_cgroup_recursive_stat(struct mem_cgroup *memcg,
 =======
+<<<<<<< HEAD
+static unsigned long mem_cgroup_recursive_stat(struct mem_cgroup *memcg,
+=======
 static unsigned long mem_cgroup_recursive_stat(struct mem_cgroup *mem,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       enum mem_cgroup_stat_index idx)
 {
 	struct mem_cgroup *iter;
@@ -5995,8 +6929,12 @@ static unsigned long mem_cgroup_recursive_stat(struct mem_cgroup *mem,
 <<<<<<< HEAD
 	for_each_mem_cgroup_tree(iter, memcg)
 =======
+<<<<<<< HEAD
+	for_each_mem_cgroup_tree(iter, memcg)
+=======
 	for_each_mem_cgroup_tree(iter, mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val += mem_cgroup_read_stat(iter, idx);
 
 	if (val < 0) /* race ? */
@@ -6005,6 +6943,9 @@ static unsigned long mem_cgroup_recursive_stat(struct mem_cgroup *mem,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline u64 mem_cgroup_usage(struct mem_cgroup *memcg, bool swap)
 {
 	u64 val;
@@ -6021,6 +6962,8 @@ static inline u64 mem_cgroup_usage(struct mem_cgroup *memcg, bool swap)
 
 	if (swap)
 		val += mem_cgroup_recursive_stat(memcg, MEM_CGROUP_STAT_SWAPOUT);
+<<<<<<< HEAD
+=======
 =======
 static inline u64 mem_cgroup_usage(struct mem_cgroup *mem, bool swap)
 {
@@ -6039,6 +6982,7 @@ static inline u64 mem_cgroup_usage(struct mem_cgroup *mem, bool swap)
 	if (swap)
 		val += mem_cgroup_recursive_stat(mem, MEM_CGROUP_STAT_SWAPOUT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return val << PAGE_SHIFT;
 }
@@ -6048,8 +6992,12 @@ static u64 mem_cgroup_read(struct cgroup *cont, struct cftype *cft)
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cont);
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = mem_cgroup_from_cont(cont);
+=======
 	struct mem_cgroup *mem = mem_cgroup_from_cont(cont);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 val;
 	int type, name;
 
@@ -6059,6 +7007,9 @@ static u64 mem_cgroup_read(struct cgroup *cont, struct cftype *cft)
 	case _MEM:
 		if (name == RES_USAGE)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			val = mem_cgroup_usage(memcg, false);
 		else
 			val = res_counter_read_u64(&memcg->res, name);
@@ -6071,6 +7022,8 @@ static u64 mem_cgroup_read(struct cgroup *cont, struct cftype *cft)
 		break;
 	default:
 		BUG();
+<<<<<<< HEAD
+=======
 =======
 			val = mem_cgroup_usage(mem, false);
 		else
@@ -6086,6 +7039,7 @@ static u64 mem_cgroup_read(struct cgroup *cont, struct cftype *cft)
 		BUG();
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return val;
 }
@@ -6166,29 +7120,41 @@ out:
 	*memsw_limit = min_memsw_limit;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int mem_cgroup_reset(struct cgroup *cont, unsigned int event)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup *memcg;
 	int type, name;
 
 	memcg = mem_cgroup_from_cont(cont);
+<<<<<<< HEAD
+=======
 =======
 	struct mem_cgroup *mem;
 	int type, name;
 
 	mem = mem_cgroup_from_cont(cont);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	type = MEMFILE_TYPE(event);
 	name = MEMFILE_ATTR(event);
 	switch (name) {
 	case RES_MAX_USAGE:
 		if (type == _MEM)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			res_counter_reset_max(&memcg->res);
 		else
 			res_counter_reset_max(&memcg->memsw);
@@ -6198,6 +7164,8 @@ static int mem_cgroup_reset(struct cgroup *cont, unsigned int event)
 			res_counter_reset_failcnt(&memcg->res);
 		else
 			res_counter_reset_failcnt(&memcg->memsw);
+<<<<<<< HEAD
+=======
 =======
 			res_counter_reset_max(&mem->res);
 		else
@@ -6209,6 +7177,7 @@ static int mem_cgroup_reset(struct cgroup *cont, unsigned int event)
 		else
 			res_counter_reset_failcnt(&mem->memsw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -6228,8 +7197,12 @@ static int mem_cgroup_move_charge_write(struct cgroup *cgrp,
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cgrp);
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = mem_cgroup_from_cont(cgrp);
+=======
 	struct mem_cgroup *mem = mem_cgroup_from_cont(cgrp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (val >= (1 << NR_MOVE_TYPE))
 		return -EINVAL;
@@ -6242,8 +7215,12 @@ static int mem_cgroup_move_charge_write(struct cgroup *cgrp,
 <<<<<<< HEAD
 	memcg->move_charge_at_immigrate = val;
 =======
+<<<<<<< HEAD
+	memcg->move_charge_at_immigrate = val;
+=======
 	mem->move_charge_at_immigrate = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cgroup_unlock();
 
 	return 0;
@@ -6303,13 +7280,20 @@ static void
 <<<<<<< HEAD
 mem_cgroup_get_local_stat(struct mem_cgroup *memcg, struct mcs_total_stat *s)
 =======
+<<<<<<< HEAD
+mem_cgroup_get_local_stat(struct mem_cgroup *memcg, struct mcs_total_stat *s)
+=======
 mem_cgroup_get_local_stat(struct mem_cgroup *mem, struct mcs_total_stat *s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	s64 val;
 
 	/* per cpu stat */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	val = mem_cgroup_read_stat(memcg, MEM_CGROUP_STAT_CACHE);
 	s->stat[MCS_CACHE] += val * PAGE_SIZE;
 	val = mem_cgroup_read_stat(memcg, MEM_CGROUP_STAT_RSS);
@@ -6339,6 +7323,8 @@ mem_cgroup_get_local_stat(struct mem_cgroup *mem, struct mcs_total_stat *s)
 	val = mem_cgroup_nr_lru_pages(memcg, BIT(LRU_ACTIVE_FILE));
 	s->stat[MCS_ACTIVE_FILE] += val * PAGE_SIZE;
 	val = mem_cgroup_nr_lru_pages(memcg, BIT(LRU_UNEVICTABLE));
+<<<<<<< HEAD
+=======
 =======
 	val = mem_cgroup_read_stat(mem, MEM_CGROUP_STAT_CACHE);
 	s->stat[MCS_CACHE] += val * PAGE_SIZE;
@@ -6370,16 +7356,22 @@ mem_cgroup_get_local_stat(struct mem_cgroup *mem, struct mcs_total_stat *s)
 	s->stat[MCS_ACTIVE_FILE] += val * PAGE_SIZE;
 	val = mem_cgroup_get_local_zonestat(mem, LRU_UNEVICTABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s->stat[MCS_UNEVICTABLE] += val * PAGE_SIZE;
 }
 
 static void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 mem_cgroup_get_total_stat(struct mem_cgroup *memcg, struct mcs_total_stat *s)
 {
 	struct mem_cgroup *iter;
 
 	for_each_mem_cgroup_tree(iter, memcg)
+<<<<<<< HEAD
+=======
 =======
 mem_cgroup_get_total_stat(struct mem_cgroup *mem, struct mcs_total_stat *s)
 {
@@ -6387,6 +7379,7 @@ mem_cgroup_get_total_stat(struct mem_cgroup *mem, struct mcs_total_stat *s)
 
 	for_each_mem_cgroup_tree(iter, mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem_cgroup_get_local_stat(iter, s);
 }
 
@@ -6398,12 +7391,17 @@ static int mem_control_numa_stat_show(struct seq_file *m, void *arg)
 	unsigned long node_nr;
 	struct cgroup *cont = m->private;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cont);
 
 	total_nr = mem_cgroup_nr_lru_pages(memcg, LRU_ALL);
 	seq_printf(m, "total=%lu", total_nr);
 	for_each_node_state(nid, N_HIGH_MEMORY) {
 		node_nr = mem_cgroup_node_nr_lru_pages(memcg, nid, LRU_ALL);
+<<<<<<< HEAD
+=======
 =======
 	struct mem_cgroup *mem_cont = mem_cgroup_from_cont(cont);
 
@@ -6412,48 +7410,66 @@ static int mem_control_numa_stat_show(struct seq_file *m, void *arg)
 	for_each_node_state(nid, N_HIGH_MEMORY) {
 		node_nr = mem_cgroup_node_nr_lru_pages(mem_cont, nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(m, " N%d=%lu", nid, node_nr);
 	}
 	seq_putc(m, '\n');
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	file_nr = mem_cgroup_nr_lru_pages(memcg, LRU_ALL_FILE);
 	seq_printf(m, "file=%lu", file_nr);
 	for_each_node_state(nid, N_HIGH_MEMORY) {
 		node_nr = mem_cgroup_node_nr_lru_pages(memcg, nid,
 				LRU_ALL_FILE);
+<<<<<<< HEAD
+=======
 =======
 	file_nr = mem_cgroup_nr_file_lru_pages(mem_cont);
 	seq_printf(m, "file=%lu", file_nr);
 	for_each_node_state(nid, N_HIGH_MEMORY) {
 		node_nr = mem_cgroup_node_nr_file_lru_pages(mem_cont, nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(m, " N%d=%lu", nid, node_nr);
 	}
 	seq_putc(m, '\n');
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	anon_nr = mem_cgroup_nr_lru_pages(memcg, LRU_ALL_ANON);
 	seq_printf(m, "anon=%lu", anon_nr);
 	for_each_node_state(nid, N_HIGH_MEMORY) {
 		node_nr = mem_cgroup_node_nr_lru_pages(memcg, nid,
 				LRU_ALL_ANON);
+<<<<<<< HEAD
+=======
 =======
 	anon_nr = mem_cgroup_nr_anon_lru_pages(mem_cont);
 	seq_printf(m, "anon=%lu", anon_nr);
 	for_each_node_state(nid, N_HIGH_MEMORY) {
 		node_nr = mem_cgroup_node_nr_anon_lru_pages(mem_cont, nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(m, " N%d=%lu", nid, node_nr);
 	}
 	seq_putc(m, '\n');
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unevictable_nr = mem_cgroup_nr_lru_pages(memcg, BIT(LRU_UNEVICTABLE));
 	seq_printf(m, "unevictable=%lu", unevictable_nr);
 	for_each_node_state(nid, N_HIGH_MEMORY) {
 		node_nr = mem_cgroup_node_nr_lru_pages(memcg, nid,
 				BIT(LRU_UNEVICTABLE));
+<<<<<<< HEAD
+=======
 =======
 	unevictable_nr = mem_cgroup_nr_unevictable_lru_pages(mem_cont);
 	seq_printf(m, "unevictable=%lu", unevictable_nr);
@@ -6461,6 +7477,7 @@ static int mem_control_numa_stat_show(struct seq_file *m, void *arg)
 		node_nr = mem_cgroup_node_nr_unevictable_lru_pages(mem_cont,
 									nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(m, " N%d=%lu", nid, node_nr);
 	}
 	seq_putc(m, '\n');
@@ -6474,8 +7491,12 @@ static int mem_control_stat_show(struct cgroup *cont, struct cftype *cft,
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cont);
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = mem_cgroup_from_cont(cont);
+=======
 	struct mem_cgroup *mem_cont = mem_cgroup_from_cont(cont);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mcs_total_stat mystat;
 	int i;
 
@@ -6483,8 +7504,12 @@ static int mem_control_stat_show(struct cgroup *cont, struct cftype *cft,
 <<<<<<< HEAD
 	mem_cgroup_get_local_stat(memcg, &mystat);
 =======
+<<<<<<< HEAD
+	mem_cgroup_get_local_stat(memcg, &mystat);
+=======
 	mem_cgroup_get_local_stat(mem_cont, &mystat);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 	for (i = 0; i < NR_MCS_STAT; i++) {
@@ -6499,8 +7524,12 @@ static int mem_control_stat_show(struct cgroup *cont, struct cftype *cft,
 <<<<<<< HEAD
 		memcg_get_hierarchical_limit(memcg, &limit, &memsw_limit);
 =======
+<<<<<<< HEAD
+		memcg_get_hierarchical_limit(memcg, &limit, &memsw_limit);
+=======
 		memcg_get_hierarchical_limit(mem_cont, &limit, &memsw_limit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cb->fill(cb, "hierarchical_memory_limit", limit);
 		if (do_swap_account)
 			cb->fill(cb, "hierarchical_memsw_limit", memsw_limit);
@@ -6510,8 +7539,12 @@ static int mem_control_stat_show(struct cgroup *cont, struct cftype *cft,
 <<<<<<< HEAD
 	mem_cgroup_get_total_stat(memcg, &mystat);
 =======
+<<<<<<< HEAD
+	mem_cgroup_get_total_stat(memcg, &mystat);
+=======
 	mem_cgroup_get_total_stat(mem_cont, &mystat);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < NR_MCS_STAT; i++) {
 		if (i == MCS_SWAP && !do_swap_account)
 			continue;
@@ -6521,9 +7554,12 @@ static int mem_control_stat_show(struct cgroup *cont, struct cftype *cft,
 #ifdef CONFIG_DEBUG_VM
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cb->fill(cb, "inactive_ratio", calc_inactive_ratio(mem_cont, NULL));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		int nid, zid;
 		struct mem_cgroup_per_zone *mz;
@@ -6535,8 +7571,12 @@ static int mem_control_stat_show(struct cgroup *cont, struct cftype *cft,
 <<<<<<< HEAD
 				mz = mem_cgroup_zoneinfo(memcg, nid, zid);
 =======
+<<<<<<< HEAD
+				mz = mem_cgroup_zoneinfo(memcg, nid, zid);
+=======
 				mz = mem_cgroup_zoneinfo(mem_cont, nid, zid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				recent_rotated[0] +=
 					mz->reclaim_stat.recent_rotated[0];
@@ -6564,8 +7604,12 @@ static u64 mem_cgroup_swappiness_read(struct cgroup *cgrp, struct cftype *cft)
 <<<<<<< HEAD
 	return mem_cgroup_swappiness(memcg);
 =======
+<<<<<<< HEAD
+	return mem_cgroup_swappiness(memcg);
+=======
 	return get_swappiness(memcg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int mem_cgroup_swappiness_write(struct cgroup *cgrp, struct cftype *cft,
@@ -6666,6 +7710,9 @@ static int compare_thresholds(const void *a, const void *b)
 	const struct mem_cgroup_threshold *_b = b;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return _a->threshold - _b->threshold;
 }
 
@@ -6674,6 +7721,8 @@ static int mem_cgroup_oom_notify_cb(struct mem_cgroup *memcg)
 	struct mem_cgroup_eventfd_list *ev;
 
 	list_for_each_entry(ev, &memcg->oom_notify, list)
+<<<<<<< HEAD
+=======
 =======
 	if (_a->threshold > _b->threshold)
 		return 1;
@@ -6690,16 +7739,22 @@ static int mem_cgroup_oom_notify_cb(struct mem_cgroup *mem)
 
 	list_for_each_entry(ev, &mem->oom_notify, list)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		eventfd_signal(ev->eventfd, 1);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mem_cgroup_oom_notify(struct mem_cgroup *memcg)
 {
 	struct mem_cgroup *iter;
 
 	for_each_mem_cgroup_tree(iter, memcg)
+<<<<<<< HEAD
+=======
 =======
 static void mem_cgroup_oom_notify(struct mem_cgroup *mem)
 {
@@ -6707,6 +7762,7 @@ static void mem_cgroup_oom_notify(struct mem_cgroup *mem)
 
 	for_each_mem_cgroup_tree(iter, mem)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem_cgroup_oom_notify_cb(iter);
 }
 
@@ -6812,6 +7868,8 @@ static void mem_cgroup_usage_unregister_event(struct cgroup *cgrp,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Something went wrong if we trying to unregister a threshold
 	 * if we don't have thresholds
@@ -6819,6 +7877,7 @@ static void mem_cgroup_usage_unregister_event(struct cgroup *cgrp,
 	BUG_ON(!thresholds);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!thresholds->primary)
 		goto unlock;
 
@@ -6895,8 +7954,12 @@ static int mem_cgroup_oom_register_event(struct cgroup *cgrp,
 <<<<<<< HEAD
 	spin_lock(&memcg_oom_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&memcg_oom_lock);
+=======
 	mutex_lock(&memcg_oom_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	event->eventfd = eventfd;
 	list_add(&event->list, &memcg->oom_notify);
@@ -6907,10 +7970,16 @@ static int mem_cgroup_oom_register_event(struct cgroup *cgrp,
 		eventfd_signal(eventfd, 1);
 	spin_unlock(&memcg_oom_lock);
 =======
+<<<<<<< HEAD
+	if (atomic_read(&memcg->under_oom))
+		eventfd_signal(eventfd, 1);
+	spin_unlock(&memcg_oom_lock);
+=======
 	if (atomic_read(&memcg->oom_lock))
 		eventfd_signal(eventfd, 1);
 	mutex_unlock(&memcg_oom_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -6921,8 +7990,12 @@ static void mem_cgroup_oom_unregister_event(struct cgroup *cgrp,
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cgrp);
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = mem_cgroup_from_cont(cgrp);
+=======
 	struct mem_cgroup *mem = mem_cgroup_from_cont(cgrp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup_eventfd_list *ev, *tmp;
 	int type = MEMFILE_TYPE(cft->private);
 
@@ -6933,10 +8006,16 @@ static void mem_cgroup_oom_unregister_event(struct cgroup *cgrp,
 
 	list_for_each_entry_safe(ev, tmp, &memcg->oom_notify, list) {
 =======
+<<<<<<< HEAD
+	spin_lock(&memcg_oom_lock);
+
+	list_for_each_entry_safe(ev, tmp, &memcg->oom_notify, list) {
+=======
 	mutex_lock(&memcg_oom_mutex);
 
 	list_for_each_entry_safe(ev, tmp, &mem->oom_notify, list) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ev->eventfd == eventfd) {
 			list_del(&ev->list);
 			kfree(ev);
@@ -6946,19 +8025,28 @@ static void mem_cgroup_oom_unregister_event(struct cgroup *cgrp,
 <<<<<<< HEAD
 	spin_unlock(&memcg_oom_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&memcg_oom_lock);
+=======
 	mutex_unlock(&memcg_oom_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int mem_cgroup_oom_control_read(struct cgroup *cgrp,
 	struct cftype *cft,  struct cgroup_map_cb *cb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cgrp);
 
 	cb->fill(cb, "oom_kill_disable", memcg->oom_kill_disable);
 
 	if (atomic_read(&memcg->under_oom))
+<<<<<<< HEAD
+=======
 =======
 	struct mem_cgroup *mem = mem_cgroup_from_cont(cgrp);
 
@@ -6966,6 +8054,7 @@ static int mem_cgroup_oom_control_read(struct cgroup *cgrp,
 
 	if (atomic_read(&mem->oom_lock))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cb->fill(cb, "under_oom", 1);
 	else
 		cb->fill(cb, "under_oom", 0);
@@ -6978,8 +8067,12 @@ static int mem_cgroup_oom_control_write(struct cgroup *cgrp,
 <<<<<<< HEAD
 	struct mem_cgroup *memcg = mem_cgroup_from_cont(cgrp);
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = mem_cgroup_from_cont(cgrp);
+=======
 	struct mem_cgroup *mem = mem_cgroup_from_cont(cgrp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_cgroup *parent;
 
 	/* cannot set to root cgroup and only 0 and 1 are allowed */
@@ -6992,6 +8085,9 @@ static int mem_cgroup_oom_control_write(struct cgroup *cgrp,
 	/* oom-kill-disable is a flag for subhierarchy. */
 	if ((parent->use_hierarchy) ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (memcg->use_hierarchy && !list_empty(&cgrp->children))) {
 		cgroup_unlock();
 		return -EINVAL;
@@ -6999,6 +8095,8 @@ static int mem_cgroup_oom_control_write(struct cgroup *cgrp,
 	memcg->oom_kill_disable = val;
 	if (!val)
 		memcg_oom_recover(memcg);
+<<<<<<< HEAD
+=======
 =======
 	    (mem->use_hierarchy && !list_empty(&cgrp->children))) {
 		cgroup_unlock();
@@ -7008,6 +8106,7 @@ static int mem_cgroup_oom_control_write(struct cgroup *cgrp,
 	if (!val)
 		memcg_oom_recover(mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cgroup_unlock();
 	return 0;
 }
@@ -7029,6 +8128,9 @@ static int mem_control_numa_stat_open(struct inode *unused, struct file *file)
 #endif /* CONFIG_NUMA */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CGROUP_MEM_RES_CTLR_KMEM
 static int register_kmem_files(struct cgroup *cont, struct cgroup_subsys *ss)
 {
@@ -7057,8 +8159,11 @@ static void kmem_cgroup_destroy(struct cgroup *cont)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct cftype mem_cgroup_files[] = {
 	{
 		.name = "usage_in_bytes",
@@ -7175,11 +8280,16 @@ static int register_memsw_files(struct cgroup *cont, struct cgroup_subsys *ss)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int alloc_mem_cgroup_per_zone_info(struct mem_cgroup *memcg, int node)
 {
 	struct mem_cgroup_per_node *pn;
 	struct mem_cgroup_per_zone *mz;
 	enum lru_list lru;
+<<<<<<< HEAD
+=======
 =======
 static int alloc_mem_cgroup_per_zone_info(struct mem_cgroup *mem, int node)
 {
@@ -7187,6 +8297,7 @@ static int alloc_mem_cgroup_per_zone_info(struct mem_cgroup *mem, int node)
 	struct mem_cgroup_per_zone *mz;
 	enum lru_list l;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int zone, tmp = node;
 	/*
 	 * This routine is called against possible nodes.
@@ -7203,6 +8314,9 @@ static int alloc_mem_cgroup_per_zone_info(struct mem_cgroup *mem, int node)
 		return 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (zone = 0; zone < MAX_NR_ZONES; zone++) {
 		mz = &pn->zoneinfo[zone];
 		for_each_lru(lru)
@@ -7218,6 +8332,8 @@ static int alloc_mem_cgroup_per_zone_info(struct mem_cgroup *mem, int node)
 static void free_mem_cgroup_per_zone_info(struct mem_cgroup *memcg, int node)
 {
 	kfree(memcg->info.nodeinfo[node]);
+<<<<<<< HEAD
+=======
 =======
 	mem->info.nodeinfo[node] = pn;
 	for (zone = 0; zone < MAX_NR_ZONES; zone++) {
@@ -7235,6 +8351,7 @@ static void free_mem_cgroup_per_zone_info(struct mem_cgroup *mem, int node)
 {
 	kfree(mem->info.nodeinfo[node]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct mem_cgroup *mem_cgroup_alloc(void)
@@ -7242,13 +8359,20 @@ static struct mem_cgroup *mem_cgroup_alloc(void)
 <<<<<<< HEAD
 	struct mem_cgroup *memcg;
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg;
+=======
 	struct mem_cgroup *mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int size = sizeof(struct mem_cgroup);
 
 	/* Can be very big if MAX_NUMNODES is very big */
 	if (size < PAGE_SIZE)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcg = kzalloc(size, GFP_KERNEL);
 	else
 		memcg = vzalloc(size);
@@ -7267,6 +8391,8 @@ out_free:
 		kfree(memcg);
 	else
 		vfree(memcg);
+<<<<<<< HEAD
+=======
 =======
 		mem = kzalloc(size, GFP_KERNEL);
 	else
@@ -7287,11 +8413,15 @@ out_free:
 	else
 		vfree(mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Helpers for freeing a vzalloc()ed mem_cgroup by RCU,
  * but in process context.  The work_freeing structure is overlaid
  * on the rcu_freeing structure, which itself is overlaid on memsw.
@@ -7313,8 +8443,11 @@ static void vfree_rcu(struct rcu_head *rcu_head)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * At destroying mem_cgroup, references from swap_cgroup can remain.
  * (scanning all at force_empty is too costly...)
  *
@@ -7326,6 +8459,9 @@ static void vfree_rcu(struct rcu_head *rcu_head)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __mem_cgroup_free(struct mem_cgroup *memcg)
 {
 	int node;
@@ -7353,6 +8489,8 @@ static void __mem_cgroup_put(struct mem_cgroup *memcg, int count)
 	if (atomic_sub_and_test(count, &memcg->refcnt)) {
 		struct mem_cgroup *parent = parent_mem_cgroup(memcg);
 		__mem_cgroup_free(memcg);
+<<<<<<< HEAD
+=======
 =======
 static void __mem_cgroup_free(struct mem_cgroup *mem)
 {
@@ -7382,6 +8520,7 @@ static void __mem_cgroup_put(struct mem_cgroup *mem, int count)
 		struct mem_cgroup *parent = parent_mem_cgroup(mem);
 		__mem_cgroup_free(mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (parent)
 			mem_cgroup_put(parent);
 	}
@@ -7392,16 +8531,25 @@ static void mem_cgroup_put(struct mem_cgroup *memcg)
 {
 	__mem_cgroup_put(memcg, 1);
 =======
+<<<<<<< HEAD
+static void mem_cgroup_put(struct mem_cgroup *memcg)
+{
+	__mem_cgroup_put(memcg, 1);
+=======
 static void mem_cgroup_put(struct mem_cgroup *mem)
 {
 	__mem_cgroup_put(mem, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
  * Returns the parent mem_cgroup in memcgroup hierarchy with hierarchy enabled.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mem_cgroup *parent_mem_cgroup(struct mem_cgroup *memcg)
 {
 	if (!memcg->res.parent)
@@ -7409,6 +8557,8 @@ struct mem_cgroup *parent_mem_cgroup(struct mem_cgroup *memcg)
 	return mem_cgroup_from_res_counter(memcg->res.parent, res);
 }
 EXPORT_SYMBOL(parent_mem_cgroup);
+<<<<<<< HEAD
+=======
 =======
 static struct mem_cgroup *parent_mem_cgroup(struct mem_cgroup *mem)
 {
@@ -7417,6 +8567,7 @@ static struct mem_cgroup *parent_mem_cgroup(struct mem_cgroup *mem)
 	return mem_cgroup_from_res_counter(mem->res.parent, res);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_CGROUP_MEM_RES_CTLR_SWAP
 static void __init enable_swap_cgroup(void)
@@ -7439,8 +8590,12 @@ static int mem_cgroup_soft_limit_tree_init(void)
 <<<<<<< HEAD
 	for_each_node(node) {
 =======
+<<<<<<< HEAD
+	for_each_node(node) {
+=======
 	for_each_node_state(node, N_POSSIBLE) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tmp = node;
 		if (!node_state(node, N_NORMAL_MEMORY))
 			tmp = -1;
@@ -7449,8 +8604,12 @@ static int mem_cgroup_soft_limit_tree_init(void)
 <<<<<<< HEAD
 			goto err_cleanup;
 =======
+<<<<<<< HEAD
+			goto err_cleanup;
+=======
 			return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		soft_limit_tree.rb_tree_per_node[node] = rtpn;
 
@@ -7462,6 +8621,9 @@ static int mem_cgroup_soft_limit_tree_init(void)
 	}
 	return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 err_cleanup:
 	for_each_node(node) {
@@ -7487,6 +8649,8 @@ mem_cgroup_create(struct cgroup *cont)
 
 	for_each_node(node)
 		if (alloc_mem_cgroup_per_zone_info(memcg, node))
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -7504,6 +8668,7 @@ mem_cgroup_create(struct cgroup_subsys *ss, struct cgroup *cont)
 	for_each_node_state(node, N_POSSIBLE)
 		if (alloc_mem_cgroup_per_zone_info(mem, node))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto free_out;
 
 	/* root ? */
@@ -7516,8 +8681,12 @@ mem_cgroup_create(struct cgroup_subsys *ss, struct cgroup *cont)
 <<<<<<< HEAD
 		root_mem_cgroup = memcg;
 =======
+<<<<<<< HEAD
+		root_mem_cgroup = memcg;
+=======
 		root_mem_cgroup = mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for_each_possible_cpu(cpu) {
 			struct memcg_stock_pcp *stock =
 						&per_cpu(memcg_stock, cpu);
@@ -7527,6 +8696,9 @@ mem_cgroup_create(struct cgroup_subsys *ss, struct cgroup *cont)
 	} else {
 		parent = mem_cgroup_from_cont(cont->parent);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcg->use_hierarchy = parent->use_hierarchy;
 		memcg->oom_kill_disable = parent->oom_kill_disable;
 	}
@@ -7534,6 +8706,8 @@ mem_cgroup_create(struct cgroup_subsys *ss, struct cgroup *cont)
 	if (parent && parent->use_hierarchy) {
 		res_counter_init(&memcg->res, &parent->res);
 		res_counter_init(&memcg->memsw, &parent->memsw);
+<<<<<<< HEAD
+=======
 =======
 		mem->use_hierarchy = parent->use_hierarchy;
 		mem->oom_kill_disable = parent->oom_kill_disable;
@@ -7543,6 +8717,7 @@ mem_cgroup_create(struct cgroup_subsys *ss, struct cgroup *cont)
 		res_counter_init(&mem->res, &parent->res);
 		res_counter_init(&mem->memsw, &parent->memsw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * We increment refcnt of the parent to ensure that we can
 		 * safely access it on res_counter_charge/uncharge.
@@ -7552,6 +8727,9 @@ mem_cgroup_create(struct cgroup_subsys *ss, struct cgroup *cont)
 		mem_cgroup_get(parent);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		res_counter_init(&memcg->res, NULL);
 		res_counter_init(&memcg->memsw, NULL);
 	}
@@ -7584,6 +8762,8 @@ static void mem_cgroup_destroy(struct cgroup *cont)
 	kmem_cgroup_destroy(cont);
 
 	mem_cgroup_put(memcg);
+<<<<<<< HEAD
+=======
 =======
 		res_counter_init(&mem->res, NULL);
 		res_counter_init(&mem->memsw, NULL);
@@ -7618,6 +8798,7 @@ static void mem_cgroup_destroy(struct cgroup_subsys *ss,
 
 	mem_cgroup_put(mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int mem_cgroup_populate(struct cgroup_subsys *ss,
@@ -7631,12 +8812,18 @@ static int mem_cgroup_populate(struct cgroup_subsys *ss,
 	if (!ret)
 		ret = register_memsw_files(cont, ss);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!ret)
 		ret = register_kmem_files(cont, ss);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -7652,10 +8839,16 @@ static int mem_cgroup_do_precharge(unsigned long count)
 
 	if (mem_cgroup_is_root(memcg)) {
 =======
+<<<<<<< HEAD
+	struct mem_cgroup *memcg = mc.to;
+
+	if (mem_cgroup_is_root(memcg)) {
+=======
 	struct mem_cgroup *mem = mc.to;
 
 	if (mem_cgroup_is_root(mem)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mc.precharge += count;
 		/* we don't need css_get for root */
 		return ret;
@@ -7667,18 +8860,27 @@ static int mem_cgroup_do_precharge(unsigned long count)
 <<<<<<< HEAD
 		 * "memcg" cannot be under rmdir() because we've already checked
 =======
+<<<<<<< HEAD
+		 * "memcg" cannot be under rmdir() because we've already checked
+=======
 		 * "mem" cannot be under rmdir() because we've already checked
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * by cgroup_lock_live_cgroup() that it is not removed and we
 		 * are still under the same cgroup_mutex. So we can postpone
 		 * css_get().
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (res_counter_charge(&memcg->res, PAGE_SIZE * count, &dummy))
 			goto one_by_one;
 		if (do_swap_account && res_counter_charge(&memcg->memsw,
 						PAGE_SIZE * count, &dummy)) {
 			res_counter_uncharge(&memcg->res, PAGE_SIZE * count);
+<<<<<<< HEAD
+=======
 =======
 		if (res_counter_charge(&mem->res, PAGE_SIZE * count, &dummy))
 			goto one_by_one;
@@ -7686,6 +8888,7 @@ static int mem_cgroup_do_precharge(unsigned long count)
 						PAGE_SIZE * count, &dummy)) {
 			res_counter_uncharge(&mem->res, PAGE_SIZE * count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto one_by_one;
 		}
 		mc.precharge += count;
@@ -7703,17 +8906,23 @@ one_by_one:
 			cond_resched();
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = __mem_cgroup_try_charge(NULL,
 					GFP_KERNEL, 1, &memcg, false);
 		if (ret)
 			/* mem_cgroup_clear_mc() will do uncharge later */
 			return ret;
+<<<<<<< HEAD
+=======
 =======
 		ret = __mem_cgroup_try_charge(NULL, GFP_KERNEL, 1, &mem, false);
 		if (ret || !mem)
 			/* mem_cgroup_clear_mc() will do uncharge later */
 			return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mc.precharge++;
 	}
 	return ret;
@@ -7723,8 +8932,12 @@ one_by_one:
 <<<<<<< HEAD
  * get_mctgt_type - get target type of moving charge
 =======
+<<<<<<< HEAD
+ * get_mctgt_type - get target type of moving charge
+=======
  * is_target_pte_for_mc - check a pte whether it is valid for move charge
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @vma: the vma the pte to be checked belongs
  * @addr: the address corresponding to the pte to be checked
  * @ptent: the pte to be checked
@@ -7750,8 +8963,12 @@ enum mc_target_type {
 <<<<<<< HEAD
 	MC_TARGET_NONE = 0,
 =======
+<<<<<<< HEAD
+	MC_TARGET_NONE = 0,
+=======
 	MC_TARGET_NONE,	/* not used */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MC_TARGET_PAGE,
 	MC_TARGET_SWAP,
 };
@@ -7819,6 +9036,9 @@ static struct page *mc_handle_file_pte(struct vm_area_struct *vma,
 
 	/* page is moved even if it's not RSS of this task(page-faulted). */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	page = find_get_page(mapping, pgoff);
 
 #ifdef CONFIG_SWAP
@@ -7834,6 +9054,8 @@ static struct page *mc_handle_file_pte(struct vm_area_struct *vma,
 }
 
 static enum mc_target_type get_mctgt_type(struct vm_area_struct *vma,
+<<<<<<< HEAD
+=======
 =======
 	if (!mapping_cap_swap_backed(mapping)) { /* normal file */
 		page = find_get_page(mapping, pgoff);
@@ -7849,6 +9071,7 @@ static enum mc_target_type get_mctgt_type(struct vm_area_struct *vma,
 
 static int is_target_pte_for_mc(struct vm_area_struct *vma,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long addr, pte_t ptent, union mc_target *target)
 {
 	struct page *page = NULL;
@@ -7856,8 +9079,12 @@ static int is_target_pte_for_mc(struct vm_area_struct *vma,
 <<<<<<< HEAD
 	enum mc_target_type ret = MC_TARGET_NONE;
 =======
+<<<<<<< HEAD
+	enum mc_target_type ret = MC_TARGET_NONE;
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	swp_entry_t ent = { .val = 0 };
 
 	if (pte_present(ptent))
@@ -7871,8 +9098,12 @@ static int is_target_pte_for_mc(struct vm_area_struct *vma,
 <<<<<<< HEAD
 		return ret;
 =======
+<<<<<<< HEAD
+		return ret;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (page) {
 		pc = lookup_page_cgroup(page);
 		/*
@@ -7893,8 +9124,12 @@ static int is_target_pte_for_mc(struct vm_area_struct *vma,
 <<<<<<< HEAD
 			css_id(&mc.from->css) == lookup_swap_cgroup_id(ent)) {
 =======
+<<<<<<< HEAD
+			css_id(&mc.from->css) == lookup_swap_cgroup_id(ent)) {
+=======
 			css_id(&mc.from->css) == lookup_swap_cgroup(ent)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = MC_TARGET_SWAP;
 		if (target)
 			target->ent = ent;
@@ -7903,6 +9138,9 @@ static int is_target_pte_for_mc(struct vm_area_struct *vma,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
 /*
  * We don't consider swapping or file mapped pages because THP does not
@@ -7938,8 +9176,11 @@ static inline enum mc_target_type get_mctgt_type_thp(struct vm_area_struct *vma,
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mem_cgroup_count_precharge_pte_range(pmd_t *pmd,
 					unsigned long addr, unsigned long end,
 					struct mm_walk *walk)
@@ -7949,6 +9190,9 @@ static int mem_cgroup_count_precharge_pte_range(pmd_t *pmd,
 	spinlock_t *ptl;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pmd_trans_huge_lock(pmd, vma) == 1) {
 		if (get_mctgt_type_thp(vma, addr, *pmd, NULL) == MC_TARGET_PAGE)
 			mc.precharge += HPAGE_PMD_NR;
@@ -7961,6 +9205,8 @@ static int mem_cgroup_count_precharge_pte_range(pmd_t *pmd,
 	pte = pte_offset_map_lock(vma->vm_mm, pmd, addr, &ptl);
 	for (; addr != end; pte++, addr += PAGE_SIZE)
 		if (get_mctgt_type(vma, addr, *pte, NULL))
+<<<<<<< HEAD
+=======
 =======
 	split_huge_page_pmd(walk->mm, pmd);
 	if (pmd_trans_unstable(pmd))
@@ -7970,6 +9216,7 @@ static int mem_cgroup_count_precharge_pte_range(pmd_t *pmd,
 	for (; addr != end; pte++, addr += PAGE_SIZE)
 		if (is_target_pte_for_mc(vma, addr, *pte, NULL))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mc.precharge++;	/* increment precharge temporarily */
 	pte_unmap_unlock(pte - 1, ptl);
 	cond_resched();
@@ -8072,6 +9319,9 @@ static void mem_cgroup_clear_mc(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mem_cgroup_can_attach(struct cgroup *cgroup,
 				 struct cgroup_taskset *tset)
 {
@@ -8084,6 +9334,8 @@ static int mem_cgroup_can_attach(struct cgroup *cgroup,
 		struct mem_cgroup *from = mem_cgroup_from_task(p);
 
 		VM_BUG_ON(from == memcg);
+<<<<<<< HEAD
+=======
 =======
 static int mem_cgroup_can_attach(struct cgroup_subsys *ss,
 				struct cgroup *cgroup,
@@ -8098,6 +9350,7 @@ static int mem_cgroup_can_attach(struct cgroup_subsys *ss,
 
 		VM_BUG_ON(from == mem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		mm = get_task_mm(p);
 		if (!mm)
@@ -8115,8 +9368,12 @@ static int mem_cgroup_can_attach(struct cgroup_subsys *ss,
 <<<<<<< HEAD
 			mc.to = memcg;
 =======
+<<<<<<< HEAD
+			mc.to = memcg;
+=======
 			mc.to = mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&mc.lock);
 			/* We set mc.moving_task later */
 
@@ -8133,10 +9390,15 @@ static int mem_cgroup_can_attach(struct cgroup_subsys *ss,
 static void mem_cgroup_cancel_attach(struct cgroup *cgroup,
 				     struct cgroup_taskset *tset)
 =======
+<<<<<<< HEAD
+static void mem_cgroup_cancel_attach(struct cgroup *cgroup,
+				     struct cgroup_taskset *tset)
+=======
 static void mem_cgroup_cancel_attach(struct cgroup_subsys *ss,
 				struct cgroup *cgroup,
 				struct task_struct *p)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mem_cgroup_clear_mc();
 }
@@ -8150,6 +9412,9 @@ static int mem_cgroup_move_charge_pte_range(pmd_t *pmd,
 	pte_t *pte;
 	spinlock_t *ptl;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum mc_target_type target_type;
 	union mc_target target;
 	struct page *page;
@@ -8189,10 +9454,13 @@ static int mem_cgroup_move_charge_pte_range(pmd_t *pmd,
 		return 0;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 
 	split_huge_page_pmd(walk->mm, pmd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pmd_trans_unstable(pmd))
 		return 0;
 retry:
@@ -8201,11 +9469,14 @@ retry:
 		pte_t ptent = *(pte++);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		union mc_target target;
 		int type;
 		struct page *page;
 		struct page_cgroup *pc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		swp_entry_t ent;
 
 		if (!mc.precharge)
@@ -8214,9 +9485,13 @@ retry:
 <<<<<<< HEAD
 		switch (get_mctgt_type(vma, addr, ptent, &target)) {
 =======
+<<<<<<< HEAD
+		switch (get_mctgt_type(vma, addr, ptent, &target)) {
+=======
 		type = is_target_pte_for_mc(vma, addr, ptent, &target);
 		switch (type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case MC_TARGET_PAGE:
 			page = target.page;
 			if (isolate_lru_page(page))
@@ -8232,8 +9507,12 @@ retry:
 <<<<<<< HEAD
 put:			/* get_mctgt_type() gets the page */
 =======
+<<<<<<< HEAD
+put:			/* get_mctgt_type() gets the page */
+=======
 put:			/* is_target_pte_for_mc() gets the page */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			put_page(page);
 			break;
 		case MC_TARGET_SWAP:
@@ -8307,10 +9586,15 @@ retry:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mem_cgroup_move_task(struct cgroup *cont,
 				 struct cgroup_taskset *tset)
 {
 	struct task_struct *p = cgroup_taskset_first(tset);
+<<<<<<< HEAD
+=======
 =======
 static void mem_cgroup_move_task(struct cgroup_subsys *ss,
 				struct cgroup *cont,
@@ -8318,6 +9602,7 @@ static void mem_cgroup_move_task(struct cgroup_subsys *ss,
 				struct task_struct *p)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mm_struct *mm = get_task_mm(p);
 
 	if (mm) {
@@ -8325,8 +9610,11 @@ static void mem_cgroup_move_task(struct cgroup_subsys *ss,
 			mem_cgroup_move_charge(mm);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		put_swap_token(mm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mmput(mm);
 	}
 	if (mc.to)
@@ -8334,6 +9622,9 @@ static void mem_cgroup_move_task(struct cgroup_subsys *ss,
 }
 #else	/* !CONFIG_MMU */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mem_cgroup_can_attach(struct cgroup *cgroup,
 				 struct cgroup_taskset *tset)
 {
@@ -8345,6 +9636,8 @@ static void mem_cgroup_cancel_attach(struct cgroup *cgroup,
 }
 static void mem_cgroup_move_task(struct cgroup *cont,
 				 struct cgroup_taskset *tset)
+<<<<<<< HEAD
+=======
 =======
 static int mem_cgroup_can_attach(struct cgroup_subsys *ss,
 				struct cgroup *cgroup,
@@ -8362,6 +9655,7 @@ static void mem_cgroup_move_task(struct cgroup_subsys *ss,
 				struct cgroup *old_cont,
 				struct task_struct *p)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 #endif

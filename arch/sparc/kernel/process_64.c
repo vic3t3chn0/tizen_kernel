@@ -15,8 +15,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/kernel.h>
 #include <linux/mm.h>
@@ -38,8 +42,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgalloc.h>
 #include <asm/pgtable.h>
@@ -106,13 +113,21 @@ void cpu_idle(void)
 		tick_nohz_idle_enter();
 		rcu_idle_enter();
 =======
+<<<<<<< HEAD
+		tick_nohz_idle_enter();
+		rcu_idle_enter();
+=======
 		tick_nohz_stop_sched_tick(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		while (!need_resched() && !cpu_is_offline(cpu))
 			sparc64_yield(cpu);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_idle_exit();
 		tick_nohz_idle_exit();
 
@@ -123,6 +138,8 @@ void cpu_idle(void)
 		}
 #endif
 		schedule_preempt_disabled();
+<<<<<<< HEAD
+=======
 =======
 		tick_nohz_restart_sched_tick();
 
@@ -136,6 +153,7 @@ void cpu_idle(void)
 		schedule();
 		preempt_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -395,10 +413,13 @@ void flush_thread(void)
 	t->fpsaved[0] = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	
 	if (get_thread_current_ds() != ASI_AIUS)
 		set_fs(USER_DS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* It's a bit more tricky when 64-bit tasks are involved... */

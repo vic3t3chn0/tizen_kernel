@@ -15,8 +15,13 @@
 #include <linux/gfp.h>
 #include <asm/ctl_reg.h>
 =======
+<<<<<<< HEAD
+#include <linux/gfp.h>
+#include <asm/ctl_reg.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * This function writes to kernel memory bypassing DAT and possible
@@ -68,13 +73,21 @@ long probe_kernel_write(void *dst, const void *src, size_t size)
 <<<<<<< HEAD
 static int __memcpy_real(void *dest, void *src, size_t count)
 =======
+<<<<<<< HEAD
+static int __memcpy_real(void *dest, void *src, size_t count)
+=======
 int memcpy_real(void *dest, void *src, size_t count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	register unsigned long _dest asm("2") = (unsigned long) dest;
 	register unsigned long _len1 asm("3") = (unsigned long) count;
 	register unsigned long _src  asm("4") = (unsigned long) src;
 	register unsigned long _len2 asm("5") = (unsigned long) count;
+<<<<<<< HEAD
+	int rc = -EFAULT;
+
+=======
 <<<<<<< HEAD
 	int rc = -EFAULT;
 
@@ -86,6 +99,7 @@ int memcpy_real(void *dest, void *src, size_t count)
 		return 0;
 	flags = __arch_local_irq_stnsm(0xf8UL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asm volatile (
 		"0:	mvcle	%1,%2,0x0\n"
 		"1:	jo	0b\n"
@@ -97,6 +111,9 @@ int memcpy_real(void *dest, void *src, size_t count)
 		: "m" (*((long *) src))
 		: "cc", "memory");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -182,8 +199,11 @@ int copy_from_user_real(void *dest, void __user *src, size_t count)
 	rc = 0;
 out:
 	free_page((unsigned long) buf);
+<<<<<<< HEAD
+=======
 =======
 	arch_local_irq_restore(flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }

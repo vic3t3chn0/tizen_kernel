@@ -6,7 +6,12 @@
  *  [ NOTE: this mechanism is now deprecated in favor of the vDSO. ]
  *
 =======
+<<<<<<< HEAD
+ *  [ NOTE: this mechanism is now deprecated in favor of the vDSO. ]
+ *
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Thanks to hpa@transmeta.com for some useful hint.
  *  Special thanks to Ingo Molnar for his early experience with
  *  a different vsyscall implementation for Linux/IA32 and for the name.
@@ -17,11 +22,16 @@
  *  jumping out of line if necessary. We cannot add more with this
  *  mechanism because older kernels won't return -ENOSYS.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  Note: the concept clashes with user mode linux.  UML users should
  *  use the vDSO.
  */
 
+<<<<<<< HEAD
+=======
 =======
  *  If we want more than four we need a vDSO.
  *
@@ -33,6 +43,7 @@
 #define DISABLE_BRANCH_PROFILING
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/time.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
@@ -43,24 +54,34 @@
 <<<<<<< HEAD
 #include <linux/topology.h>
 =======
+<<<<<<< HEAD
+#include <linux/topology.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clocksource.h>
 #include <linux/getcpu.h>
 #include <linux/cpu.h>
 #include <linux/smp.h>
 #include <linux/notifier.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/syscalls.h>
 #include <linux/ratelimit.h>
 
 #include <asm/vsyscall.h>
 #include <asm/pgtable.h>
 #include <asm/compat.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/vsyscall.h>
 #include <asm/pgtable.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/unistd.h>
 #include <asm/fixmap.h>
@@ -71,6 +92,9 @@
 #include <asm/topology.h>
 #include <asm/vgtod.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/traps.h>
 
 #define CREATE_TRACE_POINTS
@@ -103,6 +127,8 @@ early_param("vsyscall", vsyscall_setup);
 void update_vsyscall_tz(void)
 {
 	vsyscall_gtod_data.sys_tz = sys_tz;
+<<<<<<< HEAD
+=======
 =======
 
 #define __vsyscall(nr) \
@@ -125,12 +151,16 @@ void update_vsyscall_tz(void)
 	vsyscall_gtod_data.sys_tz = sys_tz;
 	write_sequnlock_irqrestore(&vsyscall_gtod_data.lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void update_vsyscall(struct timespec *wall_time, struct timespec *wtm,
 			struct clocksource *clock, u32 mult)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timespec monotonic;
 
 	write_seqcount_begin(&vsyscall_gtod_data.seq);
@@ -334,6 +364,8 @@ sigsegv:
  * Assume __initcall executes before all user space. Hopefully kmod
  * doesn't violate that. We'll find out if it does.
  */
+<<<<<<< HEAD
+=======
 =======
 	unsigned long flags;
 
@@ -512,6 +544,7 @@ static ctl_table kernel_root_table2[] = {
 /* Assume __initcall executes before all user space. Hopefully kmod
    doesn't violate that. We'll find out if it does. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __cpuinit vsyscall_set_cpu(int cpu)
 {
 	unsigned long d;
@@ -523,15 +556,21 @@ static void __cpuinit vsyscall_set_cpu(int cpu)
 		write_rdtscp_aux((node << 12) | cpu);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Store cpu number in limit so that it can be loaded quickly
 	 * in user space in vgetcpu. (12 bits for the CPU and 8 bits for the node)
 	 */
+<<<<<<< HEAD
+=======
 =======
 	/* Store cpu number in limit so that it can be loaded quickly
 	   in user space in vgetcpu.
 	   12 bits for the CPU and 8 bits for the node. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	d = 0x0f40000000000ULL;
 	d |= cpu;
 	d |= (node & 0xf) << 12;
@@ -539,7 +578,11 @@ static void __cpuinit vsyscall_set_cpu(int cpu)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	write_gdt_entry(get_cpu_gdt_table(cpu), GDT_ENTRY_PER_CPU, &d, DESCTYPE_S);
 }
 
@@ -554,20 +597,29 @@ cpu_vsyscall_notifier(struct notifier_block *n, unsigned long action, void *arg)
 {
 	long cpu = (long)arg;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (action == CPU_ONLINE || action == CPU_ONLINE_FROZEN)
 		smp_call_function_single(cpu, cpu_vsyscall_init, NULL, 1);
 
+<<<<<<< HEAD
+=======
 =======
 	if (action == CPU_ONLINE || action == CPU_ONLINE_FROZEN)
 		smp_call_function_single(cpu, cpu_vsyscall_init, NULL, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NOTIFY_DONE;
 }
 
 void __init map_vsyscall(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	extern char __vsyscall_page;
 	unsigned long physaddr_vsyscall = __pa_symbol(&__vsyscall_page);
 	extern char __vvar_page;
@@ -583,6 +635,8 @@ void __init map_vsyscall(void)
 	__set_fixmap(VVAR_PAGE, physaddr_vvar_page, PAGE_KERNEL_VVAR);
 	BUILD_BUG_ON((unsigned long)__fix_to_virt(VVAR_PAGE) !=
 		     (unsigned long)VVAR_ADDRESS);
+<<<<<<< HEAD
+=======
 =======
 	extern char __vsyscall_0;
 	unsigned long physaddr_page0 = __pa_symbol(&__vsyscall_0);
@@ -590,11 +644,15 @@ void __init map_vsyscall(void)
 	/* Note that VSYSCALL_MAPPED_PAGES must agree with the code below. */
 	__set_fixmap(VSYSCALL_FIRST_PAGE, physaddr_page0, PAGE_KERNEL_VSYSCALL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init vsyscall_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(VSYSCALL_ADDR(0) != __fix_to_virt(VSYSCALL_FIRST_PAGE));
 
 	on_each_cpu(cpu_vsyscall_init, NULL, 1);
@@ -603,6 +661,8 @@ static int __init vsyscall_init(void)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(((unsigned long) &vgettimeofday !=
 			VSYSCALL_ADDR(__NR_vgettimeofday)));
@@ -619,4 +679,5 @@ static int __init vsyscall_init(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __initcall(vsyscall_init);

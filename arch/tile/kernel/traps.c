@@ -20,6 +20,9 @@
 #include <linux/uaccess.h>
 #include <linux/ptrace.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/stack.h>
 #include <asm/traps.h>
 #include <asm/setup.h>
@@ -27,6 +30,8 @@
 #include <arch/interrupts.h>
 #include <arch/spr_def.h>
 #include <arch/opcode.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/opcode-tile.h>
 #include <asm/opcode_constants.h>
@@ -36,6 +41,7 @@
 #include <arch/interrupts.h>
 #include <arch/spr_def.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init trap_init(void)
 {
@@ -148,8 +154,12 @@ static int special_ill(bundle_bits bundle, int *sigp, int *codep)
 <<<<<<< HEAD
 	if (bundle & TILEPRO_BUNDLE_Y_ENCODING_MASK)
 =======
+<<<<<<< HEAD
+	if (bundle & TILEPRO_BUNDLE_Y_ENCODING_MASK)
+=======
 	if (bundle & TILE_BUNDLE_Y_ENCODING_MASK)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	if (get_Opcode_X1(bundle) != SHUN_0_OPCODE_X1)
 		return 0;
@@ -217,8 +227,12 @@ void __kprobes do_trap(struct pt_regs *regs, int fault_num,
 <<<<<<< HEAD
 	unsigned long address = 0;
 =======
+<<<<<<< HEAD
+	unsigned long address = 0;
+=======
 	unsigned long address;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bundle_bits instr;
 
 	/* Re-enable interrupts. */
@@ -242,12 +256,18 @@ void __kprobes do_trap(struct pt_regs *regs, int fault_num,
 
 	switch (fault_num) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case INT_MEM_ERROR:
 		signo = SIGBUS;
 		code = BUS_OBJERR;
 		break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case INT_ILL:
 		if (copy_from_user(&instr, (void __user *)regs->pc,
 				   sizeof(instr))) {
@@ -315,13 +335,19 @@ void __kprobes do_trap(struct pt_regs *regs, int fault_num,
 		break;
 #ifdef __tilegx__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case INT_ILL_TRANS: {
 		/* Avoid a hardware erratum with the return address stack. */
 		fill_ra_stack();
 
+<<<<<<< HEAD
+=======
 =======
 	case INT_ILL_TRANS:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		signo = SIGSEGV;
 		code = SEGV_MAPERR;
 		if (reason & SPR_ILL_TRANS_REASON__I_STREAM_VA_RMASK)
@@ -332,7 +358,11 @@ void __kprobes do_trap(struct pt_regs *regs, int fault_num,
 <<<<<<< HEAD
 	}
 =======
+<<<<<<< HEAD
+	}
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	default:
 		panic("Unexpected do_trap interrupt number %d", fault_num);
@@ -348,8 +378,13 @@ void __kprobes do_trap(struct pt_regs *regs, int fault_num,
 	if (signo != SIGTRAP)
 		trace_unhandled_signal("trap", regs, address, signo);
 =======
+<<<<<<< HEAD
+	if (signo != SIGTRAP)
+		trace_unhandled_signal("trap", regs, address, signo);
+=======
 	trace_unhandled_signal("trap", regs, address, signo);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	force_sig_info(signo, &info, current);
 }
 

@@ -13,6 +13,9 @@ obj-				:=
 # Core files
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-y				+= clock.o
 obj-y				+= irq.o
 obj-$(CONFIG_S5P_EXT_INT)	+= irq-eint.o
@@ -27,6 +30,8 @@ obj-$(CONFIG_S5P_HRT) 		+= s5p-time.o
 obj-$(CONFIG_S5P_DEV_UART)	+= dev-uart.o
 obj-$(CONFIG_S5P_DEV_MFC)	+= dev-mfc.o
 obj-$(CONFIG_S5P_SETUP_MIPIPHY)	+= setup-mipiphy.o
+<<<<<<< HEAD
+=======
 =======
 obj-y				+= dev-pmu.o
 obj-y				+= dev-uart.o
@@ -82,3 +87,4 @@ endif
 obj-$(CONFIG_S5P_DEV_I2C_HDMIPHY)	+= dev-i2c-hdmiphy.o
 obj-$(CONFIG_S3C_DEV_TSI)	+= dev-tsi.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

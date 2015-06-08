@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  *    Copyright IBM Corp. 1999,2012
 =======
+<<<<<<< HEAD
+ *    Copyright IBM Corp. 1999,2012
+=======
  *    Copyright IBM Corp. 1999,2009
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    Author(s): Denis Joseph Barrow,
  *		 Martin Schwidefsky <schwidefsky@de.ibm.com>,
  *		 Heiko Carstens <heiko.carstens@de.ibm.com>,
@@ -14,6 +18,9 @@
 #ifdef CONFIG_SMP
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/lowcore.h>
 
 #define raw_smp_processor_id()	(S390_lowcore.cpu_nr)
@@ -22,6 +29,8 @@ extern struct mutex smp_cpu_state_mutex;
 extern struct save_area *zfcpdump_save_areas[NR_CPUS + 1];
 
 extern int __cpu_up(unsigned int cpu);
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 #include <asm/sigp.h>
@@ -39,11 +48,15 @@ extern int __cpu_up (unsigned int cpu);
 extern struct mutex smp_cpu_state_mutex;
 extern int smp_cpu_polarization[];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void arch_send_call_function_single_ipi(int cpu);
 extern void arch_send_call_function_ipi_mask(const struct cpumask *mask);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void smp_call_online_cpu(void (*func)(void *), void *);
 extern void smp_call_ipl_cpu(void (*func)(void *), void *);
 
@@ -62,6 +75,8 @@ static inline void smp_call_ipl_cpu(void (*func)(void *), void *data)
 }
 
 static inline void smp_call_online_cpu(void (*func)(void *), void *data)
+<<<<<<< HEAD
+=======
 =======
 extern struct save_area *zfcpdump_save_areas[NR_CPUS + 1];
 
@@ -96,19 +111,26 @@ static inline int smp_vcpu_scheduled(int cpu)
 
 static inline void smp_switch_to_ipl_cpu(void (*func)(void *), void *data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	func(data);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int smp_find_processor_id(int address) { return 0; }
 static inline int smp_vcpu_scheduled(int cpu) { return 1; }
 static inline void smp_yield_cpu(int cpu) { }
 static inline void smp_yield(void) { }
 static inline void smp_stop_cpu(void) { }
+<<<<<<< HEAD
+=======
 =======
 #define smp_vcpu_scheduled	(1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* CONFIG_SMP */
 
@@ -119,7 +141,12 @@ extern void __noreturn cpu_die(void);
 extern void __cpu_die(unsigned int cpu);
 extern int __cpu_disable(void);
 =======
+<<<<<<< HEAD
+extern void __cpu_die(unsigned int cpu);
+extern int __cpu_disable(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 static inline int smp_rescan_cpus(void) { return 0; }
 static inline void cpu_die(void) { }

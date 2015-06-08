@@ -1077,7 +1077,11 @@ static const struct oxygen_model model_xonar_st = {
 <<<<<<< HEAD
 			 CAPTURE_1_FROM_SPDIF |
 =======
+<<<<<<< HEAD
+			 CAPTURE_1_FROM_SPDIF |
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 AC97_FMIC_SWITCH,
 	.dac_channels_pcm = 2,
 	.dac_channels_mixer = 2,

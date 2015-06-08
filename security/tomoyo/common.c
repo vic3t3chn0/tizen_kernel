@@ -4,10 +4,14 @@
 <<<<<<< HEAD
  * Copyright (C) 2005-2011  NTT DATA CORPORATION
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2005-2011  NTT DATA CORPORATION
+=======
  * Common functions for TOMOYO.
  *
  * Copyright (C) 2005-2010  NTT DATA CORPORATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/uaccess.h>
@@ -16,6 +20,9 @@
 #include "common.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* String table for operation mode. */
 const char * const tomoyo_mode[TOMOYO_CONFIG_MAX_MODE] = {
 	[TOMOYO_CONFIG_DISABLED]   = "disabled",
@@ -173,6 +180,8 @@ static const char * const tomoyo_category_keywords
 	[TOMOYO_MAC_CATEGORY_FILE]    = "file",
 	[TOMOYO_MAC_CATEGORY_NETWORK] = "network",
 	[TOMOYO_MAC_CATEGORY_MISC]    = "misc",
+<<<<<<< HEAD
+=======
 =======
 static struct tomoyo_profile tomoyo_default_profile = {
 	.learning = &tomoyo_default_profile.preference,
@@ -223,6 +232,7 @@ static const char *tomoyo_mac_keywords[TOMOYO_MAX_MAC_INDEX
 	[TOMOYO_MAC_FILE_PIVOT_ROOT] = "file::pivot_root",
 	[TOMOYO_MAX_MAC_INDEX + TOMOYO_MAC_CATEGORY_FILE] = "file",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Permit policy management by non-root user? */
@@ -238,13 +248,20 @@ static bool tomoyo_manage_by_non_root;
 <<<<<<< HEAD
 const char *tomoyo_yesno(const unsigned int value)
 =======
+<<<<<<< HEAD
+const char *tomoyo_yesno(const unsigned int value)
+=======
 static const char *tomoyo_yesno(const unsigned int value)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return value ? "yes" : "no";
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_addprintf - strncat()-like-snprintf().
  *
@@ -254,8 +271,11 @@ static const char *tomoyo_yesno(const unsigned int value)
  *
  * Returns nothing.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tomoyo_addprintf(char *buffer, int len, const char *fmt, ...)
 {
 	va_list args;
@@ -279,8 +299,12 @@ static bool tomoyo_flush(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
 		size_t len = strlen(w);
 =======
+<<<<<<< HEAD
+		size_t len = strlen(w);
+=======
 		int len = strlen(w);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (len) {
 			if (len > head->read_user_buf_avail)
 				len = head->read_user_buf_avail;
@@ -298,8 +322,12 @@ static bool tomoyo_flush(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
 		/* Add '\0' for audit logs and query. */
 =======
+<<<<<<< HEAD
+		/* Add '\0' for audit logs and query. */
+=======
 		/* Add '\0' for query. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (head->poll) {
 			if (!head->read_user_buf_avail ||
 			    copy_to_user(head->read_user_buf, "", 1))
@@ -339,7 +367,13 @@ static void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt,
 			     ...) __printf(2, 3);
 
 =======
+<<<<<<< HEAD
+static void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt,
+			     ...) __printf(2, 3);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_io_printf - printf() to "struct tomoyo_io_buffer" structure.
  *
@@ -347,12 +381,17 @@ static void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt,
  * @fmt:  The printf()'s format string, followed by parameters.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt,
 			     ...)
 {
 	va_list args;
 	size_t len;
 	size_t pos = head->r.avail;
+<<<<<<< HEAD
+=======
 =======
 void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt, ...)
 {
@@ -360,6 +399,7 @@ void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt, ...)
 	int len;
 	int pos = head->r.avail;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int size = head->readbuf_size - pos;
 	if (size <= 0)
 		return;
@@ -375,6 +415,9 @@ void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt, ...)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_set_space - Put a space to "struct tomoyo_io_buffer" structure.
  *
@@ -382,14 +425,20 @@ void tomoyo_io_printf(struct tomoyo_io_buffer *head, const char *fmt, ...)
  *
  * Returns nothing.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tomoyo_set_space(struct tomoyo_io_buffer *head)
 {
 	tomoyo_set_string(head, " ");
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_set_lf - Put a line feed to "struct tomoyo_io_buffer" structure.
  *
@@ -397,8 +446,11 @@ static void tomoyo_set_space(struct tomoyo_io_buffer *head)
  *
  * Returns nothing.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_set_lf(struct tomoyo_io_buffer *head)
 {
 	tomoyo_set_string(head, "\n");
@@ -407,6 +459,9 @@ static bool tomoyo_set_lf(struct tomoyo_io_buffer *head)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_set_slash - Put a shash to "struct tomoyo_io_buffer" structure.
  *
  * @head: Pointer to "struct tomoyo_io_buffer".
@@ -463,8 +518,11 @@ static void tomoyo_print_namespace(struct tomoyo_io_buffer *head)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_print_name_union - Print a tomoyo_name_union.
  *
  * @head: Pointer to "struct tomoyo_io_buffer".
@@ -475,6 +533,9 @@ static void tomoyo_print_name_union(struct tomoyo_io_buffer *head,
 {
 	tomoyo_set_space(head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ptr->group) {
 		tomoyo_set_string(head, "@");
 		tomoyo_set_string(head, ptr->group->group_name->name);
@@ -501,6 +562,8 @@ static void tomoyo_print_name_union_quoted(struct tomoyo_io_buffer *head,
 		tomoyo_set_string(head, "\"");
 		tomoyo_set_string(head, ptr->filename->name);
 		tomoyo_set_string(head, "\"");
+<<<<<<< HEAD
+=======
 =======
 	if (ptr->is_group) {
 		tomoyo_set_string(head, "@");
@@ -508,11 +571,15 @@ static void tomoyo_print_name_union_quoted(struct tomoyo_io_buffer *head,
 	} else {
 		tomoyo_set_string(head, ptr->filename->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_print_number_union_nospace - Print a tomoyo_number_union without a space.
  *
  * @head: Pointer to "struct tomoyo_io_buffer".
@@ -524,6 +591,8 @@ static void tomoyo_print_number_union_nospace
 (struct tomoyo_io_buffer *head, const struct tomoyo_number_union *ptr)
 {
 	if (ptr->group) {
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_print_number_union - Print a tomoyo_number_union.
  *
@@ -536,6 +605,7 @@ static void tomoyo_print_number_union(struct tomoyo_io_buffer *head,
 	tomoyo_set_space(head);
 	if (ptr->is_group) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tomoyo_set_string(head, "@");
 		tomoyo_set_string(head, ptr->group->group_name->name);
 	} else {
@@ -546,9 +616,14 @@ static void tomoyo_print_number_union(struct tomoyo_io_buffer *head,
 		u8 min_type = ptr->value_type[0];
 		const u8 max_type = ptr->value_type[1];
 =======
+<<<<<<< HEAD
+		u8 min_type = ptr->value_type[0];
+		const u8 max_type = ptr->value_type[1];
+=======
 		u8 min_type = ptr->min_type;
 		const u8 max_type = ptr->max_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		char buffer[128];
 		buffer[0] = '\0';
 		for (i = 0; i < 2; i++) {
@@ -566,9 +641,14 @@ static void tomoyo_print_number_union(struct tomoyo_io_buffer *head,
 				tomoyo_addprintf(buffer, sizeof(buffer), "%lu",
 						 min);
 =======
+<<<<<<< HEAD
+				tomoyo_addprintf(buffer, sizeof(buffer), "%lu",
+						 min);
+=======
 				tomoyo_addprintf(buffer, sizeof(buffer),
 						 "%lu", min);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 			if (min == max && min_type == max_type)
@@ -583,6 +663,9 @@ static void tomoyo_print_number_union(struct tomoyo_io_buffer *head,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_print_number_union - Print a tomoyo_number_union.
  *
  * @head: Pointer to "struct tomoyo_io_buffer".
@@ -601,10 +684,13 @@ static void tomoyo_print_number_union(struct tomoyo_io_buffer *head,
  * tomoyo_assign_profile - Create a new profile.
  *
  * @ns:      Pointer to "struct tomoyo_policy_namespace".
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_assign_profile - Create a new profile.
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @profile: Profile number to create.
  *
  * Returns pointer to "struct tomoyo_profile" on success, NULL otherwise.
@@ -613,8 +699,13 @@ static void tomoyo_print_number_union(struct tomoyo_io_buffer *head,
 static struct tomoyo_profile *tomoyo_assign_profile
 (struct tomoyo_policy_namespace *ns, const unsigned int profile)
 =======
+<<<<<<< HEAD
+static struct tomoyo_profile *tomoyo_assign_profile
+(struct tomoyo_policy_namespace *ns, const unsigned int profile)
+=======
 static struct tomoyo_profile *tomoyo_assign_profile(const unsigned int profile)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tomoyo_profile *ptr;
 	struct tomoyo_profile *entry;
@@ -623,14 +714,21 @@ static struct tomoyo_profile *tomoyo_assign_profile(const unsigned int profile)
 <<<<<<< HEAD
 	ptr = ns->profile_ptr[profile];
 =======
+<<<<<<< HEAD
+	ptr = ns->profile_ptr[profile];
+=======
 	ptr = tomoyo_profile_ptr[profile];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ptr)
 		return ptr;
 	entry = kzalloc(sizeof(*entry), GFP_NOFS);
 	if (mutex_lock_interruptible(&tomoyo_policy_lock))
 		goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ptr = ns->profile_ptr[profile];
 	if (!ptr && tomoyo_memory_ok(entry)) {
 		ptr = entry;
@@ -645,6 +743,8 @@ static struct tomoyo_profile *tomoyo_assign_profile(const unsigned int profile)
 			CONFIG_SECURITY_TOMOYO_MAX_ACCEPT_ENTRY;
 		mb(); /* Avoid out-of-order execution. */
 		ns->profile_ptr[profile] = ptr;
+<<<<<<< HEAD
+=======
 =======
 	ptr = tomoyo_profile_ptr[profile];
 	if (!ptr && tomoyo_memory_ok(entry)) {
@@ -658,6 +758,7 @@ static struct tomoyo_profile *tomoyo_assign_profile(const unsigned int profile)
 		mb(); /* Avoid out-of-order execution. */
 		tomoyo_profile_ptr[profile] = ptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		entry = NULL;
 	}
 	mutex_unlock(&tomoyo_policy_lock);
@@ -672,12 +773,19 @@ static struct tomoyo_profile *tomoyo_assign_profile(const unsigned int profile)
 <<<<<<< HEAD
  * @ns:      Pointer to "struct tomoyo_policy_namespace".
 =======
+<<<<<<< HEAD
+ * @ns:      Pointer to "struct tomoyo_policy_namespace".
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @profile: Profile number to find.
  *
  * Returns pointer to "struct tomoyo_profile".
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tomoyo_profile *tomoyo_profile(const struct tomoyo_policy_namespace *ns,
 				      const u8 profile)
 {
@@ -696,6 +804,8 @@ struct tomoyo_profile *tomoyo_profile(const struct tomoyo_policy_namespace *ns,
  *
  * Returns 1 if "@find=yes" was found, 0 if "@find=no" was found, -1 otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 struct tomoyo_profile *tomoyo_profile(const u8 profile)
 {
@@ -707,6 +817,7 @@ struct tomoyo_profile *tomoyo_profile(const u8 profile)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static s8 tomoyo_find_yesno(const char *string, const char *find)
 {
 	const char *cp = strstr(string, find);
@@ -721,6 +832,9 @@ static s8 tomoyo_find_yesno(const char *string, const char *find)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_set_uint - Set value for specified preference.
  *
@@ -730,6 +844,8 @@ static s8 tomoyo_find_yesno(const char *string, const char *find)
  *
  * Returns nothing.
  */
+<<<<<<< HEAD
+=======
 =======
 static void tomoyo_set_bool(bool *b, const char *string, const char *find)
 {
@@ -744,6 +860,7 @@ static void tomoyo_set_bool(bool *b, const char *string, const char *find)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tomoyo_set_uint(unsigned int *i, const char *string,
 			    const char *find)
 {
@@ -753,6 +870,9 @@ static void tomoyo_set_uint(unsigned int *i, const char *string,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_set_mode - Set mode for specified profile.
  *
@@ -763,6 +883,8 @@ static void tomoyo_set_uint(unsigned int *i, const char *string,
  * Returns 0 on success, negative value otherwise.
  */
 static int tomoyo_set_mode(char *name, const char *value,
+<<<<<<< HEAD
+=======
 =======
 static void tomoyo_set_pref(const char *name, const char *value,
 			    const bool use_default,
@@ -810,6 +932,7 @@ static void tomoyo_set_pref(const char *name, const char *value,
 static int tomoyo_set_mode(char *name, const char *value,
 			   const bool use_default,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   struct tomoyo_profile *profile)
 {
 	u8 i;
@@ -822,6 +945,9 @@ static int tomoyo_set_mode(char *name, const char *value,
 		for (i = 0; i < TOMOYO_MAX_MAC_INDEX
 			     + TOMOYO_MAX_MAC_CATEGORY_INDEX; i++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			int len = 0;
 			if (i < TOMOYO_MAX_MAC_INDEX) {
 				const u8 c = tomoyo_index2category[i];
@@ -833,9 +959,12 @@ static int tomoyo_set_mode(char *name, const char *value,
 					continue;
 			}
 			if (strcmp(name + len, tomoyo_mac_keywords[i]))
+<<<<<<< HEAD
+=======
 =======
 			if (strcmp(name, tomoyo_mac_keywords[i]))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			config = profile->config[i];
 			break;
@@ -848,8 +977,12 @@ static int tomoyo_set_mode(char *name, const char *value,
 <<<<<<< HEAD
 	if (strstr(value, "use_default")) {
 =======
+<<<<<<< HEAD
+	if (strstr(value, "use_default")) {
+=======
 	if (use_default) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		config = TOMOYO_CONFIG_USE_DEFAULT;
 	} else {
 		u8 mode;
@@ -861,6 +994,9 @@ static int tomoyo_set_mode(char *name, const char *value,
 				 */
 				config = (config & ~7) | mode;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (config != TOMOYO_CONFIG_USE_DEFAULT) {
 			switch (tomoyo_find_yesno(value, "grant_log")) {
 			case 1:
@@ -879,8 +1015,11 @@ static int tomoyo_set_mode(char *name, const char *value,
 				break;
 			}
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (i < TOMOYO_MAX_MAC_INDEX + TOMOYO_MAX_MAC_CATEGORY_INDEX)
 		profile->config[i] = config;
@@ -901,6 +1040,9 @@ static int tomoyo_write_profile(struct tomoyo_io_buffer *head)
 	char *data = head->write_buf;
 	unsigned int i;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *cp;
 	struct tomoyo_profile *profile;
 	if (sscanf(data, "PROFILE_VERSION=%u", &head->w.ns->profile_version)
@@ -913,6 +1055,8 @@ static int tomoyo_write_profile(struct tomoyo_io_buffer *head)
 	profile = tomoyo_assign_profile(head->w.ns, i);
 	if (!profile)
 		return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	bool use_default = false;
 	char *cp;
@@ -931,10 +1075,13 @@ static int tomoyo_write_profile(struct tomoyo_io_buffer *head)
 			return -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cp = strchr(data, '=');
 	if (!cp)
 		return -EINVAL;
 	*cp++ = '\0';
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (profile != &tomoyo_default_profile)
@@ -946,6 +1093,7 @@ static int tomoyo_write_profile(struct tomoyo_io_buffer *head)
 	if (profile == &tomoyo_default_profile)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!strcmp(data, "COMMENT")) {
 		static DEFINE_SPINLOCK(lock);
 		const struct tomoyo_path_info *new_comment
@@ -961,6 +1109,9 @@ static int tomoyo_write_profile(struct tomoyo_io_buffer *head)
 		return 0;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!strcmp(data, "PREFERENCE")) {
 		for (i = 0; i < TOMOYO_MAX_PREF; i++)
 			tomoyo_set_uint(&profile->pref[i], cp,
@@ -986,6 +1137,8 @@ static void tomoyo_print_config(struct tomoyo_io_buffer *head, const u8 config)
 			 tomoyo_mode[config & 3],
 			 tomoyo_yesno(config & TOMOYO_CONFIG_WANT_GRANT_LOG),
 			 tomoyo_yesno(config & TOMOYO_CONFIG_WANT_REJECT_LOG));
+<<<<<<< HEAD
+=======
 =======
 	return tomoyo_set_mode(data, cp, use_default, profile);
 }
@@ -1035,6 +1188,7 @@ static void tomoyo_print_config(struct tomoyo_io_buffer *head, const u8 config)
 {
 	tomoyo_io_printf(head, "={ mode=%s }\n", tomoyo_mode[config & 3]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1045,12 +1199,20 @@ static void tomoyo_print_config(struct tomoyo_io_buffer *head, const u8 config)
  *
  * Returns nothing.
 =======
+<<<<<<< HEAD
+ *
+ * Returns nothing.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 {
 	u8 index;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_policy_namespace *ns =
 		container_of(head->r.ns, typeof(*ns), namespace_list);
 	const struct tomoyo_profile *profile;
@@ -1064,6 +1226,8 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 		tomoyo_print_namespace(head);
 		tomoyo_io_printf(head, "PROFILE_VERSION=%u\n",
 				 ns->profile_version);
+<<<<<<< HEAD
+=======
 =======
 	const struct tomoyo_profile *profile;
  next:
@@ -1074,29 +1238,39 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 		tomoyo_io_printf(head, "PROFILE_VERSION=%s\n", "20090903");
 		tomoyo_print_preference(head, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		head->r.step++;
 		break;
 	case 1:
 		for ( ; head->r.index < TOMOYO_MAX_PROFILES;
 		      head->r.index++)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ns->profile_ptr[head->r.index])
 				break;
 		if (head->r.index == TOMOYO_MAX_PROFILES) {
 			head->r.eof = true;
 			return;
 		}
+<<<<<<< HEAD
+=======
 =======
 			if (tomoyo_profile_ptr[head->r.index])
 				break;
 		if (head->r.index == TOMOYO_MAX_PROFILES)
 			return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		head->r.step++;
 		break;
 	case 2:
 		{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			u8 i;
 			const struct tomoyo_path_info *comment =
 				profile->comment;
@@ -1111,6 +1285,8 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 						 tomoyo_pref_keywords[i],
 						 profile->pref[i]);
 			tomoyo_set_string(head, "}\n");
+<<<<<<< HEAD
+=======
 =======
 			const struct tomoyo_path_info *comment =
 				profile->comment;
@@ -1118,6 +1294,7 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 			tomoyo_set_string(head, comment ? comment->name : "");
 			tomoyo_set_lf(head);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			head->r.step++;
 		}
 		break;
@@ -1126,7 +1303,11 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
 			tomoyo_print_namespace(head);
 =======
+<<<<<<< HEAD
+			tomoyo_print_namespace(head);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tomoyo_io_printf(head, "%u-%s", index, "CONFIG");
 			tomoyo_print_config(head, profile->default_config);
 			head->r.bit = 0;
@@ -1141,6 +1322,9 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 			if (config == TOMOYO_CONFIG_USE_DEFAULT)
 				continue;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tomoyo_print_namespace(head);
 			if (i < TOMOYO_MAX_MAC_INDEX)
 				tomoyo_io_printf(head, "%u-CONFIG::%s::%s",
@@ -1151,10 +1335,13 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 			else
 				tomoyo_io_printf(head, "%u-CONFIG::%s", index,
 						 tomoyo_mac_keywords[i]);
+<<<<<<< HEAD
+=======
 =======
 			tomoyo_io_printf(head, "%u-%s%s", index, "CONFIG::",
 					 tomoyo_mac_keywords[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tomoyo_print_config(head, config);
 			head->r.bit++;
 			break;
@@ -1163,8 +1350,11 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 		    + TOMOYO_MAX_MAC_CATEGORY_INDEX) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			tomoyo_print_preference(head, index);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			head->r.index++;
 			head->r.step = 1;
 		}
@@ -1175,6 +1365,9 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_same_manager - Check for duplicated "struct tomoyo_manager" entry.
  *
@@ -1183,8 +1376,11 @@ static void tomoyo_read_profile(struct tomoyo_io_buffer *head)
  *
  * Returns true if @a == @b, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_same_manager(const struct tomoyo_acl_head *a,
 				const struct tomoyo_acl_head *b)
 {
@@ -1207,6 +1403,9 @@ static int tomoyo_update_manager_entry(const char *manager,
 {
 	struct tomoyo_manager e = { };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_acl_param param = {
 		/* .ns = &tomoyo_kernel_namespace, */
 		.is_delete = is_delete,
@@ -1214,10 +1413,13 @@ static int tomoyo_update_manager_entry(const char *manager,
 		policy_list[TOMOYO_ID_MANAGER],
 	};
 	int error = is_delete ? -ENOENT : -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 	int error;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tomoyo_domain_def(manager)) {
 		if (!tomoyo_correct_domain(manager))
 			return -EINVAL;
@@ -1228,11 +1430,16 @@ static int tomoyo_update_manager_entry(const char *manager,
 	}
 	e.manager = tomoyo_get_name(manager);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (e.manager) {
 		error = tomoyo_update_policy(&e.head, sizeof(e), &param,
 					     tomoyo_same_manager);
 		tomoyo_put_name(e.manager);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!e.manager)
 		return -ENOMEM;
@@ -1241,6 +1448,7 @@ static int tomoyo_update_manager_entry(const char *manager,
 				     tomoyo_same_manager);
 	tomoyo_put_name(e.manager);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1257,12 +1465,17 @@ static int tomoyo_write_manager(struct tomoyo_io_buffer *head)
 {
 	char *data = head->write_buf;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!strcmp(data, "manage_by_non_root")) {
 		tomoyo_manage_by_non_root = !head->w.is_delete;
 		return 0;
 	}
 	return tomoyo_update_manager_entry(data, head->w.is_delete);
+<<<<<<< HEAD
+=======
 =======
 	bool is_delete = tomoyo_str_starts(&data, TOMOYO_KEYWORD_DELETE);
 
@@ -1272,6 +1485,7 @@ static int tomoyo_write_manager(struct tomoyo_io_buffer *head)
 	}
 	return tomoyo_update_manager_entry(data, is_delete);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1289,9 +1503,14 @@ static void tomoyo_read_manager(struct tomoyo_io_buffer *head)
 	list_for_each_cookie(head->r.acl, &tomoyo_kernel_namespace.
 			     policy_list[TOMOYO_ID_MANAGER]) {
 =======
+<<<<<<< HEAD
+	list_for_each_cookie(head->r.acl, &tomoyo_kernel_namespace.
+			     policy_list[TOMOYO_ID_MANAGER]) {
+=======
 	list_for_each_cookie(head->r.acl,
 			     &tomoyo_policy_list[TOMOYO_ID_MANAGER]) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct tomoyo_manager *ptr =
 			list_entry(head->r.acl, typeof(*ptr), head.list);
 		if (ptr->head.is_deleted)
@@ -1328,9 +1547,14 @@ static bool tomoyo_manager(void)
 	list_for_each_entry_rcu(ptr, &tomoyo_kernel_namespace.
 				policy_list[TOMOYO_ID_MANAGER], head.list) {
 =======
+<<<<<<< HEAD
+	list_for_each_entry_rcu(ptr, &tomoyo_kernel_namespace.
+				policy_list[TOMOYO_ID_MANAGER], head.list) {
+=======
 	list_for_each_entry_rcu(ptr, &tomoyo_policy_list[TOMOYO_ID_MANAGER],
 				head.list) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!ptr->head.is_deleted && ptr->is_domain
 		    && !tomoyo_pathcmp(domainname, ptr->manager)) {
 			found = true;
@@ -1346,9 +1570,14 @@ static bool tomoyo_manager(void)
 	list_for_each_entry_rcu(ptr, &tomoyo_kernel_namespace.
 				policy_list[TOMOYO_ID_MANAGER], head.list) {
 =======
+<<<<<<< HEAD
+	list_for_each_entry_rcu(ptr, &tomoyo_kernel_namespace.
+				policy_list[TOMOYO_ID_MANAGER], head.list) {
+=======
 	list_for_each_entry_rcu(ptr, &tomoyo_policy_list[TOMOYO_ID_MANAGER],
 				head.list) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!ptr->head.is_deleted && !ptr->is_domain
 		    && !strcmp(exe, ptr->manager->name)) {
 			found = true;
@@ -1369,15 +1598,21 @@ static bool tomoyo_manager(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct tomoyo_domain_info *tomoyo_find_domain_by_qid
 (unsigned int serial);
 
 /**
  * tomoyo_select_domain - Parse select command.
+<<<<<<< HEAD
+=======
 =======
 /**
  * tomoyo_select_one - Parse select command.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * @head: Pointer to "struct tomoyo_io_buffer".
  * @data: String to parse.
@@ -1390,12 +1625,22 @@ static struct tomoyo_domain_info *tomoyo_find_domain_by_qid
 static bool tomoyo_select_domain(struct tomoyo_io_buffer *head,
 				 const char *data)
 =======
+<<<<<<< HEAD
+static bool tomoyo_select_domain(struct tomoyo_io_buffer *head,
+				 const char *data)
+=======
 static bool tomoyo_select_one(struct tomoyo_io_buffer *head, const char *data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int pid;
 	struct tomoyo_domain_info *domain = NULL;
 	bool global_pid = false;
+<<<<<<< HEAD
+	if (strncmp(data, "select ", 7))
+		return false;
+	data += 7;
+=======
 <<<<<<< HEAD
 	if (strncmp(data, "select ", 7))
 		return false;
@@ -1407,14 +1652,18 @@ static bool tomoyo_select_one(struct tomoyo_io_buffer *head, const char *data)
 		return true;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sscanf(data, "pid=%u", &pid) == 1 ||
 	    (global_pid = true, sscanf(data, "global-pid=%u", &pid) == 1)) {
 		struct task_struct *p;
 		rcu_read_lock();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		read_lock(&tasklist_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (global_pid)
 			p = find_task_by_pid_ns(pid, &init_pid_ns);
 		else
@@ -1423,23 +1672,32 @@ static bool tomoyo_select_one(struct tomoyo_io_buffer *head, const char *data)
 			domain = tomoyo_real_domain(p);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		read_unlock(&tasklist_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_read_unlock();
 	} else if (!strncmp(data, "domain=", 7)) {
 		if (tomoyo_domain_def(data + 7))
 			domain = tomoyo_find_domain(data + 7);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (sscanf(data, "Q=%u", &pid) == 1) {
 		domain = tomoyo_find_domain_by_qid(pid);
 	} else
 		return false;
 	head->w.domain = domain;
+<<<<<<< HEAD
+=======
 =======
 	} else
 		return false;
 	head->write_var1 = domain;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Accessing read_buf is safe because head->io_sem is held. */
 	if (!head->read_buf)
 		return true; /* Do nothing if open(O_WRONLY). */
@@ -1457,6 +1715,9 @@ static bool tomoyo_select_one(struct tomoyo_io_buffer *head, const char *data)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_same_task_acl - Check for duplicated "struct tomoyo_task_acl" entry.
  *
  * @a: Pointer to "struct tomoyo_acl_info".
@@ -1499,8 +1760,11 @@ static int tomoyo_write_task(struct tomoyo_acl_param *param)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_delete_domain - Delete a domain.
  *
  * @domainname: The name of domain.
@@ -1508,8 +1772,12 @@ static int tomoyo_write_task(struct tomoyo_acl_param *param)
 <<<<<<< HEAD
  * Returns 0 on success, negative value otherwise.
 =======
+<<<<<<< HEAD
+ * Returns 0 on success, negative value otherwise.
+=======
  * Returns 0.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Caller holds tomoyo_read_lock().
  */
@@ -1524,8 +1792,12 @@ static int tomoyo_delete_domain(char *domainname)
 <<<<<<< HEAD
 		return -EINTR;
 =======
+<<<<<<< HEAD
+		return -EINTR;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Is there an active domain? */
 	list_for_each_entry_rcu(domain, &tomoyo_domain_list, list) {
 		/* Never delete tomoyo_kernel_domain */
@@ -1545,19 +1817,28 @@ static int tomoyo_delete_domain(char *domainname)
  * tomoyo_write_domain2 - Write domain policy.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ns:        Pointer to "struct tomoyo_policy_namespace".
  * @list:      Pointer to "struct list_head".
  * @data:      Policy to be interpreted.
  * @is_delete: True if it is a delete request.
+<<<<<<< HEAD
+=======
 =======
  * @head: Pointer to "struct tomoyo_io_buffer".
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 on success, negative value otherwise.
  *
  * Caller holds tomoyo_read_lock().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tomoyo_write_domain2(struct tomoyo_policy_namespace *ns,
 				struct list_head *list, char *data,
 				const bool is_delete)
@@ -1595,6 +1876,8 @@ const char * const tomoyo_dif[TOMOYO_MAX_DOMAIN_INFO_FLAGS] = {
 	[TOMOYO_DIF_TRANSITION_FAILED] = "transition_failed\n",
 };
 
+<<<<<<< HEAD
+=======
 =======
 static int tomoyo_write_domain2(char *data, struct tomoyo_domain_info *domain,
 				const bool is_delete)
@@ -1605,6 +1888,7 @@ static int tomoyo_write_domain2(char *data, struct tomoyo_domain_info *domain,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_write_domain - Write domain policy.
  *
@@ -1618,6 +1902,9 @@ static int tomoyo_write_domain(struct tomoyo_io_buffer *head)
 {
 	char *data = head->write_buf;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_policy_namespace *ns;
 	struct tomoyo_domain_info *domain = head->w.domain;
 	const bool is_delete = head->w.is_delete;
@@ -1819,6 +2106,8 @@ static void tomoyo_set_group(struct tomoyo_io_buffer *head,
 				 head->r.acl_group_index);
 	}
 	tomoyo_set_string(head, category);
+<<<<<<< HEAD
+=======
 =======
 	struct tomoyo_domain_info *domain = head->write_var1;
 	bool is_delete = false;
@@ -1884,6 +2173,7 @@ static u8 tomoyo_fns(const u8 perm, u8 bit)
 			break;
 	return bit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1899,6 +2189,9 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 {
 	const u8 acl_type = acl->type;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool first = true;
 	u8 bit;
 
@@ -1906,6 +2199,8 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		goto print_cond_part;
 	if (acl->is_deleted)
 		return true;
+<<<<<<< HEAD
+=======
 =======
 	u8 bit;
 
@@ -1914,6 +2209,7 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
  next:
 	bit = head->r.bit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!tomoyo_flush(head))
 		return false;
 	else if (acl_type == TOMOYO_TYPE_PATH_ACL) {
@@ -1921,6 +2217,9 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 			container_of(acl, typeof(*ptr), head);
 		const u16 perm = ptr->perm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (bit = 0; bit < TOMOYO_MAX_PATH_OPERATION; bit++) {
 			if (!(perm & (1 << bit)))
 				continue;
@@ -1945,6 +2244,8 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		tomoyo_set_string(head, "manual_domain_transition ");
 		tomoyo_set_string(head, ptr->domainname->name);
 	} else if (head->r.print_transition_related_only) {
+<<<<<<< HEAD
+=======
 =======
 		for ( ; bit < TOMOYO_MAX_PATH_OPERATION; bit++) {
 			if (!(perm & (1 << bit)))
@@ -1965,11 +2266,15 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		tomoyo_print_name_union(head, &ptr->name);
 	} else if (head->r.print_execute_only) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 	} else if (acl_type == TOMOYO_TYPE_PATH2_ACL) {
 		struct tomoyo_path2_acl *ptr =
 			container_of(acl, typeof(*ptr), head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const u8 perm = ptr->perm;
 		for (bit = 0; bit < TOMOYO_MAX_PATH2_OPERATION; bit++) {
 			if (!(perm & (1 << bit)))
@@ -1985,18 +2290,24 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		}
 		if (first)
 			return true;
+<<<<<<< HEAD
+=======
 =======
 		bit = tomoyo_fns(ptr->perm, bit);
 		if (bit >= TOMOYO_MAX_PATH2_OPERATION)
 			goto done;
 		tomoyo_io_printf(head, "allow_%s", tomoyo_path2_keyword[bit]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tomoyo_print_name_union(head, &ptr->name1);
 		tomoyo_print_name_union(head, &ptr->name2);
 	} else if (acl_type == TOMOYO_TYPE_PATH_NUMBER_ACL) {
 		struct tomoyo_path_number_acl *ptr =
 			container_of(acl, typeof(*ptr), head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const u8 perm = ptr->perm;
 		for (bit = 0; bit < TOMOYO_MAX_PATH_NUMBER_OPERATION; bit++) {
 			if (!(perm & (1 << bit)))
@@ -2012,6 +2323,8 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		}
 		if (first)
 			return true;
+<<<<<<< HEAD
+=======
 =======
 		bit = tomoyo_fns(ptr->perm, bit);
 		if (bit >= TOMOYO_MAX_PATH_NUMBER_OPERATION)
@@ -2019,12 +2332,16 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		tomoyo_io_printf(head, "allow_%s",
 				 tomoyo_path_number_keyword[bit]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tomoyo_print_name_union(head, &ptr->name);
 		tomoyo_print_number_union(head, &ptr->number);
 	} else if (acl_type == TOMOYO_TYPE_MKDEV_ACL) {
 		struct tomoyo_mkdev_acl *ptr =
 			container_of(acl, typeof(*ptr), head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const u8 perm = ptr->perm;
 		for (bit = 0; bit < TOMOYO_MAX_MKDEV_OPERATION; bit++) {
 			if (!(perm & (1 << bit)))
@@ -2040,17 +2357,23 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		}
 		if (first)
 			return true;
+<<<<<<< HEAD
+=======
 =======
 		bit = tomoyo_fns(ptr->perm, bit);
 		if (bit >= TOMOYO_MAX_MKDEV_OPERATION)
 			goto done;
 		tomoyo_io_printf(head, "allow_%s", tomoyo_mkdev_keyword[bit]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tomoyo_print_name_union(head, &ptr->name);
 		tomoyo_print_number_union(head, &ptr->mode);
 		tomoyo_print_number_union(head, &ptr->major);
 		tomoyo_print_number_union(head, &ptr->minor);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (acl_type == TOMOYO_TYPE_INET_ACL) {
 		struct tomoyo_inet_acl *ptr =
 			container_of(acl, typeof(*ptr), head);
@@ -2109,17 +2432,23 @@ static bool tomoyo_print_entry(struct tomoyo_io_buffer *head,
 		struct tomoyo_mount_acl *ptr =
 			container_of(acl, typeof(*ptr), head);
 		tomoyo_set_group(head, "file mount");
+<<<<<<< HEAD
+=======
 =======
 	} else if (acl_type == TOMOYO_TYPE_MOUNT_ACL) {
 		struct tomoyo_mount_acl *ptr =
 			container_of(acl, typeof(*ptr), head);
 		tomoyo_io_printf(head, "allow_mount");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tomoyo_print_name_union(head, &ptr->dev_name);
 		tomoyo_print_name_union(head, &ptr->dir_name);
 		tomoyo_print_name_union(head, &ptr->fs_type);
 		tomoyo_print_number_union(head, &ptr->flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (acl_type == TOMOYO_TYPE_ENV_ACL) {
 		struct tomoyo_env_acl *ptr =
 			container_of(acl, typeof(*ptr), head);
@@ -2139,6 +2468,8 @@ print_cond_part:
 	} else {
 		tomoyo_set_lf(head);
 	}
+<<<<<<< HEAD
+=======
 =======
 	}
 	head->r.bit = bit + 1;
@@ -2148,6 +2479,7 @@ print_cond_part:
  done:
 	head->r.bit = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return true;
 }
 
@@ -2158,9 +2490,14 @@ print_cond_part:
  * @head: Pointer to "struct tomoyo_io_buffer".
  * @list: Pointer to "struct list_head".
 =======
+<<<<<<< HEAD
+ * @head: Pointer to "struct tomoyo_io_buffer".
+ * @list: Pointer to "struct list_head".
+=======
  * @head:   Pointer to "struct tomoyo_io_buffer".
  * @domain: Pointer to "struct tomoyo_domain_info".
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Caller holds tomoyo_read_lock().
  *
@@ -2172,10 +2509,16 @@ static bool tomoyo_read_domain2(struct tomoyo_io_buffer *head,
 {
 	list_for_each_cookie(head->r.acl, list) {
 =======
+<<<<<<< HEAD
+				struct list_head *list)
+{
+	list_for_each_cookie(head->r.acl, list) {
+=======
 				struct tomoyo_domain_info *domain)
 {
 	list_for_each_cookie(head->r.acl, &domain->acl_info_list) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct tomoyo_acl_info *ptr =
 			list_entry(head->r.acl, typeof(*ptr), list);
 		if (!tomoyo_print_entry(head, ptr))
@@ -2203,7 +2546,11 @@ static void tomoyo_read_domain(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
 			u8 i;
 =======
+<<<<<<< HEAD
+			u8 i;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case 0:
 			if (domain->is_deleted &&
 			    !head->r.print_this_domain_only)
@@ -2212,6 +2559,9 @@ static void tomoyo_read_domain(struct tomoyo_io_buffer *head)
 			tomoyo_set_string(head, domain->domainname->name);
 			tomoyo_set_lf(head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tomoyo_io_printf(head, "use_profile %u\n",
 					 domain->profile);
 			tomoyo_io_printf(head, "use_group %u\n",
@@ -2219,6 +2569,8 @@ static void tomoyo_read_domain(struct tomoyo_io_buffer *head)
 			for (i = 0; i < TOMOYO_MAX_DOMAIN_INFO_FLAGS; i++)
 				if (domain->flags[i])
 					tomoyo_set_string(head, tomoyo_dif[i]);
+<<<<<<< HEAD
+=======
 =======
 			tomoyo_io_printf(head,
 					 TOMOYO_KEYWORD_USE_PROFILE "%u\n",
@@ -2232,6 +2584,7 @@ static void tomoyo_read_domain(struct tomoyo_io_buffer *head)
 				       TOMOYO_KEYWORD_IGNORE_GLOBAL_ALLOW_READ
 						  "\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			head->r.step++;
 			tomoyo_set_lf(head);
 			/* fall through */
@@ -2239,8 +2592,12 @@ static void tomoyo_read_domain(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
 			if (!tomoyo_read_domain2(head, &domain->acl_info_list))
 =======
+<<<<<<< HEAD
+			if (!tomoyo_read_domain2(head, &domain->acl_info_list))
+=======
 			if (!tomoyo_read_domain2(head, domain))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return;
 			head->r.step++;
 			if (!tomoyo_set_lf(head))
@@ -2257,6 +2614,8 @@ static void tomoyo_read_domain(struct tomoyo_io_buffer *head)
 }
 
 /**
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * tomoyo_write_domain_profile - Assign profile for specified domain.
@@ -2327,6 +2686,7 @@ static void tomoyo_read_domain_profile(struct tomoyo_io_buffer *head)
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_write_pid: Specify PID to obtain domainname.
  *
  * @head: Pointer to "struct tomoyo_io_buffer".
@@ -2371,8 +2731,11 @@ static void tomoyo_read_pid(struct tomoyo_io_buffer *head)
 	rcu_read_lock();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	read_lock(&tasklist_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (global_pid)
 		p = find_task_by_pid_ns(pid, &init_pid_ns);
 	else
@@ -2381,8 +2744,11 @@ static void tomoyo_read_pid(struct tomoyo_io_buffer *head)
 		domain = tomoyo_real_domain(p);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	read_unlock(&tasklist_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 	if (!domain)
 		return;
@@ -2391,6 +2757,9 @@ static void tomoyo_read_pid(struct tomoyo_io_buffer *head)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* String table for domain transition control keywords. */
 static const char *tomoyo_transition_type[TOMOYO_MAX_TRANSITION_TYPE] = {
 	[TOMOYO_TRANSITION_CONTROL_NO_RESET]      = "no_reset_domain ",
@@ -2406,6 +2775,8 @@ static const char *tomoyo_group_name[TOMOYO_MAX_GROUP] = {
 	[TOMOYO_PATH_GROUP]    = "path_group ",
 	[TOMOYO_NUMBER_GROUP]  = "number_group ",
 	[TOMOYO_ADDRESS_GROUP] = "address_group ",
+<<<<<<< HEAD
+=======
 =======
 static const char *tomoyo_transition_type[TOMOYO_MAX_TRANSITION_TYPE] = {
 	[TOMOYO_TRANSITION_CONTROL_NO_INITIALIZE]
@@ -2420,6 +2791,7 @@ static const char *tomoyo_group_name[TOMOYO_MAX_GROUP] = {
 	[TOMOYO_PATH_GROUP] = TOMOYO_KEYWORD_PATH_GROUP,
 	[TOMOYO_NUMBER_GROUP] = TOMOYO_KEYWORD_NUMBER_GROUP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -2434,6 +2806,9 @@ static const char *tomoyo_group_name[TOMOYO_MAX_GROUP] = {
 static int tomoyo_write_exception(struct tomoyo_io_buffer *head)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const bool is_delete = head->w.is_delete;
 	struct tomoyo_acl_param param = {
 		.ns = head->w.ns,
@@ -2458,6 +2833,8 @@ static int tomoyo_write_exception(struct tomoyo_io_buffer *head)
 				(head->w.ns, &head->w.ns->acl_group[group],
 				 data, is_delete);
 	}
+<<<<<<< HEAD
+=======
 =======
 	char *data = head->write_buf;
 	bool is_delete = tomoyo_str_starts(&data, TOMOYO_KEYWORD_DELETE);
@@ -2483,6 +2860,7 @@ static int tomoyo_write_exception(struct tomoyo_io_buffer *head)
 		if (tomoyo_str_starts(&data, tomoyo_group_name[i]))
 			return tomoyo_write_group(data, is_delete, i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -EINVAL;
 }
 
@@ -2490,8 +2868,12 @@ static int tomoyo_write_exception(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
  * tomoyo_read_group - Read "struct tomoyo_path_group"/"struct tomoyo_number_group"/"struct tomoyo_address_group" list.
 =======
+<<<<<<< HEAD
+ * tomoyo_read_group - Read "struct tomoyo_path_group"/"struct tomoyo_number_group"/"struct tomoyo_address_group" list.
+=======
  * tomoyo_read_group - Read "struct tomoyo_path_group"/"struct tomoyo_number_group" list.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * @head: Pointer to "struct tomoyo_io_buffer".
  * @idx:  Index number.
@@ -2503,17 +2885,23 @@ static int tomoyo_write_exception(struct tomoyo_io_buffer *head)
 static bool tomoyo_read_group(struct tomoyo_io_buffer *head, const int idx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_policy_namespace *ns =
 		container_of(head->r.ns, typeof(*ns), namespace_list);
 	struct list_head *list = &ns->group_list[idx];
 	list_for_each_cookie(head->r.group, list) {
 		struct tomoyo_group *group =
 			list_entry(head->r.group, typeof(*group), head.list);
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_cookie(head->r.group, &tomoyo_group_list[idx]) {
 		struct tomoyo_group *group =
 			list_entry(head->r.group, typeof(*group), list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list_for_each_cookie(head->r.acl, &group->member_list) {
 			struct tomoyo_acl_head *ptr =
 				list_entry(head->r.acl, typeof(*ptr), list);
@@ -2524,7 +2912,11 @@ static bool tomoyo_read_group(struct tomoyo_io_buffer *head, const int idx)
 <<<<<<< HEAD
 			tomoyo_print_namespace(head);
 =======
+<<<<<<< HEAD
+			tomoyo_print_namespace(head);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tomoyo_set_string(head, tomoyo_group_name[idx]);
 			tomoyo_set_string(head, group->group_name->name);
 			if (idx == TOMOYO_PATH_GROUP) {
@@ -2538,6 +2930,9 @@ static bool tomoyo_read_group(struct tomoyo_io_buffer *head, const int idx)
 						   struct tomoyo_number_group,
 							   head)->number);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} else if (idx == TOMOYO_ADDRESS_GROUP) {
 				char buffer[128];
 
@@ -2547,8 +2942,11 @@ static bool tomoyo_read_group(struct tomoyo_io_buffer *head, const int idx)
 				tomoyo_print_ip(buffer, sizeof(buffer),
 						&member->address);
 				tomoyo_io_printf(head, " %s", buffer);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			tomoyo_set_lf(head);
 		}
@@ -2571,13 +2969,19 @@ static bool tomoyo_read_group(struct tomoyo_io_buffer *head, const int idx)
 static bool tomoyo_read_policy(struct tomoyo_io_buffer *head, const int idx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_policy_namespace *ns =
 		container_of(head->r.ns, typeof(*ns), namespace_list);
 	struct list_head *list = &ns->policy_list[idx];
 	list_for_each_cookie(head->r.acl, list) {
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_cookie(head->r.acl, &tomoyo_policy_list[idx]) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct tomoyo_acl_head *acl =
 			container_of(head->r.acl, typeof(*acl), list);
 		if (acl->is_deleted)
@@ -2590,6 +2994,9 @@ static bool tomoyo_read_policy(struct tomoyo_io_buffer *head, const int idx)
 				struct tomoyo_transition_control *ptr =
 					container_of(acl, typeof(*ptr), head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				tomoyo_print_namespace(head);
 				tomoyo_set_string(head, tomoyo_transition_type
 						  [ptr->type]);
@@ -2599,6 +3006,8 @@ static bool tomoyo_read_policy(struct tomoyo_io_buffer *head, const int idx)
 				tomoyo_set_string(head, ptr->domainname ?
 						  ptr->domainname->name :
 						  "any");
+<<<<<<< HEAD
+=======
 =======
 				tomoyo_set_string(head,
 						  tomoyo_transition_type
@@ -2622,6 +3031,7 @@ static bool tomoyo_read_policy(struct tomoyo_io_buffer *head, const int idx)
 						  TOMOYO_KEYWORD_ALLOW_READ);
 				tomoyo_set_string(head, ptr->filename->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			break;
 		case TOMOYO_ID_AGGREGATOR:
@@ -2632,9 +3042,14 @@ static bool tomoyo_read_policy(struct tomoyo_io_buffer *head, const int idx)
 				tomoyo_print_namespace(head);
 				tomoyo_set_string(head, "aggregator ");
 =======
+<<<<<<< HEAD
+				tomoyo_print_namespace(head);
+				tomoyo_set_string(head, "aggregator ");
+=======
 				tomoyo_set_string(head,
 						  TOMOYO_KEYWORD_AGGREGATOR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				tomoyo_set_string(head,
 						  ptr->original_name->name);
 				tomoyo_set_space(head);
@@ -2642,6 +3057,8 @@ static bool tomoyo_read_policy(struct tomoyo_io_buffer *head, const int idx)
 					       ptr->aggregated_name->name);
 			}
 			break;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		case TOMOYO_ID_PATTERN:
@@ -2663,6 +3080,7 @@ static bool tomoyo_read_policy(struct tomoyo_io_buffer *head, const int idx)
 			}
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		default:
 			continue;
 		}
@@ -2685,7 +3103,12 @@ static void tomoyo_read_exception(struct tomoyo_io_buffer *head)
 	struct tomoyo_policy_namespace *ns =
 		container_of(head->r.ns, typeof(*ns), namespace_list);
 =======
+<<<<<<< HEAD
+	struct tomoyo_policy_namespace *ns =
+		container_of(head->r.ns, typeof(*ns), namespace_list);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (head->r.eof)
 		return;
 	while (head->r.step < TOMOYO_MAX_POLICY &&
@@ -2699,6 +3122,9 @@ static void tomoyo_read_exception(struct tomoyo_io_buffer *head)
 	if (head->r.step < TOMOYO_MAX_POLICY + TOMOYO_MAX_GROUP)
 		return;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (head->r.step < TOMOYO_MAX_POLICY + TOMOYO_MAX_GROUP
 	       + TOMOYO_MAX_ACL_GROUPS) {
 		head->r.acl_group_index = head->r.step - TOMOYO_MAX_POLICY
@@ -2715,6 +3141,8 @@ static void tomoyo_read_exception(struct tomoyo_io_buffer *head)
 static DECLARE_WAIT_QUEUE_HEAD(tomoyo_query_wait);
 /* Wait queue for userspace -> kernel notification. */
 static DECLARE_WAIT_QUEUE_HEAD(tomoyo_answer_wait);
+<<<<<<< HEAD
+=======
 =======
 	head->r.eof = true;
 }
@@ -2792,11 +3220,15 @@ static DECLARE_WAIT_QUEUE_HEAD(tomoyo_query_wait);
 /* Lock for manipulating tomoyo_query_list. */
 static DEFINE_SPINLOCK(tomoyo_query_list_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Structure for query. */
 struct tomoyo_query {
 	struct list_head list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_domain_info *domain;
 	char *query;
 	size_t query_len;
@@ -2804,6 +3236,8 @@ struct tomoyo_query {
 	u8 timer;
 	u8 answer;
 	u8 retry;
+<<<<<<< HEAD
+=======
 =======
 	char *query;
 	int query_len;
@@ -2811,6 +3245,7 @@ struct tomoyo_query {
 	int timer;
 	int answer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* The list for "struct tomoyo_query". */
@@ -2821,7 +3256,13 @@ static LIST_HEAD(tomoyo_query_list);
 static DEFINE_SPINLOCK(tomoyo_query_list_lock);
 
 =======
+<<<<<<< HEAD
+/* Lock for manipulating tomoyo_query_list. */
+static DEFINE_SPINLOCK(tomoyo_query_list_lock);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Number of "struct file" referring /sys/kernel/security/tomoyo/query
  * interface.
@@ -2830,6 +3271,9 @@ static atomic_t tomoyo_query_observers = ATOMIC_INIT(0);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_truncate - Truncate a line.
  *
  * @str: String to truncate.
@@ -2906,12 +3350,15 @@ static void tomoyo_add_entry(struct tomoyo_domain_info *domain, char *header)
  *
  * @r:   Pointer to "struct tomoyo_request_info".
  * @fmt: The printf()'s format string, followed by parameters.
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_supervisor - Ask for the supervisor's decision.
  *
  * @r:       Pointer to "struct tomoyo_request_info".
  * @fmt:     The printf()'s format string, followed by parameters.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 if the supervisor decided to permit the access request which
  * violated the policy in enforcing mode, TOMOYO_RETRY_REQUEST if the
@@ -2922,6 +3369,9 @@ int tomoyo_supervisor(struct tomoyo_request_info *r, const char *fmt, ...)
 {
 	va_list args;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 	int len;
 	static unsigned int tomoyo_serial;
@@ -2977,6 +3427,8 @@ int tomoyo_supervisor(struct tomoyo_request_info *r, const char *fmt, ...)
 		entry.retry = r->retry;
 		tomoyo_memory_used[TOMOYO_MEMORY_QUERY] += len;
 		list_add_tail(&entry.list, &tomoyo_query_list);
+<<<<<<< HEAD
+=======
 =======
 	int error = -EPERM;
 	int pos;
@@ -3031,11 +3483,15 @@ int tomoyo_supervisor(struct tomoyo_request_info *r, const char *fmt, ...)
 		tomoyo_query_memory_size += len + sizeof(*entry);
 		entry->serial = tomoyo_serial++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_unlock(&tomoyo_query_list_lock);
 	if (quota_exceeded)
 		goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Give 10 seconds for supervisor's opinion. */
 	while (entry.timer < 10) {
 		wake_up_all(&tomoyo_query_wait);
@@ -3051,6 +3507,8 @@ int tomoyo_supervisor(struct tomoyo_request_info *r, const char *fmt, ...)
 	tomoyo_memory_used[TOMOYO_MEMORY_QUERY] -= len;
 	spin_unlock(&tomoyo_query_list_lock);
 	switch (entry.answer) {
+<<<<<<< HEAD
+=======
 =======
 	pos = snprintf(entry->query, len - 1, "Q%u-%hu\n%s",
 		       entry->serial, r->retry, header);
@@ -3079,6 +3537,7 @@ int tomoyo_supervisor(struct tomoyo_request_info *r, const char *fmt, ...)
 	spin_unlock(&tomoyo_query_list_lock);
 	switch (entry->answer) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 3: /* Asked to retry by administrator. */
 		error = TOMOYO_RETRY_REQUEST;
 		r->retry++;
@@ -3088,12 +3547,17 @@ int tomoyo_supervisor(struct tomoyo_request_info *r, const char *fmt, ...)
 		error = 0;
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		/* Timed out or rejected by administrator. */
 		break;
 	}
 out:
 	kfree(entry.query);
+<<<<<<< HEAD
+=======
 =======
 	case 0:
 		/* Timed out. */
@@ -3108,11 +3572,15 @@ out:
 	kfree(entry);
 	kfree(header);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_find_domain_by_qid - Get domain by query id.
  *
  * @serial: Query ID assigned by tomoyo_supervisor().
@@ -3136,8 +3604,11 @@ static struct tomoyo_domain_info *tomoyo_find_domain_by_qid
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_poll_query - poll() for /sys/kernel/security/tomoyo/query.
  *
  * @file: Pointer to "struct file".
@@ -3148,6 +3619,9 @@ static struct tomoyo_domain_info *tomoyo_find_domain_by_qid
  * Waits for access requests which violated policy in enforcing mode.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int tomoyo_poll_query(struct file *file, poll_table *wait)
 {
 	if (!list_empty(&tomoyo_query_list))
@@ -3155,6 +3629,8 @@ static unsigned int tomoyo_poll_query(struct file *file, poll_table *wait)
 	poll_wait(file, &tomoyo_query_wait, wait);
 	if (!list_empty(&tomoyo_query_list))
 		return POLLIN | POLLRDNORM;
+<<<<<<< HEAD
+=======
 =======
 static int tomoyo_poll_query(struct file *file, poll_table *wait)
 {
@@ -3179,6 +3655,7 @@ static int tomoyo_poll_query(struct file *file, poll_table *wait)
 		poll_wait(file, &tomoyo_query_wait, wait);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -3194,9 +3671,14 @@ static void tomoyo_read_query(struct tomoyo_io_buffer *head)
 	unsigned int pos = 0;
 	size_t len = 0;
 =======
+<<<<<<< HEAD
+	unsigned int pos = 0;
+	size_t len = 0;
+=======
 	int pos = 0;
 	int len = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *buf;
 	if (head->r.w_pos)
 		return;
@@ -3209,9 +3691,12 @@ static void tomoyo_read_query(struct tomoyo_io_buffer *head)
 		struct tomoyo_query *ptr = list_entry(tmp, typeof(*ptr), list);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (ptr->answer)
 			continue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pos++ != head->r.query_index)
 			continue;
 		len = ptr->query_len;
@@ -3225,8 +3710,12 @@ static void tomoyo_read_query(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
 	buf = kzalloc(len + 32, GFP_NOFS);
 =======
+<<<<<<< HEAD
+	buf = kzalloc(len + 32, GFP_NOFS);
+=======
 	buf = kzalloc(len, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!buf)
 		return;
 	pos = 0;
@@ -3235,9 +3724,12 @@ static void tomoyo_read_query(struct tomoyo_io_buffer *head)
 		struct tomoyo_query *ptr = list_entry(tmp, typeof(*ptr), list);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (ptr->answer)
 			continue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pos++ != head->r.query_index)
 			continue;
 		/*
@@ -3249,8 +3741,13 @@ static void tomoyo_read_query(struct tomoyo_io_buffer *head)
 			snprintf(buf, len + 31, "Q%u-%hu\n%s", ptr->serial,
 				 ptr->retry, ptr->query);
 =======
+<<<<<<< HEAD
+			snprintf(buf, len + 31, "Q%u-%hu\n%s", ptr->serial,
+				 ptr->retry, ptr->query);
+=======
 			memmove(buf, ptr->query, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	spin_unlock(&tomoyo_query_list_lock);
@@ -3290,14 +3787,20 @@ static int tomoyo_write_answer(struct tomoyo_io_buffer *head)
 		if (ptr->serial != serial)
 			continue;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ptr->answer = answer;
 		/* Remove from tomoyo_query_list. */
 		if (ptr->answer)
 			list_del_init(&ptr->list);
+<<<<<<< HEAD
+=======
 =======
 		if (!ptr->answer)
 			ptr->answer = answer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	spin_unlock(&tomoyo_query_list_lock);
@@ -3317,13 +3820,20 @@ static void tomoyo_read_version(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
 		tomoyo_io_printf(head, "2.5.0");
 =======
+<<<<<<< HEAD
+		tomoyo_io_printf(head, "2.5.0");
+=======
 		tomoyo_io_printf(head, "2.3.0");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		head->r.eof = true;
 	}
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* String table for /sys/kernel/security/tomoyo/stat interface. */
 static const char * const tomoyo_policy_headers[TOMOYO_MAX_POLICY_STAT] = {
 	[TOMOYO_STAT_POLICY_UPDATES]    = "update:",
@@ -3420,6 +3930,8 @@ static int tomoyo_write_stat(struct tomoyo_io_buffer *head)
 			if (tomoyo_str_starts(&data, tomoyo_memory_headers[i]))
 				sscanf(data, "%u", &tomoyo_memory_quota[i]);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 /**
  * tomoyo_read_self_domain - Get the current process's domainname.
@@ -3440,6 +3952,7 @@ static void tomoyo_read_self_domain(struct tomoyo_io_buffer *head)
 		head->r.eof = true;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -3451,10 +3964,14 @@ static void tomoyo_read_self_domain(struct tomoyo_io_buffer *head)
 <<<<<<< HEAD
  * Returns 0 on success, negative value otherwise.
 =======
+<<<<<<< HEAD
+ * Returns 0 on success, negative value otherwise.
+=======
  * Associates policy handler and returns 0 on success, -ENOMEM otherwise.
  *
  * Caller acquires tomoyo_read_lock().
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int tomoyo_open_control(const u8 type, struct file *file)
 {
@@ -3476,10 +3993,15 @@ int tomoyo_open_control(const u8 type, struct file *file)
 		head->read = tomoyo_read_exception;
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TOMOYO_AUDIT:
 		/* /sys/kernel/security/tomoyo/audit */
 		head->poll = tomoyo_poll_log;
 		head->read = tomoyo_read_log;
+<<<<<<< HEAD
+=======
 =======
 	case TOMOYO_SELFDOMAIN:
 		/* /sys/kernel/security/tomoyo/self_domain */
@@ -3490,6 +4012,7 @@ int tomoyo_open_control(const u8 type, struct file *file)
 		head->write = tomoyo_write_domain_profile;
 		head->read = tomoyo_read_domain_profile;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case TOMOYO_PROCESS_STATUS:
 		/* /sys/kernel/security/tomoyo/.process_status */
@@ -3502,11 +4025,16 @@ int tomoyo_open_control(const u8 type, struct file *file)
 		head->readbuf_size = 128;
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TOMOYO_STAT:
 		/* /sys/kernel/security/tomoyo/stat */
 		head->write = tomoyo_write_stat;
 		head->read = tomoyo_read_stat;
 		head->readbuf_size = 1024;
+<<<<<<< HEAD
+=======
 =======
 	case TOMOYO_MEMINFO:
 		/* /sys/kernel/security/tomoyo/meminfo */
@@ -3514,6 +4042,7 @@ int tomoyo_open_control(const u8 type, struct file *file)
 		head->read = tomoyo_read_memory_counter;
 		head->readbuf_size = 512;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case TOMOYO_PROFILE:
 		/* /sys/kernel/security/tomoyo/profile */
@@ -3565,6 +4094,8 @@ int tomoyo_open_control(const u8 type, struct file *file)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (type != TOMOYO_QUERY)
 		head->reader_idx = tomoyo_read_lock();
 	file->private_data = head;
@@ -3578,6 +4109,7 @@ int tomoyo_open_control(const u8 type, struct file *file)
 	if (type == TOMOYO_SELFDOMAIN)
 		tomoyo_read_control(file, NULL, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If the file is /sys/kernel/security/tomoyo/query , increment the
 	 * observer counter.
@@ -3585,14 +4117,20 @@ int tomoyo_open_control(const u8 type, struct file *file)
 	 * there is some process monitoring /sys/kernel/security/tomoyo/query.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (type == TOMOYO_QUERY)
 		atomic_inc(&tomoyo_query_observers);
 	file->private_data = head;
 	tomoyo_notify_gc(head, true);
+<<<<<<< HEAD
+=======
 =======
 	else if (type == TOMOYO_QUERY)
 		atomic_inc(&tomoyo_query_observers);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -3601,6 +4139,9 @@ int tomoyo_open_control(const u8 type, struct file *file)
  *
  * @file: Pointer to "struct file".
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @wait: Pointer to "poll_table". Maybe NULL.
  *
  * Returns POLLIN | POLLRDNORM | POLLOUT | POLLWRNORM if ready to read/write,
@@ -3651,6 +4192,8 @@ static inline bool tomoyo_has_more_namespace(struct tomoyo_io_buffer *head)
 	return (head->type == TOMOYO_EXCEPTIONPOLICY ||
 		head->type == TOMOYO_PROFILE) && head->r.eof &&
 		head->r.ns->next != &tomoyo_namespace_list;
+<<<<<<< HEAD
+=======
 =======
  * @wait: Pointer to "poll_table".
  *
@@ -3664,6 +4207,7 @@ int tomoyo_poll_control(struct file *file, poll_table *wait)
 		return -ENOSYS;
 	return head->poll(file, wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -3672,19 +4216,28 @@ int tomoyo_poll_control(struct file *file, poll_table *wait)
 <<<<<<< HEAD
  * @head:       Pointer to "struct tomoyo_io_buffer".
 =======
+<<<<<<< HEAD
+ * @head:       Pointer to "struct tomoyo_io_buffer".
+=======
  * @file:       Pointer to "struct file".
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @buffer:     Poiner to buffer to write to.
  * @buffer_len: Size of @buffer.
  *
  * Returns bytes read on success, negative value otherwise.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 ssize_t tomoyo_read_control(struct tomoyo_io_buffer *head, char __user *buffer,
 			    const int buffer_len)
 {
 	int len;
 	int idx;
+<<<<<<< HEAD
+=======
 =======
  *
  * Caller holds tomoyo_read_lock().
@@ -3695,6 +4248,7 @@ int tomoyo_read_control(struct file *file, char __user *buffer,
 	int len;
 	struct tomoyo_io_buffer *head = file->private_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!head->read)
 		return -ENOSYS;
@@ -3703,6 +4257,9 @@ int tomoyo_read_control(struct file *file, char __user *buffer,
 	head->read_user_buf = buffer;
 	head->read_user_buf_avail = buffer_len;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	idx = tomoyo_read_lock();
 	if (tomoyo_flush(head))
 		/* Call the policy handler. */
@@ -3712,12 +4269,15 @@ int tomoyo_read_control(struct file *file, char __user *buffer,
 		} while (tomoyo_flush(head) &&
 			 tomoyo_has_more_namespace(head));
 	tomoyo_read_unlock(idx);
+<<<<<<< HEAD
+=======
 =======
 	if (tomoyo_flush(head))
 		/* Call the policy handler. */
 		head->read(head);
 	tomoyo_flush(head);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	len = head->read_user_buf - buffer;
 	mutex_unlock(&head->io_sem);
 	return len;
@@ -3725,6 +4285,9 @@ int tomoyo_read_control(struct file *file, char __user *buffer,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_parse_policy - Parse a policy line.
  *
  * @head: Poiter to "struct tomoyo_io_buffer".
@@ -3765,16 +4328,22 @@ static int tomoyo_parse_policy(struct tomoyo_io_buffer *head, char *line)
  * tomoyo_write_control - write() for /sys/kernel/security/tomoyo/ interface.
  *
  * @head:       Pointer to "struct tomoyo_io_buffer".
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_write_control - write() for /sys/kernel/security/tomoyo/ interface.
  *
  * @file:       Pointer to "struct file".
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @buffer:     Pointer to buffer to read from.
  * @buffer_len: Size of @buffer.
  *
  * Returns @buffer_len on success, negative value otherwise.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 ssize_t tomoyo_write_control(struct tomoyo_io_buffer *head,
 			     const char __user *buffer, const int buffer_len)
@@ -3783,6 +4352,8 @@ ssize_t tomoyo_write_control(struct tomoyo_io_buffer *head,
 	size_t avail_len = buffer_len;
 	char *cp0 = head->write_buf;
 	int idx;
+<<<<<<< HEAD
+=======
 =======
  *
  * Caller holds tomoyo_read_lock().
@@ -3796,11 +4367,15 @@ int tomoyo_write_control(struct file *file, const char __user *buffer,
 	char *cp0 = head->write_buf;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!head->write)
 		return -ENOSYS;
 	if (!access_ok(VERIFY_READ, buffer, buffer_len))
 		return -EFAULT;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mutex_lock_interruptible(&head->io_sem))
 		return -EINTR;
 	head->read_user_buf_avail = 0;
@@ -3822,6 +4397,8 @@ int tomoyo_write_control(struct file *file, const char __user *buffer,
 			head->writebuf_size = len;
 		}
 		if (get_user(c, buffer)) {
+<<<<<<< HEAD
+=======
 =======
 	/* Don't allow updating policies by non manager programs. */
 	if (head->write != tomoyo_write_pid &&
@@ -3837,12 +4414,16 @@ int tomoyo_write_control(struct file *file, const char __user *buffer,
 			break;
 		} else if (get_user(c, buffer)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = -EFAULT;
 			break;
 		}
 		buffer++;
 		avail_len--;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cp0[head->w.avail++] = c;
 		if (c != '\n')
 			continue;
@@ -3897,6 +4478,8 @@ int tomoyo_write_control(struct file *file, const char __user *buffer,
 	}
 out:
 	tomoyo_read_unlock(idx);
+<<<<<<< HEAD
+=======
 =======
 		cp0[head->write_avail++] = c;
 		if (c != '\n')
@@ -3907,6 +4490,7 @@ out:
 		head->write(head);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&head->io_sem);
 	return error;
 }
@@ -3915,12 +4499,17 @@ out:
  * tomoyo_close_control - close() for /sys/kernel/security/tomoyo/ interface.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @head: Pointer to "struct tomoyo_io_buffer".
  *
  * Returns 0.
  */
 int tomoyo_close_control(struct tomoyo_io_buffer *head)
 {
+<<<<<<< HEAD
+=======
 =======
  * @file: Pointer to "struct file".
  *
@@ -3934,15 +4523,21 @@ int tomoyo_close_control(struct file *file)
 	const bool is_write = !!head->write_buf;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If the file is /sys/kernel/security/tomoyo/query , decrement the
 	 * observer counter.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (head->type == TOMOYO_QUERY &&
 	    atomic_dec_and_test(&tomoyo_query_observers))
 		wake_up_all(&tomoyo_answer_wait);
 	tomoyo_notify_gc(head, false);
+<<<<<<< HEAD
+=======
 =======
 	if (head->type == TOMOYO_QUERY)
 		atomic_dec(&tomoyo_query_observers);
@@ -3959,6 +4554,7 @@ int tomoyo_close_control(struct file *file)
 	if (is_write)
 		tomoyo_run_gc();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -3971,6 +4567,9 @@ void tomoyo_check_profile(void)
 	const int idx = tomoyo_read_lock();
 	tomoyo_policy_loaded = true;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "TOMOYO: 2.5.0\n");
 	list_for_each_entry_rcu(domain, &tomoyo_domain_list, list) {
 		const u8 profile = domain->profile;
@@ -4057,6 +4656,8 @@ void __init tomoyo_load_builtin_policy(void)
 #ifdef CONFIG_SECURITY_TOMOYO_OMIT_USERSPACE_LOADER
 	tomoyo_check_profile();
 #endif
+<<<<<<< HEAD
+=======
 =======
 	/* Check all profiles currently assigned to domains are defined. */
 	list_for_each_entry_rcu(domain, &tomoyo_domain_list, list) {
@@ -4082,4 +4683,5 @@ void __init tomoyo_load_builtin_policy(void)
 	printk(KERN_INFO "TOMOYO: 2.3.0\n");
 	printk(KERN_INFO "Mandatory Access Control activated.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

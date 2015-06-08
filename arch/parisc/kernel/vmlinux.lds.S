@@ -54,11 +54,16 @@ SECTIONS
 	.text ALIGN(16) : {
 		HEAD_TEXT
 =======
+<<<<<<< HEAD
+	.text ALIGN(16) : {
+		HEAD_TEXT
+=======
 	.head ALIGN(16) : {
 		HEAD_TEXT
 	} = 0
 	.text ALIGN(16) : {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		TEXT_TEXT
 		SCHED_TEXT
 		LOCK_TEXT
@@ -75,8 +80,12 @@ SECTIONS
 <<<<<<< HEAD
 	} = 0
 =======
+<<<<<<< HEAD
+	} = 0
+=======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* End of text section */
 	_etext = .;
 

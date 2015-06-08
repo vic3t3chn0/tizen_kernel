@@ -7,7 +7,14 @@
  */
 
 #include <linux/module.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/errno.h>
 #include <linux/pm.h>
@@ -161,7 +168,15 @@ static int adp8870_set_bits(struct i2c_client *client, int reg, uint8_t bit_mask
 
 	ret = adp8870_read(client, reg, &reg_val);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!ret && ((reg_val & bit_mask) != bit_mask)) {
+=======
 	if (!ret && ((reg_val & bit_mask) == 0)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!ret && ((reg_val & bit_mask) == 0)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg_val |= bit_mask;
 		ret = adp8870_write(client, reg, reg_val);
 	}
@@ -932,7 +947,14 @@ out:
 out1:
 	backlight_device_unregister(bl);
 out2:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	i2c_set_clientdata(client, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_set_clientdata(client, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(data);
 
 	return ret;
@@ -952,7 +974,14 @@ static int __devexit adp8870_remove(struct i2c_client *client)
 			&adp8870_bl_attr_group);
 
 	backlight_device_unregister(data->bl);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	i2c_set_clientdata(client, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_set_clientdata(client, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(data);
 
 	return 0;
@@ -968,7 +997,15 @@ static int adp8870_i2c_suspend(struct i2c_client *client, pm_message_t message)
 
 static int adp8870_i2c_resume(struct i2c_client *client)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	adp8870_set_bits(client, ADP8870_MDCR, NSTBY);
+=======
 	adp8870_set_bits(client, ADP8870_MDCR, NSTBY | BLEN);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	adp8870_set_bits(client, ADP8870_MDCR, NSTBY | BLEN);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -994,6 +1031,12 @@ static struct i2c_driver adp8870_driver = {
 	.id_table = adp8870_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(adp8870_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init adp8870_init(void)
 {
 	return i2c_add_driver(&adp8870_driver);
@@ -1005,8 +1048,20 @@ static void __exit adp8870_exit(void)
 	i2c_del_driver(&adp8870_driver);
 }
 module_exit(adp8870_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("Michael Hennerich <hennerich@blackfin.uclinux.org>");
 MODULE_DESCRIPTION("ADP8870 Backlight driver");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_ALIAS("i2c:adp8870-backlight");
+=======
 MODULE_ALIAS("platform:adp8870-backlight");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_ALIAS("platform:adp8870-backlight");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

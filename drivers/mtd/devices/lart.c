@@ -34,9 +34,18 @@
 /* debugging */
 //#define LART_DEBUG
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /* partition support */
 #define HAVE_PARTITIONS
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* partition support */
+#define HAVE_PARTITIONS
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/types.h>
@@ -44,9 +53,19 @@
 #include <linux/errno.h>
 #include <linux/string.h>
 #include <linux/mtd/mtd.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/mtd/partitions.h>
+=======
 #ifdef HAVE_PARTITIONS
 #include <linux/mtd/partitions.h>
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef HAVE_PARTITIONS
+#include <linux/mtd/partitions.h>
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef CONFIG_SA1100_LART
 #error This is for LART architecture only
@@ -372,9 +391,18 @@ static int flash_erase (struct mtd_info *mtd,struct erase_info *instr)
    printk (KERN_DEBUG "%s(addr = 0x%.8x, len = %d)\n", __func__, instr->addr, instr->len);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
    /* sanity checks */
    if (instr->addr + instr->len > mtd->size) return (-EINVAL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+   /* sanity checks */
+   if (instr->addr + instr->len > mtd->size) return (-EINVAL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    /*
 	* check that both start and end of the requested erase are
 	* aligned with the erasesize at the appropriate addresses.
@@ -445,10 +473,19 @@ static int flash_read (struct mtd_info *mtd,loff_t from,size_t len,size_t *retle
    printk (KERN_DEBUG "%s(from = 0x%.8x, len = %d)\n", __func__, (__u32)from, len);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    /* sanity checks */
    if (!len) return (0);
    if (from + len > mtd->size) return (-EINVAL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    /* we always read len bytes */
    *retlen = len;
 
@@ -527,11 +564,22 @@ static int flash_write (struct mtd_info *mtd,loff_t to,size_t len,size_t *retlen
    printk (KERN_DEBUG "%s(to = 0x%.8x, len = %d)\n", __func__, (__u32)to, len);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+   /* sanity checks */
+   if (!len) return (0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    *retlen = 0;
 
    /* sanity checks */
    if (!len) return (0);
    if (to + len > mtd->size) return (-EINVAL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
    /* first, we write a 0xFF.... padded byte until we reach a dword boundary */
    if (to & (BUSWIDTH - 1))
@@ -598,7 +646,14 @@ static struct mtd_erase_region_info erase_regions[] = {
 	}
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef HAVE_PARTITIONS
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef HAVE_PARTITIONS
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct mtd_partition lart_partitions[] = {
 	/* blob */
 	{
@@ -619,7 +674,15 @@ static struct mtd_partition lart_partitions[] = {
 		.size	= INITRD_LEN,		/* MTDPART_SIZ_FULL */
 	}
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define NUM_PARTITIONS ARRAY_SIZE(lart_partitions)
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init lart_flash_init (void)
 {
@@ -642,9 +705,21 @@ static int __init lart_flash_init (void)
    mtd.erasesize = FLASH_BLOCKSIZE_MAIN;
    mtd.numeraseregions = ARRAY_SIZE(erase_regions);
    mtd.eraseregions = erase_regions;
+<<<<<<< HEAD
+<<<<<<< HEAD
+   mtd._erase = flash_erase;
+   mtd._read = flash_read;
+   mtd._write = flash_write;
+=======
    mtd.erase = flash_erase;
    mtd.read = flash_read;
    mtd.write = flash_write;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+   mtd.erase = flash_erase;
+   mtd.read = flash_read;
+   mtd.write = flash_write;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    mtd.owner = THIS_MODULE;
 
 #ifdef LART_DEBUG
@@ -669,7 +744,14 @@ static int __init lart_flash_init (void)
 			   result,mtd.eraseregions[result].erasesize,mtd.eraseregions[result].erasesize / 1024,
 			   result,mtd.eraseregions[result].numblocks);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef HAVE_PARTITIONS
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef HAVE_PARTITIONS
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    printk ("\npartitions = %d\n", ARRAY_SIZE(lart_partitions));
 
    for (result = 0; result < ARRAY_SIZE(lart_partitions); result++)
@@ -682,6 +764,14 @@ static int __init lart_flash_init (void)
 			 result,lart_partitions[result].offset,
 			 result,lart_partitions[result].size,lart_partitions[result].size / 1024);
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+   result = mtd_device_register(&mtd, lart_partitions,
+                                ARRAY_SIZE(lart_partitions));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef HAVE_PARTITIONS
@@ -690,17 +780,31 @@ static int __init lart_flash_init (void)
    result = mtd_device_register(&mtd, lart_partitions,
                                 ARRAY_SIZE(lart_partitions));
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
    return (result);
 }
 
 static void __exit lart_flash_exit (void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+   mtd_device_unregister(&mtd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef HAVE_PARTITIONS
    mtd_device_unregister(&mtd);
 #else
    mtd_device_unregister(&mtd);
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init (lart_flash_init);

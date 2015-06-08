@@ -44,8 +44,11 @@ void nfs_expire_all_delegation_types(struct nfs_client *clp, fmode_t flags);
 void nfs_expire_unreferenced_delegations(struct nfs_client *clp);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void nfs_handle_cb_pathdown(struct nfs_client *clp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int nfs_client_return_marked_delegations(struct nfs_client *clp);
 int nfs_delegations_present(struct nfs_client *clp);
 void nfs_remove_bad_delegation(struct inode *inode);
@@ -60,8 +63,12 @@ int nfs4_lock_delegation_recall(struct nfs4_state *state, struct file_lock *fl);
 <<<<<<< HEAD
 bool nfs4_copy_delegation_stateid(nfs4_stateid *dst, struct inode *inode, fmode_t flags);
 =======
+<<<<<<< HEAD
+bool nfs4_copy_delegation_stateid(nfs4_stateid *dst, struct inode *inode, fmode_t flags);
+=======
 int nfs4_copy_delegation_stateid(nfs4_stateid *dst, struct inode *inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void nfs_mark_delegation_referenced(struct nfs_delegation *delegation);
 int nfs_have_delegation(struct inode *inode, fmode_t flags);

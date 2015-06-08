@@ -35,6 +35,8 @@ static inline int __movsl_is_ok(unsigned long a1, unsigned long a2, unsigned lon
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Copy a null terminated string from userspace.
  */
 
@@ -123,6 +125,7 @@ EXPORT_SYMBOL(strncpy_from_user);
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Zero Userspace
  */
 
@@ -768,10 +771,16 @@ survive:
 			memcpy(maddr + offset, from, len);
 			kunmap_atomic(maddr);
 =======
+<<<<<<< HEAD
+			maddr = kmap_atomic(pg);
+			memcpy(maddr + offset, from, len);
+			kunmap_atomic(maddr);
+=======
 			maddr = kmap_atomic(pg, KM_USER0);
 			memcpy(maddr + offset, from, len);
 			kunmap_atomic(maddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_page_dirty_lock(pg);
 			put_page(pg);
 			up_read(&current->mm->mmap_sem);

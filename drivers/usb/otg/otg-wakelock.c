@@ -16,6 +16,13 @@
 
 #include <linux/kernel.h>
 #include <linux/device.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/notifier.h>
 #include <linux/wakelock.h>
 #include <linux/spinlock.h>
@@ -24,7 +31,15 @@
 #define TEMPORARY_HOLD_TIME	2000
 
 static bool enabled = true;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_phy *otgwl_xceiv;
+=======
 static struct otg_transceiver *otgwl_xceiv;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct otg_transceiver *otgwl_xceiv;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct notifier_block otgwl_nb;
 
 /*
@@ -138,10 +153,23 @@ static int __init otg_wakelock_init(void)
 {
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	otgwl_xceiv = usb_get_transceiver();
+
+	if (!otgwl_xceiv) {
+		pr_err("%s: No USB transceiver found\n", __func__);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	otgwl_xceiv = otg_get_transceiver();
 
 	if (!otgwl_xceiv) {
 		pr_err("%s: No OTG transceiver found\n", __func__);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 
@@ -151,10 +179,23 @@ static int __init otg_wakelock_init(void)
 		       vbus_lock.name);
 
 	otgwl_nb.notifier_call = otgwl_otg_notifications;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = usb_register_notifier(otgwl_xceiv, &otgwl_nb);
+
+	if (ret) {
+		pr_err("%s: usb_register_notifier on transceiver %s"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = otg_register_notifier(otgwl_xceiv, &otgwl_nb);
 
 	if (ret) {
 		pr_err("%s: otg_register_notifier on transceiver %s"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       " failed\n", __func__,
 		       dev_name(otgwl_xceiv->dev));
 		otgwl_xceiv = NULL;

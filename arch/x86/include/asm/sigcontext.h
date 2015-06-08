@@ -231,6 +231,9 @@ struct sigcontext {
  */
 struct sigcontext {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u64 r8;
 	__u64 r9;
 	__u64 r10;
@@ -262,6 +265,8 @@ struct sigcontext {
 	__u32 __fpstate_pad;
 #endif
 	__u64 reserved1[8];
+<<<<<<< HEAD
+=======
 =======
 	unsigned long r8;
 	unsigned long r9;
@@ -292,6 +297,7 @@ struct sigcontext {
 	struct _fpstate __user *fpstate;	/* zero when no FPU context */
 	unsigned long reserved1[8];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif /* !__KERNEL__ */
 

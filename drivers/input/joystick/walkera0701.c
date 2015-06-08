@@ -196,7 +196,14 @@ static void walkera0701_close(struct input_dev *dev)
 	struct walkera_dev *w = input_get_drvdata(dev);
 
 	parport_disable_irq(w->parport);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	hrtimer_cancel(&w->timer);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hrtimer_cancel(&w->timer);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int walkera0701_connect(struct walkera_dev *w, int parport)
@@ -225,9 +232,18 @@ static int walkera0701_connect(struct walkera_dev *w, int parport)
 	if (parport_claim(w->pardevice))
 		goto init_err1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	hrtimer_init(&w->timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
 	w->timer.function = timer_handler;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hrtimer_init(&w->timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+	w->timer.function = timer_handler;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	w->input_dev = input_allocate_device();
 	if (!w->input_dev)
 		goto init_err2;
@@ -258,6 +274,14 @@ static int walkera0701_connect(struct walkera_dev *w, int parport)
 	if (err)
 		goto init_err3;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hrtimer_init(&w->timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+	w->timer.function = timer_handler;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
  init_err3:
@@ -273,6 +297,13 @@ static int walkera0701_connect(struct walkera_dev *w, int parport)
 
 static void walkera0701_disconnect(struct walkera_dev *w)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hrtimer_cancel(&w->timer);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	input_unregister_device(w->input_dev);
 	parport_release(w->pardevice);
 	parport_unregister_device(w->pardevice);

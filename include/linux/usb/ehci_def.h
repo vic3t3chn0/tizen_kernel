@@ -137,6 +137,10 @@ struct ehci_regs {
 #define PORT_TEST_PKT	PORT_TEST(0x4)	/* Port Test Control - packet test */
 #define PORT_TEST_FORCE	PORT_TEST(0x5)	/* Port Test Control - force enable */
 =======
+<<<<<<< HEAD
+#define PORT_TEST_PKT	PORT_TEST(0x4)	/* Port Test Control - packet test */
+#define PORT_TEST_FORCE	PORT_TEST(0x5)	/* Port Test Control - force enable */
+=======
 #ifdef CONFIG_HOST_COMPLIANT_TEST
 #define PORT_TEST_J		PORT_TEST(0x1)
 #define PORT_TEST_K		PORT_TEST(0x2)
@@ -146,6 +150,7 @@ struct ehci_regs {
 #define PORT_TEST_FORCE	PORT_TEST(0x5)	/* Port Test Control - force enable */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PORT_LED_OFF	(0<<14)
 #define PORT_LED_AMBER	(1<<14)
 #define PORT_LED_GREEN	(2<<14)

@@ -24,7 +24,15 @@
 #include <linux/mfd/wm831x/core.h>
 #include <linux/delay.h>
 #include <linux/platform_device.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 #include <linux/random.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/random.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * R16416 (0x4020) - RTC Write Counter
@@ -96,6 +104,11 @@ struct wm831x_rtc {
 	unsigned int alarm_enabled:1;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void wm831x_rtc_add_randomness(struct wm831x *wm831x)
 {
 	int ret;
@@ -116,6 +129,10 @@ static void wm831x_rtc_add_randomness(struct wm831x *wm831x)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Read current time and date in RTC
  */
@@ -344,6 +361,11 @@ static irqreturn_t wm831x_alm_irq(int irq, void *data)
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t wm831x_per_irq(int irq, void *data)
 {
 	struct wm831x_rtc *wm831x_rtc = data;
@@ -353,6 +375,10 @@ static irqreturn_t wm831x_per_irq(int irq, void *data)
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct rtc_class_ops wm831x_rtc_ops = {
 	.read_time = wm831x_rtc_readtime,
 	.set_mmss = wm831x_rtc_set_mmss,
@@ -425,11 +451,24 @@ static int wm831x_rtc_probe(struct platform_device *pdev)
 {
 	struct wm831x *wm831x = dev_get_drvdata(pdev->dev.parent);
 	struct wm831x_rtc *wm831x_rtc;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int alm_irq = platform_get_irq_byname(pdev, "ALM");
+	int ret = 0;
+
+	wm831x_rtc = devm_kzalloc(&pdev->dev, sizeof(*wm831x_rtc), GFP_KERNEL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int per_irq = platform_get_irq_byname(pdev, "PER");
 	int alm_irq = platform_get_irq_byname(pdev, "ALM");
 	int ret = 0;
 
 	wm831x_rtc = kzalloc(sizeof(*wm831x_rtc), GFP_KERNEL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wm831x_rtc == NULL)
 		return -ENOMEM;
 
@@ -453,6 +492,11 @@ static int wm831x_rtc_probe(struct platform_device *pdev)
 		goto err;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = request_threaded_irq(per_irq, NULL, wm831x_per_irq,
 				   IRQF_TRIGGER_RISING, "RTC period",
 				   wm831x_rtc);
@@ -461,6 +505,10 @@ static int wm831x_rtc_probe(struct platform_device *pdev)
 			per_irq, ret);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = request_threaded_irq(alm_irq, NULL, wm831x_alm_irq,
 				   IRQF_TRIGGER_RISING, "RTC alarm",
 				   wm831x_rtc);
@@ -469,18 +517,39 @@ static int wm831x_rtc_probe(struct platform_device *pdev)
 			alm_irq, ret);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+
+err:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm831x_rtc_add_randomness(wm831x);
 
 	return 0;
 
 err:
 	kfree(wm831x_rtc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static int __devexit wm831x_rtc_remove(struct platform_device *pdev)
 {
 	struct wm831x_rtc *wm831x_rtc = platform_get_drvdata(pdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int alm_irq = platform_get_irq_byname(pdev, "ALM");
+
+	free_irq(alm_irq, wm831x_rtc);
+	rtc_device_unregister(wm831x_rtc->rtc);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int per_irq = platform_get_irq_byname(pdev, "PER");
 	int alm_irq = platform_get_irq_byname(pdev, "ALM");
 
@@ -488,6 +557,10 @@ static int __devexit wm831x_rtc_remove(struct platform_device *pdev)
 	free_irq(per_irq, wm831x_rtc);
 	rtc_device_unregister(wm831x_rtc->rtc);
 	kfree(wm831x_rtc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -512,6 +585,12 @@ static struct platform_driver wm831x_rtc_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(wm831x_rtc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init wm831x_rtc_init(void)
 {
 	return platform_driver_register(&wm831x_rtc_driver);
@@ -523,6 +602,10 @@ static void __exit wm831x_rtc_exit(void)
 	platform_driver_unregister(&wm831x_rtc_driver);
 }
 module_exit(wm831x_rtc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Mark Brown <broonie@opensource.wolfsonmicro.com>");
 MODULE_DESCRIPTION("RTC driver for the WM831x series PMICs");

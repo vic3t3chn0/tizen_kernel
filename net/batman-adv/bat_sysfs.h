@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2010-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2010-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner
  *
@@ -46,6 +50,11 @@ void sysfs_del_hardif(struct kobject **hardif_obj);
 int throw_uevent(struct bat_priv *bat_priv, enum uev_type type,
 		 enum uev_action action, const char *data);
 =======
+<<<<<<< HEAD
+int throw_uevent(struct bat_priv *bat_priv, enum uev_type type,
+		 enum uev_action action, const char *data);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _NET_BATMAN_ADV_SYSFS_H_ */

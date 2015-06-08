@@ -103,8 +103,17 @@ static int ohci_hcd_sm501_drv_probe(struct platform_device *pdev)
 		goto err0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!request_mem_region(mem->start, resource_size(mem), pdev->name)) {
+=======
 	if (!request_mem_region(mem->start, mem->end - mem->start + 1,
 				pdev->name)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!request_mem_region(mem->start, mem->end - mem->start + 1,
+				pdev->name)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(dev, "request_mem_region failed\n");
 		retval = -EBUSY;
 		goto err0;
@@ -126,7 +135,15 @@ static int ohci_hcd_sm501_drv_probe(struct platform_device *pdev)
 
 	if (!dma_declare_coherent_memory(dev, mem->start,
 					 mem->start - mem->parent->start,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					 resource_size(mem),
+=======
 					 (mem->end - mem->start) + 1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					 (mem->end - mem->start) + 1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 DMA_MEMORY_MAP |
 					 DMA_MEMORY_EXCLUSIVE)) {
 		dev_err(dev, "cannot declare coherent memory\n");
@@ -149,7 +166,15 @@ static int ohci_hcd_sm501_drv_probe(struct platform_device *pdev)
 	}
 
 	hcd->rsrc_start = res->start;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hcd->rsrc_len = resource_size(res);
+=======
 	hcd->rsrc_len = res->end - res->start + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hcd->rsrc_len = res->end - res->start + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!request_mem_region(hcd->rsrc_start, hcd->rsrc_len,	pdev->name)) {
 		dev_err(dev, "request_mem_region failed\n");
@@ -166,7 +191,15 @@ static int ohci_hcd_sm501_drv_probe(struct platform_device *pdev)
 
 	ohci_hcd_init(hcd_to_ohci(hcd));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	retval = usb_add_hcd(hcd, irq, IRQF_SHARED);
+=======
 	retval = usb_add_hcd(hcd, irq, IRQF_DISABLED | IRQF_SHARED);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	retval = usb_add_hcd(hcd, irq, IRQF_DISABLED | IRQF_SHARED);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval)
 		goto err5;
 
@@ -185,7 +218,15 @@ err3:
 err2:
 	dma_release_declared_memory(dev);
 err1:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	release_mem_region(mem->start, resource_size(mem));
+=======
 	release_mem_region(mem->start, mem->end - mem->start + 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	release_mem_region(mem->start, mem->end - mem->start + 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err0:
 	return retval;
 }
@@ -201,7 +242,15 @@ static int ohci_hcd_sm501_drv_remove(struct platform_device *pdev)
 	dma_release_declared_memory(&pdev->dev);
 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 1);
 	if (mem)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		release_mem_region(mem->start, resource_size(mem));
+=======
 		release_mem_region(mem->start, mem->end - mem->start + 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		release_mem_region(mem->start, mem->end - mem->start + 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* mask interrupts and disable power */
 
@@ -225,7 +274,14 @@ static int ohci_sm501_suspend(struct platform_device *pdev, pm_message_t msg)
 	ohci->next_statechange = jiffies;
 
 	sm501_unit_power(dev->parent, SM501_GATE_USB_HOST, 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ohci_to_hcd(ohci)->state = HC_STATE_SUSPENDED;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ohci_to_hcd(ohci)->state = HC_STATE_SUSPENDED;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

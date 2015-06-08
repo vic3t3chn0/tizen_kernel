@@ -33,11 +33,16 @@
 		cmp	ip, #2
 		ldrb	r3, [r1], #1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 USER(	TUSER(	strb)	r3, [r0], #1)			@ May fault
 		ldrgeb	r3, [r1], #1
 USER(	TUSER(	strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #1
 USER(	TUSER(	strgtb) r3, [r0], #1)			@ May fault
+<<<<<<< HEAD
+=======
 =======
 USER(		T(strb)	r3, [r0], #1)			@ May fault
 		ldrgeb	r3, [r1], #1
@@ -45,6 +50,7 @@ USER(		T(strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #1
 USER(		T(strgtb) r3, [r0], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sub	r2, r2, ip
 		b	.Lc2u_dest_aligned
 
@@ -70,8 +76,12 @@ ENTRY(__copy_to_user)
 <<<<<<< HEAD
 USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
+=======
 USER(		T(str)	r3, [r0], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	ip, r0, lsl #32 - PAGE_SHIFT	@ On each page, use a ld/st??t instruction
 		rsb	ip, ip, #0
 		movs	ip, ip, lsr #32 - PAGE_SHIFT
@@ -103,8 +113,12 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 <<<<<<< HEAD
 	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
 =======
+<<<<<<< HEAD
+	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
+=======
 		T(strne) r3, [r0], #4			@ Shouldnt fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ands	ip, ip, #3
 		beq	.Lc2u_0fupi
 .Lc2u_0nowords:	teq	ip, #0
@@ -112,11 +126,16 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 .Lc2u_nowords:	cmp	ip, #2
 		ldrb	r3, [r1], #1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 USER(	TUSER(	strb)	r3, [r0], #1)			@ May fault
 		ldrgeb	r3, [r1], #1
 USER(	TUSER(	strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #1
 USER(	TUSER(	strgtb) r3, [r0], #1)			@ May fault
+<<<<<<< HEAD
+=======
 =======
 USER(		T(strb)	r3, [r0], #1)			@ May fault
 		ldrgeb	r3, [r1], #1
@@ -124,6 +143,7 @@ USER(		T(strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #1
 USER(		T(strgtb) r3, [r0], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		b	.Lc2u_finished
 
 .Lc2u_not_enough:
@@ -147,8 +167,12 @@ USER(		T(strgtb) r3, [r0], #1)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
+=======
 USER(		T(str)	r3, [r0], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	ip, r0, lsl #32 - PAGE_SHIFT
 		rsb	ip, ip, #0
 		movs	ip, ip, lsr #32 - PAGE_SHIFT
@@ -186,8 +210,12 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 <<<<<<< HEAD
 	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
 =======
+<<<<<<< HEAD
+	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
+=======
 		T(strne) r3, [r0], #4			@ Shouldnt fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ands	ip, ip, #3
 		beq	.Lc2u_1fupi
 .Lc2u_1nowords:	mov	r3, r7, get_byte_1
@@ -195,11 +223,16 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 		beq	.Lc2u_finished
 		cmp	ip, #2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 USER(	TUSER(	strb)	r3, [r0], #1)			@ May fault
 		movge	r3, r7, get_byte_2
 USER(	TUSER(	strgeb) r3, [r0], #1)			@ May fault
 		movgt	r3, r7, get_byte_3
 USER(	TUSER(	strgtb) r3, [r0], #1)			@ May fault
+<<<<<<< HEAD
+=======
 =======
 USER(		T(strb)	r3, [r0], #1)			@ May fault
 		movge	r3, r7, get_byte_2
@@ -207,6 +240,7 @@ USER(		T(strgeb) r3, [r0], #1)			@ May fault
 		movgt	r3, r7, get_byte_3
 USER(		T(strgtb) r3, [r0], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		b	.Lc2u_finished
 
 .Lc2u_2fupi:	subs	r2, r2, #4
@@ -218,8 +252,12 @@ USER(		T(strgtb) r3, [r0], #1)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
+=======
 USER(		T(str)	r3, [r0], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	ip, r0, lsl #32 - PAGE_SHIFT
 		rsb	ip, ip, #0
 		movs	ip, ip, lsr #32 - PAGE_SHIFT
@@ -257,8 +295,12 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 <<<<<<< HEAD
 	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
 =======
+<<<<<<< HEAD
+	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
+=======
 		T(strne) r3, [r0], #4			@ Shouldnt fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ands	ip, ip, #3
 		beq	.Lc2u_2fupi
 .Lc2u_2nowords:	mov	r3, r7, get_byte_2
@@ -266,11 +308,16 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 		beq	.Lc2u_finished
 		cmp	ip, #2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 USER(	TUSER(	strb)	r3, [r0], #1)			@ May fault
 		movge	r3, r7, get_byte_3
 USER(	TUSER(	strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #0
 USER(	TUSER(	strgtb) r3, [r0], #1)			@ May fault
+<<<<<<< HEAD
+=======
 =======
 USER(		T(strb)	r3, [r0], #1)			@ May fault
 		movge	r3, r7, get_byte_3
@@ -278,6 +325,7 @@ USER(		T(strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #0
 USER(		T(strgtb) r3, [r0], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		b	.Lc2u_finished
 
 .Lc2u_3fupi:	subs	r2, r2, #4
@@ -289,8 +337,12 @@ USER(		T(strgtb) r3, [r0], #1)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	str)	r3, [r0], #4)			@ May fault
+=======
 USER(		T(str)	r3, [r0], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	ip, r0, lsl #32 - PAGE_SHIFT
 		rsb	ip, ip, #0
 		movs	ip, ip, lsr #32 - PAGE_SHIFT
@@ -328,8 +380,12 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 <<<<<<< HEAD
 	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
 =======
+<<<<<<< HEAD
+	TUSER(	strne) r3, [r0], #4			@ Shouldnt fault
+=======
 		T(strne) r3, [r0], #4			@ Shouldnt fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ands	ip, ip, #3
 		beq	.Lc2u_3fupi
 .Lc2u_3nowords:	mov	r3, r7, get_byte_3
@@ -337,11 +393,16 @@ USER(		T(str)	r3, [r0], #4)			@ May fault
 		beq	.Lc2u_finished
 		cmp	ip, #2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 USER(	TUSER(	strb)	r3, [r0], #1)			@ May fault
 		ldrgeb	r3, [r1], #1
 USER(	TUSER(	strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #0
 USER(	TUSER(	strgtb) r3, [r0], #1)			@ May fault
+<<<<<<< HEAD
+=======
 =======
 USER(		T(strb)	r3, [r0], #1)			@ May fault
 		ldrgeb	r3, [r1], #1
@@ -349,6 +410,7 @@ USER(		T(strgeb) r3, [r0], #1)			@ May fault
 		ldrgtb	r3, [r1], #0
 USER(		T(strgtb) r3, [r0], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		b	.Lc2u_finished
 ENDPROC(__copy_to_user)
 
@@ -368,11 +430,16 @@ ENDPROC(__copy_to_user)
 		rsb	ip, ip, #4
 		cmp	ip, #2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 USER(	TUSER(	ldrb)	r3, [r1], #1)			@ May fault
 		strb	r3, [r0], #1
 USER(	TUSER(	ldrgeb) r3, [r1], #1)			@ May fault
 		strgeb	r3, [r0], #1
 USER(	TUSER(	ldrgtb) r3, [r1], #1)			@ May fault
+<<<<<<< HEAD
+=======
 =======
 USER(		T(ldrb)	r3, [r1], #1)			@ May fault
 		strb	r3, [r0], #1
@@ -380,6 +447,7 @@ USER(		T(ldrgeb) r3, [r1], #1)			@ May fault
 		strgeb	r3, [r0], #1
 USER(		T(ldrgtb) r3, [r1], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		strgtb	r3, [r0], #1
 		sub	r2, r2, ip
 		b	.Lcfu_dest_aligned
@@ -405,8 +473,12 @@ ENTRY(__copy_from_user)
 <<<<<<< HEAD
 USER(	TUSER(	ldr)	r3, [r1], #4)
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldr)	r3, [r1], #4)
+=======
 USER(		T(ldr)	r3, [r1], #4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		str	r3, [r0], #4
 		mov	ip, r1, lsl #32 - PAGE_SHIFT	@ On each page, use a ld/st??t instruction
 		rsb	ip, ip, #0
@@ -438,8 +510,12 @@ USER(		T(ldr)	r3, [r1], #4)
 <<<<<<< HEAD
 	TUSER(	ldrne) r3, [r1], #4			@ Shouldnt fault
 =======
+<<<<<<< HEAD
+	TUSER(	ldrne) r3, [r1], #4			@ Shouldnt fault
+=======
 		T(ldrne) r3, [r1], #4			@ Shouldnt fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		strne	r3, [r0], #4
 		ands	ip, ip, #3
 		beq	.Lcfu_0fupi
@@ -447,11 +523,16 @@ USER(		T(ldr)	r3, [r1], #4)
 		beq	.Lcfu_finished
 .Lcfu_nowords:	cmp	ip, #2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 USER(	TUSER(	ldrb)	r3, [r1], #1)			@ May fault
 		strb	r3, [r0], #1
 USER(	TUSER(	ldrgeb) r3, [r1], #1)			@ May fault
 		strgeb	r3, [r0], #1
 USER(	TUSER(	ldrgtb) r3, [r1], #1)			@ May fault
+<<<<<<< HEAD
+=======
 =======
 USER(		T(ldrb)	r3, [r1], #1)			@ May fault
 		strb	r3, [r0], #1
@@ -459,6 +540,7 @@ USER(		T(ldrgeb) r3, [r1], #1)			@ May fault
 		strgeb	r3, [r0], #1
 USER(		T(ldrgtb) r3, [r1], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		strgtb	r3, [r0], #1
 		b	.Lcfu_finished
 
@@ -474,8 +556,12 @@ USER(		T(ldrgtb) r3, [r1], #1)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
+=======
 USER(		T(ldr)	r7, [r1], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cmp	ip, #2
 		bgt	.Lcfu_3fupi
 		beq	.Lcfu_2fupi
@@ -486,8 +572,12 @@ USER(		T(ldr)	r7, [r1], #4)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
+=======
 USER(		T(ldr)	r7, [r1], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		orr	r3, r3, r7, push #24
 		str	r3, [r0], #4
 		mov	ip, r1, lsl #32 - PAGE_SHIFT
@@ -525,8 +615,12 @@ USER(		T(ldr)	r7, [r1], #4)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldrne) r7, [r1], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldrne) r7, [r1], #4)			@ May fault
+=======
 USER(		T(ldrne) r7, [r1], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		orrne	r3, r3, r7, push #24
 		strne	r3, [r0], #4
 		ands	ip, ip, #3
@@ -549,8 +643,12 @@ USER(		T(ldrne) r7, [r1], #4)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
+=======
 USER(		T(ldr)	r7, [r1], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		orr	r3, r3, r7, push #16
 		str	r3, [r0], #4
 		mov	ip, r1, lsl #32 - PAGE_SHIFT
@@ -589,8 +687,12 @@ USER(		T(ldr)	r7, [r1], #4)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldrne) r7, [r1], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldrne) r7, [r1], #4)			@ May fault
+=======
 USER(		T(ldrne) r7, [r1], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		orrne	r3, r3, r7, push #16
 		strne	r3, [r0], #4
 		ands	ip, ip, #3
@@ -605,8 +707,12 @@ USER(		T(ldrne) r7, [r1], #4)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldrgtb) r3, [r1], #0)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldrgtb) r3, [r1], #0)			@ May fault
+=======
 USER(		T(ldrgtb) r3, [r1], #0)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		strgtb	r3, [r0], #1
 		b	.Lcfu_finished
 
@@ -617,8 +723,12 @@ USER(		T(ldrgtb) r3, [r1], #0)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldr)	r7, [r1], #4)			@ May fault
+=======
 USER(		T(ldr)	r7, [r1], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		orr	r3, r3, r7, push #8
 		str	r3, [r0], #4
 		mov	ip, r1, lsl #32 - PAGE_SHIFT
@@ -656,8 +766,12 @@ USER(		T(ldr)	r7, [r1], #4)			@ May fault
 <<<<<<< HEAD
 USER(	TUSER(	ldrne) r7, [r1], #4)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldrne) r7, [r1], #4)			@ May fault
+=======
 USER(		T(ldrne) r7, [r1], #4)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		orrne	r3, r3, r7, push #8
 		strne	r3, [r0], #4
 		ands	ip, ip, #3
@@ -672,10 +786,16 @@ USER(	TUSER(	ldrgeb) r3, [r1], #1)			@ May fault
 		strgeb	r3, [r0], #1
 USER(	TUSER(	ldrgtb) r3, [r1], #1)			@ May fault
 =======
+<<<<<<< HEAD
+USER(	TUSER(	ldrgeb) r3, [r1], #1)			@ May fault
+		strgeb	r3, [r0], #1
+USER(	TUSER(	ldrgtb) r3, [r1], #1)			@ May fault
+=======
 USER(		T(ldrgeb) r3, [r1], #1)			@ May fault
 		strgeb	r3, [r0], #1
 USER(		T(ldrgtb) r3, [r1], #1)			@ May fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		strgtb	r3, [r0], #1
 		b	.Lcfu_finished
 ENDPROC(__copy_from_user)

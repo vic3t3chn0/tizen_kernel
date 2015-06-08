@@ -38,12 +38,18 @@ int mc13xxx_irq_ack(struct mc13xxx *mc13xxx, int irq);
 int mc13xxx_get_flags(struct mc13xxx *mc13xxx);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mc13xxx_adc_do_conversion(struct mc13xxx *mc13xxx,
 		unsigned int mode, unsigned int channel,
 		u8 ato, bool atox, unsigned int *sample);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MC13XXX_IRQ_ADCDONE	0
 #define MC13XXX_IRQ_ADCBISDONE	1
 #define MC13XXX_IRQ_TS		2
@@ -76,7 +82,11 @@ struct mc13xxx_regulator_init_data {
 <<<<<<< HEAD
 	struct device_node *node;
 =======
+<<<<<<< HEAD
+	struct device_node *node;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct mc13xxx_regulator_platform_data {
@@ -149,6 +159,9 @@ struct mc13xxx_leds_platform_data {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mc13xxx_buttons_platform_data {
 #define MC13783_BUTTON_DBNC_0MS		0
 #define MC13783_BUTTON_DBNC_30MS	1
@@ -177,8 +190,11 @@ struct mc13xxx_ts_platform_data {
 	bool atox;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mc13xxx_platform_data {
 #define MC13XXX_USE_TOUCHSCREEN (1 << 0)
 #define MC13XXX_USE_CODEC	(1 << 1)
@@ -186,14 +202,20 @@ struct mc13xxx_platform_data {
 #define MC13XXX_USE_RTC		(1 << 3)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define MC13XXX_USE_REGULATOR	(1 << 4)
 #define MC13XXX_USE_LED		(1 << 5)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int flags;
 
 	struct mc13xxx_regulator_platform_data regulators;
 	struct mc13xxx_leds_platform_data *leds;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mc13xxx_buttons_platform_data *buttons;
 	struct mc13xxx_ts_platform_data touch;
 };
@@ -222,8 +244,11 @@ struct mc13xxx_platform_data {
 					MC13XXX_ADC0_CHRGICON | \
 					MC13XXX_ADC0_BATICON)
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* ifndef __LINUX_MFD_MC13XXX_H */

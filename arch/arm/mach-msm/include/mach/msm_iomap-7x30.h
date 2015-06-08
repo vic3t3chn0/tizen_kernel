@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2012 The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2012 The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2008-2011 Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -40,6 +44,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM7X30_VIC_PHYS		0xC0080000
 #define MSM7X30_VIC_SIZE		SZ_4K
 
@@ -92,6 +99,8 @@
 extern void msm_map_msm7x30_io(void);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #define MSM_VIC_BASE          IOMEM(0xE0000000)
 #define MSM_VIC_PHYS          0xC0080000
@@ -173,4 +182,5 @@ extern void msm_map_msm7x30_io(void);
 #define MSM_HSUSB_SIZE        SZ_1K
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

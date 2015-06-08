@@ -67,8 +67,12 @@ static int get_dir_index_using_offset(struct super_block *sb,
 <<<<<<< HEAD
 	if (f_pos <= 3)
 =======
+<<<<<<< HEAD
+	if (f_pos <= 3)
+=======
 	if (f_pos < 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return f_pos;
 	f_pos -= 3;
 
@@ -112,8 +116,12 @@ static int squashfs_readdir(struct file *file, void *dirent, filldir_t filldir)
 <<<<<<< HEAD
 	int offset = squashfs_i(inode)->offset, length, dir_count, size,
 =======
+<<<<<<< HEAD
+	int offset = squashfs_i(inode)->offset, length, dir_count, size,
+=======
 	int offset = squashfs_i(inode)->offset, length = 0, dir_count, size,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				type, err;
 	unsigned int inode_number;
 	struct squashfs_dir_header dirh;
@@ -184,9 +192,13 @@ static int squashfs_readdir(struct file *file, void *dirent, filldir_t filldir)
 <<<<<<< HEAD
 		if (dir_count > SQUASHFS_DIR_COUNT)
 =======
+<<<<<<< HEAD
+		if (dir_count > SQUASHFS_DIR_COUNT)
+=======
 		/* dir_count should never be larger than 256 */
 		if (dir_count > 256)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto failed_read;
 
 		while (dir_count--) {

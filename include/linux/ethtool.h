@@ -31,6 +31,9 @@ struct ethtool_cmd {
 	__u8	duplex;		/* Duplex, half or full */
 	__u8	port;		/* Which connector port */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u8	phy_address;	/* MDIO PHY address (PRTAD for clause 45).
 				 * May be read-only or read-write
 				 * depending on the driver.
@@ -40,12 +43,15 @@ struct ethtool_cmd {
 	__u8	mdio_support;	/* MDIO protocols supported.  Read-only.
 				 * Not set by all drivers.
 				 */
+<<<<<<< HEAD
+=======
 =======
 	__u8	phy_address;
 	__u8	transceiver;	/* Which transceiver to use */
 	__u8	autoneg;	/* Enable or disable autonegotiation */
 	__u8	mdio_support;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32	maxtxpkt;	/* Tx pkts before generating tx int */
 	__u32	maxrxpkt;	/* Rx pkts before generating rx int */
 	__u16	speed_hi;       /* The forced speed (upper
@@ -72,6 +78,9 @@ static inline __u32 ethtool_cmd_speed(const struct ethtool_cmd *ep)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Device supports clause 22 register access to PHY or peripherals
  * using the interface defined in <linux/mii.h>.  This should not be
  * set if there are known to be no such peripherals present or if
@@ -86,8 +95,11 @@ static inline __u32 ethtool_cmd_speed(const struct ethtool_cmd *ep)
  */
 #define ETH_MDIO_SUPPORTS_C45	2
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ETHTOOL_FWVERS_LEN	32
 #define ETHTOOL_BUSINFO_LEN	32
 /* these strings are set to whatever the driver author decides... */
@@ -147,6 +159,9 @@ struct ethtool_eeprom {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct ethtool_coalesce - coalescing parameters for IRQs and stats updates
  * @cmd: ETHTOOL_{G,S}COALESCE
@@ -232,6 +247,8 @@ struct ethtool_coalesce {
 	__u32	stats_block_coalesce_usecs;
 	__u32	use_adaptive_rx_coalesce;
 	__u32	use_adaptive_tx_coalesce;
+<<<<<<< HEAD
+=======
 =======
 /* for configuring coalescing parameters of chip */
 struct ethtool_coalesce {
@@ -303,11 +320,14 @@ struct ethtool_coalesce {
 	 * used.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32	pkt_rate_low;
 	__u32	rx_coalesce_usecs_low;
 	__u32	rx_max_coalesced_frames_low;
 	__u32	tx_coalesce_usecs_low;
 	__u32	tx_max_coalesced_frames_low;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -321,6 +341,7 @@ struct ethtool_coalesce {
 	 * used.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32	pkt_rate_high;
 	__u32	rx_coalesce_usecs_high;
 	__u32	rx_max_coalesced_frames_high;
@@ -328,11 +349,14 @@ struct ethtool_coalesce {
 	__u32	tx_max_coalesced_frames_high;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/* How often to do adaptive coalescing packet rate sampling,
 	 * measured in seconds.  Must not be zero.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32	rate_sample_interval;
 };
 
@@ -413,8 +437,12 @@ enum ethtool_stringset {
 <<<<<<< HEAD
 	ETH_SS_NTUPLE_FILTERS,	/* Do not use, GRXNTUPLE is now deprecated */
 =======
+<<<<<<< HEAD
+	ETH_SS_NTUPLE_FILTERS,	/* Do not use, GRXNTUPLE is now deprecated */
+=======
 	ETH_SS_NTUPLE_FILTERS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ETH_SS_FEATURES,
 };
 
@@ -438,6 +466,9 @@ struct ethtool_sset_info {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * enum ethtool_test_flags - flags definition of ethtool_test
  * @ETH_TEST_FL_OFFLINE: if set perform online and offline tests, otherwise
@@ -453,11 +484,14 @@ enum ethtool_test_flags {
 	ETH_TEST_FL_FAILED	= (1 << 1),
 	ETH_TEST_FL_EXTERNAL_LB	= (1 << 2),
 	ETH_TEST_FL_EXTERNAL_LB_DONE	= (1 << 3),
+<<<<<<< HEAD
+=======
 =======
 enum ethtool_test_flags {
 	ETH_TEST_FL_OFFLINE	= (1 << 0),	/* online / offline */
 	ETH_TEST_FL_FAILED	= (1 << 1),	/* test passed / failed */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* for requesting NIC test and getting results*/
@@ -580,8 +614,12 @@ struct ethtool_flow_ext {
 <<<<<<< HEAD
  * struct ethtool_rx_flow_spec - classification rule for RX flows
 =======
+<<<<<<< HEAD
+ * struct ethtool_rx_flow_spec - classification rule for RX flows
+=======
  * struct ethtool_rx_flow_spec - specification for RX flow filter
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @flow_type: Type of match to perform, e.g. %TCP_V4_FLOW
  * @h_u: Flow fields to match (dependent on @flow_type)
  * @h_ext: Additional fields to match
@@ -596,8 +634,14 @@ struct ethtool_flow_ext {
  *	numbered such that a flow matching multiple rules will be
  *	classified according to the first (lowest numbered) rule.
 =======
+<<<<<<< HEAD
+ * @location: Location of rule in the table.  Locations must be
+ *	numbered such that a flow matching multiple rules will be
+ *	classified according to the first (lowest numbered) rule.
+=======
  * @location: Index of filter in hardware table
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct ethtool_rx_flow_spec {
 	__u32		flow_type;
@@ -621,10 +665,16 @@ struct ethtool_rx_flow_spec {
  * @rule_cnt: Number of rules to be affected
  * @rule_locs: Array of used rule locations
 =======
+<<<<<<< HEAD
+ * @fs: Flow classification rule
+ * @rule_cnt: Number of rules to be affected
+ * @rule_locs: Array of used rule locations
+=======
  * @fs: Flow filter specification
  * @rule_cnt: Number of rules to be affected
  * @rule_locs: Array of valid rule indices
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * For %ETHTOOL_GRXFH and %ETHTOOL_SRXFH, @data is a bitmask indicating
  * the fields included in the flow hash, e.g. %RXH_IP_SRC.  The following
@@ -635,6 +685,9 @@ struct ethtool_rx_flow_spec {
  *
  * For %ETHTOOL_GRXCLSRLCNT, @rule_cnt is set to the number of defined
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * rules on return.  If @data is non-zero on return then it is the
  * size of the rule table, plus the flag %RX_CLS_LOC_SPECIAL if the
  * driver supports any special location values.  If that flag is not
@@ -667,6 +720,8 @@ struct ethtool_rx_flow_spec {
  * location (minimum priority).  Additional special values may be
  * defined in future and drivers must return -%EINVAL for any
  * unrecognised value.
+<<<<<<< HEAD
+=======
 =======
  * rules on return.
  *
@@ -688,6 +743,7 @@ struct ethtool_rx_flow_spec {
  * Implementation of indexed classification rules generally requires a
  * TCAM.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct ethtool_rxnfc {
 	__u32				cmd;
@@ -727,6 +783,9 @@ struct compat_ethtool_rxnfc {
  * struct ethtool_rxfh_indir - command to get or set RX flow hash indirection
  * @cmd: Specific command number - %ETHTOOL_GRXFHINDIR or %ETHTOOL_SRXFHINDIR
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @size: On entry, the array size of the user buffer, which may be zero.
  *	On return from %ETHTOOL_GRXFHINDIR, the array size of the hardware
  *	indirection table.
@@ -736,11 +795,14 @@ struct compat_ethtool_rxnfc {
  * should be returned.  For %ETHTOOL_SRXFHINDIR, a @size of zero means
  * the table should be reset to default values.  This last feature
  * is not supported by the original implementations.
+<<<<<<< HEAD
+=======
 =======
  * @size: On entry, the array size of the user buffer.  On return from
  *	%ETHTOOL_GRXFHINDIR, the array size of the hardware indirection table.
  * @ring_index: RX ring/queue index for each hash value
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct ethtool_rxfh_indir {
 	__u32	cmd;
@@ -923,6 +985,10 @@ enum ethtool_sfeatures_retval_bits {
 extern int __ethtool_get_settings(struct net_device *dev,
 				  struct ethtool_cmd *cmd);
 =======
+<<<<<<< HEAD
+extern int __ethtool_get_settings(struct net_device *dev,
+				  struct ethtool_cmd *cmd);
+=======
 /* needed by dev_disable_lro() */
 extern int __ethtool_set_flags(struct net_device *dev, u32 flags);
 
@@ -938,6 +1004,7 @@ struct ethtool_rx_ntuple_list {
 	unsigned int		count;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * enum ethtool_phys_id_state - indicator state for physical identification
@@ -960,6 +1027,9 @@ struct net_device;
 /* Some generic methods drivers may use in their ethtool_ops */
 u32 ethtool_op_get_link(struct net_device *dev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * ethtool_rxfh_indir_default - get default value for RX flow hash indirection
@@ -972,6 +1042,8 @@ static inline u32 ethtool_rxfh_indir_default(u32 index, u32 n_rx_rings)
 {
 	return index % n_rx_rings;
 }
+<<<<<<< HEAD
+=======
 =======
 u32 ethtool_op_get_tx_csum(struct net_device *dev);
 int ethtool_op_set_tx_csum(struct net_device *dev, u32 data);
@@ -988,6 +1060,7 @@ int ethtool_op_set_flags(struct net_device *dev, u32 data, u32 supported);
 void ethtool_ntuple_flush(struct net_device *dev);
 bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct ethtool_ops - optional netdev operations
@@ -1034,6 +1107,8 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
  *	or zero.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @get_rx_csum: Deprecated in favour of the netdev feature %NETIF_F_RXCSUM.
  *	Report whether receive checksums are turned on or off.
  * @set_rx_csum: Deprecated in favour of generic netdev features.  Turn
@@ -1051,6 +1126,7 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
  * @set_tso: Deprecated in favour of generic netdev features.  Turn TCP
  *	segmentation offload on or off.  Returns a negative error code or zero.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @self_test: Run specified self-tests
  * @get_strings: Return a set of strings that describe the requested objects
  * @set_phys_id: Identify the physical devices, e.g. by flashing an LED
@@ -1074,6 +1150,8 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
  *	@begin.  Will be called even if the other operation failed.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @get_ufo: Deprecated as redundant.  Report whether UDP fragmentation
  *	offload is enabled.
  * @set_ufo: Deprecated in favour of generic netdev features.  Turn UDP
@@ -1084,6 +1162,7 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
  *	features included in &enum ethtool_flags on or off.  Returns a
  *	negative error code or zero.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @get_priv_flags: Report driver-specific feature flags.
  * @set_priv_flags: Set driver-specific feature flags.  Returns a negative
  *	error code or zero.
@@ -1098,6 +1177,9 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
  *	flags from &enum ethtool_reset_flags.  Returns a negative
  *	error code or zero.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @get_rxfh_indir_size: Get the size of the RX flow hash indirection table.
  *	Returns zero if not supported for this specific device.
  * @get_rxfh_indir: Get the contents of the RX flow hash indirection table.
@@ -1105,6 +1187,8 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
  *	Returns a negative error code or zero.
  * @set_rxfh_indir: Set the contents of the RX flow hash indirection table.
  *	Will not be called if @get_rxfh_indir_size returns zero.
+<<<<<<< HEAD
+=======
 =======
  * @set_rx_ntuple: Set an RX n-tuple rule.  Returns a negative error code
  *	or zero.
@@ -1113,6 +1197,7 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
  *	Returns a negative error code or zero.
  * @set_rxfh_indir: Set the contents of the RX flow hash indirection table.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Returns a negative error code or zero.
  * @get_channels: Get number of channels.
  * @set_channels: Set number of channels.  Returns a negative error code or
@@ -1127,9 +1212,13 @@ bool ethtool_invalid_flags(struct net_device *dev, u32 data, u32 supported);
 <<<<<<< HEAD
  * hold the RTNL lock.
 =======
+<<<<<<< HEAD
+ * hold the RTNL lock.
+=======
  * hold the RTNL, except that for @get_drvinfo the caller may or may
  * not hold the RTNL.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * See the structures used by these operations for further documentation.
  *
@@ -1165,6 +1254,8 @@ struct ethtool_ops {
 				  struct ethtool_pauseparam*);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u32	(*get_rx_csum)(struct net_device *);
 	int	(*set_rx_csum)(struct net_device *, u32);
 	u32	(*get_tx_csum)(struct net_device *);
@@ -1174,6 +1265,7 @@ struct ethtool_ops {
 	u32	(*get_tso)(struct net_device *);
 	int	(*set_tso)(struct net_device *, u32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void	(*self_test)(struct net_device *, struct ethtool_test *, u64 *);
 	void	(*get_strings)(struct net_device *, u32 stringset, u8 *);
 	int	(*set_phys_id)(struct net_device *, enum ethtool_phys_id_state);
@@ -1183,16 +1275,22 @@ struct ethtool_ops {
 	void	(*complete)(struct net_device *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u32	(*get_ufo)(struct net_device *);
 	int	(*set_ufo)(struct net_device *, u32);
 	u32	(*get_flags)(struct net_device *);
 	int	(*set_flags)(struct net_device *, u32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32	(*get_priv_flags)(struct net_device *);
 	int	(*set_priv_flags)(struct net_device *, u32);
 	int	(*get_sset_count)(struct net_device *, int);
 	int	(*get_rxnfc)(struct net_device *,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     struct ethtool_rxnfc *, u32 *rule_locs);
 	int	(*set_rxnfc)(struct net_device *, struct ethtool_rxnfc *);
 	int	(*flash_device)(struct net_device *, struct ethtool_flash *);
@@ -1200,6 +1298,8 @@ struct ethtool_ops {
 	u32	(*get_rxfh_indir_size)(struct net_device *);
 	int	(*get_rxfh_indir)(struct net_device *, u32 *);
 	int	(*set_rxfh_indir)(struct net_device *, const u32 *);
+<<<<<<< HEAD
+=======
 =======
 			     struct ethtool_rxnfc *, void *);
 	int	(*set_rxnfc)(struct net_device *, struct ethtool_rxnfc *);
@@ -1213,6 +1313,7 @@ struct ethtool_ops {
 	int	(*set_rxfh_indir)(struct net_device *,
 				  const struct ethtool_rxfh_indir *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void	(*get_channels)(struct net_device *, struct ethtool_channels *);
 	int	(*set_channels)(struct net_device *, struct ethtool_channels *);
 	int	(*get_dump_flag)(struct net_device *, struct ethtool_dump *);
@@ -1284,8 +1385,12 @@ struct ethtool_ops {
 <<<<<<< HEAD
 #define ETHTOOL_GRXNTUPLE	0x00000036 /* deprecated */
 =======
+<<<<<<< HEAD
+#define ETHTOOL_GRXNTUPLE	0x00000036 /* deprecated */
+=======
 #define ETHTOOL_GRXNTUPLE	0x00000036 /* Get n-tuple filters from device */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ETHTOOL_GSSET_INFO	0x00000037 /* Get string set info */
 #define ETHTOOL_GRXFHINDIR	0x00000038 /* Get RX flow hash indir'n table */
 #define ETHTOOL_SRXFHINDIR	0x00000039 /* Set RX flow hash indir'n table */
@@ -1367,7 +1472,11 @@ struct ethtool_ops {
 <<<<<<< HEAD
 #define SPEED_UNKNOWN		-1
 =======
+<<<<<<< HEAD
+#define SPEED_UNKNOWN		-1
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Duplex, half or full. */
 #define DUPLEX_HALF		0x00
@@ -1375,7 +1484,11 @@ struct ethtool_ops {
 <<<<<<< HEAD
 #define DUPLEX_UNKNOWN		0xff
 =======
+<<<<<<< HEAD
+#define DUPLEX_UNKNOWN		0xff
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Which connector port. */
 #define PORT_TP			0x00
@@ -1447,14 +1560,20 @@ struct ethtool_ops {
 #define	RX_CLS_FLOW_DISC	0xffffffffffffffffULL
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Special RX classification rule insert location values */
 #define RX_CLS_LOC_SPECIAL	0x80000000	/* flag */
 #define RX_CLS_LOC_ANY		0xffffffff
 #define RX_CLS_LOC_FIRST	0xfffffffe
 #define RX_CLS_LOC_LAST		0xfffffffd
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Reset flags */
 /* The reset() operation must clear the flags for the components which
  * were actually reset.  On successful return, the flags indicate the

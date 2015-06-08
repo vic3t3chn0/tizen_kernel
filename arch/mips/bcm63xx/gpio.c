@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2008-2011 Florian Fainelli <florian@openwrt.org>
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2008-2011 Florian Fainelli <florian@openwrt.org>
+=======
  * Copyright (C) 2008 Florian Fainelli <florian@openwrt.org>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -23,6 +27,9 @@
 #include <bcm63xx_regs.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef BCMCPU_RUNTIME_DETECT
 #define gpio_out_low_reg	GPIO_DATA_LO_REG
 #ifdef CONFIG_BCM63XX_CPU_6345
@@ -51,8 +58,11 @@ static void bcm63xx_gpio_out_low_reg_init(void)
 }
 #endif /* ! BCMCPU_RUNTIME_DETECT */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_SPINLOCK(bcm63xx_gpio_lock);
 static u32 gpio_out_low, gpio_out_high;
 
@@ -71,8 +81,12 @@ static void bcm63xx_gpio_set(struct gpio_chip *chip,
 <<<<<<< HEAD
 		reg = gpio_out_low_reg;
 =======
+<<<<<<< HEAD
+		reg = gpio_out_low_reg;
+=======
 		reg = GPIO_DATA_LO_REG;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask = 1 << gpio;
 		v = &gpio_out_low;
 	} else {
@@ -102,8 +116,12 @@ static int bcm63xx_gpio_get(struct gpio_chip *chip, unsigned gpio)
 <<<<<<< HEAD
 		reg = gpio_out_low_reg;
 =======
+<<<<<<< HEAD
+		reg = gpio_out_low_reg;
+=======
 		reg = GPIO_DATA_LO_REG;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask = 1 << gpio;
 	} else {
 		reg = GPIO_DATA_HI_REG;
@@ -169,15 +187,21 @@ static struct gpio_chip bcm63xx_gpio_chip = {
 int __init bcm63xx_gpio_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bcm63xx_gpio_out_low_reg_init();
 
 	gpio_out_low = bcm_gpio_readl(gpio_out_low_reg);
 	if (!BCMCPU_IS_6345())
 		gpio_out_high = bcm_gpio_readl(GPIO_DATA_HI_REG);
+<<<<<<< HEAD
+=======
 =======
 	gpio_out_low = bcm_gpio_readl(GPIO_DATA_LO_REG);
 	gpio_out_high = bcm_gpio_readl(GPIO_DATA_HI_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bcm63xx_gpio_chip.ngpio = bcm63xx_gpio_count();
 	pr_info("registering %d GPIOs\n", bcm63xx_gpio_chip.ngpio);
 

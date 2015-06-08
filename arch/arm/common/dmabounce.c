@@ -83,7 +83,12 @@ struct dmabounce_device_info {
 
 	int (*needs_bounce)(struct device *, dma_addr_t, size_t);
 =======
+<<<<<<< HEAD
+
+	int (*needs_bounce)(struct device *, dma_addr_t, size_t);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef STATS
@@ -180,8 +185,13 @@ find_safe_buffer(struct dmabounce_device_info *device_info, dma_addr_t safe_dma_
 		if (b->safe_dma_addr <= safe_dma_addr &&
 		    b->safe_dma_addr + b->size > safe_dma_addr) {
 =======
+<<<<<<< HEAD
+		if (b->safe_dma_addr <= safe_dma_addr &&
+		    b->safe_dma_addr + b->size > safe_dma_addr) {
+=======
 		if (b->safe_dma_addr == safe_dma_addr) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rb = b;
 			break;
 		}
@@ -223,17 +233,24 @@ static struct safe_buffer *find_safe_buffer_dev(struct device *dev,
 <<<<<<< HEAD
 		dev_err(dev, "Trying to %s invalid mapping\n", where);
 =======
+<<<<<<< HEAD
+		dev_err(dev, "Trying to %s invalid mapping\n", where);
+=======
 		if (dev)
 			dev_err(dev, "Trying to %s invalid mapping\n", where);
 		else
 			pr_err("unknown device: Trying to %s invalid mapping\n", where);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 	return find_safe_buffer(dev->archdata.dmabounce, dma_addr);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int needs_bounce(struct device *dev, dma_addr_t dma_addr, size_t size)
 {
 	if (!dev || !dev->archdata.dmabounce)
@@ -241,6 +258,8 @@ static int needs_bounce(struct device *dev, dma_addr_t dma_addr, size_t size)
 
 	if (dev->dma_mask) {
 		unsigned long limit, mask = *dev->dma_mask;
+<<<<<<< HEAD
+=======
 =======
 static inline dma_addr_t map_single(struct device *dev, void *ptr, size_t size,
 		enum dma_data_direction dir)
@@ -258,12 +277,16 @@ static inline dma_addr_t map_single(struct device *dev, void *ptr, size_t size,
 		unsigned long mask = *dev->dma_mask;
 		unsigned long limit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		limit = (mask + 1) & ~mask;
 		if (limit && size > limit) {
 			dev_err(dev, "DMA mapping too big (requested %#x "
 				"mask %#Lx)\n", size, *dev->dma_mask);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -E2BIG;
 		}
 
@@ -331,6 +354,8 @@ static inline void unmap_single(struct device *dev, struct safe_buffer *buf,
 		__cpuc_flush_dcache_area(ptr, size);
 	}
 	free_safe_buffer(dev->archdata.dmabounce, buf);
+<<<<<<< HEAD
+=======
 =======
 			return ~0;
 		}
@@ -412,6 +437,7 @@ static inline void unmap_single(struct device *dev, dma_addr_t dma_addr,
 		__dma_single_dev_to_cpu(dma_to_virt(dev, dma_addr), size, dir);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* ************************************************** */
@@ -423,6 +449,9 @@ static inline void unmap_single(struct device *dev, dma_addr_t dma_addr,
  * (basically move the buffer from an unsafe area to a safe one)
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static dma_addr_t dmabounce_map_page(struct device *dev, struct page *page,
 		unsigned long offset, size_t size, enum dma_data_direction dir,
 		struct dma_attrs *attrs)
@@ -447,6 +476,8 @@ static dma_addr_t dmabounce_map_page(struct device *dev, struct page *page,
 	if (PageHighMem(page)) {
 		dev_err(dev, "DMA buffer bouncing of HIGHMEM pages is not supported\n");
 		return DMA_ERROR_CODE;
+<<<<<<< HEAD
+=======
 =======
 dma_addr_t __dma_map_single(struct device *dev, void *ptr, size_t size,
 		enum dma_data_direction dir)
@@ -489,14 +520,18 @@ dma_addr_t __dma_map_page(struct device *dev, struct page *page,
 			     "is not supported\n");
 		return ~0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return map_single(dev, page_address(page) + offset, size, dir);
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(__dma_map_page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * see if a mapped address was really a "safe" buffer and if so, copy
@@ -505,6 +540,9 @@ EXPORT_SYMBOL(__dma_map_page);
  * should be)
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void dmabounce_unmap_page(struct device *dev, dma_addr_t dma_addr, size_t size,
 		enum dma_data_direction dir, struct dma_attrs *attrs)
 {
@@ -527,6 +565,8 @@ static int __dmabounce_sync_for_cpu(struct device *dev, dma_addr_t addr,
 {
 	struct safe_buffer *buf;
 	unsigned long off;
+<<<<<<< HEAD
+=======
 =======
 void __dma_unmap_page(struct device *dev, dma_addr_t dma_addr, size_t size,
 		enum dma_data_direction dir)
@@ -543,6 +583,7 @@ int dmabounce_sync_for_cpu(struct device *dev, dma_addr_t addr,
 {
 	struct safe_buffer *buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(dev, "%s(dma=%#x,off=%#lx,sz=%zx,dir=%x)\n",
 		__func__, addr, off, sz, dir);
@@ -555,7 +596,12 @@ int dmabounce_sync_for_cpu(struct device *dev, dma_addr_t addr,
 	off = addr - buf->safe_dma_addr;
 
 =======
+<<<<<<< HEAD
+	off = addr - buf->safe_dma_addr;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(buf->direction != dir);
 
 	dev_dbg(dev, "%s: unsafe buffer %p (dma=%#x) mapped to %p (dma=%#x)\n",
@@ -572,6 +618,9 @@ int dmabounce_sync_for_cpu(struct device *dev, dma_addr_t addr,
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void dmabounce_sync_for_cpu(struct device *dev,
 		dma_addr_t handle, size_t size, enum dma_data_direction dir)
@@ -587,6 +636,8 @@ static int __dmabounce_sync_for_device(struct device *dev, dma_addr_t addr,
 {
 	struct safe_buffer *buf;
 	unsigned long off;
+<<<<<<< HEAD
+=======
 =======
 EXPORT_SYMBOL(dmabounce_sync_for_cpu);
 
@@ -595,6 +646,7 @@ int dmabounce_sync_for_device(struct device *dev, dma_addr_t addr,
 {
 	struct safe_buffer *buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(dev, "%s(dma=%#x,off=%#lx,sz=%zx,dir=%x)\n",
 		__func__, addr, off, sz, dir);
@@ -607,7 +659,12 @@ int dmabounce_sync_for_device(struct device *dev, dma_addr_t addr,
 	off = addr - buf->safe_dma_addr;
 
 =======
+<<<<<<< HEAD
+	off = addr - buf->safe_dma_addr;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(buf->direction != dir);
 
 	dev_dbg(dev, "%s: unsafe buffer %p (dma=%#x) mapped to %p (dma=%#x)\n",
@@ -624,6 +681,9 @@ int dmabounce_sync_for_device(struct device *dev, dma_addr_t addr,
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void dmabounce_sync_for_device(struct device *dev,
 		dma_addr_t handle, size_t size, enum dma_data_direction dir)
@@ -656,9 +716,12 @@ static struct dma_map_ops dmabounce_ops = {
 	.sync_sg_for_device	= arm_dma_sync_sg_for_device,
 	.set_dma_mask		= dmabounce_set_mask,
 };
+<<<<<<< HEAD
+=======
 =======
 EXPORT_SYMBOL(dmabounce_sync_for_device);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int dmabounce_init_pool(struct dmabounce_pool *pool, struct device *dev,
 		const char *name, unsigned long size)
@@ -677,8 +740,13 @@ int dmabounce_register_dev(struct device *dev, unsigned long small_buffer_size,
 		unsigned long large_buffer_size,
 		int (*needs_bounce_fn)(struct device *, dma_addr_t, size_t))
 =======
+<<<<<<< HEAD
+		unsigned long large_buffer_size,
+		int (*needs_bounce_fn)(struct device *, dma_addr_t, size_t))
+=======
 		unsigned long large_buffer_size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dmabounce_device_info *device_info;
 	int ret;
@@ -717,7 +785,11 @@ int dmabounce_register_dev(struct device *dev, unsigned long small_buffer_size,
 <<<<<<< HEAD
 	device_info->needs_bounce = needs_bounce_fn;
 =======
+<<<<<<< HEAD
+	device_info->needs_bounce = needs_bounce_fn;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef STATS
 	device_info->total_allocs = 0;
@@ -730,7 +802,11 @@ int dmabounce_register_dev(struct device *dev, unsigned long small_buffer_size,
 <<<<<<< HEAD
 	set_dma_ops(dev, &dmabounce_ops);
 =======
+<<<<<<< HEAD
+	set_dma_ops(dev, &dmabounce_ops);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_info(dev, "dmabounce: registered device\n");
 
@@ -752,7 +828,11 @@ void dmabounce_unregister_dev(struct device *dev)
 <<<<<<< HEAD
 	set_dma_ops(dev, NULL);
 =======
+<<<<<<< HEAD
+	set_dma_ops(dev, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!device_info) {
 		dev_warn(dev,

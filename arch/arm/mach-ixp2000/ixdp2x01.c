@@ -36,8 +36,11 @@
 #include <asm/page.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 
@@ -259,8 +262,13 @@ void __init ixdp2x01_pci_preinit(void)
 static int __init ixdp2x01_pci_map_irq(const struct pci_dev *dev, u8 slot,
 	u8 pin)
 =======
+<<<<<<< HEAD
+static int __init ixdp2x01_pci_map_irq(const struct pci_dev *dev, u8 slot,
+	u8 pin)
+=======
 static int __init ixdp2x01_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 bus = dev->bus->number;
 	u32 devpin = DEVPIN(PCI_SLOT(dev->devfn), pin);
@@ -421,6 +429,9 @@ static void __init ixdp2x01_init_machine(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ixdp2401_restart(char mode, const char *cmd)
 {
 	/*
@@ -450,8 +461,11 @@ static void ixdp280x_restart(char mode, const char *cmd)
 
 	ixp2000_restart(mode, cmd);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_ARCH_IXDP2401
 MACHINE_START(IXDP2401, "Intel IXDP2401 Development Platform")
@@ -459,8 +473,12 @@ MACHINE_START(IXDP2401, "Intel IXDP2401 Development Platform")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= ixdp2x01_map_io,
 	.init_irq	= ixdp2x01_init_irq,
 	.timer		= &ixdp2x01_timer,
@@ -468,7 +486,11 @@ MACHINE_START(IXDP2401, "Intel IXDP2401 Development Platform")
 <<<<<<< HEAD
 	.restart	= ixdp2401_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ixdp2401_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -478,8 +500,12 @@ MACHINE_START(IXDP2801, "Intel IXDP2801 Development Platform")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= ixdp2x01_map_io,
 	.init_irq	= ixdp2x01_init_irq,
 	.timer		= &ixdp2x01_timer,
@@ -487,7 +513,11 @@ MACHINE_START(IXDP2801, "Intel IXDP2801 Development Platform")
 <<<<<<< HEAD
 	.restart	= ixdp280x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ixdp280x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 
 /*
@@ -499,8 +529,12 @@ MACHINE_START(IXDP28X5, "Intel IXDP2805/2855 Development Platform")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= ixdp2x01_map_io,
 	.init_irq	= ixdp2x01_init_irq,
 	.timer		= &ixdp2x01_timer,
@@ -508,7 +542,11 @@ MACHINE_START(IXDP28X5, "Intel IXDP2805/2855 Development Platform")
 <<<<<<< HEAD
 	.restart	= ixdp280x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ixdp280x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 

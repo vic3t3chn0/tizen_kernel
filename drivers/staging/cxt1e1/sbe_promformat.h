@@ -1,7 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * $Id: sbe_promformat.h,v 2.2 2005/09/28 00:10:09 rickd PMCC4_3_1B $
  */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _INC_SBE_PROMFORMAT_H_
 #define _INC_SBE_PROMFORMAT_H_
 
@@ -24,6 +33,11 @@
  * SBE, Inc.  San Ramon, California  U.S.A.
  *
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * RCS info:
  * RCS revision: $Revision: 2.2 $
  * Last changed on $Date: 2005/09/28 00:10:09 $
@@ -37,6 +51,10 @@
  * Initial CI.
  *
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 
@@ -85,12 +103,21 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __cplusplus
 extern      "C"
 {
 #endif
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define STRUCT_OFFSET(type, symbol)  ((long)&(((type *)0)->symbol))
 
 /*------------------------------------------------------------------------
@@ -150,8 +177,17 @@ extern      "C"
         FLD_TYPE2   fldType2;
     }           PROMFORMAT;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __cplusplus
 }
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif                          /*** _INC_SBE_PROMFORMAT_H_ ***/

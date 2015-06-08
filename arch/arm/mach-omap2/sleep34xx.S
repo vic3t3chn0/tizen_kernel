@@ -24,6 +24,9 @@
  */
 #include <linux/linkage.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/assembler.h>
 
@@ -31,12 +34,15 @@
 #include <plat/sram.h>
 
 #include "iomap.h"
+<<<<<<< HEAD
+=======
 =======
 #include <asm/assembler.h>
 #include <plat/sram.h>
 #include <mach/io.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cm2xxx_3xxx.h"
 #include "prm2xxx_3xxx.h"
 #include "sdrc.h"
@@ -86,6 +92,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * The "get_*restore_pointer" functions are used to provide a
  * physical restore address where the ROM code jumps while waking
@@ -127,6 +135,7 @@ ENTRY(get_es3_restore_pointer_sz)
 	.word	. - get_es3_restore_pointer
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.text
 /*
  * L2 cache needs to be toggled for stable OFF mode functionality on 3630.
@@ -149,8 +158,12 @@ ENTRY(save_secure_ram_context)
 <<<<<<< HEAD
 	stmfd	sp!, {r4 - r11, lr}	@ save registers on stack
 =======
+<<<<<<< HEAD
+	stmfd	sp!, {r4 - r11, lr}	@ save registers on stack
+=======
 	stmfd	sp!, {r1-r12, lr}	@ save registers on stack
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	adr	r3, api_params		@ r3 points to parameters
 	str	r0, [r3,#0x4]		@ r0 has sdram address
 	ldr	r12, high_mask
@@ -172,8 +185,12 @@ ENTRY(save_secure_ram_context)
 <<<<<<< HEAD
 	ldmfd	sp!, {r4 - r11, pc}
 =======
+<<<<<<< HEAD
+	ldmfd	sp!, {r4 - r11, pc}
+=======
 	ldmfd	sp!, {r1-r12, pc}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.align
 sram_phy_addr_mask:
 	.word	SRAM_BASE_P
@@ -201,14 +218,20 @@ ENTRY(save_secure_ram_context_sz)
  *
  * Notes:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * - only the minimum set of functions gets copied to internal SRAM at boot
  *   and after wake-up from OFF mode, cf. omap_push_sram_idle. The function
  *   pointers in SDRAM or SRAM are called depending on the desired low power
  *   target state.
+<<<<<<< HEAD
+=======
 =======
  * - this code gets copied to internal SRAM at boot and after wake-up
  *   from OFF mode. The execution pointer in SRAM is _omap_sram_idle.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * - when the OMAP wakes up it continues at different execution points
  *   depending on the low power mode (non-OFF vs OFF modes),
  *   cf. 'Resume path for xxx mode' comments.
@@ -216,10 +239,15 @@ ENTRY(save_secure_ram_context_sz)
 	.align	3
 ENTRY(omap34xx_cpu_suspend)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stmfd	sp!, {r4 - r11, lr}	@ save registers on stack
 
 	/*
 	 * r0 contains information about saving context:
+<<<<<<< HEAD
+=======
 =======
 	stmfd	sp!, {r0-r12, lr}	@ save registers on stack
 
@@ -227,6 +255,7 @@ ENTRY(omap34xx_cpu_suspend)
 	 * r0 contains CPU context save/restore pointer in sdram
 	 * r1 contains information about saving context:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *   0 - No context lost
 	 *   1 - Only L1 and logic lost
 	 *   2 - Only L2 lost (Even L1 is retained we clean it along with L2)
@@ -234,6 +263,9 @@ ENTRY(omap34xx_cpu_suspend)
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * For OFF mode: save context and jump to WFI in SDRAM (omap3_do_wfi)
 	 * For non-OFF modes: jump to the WFI code in SRAM (omap3_do_wfi_sram)
@@ -246,6 +278,8 @@ ENTRY(omap34xx_cpu_suspend)
 
 	/* Otherwise fall through to the save context code */
 save_context_wfi:
+<<<<<<< HEAD
+=======
 =======
 	/* Directly jump to WFI is the context save is not required */
 	cmp	r1, #0x0
@@ -292,6 +326,7 @@ l1_logic_lost:
 
 clean_caches:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * jump out to kernel flush routine
 	 *  - reuse that code is better
@@ -335,6 +370,9 @@ clean_caches:
 	.arm
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	omap3_do_wfi
 
 /*
@@ -361,9 +399,12 @@ kernel_flush:
  */
 	.align	3
 ENTRY(omap3_do_wfi)
+<<<<<<< HEAD
+=======
 =======
 omap3_do_wfi:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r4, sdrc_power		@ read the SDRC_POWER register
 	ldr	r5, [r4]		@ read the contents of SDRC_POWER
 	orr	r5, r5, #0x40		@ enable self refresh on idle req
@@ -396,6 +437,9 @@ omap3_do_wfi:
 	nop
 	nop
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * This function implements the erratum ID i581 WA:
@@ -476,10 +520,13 @@ kick_dll:
 
 exit_nonoff_modes:
 	/* Re-enable C-bit if needed */
+<<<<<<< HEAD
+=======
 =======
 	bl wait_sdrc_ok
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mrc	p15, 0, r0, c1, c0, 0
 	tst	r0, #(1 << 2)		@ Check C bit enabled?
 	orreq	r0, r0, #(1 << 2)	@ Enable the C bit if cleared
@@ -492,6 +539,9 @@ exit_nonoff_modes:
  * ===================================
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldmfd	sp!, {r4 - r11, pc}	@ restore regs and return
 
 /*
@@ -518,9 +568,12 @@ wait_dll_lock_counter:
 
 ENTRY(omap3_do_wfi_sz)
 	.word	. - omap3_do_wfi
+<<<<<<< HEAD
+=======
 =======
 	ldmfd	sp!, {r0-r12, pc}	@ restore regs and return
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -538,16 +591,22 @@ ENTRY(omap3_do_wfi_sz)
  *  restore_3630: applies to 36xx
  *  restore: common code for 3xxx
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note: when back from CORE and MPU OFF mode we are running
  *  from SDRAM, without MMU, without the caches and prediction.
  *  Also the SRAM content has been cleared.
  */
 ENTRY(omap3_restore_es3)
+<<<<<<< HEAD
+=======
 =======
  */
 restore_es3:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r5, pm_prepwstst_core_p
 	ldr	r4, [r5]
 	and	r4, r4, #0x3
@@ -555,8 +614,12 @@ restore_es3:
 <<<<<<< HEAD
 	bne	omap3_restore	@ Fall through to OMAP3 common code
 =======
+<<<<<<< HEAD
+	bne	omap3_restore	@ Fall through to OMAP3 common code
+=======
 	bne	restore
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	adr	r0, es3_sdrc_fix
 	ldr	r1, sram_base
 	ldr	r2, es3_sdrc_fix_sz
@@ -569,15 +632,21 @@ copy_to_sram:
 	ldr	r1, sram_base
 	blx	r1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	omap3_restore	@ Fall through to OMAP3 common code
 ENDPROC(omap3_restore_es3)
 
 ENTRY(omap3_restore_3630)
+<<<<<<< HEAD
+=======
 =======
 	b	restore
 
 restore_3630:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r1, pm_prepwstst_core_p
 	ldr	r2, [r1]
 	and	r2, r2, #0x3
@@ -585,13 +654,20 @@ restore_3630:
 <<<<<<< HEAD
 	bne	omap3_restore	@ Fall through to OMAP3 common code
 =======
+<<<<<<< HEAD
+	bne	omap3_restore	@ Fall through to OMAP3 common code
+=======
 	bne	restore
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Disable RTA before giving control */
 	ldr	r1, control_mem_rta
 	mov	r2, #OMAP36XX_RTA_DISABLE
 	str	r2, [r1]
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENDPROC(omap3_restore_3630)
 
 	/* Fall through to common code for the remaining logic */
@@ -600,6 +676,8 @@ ENTRY(omap3_restore)
 	/*
 	 * Read the pwstctrl register to check the reason for mpu reset.
 	 * This tells us what was lost.
+<<<<<<< HEAD
+=======
 =======
 
 	/* Fall through to common code for the remaining logic */
@@ -612,6 +690,7 @@ restore:
 	 *  2 - Only L2 lost - In this case, we wont be here
 	 *  3 - Both L1 and L2 lost
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	ldr	r1, pm_pwstctrl_mpu
 	ldr	r2, [r1]
@@ -619,9 +698,12 @@ restore:
 	cmp	r2, #0x0	@ Check if target power state was OFF or RET
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	moveq	r9, #0x3	@ MPU OFF => L1 and L2 lost
 	movne	r9, #0x1	@ Only L1 and L2 lost => avoid L2 invalidation
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bne	logic_l1_restore
 
 	ldr	r0, l2dis_3630
@@ -701,6 +783,9 @@ logic_l1_restore:
 	mcr	p15, 0, r1, c1, c0, 1
 skipl2reen:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Now branch to the common CPU resume function */
 	b	cpu_resume
@@ -725,6 +810,8 @@ control_mem_rta:
 	.word	CONTROL_MEM_RTA_CTRL
 l2dis_3630:
 	.word	0
+<<<<<<< HEAD
+=======
 =======
 	mov	r1, #0
 	/*
@@ -830,19 +917,26 @@ restoremmu_on:
 	ldmfd	sp!, {r0-r12, pc}	@ restore regs and return
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Internal functions
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This function implements the erratum ID i443 WA, applies to 34xx >= ES3.0
  * Copied to and run from SRAM in order to reconfigure the SDRC parameters.
  */
+<<<<<<< HEAD
+=======
 =======
 /* This function implements the erratum ID i443 WA, applies to 34xx >= ES3.0 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.text
 	.align	3
 ENTRY(es3_sdrc_fix)
@@ -877,7 +971,13 @@ ENTRY(es3_sdrc_fix)
  * Local variables
  */
 =======
+<<<<<<< HEAD
+/*
+ * Local variables
+ */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.align
 sdrc_syscfg:
 	.word	SDRC_SYSCONFIG_P
@@ -896,6 +996,8 @@ sdrc_manual_1:
 ENDPROC(es3_sdrc_fix)
 ENTRY(es3_sdrc_fix_sz)
 	.word	. - es3_sdrc_fix
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -1024,3 +1126,4 @@ ENDPROC(omap34xx_cpu_suspend)
 ENTRY(omap34xx_cpu_suspend_sz)
 	.word	. - omap34xx_cpu_suspend
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

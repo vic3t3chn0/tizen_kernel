@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2008-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2008-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2008-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Simon Wunderlich, Marek Lindner
  *
@@ -30,8 +34,13 @@
 #define VIS_TIMEOUT		200000	/* timeout of vis packets
 					 * in miliseconds */
 =======
+<<<<<<< HEAD
+#define VIS_TIMEOUT		200000	/* timeout of vis packets
+					 * in miliseconds */
+=======
 #define VIS_TIMEOUT		200	/* timeout of vis packets in seconds */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int vis_seq_print_text(struct seq_file *seq, void *offset);
 void receive_server_sync_packet(struct bat_priv *bat_priv,

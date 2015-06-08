@@ -25,10 +25,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.macro	disable_fiq
 	.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro	get_irqnr_and_base, irqnr, irqstat, base, tmp
 	ldr	\irqnr, [\base, #HW_ICOLL_STAT_OFFSET]
 	cmp	\irqnr, #0x7F
@@ -41,7 +44,10 @@
 	.endm
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	.macro  arch_ret_to_user, tmp1, tmp2
 	.endm
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

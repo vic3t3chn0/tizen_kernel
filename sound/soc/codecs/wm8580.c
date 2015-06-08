@@ -28,10 +28,16 @@
 #include <linux/slab.h>
 #include <linux/of_device.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/consumer.h>
+#include <linux/slab.h>
+#include <linux/of_device.h>
+=======
 #include <linux/platform_device.h>
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -221,8 +227,12 @@ static int wm8580_out_vu(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	ret = snd_soc_put_volsw(kcontrol, ucontrol);
 =======
+<<<<<<< HEAD
+	ret = snd_soc_put_volsw(kcontrol, ucontrol);
+=======
 	ret = snd_soc_put_volsw_2r(kcontrol, ucontrol);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		return ret;
 
@@ -234,6 +244,9 @@ static int wm8580_out_vu(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_kcontrol_new wm8580_snd_controls[] = {
 SOC_DOUBLE_R_EXT_TLV("DAC1 Playback Volume",
 		     WM8580_DIGITAL_ATTENUATION_DACL1,
@@ -247,6 +260,8 @@ SOC_DOUBLE_R_EXT_TLV("DAC3 Playback Volume",
 		     WM8580_DIGITAL_ATTENUATION_DACL3,
 		     WM8580_DIGITAL_ATTENUATION_DACR3,
 		     0, 0xff, 0, snd_soc_get_volsw, wm8580_out_vu, dac_tlv),
+<<<<<<< HEAD
+=======
 =======
 #define SOC_WM8580_OUT_DOUBLE_R_TLV(xname, reg_left, reg_right, xshift, xmax, \
 				    xinvert, tlv_array)			\
@@ -274,6 +289,7 @@ SOC_WM8580_OUT_DOUBLE_R_TLV("DAC3 Playback Volume",
 			    WM8580_DIGITAL_ATTENUATION_DACR3,
 			    0, 0xff, 0, dac_tlv),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SOC_SINGLE("DAC1 Deemphasis Switch", WM8580_DAC_CONTROL3, 0, 1, 0),
 SOC_SINGLE("DAC2 Deemphasis Switch", WM8580_DAC_CONTROL3, 1, 1, 0),
@@ -313,8 +329,12 @@ SND_SOC_DAPM_INPUT("AINR"),
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route wm8580_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route wm8580_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "VOUT1L", NULL, "DAC1" },
 	{ "VOUT1R", NULL, "DAC1" },
 
@@ -330,6 +350,8 @@ static const struct snd_soc_dapm_route audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int wm8580_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -342,6 +364,7 @@ static int wm8580_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLL divisors */
 struct _pll_div {
 	u32 prescale:1;
@@ -477,9 +500,13 @@ static int wm8580_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id,
 <<<<<<< HEAD
 	snd_soc_update_bits(codec, WM8580_PWRDN2, pwr_mask, pwr_mask);
 =======
+<<<<<<< HEAD
+	snd_soc_update_bits(codec, WM8580_PWRDN2, pwr_mask, pwr_mask);
+=======
 	reg = snd_soc_read(codec, WM8580_PWRDN2);
 	snd_soc_write(codec, WM8580_PWRDN2, reg | pwr_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!freq_in || !freq_out)
 		return 0;
@@ -500,9 +527,13 @@ static int wm8580_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id,
 <<<<<<< HEAD
 	snd_soc_update_bits(codec, WM8580_PWRDN2, pwr_mask, 0);
 =======
+<<<<<<< HEAD
+	snd_soc_update_bits(codec, WM8580_PWRDN2, pwr_mask, 0);
+=======
 	reg = snd_soc_read(codec, WM8580_PWRDN2);
 	snd_soc_write(codec, WM8580_PWRDN2, reg & ~pwr_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -739,8 +770,12 @@ static int wm8580_set_sysclk(struct snd_soc_dai *dai, int clk_id,
 <<<<<<< HEAD
 	int ret, sel, sel_mask, sel_shift;
 =======
+<<<<<<< HEAD
+	int ret, sel, sel_mask, sel_shift;
+=======
 	int sel, sel_mask, sel_shift;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (dai->driver->id) {
 	case WM8580_DAI_PAIFRX:
@@ -782,14 +817,20 @@ static int wm8580_set_sysclk(struct snd_soc_dai *dai, int clk_id,
 	wm8580->sysclk[dai->driver->id] = freq;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_update_bits(codec, WM8580_CLKSEL, sel_mask, sel);
 	if (ret < 0)
 		return ret;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return snd_soc_update_bits(codec, WM8580_CLKSEL, sel_mask, sel);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int wm8580_digital_mute(struct snd_soc_dai *codec_dai, int mute)
@@ -814,8 +855,11 @@ static int wm8580_set_bias_level(struct snd_soc_codec *codec,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u16 reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (level) {
 	case SND_SOC_BIAS_ON:
 	case SND_SOC_BIAS_PREPARE:
@@ -825,6 +869,9 @@ static int wm8580_set_bias_level(struct snd_soc_codec *codec,
 		if (codec->dapm.bias_level == SND_SOC_BIAS_OFF) {
 			/* Power up and get individual control of the DACs */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			snd_soc_update_bits(codec, WM8580_PWRDN1,
 					    WM8580_PWRDN1_PWDN |
 					    WM8580_PWRDN1_ALLDACPD, 0);
@@ -832,6 +879,8 @@ static int wm8580_set_bias_level(struct snd_soc_codec *codec,
 			/* Make VMID high impedance */
 			snd_soc_update_bits(codec, WM8580_ADC_CONTROL1,
 					    0x100, 0);
+<<<<<<< HEAD
+=======
 =======
 			reg = snd_soc_read(codec, WM8580_PWRDN1);
 			reg &= ~(WM8580_PWRDN1_PWDN | WM8580_PWRDN1_ALLDACPD);
@@ -842,6 +891,7 @@ static int wm8580_set_bias_level(struct snd_soc_codec *codec,
 			reg &= ~0x100;
 			snd_soc_write(codec, WM8580_ADC_CONTROL1, reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
@@ -850,9 +900,14 @@ static int wm8580_set_bias_level(struct snd_soc_codec *codec,
 		snd_soc_update_bits(codec, WM8580_PWRDN1,
 				    WM8580_PWRDN1_PWDN, WM8580_PWRDN1_PWDN);
 =======
+<<<<<<< HEAD
+		snd_soc_update_bits(codec, WM8580_PWRDN1,
+				    WM8580_PWRDN1_PWDN, WM8580_PWRDN1_PWDN);
+=======
 		reg = snd_soc_read(codec, WM8580_PWRDN1);
 		snd_soc_write(codec, WM8580_PWRDN1, reg | WM8580_PWRDN1_PWDN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	codec->dapm.bias_level = level;
@@ -865,8 +920,12 @@ static int wm8580_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8580_dai_ops_playback = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8580_dai_ops_playback = {
+=======
 static struct snd_soc_dai_ops wm8580_dai_ops_playback = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk	= wm8580_set_sysclk,
 	.hw_params	= wm8580_paif_hw_params,
 	.set_fmt	= wm8580_set_paif_dai_fmt,
@@ -878,8 +937,12 @@ static struct snd_soc_dai_ops wm8580_dai_ops_playback = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8580_dai_ops_capture = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8580_dai_ops_capture = {
+=======
 static struct snd_soc_dai_ops wm8580_dai_ops_capture = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk	= wm8580_set_sysclk,
 	.hw_params	= wm8580_paif_hw_params,
 	.set_fmt	= wm8580_set_paif_dai_fmt,
@@ -953,11 +1016,14 @@ static int wm8580_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_add_controls(codec, wm8580_snd_controls,
 			     ARRAY_SIZE(wm8580_snd_controls));
 	wm8580_add_widgets(codec);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_regulator_enable:
@@ -988,6 +1054,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8580 = {
 	.reg_word_size = sizeof(u16),
 	.reg_cache_default = wm8580_reg,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = wm8580_snd_controls,
 	.num_controls = ARRAY_SIZE(wm8580_snd_controls),
@@ -1000,8 +1069,11 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8580 = {
 static const struct of_device_id wm8580_of_match[] = {
 	{ .compatible = "wlf,wm8580" },
 	{ },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
@@ -1045,9 +1117,15 @@ static struct i2c_driver wm8580_i2c_driver = {
 		.owner = THIS_MODULE,
 		.of_match_table = wm8580_of_match,
 =======
+<<<<<<< HEAD
+		.name = "wm8580",
+		.owner = THIS_MODULE,
+		.of_match_table = wm8580_of_match,
+=======
 		.name = "wm8580-codec",
 		.owner = THIS_MODULE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe =    wm8580_i2c_probe,
 	.remove =   wm8580_i2c_remove,

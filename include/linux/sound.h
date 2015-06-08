@@ -2,7 +2,12 @@
 #ifndef _LINUX_SOUND_H
 #define _LINUX_SOUND_H
 =======
+<<<<<<< HEAD
+#ifndef _LINUX_SOUND_H
+#define _LINUX_SOUND_H
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Minor numbers for the sound driver.
@@ -51,4 +56,9 @@ extern void unregister_sound_dsp(int unit);
 
 #endif /* _LINUX_SOUND_H */
 =======
+<<<<<<< HEAD
+
+#endif /* _LINUX_SOUND_H */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

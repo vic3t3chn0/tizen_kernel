@@ -22,17 +22,39 @@
 
 #include <asm/io.h>
 #include <asm/uaccess.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/page.h>
+#include <asm/pgtable.h>
+#include <asm/gio_device.h>
+
+=======
 #include <asm/system.h>
 #include <asm/page.h>
 #include <asm/pgtable.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+#include <asm/page.h>
+#include <asm/pgtable.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <video/newport.h>
 
 #include <linux/linux_logo.h>
 #include <linux/font.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 extern unsigned long sgi_gfxaddr;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+extern unsigned long sgi_gfxaddr;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FONT_DATA ((unsigned char *)font_vga_8x16.data)
 
 /* borrowed from fbcon.c */
@@ -304,12 +326,21 @@ static const char *newport_startup(void)
 {
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sgi_gfxaddr)
 		return NULL;
 
 	if (!npregs)
 		npregs = (struct newport_regs *)/* ioremap cannot fail */
 			ioremap(sgi_gfxaddr, sizeof(struct newport_regs));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	npregs->cset.config = NPORT_CFG_GD0;
 
 	if (newport_wait(npregs))
@@ -743,6 +774,33 @@ const struct consw newport_con = {
 	.con_save_screen  = DUMMY
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int newport_probe(struct gio_device *dev,
+			 const struct gio_device_id *id)
+{
+	unsigned long newport_addr;
+
+	if (!dev->resource.start)
+		return -EINVAL;
+
+	if (npregs)
+		return -EBUSY; /* we only support one Newport as console */
+
+	newport_addr = dev->resource.start + 0xF0000;
+	if (!request_mem_region(newport_addr, 0x10000, "Newport"))
+		return -ENODEV;
+
+	npregs = (struct newport_regs *)/* ioremap cannot fail */
+		ioremap(newport_addr, sizeof(struct newport_regs));
+
+	return take_over_console(&newport_con, 0, MAX_NR_CONSOLES - 1, 1);
+}
+
+static void newport_remove(struct gio_device *dev)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef MODULE
 static int __init newport_console_init(void)
 {
@@ -758,11 +816,50 @@ static int __init newport_console_init(void)
 module_init(newport_console_init);
 
 static void __exit newport_console_exit(void)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	give_up_console(&newport_con);
 	iounmap((void *)npregs);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+static struct gio_device_id newport_ids[] = {
+	{ .id = 0x7e },
+	{ .id = 0xff }
+};
+
+MODULE_ALIAS("gio:7e");
+
+static struct gio_driver newport_driver = {
+	.name = "newport",
+	.id_table = newport_ids,
+	.probe = newport_probe,
+	.remove = newport_remove,
+};
+
+int __init newport_console_init(void)
+{
+	return gio_register_driver(&newport_driver);
+}
+
+void __exit newport_console_exit(void)
+{
+	gio_unregister_driver(&newport_driver);
+}
+
+module_init(newport_console_init);
+module_exit(newport_console_exit);
+=======
 module_exit(newport_console_exit);
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+module_exit(newport_console_exit);
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");

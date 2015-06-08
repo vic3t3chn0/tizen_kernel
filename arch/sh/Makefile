@@ -83,7 +83,11 @@ defaultimage-$(CONFIG_SH_AP325RXA)		:= uImage
 <<<<<<< HEAD
 defaultimage-$(CONFIG_SH_SH7757LCR)		:= uImage
 =======
+<<<<<<< HEAD
+defaultimage-$(CONFIG_SH_SH7757LCR)		:= uImage
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 defaultimage-$(CONFIG_SH_7724_SOLUTION_ENGINE)	:= uImage
 defaultimage-$(CONFIG_SH_7206_SOLUTION_ENGINE)	:= vmlinux
 defaultimage-$(CONFIG_SH_7619_SOLUTION_ENGINE)	:= vmlinux
@@ -180,7 +184,11 @@ cpuincdir-$(CONFIG_CPU_SH3)	+= cpu-sh3
 <<<<<<< HEAD
 cpuincdir-$(CONFIG_CPU_SH4A)	+= cpu-sh4a
 =======
+<<<<<<< HEAD
+cpuincdir-$(CONFIG_CPU_SH4A)	+= cpu-sh4a
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 cpuincdir-$(CONFIG_CPU_SH4)	+= cpu-sh4
 cpuincdir-$(CONFIG_CPU_SH5)	+= cpu-sh5
 cpuincdir-y			+= cpu-common	# Must be last

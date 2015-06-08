@@ -15,6 +15,14 @@
  * bootloader doesn't write to this register.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/errno.h>
 #include <linux/fs.h>
 #include <linux/init.h>
@@ -31,10 +39,28 @@
 #include <linux/bitops.h>
 #include <linux/uaccess.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "at91sam9_wdt.h"
+
+#define DRV_NAME "AT91SAM9 Watchdog"
+
+#define wdt_read(field) \
+	__raw_readl(at91wdt_private.base + field)
+#define wdt_write(field, val) \
+	__raw_writel((val), at91wdt_private.base + field)
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/at91_wdt.h>
 
 #define DRV_NAME "AT91SAM9 Watchdog"
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* AT91SAM9 watchdog runs a 12bit counter @ 256Hz,
  * use this to convert a watchdog
  * value from/to milliseconds.
@@ -55,14 +81,31 @@ module_param(heartbeat, int, 0);
 MODULE_PARM_DESC(heartbeat, "Watchdog heartbeats in seconds. "
 	"(default = " __MODULE_STRING(WDT_HEARTBEAT) ")");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, bool, 0);
+=======
 static int nowayout = WATCHDOG_NOWAYOUT;
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started "
 	"(default=" __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
 
 static void at91_ping(unsigned long data);
 
 static struct {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	void __iomem *base;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long next_heartbeat;	/* the next_heartbeat for the timer */
 	unsigned long open;
 	char expect_close;
@@ -77,7 +120,15 @@ static struct {
  */
 static inline void at91_wdt_reset(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	wdt_write(AT91_WDT_CR, AT91_WDT_KEY | AT91_WDT_WDRSTT);
+=======
 	at91_sys_write(AT91_WDT_CR, AT91_WDT_KEY | AT91_WDT_WDRSTT);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	at91_sys_write(AT91_WDT_CR, AT91_WDT_KEY | AT91_WDT_WDRSTT);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -90,7 +141,15 @@ static void at91_ping(unsigned long data)
 		at91_wdt_reset();
 		mod_timer(&at91wdt_private.timer, jiffies + WDT_TIMEOUT);
 	} else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_crit("I will reset your machine !\n");
+=======
 		printk(KERN_CRIT DRV_NAME": I will reset your machine !\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_CRIT DRV_NAME": I will reset your machine !\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -132,9 +191,21 @@ static int at91_wdt_settimeout(unsigned int timeout)
 	unsigned int mr;
 
 	/* Check if disabled */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mr = wdt_read(AT91_WDT_MR);
+	if (mr & AT91_WDT_WDDIS) {
+		pr_err("sorry, watchdog is disabled\n");
+=======
 	mr = at91_sys_read(AT91_WDT_MR);
 	if (mr & AT91_WDT_WDDIS) {
 		printk(KERN_ERR DRV_NAME": sorry, watchdog is disabled\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mr = at91_sys_read(AT91_WDT_MR);
+	if (mr & AT91_WDT_WDDIS) {
+		printk(KERN_ERR DRV_NAME": sorry, watchdog is disabled\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -149,7 +220,15 @@ static int at91_wdt_settimeout(unsigned int timeout)
 		| AT91_WDT_WDDBGHLT	/* disabled in debug mode */
 		| AT91_WDT_WDD		/* restart at any time */
 		| (timeout & AT91_WDT_WDV);  /* timer value */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	wdt_write(AT91_WDT_MR, reg);
+=======
 	at91_sys_write(AT91_WDT_MR, reg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	at91_sys_write(AT91_WDT_MR, reg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -248,12 +327,34 @@ static struct miscdevice at91wdt_miscdev = {
 
 static int __init at91wdt_probe(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct resource	*r;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int res;
 
 	if (at91wdt_miscdev.parent)
 		return -EBUSY;
 	at91wdt_miscdev.parent = &pdev->dev;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+	if (!r)
+		return -ENODEV;
+	at91wdt_private.base = ioremap(r->start, resource_size(r));
+	if (!at91wdt_private.base) {
+		dev_err(&pdev->dev, "failed to map registers, aborting.\n");
+		return -ENOMEM;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set watchdog */
 	res = at91_wdt_settimeout(ms_to_ticks(WDT_HW_TIMEOUT * 1000));
 	if (res)
@@ -267,7 +368,15 @@ static int __init at91wdt_probe(struct platform_device *pdev)
 	setup_timer(&at91wdt_private.timer, at91_ping, 0);
 	mod_timer(&at91wdt_private.timer, jiffies + WDT_TIMEOUT);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("enabled (heartbeat=%d sec, nowayout=%d)\n",
+=======
 	printk(KERN_INFO DRV_NAME " enabled (heartbeat=%d sec, nowayout=%d)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO DRV_NAME " enabled (heartbeat=%d sec, nowayout=%d)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		heartbeat, nowayout);
 
 	return 0;
@@ -284,6 +393,13 @@ static int __exit at91wdt_remove(struct platform_device *pdev)
 	return res;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct platform_driver at91wdt_driver = {
+	.remove		= __exit_p(at91wdt_remove),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 
 static int at91wdt_suspend(struct platform_device *pdev, pm_message_t message)
@@ -305,6 +421,10 @@ static struct platform_driver at91wdt_driver = {
 	.remove		= __exit_p(at91wdt_remove),
 	.suspend	= at91wdt_suspend,
 	.resume		= at91wdt_resume,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver		= {
 		.name	= "at91_wdt",
 		.owner	= THIS_MODULE,

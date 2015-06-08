@@ -20,25 +20,34 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/memory.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/serial.h>
 
 #define UART_SHIFT	2
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define davinci_uart_v2p(x)	((x) - PAGE_OFFSET + PLAT_PHYS_OFFSET)
 #define davinci_uart_p2v(x)	((x) - PLAT_PHYS_OFFSET + PAGE_OFFSET)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pushsection .data
 davinci_uart_phys:	.word	0
 davinci_uart_virt:	.word	0
 		.popsection
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.macro addruart, rp, rv, tmp
 
 		/* Use davinci_uart_phys/virt if already configured */
@@ -74,6 +83,8 @@ davinci_uart_virt:	.word	0
 		.ltorg
 
 100:
+<<<<<<< HEAD
+=======
 =======
 		.macro addruart, rp, rv
 
@@ -112,6 +123,7 @@ davinci_uart_virt:	.word	0
 		b	10b
 99:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.endm
 
 		.macro	senduart,rd,rx

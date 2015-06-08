@@ -20,8 +20,11 @@
 #include <linux/gfs2_ondisk.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/ext2_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/falloc.h>
 #include <linux/swap.h>
 #include <linux/crc32.h>
@@ -63,6 +66,9 @@ static loff_t gfs2_llseek(struct file *file, loff_t offset, int origin)
 	loff_t error;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (origin) {
 	case SEEK_END: /* These reference inode->i_size */
 	case SEEK_DATA:
@@ -81,6 +87,8 @@ static loff_t gfs2_llseek(struct file *file, loff_t offset, int origin)
 	default:
 		error = -EINVAL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (origin == 2) {
 		error = gfs2_glock_nq_init(ip->i_gl, LM_ST_SHARED, LM_FLAG_ANY,
@@ -92,6 +100,7 @@ static loff_t gfs2_llseek(struct file *file, loff_t offset, int origin)
 	} else
 		error = generic_file_llseek_unlocked(file, offset, origin);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return error;
 }
@@ -123,8 +132,12 @@ static int gfs2_readdir(struct file *file, void *dirent, filldir_t filldir)
 <<<<<<< HEAD
 	error = gfs2_dir_read(dir, &offset, dirent, filldir, &file->f_ra);
 =======
+<<<<<<< HEAD
+	error = gfs2_dir_read(dir, &offset, dirent, filldir, &file->f_ra);
+=======
 	error = gfs2_dir_read(dir, &offset, dirent, filldir);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	gfs2_glock_dq_uninit(&d_gh);
 
@@ -207,8 +220,14 @@ void gfs2_set_inode_flags(struct inode *inode)
 	if ((ip->i_eattr == 0) && !is_sxid(inode->i_mode))
 		inode->i_flags |= S_NOSEC;
 =======
+<<<<<<< HEAD
+	flags &= ~(S_SYNC|S_APPEND|S_IMMUTABLE|S_NOATIME|S_DIRSYNC|S_NOSEC);
+	if ((ip->i_eattr == 0) && !is_sxid(inode->i_mode))
+		inode->i_flags |= S_NOSEC;
+=======
 	flags &= ~(S_SYNC|S_APPEND|S_IMMUTABLE|S_NOATIME|S_DIRSYNC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ip->i_diskflags & GFS2_DIF_IMMUTABLE)
 		flags |= S_IMMUTABLE;
 	if (ip->i_diskflags & GFS2_DIF_APPENDONLY)
@@ -249,8 +268,12 @@ static int do_gfs2_set_flags(struct file *filp, u32 reqflags, u32 mask)
 <<<<<<< HEAD
 	error = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+	error = mnt_want_write_file(filp);
+=======
 	error = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 
@@ -284,8 +307,12 @@ static int do_gfs2_set_flags(struct file *filp, u32 reqflags, u32 mask)
 <<<<<<< HEAD
 		error = gfs2_permission(inode, MAY_WRITE);
 =======
+<<<<<<< HEAD
+		error = gfs2_permission(inode, MAY_WRITE);
+=======
 		error = gfs2_permission(inode, MAY_WRITE, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out;
 	}
@@ -319,8 +346,12 @@ out_drop_write:
 <<<<<<< HEAD
 	mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(filp);
+=======
 	mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -352,7 +383,12 @@ static long gfs2_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 	case FITRIM:
 		return gfs2_fitrim(filp, (void __user *)arg);
 =======
+<<<<<<< HEAD
+	case FITRIM:
+		return gfs2_fitrim(filp, (void __user *)arg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return -ENOTTY;
 }
@@ -406,6 +442,9 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 	unsigned int data_blocks, ind_blocks, rblocks;
 	struct gfs2_holder gh;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gfs2_qadata *qa;
 	loff_t size;
 	int ret;
@@ -416,11 +455,14 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 	 */
 	vfs_check_frozen(inode->i_sb, SB_FREEZE_WRITE);
 
+<<<<<<< HEAD
+=======
 =======
 	struct gfs2_alloc *al;
 	int ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_holder_init(ip->i_gl, LM_ST_EXCLUSIVE, 0, &gh);
 	ret = gfs2_glock_nq(&gh);
 	if (ret)
@@ -430,6 +472,9 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 	set_bit(GIF_SW_PAGED, &ip->i_flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!gfs2_write_alloc_required(ip, pos, PAGE_CACHE_SIZE)) {
 		lock_page(page);
 		if (!PageUptodate(page) || page->mapping != inode->i_mapping) {
@@ -442,6 +487,8 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 	ret = -ENOMEM;
 	qa = gfs2_qadata_get(ip);
 	if (qa == NULL)
+<<<<<<< HEAD
+=======
 =======
 	if (!gfs2_write_alloc_required(ip, pos, PAGE_CACHE_SIZE))
 		goto out_unlock;
@@ -449,6 +496,7 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 	al = gfs2_alloc_get(ip);
 	if (al == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_unlock;
 
 	ret = gfs2_quota_lock_check(ip);
@@ -458,9 +506,13 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 <<<<<<< HEAD
 	ret = gfs2_inplace_reserve(ip, data_blocks + ind_blocks);
 =======
+<<<<<<< HEAD
+	ret = gfs2_inplace_reserve(ip, data_blocks + ind_blocks);
+=======
 	al->al_requested = data_blocks + ind_blocks;
 	ret = gfs2_inplace_reserve(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto out_quota_unlock;
 
@@ -472,8 +524,12 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 <<<<<<< HEAD
 		rblocks += gfs2_rg_blocks(ip);
 =======
+<<<<<<< HEAD
+		rblocks += gfs2_rg_blocks(ip);
+=======
 		rblocks += gfs2_rg_blocks(al);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	ret = gfs2_trans_begin(sdp, rblocks, 0);
 	if (ret)
@@ -482,6 +538,9 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 	lock_page(page);
 	ret = -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size = i_size_read(inode);
 	last_index = (size - 1) >> PAGE_CACHE_SHIFT;
 	/* Check page index against inode size */
@@ -505,6 +564,8 @@ static int gfs2_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 out_trans_end:
 	if (ret)
 		unlock_page(page);
+<<<<<<< HEAD
+=======
 =======
 	last_index = ip->i_inode.i_size >> PAGE_CACHE_SHIFT;
 	if (page->index > last_index)
@@ -522,6 +583,7 @@ out_trans_end:
 out_unlock_page:
 	unlock_page(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_trans_end(sdp);
 out_trans_fail:
 	gfs2_inplace_release(ip);
@@ -531,13 +593,20 @@ out_alloc_put:
 <<<<<<< HEAD
 	gfs2_qadata_put(ip);
 =======
+<<<<<<< HEAD
+	gfs2_qadata_put(ip);
+=======
 	gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_unlock:
 	gfs2_glock_dq(&gh);
 out:
 	gfs2_holder_uninit(&gh);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret == 0) {
 		set_page_dirty(page);
 		/* This check must be post dropping of transaction lock */
@@ -549,6 +618,8 @@ out:
 		}
 	}
 	return block_page_mkwrite_return(ret);
+<<<<<<< HEAD
+=======
 =======
 	if (ret == -ENOMEM)
 		ret = VM_FAULT_OOM;
@@ -556,6 +627,7 @@ out:
 		ret = VM_FAULT_SIGBUS;
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const struct vm_operations_struct gfs2_vm_ops = {
@@ -676,6 +748,9 @@ static int gfs2_close(struct inode *inode, struct file *file)
 /**
  * gfs2_fsync - sync the dirty data for a file (across the cluster)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @file: the file that points to the dentry
  * @start: the start position in the file to sync
  * @end: the end position in the file to sync
@@ -691,6 +766,8 @@ static int gfs2_close(struct inode *inode, struct file *file)
  * continue the remainder of the fsync, although we'll still report
  * the error at the end. This is to match filemap_write_and_wait_range()
  * behaviour.
+<<<<<<< HEAD
+=======
 =======
  * @file: the file that points to the dentry (we ignore this)
  * @datasync: set if we can ignore timestamp changes
@@ -698,11 +775,15 @@ static int gfs2_close(struct inode *inode, struct file *file)
  * The VFS will flush data for us. We only need to worry
  * about metadata here.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns: errno
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gfs2_fsync(struct file *file, loff_t start, loff_t end,
 		      int datasync)
 {
@@ -717,6 +798,8 @@ static int gfs2_fsync(struct file *file, loff_t start, loff_t end,
 		if (ret1 == -EIO)
 			return ret1;
 	}
+<<<<<<< HEAD
+=======
 =======
 static int gfs2_fsync(struct file *file, int datasync)
 {
@@ -725,6 +808,7 @@ static int gfs2_fsync(struct file *file, int datasync)
 	struct gfs2_inode *ip = GFS2_I(inode);
 	int ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (datasync)
 		sync_state &= ~I_DIRTY_SYNC;
@@ -734,6 +818,9 @@ static int gfs2_fsync(struct file *file, int datasync)
 		if (ret)
 			return ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (gfs2_is_jdata(ip))
 			filemap_write_and_wait(mapping);
 		gfs2_ail_flush(ip->i_gl, 1);
@@ -743,12 +830,15 @@ static int gfs2_fsync(struct file *file, int datasync)
 		ret = filemap_fdatawait_range(mapping, start, end);
 
 	return ret ? ret : ret1;
+<<<<<<< HEAD
+=======
 =======
 		gfs2_ail_flush(ip->i_gl);
 	}
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -785,6 +875,8 @@ static ssize_t gfs2_file_aio_write(struct kiocb *iocb, const struct iovec *iov,
 	return generic_file_aio_write(iocb, iov, nr_segs, pos);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int empty_write_end(struct page *page, unsigned from,
@@ -897,6 +989,7 @@ static int write_empty_blocks(struct page *page, unsigned from, unsigned to,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int fallocate_chunk(struct inode *inode, loff_t offset, loff_t len,
 			   int mode)
 {
@@ -904,6 +997,9 @@ static int fallocate_chunk(struct inode *inode, loff_t offset, loff_t len,
 	struct buffer_head *dibh;
 	int error;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	loff_t size = len;
 	unsigned int nr_blks;
 	sector_t lblock = offset >> inode->i_blkbits;
@@ -911,6 +1007,8 @@ static int fallocate_chunk(struct inode *inode, loff_t offset, loff_t len,
 	error = gfs2_meta_inode_buffer(ip, &dibh);
 	if (unlikely(error))
 		return error;
+<<<<<<< HEAD
+=======
 =======
 	u64 start = offset >> PAGE_CACHE_SHIFT;
 	unsigned int start_offset = offset & ~PAGE_CACHE_MASK;
@@ -927,6 +1025,7 @@ static int fallocate_chunk(struct inode *inode, loff_t offset, loff_t len,
 	if (unlikely(error))
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	gfs2_trans_add_bh(ip->i_gl, dibh, 1);
 
@@ -937,6 +1036,9 @@ static int fallocate_chunk(struct inode *inode, loff_t offset, loff_t len,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (len) {
 		struct buffer_head bh_map = { .b_state = 0, .b_blocknr = 0 };
 		bh_map.b_size = len;
@@ -962,6 +1064,8 @@ static int fallocate_chunk(struct inode *inode, loff_t offset, loff_t len,
 
 out:
 	brelse(dibh);
+<<<<<<< HEAD
+=======
 =======
 	curr = start;
 	offset = start << PAGE_CACHE_SHIFT;
@@ -998,6 +1102,7 @@ out:
 
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1008,8 +1113,12 @@ static void calc_max_reserv(struct gfs2_inode *ip, loff_t max, loff_t *len,
 <<<<<<< HEAD
 	unsigned int max_blocks = ip->i_rgd->rd_free_clone;
 =======
+<<<<<<< HEAD
+	unsigned int max_blocks = ip->i_rgd->rd_free_clone;
+=======
 	unsigned int max_blocks = ip->i_alloc->al_rgd->rd_free_clone;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int tmp, max_data = max_blocks - 3 * (sdp->sd_max_height - 1);
 
 	for (tmp = max_data; tmp > sdp->sd_diptrs;) {
@@ -1038,6 +1147,9 @@ static long gfs2_fallocate(struct file *file, int mode, loff_t offset,
 	unsigned int data_blocks = 0, ind_blocks = 0, rblocks;
 	loff_t bytes, max_bytes;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gfs2_qadata *qa;
 	int error;
 	const loff_t pos = offset;
@@ -1045,12 +1157,15 @@ static long gfs2_fallocate(struct file *file, int mode, loff_t offset,
 	loff_t bsize_mask = ~((loff_t)sdp->sd_sb.sb_bsize - 1);
 	loff_t next = (offset + len - 1) >> sdp->sd_sb.sb_bsize_shift;
 	loff_t max_chunk_size = UINT_MAX & bsize_mask;
+<<<<<<< HEAD
+=======
 =======
 	struct gfs2_alloc *al;
 	int error;
 	loff_t bsize_mask = ~((loff_t)sdp->sd_sb.sb_bsize - 1);
 	loff_t next = (offset + len - 1) >> sdp->sd_sb.sb_bsize_shift;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	next = (next + 1) << sdp->sd_sb.sb_bsize_shift;
 
 	/* We only support the FALLOC_FL_KEEP_SIZE mode */
@@ -1073,6 +1188,9 @@ static long gfs2_fallocate(struct file *file, int mode, loff_t offset,
 		goto out_uninit;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (len > 0) {
 		if (len < bytes)
 			bytes = len;
@@ -1083,6 +1201,8 @@ static long gfs2_fallocate(struct file *file, int mode, loff_t offset,
 		}
 		qa = gfs2_qadata_get(ip);
 		if (!qa) {
+<<<<<<< HEAD
+=======
 =======
 	if (!gfs2_write_alloc_required(ip, offset, len))
 		goto out_unlock;
@@ -1093,6 +1213,7 @@ static long gfs2_fallocate(struct file *file, int mode, loff_t offset,
 		al = gfs2_alloc_get(ip);
 		if (!al) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = -ENOMEM;
 			goto out_unlock;
 		}
@@ -1107,9 +1228,13 @@ retry:
 <<<<<<< HEAD
 		error = gfs2_inplace_reserve(ip, data_blocks + ind_blocks);
 =======
+<<<<<<< HEAD
+		error = gfs2_inplace_reserve(ip, data_blocks + ind_blocks);
+=======
 		al->al_requested = data_blocks + ind_blocks;
 		error = gfs2_inplace_reserve(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error) {
 			if (error == -ENOSPC && bytes > sdp->sd_sb.sb_bsize) {
 				bytes >>= 1;
@@ -1122,11 +1247,16 @@ retry:
 		}
 		max_bytes = bytes;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		calc_max_reserv(ip, (len > max_chunk_size)? max_chunk_size: len,
 				&max_bytes, &data_blocks, &ind_blocks);
 
 		rblocks = RES_DINODE + ind_blocks + RES_STATFS + RES_QUOTA +
 			  RES_RG_HDR + gfs2_rg_blocks(ip);
+<<<<<<< HEAD
+=======
 =======
 		calc_max_reserv(ip, len, &max_bytes, &data_blocks, &ind_blocks);
 		al->al_requested = data_blocks + ind_blocks;
@@ -1134,6 +1264,7 @@ retry:
 		rblocks = RES_DINODE + ind_blocks + RES_STATFS + RES_QUOTA +
 			  RES_RG_HDR + gfs2_rg_blocks(al);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (gfs2_is_jdata(ip))
 			rblocks += data_blocks ? data_blocks : 1;
 
@@ -1153,15 +1284,21 @@ retry:
 		gfs2_inplace_release(ip);
 		gfs2_quota_unlock(ip);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gfs2_qadata_put(ip);
 	}
 
 	if (error == 0)
 		error = generic_write_sync(file, pos, count);
+<<<<<<< HEAD
+=======
 =======
 		gfs2_alloc_put(ip);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	goto out_unlock;
 
 out_trans_fail:
@@ -1172,8 +1309,12 @@ out_alloc_put:
 <<<<<<< HEAD
 	gfs2_qadata_put(ip);
 =======
+<<<<<<< HEAD
+	gfs2_qadata_put(ip);
+=======
 	gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_unlock:
 	gfs2_glock_dq(&ip->i_gh);
 out_uninit:

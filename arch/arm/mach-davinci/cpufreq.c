@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/cpufreq.h>
@@ -101,8 +105,12 @@ static int davinci_target(struct cpufreq_policy *policy,
 <<<<<<< HEAD
 	dev_dbg(cpufreq.dev, "transition: %u --> %u\n", freqs.old, freqs.new);
 =======
+<<<<<<< HEAD
+	dev_dbg(cpufreq.dev, "transition: %u --> %u\n", freqs.old, freqs.new);
+=======
 	dev_dbg(&cpufreq.dev, "transition: %u --> %u\n", freqs.old, freqs.new);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = cpufreq_frequency_table_target(policy, pdata->freq_table,
 						freqs.new, relation, &idx);

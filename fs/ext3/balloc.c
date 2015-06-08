@@ -16,6 +16,11 @@
 #include <linux/blkdev.h>
 #include "ext3.h"
 =======
+<<<<<<< HEAD
+#include <linux/quotaops.h>
+#include <linux/blkdev.h>
+#include "ext3.h"
+=======
 #include <linux/time.h>
 #include <linux/capability.h>
 #include <linux/fs.h>
@@ -27,6 +32,7 @@
 #include <linux/buffer_head.h>
 #include <linux/blkdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * balloc.c contains the blocks allocation and deallocation routines
@@ -170,7 +176,11 @@ read_block_bitmap(struct super_block *sb, unsigned int block_group)
 <<<<<<< HEAD
 	trace_ext3_read_block_bitmap(sb, block_group);
 =======
+<<<<<<< HEAD
+	trace_ext3_read_block_bitmap(sb, block_group);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bitmap_blk = le32_to_cpu(desc->bg_block_bitmap);
 	bh = sb_getblk(sb, bitmap_blk);
 	if (unlikely(!bh)) {
@@ -364,7 +374,11 @@ void ext3_rsv_window_add(struct super_block *sb,
 <<<<<<< HEAD
 	trace_ext3_rsv_window_add(sb, rsv);
 =======
+<<<<<<< HEAD
+	trace_ext3_rsv_window_add(sb, rsv);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (*p)
 	{
 		parent = *p;
@@ -441,8 +455,12 @@ void ext3_init_block_alloc_info(struct inode *inode)
 <<<<<<< HEAD
 	struct ext3_block_alloc_info *block_i;
 =======
+<<<<<<< HEAD
+	struct ext3_block_alloc_info *block_i;
+=======
 	struct ext3_block_alloc_info *block_i = ei->i_block_alloc_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct super_block *sb = inode->i_sb;
 
 	block_i = kmalloc(sizeof(*block_i), GFP_NOFS);
@@ -495,14 +513,20 @@ void ext3_discard_reservation(struct inode *inode)
 	if (!rsv_is_empty(&rsv->rsv_window)) {
 		spin_lock(rsv_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rsv_is_empty(&rsv->rsv_window)) {
 			trace_ext3_discard_reservation(inode, rsv);
 			rsv_window_remove(inode->i_sb, rsv);
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (!rsv_is_empty(&rsv->rsv_window))
 			rsv_window_remove(inode->i_sb, rsv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(rsv_lock);
 	}
 }
@@ -709,10 +733,15 @@ void ext3_free_blocks(handle_t *handle, struct inode *inode,
 			ext3_fsblk_t block, unsigned long count)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct super_block *sb = inode->i_sb;
 	unsigned long dquot_freed_blocks;
 
 	trace_ext3_free_blocks(inode, block, count);
+<<<<<<< HEAD
+=======
 =======
 	struct super_block * sb;
 	unsigned long dquot_freed_blocks;
@@ -723,6 +752,7 @@ void ext3_free_blocks(handle_t *handle, struct inode *inode,
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext3_free_blocks_sb(handle, sb, block, count, &dquot_freed_blocks);
 	if (dquot_freed_blocks)
 		dquot_free_block(inode, dquot_freed_blocks);
@@ -1171,7 +1201,11 @@ static int alloc_new_reservation(struct ext3_reserve_window_node *my_rsv,
 <<<<<<< HEAD
 	trace_ext3_alloc_new_reservation(sb, start_block);
 =======
+<<<<<<< HEAD
+	trace_ext3_alloc_new_reservation(sb, start_block);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size = my_rsv->rsv_goal_size;
 
 	if (!rsv_is_empty(&my_rsv->rsv_window)) {
@@ -1267,15 +1301,21 @@ retry:
 	 * free space we just reserved
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (start_block >= my_rsv->rsv_start &&
 	    start_block <= my_rsv->rsv_end) {
 		trace_ext3_reserved(sb, start_block, my_rsv);
 		return 0;		/* success */
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (start_block >= my_rsv->rsv_start && start_block <= my_rsv->rsv_end)
 		return 0;		/* success */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * if the first free bit we found is out of the reservable space
 	 * continue search for next reservable space,
@@ -1482,8 +1522,12 @@ out:
 <<<<<<< HEAD
 static int ext3_has_free_blocks(struct ext3_sb_info *sbi, int use_reservation)
 =======
+<<<<<<< HEAD
+static int ext3_has_free_blocks(struct ext3_sb_info *sbi, int use_reservation)
+=======
 static int ext3_has_free_blocks(struct ext3_sb_info *sbi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ext3_fsblk_t free_blocks, root_blocks;
 
@@ -1493,8 +1537,12 @@ static int ext3_has_free_blocks(struct ext3_sb_info *sbi)
 <<<<<<< HEAD
 		!use_reservation && sbi->s_resuid != current_fsuid() &&
 =======
+<<<<<<< HEAD
+		!use_reservation && sbi->s_resuid != current_fsuid() &&
+=======
 		sbi->s_resuid != current_fsuid() &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(sbi->s_resgid == 0 || !in_group_p (sbi->s_resgid))) {
 		return 0;
 	}
@@ -1518,8 +1566,12 @@ int ext3_should_retry_alloc(struct super_block *sb, int *retries)
 <<<<<<< HEAD
 	if (!ext3_has_free_blocks(EXT3_SB(sb), 0) || (*retries)++ > 3)
 =======
+<<<<<<< HEAD
+	if (!ext3_has_free_blocks(EXT3_SB(sb), 0) || (*retries)++ > 3)
+=======
 	if (!ext3_has_free_blocks(EXT3_SB(sb)) || (*retries)++ > 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	jbd_debug(1, "%s: retrying operation after ENOSPC\n", sb->s_id);
@@ -1572,11 +1624,14 @@ ext3_fsblk_t ext3_new_blocks(handle_t *handle, struct inode *inode,
 	sb = inode->i_sb;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!sb) {
 		printk("ext3_new_block: nonexistent device");
 		return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Check quota for allocation of this block.
@@ -1588,14 +1643,20 @@ ext3_fsblk_t ext3_new_blocks(handle_t *handle, struct inode *inode,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_ext3_request_blocks(inode, goal, num);
 
 	sbi = EXT3_SB(sb);
 	es = sbi->s_es;
+<<<<<<< HEAD
+=======
 =======
 	sbi = EXT3_SB(sb);
 	es = EXT3_SB(sb)->s_es;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext3_debug("goal=%lu.\n", goal);
 	/*
 	 * Allocate a block from reservation only when
@@ -1612,8 +1673,12 @@ ext3_fsblk_t ext3_new_blocks(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
 	if (!ext3_has_free_blocks(sbi, IS_NOQUOTA(inode))) {
 =======
+<<<<<<< HEAD
+	if (!ext3_has_free_blocks(sbi, IS_NOQUOTA(inode))) {
+=======
 	if (!ext3_has_free_blocks(sbi)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*errp = -ENOSPC;
 		goto out;
 	}
@@ -1811,6 +1876,9 @@ allocated:
 	*errp = 0;
 	brelse(bitmap_bh);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (num < *count) {
 		dquot_free_block(inode, *count-num);
@@ -1820,10 +1888,13 @@ allocated:
 	trace_ext3_allocate_blocks(inode, goal, num,
 				   (unsigned long long)ret_block);
 
+<<<<<<< HEAD
+=======
 =======
 	dquot_free_block(inode, *count-num);
 	*count = num;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret_block;
 
 io_error:
@@ -2000,15 +2071,21 @@ unsigned long ext3_bg_num_gdb(struct super_block *sb, int group)
  * the extent in the block bitmap. This is done until whole group is scanned.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ext3_grpblk_t ext3_trim_all_free(struct super_block *sb,
 					unsigned int group,
 					ext3_grpblk_t start, ext3_grpblk_t max,
 					ext3_grpblk_t minblocks)
+<<<<<<< HEAD
+=======
 =======
 ext3_grpblk_t ext3_trim_all_free(struct super_block *sb, unsigned int group,
 				ext3_grpblk_t start, ext3_grpblk_t max,
 				ext3_grpblk_t minblocks)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	handle_t *handle;
 	ext3_grpblk_t next, free_blocks, bit, freed, count = 0;
@@ -2054,8 +2131,12 @@ ext3_grpblk_t ext3_trim_all_free(struct super_block *sb, unsigned int group,
 <<<<<<< HEAD
 	while (start <= max) {
 =======
+<<<<<<< HEAD
+	while (start <= max) {
+=======
 	while (start < max) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		start = bitmap_search_next_usable_block(start, bitmap_bh, max);
 		if (start < 0)
 			break;
@@ -2068,8 +2149,12 @@ ext3_grpblk_t ext3_trim_all_free(struct super_block *sb, unsigned int group,
 <<<<<<< HEAD
 		while (next <= max
 =======
+<<<<<<< HEAD
+		while (next <= max
+=======
 		while (next < max
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			&& claim_block(sb_bgl_lock(sbi, group),
 					next, bitmap_bh)) {
 			next++;
@@ -2096,7 +2181,11 @@ ext3_grpblk_t ext3_trim_all_free(struct super_block *sb, unsigned int group,
 <<<<<<< HEAD
 		trace_ext3_discard_blocks(sb, discard_block, next - start);
 =======
+<<<<<<< HEAD
+		trace_ext3_discard_blocks(sb, discard_block, next - start);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 /* Send the TRIM command down to the device */
 		err = sb_issue_discard(sb, discard_block, next - start,
 				       GFP_NOFS, 0);
@@ -2184,6 +2273,9 @@ err_out:
 int ext3_trim_fs(struct super_block *sb, struct fstrim_range *range)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext3_grpblk_t last_block, first_block;
 	unsigned long group, first_group, last_group;
 	struct ext3_group_desc *gdp;
@@ -2208,6 +2300,8 @@ int ext3_trim_fs(struct super_block *sb, struct fstrim_range *range)
 	if (start < first_data_blk)
 		start = first_data_blk;
 
+<<<<<<< HEAD
+=======
 =======
 	ext3_grpblk_t last_block, first_block, free_blocks;
 	unsigned long first_group, last_group;
@@ -2233,17 +2327,23 @@ int ext3_trim_fs(struct super_block *sb, struct fstrim_range *range)
 
 	ngroups = EXT3_SB(sb)->s_groups_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	smp_rmb();
 
 	/* Determine first and last group to examine based on start and len */
 	ext3_get_group_no_and_offset(sb, (ext3_fsblk_t) start,
 				     &first_group, &first_block);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext3_get_group_no_and_offset(sb, (ext3_fsblk_t) end,
 				     &last_group, &last_block);
 
 	/* end now represents the last block to discard in this group */
 	end = EXT3_BLOCKS_PER_GROUP(sb) - 1;
+<<<<<<< HEAD
+=======
 =======
 	ext3_get_group_no_and_offset(sb, (ext3_fsblk_t) (start + len),
 				     &last_group, &last_block);
@@ -2253,6 +2353,7 @@ int ext3_trim_fs(struct super_block *sb, struct fstrim_range *range)
 	if (first_group > last_group)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (group = first_group; group <= last_group; group++) {
 		gdp = ext3_get_group_desc(sb, group, NULL);
@@ -2260,6 +2361,9 @@ int ext3_trim_fs(struct super_block *sb, struct fstrim_range *range)
 			break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * For all the groups except the last one, last block will
 		 * always be EXT3_BLOCKS_PER_GROUP(sb)-1, so we only need to
@@ -2285,6 +2389,8 @@ int ext3_trim_fs(struct super_block *sb, struct fstrim_range *range)
 	}
 
 	if (ret > 0)
+<<<<<<< HEAD
+=======
 =======
 		free_blocks = le16_to_cpu(gdp->bg_free_blocks_count);
 		if (free_blocks < minlen)
@@ -2311,13 +2417,17 @@ int ext3_trim_fs(struct super_block *sb, struct fstrim_range *range)
 
 	if (ret >= 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = 0;
 
 out:
 	range->len = trimmed * sb->s_blocksize;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }

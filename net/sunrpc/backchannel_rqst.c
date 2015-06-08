@@ -28,7 +28,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <linux/export.h>
 #include <linux/sunrpc/bc_xprt.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/sunrpc/bc_xprt.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef RPC_DEBUG
 #define RPCDBG_FACILITY	RPCDBG_TRANS
@@ -36,9 +41,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_NFS_V4_1)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Helper routines that track the number of preallocation elements
  * on the transport.
@@ -185,8 +193,12 @@ out_free:
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(xprt_setup_backchannel);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(xprt_setup_backchannel);
+=======
 EXPORT_SYMBOL(xprt_setup_backchannel);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Destroys the backchannel preallocated structures.
@@ -219,8 +231,12 @@ void xprt_destroy_backchannel(struct rpc_xprt *xprt, unsigned int max_reqs)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(xprt_destroy_backchannel);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(xprt_destroy_backchannel);
+=======
 EXPORT_SYMBOL(xprt_destroy_backchannel);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * One or more rpc_rqst structure have been preallocated during the
@@ -297,5 +313,8 @@ void xprt_free_bc_request(struct rpc_rqst *req)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* CONFIG_NFS_V4_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -52,9 +52,14 @@ typedef struct {
 	umode_t fmask;			/* The mask for file permissions. */
 	umode_t dmask;			/* The mask for directory
 =======
+<<<<<<< HEAD
+	umode_t fmask;			/* The mask for file permissions. */
+	umode_t dmask;			/* The mask for directory
+=======
 	mode_t fmask;			/* The mask for file permissions. */
 	mode_t dmask;			/* The mask for directory
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   permissions. */
 	u8 mft_zone_multiplier;		/* Initial mft zone multiplier. */
 	u8 on_errors;			/* What to do on filesystem errors. */

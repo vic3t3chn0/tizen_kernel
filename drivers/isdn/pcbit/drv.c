@@ -2,10 +2,23 @@
  * PCBIT-D interface with isdn4linux
  *
  * Copyright (C) 1996 Universidade de Lisboa
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ * Written by Pedro Roque Marques (roque@di.fc.ul.pt)
+ *
+ * This software may be used and distributed according to the terms of
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * 
  * Written by Pedro Roque Marques (roque@di.fc.ul.pt)
  *
  * This software may be used and distributed according to the terms of 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * the GNU General Public License, incorporated herein by reference.
  */
 
@@ -14,7 +27,15 @@
  *
  *	Nuno Grilo	<l38486@alfa.ist.utl.pt>
  *      fixed msn_list NULL pointer dereference.
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+=======
  *		
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *		
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/module.h>
@@ -43,9 +64,21 @@
 
 extern ushort last_ref_num;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pcbit_ioctl(isdn_ctrl *ctl);
+
+static char *pcbit_devname[MAX_PCBIT_CARDS] = {
+=======
 static int pcbit_ioctl(isdn_ctrl* ctl);
 
 static char* pcbit_devname[MAX_PCBIT_CARDS] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int pcbit_ioctl(isdn_ctrl* ctl);
+
+static char* pcbit_devname[MAX_PCBIT_CARDS] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"pcbit0",
 	"pcbit1",
 	"pcbit2",
@@ -56,12 +89,27 @@ static char* pcbit_devname[MAX_PCBIT_CARDS] = {
  * prototypes
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pcbit_command(isdn_ctrl *ctl);
+static int pcbit_stat(u_char __user *buf, int len, int, int);
+static int pcbit_xmit(int driver, int chan, int ack, struct sk_buff *skb);
+static int pcbit_writecmd(const u_char __user *, int, int, int);
+
+static int set_protocol_running(struct pcbit_dev *dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pcbit_command(isdn_ctrl* ctl);
 static int pcbit_stat(u_char __user * buf, int len, int, int);
 static int pcbit_xmit(int driver, int chan, int ack, struct sk_buff *skb);
 static int pcbit_writecmd(const u_char __user *, int, int, int);
 
 static int set_protocol_running(struct pcbit_dev * dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void pcbit_clear_msn(struct pcbit_dev *dev);
 static void pcbit_set_msn(struct pcbit_dev *dev, char *list);
@@ -73,7 +121,15 @@ int pcbit_init_dev(int board, int mem_base, int irq)
 	struct pcbit_dev *dev;
 	isdn_if *dev_if;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((dev = kzalloc(sizeof(struct pcbit_dev), GFP_KERNEL)) == NULL)
+=======
 	if ((dev=kzalloc(sizeof(struct pcbit_dev), GFP_KERNEL)) == NULL)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((dev=kzalloc(sizeof(struct pcbit_dev), GFP_KERNEL)) == NULL)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		printk("pcbit_init: couldn't malloc pcbit_dev struct\n");
 		return -ENOMEM;
@@ -83,19 +139,42 @@ int pcbit_init_dev(int board, int mem_base, int irq)
 	init_waitqueue_head(&dev->set_running_wq);
 	spin_lock_init(&dev->lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (mem_base >= 0xA0000 && mem_base <= 0xFFFFF) {
+		dev->ph_mem = mem_base;
+		if (!request_mem_region(dev->ph_mem, 4096, "PCBIT mem")) {
+			printk(KERN_WARNING
+			       "PCBIT: memory region %lx-%lx already in use\n",
+			       dev->ph_mem, dev->ph_mem + 4096);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mem_base >= 0xA0000 && mem_base <= 0xFFFFF ) {
 		dev->ph_mem = mem_base;
 		if (!request_mem_region(dev->ph_mem, 4096, "PCBIT mem")) {
 			printk(KERN_WARNING
 				"PCBIT: memory region %lx-%lx already in use\n",
 				dev->ph_mem, dev->ph_mem + 4096);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			kfree(dev);
 			dev_pcbit[board] = NULL;
 			return -EACCES;
 		}
 		dev->sh_mem = ioremap(dev->ph_mem, 4096);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	else
+=======
 	else 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	else 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		printk("memory address invalid");
 		kfree(dev);
@@ -111,7 +190,15 @@ int pcbit_init_dev(int board, int mem_base, int irq)
 		kfree(dev);
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev->b2 = kzalloc(sizeof(struct pcbit_chan), GFP_KERNEL);
 	if (!dev->b2) {
 		printk("pcbit_init: couldn't malloc pcbit_chan struct\n");
@@ -130,7 +217,15 @@ int pcbit_init_dev(int board, int mem_base, int irq)
 	 *  interrupts
 	 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (request_irq(irq, &pcbit_irq_handler, 0, pcbit_devname[board], dev) != 0)
+=======
 	if (request_irq(irq, &pcbit_irq_handler, 0, pcbit_devname[board], dev) != 0) 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (request_irq(irq, &pcbit_irq_handler, 0, pcbit_devname[board], dev) != 0) 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		kfree(dev->b1);
 		kfree(dev->b2);
@@ -168,16 +263,36 @@ int pcbit_init_dev(int board, int mem_base, int irq)
 	dev_if->owner = THIS_MODULE;
 
 	dev_if->channels = 2;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	dev_if->features = (ISDN_FEATURE_P_EURO  | ISDN_FEATURE_L3_TRANS |
+			    ISDN_FEATURE_L2_HDLC | ISDN_FEATURE_L2_TRANS);
+=======
 	
 	dev_if->features = (ISDN_FEATURE_P_EURO  | ISDN_FEATURE_L3_TRANS | 
 			    ISDN_FEATURE_L2_HDLC | ISDN_FEATURE_L2_TRANS );
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+	dev_if->features = (ISDN_FEATURE_P_EURO  | ISDN_FEATURE_L3_TRANS | 
+			    ISDN_FEATURE_L2_HDLC | ISDN_FEATURE_L2_TRANS );
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_if->writebuf_skb = pcbit_xmit;
 	dev_if->hl_hdrlen = 16;
 
 	dev_if->maxbufsize = MAXBUFSIZE;
 	dev_if->command  = pcbit_command;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_if->writecmd = pcbit_writecmd;
 	dev_if->readstat = pcbit_stat;
 
@@ -211,12 +326,28 @@ int pcbit_init_dev(int board, int mem_base, int irq)
 #ifdef MODULE
 void pcbit_terminate(int board)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct pcbit_dev *dev;
+=======
 	struct pcbit_dev * dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct pcbit_dev * dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev = dev_pcbit[board];
 
 	if (dev) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* unregister_isdn(dev->dev_if); */
+=======
 	     /* unregister_isdn(dev->dev_if); */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	     /* unregister_isdn(dev->dev_if); */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_irq(dev->irq, dev);
 		pcbit_clear_msn(dev);
 		kfree(dev->dev_if);
@@ -233,9 +364,21 @@ void pcbit_terminate(int board)
 }
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pcbit_command(isdn_ctrl *ctl)
+{
+	struct pcbit_dev *dev;
+=======
 static int pcbit_command(isdn_ctrl* ctl)
 {
 	struct pcbit_dev  *dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int pcbit_command(isdn_ctrl* ctl)
+{
+	struct pcbit_dev  *dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pcbit_chan *chan;
 	struct callb_data info;
 
@@ -250,7 +393,15 @@ static int pcbit_command(isdn_ctrl* ctl)
 	chan = (ctl->arg & 0x0F) ? dev->b2 : dev->b1;
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (ctl->command) {
+=======
 	switch(ctl->command) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch(ctl->command) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ISDN_CMD_IOCTL:
 		return pcbit_ioctl(ctl);
 		break;
@@ -299,10 +450,23 @@ static int pcbit_command(isdn_ctrl* ctl)
 static void pcbit_block_timer(unsigned long data)
 {
 	struct pcbit_chan *chan;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct pcbit_dev *dev;
+	isdn_ctrl ictl;
+
+	chan = (struct pcbit_chan *)data;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pcbit_dev * dev;
 	isdn_ctrl ictl;
 
 	chan = (struct pcbit_chan *) data;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev = chan2dev(chan);
 
@@ -316,12 +480,28 @@ static void pcbit_block_timer(unsigned long data)
 
 #ifdef DEBUG
 	printk(KERN_DEBUG "pcbit_block_timer\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+=======
 #endif	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chan->queued = 0;
 	ictl.driver = dev->id;
 	ictl.command = ISDN_STAT_BSENT;
 	ictl.arg = chan->id;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->dev_if->statcallb(&ictl);
+=======
 	dev->dev_if->statcallb(&ictl);     
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev->dev_if->statcallb(&ictl);     
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -329,7 +509,15 @@ static int pcbit_xmit(int driver, int chnum, int ack, struct sk_buff *skb)
 {
 	ushort hdrlen;
 	int refnum, len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct pcbit_chan *chan;
+=======
 	struct pcbit_chan * chan;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct pcbit_chan * chan;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pcbit_dev *dev;
 
 	dev = finddev(driver);
@@ -345,10 +533,23 @@ static int pcbit_xmit(int driver, int chnum, int ack, struct sk_buff *skb)
 	if (chan->fsm_state != ST_ACTIVE)
 		return -1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (chan->queued >= MAX_QUEUED)
+	{
+#ifdef DEBUG_QUEUE
+		printk(KERN_DEBUG
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chan->queued >= MAX_QUEUED )
 	{
 #ifdef DEBUG_QUEUE
 		printk(KERN_DEBUG 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       "pcbit: %d packets already in queue - write fails\n",
 		       chan->queued);
 #endif
@@ -365,14 +566,34 @@ static int pcbit_xmit(int driver, int chnum, int ack, struct sk_buff *skb)
 			chan->block_timer.expires = jiffies + 1 * HZ;
 			add_timer(&chan->block_timer);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+		return 0;
+=======
 #endif		
 		return 0;	                 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif		
+		return 0;	                 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 
 	chan->queued++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	len = skb->len;
+=======
 	
         len = skb->len;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+        len = skb->len;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hdrlen = capi_tdata_req(chan, skb);
 
@@ -386,10 +607,23 @@ static int pcbit_xmit(int driver, int chnum, int ack, struct sk_buff *skb)
 
 static int pcbit_writecmd(const u_char __user *buf, int len, int driver, int channel)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct pcbit_dev *dev;
+	int i, j;
+	const u_char *loadbuf;
+	u_char *ptr = NULL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pcbit_dev * dev;
 	int i, j;
 	const u_char * loadbuf;
 	u_char * ptr = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u_char *cbuf;
 
 	int errstat;
@@ -402,7 +636,15 @@ static int pcbit_writecmd(const u_char __user *buf, int len, int driver, int cha
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (dev->l2_state) {
+=======
 	switch(dev->l2_state) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch(dev->l2_state) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case L2_LWMODE:
 		/* check (size <= rdp_size); write buf into board */
 		if (len < 0 || len > BANK4 + 1 || len > 1024)
@@ -422,19 +664,42 @@ static int pcbit_writecmd(const u_char __user *buf, int len, int driver, int cha
 		/* this is the hard part */
 		/* dumb board */
 		/* get it into kernel space */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((ptr = kmalloc(len, GFP_KERNEL)) == NULL)
+=======
 		if ((ptr = kmalloc(len, GFP_KERNEL))==NULL)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((ptr = kmalloc(len, GFP_KERNEL))==NULL)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 		if (copy_from_user(ptr, buf, len)) {
 			kfree(ptr);
 			return -EFAULT;
 		}
 		loadbuf = ptr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		errstat = 0;
+
+		for (i = 0; i < len; i++)
+		{
+			for (j = 0; j < LOAD_RETRY; j++)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     
 		errstat = 0;
 
 		for (i=0; i < len; i++)
 		{
 			for(j=0; j < LOAD_RETRY; j++)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (!(readb(dev->sh_mem + dev->loadptr)))
 					break;
 
@@ -464,9 +729,21 @@ static int pcbit_writecmd(const u_char __user *buf, int len, int driver, int cha
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void pcbit_l3_receive(struct pcbit_dev *dev, ulong msg,
+		      struct sk_buff *skb,
+		      ushort hdr_len, ushort refnum)
+=======
 void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg, 
 			     struct sk_buff * skb,
 			     ushort hdr_len, ushort refnum)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg, 
+			     struct sk_buff * skb,
+			     ushort hdr_len, ushort refnum)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pcbit_chan *chan;
 	struct sk_buff *skb2;
@@ -475,11 +752,25 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 	int complete, err;
 	isdn_ctrl ictl;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (msg) {
+
+	case MSG_TDATA_IND:
+		if (!(chan = capi_channel(dev, skb))) {
+			printk(KERN_WARNING
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch(msg) {
 
 	case MSG_TDATA_IND:
 		if (!(chan = capi_channel(dev, skb))) {
 			printk(KERN_WARNING 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "CAPI header: unknown channel id\n");
 			break;
 		}
@@ -488,6 +779,19 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 
 		dev->dev_if->rcvcallb_skb(dev->id, chan->id, skb);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (capi_tdata_resp(chan, &skb2) > 0)
+			pcbit_l2_write(dev, MSG_TDATA_RESP, refnum,
+				       skb2, skb2->len);
+		return;
+		break;
+	case MSG_TDATA_CONF:
+		if (!(chan = capi_channel(dev, skb))) {
+			printk(KERN_WARNING
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (capi_tdata_resp(chan, &skb2) > 0) 
 			pcbit_l2_write(dev, MSG_TDATA_RESP, refnum, 
 				       skb2, skb2->len);
@@ -496,11 +800,31 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 	case MSG_TDATA_CONF:
 		if (!(chan = capi_channel(dev, skb))) {
 			printk(KERN_WARNING 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "CAPI header: unknown channel id\n");
 			break;
 		}
 
 #ifdef DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((*((ushort *)(skb->data + 2))) != 0) {
+			printk(KERN_DEBUG "TDATA_CONF error\n");
+		}
+#endif
+#ifdef BLOCK_TIMER
+		if (chan->queued == MAX_QUEUED) {
+			del_timer(&chan->block_timer);
+			chan->block_timer.function = NULL;
+		}
+
+#endif
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ( (*((ushort *) (skb->data + 2) )) != 0) {
                         printk(KERN_DEBUG "TDATA_CONF error\n");
 		}
@@ -512,6 +836,10 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 		}
                 
 #endif		
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chan->queued--;
 
 		ictl.driver = dev->id;
@@ -523,7 +851,15 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 	case MSG_CONN_IND:
 		/*
 		 *  channel: 1st not used will do
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 *           if both are used we're in trouble
+=======
 		 *           if both are used we're in trouble 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 *           if both are used we're in trouble 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 */
 
 		if (!dev->b1->fsm_state)
@@ -531,12 +867,27 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 		else if (!dev->b2->fsm_state)
 			chan = dev->b2;
 		else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_INFO
+			       "Incoming connection: no channels available");
+
+			if ((len = capi_disc_req(*(ushort *)(skb->data), &skb2, CAUSE_NOCHAN)) > 0)
+				pcbit_l2_write(dev, MSG_DISC_REQ, refnum, skb2, len);
+			break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_INFO 
 			       "Incoming connection: no channels available");
 
 			if ((len = capi_disc_req(*(ushort*)(skb->data), &skb2, CAUSE_NOCHAN)) > 0)
 				pcbit_l2_write(dev, MSG_DISC_REQ, refnum, skb2, len);
 			break;  
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		cbdata.data.setup.CalledPN = NULL;
@@ -547,7 +898,15 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 
 		pcbit_fsm_event(dev, chan, EV_NET_SETUP, NULL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (pcbit_check_msn(dev, cbdata.data.setup.CallingPN))
+=======
 		if (pcbit_check_msn(dev, cbdata.data.setup.CallingPN)) 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (pcbit_check_msn(dev, cbdata.data.setup.CallingPN)) 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pcbit_fsm_event(dev, chan, EV_USR_PROCED_REQ, &cbdata);
 		else
 			pcbit_fsm_event(dev, chan, EV_USR_RELEASE_REQ, NULL);
@@ -555,26 +914,61 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 		kfree(cbdata.data.setup.CalledPN);
 		kfree(cbdata.data.setup.CallingPN);
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	case MSG_CONN_CONF:
+		/*
+=======
     
 	case MSG_CONN_CONF:
 		/* 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    
+	case MSG_CONN_CONF:
+		/* 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * We should be able to find the channel by the message
 		 * reference number. The current version of the firmware
 		 * doesn't sent the ref number correctly.
 		 */
 #ifdef DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_DEBUG "refnum=%04x b1=%04x b2=%04x\n", refnum,
+		       dev->b1->s_refnum,
+=======
 		printk(KERN_DEBUG "refnum=%04x b1=%04x b2=%04x\n", refnum, 
 		       dev->b1->s_refnum, 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_DEBUG "refnum=%04x b1=%04x b2=%04x\n", refnum, 
+		       dev->b1->s_refnum, 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       dev->b2->s_refnum);
 #endif
 		/* We just try to find a channel in the right state */
 
 		if (dev->b1->fsm_state == ST_CALL_INIT)
 			chan = dev->b1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		else {
+			if (dev->b2->s_refnum == ST_CALL_INIT)
+				chan = dev->b2;
+			else {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else { 		   
 			if (dev->b2->s_refnum == ST_CALL_INIT)
 				chan = dev->b2;
 			else {			
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				chan = NULL;
 				printk(KERN_WARNING "Connection Confirm - no channel in Call Init state\n");
 				break;
@@ -589,6 +983,23 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 				pcbit_fsm_event(dev, chan, EV_NET_CALL_PROC, NULL);
 			else
 				pcbit_fsm_event(dev, chan, EV_NET_SETUP_ACK, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		break;
+	case MSG_CONN_ACTV_IND:
+
+		if (!(chan = capi_channel(dev, skb))) {
+			printk(KERN_WARNING
+			       "CAPI header: unknown channel id\n");
+			break;
+		}
+
+		if (capi_decode_conn_actv_ind(chan, skb)) {
+			printk("error in capi_decode_conn_actv_ind\n");
+			/* pcbit_fsm_event(dev, chan, EV_ERROR, NULL); */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break; 
 	case MSG_CONN_ACTV_IND:
 
@@ -601,6 +1012,10 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 		if (capi_decode_conn_actv_ind(chan, skb)) {
 			printk("error in capi_decode_conn_actv_ind\n");
 		     /* pcbit_fsm_event(dev, chan, EV_ERROR, NULL); */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 		chan->r_refnum = refnum;
@@ -609,14 +1024,30 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 	case MSG_CONN_ACTV_CONF:
 
 		if (!(chan = capi_channel(dev, skb))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_WARNING
+=======
 			printk(KERN_WARNING 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "CAPI header: unknown channel id\n");
 			break;
 		}
 
 		if (capi_decode_conn_actv_conf(chan, skb) == 0)
 			pcbit_fsm_event(dev, chan, EV_NET_CONN_ACK, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 		
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			printk(KERN_DEBUG "decode_conn_actv_conf failed\n");
 		break;
@@ -624,7 +1055,15 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 	case  MSG_SELP_CONF:
 
 		if (!(chan = capi_channel(dev, skb))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_WARNING
+=======
 			printk(KERN_WARNING 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "CAPI header: unknown channel id\n");
 			break;
 		}
@@ -638,7 +1077,15 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 		break;
 	case MSG_ACT_TRANSP_CONF:
 		if (!(chan = capi_channel(dev, skb))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_WARNING
+=======
 			printk(KERN_WARNING 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "CAPI header: unknown channel id\n");
 			break;
 		}
@@ -650,7 +1097,15 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 	case MSG_DISC_IND:
 
 		if (!(chan = capi_channel(dev, skb))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_WARNING
+=======
 			printk(KERN_WARNING 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "CAPI header: unknown channel id\n");
 			break;
 		}
@@ -662,7 +1117,15 @@ void pcbit_l3_receive(struct pcbit_dev * dev, ulong msg,
 		break;
 	case MSG_DISC_CONF:
 		if (!(chan = capi_channel(dev, skb))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_WARNING
+=======
 			printk(KERN_WARNING 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "CAPI header: unknown channel id\n");
 			break;
 		}
@@ -711,24 +1174,53 @@ static int pcbit_stat(u_char __user *buf, int len, int driver, int channel)
 		stat_count = STATBUF_LEN - stat_st + stat_end;
 
 	/* FIXME: should we sleep and wait for more cookies ? */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (len > stat_count)
+=======
 	if (len > stat_count)            
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (len > stat_count)            
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		len = stat_count;
 
 	if (stat_st < stat_end)
 	{
 		if (copy_to_user(buf, statbuf + stat_st, len))
 			return -EFAULT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		stat_st += len;
+=======
 		stat_st += len;	   
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		stat_st += len;	   
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	else
 	{
 		if (len > STATBUF_LEN - stat_st)
 		{
 			if (copy_to_user(buf, statbuf + stat_st,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					 STATBUF_LEN - stat_st))
+				return -EFAULT;
+			if (copy_to_user(buf, statbuf,
+					 len - (STATBUF_LEN - stat_st)))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       STATBUF_LEN - stat_st))
 				return -EFAULT;
 			if (copy_to_user(buf, statbuf,
 				       len - (STATBUF_LEN - stat_st)))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return -EFAULT;
 
 			stat_st = len - (STATBUF_LEN - stat_st);
@@ -739,7 +1231,15 @@ static int pcbit_stat(u_char __user *buf, int len, int driver, int channel)
 				return -EFAULT;
 
 			stat_st += len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 			
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (stat_st == STATBUF_LEN)
 				stat_st = 0;
 		}
@@ -756,14 +1256,44 @@ static void pcbit_logstat(struct pcbit_dev *dev, char *str)
 	int i;
 	isdn_ctrl ictl;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = stat_end; i < strlen(str); i++)
+	{
+		statbuf[i] = str[i];
+=======
 	for (i=stat_end; i<strlen(str); i++)
 	{
 		statbuf[i]=str[i];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i=stat_end; i<strlen(str); i++)
+	{
+		statbuf[i]=str[i];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		stat_end = (stat_end + 1) % STATBUF_LEN;
 		if (stat_end == stat_st)
 			stat_st = (stat_st + 1) % STATBUF_LEN;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ictl.command = ISDN_STAT_STAVAIL;
+	ictl.driver = dev->id;
+	ictl.arg = strlen(str);
+	dev->dev_if->statcallb(&ictl);
+}
+
+void pcbit_state_change(struct pcbit_dev *dev, struct pcbit_chan *chan,
+			unsigned short i, unsigned short ev, unsigned short f)
+{
+	char buf[256];
+
+	sprintf(buf, "change on device: %d channel:%d\n%s -> %s -> %s\n",
+		dev->id, chan->id,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ictl.command=ISDN_STAT_STAVAIL;
 	ictl.driver=dev->id;
 	ictl.arg=strlen(str);
@@ -777,6 +1307,10 @@ void pcbit_state_change(struct pcbit_dev * dev, struct pcbit_chan * chan,
   
 	sprintf(buf, "change on device: %d channel:%d\n%s -> %s -> %s\n",
 		dev->id, chan->id, 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		isdn_state_table[i], strisdnevent(ev), isdn_state_table[f]
 		);
 
@@ -789,7 +1323,15 @@ void pcbit_state_change(struct pcbit_dev * dev, struct pcbit_chan * chan,
 
 static void set_running_timeout(unsigned long ptr)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct pcbit_dev *dev;
+=======
 	struct pcbit_dev * dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct pcbit_dev * dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef DEBUG
 	printk(KERN_DEBUG "set_running_timeout\n");
@@ -799,7 +1341,15 @@ static void set_running_timeout(unsigned long ptr)
 	wake_up_interruptible(&dev->set_running_wq);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int set_protocol_running(struct pcbit_dev *dev)
+=======
 static int set_protocol_running(struct pcbit_dev * dev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int set_protocol_running(struct pcbit_dev * dev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	isdn_ctrl ctl;
 
@@ -813,7 +1363,15 @@ static int set_protocol_running(struct pcbit_dev * dev)
 
 	dev->l2_state = L2_STARTING;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	writeb((0x80U | ((dev->rcv_seq & 0x07) << 3) | (dev->send_seq & 0x07)),
+=======
 	writeb((0x80U | ((dev->rcv_seq & 0x07) << 3) | (dev->send_seq & 0x07)), 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	writeb((0x80U | ((dev->rcv_seq & 0x07) << 3) | (dev->send_seq & 0x07)), 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       dev->sh_mem + BANK4);
 
 	add_timer(&dev->set_running_timer);
@@ -830,8 +1388,18 @@ static int set_protocol_running(struct pcbit_dev * dev)
 
 		dev->writeptr = dev->sh_mem;
 		dev->readptr = dev->sh_mem + BANK2;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		/* tell the good news to the upper layer */
+=======
     
 		/* tell the good news to the upper layer */  
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    
+		/* tell the good news to the upper layer */  
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ctl.driver = dev->id;
 		ctl.command = ISDN_STAT_RUN;
 
@@ -845,7 +1413,15 @@ static int set_protocol_running(struct pcbit_dev * dev)
 		dev->l2_state = L2_DOWN;
 
 #ifdef DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_DEBUG "Bank3 = %02x\n",
+=======
 		printk(KERN_DEBUG "Bank3 = %02x\n", 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_DEBUG "Bank3 = %02x\n", 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       readb(dev->sh_mem + BANK3));
 #endif
 		writeb(0x40, dev->sh_mem + BANK4);
@@ -862,6 +1438,18 @@ static int set_protocol_running(struct pcbit_dev * dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pcbit_ioctl(isdn_ctrl *ctl)
+{
+	struct pcbit_dev *dev;
+	struct pcbit_ioctl *cmd;
+
+	dev = finddev(ctl->driver);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pcbit_ioctl(isdn_ctrl* ctl)
 {
 	struct pcbit_dev * dev;
@@ -869,6 +1457,10 @@ static int pcbit_ioctl(isdn_ctrl* ctl)
 
 	dev = finddev(ctl->driver);
   
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dev)
 	{
 		printk(KERN_DEBUG "pcbit_ioctl: unknown device\n");
@@ -877,7 +1469,15 @@ static int pcbit_ioctl(isdn_ctrl* ctl)
 
 	cmd = (struct pcbit_ioctl *) ctl->parm.num;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (ctl->arg) {
+=======
 	switch(ctl->arg) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch(ctl->arg) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PCBIT_IOCTL_GETSTAT:
 		cmd->info.l2_status = dev->l2_state;
 		break;
@@ -890,7 +1490,15 @@ static int pcbit_ioctl(isdn_ctrl* ctl)
 
 		dev->writeptr = dev->sh_mem;
 		dev->readptr = dev->sh_mem + BANK2;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev->l2_state = L2_LOADING;
 		break;
 
@@ -907,21 +1515,49 @@ static int pcbit_ioctl(isdn_ctrl* ctl)
 		dev->loadptr = LOAD_ZONE_START;
 		dev->l2_state = L2_FWMODE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		break;
+=======
 		break; 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		break; 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PCBIT_IOCTL_ENDLOAD:
 		if (dev->l2_state == L2_RUNNING)
 			return -EBUSY;
 		dev->l2_state = L2_DOWN;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		break;
+
+	case PCBIT_IOCTL_SETBYTE:
+=======
 		break; 
 
 	case PCBIT_IOCTL_SETBYTE: 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		break; 
+
+	case PCBIT_IOCTL_SETBYTE: 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dev->l2_state == L2_RUNNING)
 			return -EBUSY;
 
 		/* check addr */
 		if (cmd->info.rdp_byte.addr > BANK4)
 			return -EFAULT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 		
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		writeb(cmd->info.rdp_byte.value, dev->sh_mem + cmd->info.rdp_byte.addr);
 		break;
 	case PCBIT_IOCTL_GETBYTE:
@@ -935,10 +1571,23 @@ static int pcbit_ioctl(isdn_ctrl* ctl)
 			printk("getbyte: invalid addr %04x\n", cmd->info.rdp_byte.addr);
 			return -EFAULT;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		cmd->info.rdp_byte.value = readb(dev->sh_mem + cmd->info.rdp_byte.addr);
+		break;
+	case PCBIT_IOCTL_RUNNING:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		
 		cmd->info.rdp_byte.value = readb(dev->sh_mem + cmd->info.rdp_byte.addr); 
 		break;
 	case PCBIT_IOCTL_RUNNING: 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dev->l2_state == L2_RUNNING)
 			return -EBUSY;
 		return set_protocol_running(dev);
@@ -972,25 +1621,55 @@ static int pcbit_ioctl(isdn_ctrl* ctl)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ *        MSN list handling
+ *
+ *        if null reject all calls
+ *        if first entry has null MSN accept all calls
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 
  *        MSN list handling
  *
  *        if null reject all calls
  *        if first entry has null MSN accept all calls 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 static void pcbit_clear_msn(struct pcbit_dev *dev)
 {
 	struct msn_entry *ptr, *back;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (ptr = dev->msn_list; ptr;)
+=======
 	for (ptr=dev->msn_list; ptr; )
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (ptr=dev->msn_list; ptr; )
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		back = ptr->next;
 		kfree(ptr);
 		ptr = back;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->msn_list = NULL;
+=======
 	dev->msn_list = NULL; 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev->msn_list = NULL; 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void pcbit_set_msn(struct pcbit_dev *dev, char *list)
@@ -1016,12 +1695,27 @@ static void pcbit_set_msn(struct pcbit_dev *dev, char *list)
 	}
 
 	if (dev->msn_list)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		for (back = dev->msn_list; back->next; back = back->next);
+
+	sp = list;
+
+	do {
+		cp = strchr(sp, ',');
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (back=dev->msn_list; back->next; back=back->next);
 	
 	sp = list;
 
 	do {
 		cp=strchr(sp, ',');
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (cp)
 			len = cp - sp;
 		else
@@ -1034,7 +1728,15 @@ static void pcbit_set_msn(struct pcbit_dev *dev, char *list)
 			return;
 		}
 		ptr->next = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 		
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ptr->msn = kmalloc(len, GFP_ATOMIC);
 		if (!ptr->msn) {
 			printk(KERN_WARNING "kmalloc failed\n");
@@ -1054,7 +1756,15 @@ static void pcbit_set_msn(struct pcbit_dev *dev, char *list)
 			back->next = ptr;
 		back = ptr;
 		sp += len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} while (cp);
+=======
 	} while(cp);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} while(cp);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1063,12 +1773,27 @@ static void pcbit_set_msn(struct pcbit_dev *dev, char *list)
 static int pcbit_check_msn(struct pcbit_dev *dev, char *msn)
 {
 	struct msn_entry *ptr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	for (ptr = dev->msn_list; ptr; ptr = ptr->next) {
+
+		if (ptr->msn == NULL)
+			return 1;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	
 	for (ptr=dev->msn_list; ptr; ptr=ptr->next) {
 
 		if (ptr->msn == NULL) 
 			return 1;
 		
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (strcmp(ptr->msn, msn) == 0)
 			return 1;
 	}

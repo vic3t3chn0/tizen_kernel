@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/capability.h>
 =======
+<<<<<<< HEAD
+#include <linux/capability.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "include/apparmor.h"
 #include "include/apparmorfs.h"
@@ -31,7 +35,11 @@
 <<<<<<< HEAD
 #include "include/resource.h"
 =======
+<<<<<<< HEAD
+#include "include/resource.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * aa_simple_write_to_buffer - common routine for getting policy from user
@@ -151,6 +159,9 @@ static const struct file_operations aa_fs_profile_remove = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int aa_fs_seq_show(struct seq_file *seq, void *v)
 {
 	struct aa_fs_entry *fs_file = seq->private;
@@ -311,6 +322,8 @@ static void __init aafs_remove_dir(struct aa_fs_entry *fs_dir)
 	}
 
 	aafs_remove_file(fs_dir);
+<<<<<<< HEAD
+=======
 =======
 /** Base file system setup **/
 
@@ -345,6 +358,7 @@ static int __init aafs_create(const char *name, int mask,
 
 	return IS_ERR(dentry) ? PTR_ERR(dentry) : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -357,6 +371,9 @@ void __init aa_destroy_aafs(void)
 <<<<<<< HEAD
 	aafs_remove_dir(&aa_fs_entry);
 =======
+<<<<<<< HEAD
+	aafs_remove_dir(&aa_fs_entry);
+=======
 	if (aa_fs_dentry) {
 		aafs_remove(".remove");
 		aafs_remove(".replace");
@@ -366,6 +383,7 @@ void __init aa_destroy_aafs(void)
 		aa_fs_dentry = NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -378,8 +396,12 @@ void __init aa_destroy_aafs(void)
 <<<<<<< HEAD
 static int __init aa_create_aafs(void)
 =======
+<<<<<<< HEAD
+static int __init aa_create_aafs(void)
+=======
 int __init aa_create_aafs(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int error;
 
@@ -389,12 +411,20 @@ int __init aa_create_aafs(void)
 <<<<<<< HEAD
 	if (aa_fs_entry.dentry) {
 =======
+<<<<<<< HEAD
+	if (aa_fs_entry.dentry) {
+=======
 	if (aa_fs_dentry) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		AA_ERROR("%s: AppArmor securityfs already exists\n", __func__);
 		return -EEXIST;
 	}
 
+<<<<<<< HEAD
+	/* Populate fs tree. */
+	error = aafs_create_dir(&aa_fs_entry, NULL);
+=======
 <<<<<<< HEAD
 	/* Populate fs tree. */
 	error = aafs_create_dir(&aa_fs_entry, NULL);
@@ -414,6 +444,7 @@ int __init aa_create_aafs(void)
 		goto error;
 	error = aafs_create(".remove", 0640, &aa_fs_profile_remove);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto error;
 

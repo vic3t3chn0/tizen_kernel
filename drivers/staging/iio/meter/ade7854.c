@@ -8,7 +8,14 @@
 
 #include <linux/interrupt.h>
 #include <linux/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/gpio.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/mutex.h>
 #include <linux/device.h>
@@ -16,6 +23,13 @@
 #include <linux/slab.h>
 #include <linux/sysfs.h>
 #include <linux/list.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../iio.h"
 #include "../sysfs.h"
@@ -29,7 +43,15 @@ static ssize_t ade7854_read_8bit(struct device *dev,
 	int ret;
 	u8 val = 0;
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 
 	ret = st->read_reg_8(dev, this_attr->address, &val);
@@ -46,7 +68,15 @@ static ssize_t ade7854_read_16bit(struct device *dev,
 	int ret;
 	u16 val = 0;
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 
 	ret = st->read_reg_16(dev, this_attr->address, &val);
@@ -63,7 +93,15 @@ static ssize_t ade7854_read_24bit(struct device *dev,
 	int ret;
 	u32 val;
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 
 	ret = st->read_reg_24(dev, this_attr->address, &val);
@@ -81,7 +119,15 @@ static ssize_t ade7854_read_32bit(struct device *dev,
 	u32 val = 0;
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = st->read_reg_32(dev, this_attr->address, &val);
 	if (ret)
@@ -97,7 +143,15 @@ static ssize_t ade7854_write_8bit(struct device *dev,
 {
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int ret;
 	long val;
@@ -118,7 +172,15 @@ static ssize_t ade7854_write_16bit(struct device *dev,
 {
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int ret;
 	long val;
@@ -139,7 +201,15 @@ static ssize_t ade7854_write_24bit(struct device *dev,
 {
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int ret;
 	long val;
@@ -160,7 +230,15 @@ static ssize_t ade7854_write_32bit(struct device *dev,
 {
 	struct iio_dev_attr *this_attr = to_iio_dev_attr(attr);
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int ret;
 	long val;
@@ -177,7 +255,15 @@ error_ret:
 static int ade7854_reset(struct device *dev)
 {
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 val;
 
 	st->read_reg_16(dev, ADE7854_CONFIG, &val);
@@ -426,7 +512,15 @@ static IIO_DEV_ATTR_CVAHR(ade7854_read_32bit,
 static int ade7854_set_irq(struct device *dev, bool enable)
 {
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int ret;
 	u32 irqen;
@@ -449,10 +543,23 @@ error_ret:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int ade7854_initial_setup(struct iio_dev *indio_dev)
+{
+	int ret;
+	struct device *dev = &indio_dev->dev;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ade7854_initial_setup(struct ade7854_state *st)
 {
 	int ret;
 	struct device *dev = &st->indio_dev->dev;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Disable IRQ */
 	ret = ade7854_set_irq(dev, false);
@@ -556,6 +663,23 @@ static const struct iio_info ade7854_info = {
 	.driver_module = THIS_MODULE,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int ade7854_probe(struct iio_dev *indio_dev, struct device *dev)
+{
+	int ret;
+	struct ade7854_state *st = iio_priv(indio_dev);
+	/* setup the industrialio driver allocated elements */
+	mutex_init(&st->buf_lock);
+
+	indio_dev->dev.parent = dev;
+	indio_dev->info = &ade7854_info;
+	indio_dev->modes = INDIO_DIRECT_MODE;
+
+	ret = iio_device_register(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ade7854_probe(struct ade7854_state *st, struct device *dev)
 {
 	int ret;
@@ -585,17 +709,37 @@ int ade7854_probe(struct ade7854_state *st, struct device *dev)
 	st->indio_dev->modes = INDIO_DIRECT_MODE;
 
 	ret = iio_device_register(st->indio_dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto error_free_dev;
 
 	/* Get the device into a sane initial state */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = ade7854_initial_setup(indio_dev);
+=======
 	ret = ade7854_initial_setup(st);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = ade7854_initial_setup(st);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto error_unreg_dev;
 
 	return 0;
 
 error_unreg_dev:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_device_unregister(indio_dev);
+error_free_dev:
+	iio_free_device(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iio_device_unregister(st->indio_dev);
 error_free_dev:
 	iio_free_device(st->indio_dev);
@@ -605,11 +749,24 @@ error_free_rx:
 	kfree(st->rx);
 error_free_st:
 	kfree(st);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
 EXPORT_SYMBOL(ade7854_probe);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int ade7854_remove(struct iio_dev *indio_dev)
+{
+	iio_device_unregister(indio_dev);
+	iio_free_device(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ade7854_remove(struct ade7854_state *st)
 {
 	struct iio_dev *indio_dev = st->indio_dev;
@@ -618,6 +775,10 @@ int ade7854_remove(struct ade7854_state *st)
 	kfree(st->tx);
 	kfree(st->rx);
 	kfree(st);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

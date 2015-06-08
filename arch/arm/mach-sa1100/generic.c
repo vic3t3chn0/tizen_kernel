@@ -12,7 +12,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -20,13 +24,20 @@
 <<<<<<< HEAD
 #include <linux/dma-mapping.h>
 =======
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pm.h>
 #include <linux/cpufreq.h>
 #include <linux/ioport.h>
 #include <linux/platform_device.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <video/sa1100fb.h>
 
 #include <asm/div64.h>
@@ -37,6 +48,8 @@
 
 #include <mach/hardware.h>
 #include <mach/irqs.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/div64.h>
 #include <mach/hardware.h>
@@ -46,6 +59,7 @@
 #include <asm/irq.h>
 #include <asm/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -148,6 +162,9 @@ static void sa1100_power_off(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sa11x0_restart(char mode, const char *cmd)
 {
 	if (mode == 's') {
@@ -159,8 +176,11 @@ void sa11x0_restart(char mode, const char *cmd)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void sa11x0_register_device(struct platform_device *dev, void *data)
 {
 	int err;
@@ -177,6 +197,10 @@ static struct resource sa11x0udc_resources[] = {
 	[0] = DEFINE_RES_MEM(__PREG(Ser0UDCCR), SZ_64K),
 	[1] = DEFINE_RES_IRQ(IRQ_Ser0UDC),
 =======
+<<<<<<< HEAD
+	[0] = DEFINE_RES_MEM(__PREG(Ser0UDCCR), SZ_64K),
+	[1] = DEFINE_RES_IRQ(IRQ_Ser0UDC),
+=======
 	[0] = {
 		.start	= __PREG(Ser0UDCCR),
 		.end	= __PREG(Ser0UDCCR) + 0xffff,
@@ -188,6 +212,7 @@ static struct resource sa11x0udc_resources[] = {
 		.flags	= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static u64 sa11x0udc_dma_mask = 0xffffffffUL;
@@ -208,6 +233,10 @@ static struct resource sa11x0uart1_resources[] = {
 	[0] = DEFINE_RES_MEM(__PREG(Ser1UTCR0), SZ_64K),
 	[1] = DEFINE_RES_IRQ(IRQ_Ser1UART),
 =======
+<<<<<<< HEAD
+	[0] = DEFINE_RES_MEM(__PREG(Ser1UTCR0), SZ_64K),
+	[1] = DEFINE_RES_IRQ(IRQ_Ser1UART),
+=======
 	[0] = {
 		.start	= __PREG(Ser1UTCR0),
 		.end	= __PREG(Ser1UTCR0) + 0xffff,
@@ -219,6 +248,7 @@ static struct resource sa11x0uart1_resources[] = {
 		.flags	= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device sa11x0uart1_device = {
@@ -229,6 +259,10 @@ static struct platform_device sa11x0uart1_device = {
 };
 
 static struct resource sa11x0uart3_resources[] = {
+<<<<<<< HEAD
+	[0] = DEFINE_RES_MEM(__PREG(Ser3UTCR0), SZ_64K),
+	[1] = DEFINE_RES_IRQ(IRQ_Ser3UART),
+=======
 <<<<<<< HEAD
 	[0] = DEFINE_RES_MEM(__PREG(Ser3UTCR0), SZ_64K),
 	[1] = DEFINE_RES_IRQ(IRQ_Ser3UART),
@@ -244,6 +278,7 @@ static struct resource sa11x0uart3_resources[] = {
 		.flags	= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device sa11x0uart3_device = {
@@ -254,6 +289,11 @@ static struct platform_device sa11x0uart3_device = {
 };
 
 static struct resource sa11x0mcp_resources[] = {
+<<<<<<< HEAD
+	[0] = DEFINE_RES_MEM(__PREG(Ser4MCCR0), SZ_64K),
+	[1] = DEFINE_RES_MEM(__PREG(Ser4MCCR1), 4),
+	[2] = DEFINE_RES_IRQ(IRQ_Ser4MCP),
+=======
 <<<<<<< HEAD
 	[0] = DEFINE_RES_MEM(__PREG(Ser4MCCR0), SZ_64K),
 	[1] = DEFINE_RES_MEM(__PREG(Ser4MCCR1), 4),
@@ -270,6 +310,7 @@ static struct resource sa11x0mcp_resources[] = {
 		.flags	= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static u64 sa11x0mcp_dma_mask = 0xffffffffUL;
@@ -286,6 +327,9 @@ static struct platform_device sa11x0mcp_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init sa11x0_ppc_configure_mcp(void)
 {
 	/* Setup the PPC unit for the MCP */
@@ -296,14 +340,21 @@ void __init sa11x0_ppc_configure_mcp(void)
 	PPSR &= ~(PPC_TXD4 | PPC_SCLK | PPC_SFRM);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sa11x0_register_mcp(struct mcp_plat_data *data)
 {
 	sa11x0_register_device(&sa11x0mcp_device, data);
 }
 
 static struct resource sa11x0ssp_resources[] = {
+<<<<<<< HEAD
+	[0] = DEFINE_RES_MEM(0x80070000, SZ_64K),
+	[1] = DEFINE_RES_IRQ(IRQ_Ser4SSP),
+=======
 <<<<<<< HEAD
 	[0] = DEFINE_RES_MEM(0x80070000, SZ_64K),
 	[1] = DEFINE_RES_IRQ(IRQ_Ser4SSP),
@@ -319,6 +370,7 @@ static struct resource sa11x0ssp_resources[] = {
 		.flags	= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static u64 sa11x0ssp_dma_mask = 0xffffffffUL;
@@ -339,6 +391,10 @@ static struct resource sa11x0fb_resources[] = {
 	[0] = DEFINE_RES_MEM(0xb0100000, SZ_64K),
 	[1] = DEFINE_RES_IRQ(IRQ_LCD),
 =======
+<<<<<<< HEAD
+	[0] = DEFINE_RES_MEM(0xb0100000, SZ_64K),
+	[1] = DEFINE_RES_IRQ(IRQ_LCD),
+=======
 	[0] = {
 		.start	= 0xb0100000,
 		.end	= 0xb010ffff,
@@ -350,6 +406,7 @@ static struct resource sa11x0fb_resources[] = {
 		.flags	= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device sa11x0fb_device = {
@@ -363,13 +420,19 @@ static struct platform_device sa11x0fb_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sa11x0_register_lcd(struct sa1100fb_mach_info *inf)
 {
 	sa11x0_register_device(&sa11x0fb_device, inf);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device sa11x0pcmcia_device = {
 	.name		= "sa11x0-pcmcia",
 	.id		= -1,
@@ -391,10 +454,15 @@ void sa11x0_register_mtd(struct flash_platform_data *flash,
 
 static struct resource sa11x0ir_resources[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE_RES_MEM(__PREG(Ser2UTCR0), 0x24),
 	DEFINE_RES_MEM(__PREG(Ser2HSCR0), 0x1c),
 	DEFINE_RES_MEM(__PREG(Ser2HSCR2), 0x04),
 	DEFINE_RES_IRQ(IRQ_Ser2ICP),
+<<<<<<< HEAD
+=======
 =======
 	{
 		.start	= __PREG(Ser2UTCR0),
@@ -414,6 +482,7 @@ static struct resource sa11x0ir_resources[] = {
 		.flags	= IORESOURCE_IRQ,
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device sa11x0ir_device = {
@@ -429,6 +498,9 @@ void sa11x0_register_irda(struct irda_platform_data *irda)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource sa1100_rtc_resources[] = {
 	DEFINE_RES_MEM(0x90010000, 0x40),
 	DEFINE_RES_IRQ_NAMED(IRQ_RTC1Hz, "rtc 1Hz"),
@@ -463,11 +535,14 @@ static struct platform_device sa11x0dma_device = {
 	},
 	.num_resources	= ARRAY_SIZE(sa11x0dma_resources),
 	.resource	= sa11x0dma_resources,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device sa11x0rtc_device = {
 	.name		= "sa1100-rtc",
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *sa11x0_devices[] __initdata = {
@@ -480,9 +555,14 @@ static struct platform_device *sa11x0_devices[] __initdata = {
 	&sa11x0rtc_device,
 	&sa11x0dma_device,
 =======
+<<<<<<< HEAD
+	&sa11x0rtc_device,
+	&sa11x0dma_device,
+=======
 	&sa11x0fb_device,
 	&sa11x0rtc_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init sa1100_init(void)
@@ -495,6 +575,8 @@ arch_initcall(sa1100_init);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void (*sa1100fb_backlight_power)(int on);
 void (*sa1100fb_lcd_power)(int on);
 
@@ -502,6 +584,7 @@ EXPORT_SYMBOL(sa1100fb_backlight_power);
 EXPORT_SYMBOL(sa1100fb_lcd_power);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Common I/O mapping:
@@ -559,8 +642,12 @@ void __init sa1100_map_io(void)
 <<<<<<< HEAD
 void sa1110_mb_disable(void)
 =======
+<<<<<<< HEAD
+void sa1110_mb_disable(void)
+=======
 void __init sa1110_mb_disable(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 
@@ -582,8 +669,12 @@ void __init sa1110_mb_disable(void)
 <<<<<<< HEAD
 void sa1110_mb_enable(void)
 =======
+<<<<<<< HEAD
+void sa1110_mb_enable(void)
+=======
 void __devinit sa1110_mb_enable(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 

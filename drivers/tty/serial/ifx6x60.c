@@ -36,6 +36,13 @@
  *	you need to use this driver for another platform.
  *
  *****************************************************************************/
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/termios.h>
 #include <linux/tty.h>
@@ -551,7 +558,14 @@ static void ifx_port_shutdown(struct tty_port *port)
 		container_of(port, struct ifx_spi_device, tty_port);
 
 	mrdy_set_low(ifx_dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	del_timer(&ifx_dev->spi_timer);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	del_timer(&ifx_dev->spi_timer);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_bit(IFX_SPI_STATE_TIMER_PENDING, &ifx_dev->flags);
 	tasklet_kill(&ifx_dev->io_work_tasklet);
 }
@@ -1334,7 +1348,14 @@ MODULE_DEVICE_TABLE(spi, ifx_id_table);
 static const struct spi_driver ifx_spi_driver = {
 	.driver = {
 		.name = DRVNAME,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		.bus = &spi_bus_type,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.bus = &spi_bus_type,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pm = &ifx_spi_pm,
 		.owner = THIS_MODULE},
 	.probe = ifx_spi_spi_probe,
@@ -1376,12 +1397,24 @@ static int __init ifx_spi_init(void)
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tty_drv->driver_name = DRVNAME;
+	tty_drv->name = TTYNAME;
+	tty_drv->minor_start = IFX_SPI_TTY_ID;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tty_drv->magic = TTY_DRIVER_MAGIC;
 	tty_drv->owner = THIS_MODULE;
 	tty_drv->driver_name = DRVNAME;
 	tty_drv->name = TTYNAME;
 	tty_drv->minor_start = IFX_SPI_TTY_ID;
 	tty_drv->num = 1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tty_drv->type = TTY_DRIVER_TYPE_SERIAL;
 	tty_drv->subtype = SERIAL_TYPE_NORMAL;
 	tty_drv->flags = TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV;

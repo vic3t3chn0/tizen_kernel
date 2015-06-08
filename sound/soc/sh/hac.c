@@ -269,8 +269,12 @@ static int hac_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops hac_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops hac_dai_ops = {
+=======
 static struct snd_soc_dai_ops hac_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= hac_hw_params,
 };
 
@@ -339,6 +343,9 @@ static struct platform_driver hac_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(hac_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(hac_pcm_driver);
+=======
 static int __init sh4_hac_pcm_init(void)
 {
 	return platform_driver_register(&hac_pcm_driver);
@@ -351,6 +358,7 @@ static void __exit sh4_hac_pcm_exit(void)
 }
 module_exit(sh4_hac_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("SuperH onchip HAC (AC97) audio driver");

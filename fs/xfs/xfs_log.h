@@ -55,6 +55,8 @@ static inline xfs_lsn_t	_lsn_cmp(xfs_lsn_t lsn1, xfs_lsn_t lsn2)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Flags to xfs_log_reserve()
  *
  *	XFS_LOG_PERM_RESERV: Permanent reservation.  When writes are
@@ -65,6 +67,7 @@ static inline xfs_lsn_t	_lsn_cmp(xfs_lsn_t lsn1, xfs_lsn_t lsn2)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Flags to xfs_log_force()
  *
  *	XFS_LOG_SYNC:	Synchronous force in-core log to disk
@@ -143,8 +146,12 @@ void	xfs_log_item_init(struct xfs_mount	*mp,
 <<<<<<< HEAD
 			const struct xfs_item_ops *ops);
 =======
+<<<<<<< HEAD
+			const struct xfs_item_ops *ops);
+=======
 			struct xfs_item_ops	*ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 xfs_lsn_t xfs_log_done(struct xfs_mount *mp,
 		       struct xlog_ticket *ticket,
@@ -171,9 +178,14 @@ int	  xfs_log_mount_finish(struct xfs_mount *mp);
 xfs_lsn_t xlog_assign_tail_lsn(struct xfs_mount *mp);
 void	  xfs_log_space_wake(struct xfs_mount *mp);
 =======
+<<<<<<< HEAD
+xfs_lsn_t xlog_assign_tail_lsn(struct xfs_mount *mp);
+void	  xfs_log_space_wake(struct xfs_mount *mp);
+=======
 void	  xfs_log_move_tail(struct xfs_mount	*mp,
 			    xfs_lsn_t		tail_lsn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int	  xfs_log_notify(struct xfs_mount	*mp,
 			 struct xlog_in_core	*iclog,
 			 xfs_log_callback_t	*callback_entry);
@@ -189,6 +201,11 @@ int	  xfs_log_reserve(struct xfs_mount *mp,
 			  uint		   t_type);
 int	  xfs_log_regrant(struct xfs_mount *mp, struct xlog_ticket *tic);
 =======
+<<<<<<< HEAD
+			  bool		   permanent,
+			  uint		   t_type);
+int	  xfs_log_regrant(struct xfs_mount *mp, struct xlog_ticket *tic);
+=======
 			  uint		   flags,
 			  uint		   t_type);
 int	  xfs_log_write(struct xfs_mount *mp,
@@ -197,6 +214,7 @@ int	  xfs_log_write(struct xfs_mount *mp,
 			struct xlog_ticket *ticket,
 			xfs_lsn_t	 *start_lsn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int	  xfs_log_unmount_write(struct xfs_mount *mp);
 void      xfs_log_unmount(struct xfs_mount *mp);
 int	  xfs_log_force_umount(struct xfs_mount *mp, int logerror);
@@ -210,9 +228,13 @@ void	  xfs_log_ticket_put(struct xlog_ticket *ticket);
 <<<<<<< HEAD
 int	xfs_log_commit_cil(struct xfs_mount *mp, struct xfs_trans *tp,
 =======
+<<<<<<< HEAD
+int	xfs_log_commit_cil(struct xfs_mount *mp, struct xfs_trans *tp,
+=======
 void	xfs_log_commit_cil(struct xfs_mount *mp, struct xfs_trans *tp,
 				struct xfs_log_vec *log_vector,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				xfs_lsn_t *commit_lsn, int flags);
 bool	xfs_log_item_in_current_chkpt(struct xfs_log_item *lip);
 

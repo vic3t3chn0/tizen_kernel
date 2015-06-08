@@ -565,8 +565,16 @@ static int cb_pcidas_attach(struct comedi_device *dev,
 	int index;
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	printk("comedi%d: cb_pcidas: ", dev->minor);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi%d: cb_pcidas: ", dev->minor);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Allocate the private structure area.
  */
@@ -576,7 +584,14 @@ static int cb_pcidas_attach(struct comedi_device *dev,
 /*
  * Probe the device to determine what device in the series it is.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	printk("\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for_each_pci_dev(pcidev) {
 		/*  is it not a computer boards card? */
@@ -600,20 +615,48 @@ static int cb_pcidas_attach(struct comedi_device *dev,
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_err(dev->hw_dev, "No supported ComputerBoards/MeasurementComputing card found on requested position\n");
+=======
 	printk("No supported ComputerBoards/MeasurementComputing card found on "
 	       "requested position\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("No supported ComputerBoards/MeasurementComputing card found on "
+	       "requested position\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -EIO;
 
 found:
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "Found %s on bus %i, slot %i\n",
+		cb_pcidas_boards[index].name, pcidev->bus->number,
+		PCI_SLOT(pcidev->devfn));
+=======
 	printk("Found %s on bus %i, slot %i\n", cb_pcidas_boards[index].name,
 	       pcidev->bus->number, PCI_SLOT(pcidev->devfn));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("Found %s on bus %i, slot %i\n", cb_pcidas_boards[index].name,
+	       pcidev->bus->number, PCI_SLOT(pcidev->devfn));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Enable PCI device and reserve I/O ports.
 	 */
 	if (comedi_pci_enable(pcidev, "cb_pcidas")) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err(dev->hw_dev, "Failed to enable PCI device and request regions\n");
+=======
 		printk(" Failed to enable PCI device and request regions\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(" Failed to enable PCI device and request regions\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 	/*
@@ -639,7 +682,16 @@ found:
 	/*  get irq */
 	if (request_irq(devpriv->pci_dev->irq, cb_pcidas_interrupt,
 			IRQF_SHARED, "cb_pcidas", dev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_dbg(dev->hw_dev, "unable to allocate irq %d\n",
+			devpriv->pci_dev->irq);
+=======
 		printk(" unable to allocate irq %d\n", devpriv->pci_dev->irq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(" unable to allocate irq %d\n", devpriv->pci_dev->irq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 	dev->irq = devpriv->pci_dev->irq;
@@ -768,7 +820,14 @@ found:
  */
 static int cb_pcidas_detach(struct comedi_device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	printk("comedi%d: cb_pcidas: remove\n", dev->minor);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi%d: cb_pcidas: remove\n", dev->minor);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (devpriv) {
 		if (devpriv->s5933_config) {
@@ -776,8 +835,18 @@ static int cb_pcidas_detach(struct comedi_device *dev)
 			outl(INTCSR_INBOX_INTR_STATUS,
 			     devpriv->s5933_config + AMCC_OP_REG_INTCSR);
 #ifdef CB_PCIDAS_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_dbg(dev->hw_dev, "detaching, incsr is 0x%x\n",
+				inl(devpriv->s5933_config + AMCC_OP_REG_INTCSR));
+=======
 			printk("detaching, incsr is 0x%x\n",
 			       inl(devpriv->s5933_config + AMCC_OP_REG_INTCSR));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk("detaching, incsr is 0x%x\n",
+			       inl(devpriv->s5933_config + AMCC_OP_REG_INTCSR));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 		}
 	}
@@ -858,7 +927,16 @@ static int ai_config_calibration_source(struct comedi_device *dev,
 	unsigned int source = data[1];
 
 	if (source >= num_calibration_sources) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err(dev->hw_dev, "invalid calibration source: %i\n",
+			source);
+=======
 		printk("invalid calibration source: %i\n", source);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk("invalid calibration source: %i\n", source);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -1279,7 +1357,15 @@ static int cb_pcidas_ai_cmd(struct comedi_device *dev,
 	outw(bits, devpriv->control_status + ADCMUX_CONT);
 
 #ifdef CB_PCIDAS_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "comedi: sent 0x%x to adcmux control\n", bits);
+=======
 	printk("comedi: sent 0x%x to adcmux control\n", bits);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi: sent 0x%x to adcmux control\n", bits);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	/*  load counters */
@@ -1306,7 +1392,16 @@ static int cb_pcidas_ai_cmd(struct comedi_device *dev,
 		devpriv->adc_fifo_bits |= INT_FHF;	/* interrupt fifo half full */
 	}
 #ifdef CB_PCIDAS_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "comedi: adc_fifo_bits are 0x%x\n",
+		devpriv->adc_fifo_bits);
+=======
 	printk("comedi: adc_fifo_bits are 0x%x\n", devpriv->adc_fifo_bits);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi: adc_fifo_bits are 0x%x\n", devpriv->adc_fifo_bits);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/*  enable (and clear) interrupts */
 	outw(devpriv->adc_fifo_bits | EOAI | INT | LADFUL,
@@ -1332,7 +1427,15 @@ static int cb_pcidas_ai_cmd(struct comedi_device *dev,
 		bits |= BURSTE;
 	outw(bits, devpriv->control_status + TRIG_CONTSTAT);
 #ifdef CB_PCIDAS_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "comedi: sent 0x%x to trig control\n", bits);
+=======
 	printk("comedi: sent 0x%x to trig control\n", bits);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi: sent 0x%x to trig control\n", bits);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	return 0;
@@ -1549,7 +1652,16 @@ static int cb_pcidas_ao_inttrig(struct comedi_device *dev,
 	spin_lock_irqsave(&dev->spinlock, flags);
 	devpriv->adc_fifo_bits |= DAEMIE | DAHFIE;
 #ifdef CB_PCIDAS_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "comedi: adc_fifo_bits are 0x%x\n",
+		devpriv->adc_fifo_bits);
+=======
 	printk("comedi: adc_fifo_bits are 0x%x\n", devpriv->adc_fifo_bits);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi: adc_fifo_bits are 0x%x\n", devpriv->adc_fifo_bits);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/*  enable and clear interrupts */
 	outw(devpriv->adc_fifo_bits | DAEMI | DAHFI,
@@ -1559,7 +1671,16 @@ static int cb_pcidas_ao_inttrig(struct comedi_device *dev,
 	devpriv->ao_control_bits |= DAC_START | DACEN | DAC_EMPTY;
 	outw(devpriv->ao_control_bits, devpriv->control_status + DAC_CSR);
 #ifdef CB_PCIDAS_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "comedi: sent 0x%x to dac control\n",
+		devpriv->ao_control_bits);
+=======
 	printk("comedi: sent 0x%x to dac control\n", devpriv->ao_control_bits);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi: sent 0x%x to dac control\n", devpriv->ao_control_bits);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	spin_unlock_irqrestore(&dev->spinlock, flags);
 
@@ -1587,8 +1708,19 @@ static irqreturn_t cb_pcidas_interrupt(int irq, void *d)
 
 	s5933_status = inl(devpriv->s5933_config + AMCC_OP_REG_INTCSR);
 #ifdef CB_PCIDAS_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "intcsr 0x%x\n", s5933_status);
+	dev_dbg(dev->hw_dev, "mbef 0x%x\n",
+		inl(devpriv->s5933_config + AMCC_OP_REG_MBEF));
+=======
 	printk("intcsr 0x%x\n", s5933_status);
 	printk("mbef 0x%x\n", inl(devpriv->s5933_config + AMCC_OP_REG_MBEF));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("intcsr 0x%x\n", s5933_status);
+	printk("mbef 0x%x\n", inl(devpriv->s5933_config + AMCC_OP_REG_MBEF));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	if ((INTCSR_INTR_ASSERTED & s5933_status) == 0)

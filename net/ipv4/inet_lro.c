@@ -149,9 +149,13 @@ static void lro_init_desc(struct net_lro_desc *lro_desc, struct sk_buff *skb,
 <<<<<<< HEAD
 			  struct iphdr *iph, struct tcphdr *tcph)
 =======
+<<<<<<< HEAD
+			  struct iphdr *iph, struct tcphdr *tcph)
+=======
 			  struct iphdr *iph, struct tcphdr *tcph,
 			  u16 vlan_tag, struct vlan_group *vgrp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int nr_frags;
 	__be32 *ptr;
@@ -179,9 +183,12 @@ static void lro_init_desc(struct net_lro_desc *lro_desc, struct sk_buff *skb,
 	lro_desc->mss = tcp_data_len;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	lro_desc->vgrp = vgrp;
 	lro_desc->vlan_tag = vlan_tag;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lro_desc->active = 1;
 
 	lro_desc->data_csum = lro_tcp_data_csum(iph, tcph,
@@ -255,11 +262,16 @@ static void lro_add_frags(struct net_lro_desc *lro_desc,
 
 	skb_frags[0].page_offset += hlen;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_frag_size_sub(&skb_frags[0], hlen);
 
 	while (tcp_data_len > 0) {
 		*(lro_desc->next_frag) = *skb_frags;
 		tcp_data_len -= skb_frag_size(skb_frags);
+<<<<<<< HEAD
+=======
 =======
 	skb_frags[0].size -= hlen;
 
@@ -267,6 +279,7 @@ static void lro_add_frags(struct net_lro_desc *lro_desc,
 		*(lro_desc->next_frag) = *skb_frags;
 		tcp_data_len -= skb_frags->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		lro_desc->next_frag++;
 		skb_frags++;
 		skb_shinfo(skb)->nr_frags++;
@@ -325,10 +338,15 @@ static void lro_flush(struct net_lro_mgr *lro_mgr,
 	skb_shinfo(lro_desc->parent)->gso_size = lro_desc->mss;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (lro_mgr->features & LRO_F_NAPI)
 		netif_receive_skb(lro_desc->parent);
 	else
 		netif_rx(lro_desc->parent);
+<<<<<<< HEAD
+=======
 =======
 	if (lro_desc->vgrp) {
 		if (lro_mgr->features & LRO_F_NAPI)
@@ -347,6 +365,7 @@ static void lro_flush(struct net_lro_mgr *lro_mgr,
 			netif_rx(lro_desc->parent);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	LRO_INC_STATS(lro_mgr, flushed);
 	lro_clear_desc(lro_desc);
@@ -356,8 +375,12 @@ static int __lro_proc_skb(struct net_lro_mgr *lro_mgr, struct sk_buff *skb,
 <<<<<<< HEAD
 			  void *priv)
 =======
+<<<<<<< HEAD
+			  void *priv)
+=======
 			  struct vlan_group *vgrp, u16 vlan_tag, void *priv)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_lro_desc *lro_desc;
 	struct iphdr *iph;
@@ -389,8 +412,12 @@ static int __lro_proc_skb(struct net_lro_mgr *lro_mgr, struct sk_buff *skb,
 <<<<<<< HEAD
 		lro_init_desc(lro_desc, skb, iph, tcph);
 =======
+<<<<<<< HEAD
+		lro_init_desc(lro_desc, skb, iph, tcph);
+=======
 		lro_init_desc(lro_desc, skb, iph, tcph, vlan_tag, vgrp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		LRO_INC_STATS(lro_mgr, aggregated);
 		return 0;
 	}
@@ -448,8 +475,12 @@ static struct sk_buff *lro_gen_skb(struct net_lro_mgr *lro_mgr,
 <<<<<<< HEAD
 		data_len -= skb_frag_size(frags);
 =======
+<<<<<<< HEAD
+		data_len -= skb_frag_size(frags);
+=======
 		data_len -= frags->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		skb_frags++;
 		frags++;
 		skb_shinfo(skb)->nr_frags++;
@@ -459,8 +490,12 @@ static struct sk_buff *lro_gen_skb(struct net_lro_mgr *lro_mgr,
 <<<<<<< HEAD
 	skb_frag_size_sub(&skb_shinfo(skb)->frags[0], hdr_len);
 =======
+<<<<<<< HEAD
+	skb_frag_size_sub(&skb_shinfo(skb)->frags[0], hdr_len);
+=======
 	skb_shinfo(skb)->frags[0].size -= hdr_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb->ip_summed = ip_summed;
 	skb->csum = sum;
@@ -474,9 +509,13 @@ static struct sk_buff *__lro_proc_segment(struct net_lro_mgr *lro_mgr,
 <<<<<<< HEAD
 					  void *priv, __wsum sum)
 =======
+<<<<<<< HEAD
+					  void *priv, __wsum sum)
+=======
 					  struct vlan_group *vgrp,
 					  u16 vlan_tag, void *priv, __wsum sum)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_lro_desc *lro_desc;
 	struct iphdr *iph;
@@ -494,8 +533,12 @@ static struct sk_buff *__lro_proc_segment(struct net_lro_mgr *lro_mgr,
 <<<<<<< HEAD
 		mac_hdr = skb_frag_address(frags);
 =======
+<<<<<<< HEAD
+		mac_hdr = skb_frag_address(frags);
+=======
 		mac_hdr = page_address(frags->page) + frags->page_offset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out1;
 	}
 
@@ -529,8 +572,12 @@ static struct sk_buff *__lro_proc_segment(struct net_lro_mgr *lro_mgr,
 <<<<<<< HEAD
 		lro_init_desc(lro_desc, skb, iph, tcph);
 =======
+<<<<<<< HEAD
+		lro_init_desc(lro_desc, skb, iph, tcph);
+=======
 		lro_init_desc(lro_desc, skb, iph, tcph, 0, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		LRO_INC_STATS(lro_mgr, aggregated);
 		return NULL;
 	}
@@ -567,8 +614,12 @@ void lro_receive_skb(struct net_lro_mgr *lro_mgr,
 <<<<<<< HEAD
 	if (__lro_proc_skb(lro_mgr, skb, priv)) {
 =======
+<<<<<<< HEAD
+	if (__lro_proc_skb(lro_mgr, skb, priv)) {
+=======
 	if (__lro_proc_skb(lro_mgr, skb, NULL, 0, priv)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (lro_mgr->features & LRO_F_NAPI)
 			netif_receive_skb(skb);
 		else
@@ -577,6 +628,8 @@ void lro_receive_skb(struct net_lro_mgr *lro_mgr,
 }
 EXPORT_SYMBOL(lro_receive_skb);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void lro_vlan_hwaccel_receive_skb(struct net_lro_mgr *lro_mgr,
@@ -595,6 +648,7 @@ void lro_vlan_hwaccel_receive_skb(struct net_lro_mgr *lro_mgr,
 EXPORT_SYMBOL(lro_vlan_hwaccel_receive_skb);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void lro_receive_frags(struct net_lro_mgr *lro_mgr,
 		       struct skb_frag_struct *frags,
 		       int len, int true_size, void *priv, __wsum sum)
@@ -604,9 +658,13 @@ void lro_receive_frags(struct net_lro_mgr *lro_mgr,
 <<<<<<< HEAD
 	skb = __lro_proc_segment(lro_mgr, frags, len, true_size, priv, sum);
 =======
+<<<<<<< HEAD
+	skb = __lro_proc_segment(lro_mgr, frags, len, true_size, priv, sum);
+=======
 	skb = __lro_proc_segment(lro_mgr, frags, len, true_size, NULL, 0,
 				 priv, sum);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!skb)
 		return;
 
@@ -617,6 +675,8 @@ void lro_receive_frags(struct net_lro_mgr *lro_mgr,
 }
 EXPORT_SYMBOL(lro_receive_frags);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void lro_vlan_hwaccel_receive_frags(struct net_lro_mgr *lro_mgr,
@@ -640,6 +700,7 @@ void lro_vlan_hwaccel_receive_frags(struct net_lro_mgr *lro_mgr,
 EXPORT_SYMBOL(lro_vlan_hwaccel_receive_frags);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void lro_flush_all(struct net_lro_mgr *lro_mgr)
 {
 	int i;

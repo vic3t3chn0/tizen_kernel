@@ -100,7 +100,11 @@ mkdir -p "$kernel_headers_dir/usr/share/doc/$kernel_headers_packagename"
 <<<<<<< HEAD
 mkdir -p "$kernel_headers_dir/lib/modules/$version/"
 =======
+<<<<<<< HEAD
+mkdir -p "$kernel_headers_dir/lib/modules/$version/"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 if [ "$ARCH" = "um" ] ; then
 	mkdir -p "$tmpdir/usr/lib/uml/modules/$version" "$tmpdir/usr/bin"
 fi
@@ -129,8 +133,14 @@ if grep -q '^CONFIG_MODULES=y' .config ; then
 	rm -f "$tmpdir/lib/modules/$version/build"
 	rm -f "$tmpdir/lib/modules/$version/source"
 =======
+<<<<<<< HEAD
+	INSTALL_MOD_PATH="$tmpdir" $MAKE KBUILD_SRC= modules_install
+	rm -f "$tmpdir/lib/modules/$version/build"
+	rm -f "$tmpdir/lib/modules/$version/source"
+=======
 	INSTALL_MOD_PATH="$tmpdir" make KBUILD_SRC= modules_install
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if [ "$ARCH" = "um" ] ; then
 		mv "$tmpdir/lib/modules/$version"/* "$tmpdir/usr/lib/uml/modules/$version/"
 		rmdir "$tmpdir/lib/modules/$version"
@@ -138,14 +148,20 @@ if grep -q '^CONFIG_MODULES=y' .config ; then
 fi
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 if [ "$ARCH" != "um" ]; then
 	$MAKE headers_check KBUILD_SRC=
 	$MAKE headers_install KBUILD_SRC= INSTALL_HDR_PATH="$libc_headers_dir/usr"
 fi
+<<<<<<< HEAD
+=======
 =======
 make headers_check
 make headers_install INSTALL_HDR_PATH="$libc_headers_dir/usr"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # Install the maintainer scripts
 # Note: hook scripts under /etc/kernel are also executed by official Debian
@@ -265,7 +281,11 @@ mkdir -p "$destdir"
 <<<<<<< HEAD
 ln -sf "/usr/src/linux-headers-$version" "$kernel_headers_dir/lib/modules/$version/build"
 =======
+<<<<<<< HEAD
+ln -sf "/usr/src/linux-headers-$version" "$kernel_headers_dir/lib/modules/$version/build"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 rm -f "$objtree/debian/hdrsrcfiles" "$objtree/debian/hdrobjfiles"
 arch=$(dpkg --print-architecture)
 
@@ -282,9 +302,12 @@ EOF
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 create_package "$kernel_headers_packagename" "$kernel_headers_dir"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Do we have firmware? Move it out of the way and build it into a package.
 if [ -e "$tmpdir/lib/firmware" ]; then
 	mv "$tmpdir/lib/firmware" "$fwdir/lib/"
@@ -312,14 +335,20 @@ Description: Linux support headers for userspace development
 EOF
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 if [ "$ARCH" != "um" ]; then
 	create_package "$kernel_headers_packagename" "$kernel_headers_dir"
 	create_package "$libc_headers_packagename" "$libc_headers_dir"
 fi
 
+<<<<<<< HEAD
+=======
 =======
 create_package "$libc_headers_packagename" "$libc_headers_dir"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 create_package "$packagename" "$tmpdir"
 
 exit 0

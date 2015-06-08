@@ -15,7 +15,11 @@ config UNICORE32
 <<<<<<< HEAD
 	select GENERIC_IOMAP
 =======
+<<<<<<< HEAD
+	select GENERIC_IOMAP
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  UniCore-32 is 32-bit Instruction Set Architecture,
 	  including a series of low-power-consumption RISC chip
@@ -36,10 +40,13 @@ config GENERIC_CSUM
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config GENERIC_IOMAP
 	def_bool y
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NO_IOPORT
 	bool
 
@@ -247,8 +254,12 @@ config I2C_BATTERY_BQ27200
 <<<<<<< HEAD
 	select I2C_PUV3
 =======
+<<<<<<< HEAD
+	select I2C_PUV3
+=======
 	select PUV3_I2C
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select POWER_SUPPLY
 	select BATTERY_BQ27x00
 
@@ -257,8 +268,12 @@ config I2C_EEPROM_AT24
 <<<<<<< HEAD
 	select I2C_PUV3
 =======
+<<<<<<< HEAD
+	select I2C_PUV3
+=======
 	select PUV3_I2C
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MISC_DEVICES
 	select EEPROM_AT24
 

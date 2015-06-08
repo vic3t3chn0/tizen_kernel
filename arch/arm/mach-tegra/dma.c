@@ -37,7 +37,12 @@
 #include "apbio.h"
 
 =======
+<<<<<<< HEAD
+#include "apbio.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define APB_DMA_GEN				0x000
 #define GEN_ENABLE				(1<<31)
 
@@ -57,9 +62,12 @@
 #define CSR_REQ_SEL_SHIFT			16
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define CSR_REQ_SEL_MASK			(0x1F<<CSR_REQ_SEL_SHIFT)
 #define CSR_REQ_SEL_INVALID			(31<<CSR_REQ_SEL_SHIFT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CSR_WCOUNT_SHIFT			2
 #define CSR_WCOUNT_MASK				0xFFFC
 
@@ -114,6 +122,9 @@
 #define NV_DMA_MAX_TRASFER_SIZE 0x10000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned int ahb_addr_wrap_table[8] = {
 	0, 32, 64, 128, 256, 512, 1024, 2048
 };
@@ -125,6 +136,8 @@ static const unsigned int apb_addr_wrap_table[8] = {
 static const unsigned int bus_width_table[5] = {
 	8, 16, 32, 64, 128
 };
+<<<<<<< HEAD
+=======
 =======
 const unsigned int ahb_addr_wrap_table[8] = {
 	0, 32, 64, 128, 256, 512, 1024, 2048
@@ -134,6 +147,7 @@ const unsigned int apb_addr_wrap_table[8] = {0, 1, 2, 4, 8, 16, 32, 64};
 
 const unsigned int bus_width_table[5] = {8, 16, 32, 64, 128};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define TEGRA_DMA_NAME_SIZE 16
 struct tegra_dma_channel {
@@ -154,7 +168,11 @@ static DEFINE_MUTEX(tegra_dma_lock);
 <<<<<<< HEAD
 static DEFINE_SPINLOCK(enable_lock);
 =======
+<<<<<<< HEAD
+static DEFINE_SPINLOCK(enable_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static DECLARE_BITMAP(channel_usage, NV_DMA_MAX_CHANNELS);
 static struct tegra_dma_channel dma_channels[NV_DMA_MAX_CHANNELS];
@@ -186,8 +204,12 @@ void tegra_dma_dequeue(struct tegra_dma_channel *ch)
 <<<<<<< HEAD
 static void tegra_dma_stop(struct tegra_dma_channel *ch)
 =======
+<<<<<<< HEAD
+static void tegra_dma_stop(struct tegra_dma_channel *ch)
+=======
 void tegra_dma_stop(struct tegra_dma_channel *ch)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 csr;
 	u32 status;
@@ -208,10 +230,15 @@ void tegra_dma_stop(struct tegra_dma_channel *ch)
 static int tegra_dma_cancel(struct tegra_dma_channel *ch)
 {
 =======
+<<<<<<< HEAD
+static int tegra_dma_cancel(struct tegra_dma_channel *ch)
+{
+=======
 int tegra_dma_cancel(struct tegra_dma_channel *ch)
 {
 	u32 csr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long irq_flags;
 
 	spin_lock_irqsave(&ch->lock, irq_flags);
@@ -220,12 +247,15 @@ int tegra_dma_cancel(struct tegra_dma_channel *ch)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	csr = readl(ch->addr + APB_DMA_CHAN_CSR);
 	csr &= ~CSR_REQ_SEL_MASK;
 	csr |= CSR_REQ_SEL_INVALID;
 	writel(csr, ch->addr + APB_DMA_CHAN_CSR);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tegra_dma_stop(ch);
 
 	spin_unlock_irqrestore(&ch->lock, irq_flags);
@@ -233,6 +263,9 @@ int tegra_dma_cancel(struct tegra_dma_channel *ch)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int get_channel_status(struct tegra_dma_channel *ch,
 			struct tegra_dma_req *req, bool is_stop_dma)
 {
@@ -298,17 +331,23 @@ static unsigned int dma_active_count(struct tegra_dma_channel *ch,
 int tegra_dma_dequeue_req(struct tegra_dma_channel *ch,
 	struct tegra_dma_req *_req)
 {
+<<<<<<< HEAD
+=======
 =======
 int tegra_dma_dequeue_req(struct tegra_dma_channel *ch,
 	struct tegra_dma_req *_req)
 {
 	unsigned int csr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int status;
 	struct tegra_dma_req *req = NULL;
 	int found = 0;
 	unsigned long irq_flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int stop = 0;
 
 	spin_lock_irqsave(&ch->lock, irq_flags);
@@ -316,12 +355,15 @@ int tegra_dma_dequeue_req(struct tegra_dma_channel *ch,
 	if (list_entry(ch->list.next, struct tegra_dma_req, node) == _req)
 		stop = 1;
 
+<<<<<<< HEAD
+=======
 =======
 	int to_transfer;
 	int req_transfer_count;
 
 	spin_lock_irqsave(&ch->lock, irq_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(req, &ch->list, node) {
 		if (req == _req) {
 			list_del(&req->node);
@@ -335,12 +377,17 @@ int tegra_dma_dequeue_req(struct tegra_dma_channel *ch,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!stop)
 		goto skip_stop_dma;
 
 	status = get_channel_status(ch, req, true);
 	req->bytes_transferred = dma_active_count(ch, req, status);
 
+<<<<<<< HEAD
+=======
 =======
 	/* STOP the DMA and get the transfer count.
 	 * Getting the transfer count is tricky.
@@ -384,6 +431,7 @@ int tegra_dma_dequeue_req(struct tegra_dma_channel *ch,
 
 	tegra_dma_stop(ch);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!list_empty(&ch->list)) {
 		/* if the list is not empty, queue the next request */
 		struct tegra_dma_req *next_req;
@@ -395,7 +443,12 @@ int tegra_dma_dequeue_req(struct tegra_dma_channel *ch,
 
 skip_stop_dma:
 =======
+<<<<<<< HEAD
+
+skip_stop_dma:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	req->status = -TEGRA_DMA_REQ_ERROR_ABORTED;
 
 	spin_unlock_irqrestore(&ch->lock, irq_flags);
@@ -486,8 +539,12 @@ struct tegra_dma_channel *tegra_dma_allocate_channel(int mode)
 <<<<<<< HEAD
 	if (!tegra_dma_initialized)
 =======
+<<<<<<< HEAD
+	if (!tegra_dma_initialized)
+=======
 	if (WARN_ON(!tegra_dma_initialized))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 
 	mutex_lock(&tegra_dma_lock);

@@ -13,8 +13,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
@@ -29,9 +33,14 @@
 #include <linux/omapfb.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/omapfb.h>
+
+=======
 
 #include <mach/hardware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
@@ -39,13 +48,19 @@
 #include <plat/tc.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/mux.h>
 #include <plat/flash.h>
 #include <plat/fpga.h>
 #include <plat/keypad.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/board.h>
 
 #include <mach/hardware.h>
@@ -53,11 +68,14 @@
 #include "iomap.h"
 #include "common.h"
 
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/board.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* fsample is pretty close to p2-sample */
 
 #define fsample_cpld_read(reg) __raw_readb(reg)
@@ -298,12 +316,15 @@ static struct platform_device kp_device = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct platform_device lcd_device = {
 	.name		= "lcd_p2",
 	.id		= -1,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *devices[] __initdata = {
 	&nor_device,
 	&nand_device,
@@ -311,8 +332,11 @@ static struct platform_device *devices[] __initdata = {
 	&kp_device,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	&lcd_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct omap_lcd_config fsample_lcd_config = {
@@ -320,6 +344,9 @@ static struct omap_lcd_config fsample_lcd_config = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap_fsample_init(void)
 {
 	/* Early, board-dependent init */
@@ -355,6 +382,8 @@ static void __init omap_fsample_init(void)
 	omap_writel(omap_readl(OMAP7XX_IO_CONF_9) & 0x1FFFFFFF,
 			OMAP7XX_IO_CONF_9);
 
+<<<<<<< HEAD
+=======
 =======
 static struct omap_board_config_kernel fsample_config[] __initdata = {
 	{ OMAP_TAG_LCD,		&fsample_lcd_config },
@@ -363,6 +392,7 @@ static struct omap_board_config_kernel fsample_config[] __initdata = {
 static void __init omap_fsample_init(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fsample_init_smc91x();
 
 	if (gpio_request(FSAMPLE_NAND_RB_GPIO_PIN, "NAND ready") < 0)
@@ -387,10 +417,15 @@ static void __init omap_fsample_init(void)
 	platform_add_devices(devices, ARRAY_SIZE(devices));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_serial_init();
 	omap_register_i2c_bus(1, 100, NULL, 0);
 
 	omapfb_set_lcd_config(&fsample_lcd_config);
+<<<<<<< HEAD
+=======
 =======
 	omap_board_config = fsample_config;
 	omap_board_config_size = ARRAY_SIZE(fsample_config);
@@ -403,6 +438,7 @@ static void __init omap_fsample_init_irq(void)
 	omap1_init_common_hw();
 	omap_init_irq();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Only FPGA needs to be mapped here. All others are done with ioremap */
@@ -423,6 +459,11 @@ static struct map_desc omap_fsample_io_desc[] __initdata = {
 
 static void __init omap_fsample_map_io(void)
 {
+<<<<<<< HEAD
+	omap15xx_map_io();
+	iotable_init(omap_fsample_io_desc,
+		     ARRAY_SIZE(omap_fsample_io_desc));
+=======
 <<<<<<< HEAD
 	omap15xx_map_io();
 	iotable_init(omap_fsample_io_desc,
@@ -464,11 +505,15 @@ static void __init omap_fsample_map_io(void)
 	 */
 	omap_writel(omap_readl(OMAP7XX_IO_CONF_9) & 0x1FFFFFFF, OMAP7XX_IO_CONF_9);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(OMAP_FSAMPLE, "OMAP730 F-Sample")
 /* Maintainer: Brian Swetland <swetland@google.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= omap_fsample_map_io,
 	.init_early	= omap1_init_early,
@@ -477,6 +522,8 @@ MACHINE_START(OMAP_FSAMPLE, "OMAP730 F-Sample")
 	.init_machine	= omap_fsample_init,
 	.timer		= &omap1_timer,
 	.restart	= omap1_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x10000100,
 	.map_io		= omap_fsample_map_io,
@@ -485,4 +532,5 @@ MACHINE_START(OMAP_FSAMPLE, "OMAP730 F-Sample")
 	.init_machine	= omap_fsample_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

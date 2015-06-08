@@ -2,8 +2,13 @@
 /*
  * linux/arch/arm/mach-exynos4/mach-smdk4x12.c
 =======
+<<<<<<< HEAD
+/*
+ * linux/arch/arm/mach-exynos4/mach-smdk4x12.c
+=======
 /* linux/arch/arm/mach-exynos/mach-smdk4x12.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
@@ -14,6 +19,9 @@
 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gpio.h>
 #include <linux/i2c.h>
 #include <linux/input.h>
@@ -42,6 +50,8 @@
 #include <mach/map.h>
 
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/platform_device.h>
 #include <linux/serial_core.h>
@@ -171,6 +181,7 @@ struct s3cfb_extdsp_lcd {
 
 #define REG_INFORM4            (S5P_INFORM4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Following are default values for UCON, ULCON and UFCON UART registers */
 #define SMDK4X12_UCON_DEFAULT	(S3C2410_UCON_TXILEVEL |	\
@@ -218,6 +229,9 @@ static struct s3c2410_uartcfg smdk4x12_uartcfgs[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct s3c_sdhci_platdata smdk4x12_hsmmc2_pdata __initdata = {
 	.cd_type		= S3C_SDHCI_CD_INTERNAL,
 	.clk_type		= S3C_SDHCI_CLK_DIV_EXTERNAL,
@@ -440,6 +454,8 @@ MACHINE_START(SMDK4412, "SMDK4412")
 	.init_machine	= smdk4x12_machine_init,
 	.timer		= &exynos4_timer,
 	.restart	= exynos4_restart,
+<<<<<<< HEAD
+=======
 =======
 static struct resource smdk4x12_smsc911x_resources[] = {
 	[0] = {
@@ -4646,4 +4662,5 @@ MACHINE_START(SMDK4412, "SMDK4X12")
 	.reserve	= &exynos_c2c_reserve,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

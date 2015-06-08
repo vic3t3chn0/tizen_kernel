@@ -55,6 +55,8 @@ static void __init pcontrol_g20_init_early(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 static void __init init_irq(void)
 {
@@ -63,6 +65,7 @@ static void __init init_irq(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sam9_smc_config __initdata pcontrol_smc_config[2] = { {
 	.ncs_read_setup		= 16,
 	.nrd_setup		= 18,
@@ -111,10 +114,16 @@ static void __init add_device_pcontrol(void)
 	/* configure chip-select 7 (FerroRAM 256KiBx16bit MR2A16A  D4 ) */
 	sam9_smc_configure(0, 7, &pcontrol_smc_config[1]);
 =======
+<<<<<<< HEAD
+	sam9_smc_configure(0, 4, &pcontrol_smc_config[0]);
+	/* configure chip-select 7 (FerroRAM 256KiBx16bit MR2A16A  D4 ) */
+	sam9_smc_configure(0, 7, &pcontrol_smc_config[1]);
+=======
 	sam9_smc_configure(4, &pcontrol_smc_config[0]);
 	/* configure chip-select 7 (FerroRAM 256KiBx16bit MR2A16A  D4 ) */
 	sam9_smc_configure(7, &pcontrol_smc_config[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -127,7 +136,12 @@ static struct at91_usbh_data __initdata usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -146,8 +160,12 @@ static struct at91_udc_data __initdata pcontrol_g20_udc_data = {
 <<<<<<< HEAD
 static struct macb_platform_data __initdata macb_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata macb_data = {
+=======
 static struct at91_eth_data __initdata macb_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PA28,
 	.is_rmii	= 1,
 };
@@ -246,9 +264,15 @@ MACHINE_START(PCONTROL_G20, "PControl G20")
 	.init_early	= pcontrol_g20_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= pcontrol_g20_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9260_map_io,
 	.init_early	= pcontrol_g20_init_early,
 	.init_irq	= init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= pcontrol_g20_board_init,
 MACHINE_END

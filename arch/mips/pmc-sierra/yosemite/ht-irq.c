@@ -37,6 +37,8 @@ void __init titan_ht_pcibios_fixup_bus(struct pci_bus *bus)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct pci_bus *current_bus = bus;
 	struct pci_dev *devices;
 	struct list_head *devices_link;
@@ -48,6 +50,7 @@ void __init titan_ht_pcibios_fixup_bus(struct pci_bus *bus)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * PLX and SPKT related changes go here
 	 */

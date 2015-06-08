@@ -20,7 +20,14 @@
  */
 
 #include <linux/kernel.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/interrupt.h>
 #include <linux/delay.h>
@@ -28,7 +35,14 @@
 #include <linux/if_arp.h>
 #include <linux/if_ether.h>
 #include <linux/list.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/delay.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/delay.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/platform_device.h>
 #include <linux/clk.h>
@@ -199,6 +213,12 @@ static struct platform_driver c_can_plat_driver = {
 	.remove = __devexit_p(c_can_plat_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(c_can_plat_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init c_can_plat_init(void)
 {
 	return platform_driver_register(&c_can_plat_driver);
@@ -210,6 +230,10 @@ static void __exit c_can_plat_exit(void)
 	platform_driver_unregister(&c_can_plat_driver);
 }
 module_exit(c_can_plat_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Bhupesh Sharma <bhupesh.sharma@st.com>");
 MODULE_LICENSE("GPL v2");

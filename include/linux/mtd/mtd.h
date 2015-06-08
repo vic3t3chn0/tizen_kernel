@@ -23,8 +23,11 @@
 #include <linux/types.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/uio.h>
 #include <linux/notifier.h>
 #include <linux/device.h>
@@ -37,6 +40,9 @@
 #define MTD_BLOCK_MAJOR 31
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MTD_ERASE_PENDING	0x01
 #define MTD_ERASING		0x02
 #define MTD_ERASE_SUSPEND	0x04
@@ -50,6 +56,8 @@
  * fail_addr = MTD_FAIL_ADDR_UNKNOWN, the failure was not at the device level
  * or was not specific to any particular block.
  */
+<<<<<<< HEAD
+=======
 =======
 #define MTD_ERASE_PENDING      	0x01
 #define MTD_ERASING		0x02
@@ -63,6 +71,7 @@
    fail_addr = MTD_FAIL_ADDR_UNKNOWN, the failure was not at the device level or was not
    specific to any particular block. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct erase_info {
 	struct mtd_info *mtd;
 	uint64_t addr;
@@ -82,13 +91,19 @@ struct mtd_erase_region_info {
 <<<<<<< HEAD
 	uint64_t offset;		/* At which this region starts, from the beginning of the MTD */
 =======
+<<<<<<< HEAD
+	uint64_t offset;		/* At which this region starts, from the beginning of the MTD */
+=======
 	uint64_t offset;			/* At which this region starts, from the beginning of the MTD */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32_t erasesize;		/* For this region */
 	uint32_t numblocks;		/* Number of blocks of erasesize in this region */
 	unsigned long *lockmap;		/* If keeping bitmap of locks */
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -106,6 +121,7 @@ typedef enum {
 } mtd_oob_mode_t;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct mtd_oob_ops - oob operation operands
  * @mode:	operation mode
@@ -120,8 +136,12 @@ typedef enum {
 <<<<<<< HEAD
  *		mode = MTD_OPS_PLACE_OOB or MTD_OPS_RAW)
 =======
+<<<<<<< HEAD
+ *		mode = MTD_OPS_PLACE_OOB or MTD_OPS_RAW)
+=======
  *		mode = MTD_OOB_PLACE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @datbuf:	data buffer - if NULL only oob data are read/written
  * @oobbuf:	oob data buffer
  *
@@ -133,8 +153,12 @@ struct mtd_oob_ops {
 <<<<<<< HEAD
 	unsigned int	mode;
 =======
+<<<<<<< HEAD
+	unsigned int	mode;
+=======
 	mtd_oob_mode_t	mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t		len;
 	size_t		retlen;
 	size_t		ooblen;
@@ -163,7 +187,12 @@ struct nand_ecclayout {
 struct module;	/* only needed for owner field in mtd_info */
 
 =======
+<<<<<<< HEAD
+struct module;	/* only needed for owner field in mtd_info */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mtd_info {
 	u_char type;
 	uint32_t flags;
@@ -212,17 +241,23 @@ struct mtd_info {
 	int index;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* ECC layout structure pointer - read only! */
 	struct nand_ecclayout *ecclayout;
 
 	/* max number of correctible bit errors per writesize */
 	unsigned int ecc_strength;
 
+<<<<<<< HEAD
+=======
 =======
 	/* ecc layout structure pointer - read only ! */
 	struct nand_ecclayout *ecclayout;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Data for variable erase regions. If numeraseregions is zero,
 	 * it means that the whole device has erasesize as given above.
 	 */
@@ -231,6 +266,9 @@ struct mtd_info {
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Do not call via these pointers, use corresponding mtd_*()
 	 * wrappers instead.
 	 */
@@ -280,6 +318,8 @@ struct mtd_info {
 	 */
 	int (*_get_device) (struct mtd_info *mtd);
 	void (*_put_device) (struct mtd_info *mtd);
+<<<<<<< HEAD
+=======
 =======
 	 * Erase is an asynchronous operation.  Device drivers are supposed
 	 * to call instr->callback() whenever the operation completes, even
@@ -306,12 +346,15 @@ struct mtd_info {
 					    unsigned long offset,
 					    unsigned long flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Backing device capabilities for this device
 	 * - provides mmap capabilities
 	 */
 	struct backing_dev_info *backing_dev_info;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -367,6 +410,7 @@ struct mtd_info {
 	int (*block_markbad) (struct mtd_info *mtd, loff_t ofs);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct notifier_block reboot_notifier;  /* default mode before reboot */
 
 	/* ECC status information */
@@ -380,6 +424,9 @@ struct mtd_info {
 	struct device dev;
 	int usecount;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int mtd_erase(struct mtd_info *mtd, struct erase_info *instr);
@@ -451,6 +498,8 @@ static inline void mtd_resume(struct mtd_info *mtd)
 {
 	if (mtd->_resume)
 		mtd->_resume(mtd);
+<<<<<<< HEAD
+=======
 =======
 
 	/* If the driver is something smart, like UBI, it may need to maintain
@@ -465,6 +514,7 @@ static inline struct mtd_info *dev_to_mtd(struct device *dev)
 {
 	return dev ? dev_get_drvdata(dev) : NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline uint32_t mtd_div_by_eb(uint64_t sz, struct mtd_info *mtd)
@@ -498,6 +548,9 @@ static inline uint32_t mtd_mod_by_ws(uint64_t sz, struct mtd_info *mtd)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int mtd_has_oob(const struct mtd_info *mtd)
 {
 	return mtd->_read_oob && mtd->_write_oob;
@@ -520,6 +573,8 @@ extern int mtd_device_parse_register(struct mtd_info *mtd,
 			      int defnr_parts);
 #define mtd_device_register(master, parts, nr_parts)	\
 	mtd_device_parse_register(master, NULL, NULL, parts, nr_parts)
+<<<<<<< HEAD
+=======
 =======
 	/* Kernel-side ioctl definitions */
 
@@ -529,6 +584,7 @@ extern int mtd_device_register(struct mtd_info *master,
 			       const struct mtd_partition *parts,
 			       int nr_parts);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int mtd_device_unregister(struct mtd_info *master);
 extern struct mtd_info *get_mtd_device(struct mtd_info *mtd, int num);
 extern int __get_mtd_device(struct mtd_info *mtd);
@@ -547,6 +603,9 @@ struct mtd_notifier {
 extern void register_mtd_user (struct mtd_notifier *new);
 extern int unregister_mtd_user (struct mtd_notifier *old);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void *mtd_kmalloc_up_to(const struct mtd_info *mtd, size_t *size);
 
 void mtd_erase_callback(struct erase_info *instr);
@@ -562,6 +621,8 @@ static inline int mtd_is_eccerr(int err) {
 static inline int mtd_is_bitflip_or_eccerr(int err) {
 	return mtd_is_bitflip(err) || mtd_is_eccerr(err);
 }
+<<<<<<< HEAD
+=======
 =======
 
 int default_mtd_writev(struct mtd_info *mtd, const struct kvec *vecs,
@@ -597,5 +658,6 @@ void mtd_erase_callback(struct erase_info *instr);
 
 #endif /* CONFIG_MTD_DEBUG */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __MTD_MTD_H__ */

@@ -57,7 +57,11 @@ enum perf_hw_id {
 <<<<<<< HEAD
 	PERF_COUNT_HW_REF_CPU_CYCLES		= 9,
 =======
+<<<<<<< HEAD
+	PERF_COUNT_HW_REF_CPU_CYCLES		= 9,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	PERF_COUNT_HW_MAX,			/* non-ABI */
 };
@@ -68,8 +72,12 @@ enum perf_hw_id {
 <<<<<<< HEAD
  *       { L1-D, L1-I, LLC, ITLB, DTLB, BPU, NODE } x
 =======
+<<<<<<< HEAD
+ *       { L1-D, L1-I, LLC, ITLB, DTLB, BPU, NODE } x
+=======
  *       { L1-D, L1-I, LLC, ITLB, DTLB, BPU } x
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *       { read, write, prefetch } x
  *       { accesses, misses }
  */
@@ -83,7 +91,11 @@ enum perf_hw_cache_id {
 <<<<<<< HEAD
 	PERF_COUNT_HW_CACHE_NODE		= 6,
 =======
+<<<<<<< HEAD
+	PERF_COUNT_HW_CACHE_NODE		= 6,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	PERF_COUNT_HW_CACHE_MAX,		/* non-ABI */
 };
@@ -140,6 +152,9 @@ enum perf_event_sample_format {
 	PERF_SAMPLE_STREAM_ID			= 1U << 9,
 	PERF_SAMPLE_RAW				= 1U << 10,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PERF_SAMPLE_BRANCH_STACK		= 1U << 11,
 
 	PERF_SAMPLE_MAX = 1U << 12,		/* non-ABI */
@@ -174,6 +189,8 @@ enum perf_branch_sample_type {
 	 PERF_SAMPLE_BRANCH_HV)
 
 /*
+<<<<<<< HEAD
+=======
 =======
 
 	PERF_SAMPLE_MAX = 1U << 11,		/* non-ABI */
@@ -181,6 +198,7 @@ enum perf_branch_sample_type {
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The format of the data returned by read() on a perf event fd,
  * as specified by attr.read_format:
  *
@@ -214,7 +232,12 @@ enum perf_event_read_format {
 #define PERF_ATTR_SIZE_VER1	72	/* add: config2 */
 #define PERF_ATTR_SIZE_VER2	80	/* add: branch_sample_type */
 =======
+<<<<<<< HEAD
+#define PERF_ATTR_SIZE_VER1	72	/* add: config2 */
+#define PERF_ATTR_SIZE_VER2	80	/* add: branch_sample_type */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Hardware event_id to monitor via a performance monitoring event:
@@ -274,14 +297,20 @@ struct perf_event_attr {
 				sample_id_all  :  1, /* sample_type all events */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				exclude_host   :  1, /* don't count in host   */
 				exclude_guest  :  1, /* don't count in guest  */
 				constraint_duplicate : 1,
 
 				__reserved_1   : 42;
+<<<<<<< HEAD
+=======
 =======
 				__reserved_1   : 45;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	union {
 		__u32		wakeup_events;	  /* wakeup every n events */
@@ -300,7 +329,11 @@ struct perf_event_attr {
 <<<<<<< HEAD
 	__u64	branch_sample_type; /* enum branch_sample_type */
 =======
+<<<<<<< HEAD
+	__u64	branch_sample_type; /* enum branch_sample_type */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -329,6 +362,9 @@ struct perf_event_mmap_page {
 	 * Bits needed to read the hw events in user-space.
 	 *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *   u32 seq, time_mult, time_shift, idx, width;
 	 *   u64 count, enabled, running;
 	 *   u64 cyc, time_offset;
@@ -354,6 +390,8 @@ struct perf_event_mmap_page {
 	 *       width = pc->pmc_width;
 	 *       pmc = rdpmc(idx - 1);
 	 *     }
+<<<<<<< HEAD
+=======
 =======
 	 *   u32 seq;
 	 *   s64 count;
@@ -368,6 +406,7 @@ struct perf_event_mmap_page {
 	 *     } else
 	 *       goto regular_read;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *
 	 *     barrier();
 	 *   } while (pc->lock != seq);
@@ -381,6 +420,9 @@ struct perf_event_mmap_page {
 	__u64	time_enabled;		/* time event active */
 	__u64	time_running;		/* time event on cpu */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	union {
 		__u64	capabilities;
 		__u64	cap_usr_time  : 1,
@@ -426,8 +468,11 @@ struct perf_event_mmap_page {
 	__u16	time_shift;
 	__u32	time_mult;
 	__u64	time_offset;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Hole for extension of the self monitor capabilities
@@ -436,8 +481,12 @@ struct perf_event_mmap_page {
 <<<<<<< HEAD
 	__u64	__reserved[120];	/* align to 1k */
 =======
+<<<<<<< HEAD
+	__u64	__reserved[120];	/* align to 1k */
+=======
 	__u64	__reserved[123];	/* align to 1k */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Control data for the mmap() data buffer.
@@ -601,7 +650,12 @@ enum perf_event_type {
 	 *
 	 *	{ u64 from, to, flags } lbr[nr];} && PERF_SAMPLE_BRANCH_STACK
 =======
+<<<<<<< HEAD
+	 *
+	 *	{ u64 from, to, flags } lbr[nr];} && PERF_SAMPLE_BRANCH_STACK
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * };
 	 */
 	PERF_RECORD_SAMPLE			= 9,
@@ -663,9 +717,15 @@ struct perf_guest_info_callbacks {
 #include <linux/atomic.h>
 #include <linux/sysfs.h>
 =======
+<<<<<<< HEAD
+#include <linux/static_key.h>
+#include <linux/atomic.h>
+#include <linux/sysfs.h>
+=======
 #include <linux/jump_label.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/local.h>
 
 #define PERF_MAX_STACK_DEPTH		255
@@ -681,6 +741,9 @@ struct perf_raw_record {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * single taken branch record layout:
  *
@@ -709,6 +772,8 @@ struct perf_branch_entry {
  * to least recent, i.e., entries[0] contains the most
  * recent branch.
  */
+<<<<<<< HEAD
+=======
 =======
 struct perf_branch_entry {
 	__u64				from;
@@ -717,6 +782,7 @@ struct perf_branch_entry {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct perf_branch_stack {
 	__u64				nr;
 	struct perf_branch_entry	entries[0];
@@ -725,6 +791,9 @@ struct perf_branch_stack {
 struct task_struct;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * extra PMU register associated with an event
  */
@@ -735,8 +804,11 @@ struct hw_perf_event_extra {
 	int		idx;	/* index in shared_regs->regs[] */
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct hw_perf_event - performance event hardware details:
  */
@@ -755,10 +827,16 @@ struct hw_perf_event {
 			struct hw_perf_event_extra extra_reg;
 			struct hw_perf_event_extra branch_reg;
 =======
+<<<<<<< HEAD
+
+			struct hw_perf_event_extra extra_reg;
+			struct hw_perf_event_extra branch_reg;
+=======
 			unsigned int	extra_reg;
 			u64		extra_config;
 			int		extra_alloc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		};
 		struct { /* software */
 			struct hrtimer	hrtimer;
@@ -784,7 +862,11 @@ struct hw_perf_event {
 <<<<<<< HEAD
 	u64                             interrupts_seq;
 =======
+<<<<<<< HEAD
+	u64                             interrupts_seq;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64				interrupts;
 
 	u64				freq_time_stamp;
@@ -816,7 +898,11 @@ struct pmu {
 <<<<<<< HEAD
 	const struct attribute_group	**attr_groups;
 =======
+<<<<<<< HEAD
+	const struct attribute_group	**attr_groups;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char				*name;
 	int				type;
 
@@ -827,7 +913,12 @@ struct pmu {
 	u32                             events_across_hotplug:1,
 					reserved:31;
 =======
+<<<<<<< HEAD
+	u32                             events_across_hotplug:1,
+					reserved:31;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Fully disable/enable this PMU, can be used to protect from the PMI
@@ -888,6 +979,9 @@ struct pmu {
 	 */
 	void (*cancel_txn)		(struct pmu *pmu); /* optional */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Will return the value for perf_event_mmap_page::index for this event,
@@ -899,8 +993,11 @@ struct pmu {
 	 * flush branch stack on context-switches (needed in cpu-wide mode)
 	 */
 	void (*flush_branch_stack)	(void);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -914,6 +1011,11 @@ enum perf_event_active_state {
 };
 
 struct file;
+<<<<<<< HEAD
+struct perf_sample_data;
+
+typedef void (*perf_overflow_handler_t)(struct perf_event *,
+=======
 <<<<<<< HEAD
 struct perf_sample_data;
 
@@ -950,6 +1052,7 @@ struct perf_sample_data;
 
 typedef void (*perf_overflow_handler_t)(struct perf_event *, int,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					struct perf_sample_data *,
 					struct pt_regs *regs);
 
@@ -989,7 +1092,12 @@ struct perf_cgroup {
 struct ring_buffer;
 
 =======
+<<<<<<< HEAD
+struct ring_buffer;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct perf_event - performance event kernel representation:
  */
@@ -1055,8 +1163,12 @@ struct perf_event {
 <<<<<<< HEAD
 	struct file			*filp;
 =======
+<<<<<<< HEAD
+	struct file			*filp;
+=======
 	atomic_long_t			refcount;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * These accumulate total time (in nanoseconds) that children
@@ -1087,8 +1199,13 @@ struct perf_event {
 	struct ring_buffer		*rb;
 	struct list_head		rb_entry;
 =======
+<<<<<<< HEAD
+	struct ring_buffer		*rb;
+	struct list_head		rb_entry;
+=======
 	struct perf_buffer		*buffer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* poll related */
 	wait_queue_head_t		waitq;
@@ -1112,7 +1229,11 @@ struct perf_event {
 <<<<<<< HEAD
 	void				*overflow_handler_context;
 =======
+<<<<<<< HEAD
+	void				*overflow_handler_context;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_EVENT_TRACING
 	struct ftrace_event_call	*tp_event;
@@ -1122,7 +1243,13 @@ struct perf_event {
 	struct ftrace_ops               ftrace_ops;
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_FUNCTION_TRACER
+	struct ftrace_ops               ftrace_ops;
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_CGROUP_PERF
@@ -1168,7 +1295,11 @@ struct perf_event_context {
 <<<<<<< HEAD
 	int				nr_freq;
 =======
+<<<<<<< HEAD
+	int				nr_freq;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int				rotate_disable;
 	atomic_t			refcount;
 	struct task_struct		*task;
@@ -1192,9 +1323,15 @@ struct perf_event_context {
 	int				nr_branch_stack; /* branch_stack evt */
 	struct rcu_head			rcu_head;
 =======
+<<<<<<< HEAD
+	int				nr_cgroups;	 /* cgroup evts */
+	int				nr_branch_stack; /* branch_stack evt */
+	struct rcu_head			rcu_head;
+=======
 	struct rcu_head			rcu_head;
 	int				nr_cgroups; /* cgroup events present */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -1216,8 +1353,12 @@ struct perf_cpu_context {
 <<<<<<< HEAD
 	struct pmu			*active_pmu;
 =======
+<<<<<<< HEAD
+	struct pmu			*active_pmu;
+=======
 	struct pmu			*unique_pmu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct perf_cgroup		*cgrp;
 };
 
@@ -1226,17 +1367,24 @@ struct perf_output_handle {
 <<<<<<< HEAD
 	struct ring_buffer		*rb;
 =======
+<<<<<<< HEAD
+	struct ring_buffer		*rb;
+=======
 	struct perf_buffer		*buffer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long			wakeup;
 	unsigned long			size;
 	void				*addr;
 	int				page;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int				nmi;
 	int				sample;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef CONFIG_PERF_EVENTS
@@ -1247,14 +1395,20 @@ extern void perf_pmu_unregister(struct pmu *pmu);
 extern int perf_num_counters(void);
 extern const char *perf_pmu_name(void);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __perf_event_task_sched_in(struct task_struct *prev,
 				       struct task_struct *task);
 extern void __perf_event_task_sched_out(struct task_struct *prev,
 					struct task_struct *next);
+<<<<<<< HEAD
+=======
 =======
 extern void __perf_event_task_sched_in(struct task_struct *task);
 extern void __perf_event_task_sched_out(struct task_struct *task, struct task_struct *next);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int perf_event_init_task(struct task_struct *child);
 extern void perf_event_exit_task(struct task_struct *child);
 extern void perf_event_free_task(struct task_struct *task);
@@ -1267,7 +1421,11 @@ extern int perf_event_task_enable(void);
 <<<<<<< HEAD
 extern int perf_event_refresh(struct perf_event *event, int refresh);
 =======
+<<<<<<< HEAD
+extern int perf_event_refresh(struct perf_event *event, int refresh);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void perf_event_update_userpage(struct perf_event *event);
 extern int perf_event_release_kernel(struct perf_event *event);
 extern struct perf_event *
@@ -1275,18 +1433,24 @@ perf_event_create_kernel_counter(struct perf_event_attr *attr,
 				int cpu,
 				struct task_struct *task,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				perf_overflow_handler_t callback,
 				void *context);
 extern u64 perf_event_read_value(struct perf_event *event,
 				 u64 *enabled, u64 *running);
 
 
+<<<<<<< HEAD
+=======
 =======
 				perf_overflow_handler_t callback);
 extern u64 perf_event_read_value(struct perf_event *event,
 				 u64 *enabled, u64 *running);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct perf_sample_data {
 	u64				type;
 
@@ -1309,7 +1473,11 @@ struct perf_sample_data {
 <<<<<<< HEAD
 	struct perf_branch_stack	*br_stack;
 =======
+<<<<<<< HEAD
+	struct perf_branch_stack	*br_stack;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void perf_sample_data_init(struct perf_sample_data *data, u64 addr)
@@ -1319,7 +1487,11 @@ static inline void perf_sample_data_init(struct perf_sample_data *data, u64 addr
 <<<<<<< HEAD
 	data->br_stack = NULL;
 =======
+<<<<<<< HEAD
+	data->br_stack = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 extern void perf_output_sample(struct perf_output_handle *handle,
@@ -1334,8 +1506,12 @@ extern void perf_prepare_sample(struct perf_event_header *header,
 <<<<<<< HEAD
 extern int perf_event_overflow(struct perf_event *event,
 =======
+<<<<<<< HEAD
+extern int perf_event_overflow(struct perf_event *event,
+=======
 extern int perf_event_overflow(struct perf_event *event, int nmi,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 struct perf_sample_data *data,
 				 struct pt_regs *regs);
 
@@ -1357,10 +1533,16 @@ extern struct static_key perf_swevent_enabled[PERF_COUNT_SW_MAX];
 
 extern void __perf_sw_event(u32, u64, struct pt_regs *, u64);
 =======
+<<<<<<< HEAD
+extern struct static_key perf_swevent_enabled[PERF_COUNT_SW_MAX];
+
+extern void __perf_sw_event(u32, u64, struct pt_regs *, u64);
+=======
 extern struct jump_label_key perf_swevent_enabled[PERF_COUNT_SW_MAX];
 
 extern void __perf_sw_event(u32, u64, int, struct pt_regs *, u64);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef perf_arch_fetch_caller_regs
 static inline void perf_arch_fetch_caller_regs(struct pt_regs *regs, unsigned long ip) { }
@@ -1383,11 +1565,16 @@ static inline void perf_fetch_caller_regs(struct pt_regs *regs)
 
 static __always_inline void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 perf_sw_event(u32 event_id, u64 nr, struct pt_regs *regs, u64 addr)
 {
 	struct pt_regs hot_regs;
 
 	if (static_key_false(&perf_swevent_enabled[event_id])) {
+<<<<<<< HEAD
+=======
 =======
 perf_sw_event(u32 event_id, u64 nr, int nmi, struct pt_regs *regs, u64 addr)
 {
@@ -1395,11 +1582,15 @@ perf_sw_event(u32 event_id, u64 nr, int nmi, struct pt_regs *regs, u64 addr)
 
 	if (static_branch(&perf_swevent_enabled[event_id])) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!regs) {
 			perf_fetch_caller_regs(&hot_regs);
 			regs = &hot_regs;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__perf_sw_event(event_id, nr, regs, addr);
 	}
 }
@@ -1420,6 +1611,8 @@ static inline void perf_event_task_sched_out(struct task_struct *prev,
 
 	if (static_key_false(&perf_sched_events.key))
 		__perf_event_task_sched_out(prev, next);
+<<<<<<< HEAD
+=======
 =======
 		__perf_sw_event(event_id, nr, nmi, regs, addr);
 	}
@@ -1439,6 +1632,7 @@ static inline void perf_event_task_sched_out(struct task_struct *task, struct ta
 
 	__perf_event_task_sched_out(task, next);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 extern void perf_event_mmap(struct vm_area_struct *vma);
@@ -1497,6 +1691,9 @@ extern void perf_bp_event(struct perf_event *event, void *data);
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool has_branch_stack(struct perf_event *event)
 {
 	return event->attr.sample_type & PERF_SAMPLE_BRANCH_STACK;
@@ -1504,11 +1701,14 @@ static inline bool has_branch_stack(struct perf_event *event)
 
 extern int perf_output_begin(struct perf_output_handle *handle,
 			     struct perf_event *event, unsigned int size);
+<<<<<<< HEAD
+=======
 =======
 extern int perf_output_begin(struct perf_output_handle *handle,
 			     struct perf_event *event, unsigned int size,
 			     int nmi, int sample);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void perf_output_end(struct perf_output_handle *handle);
 extern void perf_output_copy(struct perf_output_handle *handle,
 			     const void *buf, unsigned int len);
@@ -1520,17 +1720,23 @@ extern void perf_event_task_tick(void);
 #else
 static inline void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 perf_event_task_sched_in(struct task_struct *prev,
 			 struct task_struct *task)			{ }
 static inline void
 perf_event_task_sched_out(struct task_struct *prev,
 			  struct task_struct *next)			{ }
+<<<<<<< HEAD
+=======
 =======
 perf_event_task_sched_in(struct task_struct *task)			{ }
 static inline void
 perf_event_task_sched_out(struct task_struct *task,
 			    struct task_struct *next)			{ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int perf_event_init_task(struct task_struct *child)	{ return 0; }
 static inline void perf_event_exit_task(struct task_struct *child)	{ }
 static inline void perf_event_free_task(struct task_struct *task)	{ }
@@ -1539,6 +1745,9 @@ static inline void perf_event_print_debug(void)				{ }
 static inline int perf_event_task_disable(void)				{ return -EINVAL; }
 static inline int perf_event_task_enable(void)				{ return -EINVAL; }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int perf_event_refresh(struct perf_event *event, int refresh)
 {
 	return -EINVAL;
@@ -1546,12 +1755,15 @@ static inline int perf_event_refresh(struct perf_event *event, int refresh)
 
 static inline void
 perf_sw_event(u32 event_id, u64 nr, struct pt_regs *regs, u64 addr)	{ }
+<<<<<<< HEAD
+=======
 =======
 
 static inline void
 perf_sw_event(u32 event_id, u64 nr, int nmi,
 		     struct pt_regs *regs, u64 addr)			{ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void
 perf_bp_event(struct perf_event *event, void *data)			{ }
 
@@ -1573,6 +1785,8 @@ static inline void perf_event_task_tick(void)				{ }
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_PERF_EVENTS) && defined(CONFIG_CPU_SUP_INTEL)
 extern void perf_restore_debug_store(void);
 #else
@@ -1580,6 +1794,7 @@ static inline void perf_restore_debug_store(void)			{ }
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define perf_output_put(handle, x) perf_output_copy((handle), &(x), sizeof(x))
 
 /*
@@ -1599,6 +1814,9 @@ do {									\
 } while (0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PMU_FORMAT_ATTR(_name, _format)					\
 static ssize_t								\
@@ -1612,7 +1830,10 @@ _name##_show(struct device *dev,					\
 									\
 static struct device_attribute format_attr_##_name = __ATTR_RO(_name)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 #endif /* _LINUX_PERF_EVENT_H */

@@ -6,6 +6,9 @@
 # Licensed under GPLv2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Configuration options for the EXYNOS4
 
 if ARCH_EXYNOS
@@ -66,6 +69,8 @@ config SOC_EXYNOS5250
 	  Enable EXYNOS5250 SoC support
 
 config EXYNOS4_MCT
+<<<<<<< HEAD
+=======
 =======
 # Configuration options for the EXYNOS
 
@@ -203,22 +208,29 @@ config EXYNOS5_LOWPWR_IDLE
 
 config EXYNOS_MCT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool
 	default y
 	help
 	  Use MCT (Multi Core Timer) as kernel timers
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EXYNOS4_DEV_DMA
 	bool
 	help
 	  Compile in amba device definitions for DMA controller
+<<<<<<< HEAD
+=======
 =======
 config EXYNOS5_DEV_AHCI
 	bool
 	help
 	  Compile in platform device definitions for AHCI SATA3.0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config EXYNOS4_DEV_AHCI
 	bool
@@ -231,10 +243,15 @@ config EXYNOS4_SETUP_FIMD0
 	  Common setup code for FIMD0.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EXYNOS4_DEV_SYSMMU
 	bool
 	help
 	  Common setup code for SYSTEM MMU in EXYNOS4
+<<<<<<< HEAD
+=======
 =======
 config EXYNOS4_SETUP_FIMD
 	bool
@@ -257,6 +274,7 @@ config EXYNOS_DEV_PD
 	help
 	  Compile in platform device definitions for Power Domain
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config EXYNOS4_DEV_DWMCI
 	bool
@@ -264,10 +282,15 @@ config EXYNOS4_DEV_DWMCI
 	  Compile in platform device definitions for DWMCI
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EXYNOS4_DEV_USB_OHCI
 	bool
 	help
 	  Compile in platform device definition for USB OHCI
+<<<<<<< HEAD
+=======
 =======
 config EXYNOS4_DEV_FIMC_LITE
 	bool
@@ -286,6 +309,7 @@ config EXYNOS4_SETUP_HDMI
 	help
 	  Common setup code for hdmi
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config EXYNOS4_SETUP_I2C1
 	bool
@@ -322,6 +346,8 @@ config EXYNOS4_SETUP_I2C7
 	help
 	  Common setup code for i2c bus 7.
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 config EXYNOS5_SETUP_HSI2C0
@@ -365,11 +391,14 @@ config EXYNOS5_SETUP_HSI2C3
 	  Common setup code for hs-i2c bus 3.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EXYNOS4_SETUP_KEYPAD
 	bool
 	help
 	  Common setup code for keypad.
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 config EXYNOS4_SETUP_MFC
@@ -378,6 +407,7 @@ config EXYNOS4_SETUP_MFC
 	  Common setup code for MFC.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EXYNOS4_SETUP_SDHCI
 	bool
 	select EXYNOS4_SETUP_SDHCI_GPIO
@@ -390,6 +420,9 @@ config EXYNOS4_SETUP_SDHCI_GPIO
 	  Common setup code for SDHCI gpio.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EXYNOS4_SETUP_FIMC
 	bool
 	help
@@ -651,6 +684,8 @@ endif
 endmenu
 
 endif
+<<<<<<< HEAD
+=======
 =======
 config EXYNOS4_SETUP_MSHCI
 	bool
@@ -2163,3 +2198,4 @@ config ABB_CONTROL
 	depends on EXYNOS4_CPUFREQ && CPU_EXYNOS4412
 	default n
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

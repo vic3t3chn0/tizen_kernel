@@ -48,8 +48,12 @@ struct journal_head {
 <<<<<<< HEAD
 	tid_t b_cow_tid;
 =======
+<<<<<<< HEAD
+	tid_t b_cow_tid;
+=======
 	unsigned b_cow_tid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Copy of the buffer data frozen for writing to the log.
@@ -74,7 +78,12 @@ struct journal_head {
 	 * Either of these locks is enough for reading, both are needed for
 	 * changes.
 =======
+<<<<<<< HEAD
+	 * Either of these locks is enough for reading, both are needed for
+	 * changes.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	transaction_t *b_transaction;
 

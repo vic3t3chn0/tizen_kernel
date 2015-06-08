@@ -40,9 +40,13 @@
 <<<<<<< HEAD
 static struct vfsmount *configfs_mount = NULL;
 =======
+<<<<<<< HEAD
+static struct vfsmount *configfs_mount = NULL;
+=======
 struct vfsmount * configfs_mount = NULL;
 struct super_block * configfs_sb = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kmem_cache *configfs_dir_cachep;
 static int configfs_mnt_count = 0;
 
@@ -82,11 +86,16 @@ static int configfs_fill_super(struct super_block *sb, void *data, int silent)
 	sb->s_op = &configfs_ops;
 	sb->s_time_gran = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inode = configfs_new_inode(S_IFDIR | S_IRWXU | S_IRUGO | S_IXUGO,
 				   &configfs_root, sb);
 	if (inode) {
 		inode->i_op = &configfs_root_inode_operations;
+<<<<<<< HEAD
+=======
 =======
 	configfs_sb = sb;
 
@@ -95,6 +104,7 @@ static int configfs_fill_super(struct super_block *sb, void *data, int silent)
 	if (inode) {
 		inode->i_op = &configfs_dir_inode_operations;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_fop = &configfs_dir_operations;
 		/* directory inodes start off with i_nlink == 2 (for "." entry) */
 		inc_nlink(inode);
@@ -108,11 +118,17 @@ static int configfs_fill_super(struct super_block *sb, void *data, int silent)
 	if (!root) {
 		pr_debug("%s: could not get root dentry!\n",__func__);
 =======
+<<<<<<< HEAD
+	root = d_make_root(inode);
+	if (!root) {
+		pr_debug("%s: could not get root dentry!\n",__func__);
+=======
 	root = d_alloc_root(inode);
 	if (!root) {
 		pr_debug("%s: could not get root dentry!\n",__func__);
 		iput(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 	config_group_init(&configfs_root_group);
@@ -137,17 +153,23 @@ static struct file_system_type configfs_fs_type = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct dentry *configfs_pin_fs(void)
 {
 	int err = simple_pin_fs(&configfs_fs_type, &configfs_mount,
 			     &configfs_mnt_count);
 	return err ? ERR_PTR(err) : configfs_mount->mnt_root;
+<<<<<<< HEAD
+=======
 =======
 int configfs_pin_fs(void)
 {
 	return simple_pin_fs(&configfs_fs_type, &configfs_mount,
 			     &configfs_mnt_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void configfs_release_fs(void)
@@ -170,6 +192,9 @@ static int __init configfs_init(void)
 
 	config_kobj = kobject_create_and_add("config", kernel_kobj);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!config_kobj)
 		goto out2;
 
@@ -190,6 +215,8 @@ out3:
 out2:
 	kmem_cache_destroy(configfs_dir_cachep);
 	configfs_dir_cachep = NULL;
+<<<<<<< HEAD
+=======
 =======
 	if (!config_kobj) {
 		kmem_cache_destroy(configfs_dir_cachep);
@@ -214,6 +241,7 @@ out2:
 		configfs_dir_cachep = NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return err;
 }

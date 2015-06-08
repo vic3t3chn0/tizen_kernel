@@ -68,7 +68,11 @@ enum rdma_port_space {
 <<<<<<< HEAD
 	RDMA_PS_IB    = 0x013F,
 =======
+<<<<<<< HEAD
+	RDMA_PS_IB    = 0x013F,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RDMA_PS_TCP   = 0x0106,
 	RDMA_PS_UDP   = 0x0111,
 };

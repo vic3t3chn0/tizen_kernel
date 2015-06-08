@@ -115,10 +115,15 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct packet_type trailer_packet_type __read_mostly = {
 	.type	= cpu_to_be16(ETH_P_TRAILER),
 	.func	= trailer_rcv,
 };
+<<<<<<< HEAD
+=======
 =======
 static struct packet_type trailer_packet_type __read_mostly = {
 	.type	= cpu_to_be16(ETH_P_TRAILER),
@@ -138,3 +143,4 @@ static void __exit trailer_cleanup_module(void)
 }
 module_exit(trailer_cleanup_module);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #define CACHEID_PIPT			(1 << 5)
 =======
+<<<<<<< HEAD
+#define CACHEID_PIPT			(1 << 5)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern unsigned int cacheid;
 
@@ -23,7 +27,11 @@ extern unsigned int cacheid;
 <<<<<<< HEAD
 #define icache_is_pipt()		cacheid_is(CACHEID_PIPT)
 =======
+<<<<<<< HEAD
+#define icache_is_pipt()		cacheid_is(CACHEID_PIPT)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * __LINUX_ARM_ARCH__ is the minimum supported CPU architecture
@@ -38,8 +46,13 @@ extern unsigned int cacheid;
 				 CACHEID_VIPT_I_ALIASING |\
 				 CACHEID_PIPT)
 =======
+<<<<<<< HEAD
+				 CACHEID_VIPT_I_ALIASING |\
+				 CACHEID_PIPT)
+=======
 				 CACHEID_VIPT_I_ALIASING)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif __LINUX_ARM_ARCH__ >= 6
 #define	__CACHEID_ARCH_MIN	(~CACHEID_VIVT)
 #else

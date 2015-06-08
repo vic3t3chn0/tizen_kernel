@@ -427,8 +427,12 @@ einval:	li	v0, -ENOSYS
 <<<<<<< HEAD
 	sys	sys_ni_syscall		0	/* was nfsservctl */
 =======
+<<<<<<< HEAD
+	sys	sys_ni_syscall		0	/* was nfsservctl */
+=======
 	sys	sys_nfsservctl		3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sys	sys_setresgid		3	/* 4190 */
 	sys	sys_getresgid		3
 	sys	sys_prctl		5
@@ -503,8 +507,12 @@ einval:	li	v0, -ENOSYS
 <<<<<<< HEAD
 	sys	sys_epoll_wait		4	/* 4250 */
 =======
+<<<<<<< HEAD
+	sys	sys_epoll_wait		4	/* 4250 */
+=======
 	sys	sys_epoll_wait		3	/* 4250 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sys	sys_remap_file_pages	5
 	sys	sys_set_tid_address	1
 	sys	sys_restart_syscall	0
@@ -598,13 +606,19 @@ einval:	li	v0, -ENOSYS
 	sys	sys_clock_adjtime	2
 	sys	sys_syncfs		1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sys	sys_sendmmsg		4
 	sys	sys_setns		2
 	sys	sys_process_vm_readv	6	/* 4345 */
 	sys	sys_process_vm_writev	6
+<<<<<<< HEAD
+=======
 =======
 	sys	sys_setns		2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.endm
 
 	/* We pre-compute the number of _instruction_ bytes needed to

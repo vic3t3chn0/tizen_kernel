@@ -14,6 +14,10 @@
 #include <linux/i8253.h>
 #include <linux/timex.h>
 =======
+<<<<<<< HEAD
+#include <linux/i8253.h>
+#include <linux/timex.h>
+=======
 #include <linux/timex.h>
 #if defined(CONFIG_MIPS) || defined(CONFIG_X86)
 /* Use the global PIT lock ! */
@@ -23,6 +27,7 @@
 static DEFINE_RAW_SPINLOCK(i8253_lock);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PCSP_SOUND_VERSION 0x400	/* read 4.00 */
 #define PCSP_DEBUG 0

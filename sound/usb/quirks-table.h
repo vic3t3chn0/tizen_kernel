@@ -40,6 +40,9 @@
 	.bInterfaceClass = USB_CLASS_VENDOR_SPEC
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* FTDI devices */
 {
 	USB_DEVICE(0x0403, 0xb8d8),
@@ -51,8 +54,11 @@
 	}
 },
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Creative/Toshiba Multimedia Center SB-0500 */
 {
 	USB_DEVICE(0x041e, 0x3048),
@@ -273,6 +279,9 @@ YAMAHA_DEVICE(0x105b, NULL),
 YAMAHA_DEVICE(0x105c, NULL),
 YAMAHA_DEVICE(0x105d, NULL),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	USB_DEVICE(0x0499, 0x1503),
 	.driver_info = (unsigned long) & (const struct snd_usb_audio_quirk) {
@@ -299,8 +308,11 @@ YAMAHA_DEVICE(0x105d, NULL),
 		}
 	}
 },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 YAMAHA_DEVICE(0x2000, "DGP-7"),
 YAMAHA_DEVICE(0x2001, "DGP-5"),
 YAMAHA_DEVICE(0x2002, NULL),
@@ -1625,6 +1637,9 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 },
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Edirol UM-3G */
 	USB_DEVICE_VENDOR_SPEC(0x0582, 0x0108),
 	.driver_info = (unsigned long) & (const struct snd_usb_audio_quirk) {
@@ -1633,8 +1648,11 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	}
 },
 {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Boss JS-8 Jam Station  */
 	USB_DEVICE(0x0582, 0x0109),
 	.driver_info = (unsigned long) & (const struct snd_usb_audio_quirk) {
@@ -1670,8 +1688,12 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 <<<<<<< HEAD
 		.ifnum = 1,
 =======
+<<<<<<< HEAD
+		.ifnum = 1,
+=======
 		.ifnum = 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.type = QUIRK_MIDI_FIXED_ENDPOINT,
 		.data = & (const struct snd_usb_midi_endpoint_info) {
 			.out_cables = 0x0003,
@@ -1681,6 +1703,9 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 },
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Roland GAIA SH-01 */
 	USB_DEVICE(0x0582, 0x0111),
 	.driver_info = (unsigned long) &(const struct snd_usb_audio_quirk) {
@@ -1712,8 +1737,11 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	}
 },
 {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	USB_DEVICE(0x0582, 0x0113),
 	.driver_info = (unsigned long) & (const struct snd_usb_audio_quirk) {
 		/* .vendor_name = "BOSS", */
@@ -1770,6 +1798,9 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	}
 },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Added support for Roland UM-ONE which differs from UM-1 */
 	USB_DEVICE(0x0582, 0x012a),
@@ -1848,8 +1879,11 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 		}
 	}
 },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Guillemot devices */
 {
@@ -2390,6 +2424,9 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 },
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	USB_DEVICE_VENDOR_SPEC(0x0944, 0x0201),
 	.driver_info = (unsigned long) & (const struct snd_usb_audio_quirk) {
@@ -2400,8 +2437,11 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	}
 },
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* AKAI devices */
 {
 	USB_DEVICE(0x09e8, 0x0062),
@@ -2574,14 +2614,20 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 },
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* KeithMcMillen Stringport */
 {
 	USB_DEVICE(0x1f38, 0x0001),
 	.bInterfaceClass = USB_CLASS_AUDIO,
 },
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Miditech devices */
 {
 	USB_DEVICE(0x4752, 0x0011),
@@ -2778,6 +2824,8 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Microsoft XboxLive Headset/Xbox Communicator */
 {
 	USB_DEVICE(0x045e, 0x0283),
@@ -2832,6 +2880,7 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 },
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * Some USB MIDI devices don't have an audio control interface,

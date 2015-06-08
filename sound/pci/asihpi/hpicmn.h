@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -23,6 +27,9 @@
 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hpi_adapter_obj;
 
 /* a function that takes an adapter obj and returns an int */
@@ -32,6 +39,8 @@ struct hpi_adapter_obj {
 	struct hpi_pci pci;	/* PCI info - bus#,dev#,address etc */
 	u16 type;		/* 0x6644 == ASI6644 etc */
 	u16 index;
+<<<<<<< HEAD
+=======
 =======
 struct hpi_adapter_obj {
 	struct hpi_pci pci;	/* PCI info - bus#,dev#,address etc */
@@ -40,6 +49,7 @@ struct hpi_adapter_obj {
 	u16 open;		/* =1 when adapter open */
 	u16 mixer_open;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct hpios_spinlock dsp_lock;
 

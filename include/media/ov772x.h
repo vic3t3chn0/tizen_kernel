@@ -17,6 +17,11 @@
 #define OV772X_FLAG_VFLIP	(1 << 0) /* Vertical flip image */
 #define OV772X_FLAG_HFLIP	(1 << 1) /* Horizontal flip image */
 =======
+<<<<<<< HEAD
+/* for flags */
+#define OV772X_FLAG_VFLIP	(1 << 0) /* Vertical flip image */
+#define OV772X_FLAG_HFLIP	(1 << 1) /* Horizontal flip image */
+=======
 #include <media/soc_camera.h>
 
 /* for flags */
@@ -24,6 +29,7 @@
 #define OV772X_FLAG_HFLIP	(1 << 1) /* Horizontal flip image */
 #define OV772X_FLAG_8BIT	(1 << 2) /* default 10 bit */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * for Edge ctrl
@@ -39,6 +45,9 @@ struct ov772x_edge_ctrl {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OV772X_MANUAL_EDGE_CTRL		0x80 /* un-used bit of strength */
 #define OV772X_EDGE_STRENGTH_MASK	0x1F
 #define OV772X_EDGE_THRESHOLD_MASK	0x0F
@@ -56,6 +65,8 @@ struct ov772x_edge_ctrl {
 	.strength  = (s & OV772X_EDGE_STRENGTH_MASK) |	\
 			OV772X_MANUAL_EDGE_CTRL,	\
 	.threshold = (t & OV772X_EDGE_THRESHOLD_MASK),	\
+<<<<<<< HEAD
+=======
 =======
 #define OV772X_MANUAL_EDGE_CTRL	0x80 /* un-used bit of strength */
 #define EDGE_STRENGTH_MASK	0x1F
@@ -74,6 +85,7 @@ struct ov772x_edge_ctrl {
 	.strength  = (s & EDGE_STRENGTH_MASK) | OV772X_MANUAL_EDGE_CTRL,\
 	.threshold = (t & EDGE_THRESHOLD_MASK),				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/err.h>
 #include <linux/string.h>
 #include <linux/clk.h>
@@ -25,8 +29,11 @@
 #include <linux/cpufreq.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/debugfs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 
 #include <plat/clock.h>
@@ -407,6 +414,8 @@ struct clk dummy_ck = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CPU_FREQ
 void clk_init_cpufreq_table(struct cpufreq_frequency_table **table)
 {
@@ -434,6 +443,7 @@ void clk_exit_cpufreq_table(struct cpufreq_frequency_table **table)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *
  */
@@ -455,7 +465,12 @@ static int __init clk_disable_unused(void)
 
 	spin_lock_irqsave(&clockfw_lock, flags);
 =======
+<<<<<<< HEAD
+
+	spin_lock_irqsave(&clockfw_lock, flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(ck, &clocks, node) {
 		if (ck->ops == &clkops_null)
 			continue;
@@ -468,11 +483,17 @@ static int __init clk_disable_unused(void)
 	}
 	spin_unlock_irqrestore(&clockfw_lock, flags);
 =======
+<<<<<<< HEAD
+		arch_clock->clk_disable_unused(ck);
+	}
+	spin_unlock_irqrestore(&clockfw_lock, flags);
+=======
 		spin_lock_irqsave(&clockfw_lock, flags);
 		arch_clock->clk_disable_unused(ck);
 		spin_unlock_irqrestore(&clockfw_lock, flags);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -497,6 +518,9 @@ int __init clk_init(struct clk_functions * custom_clocks)
  *	debugfs support to trace clock tree hierarchy and attributes
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/debugfs.h>
 #include <linux/seq_file.h>
@@ -539,6 +563,8 @@ static int clk_debugfs_register_one(struct clk *c)
 	struct clk *pa = c->parent;
 
 	d = debugfs_create_dir(c->name, pa ? pa->dent : clk_debugfs_root);
+<<<<<<< HEAD
+=======
 =======
 static struct dentry *clk_debugfs_root;
 
@@ -553,6 +579,7 @@ static int clk_debugfs_register_one(struct clk *c)
 	p += sprintf(p, "%s", c->name);
 	d = debugfs_create_dir(s, pa ? pa->dent : clk_debugfs_root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!d)
 		return -ENOMEM;
 	c->dent = d;
@@ -578,11 +605,15 @@ err_out:
 <<<<<<< HEAD
 	debugfs_remove_recursive(c->dent);
 =======
+<<<<<<< HEAD
+	debugfs_remove_recursive(c->dent);
+=======
 	d = c->dent;
 	list_for_each_entry_safe(child, child_tmp, &d->d_subdirs, d_u.d_child)
 		debugfs_remove(child);
 	debugfs_remove(c->dent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -622,14 +653,20 @@ static int __init clk_debugfs_init(void)
 			goto err_out;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	d = debugfs_create_file("summary", S_IRUGO,
 		d, NULL, &debug_clock_fops);
 	if (!d)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 err_out:
 	debugfs_remove_recursive(clk_debugfs_root);

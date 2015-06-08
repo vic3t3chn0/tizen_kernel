@@ -46,6 +46,13 @@
 #include <linux/mutex.h>
 #include <linux/io.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/page.h>
 #include <asm/pgtable.h>
@@ -256,11 +263,26 @@ int xenbus_dev_remove(struct device *_dev)
 	DPRINTK("%s", dev->nodename);
 
 	free_otherend_watch(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	free_otherend_details(dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	free_otherend_details(dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (drv->remove)
 		drv->remove(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	free_otherend_details(dev);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xenbus_switch_state(dev, XenbusStateClosed);
 	return 0;
 }
@@ -290,6 +312,14 @@ void xenbus_dev_shutdown(struct device *_dev)
 EXPORT_SYMBOL_GPL(xenbus_dev_shutdown);
 
 int xenbus_register_driver_common(struct xenbus_driver *drv,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  struct xen_bus_type *bus)
+{
+	drv->driver.bus = &bus->bus;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  struct xen_bus_type *bus,
 				  struct module *owner,
 				  const char *mod_name)
@@ -298,6 +328,10 @@ int xenbus_register_driver_common(struct xenbus_driver *drv,
 	drv->driver.bus = &bus->bus;
 	drv->driver.owner = owner;
 	drv->driver.mod_name = mod_name;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return driver_register(&drv->driver);
 }
@@ -309,8 +343,17 @@ void xenbus_unregister_driver(struct xenbus_driver *drv)
 }
 EXPORT_SYMBOL_GPL(xenbus_unregister_driver);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct xb_find_info {
+=======
 struct xb_find_info
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct xb_find_info
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xenbus_device *dev;
 	const char *nodename;
 };
@@ -378,6 +421,37 @@ static void xenbus_dev_release(struct device *dev)
 		kfree(to_xenbus_device(dev));
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t nodename_show(struct device *dev,
+			     struct device_attribute *attr, char *buf)
+{
+	return sprintf(buf, "%s\n", to_xenbus_device(dev)->nodename);
+}
+
+static ssize_t devtype_show(struct device *dev,
+			    struct device_attribute *attr, char *buf)
+{
+	return sprintf(buf, "%s\n", to_xenbus_device(dev)->devicetype);
+}
+
+static ssize_t modalias_show(struct device *dev,
+			     struct device_attribute *attr, char *buf)
+{
+	return sprintf(buf, "%s:%s\n", dev->bus->name,
+		       to_xenbus_device(dev)->devicetype);
+}
+
+struct device_attribute xenbus_dev_attrs[] = {
+	__ATTR_RO(nodename),
+	__ATTR_RO(devtype),
+	__ATTR_RO(modalias),
+	__ATTR_NULL
+};
+EXPORT_SYMBOL_GPL(xenbus_dev_attrs);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t xendev_show_nodename(struct device *dev,
 				    struct device_attribute *attr, char *buf)
 {
@@ -398,6 +472,10 @@ static ssize_t xendev_show_modalias(struct device *dev,
 	return sprintf(buf, "xen:%s\n", to_xenbus_device(dev)->devicetype);
 }
 static DEVICE_ATTR(modalias, S_IRUSR | S_IRGRP | S_IROTH, xendev_show_modalias, NULL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int xenbus_probe_node(struct xen_bus_type *bus,
 		      const char *type,
@@ -449,6 +527,12 @@ int xenbus_probe_node(struct xen_bus_type *bus,
 	if (err)
 		goto fail;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = device_create_file(&xendev->dev, &dev_attr_nodename);
 	if (err)
 		goto fail_unregister;
@@ -468,6 +552,10 @@ fail_remove_nodename:
 	device_remove_file(&xendev->dev, &dev_attr_nodename);
 fail_unregister:
 	device_unregister(&xendev->dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail:
 	kfree(xendev);
 	return err;
@@ -651,7 +739,15 @@ int xenbus_dev_cancel(struct device *dev)
 EXPORT_SYMBOL_GPL(xenbus_dev_cancel);
 
 /* A flag to determine if xenstored is 'ready' (i.e. has started) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int xenstored_ready;
+=======
 int xenstored_ready = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int xenstored_ready = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 int register_xenstore_notifier(struct notifier_block *nb)
@@ -696,6 +792,81 @@ static int __init xenbus_probe_initcall(void)
 
 device_initcall(xenbus_probe_initcall);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Set up event channel for xenstored which is run as a local process
+ * (this is normally used only in dom0)
+ */
+static int __init xenstored_local_init(void)
+{
+	int err = 0;
+	unsigned long page = 0;
+	struct evtchn_alloc_unbound alloc_unbound;
+
+	/* Allocate Xenstore page */
+	page = get_zeroed_page(GFP_KERNEL);
+	if (!page)
+		goto out_err;
+
+	xen_store_mfn = xen_start_info->store_mfn =
+		pfn_to_mfn(virt_to_phys((void *)page) >>
+			   PAGE_SHIFT);
+
+	/* Next allocate a local port which xenstored can bind to */
+	alloc_unbound.dom        = DOMID_SELF;
+	alloc_unbound.remote_dom = DOMID_SELF;
+
+	err = HYPERVISOR_event_channel_op(EVTCHNOP_alloc_unbound,
+					  &alloc_unbound);
+	if (err == -ENOSYS)
+		goto out_err;
+
+	BUG_ON(err);
+	xen_store_evtchn = xen_start_info->store_evtchn =
+		alloc_unbound.port;
+
+	return 0;
+
+ out_err:
+	if (page != 0)
+		free_page(page);
+	return err;
+}
+
+static int __init xenbus_init(void)
+{
+	int err = 0;
+
+	if (!xen_domain())
+		return -ENODEV;
+
+	xenbus_ring_ops_init();
+
+	if (xen_hvm_domain()) {
+		uint64_t v = 0;
+		err = hvm_get_parameter(HVM_PARAM_STORE_EVTCHN, &v);
+		if (err)
+			goto out_error;
+		xen_store_evtchn = (int)v;
+		err = hvm_get_parameter(HVM_PARAM_STORE_PFN, &v);
+		if (err)
+			goto out_error;
+		xen_store_mfn = (unsigned long)v;
+		xen_store_interface = ioremap(xen_store_mfn << PAGE_SHIFT, PAGE_SIZE);
+	} else {
+		xen_store_evtchn = xen_start_info->store_evtchn;
+		xen_store_mfn = xen_start_info->store_mfn;
+		if (xen_store_evtchn)
+			xenstored_ready = 1;
+		else {
+			err = xenstored_local_init();
+			if (err)
+				goto out_error;
+		}
+		xen_store_interface = mfn_to_virt(xen_store_mfn);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init xenbus_init(void)
 {
 	int err = 0;
@@ -754,6 +925,10 @@ static int __init xenbus_init(void)
 			xen_store_interface = mfn_to_virt(xen_store_mfn);
 			xenstored_ready = 1;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Initialize the interface to xenstore. */
@@ -772,12 +947,22 @@ static int __init xenbus_init(void)
 	proc_mkdir("xen", NULL);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+out_error:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
   out_error:
 	if (page != 0)
 		free_page(page);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 

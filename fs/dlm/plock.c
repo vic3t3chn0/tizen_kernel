@@ -95,8 +95,12 @@ static void do_unlock_close(struct dlm_ls *ls, u64 number,
 <<<<<<< HEAD
 	if (fl->fl_lmops && fl->fl_lmops->lm_grant)
 =======
+<<<<<<< HEAD
+	if (fl->fl_lmops && fl->fl_lmops->lm_grant)
+=======
 	if (fl->fl_lmops && fl->fl_lmops->fl_grant)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		op->info.owner	= (__u64) fl->fl_pid;
 	else
 		op->info.owner	= (__u64)(long) fl->fl_owner;
@@ -133,11 +137,16 @@ int dlm_posix_lock(dlm_lockspace_t *lockspace, u64 number, struct file *file,
 	op->info.start		= fl->fl_start;
 	op->info.end		= fl->fl_end;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fl->fl_lmops && fl->fl_lmops->lm_grant) {
 		/* fl_owner is lockd which doesn't distinguish
 		   processes on the nfs client */
 		op->info.owner	= (__u64) fl->fl_pid;
 		xop->callback	= fl->fl_lmops->lm_grant;
+<<<<<<< HEAD
+=======
 =======
 	if (fl->fl_lmops && fl->fl_lmops->fl_grant) {
 		/* fl_owner is lockd which doesn't distinguish
@@ -145,6 +154,7 @@ int dlm_posix_lock(dlm_lockspace_t *lockspace, u64 number, struct file *file,
 		op->info.owner	= (__u64) fl->fl_pid;
 		xop->callback	= fl->fl_lmops->fl_grant;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		locks_init_lock(&xop->flc);
 		locks_copy_lock(&xop->flc, fl);
 		xop->fl		= fl;
@@ -283,8 +293,12 @@ int dlm_posix_unlock(dlm_lockspace_t *lockspace, u64 number, struct file *file,
 <<<<<<< HEAD
 	if (fl->fl_lmops && fl->fl_lmops->lm_grant)
 =======
+<<<<<<< HEAD
+	if (fl->fl_lmops && fl->fl_lmops->lm_grant)
+=======
 	if (fl->fl_lmops && fl->fl_lmops->fl_grant)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		op->info.owner	= (__u64) fl->fl_pid;
 	else
 		op->info.owner	= (__u64)(long) fl->fl_owner;
@@ -346,8 +360,12 @@ int dlm_posix_get(dlm_lockspace_t *lockspace, u64 number, struct file *file,
 <<<<<<< HEAD
 	if (fl->fl_lmops && fl->fl_lmops->lm_grant)
 =======
+<<<<<<< HEAD
+	if (fl->fl_lmops && fl->fl_lmops->lm_grant)
+=======
 	if (fl->fl_lmops && fl->fl_lmops->fl_grant)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		op->info.owner	= (__u64) fl->fl_pid;
 	else
 		op->info.owner	= (__u64)(long) fl->fl_owner;

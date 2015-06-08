@@ -67,10 +67,13 @@ static inline void dma_make_coherent(unsigned long pa, unsigned long len)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct resource *_sparc_find_resource(struct resource *r,
 					     unsigned long);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *_sparc_ioremap(struct resource *res, u32 bus, u32 pa, int sz);
 static void __iomem *_sparc_alloc_io(unsigned int busno, unsigned long phys,
     unsigned long size, char *name);
@@ -147,14 +150,20 @@ void iounmap(volatile void __iomem *virtual)
 	struct resource *res;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * XXX Too slow. Can have 8192 DVMA pages on sun4m in the worst case.
 	 * This probably warrants some sort of hashing.
 	*/
 	if ((res = lookup_resource(&sparc_iomap, vaddr)) == NULL) {
+<<<<<<< HEAD
+=======
 =======
 	if ((res = _sparc_find_resource(&sparc_iomap, vaddr)) == NULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk("free_io/iounmap: cannot free %lx\n", vaddr);
 		return;
 	}
@@ -242,8 +251,12 @@ _sparc_ioremap(struct resource *res, u32 bus, u32 pa, int sz)
 <<<<<<< HEAD
 	sparc_mapiorange(bus, pa, res->start, resource_size(res));
 =======
+<<<<<<< HEAD
+	sparc_mapiorange(bus, pa, res->start, resource_size(res));
+=======
 	sparc_mapiorange(bus, pa, res->start, res->end - res->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return (void __iomem *)(unsigned long)(res->start + offset);
 }
@@ -258,8 +271,12 @@ static void _sparc_free_io(struct resource *res)
 <<<<<<< HEAD
 	plen = resource_size(res);
 =======
+<<<<<<< HEAD
+	plen = resource_size(res);
+=======
 	plen = res->end - res->start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON((plen & (PAGE_SIZE-1)) != 0);
 	sparc_unmapiorange(res->start, plen);
 	release_resource(res);
@@ -283,8 +300,13 @@ static void *sbus_alloc_coherent(struct device *dev, size_t len,
 				 dma_addr_t *dma_addrp, gfp_t gfp,
 				 struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				 dma_addr_t *dma_addrp, gfp_t gfp,
+				 struct dma_attrs *attrs)
+=======
 				 dma_addr_t *dma_addrp, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct platform_device *op = to_platform_device(dev);
 	unsigned long len_total = PAGE_ALIGN(len);
@@ -341,8 +363,12 @@ static void sbus_free_coherent(struct device *dev, size_t n, void *p,
 <<<<<<< HEAD
 			       dma_addr_t ba, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+			       dma_addr_t ba, struct dma_attrs *attrs)
+=======
 			       dma_addr_t ba)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct resource *res;
 	struct page *pgv;
@@ -350,8 +376,12 @@ static void sbus_free_coherent(struct device *dev, size_t n, void *p,
 <<<<<<< HEAD
 	if ((res = lookup_resource(&_sparc_dvma,
 =======
+<<<<<<< HEAD
+	if ((res = lookup_resource(&_sparc_dvma,
+=======
 	if ((res = _sparc_find_resource(&_sparc_dvma,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (unsigned long)p)) == NULL) {
 		printk("sbus_free_consistent: cannot free %p\n", p);
 		return;
@@ -368,10 +398,16 @@ static void sbus_free_coherent(struct device *dev, size_t n, void *p,
 		printk("sbus_free_consistent: region 0x%lx asked 0x%zx\n",
 		    (long)resource_size(res), n);
 =======
+<<<<<<< HEAD
+	if (resource_size(res) != n) {
+		printk("sbus_free_consistent: region 0x%lx asked 0x%zx\n",
+		    (long)resource_size(res), n);
+=======
 	if ((res->end-res->start)+1 != n) {
 		printk("sbus_free_consistent: region 0x%lx asked 0x%zx\n",
 		    (long)((res->end-res->start)+1), n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -448,9 +484,14 @@ struct dma_map_ops sbus_dma_ops = {
 	.alloc			= sbus_alloc_coherent,
 	.free			= sbus_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc			= sbus_alloc_coherent,
+	.free			= sbus_free_coherent,
+=======
 	.alloc_coherent		= sbus_alloc_coherent,
 	.free_coherent		= sbus_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_page		= sbus_map_page,
 	.unmap_page		= sbus_unmap_page,
 	.map_sg			= sbus_map_sg,
@@ -482,8 +523,13 @@ static void *pci32_alloc_coherent(struct device *dev, size_t len,
 				  dma_addr_t *pba, gfp_t gfp,
 				  struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				  dma_addr_t *pba, gfp_t gfp,
+				  struct dma_attrs *attrs)
+=======
 				  dma_addr_t *pba, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long len_total = PAGE_ALIGN(len);
 	void *va;
@@ -537,11 +583,16 @@ err_nopages:
  */
 static void pci32_free_coherent(struct device *dev, size_t n, void *p,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				dma_addr_t ba, struct dma_attrs *attrs)
 {
 	struct resource *res;
 
 	if ((res = lookup_resource(&_sparc_dvma,
+<<<<<<< HEAD
+=======
 =======
 				dma_addr_t ba)
 {
@@ -549,6 +600,7 @@ static void pci32_free_coherent(struct device *dev, size_t n, void *p,
 
 	if ((res = _sparc_find_resource(&_sparc_dvma,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (unsigned long)p)) == NULL) {
 		printk("pci_free_consistent: cannot free %p\n", p);
 		return;
@@ -565,10 +617,16 @@ static void pci32_free_coherent(struct device *dev, size_t n, void *p,
 		printk("pci_free_consistent: region 0x%lx asked 0x%lx\n",
 		    (long)resource_size(res), (long)n);
 =======
+<<<<<<< HEAD
+	if (resource_size(res) != n) {
+		printk("pci_free_consistent: region 0x%lx asked 0x%lx\n",
+		    (long)resource_size(res), (long)n);
+=======
 	if ((res->end-res->start)+1 != n) {
 		printk("pci_free_consistent: region 0x%lx asked 0x%lx\n",
 		    (long)((res->end-res->start)+1), (long)n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -710,9 +768,14 @@ struct dma_map_ops pci32_dma_ops = {
 	.alloc			= pci32_alloc_coherent,
 	.free			= pci32_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc			= pci32_alloc_coherent,
+	.free			= pci32_free_coherent,
+=======
 	.alloc_coherent		= pci32_alloc_coherent,
 	.free_coherent		= pci32_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_page		= pci32_map_page,
 	.unmap_page		= pci32_unmap_page,
 	.map_sg			= pci32_map_sg,
@@ -784,6 +847,8 @@ static const struct file_operations sparc_io_proc_fops = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * This is a version of find_resource and it belongs to kernel/resource.c.
  * Until we have agreement with Linus and Martin, it lingers here.
@@ -804,6 +869,7 @@ static struct resource *_sparc_find_resource(struct resource *root,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void register_proc_sparc_ioport(void)
 {
 #ifdef CONFIG_PROC_FS

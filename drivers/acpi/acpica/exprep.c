@@ -6,7 +6,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,6 +55,13 @@
 #include "acinterp.h"
 #include "amlcode.h"
 #include "acnamesp.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "acdispat.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define _COMPONENT          ACPI_EXECUTER
 ACPI_MODULE_NAME("exprep")
@@ -455,6 +470,36 @@ acpi_status acpi_ex_prep_field_value(struct acpi_create_field_info *info)
 		obj_desc->field.region_obj =
 		    acpi_ns_get_attached_object(info->region_node);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* Fields specific to generic_serial_bus fields */
+
+		obj_desc->field.access_length = info->access_length;
+
+		if (info->connection_node) {
+			second_desc = info->connection_node->object;
+			if (!(second_desc->common.flags & AOPOBJ_DATA_VALID)) {
+				status =
+				    acpi_ds_get_buffer_arguments(second_desc);
+				if (ACPI_FAILURE(status)) {
+					acpi_ut_delete_object_desc(obj_desc);
+					return_ACPI_STATUS(status);
+				}
+			}
+
+			obj_desc->field.resource_buffer =
+			    second_desc->buffer.pointer;
+			obj_desc->field.resource_length =
+			    (u16)second_desc->buffer.length;
+		} else if (info->resource_buffer) {
+			obj_desc->field.resource_buffer = info->resource_buffer;
+			obj_desc->field.resource_length = info->resource_length;
+		}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Allow full data read from EC address space */
 
 		if ((obj_desc->field.region_obj->region.space_id ==

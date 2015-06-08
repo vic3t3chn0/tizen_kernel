@@ -9,8 +9,12 @@
 <<<<<<< HEAD
  * Author: Paul Moore <paul@paul-moore.com>
 =======
+<<<<<<< HEAD
+ * Author: Paul Moore <paul@paul-moore.com>
+=======
  * Author: Paul Moore <paul.moore@hp.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  */
 
@@ -62,9 +66,13 @@ static DEFINE_SPINLOCK(netlbl_domhsh_lock);
 <<<<<<< HEAD
 	rcu_dereference_check(p, lockdep_is_held(&netlbl_domhsh_lock))
 =======
+<<<<<<< HEAD
+	rcu_dereference_check(p, lockdep_is_held(&netlbl_domhsh_lock))
+=======
 	rcu_dereference_check(p, rcu_read_lock_held() || \
 				 lockdep_is_held(&netlbl_domhsh_lock))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct netlbl_domhsh_tbl *netlbl_domhsh = NULL;
 static struct netlbl_dom_map *netlbl_domhsh_def = NULL;
 
@@ -90,8 +98,12 @@ static void netlbl_domhsh_free_entry(struct rcu_head *entry)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct netlbl_af6list *iter6;
 	struct netlbl_af6list *tmp6;
 #endif /* IPv6 */
@@ -106,8 +118,12 @@ static void netlbl_domhsh_free_entry(struct rcu_head *entry)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		netlbl_af6list_foreach_safe(iter6, tmp6,
 					    &ptr->type_def.addrsel->list6) {
 			netlbl_af6list_remove_entry(iter6);
@@ -237,8 +253,12 @@ static void netlbl_domhsh_audit_add(struct netlbl_dom_map *entry,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (addr6 != NULL) {
 			struct netlbl_domaddr6_map *map6;
 			map6 = netlbl_domhsh_addr6_entry(addr6);
@@ -330,8 +350,12 @@ int netlbl_domhsh_add(struct netlbl_dom_map *entry,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct netlbl_af6list *iter6;
 	struct netlbl_af6list *tmp6;
 #endif /* IPv6 */
@@ -366,8 +390,12 @@ int netlbl_domhsh_add(struct netlbl_dom_map *entry,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			netlbl_af6list_foreach_rcu(iter6,
 					       &entry->type_def.addrsel->list6)
 				netlbl_domhsh_audit_add(entry, NULL, iter6,
@@ -397,8 +425,12 @@ int netlbl_domhsh_add(struct netlbl_dom_map *entry,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		netlbl_af6list_foreach_rcu(iter6,
 					   &entry->type_def.addrsel->list6)
 			if (netlbl_af6list_search_exact(&iter6->addr,
@@ -422,8 +454,12 @@ int netlbl_domhsh_add(struct netlbl_dom_map *entry,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		netlbl_af6list_foreach_safe(iter6, tmp6,
 					    &entry->type_def.addrsel->list6) {
 			netlbl_af6list_remove_entry(iter6);
@@ -491,8 +527,12 @@ int netlbl_domhsh_remove_entry(struct netlbl_dom_map *entry,
 <<<<<<< HEAD
 			RCU_INIT_POINTER(netlbl_domhsh_def, NULL);
 =======
+<<<<<<< HEAD
+			RCU_INIT_POINTER(netlbl_domhsh_def, NULL);
+=======
 			rcu_assign_pointer(netlbl_domhsh_def, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		ret_val = -ENOENT;
 	spin_unlock(&netlbl_domhsh_lock);
@@ -554,8 +594,12 @@ int netlbl_domhsh_remove_af4(const char *domain,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct netlbl_af6list *iter6;
 #endif /* IPv6 */
 	struct netlbl_domaddr4_map *entry;
@@ -581,8 +625,12 @@ int netlbl_domhsh_remove_af4(const char *domain,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netlbl_af6list_foreach_rcu(iter6, &entry_map->type_def.addrsel->list6)
 		goto remove_af4_single_addr;
 #endif /* IPv6 */
@@ -696,8 +744,12 @@ struct netlbl_domaddr4_map *netlbl_domhsh_getentry_af4(const char *domain,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * netlbl_domhsh_getentry_af6 - Get an entry from the domain hash table
  * @domain: the domain name to search for

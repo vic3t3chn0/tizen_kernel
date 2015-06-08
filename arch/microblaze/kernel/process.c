@@ -15,8 +15,11 @@
 #include <linux/bitops.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgalloc.h>
 #include <asm/uaccess.h> /* for USER_DS macros */
 #include <asm/cacheflush.h>
@@ -107,6 +110,9 @@ void cpu_idle(void)
 			idle = default_idle;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tick_nohz_idle_enter();
 		rcu_idle_enter();
 		while (!need_resched())
@@ -115,6 +121,8 @@ void cpu_idle(void)
 		tick_nohz_idle_exit();
 
 		schedule_preempt_disabled();
+<<<<<<< HEAD
+=======
 =======
 		tick_nohz_stop_sched_tick(1);
 		while (!need_resched())
@@ -125,6 +133,7 @@ void cpu_idle(void)
 		schedule();
 		preempt_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		check_pgt_cache();
 	}
 }
@@ -196,7 +205,11 @@ int copy_thread(unsigned long clone_flags, unsigned long usp,
 <<<<<<< HEAD
 	ti->cpu_context.msr &= ~MSR_IE;
 =======
+<<<<<<< HEAD
+	ti->cpu_context.msr &= ~MSR_IE;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	ti->cpu_context.r15 = (unsigned long)ret_from_fork - 8;
 
@@ -257,8 +270,11 @@ void start_thread(struct pt_regs *regs, unsigned long pc, unsigned long usp)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	set_fs(USER_DS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->pc = pc;
 	regs->r1 = usp;
 	regs->pt_mode = 0;

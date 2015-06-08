@@ -53,9 +53,14 @@ int ipv4_skb_to_auditdata(struct sk_buff *skb,
 	ad->u.net->v4info.saddr = ih->saddr;
 	ad->u.net->v4info.daddr = ih->daddr;
 =======
+<<<<<<< HEAD
+	ad->u.net->v4info.saddr = ih->saddr;
+	ad->u.net->v4info.daddr = ih->daddr;
+=======
 	ad->u.net.v4info.saddr = ih->saddr;
 	ad->u.net.v4info.daddr = ih->daddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (proto)
 		*proto = ih->protocol;
@@ -73,9 +78,14 @@ int ipv4_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = th->source;
 		ad->u.net->dport = th->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = th->source;
+		ad->u.net->dport = th->dest;
+=======
 		ad->u.net.sport = th->source;
 		ad->u.net.dport = th->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case IPPROTO_UDP: {
@@ -87,9 +97,14 @@ int ipv4_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = uh->source;
 		ad->u.net->dport = uh->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = uh->source;
+		ad->u.net->dport = uh->dest;
+=======
 		ad->u.net.sport = uh->source;
 		ad->u.net.dport = uh->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case IPPROTO_DCCP: {
@@ -101,9 +116,14 @@ int ipv4_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = dh->dccph_sport;
 		ad->u.net->dport = dh->dccph_dport;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = dh->dccph_sport;
+		ad->u.net->dport = dh->dccph_dport;
+=======
 		ad->u.net.sport = dh->dccph_sport;
 		ad->u.net.dport = dh->dccph_dport;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case IPPROTO_SCTP: {
@@ -114,9 +134,14 @@ int ipv4_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = sh->source;
 		ad->u.net->dport = sh->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = sh->source;
+		ad->u.net->dport = sh->dest;
+=======
 		ad->u.net.sport = sh->source;
 		ad->u.net.dport = sh->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	default:
@@ -142,7 +167,11 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 <<<<<<< HEAD
 	__be16 frag_off;
 =======
+<<<<<<< HEAD
+	__be16 frag_off;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ip6 = ipv6_hdr(skb);
 	if (ip6 == NULL)
@@ -151,9 +180,14 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 	ad->u.net->v6info.saddr = ip6->saddr;
 	ad->u.net->v6info.daddr = ip6->daddr;
 =======
+<<<<<<< HEAD
+	ad->u.net->v6info.saddr = ip6->saddr;
+	ad->u.net->v6info.daddr = ip6->daddr;
+=======
 	ipv6_addr_copy(&ad->u.net.v6info.saddr, &ip6->saddr);
 	ipv6_addr_copy(&ad->u.net.v6info.daddr, &ip6->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 0;
 	/* IPv6 can have several extension header before the Transport header
 	 * skip them */
@@ -163,8 +197,12 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 <<<<<<< HEAD
 	offset = ipv6_skip_exthdr(skb, offset, &nexthdr, &frag_off);
 =======
+<<<<<<< HEAD
+	offset = ipv6_skip_exthdr(skb, offset, &nexthdr, &frag_off);
+=======
 	offset = ipv6_skip_exthdr(skb, offset, &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (offset < 0)
 		return 0;
 	if (proto)
@@ -181,9 +219,14 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = th->source;
 		ad->u.net->dport = th->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = th->source;
+		ad->u.net->dport = th->dest;
+=======
 		ad->u.net.sport = th->source;
 		ad->u.net.dport = th->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case IPPROTO_UDP: {
@@ -197,9 +240,14 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = uh->source;
 		ad->u.net->dport = uh->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = uh->source;
+		ad->u.net->dport = uh->dest;
+=======
 		ad->u.net.sport = uh->source;
 		ad->u.net.dport = uh->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case IPPROTO_DCCP: {
@@ -213,9 +261,14 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = dh->dccph_sport;
 		ad->u.net->dport = dh->dccph_dport;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = dh->dccph_sport;
+		ad->u.net->dport = dh->dccph_dport;
+=======
 		ad->u.net.sport = dh->dccph_sport;
 		ad->u.net.dport = dh->dccph_dport;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case IPPROTO_SCTP: {
@@ -228,9 +281,14 @@ int ipv6_skb_to_auditdata(struct sk_buff *skb,
 		ad->u.net->sport = sh->source;
 		ad->u.net->dport = sh->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = sh->source;
+		ad->u.net->dport = sh->dest;
+=======
 		ad->u.net.sport = sh->source;
 		ad->u.net.dport = sh->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	default:
@@ -290,6 +348,9 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 		struct inode *inode;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		audit_log_d_path(ab, " path=", &a->u.path);
 
 		inode = a->u.path.dentry->d_inode;
@@ -298,6 +359,8 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 			audit_log_untrustedstring(ab, inode->i_sb->s_id);
 			audit_log_format(ab, " ino=%lu", inode->i_ino);
 		}
+<<<<<<< HEAD
+=======
 =======
 		audit_log_d_path(ab, "path=", &a->u.path);
 
@@ -307,6 +370,7 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 					inode->i_sb->s_id,
 					inode->i_ino);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case LSM_AUDIT_DATA_DENTRY: {
@@ -317,17 +381,23 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 
 		inode = a->u.dentry->d_inode;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (inode) {
 			audit_log_format(ab, " dev=");
 			audit_log_untrustedstring(ab, inode->i_sb->s_id);
 			audit_log_format(ab, " ino=%lu", inode->i_ino);
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (inode)
 			audit_log_format(ab, " dev=%s ino=%lu",
 					inode->i_sb->s_id,
 					inode->i_ino);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case LSM_AUDIT_DATA_INODE: {
@@ -347,9 +417,15 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 		audit_log_untrustedstring(ab, inode->i_sb->s_id);
 		audit_log_format(ab, " ino=%lu", inode->i_ino);
 =======
+<<<<<<< HEAD
+		audit_log_format(ab, " dev=");
+		audit_log_untrustedstring(ab, inode->i_sb->s_id);
+		audit_log_format(ab, " ino=%lu", inode->i_ino);
+=======
 		audit_log_format(ab, " dev=%s ino=%lu", inode->i_sb->s_id,
 				 inode->i_ino);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	case LSM_AUDIT_DATA_TASK:
@@ -364,9 +440,14 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 		if (a->u.net->sk) {
 			struct sock *sk = a->u.net->sk;
 =======
+<<<<<<< HEAD
+		if (a->u.net->sk) {
+			struct sock *sk = a->u.net->sk;
+=======
 		if (a->u.net.sk) {
 			struct sock *sk = a->u.net.sk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct unix_sock *u;
 			int len = 0;
 			char *p = NULL;
@@ -401,6 +482,10 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 				if (u->path.dentry) {
 					audit_log_d_path(ab, " path=", &u->path);
 =======
+<<<<<<< HEAD
+				if (u->path.dentry) {
+					audit_log_d_path(ab, " path=", &u->path);
+=======
 				if (u->dentry) {
 					struct path path = {
 						.dentry = u->dentry,
@@ -408,6 +493,7 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 					};
 					audit_log_d_path(ab, "path=", &path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					break;
 				}
 				if (!u->addr)
@@ -424,6 +510,9 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (a->u.net->family) {
 		case AF_INET:
 			print_ipv4_addr(ab, a->u.net->v4info.saddr,
@@ -447,6 +536,8 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 
 			/* NOTE: we always use init's namespace */
 			dev = dev_get_by_index(&init_net, a->u.net->netif);
+<<<<<<< HEAD
+=======
 =======
 		switch (a->u.net.family) {
 		case AF_INET:
@@ -472,6 +563,7 @@ static void dump_common_audit_data(struct audit_buffer *ab,
 			/* NOTE: we always use init's namespace */
 			dev = dev_get_by_index(&init_net, a->u.net.netif);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dev) {
 				audit_log_format(ab, " netif=%s", dev->name);
 				dev_put(dev);
@@ -501,7 +593,12 @@ static void dump_common_audit_data(struct audit_buffer *ab,
  * @pre_audit: lsm-specific pre-audit callback
  * @post_audit: lsm-specific post-audit callback
 =======
+<<<<<<< HEAD
+ * @pre_audit: lsm-specific pre-audit callback
+ * @post_audit: lsm-specific post-audit callback
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * setup the audit buffer for common security information
  * uses callback to print LSM specific information
@@ -511,8 +608,14 @@ void common_lsm_audit(struct common_audit_data *a,
 	void (*pre_audit)(struct audit_buffer *, void *),
 	void (*post_audit)(struct audit_buffer *, void *))
 =======
+<<<<<<< HEAD
+void common_lsm_audit(struct common_audit_data *a,
+	void (*pre_audit)(struct audit_buffer *, void *),
+	void (*post_audit)(struct audit_buffer *, void *))
+=======
 void common_lsm_audit(struct common_audit_data *a)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct audit_buffer *ab;
 
@@ -525,6 +628,9 @@ void common_lsm_audit(struct common_audit_data *a)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pre_audit)
 		pre_audit(ab, a);
 
@@ -532,6 +638,8 @@ void common_lsm_audit(struct common_audit_data *a)
 
 	if (post_audit)
 		post_audit(ab, a);
+<<<<<<< HEAD
+=======
 =======
 	if (a->lsm_pre_audit)
 		a->lsm_pre_audit(ab, a);
@@ -541,6 +649,7 @@ void common_lsm_audit(struct common_audit_data *a)
 	if (a->lsm_post_audit)
 		a->lsm_post_audit(ab, a);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	audit_log_end(ab);
 }

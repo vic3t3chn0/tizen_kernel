@@ -45,6 +45,13 @@
 #include <linux/module.h>
 #include <linux/mutex.h>
 #include <xen/xenbus.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <xen/xen.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xenbus_comms.h"
 
 struct xs_stored_msg {
@@ -531,6 +538,23 @@ int xenbus_printf(struct xenbus_transaction t,
 {
 	va_list ap;
 	int ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	char *buf;
+
+	va_start(ap, fmt);
+	buf = kvasprintf(GFP_NOIO | __GFP_HIGH, fmt, ap);
+	va_end(ap);
+
+	if (!buf)
+		return -ENOMEM;
+
+	ret = xenbus_write(t, dir, node, buf);
+
+	kfree(buf);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PRINTF_BUFFER_SIZE 4096
 	char *printf_buffer;
 
@@ -546,6 +570,10 @@ int xenbus_printf(struct xenbus_transaction t,
 	ret = xenbus_write(t, dir, node, printf_buffer);
 
 	kfree(printf_buffer);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -638,8 +666,17 @@ int register_xenbus_watch(struct xenbus_watch *watch)
 
 	err = xs_watch(watch->node, token);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err) {
+=======
 	/* Ignore errors due to multiple registration. */
 	if ((err != 0) && (err != -EEXIST)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Ignore errors due to multiple registration. */
+	if ((err != 0) && (err != -EEXIST)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&watches_lock);
 		list_del(&watch->list);
 		spin_unlock(&watches_lock);

@@ -11,6 +11,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/err.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
@@ -35,6 +38,8 @@ release_pmu(enum arm_pmu_type type)
 	clear_bit_unlock(type, pmu_lock);
 }
 EXPORT_SYMBOL_GPL(release_pmu);
+<<<<<<< HEAD
+=======
 =======
 #define pr_fmt(fmt) "PMU: " fmt
 
@@ -173,3 +178,4 @@ init_pmu(enum arm_pmu_type device)
 }
 EXPORT_SYMBOL_GPL(init_pmu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

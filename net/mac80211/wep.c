@@ -267,8 +267,13 @@ static int ieee80211_wep_decrypt(struct ieee80211_local *local,
 static bool ieee80211_wep_is_weak_iv(struct sk_buff *skb,
 				     struct ieee80211_key *key)
 =======
+<<<<<<< HEAD
+static bool ieee80211_wep_is_weak_iv(struct sk_buff *skb,
+				     struct ieee80211_key *key)
+=======
 bool ieee80211_wep_is_weak_iv(struct sk_buff *skb, struct ieee80211_key *key)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
 	unsigned int hdrlen;
@@ -277,10 +282,13 @@ bool ieee80211_wep_is_weak_iv(struct sk_buff *skb, struct ieee80211_key *key)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!ieee80211_has_protected(hdr->frame_control))
 		return false;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdrlen = ieee80211_hdrlen(hdr->frame_control);
 	ivpos = skb->data + hdrlen;
 	iv = (ivpos[0] << 16) | (ivpos[1] << 8) | ivpos[2];
@@ -295,6 +303,9 @@ ieee80211_crypto_wep_decrypt(struct ieee80211_rx_data *rx)
 	struct ieee80211_rx_status *status = IEEE80211_SKB_RXCB(skb);
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le16 fc = hdr->frame_control;
 
 	if (!ieee80211_is_data(fc) && !ieee80211_is_auth(fc))
@@ -316,6 +327,8 @@ ieee80211_crypto_wep_decrypt(struct ieee80211_rx_data *rx)
 		/* remove ICV */
 		if (pskb_trim(rx->skb, rx->skb->len - WEP_ICV_LEN))
 			return RX_DROP_UNUSABLE;
+<<<<<<< HEAD
+=======
 =======
 
 	if (!ieee80211_is_data(hdr->frame_control) &&
@@ -330,6 +343,7 @@ ieee80211_crypto_wep_decrypt(struct ieee80211_rx_data *rx)
 		/* remove ICV */
 		skb_trim(rx->skb, rx->skb->len - WEP_ICV_LEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return RX_CONTINUE;
@@ -365,9 +379,13 @@ ieee80211_crypto_wep_encrypt(struct ieee80211_tx_data *tx)
 <<<<<<< HEAD
 	skb_queue_walk(&tx->skbs, skb) {
 =======
+<<<<<<< HEAD
+	skb_queue_walk(&tx->skbs, skb) {
+=======
 	skb = tx->skb;
 	do {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (wep_encrypt_skb(tx, skb) < 0) {
 			I802_DEBUG_INC(tx->local->tx_handlers_drop_wep);
 			return TX_DROP;
@@ -375,8 +393,12 @@ ieee80211_crypto_wep_encrypt(struct ieee80211_tx_data *tx)
 <<<<<<< HEAD
 	}
 =======
+<<<<<<< HEAD
+	}
+=======
 	} while ((skb = skb->next));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return TX_CONTINUE;
 }

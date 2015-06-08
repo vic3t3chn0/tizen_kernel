@@ -204,12 +204,18 @@
 
 /* UART */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO8_UART3_TXD		MFP_CFG(GPIO8, AF2)
 #define GPIO9_UART3_RXD		MFP_CFG(GPIO9, AF2)
 #define GPIO1O_UART3_CTS	MFP_CFG(GPIO10, AF2)
 #define GPIO11_UART3_RTS	MFP_CFG(GPIO11, AF2)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO88_UART2_TXD	MFP_CFG(GPIO88, AF2)
 #define GPIO89_UART2_RXD	MFP_CFG(GPIO89, AF2)
 #define GPIO107_UART1_TXD	MFP_CFG_DRV(GPIO107, AF1, FAST)
@@ -240,6 +246,9 @@
 #define GPIO46_MMC1_WP		MFP_CFG(GPIO46, AF1)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* MMC2 */
 #define	GPIO28_MMC2_CMD		MFP_CFG_DRV(GPIO28, AF6, FAST)
 #define	GPIO29_MMC2_CLK		MFP_CFG_DRV(GPIO29, AF6, FAST)
@@ -256,8 +265,11 @@
 #define GPIO1_2_MMC4_CMD        MFP_CFG_DRV(GPIO1_2, AF7, FAST)
 #define GPIO2_2_MMC4_CLK        MFP_CFG_DRV(GPIO2_2, AF7, FAST)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* LCD */
 #define GPIO84_LCD_CS		MFP_CFG(GPIO84, AF1)
 #define GPIO60_LCD_DD0		MFP_CFG(GPIO60, AF1)
@@ -296,12 +308,17 @@
 
 /* I2S */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO113_I2S_MCLK	MFP_CFG(GPIO113, AF6)
 #define GPIO114_I2S_FRM		MFP_CFG(GPIO114, AF1)
 #define GPIO115_I2S_BCLK	MFP_CFG(GPIO115, AF1)
 #define GPIO116_I2S_RXD		MFP_CFG(GPIO116, AF2)
 #define GPIO116_I2S_TXD         MFP_CFG(GPIO116, AF1)
 #define GPIO117_I2S_TXD		MFP_CFG(GPIO117, AF2)
+<<<<<<< HEAD
+=======
 =======
 #define GPIO113_I2S_MCLK	MFP_CFG(GPIO113,AF6)
 #define GPIO114_I2S_FRM		MFP_CFG(GPIO114,AF1)
@@ -309,6 +326,7 @@
 #define GPIO116_I2S_RXD		MFP_CFG(GPIO116,AF2)
 #define GPIO117_I2S_TXD		MFP_CFG(GPIO117,AF2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* PWM */
 #define GPIO96_PWM3_OUT		MFP_CFG(GPIO96, AF1)
@@ -341,6 +359,9 @@
 #define GPIO121_KP_MKIN4        MFP_CFG(GPIO121, AF7)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Fast Ethernet */
 #define GPIO86_TX_CLK		MFP_CFG(GPIO86, AF5)
 #define GPIO87_TX_EN		MFP_CFG(GPIO87, AF5)
@@ -366,6 +387,9 @@
 #define GPIO111_SSP2_CLK	MFP_CFG(GPIO111, AF4)
 #define GPIO112_SSP2_FRM	MFP_CFG(GPIO112, AF4)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_MACH_MFP_PXA168_H */

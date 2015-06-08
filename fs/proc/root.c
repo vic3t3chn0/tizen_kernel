@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/parser.h>
 =======
+<<<<<<< HEAD
+#include <linux/parser.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "internal.h"
 
@@ -41,6 +45,9 @@ static int proc_set_super(struct super_block *sb, void *data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	Opt_gid, Opt_hidepid, Opt_err,
 };
@@ -98,8 +105,11 @@ int proc_remount(struct super_block *sb, int *flags, char *data)
 	return !proc_parse_options(data, pid);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct dentry *proc_mount(struct file_system_type *fs_type,
 	int flags, const char *dev_name, void *data)
 {
@@ -108,6 +118,9 @@ static struct dentry *proc_mount(struct file_system_type *fs_type,
 	struct pid_namespace *ns;
 	struct proc_inode *ei;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *options;
 
 	if (flags & MS_KERNMOUNT) {
@@ -117,6 +130,8 @@ static struct dentry *proc_mount(struct file_system_type *fs_type,
 		ns = current->nsproxy->pid_ns;
 		options = data;
 	}
+<<<<<<< HEAD
+=======
 =======
 
 	if (flags & MS_KERNMOUNT)
@@ -124,19 +139,26 @@ static struct dentry *proc_mount(struct file_system_type *fs_type,
 	else
 		ns = current->nsproxy->pid_ns;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sb = sget(fs_type, proc_test_super, proc_set_super, ns);
 	if (IS_ERR(sb))
 		return ERR_CAST(sb);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!proc_parse_options(options, ns)) {
 		deactivate_locked_super(sb);
 		return ERR_PTR(-EINVAL);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sb->s_root) {
 		sb->s_flags = flags;
 		err = proc_fill_super(sb);
@@ -177,8 +199,11 @@ void __init proc_root_init(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct vfsmount *mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	proc_init_inodecache();
@@ -189,17 +214,25 @@ void __init proc_root_init(void)
 	err = pid_ns_prepare_proc(&init_pid_ns);
 	if (err) {
 =======
+<<<<<<< HEAD
+	err = pid_ns_prepare_proc(&init_pid_ns);
+	if (err) {
+=======
 	mnt = kern_mount_data(&proc_fs_type, &init_pid_ns);
 	if (IS_ERR(mnt)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unregister_filesystem(&proc_fs_type);
 		return;
 	}
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	init_pid_ns.proc_mnt = mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	proc_symlink("mounts", NULL, "self/mounts");
 
 	proc_net_init();
@@ -283,8 +316,11 @@ struct proc_dir_entry proc_root = {
 	.namelen	= 5, 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.name		= "/proc",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.mode		= S_IFDIR | S_IRUGO | S_IXUGO, 
 	.nlink		= 2, 
 	.count		= ATOMIC_INIT(1),
@@ -294,7 +330,11 @@ struct proc_dir_entry proc_root = {
 <<<<<<< HEAD
 	.name		= "/proc",
 =======
+<<<<<<< HEAD
+	.name		= "/proc",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int pid_ns_prepare_proc(struct pid_namespace *ns)
@@ -314,6 +354,10 @@ void pid_ns_release_proc(struct pid_namespace *ns)
 <<<<<<< HEAD
 	kern_unmount(ns->proc_mnt);
 =======
+<<<<<<< HEAD
+	kern_unmount(ns->proc_mnt);
+=======
 	mntput(ns->proc_mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

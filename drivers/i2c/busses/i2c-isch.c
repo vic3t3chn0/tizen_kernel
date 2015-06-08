@@ -47,7 +47,15 @@
 #define SMBBLKDAT	(0x20 + sch_smba)
 
 /* Other settings */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MAX_RETRIES	5000
+=======
 #define MAX_TIMEOUT	500
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MAX_TIMEOUT	500
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* I2C constants */
 #define SCH_QUICK		0x00
@@ -68,7 +76,15 @@ static int sch_transaction(void)
 {
 	int temp;
 	int result = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int retries = 0;
+=======
 	int timeout = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int timeout = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(&sch_adapter.dev, "Transaction (pre): CNT=%02x, CMD=%02x, "
 		"ADD=%02x, DAT0=%02x, DAT1=%02x\n", inb(SMBHSTCNT),
@@ -100,12 +116,27 @@ static int sch_transaction(void)
 	outb(inb(SMBHSTCNT) | 0x10, SMBHSTCNT);
 
 	do {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		usleep_range(100, 200);
+		temp = inb(SMBHSTSTS) & 0x0f;
+	} while ((temp & 0x08) && (retries++ < MAX_RETRIES));
+
+	/* If the SMBus is still busy, we give up */
+	if (retries > MAX_RETRIES) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		msleep(1);
 		temp = inb(SMBHSTSTS) & 0x0f;
 	} while ((temp & 0x08) && (timeout++ < MAX_TIMEOUT));
 
 	/* If the SMBus is still busy, we give up */
 	if (timeout > MAX_TIMEOUT) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(&sch_adapter.dev, "SMBus Timeout!\n");
 		result = -ETIMEDOUT;
 	}
@@ -306,6 +337,12 @@ static struct platform_driver smbus_sch_driver = {
 	.remove		= __devexit_p(smbus_sch_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(smbus_sch_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init i2c_sch_init(void)
 {
 	return platform_driver_register(&smbus_sch_driver);
@@ -315,11 +352,24 @@ static void __exit i2c_sch_exit(void)
 {
 	platform_driver_unregister(&smbus_sch_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Jacob Pan <jacob.jun.pan@intel.com>");
 MODULE_DESCRIPTION("Intel SCH SMBus driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(i2c_sch_init);
 module_exit(i2c_sch_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(i2c_sch_init);
+module_exit(i2c_sch_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_ALIAS("platform:isch_smbus");

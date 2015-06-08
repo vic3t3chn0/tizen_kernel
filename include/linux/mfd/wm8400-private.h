@@ -29,12 +29,21 @@
 struct regmap;
 
 =======
+<<<<<<< HEAD
+struct regmap;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WM8400_REGISTER_COUNT 0x55
 
 struct wm8400 {
 	struct device *dev;
 
+<<<<<<< HEAD
+	struct mutex io_lock;
+	struct regmap *regmap;
+=======
 <<<<<<< HEAD
 	struct mutex io_lock;
 	struct regmap *regmap;
@@ -45,6 +54,7 @@ struct wm8400 {
 	struct mutex io_lock;
 	void *io_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u16 reg_cache[WM8400_REGISTER_COUNT];
 

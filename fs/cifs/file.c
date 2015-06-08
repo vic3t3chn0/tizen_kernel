@@ -35,7 +35,11 @@
 <<<<<<< HEAD
 #include <linux/swap.h>
 =======
+<<<<<<< HEAD
+#include <linux/swap.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/div64.h>
 #include "cifsfs.h"
 #include "cifspdu.h"
@@ -181,7 +185,11 @@ cifs_nt_open(char *full_path, struct inode *inode, struct cifs_sb_info *cifs_sb,
 <<<<<<< HEAD
 	int create_options = CREATE_NOT_DIR;
 =======
+<<<<<<< HEAD
+	int create_options = CREATE_NOT_DIR;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FILE_ALL_INFO *buf;
 
 	desiredAccess = cifs_convert_flags(f_flags);
@@ -219,17 +227,23 @@ cifs_nt_open(char *full_path, struct inode *inode, struct cifs_sb_info *cifs_sb,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (backup_cred(cifs_sb))
 		create_options |= CREATE_OPEN_BACKUP_INTENT;
 
 	if (tcon->ses->capabilities & CAP_NT_SMBS)
 		rc = CIFSSMBOpen(xid, tcon, full_path, disposition,
 			 desiredAccess, create_options, pnetfid, poplock, buf,
+<<<<<<< HEAD
+=======
 =======
 	if (tcon->ses->capabilities & CAP_NT_SMBS)
 		rc = CIFSSMBOpen(xid, tcon, full_path, disposition,
 			 desiredAccess, CREATE_NOT_DIR, pnetfid, poplock, buf,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 cifs_sb->local_nls, cifs_sb->mnt_cifs_flags
 				 & CIFS_MOUNT_MAP_SPECIAL_CHR);
 	else
@@ -279,10 +293,15 @@ cifs_new_fileinfo(__u16 fileHandle, struct file *file,
 	INIT_WORK(&pCifsFile->oplock_break, cifs_oplock_break);
 	cifs_sb_active(inode->i_sb);
 =======
+<<<<<<< HEAD
+	INIT_WORK(&pCifsFile->oplock_break, cifs_oplock_break);
+	cifs_sb_active(inode->i_sb);
+=======
 	mutex_init(&pCifsFile->lock_mutex);
 	INIT_LIST_HEAD(&pCifsFile->llist);
 	INIT_WORK(&pCifsFile->oplock_break, cifs_oplock_break);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&cifs_file_list_lock);
 	list_add(&pCifsFile->tlist, &(tlink_tcon(tlink)->openFileList));
@@ -297,7 +316,11 @@ cifs_new_fileinfo(__u16 fileHandle, struct file *file,
 <<<<<<< HEAD
 	pCifsInode->can_cache_brlcks = pCifsInode->clientCanCacheAll;
 =======
+<<<<<<< HEAD
+	pCifsInode->can_cache_brlcks = pCifsInode->clientCanCacheAll;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	file->private_data = pCifsFile;
 	return pCifsFile;
@@ -307,7 +330,12 @@ cifs_new_fileinfo(__u16 fileHandle, struct file *file,
 static void cifs_del_lock_waiters(struct cifsLockInfo *lock);
 
 =======
+<<<<<<< HEAD
+static void cifs_del_lock_waiters(struct cifsLockInfo *lock);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Release a reference on the file private data. This may involve closing
  * the filehandle out on the server. Must be called without holding
@@ -322,8 +350,13 @@ void cifsFileInfo_put(struct cifsFileInfo *cifs_file)
 	struct super_block *sb = inode->i_sb;
 	struct cifs_sb_info *cifs_sb = CIFS_SB(sb);
 =======
+<<<<<<< HEAD
+	struct super_block *sb = inode->i_sb;
+	struct cifs_sb_info *cifs_sb = CIFS_SB(sb);
+=======
 	struct cifs_sb_info *cifs_sb = CIFS_SB(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cifsLockInfo *li, *tmp;
 
 	spin_lock(&cifs_file_list_lock);
@@ -354,7 +387,12 @@ void cifsFileInfo_put(struct cifsFileInfo *cifs_file)
 	cancel_work_sync(&cifs_file->oplock_break);
 
 =======
+<<<<<<< HEAD
+	cancel_work_sync(&cifs_file->oplock_break);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!tcon->need_reconnect && !cifs_file->invalidHandle) {
 		int xid, rc;
 
@@ -367,6 +405,9 @@ void cifsFileInfo_put(struct cifsFileInfo *cifs_file)
 	 * is closed anyway.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&cifsi->lock_mutex);
 	list_for_each_entry_safe(li, tmp, &cifsi->llist, llist) {
 		if (li->netfid != cifs_file->netfid)
@@ -380,6 +421,8 @@ void cifsFileInfo_put(struct cifsFileInfo *cifs_file)
 	cifs_put_tlink(cifs_file->tlink);
 	dput(cifs_file->dentry);
 	cifs_sb_deactive(sb);
+<<<<<<< HEAD
+=======
 =======
 	mutex_lock(&cifs_file->lock_mutex);
 	list_for_each_entry_safe(li, tmp, &cifs_file->llist, llist) {
@@ -391,6 +434,7 @@ void cifsFileInfo_put(struct cifsFileInfo *cifs_file)
 	cifs_put_tlink(cifs_file->tlink);
 	dput(cifs_file->dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(cifs_file);
 }
 
@@ -429,8 +473,12 @@ int cifs_open(struct inode *inode, struct file *file)
 <<<<<<< HEAD
 	if (tcon->ses->server->oplocks)
 =======
+<<<<<<< HEAD
+	if (tcon->ses->server->oplocks)
+=======
 	if (oplockEnabled)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		oplock = REQ_OPLOCK;
 	else
 		oplock = 0;
@@ -527,7 +575,11 @@ static int cifs_reopen_file(struct cifsFileInfo *pCifsFile, bool can_flush)
 <<<<<<< HEAD
 	int create_options = CREATE_NOT_DIR;
 =======
+<<<<<<< HEAD
+	int create_options = CREATE_NOT_DIR;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u16 netfid;
 
 	xid = GetXid();
@@ -561,8 +613,12 @@ static int cifs_reopen_file(struct cifsFileInfo *pCifsFile, bool can_flush)
 <<<<<<< HEAD
 	if (tcon->ses->server->oplocks)
 =======
+<<<<<<< HEAD
+	if (tcon->ses->server->oplocks)
+=======
 	if (oplockEnabled)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		oplock = REQ_OPLOCK;
 	else
 		oplock = 0;
@@ -596,7 +652,13 @@ static int cifs_reopen_file(struct cifsFileInfo *pCifsFile, bool can_flush)
 		create_options |= CREATE_OPEN_BACKUP_INTENT;
 
 =======
+<<<<<<< HEAD
+	if (backup_cred(cifs_sb))
+		create_options |= CREATE_OPEN_BACKUP_INTENT;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Can not refresh inode by passing in file_info buf to be returned
 	   by SMBOpen and then calling get_inode_info with returned buf
 	   since file might have write behind data that needs to be flushed
@@ -607,8 +669,12 @@ static int cifs_reopen_file(struct cifsFileInfo *pCifsFile, bool can_flush)
 <<<<<<< HEAD
 			 create_options, &netfid, &oplock, NULL,
 =======
+<<<<<<< HEAD
+			 create_options, &netfid, &oplock, NULL,
+=======
 			 CREATE_NOT_DIR, &netfid, &oplock, NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 cifs_sb->local_nls, cifs_sb->mnt_cifs_flags &
 				CIFS_MOUNT_MAP_SPECIAL_CHR);
 	if (rc) {
@@ -709,6 +775,9 @@ int cifs_closedir(struct inode *inode, struct file *file)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct cifsLockInfo *
 cifs_lock_init(__u64 offset, __u64 length, __u8 type, __u16 netfid)
 {
@@ -1372,6 +1441,8 @@ cifs_setlk(struct file *file,  struct file_lock *flock, __u8 type,
 			return rc;
 
 		if (type & LOCKING_ANDX_SHARED_LOCK)
+<<<<<<< HEAD
+=======
 =======
 static int store_file_lock(struct cifsFileInfo *fid, __u64 len,
 				__u64 offset, __u8 lockType)
@@ -1534,11 +1605,15 @@ int cifs_lock(struct file *file, int cmd, struct file_lock *pfLock)
 		int posix_lock_type;
 		if (lockType & LOCKING_ANDX_SHARED_LOCK)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			posix_lock_type = CIFS_RDLCK;
 		else
 			posix_lock_type = CIFS_WRLCK;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (unlock == 1)
 			posix_lock_type = CIFS_UNLCK;
 
@@ -1631,6 +1706,8 @@ int cifs_lock(struct file *file, int cmd, struct file_lock *flock)
 
 	rc = cifs_setlk(file, flock, type, wait_flag, posix_lck, lock, unlock,
 			xid);
+<<<<<<< HEAD
+=======
 =======
 		if (numUnlock == 1)
 			posix_lock_type = CIFS_UNLCK;
@@ -1682,18 +1759,25 @@ int cifs_lock(struct file *file, int cmd, struct file_lock *flock)
 	if (pfLock->fl_flags & FL_POSIX)
 		posix_lock_file_wait(file, pfLock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FreeXid(xid);
 	return rc;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * update the file size (if needed) after a write. Should be called with
  * the inode->i_lock held
  */
+<<<<<<< HEAD
+=======
 =======
 /* update the file size (if needed) after a write */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 cifs_update_eof(struct cifsInodeInfo *cifsi, loff_t offset,
 		      unsigned int bytes_written)
@@ -1770,8 +1854,14 @@ static ssize_t cifs_write(struct cifsFileInfo *open_file, __u32 pid,
 			cifs_update_eof(cifsi, *poffset, bytes_written);
 			spin_unlock(&dentry->d_inode->i_lock);
 =======
+<<<<<<< HEAD
+			spin_lock(&dentry->d_inode->i_lock);
+			cifs_update_eof(cifsi, *poffset, bytes_written);
+			spin_unlock(&dentry->d_inode->i_lock);
+=======
 			cifs_update_eof(cifsi, *poffset, bytes_written);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*poffset += bytes_written;
 		}
 	}
@@ -1827,10 +1917,15 @@ struct cifsFileInfo *find_writable_file(struct cifsInodeInfo *cifs_inode,
 					bool fsuid_only)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cifsFileInfo *open_file;
 	struct cifs_sb_info *cifs_sb;
 	bool any_available = false;
 	int rc;
+<<<<<<< HEAD
+=======
 =======
 	struct cifsFileInfo *open_file, *inv_file = NULL;
 	struct cifs_sb_info *cifs_sb;
@@ -1838,6 +1933,7 @@ struct cifsFileInfo *find_writable_file(struct cifsInodeInfo *cifs_inode,
 	int rc;
 	unsigned int refind = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Having a null inode here (because mapping->host was set to zero by
 	the VFS or MM) should not happen but we had reports of on oops (due to
@@ -1859,11 +1955,14 @@ struct cifsFileInfo *find_writable_file(struct cifsInodeInfo *cifs_inode,
 refind_writable:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (refind > MAX_REOPEN_ATT) {
 		spin_unlock(&cifs_file_list_lock);
 		return NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(open_file, &cifs_inode->openFileList, flist) {
 		if (!any_available && open_file->pid != current->tgid)
 			continue;
@@ -1871,6 +1970,9 @@ refind_writable:
 			continue;
 		if (OPEN_FMODE(open_file->f_flags) & FMODE_WRITE) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cifsFileInfo_get(open_file);
 
 			if (!open_file->invalidHandle) {
@@ -1899,6 +2001,8 @@ refind_writable:
 			   racing to delete or lock the file we would not
 			   make progress if we restarted before the beginning
 			   of the loop here. */
+<<<<<<< HEAD
+=======
 =======
 			if (!open_file->invalidHandle) {
 				/* found a good writable file */
@@ -1910,6 +2014,7 @@ refind_writable:
 					inv_file = open_file;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	/* couldn't find useable FH with same pid, try any available */
@@ -1917,6 +2022,9 @@ refind_writable:
 		any_available = true;
 		goto refind_writable;
 	}
+<<<<<<< HEAD
+	spin_unlock(&cifs_file_list_lock);
+=======
 <<<<<<< HEAD
 	spin_unlock(&cifs_file_list_lock);
 =======
@@ -1945,6 +2053,7 @@ refind_writable:
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -2003,6 +2112,9 @@ static int cifs_partialpagewrite(struct page *page, unsigned from, unsigned to)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Marshal up the iov array, reserving the first one for the header. Also,
  * set wdata->bytes.
@@ -2024,8 +2136,11 @@ cifs_writepages_marshal_iov(struct kvec *iov, struct cifs_writedata *wdata)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cifs_writepages(struct address_space *mapping,
 			   struct writeback_control *wbc)
 {
@@ -2066,8 +2181,13 @@ retry:
 		wdata = cifs_writedata_alloc((unsigned int)tofind,
 					     cifs_writev_complete);
 =======
+<<<<<<< HEAD
+		wdata = cifs_writedata_alloc((unsigned int)tofind,
+					     cifs_writev_complete);
+=======
 		wdata = cifs_writedata_alloc((unsigned int)tofind);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!wdata) {
 			rc = -ENOMEM;
 			break;
@@ -2177,7 +2297,11 @@ retry:
 <<<<<<< HEAD
 		wdata->marshal_iov = cifs_writepages_marshal_iov;
 =======
+<<<<<<< HEAD
+		wdata->marshal_iov = cifs_writepages_marshal_iov;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		do {
 			if (wdata->cfile != NULL)
@@ -2192,7 +2316,11 @@ retry:
 <<<<<<< HEAD
 			wdata->pid = wdata->cfile->pid;
 =======
+<<<<<<< HEAD
+			wdata->pid = wdata->cfile->pid;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rc = cifs_async_writev(wdata);
 		} while (wbc->sync_mode == WB_SYNC_ALL && rc == -EAGAIN);
 
@@ -2349,8 +2477,13 @@ static int cifs_write_end(struct file *file, struct address_space *mapping,
 int cifs_strict_fsync(struct file *file, loff_t start, loff_t end,
 		      int datasync)
 =======
+<<<<<<< HEAD
+int cifs_strict_fsync(struct file *file, loff_t start, loff_t end,
+		      int datasync)
+=======
 int cifs_strict_fsync(struct file *file, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int xid;
 	int rc = 0;
@@ -2360,13 +2493,19 @@ int cifs_strict_fsync(struct file *file, int datasync)
 	struct cifs_sb_info *cifs_sb = CIFS_SB(inode->i_sb);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = filemap_write_and_wait_range(inode->i_mapping, start, end);
 	if (rc)
 		return rc;
 	mutex_lock(&inode->i_mutex);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xid = GetXid();
 
 	cFYI(1, "Sync file - name: %s datasync: 0x%x",
@@ -2386,17 +2525,23 @@ int cifs_strict_fsync(struct file *file, int datasync)
 
 	FreeXid(xid);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&inode->i_mutex);
 	return rc;
 }
 
 int cifs_fsync(struct file *file, loff_t start, loff_t end, int datasync)
+<<<<<<< HEAD
+=======
 =======
 	return rc;
 }
 
 int cifs_fsync(struct file *file, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int xid;
 	int rc = 0;
@@ -2404,14 +2549,20 @@ int cifs_fsync(struct file *file, int datasync)
 	struct cifsFileInfo *smbfile = file->private_data;
 	struct cifs_sb_info *cifs_sb = CIFS_SB(file->f_path.dentry->d_sb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode = file->f_mapping->host;
 
 	rc = filemap_write_and_wait_range(inode->i_mapping, start, end);
 	if (rc)
 		return rc;
 	mutex_lock(&inode->i_mutex);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	xid = GetXid();
 
@@ -2426,7 +2577,11 @@ int cifs_fsync(struct file *file, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&inode->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -2457,8 +2612,12 @@ cifs_write_allocate_pages(struct page **pages, unsigned long num_pages)
 <<<<<<< HEAD
 		pages[i] = alloc_page(GFP_KERNEL|__GFP_HIGHMEM);
 =======
+<<<<<<< HEAD
+		pages[i] = alloc_page(GFP_KERNEL|__GFP_HIGHMEM);
+=======
 		pages[i] = alloc_page(__GFP_HIGHMEM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!pages[i]) {
 			/*
 			 * save number of pages we have already allocated and
@@ -2467,6 +2626,9 @@ cifs_write_allocate_pages(struct page **pages, unsigned long num_pages)
 			num_pages = i;
 			rc = -ENOMEM;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -2475,6 +2637,8 @@ cifs_write_allocate_pages(struct page **pages, unsigned long num_pages)
 		for (i = 0; i < num_pages; i++)
 			put_page(pages[i]);
 	}
+<<<<<<< HEAD
+=======
 =======
 			goto error;
 		}
@@ -2486,6 +2650,7 @@ error:
 	for (i = 0; i < num_pages; i++)
 		put_page(pages[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -2499,10 +2664,14 @@ size_t get_numpages(const size_t wsize, const size_t len, size_t *cur_len)
 <<<<<<< HEAD
 	num_pages = DIV_ROUND_UP(clen, PAGE_SIZE);
 =======
+<<<<<<< HEAD
+	num_pages = DIV_ROUND_UP(clen, PAGE_SIZE);
+=======
 	num_pages = clen / PAGE_CACHE_SIZE;
 	if (clen % PAGE_CACHE_SIZE)
 		num_pages++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cur_len)
 		*cur_len = clen;
@@ -2511,6 +2680,9 @@ size_t get_numpages(const size_t wsize, const size_t len, size_t *cur_len)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 cifs_uncached_marshal_iov(struct kvec *iov, struct cifs_writedata *wdata)
 {
@@ -2568,13 +2740,19 @@ cifs_uncached_retry_writev(struct cifs_writedata *wdata)
 	return rc;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t
 cifs_iovec_write(struct file *file, const struct iovec *iov,
 		 unsigned long nr_segs, loff_t *poffset)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long nr_pages, i;
 	size_t copied, len, cur_len;
 	ssize_t total_written = 0;
@@ -2587,6 +2765,8 @@ cifs_iovec_write(struct file *file, const struct iovec *iov,
 	struct list_head wdata_list;
 	int rc;
 	pid_t pid;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int written;
 	unsigned long num_pages, npages, i;
@@ -2603,6 +2783,7 @@ cifs_iovec_write(struct file *file, const struct iovec *iov,
 	int xid, rc;
 	__u32 pid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	len = iov_length(iov, nr_segs);
 	if (!len)
@@ -2613,11 +2794,16 @@ cifs_iovec_write(struct file *file, const struct iovec *iov,
 		return rc;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&wdata_list);
 	cifs_sb = CIFS_SB(file->f_path.dentry->d_sb);
 	open_file = file->private_data;
 	tcon = tlink_tcon(open_file->tlink);
 	offset = *poffset;
+<<<<<<< HEAD
+=======
 =======
 	cifs_sb = CIFS_SB(file->f_path.dentry->d_sb);
 	num_pages = get_numpages(cifs_sb->wsize, len, &cur_len);
@@ -2642,6 +2828,7 @@ cifs_iovec_write(struct file *file, const struct iovec *iov,
 	xid = GetXid();
 	open_file = file->private_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_RWPIDFORWARD)
 		pid = open_file->pid;
@@ -2649,6 +2836,9 @@ cifs_iovec_write(struct file *file, const struct iovec *iov,
 		pid = current->tgid;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iov_iter_init(&it, iov, nr_segs, len, 0);
 	do {
 		size_t save_len;
@@ -2736,6 +2926,8 @@ restart_loop:
 
 	cifs_stats_bytes_written(tcon, total_written);
 	return total_written ? total_written : (ssize_t)rc;
+<<<<<<< HEAD
+=======
 =======
 	pTcon = tlink_tcon(open_file->tlink);
 	inode = file->f_path.dentry->d_inode;
@@ -2807,6 +2999,7 @@ restart_loop:
 	FreeXid(xid);
 	return total_written;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 ssize_t cifs_user_writev(struct kiocb *iocb, const struct iovec *iov,
@@ -2871,7 +3064,11 @@ cifs_iovec_read(struct file *file, const struct iovec *iov,
 <<<<<<< HEAD
 	unsigned int rsize;
 =======
+<<<<<<< HEAD
+	unsigned int rsize;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32 pid;
 
 	if (!nr_segs)
@@ -2889,7 +3086,13 @@ cifs_iovec_read(struct file *file, const struct iovec *iov,
 	rsize = min_t(unsigned int, cifs_sb->rsize, CIFSMaxBufSize);
 
 =======
+<<<<<<< HEAD
+	/* FIXME: set up handlers for larger reads and/or convert to async */
+	rsize = min_t(unsigned int, cifs_sb->rsize, CIFSMaxBufSize);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	open_file = file->private_data;
 	pTcon = tlink_tcon(open_file->tlink);
 
@@ -2905,8 +3108,12 @@ cifs_iovec_read(struct file *file, const struct iovec *iov,
 <<<<<<< HEAD
 		cur_len = min_t(const size_t, len - total_read, rsize);
 =======
+<<<<<<< HEAD
+		cur_len = min_t(const size_t, len - total_read, rsize);
+=======
 		cur_len = min_t(const size_t, len - total_read, cifs_sb->rsize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EAGAIN;
 		read_data = NULL;
 
@@ -3001,7 +3208,11 @@ static ssize_t cifs_read(struct file *file, char *read_data, size_t read_size,
 <<<<<<< HEAD
 	unsigned int rsize;
 =======
+<<<<<<< HEAD
+	unsigned int rsize;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cifs_sb_info *cifs_sb;
 	struct cifs_tcon *pTcon;
 	int xid;
@@ -3019,7 +3230,13 @@ static ssize_t cifs_read(struct file *file, char *read_data, size_t read_size,
 	rsize = min_t(unsigned int, cifs_sb->rsize, CIFSMaxBufSize);
 
 =======
+<<<<<<< HEAD
+	/* FIXME: set up handlers for larger reads and/or convert to async */
+	rsize = min_t(unsigned int, cifs_sb->rsize, CIFSMaxBufSize);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (file->private_data == NULL) {
 		rc = -EBADF;
 		FreeXid(xid);
@@ -3043,9 +3260,14 @@ static ssize_t cifs_read(struct file *file, char *read_data, size_t read_size,
 		current_read_size = min_t(uint, read_size - total_read, rsize);
 
 =======
+<<<<<<< HEAD
+		current_read_size = min_t(uint, read_size - total_read, rsize);
+
+=======
 		current_read_size = min_t(const int, read_size - total_read,
 					  cifs_sb->rsize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* For windows me and 9x we do not want to request more
 		than it negotiated since it will refuse the read then */
 		if ((pTcon->ses) &&
@@ -3054,9 +3276,14 @@ static ssize_t cifs_read(struct file *file, char *read_data, size_t read_size,
 			current_read_size = min_t(uint, current_read_size,
 					CIFSMaxBufSize);
 =======
+<<<<<<< HEAD
+			current_read_size = min_t(uint, current_read_size,
+					CIFSMaxBufSize);
+=======
 			current_read_size = min_t(const int, current_read_size,
 					pTcon->ses->server->maxBuf - 128);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		rc = -EAGAIN;
 		while (rc == -EAGAIN) {
@@ -3146,6 +3373,9 @@ int cifs_file_mmap(struct file *file, struct vm_area_struct *vma)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cifs_readpages(struct file *file, struct address_space *mapping,
 	struct list_head *page_list, unsigned num_pages)
 {
@@ -3164,6 +3394,8 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 	 */
 	if (unlikely(rsize < PAGE_CACHE_SIZE))
 		return 0;
+<<<<<<< HEAD
+=======
 =======
 
 static void cifs_copy_cache_pages(struct address_space *mapping,
@@ -3242,6 +3474,7 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 	cifs_sb = CIFS_SB(file->f_path.dentry->d_sb);
 	pTcon = tlink_tcon(open_file->tlink);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Reads as many pages as possible from fscache. Returns -ENOBUFS
@@ -3254,16 +3487,24 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 		return rc;
 
 =======
+<<<<<<< HEAD
+		return rc;
+
+=======
 		goto read_complete;
 
 	cFYI(DBG2, "rpages: num pages %d", num_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_RWPIDFORWARD)
 		pid = open_file->pid;
 	else
 		pid = current->tgid;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = 0;
 	INIT_LIST_HEAD(&tmplist);
 
@@ -3378,6 +3619,8 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < num_pages; ) {
 		unsigned contig_pages;
@@ -3491,6 +3734,7 @@ static int cifs_readpages(struct file *file, struct address_space *mapping,
 read_complete:
 	FreeXid(xid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -3740,12 +3984,18 @@ void cifs_oplock_break(struct work_struct *work)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = cifs_push_locks(cfile);
 	if (rc)
 		cERROR(1, "Push locks rc = %d", rc);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * releasing stale oplock after recent reconnect of smb session using
 	 * a now incorrect file handle is not a data integrity issue but do
@@ -3754,12 +4004,17 @@ void cifs_oplock_break(struct work_struct *work)
 	 */
 	if (!cfile->oplock_break_cancelled) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = CIFSSMBLock(0, tlink_tcon(cfile->tlink), cfile->netfid,
 				 current->tgid, 0, 0, 0, 0,
 				 LOCKING_ANDX_OPLOCK_RELEASE, false,
 				 cinode->clientCanCacheRead ? 1 : 0);
 		cFYI(1, "Oplock release rc = %d", rc);
 	}
+<<<<<<< HEAD
+=======
 =======
 		rc = CIFSSMBLock(0, tlink_tcon(cfile->tlink), cfile->netfid, 0,
 				 0, 0, 0, LOCKING_ANDX_OPLOCK_RELEASE, false,
@@ -3792,6 +4047,7 @@ void cifs_oplock_break_put(struct cifsFileInfo *cfile)
 	cifsFileInfo_put(cfile);
 	cifs_sb_deactive(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 const struct address_space_operations cifs_addr_ops = {

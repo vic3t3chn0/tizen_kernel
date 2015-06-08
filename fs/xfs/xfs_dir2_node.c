@@ -24,6 +24,9 @@
 #include "xfs_sb.h"
 #include "xfs_ag.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_mount.h"
 #include "xfs_da_btree.h"
 #include "xfs_bmap_btree.h"
@@ -32,6 +35,8 @@
 #include "xfs_bmap.h"
 #include "xfs_dir2_format.h"
 #include "xfs_dir2_priv.h"
+<<<<<<< HEAD
+=======
 =======
 #include "xfs_dir2.h"
 #include "xfs_mount.h"
@@ -46,6 +51,7 @@
 #include "xfs_dir2_block.h"
 #include "xfs_dir2_node.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_error.h"
 #include "xfs_trace.h"
 
@@ -87,8 +93,12 @@ xfs_dir2_free_log_bests(
 <<<<<<< HEAD
 	ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+=======
 	ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_da_log_buf(tp, bp,
 		(uint)((char *)&free->bests[first] - (char *)free),
 		(uint)((char *)&free->bests[last] - (char *)free +
@@ -109,8 +119,12 @@ xfs_dir2_free_log_header(
 <<<<<<< HEAD
 	ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+=======
 	ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_da_log_buf(tp, bp, (uint)((char *)&free->hdr - (char *)free),
 		(uint)(sizeof(xfs_dir2_free_hdr_t) - 1));
 }
@@ -264,6 +278,9 @@ xfs_dir2_leafn_add(
 		lfloghigh = -1;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Insert the new entry, log everything.
@@ -271,6 +288,8 @@ xfs_dir2_leafn_add(
 	lep = xfs_dir2_leaf_find_entry(leaf, index, compact, lowstale,
 				       highstale, &lfloglow, &lfloghigh);
 
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * No stale entries, just insert a space for the new entry.
@@ -356,6 +375,7 @@ xfs_dir2_leafn_add(
 	 * Insert the new entry, log everything.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lep->hashval = cpu_to_be32(args->hashval);
 	lep->address = cpu_to_be32(xfs_dir2_db_off_to_dataptr(mp,
 				args->blkno, args->index));
@@ -384,8 +404,12 @@ xfs_dir2_leafn_check(
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(be16_to_cpu(leaf->hdr.count) <= xfs_dir2_max_leaf_ents(mp));
 	for (i = stale = 0; i < be16_to_cpu(leaf->hdr.count); i++) {
 		if (i + 1 < be16_to_cpu(leaf->hdr.count)) {
@@ -395,8 +419,12 @@ xfs_dir2_leafn_check(
 <<<<<<< HEAD
 		if (leaf->ents[i].address == cpu_to_be32(XFS_DIR2_NULL_DATAPTR))
 =======
+<<<<<<< HEAD
+		if (leaf->ents[i].address == cpu_to_be32(XFS_DIR2_NULL_DATAPTR))
+=======
 		if (be32_to_cpu(leaf->ents[i].address) == XFS_DIR2_NULL_DATAPTR)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			stale++;
 	}
 	ASSERT(be16_to_cpu(leaf->hdr.stale) == stale);
@@ -418,8 +446,12 @@ xfs_dir2_leafn_lasthash(
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (count)
 		*count = be16_to_cpu(leaf->hdr.count);
 	if (!leaf->hdr.count)
@@ -461,8 +493,12 @@ xfs_dir2_leafn_lookup_for_addname(
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __KERNEL__
 	ASSERT(be16_to_cpu(leaf->hdr.count) > 0);
 #endif
@@ -482,8 +518,12 @@ xfs_dir2_leafn_lookup_for_addname(
 <<<<<<< HEAD
 		ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
 =======
+<<<<<<< HEAD
+		ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+=======
 		ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	length = xfs_dir2_data_entsize(args->namelen);
 	/*
@@ -540,8 +580,12 @@ xfs_dir2_leafn_lookup_for_addname(
 <<<<<<< HEAD
 					xfs_dir2_free_max_bests(mp)) == 0);
 =======
+<<<<<<< HEAD
+					xfs_dir2_free_max_bests(mp)) == 0);
+=======
 					XFS_DIR2_MAX_FREE_BESTS(mp)) == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ASSERT(be32_to_cpu(free->hdr.firstdb) <= curdb);
 				ASSERT(curdb < be32_to_cpu(free->hdr.firstdb) +
 					be32_to_cpu(free->hdr.nvalid));
@@ -557,8 +601,13 @@ xfs_dir2_leafn_lookup_for_addname(
 			if (unlikely(free->bests[fi] ==
 			    cpu_to_be16(NULLDATAOFF))) {
 =======
+<<<<<<< HEAD
+			if (unlikely(free->bests[fi] ==
+			    cpu_to_be16(NULLDATAOFF))) {
+=======
 			if (unlikely(be16_to_cpu(free->bests[fi]) == NULLDATAOFF)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				XFS_ERROR_REPORT("xfs_dir2_leafn_lookup_int",
 							XFS_ERRLEVEL_LOW, mp);
 				if (curfdb != newfdb)
@@ -622,8 +671,12 @@ xfs_dir2_leafn_lookup_for_entry(
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __KERNEL__
 	ASSERT(be16_to_cpu(leaf->hdr.count) > 0);
 #endif
@@ -808,8 +861,13 @@ xfs_dir2_leafn_moveents(
 			if (leaf_s->ents[i].address ==
 			    cpu_to_be32(XFS_DIR2_NULL_DATAPTR))
 =======
+<<<<<<< HEAD
+			if (leaf_s->ents[i].address ==
+			    cpu_to_be32(XFS_DIR2_NULL_DATAPTR))
+=======
 			if (be32_to_cpu(leaf_s->ents[i].address) == XFS_DIR2_NULL_DATAPTR)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				stale++;
 		}
 	} else
@@ -860,9 +918,14 @@ xfs_dir2_leafn_order(
 	ASSERT(leaf1->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 	ASSERT(leaf2->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf1->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+	ASSERT(leaf2->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf1->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 	ASSERT(be16_to_cpu(leaf2->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (be16_to_cpu(leaf1->hdr.count) > 0 &&
 	    be16_to_cpu(leaf2->hdr.count) > 0 &&
 	    (be32_to_cpu(leaf2->ents[0].hashval) < be32_to_cpu(leaf1->ents[0].hashval) ||
@@ -993,8 +1056,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
+=======
 	xfs_dir2_data_t		*data;		/* data block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_db_t		db;		/* data block number */
 	xfs_dabuf_t		*dbp;		/* data block buffer */
 	xfs_dir2_data_entry_t	*dep;		/* data block entry */
@@ -1017,8 +1084,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Point to the entry we're removing.
 	 */
@@ -1048,10 +1119,16 @@ xfs_dir2_leafn_remove(
 	dep = (xfs_dir2_data_entry_t *)((char *)hdr + off);
 	longest = be16_to_cpu(hdr->bestfree[0].length);
 =======
+<<<<<<< HEAD
+	hdr = dbp->data;
+	dep = (xfs_dir2_data_entry_t *)((char *)hdr + off);
+	longest = be16_to_cpu(hdr->bestfree[0].length);
+=======
 	data = dbp->data;
 	dep = (xfs_dir2_data_entry_t *)((char *)data + off);
 	longest = be16_to_cpu(data->hdr.bestfree[0].length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	needlog = needscan = 0;
 	xfs_dir2_data_make_free(tp, dbp, off,
 		xfs_dir2_data_entsize(dep->namelen), &needlog, &needscan);
@@ -1063,8 +1140,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 		xfs_dir2_data_freescan(mp, hdr, &needlog);
 =======
+<<<<<<< HEAD
+		xfs_dir2_data_freescan(mp, hdr, &needlog);
+=======
 		xfs_dir2_data_freescan(mp, data, &needlog);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (needlog)
 		xfs_dir2_data_log_header(tp, dbp);
 	xfs_dir2_data_check(dp, dbp);
@@ -1075,8 +1156,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 	if (longest < be16_to_cpu(hdr->bestfree[0].length)) {
 =======
+<<<<<<< HEAD
+	if (longest < be16_to_cpu(hdr->bestfree[0].length)) {
+=======
 	if (longest < be16_to_cpu(data->hdr.bestfree[0].length)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int		error;		/* error return value */
 		xfs_dabuf_t	*fbp;		/* freeblock buffer */
 		xfs_dir2_db_t	fdb;		/* freeblock block number */
@@ -1099,10 +1184,16 @@ xfs_dir2_leafn_remove(
 		ASSERT(be32_to_cpu(free->hdr.firstdb) ==
 		       xfs_dir2_free_max_bests(mp) *
 =======
+<<<<<<< HEAD
+		ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+		ASSERT(be32_to_cpu(free->hdr.firstdb) ==
+		       xfs_dir2_free_max_bests(mp) *
+=======
 		ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 		ASSERT(be32_to_cpu(free->hdr.firstdb) ==
 		       XFS_DIR2_MAX_FREE_BESTS(mp) *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       (fdb - XFS_DIR2_FREE_FIRSTDB(mp)));
 		/*
 		 * Calculate which entry we need to fix.
@@ -1111,8 +1202,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 		longest = be16_to_cpu(hdr->bestfree[0].length);
 =======
+<<<<<<< HEAD
+		longest = be16_to_cpu(hdr->bestfree[0].length);
+=======
 		longest = be16_to_cpu(data->hdr.bestfree[0].length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * If the data block is now empty we can get rid of it
 		 * (usually).
@@ -1120,8 +1215,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 		if (longest == mp->m_dirblksize - (uint)sizeof(*hdr)) {
 =======
+<<<<<<< HEAD
+		if (longest == mp->m_dirblksize - (uint)sizeof(*hdr)) {
+=======
 		if (longest == mp->m_dirblksize - (uint)sizeof(data->hdr)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Try to punch out the data block.
 			 */
@@ -1131,8 +1230,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 				hdr = NULL;
 =======
+<<<<<<< HEAD
+				hdr = NULL;
+=======
 				data = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			/*
 			 * We can get ENOSPC if there's no space reservation.
@@ -1151,8 +1254,12 @@ xfs_dir2_leafn_remove(
 <<<<<<< HEAD
 		if (hdr == NULL) {
 =======
+<<<<<<< HEAD
+		if (hdr == NULL) {
+=======
 		if (data == NULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * One less used entry in the free table.
 			 */
@@ -1172,8 +1279,13 @@ xfs_dir2_leafn_remove(
 				     i >= 0 &&
 				     free->bests[i] == cpu_to_be16(NULLDATAOFF);
 =======
+<<<<<<< HEAD
+				     i >= 0 &&
+				     free->bests[i] == cpu_to_be16(NULLDATAOFF);
+=======
 				     i >= 0 && be16_to_cpu(free->bests[i]) == NULLDATAOFF;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     i--)
 					continue;
 				free->hdr.nvalid = cpu_to_be32(i + 1);
@@ -1333,8 +1445,12 @@ xfs_dir2_leafn_toosmall(
 <<<<<<< HEAD
 	ASSERT(info->magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(info->magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(info->magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	leaf = (xfs_dir2_leaf_t *)info;
 	count = be16_to_cpu(leaf->hdr.count) - be16_to_cpu(leaf->hdr.stale);
 	bytes = (uint)sizeof(leaf->hdr) + count * (uint)sizeof(leaf->ents[0]);
@@ -1396,8 +1512,12 @@ xfs_dir2_leafn_toosmall(
 <<<<<<< HEAD
 		ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+		ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 		ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		count += be16_to_cpu(leaf->hdr.count) - be16_to_cpu(leaf->hdr.stale);
 		bytes -= count * (uint)sizeof(leaf->ents[0]);
 		/*
@@ -1460,9 +1580,14 @@ xfs_dir2_leafn_unbalance(
 	ASSERT(drop_leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 	ASSERT(save_leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(drop_leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+	ASSERT(save_leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAFN_MAGIC));
+=======
 	ASSERT(be16_to_cpu(drop_leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 	ASSERT(be16_to_cpu(save_leaf->hdr.info.magic) == XFS_DIR2_LEAFN_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If there are any stale leaf entries, take this opportunity
 	 * to purge them.
@@ -1569,8 +1694,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
+=======
 	xfs_dir2_data_t		*data;		/* data block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_db_t		dbno;		/* data block number */
 	xfs_dabuf_t		*dbp;		/* data block buffer */
 	xfs_dir2_data_entry_t	*dep;		/* data entry pointer */
@@ -1610,8 +1739,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 		ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
 =======
+<<<<<<< HEAD
+		ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+=======
 		ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		findex = fblk->index;
 		/*
 		 * This means the free entry showed that the data block had
@@ -1698,8 +1831,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 			ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
 =======
+<<<<<<< HEAD
+			ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+=======
 			ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			findex = 0;
 		}
 		/*
@@ -1790,8 +1927,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 			"%s: dir ino %llu needed freesp block %lld for\n"
 =======
+<<<<<<< HEAD
+			"%s: dir ino %llu needed freesp block %lld for\n"
+=======
 			"%s: dir ino " "%llu needed freesp block %lld for\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"  data block %lld, got %lld ifbno %llu lastfbno %d",
 					__func__, (unsigned long long)dp->i_ino,
 					(long long)xfs_dir2_db_to_fdb(mp, dbno),
@@ -1833,8 +1974,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 				xfs_dir2_free_max_bests(mp));
 =======
+<<<<<<< HEAD
+				xfs_dir2_free_max_bests(mp));
+=======
 				XFS_DIR2_MAX_FREE_BESTS(mp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free->hdr.nvalid = 0;
 			free->hdr.nused = 0;
 		} else {
@@ -1842,8 +1987,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 			ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
 =======
+<<<<<<< HEAD
+			ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+=======
 			ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		/*
@@ -1858,8 +2007,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 			ASSERT(findex < xfs_dir2_free_max_bests(mp));
 =======
+<<<<<<< HEAD
+			ASSERT(findex < xfs_dir2_free_max_bests(mp));
+=======
 			ASSERT(findex < XFS_DIR2_MAX_FREE_BESTS(mp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free->hdr.nvalid = cpu_to_be32(findex + 1);
 			/*
 			 * Tag new entry so nused will go up.
@@ -1873,8 +2026,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 		if (free->bests[findex] == cpu_to_be16(NULLDATAOFF)) {
 =======
+<<<<<<< HEAD
+		if (free->bests[findex] == cpu_to_be16(NULLDATAOFF)) {
+=======
 		if (be16_to_cpu(free->bests[findex]) == NULLDATAOFF) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			be32_add_cpu(&free->hdr.nused, 1);
 			xfs_dir2_free_log_header(tp, fbp);
 		}
@@ -1887,9 +2044,14 @@ xfs_dir2_node_addname_int(
 		hdr = dbp->data;
 		free->bests[findex] = hdr->bestfree[0].length;
 =======
+<<<<<<< HEAD
+		hdr = dbp->data;
+		free->bests[findex] = hdr->bestfree[0].length;
+=======
 		data = dbp->data;
 		free->bests[findex] = data->hdr.bestfree[0].length;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		logfree = 1;
 	}
 	/*
@@ -1915,16 +2077,22 @@ xfs_dir2_node_addname_int(
 			return error;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hdr = dbp->data;
 		logfree = 0;
 	}
 	ASSERT(be16_to_cpu(hdr->bestfree[0].length) >= length);
+<<<<<<< HEAD
+=======
 =======
 		data = dbp->data;
 		logfree = 0;
 	}
 	ASSERT(be16_to_cpu(data->hdr.bestfree[0].length) >= length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Point to the existing unused space.
 	 */
@@ -1932,8 +2100,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 	      ((char *)hdr + be16_to_cpu(hdr->bestfree[0].offset));
 =======
+<<<<<<< HEAD
+	      ((char *)hdr + be16_to_cpu(hdr->bestfree[0].offset));
+=======
 	      ((char *)data + be16_to_cpu(data->hdr.bestfree[0].offset));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	needscan = needlog = 0;
 	/*
 	 * Mark the first part of the unused space, inuse for us.
@@ -1942,8 +2114,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 		(xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr), length,
 =======
+<<<<<<< HEAD
+		(xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr), length,
+=======
 		(xfs_dir2_data_aoff_t)((char *)dup - (char *)data), length,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		&needlog, &needscan);
 	/*
 	 * Fill in the new entry and log it.
@@ -1956,8 +2132,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 	*tagp = cpu_to_be16((char *)dep - (char *)hdr);
 =======
+<<<<<<< HEAD
+	*tagp = cpu_to_be16((char *)dep - (char *)hdr);
+=======
 	*tagp = cpu_to_be16((char *)dep - (char *)data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_log_entry(tp, dbp, dep);
 	/*
 	 * Rescan the block for bestfree if needed.
@@ -1966,8 +2146,12 @@ xfs_dir2_node_addname_int(
 <<<<<<< HEAD
 		xfs_dir2_data_freescan(mp, hdr, &needlog);
 =======
+<<<<<<< HEAD
+		xfs_dir2_data_freescan(mp, hdr, &needlog);
+=======
 		xfs_dir2_data_freescan(mp, data, &needlog);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Log the data block header if needed.
 	 */
@@ -1980,9 +2164,14 @@ xfs_dir2_node_addname_int(
 	if (be16_to_cpu(free->bests[findex]) != be16_to_cpu(hdr->bestfree[0].length)) {
 		free->bests[findex] = hdr->bestfree[0].length;
 =======
+<<<<<<< HEAD
+	if (be16_to_cpu(free->bests[findex]) != be16_to_cpu(hdr->bestfree[0].length)) {
+		free->bests[findex] = hdr->bestfree[0].length;
+=======
 	if (be16_to_cpu(free->bests[findex]) != be16_to_cpu(data->hdr.bestfree[0].length)) {
 		free->bests[findex] = data->hdr.bestfree[0].length;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		logfree = 1;
 	}
 	/*
@@ -2135,8 +2324,12 @@ xfs_dir2_node_replace(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* data block header */
+=======
 	xfs_dir2_data_t		*data;		/* data block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_entry_t	*dep;		/* data entry changed */
 	int			error;		/* error return value */
 	int			i;		/* btree level */
@@ -2181,16 +2374,22 @@ xfs_dir2_node_replace(
 		 * Point to the data entry.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hdr = state->extrablk.bp->data;
 		ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC));
 		dep = (xfs_dir2_data_entry_t *)
 		      ((char *)hdr +
+<<<<<<< HEAD
+=======
 =======
 		data = state->extrablk.bp->data;
 		ASSERT(be32_to_cpu(data->hdr.magic) == XFS_DIR2_DATA_MAGIC);
 		dep = (xfs_dir2_data_entry_t *)
 		      ((char *)data +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       xfs_dir2_dataptr_to_off(state->mp, be32_to_cpu(lep->address)));
 		ASSERT(inum != be64_to_cpu(dep->inumber));
 		/*
@@ -2257,8 +2456,12 @@ xfs_dir2_node_trim_free(
 <<<<<<< HEAD
 	ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(free->hdr.magic == cpu_to_be32(XFS_DIR2_FREE_MAGIC));
+=======
 	ASSERT(be32_to_cpu(free->hdr.magic) == XFS_DIR2_FREE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If there are used entries, there's nothing to do.
 	 */

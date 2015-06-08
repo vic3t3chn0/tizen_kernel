@@ -42,6 +42,11 @@
 #include <linux/blkdev.h>
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Bulk only data structures
  */
 
@@ -81,6 +86,10 @@ struct bulk_cs_wrap {
 #define US_BULK_GET_MAX_LUN	0xfe
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * usb_stor_bulk_transfer_xxx() return codes, in order of severity
  */
 

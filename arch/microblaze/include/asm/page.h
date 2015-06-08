@@ -136,14 +136,20 @@ extern unsigned long max_pfn;
 
 extern unsigned long memory_start;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern unsigned long memory_size;
 extern unsigned long lowmem_size;
 
 extern unsigned long kernel_tlb;
+<<<<<<< HEAD
+=======
 =======
 extern unsigned long memory_end;
 extern unsigned long memory_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int page_is_ram(unsigned long pfn);
 
@@ -185,6 +191,10 @@ extern int page_is_ram(unsigned long pfn);
 # define __pa(x)	__virt_to_phys((unsigned long)(x))
 # define __va(x)	((void *)__phys_to_virt((unsigned long)(x)))
 =======
+<<<<<<< HEAD
+# define __pa(x)	__virt_to_phys((unsigned long)(x))
+# define __va(x)	((void *)__phys_to_virt((unsigned long)(x)))
+=======
 
 #  ifndef CONFIG_MMU
 #  define __pa(vaddr)	((unsigned long) (vaddr))
@@ -195,6 +205,7 @@ extern int page_is_ram(unsigned long pfn);
 #  endif /* CONFIG_MMU */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Convert between virtual and physical address for MMU. */
 /* Handle MicroBlaze processor with virtual memory. */

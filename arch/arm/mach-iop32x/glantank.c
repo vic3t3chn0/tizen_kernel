@@ -80,8 +80,12 @@ static int __init
 <<<<<<< HEAD
 glantank_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+glantank_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 glantank_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	static int pci_irq_table[][4] = {
 		/*
@@ -214,8 +218,12 @@ MACHINE_START(GLANTANK, "GLAN Tank")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0xa0000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= glantank_map_io,
 	.init_irq	= iop32x_init_irq,
 	.timer		= &glantank_timer,
@@ -223,5 +231,9 @@ MACHINE_START(GLANTANK, "GLAN Tank")
 <<<<<<< HEAD
 	.restart	= iop3xx_restart,
 =======
+<<<<<<< HEAD
+	.restart	= iop3xx_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

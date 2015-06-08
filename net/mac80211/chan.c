@@ -6,7 +6,11 @@
 <<<<<<< HEAD
 #include <net/cfg80211.h>
 =======
+<<<<<<< HEAD
+#include <net/cfg80211.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ieee80211_i.h"
 
 static enum ieee80211_chan_mode
@@ -25,6 +29,9 @@ __ieee80211_get_channel_mode(struct ieee80211_local *local,
 			continue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (sdata->vif.type) {
 		case NL80211_IFTYPE_MONITOR:
 			continue;
@@ -33,6 +40,8 @@ __ieee80211_get_channel_mode(struct ieee80211_local *local,
 				continue;
 			break;
 		case NL80211_IFTYPE_ADHOC:
+<<<<<<< HEAD
+=======
 =======
 		if (sdata->vif.type == NL80211_IFTYPE_MONITOR)
 			continue;
@@ -43,11 +52,15 @@ __ieee80211_get_channel_mode(struct ieee80211_local *local,
 
 		if (sdata->vif.type == NL80211_IFTYPE_ADHOC) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!sdata->u.ibss.ssid_len)
 				continue;
 			if (!sdata->u.ibss.fixed_channel)
 				return CHAN_MODE_HOPPING;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case NL80211_IFTYPE_AP_VLAN:
 			/* will also have _AP interface */
@@ -60,6 +73,8 @@ __ieee80211_get_channel_mode(struct ieee80211_local *local,
 			break;
 		}
 
+<<<<<<< HEAD
+=======
 =======
 		}
 
@@ -68,6 +83,7 @@ __ieee80211_get_channel_mode(struct ieee80211_local *local,
 			continue;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return CHAN_MODE_FIXED;
 	}
 
@@ -159,6 +175,9 @@ bool ieee80211_set_channel_type(struct ieee80211_local *local,
 	return result;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * ieee80211_get_tx_channel_type returns the channel type we should
@@ -185,5 +204,8 @@ enum nl80211_channel_type ieee80211_get_tx_channel_type(
 	}
 	return channel_type;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -185,9 +185,14 @@ static int ext4_file_open(struct inode * inode, struct file * filp)
 			strlcpy(sbi->s_es->s_last_mounted, cp,
 				sizeof(sbi->s_es->s_last_mounted));
 =======
+<<<<<<< HEAD
+			strlcpy(sbi->s_es->s_last_mounted, cp,
+				sizeof(sbi->s_es->s_last_mounted));
+=======
 			memcpy(sbi->s_es->s_last_mounted, cp,
 			       sizeof(sbi->s_es->s_last_mounted));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ext4_mark_super_dirty(sb);
 		}
 	}
@@ -233,6 +238,10 @@ loff_t ext4_llseek(struct file *file, loff_t offset, int origin)
 
 	return generic_file_llseek_size(file, offset, origin, maxbytes);
 =======
+<<<<<<< HEAD
+
+	return generic_file_llseek_size(file, offset, origin, maxbytes);
+=======
 	mutex_lock(&inode->i_mutex);
 	switch (origin) {
 	case SEEK_END:
@@ -260,6 +269,7 @@ loff_t ext4_llseek(struct file *file, loff_t offset, int origin)
 
 	return offset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 const struct file_operations ext4_file_operations = {
@@ -293,8 +303,12 @@ const struct inode_operations ext4_file_inode_operations = {
 <<<<<<< HEAD
 	.get_acl	= ext4_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl	= ext4_get_acl,
+=======
 	.check_acl	= ext4_check_acl,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fiemap		= ext4_fiemap,
 };
 

@@ -27,6 +27,13 @@
 #include <linux/slab.h>
 #include <linux/mutex.h>
 #include <linux/spinlock.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/freezer.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "tpm.h"
 
@@ -440,7 +447,14 @@ out:
 }
 
 #define TPM_DIGEST_SIZE 20
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define TPM_ERROR_SIZE 10
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TPM_ERROR_SIZE 10
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TPM_RET_CODE_IDX 6
 
 enum tpm_capabilities {
@@ -469,12 +483,29 @@ static ssize_t transmit_cmd(struct tpm_chip *chip, struct tpm_cmd_t *cmd,
 	len = tpm_transmit(chip,(u8 *) cmd, len);
 	if (len <  0)
 		return len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	else if (len < TPM_HEADER_SIZE)
+		return -EFAULT;
+
+	err = be32_to_cpu(cmd->header.out.return_code);
+	if (err != 0)
+		dev_err(chip->dev, "A TPM error (%d) occurred %s\n", err, desc);
+
+	return err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (len == TPM_ERROR_SIZE) {
 		err = be32_to_cpu(cmd->header.out.return_code);
 		dev_dbg(chip->dev, "A TPM error (%d) occurred %s\n", err, desc);
 		return err;
 	}
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define TPM_INTERNAL_RESULT_SIZE 200
@@ -530,13 +561,28 @@ void tpm_gen_interrupt(struct tpm_chip *chip)
 }
 EXPORT_SYMBOL_GPL(tpm_gen_interrupt);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int tpm_get_timeouts(struct tpm_chip *chip)
+=======
 void tpm_get_timeouts(struct tpm_chip *chip)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void tpm_get_timeouts(struct tpm_chip *chip)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tpm_cmd_t tpm_cmd;
 	struct timeout_t *timeout_cap;
 	struct duration_t *duration_cap;
 	ssize_t rc;
 	u32 timeout;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int scale = 1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tpm_cmd.header.in = tpm_getcap_header;
 	tpm_cmd.params.getcap_in.cap = TPM_CAP_PROP;
@@ -548,13 +594,47 @@ void tpm_get_timeouts(struct tpm_chip *chip)
 	if (rc)
 		goto duration;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (be32_to_cpu(tpm_cmd.header.out.return_code) != 0 ||
+	    be32_to_cpu(tpm_cmd.header.out.length)
+	    != sizeof(tpm_cmd.header.out) + sizeof(u32) + 4 * sizeof(u32))
+		return -EINVAL;
+=======
 	if (be32_to_cpu(tpm_cmd.header.out.length)
 	    != 4 * sizeof(u32))
 		goto duration;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (be32_to_cpu(tpm_cmd.header.out.length)
+	    != 4 * sizeof(u32))
+		goto duration;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	timeout_cap = &tpm_cmd.params.getcap_out.cap.timeout;
 	/* Don't overwrite default if value is 0 */
 	timeout = be32_to_cpu(timeout_cap->a);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (timeout && timeout < 1000) {
+		/* timeouts in msec rather usec */
+		scale = 1000;
+		chip->vendor.timeout_adjusted = true;
+	}
+	if (timeout)
+		chip->vendor.timeout_a = usecs_to_jiffies(timeout * scale);
+	timeout = be32_to_cpu(timeout_cap->b);
+	if (timeout)
+		chip->vendor.timeout_b = usecs_to_jiffies(timeout * scale);
+	timeout = be32_to_cpu(timeout_cap->c);
+	if (timeout)
+		chip->vendor.timeout_c = usecs_to_jiffies(timeout * scale);
+	timeout = be32_to_cpu(timeout_cap->d);
+	if (timeout)
+		chip->vendor.timeout_d = usecs_to_jiffies(timeout * scale);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (timeout)
 		chip->vendor.timeout_a = usecs_to_jiffies(timeout);
 	timeout = be32_to_cpu(timeout_cap->b);
@@ -566,6 +646,10 @@ void tpm_get_timeouts(struct tpm_chip *chip)
 	timeout = be32_to_cpu(timeout_cap->d);
 	if (timeout)
 		chip->vendor.timeout_d = usecs_to_jiffies(timeout);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 duration:
 	tpm_cmd.header.in = tpm_getcap_header;
@@ -576,6 +660,68 @@ duration:
 	rc = transmit_cmd(chip, &tpm_cmd, TPM_INTERNAL_RESULT_SIZE,
 			"attempting to determine the durations");
 	if (rc)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return rc;
+
+	if (be32_to_cpu(tpm_cmd.header.out.return_code) != 0 ||
+	    be32_to_cpu(tpm_cmd.header.out.length)
+	    != sizeof(tpm_cmd.header.out) + sizeof(u32) + 3 * sizeof(u32))
+		return -EINVAL;
+
+	duration_cap = &tpm_cmd.params.getcap_out.cap.duration;
+	chip->vendor.duration[TPM_SHORT] =
+	    usecs_to_jiffies(be32_to_cpu(duration_cap->tpm_short));
+	chip->vendor.duration[TPM_MEDIUM] =
+	    usecs_to_jiffies(be32_to_cpu(duration_cap->tpm_medium));
+	chip->vendor.duration[TPM_LONG] =
+	    usecs_to_jiffies(be32_to_cpu(duration_cap->tpm_long));
+
+	/* The Broadcom BCM0102 chipset in a Dell Latitude D820 gets the above
+	 * value wrong and apparently reports msecs rather than usecs. So we
+	 * fix up the resulting too-small TPM_SHORT value to make things work.
+	 * We also scale the TPM_MEDIUM and -_LONG values by 1000.
+	 */
+	if (chip->vendor.duration[TPM_SHORT] < (HZ / 100)) {
+		chip->vendor.duration[TPM_SHORT] = HZ;
+		chip->vendor.duration[TPM_MEDIUM] *= 1000;
+		chip->vendor.duration[TPM_LONG] *= 1000;
+		chip->vendor.duration_adjusted = true;
+		dev_info(chip->dev, "Adjusting TPM timeout parameters.");
+	}
+	return 0;
+}
+EXPORT_SYMBOL_GPL(tpm_get_timeouts);
+
+#define TPM_ORD_CONTINUE_SELFTEST 83
+#define CONTINUE_SELFTEST_RESULT_SIZE 10
+
+static struct tpm_input_header continue_selftest_header = {
+	.tag = TPM_TAG_RQU_COMMAND,
+	.length = cpu_to_be32(10),
+	.ordinal = cpu_to_be32(TPM_ORD_CONTINUE_SELFTEST),
+};
+
+/**
+ * tpm_continue_selftest -- run TPM's selftest
+ * @chip: TPM chip to use
+ *
+ * Returns 0 on success, < 0 in case of fatal error or a value > 0 representing
+ * a TPM error code.
+ */
+static int tpm_continue_selftest(struct tpm_chip *chip)
+{
+	int rc;
+	struct tpm_cmd_t cmd;
+
+	cmd.header.in = continue_selftest_header;
+	rc = transmit_cmd(chip, &cmd, CONTINUE_SELFTEST_RESULT_SIZE,
+			  "continue selftest");
+	return rc;
+}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	if (be32_to_cpu(tpm_cmd.header.out.return_code)
@@ -609,6 +755,10 @@ void tpm_continue_selftest(struct tpm_chip *chip)
 	tpm_transmit(chip, data, sizeof(data));
 }
 EXPORT_SYMBOL_GPL(tpm_continue_selftest);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ssize_t tpm_show_enabled(struct device * dev, struct device_attribute * attr,
 			char *buf)
@@ -703,7 +853,15 @@ static struct tpm_input_header pcrread_header = {
 	.ordinal = TPM_ORDINAL_PCRREAD
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __tpm_pcr_read(struct tpm_chip *chip, int pcr_idx, u8 *res_buf)
+=======
 int __tpm_pcr_read(struct tpm_chip *chip, int pcr_idx, u8 *res_buf)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int __tpm_pcr_read(struct tpm_chip *chip, int pcr_idx, u8 *res_buf)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc;
 	struct tpm_cmd_t cmd;
@@ -783,6 +941,60 @@ int tpm_pcr_extend(u32 chip_num, int pcr_idx, const u8 *hash)
 }
 EXPORT_SYMBOL_GPL(tpm_pcr_extend);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * tpm_do_selftest - have the TPM continue its selftest and wait until it
+ *                   can receive further commands
+ * @chip: TPM chip to use
+ *
+ * Returns 0 on success, < 0 in case of fatal error or a value > 0 representing
+ * a TPM error code.
+ */
+int tpm_do_selftest(struct tpm_chip *chip)
+{
+	int rc;
+	u8 digest[TPM_DIGEST_SIZE];
+	unsigned int loops;
+	unsigned int delay_msec = 1000;
+	unsigned long duration;
+
+	duration = tpm_calc_ordinal_duration(chip,
+	                                     TPM_ORD_CONTINUE_SELFTEST);
+
+	loops = jiffies_to_msecs(duration) / delay_msec;
+
+	rc = tpm_continue_selftest(chip);
+	/* This may fail if there was no TPM driver during a suspend/resume
+	 * cycle; some may return 10 (BAD_ORDINAL), others 28 (FAILEDSELFTEST)
+	 */
+	if (rc)
+		return rc;
+
+	do {
+		rc = __tpm_pcr_read(chip, 0, digest);
+		if (rc == TPM_ERR_DISABLED || rc == TPM_ERR_DEACTIVATED) {
+			dev_info(chip->dev,
+				 "TPM is disabled/deactivated (0x%X)\n", rc);
+			/* TPM is disabled and/or deactivated; driver can
+			 * proceed and TPM does handle commands for
+			 * suspend/resume correctly
+			 */
+			return 0;
+		}
+		if (rc != TPM_WARN_DOING_SELFTEST)
+			return rc;
+		msleep(delay_msec);
+	} while (--loops > 0);
+
+	return rc;
+}
+EXPORT_SYMBOL_GPL(tpm_do_selftest);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tpm_send(u32 chip_num, void *cmd, size_t buflen)
 {
 	struct tpm_chip *chip;
@@ -866,6 +1078,29 @@ ssize_t tpm_show_pubek(struct device *dev, struct device_attribute *attr,
 	data = tpm_cmd.params.readpubek_out_buffer;
 	str +=
 	    sprintf(str,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		    "Algorithm: %02X %02X %02X %02X\n"
+		    "Encscheme: %02X %02X\n"
+		    "Sigscheme: %02X %02X\n"
+		    "Parameters: %02X %02X %02X %02X "
+		    "%02X %02X %02X %02X "
+		    "%02X %02X %02X %02X\n"
+		    "Modulus length: %d\n"
+		    "Modulus:\n",
+		    data[0], data[1], data[2], data[3],
+		    data[4], data[5],
+		    data[6], data[7],
+		    data[12], data[13], data[14], data[15],
+		    data[16], data[17], data[18], data[19],
+		    data[20], data[21], data[22], data[23],
+		    be32_to_cpu(*((__be32 *) (data + 24))));
+
+	for (i = 0; i < 256; i++) {
+		str += sprintf(str, "%02X ", data[i + 28]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    "Algorithm: %02X %02X %02X %02X\nEncscheme: %02X %02X\n"
 		    "Sigscheme: %02X %02X\nParameters: %02X %02X %02X %02X"
 		    " %02X %02X %02X %02X %02X %02X %02X %02X\n"
@@ -878,6 +1113,10 @@ ssize_t tpm_show_pubek(struct device *dev, struct device_attribute *attr,
 
 	for (i = 0; i < 256; i++) {
 		str += sprintf(str, "%02X ", data[i + 38]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((i + 1) % 16 == 0)
 			str += sprintf(str, "\n");
 	}
@@ -940,6 +1179,44 @@ ssize_t tpm_show_caps_1_2(struct device * dev,
 }
 EXPORT_SYMBOL_GPL(tpm_show_caps_1_2);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ssize_t tpm_show_durations(struct device *dev, struct device_attribute *attr,
+			  char *buf)
+{
+	struct tpm_chip *chip = dev_get_drvdata(dev);
+
+	if (chip->vendor.duration[TPM_LONG] == 0)
+		return 0;
+
+	return sprintf(buf, "%d %d %d [%s]\n",
+		       jiffies_to_usecs(chip->vendor.duration[TPM_SHORT]),
+		       jiffies_to_usecs(chip->vendor.duration[TPM_MEDIUM]),
+		       jiffies_to_usecs(chip->vendor.duration[TPM_LONG]),
+		       chip->vendor.duration_adjusted
+		       ? "adjusted" : "original");
+}
+EXPORT_SYMBOL_GPL(tpm_show_durations);
+
+ssize_t tpm_show_timeouts(struct device *dev, struct device_attribute *attr,
+			  char *buf)
+{
+	struct tpm_chip *chip = dev_get_drvdata(dev);
+
+	return sprintf(buf, "%d %d %d %d [%s]\n",
+		       jiffies_to_usecs(chip->vendor.timeout_a),
+		       jiffies_to_usecs(chip->vendor.timeout_b),
+		       jiffies_to_usecs(chip->vendor.timeout_c),
+		       jiffies_to_usecs(chip->vendor.timeout_d),
+		       chip->vendor.timeout_adjusted
+		       ? "adjusted" : "original");
+}
+EXPORT_SYMBOL_GPL(tpm_show_timeouts);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ssize_t tpm_store_cancel(struct device *dev, struct device_attribute *attr,
 			const char *buf, size_t count)
 {
@@ -952,6 +1229,52 @@ ssize_t tpm_store_cancel(struct device *dev, struct device_attribute *attr,
 }
 EXPORT_SYMBOL_GPL(tpm_store_cancel);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int wait_for_tpm_stat(struct tpm_chip *chip, u8 mask, unsigned long timeout,
+			 wait_queue_head_t *queue)
+{
+	unsigned long stop;
+	long rc;
+	u8 status;
+
+	/* check current status */
+	status = chip->vendor.status(chip);
+	if ((status & mask) == mask)
+		return 0;
+
+	stop = jiffies + timeout;
+
+	if (chip->vendor.irq) {
+again:
+		timeout = stop - jiffies;
+		if ((long)timeout <= 0)
+			return -ETIME;
+		rc = wait_event_interruptible_timeout(*queue,
+						      ((chip->vendor.status(chip)
+						      & mask) == mask),
+						      timeout);
+		if (rc > 0)
+			return 0;
+		if (rc == -ERESTARTSYS && freezing(current)) {
+			clear_thread_flag(TIF_SIGPENDING);
+			goto again;
+		}
+	} else {
+		do {
+			msleep(TPM_TIMEOUT);
+			status = chip->vendor.status(chip);
+			if ((status & mask) == mask)
+				return 0;
+		} while (time_before(jiffies, stop));
+	}
+	return -ETIME;
+}
+EXPORT_SYMBOL_GPL(wait_for_tpm_stat);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Device file system interface to the TPM
  *
@@ -1019,6 +1342,22 @@ ssize_t tpm_write(struct file *file, const char __user *buf,
 		  size_t size, loff_t *off)
 {
 	struct tpm_chip *chip = file->private_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t in_size = size, out_size;
+
+	/* cannot perform a write until the read has cleared
+	   either via tpm_read or a user_read_timer timeout */
+	while (atomic_read(&chip->data_pending) != 0)
+		msleep(TPM_TIMEOUT);
+
+	mutex_lock(&chip->buffer_mutex);
+
+	if (in_size > TPM_BUFSIZE)
+		in_size = TPM_BUFSIZE;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t in_size = size;
 	ssize_t out_size;
 
@@ -1033,6 +1372,10 @@ ssize_t tpm_write(struct file *file, const char __user *buf,
 		return -E2BIG;
 
 	mutex_lock(&chip->buffer_mutex);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (copy_from_user
 	    (chip->data_buffer, (void __user *) buf, in_size)) {
@@ -1042,10 +1385,19 @@ ssize_t tpm_write(struct file *file, const char __user *buf,
 
 	/* atomic tpm command send and result receive */
 	out_size = tpm_transmit(chip, chip->data_buffer, TPM_BUFSIZE);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (out_size < 0) {
 		mutex_unlock(&chip->buffer_mutex);
 		return out_size;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	atomic_set(&chip->data_pending, out_size);
 	mutex_unlock(&chip->buffer_mutex);
@@ -1069,12 +1421,27 @@ ssize_t tpm_read(struct file *file, char __user *buf,
 	ret_size = atomic_read(&chip->data_pending);
 	atomic_set(&chip->data_pending, 0);
 	if (ret_size > 0) {	/* relay data */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ssize_t orig_ret_size = ret_size;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (size < ret_size)
 			ret_size = size;
 
 		mutex_lock(&chip->buffer_mutex);
 		rc = copy_to_user(buf, chip->data_buffer, ret_size);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		memset(chip->data_buffer, 0, orig_ret_size);
+=======
 		memset(chip->data_buffer, 0, ret_size);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		memset(chip->data_buffer, 0, ret_size);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc)
 			ret_size = -EFAULT;
 

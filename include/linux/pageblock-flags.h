@@ -35,7 +35,13 @@ enum pageblock_bits {
 	PB_migrate_skip,/* If set the block is skipped by compaction */
 #endif /* CONFIG_COMPACTION */
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_COMPACTION
+	PB_migrate_skip,/* If set the block is skipped by compaction */
+#endif /* CONFIG_COMPACTION */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NR_PAGEBLOCK_BITS
 };
 
@@ -72,6 +78,9 @@ void set_pageblock_flags_group(struct page *page, unsigned long flags,
 					int start_bitidx, int end_bitidx);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_COMPACTION
 #define get_pageblock_skip(page) \
 			get_pageblock_flags_group(page, PB_migrate_skip,     \
@@ -89,6 +98,8 @@ void set_pageblock_flags_group(struct page *page, unsigned long flags,
 #define set_pageblock_flags(page, flags) \
 			set_pageblock_flags_group(page, flags,	\
 						  0, PB_migrate_end)
+<<<<<<< HEAD
+=======
 =======
 #define get_pageblock_flags(page) \
 			get_pageblock_flags_group(page, 0, NR_PAGEBLOCK_BITS-1)
@@ -96,5 +107,6 @@ void set_pageblock_flags_group(struct page *page, unsigned long flags,
 			set_pageblock_flags_group(page, flags,	\
 						  0, NR_PAGEBLOCK_BITS-1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif	/* PAGEBLOCK_FLAGS_H */

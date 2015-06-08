@@ -51,8 +51,12 @@ extern struct inode *cifs_root_iget(struct super_block *);
 <<<<<<< HEAD
 extern int cifs_create(struct inode *, struct dentry *, umode_t,
 =======
+<<<<<<< HEAD
+extern int cifs_create(struct inode *, struct dentry *, umode_t,
+=======
 extern int cifs_create(struct inode *, struct dentry *, int,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       struct nameidata *);
 extern struct dentry *cifs_lookup(struct inode *, struct dentry *,
 				  struct nameidata *);
@@ -62,9 +66,14 @@ extern int cifs_hardlink(struct dentry *, struct inode *, struct dentry *);
 extern int cifs_mknod(struct inode *, struct dentry *, umode_t, dev_t);
 extern int cifs_mkdir(struct inode *, struct dentry *, umode_t);
 =======
+<<<<<<< HEAD
+extern int cifs_mknod(struct inode *, struct dentry *, umode_t, dev_t);
+extern int cifs_mkdir(struct inode *, struct dentry *, umode_t);
+=======
 extern int cifs_mknod(struct inode *, struct dentry *, int, dev_t);
 extern int cifs_mkdir(struct inode *, struct dentry *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int cifs_rmdir(struct inode *, struct dentry *);
 extern int cifs_rename(struct inode *, struct dentry *, struct inode *,
 		       struct dentry *);
@@ -104,9 +113,14 @@ extern int cifs_lock(struct file *, int, struct file_lock *);
 extern int cifs_fsync(struct file *, loff_t, loff_t, int);
 extern int cifs_strict_fsync(struct file *, loff_t, loff_t, int);
 =======
+<<<<<<< HEAD
+extern int cifs_fsync(struct file *, loff_t, loff_t, int);
+extern int cifs_strict_fsync(struct file *, loff_t, loff_t, int);
+=======
 extern int cifs_fsync(struct file *, int);
 extern int cifs_strict_fsync(struct file *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int cifs_flush(struct file *, fl_owner_t id);
 extern int cifs_file_mmap(struct file * , struct vm_area_struct *);
 extern int cifs_file_strict_mmap(struct file * , struct vm_area_struct *);
@@ -140,11 +154,16 @@ extern ssize_t	cifs_listxattr(struct dentry *, char *, size_t);
 extern long cifs_ioctl(struct file *filep, unsigned int cmd, unsigned long arg);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CIFS_NFSD_EXPORT
 extern const struct export_operations cifs_export_ops;
 #endif /* CONFIG_CIFS_NFSD_EXPORT */
 
 #define CIFS_VERSION   "1.78"
+<<<<<<< HEAD
+=======
 =======
 #ifdef CIFS_NFSD_EXPORT
 extern const struct export_operations cifs_export_ops;
@@ -152,4 +171,5 @@ extern const struct export_operations cifs_export_ops;
 
 #define CIFS_VERSION   "1.74"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif				/* _CIFSFS_H */

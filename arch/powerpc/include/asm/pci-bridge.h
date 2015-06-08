@@ -11,10 +11,15 @@
 #include <linux/list.h>
 #include <linux/ioport.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm-generic/pci-bridge.h>
 
 struct device_node;
 
+<<<<<<< HEAD
+=======
 =======
 
 struct device_node;
@@ -69,6 +74,7 @@ static inline int ppc_pci_has_flag(int flag)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Structure of a PCI controller (host bridge)
  */
@@ -183,6 +189,11 @@ extern int pci_device_from_OF_node(struct device_node *node,
 				   u8 *bus, u8 *devfn);
 extern void pci_create_OF_bus_map(void);
 =======
+<<<<<<< HEAD
+extern int pci_device_from_OF_node(struct device_node *node,
+				   u8 *bus, u8 *devfn);
+extern void pci_create_OF_bus_map(void);
+=======
 static inline struct device_node *pci_bus_to_OF_node(struct pci_bus *bus)
 {
 	struct pci_controller *host;
@@ -193,6 +204,7 @@ static inline struct device_node *pci_bus_to_OF_node(struct pci_bus *bus)
 	return host ? host->dn : NULL;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int isa_vaddr_is_ioport(void __iomem *address)
 {
@@ -221,6 +233,9 @@ struct pci_dn {
 	int	pci_ext_config_space;	/* for pci devices */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct	pci_dev *pcidev;	/* back-pointer to the pci device */
 #ifdef CONFIG_EEH
 	struct eeh_dev *edev;		/* eeh device */
@@ -228,6 +243,8 @@ struct pci_dn {
 #define IODA_INVALID_PE		(-1)
 #ifdef CONFIG_PPC_POWERNV
 	int	pe_number;
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_EEH
 	struct	pci_dev *pcidev;	/* back-pointer to the pci device */
@@ -240,12 +257,17 @@ struct pci_dn {
 	int	eeh_false_positives;	/* # times this device reported #ff's */
 	u32	config_space[16];	/* saved PCI config space */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 };
 
 /* Get the pointer to a device_node's pci_dn */
 #define PCI_DN(dn)	((struct pci_dn *) (dn)->data)
 
+<<<<<<< HEAD
+extern void * update_dn_pci_info(struct device_node *dn, void *data);
+
+=======
 <<<<<<< HEAD
 extern void * update_dn_pci_info(struct device_node *dn, void *data);
 
@@ -262,6 +284,7 @@ static inline struct device_node *pci_device_to_OF_node(struct pci_dev *dev)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int pci_device_from_OF_node(struct device_node *np,
 					  u8 *bus, u8 *devfn)
 {
@@ -273,12 +296,17 @@ static inline int pci_device_from_OF_node(struct device_node *np,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_EEH)
 static inline struct eeh_dev *of_node_to_eeh_dev(struct device_node *dn)
 {
 	return PCI_DN(dn)->edev;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 static inline struct device_node *pci_bus_to_OF_node(struct pci_bus *bus)
 {
@@ -288,6 +316,7 @@ static inline struct device_node *pci_bus_to_OF_node(struct pci_bus *bus)
 		return bus->dev.of_node; /* Must be root bus (PHB) */
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /** Find the bus corresponding to the indicated device node */
 extern struct pci_bus *pcibios_find_pci_bus(struct device_node *dn);
@@ -332,8 +361,11 @@ extern struct pci_controller *pcibios_alloc_controller(struct device_node *dev);
 extern void pcibios_free_controller(struct pci_controller *phb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void pcibios_setup_phb_resources(struct pci_controller *hose);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PCI
 extern int pcibios_vaddr_is_ioport(void __iomem *address);

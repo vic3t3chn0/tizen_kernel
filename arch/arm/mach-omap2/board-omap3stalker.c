@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/regulator/fixed.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/fixed.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/machine.h>
 #include <linux/i2c/twl.h>
 #include <linux/mmc/host.h>
@@ -42,8 +46,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/gpmc.h>
 #include <plat/nand.h>
 #include <plat/usb.h>
@@ -52,7 +60,11 @@
 <<<<<<< HEAD
 #include <video/omap-panel-dvi.h>
 =======
+<<<<<<< HEAD
+#include <video/omap-panel-dvi.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/mcspi.h>
 #include <linux/input/matrix_keypad.h>
@@ -66,8 +78,11 @@
 #include "hsmmc.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "timer-gp.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common-board-devices.h"
 
 #if defined(CONFIG_SMSC911X) || defined(CONFIG_SMSC911X_MODULE)
@@ -89,6 +104,8 @@ static inline void __init omap3stalker_init_eth(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct clk *l3ck;
 	unsigned int rate;
 
@@ -99,6 +116,7 @@ static inline void __init omap3stalker_init_eth(void)
 		rate = clk_get_rate(l3ck);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_mux_init_gpio(19, OMAP_PIN_INPUT_PULLUP);
 	gpmc_smsc911x_init(&smsc911x_cfg);
 }
@@ -126,6 +144,8 @@ static void __init omap3_stalker_display_init(void)
 	return;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int omap3_stalker_enable_lcd(struct omap_dss_device *dssdev)
@@ -162,6 +182,7 @@ static struct omap_dss_device omap3_stalker_lcd_device = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int omap3_stalker_enable_tv(struct omap_dss_device *dssdev)
 {
 	return 0;
@@ -204,9 +225,13 @@ static void omap3_stalker_disable_dvi(struct omap_dss_device *dssdev)
 <<<<<<< HEAD
 static struct panel_dvi_platform_data dvi_panel = {
 =======
+<<<<<<< HEAD
+static struct panel_dvi_platform_data dvi_panel = {
+=======
 static struct panel_generic_dpi_data dvi_panel = {
 	.name			= "generic",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.platform_enable	= omap3_stalker_enable_dvi,
 	.platform_disable	= omap3_stalker_disable_dvi,
 };
@@ -217,8 +242,12 @@ static struct omap_dss_device omap3_stalker_dvi_device = {
 <<<<<<< HEAD
 	.driver_name		= "dvi",
 =======
+<<<<<<< HEAD
+	.driver_name		= "dvi",
+=======
 	.driver_name		= "generic_dpi_panel",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.data			= &dvi_panel,
 	.phy.dpi.data_lines	= 24,
 };
@@ -226,8 +255,11 @@ static struct omap_dss_device omap3_stalker_dvi_device = {
 static struct omap_dss_device *omap3_stalker_dss_devices[] = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	&omap3_stalker_lcd_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&omap3_stalker_tv_device,
 	&omap3_stalker_dvi_device,
 };
@@ -239,12 +271,17 @@ static struct omap_dss_board_info omap3_stalker_dss_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply omap3stalker_vmmc1_supply[] = {
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.0"),
 };
 
 static struct regulator_consumer_supply omap3stalker_vsim_supply[] = {
 	REGULATOR_SUPPLY("vmmc_aux", "omap_hsmmc.0"),
+<<<<<<< HEAD
+=======
 =======
 static struct regulator_consumer_supply omap3stalker_vmmc1_supply = {
 	.supply		= "vmmc",
@@ -253,6 +290,7 @@ static struct regulator_consumer_supply omap3stalker_vmmc1_supply = {
 static struct regulator_consumer_supply omap3stalker_vsim_supply = {
 	.supply		= "vmmc_aux",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VMMC1 for MMC1 pins CMD, CLK, DAT0..DAT3 (20 mA, plus card == max 220 mA) */
@@ -269,9 +307,14 @@ static struct regulator_init_data omap3stalker_vmmc1 = {
 	.num_consumer_supplies	= ARRAY_SIZE(omap3stalker_vmmc1_supply),
 	.consumer_supplies	= omap3stalker_vmmc1_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(omap3stalker_vmmc1_supply),
+	.consumer_supplies	= omap3stalker_vmmc1_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &omap3stalker_vmmc1_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VSIM for MMC1 pins DAT4..DAT7 (2 mA, plus card == max 50 mA) */
@@ -288,25 +331,36 @@ static struct regulator_init_data omap3stalker_vsim = {
 	.num_consumer_supplies	= ARRAY_SIZE(omap3stalker_vsim_supply),
 	.consumer_supplies	= omap3stalker_vsim_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(omap3stalker_vsim_supply),
+	.consumer_supplies	= omap3stalker_vsim_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &omap3stalker_vsim_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct omap2_hsmmc_info mmc[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mmc		= 1,
 		.caps		= MMC_CAP_4_BIT_DATA,
 		.gpio_cd	= -EINVAL,
 		.gpio_wp	= 23,
 		.deferred	= true,
+<<<<<<< HEAD
+=======
 =======
 	 .mmc		= 1,
 	 .caps		= MMC_CAP_4_BIT_DATA,
 	 .gpio_cd	= -EINVAL,
 	 .gpio_wp	= 23,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 },
 	{}			/* Terminator */
 };
@@ -380,6 +434,10 @@ omap3stalker_twl_gpio_setup(struct device *dev,
 	mmc[0].gpio_cd = gpio + 0;
 	omap_hsmmc_late_init(mmc);
 =======
+<<<<<<< HEAD
+	mmc[0].gpio_cd = gpio + 0;
+	omap_hsmmc_late_init(mmc);
+=======
 	omap_mux_init_gpio(23, OMAP_PIN_INPUT);
 	mmc[0].gpio_cd = gpio + 0;
 	omap2_hsmmc_init(mmc);
@@ -388,6 +446,7 @@ omap3stalker_twl_gpio_setup(struct device *dev,
 	omap3stalker_vmmc1_supply.dev = mmc[0].dev;
 	omap3stalker_vsim_supply.dev = mmc[0].dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Most GPIOs are for USB OTG.  Some are mostly sent to
@@ -420,11 +479,14 @@ static struct twl4030_gpio_platform_data omap3stalker_gpio_data = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct twl4030_usb_data omap3stalker_usb_data = {
 	.usb_mode	= T2_USB_MODE_ULPI,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static uint32_t board_keymap[] = {
 	KEY(0, 0, KEY_LEFT),
 	KEY(0, 1, KEY_DOWN),
@@ -459,6 +521,12 @@ static struct twl4030_keypad_data omap3stalker_kp_data = {
 	.rep		= 1,
 };
 
+<<<<<<< HEAD
+static struct twl4030_platform_data omap3stalker_twldata = {
+	/* platform_data for children goes here */
+	.keypad		= &omap3stalker_kp_data,
+	.gpio		= &omap3stalker_gpio_data,
+=======
 <<<<<<< HEAD
 static struct twl4030_platform_data omap3stalker_twldata = {
 	/* platform_data for children goes here */
@@ -528,6 +596,7 @@ static struct twl4030_platform_data omap3stalker_twldata = {
 	.vdac		= &omap3_stalker_vdac,
 	.vpll2		= &omap3_stalker_vpll2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.vmmc1		= &omap3stalker_vmmc1,
 	.vsim		= &omap3stalker_vsim,
 };
@@ -549,6 +618,9 @@ static struct i2c_board_info __initdata omap3stalker_i2c_boardinfo3[] = {
 static int __init omap3_stalker_i2c_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_get_config(&omap3stalker_twldata,
 			TWL_COMMON_PDATA_USB | TWL_COMMON_PDATA_MADC |
 			TWL_COMMON_PDATA_AUDIO,
@@ -558,8 +630,11 @@ static int __init omap3_stalker_i2c_init(void)
 	omap3stalker_twldata.vpll2->constraints.apply_uV = true;
 	omap3stalker_twldata.vpll2->constraints.name = "VDVI";
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_init("twl4030", &omap3stalker_twldata);
 	omap_register_i2c_bus(2, 400, NULL, 0);
 	omap_register_i2c_bus(3, 400, omap3stalker_i2c_boardinfo3,
@@ -572,6 +647,8 @@ static int __init omap3_stalker_i2c_init(void)
 static struct omap_board_config_kernel omap3_stalker_config[] __initdata = {
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void __init omap3_stalker_init_early(void)
@@ -589,6 +666,7 @@ static void __init omap3_stalker_init_irq(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *omap3_stalker_devices[] __initdata = {
 	&keys_gpio,
 };
@@ -615,6 +693,9 @@ static struct omap_board_mux board_mux[] __initdata = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply dummy_supplies[] = {
 	REGULATOR_SUPPLY("vddvario", "smsc911x.0"),
 	REGULATOR_SUPPLY("vdd33a", "smsc911x.0"),
@@ -623,10 +704,13 @@ static struct regulator_consumer_supply dummy_supplies[] = {
 static void __init omap3_stalker_init(void)
 {
 	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
+<<<<<<< HEAD
+=======
 =======
 static void __init omap3_stalker_init(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CUS);
 	omap_board_config = omap3_stalker_config;
 	omap_board_config_size = ARRAY_SIZE(omap3_stalker_config);
@@ -636,7 +720,13 @@ static void __init omap3_stalker_init(void)
 	omap_hsmmc_init(mmc);
 
 =======
+<<<<<<< HEAD
+	omap_mux_init_gpio(23, OMAP_PIN_INPUT);
+	omap_hsmmc_init(mmc);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_stalker_i2c_init();
 
 	platform_add_devices(omap3_stalker_devices,
@@ -648,7 +738,11 @@ static void __init omap3_stalker_init(void)
 <<<<<<< HEAD
 	omap_sdrc_init(mt46h32m32lf6_sdrc_params, NULL);
 =======
+<<<<<<< HEAD
+	omap_sdrc_init(mt46h32m32lf6_sdrc_params, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_musb_init(NULL);
 	usbhs_init(&usbhs_bdata);
 	omap_ads7846_init(1, OMAP3_STALKER_TS_GPIO, 310, NULL);
@@ -666,6 +760,9 @@ static void __init omap3_stalker_init(void)
 MACHINE_START(SBC3530, "OMAP3 STALKER")
 	/* Maintainer: Jason Lam -lzg@ema-tech.com */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset		= 0x100,
 	.map_io			= omap3_map_io,
 	.init_early		= omap35xx_init_early,
@@ -674,6 +771,8 @@ MACHINE_START(SBC3530, "OMAP3 STALKER")
 	.init_machine		= omap3_stalker_init,
 	.timer			= &omap3_secure_timer,
 	.restart		= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params		= 0x80000100,
 	.map_io			= omap3_map_io,
@@ -682,4 +781,5 @@ MACHINE_START(SBC3530, "OMAP3 STALKER")
 	.init_machine		= omap3_stalker_init,
 	.timer			= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

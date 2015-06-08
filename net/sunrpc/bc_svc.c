@@ -29,9 +29,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_NFS_V4_1)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 
 #include <linux/sunrpc/xprt.h>
@@ -68,5 +71,8 @@ int bc_send(struct rpc_rqst *req)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* CONFIG_NFS_V4_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

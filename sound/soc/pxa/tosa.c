@@ -36,9 +36,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct snd_soc_card tosa;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TOSA_HP        0
 #define TOSA_MIC_INT   1
 #define TOSA_HEADSET   2
@@ -205,8 +208,12 @@ static int tosa_ac97_init(struct snd_soc_pcm_runtime *rtd)
 <<<<<<< HEAD
 	err = snd_soc_add_codec_controls(codec, tosa_controls,
 =======
+<<<<<<< HEAD
+	err = snd_soc_add_codec_controls(codec, tosa_controls,
+=======
 	err = snd_soc_add_controls(codec, tosa_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ARRAY_SIZE(tosa_controls));
 	if (err < 0)
 		return err;
@@ -220,8 +227,11 @@ static int tosa_ac97_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -248,6 +258,9 @@ static struct snd_soc_dai_link tosa_dai[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_card tosa = {
 	.name = "Tosa",
 	.owner = THIS_MODULE,
@@ -295,6 +308,8 @@ static struct platform_driver tosa_driver = {
 };
 
 module_platform_driver(tosa_driver);
+<<<<<<< HEAD
+=======
 =======
 static int tosa_probe(struct snd_soc_card *card)
 {
@@ -359,6 +374,7 @@ static void __exit tosa_exit(void)
 module_init(tosa_init);
 module_exit(tosa_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR("Richard Purdie");
@@ -367,4 +383,8 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:tosa-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:tosa-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

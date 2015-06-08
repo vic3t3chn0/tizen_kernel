@@ -20,7 +20,15 @@
 #include <linux/usb/serial.h>
 #include <linux/uaccess.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct usb_device_id id_table[] = {
 	{ USB_DEVICE(0x05e0, 0x0600) },
@@ -182,7 +190,14 @@ static void symbol_unthrottle(struct tty_struct *tty)
 	priv->actually_throttled = false;
 	spin_unlock_irq(&priv->lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	priv->int_urb->dev = port->serial->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	priv->int_urb->dev = port->serial->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (was_throttled) {
 		result = usb_submit_urb(priv->int_urb, GFP_KERNEL);
 		if (result)
@@ -226,7 +241,15 @@ static int symbol_startup(struct usb_serial *serial)
 			goto error;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		priv->buffer_size = usb_endpoint_maxp(endpoint) * 2;
+=======
 		priv->buffer_size = le16_to_cpu(endpoint->wMaxPacketSize) * 2;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		priv->buffer_size = le16_to_cpu(endpoint->wMaxPacketSize) * 2;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->int_buffer = kmalloc(priv->buffer_size, GFP_KERNEL);
 		if (!priv->int_buffer) {
 			dev_err(&priv->udev->dev, "out of memory\n");
@@ -288,7 +311,14 @@ static struct usb_driver symbol_driver = {
 	.probe =		usb_serial_probe,
 	.disconnect =		usb_serial_disconnect,
 	.id_table =		id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct usb_serial_driver symbol_device = {
@@ -297,7 +327,14 @@ static struct usb_serial_driver symbol_device = {
 		.name =		"symbol",
 	},
 	.id_table =		id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver = 		&symbol_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver = 		&symbol_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_ports =		1,
 	.attach =		symbol_startup,
 	.open =			symbol_open,
@@ -308,6 +345,17 @@ static struct usb_serial_driver symbol_device = {
 	.unthrottle =		symbol_unthrottle,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&symbol_device, NULL
+};
+
+module_usb_serial_driver(symbol_driver, serial_drivers);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init symbol_init(void)
 {
 	int retval;
@@ -329,6 +377,10 @@ static void __exit symbol_exit(void)
 
 module_init(symbol_init);
 module_exit(symbol_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 
 module_param(debug, bool, S_IRUGO | S_IWUSR);

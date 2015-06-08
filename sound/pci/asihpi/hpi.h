@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -38,6 +42,10 @@
 
 #include <linux/types.h>
 =======
+<<<<<<< HEAD
+
+#include <linux/types.h>
+=======
 /* HPI Version
 If HPI_VER_MINOR is odd then its a development release not intended for the
 public. If HPI_VER_MINOR is even then is a release version
@@ -60,6 +68,7 @@ i.e 3.05.02 is a development version
 #include <linux/types.h>
 #define HPI_BUILD_EXCLUDE_DEPRECATED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HPI_BUILD_KERNEL_MODE
 
 /******************************************************************************/
@@ -221,16 +230,22 @@ enum HPI_SOURCENODES {
 	HPI_SOURCENODE_ANALOG = 110,	     /**< analog input node. */
 	HPI_SOURCENODE_ADAPTER = 111,	     /**< adapter node. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/** RTP stream input node - This node is a destination for
 	    packets of RTP audio samples from other devices. */
 	HPI_SOURCENODE_RTP_DESTINATION = 112,
 	HPI_SOURCENODE_INTERNAL = 113,	     /**< node internal to the device. */
 	/* !!!Update this  AND hpidebug.h if you add a new sourcenode type!!! */
 	HPI_SOURCENODE_LAST_INDEX = 113	     /**< largest ID */
+<<<<<<< HEAD
+=======
 =======
 	/* !!!Update this  AND hpidebug.h if you add a new sourcenode type!!! */
 	HPI_SOURCENODE_LAST_INDEX = 111	     /**< largest ID */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* AX6 max sourcenode types = 15 */
 };
 
@@ -249,8 +264,12 @@ enum HPI_DESTNODES {
 <<<<<<< HEAD
 	HPI_DESTNODE_LINEOUT = 202,	     /**< line out node. */
 =======
+<<<<<<< HEAD
+	HPI_DESTNODE_LINEOUT = 202,	     /**< line out node. */
+=======
 	HPI_DESTNODE_LINEOUT = 202,	    /**< line out node. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_DESTNODE_AESEBU_OUT = 203,	     /**< AES/EBU output node. */
 	HPI_DESTNODE_RF = 204,		     /**< RF output node. */
 	HPI_DESTNODE_SPEAKER = 205,	     /**< speaker output node. */
@@ -259,16 +278,22 @@ enum HPI_DESTNODES {
 	HPI_DESTNODE_COBRANET = 206,
 	HPI_DESTNODE_ANALOG = 207,	     /**< analog output node. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/** RTP stream output node - This node is a source for
 	    packets of RTP audio samples that are sent to other devices. */
 	HPI_DESTNODE_RTP_SOURCE = 208,
 	/* !!!Update this AND hpidebug.h if you add a new destnode type!!! */
 	HPI_DESTNODE_LAST_INDEX = 208	     /**< largest ID */
+<<<<<<< HEAD
+=======
 =======
 
 	/* !!!Update this AND hpidebug.h if you add a new destnode type!!! */
 	HPI_DESTNODE_LAST_INDEX = 207	     /**< largest ID */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* AX6 max destnode types = 15 */
 };
 
@@ -475,6 +500,9 @@ across the host bus. Note, this does not imply that interrupts are
 enabled. Instead it indicates that they can be enabled.
 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_ADAPTER_PROPERTY_SUPPORTS_IRQ = 272,
 /** Readonly supports firmware updating.
 Indicates that the adapter implements an interface to update firmware
@@ -488,9 +516,12 @@ Property 1 = Bootloader ID
 Property 2 = Main program ID
 */
 	HPI_ADAPTER_PROPERTY_FIRMWARE_ID = 274
+<<<<<<< HEAD
+=======
 =======
 	HPI_ADAPTER_PROPERTY_SUPPORTS_IRQ = 272
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /** Adapter mode commands
@@ -681,8 +712,12 @@ enum HPI_MIXER_STORE_COMMAND {
 <<<<<<< HEAD
 /** Unimplemented - save the attributes of a single control. */
 =======
+<<<<<<< HEAD
+/** Unimplemented - save the attributes of a single control. */
+=======
 /** Save the attributes of a single control. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_MIXER_STORE_SAVE_SINGLE = 6
 };
 
@@ -988,8 +1023,12 @@ enum HPI_ERROR_CODES {
 <<<<<<< HEAD
 	/** DSP code failed to bootload. Usually a DSP memory test failure. */
 =======
+<<<<<<< HEAD
+	/** DSP code failed to bootload. Usually a DSP memory test failure. */
+=======
 	/** DSP code failed to bootload. (unused?) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_ERROR_DSP_BOOTLOAD = 204,
 	/** Couldn't find or open the DSP code file. */
 	HPI_ERROR_DSP_FILE_NOT_FOUND = 206,
@@ -1031,7 +1070,13 @@ enum HPI_ERROR_CODES {
 	HPI_ERROR_FLASH_READ_NO_FILE = 229,
 	HPI_ERROR_FLASH_SIZE = 230,
 =======
+<<<<<<< HEAD
+	HPI_ERROR_FLASH_READ = 228,
+	HPI_ERROR_FLASH_READ_NO_FILE = 229,
+	HPI_ERROR_FLASH_SIZE = 230,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/** Reserved for OEMs. */
 	HPI_ERROR_RESERVED_1 = 290,
@@ -1078,7 +1123,12 @@ enum HPI_ERROR_CODES {
 	/** A character string is invalid. */
 	HPI_ERROR_INVALID_STRING = 317,
 =======
+<<<<<<< HEAD
+	/** A character string is invalid. */
+	HPI_ERROR_INVALID_STRING = 317,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/** Invalid mixer node for this adapter. */
 	HPI_ERROR_INVALID_NODE = 400,
@@ -1106,6 +1156,9 @@ enum HPI_ERROR_CODES {
 	HPI_ERROR_I2C_BAD_ADR = 460,
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/** Entity type did not match requested type */
 	HPI_ERROR_ENTITY_TYPE_MISMATCH = 470,
 	/** Entity item count did not match requested count */
@@ -1115,6 +1168,8 @@ enum HPI_ERROR_CODES {
 	/** Entity role is not one of the valid roles */
 	HPI_ERROR_ENTITY_ROLE_INVALID = 473,
 	/** Entity size doesn't match target size */
+<<<<<<< HEAD
+=======
 =======
 	/** Entity errors */
 	HPI_ERROR_ENTITY_TYPE_MISMATCH = 470,
@@ -1122,6 +1177,7 @@ enum HPI_ERROR_CODES {
 	HPI_ERROR_ENTITY_TYPE_INVALID = 472,
 	HPI_ERROR_ENTITY_ROLE_INVALID = 473,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_ERROR_ENTITY_SIZE_MISMATCH = 474,
 
 	/* AES18 specific errors were 500..507 */
@@ -1152,9 +1208,13 @@ enum HPI_ERROR_CODES {
 <<<<<<< HEAD
 /** Maximum number of PCI HPI adapters */
 =======
+<<<<<<< HEAD
+/** Maximum number of PCI HPI adapters */
+=======
 /** Maximum number of adapters per HPI sub-system
    WARNING: modifying this value changes the response structure size.*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HPI_MAX_ADAPTERS                20
 /** Maximum number of in or out streams per adapter */
 #define HPI_MAX_STREAMS                 16
@@ -1170,7 +1230,13 @@ enum HPI_ERROR_CODES {
 #define HPI_MIN_NETWORK_ADAPTER_IDX 100
 
 =======
+<<<<<<< HEAD
+/** Networked adapters have index >= 100 */
+#define HPI_MIN_NETWORK_ADAPTER_IDX 100
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** Velocity units */
 #define HPI_OSTREAM_VELOCITY_UNITS      4096
 /** OutStream timescale units */
@@ -1195,8 +1261,12 @@ struct hpi_format {
 <<<<<<< HEAD
 	u32 bit_rate;		  /**< for MPEG */
 =======
+<<<<<<< HEAD
+	u32 bit_rate;		  /**< for MPEG */
+=======
 	u32 bit_rate;	      /**< for MPEG */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 attributes;
 				/**< Stereo/JointStereo/Mono */
 	u16 mode_legacy;
@@ -1206,10 +1276,16 @@ struct hpi_format {
 	u16 channels;	  /**< 1,2..., (or ancillary mode or idle bit */
 	u16 format;	  /**< HPI_FORMAT_PCM16, _MPEG etc. see #HPI_FORMATS. */
 =======
+<<<<<<< HEAD
+	u16 unused;		  /**< Unused */
+	u16 channels;	  /**< 1,2..., (or ancillary mode or idle bit */
+	u16 format;	  /**< HPI_FORMAT_PCM16, _MPEG etc. see #HPI_FORMATS. */
+=======
 	u16 unused;	      /**< Unused */
 	u16 channels; /**< 1,2..., (or ancillary mode or idle bit */
 	u16 format;   /**< HPI_FORMAT_PCM16, _MPEG etc. see #HPI_FORMATS. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct hpi_anc_frame {
@@ -1237,10 +1313,13 @@ struct hpi_async_event {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* skip host side function declarations for
    DSP compile and documentation extraction */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef DISABLE_PRAGMA_PACK1
 #pragma pack(pop)
 #endif
@@ -1454,8 +1533,12 @@ u16 hpi_volume_query_range(u32 h_control, short *min_gain_01dB,
 <<<<<<< HEAD
 u16 hpi_volume_query_channels(const u32 h_control, u32 *p_channels);
 =======
+<<<<<<< HEAD
+u16 hpi_volume_query_channels(const u32 h_control, u32 *p_channels);
+=======
 u16 hpi_volume_query_channels(const u32 h_volume, u32 *p_channels);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 u16 hpi_volume_auto_fade(u32 h_control,
 	short an_stop_gain0_01dB[HPI_MAX_CHANNELS], u32 duration_ms);
@@ -1469,7 +1552,13 @@ u16 hpi_volume_query_auto_fade_profile(const u32 h_control, const u32 i,
 	u16 *profile);
 
 =======
+<<<<<<< HEAD
+u16 hpi_volume_query_auto_fade_profile(const u32 h_control, const u32 i,
+	u16 *profile);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*****************/
 /* Level control */
 /*****************/

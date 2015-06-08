@@ -222,6 +222,9 @@ get_order (unsigned long size)
 					  ? VM_EXEC : 0))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GATE_ADDR		RGN_BASE(RGN_GATE)
 
 /*
@@ -232,6 +235,9 @@ get_order (unsigned long size)
 #define PERCPU_ADDR		(-PERCPU_PAGE_SIZE)
 #define LOAD_OFFSET		(KERNEL_START - KERNEL_TR_PAGE_SIZE)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_IA64_PAGE_H */

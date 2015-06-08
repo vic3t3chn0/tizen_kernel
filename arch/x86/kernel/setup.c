@@ -53,7 +53,11 @@
 <<<<<<< HEAD
 #include <linux/dma-contiguous.h>
 =======
+<<<<<<< HEAD
+#include <linux/dma-contiguous.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/errno.h>
 #include <linux/kernel.h>
@@ -96,8 +100,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/vsyscall.h>
 #include <asm/cpu.h>
 #include <asm/desc.h>
@@ -317,8 +324,13 @@ static void __init reserve_brk(void)
 		memblock_reserve(__pa(_brk_start),
 				 __pa(_brk_end) - __pa(_brk_start));
 =======
+<<<<<<< HEAD
+		memblock_reserve(__pa(_brk_start),
+				 __pa(_brk_end) - __pa(_brk_start));
+=======
 		memblock_x86_reserve_range(__pa(_brk_start), __pa(_brk_end), "BRK");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Mark brk area as locked down and no longer taking any
 	   new allocations */
@@ -346,8 +358,12 @@ static void __init relocate_initrd(void)
 <<<<<<< HEAD
 	if (!ramdisk_here)
 =======
+<<<<<<< HEAD
+	if (!ramdisk_here)
+=======
 	if (ramdisk_here == MEMBLOCK_ERROR)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		panic("Cannot find place for new RAMDISK of size %lld\n",
 			 ramdisk_size);
 
@@ -356,8 +372,12 @@ static void __init relocate_initrd(void)
 <<<<<<< HEAD
 	memblock_reserve(ramdisk_here, area_size);
 =======
+<<<<<<< HEAD
+	memblock_reserve(ramdisk_here, area_size);
+=======
 	memblock_x86_reserve_range(ramdisk_here, ramdisk_here + area_size, "NEW RAMDISK");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	initrd_start = ramdisk_here + PAGE_OFFSET;
 	initrd_end   = initrd_start + ramdisk_size;
 	printk(KERN_INFO "Allocated new RAMDISK: %08llx - %08llx\n",
@@ -416,8 +436,12 @@ static void __init reserve_initrd(void)
 <<<<<<< HEAD
 		memblock_free(ramdisk_image, ramdisk_end - ramdisk_image);
 =======
+<<<<<<< HEAD
+		memblock_free(ramdisk_image, ramdisk_end - ramdisk_image);
+=======
 		memblock_x86_free_range(ramdisk_image, ramdisk_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "initrd too large to handle, "
 		       "disabling initrd\n");
 		return;
@@ -443,8 +467,12 @@ static void __init reserve_initrd(void)
 <<<<<<< HEAD
 	memblock_free(ramdisk_image, ramdisk_end - ramdisk_image);
 =======
+<<<<<<< HEAD
+	memblock_free(ramdisk_image, ramdisk_end - ramdisk_image);
+=======
 	memblock_x86_free_range(ramdisk_image, ramdisk_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else
 static void __init reserve_initrd(void)
@@ -520,8 +548,11 @@ static void __init memblock_x86_reserve_range_setup_data(void)
 	u64 pa_data;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	char buf[32];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (boot_params.hdr.version < 0x0209)
 		return;
@@ -531,9 +562,13 @@ static void __init memblock_x86_reserve_range_setup_data(void)
 <<<<<<< HEAD
 		memblock_reserve(pa_data, sizeof(*data) + data->len);
 =======
+<<<<<<< HEAD
+		memblock_reserve(pa_data, sizeof(*data) + data->len);
+=======
 		sprintf(buf, "setup data %x", data->type);
 		memblock_x86_reserve_range(pa_data, pa_data+sizeof(*data)+data->len, buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pa_data = data->next;
 		early_iounmap(data, sizeof(*data));
 	}
@@ -547,6 +582,8 @@ static void __init memblock_x86_reserve_range_setup_data(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline unsigned long long get_total_mem(void)
 {
 	unsigned long long total;
@@ -557,6 +594,7 @@ static inline unsigned long long get_total_mem(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Keep the crash kernel below this limit.  On 32 bits earlier kernels
  * would limit the kernel to the low 512 MiB due to mapping restrictions.
@@ -578,8 +616,12 @@ static void __init reserve_crashkernel(void)
 <<<<<<< HEAD
 	total_mem = memblock_phys_mem_size();
 =======
+<<<<<<< HEAD
+	total_mem = memblock_phys_mem_size();
+=======
 	total_mem = get_total_mem();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = parse_crashkernel(boot_command_line, total_mem,
 			&crash_size, &crash_base);
@@ -599,8 +641,12 @@ static void __init reserve_crashkernel(void)
 <<<<<<< HEAD
 		if (!crash_base) {
 =======
+<<<<<<< HEAD
+		if (!crash_base) {
+=======
 		if (crash_base == MEMBLOCK_ERROR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_info("crashkernel reservation failed - No suitable area found.\n");
 			return;
 		}
@@ -617,8 +663,12 @@ static void __init reserve_crashkernel(void)
 <<<<<<< HEAD
 	memblock_reserve(crash_base, crash_size);
 =======
+<<<<<<< HEAD
+	memblock_reserve(crash_base, crash_size);
+=======
 	memblock_x86_reserve_range(crash_base, crash_base + crash_size, "CRASH KERNEL");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "Reserving %ldMB of memory at %ldMB "
 			"for crashkernel (System RAM: %ldMB)\n",
@@ -679,12 +729,18 @@ static __init void reserve_ibft_region(void)
 <<<<<<< HEAD
 		memblock_reserve(addr, size);
 =======
+<<<<<<< HEAD
+		memblock_reserve(addr, size);
+=======
 		memblock_x86_reserve_range(addr, addr + size, "* ibft");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static unsigned reserve_low = CONFIG_X86_RESERVE_LOW << 10;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static bool __init snb_gfx_workaround_needed(void)
@@ -765,6 +821,7 @@ static void __init trim_platform_memory_ranges(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init trim_bios_range(void)
 {
 	/*
@@ -787,8 +844,11 @@ static void __init trim_bios_range(void)
 	e820_remove_range(BIOS_BEGIN, BIOS_END - BIOS_BEGIN, E820_RAM, 1);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sanitize_e820_map(e820.map, ARRAY_SIZE(e820.map), &e820.nr_map);
 }
 
@@ -889,6 +949,9 @@ void __init setup_arch(char **cmdline_p)
 #ifdef CONFIG_EFI
 	if (!strncmp((char *)&boot_params.efi_info.efi_loader_signature,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     "EL32", 4)) {
 		efi_enabled = 1;
 		efi_64bit = false;
@@ -899,6 +962,8 @@ void __init setup_arch(char **cmdline_p)
 	}
 	if (efi_enabled && efi_memblock_x86_reserve_range())
 		efi_enabled = 0;
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_X86_32
 		     "EL32",
@@ -910,6 +975,7 @@ void __init setup_arch(char **cmdline_p)
 		efi_memblock_x86_reserve_range();
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	x86_init.oem.arch_setup();
@@ -1082,9 +1148,12 @@ void __init setup_arch(char **cmdline_p)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	trim_platform_memory_ranges();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_gbpages();
 
 	/* max_pfn_mapped is updated here */
@@ -1093,6 +1162,10 @@ void __init setup_arch(char **cmdline_p)
 
 #ifdef CONFIG_X86_64
 	if (max_pfn > max_low_pfn) {
+<<<<<<< HEAD
+		max_pfn_mapped = init_memory_mapping(1UL<<32,
+						     max_pfn<<PAGE_SHIFT);
+=======
 <<<<<<< HEAD
 		max_pfn_mapped = init_memory_mapping(1UL<<32,
 						     max_pfn<<PAGE_SHIFT);
@@ -1113,6 +1186,7 @@ void __init setup_arch(char **cmdline_p)
 		}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* can we preseve max_low_pfn ?*/
 		max_low_pfn = max_pfn;
 	}
@@ -1121,7 +1195,11 @@ void __init setup_arch(char **cmdline_p)
 <<<<<<< HEAD
 	dma_contiguous_reserve(0);
 =======
+<<<<<<< HEAD
+	dma_contiguous_reserve(0);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * NOTE: On x86-32, only from this point on, fixmaps are ready for use.
@@ -1227,7 +1305,12 @@ void __init setup_arch(char **cmdline_p)
 	x86_platform.wallclock_init();
 
 =======
+<<<<<<< HEAD
+	x86_platform.wallclock_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mcheck_init();
 
 	arch_init_ideal_nops();

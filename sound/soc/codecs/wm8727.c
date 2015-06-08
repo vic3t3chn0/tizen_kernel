@@ -62,8 +62,12 @@ static struct platform_driver wm8727_codec_driver = {
 <<<<<<< HEAD
 			.name = "wm8727",
 =======
+<<<<<<< HEAD
+			.name = "wm8727",
+=======
 			.name = "wm8727-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.owner = THIS_MODULE,
 	},
 
@@ -71,6 +75,9 @@ static struct platform_driver wm8727_codec_driver = {
 	.remove = __devexit_p(wm8727_remove),
 };
 
+<<<<<<< HEAD
+module_platform_driver(wm8727_codec_driver);
+=======
 <<<<<<< HEAD
 module_platform_driver(wm8727_codec_driver);
 =======
@@ -86,6 +93,7 @@ static void __exit wm8727_exit(void)
 }
 module_exit(wm8727_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("ASoC wm8727 driver");
 MODULE_AUTHOR("Neil Jones");

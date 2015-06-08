@@ -167,8 +167,11 @@ enum  hrtimer_base_type {
  * @active_bases:	Bitfield to mark bases with active timers
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @clock_was_set:	Indicates that clock was set from irq context.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @expires_next:	absolute time of the next event which was scheduled
  *			via clock_set_next_event()
  * @hres_active:	State of high resolution mode
@@ -184,9 +187,13 @@ struct hrtimer_cpu_base {
 <<<<<<< HEAD
 	unsigned long			active_bases;
 =======
+<<<<<<< HEAD
+	unsigned long			active_bases;
+=======
 	unsigned int			active_bases;
 	unsigned int			clock_was_set;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HIGH_RES_TIMERS
 	ktime_t				expires_next;
 	int				hres_active;
@@ -297,9 +304,12 @@ extern void hrtimer_peek_ahead_timers(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void clock_was_set_delayed(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 
 # define MONOTONIC_RES_NSEC	LOW_RES_NSEC
@@ -322,10 +332,13 @@ static inline int hrtimer_is_hres_active(struct hrtimer *timer)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 static inline void clock_was_set_delayed(void) { }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 extern void clock_was_set(void);
@@ -342,8 +355,11 @@ extern ktime_t ktime_get_boottime(void);
 extern ktime_t ktime_get_monotonic_offset(void);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern ktime_t ktime_get_update_offsets(ktime_t *offs_real, ktime_t *offs_boot);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 DECLARE_PER_CPU(struct tick_device, tick_cpu_device);
 

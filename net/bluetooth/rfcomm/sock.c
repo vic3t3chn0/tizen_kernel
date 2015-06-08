@@ -486,13 +486,19 @@ static int rfcomm_sock_accept(struct socket *sock, struct socket *newsock, int f
 	lock_sock(sk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sk->sk_state != BT_LISTEN) {
 		err = -EBADFD;
 		goto done;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sk->sk_type != SOCK_STREAM) {
 		err = -EINVAL;
 		goto done;
@@ -505,6 +511,9 @@ static int rfcomm_sock_accept(struct socket *sock, struct socket *newsock, int f
 	/* Wait for an incoming connection. (wake-one). */
 	add_wait_queue_exclusive(sk_sleep(sk), &wait);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (!(nsk = bt_accept_dequeue(sk, newsock))) {
 		set_current_state(TASK_INTERRUPTIBLE);
 		if (!timeo) {
@@ -518,6 +527,8 @@ static int rfcomm_sock_accept(struct socket *sock, struct socket *newsock, int f
 
 		if (sk->sk_state != BT_LISTEN) {
 			err = -EBADFD;
+<<<<<<< HEAD
+=======
 =======
 	while (1) {
 		set_current_state(TASK_INTERRUPTIBLE);
@@ -534,6 +545,7 @@ static int rfcomm_sock_accept(struct socket *sock, struct socket *newsock, int f
 		if (!timeo) {
 			err = -EAGAIN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 
@@ -545,6 +557,10 @@ static int rfcomm_sock_accept(struct socket *sock, struct socket *newsock, int f
 	}
 	set_current_state(TASK_RUNNING);
 =======
+<<<<<<< HEAD
+	}
+	set_current_state(TASK_RUNNING);
+=======
 
 		release_sock(sk);
 		timeo = schedule_timeout(timeo);
@@ -552,6 +568,7 @@ static int rfcomm_sock_accept(struct socket *sock, struct socket *newsock, int f
 	}
 	__set_current_state(TASK_RUNNING);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	remove_wait_queue(sk_sleep(sk), &wait);
 
 	if (err)
@@ -575,8 +592,11 @@ static int rfcomm_sock_getname(struct socket *sock, struct sockaddr *addr, int *
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(sa, 0, sizeof(*sa));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sa->rc_family  = AF_BLUETOOTH;
 	sa->rc_channel = rfcomm_pi(sk)->channel;
 	if (peer)
@@ -715,9 +735,13 @@ static int rfcomm_sock_setsockopt(struct socket *sock, int level, int optname, c
 <<<<<<< HEAD
 	int len, err = 0;
 =======
+<<<<<<< HEAD
+	int len, err = 0;
+=======
 	int err = 0;
 	size_t len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 opt;
 
 	BT_DBG("sk %p", sk);
@@ -748,8 +772,12 @@ static int rfcomm_sock_setsockopt(struct socket *sock, int level, int optname, c
 <<<<<<< HEAD
 		if (sec.level > BT_SECURITY_VERY_HIGH) {
 =======
+<<<<<<< HEAD
+		if (sec.level > BT_SECURITY_VERY_HIGH) {
+=======
 		if (sec.level > BT_SECURITY_HIGH) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = -EINVAL;
 			break;
 		}
@@ -758,7 +786,11 @@ static int rfcomm_sock_setsockopt(struct socket *sock, int level, int optname, c
 <<<<<<< HEAD
 		BT_DBG("set to %d", sec.level);
 =======
+<<<<<<< HEAD
+		BT_DBG("set to %d", sec.level);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BT_DEFER_SETUP:
@@ -791,9 +823,14 @@ static int rfcomm_sock_getsockopt_old(struct socket *sock, int optname, char __u
 	struct sock *l2cap_sk;
 	struct rfcomm_conninfo cinfo;
 =======
+<<<<<<< HEAD
+	struct sock *l2cap_sk;
+	struct rfcomm_conninfo cinfo;
+=======
 	struct rfcomm_conninfo cinfo;
 	struct l2cap_conn *conn = l2cap_pi(sk)->chan->conn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int len, err = 0;
 	u32 opt;
 
@@ -817,7 +854,11 @@ static int rfcomm_sock_getsockopt_old(struct socket *sock, int optname, char __u
 <<<<<<< HEAD
 		case BT_SECURITY_VERY_HIGH:
 =======
+<<<<<<< HEAD
+		case BT_SECURITY_VERY_HIGH:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			opt = RFCOMM_LM_AUTH | RFCOMM_LM_ENCRYPT |
 							RFCOMM_LM_SECURE;
 			break;
@@ -841,16 +882,22 @@ static int rfcomm_sock_getsockopt_old(struct socket *sock, int optname, char __u
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		l2cap_sk = rfcomm_pi(sk)->dlc->session->sock->sk;
 
 		cinfo.hci_handle = l2cap_pi(l2cap_sk)->conn->hcon->handle;
 		memcpy(cinfo.dev_class, l2cap_pi(l2cap_sk)->conn->hcon->dev_class, 3);
+<<<<<<< HEAD
+=======
 =======
 
 		memset(&cinfo, 0, sizeof(cinfo));
 		cinfo.hci_handle = conn->hcon->handle;
 		memcpy(cinfo.dev_class, conn->hcon->dev_class, 3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		len = min_t(unsigned int, len, sizeof(cinfo));
 		if (copy_to_user(optval, (char *) &cinfo, len))

@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <asm/tlbmisc.h>
 =======
+<<<<<<< HEAD
+#include <asm/tlbmisc.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void build_tlb_refill_handler(void);
 
@@ -125,6 +129,9 @@ void local_flush_tlb_range(struct vm_area_struct *vma, unsigned long start,
 	if (cpu_context(cpu, mm) != 0) {
 		unsigned long size, flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int huge = is_vm_hugetlb_page(vma);
 
 		ENTER_CRITICAL(flags);
@@ -137,34 +144,46 @@ void local_flush_tlb_range(struct vm_area_struct *vma, unsigned long start,
 			end = round_up(end, PAGE_SIZE << 1);
 			size = (end - start) >> (PAGE_SHIFT + 1);
 		}
+<<<<<<< HEAD
+=======
 =======
 
 		ENTER_CRITICAL(flags);
 		size = (end - start + (PAGE_SIZE - 1)) >> PAGE_SHIFT;
 		size = (size + 1) >> 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (size <= current_cpu_data.tlbsize/2) {
 			int oldpid = read_c0_entryhi();
 			int newpid = cpu_asid(cpu, mm);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			start &= (PAGE_MASK << 1);
 			end += ((PAGE_SIZE << 1) - 1);
 			end &= (PAGE_MASK << 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			while (start < end) {
 				int idx;
 
 				write_c0_entryhi(start | newpid);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (huge)
 					start += HPAGE_SIZE;
 				else
 					start += (PAGE_SIZE << 1);
+<<<<<<< HEAD
+=======
 =======
 				start += (PAGE_SIZE << 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				mtc0_tlbw_hazard();
 				tlb_probe();
 				tlb_probe_hazard();
@@ -370,9 +389,14 @@ void __update_tlb(struct vm_area_struct * vma, unsigned long address, pte_t pte)
 void add_wired_entry(unsigned long entrylo0, unsigned long entrylo1,
 		     unsigned long entryhi, unsigned long pagemask)
 =======
+<<<<<<< HEAD
+void add_wired_entry(unsigned long entrylo0, unsigned long entrylo1,
+		     unsigned long entryhi, unsigned long pagemask)
+=======
 void __init add_wired_entry(unsigned long entrylo0, unsigned long entrylo1,
 	unsigned long entryhi, unsigned long pagemask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 	unsigned long wired;
@@ -402,6 +426,8 @@ void __init add_wired_entry(unsigned long entrylo0, unsigned long entrylo1,
 	EXIT_CRITICAL(flags);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -450,6 +476,7 @@ out:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __cpuinitdata ntlb;
 static int __init set_ntlb(char *str)
 {
@@ -489,9 +516,12 @@ void __cpuinit tlb_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	temp_tlb_entry = current_cpu_data.tlbsize - 1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         /* From this point on the ARC firmware is dead.  */
 	local_flush_tlb_all();
 

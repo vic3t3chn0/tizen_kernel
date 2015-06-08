@@ -39,6 +39,8 @@ void *module_alloc(unsigned long size)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void module_free(struct module *module, void *region)
 {
 	vfree(region);
@@ -53,6 +55,7 @@ int module_frob_arch_sections(Elf_Ehdr *hdr,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 apply_relocate(Elf32_Shdr *sechdrs, const char *strtab, unsigned int symindex,
 	       unsigned int relindex, struct module *module)
@@ -133,6 +136,8 @@ apply_relocate(Elf32_Shdr *sechdrs, const char *strtab, unsigned int symindex,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 int
 apply_relocate_add(Elf32_Shdr *sechdrs, const char *strtab,
@@ -156,3 +161,4 @@ module_arch_cleanup(struct module *mod)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

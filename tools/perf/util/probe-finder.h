@@ -7,8 +7,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define MAX_PATH_LEN		 256
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAX_PROBE_BUFFER	1024
 #define MAX_PROBES		 128
 
@@ -20,6 +23,9 @@ static inline int is_c_varname(const char *name)
 
 #ifdef DWARF_SUPPORT
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "dwarf-aux.h"
 
@@ -56,6 +62,8 @@ extern int debuginfo__find_available_vars_at(struct debuginfo *self,
 					     struct perf_probe_event *pev,
 					     struct variable_list **vls,
 					     int max_points, bool externs);
+<<<<<<< HEAD
+=======
 =======
 /* Find probe_trace_events specified by perf_probe_event from debuginfo */
 extern int find_probe_trace_events(int fd, struct perf_probe_event *pev,
@@ -79,6 +87,7 @@ extern int find_available_vars_at(int fd, struct perf_probe_event *pev,
 #include <elfutils/libdwfl.h>
 #include <elfutils/version.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct probe_finder {
 	struct perf_probe_event	*pev;		/* Target probe event */
@@ -87,8 +96,12 @@ struct probe_finder {
 <<<<<<< HEAD
 	int (*callback)(Dwarf_Die *sc_die, struct probe_finder *pf);
 =======
+<<<<<<< HEAD
+	int (*callback)(Dwarf_Die *sc_die, struct probe_finder *pf);
+=======
 	int (*callback)(Dwarf_Die *sp_die, struct probe_finder *pf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* For function searching */
 	int			lno;		/* Line number */

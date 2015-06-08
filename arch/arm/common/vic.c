@@ -20,6 +20,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/init.h>
 #include <linux/list.h>
@@ -28,26 +31,35 @@
 #include <linux/of.h>
 #include <linux/of_address.h>
 #include <linux/of_irq.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/init.h>
 #include <linux/list.h>
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/syscore_ops.h>
 #include <linux/device.h>
 #include <linux/amba/bus.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/exception.h>
 #include <asm/mach/irq.h>
 #include <asm/hardware/vic.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/mach/irq.h>
 #include <asm/hardware/vic.h>
 
 #ifdef CONFIG_PM
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct vic_device - VIC PM device
  * @irq: The IRQ number for the base of the VIC.
@@ -61,7 +73,11 @@
 <<<<<<< HEAD
  * @domain: The IRQ domain for the VIC.
 =======
+<<<<<<< HEAD
+ * @domain: The IRQ domain for the VIC.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct vic_device {
 	void __iomem	*base;
@@ -75,7 +91,11 @@ struct vic_device {
 <<<<<<< HEAD
 	struct irq_domain *domain;
 =======
+<<<<<<< HEAD
+	struct irq_domain *domain;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* we cannot allocate memory when VICs are initially registered */
@@ -84,8 +104,11 @@ static struct vic_device vic_devices[CONFIG_ARM_VIC_NR];
 static int vic_id;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* CONFIG_PM */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * vic_init2 - common initialisation code
@@ -186,6 +209,9 @@ static int __init vic_pm_init(void)
 }
 late_initcall(vic_pm_init);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PM */
 
 /**
@@ -194,6 +220,8 @@ late_initcall(vic_pm_init);
  * @irq: The base IRQ for the VIC.
  * @resume_sources: bitmask of interrupts allowed for resume sources.
  * @node: The device tree node associated with the VIC.
+<<<<<<< HEAD
+=======
 =======
 
 /**
@@ -202,11 +230,15 @@ late_initcall(vic_pm_init);
  * @irq: The base IRQ for the VIC.
  * @resume_sources: bitmask of interrupts allowed for resume sources.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Register the VIC with the system device tree so that it can be notified
  * of suspend and resume requests and ensure that the correct actions are
  * taken to re-instate the settings on resume.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This also configures the IRQ domain for the VIC.
  */
@@ -228,6 +260,8 @@ static void __init vic_register(void __iomem *base, unsigned int irq,
 	v->domain = irq_domain_add_legacy(node, 32, irq, 0,
 					  &irq_domain_simple_ops, v);
 }
+<<<<<<< HEAD
+=======
 =======
  */
 static void __init vic_pm_register(void __iomem *base, unsigned int irq, u32 resume_sources)
@@ -248,6 +282,7 @@ static void __init vic_pm_register(void __iomem *base, unsigned int irq, u32 res
 static inline void vic_pm_register(void __iomem *base, unsigned int irq, u32 arg1) { }
 #endif /* CONFIG_PM */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void vic_ack_irq(struct irq_data *d)
 {
@@ -255,8 +290,12 @@ static void vic_ack_irq(struct irq_data *d)
 <<<<<<< HEAD
 	unsigned int irq = d->hwirq;
 =======
+<<<<<<< HEAD
+	unsigned int irq = d->hwirq;
+=======
 	unsigned int irq = d->irq & 31;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(1 << irq, base + VIC_INT_ENABLE_CLEAR);
 	/* moreover, clear the soft-triggered, in case it was the reason */
 	writel(1 << irq, base + VIC_INT_SOFT_CLEAR);
@@ -268,8 +307,12 @@ static void vic_mask_irq(struct irq_data *d)
 <<<<<<< HEAD
 	unsigned int irq = d->hwirq;
 =======
+<<<<<<< HEAD
+	unsigned int irq = d->hwirq;
+=======
 	unsigned int irq = d->irq & 31;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(1 << irq, base + VIC_INT_ENABLE_CLEAR);
 }
 
@@ -279,8 +322,12 @@ static void vic_unmask_irq(struct irq_data *d)
 <<<<<<< HEAD
 	unsigned int irq = d->hwirq;
 =======
+<<<<<<< HEAD
+	unsigned int irq = d->hwirq;
+=======
 	unsigned int irq = d->irq & 31;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(1 << irq, base + VIC_INT_ENABLE);
 }
 
@@ -305,8 +352,12 @@ static int vic_set_wake(struct irq_data *d, unsigned int on)
 <<<<<<< HEAD
 	unsigned int off = d->hwirq;
 =======
+<<<<<<< HEAD
+	unsigned int off = d->hwirq;
+=======
 	unsigned int off = d->irq & 31;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 bit = 1 << off;
 
 	if (!v)
@@ -341,8 +392,11 @@ static void __init vic_disable(void __iomem *base)
 	writel(~0, base + VIC_INT_ENABLE_CLEAR);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	writel(0, base + VIC_IRQ_STATUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(0, base + VIC_ITCR);
 	writel(~0, base + VIC_INT_SOFT_CLEAR);
 }
@@ -388,8 +442,12 @@ static void __init vic_init_st(void __iomem *base, unsigned int irq_start,
 <<<<<<< HEAD
 			       u32 vic_sources, struct device_node *node)
 =======
+<<<<<<< HEAD
+			       u32 vic_sources, struct device_node *node)
+=======
 				u32 vic_sources)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int i;
 	int vic_2nd_block = ((unsigned long)base & ~PAGE_MASK) != 0;
@@ -417,12 +475,17 @@ static void __init vic_init_st(void __iomem *base, unsigned int irq_start,
 
 	vic_set_irq_sources(base, irq_start, vic_sources);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vic_register(base, irq_start, 0, node);
 }
 
 void __init __vic_init(void __iomem *base, unsigned int irq_start,
 			      u32 vic_sources, u32 resume_sources,
 			      struct device_node *node)
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -436,6 +499,7 @@ void __init __vic_init(void __iomem *base, unsigned int irq_start,
 void __init vic_init(void __iomem *base, unsigned int irq_start,
 		     u32 vic_sources, u32 resume_sources)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int i;
 	u32 cellid = 0;
@@ -447,8 +511,13 @@ void __init vic_init(void __iomem *base, unsigned int irq_start,
 		void __iomem *addr;
 		addr = (void __iomem *)((u32)base & PAGE_MASK) + 0xfe0 + (i * 4);
 =======
+<<<<<<< HEAD
+		void __iomem *addr;
+		addr = (void __iomem *)((u32)base & PAGE_MASK) + 0xfe0 + (i * 4);
+=======
 		u32 addr = ((u32)base & PAGE_MASK) + 0xfe0 + (i * 4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cellid |= (readl(addr) & 0xff) << (8 * i);
 	}
 	vendor = (cellid >> 12) & 0xff;
@@ -460,8 +529,12 @@ void __init vic_init(void __iomem *base, unsigned int irq_start,
 <<<<<<< HEAD
 		vic_init_st(base, irq_start, vic_sources, node);
 =======
+<<<<<<< HEAD
+		vic_init_st(base, irq_start, vic_sources, node);
+=======
 		vic_init_st(base, irq_start, vic_sources);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	default:
 		printk(KERN_WARNING "VIC: unknown vendor, continuing anyways\n");
@@ -481,6 +554,9 @@ void __init vic_init(void __iomem *base, unsigned int irq_start,
 	vic_set_irq_sources(base, irq_start, vic_sources);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vic_register(base, irq_start, resume_sources, node);
 }
 
@@ -557,7 +633,10 @@ asmlinkage void __exception_irq_entry vic_handle_irq(struct pt_regs *regs)
 		for (i = 0, handled = 0; i < vic_id; ++i)
 			handled |= handle_one_vic(&vic_devices[i], regs);
 	} while (handled);
+<<<<<<< HEAD
+=======
 =======
 	vic_pm_register(base, irq_start, resume_sources);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

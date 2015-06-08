@@ -512,8 +512,12 @@ static inline int xfs_sb_version_hasprojid32bit(xfs_sb_t *sbp)
 <<<<<<< HEAD
 #define XFS_BUF_TO_SBP(bp)	((xfs_dsb_t *)((bp)->b_addr))
 =======
+<<<<<<< HEAD
+#define XFS_BUF_TO_SBP(bp)	((xfs_dsb_t *)((bp)->b_addr))
+=======
 #define XFS_BUF_TO_SBP(bp)	((xfs_dsb_t *)XFS_BUF_PTR(bp))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define	XFS_HDR_BLOCK(mp,d)	((xfs_agblock_t)XFS_BB_TO_FSBT(mp,d))
 #define	XFS_DADDR_TO_FSB(mp,d)	XFS_AGB_TO_FSB(mp, \
@@ -535,8 +539,11 @@ static inline int xfs_sb_version_hasprojid32bit(xfs_sb_t *sbp)
 #define	XFS_BB_TO_FSBT(mp,bb)	((bb) >> (mp)->m_blkbb_log)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define	XFS_BB_FSB_OFFSET(mp,bb) ((bb) & ((mp)->m_bsize - 1))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * File system block to byte conversions.

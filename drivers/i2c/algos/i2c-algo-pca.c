@@ -15,7 +15,16 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ *  MA 02110-1301 USA.
+=======
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -196,7 +205,15 @@ static int pca_xfer(struct i2c_adapter *i2c_adap,
 		} else {
 			dev_dbg(&i2c_adap->dev, "bus is not idle. status is "
 				"%#04x\n", state);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			return -EBUSY;
+=======
 			return -EAGAIN;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			return -EAGAIN;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -224,7 +241,15 @@ static int pca_xfer(struct i2c_adapter *i2c_adap,
 	}
 
 	curmsg = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = -EIO;
+=======
 	ret = -EREMOTEIO;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = -EREMOTEIO;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (curmsg < num) {
 		state = pca_status(adap);
 
@@ -259,6 +284,13 @@ static int pca_xfer(struct i2c_adapter *i2c_adap,
 		case 0x20: /* SLA+W has been transmitted; NOT ACK has been received */
 			DEB2("NOT ACK received after SLA+W\n");
 			pca_stop(adap);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ret = -ENXIO;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out;
 
 		case 0x40: /* SLA+R has been transmitted; ACK has been received */
@@ -283,6 +315,13 @@ static int pca_xfer(struct i2c_adapter *i2c_adap,
 		case 0x48: /* SLA+R has been transmitted; NOT ACK has been received */
 			DEB2("NOT ACK received after SLA+R\n");
 			pca_stop(adap);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ret = -ENXIO;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out;
 
 		case 0x30: /* Data byte in I2CDAT has been transmitted; NOT ACK has been received */

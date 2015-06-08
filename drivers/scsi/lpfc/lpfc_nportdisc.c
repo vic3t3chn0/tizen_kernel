@@ -1,7 +1,15 @@
  /*******************************************************************
  * This file is part of the Emulex Linux Device Driver for         *
  * Fibre Channel Host Bus Adapters.                                *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2004-2012 Emulex.  All rights reserved.           *
+=======
  * Copyright (C) 2004-2009 Emulex.  All rights reserved.           *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2004-2009 Emulex.  All rights reserved.           *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * EMULEX and SLI are trademarks of Emulex.                        *
  * www.emulex.com                                                  *
  * Portions Copyright (C) 2004-2005 Christoph Hellwig              *
@@ -48,6 +56,16 @@ static int
 lpfc_check_adisc(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 		 struct lpfc_name *nn, struct lpfc_name *pn)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* First, we MUST have a RPI registered */
+	if (!(ndlp->nlp_flag & NLP_RPI_REGISTERED))
+		return 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Compare the ADISC rsp WWNN / WWPN matches our internal node
 	 * table entry for that node.
 	 */
@@ -385,6 +403,16 @@ lpfc_rcv_plogi(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 	if (!mbox)
 		goto out;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Registering an existing RPI behaves differently for SLI3 vs SLI4 */
+	if (phba->sli_rev == LPFC_SLI_REV4)
+		lpfc_unreg_rpi(vport, ndlp);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = lpfc_reg_rpi(phba, vport->vpi, icmd->un.rcvels.remoteID,
 			    (uint8_t *) sp, mbox, ndlp->nlp_rpi);
 	if (rc) {
@@ -432,11 +460,29 @@ lpfc_rcv_plogi(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 		spin_unlock_irq(shost->host_lock);
 		stat.un.b.lsRjtRsnCode = LSRJT_INVALID_CMD;
 		stat.un.b.lsRjtRsnCodeExp = LSEXP_NOTHING_MORE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rc = lpfc_els_rsp_reject(vport, stat.un.lsRjtError, cmdiocb,
+			ndlp, mbox);
+		if (rc)
+			mempool_free(mbox, phba->mbox_mem_pool);
+		return 1;
+	}
+	rc = lpfc_els_rsp_acc(vport, ELS_CMD_PLOGI, cmdiocb, ndlp, mbox);
+	if (rc)
+		mempool_free(mbox, phba->mbox_mem_pool);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		lpfc_els_rsp_reject(vport, stat.un.lsRjtError, cmdiocb,
 			ndlp, mbox);
 		return 1;
 	}
 	lpfc_els_rsp_acc(vport, ELS_CMD_PLOGI, cmdiocb, ndlp, mbox);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 out:
 	stat.un.b.lsRjtRsnCode = LSRJT_UNABLE_TPC;
@@ -445,11 +491,55 @@ out:
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * lpfc_mbx_cmpl_resume_rpi - Resume RPI completion routine
+ * @phba: pointer to lpfc hba data structure.
+ * @mboxq: pointer to mailbox object
+ *
+ * This routine is invoked to issue a completion to a rcv'ed
+ * ADISC or PDISC after the paused RPI has been resumed.
+ **/
+static void
+lpfc_mbx_cmpl_resume_rpi(struct lpfc_hba *phba, LPFC_MBOXQ_t *mboxq)
+{
+	struct lpfc_vport *vport;
+	struct lpfc_iocbq *elsiocb;
+	struct lpfc_nodelist *ndlp;
+	uint32_t cmd;
+
+	elsiocb = (struct lpfc_iocbq *)mboxq->context1;
+	ndlp = (struct lpfc_nodelist *) mboxq->context2;
+	vport = mboxq->vport;
+	cmd = elsiocb->drvrTimeout;
+
+	if (cmd == ELS_CMD_ADISC) {
+		lpfc_els_rsp_adisc_acc(vport, elsiocb, ndlp);
+	} else {
+		lpfc_els_rsp_acc(vport, ELS_CMD_PLOGI, elsiocb,
+			ndlp, NULL);
+	}
+	kfree(elsiocb);
+	mempool_free(mboxq, phba->mbox_mem_pool);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 lpfc_rcv_padisc(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 		struct lpfc_iocbq *cmdiocb)
 {
 	struct Scsi_Host   *shost = lpfc_shost_from_vport(vport);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct lpfc_iocbq  *elsiocb;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct lpfc_dmabuf *pcmd;
 	struct serv_parm   *sp;
 	struct lpfc_name   *pnn, *ppn;
@@ -475,12 +565,58 @@ lpfc_rcv_padisc(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 
 	icmd = &cmdiocb->iocb;
 	if (icmd->ulpStatus == 0 && lpfc_check_adisc(vport, ndlp, pnn, ppn)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		/*
+		 * As soon as  we send ACC, the remote NPort can
+		 * start sending us data. Thus, for SLI4 we must
+		 * resume the RPI before the ACC goes out.
+		 */
+		if (vport->phba->sli_rev == LPFC_SLI_REV4) {
+			elsiocb = kmalloc(sizeof(struct lpfc_iocbq),
+				GFP_KERNEL);
+			if (elsiocb) {
+
+				/* Save info from cmd IOCB used in rsp */
+				memcpy((uint8_t *)elsiocb, (uint8_t *)cmdiocb,
+					sizeof(struct lpfc_iocbq));
+
+				/* Save the ELS cmd */
+				elsiocb->drvrTimeout = cmd;
+
+				lpfc_sli4_resume_rpi(ndlp,
+					lpfc_mbx_cmpl_resume_rpi, elsiocb);
+				goto out;
+			}
+		}
+
+		if (cmd == ELS_CMD_ADISC) {
+			lpfc_els_rsp_adisc_acc(vport, cmdiocb, ndlp);
+		} else {
+			lpfc_els_rsp_acc(vport, ELS_CMD_PLOGI, cmdiocb,
+				ndlp, NULL);
+		}
+out:
+		/* If we are authenticated, move to the proper state */
+		if (ndlp->nlp_type & NLP_FCP_TARGET)
+			lpfc_nlp_set_state(vport, ndlp, NLP_STE_MAPPED_NODE);
+		else
+			lpfc_nlp_set_state(vport, ndlp, NLP_STE_UNMAPPED_NODE);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (cmd == ELS_CMD_ADISC) {
 			lpfc_els_rsp_adisc_acc(vport, cmdiocb, ndlp);
 		} else {
 			lpfc_els_rsp_acc(vport, ELS_CMD_PLOGI, cmdiocb, ndlp,
 					 NULL);
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 	}
 	/* Reject this request because invalid parameters */
@@ -783,6 +919,20 @@ lpfc_device_rm_unused_node(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 }
 
 static uint32_t
+<<<<<<< HEAD
+<<<<<<< HEAD
+lpfc_device_recov_unused_node(struct lpfc_vport *vport,
+			struct lpfc_nodelist *ndlp,
+			   void *arg, uint32_t evt)
+{
+	return ndlp->nlp_state;
+}
+
+static uint32_t
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 lpfc_rcv_plogi_plogi_issue(struct lpfc_vport *vport, struct lpfc_nodelist *ndlp,
 			   void *arg, uint32_t evt)
 {
@@ -1221,7 +1371,15 @@ lpfc_cmpl_adisc_adisc_issue(struct lpfc_vport *vport,
 	}
 
 	if (phba->sli_rev == LPFC_SLI_REV4) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rc = lpfc_sli4_resume_rpi(ndlp, NULL, NULL);
+=======
 		rc = lpfc_sli4_resume_rpi(ndlp);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rc = lpfc_sli4_resume_rpi(ndlp);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc) {
 			/* Stay in state and retry. */
 			ndlp->nlp_prev_state = NLP_STE_ADISC_ISSUE;
@@ -2147,7 +2305,15 @@ static uint32_t (*lpfc_disc_action[NLP_STE_MAX_STATE * NLP_EVT_MAX_EVENT])
 	lpfc_disc_illegal,		/* CMPL_ADISC      */
 	lpfc_disc_illegal,		/* CMPL_REG_LOGIN  */
 	lpfc_device_rm_unused_node,	/* DEVICE_RM       */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	lpfc_device_recov_unused_node,	/* DEVICE_RECOVERY */
+=======
 	lpfc_disc_illegal,		/* DEVICE_RECOVERY */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	lpfc_disc_illegal,		/* DEVICE_RECOVERY */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lpfc_rcv_plogi_plogi_issue,	/* RCV_PLOGI   PLOGI_ISSUE    */
 	lpfc_rcv_prli_plogi_issue,	/* RCV_PRLI        */

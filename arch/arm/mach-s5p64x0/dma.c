@@ -22,20 +22,29 @@
 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 #include <linux/amba/bus.h>
 #include <linux/amba/pl330.h>
 
 #include <asm/irq.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/platform_device.h>
 #include <linux/dma-mapping.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/map.h>
 #include <mach/irqs.h>
 #include <mach/regs-clock.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/dma.h>
 
 #include <plat/cpu.h>
@@ -130,6 +139,8 @@ static int __init s5p64x0_dma_init(void)
 	}
 
 	amba_device_register(&s5p64x0_pdma_device, &iomem_resource);
+<<<<<<< HEAD
+=======
 =======
 
 #include <plat/devs.h>
@@ -248,6 +259,7 @@ static int __init s5p64x0_dma_init(void)
 
 	platform_device_register(&s5p64x0_device_pdma);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

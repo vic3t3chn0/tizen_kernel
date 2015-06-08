@@ -23,6 +23,8 @@ void ep93xx_init_irq(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* EP93xx System Controller software locked register write */
 void ep93xx_syscon_swlocked_write(unsigned int val, void __iomem *reg);
 void ep93xx_devcfg_set_clear(unsigned int set_bits, unsigned int clear_bits);
@@ -38,6 +40,7 @@ static inline void ep93xx_devcfg_clear_bits(unsigned int bits)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EP93XX_CHIP_REV_D0	3
 #define EP93XX_CHIP_REV_D1	4
 #define EP93XX_CHIP_REV_E0	5
@@ -65,8 +68,12 @@ void ep93xx_register_i2s(void);
 <<<<<<< HEAD
 int ep93xx_i2s_acquire(void);
 =======
+<<<<<<< HEAD
+int ep93xx_i2s_acquire(void);
+=======
 int ep93xx_i2s_acquire(unsigned i2s_pins, unsigned i2s_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ep93xx_i2s_release(void);
 void ep93xx_register_ac97(void);
 
@@ -77,5 +84,10 @@ extern struct sys_timer ep93xx_timer;
 void ep93xx_restart(char, const char *);
 
 =======
+<<<<<<< HEAD
+void ep93xx_restart(char, const char *);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

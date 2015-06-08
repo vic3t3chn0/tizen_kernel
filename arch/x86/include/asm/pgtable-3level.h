@@ -33,6 +33,8 @@ static inline void native_set_pte(pte_t *ptep, pte_t pte)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define pmd_read_atomic pmd_read_atomic
 /*
  * pte_offset_map_lock on 32bit PAE kernels was reading the pmd_t with
@@ -84,6 +86,7 @@ static inline pmd_t pmd_read_atomic(pmd_t *pmdp)
 #endif /* CONFIG_TRANSPARENT_HUGEPAGE */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void native_set_pte_atomic(pte_t *ptep, pte_t pte)
 {
 	set_64bit((unsigned long long *)(ptep), native_pte_val(pte));

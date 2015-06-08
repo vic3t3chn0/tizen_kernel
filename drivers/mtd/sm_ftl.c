@@ -25,7 +25,15 @@
 struct workqueue_struct *cache_flush_workqueue;
 
 static int cache_timeout = 1000;
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_param(cache_timeout, int, S_IRUGO);
+=======
 module_param(cache_timeout, bool, S_IRUGO);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+module_param(cache_timeout, bool, S_IRUGO);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(cache_timeout,
 	"Timeout (in ms) for cache flush (1000 ms default");
 
@@ -34,7 +42,15 @@ module_param(debug, int, S_IRUGO | S_IWUSR);
 MODULE_PARM_DESC(debug, "Debug level (0-2)");
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* ------------------- sysfs attributes ---------------------------------- */
+=======
 /* ------------------- sysfs attributtes ---------------------------------- */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* ------------------- sysfs attributtes ---------------------------------- */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sm_sysfs_attribute {
 	struct device_attribute dev_attr;
 	char *data;
@@ -138,7 +154,15 @@ static int sm_get_lba(uint8_t *lba)
 	if ((lba[0] & 0xF8) != 0x10)
 		return -2;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* check parity - endianness doesn't matter */
+=======
 	/* check parity - endianess doesn't matter */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* check parity - endianess doesn't matter */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hweight16(*(uint16_t *)lba) & 1)
 		return -2;
 
@@ -147,7 +171,15 @@ static int sm_get_lba(uint8_t *lba)
 
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Read LBA associated with block
+=======
  * Read LBA asscociated with block
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Read LBA asscociated with block
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * returns -1, if block is erased
  * returns -2 if error happens
  */
@@ -252,11 +284,25 @@ static int sm_read_sector(struct sm_ftl *ftl,
 		return 0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* User might not need the oob, but we do for data verification */
+	if (!oob)
+		oob = &tmp_oob;
+
+	ops.mode = ftl->smallpagenand ? MTD_OPS_RAW : MTD_OPS_PLACE_OOB;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* User might not need the oob, but we do for data vertification */
 	if (!oob)
 		oob = &tmp_oob;
 
 	ops.mode = ftl->smallpagenand ? MTD_OOB_RAW : MTD_OOB_PLACE;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.ooboffs = 0;
 	ops.ooblen = SM_OOB_SIZE;
 	ops.oobbuf = (void *)oob;
@@ -276,12 +322,27 @@ again:
 			return ret;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Unfortunately, oob read will _always_ succeed,
+		despite card removal..... */
+	ret = mtd_read_oob(mtd, sm_mkoffset(ftl, zone, block, boffset), &ops);
+
+	/* Test for unknown errors */
+	if (ret != 0 && !mtd_is_bitflip_or_eccerr(ret)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Unfortunelly, oob read will _always_ succeed,
 		despite card removal..... */
 	ret = mtd->read_oob(mtd, sm_mkoffset(ftl, zone, block, boffset), &ops);
 
 	/* Test for unknown errors */
 	if (ret != 0 && ret != -EUCLEAN && ret != -EBADMSG) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dbg("read of block %d at zone %d, failed due to error (%d)",
 			block, zone, ret);
 		goto again;
@@ -306,7 +367,15 @@ again:
 	}
 
 	/* Test ECC*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (mtd_is_eccerr(ret) ||
+=======
 	if (ret == -EBADMSG ||
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ret == -EBADMSG ||
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(ftl->smallpagenand && sm_correct_sector(buffer, oob))) {
 
 		dbg("read of block %d at zone %d, failed due to ECC error",
@@ -336,14 +405,30 @@ static int sm_write_sector(struct sm_ftl *ftl,
 	if (ftl->unstable)
 		return -EIO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops.mode = ftl->smallpagenand ? MTD_OPS_RAW : MTD_OPS_PLACE_OOB;
+=======
 	ops.mode = ftl->smallpagenand ? MTD_OOB_RAW : MTD_OOB_PLACE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ops.mode = ftl->smallpagenand ? MTD_OOB_RAW : MTD_OOB_PLACE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.len = SM_SECTOR_SIZE;
 	ops.datbuf = buffer;
 	ops.ooboffs = 0;
 	ops.ooblen = SM_OOB_SIZE;
 	ops.oobbuf = (void *)oob;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = mtd_write_oob(mtd, sm_mkoffset(ftl, zone, block, boffset), &ops);
+=======
 	ret = mtd->write_oob(mtd, sm_mkoffset(ftl, zone, block, boffset), &ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = mtd->write_oob(mtd, sm_mkoffset(ftl, zone, block, boffset), &ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Now we assume that hardware will catch write bitflip errors */
 	/* If you are paranoid, use CONFIG_MTD_NAND_VERIFY_WRITE */
@@ -447,14 +532,30 @@ static void sm_mark_block_bad(struct sm_ftl *ftl, int zone, int block)
 
 	/* We aren't checking the return value, because we don't care */
 	/* This also fails on fake xD cards, but I guess these won't expose
+<<<<<<< HEAD
+<<<<<<< HEAD
+		any bad blocks till fail completely */
+=======
 		any bad blocks till fail completly */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		any bad blocks till fail completly */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (boffset = 0; boffset < ftl->block_size; boffset += SM_SECTOR_SIZE)
 		sm_write_sector(ftl, zone, block, boffset, NULL, &oob);
 }
 
 /*
  * Erase a block within a zone
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * If erase succeeds, it updates free block fifo, otherwise marks block as bad
+=======
  * If erase succedes, it updates free block fifo, otherwise marks block as bad
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * If erase succedes, it updates free block fifo, otherwise marks block as bad
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int sm_erase_block(struct sm_ftl *ftl, int zone_num, uint16_t block,
 			  int put_free)
@@ -479,7 +580,15 @@ static int sm_erase_block(struct sm_ftl *ftl, int zone_num, uint16_t block,
 		return -EIO;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (mtd_erase(mtd, &erase)) {
+=======
 	if (mtd->erase(mtd, &erase)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (mtd->erase(mtd, &erase)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sm_printk("erase of block %d in zone %d failed",
 							block, zone_num);
 		goto error;
@@ -510,7 +619,15 @@ static void sm_erase_callback(struct erase_info *self)
 	complete(&ftl->erase_completion);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Thoroughly test that block is valid. */
+=======
 /* Throughtly test that block is valid. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Throughtly test that block is valid. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sm_check_block(struct sm_ftl *ftl, int zone, int block)
 {
 	int boffset;
@@ -526,7 +643,15 @@ static int sm_check_block(struct sm_ftl *ftl, int zone, int block)
 	for (boffset = 0; boffset < ftl->block_size;
 					boffset += SM_SECTOR_SIZE) {
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* This shouldn't happen anyway */
+=======
 		/* This shoudn't happen anyway */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* This shoudn't happen anyway */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sm_read_sector(ftl, zone, block, boffset, NULL, &oob))
 			return -2;
 
@@ -645,8 +770,18 @@ int sm_get_media_info(struct sm_ftl *ftl, struct mtd_info *mtd)
 	if (!ftl->smallpagenand && mtd->oobsize < SM_OOB_SIZE)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* We use OOB */
+	if (!mtd_has_oob(mtd))
+=======
 	/* We use these functions for IO */
 	if (!mtd->read_oob || !mtd->write_oob)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* We use these functions for IO */
+	if (!mtd->read_oob || !mtd->write_oob)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	/* Find geometry information */

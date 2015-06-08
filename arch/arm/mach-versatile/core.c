@@ -23,14 +23,20 @@
 #include <linux/dma-mapping.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/irqdomain.h>
 #include <linux/of_address.h>
 #include <linux/of_platform.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/sysdev.h>
 #include <linux/interrupt.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/amba/bus.h>
 #include <linux/amba/clcd.h>
 #include <linux/amba/pl061.h>
@@ -43,8 +49,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <asm/leds.h>
 #include <asm/hardware/arm_timer.h>
@@ -94,6 +103,9 @@ static struct fpga_irq_data sic_irq = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Lookup table for finding a DT node that represents the vic instance */
 static const struct of_device_id vic_of_match[] __initconst = {
 	{ .compatible = "arm,versatile-vic", },
@@ -112,11 +124,14 @@ void __init versatile_init_irq(void)
 	np = of_find_matching_node_by_address(NULL, vic_of_match,
 					      VERSATILE_VIC_BASE);
 	__vic_init(VA_VIC_BASE, IRQ_VIC_START, ~0, 0, np);
+<<<<<<< HEAD
+=======
 =======
 void __init versatile_init_irq(void)
 {
 	vic_init(VA_VIC_BASE, IRQ_VIC_START, ~0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	writel(~0, VA_SIC_BASE + SIC_IRQ_ENABLE_CLEAR);
 
@@ -124,7 +139,11 @@ void __init versatile_init_irq(void)
 <<<<<<< HEAD
 	irq_domain_generate_simple(sic_of_match, VERSATILE_SIC_BASE, IRQ_SIC_START);
 =======
+<<<<<<< HEAD
+	irq_domain_generate_simple(sic_of_match, VERSATILE_SIC_BASE, IRQ_SIC_START);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Interrupts on secondary controller from 0 to 8 are routed to
@@ -162,12 +181,15 @@ static struct map_desc versatile_io_desc[] __initdata = {
  	{
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.virtual	=  IO_ADDRESS(VERSATILE_GPIO0_BASE),
 		.pfn		= __phys_to_pfn(VERSATILE_GPIO0_BASE),
 		.length		= SZ_4K,
 		.type		= MT_DEVICE
 	}, {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.virtual	=  IO_ADDRESS(VERSATILE_IB2_BASE),
 		.pfn		= __phys_to_pfn(VERSATILE_IB2_BASE),
 		.length		= SZ_64M,
@@ -611,41 +633,58 @@ static struct pl022_ssp_controller ssp0_plat_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AACI_IRQ	{ IRQ_AACI }
 #define MMCI0_IRQ	{ IRQ_MMCI0A,IRQ_SIC_MMCI0B }
 #define KMI0_IRQ	{ IRQ_SIC_KMI0 }
 #define KMI1_IRQ	{ IRQ_SIC_KMI1 }
+<<<<<<< HEAD
+=======
 =======
 #define AACI_IRQ	{ IRQ_AACI, NO_IRQ }
 #define MMCI0_IRQ	{ IRQ_MMCI0A,IRQ_SIC_MMCI0B }
 #define KMI0_IRQ	{ IRQ_SIC_KMI0, NO_IRQ }
 #define KMI1_IRQ	{ IRQ_SIC_KMI1, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These devices are connected directly to the multi-layer AHB switch
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SMC_IRQ		{ }
 #define MPMC_IRQ	{ }
 #define CLCD_IRQ	{ IRQ_CLCDINT }
 #define DMAC_IRQ	{ IRQ_DMAINT }
+<<<<<<< HEAD
+=======
 =======
 #define SMC_IRQ		{ NO_IRQ, NO_IRQ }
 #define MPMC_IRQ	{ NO_IRQ, NO_IRQ }
 #define CLCD_IRQ	{ IRQ_CLCDINT, NO_IRQ }
 #define DMAC_IRQ	{ IRQ_DMAINT, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These devices are connected via the core APB bridge
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCTL_IRQ	{ }
 #define WATCHDOG_IRQ	{ IRQ_WDOGINT }
 #define GPIO0_IRQ	{ IRQ_GPIOINT0 }
 #define GPIO1_IRQ	{ IRQ_GPIOINT1 }
 #define RTC_IRQ		{ IRQ_RTCINT }
+<<<<<<< HEAD
+=======
 =======
 #define SCTL_IRQ	{ NO_IRQ, NO_IRQ }
 #define WATCHDOG_IRQ	{ IRQ_WDOGINT, NO_IRQ }
@@ -653,11 +692,15 @@ static struct pl022_ssp_controller ssp0_plat_data = {
 #define GPIO1_IRQ	{ IRQ_GPIOINT1, NO_IRQ }
 #define RTC_IRQ		{ IRQ_RTCINT, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These devices are connected via the DMA APB bridge
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCI_IRQ		{ IRQ_SCIINT }
 #define UART0_IRQ	{ IRQ_UARTINT0 }
 #define UART1_IRQ	{ IRQ_UARTINT1 }
@@ -685,6 +728,8 @@ APB_DEVICE(uart0, "dev:f1",  UART0,    NULL);
 APB_DEVICE(uart1, "dev:f2",  UART1,    NULL);
 APB_DEVICE(uart2, "dev:f3",  UART2,    NULL);
 APB_DEVICE(ssp0,  "dev:f4",  SSP,      &ssp0_plat_data);
+<<<<<<< HEAD
+=======
 =======
 #define SCI_IRQ		{ IRQ_SCIINT, NO_IRQ }
 #define UART0_IRQ	{ IRQ_UARTINT0, NO_IRQ }
@@ -714,6 +759,7 @@ AMBA_DEVICE(uart1, "dev:f2",  UART1,    NULL);
 AMBA_DEVICE(uart2, "dev:f3",  UART2,    NULL);
 AMBA_DEVICE(ssp0,  "dev:f4",  SSP,      &ssp0_plat_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct amba_device *amba_devs[] __initdata = {
 	&dmac_device,
@@ -737,6 +783,9 @@ static struct amba_device *amba_devs[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OF
 /*
  * Lookup table for attaching a specific name and platform_data pointer to
@@ -783,8 +832,11 @@ struct of_dev_auxdata versatile_auxdata_lookup[] __initdata = {
 };
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_LEDS
 #define VA_LEDS_BASE (__io_address(VERSATILE_SYS_BASE) + VERSATILE_SYS_LED_OFFSET)
 
@@ -823,6 +875,9 @@ static void versatile_leds_event(led_event_t ledevt)
 #endif	/* CONFIG_LEDS */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void versatile_restart(char mode, const char *cmd)
 {
 	void __iomem *sys = __io_address(VERSATILE_SYS_BASE);
@@ -836,8 +891,11 @@ void versatile_restart(char mode, const char *cmd)
 	__raw_writel(0, sys + VERSATILE_SYS_LOCK_OFFSET);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Early initializations */
 void __init versatile_init_early(void)
 {

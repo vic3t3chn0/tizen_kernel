@@ -16,6 +16,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __MACH_TEGRA_TEGRA2_EMC_H_
 #define __MACH_TEGRA_TEGRA2_EMC_H
 
@@ -23,6 +26,8 @@ int tegra_emc_set_rate(unsigned long rate);
 long tegra_emc_round_rate(unsigned long rate);
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define TEGRA_EMC_NUM_REGS 46
 
@@ -35,3 +40,4 @@ int tegra_emc_set_rate(unsigned long rate);
 long tegra_emc_round_rate(unsigned long rate);
 void tegra_init_emc(const struct tegra_emc_table *table, int table_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -1,4 +1,22 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * g760a - Driver for the Global Mixed-mode Technology Inc. G760A
+ *	   fan speed PWM controller chip
+ *
+ * Copyright (C) 2007  Herbert Valerio Riedel <hvr@gnu.org>
+ *
+ * Complete datasheet is available at GMT's website:
+ * http://www.gmt.com.tw/product/datasheet/EDS-760A.pdf
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     g760a - Driver for the Global Mixed-mode Technology Inc. G760A
             fan speed PWM controller chip
 
@@ -12,6 +30,10 @@
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/module.h>
 #include <linux/init.h>
@@ -59,7 +81,16 @@ struct g760a_data {
 	u8 act_cnt; /*   formula: cnt = (CLK * 30)/(rpm * P) */
 	u8 fan_sta; /* bit 0: set when actual fan speed more than 20%
 		     *   outside requested fan speed
+<<<<<<< HEAD
+<<<<<<< HEAD
+		     * bit 1: set when fan speed below 1920 rpm
+		     */
+=======
 		     * bit 1: set when fan speed below 1920 rpm */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		     * bit 1: set when fan speed below 1920 rpm */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define G760A_DEFAULT_CLK 32768
@@ -99,7 +130,15 @@ static int g760a_write_value(struct i2c_client *client, enum g760a_regs reg,
 	return i2c_smbus_write_byte_data(client, reg, value);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+=======
 /****************************************************************************
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/****************************************************************************
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * sysfs attributes
  */
 
@@ -166,7 +205,15 @@ static ssize_t set_pwm(struct device *dev, struct device_attribute *da,
 	struct g760a_data *data = g760a_update_client(dev);
 	unsigned long val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &val))
+=======
 	if (strict_strtoul(buf, 10, &val))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &val))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	mutex_lock(&data->update_lock);
@@ -192,7 +239,15 @@ static const struct attribute_group g760a_group = {
 	.attrs = g760a_attributes,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+=======
 /****************************************************************************
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/****************************************************************************
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * new-style driver model code
  */
 
@@ -250,6 +305,12 @@ static int g760a_remove(struct i2c_client *client)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(g760a_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* module management */
 
 static int __init g760a_init(void)
@@ -261,10 +322,23 @@ static void __exit g760a_exit(void)
 {
 	i2c_del_driver(&g760a_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Herbert Valerio Riedel <hvr@gnu.org>");
 MODULE_DESCRIPTION("GMT G760A driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(g760a_init);
 module_exit(g760a_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(g760a_init);
+module_exit(g760a_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

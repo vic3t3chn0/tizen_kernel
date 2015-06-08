@@ -60,6 +60,20 @@
 #include "scu_event_codes.h"
 #include "scu_task_context.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#undef C
+#define C(a) (#a)
+const char *rnc_state_name(enum scis_sds_remote_node_context_states state)
+{
+	static const char * const strings[] = RNC_STATES;
+
+	return strings[state];
+}
+#undef C
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  *
@@ -72,6 +86,10 @@
  * changed. bool true if the state machine is not in the initial state false if
  * the state machine is in the initial state
  */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  *

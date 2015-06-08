@@ -4,7 +4,11 @@
 <<<<<<< HEAD
    Copyright (c) 2011, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+   Copyright (c) 2011, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
    Written 2000,2001 by Maxim Krasnyansky <maxk@qualcomm.com>
 
@@ -28,12 +32,15 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_BT_MGMT
 #include "sco_mgmt.h"
 #elif defined(CONFIG_BT_TIZEN)
 #include "tizen/sco.h"
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __SCO_H
 #define __SCO_H
 
@@ -45,8 +52,12 @@
 <<<<<<< HEAD
 #define SCO_DISCONN_TIMEOUT	(HZ * 20)
 =======
+<<<<<<< HEAD
+#define SCO_DISCONN_TIMEOUT	(HZ * 20)
+=======
 #define SCO_DISCONN_TIMEOUT	(HZ * 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCO_CONN_IDLE_TIMEOUT	(HZ * 60)
 
 /* SCO socket address */
@@ -57,7 +68,11 @@ struct sockaddr_sco {
 <<<<<<< HEAD
 	__s8		is_wbs;
 =======
+<<<<<<< HEAD
+	__s8		is_wbs;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* SCO socket options */
@@ -101,5 +116,8 @@ struct sco_pinfo {
 #endif /* __SCO_H */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* CONFIG_BT_MGMT */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

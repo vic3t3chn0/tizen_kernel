@@ -14,6 +14,9 @@
 
 #include <linux/interrupt.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/perf_event.h>
 
 /*
@@ -23,11 +26,14 @@
 enum arm_pmu_type {
 	ARM_PMU_DEVICE_CPU	= 0,
 	ARM_PMU_DEVICE_L2CC	= 1,
+<<<<<<< HEAD
+=======
 =======
 
 enum arm_pmu_type {
 	ARM_PMU_DEVICE_CPU	= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ARM_NUM_PMU_DEVICES,
 };
 
@@ -35,6 +41,9 @@ enum arm_pmu_type {
  * struct arm_pmu_platdata - ARM PMU platform data
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @handle_irq: an optional handler which will be called from the
  *	interrupt and passed the address of the low level handler,
  *	and can be used to implement any platform specific handling
@@ -49,16 +58,22 @@ enum arm_pmu_type {
  * @disable_irq: an optional handler which will be called before
  *	free_irq and be used to handle some platform specific
  *	irq disablement
+<<<<<<< HEAD
+=======
 =======
  * @handle_irq: an optional handler which will be called from the interrupt and
  * passed the address of the low level handler, and can be used to implement
  * any platform specific handling before or after calling it.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct arm_pmu_platdata {
 	irqreturn_t (*handle_irq)(int irq, void *dev,
 				  irq_handler_t pmu_handler);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int	(*request_pmu_irq)(int irq, irq_handler_t *irq_h);
 	void	(*free_pmu_irq)(int irq);
 	void (*enable_irq)(int irq);
@@ -69,10 +84,13 @@ extern int multicore_request_irq(int irq, irq_handler_t *handle_irq);
 extern void multicore_free_irq(int irq);
 extern struct arm_pmu_platdata multicore_data;
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CPU_HAS_PMU
 
 /**
@@ -80,10 +98,15 @@ extern struct arm_pmu_platdata multicore_data;
  *
  * Reserve the hardware performance counters in the system for exclusive use.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Returns 0 on success or -EBUSY if the lock is already held.
  */
 extern int
 reserve_pmu(enum arm_pmu_type type);
+<<<<<<< HEAD
+=======
 =======
  * The platform_device for the system is returned on success, ERR_PTR()
  * encoded error on failure.
@@ -91,11 +114,17 @@ reserve_pmu(enum arm_pmu_type type);
 extern struct platform_device *
 reserve_pmu(enum arm_pmu_type device);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * release_pmu() - Relinquish control of the performance counters
  *
  * Release the performance counters and allow someone else to use them.
+<<<<<<< HEAD
+ */
+extern void
+release_pmu(enum arm_pmu_type type);
+=======
 <<<<<<< HEAD
  */
 extern void
@@ -118,11 +147,16 @@ release_pmu(struct platform_device *pdev);
 extern int
 init_pmu(enum arm_pmu_type device);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* CONFIG_CPU_HAS_PMU */
 
 #include <linux/err.h>
 
+<<<<<<< HEAD
+static inline int
+reserve_pmu(enum arm_pmu_type type)
+=======
 <<<<<<< HEAD
 static inline int
 reserve_pmu(enum arm_pmu_type type)
@@ -136,11 +170,15 @@ reserve_pmu(enum arm_pmu_type device)
 static inline int
 release_pmu(struct platform_device *pdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -ENODEV;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void
 release_pmu(enum arm_pmu_type type)	{ }
 
@@ -215,6 +253,8 @@ int armpmu_event_set_period(struct perf_event *event,
 
 #endif /* CONFIG_HW_PERF_EVENTS */
 
+<<<<<<< HEAD
+=======
 =======
 static inline int
 init_pmu(enum arm_pmu_type device)
@@ -225,4 +265,5 @@ init_pmu(enum arm_pmu_type device)
 #endif /* CONFIG_CPU_HAS_PMU */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ARM_PMU_H__ */

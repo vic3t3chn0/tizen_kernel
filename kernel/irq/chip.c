@@ -16,6 +16,14 @@
 #include <linux/interrupt.h>
 #include <linux/kernel_stat.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <trace/events/irq.h>
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "internals.h"
 
 /**
@@ -26,7 +34,15 @@
 int irq_set_chip(unsigned int irq, struct irq_chip *chip)
 {
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags, 0);
+=======
 	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!desc)
 		return -EINVAL;
@@ -54,7 +70,15 @@ EXPORT_SYMBOL(irq_set_chip);
 int irq_set_irq_type(unsigned int irq, unsigned int type)
 {
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct irq_desc *desc = irq_get_desc_buslock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
+=======
 	struct irq_desc *desc = irq_get_desc_buslock(irq, &flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct irq_desc *desc = irq_get_desc_buslock(irq, &flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (!desc)
@@ -77,7 +101,15 @@ EXPORT_SYMBOL(irq_set_irq_type);
 int irq_set_handler_data(unsigned int irq, void *data)
 {
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags, 0);
+=======
 	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!desc)
 		return -EINVAL;
@@ -97,7 +129,15 @@ EXPORT_SYMBOL(irq_set_handler_data);
 int irq_set_msi_desc(unsigned int irq, struct msi_desc *entry)
 {
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags, IRQ_GET_DESC_CHECK_GLOBAL);
+=======
 	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!desc)
 		return -EINVAL;
@@ -118,7 +158,15 @@ int irq_set_msi_desc(unsigned int irq, struct msi_desc *entry)
 int irq_set_chip_data(unsigned int irq, void *data)
 {
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags, 0);
+=======
 	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!desc)
 		return -EINVAL;
@@ -206,6 +254,30 @@ void irq_disable(struct irq_desc *desc)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void irq_percpu_enable(struct irq_desc *desc, unsigned int cpu)
+{
+	if (desc->irq_data.chip->irq_enable)
+		desc->irq_data.chip->irq_enable(&desc->irq_data);
+	else
+		desc->irq_data.chip->irq_unmask(&desc->irq_data);
+	cpumask_set_cpu(cpu, desc->percpu_enabled);
+}
+
+void irq_percpu_disable(struct irq_desc *desc, unsigned int cpu)
+{
+	if (desc->irq_data.chip->irq_disable)
+		desc->irq_data.chip->irq_disable(&desc->irq_data);
+	else
+		desc->irq_data.chip->irq_mask(&desc->irq_data);
+	cpumask_clear_cpu(cpu, desc->percpu_enabled);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void mask_ack_irq(struct irq_desc *desc)
 {
 	if (desc->irq_data.chip->irq_mask_ack)
@@ -246,6 +318,13 @@ void handle_nested_irq(unsigned int irq)
 {
 	struct irq_desc *desc = irq_to_desc(irq);
 	struct irqaction *action;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int mask_this_irq = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irqreturn_t action_ret;
 
 	might_sleep();
@@ -255,8 +334,20 @@ void handle_nested_irq(unsigned int irq)
 	kstat_incr_irqs_this_cpu(irq, desc);
 
 	action = desc->action;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (unlikely(!action || irqd_irq_disabled(&desc->irq_data))) {
+		mask_this_irq = 1;
+		goto out_unlock;
+	}
+=======
 	if (unlikely(!action || irqd_irq_disabled(&desc->irq_data)))
 		goto out_unlock;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (unlikely(!action || irqd_irq_disabled(&desc->irq_data)))
+		goto out_unlock;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irqd_set(&desc->irq_data, IRQD_IRQ_INPROGRESS);
 	raw_spin_unlock_irq(&desc->lock);
@@ -270,6 +361,17 @@ void handle_nested_irq(unsigned int irq)
 
 out_unlock:
 	raw_spin_unlock_irq(&desc->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (unlikely(mask_this_irq)) {
+		chip_bus_lock(desc);
+		mask_irq(desc);
+		chip_bus_sync_unlock(desc);
+	}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(handle_nested_irq);
 
@@ -408,7 +510,16 @@ handle_fasteoi_irq(unsigned int irq, struct irq_desc *desc)
 	 * then mask it and get out of here:
 	 */
 	if (unlikely(!desc->action || irqd_irq_disabled(&desc->irq_data))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!irq_settings_is_level(desc))
+			desc->istate |= IRQS_PENDING;
+=======
 		desc->istate |= IRQS_PENDING;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		desc->istate |= IRQS_PENDING;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask_irq(desc);
 		goto out;
 	}
@@ -498,6 +609,13 @@ handle_edge_irq(unsigned int irq, struct irq_desc *desc)
 out_unlock:
 	raw_spin_unlock(&desc->lock);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL(handle_edge_irq);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_IRQ_EDGE_EOI_HANDLER
 /**
@@ -567,12 +685,58 @@ handle_percpu_irq(unsigned int irq, struct irq_desc *desc)
 		chip->irq_eoi(&desc->irq_data);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * handle_percpu_devid_irq - Per CPU local irq handler with per cpu dev ids
+ * @irq:	the interrupt number
+ * @desc:	the interrupt description structure for this irq
+ *
+ * Per CPU interrupts on SMP machines without locking requirements. Same as
+ * handle_percpu_irq() above but with the following extras:
+ *
+ * action->percpu_dev_id is a pointer to percpu variables which
+ * contain the real device id for the cpu on which this handler is
+ * called
+ */
+void handle_percpu_devid_irq(unsigned int irq, struct irq_desc *desc)
+{
+	struct irq_chip *chip = irq_desc_get_chip(desc);
+	struct irqaction *action = desc->action;
+	void *dev_id = __this_cpu_ptr(action->percpu_dev_id);
+	irqreturn_t res;
+
+	kstat_incr_irqs_this_cpu(irq, desc);
+
+	if (chip->irq_ack)
+		chip->irq_ack(&desc->irq_data);
+
+	trace_irq_handler_entry(irq, action);
+	res = action->handler(irq, dev_id);
+	trace_irq_handler_exit(irq, action, res);
+
+	if (chip->irq_eoi)
+		chip->irq_eoi(&desc->irq_data);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 __irq_set_handler(unsigned int irq, irq_flow_handler_t handle, int is_chained,
 		  const char *name)
 {
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct irq_desc *desc = irq_get_desc_buslock(irq, &flags, 0);
+=======
 	struct irq_desc *desc = irq_get_desc_buslock(irq, &flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct irq_desc *desc = irq_get_desc_buslock(irq, &flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!desc)
 		return;
@@ -616,7 +780,15 @@ irq_set_chip_and_handler_name(unsigned int irq, struct irq_chip *chip,
 void irq_modify_status(unsigned int irq, unsigned long clr, unsigned long set)
 {
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags, 0);
+=======
 	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct irq_desc *desc = irq_get_desc_lock(irq, &flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!desc)
 		return;

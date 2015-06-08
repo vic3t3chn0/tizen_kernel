@@ -16,6 +16,9 @@
 #include <mach/hardware.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IO_SPACE_LIMIT 0xffff
 
 /*
@@ -28,6 +31,8 @@
  * like an ISA bus, but with registers at the low byte of each word.
  */
 #define __io(a)		(PCIO_BASE + ((a) << 2))
+<<<<<<< HEAD
+=======
 =======
 #define IO_SPACE_LIMIT 0xffffffff
 
@@ -224,5 +229,6 @@ DECLARE_IO(int,l,"")
  */
 #define __mem_pci(x)	(x)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

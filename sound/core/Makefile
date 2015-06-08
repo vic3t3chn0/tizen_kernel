@@ -10,7 +10,11 @@ snd-$(CONFIG_SND_VMASTER) += vmaster.o
 <<<<<<< HEAD
 snd-$(CONFIG_SND_KCTL_JACK) += ctljack.o
 =======
+<<<<<<< HEAD
+snd-$(CONFIG_SND_KCTL_JACK) += ctljack.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 snd-$(CONFIG_SND_JACK)	  += jack.o
 
 snd-pcm-objs := pcm.o pcm_native.o pcm_lib.o pcm_timer.o pcm_misc.o \
@@ -29,7 +33,12 @@ snd-hwdep-objs    := hwdep.o
 snd-compress-objs := compress_offload.o
 
 =======
+<<<<<<< HEAD
+snd-compress-objs := compress_offload.o
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_SND) 		+= snd.o
 obj-$(CONFIG_SND_HWDEP)		+= snd-hwdep.o
 obj-$(CONFIG_SND_TIMER)		+= snd-timer.o
@@ -44,4 +53,9 @@ obj-$(CONFIG_SND_SEQUENCER)	+= seq/
 
 obj-$(CONFIG_SND_COMPRESS_OFFLOAD)	+= snd-compress.o
 =======
+<<<<<<< HEAD
+
+obj-$(CONFIG_SND_COMPRESS_OFFLOAD)	+= snd-compress.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -276,8 +276,16 @@ static int puv3_i2c_resume(struct platform_device *dev)
 #define puv3_i2c_resume NULL
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 MODULE_ALIAS("platform:puv3_i2c");
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_ALIAS("platform:puv3_i2c");
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver puv3_i2c_driver = {
 	.probe		= puv3_i2c_probe,
 	.remove		= __devexit_p(puv3_i2c_remove),
@@ -289,6 +297,16 @@ static struct platform_driver puv3_i2c_driver = {
 	}
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(puv3_i2c_driver);
+
+MODULE_DESCRIPTION("PKUnity v3 I2C driver");
+MODULE_LICENSE("GPL v2");
+MODULE_ALIAS("platform:puv3_i2c");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init puv3_i2c_init(void)
 {
 	return platform_driver_register(&puv3_i2c_driver);
@@ -304,3 +322,7 @@ module_exit(puv3_i2c_exit);
 
 MODULE_DESCRIPTION("PKUnity v3 I2C driver");
 MODULE_LICENSE("GPL v2");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

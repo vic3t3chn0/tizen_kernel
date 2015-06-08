@@ -111,8 +111,13 @@ static struct sk_buff *multiq_dequeue(struct Qdisc *sch)
 		if (!netif_xmit_stopped(
 		    netdev_get_tx_queue(qdisc_dev(sch), q->curband))) {
 =======
+<<<<<<< HEAD
+		if (!netif_xmit_stopped(
+		    netdev_get_tx_queue(qdisc_dev(sch), q->curband))) {
+=======
 		if (!__netif_subqueue_stopped(qdisc_dev(sch), q->curband)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			qdisc = q->queues[q->curband];
 			skb = qdisc->dequeue(qdisc);
 			if (skb) {
@@ -147,8 +152,13 @@ static struct sk_buff *multiq_peek(struct Qdisc *sch)
 		if (!netif_xmit_stopped(
 		    netdev_get_tx_queue(qdisc_dev(sch), curband))) {
 =======
+<<<<<<< HEAD
+		if (!netif_xmit_stopped(
+		    netdev_get_tx_queue(qdisc_dev(sch), curband))) {
+=======
 		if (!__netif_subqueue_stopped(qdisc_dev(sch), curband)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			qdisc = q->queues[curband];
 			skb = qdisc->ops->peek(qdisc);
 			if (skb)

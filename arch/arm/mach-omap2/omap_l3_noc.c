@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * OMAP4XXX L3 Interconnect error handling driver
  *
  * Copyright (C) 2011 Texas Corporation
@@ -22,6 +25,8 @@
  * USA
  */
 #include <linux/module.h>
+<<<<<<< HEAD
+=======
 =======
   * OMAP4XXX L3 Interconnect error handling driver
   *
@@ -45,6 +50,7 @@
   * USA
   */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/io.h>
 #include <linux/platform_device.h>
@@ -81,12 +87,17 @@ static irqreturn_t l3_interrupt_handler(int irq, void *_l3)
 {
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap4_l3 *l3 = _l3;
 	int inttype, i, k;
 	int err_src = 0;
 	u32 std_err_main, err_reg, clear, masterid;
 	void __iomem *base, *l3_targ_base;
 	char *target_name, *master_name = "UN IDENTIFIED";
+<<<<<<< HEAD
+=======
 =======
 	struct omap4_l3		*l3 = _l3;
 	int inttype, i, j;
@@ -95,6 +106,7 @@ static irqreturn_t l3_interrupt_handler(int irq, void *_l3)
 	u32 base, slave_addr, clear;
 	char *source_name;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Get the Type of interrupt */
 	inttype = irq == l3->app_irq ? L3_APPLICATION_ERROR : L3_DEBUG_ERROR;
@@ -109,14 +121,23 @@ static irqreturn_t l3_interrupt_handler(int irq, void *_l3)
 		err_reg = __raw_readl(base + l3_flagmux[i] +
 					+ L3_FLAGMUX_REGERR0 + (inttype << 3));
 =======
+<<<<<<< HEAD
+		base = l3->l3_base[i];
+		err_reg = __raw_readl(base + l3_flagmux[i] +
+					+ L3_FLAGMUX_REGERR0 + (inttype << 3));
+=======
 		base = (u32)l3->l3_base[i];
 		err_reg =  readl(base + l3_flagmux[i] + (inttype << 3));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Get the corresponding error and analyse */
 		if (err_reg) {
 			/* Identify the source from control status register */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err_src = __ffs(err_reg);
 
 			/* Read the stderrlog_main_source from clk domain */
@@ -154,6 +175,8 @@ static irqreturn_t l3_interrupt_handler(int irq, void *_l3)
 				clear = std_err_main | CLEAR_STDERR_LOG;
 				writel(clear, l3_targ_base +
 					L3_TARG_STDERRLOG_MAIN);
+<<<<<<< HEAD
+=======
 =======
 			for (j = 0; !(err_reg & (1 << j)); j++)
 									;
@@ -187,6 +210,7 @@ static irqreturn_t l3_interrupt_handler(int irq, void *_l3)
 				clear = std_err_main | CLEAR_STDERR_LOG;
 				writel(clear, std_err_main_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 
 			default:
@@ -201,11 +225,16 @@ static irqreturn_t l3_interrupt_handler(int irq, void *_l3)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit omap4_l3_probe(struct platform_device *pdev)
 {
 	static struct omap4_l3 *l3;
 	struct resource	*res;
 	int ret;
+<<<<<<< HEAD
+=======
 =======
 static int __init omap4_l3_probe(struct platform_device *pdev)
 {
@@ -214,6 +243,7 @@ static int __init omap4_l3_probe(struct platform_device *pdev)
 	int			ret;
 	int			irq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	l3 = kzalloc(sizeof(*l3), GFP_KERNEL);
 	if (!l3)
@@ -269,20 +299,30 @@ static int __init omap4_l3_probe(struct platform_device *pdev)
 	l3->debug_irq = platform_get_irq(pdev, 0);
 	ret = request_irq(l3->debug_irq,
 =======
+<<<<<<< HEAD
+	l3->debug_irq = platform_get_irq(pdev, 0);
+	ret = request_irq(l3->debug_irq,
+=======
 	irq = platform_get_irq(pdev, 0);
 	ret = request_irq(irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			l3_interrupt_handler,
 			IRQF_DISABLED, "l3-dbg-irq", l3);
 	if (ret) {
 		pr_crit("L3: request_irq failed to register for 0x%x\n",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						OMAP44XX_IRQ_L3_DBG);
 		goto err3;
 	}
 
 	l3->app_irq = platform_get_irq(pdev, 1);
 	ret = request_irq(l3->app_irq,
+<<<<<<< HEAD
+=======
 =======
 					 OMAP44XX_IRQ_L3_DBG);
 		goto err3;
@@ -292,10 +332,16 @@ static int __init omap4_l3_probe(struct platform_device *pdev)
 	irq = platform_get_irq(pdev, 1);
 	ret = request_irq(irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			l3_interrupt_handler,
 			IRQF_DISABLED, "l3-app-irq", l3);
 	if (ret) {
 		pr_crit("L3: request_irq failed to register for 0x%x\n",
+<<<<<<< HEAD
+						OMAP44XX_IRQ_L3_APP);
+		goto err4;
+	}
+=======
 <<<<<<< HEAD
 						OMAP44XX_IRQ_L3_APP);
 		goto err4;
@@ -306,6 +352,7 @@ static int __init omap4_l3_probe(struct platform_device *pdev)
 	}
 	l3->app_irq = irq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -327,10 +374,16 @@ static int __devexit omap4_l3_remove(struct platform_device *pdev)
 {
 	struct omap4_l3 *l3 = platform_get_drvdata(pdev);
 =======
+<<<<<<< HEAD
+static int __devexit omap4_l3_remove(struct platform_device *pdev)
+{
+	struct omap4_l3 *l3 = platform_get_drvdata(pdev);
+=======
 static int __exit omap4_l3_remove(struct platform_device *pdev)
 {
 	struct omap4_l3         *l3 = platform_get_drvdata(pdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	free_irq(l3->app_irq, l3);
 	free_irq(l3->debug_irq, l3);
@@ -343,6 +396,9 @@ static int __exit omap4_l3_remove(struct platform_device *pdev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_OF)
 static const struct of_device_id l3_noc_match[] = {
 	{.compatible = "ti,omap4-l3-noc", },
@@ -360,12 +416,15 @@ static struct platform_driver omap4_l3_driver = {
 		.name		= "omap_l3_noc",
 		.owner		= THIS_MODULE,
 		.of_match_table = l3_noc_match,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_driver omap4_l3_driver = {
 	.remove		= __exit_p(omap4_l3_remove),
 	.driver		= {
 	.name		= "omap_l3_noc",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -374,8 +433,12 @@ static int __init omap4_l3_init(void)
 <<<<<<< HEAD
 	return platform_driver_register(&omap4_l3_driver);
 =======
+<<<<<<< HEAD
+	return platform_driver_register(&omap4_l3_driver);
+=======
 	return platform_driver_probe(&omap4_l3_driver, omap4_l3_probe);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 postcore_initcall_sync(omap4_l3_init);
 

@@ -86,6 +86,9 @@ static inline unsigned long prio_tree_maxindex(unsigned int bits)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void prio_set_parent(struct prio_tree_node *parent,
 			    struct prio_tree_node *child, bool left)
 {
@@ -97,8 +100,11 @@ static void prio_set_parent(struct prio_tree_node *parent,
 	child->parent = parent;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Extend a priority search tree so that it can store a node with heap_index
  * max_heap_index. In the worst case, this algorithm takes O((log n)^2).
@@ -111,28 +117,41 @@ static struct prio_tree_node *prio_tree_expand(struct prio_tree_root *root,
 <<<<<<< HEAD
 	struct prio_tree_node *prev;
 =======
+<<<<<<< HEAD
+	struct prio_tree_node *prev;
+=======
 	struct prio_tree_node *first = NULL, *prev, *last = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (max_heap_index > prio_tree_maxindex(root->index_bits))
 		root->index_bits++;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prev = node;
 	INIT_PRIO_TREE_NODE(node);
 
 	while (max_heap_index > prio_tree_maxindex(root->index_bits)) {
 		struct prio_tree_node *tmp = root->prio_tree_node;
 
+<<<<<<< HEAD
+=======
 =======
 	while (max_heap_index > prio_tree_maxindex(root->index_bits)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		root->index_bits++;
 
 		if (prio_tree_empty(root))
 			continue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prio_tree_remove(root, root->prio_tree_node);
 		INIT_PRIO_TREE_NODE(tmp);
 
@@ -142,6 +161,8 @@ static struct prio_tree_node *prio_tree_expand(struct prio_tree_root *root,
 
 	if (!prio_tree_empty(root))
 		prio_set_parent(prev, root->prio_tree_node, true);
+<<<<<<< HEAD
+=======
 =======
 		if (first == NULL) {
 			first = root->prio_tree_node;
@@ -171,6 +192,7 @@ static struct prio_tree_node *prio_tree_expand(struct prio_tree_root *root,
 		last->left->parent = last;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	root->prio_tree_node = node;
 	return node;
@@ -191,6 +213,9 @@ struct prio_tree_node *prio_tree_replace(struct prio_tree_root *root,
 		 * and does not help much to improve performance (IMO).
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		root->prio_tree_node = node;
 	} else
 		prio_set_parent(old->parent, node, old->parent->left == old);
@@ -200,6 +225,8 @@ struct prio_tree_node *prio_tree_replace(struct prio_tree_root *root,
 
 	if (!prio_tree_right_empty(old))
 		prio_set_parent(node, old->right, false);
+<<<<<<< HEAD
+=======
 =======
 		node->parent = node;
 		root->prio_tree_node = node;
@@ -221,6 +248,7 @@ struct prio_tree_node *prio_tree_replace(struct prio_tree_root *root,
 		old->right->parent = node;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return old;
 }
@@ -283,9 +311,13 @@ struct prio_tree_node *prio_tree_insert(struct prio_tree_root *root,
 <<<<<<< HEAD
 				prio_set_parent(cur, node, false);
 =======
+<<<<<<< HEAD
+				prio_set_parent(cur, node, false);
+=======
 				cur->right = node;
 				node->parent = cur;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return res;
 			} else
 				cur = cur->right;
@@ -295,9 +327,13 @@ struct prio_tree_node *prio_tree_insert(struct prio_tree_root *root,
 <<<<<<< HEAD
 				prio_set_parent(cur, node, true);
 =======
+<<<<<<< HEAD
+				prio_set_parent(cur, node, true);
+=======
 				cur->left = node;
 				node->parent = cur;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return res;
 			} else
 				cur = cur->left;
@@ -365,6 +401,9 @@ void prio_tree_remove(struct prio_tree_root *root, struct prio_tree_node *node)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void iter_walk_down(struct prio_tree_iter *iter)
 {
 	iter->mask >>= 1;
@@ -399,8 +438,11 @@ static void iter_walk_up(struct prio_tree_iter *iter)
 		iter->value ^= iter->mask;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Following functions help to enumerate all prio_tree_nodes in the tree that
  * overlap with the input interval X [radix_index, heap_index]. The enumeration
@@ -422,6 +464,9 @@ static struct prio_tree_node *prio_tree_left(struct prio_tree_iter *iter,
 <<<<<<< HEAD
 		iter_walk_down(iter);
 =======
+<<<<<<< HEAD
+		iter_walk_down(iter);
+=======
 		iter->mask >>= 1;
 		if (iter->mask) {
 			if (iter->size_level)
@@ -438,6 +483,7 @@ static struct prio_tree_node *prio_tree_left(struct prio_tree_iter *iter,
 			}
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return iter->cur;
 	}
 
@@ -467,6 +513,9 @@ static struct prio_tree_node *prio_tree_right(struct prio_tree_iter *iter,
 <<<<<<< HEAD
 		iter_walk_down(iter);
 =======
+<<<<<<< HEAD
+		iter_walk_down(iter);
+=======
 		iter->mask >>= 1;
 		iter->value = value;
 		if (iter->mask) {
@@ -484,6 +533,7 @@ static struct prio_tree_node *prio_tree_right(struct prio_tree_iter *iter,
 			}
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return iter->cur;
 	}
 
@@ -493,6 +543,9 @@ static struct prio_tree_node *prio_tree_right(struct prio_tree_iter *iter,
 static struct prio_tree_node *prio_tree_parent(struct prio_tree_iter *iter)
 {
 	iter->cur = iter->cur->parent;
+<<<<<<< HEAD
+	iter_walk_up(iter);
+=======
 <<<<<<< HEAD
 	iter_walk_up(iter);
 =======
@@ -507,6 +560,7 @@ static struct prio_tree_node *prio_tree_parent(struct prio_tree_iter *iter)
 	if (!iter->size_level && (iter->value & iter->mask))
 		iter->value ^= iter->mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return iter->cur;
 }
 

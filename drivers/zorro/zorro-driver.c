@@ -37,6 +37,13 @@ zorro_match_device(const struct zorro_device_id *ids,
 	}
 	return NULL;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL(zorro_match_device);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 static int zorro_device_probe(struct device *dev)
@@ -91,6 +98,13 @@ int zorro_register_driver(struct zorro_driver *drv)
 	/* register with core */
 	return driver_register(&drv->driver);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL(zorro_register_driver);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
     /**
@@ -107,6 +121,13 @@ void zorro_unregister_driver(struct zorro_driver *drv)
 {
 	driver_unregister(&drv->driver);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL(zorro_unregister_driver);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
     /**
@@ -168,6 +189,13 @@ struct bus_type zorro_bus_type = {
 	.probe	= zorro_device_probe,
 	.remove	= zorro_device_remove,
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL(zorro_bus_type);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 static int __init zorro_driver_init(void)
@@ -177,7 +205,16 @@ static int __init zorro_driver_init(void)
 
 postcore_initcall(zorro_driver_init);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(zorro_match_device);
 EXPORT_SYMBOL(zorro_register_driver);
 EXPORT_SYMBOL(zorro_unregister_driver);
 EXPORT_SYMBOL(zorro_bus_type);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

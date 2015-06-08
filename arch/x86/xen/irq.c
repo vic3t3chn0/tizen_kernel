@@ -29,8 +29,12 @@ static unsigned long xen_save_fl(void)
 <<<<<<< HEAD
 	vcpu = this_cpu_read(xen_vcpu);
 =======
+<<<<<<< HEAD
+	vcpu = this_cpu_read(xen_vcpu);
+=======
 	vcpu = percpu_read(xen_vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* flag has opposite sense of mask */
 	flags = !vcpu->evtchn_upcall_mask;
@@ -57,8 +61,12 @@ static void xen_restore_fl(unsigned long flags)
 <<<<<<< HEAD
 	vcpu = this_cpu_read(xen_vcpu);
 =======
+<<<<<<< HEAD
+	vcpu = this_cpu_read(xen_vcpu);
+=======
 	vcpu = percpu_read(xen_vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vcpu->evtchn_upcall_mask = flags;
 	preempt_enable_no_resched();
 
@@ -83,8 +91,12 @@ static void xen_irq_disable(void)
 <<<<<<< HEAD
 	this_cpu_read(xen_vcpu)->evtchn_upcall_mask = 1;
 =======
+<<<<<<< HEAD
+	this_cpu_read(xen_vcpu)->evtchn_upcall_mask = 1;
+=======
 	percpu_read(xen_vcpu)->evtchn_upcall_mask = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_enable_no_resched();
 }
 PV_CALLEE_SAVE_REGS_THUNK(xen_irq_disable);
@@ -101,8 +113,12 @@ static void xen_irq_enable(void)
 <<<<<<< HEAD
 	vcpu = this_cpu_read(xen_vcpu);
 =======
+<<<<<<< HEAD
+	vcpu = this_cpu_read(xen_vcpu);
+=======
 	vcpu = percpu_read(xen_vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vcpu->evtchn_upcall_mask = 0;
 
 	/* Doesn't matter if we get preempted here, because any

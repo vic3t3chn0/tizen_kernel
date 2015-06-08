@@ -46,6 +46,8 @@ config DEBUG_OCD
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config DEBUG_OCD_BREAKPOINT
 	bool "Breakpoint support via On-Chip-Debugger"
 	depends on DEBUG_OCD
@@ -61,4 +63,5 @@ config DEBUG_UART
 	  initialised by the boot-loader before use.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endmenu

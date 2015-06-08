@@ -24,8 +24,11 @@
 #include <asm/tlbflush.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgalloc.h>
 #include <asm/processor.h>
@@ -426,6 +429,8 @@ EXPORT_SYMBOL(kunmap_parisc);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void purge_tlb_entries(struct mm_struct *mm, unsigned long addr)
 {
 	unsigned long flags;
@@ -445,6 +450,7 @@ void purge_tlb_entries(struct mm_struct *mm, unsigned long addr)
 EXPORT_SYMBOL(purge_tlb_entries);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __flush_tlb_range(unsigned long sid, unsigned long start,
 		       unsigned long end)
 {

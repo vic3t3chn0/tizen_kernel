@@ -44,8 +44,18 @@
 #include <linux/init.h>
 #include <linux/bitops.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+
+=======
 
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/uaccess.h>
 
@@ -242,8 +252,18 @@ static void moxa_wait_finish(void __iomem *ofsAddr)
 	while (readw(ofsAddr + FuncCode) != 0)
 		if (time_after(jiffies, end))
 			return;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (readw(ofsAddr + FuncCode) != 0)
+		printk_ratelimited(KERN_WARNING "moxa function expired\n");
+=======
 	if (readw(ofsAddr + FuncCode) != 0 && printk_ratelimit())
 		printk(KERN_WARNING "moxa function expired\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (readw(ofsAddr + FuncCode) != 0 && printk_ratelimit())
+		printk(KERN_WARNING "moxa function expired\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void moxafunc(void __iomem *ofsAddr, u16 cmd, u16 arg)
@@ -1035,7 +1055,14 @@ static int __init moxa_init(void)
 	if (!moxaDriver)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	moxaDriver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	moxaDriver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	moxaDriver->name = "ttyMX";
 	moxaDriver->major = ttymajor;
 	moxaDriver->minor_start = 0;

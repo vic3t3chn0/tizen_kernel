@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <plat/clkdev_omap.h>
 =======
+<<<<<<< HEAD
+#include <plat/clkdev_omap.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "opp.h"
 
 /*-------------------------------------------------------------------------
@@ -25,6 +29,9 @@ struct mpu_rate omap1_rate_table[] = {
 	 * armdiv, dspdiv, dspmmu, tcdiv, perdiv, lcddiv
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 216000000, 12000000, 216000000, 0x050d, 0x2910, /* 1/1/2/2/2/8 */
 			CK_1710 },
 	{ 195000000, 13000000, 195000000, 0x050e, 0x2790, /* 1/1/2/2/4/8 */
@@ -53,6 +60,8 @@ struct mpu_rate omap1_rate_table[] = {
 			CK_16XX|CK_1510|CK_310|CK_7XX },
 	{  30000000, 12000000,  60000000, 0x0555, 0x2290, /* 2/2/2/2/2/2 */
 			CK_16XX|CK_1510|CK_310|CK_7XX },
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_OMAP_ARM_216MHZ)
 	{ 216000000, 12000000, 216000000, 0x050d, 0x2910 }, /* 1/1/2/2/2/8 */
@@ -89,6 +98,7 @@ struct mpu_rate omap1_rate_table[] = {
 	{  30000000, 12000000,  60000000, 0x0555, 0x2290 }, /* 2/2/2/2/2/2 */
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0, 0, 0, 0, 0 },
 };
 

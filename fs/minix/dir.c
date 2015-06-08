@@ -338,8 +338,12 @@ int minix_make_empty(struct inode *inode, struct inode *dir)
 <<<<<<< HEAD
 	kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(page);
+=======
 	kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(kaddr, 0, PAGE_CACHE_SIZE);
 
 	if (sbi->s_version == MINIX_V3) {
@@ -362,8 +366,12 @@ int minix_make_empty(struct inode *inode, struct inode *dir)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = dir_commit_chunk(page, 0, 2 * sbi->s_dirsize);
 fail:

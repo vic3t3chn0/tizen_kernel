@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/pm_qos.h>
 =======
+<<<<<<< HEAD
+#include <linux/pm_qos.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* FLCTL registers */
 #define FLCMNCR(f)		(f->reg + 0x0)
@@ -45,7 +49,11 @@
 <<<<<<< HEAD
 #define FLHOLDCR(f)		(f->reg + 0x38)
 =======
+<<<<<<< HEAD
+#define FLHOLDCR(f)		(f->reg + 0x38)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	FL4ECCRESULT0(f)	(f->reg + 0x80)
 #define	FL4ECCRESULT1(f)	(f->reg + 0x84)
 #define	FL4ECCRESULT2(f)	(f->reg + 0x88)
@@ -76,6 +84,9 @@
 #define	TYPESEL_SET	(0x1 << 0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Clock settings using the PULSEx registers from FLCMNCR
  *
@@ -100,8 +111,11 @@
 #define CLK_16B_9L_3H			(PULSE0 | PULSE1 | PULSE2)
 #define CLK_16B_12L_4H			(PULSE0 | PULSE2)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* FLCMDCR control bits */
 #define ADRCNT2_E	(0x1 << 31)	/* 5byte address enable */
 #define ADRMD_E		(0x1 << 26)	/* Sector address access */
@@ -121,6 +135,9 @@
 #define TREND		(0x1 << 1)	/* translation end */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * FLHOLDCR control bits
  *
@@ -130,8 +147,11 @@
  */
 #define HOLDEN		(0x1 << 0)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* FL4ECCCR control bits */
 #define	_4ECCFA		(0x1 << 2)	/* 4 symbols correct fault */
 #define	_4ECCEND	(0x1 << 1)	/* 4 symbols end */
@@ -147,7 +167,11 @@ struct sh_flctl {
 <<<<<<< HEAD
 	struct dev_pm_qos_request pm_qos;
 =======
+<<<<<<< HEAD
+	struct dev_pm_qos_request pm_qos;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem		*reg;
 
 	uint8_t	done_buff[2048 + 64];	/* max size 2048 + 64 */
@@ -162,7 +186,11 @@ struct sh_flctl {
 <<<<<<< HEAD
 	uint32_t flcmncr_base;	/* base value of FLCMNCR */
 =======
+<<<<<<< HEAD
+	uint32_t flcmncr_base;	/* base value of FLCMNCR */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int	hwecc_cant_correct[4];
 
@@ -172,7 +200,12 @@ struct sh_flctl {
 	unsigned holden:1;	/* Hardware has FLHOLDCR and HOLDEN is set */
 	unsigned qos_request:1;	/* QoS request to prevent deep power shutdown */
 =======
+<<<<<<< HEAD
+	unsigned holden:1;	/* Hardware has FLHOLDCR and HOLDEN is set */
+	unsigned qos_request:1;	/* QoS request to prevent deep power shutdown */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct sh_flctl_platform_data {
@@ -184,7 +217,11 @@ struct sh_flctl_platform_data {
 <<<<<<< HEAD
 	unsigned use_holden:1;
 =======
+<<<<<<< HEAD
+	unsigned use_holden:1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct sh_flctl *mtd_to_flctl(struct mtd_info *mtdinfo)

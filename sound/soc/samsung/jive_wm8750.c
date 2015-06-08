@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/soc.h>
 
 #include <asm/mach-types.h>
@@ -106,8 +110,11 @@ static int jive_wm8750_init(struct snd_soc_pcm_runtime *rtd)
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* These endpoints are not being used. */
 	snd_soc_dapm_nc_pin(dapm, "LINPUT2");
@@ -117,6 +124,8 @@ static int jive_wm8750_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_nc_pin(dapm, "OUT3");
 	snd_soc_dapm_nc_pin(dapm, "MONO");
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Add jive specific widgets */
@@ -132,6 +141,7 @@ static int jive_wm8750_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_sync(dapm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -144,8 +154,12 @@ static struct snd_soc_dai_link jive_dai = {
 <<<<<<< HEAD
 	.codec_name	= "wm8750.0-001a",
 =======
+<<<<<<< HEAD
+	.codec_name	= "wm8750.0-001a",
+=======
 	.codec_name	= "wm8750-codec.0-001a",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init		= jive_wm8750_init,
 	.ops		= &jive_ops,
 };
@@ -154,6 +168,9 @@ static struct snd_soc_dai_link jive_dai = {
 static struct snd_soc_card snd_soc_machine_jive = {
 	.name		= "Jive",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner		= THIS_MODULE,
 	.dai_link	= &jive_dai,
 	.num_links	= 1,
@@ -162,10 +179,13 @@ static struct snd_soc_card snd_soc_machine_jive = {
 	.num_dapm_widgets = ARRAY_SIZE(wm8750_dapm_widgets),
 	.dapm_routes	= audio_map,
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link	= &jive_dai,
 	.num_links	= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *jive_snd_device;

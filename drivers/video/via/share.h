@@ -22,6 +22,14 @@
 #ifndef __SHARE_H__
 #define __SHARE_H__
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "via_modesetting.h"
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Define Bit Field */
 #define BIT0    0x01
 #define BIT1    0x02
@@ -281,6 +289,11 @@
 #define HW_LAYOUT_LCD1_LCD2     0x04
 #define HW_LAYOUT_LCD_EXTERNAL_LCD2 0x10
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Definition Refresh Rate */
 #define REFRESH_49      49
 #define REFRESH_50      50
@@ -612,6 +625,10 @@
 #define M2048x1536_R60_HSP      NEGATIVE
 #define M2048x1536_R60_VSP      POSITIVE
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Definition CRTC Timing Index */
 #define H_TOTAL_INDEX               0
 #define H_ADDR_INDEX                1
@@ -634,10 +651,19 @@
 #define V_SYNC_SATRT_SHADOW_INDEX   18
 #define V_SYNC_END_SHADOW_INDEX     19
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Definition Video Mode Pixel Clock (picoseconds)
 */
 #define RES_640X480_60HZ_PIXCLOCK    39722
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* LCD display method
 */
 #define     LCD_EXPANDSION              0x00
@@ -648,6 +674,11 @@
 #define     LCD_OPENLDI               0x00
 #define     LCD_SPWG                  0x01
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Define display timing
 */
 struct display_timing {
@@ -665,6 +696,10 @@ struct display_timing {
 	u16 ver_sync_end;
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct crt_mode_table {
 	int refresh_rate;
 	int h_sync_polarity;

@@ -278,7 +278,11 @@ typedef struct journal_superblock_s
 <<<<<<< HEAD
 #include <linux/jbd_common.h>
 =======
+<<<<<<< HEAD
+#include <linux/jbd_common.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define J_ASSERT(assert)	BUG_ON(!(assert))
 
@@ -306,6 +310,8 @@ typedef struct journal_superblock_s
 #define J_EXPECT_JH(jh, expr, why...)	__journal_expect(expr, ## why)
 #endif
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 enum jbd_state_bits {
@@ -373,6 +379,7 @@ static inline void jbd_unlock_bh_journal_head(struct buffer_head *bh)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Flags in jbd_inode->i_flags */
 #define __JI_COMMIT_RUNNING 0
 /* Commit of the inode data in progress. We use this flag to protect us from
@@ -1042,12 +1049,18 @@ extern void __journal_clean_data_list(transaction_t *transaction);
 extern struct journal_head * jbd2_journal_get_descriptor_buffer(journal_t *);
 int jbd2_journal_next_log_block(journal_t *, unsigned long long *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int jbd2_journal_get_log_tail(journal_t *journal, tid_t *tid,
 			      unsigned long *block);
 void __jbd2_update_log_tail(journal_t *journal, tid_t tid, unsigned long block);
 void jbd2_update_log_tail(journal_t *journal, tid_t tid, unsigned long block);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Commit management */
 extern void jbd2_journal_commit_transaction(journal_t *);
@@ -1098,13 +1111,19 @@ jbd2_journal_write_metadata_buffer(transaction_t	  *transaction,
 extern void		__wait_on_journal (journal_t *);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Transaction cache support */
 extern void jbd2_journal_destroy_transaction_cache(void);
 extern int  jbd2_journal_init_transaction_cache(void);
 extern void jbd2_journal_free_transaction(transaction_t *);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Journal locking.
  *
@@ -1133,10 +1152,16 @@ extern handle_t *jbd2__journal_start(journal_t *, int nblocks, gfp_t gfp_mask);
 extern int	 jbd2_journal_restart(handle_t *, int nblocks);
 extern int	 jbd2__journal_restart(handle_t *, int nblocks, gfp_t gfp_mask);
 =======
+<<<<<<< HEAD
+extern handle_t *jbd2__journal_start(journal_t *, int nblocks, gfp_t gfp_mask);
+extern int	 jbd2_journal_restart(handle_t *, int nblocks);
+extern int	 jbd2__journal_restart(handle_t *, int nblocks, gfp_t gfp_mask);
+=======
 extern handle_t *jbd2__journal_start(journal_t *, int nblocks, int gfp_mask);
 extern int	 jbd2_journal_restart(handle_t *, int nblocks);
 extern int	 jbd2__journal_restart(handle_t *, int nblocks, int gfp_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int	 jbd2_journal_extend (handle_t *, int nblocks);
 extern int	 jbd2_journal_get_write_access(handle_t *, struct buffer_head *);
 extern int	 jbd2_journal_get_create_access (handle_t *, struct buffer_head *);
@@ -1178,8 +1203,14 @@ extern void	   jbd2_journal_update_sb_errno(journal_t *);
 extern void	   jbd2_journal_update_sb_log_tail	(journal_t *, tid_t,
 				unsigned long, int);
 =======
+<<<<<<< HEAD
+extern void	   jbd2_journal_update_sb_errno(journal_t *);
+extern void	   jbd2_journal_update_sb_log_tail	(journal_t *, tid_t,
+				unsigned long, int);
+=======
 extern void	   jbd2_journal_update_superblock	(journal_t *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void	   __jbd2_journal_abort_hard	(journal_t *);
 extern void	   jbd2_journal_abort      (journal_t *, int);
 extern int	   jbd2_journal_errno      (journal_t *);
@@ -1251,7 +1282,11 @@ extern void	jbd2_journal_switch_revoke_table(journal_t *journal);
 <<<<<<< HEAD
 extern void	jbd2_clear_buffer_revoked_flags(journal_t *journal);
 =======
+<<<<<<< HEAD
+extern void	jbd2_clear_buffer_revoked_flags(journal_t *journal);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The log thread user interface:
@@ -1369,6 +1404,8 @@ extern int jbd_blocks_per_page(struct inode *inode);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* 
  * jbd2_dev_to_name is a utility function used by the jbd2 and ext4 
  * tracing infrastructure to map a dev_t to a device name.
@@ -1376,6 +1413,7 @@ extern int jbd_blocks_per_page(struct inode *inode);
 extern const char *jbd2_dev_to_name(dev_t device);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __KERNEL__ */
 
 #endif	/* _LINUX_JBD2_H */

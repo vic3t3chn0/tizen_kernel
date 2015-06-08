@@ -328,15 +328,21 @@ static void tegra_pcm_deallocate_dma_buffer(struct snd_pcm *pcm, int stream)
 static u64 tegra_dma_mask = DMA_BIT_MASK(32);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tegra_pcm_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static int tegra_pcm_new(struct snd_card *card,
 				struct snd_soc_dai *dai, struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (!card->dev->dma_mask)
@@ -347,10 +353,16 @@ static int tegra_pcm_new(struct snd_card *card,
 
 	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
 =======
+<<<<<<< HEAD
+		card->dev->coherent_dma_mask = DMA_BIT_MASK(32);
+
+	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
+=======
 		card->dev->coherent_dma_mask = 0xffffffff;
 
 	if (dai->driver->playback.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = tegra_pcm_preallocate_dma_buffer(pcm,
 						SNDRV_PCM_STREAM_PLAYBACK);
 		if (ret)
@@ -360,8 +372,12 @@ static int tegra_pcm_new(struct snd_card *card,
 <<<<<<< HEAD
 	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
 =======
+<<<<<<< HEAD
+	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
+=======
 	if (dai->driver->capture.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = tegra_pcm_preallocate_dma_buffer(pcm,
 						SNDRV_PCM_STREAM_CAPTURE);
 		if (ret)
@@ -385,8 +401,12 @@ static void tegra_pcm_free(struct snd_pcm *pcm)
 <<<<<<< HEAD
 static struct snd_soc_platform_driver tegra_pcm_platform = {
 =======
+<<<<<<< HEAD
+static struct snd_soc_platform_driver tegra_pcm_platform = {
+=======
 struct snd_soc_platform_driver tegra_pcm_platform = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops		= &tegra_pcm_ops,
 	.pcm_new	= tegra_pcm_new,
 	.pcm_free	= tegra_pcm_free,
@@ -414,6 +434,9 @@ static struct platform_driver tegra_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(tegra_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(tegra_pcm_driver);
+=======
 
 static int __init snd_tegra_pcm_init(void)
 {
@@ -427,6 +450,7 @@ static void __exit snd_tegra_pcm_exit(void)
 }
 module_exit(snd_tegra_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Stephen Warren <swarren@nvidia.com>");
 MODULE_DESCRIPTION("Tegra PCM ASoC driver");

@@ -31,8 +31,11 @@
 #include <asm/sections.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu_context.h>
 #include <asm/war.h>
 #include <asm/cacheflush.h> /* for run_uncached() */
@@ -504,8 +507,12 @@ static inline void local_r4k_flush_cache_page(void *args)
 <<<<<<< HEAD
 			vaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+			vaddr = kmap_atomic(page);
+=======
 			vaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		addr = (unsigned long)vaddr;
 	}
 
@@ -531,8 +538,12 @@ static inline void local_r4k_flush_cache_page(void *args)
 <<<<<<< HEAD
 			kunmap_atomic(vaddr);
 =======
+<<<<<<< HEAD
+			kunmap_atomic(vaddr);
+=======
 			kunmap_atomic(vaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -618,7 +629,11 @@ static void r4k_dma_cache_wback_inv(unsigned long addr, unsigned long size)
 <<<<<<< HEAD
 		__sync();
 =======
+<<<<<<< HEAD
+		__sync();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -638,7 +653,11 @@ static void r4k_dma_cache_wback_inv(unsigned long addr, unsigned long size)
 <<<<<<< HEAD
 	__sync();
 =======
+<<<<<<< HEAD
+	__sync();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void r4k_dma_cache_inv(unsigned long addr, unsigned long size)
@@ -669,7 +688,11 @@ static void r4k_dma_cache_inv(unsigned long addr, unsigned long size)
 <<<<<<< HEAD
 		__sync();
 =======
+<<<<<<< HEAD
+		__sync();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -689,7 +712,11 @@ static void r4k_dma_cache_inv(unsigned long addr, unsigned long size)
 <<<<<<< HEAD
 	__sync();
 =======
+<<<<<<< HEAD
+	__sync();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif /* CONFIG_DMA_NONCOHERENT */
 
@@ -746,6 +773,9 @@ static void r4k_flush_icache_all(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct flush_kernel_vmap_range_args {
 	unsigned long	vaddr;
 	int		size;
@@ -779,8 +809,11 @@ static void r4k_flush_kernel_vmap_range(unsigned long vaddr, int size)
 	r4k_on_each_cpu(local_r4k_flush_kernel_vmap_range, &args);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void rm7k_erratum31(void)
 {
 	const unsigned long ic_lsize = 32;
@@ -1266,7 +1299,13 @@ static void __cpuinit setup_scache(void)
 		/* don't need to worry about L2, fully coherent */
 		return;
 =======
+<<<<<<< HEAD
+	case CPU_XLP:
+		/* don't need to worry about L2, fully coherent */
+		return;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	default:
 		if (c->isa_level == MIPS_CPU_ISA_M32R1 ||
@@ -1472,7 +1511,12 @@ void __cpuinit r4k_cache_init(void)
 	__flush_kernel_vmap_range = r4k_flush_kernel_vmap_range;
 
 =======
+<<<<<<< HEAD
+	__flush_kernel_vmap_range = r4k_flush_kernel_vmap_range;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flush_cache_sigtramp	= r4k_flush_cache_sigtramp;
 	flush_icache_all	= r4k_flush_icache_all;
 	local_flush_data_cache_page	= local_r4k_flush_data_cache_page;

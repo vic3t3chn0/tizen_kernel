@@ -35,6 +35,9 @@ struct inet_diag_req {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct inet_diag_req_v2 {
 	__u8	sdiag_family;
 	__u8	sdiag_protocol;
@@ -44,8 +47,11 @@ struct inet_diag_req_v2 {
 	struct inet_diag_sockid id;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	INET_DIAG_REQ_NONE,
 	INET_DIAG_REQ_BYTECODE,
@@ -110,17 +116,23 @@ enum {
 	INET_DIAG_VEGASINFO,
 	INET_DIAG_CONG,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INET_DIAG_TOS,
 	INET_DIAG_TCLASS,
 	INET_DIAG_SKMEMINFO,
 };
 
 #define INET_DIAG_MAX INET_DIAG_SKMEMINFO
+<<<<<<< HEAD
+=======
 =======
 };
 
 #define INET_DIAG_MAX INET_DIAG_CONG
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* INET_DIAG_MEM */
@@ -145,6 +157,9 @@ struct tcpvegas_info {
 struct sock;
 struct inet_hashinfo;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nlattr;
 struct nlmsghdr;
 struct sk_buff;
@@ -180,6 +195,8 @@ int inet_diag_dump_one_icsk(struct inet_hashinfo *hashinfo,
 
 int inet_diag_bc_sk(const struct nlattr *_bc, struct sock *sk);
 
+<<<<<<< HEAD
+=======
 =======
 
 struct inet_diag_handler {
@@ -192,6 +209,7 @@ struct inet_diag_handler {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int  inet_diag_register(const struct inet_diag_handler *handler);
 extern void inet_diag_unregister(const struct inet_diag_handler *handler);
 #endif /* __KERNEL__ */

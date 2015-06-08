@@ -265,7 +265,11 @@ static int parse_reply_info(struct ceph_msg *msg,
 <<<<<<< HEAD
 		ceph_decode_need(&p, end, len, bad);
 =======
+<<<<<<< HEAD
+		ceph_decode_need(&p, end, len, bad);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = parse_reply_info_trace(&p, p+len, info, features);
 		if (err < 0)
 			goto out_bad;
@@ -277,7 +281,11 @@ static int parse_reply_info(struct ceph_msg *msg,
 <<<<<<< HEAD
 		ceph_decode_need(&p, end, len, bad);
 =======
+<<<<<<< HEAD
+		ceph_decode_need(&p, end, len, bad);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = parse_reply_info_extra(&p, p+len, info, features);
 		if (err < 0)
 			goto out_bad;
@@ -407,16 +415,22 @@ static struct ceph_mds_session *register_session(struct ceph_mds_client *mdsc,
 	s->s_con.peer_name.num = cpu_to_le64(mds);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&s->s_gen_ttl_lock);
 	s->s_cap_gen = 0;
 	s->s_cap_ttl = jiffies - 1;
 
 	spin_lock_init(&s->s_cap_lock);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_init(&s->s_cap_lock);
 	s->s_cap_gen = 0;
 	s->s_cap_ttl = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s->s_renew_requested = 0;
 	s->s_renew_seq = 0;
 	INIT_LIST_HEAD(&s->s_caps);
@@ -500,11 +514,16 @@ void ceph_mdsc_release_request(struct kref *kref)
 	}
 	if (req->r_inode) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ceph_put_cap_refs(ceph_inode(req->r_inode), CEPH_CAP_PIN);
 		iput(req->r_inode);
 	}
 	if (req->r_locked_dir)
 		ceph_put_cap_refs(ceph_inode(req->r_locked_dir), CEPH_CAP_PIN);
+<<<<<<< HEAD
+=======
 =======
 		ceph_put_cap_refs(ceph_inode(req->r_inode),
 				  CEPH_CAP_PIN);
@@ -514,12 +533,16 @@ void ceph_mdsc_release_request(struct kref *kref)
 		ceph_put_cap_refs(ceph_inode(req->r_locked_dir),
 				  CEPH_CAP_PIN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (req->r_target_inode)
 		iput(req->r_target_inode);
 	if (req->r_dentry)
 		dput(req->r_dentry);
 	if (req->r_old_dentry) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * track (and drop pins for) r_old_dentry_dir
 		 * separately, since r_old_dentry's d_parent may have
@@ -530,12 +553,15 @@ void ceph_mdsc_release_request(struct kref *kref)
 				  CEPH_CAP_PIN);
 		dput(req->r_old_dentry);
 		iput(req->r_old_dentry_dir);
+<<<<<<< HEAD
+=======
 =======
 		ceph_put_cap_refs(
 			ceph_inode(req->r_old_dentry->d_parent->d_inode),
 			CEPH_CAP_PIN);
 		dput(req->r_old_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	kfree(req->r_path1);
 	kfree(req->r_path2);
@@ -653,6 +679,9 @@ static void __unregister_request(struct ceph_mds_client *mdsc,
  * Called under mdsc->mutex.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct dentry *get_nonsnap_parent(struct dentry *dentry)
 {
 	/*
@@ -661,10 +690,13 @@ static struct dentry *get_nonsnap_parent(struct dentry *dentry)
 	 * except to resplice to another snapdir, and either the old or new
 	 * result is a valid result.
 	 */
+<<<<<<< HEAD
+=======
 =======
 struct dentry *get_nonsnap_parent(struct dentry *dentry)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (!IS_ROOT(dentry) && ceph_snap(dentry->d_inode) != CEPH_NOSNAP)
 		dentry = dentry->d_parent;
 	return dentry;
@@ -705,8 +737,14 @@ static int __choose_mds(struct ceph_mds_client *mdsc,
 		struct dentry *parent = req->r_dentry->d_parent;
 		struct inode *dir = parent->d_inode;
 =======
+<<<<<<< HEAD
+		/* ignore race with rename; old or new d_parent is okay */
+		struct dentry *parent = req->r_dentry->d_parent;
+		struct inode *dir = parent->d_inode;
+=======
 		struct inode *dir = req->r_dentry->d_parent->d_inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (dir->i_sb != mdsc->fsc->sb) {
 			/* not this fs! */
@@ -717,9 +755,13 @@ static int __choose_mds(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 			struct dentry *dn = get_nonsnap_parent(parent);
 =======
+<<<<<<< HEAD
+			struct dentry *dn = get_nonsnap_parent(parent);
+=======
 			struct dentry *dn =
 				get_nonsnap_parent(req->r_dentry->d_parent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			inode = dn->d_inode;
 			dout("__choose_mds using nonsnap parent %p\n", inode);
 		} else if (req->r_dentry->d_inode) {
@@ -731,8 +773,12 @@ static int __choose_mds(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 			hash = ceph_dentry_hash(dir, req->r_dentry);
 =======
+<<<<<<< HEAD
+			hash = ceph_dentry_hash(dir, req->r_dentry);
+=======
 			hash = ceph_dentry_hash(req->r_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			is_hash = true;
 		}
 	}
@@ -786,8 +832,12 @@ static int __choose_mds(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap = NULL;
 	if (mode == USE_AUTH_MDS)
 		cap = ci->i_auth_cap;
@@ -797,8 +847,12 @@ static int __choose_mds(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 		spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_unlock(&ci->i_ceph_lock);
+=======
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto random;
 	}
 	mds = cap->session->s_mds;
@@ -808,8 +862,12 @@ static int __choose_mds(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mds;
 
 random:
@@ -831,8 +889,13 @@ static struct ceph_msg *create_session_msg(u32 op, u64 seq)
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_SESSION, sizeof(*h), GFP_NOFS,
 			   false);
 =======
+<<<<<<< HEAD
+	msg = ceph_msg_new(CEPH_MSG_CLIENT_SESSION, sizeof(*h), GFP_NOFS,
+			   false);
+=======
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_SESSION, sizeof(*h), GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!msg) {
 		pr_err("create_session_msg ENOMEM creating msg\n");
 		return NULL;
@@ -1021,8 +1084,12 @@ static int remove_session_caps_cb(struct inode *inode, struct ceph_cap *cap,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__ceph_remove_cap(cap);
 	if (!__ceph_is_any_real_caps(ci)) {
 		struct ceph_mds_client *mdsc =
@@ -1058,8 +1125,12 @@ static int remove_session_caps_cb(struct inode *inode, struct ceph_cap *cap,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (drop--)
 		iput(inode);
 	return 0;
@@ -1091,16 +1162,22 @@ static int wake_up_session_cb(struct inode *inode, struct ceph_cap *cap,
 	wake_up_all(&ci->i_cap_wq);
 	if (arg) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&ci->i_ceph_lock);
 		ci->i_wanted_max_size = 0;
 		ci->i_requested_max_size = 0;
 		spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 		spin_lock(&inode->i_lock);
 		ci->i_wanted_max_size = 0;
 		ci->i_requested_max_size = 0;
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -1164,9 +1241,13 @@ static void renewed_caps(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 	was_stale = is_renew && time_after_eq(jiffies, session->s_cap_ttl);
 =======
+<<<<<<< HEAD
+	was_stale = is_renew && time_after_eq(jiffies, session->s_cap_ttl);
+=======
 	was_stale = is_renew && (session->s_cap_ttl == 0 ||
 				 time_after_eq(jiffies, session->s_cap_ttl));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	session->s_cap_ttl = session->s_renew_requested +
 		mdsc->mdsmap->m_session_timeout*HZ;
@@ -1240,8 +1321,12 @@ static int trim_caps_cb(struct inode *inode, struct ceph_cap *cap, void *arg)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mine = cap->issued | cap->implemented;
 	used = __ceph_caps_used(ci);
 	oissued = __ceph_caps_issued_other(ci, cap);
@@ -1263,8 +1348,12 @@ static int trim_caps_cb(struct inode *inode, struct ceph_cap *cap, void *arg)
 <<<<<<< HEAD
 		spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_unlock(&ci->i_ceph_lock);
+=======
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		d_prune_aliases(inode);
 		dout("trim_caps_cb %p cap %p  pruned, count now %d\n",
 		     inode, cap, atomic_read(&inode->i_count));
@@ -1275,8 +1364,12 @@ out:
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1342,8 +1435,12 @@ int ceph_add_cap_releases(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 				   GFP_NOFS, false);
 =======
+<<<<<<< HEAD
+				   GFP_NOFS, false);
+=======
 				   GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!msg)
 			goto out_unlocked;
 		dout("add_cap_releases %p msg %p now %d\n", session, msg,
@@ -1401,8 +1498,12 @@ static int check_cap_flush(struct ceph_mds_client *mdsc, u64 want_flush_seq)
 <<<<<<< HEAD
 			spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_lock(&ci->i_ceph_lock);
+=======
 			spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ci->i_cap_flush_seq <= want_flush_seq) {
 				dout("check_cap_flush still flushing %p "
 				     "seq %lld <= %lld to mds%d\n", inode,
@@ -1413,8 +1514,12 @@ static int check_cap_flush(struct ceph_mds_client *mdsc, u64 want_flush_seq)
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		mutex_unlock(&session->s_mutex);
 		ceph_put_mds_session(session);
@@ -1608,7 +1713,11 @@ retry:
 <<<<<<< HEAD
 			spin_unlock(&temp->d_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&temp->d_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		} else {
 			pos -= temp->d_name.len;
@@ -1713,8 +1822,12 @@ static int set_request_path_attr(struct inode *rinode, struct dentry *rdentry,
 <<<<<<< HEAD
 	} else if (rpath || rino) {
 =======
+<<<<<<< HEAD
+	} else if (rpath || rino) {
+=======
 	} else if (rpath) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*ino = rino;
 		*ppath = rpath;
 		*pathlen = strlen(rpath);
@@ -1774,8 +1887,12 @@ static struct ceph_msg *create_request_message(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_REQUEST, len, GFP_NOFS, false);
 =======
+<<<<<<< HEAD
+	msg = ceph_msg_new(CEPH_MSG_CLIENT_REQUEST, len, GFP_NOFS, false);
+=======
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_REQUEST, len, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!msg) {
 		msg = ERR_PTR(-ENOMEM);
 		goto out_free2;
@@ -2069,10 +2186,15 @@ int ceph_mdsc_do_request(struct ceph_mds_client *mdsc,
 		ceph_get_cap_refs(ceph_inode(req->r_old_dentry_dir),
 				  CEPH_CAP_PIN);
 =======
+<<<<<<< HEAD
+		ceph_get_cap_refs(ceph_inode(req->r_old_dentry_dir),
+				  CEPH_CAP_PIN);
+=======
 		ceph_get_cap_refs(
 			ceph_inode(req->r_old_dentry->d_parent->d_inode),
 			CEPH_CAP_PIN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* issue */
 	mutex_lock(&mdsc->mutex);
@@ -2133,8 +2255,12 @@ out:
 <<<<<<< HEAD
  * Invalidate dir D_COMPLETE, dentry lease state on an aborted MDS
 =======
+<<<<<<< HEAD
+ * Invalidate dir D_COMPLETE, dentry lease state on an aborted MDS
+=======
  * Invalidate dir I_COMPLETE, dentry lease state on an aborted MDS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * namespace request.
  */
 void ceph_invalidate_dir_request(struct ceph_mds_request *req)
@@ -2143,11 +2269,16 @@ void ceph_invalidate_dir_request(struct ceph_mds_request *req)
 	struct ceph_inode_info *ci = ceph_inode(inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("invalidate_dir_request %p (D_COMPLETE, lease(s))\n", inode);
 	spin_lock(&ci->i_ceph_lock);
 	ceph_dir_clear_complete(inode);
 	ci->i_release_count++;
 	spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 	dout("invalidate_dir_request %p (I_COMPLETE, lease(s))\n", inode);
 	spin_lock(&inode->i_lock);
@@ -2155,6 +2286,7 @@ void ceph_invalidate_dir_request(struct ceph_mds_request *req)
 	ci->i_release_count++;
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (req->r_dentry)
 		ceph_invalidate_dentry_lease(req->r_dentry);
@@ -2466,16 +2598,22 @@ static void handle_session(struct ceph_mds_session *session,
 		pr_info("mds%d caps went stale, renewing\n",
 			session->s_mds);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&session->s_gen_ttl_lock);
 		session->s_cap_gen++;
 		session->s_cap_ttl = jiffies - 1;
 		spin_unlock(&session->s_gen_ttl_lock);
+<<<<<<< HEAD
+=======
 =======
 		spin_lock(&session->s_cap_lock);
 		session->s_cap_gen++;
 		session->s_cap_ttl = 0;
 		spin_unlock(&session->s_cap_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		send_renew_caps(mdsc, session);
 		break;
 
@@ -2572,8 +2710,12 @@ static int encode_caps_cb(struct inode *inode, struct ceph_cap *cap,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap->seq = 0;        /* reset cap seq */
 	cap->issue_seq = 0;  /* and issue_seq */
 
@@ -2599,8 +2741,12 @@ static int encode_caps_cb(struct inode *inode, struct ceph_cap *cap,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (recon_state->flock) {
 		int num_fcntl_locks, num_flock_locks;
@@ -2677,8 +2823,12 @@ static void send_mds_reconnect(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 	reply = ceph_msg_new(CEPH_MSG_CLIENT_RECONNECT, 0, GFP_NOFS, false);
 =======
+<<<<<<< HEAD
+	reply = ceph_msg_new(CEPH_MSG_CLIENT_RECONNECT, 0, GFP_NOFS, false);
+=======
 	reply = ceph_msg_new(CEPH_MSG_CLIENT_RECONNECT, 0, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!reply)
 		goto fail_nomsg;
 
@@ -2886,8 +3036,11 @@ static void handle_lease(struct ceph_mds_client *mdsc,
 	struct ceph_vino vino;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct qstr dname;
 	int release = 0;
 
@@ -2900,8 +3053,11 @@ static void handle_lease(struct ceph_mds_client *mdsc,
 	vino.snap = CEPH_NOSNAP;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mask = le16_to_cpu(h->mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	seq = le32_to_cpu(h->seq);
 	dname.name = (void *)h + sizeof(*h) + sizeof(u32);
 	dname.len = msg->front.iov_len - sizeof(*h) - sizeof(u32);
@@ -2917,9 +3073,14 @@ static void handle_lease(struct ceph_mds_client *mdsc,
 	dout("handle_lease %s, ino %llx %p %.*s\n",
 	     ceph_lease_op_name(h->action), vino.ino, inode,
 =======
+<<<<<<< HEAD
+	dout("handle_lease %s, ino %llx %p %.*s\n",
+	     ceph_lease_op_name(h->action), vino.ino, inode,
+=======
 	dout("handle_lease %s, mask %d, ino %llx %p %.*s\n",
 	     ceph_lease_op_name(h->action), mask, vino.ino, inode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	     dname.len, dname.name);
 	if (inode == NULL) {
 		dout("handle_lease no inode %llx\n", vino.ino);
@@ -2946,8 +3107,12 @@ static void handle_lease(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 		if (di->lease_session == session) {
 =======
+<<<<<<< HEAD
+		if (di->lease_session == session) {
+=======
 		if (di && di->lease_session == session) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ceph_seq_cmp(di->lease_seq, seq) > 0)
 				h->seq = cpu_to_le32(di->lease_seq);
 			__ceph_mdsc_drop_dentry_lease(dentry);
@@ -2959,8 +3124,12 @@ static void handle_lease(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 		if (di->lease_session == session &&
 =======
+<<<<<<< HEAD
+		if (di->lease_session == session &&
+=======
 		if (di && di->lease_session == session &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    di->lease_gen == session->s_cap_gen &&
 		    di->lease_renew_from &&
 		    di->lease_renew_after == 0) {
@@ -3015,16 +3184,23 @@ void ceph_mdsc_lease_send_msg(struct ceph_mds_session *session,
 <<<<<<< HEAD
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_LEASE, len, GFP_NOFS, false);
 =======
+<<<<<<< HEAD
+	msg = ceph_msg_new(CEPH_MSG_CLIENT_LEASE, len, GFP_NOFS, false);
+=======
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_LEASE, len, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!msg)
 		return;
 	lease = msg->front.iov_base;
 	lease->action = action;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	lease->mask = cpu_to_le16(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lease->ino = cpu_to_le64(ceph_vino(inode).ino);
 	lease->first = lease->last = cpu_to_le64(ceph_vino(inode).snap);
 	lease->seq = cpu_to_le32(seq);
@@ -3049,8 +3225,12 @@ void ceph_mdsc_lease_release(struct ceph_mds_client *mdsc, struct inode *inode,
 <<<<<<< HEAD
 			     struct dentry *dentry)
 =======
+<<<<<<< HEAD
+			     struct dentry *dentry)
+=======
 			     struct dentry *dentry, int mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_dentry_info *di;
 	struct ceph_mds_session *session;
@@ -3060,8 +3240,11 @@ void ceph_mdsc_lease_release(struct ceph_mds_client *mdsc, struct inode *inode,
 	BUG_ON(dentry == NULL);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	BUG_ON(mask == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* is dentry lease valid? */
 	spin_lock(&dentry->d_lock);
@@ -3075,9 +3258,14 @@ void ceph_mdsc_lease_release(struct ceph_mds_client *mdsc, struct inode *inode,
 		     "no lease\n",
 		     inode, dentry);
 =======
+<<<<<<< HEAD
+		     "no lease\n",
+		     inode, dentry);
+=======
 		     "no lease on %d\n",
 		     inode, dentry, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&dentry->d_lock);
 		return;
 	}
@@ -3092,9 +3280,14 @@ void ceph_mdsc_lease_release(struct ceph_mds_client *mdsc, struct inode *inode,
 	dout("lease_release inode %p dentry %p to mds%d\n",
 	     inode, dentry, session->s_mds);
 =======
+<<<<<<< HEAD
+	dout("lease_release inode %p dentry %p to mds%d\n",
+	     inode, dentry, session->s_mds);
+=======
 	dout("lease_release inode %p dentry %p mask %d to mds%d\n",
 	     inode, dentry, mask, session->s_mds);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ceph_mdsc_lease_send_msg(session, inode, dentry,
 				 CEPH_MDS_LEASE_RELEASE, seq);
 	ceph_put_mds_session(session);
@@ -3363,8 +3556,12 @@ void ceph_mdsc_sync(struct ceph_mds_client *mdsc)
 <<<<<<< HEAD
 static bool done_closing_sessions(struct ceph_mds_client *mdsc)
 =======
+<<<<<<< HEAD
+static bool done_closing_sessions(struct ceph_mds_client *mdsc)
+=======
 bool done_closing_sessions(struct ceph_mds_client *mdsc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i, n = 0;
 

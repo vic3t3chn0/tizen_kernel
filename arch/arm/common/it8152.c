@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/pci.h>
 #include <asm/hardware/it8152.h>
@@ -151,8 +155,12 @@ void it8152_irq_demux(unsigned int irq, struct irq_desc *desc)
 <<<<<<< HEAD
 int __init it8152_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+int __init it8152_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 int __init it8152_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if ((dev->vendor == PCI_VENDOR_ID_ITE) &&
 	    (dev->device == PCI_DEVICE_ID_ITE_8152)) {
@@ -252,14 +260,20 @@ static struct resource it8152_mem = {
  * connected to ITE8152 (PCI and USB) should have limited DMA window
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int it8152_needs_bounce(struct device *dev, dma_addr_t dma_addr, size_t size)
 {
 	dev_dbg(dev, "%s: dma_addr %08x, size %08x\n",
 		__func__, dma_addr, size);
 	return (dma_addr + size - PHYS_OFFSET) >= SZ_64M;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Setup DMA mask to 64MB on devices connected to ITE8152. Ignore all
@@ -274,8 +288,12 @@ static int it8152_pci_platform_notify(struct device *dev)
 <<<<<<< HEAD
 		dmabounce_register_dev(dev, 2048, 4096, it8152_needs_bounce);
 =======
+<<<<<<< HEAD
+		dmabounce_register_dev(dev, 2048, 4096, it8152_needs_bounce);
+=======
 		dmabounce_register_dev(dev, 2048, 4096);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -290,6 +308,8 @@ static int it8152_pci_platform_notify_remove(struct device *dev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int dma_needs_bounce(struct device *dev, dma_addr_t dma_addr, size_t size)
 {
 	dev_dbg(dev, "%s: dma_addr %08x, size %08x\n",
@@ -299,6 +319,7 @@ int dma_needs_bounce(struct device *dev, dma_addr_t dma_addr, size_t size)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int dma_set_coherent_mask(struct device *dev, u64 mask)
 {
 	if (mask >= PHYS_OFFSET + SZ_64M - 1)
@@ -328,9 +349,14 @@ int __init it8152_pci_setup(int nr, struct pci_sys_data *sys)
 	pci_add_resource_offset(&sys->resources, &it8152_io, sys->io_offset);
 	pci_add_resource_offset(&sys->resources, &it8152_mem, sys->mem_offset);
 =======
+<<<<<<< HEAD
+	pci_add_resource_offset(&sys->resources, &it8152_io, sys->io_offset);
+	pci_add_resource_offset(&sys->resources, &it8152_mem, sys->mem_offset);
+=======
 	sys->resource[0] = &it8152_io;
 	sys->resource[1] = &it8152_mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (platform_notify || platform_notify_remove) {
 		printk(KERN_ERR "PCI: Can't use platform_notify\n");
@@ -355,6 +381,11 @@ err0:
    termination by PCI bus master devices
 */
 =======
+<<<<<<< HEAD
+/* ITE bridge requires setting latency timer to avoid early bus access
+   termination by PCI bus master devices
+*/
+=======
 /*
  * If we set up a device for bus mastering, we need to check the latency
  * timer as we don't have even crappy BIOSes to set it properly.
@@ -363,6 +394,7 @@ err0:
 unsigned int pcibios_max_latency = 255;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pcibios_set_master(struct pci_dev *dev)
 {
 	u8 lat;
@@ -391,8 +423,12 @@ struct pci_bus * __init it8152_pci_scan_bus(int nr, struct pci_sys_data *sys)
 <<<<<<< HEAD
 	return pci_scan_root_bus(NULL, nr, &it8152_ops, sys, &sys->resources);
 =======
+<<<<<<< HEAD
+	return pci_scan_root_bus(NULL, nr, &it8152_ops, sys, &sys->resources);
+=======
 	return pci_scan_bus(nr, &it8152_ops, sys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 EXPORT_SYMBOL(dma_set_coherent_mask);

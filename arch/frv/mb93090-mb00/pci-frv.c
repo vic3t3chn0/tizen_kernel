@@ -196,6 +196,8 @@ void __init pcibios_resource_survey(void)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 /*
  *  If we set up a device for bus mastering, we need to check the latency
@@ -217,3 +219,4 @@ void pcibios_set_master(struct pci_dev *dev)
 	pci_write_config_byte(dev, PCI_LATENCY_TIMER, lat);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

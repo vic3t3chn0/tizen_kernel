@@ -28,6 +28,9 @@
 #define __ARCH_ARM_MACH_OMAP_COMMON_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/i2c.h>
 #include <plat/omap_hwmod.h>
 
@@ -37,6 +40,8 @@ extern void omap_reserve(void);
 extern int omap_dss_reset(struct omap_hwmod *);
 
 void omap_sram_init(void);
+<<<<<<< HEAD
+=======
 =======
 #include <linux/delay.h>
 
@@ -108,5 +113,6 @@ extern struct device *omap2_get_iva_device(void);
 extern struct device *omap2_get_l3_device(void);
 extern struct device *omap4_get_dsp_device(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ARCH_ARM_MACH_OMAP_COMMON_H */

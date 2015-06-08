@@ -39,6 +39,13 @@
 #include <linux/pci.h>
 #include <acpi/acpi_bus.h>
 #include <acpi/acpi_drivers.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <acpi/apei.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dmi.h>
 #include <linux/suspend.h>
 
@@ -249,6 +256,16 @@ static int __acpi_bus_set_power(struct acpi_device *device, int state)
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* For D3cold we should execute _PS3, not _PS4. */
+	if (state == ACPI_STATE_D3_COLD)
+		object_name[3] = '3';
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Transition Power
 	 * ----------------
@@ -519,6 +536,13 @@ out_kfree:
 }
 EXPORT_SYMBOL(acpi_run_osc);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+bool osc_sb_apei_support_acked;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u8 sb_uuid_str[] = "0811B06E-4A27-44F9-8D60-3CBBC22E7B48";
 static void acpi_bus_osc_support(void)
 {
@@ -541,11 +565,33 @@ static void acpi_bus_osc_support(void)
 #if defined(CONFIG_ACPI_PROCESSOR) || defined(CONFIG_ACPI_PROCESSOR_MODULE)
 	capbuf[OSC_SUPPORT_TYPE] |= OSC_SB_PPC_OST_SUPPORT;
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (!ghes_disable)
+		capbuf[OSC_SUPPORT_TYPE] |= OSC_SB_APEI_SUPPORT;
+	if (ACPI_FAILURE(acpi_get_handle(NULL, "\\_SB", &handle)))
+		return;
+	if (ACPI_SUCCESS(acpi_run_osc(handle, &context))) {
+		u32 *capbuf_ret = context.ret.pointer;
+		if (context.ret.length > OSC_SUPPORT_TYPE)
+			osc_sb_apei_support_acked =
+				capbuf_ret[OSC_SUPPORT_TYPE] & OSC_SB_APEI_SUPPORT;
+		kfree(context.ret.pointer);
+	}
+	/* do we need to check other returned cap? Sounds no */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ACPI_FAILURE(acpi_get_handle(NULL, "\\_SB", &handle)))
 		return;
 	if (ACPI_SUCCESS(acpi_run_osc(handle, &context)))
 		kfree(context.ret.pointer);
 	/* do we need to check the returned cap? Sounds no */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* --------------------------------------------------------------------------
@@ -901,10 +947,20 @@ void __init acpi_early_init(void)
 	}
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = acpi_enable_subsystem(~ACPI_NO_ACPI_ENABLE);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status =
 	    acpi_enable_subsystem(~
 				  (ACPI_NO_HARDWARE_INIT |
 				   ACPI_NO_ACPI_ENABLE));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ACPI_FAILURE(status)) {
 		printk(KERN_ERR PREFIX "Unable to enable ACPI\n");
 		goto error0;
@@ -925,8 +981,17 @@ static int __init acpi_bus_init(void)
 
 	acpi_os_initialize1();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = acpi_enable_subsystem(ACPI_NO_ACPI_ENABLE);
+=======
 	status =
 	    acpi_enable_subsystem(ACPI_NO_HARDWARE_INIT | ACPI_NO_ACPI_ENABLE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	status =
+	    acpi_enable_subsystem(ACPI_NO_HARDWARE_INIT | ACPI_NO_ACPI_ENABLE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ACPI_FAILURE(status)) {
 		printk(KERN_ERR PREFIX
 		       "Unable to start the ACPI Interpreter\n");
@@ -944,6 +1009,14 @@ static int __init acpi_bus_init(void)
 	status = acpi_ec_ecdt_probe();
 	/* Ignore result. Not having an ECDT is not fatal. */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	acpi_bus_osc_support();
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = acpi_initialize_objects(ACPI_FULL_INITIALIZATION);
 	if (ACPI_FAILURE(status)) {
 		printk(KERN_ERR PREFIX "Unable to initialize ACPI objects\n");
@@ -951,12 +1024,21 @@ static int __init acpi_bus_init(void)
 	}
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * _OSC method may exist in module level code,
 	 * so it must be run after ACPI_FULL_INITIALIZATION
 	 */
 	acpi_bus_osc_support();
 
 	/*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * _PDC control method may load dynamic SSDT tables,
 	 * and we need to install the table handler before that.
 	 */
@@ -1008,6 +1090,13 @@ static int __init acpi_bus_init(void)
 }
 
 struct kobject *acpi_kobj;
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(acpi_kobj);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init acpi_init(void)
 {

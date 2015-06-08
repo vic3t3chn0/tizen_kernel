@@ -23,6 +23,9 @@
 #include <linux/io.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cacheflush.h>
 
 #include <mach/hardware.h>
@@ -42,11 +45,14 @@ enum {
 };
 static int msm_irq_debug_mask;
 module_param_named(debug_mask, msm_irq_debug_mask, int, S_IRUGO | S_IWUSR | S_IWGRP);
+<<<<<<< HEAD
+=======
 =======
 #include <mach/hardware.h>
 
 #include <mach/msm_iomap.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define VIC_REG(off) (MSM_VIC_BASE + (off))
 
@@ -64,6 +70,9 @@ module_param_named(debug_mask, msm_irq_debug_mask, int, S_IRUGO | S_IWUSR | S_IW
 #define VIC_INT_POLARITY1   VIC_REG(0x0054)  /* 1: NEG, 0: POS */
 #define VIC_NO_PEND_VAL     VIC_REG(0x0060)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_ARCH_MSM_SCORPION) && !defined(CONFIG_MSM_SMP)
 #define VIC_NO_PEND_VAL_FIQ VIC_REG(0x0064)
@@ -74,11 +83,14 @@ module_param_named(debug_mask, msm_irq_debug_mask, int, S_IRUGO | S_IWUSR | S_IW
 #define VIC_CONFIG          VIC_REG(0x0068)  /* 1: USE ARM1136 VIC */
 #define VIC_PROTECTION      VIC_REG(0x006C)  /* 1: ENABLE          */
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define VIC_INT_MASTEREN    VIC_REG(0x0064)  /* 1: IRQ, 2: FIQ     */
 #define VIC_PROTECTION      VIC_REG(0x006C)  /* 1: ENABLE          */
 #define VIC_CONFIG          VIC_REG(0x0068)  /* 1: USE ARM1136 VIC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIC_IRQ_STATUS0     VIC_REG(0x0080)
 #define VIC_IRQ_STATUS1     VIC_REG(0x0084)
 #define VIC_FIQ_STATUS0     VIC_REG(0x0090)
@@ -93,6 +105,9 @@ module_param_named(debug_mask, msm_irq_debug_mask, int, S_IRUGO | S_IWUSR | S_IW
 #define VIC_IRQ_VEC_PEND_RD VIC_REG(0x00D4)  /* pending vector addr */
 #define VIC_IRQ_VEC_WR      VIC_REG(0x00D8)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_ARCH_MSM_SCORPION) && !defined(CONFIG_MSM_SMP)
 #define VIC_FIQ_VEC_RD      VIC_REG(0x00DC)
@@ -109,16 +124,22 @@ module_param_named(debug_mask, msm_irq_debug_mask, int, S_IRUGO | S_IWUSR | S_IW
 #define VIC_IRQ_IN_STACK    VIC_REG(0x00E4)
 #define VIC_TEST_BUS_SEL    VIC_REG(0x00E8)
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define VIC_IRQ_IN_SERVICE  VIC_REG(0x00E0)
 #define VIC_IRQ_IN_STACK    VIC_REG(0x00E4)
 #define VIC_TEST_BUS_SEL    VIC_REG(0x00E8)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define VIC_VECTPRIORITY(n) VIC_REG(0x0200+((n) * 4))
 #define VIC_VECTADDR(n)     VIC_REG(0x0400+((n) * 4))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static uint32_t msm_irq_smsm_wake_enable[2];
 static struct {
 	uint32_t int_en[2];
@@ -463,6 +484,8 @@ static struct irq_chip msm_irq_chip = {
 	.unmask    = msm_irq_unmask,
 	.set_wake  = msm_irq_set_wake,
 	.set_type  = msm_irq_set_type,
+<<<<<<< HEAD
+=======
 =======
 static void msm_irq_ack(struct irq_data *d)
 {
@@ -517,6 +540,7 @@ static struct irq_chip msm_irq_chip = {
 	.irq_set_wake  = msm_irq_set_wake,
 	.irq_set_type  = msm_irq_set_type,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init msm_init_irq(void)
@@ -546,14 +570,21 @@ void __init msm_init_irq(void)
 <<<<<<< HEAD
 	writel(3, VIC_INT_MASTEREN);
 =======
+<<<<<<< HEAD
+	writel(3, VIC_INT_MASTEREN);
+=======
 	writel(1, VIC_INT_MASTEREN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (n = 0; n < NR_MSM_IRQS; n++) {
 		irq_set_chip_and_handler(n, &msm_irq_chip, handle_level_irq);
 		set_irq_flags(n, IRQF_VALID);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	msm_init_sirc();
 }
@@ -683,6 +714,9 @@ void msm_fiq_exit_sleep(void)
 		fiq_glue_setup(fiq_func, fiq_data, fiq_stack + THREAD_START_SP);
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

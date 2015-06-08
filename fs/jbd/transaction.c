@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/backing-dev.h>
 =======
+<<<<<<< HEAD
+#include <linux/backing-dev.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __journal_temp_unlink_buffer(struct journal_head *jh);
 
@@ -104,10 +108,15 @@ static int start_this_handle(journal_t *journal, handle_t *handle)
 alloc_transaction:
 	if (!journal->j_running_transaction) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		new_transaction = kzalloc(sizeof(*new_transaction), GFP_NOFS);
 		if (!new_transaction) {
 			congestion_wait(BLK_RW_ASYNC, HZ/50);
 			goto alloc_transaction;
+<<<<<<< HEAD
+=======
 =======
 		new_transaction = kzalloc(sizeof(*new_transaction),
 						GFP_NOFS|__GFP_NOFAIL);
@@ -115,6 +124,7 @@ alloc_transaction:
 			ret = -ENOMEM;
 			goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -438,6 +448,9 @@ int journal_restart(handle_t *handle, int nblocks)
  * @journal:  Journal to establish a barrier on.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This locks out any further updates from being started, and blocks until all
  * existing updates have completed, returning only once the journal is in a
  * quiescent state with no updates running.
@@ -447,6 +460,8 @@ int journal_restart(handle_t *handle, int nblocks)
  * hibernate needs to lock filesystem but locked mutex then blocks hibernation.
  * Since locking filesystem is rare operation, we use simple counter and
  * waitqueue for locking.
+<<<<<<< HEAD
+=======
 =======
  * This locks out any further updates from being started, and blocks
  * until all existing updates have completed, returning only once the
@@ -454,12 +469,16 @@ int journal_restart(handle_t *handle, int nblocks)
  *
  * The journal lock should not be held on entry.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void journal_lock_updates(journal_t *journal)
 {
 	DEFINE_WAIT(wait);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 wait:
 	/* Wait for previous locked operation to finish */
 	wait_event(journal->j_wait_transaction_locked,
@@ -474,9 +493,12 @@ wait:
 		spin_unlock(&journal->j_state_lock);
 		goto wait;
 	}
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&journal->j_state_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	++journal->j_barrier_count;
 
 	/* Wait until there are no running updates */
@@ -502,6 +524,8 @@ wait:
 	spin_unlock(&journal->j_state_lock);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/*
 	 * We have now established a barrier against other normal updates, but
@@ -511,6 +535,7 @@ wait:
 	 */
 	mutex_lock(&journal->j_barrier);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -520,9 +545,12 @@ wait:
  * Release a transaction barrier obtained with journal_lock_updates().
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *
  * Should be called without the journal lock held.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void journal_unlock_updates (journal_t *journal)
 {
@@ -530,8 +558,11 @@ void journal_unlock_updates (journal_t *journal)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&journal->j_barrier);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&journal->j_state_lock);
 	--journal->j_barrier_count;
 	spin_unlock(&journal->j_state_lock);
@@ -747,8 +778,11 @@ repeat:
 		J_ASSERT_JH(jh, !jh->b_next_transaction);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		jh->b_transaction = transaction;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		JBUFFER_TRACE(jh, "file as BJ_Reserved");
 		spin_lock(&journal->j_list_lock);
 		__journal_file_buffer(jh, transaction, BJ_Reserved);
@@ -770,10 +804,16 @@ done:
 		memcpy(jh->b_frozen_data, source+offset, jh2bh(jh)->b_size);
 		kunmap_atomic(source);
 =======
+<<<<<<< HEAD
+		source = kmap_atomic(page);
+		memcpy(jh->b_frozen_data, source+offset, jh2bh(jh)->b_size);
+		kunmap_atomic(source);
+=======
 		source = kmap_atomic(page, KM_USER0);
 		memcpy(jh->b_frozen_data, source+offset, jh2bh(jh)->b_size);
 		kunmap_atomic(source, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	jbd_unlock_bh_state(bh);
 
@@ -878,8 +918,11 @@ int journal_get_create_access(handle_t *handle, struct buffer_head *bh)
 		clear_buffer_dirty(jh2bh(jh));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		jh->b_transaction = transaction;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* first access by this transaction */
 		jh->b_modified = 0;
@@ -909,9 +952,14 @@ int journal_get_create_access(handle_t *handle, struct buffer_head *bh)
 out:
 	journal_put_journal_head(jh);
 =======
+<<<<<<< HEAD
+out:
+	journal_put_journal_head(jh);
+=======
 	journal_put_journal_head(jh);
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -1140,9 +1188,15 @@ int journal_dirty_data(handle_t *handle, struct buffer_head *bh)
 			if (jh->b_transaction != NULL &&
 			    jh->b_transaction != handle->h_transaction) {
 =======
+<<<<<<< HEAD
+			/* We might have slept so buffer could be refiled now */
+			if (jh->b_transaction != NULL &&
+			    jh->b_transaction != handle->h_transaction) {
+=======
 
 			if (jh->b_transaction != NULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				JBUFFER_TRACE(jh, "unfile from commit");
 				__journal_temp_unlink_buffer(jh);
 				/* It still points to the committing
@@ -1165,9 +1219,12 @@ int journal_dirty_data(handle_t *handle, struct buffer_head *bh)
 			J_ASSERT_JH(jh, jh->b_jlist != BJ_Shadow);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			__journal_temp_unlink_buffer(jh);
 			jh->b_transaction = handle->h_transaction;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			JBUFFER_TRACE(jh, "file as data");
 			__journal_file_buffer(jh, handle->h_transaction,
 						BJ_SyncData);
@@ -1377,9 +1434,12 @@ int journal_forget (handle_t *handle, struct buffer_head *bh)
 			__journal_unfile_buffer(jh);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			journal_remove_journal_head(bh);
 			__brelse(bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!buffer_jbd(bh)) {
 				spin_unlock(&journal->j_list_lock);
 				jbd_unlock_bh_state(bh);
@@ -1701,6 +1761,9 @@ static void __journal_temp_unlink_buffer(struct journal_head *jh)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Remove buffer from all transactions.
  *
@@ -1708,8 +1771,11 @@ static void __journal_temp_unlink_buffer(struct journal_head *jh)
  *
  * jh and bh may be already freed when this function returns.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __journal_unfile_buffer(struct journal_head *jh)
 {
 	__journal_temp_unlink_buffer(jh);
@@ -1717,12 +1783,19 @@ void __journal_unfile_buffer(struct journal_head *jh)
 <<<<<<< HEAD
 	journal_put_journal_head(jh);
 =======
+<<<<<<< HEAD
+	journal_put_journal_head(jh);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void journal_unfile_buffer(journal_t *journal, struct journal_head *jh)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct buffer_head *bh = jh2bh(jh);
 
 	/* Get reference so that buffer cannot be freed before we unlock it */
@@ -1733,6 +1806,8 @@ void journal_unfile_buffer(journal_t *journal, struct journal_head *jh)
 	spin_unlock(&journal->j_list_lock);
 	jbd_unlock_bh_state(bh);
 	__brelse(bh);
+<<<<<<< HEAD
+=======
 =======
 	jbd_lock_bh_state(jh2bh(jh));
 	spin_lock(&journal->j_list_lock);
@@ -1740,6 +1815,7 @@ void journal_unfile_buffer(journal_t *journal, struct journal_head *jh)
 	spin_unlock(&journal->j_list_lock);
 	jbd_unlock_bh_state(jh2bh(jh));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1768,9 +1844,12 @@ __journal_try_to_free_buffer(journal_t *journal, struct buffer_head *bh)
 			__journal_unfile_buffer(jh);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			journal_remove_journal_head(bh);
 			__brelse(bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else if (jh->b_cp_transaction != NULL && jh->b_transaction == NULL) {
 		/* written-back checkpointed metadata buffer */
@@ -1779,9 +1858,12 @@ __journal_try_to_free_buffer(journal_t *journal, struct buffer_head *bh)
 			__journal_remove_checkpoint(jh);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			journal_remove_journal_head(bh);
 			__brelse(bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	spin_unlock(&journal->j_list_lock);
@@ -1847,8 +1929,12 @@ int journal_try_to_free_buffers(journal_t *journal,
 <<<<<<< HEAD
 		 * journal_put_journal_head().
 =======
+<<<<<<< HEAD
+		 * journal_put_journal_head().
+=======
 		 * journal_remove_journal_head() and journal_put_journal_head().
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 */
 		jh = journal_grab_journal_head(bh);
 		if (!jh)
@@ -1890,11 +1976,17 @@ static int __dispose_buffer(struct journal_head *jh, transaction_t *transaction)
 		JBUFFER_TRACE(jh, "on running+cp transaction");
 		__journal_temp_unlink_buffer(jh);
 =======
+<<<<<<< HEAD
+	if (jh->b_cp_transaction) {
+		JBUFFER_TRACE(jh, "on running+cp transaction");
+		__journal_temp_unlink_buffer(jh);
+=======
 	__journal_unfile_buffer(jh);
 
 	if (jh->b_cp_transaction) {
 		JBUFFER_TRACE(jh, "on running+cp transaction");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * We don't want to write the buffer anymore, clear the
 		 * bit so that we don't confuse checks in
@@ -1908,9 +2000,13 @@ static int __dispose_buffer(struct journal_head *jh, transaction_t *transaction)
 <<<<<<< HEAD
 		__journal_unfile_buffer(jh);
 =======
+<<<<<<< HEAD
+		__journal_unfile_buffer(jh);
+=======
 		journal_remove_journal_head(bh);
 		__brelse(bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return may_free;
 }
@@ -1965,24 +2061,34 @@ static int __dispose_buffer(struct journal_head *jh, transaction_t *transaction)
 <<<<<<< HEAD
 static int journal_unmap_buffer(journal_t *journal, struct buffer_head *bh)
 =======
+<<<<<<< HEAD
+static int journal_unmap_buffer(journal_t *journal, struct buffer_head *bh)
+=======
 static int journal_unmap_buffer(journal_t *journal, struct buffer_head *bh,
 				int partial_page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	transaction_t *transaction;
 	struct journal_head *jh;
 	int may_free = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	BUFFER_TRACE(bh, "entry");
 
+<<<<<<< HEAD
+=======
 =======
 
 	BUFFER_TRACE(bh, "entry");
 
 retry:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * It is safe to proceed here without the j_list_lock because the
 	 * buffers cannot be stolen by try_to_free_buffers as long as we are
@@ -2011,10 +2117,15 @@ retry:
 	 * transaction marking the buffer as freed in the filesystem
 	 * structures is committed because from that moment on the
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * buffer can be reallocated and used by a different page.
 	 * Since the block hasn't been freed yet but the inode has
 	 * already been added to orphan list, it is safe for us to add
 	 * the buffer to BJ_Forget list of the newest transaction.
+<<<<<<< HEAD
+=======
 =======
 	 * block can be reallocated and used by a different page.
 	 * Since the block hasn't been freed yet but the inode has
@@ -2029,6 +2140,7 @@ retry:
 	 * BJ_Forget list just to stop checkpointing code from cleaning up
 	 * the transaction this buffer was modified in.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	transaction = jh->b_transaction;
 	if (transaction == NULL) {
@@ -2056,6 +2168,9 @@ retry:
 			 * longer. */
 			JBUFFER_TRACE(jh, "checkpointed: add to BJ_Forget");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = __dispose_buffer(jh,
 					journal->j_running_transaction);
 			journal_put_journal_head(jh);
@@ -2063,11 +2178,14 @@ retry:
 			jbd_unlock_bh_state(bh);
 			spin_unlock(&journal->j_state_lock);
 			return ret;
+<<<<<<< HEAD
+=======
 =======
 			may_free = __dispose_buffer(jh,
 					journal->j_running_transaction);
 			goto zap_buffer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/* There is no currently-running transaction. So the
 			 * orphan record which we wrote for this file must have
@@ -2076,6 +2194,9 @@ retry:
 			if (journal->j_committing_transaction) {
 				JBUFFER_TRACE(jh, "give to committing trans");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ret = __dispose_buffer(jh,
 					journal->j_committing_transaction);
 				journal_put_journal_head(jh);
@@ -2083,11 +2204,14 @@ retry:
 				jbd_unlock_bh_state(bh);
 				spin_unlock(&journal->j_state_lock);
 				return ret;
+<<<<<<< HEAD
+=======
 =======
 				may_free = __dispose_buffer(jh,
 					journal->j_committing_transaction);
 				goto zap_buffer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} else {
 				/* The orphan record's transaction has
 				 * committed.  We can cleanse this buffer */
@@ -2109,10 +2233,15 @@ retry:
 		/*
 		 * The buffer is committing, we simply cannot touch
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * it. So we just set j_next_transaction to the
 		 * running transaction (if there is one) and mark
 		 * buffer as freed so that commit code knows it should
 		 * clear dirty bits when it is done with the buffer.
+<<<<<<< HEAD
+=======
 =======
 		 * it. If the page is straddling i_size we have to wait
 		 * for commit and try again.
@@ -2135,6 +2264,7 @@ retry:
 		 * one) and mark buffer as freed so that commit code knows it
 		 * should clear dirty bits when it is done with the buffer.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 */
 		set_buffer_freed(bh);
 		if (journal->j_running_transaction && buffer_jbddirty(bh))
@@ -2159,6 +2289,8 @@ retry:
 zap_buffer:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * This is tricky. Although the buffer is truncated, it may be reused
 	 * if blocksize < pagesize and it is attached to the page straddling
@@ -2168,6 +2300,7 @@ zap_buffer:
 	 * here. */
 	jh->b_modified = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	journal_put_journal_head(jh);
 zap_buffer_no_jh:
 	spin_unlock(&journal->j_list_lock);
@@ -2219,9 +2352,13 @@ void journal_invalidatepage(journal_t *journal,
 <<<<<<< HEAD
 			may_free &= journal_unmap_buffer(journal, bh);
 =======
+<<<<<<< HEAD
+			may_free &= journal_unmap_buffer(journal, bh);
+=======
 			may_free &= journal_unmap_buffer(journal, bh,
 							 offset > 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			unlock_buffer(bh);
 		}
 		curr_off = next_off;
@@ -2277,7 +2414,12 @@ void __journal_file_buffer(struct journal_head *jh,
 	else
 		journal_grab_journal_head(bh);
 =======
+<<<<<<< HEAD
+	else
+		journal_grab_journal_head(bh);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jh->b_transaction = transaction;
 
 	switch (jlist) {
@@ -2336,15 +2478,21 @@ void journal_file_buffer(struct journal_head *jh,
  * buffer on that transaction's metadata list.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Called under j_list_lock
  * Called under jbd_lock_bh_state(jh2bh(jh))
  *
  * jh and bh may be already free when this function returns
+<<<<<<< HEAD
+=======
 =======
  * Called under journal->j_list_lock
  *
  * Called under jbd_lock_bh_state(jh2bh(jh))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void __journal_refile_buffer(struct journal_head *jh)
 {
@@ -2369,13 +2517,19 @@ void __journal_refile_buffer(struct journal_head *jh)
 	was_dirty = test_clear_buffer_jbddirty(bh);
 	__journal_temp_unlink_buffer(jh);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We set b_transaction here because b_next_transaction will inherit
 	 * our jh reference and thus __journal_file_buffer() must not take a
 	 * new one.
 	 */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jh->b_transaction = jh->b_next_transaction;
 	jh->b_next_transaction = NULL;
 	if (buffer_freed(bh))
@@ -2393,10 +2547,15 @@ void __journal_refile_buffer(struct journal_head *jh)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * __journal_refile_buffer() with necessary locking added. We take our bh
  * reference so that we can safely unlock bh.
  *
  * The jh and bh may be freed by this call.
+<<<<<<< HEAD
+=======
 =======
  * For the unlocked version of this call, also make sure that any
  * hanging journal_head is cleaned up if necessary.
@@ -2411,18 +2570,24 @@ void __journal_refile_buffer(struct journal_head *jh)
  *
  * *** The journal_head may be freed by this call! ***
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void journal_refile_buffer(journal_t *journal, struct journal_head *jh)
 {
 	struct buffer_head *bh = jh2bh(jh);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Get reference so that buffer cannot be freed before we unlock it */
 	get_bh(bh);
 	jbd_lock_bh_state(bh);
 	spin_lock(&journal->j_list_lock);
 	__journal_refile_buffer(jh);
 	jbd_unlock_bh_state(bh);
+<<<<<<< HEAD
+=======
 =======
 	jbd_lock_bh_state(bh);
 	spin_lock(&journal->j_list_lock);
@@ -2432,6 +2597,7 @@ void journal_refile_buffer(journal_t *journal, struct journal_head *jh)
 	journal_remove_journal_head(bh);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&journal->j_list_lock);
 	__brelse(bh);
 }

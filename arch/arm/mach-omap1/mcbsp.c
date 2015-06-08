@@ -21,20 +21,29 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/irqs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/dma.h>
 #include <plat/mux.h>
 #include <plat/cpu.h>
 #include <plat/mcbsp.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 
 #include "iomap.h"
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DPS_RSTCT2_PER_EN	(1 << 0)
 #define DSP_RSTCT2_WD_PER_EN	(1 << 1)
 
@@ -44,7 +53,11 @@ static struct clk *dsp_clk;
 <<<<<<< HEAD
 static struct platform_device **omap_mcbsp_devices;
 =======
+<<<<<<< HEAD
+static struct platform_device **omap_mcbsp_devices;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void omap1_mcbsp_request(unsigned int id)
 {
@@ -55,8 +68,12 @@ static void omap1_mcbsp_request(unsigned int id)
 <<<<<<< HEAD
 	if (id == 0 || id == 2) {
 =======
+<<<<<<< HEAD
+	if (id == 0 || id == 2) {
+=======
 	if (id == OMAP_MCBSP1 || id == OMAP_MCBSP3) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dsp_use++ == 0) {
 			api_clk = clk_get(NULL, "api_ck");
 			dsp_clk = clk_get(NULL, "dsp_ck");
@@ -80,8 +97,12 @@ static void omap1_mcbsp_free(unsigned int id)
 <<<<<<< HEAD
 	if (id == 0 || id == 2) {
 =======
+<<<<<<< HEAD
+	if (id == 0 || id == 2) {
+=======
 	if (id == OMAP_MCBSP1 || id == OMAP_MCBSP3) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (--dsp_use == 0) {
 			if (!IS_ERR(api_clk)) {
 				clk_disable(api_clk);
@@ -101,6 +122,9 @@ static struct omap_mcbsp_ops omap1_mcbsp_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP7XX_MCBSP1_BASE	0xfffb1000
 #define OMAP7XX_MCBSP2_BASE	0xfffb1800
 
@@ -112,8 +136,11 @@ static struct omap_mcbsp_ops omap1_mcbsp_ops = {
 #define OMAP1610_MCBSP2_BASE	0xfffb1000
 #define OMAP1610_MCBSP3_BASE	0xe1017000
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_ARCH_OMAP730) || defined(CONFIG_ARCH_OMAP850)
 struct resource omap7xx_mcbsp_res[][6] = {
 	{
@@ -406,6 +433,9 @@ static struct omap_mcbsp_platform_data omap16xx_mcbsp_pdata[] = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void omap_mcbsp_register_board_cfg(struct resource *res, int res_count,
 			struct omap_mcbsp_platform_data *config, int size)
 {
@@ -439,14 +469,19 @@ static void omap_mcbsp_register_board_cfg(struct resource *res, int res_count,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init omap1_mcbsp_init(void)
 {
 	if (!cpu_class_is_omap1())
 		return -ENODEV;
 
 	if (cpu_is_omap7xx())
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		omap_mcbsp_count = OMAP7XX_MCBSP_COUNT;
@@ -462,6 +497,7 @@ static int __init omap1_mcbsp_init(void)
 
 	if (cpu_is_omap7xx())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		omap_mcbsp_register_board_cfg(omap7xx_mcbsp_res_0,
 					OMAP7XX_MCBSP_RES_SZ,
 					omap7xx_mcbsp_pdata,
@@ -482,8 +518,12 @@ static int __init omap1_mcbsp_init(void)
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	return omap_mcbsp_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 arch_initcall(omap1_mcbsp_init);

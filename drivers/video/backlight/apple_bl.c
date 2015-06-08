@@ -24,6 +24,13 @@
 #include <linux/io.h>
 #include <linux/pci.h>
 #include <linux/acpi.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct backlight_device *apple_backlight_device;
 
@@ -221,14 +228,52 @@ static struct acpi_driver apple_bl_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static atomic_t apple_bl_registered = ATOMIC_INIT(0);
+
+int apple_bl_register(void)
+{
+	if (atomic_xchg(&apple_bl_registered, 1) == 0)
+		return acpi_bus_register_driver(&apple_bl_driver);
+
+	return 0;
+}
+EXPORT_SYMBOL_GPL(apple_bl_register);
+
+void apple_bl_unregister(void)
+{
+	if (atomic_xchg(&apple_bl_registered, 0) == 1)
+		acpi_bus_unregister_driver(&apple_bl_driver);
+}
+EXPORT_SYMBOL_GPL(apple_bl_unregister);
+
+static int __init apple_bl_init(void)
+{
+	return apple_bl_register();
+=======
 static int __init apple_bl_init(void)
 {
 	return acpi_bus_register_driver(&apple_bl_driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __init apple_bl_init(void)
+{
+	return acpi_bus_register_driver(&apple_bl_driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __exit apple_bl_exit(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	apple_bl_unregister();
+=======
 	acpi_bus_unregister_driver(&apple_bl_driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	acpi_bus_unregister_driver(&apple_bl_driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init(apple_bl_init);

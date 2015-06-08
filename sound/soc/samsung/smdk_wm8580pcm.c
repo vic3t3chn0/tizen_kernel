@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/soc.h>
 #include <sound/pcm_params.h>
 #include <sound/pcm.h>
@@ -134,8 +138,12 @@ static struct snd_soc_dai_link smdk_dai[] = {
 <<<<<<< HEAD
 		.codec_name = "wm8580.0-001b",
 =======
+<<<<<<< HEAD
+		.codec_name = "wm8580.0-001b",
+=======
 		.codec_name = "wm8580-codec.0-001b",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ops = &smdk_wm8580_pcm_ops,
 	}, {
 		.name = "WM8580 PAIF PCM TX",
@@ -146,8 +154,12 @@ static struct snd_soc_dai_link smdk_dai[] = {
 <<<<<<< HEAD
 		.codec_name = "wm8580.0-001b",
 =======
+<<<<<<< HEAD
+		.codec_name = "wm8580.0-001b",
+=======
 		.codec_name = "wm8580-codec.0-001b",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ops = &smdk_wm8580_pcm_ops,
 	},
 };
@@ -157,7 +169,11 @@ static struct snd_soc_card smdk_pcm = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = smdk_dai,
 	.num_links = 2,
 };
@@ -206,6 +222,9 @@ static struct platform_driver snd_smdk_driver = {
 <<<<<<< HEAD
 module_platform_driver(snd_smdk_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(snd_smdk_driver);
+=======
 static int __init smdk_audio_init(void)
 {
 	return platform_driver_register(&snd_smdk_driver);
@@ -220,6 +239,7 @@ static void __exit smdk_audio_exit(void)
 
 module_exit(smdk_audio_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Sangbeom Kim, <sbkim73@samsung.com>");
 MODULE_DESCRIPTION("ALSA SoC SMDK WM8580 for PCM");

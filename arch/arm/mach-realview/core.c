@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/amba/bus.h>
 #include <linux/amba/clcd.h>
@@ -39,8 +43,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/irq.h>
 #include <asm/leds.h>
@@ -527,9 +534,13 @@ void __init realview_timer_init(unsigned int timer_irq)
 <<<<<<< HEAD
 void realview_fixup(struct tag *tags, char **from, struct meminfo *meminfo)
 =======
+<<<<<<< HEAD
+void realview_fixup(struct tag *tags, char **from, struct meminfo *meminfo)
+=======
 void realview_fixup(struct machine_desc *mdesc, struct tag *tags, char **from,
 		    struct meminfo *meminfo)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * Most RealView platforms have 512MB contiguous RAM at 0x70000000.

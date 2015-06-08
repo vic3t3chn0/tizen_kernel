@@ -7,6 +7,14 @@
  * use a transport-specific userspace libhid/libusb libraries.
  *
  *  Copyright (c) 2007 Jiri Kosina
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *  Copyright 2011,2012 Sony Corporation
+ *  Copyright (c) 2012 Sony Mobile Communications AB.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /*
@@ -213,6 +221,28 @@ static ssize_t hidraw_get_report(struct file *file, char __user *buffer, size_t 
 		goto out_free;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HID_SONY_PS3_CTRL_BT
+	if (report_type == HID_FEATREP_WDATASIZE) {
+		if (count < 3) {
+			printk(KERN_WARNING "hidraw: pid %d passed too short report\n",
+					task_pid_nr(current));
+			ret = -EINVAL;
+			goto out_free;
+		}
+
+		if (copy_from_user(buf, buffer, 3)) {
+			ret = -EFAULT;
+			goto out_free;
+		}
+	}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = dev->hid_get_raw_report(dev, report_number, buf, count, report_type);
 
 	if (ret < 0)
@@ -259,7 +289,14 @@ static int hidraw_open(struct inode *inode, struct file *file)
 
 	mutex_lock(&minors_lock);
 	if (!hidraw_table[minor]) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		kfree(list);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		kfree(list);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENODEV;
 		goto out_unlock;
 	}
@@ -272,8 +309,20 @@ static int hidraw_open(struct inode *inode, struct file *file)
 	dev = hidraw_table[minor];
 	if (!dev->open++) {
 		err = hid_hw_power(dev->hid, PM_HINT_FULLON);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (err < 0) {
+			dev->open--;
+			goto out_unlock;
+		}
+=======
 		if (err < 0)
 			goto out_unlock;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (err < 0)
+			goto out_unlock;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		err = hid_hw_open(dev->hid);
 		if (err < 0) {
@@ -285,6 +334,14 @@ static int hidraw_open(struct inode *inode, struct file *file)
 out_unlock:
 	mutex_unlock(&minors_lock);
 out:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err < 0)
+		kfree(list);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 
 }
@@ -388,6 +445,53 @@ static long hidraw_ioctl(struct file *file, unsigned int cmd,
 					break;
 				}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HID_SONY_PS3_CTRL_BT
+				if (_IOC_NR(cmd)
+					== _IOC_NR(HIDIOCSF_SKIPREPID(0))) {
+					int len = _IOC_SIZE(cmd);
+					if (dev->hid->bus != BUS_USB) {
+						ret = -EINVAL;
+						break;
+					}
+
+					ret = hidraw_send_report(file, user_arg,
+						len, HID_FEATREP_SKIPREPID);
+					break;
+				}
+
+				if (_IOC_NR(cmd)
+					== _IOC_NR(HIDIOCSO_SKIPREPID(0))) {
+					int len = _IOC_SIZE(cmd);
+					if (dev->hid->bus != BUS_USB) {
+						ret = -EINVAL;
+						break;
+					}
+
+					ret = hidraw_send_report(file, user_arg,
+						len, HID_OUTREP_SKIPREPID);
+					break;
+				}
+
+				if (_IOC_NR(cmd)
+					== _IOC_NR(HIDIOCGF_WDATASIZE(0))) {
+					int len = _IOC_SIZE(cmd);
+					if (dev->hid->bus != BUS_BLUETOOTH) {
+						ret = -EINVAL;
+						break;
+					}
+
+					ret = hidraw_get_report(file, user_arg,
+						len, HID_FEATREP_WDATASIZE);
+					break;
+				}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* Begin Read-only ioctls. */
 				if (_IOC_DIR(cmd) != _IOC_READ) {
 					ret = -EINVAL;
@@ -440,6 +544,17 @@ void hidraw_report_event(struct hid_device *hid, u8 *data, int len)
 	struct hidraw_list *list;
 
 	list_for_each_entry(list, &dev->list, node) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HID_SONY_PS3_CTRL_BT
+		if (list < (struct hidraw_list *)PAGE_OFFSET
+				|| !(list->node.next))
+			break;
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list->buffer[list->head].value = kmemdup(data, len, GFP_ATOMIC);
 		list->buffer[list->head].len = len;
 		list->head = (list->head + 1) & (HIDRAW_BUFFER_SIZE - 1);
@@ -510,13 +625,30 @@ void hidraw_disconnect(struct hid_device *hid)
 {
 	struct hidraw *hidraw = hid->hidraw;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&minors_lock);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hidraw->exist = 0;
 
 	device_destroy(hidraw_class, MKDEV(hidraw_major, hidraw->minor));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hidraw_table[hidraw->minor] = NULL;
+=======
 	mutex_lock(&minors_lock);
 	hidraw_table[hidraw->minor] = NULL;
 	mutex_unlock(&minors_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_lock(&minors_lock);
+	hidraw_table[hidraw->minor] = NULL;
+	mutex_unlock(&minors_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (hidraw->open) {
 		hid_hw_close(hid);
@@ -524,6 +656,13 @@ void hidraw_disconnect(struct hid_device *hid)
 	} else {
 		kfree(hidraw);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&minors_lock);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(hidraw_disconnect);
 

@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/suspend.h>
 #include <linux/sched.h>
 #include <linux/proc_fs.h>
@@ -27,16 +31,23 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/time.h>
 #include <asm/mach/irq.h>
 
 #include <mach/at91_pmc.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cpu.h>
 
 #include "generic.h"
@@ -47,8 +58,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(AT91_SHDWC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/at91_rstc.h>
 #include <mach/at91_shdwc.h>
@@ -73,15 +87,21 @@ static void __init show_reset_status(void)
 	u32 reset_type, wake_type;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!at91_shdwc_base || !at91_rstc_base)
 		return;
 
 	reset_type = at91_rstc_read(AT91_RSTC_SR) & AT91_RSTC_RSTTYP;
 	wake_type = at91_shdwc_read(AT91_SHDW_SR);
+<<<<<<< HEAD
+=======
 =======
 	reset_type = at91_sys_read(AT91_RSTC_SR) & AT91_RSTC_RSTTYP;
 	wake_type = at91_sys_read(AT91_SHDW_SR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (reset_type) {
 	case AT91_RSTC_RSTTYP_GENERAL:
@@ -123,11 +143,14 @@ static void __init show_reset_status(void)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #else
 static void __init show_reset_status(void) {}
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int at91_pm_valid_state(suspend_state_t state)
 {
@@ -166,8 +189,12 @@ static int at91_pm_verify_clocks(void)
 <<<<<<< HEAD
 	scsr = at91_pmc_read(AT91_PMC_SCSR);
 =======
+<<<<<<< HEAD
+	scsr = at91_pmc_read(AT91_PMC_SCSR);
+=======
 	scsr = at91_sys_read(AT91_PMC_SCSR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* USB must not be using PLLB */
 	if (cpu_is_at91rm9200()) {
@@ -183,12 +210,15 @@ static int at91_pm_verify_clocks(void)
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	} else if (cpu_is_at91cap9()) {
 		if ((scsr & AT91CAP9_PMC_UHP) != 0) {
 			pr_err("AT91: PM - Suspend-to-RAM with USB still active\n");
 			return 0;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 #ifdef CONFIG_AT91_PROGRAMMABLE_CLOCKS
@@ -202,8 +232,12 @@ static int at91_pm_verify_clocks(void)
 <<<<<<< HEAD
 		css = at91_pmc_read(AT91_PMC_PCKR(i)) & AT91_PMC_CSS;
 =======
+<<<<<<< HEAD
+		css = at91_pmc_read(AT91_PMC_PCKR(i)) & AT91_PMC_CSS;
+=======
 		css = at91_sys_read(AT91_PMC_PCKR(i)) & AT91_PMC_CSS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (css != AT91_PMC_CSS_SLOW) {
 			pr_err("AT91: PM - Suspend-to-RAM with PCK%d src %d\n", i, css);
 			return 0;
@@ -232,6 +266,9 @@ EXPORT_SYMBOL(at91_suspend_entering_slow_clock);
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void (*slow_clock)(void __iomem *pmc, void __iomem *ramc0,
 			  void __iomem *ramc1, int memctrl);
 
@@ -243,6 +280,8 @@ extern u32 at91_slow_clock_sz;
 
 static int at91_pm_enter(suspend_state_t state)
 {
+<<<<<<< HEAD
+=======
 =======
 static void (*slow_clock)(void);
 
@@ -256,17 +295,23 @@ static int at91_pm_enter(suspend_state_t state)
 {
 	u32 saved_lpr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_gpio_suspend();
 	at91_irq_suspend();
 
 	pr_debug("AT91: PM - wake mask %08x, pm state %d\n",
 			/* remember all the always-wake irqs */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(at91_pmc_read(AT91_PMC_PCSR)
 					| (1 << AT91_ID_FIQ)
 					| (1 << AT91_ID_SYS)
 					| (at91_extern_irq))
 				& at91_aic_read(AT91_AIC_IMR),
+<<<<<<< HEAD
+=======
 =======
 			(at91_sys_read(AT91_PMC_PCSR)
 					| (1 << AT91_ID_FIQ)
@@ -274,6 +319,7 @@ static int at91_pm_enter(suspend_state_t state)
 					| (at91_extern_irq))
 				& at91_sys_read(AT91_AIC_IMR),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			state);
 
 	switch (state) {
@@ -295,14 +341,20 @@ static int at91_pm_enter(suspend_state_t state)
 			 */
 			if (slow_clock) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				int memctrl = AT91_MEMCTRL_SDRAMC;
 
 				if (cpu_is_at91rm9200())
 					memctrl = AT91_MEMCTRL_MC;
 				else if (cpu_is_at91sam9g45())
 					memctrl = AT91_MEMCTRL_DDRSDR;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_AT91_SLOW_CLOCK
 				/* copy slow_clock handler to SRAM, and call it */
 				memcpy(slow_clock, at91_slow_clock, at91_slow_clock_sz);
@@ -311,8 +363,13 @@ static int at91_pm_enter(suspend_state_t state)
 				slow_clock(at91_pmc_base, at91_ramc_base[0],
 					   at91_ramc_base[1], memctrl);
 =======
+<<<<<<< HEAD
+				slow_clock(at91_pmc_base, at91_ramc_base[0],
+					   at91_ramc_base[1], memctrl);
+=======
 				slow_clock();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			} else {
 				pr_info("AT91: PM - no slow clock mode enabled ...\n");
@@ -336,6 +393,9 @@ static int at91_pm_enter(suspend_state_t state)
 <<<<<<< HEAD
 			at91_standby();
 =======
+<<<<<<< HEAD
+			at91_standby();
+=======
 			asm volatile (	"mov r0, #0\n\t"
 					"b 1f\n\t"
 					".align 5\n\t"
@@ -347,6 +407,7 @@ static int at91_pm_enter(suspend_state_t state)
 			wait_for_interrupt_enable();
 			sdram_selfrefresh_disable(saved_lpr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		case PM_SUSPEND_ON:
@@ -362,8 +423,12 @@ static int at91_pm_enter(suspend_state_t state)
 <<<<<<< HEAD
 			at91_aic_read(AT91_AIC_IPR) & at91_aic_read(AT91_AIC_IMR));
 =======
+<<<<<<< HEAD
+			at91_aic_read(AT91_AIC_IPR) & at91_aic_read(AT91_AIC_IMR));
+=======
 			at91_sys_read(AT91_AIC_IPR) & at91_sys_read(AT91_AIC_IMR));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 error:
 	target_state = PM_SUSPEND_ON;
@@ -401,8 +466,12 @@ static int __init at91_pm_init(void)
 <<<<<<< HEAD
 	at91_ramc_write(0, AT91RM9200_SDRAMC_LPR, 0);
 =======
+<<<<<<< HEAD
+	at91_ramc_write(0, AT91RM9200_SDRAMC_LPR, 0);
+=======
 	at91_sys_write(AT91_SDRAMC_LPR, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	suspend_set_ops(&at91_pm_ops);

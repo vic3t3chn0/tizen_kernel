@@ -14,8 +14,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <plat/clock.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/soc.h>
 
@@ -37,8 +41,12 @@ static int set_audio_clock_heirachy(struct platform_device *pdev)
 <<<<<<< HEAD
 		return -EINVAL;
 =======
+<<<<<<< HEAD
+		return -EINVAL;
+=======
 		return PTR_ERR(fout_epll);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	mout_epll = clk_get(NULL, "mout_epll");
@@ -46,6 +54,9 @@ static int set_audio_clock_heirachy(struct platform_device *pdev)
 		printk(KERN_WARNING "%s: Cannot find mout_epll.\n",
 				__func__);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EINVAL;
 		goto out1;
 	}
@@ -55,6 +66,8 @@ static int set_audio_clock_heirachy(struct platform_device *pdev)
 		printk(KERN_WARNING "%s: Cannot find sclk_audio.\n",
 				__func__);
 		ret = -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 		ret = PTR_ERR(mout_epll);
 		goto out1;
@@ -66,6 +79,7 @@ static int set_audio_clock_heirachy(struct platform_device *pdev)
 				__func__);
 		ret = PTR_ERR(sclk_audio0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out2;
 	}
 
@@ -76,12 +90,21 @@ static int set_audio_clock_heirachy(struct platform_device *pdev)
 <<<<<<< HEAD
 		ret = -EINVAL;
 =======
+<<<<<<< HEAD
+		ret = -EINVAL;
+=======
 		ret = PTR_ERR(sclk_spdif);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out3;
 	}
 
 	/* Set audio clock hierarchy for S/PDIF */
+<<<<<<< HEAD
+	clk_set_parent(mout_epll, fout_epll);
+	clk_set_parent(sclk_audio0, mout_epll);
+	clk_set_parent(sclk_spdif, sclk_audio0);
+=======
 <<<<<<< HEAD
 	clk_set_parent(mout_epll, fout_epll);
 	clk_set_parent(sclk_audio0, mout_epll);
@@ -103,6 +126,7 @@ static int set_audio_clock_heirachy(struct platform_device *pdev)
 		ret = -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clk_put(sclk_spdif);
 out3:
@@ -130,8 +154,12 @@ static int set_audio_clock_rate(unsigned long epll_rate,
 <<<<<<< HEAD
 		return -ENOENT;
 =======
+<<<<<<< HEAD
+		return -ENOENT;
+=======
 		return PTR_ERR(fout_epll);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	clk_set_rate(fout_epll, epll_rate);
@@ -143,8 +171,12 @@ static int set_audio_clock_rate(unsigned long epll_rate,
 <<<<<<< HEAD
 		return -ENOENT;
 =======
+<<<<<<< HEAD
+		return -ENOENT;
+=======
 		return PTR_ERR(sclk_spdif);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	clk_set_rate(sclk_spdif, audio_rate);
@@ -213,7 +245,11 @@ static struct snd_soc_card smdk = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &smdk_dai,
 	.num_links = 1,
 };

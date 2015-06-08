@@ -42,19 +42,30 @@ static void __init quirk_fsl_pcie_header(struct pci_dev *dev)
 	u8 progif;
 
 =======
+<<<<<<< HEAD
+	u8 progif;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* if we aren't a PCIe don't bother */
 	if (!pci_find_capability(dev, PCI_CAP_ID_EXP))
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* if we aren't in host mode don't bother */
 	pci_read_config_byte(dev, PCI_CLASS_PROG, &progif);
 	if (progif & 0x1)
 		return;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev->class = PCI_CLASS_BRIDGE_PCI << 8;
 	fsl_pcie_bus_fixup = 1;
 	return;
@@ -72,6 +83,9 @@ static int __init fsl_pcie_check_link(struct pci_controller *hose)
 
 #if defined(CONFIG_FSL_SOC_BOOKE) || defined(CONFIG_PPC_86xx)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MAX_PHYS_ADDR_BITS	40
 static u64 pci64_dma_offset = 1ull << MAX_PHYS_ADDR_BITS;
@@ -96,8 +110,11 @@ static int fsl_pci_dma_set_mask(struct device *dev, u64 dma_mask)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init setup_one_atmu(struct ccsr_pci __iomem *pci,
 	unsigned int index, const struct resource *res,
 	resource_size_t offset)
@@ -107,8 +124,12 @@ static int __init setup_one_atmu(struct ccsr_pci __iomem *pci,
 <<<<<<< HEAD
 	resource_size_t size = resource_size(res);
 =======
+<<<<<<< HEAD
+	resource_size_t size = resource_size(res);
+=======
 	resource_size_t size = res->end - res->start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 flags = 0x80044000; /* enable & mem R/W */
 	unsigned int i;
 
@@ -151,16 +172,22 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 			PIWAR_READ_SNOOP | PIWAR_WRITE_SNOOP;
 	char *name = hose->dn->full_name;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const u64 *reg;
 	int len;
 
 	pr_debug("PCI memory map start 0x%016llx, size 0x%016llx\n",
 		 (u64)rsrc->start, (u64)resource_size(rsrc));
+<<<<<<< HEAD
+=======
 =======
 
 	pr_debug("PCI memory map start 0x%016llx, size 0x%016llx\n",
 		    (u64)rsrc->start, (u64)rsrc->end - (u64)rsrc->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (of_device_is_compatible(hose->dn, "fsl,qoriq-pcie-v2.2")) {
 		win_idx = 2;
@@ -171,8 +198,12 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 <<<<<<< HEAD
 	pci = ioremap(rsrc->start, resource_size(rsrc));
 =======
+<<<<<<< HEAD
+	pci = ioremap(rsrc->start, resource_size(rsrc));
+=======
 	pci = ioremap(rsrc->start, rsrc->end - rsrc->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!pci) {
 	    dev_err(hose->parent, "Unable to map ATMU registers\n");
 	    return;
@@ -214,10 +245,16 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 				 (u64)resource_size(&hose->io_resource),
 				 (u64)hose->io_base_phys);
 =======
+<<<<<<< HEAD
+				 (u64)hose->io_resource.start,
+				 (u64)resource_size(&hose->io_resource),
+				 (u64)hose->io_base_phys);
+=======
 				(u64)hose->io_resource.start,
 				(u64)hose->io_resource.end - (u64)hose->io_resource.start + 1,
 				(u64)hose->io_base_phys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			out_be32(&pci->pow[j].potar, (hose->io_resource.start >> 12));
 			out_be32(&pci->pow[j].potear, 0);
 			out_be32(&pci->pow[j].powbar, (hose->io_base_phys >> 12));
@@ -237,8 +274,12 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return ;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (paddr_lo == 0) {
@@ -246,8 +287,12 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return ;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* setup PCSRBAR/PEXCSRBAR */
@@ -269,6 +314,9 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 	/* Setup inbound mem window */
 	mem = memblock_end_of_DRAM();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * The msi-address-64 property, if it exists, indicates the physical
@@ -296,8 +344,11 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sz = min(mem, paddr_lo);
 	mem_log = __ilog2_u64(sz);
 
@@ -322,6 +373,9 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 		hose->dma_window_base_cur = 0x00000000;
 		hose->dma_window_size = (resource_size_t)sz;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * if we have >4G of memory setup second PCI inbound window to
@@ -353,8 +407,11 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 
 			pr_info("%s: Setup 64-bit PCI DMA window\n", name);
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		u64 paddr = 0;
 
@@ -403,7 +460,11 @@ static void __init setup_pci_atmu(struct pci_controller *hose,
 <<<<<<< HEAD
 out:
 =======
+<<<<<<< HEAD
+out:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iounmap(pci);
 }
 
@@ -432,6 +493,9 @@ void fsl_pcibios_fixup_bus(struct pci_bus *bus)
 {
 	struct pci_controller *hose = pci_bus_to_host(bus);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, is_pcie = 0, no_link;
 
 	/* The root complex bridge comes up with bogus resources,
@@ -462,6 +526,8 @@ void fsl_pcibios_fixup_bus(struct pci_bus *bus)
 			res->start = par ? par->start : 0;
 			res->end   = par ? par->end   : 0;
 			res->flags = par ? par->flags : 0;
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -484,6 +550,7 @@ void fsl_pcibios_fixup_bus(struct pci_bus *bus)
 				res->flags = par->flags;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -497,7 +564,11 @@ int __init fsl_add_bridge(struct device_node *dev, int is_primary)
 <<<<<<< HEAD
 	u8 progif;
 =======
+<<<<<<< HEAD
+	u8 progif;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!of_device_is_available(dev)) {
 		pr_warning("%s: disabled\n", dev->full_name);
@@ -521,8 +592,12 @@ int __init fsl_add_bridge(struct device_node *dev, int is_primary)
 <<<<<<< HEAD
 	pci_add_flags(PCI_REASSIGN_ALL_BUS);
 =======
+<<<<<<< HEAD
+	pci_add_flags(PCI_REASSIGN_ALL_BUS);
+=======
 	ppc_pci_add_flags(PPC_PCI_REASSIGN_ALL_BUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hose = pcibios_alloc_controller(dev);
 	if (!hose)
 		return -ENOMEM;
@@ -533,6 +608,9 @@ int __init fsl_add_bridge(struct device_node *dev, int is_primary)
 	setup_indirect_pci(hose, rsrc.start, rsrc.start + 0x4,
 		PPC_INDIRECT_TYPE_BIG_ENDIAN);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	early_read_config_byte(hose, 0, 0, PCI_CLASS_PROG, &progif);
 	if ((progif & 1) == 1) {
@@ -545,8 +623,11 @@ int __init fsl_add_bridge(struct device_node *dev, int is_primary)
 		return 0;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	setup_pci_cmd(hose);
 
 	/* check PCI express link status */
@@ -575,11 +656,16 @@ int __init fsl_add_bridge(struct device_node *dev, int is_primary)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_FSL_SOC_BOOKE || CONFIG_PPC_86xx */
 
 DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_FREESCALE, PCI_ANY_ID, quirk_fsl_pcie_header);
 
 #if defined(CONFIG_PPC_83xx) || defined(CONFIG_PPC_MPC512x)
+<<<<<<< HEAD
+=======
 =======
 
 DECLARE_PCI_FIXUP_HEADER(0x1957, PCI_DEVICE_ID_MPC8548E, quirk_fsl_pcie_header);
@@ -646,6 +732,7 @@ DECLARE_PCI_FIXUP_HEADER(0x1957, PCI_DEVICE_ID_MPC8378E, quirk_fsl_pcie_header);
 DECLARE_PCI_FIXUP_HEADER(0x1957, PCI_DEVICE_ID_MPC8378, quirk_fsl_pcie_header);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mpc83xx_pcie_priv {
 	void __iomem *cfg_type0;
 	void __iomem *cfg_type1;
@@ -884,8 +971,12 @@ int __init mpc83xx_add_bridge(struct device_node *dev)
 <<<<<<< HEAD
 	pci_add_flags(PCI_REASSIGN_ALL_BUS);
 =======
+<<<<<<< HEAD
+	pci_add_flags(PCI_REASSIGN_ALL_BUS);
+=======
 	ppc_pci_add_flags(PPC_PCI_REASSIGN_ALL_BUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hose = pcibios_alloc_controller(dev);
 	if (!hose)
 		return -ENOMEM;

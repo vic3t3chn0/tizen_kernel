@@ -14,8 +14,11 @@
 #include <linux/kernel.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/sched.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/timer.h>
 #include <linux/clockchips.h>
 #include <linux/interrupt.h>
@@ -64,10 +67,15 @@ static u32 ticks_per_jiffy;
  * at least 7.5ns (133MHz TCLK).
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static u32 notrace orion_read_sched_clock(void)
 {
 	return ~readl(timer_base + TIMER0_VAL_OFF);
+<<<<<<< HEAD
+=======
 =======
 static DEFINE_CLOCK_DATA(cd);
 
@@ -88,6 +96,7 @@ static void __init setup_sched_clock(unsigned long tclk)
 {
 	init_sched_clock(&cd, orion_update_sched_clock, 32, tclk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -230,8 +239,12 @@ orion_time_init(u32 _bridge_base, u32 _bridge_timer1_clr_mask,
 <<<<<<< HEAD
 	setup_sched_clock(orion_read_sched_clock, 32, tclk);
 =======
+<<<<<<< HEAD
+	setup_sched_clock(orion_read_sched_clock, 32, tclk);
+=======
 	setup_sched_clock(tclk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Setup free-running clocksource timer (interrupts

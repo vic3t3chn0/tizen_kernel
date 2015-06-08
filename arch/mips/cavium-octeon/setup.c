@@ -26,8 +26,11 @@
 #include <asm/smp-ops.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq_cpu.h>
 #include <asm/mipsregs.h>
 #include <asm/bootinfo.h>
@@ -647,6 +650,8 @@ void __init plat_mem_setup(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* First add the init memory we will be returning.  */
 	memory = __pa_symbol(&__init_begin) & PAGE_MASK;
 	mem_alloc_size = (__pa_symbol(&__init_end) & PAGE_MASK) - memory;
@@ -656,6 +661,7 @@ void __init plat_mem_setup(void)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The Mips memory init uses the first memory location for
 	 * some memory vectors. When SPARSEMEM is in use, it doesn't
@@ -774,11 +780,16 @@ void prom_free_prom_memory(void)
 
 		if ((insn >> 26) != 0x33)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			panic("No PREF instruction at Core-14449 probe point.");
 
 		if (((insn >> 16) & 0x1f) != 28)
 			panic("Core-14449 WAR not in place (%04x).\n"
 			      "Please build kernel with proper options (CONFIG_CAVIUM_CN63XXP1).", insn);
+<<<<<<< HEAD
+=======
 =======
 			panic("No PREF instruction at Core-14449 probe point.\n");
 
@@ -786,6 +797,7 @@ void prom_free_prom_memory(void)
 			panic("Core-14449 WAR not in place (%04x).\n"
 			      "Please build kernel with proper options (CONFIG_CAVIUM_CN63XXP1).\n", insn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #ifdef CONFIG_CAVIUM_DECODE_RSL
 	cvmx_interrupt_rsl_enable();
@@ -796,8 +808,12 @@ void prom_free_prom_memory(void)
 <<<<<<< HEAD
 		panic("Unable to request_irq(OCTEON_IRQ_RML)");
 =======
+<<<<<<< HEAD
+		panic("Unable to request_irq(OCTEON_IRQ_RML)");
+=======
 		panic("Unable to request_irq(OCTEON_IRQ_RML)\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #endif
 }

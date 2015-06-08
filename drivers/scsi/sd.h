@@ -9,12 +9,21 @@
 #define SD_MAJORS	16
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This is limited by the naming scheme enforced in sd_probe,
  * add another character to it if you really need more disks.
  */
 #define SD_MAX_DISKS	(((26 * 26) + 26 + 1) * 26)
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Time out in seconds for disks and Magneto-opticals (which are slower).
  */
 #define SD_TIMEOUT		(30 * HZ)
@@ -26,6 +35,13 @@
  */
 #define SD_MAX_RETRIES		5
 #define SD_PASSTHROUGH_RETRIES	1
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define SD_MAX_MEDIUM_TIMEOUTS	2
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Size of the initial data buffer for mode and read capacity data
@@ -65,12 +81,27 @@ struct scsi_disk {
 	u32		unmap_alignment;
 	u32		index;
 	unsigned int	physical_block_size;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int	max_medium_access_timeouts;
+	unsigned int	medium_access_timed_out;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8		media_present;
 	u8		write_prot;
 	u8		protection_type;/* Data Integrity Field */
 	u8		provisioning_mode;
 	unsigned	ATO : 1;	/* state of disk ATO bit */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned	cache_override : 1; /* temp override of WCE,RCD */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned	cache_override : 1; /* temp override of WCE,RCD */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned	WCE : 1;	/* state of disk WCE bit */
 	unsigned	RCD : 1;	/* state of disk RCD bit, unused */
 	unsigned	DPOFUA : 1;	/* state of disk DPOFUA bit */
@@ -81,6 +112,11 @@ struct scsi_disk {
 	unsigned	lbpws : 1;
 	unsigned	lbpws10 : 1;
 	unsigned	lbpvpd : 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_USB_HOST_NOTIFY
 	wait_queue_head_t	delay_wait;
 	struct completion	scanning_done;
@@ -89,6 +125,10 @@ struct scsi_disk {
 	int		async_end;
 	int		prv_media_present;
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #define to_scsi_disk(obj) container_of(obj,struct scsi_disk,dev)
 
@@ -103,6 +143,44 @@ static inline struct scsi_disk *scsi_disk(struct gendisk *disk)
 		    (sdsk)->disk->disk_name, ##a) :			\
 	sdev_printk(prefix, (sdsk)->device, fmt, ##a)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline int scsi_medium_access_command(struct scsi_cmnd *scmd)
+{
+	switch (scmd->cmnd[0]) {
+	case READ_6:
+	case READ_10:
+	case READ_12:
+	case READ_16:
+	case SYNCHRONIZE_CACHE:
+	case VERIFY:
+	case VERIFY_12:
+	case VERIFY_16:
+	case WRITE_6:
+	case WRITE_10:
+	case WRITE_12:
+	case WRITE_16:
+	case WRITE_SAME:
+	case WRITE_SAME_16:
+	case UNMAP:
+		return 1;
+	case VARIABLE_LENGTH_CMD:
+		switch (scmd->cmnd[9]) {
+		case READ_32:
+		case VERIFY_32:
+		case WRITE_32:
+		case WRITE_SAME_32:
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * A DIF-capable target device can be formatted with different
  * protection schemes.  Currently 0 through 3 are defined:

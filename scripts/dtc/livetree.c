@@ -30,6 +30,9 @@ void add_label(struct label **labels, char *label)
 
 	/* Make sure the label isn't already there */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_label_withdel(*labels, new)
 		if (streq(new->label, label)) {
 			new->deleted = 0;
@@ -38,6 +41,8 @@ void add_label(struct label **labels, char *label)
 
 	new = xmalloc(sizeof(*new));
 	memset(new, 0, sizeof(*new));
+<<<<<<< HEAD
+=======
 =======
 	for_each_label(*labels, new)
 		if (streq(new->label, label))
@@ -45,12 +50,16 @@ void add_label(struct label **labels, char *label)
 
 	new = xmalloc(sizeof(*new));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	new->label = label;
 	new->next = *labels;
 	*labels = new;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void delete_labels(struct label **labels)
 {
 	struct label *label;
@@ -59,8 +68,11 @@ void delete_labels(struct label **labels)
 		label->deleted = 1;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct property *build_property(char *name, struct data val)
 {
 	struct property *new = xmalloc(sizeof(*new));
@@ -74,6 +86,9 @@ struct property *build_property(char *name, struct data val)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct property *build_property_delete(char *name)
 {
 	struct property *new = xmalloc(sizeof(*new));
@@ -86,8 +101,11 @@ struct property *build_property_delete(char *name)
 	return new;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct property *chain_property(struct property *first, struct property *list)
 {
 	assert(first->next == NULL);
@@ -129,6 +147,9 @@ struct node *build_node(struct property *proplist, struct node *children)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct node *build_node_delete(void)
 {
 	struct node *new = xmalloc(sizeof(*new));
@@ -140,8 +161,11 @@ struct node *build_node_delete(void)
 	return new;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct node *name_node(struct node *node, char *name)
 {
 	assert(node->name == NULL);
@@ -158,14 +182,20 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 	struct label *l;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	old_node->deleted = 0;
 
 	/* Add new node labels to old node */
 	for_each_label_withdel(new_node->labels, l)
+<<<<<<< HEAD
+=======
 =======
 	/* Add new node labels to old node */
 	for_each_label(new_node->labels, l)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		add_label(&old_node->labels, l->label);
 
 	/* Move properties from the new node to the old node.  If there
@@ -177,6 +207,9 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 		new_prop->next = NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (new_prop->deleted) {
 			delete_property_by_name(old_node, new_prop->name);
 			free(new_prop);
@@ -192,6 +225,8 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 
 				old_prop->val = new_prop->val;
 				old_prop->deleted = 0;
+<<<<<<< HEAD
+=======
 =======
 		/* Look for a collision, set new value if there is */
 		for_each_property(old_node, old_prop) {
@@ -202,6 +237,7 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 
 				old_prop->val = new_prop->val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				free(new_prop);
 				new_prop = NULL;
 				break;
@@ -223,6 +259,9 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 		new_child->next_sibling = NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (new_child->deleted) {
 			delete_node_by_name(old_node, new_child->name);
 			free(new_child);
@@ -231,10 +270,13 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 
 		/* Search for a collision.  Merge if there is */
 		for_each_child_withdel(old_node, old_child) {
+<<<<<<< HEAD
+=======
 =======
 		/* Search for a collision.  Merge if there is */
 		for_each_child(old_node, old_child) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (streq(old_child->name, new_child->name)) {
 				merge_nodes(old_child, new_child);
 				new_child = NULL;
@@ -245,8 +287,12 @@ struct node *merge_nodes(struct node *old_node, struct node *new_node)
 <<<<<<< HEAD
 		/* if no collision occured, add child to the old node. */
 =======
+<<<<<<< HEAD
+		/* if no collision occured, add child to the old node. */
+=======
 		/* if no collision occurred, add child to the old node. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (new_child)
 			add_child(old_node, new_child);
 	}
@@ -280,6 +326,9 @@ void add_property(struct node *node, struct property *prop)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void delete_property_by_name(struct node *node, char *name)
 {
 	struct property *prop = node->proplist;
@@ -299,8 +348,11 @@ void delete_property(struct property *prop)
 	delete_labels(&prop->labels);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void add_child(struct node *parent, struct node *child)
 {
 	struct node **p;
@@ -316,6 +368,9 @@ void add_child(struct node *parent, struct node *child)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void delete_node_by_name(struct node *parent, char *name)
 {
 	struct node *node = parent->children;
@@ -342,8 +397,11 @@ void delete_node(struct node *node)
 	delete_labels(&node->labels);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct reserve_info *build_reserve_entry(uint64_t address, uint64_t size)
 {
 	struct reserve_info *new = xmalloc(sizeof(*new));
@@ -496,15 +554,21 @@ struct node *get_node_by_path(struct node *tree, const char *path)
 	struct node *child;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!path || ! (*path)) {
 		if (tree->deleted)
 			return NULL;
 		return tree;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!path || ! (*path))
 		return tree;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (path[0] == '/')
 		path++;
@@ -548,15 +612,21 @@ struct node *get_node_by_phandle(struct node *tree, cell_t phandle)
 	assert((phandle != 0) && (phandle != -1));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tree->phandle == phandle) {
 		if (tree->deleted)
 			return NULL;
 		return tree;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (tree->phandle == phandle)
 		return tree;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for_each_child(tree, child) {
 		node = get_node_by_phandle(child, phandle);
@@ -696,8 +766,12 @@ static void sort_properties(struct node *node)
 <<<<<<< HEAD
 	for_each_property_withdel(node, prop)
 =======
+<<<<<<< HEAD
+	for_each_property_withdel(node, prop)
+=======
 	for_each_property(node, prop)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		n++;
 
 	if (n == 0)
@@ -708,8 +782,12 @@ static void sort_properties(struct node *node)
 <<<<<<< HEAD
 	for_each_property_withdel(node, prop)
 =======
+<<<<<<< HEAD
+	for_each_property_withdel(node, prop)
+=======
 	for_each_property(node, prop)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tbl[i++] = prop;
 
 	qsort(tbl, n, sizeof(*tbl), cmp_prop);
@@ -740,8 +818,12 @@ static void sort_subnodes(struct node *node)
 <<<<<<< HEAD
 	for_each_child_withdel(node, subnode)
 =======
+<<<<<<< HEAD
+	for_each_child_withdel(node, subnode)
+=======
 	for_each_child(node, subnode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		n++;
 
 	if (n == 0)
@@ -752,8 +834,12 @@ static void sort_subnodes(struct node *node)
 <<<<<<< HEAD
 	for_each_child_withdel(node, subnode)
 =======
+<<<<<<< HEAD
+	for_each_child_withdel(node, subnode)
+=======
 	for_each_child(node, subnode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tbl[i++] = subnode;
 
 	qsort(tbl, n, sizeof(*tbl), cmp_subnode);
@@ -775,8 +861,12 @@ static void sort_node(struct node *node)
 <<<<<<< HEAD
 	for_each_child_withdel(node, c)
 =======
+<<<<<<< HEAD
+	for_each_child_withdel(node, c)
+=======
 	for_each_child(node, c)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sort_node(c);
 }
 

@@ -22,13 +22,28 @@
 
 #include <linux/gpio.h>
 #include <linux/interrupt.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/power_supply.h>
 #include <linux/platform_device.h>
 #include <linux/power/max8903_charger.h>
 
 struct max8903_data {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct max8903_pdata pdata;
+=======
 	struct max8903_pdata *pdata;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct max8903_pdata *pdata;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev;
 	struct power_supply psy;
 	bool fault;
@@ -52,8 +67,18 @@ static int max8903_get_property(struct power_supply *psy,
 	switch (psp) {
 	case POWER_SUPPLY_PROP_STATUS:
 		val->intval = POWER_SUPPLY_STATUS_UNKNOWN;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (data->pdata.chg) {
+			if (gpio_get_value(data->pdata.chg) == 0)
+=======
 		if (data->pdata->chg) {
 			if (gpio_get_value(data->pdata->chg) == 0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (data->pdata->chg) {
+			if (gpio_get_value(data->pdata->chg) == 0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				val->intval = POWER_SUPPLY_STATUS_CHARGING;
 			else if (data->usb_in || data->ta_in)
 				val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
@@ -80,7 +105,15 @@ static int max8903_get_property(struct power_supply *psy,
 static irqreturn_t max8903_dcin(int irq, void *_data)
 {
 	struct max8903_data *data = _data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct max8903_pdata *pdata = &data->pdata;
+=======
 	struct max8903_pdata *pdata = data->pdata;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct max8903_pdata *pdata = data->pdata;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool ta_in;
 	enum power_supply_type old_type;
 
@@ -121,7 +154,15 @@ static irqreturn_t max8903_dcin(int irq, void *_data)
 static irqreturn_t max8903_usbin(int irq, void *_data)
 {
 	struct max8903_data *data = _data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct max8903_pdata *pdata = &data->pdata;
+=======
 	struct max8903_pdata *pdata = data->pdata;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct max8903_pdata *pdata = data->pdata;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool usb_in;
 	enum power_supply_type old_type;
 
@@ -160,7 +201,15 @@ static irqreturn_t max8903_usbin(int irq, void *_data)
 static irqreturn_t max8903_fault(int irq, void *_data)
 {
 	struct max8903_data *data = _data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct max8903_pdata *pdata = &data->pdata;
+=======
 	struct max8903_pdata *pdata = data->pdata;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct max8903_pdata *pdata = data->pdata;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool fault;
 
 	fault = gpio_get_value(pdata->flt) ? false : true;
@@ -193,7 +242,15 @@ static __devinit int max8903_probe(struct platform_device *pdev)
 		dev_err(dev, "Cannot allocate memory.\n");
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memcpy(&data->pdata, pdata, sizeof(struct max8903_pdata));
+=======
 	data->pdata = pdata;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	data->pdata = pdata;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data->dev = dev;
 	platform_set_drvdata(pdev, data);
 
@@ -349,7 +406,15 @@ static __devexit int max8903_remove(struct platform_device *pdev)
 	struct max8903_data *data = platform_get_drvdata(pdev);
 
 	if (data) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct max8903_pdata *pdata = &data->pdata;
+=======
 		struct max8903_pdata *pdata = data->pdata;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		struct max8903_pdata *pdata = data->pdata;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (pdata->flt)
 			free_irq(gpio_to_irq(pdata->flt), data);
@@ -373,6 +438,12 @@ static struct platform_driver max8903_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(max8903_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init max8903_init(void)
 {
 	return platform_driver_register(&max8903_driver);
@@ -384,8 +455,20 @@ static void __exit max8903_exit(void)
 	platform_driver_unregister(&max8903_driver);
 }
 module_exit(max8903_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("MAX8903 Charger Driver");
 MODULE_AUTHOR("MyungJoo Ham <myungjoo.ham@samsung.com>");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_ALIAS("platform:max8903-charger");
+=======
 MODULE_ALIAS("max8903-charger");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_ALIAS("max8903-charger");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

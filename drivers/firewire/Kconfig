@@ -28,11 +28,20 @@ config FIREWIRE_OHCI
 	  To compile this driver as a module, say M here:  The module will be
 	  called firewire-ohci.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config FIREWIRE_OHCI_DEBUG
 	bool
 	depends on FIREWIRE_OHCI
 	default y
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config FIREWIRE_SBP2
 	tristate "Storage devices (SBP-2 protocol)"
 	depends on FIREWIRE && SCSI

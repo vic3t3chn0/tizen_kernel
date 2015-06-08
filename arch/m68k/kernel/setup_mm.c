@@ -217,6 +217,9 @@ static void __init m68k_parse_bootinfo(const struct bi_record *record)
 void __init setup_arch(char **cmdline_p)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_SUN3
 	int i;
 #endif
@@ -224,12 +227,15 @@ void __init setup_arch(char **cmdline_p)
 	/* The bootinfo is located right after the kernel bss */
 	if (!CPU_IS_COLDFIRE)
 		m68k_parse_bootinfo((const struct bi_record *)_end);
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
 	/* The bootinfo is located right after the kernel bss */
 	m68k_parse_bootinfo((const struct bi_record *)_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (CPU_IS_040)
 		m68k_is040or060 = 4;
@@ -246,8 +252,12 @@ void __init setup_arch(char **cmdline_p)
 <<<<<<< HEAD
 	if (m68k_fputype & (FPU_68881|FPU_68882|FPU_68040|FPU_68060|FPU_COLDFIRE)) {
 =======
+<<<<<<< HEAD
+	if (m68k_fputype & (FPU_68881|FPU_68882|FPU_68040|FPU_68060|FPU_COLDFIRE)) {
+=======
 	if (m68k_fputype & (FPU_68881|FPU_68882|FPU_68040|FPU_68060)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		volatile int zero = 0;
 		asm volatile ("frestore %0" : : "m" (zero));
 	}
@@ -271,12 +281,18 @@ void __init setup_arch(char **cmdline_p)
 	init_mm.brk = (unsigned long)_end;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_BOOTPARAM)
 	strncpy(m68k_command_line, CONFIG_BOOTPARAM_STRING, CL_SIZE);
 	m68k_command_line[CL_SIZE - 1] = 0;
 #endif /* CONFIG_BOOTPARAM */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*cmdline_p = m68k_command_line;
 	memcpy(boot_command_line, *cmdline_p, CL_SIZE);
 
@@ -343,13 +359,19 @@ void __init setup_arch(char **cmdline_p)
 		break;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_COLDFIRE
 	case MACH_M54XX:
 		config_BSP(NULL, 0);
 		break;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		panic("No configuration setup");
 	}
@@ -414,7 +436,11 @@ static int show_cpuinfo(struct seq_file *m, void *v)
 <<<<<<< HEAD
 #define LOOP_CYCLES_COLDFIRE	(2)
 =======
+<<<<<<< HEAD
+#define LOOP_CYCLES_COLDFIRE	(2)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (CPU_IS_020) {
 		cpu = "68020";
@@ -433,7 +459,13 @@ static int show_cpuinfo(struct seq_file *m, void *v)
 		cpu = "ColdFire";
 		clockfactor = LOOP_CYCLES_COLDFIRE;
 =======
+<<<<<<< HEAD
+	} else if (CPU_IS_COLDFIRE) {
+		cpu = "ColdFire";
+		clockfactor = LOOP_CYCLES_COLDFIRE;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		cpu = "680x0";
 		clockfactor = 0;
@@ -456,7 +488,12 @@ static int show_cpuinfo(struct seq_file *m, void *v)
 	else if (m68k_fputype & FPU_COLDFIRE)
 		fpu = "ColdFire";
 =======
+<<<<<<< HEAD
+	else if (m68k_fputype & FPU_COLDFIRE)
+		fpu = "ColdFire";
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		fpu = "none";
 #endif
@@ -477,7 +514,12 @@ static int show_cpuinfo(struct seq_file *m, void *v)
 	else if (m68k_mmutype & MMU_COLDFIRE)
 		mmu = "ColdFire";
 =======
+<<<<<<< HEAD
+	else if (m68k_mmutype & MMU_COLDFIRE)
+		mmu = "ColdFire";
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		mmu = "unknown";
 

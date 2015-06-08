@@ -16,6 +16,13 @@
 #include <linux/slab.h>
 #include <linux/workqueue.h>
 #include <linux/input/adxl34x.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "adxl34x.h"
 
@@ -451,10 +458,23 @@ static ssize_t adxl34x_disable_store(struct device *dev,
 				     const char *buf, size_t count)
 {
 	struct adxl34x *ac = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int val;
+	int error;
+
+	error = kstrtouint(buf, 10, &val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long val;
 	int error;
 
 	error = strict_strtoul(buf, 10, &val);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 
@@ -540,10 +560,23 @@ static ssize_t adxl34x_rate_store(struct device *dev,
 				  const char *buf, size_t count)
 {
 	struct adxl34x *ac = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char val;
+	int error;
+
+	error = kstrtou8(buf, 10, &val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long val;
 	int error;
 
 	error = strict_strtoul(buf, 10, &val);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 
@@ -575,10 +608,23 @@ static ssize_t adxl34x_autosleep_store(struct device *dev,
 				  const char *buf, size_t count)
 {
 	struct adxl34x *ac = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int val;
+	int error;
+
+	error = kstrtouint(buf, 10, &val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long val;
 	int error;
 
 	error = strict_strtoul(buf, 10, &val);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 
@@ -622,13 +668,29 @@ static ssize_t adxl34x_write_store(struct device *dev,
 				   const char *buf, size_t count)
 {
 	struct adxl34x *ac = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int val;
+=======
 	unsigned long val;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long val;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	/*
 	 * This allows basic ADXL register write access for debug purposes.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	error = kstrtouint(buf, 16, &val);
+=======
 	error = strict_strtoul(buf, 16, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	error = strict_strtoul(buf, 16, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 

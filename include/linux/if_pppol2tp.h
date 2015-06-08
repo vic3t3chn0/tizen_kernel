@@ -42,8 +42,12 @@ struct pppol2tpv3_addr {
 <<<<<<< HEAD
 	__kernel_pid_t	pid;		/* pid that owns the fd.
 =======
+<<<<<<< HEAD
+	__kernel_pid_t	pid;		/* pid that owns the fd.
+=======
 	pid_t	pid;			/* pid that owns the fd.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 * 0 => current */
 	int	fd;			/* FD of UDP or IP socket to use */
 

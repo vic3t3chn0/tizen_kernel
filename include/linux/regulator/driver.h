@@ -5,7 +5,11 @@
 <<<<<<< HEAD
  * Copyright (C) 2013 Sony Mobile Communications AB.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2013 Sony Mobile Communications AB.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author: Liam Girdwood <lrg@slimlogic.co.uk>
  *
@@ -23,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/notifier.h>
 =======
+<<<<<<< HEAD
+#include <linux/notifier.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/consumer.h>
 
 struct regulator_dev;
@@ -81,7 +89,12 @@ enum regulator_status {
  * @register_ocp_notification: Register the notification for ocp.
  *
 =======
+<<<<<<< HEAD
+ * @register_ocp_notification: Register the notification for ocp.
+ *
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @set_suspend_voltage: Set the voltage for the regulator when the system
  *                       is suspended.
  * @set_suspend_enable: Mark the regulator as enabled when the system is
@@ -119,8 +132,12 @@ struct regulator_ops {
 <<<<<<< HEAD
 	/* get/set regulator operating mode (defined in consumer.h) */
 =======
+<<<<<<< HEAD
+	/* get/set regulator operating mode (defined in consumer.h) */
+=======
 	/* get/set regulator operating mode (defined in regulator.h) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*set_mode) (struct regulator_dev *, unsigned int mode);
 	unsigned int (*get_mode) (struct regulator_dev *);
 
@@ -142,12 +159,18 @@ struct regulator_ops {
 					  int output_uV, int load_uA);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* register ocp notification */
 	int (*register_ocp_notification) (struct regulator_dev *,
 			struct regulator_ocp_notification *notification);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* the operations below are for configuration of regulator state when
 	 * its parent PMIC enters a global STANDBY/HIBERNATE state */
 
@@ -161,8 +184,12 @@ struct regulator_ops {
 <<<<<<< HEAD
 	/* set regulator suspend operating mode (defined in consumer.h) */
 =======
+<<<<<<< HEAD
+	/* set regulator suspend operating mode (defined in consumer.h) */
+=======
 	/* set regulator suspend operating mode (defined in regulator.h) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*set_suspend_mode) (struct regulator_dev *, unsigned int mode);
 };
 
@@ -184,7 +211,11 @@ enum regulator_type {
 <<<<<<< HEAD
  * @supply_name: Identifying the regulator supply
 =======
+<<<<<<< HEAD
+ * @supply_name: Identifying the regulator supply
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @id: Numerical identifier for the regulator.
  * @n_voltages: Number of selectors available for ops.list_voltage().
  * @ops: Regulator operations table.
@@ -197,7 +228,11 @@ struct regulator_desc {
 <<<<<<< HEAD
 	const char *supply_name;
 =======
+<<<<<<< HEAD
+	const char *supply_name;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int id;
 	unsigned n_voltages;
 	struct regulator_ops *ops;
@@ -229,12 +264,18 @@ struct regulator_dev {
 	/* lists we own */
 	struct list_head consumer_list; /* consumers we supply */
 =======
+<<<<<<< HEAD
+
+	/* lists we own */
+	struct list_head consumer_list; /* consumers we supply */
+=======
 	struct list_head slist; /* list of supplied regulators */
 
 	/* lists we own */
 	struct list_head consumer_list; /* consumers we supply */
 	struct list_head supply_list; /* regulators we supply */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct blocking_notifier_head notifier;
 	struct mutex mutex; /* consumer lock */
@@ -242,6 +283,9 @@ struct regulator_dev {
 	struct device dev;
 	struct regulation_constraints *constraints;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct regulator *supply;	/* for tree */
 
 	struct delayed_work disable_work;
@@ -250,6 +294,8 @@ struct regulator_dev {
 	void *reg_data;		/* regulator_dev data */
 
 	struct dentry *debugfs;
+<<<<<<< HEAD
+=======
 =======
 	struct regulator_dev *supply;	/* for tree */
 
@@ -259,6 +305,7 @@ struct regulator_dev {
 	struct dentry *debugfs;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct regulator_dev *regulator_register(struct regulator_desc *regulator_desc,
@@ -266,8 +313,12 @@ struct regulator_dev *regulator_register(struct regulator_desc *regulator_desc,
 <<<<<<< HEAD
 	void *driver_data, struct device_node *of_node);
 =======
+<<<<<<< HEAD
+	void *driver_data, struct device_node *of_node);
+=======
 	void *driver_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void regulator_unregister(struct regulator_dev *rdev);
 
 int regulator_notifier_call_chain(struct regulator_dev *rdev,

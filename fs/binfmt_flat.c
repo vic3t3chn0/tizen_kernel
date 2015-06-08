@@ -18,8 +18,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/sched.h>
 #include <linux/mm.h>
@@ -43,8 +47,11 @@
 #include <asm/byteorder.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/unaligned.h>
 #include <asm/cacheflush.h>
@@ -554,11 +561,16 @@ static int load_flat_file(struct linux_binprm * bprm,
 		textpos = vm_mmap(bprm->file, 0, text_len, PROT_READ|PROT_EXEC,
 				  MAP_PRIVATE|MAP_EXECUTABLE, 0);
 =======
+<<<<<<< HEAD
+		textpos = vm_mmap(bprm->file, 0, text_len, PROT_READ|PROT_EXEC,
+				  MAP_PRIVATE|MAP_EXECUTABLE, 0);
+=======
 		down_write(&current->mm->mmap_sem);
 		textpos = do_mmap(bprm->file, 0, text_len, PROT_READ|PROT_EXEC,
 				  MAP_PRIVATE|MAP_EXECUTABLE, 0);
 		up_write(&current->mm->mmap_sem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!textpos || IS_ERR_VALUE(textpos)) {
 			if (!textpos)
 				textpos = (unsigned long) -ENOMEM;
@@ -573,11 +585,16 @@ static int load_flat_file(struct linux_binprm * bprm,
 		realdatastart = vm_mmap(0, 0, len,
 			PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE, 0);
 =======
+<<<<<<< HEAD
+		realdatastart = vm_mmap(0, 0, len,
+			PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE, 0);
+=======
 		down_write(&current->mm->mmap_sem);
 		realdatastart = do_mmap(0, 0, len,
 			PROT_READ|PROT_WRITE|PROT_EXEC, MAP_PRIVATE, 0);
 		up_write(&current->mm->mmap_sem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (realdatastart == 0 || IS_ERR_VALUE(realdatastart)) {
 			if (!realdatastart)
@@ -625,11 +642,16 @@ static int load_flat_file(struct linux_binprm * bprm,
 		textpos = vm_mmap(0, 0, len,
 			PROT_READ | PROT_EXEC | PROT_WRITE, MAP_PRIVATE, 0);
 =======
+<<<<<<< HEAD
+		textpos = vm_mmap(0, 0, len,
+			PROT_READ | PROT_EXEC | PROT_WRITE, MAP_PRIVATE, 0);
+=======
 		down_write(&current->mm->mmap_sem);
 		textpos = do_mmap(0, 0, len,
 			PROT_READ | PROT_EXEC | PROT_WRITE, MAP_PRIVATE, 0);
 		up_write(&current->mm->mmap_sem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!textpos || IS_ERR_VALUE(textpos)) {
 			if (!textpos)
@@ -926,8 +948,11 @@ static int load_flat_binary(struct linux_binprm * bprm, struct pt_regs * regs)
 	install_exec_creds(bprm);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  	current->flags &= ~PF_FORKNOEXEC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	set_binfmt(&flat_format);
 
@@ -979,8 +1004,13 @@ static int __init init_flat_binfmt(void)
 	register_binfmt(&flat_format);
 	return 0;
 =======
+<<<<<<< HEAD
+	register_binfmt(&flat_format);
+	return 0;
+=======
 	return register_binfmt(&flat_format);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /****************************************************************************/

@@ -17,6 +17,8 @@ if PLAT_SAMSUNG
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # vmalloc area and io map configurations
 
 comment "Base Address for SFR mapping"
@@ -29,6 +31,7 @@ config S3C_ADDR_BASE
 	  VMALLC_END should be less or euqal to this value.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # boot configurations
 
 comment "Boot options"
@@ -81,12 +84,15 @@ config SAMSUNG_IRQ_VIC_TIMER
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config SAMSUNG_IRQ_UART
        bool
        help
          Internal configuration to build the IRQ UART demux code.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # options for gpio configuration support
 
 config SAMSUNG_GPIOLIB_4BIT
@@ -98,6 +104,8 @@ config SAMSUNG_GPIOLIB_4BIT
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config S3C_GPIO_CFG_S3C24XX
 	bool
 	help
@@ -105,12 +113,15 @@ config S3C_GPIO_CFG_S3C24XX
 	  functions.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config S3C_GPIO_CFG_S3C64XX
 	bool
 	help
 	  Internal configuration to enable S3C64XX style GPIO configuration
 	  functions.
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 config S3C_GPIO_PULL_UPDOWN
@@ -135,6 +146,7 @@ config S3C_GPIO_PULL_UP
 	  Internal configuration to enable the correct GPIO pull helper
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config S5P_GPIO_DRVSTR
 	bool
 	help
@@ -147,7 +159,12 @@ config SAMSUNG_GPIO_EXTRA
 	default 128 if SAMSUNG_GPIO_EXTRA128
 	default 64 if SAMSUNG_GPIO_EXTRA64
 =======
+<<<<<<< HEAD
+	default 128 if SAMSUNG_GPIO_EXTRA128
+	default 64 if SAMSUNG_GPIO_EXTRA64
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default 0
 	help
 	  Use additional GPIO space in addition to the GPIO's the SOC
@@ -155,14 +172,20 @@ config SAMSUNG_GPIO_EXTRA
 	  GPIO expanders.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SAMSUNG_GPIO_EXTRA64
 	bool
 
 config SAMSUNG_GPIO_EXTRA128
 	bool
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config S3C_GPIO_SPACE
 	int "Space between gpio banks"
 	default 0
@@ -188,6 +211,8 @@ config S3C_ADC
 	  this resource.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 choice
 	prompt "Select ADC Number"
 	depends on S3C_ADC
@@ -206,6 +231,7 @@ config S3C_DEV_ADC1
 	  Say Y here if you want to use S3C SMDK ADC 1.
 endchoice
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # device definitions to compile in
 
@@ -231,12 +257,15 @@ config S3C_DEV_HSMMC3
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config EXYNOS4_DEV_MSHC
 	bool
 	help
 	  Compile in platform device definitions for MSHC
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config S3C_DEV_HWMON
 	bool
 	help
@@ -279,6 +308,8 @@ config S3C_DEV_I2C7
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config S3C_DEV_I2C8_EMUL
 	depends on CPU_EXYNOS4210
 	bool "I2C8 Information GPIO bitbanging emulation"
@@ -319,6 +350,7 @@ config S3C_DEV_I2C17_EMUL
 	  If unsure, say N.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config S3C_DEV_FB
 	bool
 	help
@@ -339,6 +371,11 @@ config S3C_DEV_WDT
 	bool
 	default y if ARCH_S3C24XX
 =======
+<<<<<<< HEAD
+config S3C_DEV_WDT
+	bool
+	default y if ARCH_S3C24XX
+=======
 config EXYNOS_DEV_SS_UDC
 	bool
 	help
@@ -349,6 +386,7 @@ config S3C_DEV_WDT
 	bool
 	default y if ARCH_S3C2410
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Complie in platform device definition for Watchdog Timer
 
@@ -378,6 +416,9 @@ config SAMSUNG_DEV_IDE
 	  Compile in platform device definitions for IDE
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config S3C64XX_DEV_SPI0
 	bool
 	help
@@ -400,6 +441,8 @@ config SAMSUNG_DEV_TS
 	bool
 	help
 	    Common in platform device definitions for touchscreen device
+<<<<<<< HEAD
+=======
 =======
 config S3C64XX_DEV_SPI
 	bool
@@ -418,6 +461,7 @@ config SAMSUNG_DEV_TS1
 	help
 	  Common in platform device definitions for touchscreen-1 device
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config SAMSUNG_DEV_KEYPAD
 	bool
@@ -429,8 +473,12 @@ config SAMSUNG_DEV_PWM
 <<<<<<< HEAD
 	default y if ARCH_S3C24XX
 =======
+<<<<<<< HEAD
+	default y if ARCH_S3C24XX
+=======
 	default y if ARCH_S3C2410
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Compile in platform device definition for PWM Timer
 
@@ -455,6 +503,9 @@ config S3C_DMA
 	  Internal configuration for S3C DMA core
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SAMSUNG_DMADEV
 	bool
 	select DMADEVICES
@@ -463,6 +514,8 @@ config SAMSUNG_DMADEV
 	select ARM_AMBA
 	help
 	  Use DMA device engine for PL330 DMAC.
+<<<<<<< HEAD
+=======
 =======
 config S3C_PL330_DMA
 	bool
@@ -476,6 +529,7 @@ config DMA_M2M_TEST
 	  Samsung DMA API test client. Say N unless you're debugging a
 	  DMA Device driver.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 comment "Power management"
 
@@ -485,7 +539,11 @@ config SAMSUNG_PM_DEBUG
 <<<<<<< HEAD
 	select DEBUG_LL
 =======
+<<<<<<< HEAD
+	select DEBUG_LL
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Say Y here if you want verbose debugging from the PM Suspend and
 	  Resume code. See <file:Documentation/arm/Samsung-S3C24XX/Suspend.txt>
@@ -543,6 +601,9 @@ config SAMSUNG_PD
 	  Say Y here if you want to control Power Domain by Runtime PM.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config DEBUG_S3C_UART
 	depends on PLAT_SAMSUNG
 	int
@@ -550,6 +611,9 @@ config DEBUG_S3C_UART
 	default "1" if DEBUG_S3C_UART1
 	default "2" if DEBUG_S3C_UART2
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif

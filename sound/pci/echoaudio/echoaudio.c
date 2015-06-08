@@ -20,7 +20,12 @@
 #include <linux/module.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_AUTHOR("Giuliano Pochini <pochini@shiny.it>");
 MODULE_LICENSE("GPL v2");
 MODULE_DESCRIPTION("Echoaudio " ECHOCARD_NAME " soundcards driver");
@@ -32,8 +37,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for " ECHOCARD_NAME " soundcard.");
@@ -2007,8 +2016,12 @@ static __devinit int snd_echo_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, chip)) {
+=======
 			ECHOCARD_NAME, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_echo_free(chip);
 		snd_printk(KERN_ERR "cannot grab irq\n");
 		return -EBUSY;
@@ -2302,8 +2315,12 @@ static int snd_echo_resume(struct pci_dev *pci)
 <<<<<<< HEAD
 			KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, chip)) {
+=======
 			ECHOCARD_NAME, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_echo_free(chip);
 		snd_printk(KERN_ERR "cannot grab irq\n");
 		return -EBUSY;
@@ -2347,8 +2364,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "Echoaudio " ECHOCARD_NAME,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_echo_ids,
 	.probe = snd_echo_probe,
 	.remove = __devexit_p(snd_echo_remove),

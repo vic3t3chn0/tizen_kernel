@@ -6,8 +6,12 @@
 <<<<<<< HEAD
  *         Graeme.Gregory@wolfsonmicro.com
 =======
+<<<<<<< HEAD
+ *         Graeme.Gregory@wolfsonmicro.com
+=======
  *         linux@wolfsonmicro.com
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  This program is free software; you can redistribute  it and/or modify it
  *  under  the terms of  the GNU General  Public License as published by the
@@ -24,8 +28,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -403,8 +410,12 @@ static int inmixer_event(struct snd_soc_dapm_widget *w,
 <<<<<<< HEAD
 		reg &= ~WM8991_AINR_ENA;
 =======
+<<<<<<< HEAD
+		reg &= ~WM8991_AINR_ENA;
+=======
 		reg &= ~WM8991_AINL_ENA;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_write(w->codec, WM8991_POWER_MANAGEMENT_2, reg);
 	return 0;
@@ -785,9 +796,14 @@ static const struct snd_soc_dapm_widget wm8991_dapm_widgets[] = {
 	SND_SOC_DAPM_SUPPLY("MICBIAS", WM8991_POWER_MANAGEMENT_1,
 			    WM8991_MICBIAS_ENA_BIT, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+	SND_SOC_DAPM_SUPPLY("MICBIAS", WM8991_POWER_MANAGEMENT_1,
+			    WM8991_MICBIAS_ENA_BIT, 0, NULL, 0),
+=======
 	SND_SOC_DAPM_MICBIAS("MICBIAS", WM8991_POWER_MANAGEMENT_1,
 		WM8991_MICBIAS_ENA_BIT, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	SND_SOC_DAPM_OUTPUT("LON"),
 	SND_SOC_DAPM_OUTPUT("LOP"),
@@ -1260,8 +1276,12 @@ static int wm8991_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static int wm8991_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8991_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8991_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8991_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -1286,8 +1306,11 @@ static int wm8991_probe(struct snd_soc_codec *codec)
 	int ret;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wm8991 = snd_soc_codec_get_drvdata(codec);
 
@@ -1306,6 +1329,9 @@ static int wm8991_probe(struct snd_soc_codec *codec)
 	wm8991_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_update_bits(codec, WM8991_AUDIO_INTERFACE_4,
 			    WM8991_ALRCGPIO1, WM8991_ALRCGPIO1);
 
@@ -1318,6 +1344,8 @@ static int wm8991_probe(struct snd_soc_codec *codec)
 
 	snd_soc_update_bits(codec, WM8991_POWER_MANAGEMENT_2,
 			    WM8991_OPCLK_ENA, WM8991_OPCLK_ENA);
+<<<<<<< HEAD
+=======
 =======
 	reg = snd_soc_read(codec, WM8991_AUDIO_INTERFACE_4);
 	snd_soc_write(codec, WM8991_AUDIO_INTERFACE_4, reg | WM8991_ALRCGPIO1);
@@ -1333,6 +1361,7 @@ static int wm8991_probe(struct snd_soc_codec *codec)
 	reg = snd_soc_read(codec, WM8991_POWER_MANAGEMENT_2);
 	snd_soc_write(codec, WM8991_POWER_MANAGEMENT_2, reg | WM8991_OPCLK_ENA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_write(codec, WM8991_DAC_CTRL, 0);
 	snd_soc_write(codec, WM8991_LEFT_OUTPUT_VOLUME, 0x50 | (1<<8));
@@ -1341,8 +1370,12 @@ static int wm8991_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, wm8991_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, wm8991_snd_controls,
+=======
 	snd_soc_add_controls(codec, wm8991_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(wm8991_snd_controls));
 
 	snd_soc_dapm_new_controls(&codec->dapm, wm8991_dapm_widgets,
@@ -1358,8 +1391,12 @@ static int wm8991_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8991_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8991_ops = {
+=======
 static struct snd_soc_dai_ops wm8991_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params = wm8991_hw_params,
 	.digital_mute = wm8991_mute,
 	.set_fmt = wm8991_set_dai_fmt,

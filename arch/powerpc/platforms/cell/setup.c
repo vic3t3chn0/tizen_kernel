@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/unistd.h>
 #include <linux/user.h>
 #include <linux/reboot.h>
@@ -146,8 +150,12 @@ static int __devinit cell_setup_phb(struct pci_controller *phb)
 <<<<<<< HEAD
 static const struct of_device_id cell_bus_ids[] __initconst = {
 =======
+<<<<<<< HEAD
+static const struct of_device_id cell_bus_ids[] __initconst = {
+=======
 static const struct of_device_id cell_bus_ids[] __initdata = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ .type = "soc", },
 	{ .compatible = "soc", },
 	{ .type = "spider", },
@@ -193,6 +201,8 @@ machine_subsys_initcall(cell, cell_publish_devices);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void cell_mpic_cascade(unsigned int irq, struct irq_desc *desc)
 {
 	struct irq_chip *chip = irq_desc_get_chip(desc);
@@ -207,14 +217,18 @@ static void cell_mpic_cascade(unsigned int irq, struct irq_desc *desc)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mpic_init_IRQ(void)
 {
 	struct device_node *dn;
 	struct mpic *mpic;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int virq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (dn = NULL;
 	     (dn = of_find_node_by_name(dn, "interrupt-controller"));) {
@@ -225,11 +239,16 @@ static void __init mpic_init_IRQ(void)
 		 * device-tree, just pass 0 to all arguments
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic = mpic_alloc(dn, 0, MPIC_SECONDARY | MPIC_NO_RESET,
 				0, 0, " MPIC     ");
 		if (mpic == NULL)
 			continue;
 		mpic_init(mpic);
+<<<<<<< HEAD
+=======
 =======
 		mpic = mpic_alloc(dn, 0, 0, 0, 0, " MPIC     ");
 		if (mpic == NULL)
@@ -245,6 +264,7 @@ static void __init mpic_init_IRQ(void)
 		irq_set_handler_data(virq, mpic);
 		irq_set_chained_handler(virq, cell_mpic_cascade);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/control.h>
 #include <sound/minors.h>
@@ -107,11 +111,16 @@ static int snd_hwdep_open(struct inode *inode, struct file * file)
 	if (!try_module_get(hw->card->module))
 		return -EFAULT;
 =======
+<<<<<<< HEAD
+	if (!try_module_get(hw->card->module))
+		return -EFAULT;
+=======
 	if (!try_module_get(hw->card->module)) {
 		snd_card_unref(hw->card);
 		return -EFAULT;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	init_waitqueue_entry(&wait, current);
 	add_wait_queue(&hw->open_wait, &wait);
@@ -141,11 +150,14 @@ static int snd_hwdep_open(struct inode *inode, struct file * file)
 		mutex_lock(&hw->open_mutex);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (hw->card->shutdown) {
 			err = -ENODEV;
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (signal_pending(current)) {
 			err = -ERESTARTSYS;
 			break;
@@ -167,8 +179,11 @@ static int snd_hwdep_open(struct inode *inode, struct file * file)
 		module_put(hw->card->module);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_card_unref(hw->card);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -295,6 +310,9 @@ static int snd_hwdep_control_ioctl(struct snd_card *card,
 				return -EFAULT;
 			mutex_lock(&register_mutex);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (device < 0)
 				device = 0;
@@ -303,9 +321,12 @@ static int snd_hwdep_control_ioctl(struct snd_card *card,
 			else
 				device = SNDRV_MINOR_HWDEPS;
 
+<<<<<<< HEAD
+=======
 =======
 			device = device < 0 ? 0 : device + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			while (device < SNDRV_MINOR_HWDEPS) {
 				if (snd_hwdep_search(card, device))
 					break;
@@ -486,9 +507,12 @@ static int snd_hwdep_dev_disconnect(struct snd_device *device)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_lock(&hwdep->open_mutex);
 	wake_up(&hwdep->open_wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SND_OSSEMUL
 	if (hwdep->ossreg)
 		snd_unregister_oss_device(hwdep->oss_type, hwdep->card, hwdep->device);
@@ -497,8 +521,11 @@ static int snd_hwdep_dev_disconnect(struct snd_device *device)
 	list_del_init(&hwdep->list);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&hwdep->open_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&register_mutex);
 	return 0;
 }

@@ -271,6 +271,12 @@ static struct usb_driver cypress_driver = {
 	.id_table = cypress_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(cypress_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init cypress_init(void)
 {
 	int result;
@@ -292,6 +298,10 @@ static void __exit cypress_exit(void)
 
 module_init(cypress_init);
 module_exit(cypress_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

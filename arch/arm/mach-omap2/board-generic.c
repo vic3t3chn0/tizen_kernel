@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2005 Nokia Corporation
  * Author: Paul Mundt <paul.mundt@nokia.com>
  *
@@ -7,6 +10,8 @@
  *
  * Modified from the original mach-omap/omap2/board-generic.c did by Paul
  * to support the OMAP2+ device tree boards with an unique board file.
+<<<<<<< HEAD
+=======
 =======
  * linux/arch/arm/mach-omap2/board-generic.c
  *
@@ -20,12 +25,16 @@
  * Do not put any board specific code to this file; create a new machine
  * type if you need custom low-level initializations.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/of_irq.h>
 #include <linux/of_platform.h>
@@ -178,6 +187,8 @@ DT_MACHINE_START(OMAP4_DT, "Generic OMAP4 (Flattened Device Tree)")
 	.restart	= omap_prcm_restart,
 MACHINE_END
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 #include <linux/kernel.h>
@@ -239,3 +250,4 @@ MACHINE_START(OMAP_GENERIC, "Generic OMAP24xx")
 	.timer		= &omap_timer,
 MACHINE_END
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

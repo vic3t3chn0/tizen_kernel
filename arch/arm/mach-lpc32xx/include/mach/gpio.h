@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 /* empty */
 =======
+<<<<<<< HEAD
+/* empty */
+=======
 /*
  * arch/arm/mach-lpc32xx/include/mach/gpio.h
  *
@@ -76,3 +79,4 @@ static inline int gpio_to_irq(unsigned gpio)
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

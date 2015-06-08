@@ -334,8 +334,12 @@ static int build_snap_context(struct ceph_snap_realm *realm)
 <<<<<<< HEAD
 	if (num > (ULONG_MAX - sizeof(*snapc)) / sizeof(u64))
 =======
+<<<<<<< HEAD
+	if (num > (ULONG_MAX - sizeof(*snapc)) / sizeof(u64))
+=======
 	if (num > ULONG_MAX / sizeof(u64) - sizeof(*snapc))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail;
 	snapc = kzalloc(sizeof(*snapc) + num*sizeof(u64), GFP_NOFS);
 	if (!snapc)
@@ -451,6 +455,9 @@ void ceph_queue_cap_snap(struct ceph_inode_info *ci)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&ci->i_ceph_lock);
 	used = __ceph_caps_used(ci);
 	dirty = __ceph_caps_dirty(ci);
@@ -463,11 +470,14 @@ void ceph_queue_cap_snap(struct ceph_inode_info *ci)
 	if (used & CEPH_CAP_FILE_WR)
 		dirty |= CEPH_CAP_FILE_WR;
 
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&inode->i_lock);
 	used = __ceph_caps_used(ci);
 	dirty = __ceph_caps_dirty(ci);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (__ceph_have_pending_cap_snap(ci)) {
 		/* there is no point in queuing multiple "pending" cap_snaps,
 		   as no new writes are allowed to start when pending, so any
@@ -476,6 +486,9 @@ void ceph_queue_cap_snap(struct ceph_inode_info *ci)
 		dout("queue_cap_snap %p already pending\n", inode);
 		kfree(capsnap);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (dirty & (CEPH_CAP_AUTH_EXCL|CEPH_CAP_XATTR_EXCL|
 			    CEPH_CAP_FILE_EXCL|CEPH_CAP_FILE_WR)) {
 		struct ceph_snap_context *snapc = ci->i_head_snapc;
@@ -489,6 +502,8 @@ void ceph_queue_cap_snap(struct ceph_inode_info *ci)
 
 		dout("queue_cap_snap %p cap_snap %p queuing under %p %s\n",
 		     inode, capsnap, snapc, ceph_cap_string(dirty));
+<<<<<<< HEAD
+=======
 =======
 	} else if (ci->i_wrbuffer_ref_head || (used & CEPH_CAP_FILE_WR) ||
 		   (dirty & (CEPH_CAP_AUTH_EXCL|CEPH_CAP_XATTR_EXCL|
@@ -498,6 +513,7 @@ void ceph_queue_cap_snap(struct ceph_inode_info *ci)
 		dout("queue_cap_snap %p cap_snap %p queuing under %p\n", inode,
 		     capsnap, snapc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ihold(inode);
 
 		atomic_set(&capsnap->nref, 1);
@@ -551,8 +567,12 @@ void ceph_queue_cap_snap(struct ceph_inode_info *ci)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -564,8 +584,12 @@ void ceph_queue_cap_snap(struct ceph_inode_info *ci)
 <<<<<<< HEAD
  * Caller must hold i_ceph_lock.
 =======
+<<<<<<< HEAD
+ * Caller must hold i_ceph_lock.
+=======
  * Caller must hold i_lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int __ceph_finish_cap_snap(struct ceph_inode_info *ci,
 			    struct ceph_cap_snap *capsnap)
@@ -772,10 +796,16 @@ static void flush_snaps(struct ceph_mds_client *mdsc)
 		__ceph_flush_snaps(ci, &session, 0);
 		spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_lock(&ci->i_ceph_lock);
+		__ceph_flush_snaps(ci, &session, 0);
+		spin_unlock(&ci->i_ceph_lock);
+=======
 		spin_lock(&inode->i_lock);
 		__ceph_flush_snaps(ci, &session, 0);
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iput(inode);
 		spin_lock(&mdsc->snap_flush_lock);
 	}
@@ -884,8 +914,12 @@ void ceph_handle_snap(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 			spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_lock(&ci->i_ceph_lock);
+=======
 			spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!ci->i_snap_realm)
 				goto skip_inode;
 			/*
@@ -917,8 +951,12 @@ void ceph_handle_snap(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			ceph_get_snap_realm(mdsc, realm);
 			ceph_put_snap_realm(mdsc, oldrealm);
@@ -930,8 +968,12 @@ skip_inode:
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			iput(inode);
 		}
 

@@ -36,8 +36,12 @@ static unsigned long pll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops pll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops pll_clk_ops = {
+=======
 static struct clk_ops pll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= pll_recalc,
 };
 
@@ -86,8 +90,12 @@ struct clk div4_clks[DIV4_NR] = {
 <<<<<<< HEAD
 enum { MSTP004, MSTP000, MSTP127, MSTP114, MSTP113, MSTP112,
 =======
+<<<<<<< HEAD
+enum { MSTP004, MSTP000, MSTP127, MSTP114, MSTP113, MSTP112,
+=======
 enum { MSTP004, MSTP000, MSTP114, MSTP113, MSTP112,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        MSTP111, MSTP110, MSTP103, MSTP102, MSTP220,
        MSTP_NR };
 
@@ -100,7 +108,11 @@ static struct clk mstp_clks[MSTP_NR] = {
 <<<<<<< HEAD
 	[MSTP127] = SH_CLK_MSTP32(&div4_clks[DIV4_P], MSTPCR1, 27, 0),
 =======
+<<<<<<< HEAD
+	[MSTP127] = SH_CLK_MSTP32(&div4_clks[DIV4_P], MSTPCR1, 27, 0),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[MSTP114] = SH_CLK_MSTP32(&div4_clks[DIV4_P], MSTPCR1, 14, 0),
 	[MSTP113] = SH_CLK_MSTP32(&div4_clks[DIV4_P], MSTPCR1, 13, 0),
 	[MSTP112] = SH_CLK_MSTP32(&div4_clks[DIV4_P], MSTPCR1, 12, 0),
@@ -115,9 +127,12 @@ static struct clk mstp_clks[MSTP_NR] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define CLKDEV_CON_ID(_id, _clk) { .con_id = _id, .clk = _clk }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk_lookup lookups[] = {
 	/* main clocks */
 	CLKDEV_CON_ID("extal", &extal_clk),
@@ -130,6 +145,9 @@ static struct clk_lookup lookups[] = {
 
 	/* MSTP32 clocks */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_DEV_ID("sh_mobile_sdhi.0", &mstp_clks[MSTP004]),
 	CLKDEV_CON_ID("riic0", &mstp_clks[MSTP000]),
 	CLKDEV_CON_ID("riic1", &mstp_clks[MSTP000]),
@@ -150,6 +168,8 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_DEV_ID("renesas_usbhs.0", &mstp_clks[MSTP102]),
 	CLKDEV_CON_ID("mmc0", &mstp_clks[MSTP220]),
 	CLKDEV_CON_ID("rspi2", &mstp_clks[MSTP127]),
+<<<<<<< HEAD
+=======
 =======
 	CLKDEV_CON_ID("sdhi0", &mstp_clks[MSTP004]),
 	CLKDEV_CON_ID("riic", &mstp_clks[MSTP000]),
@@ -183,6 +203,7 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("usb0", &mstp_clks[MSTP102]),
 	CLKDEV_CON_ID("mmc0", &mstp_clks[MSTP220]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int __init arch_clk_init(void)

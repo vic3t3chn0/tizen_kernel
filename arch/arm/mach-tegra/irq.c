@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/of.h>
 =======
+<<<<<<< HEAD
+#include <linux/of.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/hardware/gic.h>
 
@@ -34,11 +38,14 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define INT_SYS_NR	(INT_GPIO_BASE - INT_PRI_BASE)
 #define INT_SYS_SZ	(INT_SEC_BASE - INT_PRI_BASE)
 #define PPI_NR		((INT_SYS_NR+INT_SYS_SZ-1)/INT_SYS_SZ)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ICTLR_CPU_IEP_VFIQ	0x08
 #define ICTLR_CPU_IEP_FIR	0x14
 #define ICTLR_CPU_IEP_FIR_SET	0x18
@@ -55,15 +62,21 @@
 #define ICTLR_COP_IEP_CLASS	0x3c
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FIRST_LEGACY_IRQ 32
 
 static int num_ictlrs;
 
+<<<<<<< HEAD
+=======
 =======
 #define NUM_ICTLRS 4
 #define FIRST_LEGACY_IRQ 32
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *ictlr_reg_base[] = {
 	IO_ADDRESS(TEGRA_PRIMARY_ICTLR_BASE),
 	IO_ADDRESS(TEGRA_SECONDARY_ICTLR_BASE),
@@ -72,7 +85,11 @@ static void __iomem *ictlr_reg_base[] = {
 <<<<<<< HEAD
 	IO_ADDRESS(TEGRA_QUINARY_ICTLR_BASE),
 =======
+<<<<<<< HEAD
+	IO_ADDRESS(TEGRA_QUINARY_ICTLR_BASE),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void tegra_irq_write_mask(unsigned int irq, unsigned long reg)
@@ -84,8 +101,12 @@ static inline void tegra_irq_write_mask(unsigned int irq, unsigned long reg)
 <<<<<<< HEAD
 		irq >= FIRST_LEGACY_IRQ + num_ictlrs * 32);
 =======
+<<<<<<< HEAD
+		irq >= FIRST_LEGACY_IRQ + num_ictlrs * 32);
+=======
 		irq >= FIRST_LEGACY_IRQ + NUM_ICTLRS * 32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	base = ictlr_reg_base[(irq - FIRST_LEGACY_IRQ) / 32];
 	mask = BIT((irq - FIRST_LEGACY_IRQ) % 32);
@@ -139,6 +160,9 @@ void __init tegra_init_irq(void)
 {
 	int i;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem *distbase;
 
 	distbase = IO_ADDRESS(TEGRA_ARM_INT_DIST_BASE);
@@ -151,10 +175,13 @@ void __init tegra_init_irq(void)
 	}
 
 	for (i = 0; i < num_ictlrs; i++) {
+<<<<<<< HEAD
+=======
 =======
 
 	for (i = 0; i < NUM_ICTLRS; i++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		void __iomem *ictlr = ictlr_reg_base[i];
 		writel(~0, ictlr + ICTLR_CPU_IER_CLR);
 		writel(0, ictlr + ICTLR_CPU_IEP_CLASS);
@@ -167,6 +194,9 @@ void __init tegra_init_irq(void)
 	gic_arch_extn.irq_retrigger = tegra_retrigger;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Check if there is a devicetree present, since the GIC will be
 	 * initialized elsewhere under DT.
@@ -174,8 +204,11 @@ void __init tegra_init_irq(void)
 	if (!of_have_populated_dt())
 		gic_init(0, 29, distbase,
 			IO_ADDRESS(TEGRA_ARM_PERIF_BASE + 0x100));
+<<<<<<< HEAD
+=======
 =======
 	gic_init(0, 29, IO_ADDRESS(TEGRA_ARM_INT_DIST_BASE),
 		 IO_ADDRESS(TEGRA_ARM_PERIF_BASE + 0x100));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

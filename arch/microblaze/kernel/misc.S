@@ -32,8 +32,12 @@ _tlbia:
 <<<<<<< HEAD
 	lwi	r12, r0, tlb_skip;
 =======
+<<<<<<< HEAD
+	lwi	r12, r0, tlb_skip;
+=======
 	addik	r12, r0, MICROBLAZE_TLB_SIZE - 1 /* flush all entries (63 - 3) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* isync */
 _tlbia_1:
 	mts	rtlbx, r12
@@ -45,10 +49,16 @@ _tlbia_1:
 	bneid	r11, _tlbia_1 /* loop for all entries */
 	addik	r12, r12, 1
 =======
+<<<<<<< HEAD
+	rsubi	r11, r12, MICROBLAZE_TLB_SIZE - 1
+	bneid	r11, _tlbia_1 /* loop for all entries */
+	addik	r12, r12, 1
+=======
 	addik	r11, r12, -2
 	bneid	r11, _tlbia_1 /* loop for all entries */
 	addik	r12, r12, -1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* sync */
 	rtsd	r15, 8
 	nop
@@ -88,8 +98,12 @@ early_console_reg_tlb_alloc:
 <<<<<<< HEAD
 	lwi	r4, r0, tlb_skip
 =======
+<<<<<<< HEAD
+	lwi	r4, r0, tlb_skip
+=======
 	ori	r4, r0, MICROBLAZE_TLB_SIZE - 1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mts	rtlbx, r4 /* TLB slot 63 */
 
 	or	r4,r5,r0
@@ -104,13 +118,19 @@ early_console_reg_tlb_alloc:
 	mts	rtlbhi,r5 /* Load the tag portion of the entry */
 	nop
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lwi	r5, r0, tlb_skip
 	addik	r5, r5, 1
 	swi	r5, r0, tlb_skip
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rtsd	r15, 8
 	nop
 

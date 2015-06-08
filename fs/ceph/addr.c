@@ -90,8 +90,12 @@ static int ceph_set_page_dirty(struct page *page)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ci->i_head_snapc == NULL)
 		ci->i_head_snapc = ceph_get_snap_context(snapc);
 	++ci->i_wrbuffer_ref_head;
@@ -107,8 +111,12 @@ static int ceph_set_page_dirty(struct page *page)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* now adjust page */
 	spin_lock_irq(&mapping->tree_lock);
@@ -237,6 +245,9 @@ static int ceph_readpage(struct file *filp, struct page *page)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Finish an async read(ahead) op.
  */
 static void finish_read(struct ceph_osd_request *req, struct ceph_msg *msg)
@@ -386,6 +397,8 @@ static int ceph_readpages(struct file *file, struct address_space *mapping,
 	}
 out:
 	dout("readpages %p file %p ret %d\n", inode, file, rc);
+<<<<<<< HEAD
+=======
 =======
  * Build a vector of contiguous pages from the provided page list.
  */
@@ -484,6 +497,7 @@ static int ceph_readpages(struct file *file, struct address_space *mapping,
 out:
 	kfree(pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -501,8 +515,12 @@ static struct ceph_snap_context *get_oldest_context(struct inode *inode,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(capsnap, &ci->i_cap_snaps, ci_item) {
 		dout(" cap_snap %p snapc %p has %d dirty pages\n", capsnap,
 		     capsnap->context, capsnap->dirty_pages);
@@ -521,8 +539,12 @@ static struct ceph_snap_context *get_oldest_context(struct inode *inode,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return snapc;
 }
 

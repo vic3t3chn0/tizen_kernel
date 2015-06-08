@@ -104,18 +104,27 @@ static struct irqaction ioirq = {
 <<<<<<< HEAD
 	.flags = IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.flags = IRQF_NO_THREAD,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 static struct irqaction fpuirq = {
 	.handler = no_action,
 	.name = "fpu",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags = IRQF_NO_THREAD,
 };
 
 static struct irqaction busirq = {
 	.name = "bus error",
 	.flags = IRQF_NO_THREAD,
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -123,6 +132,7 @@ static struct irqaction busirq = {
 	.flags = IRQF_DISABLED,
 	.name = "bus error",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct irqaction haltirq = {
@@ -131,7 +141,11 @@ static struct irqaction haltirq = {
 <<<<<<< HEAD
 	.flags = IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.flags = IRQF_NO_THREAD,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 

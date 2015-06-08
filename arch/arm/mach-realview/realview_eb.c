@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/amba/bus.h>
 #include <linux/amba/pl061.h>
 #include <linux/amba/mmci.h>
@@ -43,8 +47,12 @@
 <<<<<<< HEAD
 #include <asm/smp_twd.h>
 =======
+<<<<<<< HEAD
+#include <asm/smp_twd.h>
+=======
 #include <asm/localtimer.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
@@ -104,6 +112,11 @@ static struct map_desc realview_eb11mp_io_desc[] __initdata = {
 		.pfn		= __phys_to_pfn(REALVIEW_EB11MP_PRIV_MEM_BASE),
 		.length		= REALVIEW_EB11MP_PRIV_MEM_SIZE,
 =======
+<<<<<<< HEAD
+		.virtual	= IO_ADDRESS(REALVIEW_EB11MP_PRIV_MEM_BASE),
+		.pfn		= __phys_to_pfn(REALVIEW_EB11MP_PRIV_MEM_BASE),
+		.length		= REALVIEW_EB11MP_PRIV_MEM_SIZE,
+=======
 		.virtual	= IO_ADDRESS(REALVIEW_EB11MP_GIC_CPU_BASE),
 		.pfn		= __phys_to_pfn(REALVIEW_EB11MP_GIC_CPU_BASE),
 		.length		= SZ_4K,
@@ -113,6 +126,7 @@ static struct map_desc realview_eb11mp_io_desc[] __initdata = {
 		.pfn		= __phys_to_pfn(REALVIEW_EB11MP_GIC_DIST_BASE),
 		.length		= SZ_4K,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.type		= MT_DEVICE,
 	}, {
 		.virtual	= IO_ADDRESS(REALVIEW_EB11MP_L220_BASE),
@@ -133,24 +147,33 @@ static struct pl061_platform_data gpio0_plat_data = {
 	.gpio_base	= 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl061_platform_data gpio1_plat_data = {
 	.gpio_base	= 8,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl061_platform_data gpio2_plat_data = {
 	.gpio_base	= 16,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl022_ssp_controller ssp0_plat_data = {
@@ -167,6 +190,9 @@ static struct pl022_ssp_controller ssp0_plat_data = {
  * These devices are connected via the core APB bridge
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO2_IRQ	{ IRQ_EB_GPIO2 }
 #define GPIO3_IRQ	{ IRQ_EB_GPIO3 }
 
@@ -174,6 +200,8 @@ static struct pl022_ssp_controller ssp0_plat_data = {
 #define MMCI0_IRQ	{ IRQ_EB_MMCI0A, IRQ_EB_MMCI0B }
 #define KMI0_IRQ	{ IRQ_EB_KMI0 }
 #define KMI1_IRQ	{ IRQ_EB_KMI1 }
+<<<<<<< HEAD
+=======
 =======
 #define GPIO2_IRQ	{ IRQ_EB_GPIO2, NO_IRQ }
 #define GPIO3_IRQ	{ IRQ_EB_GPIO3, NO_IRQ }
@@ -183,31 +211,43 @@ static struct pl022_ssp_controller ssp0_plat_data = {
 #define KMI0_IRQ	{ IRQ_EB_KMI0, NO_IRQ }
 #define KMI1_IRQ	{ IRQ_EB_KMI1, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These devices are connected directly to the multi-layer AHB switch
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EB_SMC_IRQ	{ }
 #define MPMC_IRQ	{ }
 #define EB_CLCD_IRQ	{ IRQ_EB_CLCD }
 #define DMAC_IRQ	{ IRQ_EB_DMA }
+<<<<<<< HEAD
+=======
 =======
 #define EB_SMC_IRQ	{ NO_IRQ, NO_IRQ }
 #define MPMC_IRQ	{ NO_IRQ, NO_IRQ }
 #define EB_CLCD_IRQ	{ IRQ_EB_CLCD, NO_IRQ }
 #define DMAC_IRQ	{ IRQ_EB_DMA, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These devices are connected via the core APB bridge
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCTL_IRQ	{ }
 #define EB_WATCHDOG_IRQ	{ IRQ_EB_WDOG }
 #define EB_GPIO0_IRQ	{ IRQ_EB_GPIO0 }
 #define GPIO1_IRQ	{ IRQ_EB_GPIO1 }
 #define EB_RTC_IRQ	{ IRQ_EB_RTC }
+<<<<<<< HEAD
+=======
 =======
 #define SCTL_IRQ	{ NO_IRQ, NO_IRQ }
 #define EB_WATCHDOG_IRQ	{ IRQ_EB_WDOG, NO_IRQ }
@@ -215,11 +255,15 @@ static struct pl022_ssp_controller ssp0_plat_data = {
 #define GPIO1_IRQ	{ IRQ_EB_GPIO1, NO_IRQ }
 #define EB_RTC_IRQ	{ IRQ_EB_RTC, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These devices are connected via the DMA APB bridge
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCI_IRQ		{ IRQ_EB_SCI }
 #define EB_UART0_IRQ	{ IRQ_EB_UART0 }
 #define EB_UART1_IRQ	{ IRQ_EB_UART1 }
@@ -249,6 +293,8 @@ APB_DEVICE(uart0, "dev:uart0", EB_UART0, NULL);
 APB_DEVICE(uart1, "dev:uart1", EB_UART1, NULL);
 APB_DEVICE(uart2, "dev:uart2", EB_UART2, NULL);
 APB_DEVICE(ssp0,  "dev:ssp0",  EB_SSP,   &ssp0_plat_data);
+<<<<<<< HEAD
+=======
 =======
 #define SCI_IRQ		{ IRQ_EB_SCI, NO_IRQ }
 #define EB_UART0_IRQ	{ IRQ_EB_UART0, NO_IRQ }
@@ -280,6 +326,7 @@ AMBA_DEVICE(uart1, "dev:uart1", EB_UART1, NULL);
 AMBA_DEVICE(uart2, "dev:uart2", EB_UART2, NULL);
 AMBA_DEVICE(ssp0,  "dev:ssp0",  EB_SSP,   &ssp0_plat_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct amba_device *amba_devs[] __initdata = {
 	&dmac_device,
@@ -472,6 +519,9 @@ static void realview_eb11mp_fixup(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAVE_ARM_TWD
 static DEFINE_TWD_LOCAL_TIMER(twd_local_timer,
 			      REALVIEW_EB11MP_TWD_BASE,
@@ -489,8 +539,11 @@ static void __init realview_eb_twd_init(void)
 #define realview_eb_twd_init()	do { } while(0)
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init realview_eb_timer_init(void)
 {
 	unsigned int timer_irq;
@@ -501,6 +554,9 @@ static void __init realview_eb_timer_init(void)
 	timer3_va_base = __io_address(REALVIEW_EB_TIMER2_3_BASE) + 0x20;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (core_tile_eb11mp() || core_tile_a9mp())
 		timer_irq = IRQ_EB11MP_TIMER0_1;
 	else
@@ -508,6 +564,8 @@ static void __init realview_eb_timer_init(void)
 
 	realview_timer_init(timer_irq);
 	realview_eb_twd_init();
+<<<<<<< HEAD
+=======
 =======
 	if (core_tile_eb11mp() || core_tile_a9mp()) {
 #ifdef CONFIG_LOCAL_TIMERS
@@ -519,6 +577,7 @@ static void __init realview_eb_timer_init(void)
 
 	realview_timer_init(timer_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct sys_timer realview_eb_timer = {
@@ -528,8 +587,12 @@ static struct sys_timer realview_eb_timer = {
 <<<<<<< HEAD
 static void realview_eb_restart(char mode, const char *cmd)
 =======
+<<<<<<< HEAD
+static void realview_eb_restart(char mode, const char *cmd)
+=======
 static void realview_eb_reset(char mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void __iomem *reset_ctrl = __io_address(REALVIEW_SYS_RESETCTL);
 	void __iomem *lock_ctrl = __io_address(REALVIEW_SYS_LOCK);
@@ -544,7 +607,11 @@ static void realview_eb_reset(char mode)
 <<<<<<< HEAD
 	dsb();
 =======
+<<<<<<< HEAD
+	dsb();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init realview_eb_init(void)
@@ -578,8 +645,11 @@ static void __init realview_eb_init(void)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	realview_reset = realview_eb_reset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(REALVIEW_EB, "ARM-RealView EB")
@@ -587,21 +657,31 @@ MACHINE_START(REALVIEW_EB, "ARM-RealView EB")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= PLAT_PHYS_OFFSET + 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fixup		= realview_fixup,
 	.map_io		= realview_eb_map_io,
 	.init_early	= realview_init_early,
 	.init_irq	= gic_init_irq,
 	.timer		= &realview_eb_timer,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handle_irq	= gic_handle_irq,
 	.init_machine	= realview_eb_init,
 #ifdef CONFIG_ZONE_DMA
 	.dma_zone_size	= SZ_256M,
 #endif
 	.restart	= realview_eb_restart,
+<<<<<<< HEAD
+=======
 =======
 	.init_machine	= realview_eb_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

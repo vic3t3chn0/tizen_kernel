@@ -20,6 +20,10 @@
 /* Bogus value */
 #define CLOCK_TICK_RATE	12345678
 =======
+<<<<<<< HEAD
+/* Bogus value */
+#define CLOCK_TICK_RATE	12345678
+=======
 #if defined CONFIG_ARCH_MX1
 #define CLOCK_TICK_RATE		16000000
 #elif defined CONFIG_ARCH_MX2
@@ -32,5 +36,6 @@
 #define CLOCK_TICK_RATE		8000000
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif				/* __ASM_ARCH_MXC_TIMEX_H__ */

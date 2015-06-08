@@ -193,6 +193,9 @@ enum {
  *    NLA_FLAG             Unused
  *    NLA_BINARY           Maximum length of attribute payload
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    NLA_NESTED           Don't use `len' field -- length verification is
  *                         done by checking len of nested header (or empty)
  *    NLA_NESTED_COMPAT    Minimum length of structure payload
@@ -202,10 +205,13 @@ enum {
  *                         given type fits, using it verifies minimum length
  *                         just like "All other"
  *    All other            Minimum length of attribute payload
+<<<<<<< HEAD
+=======
 =======
  *    NLA_NESTED_COMPAT    Exact length of structure payload
  *    All other            Exact length of attribute payload
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Example:
  * static const struct nla_policy my_policy[ATTR_MAX+1] = {
@@ -448,6 +454,8 @@ static inline int nlmsg_report(const struct nlmsghdr *nlh)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if 0
 /* FIXME: Enable once all users have been converted */
 
@@ -484,6 +492,7 @@ static inline struct nlmsghdr *__nlmsg_put(struct sk_buff *skb, u32 pid,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * nlmsg_put - Add a new netlink message to an skb
  * @skb: socket buffer to store message in

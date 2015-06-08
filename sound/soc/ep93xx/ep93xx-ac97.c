@@ -109,8 +109,12 @@ static struct ep93xx_pcm_dma_params ep93xx_ac97_pcm_out = {
 <<<<<<< HEAD
 	.dma_port	= EP93XX_DMA_AAC1,
 =======
+<<<<<<< HEAD
+	.dma_port	= EP93XX_DMA_AAC1,
+=======
 	.dma_port	= EP93XX_DMA_M2P_PORT_AAC1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct ep93xx_pcm_dma_params ep93xx_ac97_pcm_in = {
@@ -118,8 +122,12 @@ static struct ep93xx_pcm_dma_params ep93xx_ac97_pcm_in = {
 <<<<<<< HEAD
 	.dma_port	= EP93XX_DMA_AAC1,
 =======
+<<<<<<< HEAD
+	.dma_port	= EP93XX_DMA_AAC1,
+=======
 	.dma_port	= EP93XX_DMA_M2P_PORT_AAC1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline unsigned ep93xx_ac97_read_reg(struct ep93xx_ac97_info *info,
@@ -341,8 +349,12 @@ static int ep93xx_ac97_startup(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops ep93xx_ac97_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops ep93xx_ac97_dai_ops = {
+=======
 static struct snd_soc_dai_ops ep93xx_ac97_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= ep93xx_ac97_startup,
 	.trigger	= ep93xx_ac97_trigger,
 };
@@ -350,8 +362,12 @@ static struct snd_soc_dai_ops ep93xx_ac97_dai_ops = {
 <<<<<<< HEAD
 static struct snd_soc_dai_driver ep93xx_ac97_dai = {
 =======
+<<<<<<< HEAD
+static struct snd_soc_dai_driver ep93xx_ac97_dai = {
+=======
 struct snd_soc_dai_driver ep93xx_ac97_dai = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "ep93xx-ac97",
 	.id		= 0,
 	.ac97_control	= 1,
@@ -468,6 +484,9 @@ static struct platform_driver ep93xx_ac97_driver = {
 <<<<<<< HEAD
 module_platform_driver(ep93xx_ac97_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(ep93xx_ac97_driver);
+=======
 static int __init ep93xx_ac97_init(void)
 {
 	return platform_driver_register(&ep93xx_ac97_driver);
@@ -480,6 +499,7 @@ static void __exit ep93xx_ac97_exit(void)
 }
 module_exit(ep93xx_ac97_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("EP93xx AC97 ASoC Driver");
 MODULE_AUTHOR("Mika Westerberg <mika.westerberg@iki.fi>");

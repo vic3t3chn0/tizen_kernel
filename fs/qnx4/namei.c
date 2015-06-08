@@ -41,11 +41,14 @@ static int qnx4_match(int len, const char *name,
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* "" means "." ---> so paths like "/usr/lib//libc.a" work */
 	if (!len && (de->di_fname[0] == '.') && (de->di_fname[1] == '\0')) {
 		return 1;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	thislen = strlen( de->di_fname );
 	if ( thislen > namelen )
 		thislen = namelen;
@@ -80,8 +83,14 @@ static struct buffer_head *qnx4_find_entry(int len, struct inode *dir,
 			if (block)
 				bh = sb_bread(dir->i_sb, block);
 =======
+<<<<<<< HEAD
+			block = qnx4_block_map(dir, blkofs);
+			if (block)
+				bh = sb_bread(dir->i_sb, block);
+=======
 			bh = qnx4_bread(dir, blkofs, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!bh) {
 				blkofs++;
 				continue;
@@ -91,8 +100,11 @@ static struct buffer_head *qnx4_find_entry(int len, struct inode *dir,
 		if (qnx4_match(len, name, bh, &offset)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			block = qnx4_block_map( dir, blkofs );
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*ino = block * QNX4_INODES_PER_BLOCK +
 			    (offset / QNX4_DIR_ENTRY_SIZE) - 1;
 			return bh;

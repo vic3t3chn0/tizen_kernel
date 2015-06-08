@@ -235,13 +235,20 @@ static int x25_device_event(struct notifier_block *this, unsigned long event,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_LLC)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_LLC)
+=======
 #if defined(CONFIG_LLC) || defined(CONFIG_LLC_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 || dev->type == ARPHRD_ETHER
 #endif
 	 ) {
 		switch (event) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case NETDEV_UP:
 			x25_link_device_up(dev);
 			break;
@@ -257,6 +264,8 @@ static int x25_device_event(struct notifier_block *this, unsigned long event,
 			x25_route_device_down(dev);
 			x25_link_device_down(dev);
 			break;
+<<<<<<< HEAD
+=======
 =======
 			case NETDEV_UP:
 				x25_link_device_up(dev);
@@ -274,6 +283,7 @@ static int x25_device_event(struct notifier_block *this, unsigned long event,
 				x25_link_device_down(dev);
 				break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -1286,16 +1296,23 @@ static int x25_recvmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 	int qbit, header_len;
 =======
+<<<<<<< HEAD
+	int qbit, header_len;
+=======
 	int qbit, header_len = x25->neighbour->extended ?
 		X25_EXT_MIN_LEN : X25_STD_MIN_LEN;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *skb;
 	unsigned char *asmptr;
 	int rc = -ENOTCONN;
 
 	lock_sock(sk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (x25->neighbour == NULL)
 		goto out;
@@ -1303,8 +1320,11 @@ static int x25_recvmsg(struct kiocb *iocb, struct socket *sock,
 	header_len = x25->neighbour->extended ?
 		X25_EXT_MIN_LEN : X25_STD_MIN_LEN;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * This works for seqpacket too. The receiver has ordered the queue for
 	 * us! We do one quick check first though
@@ -1397,6 +1417,9 @@ static int x25_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 
 	switch (cmd) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TIOCOUTQ: {
 		int amount;
 
@@ -1644,6 +1667,8 @@ out_cud_release:
 	default:
 		rc = -ENOIOCTLCMD;
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case TIOCOUTQ: {
 			int amount;
@@ -1897,6 +1922,7 @@ out_sendcallaccpt_release:
 			rc = -ENOIOCTLCMD;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return rc;

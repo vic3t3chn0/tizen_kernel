@@ -11,6 +11,9 @@
 #include "devices-common.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define db5500_add_i2c1(parent, pdata) \
 	dbx500_add_i2c(parent, 1, U5500_I2C1_BASE, IRQ_DB5500_I2C1, pdata)
 #define db5500_add_i2c2(parent, pdata) \
@@ -96,6 +99,8 @@
 #define db5500_add_uart3(parent, plat) \
 	dbx500_add_uart(parent, "uart3", U5500_UART3_BASE, \
 			IRQ_DB5500_UART3, plat)
+<<<<<<< HEAD
+=======
 =======
 #define db5500_add_i2c1(pdata) \
 	dbx500_add_i2c(1, U5500_I2C1_BASE, IRQ_DB5500_I2C1, pdata)
@@ -163,5 +168,6 @@
 #define db5500_add_uart3(plat) \
 	dbx500_add_uart("uart3", U5500_UART3_BASE, IRQ_DB5500_UART3, plat)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

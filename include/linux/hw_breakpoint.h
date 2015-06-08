@@ -76,7 +76,11 @@ register_user_hw_breakpoint(struct perf_event_attr *attr,
 <<<<<<< HEAD
 			    void *context,
 =======
+<<<<<<< HEAD
+			    void *context,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    struct task_struct *tsk);
 
 /* FIXME: only change from the attr, and don't unregister */
@@ -92,7 +96,11 @@ register_wide_hw_breakpoint_cpu(struct perf_event_attr *attr,
 <<<<<<< HEAD
 				void *context,
 =======
+<<<<<<< HEAD
+				void *context,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				int cpu);
 
 extern struct perf_event * __percpu *
@@ -101,8 +109,13 @@ register_wide_hw_breakpoint(struct perf_event_attr *attr,
 			    perf_overflow_handler_t triggered,
 			    void *context);
 =======
+<<<<<<< HEAD
+			    perf_overflow_handler_t triggered,
+			    void *context);
+=======
 			    perf_overflow_handler_t triggered);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int register_perf_hw_breakpoint(struct perf_event *bp);
 extern int __register_perf_hw_breakpoint(struct perf_event *bp);
@@ -131,7 +144,11 @@ register_user_hw_breakpoint(struct perf_event_attr *attr,
 <<<<<<< HEAD
 			    void *context,
 =======
+<<<<<<< HEAD
+			    void *context,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    struct task_struct *tsk)	{ return NULL; }
 static inline int
 modify_user_hw_breakpoint(struct perf_event *bp,
@@ -140,18 +157,24 @@ static inline struct perf_event *
 register_wide_hw_breakpoint_cpu(struct perf_event_attr *attr,
 				perf_overflow_handler_t	 triggered,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				void *context,
 				int cpu)		{ return NULL; }
 static inline struct perf_event * __percpu *
 register_wide_hw_breakpoint(struct perf_event_attr *attr,
 			    perf_overflow_handler_t triggered,
 			    void *context)		{ return NULL; }
+<<<<<<< HEAD
+=======
 =======
 				int cpu)		{ return NULL; }
 static inline struct perf_event * __percpu *
 register_wide_hw_breakpoint(struct perf_event_attr *attr,
 			    perf_overflow_handler_t triggered)	{ return NULL; }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int
 register_perf_hw_breakpoint(struct perf_event *bp)	{ return -ENOSYS; }
 static inline int

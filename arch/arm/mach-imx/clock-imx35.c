@@ -30,6 +30,9 @@
 <<<<<<< HEAD
 #include "crmregs-imx3.h"
 =======
+<<<<<<< HEAD
+#include "crmregs-imx3.h"
+=======
 #define CCM_BASE	MX35_IO_ADDRESS(MX35_CCM_BASE_ADDR)
 
 #define CCM_CCMR        0x00
@@ -48,6 +51,7 @@
 #define CCM_CGR2        0x34
 #define CCM_CGR3        0x38
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef HAVE_SET_RATE_SUPPORT
 static void calc_dividers(u32 div, u32 *pre, u32 *post, u32 maxpost)
@@ -118,8 +122,12 @@ static unsigned long get_rate_mpll(void)
 <<<<<<< HEAD
 	ulong mpctl = __raw_readl(MX35_CCM_MPCTL);
 =======
+<<<<<<< HEAD
+	ulong mpctl = __raw_readl(MX35_CCM_MPCTL);
+=======
 	ulong mpctl = __raw_readl(CCM_BASE + CCM_MPCTL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return mxc_decode_pll(mpctl, 24000000);
 }
@@ -129,8 +137,12 @@ static unsigned long get_rate_ppll(void)
 <<<<<<< HEAD
 	ulong ppctl = __raw_readl(MX35_CCM_PPCTL);
 =======
+<<<<<<< HEAD
+	ulong ppctl = __raw_readl(MX35_CCM_PPCTL);
+=======
 	ulong ppctl = __raw_readl(CCM_BASE + CCM_PPCTL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return mxc_decode_pll(ppctl, 24000000);
 }
@@ -163,8 +175,12 @@ static unsigned long get_rate_arm(void)
 <<<<<<< HEAD
 	unsigned long pdr0 = __raw_readl(MXC_CCM_PDR0);
 =======
+<<<<<<< HEAD
+	unsigned long pdr0 = __raw_readl(MXC_CCM_PDR0);
+=======
 	unsigned long pdr0 = __raw_readl(CCM_BASE + CCM_PDR0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct arm_ahb_div *aad;
 	unsigned long fref = get_rate_mpll();
 
@@ -180,8 +196,12 @@ static unsigned long get_rate_ahb(struct clk *clk)
 <<<<<<< HEAD
 	unsigned long pdr0 = __raw_readl(MXC_CCM_PDR0);
 =======
+<<<<<<< HEAD
+	unsigned long pdr0 = __raw_readl(MXC_CCM_PDR0);
+=======
 	unsigned long pdr0 = __raw_readl(CCM_BASE + CCM_PDR0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct arm_ahb_div *aad;
 	unsigned long fref = get_rate_arm();
 
@@ -201,9 +221,14 @@ static unsigned long get_rate_uart(struct clk *clk)
 	unsigned long pdr3 = __raw_readl(MX35_CCM_PDR3);
 	unsigned long pdr4 = __raw_readl(MX35_CCM_PDR4);
 =======
+<<<<<<< HEAD
+	unsigned long pdr3 = __raw_readl(MX35_CCM_PDR3);
+	unsigned long pdr4 = __raw_readl(MX35_CCM_PDR4);
+=======
 	unsigned long pdr3 = __raw_readl(CCM_BASE + CCM_PDR3);
 	unsigned long pdr4 = __raw_readl(CCM_BASE + CCM_PDR4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long div = ((pdr4 >> 10) & 0x3f) + 1;
 
 	if (pdr3 & (1 << 14))
@@ -217,8 +242,12 @@ static unsigned long get_rate_sdhc(struct clk *clk)
 <<<<<<< HEAD
 	unsigned long pdr3 = __raw_readl(MX35_CCM_PDR3);
 =======
+<<<<<<< HEAD
+	unsigned long pdr3 = __raw_readl(MX35_CCM_PDR3);
+=======
 	unsigned long pdr3 = __raw_readl(CCM_BASE + CCM_PDR3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long div, rate;
 
 	if (pdr3 & (1 << 6))
@@ -247,8 +276,12 @@ static unsigned long get_rate_mshc(struct clk *clk)
 <<<<<<< HEAD
 	unsigned long pdr1 = __raw_readl(MXC_CCM_PDR1);
 =======
+<<<<<<< HEAD
+	unsigned long pdr1 = __raw_readl(MXC_CCM_PDR1);
+=======
 	unsigned long pdr1 = __raw_readl(CCM_BASE + CCM_PDR1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long div1, div2, rate;
 
 	if (pdr1 & (1 << 7))
@@ -267,8 +300,12 @@ static unsigned long get_rate_ssi(struct clk *clk)
 <<<<<<< HEAD
 	unsigned long pdr2 = __raw_readl(MX35_CCM_PDR2);
 =======
+<<<<<<< HEAD
+	unsigned long pdr2 = __raw_readl(MX35_CCM_PDR2);
+=======
 	unsigned long pdr2 = __raw_readl(CCM_BASE + CCM_PDR2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long div1, div2, rate;
 
 	if (pdr2 & (1 << 6))
@@ -296,8 +333,12 @@ static unsigned long get_rate_csi(struct clk *clk)
 <<<<<<< HEAD
 	unsigned long pdr2 = __raw_readl(MX35_CCM_PDR2);
 =======
+<<<<<<< HEAD
+	unsigned long pdr2 = __raw_readl(MX35_CCM_PDR2);
+=======
 	unsigned long pdr2 = __raw_readl(CCM_BASE + CCM_PDR2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long rate;
 
 	if (pdr2 & (1 << 7))
@@ -313,8 +354,12 @@ static unsigned long get_rate_otg(struct clk *clk)
 <<<<<<< HEAD
 	unsigned long pdr4 = __raw_readl(MX35_CCM_PDR4);
 =======
+<<<<<<< HEAD
+	unsigned long pdr4 = __raw_readl(MX35_CCM_PDR4);
+=======
 	unsigned long pdr4 = __raw_readl(CCM_BASE + CCM_PDR4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long rate;
 
 	if (pdr4 & (1 << 9))
@@ -331,9 +376,14 @@ static unsigned long get_rate_ipg_per(struct clk *clk)
 	unsigned long pdr0 = __raw_readl(MXC_CCM_PDR0);
 	unsigned long pdr4 = __raw_readl(MX35_CCM_PDR4);
 =======
+<<<<<<< HEAD
+	unsigned long pdr0 = __raw_readl(MXC_CCM_PDR0);
+	unsigned long pdr4 = __raw_readl(MX35_CCM_PDR4);
+=======
 	unsigned long pdr0 = __raw_readl(CCM_BASE + CCM_PDR0);
 	unsigned long pdr4 = __raw_readl(CCM_BASE + CCM_PDR4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long div;
 
 	if (pdr0 & (1 << 26)) {
@@ -350,8 +400,12 @@ static unsigned long get_rate_hsp(struct clk *clk)
 <<<<<<< HEAD
 	unsigned long hsp_podf = (__raw_readl(MXC_CCM_PDR0) >> 20) & 0x03;
 =======
+<<<<<<< HEAD
+	unsigned long hsp_podf = (__raw_readl(MXC_CCM_PDR0) >> 20) & 0x03;
+=======
 	unsigned long hsp_podf = (__raw_readl(CCM_BASE + CCM_PDR0) >> 20) & 0x03;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long fref = get_rate_mpll();
 
 	if (fref > 400 * 1000 * 1000) {
@@ -402,8 +456,12 @@ static void clk_cgr_disable(struct clk *clk)
 <<<<<<< HEAD
 		.enable_reg	= er,			\
 =======
+<<<<<<< HEAD
+		.enable_reg	= er,			\
+=======
 		.enable_reg	= CCM_BASE + er,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.enable_shift	= es,			\
 		.get_rate	= gr,			\
 		.set_rate	= sr,			\
@@ -412,6 +470,9 @@ static void clk_cgr_disable(struct clk *clk)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DEFINE_CLOCK(asrc_clk,   0, MX35_CCM_CGR0,  0, NULL, NULL);
 DEFINE_CLOCK(pata_clk,    0, MX35_CCM_CGR0,  2, get_rate_ipg, NULL);
 /* DEFINE_CLOCK(audmux_clk, 0, MX35_CCM_CGR0,  4, NULL, NULL); */
@@ -465,6 +526,8 @@ DEFINE_CLOCK(audmux_clk, 0, MX35_CCM_CGR2, 30, NULL, NULL);
 DEFINE_CLOCK(csi_clk,    0, MX35_CCM_CGR3,  0, get_rate_csi, NULL);
 DEFINE_CLOCK(iim_clk,    0, MX35_CCM_CGR3,  2, NULL, NULL);
 DEFINE_CLOCK(gpu2d_clk,  0, MX35_CCM_CGR3,  4, NULL, NULL);
+<<<<<<< HEAD
+=======
 =======
 DEFINE_CLOCK(asrc_clk,   0, CCM_CGR0,  0, NULL, NULL);
 DEFINE_CLOCK(ata_clk,    0, CCM_CGR0,  2, get_rate_ipg, NULL);
@@ -520,6 +583,7 @@ DEFINE_CLOCK(csi_clk,    0, CCM_CGR3,  0, get_rate_csi, NULL);
 DEFINE_CLOCK(iim_clk,    0, CCM_CGR3,  2, NULL, NULL);
 DEFINE_CLOCK(gpu2d_clk,  0, CCM_CGR3,  4, NULL, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 DEFINE_CLOCK(usbahb_clk, 0, 0,         0, get_rate_ahb, NULL);
 
@@ -539,8 +603,12 @@ static unsigned long get_rate_nfc(struct clk *clk)
 <<<<<<< HEAD
 	div1 = (__raw_readl(MX35_CCM_PDR4) >> 28) + 1;
 =======
+<<<<<<< HEAD
+	div1 = (__raw_readl(MX35_CCM_PDR4) >> 28) + 1;
+=======
 	div1 = (__raw_readl(CCM_BASE + CCM_PDR4) >> 28) + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return get_rate_ahb(NULL) / div1;
 }
@@ -568,8 +636,12 @@ static struct clk_lookup lookups[] = {
 <<<<<<< HEAD
 	_REGISTER_CLOCK("pata_imx", NULL, pata_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("pata_imx", NULL, pata_clk)
+=======
 	_REGISTER_CLOCK(NULL, "ata", ata_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("flexcan.0", NULL, can1_clk)
 	_REGISTER_CLOCK("flexcan.1", NULL, can2_clk)
 	_REGISTER_CLOCK("imx35-cspi.0", NULL, cspi1_clk)
@@ -581,17 +653,23 @@ static struct clk_lookup lookups[] = {
 	_REGISTER_CLOCK("imx-epit.1", NULL, epit2_clk)
 	_REGISTER_CLOCK(NULL, "esai", esai_clk)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("sdhci-esdhc-imx35.0", NULL, esdhc1_clk)
 	_REGISTER_CLOCK("sdhci-esdhc-imx35.1", NULL, esdhc2_clk)
 	_REGISTER_CLOCK("sdhci-esdhc-imx35.2", NULL, esdhc3_clk)
 	/* i.mx35 has the i.mx27 type fec */
 	_REGISTER_CLOCK("imx27-fec.0", NULL, fec_clk)
+<<<<<<< HEAD
+=======
 =======
 	_REGISTER_CLOCK("sdhci-esdhc-imx.0", NULL, esdhc1_clk)
 	_REGISTER_CLOCK("sdhci-esdhc-imx.1", NULL, esdhc2_clk)
 	_REGISTER_CLOCK("sdhci-esdhc-imx.2", NULL, esdhc3_clk)
 	_REGISTER_CLOCK("fec.0", NULL, fec_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK(NULL, "gpio", gpio1_clk)
 	_REGISTER_CLOCK(NULL, "gpio", gpio2_clk)
 	_REGISTER_CLOCK(NULL, "gpio", gpio3_clk)
@@ -614,22 +692,32 @@ static struct clk_lookup lookups[] = {
 <<<<<<< HEAD
 	_REGISTER_CLOCK("imx35-sdma", NULL, sdma_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("imx35-sdma", NULL, sdma_clk)
+=======
 	_REGISTER_CLOCK("imx-sdma", NULL, sdma_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK(NULL, "spba", spba_clk)
 	_REGISTER_CLOCK(NULL, "spdif", spdif_clk)
 	_REGISTER_CLOCK("imx-ssi.0", NULL, ssi1_clk)
 	_REGISTER_CLOCK("imx-ssi.1", NULL, ssi2_clk)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* i.mx35 has the i.mx21 type uart */
 	_REGISTER_CLOCK("imx21-uart.0", NULL, uart1_clk)
 	_REGISTER_CLOCK("imx21-uart.1", NULL, uart2_clk)
 	_REGISTER_CLOCK("imx21-uart.2", NULL, uart3_clk)
+<<<<<<< HEAD
+=======
 =======
 	_REGISTER_CLOCK("imx-uart.0", NULL, uart1_clk)
 	_REGISTER_CLOCK("imx-uart.1", NULL, uart2_clk)
 	_REGISTER_CLOCK("imx-uart.2", NULL, uart3_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("mxc-ehci.0", "usb", usbotg_clk)
 	_REGISTER_CLOCK("mxc-ehci.1", "usb", usbotg_clk)
 	_REGISTER_CLOCK("mxc-ehci.2", "usb", usbotg_clk)
@@ -641,8 +729,12 @@ static struct clk_lookup lookups[] = {
 <<<<<<< HEAD
 	_REGISTER_CLOCK("mx3-camera.0", NULL, csi_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("mx3-camera.0", NULL, csi_clk)
+=======
 	_REGISTER_CLOCK(NULL, "csi", csi_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK(NULL, "iim", iim_clk)
 	_REGISTER_CLOCK(NULL, "gpu2d", gpu2d_clk)
 	_REGISTER_CLOCK("mxc_nand.0", NULL, nfc_clk)
@@ -653,8 +745,12 @@ int __init mx35_clocks_init()
 <<<<<<< HEAD
 	unsigned int cgr2 = 3 << 26;
 =======
+<<<<<<< HEAD
+	unsigned int cgr2 = 3 << 26;
+=======
 	unsigned int cgr2 = 3 << 26, cgr3 = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_DEBUG_LL) && !defined(CONFIG_DEBUG_ICEDCC)
 	cgr2 |= 3 << 16;
@@ -666,6 +762,9 @@ int __init mx35_clocks_init()
 	 * EMI, GPIO1/2/3, GPT, IOMUX, MAX and eventually uart
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__raw_writel((3 << 18), MX35_CCM_CGR0);
 	__raw_writel((3 << 2) | (3 << 4) | (3 << 6) | (3 << 8) | (3 << 16),
 			MX35_CCM_CGR1);
@@ -675,11 +774,14 @@ int __init mx35_clocks_init()
 	clk_enable(&iim_clk);
 	imx_print_silicon_rev("i.MX35", mx35_revision());
 	clk_disable(&iim_clk);
+<<<<<<< HEAD
+=======
 =======
 	__raw_writel((3 << 18), CCM_BASE + CCM_CGR0);
 	__raw_writel((3 << 2) | (3 << 4) | (3 << 6) | (3 << 8) | (3 << 16),
 			CCM_BASE + CCM_CGR1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Check if we came up in internal boot mode. If yes, we need some
@@ -687,6 +789,9 @@ int __init mx35_clocks_init()
 	 * hang after a watchdog reset.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!(__raw_readl(MX35_CCM_RCSR) & (3 << 10))) {
 		/* Additionally turn on UART1, SCC, and IIM clocks */
 		clk_enable(&iim_clk);
@@ -694,6 +799,8 @@ int __init mx35_clocks_init()
 		clk_enable(&scc_clk);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	if (!(__raw_readl(CCM_BASE + CCM_RCSR) & (3 << 10))) {
 		/* Additionally turn on UART1, SCC, and IIM clocks */
@@ -708,6 +815,7 @@ int __init mx35_clocks_init()
 	mx35_read_cpu_rev();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MXC_USE_EPIT
 	epit_timer_init(&epit1_clk,
 			MX35_IO_ADDRESS(MX35_EPIT1_BASE_ADDR), MX35_INT_EPIT1);

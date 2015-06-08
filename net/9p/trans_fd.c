@@ -29,7 +29,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/in.h>
 #include <linux/module.h>
 #include <linux/net.h>
@@ -199,8 +204,12 @@ static void p9_conn_cancel(struct p9_conn *m, int err)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_ERROR, "mux %p err %d\n", m, err);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_ERROR, "mux %p err %d\n", m, err);
+=======
 	P9_DPRINTK(P9_DEBUG_ERROR, "mux %p err %d\n", m, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&m->client->lock, flags);
 
@@ -229,8 +238,12 @@ static void p9_conn_cancel(struct p9_conn *m, int err)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_ERROR, "call back req %p\n", req);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_ERROR, "call back req %p\n", req);
+=======
 		P9_DPRINTK(P9_DEBUG_ERROR, "call back req %p\n", req);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list_del(&req->req_list);
 		p9_client_cb(m->client, req);
 	}
@@ -291,8 +304,12 @@ static int p9_fd_read(struct p9_client *client, void *v, int len)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_ERROR, "blocking read ...\n");
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_ERROR, "blocking read ...\n");
+=======
 		P9_DPRINTK(P9_DEBUG_ERROR, "blocking read ...\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = kernel_read(ts->rd, ts->rd->f_pos, v, len);
 	if (ret <= 0 && ret != -ERESTARTSYS && ret != -EAGAIN)
@@ -319,8 +336,12 @@ static void p9_read_work(struct work_struct *work)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_TRANS, "start mux %p pos %d\n", m, m->rpos);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, "start mux %p pos %d\n", m, m->rpos);
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, "start mux %p pos %d\n", m, m->rpos);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!m->rbuf) {
 		m->rbuf = m->tmp_buf;
@@ -330,11 +351,16 @@ static void p9_read_work(struct work_struct *work)
 
 	clear_bit(Rpending, &m->wsched);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p9_debug(P9_DEBUG_TRANS, "read mux %p pos %d size: %d = %d\n",
 		 m, m->rpos, m->rsize, m->rsize-m->rpos);
 	err = p9_fd_read(m->client, m->rbuf + m->rpos,
 						m->rsize - m->rpos);
 	p9_debug(P9_DEBUG_TRANS, "mux %p got %d bytes\n", m, err);
+<<<<<<< HEAD
+=======
 =======
 	P9_DPRINTK(P9_DEBUG_TRANS, "read mux %p pos %d size: %d = %d\n", m,
 					m->rpos, m->rsize, m->rsize-m->rpos);
@@ -342,6 +368,7 @@ static void p9_read_work(struct work_struct *work)
 						m->rsize - m->rpos);
 	P9_DPRINTK(P9_DEBUG_TRANS, "mux %p got %d bytes\n", m, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err == -EAGAIN) {
 		clear_bit(Rworksched, &m->wsched);
 		return;
@@ -355,12 +382,17 @@ static void p9_read_work(struct work_struct *work)
 	if ((!m->req) && (m->rpos == m->rsize)) { /* header read in */
 		u16 tag;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p9_debug(P9_DEBUG_TRANS, "got new header\n");
 
 		n = le32_to_cpu(*(__le32 *) m->rbuf); /* read packet size */
 		if (n >= m->client->msize) {
 			p9_debug(P9_DEBUG_ERROR,
 				 "requested packet size too big: %d\n", n);
+<<<<<<< HEAD
+=======
 =======
 		P9_DPRINTK(P9_DEBUG_TRANS, "got new header\n");
 
@@ -369,6 +401,7 @@ static void p9_read_work(struct work_struct *work)
 			P9_DPRINTK(P9_DEBUG_ERROR,
 				"requested packet size too big: %d\n", n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = -EIO;
 			goto error;
 		}
@@ -378,9 +411,14 @@ static void p9_read_work(struct work_struct *work)
 		p9_debug(P9_DEBUG_TRANS,
 			 "mux %p pkt: size: %d bytes tag: %d\n", m, n, tag);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS,
+			 "mux %p pkt: size: %d bytes tag: %d\n", m, n, tag);
+=======
 		P9_DPRINTK(P9_DEBUG_TRANS,
 			"mux %p pkt: size: %d bytes tag: %d\n", m, n, tag);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		m->req = p9_tag_lookup(m->client, tag);
 		if (!m->req || (m->req->status != REQ_STATUS_SENT &&
@@ -389,9 +427,14 @@ static void p9_read_work(struct work_struct *work)
 			p9_debug(P9_DEBUG_ERROR, "Unexpected packet tag %d\n",
 				 tag);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_ERROR, "Unexpected packet tag %d\n",
+				 tag);
+=======
 			P9_DPRINTK(P9_DEBUG_ERROR, "Unexpected packet tag %d\n",
 								 tag);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = -EIO;
 			goto error;
 		}
@@ -415,8 +458,12 @@ static void p9_read_work(struct work_struct *work)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_TRANS, "got new packet\n");
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS, "got new packet\n");
+=======
 		P9_DPRINTK(P9_DEBUG_TRANS, "got new packet\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&m->client->lock);
 		if (m->req->status != REQ_STATUS_ERROR)
 			m->req->status = REQ_STATUS_RCVD;
@@ -439,8 +486,12 @@ static void p9_read_work(struct work_struct *work)
 <<<<<<< HEAD
 			p9_debug(P9_DEBUG_TRANS, "sched read work %p\n", m);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_TRANS, "sched read work %p\n", m);
+=======
 			P9_DPRINTK(P9_DEBUG_TRANS, "sched read work %p\n", m);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			schedule_work(&m->rq);
 		} else
 			clear_bit(Rworksched, &m->wsched);
@@ -477,8 +528,12 @@ static int p9_fd_write(struct p9_client *client, void *v, int len)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_ERROR, "blocking write ...\n");
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_ERROR, "blocking write ...\n");
+=======
 		P9_DPRINTK(P9_DEBUG_ERROR, "blocking write ...\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	oldfs = get_fs();
 	set_fs(get_ds());
@@ -523,8 +578,12 @@ static void p9_write_work(struct work_struct *work)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_TRANS, "move req %p\n", req);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS, "move req %p\n", req);
+=======
 		P9_DPRINTK(P9_DEBUG_TRANS, "move req %p\n", req);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list_move_tail(&req->req_list, &m->req_list);
 
 		m->wbuf = req->tc->sdata;
@@ -534,11 +593,16 @@ static void p9_write_work(struct work_struct *work)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p9_debug(P9_DEBUG_TRANS, "mux %p pos %d size %d\n",
 		 m, m->wpos, m->wsize);
 	clear_bit(Wpending, &m->wsched);
 	err = p9_fd_write(m->client, m->wbuf + m->wpos, m->wsize - m->wpos);
 	p9_debug(P9_DEBUG_TRANS, "mux %p sent %d bytes\n", m, err);
+<<<<<<< HEAD
+=======
 =======
 	P9_DPRINTK(P9_DEBUG_TRANS, "mux %p pos %d size %d\n", m, m->wpos,
 								m->wsize);
@@ -546,6 +610,7 @@ static void p9_write_work(struct work_struct *work)
 	err = p9_fd_write(m->client, m->wbuf + m->wpos, m->wsize - m->wpos);
 	P9_DPRINTK(P9_DEBUG_TRANS, "mux %p sent %d bytes\n", m, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err == -EAGAIN) {
 		clear_bit(Wworksched, &m->wsched);
 		return;
@@ -572,8 +637,12 @@ static void p9_write_work(struct work_struct *work)
 <<<<<<< HEAD
 			p9_debug(P9_DEBUG_TRANS, "sched write work %p\n", m);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_TRANS, "sched write work %p\n", m);
+=======
 			P9_DPRINTK(P9_DEBUG_TRANS, "sched write work %p\n", m);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			schedule_work(&m->wq);
 		} else
 			clear_bit(Wworksched, &m->wsched);
@@ -630,8 +699,12 @@ p9_pollwait(struct file *filp, wait_queue_head_t *wait_address, poll_table *p)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_ERROR, "not enough wait_address slots\n");
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_ERROR, "not enough wait_address slots\n");
+=======
 		P9_DPRINTK(P9_DEBUG_ERROR, "not enough wait_address slots\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -656,9 +729,13 @@ static struct p9_conn *p9_conn_create(struct p9_client *client)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_TRANS, "client %p msize %d\n", client, client->msize);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, "client %p msize %d\n", client, client->msize);
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, "client %p msize %d\n", client,
 								client->msize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	m = kzalloc(sizeof(struct p9_conn), GFP_KERNEL);
 	if (!m)
 		return ERR_PTR(-ENOMEM);
@@ -678,8 +755,12 @@ static struct p9_conn *p9_conn_create(struct p9_client *client)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_TRANS, "mux %p can read\n", m);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS, "mux %p can read\n", m);
+=======
 		P9_DPRINTK(P9_DEBUG_TRANS, "mux %p can read\n", m);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_bit(Rpending, &m->wsched);
 	}
 
@@ -687,8 +768,12 @@ static struct p9_conn *p9_conn_create(struct p9_client *client)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_TRANS, "mux %p can write\n", m);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS, "mux %p can write\n", m);
+=======
 		P9_DPRINTK(P9_DEBUG_TRANS, "mux %p can write\n", m);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_bit(Wpending, &m->wsched);
 	}
 
@@ -713,8 +798,12 @@ static void p9_poll_mux(struct p9_conn *m)
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_TRANS, "error mux %p err %d\n", m, n);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS, "error mux %p err %d\n", m, n);
+=======
 		P9_DPRINTK(P9_DEBUG_TRANS, "error mux %p err %d\n", m, n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (n >= 0)
 			n = -ECONNRESET;
 		p9_conn_cancel(m, n);
@@ -727,10 +816,16 @@ static void p9_poll_mux(struct p9_conn *m)
 		if (!test_and_set_bit(Rworksched, &m->wsched)) {
 			p9_debug(P9_DEBUG_TRANS, "sched read work %p\n", m);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS, "mux %p can read\n", m);
+		if (!test_and_set_bit(Rworksched, &m->wsched)) {
+			p9_debug(P9_DEBUG_TRANS, "sched read work %p\n", m);
+=======
 		P9_DPRINTK(P9_DEBUG_TRANS, "mux %p can read\n", m);
 		if (!test_and_set_bit(Rworksched, &m->wsched)) {
 			P9_DPRINTK(P9_DEBUG_TRANS, "sched read work %p\n", m);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			schedule_work(&m->rq);
 		}
 	}
@@ -738,16 +833,22 @@ static void p9_poll_mux(struct p9_conn *m)
 	if (n & POLLOUT) {
 		set_bit(Wpending, &m->wsched);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p9_debug(P9_DEBUG_TRANS, "mux %p can write\n", m);
 		if ((m->wsize || !list_empty(&m->unsent_req_list)) &&
 		    !test_and_set_bit(Wworksched, &m->wsched)) {
 			p9_debug(P9_DEBUG_TRANS, "sched write work %p\n", m);
+<<<<<<< HEAD
+=======
 =======
 		P9_DPRINTK(P9_DEBUG_TRANS, "mux %p can write\n", m);
 		if ((m->wsize || !list_empty(&m->unsent_req_list)) &&
 		    !test_and_set_bit(Wworksched, &m->wsched)) {
 			P9_DPRINTK(P9_DEBUG_TRANS, "sched write work %p\n", m);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			schedule_work(&m->wq);
 		}
 	}
@@ -774,9 +875,14 @@ static int p9_fd_request(struct p9_client *client, struct p9_req_t *req)
 	p9_debug(P9_DEBUG_TRANS, "mux %p task %p tcall %p id %d\n",
 		 m, current, req->tc, req->tc->id);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, "mux %p task %p tcall %p id %d\n",
+		 m, current, req->tc, req->tc->id);
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, "mux %p task %p tcall %p id %d\n", m,
 						current, req->tc, req->tc->id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (m->err < 0)
 		return m->err;
 
@@ -803,8 +909,12 @@ static int p9_fd_cancel(struct p9_client *client, struct p9_req_t *req)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_TRANS, "client %p req %p\n", client, req);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, "client %p req %p\n", client, req);
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, "client %p req %p\n", client, req);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&client->lock);
 
@@ -848,9 +958,14 @@ static int parse_opts(char *params, struct p9_fd_opts *opts)
 		p9_debug(P9_DEBUG_ERROR,
 			 "failed to allocate copy of option string\n");
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_ERROR,
+			 "failed to allocate copy of option string\n");
+=======
 		P9_DPRINTK(P9_DEBUG_ERROR,
 				"failed to allocate copy of option string\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 	options = tmp_options;
@@ -868,9 +983,14 @@ static int parse_opts(char *params, struct p9_fd_opts *opts)
 				p9_debug(P9_DEBUG_ERROR,
 					 "integer field, but no integer?\n");
 =======
+<<<<<<< HEAD
+				p9_debug(P9_DEBUG_ERROR,
+					 "integer field, but no integer?\n");
+=======
 				P9_DPRINTK(P9_DEBUG_ERROR,
 				"integer field, but no integer?\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			}
 		}
@@ -933,8 +1053,13 @@ static int p9_socket_open(struct p9_client *client, struct socket *csocket)
 		pr_err("%s (%d): failed to map fd\n",
 		       __func__, task_pid_nr(current));
 =======
+<<<<<<< HEAD
+		pr_err("%s (%d): failed to map fd\n",
+		       __func__, task_pid_nr(current));
+=======
 		P9_EPRINTK(KERN_ERR, "p9_socket_open: failed to map fd\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sock_release(csocket);
 		kfree(p);
 		return fd;
@@ -974,9 +1099,14 @@ static void p9_conn_destroy(struct p9_conn *m)
 	p9_debug(P9_DEBUG_TRANS, "mux %p prev %p next %p\n",
 		 m, m->mux_list.prev, m->mux_list.next);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, "mux %p prev %p next %p\n",
+		 m, m->mux_list.prev, m->mux_list.next);
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, "mux %p prev %p next %p\n", m,
 		m->mux_list.prev, m->mux_list.next);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	p9_mux_poll_stop(m);
 	cancel_work_sync(&m->rq);
@@ -1061,8 +1191,13 @@ p9_fd_create_tcp(struct p9_client *client, const char *addr, char *args)
 		pr_err("%s (%d): problem creating socket\n",
 		       __func__, task_pid_nr(current));
 =======
+<<<<<<< HEAD
+		pr_err("%s (%d): problem creating socket\n",
+		       __func__, task_pid_nr(current));
+=======
 		P9_EPRINTK(KERN_ERR, "p9_trans_tcp: problem creating socket\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 
@@ -1074,10 +1209,15 @@ p9_fd_create_tcp(struct p9_client *client, const char *addr, char *args)
 		pr_err("%s (%d): problem connecting socket to %s\n",
 		       __func__, task_pid_nr(current), addr);
 =======
+<<<<<<< HEAD
+		pr_err("%s (%d): problem connecting socket to %s\n",
+		       __func__, task_pid_nr(current), addr);
+=======
 		P9_EPRINTK(KERN_ERR,
 			"p9_trans_tcp: problem connecting socket to %s\n",
 			addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sock_release(csocket);
 		return err;
 	}
@@ -1099,9 +1239,14 @@ p9_fd_create_unix(struct p9_client *client, const char *addr, char *args)
 		pr_err("%s (%d): address too long: %s\n",
 		       __func__, task_pid_nr(current), addr);
 =======
+<<<<<<< HEAD
+		pr_err("%s (%d): address too long: %s\n",
+		       __func__, task_pid_nr(current), addr);
+=======
 		P9_EPRINTK(KERN_ERR, "p9_trans_unix: address too long: %s\n",
 			addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENAMETOOLONG;
 	}
 
@@ -1115,8 +1260,14 @@ p9_fd_create_unix(struct p9_client *client, const char *addr, char *args)
 		       __func__, task_pid_nr(current));
 
 =======
+<<<<<<< HEAD
+		pr_err("%s (%d): problem creating socket\n",
+		       __func__, task_pid_nr(current));
+
+=======
 		P9_EPRINTK(KERN_ERR, "p9_trans_unix: problem creating socket\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 	err = csocket->ops->connect(csocket, (struct sockaddr *)&sun_server,
@@ -1126,10 +1277,15 @@ p9_fd_create_unix(struct p9_client *client, const char *addr, char *args)
 		pr_err("%s (%d): problem connecting socket: %s: %d\n",
 		       __func__, task_pid_nr(current), addr, err);
 =======
+<<<<<<< HEAD
+		pr_err("%s (%d): problem connecting socket: %s: %d\n",
+		       __func__, task_pid_nr(current), addr, err);
+=======
 		P9_EPRINTK(KERN_ERR,
 			"p9_trans_unix: problem connecting socket: %s: %d\n",
 			addr, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sock_release(csocket);
 		return err;
 	}
@@ -1150,8 +1306,12 @@ p9_fd_create(struct p9_client *client, const char *addr, char *args)
 <<<<<<< HEAD
 		pr_err("Insufficient options for proto=fd\n");
 =======
+<<<<<<< HEAD
+		pr_err("Insufficient options for proto=fd\n");
+=======
 		printk(KERN_ERR "v9fs: Insufficient options for proto=fd\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOPROTOOPT;
 	}
 
@@ -1221,8 +1381,12 @@ static void p9_poll_workfn(struct work_struct *work)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_TRANS, "start %p\n", current);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, "start %p\n", current);
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, "start %p\n", current);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&p9_poll_lock, flags);
 	while (!list_empty(&p9_poll_pending_list)) {
@@ -1241,8 +1405,12 @@ static void p9_poll_workfn(struct work_struct *work)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_TRANS, "finish\n");
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, "finish\n");
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, "finish\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int p9_trans_fd_init(void)

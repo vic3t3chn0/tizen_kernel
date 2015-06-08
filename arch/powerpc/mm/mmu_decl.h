@@ -146,7 +146,12 @@ extern unsigned long map_mem_in_cams(unsigned long ram, int max_cam_idx);
 extern unsigned long calc_cam_sz(unsigned long ram, unsigned long virt,
 				 phys_addr_t phys);
 =======
+<<<<<<< HEAD
+extern unsigned long calc_cam_sz(unsigned long ram, unsigned long virt,
+				 phys_addr_t phys);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC32
 extern void MMU_init_hw(void);
 extern unsigned long mmu_mapin_ram(unsigned long top);

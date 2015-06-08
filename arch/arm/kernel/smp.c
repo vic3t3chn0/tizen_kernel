@@ -21,12 +21,18 @@
 #include <linux/err.h>
 #include <linux/cpu.h>
 =======
+<<<<<<< HEAD
+#include <linux/mm.h>
+#include <linux/err.h>
+#include <linux/cpu.h>
+=======
 #include <linux/ftrace.h>
 #include <linux/mm.h>
 #include <linux/err.h>
 #include <linux/cpu.h>
 #include <linux/smp.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/seq_file.h>
 #include <linux/irq.h>
 #include <linux/percpu.h>
@@ -34,6 +40,9 @@
 #include <linux/completion.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/atomic.h>
 #include <asm/smp.h>
 #include <asm/cacheflush.h>
@@ -41,12 +50,15 @@
 #include <asm/cputype.h>
 #include <asm/exception.h>
 #include <asm/idmap.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/atomic.h>
 #include <asm/cacheflush.h>
 #include <asm/cpu.h>
 #include <asm/cputype.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/topology.h>
 #include <asm/mmu_context.h>
 #include <asm/pgtable.h>
@@ -57,15 +69,21 @@
 #include <asm/ptrace.h>
 #include <asm/localtimer.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/smp_plat.h>
 #include <asm/mach/arch.h>
 #ifdef CONFIG_CRASH_NOTES
 #include <asm/crash_notes.h>
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 #include <mach/sec_debug.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * as from 2.5, kernels no longer have an init_tasks structure
@@ -78,7 +96,11 @@ enum ipi_msg_type {
 <<<<<<< HEAD
 	IPI_CPU_START = 1,
 =======
+<<<<<<< HEAD
+	IPI_CPU_START = 1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IPI_TIMER = 2,
 	IPI_RESCHEDULE,
 	IPI_CALL_FUNC,
@@ -90,6 +112,9 @@ enum ipi_msg_type {
 static DECLARE_COMPLETION(cpu_running);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct smp_operations smp_ops;
 
 void __init smp_set_ops(struct smp_operations *ops)
@@ -121,6 +146,8 @@ int __cpuinit __cpu_up(unsigned int cpu)
 		 * init_idle() to reinitialize the thread structure.
 		 */
 		init_idle(idle, cpu);
+<<<<<<< HEAD
+=======
 =======
 int __cpuinit __cpu_up(unsigned int cpu, struct task_struct *idle)
 {
@@ -144,6 +171,7 @@ int __cpuinit __cpu_up(unsigned int cpu, struct task_struct *idle)
 		identity_mapping_add(pgd, __pa(_stext), __pa(_etext));
 		identity_mapping_add(pgd, __pa(_sdata), __pa(_edata));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -154,8 +182,12 @@ int __cpuinit __cpu_up(unsigned int cpu, struct task_struct *idle)
 <<<<<<< HEAD
 	secondary_data.pgdir = virt_to_phys(idmap_pgd);
 =======
+<<<<<<< HEAD
+	secondary_data.pgdir = virt_to_phys(idmap_pgd);
+=======
 	secondary_data.pgdir = virt_to_phys(pgd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	secondary_data.swapper_pg_dir = virt_to_phys(swapper_pg_dir);
 	__cpuc_flush_dcache_area(&secondary_data, sizeof(secondary_data));
 	outer_clean_range(__pa(&secondary_data), __pa(&secondary_data + 1));
@@ -167,13 +199,20 @@ int __cpuinit __cpu_up(unsigned int cpu, struct task_struct *idle)
 	if (ret == 0) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		unsigned long timeout;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * CPU was successfully started, wait for it
 		 * to come online or time out.
 		 */
+<<<<<<< HEAD
+		wait_for_completion_timeout(&cpu_running,
+						 msecs_to_jiffies(1000));
+=======
 <<<<<<< HEAD
 		wait_for_completion_timeout(&cpu_running,
 						 msecs_to_jiffies(1000));
@@ -187,6 +226,7 @@ int __cpuinit __cpu_up(unsigned int cpu, struct task_struct *idle)
 			barrier();
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!cpu_online(cpu)) {
 			pr_crit("CPU%u: failed to come online\n", cpu);
@@ -200,6 +240,9 @@ int __cpuinit __cpu_up(unsigned int cpu, struct task_struct *idle)
 	secondary_data.pgdir = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -227,6 +270,8 @@ int __attribute__((weak)) __cpuinit boot_secondary(unsigned int cpu, struct task
 	if (smp_ops.smp_boot_secondary)
 		return smp_ops.smp_boot_secondary(cpu, idle);
 	return -ENOSYS;
+<<<<<<< HEAD
+=======
 =======
 	if (PHYS_OFFSET != PAGE_OFFSET) {
 #ifndef CONFIG_HOTPLUG_CPU
@@ -240,12 +285,16 @@ int __attribute__((weak)) __cpuinit boot_secondary(unsigned int cpu, struct task
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_HOTPLUG_CPU
 static void percpu_timer_stop(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __attribute__((weak)) platform_cpu_kill(unsigned int cpu)
 {
 	if (smp_ops.cpu_kill)
@@ -272,8 +321,11 @@ int __attribute__((weak)) platform_cpu_disable(unsigned int cpu)
 	return cpu == 0 ? -EPERM : 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * __cpu_disable runs on the processor to be shutdown.
  */
@@ -335,8 +387,12 @@ void __cpu_die(unsigned int cpu)
 <<<<<<< HEAD
 	pr_debug("CPU%u: shutdown\n", cpu);
 =======
+<<<<<<< HEAD
+	pr_debug("CPU%u: shutdown\n", cpu);
+=======
 	printk(KERN_NOTICE "CPU%u: shutdown\n", cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!platform_cpu_kill(cpu))
 		printk("CPU%u: unable to kill\n", cpu);
@@ -397,6 +453,8 @@ static void __cpuinit smp_store_cpu_info(unsigned int cpuid)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Skip the secondary calibration on architectures sharing clock
  * with primary cpu. Archs can use ARCH_SKIP_SECONDARY_CALIBRATE
  * for this.
@@ -412,12 +470,16 @@ static inline int skip_secondary_calibrate(void)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This is the secondary CPU boot entry.  We're using this CPUs
  * idle thread stack, but a set of temporary page tables.
  */
 asmlinkage void __cpuinit secondary_start_kernel(void)
 {
 	struct mm_struct *mm = &init_mm;
+<<<<<<< HEAD
+	unsigned int cpu = smp_processor_id();
+=======
 <<<<<<< HEAD
 	unsigned int cpu = smp_processor_id();
 =======
@@ -431,12 +493,16 @@ asmlinkage void __cpuinit secondary_start_kernel(void)
 	enter_lazy_tlb(mm, current);
 	local_flush_tlb_all();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * All kernel threads share the same mm context; grab a
 	 * reference and switch to it.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_inc(&mm->mm_count);
 	current->active_mm = mm;
 	cpumask_set_cpu(cpu, mm_cpumask(mm));
@@ -445,6 +511,8 @@ asmlinkage void __cpuinit secondary_start_kernel(void)
 	local_flush_tlb_all();
 
 	pr_debug("CPU%u: Booted secondary processor\n", cpu);
+<<<<<<< HEAD
+=======
 =======
 	cpu = smp_processor_id();
 	atomic_inc(&mm->mm_count);
@@ -453,6 +521,7 @@ asmlinkage void __cpuinit secondary_start_kernel(void)
 
 	printk("CPU%u: Booted secondary processor\n", cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cpu_init();
 	preempt_disable();
@@ -468,9 +537,13 @@ asmlinkage void __cpuinit secondary_start_kernel(void)
 <<<<<<< HEAD
 	calibrate_delay();
 =======
+<<<<<<< HEAD
+	calibrate_delay();
+=======
 	if (skip_secondary_calibrate())
 		calibrate_delay();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	smp_store_cpu_info(cpu);
 
@@ -483,7 +556,11 @@ asmlinkage void __cpuinit secondary_start_kernel(void)
 <<<<<<< HEAD
 	complete(&cpu_running);
 =======
+<<<<<<< HEAD
+	complete(&cpu_running);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Setup the percpu timer for this CPU.
@@ -521,7 +598,13 @@ void __init smp_prepare_boot_cpu(void)
 
 	per_cpu(cpu_data, cpu).idle = current;
 =======
+<<<<<<< HEAD
+	unsigned int cpu = smp_processor_id();
+
+	per_cpu(cpu_data, cpu).idle = current;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init smp_prepare_cpus(unsigned int max_cpus)
@@ -540,9 +623,13 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
 <<<<<<< HEAD
 	if (ncores > 1 && max_cpus) {
 =======
+<<<<<<< HEAD
+	if (ncores > 1 && max_cpus) {
+=======
 
 	if (max_cpus > 1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Enable the local timer or broadcast device for the
 		 * boot CPU, but only if we have more than one CPU.
@@ -551,6 +638,9 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
 
 		/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Initialise the present map, which describes the set of CPUs
 		 * actually populated at the present time. A platform should
 		 * re-initialize the map in platform_smp_prepare_cpus() if
@@ -559,8 +649,11 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
 		init_cpu_present(cpu_possible_mask);
 
 		/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Initialise the SCU if there are more than one CPU
 		 * and let them know where to start.
 		 */
@@ -590,8 +683,13 @@ static const char *ipi_types[NR_IPI] = {
 #define S(x,s)	[x - IPI_CPU_START] = s
 	S(IPI_CPU_START, "CPU start interrupts"),
 =======
+<<<<<<< HEAD
+#define S(x,s)	[x - IPI_CPU_START] = s
+	S(IPI_CPU_START, "CPU start interrupts"),
+=======
 #define S(x,s)	[x - IPI_TIMER] = s
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	S(IPI_TIMER, "Timer broadcast interrupts"),
 	S(IPI_RESCHEDULE, "Rescheduling interrupts"),
 	S(IPI_CALL_FUNC, "Function call interrupts"),
@@ -625,11 +723,14 @@ u64 smp_irq_stat_cpu(unsigned int cpu)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_LOCAL_TIMERS
 	sum += __get_irq_stat(cpu, local_timer_irqs);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return sum;
 }
 
@@ -644,6 +745,8 @@ static void ipi_timer(void)
 	evt->event_handler(evt);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_LOCAL_TIMERS
@@ -679,6 +782,7 @@ void show_local_irqs(struct seq_file *p, int prec)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_GENERIC_CLOCKEVENTS_BROADCAST
 static void smp_timer_broadcast(const struct cpumask *mask)
 {
@@ -707,6 +811,9 @@ static void __cpuinit broadcast_timer_setup(struct clock_event_device *evt)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct local_timer_ops *lt_ops;
 
 #ifdef CONFIG_LOCAL_TIMERS
@@ -720,8 +827,11 @@ int local_timer_register(struct local_timer_ops *ops)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __cpuinit percpu_timer_setup(void)
 {
 	unsigned int cpu = smp_processor_id();
@@ -733,8 +843,12 @@ void __cpuinit percpu_timer_setup(void)
 <<<<<<< HEAD
 	if (!lt_ops || lt_ops->setup(evt))
 =======
+<<<<<<< HEAD
+	if (!lt_ops || lt_ops->setup(evt))
+=======
 	if (local_timer_setup(evt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		broadcast_timer_setup(evt);
 }
 
@@ -750,6 +864,9 @@ static void percpu_timer_stop(void)
 	struct clock_event_device *evt = &per_cpu(percpu_clockevent, cpu);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (lt_ops)
 		lt_ops->stop(evt);
 }
@@ -792,6 +909,8 @@ static void ipi_cpu_stop(unsigned int cpu, struct pt_regs *regs)
 		crash_notes_save_this_cpu(CRASH_NOTE_STOPPING,
 					smp_processor_id());
 #endif
+<<<<<<< HEAD
+=======
 =======
 	evt->set_mode(CLOCK_EVT_MODE_UNUSED, evt);
 }
@@ -820,6 +939,7 @@ static void ipi_cpu_stop(unsigned int cpu)
 	flush_cache_all();
 	local_flush_tlb_all();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (1)
 		cpu_relax();
@@ -854,8 +974,13 @@ void smp_send_all_cpu_backtrace(void)
 	if (!cpus_empty(backtrace_mask))
 		smp_cross_call(&backtrace_mask, IPI_CPU_BACKTRACE);
 =======
+<<<<<<< HEAD
+	if (!cpus_empty(backtrace_mask))
+		smp_cross_call(&backtrace_mask, IPI_CPU_BACKTRACE);
+=======
 	smp_cross_call(&backtrace_mask, IPI_CPU_BACKTRACE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Wait for up to 10 seconds for all other CPUs to do the backtrace */
 	for (i = 0; i < 10 * 1000; i++) {
@@ -888,6 +1013,9 @@ static void ipi_cpu_backtrace(unsigned int cpu, struct pt_regs *regs)
 asmlinkage void __exception_irq_entry do_IPI(int ipinr, struct pt_regs *regs)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	handle_IPI(ipinr, regs);
 }
 
@@ -903,6 +1031,8 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 	case IPI_CPU_START:
 		/* Wake up from WFI/WFE using SGI */
 		break;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int cpu = smp_processor_id();
 	struct pt_regs *old_regs = set_irq_regs(regs);
@@ -914,6 +1044,7 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 
 	switch (ipinr) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IPI_TIMER:
 		irq_enter();
 		ipi_timer();
@@ -941,8 +1072,12 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 <<<<<<< HEAD
 		ipi_cpu_stop(cpu, regs);
 =======
+<<<<<<< HEAD
+		ipi_cpu_stop(cpu, regs);
+=======
 		ipi_cpu_stop(cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		irq_exit();
 		break;
 
@@ -957,10 +1092,13 @@ void handle_IPI(int ipinr, struct pt_regs *regs)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	sec_debug_irq_log(ipinr, do_IPI, 2);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_irq_regs(old_regs);
 }
 
@@ -970,6 +1108,9 @@ void smp_send_reschedule(int cpu)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HOTPLUG_CPU
 static void smp_kill_cpus(cpumask_t *mask)
 {
@@ -1006,6 +1147,8 @@ void smp_send_stop(void)
 		}
 	}
 	smp_kill_cpus(&mask);
+<<<<<<< HEAD
+=======
 =======
 void smp_send_stop(void)
 {
@@ -1026,6 +1169,7 @@ void smp_send_stop(void)
 	if (num_online_cpus() > 1)
 		pr_warning("SMP: failed to stop secondary CPUs\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1035,6 +1179,8 @@ int setup_profiling_timer(unsigned int multiplier)
 {
 	return -EINVAL;
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -1048,3 +1194,4 @@ void flush_all_cpu_caches(void)
 	on_each_cpu(flush_all_cpu_cache, NULL, 1);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

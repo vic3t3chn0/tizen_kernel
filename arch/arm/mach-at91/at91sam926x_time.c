@@ -19,7 +19,13 @@
 #include <linux/of_address.h>
 #include <linux/of_irq.h>
 =======
+<<<<<<< HEAD
+#include <linux/of.h>
+#include <linux/of_address.h>
+#include <linux/of_irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/time.h>
 
@@ -32,6 +38,9 @@
 static u32 pit_cycle;		/* write-once */
 static u32 pit_cnt;		/* access only w/system irq blocked */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *pit_base_addr __read_mostly;
 
 static inline unsigned int pit_read(unsigned int reg_offset)
@@ -43,9 +52,12 @@ static inline void pit_write(unsigned int reg_offset, unsigned long value)
 {
 	__raw_writel(value, pit_base_addr + reg_offset);
 }
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Clocksource:  just a monotonic counter of MCK/16 cycles.
@@ -62,8 +74,12 @@ static cycle_t read_pit_clk(struct clocksource *cs)
 <<<<<<< HEAD
 	t = pit_read(AT91_PIT_PIIR);
 =======
+<<<<<<< HEAD
+	t = pit_read(AT91_PIT_PIIR);
+=======
 	t = at91_sys_read(AT91_PIT_PIIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_local_irq_restore(flags);
 
 	elapsed += PIT_PICNT(t) * pit_cycle;
@@ -92,9 +108,14 @@ pit_clkevt_mode(enum clock_event_mode mode, struct clock_event_device *dev)
 		pit_cnt += pit_cycle * PIT_PICNT(pit_read(AT91_PIT_PIVR));
 		pit_write(AT91_PIT_MR, (pit_cycle - 1) | AT91_PIT_PITEN
 =======
+<<<<<<< HEAD
+		pit_cnt += pit_cycle * PIT_PICNT(pit_read(AT91_PIT_PIVR));
+		pit_write(AT91_PIT_MR, (pit_cycle - 1) | AT91_PIT_PITEN
+=======
 		pit_cnt += pit_cycle * PIT_PICNT(at91_sys_read(AT91_PIT_PIVR));
 		at91_sys_write(AT91_PIT_MR, (pit_cycle - 1) | AT91_PIT_PITEN
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				| AT91_PIT_PITIEN);
 		break;
 	case CLOCK_EVT_MODE_ONESHOT:
@@ -106,8 +127,12 @@ pit_clkevt_mode(enum clock_event_mode mode, struct clock_event_device *dev)
 <<<<<<< HEAD
 		pit_write(AT91_PIT_MR, (pit_cycle - 1) | AT91_PIT_PITEN);
 =======
+<<<<<<< HEAD
+		pit_write(AT91_PIT_MR, (pit_cycle - 1) | AT91_PIT_PITEN);
+=======
 		at91_sys_write(AT91_PIT_MR, (pit_cycle - 1) | AT91_PIT_PITEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case CLOCK_EVT_MODE_RESUME:
 		break;
@@ -137,11 +162,16 @@ static irqreturn_t at91sam926x_pit_interrupt(int irq, void *dev_id)
 	/* The PIT interrupt may be disabled, and is shared */
 	if ((pit_clkevt.mode == CLOCK_EVT_MODE_PERIODIC)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			&& (pit_read(AT91_PIT_SR) & AT91_PIT_PITS)) {
 		unsigned nr_ticks;
 
 		/* Get number of ticks performed before irq, and ack it */
 		nr_ticks = PIT_PICNT(pit_read(AT91_PIT_PIVR));
+<<<<<<< HEAD
+=======
 =======
 			&& (at91_sys_read(AT91_PIT_SR) & AT91_PIT_PITS)) {
 		unsigned nr_ticks;
@@ -149,6 +179,7 @@ static irqreturn_t at91sam926x_pit_interrupt(int irq, void *dev_id)
 		/* Get number of ticks performed before irq, and ack it */
 		nr_ticks = PIT_PICNT(at91_sys_read(AT91_PIT_PIVR));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		do {
 			pit_cnt += pit_cycle;
 			pit_clkevt.event_handler(&pit_clkevt);
@@ -168,14 +199,22 @@ static struct irqaction at91sam926x_pit_irq = {
 	.handler	= at91sam926x_pit_interrupt,
 	.irq		= AT91_ID_SYS,
 =======
+<<<<<<< HEAD
+	.handler	= at91sam926x_pit_interrupt,
+	.irq		= AT91_ID_SYS,
+=======
 	.handler	= at91sam926x_pit_interrupt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void at91sam926x_pit_reset(void)
 {
 	/* Disable timer and irqs */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pit_write(AT91_PIT_MR, 0);
 
 	/* Clear any pending interrupts, wait for PIT to stop counting */
@@ -230,6 +269,8 @@ static int __init of_at91sam926x_pit_init(void)
 	return -EINVAL;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 	at91_sys_write(AT91_PIT_MR, 0);
 
@@ -241,6 +282,7 @@ static int __init of_at91sam926x_pit_init(void)
 	at91_sys_write(AT91_PIT_MR, (pit_cycle - 1) | AT91_PIT_PITEN);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Set up both clocksource and clockevent support.
@@ -250,12 +292,18 @@ static void __init at91sam926x_pit_init(void)
 	unsigned long	pit_rate;
 	unsigned	bits;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		ret;
 
 	/* For device tree enabled device: initialize here */
 	of_at91sam926x_pit_init();
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Use our actual MCK to figure out how many MCK/16 ticks per
@@ -282,8 +330,14 @@ static void __init at91sam926x_pit_init(void)
 	if (ret)
 		pr_crit("AT91: PIT: Unable to setup IRQ\n");
 =======
+<<<<<<< HEAD
+	ret = setup_irq(at91sam926x_pit_irq.irq, &at91sam926x_pit_irq);
+	if (ret)
+		pr_crit("AT91: PIT: Unable to setup IRQ\n");
+=======
 	setup_irq(AT91_ID_SYS, &at91sam926x_pit_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Set up and register clockevents */
 	pit_clkevt.mult = div_sc(pit_rate, NSEC_PER_SEC, pit_clkevt.shift);
@@ -295,6 +349,9 @@ static void at91sam926x_pit_suspend(void)
 {
 	/* Disable timer */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pit_write(AT91_PIT_MR, 0);
 }
 
@@ -313,9 +370,12 @@ void __init at91sam926x_ioremap_pit(u32 addr)
 
 	if (!pit_base_addr)
 		panic("Impossible to ioremap PIT\n");
+<<<<<<< HEAD
+=======
 =======
 	at91_sys_write(AT91_PIT_MR, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct sys_timer at91sam926x_timer = {

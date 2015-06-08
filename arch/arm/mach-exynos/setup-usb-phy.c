@@ -2,8 +2,11 @@
  * Copyright (C) 2011 Samsung Electronics Co.Ltd
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Author: Yulgon Kim <yulgon.kim@samsung.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Joonyoung Shim <jy0922.shim@samsung.com>
  *
  *  This program is free software; you can redistribute  it and/or modify it
@@ -20,11 +23,16 @@
 #include <linux/platform_device.h>
 #include <mach/regs-pmu.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/regs-usb-phy.h>
 #include <plat/cpu.h>
 #include <plat/usb-phy.h>
 
 static atomic_t host_usage;
+<<<<<<< HEAD
+=======
 =======
 #include <mach/regs-pmu5.h>
 #include <mach/regs-usb-phy.h>
@@ -108,6 +116,7 @@ static void exynos_usb_mux_change(struct platform_device *pdev, int val)
 			val ? "Host" : "Device");
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int exynos4_usb_host_phy_is_on(void)
 {
@@ -115,6 +124,9 @@ static int exynos4_usb_host_phy_is_on(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int exynos4_usb_phy1_init(struct platform_device *pdev)
 {
 	struct clk *otg_clk;
@@ -188,6 +200,8 @@ static int exynos4_usb_phy1_init(struct platform_device *pdev)
 	clk_disable(otg_clk);
 	clk_put(otg_clk);
 
+<<<<<<< HEAD
+=======
 =======
 static int exynos_usb_device_phy_is_on(void)
 {
@@ -592,12 +606,16 @@ static int exynos4_usb_phy1_init(struct platform_device *pdev)
 	udelay(80);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int exynos4_usb_phy1_exit(struct platform_device *pdev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk *otg_clk;
 	int err;
 
@@ -624,6 +642,8 @@ static int exynos4_usb_phy1_exit(struct platform_device *pdev)
 
 	clk_disable(otg_clk);
 	clk_put(otg_clk);
+<<<<<<< HEAD
+=======
 =======
 	u32 phypwr;
 
@@ -727,10 +747,13 @@ static int exynos4_usb_phy20_init(struct platform_device *pdev)
 		| EXYNOS4212_PHY1_SWRST_MASK);
 	writel(rstcon, EXYNOS4_RSTCON);
 	udelay(80);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 static int exynos4_usb_phy20_exit(struct platform_device *pdev)
 {
 	u32 phypwr;
@@ -1020,12 +1043,15 @@ static int __maybe_unused exynos_usb_hsic_init(struct platform_device *pdev)
 }
 
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int s5p_usb_phy_init(struct platform_device *pdev, int type)
 {
 	if (type == S5P_USB_PHY_HOST)
 		return exynos4_usb_phy1_init(pdev);
 
 	return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 static int __maybe_unused exynos_usb_hsic_exit(struct platform_device *pdev)
 {
@@ -1492,15 +1518,21 @@ int s5p_usb_phy_init(struct platform_device *pdev, int type)
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int s5p_usb_phy_exit(struct platform_device *pdev, int type)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (type == S5P_USB_PHY_HOST)
 		return exynos4_usb_phy1_exit(pdev);
 
 	return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	int ret = -EINVAL;
 
@@ -1543,4 +1575,5 @@ int s5p_usb_phy_exit(struct platform_device *pdev, int type)
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

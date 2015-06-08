@@ -283,8 +283,12 @@
 <<<<<<< HEAD
 #define SGTL5000_BIAS_R_MASK			0x0300
 =======
+<<<<<<< HEAD
+#define SGTL5000_BIAS_R_MASK			0x0300
+=======
 #define SGTL5000_BIAS_R_MASK			0x0200
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SGTL5000_BIAS_R_SHIFT			8
 #define SGTL5000_BIAS_R_WIDTH			2
 #define SGTL5000_BIAS_R_off			0x0
@@ -354,8 +358,12 @@
 <<<<<<< HEAD
 #define SGTL5000_PLL_FRAC_DIV_MASK		0x0700
 =======
+<<<<<<< HEAD
+#define SGTL5000_PLL_FRAC_DIV_MASK		0x0700
+=======
 #define SGTL5000_PLL_FRAC_DIV_MASK		0x07ff
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SGTL5000_PLL_FRAC_DIV_SHIFT		0
 #define SGTL5000_PLL_FRAC_DIV_WIDTH		11
 

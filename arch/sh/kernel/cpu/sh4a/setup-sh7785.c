@@ -18,10 +18,14 @@
 <<<<<<< HEAD
 #include <asm/mmzone.h>
 =======
+<<<<<<< HEAD
+#include <asm/mmzone.h>
+=======
 
 #include <asm/mmzone.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <cpu/dma-register.h>
 
 static struct plat_sci_port scif0_platform_data = {
@@ -34,7 +38,11 @@ static struct plat_sci_port scif0_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif0_device = {
@@ -55,7 +63,11 @@ static struct plat_sci_port scif1_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif1_device = {
@@ -76,7 +88,11 @@ static struct plat_sci_port scif2_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif2_device = {
@@ -97,7 +113,11 @@ static struct plat_sci_port scif3_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif3_device = {
@@ -118,7 +138,11 @@ static struct plat_sci_port scif4_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif4_device = {
@@ -139,7 +163,11 @@ static struct plat_sci_port scif5_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif5_device = {
@@ -403,7 +431,11 @@ static struct resource sh7785_dmae0_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= 33,
 		.end	= 33,
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_SHAREABLE,
@@ -423,7 +455,11 @@ static struct resource sh7785_dmae1_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= 52,
 		.end	= 52,
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_SHAREABLE,

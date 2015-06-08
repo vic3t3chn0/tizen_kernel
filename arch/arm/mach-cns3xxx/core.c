@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <asm/hardware/cache-l2x0.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/cache-l2x0.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cns3xxx.h>
 #include "core.h"
 
@@ -79,9 +83,14 @@ void __init cns3xxx_init_irq(void)
 	gic_init(0, 29, IOMEM(CNS3XXX_TC11MP_GIC_DIST_BASE_VIRT),
 		 IOMEM(CNS3XXX_TC11MP_GIC_CPU_BASE_VIRT));
 =======
+<<<<<<< HEAD
+	gic_init(0, 29, IOMEM(CNS3XXX_TC11MP_GIC_DIST_BASE_VIRT),
+		 IOMEM(CNS3XXX_TC11MP_GIC_CPU_BASE_VIRT));
+=======
 	gic_init(0, 29, __io(CNS3XXX_TC11MP_GIC_DIST_BASE_VIRT),
 		 __io(CNS3XXX_TC11MP_GIC_CPU_BASE_VIRT));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void cns3xxx_power_off(void)
@@ -89,8 +98,12 @@ void cns3xxx_power_off(void)
 <<<<<<< HEAD
 	u32 __iomem *pm_base = IOMEM(CNS3XXX_PM_BASE_VIRT);
 =======
+<<<<<<< HEAD
+	u32 __iomem *pm_base = IOMEM(CNS3XXX_PM_BASE_VIRT);
+=======
 	u32 __iomem *pm_base = __io(CNS3XXX_PM_BASE_VIRT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 clkctrl;
 
 	printk(KERN_INFO "powering system down...\n");
@@ -252,8 +265,12 @@ static void __init cns3xxx_timer_init(void)
 <<<<<<< HEAD
 	cns3xxx_tmr1 = IOMEM(CNS3XXX_TIMER1_2_3_BASE_VIRT);
 =======
+<<<<<<< HEAD
+	cns3xxx_tmr1 = IOMEM(CNS3XXX_TIMER1_2_3_BASE_VIRT);
+=======
 	cns3xxx_tmr1 = __io(CNS3XXX_TIMER1_2_3_BASE_VIRT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__cns3xxx_timer_init(IRQ_CNS3XXX_TIMER0);
 }
@@ -262,6 +279,9 @@ struct sys_timer cns3xxx_timer = {
 	.init = cns3xxx_timer_init,
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_CACHE_L2X0
 
@@ -304,5 +324,8 @@ void __init cns3xxx_l2x0_init(void)
 }
 
 #endif /* CONFIG_CACHE_L2X0 */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

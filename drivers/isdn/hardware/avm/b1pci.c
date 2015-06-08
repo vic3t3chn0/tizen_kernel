@@ -1,9 +1,23 @@
 /* $Id: b1pci.c,v 1.1.2.2 2004/01/16 21:09:27 keil Exp $
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ * Module for AVM B1 PCI-card.
+ *
+ * Copyright 1999 by Carsten Paeth <calle@calle.de>
+ *
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * 
  * Module for AVM B1 PCI-card.
  * 
  * Copyright 1999 by Carsten Paeth <calle@calle.de>
  * 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
  *
@@ -79,7 +93,15 @@ static int b1pci_probe(struct capicardparams *p, struct pci_dev *pdev)
 	card->port = p->port;
 	card->irq = p->irq;
 	card->cardtype = avm_b1pci;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!request_region(card->port, AVMB1_PORTLEN, card->name)) {
 		printk(KERN_WARNING "b1pci: ports 0x%03x-0x%03x in use.\n",
 		       card->port, card->port + AVMB1_PORTLEN);
@@ -96,14 +118,30 @@ static int b1pci_probe(struct capicardparams *p, struct pci_dev *pdev)
 	}
 	b1_reset(card->port);
 	b1_getrevision(card);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	retval = request_irq(card->irq, b1_interrupt, IRQF_SHARED, card->name, card);
 	if (retval) {
 		printk(KERN_ERR "b1pci: unable to get IRQ %d.\n", card->irq);
 		retval = -EBUSY;
 		goto err_release_region;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cinfo->capi_ctrl.driver_name   = "b1pci";
 	cinfo->capi_ctrl.driverdata    = cinfo;
 	cinfo->capi_ctrl.register_appl = b1_register_appl;
@@ -133,6 +171,18 @@ static int b1pci_probe(struct capicardparams *p, struct pci_dev *pdev)
 	pci_set_drvdata(pdev, card);
 	return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+err_free_irq:
+	free_irq(card->irq, card);
+err_release_region:
+	release_region(card->port, AVMB1_PORTLEN);
+err_free:
+	b1_free_card(card);
+err:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  err_free_irq:
 	free_irq(card->irq, card);
  err_release_region:
@@ -140,6 +190,10 @@ static int b1pci_probe(struct capicardparams *p, struct pci_dev *pdev)
  err_free:
 	b1_free_card(card);
  err:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -193,7 +247,15 @@ static int b1pciv4_probe(struct capicardparams *p, struct pci_dev *pdev)
 		goto err;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	card->dma = avmcard_dma_alloc("b1pci", pdev, 2048 + 128, 2048 + 128);
+=======
         card->dma = avmcard_dma_alloc("b1pci", pdev, 2048+128, 2048+128);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        card->dma = avmcard_dma_alloc("b1pci", pdev, 2048+128, 2048+128);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!card->dma) {
 		printk(KERN_WARNING "b1pci: dma alloc.\n");
 		retval = -ENOMEM;
@@ -267,6 +329,22 @@ static int b1pciv4_probe(struct capicardparams *p, struct pci_dev *pdev)
 	pci_set_drvdata(pdev, card);
 	return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+err_free_irq:
+	free_irq(card->irq, card);
+err_unmap:
+	iounmap(card->mbase);
+err_release_region:
+	release_region(card->port, AVMB1_PORTLEN);
+err_free_dma:
+	avmcard_dma_free(card->dma);
+err_free:
+	b1_free_card(card);
+err:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  err_free_irq:
 	free_irq(card->irq, card);
  err_unmap:
@@ -278,6 +356,10 @@ static int b1pciv4_probe(struct capicardparams *p, struct pci_dev *pdev)
  err_free:
 	b1_free_card(card);
  err:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 
 }
@@ -287,13 +369,29 @@ static void b1pciv4_remove(struct pci_dev *pdev)
 	avmcard *card = pci_get_drvdata(pdev);
 	avmctrl_info *cinfo = card->ctrlinfo;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	b1dma_reset(card);
+=======
  	b1dma_reset(card);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ 	b1dma_reset(card);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	detach_capi_ctr(&cinfo->capi_ctrl);
 	free_irq(card->irq, card);
 	iounmap(card->mbase);
 	release_region(card->port, AVMB1_PORTLEN);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	avmcard_dma_free(card->dma);
+=======
         avmcard_dma_free(card->dma);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        avmcard_dma_free(card->dma);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b1_free_card(card);
 }
 
@@ -326,7 +424,15 @@ static int __devinit b1pci_pci_probe(struct pci_dev *pdev,
 		retval = b1pci_probe(&param, pdev);
 #endif
 		if (retval != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_ERR "b1pci: no AVM-B1 V4 at i/o %#x, irq %d, mem %#x detected\n",
+=======
 		        printk(KERN_ERR "b1pci: no AVM-B1 V4 at i/o %#x, irq %d, mem %#x detected\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		        printk(KERN_ERR "b1pci: no AVM-B1 V4 at i/o %#x, irq %d, mem %#x detected\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       param.port, param.irq, param.membase);
 		}
 	} else {
@@ -337,7 +443,15 @@ static int __devinit b1pci_pci_probe(struct pci_dev *pdev,
 		       param.port, param.irq);
 		retval = b1pci_probe(&param, pdev);
 		if (retval != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_ERR "b1pci: no AVM-B1 at i/o %#x, irq %d detected\n",
+=======
 		        printk(KERN_ERR "b1pci: no AVM-B1 at i/o %#x, irq %d detected\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		        printk(KERN_ERR "b1pci: no AVM-B1 at i/o %#x, irq %d detected\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       param.port, param.irq);
 		}
 	}
@@ -385,7 +499,15 @@ static int __init b1pci_init(void)
 	if ((p = strchr(revision, ':')) != NULL && p[1]) {
 		strlcpy(rev, p + 2, 32);
 		if ((p = strchr(rev, '$')) != NULL && p > rev)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			*(p - 1) = 0;
+=======
 		   *(p-1) = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		   *(p-1) = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		strcpy(rev, "1.0");
 

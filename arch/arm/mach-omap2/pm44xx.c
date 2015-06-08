@@ -6,9 +6,15 @@
  * Rajendra Nayak <rnayak@ti.com>
  * Santosh Shilimkar <santosh.shilimkar@ti.com>
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010-2011 Texas Instruments, Inc.
+ * Rajendra Nayak <rnayak@ti.com>
+ * Santosh Shilimkar <santosh.shilimkar@ti.com>
+=======
  * Copyright (C) 2010 Texas Instruments, Inc.
  * Rajendra Nayak <rnayak@ti.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -22,17 +28,23 @@
 #include <linux/err.h>
 #include <linux/slab.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/system_misc.h>
 
 #include "common.h"
 #include "clockdomain.h"
 #include "powerdomain.h"
 #include "pm.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "powerdomain.h"
 #include <mach/omap4-common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct power_state {
 	struct powerdomain *pwrdm;
@@ -42,7 +54,11 @@ struct power_state {
 <<<<<<< HEAD
 	u32 saved_logic_state;
 =======
+<<<<<<< HEAD
+	u32 saved_logic_state;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	struct list_head node;
 };
@@ -53,6 +69,9 @@ static LIST_HEAD(pwrst_list);
 static int omap4_pm_suspend(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct power_state *pwrst;
 	int state, ret = 0;
 	u32 cpu_id = smp_processor_id();
@@ -99,6 +118,8 @@ static int omap4_pm_suspend(void)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 	do_wfi();
 	return 0;
@@ -139,6 +160,7 @@ static const struct platform_suspend_ops omap_pm_ops = {
 	.valid		= suspend_valid_only_mem,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_SUSPEND */
 
 static int __init pwrdms_setup(struct powerdomain *pwrdm, void *unused)
@@ -149,6 +171,9 @@ static int __init pwrdms_setup(struct powerdomain *pwrdm, void *unused)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Skip CPU0 and CPU1 power domains. CPU1 is programmed
 	 * through hotplug path and CPU0 explicitly programmed
@@ -189,6 +214,8 @@ static void omap_default_idle(void)
 	omap_do_wfi();
 
 	local_fiq_enable();
+<<<<<<< HEAD
+=======
 =======
 	pwrst = kmalloc(sizeof(struct power_state), GFP_ATOMIC);
 	if (!pwrst)
@@ -199,6 +226,7 @@ static void omap_default_idle(void)
 
 	return pwrdm_set_next_pwrst(pwrst->pwrdm, pwrst->next_state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -214,19 +242,30 @@ static int __init omap4_pm_init(void)
 	struct clockdomain *emif_clkdm, *mpuss_clkdm, *l3_1_clkdm, *l4wkup;
 	struct clockdomain *ducati_clkdm, *l3_2_clkdm, *l4_per_clkdm;
 =======
+<<<<<<< HEAD
+	struct clockdomain *emif_clkdm, *mpuss_clkdm, *l3_1_clkdm, *l4wkup;
+	struct clockdomain *ducati_clkdm, *l3_2_clkdm, *l4_per_clkdm;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!cpu_is_omap44xx())
 		return -ENODEV;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (omap_rev() == OMAP4430_REV_ES1_0) {
 		WARN(1, "Power Management not supported on OMAP4430 ES1.0\n");
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_err("Power Management for TI OMAP4.\n");
 
 	ret = pwrdm_for_each(pwrdms_setup, NULL);
@@ -236,6 +275,9 @@ static int __init omap4_pm_init(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The dynamic dependency between MPUSS -> MEMIF and
 	 * MPUSS -> L4_PER/L3_* and DUCATI -> L3_* doesn't work as
@@ -286,11 +328,14 @@ static int __init omap4_pm_init(void)
 	arm_pm_idle = omap_default_idle;
 
 	omap4_idle_init();
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SUSPEND
 	suspend_set_ops(&omap_pm_ops);
 #endif /* CONFIG_SUSPEND */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 err2:
 	return ret;

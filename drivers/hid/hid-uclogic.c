@@ -18,6 +18,15 @@
 #include "hid-ids.h"
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * See WPXXXXU model descriptions, device and HID report descriptors at
+ * http://sf.net/apps/mediawiki/digimend/?title=UC-Logic_Tablet_WP4030U
+ * http://sf.net/apps/mediawiki/digimend/?title=UC-Logic_Tablet_WP5540U
+ * http://sf.net/apps/mediawiki/digimend/?title=UC-Logic_Tablet_WP8060U
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The original descriptors of WPXXXXU tablets have three report IDs, of
  * which only two are used (8 and 9), and the remaining (7) seems to have
  * the originally intended pen description which was abandoned for some
@@ -142,17 +151,31 @@
  *  WP8060U     8000    16000   6000    12000
  *
  * This suggests that all of them have 2000 LPI resolution, as advertised.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /* Size of the original descriptor of WPXXXXU tablets */
 #define WPXXXXU_RDESC_ORIG_SIZE	212
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Fixed WP4030U report descriptor */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Fixed WP4030U report descriptor.
  * Although the hardware might actually support it, the mouse description
  * has been removed, since there seems to be no devices having one and it
  * wouldn't make much sense because of the working area size.
  */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __u8 wp4030u_rdesc_fixed[] = {
 	0x05, 0x0D,         /*  Usage Page (Digitizer),             */
 	0x09, 0x02,         /*  Usage (Pen),                        */
@@ -343,6 +366,66 @@ static __u8 wp8060u_rdesc_fixed[] = {
 };
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * See WP1062 description, device and HID report descriptors at
+ * http://sf.net/apps/mediawiki/digimend/?title=UC-Logic_Tablet_WP1062
+ */
+
+/* Size of the original descriptor of WP1062 tablet */
+#define WP1062_RDESC_ORIG_SIZE	254
+
+/* Fixed WP1062 report descriptor */
+static __u8 wp1062_rdesc_fixed[] = {
+	0x05, 0x0D,         /*  Usage Page (Digitizer),             */
+	0x09, 0x02,         /*  Usage (Pen),                        */
+	0xA1, 0x01,         /*  Collection (Application),           */
+	0x85, 0x09,         /*      Report ID (9),                  */
+	0x09, 0x20,         /*      Usage (Stylus),                 */
+	0xA0,               /*      Collection (Physical),          */
+	0x75, 0x01,         /*          Report Size (1),            */
+	0x09, 0x42,         /*          Usage (Tip Switch),         */
+	0x09, 0x44,         /*          Usage (Barrel Switch),      */
+	0x09, 0x46,         /*          Usage (Tablet Pick),        */
+	0x14,               /*          Logical Minimum (0),        */
+	0x25, 0x01,         /*          Logical Maximum (1),        */
+	0x95, 0x03,         /*          Report Count (3),           */
+	0x81, 0x02,         /*          Input (Variable),           */
+	0x95, 0x04,         /*          Report Count (4),           */
+	0x81, 0x01,         /*          Input (Constant),           */
+	0x09, 0x32,         /*          Usage (In Range),           */
+	0x95, 0x01,         /*          Report Count (1),           */
+	0x81, 0x02,         /*          Input (Variable),           */
+	0x75, 0x10,         /*          Report Size (16),           */
+	0x95, 0x01,         /*          Report Count (1),           */
+	0x14,               /*          Logical Minimum (0),        */
+	0xA4,               /*          Push,                       */
+	0x05, 0x01,         /*          Usage Page (Desktop),       */
+	0x55, 0xFD,         /*          Unit Exponent (-3),         */
+	0x65, 0x13,         /*          Unit (Inch),                */
+	0x34,               /*          Physical Minimum (0),       */
+	0x09, 0x30,         /*          Usage (X),                  */
+	0x46, 0x10, 0x27,   /*          Physical Maximum (10000),   */
+	0x26, 0x20, 0x4E,   /*          Logical Maximum (20000),    */
+	0x81, 0x02,         /*          Input (Variable),           */
+	0x09, 0x31,         /*          Usage (Y),                  */
+	0x46, 0xB7, 0x19,   /*          Physical Maximum (6583),    */
+	0x26, 0x6E, 0x33,   /*          Logical Maximum (13166),    */
+	0x81, 0x02,         /*          Input (Variable),           */
+	0xB4,               /*          Pop,                        */
+	0x09, 0x30,         /*          Usage (Tip Pressure),       */
+	0x26, 0xFF, 0x03,   /*          Logical Maximum (1023),     */
+	0x81, 0x02,         /*          Input (Variable),           */
+	0xC0,               /*      End Collection,                 */
+	0xC0                /*  End Collection                      */
+};
+
+/*
+ * See PF1209 description, device and HID report descriptors at
+ * http://sf.net/apps/mediawiki/digimend/?title=UC-Logic_Tablet_PF1209
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Original PF1209 report descriptor.
  *
  * The descriptor is similar to WPXXXXU descriptors, with an addition of a
@@ -471,11 +554,21 @@ static __u8 wp8060u_rdesc_fixed[] = {
  *    Report Count (3),
  *    Feature (Variable),
  *  End Collection
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /* Size of the original descriptor of PF1209 tablet */
 #define PF1209_RDESC_ORIG_SIZE	234
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Fixed PF1209 report descriptor */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Fixed PF1209 report descriptor
  *
@@ -483,6 +576,10 @@ static __u8 wp8060u_rdesc_fixed[] = {
  * feature report is removed, because its purpose is unknown and it is of no
  * use to the generic HID driver anyway for now.
  */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __u8 pf1209_rdesc_fixed[] = {
 	0x05, 0x0D,         /*  Usage Page (Digitizer),             */
 	0x09, 0x02,         /*  Usage (Pen),                        */
@@ -584,6 +681,18 @@ static __u8 *uclogic_report_fixup(struct hid_device *hdev, __u8 *rdesc,
 			*rsize = sizeof(wp8060u_rdesc_fixed);
 		}
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case USB_DEVICE_ID_UCLOGIC_TABLET_WP1062:
+		if (*rsize == WP1062_RDESC_ORIG_SIZE) {
+			rdesc = wp1062_rdesc_fixed;
+			*rsize = sizeof(wp1062_rdesc_fixed);
+		}
+		break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return rdesc;
@@ -598,6 +707,14 @@ static const struct hid_device_id uclogic_devices[] = {
 				USB_DEVICE_ID_UCLOGIC_TABLET_WP5540U) },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_UCLOGIC,
 				USB_DEVICE_ID_UCLOGIC_TABLET_WP8060U) },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ HID_USB_DEVICE(USB_VENDOR_ID_UCLOGIC,
+				USB_DEVICE_ID_UCLOGIC_TABLET_WP1062) },
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ }
 };
 MODULE_DEVICE_TABLE(hid, uclogic_devices);

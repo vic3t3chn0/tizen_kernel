@@ -36,8 +36,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 
 #include <sound/core.h>
@@ -90,8 +94,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable switches */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable switches */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable switches */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef SUPPORT_JOYSTICK
 #ifdef CHIP1371
 static int joystick_port[SNDRV_CARDS];
@@ -99,8 +107,12 @@ static int joystick_port[SNDRV_CARDS];
 <<<<<<< HEAD
 static bool joystick[SNDRV_CARDS];
 =======
+<<<<<<< HEAD
+static bool joystick[SNDRV_CARDS];
+=======
 static int joystick[SNDRV_CARDS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #endif
 #ifdef CHIP1371
@@ -2135,8 +2147,12 @@ static int __devinit snd_ensoniq_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, ensoniq)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, ensoniq)) {
+=======
 			"Ensoniq AudioPCI", ensoniq)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_ensoniq_free(ensoniq);
 		return -EBUSY;
@@ -2508,8 +2524,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = DRIVER_NAME,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_audiopci_ids,
 	.probe = snd_audiopci_probe,
 	.remove = __devexit_p(snd_audiopci_remove),

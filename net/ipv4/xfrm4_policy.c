@@ -120,8 +120,12 @@ _decode_session4(struct sk_buff *skb, struct flowi *fl, int reverse)
 <<<<<<< HEAD
 	if (!ip_is_fragment(iph)) {
 =======
+<<<<<<< HEAD
+	if (!ip_is_fragment(iph)) {
+=======
 	if (!(iph->frag_off & htons(IP_MF | IP_OFFSET))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (iph->protocol) {
 		case IPPROTO_UDP:
 		case IPPROTO_UDPLITE:

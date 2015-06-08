@@ -27,6 +27,13 @@
 #include <linux/kernel.h>
 #include <linux/ethtool.h>
 #include <linux/phy.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <net/dst.h>
 
@@ -37,9 +44,21 @@
 #include "ethernet-mdio.h"
 #include "ethernet-util.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/octeon/cvmx-helper-board.h>
+
+#include <asm/octeon/cvmx-smix-defs.h>
+=======
 #include "cvmx-helper-board.h"
 
 #include "cvmx-smix-defs.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "cvmx-helper-board.h"
+
+#include "cvmx-smix-defs.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void cvm_oct_get_drvinfo(struct net_device *dev,
 				struct ethtool_drvinfo *info)
@@ -129,6 +148,27 @@ static void cvm_oct_adjust_link(struct net_device *dev)
 		if (priv->last_link) {
 			netif_carrier_on(dev);
 			if (priv->queue != -1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+				printk_ratelimited("%s: %u Mbps %s duplex, "
+						   "port %2d, queue %2d\n",
+						   dev->name, priv->phydev->speed,
+						   priv->phydev->duplex ?
+						   "Full" : "Half",
+						   priv->port, priv->queue);
+			else
+				printk_ratelimited("%s: %u Mbps %s duplex, "
+						   "port %2d, POW\n",
+						   dev->name, priv->phydev->speed,
+						   priv->phydev->duplex ?
+						   "Full" : "Half",
+						   priv->port);
+		} else {
+			netif_carrier_off(dev);
+			printk_ratelimited("%s: Link down\n", dev->name);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				DEBUGPRINT("%s: %u Mbps %s duplex, "
 					   "port %2d, queue %2d\n",
 					   dev->name, priv->phydev->speed,
@@ -145,6 +185,10 @@ static void cvm_oct_adjust_link(struct net_device *dev)
 		} else {
 			netif_carrier_off(dev);
 			DEBUGPRINT("%s: Link down\n", dev->name);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -163,9 +207,21 @@ int cvm_oct_phy_setup_device(struct net_device *dev)
 
 	int phy_addr = cvmx_helper_board_get_mii_address(priv->port);
 	if (phy_addr != -1) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		char phy_id[MII_BUS_ID_SIZE + 3];
+
+		snprintf(phy_id, sizeof(phy_id), PHY_ID_FMT, "mdio-octeon-0", phy_addr);
+=======
 		char phy_id[20];
 
 		snprintf(phy_id, sizeof(phy_id), PHY_ID_FMT, "0", phy_addr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		char phy_id[20];
+
+		snprintf(phy_id, sizeof(phy_id), PHY_ID_FMT, "0", phy_addr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		priv->phydev = phy_connect(dev, phy_id, cvm_oct_adjust_link, 0,
 					PHY_INTERFACE_MODE_GMII);

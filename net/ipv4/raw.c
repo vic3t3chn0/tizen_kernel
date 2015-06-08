@@ -41,8 +41,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/byteorder.h>
 #include <asm/current.h>
 #include <asm/uaccess.h>
@@ -55,7 +59,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spinlock.h>
 #include <linux/sockios.h>
 #include <linux/socket.h>
@@ -139,6 +147,9 @@ found:
  *	1 - block
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __inline__ int icmp_filter(struct sock *sk, struct sk_buff *skb)
 {
 	int type;
@@ -151,6 +162,8 @@ static __inline__ int icmp_filter(struct sock *sk, struct sk_buff *skb)
 		__u32 data = raw_sk(sk)->filter.data;
 
 		return ((1 << type) & data) != 0;
+<<<<<<< HEAD
+=======
 =======
 static int icmp_filter(const struct sock *sk, const struct sk_buff *skb)
 {
@@ -167,6 +180,7 @@ static int icmp_filter(const struct sock *sk, const struct sk_buff *skb)
 
 		return ((1U << hdr->type) & data) != 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Do not block unknown ICMP types */
@@ -320,8 +334,13 @@ static int raw_rcv_skb(struct sock * sk, struct sk_buff * skb)
 	ipv4_pktinfo_prepare(skb);
 	if (sock_queue_rcv_skb(sk, skb) < 0) {
 =======
+<<<<<<< HEAD
+	ipv4_pktinfo_prepare(skb);
+	if (sock_queue_rcv_skb(sk, skb) < 0) {
+=======
 	if (ip_queue_rcv_skb(sk, skb) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree_skb(skb);
 		return NET_RX_DROP;
 	}
@@ -359,7 +378,11 @@ static int raw_send_hdrinc(struct sock *sk, struct flowi4 *fl4,
 <<<<<<< HEAD
 	int hlen, tlen;
 =======
+<<<<<<< HEAD
+	int hlen, tlen;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (length > rt->dst.dev->mtu) {
 		ip_local_error(sk, EMSGSIZE, fl4->daddr, inet->inet_dport,
@@ -370,6 +393,9 @@ static int raw_send_hdrinc(struct sock *sk, struct flowi4 *fl4,
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlen = LL_RESERVED_SPACE(rt->dst.dev);
 	tlen = rt->dst.dev->needed_tailroom;
 	skb = sock_alloc_send_skb(sk,
@@ -378,6 +404,8 @@ static int raw_send_hdrinc(struct sock *sk, struct flowi4 *fl4,
 	if (skb == NULL)
 		goto error;
 	skb_reserve(skb, hlen);
+<<<<<<< HEAD
+=======
 =======
 	skb = sock_alloc_send_skb(sk,
 				  length + LL_ALLOCATED_SPACE(rt->dst.dev) + 15,
@@ -386,6 +414,7 @@ static int raw_send_hdrinc(struct sock *sk, struct flowi4 *fl4,
 		goto error;
 	skb_reserve(skb, LL_RESERVED_SPACE(rt->dst.dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb->priority = sk->sk_priority;
 	skb->mark = sk->sk_mark;
@@ -425,8 +454,12 @@ static int raw_send_hdrinc(struct sock *sk, struct flowi4 *fl4,
 <<<<<<< HEAD
 			ip_select_ident(iph, &rt->dst, NULL);
 =======
+<<<<<<< HEAD
+			ip_select_ident(iph, &rt->dst, NULL);
+=======
 			ip_select_ident(skb, &rt->dst, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		iph->check = ip_fast_csum((unsigned char *)iph, iph->ihl);
 	}
@@ -539,12 +572,17 @@ static int raw_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 			pr_info_once("%s: %s forgot to set AF_INET. Fix it!\n",
 				     __func__, current->comm);
 =======
+<<<<<<< HEAD
+			pr_info_once("%s: %s forgot to set AF_INET. Fix it!\n",
+				     __func__, current->comm);
+=======
 			static int complained;
 			if (!complained++)
 				printk(KERN_INFO "%s forgot to set AF_INET in "
 						 "raw sendmsg. Fix it!\n",
 						 current->comm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = -EAFNOSUPPORT;
 			if (usin->sin_family)
 				goto out;
@@ -616,8 +654,13 @@ static int raw_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	} else if (!ipc.oif)
 		ipc.oif = inet->uc_index;
 =======
+<<<<<<< HEAD
+	} else if (!ipc.oif)
+		ipc.oif = inet->uc_index;
+=======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	flowi4_init_output(&fl4, ipc.oif, sk->sk_mark, tos,
 			   RT_SCOPE_UNIVERSE,
@@ -626,8 +669,13 @@ static int raw_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 			   inet_sk_flowi_flags(sk) | FLOWI_FLAG_CAN_SLEEP,
 			   daddr, saddr, 0, 0);
 =======
+<<<<<<< HEAD
+			   inet_sk_flowi_flags(sk) | FLOWI_FLAG_CAN_SLEEP,
+			   daddr, saddr, 0, 0);
+=======
 			   FLOWI_FLAG_CAN_SLEEP, daddr, saddr, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!inet->hdrincl) {
 		err = raw_probe_proto_opt(&fl4, msg);
@@ -890,6 +938,9 @@ static int raw_ioctl(struct sock *sk, int cmd, unsigned long arg)
 {
 	switch (cmd) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SIOCOUTQ: {
 		int amount = sk_wmem_alloc_get(sk);
 
@@ -912,6 +963,8 @@ static int raw_ioctl(struct sock *sk, int cmd, unsigned long arg)
 		return ipmr_ioctl(sk, cmd, (void __user *)arg);
 #else
 		return -ENOIOCTLCMD;
+<<<<<<< HEAD
+=======
 =======
 		case SIOCOUTQ: {
 			int amount = sk_wmem_alloc_get(sk);
@@ -936,6 +989,7 @@ static int raw_ioctl(struct sock *sk, int cmd, unsigned long arg)
 #else
 			return -ENOIOCTLCMD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	}
 }

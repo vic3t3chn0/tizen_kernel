@@ -27,9 +27,14 @@
 #include <linux/sh_clk.h>
 #include <asm/clock.h>
 =======
+<<<<<<< HEAD
+#include <linux/sh_clk.h>
+#include <asm/clock.h>
+=======
 #include <asm/clock.h>
 #include <asm/hwblk.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <cpu/sh7723.h>
 
 /* SH7723 registers */
@@ -44,7 +49,13 @@
 #define MSTPCR1		0xa4150034
 #define MSTPCR2		0xa4150038
 =======
+<<<<<<< HEAD
+#define MSTPCR0		0xa4150030
+#define MSTPCR1		0xa4150034
+#define MSTPCR2		0xa4150038
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DLLFRQ		0xa4150050
 
 /* Fixed 32 KHz root clock for RTC and Power Management purposes */
@@ -76,8 +87,12 @@ static unsigned long dll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops dll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops dll_clk_ops = {
+=======
 static struct clk_ops dll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= dll_recalc,
 };
 
@@ -103,8 +118,12 @@ static unsigned long pll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops pll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops pll_clk_ops = {
+=======
 static struct clk_ops pll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= pll_recalc,
 };
 
@@ -169,6 +188,9 @@ struct clk div6_clks[DIV6_NR] = {
 static struct clk mstp_clks[] = {
 	/* See page 60 of Datasheet V1.0: Overview -> Block Diagram */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[HWBLK_TLB]    = SH_CLK_MSTP32(&div4_clks[DIV4_I],  MSTPCR0, 31, CLK_ENABLE_ON_INIT),
 	[HWBLK_IC]     = SH_CLK_MSTP32(&div4_clks[DIV4_I],  MSTPCR0, 30, CLK_ENABLE_ON_INIT),
 	[HWBLK_OC]     = SH_CLK_MSTP32(&div4_clks[DIV4_I],  MSTPCR0, 29, CLK_ENABLE_ON_INIT),
@@ -220,6 +242,8 @@ static struct clk mstp_clks[] = {
 	[HWBLK_LCDC]   = SH_CLK_MSTP32(&div4_clks[DIV4_B],  MSTPCR2, 0, 0),
 };
 
+<<<<<<< HEAD
+=======
 =======
 	SH_HWBLK_CLK(HWBLK_TLB, &div4_clks[DIV4_I], CLK_ENABLE_ON_INIT),
 	SH_HWBLK_CLK(HWBLK_IC, &div4_clks[DIV4_I], CLK_ENABLE_ON_INIT),
@@ -275,6 +299,7 @@ static struct clk mstp_clks[] = {
 #define CLKDEV_CON_ID(_id, _clk) { .con_id = _id, .clk = _clk }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk_lookup lookups[] = {
 	/* main clocks */
 	CLKDEV_CON_ID("rclk", &r_clk),
@@ -305,6 +330,9 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("fpu0", &mstp_clks[HWBLK_FPU]),
 	CLKDEV_CON_ID("intc0", &mstp_clks[HWBLK_INTC]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_DEV_ID("sh-dma-engine.0", &mstp_clks[HWBLK_DMAC0]),
 	CLKDEV_CON_ID("sh0", &mstp_clks[HWBLK_SHYWAY]),
 	CLKDEV_CON_ID("hudi0", &mstp_clks[HWBLK_HUDI]),
@@ -317,6 +345,8 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_DEV_ID("spi_sh_msiof.1", &mstp_clks[HWBLK_MSIOF1]),
 	CLKDEV_DEV_ID("sh_mobile_meram.0", &mstp_clks[HWBLK_MERAM]),
 	CLKDEV_DEV_ID("i2c-sh_mobile.0", &mstp_clks[HWBLK_IIC]),
+<<<<<<< HEAD
+=======
 =======
 	CLKDEV_CON_ID("dmac0", &mstp_clks[HWBLK_DMAC0]),
 	CLKDEV_CON_ID("sh0", &mstp_clks[HWBLK_SHYWAY]),
@@ -394,6 +424,7 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("meram0", &mstp_clks[HWBLK_MERAM]),
 	CLKDEV_CON_ID("i2c0", &mstp_clks[HWBLK_IIC]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_ID("rtc0", &mstp_clks[HWBLK_RTC]),
 	CLKDEV_CON_ID("atapi0", &mstp_clks[HWBLK_ATAPI]),
 	CLKDEV_CON_ID("adc0", &mstp_clks[HWBLK_ADC]),
@@ -402,6 +433,9 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("tsif0", &mstp_clks[HWBLK_TSIF]),
 	CLKDEV_CON_ID("icb0", &mstp_clks[HWBLK_ICB]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_DEV_ID("sh_mobile_sdhi.0", &mstp_clks[HWBLK_SDHI0]),
 	CLKDEV_DEV_ID("sh_mobile_sdhi.1", &mstp_clks[HWBLK_SDHI1]),
 	CLKDEV_DEV_ID("sh_keysc.0", &mstp_clks[HWBLK_KEYSC]),
@@ -430,6 +464,8 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_ICK_ID("sci_fck", "sh-sci.5", &mstp_clks[HWBLK_SCIF5]),
 
 	CLKDEV_DEV_ID("sh_mobile_lcdc_fb.0", &mstp_clks[HWBLK_LCDC]),
+<<<<<<< HEAD
+=======
 =======
 	CLKDEV_CON_ID("sdhi0", &mstp_clks[HWBLK_SDHI0]),
 	CLKDEV_CON_ID("sdhi1", &mstp_clks[HWBLK_SDHI1]),
@@ -445,6 +481,7 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("vpu0", &mstp_clks[HWBLK_VPU]),
 	CLKDEV_CON_ID("lcdc0", &mstp_clks[HWBLK_LCDC]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int __init arch_clk_init(void)
@@ -480,8 +517,12 @@ int __init arch_clk_init(void)
 <<<<<<< HEAD
 		ret = sh_clk_mstp32_register(mstp_clks, HWBLK_NR);
 =======
+<<<<<<< HEAD
+		ret = sh_clk_mstp32_register(mstp_clks, HWBLK_NR);
+=======
 		ret = sh_hwblk_clk_register(mstp_clks, HWBLK_NR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }

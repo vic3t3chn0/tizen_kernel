@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  *    Copyright (C) IBM Corp. 1999,2012
 =======
+<<<<<<< HEAD
+ *    Copyright (C) IBM Corp. 1999,2012
+=======
  *    Copyright (C) IBM Corp. 1999,2006
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    Author(s): Martin Schwidefsky (schwidefsky@de.ibm.com),
  *		 Hartmut Penner (hp@de.ibm.com),
  *		 Denis Joseph Barrow (djbarrow@de.ibm.com,barrow_dj@yahoo.com),
@@ -17,9 +21,14 @@
 #include <linux/init.h>
 #include <linux/linkage.h>
 =======
+<<<<<<< HEAD
+#include <linux/init.h>
+#include <linux/linkage.h>
+=======
 #include <linux/linkage.h>
 #include <linux/init.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cache.h>
 #include <asm/errno.h>
 #include <asm/ptrace.h>
@@ -29,6 +38,9 @@
 #include <asm/page.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __PT_R0      =	__PT_GPRS
 __PT_R1      =	__PT_GPRS + 4
 __PT_R2      =	__PT_GPRS + 8
@@ -52,6 +64,8 @@ _TIF_WORK_INT = (_TIF_SIGPENDING | _TIF_NOTIFY_RESUME | _TIF_NEED_RESCHED | \
 		 _TIF_MCCK_PENDING)
 _TIF_TRACE    = (_TIF_SYSCALL_TRACE | _TIF_SYSCALL_AUDIT | _TIF_SECCOMP | \
 		 _TIF_SYSCALL_TRACEPOINT)
+<<<<<<< HEAD
+=======
 =======
 /*
  * Stack layout for the system_call stack entry.
@@ -88,6 +102,7 @@ _TIF_WORK_INT = (_TIF_SIGPENDING | _TIF_NOTIFY_RESUME | _TIF_NEED_RESCHED | \
 _TIF_SYSCALL = (_TIF_SYSCALL_TRACE>>8 | _TIF_SYSCALL_AUDIT>>8 | \
 		_TIF_SECCOMP>>8 | _TIF_SYSCALL_TRACEPOINT>>8)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 STACK_SHIFT = PAGE_SHIFT + THREAD_ORDER
 STACK_SIZE  = 1 << STACK_SHIFT
@@ -95,6 +110,9 @@ STACK_SIZE  = 1 << STACK_SHIFT
 #define BASED(name) name-system_call(%r13)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro	TRACE_IRQS_ON
 #ifdef CONFIG_TRACE_IRQFLAGS
 	basr	%r2,%r0
@@ -180,6 +198,8 @@ STACK_SIZE  = 1 << STACK_SHIFT
 	st	%r8,__LC_RETURN_PSW
 	ni	__LC_RETURN_PSW,0xbf
 	ssm	__LC_RETURN_PSW
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_TRACE_IRQFLAGS
 	.macro	TRACE_IRQS_ON
@@ -309,6 +329,7 @@ STACK_SIZE  = 1 << STACK_SHIFT
 	ni	__SF_EMPTY(%r15),0xbf
 	ssm	__SF_EMPTY(%r15)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.endm
 
 	.section .kprobes.text, "ax"
@@ -321,6 +342,9 @@ STACK_SIZE  = 1 << STACK_SHIFT
  *  gpr2 = prev
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(__switch_to)
 	l	%r4,__THREAD_info(%r2)		# get thread_info of prev
 	l	%r5,__THREAD_info(%r3)		# get thread_info of next
@@ -329,6 +353,8 @@ ENTRY(__switch_to)
 	ni	__TI_flags+3(%r4),255-_TIF_MCCK_PENDING	# clear flag in prev
 	oi	__TI_flags+3(%r5),_TIF_MCCK_PENDING	# set it in next
 0:	stm	%r6,%r15,__SF_GPRS(%r15)	# store gprs of prev task
+<<<<<<< HEAD
+=======
 =======
 	.globl	__switch_to
 __switch_to:
@@ -341,6 +367,7 @@ __switch_to:
 	oi	__TI_flags+3(%r5),_TIF_MCCK_PENDING	# set it in next
 1:	stm	%r6,%r15,__SF_GPRS(%r15)	# store gprs of prev task
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	st	%r15,__THREAD_ksp(%r2)		# store kernel stack of prev
 	l	%r15,__THREAD_ksp(%r3)		# load kernel stack of next
 	lctl	%c4,%c4,__TASK_pid(%r3)		# load pid to control reg. 4
@@ -359,6 +386,9 @@ __critical_start:
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(system_call)
 	stpt	__LC_SYNC_ENTER_TIMER
 sysc_stm:
@@ -396,6 +426,8 @@ sysc_nr_ok:
 	jnz	sysc_tracesys
 	basr	%r14,%r9			# call sys_xxxx
 	st	%r2,__PT_R2(%r11)		# store return value
+<<<<<<< HEAD
+=======
 =======
 	.globl	system_call
 system_call:
@@ -431,11 +463,15 @@ sysc_nr_ok:
 	basr	%r14,%r8	  # call sys_xxxx
 	st	%r2,SP_R2(%r15)   # store return value (change R2 on stack)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 sysc_return:
 	LOCKDEP_SYS_EXIT
 sysc_tif:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tm	__PT_PSW+1(%r11),0x01		# returning to user ?
 	jno	sysc_restore
 	tm	__TI_flags+3(%r12),_TIF_WORK_SVC
@@ -463,6 +499,8 @@ sysc_work:
 	tm	__TI_flags+3(%r12),_TIF_PER_TRAP
 	jo	sysc_singlestep
 	j	sysc_return		# beware of critical section cleanup
+<<<<<<< HEAD
+=======
 =======
 	tm	__TI_flags+3(%r12),_TIF_WORK_SVC
 	bnz	BASED(sysc_work)  # there is work to do (signals etc.)
@@ -495,6 +533,7 @@ sysc_work_tif:
 	bo	BASED(sysc_singlestep)
 	b	BASED(sysc_return)	# beware of critical section cleanup
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # _TIF_NEED_RESCHED is set, call schedule
@@ -505,8 +544,12 @@ sysc_reschedule:
 <<<<<<< HEAD
 	br	%r1			# call schedule
 =======
+<<<<<<< HEAD
+	br	%r1			# call schedule
+=======
 	br	%r1			# call scheduler
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # _TIF_MCCK_PENDING is set, call handler
@@ -515,8 +558,12 @@ sysc_mcck_pending:
 <<<<<<< HEAD
 	l	%r1,BASED(.Lhandle_mcck)
 =======
+<<<<<<< HEAD
+	l	%r1,BASED(.Lhandle_mcck)
+=======
 	l	%r1,BASED(.Ls390_handle_mcck)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	la	%r14,BASED(sysc_return)
 	br	%r1			# TIF bit will be cleared by handler
 
@@ -526,6 +573,9 @@ sysc_mcck_pending:
 sysc_sigpending:
 	ni	__TI_flags+3(%r12),255-_TIF_PER_TRAP # clear TIF_PER_TRAP
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lr	%r2,%r11		# pass pointer to pt_regs
 	l	%r1,BASED(.Ldo_signal)
 	basr	%r14,%r1		# call do_signal
@@ -538,6 +588,8 @@ sysc_sigpending:
 	lh	%r8,__PT_INT_CODE+2(%r11)	# load new svc number
 	sla	%r8,2
 	j	sysc_nr_ok		# restart svc
+<<<<<<< HEAD
+=======
 =======
 	la	%r2,SP_PTREGS(%r15)	# load pt_regs
 	l	%r1,BASED(.Ldo_signal)
@@ -548,6 +600,7 @@ sysc_sigpending:
 	bo	BASED(sysc_singlestep)
 	b	BASED(sysc_return)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # _TIF_NOTIFY_RESUME is set, call do_notify_resume
@@ -556,12 +609,18 @@ sysc_notify_resume:
 <<<<<<< HEAD
 	lr	%r2,%r11		# pass pointer to pt_regs
 =======
+<<<<<<< HEAD
+	lr	%r2,%r11		# pass pointer to pt_regs
+=======
 	la	%r2,SP_PTREGS(%r15)	# load pt_regs
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l	%r1,BASED(.Ldo_notify_resume)
 	la	%r14,BASED(sysc_return)
 	br	%r1			# call do_notify_resume
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -577,16 +636,22 @@ sysc_restart:
 	b	BASED(sysc_nr_ok)	# restart svc
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # _TIF_PER_TRAP is set, call do_per_trap
 #
 sysc_singlestep:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ni	__TI_flags+3(%r12),255-(_TIF_SYSCALL | _TIF_PER_TRAP)
 	lr	%r2,%r11		# pass pointer to pt_regs
 	l	%r1,BASED(.Ldo_per_trap)
 	la	%r14,BASED(sysc_return)
 	br	%r1			# call do_per_trap
+<<<<<<< HEAD
+=======
 =======
 	ni	__TI_flags+3(%r12),255-_TIF_PER_TRAP # clear TIF_PER_TRAP
 	xc	SP_SVCNR(2,%r15),SP_SVCNR(%r15)		# clear svc number
@@ -595,6 +660,7 @@ sysc_singlestep:
 	la	%r14,BASED(sysc_return)	# load adr. of system return
 	br	%r1			# branch to do_per_trap
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # call tracehook_report_syscall_entry/tracehook_report_syscall_exit before
@@ -602,6 +668,9 @@ sysc_singlestep:
 #
 sysc_tracesys:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l	%r1,BASED(.Ltrace_enter)
 	lr	%r2,%r11		# pass pointer to pt_regs
 	la	%r3,0
@@ -627,6 +696,8 @@ sysc_tracenogo:
 	lr	%r2,%r11		# pass pointer to pt_regs
 	la	%r14,BASED(sysc_return)
 	br	%r1			# call do_syscall_trace_exit
+<<<<<<< HEAD
+=======
 =======
 	l	%r1,BASED(.Ltrace_entry)
 	la	%r2,SP_PTREGS(%r15)	# load pt_regs
@@ -654,11 +725,15 @@ sysc_tracenogo:
 	la	%r14,BASED(sysc_return)
 	br	%r1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # a new process exits the kernel with ret_from_fork
 #
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(ret_from_fork)
 	la	%r11,STACK_FRAME_OVERHEAD(%r15)
 	l	%r12,__LC_THREAD_INFO
@@ -671,6 +746,8 @@ ENTRY(ret_from_fork)
 	TRACE_IRQS_ON
 	ssm	__LC_SVC_NEW_PSW	# reenable interrupts
 	j	sysc_tracenogo
+<<<<<<< HEAD
+=======
 =======
 	.globl	ret_from_fork
 ret_from_fork:
@@ -685,12 +762,16 @@ ret_from_fork:
 	stosm	__SF_EMPTY(%r15),0x03	# reenable interrupts
 	b	BASED(sysc_tracenogo)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # kernel_execve function needs to deal with pt_regs that is not
 # at the usual place
 #
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(kernel_execve)
 	stm	%r12,%r15,48(%r15)
 	lr	%r14,%r15
@@ -719,6 +800,8 @@ ENTRY(kernel_execve)
 	l	%r1,BASED(.Lexecve_tail)
 	basr	%r14,%r1		# call execve_tail
 	j	sysc_return
+<<<<<<< HEAD
+=======
 =======
 	.globl	kernel_execve
 kernel_execve:
@@ -749,12 +832,16 @@ kernel_execve:
 	basr	%r14,%r1
 	b	BASED(sysc_return)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Program check handler routine
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(pgm_check_handler)
 	stpt	__LC_SYNC_ENTER_TIMER
 	stm	%r8,%r15,__LC_SAVE_AREA_SYNC
@@ -818,6 +905,8 @@ pgm_svcper:
 	mvc	__LC_RETURN_PSW(4),__LC_SVC_NEW_PSW
 	mvc	__LC_RETURN_PSW+4(4),BASED(.Lsysc_per)
 	lpsw	__LC_RETURN_PSW		# branch to sysc_per and enable irqs
+<<<<<<< HEAD
+=======
 =======
 	.globl	pgm_check_handler
 pgm_check_handler:
@@ -942,12 +1031,16 @@ kernel_per:
 	basr	%r14,%r1		# branch to do_single_step
 	b	BASED(pgm_exit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * IO interrupt handler routine
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(io_int_handler)
 	stck	__LC_INT_CLOCK
 	stpt	__LC_ASYNC_ENTER_TIMER
@@ -968,6 +1061,8 @@ io_skip:
 	l	%r1,BASED(.Ldo_IRQ)
 	lr	%r2,%r11		# pass pointer to pt_regs
 	basr	%r14,%r1		# call do_IRQ
+<<<<<<< HEAD
+=======
 =======
 	.globl io_int_handler
 io_int_handler:
@@ -988,23 +1083,30 @@ io_no_vtime:
 	la	%r2,SP_PTREGS(%r15)	# address of register-save area
 	basr	%r14,%r1		# branch to standard irq handler
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 io_return:
 	LOCKDEP_SYS_EXIT
 	TRACE_IRQS_ON
 io_tif:
 	tm	__TI_flags+3(%r12),_TIF_WORK_INT
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jnz	io_work			# there is work to do (signals etc.)
 io_restore:
 	mvc	__LC_RETURN_PSW(8),__PT_PSW(%r11)
 	stpt	__LC_EXIT_TIMER
 	lm	%r0,%r15,__PT_R0(%r11)
 	lpsw	__LC_RETURN_PSW
+<<<<<<< HEAD
+=======
 =======
 	bnz	BASED(io_work)		# there is work to do (signals etc.)
 io_restore:
 	RESTORE_ALL __LC_RETURN_PSW,0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 io_done:
 
 #
@@ -1016,6 +1118,9 @@ io_done:
 #
 io_work:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tm	__PT_PSW+1(%r11),0x01	# returning to user ?
 	jo	io_work_user		# yes -> do resched & signal
 #ifdef CONFIG_PREEMPT
@@ -1030,6 +1135,8 @@ io_work:
 	mvc	STACK_FRAME_OVERHEAD(__PT_SIZE,%r1),0(%r11)
 	xc	__SF_BACKCHAIN(4,%r1),__SF_BACKCHAIN(%r1)
 	la	%r11,STACK_FRAME_OVERHEAD(%r1)
+<<<<<<< HEAD
+=======
 =======
 	tm	SP_PSW+1(%r15),0x01	# returning to user ?
 	bo	BASED(io_work_user)	# yes -> do resched & signal
@@ -1045,16 +1152,22 @@ io_work:
 	mvc	SP_PTREGS(__PT_SIZE,%r1),SP_PTREGS(%r15)
 	xc	__SF_BACKCHAIN(4,%r1),__SF_BACKCHAIN(%r1) # clear back chain
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lr	%r15,%r1
 	# TRACE_IRQS_ON already done at io_return, call
 	# TRACE_IRQS_OFF to keep things symmetrical
 	TRACE_IRQS_OFF
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l	%r1,BASED(.Lpreempt_irq)
 	basr	%r14,%r1		# call preempt_schedule_irq
 	j	io_return
 #else
 	j	io_restore
+<<<<<<< HEAD
+=======
 =======
 	l	%r1,BASED(.Lpreempt_schedule_irq)
 	basr	%r14,%r1		# call preempt_schedule_irq
@@ -1062,6 +1175,7 @@ io_work:
 #else
 	b	BASED(io_restore)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #
@@ -1070,15 +1184,21 @@ io_work:
 io_work_user:
 	l	%r1,__LC_KERNEL_STACK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ahi	%r1,-(STACK_FRAME_OVERHEAD + __PT_SIZE)
 	mvc	STACK_FRAME_OVERHEAD(__PT_SIZE,%r1),0(%r11)
 	xc	__SF_BACKCHAIN(4,%r1),__SF_BACKCHAIN(%r1)
 	la	%r11,STACK_FRAME_OVERHEAD(%r1)
+<<<<<<< HEAD
+=======
 =======
 	s	%r1,BASED(.Lc_spsize)
 	mvc	SP_PTREGS(__PT_SIZE,%r1),SP_PTREGS(%r15)
 	xc	__SF_BACKCHAIN(4,%r1),__SF_BACKCHAIN(%r1) # clear back chain
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lr	%r15,%r1
 
 #
@@ -1089,6 +1209,9 @@ io_work_user:
 io_work_tif:
 	tm	__TI_flags+3(%r12),_TIF_MCCK_PENDING
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jo	io_mcck_pending
 	tm	__TI_flags+3(%r12),_TIF_NEED_RESCHED
 	jo	io_reschedule
@@ -1097,6 +1220,8 @@ io_work_tif:
 	tm	__TI_flags+3(%r12),_TIF_NOTIFY_RESUME
 	jo	io_notify_resume
 	j	io_return		# beware of critical section cleanup
+<<<<<<< HEAD
+=======
 =======
 	bo	BASED(io_mcck_pending)
 	tm	__TI_flags+3(%r12),_TIF_NEED_RESCHED
@@ -1107,6 +1232,7 @@ io_work_tif:
 	bo	BASED(io_notify_resume)
 	b	BASED(io_return)	# beware of critical section cleanup
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # _TIF_MCCK_PENDING is set, call handler
@@ -1114,16 +1240,22 @@ io_work_tif:
 io_mcck_pending:
 	# TRACE_IRQS_ON already done at io_return
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l	%r1,BASED(.Lhandle_mcck)
 	basr	%r14,%r1		# TIF bit will be cleared by handler
 	TRACE_IRQS_OFF
 	j	io_return
+<<<<<<< HEAD
+=======
 =======
 	l	%r1,BASED(.Ls390_handle_mcck)
 	basr	%r14,%r1		# TIF bit will be cleared by handler
 	TRACE_IRQS_OFF
 	b	BASED(io_return)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # _TIF_NEED_RESCHED is set, call schedule
@@ -1132,11 +1264,16 @@ io_reschedule:
 	# TRACE_IRQS_ON already done at io_return
 	l	%r1,BASED(.Lschedule)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ssm	__LC_SVC_NEW_PSW	# reenable interrupts
 	basr	%r14,%r1		# call scheduler
 	ssm	__LC_PGM_NEW_PSW	# disable I/O and ext. interrupts
 	TRACE_IRQS_OFF
 	j	io_return
+<<<<<<< HEAD
+=======
 =======
 	stosm	__SF_EMPTY(%r15),0x03	# reenable interrupts
 	basr	%r14,%r1		# call scheduler
@@ -1144,6 +1281,7 @@ io_reschedule:
 	TRACE_IRQS_OFF
 	b	BASED(io_return)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # _TIF_SIGPENDING is set, call do_signal
@@ -1151,6 +1289,9 @@ io_reschedule:
 io_sigpending:
 	# TRACE_IRQS_ON already done at io_return
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l	%r1,BASED(.Ldo_signal)
 	ssm	__LC_SVC_NEW_PSW	# reenable interrupts
 	lr	%r2,%r11		# pass pointer to pt_regs
@@ -1158,6 +1299,8 @@ io_sigpending:
 	ssm	__LC_PGM_NEW_PSW	# disable I/O and ext. interrupts
 	TRACE_IRQS_OFF
 	j	io_return
+<<<<<<< HEAD
+=======
 =======
 	stosm	__SF_EMPTY(%r15),0x03	# reenable interrupts
 	la	%r2,SP_PTREGS(%r15)	# load pt_regs
@@ -1167,6 +1310,7 @@ io_sigpending:
 	TRACE_IRQS_OFF
 	b	BASED(io_return)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #
 # _TIF_SIGPENDING is set, call do_signal
@@ -1174,6 +1318,9 @@ io_sigpending:
 io_notify_resume:
 	# TRACE_IRQS_ON already done at io_return
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l	%r1,BASED(.Ldo_notify_resume)
 	ssm	__LC_SVC_NEW_PSW	# reenable interrupts
 	lr	%r2,%r11		# pass pointer to pt_regs
@@ -1181,6 +1328,8 @@ io_notify_resume:
 	ssm	__LC_PGM_NEW_PSW	# disable I/O and ext. interrupts
 	TRACE_IRQS_OFF
 	j	io_return
+<<<<<<< HEAD
+=======
 =======
 	stosm	__SF_EMPTY(%r15),0x03	# reenable interrupts
 	la	%r2,SP_PTREGS(%r15)	# load pt_regs
@@ -1190,12 +1339,16 @@ io_notify_resume:
 	TRACE_IRQS_OFF
 	b	BASED(io_return)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * External interrupt handler routine
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(ext_int_handler)
 	stck	__LC_INT_CLOCK
 	stpt	__LC_ASYNC_ENTER_TIMER
@@ -1238,6 +1391,8 @@ psw_idle_lpsw:
 	lpsw	__SF_EMPTY(%r15)
 	br	%r14
 psw_idle_end:
+<<<<<<< HEAD
+=======
 =======
 	.globl	ext_int_handler
 ext_int_handler:
@@ -1261,6 +1416,7 @@ ext_no_vtime:
 	basr	%r14,%r1
 	b	BASED(io_return)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 __critical_end:
 
@@ -1269,6 +1425,9 @@ __critical_end:
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(mcck_int_handler)
 	stck	__LC_MCCK_CLOCK
 	spt	__LC_CPU_TIMER_SAVE_AREA	# revalidate cpu timer
@@ -1365,6 +1524,8 @@ ENTRY(restart_int_handler)
 2:	sigp	%r4,%r3,5			# sigp stop to current cpu
 	brc	2,2b
 3:	j	3b
+<<<<<<< HEAD
+=======
 =======
 	.globl mcck_int_handler
 mcck_int_handler:
@@ -1494,6 +1655,7 @@ restart_crash:
 restart_go:
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.section .kprobes.text, "ax"
 
@@ -1506,6 +1668,9 @@ restart_go:
 stack_overflow:
 	l	%r15,__LC_PANIC_STACK	# change to panic stack
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ahi	%r15,-__PT_SIZE		# create pt_regs
 	stm	%r0,%r7,__PT_R0(%r15)
 	stm	%r8,%r9,__PT_PSW(%r15)
@@ -1679,6 +1844,8 @@ cleanup_idle_insn:
 	.long	psw_idle_lpsw + 0x80000000
 cleanup_idle_wait:
 	.long	0xfffdffff
+<<<<<<< HEAD
+=======
 =======
 	sl	%r15,BASED(.Lc_spsize)
 	mvc	SP_PSW(8,%r15),0(%r12)	# move user PSW to stack
@@ -1832,16 +1999,22 @@ cleanup_io_restore_insn:
 	.long	io_done - 4 + 0x80000000
 	.long	io_done - 8 + 0x80000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Integer constants
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.align	4
 .Lnr_syscalls:
 	.long	NR_syscalls
 .Lvtimer_max:
 	.quad	0x7fffffffffffffff
+<<<<<<< HEAD
+=======
 =======
 		.align	4
 .Lc_spsize:	.long	SP_SIZE
@@ -1854,11 +2027,15 @@ cleanup_io_restore_insn:
 .L0x038:	.short	0x038
 .Lc_1:		.long	1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Symbol constants
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 .Ldo_machine_check:	.long	s390_do_machine_check
 .Lhandle_mcck:		.long	s390_handle_mcck
 .Ldo_IRQ:		.long	do_IRQ
@@ -1887,6 +2064,8 @@ cleanup_io_restore_insn:
 #endif
 .Lcritical_start:	.long	__critical_start + 0x80000000
 .Lcritical_length:	.long	__critical_end - __critical_start
+<<<<<<< HEAD
+=======
 =======
 .Ls390_mcck:	.long	s390_do_machine_check
 .Ls390_handle_mcck:
@@ -1927,6 +2106,7 @@ cleanup_io_restore_insn:
 .Lcleanup_critical:
 		.long	cleanup_critical
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		.section .rodata, "a"
 #define SYSCALL(esa,esame,emu)	.long esa

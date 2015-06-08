@@ -39,7 +39,14 @@
 #include <linux/ipmi.h>
 #include <linux/device.h>
 #include <linux/pnp.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/spinlock.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/spinlock.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Zhao Yakui");
 MODULE_DESCRIPTION("ACPI IPMI Opregion driver");
@@ -58,7 +65,15 @@ struct acpi_ipmi_device {
 	struct list_head head;
 	/* the IPMI request message list */
 	struct list_head tx_msg_list;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mutex	tx_msg_lock;
+=======
 	spinlock_t	tx_msg_lock;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spinlock_t	tx_msg_lock;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	acpi_handle handle;
 	struct pnp_dev *pnp_dev;
 	ipmi_user_t	user_interface;
@@ -148,7 +163,14 @@ static void acpi_format_ipmi_msg(struct acpi_ipmi_msg *tx_msg,
 	struct kernel_ipmi_msg *msg;
 	struct acpi_ipmi_buffer *buffer;
 	struct acpi_ipmi_device *device;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	msg = &tx_msg->tx_message;
 	/*
@@ -179,10 +201,23 @@ static void acpi_format_ipmi_msg(struct acpi_ipmi_msg *tx_msg,
 
 	/* Get the msgid */
 	device = tx_msg->device;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&device->tx_msg_lock);
+	device->curr_msgid++;
+	tx_msg->tx_msgid = device->curr_msgid;
+	mutex_unlock(&device->tx_msg_lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&device->tx_msg_lock, flags);
 	device->curr_msgid++;
 	tx_msg->tx_msgid = device->curr_msgid;
 	spin_unlock_irqrestore(&device->tx_msg_lock, flags);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void acpi_format_ipmi_response(struct acpi_ipmi_msg *msg,
@@ -244,7 +279,14 @@ static void ipmi_msg_handler(struct ipmi_recv_msg *msg, void *user_msg_data)
 	int msg_found = 0;
 	struct acpi_ipmi_msg *tx_msg;
 	struct pnp_dev *pnp_dev = ipmi_device->pnp_dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (msg->user != ipmi_device->user_interface) {
 		dev_warn(&pnp_dev->dev, "Unexpected response is returned. "
@@ -253,7 +295,15 @@ static void ipmi_msg_handler(struct ipmi_recv_msg *msg, void *user_msg_data)
 		ipmi_free_recv_msg(msg);
 		return;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&ipmi_device->tx_msg_lock);
+=======
 	spin_lock_irqsave(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(tx_msg, &ipmi_device->tx_msg_list, head) {
 		if (msg->msgid == tx_msg->tx_msgid) {
 			msg_found = 1;
@@ -261,7 +311,15 @@ static void ipmi_msg_handler(struct ipmi_recv_msg *msg, void *user_msg_data)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&ipmi_device->tx_msg_lock);
+=======
 	spin_unlock_irqrestore(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!msg_found) {
 		dev_warn(&pnp_dev->dev, "Unexpected response (msg id %ld) is "
 			"returned.\n", msg->msgid);
@@ -381,7 +439,14 @@ acpi_ipmi_space_handler(u32 function, acpi_physical_address address,
 	struct acpi_ipmi_device *ipmi_device = handler_context;
 	int err, rem_time;
 	acpi_status status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * IPMI opregion message.
 	 * IPMI message is firstly written to the BMC and system software
@@ -399,9 +464,21 @@ acpi_ipmi_space_handler(u32 function, acpi_physical_address address,
 		return AE_NO_MEMORY;
 
 	acpi_format_ipmi_msg(tx_msg, address, value);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&ipmi_device->tx_msg_lock);
+	list_add_tail(&tx_msg->head, &ipmi_device->tx_msg_list);
+	mutex_unlock(&ipmi_device->tx_msg_lock);
+=======
 	spin_lock_irqsave(&ipmi_device->tx_msg_lock, flags);
 	list_add_tail(&tx_msg->head, &ipmi_device->tx_msg_list);
 	spin_unlock_irqrestore(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&ipmi_device->tx_msg_lock, flags);
+	list_add_tail(&tx_msg->head, &ipmi_device->tx_msg_list);
+	spin_unlock_irqrestore(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ipmi_request_settime(ipmi_device->user_interface,
 					&tx_msg->addr,
 					tx_msg->tx_msgid,
@@ -417,9 +494,21 @@ acpi_ipmi_space_handler(u32 function, acpi_physical_address address,
 	status = AE_OK;
 
 end_label:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&ipmi_device->tx_msg_lock);
+	list_del(&tx_msg->head);
+	mutex_unlock(&ipmi_device->tx_msg_lock);
+=======
 	spin_lock_irqsave(&ipmi_device->tx_msg_lock, flags);
 	list_del(&tx_msg->head);
 	spin_unlock_irqrestore(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&ipmi_device->tx_msg_lock, flags);
+	list_del(&tx_msg->head);
+	spin_unlock_irqrestore(&ipmi_device->tx_msg_lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(tx_msg);
 	return status;
 }
@@ -461,7 +550,15 @@ static void acpi_add_ipmi_device(struct acpi_ipmi_device *ipmi_device)
 
 	INIT_LIST_HEAD(&ipmi_device->head);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_init(&ipmi_device->tx_msg_lock);
+=======
 	spin_lock_init(&ipmi_device->tx_msg_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_init(&ipmi_device->tx_msg_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&ipmi_device->tx_msg_list);
 	ipmi_install_space_handler(ipmi_device);
 

@@ -5,8 +5,13 @@
  * Copyright (C) 2006 SAN People
  * Copyright (C) 2011 Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2006 SAN People
+ * Copyright (C) 2011 Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
+=======
  *  Copyright (C) 2006 SAN People
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +24,10 @@
 #ifndef __MACH_CPU_H__
 #define __MACH_CPU_H__
 =======
+<<<<<<< HEAD
+#ifndef __MACH_CPU_H__
+#define __MACH_CPU_H__
+=======
 #ifndef __ASM_ARCH_CPU_H
 #define __ASM_ARCH_CPU_H
 
@@ -26,6 +35,7 @@
 #include <mach/at91_dbgu.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ARCH_ID_AT91RM9200	0x09290780
 #define ARCH_ID_AT91SAM9260	0x019803a0
@@ -40,8 +50,11 @@
 #define ARCH_ID_AT91SAM9X5	0x819a05a0
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define ARCH_ID_AT91CAP9	0x039A03A0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ARCH_ID_AT91SAM9XE128	0x329973a0
 #define ARCH_ID_AT91SAM9XE256	0x329a93a0
@@ -52,6 +65,8 @@
 #define ARCH_ID_AT91M40807	0x14080745
 #define ARCH_ID_AT91R40008	0x44000840
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static inline unsigned long at91_cpu_identify(void)
@@ -65,6 +80,7 @@ static inline unsigned long at91_cpu_fully_identify(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ARCH_EXID_AT91SAM9M11	0x00000001
 #define ARCH_EXID_AT91SAM9M10	0x00000002
 #define ARCH_EXID_AT91SAM9G46	0x00000003
@@ -78,6 +94,8 @@ static inline unsigned long at91_cpu_fully_identify(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline unsigned long at91_exid_identify(void)
 {
 	return at91_sys_read(AT91_DBGU_EXID);
@@ -85,11 +103,15 @@ static inline unsigned long at91_exid_identify(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ARCH_FAMILY_AT91X92	0x09200000
 #define ARCH_FAMILY_AT91SAM9	0x01900000
 #define ARCH_FAMILY_AT91SAM9XE	0x02900000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* RM9200 type */
 #define ARCH_REVISON_9200_BGA	(0 << 0)
 #define ARCH_REVISON_9200_PQFP	(1 << 0)
@@ -150,6 +172,8 @@ static inline int at91_soc_is_detected(void)
 #define cpu_is_at91rm9200()	(at91_soc_initdata.type == AT91_SOC_RM9200)
 #define cpu_is_at91rm9200_bga()	(at91_soc_initdata.subtype == AT91_SOC_RM9200_BGA)
 #define cpu_is_at91rm9200_pqfp() (at91_soc_initdata.subtype == AT91_SOC_RM9200_PQFP)
+<<<<<<< HEAD
+=======
 =======
 static inline unsigned long at91_arch_identify(void)
 {
@@ -176,6 +200,7 @@ extern int rm9200_type;
 #define cpu_is_at91rm9200_bga()	(!cpu_is_at91rm9200_pqfp())
 #define cpu_is_at91rm9200_pqfp() (cpu_is_at91rm9200() && rm9200_type & ARCH_REVISON_9200_PQFP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91rm9200()	(0)
 #define cpu_is_at91rm9200_bga()	(0)
@@ -187,9 +212,14 @@ extern int rm9200_type;
 #define cpu_is_at91sam9xe()	(at91_soc_initdata.subtype == AT91_SOC_SAM9XE)
 #define cpu_is_at91sam9260()	(at91_soc_initdata.type == AT91_SOC_SAM9260)
 =======
+<<<<<<< HEAD
+#define cpu_is_at91sam9xe()	(at91_soc_initdata.subtype == AT91_SOC_SAM9XE)
+#define cpu_is_at91sam9260()	(at91_soc_initdata.type == AT91_SOC_SAM9260)
+=======
 #define cpu_is_at91sam9xe()	(at91_arch_identify() == ARCH_FAMILY_AT91SAM9XE)
 #define cpu_is_at91sam9260()	((at91_cpu_identify() == ARCH_ID_AT91SAM9260) || cpu_is_at91sam9xe())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9xe()	(0)
 #define cpu_is_at91sam9260()	(0)
@@ -199,8 +229,12 @@ extern int rm9200_type;
 <<<<<<< HEAD
 #define cpu_is_at91sam9g20()	(at91_soc_initdata.type == AT91_SOC_SAM9G20)
 =======
+<<<<<<< HEAD
+#define cpu_is_at91sam9g20()	(at91_soc_initdata.type == AT91_SOC_SAM9G20)
+=======
 #define cpu_is_at91sam9g20()	(at91_cpu_identify() == ARCH_ID_AT91SAM9G20)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9g20()	(0)
 #endif
@@ -209,8 +243,12 @@ extern int rm9200_type;
 <<<<<<< HEAD
 #define cpu_is_at91sam9261()	(at91_soc_initdata.type == AT91_SOC_SAM9261)
 =======
+<<<<<<< HEAD
+#define cpu_is_at91sam9261()	(at91_soc_initdata.type == AT91_SOC_SAM9261)
+=======
 #define cpu_is_at91sam9261()	(at91_cpu_identify() == ARCH_ID_AT91SAM9261)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9261()	(0)
 #endif
@@ -219,8 +257,12 @@ extern int rm9200_type;
 <<<<<<< HEAD
 #define cpu_is_at91sam9g10()	(at91_soc_initdata.type == AT91_SOC_SAM9G10)
 =======
+<<<<<<< HEAD
+#define cpu_is_at91sam9g10()	(at91_soc_initdata.type == AT91_SOC_SAM9G10)
+=======
 #define cpu_is_at91sam9g10()	((at91_cpu_identify() & ~AT91_CIDR_EXT)	== ARCH_ID_AT91SAM9G10)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9g10()	(0)
 #endif
@@ -229,8 +271,12 @@ extern int rm9200_type;
 <<<<<<< HEAD
 #define cpu_is_at91sam9263()	(at91_soc_initdata.type == AT91_SOC_SAM9263)
 =======
+<<<<<<< HEAD
+#define cpu_is_at91sam9263()	(at91_soc_initdata.type == AT91_SOC_SAM9263)
+=======
 #define cpu_is_at91sam9263()	(at91_cpu_identify() == ARCH_ID_AT91SAM9263)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9263()	(0)
 #endif
@@ -239,19 +285,28 @@ extern int rm9200_type;
 <<<<<<< HEAD
 #define cpu_is_at91sam9rl()	(at91_soc_initdata.type == AT91_SOC_SAM9RL)
 =======
+<<<<<<< HEAD
+#define cpu_is_at91sam9rl()	(at91_soc_initdata.type == AT91_SOC_SAM9RL)
+=======
 #define cpu_is_at91sam9rl()	(at91_cpu_identify() == ARCH_ID_AT91SAM9RL64)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9rl()	(0)
 #endif
 
 #ifdef CONFIG_ARCH_AT91SAM9G45
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_is_at91sam9g45()	(at91_soc_initdata.type == AT91_SOC_SAM9G45)
 #define cpu_is_at91sam9g45es()	(at91_soc_initdata.subtype == AT91_SOC_SAM9G45ES)
 #define cpu_is_at91sam9m10()	(at91_soc_initdata.subtype == AT91_SOC_SAM9M10)
 #define cpu_is_at91sam9g46()	(at91_soc_initdata.subtype == AT91_SOC_SAM9G46)
 #define cpu_is_at91sam9m11()	(at91_soc_initdata.subtype == AT91_SOC_SAM9M11)
+<<<<<<< HEAD
+=======
 =======
 #define cpu_is_at91sam9g45()	(at91_cpu_identify() == ARCH_ID_AT91SAM9G45)
 #define cpu_is_at91sam9g45es()	(at91_cpu_fully_identify() == ARCH_ID_AT91SAM9G45ES)
@@ -262,6 +317,7 @@ extern int rm9200_type;
 #define cpu_is_at91sam9m11()    (cpu_is_at91sam9g45() && \
                                 (at91_exid_identify() == ARCH_EXID_AT91SAM9M11))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9g45()	(0)
 #define cpu_is_at91sam9g45es()	(0)
@@ -272,12 +328,17 @@ extern int rm9200_type;
 
 #ifdef CONFIG_ARCH_AT91SAM9X5
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_is_at91sam9x5()	(at91_soc_initdata.type == AT91_SOC_SAM9X5)
 #define cpu_is_at91sam9g15()	(at91_soc_initdata.subtype == AT91_SOC_SAM9G15)
 #define cpu_is_at91sam9g35()	(at91_soc_initdata.subtype == AT91_SOC_SAM9G35)
 #define cpu_is_at91sam9x35()	(at91_soc_initdata.subtype == AT91_SOC_SAM9X35)
 #define cpu_is_at91sam9g25()	(at91_soc_initdata.subtype == AT91_SOC_SAM9G25)
 #define cpu_is_at91sam9x25()	(at91_soc_initdata.subtype == AT91_SOC_SAM9X25)
+<<<<<<< HEAD
+=======
 =======
 #define cpu_is_at91sam9x5()	(at91_cpu_identify() == ARCH_ID_AT91SAM9X5)
 #define cpu_is_at91sam9g15()	(cpu_is_at91sam9x5() && \
@@ -291,6 +352,7 @@ extern int rm9200_type;
 #define cpu_is_at91sam9x25()	(cpu_is_at91sam9x5() && \
 				(at91_exid_identify() == ARCH_EXID_AT91SAM9X25))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define cpu_is_at91sam9x5()	(0)
 #define cpu_is_at91sam9g15()	(0)
@@ -300,6 +362,8 @@ extern int rm9200_type;
 #define cpu_is_at91sam9x25()	(0)
 #endif
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_ARCH_AT91CAP9
@@ -313,6 +377,7 @@ extern int rm9200_type;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Since this is ARM, we will never run on any AVR32 CPU. But these
  * definitions may reduce clutter in common drivers.
@@ -322,5 +387,9 @@ extern int rm9200_type;
 <<<<<<< HEAD
 #endif /* __MACH_CPU_H__ */
 =======
+<<<<<<< HEAD
+#endif /* __MACH_CPU_H__ */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

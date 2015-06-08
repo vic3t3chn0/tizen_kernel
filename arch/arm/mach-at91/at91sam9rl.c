@@ -11,6 +11,9 @@
 
 #include <linux/module.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/proc-fns.h>
 #include <asm/irq.h>
@@ -27,6 +30,8 @@
 #include "generic.h"
 #include "clock.h"
 #include "sam9_smc.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/pm.h>
 
@@ -58,6 +63,7 @@ static struct map_desc at91sam9rl_sram_desc[] __initdata = {
 	}
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* --------------------------------------------------------------------
  *  Clocks
@@ -218,12 +224,18 @@ static struct clk_lookup periph_clocks_lookups[] = {
 	CLKDEV_CON_DEV_ID("pclk", "ssc.0", &ssc0_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.1", &ssc1_clk),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_ID("pioA", &pioA_clk),
 	CLKDEV_CON_ID("pioB", &pioB_clk),
 	CLKDEV_CON_ID("pioC", &pioC_clk),
 	CLKDEV_CON_ID("pioD", &pioD_clk),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_lookup usart_clocks_lookups[] = {
@@ -284,6 +296,9 @@ void __init at91sam9rl_set_console_clock(int id)
  * -------------------------------------------------------------------- */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct at91_gpio_bank at91sam9rl_gpio[] __initdata = {
 	{
 		.id		= AT91SAM9RL_ID_PIOA,
@@ -300,6 +315,8 @@ static struct at91_gpio_bank at91sam9rl_gpio[] __initdata = {
 	}
 };
 
+<<<<<<< HEAD
+=======
 =======
 static struct at91_gpio_bank at91sam9rl_gpio[] = {
 	{
@@ -328,16 +345,22 @@ static void at91sam9rl_poweroff(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* --------------------------------------------------------------------
  *  AT91SAM9RL processor initialization
  * -------------------------------------------------------------------- */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init at91sam9rl_map_io(void)
 {
 	unsigned long sram_size;
 
 	switch (at91_soc_initdata.cidr & AT91_CIDR_SRAMSIZ) {
+<<<<<<< HEAD
+=======
 =======
 void __init at91sam9rl_map_io(void)
 {
@@ -350,6 +373,7 @@ void __init at91sam9rl_map_io(void)
 
 	switch (cidr & AT91_CIDR_SRAMSIZ) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case AT91_CIDR_SRAMSIZ_32K:
 			sram_size = 2 * SZ_16K;
 			break;
@@ -359,6 +383,9 @@ void __init at91sam9rl_map_io(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Map SRAM */
 	at91_init_sram(0, AT91SAM9RL_SRAM_BASE, sram_size);
 }
@@ -379,6 +406,8 @@ static void __init at91sam9rl_initialize(void)
 	arm_pm_restart = at91sam9_alt_restart;
 	at91_extern_irq = (1 << AT91SAM9RL_ID_IRQ0);
 
+<<<<<<< HEAD
+=======
 =======
 	at91sam9rl_sram_desc->virtual = AT91_IO_VIRT_BASE - sram_size;
 	at91sam9rl_sram_desc->length = sram_size;
@@ -400,6 +429,7 @@ void __init at91sam9rl_initialize(unsigned long main_clock)
 	at91sam9rl_register_clocks();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Register GPIO subsystem */
 	at91_gpio_init(at91sam9rl_gpio, 4);
 }
@@ -447,6 +477,9 @@ static unsigned int at91sam9rl_default_irq_priority[NR_AIC_IRQS] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct at91_init_soc __initdata at91sam9rl_soc = {
 	.map_io = at91sam9rl_map_io,
 	.default_irq_priority = at91sam9rl_default_irq_priority,
@@ -454,6 +487,8 @@ struct at91_init_soc __initdata at91sam9rl_soc = {
 	.register_clocks = at91sam9rl_register_clocks,
 	.init = at91sam9rl_initialize,
 };
+<<<<<<< HEAD
+=======
 =======
 void __init at91sam9rl_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 {
@@ -467,3 +502,4 @@ void __init at91sam9rl_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 	at91_gpio_irq_setup();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

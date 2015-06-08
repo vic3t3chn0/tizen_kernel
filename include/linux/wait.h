@@ -24,8 +24,11 @@
 #include <linux/spinlock.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/current.h>
 
 typedef struct __wait_queue wait_queue_t;
@@ -83,8 +86,12 @@ struct task_struct;
 <<<<<<< HEAD
 extern void __init_waitqueue_head(wait_queue_head_t *q, const char *name, struct lock_class_key *);
 =======
+<<<<<<< HEAD
+extern void __init_waitqueue_head(wait_queue_head_t *q, const char *name, struct lock_class_key *);
+=======
 extern void __init_waitqueue_head(wait_queue_head_t *q, struct lock_class_key *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define init_waitqueue_head(q)				\
 	do {						\
@@ -93,8 +100,12 @@ extern void __init_waitqueue_head(wait_queue_head_t *q, struct lock_class_key *)
 <<<<<<< HEAD
 		__init_waitqueue_head((q), #q, &__key);	\
 =======
+<<<<<<< HEAD
+		__init_waitqueue_head((q), #q, &__key);	\
+=======
 		__init_waitqueue_head((q), &__key);	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (0)
 
 #ifdef CONFIG_LOCKDEP
@@ -171,8 +182,12 @@ void __wake_up_sync_key(wait_queue_head_t *q, unsigned int mode, int nr,
 <<<<<<< HEAD
 void __wake_up_locked(wait_queue_head_t *q, unsigned int mode, int nr);
 =======
+<<<<<<< HEAD
+void __wake_up_locked(wait_queue_head_t *q, unsigned int mode, int nr);
+=======
 void __wake_up_locked(wait_queue_head_t *q, unsigned int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __wake_up_sync(wait_queue_head_t *q, unsigned int mode, int nr);
 void __wake_up_bit(wait_queue_head_t *, void *, int);
 int __wait_on_bit(wait_queue_head_t *, struct wait_bit_queue *, int (*)(void *), unsigned);
@@ -189,8 +204,13 @@ wait_queue_head_t *bit_waitqueue(void *, int);
 #define wake_up_locked(x)		__wake_up_locked((x), TASK_NORMAL, 1)
 #define wake_up_all_locked(x)		__wake_up_locked((x), TASK_NORMAL, 0)
 =======
+<<<<<<< HEAD
+#define wake_up_locked(x)		__wake_up_locked((x), TASK_NORMAL, 1)
+#define wake_up_all_locked(x)		__wake_up_locked((x), TASK_NORMAL, 0)
+=======
 #define wake_up_locked(x)		__wake_up_locked((x), TASK_NORMAL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define wake_up_interruptible(x)	__wake_up(x, TASK_INTERRUPTIBLE, 1, NULL)
 #define wake_up_interruptible_nr(x, nr)	__wake_up(x, TASK_INTERRUPTIBLE, nr, NULL)
@@ -255,9 +275,12 @@ do {									\
 	}								\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!ret && (condition))					\
 		ret = 1;						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	finish_wait(&wq, &__wait);					\
 } while (0)
 
@@ -278,10 +301,15 @@ do {									\
  * The function returns 0 if the @timeout elapsed, and the remaining
  * jiffies if the condition evaluated to true before the timeout elapsed.
 =======
+<<<<<<< HEAD
+ * The function returns 0 if the @timeout elapsed, and the remaining
+ * jiffies if the condition evaluated to true before the timeout elapsed.
+=======
  * The function returns 0 if the @timeout elapsed, or the remaining
  * jiffies (at least 1) if the @condition evaluated to %true before
  * the @timeout elapsed.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #define wait_event_timeout(wq, condition, timeout)			\
 ({									\
@@ -351,9 +379,12 @@ do {									\
 	}								\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!ret && (condition))					\
 		ret = 1;						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	finish_wait(&wq, &__wait);					\
 } while (0)
 
@@ -375,11 +406,17 @@ do {									\
  * was interrupted by a signal, and the remaining jiffies otherwise
  * if the condition evaluated to true before the timeout elapsed.
 =======
+<<<<<<< HEAD
+ * The function returns 0 if the @timeout elapsed, -ERESTARTSYS if it
+ * was interrupted by a signal, and the remaining jiffies otherwise
+ * if the condition evaluated to true before the timeout elapsed.
+=======
  * Returns:
  * 0 if the @timeout elapsed, -%ERESTARTSYS if it was interrupted by
  * a signal, or the remaining jiffies (at least 1) if the @condition
  * evaluated to %true before the @timeout elapsed.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #define wait_event_interruptible_timeout(wq, condition, timeout)	\
 ({									\
@@ -390,6 +427,9 @@ do {									\
 })
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __wait_io_event_interruptible(wq, condition, ret)		\
 do {									\
 	DEFINE_WAIT(__wait);						\
@@ -477,8 +517,11 @@ do {									\
 	__ret;								\
 })
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __wait_event_interruptible_exclusive(wq, condition, ret)	\
 do {									\
 	DEFINE_WAIT(__wait);						\
@@ -659,6 +702,8 @@ do {									\
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define __wait_event_interruptible_lock_irq_timeout(wq, condition,	\
 						    lock, ret)		\
 do {									\
@@ -717,6 +762,7 @@ do {									\
 })
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define __wait_event_killable(wq, condition, ret)			\
 do {									\

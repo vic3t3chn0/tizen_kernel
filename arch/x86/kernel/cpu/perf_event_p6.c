@@ -1,11 +1,17 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/perf_event.h>
 #include <linux/types.h>
 
 #include "perf_event.h"
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CPU_SUP_INTEL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Not sure about some of these
@@ -92,6 +98,9 @@ static void p6_pmu_enable_event(struct perf_event *event)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 PMU_FORMAT_ATTR(event,	"config:0-7"	);
 PMU_FORMAT_ATTR(umask,	"config:8-15"	);
 PMU_FORMAT_ATTR(edge,	"config:18"	);
@@ -109,8 +118,11 @@ static struct attribute *intel_p6_formats_attr[] = {
 	NULL,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __initconst const struct x86_pmu p6_pmu = {
 	.name			= "p6",
 	.handle_irq		= x86_pmu_handle_irq,
@@ -140,16 +152,22 @@ static __initconst const struct x86_pmu p6_pmu = {
 	.get_event_constraints	= x86_get_event_constraints,
 	.event_constraints	= p6_event_constraints,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.format_attrs		= intel_p6_formats_attr,
 };
 
 __init int p6_pmu_init(void)
+<<<<<<< HEAD
+=======
 =======
 };
 
 static __init int p6_pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (boot_cpu_data.x86_model) {
 	case 1:
@@ -175,6 +193,9 @@ static __init int p6_pmu_init(void)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #endif /* CONFIG_CPU_SUP_INTEL */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

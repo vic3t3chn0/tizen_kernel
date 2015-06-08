@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/addr-map.h>
 #include <mach/cputype.h>
 
@@ -34,8 +38,12 @@ static struct map_desc standard_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual	= (unsigned long)APB_VIRT_BASE,
 =======
+<<<<<<< HEAD
+		.virtual	= (unsigned long)APB_VIRT_BASE,
+=======
 		.virtual	= APB_VIRT_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.length		= APB_PHYS_SIZE,
 		.type		= MT_DEVICE,
 	}, {
@@ -43,8 +51,12 @@ static struct map_desc standard_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual	= (unsigned long)AXI_VIRT_BASE,
 =======
+<<<<<<< HEAD
+		.virtual	= (unsigned long)AXI_VIRT_BASE,
+=======
 		.virtual	= AXI_VIRT_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.length		= AXI_PHYS_SIZE,
 		.type		= MT_DEVICE,
 	},
@@ -58,10 +70,16 @@ void __init mmp_map_io(void)
 	mmp_chip_id = __raw_readl(MMP_CHIPID);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void mmp_restart(char mode, const char *cmd)
 {
 	soft_restart(0);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -31,7 +31,11 @@
 <<<<<<< HEAD
 #include <asm/hardware/vic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/vic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/netx-regs.h>
 #include <mach/eth.h>
 
@@ -182,6 +186,9 @@ static void __init nxeb500hmi_init(void)
 
 MACHINE_START(NXEB500HMI, "Hilscher nxeb500hmi")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= netx_map_io,
 	.init_irq	= netx_init_irq,
@@ -189,6 +196,8 @@ MACHINE_START(NXEB500HMI, "Hilscher nxeb500hmi")
 	.timer		= &netx_timer,
 	.init_machine	= nxeb500hmi_init,
 	.restart	= netx_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.map_io		= netx_map_io,
@@ -196,4 +205,5 @@ MACHINE_START(NXEB500HMI, "Hilscher nxeb500hmi")
 	.timer		= &netx_timer,
 	.init_machine	= nxeb500hmi_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -214,7 +214,11 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 <<<<<<< HEAD
 	int delta_w;
 =======
+<<<<<<< HEAD
+	int delta_w;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (tca[TCA_OPTIONS] == NULL) {
 		pr_notice("qfq: no options\n");
@@ -237,15 +241,21 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 	inv_w = ONE_FP / weight;
 	weight = ONE_FP / inv_w;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	delta_w = weight - (cl ? ONE_FP / cl->inv_w : 0);
 	if (q->wsum + delta_w > QFQ_MAX_WSUM) {
 		pr_notice("qfq: total weight out of range (%u + %u)\n",
 			  delta_w, q->wsum);
+<<<<<<< HEAD
+=======
 =======
 	if (q->wsum + weight > QFQ_MAX_WSUM) {
 		pr_notice("qfq: total weight out of range (%u + %u)\n",
 			  weight, q->wsum);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -268,12 +278,17 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (inv_w != cl->inv_w) {
 			sch_tree_lock(sch);
 			q->wsum += delta_w;
 			cl->inv_w = inv_w;
 			sch_tree_unlock(sch);
 		}
+<<<<<<< HEAD
+=======
 =======
 		sch_tree_lock(sch);
 		if (tb[TCA_QFQ_WEIGHT]) {
@@ -283,6 +298,7 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 		sch_tree_unlock(sch);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -299,8 +315,11 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 	cl->grp = &q->groups[i];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	q->wsum += weight;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cl->qdisc = qdisc_create_dflt(sch->dev_queue,
 				      &pfifo_qdisc_ops, classid);
@@ -320,7 +339,11 @@ static int qfq_change_class(struct Qdisc *sch, u32 classid, u32 parentid,
 <<<<<<< HEAD
 	q->wsum += weight;
 =======
+<<<<<<< HEAD
+	q->wsum += weight;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sch_tree_lock(sch);
 	qdisc_class_hash_insert(&q->clhash, &cl->common);
@@ -845,11 +868,16 @@ static void qfq_update_start(struct qfq_sched *q, struct qfq_class *cl)
 {
 	unsigned long mask;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 limit, roundedF;
 	int slot_shift = cl->grp->slot_shift;
 
 	roundedF = qfq_round_down(cl->F, slot_shift);
 	limit = qfq_round_down(q->V, slot_shift) + (1ULL << slot_shift);
+<<<<<<< HEAD
+=======
 =======
 	uint32_t limit, roundedF;
 	int slot_shift = cl->grp->slot_shift;
@@ -857,6 +885,7 @@ static void qfq_update_start(struct qfq_sched *q, struct qfq_class *cl)
 	roundedF = qfq_round_down(cl->F, slot_shift);
 	limit = qfq_round_down(q->V, slot_shift) + (1UL << slot_shift);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!qfq_gt(cl->F, q->V) || qfq_gt(roundedF, limit)) {
 		/* timestamp was stale */
@@ -867,11 +896,15 @@ static void qfq_update_start(struct qfq_sched *q, struct qfq_class *cl)
 <<<<<<< HEAD
 				cl->S = next->F;
 =======
+<<<<<<< HEAD
+				cl->S = next->F;
+=======
 				if (qfq_gt(limit, next->F))
 					cl->S = next->F;
 				else /* preserve timestamp correctness */
 					cl->S = limit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return;
 			}
 		}

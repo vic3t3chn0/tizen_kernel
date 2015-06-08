@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * For explanation of the elements of this struct, see
@@ -29,6 +33,8 @@ struct fault_attr {
 	unsigned long reject_end;
 
 	unsigned long count;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -52,6 +58,7 @@ struct fault_attr {
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define FAULT_ATTR_INITIALIZER {				\
@@ -66,13 +73,19 @@ struct fault_attr {
 int setup_fault_attr(struct fault_attr *attr, char *str);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void should_fail_srandom(unsigned long entropy);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool should_fail(struct fault_attr *attr, ssize_t size);
 
 #ifdef CONFIG_FAULT_INJECTION_DEBUG_FS
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct dentry *fault_create_debugfs_attr(const char *name,
 			struct dentry *parent, struct fault_attr *attr);
 
@@ -82,6 +95,8 @@ static inline struct dentry *fault_create_debugfs_attr(const char *name,
 			struct dentry *parent, struct fault_attr *attr)
 {
 	return ERR_PTR(-ENODEV);
+<<<<<<< HEAD
+=======
 =======
 int init_fault_attr_dentries(struct fault_attr *attr, const char *name);
 void cleanup_fault_attr_dentries(struct fault_attr *attr);
@@ -97,6 +112,7 @@ static inline int init_fault_attr_dentries(struct fault_attr *attr,
 static inline void cleanup_fault_attr_dentries(struct fault_attr *attr)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif /* CONFIG_FAULT_INJECTION_DEBUG_FS */

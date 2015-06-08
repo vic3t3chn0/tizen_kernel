@@ -127,6 +127,9 @@ typedef volatile struct au1xxx_ddma_desc {
 
 /* Command 0 device IDs. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AU1550_DSCR_CMD0_UART0_TX	0
 #define AU1550_DSCR_CMD0_UART0_RX	1
 #define AU1550_DSCR_CMD0_UART3_TX	2
@@ -214,6 +217,8 @@ typedef volatile struct au1xxx_ddma_desc {
 #define AU1300_DSCR_CMD0_UDMA          27
 #define AU1300_DSCR_CMD0_DMA_REQ0      28
 #define AU1300_DSCR_CMD0_DMA_REQ1      29
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SOC_AU1550
 #define DSCR_CMD0_UART0_TX	0
@@ -276,6 +281,7 @@ typedef volatile struct au1xxx_ddma_desc {
 #define DSCR_CMD0_CIM_SYNC	26
 #endif /* CONFIG_SOC_AU1200 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DSCR_CMD0_THROTTLE	30
 #define DSCR_CMD0_ALWAYS	31

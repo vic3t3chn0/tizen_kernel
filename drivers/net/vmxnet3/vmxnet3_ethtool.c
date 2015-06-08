@@ -113,15 +113,33 @@ vmxnet3_global_stats[] = {
 };
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct rtnl_link_stats64 *
+vmxnet3_get_stats64(struct net_device *netdev,
+		   struct rtnl_link_stats64 *stats)
+=======
 struct net_device_stats *
 vmxnet3_get_stats(struct net_device *netdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct net_device_stats *
+vmxnet3_get_stats(struct net_device *netdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vmxnet3_adapter *adapter;
 	struct vmxnet3_tq_driver_stats *drvTxStats;
 	struct vmxnet3_rq_driver_stats *drvRxStats;
 	struct UPT1_TxStats *devTxStats;
 	struct UPT1_RxStats *devRxStats;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct net_device_stats *net_stats = &netdev->stats;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct net_device_stats *net_stats = &netdev->stats;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	int i;
 
@@ -132,6 +150,22 @@ vmxnet3_get_stats(struct net_device *netdev)
 	VMXNET3_WRITE_BAR1_REG(adapter, VMXNET3_REG_CMD, VMXNET3_CMD_GET_STATS);
 	spin_unlock_irqrestore(&adapter->cmd_lock, flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < adapter->num_tx_queues; i++) {
+		devTxStats = &adapter->tqd_start[i].stats;
+		drvTxStats = &adapter->tx_queue[i].stats;
+		stats->tx_packets += devTxStats->ucastPktsTxOK +
+				     devTxStats->mcastPktsTxOK +
+				     devTxStats->bcastPktsTxOK;
+		stats->tx_bytes += devTxStats->ucastBytesTxOK +
+				   devTxStats->mcastBytesTxOK +
+				   devTxStats->bcastBytesTxOK;
+		stats->tx_errors += devTxStats->pktsTxError;
+		stats->tx_dropped += drvTxStats->drop_total;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(net_stats, 0, sizeof(*net_stats));
 	for (i = 0; i < adapter->num_tx_queues; i++) {
 		devTxStats = &adapter->tqd_start[i].stats;
@@ -144,11 +178,34 @@ vmxnet3_get_stats(struct net_device *netdev)
 				      devTxStats->bcastBytesTxOK;
 		net_stats->tx_errors += devTxStats->pktsTxError;
 		net_stats->tx_dropped += drvTxStats->drop_total;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for (i = 0; i < adapter->num_rx_queues; i++) {
 		devRxStats = &adapter->rqd_start[i].stats;
 		drvRxStats = &adapter->rx_queue[i].stats;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		stats->rx_packets += devRxStats->ucastPktsRxOK +
+				     devRxStats->mcastPktsRxOK +
+				     devRxStats->bcastPktsRxOK;
+
+		stats->rx_bytes += devRxStats->ucastBytesRxOK +
+				   devRxStats->mcastBytesRxOK +
+				   devRxStats->bcastBytesRxOK;
+
+		stats->rx_errors += devRxStats->pktsRxError;
+		stats->rx_dropped += drvRxStats->drop_total;
+		stats->multicast +=  devRxStats->mcastPktsRxOK;
+	}
+
+	return stats;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		net_stats->rx_packets += devRxStats->ucastPktsRxOK +
 					devRxStats->mcastPktsRxOK +
 					devRxStats->bcastPktsRxOK;
@@ -162,6 +219,10 @@ vmxnet3_get_stats(struct net_device *netdev)
 		net_stats->multicast +=  devRxStats->mcastPktsRxOK;
 	}
 	return net_stats;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -202,6 +263,14 @@ vmxnet3_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
 	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
 
 	strlcpy(drvinfo->driver, vmxnet3_driver_name, sizeof(drvinfo->driver));
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	strlcpy(drvinfo->version, VMXNET3_DRIVER_VERSION_REPORT,
+		sizeof(drvinfo->version));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	drvinfo->driver[sizeof(drvinfo->driver) - 1] = '\0';
 
 	strlcpy(drvinfo->version, VMXNET3_DRIVER_VERSION_REPORT,
@@ -210,6 +279,10 @@ vmxnet3_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
 
 	strlcpy(drvinfo->fw_version, "N/A", sizeof(drvinfo->fw_version));
 	drvinfo->fw_version[sizeof(drvinfo->fw_version) - 1] = '\0';
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	strlcpy(drvinfo->bus_info, pci_name(adapter->pdev),
 		ETHTOOL_BUSINFO_LEN);
@@ -262,6 +335,18 @@ vmxnet3_get_strings(struct net_device *netdev, u32 stringset, u8 *buf)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int vmxnet3_set_features(struct net_device *netdev, netdev_features_t features)
+{
+	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
+	unsigned long flags;
+	netdev_features_t changed = features ^ netdev->features;
+
+	if (changed & (NETIF_F_RXCSUM | NETIF_F_LRO | NETIF_F_HW_VLAN_RX)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int vmxnet3_set_features(struct net_device *netdev, u32 features)
 {
 	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
@@ -269,6 +354,10 @@ int vmxnet3_set_features(struct net_device *netdev, u32 features)
 	u32 changed = features ^ netdev->features;
 
 	if (changed & (NETIF_F_RXCSUM|NETIF_F_LRO)) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (features & NETIF_F_RXCSUM)
 			adapter->shared->devRead.misc.uptFeatures |=
 			UPT1_F_RXCSUM;
@@ -284,6 +373,19 @@ int vmxnet3_set_features(struct net_device *netdev, u32 features)
 			adapter->shared->devRead.misc.uptFeatures &=
 							~UPT1_F_LRO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (features & NETIF_F_HW_VLAN_RX)
+			adapter->shared->devRead.misc.uptFeatures |=
+			UPT1_F_RXVLAN;
+		else
+			adapter->shared->devRead.misc.uptFeatures &=
+			~UPT1_F_RXVLAN;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock_irqsave(&adapter->cmd_lock, flags);
 		VMXNET3_WRITE_BAR1_REG(adapter, VMXNET3_REG_CMD,
 				       VMXNET3_CMD_UPDATE_FEATURE);
@@ -551,7 +653,15 @@ out:
 
 static int
 vmxnet3_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *info,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		  u32 *rules)
+=======
 		  void *rules)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		  void *rules)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
 	switch (info->cmd) {
@@ -563,6 +673,29 @@ vmxnet3_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *info,
 }
 
 #ifdef VMXNET3_RSS
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u32
+vmxnet3_get_rss_indir_size(struct net_device *netdev)
+{
+	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
+	struct UPT1_RSSConf *rssConf = adapter->rss_conf;
+
+	return rssConf->indTableSize;
+}
+
+static int
+vmxnet3_get_rss_indir(struct net_device *netdev, u32 *p)
+{
+	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
+	struct UPT1_RSSConf *rssConf = adapter->rss_conf;
+	unsigned int n = rssConf->indTableSize;
+
+	while (n--)
+		p[n] = rssConf->indTable[n];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 vmxnet3_get_rss_indir(struct net_device *netdev,
 		      struct ethtool_rxfh_indir *p)
@@ -574,19 +707,39 @@ vmxnet3_get_rss_indir(struct net_device *netdev,
 	p->size = rssConf->indTableSize;
 	while (n--)
 		p->ring_index[n] = rssConf->indTable[n];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 }
 
 static int
+<<<<<<< HEAD
+<<<<<<< HEAD
+vmxnet3_set_rss_indir(struct net_device *netdev, const u32 *p)
+=======
 vmxnet3_set_rss_indir(struct net_device *netdev,
 		      const struct ethtool_rxfh_indir *p)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+vmxnet3_set_rss_indir(struct net_device *netdev,
+		      const struct ethtool_rxfh_indir *p)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int i;
 	unsigned long flags;
 	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
 	struct UPT1_RSSConf *rssConf = adapter->rss_conf;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < rssConf->indTableSize; i++)
+		rssConf->indTable[i] = p[i];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (p->size != rssConf->indTableSize)
 		return -EINVAL;
 	for (i = 0; i < rssConf->indTableSize; i++) {
@@ -601,6 +754,10 @@ vmxnet3_set_rss_indir(struct net_device *netdev,
 
 	for (i = 0; i < rssConf->indTableSize; i++)
 		rssConf->indTable[i] = p->ring_index[i];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&adapter->cmd_lock, flags);
 	VMXNET3_WRITE_BAR1_REG(adapter, VMXNET3_REG_CMD,
@@ -612,7 +769,15 @@ vmxnet3_set_rss_indir(struct net_device *netdev,
 }
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct ethtool_ops vmxnet3_ethtool_ops = {
+=======
 static struct ethtool_ops vmxnet3_ethtool_ops = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct ethtool_ops vmxnet3_ethtool_ops = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_settings      = vmxnet3_get_settings,
 	.get_drvinfo       = vmxnet3_get_drvinfo,
 	.get_regs_len      = vmxnet3_get_regs_len,
@@ -627,6 +792,13 @@ static struct ethtool_ops vmxnet3_ethtool_ops = {
 	.set_ringparam     = vmxnet3_set_ringparam,
 	.get_rxnfc         = vmxnet3_get_rxnfc,
 #ifdef VMXNET3_RSS
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.get_rxfh_indir_size = vmxnet3_get_rss_indir_size,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_rxfh_indir    = vmxnet3_get_rss_indir,
 	.set_rxfh_indir    = vmxnet3_set_rss_indir,
 #endif

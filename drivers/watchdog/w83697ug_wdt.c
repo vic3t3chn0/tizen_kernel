@@ -30,6 +30,14 @@
  *	(c) Copyright 1995    Alan Cox <alan@redhat.com>
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/types.h>
@@ -44,10 +52,21 @@
 #include <linux/io.h>
 #include <linux/uaccess.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#define WATCHDOG_NAME "w83697ug/uf WDT"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/system.h>
 
 #define WATCHDOG_NAME "w83697ug/uf WDT"
 #define PFX WATCHDOG_NAME ": "
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WATCHDOG_TIMEOUT 60		/* 60 sec default timeout */
 
 static unsigned long wdt_is_open;
@@ -64,8 +83,18 @@ MODULE_PARM_DESC(timeout,
 	"Watchdog timeout in seconds. 1<= timeout <=255 (default="
 				__MODULE_STRING(WATCHDOG_TIMEOUT) ")");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, bool, 0);
+=======
 static int nowayout = WATCHDOG_NOWAYOUT;
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout,
 	"Watchdog cannot be stopped once started (default="
 				__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
@@ -91,8 +120,18 @@ static int w83697ug_select_wd_register(void)
 	version = inb(WDT_EFDR);
 
 	if (version == 0x68) {	/* W83697UG		*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Watchdog chip version 0x%02x = W83697UG/UF found at 0x%04x\n",
+			version, wdt_io);
+=======
 		printk(KERN_INFO PFX "Watchdog chip version 0x%02x = "
 			"W83697UG/UF found at 0x%04x\n", version, wdt_io);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO PFX "Watchdog chip version 0x%02x = "
+			"W83697UG/UF found at 0x%04x\n", version, wdt_io);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		outb_p(0x2b, WDT_EFER);
 		c = inb_p(WDT_EFDR);    /* select WDT0 */
@@ -101,7 +140,15 @@ static int w83697ug_select_wd_register(void)
 		outb_p(c, WDT_EFDR);	/* set pin118 to WDT0 */
 
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("No W83697UG/UF could be found\n");
+=======
 		printk(KERN_ERR PFX "No W83697UG/UF could be found\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "No W83697UG/UF could be found\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 
@@ -131,8 +178,18 @@ static int w83697ug_init(void)
 	outb_p(0xF6, WDT_EFER); /* Select CRF6 */
 	t = inb_p(WDT_EFDR);    /* read CRF6 */
 	if (t != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Watchdog already running. Resetting timeout to %d sec\n",
+			timeout);
+=======
 		printk(KERN_INFO PFX "Watchdog already running."
 			" Resetting timeout to %d sec\n", timeout);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO PFX "Watchdog already running."
+			" Resetting timeout to %d sec\n", timeout);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		outb_p(timeout, WDT_EFDR);    /* Write back to CRF6 */
 	}
 	outb_p(0xF5, WDT_EFER); /* Select CRF5 */
@@ -286,8 +343,17 @@ static int wdt_close(struct inode *inode, struct file *file)
 	if (expect_close == 42)
 		wdt_disable();
 	else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_crit("Unexpected close, not stopping watchdog!\n");
+=======
 		printk(KERN_CRIT PFX
 			"Unexpected close, not stopping watchdog!\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_CRIT PFX
+			"Unexpected close, not stopping watchdog!\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wdt_ping();
 	}
 	expect_close = 0;
@@ -340,18 +406,41 @@ static int __init wdt_init(void)
 {
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("WDT driver for the Winbond(TM) W83697UG/UF Super I/O chip initialising\n");
+
+	if (wdt_set_heartbeat(timeout)) {
+		wdt_set_heartbeat(WATCHDOG_TIMEOUT);
+		pr_info("timeout value must be 1<=timeout<=255, using %d\n",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "WDT driver for the Winbond(TM) W83697UG/UF Super I/O chip initialising.\n");
 
 	if (wdt_set_heartbeat(timeout)) {
 		wdt_set_heartbeat(WATCHDOG_TIMEOUT);
 		printk(KERN_INFO PFX
 			"timeout value must be 1<=timeout<=255, using %d\n",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			WATCHDOG_TIMEOUT);
 	}
 
 	if (!request_region(wdt_io, 1, WATCHDOG_NAME)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("I/O address 0x%04x already in use\n", wdt_io);
+=======
 		printk(KERN_ERR PFX "I/O address 0x%04x already in use\n",
 			wdt_io);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "I/O address 0x%04x already in use\n",
+			wdt_io);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EIO;
 		goto out;
 	}
@@ -362,13 +451,33 @@ static int __init wdt_init(void)
 
 	ret = register_reboot_notifier(&wdt_notifier);
 	if (ret != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("cannot register reboot notifier (err=%d)\n", ret);
+=======
 		printk(KERN_ERR PFX
 			"cannot register reboot notifier (err=%d)\n", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX
+			"cannot register reboot notifier (err=%d)\n", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto unreg_regions;
 	}
 
 	ret = misc_register(&wdt_miscdev);
 	if (ret != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("cannot register miscdev on minor=%d (err=%d)\n",
+		       WATCHDOG_MINOR, ret);
+		goto unreg_reboot;
+	}
+
+	pr_info("initialized. timeout=%d sec (nowayout=%d)\n",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR PFX
 			"cannot register miscdev on minor=%d (err=%d)\n",
 			WATCHDOG_MINOR, ret);
@@ -376,6 +485,10 @@ static int __init wdt_init(void)
 	}
 
 	printk(KERN_INFO PFX "initialized. timeout=%d sec (nowayout=%d)\n",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		timeout, nowayout);
 
 out:

@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include "br_private_stp.h"
 =======
+<<<<<<< HEAD
+#include "br_private_stp.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline size_t br_nlmsg_size(void)
 {
@@ -193,6 +197,9 @@ static int br_rtm_setlink(struct sk_buff *skb,  struct nlmsghdr *nlh, void *arg)
 	p->state = new_state;
 	br_log_state(p);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_bh(&p->br->lock);
 	br_port_state_selection(p->br);
@@ -200,8 +207,11 @@ static int br_rtm_setlink(struct sk_buff *skb,  struct nlmsghdr *nlh, void *arg)
 
 	br_ifinfo_notify(RTM_NEWLINK, p);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -220,8 +230,12 @@ static int br_validate(struct nlattr *tb[], struct nlattr *data[])
 <<<<<<< HEAD
 static struct rtnl_link_ops br_link_ops __read_mostly = {
 =======
+<<<<<<< HEAD
+static struct rtnl_link_ops br_link_ops __read_mostly = {
+=======
 struct rtnl_link_ops br_link_ops __read_mostly = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.kind		= "bridge",
 	.priv_size	= sizeof(struct net_bridge),
 	.setup		= br_dev_setup,

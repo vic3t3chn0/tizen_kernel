@@ -90,9 +90,13 @@ typedef struct xfs_dqblk {
 <<<<<<< HEAD
 #define XFS_DQ_FREEING		0x0010		/* dquot is beeing torn down */
 =======
+<<<<<<< HEAD
+#define XFS_DQ_FREEING		0x0010		/* dquot is beeing torn down */
+=======
 #define XFS_DQ_WANT		0x0010		/* for lookup/reclaim race */
 #define XFS_DQ_INACTIVE		0x0020		/* dq off mplist & hashlist */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define XFS_DQ_ALLTYPES		(XFS_DQ_USER|XFS_DQ_PROJ|XFS_DQ_GROUP)
 
@@ -104,9 +108,13 @@ typedef struct xfs_dqblk {
 <<<<<<< HEAD
 	{ XFS_DQ_FREEING,	"FREEING" }
 =======
+<<<<<<< HEAD
+	{ XFS_DQ_FREEING,	"FREEING" }
+=======
 	{ XFS_DQ_WANT,		"WANT" }, \
 	{ XFS_DQ_INACTIVE,	"INACTIVE" }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * In the worst case, when both user and group quotas are on,
@@ -188,7 +196,12 @@ typedef struct xfs_qoff_logformat {
 #define XFS_ALL_QUOTA_ACTIVE	\
 	(XFS_UQUOTA_ACTIVE | XFS_PQUOTA_ACTIVE | XFS_GQUOTA_ACTIVE)
 =======
+<<<<<<< HEAD
+#define XFS_ALL_QUOTA_ACTIVE	\
+	(XFS_UQUOTA_ACTIVE | XFS_PQUOTA_ACTIVE | XFS_GQUOTA_ACTIVE)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Checking XFS_IS_*QUOTA_ON() while holding any inode lock guarantees
@@ -214,8 +227,11 @@ typedef struct xfs_qoff_logformat {
 #define XFS_QMOPT_FORCE_RES	0x0000010 /* ignore quota limits */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define XFS_QMOPT_DQSUSER	0x0000020 /* don't cache super users dquot */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define XFS_QMOPT_SBVERSION	0x0000040 /* change superblock version num */
 #define XFS_QMOPT_DOWARN        0x0000400 /* increase warning cnt if needed */
 #define XFS_QMOPT_DQREPAIR	0x0001000 /* repair dquot if damaged */
@@ -344,8 +360,11 @@ extern void xfs_qm_dqrele(struct xfs_dquot *);
 extern void xfs_qm_statvfs(struct xfs_inode *, struct kstatfs *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int xfs_qm_sync(struct xfs_mount *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int xfs_qm_newmount(struct xfs_mount *, uint *, uint *);
 extern void xfs_qm_mount_quotas(struct xfs_mount *);
 extern void xfs_qm_unmount(struct xfs_mount *);
@@ -387,11 +406,14 @@ static inline int xfs_trans_reserve_quota_bydquots(struct xfs_trans *tp,
 #define xfs_qm_statvfs(ip, s)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int xfs_qm_sync(struct xfs_mount *mp, int flags)
 {
 	return 0;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define xfs_qm_newmount(mp, a, b)					(0)
 #define xfs_qm_mount_quotas(mp)
 #define xfs_qm_unmount(mp)

@@ -23,6 +23,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_M523x) || defined(CONFIG_M527x) || defined(CONFIG_M528x)
 #define	MCFQSPI_IOBASE		(MCF_IPSBAR + 0x340)
 #elif defined(CONFIG_M5249)
@@ -33,6 +35,7 @@
 #define MCFQSPI_IOSIZE		0x40
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct mcfqspi_cs_control - chip select control for the coldfire qspi driver
  * @setup: setup the control; allocate gpio's, etc. May be NULL.

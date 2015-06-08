@@ -42,6 +42,9 @@ struct pxa3xx_nand_flash {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Current pxa3xx_nand controller has two chip select which
  * both be workable.
@@ -55,8 +58,11 @@ struct pxa3xx_nand_flash {
 
 /* The max num of chip select current support */
 #define NUM_CHIP_SELECT		(2)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pxa3xx_nand_platform_data {
 
 	/* the data flash bus is shared between the Static Memory
@@ -69,15 +75,21 @@ struct pxa3xx_nand_platform_data {
 	int	keep_config;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* indicate how many chip selects will be used */
 	int	num_cs;
 
 	const struct mtd_partition		*parts[NUM_CHIP_SELECT];
 	unsigned int				nr_parts[NUM_CHIP_SELECT];
+<<<<<<< HEAD
+=======
 =======
 	const struct mtd_partition		*parts;
 	unsigned int				nr_parts;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	const struct pxa3xx_nand_flash * 	flash;
 	size_t					num_flash;

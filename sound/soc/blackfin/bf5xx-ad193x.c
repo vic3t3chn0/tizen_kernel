@@ -57,10 +57,15 @@ static int bf5xx_ad193x_hw_params(struct snd_pcm_substream *substream,
 	switch (params_rate(params)) {
 	case 48000:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clk = 24576000;
 		break;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		clk = 12288000;
 		break;
@@ -79,6 +84,7 @@ static int bf5xx_ad193x_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set the codec system clock for DAC and ADC */
 	ret = snd_soc_dai_set_sysclk(codec_dai, 0, clk,
 		SND_SOC_CLOCK_IN);
@@ -104,7 +110,13 @@ static int bf5xx_ad193x_hw_params(struct snd_pcm_substream *substream,
 				SND_SOC_DAIFMT_CBM_CFM)
 
 =======
+<<<<<<< HEAD
+#define BF5XX_AD193X_DAIFMT (SND_SOC_DAIFMT_DSP_A | SND_SOC_DAIFMT_IB_IF | \
+				SND_SOC_DAIFMT_CBM_CFM)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_ops bf5xx_ad193x_ops = {
 	.hw_params = bf5xx_ad193x_hw_params,
 };
@@ -121,7 +133,11 @@ static struct snd_soc_dai_link bf5xx_ad193x_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_AD193X_DAIFMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_AD193X_DAIFMT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.name = "ad193x",
@@ -134,7 +150,11 @@ static struct snd_soc_dai_link bf5xx_ad193x_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_AD193X_DAIFMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_AD193X_DAIFMT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -143,7 +163,11 @@ static struct snd_soc_card bf5xx_ad193x = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &bf5xx_ad193x_dai[CONFIG_SND_BF5XX_SPORT_NUM],
 	.num_links = 1,
 };

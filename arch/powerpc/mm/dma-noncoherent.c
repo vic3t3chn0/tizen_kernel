@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/tlbflush.h>
 
@@ -369,11 +373,16 @@ static inline void __dma_sync_page_highmem(struct page *page,
 
 	do {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		start = (unsigned long)kmap_atomic(page + seg_nr) + seg_offset;
 
 		/* Sync this buffer segment */
 		__dma_sync((void *)start, seg_size, direction);
 		kunmap_atomic((void *)start);
+<<<<<<< HEAD
+=======
 =======
 		start = (unsigned long)kmap_atomic(page + seg_nr,
 				KM_PPC_SYNC_PAGE) + seg_offset;
@@ -382,6 +391,7 @@ static inline void __dma_sync_page_highmem(struct page *page,
 		__dma_sync((void *)start, seg_size, direction);
 		kunmap_atomic((void *)start, KM_PPC_SYNC_PAGE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seg_nr++;
 
 		/* Calculate next buffer segment size */

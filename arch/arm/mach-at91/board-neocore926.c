@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -50,8 +54,11 @@
 #include <mach/board.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/at91sam9_smc.h>
 
 #include "sam9_smc.h"
@@ -64,8 +71,12 @@ static void __init neocore926_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(20000000);
 =======
+<<<<<<< HEAD
+	at91_initialize(20000000);
+=======
 	at91sam9263_initialize(20000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* DBGU on ttyS0. (Rx & Tx only) */
 	at91_register_uart(0, 0, 0);
@@ -79,6 +90,8 @@ static void __init neocore926_init_early(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init neocore926_init_irq(void)
 {
 	at91sam9263_init_interrupts(NULL);
@@ -86,6 +99,7 @@ static void __init neocore926_init_irq(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * USB Host port
  */
@@ -95,7 +109,11 @@ static struct at91_usbh_data __initdata neocore926_usbh_data = {
 <<<<<<< HEAD
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -106,8 +124,12 @@ static struct at91_udc_data __initdata neocore926_udc_data = {
 <<<<<<< HEAD
 	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
 =======
+<<<<<<< HEAD
+	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
+=======
 	.pullup_pin	= 0,		/* pull-up driven by UDC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -180,7 +202,11 @@ static struct at91_mmc_data __initdata neocore926_mmc_data = {
 <<<<<<< HEAD
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -190,8 +216,12 @@ static struct at91_mmc_data __initdata neocore926_mmc_data = {
 <<<<<<< HEAD
 static struct macb_platform_data __initdata neocore926_macb_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata neocore926_macb_data = {
+=======
 static struct at91_eth_data __initdata neocore926_macb_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PE31,
 	.is_rmii	= 1,
 };
@@ -220,6 +250,8 @@ static struct mtd_partition __initdata neocore926_nand_partition[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct mtd_partition * __init nand_partitions(int size, int *num_partitions)
 {
 	*num_partitions = ARRAY_SIZE(neocore926_nand_partition);
@@ -227,6 +259,7 @@ static struct mtd_partition * __init nand_partitions(int size, int *num_partitio
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct atmel_nand_data __initdata neocore926_nand_data = {
 	.ale			= 21,
 	.cle			= 22,
@@ -234,13 +267,19 @@ static struct atmel_nand_data __initdata neocore926_nand_data = {
 	.rdy_pin_active_low	= 1,
 	.enable_pin		= AT91_PIN_PD15,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ecc_mode		= NAND_ECC_SOFT,
 	.parts			= neocore926_nand_partition,
 	.num_parts		= ARRAY_SIZE(neocore926_nand_partition),
 	.det_pin		= -EINVAL,
+<<<<<<< HEAD
+=======
 =======
 	.partition_info		= nand_partitions,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sam9_smc_config __initdata neocore926_nand_smc_config = {
@@ -267,8 +306,12 @@ static void __init neocore926_add_device_nand(void)
 <<<<<<< HEAD
 	sam9_smc_configure(0, 3, &neocore926_nand_smc_config);
 =======
+<<<<<<< HEAD
+	sam9_smc_configure(0, 3, &neocore926_nand_smc_config);
+=======
 	sam9_smc_configure(3, &neocore926_nand_smc_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	at91_add_device_nand(&neocore926_nand_data);
 }
@@ -437,9 +480,15 @@ MACHINE_START(NEOCORE926, "ADENEO NEOCORE 926")
 	.init_early	= neocore926_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= neocore926_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9263_map_io,
 	.init_early	= neocore926_init_early,
 	.init_irq	= neocore926_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= neocore926_board_init,
 MACHINE_END

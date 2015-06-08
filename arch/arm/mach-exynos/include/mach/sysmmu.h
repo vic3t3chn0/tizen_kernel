@@ -1,10 +1,15 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* linux/arch/arm/mach-exynos4/include/mach/sysmmu.h
  *
  * Copyright (c) 2010-2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
  *
  * Samsung sysmmu driver for EXYNOS4
+<<<<<<< HEAD
+=======
 =======
 /*
  * Copyright (c) 2011-2012 Samsung Electronics Co., Ltd.
@@ -12,11 +17,15 @@
  *
  * EXYNOS - System MMU support
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 */
 
 #ifndef __ASM_ARM_ARCH_SYSMMU_H
@@ -53,6 +62,8 @@ void sysmmu_clk_enable(sysmmu_ips ips);
 void sysmmu_clk_disable(sysmmu_ips ips);
 
 #endif /* __ASM_ARM_ARCH_SYSMMU_H */
+<<<<<<< HEAD
+=======
 =======
  */
 
@@ -114,3 +125,4 @@ static inline void platform_set_sysmmu(
 
 #endif /* _ARM_MACH_EXYNOS_SYSMMU_H_ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

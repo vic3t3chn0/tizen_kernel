@@ -11,8 +11,11 @@
 #include <linux/errno.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/tick.h>
 #include <linux/kernel.h>
@@ -22,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ptrace.h>
 #include <linux/mman.h>
 #include <linux/personality.h>
@@ -41,8 +48,11 @@
 #include <asm/pgtable.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mipsregs.h>
 #include <asm/processor.h>
 #include <asm/uaccess.h>
@@ -70,8 +80,13 @@ void __noreturn cpu_idle(void)
 		tick_nohz_idle_enter();
 		rcu_idle_enter();
 =======
+<<<<<<< HEAD
+		tick_nohz_idle_enter();
+		rcu_idle_enter();
+=======
 		tick_nohz_stop_sched_tick(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (!need_resched() && cpu_online(cpu)) {
 #ifdef CONFIG_MIPS_MT_SMTC
 			extern void smtc_idle_loop_hook(void);
@@ -97,11 +112,17 @@ void __noreturn cpu_idle(void)
 		tick_nohz_idle_exit();
 		schedule_preempt_disabled();
 =======
+<<<<<<< HEAD
+		rcu_idle_exit();
+		tick_nohz_idle_exit();
+		schedule_preempt_disabled();
+=======
 		tick_nohz_restart_sched_tick();
 		preempt_enable_no_resched();
 		schedule();
 		preempt_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -126,8 +147,11 @@ void start_thread(struct pt_regs * regs, unsigned long pc, unsigned long sp)
 	regs->regs[29] = sp;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current_thread_info()->addr_limit = USER_DS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void exit_thread(void)
@@ -398,12 +422,17 @@ unsigned long thread_saved_pc(struct task_struct *tsk)
 
 #ifdef CONFIG_KALLSYMS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* generic stack unwinding function */
 unsigned long notrace unwind_stack_by_address(unsigned long stack_page,
 					      unsigned long *sp,
 					      unsigned long pc,
 					      unsigned long *ra)
 {
+<<<<<<< HEAD
+=======
 =======
 /* used by show_backtrace() */
 unsigned long unwind_stack(struct task_struct *task, unsigned long *sp,
@@ -411,6 +440,7 @@ unsigned long unwind_stack(struct task_struct *task, unsigned long *sp,
 {
 	unsigned long stack_page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mips_frame_info info;
 	unsigned long size, ofs;
 	int leaf;
@@ -419,8 +449,11 @@ unsigned long unwind_stack(struct task_struct *task, unsigned long *sp,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	stack_page = (unsigned long)task_stack_page(task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!stack_page)
 		return 0;
 
@@ -480,6 +513,9 @@ unsigned long unwind_stack(struct task_struct *task, unsigned long *sp,
 	return __kernel_text_address(pc) ? pc : 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(unwind_stack_by_address);
 
 /* used by show_backtrace() */
@@ -489,8 +525,11 @@ unsigned long unwind_stack(struct task_struct *task, unsigned long *sp,
 	unsigned long stack_page = (unsigned long)task_stack_page(task);
 	return unwind_stack_by_address(stack_page, sp, pc, ra);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*

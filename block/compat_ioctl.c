@@ -210,6 +210,8 @@ static int compat_blkpg_ioctl(struct block_device *bdev, fmode_t mode,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct compat_floppy_struct {
 	compat_uint_t	size;
 	compat_uint_t	sect;
@@ -224,6 +226,7 @@ struct compat_floppy_struct {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct compat_floppy_drive_params {
 	char		cmos;
 	compat_ulong_t	max_dtr;
@@ -293,8 +296,11 @@ struct compat_floppy_write_errors {
 #define FDDEFPRM32 _IOW(2, 0x43, struct compat_floppy_struct)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define FDGETPRM32 _IOR(2, 0x04, struct compat_floppy_struct)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FDSETDRVPRM32 _IOW(2, 0x90, struct compat_floppy_drive_params)
 #define FDGETDRVPRM32 _IOR(2, 0x11, struct compat_floppy_drive_params)
 #define FDGETDRVSTAT32 _IOR(2, 0x12, struct compat_floppy_drive_struct)
@@ -744,7 +750,13 @@ long compat_blkdev_ioctl(struct file *file, unsigned cmd, unsigned long arg)
 		return compat_put_ushort(arg,
 					 !blk_queue_nonrot(bdev_get_queue(bdev)));
 =======
+<<<<<<< HEAD
+	case BLKROTATIONAL:
+		return compat_put_ushort(arg,
+					 !blk_queue_nonrot(bdev_get_queue(bdev)));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BLKRASET: /* compatible, but no compat_ptr (!) */
 	case BLKFRASET:
 		if (!capable(CAP_SYS_ADMIN))

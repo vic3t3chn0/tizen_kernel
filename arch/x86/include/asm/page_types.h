@@ -57,8 +57,11 @@ extern unsigned long init_memory_mapping(unsigned long start,
 extern void initmem_init(void);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void free_initmem(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif	/* !__ASSEMBLY__ */
 

@@ -40,8 +40,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MAX_MSIX_P_PORT		17
 #define MAX_MSIX		64
@@ -56,7 +60,13 @@ enum {
 	MLX4_FLAG_SLAVE		= 1 << 3,
 	MLX4_FLAG_SRIOV		= 1 << 4,
 =======
+<<<<<<< HEAD
+	MLX4_FLAG_MASTER	= 1 << 2,
+	MLX4_FLAG_SLAVE		= 1 << 3,
+	MLX4_FLAG_SRIOV		= 1 << 4,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum {
@@ -69,6 +79,9 @@ enum {
 
 enum {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MLX4_MAX_NUM_PF		= 16,
 	MLX4_MAX_NUM_VF		= 64,
 	MLX4_MFUNC_MAX		= 80,
@@ -109,6 +122,8 @@ enum {
 #define MLX4_ATTR_EXTENDED_PORT_INFO	cpu_to_be16(0xff90)
 
 enum {
+<<<<<<< HEAD
+=======
 =======
 	MLX4_DEV_CAP_FLAG_RC		= 1 <<  0,
 	MLX4_DEV_CAP_FLAG_UC		= 1 <<  1,
@@ -130,6 +145,7 @@ enum {
 
 enum {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MLX4_BMME_FLAG_LOCAL_INV	= 1 <<  6,
 	MLX4_BMME_FLAG_REMOTE_INV	= 1 <<  7,
 	MLX4_BMME_FLAG_TYPE_2_WIN	= 1 <<  9,
@@ -156,15 +172,21 @@ enum mlx4_event {
 	MLX4_EVENT_TYPE_EQ_OVERFLOW	   = 0x0f,
 	MLX4_EVENT_TYPE_ECC_DETECT	   = 0x0e,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MLX4_EVENT_TYPE_CMD		   = 0x0a,
 	MLX4_EVENT_TYPE_VEP_UPDATE	   = 0x19,
 	MLX4_EVENT_TYPE_COMM_CHANNEL	   = 0x18,
 	MLX4_EVENT_TYPE_FATAL_WARNING	   = 0x1b,
 	MLX4_EVENT_TYPE_FLR_EVENT	   = 0x1c,
 	MLX4_EVENT_TYPE_NONE		   = 0xff,
+<<<<<<< HEAD
+=======
 =======
 	MLX4_EVENT_TYPE_CMD		   = 0x0a
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum {
@@ -174,12 +196,18 @@ enum {
 
 enum {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MLX4_FATAL_WARNING_SUBTYPE_WARMING = 0,
 };
 
 enum {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MLX4_PERM_LOCAL_READ	= 1 << 10,
 	MLX4_PERM_LOCAL_WRITE	= 1 << 11,
 	MLX4_PERM_REMOTE_READ	= 1 << 12,
@@ -241,7 +269,11 @@ enum mlx4_port_type {
 <<<<<<< HEAD
 	MLX4_PORT_TYPE_NONE	= 0,
 =======
+<<<<<<< HEAD
+	MLX4_PORT_TYPE_NONE	= 0,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MLX4_PORT_TYPE_IB	= 1,
 	MLX4_PORT_TYPE_ETH	= 2,
 	MLX4_PORT_TYPE_AUTO	= 3
@@ -277,7 +309,11 @@ struct mlx4_caps {
 <<<<<<< HEAD
 	u32			function;
 =======
+<<<<<<< HEAD
+	u32			function;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			num_ports;
 	int			vl_cap[MLX4_MAX_PORTS + 1];
 	int			ib_mtu_cap[MLX4_MAX_PORTS + 1];
@@ -295,7 +331,11 @@ struct mlx4_caps {
 <<<<<<< HEAD
 	u32			uar_page_size;
 =======
+<<<<<<< HEAD
+	u32			uar_page_size;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			bf_reg_size;
 	int			bf_regs_per_page;
 	int			max_sq_sg;
@@ -323,9 +363,14 @@ struct mlx4_caps {
 	int			max_fmr_maps;
 	int			num_mtts;
 =======
+<<<<<<< HEAD
+	int			max_fmr_maps;
+	int			num_mtts;
+=======
 	int			num_mtt_segs;
 	int			mtts_per_seg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			fmr_reserved_mtts;
 	int			reserved_mtts;
 	int			reserved_mrws;
@@ -337,6 +382,9 @@ struct mlx4_caps {
 	int			num_pds;
 	int			reserved_pds;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			max_xrcds;
 	int			reserved_xrcds;
 	int			mtt_entry_sz;
@@ -346,6 +394,8 @@ struct mlx4_caps {
 	u32			bmme_flags;
 	u32			reserved_lkey;
 	u16			stat_rate_support;
+<<<<<<< HEAD
+=======
 =======
 	int			mtt_entry_sz;
 	u32			max_msg_sz;
@@ -360,6 +410,7 @@ struct mlx4_caps {
 	int			vep_mc_steering;
 	int			wol;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8			port_width_cap[MLX4_MAX_PORTS + 1];
 	int			max_gso_sz;
 	int                     reserved_qps_cnt[MLX4_NUM_QP_REGION];
@@ -371,16 +422,22 @@ struct mlx4_caps {
 	enum mlx4_port_type	port_type[MLX4_MAX_PORTS + 1];
 	u8			supported_type[MLX4_MAX_PORTS + 1];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8                      suggested_type[MLX4_MAX_PORTS + 1];
 	u8                      default_sense[MLX4_MAX_PORTS + 1];
 	u32			port_mask[MLX4_MAX_PORTS + 1];
 	enum mlx4_port_type	possible_type[MLX4_MAX_PORTS + 1];
 	u32			max_counters;
 	u8			port_ib_mtu[MLX4_MAX_PORTS + 1];
+<<<<<<< HEAD
+=======
 =======
 	u32			port_mask;
 	enum mlx4_port_type	possible_type[MLX4_MAX_PORTS + 1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct mlx4_buf_list {
@@ -400,8 +457,12 @@ struct mlx4_mtt {
 <<<<<<< HEAD
 	u32			offset;
 =======
+<<<<<<< HEAD
+	u32			offset;
+=======
 	u32			first_seg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			order;
 	int			page_shift;
 };
@@ -550,6 +611,9 @@ union mlx4_ext_av {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mlx4_counter {
 	u8	reserved1[3];
 	u8	counter_mode;
@@ -565,11 +629,14 @@ struct mlx4_dev {
 	struct pci_dev	       *pdev;
 	unsigned long		flags;
 	unsigned long		num_slaves;
+<<<<<<< HEAD
+=======
 =======
 struct mlx4_dev {
 	struct pci_dev	       *pdev;
 	unsigned long		flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mlx4_caps	caps;
 	struct radix_tree_root	qp_table_tree;
 	u8			rev_id;
@@ -577,7 +644,11 @@ struct mlx4_dev {
 <<<<<<< HEAD
 	int			num_vfs;
 =======
+<<<<<<< HEAD
+	int			num_vfs;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct mlx4_init_port_param {
@@ -597,6 +668,9 @@ struct mlx4_init_port_param {
 #define mlx4_foreach_port(port, dev, type)				\
 	for ((port) = 1; (port) <= (dev)->caps.num_ports; (port)++)	\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((type) == (dev)->caps.port_mask[(port)])
 
 #define mlx4_foreach_ib_transport_port(port, dev)                         \
@@ -623,6 +697,8 @@ static inline int mlx4_is_slave(struct mlx4_dev *dev)
 {
 	return dev->flags & MLX4_FLAG_SLAVE;
 }
+<<<<<<< HEAD
+=======
 =======
 		if (((type) == MLX4_PORT_TYPE_IB ? (dev)->caps.port_mask : \
 		     ~(dev)->caps.port_mask) & 1 << ((port) - 1))
@@ -633,6 +709,7 @@ static inline int mlx4_is_slave(struct mlx4_dev *dev)
 		    ((dev)->caps.flags & MLX4_DEV_CAP_FLAG_IBOE))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int mlx4_buf_alloc(struct mlx4_dev *dev, int size, int max_direct,
 		   struct mlx4_buf *buf);
@@ -652,7 +729,12 @@ void mlx4_pd_free(struct mlx4_dev *dev, u32 pdn);
 int mlx4_xrcd_alloc(struct mlx4_dev *dev, u32 *xrcdn);
 void mlx4_xrcd_free(struct mlx4_dev *dev, u32 xrcdn);
 =======
+<<<<<<< HEAD
+int mlx4_xrcd_alloc(struct mlx4_dev *dev, u32 *xrcdn);
+void mlx4_xrcd_free(struct mlx4_dev *dev, u32 xrcdn);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int mlx4_uar_alloc(struct mlx4_dev *dev, struct mlx4_uar *uar);
 void mlx4_uar_free(struct mlx4_dev *dev, struct mlx4_uar *uar);
@@ -696,9 +778,14 @@ void mlx4_qp_free(struct mlx4_dev *dev, struct mlx4_qp *qp);
 int mlx4_srq_alloc(struct mlx4_dev *dev, u32 pdn, u32 cqn, u16 xrcdn,
 		   struct mlx4_mtt *mtt, u64 db_rec, struct mlx4_srq *srq);
 =======
+<<<<<<< HEAD
+int mlx4_srq_alloc(struct mlx4_dev *dev, u32 pdn, u32 cqn, u16 xrcdn,
+		   struct mlx4_mtt *mtt, u64 db_rec, struct mlx4_srq *srq);
+=======
 int mlx4_srq_alloc(struct mlx4_dev *dev, u32 pdn, struct mlx4_mtt *mtt,
 		   u64 db_rec, struct mlx4_srq *srq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mlx4_srq_free(struct mlx4_dev *dev, struct mlx4_srq *srq);
 int mlx4_srq_arm(struct mlx4_dev *dev, struct mlx4_srq *srq, int limit_watermark);
 int mlx4_srq_query(struct mlx4_dev *dev, struct mlx4_srq *srq, int *limit_watermark);
@@ -707,12 +794,18 @@ int mlx4_INIT_PORT(struct mlx4_dev *dev, int port);
 int mlx4_CLOSE_PORT(struct mlx4_dev *dev, int port);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mlx4_unicast_attach(struct mlx4_dev *dev, struct mlx4_qp *qp, u8 gid[16],
 			int block_mcast_loopback, enum mlx4_protocol prot);
 int mlx4_unicast_detach(struct mlx4_dev *dev, struct mlx4_qp *qp, u8 gid[16],
 			enum mlx4_protocol prot);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mlx4_multicast_attach(struct mlx4_dev *dev, struct mlx4_qp *qp, u8 gid[16],
 			  int block_mcast_loopback, enum mlx4_protocol protocol);
 int mlx4_multicast_detach(struct mlx4_dev *dev, struct mlx4_qp *qp, u8 gid[16],
@@ -724,6 +817,9 @@ int mlx4_unicast_promisc_remove(struct mlx4_dev *dev, u32 qpn, u8 port);
 int mlx4_SET_MCAST_FLTR(struct mlx4_dev *dev, u8 port, u64 mac, u64 clear, u8 mode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mlx4_register_mac(struct mlx4_dev *dev, u8 port, u64 mac);
 void mlx4_unregister_mac(struct mlx4_dev *dev, u8 port, u64 mac);
 int mlx4_replace_mac(struct mlx4_dev *dev, u8 port, int qpn, u64 new_mac);
@@ -734,12 +830,15 @@ int mlx4_SET_PORT_general(struct mlx4_dev *dev, u8 port, int mtu,
 			  u8 pptx, u8 pfctx, u8 pprx, u8 pfcrx);
 int mlx4_SET_PORT_qpn_calc(struct mlx4_dev *dev, u8 port, u32 base_qpn,
 			   u8 promisc);
+<<<<<<< HEAD
+=======
 =======
 int mlx4_register_mac(struct mlx4_dev *dev, u8 port, u64 mac, int *qpn, u8 wrap);
 void mlx4_unregister_mac(struct mlx4_dev *dev, u8 port, int qpn);
 int mlx4_replace_mac(struct mlx4_dev *dev, u8 port, int qpn, u64 new_mac, u8 wrap);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mlx4_find_cached_vlan(struct mlx4_dev *dev, u8 port, u16 vid, int *idx);
 int mlx4_register_vlan(struct mlx4_dev *dev, u8 port, u16 vlan, int *index);
 void mlx4_unregister_vlan(struct mlx4_dev *dev, u8 port, int index);
@@ -765,5 +864,11 @@ int mlx4_counter_alloc(struct mlx4_dev *dev, u32 *idx);
 void mlx4_counter_free(struct mlx4_dev *dev, u32 idx);
 
 =======
+<<<<<<< HEAD
+int mlx4_counter_alloc(struct mlx4_dev *dev, u32 *idx);
+void mlx4_counter_free(struct mlx4_dev *dev, u32 idx);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* MLX4_DEVICE_H */

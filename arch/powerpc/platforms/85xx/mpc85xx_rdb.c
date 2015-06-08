@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright 2009,2012 Freescale Semiconductor Inc.
 =======
+<<<<<<< HEAD
+ * Copyright 2009,2012 Freescale Semiconductor Inc.
+=======
  * Copyright 2009 Freescale Semiconductor Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute  it and/or modify it
  * under  the terms of  the GNU General  Public License as published by the
@@ -24,8 +28,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -34,6 +41,9 @@
 #include <asm/udbg.h>
 #include <asm/mpic.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/qe.h>
 #include <asm/qe_ic.h>
 #include <asm/fsl_guts.h>
@@ -43,11 +53,14 @@
 #include "smp.h"
 
 #include "mpc85xx.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include <sysdev/fsl_soc.h>
 #include <sysdev/fsl_pci.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef DEBUG
 
@@ -62,6 +75,9 @@ void __init mpc85xx_rdb_pic_init(void)
 {
 	struct mpic *mpic;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long root = of_get_flat_dt_root();
 
 #ifdef CONFIG_QUICC_ENGINE
@@ -76,6 +92,8 @@ void __init mpc85xx_rdb_pic_init(void)
 	} else {
 		mpic = mpic_alloc(NULL, 0,
 		  MPIC_BIG_ENDIAN |
+<<<<<<< HEAD
+=======
 =======
 	struct resource r;
 	struct device_node *np;
@@ -103,12 +121,16 @@ void __init mpc85xx_rdb_pic_init(void)
 		  MPIC_PRIMARY | MPIC_WANTS_RESET |
 		  MPIC_BIG_ENDIAN | MPIC_BROKEN_FRR_NIRQS |
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  MPIC_SINGLE_DEST_CPU,
 		  0, 256, " OpenPIC  ");
 	}
 
 	BUG_ON(mpic == NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpic_init(mpic);
 
 #ifdef CONFIG_QUICC_ENGINE
@@ -121,17 +143,25 @@ void __init mpc85xx_rdb_pic_init(void)
 	} else
 		pr_err("%s: Could not find qe-ic node\n", __func__);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	of_node_put(np);
 
 	mpic_init(mpic);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 }
 
 /*
  * Setup the architecture
  */
+<<<<<<< HEAD
+static void __init mpc85xx_rdb_setup_arch(void)
+{
+#if defined(CONFIG_PCI) || defined(CONFIG_QUICC_ENGINE)
+=======
 <<<<<<< HEAD
 static void __init mpc85xx_rdb_setup_arch(void)
 {
@@ -144,6 +174,7 @@ static void __init mpc85xx_rdb_setup_arch(void)
 {
 #ifdef CONFIG_PCI
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device_node *np;
 #endif
 
@@ -159,6 +190,9 @@ static void __init mpc85xx_rdb_setup_arch(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpc85xx_smp_init();
 
 #ifdef CONFIG_QUICC_ENGINE
@@ -227,6 +261,8 @@ machine_device_initcall(p1020_rdb_pc, mpc85xx_common_publish_devices);
 machine_device_initcall(p1020_utm_pc, mpc85xx_common_publish_devices);
 machine_device_initcall(p1021_rdb_pc, mpc85xx_common_publish_devices);
 machine_device_initcall(p1025_rdb, mpc85xx_common_publish_devices);
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SMP
 	mpc85xx_smp_init();
@@ -250,6 +286,7 @@ static int __init mpc85xxrdb_publish_devices(void)
 machine_device_initcall(p2020_rdb, mpc85xxrdb_publish_devices);
 machine_device_initcall(p1020_rdb, mpc85xxrdb_publish_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called very early, device-tree isn't unflattened
@@ -273,6 +310,9 @@ static int __init p1020_rdb_probe(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init p1020_rdb_pc_probe(void)
 {
 	unsigned long root = of_get_flat_dt_root();
@@ -319,8 +359,11 @@ static int __init p1020_utm_pc_probe(void)
 	return of_flat_dt_is_compatible(root, "fsl,P1020UTM-PC");
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 define_machine(p2020_rdb) {
 	.name			= "P2020 RDB",
 	.probe			= p2020_rdb_probe,
@@ -349,6 +392,9 @@ define_machine(p1020_rdb) {
 	.progress		= udbg_progress,
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 define_machine(p1021_rdb_pc) {
 	.name			= "P1021 RDB-PC",
@@ -433,5 +479,8 @@ define_machine(p1020_rdb_pc) {
 	.calibrate_decr		= generic_calibrate_decr,
 	.progress		= udbg_progress,
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

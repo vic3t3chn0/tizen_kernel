@@ -44,6 +44,9 @@ static struct severity {
 	char *msg;
 } severities[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MCESEV(s, m, c...) { .sev = MCE_ ## s ## _SEVERITY, .msg = m, ## c }
 #define  KERNEL		.context = IN_KERNEL
 #define  USER		.context = IN_USER
@@ -186,6 +189,8 @@ int mce_severity(struct mce *m, int tolerant, char **msg)
 		if ((m->status & s->mask) != s->result)
 			continue;
 		if ((m->mcgstatus & s->mcgmask) != s->mcgres)
+<<<<<<< HEAD
+=======
 =======
 #define KERNEL .context = IN_KERNEL
 #define USER .context = IN_USER
@@ -270,6 +275,7 @@ int mce_severity(struct mce *a, int tolerant, char **msg)
 			continue;
 		if ((a->mcgstatus & s->mcgmask) != s->mcgres)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		if (s->ser == SER_REQUIRED && !mce_ser)
 			continue;
@@ -347,6 +353,9 @@ static const struct file_operations severities_coverage_fops = {
 static int __init severities_debugfs_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *dmce, *fsev;
 
 	dmce = mce_get_debugfs_dir();
@@ -356,6 +365,8 @@ static int __init severities_debugfs_init(void)
 	fsev = debugfs_create_file("severities-coverage", 0444, dmce, NULL,
 				   &severities_coverage_fops);
 	if (!fsev)
+<<<<<<< HEAD
+=======
 =======
 	struct dentry *dmce = NULL, *fseverities_coverage = NULL;
 
@@ -367,6 +378,7 @@ static int __init severities_debugfs_init(void)
 						   &severities_coverage_fops);
 	if (fseverities_coverage == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_out;
 
 	return 0;
@@ -378,5 +390,9 @@ late_initcall(severities_debugfs_init);
 <<<<<<< HEAD
 #endif /* CONFIG_DEBUG_FS */
 =======
+<<<<<<< HEAD
+#endif /* CONFIG_DEBUG_FS */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

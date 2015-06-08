@@ -86,6 +86,9 @@ uint32_t dlm_recover_status(struct dlm_ls *ls)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void _set_recover_status(struct dlm_ls *ls, uint32_t status)
 {
 	ls->ls_recover_status |= status;
@@ -100,6 +103,8 @@ void dlm_set_recover_status(struct dlm_ls *ls, uint32_t status)
 
 static int wait_status_all(struct dlm_ls *ls, uint32_t wait_status,
 			   int save_slots)
+<<<<<<< HEAD
+=======
 =======
 void dlm_set_recover_status(struct dlm_ls *ls, uint32_t status)
 {
@@ -110,6 +115,7 @@ void dlm_set_recover_status(struct dlm_ls *ls, uint32_t status)
 
 static int wait_status_all(struct dlm_ls *ls, uint32_t wait_status)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dlm_rcom *rc = ls->ls_recover_buf;
 	struct dlm_member *memb;
@@ -124,6 +130,9 @@ static int wait_status_all(struct dlm_ls *ls, uint32_t wait_status)
 			}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = dlm_rcom_status(ls, memb->nodeid, 0);
 			if (error)
 				goto out;
@@ -131,12 +140,15 @@ static int wait_status_all(struct dlm_ls *ls, uint32_t wait_status)
 			if (save_slots)
 				dlm_slot_save(ls, rc, memb);
 
+<<<<<<< HEAD
+=======
 =======
 			error = dlm_rcom_status(ls, memb->nodeid);
 			if (error)
 				goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (rc->rc_result & wait_status)
 				break;
 			if (delay < 1000)
@@ -152,8 +164,13 @@ static int wait_status_all(struct dlm_ls *ls, uint32_t wait_status)
 static int wait_status_low(struct dlm_ls *ls, uint32_t wait_status,
 			   uint32_t status_flags)
 =======
+<<<<<<< HEAD
+static int wait_status_low(struct dlm_ls *ls, uint32_t wait_status,
+			   uint32_t status_flags)
+=======
 static int wait_status_low(struct dlm_ls *ls, uint32_t wait_status)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dlm_rcom *rc = ls->ls_recover_buf;
 	int error = 0, delay = 0, nodeid = ls->ls_low_nodeid;
@@ -167,8 +184,12 @@ static int wait_status_low(struct dlm_ls *ls, uint32_t wait_status)
 <<<<<<< HEAD
 		error = dlm_rcom_status(ls, nodeid, status_flags);
 =======
+<<<<<<< HEAD
+		error = dlm_rcom_status(ls, nodeid, status_flags);
+=======
 		error = dlm_rcom_status(ls, nodeid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			break;
 
@@ -189,11 +210,16 @@ static int wait_status(struct dlm_ls *ls, uint32_t status)
 
 	if (ls->ls_low_nodeid == dlm_our_nodeid()) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = wait_status_all(ls, status, 0);
 		if (!error)
 			dlm_set_recover_status(ls, status_all);
 	} else
 		error = wait_status_low(ls, status_all, 0);
+<<<<<<< HEAD
+=======
 =======
 		error = wait_status_all(ls, status);
 		if (!error)
@@ -201,6 +227,7 @@ static int wait_status(struct dlm_ls *ls, uint32_t status)
 	} else
 		error = wait_status_low(ls, status_all);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return error;
 }
@@ -208,6 +235,9 @@ static int wait_status(struct dlm_ls *ls, uint32_t status)
 int dlm_recover_members_wait(struct dlm_ls *ls)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dlm_member *memb;
 	struct dlm_slot *slots;
 	int num_slots, slots_size;
@@ -247,9 +277,12 @@ int dlm_recover_members_wait(struct dlm_ls *ls)
 	}
  out:
 	return error;
+<<<<<<< HEAD
+=======
 =======
 	return wait_status(ls, DLM_RS_NODES);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int dlm_recover_directory_wait(struct dlm_ls *ls)
@@ -630,9 +663,12 @@ int dlm_recover_locks(struct dlm_ls *ls)
 		recover_list_clear(ls);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	else
 		dlm_set_recover_status(ls, DLM_RS_LOCKS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -807,7 +843,11 @@ int dlm_create_root_list(struct dlm_ls *ls)
 <<<<<<< HEAD
 	struct rb_node *n;
 =======
+<<<<<<< HEAD
+	struct rb_node *n;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dlm_rsb *r;
 	int i, error = 0;
 
@@ -824,8 +864,13 @@ int dlm_create_root_list(struct dlm_ls *ls)
 		for (n = rb_first(&ls->ls_rsbtbl[i].keep); n; n = rb_next(n)) {
 			r = rb_entry(n, struct dlm_rsb, res_hashnode);
 =======
+<<<<<<< HEAD
+		for (n = rb_first(&ls->ls_rsbtbl[i].keep); n; n = rb_next(n)) {
+			r = rb_entry(n, struct dlm_rsb, res_hashnode);
+=======
 		list_for_each_entry(r, &ls->ls_rsbtbl[i].list, res_hashchain) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_add(&r->res_root_list, &ls->ls_root_list);
 			dlm_hold_rsb(r);
 		}
@@ -843,8 +888,13 @@ int dlm_create_root_list(struct dlm_ls *ls)
 		for (n = rb_first(&ls->ls_rsbtbl[i].toss); n; n = rb_next(n)) {
 			r = rb_entry(n, struct dlm_rsb, res_hashnode);
 =======
+<<<<<<< HEAD
+		for (n = rb_first(&ls->ls_rsbtbl[i].toss); n; n = rb_next(n)) {
+			r = rb_entry(n, struct dlm_rsb, res_hashnode);
+=======
 		list_for_each_entry(r, &ls->ls_rsbtbl[i].toss, res_hashchain) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_add(&r->res_root_list, &ls->ls_root_list);
 			dlm_hold_rsb(r);
 		}
@@ -878,19 +928,29 @@ void dlm_clear_toss_list(struct dlm_ls *ls)
 	struct rb_node *n, *next;
 	struct dlm_rsb *rsb;
 =======
+<<<<<<< HEAD
+	struct rb_node *n, *next;
+	struct dlm_rsb *rsb;
+=======
 	struct dlm_rsb *r, *safe;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	for (i = 0; i < ls->ls_rsbtbl_size; i++) {
 		spin_lock(&ls->ls_rsbtbl[i].lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (n = rb_first(&ls->ls_rsbtbl[i].toss); n; n = next) {
 			next = rb_next(n);;
 			rsb = rb_entry(n, struct dlm_rsb, res_hashnode);
 			if (dlm_no_directory(ls) || !is_master(rsb)) {
 				rb_erase(n, &ls->ls_rsbtbl[i].toss);
 				dlm_free_rsb(rsb);
+<<<<<<< HEAD
+=======
 =======
 		list_for_each_entry_safe(r, safe, &ls->ls_rsbtbl[i].toss,
 					 res_hashchain) {
@@ -898,6 +958,7 @@ void dlm_clear_toss_list(struct dlm_ls *ls)
 				list_del(&r->res_hashchain);
 				dlm_free_rsb(r);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 		spin_unlock(&ls->ls_rsbtbl[i].lock);

@@ -28,9 +28,13 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <linux/module.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/if.h>
 #include <linux/skbuff.h>
 #include <linux/ieee80211.h>
@@ -50,7 +54,12 @@ enum {
 struct module;
 
 =======
+<<<<<<< HEAD
+struct module;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct lib80211_crypto_ops {
 	const char *name;
 	struct list_head list;
@@ -130,11 +139,16 @@ struct lib80211_crypto_ops *lib80211_get_crypto_ops(const char *name);
 void lib80211_crypt_delayed_deinit(struct lib80211_crypt_info *info,
 				    struct lib80211_crypt_data **crypt);
 =======
+<<<<<<< HEAD
+void lib80211_crypt_delayed_deinit(struct lib80211_crypt_info *info,
+				    struct lib80211_crypt_data **crypt);
+=======
 void lib80211_crypt_deinit_entries(struct lib80211_crypt_info *, int);
 void lib80211_crypt_deinit_handler(unsigned long);
 void lib80211_crypt_delayed_deinit(struct lib80211_crypt_info *info,
 				    struct lib80211_crypt_data **crypt);
 void lib80211_crypt_quiescing(struct lib80211_crypt_info *info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* LIB80211_H */

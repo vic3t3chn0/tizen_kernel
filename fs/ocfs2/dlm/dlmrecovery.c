@@ -363,6 +363,9 @@ static int dlm_is_node_recovered(struct dlm_ctxt *dlm, u8 node)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dlm_wait_for_node_death(struct dlm_ctxt *dlm, u8 node, int timeout)
 {
 	if (dlm_is_node_dead(dlm, node))
@@ -395,6 +398,8 @@ void dlm_wait_for_node_recovery(struct dlm_ctxt *dlm, u8 node, int timeout)
 	else
 		wait_event(dlm->dlm_reco_thread_wq,
 			   dlm_is_node_recovered(dlm, node));
+<<<<<<< HEAD
+=======
 =======
 int dlm_wait_for_node_death(struct dlm_ctxt *dlm, u8 node, int timeout)
 {
@@ -431,6 +436,7 @@ int dlm_wait_for_node_recovery(struct dlm_ctxt *dlm, u8 node, int timeout)
 	/* for now, return 0 */
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* callers of the top-level api calls (dlmlock/dlmunlock) should
@@ -469,7 +475,12 @@ static void dlm_begin_recovery(struct dlm_ctxt *dlm)
 	printk(KERN_NOTICE "o2dlm: Begin recovery on domain %s for node %u\n",
 	       dlm->name, dlm->reco.dead_node);
 =======
+<<<<<<< HEAD
+	printk(KERN_NOTICE "o2dlm: Begin recovery on domain %s for node %u\n",
+	       dlm->name, dlm->reco.dead_node);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dlm->reco.state |= DLM_RECO_STATE_ACTIVE;
 	spin_unlock(&dlm->spinlock);
 }
@@ -481,6 +492,9 @@ static void dlm_end_recovery(struct dlm_ctxt *dlm)
 	dlm->reco.state &= ~DLM_RECO_STATE_ACTIVE;
 	spin_unlock(&dlm->spinlock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_NOTICE "o2dlm: End recovery on domain %s\n", dlm->name);
 	wake_up(&dlm->reco.event);
 }
@@ -493,11 +507,14 @@ static void dlm_print_recovery_master(struct dlm_ctxt *dlm)
 	       dlm->reco.dead_node, dlm->name);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	wake_up(&dlm->reco.event);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dlm_do_recovery(struct dlm_ctxt *dlm)
 {
 	int status = 0;
@@ -564,10 +581,15 @@ static int dlm_do_recovery(struct dlm_ctxt *dlm)
 
 	dlm_print_recovery_master(dlm);
 =======
+<<<<<<< HEAD
+
+	dlm_print_recovery_master(dlm);
+=======
 	mlog(0, "dlm=%s (%d), new_master=%u, this node=%u, dead_node=%u\n",
 	     dlm->name, task_pid_nr(dlm->dlm_reco_thread_task), dlm->reco.new_master,
 	     dlm->node_num, dlm->reco.dead_node);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* it is safe to start everything back up here
 	 * because all of the dead node's lock resources
@@ -581,10 +603,14 @@ master_here:
 <<<<<<< HEAD
 	dlm_print_recovery_master(dlm);
 =======
+<<<<<<< HEAD
+	dlm_print_recovery_master(dlm);
+=======
 	mlog(ML_NOTICE, "(%d) Node %u is the Recovery Master for the Dead Node "
 	     "%u for Domain %s\n", task_pid_nr(dlm->dlm_reco_thread_task),
 	     dlm->node_num, dlm->reco.dead_node, dlm->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	status = dlm_remaster_locks(dlm, dlm->reco.dead_node);
 	if (status < 0) {
@@ -593,9 +619,14 @@ master_here:
 		mlog(ML_ERROR, "%s: Error %d remastering locks for node %u, "
 		     "retrying.\n", dlm->name, status, dlm->reco.dead_node);
 =======
+<<<<<<< HEAD
+		mlog(ML_ERROR, "%s: Error %d remastering locks for node %u, "
+		     "retrying.\n", dlm->name, status, dlm->reco.dead_node);
+=======
 		mlog(ML_ERROR, "error %d remastering locks for node %u, "
 		     "retrying.\n", status, dlm->reco.dead_node);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* yield a bit to allow any final network messages
 		 * to get handled on remaining nodes */
 		msleep(100);
@@ -639,8 +670,12 @@ static int dlm_remaster_locks(struct dlm_ctxt *dlm, u8 dead_node)
 <<<<<<< HEAD
 		mlog(0, "%s: Requesting lock info from node %u\n", dlm->name,
 =======
+<<<<<<< HEAD
+		mlog(0, "%s: Requesting lock info from node %u\n", dlm->name,
+=======
 		mlog(0, "requesting lock info from node %u\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     ndata->node_num);
 
 		if (ndata->node_num == dlm->node_num) {
@@ -716,8 +751,12 @@ static int dlm_remaster_locks(struct dlm_ctxt *dlm, u8 dead_node)
 <<<<<<< HEAD
 	mlog(0, "%s: Done requesting all lock info\n", dlm->name);
 =======
+<<<<<<< HEAD
+	mlog(0, "%s: Done requesting all lock info\n", dlm->name);
+=======
 	mlog(0, "done requesting all lock info\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* nodes should be sending reco data now
 	 * just need to wait */
@@ -884,11 +923,17 @@ static int dlm_request_all_locks(struct dlm_ctxt *dlm, u8 request_from,
 		     "to recover dead node %u\n", dlm->name, ret,
 		     request_from, dead_node);
 =======
+<<<<<<< HEAD
+		mlog(ML_ERROR, "%s: Error %d send LOCK_REQUEST to node %u "
+		     "to recover dead node %u\n", dlm->name, ret,
+		     request_from, dead_node);
+=======
 		mlog(ML_ERROR, "Error %d when sending message %u (key "
 		     "0x%x) to node %u\n", ret, DLM_LOCK_REQUEST_MSG,
 		     dlm->key, request_from);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	// return from here, then
 	// sleep until all received or error
 	return ret;
@@ -1044,10 +1089,16 @@ static int dlm_send_all_done_msg(struct dlm_ctxt *dlm, u8 dead_node, u8 send_to)
 		     "to recover dead node %u\n", dlm->name, ret, send_to,
 		     dead_node);
 =======
+<<<<<<< HEAD
+		mlog(ML_ERROR, "%s: Error %d send RECO_DATA_DONE to node %u "
+		     "to recover dead node %u\n", dlm->name, ret, send_to,
+		     dead_node);
+=======
 		mlog(ML_ERROR, "Error %d when sending message %u (key "
 		     "0x%x) to node %u\n", ret, DLM_RECO_DATA_DONE_MSG,
 		     dlm->key, send_to);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!dlm_is_host_down(ret)) {
 			BUG();
 		}
@@ -1217,16 +1268,22 @@ static int dlm_send_mig_lockres_msg(struct dlm_ctxt *dlm,
 		/* XXX: negative status is not handled.
 		 * this will end up killing this node. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mlog(ML_ERROR, "%s: res %.*s, Error %d send MIG_LOCKRES to "
 		     "node %u (%s)\n", dlm->name, mres->lockname_len,
 		     mres->lockname, ret, send_to,
 		     (orig_flags & DLM_MRES_MIGRATION ?
 		      "migration" : "recovery"));
+<<<<<<< HEAD
+=======
 =======
 		mlog(ML_ERROR, "Error %d when sending message %u (key "
 		     "0x%x) to node %u\n", ret, DLM_MIG_LOCKRES_MSG,
 		     dlm->key, send_to);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* might get an -ENOMEM back here */
 		ret = status;
@@ -1867,8 +1924,12 @@ static int dlm_process_recovery_data(struct dlm_ctxt *dlm,
 <<<<<<< HEAD
 			dlm_lockres_set_refmap_bit(dlm, res, from);
 =======
+<<<<<<< HEAD
+			dlm_lockres_set_refmap_bit(dlm, res, from);
+=======
 			dlm_lockres_set_refmap_bit(from, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&res->spinlock);
 			added++;
 			break;
@@ -2069,8 +2130,12 @@ skip_lvb:
 <<<<<<< HEAD
 			dlm_lockres_set_refmap_bit(dlm, res, ml->node);
 =======
+<<<<<<< HEAD
+			dlm_lockres_set_refmap_bit(dlm, res, ml->node);
+=======
 			dlm_lockres_set_refmap_bit(ml->node, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			added++;
 		}
 		spin_unlock(&res->spinlock);
@@ -2194,7 +2259,13 @@ static void dlm_finish_local_lockres_recovery(struct dlm_ctxt *dlm,
 			     dlm->name, res->lockname.len, res->lockname.name,
 			     res->owner, new_master);
 =======
+<<<<<<< HEAD
+			mlog(0, "%s: res %.*s, Changing owner from %u to %u\n",
+			     dlm->name, res->lockname.len, res->lockname.name,
+			     res->owner, new_master);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_del_init(&res->recovering);
 			spin_lock(&res->spinlock);
 			/* new_master has our reference from
@@ -2217,6 +2288,9 @@ static void dlm_finish_local_lockres_recovery(struct dlm_ctxt *dlm,
 		bucket = dlm_lockres_hash(dlm, i);
 		hlist_for_each_entry(res, hash_iter, bucket, hash_node) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(res->state & DLM_LOCK_RES_RECOVERING))
 				continue;
 
@@ -2241,6 +2315,8 @@ static void dlm_finish_local_lockres_recovery(struct dlm_ctxt *dlm,
 				__dlm_dirty_lockres(dlm, res);
 			spin_unlock(&res->spinlock);
 			wake_up(&res->wq);
+<<<<<<< HEAD
+=======
 =======
 			if (res->state & DLM_LOCK_RES_RECOVERING) {
 				if (res->owner == dead_node) {
@@ -2277,6 +2353,7 @@ static void dlm_finish_local_lockres_recovery(struct dlm_ctxt *dlm,
 				wake_up(&res->wq);
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -2393,8 +2470,12 @@ static void dlm_free_dead_locks(struct dlm_ctxt *dlm,
 <<<<<<< HEAD
 		dlm_lockres_clear_refmap_bit(dlm, res, dead_node);
 =======
+<<<<<<< HEAD
+		dlm_lockres_clear_refmap_bit(dlm, res, dead_node);
+=======
 		dlm_lockres_clear_refmap_bit(dead_node, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (test_bit(dead_node, res->refmap)) {
 		mlog(0, "%s:%.*s: dead node %u had a ref, but had "
 		     "no locks and had not purged before dying\n", dlm->name,
@@ -2402,8 +2483,12 @@ static void dlm_free_dead_locks(struct dlm_ctxt *dlm,
 <<<<<<< HEAD
 		dlm_lockres_clear_refmap_bit(dlm, res, dead_node);
 =======
+<<<<<<< HEAD
+		dlm_lockres_clear_refmap_bit(dlm, res, dead_node);
+=======
 		dlm_lockres_clear_refmap_bit(dead_node, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* do not kick thread yet */
@@ -2475,10 +2560,16 @@ static void dlm_do_local_recovery_cleanup(struct dlm_ctxt *dlm, u8 dead_node)
 					     "recovery as it is being freed\n",
 					     dlm->name, res->lockname.len,
 =======
+<<<<<<< HEAD
+					mlog(ML_NOTICE, "%s: res %.*s, Skip "
+					     "recovery as it is being freed\n",
+					     dlm->name, res->lockname.len,
+=======
 					mlog(ML_NOTICE, "Ignore %.*s for "
 					     "recovery as it is being freed\n",
 					     res->lockname.len,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     res->lockname.name);
 				} else
 					dlm_move_lockres_to_recovery_list(dlm,

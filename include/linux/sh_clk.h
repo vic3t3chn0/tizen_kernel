@@ -22,8 +22,13 @@ struct clk_mapping {
 
 struct sh_clk_ops {
 =======
+<<<<<<< HEAD
+
+struct sh_clk_ops {
+=======
 struct clk_ops {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SH_CLK_CPG_LEGACY
 	void (*init)(struct clk *clk);
 #endif
@@ -45,8 +50,12 @@ struct clk {
 <<<<<<< HEAD
 	struct sh_clk_ops	*ops;
 =======
+<<<<<<< HEAD
+	struct sh_clk_ops	*ops;
+=======
 	struct clk_ops		*ops;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct list_head	children;
 	struct list_head	sibling;	/* node for children */
@@ -59,16 +68,22 @@ struct clk {
 	void __iomem		*enable_reg;
 	unsigned int		enable_bit;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem		*mapped_reg;
 
 	unsigned long		arch_flags;
 	void			*priv;
+<<<<<<< HEAD
+=======
 =======
 
 	unsigned long		arch_flags;
 	void			*priv;
 	struct dentry		*dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk_mapping	*mapping;
 	struct cpufreq_frequency_table *freq_table;
 	unsigned int		nr_freqs;
@@ -115,7 +130,13 @@ long clk_rate_mult_range_round(struct clk *clk, unsigned int mult_min,
 			       unsigned int mult_max, unsigned long rate);
 
 =======
+<<<<<<< HEAD
+long clk_rate_mult_range_round(struct clk *clk, unsigned int mult_min,
+			       unsigned int mult_max, unsigned long rate);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long clk_round_parent(struct clk *clk, unsigned long target,
 		      unsigned long *best_freq, unsigned long *parent_freq,
 		      unsigned int div_min, unsigned int div_max);
@@ -156,11 +177,17 @@ int sh_clk_div4_reparent_register(struct clk *clks, int nr,
 			_num_parents, _src_shift, _src_width)	\
 {								\
 =======
+<<<<<<< HEAD
+#define SH_CLK_DIV6_EXT(_reg, _flags, _parents,			\
+			_num_parents, _src_shift, _src_width)	\
+{								\
+=======
 #define SH_CLK_DIV6_EXT(_parent, _reg, _flags, _parents,	\
 			_num_parents, _src_shift, _src_width)	\
 {								\
 	.parent = _parent,					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.enable_reg = (void __iomem *)_reg,			\
 	.flags = _flags,					\
 	.parent_table = _parents,				\
@@ -171,23 +198,35 @@ int sh_clk_div4_reparent_register(struct clk *clks, int nr,
 
 #define SH_CLK_DIV6(_parent, _reg, _flags)			\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {								\
 	.parent		= _parent,				\
 	.enable_reg	= (void __iomem *)_reg,			\
 	.flags		= _flags,				\
 }
+<<<<<<< HEAD
+=======
 =======
 	SH_CLK_DIV6_EXT(_parent, _reg, _flags, NULL, 0, 0, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int sh_clk_div6_register(struct clk *clks, int nr);
 int sh_clk_div6_reparent_register(struct clk *clks, int nr);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CLKDEV_CON_ID(_id, _clk) { .con_id = _id, .clk = _clk }
 #define CLKDEV_DEV_ID(_id, _clk) { .dev_id = _id, .clk = _clk }
 #define CLKDEV_ICK_ID(_cid, _did, _clk) { .con_id = _cid, .dev_id = _did, .clk = _clk }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __SH_CLOCK_H */

@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/irq.h>
 #include <asm/mach/map.h>
 #include <mach/irqs.h>
@@ -247,6 +251,9 @@ void __init h720x_map_io(void)
 	iotable_init(h720x_io_desc,ARRAY_SIZE(h720x_io_desc));
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void h720x_restart(char mode, const char *cmd)
 {
@@ -270,5 +277,8 @@ static int __init h720x_idle_init(void)
 }
 
 arch_initcall(h720x_idle_init);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

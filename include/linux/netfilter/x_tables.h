@@ -474,8 +474,12 @@ DECLARE_PER_CPU(seqcount_t, xt_recseq);
 <<<<<<< HEAD
  * 2) softirqs must be disabled too (or we should use this_cpu_add())
 =======
+<<<<<<< HEAD
+ * 2) softirqs must be disabled too (or we should use this_cpu_add())
+=======
  * 2) softirqs must be disabled too (or we should use irqsafe_cpu_add())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Returns :
  *  1 if no recursion on this cpu
  *  0 if recursion detected
@@ -510,8 +514,12 @@ static inline unsigned int xt_write_recseq_begin(void)
 <<<<<<< HEAD
  * 2) softirqs must be disabled too (or we should use this_cpu_add())
 =======
+<<<<<<< HEAD
+ * 2) softirqs must be disabled too (or we should use this_cpu_add())
+=======
  * 2) softirqs must be disabled too (or we should use irqsafe_cpu_add())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline void xt_write_recseq_end(unsigned int addend)
 {

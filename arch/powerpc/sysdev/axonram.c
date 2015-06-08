@@ -27,8 +27,11 @@
 #include <linux/blkdev.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/buffer_head.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/device.h>
 #include <linux/errno.h>
 #include <linux/fs.h>
@@ -110,8 +113,12 @@ axon_ram_irq_handler(int irq, void *dev)
 <<<<<<< HEAD
 static void
 =======
+<<<<<<< HEAD
+static void
+=======
 static int
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 axon_ram_make_request(struct request_queue *queue, struct bio *bio)
 {
 	struct axon_ram_bank *bank = bio->bi_bdev->bd_disk->private_data;
@@ -122,8 +129,11 @@ axon_ram_make_request(struct request_queue *queue, struct bio *bio)
 	unsigned short idx;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int rc = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	phys_mem = bank->io_addr + (bio->bi_sector << AXON_RAM_SECTOR_SHIFT);
 	phys_end = bank->io_addr + bank->size;
@@ -134,9 +144,13 @@ axon_ram_make_request(struct request_queue *queue, struct bio *bio)
 <<<<<<< HEAD
 			return;
 =======
+<<<<<<< HEAD
+			return;
+=======
 			rc = -ERANGE;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		user_mem = page_address(vec->bv_page) + vec->bv_offset;
@@ -151,9 +165,12 @@ axon_ram_make_request(struct request_queue *queue, struct bio *bio)
 	bio_endio(bio, 0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	return rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -223,8 +240,12 @@ static int axon_ram_probe(struct platform_device *device)
 <<<<<<< HEAD
 	bank->size = resource_size(&resource);
 =======
+<<<<<<< HEAD
+	bank->size = resource_size(&resource);
+=======
 	bank->size = resource.end - resource.start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (bank->size == 0) {
 		dev_err(&device->dev, "No DDR2 memory found for %s%d\n",

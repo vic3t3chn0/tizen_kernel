@@ -22,10 +22,25 @@
 /* Hardware core and driver accessible callbacks */
 
 static inline void ath9k_hw_configpcipowersave(struct ath_hw *ah,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					       bool power_off)
+{
+	if (!ah->aspm_enabled)
+		return;
+
+	ath9k_hw_ops(ah)->config_pci_powersave(ah, power_off);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       int restore,
 					       int power_off)
 {
 	ath9k_hw_ops(ah)->config_pci_powersave(ah, restore, power_off);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void ath9k_hw_rxena(struct ath_hw *ah)
@@ -39,11 +54,20 @@ static inline void ath9k_hw_set_desc_link(struct ath_hw *ah, void *ds,
 	ath9k_hw_ops(ah)->set_desc_link(ds, link);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void ath9k_hw_get_desc_link(struct ath_hw *ah, void *ds,
 					  u32 **link)
 {
 	ath9k_hw_ops(ah)->get_desc_link(ds, link);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool ath9k_hw_calibrate(struct ath_hw *ah,
 				      struct ath9k_channel *chan,
 				      u8 rxchainmask,
@@ -57,6 +81,15 @@ static inline bool ath9k_hw_getisr(struct ath_hw *ah, enum ath9k_int *masked)
 	return ath9k_hw_ops(ah)->get_isr(ah, masked);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline void ath9k_hw_set_txdesc(struct ath_hw *ah, void *ds,
+				       struct ath_tx_info *i)
+{
+	return ath9k_hw_ops(ah)->set_txdesc(ah, ds, i);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void ath9k_hw_filltxdesc(struct ath_hw *ah, void *ds, u32 seglen,
 				  bool is_firstseg, bool is_lastseg,
 				  const void *ds0, dma_addr_t buf_addr,
@@ -64,6 +97,10 @@ static inline void ath9k_hw_filltxdesc(struct ath_hw *ah, void *ds, u32 seglen,
 {
 	ath9k_hw_ops(ah)->fill_txdesc(ah, ds, seglen, is_firstseg, is_lastseg,
 				      ds0, buf_addr, qcu);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int ath9k_hw_txprocdesc(struct ath_hw *ah, void *ds,
@@ -72,6 +109,11 @@ static inline int ath9k_hw_txprocdesc(struct ath_hw *ah, void *ds,
 	return ath9k_hw_ops(ah)->proc_txdesc(ah, ds, ts);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void ath9k_hw_set11n_txdesc(struct ath_hw *ah, void *ds,
 					  u32 pktLen, enum ath9k_pkt_type type,
 					  u32 txPower, u32 keyIx,
@@ -121,6 +163,10 @@ static inline void ath9k_hw_set_clrdmask(struct ath_hw *ah, void *ds, bool val)
 	ath9k_hw_ops(ah)->set_clrdmask(ah, ds, val);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void ath9k_hw_antdiv_comb_conf_get(struct ath_hw *ah,
 		struct ath_hw_antcomb_conf *antconf)
 {
@@ -236,11 +282,20 @@ static inline void ath9k_hw_restore_chainmask(struct ath_hw *ah)
 	return ath9k_hw_private_ops(ah)->restore_chainmask(ah);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void ath9k_hw_set_diversity(struct ath_hw *ah, bool value)
 {
 	return ath9k_hw_private_ops(ah)->set_diversity(ah, value);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool ath9k_hw_ani_control(struct ath_hw *ah,
 					enum ath9k_ani_cmd cmd, int param)
 {
@@ -265,4 +320,26 @@ static inline void ath9k_hw_setup_calibration(struct ath_hw *ah,
 	ath9k_hw_private_ops(ah)->setup_calibration(ah, currCal);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline int ath9k_hw_fast_chan_change(struct ath_hw *ah,
+					    struct ath9k_channel *chan,
+					    u8 *ini_reloaded)
+{
+	return ath9k_hw_private_ops(ah)->fast_chan_change(ah, chan,
+							  ini_reloaded);
+}
+
+static inline void ath9k_hw_set_radar_params(struct ath_hw *ah)
+{
+	if (!ath9k_hw_private_ops(ah)->set_radar_params)
+		return;
+
+	ath9k_hw_private_ops(ah)->set_radar_params(ah, &ah->radar_conf);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* ATH9K_HW_OPS_H */

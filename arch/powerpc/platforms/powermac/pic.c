@@ -26,8 +26,11 @@
 #include <linux/pmu.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/sections.h>
 #include <asm/io.h>
@@ -57,6 +60,9 @@ struct device_node *of_irq_dflt_pic;
 static volatile struct pmac_irq_hw __iomem *pmac_irq_hw[4];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int max_irqs;
 static int max_real_irqs;
 
@@ -67,6 +73,8 @@ static DECLARE_BITMAP(ppc_lost_interrupts, 128);
 static DECLARE_BITMAP(ppc_cached_irq_mask, 128);
 static int pmac_irq_cascade = -1;
 static struct irq_domain *pmac_pic_host;
+<<<<<<< HEAD
+=======
 =======
 #define GC_LEVEL_MASK		0x3ff00000
 #define OHARE_LEVEL_MASK	0x1ff00000
@@ -84,6 +92,7 @@ static unsigned long ppc_cached_irq_mask[NR_MASK_WORDS];
 static int pmac_irq_cascade = -1;
 static struct irq_host *pmac_pic_host;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __pmac_retrigger(unsigned int irq_nr)
 {
@@ -237,9 +246,13 @@ static irqreturn_t gatwick_action(int cpl, void *dev_id)
 <<<<<<< HEAD
 		bits |= in_le32(&pmac_irq_hw[i]->level);
 =======
+<<<<<<< HEAD
+		bits |= in_le32(&pmac_irq_hw[i]->level);
+=======
 		/* We must read level interrupts from the level register */
 		bits |= (in_le32(&pmac_irq_hw[i]->level) & level_mask[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bits &= ppc_cached_irq_mask[i];
 		if (bits == 0)
 			continue;
@@ -272,9 +285,13 @@ static unsigned int pmac_pic_get_irq(void)
 <<<<<<< HEAD
 		bits |= in_le32(&pmac_irq_hw[i]->level);
 =======
+<<<<<<< HEAD
+		bits |= in_le32(&pmac_irq_hw[i]->level);
+=======
 		/* We must read level interrupts from the level register */
 		bits |= (in_le32(&pmac_irq_hw[i]->level) & level_mask[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bits &= ppc_cached_irq_mask[i];
 		if (bits == 0)
 			continue;
@@ -298,10 +315,15 @@ static struct irqaction xmon_action = {
 static struct irqaction gatwick_cascade_action = {
 	.handler	= gatwick_action,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "cascade",
 };
 
 static int pmac_pic_host_match(struct irq_domain *h, struct device_node *node)
+<<<<<<< HEAD
+=======
 =======
 	.flags		= IRQF_DISABLED,
 	.name		= "cascade",
@@ -309,11 +331,17 @@ static int pmac_pic_host_match(struct irq_domain *h, struct device_node *node)
 
 static int pmac_pic_host_match(struct irq_host *h, struct device_node *node)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* We match all, we don't always have a node anyway */
 	return 1;
 }
 
+<<<<<<< HEAD
+static int pmac_pic_host_map(struct irq_domain *h, unsigned int virq,
+			     irq_hw_number_t hw)
+{
+=======
 <<<<<<< HEAD
 static int pmac_pic_host_map(struct irq_domain *h, unsigned int virq,
 			     irq_hw_number_t hw)
@@ -325,6 +353,7 @@ static int pmac_pic_host_map(struct irq_host *h, unsigned int virq,
 	int level;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hw >= max_irqs)
 		return -EINVAL;
 
@@ -332,6 +361,9 @@ static int pmac_pic_host_map(struct irq_host *h, unsigned int virq,
 	 * handlers
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_set_status_flags(virq, IRQ_LEVEL);
 	irq_set_chip_and_handler(virq, &pmac_pic, handle_level_irq);
 	return 0;
@@ -341,6 +373,8 @@ static const struct irq_domain_ops pmac_pic_host_ops = {
 	.match = pmac_pic_host_match,
 	.map = pmac_pic_host_map,
 	.xlate = irq_domain_xlate_onecell,
+<<<<<<< HEAD
+=======
 =======
 	level = !!(level_mask[hw >> 5] & (1UL << (hw & 0x1f)));
 	if (level)
@@ -366,6 +400,7 @@ static struct irq_host_ops pmac_pic_host_ops = {
 	.map = pmac_pic_host_map,
 	.xlate = pmac_pic_host_xlate,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init pmac_pic_probe_oldstyle(void)
@@ -386,6 +421,9 @@ static void __init pmac_pic_probe_oldstyle(void)
 	if ((master = of_find_node_by_name(NULL, "gc")) != NULL) {
 		max_irqs = max_real_irqs = 32;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if ((master = of_find_node_by_name(NULL, "ohare")) != NULL) {
 		max_irqs = max_real_irqs = 32;
 		/* We might have a second cascaded ohare */
@@ -394,6 +432,8 @@ static void __init pmac_pic_probe_oldstyle(void)
 			max_irqs = 64;
 	} else if ((master = of_find_node_by_name(NULL, "mac-io")) != NULL) {
 		max_irqs = max_real_irqs = 64;
+<<<<<<< HEAD
+=======
 =======
 		level_mask[0] = GC_LEVEL_MASK;
 	} else if ((master = of_find_node_by_name(NULL, "ohare")) != NULL) {
@@ -411,6 +451,7 @@ static void __init pmac_pic_probe_oldstyle(void)
 		level_mask[0] = HEATHROW_LEVEL_MASK;
 		level_mask[1] = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* We might have a second cascaded heathrow */
 		slave = of_find_node_by_name(master, "mac-io");
@@ -429,12 +470,17 @@ static void __init pmac_pic_probe_oldstyle(void)
 		if (slave)
 			max_irqs = 128;
 =======
+<<<<<<< HEAD
+		if (slave)
+			max_irqs = 128;
+=======
 		if (slave) {
 			max_irqs = 128;
 			level_mask[2] = HEATHROW_LEVEL_MASK;
 			level_mask[3] = 0;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	BUG_ON(master == NULL);
 
@@ -445,10 +491,15 @@ static void __init pmac_pic_probe_oldstyle(void)
 	pmac_pic_host = irq_domain_add_linear(master, max_irqs,
 					      &pmac_pic_host_ops, NULL);
 =======
+<<<<<<< HEAD
+	pmac_pic_host = irq_domain_add_linear(master, max_irqs,
+					      &pmac_pic_host_ops, NULL);
+=======
 	pmac_pic_host = irq_alloc_host(master, IRQ_HOST_MAP_LINEAR, max_irqs,
 				       &pmac_pic_host_ops,
 				       max_irqs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(pmac_pic_host == NULL);
 	irq_set_default_host(pmac_pic_host);
 
@@ -538,6 +589,8 @@ int of_irq_map_oldworld(struct device_node *device, int index,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void pmac_u3_cascade(unsigned int irq, struct irq_desc *desc)
 {
 	struct irq_chip *chip = irq_desc_get_chip(desc);
@@ -551,6 +604,7 @@ static void pmac_u3_cascade(unsigned int irq, struct irq_desc *desc)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init pmac_pic_setup_mpic_nmi(struct mpic *mpic)
 {
 #if defined(CONFIG_XMON) && defined(CONFIG_PPC32)
@@ -574,11 +628,16 @@ static struct mpic * __init pmac_setup_one_mpic(struct device_node *np,
 {
 	const char *name = master ? " MPIC 1   " : " MPIC 2   ";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mpic *mpic;
 	unsigned int flags = master ? 0 : MPIC_SECONDARY;
 
 	pmac_call_feature(PMAC_FTR_ENABLE_MPIC, np, 0, 0);
 
+<<<<<<< HEAD
+=======
 =======
 	struct resource r;
 	struct mpic *mpic;
@@ -593,6 +652,7 @@ static struct mpic * __init pmac_setup_one_mpic(struct device_node *np,
 
 	flags |= MPIC_WANTS_RESET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (of_get_property(np, "big-endian", NULL))
 		flags |= MPIC_BIG_ENDIAN;
 
@@ -605,8 +665,12 @@ static struct mpic * __init pmac_setup_one_mpic(struct device_node *np,
 <<<<<<< HEAD
 	mpic = mpic_alloc(np, 0, flags, 0, 0, name);
 =======
+<<<<<<< HEAD
+	mpic = mpic_alloc(np, 0, flags, 0, 0, name);
+=======
 	mpic = mpic_alloc(np, r.start, flags, 0, 0, name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mpic == NULL)
 		return NULL;
 
@@ -621,8 +685,11 @@ static int __init pmac_pic_probe_mpic(void)
 	struct device_node *np, *master = NULL, *slave = NULL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int cascade;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We can have up to 2 MPICs cascaded */
 	for (np = NULL; (np = of_find_node_by_type(np, "open-pic"))
@@ -659,6 +726,9 @@ static int __init pmac_pic_probe_mpic(void)
 	of_node_put(master);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set up a cascaded controller, if present */
 	if (slave) {
 		mpic2 = pmac_setup_one_mpic(slave, 0);
@@ -667,6 +737,8 @@ static int __init pmac_pic_probe_mpic(void)
 		of_node_put(slave);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	/* No slave, let's go out */
 	if (slave == NULL)
@@ -690,6 +762,7 @@ static int __init pmac_pic_probe_mpic(void)
 
 	of_node_put(slave);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

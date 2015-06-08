@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Deferred request handling
@@ -28,6 +32,9 @@ extern void nfs_cache_defer_req_put(struct nfs_cache_defer_req *dreq);
 extern int nfs_cache_wait_for_upcall(struct nfs_cache_defer_req *dreq);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void nfs_cache_init(struct cache_detail *cd);
 extern void nfs_cache_destroy(struct cache_detail *cd);
 extern int nfs_cache_register_net(struct net *net, struct cache_detail *cd);
@@ -36,7 +43,10 @@ extern int nfs_cache_register_sb(struct super_block *sb,
 				 struct cache_detail *cd);
 extern void nfs_cache_unregister_sb(struct super_block *sb,
 				    struct cache_detail *cd);
+<<<<<<< HEAD
+=======
 =======
 extern int nfs_cache_register(struct cache_detail *cd);
 extern void nfs_cache_unregister(struct cache_detail *cd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

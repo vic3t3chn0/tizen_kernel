@@ -91,8 +91,14 @@ enum discover_event {
 	DISCE_DESTRUCT		= 4,
 	DISC_NUM_EVENTS		= 5,
 =======
+<<<<<<< HEAD
+	DISCE_PROBE		= 3,
+	DISCE_DESTRUCT		= 4,
+	DISC_NUM_EVENTS		= 5,
+=======
 	DISC_NUM_EVENTS 	= 3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ---------- Expander Devices ---------- */
@@ -149,15 +155,21 @@ struct expander_device {
 	u16    max_route_indexes;
 	u8     num_phys;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u8     t2t_supp:1;
 	u8     configuring:1;
 	u8     conf_route_table:1;
 
+<<<<<<< HEAD
+=======
 =======
 	u8     configuring:1;
 	u8     conf_route_table:1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8     enclosure_logical_id[8];
 
 	struct ex_phy *ex_phy;
@@ -166,7 +178,12 @@ struct expander_device {
 
 	struct mutex cmd_mutex;
 =======
+<<<<<<< HEAD
+
+	struct mutex cmd_mutex;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ---------- SATA device ---------- */
@@ -180,10 +197,13 @@ struct sata_device {
         struct smp_resp        rps_resp; /* report_phy_sata_resp */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
         __le16 *identify_device;
         __le16 *identify_packet_device;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         u8     port_no;        /* port number, if this is a PM (Port) */
         struct list_head children; /* PM Ports if this is a PM */
 
@@ -191,6 +211,9 @@ struct sata_device {
 	struct ata_host ata_host;
 	struct ata_taskfile tf;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum {
@@ -200,6 +223,8 @@ enum {
 
 struct domain_device {
 	spinlock_t done_lock;
+<<<<<<< HEAD
+=======
 =======
 	u32 sstatus;
 	u32 serror;
@@ -209,6 +234,7 @@ struct domain_device {
 /* ---------- Domain device ---------- */
 struct domain_device {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         enum sas_dev_type dev_type;
 
         enum sas_linkrate linkrate;
@@ -221,14 +247,20 @@ struct domain_device {
         struct list_head siblings; /* devices on the same level */
         struct asd_sas_port *port;        /* shortcut to root of the tree */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sas_phy *phy;
 
         struct list_head dev_list_node;
 	struct list_head disco_list_node; /* awaiting probe or destruct */
+<<<<<<< HEAD
+=======
 =======
 
         struct list_head dev_list_node;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
         enum sas_protocol    iproto;
         enum sas_protocol    tproto;
@@ -247,6 +279,9 @@ struct domain_device {
 
         void *lldd_dev;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long state;
 	struct kref kref;
 };
@@ -275,6 +310,8 @@ static inline struct sas_discovery_event *to_sas_discovery_event(struct work_str
 }
 
 struct sas_discovery {
+<<<<<<< HEAD
+=======
 =======
 	int gone;
 };
@@ -287,6 +324,7 @@ struct sas_discovery_event {
 struct sas_discovery {
 	spinlock_t disc_event_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sas_discovery_event disc_work[DISC_NUM_EVENTS];
 	unsigned long    pending;
 	u8     fanout_sas_addr[8];
@@ -297,8 +335,11 @@ struct sas_discovery {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The port struct is Class:RW, driver:RO */
 struct asd_sas_port {
 /* private: */
@@ -309,17 +350,23 @@ struct asd_sas_port {
 	spinlock_t dev_list_lock;
 	struct list_head dev_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head disco_list;
 	struct list_head destroy_list;
 	enum   sas_linkrate linkrate;
 
 	struct sas_work work;
+<<<<<<< HEAD
+=======
 =======
 	enum   sas_linkrate linkrate;
 
 	struct sas_phy *phy;
 	struct work_struct work;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* public: */
 	int id;
@@ -346,6 +393,9 @@ struct asd_sas_port {
 
 struct asd_sas_event {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sas_work work;
 	struct asd_sas_phy *phy;
 };
@@ -357,12 +407,15 @@ static inline struct asd_sas_event *to_asd_sas_event(struct work_struct *work)
 	return ev;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	struct work_struct work;
 	struct asd_sas_phy *phy;
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The phy pretty much is controlled by the LLDD.
  * The class only reads those fields.
  */
@@ -370,8 +423,11 @@ struct asd_sas_phy {
 /* private: */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* protected by ha->event_lock */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct asd_sas_event   port_events[PORT_NUM_EVENTS];
 	struct asd_sas_event   phy_events[PHY_NUM_EVENTS];
 
@@ -420,7 +476,11 @@ struct scsi_core {
 <<<<<<< HEAD
 	struct mutex	  task_queue_flush;
 =======
+<<<<<<< HEAD
+	struct mutex	  task_queue_flush;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t        task_queue_lock;
 	struct list_head  task_queue;
 	int               task_queue_size;
@@ -430,6 +490,9 @@ struct scsi_core {
 
 struct sas_ha_event {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sas_work work;
 	struct sas_ha_struct *ha;
 };
@@ -446,6 +509,8 @@ enum sas_ha_state {
 	SAS_HA_DRAINING,
 	SAS_HA_ATA_EH_ACTIVE,
 	SAS_HA_FROZEN,
+<<<<<<< HEAD
+=======
 =======
 	struct work_struct work;
 	struct sas_ha_struct *ha;
@@ -455,11 +520,15 @@ enum sas_ha_state {
 	SAS_HA_REGISTERED,
 	SAS_HA_UNREGISTERED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct sas_ha_struct {
 /* private: */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sas_ha_event ha_events[HA_NUM_EVENTS];
 	unsigned long	 pending;
 
@@ -470,6 +539,8 @@ struct sas_ha_struct {
 
 	struct mutex disco_mutex;
 
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t       event_lock;
 	struct sas_ha_event ha_events[HA_NUM_EVENTS];
@@ -479,6 +550,7 @@ struct sas_ha_struct {
 	spinlock_t 	  state_lock;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct scsi_core core;
 
 /* public: */
@@ -511,8 +583,13 @@ struct sas_ha_struct {
 	struct list_head eh_done_q;  /* complete via scsi_eh_flush_done_q */
 	struct list_head eh_ata_q; /* scmds to promote from sas to ata eh */
 =======
+<<<<<<< HEAD
+	struct list_head eh_done_q;  /* complete via scsi_eh_flush_done_q */
+	struct list_head eh_ata_q; /* scmds to promote from sas to ata eh */
+=======
 	struct list_head eh_done_q;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define SHOST_TO_SAS_HA(_shost) (*(struct sas_ha_struct **)(_shost)->hostdata)
@@ -528,13 +605,19 @@ sdev_to_domain_dev(struct scsi_device *sdev) {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct ata_device *sas_to_ata_dev(struct domain_device *dev)
 {
 	return &dev->sata_dev.ap->link.device[0];
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct domain_device *
 cmd_to_domain_dev(struct scsi_cmnd *cmd)
 {
@@ -555,6 +638,9 @@ static inline void sas_phy_disconnected(struct asd_sas_phy *phy)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline unsigned int to_sas_gpio_od(int device, int bit)
 {
 	return 3 * device + bit;
@@ -574,8 +660,11 @@ static inline int try_test_sas_gpio_gp_bit(unsigned int od, u8 *data, u8 index, 
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ---------- Tasks ---------- */
 /*
       service_response |  SAS_TASK_COMPLETE  |  SAS_TASK_UNDELIVERED |
@@ -597,13 +686,19 @@ enum service_response {
 
 enum exec_status {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* The SAM_STAT_.. codes fit in the lower 6 bits, alias some of
 	 * them here to silence 'case value not in enumerated type' warnings
 	 */
 	__SAM_STAT_CHECK_CONDITION = SAM_STAT_CHECK_CONDITION,
+<<<<<<< HEAD
+=======
 =======
 	/* The SAM_STAT_.. codes fit in the lower 6 bits */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	SAS_DEV_NO_RESPONSE = 0x80,
 	SAS_DATA_UNDERRUN,
@@ -645,11 +740,14 @@ struct ata_task_resp {
 	u8   ending_fis[24];	  /* dev to host or data-in */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u32  sstatus;
 	u32  serror;
 	u32  scontrol;
 	u32  sactive;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define SAS_STATUS_BUF_SIZE 96
@@ -738,15 +836,22 @@ struct sas_task {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct kmem_cache *sas_task_cache;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SAS_TASK_STATE_PENDING      1
 #define SAS_TASK_STATE_DONE         2
 #define SAS_TASK_STATE_ABORTED      4
 #define SAS_TASK_NEED_DEV_RESET     8
 #define SAS_TASK_AT_INITIATOR       16
 
+<<<<<<< HEAD
+extern struct sas_task *sas_alloc_task(gfp_t flags);
+extern void sas_free_task(struct sas_task *task);
+=======
 <<<<<<< HEAD
 extern struct sas_task *sas_alloc_task(gfp_t flags);
 extern void sas_free_task(struct sas_task *task);
@@ -774,6 +879,7 @@ static inline void sas_free_task(struct sas_task *task)
 	}
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct sas_domain_function_template {
 	/* The class calls these to notify the LLDD of an event. */
@@ -797,8 +903,13 @@ struct sas_domain_function_template {
 	int (*lldd_ata_check_ready)(struct domain_device *);
 	void (*lldd_ata_set_dmamode)(struct domain_device *);
 =======
+<<<<<<< HEAD
+	int (*lldd_ata_check_ready)(struct domain_device *);
+	void (*lldd_ata_set_dmamode)(struct domain_device *);
+=======
 	int (*lldd_ata_soft_reset)(struct domain_device *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*lldd_lu_reset)(struct domain_device *, u8 *lun);
 	int (*lldd_query_task)(struct sas_task *);
 
@@ -809,12 +920,18 @@ struct sas_domain_function_template {
 	/* Phy management */
 	int (*lldd_control_phy)(struct asd_sas_phy *, enum phy_func, void *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* GPIO support */
 	int (*lldd_write_gpio)(struct sas_ha_struct *, u8 reg_type,
 			       u8 reg_index, u8 reg_count, u8 *write_data);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern int sas_register_ha(struct sas_ha_struct *);
@@ -824,8 +941,11 @@ int sas_set_phy_speed(struct sas_phy *phy,
 		      struct sas_phy_linkrates *rates);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int sas_phy_enable(struct sas_phy *phy, int enabled);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int sas_phy_reset(struct sas_phy *phy, int hard_reset);
 int sas_queue_up(struct sas_task *task);
 extern int sas_queuecommand(struct Scsi_Host * ,struct scsi_cmnd *);
@@ -833,10 +953,14 @@ extern int sas_target_alloc(struct scsi_target *);
 <<<<<<< HEAD
 extern int sas_slave_configure(struct scsi_device *);
 =======
+<<<<<<< HEAD
+extern int sas_slave_configure(struct scsi_device *);
+=======
 extern int sas_slave_alloc(struct scsi_device *);
 extern int sas_slave_configure(struct scsi_device *);
 extern void sas_slave_destroy(struct scsi_device *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int sas_change_queue_depth(struct scsi_device *, int new_depth,
 				  int reason);
 extern int sas_change_queue_type(struct scsi_device *, int qt);
@@ -856,8 +980,12 @@ int  sas_ex_revalidate_domain(struct domain_device *);
 <<<<<<< HEAD
 void sas_unregister_domain_devices(struct asd_sas_port *port, int gone);
 =======
+<<<<<<< HEAD
+void sas_unregister_domain_devices(struct asd_sas_port *port, int gone);
+=======
 void sas_unregister_domain_devices(struct asd_sas_port *port);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sas_init_disc(struct sas_discovery *disc, struct asd_sas_port *);
 int  sas_discover_event(struct asd_sas_port *, enum discover_event ev);
 
@@ -867,16 +995,23 @@ int  sas_discover_end_dev(struct domain_device *);
 <<<<<<< HEAD
 void sas_unregister_dev(struct asd_sas_port *port, struct domain_device *);
 =======
+<<<<<<< HEAD
+void sas_unregister_dev(struct asd_sas_port *port, struct domain_device *);
+=======
 void sas_unregister_dev(struct domain_device *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void sas_init_dev(struct domain_device *);
 
 void sas_task_abort(struct sas_task *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int __sas_task_abort(struct sas_task *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int sas_eh_device_reset_handler(struct scsi_cmnd *cmd);
 int sas_eh_bus_reset_handler(struct scsi_cmnd *cmd);
 
@@ -886,7 +1021,11 @@ extern int sas_ioctl(struct scsi_device *sdev, int cmd, void __user *arg);
 <<<<<<< HEAD
 extern int sas_drain_work(struct sas_ha_struct *ha);
 =======
+<<<<<<< HEAD
+extern int sas_drain_work(struct sas_ha_struct *ha);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int sas_smp_handler(struct Scsi_Host *shost, struct sas_rphy *rphy,
 			   struct request *req);
@@ -896,8 +1035,12 @@ extern void sas_ssp_task_response(struct device *dev, struct sas_task *task,
 <<<<<<< HEAD
 struct sas_phy *sas_get_local_phy(struct domain_device *dev);
 =======
+<<<<<<< HEAD
+struct sas_phy *sas_get_local_phy(struct domain_device *dev);
+=======
 struct sas_phy *sas_find_local_phy(struct domain_device *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int sas_request_addr(struct Scsi_Host *shost, u8 *addr);
 

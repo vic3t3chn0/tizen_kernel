@@ -2,8 +2,11 @@
  * Copyright (C) 2011 Samsung Electronics Co.Ltd
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Author: Yulgon Kim <yulgon.kim@samsung.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Joonyoung Shim <jy0922.shim@samsung.com>
  *
  * This program is free software; you can redistribute  it and/or modify it
@@ -13,6 +16,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __PLAT_S5P_REGS_USB_PHY_H
 #define __PLAT_S5P_REGS_USB_PHY_H
 
@@ -67,6 +73,8 @@
 #define FPENABLEN			(1 << 0)
 
 #endif /* __PLAT_S5P_REGS_USB_PHY_H */
+<<<<<<< HEAD
+=======
 =======
 #ifndef __ASM_ARCH_REGS_USB_PHY_H
 #define __ASM_ARCH_REGS_USB_PHY_H
@@ -176,3 +184,4 @@ extern int exynos_check_usb_op(void);
 
 #endif /* __ASM_ARCH_REGS_USB_PHY_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

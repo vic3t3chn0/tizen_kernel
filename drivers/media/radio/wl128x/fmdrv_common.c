@@ -387,7 +387,15 @@ static void send_tasklet(unsigned long arg)
  * Queues FM Channel-8 packet to FM TX queue and schedules FM TX tasklet for
  * transmission
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int fm_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type,	void *payload,
+=======
 static u32 fm_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type,	void *payload,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u32 fm_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type,	void *payload,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int payload_len, struct completion *wait_completion)
 {
 	struct sk_buff *skb;
@@ -456,13 +464,29 @@ static u32 fm_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type,	void *payload,
 }
 
 /* Sends FM Channel-8 command to the chip and waits for the response */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type, void *payload,
+=======
 u32 fmc_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type, void *payload,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type, void *payload,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned int payload_len, void *response, int *response_len)
 {
 	struct sk_buff *skb;
 	struct fm_event_msg_hdr *evt_hdr;
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+=======
 	u32 ret;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 ret;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	init_completion(&fmdev->maintask_comp);
 	ret = fm_send_cmd(fmdev, fm_op, type, payload, payload_len,
@@ -470,8 +494,18 @@ u32 fmc_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type, void *payload,
 	if (ret)
 		return ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!wait_for_completion_timeout(&fmdev->maintask_comp,
+					 FM_DRV_TX_TIMEOUT)) {
+=======
 	ret = wait_for_completion_timeout(&fmdev->maintask_comp, FM_DRV_TX_TIMEOUT);
 	if (!ret) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = wait_for_completion_timeout(&fmdev->maintask_comp, FM_DRV_TX_TIMEOUT);
+	if (!ret) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fmerr("Timeout(%d sec),didn't get reg"
 			   "completion signal from RX tasklet\n",
 			   jiffies_to_msecs(FM_DRV_TX_TIMEOUT) / 1000);
@@ -508,7 +542,15 @@ u32 fmc_send_cmd(struct fmdev *fmdev, u8 fm_op, u16 type, void *payload,
 }
 
 /* --- Helper functions used in FM interrupt handlers ---*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline int check_cmdresp_status(struct fmdev *fmdev,
+=======
 static inline u32 check_cmdresp_status(struct fmdev *fmdev,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static inline u32 check_cmdresp_status(struct fmdev *fmdev,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct sk_buff **skb)
 {
 	struct fm_event_msg_hdr *fm_evt_hdr;
@@ -1058,7 +1100,15 @@ static void fm_irq_handle_intmsk_cmd_resp(struct fmdev *fmdev)
 }
 
 /* Returns availability of RDS data in internel buffer */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_is_rds_data_available(struct fmdev *fmdev, struct file *file,
+=======
 u32 fmc_is_rds_data_available(struct fmdev *fmdev, struct file *file,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_is_rds_data_available(struct fmdev *fmdev, struct file *file,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct poll_table_struct *pts)
 {
 	poll_wait(file, &fmdev->rx.rds.read_queue, pts);
@@ -1069,7 +1119,15 @@ u32 fmc_is_rds_data_available(struct fmdev *fmdev, struct file *file,
 }
 
 /* Copies RDS data from internal buffer to user buffer */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_transfer_rds_from_internal_buff(struct fmdev *fmdev, struct file *file,
+=======
 u32 fmc_transfer_rds_from_internal_buff(struct fmdev *fmdev, struct file *file,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_transfer_rds_from_internal_buff(struct fmdev *fmdev, struct file *file,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u8 __user *buf, size_t count)
 {
 	u32 block_count;
@@ -1113,7 +1171,15 @@ u32 fmc_transfer_rds_from_internal_buff(struct fmdev *fmdev, struct file *file,
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_set_freq(struct fmdev *fmdev, u32 freq_to_set)
+=======
 u32 fmc_set_freq(struct fmdev *fmdev, u32 freq_to_set)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_set_freq(struct fmdev *fmdev, u32 freq_to_set)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (fmdev->curr_fmmode) {
 	case FM_MODE_RX:
@@ -1127,7 +1193,15 @@ u32 fmc_set_freq(struct fmdev *fmdev, u32 freq_to_set)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_get_freq(struct fmdev *fmdev, u32 *cur_tuned_frq)
+=======
 u32 fmc_get_freq(struct fmdev *fmdev, u32 *cur_tuned_frq)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_get_freq(struct fmdev *fmdev, u32 *cur_tuned_frq)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (fmdev->rx.freq == FM_UNDEFINED_FREQ) {
 		fmerr("RX frequency is not set\n");
@@ -1153,7 +1227,15 @@ u32 fmc_get_freq(struct fmdev *fmdev, u32 *cur_tuned_frq)
 
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_set_region(struct fmdev *fmdev, u8 region_to_set)
+=======
 u32 fmc_set_region(struct fmdev *fmdev, u8 region_to_set)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_set_region(struct fmdev *fmdev, u8 region_to_set)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (fmdev->curr_fmmode) {
 	case FM_MODE_RX:
@@ -1167,7 +1249,15 @@ u32 fmc_set_region(struct fmdev *fmdev, u8 region_to_set)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_set_mute_mode(struct fmdev *fmdev, u8 mute_mode_toset)
+=======
 u32 fmc_set_mute_mode(struct fmdev *fmdev, u8 mute_mode_toset)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_set_mute_mode(struct fmdev *fmdev, u8 mute_mode_toset)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (fmdev->curr_fmmode) {
 	case FM_MODE_RX:
@@ -1181,7 +1271,15 @@ u32 fmc_set_mute_mode(struct fmdev *fmdev, u8 mute_mode_toset)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_set_stereo_mono(struct fmdev *fmdev, u16 mode)
+=======
 u32 fmc_set_stereo_mono(struct fmdev *fmdev, u16 mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_set_stereo_mono(struct fmdev *fmdev, u16 mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (fmdev->curr_fmmode) {
 	case FM_MODE_RX:
@@ -1195,7 +1293,15 @@ u32 fmc_set_stereo_mono(struct fmdev *fmdev, u16 mode)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_set_rds_mode(struct fmdev *fmdev, u8 rds_en_dis)
+=======
 u32 fmc_set_rds_mode(struct fmdev *fmdev, u8 rds_en_dis)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_set_rds_mode(struct fmdev *fmdev, u8 rds_en_dis)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (fmdev->curr_fmmode) {
 	case FM_MODE_RX:
@@ -1210,10 +1316,23 @@ u32 fmc_set_rds_mode(struct fmdev *fmdev, u8 rds_en_dis)
 }
 
 /* Sends power off command to the chip */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int fm_power_down(struct fmdev *fmdev)
+{
+	u16 payload;
+	int ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 fm_power_down(struct fmdev *fmdev)
 {
 	u16 payload;
 	u32 ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!test_bit(FM_CORE_READY, &fmdev->flag)) {
 		fmerr("FM core is not ready\n");
@@ -1234,7 +1353,15 @@ static u32 fm_power_down(struct fmdev *fmdev)
 }
 
 /* Reads init command from FM firmware file and loads to the chip */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int fm_download_firmware(struct fmdev *fmdev, const u8 *fw_name)
+=======
 static u32 fm_download_firmware(struct fmdev *fmdev, const u8 *fw_name)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u32 fm_download_firmware(struct fmdev *fmdev, const u8 *fw_name)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct firmware *fw_entry;
 	struct bts_header *fw_header;
@@ -1299,7 +1426,15 @@ rel_fw:
 }
 
 /* Loads default RX configuration to the chip */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int load_default_rx_configuration(struct fmdev *fmdev)
+=======
 static u32 load_default_rx_configuration(struct fmdev *fmdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u32 load_default_rx_configuration(struct fmdev *fmdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 
@@ -1311,7 +1446,15 @@ static u32 load_default_rx_configuration(struct fmdev *fmdev)
 }
 
 /* Does FM power on sequence */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int fm_power_up(struct fmdev *fmdev, u8 mode)
+=======
 static u32 fm_power_up(struct fmdev *fmdev, u8 mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u32 fm_power_up(struct fmdev *fmdev, u8 mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u16 payload, asic_id, asic_ver;
 	int resp_len, ret;
@@ -1374,7 +1517,15 @@ rel:
 }
 
 /* Set FM Modes(TX, RX, OFF) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_set_mode(struct fmdev *fmdev, u8 fm_mode)
+=======
 u32 fmc_set_mode(struct fmdev *fmdev, u8 fm_mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_set_mode(struct fmdev *fmdev, u8 fm_mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret = 0;
 
@@ -1427,7 +1578,15 @@ u32 fmc_set_mode(struct fmdev *fmdev, u8 fm_mode)
 }
 
 /* Returns current FM mode (TX, RX, OFF) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_get_mode(struct fmdev *fmdev, u8 *fmmode)
+=======
 u32 fmc_get_mode(struct fmdev *fmdev, u8 *fmmode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 fmc_get_mode(struct fmdev *fmdev, u8 *fmmode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!test_bit(FM_CORE_READY, &fmdev->flag)) {
 		fmerr("FM core is not ready\n");
@@ -1483,10 +1642,23 @@ static void fm_st_reg_comp_cb(void *arg, char data)
  * This function will be called from FM V4L2 open function.
  * Register with ST driver and initialize driver data.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_prepare(struct fmdev *fmdev)
+{
+	static struct st_proto_s fm_st_proto;
+	int ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u32 fmc_prepare(struct fmdev *fmdev)
 {
 	static struct st_proto_s fm_st_proto;
 	u32 ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(FM_CORE_READY, &fmdev->flag)) {
 		fmdbg("FM Core is already up\n");
@@ -1512,10 +1684,21 @@ u32 fmc_prepare(struct fmdev *fmdev)
 		fmdev->streg_cbdata = -EINPROGRESS;
 		fmdbg("%s waiting for ST reg completion signal\n", __func__);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!wait_for_completion_timeout(&wait_for_fmdrv_reg_comp,
+						 FM_ST_REG_TIMEOUT)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = wait_for_completion_timeout(&wait_for_fmdrv_reg_comp,
 				FM_ST_REG_TIMEOUT);
 
 		if (!ret) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fmerr("Timeout(%d sec), didn't get reg "
 					"completion signal from ST\n",
 					jiffies_to_msecs(FM_ST_REG_TIMEOUT) / 1000);
@@ -1589,10 +1772,23 @@ u32 fmc_prepare(struct fmdev *fmdev)
  * This function will be called from FM V4L2 release function.
  * Unregister from ST driver.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int fmc_release(struct fmdev *fmdev)
+{
+	static struct st_proto_s fm_st_proto;
+	int ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u32 fmc_release(struct fmdev *fmdev)
 {
 	static struct st_proto_s fm_st_proto;
 	u32 ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!test_bit(FM_CORE_READY, &fmdev->flag)) {
 		fmdbg("FM Core is already down\n");
@@ -1631,7 +1827,15 @@ u32 fmc_release(struct fmdev *fmdev)
 static int __init fm_drv_init(void)
 {
 	struct fmdev *fmdev = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = -ENOMEM;
+=======
 	u32 ret = -ENOMEM;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 ret = -ENOMEM;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	fmdbg("FM driver version %s\n", FM_DRV_VERSION);
 

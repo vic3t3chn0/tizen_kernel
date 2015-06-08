@@ -11,6 +11,9 @@ obj-n				:=
 obj-				:=
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Core
 
 obj-y				+= common.o clock.o
@@ -21,6 +24,8 @@ obj-$(CONFIG_PM)		+= pm.o irq-pm.o
 
 obj-y				+= dma.o
 
+<<<<<<< HEAD
+=======
 =======
 # Core support for S5P64X0 system
 
@@ -30,6 +35,7 @@ obj-$(CONFIG_CPU_S5P6440)	+= clock-s5p6440.o
 obj-$(CONFIG_CPU_S5P6450)	+= clock-s5p6450.o
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # machine support
 
 obj-$(CONFIG_MACH_SMDK6440)	+= mach-smdk6440.o
@@ -39,14 +45,20 @@ obj-$(CONFIG_MACH_SMDK6450)	+= mach-smdk6450.o
 
 obj-y				+= dev-audio.o
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-y					+= setup-i2c0.o
 obj-$(CONFIG_S5P64X0_SETUP_I2C1)	+= setup-i2c1.o
 obj-$(CONFIG_S5P64X0_SETUP_FB_24BPP)	+= setup-fb-24bpp.o
 obj-$(CONFIG_S5P64X0_SETUP_SPI)		+= setup-spi.o
 obj-$(CONFIG_S5P64X0_SETUP_SDHCI_GPIO)	+= setup-sdhci-gpio.o
+<<<<<<< HEAD
+=======
 =======
 obj-$(CONFIG_S3C64XX_DEV_SPI)	+= dev-spi.o
 
 obj-$(CONFIG_S5P64X0_SETUP_I2C1)	+= setup-i2c1.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

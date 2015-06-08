@@ -24,9 +24,12 @@ extern int (*mach_set_rtc_pll)(struct rtc_pll_info *);
 extern int (*mach_set_clock_mmss)(unsigned long);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void (*mach_gettod)(int *year, int *mon, int *day, int *hour,
 			    int *min, int *sec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void (*mach_reset)( void );
 extern void (*mach_halt)( void );
 extern void (*mach_power_off)( void );
@@ -39,10 +42,15 @@ extern void (*mach_beep) (unsigned int, unsigned int);
 
 /* Hardware clock functions */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void hw_timer_init(irq_handler_t handler);
 extern unsigned long hw_timer_offset(void);
 
 extern void config_BSP(char *command, int len);
+<<<<<<< HEAD
+=======
 =======
 extern void hw_timer_init(void);
 extern unsigned long hw_timer_offset(void);
@@ -51,5 +59,6 @@ extern irqreturn_t arch_timer_interrupt(int irq, void *dummy);
 extern void config_BSP(char *command, int len);
 extern void do_IRQ(int irq, struct pt_regs *fp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _M68K_MACHDEP_H */

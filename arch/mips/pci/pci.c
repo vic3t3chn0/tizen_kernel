@@ -5,6 +5,9 @@
  * option) any later version.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2003, 04, 11 Ralf Baechle (ralf@linux-mips.org)
  * Copyright (C) 2011 Wind River Systems,
  *   written by Ralf Baechle (ralf@linux-mips.org)
@@ -14,6 +17,8 @@
 #include <linux/mm.h>
 #include <linux/bootmem.h>
 #include <linux/export.h>
+<<<<<<< HEAD
+=======
 =======
  * Copyright (C) 2003, 04 Ralf Baechle (ralf@linux-mips.org)
  */
@@ -21,17 +26,23 @@
 #include <linux/mm.h>
 #include <linux/bootmem.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/types.h>
 #include <linux/pci.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cpu-info.h>
 
 /*
  * If PCI_PROBE_ONLY in pci_flags is set, we don't change any PCI resource
  * assignments.
  */
+<<<<<<< HEAD
+=======
 =======
 /*
  * Indicate whether we respect the PCI setup left by the firmware.
@@ -45,6 +56,7 @@ int pci_probe_only;
 
 unsigned int pci_probe = PCI_ASSIGN_ALL_BUSSES;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The PCI controller list.
@@ -104,13 +116,20 @@ static void __devinit pcibios_scanbus(struct pci_controller *hose)
 <<<<<<< HEAD
 	LIST_HEAD(resources);
 =======
+<<<<<<< HEAD
+	LIST_HEAD(resources);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pci_bus *bus;
 
 	if (!hose->iommu)
 		PCI_DMA_BUS_IS_PHYS = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hose->get_busno && pci_has_flag(PCI_PROBE_ONLY))
 		next_busno = (*hose->get_busno)();
 
@@ -122,12 +141,15 @@ static void __devinit pcibios_scanbus(struct pci_controller *hose)
 	if (!bus)
 		pci_free_resource_list(&resources);
 
+<<<<<<< HEAD
+=======
 =======
 	if (hose->get_busno && pci_probe_only)
 		next_busno = (*hose->get_busno)();
 
 	bus = pci_scan_bus(next_busno, hose->pci_ops, hose);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hose->bus = bus;
 
 	need_domain_info = need_domain_info || hose->index;
@@ -144,8 +166,12 @@ static void __devinit pcibios_scanbus(struct pci_controller *hose)
 <<<<<<< HEAD
 		if (!pci_has_flag(PCI_PROBE_ONLY)) {
 =======
+<<<<<<< HEAD
+		if (!pci_has_flag(PCI_PROBE_ONLY)) {
+=======
 		if (!pci_probe_only) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pci_bus_size_bridges(bus);
 			pci_bus_assign_resources(bus);
 			pci_enable_bridges(bus);
@@ -193,6 +219,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init pcibios_set_cache_line_size(void)
 {
 	struct cpuinfo_mips *c = &current_cpu_data;
@@ -213,8 +242,11 @@ static void __init pcibios_set_cache_line_size(void)
 	pr_debug("PCI: pci_cache_line_size set to %d bytes\n", lsize);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init pcibios_init(void)
 {
 	struct pci_controller *hose;
@@ -223,7 +255,12 @@ static int __init pcibios_init(void)
 	pcibios_set_cache_line_size();
 
 =======
+<<<<<<< HEAD
+	pcibios_set_cache_line_size();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Scan all of the recorded PCI controllers.  */
 	for (hose = hose_head; hose; hose = hose->next)
 		pcibios_scanbus(hose);
@@ -280,6 +317,11 @@ unsigned int pcibios_assign_all_busses(void)
 {
 	return 1;
 =======
+<<<<<<< HEAD
+unsigned int pcibios_assign_all_busses(void)
+{
+	return 1;
+=======
 /*
  *  If we set up a device for bus mastering, we need to check the latency
  *  timer as certain crappy BIOSes forget to set it properly.
@@ -305,6 +347,7 @@ unsigned int pcibios_assign_all_busses(void)
 {
 	return (pci_probe & PCI_ASSIGN_ALL_BUSSES) ? 1 : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int pcibios_enable_device(struct pci_dev *dev, int mask)
@@ -318,6 +361,9 @@ int pcibios_enable_device(struct pci_dev *dev, int mask)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __devinit pcibios_fixup_bus(struct pci_bus *bus)
 {
 	struct pci_dev *dev = bus->self;
@@ -325,6 +371,8 @@ void __devinit pcibios_fixup_bus(struct pci_bus *bus)
 	if (pci_has_flag(PCI_PROBE_ONLY) && dev &&
 	    (dev->class >> 8) == PCI_CLASS_BRIDGE_PCI) {
 		pci_read_bridge_bases(bus);
+<<<<<<< HEAD
+=======
 =======
 static void pcibios_fixup_device_resources(struct pci_dev *dev,
 	struct pci_bus *bus)
@@ -370,6 +418,7 @@ void __devinit pcibios_fixup_bus(struct pci_bus *bus)
 		if ((dev->class >> 8) != PCI_CLASS_BRIDGE_PCI)
 			pcibios_fixup_device_resources(dev, bus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -379,6 +428,9 @@ pcibios_update_irq(struct pci_dev *dev, int irq)
 	pci_write_config_byte(dev, PCI_INTERRUPT_LINE, irq);
 }
 
+<<<<<<< HEAD
+#ifdef CONFIG_HOTPLUG
+=======
 <<<<<<< HEAD
 #ifdef CONFIG_HOTPLUG
 =======
@@ -417,6 +469,7 @@ pcibios_bus_to_resource(struct pci_dev *dev, struct resource *res,
 EXPORT_SYMBOL(pcibios_resource_to_bus);
 EXPORT_SYMBOL(pcibios_bus_to_resource);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(PCIBIOS_MIN_IO);
 EXPORT_SYMBOL(PCIBIOS_MIN_MEM);
 #endif

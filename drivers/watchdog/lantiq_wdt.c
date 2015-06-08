@@ -7,6 +7,14 @@
  *  Based on EP93xx wdt driver
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/miscdevice.h>
@@ -38,7 +46,15 @@
 #define LTQ_WDT_DIVIDER		0x40000
 #define LTQ_MAX_TIMEOUT		((1 << 16) - 1)	/* the reload field is 16 bit */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+=======
 static int nowayout = WATCHDOG_NOWAYOUT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nowayout = WATCHDOG_NOWAYOUT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __iomem *ltq_wdt_membase;
 static unsigned long ltq_io_region_clk_rate;
@@ -51,16 +67,37 @@ static int ltq_wdt_ok_to_close;
 static void
 ltq_wdt_enable(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long int timeout = ltq_wdt_timeout *
+			(ltq_io_region_clk_rate / LTQ_WDT_DIVIDER) + 0x1000;
+	if (timeout > LTQ_MAX_TIMEOUT)
+		timeout = LTQ_MAX_TIMEOUT;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ltq_wdt_timeout = ltq_wdt_timeout *
 			(ltq_io_region_clk_rate / LTQ_WDT_DIVIDER) + 0x1000;
 	if (ltq_wdt_timeout > LTQ_MAX_TIMEOUT)
 		ltq_wdt_timeout = LTQ_MAX_TIMEOUT;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* write the first password magic */
 	ltq_w32(LTQ_WDT_PW1, ltq_wdt_membase + LTQ_WDT_CR);
 	/* write the second magic plus the configuration and new timeout */
 	ltq_w32(LTQ_WDT_SR_EN | LTQ_WDT_SR_PWD | LTQ_WDT_SR_CLKDIV |
+<<<<<<< HEAD
+<<<<<<< HEAD
+		LTQ_WDT_PW2 | timeout, ltq_wdt_membase + LTQ_WDT_CR);
+=======
 		LTQ_WDT_PW2 | ltq_wdt_timeout, ltq_wdt_membase + LTQ_WDT_CR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		LTQ_WDT_PW2 | ltq_wdt_timeout, ltq_wdt_membase + LTQ_WDT_CR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -160,7 +197,15 @@ ltq_wdt_release(struct inode *inode, struct file *file)
 	if (ltq_wdt_ok_to_close)
 		ltq_wdt_disable();
 	else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("watchdog closed without warning\n");
+=======
 		pr_err("ltq_wdt: watchdog closed without warning\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		pr_err("ltq_wdt: watchdog closed without warning\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ltq_wdt_ok_to_close = 0;
 	clear_bit(0, &ltq_wdt_in_use);
 
@@ -222,9 +267,18 @@ ltq_wdt_remove(struct platform_device *pdev)
 {
 	misc_deregister(&ltq_wdt_miscdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (ltq_wdt_membase)
 		iounmap(ltq_wdt_membase);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ltq_wdt_membase)
+		iounmap(ltq_wdt_membase);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -252,7 +306,15 @@ exit_ltq_wdt(void)
 module_init(init_ltq_wdt);
 module_exit(exit_ltq_wdt);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_param(nowayout, bool, 0);
+=======
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started");
 
 MODULE_AUTHOR("John Crispin <blogic@openwrt.org>");

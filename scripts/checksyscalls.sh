@@ -199,6 +199,9 @@ EOF
 
 syscall_list() {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     grep '^[0-9]' "$1" | sort -n | (
 	while read nr abi name entry ; do
 	    echo <<EOF
@@ -211,6 +214,8 @@ EOF
 }
 
 (ignore_list && syscall_list $(dirname $0)/../arch/x86/syscalls/syscall_32.tbl) | \
+<<<<<<< HEAD
+=======
 =======
 sed -n -e '/^\#define/ s/[^_]*__NR_\([^[:space:]]*\).*/\
 \#if !defined \(__NR_\1\) \&\& !defined \(__IGNORE_\1\)\
@@ -220,4 +225,5 @@ sed -n -e '/^\#define/ s/[^_]*__NR_\([^[:space:]]*\).*/\
 
 (ignore_list && syscall_list $(dirname $0)/../arch/x86/include/asm/unistd_32.h) | \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 $* -E -x c - > /dev/null

@@ -196,8 +196,12 @@ static void __init mpc832x_rdb_setup_arch(void)
 <<<<<<< HEAD
 #if defined(CONFIG_QUICC_ENGINE)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_QUICC_ENGINE)
+=======
 #if defined(CONFIG_PCI) || defined(CONFIG_QUICC_ENGINE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device_node *np;
 #endif
 
@@ -207,11 +211,15 @@ static void __init mpc832x_rdb_setup_arch(void)
 <<<<<<< HEAD
 	mpc83xx_setup_pci();
 =======
+<<<<<<< HEAD
+	mpc83xx_setup_pci();
+=======
 #ifdef CONFIG_PCI
 	for_each_compatible_node(np, "pci", "fsl,mpc8349-pci")
 		mpc83xx_add_bridge(np);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_QUICC_ENGINE
 	qe_reset();
@@ -226,6 +234,9 @@ static void __init mpc832x_rdb_setup_arch(void)
 #endif				/* CONFIG_QUICC_ENGINE */
 }
 
+<<<<<<< HEAD
+machine_device_initcall(mpc832x_rdb, mpc83xx_declare_of_platform_devices);
+=======
 <<<<<<< HEAD
 machine_device_initcall(mpc832x_rdb, mpc83xx_declare_of_platform_devices);
 =======
@@ -276,6 +287,7 @@ static void __init mpc832x_rdb_init_IRQ(void)
 #endif				/* CONFIG_QUICC_ENGINE */
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called very early, MMU is off, device-tree isn't unflattened
@@ -294,8 +306,12 @@ define_machine(mpc832x_rdb) {
 <<<<<<< HEAD
 	.init_IRQ	= mpc83xx_ipic_and_qe_init_IRQ,
 =======
+<<<<<<< HEAD
+	.init_IRQ	= mpc83xx_ipic_and_qe_init_IRQ,
+=======
 	.init_IRQ	= mpc832x_rdb_init_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_irq	= ipic_get_irq,
 	.restart	= mpc83xx_restart,
 	.time_init	= mpc83xx_time_init,

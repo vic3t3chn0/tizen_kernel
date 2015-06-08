@@ -37,8 +37,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <sound/core.h>
 #include <sound/control.h>
@@ -58,8 +62,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = {1, [1 ... (SNDRV_CARDS - 1)] = 0};
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = {1, [1 ... (SNDRV_CARDS - 1)] = 0};
+=======
 static int enable[SNDRV_CARDS] = {1, [1 ... (SNDRV_CARDS - 1)] = 0};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pcm_substreams[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 8};
 static int pcm_notify[SNDRV_CARDS];
 
@@ -129,8 +137,11 @@ struct loopback_pcm {
 	struct timer_list timer;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spinlock_t timer_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *devices[SNDRV_CARDS];
@@ -183,8 +194,11 @@ static void loopback_timer_start(struct loopback_pcm *dpcm)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_lock(&dpcm->timer_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rate_shift != dpcm->pcm_rate_shift) {
 		dpcm->pcm_rate_shift = rate_shift;
 		dpcm->period_size_frac = frac_pos(dpcm, dpcm->pcm_period_size);
@@ -199,12 +213,19 @@ static void loopback_timer_start(struct loopback_pcm *dpcm)
 	add_timer(&dpcm->timer);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_unlock(&dpcm->timer_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void loopback_timer_stop(struct loopback_pcm *dpcm)
 {
+<<<<<<< HEAD
+	del_timer(&dpcm->timer);
+	dpcm->timer.expires = 0;
+=======
 <<<<<<< HEAD
 	del_timer(&dpcm->timer);
 	dpcm->timer.expires = 0;
@@ -214,6 +235,7 @@ static inline void loopback_timer_stop(struct loopback_pcm *dpcm)
 	dpcm->timer.expires = 0;
 	spin_unlock(&dpcm->timer_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define CABLE_VALID_PLAYBACK	(1 << SNDRV_PCM_STREAM_PLAYBACK)
@@ -606,8 +628,13 @@ static int loopback_hw_params(struct snd_pcm_substream *substream,
 	return snd_pcm_lib_alloc_vmalloc_buffer(substream,
 						params_buffer_bytes(params));
 =======
+<<<<<<< HEAD
+	return snd_pcm_lib_alloc_vmalloc_buffer(substream,
+						params_buffer_bytes(params));
+=======
 	return snd_pcm_lib_malloc_pages(substream, params_buffer_bytes(params));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int loopback_hw_free(struct snd_pcm_substream *substream)
@@ -622,8 +649,12 @@ static int loopback_hw_free(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	return snd_pcm_lib_free_vmalloc_buffer(substream);
 =======
+<<<<<<< HEAD
+	return snd_pcm_lib_free_vmalloc_buffer(substream);
+=======
 	return snd_pcm_lib_free_pages(substream);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static unsigned int get_cable_index(struct snd_pcm_substream *substream)
@@ -696,8 +727,11 @@ static int loopback_open(struct snd_pcm_substream *substream)
 		    (unsigned long)dpcm);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_lock_init(&dpcm->timer_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cable = loopback->cables[substream->number][dev];
 	if (!cable) {
@@ -784,7 +818,12 @@ static struct snd_pcm_ops loopback_playback_ops = {
 	.page =		snd_pcm_lib_get_vmalloc_page,
 	.mmap =		snd_pcm_lib_mmap_vmalloc,
 =======
+<<<<<<< HEAD
+	.page =		snd_pcm_lib_get_vmalloc_page,
+	.mmap =		snd_pcm_lib_mmap_vmalloc,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct snd_pcm_ops loopback_capture_ops = {
@@ -800,7 +839,12 @@ static struct snd_pcm_ops loopback_capture_ops = {
 	.page =		snd_pcm_lib_get_vmalloc_page,
 	.mmap =		snd_pcm_lib_mmap_vmalloc,
 =======
+<<<<<<< HEAD
+	.page =		snd_pcm_lib_get_vmalloc_page,
+	.mmap =		snd_pcm_lib_mmap_vmalloc,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __devinit loopback_pcm_new(struct loopback *loopback,
@@ -823,11 +867,14 @@ static int __devinit loopback_pcm_new(struct loopback *loopback,
 	loopback->pcm[device] = pcm;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_CONTINUOUS,
 			snd_dma_continuous_data(GFP_KERNEL),
 			0, 2 * 1024 * 1024);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

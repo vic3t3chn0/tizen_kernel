@@ -28,6 +28,9 @@
 #include "util/hist.h"
 #include "util/session.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "util/tool.h"
 
 #include <linux/bitmap.h>
@@ -47,6 +50,8 @@ static int perf_evsel__add_sample(struct perf_evsel *evsel,
 				  struct perf_sample *sample,
 				  struct addr_location *al,
 				  struct perf_annotate *ann)
+<<<<<<< HEAD
+=======
 =======
 
 static char		const *input_name = "perf.data";
@@ -64,6 +69,7 @@ static int perf_evlist__add_sample(struct perf_evlist *evlist,
 				   struct perf_evsel *evsel,
 				   struct addr_location *al)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hist_entry *he;
 	int ret;
@@ -73,9 +79,15 @@ static int perf_evlist__add_sample(struct perf_evlist *evlist,
 	    (al->sym == NULL ||
 	     strcmp(ann->sym_hist_filter, al->sym->name) != 0)) {
 =======
+<<<<<<< HEAD
+	if (ann->sym_hist_filter != NULL &&
+	    (al->sym == NULL ||
+	     strcmp(ann->sym_hist_filter, al->sym->name) != 0)) {
+=======
 	if (sym_hist_filter != NULL &&
 	    (al->sym == NULL || strcmp(sym_hist_filter, al->sym->name) != 0)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* We're only interested in a symbol named sym_hist_filter */
 		if (al->sym != NULL) {
 			rb_erase(&al->sym->rb_node,
@@ -95,9 +107,13 @@ static int perf_evlist__add_sample(struct perf_evlist *evlist,
 <<<<<<< HEAD
 		if (notes->src == NULL && symbol__alloc_hist(he->ms.sym) < 0)
 =======
+<<<<<<< HEAD
+		if (notes->src == NULL && symbol__alloc_hist(he->ms.sym) < 0)
+=======
 		if (notes->src == NULL &&
 		    symbol__alloc_hist(he->ms.sym, evlist->nr_entries) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 
 		ret = hist_entry__inc_addr_samples(he, evsel->idx, al->addr);
@@ -109,6 +125,9 @@ static int perf_evlist__add_sample(struct perf_evlist *evlist,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int process_sample_event(struct perf_tool *tool,
 				union perf_event *event,
 				struct perf_sample *sample,
@@ -119,6 +138,8 @@ static int process_sample_event(struct perf_tool *tool,
 	struct addr_location al;
 
 	if (perf_event__preprocess_sample(event, machine, &al, sample,
+<<<<<<< HEAD
+=======
 =======
 static int process_sample_event(union perf_event *event,
 				struct perf_sample *sample,
@@ -129,6 +150,7 @@ static int process_sample_event(union perf_event *event,
 
 	if (perf_event__preprocess_sample(event, session, &al, sample,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  symbol__annotate_init) < 0) {
 		pr_warning("problem processing %d event, skipping it.\n",
 			   event->header.type);
@@ -136,14 +158,20 @@ static int process_sample_event(union perf_event *event,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ann->cpu_list && !test_bit(sample->cpu, ann->cpu_bitmap))
 		return 0;
 
 	if (!al.filtered && perf_evsel__add_sample(evsel, sample, &al, ann)) {
+<<<<<<< HEAD
+=======
 =======
 	if (!al.filtered &&
 	    perf_evlist__add_sample(session->evlist, sample, evsel, &al)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_warning("problem incrementing symbol count, "
 			   "skipping event\n");
 		return -1;
@@ -153,6 +181,9 @@ static int process_sample_event(union perf_event *event,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hist_entry__tty_annotate(struct hist_entry *he, int evidx,
 				    struct perf_annotate *ann)
 {
@@ -165,6 +196,8 @@ static void hists__find_annotations(struct hists *self, int evidx,
 {
 	struct rb_node *nd = rb_first(&self->entries), *next;
 	int key = K_RIGHT;
+<<<<<<< HEAD
+=======
 =======
 static int hist_entry__tty_annotate(struct hist_entry *he, int evidx)
 {
@@ -177,6 +210,7 @@ static void hists__find_annotations(struct hists *self, int evidx)
 	struct rb_node *nd = rb_first(&self->entries), *next;
 	int key = KEY_RIGHT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (nd) {
 		struct hist_entry *he = rb_entry(nd, struct hist_entry, rb_node);
@@ -191,8 +225,12 @@ find_next:
 <<<<<<< HEAD
 			if (key == K_LEFT)
 =======
+<<<<<<< HEAD
+			if (key == K_LEFT)
+=======
 			if (key == KEY_LEFT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				nd = rb_prev(nd);
 			else
 				nd = rb_next(nd);
@@ -201,12 +239,17 @@ find_next:
 
 		if (use_browser > 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			key = hist_entry__tui_annotate(he, evidx, NULL, NULL, 0);
 			switch (key) {
 			case K_RIGHT:
 				next = rb_next(nd);
 				break;
 			case K_LEFT:
+<<<<<<< HEAD
+=======
 =======
 			key = hist_entry__tui_annotate(he, evidx);
 			switch (key) {
@@ -215,6 +258,7 @@ find_next:
 				break;
 			case KEY_LEFT:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				next = rb_prev(nd);
 				break;
 			default:
@@ -227,8 +271,12 @@ find_next:
 <<<<<<< HEAD
 			hist_entry__tty_annotate(he, evidx, ann);
 =======
+<<<<<<< HEAD
+			hist_entry__tty_annotate(he, evidx, ann);
+=======
 			hist_entry__tty_annotate(he, evidx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			nd = rb_next(nd);
 			/*
 			 * Since we have a hist_entry per IP for the same
@@ -244,6 +292,9 @@ find_next:
 <<<<<<< HEAD
 static int __cmd_annotate(struct perf_annotate *ann)
 =======
+<<<<<<< HEAD
+static int __cmd_annotate(struct perf_annotate *ann)
+=======
 static struct perf_event_ops event_ops = {
 	.sample	= process_sample_event,
 	.mmap	= perf_event__process_mmap,
@@ -255,6 +306,7 @@ static struct perf_event_ops event_ops = {
 
 static int __cmd_annotate(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	struct perf_session *session;
@@ -262,6 +314,9 @@ static int __cmd_annotate(void)
 	u64 total_nr_samples;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	session = perf_session__new(ann->input_name, O_RDONLY,
 				    ann->force, false, &ann->tool);
 	if (session == NULL)
@@ -275,6 +330,8 @@ static int __cmd_annotate(void)
 	}
 
 	ret = perf_session__process_events(session, &ann->tool);
+<<<<<<< HEAD
+=======
 =======
 	session = perf_session__new(input_name, O_RDONLY, force, false, &event_ops);
 	if (session == NULL)
@@ -282,6 +339,7 @@ static int __cmd_annotate(void)
 
 	ret = perf_session__process_events(session, &event_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto out_delete;
 
@@ -308,8 +366,12 @@ static int __cmd_annotate(void)
 <<<<<<< HEAD
 			hists__find_annotations(hists, pos->idx, ann);
 =======
+<<<<<<< HEAD
+			hists__find_annotations(hists, pos->idx, ann);
+=======
 			hists__find_annotations(hists, pos->idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -317,8 +379,12 @@ static int __cmd_annotate(void)
 <<<<<<< HEAD
 		ui__warning("The %s file has no samples!\n", session->filename);
 =======
+<<<<<<< HEAD
+		ui__warning("The %s file has no samples!\n", session->filename);
+=======
 		ui__warning("The %s file has no samples!\n", input_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_delete;
 	}
 out_delete:
@@ -339,6 +405,9 @@ out_delete:
 
 static const char * const annotate_usage[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"perf annotate [<options>]",
 	NULL
 };
@@ -363,6 +432,8 @@ int cmd_annotate(int argc, const char **argv, const char *prefix __used)
 	OPT_STRING('s', "symbol", &annotate.sym_hist_filter, "symbol",
 		    "symbol to annotate"),
 	OPT_BOOLEAN('f', "force", &annotate.force, "don't complain, do it"),
+<<<<<<< HEAD
+=======
 =======
 	"perf annotate [<options>] <command>",
 	NULL
@@ -377,6 +448,7 @@ static const struct option options[] = {
 		    "symbol to annotate"),
 	OPT_BOOLEAN('f', "force", &force, "don't complain, do it"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_INCR('v', "verbose", &verbose,
 		    "be more verbose (show symbol address, etc)"),
 	OPT_BOOLEAN('D', "dump-raw-trace", &dump_trace,
@@ -385,14 +457,22 @@ static const struct option options[] = {
 	OPT_BOOLEAN(0, "tui", &annotate.use_tui, "Use the TUI interface"),
 	OPT_BOOLEAN(0, "stdio", &annotate.use_stdio, "Use the stdio interface"),
 =======
+<<<<<<< HEAD
+	OPT_BOOLEAN(0, "tui", &annotate.use_tui, "Use the TUI interface"),
+	OPT_BOOLEAN(0, "stdio", &annotate.use_stdio, "Use the stdio interface"),
+=======
 	OPT_BOOLEAN(0, "tui", &use_tui, "Use the TUI interface"),
 	OPT_BOOLEAN(0, "stdio", &use_stdio, "Use the stdio interface"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_STRING('k', "vmlinux", &symbol_conf.vmlinux_name,
 		   "file", "vmlinux pathname"),
 	OPT_BOOLEAN('m', "modules", &symbol_conf.use_modules,
 		    "load module symbols - WARNING: use only with -k and LIVE kernel"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN('l', "print-line", &annotate.print_line,
 		    "print matching source lines (may be slow)"),
 	OPT_BOOLEAN('P', "full-paths", &annotate.full_paths,
@@ -414,6 +494,8 @@ static const struct option options[] = {
 	if (annotate.use_stdio)
 		use_browser = 0;
 	else if (annotate.use_tui)
+<<<<<<< HEAD
+=======
 =======
 	OPT_BOOLEAN('l', "print-line", &print_line,
 		    "print matching source lines (may be slow)"),
@@ -430,6 +512,7 @@ int cmd_annotate(int argc, const char **argv, const char *prefix __used)
 		use_browser = 0;
 	else if (use_tui)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		use_browser = 1;
 
 	setup_browser(true);
@@ -451,10 +534,15 @@ int cmd_annotate(int argc, const char **argv, const char *prefix __used)
 			usage_with_options(annotate_usage, options);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		annotate.sym_hist_filter = argv[0];
 	}
 
 	return __cmd_annotate(&annotate);
+<<<<<<< HEAD
+=======
 =======
 		sym_hist_filter = argv[0];
 	}
@@ -466,4 +554,5 @@ int cmd_annotate(int argc, const char **argv, const char *prefix __used)
 
 	return __cmd_annotate();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

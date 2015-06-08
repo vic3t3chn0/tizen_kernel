@@ -284,7 +284,11 @@ static int __init init_dns_resolver(void)
 <<<<<<< HEAD
 	set_bit(KEY_FLAG_ROOT_CAN_CLEAR, &keyring->flags);
 =======
+<<<<<<< HEAD
+	set_bit(KEY_FLAG_ROOT_CAN_CLEAR, &keyring->flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cred->thread_keyring = keyring;
 	cred->jit_keyring = KEY_REQKEY_DEFL_THREAD_KEYRING;
 	dns_resolver_cache = cred;

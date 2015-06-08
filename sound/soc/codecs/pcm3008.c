@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/initval.h>
@@ -124,8 +128,12 @@ static int pcm3008_soc_remove(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 static int pcm3008_soc_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int pcm3008_soc_suspend(struct snd_soc_codec *codec)
+=======
 static int pcm3008_soc_suspend(struct snd_soc_codec *codec, pm_message_t msg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pcm3008_setup_data *setup = codec->dev->platform_data;
 
@@ -182,6 +190,9 @@ static struct platform_driver pcm3008_codec_driver = {
 <<<<<<< HEAD
 module_platform_driver(pcm3008_codec_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(pcm3008_codec_driver);
+=======
 static int __init pcm3008_modinit(void)
 {
 	return platform_driver_register(&pcm3008_codec_driver);
@@ -194,6 +205,7 @@ static void __exit pcm3008_exit(void)
 }
 module_exit(pcm3008_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Soc PCM3008 driver");
 MODULE_AUTHOR("Hugo Villeneuve");

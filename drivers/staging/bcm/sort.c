@@ -1,4 +1,11 @@
 #include "headers.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/sort.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * File Name: sort.c
@@ -10,6 +17,40 @@
  * Copyright (c) 2007 Beceem Communications Pvt. Ltd
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int compare_packet_info(void const *a, void const *b)
+{
+	PacketInfo const *pa = a;
+	PacketInfo const *pb = b;
+
+	if (!pa->bValid || !pb->bValid)
+		return 0;
+
+	return pa->u8TrafficPriority - pb->u8TrafficPriority;
+}
+
+VOID SortPackInfo(PMINI_ADAPTER Adapter)
+{
+	BCM_DEBUG_PRINT(Adapter, DBG_TYPE_OTHERS, CONN_MSG,
+			DBG_LVL_ALL, "<=======");
+
+	sort(Adapter->PackInfo, NO_OF_QUEUES, sizeof(PacketInfo),
+		compare_packet_info, NULL);
+}
+
+static int compare_classifiers(void const *a, void const *b)
+{
+	S_CLASSIFIER_RULE const *pa = a;
+	S_CLASSIFIER_RULE const *pb = b;
+
+	if (!pa->bUsed || !pb->bUsed)
+		return 0;
+
+	return pa->u8ClassifierRulePriority - pb->u8ClassifierRulePriority;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 VOID SortPackInfo(PMINI_ADAPTER Adapter)
 {
 	UINT nIndex1;
@@ -34,10 +75,24 @@ VOID SortPackInfo(PMINI_ADAPTER Adapter)
 			}
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 VOID SortClassifiers(PMINI_ADAPTER Adapter)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	BCM_DEBUG_PRINT(Adapter, DBG_TYPE_OTHERS, CONN_MSG,
+			DBG_LVL_ALL, "<=======");
+
+	sort(Adapter->astClassifierTable, MAX_CLASSIFIERS,
+		sizeof(S_CLASSIFIER_RULE), compare_classifiers, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	UINT nIndex1;
 	UINT nIndex2;
 
@@ -60,4 +115,8 @@ VOID SortClassifiers(PMINI_ADAPTER Adapter)
 			}
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

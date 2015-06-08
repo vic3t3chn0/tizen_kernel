@@ -40,7 +40,14 @@ static struct usb_driver debug_driver = {
 	.probe =	usb_serial_probe,
 	.disconnect =	usb_serial_disconnect,
 	.id_table =	id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* This HW really does not support a serial break, so one will be
@@ -54,11 +61,31 @@ static void usb_debug_break_ctl(struct tty_struct *tty, int break_state)
 	usb_serial_generic_write(tty, port, USB_DEBUG_BRK, USB_DEBUG_BRK_SIZE);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void usb_debug_process_read_urb(struct urb *urb)
+=======
 static void usb_debug_read_bulk_callback(struct urb *urb)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void usb_debug_read_bulk_callback(struct urb *urb)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct usb_serial_port *port = urb->context;
 
 	if (urb->actual_length == USB_DEBUG_BRK_SIZE &&
+<<<<<<< HEAD
+<<<<<<< HEAD
+		memcmp(urb->transfer_buffer, USB_DEBUG_BRK,
+						USB_DEBUG_BRK_SIZE) == 0) {
+		usb_serial_handle_break(port);
+		return;
+	}
+
+	usb_serial_generic_process_read_urb(urb);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    memcmp(urb->transfer_buffer, USB_DEBUG_BRK,
 		   USB_DEBUG_BRK_SIZE) == 0) {
 		usb_serial_handle_break(port);
@@ -67,6 +94,10 @@ static void usb_debug_read_bulk_callback(struct urb *urb)
 	}
 
 	usb_serial_generic_read_bulk_callback(urb);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct usb_serial_driver debug_device = {
@@ -75,6 +106,22 @@ static struct usb_serial_driver debug_device = {
 		.name =		"debug",
 	},
 	.id_table =		id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.num_ports =		1,
+	.bulk_out_size =	USB_DEBUG_MAX_PACKET_SIZE,
+	.break_ctl =		usb_debug_break_ctl,
+	.process_read_urb =	usb_debug_process_read_urb,
+};
+
+static struct usb_serial_driver * const serial_drivers[] = {
+	&debug_device, NULL
+};
+
+module_usb_serial_driver(debug_driver, serial_drivers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.usb_driver =		&debug_driver,
 	.num_ports =		1,
 	.bulk_out_size =	USB_DEBUG_MAX_PACKET_SIZE,
@@ -103,4 +150,8 @@ static void __exit debug_exit(void)
 
 module_init(debug_init);
 module_exit(debug_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");

@@ -52,6 +52,16 @@ static int amba_uevent(struct device *dev, struct kobj_uevent_env *env)
 	int retval = 0;
 
 	retval = add_uevent_var(env, "AMBA_ID=%08x", pcdev->periphid);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (retval)
+		return retval;
+
+	retval = add_uevent_var(env, "MODALIAS=amba:d%08X", pcdev->periphid);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 #else
@@ -109,6 +119,12 @@ static int amba_legacy_resume(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif /* CONFIG_PM_SLEEP */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_prepare(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -134,6 +150,10 @@ static void amba_pm_complete(struct device *dev)
 #define amba_pm_complete		NULL
 
 #endif /* !CONFIG_PM_SLEEP */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SUSPEND
 
@@ -155,6 +175,11 @@ static int amba_pm_suspend(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_suspend_noirq(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -171,6 +196,10 @@ static int amba_pm_suspend_noirq(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_resume(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -189,6 +218,11 @@ static int amba_pm_resume(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_resume_noirq(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -205,12 +239,24 @@ static int amba_pm_resume_noirq(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else /* !CONFIG_SUSPEND */
 
 #define amba_pm_suspend		NULL
 #define amba_pm_resume		NULL
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define amba_pm_suspend_noirq	NULL
 #define amba_pm_resume_noirq	NULL
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define amba_pm_suspend_noirq	NULL
+#define amba_pm_resume_noirq	NULL
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* !CONFIG_SUSPEND */
 
@@ -234,6 +280,11 @@ static int amba_pm_freeze(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_freeze_noirq(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -250,6 +301,10 @@ static int amba_pm_freeze_noirq(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_thaw(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -268,6 +323,11 @@ static int amba_pm_thaw(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_thaw_noirq(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -284,6 +344,10 @@ static int amba_pm_thaw_noirq(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_poweroff(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -302,6 +366,11 @@ static int amba_pm_poweroff(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_poweroff_noirq(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -318,6 +387,10 @@ static int amba_pm_poweroff_noirq(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_restore(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -336,6 +409,33 @@ static int amba_pm_restore(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#else /* !CONFIG_HIBERNATE_CALLBACKS */
+
+#define amba_pm_freeze		NULL
+#define amba_pm_thaw		NULL
+#define amba_pm_poweroff		NULL
+#define amba_pm_restore		NULL
+
+#endif /* !CONFIG_HIBERNATE_CALLBACKS */
+
+#ifdef CONFIG_PM_RUNTIME
+/*
+ * Hooks to provide runtime PM of the pclk (bus clock).  It is safe to
+ * enable/disable the bus clock at runtime PM suspend/resume as this
+ * does not result in loss of context.
+ */
+static int amba_pm_runtime_suspend(struct device *dev)
+{
+	struct amba_device *pcdev = to_amba_device(dev);
+	int ret = pm_generic_runtime_suspend(dev);
+
+	if (ret == 0 && dev->driver)
+		clk_disable(pcdev->pclk);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amba_pm_restore_noirq(struct device *dev)
 {
 	struct device_driver *drv = dev->driver;
@@ -348,10 +448,34 @@ static int amba_pm_restore_noirq(struct device *dev)
 		if (drv->pm->restore_noirq)
 			ret = drv->pm->restore_noirq(dev);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int amba_pm_runtime_resume(struct device *dev)
+{
+	struct amba_device *pcdev = to_amba_device(dev);
+	int ret;
+
+	if (dev->driver) {
+		ret = clk_enable(pcdev->pclk);
+		/* Failure is probably fatal to the system, but... */
+		if (ret)
+			return ret;
+	}
+
+	return pm_generic_runtime_resume(dev);
+}
+#endif
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else /* !CONFIG_HIBERNATE_CALLBACKS */
 
 #define amba_pm_freeze		NULL
@@ -364,18 +488,38 @@ static int amba_pm_restore_noirq(struct device *dev)
 #define amba_pm_restore_noirq	NULL
 
 #endif /* !CONFIG_HIBERNATE_CALLBACKS */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PM
 
 static const struct dev_pm_ops amba_pm = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.prepare	= amba_pm_prepare,
 	.complete	= amba_pm_complete,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.prepare	= amba_pm_prepare,
+	.complete	= amba_pm_complete,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.suspend	= amba_pm_suspend,
 	.resume		= amba_pm_resume,
 	.freeze		= amba_pm_freeze,
 	.thaw		= amba_pm_thaw,
 	.poweroff	= amba_pm_poweroff,
 	.restore	= amba_pm_restore,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	SET_RUNTIME_PM_OPS(
+		amba_pm_runtime_suspend,
+		amba_pm_runtime_resume,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.suspend_noirq	= amba_pm_suspend_noirq,
 	.resume_noirq	= amba_pm_resume_noirq,
 	.freeze_noirq	= amba_pm_freeze_noirq,
@@ -385,6 +529,10 @@ static const struct dev_pm_ops amba_pm = {
 	SET_RUNTIME_PM_OPS(
 		pm_generic_runtime_suspend,
 		pm_generic_runtime_resume,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pm_generic_runtime_idle
 	)
 };
@@ -426,9 +574,29 @@ static int amba_get_enable_pclk(struct amba_device *pcdev)
 	if (IS_ERR(pclk))
 		return PTR_ERR(pclk);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = clk_prepare(pclk);
+	if (ret) {
+		clk_put(pclk);
+		return ret;
+	}
+
+	ret = clk_enable(pclk);
+	if (ret) {
+		clk_unprepare(pclk);
+		clk_put(pclk);
+	}
+=======
 	ret = clk_enable(pclk);
 	if (ret)
 		clk_put(pclk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = clk_enable(pclk);
+	if (ret)
+		clk_put(pclk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -438,6 +606,15 @@ static void amba_put_disable_pclk(struct amba_device *pcdev)
 	struct clk *pclk = pcdev->pclk;
 
 	clk_disable(pclk);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	clk_unprepare(pclk);
+	clk_put(pclk);
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clk_put(pclk);
 }
 
@@ -474,6 +651,10 @@ static void amba_put_disable_vcore(struct amba_device *pcdev)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * These are the device model conversion veneers; they convert the
  * device model structures to our more specific structures.
@@ -486,6 +667,18 @@ static int amba_probe(struct device *dev)
 	int ret;
 
 	do {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = amba_get_enable_pclk(pcdev);
+		if (ret)
+			break;
+
+		pm_runtime_get_noresume(dev);
+		pm_runtime_set_active(dev);
+		pm_runtime_enable(dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = amba_get_enable_vcore(pcdev);
 		if (ret)
 			break;
@@ -493,13 +686,30 @@ static int amba_probe(struct device *dev)
 		ret = amba_get_enable_pclk(pcdev);
 		if (ret)
 			break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ret = pcdrv->probe(pcdev, id);
 		if (ret == 0)
 			break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pm_runtime_disable(dev);
+		pm_runtime_set_suspended(dev);
+		pm_runtime_put_noidle(dev);
+
+		amba_put_disable_pclk(pcdev);
+=======
 		amba_put_disable_pclk(pcdev);
 		amba_put_disable_vcore(pcdev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		amba_put_disable_pclk(pcdev);
+		amba_put_disable_vcore(pcdev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (0);
 
 	return ret;
@@ -509,10 +719,31 @@ static int amba_remove(struct device *dev)
 {
 	struct amba_device *pcdev = to_amba_device(dev);
 	struct amba_driver *drv = to_amba_driver(dev->driver);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+
+	pm_runtime_get_sync(dev);
+	ret = drv->remove(pcdev);
+	pm_runtime_put_noidle(dev);
+
+	/* Undo the runtime PM settings in amba_probe() */
+	pm_runtime_disable(dev);
+	pm_runtime_set_suspended(dev);
+	pm_runtime_put_noidle(dev);
+
+	amba_put_disable_pclk(pcdev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = drv->remove(pcdev);
 
 	amba_put_disable_pclk(pcdev);
 	amba_put_disable_vcore(pcdev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -567,6 +798,20 @@ static void amba_device_release(struct device *dev)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	amba_device_add - add a previously allocated AMBA device structure
+ *	@dev: AMBA device allocated by amba_device_alloc
+ *	@parent: resource parent for this devices resources
+ *
+ *	Claim the resource, and read the device cell ID if not already
+ *	initialized.  Register the AMBA device with the Linux device
+ *	manager.
+ */
+int amba_device_add(struct amba_device *dev, struct resource *parent)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	amba_device_register - register an AMBA device
  *	@dev: AMBA device to register
  *	@parent: parent memory resource
@@ -576,11 +821,22 @@ static void amba_device_release(struct device *dev)
  *	the Linux device manager.
  */
 int amba_device_register(struct amba_device *dev, struct resource *parent)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 size;
 	void __iomem *tmp;
 	int i, ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	WARN_ON(dev->irq[0] == (unsigned int)-1);
+	WARN_ON(dev->irq[1] == (unsigned int)-1);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	device_initialize(&dev->dev);
 
 	/*
@@ -598,6 +854,10 @@ int amba_device_register(struct amba_device *dev, struct resource *parent)
 
 	if (!dev->dev.coherent_dma_mask && dev->dma_mask)
 		dev_warn(&dev->dev, "coherent dma mask is unset\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = request_resource(parent, &dev->res);
 	if (ret)
@@ -652,9 +912,21 @@ int amba_device_register(struct amba_device *dev, struct resource *parent)
 	if (ret)
 		goto err_release;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (dev->irq[0] && dev->irq[0] != NO_IRQ)
+		ret = device_create_file(&dev->dev, &dev_attr_irq0);
+	if (ret == 0 && dev->irq[1] && dev->irq[1] != NO_IRQ)
+=======
 	if (dev->irq[0] != NO_IRQ)
 		ret = device_create_file(&dev->dev, &dev_attr_irq0);
 	if (ret == 0 && dev->irq[1] != NO_IRQ)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (dev->irq[0] != NO_IRQ)
+		ret = device_create_file(&dev->dev, &dev_attr_irq0);
+	if (ret == 0 && dev->irq[1] != NO_IRQ)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = device_create_file(&dev->dev, &dev_attr_irq1);
 	if (ret == 0)
 		return ret;
@@ -666,6 +938,80 @@ int amba_device_register(struct amba_device *dev, struct resource *parent)
  err_out:
 	return ret;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(amba_device_add);
+
+static void amba_device_initialize(struct amba_device *dev, const char *name)
+{
+	device_initialize(&dev->dev);
+	if (name)
+		dev_set_name(&dev->dev, "%s", name);
+	dev->dev.release = amba_device_release;
+	dev->dev.bus = &amba_bustype;
+	dev->dev.dma_mask = &dev->dma_mask;
+	dev->res.name = dev_name(&dev->dev);
+}
+
+/**
+ *	amba_device_alloc - allocate an AMBA device
+ *	@name: sysfs name of the AMBA device
+ *	@base: base of AMBA device
+ *	@size: size of AMBA device
+ *
+ *	Allocate and initialize an AMBA device structure.  Returns %NULL
+ *	on failure.
+ */
+struct amba_device *amba_device_alloc(const char *name, resource_size_t base,
+	size_t size)
+{
+	struct amba_device *dev;
+
+	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+	if (dev) {
+		amba_device_initialize(dev, name);
+		dev->res.start = base;
+		dev->res.end = base + size - 1;
+		dev->res.flags = IORESOURCE_MEM;
+	}
+
+	return dev;
+}
+EXPORT_SYMBOL_GPL(amba_device_alloc);
+
+/**
+ *	amba_device_register - register an AMBA device
+ *	@dev: AMBA device to register
+ *	@parent: parent memory resource
+ *
+ *	Setup the AMBA device, reading the cell ID if present.
+ *	Claim the resource, and register the AMBA device with
+ *	the Linux device manager.
+ */
+int amba_device_register(struct amba_device *dev, struct resource *parent)
+{
+	amba_device_initialize(dev, dev->dev.init_name);
+	dev->dev.init_name = NULL;
+
+	if (!dev->dev.coherent_dma_mask && dev->dma_mask)
+		dev_warn(&dev->dev, "coherent dma mask is unset\n");
+
+	return amba_device_add(dev, parent);
+}
+
+/**
+ *	amba_device_put - put an AMBA device
+ *	@dev: AMBA device to put
+ */
+void amba_device_put(struct amba_device *dev)
+{
+	put_device(&dev->dev);
+}
+EXPORT_SYMBOL_GPL(amba_device_put);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  *	amba_device_unregister - unregister an AMBA device

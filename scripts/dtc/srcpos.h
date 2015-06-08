@@ -31,6 +31,9 @@ struct srcfile_state {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern FILE *depfile; /* = NULL */
 extern struct srcfile_state *current_srcfile; /* = NULL */
 
@@ -67,6 +70,8 @@ int srcfile_pop(void);
  */
 void srcfile_add_search_path(const char *dirname);
 
+<<<<<<< HEAD
+=======
 =======
 extern struct srcfile_state *current_srcfile; /* = NULL */
 
@@ -75,6 +80,7 @@ void srcfile_push(const char *fname);
 int srcfile_pop(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct srcpos {
     int first_line;
     int first_column;
@@ -126,5 +132,10 @@ extern void srcpos_warn(struct srcpos *pos, char const *, ...)
 extern void srcpos_set_line(char *f, int l);
 
 =======
+<<<<<<< HEAD
+extern void srcpos_set_line(char *f, int l);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _SRCPOS_H_ */

@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/of_i2c.h>
 =======
+<<<<<<< HEAD
+#include <linux/of_i2c.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/soc.h>
 #include <asm/fsl_guts.h>
 
@@ -66,10 +70,16 @@ static int mpc8610_hpcd_machine_probe(struct snd_soc_card *card)
 
 	guts = ioremap(guts_phys, sizeof(struct ccsr_guts));
 =======
+<<<<<<< HEAD
+	struct ccsr_guts __iomem *guts;
+
+	guts = ioremap(guts_phys, sizeof(struct ccsr_guts));
+=======
 	struct ccsr_guts_86xx __iomem *guts;
 
 	guts = ioremap(guts_phys, sizeof(struct ccsr_guts_86xx));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!guts) {
 		dev_err(card->dev, "could not map global utilities\n");
 		return -ENOMEM;
@@ -156,10 +166,16 @@ static int mpc8610_hpcd_machine_remove(struct snd_soc_card *card)
 
 	guts = ioremap(guts_phys, sizeof(struct ccsr_guts));
 =======
+<<<<<<< HEAD
+	struct ccsr_guts __iomem *guts;
+
+	guts = ioremap(guts_phys, sizeof(struct ccsr_guts));
+=======
 	struct ccsr_guts_86xx __iomem *guts;
 
 	guts = ioremap(guts_phys, sizeof(struct ccsr_guts_86xx));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!guts) {
 		dev_err(card->dev, "could not map global utilities\n");
 		return -ENOMEM;
@@ -252,8 +268,12 @@ static int get_parent_cell_index(struct device_node *np)
 <<<<<<< HEAD
 	return be32_to_cpup(iprop);
 =======
+<<<<<<< HEAD
+	return be32_to_cpup(iprop);
+=======
 	return *iprop;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -267,8 +287,12 @@ static int get_parent_cell_index(struct device_node *np)
 <<<<<<< HEAD
  * example, "cs4270.0-004f".
 =======
+<<<<<<< HEAD
+ * example, "cs4270.0-004f".
+=======
  * example, "cs4270-codec.0-004f".
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int codec_node_dev_name(struct device_node *np, char *buf, size_t len)
 {
@@ -278,9 +302,15 @@ static int codec_node_dev_name(struct device_node *np, char *buf, size_t len)
 	char temp[DAI_NAME_SIZE];
 	struct i2c_client *i2c;
 =======
+<<<<<<< HEAD
+	int addr;
+	char temp[DAI_NAME_SIZE];
+	struct i2c_client *i2c;
+=======
 	int bus, addr;
 	char temp[DAI_NAME_SIZE];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	of_modalias_node(np, temp, DAI_NAME_SIZE);
 
@@ -289,6 +319,9 @@ static int codec_node_dev_name(struct device_node *np, char *buf, size_t len)
 		return -EINVAL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addr = be32_to_cpup(iprop);
 
 	/* We need the adapter number */
@@ -297,6 +330,8 @@ static int codec_node_dev_name(struct device_node *np, char *buf, size_t len)
 		return -ENODEV;
 
 	snprintf(buf, len, "%s.%u-%04x", temp, i2c->adapter->nr, addr);
+<<<<<<< HEAD
+=======
 =======
 	addr = *iprop;
 
@@ -306,6 +341,7 @@ static int codec_node_dev_name(struct device_node *np, char *buf, size_t len)
 
 	snprintf(buf, len, "%s-codec.%u-%04x", temp, bus, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -314,8 +350,12 @@ static int get_dma_channel(struct device_node *ssi_np,
 <<<<<<< HEAD
 			   const char *name,
 =======
+<<<<<<< HEAD
+			   const char *name,
+=======
 			   const char *compatible,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   struct snd_soc_dai_link *dai,
 			   unsigned int *dma_channel_id,
 			   unsigned int *dma_id)
@@ -328,8 +368,12 @@ static int get_dma_channel(struct device_node *ssi_np,
 <<<<<<< HEAD
 	dma_channel_np = get_node_by_phandle_name(ssi_np, name,
 =======
+<<<<<<< HEAD
+	dma_channel_np = get_node_by_phandle_name(ssi_np, name,
+=======
 	dma_channel_np = get_node_by_phandle_name(ssi_np, compatible,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						  "fsl,ssi-dma-channel");
 	if (!dma_channel_np)
 		return -EINVAL;
@@ -357,8 +401,12 @@ static int get_dma_channel(struct device_node *ssi_np,
 <<<<<<< HEAD
 	*dma_channel_id = be32_to_cpup(iprop);
 =======
+<<<<<<< HEAD
+	*dma_channel_id = be32_to_cpup(iprop);
+=======
 	*dma_channel_id = *iprop;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*dma_id = get_parent_cell_index(dma_channel_np);
 	of_node_put(dma_channel_np);
 
@@ -390,6 +438,10 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 	/* Find the codec node for this SSI. */
 	codec_np = of_parse_phandle(np, "codec-handle", 0);
 =======
+<<<<<<< HEAD
+	/* Find the codec node for this SSI. */
+	codec_np = of_parse_phandle(np, "codec-handle", 0);
+=======
 	/* We are only interested in SSIs with a codec phandle in them,
 	 * so let's make sure this SSI has one. The MPC8610 HPCD only
 	 * knows about the CS4270 codec, so reject anything else.
@@ -397,6 +449,7 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 	codec_np = get_node_by_phandle_name(np, "codec-handle",
 					    "cirrus,cs4270");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!codec_np) {
 		dev_err(dev, "invalid codec node\n");
 		return -EINVAL;
@@ -404,14 +457,20 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 
 	machine_data = kzalloc(sizeof(struct mpc8610_hpcd_data), GFP_KERNEL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!machine_data) {
 		ret = -ENOMEM;
 		goto error_alloc;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!machine_data)
 		return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	machine_data->dai[0].cpu_dai_name = dev_name(&ssi_pdev->dev);
 	machine_data->dai[0].ops = &mpc8610_hpcd_ops;
@@ -447,8 +506,12 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	machine_data->ssi_id = be32_to_cpup(iprop);
 =======
+<<<<<<< HEAD
+	machine_data->ssi_id = be32_to_cpup(iprop);
+=======
 	machine_data->ssi_id = *iprop;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Get the serial format and clock direction. */
 	sprop = of_get_property(np, "fsl,mode", NULL);
@@ -463,8 +526,13 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 		machine_data->dai_format =
 			SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBM_CFM;
 =======
+<<<<<<< HEAD
+		machine_data->dai_format =
+			SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBM_CFM;
+=======
 		machine_data->dai_format = SND_SOC_DAIFMT_I2S;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		machine_data->codec_clk_direction = SND_SOC_CLOCK_OUT;
 		machine_data->cpu_clk_direction = SND_SOC_CLOCK_IN;
 
@@ -480,6 +548,9 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 			goto error;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		machine_data->clk_frequency = be32_to_cpup(iprop);
 	} else if (strcasecmp(sprop, "i2s-master") == 0) {
 		machine_data->dai_format =
@@ -514,6 +585,8 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 	} else if (strcasecmp(sprop, "ac97-master") == 0) {
 		machine_data->dai_format =
 			SND_SOC_DAIFMT_AC97 | SND_SOC_DAIFMT_CBS_CFS;
+<<<<<<< HEAD
+=======
 =======
 		machine_data->clk_frequency = *iprop;
 	} else if (strcasecmp(sprop, "i2s-master") == 0) {
@@ -543,6 +616,7 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 	} else if (strcasecmp(sprop, "ac97-master") == 0) {
 		machine_data->dai_format = SND_SOC_DAIFMT_AC97;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		machine_data->codec_clk_direction = SND_SOC_CLOCK_IN;
 		machine_data->cpu_clk_direction = SND_SOC_CLOCK_OUT;
 	} else {
@@ -608,8 +682,12 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		goto error_sound;
 =======
+<<<<<<< HEAD
+		goto error_sound;
+=======
 		goto error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	dev_set_drvdata(&pdev->dev, sound_device);
 
@@ -618,12 +696,17 @@ static int mpc8610_hpcd_probe(struct platform_device *pdev)
 	return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error_sound:
 	platform_device_put(sound_device);
 error:
 	kfree(machine_data);
 error_alloc:
 	of_node_put(codec_np);
+<<<<<<< HEAD
+=======
 =======
 error:
 	of_node_put(codec_np);
@@ -634,6 +717,7 @@ error:
 	kfree(machine_data);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -666,8 +750,12 @@ static struct platform_driver mpc8610_hpcd_driver = {
 <<<<<<< HEAD
 		/* The name must match 'compatible' property in the device tree,
 =======
+<<<<<<< HEAD
+		/* The name must match 'compatible' property in the device tree,
+=======
 		/* The name must match the 'model' property in the device tree,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * in lowercase letters.
 		 */
 		.name = "snd-soc-mpc8610hpcd",

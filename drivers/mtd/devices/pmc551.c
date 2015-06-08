@@ -93,6 +93,54 @@
 #include <linux/fs.h>
 #include <linux/ioctl.h>
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/pci.h>
+#include <linux/mtd/mtd.h>
+
+#define PMC551_VERSION \
+	"Ramix PMC551 PCI Mezzanine Ram Driver. (C) 1999,2000 Nortel Networks.\n"
+
+#define PCI_VENDOR_ID_V3_SEMI 0x11b0
+#define PCI_DEVICE_ID_V3_SEMI_V370PDC 0x0200
+
+#define PMC551_PCI_MEM_MAP0 0x50
+#define PMC551_PCI_MEM_MAP1 0x54
+#define PMC551_PCI_MEM_MAP_MAP_ADDR_MASK 0x3ff00000
+#define PMC551_PCI_MEM_MAP_APERTURE_MASK 0x000000f0
+#define PMC551_PCI_MEM_MAP_REG_EN 0x00000002
+#define PMC551_PCI_MEM_MAP_ENABLE 0x00000001
+
+#define PMC551_SDRAM_MA  0x60
+#define PMC551_SDRAM_CMD 0x62
+#define PMC551_DRAM_CFG  0x64
+#define PMC551_SYS_CTRL_REG 0x78
+
+#define PMC551_DRAM_BLK0 0x68
+#define PMC551_DRAM_BLK1 0x6c
+#define PMC551_DRAM_BLK2 0x70
+#define PMC551_DRAM_BLK3 0x74
+#define PMC551_DRAM_BLK_GET_SIZE(x) (524288 << ((x >> 4) & 0x0f))
+#define PMC551_DRAM_BLK_SET_COL_MUX(x, v) (((x) & ~0x00007000) | (((v) & 0x7) << 12))
+#define PMC551_DRAM_BLK_SET_ROW_MUX(x, v) (((x) & ~0x00000f00) | (((v) & 0xf) << 8))
+
+struct mypriv {
+	struct pci_dev *dev;
+	u_char *start;
+	u32 base_map0;
+	u32 curr_map0;
+	u32 asize;
+	struct mtd_info *nextpmc551;
+};
+
+static struct mtd_info *pmc551list;
+
+static int pmc551_point(struct mtd_info *mtd, loff_t from, size_t len,
+			size_t *retlen, void **virt, resource_size_t *phys);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/system.h>
 #include <linux/pci.h>
 
@@ -101,6 +149,10 @@
 
 static struct mtd_info *pmc551list;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pmc551_erase(struct mtd_info *mtd, struct erase_info *instr)
 {
 	struct mypriv *priv = mtd->priv;
@@ -116,6 +168,11 @@ static int pmc551_erase(struct mtd_info *mtd, struct erase_info *instr)
 #endif
 
 	end = instr->addr + instr->len - 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Is it past the end? */
 	if (end > mtd->size) {
@@ -126,6 +183,10 @@ static int pmc551_erase(struct mtd_info *mtd, struct erase_info *instr)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eoff_hi = end & ~(priv->asize - 1);
 	soff_hi = instr->addr & ~(priv->asize - 1);
 	eoff_lo = end & (priv->asize - 1);
@@ -179,6 +240,11 @@ static int pmc551_point(struct mtd_info *mtd, loff_t from, size_t len,
 	printk(KERN_DEBUG "pmc551_point(%ld, %ld)\n", (long)from, (long)len);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (from + len > mtd->size) {
 #ifdef CONFIG_MTD_PMC551_DEBUG
 		printk(KERN_DEBUG "pmc551_point() out of bounds (%ld > %ld)\n",
@@ -191,6 +257,10 @@ static int pmc551_point(struct mtd_info *mtd, loff_t from, size_t len,
 	if (phys)
 		return -EINVAL;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	soff_hi = from & ~(priv->asize - 1);
 	soff_lo = from & (priv->asize - 1);
 
@@ -206,11 +276,26 @@ static int pmc551_point(struct mtd_info *mtd, loff_t from, size_t len,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pmc551_unpoint(struct mtd_info *mtd, loff_t from, size_t len)
+=======
 static void pmc551_unpoint(struct mtd_info *mtd, loff_t from, size_t len)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void pmc551_unpoint(struct mtd_info *mtd, loff_t from, size_t len)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_MTD_PMC551_DEBUG
 	printk(KERN_DEBUG "pmc551_unpoint()\n");
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int pmc551_read(struct mtd_info *mtd, loff_t from, size_t len,
@@ -229,6 +314,11 @@ static int pmc551_read(struct mtd_info *mtd, loff_t from, size_t len,
 #endif
 
 	end = from + len - 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Is it past the end? */
 	if (end > mtd->size) {
@@ -239,6 +329,10 @@ static int pmc551_read(struct mtd_info *mtd, loff_t from, size_t len,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	soff_hi = from & ~(priv->asize - 1);
 	eoff_hi = end & ~(priv->asize - 1);
 	soff_lo = from & (priv->asize - 1);
@@ -296,6 +390,11 @@ static int pmc551_write(struct mtd_info *mtd, loff_t to, size_t len,
 #endif
 
 	end = to + len - 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Is it past the end?  or did the u32 wrap? */
 	if (end > mtd->size) {
 #ifdef CONFIG_MTD_PMC551_DEBUG
@@ -306,6 +405,10 @@ static int pmc551_write(struct mtd_info *mtd, loff_t to, size_t len,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	soff_hi = to & ~(priv->asize - 1);
 	eoff_hi = end & ~(priv->asize - 1);
 	soff_lo = to & (priv->asize - 1);
@@ -359,7 +462,15 @@ static int pmc551_write(struct mtd_info *mtd, loff_t to, size_t len,
  * mechanism
  * returns the size of the memory region found.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int fixup_pmc551(struct pci_dev *dev)
+=======
 static u32 fixup_pmc551(struct pci_dev *dev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u32 fixup_pmc551(struct pci_dev *dev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_MTD_PMC551_BUGFIX
 	u32 dram_data;
@@ -669,7 +780,15 @@ static int __init init_pmc551(void)
 	struct mypriv *priv;
 	int found = 0;
 	struct mtd_info *mtd;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int length = 0;
+=======
 	u32 length = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 length = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (msize) {
 		msize = (1 << (ffs(msize) - 1)) << 20;
@@ -787,11 +906,25 @@ static int __init init_pmc551(void)
 
 		mtd->size = msize;
 		mtd->flags = MTD_CAP_RAM;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mtd->_erase = pmc551_erase;
+		mtd->_read = pmc551_read;
+		mtd->_write = pmc551_write;
+		mtd->_point = pmc551_point;
+		mtd->_unpoint = pmc551_unpoint;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mtd->erase = pmc551_erase;
 		mtd->read = pmc551_read;
 		mtd->write = pmc551_write;
 		mtd->point = pmc551_point;
 		mtd->unpoint = pmc551_unpoint;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mtd->type = MTD_RAM;
 		mtd->name = "PMC551 RAM board";
 		mtd->erasesize = 0x10000;

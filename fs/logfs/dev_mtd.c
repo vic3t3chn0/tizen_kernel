@@ -17,8 +17,13 @@
 static int logfs_mtd_read(struct super_block *sb, loff_t ofs, size_t len,
 			void *buf)
 =======
+<<<<<<< HEAD
+static int logfs_mtd_read(struct super_block *sb, loff_t ofs, size_t len,
+			void *buf)
+=======
 static int mtd_read(struct super_block *sb, loff_t ofs, size_t len, void *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mtd_info *mtd = logfs_super(sb)->s_mtd;
 	size_t retlen;
@@ -27,8 +32,12 @@ static int mtd_read(struct super_block *sb, loff_t ofs, size_t len, void *buf)
 <<<<<<< HEAD
 	ret = mtd_read(mtd, ofs, len, &retlen, buf);
 =======
+<<<<<<< HEAD
+	ret = mtd_read(mtd, ofs, len, &retlen, buf);
+=======
 	ret = mtd->read(mtd, ofs, len, &retlen, buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(ret == -EINVAL);
 	if (ret)
 		return ret;
@@ -44,8 +53,13 @@ static int mtd_read(struct super_block *sb, loff_t ofs, size_t len, void *buf)
 static int loffs_mtd_write(struct super_block *sb, loff_t ofs, size_t len,
 			void *buf)
 =======
+<<<<<<< HEAD
+static int loffs_mtd_write(struct super_block *sb, loff_t ofs, size_t len,
+			void *buf)
+=======
 static int mtd_write(struct super_block *sb, loff_t ofs, size_t len, void *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct logfs_super *super = logfs_super(sb);
 	struct mtd_info *mtd = super->s_mtd;
@@ -64,8 +78,12 @@ static int mtd_write(struct super_block *sb, loff_t ofs, size_t len, void *buf)
 <<<<<<< HEAD
 	ret = mtd_write(mtd, ofs, len, &retlen, buf);
 =======
+<<<<<<< HEAD
+	ret = mtd_write(mtd, ofs, len, &retlen, buf);
+=======
 	ret = mtd->write(mtd, ofs, len, &retlen, buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret || (retlen != len))
 		return -EIO;
 
@@ -81,8 +99,12 @@ static int mtd_write(struct super_block *sb, loff_t ofs, size_t len, void *buf)
 <<<<<<< HEAD
  * from logfs_mtd_erase().  What an exercise in futility!
 =======
+<<<<<<< HEAD
+ * from logfs_mtd_erase().  What an exercise in futility!
+=======
  * from mtd_erase().  What an exercise in futility!
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void logfs_erase_callback(struct erase_info *ei)
 {
@@ -93,8 +115,13 @@ static void logfs_erase_callback(struct erase_info *ei)
 static int logfs_mtd_erase_mapping(struct super_block *sb, loff_t ofs,
 				size_t len)
 =======
+<<<<<<< HEAD
+static int logfs_mtd_erase_mapping(struct super_block *sb, loff_t ofs,
+				size_t len)
+=======
 static int mtd_erase_mapping(struct super_block *sb, loff_t ofs, size_t len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct logfs_super *super = logfs_super(sb);
 	struct address_space *mapping = super->s_mapping_inode->i_mapping;
@@ -114,8 +141,12 @@ static int mtd_erase_mapping(struct super_block *sb, loff_t ofs, size_t len)
 <<<<<<< HEAD
 static int logfs_mtd_erase(struct super_block *sb, loff_t ofs, size_t len,
 =======
+<<<<<<< HEAD
+static int logfs_mtd_erase(struct super_block *sb, loff_t ofs, size_t len,
+=======
 static int mtd_erase(struct super_block *sb, loff_t ofs, size_t len,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int ensure_write)
 {
 	struct mtd_info *mtd = logfs_super(sb)->s_mtd;
@@ -136,8 +167,12 @@ static int mtd_erase(struct super_block *sb, loff_t ofs, size_t len,
 <<<<<<< HEAD
 	ret = mtd_erase(mtd, &ei);
 =======
+<<<<<<< HEAD
+	ret = mtd_erase(mtd, &ei);
+=======
 	ret = mtd->erase(mtd, &ei);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return -EIO;
 
@@ -145,6 +180,9 @@ static int mtd_erase(struct super_block *sb, loff_t ofs, size_t len,
 	if (ei.state != MTD_ERASE_DONE)
 		return -EIO;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return logfs_mtd_erase_mapping(sb, ofs, len);
 }
 
@@ -156,6 +194,8 @@ static void logfs_mtd_sync(struct super_block *sb)
 }
 
 static int logfs_mtd_readpage(void *_sb, struct page *page)
+<<<<<<< HEAD
+=======
 =======
 	return mtd_erase_mapping(sb, ofs, len);
 }
@@ -170,6 +210,7 @@ static void mtd_sync(struct super_block *sb)
 
 static int mtd_readpage(void *_sb, struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = _sb;
 	int err;
@@ -177,8 +218,12 @@ static int mtd_readpage(void *_sb, struct page *page)
 <<<<<<< HEAD
 	err = logfs_mtd_read(sb, page->index << PAGE_SHIFT, PAGE_SIZE,
 =======
+<<<<<<< HEAD
+	err = logfs_mtd_read(sb, page->index << PAGE_SHIFT, PAGE_SIZE,
+=======
 	err = mtd_read(sb, page->index << PAGE_SHIFT, PAGE_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			page_address(page));
 	if (err == -EUCLEAN || err == -EBADMSG) {
 		/* -EBADMSG happens regularly on power failures */
@@ -197,6 +242,9 @@ static int mtd_readpage(void *_sb, struct page *page)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct page *logfs_mtd_find_first_sb(struct super_block *sb, u64 *ofs)
 {
 	struct logfs_super *super = logfs_super(sb);
@@ -206,6 +254,8 @@ static struct page *logfs_mtd_find_first_sb(struct super_block *sb, u64 *ofs)
 
 	*ofs = 0;
 	while (mtd_block_isbad(mtd, *ofs)) {
+<<<<<<< HEAD
+=======
 =======
 static struct page *mtd_find_first_sb(struct super_block *sb, u64 *ofs)
 {
@@ -220,6 +270,7 @@ static struct page *mtd_find_first_sb(struct super_block *sb, u64 *ofs)
 	*ofs = 0;
 	while (mtd->block_isbad(mtd, *ofs)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*ofs += mtd->erasesize;
 		if (*ofs >= mtd->size)
 			return NULL;
@@ -229,6 +280,9 @@ static struct page *mtd_find_first_sb(struct super_block *sb, u64 *ofs)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct page *logfs_mtd_find_last_sb(struct super_block *sb, u64 *ofs)
 {
 	struct logfs_super *super = logfs_super(sb);
@@ -238,6 +292,8 @@ static struct page *logfs_mtd_find_last_sb(struct super_block *sb, u64 *ofs)
 
 	*ofs = mtd->size - mtd->erasesize;
 	while (mtd_block_isbad(mtd, *ofs)) {
+<<<<<<< HEAD
+=======
 =======
 static struct page *mtd_find_last_sb(struct super_block *sb, u64 *ofs)
 {
@@ -252,6 +308,7 @@ static struct page *mtd_find_last_sb(struct super_block *sb, u64 *ofs)
 	*ofs = mtd->size - mtd->erasesize;
 	while (mtd->block_isbad(mtd, *ofs)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*ofs -= mtd->erasesize;
 		if (*ofs <= 0)
 			return NULL;
@@ -264,8 +321,12 @@ static struct page *mtd_find_last_sb(struct super_block *sb, u64 *ofs)
 <<<<<<< HEAD
 static int __logfs_mtd_writeseg(struct super_block *sb, u64 ofs, pgoff_t index,
 =======
+<<<<<<< HEAD
+static int __logfs_mtd_writeseg(struct super_block *sb, u64 ofs, pgoff_t index,
+=======
 static int __mtd_writeseg(struct super_block *sb, u64 ofs, pgoff_t index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		size_t nr_pages)
 {
 	struct logfs_super *super = logfs_super(sb);
@@ -281,9 +342,14 @@ static int __mtd_writeseg(struct super_block *sb, u64 ofs, pgoff_t index,
 		err = loffs_mtd_write(sb, page->index << PAGE_SHIFT, PAGE_SIZE,
 					page_address(page));
 =======
+<<<<<<< HEAD
+		err = loffs_mtd_write(sb, page->index << PAGE_SHIFT, PAGE_SIZE,
+					page_address(page));
+=======
 		err = mtd_write(sb, page->index << PAGE_SHIFT, PAGE_SIZE,
 				page_address(page));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unlock_page(page);
 		page_cache_release(page);
 		if (err)
@@ -295,8 +361,12 @@ static int __mtd_writeseg(struct super_block *sb, u64 ofs, pgoff_t index,
 <<<<<<< HEAD
 static void logfs_mtd_writeseg(struct super_block *sb, u64 ofs, size_t len)
 =======
+<<<<<<< HEAD
+static void logfs_mtd_writeseg(struct super_block *sb, u64 ofs, size_t len)
+=======
 static void mtd_writeseg(struct super_block *sb, u64 ofs, size_t len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct logfs_super *super = logfs_super(sb);
 	int head;
@@ -318,16 +388,22 @@ static void mtd_writeseg(struct super_block *sb, u64 ofs, size_t len)
 	}
 	len = PAGE_ALIGN(len);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__logfs_mtd_writeseg(sb, ofs, ofs >> PAGE_SHIFT, len >> PAGE_SHIFT);
 }
 
 static void logfs_mtd_put_device(struct logfs_super *s)
+<<<<<<< HEAD
+=======
 =======
 	__mtd_writeseg(sb, ofs, ofs >> PAGE_SHIFT, len >> PAGE_SHIFT);
 }
 
 static void mtd_put_device(struct logfs_super *s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	put_mtd_device(s->s_mtd);
 }
@@ -335,8 +411,12 @@ static void mtd_put_device(struct logfs_super *s)
 <<<<<<< HEAD
 static int logfs_mtd_can_write_buf(struct super_block *sb, u64 ofs)
 =======
+<<<<<<< HEAD
+static int logfs_mtd_can_write_buf(struct super_block *sb, u64 ofs)
+=======
 static int mtd_can_write_buf(struct super_block *sb, u64 ofs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct logfs_super *super = logfs_super(sb);
 	void *buf;
@@ -348,8 +428,12 @@ static int mtd_can_write_buf(struct super_block *sb, u64 ofs)
 <<<<<<< HEAD
 	err = logfs_mtd_read(sb, ofs, super->s_writesize, buf);
 =======
+<<<<<<< HEAD
+	err = logfs_mtd_read(sb, ofs, super->s_writesize, buf);
+=======
 	err = mtd_read(sb, ofs, super->s_writesize, buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 	if (memchr_inv(buf, 0xff, super->s_writesize))
@@ -361,6 +445,9 @@ out:
 
 static const struct logfs_device_ops mtd_devops = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.find_first_sb	= logfs_mtd_find_first_sb,
 	.find_last_sb	= logfs_mtd_find_last_sb,
 	.readpage	= logfs_mtd_readpage,
@@ -369,6 +456,8 @@ static const struct logfs_device_ops mtd_devops = {
 	.can_write_buf	= logfs_mtd_can_write_buf,
 	.sync		= logfs_mtd_sync,
 	.put_device	= logfs_mtd_put_device,
+<<<<<<< HEAD
+=======
 =======
 	.find_first_sb	= mtd_find_first_sb,
 	.find_last_sb	= mtd_find_last_sb,
@@ -379,6 +468,7 @@ static const struct logfs_device_ops mtd_devops = {
 	.sync		= mtd_sync,
 	.put_device	= mtd_put_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int logfs_get_sb_mtd(struct logfs_super *s, int mtdnr)

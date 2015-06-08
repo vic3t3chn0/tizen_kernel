@@ -5,8 +5,12 @@
 <<<<<<< HEAD
 #include "ext3.h"
 =======
+<<<<<<< HEAD
+#include "ext3.h"
+=======
 #include <linux/ext3_jbd.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __ext3_journal_get_undo_access(const char *where, handle_t *handle,
 				struct buffer_head *bh)

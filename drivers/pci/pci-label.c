@@ -55,7 +55,15 @@ enum smbios_attr_enum {
 	SMBIOS_ATTR_INSTANCE_SHOW,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static size_t
+=======
 static mode_t
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 find_smbios_instance_string(struct pci_dev *pdev, char *buf,
 			    enum smbios_attr_enum attribute)
 {
@@ -89,7 +97,15 @@ find_smbios_instance_string(struct pci_dev *pdev, char *buf,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t
+=======
 static mode_t
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 smbios_instance_string_exist(struct kobject *kobj, struct attribute *attr,
 			     int n)
 {
@@ -275,7 +291,15 @@ device_has_dsm(struct device *dev)
 	return FALSE;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t
+=======
 static mode_t
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 acpi_index_string_exist(struct kobject *kobj, struct attribute *attr, int n)
 {
 	struct device *dev;

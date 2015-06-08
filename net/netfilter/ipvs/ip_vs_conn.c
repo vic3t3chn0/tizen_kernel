@@ -619,8 +619,12 @@ struct ip_vs_dest *ip_vs_try_bind_dest(struct ip_vs_conn *cp)
 <<<<<<< HEAD
 				       cp->protocol, cp->fwmark, cp->flags);
 =======
+<<<<<<< HEAD
+				       cp->protocol, cp->fwmark, cp->flags);
+=======
 				       cp->protocol, cp->fwmark);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ip_vs_bind_dest(cp, dest);
 		return dest;
 	} else
@@ -1262,8 +1266,12 @@ flush_again:
 <<<<<<< HEAD
 int __net_init ip_vs_conn_net_init(struct net *net)
 =======
+<<<<<<< HEAD
+int __net_init ip_vs_conn_net_init(struct net *net)
+=======
 int __net_init __ip_vs_conn_init(struct net *net)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct netns_ipvs *ipvs = net_ipvs(net);
 
@@ -1277,8 +1285,12 @@ int __net_init __ip_vs_conn_init(struct net *net)
 <<<<<<< HEAD
 void __net_exit ip_vs_conn_net_cleanup(struct net *net)
 =======
+<<<<<<< HEAD
+void __net_exit ip_vs_conn_net_cleanup(struct net *net)
+=======
 void __net_exit __ip_vs_conn_cleanup(struct net *net)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* flush all the connection entries first */
 	ip_vs_conn_flush(net);

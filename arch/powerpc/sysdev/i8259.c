@@ -28,8 +28,12 @@ static DEFINE_RAW_SPINLOCK(i8259_lock);
 <<<<<<< HEAD
 static struct irq_domain *i8259_host;
 =======
+<<<<<<< HEAD
+static struct irq_domain *i8259_host;
+=======
 static struct irq_host *i8259_host;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Acknowledge the IRQ using either the PCI host bridge's interrupt
@@ -170,8 +174,12 @@ static struct resource pic_edgectrl_iores = {
 <<<<<<< HEAD
 static int i8259_host_match(struct irq_domain *h, struct device_node *node)
 =======
+<<<<<<< HEAD
+static int i8259_host_match(struct irq_domain *h, struct device_node *node)
+=======
 static int i8259_host_match(struct irq_host *h, struct device_node *node)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return h->of_node == NULL || h->of_node == node;
 }
@@ -179,8 +187,12 @@ static int i8259_host_match(struct irq_host *h, struct device_node *node)
 <<<<<<< HEAD
 static int i8259_host_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int i8259_host_map(struct irq_domain *h, unsigned int virq,
+=======
 static int i8259_host_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  irq_hw_number_t hw)
 {
 	pr_debug("i8259_host_map(%d, 0x%lx)\n", virq, hw);
@@ -200,8 +212,12 @@ static int i8259_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static int i8259_host_xlate(struct irq_domain *h, struct device_node *ct,
 =======
+<<<<<<< HEAD
+static int i8259_host_xlate(struct irq_domain *h, struct device_node *ct,
+=======
 static int i8259_host_xlate(struct irq_host *h, struct device_node *ct,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    const u32 *intspec, unsigned int intsize,
 			    irq_hw_number_t *out_hwirq, unsigned int *out_flags)
 {
@@ -224,8 +240,12 @@ static int i8259_host_xlate(struct irq_host *h, struct device_node *ct,
 <<<<<<< HEAD
 static struct irq_domain_ops i8259_host_ops = {
 =======
+<<<<<<< HEAD
+static struct irq_domain_ops i8259_host_ops = {
+=======
 static struct irq_host_ops i8259_host_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.match = i8259_host_match,
 	.map = i8259_host_map,
 	.xlate = i8259_host_xlate,
@@ -234,8 +254,12 @@ static struct irq_host_ops i8259_host_ops = {
 <<<<<<< HEAD
 struct irq_domain *i8259_get_host(void)
 =======
+<<<<<<< HEAD
+struct irq_domain *i8259_get_host(void)
+=======
 struct irq_host *i8259_get_host(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return i8259_host;
 }
@@ -290,9 +314,13 @@ void i8259_init(struct device_node *node, unsigned long intack_addr)
 <<<<<<< HEAD
 	i8259_host = irq_domain_add_legacy_isa(node, &i8259_host_ops, NULL);
 =======
+<<<<<<< HEAD
+	i8259_host = irq_domain_add_legacy_isa(node, &i8259_host_ops, NULL);
+=======
 	i8259_host = irq_alloc_host(node, IRQ_HOST_MAP_LEGACY,
 				    0, &i8259_host_ops, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (i8259_host == NULL) {
 		printk(KERN_ERR "i8259: failed to allocate irq host !\n");
 		return;

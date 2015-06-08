@@ -31,6 +31,26 @@ char kdb_prompt_str[CMD_BUFLEN];
 
 int kdb_trap_printk;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int kgdb_transition_check(char *buffer)
+{
+	if (buffer[0] != '+' && buffer[0] != '$') {
+		KDB_STATE_SET(KGDB_TRANS);
+		kdb_printf("%s", buffer);
+	} else {
+		int slen = strlen(buffer);
+		if (slen > 3 && buffer[slen - 3] == '#') {
+			kdb_gdb_state_pass(buffer);
+			strcpy(buffer, "kgdb");
+			KDB_STATE_SET(DOING_KGDB);
+			return 1;
+		}
+	}
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void kgdb_transition_check(char *buffer)
 {
 	int slen = strlen(buffer);
@@ -40,6 +60,10 @@ static void kgdb_transition_check(char *buffer)
 		KDB_STATE_SET(KGDB_TRANS);
 		kdb_printf("%s", buffer);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int kdb_read_get_key(char *buffer, size_t bufsize)
@@ -210,7 +234,15 @@ static char *kdb_read(char *buffer, size_t bufsize)
 	int i;
 	int diag, dtab_count;
 	int key;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static int last_crlf;
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	diag = kdbgetintenv("DTABCOUNT", &dtab_count);
 	if (diag)
@@ -231,6 +263,15 @@ poll_again:
 		return buffer;
 	if (key != 9)
 		tab = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (key != 10 && key != 13)
+		last_crlf = 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (key) {
 	case 8: /* backspace */
 		if (cp > buffer) {
@@ -248,9 +289,30 @@ poll_again:
 			*cp = tmp;
 		}
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 10: /* new line */
+	case 13: /* carriage return */
+		/* handle \n after \r */
+		if (last_crlf && last_crlf != key)
+			break;
+		last_crlf = key;
+		*lastchar++ = '\n';
+		*lastchar++ = '\0';
+		if (!KDB_STATE(KGDB_TRANS)) {
+			KDB_STATE_SET(KGDB_TRANS);
+			kdb_printf("%s", buffer);
+		}
+=======
 	case 13: /* enter */
 		*lastchar++ = '\n';
 		*lastchar++ = '\0';
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case 13: /* enter */
+		*lastchar++ = '\n';
+		*lastchar++ = '\0';
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kdb_printf("\n");
 		return buffer;
 	case 4: /* Del */
@@ -382,22 +444,58 @@ poll_again:
 				 * printed characters if we think that
 				 * kgdb is connecting, until the check
 				 * fails */
+<<<<<<< HEAD
+<<<<<<< HEAD
+				if (!KDB_STATE(KGDB_TRANS)) {
+					if (kgdb_transition_check(buffer))
+						return buffer;
+				} else {
+					kdb_printf("%c", key);
+				}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (!KDB_STATE(KGDB_TRANS))
 					kgdb_transition_check(buffer);
 				else
 					kdb_printf("%c", key);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			/* Special escape to kgdb */
 			if (lastchar - buffer >= 5 &&
 			    strcmp(lastchar - 5, "$?#3f") == 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				kdb_gdb_state_pass(lastchar - 5);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				strcpy(buffer, "kgdb");
 				KDB_STATE_SET(DOING_KGDB);
 				return buffer;
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (lastchar - buffer >= 11 &&
+			    strcmp(lastchar - 11, "$qSupported") == 0) {
+				kdb_gdb_state_pass(lastchar - 11);
+				strcpy(buffer, "kgdb");
+				KDB_STATE_SET(DOING_KGDB);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (lastchar - buffer >= 14 &&
 			    strcmp(lastchar - 14, "$qSupported#37") == 0) {
 				strcpy(buffer, "kgdb");
 				KDB_STATE_SET(DOING_KGDB2);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return buffer;
 			}
 		}
@@ -675,7 +773,15 @@ kdb_printit:
 	if (!dbg_kdb_mode && kgdb_connected) {
 		gdbstub_msg_write(kdb_buffer, retlen);
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (dbg_io_ops && !dbg_io_ops->is_console) {
+=======
 		if (!dbg_io_ops->is_console) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!dbg_io_ops->is_console) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			len = strlen(kdb_buffer);
 			cp = kdb_buffer;
 			while (len--) {
@@ -729,7 +835,15 @@ kdb_printit:
 		kdb_input_flush();
 		c = console_drivers;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (dbg_io_ops && !dbg_io_ops->is_console) {
+=======
 		if (!dbg_io_ops->is_console) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!dbg_io_ops->is_console) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			len = strlen(moreprompt);
 			cp = moreprompt;
 			while (len--) {

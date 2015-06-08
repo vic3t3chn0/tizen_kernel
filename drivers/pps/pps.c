@@ -369,9 +369,21 @@ static int __init pps_init(void)
 	int err;
 
 	pps_class = class_create(THIS_MODULE, "pps");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (IS_ERR(pps_class)) {
+		pr_err("failed to allocate class\n");
+		return PTR_ERR(pps_class);
+=======
 	if (!pps_class) {
 		pr_err("failed to allocate class\n");
 		return -ENOMEM;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!pps_class) {
+		pr_err("failed to allocate class\n");
+		return -ENOMEM;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	pps_class->dev_attrs = pps_attrs;
 

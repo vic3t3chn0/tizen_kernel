@@ -6,8 +6,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kallsyms.h>
 #include <linux/sched.h>
 
@@ -29,8 +33,12 @@ notrace unsigned int debug_smp_processor_id(void)
 <<<<<<< HEAD
 	if (cpumask_equal(tsk_cpus_allowed(current), cpumask_of(this_cpu)))
 =======
+<<<<<<< HEAD
+	if (cpumask_equal(tsk_cpus_allowed(current), cpumask_of(this_cpu)))
+=======
 	if (cpumask_equal(&current->cpus_allowed, cpumask_of(this_cpu)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	/*

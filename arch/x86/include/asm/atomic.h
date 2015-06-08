@@ -176,14 +176,22 @@ static inline int atomic_add_return(int i, atomic_t *v)
 #ifdef CONFIG_M386
 	int __i;
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_M386
+	int __i;
+=======
 	int __i;
 #ifdef CONFIG_M386
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	if (unlikely(boot_cpu_data.x86 <= 3))
 		goto no_xadd;
 #endif
 	/* Modern 486+ processor */
+<<<<<<< HEAD
+	return i + xadd(&v->counter, i);
+=======
 <<<<<<< HEAD
 	return i + xadd(&v->counter, i);
 =======
@@ -193,6 +201,7 @@ static inline int atomic_add_return(int i, atomic_t *v)
 		     : : "memory");
 	return i + __i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_M386
 no_xadd: /* Legacy 386 processor */
@@ -233,8 +242,12 @@ static inline int atomic_xchg(atomic_t *v, int new)
 <<<<<<< HEAD
  * __atomic_add_unless - add unless the number is already a given value
 =======
+<<<<<<< HEAD
+ * __atomic_add_unless - add unless the number is already a given value
+=======
  * atomic_add_unless - add unless the number is already a given value
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @v: pointer of type atomic_t
  * @a: the amount to add to v...
  * @u: ...unless v is equal to u.
@@ -245,10 +258,16 @@ static inline int atomic_xchg(atomic_t *v, int new)
  */
 static inline int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+ * Returns the old value of @v.
+ */
+static inline int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
  * Returns non-zero if @v was not @u, and zero otherwise.
  */
 static inline int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int c, old;
 	c = atomic_read(v);
@@ -265,11 +284,17 @@ static inline int atomic_add_unless(atomic_t *v, int a, int u)
 }
 
 =======
+<<<<<<< HEAD
+	return c;
+}
+
+=======
 	return c != (u);
 }
 
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * atomic_dec_if_positive - decrement by 1 if old value positive
@@ -346,6 +371,9 @@ static inline void atomic_or_long(unsigned long *v1, unsigned long v2)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/atomic-long.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_X86_ATOMIC_H */

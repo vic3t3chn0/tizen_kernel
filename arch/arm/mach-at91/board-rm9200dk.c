@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -47,9 +51,14 @@
 #include <mach/at91rm9200_mc.h>
 #include <mach/at91_ramc.h>
 =======
+<<<<<<< HEAD
+#include <mach/at91rm9200_mc.h>
+#include <mach/at91_ramc.h>
+=======
 #include <mach/gpio.h>
 #include <mach/at91rm9200_mc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -60,8 +69,12 @@ static void __init dk_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91rm9200_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Setup the LEDs */
 	at91_init_leds(AT91_PIN_PB2, AT91_PIN_PB2);
@@ -81,6 +94,9 @@ static void __init dk_init_early(void)
 <<<<<<< HEAD
 static struct macb_platform_data __initdata dk_eth_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata dk_eth_data = {
+=======
 static void __init dk_init_irq(void)
 {
 	at91rm9200_init_interrupts(NULL);
@@ -88,6 +104,7 @@ static void __init dk_init_irq(void)
 
 static struct at91_eth_data __initdata dk_eth_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PC4,
 	.is_rmii	= 1,
 };
@@ -98,7 +115,12 @@ static struct at91_usbh_data __initdata dk_usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_udc_data __initdata dk_udc_data = {
@@ -108,16 +130,22 @@ static struct at91_udc_data __initdata dk_udc_data = {
 
 static struct at91_cf_data __initdata dk_cf_data = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.irq_pin	= -EINVAL,
 	.det_pin	= AT91_PIN_PB0,
 	.vcc_pin	= -EINVAL,
 	.rst_pin	= AT91_PIN_PC5,
+<<<<<<< HEAD
+=======
 =======
 	.det_pin	= AT91_PIN_PB0,
 	.rst_pin	= AT91_PIN_PC5,
 	// .irq_pin	= ... not connected
 	// .vcc_pin	= ... always powered
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifndef CONFIG_MTD_AT91_DATAFLASH_CARD
@@ -129,7 +157,13 @@ static struct at91_mmc_data __initdata dk_mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.det_pin	= -EINVAL,
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -180,6 +214,8 @@ static struct mtd_partition __initdata dk_nand_partition[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct mtd_partition * __init nand_partitions(int size, int *num_partitions)
 {
 	*num_partitions = ARRAY_SIZE(dk_nand_partition);
@@ -187,21 +223,28 @@ static struct mtd_partition * __init nand_partitions(int size, int *num_partitio
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct atmel_nand_data __initdata dk_nand_data = {
 	.ale		= 22,
 	.cle		= 21,
 	.det_pin	= AT91_PIN_PB1,
 	.rdy_pin	= AT91_PIN_PC2,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.enable_pin	= -EINVAL,
 	.ecc_mode	= NAND_ECC_SOFT,
 	.on_flash_bbt	= 1,
 	.parts		= dk_nand_partition,
 	.num_parts	= ARRAY_SIZE(dk_nand_partition),
+<<<<<<< HEAD
+=======
 =======
 	// .enable_pin	= ... not there
 	.partition_info	= nand_partitions,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define DK_FLASH_BASE	AT91_CHIPSELECT_0
@@ -279,9 +322,15 @@ MACHINE_START(AT91RM9200DK, "Atmel AT91RM9200-DK")
 	.init_early	= dk_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= dk_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91rm9200_map_io,
 	.init_early	= dk_init_early,
 	.init_irq	= dk_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= dk_board_init,
 MACHINE_END

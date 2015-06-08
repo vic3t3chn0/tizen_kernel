@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #define FPSID_ARCH_MASK		(0x7F  << FPSID_ARCH_BIT)
 =======
+<<<<<<< HEAD
+#define FPSID_ARCH_MASK		(0x7F  << FPSID_ARCH_BIT)
+=======
 #define FPSID_ARCH_MASK		(0xF  << FPSID_ARCH_BIT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FPSID_PART_BIT		(8)
 #define FPSID_PART_MASK		(0xFF << FPSID_PART_BIT)
 #define FPSID_VARIANT_BIT	(4)
@@ -87,10 +91,16 @@
 #define VFPOPDESC_UNUSED_MASK	(0xFF << VFPOPDESC_UNUSED_BIT)
 #define VFPOPDESC_OPDESC_MASK	(~(VFPOPDESC_LENGTH_MASK | VFPOPDESC_UNUSED_MASK))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __ASSEMBLY__
 int vfp_pm_suspend(void);
 void vfp_pm_resume(void);
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

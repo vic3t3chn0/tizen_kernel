@@ -256,8 +256,11 @@ static int isofs_readdir(struct file *filp,
 	struct inode *inode = filp->f_path.dentry->d_inode;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct isofs_sb_info *sbi = ISOFS_SB(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tmpname = (char *)__get_free_page(GFP_KERNEL);
 	if (tmpname == NULL)
@@ -265,8 +268,11 @@ static int isofs_readdir(struct file *filp,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_lock(&sbi->s_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tmpde = (struct iso_directory_record *) (tmpname+1024);
 
 	result = do_isofs_readdir(inode, filp, dirent, filldir, tmpname, tmpde);
@@ -274,8 +280,11 @@ static int isofs_readdir(struct file *filp,
 	free_page((unsigned long) tmpname);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&sbi->s_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }
 

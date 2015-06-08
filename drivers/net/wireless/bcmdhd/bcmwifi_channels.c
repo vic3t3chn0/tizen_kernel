@@ -440,7 +440,15 @@ wf_chspec_aton(const char *a)
 		return 0;
 
 	
+<<<<<<< HEAD
+<<<<<<< HEAD
+	c = tolower(a[0]);
+=======
 	c = tolower((int)a[0]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	c = tolower((int)a[0]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (c == 'g') {
 		a ++; 
 
@@ -456,7 +464,15 @@ wf_chspec_aton(const char *a)
 		if (!read_uint(&a, &ctl_ch))
 			return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		c = tolower(a[0]);
+=======
 		c = tolower((int)a[0]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		c = tolower((int)a[0]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	else {
 		
@@ -503,7 +519,15 @@ wf_chspec_aton(const char *a)
 
 	
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	c = tolower(a[0]);
+=======
 	c = tolower((int)a[0]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	c = tolower((int)a[0]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	
 	if (chspec_band == WL_CHANSPEC_BAND_2G && bw == 40) {
@@ -842,6 +866,11 @@ wf_chspec_ctlchspec(chanspec_t chspec)
 	return ctl_chspec;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 uint16
 wf_channel2chspec(uint ctl_ch, uint bw)
@@ -892,6 +921,10 @@ wf_channel2chspec(uint ctl_ch, uint bw)
 	return chspec;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif 
 
 

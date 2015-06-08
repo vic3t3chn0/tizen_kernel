@@ -1,4 +1,30 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * amc6821.c - Part of lm_sensors, Linux kernel modules for hardware
+ *	       monitoring
+ * Copyright (C) 2009 T. Mertelj <tomaz.mertelj@guest.arnes.si>
+ *
+ * Based on max6650.c:
+ * Copyright (C) 2007 Hans J. Koch <hjk@hansjkoch.de>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	amc6821.c - Part of lm_sensors, Linux kernel modules for hardware
 	monitoring
 	Copyright (C) 2009 T. Mertelj <tomaz.mertelj@guest.arnes.si>
@@ -20,6 +46,10 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 #include <linux/kernel.h>	/* Needed for KERN_INFO */
@@ -47,7 +77,15 @@ static const unsigned short normal_i2c[] = {0x18, 0x19, 0x1a, 0x2c, 0x2d, 0x2e,
  * Insmod parameters
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pwminv;	/*Inverted PWM output. */
+=======
 static int pwminv = 0;	/*Inverted PWM output. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int pwminv = 0;	/*Inverted PWM output. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(pwminv, int, S_IRUGO);
 
 static int init = 1; /*Power-on initialization.*/
@@ -188,7 +226,15 @@ static struct i2c_driver amc6821_driver = {
 
 /*
  * Client data (each client gets its own)
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+=======
   */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+  */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct amc6821_data {
 	struct device *hwmon_dev;
@@ -238,7 +284,15 @@ static ssize_t set_temp(
 	int ix = to_sensor_dev_attr(attr)->index;
 	long val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = kstrtol(buf, 10, &val);
+=======
 	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 	val = SENSORS_LIMIT(val / 1000, -128, 127);
@@ -327,7 +381,15 @@ static ssize_t set_pwm1(
 	struct i2c_client *client = to_i2c_client(dev);
 	struct amc6821_data *data = i2c_get_clientdata(client);
 	long val;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = kstrtol(buf, 10, &val);
+=======
 	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -356,7 +418,15 @@ static ssize_t set_pwm1_enable(
 	struct i2c_client *client = to_i2c_client(dev);
 	struct amc6821_data *data = i2c_get_clientdata(client);
 	long val;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int config = kstrtol(buf, 10, &val);
+=======
 	int config = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int config = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (config)
 		return config;
 
@@ -477,7 +547,15 @@ static ssize_t set_temp_auto_point_temp(
 	u8 reg;
 	int dpwm;
 	long val;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = kstrtol(buf, 10, &val);
+=======
 	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -556,7 +634,15 @@ static ssize_t set_pwm1_auto_point_pwm(
 	struct amc6821_data *data = i2c_get_clientdata(client);
 	int dpwm;
 	long val;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = kstrtol(buf, 10, &val);
+=======
 	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -623,7 +709,15 @@ static ssize_t set_fan(
 	struct amc6821_data *data = i2c_get_clientdata(client);
 	long val;
 	int ix = to_sensor_dev_attr(attr)->index;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = kstrtol(buf, 10, &val);
+=======
 	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 	val = 1 > val ? 0xFFFF : 6000000/val;
@@ -665,7 +759,15 @@ static ssize_t set_fan1_div(
 	struct i2c_client *client = to_i2c_client(dev);
 	struct amc6821_data *data = i2c_get_clientdata(client);
 	long val;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int config = kstrtol(buf, 10, &val);
+=======
 	int config = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int config = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (config)
 		return config;
 
@@ -836,8 +938,20 @@ static int amc6821_detect(
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Bit 7 of the address register is ignored, so we can check the
+	 * ID registers again
+	 */
+=======
 	/* Bit 7 of the address register is ignored, so we can check the
 	   ID registers again */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Bit 7 of the address register is ignored, so we can check the
+	   ID registers again */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_id = i2c_smbus_read_byte_data(client, 0x80 | AMC6821_REG_DEV_ID);
 	comp_id = i2c_smbus_read_byte_data(client, 0x80 | AMC6821_REG_COMP_ID);
 	if (dev_id != 0x21 || comp_id != 0x49) {
@@ -1080,9 +1194,22 @@ static struct amc6821_data *amc6821_update_device(struct device *dev)
 			data->pwm1_auto_channels_temp = 3;
 			data->pwm1_enable = 3;
 			break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		case 1: /*
+			 * semi-open loop: software sets rpm, chip controls
+			 * pwm1, currently not implemented
+			 */
+=======
 		case 1: /*semi-open loop: software sets rpm, chip controls pwm1,
 			  *currently not implemented
 			  */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		case 1: /*semi-open loop: software sets rpm, chip controls pwm1,
+			  *currently not implemented
+			  */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			data->pwm1_auto_channels_temp = 0;
 			data->pwm1_enable = 0;
 			break;
@@ -1095,6 +1222,12 @@ static struct amc6821_data *amc6821_update_device(struct device *dev)
 	return data;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(amc6821_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init amc6821_init(void)
 {
@@ -1109,6 +1242,10 @@ static void __exit amc6821_exit(void)
 module_init(amc6821_init);
 module_exit(amc6821_exit);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("T. Mertelj <tomaz.mertelj@guest.arnes.si>");

@@ -90,8 +90,12 @@ void show_registers(struct pt_regs *regs)
 <<<<<<< HEAD
 	__show_regs(regs, !user_mode_vm(regs));
 =======
+<<<<<<< HEAD
+	__show_regs(regs, !user_mode_vm(regs));
+=======
 	__show_regs(regs, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_EMERG "Process %.*s (pid: %d, ti=%p task=%p task.ti=%p)\n",
 		TASK_COMM_LEN, current->comm, task_pid_nr(current),
@@ -121,6 +125,9 @@ void show_registers(struct pt_regs *regs)
 			if (ip < (u8 *)PAGE_OFFSET ||
 					probe_kernel_address(ip, c)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk(KERN_CONT " Bad EIP value.");
 				break;
 			}
@@ -131,6 +138,8 @@ void show_registers(struct pt_regs *regs)
 		}
 	}
 	printk(KERN_CONT "\n");
+<<<<<<< HEAD
+=======
 =======
 				printk(" Bad EIP value.");
 				break;
@@ -143,6 +152,7 @@ void show_registers(struct pt_regs *regs)
 	}
 	printk("\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int is_valid_bugaddr(unsigned long ip)

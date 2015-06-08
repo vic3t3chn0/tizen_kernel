@@ -17,9 +17,14 @@
 #include <linux/export.h>
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/atomic.h>
+=======
 #include <linux/module.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * We use a hashed array of spinlocks to provide exclusive access
@@ -35,11 +40,16 @@
  */
 static union {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t lock;
 	char pad[L1_CACHE_BYTES];
 } atomic64_lock[NR_LOCKS] __cacheline_aligned_in_smp;
 
 static inline raw_spinlock_t *lock_addr(const atomic64_t *v)
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t lock;
 	char pad[L1_CACHE_BYTES];
@@ -47,6 +57,7 @@ static inline raw_spinlock_t *lock_addr(const atomic64_t *v)
 
 static inline spinlock_t *lock_addr(const atomic64_t *v)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long addr = (unsigned long) v;
 
@@ -59,12 +70,17 @@ long long atomic64_read(const atomic64_t *v)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 	long long val;
 
 	raw_spin_lock_irqsave(lock, flags);
 	val = v->counter;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 	long long val;
@@ -73,6 +89,7 @@ long long atomic64_read(const atomic64_t *v)
 	val = v->counter;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return val;
 }
 EXPORT_SYMBOL(atomic64_read);
@@ -81,11 +98,16 @@ void atomic64_set(atomic64_t *v, long long i)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 
 	raw_spin_lock_irqsave(lock, flags);
 	v->counter = i;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 
@@ -93,6 +115,7 @@ void atomic64_set(atomic64_t *v, long long i)
 	v->counter = i;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(atomic64_set);
 
@@ -100,11 +123,16 @@ void atomic64_add(long long a, atomic64_t *v)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 
 	raw_spin_lock_irqsave(lock, flags);
 	v->counter += a;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 
@@ -112,6 +140,7 @@ void atomic64_add(long long a, atomic64_t *v)
 	v->counter += a;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(atomic64_add);
 
@@ -119,12 +148,17 @@ long long atomic64_add_return(long long a, atomic64_t *v)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 	long long val;
 
 	raw_spin_lock_irqsave(lock, flags);
 	val = v->counter += a;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 	long long val;
@@ -133,6 +167,7 @@ long long atomic64_add_return(long long a, atomic64_t *v)
 	val = v->counter += a;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return val;
 }
 EXPORT_SYMBOL(atomic64_add_return);
@@ -141,11 +176,16 @@ void atomic64_sub(long long a, atomic64_t *v)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 
 	raw_spin_lock_irqsave(lock, flags);
 	v->counter -= a;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 
@@ -153,6 +193,7 @@ void atomic64_sub(long long a, atomic64_t *v)
 	v->counter -= a;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(atomic64_sub);
 
@@ -160,12 +201,17 @@ long long atomic64_sub_return(long long a, atomic64_t *v)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 	long long val;
 
 	raw_spin_lock_irqsave(lock, flags);
 	val = v->counter -= a;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 	long long val;
@@ -174,6 +220,7 @@ long long atomic64_sub_return(long long a, atomic64_t *v)
 	val = v->counter -= a;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return val;
 }
 EXPORT_SYMBOL(atomic64_sub_return);
@@ -182,6 +229,9 @@ long long atomic64_dec_if_positive(atomic64_t *v)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 	long long val;
 
@@ -190,6 +240,8 @@ long long atomic64_dec_if_positive(atomic64_t *v)
 	if (val >= 0)
 		v->counter = val;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 	long long val;
@@ -200,6 +252,7 @@ long long atomic64_dec_if_positive(atomic64_t *v)
 		v->counter = val;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return val;
 }
 EXPORT_SYMBOL(atomic64_dec_if_positive);
@@ -208,6 +261,9 @@ long long atomic64_cmpxchg(atomic64_t *v, long long o, long long n)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 	long long val;
 
@@ -216,6 +272,8 @@ long long atomic64_cmpxchg(atomic64_t *v, long long o, long long n)
 	if (val == o)
 		v->counter = n;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 	long long val;
@@ -226,6 +284,7 @@ long long atomic64_cmpxchg(atomic64_t *v, long long o, long long n)
 		v->counter = n;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return val;
 }
 EXPORT_SYMBOL(atomic64_cmpxchg);
@@ -234,6 +293,9 @@ long long atomic64_xchg(atomic64_t *v, long long new)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 	long long val;
 
@@ -241,6 +303,8 @@ long long atomic64_xchg(atomic64_t *v, long long new)
 	val = v->counter;
 	v->counter = new;
 	raw_spin_unlock_irqrestore(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 	long long val;
@@ -250,6 +314,7 @@ long long atomic64_xchg(atomic64_t *v, long long new)
 	v->counter = new;
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return val;
 }
 EXPORT_SYMBOL(atomic64_xchg);
@@ -258,16 +323,22 @@ int atomic64_add_unless(atomic64_t *v, long long a, long long u)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t *lock = lock_addr(v);
 	int ret = 0;
 
 	raw_spin_lock_irqsave(lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t *lock = lock_addr(v);
 	int ret = 0;
 
 	spin_lock_irqsave(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (v->counter != u) {
 		v->counter += a;
 		ret = 1;
@@ -275,8 +346,12 @@ int atomic64_add_unless(atomic64_t *v, long long a, long long u)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(lock, flags);
+=======
 	spin_unlock_irqrestore(lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(atomic64_add_unless);
@@ -289,8 +364,12 @@ static int init_atomic64_lock(void)
 <<<<<<< HEAD
 		raw_spin_lock_init(&atomic64_lock[i].lock);
 =======
+<<<<<<< HEAD
+		raw_spin_lock_init(&atomic64_lock[i].lock);
+=======
 		spin_lock_init(&atomic64_lock[i].lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

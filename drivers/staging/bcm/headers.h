@@ -20,6 +20,15 @@
 #include <linux/file.h>
 #include <linux/string.h>
 #include <linux/etherdevice.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/wait.h>
+#include <linux/proc_fs.h>
+#include <linux/interrupt.h>
+#include <linux/stddef.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/ip.h>
 #include <linux/wait.h>
 #include <linux/proc_fs.h>
@@ -28,17 +37,36 @@
 #include <linux/version.h>
 #include <linux/stddef.h>
 #include <linux/kernel.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/stat.h>
 #include <linux/fcntl.h>
 #include <linux/unistd.h>
 #include <linux/sched.h>
 #include <linux/mm.h>
 #include <linux/pagemap.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/uaccess.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/uaccess.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kthread.h>
 #include <linux/tcp.h>
 #include <linux/udp.h>
 #include <linux/usb.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/uaccess.h>
+#include <net/ip.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "Typedefs.h"
 #include "Version.h"
@@ -61,7 +89,14 @@
 #include "Queue.h"
 #include "vendorspecificextn.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "InterfaceMacros.h"
 #include "InterfaceAdapter.h"
 #include "InterfaceIsr.h"
@@ -78,4 +113,12 @@
 #define DRV_VERSION	VER_FILEVERSION_STR
 #define PFX		DRV_NAME " "
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern struct class *bcm_class;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

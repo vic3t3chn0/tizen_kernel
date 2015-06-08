@@ -34,6 +34,14 @@ static struct mtd_info *mtd_info;
 
 static int ram_erase(struct mtd_info *mtd, struct erase_info *instr)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memset((char *)mtd->priv + instr->addr, 0xff, instr->len);
+	instr->state = MTD_ERASE_DONE;
+	mtd_erase_callback(instr);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (instr->addr + instr->len > mtd->size)
 		return -EINVAL;
 
@@ -42,12 +50,21 @@ static int ram_erase(struct mtd_info *mtd, struct erase_info *instr)
 	instr->state = MTD_ERASE_DONE;
 	mtd_erase_callback(instr);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int ram_point(struct mtd_info *mtd, loff_t from, size_t len,
 		size_t *retlen, void **virt, resource_size_t *phys)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (from + len > mtd->size)
 		return -EINVAL;
 
@@ -55,13 +72,28 @@ static int ram_point(struct mtd_info *mtd, loff_t from, size_t len,
 	if (phys)
 		return -EINVAL;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*virt = mtd->priv + from;
 	*retlen = len;
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int ram_unpoint(struct mtd_info *mtd, loff_t from, size_t len)
+{
+	return 0;
+=======
 static void ram_unpoint(struct mtd_info *mtd, loff_t from, size_t len)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ram_unpoint(struct mtd_info *mtd, loff_t from, size_t len)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -80,11 +112,21 @@ static unsigned long ram_get_unmapped_area(struct mtd_info *mtd,
 static int ram_read(struct mtd_info *mtd, loff_t from, size_t len,
 		size_t *retlen, u_char *buf)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memcpy(buf, mtd->priv + from, len);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (from + len > mtd->size)
 		return -EINVAL;
 
 	memcpy(buf, mtd->priv + from, len);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = len;
 	return 0;
 }
@@ -92,11 +134,21 @@ static int ram_read(struct mtd_info *mtd, loff_t from, size_t len,
 static int ram_write(struct mtd_info *mtd, loff_t to, size_t len,
 		size_t *retlen, const u_char *buf)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memcpy((char *)mtd->priv + to, buf, len);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (to + len > mtd->size)
 		return -EINVAL;
 
 	memcpy((char *)mtd->priv + to, buf, len);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = len;
 	return 0;
 }
@@ -126,12 +178,27 @@ int mtdram_init_device(struct mtd_info *mtd, void *mapped_address,
 	mtd->priv = mapped_address;
 
 	mtd->owner = THIS_MODULE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mtd->_erase = ram_erase;
+	mtd->_point = ram_point;
+	mtd->_unpoint = ram_unpoint;
+	mtd->_get_unmapped_area = ram_get_unmapped_area;
+	mtd->_read = ram_read;
+	mtd->_write = ram_write;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtd->erase = ram_erase;
 	mtd->point = ram_point;
 	mtd->unpoint = ram_unpoint;
 	mtd->get_unmapped_area = ram_get_unmapped_area;
 	mtd->read = ram_read;
 	mtd->write = ram_write;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mtd_device_register(mtd, NULL, 0))
 		return -EIO;

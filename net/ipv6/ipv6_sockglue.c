@@ -346,8 +346,12 @@ static int do_ipv6_setsockopt(struct sock *sk, int level, int optname,
 <<<<<<< HEAD
 		if (valbool && !capable(CAP_NET_ADMIN) && !capable(CAP_NET_RAW)) {
 =======
+<<<<<<< HEAD
+		if (valbool && !capable(CAP_NET_ADMIN) && !capable(CAP_NET_RAW)) {
+=======
 		if (!capable(CAP_NET_ADMIN)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			retv = -EPERM;
 			break;
 		}
@@ -442,8 +446,12 @@ sticky_done:
 <<<<<<< HEAD
 		np->sticky_pktinfo.ipi6_addr = pkt.ipi6_addr;
 =======
+<<<<<<< HEAD
+		np->sticky_pktinfo.ipi6_addr = pkt.ipi6_addr;
+=======
 		ipv6_addr_copy(&np->sticky_pktinfo.ipi6_addr, &pkt.ipi6_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retv = 0;
 		break;
 	}
@@ -486,8 +494,12 @@ sticky_done:
 <<<<<<< HEAD
 		retv = datagram_send_ctl(net, sk, &msg, &fl6, opt, &junk, &junk,
 =======
+<<<<<<< HEAD
+		retv = datagram_send_ctl(net, sk, &msg, &fl6, opt, &junk, &junk,
+=======
 		retv = datagram_send_ctl(net, &msg, &fl6, opt, &junk, &junk,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 &junk);
 		if (retv)
 			goto done;
@@ -518,8 +530,12 @@ done:
 <<<<<<< HEAD
 		np->mcast_hops = (val == -1 ? IPV6_DEFAULT_MCASTHOPS : val);
 =======
+<<<<<<< HEAD
+		np->mcast_hops = (val == -1 ? IPV6_DEFAULT_MCASTHOPS : val);
+=======
 		np->mcast_hops = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retv = 0;
 		break;
 
@@ -533,6 +549,9 @@ done:
 		break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IPV6_UNICAST_IF:
 	{
 		struct net_device *dev = NULL;
@@ -563,8 +582,11 @@ done:
 		break;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IPV6_MULTICAST_IF:
 		if (sk->sk_type == SOCK_STREAM)
 			break;
@@ -849,8 +871,11 @@ pref_skip_coa:
 		np->min_hopcount = val;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		retv = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case IPV6_DONTFRAG:
 		np->dontfrag = valbool;
@@ -1036,9 +1061,13 @@ static int do_ipv6_getsockopt(struct sock *sk, int level, int optname,
 <<<<<<< HEAD
 				src_info.ipi6_addr = np->mcast_oif ? np->daddr : np->sticky_pktinfo.ipi6_addr;
 =======
+<<<<<<< HEAD
+				src_info.ipi6_addr = np->mcast_oif ? np->daddr : np->sticky_pktinfo.ipi6_addr;
+=======
 				np->mcast_oif? ipv6_addr_copy(&src_info.ipi6_addr, &np->daddr) :
 					ipv6_addr_copy(&src_info.ipi6_addr, &(np->sticky_pktinfo.ipi6_addr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				put_cmsg(&msg, SOL_IPV6, IPV6_PKTINFO, sizeof(src_info), &src_info);
 			}
 			if (np->rxopt.bits.rxhlim) {
@@ -1046,12 +1075,18 @@ static int do_ipv6_getsockopt(struct sock *sk, int level, int optname,
 				put_cmsg(&msg, SOL_IPV6, IPV6_HOPLIMIT, sizeof(hlim), &hlim);
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (np->rxopt.bits.rxtclass) {
 				int tclass = np->rcv_tclass;
 				put_cmsg(&msg, SOL_IPV6, IPV6_TCLASS, sizeof(tclass), &tclass);
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (np->rxopt.bits.rxoinfo) {
 				struct in6_pktinfo src_info;
 				src_info.ipi6_ifindex = np->mcast_oif ? np->mcast_oif :
@@ -1059,9 +1094,13 @@ static int do_ipv6_getsockopt(struct sock *sk, int level, int optname,
 <<<<<<< HEAD
 				src_info.ipi6_addr = np->mcast_oif ? np->daddr : np->sticky_pktinfo.ipi6_addr;
 =======
+<<<<<<< HEAD
+				src_info.ipi6_addr = np->mcast_oif ? np->daddr : np->sticky_pktinfo.ipi6_addr;
+=======
 				np->mcast_oif? ipv6_addr_copy(&src_info.ipi6_addr, &np->daddr) :
 					ipv6_addr_copy(&src_info.ipi6_addr, &(np->sticky_pktinfo.ipi6_addr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				put_cmsg(&msg, SOL_IPV6, IPV6_2292PKTINFO, sizeof(src_info), &src_info);
 			}
 			if (np->rxopt.bits.rxohlim) {
@@ -1231,12 +1270,18 @@ static int do_ipv6_getsockopt(struct sock *sk, int level, int optname,
 		break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IPV6_UNICAST_IF:
 		val = (__force int)htonl((__u32) np->ucast_oif);
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IPV6_MTU_DISCOVER:
 		val = np->pmtudisc;
 		break;

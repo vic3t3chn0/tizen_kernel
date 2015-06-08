@@ -35,6 +35,11 @@ struct physmap_flash_data {
 };
 
 =======
+<<<<<<< HEAD
+	const char		**part_probe_types;
+};
+
+=======
 };
 
 /*
@@ -55,4 +60,5 @@ void physmap_configure(unsigned long addr, unsigned long size,
 void physmap_set_partitions(struct mtd_partition *parts, int num_parts);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __LINUX_MTD_PHYSMAP__ */

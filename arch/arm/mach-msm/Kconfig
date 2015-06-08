@@ -1,6 +1,9 @@
 if ARCH_MSM
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 menu "MSM SoC Type"
 
 config ARCH_MSM7X01A
@@ -637,6 +640,8 @@ config ARCH_MSM7X27A
 	select MIGHT_HAVE_CACHE_L2X0
 	select ARM_HAS_SG_CHAIN
 	select CPU_HAS_L2_PMU
+<<<<<<< HEAD
+=======
 =======
 choice
 	prompt "Qualcomm MSM SoC Type"
@@ -710,11 +715,15 @@ config  ARCH_MSM_SCORPION
 config HAS_MSM_DEBUG_UART_PHYS
 	bool
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config  MSM_VIC
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MSM_RPM
 	bool "Resource Power Manager"
 	select MSM_MPM
@@ -780,6 +789,8 @@ config MACH_HALIBUT
 	depends on ARCH_MSM7X01A
 	depends on MSM_STACKED_MEMORY
 	default y
+<<<<<<< HEAD
+=======
 =======
 menu "Qualcomm MSM Board Type"
 
@@ -787,11 +798,15 @@ config MACH_HALIBUT
 	depends on ARCH_MSM
 	depends on ARCH_MSM7X00A
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "Halibut Board (QCT SURF7201A)"
 	help
 	  Support for the Qualcomm SURF7201A eval board.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MACH_MSM7201A_SURF
 	depends on ARCH_MSM7X01A
 	depends on MSM_STACKED_MEMORY
@@ -988,6 +1003,8 @@ config MACH_QSD8X50_SURF
 	depends on MSM_SOC_REV_NONE
 	depends on MSM_STACKED_MEMORY
 	default y
+<<<<<<< HEAD
+=======
 =======
 config MACH_TROUT
 	depends on ARCH_MSM
@@ -1005,11 +1022,15 @@ config MACH_MSM7X30_SURF
 config MACH_QSD8X50_SURF
 	depends on ARCH_QSD8X50
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "QSD8x50 SURF"
 	help
 	  Support for the Qualcomm QSD8x50 SURF eval board.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MACH_QSD8X50_FFA
 	depends on ARCH_QSD8X50
 	depends on MSM_SOC_REV_NONE
@@ -1070,6 +1091,8 @@ config MACH_MSM8X55_SVLTE_SURF
 config MACH_MSM8X60_SURF
 	depends on ARCH_MSM8X60
 	default n
+<<<<<<< HEAD
+=======
 =======
 config MACH_QSD8X50A_ST1_5
 	depends on ARCH_QSD8X50
@@ -1087,11 +1110,15 @@ config MACH_MSM8X60_RUMI3
 config MACH_MSM8X60_SURF
 	depends on ARCH_MSM8X60
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "MSM8x60 SURF"
 	help
 	  Support for the Qualcomm MSM8x60 SURF eval board.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MACH_MSM8X60_FFA
 	depends on ARCH_MSM8X60
 	default n
@@ -3289,6 +3316,8 @@ config MSM_MODEM_SUBSYSTEM_RESTART_MONITOR
 	help
 	  This option enables a module which can notify user-space
 	  applications of modem subsystem power up/down event via uevent.
+<<<<<<< HEAD
+=======
 =======
 config MACH_MSM8X60_SIM
 	depends on ARCH_MSM8X60
@@ -3379,4 +3408,5 @@ config IOMMU_API
 config MSM_SCM
 	bool
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif

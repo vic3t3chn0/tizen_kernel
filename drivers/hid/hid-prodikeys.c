@@ -44,8 +44,16 @@ struct pk_device {
 	struct pcmidi_snd	*pm; /* pcmidi device context */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 struct pcmidi_snd;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct pcmidi_snd;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pcmidi_sustain {
 	unsigned long		in_use;
 	struct pcmidi_snd	*pm;
@@ -92,7 +100,15 @@ static const char longname[] = "Prodikeys PC-MIDI Keyboard";
 
 static int index[SNDRV_CARDS] = SNDRV_DEFAULT_IDX;
 static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 module_param_array(id, charp, NULL, 0444);
@@ -242,7 +258,15 @@ drop_note:
 	return;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void pcmidi_sustained_note_release(unsigned long data)
+=======
 void pcmidi_sustained_note_release(unsigned long data)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void pcmidi_sustained_note_release(unsigned long data)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pcmidi_sustain *pms = (struct pcmidi_sustain *)data;
 
@@ -250,7 +274,15 @@ void pcmidi_sustained_note_release(unsigned long data)
 	pms->in_use = 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void init_sustain_timers(struct pcmidi_snd *pm)
+=======
 void init_sustain_timers(struct pcmidi_snd *pm)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void init_sustain_timers(struct pcmidi_snd *pm)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pcmidi_sustain *pms;
 	unsigned i;
@@ -264,7 +296,15 @@ void init_sustain_timers(struct pcmidi_snd *pm)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void stop_sustain_timers(struct pcmidi_snd *pm)
+=======
 void stop_sustain_timers(struct pcmidi_snd *pm)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void stop_sustain_timers(struct pcmidi_snd *pm)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pcmidi_sustain *pms;
 	unsigned i;
@@ -499,7 +539,15 @@ static int pcmidi_handle_report4(struct pcmidi_snd *pm, u8 *data)
 	return 1;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pcmidi_handle_report(
+=======
 int pcmidi_handle_report(
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int pcmidi_handle_report(
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pcmidi_snd *pm, unsigned report_id, u8 *data, int size)
 {
 	int ret = 0;
@@ -518,7 +566,16 @@ int pcmidi_handle_report(
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void pcmidi_setup_extra_keys(
+	struct pcmidi_snd *pm, struct input_dev *input)
+=======
 void pcmidi_setup_extra_keys(struct pcmidi_snd *pm, struct input_dev *input)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void pcmidi_setup_extra_keys(struct pcmidi_snd *pm, struct input_dev *input)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* reassigned functionality for N/A keys
 		MY PICTURES =>	KEY_WORDPROCESSOR
@@ -602,7 +659,15 @@ static struct snd_rawmidi_ops pcmidi_in_ops = {
 	.trigger = pcmidi_in_trigger
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pcmidi_snd_initialise(struct pcmidi_snd *pm)
+=======
 int pcmidi_snd_initialise(struct pcmidi_snd *pm)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int pcmidi_snd_initialise(struct pcmidi_snd *pm)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	static int dev;
 	struct snd_card *card;
@@ -720,7 +785,15 @@ fail:
 	return err;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pcmidi_snd_terminate(struct pcmidi_snd *pm)
+=======
 int pcmidi_snd_terminate(struct pcmidi_snd *pm)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int pcmidi_snd_terminate(struct pcmidi_snd *pm)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (pm->card) {
 		stop_sustain_timers(pm);
@@ -817,7 +890,15 @@ static int pk_probe(struct hid_device *hdev, const struct hid_device_id *id)
 	if (pm == NULL) {
 		hid_err(hdev, "can't alloc descriptor\n");
 		ret = -ENOMEM;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto err_free_pk;
+=======
 		goto err_free;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		goto err_free;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	pm->pk = pk;
@@ -850,10 +931,23 @@ static int pk_probe(struct hid_device *hdev, const struct hid_device_id *id)
 err_stop:
 	hid_hw_stop(hdev);
 err_free:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree(pm);
+err_free_pk:
+	kfree(pk);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pm != NULL)
 		kfree(pm);
 
 	kfree(pk);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

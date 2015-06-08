@@ -47,8 +47,12 @@ static struct nf_hook_ops *filter_ops __read_mostly;
 <<<<<<< HEAD
 static bool forward = true;
 =======
+<<<<<<< HEAD
+static bool forward = true;
+=======
 static int forward = NF_ACCEPT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(forward, bool, 0000);
 
 static int __net_init ip6table_filter_net_init(struct net *net)
@@ -63,8 +67,12 @@ static int __net_init ip6table_filter_net_init(struct net *net)
 <<<<<<< HEAD
 		forward ? -NF_ACCEPT - 1 : -NF_DROP - 1;
 =======
+<<<<<<< HEAD
+		forward ? -NF_ACCEPT - 1 : -NF_DROP - 1;
+=======
 		-forward - 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	net->ipv6.ip6table_filter =
 		ip6t_register_table(net, &packet_filter, repl);
@@ -90,12 +98,15 @@ static int __init ip6table_filter_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (forward < 0 || forward > NF_MAX_VERDICT) {
 		pr_err("iptables forward must be 0 or 1\n");
 		return -EINVAL;
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = register_pernet_subsys(&ip6table_filter_net_ops);
 	if (ret < 0)
 		return ret;

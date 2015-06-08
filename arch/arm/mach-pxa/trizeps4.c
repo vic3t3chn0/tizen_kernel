@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/bitops.h>
 #include <linux/fb.h>
@@ -559,6 +563,9 @@ static void __init trizeps4_map_io(void)
 MACHINE_START(TRIZEPS4, "Keith und Koep Trizeps IV module")
 	/* MAINTAINER("Jürgen Schindele") */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_machine	= trizeps4_init,
 	.map_io		= trizeps4_map_io,
@@ -567,6 +574,8 @@ MACHINE_START(TRIZEPS4, "Keith und Koep Trizeps IV module")
 	.handle_irq	= pxa27x_handle_irq,
 	.timer		= &pxa_timer,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= TRIZEPS4_SDRAM_BASE + 0x100,
 	.init_machine	= trizeps4_init,
@@ -574,11 +583,15 @@ MACHINE_START(TRIZEPS4, "Keith und Koep Trizeps IV module")
 	.init_irq	= pxa27x_init_irq,
 	.timer		= &pxa_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 
 MACHINE_START(TRIZEPS4WL, "Keith und Koep Trizeps IV-WL module")
 	/* MAINTAINER("Jürgen Schindele") */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_machine	= trizeps4_init,
 	.map_io		= trizeps4_map_io,
@@ -587,6 +600,8 @@ MACHINE_START(TRIZEPS4WL, "Keith und Koep Trizeps IV-WL module")
 	.handle_irq	= pxa27x_handle_irq,
 	.timer		= &pxa_timer,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= TRIZEPS4_SDRAM_BASE + 0x100,
 	.init_machine	= trizeps4_init,
@@ -594,4 +609,5 @@ MACHINE_START(TRIZEPS4WL, "Keith und Koep Trizeps IV-WL module")
 	.init_irq	= pxa27x_init_irq,
 	.timer		= &pxa_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

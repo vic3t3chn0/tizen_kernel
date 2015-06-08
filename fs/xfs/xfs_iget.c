@@ -40,8 +40,11 @@
 #include "xfs_bmap.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_btree_trace.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_trace.h"
 
 
@@ -84,11 +87,17 @@ xfs_inode_alloc(
 	ASSERT(!spin_is_locked(&ip->i_flags_lock));
 	ASSERT(!xfs_isiflocked(ip));
 =======
+<<<<<<< HEAD
+	ASSERT(atomic_read(&ip->i_pincount) == 0);
+	ASSERT(!spin_is_locked(&ip->i_flags_lock));
+	ASSERT(!xfs_isiflocked(ip));
+=======
 	ASSERT(atomic_read(&ip->i_iocount) == 0);
 	ASSERT(atomic_read(&ip->i_pincount) == 0);
 	ASSERT(!spin_is_locked(&ip->i_flags_lock));
 	ASSERT(completion_done(&ip->i_flush));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(ip->i_ino == 0);
 
 	mrlock_init(&ip->i_iolock, MRLOCK_BARRIER, "xfsio", ip->i_ino);
@@ -106,12 +115,17 @@ xfs_inode_alloc(
 	ip->i_delayed_blks = 0;
 	memset(&ip->i_d, 0, sizeof(xfs_icdinode_t));
 =======
+<<<<<<< HEAD
+	ip->i_delayed_blks = 0;
+	memset(&ip->i_d, 0, sizeof(xfs_icdinode_t));
+=======
 	ip->i_update_core = 0;
 	ip->i_delayed_blks = 0;
 	memset(&ip->i_d, 0, sizeof(xfs_icdinode_t));
 	ip->i_size = 0;
 	ip->i_new_size = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ip;
 }
@@ -125,8 +139,11 @@ xfs_inode_free_callback(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_zone_free(xfs_inode_zone, ip);
 }
 
@@ -173,11 +190,17 @@ xfs_inode_free(
 	ASSERT(!spin_is_locked(&ip->i_flags_lock));
 	ASSERT(!xfs_isiflocked(ip));
 =======
+<<<<<<< HEAD
+	ASSERT(atomic_read(&ip->i_pincount) == 0);
+	ASSERT(!spin_is_locked(&ip->i_flags_lock));
+	ASSERT(!xfs_isiflocked(ip));
+=======
 	ASSERT(atomic_read(&ip->i_iocount) == 0);
 	ASSERT(atomic_read(&ip->i_pincount) == 0);
 	ASSERT(!spin_is_locked(&ip->i_flags_lock));
 	ASSERT(completion_done(&ip->i_flush));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Because we use RCU freeing we need to ensure the inode always
@@ -322,8 +345,12 @@ xfs_iget_cache_hit(
 <<<<<<< HEAD
 	xfs_iflags_clear(ip, XFS_ISTALE | XFS_IDONTCACHE);
 =======
+<<<<<<< HEAD
+	xfs_iflags_clear(ip, XFS_ISTALE | XFS_IDONTCACHE);
+=======
 	xfs_iflags_clear(ip, XFS_ISTALE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	XFS_STATS_INC(xs_ig_found);
 
 	return 0;
@@ -351,7 +378,11 @@ xfs_iget_cache_miss(
 <<<<<<< HEAD
 	int			iflags;
 =======
+<<<<<<< HEAD
+	int			iflags;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ip = xfs_inode_alloc(mp, ino);
 	if (!ip)
@@ -397,15 +428,21 @@ xfs_iget_cache_miss(
 	 * time.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iflags = XFS_INEW;
 	if (flags & XFS_IGET_DONTCACHE)
 		iflags |= XFS_IDONTCACHE;
 	ip->i_udquot = ip->i_gdquot = NULL;
 	xfs_iflags_set(ip, iflags);
+<<<<<<< HEAD
+=======
 =======
 	ip->i_udquot = ip->i_gdquot = NULL;
 	xfs_iflags_set(ip, XFS_INEW);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* insert the new inode */
 	spin_lock(&pag->pag_ici_lock);
@@ -470,6 +507,9 @@ xfs_iget(
 	xfs_agino_t	agino;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * xfs_reclaim_inode() uses the ILOCK to ensure an inode
 	 * doesn't get freed while it's being referenced during a
@@ -479,8 +519,11 @@ xfs_iget(
 	 */
 	ASSERT((lock_flags & (XFS_IOLOCK_EXCL | XFS_IOLOCK_SHARED)) == 0);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* reject inode numbers outside existing AGs */
 	if (!ino || XFS_INO_TO_AGNO(mp, ino) >= mp->m_sb.sb_agcount)
 		return EINVAL;
@@ -513,9 +556,12 @@ again:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(ip->i_df.if_ext_max ==
 	       XFS_IFORK_DSIZE(ip) / sizeof(xfs_bmbt_rec_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If we have a real type for an on-disk inode, we can set ops(&unlock)
 	 * now.	 If it's a new inode being created, xfs_ialloc will handle it.
@@ -713,9 +759,13 @@ xfs_iunlock(
 <<<<<<< HEAD
 	ASSERT((lock_flags & ~(XFS_LOCK_MASK | XFS_LOCK_DEP_MASK)) == 0);
 =======
+<<<<<<< HEAD
+	ASSERT((lock_flags & ~(XFS_LOCK_MASK | XFS_LOCK_DEP_MASK)) == 0);
+=======
 	ASSERT((lock_flags & ~(XFS_LOCK_MASK | XFS_IUNLOCK_NONOTIFY |
 			XFS_LOCK_DEP_MASK)) == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(lock_flags != 0);
 
 	if (lock_flags & XFS_IOLOCK_EXCL)
@@ -730,6 +780,8 @@ xfs_iunlock(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if ((lock_flags & (XFS_ILOCK_SHARED | XFS_ILOCK_EXCL)) &&
 	    !(lock_flags & XFS_IUNLOCK_NONOTIFY) && ip->i_itemp) {
 		/*
@@ -741,6 +793,7 @@ xfs_iunlock(
 					(xfs_log_item_t*)(ip->i_itemp));
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_xfs_iunlock(ip, lock_flags, _RET_IP_);
 }
 
@@ -787,6 +840,9 @@ xfs_isilocked(
 }
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void
 __xfs_iflock(
@@ -803,5 +859,8 @@ __xfs_iflock(
 
 	finish_wait(wq, &wait.wait);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

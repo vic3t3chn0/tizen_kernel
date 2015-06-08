@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bootmem.h>
 #include <linux/pfn.h>
 #include <linux/suspend.h>
@@ -25,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/sort.h>
 =======
+<<<<<<< HEAD
+#include <linux/sort.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/e820.h>
 #include <asm/proto.h>
@@ -235,6 +243,9 @@ void __init e820_print_map(char *who)
  *	   ______________________4_
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct change_member {
 	struct e820entry *pbios; /* pointer to original bios entry */
 	unsigned long long addr; /* address for this change point */
@@ -256,12 +267,17 @@ static int __init cpcompare(const void *a, const void *b)
 
 	return (ap->addr != ap->pbios->addr) - (bp->addr != bp->pbios->addr);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __init sanitize_e820_map(struct e820entry *biosmap, int max_nr_map,
 			     u32 *pnr_map)
 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	struct change_member {
@@ -269,10 +285,16 @@ int __init sanitize_e820_map(struct e820entry *biosmap, int max_nr_map,
 		unsigned long long addr; /* address for this change point */
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static struct change_member change_point_list[2*E820_X_MAX] __initdata;
 	static struct change_member *change_point[2*E820_X_MAX] __initdata;
 	static struct e820entry *overlap_list[E820_X_MAX] __initdata;
 	static struct e820entry new_bios[E820_X_MAX] __initdata;
+<<<<<<< HEAD
+	unsigned long current_type, last_type;
+	unsigned long long last_addr;
+	int chgidx;
+=======
 <<<<<<< HEAD
 	unsigned long current_type, last_type;
 	unsigned long long last_addr;
@@ -283,6 +305,7 @@ int __init sanitize_e820_map(struct e820entry *biosmap, int max_nr_map,
 	unsigned long long last_addr;
 	int chgidx, still_changing;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int overlap_entries;
 	int new_bios_entry;
 	int old_nr, new_nr, chg_nr;
@@ -322,6 +345,9 @@ int __init sanitize_e820_map(struct e820entry *biosmap, int max_nr_map,
 <<<<<<< HEAD
 	sort(change_point, chg_nr, sizeof *change_point, cpcompare, NULL);
 =======
+<<<<<<< HEAD
+	sort(change_point, chg_nr, sizeof *change_point, cpcompare, NULL);
+=======
 	still_changing = 1;
 	while (still_changing)	{
 		still_changing = 0;
@@ -352,6 +378,7 @@ int __init sanitize_e820_map(struct e820entry *biosmap, int max_nr_map,
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* create a new bios memory map, removing overlaps */
 	overlap_entries = 0;	 /* number of entries in the overlap table */
@@ -761,8 +788,12 @@ void __init e820_mark_nosave_regions(unsigned long limit_pfn)
 <<<<<<< HEAD
 #ifdef CONFIG_ACPI
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_ACPI
+=======
 #ifdef CONFIG_HIBERNATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * Mark ACPI NVS memory region, so that we can save/restore it during
  * hibernation and the subsequent resume.
@@ -778,8 +809,12 @@ static int __init e820_mark_nvs_memory(void)
 <<<<<<< HEAD
 			acpi_nvs_register(ei->addr, ei->size);
 =======
+<<<<<<< HEAD
+			acpi_nvs_register(ei->addr, ei->size);
+=======
 			suspend_nvs_register(ei->addr, ei->size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -791,6 +826,9 @@ core_initcall(e820_mark_nvs_memory);
  * pre allocated 4k and reserved it in memblock and e820_saved
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u64 __init early_reserve_e820(u64 size, u64 align)
 {
 	u64 addr;
@@ -802,6 +840,8 @@ u64 __init early_reserve_e820(u64 size, u64 align)
 		update_e820_saved();
 	}
 
+<<<<<<< HEAD
+=======
 =======
 u64 __init early_reserve_e820(u64 startt, u64 sizet, u64 align)
 {
@@ -833,6 +873,7 @@ u64 __init early_reserve_e820(u64 startt, u64 sizet, u64 align)
 	update_e820_saved();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return addr;
 }
 
@@ -1159,8 +1200,12 @@ void __init memblock_x86_fill(void)
 <<<<<<< HEAD
 	memblock_allow_resize();
 =======
+<<<<<<< HEAD
+	memblock_allow_resize();
+=======
 	memblock_can_resize = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < e820.nr_map; i++) {
 		struct e820entry *ei = &e820.map[i];
@@ -1177,8 +1222,11 @@ void __init memblock_x86_fill(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_analyze();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memblock_dump_all();
 }
 
@@ -1186,22 +1234,31 @@ void __init memblock_find_dma_reserve(void)
 {
 #ifdef CONFIG_X86_64
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 nr_pages = 0, nr_free_pages = 0;
 	unsigned long start_pfn, end_pfn;
 	phys_addr_t start, end;
 	int i;
 	u64 u;
 
+<<<<<<< HEAD
+=======
 =======
 	u64 free_size_pfn;
 	u64 mem_size_pfn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * need to find out used area below MAX_DMA_PFN
 	 * need to use memblock to get free size in [0, MAX_DMA_PFN]
 	 * at first, and assume boot_mem will not take below MAX_DMA_PFN
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_mem_pfn_range(i, MAX_NUMNODES, &start_pfn, &end_pfn, NULL) {
 		start_pfn = min_t(unsigned long, start_pfn, MAX_DMA_PFN);
 		end_pfn = min_t(unsigned long, end_pfn, MAX_DMA_PFN);
@@ -1216,10 +1273,13 @@ void __init memblock_find_dma_reserve(void)
 	}
 
 	set_dma_reserve(nr_pages - nr_free_pages);
+<<<<<<< HEAD
+=======
 =======
 	mem_size_pfn = memblock_x86_memory_in_range(0, MAX_DMA_PFN << PAGE_SHIFT) >> PAGE_SHIFT;
 	free_size_pfn = memblock_x86_free_memory_in_range(0, MAX_DMA_PFN << PAGE_SHIFT) >> PAGE_SHIFT;
 	set_dma_reserve(mem_size_pfn - free_size_pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }

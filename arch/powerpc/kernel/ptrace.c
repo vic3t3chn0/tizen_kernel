@@ -32,10 +32,13 @@
 #include <trace/syscall.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC32
 #include <linux/module.h>
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/hw_breakpoint.h>
 #include <linux/perf_event.h>
 
@@ -45,8 +48,12 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CREATE_TRACE_POINTS
 #include <trace/events/syscalls.h>
@@ -892,8 +899,12 @@ void user_disable_single_step(struct task_struct *task)
 <<<<<<< HEAD
 void ptrace_triggered(struct perf_event *bp,
 =======
+<<<<<<< HEAD
+void ptrace_triggered(struct perf_event *bp,
+=======
 void ptrace_triggered(struct perf_event *bp, int nmi,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      struct perf_sample_data *data, struct pt_regs *regs)
 {
 	struct perf_event_attr attr;
@@ -987,8 +998,12 @@ int ptrace_set_debugreg(struct task_struct *task, unsigned long addr,
 <<<<<<< HEAD
 					       ptrace_triggered, NULL, task);
 =======
+<<<<<<< HEAD
+					       ptrace_triggered, NULL, task);
+=======
 							ptrace_triggered, task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(bp)) {
 		thread->ptrace_bps[0] = NULL;
 		ptrace_put_breakpoints(task);
@@ -1743,6 +1758,9 @@ long do_syscall_trace_enter(struct pt_regs *regs)
 		trace_sys_enter(regs, regs->gpr[0]);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC64
 	if (!is_32bit_task())
 		audit_syscall_entry(AUDIT_ARCH_PPC64,
@@ -1757,6 +1775,8 @@ long do_syscall_trace_enter(struct pt_regs *regs)
 				    regs->gpr[4] & 0xffffffff,
 				    regs->gpr[5] & 0xffffffff,
 				    regs->gpr[6] & 0xffffffff);
+<<<<<<< HEAD
+=======
 =======
 	if (unlikely(current->audit_context)) {
 #ifdef CONFIG_PPC64
@@ -1775,6 +1795,7 @@ long do_syscall_trace_enter(struct pt_regs *regs)
 					    regs->gpr[6] & 0xffffffff);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret ?: regs->gpr[0];
 }
@@ -1786,10 +1807,14 @@ void do_syscall_trace_leave(struct pt_regs *regs)
 <<<<<<< HEAD
 	audit_syscall_exit(regs);
 =======
+<<<<<<< HEAD
+	audit_syscall_exit(regs);
+=======
 	if (unlikely(current->audit_context))
 		audit_syscall_exit((regs->ccr&0x10000000)?AUDITSC_FAILURE:AUDITSC_SUCCESS,
 				   regs->result);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(test_thread_flag(TIF_SYSCALL_TRACEPOINT)))
 		trace_sys_exit(regs, regs->result);

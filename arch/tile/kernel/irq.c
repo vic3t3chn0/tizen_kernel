@@ -153,6 +153,9 @@ void tile_dev_intr(struct pt_regs *regs, int intnum)
  * context, defer enabling the HW interrupt until we leave.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tile_irq_chip_enable(struct irq_data *d)
 {
 	get_cpu_var(irq_disable_mask) &= ~(1UL << d->irq);
@@ -160,6 +163,8 @@ static void tile_irq_chip_enable(struct irq_data *d)
 		unmask_irqs(1UL << d->irq);
 	put_cpu_var(irq_disable_mask);
 }
+<<<<<<< HEAD
+=======
 =======
 void enable_percpu_irq(unsigned int irq)
 {
@@ -170,6 +175,7 @@ void enable_percpu_irq(unsigned int irq)
 }
 EXPORT_SYMBOL(enable_percpu_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Add an irq to the disabled mask.  We disable the HW interrupt
@@ -178,12 +184,17 @@ EXPORT_SYMBOL(enable_percpu_irq);
  * unmasking a newly disabled interrupt.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tile_irq_chip_disable(struct irq_data *d)
 {
 	get_cpu_var(irq_disable_mask) |= (1UL << d->irq);
 	mask_irqs(1UL << d->irq);
 	put_cpu_var(irq_disable_mask);
 }
+<<<<<<< HEAD
+=======
 =======
 void disable_percpu_irq(unsigned int irq)
 {
@@ -193,6 +204,7 @@ void disable_percpu_irq(unsigned int irq)
 }
 EXPORT_SYMBOL(disable_percpu_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Mask an interrupt. */
 static void tile_irq_chip_mask(struct irq_data *d)
@@ -232,7 +244,12 @@ static struct irq_chip tile_irq_chip = {
 	.irq_enable = tile_irq_chip_enable,
 	.irq_disable = tile_irq_chip_disable,
 =======
+<<<<<<< HEAD
+	.irq_enable = tile_irq_chip_enable,
+	.irq_disable = tile_irq_chip_disable,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.irq_ack = tile_irq_chip_ack,
 	.irq_eoi = tile_irq_chip_eoi,
 	.irq_mask = tile_irq_chip_mask,

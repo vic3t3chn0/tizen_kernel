@@ -17,12 +17,25 @@
 #ifndef __TCM_FC_H__
 #define __TCM_FC_H__
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define FT_VERSION "0.4"
+=======
 #define FT_VERSION "0.3"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define FT_VERSION "0.3"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define FT_NAMELEN 32		/* length of ASCII WWPNs including pad */
 #define FT_TPG_NAMELEN 32	/* max length of TPG name */
 #define FT_LUN_NAMELEN 32	/* max length of LUN name */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Debug options.
  */
@@ -47,6 +60,10 @@ extern unsigned int ft_debug_logging;	/* debug options */
 #define	FT_IO_DBG(fmt, args...)		FT_DEBUG(FT_DEBUG_IO, fmt, ##args)
 #define	FT_DATA_DBG(fmt, args...)	FT_DEBUG(FT_DEBUG_DATA, fmt, ##args)
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ft_transport_id {
 	__u8	format;
 	__u8	__resvd1[7];
@@ -122,8 +139,17 @@ struct ft_tpg {
 	struct list_head list;		/* linkage in ft_lport_acl tpg_list */
 	struct list_head lun_list;	/* head of LUNs */
 	struct se_portal_group se_tpg;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct workqueue_struct *workqueue;
+=======
 	struct task_struct *thread;	/* processing thread */
 	struct se_queue_obj qobj;	/* queue for processing thread */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct task_struct *thread;	/* processing thread */
+	struct se_queue_obj qobj;	/* queue for processing thread */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct ft_lport_acl {
@@ -134,27 +160,59 @@ struct ft_lport_acl {
 	struct se_wwn fc_lport_wwn;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum ft_cmd_state {
 	FC_CMD_ST_NEW = 0,
 	FC_CMD_ST_REJ
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Commands
  */
 struct ft_cmd {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	enum ft_cmd_state state;
 	u32 lun;                        /* LUN from request */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	enum ft_cmd_state state;
+	u32 lun;                        /* LUN from request */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ft_sess *sess;		/* session held for cmd */
 	struct fc_seq *seq;		/* sequence in exchange mgr */
 	struct se_cmd se_cmd;		/* Local TCM I/O descriptor */
 	struct fc_frame *req_frame;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 write_data_len;		/* data received on writes */
+	struct work_struct work;
+	/* Local sense buffer */
+	unsigned char ft_sense_buffer[TRANSPORT_SENSE_BUFFER];
+	u32 was_ddp_setup:1;		/* Set only if ddp is setup */
+	u32 aborted:1;			/* Set if aborted by reset or timeout */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char *cdb;		/* pointer to CDB inside frame */
 	u32 write_data_len;		/* data received on writes */
 	struct se_queue_req se_req;
 	/* Local sense buffer */
 	unsigned char ft_sense_buffer[TRANSPORT_SENSE_BUFFER];
 	u32 was_ddp_setup:1;		/* Set only if ddp is setup */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct scatterlist *sg;		/* Set only if DDP is setup */
 	u32 sg_cnt;			/* No. of item in scatterlist */
 };
@@ -174,11 +232,22 @@ extern struct target_fabric_configfs *ft_configfs;
 void ft_sess_put(struct ft_sess *);
 int ft_sess_shutdown(struct se_session *);
 void ft_sess_close(struct se_session *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+u32 ft_sess_get_index(struct se_session *);
+u32 ft_sess_get_port_name(struct se_session *, unsigned char *, u32);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ft_sess_stop(struct se_session *, int, int);
 int ft_sess_logged_in(struct se_session *);
 u32 ft_sess_get_index(struct se_session *);
 u32 ft_sess_get_port_name(struct se_session *, unsigned char *, u32);
 void ft_sess_set_erl0(struct se_session *);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void ft_lport_add(struct fc_lport *, void *);
 void ft_lport_del(struct fc_lport *, void *);
@@ -187,7 +256,15 @@ int ft_lport_notify(struct notifier_block *, unsigned long, void *);
 /*
  * IO methods.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int ft_check_stop_free(struct se_cmd *);
+=======
 void ft_check_stop_free(struct se_cmd *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ft_check_stop_free(struct se_cmd *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ft_release_cmd(struct se_cmd *);
 int ft_queue_status(struct se_cmd *);
 int ft_queue_data_in(struct se_cmd *);
@@ -195,14 +272,31 @@ int ft_write_pending(struct se_cmd *);
 int ft_write_pending_status(struct se_cmd *);
 u32 ft_get_task_tag(struct se_cmd *);
 int ft_get_cmd_state(struct se_cmd *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int ft_queue_tm_resp(struct se_cmd *);
+=======
 void ft_new_cmd_failure(struct se_cmd *);
 int ft_queue_tm_resp(struct se_cmd *);
 int ft_is_state_remove(struct se_cmd *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ft_new_cmd_failure(struct se_cmd *);
+int ft_queue_tm_resp(struct se_cmd *);
+int ft_is_state_remove(struct se_cmd *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * other internal functions.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 int ft_thread(void *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int ft_thread(void *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ft_recv_req(struct ft_sess *, struct fc_frame *);
 struct ft_tpg *ft_lport_find_tpg(struct fc_lport *);
 struct ft_node_acl *ft_acl_get(struct ft_tpg *, struct fc_rport_priv *);
@@ -212,4 +306,15 @@ void ft_dump_cmd(struct ft_cmd *, const char *caller);
 
 ssize_t ft_format_wwn(char *, size_t, u64);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Underlying HW specific helper function
+ */
+void ft_invl_hw_context(struct ft_cmd *);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __TCM_FC_H__ */

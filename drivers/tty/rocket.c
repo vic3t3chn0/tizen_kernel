@@ -83,7 +83,15 @@
 #include <linux/wait.h>
 #include <linux/pci.h>
 #include <linux/uaccess.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/unaligned.h>
 #include <linux/bitops.h>
 #include <linux/spinlock.h>
@@ -118,7 +126,15 @@ static unsigned long board2;
 static unsigned long board3;
 static unsigned long board4;
 static unsigned long controller;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool support_low_speed;
+=======
 static int support_low_speed;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int support_low_speed;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long modem1;
 static unsigned long modem2;
 static unsigned long modem3;
@@ -892,12 +908,27 @@ static int rp_open(struct tty_struct *tty, struct file *filp)
 {
 	struct r_port *info;
 	struct tty_port *port;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int retval;
+	CHANNEL_t *cp;
+	unsigned long page;
+
+	info = rp_table[tty->index];
+	if (info == NULL)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int line = 0, retval;
 	CHANNEL_t *cp;
 	unsigned long page;
 
 	line = tty->index;
 	if (line < 0 || line >= MAX_RP_PORTS || ((info = rp_table[line]) == NULL))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENXIO;
 	port = &info->port;
 	
@@ -2277,7 +2308,14 @@ static int __init rp_init(void)
 	 * driver with the tty layer.
 	 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	rocket_driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rocket_driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rocket_driver->flags = TTY_DRIVER_DYNAMIC_DEV;
 	rocket_driver->name = "ttyR";
 	rocket_driver->driver_name = "Comtrol RocketPort";

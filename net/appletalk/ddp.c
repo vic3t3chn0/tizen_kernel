@@ -685,6 +685,9 @@ static int atif_ioctl(int cmd, void __user *arg)
 
 	switch (cmd) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SIOCSIFADDR:
 		if (!capable(CAP_NET_ADMIN))
 			return -EPERM;
@@ -871,6 +874,8 @@ static int atif_ioctl(int cmd, void __user *arg)
 		/* give to aarp module to remove proxy entry */
 		aarp_proxy_remove(atif->dev, &(sa->sat_addr));
 		return 0;
+<<<<<<< HEAD
+=======
 =======
 		case SIOCSIFADDR:
 			if (!capable(CAP_NET_ADMIN))
@@ -1059,6 +1064,7 @@ static int atif_ioctl(int cmd, void __user *arg)
 			aarp_proxy_remove(atif->dev, &(sa->sat_addr));
 			return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return copy_to_user(arg, &atreq, sizeof(atreq)) ? -EFAULT : 0;
@@ -1074,6 +1080,9 @@ static int atrtr_ioctl(unsigned int cmd, void __user *arg)
 
 	switch (cmd) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SIOCDELRT:
 		if (rt.rt_dst.sa_family != AF_APPLETALK)
 			return -EINVAL;
@@ -1093,6 +1102,8 @@ static int atrtr_ioctl(unsigned int cmd, void __user *arg)
 		}
 		return atrtr_create(&rt, dev);
 	}
+<<<<<<< HEAD
+=======
 =======
 		case SIOCDELRT:
 			if (rt.rt_dst.sa_family != AF_APPLETALK)
@@ -1114,6 +1125,7 @@ static int atrtr_ioctl(unsigned int cmd, void __user *arg)
 			return atrtr_create(&rt, dev);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return -EINVAL;
 }
@@ -1163,12 +1175,17 @@ static unsigned long atalk_sum_skb(const struct sk_buff *skb, int offset,
 	for (i = 0; i < skb_shinfo(skb)->nr_frags; i++) {
 		int end;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 		WARN_ON(start > offset + len);
 
 		end = start + skb_frag_size(frag);
 		if ((copy = end - offset) > 0) {
 			u8 *vaddr;
+<<<<<<< HEAD
+=======
 =======
 
 		WARN_ON(start > offset + len);
@@ -1178,6 +1195,7 @@ static unsigned long atalk_sum_skb(const struct sk_buff *skb, int offset,
 			u8 *vaddr;
 			skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (copy > len)
 				copy = len;

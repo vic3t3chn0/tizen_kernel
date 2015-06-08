@@ -23,14 +23,20 @@
 #include <linux/string.h>
 #include <linux/ctype.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/export.h>
 #include <linux/bug.h>
 #include <linux/errno.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/module.h>
 #include <linux/memcopy.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __HAVE_ARCH_STRNICMP
 /**
@@ -370,8 +376,11 @@ char *strim(char *s)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	s = skip_spaces(s);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size = strlen(s);
 	if (!size)
 		return s;
@@ -384,8 +393,12 @@ char *strim(char *s)
 <<<<<<< HEAD
 	return skip_spaces(s);
 =======
+<<<<<<< HEAD
+	return skip_spaces(s);
+=======
 	return s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(strim);
 
@@ -612,11 +625,16 @@ EXPORT_SYMBOL(memset);
 void *memcpy(void *dest, const void *src, size_t count)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *tmp = dest;
 	const char *s = src;
 
 	while (count--)
 		*tmp++ = *s++;
+<<<<<<< HEAD
+=======
 =======
 	unsigned long dstp = (unsigned long)dest; 
 	unsigned long srcp = (unsigned long)src; 
@@ -624,6 +642,7 @@ void *memcpy(void *dest, const void *src, size_t count)
 	/* Copy from the beginning to the end */ 
 	mem_copy_fwd(dstp, srcp, count); 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return dest;
 }
 EXPORT_SYMBOL(memcpy);
@@ -641,6 +660,9 @@ EXPORT_SYMBOL(memcpy);
 void *memmove(void *dest, const void *src, size_t count)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *tmp;
 	const char *s;
 
@@ -656,6 +678,8 @@ void *memmove(void *dest, const void *src, size_t count)
 		s += count;
 		while (count--)
 			*--tmp = *--s;
+<<<<<<< HEAD
+=======
 =======
 	unsigned long dstp = (unsigned long)dest; 
 	unsigned long srcp = (unsigned long)src; 
@@ -667,6 +691,7 @@ void *memmove(void *dest, const void *src, size_t count)
 		/* Copy from the end to the beginning */ 
 		mem_copy_bwd(dstp, srcp, count); 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return dest;
 }
@@ -792,6 +817,9 @@ void *memchr(const void *s, int c, size_t n)
 EXPORT_SYMBOL(memchr);
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void *check_bytes8(const u8 *start, u8 value, unsigned int bytes)
 {
@@ -858,5 +886,8 @@ void *memchr_inv(const void *start, int c, size_t bytes)
 	return check_bytes8(start, value, bytes % 8);
 }
 EXPORT_SYMBOL(memchr_inv);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

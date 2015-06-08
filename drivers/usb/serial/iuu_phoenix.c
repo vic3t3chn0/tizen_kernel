@@ -34,9 +34,21 @@
 
 
 #ifdef CONFIG_USB_SERIAL_DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug = 1;
+#else
+static bool debug;
+=======
 static int debug = 1;
 #else
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug = 1;
+#else
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -56,7 +68,14 @@ static struct usb_driver iuu_driver = {
 	.probe = usb_serial_probe,
 	.disconnect = usb_serial_disconnect,
 	.id_table = id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* turbo parameter */
@@ -65,7 +84,15 @@ static int clockmode = 1;
 static int cdmode = 1;
 static int iuu_cardin;
 static int iuu_cardout;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool xmas;
+=======
 static int xmas;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xmas;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int vcc_default = 5;
 
 static void read_rxcmd_callback(struct urb *urb);
@@ -327,7 +354,15 @@ static int bulk_immediate(struct usb_serial_port *port, u8 *buf, u8 count)
 	    usb_bulk_msg(serial->dev,
 			 usb_sndbulkpipe(serial->dev,
 					 port->bulk_out_endpointAddress), buf,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 count, &actual, HZ * 1);
+=======
 			 count, &actual, 1000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			 count, &actual, 1000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (status != IUU_OPERATION_OK)
 		dbg("%s - error = %2x", __func__, status);
@@ -350,7 +385,15 @@ static int read_immediate(struct usb_serial_port *port, u8 *buf, u8 count)
 	    usb_bulk_msg(serial->dev,
 			 usb_rcvbulkpipe(serial->dev,
 					 port->bulk_in_endpointAddress), buf,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 count, &actual, HZ * 1);
+=======
 			 count, &actual, 1000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			 count, &actual, 1000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (status != IUU_OPERATION_OK)
 		dbg("%s - error = %2x", __func__, status);
@@ -1168,15 +1211,35 @@ static int iuu_open(struct tty_struct *tty, struct usb_serial_port *port)
 			  port->write_urb->transfer_buffer, 1,
 			  read_rxcmd_callback, port);
 	result = usb_submit_urb(port->write_urb, GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result) {
 		dev_err(&port->dev, "%s - failed submitting read urb,"
 			" error %d\n", __func__, result);
 		iuu_close(port);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else {
+		dbg("%s - rxcmd OK", __func__);
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPROTO;
 	} else {
 		dbg("%s - rxcmd OK", __func__);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }
 
@@ -1275,7 +1338,14 @@ static struct usb_serial_driver iuu_device = {
 		   .name = "iuu_phoenix",
 		   },
 	.id_table = id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver = &iuu_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver = &iuu_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_ports = 1,
 	.bulk_in_size = 512,
 	.bulk_out_size = 512,
@@ -1293,6 +1363,16 @@ static struct usb_serial_driver iuu_device = {
 	.release = iuu_release,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&iuu_device, NULL
+};
+
+module_usb_serial_driver(iuu_driver, serial_drivers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init iuu_init(void)
 {
 	int retval;
@@ -1319,6 +1399,10 @@ static void __exit iuu_exit(void)
 
 module_init(iuu_init);
 module_exit(iuu_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Alain Degreffe eczema@ecze.com");
 

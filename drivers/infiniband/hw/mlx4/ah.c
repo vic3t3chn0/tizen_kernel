@@ -126,7 +126,15 @@ static struct ib_ah *create_iboe_ah(struct ib_pd *pd, struct ib_ah_attr *ah_attr
 		ah->av.ib.dlid = cpu_to_be16(0xc000);
 
 	memcpy(ah->av.eth.dgid, ah_attr->grh.dgid.raw, 16);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ah->av.eth.sl_tclass_flowlabel = cpu_to_be32(ah_attr->sl << 29);
+=======
 	ah->av.eth.sl_tclass_flowlabel = cpu_to_be32(ah_attr->sl << 28);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ah->av.eth.sl_tclass_flowlabel = cpu_to_be32(ah_attr->sl << 28);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return &ah->ibah;
 }

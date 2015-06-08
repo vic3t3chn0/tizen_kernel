@@ -1,9 +1,12 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * arch/arm/mach-tegra/fuse.c
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2010 Google, Inc.
  *
  * Author:
@@ -21,6 +24,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __MACH_TEGRA_FUSE_H
 #define __MACH_TEGRA_FUSE_H
 
@@ -56,6 +62,8 @@ unsigned long long tegra_chip_uid(void);
 void tegra_init_fuse(void);
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 unsigned long long tegra_chip_uid(void);
 int tegra_sku_id(void);
@@ -63,3 +71,4 @@ int tegra_cpu_process_id(void);
 int tegra_core_process_id(void);
 void tegra_init_fuse(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

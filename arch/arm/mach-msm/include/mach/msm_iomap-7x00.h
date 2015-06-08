@@ -3,8 +3,11 @@
  * Copyright (C) 2007 Google, Inc.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Copyright (c) 2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -42,6 +45,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_VIC_BASE          IOMEM(0xF8000000)
 #define MSM_VIC_PHYS          0xC0000000
 #define MSM_VIC_SIZE          SZ_4K
@@ -70,6 +76,8 @@
 #define MSM_CLK_CTL_SIZE      SZ_4K
 
 #define MSM_SHARED_RAM_BASE   IOMEM(0xF8100000)
+<<<<<<< HEAD
+=======
 =======
 #ifdef __ASSEMBLY__
 #define IOMEM(x)	x
@@ -102,6 +110,7 @@
 
 #define MSM_SHARED_RAM_BASE   IOMEM(0xE0100000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_SHARED_RAM_PHYS   0x01F00000
 #define MSM_SHARED_RAM_SIZE   SZ_1M
 
@@ -114,6 +123,8 @@
 #define MSM_UART3_PHYS        0xA9C00000
 #define MSM_UART3_SIZE        SZ_4K
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_MSM_DEBUG_UART
@@ -129,6 +140,7 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_SDC1_PHYS         0xA0400000
 #define MSM_SDC1_SIZE         SZ_4K
 
@@ -146,7 +158,13 @@
 #define MSM_NAND_SIZE         SZ_4K
 
 =======
+<<<<<<< HEAD
+#define MSM_NAND_PHYS         0xA0A00000
+#define MSM_NAND_SIZE         SZ_4K
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_I2C_PHYS          0xA9900000
 #define MSM_I2C_SIZE          SZ_4K
 
@@ -163,6 +181,9 @@
 #define MSM_MDP_SIZE          0x000F0000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_MDC_BASE	      IOMEM(0xF8200000)
 #define MSM_MDC_PHYS	      0xAA500000
 #define MSM_MDC_SIZE	      SZ_1M
@@ -188,6 +209,8 @@
 #define MSM_GCC_PHYS          0xC0182000
 #define MSM_GCC_SIZE          SZ_4K
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define MSM_MDC_PHYS	      0xAA500000
 #define MSM_MDC_SIZE	      SZ_1M
@@ -196,5 +219,6 @@
 #define MSM_AD5_SIZE          (SZ_1M*13)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

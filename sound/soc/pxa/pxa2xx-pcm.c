@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/core.h>
 #include <sound/soc.h>
@@ -90,15 +94,21 @@ static struct snd_pcm_ops pxa2xx_pcm_ops = {
 static u64 pxa2xx_pcm_dmamask = DMA_BIT_MASK(32);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pxa2xx_soc_pcm_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static int pxa2xx_soc_pcm_new(struct snd_card *card, struct snd_soc_dai *dai,
 	struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (!card->dev->dma_mask)
@@ -153,6 +163,9 @@ static struct platform_driver pxa_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(pxa_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(pxa_pcm_driver);
+=======
 static int __init snd_pxa_pcm_init(void)
 {
 	return platform_driver_register(&pxa_pcm_driver);
@@ -165,6 +178,7 @@ static void __exit snd_pxa_pcm_exit(void)
 }
 module_exit(snd_pxa_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Nicolas Pitre");
 MODULE_DESCRIPTION("Intel PXA2xx PCM DMA module");

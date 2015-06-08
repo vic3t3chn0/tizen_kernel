@@ -175,7 +175,11 @@ struct ipv6_devconf {
 <<<<<<< HEAD
 	__s32		accept_ra_prefix_route;
 =======
+<<<<<<< HEAD
+	__s32		accept_ra_prefix_route;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void		*sysctl;
 };
 
@@ -220,7 +224,11 @@ enum {
 <<<<<<< HEAD
 	DEVCONF_ACCEPT_RA_PREFIX_ROUTE,
 =======
+<<<<<<< HEAD
+	DEVCONF_ACCEPT_RA_PREFIX_ROUTE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEVCONF_MAX
 };
 
@@ -242,13 +250,19 @@ static inline struct ipv6hdr *ipipv6_hdr(const struct sk_buff *skb)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline __u8 ipv6_tclass(const struct ipv6hdr *iph)
 {
 	return (ntohl(*(__be32 *)iph) >> 20) & 0xff;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 
    This structure contains results of exthdrs parsing
    as offsets from skb->nh.
@@ -273,8 +287,11 @@ struct inet6_skb_parm {
 #define IP6SKB_REROUTED		4
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IP6SKB_FRAGMENTED      16
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define IP6CB(skb)	((struct inet6_skb_parm*)((skb)->cb))
@@ -347,7 +364,11 @@ struct ipv6_pinfo {
 <<<<<<< HEAD
 	int			ucast_oif;
 =======
+<<<<<<< HEAD
+	int			ucast_oif;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			mcast_oif;
 
 	/* pktoption flags */
@@ -387,8 +408,12 @@ struct ipv6_pinfo {
 <<<<<<< HEAD
 	__u8			rcv_tclass;
 =======
+<<<<<<< HEAD
+	__u8			rcv_tclass;
+=======
 	__u8			padding;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__u32			dst_cookie;
 
@@ -435,8 +460,12 @@ extern int inet6_sk_rebuild_header(struct sock *sk);
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct ipv6_pinfo * inet6_sk(const struct sock *__sk)
 {
 	return inet_sk(__sk)->pinet6;
@@ -550,8 +579,12 @@ static inline struct raw6_sock *raw6_sk(const struct sock *sk)
 <<<<<<< HEAD
 #endif /* IS_ENABLED(CONFIG_IPV6) */
 =======
+<<<<<<< HEAD
+#endif /* IS_ENABLED(CONFIG_IPV6) */
+=======
 #endif /* defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define INET6_MATCH(__sk, __net, __hash, __saddr, __daddr, __ports, __dif)\
 	(((__sk)->sk_hash == (__hash)) && sock_net((__sk)) == (__net)	&& \

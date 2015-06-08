@@ -22,10 +22,16 @@
  */
 #define MESSAGE_AGE_INCR	((HZ / 256) + 1)
 =======
+<<<<<<< HEAD
+ * before sending, make sure that is at least one STP tick.
+ */
+#define MESSAGE_AGE_INCR	((HZ / 256) + 1)
+=======
  * before sending, make sure that is at least one.
  */
 #define MESSAGE_AGE_INCR	((HZ < 256) ? 1 : (HZ/256))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const char *const br_port_state_names[] = {
 	[BR_STATE_DISABLED] = "disabled",
@@ -40,8 +46,12 @@ void br_log_state(const struct net_bridge_port *p)
 <<<<<<< HEAD
 	br_info(p->br, "port %u(%s) entered %s state\n",
 =======
+<<<<<<< HEAD
+	br_info(p->br, "port %u(%s) entered %s state\n",
+=======
 	br_info(p->br, "port %u(%s) entering %s state\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(unsigned) p->port_no, p->dev->name,
 		br_port_state_names[p->state]);
 }
@@ -121,8 +131,11 @@ static void br_root_selection(struct net_bridge *br)
 			root_port = p->port_no;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	br->root_port = root_port;
@@ -160,8 +173,11 @@ void br_transmit_config(struct net_bridge_port *p)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (timer_pending(&p->hold_timer)) {
 		p->config_pending = 1;
 		return;
@@ -201,15 +217,23 @@ void br_transmit_config(struct net_bridge_port *p)
 static void br_record_config_information(struct net_bridge_port *p,
 					 const struct br_config_bpdu *bpdu)
 =======
+<<<<<<< HEAD
+static void br_record_config_information(struct net_bridge_port *p,
+					 const struct br_config_bpdu *bpdu)
+=======
 static inline void br_record_config_information(struct net_bridge_port *p,
 						const struct br_config_bpdu *bpdu)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	p->designated_root = bpdu->root;
 	p->designated_cost = bpdu->root_path_cost;
 	p->designated_bridge = bpdu->bridge_id;
 	p->designated_port = bpdu->port_id;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p->designated_age = jiffies - bpdu->message_age;
 
 	mod_timer(&p->message_age_timer, jiffies
@@ -218,6 +242,8 @@ static inline void br_record_config_information(struct net_bridge_port *p,
 
 /* called under bridge lock */
 static void br_record_config_timeout_values(struct net_bridge *br,
+<<<<<<< HEAD
+=======
 =======
 	p->designated_age = jiffies + bpdu->message_age;
 
@@ -228,6 +254,7 @@ static void br_record_config_timeout_values(struct net_bridge *br,
 /* called under bridge lock */
 static inline void br_record_config_timeout_values(struct net_bridge *br,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    const struct br_config_bpdu *bpdu)
 {
 	br->max_age = bpdu->max_age;
@@ -290,8 +317,13 @@ static void br_designated_port_selection(struct net_bridge *br)
 static int br_supersedes_port_info(const struct net_bridge_port *p,
 				   const struct br_config_bpdu *bpdu)
 =======
+<<<<<<< HEAD
+static int br_supersedes_port_info(const struct net_bridge_port *p,
+				   const struct br_config_bpdu *bpdu)
+=======
 static int br_supersedes_port_info(struct net_bridge_port *p, struct br_config_bpdu *bpdu)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int t;
 
@@ -325,8 +357,12 @@ static int br_supersedes_port_info(struct net_bridge_port *p, struct br_config_b
 <<<<<<< HEAD
 static void br_topology_change_acknowledged(struct net_bridge *br)
 =======
+<<<<<<< HEAD
+static void br_topology_change_acknowledged(struct net_bridge *br)
+=======
 static inline void br_topology_change_acknowledged(struct net_bridge *br)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	br->topology_change_detected = 0;
 	del_timer(&br->tcn_timer);
@@ -371,8 +407,12 @@ void br_config_bpdu_generation(struct net_bridge *br)
 <<<<<<< HEAD
 static void br_reply(struct net_bridge_port *p)
 =======
+<<<<<<< HEAD
+static void br_reply(struct net_bridge_port *p)
+=======
 static inline void br_reply(struct net_bridge_port *p)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	br_transmit_config(p);
 }
@@ -412,7 +452,12 @@ static void br_make_blocking(struct net_bridge_port *p)
 		br_ifinfo_notify(RTM_NEWLINK, p);
 
 =======
+<<<<<<< HEAD
+		br_ifinfo_notify(RTM_NEWLINK, p);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		del_timer(&p->forward_delay_timer);
 	}
 }
@@ -432,9 +477,13 @@ static void br_make_forwarding(struct net_bridge_port *p)
 <<<<<<< HEAD
 	} else if (br->stp_enabled == BR_KERNEL_STP)
 =======
+<<<<<<< HEAD
+	} else if (br->stp_enabled == BR_KERNEL_STP)
+=======
 	}
 	else if (br->stp_enabled == BR_KERNEL_STP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p->state = BR_STATE_LISTENING;
 	else
 		p->state = BR_STATE_LEARNING;
@@ -444,9 +493,14 @@ static void br_make_forwarding(struct net_bridge_port *p)
 	br_log_state(p);
 	br_ifinfo_notify(RTM_NEWLINK, p);
 =======
+<<<<<<< HEAD
+	br_log_state(p);
+	br_ifinfo_notify(RTM_NEWLINK, p);
+=======
 
 	br_log_state(p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (br->forward_delay != 0)
 		mod_timer(&p->forward_delay_timer, jiffies + br->forward_delay);
@@ -460,16 +514,22 @@ void br_port_state_selection(struct net_bridge *br)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Don't change port states if userspace is handling STP */
 	if (br->stp_enabled == BR_USER_STP)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(p, &br->port_list, list) {
 		if (p->state == BR_STATE_DISABLED)
 			continue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Don't change port states if userspace is handling STP */
 		if (br->stp_enabled != BR_USER_STP) {
 			if (p->port_no == br->root_port) {
@@ -484,6 +544,8 @@ void br_port_state_selection(struct net_bridge *br)
 				p->topology_change_ack = 0;
 				br_make_blocking(p);
 			}
+<<<<<<< HEAD
+=======
 =======
 		if (p->port_no == br->root_port) {
 			p->config_pending = 0;
@@ -497,6 +559,7 @@ void br_port_state_selection(struct net_bridge *br)
 			p->topology_change_ack = 0;
 			br_make_blocking(p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		if (p->state == BR_STATE_FORWARDING)
@@ -513,8 +576,12 @@ void br_port_state_selection(struct net_bridge *br)
 <<<<<<< HEAD
 static void br_topology_change_acknowledge(struct net_bridge_port *p)
 =======
+<<<<<<< HEAD
+static void br_topology_change_acknowledge(struct net_bridge_port *p)
+=======
 static inline void br_topology_change_acknowledge(struct net_bridge_port *p)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	p->topology_change_ack = 1;
 	br_transmit_config(p);
@@ -525,8 +592,13 @@ static inline void br_topology_change_acknowledge(struct net_bridge_port *p)
 void br_received_config_bpdu(struct net_bridge_port *p,
 			     const struct br_config_bpdu *bpdu)
 =======
+<<<<<<< HEAD
+void br_received_config_bpdu(struct net_bridge_port *p,
+			     const struct br_config_bpdu *bpdu)
+=======
 void br_received_config_bpdu(struct net_bridge_port *p, struct br_config_bpdu *bpdu)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_bridge *br;
 	int was_root;
@@ -606,6 +678,9 @@ int br_set_max_age(struct net_bridge *br, unsigned long val)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int br_set_forward_delay(struct net_bridge *br, unsigned long val)
 {
 	unsigned long t = clock_t_to_jiffies(val);
@@ -620,6 +695,8 @@ int br_set_forward_delay(struct net_bridge *br, unsigned long val)
 		br->forward_delay = br->bridge_forward_delay;
 	spin_unlock_bh(&br->lock);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 void __br_set_forward_delay(struct net_bridge *br, unsigned long t)
 {
@@ -645,4 +722,5 @@ unlock:
 	spin_unlock_bh(&br->lock);
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

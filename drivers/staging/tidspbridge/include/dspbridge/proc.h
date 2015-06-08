@@ -189,6 +189,11 @@ extern int proc_get_resource_info(void *hprocessor,
 					 u32 resource_info_size);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== proc_exit ========
  *  Purpose:
  *      Decrement reference count, and free resources when reference count is
@@ -203,6 +208,10 @@ extern int proc_get_resource_info(void *hprocessor,
 extern void proc_exit(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ======== proc_get_dev_object =========
  *  Purpose:
  *      Returns the DEV Hanlde for a given Processor handle
@@ -223,6 +232,11 @@ extern int proc_get_dev_object(void *hprocessor,
 				      struct dev_object **device_obj);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== proc_init ========
  *  Purpose:
  *      Initialize PROC's private state, keeping a reference count on each
@@ -237,6 +251,10 @@ extern int proc_get_dev_object(void *hprocessor,
 extern bool proc_init(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== proc_get_state ========
  *  Purpose:
  *      Report the state of the specified DSP processor.

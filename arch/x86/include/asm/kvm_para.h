@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #define KVM_FEATURE_STEAL_TIME		5
 =======
+<<<<<<< HEAD
+#define KVM_FEATURE_STEAL_TIME		5
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The last 8 bits are used to indicate how to interpret the flags field
  * in pvclock structure. If no bits are set, all flags are ignored.
@@ -37,12 +41,19 @@
 <<<<<<< HEAD
 #define KVM_MSR_ENABLED 1
 =======
+<<<<<<< HEAD
+#define KVM_MSR_ENABLED 1
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Custom MSRs falls in the range 0x4b564d00-0x4b564dff */
 #define MSR_KVM_WALL_CLOCK_NEW  0x4b564d00
 #define MSR_KVM_SYSTEM_TIME_NEW 0x4b564d01
 #define MSR_KVM_ASYNC_PF_EN 0x4b564d02
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSR_KVM_STEAL_TIME  0x4b564d03
 
 struct kvm_steal_time {
@@ -55,8 +66,11 @@ struct kvm_steal_time {
 #define KVM_STEAL_ALIGNMENT_BITS 5
 #define KVM_STEAL_VALID_BITS ((-1ULL << (KVM_STEAL_ALIGNMENT_BITS + 1)))
 #define KVM_STEAL_RESERVED_MASK (((1 << KVM_STEAL_ALIGNMENT_BITS) - 1 ) << 1)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define KVM_MAX_MMU_OP_BATCH           32
 
@@ -184,7 +198,13 @@ static inline int kvm_para_available(void)
 		return 0;	/* So we don't blow up on old processors */
 
 =======
+<<<<<<< HEAD
+	if (boot_cpu_data.cpuid_level < 0)
+		return 0;	/* So we don't blow up on old processors */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpuid(KVM_CPUID_SIGNATURE, &eax, &ebx, &ecx, &edx);
 	memcpy(signature + 0, &ebx, 4);
 	memcpy(signature + 4, &ecx, 4);
@@ -210,7 +230,11 @@ u32 kvm_read_and_reset_pf_reason(void);
 <<<<<<< HEAD
 extern void kvm_disable_steal_time(void);
 =======
+<<<<<<< HEAD
+extern void kvm_disable_steal_time(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define kvm_guest_init() do { } while (0)
 #define kvm_async_pf_task_wait(T) do {} while(0)
@@ -220,13 +244,19 @@ static inline u32 kvm_read_and_reset_pf_reason(void)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void kvm_disable_steal_time(void)
 {
 	return;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* __KERNEL__ */

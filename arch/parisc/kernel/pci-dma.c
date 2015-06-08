@@ -5,8 +5,12 @@
 <<<<<<< HEAD
 ** See Documentation/DMA-API-HOWTO.txt for interface definitions.
 =======
+<<<<<<< HEAD
+** See Documentation/DMA-API-HOWTO.txt for interface definitions.
+=======
 ** See Documentation/PCI/PCI-DMA-mapping.txt for interface definitions.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 **
 **      (c) Copyright 1999,2000 Hewlett-Packard Company
 **      (c) Copyright 2000 Grant Grundler
@@ -33,7 +37,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/cacheflush.h>
 #include <asm/dma.h>    /* for DMA_CHUNK_SIZE */

@@ -58,6 +58,9 @@ static void ps3_smp_message_pass(int cpu, int msg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ps3_smp_probe(void)
 {
 	int cpu;
@@ -103,6 +106,8 @@ static int __init ps3_smp_probe(void)
 	}
 
 	return 2;
+<<<<<<< HEAD
+=======
 =======
 static int ps3_smp_probe(void)
 {
@@ -149,6 +154,7 @@ static void __init ps3_smp_setup_cpu(int cpu)
 
 	DBG(" <- %s:%d: (%d)\n", __func__, __LINE__, cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ps3_smp_cleanup_cpu(int cpu)
@@ -173,8 +179,11 @@ static struct smp_ops_t ps3_smp_ops = {
 	.kick_cpu	= smp_generic_kick_cpu,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.setup_cpu	= ps3_smp_setup_cpu,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void smp_init_ps3(void)

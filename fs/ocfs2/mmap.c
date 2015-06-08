@@ -64,8 +64,12 @@ static int __ocfs2_page_mkwrite(struct file *file, struct buffer_head *di_bh,
 <<<<<<< HEAD
 	int ret = VM_FAULT_NOPAGE;
 =======
+<<<<<<< HEAD
+	int ret = VM_FAULT_NOPAGE;
+=======
 	int ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode = file->f_path.dentry->d_inode;
 	struct address_space *mapping = inode->i_mapping;
 	loff_t pos = page_offset(page);
@@ -76,6 +80,9 @@ static int __ocfs2_page_mkwrite(struct file *file, struct buffer_head *di_bh,
 	loff_t size = i_size_read(inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	last_index = (size - 1) >> PAGE_CACHE_SHIFT;
 
 	/*
@@ -95,6 +102,8 @@ static int __ocfs2_page_mkwrite(struct file *file, struct buffer_head *di_bh,
 	    (!PageUptodate(page)) ||
 	    (page_offset(page) >= size))
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Another node might have truncated while we were waiting on
@@ -123,6 +132,7 @@ static int __ocfs2_page_mkwrite(struct file *file, struct buffer_head *di_bh,
 		goto out;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Call ocfs2_write_begin() and ocfs2_write_end() to take
@@ -143,6 +153,9 @@ static int __ocfs2_page_mkwrite(struct file *file, struct buffer_head *di_bh,
 		if (ret != -ENOSPC)
 			mlog_errno(ret);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret == -ENOMEM)
 			ret = VM_FAULT_OOM;
 		else
@@ -158,6 +171,8 @@ static int __ocfs2_page_mkwrite(struct file *file, struct buffer_head *di_bh,
 				     fsdata);
 	BUG_ON(ret != len);
 	ret = VM_FAULT_LOCKED;
+<<<<<<< HEAD
+=======
 =======
 		goto out;
 	}
@@ -171,6 +186,7 @@ static int __ocfs2_page_mkwrite(struct file *file, struct buffer_head *di_bh,
 	BUG_ON(ret != len);
 	ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return ret;
 }
@@ -214,9 +230,12 @@ out:
 	ocfs2_unblock_signals(&oldset);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ret)
 		ret = VM_FAULT_SIGBUS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

@@ -30,7 +30,11 @@
 <<<<<<< HEAD
 #define CFI_ESCAPE		.cfi_escape
 =======
+<<<<<<< HEAD
+#define CFI_ESCAPE		.cfi_escape
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_AS_CFI_SIGNAL_FRAME
 #define CFI_SIGNAL_FRAME	.cfi_signal_frame
@@ -75,7 +79,11 @@
 <<<<<<< HEAD
 #define CFI_ESCAPE		cfi_ignore
 =======
+<<<<<<< HEAD
+#define CFI_ESCAPE		cfi_ignore
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CFI_SIGNAL_FRAME	cfi_ignore
 
 #endif

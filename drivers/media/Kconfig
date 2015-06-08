@@ -68,7 +68,14 @@ config VIDEO_V4L2_SUBDEV_API
 
 config DVB_CORE
 	tristate "DVB for Linux"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	depends on NET && INET
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	depends on NET && INET
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRC32
 	help
 	  DVB core utility functions for device handling, software fallbacks etc.
@@ -85,6 +92,25 @@ config DVB_CORE
 
 	  If unsure say N.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config DVB_NET
+	bool "DVB Network Support"
+	default (NET && INET)
+	depends on NET && INET && DVB_CORE
+	help
+	  This option enables DVB Network Support which is a part of the DVB
+	  standard. It is used, for example, by automatic firmware updates used
+	  on Set-Top-Boxes. It can also be used to access the Internet via the
+	  DVB card, if the network provider supports it.
+
+	  You may want to disable the network support on embedded devices. If
+	  unsure say Y.
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config VIDEO_MEDIA
 	tristate
 	default (DVB_CORE && (VIDEO_DEV = n)) || (VIDEO_DEV && (DVB_CORE = n)) || (DVB_CORE && VIDEO_DEV)
@@ -94,6 +120,14 @@ comment "Multimedia drivers"
 source "drivers/media/common/Kconfig"
 source "drivers/media/rc/Kconfig"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+source "drivers/media/platform/Kconfig"
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # Tuner drivers for DVB and V4L
 #
@@ -114,6 +148,11 @@ source "drivers/media/radio/Kconfig"
 
 source "drivers/media/dvb/Kconfig"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # TDMB drivers
 #
@@ -123,4 +162,8 @@ source "drivers/media/tdmb/Kconfig"
 # ISDBT
 source "drivers/media/isdbt/Kconfig"
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif # MEDIA_SUPPORT

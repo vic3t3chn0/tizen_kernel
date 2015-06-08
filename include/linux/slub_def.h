@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/workqueue.h>
 #include <linux/kobject.h>
 
@@ -26,15 +30,21 @@ enum stat_item {
 	FREE_ADD_PARTIAL,	/* Freeing moves slab to partial list */
 	FREE_REMOVE_PARTIAL,	/* Freeing removes last object */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ALLOC_FROM_PARTIAL,	/* Cpu slab acquired from node partial list */
 	ALLOC_SLAB,		/* Cpu slab acquired from page allocator */
 	ALLOC_REFILL,		/* Refill cpu slab from slab freelist */
 	ALLOC_NODE_MISMATCH,	/* Switching cpu slab */
+<<<<<<< HEAD
+=======
 =======
 	ALLOC_FROM_PARTIAL,	/* Cpu slab acquired from partial list */
 	ALLOC_SLAB,		/* Cpu slab acquired from page allocator */
 	ALLOC_REFILL,		/* Refill cpu slab from slab freelist */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FREE_SLAB,		/* Slab freed to the page allocator */
 	CPUSLAB_FLUSH,		/* Abandoning of the cpu slab */
 	DEACTIVATE_FULL,	/* Cpu slab was full when deactivated */
@@ -43,6 +53,9 @@ enum stat_item {
 	DEACTIVATE_TO_TAIL,	/* Cpu slab was moved to the tail of partials */
 	DEACTIVATE_REMOTE_FREES,/* Slab contained remotely freed objects */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEACTIVATE_BYPASS,	/* Implicit deactivation */
 	ORDER_FALLBACK,		/* Number of times fallback was necessary */
 	CMPXCHG_DOUBLE_CPU_FAIL,/* Failure of this_cpu_cmpxchg_double */
@@ -51,10 +64,13 @@ enum stat_item {
 	CPU_PARTIAL_FREE,	/* Refill cpu partial on free */
 	CPU_PARTIAL_NODE,	/* Refill cpu partial from node partial */
 	CPU_PARTIAL_DRAIN,	/* Drain cpu partial to node partial */
+<<<<<<< HEAD
+=======
 =======
 	ORDER_FALLBACK,		/* Number of times fallback was necessary */
 	CMPXCHG_DOUBLE_CPU_FAIL,/* Failure of this_cpu_cmpxchg_double */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NR_SLUB_STAT_ITEMS };
 
 struct kmem_cache_cpu {
@@ -64,7 +80,11 @@ struct kmem_cache_cpu {
 <<<<<<< HEAD
 	struct page *partial;	/* Partially allocated frozen slabs */
 =======
+<<<<<<< HEAD
+	struct page *partial;	/* Partially allocated frozen slabs */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int node;		/* The node of the page (or -1 for debug) */
 #ifdef CONFIG_SLUB_STATS
 	unsigned stat[NR_SLUB_STAT_ITEMS];
@@ -105,7 +125,11 @@ struct kmem_cache {
 <<<<<<< HEAD
 	int cpu_partial;	/* Number of per cpu partial objects to keep around */
 =======
+<<<<<<< HEAD
+	int cpu_partial;	/* Number of per cpu partial objects to keep around */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kmem_cache_order_objects oo;
 
 	/* Allocation and freeing of slabs */
@@ -145,6 +169,8 @@ struct kmem_cache {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef ARCH_DMA_MINALIGN
 #define ARCH_KMALLOC_MINALIGN ARCH_DMA_MINALIGN
 #else
@@ -156,6 +182,7 @@ struct kmem_cache {
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Maximum kmalloc object size handled by SLUB. Larger object allocations
  * are passed through to the page allocator. The page allocator "fastpath"
@@ -262,6 +289,9 @@ kmalloc_order(size_t size, gfp_t flags, unsigned int order)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * Calling this on allocated memory will check that the memory
  * is expected to be in use, and print warnings if not.
@@ -275,8 +305,11 @@ static inline bool verify_mem_not_deleted(const void *x)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_TRACING
 extern void *
 kmem_cache_alloc_trace(struct kmem_cache *s, gfp_t gfpflags, size_t size);

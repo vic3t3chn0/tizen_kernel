@@ -32,8 +32,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pmac_feature.h>
 #include <asm/sections.h>
 #include <asm/nvram.h>
@@ -55,9 +58,14 @@ EXPORT_SYMBOL_GPL(boot_cpuid);
 int boot_cpuid_phys;
 EXPORT_SYMBOL_GPL(boot_cpuid_phys);
 =======
+<<<<<<< HEAD
+int boot_cpuid_phys;
+EXPORT_SYMBOL_GPL(boot_cpuid_phys);
+=======
 int __initdata boot_cpu_count;
 int boot_cpuid_phys;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int smp_hw_index[NR_CPUS];
 
@@ -130,8 +138,12 @@ notrace unsigned long __init early_init(unsigned long dt_ptr)
 <<<<<<< HEAD
 notrace void __init machine_init(u64 dt_ptr)
 =======
+<<<<<<< HEAD
+notrace void __init machine_init(u64 dt_ptr)
+=======
 notrace void __init machine_init(unsigned long dt_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	lockdep_init();
 
@@ -145,7 +157,12 @@ notrace void __init machine_init(unsigned long dt_ptr)
 	early_init_mmu();
 
 =======
+<<<<<<< HEAD
+	early_init_mmu();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	probe_machine();
 
 	setup_kdump_trampoline();
@@ -171,7 +188,13 @@ extern u32 booke_wdt_enabled;
 extern u32 booke_wdt_period;
 
 =======
+<<<<<<< HEAD
+extern u32 booke_wdt_enabled;
+extern u32 booke_wdt_period;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Checks wdt=x and wdt_period=xx command-line option */
 notrace int __init early_parse_wdt(char *p)
 {

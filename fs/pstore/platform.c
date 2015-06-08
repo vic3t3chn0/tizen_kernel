@@ -26,20 +26,29 @@
 #include <linux/pstore.h>
 #include <linux/string.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/timer.h>
 #include <linux/slab.h>
 #include <linux/uaccess.h>
 #include <linux/hardirq.h>
 #include <linux/workqueue.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/slab.h>
 #include <linux/uaccess.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "internal.h"
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * We defer making "oops" entries appear in pstore - see
  * whether the system is actually still running well enough
  * to let someone see the entry
@@ -55,8 +64,11 @@ static void pstore_dowork(struct work_struct *);
 static DECLARE_WORK(pstore_work, pstore_dowork);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pstore_lock just protects "psinfo" during
  * calls to pstore_register()
  */
@@ -67,7 +79,12 @@ static struct pstore_info *psinfo;
 static char *backend;
 
 =======
+<<<<<<< HEAD
+static char *backend;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* How much of the console log to snapshot */
 static unsigned long kmsg_bytes = 10240;
 
@@ -80,6 +97,9 @@ void pstore_set_kmsg_bytes(int bytes)
 static int	oopscount;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *get_reason_str(enum kmsg_dump_reason reason)
 {
 	switch (reason) {
@@ -99,11 +119,14 @@ static const char *get_reason_str(enum kmsg_dump_reason reason)
 		return "Unknown";
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 static char *reason_str[] = {
 	"Oops", "Panic", "Kexec", "Restart", "Halt", "Poweroff", "Emergency"
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * callback from kmsg_dump. (s2,l2) has the most recently
@@ -119,6 +142,9 @@ static void pstore_dump(struct kmsg_dumper *dumper,
 	unsigned long	l1_cpy, l2_cpy;
 	unsigned long	size, total = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char		*dst;
 	const char	*why;
 	u64		id;
@@ -139,6 +165,8 @@ static void pstore_dump(struct kmsg_dumper *dumper,
 	while (total < kmsg_bytes) {
 		dst = psinfo->buf;
 		hsize = sprintf(dst, "%s#%d Part%d\n", why, oopscount, part);
+<<<<<<< HEAD
+=======
 =======
 	char		*dst, *why;
 	u64		id;
@@ -155,6 +183,7 @@ static void pstore_dump(struct kmsg_dumper *dumper,
 		dst = psinfo->buf;
 		hsize = sprintf(dst, "%s#%d Part%d\n", why, oopscount, part++);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		size = psinfo->bufsize - hsize;
 		dst += hsize;
 
@@ -171,6 +200,9 @@ static void pstore_dump(struct kmsg_dumper *dumper,
 		memcpy(dst + l1_cpy, s2 + s2_start, l2_cpy);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = psinfo->write(PSTORE_TYPE_DMESG, reason, &id, part,
 				   hsize + l1_cpy + l2_cpy, psinfo);
 		if (ret == 0 && reason == KMSG_DUMP_OOPS && pstore_is_mounted())
@@ -185,6 +217,8 @@ static void pstore_dump(struct kmsg_dumper *dumper,
 			spin_unlock(&psinfo->buf_lock);
 	} else
 		spin_unlock_irqrestore(&psinfo->buf_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 		id = psinfo->write(PSTORE_TYPE_DMESG, hsize + l1_cpy + l2_cpy);
 		if (reason == KMSG_DUMP_OOPS && pstore_is_mounted())
@@ -197,6 +231,7 @@ static void pstore_dump(struct kmsg_dumper *dumper,
 	}
 	mutex_unlock(&psinfo->buf_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct kmsg_dumper pstore_dumper = {
@@ -222,6 +257,9 @@ int pstore_register(struct pstore_info *psi)
 		return -EBUSY;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (backend && strcmp(backend, psi->name)) {
 		spin_unlock(&pstore_lock);
@@ -230,9 +268,12 @@ int pstore_register(struct pstore_info *psi)
 
 	psinfo = psi;
 	mutex_init(&psinfo->read_mutex);
+<<<<<<< HEAD
+=======
 =======
 	psinfo = psi;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&pstore_lock);
 
 	if (owner && !try_module_get(owner)) {
@@ -242,6 +283,9 @@ int pstore_register(struct pstore_info *psi)
 
 	if (pstore_is_mounted())
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pstore_get_records(0);
 
 	kmsg_dump_register(&pstore_dumper);
@@ -249,18 +293,24 @@ int pstore_register(struct pstore_info *psi)
 	pstore_timer.expires = jiffies + PSTORE_INTERVAL;
 	add_timer(&pstore_timer);
 
+<<<<<<< HEAD
+=======
 =======
 		pstore_get_records();
 
 	kmsg_dump_register(&pstore_dumper);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL_GPL(pstore_register);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Read all the records from the persistent store. Create
  * files in our filesystem.  Don't warn about -EEXIST errors
  * when we are re-scanning the backing store looking to add new
@@ -270,6 +320,8 @@ void pstore_get_records(int quiet)
 {
 	struct pstore_info *psi = psinfo;
 	char			*buf = NULL;
+<<<<<<< HEAD
+=======
 =======
  * Read all the records from the persistent store. Create and
  * file files in our filesystem.
@@ -278,6 +330,7 @@ void pstore_get_records(void)
 {
 	struct pstore_info *psi = psinfo;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ssize_t			size;
 	u64			id;
 	enum pstore_type_id	type;
@@ -288,6 +341,9 @@ void pstore_get_records(void)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&psi->read_mutex);
 	if (psi->open && psi->open(psi))
 		goto out;
@@ -304,6 +360,8 @@ void pstore_get_records(void)
 		psi->close(psi);
 out:
 	mutex_unlock(&psi->read_mutex);
+<<<<<<< HEAD
+=======
 =======
 	mutex_lock(&psinfo->buf_mutex);
 	rc = psi->open(psi);
@@ -319,6 +377,7 @@ out:
 out:
 	mutex_unlock(&psinfo->buf_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (failed)
 		printk(KERN_WARNING "pstore: failed to load %d record(s) from '%s'\n",
@@ -326,6 +385,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void pstore_dowork(struct work_struct *work)
 {
 	pstore_get_records(1);
@@ -343,6 +405,8 @@ static void pstore_timefunc(unsigned long dummy)
 
 module_param(backend, charp, 0444);
 MODULE_PARM_DESC(backend, "Pstore backend to use");
+<<<<<<< HEAD
+=======
 =======
 /*
  * Call platform driver to write a record to the
@@ -370,3 +434,4 @@ int pstore_write(enum pstore_type_id type, char *buf, size_t size)
 }
 EXPORT_SYMBOL_GPL(pstore_write);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

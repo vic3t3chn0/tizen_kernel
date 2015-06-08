@@ -1279,6 +1279,12 @@ static struct i2c_driver apds990x_driver = {
 	.id_table = apds990x_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(apds990x_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init apds990x_init(void)
 {
 	return i2c_add_driver(&apds990x_driver);
@@ -1288,10 +1294,23 @@ static void __exit apds990x_exit(void)
 {
 	i2c_del_driver(&apds990x_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("APDS990X combined ALS and proximity sensor");
 MODULE_AUTHOR("Samu Onkalo, Nokia Corporation");
 MODULE_LICENSE("GPL v2");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(apds990x_init);
 module_exit(apds990x_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(apds990x_init);
+module_exit(apds990x_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

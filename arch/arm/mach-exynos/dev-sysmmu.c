@@ -1,10 +1,15 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* linux/arch/arm/mach-exynos4/dev-sysmmu.c
  *
  * Copyright (c) 2010 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
  *
  * EXYNOS4 - System MMU support
+<<<<<<< HEAD
+=======
 =======
 /* linux/arch/arm/mach-exynos/dev-sysmmu.c
  *
@@ -13,6 +18,7 @@
  *
  * EXYNOS - System MMU support
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -24,16 +30,23 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 
 #include <plat/cpu.h>
 #include <plat/pd.h>
 #include <plat/devs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/map.h>
 #include <mach/irqs.h>
 #include <mach/sysmmu.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/s5p-clock.h>
 
 /* These names must be equal to the clock names in mach-exynos4/clock.c */
@@ -248,6 +261,8 @@ void sysmmu_clk_disable(sysmmu_ips ips)
 	if (sysmmu_clk[ips])
 		clk_disable(sysmmu_clk[ips]);
 }
+<<<<<<< HEAD
+=======
 =======
 
 static u64 exynos_sysmmu_dma_mask = DMA_BIT_MASK(32);
@@ -529,3 +544,4 @@ static int __init init_sysmmu_platform_device(void)
 }
 subsys_initcall(init_sysmmu_platform_device);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -64,6 +64,9 @@ static struct platform_driver spdif_dit_driver = {
 <<<<<<< HEAD
 module_platform_driver(spdif_dit_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(spdif_dit_driver);
+=======
 static int __init dit_modinit(void)
 {
 	return platform_driver_register(&spdif_dit_driver);
@@ -77,6 +80,7 @@ static void __exit dit_exit(void)
 module_init(dit_modinit);
 module_exit(dit_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Steve Chen <schen@mvista.com>");
 MODULE_DESCRIPTION("SPDIF dummy codec driver");

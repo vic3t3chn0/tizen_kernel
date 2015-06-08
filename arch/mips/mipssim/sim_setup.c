@@ -37,7 +37,11 @@
 <<<<<<< HEAD
 #include <asm/smp-ops.h>
 =======
+<<<<<<< HEAD
+#include <asm/smp-ops.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 static void __init serial_init(void);
@@ -64,6 +68,9 @@ void __init prom_init(void)
 	prom_meminit();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_has_mipsmt) {
 		if (!register_vsmp_smp_ops())
 			return;
@@ -75,6 +82,8 @@ void __init prom_init(void)
 	}
 
 	register_up_smp_ops();
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_MIPS_MT_SMP
 	if (cpu_has_mipsmt)
@@ -89,6 +98,7 @@ void __init prom_init(void)
 		register_smp_ops(&up_smp_ops);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init serial_init(void)

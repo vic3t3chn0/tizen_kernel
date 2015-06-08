@@ -30,8 +30,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -44,10 +47,15 @@
 #include <sysdev/fsl_pci.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "mpc85xx.h"
 
 #ifdef CONFIG_CPM2
 #include <asm/cpm2.h>
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CPM2
 #include <asm/cpm2.h>
@@ -64,17 +72,23 @@ static void cpm2_cascade(unsigned int irq, struct irq_desc *desc)
 	chip->irq_eoi(&desc->irq_data);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_CPM2 */
 
 static void __init stx_gp3_pic_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN,
 			0, 256, " OpenPIC  ");
 	BUG_ON(mpic == NULL);
 	mpic_init(mpic);
 
 	mpc85xx_cpm2_pic_init();
+<<<<<<< HEAD
+=======
 =======
 	struct mpic *mpic;
 	struct resource r;
@@ -123,6 +137,7 @@ static void __init stx_gp3_pic_init(void)
 	irq_set_chained_handler(irq, cpm2_cascade);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -166,6 +181,9 @@ static void stx_gp3_show_cpuinfo(struct seq_file *m)
 <<<<<<< HEAD
 machine_device_initcall(stx_gp3, mpc85xx_common_publish_devices);
 =======
+<<<<<<< HEAD
+machine_device_initcall(stx_gp3, mpc85xx_common_publish_devices);
+=======
 static struct of_device_id __initdata of_bus_ids[] = {
 	{ .compatible = "simple-bus", },
 	{ .compatible = "gianfar", },
@@ -180,6 +198,7 @@ static int __init declare_of_platform_devices(void)
 }
 machine_device_initcall(stx_gp3, declare_of_platform_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called very early, device-tree isn't unflattened

@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/board.h>
 #include <plat/usb.h>
 
@@ -40,6 +44,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init omap_zoom_init_early(void)
 {
 	omap2_init_common_infrastructure();
@@ -52,6 +58,7 @@ static void __init omap_zoom_init_early(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OMAP_MUX
 static struct omap_board_mux board_mux[] __initdata = {
 	/* WLAN IRQ - GPIO 162 */
@@ -137,6 +144,9 @@ static void __init omap_zoom_init(void)
 	zoom_debugboard_init();
 	zoom_peripherals_init();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (machine_is_omap_zoom2())
 		omap_sdrc_init(mt46h32m32lf6_sdrc_params,
@@ -145,13 +155,19 @@ static void __init omap_zoom_init(void)
 		omap_sdrc_init(h8mbx00u0mer0em_sdrc_params,
 					  h8mbx00u0mer0em_sdrc_params);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	zoom_display_init();
 }
 
 MACHINE_START(OMAP_ZOOM2, "OMAP Zoom2 board")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= omap_reserve,
 	.map_io		= omap3_map_io,
@@ -173,6 +189,8 @@ MACHINE_START(OMAP_ZOOM3, "OMAP Zoom3 board")
 	.init_machine	= omap_zoom_init,
 	.timer		= &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= omap_reserve,
@@ -192,4 +210,5 @@ MACHINE_START(OMAP_ZOOM3, "OMAP Zoom3 board")
 	.init_machine	= omap_zoom_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

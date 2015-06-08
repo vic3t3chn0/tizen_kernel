@@ -28,6 +28,13 @@
 #include <linux/i2c.h>
 #include <linux/slab.h>
 #include <linux/videodev2.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/tvp7002.h>
 #include <media/v4l2-device.h>
 #include <media/v4l2-chip-ident.h>
@@ -62,7 +69,15 @@ MODULE_LICENSE("GPL");
 #define TVP7002_CL_MASK		0x0f
 
 /* Debug functions */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(debug, bool, 0644);
 MODULE_PARM_DESC(debug, "Debug level (0-2)");
 
@@ -128,7 +143,15 @@ static const struct i2c_reg_value tvp7002_init_default[] = {
 	{ TVP7002_ADC_SETUP, 0x50, TVP7002_WRITE },
 	{ TVP7002_COARSE_CLAMP_CTL, 0x00, TVP7002_WRITE },
 	{ TVP7002_SOG_CLAMP, 0x80, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ TVP7002_RGB_COARSE_CLAMP_CTL, 0x8c, TVP7002_WRITE },
+=======
 	{ TVP7002_RGB_COARSE_CLAMP_CTL, 0x00, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_RGB_COARSE_CLAMP_CTL, 0x00, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_SOG_COARSE_CLAMP_CTL, 0x04, TVP7002_WRITE },
 	{ TVP7002_ALC_PLACEMENT, 0x5a, TVP7002_WRITE },
 	{ 0x32, 0x18, TVP7002_RESERVED },
@@ -182,7 +205,14 @@ static const struct i2c_reg_value tvp7002_parms_480P[] = {
 	{ TVP7002_HPLL_FDBK_DIV_MSBS, 0x35, TVP7002_WRITE },
 	{ TVP7002_HPLL_FDBK_DIV_LSBS, 0xa0, TVP7002_WRITE },
 	{ TVP7002_HPLL_CRTL, 0x02, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_AVID_START_PIXEL_LSBS, 0x91, TVP7002_WRITE },
 	{ TVP7002_AVID_START_PIXEL_MSBS, 0x00, TVP7002_WRITE },
 	{ TVP7002_AVID_STOP_PIXEL_LSBS, 0x0B, TVP7002_WRITE },
@@ -204,7 +234,14 @@ static const struct i2c_reg_value tvp7002_parms_576P[] = {
 	{ TVP7002_HPLL_FDBK_DIV_MSBS, 0x36, TVP7002_WRITE },
 	{ TVP7002_HPLL_FDBK_DIV_LSBS, 0x00, TVP7002_WRITE },
 	{ TVP7002_HPLL_CRTL, 0x18, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_AVID_START_PIXEL_LSBS, 0x9B, TVP7002_WRITE },
 	{ TVP7002_AVID_START_PIXEL_MSBS, 0x00, TVP7002_WRITE },
 	{ TVP7002_AVID_STOP_PIXEL_LSBS, 0x0F, TVP7002_WRITE },
@@ -226,7 +263,14 @@ static const struct i2c_reg_value tvp7002_parms_1080I60[] = {
 	{ TVP7002_HPLL_FDBK_DIV_MSBS, 0x89, TVP7002_WRITE },
 	{ TVP7002_HPLL_FDBK_DIV_LSBS, 0x80, TVP7002_WRITE },
 	{ TVP7002_HPLL_CRTL, 0x98, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_AVID_START_PIXEL_LSBS, 0x06, TVP7002_WRITE },
 	{ TVP7002_AVID_START_PIXEL_MSBS, 0x01, TVP7002_WRITE },
 	{ TVP7002_AVID_STOP_PIXEL_LSBS, 0x8a, TVP7002_WRITE },
@@ -248,7 +292,14 @@ static const struct i2c_reg_value tvp7002_parms_1080P60[] = {
 	{ TVP7002_HPLL_FDBK_DIV_MSBS, 0x89, TVP7002_WRITE },
 	{ TVP7002_HPLL_FDBK_DIV_LSBS, 0x80, TVP7002_WRITE },
 	{ TVP7002_HPLL_CRTL, 0xE0, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_AVID_START_PIXEL_LSBS, 0x06, TVP7002_WRITE },
 	{ TVP7002_AVID_START_PIXEL_MSBS, 0x01, TVP7002_WRITE },
 	{ TVP7002_AVID_STOP_PIXEL_LSBS, 0x8a, TVP7002_WRITE },
@@ -270,7 +321,14 @@ static const struct i2c_reg_value tvp7002_parms_1080I50[] = {
 	{ TVP7002_HPLL_FDBK_DIV_MSBS, 0xa5, TVP7002_WRITE },
 	{ TVP7002_HPLL_FDBK_DIV_LSBS, 0x00, TVP7002_WRITE },
 	{ TVP7002_HPLL_CRTL, 0x98, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_HPLL_PHASE_SEL, 0x14, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_AVID_START_PIXEL_LSBS, 0x06, TVP7002_WRITE },
 	{ TVP7002_AVID_START_PIXEL_MSBS, 0x01, TVP7002_WRITE },
 	{ TVP7002_AVID_STOP_PIXEL_LSBS, 0x8a, TVP7002_WRITE },
@@ -292,7 +350,14 @@ static const struct i2c_reg_value tvp7002_parms_720P60[] = {
 	{ TVP7002_HPLL_FDBK_DIV_MSBS, 0x67, TVP7002_WRITE },
 	{ TVP7002_HPLL_FDBK_DIV_LSBS, 0x20, TVP7002_WRITE },
 	{ TVP7002_HPLL_CRTL, 0xa0, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ TVP7002_HPLL_PHASE_SEL, 0x16, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_HPLL_PHASE_SEL, 0x16, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_AVID_START_PIXEL_LSBS, 0x47, TVP7002_WRITE },
 	{ TVP7002_AVID_START_PIXEL_MSBS, 0x01, TVP7002_WRITE },
 	{ TVP7002_AVID_STOP_PIXEL_LSBS, 0x4B, TVP7002_WRITE },
@@ -314,7 +379,14 @@ static const struct i2c_reg_value tvp7002_parms_720P50[] = {
 	{ TVP7002_HPLL_FDBK_DIV_MSBS, 0x7b, TVP7002_WRITE },
 	{ TVP7002_HPLL_FDBK_DIV_LSBS, 0xc0, TVP7002_WRITE },
 	{ TVP7002_HPLL_CRTL, 0x98, TVP7002_WRITE },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ TVP7002_HPLL_PHASE_SEL, 0x16, TVP7002_WRITE },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ TVP7002_HPLL_PHASE_SEL, 0x16, TVP7002_WRITE },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ TVP7002_AVID_START_PIXEL_LSBS, 0x47, TVP7002_WRITE },
 	{ TVP7002_AVID_START_PIXEL_MSBS, 0x01, TVP7002_WRITE },
 	{ TVP7002_AVID_STOP_PIXEL_LSBS, 0x4B, TVP7002_WRITE },
@@ -687,6 +759,15 @@ static int tvp7002_query_dv_preset(struct v4l2_subdev *sd,
 	u8 cpl_msb;
 	int index;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Return invalid preset if no active input is detected */
+	qpreset->preset = V4L2_DV_INVALID;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	device = to_tvp7002(sd);
 
 	/* Read standards from device registers */
@@ -720,8 +801,16 @@ static int tvp7002_query_dv_preset(struct v4l2_subdev *sd,
 	if (index == NUM_PRESETS) {
 		v4l2_dbg(1, debug, sd, "detection failed: lpf = %x, cpl = %x\n",
 								lpfr, cpln);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		/* Could not detect a signal, so return the 'invalid' preset */
 		qpreset->preset = V4L2_DV_INVALID;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* Could not detect a signal, so return the 'invalid' preset */
+		qpreset->preset = V4L2_DV_INVALID;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -1074,6 +1163,12 @@ static struct i2c_driver tvp7002_driver = {
 	.id_table = tvp7002_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(tvp7002_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * tvp7002_init - Initialize driver via I2C interface
  *
@@ -1098,3 +1193,7 @@ static void __exit tvp7002_exit(void)
 
 module_init(tvp7002_init);
 module_exit(tvp7002_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

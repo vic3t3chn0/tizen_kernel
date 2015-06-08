@@ -8,8 +8,11 @@
 #include <linux/uio.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/workqueue.h>
 
 #include "types.h"
@@ -20,9 +23,12 @@ struct ceph_connection;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct workqueue_struct *ceph_msgr_wq;       /* receive work queue */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Ceph defines these callbacks for handling connection events.
  */
@@ -63,8 +69,11 @@ struct ceph_messenger {
 	struct ceph_entity_addr my_enc_addr;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct page *zero_page;          /* used in certain error cases */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bool nocrc;
 
@@ -106,7 +115,11 @@ struct ceph_msg {
 <<<<<<< HEAD
 	unsigned long ack_stamp;        /* tx: when we were acked */
 =======
+<<<<<<< HEAD
+	unsigned long ack_stamp;        /* tx: when we were acked */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct ceph_msgpool *pool;
 };
@@ -117,8 +130,12 @@ struct ceph_msg_pos {
 <<<<<<< HEAD
 	bool did_page_crc;   /* true if we've calculated crc for current page */
 =======
+<<<<<<< HEAD
+	bool did_page_crc;   /* true if we've calculated crc for current page */
+=======
 	int did_page_crc;    /* true if we've calculated crc for current page */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ceph connection fault delay defaults, for exponential backoff */
@@ -258,8 +275,13 @@ extern void ceph_con_put(struct ceph_connection *con);
 extern struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags,
 				     bool can_fail);
 =======
+<<<<<<< HEAD
+extern struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags,
+				     bool can_fail);
+=======
 extern struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void ceph_msg_kfree(struct ceph_msg *m);
 
 

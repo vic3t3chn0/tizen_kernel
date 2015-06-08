@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/amba/mmci.h>
 =======
+<<<<<<< HEAD
+#include <linux/amba/mmci.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/amba/serial.h>
 #include <linux/platform_device.h>
 #include <linux/gpio.h>
@@ -30,12 +34,18 @@
 #include <linux/mtd/nand.h>
 #include <linux/mtd/fsmc.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pinctrl/machine.h>
 #include <linux/pinctrl/consumer.h>
 #include <linux/pinctrl/pinconf-generic.h>
 #include <linux/dma-mapping.h>
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/types.h>
 #include <asm/setup.h>
@@ -49,12 +59,17 @@
 #include <mach/syscon.h>
 #include <mach/dma_channels.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/gpio-u300.h>
 
 #include "clock.h"
 #include "spi.h"
 #include "i2c.h"
 #include "u300-gpio.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "clock.h"
@@ -62,6 +77,7 @@
 #include "spi.h"
 #include "i2c.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Static I/O mappings that are needed for booting the U300 platforms. The
@@ -90,6 +106,8 @@ static struct map_desc u300_io_desc[] __initdata = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{
 		.virtual	= 0xffff2000, /* TCM memory */
 		.pfn		= __phys_to_pfn(0xffff2000),
@@ -110,6 +128,7 @@ static struct map_desc u300_io_desc[] __initdata = {
 	},
 	*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init u300_map_io(void)
@@ -119,7 +138,12 @@ void __init u300_map_io(void)
 	/* We enable a real big DMA buffer if need be. */
 	init_consistent_dma_size(SZ_4M);
 =======
+<<<<<<< HEAD
+	/* We enable a real big DMA buffer if need be. */
+	init_consistent_dma_size(SZ_4M);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -140,6 +164,11 @@ static struct amba_pl011_data uart0_plat_data = {
 static AMBA_APB_DEVICE(uart0, "uart0", 0, U300_UART0_BASE,
 	{ IRQ_U300_UART0 }, &uart0_plat_data);
 =======
+<<<<<<< HEAD
+/* Slow device at 0x3000 offset */
+static AMBA_APB_DEVICE(uart0, "uart0", 0, U300_UART0_BASE,
+	{ IRQ_U300_UART0 }, &uart0_plat_data);
+=======
 static struct amba_device uart0_device = {
 	.dev = {
 		.coherent_dma_mask = ~0,
@@ -154,6 +183,7 @@ static struct amba_device uart0_device = {
 	.irq = { IRQ_U300_UART0, NO_IRQ },
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The U335 have an additional UART1 on the APP CPU */
 #ifdef CONFIG_MACH_U300_BS335
@@ -166,6 +196,9 @@ static struct amba_pl011_data uart1_plat_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Fast device at 0x7000 offset */
 static AMBA_APB_DEVICE(uart1, "uart1", 0, U300_UART1_BASE,
 	{ IRQ_U300_UART1 }, &uart1_plat_data);
@@ -201,6 +234,8 @@ static struct mmci_platform_data mmcsd_platform_data = {
 
 static AMBA_APB_DEVICE(mmcsd, "mmci", 0, U300_MMCSD_BASE,
 	U300_MMCSD_IRQS, &mmcsd_platform_data);
+<<<<<<< HEAD
+=======
 =======
 static struct amba_device uart1_device = {
 	.dev = {
@@ -268,6 +303,7 @@ static struct amba_device mmcsd_device = {
 	 */
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The order of device declaration may be important, since some devices
@@ -314,8 +350,12 @@ static struct resource gpio_resources[] = {
 <<<<<<< HEAD
 #if defined(CONFIG_MACH_U300_BS365) || defined(CONFIG_MACH_U300_BS335)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_MACH_U300_BS365) || defined(CONFIG_MACH_U300_BS335)
+=======
 #ifdef U300_COH901571_3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.name  = "gpio3",
 		.start = IRQ_U300_GPIO_PORT3,
@@ -331,7 +371,11 @@ static struct resource gpio_resources[] = {
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MACH_U300_BS335
 	{
 		.name  = "gpio5",
@@ -348,8 +392,11 @@ static struct resource gpio_resources[] = {
 #endif /* CONFIG_MACH_U300_BS335 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* U300_COH901571_3 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource keypad_resources[] = {
@@ -446,6 +493,8 @@ static struct resource wdog_resources[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* TODO: These should be protected by suitable #ifdef's */
 static struct resource ave_resources[] = {
 	{
@@ -492,6 +541,7 @@ static struct resource ave_resources[] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource dma_resource[] = {
 	{
 		.start = U300_DMAC_BASE,
@@ -1622,6 +1672,9 @@ static struct coh901318_platform coh901318_platform = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource pinctrl_resources[] = {
 	{
 		.start = U300_SYSCON_BASE,
@@ -1630,8 +1683,11 @@ static struct resource pinctrl_resources[] = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device wdog_device = {
 	.name = "coh901327_wdog",
 	.id = -1,
@@ -1654,6 +1710,9 @@ static struct platform_device i2c1_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device pinctrl_device = {
 	.name = "pinctrl-u300",
 	.id = -1,
@@ -1683,8 +1742,11 @@ static struct u300_gpio_platform u300_gpio_plat = {
 	.pinctrl_device = &pinctrl_device,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device gpio_device = {
 	.name = "u300-gpio",
 	.id = -1,
@@ -1695,7 +1757,13 @@ static struct platform_device gpio_device = {
 		.platform_data = &u300_gpio_plat,
 	},
 =======
+<<<<<<< HEAD
+	.dev = {
+		.platform_data = &u300_gpio_plat,
+	},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device keypad_device = {
@@ -1739,7 +1807,12 @@ static struct fsmc_nand_platform_data nand_platform_data = {
 	.ale_off = PLAT_NAND_ALE,
 	.cle_off = PLAT_NAND_CLE,
 =======
+<<<<<<< HEAD
+	.ale_off = PLAT_NAND_ALE,
+	.cle_off = PLAT_NAND_CLE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device nand_device = {
@@ -1754,6 +1827,8 @@ static struct platform_device nand_device = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct platform_device ave_device = {
 	.name = "video_enc",
 	.id = -1,
@@ -1762,6 +1837,7 @@ static struct platform_device ave_device = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device dma_device = {
 	.name		= "coh901318",
 	.id		= -1,
@@ -1774,6 +1850,9 @@ static struct platform_device dma_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long pin_pullup_conf[] = {
 	PIN_CONF_PACKED(PIN_CONFIG_BIAS_PULL_UP, 1),
 };
@@ -1836,8 +1915,11 @@ static int __init u300_pinctrl_fetch(void)
 }
 subsys_initcall(u300_pinctrl_fetch);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Notice that AMBA devices are initialized before platform devices.
  *
@@ -1855,11 +1937,16 @@ static struct platform_device *platform_devs[] __initdata = {
 };
 
 =======
+<<<<<<< HEAD
+};
+
+=======
 	&ave_device
 };
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Interrupts: the U300 platforms have two pl190 ARM PrimeCells connected
  * together so some interrupts are connected to the first one and some
@@ -1880,18 +1967,24 @@ void __init u300_init_irq(void)
 	clk_enable(clk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < U300_VIC_IRQS_END; i++)
 		set_bit(i, (unsigned long *) &mask[0]);
 	vic_init((void __iomem *) U300_INTCON0_VBASE, IRQ_U300_INTCON0_START,
 		 mask[0], mask[0]);
 	vic_init((void __iomem *) U300_INTCON1_VBASE, IRQ_U300_INTCON1_START,
 		 mask[1], mask[1]);
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < NR_IRQS; i++)
 		set_bit(i, (unsigned long *) &mask[0]);
 	vic_init((void __iomem *) U300_INTCON0_VBASE, 0, mask[0], mask[0]);
 	vic_init((void __iomem *) U300_INTCON1_VBASE, 32, mask[1], mask[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -2016,8 +2109,12 @@ static void __init u300_assign_physmem(void)
 <<<<<<< HEAD
 				curr_start += resource_size(res);
 =======
+<<<<<<< HEAD
+				curr_start += resource_size(res);
+=======
 				curr_start += (res->end - res->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				printk(KERN_INFO "core.c: Mapping RAM " \
 				       "%#x-%#x to device %s:%s\n",
@@ -2055,12 +2152,18 @@ void __init u300_init_devices(void)
 	u300_assign_physmem();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Initialize pinmuxing */
 	pinctrl_register_mappings(u300_pinmux_map,
 				  ARRAY_SIZE(u300_pinmux_map));
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Register subdevices on the I2C buses */
 	u300_i2c_register_board_devices();
 
@@ -2071,6 +2174,9 @@ void __init u300_init_devices(void)
 	u300_spi_register_board_devices();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Enable SEMI self refresh */
 	val = readw(U300_SYSCON_VBASE + U300_SYSCON_SMCR) |
 		U300_SYSCON_SMCR_SEMI_SREFREQ_ENABLE;
@@ -2096,6 +2202,8 @@ void u300_restart(char mode, const char *cmd)
 	/* Wait for system do die/reset. */
 	while (1);
 }
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_MACH_U300_SEMI_IS_SHARED
 	/*
@@ -2120,3 +2228,4 @@ static int core_module_init(void)
 }
 module_init(core_module_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

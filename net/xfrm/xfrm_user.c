@@ -31,8 +31,12 @@
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/in6.h>
 #endif
 
@@ -132,6 +136,11 @@ static inline int verify_replay(struct xfrm_usersa_info *p,
 	if ((p->flags & XFRM_STATE_ESN) && !rt)
 		return -EINVAL;
 =======
+<<<<<<< HEAD
+
+	if ((p->flags & XFRM_STATE_ESN) && !rt)
+		return -EINVAL;
+=======
 	struct xfrm_replay_state_esn *rs;
 
 	if (p->flags & XFRM_STATE_ESN) {
@@ -148,6 +157,7 @@ static inline int verify_replay(struct xfrm_usersa_info *p,
 			return -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!rt)
 		return 0;
@@ -175,8 +185,12 @@ static int verify_newsa_info(struct xfrm_usersa_info *p,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 #else
 		err = -EAFNOSUPPORT;
@@ -230,8 +244,12 @@ static int verify_newsa_info(struct xfrm_usersa_info *p,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IPPROTO_DSTOPTS:
 	case IPPROTO_ROUTING:
 		if (attrs[XFRMA_ALG_COMP]	||
@@ -402,8 +420,11 @@ static inline int xfrm_replay_verify_len(struct xfrm_replay_state_esn *replay_es
 	struct xfrm_replay_state_esn *up;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ulen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!replay_esn || !rp)
 		return 0;
@@ -414,10 +435,16 @@ static inline int xfrm_replay_verify_len(struct xfrm_replay_state_esn *replay_es
 	if (xfrm_replay_state_esn_len(replay_esn) !=
 			xfrm_replay_state_esn_len(up))
 =======
+<<<<<<< HEAD
+
+	if (xfrm_replay_state_esn_len(replay_esn) !=
+			xfrm_replay_state_esn_len(up))
+=======
 	ulen = xfrm_replay_state_esn_len(up);
 
 	if (nla_len(rp) < ulen || xfrm_replay_state_esn_len(replay_esn) != ulen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	return 0;
@@ -430,20 +457,28 @@ static int xfrm_alloc_replay_state_esn(struct xfrm_replay_state_esn **replay_esn
 	struct xfrm_replay_state_esn *p, *pp, *up;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int klen, ulen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!rta)
 		return 0;
 
 	up = nla_data(rta);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	p = kmemdup(up, xfrm_replay_state_esn_len(up), GFP_KERNEL);
 	if (!p)
 		return -ENOMEM;
 
 	pp = kmemdup(up, xfrm_replay_state_esn_len(up), GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	klen = xfrm_replay_state_esn_len(up);
 	ulen = nla_len(rta) >= klen ? klen : sizeof(*up);
@@ -454,6 +489,7 @@ static int xfrm_alloc_replay_state_esn(struct xfrm_replay_state_esn **replay_esn
 
 	pp = kzalloc(klen, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!pp) {
 		kfree(p);
 		return -ENOMEM;
@@ -461,10 +497,13 @@ static int xfrm_alloc_replay_state_esn(struct xfrm_replay_state_esn **replay_esn
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memcpy(p, up, ulen);
 	memcpy(pp, up, ulen);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*replay_esn = p;
 	*preplay_esn = pp;
 
@@ -504,10 +543,15 @@ static void copy_from_user_state(struct xfrm_state *x, struct xfrm_usersa_info *
  *
 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xfrm_update_ae_params(struct xfrm_state *x, struct nlattr **attrs)
 {
 	struct nlattr *rp = attrs[XFRMA_REPLAY_VAL];
 	struct nlattr *re = attrs[XFRMA_REPLAY_ESN_VAL];
+<<<<<<< HEAD
+=======
 =======
 static void xfrm_update_ae_params(struct xfrm_state *x, struct nlattr **attrs,
 				  int update_esn)
@@ -515,6 +559,7 @@ static void xfrm_update_ae_params(struct xfrm_state *x, struct nlattr **attrs,
 	struct nlattr *rp = attrs[XFRMA_REPLAY_VAL];
 	struct nlattr *re = update_esn ? attrs[XFRMA_REPLAY_ESN_VAL] : NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nlattr *lt = attrs[XFRMA_LTIME_VAL];
 	struct nlattr *et = attrs[XFRMA_ETIMER_THRESH];
 	struct nlattr *rt = attrs[XFRMA_REPLAY_THRESH];
@@ -627,8 +672,12 @@ static struct xfrm_state *xfrm_state_construct(struct net *net,
 <<<<<<< HEAD
 	xfrm_update_ae_params(x, attrs);
 =======
+<<<<<<< HEAD
+	xfrm_update_ae_params(x, attrs);
+=======
 	xfrm_update_ae_params(x, attrs, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return x;
 
@@ -764,8 +813,11 @@ static void copy_to_user_state(struct xfrm_state *x, struct xfrm_usersa_info *p)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(p, 0, sizeof(*p));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&p->id, &x->id, sizeof(p->id));
 	memcpy(&p->sel, &x->sel, sizeof(p->sel));
 	memcpy(&p->lft, &x->lft, sizeof(p->lft));
@@ -822,8 +874,12 @@ static int copy_to_user_auth(struct xfrm_algo_auth *auth, struct sk_buff *skb)
 <<<<<<< HEAD
 	strcpy(algo->alg_name, auth->alg_name);
 =======
+<<<<<<< HEAD
+	strcpy(algo->alg_name, auth->alg_name);
+=======
 	strncpy(algo->alg_name, auth->alg_name, sizeof(algo->alg_name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(algo->alg_key, auth->alg_key, (auth->alg_key_len + 7) / 8);
 	algo->alg_key_len = auth->alg_key_len;
 
@@ -945,8 +1001,11 @@ static struct sk_buff *xfrm_state_netlink(struct sk_buff *in_skb,
 	struct sk_buff *skb;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_ATOMIC);
 	if (!skb)
@@ -962,11 +1021,17 @@ static struct sk_buff *xfrm_state_netlink(struct sk_buff *in_skb,
 		kfree_skb(skb);
 		return NULL;
 =======
+<<<<<<< HEAD
+	if (dump_one_state(x, 0, &info)) {
+		kfree_skb(skb);
+		return NULL;
+=======
 	err = dump_one_state(x, 0, &info);
 	if (err) {
 		kfree_skb(skb);
 		return ERR_PTR(err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return skb;
@@ -1255,8 +1320,12 @@ static int verify_newpolicy_info(struct xfrm_userpolicy_info *p)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 #else
 		return  -EAFNOSUPPORT;
@@ -1330,8 +1399,12 @@ static int validate_tmpl(int nr, struct xfrm_user_tmpl *ut, u16 family)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case AF_INET6:
 			break;
 #endif
@@ -1399,8 +1472,11 @@ static void copy_to_user_policy(struct xfrm_policy *xp, struct xfrm_userpolicy_i
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(p, 0, sizeof(*p));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&p->sel, &xp->selector, sizeof(p->sel));
 	memcpy(&p->lft, &xp->lft, sizeof(p->lft));
 	memcpy(&p->curlft, &xp->curlft, sizeof(p->curlft));
@@ -1507,8 +1583,11 @@ static int copy_to_user_tmpl(struct xfrm_policy *xp, struct sk_buff *skb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(up, 0, sizeof(*up));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcpy(&up->id, &kp->id, sizeof(up->id));
 		up->family = kp->encap_family;
 		memcpy(&up->saddr, &kp->saddr, sizeof(up->saddr));
@@ -1639,8 +1718,11 @@ static struct sk_buff *xfrm_policy_netlink(struct sk_buff *in_skb,
 	struct sk_buff *skb;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
 	if (!skb)
@@ -1656,11 +1738,17 @@ static struct sk_buff *xfrm_policy_netlink(struct sk_buff *in_skb,
 		kfree_skb(skb);
 		return NULL;
 =======
+<<<<<<< HEAD
+	if (dump_one_policy(xp, dir, 0, &info) < 0) {
+		kfree_skb(skb);
+		return NULL;
+=======
 	err = dump_one_policy(xp, dir, 0, &info);
 	if (err) {
 		kfree_skb(skb);
 		return ERR_PTR(err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return skb;
@@ -1916,8 +2004,12 @@ static int xfrm_new_ae(struct sk_buff *skb, struct nlmsghdr *nlh,
 <<<<<<< HEAD
 	xfrm_update_ae_params(x, attrs);
 =======
+<<<<<<< HEAD
+	xfrm_update_ae_params(x, attrs);
+=======
 	xfrm_update_ae_params(x, attrs, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_bh(&x->lock);
 
 	c.event = nlh->nlmsg_type;
@@ -2416,8 +2508,12 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 <<<<<<< HEAD
 	if (!capable(CAP_NET_ADMIN))
 =======
+<<<<<<< HEAD
+	if (!capable(CAP_NET_ADMIN))
+=======
 	if (security_netlink_recv(skb, CAP_NET_ADMIN))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 
 	if ((type == (XFRM_MSG_GETSA - XFRM_MSG_BASE) ||
@@ -2427,6 +2523,9 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 			return -EINVAL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{
 			struct netlink_dump_control c = {
 				.dump = link->dump,
@@ -2434,10 +2533,13 @@ static int xfrm_user_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 			};
 			return netlink_dump_start(net->xfrm.nlsk, skb, nlh, &c);
 		}
+<<<<<<< HEAD
+=======
 =======
 		return netlink_dump_start(net->xfrm.nlsk, skb, nlh,
 					  link->dump, link->done, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	err = nlmsg_parse(nlh, xfrm_msg_min[type], attrs, XFRMA_MAX,
@@ -2744,8 +2846,12 @@ static struct xfrm_policy *xfrm_compile_policy(struct sock *sk, int opt,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case AF_INET6:
 		if (opt != IPV6_XFRM_POLICY) {
 			*dir = -EOPNOTSUPP;
@@ -3079,8 +3185,12 @@ static void __net_exit xfrm_user_net_exit(struct list_head *net_exit_list)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(net->xfrm.nlsk, NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(net->xfrm.nlsk, NULL);
+=======
 		rcu_assign_pointer(net->xfrm.nlsk, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	synchronize_net();
 	list_for_each_entry(net, net_exit_list, exit_list)
 		netlink_kernel_release(net->xfrm.nlsk_stash);

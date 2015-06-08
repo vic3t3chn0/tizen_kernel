@@ -22,6 +22,13 @@
 #include <linux/kernel.h>
 #include <linux/major.h>
 #include <linux/errno.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/tty.h>
 #include <linux/interrupt.h>
 #include <linux/mm.h>
@@ -92,7 +99,15 @@ vcs_poll_data_free(struct vcs_poll_data *poll)
 static struct vcs_poll_data *
 vcs_poll_data_get(struct file *file)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct vcs_poll_data *poll = file->private_data;
+=======
 	struct vcs_poll_data *poll = file->private_data, *kill = NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct vcs_poll_data *poll = file->private_data, *kill = NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (poll)
 		return poll;
@@ -121,12 +136,25 @@ vcs_poll_data_get(struct file *file)
 		file->private_data = poll;
 	} else {
 		/* someone else raced ahead of us */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		vcs_poll_data_free(poll);
+		poll = file->private_data;
+	}
+	spin_unlock(&file->f_lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kill = poll;
 		poll = file->private_data;
 	}
 	spin_unlock(&file->f_lock);
 	if (kill)
 		vcs_poll_data_free(kill);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return poll;
 }
@@ -609,10 +637,23 @@ vcs_open(struct inode *inode, struct file *filp)
 	unsigned int currcons = iminor(inode) & 127;
 	int ret = 0;
 	
+<<<<<<< HEAD
+<<<<<<< HEAD
+	console_lock();
+	if(currcons && !vc_cons_allocated(currcons-1))
+		ret = -ENXIO;
+	console_unlock();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tty_lock();
 	if(currcons && !vc_cons_allocated(currcons-1))
 		ret = -ENXIO;
 	tty_unlock();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

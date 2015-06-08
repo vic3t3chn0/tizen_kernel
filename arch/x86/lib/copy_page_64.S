@@ -5,7 +5,11 @@
 <<<<<<< HEAD
 #include <asm/alternative-asm.h>
 =======
+<<<<<<< HEAD
+#include <asm/alternative-asm.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ALIGN
 copy_page_c:
@@ -27,18 +31,26 @@ ENTRY(copy_page)
 	subq	$2*8,%rsp
 	CFI_ADJUST_CFA_OFFSET 2*8
 =======
+<<<<<<< HEAD
+	subq	$2*8,%rsp
+	CFI_ADJUST_CFA_OFFSET 2*8
+=======
 	subq	$3*8,%rsp
 	CFI_ADJUST_CFA_OFFSET 3*8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movq	%rbx,(%rsp)
 	CFI_REL_OFFSET rbx, 0
 	movq	%r12,1*8(%rsp)
 	CFI_REL_OFFSET r12, 1*8
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	movq	%r13,2*8(%rsp)
 	CFI_REL_OFFSET r13, 2*8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	movl	$(4096/64)-5,%ecx
 	.p2align 4
@@ -106,11 +118,16 @@ ENTRY(copy_page)
 	addq	$2*8,%rsp
 	CFI_ADJUST_CFA_OFFSET -2*8
 =======
+<<<<<<< HEAD
+	addq	$2*8,%rsp
+	CFI_ADJUST_CFA_OFFSET -2*8
+=======
 	movq	2*8(%rsp),%r13
 	CFI_RESTORE r13
 	addq	$3*8,%rsp
 	CFI_ADJUST_CFA_OFFSET -3*8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret
 .Lcopy_page_end:
 	CFI_ENDPROC
@@ -131,6 +148,10 @@ ENDPROC(copy_page)
 	altinstruction_entry copy_page, 1b, X86_FEATURE_REP_GOOD,	\
 		.Lcopy_page_end-copy_page, 2b-1b
 =======
+<<<<<<< HEAD
+	altinstruction_entry copy_page, 1b, X86_FEATURE_REP_GOOD,	\
+		.Lcopy_page_end-copy_page, 2b-1b
+=======
 	.align 8
 	.quad copy_page
 	.quad 1b
@@ -138,4 +159,5 @@ ENDPROC(copy_page)
 	.byte .Lcopy_page_end - copy_page
 	.byte 2b - 1b
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.previous

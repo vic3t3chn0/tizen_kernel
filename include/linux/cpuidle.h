@@ -18,23 +18,35 @@
 #include <linux/completion.h>
 #include <linux/hrtimer.h>
 =======
+<<<<<<< HEAD
+#include <linux/kobject.h>
+#include <linux/completion.h>
+#include <linux/hrtimer.h>
+=======
 #include <linux/module.h>
 #include <linux/kobject.h>
 #include <linux/completion.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CPUIDLE_STATE_MAX	8
 #define CPUIDLE_NAME_LEN	16
 #define CPUIDLE_DESC_LEN	32
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct module;
 
 struct cpuidle_device;
 struct cpuidle_driver;
+<<<<<<< HEAD
+=======
 =======
 struct cpuidle_device;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /****************************
@@ -42,6 +54,9 @@ struct cpuidle_device;
  ****************************/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cpuidle_state_usage {
 	void		*driver_data;
 
@@ -64,6 +79,8 @@ struct cpuidle_state {
 			int index);
 
 	int (*enter_dead) (struct cpuidle_device *dev, int index);
+<<<<<<< HEAD
+=======
 =======
 struct cpuidle_state {
 	char		name[CPUIDLE_NAME_LEN];
@@ -81,6 +98,7 @@ struct cpuidle_state {
 	int (*enter)	(struct cpuidle_device *dev,
 			 struct cpuidle_state *state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Idle State Flags */
@@ -88,19 +106,28 @@ struct cpuidle_state {
 <<<<<<< HEAD
 #define CPUIDLE_FLAG_COUPLED	(0x02) /* state applies to multiple cpus */
 =======
+<<<<<<< HEAD
+#define CPUIDLE_FLAG_COUPLED	(0x02) /* state applies to multiple cpus */
+=======
 #define CPUIDLE_FLAG_IGNORE	(0x100) /* ignore during this idle period */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CPUIDLE_DRIVER_FLAGS_MASK (0xFFFF0000)
 
 /**
  * cpuidle_get_statedata - retrieves private driver state data
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @st_usage: the state usage statistics
  */
 static inline void *cpuidle_get_statedata(struct cpuidle_state_usage *st_usage)
 {
 	return st_usage->driver_data;
+<<<<<<< HEAD
+=======
 =======
  * @state: the state
  */
@@ -108,11 +135,15 @@ static inline void * cpuidle_get_statedata(struct cpuidle_state *state)
 {
 	return state->driver_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
  * cpuidle_set_statedata - stores private driver state data
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @st_usage: the state usage statistics
  * @data: the private data
  */
@@ -120,6 +151,8 @@ static inline void
 cpuidle_set_statedata(struct cpuidle_state_usage *st_usage, void *data)
 {
 	st_usage->driver_data = data;
+<<<<<<< HEAD
+=======
 =======
  * @state: the state
  * @data: the private data
@@ -129,6 +162,7 @@ cpuidle_set_statedata(struct cpuidle_state *state, void *data)
 {
 	state->driver_data = data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct cpuidle_state_kobj {
@@ -136,7 +170,11 @@ struct cpuidle_state_kobj {
 <<<<<<< HEAD
 	struct cpuidle_state_usage *state_usage;
 =======
+<<<<<<< HEAD
+	struct cpuidle_state_usage *state_usage;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct completion kobj_unregister;
 	struct kobject kobj;
 };
@@ -146,8 +184,11 @@ struct cpuidle_device {
 	unsigned int		enabled:1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int		power_specified:1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int		cpu;
 
 	int			last_residency;
@@ -156,27 +197,38 @@ struct cpuidle_device {
 	struct cpuidle_state_usage	states_usage[CPUIDLE_STATE_MAX];
 	struct cpuidle_state_kobj *kobjs[CPUIDLE_STATE_MAX];
 =======
+<<<<<<< HEAD
+	struct cpuidle_state_usage	states_usage[CPUIDLE_STATE_MAX];
+	struct cpuidle_state_kobj *kobjs[CPUIDLE_STATE_MAX];
+=======
 	struct cpuidle_state	states[CPUIDLE_STATE_MAX];
 	struct cpuidle_state_kobj *kobjs[CPUIDLE_STATE_MAX];
 	struct cpuidle_state	*last_state;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct list_head 	device_list;
 	struct kobject		kobj;
 	struct completion	kobj_unregister;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_ARCH_NEEDS_CPU_IDLE_COUPLED
 	int			safe_state_index;
 	cpumask_t		coupled_cpus;
 	struct cpuidle_coupled	*coupled;
 #endif
+<<<<<<< HEAD
+=======
 =======
 	void			*governor_data;
 	struct cpuidle_state	*safe_state;
 
 	int (*prepare)		(struct cpuidle_device *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 DECLARE_PER_CPU(struct cpuidle_device *, cpuidle_devices);
@@ -199,6 +251,9 @@ static inline int cpuidle_get_last_residency(struct cpuidle_device *dev)
 
 struct cpuidle_driver {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char		*name;
 	struct module 		*owner;
 
@@ -213,6 +268,8 @@ struct cpuidle_driver {
 #ifdef CONFIG_CPU_IDLE
 extern void disable_cpuidle(void);
 extern int cpuidle_idle_call(void);
+<<<<<<< HEAD
+=======
 =======
 	char			name[CPUIDLE_NAME_LEN];
 	struct module 		*owner;
@@ -221,6 +278,7 @@ extern int cpuidle_idle_call(void);
 #ifdef CONFIG_CPU_IDLE
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int cpuidle_register_driver(struct cpuidle_driver *drv);
 struct cpuidle_driver *cpuidle_get_driver(void);
 extern void cpuidle_unregister_driver(struct cpuidle_driver *drv);
@@ -231,13 +289,22 @@ extern int cpuidle_register(struct cpuidle_driver *drv,
 			    const struct cpumask *const coupled_cpus);
 extern void cpuidle_unregister(struct cpuidle_driver *drv);
 =======
+<<<<<<< HEAD
+extern int cpuidle_register(struct cpuidle_driver *drv,
+			    const struct cpumask *const coupled_cpus);
+extern void cpuidle_unregister(struct cpuidle_driver *drv);
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void cpuidle_pause_and_lock(void);
 extern void cpuidle_resume_and_unlock(void);
 extern int cpuidle_enable_device(struct cpuidle_device *dev);
 extern void cpuidle_disable_device(struct cpuidle_device *dev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int cpuidle_wrap_enter(struct cpuidle_device *dev,
 				struct cpuidle_driver *drv, int index,
 				int (*enter)(struct cpuidle_device *dev,
@@ -247,11 +314,14 @@ extern int cpuidle_play_dead(void);
 #else
 static inline void disable_cpuidle(void) { }
 static inline int cpuidle_idle_call(void) { return -ENODEV; }
+<<<<<<< HEAD
+=======
 =======
 
 #else
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int cpuidle_register_driver(struct cpuidle_driver *drv)
 {return -ENODEV; }
 static inline struct cpuidle_driver *cpuidle_get_driver(void) {return NULL; }
@@ -260,19 +330,28 @@ static inline int cpuidle_register_device(struct cpuidle_device *dev)
 {return -ENODEV; }
 static inline void cpuidle_unregister_device(struct cpuidle_device *dev) { }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int cpuidle_register(struct cpuidle_driver *drv,
 				   const struct cpumask *const coupled_cpus)
 {return -ENODEV; }
 static inline void cpuidle_unregister(struct cpuidle_driver *drv) { }
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void cpuidle_pause_and_lock(void) { }
 static inline void cpuidle_resume_and_unlock(void) { }
 static inline int cpuidle_enable_device(struct cpuidle_device *dev)
 {return -ENODEV; }
 static inline void cpuidle_disable_device(struct cpuidle_device *dev) { }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int cpuidle_wrap_enter(struct cpuidle_device *dev,
 				struct cpuidle_driver *drv, int index,
 				int (*enter)(struct cpuidle_device *dev,
@@ -284,9 +363,12 @@ static inline int cpuidle_play_dead(void) {return -ENODEV; }
 
 #ifdef CONFIG_ARCH_NEEDS_CPU_IDLE_COUPLED
 void cpuidle_coupled_parallel_barrier(struct cpuidle_device *dev, atomic_t *a);
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /******************************
@@ -299,6 +381,9 @@ struct cpuidle_governor {
 	unsigned int		rating;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int  (*enable)		(struct cpuidle_driver *drv,
 					struct cpuidle_device *dev);
 	void (*disable)		(struct cpuidle_driver *drv,
@@ -307,6 +392,8 @@ struct cpuidle_governor {
 	int  (*select)		(struct cpuidle_driver *drv,
 					struct cpuidle_device *dev);
 	void (*reflect)		(struct cpuidle_device *dev, int index);
+<<<<<<< HEAD
+=======
 =======
 	int  (*enable)		(struct cpuidle_device *dev);
 	void (*disable)		(struct cpuidle_device *dev);
@@ -314,6 +401,7 @@ struct cpuidle_governor {
 	int  (*select)		(struct cpuidle_device *dev);
 	void (*reflect)		(struct cpuidle_device *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct module 		*owner;
 };
@@ -324,6 +412,9 @@ extern int cpuidle_register_governor(struct cpuidle_governor *gov);
 extern void cpuidle_unregister_governor(struct cpuidle_governor *gov);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_INTEL_IDLE
 extern int intel_idle_cpu_init(int cpu);
 #else
@@ -332,9 +423,12 @@ static inline int intel_idle_cpu_init(int cpu) { return -1; }
 
 #else
 static inline int intel_idle_cpu_init(int cpu) { return -1; }
+<<<<<<< HEAD
+=======
 =======
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int cpuidle_register_governor(struct cpuidle_governor *gov)
 {return 0;}

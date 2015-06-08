@@ -22,6 +22,9 @@ static inline void __iomem *__io(unsigned long addr)
 <<<<<<< HEAD
 #define __io(a)			__io(a)
 =======
+<<<<<<< HEAD
+#define __io(a)			__io(a)
+=======
 static inline void __iomem *
 __arch_ioremap(unsigned long paddr, size_t size, unsigned int mtype)
 {
@@ -51,5 +54,6 @@ __arch_iounmap(void __iomem *addr)
 #define __mem_pci(a)		(a)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

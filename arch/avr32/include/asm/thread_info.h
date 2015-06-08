@@ -87,8 +87,11 @@ static inline struct thread_info *current_thread_info(void)
 #define TIF_NOTIFY_RESUME	9	/* callback before returning to user */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TIF_FREEZE		29
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TIF_DEBUG		30	/* debugging enabled */
 #define TIF_USERSPACE		31      /* true if FS sets userspace */
 
@@ -103,8 +106,11 @@ static inline struct thread_info *current_thread_info(void)
 #define _TIF_NOTIFY_RESUME	(1 << TIF_NOTIFY_RESUME)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _TIF_FREEZE		(1 << TIF_FREEZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Note: The masks below must never span more than 16 bits! */
 

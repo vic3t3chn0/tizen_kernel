@@ -43,6 +43,9 @@
 
 #define I2SSTAT_BUSY(stype)	\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	((stype) == SNDRV_PCM_STREAM_PLAYBACK ? PSC_I2SSTAT_TB : PSC_I2SSTAT_RB)
 #define I2SPCR_START(stype)	\
 	((stype) == SNDRV_PCM_STREAM_PLAYBACK ? PSC_I2SPCR_TS : PSC_I2SPCR_RS)
@@ -50,6 +53,8 @@
 	((stype) == SNDRV_PCM_STREAM_PLAYBACK ? PSC_I2SPCR_TP : PSC_I2SPCR_RP)
 #define I2SPCR_CLRFIFO(stype)	\
 	((stype) == SNDRV_PCM_STREAM_PLAYBACK ? PSC_I2SPCR_TC : PSC_I2SPCR_RC)
+<<<<<<< HEAD
+=======
 =======
 	((stype) == PCM_TX ? PSC_I2SSTAT_TB : PSC_I2SSTAT_RB)
 #define I2SPCR_START(stype)	\
@@ -59,6 +64,7 @@
 #define I2SPCR_CLRFIFO(stype)	\
 	((stype) == PCM_TX ? PSC_I2SPCR_TC : PSC_I2SPCR_RC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 static int au1xpsc_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
@@ -253,8 +259,12 @@ static int au1xpsc_i2s_trigger(struct snd_pcm_substream *substream, int cmd,
 <<<<<<< HEAD
 	int ret, stype = substream->stream;
 =======
+<<<<<<< HEAD
+	int ret, stype = substream->stream;
+=======
 	int ret, stype = SUBSTREAM_TYPE(substream);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (cmd) {
 	case SNDRV_PCM_TRIGGER_START:
@@ -272,6 +282,9 @@ static int au1xpsc_i2s_trigger(struct snd_pcm_substream *substream, int cmd,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int au1xpsc_i2s_startup(struct snd_pcm_substream *substream,
 			       struct snd_soc_dai *dai)
 {
@@ -282,9 +295,12 @@ static int au1xpsc_i2s_startup(struct snd_pcm_substream *substream,
 
 static const struct snd_soc_dai_ops au1xpsc_i2s_dai_ops = {
 	.startup	= au1xpsc_i2s_startup,
+<<<<<<< HEAD
+=======
 =======
 static struct snd_soc_dai_ops au1xpsc_i2s_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.trigger	= au1xpsc_i2s_trigger,
 	.hw_params	= au1xpsc_i2s_hw_params,
 	.set_fmt	= au1xpsc_i2s_set_fmt,
@@ -311,13 +327,20 @@ static int __devinit au1xpsc_i2s_drvprobe(struct platform_device *pdev)
 <<<<<<< HEAD
 	struct resource *iores, *dmares;
 =======
+<<<<<<< HEAD
+	struct resource *iores, *dmares;
+=======
 	struct resource *r;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long sel;
 	int ret;
 	struct au1xpsc_audio_data *wd;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wd = devm_kzalloc(&pdev->dev, sizeof(struct au1xpsc_audio_data),
 			  GFP_KERNEL);
 	if (!wd)
@@ -347,6 +370,8 @@ static int __devinit au1xpsc_i2s_drvprobe(struct platform_device *pdev)
 	if (!dmares)
 		return -EBUSY;
 	wd->dmaids[SNDRV_PCM_STREAM_CAPTURE] = dmares->start;
+<<<<<<< HEAD
+=======
 =======
 	wd = kzalloc(sizeof(struct au1xpsc_audio_data), GFP_KERNEL);
 	if (!wd)
@@ -366,6 +391,7 @@ static int __devinit au1xpsc_i2s_drvprobe(struct platform_device *pdev)
 	if (!wd->mmio)
 		goto out1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* preserve PSC clock source set up by platform (dev.platform_data
 	 * is already occupied by soc layer)
@@ -395,6 +421,9 @@ static int __devinit au1xpsc_i2s_drvprobe(struct platform_device *pdev)
 <<<<<<< HEAD
 	return snd_soc_register_dai(&pdev->dev, &wd->dai_drv);
 =======
+<<<<<<< HEAD
+	return snd_soc_register_dai(&pdev->dev, &wd->dai_drv);
+=======
 	ret = snd_soc_register_dai(&pdev->dev, &wd->dai_drv);
 	if (ret)
 		goto out1;
@@ -411,6 +440,7 @@ out0:
 	kfree(wd);
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __devexit au1xpsc_i2s_drvremove(struct platform_device *pdev)
@@ -418,11 +448,14 @@ static int __devexit au1xpsc_i2s_drvremove(struct platform_device *pdev)
 	struct au1xpsc_audio_data *wd = platform_get_drvdata(pdev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct resource *r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 
 	if (wd->dmapd)
 		au1xpsc_pcm_destroy(wd->dmapd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_unregister_dai(&pdev->dev);
 
@@ -433,11 +466,14 @@ static int __devexit au1xpsc_i2s_drvremove(struct platform_device *pdev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	iounmap(wd->mmio);
 	release_mem_region(r->start, resource_size(r));
 	kfree(wd);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -498,6 +534,9 @@ static struct platform_driver au1xpsc_i2s_driver = {
 <<<<<<< HEAD
 module_platform_driver(au1xpsc_i2s_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(au1xpsc_i2s_driver);
+=======
 static int __init au1xpsc_i2s_load(void)
 {
 	return platform_driver_register(&au1xpsc_i2s_driver);
@@ -511,6 +550,7 @@ static void __exit au1xpsc_i2s_unload(void)
 module_init(au1xpsc_i2s_load);
 module_exit(au1xpsc_i2s_unload);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Au12x0/Au1550 PSC I2S ALSA ASoC audio driver");

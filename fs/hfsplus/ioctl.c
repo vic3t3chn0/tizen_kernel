@@ -21,6 +21,9 @@
 #include "hfsplus_fs.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * "Blessing" an HFS+ filesystem writes metadata to the superblock informing
  * the platform firmware which file to boot from
@@ -53,8 +56,11 @@ static int hfsplus_ioctl_bless(struct file *file, int __user *user_flags)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hfsplus_ioctl_getflags(struct file *file, int __user *user_flags)
 {
 	struct inode *inode = file->f_path.dentry->d_inode;
@@ -81,8 +87,12 @@ static int hfsplus_ioctl_setflags(struct file *file, int __user *user_flags)
 <<<<<<< HEAD
 	err = mnt_want_write_file(file);
 =======
+<<<<<<< HEAD
+	err = mnt_want_write_file(file);
+=======
 	err = mnt_want_write(file->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 
@@ -136,8 +146,12 @@ out_drop_write:
 <<<<<<< HEAD
 	mnt_drop_write_file(file);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(file);
+=======
 	mnt_drop_write(file->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return err;
 }
@@ -155,7 +169,12 @@ long hfsplus_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 	case HFSPLUS_IOC_BLESS:
 		return hfsplus_ioctl_bless(file, argp);
 =======
+<<<<<<< HEAD
+	case HFSPLUS_IOC_BLESS:
+		return hfsplus_ioctl_bless(file, argp);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return -ENOTTY;
 	}

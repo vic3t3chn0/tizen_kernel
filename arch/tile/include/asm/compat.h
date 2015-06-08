@@ -244,6 +244,8 @@ long compat_sys_sched_rr_get_interval(compat_pid_t pid,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Versions of compat functions that differ from generic Linux. */
 struct compat_msgbuf;
 long tile_compat_sys_msgsnd(int msqid,
@@ -256,6 +258,7 @@ long tile_compat_sys_ptrace(compat_long_t request, compat_long_t pid,
 			    compat_long_t addr, compat_long_t data);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Tilera Linux syscalls that don't have "compat" versions. */
 #define compat_sys_flush_cache sys_flush_cache
 

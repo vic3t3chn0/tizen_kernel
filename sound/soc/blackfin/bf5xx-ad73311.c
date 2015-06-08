@@ -131,8 +131,12 @@ static int snd_ad73311_configure(void)
 <<<<<<< HEAD
 static int bf5xx_probe(struct snd_soc_card *card)
 =======
+<<<<<<< HEAD
+static int bf5xx_probe(struct snd_soc_card *card)
+=======
 static int bf5xx_probe(struct platform_device *pdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	if (gpio_request(GPIO_SE, "AD73311_SE")) {
@@ -149,6 +153,10 @@ static int bf5xx_probe(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+#define BF5XX_AD7311_DAI_FMT (SND_SOC_DAIFMT_DSP_A | SND_SOC_DAIFMT_NB_NF | \
+				SND_SOC_DAIFMT_CBM_CFM)
+=======
 <<<<<<< HEAD
 #define BF5XX_AD7311_DAI_FMT (SND_SOC_DAIFMT_DSP_A | SND_SOC_DAIFMT_NB_NF | \
 				SND_SOC_DAIFMT_CBM_CFM)
@@ -177,6 +185,7 @@ static struct snd_soc_ops bf5xx_ad73311_ops = {
 	.hw_params = bf5xx_ad73311_hw_params,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct snd_soc_dai_link bf5xx_ad73311_dai[] = {
 	{
@@ -189,8 +198,12 @@ static struct snd_soc_dai_link bf5xx_ad73311_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_AD7311_DAI_FMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_AD7311_DAI_FMT,
+=======
 		.ops = &bf5xx_ad73311_ops,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.name = "ad73311",
@@ -202,8 +215,12 @@ static struct snd_soc_dai_link bf5xx_ad73311_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_AD7311_DAI_FMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_AD7311_DAI_FMT,
+=======
 		.ops = &bf5xx_ad73311_ops,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -212,7 +229,11 @@ static struct snd_soc_card bf5xx_ad73311 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.probe = bf5xx_probe,
 	.dai_link = &bf5xx_ad73311_dai[CONFIG_SND_BF5XX_SPORT_NUM],
 	.num_links = 1,

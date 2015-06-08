@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  * Author: Ryan Mallon
 =======
+<<<<<<< HEAD
+ * Author: Ryan Mallon
+=======
  * Author: Ryan Mallon  <ryan@bluewatersys.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,8 +53,12 @@ static void __init snapper9260_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91sam9260_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Debug on ttyS0 */
 	at91_register_uart(0, 0, 0);
@@ -64,10 +72,15 @@ static void __init snapper9260_init_early(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct at91_usbh_data __initdata snapper9260_usbh_data = {
 	.ports		= 2,
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
+<<<<<<< HEAD
+=======
 =======
 static void __init snapper9260_init_irq(void)
 {
@@ -77,6 +90,7 @@ static void __init snapper9260_init_irq(void)
 static struct at91_usbh_data __initdata snapper9260_usbh_data = {
 	.ports		= 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_udc_data __initdata snapper9260_udc_data = {
@@ -84,16 +98,22 @@ static struct at91_udc_data __initdata snapper9260_udc_data = {
 	.vbus_active_low	= 1,
 	.vbus_polled		= 1,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pullup_pin		= -EINVAL,
 };
 
 static struct macb_platform_data snapper9260_macb_data = {
 	.phy_irq_pin	= -EINVAL,
+<<<<<<< HEAD
+=======
 =======
 };
 
 static struct at91_eth_data snapper9260_macb_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.is_rmii	= 1,
 };
 
@@ -127,6 +147,8 @@ static struct mtd_partition __initdata snapper9260_nand_partitions[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct mtd_partition * __init
 snapper9260_nand_partition_info(int size, int *num_partitions)
 {
@@ -135,21 +157,28 @@ snapper9260_nand_partition_info(int size, int *num_partitions)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct atmel_nand_data __initdata snapper9260_nand_data = {
 	.ale		= 21,
 	.cle		= 22,
 	.rdy_pin	= AT91_PIN_PC13,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.parts		= snapper9260_nand_partitions,
 	.num_parts	= ARRAY_SIZE(snapper9260_nand_partitions),
 	.bus_width_16	= 0,
 	.enable_pin	= -EINVAL,
 	.det_pin	= -EINVAL,
 	.ecc_mode	= NAND_ECC_SOFT,
+<<<<<<< HEAD
+=======
 =======
 	.partition_info	= snapper9260_nand_partition_info,
 	.bus_width_16	= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sam9_smc_config __initdata snapper9260_nand_smc_config = {
@@ -186,11 +215,16 @@ static struct i2c_board_info __initdata snapper9260_i2c_devices[] = {
 		I2C_BOARD_INFO("tlv320aic23", 0x1a),
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info __initdata snapper9260_i2c_isl1208 = {
 		/* RTC */
 		I2C_BOARD_INFO("isl1208", 0x6f),
+<<<<<<< HEAD
+=======
 =======
 	{
 		/* RTC */
@@ -198,6 +232,7 @@ static struct i2c_board_info __initdata snapper9260_i2c_isl1208 = {
 		.irq = gpio_to_irq(AT91_PIN_PA31),
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init snapper9260_add_device_nand(void)
@@ -206,8 +241,12 @@ static void __init snapper9260_add_device_nand(void)
 <<<<<<< HEAD
 	sam9_smc_configure(0, 3, &snapper9260_nand_smc_config);
 =======
+<<<<<<< HEAD
+	sam9_smc_configure(0, 3, &snapper9260_nand_smc_config);
+=======
 	sam9_smc_configure(3, &snapper9260_nand_smc_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_add_device_nand(&snapper9260_nand_data);
 }
 
@@ -216,12 +255,18 @@ static void __init snapper9260_board_init(void)
 	at91_add_device_i2c(snapper9260_i2c_devices,
 			    ARRAY_SIZE(snapper9260_i2c_devices));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snapper9260_i2c_isl1208.irq = gpio_to_irq(AT91_PIN_PA31);
 	i2c_register_board_info(0, &snapper9260_i2c_isl1208, 1);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_add_device_serial();
 	at91_add_device_usbh(&snapper9260_usbh_data);
 	at91_add_device_udc(&snapper9260_udc_data);
@@ -238,10 +283,16 @@ MACHINE_START(SNAPPER_9260, "Bluewater Systems Snapper 9260/9G20 module")
 	.init_early	= snapper9260_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= snapper9260_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9260_map_io,
 	.init_early	= snapper9260_init_early,
 	.init_irq	= snapper9260_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= snapper9260_board_init,
 MACHINE_END
 

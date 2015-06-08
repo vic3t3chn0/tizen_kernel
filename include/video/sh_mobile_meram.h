@@ -18,6 +18,9 @@ struct sh_mobile_meram_priv;
 struct sh_mobile_meram_ops;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * struct sh_mobile_meram_info - MERAM platform data
  * @reserved_icbs: Bitmask of reserved ICBs (for instance used through UIO)
@@ -25,10 +28,13 @@ struct sh_mobile_meram_ops;
 struct sh_mobile_meram_info {
 	int				addr_mode;
 	u32				reserved_icbs;
+<<<<<<< HEAD
+=======
 =======
 struct sh_mobile_meram_info {
 	int				addr_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sh_mobile_meram_ops	*ops;
 	struct sh_mobile_meram_priv	*priv;
 	struct platform_device		*pdev;
@@ -36,12 +42,17 @@ struct sh_mobile_meram_info {
 
 /* icb config */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sh_mobile_meram_icb_cfg {
 	unsigned int meram_size;	/* MERAM Buffer Size to use */
 };
 
 struct sh_mobile_meram_cfg {
 	struct sh_mobile_meram_icb_cfg icb[2];
+<<<<<<< HEAD
+=======
 =======
 struct sh_mobile_meram_icb {
 	int marker_icb;		/* ICB # for Marker ICB */
@@ -57,6 +68,7 @@ struct sh_mobile_meram_cfg {
 	int				pixelformat;
 	int				current_reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct module;
@@ -64,6 +76,9 @@ struct sh_mobile_meram_ops {
 	struct module	*module;
 	/* register usage of meram */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *(*meram_register)(struct sh_mobile_meram_info *meram_dev,
 				const struct sh_mobile_meram_cfg *cfg,
 				unsigned int xres, unsigned int yres,
@@ -80,6 +95,8 @@ struct sh_mobile_meram_ops {
 			     unsigned long base_addr_c,
 			     unsigned long *icb_addr_y,
 			     unsigned long *icb_addr_c);
+<<<<<<< HEAD
+=======
 =======
 	int (*meram_register)(struct sh_mobile_meram_info *meram_dev,
 			      struct sh_mobile_meram_cfg *cfg,
@@ -101,6 +118,7 @@ struct sh_mobile_meram_ops {
 			    unsigned long *icb_addr_y,
 			    unsigned long *icb_addr_c);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __VIDEO_SH_MOBILE_MERAM_H__  */

@@ -39,8 +39,12 @@
 <<<<<<< HEAD
 #include <linux/mfd/twl4030-audio.h>
 =======
+<<<<<<< HEAD
+#include <linux/mfd/twl4030-audio.h>
+=======
 #include <linux/mfd/twl4030-codec.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Shadow register used by the audio driver */
 #define TWL4030_REG_SW_SHADOW		0x4A
@@ -260,10 +264,16 @@ static void twl4030_codec_enable(struct snd_soc_codec *codec, int enable)
 	else
 		mode = twl4030_audio_disable_resource(TWL4030_AUDIO_RES_POWER);
 =======
+<<<<<<< HEAD
+		mode = twl4030_audio_enable_resource(TWL4030_AUDIO_RES_POWER);
+	else
+		mode = twl4030_audio_disable_resource(TWL4030_AUDIO_RES_POWER);
+=======
 		mode = twl4030_codec_enable_resource(TWL4030_CODEC_RES_POWER);
 	else
 		mode = twl4030_codec_disable_resource(TWL4030_CODEC_RES_POWER);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mode >= 0) {
 		twl4030_write_reg_cache(codec, TWL4030_REG_CODEC_MODE, mode);
@@ -310,8 +320,12 @@ static void twl4030_init_chip(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	struct twl4030_codec_data *pdata = dev_get_platdata(codec->dev);
 =======
+<<<<<<< HEAD
+	struct twl4030_codec_data *pdata = dev_get_platdata(codec->dev);
+=======
 	struct twl4030_codec_audio_data *pdata = dev_get_platdata(codec->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct twl4030_priv *twl4030 = snd_soc_codec_get_drvdata(codec);
 	u8 reg, byte;
 	int i = 0;
@@ -390,6 +404,9 @@ static void twl4030_apll_enable(struct snd_soc_codec *codec, int enable)
 		twl4030->apll_enabled++;
 		if (twl4030->apll_enabled == 1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			status = twl4030_audio_enable_resource(
 							TWL4030_AUDIO_RES_APLL);
 	} else {
@@ -397,6 +414,8 @@ static void twl4030_apll_enable(struct snd_soc_codec *codec, int enable)
 		if (!twl4030->apll_enabled)
 			status = twl4030_audio_disable_resource(
 							TWL4030_AUDIO_RES_APLL);
+<<<<<<< HEAD
+=======
 =======
 			status = twl4030_codec_enable_resource(
 							TWL4030_CODEC_RES_APLL);
@@ -406,6 +425,7 @@ static void twl4030_apll_enable(struct snd_soc_codec *codec, int enable)
 			status = twl4030_codec_disable_resource(
 							TWL4030_CODEC_RES_APLL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (status >= 0)
@@ -759,8 +779,12 @@ static void headset_ramp(struct snd_soc_codec *codec, int ramp)
 <<<<<<< HEAD
 	struct twl4030_codec_data *pdata = codec->dev->platform_data;
 =======
+<<<<<<< HEAD
+	struct twl4030_codec_data *pdata = codec->dev->platform_data;
+=======
 	struct twl4030_codec_audio_data *pdata = codec->dev->platform_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char hs_gain, hs_pop;
 	struct twl4030_priv *twl4030 = snd_soc_codec_get_drvdata(codec);
 	/* Base values for ramp delay calculation: 2^19 - 2^26 */
@@ -893,6 +917,8 @@ static int digimic_event(struct snd_soc_dapm_widget *w,
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define SOC_DOUBLE_TLV_TWL4030(xname, xreg, shift_left, shift_right, xmax,\
 			       xinvert, tlv_array) \
 {	.iface = SNDRV_CTL_ELEM_IFACE_MIXER, .name = (xname),\
@@ -922,6 +948,7 @@ static int digimic_event(struct snd_soc_dapm_widget *w,
 			       xinvert, tlv_array)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_soc_get_volsw_twl4030(struct snd_kcontrol *kcontrol,
 	struct snd_ctl_elem_value *ucontrol)
 {
@@ -1065,9 +1092,14 @@ static int snd_soc_put_twl4030_opmode_enum_double(struct snd_kcontrol *kcontrol,
 		dev_err(codec->dev,
 			"operation mode cannot be changed on-the-fly\n");
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev,
+			"operation mode cannot be changed on-the-fly\n");
+=======
 		printk(KERN_ERR "twl4030 operation mode cannot be "
 			"changed on-the-fly\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EBUSY;
 	}
 
@@ -1234,6 +1266,9 @@ static const struct snd_kcontrol_new twl4030_snd_controls[] = {
 
 	/* Separate output gain controls */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SOC_DOUBLE_R_EXT_TLV("PreDriv Playback Volume",
 		TWL4030_REG_PREDL_CTL, TWL4030_REG_PREDR_CTL,
 		4, 3, 0, snd_soc_get_volsw_r2_twl4030,
@@ -1251,6 +1286,8 @@ static const struct snd_kcontrol_new twl4030_snd_controls[] = {
 	SOC_SINGLE_EXT_TLV("Earpiece Playback Volume",
 		TWL4030_REG_EAR_CTL, 4, 3, 0, snd_soc_get_volsw_twl4030,
 		snd_soc_put_volsw_twl4030, output_ear_tvl),
+<<<<<<< HEAD
+=======
 =======
 	SOC_DOUBLE_R_TLV_TWL4030("PreDriv Playback Volume",
 		TWL4030_REG_PREDL_CTL, TWL4030_REG_PREDR_CTL,
@@ -1266,6 +1303,7 @@ static const struct snd_kcontrol_new twl4030_snd_controls[] = {
 	SOC_SINGLE_TLV_TWL4030("Earpiece Playback Volume",
 		TWL4030_REG_EAR_CTL, 4, 3, 0, output_ear_tvl),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Common capture gain controls */
 	SOC_DOUBLE_R_TLV("TX1 Digital Capture Volume",
@@ -1691,6 +1729,8 @@ static const struct snd_soc_dapm_route intercon[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int twl4030_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -1703,6 +1743,7 @@ static int twl4030_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int twl4030_set_bias_level(struct snd_soc_codec *codec,
 				  enum snd_soc_bias_level level)
 {
@@ -1785,8 +1826,11 @@ static int twl4030_startup(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_pcm_hw_constraint_msbits(substream->runtime, 0, 32, 24);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (twl4030->master_substream) {
 		twl4030->slave_substream = substream;
 		/* The DAI has one configuration for playback and capture, so
@@ -1901,8 +1945,12 @@ static int twl4030_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		dev_err(codec->dev, "%s: unknown rate %d\n", __func__,
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev, "%s: unknown rate %d\n", __func__,
+=======
 		printk(KERN_ERR "TWL4030 hw params: unknown rate %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			params_rate(params));
 		return -EINVAL;
 	}
@@ -1922,8 +1970,12 @@ static int twl4030_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		dev_err(codec->dev, "%s: unknown format %d\n", __func__,
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev, "%s: unknown format %d\n", __func__,
+=======
 		printk(KERN_ERR "TWL4030 hw params: unknown format %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			params_format(params));
 		return -EINVAL;
 	}
@@ -1976,8 +2028,12 @@ static int twl4030_set_dai_sysclk(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 		dev_err(codec->dev, "Unsupported HFCLKIN: %u\n", freq);
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev, "Unsupported HFCLKIN: %u\n", freq);
+=======
 		dev_err(codec->dev, "Unsupported APLL mclk: %u\n", freq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -1986,8 +2042,12 @@ static int twl4030_set_dai_sysclk(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 			"Mismatch in HFCLKIN: %u (configured: %u)\n",
 =======
+<<<<<<< HEAD
+			"Mismatch in HFCLKIN: %u (configured: %u)\n",
+=======
 			"Mismatch in APLL mclk: %u (configured: %u)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			freq, twl4030->sysclk * 1000);
 		return -EINVAL;
 	}
@@ -2102,10 +2162,16 @@ static int twl4030_voice_startup(struct snd_pcm_substream *substream,
 			"%s: HFCLKIN is %u KHz, voice interface needs 26MHz\n",
 			__func__, twl4030->sysclk);
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev,
+			"%s: HFCLKIN is %u KHz, voice interface needs 26MHz\n",
+			__func__, twl4030->sysclk);
+=======
 		dev_err(codec->dev, "The board is configured for %u Hz, while"
 			"the Voice interface needs 26MHz APLL mclk\n",
 			twl4030->sysclk * 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -2120,9 +2186,14 @@ static int twl4030_voice_startup(struct snd_pcm_substream *substream,
 		dev_err(codec->dev, "%s: the codec mode is not option2\n",
 			__func__);
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev, "%s: the codec mode is not option2\n",
+			__func__);
+=======
 		printk(KERN_ERR "TWL4030 voice startup: "
 			"the codec mode is not option2\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -2166,8 +2237,12 @@ static int twl4030_voice_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		dev_err(codec->dev, "%s: unknown rate %d\n", __func__,
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev, "%s: unknown rate %d\n", __func__,
+=======
 		printk(KERN_ERR "TWL4030 voice hw params: unknown rate %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			params_rate(params));
 		return -EINVAL;
 	}
@@ -2201,9 +2276,15 @@ static int twl4030_voice_set_dai_sysclk(struct snd_soc_dai *codec_dai,
 			"%s: HFCLKIN is %u KHz, voice interface needs 26MHz\n",
 			__func__, freq / 1000);
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev,
+			"%s: HFCLKIN is %u KHz, voice interface needs 26MHz\n",
+			__func__, freq / 1000);
+=======
 		dev_err(codec->dev, "Unsupported APLL mclk: %u, the Voice"
 			"interface needs 26MHz APLL mclk\n", freq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 	if ((freq / 1000) != twl4030->sysclk) {
@@ -2211,8 +2292,12 @@ static int twl4030_voice_set_dai_sysclk(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 			"Mismatch in HFCLKIN: %u (configured: %u)\n",
 =======
+<<<<<<< HEAD
+			"Mismatch in HFCLKIN: %u (configured: %u)\n",
+=======
 			"Mismatch in APLL mclk: %u (configured: %u)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			freq, twl4030->sysclk * 1000);
 		return -EINVAL;
 	}
@@ -2290,8 +2375,12 @@ static int twl4030_voice_set_tristate(struct snd_soc_dai *dai, int tristate)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops twl4030_dai_hifi_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops twl4030_dai_hifi_ops = {
+=======
 static struct snd_soc_dai_ops twl4030_dai_hifi_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= twl4030_startup,
 	.shutdown	= twl4030_shutdown,
 	.hw_params	= twl4030_hw_params,
@@ -2303,8 +2392,12 @@ static struct snd_soc_dai_ops twl4030_dai_hifi_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops twl4030_dai_voice_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops twl4030_dai_voice_ops = {
+=======
 static struct snd_soc_dai_ops twl4030_dai_voice_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= twl4030_voice_startup,
 	.shutdown	= twl4030_voice_shutdown,
 	.hw_params	= twl4030_voice_hw_params,
@@ -2325,8 +2418,13 @@ static struct snd_soc_dai_driver twl4030_dai[] = {
 		.formats = TWL4030_FORMATS,
 		.sig_bits = 24,},
 =======
+<<<<<<< HEAD
+		.formats = TWL4030_FORMATS,
+		.sig_bits = 24,},
+=======
 		.formats = TWL4030_FORMATS,},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.capture = {
 		.stream_name = "Capture",
 		.channels_min = 2,
@@ -2336,8 +2434,13 @@ static struct snd_soc_dai_driver twl4030_dai[] = {
 		.formats = TWL4030_FORMATS,
 		.sig_bits = 24,},
 =======
+<<<<<<< HEAD
+		.formats = TWL4030_FORMATS,
+		.sig_bits = 24,},
+=======
 		.formats = TWL4030_FORMATS,},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &twl4030_dai_hifi_ops,
 },
 {
@@ -2361,8 +2464,12 @@ static struct snd_soc_dai_driver twl4030_dai[] = {
 <<<<<<< HEAD
 static int twl4030_soc_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int twl4030_soc_suspend(struct snd_soc_codec *codec)
+=======
 static int twl4030_soc_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	twl4030_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -2383,17 +2490,26 @@ static int twl4030_soc_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		dev_err(codec->dev, "Can not allocate memory\n");
 =======
+<<<<<<< HEAD
+		dev_err(codec->dev, "Can not allocate memory\n");
+=======
 		printk("Can not allocate memroy\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 	snd_soc_codec_set_drvdata(codec, twl4030);
 	/* Set the defaults, and power up the codec */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	twl4030->sysclk = twl4030_audio_get_mclk() / 1000;
 
 	twl4030_init_chip(codec);
 
+<<<<<<< HEAD
+=======
 =======
 	twl4030->sysclk = twl4030_codec_get_mclk() / 1000;
 	codec->dapm.idle_bias_off = 1;
@@ -2404,6 +2520,7 @@ static int twl4030_soc_probe(struct snd_soc_codec *codec)
 				ARRAY_SIZE(twl4030_snd_controls));
 	twl4030_add_widgets(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2427,6 +2544,9 @@ static struct snd_soc_codec_driver soc_codec_dev_twl4030 = {
 	.write = twl4030_write,
 	.set_bias_level = twl4030_set_bias_level,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.idle_bias_off = true,
 	.reg_cache_size = sizeof(twl4030_reg),
 	.reg_word_size = sizeof(u8),
@@ -2438,11 +2558,14 @@ static struct snd_soc_codec_driver soc_codec_dev_twl4030 = {
 	.num_dapm_widgets = ARRAY_SIZE(twl4030_dapm_widgets),
 	.dapm_routes = intercon,
 	.num_dapm_routes = ARRAY_SIZE(intercon),
+<<<<<<< HEAD
+=======
 =======
 	.reg_cache_size = sizeof(twl4030_reg),
 	.reg_word_size = sizeof(u8),
 	.reg_cache_default = twl4030_reg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __devinit twl4030_codec_probe(struct platform_device *pdev)
@@ -2450,8 +2573,12 @@ static int __devinit twl4030_codec_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	struct twl4030_codec_data *pdata = pdev->dev.platform_data;
 =======
+<<<<<<< HEAD
+	struct twl4030_codec_data *pdata = pdev->dev.platform_data;
+=======
 	struct twl4030_codec_audio_data *pdata = pdev->dev.platform_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pdata) {
 		dev_err(&pdev->dev, "platform_data is missing\n");
@@ -2482,6 +2609,9 @@ static struct platform_driver twl4030_codec_driver = {
 <<<<<<< HEAD
 module_platform_driver(twl4030_codec_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(twl4030_codec_driver);
+=======
 static int __init twl4030_modinit(void)
 {
 	return platform_driver_register(&twl4030_codec_driver);
@@ -2494,6 +2624,7 @@ static void __exit twl4030_exit(void)
 }
 module_exit(twl4030_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("ASoC TWL4030 codec driver");
 MODULE_AUTHOR("Steve Sakoman");

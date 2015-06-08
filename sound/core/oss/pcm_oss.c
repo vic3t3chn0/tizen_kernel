@@ -33,8 +33,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/math64.h>
 #include <linux/string.h>
 #include <sound/core.h>
@@ -54,8 +58,12 @@ static int adsp_map[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS-1)] = 1};
 <<<<<<< HEAD
 static bool nonblock_open = 1;
 =======
+<<<<<<< HEAD
+static bool nonblock_open = 1;
+=======
 static int nonblock_open = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Jaroslav Kysela <perex@perex.cz>, Abramo Bagnara <abramo@alsa-project.org>");
 MODULE_DESCRIPTION("PCM OSS emulation for ALSA.");
@@ -2451,11 +2459,14 @@ static int snd_pcm_oss_open(struct inode *inode, struct file *file)
 		mutex_lock(&pcm->open_mutex);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (pcm->card->shutdown) {
 			err = -ENODEV;
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (signal_pending(current)) {
 			err = -ERESTARTSYS;
 			break;
@@ -2467,8 +2478,11 @@ static int snd_pcm_oss_open(struct inode *inode, struct file *file)
 		goto __error;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_card_unref(pcm->card);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 
       __error:
@@ -2478,9 +2492,12 @@ static int snd_pcm_oss_open(struct inode *inode, struct file *file)
       __error1:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (pcm)
 		snd_card_unref(pcm->card);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 

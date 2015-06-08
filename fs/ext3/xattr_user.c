@@ -8,12 +8,16 @@
 <<<<<<< HEAD
 #include "ext3.h"
 =======
+<<<<<<< HEAD
+#include "ext3.h"
+=======
 #include <linux/module.h>
 #include <linux/string.h>
 #include <linux/fs.h>
 #include <linux/ext3_jbd.h>
 #include <linux/ext3_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xattr.h"
 
 static size_t

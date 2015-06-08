@@ -21,12 +21,80 @@
 #include <linux/platform_device.h>
 #include <linux/libata.h>
 #include <linux/ahci_platform.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/pm_runtime.h>
 #include "ahci.h"
 
+enum ahci_type {
+	AHCI,		/* standard platform ahci */
+	IMX53_AHCI,	/* ahci on i.mx53 */
+	STRICT_AHCI,	/* delayed DMA engine start */
+};
+
+static struct platform_device_id ahci_devtype[] = {
+	{
+		.name = "ahci",
+		.driver_data = AHCI,
+	}, {
+		.name = "imx53-ahci",
+		.driver_data = IMX53_AHCI,
+	}, {
+		.name = "strict-ahci",
+		.driver_data = STRICT_AHCI,
+	}, {
+		/* sentinel */
+	}
+};
+MODULE_DEVICE_TABLE(platform, ahci_devtype);
+
+
+static const struct ata_port_info ahci_port_info[] = {
+	/* by features */
+	[AHCI] = {
+		.flags		= AHCI_FLAG_COMMON,
+		.pio_mask	= ATA_PIO4,
+		.udma_mask	= ATA_UDMA6,
+		.port_ops	= &ahci_ops,
+	},
+	[IMX53_AHCI] = {
+		.flags		= AHCI_FLAG_COMMON,
+		.pio_mask	= ATA_PIO4,
+		.udma_mask	= ATA_UDMA6,
+		.port_ops	= &ahci_pmp_retry_srst_ops,
+	},
+	[STRICT_AHCI] = {
+		AHCI_HFLAGS	(AHCI_HFLAG_DELAY_ENGINE),
+		.flags		= AHCI_FLAG_COMMON,
+		.pio_mask	= ATA_PIO4,
+		.udma_mask	= ATA_UDMA6,
+		.port_ops	= &ahci_ops,
+	},
+};
+
+=======
+#include "ahci.h"
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "ahci.h"
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct scsi_host_template ahci_platform_sht = {
 	AHCI_SHT("ahci_platform"),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit ahci_probe(struct platform_device *pdev)
+{
+	struct device *dev = &pdev->dev;
+	struct ahci_platform_data *pdata = dev_get_platdata(dev);
+	const struct platform_device_id *id = platform_get_device_id(pdev);
+	struct ata_port_info pi = ahci_port_info[id ? id->driver_data : 0];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ahci_probe(struct platform_device *pdev)
 {
 	struct device *dev = &pdev->dev;
@@ -37,6 +105,10 @@ static int __init ahci_probe(struct platform_device *pdev)
 		.udma_mask	= ATA_UDMA6,
 		.port_ops	= &ahci_ops,
 	};
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct ata_port_info *ppi[] = { &pi, NULL };
 	struct ahci_host_priv *hpriv;
 	struct ata_host *host;
@@ -150,6 +222,20 @@ static int __init ahci_probe(struct platform_device *pdev)
 	if (rc)
 		goto err0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rc = pm_runtime_set_active(dev);
+	if (rc) {
+		dev_warn(dev, "Unable to set runtime pm active err=%d\n", rc);
+	} else {
+		pm_runtime_enable(dev);
+		pm_runtime_forbid(dev);
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 err0:
 	if (pdata && pdata->exit)
@@ -160,7 +246,15 @@ err0:
 static int __devexit ahci_remove(struct platform_device *pdev)
 {
 	struct device *dev = &pdev->dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ahci_platform_data *pdata = dev_get_platdata(dev);
+=======
 	struct ahci_platform_data *pdata = dev->platform_data;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ahci_platform_data *pdata = dev->platform_data;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ata_host *host = dev_get_drvdata(dev);
 
 	ata_host_detach(host);
@@ -171,17 +265,139 @@ static int __devexit ahci_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+static int ahci_suspend(struct device *dev)
+{
+	struct ahci_platform_data *pdata = dev_get_platdata(dev);
+	struct ata_host *host = dev_get_drvdata(dev);
+	struct ahci_host_priv *hpriv = host->private_data;
+	void __iomem *mmio = hpriv->mmio;
+	u32 ctl;
+	int rc;
+
+	if (pm_runtime_suspended(dev))
+		return 0;
+
+	if (hpriv->flags & AHCI_HFLAG_NO_SUSPEND) {
+		dev_err(dev, "firmware update required for suspend/resume\n");
+		return -EIO;
+	}
+
+	/*
+	 * AHCI spec rev1.1 section 8.3.3:
+	 * Software must disable interrupts prior to requesting a
+	 * transition of the HBA to D3 state.
+	 */
+	ctl = readl(mmio + HOST_CTL);
+	ctl &= ~HOST_IRQ_EN;
+	writel(ctl, mmio + HOST_CTL);
+	readl(mmio + HOST_CTL); /* flush */
+
+	rc = ata_host_suspend(host, PMSG_SUSPEND);
+	if (rc)
+		return rc;
+
+	if (pdata && pdata->suspend)
+		return pdata->suspend(dev);
+	return 0;
+}
+
+static int ahci_resume_common(struct device *dev)
+{
+	struct ahci_platform_data *pdata = dev_get_platdata(dev);
+	struct ata_host *host = dev_get_drvdata(dev);
+	int rc;
+
+	if (pdata && pdata->resume) {
+		rc = pdata->resume(dev);
+		if (rc)
+			return rc;
+	}
+
+	if (dev->power.power_state.event == PM_EVENT_SUSPEND) {
+		rc = ahci_reset_controller(host);
+		if (rc)
+			return rc;
+
+		ahci_init_controller(host);
+	}
+
+	ata_host_resume(host);
+
+	return 0;
+}
+
+static int ahci_resume(struct device *dev)
+{
+	int rc;
+
+	rc = ahci_resume_common(dev);
+	if (!rc) {
+		pm_runtime_disable(dev);
+		pm_runtime_set_active(dev);
+		pm_runtime_enable(dev);
+	}
+
+	return rc;
+}
+
+static struct dev_pm_ops ahci_pm_ops = {
+	.suspend		= &ahci_suspend,
+	.resume			= &ahci_resume,
+	.runtime_suspend	= &ahci_suspend,
+	.runtime_resume		= &ahci_resume_common,
+};
+#endif
+
+static const struct of_device_id ahci_of_match[] = {
+	{ .compatible = "calxeda,hb-ahci", },
+	{ .compatible = "snps,spear-ahci", },
+	{ .compatible = "qcom,msm-ahci", },
+	{},
+};
+MODULE_DEVICE_TABLE(of, ahci_of_match);
+
 static struct platform_driver ahci_driver = {
+	.probe	= ahci_probe,
+=======
+static struct platform_driver ahci_driver = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct platform_driver ahci_driver = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.remove = __devexit_p(ahci_remove),
 	.driver = {
 		.name = "ahci",
 		.owner = THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.of_match_table = ahci_of_match,
+#ifdef CONFIG_PM
+		.pm = &ahci_pm_ops,
+#endif
 	},
+	.id_table	= ahci_devtype,
+=======
+	},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init ahci_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return platform_driver_register(&ahci_driver);
+=======
 	return platform_driver_probe(&ahci_driver, ahci_probe);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return platform_driver_probe(&ahci_driver, ahci_probe);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_init(ahci_init);
 

@@ -41,6 +41,8 @@ static const struct dentry_operations anon_inodefs_dentry_operations = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct dentry *anon_inodefs_mount(struct file_system_type *fs_type,
 				int flags, const char *dev_name, void *data)
 {
@@ -55,6 +57,7 @@ static struct file_system_type anon_inode_fs_type = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * nop .set_page_dirty method so that people can use .page_mkwrite on
  * anon inodes.
@@ -69,6 +72,9 @@ static const struct address_space_operations anon_aops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * A single inode exists for all anon_inode files. Contrary to pipes,
  * anon_inode inodes have no associated per-instance data, so we need
@@ -125,8 +131,11 @@ static struct file_system_type anon_inode_fs_type = {
 	.kill_sb	= kill_anon_super,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * anon_inode_getfile - creates a new file instance by hooking it up to an
  *                      anonymous inode, and a dentry that describe the "class"
@@ -244,6 +253,8 @@ EXPORT_SYMBOL_GPL(anon_inode_getfd);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * A single inode exists for all anon_inode files. Contrary to pipes,
  * anon_inode inodes have no associated per-instance data, so we need
@@ -277,6 +288,7 @@ static struct inode *anon_inode_mkinode(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init anon_inode_init(void)
 {
 	int error;
@@ -293,6 +305,10 @@ static int __init anon_inode_init(void)
 	return 0;
 
 =======
+<<<<<<< HEAD
+	return 0;
+
+=======
 	anon_inode_inode = anon_inode_mkinode();
 	if (IS_ERR(anon_inode_inode)) {
 		error = PTR_ERR(anon_inode_inode);
@@ -304,6 +320,7 @@ static int __init anon_inode_init(void)
 err_mntput:
 	mntput(anon_inode_mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_unregister_filesystem:
 	unregister_filesystem(&anon_inode_fs_type);
 err_exit:

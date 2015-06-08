@@ -58,7 +58,14 @@
 #include <linux/delay.h>
 #include <linux/ioctl.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/irq.h>
 #include <asm/dma.h>
@@ -456,7 +463,15 @@ static int synclinkmp_device_count = 0;
  * .text section address and breakpoint on module load.
  * This is useful for use with gdb and add-symbol-file command.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool break_on_load = 0;
+=======
 static int break_on_load = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int break_on_load = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Driver major number, defaults to zero to get auto
@@ -721,7 +736,15 @@ static int open(struct tty_struct *tty, struct file *filp)
 	unsigned long flags;
 
 	line = tty->index;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (line >= synclinkmp_device_count) {
+=======
 	if ((line < 0) || (line >= synclinkmp_device_count)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((line < 0) || (line >= synclinkmp_device_count)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk("%s(%d): open with invalid line #%d.\n",
 			__FILE__,__LINE__,line);
 		return -ENODEV;
@@ -3977,7 +4000,14 @@ static int __init synclinkmp_init(void)
 
 	/* Initialize the tty_driver structure */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	serial_driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	serial_driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	serial_driver->driver_name = "synclinkmp";
 	serial_driver->name = "ttySLM";
 	serial_driver->major = ttymajor;
@@ -4950,7 +4980,15 @@ CheckAgain:
 
 	if ( debug_level >= DEBUG_LEVEL_DATA )
 		trace_block(info,info->rx_buf_list_ex[StartIndex].virt_addr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			min_t(unsigned int, framesize, SCABUFSIZE), 0);
+=======
 			min_t(int, framesize,SCABUFSIZE),0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			min_t(int, framesize,SCABUFSIZE),0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (framesize) {
 		if (framesize > info->max_frame_size)
@@ -5015,14 +5053,30 @@ static void tx_load_dma_buffer(SLMP_INFO *info, const char *buf, unsigned int co
 	SCADESC_EX *desc_ex;
 
 	if ( debug_level >= DEBUG_LEVEL_DATA )
+<<<<<<< HEAD
+<<<<<<< HEAD
+		trace_block(info, buf, min_t(unsigned int, count, SCABUFSIZE), 1);
+=======
 		trace_block(info,buf, min_t(int, count,SCABUFSIZE), 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		trace_block(info,buf, min_t(int, count,SCABUFSIZE), 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Copy source buffer to one or more DMA buffers, starting with
 	 * the first transmit dma buffer.
 	 */
 	for(i=0;;)
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		copy_count = min_t(unsigned int, count, SCABUFSIZE);
+=======
 		copy_count = min_t(unsigned short,count,SCABUFSIZE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		copy_count = min_t(unsigned short,count,SCABUFSIZE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		desc = &info->tx_buf_list[i];
 		desc_ex = &info->tx_buf_list_ex[i];

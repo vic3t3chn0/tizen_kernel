@@ -294,8 +294,12 @@ void ocfs2_populate_inode(struct inode *inode, struct ocfs2_dinode *fe,
 <<<<<<< HEAD
 	set_nlink(inode, ocfs2_read_links_count(fe));
 =======
+<<<<<<< HEAD
+	set_nlink(inode, ocfs2_read_links_count(fe));
+=======
 	inode->i_nlink = ocfs2_read_links_count(fe);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	trace_ocfs2_populate_inode(OCFS2_I(inode)->ip_blkno,
 				   le32_to_cpu(fe->i_flags));
@@ -958,8 +962,12 @@ static void ocfs2_cleanup_delete_inode(struct inode *inode,
 <<<<<<< HEAD
 		filemap_write_and_wait(inode->i_mapping);
 =======
+<<<<<<< HEAD
+		filemap_write_and_wait(inode->i_mapping);
+=======
 		write_inode_now(inode, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	truncate_inode_pages(&inode->i_data, 0);
 }
 
@@ -1301,8 +1309,12 @@ void ocfs2_refresh_inode(struct inode *inode,
 <<<<<<< HEAD
 	set_nlink(inode, ocfs2_read_links_count(fe));
 =======
+<<<<<<< HEAD
+	set_nlink(inode, ocfs2_read_links_count(fe));
+=======
 	inode->i_nlink = ocfs2_read_links_count(fe);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_uid = le32_to_cpu(fe->i_uid);
 	inode->i_gid = le32_to_cpu(fe->i_gid);
 	inode->i_mode = le16_to_cpu(fe->i_mode);

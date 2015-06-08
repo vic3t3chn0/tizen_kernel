@@ -176,8 +176,12 @@ long ubifs_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 		err = mnt_want_write_file(file);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(file);
+=======
 		err = mnt_want_write(file->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 		dbg_gen("set flags: %#x, i_flags %#x", flags, inode->i_flags);
@@ -185,8 +189,12 @@ long ubifs_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 		mnt_drop_write_file(file);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(file);
+=======
 		mnt_drop_write(file->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 

@@ -108,6 +108,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef __ASSEMBLY__
 #include <linux/types.h>
 #include <asm/byteorder.h>
@@ -131,4 +133,5 @@ extern unsigned long netlogic_io_base;
 #define netlogic_io_mmio(offset) ((nlm_reg_t *)(netlogic_io_base+(offset)))
 #endif /* __ASSEMBLY__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

@@ -28,6 +28,15 @@
 
 #include "main.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define SD8787_DEFAULT_FW_NAME "mrvl/sd8787_uapsta.bin"
+#define SD8797_DEFAULT_FW_NAME "mrvl/sd8797_uapsta.bin"
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BLOCK_MODE	1
 #define BYTE_MODE	0
 
@@ -52,10 +61,23 @@
 
 #define SDIO_MP_AGGR_DEF_PKT_LIMIT	8
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define SDIO_MP_TX_AGGR_DEF_BUF_SIZE        (8192)	/* 8K */
+
+/* Multi port RX aggregation buffer size */
+#define SDIO_MP_RX_AGGR_DEF_BUF_SIZE        (16384)	/* 16K */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SDIO_MP_TX_AGGR_DEF_BUF_SIZE        (4096)	/* 4K */
 
 /* Multi port RX aggregation buffer size */
 #define SDIO_MP_RX_AGGR_DEF_BUF_SIZE        (4096)	/* 4K */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Misc. Config Register : Auto Re-enable interrupts */
 #define AUTO_RE_ENABLE_INT              BIT(4)
@@ -167,9 +189,18 @@
 /* Rx unit register */
 #define CARD_RX_UNIT_REG		0x63
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /* Event header len w/o 4 bytes of interface header */
 #define MWIFIEX_EVENT_HEADER_LEN           4
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Event header len w/o 4 bytes of interface header */
+#define MWIFIEX_EVENT_HEADER_LEN           4
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Max retry number of CMD53 write */
 #define MAX_WRITE_IOMEM_RETRY		2
 
@@ -302,4 +333,31 @@ struct sdio_mmc_card {
 	struct mwifiex_sdio_mpa_tx mpa_tx;
 	struct mwifiex_sdio_mpa_rx mpa_rx;
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/*
+ * .cmdrsp_complete handler
+ */
+static inline int mwifiex_sdio_cmdrsp_complete(struct mwifiex_adapter *adapter,
+					       struct sk_buff *skb)
+{
+	dev_kfree_skb_any(skb);
+	return 0;
+}
+
+/*
+ * .event_complete handler
+ */
+static inline int mwifiex_sdio_event_complete(struct mwifiex_adapter *adapter,
+					      struct sk_buff *skb)
+{
+	dev_kfree_skb_any(skb);
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _MWIFIEX_SDIO_H */

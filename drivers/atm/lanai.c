@@ -1457,10 +1457,22 @@ static int __devinit vcc_table_allocate(struct lanai_dev *lanai)
 	return (lanai->vccs == NULL) ? -ENOMEM : 0;
 #else
 	int bytes = (lanai->num_vci) * sizeof(struct lanai_vcc *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	lanai->vccs = vzalloc(bytes);
+	if (unlikely(lanai->vccs == NULL))
+		return -ENOMEM;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lanai->vccs = (struct lanai_vcc **) vmalloc(bytes);
 	if (unlikely(lanai->vccs == NULL))
 		return -ENOMEM;
 	memset(lanai->vccs, 0, bytes);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 #endif
 }
@@ -1573,7 +1585,15 @@ static inline void host_vcc_unbind(struct lanai_dev *lanai,
 
 static void lanai_reset(struct lanai_dev *lanai)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	printk(KERN_CRIT DEV_LABEL "(itf %d): *NOT* resetting - not "
+=======
 	printk(KERN_CRIT DEV_LABEL "(itf %d): *NOT* reseting - not "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_CRIT DEV_LABEL "(itf %d): *NOT* reseting - not "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    "implemented\n", lanai->number);
 	/* TODO */
 	/* The following is just a hack until we write the real
@@ -1947,7 +1967,14 @@ static int __devinit lanai_pci_start(struct lanai_dev *lanai)
 {
 	struct pci_dev *pci = lanai->pci;
 	int result;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u16 w;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u16 w;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (pci_enable_device(pci) != 0) {
 		printk(KERN_ERR DEV_LABEL "(itf %d): can't enable "
@@ -1965,6 +1992,12 @@ static int __devinit lanai_pci_start(struct lanai_dev *lanai)
 		    "(itf %d): No suitable DMA available.\n", lanai->number);
 		return -EBUSY;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	result = check_board_id_and_rev("PCI", pci->subsystem_device, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	result = pci_read_config_word(pci, PCI_SUBSYSTEM_ID, &w);
 	if (result != PCIBIOS_SUCCESSFUL) {
 		printk(KERN_ERR DEV_LABEL "(itf %d): can't read "
@@ -1972,6 +2005,10 @@ static int __devinit lanai_pci_start(struct lanai_dev *lanai)
 		return -EINVAL;
 	}
 	result = check_board_id_and_rev("PCI", w, NULL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result != 0)
 		return result;
 	/* Set latency timer to zero as per lanai docs */

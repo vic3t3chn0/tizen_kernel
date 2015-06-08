@@ -426,7 +426,11 @@ static void __init palmphone_common_init(void)
 <<<<<<< HEAD
 #ifdef CONFIG_MACH_TREO680
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_MACH_TREO680
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init treo680_init(void)
 {
 	pxa2xx_mfp_config(ARRAY_AND_SIZE(treo680_pin_config));
@@ -439,8 +443,14 @@ static void __init treo680_init(void)
 
 #ifdef CONFIG_MACH_CENTRO
 =======
+<<<<<<< HEAD
+#endif
+
+#ifdef CONFIG_MACH_CENTRO
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init centro_init(void)
 {
 	pxa2xx_mfp_config(ARRAY_AND_SIZE(centro685_pin_config));
@@ -449,6 +459,9 @@ static void __init centro_init(void)
 			GPIO_NR_CENTRO_SD_POWER, 1);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_MACH_TREO680
@@ -478,6 +491,8 @@ MACHINE_START(CENTRO, "Palm Centro 685")
 	.restart	= pxa_restart,
 MACHINE_END
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 MACHINE_START(TREO680, "Palm Treo 680")
@@ -498,3 +513,4 @@ MACHINE_START(CENTRO, "Palm Centro 685")
 	.init_machine	= centro_init,
 MACHINE_END
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

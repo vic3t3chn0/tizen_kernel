@@ -3,7 +3,11 @@
 <<<<<<< HEAD
 #include "util.h"
 =======
+<<<<<<< HEAD
+#include "util.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sys/types.h>
 #include <byteswap.h>
 #include <unistd.h>
@@ -12,17 +16,23 @@
 #include <linux/list.h>
 #include <linux/kernel.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bitops.h>
 #include <sys/utsname.h>
 
 #include "evlist.h"
 #include "evsel.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "evlist.h"
 #include "evsel.h"
 #include "util.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "header.h"
 #include "../perf.h"
 #include "trace-event.h"
@@ -32,7 +42,11 @@
 <<<<<<< HEAD
 #include "cpumap.h"
 =======
+<<<<<<< HEAD
+#include "cpumap.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static bool no_buildid_cache = false;
 
@@ -44,7 +58,13 @@ static u32 header_argc;
 static const char **header_argv;
 
 =======
+<<<<<<< HEAD
+static u32 header_argc;
+static const char **header_argv;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_header__push_event(u64 id, const char *name)
 {
 	if (strlen(name) > MAX_EVENT_NAME)
@@ -80,6 +100,9 @@ char *perf_header__find_event(u64 id)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * magic2 = "PERFILE2"
  * must be a numerical value to let the endianness
@@ -94,11 +117,14 @@ static const u64 __perf_magic2    = 0x32454c4946524550ULL;
 static const u64 __perf_magic2_sw = 0x50455246494c4532ULL;
 
 #define PERF_MAGIC	__perf_magic2
+<<<<<<< HEAD
+=======
 =======
 static const char *__perf_magic = "PERFFILE";
 
 #define PERF_MAGIC	(*(u64 *)__perf_magic)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct perf_file_attr {
 	struct perf_event_attr	attr;
@@ -150,6 +176,9 @@ static int write_padded(int fd, const void *bf, size_t count,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int do_write_string(int fd, const char *str)
 {
 	u32 len, olen;
@@ -219,8 +248,11 @@ perf_header__set_cmdline(int argc, const char **argv)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dsos__for_each_with_build_id(pos, head)	\
 	list_for_each_entry(pos, head, node)	\
 		if (!pos->has_build_id)		\
@@ -304,9 +336,14 @@ int build_id_cache__add_s(const char *sbuild_id, const char *debugdir,
 	char *realname, *filename = zalloc(size),
 	     *linkname = zalloc(size), *targetname;
 =======
+<<<<<<< HEAD
+	char *realname, *filename = zalloc(size),
+	     *linkname = zalloc(size), *targetname;
+=======
 	char *realname, *filename = malloc(size),
 	     *linkname = malloc(size), *targetname;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int len, err = -1;
 
 	if (is_kallsyms) {
@@ -324,8 +361,12 @@ int build_id_cache__add_s(const char *sbuild_id, const char *debugdir,
 <<<<<<< HEAD
 	len = scnprintf(filename, size, "%s%s%s",
 =======
+<<<<<<< HEAD
+	len = scnprintf(filename, size, "%s%s%s",
+=======
 	len = snprintf(filename, size, "%s%s%s",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       debugdir, is_kallsyms ? "/" : "", realname);
 	if (mkdir_p(filename, 0755))
 		goto out_free;
@@ -333,8 +374,12 @@ int build_id_cache__add_s(const char *sbuild_id, const char *debugdir,
 <<<<<<< HEAD
 	snprintf(filename + len, size - len, "/%s", sbuild_id);
 =======
+<<<<<<< HEAD
+	snprintf(filename + len, size - len, "/%s", sbuild_id);
+=======
 	snprintf(filename + len, sizeof(filename) - len, "/%s", sbuild_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (access(filename, F_OK)) {
 		if (is_kallsyms) {
@@ -347,8 +392,12 @@ int build_id_cache__add_s(const char *sbuild_id, const char *debugdir,
 <<<<<<< HEAD
 	len = scnprintf(linkname, size, "%s/.build-id/%.2s",
 =======
+<<<<<<< HEAD
+	len = scnprintf(linkname, size, "%s/.build-id/%.2s",
+=======
 	len = snprintf(linkname, size, "%s/.build-id/%.2s",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       debugdir, sbuild_id);
 
 	if (access(linkname, X_OK) && mkdir_p(linkname, 0755))
@@ -386,9 +435,14 @@ int build_id_cache__remove_s(const char *sbuild_id, const char *debugdir)
 	char *filename = zalloc(size),
 	     *linkname = zalloc(size);
 =======
+<<<<<<< HEAD
+	char *filename = zalloc(size),
+	     *linkname = zalloc(size);
+=======
 	char *filename = malloc(size),
 	     *linkname = malloc(size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = -1;
 
 	if (filename == NULL || linkname == NULL)
@@ -403,8 +457,12 @@ int build_id_cache__remove_s(const char *sbuild_id, const char *debugdir)
 <<<<<<< HEAD
 	if (readlink(linkname, filename, size - 1) < 0)
 =======
+<<<<<<< HEAD
+	if (readlink(linkname, filename, size - 1) < 0)
+=======
 	if (readlink(linkname, filename, size) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_free;
 
 	if (unlink(linkname))
@@ -494,6 +552,9 @@ static bool perf_session__read_build_ids(struct perf_session *session, bool with
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int write_trace_info(int fd, struct perf_header *h __used,
 			    struct perf_evlist *evlist)
 {
@@ -1659,18 +1720,26 @@ static int do_write_feat(int fd, struct perf_header *h, int type,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int perf_header__adds_write(struct perf_header *header,
 				   struct perf_evlist *evlist, int fd)
 {
 	int nr_sections;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct perf_file_section *feat_sec, *p;
 	int sec_size;
 	u64 sec_start;
 	int feat;
 	int err;
+<<<<<<< HEAD
+=======
 =======
 	struct perf_session *session;
 	struct perf_file_section *feat_sec;
@@ -1684,6 +1753,7 @@ static int perf_header__adds_write(struct perf_header *header,
 	    !perf_session__read_build_ids(session, true)))
 		perf_header__clear_feat(header, HEADER_BUILD_ID);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nr_sections = bitmap_weight(header->adds_features, HEADER_FEAT_BITS);
 	if (!nr_sections)
@@ -1692,8 +1762,12 @@ static int perf_header__adds_write(struct perf_header *header,
 <<<<<<< HEAD
 	feat_sec = p = calloc(sizeof(*feat_sec), nr_sections);
 =======
+<<<<<<< HEAD
+	feat_sec = p = calloc(sizeof(*feat_sec), nr_sections);
+=======
 	feat_sec = calloc(sizeof(*feat_sec), nr_sections);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (feat_sec == NULL)
 		return -ENOMEM;
 
@@ -1703,6 +1777,9 @@ static int perf_header__adds_write(struct perf_header *header,
 	lseek(fd, sec_start + sec_size, SEEK_SET);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_set_bit(feat, header->adds_features, HEADER_FEAT_BITS) {
 		if (do_write_feat(fd, header, feat, &p, evlist))
 			perf_header__clear_feat(header, feat);
@@ -1716,6 +1793,8 @@ static int perf_header__adds_write(struct perf_header *header,
 	err = do_write(fd, feat_sec, sec_size);
 	if (err < 0)
 		pr_debug("failed to write feature section\n");
+<<<<<<< HEAD
+=======
 =======
 	if (perf_header__has_feat(header, HEADER_TRACE_INFO)) {
 		struct perf_file_section *trace_sec;
@@ -1752,6 +1831,7 @@ static int perf_header__adds_write(struct perf_header *header,
 		pr_debug("failed to write feature section\n");
 out_free:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free(feat_sec);
 	return err;
 }
@@ -1888,6 +1968,9 @@ static int perf_header__getbuffer64(struct perf_header *header,
 
 int perf_header__process_sections(struct perf_header *header, int fd,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  void *data,
 				  int (*process)(struct perf_file_section *section,
 						 struct perf_header *ph,
@@ -1898,6 +1981,8 @@ int perf_header__process_sections(struct perf_header *header, int fd,
 	int sec_size;
 	int feat;
 	int err;
+<<<<<<< HEAD
+=======
 =======
 				  int (*process)(struct perf_file_section *section,
 						 struct perf_header *ph,
@@ -1909,6 +1994,7 @@ int perf_header__process_sections(struct perf_header *header, int fd,
 	int idx = 0;
 	int err = -1, feat = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nr_sections = bitmap_weight(header->adds_features, HEADER_FEAT_BITS);
 	if (!nr_sections)
@@ -1917,8 +2003,12 @@ int perf_header__process_sections(struct perf_header *header, int fd,
 <<<<<<< HEAD
 	feat_sec = sec = calloc(sizeof(*feat_sec), nr_sections);
 =======
+<<<<<<< HEAD
+	feat_sec = sec = calloc(sizeof(*feat_sec), nr_sections);
+=======
 	feat_sec = calloc(sizeof(*feat_sec), nr_sections);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!feat_sec)
 		return -1;
 
@@ -1927,6 +2017,9 @@ int perf_header__process_sections(struct perf_header *header, int fd,
 	lseek(fd, header->data_offset + header->data_size, SEEK_SET);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = perf_header__getbuffer64(header, fd, feat_sec, sec_size);
 	if (err < 0)
 		goto out_free;
@@ -1937,6 +2030,8 @@ int perf_header__process_sections(struct perf_header *header, int fd,
 			goto out_free;
 	}
 	err = 0;
+<<<<<<< HEAD
+=======
 =======
 	if (perf_header__getbuffer64(header, fd, feat_sec, sec_size))
 		goto out_free;
@@ -1953,12 +2048,16 @@ int perf_header__process_sections(struct perf_header *header, int fd,
 		++feat;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_free:
 	free(feat_sec);
 	return err;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const int attr_file_abi_sizes[] = {
 	[0] = PERF_ATTR_SIZE_VER0,
 	[1] = PERF_ATTR_SIZE_VER1,
@@ -2057,6 +2156,8 @@ static int check_magic_endian(u64 magic, uint64_t hdr_sz,
 		return -1;
 
 	ph->needs_swap = true;
+<<<<<<< HEAD
+=======
 =======
 int perf_file_header__read(struct perf_file_header *header,
 			   struct perf_header *ph, int fd)
@@ -2196,11 +2297,15 @@ static int perf_header__read_build_ids_abi_quirk(struct perf_header *header,
 		offset += bev.header.size;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_file_header__read(struct perf_file_header *header,
 			   struct perf_header *ph, int fd)
 {
@@ -2270,6 +2375,8 @@ int perf_file_header__read(struct perf_file_header *header,
 	ph->data_offset  = header->data.offset;
 	ph->data_size	 = header->data.size;
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 static int perf_header__read_build_ids(struct perf_header *header,
 				       int input, u64 offset, u64 size)
@@ -2319,6 +2426,7 @@ static int perf_header__read_build_ids(struct perf_header *header,
 out:
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int perf_file_section__process(struct perf_file_section *section,
@@ -2326,8 +2434,12 @@ static int perf_file_section__process(struct perf_file_section *section,
 <<<<<<< HEAD
 				      int feat, int fd, void *data __used)
 =======
+<<<<<<< HEAD
+				      int feat, int fd, void *data __used)
+=======
 				      int feat, int fd)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (lseek(fd, section->offset, SEEK_SET) == (off_t)-1) {
 		pr_debug("Failed to lseek to %" PRIu64 " offset for feature "
@@ -2336,6 +2448,9 @@ static int perf_file_section__process(struct perf_file_section *section,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (feat >= HEADER_LAST_FEATURE) {
 		pr_debug("unknown feature %d, continuing...\n", feat);
 		return 0;
@@ -2345,6 +2460,8 @@ static int perf_file_section__process(struct perf_file_section *section,
 		return 0;
 
 	return feat_ops[feat].process(section, ph, feat, fd);
+<<<<<<< HEAD
+=======
 =======
 	switch (feat) {
 	case HEADER_TRACE_INFO:
@@ -2361,6 +2478,7 @@ static int perf_file_section__process(struct perf_file_section *section,
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int perf_file_header__read_pipe(struct perf_pipe_file_header *header,
@@ -2368,6 +2486,9 @@ static int perf_file_header__read_pipe(struct perf_pipe_file_header *header,
 				       bool repipe)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	ret = readn(fd, header, sizeof(*header));
@@ -2384,6 +2505,8 @@ static int perf_file_header__read_pipe(struct perf_pipe_file_header *header,
 
 	if (repipe && do_write(STDOUT_FILENO, header, sizeof(*header)) < 0)
 		return -1;
+<<<<<<< HEAD
+=======
 =======
 	if (readn(fd, header, sizeof(*header)) <= 0 ||
 	    memcmp(&header->magic, __perf_magic, sizeof(header->magic)))
@@ -2401,6 +2524,7 @@ static int perf_file_header__read_pipe(struct perf_pipe_file_header *header,
 		ph->needs_swap = true;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -2422,6 +2546,9 @@ static int perf_header__read_pipe(struct perf_session *session, int fd)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int read_attr(int fd, struct perf_header *ph,
 		     struct perf_file_attr *f_attr)
 {
@@ -2468,8 +2595,11 @@ static int read_attr(int fd, struct perf_header *ph,
 	return ret <= 0 ? -1 : 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_session__read_header(struct perf_session *session, int fd)
 {
 	struct perf_header *header = &session->header;
@@ -2486,10 +2616,15 @@ int perf_session__read_header(struct perf_session *session, int fd)
 		return perf_header__read_pipe(session, fd);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (perf_file_header__read(&f_header, header, fd) < 0)
 		return -EINVAL;
 
 	nr_attrs = f_header.attrs.size / f_header.attr_size;
+<<<<<<< HEAD
+=======
 =======
 	if (perf_file_header__read(&f_header, header, fd) < 0) {
 		pr_debug("incompatible file format\n");
@@ -2498,6 +2633,7 @@ int perf_session__read_header(struct perf_session *session, int fd)
 
 	nr_attrs = f_header.attrs.size / sizeof(f_attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lseek(fd, f_header.attrs.offset, SEEK_SET);
 
 	for (i = 0; i < nr_attrs; i++) {
@@ -2507,8 +2643,12 @@ int perf_session__read_header(struct perf_session *session, int fd)
 <<<<<<< HEAD
 		if (read_attr(fd, header, &f_attr) < 0)
 =======
+<<<<<<< HEAD
+		if (read_attr(fd, header, &f_attr) < 0)
+=======
 		if (readn(fd, &f_attr, sizeof(f_attr)) <= 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out_errno;
 
 		if (header->needs_swap)
@@ -2550,7 +2690,12 @@ int perf_session__read_header(struct perf_session *session, int fd)
 	symbol_conf.nr_events = nr_attrs;
 
 =======
+<<<<<<< HEAD
+	symbol_conf.nr_events = nr_attrs;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (f_header.event_types.size) {
 		lseek(fd, f_header.event_types.offset, SEEK_SET);
 		events = malloc(f_header.event_types.size);
@@ -2566,8 +2711,13 @@ int perf_session__read_header(struct perf_session *session, int fd)
 	perf_header__process_sections(header, fd, NULL,
 				      perf_file_section__process);
 =======
+<<<<<<< HEAD
+	perf_header__process_sections(header, fd, NULL,
+				      perf_file_section__process);
+=======
 	perf_header__process_sections(header, fd, perf_file_section__process);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lseek(fd, header->data_offset, SEEK_SET);
 
@@ -2587,10 +2737,16 @@ int perf_event__synthesize_attr(struct perf_tool *tool,
 				struct perf_event_attr *attr, u16 ids, u64 *id,
 				perf_event__handler_t process)
 =======
+<<<<<<< HEAD
+int perf_event__synthesize_attr(struct perf_tool *tool,
+				struct perf_event_attr *attr, u16 ids, u64 *id,
+				perf_event__handler_t process)
+=======
 int perf_event__synthesize_attr(struct perf_event_attr *attr, u16 ids, u64 *id,
 				perf_event__handler_t process,
 				struct perf_session *session)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	union perf_event *ev;
 	size_t size;
@@ -2615,8 +2771,12 @@ int perf_event__synthesize_attr(struct perf_event_attr *attr, u16 ids, u64 *id,
 <<<<<<< HEAD
 	err = process(tool, ev, NULL, NULL);
 =======
+<<<<<<< HEAD
+	err = process(tool, ev, NULL, NULL);
+=======
 	err = process(ev, NULL, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	free(ev);
 
@@ -2627,8 +2787,13 @@ int perf_event__synthesize_attr(struct perf_event_attr *attr, u16 ids, u64 *id,
 int perf_event__synthesize_attrs(struct perf_tool *tool,
 				   struct perf_session *session,
 =======
+<<<<<<< HEAD
+int perf_event__synthesize_attrs(struct perf_tool *tool,
+				   struct perf_session *session,
+=======
 int perf_session__synthesize_attrs(struct perf_session *session,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   perf_event__handler_t process)
 {
 	struct perf_evsel *attr;
@@ -2639,9 +2804,14 @@ int perf_session__synthesize_attrs(struct perf_session *session,
 		err = perf_event__synthesize_attr(tool, &attr->attr, attr->ids,
 						  attr->id, process);
 =======
+<<<<<<< HEAD
+		err = perf_event__synthesize_attr(tool, &attr->attr, attr->ids,
+						  attr->id, process);
+=======
 		err = perf_event__synthesize_attr(&attr->attr, attr->ids,
 						  attr->id, process, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err) {
 			pr_debug("failed to create perf header attribute\n");
 			return err;
@@ -2653,6 +2823,9 @@ int perf_session__synthesize_attrs(struct perf_session *session,
 
 int perf_event__process_attr(union perf_event *event,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     struct perf_evlist **pevlist)
 {
 	unsigned int i, ids, n_ids;
@@ -2670,6 +2843,8 @@ int perf_event__process_attr(union perf_event *event,
 		return -ENOMEM;
 
 	perf_evlist__add(evlist, evsel);
+<<<<<<< HEAD
+=======
 =======
 			     struct perf_session *session)
 {
@@ -2689,6 +2864,7 @@ int perf_event__process_attr(union perf_event *event,
 
 	perf_evlist__add(session->evlist, evsel);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ids = event->header.size;
 	ids -= (void *)&event->attr.id - (void *)event;
@@ -2703,6 +2879,9 @@ int perf_event__process_attr(union perf_event *event,
 
 	for (i = 0; i < n_ids; i++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		perf_evlist__id_add(evlist, evsel, 0, i, event->attr.id[i]);
 	}
 
@@ -2713,6 +2892,8 @@ int perf_event__synthesize_event_type(struct perf_tool *tool,
 				      u64 event_id, char *name,
 				      perf_event__handler_t process,
 				      struct machine *machine)
+<<<<<<< HEAD
+=======
 =======
 		perf_evlist__id_add(session->evlist, evsel, 0, i,
 				    event->attr.id[i]);
@@ -2727,6 +2908,7 @@ int perf_event__synthesize_event_type(u64 event_id, char *name,
 				      perf_event__handler_t process,
 				      struct perf_session *session)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	union perf_event ev;
 	size_t size = 0;
@@ -2742,8 +2924,12 @@ int perf_event__synthesize_event_type(u64 event_id, char *name,
 <<<<<<< HEAD
 	size = strlen(ev.event_type.event_type.name);
 =======
+<<<<<<< HEAD
+	size = strlen(ev.event_type.event_type.name);
+=======
 	size = strlen(name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size = ALIGN(size, sizeof(u64));
 	ev.event_type.header.size = sizeof(ev.event_type) -
 		(sizeof(ev.event_type.event_type.name) - size);
@@ -2751,8 +2937,12 @@ int perf_event__synthesize_event_type(u64 event_id, char *name,
 <<<<<<< HEAD
 	err = process(tool, &ev, NULL, machine);
 =======
+<<<<<<< HEAD
+	err = process(tool, &ev, NULL, machine);
+=======
 	err = process(&ev, NULL, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -2762,9 +2952,15 @@ int perf_event__synthesize_event_types(struct perf_tool *tool,
 				       perf_event__handler_t process,
 				       struct machine *machine)
 =======
+<<<<<<< HEAD
+int perf_event__synthesize_event_types(struct perf_tool *tool,
+				       perf_event__handler_t process,
+				       struct machine *machine)
+=======
 int perf_event__synthesize_event_types(perf_event__handler_t process,
 				       struct perf_session *session)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct perf_trace_event_type *type;
 	int i, err = 0;
@@ -2777,10 +2973,16 @@ int perf_event__synthesize_event_types(perf_event__handler_t process,
 							type->name, process,
 							machine);
 =======
+<<<<<<< HEAD
+		err = perf_event__synthesize_event_type(tool, type->event_id,
+							type->name, process,
+							machine);
+=======
 		err = perf_event__synthesize_event_type(type->event_id,
 							type->name, process,
 							session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err) {
 			pr_debug("failed to create perf header event type\n");
 			return err;
@@ -2794,9 +2996,14 @@ int perf_event__synthesize_event_types(perf_event__handler_t process,
 int perf_event__process_event_type(struct perf_tool *tool __unused,
 				   union perf_event *event)
 =======
+<<<<<<< HEAD
+int perf_event__process_event_type(struct perf_tool *tool __unused,
+				   union perf_event *event)
+=======
 int perf_event__process_event_type(union perf_event *event,
 				   struct perf_session *session __unused)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (perf_header__push_event(event->event_type.event_type.event_id,
 				    event->event_type.event_type.name) < 0)
@@ -2806,6 +3013,9 @@ int perf_event__process_event_type(union perf_event *event,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_event__synthesize_tracing_data(struct perf_tool *tool, int fd,
 					struct perf_evlist *evlist,
 					perf_event__handler_t process)
@@ -2834,6 +3044,8 @@ int perf_event__synthesize_tracing_data(struct perf_tool *tool, int fd,
 
 	ev.tracing_data.header.type = PERF_RECORD_HEADER_TRACING_DATA;
 	size = tdata->size;
+<<<<<<< HEAD
+=======
 =======
 int perf_event__synthesize_tracing_data(int fd, struct perf_evlist *evlist,
 					 perf_event__handler_t process,
@@ -2850,12 +3062,16 @@ int perf_event__synthesize_tracing_data(int fd, struct perf_evlist *evlist,
 	if (size <= 0)
 		return size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	aligned_size = ALIGN(size, sizeof(u64));
 	padding = aligned_size - size;
 	ev.tracing_data.header.size = sizeof(ev.tracing_data);
 	ev.tracing_data.size = aligned_size;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	process(tool, &ev, NULL, NULL);
 
 	/*
@@ -2864,11 +3080,14 @@ int perf_event__synthesize_tracing_data(int fd, struct perf_evlist *evlist,
 	 */
 	tracing_data_put(tdata);
 
+<<<<<<< HEAD
+=======
 =======
 	process(&ev, NULL, session);
 
 	err = read_tracing_data(fd, &evlist->entries);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	write_padded(fd, NULL, 0, padding);
 
 	return aligned_size;
@@ -2904,16 +3123,22 @@ int perf_event__process_tracing_data(union perf_event *event,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_event__synthesize_build_id(struct perf_tool *tool,
 				    struct dso *pos, u16 misc,
 				    perf_event__handler_t process,
 				    struct machine *machine)
+<<<<<<< HEAD
+=======
 =======
 int perf_event__synthesize_build_id(struct dso *pos, u16 misc,
 				    perf_event__handler_t process,
 				    struct machine *machine,
 				    struct perf_session *session)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	union perf_event ev;
 	size_t len;
@@ -2936,8 +3161,12 @@ int perf_event__synthesize_build_id(struct dso *pos, u16 misc,
 <<<<<<< HEAD
 	err = process(tool, &ev, NULL, machine);
 =======
+<<<<<<< HEAD
+	err = process(tool, &ev, NULL, machine);
+=======
 	err = process(&ev, NULL, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -2946,8 +3175,13 @@ int perf_event__synthesize_build_id(struct dso *pos, u16 misc,
 int perf_event__process_build_id(struct perf_tool *tool __used,
 				 union perf_event *event,
 =======
+<<<<<<< HEAD
+int perf_event__process_build_id(struct perf_tool *tool __used,
+				 union perf_event *event,
+=======
 int perf_event__process_build_id(union perf_event *event,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 struct perf_session *session)
 {
 	__event_process_build_id(&event->build_id,

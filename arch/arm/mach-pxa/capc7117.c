@@ -54,9 +54,14 @@ static struct resource capc7117_ide_resources[] = {
 	       .start = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO76)),
 	       .end = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO76)),
 =======
+<<<<<<< HEAD
+	       .start = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO76)),
+	       .end = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO76)),
+=======
 	       .start = gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO76)),
 	       .end = gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO76)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       .flags = IORESOURCE_IRQ | IRQF_TRIGGER_RISING
 	}
 };
@@ -88,8 +93,12 @@ static struct plat_serial8250_port ti16c752_platform_data[] = {
 <<<<<<< HEAD
 	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO78)),
 =======
+<<<<<<< HEAD
+	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO78)),
+=======
 	       .irq = gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO78)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       .irqflags = IRQF_TRIGGER_RISING,
 	       .flags = TI16C752_FLAGS,
 	       .iotype = UPIO_MEM,
@@ -101,8 +110,12 @@ static struct plat_serial8250_port ti16c752_platform_data[] = {
 <<<<<<< HEAD
 	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO79)),
 =======
+<<<<<<< HEAD
+	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO79)),
+=======
 	       .irq = gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO79)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       .irqflags = IRQF_TRIGGER_RISING,
 	       .flags = TI16C752_FLAGS,
 	       .iotype = UPIO_MEM,
@@ -114,8 +127,12 @@ static struct plat_serial8250_port ti16c752_platform_data[] = {
 <<<<<<< HEAD
 	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO80)),
 =======
+<<<<<<< HEAD
+	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO80)),
+=======
 	       .irq = gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO80)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       .irqflags = IRQF_TRIGGER_RISING,
 	       .flags = TI16C752_FLAGS,
 	       .iotype = UPIO_MEM,
@@ -127,8 +144,12 @@ static struct plat_serial8250_port ti16c752_platform_data[] = {
 <<<<<<< HEAD
 	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO81)),
 =======
+<<<<<<< HEAD
+	       .irq = PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO81)),
+=======
 	       .irq = gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO81)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       .irqflags = IRQF_TRIGGER_RISING,
 	       .flags = TI16C752_FLAGS,
 	       .iotype = UPIO_MEM,
@@ -170,6 +191,9 @@ static void __init capc7117_init(void)
 MACHINE_START(CAPC7117,
 	      "Embedian CAPC-7117 evaluation kit based on the MXM-8x10 CoM")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset = 0x100,
 	.map_io = pxa3xx_map_io,
 	.nr_irqs = PXA_NR_IRQS,
@@ -178,6 +202,8 @@ MACHINE_START(CAPC7117,
 	.timer = &pxa_timer,
 	.init_machine = capc7117_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params = 0xa0000100,
 	.map_io = pxa3xx_map_io,
@@ -185,4 +211,5 @@ MACHINE_START(CAPC7117,
 	.timer = &pxa_timer,
 	.init_machine = capc7117_init
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

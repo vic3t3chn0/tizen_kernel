@@ -14,6 +14,8 @@ void		cleanup_socket_xprt(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * RPC slot table sizes for UDP, TCP transports
  */
@@ -27,6 +29,7 @@ extern unsigned int xprt_min_resvport;
 extern unsigned int xprt_max_resvport;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RPC_MIN_RESVPORT	(1U)
 #define RPC_MAX_RESVPORT	(65535U)
 #define RPC_DEF_MIN_RESVPORT	(665U)

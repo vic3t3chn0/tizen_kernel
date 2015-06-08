@@ -39,6 +39,8 @@ extern void tlbmiss_handler_setup_pgd(unsigned long pgd);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 static inline unsigned long get_current_pgd(void)
 {
@@ -46,6 +48,7 @@ static inline unsigned long get_current_pgd(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else /* CONFIG_MIPS_PGD_C0_CONTEXT: using  pgd_current*/
 
 /*

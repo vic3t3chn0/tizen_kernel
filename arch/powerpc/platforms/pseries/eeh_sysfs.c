@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/stat.h>
 =======
+<<<<<<< HEAD
+#include <linux/stat.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/ppc-pci.h>
 #include <asm/pci-bridge.h>
 
@@ -34,8 +38,12 @@
 <<<<<<< HEAD
  * EEH_SHOW_ATTR -- Create sysfs entry for eeh statistic
 =======
+<<<<<<< HEAD
+ * EEH_SHOW_ATTR -- Create sysfs entry for eeh statistic
+=======
  * EEH_SHOW_ATTR -- create sysfs entry for eeh statistic
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @_name: name of file in sysfs directory
  * @_memb: name of member in struct pci_dn to access
  * @_format: printf format for display
@@ -49,6 +57,9 @@ static ssize_t eeh_show_##_name(struct device *dev,      \
 {                                                        \
 	struct pci_dev *pdev = to_pci_dev(dev);               \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct eeh_dev *edev = pci_dev_to_eeh_dev(pdev);      \
 	                                                      \
 	if (!edev)                                            \
@@ -64,6 +75,8 @@ EEH_SHOW_ATTR(eeh_pe_config_addr,  pe_config_addr,  "0x%x");
 EEH_SHOW_ATTR(eeh_check_count,     check_count,     "%d"  );
 EEH_SHOW_ATTR(eeh_freeze_count,    freeze_count,    "%d"  );
 EEH_SHOW_ATTR(eeh_false_positives, false_positives, "%d"  );
+<<<<<<< HEAD
+=======
 =======
 	struct device_node *dn = pci_device_to_OF_node(pdev); \
 	struct pci_dn *pdn;                                   \
@@ -84,6 +97,7 @@ EEH_SHOW_ATTR(eeh_check_count, eeh_check_count, "%d");
 EEH_SHOW_ATTR(eeh_freeze_count, eeh_freeze_count, "%d");
 EEH_SHOW_ATTR(eeh_false_positives, eeh_false_positives, "%d");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void eeh_sysfs_add_device(struct pci_dev *pdev)
 {

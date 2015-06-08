@@ -30,7 +30,15 @@
 /* Module parameters */
 int gigaset_debuglevel;
 EXPORT_SYMBOL_GPL(gigaset_debuglevel);
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_param_named(debug, gigaset_debuglevel, int, S_IRUGO | S_IWUSR);
+=======
 module_param_named(debug, gigaset_debuglevel, int, S_IRUGO|S_IWUSR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+module_param_named(debug, gigaset_debuglevel, int, S_IRUGO|S_IWUSR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(debug, "debug level");
 
 /* driver state flags */
@@ -123,7 +131,15 @@ int gigaset_enterconfigmode(struct cardstate *cs)
 		if (r < 0)
 			goto error;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	r = setflags(cs, TIOCM_RTS | TIOCM_DTR, 800);
+=======
 	r = setflags(cs, TIOCM_RTS|TIOCM_DTR, 800);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	r = setflags(cs, TIOCM_RTS|TIOCM_DTR, 800);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (r < 0)
 		goto error;
 
@@ -131,8 +147,18 @@ int gigaset_enterconfigmode(struct cardstate *cs)
 
 error:
 	dev_err(cs->dev, "error %d on setuartbits\n", -r);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cs->control_state = TIOCM_RTS | TIOCM_DTR;
+	cs->ops->set_modem_ctrl(cs, 0, TIOCM_RTS | TIOCM_DTR);
+=======
 	cs->control_state = TIOCM_RTS|TIOCM_DTR;
 	cs->ops->set_modem_ctrl(cs, 0, TIOCM_RTS|TIOCM_DTR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cs->control_state = TIOCM_RTS|TIOCM_DTR;
+	cs->ops->set_modem_ctrl(cs, 0, TIOCM_RTS|TIOCM_DTR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return -1;
 }
@@ -591,7 +617,15 @@ int gigaset_fill_inbuf(struct inbuf_t *inbuf, const unsigned char *src,
 		if (head > tail)
 			n = head - 1 - tail;
 		else if (head == 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			n = (RBUFSIZE - 1) - tail;
+=======
 			n = (RBUFSIZE-1) - tail;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			n = (RBUFSIZE-1) - tail;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			n = RBUFSIZE - tail;
 		if (!n) {
@@ -720,12 +754,26 @@ struct cardstate *gigaset_initcs(struct gigaset_driver *drv, int channels,
 
 	tasklet_init(&cs->event_tasklet, gigaset_handle_event,
 		     (unsigned long) cs);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tty_port_init(&cs->port);
+	cs->commands_pending = 0;
+	cs->cur_at_seq = 0;
+	cs->gotfwver = -1;
+	cs->dev = NULL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cs->commands_pending = 0;
 	cs->cur_at_seq = 0;
 	cs->gotfwver = -1;
 	cs->open_count = 0;
 	cs->dev = NULL;
 	cs->tty = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cs->tty_dev = NULL;
 	cs->cidmode = cidmode != 0;
 	cs->tabnocid = gigaset_tab_nocid;
@@ -911,10 +959,23 @@ int gigaset_start(struct cardstate *cs)
 	spin_unlock_irqrestore(&cs->lock, flags);
 
 	if (cs->mstate != MS_LOCKED) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		cs->ops->set_modem_ctrl(cs, 0, TIOCM_DTR | TIOCM_RTS);
+		cs->ops->baud_rate(cs, B115200);
+		cs->ops->set_line_ctrl(cs, CS8);
+		cs->control_state = TIOCM_DTR | TIOCM_RTS;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cs->ops->set_modem_ctrl(cs, 0, TIOCM_DTR|TIOCM_RTS);
 		cs->ops->baud_rate(cs, B115200);
 		cs->ops->set_line_ctrl(cs, CS8);
 		cs->control_state = TIOCM_DTR|TIOCM_RTS;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	cs->waiting = 1;
@@ -1051,8 +1112,16 @@ static struct cardstate *gigaset_get_cs_by_minor(unsigned minor)
 
 struct cardstate *gigaset_get_cs_by_tty(struct tty_struct *tty)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (tty->index < 0 || tty->index >= tty->driver->num)
 		return NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (tty->index < 0 || tty->index >= tty->driver->num)
+		return NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return gigaset_get_cs_by_minor(tty->index + tty->driver->minor_start);
 }
 

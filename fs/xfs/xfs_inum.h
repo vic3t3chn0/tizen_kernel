@@ -30,6 +30,8 @@ typedef	__uint32_t	xfs_agino_t;	/* within allocation grp inode number */
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Useful inode bits for this kernel.
  * Used in some places where having 64-bits in the 32-bit kernels
@@ -42,6 +44,7 @@ typedef	__uint32_t	xfs_intino_t;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	NULLFSINO	((xfs_ino_t)-1)
 #define	NULLAGINO	((xfs_agino_t)-1)
 

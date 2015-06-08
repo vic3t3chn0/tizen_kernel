@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/soc.h>
 #include <sound/jack.h>
@@ -159,6 +163,8 @@ static int smartq_wm8987_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Add SmartQ specific widgets */
 	snd_soc_dapm_new_controls(dapm, wm8987_dapm_widgets,
 				  ARRAY_SIZE(wm8987_dapm_widgets));
@@ -174,6 +180,7 @@ static int smartq_wm8987_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_add_routes(dapm, audio_map, ARRAY_SIZE(audio_map));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set endpoints to not connected */
 	snd_soc_dapm_nc_pin(dapm, "LINPUT1");
 	snd_soc_dapm_nc_pin(dapm, "RINPUT1");
@@ -187,11 +194,14 @@ static int smartq_wm8987_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	err = snd_soc_dapm_sync(dapm);
 	if (err)
 		return err;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Headphone jack detection */
 	err = snd_soc_jack_new(codec, "Headphone Jack",
 			       SND_JACK_HEADPHONE, &smartq_jack);
@@ -220,8 +230,12 @@ static struct snd_soc_dai_link smartq_dai[] = {
 <<<<<<< HEAD
 		.codec_name	= "wm8750.0-0x1a",
 =======
+<<<<<<< HEAD
+		.codec_name	= "wm8750.0-0x1a",
+=======
 		.codec_name	= "wm8750-codec.0-0x1a",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.init		= smartq_wm8987_init,
 		.ops		= &smartq_hifi_ops,
 	},
@@ -230,6 +244,9 @@ static struct snd_soc_dai_link smartq_dai[] = {
 static struct snd_soc_card snd_soc_smartq = {
 	.name = "SmartQ",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner = THIS_MODULE,
 	.dai_link = smartq_dai,
 	.num_links = ARRAY_SIZE(smartq_dai),
@@ -240,10 +257,13 @@ static struct snd_soc_card snd_soc_smartq = {
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
 	.controls = wm8987_smartq_controls,
 	.num_controls = ARRAY_SIZE(wm8987_smartq_controls),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link = smartq_dai,
 	.num_links = ARRAY_SIZE(smartq_dai),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *smartq_snd_device;

@@ -5,7 +5,11 @@
 <<<<<<< HEAD
 #include <linux/types.h>
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* These macros are used to mark some functions or 
  * initialized data (doesn't apply to uninitialized data)
@@ -155,8 +159,11 @@ extern char *saved_command_line;
 extern unsigned int reset_devices;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern unsigned int rom_feature_set;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* used by init/main.c */
 void setup_arch(char **);
@@ -167,8 +174,12 @@ extern void (*late_time_init)(void);
 <<<<<<< HEAD
 extern bool initcall_debug;
 =======
+<<<<<<< HEAD
+extern bool initcall_debug;
+=======
 extern int initcall_debug;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
   
@@ -213,11 +224,14 @@ extern int initcall_debug;
 #define arch_initcall_sync(fn)		__define_initcall("3s",fn,3s)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_FAST_RESUME
 #define beforeresume_initcall(fn)	__define_initcall("bresume",fn,bresume)
 #define resume_initcall(fn)		__define_initcall("resume",fn,resume)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define subsys_initcall(fn)		__define_initcall("4",fn,4)
 #define subsys_initcall_sync(fn)	__define_initcall("4s",fn,4s)
 #define fs_initcall(fn)			__define_initcall("5",fn,5)

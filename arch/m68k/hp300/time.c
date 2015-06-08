@@ -17,8 +17,11 @@
 #include <asm/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/traps.h>
 #include <asm/blinken.h>
 
@@ -76,8 +79,12 @@ void __init hp300_sched_init(irq_handler_t vector)
 <<<<<<< HEAD
   if (request_irq(IRQ_AUTO_6, hp300_tick, 0, "timer tick", vector))
 =======
+<<<<<<< HEAD
+  if (request_irq(IRQ_AUTO_6, hp300_tick, 0, "timer tick", vector))
+=======
   if (request_irq(IRQ_AUTO_6, hp300_tick, IRQ_FLG_STD, "timer tick", vector))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     pr_err("Couldn't register timer interrupt\n");
 
   out_8(CLOCKBASE + CLKCR2, 0x1);		/* select CR1 */

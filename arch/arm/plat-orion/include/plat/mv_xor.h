@@ -15,6 +15,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct mbus_dram_target_info;
 
 struct mv_xor_platform_shared_data {
@@ -22,6 +24,7 @@ struct mv_xor_platform_shared_data {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mv_xor_platform_data {
 	struct platform_device		*shared;
 	int				hw_id;

@@ -439,8 +439,13 @@ static void s6000_pcm_free(struct snd_pcm *pcm)
 		snd_soc_dai_get_dma_data(runtime->cpu_dai,
 			pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream);
 =======
+<<<<<<< HEAD
+		snd_soc_dai_get_dma_data(runtime->cpu_dai,
+			pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream);
+=======
 		snd_soc_dai_get_dma_data(runtime->cpu_dai, pcm->streams[0].substream);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	free_irq(params->irq, pcm);
 	snd_pcm_lib_preallocate_free_for_all(pcm);
@@ -449,16 +454,22 @@ static void s6000_pcm_free(struct snd_pcm *pcm)
 static u64 s6000_pcm_dmamask = DMA_BIT_MASK(32);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int s6000_pcm_new(struct snd_soc_pcm_runtime *runtime)
 {
 	struct snd_card *card = runtime->card->snd_card;
 	struct snd_pcm *pcm = runtime->pcm;
+<<<<<<< HEAD
+=======
 =======
 static int s6000_pcm_new(struct snd_card *card,
 			 struct snd_soc_dai *dai, struct snd_pcm *pcm)
 {
 	struct snd_soc_pcm_runtime *runtime = pcm->private_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct s6000_pcm_dma_params *params;
 	int res;
 
@@ -466,8 +477,12 @@ static int s6000_pcm_new(struct snd_card *card,
 <<<<<<< HEAD
 			pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream);
 =======
+<<<<<<< HEAD
+			pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream);
+=======
 			pcm->streams[0].substream);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!card->dev->dma_mask)
 		card->dev->dma_mask = &s6000_pcm_dmamask;
@@ -539,6 +554,9 @@ static struct platform_driver s6000_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(s6000_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(s6000_pcm_driver);
+=======
 static int __init snd_s6000_pcm_init(void)
 {
 	return platform_driver_register(&s6000_pcm_driver);
@@ -551,6 +569,7 @@ static void __exit snd_s6000_pcm_exit(void)
 }
 module_exit(snd_s6000_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Daniel Gloeckner");
 MODULE_DESCRIPTION("Stretch s6000 family PCM DMA module");

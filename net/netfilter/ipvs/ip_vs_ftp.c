@@ -48,9 +48,14 @@
 #define SERVER_STRING "227 "
 #define CLIENT_STRING "PORT"
 =======
+<<<<<<< HEAD
+#define SERVER_STRING "227 "
+#define CLIENT_STRING "PORT"
+=======
 #define SERVER_STRING "227 Entering Passive Mode ("
 #define CLIENT_STRING "PORT "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -62,9 +67,15 @@ static unsigned int ports_count = 1;
 static unsigned short ports[IP_VS_APP_MAX_PORTS] = {21, 0};
 module_param_array(ports, ushort, &ports_count, 0444);
 =======
+<<<<<<< HEAD
+static unsigned int ports_count = 1;
+static unsigned short ports[IP_VS_APP_MAX_PORTS] = {21, 0};
+module_param_array(ports, ushort, &ports_count, 0444);
+=======
 static unsigned short ports[IP_VS_APP_MAX_PORTS] = {21, 0};
 module_param_array(ports, ushort, NULL, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(ports, "Ports to monitor for FTP control commands");
 
 
@@ -91,6 +102,9 @@ ip_vs_ftp_done_conn(struct ip_vs_app *app, struct ip_vs_conn *cp)
 /*
  * Get <addr,port> from the string "xxx.xxx.xxx.xxx,ppp,ppp", started
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * with the "pattern", ignoring before "skip" and terminated with
  * the "term" character.
  * <addr,port> is in network order.
@@ -102,6 +116,8 @@ static int ip_vs_ftp_get_addrport(char *data, char *data_limit,
 				  char **start, char **end)
 {
 	char *s, c;
+<<<<<<< HEAD
+=======
 =======
  * with the "pattern" and terminated with the "term" character.
  * <addr,port> is in network order.
@@ -112,6 +128,7 @@ static int ip_vs_ftp_get_addrport(char *data, char *data_limit,
 				  char **start, char **end)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char p[6];
 	int i = 0;
 
@@ -127,6 +144,9 @@ static int ip_vs_ftp_get_addrport(char *data, char *data_limit,
 		return 0;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s = data + plen;
 	if (skip) {
 		int found = 0;
@@ -148,6 +168,8 @@ static int ip_vs_ftp_get_addrport(char *data, char *data_limit,
 			return -1;
 		if (*data == term)
 			break;
+<<<<<<< HEAD
+=======
 =======
 	*start = data + plen;
 
@@ -155,11 +177,15 @@ static int ip_vs_ftp_get_addrport(char *data, char *data_limit,
 		if (data == data_limit)
 			return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	*end = data;
 
 	memset(p, 0, sizeof(p));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (data = s; ; data++) {
 		c = *data;
 		if (c == term)
@@ -167,12 +193,15 @@ static int ip_vs_ftp_get_addrport(char *data, char *data_limit,
 		if (c >= '0' && c <= '9') {
 			p[i] = p[i]*10 + c - '0';
 		} else if (c == ',' && i < 5) {
+<<<<<<< HEAD
+=======
 =======
 	for (data = *start; data != *end; data++) {
 		if (*data >= '0' && *data <= '9') {
 			p[i] = p[i]*10 + *data - '0';
 		} else if (*data == ',' && i < 5) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			i++;
 		} else {
 			/* unexpected character */
@@ -188,9 +217,15 @@ static int ip_vs_ftp_get_addrport(char *data, char *data_limit,
 	*addr = get_unaligned((__be32 *) p);
 	*port = get_unaligned((__be16 *) (p + 4));
 =======
+<<<<<<< HEAD
+	*start = s;
+	*addr = get_unaligned((__be32 *) p);
+	*port = get_unaligned((__be16 *) (p + 4));
+=======
 	*addr = get_unaligned((__be32 *)p);
 	*port = get_unaligned((__be16 *)(p + 4));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -254,8 +289,13 @@ static int ip_vs_ftp_out(struct ip_vs_app *app, struct ip_vs_conn *cp,
 					   sizeof(SERVER_STRING)-1,
 					   '(', ')',
 =======
+<<<<<<< HEAD
+					   sizeof(SERVER_STRING)-1,
+					   '(', ')',
+=======
 					   sizeof(SERVER_STRING)-1, ')',
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   &from.ip, &port,
 					   &start, &end) != 1)
 			return 1;
@@ -418,8 +458,12 @@ static int ip_vs_ftp_in(struct ip_vs_app *app, struct ip_vs_conn *cp,
 <<<<<<< HEAD
 				   ' ', '\r', &to.ip, &port,
 =======
+<<<<<<< HEAD
+				   ' ', '\r', &to.ip, &port,
+=======
 				   '\r', &to.ip, &port,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   &start, &end) != 1)
 		return 1;
 
@@ -492,7 +536,12 @@ static int __net_init __ip_vs_ftp_init(struct net *net)
 	if (!ipvs)
 		return -ENOENT;
 =======
+<<<<<<< HEAD
+	if (!ipvs)
+		return -ENOENT;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	app = kmemdup(&ip_vs_ftp, sizeof(struct ip_vs_app), GFP_KERNEL);
 	if (!app)
 		return -ENOMEM;
@@ -507,8 +556,12 @@ static int __net_init __ip_vs_ftp_init(struct net *net)
 <<<<<<< HEAD
 	for (i = 0; i < ports_count; i++) {
 =======
+<<<<<<< HEAD
+	for (i = 0; i < ports_count; i++) {
+=======
 	for (i=0; i<IP_VS_APP_MAX_PORTS; i++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!ports[i])
 			continue;
 		ret = register_ip_vs_app_inc(net, app, app->protocol, ports[i]);

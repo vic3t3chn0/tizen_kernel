@@ -134,7 +134,11 @@ startup_continue:
 <<<<<<< HEAD
 	add		%l6, 1, %l6
 =======
+<<<<<<< HEAD
+	add		%l6, 1, %l6
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mov		15, %l7
 	BRANCH_IF_ANY_CHEETAH(g1,g5,2f)
@@ -230,7 +234,11 @@ niagara_lock_tlb:
 <<<<<<< HEAD
 	add		%l6, 1, %l6
 =======
+<<<<<<< HEAD
+	add		%l6, 1, %l6
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 1:
 	mov		HV_FAST_MMU_MAP_PERM_ADDR, %o5

@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/pm_clock.h>
 =======
+<<<<<<< HEAD
+#include <linux/pm_clock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/mutex.h>
 #include <linux/clk.h>
@@ -39,8 +43,12 @@ static int omap1_pm_runtime_suspend(struct device *dev)
 <<<<<<< HEAD
 	ret = pm_clk_suspend(dev);
 =======
+<<<<<<< HEAD
+	ret = pm_clk_suspend(dev);
+=======
 	ret = pm_runtime_clk_suspend(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		pm_generic_runtime_resume(dev);
 		return ret;
@@ -54,11 +62,16 @@ static int omap1_pm_runtime_resume(struct device *dev)
 	dev_dbg(dev, "%s\n", __func__);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_clk_resume(dev);
 	return pm_generic_runtime_resume(dev);
 }
 
 static struct dev_pm_domain default_pm_domain = {
+<<<<<<< HEAD
+=======
 =======
 	pm_runtime_clk_resume(dev);
 	return pm_generic_runtime_resume(dev);
@@ -66,6 +79,7 @@ static struct dev_pm_domain default_pm_domain = {
 
 static struct dev_power_domain default_power_domain = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = {
 		.runtime_suspend = omap1_pm_runtime_suspend,
 		.runtime_resume = omap1_pm_runtime_resume,
@@ -73,6 +87,9 @@ static struct dev_power_domain default_power_domain = {
 	},
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP1_PM_DOMAIN (&default_pm_domain)
 #else
 #define OMAP1_PM_DOMAIN NULL
@@ -80,6 +97,8 @@ static struct dev_power_domain default_power_domain = {
 
 static struct pm_clk_notifier_block platform_bus_notifier = {
 	.pm_domain = OMAP1_PM_DOMAIN,
+<<<<<<< HEAD
+=======
 =======
 #define OMAP1_PWR_DOMAIN (&default_power_domain)
 #else
@@ -89,6 +108,7 @@ static struct pm_clk_notifier_block platform_bus_notifier = {
 static struct pm_clk_notifier_block platform_bus_notifier = {
 	.pwr_domain = OMAP1_PWR_DOMAIN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.con_ids = { "ick", "fck", NULL, },
 };
 
@@ -100,8 +120,12 @@ static int __init omap1_pm_runtime_init(void)
 <<<<<<< HEAD
 	pm_clk_add_notifier(&platform_bus_type, &platform_bus_notifier);
 =======
+<<<<<<< HEAD
+	pm_clk_add_notifier(&platform_bus_type, &platform_bus_notifier);
+=======
 	pm_runtime_clk_add_notifier(&platform_bus_type, &platform_bus_notifier);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

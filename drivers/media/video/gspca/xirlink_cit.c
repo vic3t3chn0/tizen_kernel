@@ -27,6 +27,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "xirlink-cit"
 
 #include <linux/input.h>
@@ -800,8 +808,18 @@ static int cit_write_reg(struct gspca_dev *gspca_dev, u16 value, u16 index)
 			USB_DIR_OUT | USB_TYPE_VENDOR | USB_RECIP_ENDPOINT,
 			value, index, NULL, 0, 1000);
 	if (err < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Failed to write a register (index 0x%04X, value 0x%02X, error %d)\n",
+		       index, value, err);
+=======
 		err("Failed to write a register (index 0x%04X,"
 			" value 0x%02X, error %d)", index, value, err);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Failed to write a register (index 0x%04X,"
+			" value 0x%02X, error %d)", index, value, err);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -816,8 +834,18 @@ static int cit_read_reg(struct gspca_dev *gspca_dev, u16 index, int verbose)
 			USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_ENDPOINT,
 			0x00, index, buf, 8, 1000);
 	if (res < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Failed to read a register (index 0x%04X, error %d)\n",
+		       index, res);
+=======
 		err("Failed to read a register (index 0x%04X, error %d)",
 			index, res);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Failed to read a register (index 0x%04X, error %d)",
+			index, res);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return res;
 	}
 
@@ -993,14 +1021,28 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	case CIT_MODEL0:
 		cam->cam_mode = model0_mode;
 		cam->nmodes = ARRAY_SIZE(model0_mode);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		cam->reverse_alts = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		cam->reverse_alts = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->ctrl_dis = ~((1 << SD_CONTRAST) | (1 << SD_HFLIP));
 		sd->sof_len = 4;
 		break;
 	case CIT_MODEL1:
 		cam->cam_mode = cif_yuv_mode;
 		cam->nmodes = ARRAY_SIZE(cif_yuv_mode);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		cam->reverse_alts = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		cam->reverse_alts = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->ctrl_dis = (1 << SD_HUE) | (1 << SD_HFLIP);
 		sd->sof_len = 4;
 		break;
@@ -1587,7 +1629,15 @@ static int cit_get_packet_size(struct gspca_dev *gspca_dev)
 	intf = usb_ifnum_to_if(gspca_dev->dev, gspca_dev->iface);
 	alt = usb_altnum_to_altsetting(intf, gspca_dev->alt);
 	if (!alt) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Couldn't get altsetting\n");
+=======
 		err("Couldn't get altsetting");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Couldn't get altsetting");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -2789,7 +2839,15 @@ static int sd_isoc_init(struct gspca_dev *gspca_dev)
 	}
 
 	/* Start isoc bandwidth "negotiation" at max isoc bandwidth */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	alt = &gspca_dev->dev->actconfig->intf_cache[0]->altsetting[1];
+=======
 	alt = &gspca_dev->dev->config->intf_cache[0]->altsetting[1];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	alt = &gspca_dev->dev->config->intf_cache[0]->altsetting[1];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	alt->endpoint[0].desc.wMaxPacketSize = cpu_to_le16(max_packet_size);
 
 	return 0;
@@ -2812,7 +2870,15 @@ static int sd_isoc_nego(struct gspca_dev *gspca_dev)
 		break;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	alt = &gspca_dev->dev->actconfig->intf_cache[0]->altsetting[1];
+=======
 	alt = &gspca_dev->dev->config->intf_cache[0]->altsetting[1];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	alt = &gspca_dev->dev->config->intf_cache[0]->altsetting[1];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	packet_size = le16_to_cpu(alt->endpoint[0].desc.wMaxPacketSize);
 	if (packet_size <= min_packet_size)
 		return -EIO;
@@ -2824,7 +2890,15 @@ static int sd_isoc_nego(struct gspca_dev *gspca_dev)
 
 	ret = usb_set_interface(gspca_dev->dev, gspca_dev->iface, 1);
 	if (ret < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("set alt 1 err %d\n", ret);
+=======
 		err("set alt 1 err %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("set alt 1 err %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -3323,6 +3397,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -3335,3 +3415,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

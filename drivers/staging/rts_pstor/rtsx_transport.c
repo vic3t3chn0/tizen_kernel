@@ -335,6 +335,13 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
 	int sg_cnt, i, resid;
 	int err = 0;
 	long timeleft;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct scatterlist *sg_ptr;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 val = TRIG_DMA;
 
 	if ((sg == NULL) || (num_sg <= 0) || !offset || !index)
@@ -371,7 +378,15 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
 	sg_cnt = dma_map_sg(&(rtsx->pci->dev), sg, num_sg, dma_dir);
 
 	resid = size;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sg_ptr = sg;
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chip->sgi = 0;
 	/* Usually the next entry will be @sg@ + 1, but if this sg element
 	 * is part of a chained scatterlist, it could jump to the start of
@@ -379,14 +394,32 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
 	 * the proper sg
 	 */
 	for (i = 0; i < *index; i++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sg_ptr = sg_next(sg_ptr);
+=======
 		sg = sg_next(sg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sg = sg_next(sg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = *index; i < sg_cnt; i++) {
 		dma_addr_t addr;
 		unsigned int len;
 		u8 option;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		addr = sg_dma_address(sg_ptr);
+		len = sg_dma_len(sg_ptr);
+=======
 		addr = sg_dma_address(sg);
 		len = sg_dma_len(sg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		addr = sg_dma_address(sg);
+		len = sg_dma_len(sg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		RTSX_DEBUGP("DMA addr: 0x%x, Len: 0x%x\n",
 			     (unsigned int)addr, len);
@@ -415,7 +448,15 @@ static int rtsx_transfer_sglist_adma_partial(struct rtsx_chip *chip, u8 card,
 		if (!resid)
 			break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sg_ptr = sg_next(sg_ptr);
+=======
 		sg = sg_next(sg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sg = sg_next(sg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	RTSX_DEBUGP("SG table count = %d\n", chip->sgi);

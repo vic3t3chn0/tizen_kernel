@@ -135,12 +135,16 @@ static struct omap_nand_platform_data board_nand_data = {
 <<<<<<< HEAD
 	.gpmc_t		= &nand_timings,
 =======
+<<<<<<< HEAD
+	.gpmc_t		= &nand_timings,
+=======
 	.nand_setup	= NULL,
 	.gpmc_t		= &nand_timings,
 	.dma_channel	= -1,		/* disable DMA in OMAP NAND driver */
 	.dev_ready	= NULL,
 	.devsize	= 0,	/* '0' for 8-bit, '1' for 16-bit device */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void
@@ -158,12 +162,15 @@ __init board_nand_init(struct mtd_partition *nand_parts,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #else
 void
 __init board_nand_init(struct mtd_partition *nand_parts, u8 nr_parts, u8 cs, int nand_type)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_MTD_NAND_OMAP2 || CONFIG_MTD_NAND_OMAP2_MODULE */
 
 /**
@@ -208,8 +215,12 @@ unmap:
 <<<<<<< HEAD
 void __init board_flash_init(struct flash_partitions partition_info[],
 =======
+<<<<<<< HEAD
+void __init board_flash_init(struct flash_partitions partition_info[],
+=======
 void board_flash_init(struct flash_partitions partition_info[],
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			char chip_sel_board[][GPMC_CS_NUM], int nand_type)
 {
 	u8		cs = 0;

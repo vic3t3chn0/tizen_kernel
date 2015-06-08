@@ -87,8 +87,12 @@ extern void dump_imap(const char *, struct super_block *);
 <<<<<<< HEAD
 static int bfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int bfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int bfs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						struct nameidata *nd)
 {
 	int err;
@@ -206,8 +210,12 @@ static int bfs_unlink(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 		set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, 1);
+=======
 		inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	de->ino = 0;
 	mark_buffer_dirty_inode(bh, dir);

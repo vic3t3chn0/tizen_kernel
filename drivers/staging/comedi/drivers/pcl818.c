@@ -104,6 +104,13 @@ A word or two about DMA. Driver support DMA operations at two ways:
 #include <linux/mc146818rtc.h>
 #include <linux/gfp.h>
 #include <linux/delay.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/dma.h>
 
 #include "8253.h"
@@ -251,8 +258,18 @@ static int pcl818_attach(struct comedi_device *dev,
 static int pcl818_detach(struct comedi_device *dev);
 
 #ifdef unused
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int RTC_lock;	/* RTC lock */
+static int RTC_timer_lock;	/* RTC int lock */
+=======
 static int RTC_lock = 0;	/* RTC lock */
 static int RTC_timer_lock = 0;	/* RTC int lock */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int RTC_lock = 0;	/* RTC lock */
+static int RTC_timer_lock = 0;	/* RTC int lock */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 struct pcl818_board {
@@ -462,9 +479,20 @@ static int pcl818_ao_insn_read(struct comedi_device *dev,
 	int n;
 	int chan = CR_CHAN(insn->chanspec);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (n = 0; n < insn->n; n++)
+		data[n] = devpriv->ao_readback[chan];
+=======
 	for (n = 0; n < insn->n; n++) {
 		data[n] = devpriv->ao_readback[chan];
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (n = 0; n < insn->n; n++) {
+		data[n] = devpriv->ao_readback[chan];
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return n;
 }
@@ -570,9 +598,21 @@ conv_finish:
 		return IRQ_HANDLED;
 	}
 	devpriv->act_chanlist_pos++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len)
+		devpriv->act_chanlist_pos = 0;
+
+=======
 	if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len) {
 		devpriv->act_chanlist_pos = 0;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len) {
+		devpriv->act_chanlist_pos = 0;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s->async->cur_chan++;
 	if (s->async->cur_chan >= devpriv->ai_n_chan) {
 		/*  printk("E"); */
@@ -644,9 +684,21 @@ static irqreturn_t interrupt_pcl818_ai_mode13_dma(int irq, void *d)
 		comedi_buf_put(s->async, ptr[bufptr++] >> 4);	/*  get one sample */
 
 		devpriv->act_chanlist_pos++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len)
+			devpriv->act_chanlist_pos = 0;
+
+=======
 		if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len) {
 			devpriv->act_chanlist_pos = 0;
 		}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len) {
+			devpriv->act_chanlist_pos = 0;
+		}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		s->async->cur_chan++;
 		if (s->async->cur_chan >= devpriv->ai_n_chan) {
 			s->async->cur_chan = 0;
@@ -804,11 +856,24 @@ static irqreturn_t interrupt_pcl818_ai_mode13_fifo(int irq, void *d)
 		return IRQ_HANDLED;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (lo & 2)
+		len = 512;
+	else
+		len = 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (lo & 2) {
 		len = 512;
 	} else {
 		len = 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < len; i++) {
 		lo = inb(dev->iobase + PCL818_FI_DATALO);
@@ -826,9 +891,21 @@ static irqreturn_t interrupt_pcl818_ai_mode13_fifo(int irq, void *d)
 		comedi_buf_put(s->async, (lo >> 4) | (inb(dev->iobase + PCL818_FI_DATAHI) << 4));	/*  get one sample */
 
 		devpriv->act_chanlist_pos++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len)
+			devpriv->act_chanlist_pos = 0;
+
+=======
 		if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len) {
 			devpriv->act_chanlist_pos = 0;
 		}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (devpriv->act_chanlist_pos >= devpriv->act_chanlist_len) {
+			devpriv->act_chanlist_pos = 0;
+		}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		s->async->cur_chan++;
 		if (s->async->cur_chan >= devpriv->ai_n_chan) {
 			s->async->cur_chan = 0;
@@ -1008,7 +1085,15 @@ static int pcl818_ai_cmd_mode(int mode, struct comedi_device *dev,
 	int divisor1 = 0, divisor2 = 0;
 	unsigned int seglen;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "pcl818_ai_cmd_mode()\n");
+=======
 	printk("pcl818_ai_cmd_mode()\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("pcl818_ai_cmd_mode()\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((!dev->irq) && (!devpriv->dma_rtc)) {
 		comedi_error(dev, "IRQ not defined!");
 		return -EINVAL;
@@ -1111,7 +1196,15 @@ static int pcl818_ai_cmd_mode(int mode, struct comedi_device *dev,
 		break;
 	}
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "pcl818_ai_cmd_mode() end\n");
+=======
 	printk("pcl818_ai_cmd_mode() end\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("pcl818_ai_cmd_mode() end\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1308,11 +1401,23 @@ static void setup_channel_list(struct comedi_device *dev,
 */
 static int check_single_ended(unsigned int port)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (inb(port + PCL818_STATUS) & 0x20)
+		return 1;
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (inb(port + PCL818_STATUS) & 0x20) {
 		return 1;
 	} else {
 		return 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1351,9 +1456,20 @@ static int ai_cmdtest(struct comedi_device *dev, struct comedi_subdevice *s,
 	if (!cmd->stop_src || tmp != cmd->stop_src)
 		err++;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err)
+		return 1;
+=======
 	if (err) {
 		return 1;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (err) {
+		return 1;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* step 2: make sure trigger sources are unique and mutually compatible */
 
@@ -1376,9 +1492,20 @@ static int ai_cmdtest(struct comedi_device *dev, struct comedi_subdevice *s,
 	if (cmd->stop_src != TRIG_NONE && cmd->stop_src != TRIG_COUNT)
 		err++;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err)
+		return 2;
+=======
 	if (err) {
 		return 2;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (err) {
+		return 2;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* step 3: make sure arguments are trivially compatible */
 
@@ -1420,9 +1547,20 @@ static int ai_cmdtest(struct comedi_device *dev, struct comedi_subdevice *s,
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err)
+		return 3;
+=======
 	if (err) {
 		return 3;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (err) {
+		return 3;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* step 4: fix up any arguments */
 
@@ -1437,9 +1575,20 @@ static int ai_cmdtest(struct comedi_device *dev, struct comedi_subdevice *s,
 			err++;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err)
+		return 4;
+=======
 	if (err) {
 		return 4;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (err) {
+		return 4;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* step 5: complain about special chanlist considerations */
 
@@ -1460,7 +1609,15 @@ static int ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
 	struct comedi_cmd *cmd = &s->async->cmd;
 	int retval;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "pcl818_ai_cmd()\n");
+=======
 	printk("pcl818_ai_cmd()\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("pcl818_ai_cmd()\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	devpriv->ai_n_chan = cmd->chanlist_len;
 	devpriv->ai_chanlist = cmd->chanlist;
 	devpriv->ai_flags = cmd->flags;
@@ -1469,17 +1626,38 @@ static int ai_cmd(struct comedi_device *dev, struct comedi_subdevice *s)
 	devpriv->ai_timer1 = 0;
 	devpriv->ai_timer2 = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (cmd->stop_src == TRIG_COUNT)
+		devpriv->ai_scans = cmd->stop_arg;
+	else
+		devpriv->ai_scans = 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cmd->stop_src == TRIG_COUNT) {
 		devpriv->ai_scans = cmd->stop_arg;
 	} else {
 		devpriv->ai_scans = 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cmd->scan_begin_src == TRIG_FOLLOW) {	/*  mode 1, 3 */
 		if (cmd->convert_src == TRIG_TIMER) {	/*  mode 1 */
 			devpriv->ai_timer1 = cmd->convert_arg;
 			retval = pcl818_ai_cmd_mode(1, dev, s);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_dbg(dev->hw_dev, "pcl818_ai_cmd() end\n");
+=======
 			printk("pcl818_ai_cmd() end\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk("pcl818_ai_cmd() end\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return retval;
 		}
 		if (cmd->convert_src == TRIG_EXT) {	/*  mode 3 */
@@ -1498,7 +1676,15 @@ static int pcl818_ai_cancel(struct comedi_device *dev,
 			    struct comedi_subdevice *s)
 {
 	if (devpriv->irq_blocked > 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_dbg(dev->hw_dev, "pcl818_ai_cancel()\n");
+=======
 		printk("pcl818_ai_cancel()\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk("pcl818_ai_cancel()\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		devpriv->irq_was_now_closed = 1;
 
 		switch (devpriv->ai_mode) {
@@ -1548,7 +1734,15 @@ static int pcl818_ai_cancel(struct comedi_device *dev,
 	}
 
 end:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "pcl818_ai_cancel() end\n");
+=======
 	printk("pcl818_ai_cancel() end\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("pcl818_ai_cancel() end\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1632,11 +1826,25 @@ static int set_rtc_irq_bit(unsigned char bit)
 	save_flags(flags);
 	cli();
 	val = CMOS_READ(RTC_CONTROL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (bit)
+		val |= RTC_PIE;
+	else
+		val &= ~RTC_PIE;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bit) {
 		val |= RTC_PIE;
 	} else {
 		val &= ~RTC_PIE;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CMOS_WRITE(val, RTC_CONTROL);
 	CMOS_READ(RTC_INTR_FLAGS);
 	restore_flags(flags);
@@ -1753,22 +1961,49 @@ static int pcl818_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 
 	/* claim our I/O space */
 	iobase = it->options[0];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	printk
+	    ("comedi%d: pcl818:  board=%s, ioport=0x%03lx",
+	     dev->minor, this_board->name, iobase);
+=======
 	printk("comedi%d: pcl818:  board=%s, ioport=0x%03lx",
 	       dev->minor, this_board->name, iobase);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi%d: pcl818:  board=%s, ioport=0x%03lx",
+	       dev->minor, this_board->name, iobase);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	devpriv->io_range = this_board->io_range;
 	if ((this_board->fifo) && (it->options[2] == -1)) {	/*  we've board with FIFO and we want to use FIFO */
 		devpriv->io_range = PCLx1xFIFO_RANGE;
 		devpriv->usefifo = 1;
 	}
 	if (!request_region(iobase, devpriv->io_range, "pcl818")) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		comedi_error(dev, "I/O port conflict\n");
+=======
 		printk("I/O port conflict\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk("I/O port conflict\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
 	dev->iobase = iobase;
 
 	if (pcl818_check(iobase)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		comedi_error(dev, "I can't detect board. FAIL!\n");
+=======
 		printk(", I can't detect board. FAIL!\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(", I can't detect board. FAIL!\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -1792,19 +2027,41 @@ static int pcl818_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 					     irq);
 					irq = 0;	/* Can't use IRQ */
 				} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+					printk(KERN_DEBUG "irq=%u", irq);
+=======
 					printk(", irq=%u", irq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					printk(", irq=%u", irq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				}
 			}
 		}
 	}
 
 	dev->irq = irq;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (irq)
+		devpriv->irq_free = 1;   /* 1=we have allocated irq */
+	else
+		devpriv->irq_free = 0;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (irq) {
 		devpriv->irq_free = 1;
 	} /* 1=we have allocated irq */
 	else {
 		devpriv->irq_free = 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	devpriv->irq_blocked = 0;	/* number of subdevice which use IRQ */
 	devpriv->ai_mode = 0;	/* mode of irq */
 
@@ -1824,7 +2081,15 @@ static int pcl818_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 				 "pcl818 DMA (RTC)", dev)) {
 			devpriv->dma_rtc = 1;
 			devpriv->rtc_irq = RTC_IRQ;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_DEBUG "dma_irq=%u", devpriv->rtc_irq);
+=======
 			printk(", dma_irq=%u", devpriv->rtc_irq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(", dma_irq=%u", devpriv->rtc_irq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			RTC_lock--;
 			if (RTC_lock == 0) {
@@ -1849,6 +2114,23 @@ no_rtc:
 		if (dma < 1)
 			goto no_dma;	/* DMA disabled */
 		if (((1 << dma) & this_board->DMAbits) == 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_ERR "DMA is out of allowed range, FAIL!\n");
+			return -EINVAL;	/* Bad DMA */
+		}
+		ret = request_dma(dma, "pcl818");
+		if (ret)
+			return -EBUSY;	/* DMA isn't free */
+		devpriv->dma = dma;
+		pages = 2;	/* we need 16KB */
+		devpriv->dmabuf[0] = __get_dma_pages(GFP_KERNEL, pages);
+		if (!devpriv->dmabuf[0])
+			/* maybe experiment with try_to_free_pages() will help .... */
+			return -EBUSY;	/* no buffer :-( */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(", DMA is out of allowed range, FAIL!\n");
 			return -EINVAL;	/* Bad DMA */
 		}
@@ -1866,17 +2148,32 @@ no_rtc:
 			/* maybe experiment with try_to_free_pages() will help .... */
 			return -EBUSY;	/* no buffer :-( */
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		devpriv->dmapages[0] = pages;
 		devpriv->hwdmaptr[0] = virt_to_bus((void *)devpriv->dmabuf[0]);
 		devpriv->hwdmasize[0] = (1 << pages) * PAGE_SIZE;
 		/* printk("%d %d %ld, ",devpriv->dmapages[0],devpriv->hwdmasize[0],PAGE_SIZE); */
 		if (devpriv->dma_rtc == 0) {	/*  we must do duble buff :-( */
 			devpriv->dmabuf[1] = __get_dma_pages(GFP_KERNEL, pages);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (!devpriv->dmabuf[1])
+				return -EBUSY;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!devpriv->dmabuf[1]) {
 				printk
 				    (", unable to allocate DMA buffer, FAIL!\n");
 				return -EBUSY;
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			devpriv->dmapages[1] = pages;
 			devpriv->hwdmaptr[1] =
 			    virt_to_bus((void *)devpriv->dmabuf[1]);
@@ -2016,11 +2313,24 @@ no_dma:
 	}
 
 	/* select 1/10MHz oscilator */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((it->options[3] == 0) || (it->options[3] == 10))
+		devpriv->i8253_osc_base = 100;
+	else
+		devpriv->i8253_osc_base = 1000;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((it->options[3] == 0) || (it->options[3] == 10)) {
 		devpriv->i8253_osc_base = 100;
 	} else {
 		devpriv->i8253_osc_base = 1000;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* max sampling speed */
 	devpriv->ns_min = this_board->ns_min;

@@ -601,6 +601,9 @@ gss_krb5_cts_crypt(struct crypto_blkcipher *cipher, struct xdr_buf *buf,
 	struct scatterlist sg[1];
 	struct blkcipher_desc desc = { .tfm = cipher, .info = iv };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 data[GSS_KRB5_MAX_BLOCKSIZE * 2];
 	struct page **save_pages;
 	u32 len = buf->len - offset;
@@ -609,6 +612,8 @@ gss_krb5_cts_crypt(struct crypto_blkcipher *cipher, struct xdr_buf *buf,
 		WARN_ON(0);
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+=======
 =======
 	u8 data[crypto_blkcipher_blocksize(cipher) * 2];
 	struct page **save_pages;
@@ -616,6 +621,7 @@ gss_krb5_cts_crypt(struct crypto_blkcipher *cipher, struct xdr_buf *buf,
 
 	BUG_ON(len > crypto_blkcipher_blocksize(cipher) * 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * For encryption, we want to read from the cleartext

@@ -17,6 +17,9 @@
 #define AT91_DBGU_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dbgu_readl(dbgu, field) \
 	__raw_readl(AT91_VA_BASE_SYS + dbgu + AT91_DBGU_ ## field)
 
@@ -36,6 +39,8 @@
 #define AT91_DBGU_CIDR		(0x40)	/* Chip ID Register */
 #define AT91_DBGU_EXID		(0x44)	/* Chip ID Extension Register */
 #define AT91_DBGU_FNR		(0x48)	/* Force NTRST Register [SAM9 only] */
+<<<<<<< HEAD
+=======
 =======
 #ifdef AT91_DBGU
 #define AT91_DBGU_CR		(AT91_DBGU + 0x00)	/* Control Register */
@@ -54,6 +59,7 @@
 #define AT91_DBGU_EXID		(AT91_DBGU + 0x44)	/* Chip ID Extension Register */
 #define AT91_DBGU_FNR		(AT91_DBGU + 0x48)	/* Force NTRST Register [SAM9 only] */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_DBGU_FNTRST	(1 << 0)		/* Force NTRST */
 
 #endif /* AT91_DBGU */

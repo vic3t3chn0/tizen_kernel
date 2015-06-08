@@ -60,7 +60,11 @@
 <<<<<<< HEAD
 #include <asm/system_info.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_info.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
@@ -430,9 +434,14 @@ static struct resource smc91x_resources[] = {
 		.start  = PXA_GPIO_TO_IRQ(VIPER_ETH_GPIO),
 		.end    = PXA_GPIO_TO_IRQ(VIPER_ETH_GPIO),
 =======
+<<<<<<< HEAD
+		.start  = PXA_GPIO_TO_IRQ(VIPER_ETH_GPIO),
+		.end    = PXA_GPIO_TO_IRQ(VIPER_ETH_GPIO),
+=======
 		.start  = gpio_to_irq(VIPER_ETH_GPIO),
 		.end    = gpio_to_irq(VIPER_ETH_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags  = IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	},
 	[2] = {
@@ -558,8 +567,12 @@ static struct plat_serial8250_port serial_platform_data[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(VIPER_UARTA_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(VIPER_UARTA_GPIO),
+=======
 		.irq		= gpio_to_irq(VIPER_UARTA_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irqflags	= IRQF_TRIGGER_RISING,
 		.uartclk	= 1843200,
 		.regshift	= 1,
@@ -572,8 +585,12 @@ static struct plat_serial8250_port serial_platform_data[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(VIPER_UARTB_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(VIPER_UARTB_GPIO),
+=======
 		.irq		= gpio_to_irq(VIPER_UARTB_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irqflags	= IRQF_TRIGGER_RISING,
 		.uartclk	= 1843200,
 		.regshift	= 1,
@@ -617,9 +634,14 @@ static struct resource isp116x_resources[] = {
 		.start  = PXA_GPIO_TO_IRQ(VIPER_USB_GPIO),
 		.end    = PXA_GPIO_TO_IRQ(VIPER_USB_GPIO),
 =======
+<<<<<<< HEAD
+		.start  = PXA_GPIO_TO_IRQ(VIPER_USB_GPIO),
+		.end    = PXA_GPIO_TO_IRQ(VIPER_USB_GPIO),
+=======
 		.start  = gpio_to_irq(VIPER_USB_GPIO),
 		.end    = gpio_to_irq(VIPER_USB_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags  = IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	},
 };
@@ -1015,6 +1037,9 @@ static void __init viper_map_io(void)
 MACHINE_START(VIPER, "Arcom/Eurotech VIPER SBC")
 	/* Maintainer: Marc Zyngier <maz@misterjones.org> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= viper_map_io,
 	.nr_irqs	= PXA_NR_IRQS,
@@ -1023,6 +1048,8 @@ MACHINE_START(VIPER, "Arcom/Eurotech VIPER SBC")
 	.timer          = &pxa_timer,
 	.init_machine	= viper_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= viper_map_io,
@@ -1030,4 +1057,5 @@ MACHINE_START(VIPER, "Arcom/Eurotech VIPER SBC")
 	.timer          = &pxa_timer,
 	.init_machine	= viper_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

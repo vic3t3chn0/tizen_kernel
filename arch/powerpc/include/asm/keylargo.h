@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 /* K2 additional FCRs */
 =======
+<<<<<<< HEAD
+/* K2 additional FCRs */
+=======
 /* K2 aditional FCRs */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define K2_FCR6			0x34
 #define K2_FCR7			0x30
 #define K2_FCR8			0x2c
@@ -58,8 +62,12 @@
 <<<<<<< HEAD
 /* Hrm... this one is only to be used on Pismo. It seems to also
 =======
+<<<<<<< HEAD
+/* Hrm... this one is only to be used on Pismo. It seems to also
+=======
 /* Hrm... this one is only to be used on Pismo. It seeem to also
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * control the timebase enable on other machines. Still to be
  * experimented... --BenH.
  */

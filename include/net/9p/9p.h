@@ -43,7 +43,11 @@
 <<<<<<< HEAD
  * @P9_DEBUG_VPKT: Verbose packet debugging (full packet dump)
 =======
+<<<<<<< HEAD
+ * @P9_DEBUG_VPKT: Verbose packet debugging (full packet dump)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * These flags are passed at mount time to turn on various levels of
  * verbosity and tracing which will be output to the system logs.
@@ -64,12 +68,19 @@ enum p9_debug_flags {
 <<<<<<< HEAD
 	P9_DEBUG_VPKT =		(1<<12),
 =======
+<<<<<<< HEAD
+	P9_DEBUG_VPKT =		(1<<12),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef CONFIG_NET_9P_DEBUG
 extern unsigned int p9_debug_level;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __printf(3, 4)
 void _p9_debug(enum p9_debug_flags level, const char *func,
 	       const char *fmt, ...);
@@ -80,6 +91,8 @@ void _p9_debug(enum p9_debug_flags level, const char *func,
 	no_printk(fmt, ##__VA_ARGS__)
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 
 #define P9_DPRINTK(level, format, arg...) \
@@ -105,6 +118,7 @@ do { \
 } while (0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * enum p9_msg_t - 9P message types
  * @P9_TLERROR: not used
@@ -197,12 +211,18 @@ enum p9_msg_t {
 	P9_TMKDIR = 72,
 	P9_RMKDIR,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	P9_TRENAMEAT = 74,
 	P9_RRENAMEAT,
 	P9_TUNLINKAT = 76,
 	P9_RUNLINKAT,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	P9_TVERSION = 100,
 	P9_RVERSION,
 	P9_TAUTH = 102,
@@ -331,13 +351,19 @@ enum p9_perm_t {
 #define P9_DOTL_AT_REMOVEDIR		0x200
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 9p2000.L lock type */
 #define P9_LOCK_TYPE_RDLCK 0
 #define P9_LOCK_TYPE_WRLCK 1
 #define P9_LOCK_TYPE_UNLCK 2
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * enum p9_qid_t - QID types
  * @P9_QTDIR: directory
@@ -384,6 +410,10 @@ enum p9_qid_t {
 /* size of header for zero copy read/write */
 #define P9_ZC_HDR_SZ 4096
 =======
+<<<<<<< HEAD
+/* size of header for zero copy read/write */
+#define P9_ZC_HDR_SZ 4096
+=======
 /* 9p2000.L lock type */
 #define P9_LOCK_TYPE_RDLCK 0
 #define P9_LOCK_TYPE_WRLCK 1
@@ -404,6 +434,7 @@ struct p9_str {
 	char *str;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct p9_qid - file system entity information
@@ -442,11 +473,16 @@ struct p9_qid {
  * @mtime: Last modify/write time
  * @length: file length
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @name: last element of path (aka filename)
  * @uid: owner name
  * @gid: group owner
  * @muid: last modifier
  * @extension: area used to encode extended UNIX support
+<<<<<<< HEAD
+=======
 =======
  * @name: last element of path (aka filename) in type &p9_str
  * @uid: owner name in type &p9_str
@@ -454,6 +490,7 @@ struct p9_qid {
  * @muid: last modifier in type &p9_str
  * @extension: area used to encode extended UNIX support in type &p9_str
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @n_uid: numeric user id of owner (part of 9p2000.u extension)
  * @n_gid: numeric group id (part of 9p2000.u extension)
  * @n_muid: numeric user id of laster modifier (part of 9p2000.u extension)
@@ -592,12 +629,15 @@ struct p9_getlock {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Structures for Protocol Operations */
 struct p9_tstatfs {
 	u32 fid;
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct p9_rstatfs {
 	u32 type;
 	u32 bsize;
@@ -610,6 +650,8 @@ struct p9_rstatfs {
 	u32 namelen;
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 struct p9_trename {
@@ -766,6 +808,7 @@ struct p9_rwstat {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct p9_fcall - primary packet structure
  * @size: prefixed length of the structure
@@ -775,11 +818,14 @@ struct p9_rwstat {
  * @capacity: used by marshalling routines to track total malloc'd capacity
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @pubuf: Payload user buffer given by the caller
  * @pkbuf: Payload kernel buffer given by the caller
  * @pbuf_size: pubuf/pkbuf(only one will be !NULL) size to be read/write.
  * @private: For transport layer's use.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @sdata: payload
  *
  * &p9_fcall represents the structure for all 9P RPC
@@ -798,11 +844,14 @@ struct p9_fcall {
 	size_t capacity;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	char __user *pubuf;
 	char *pkbuf;
 	size_t pbuf_size;
 	void *private;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u8 *sdata;
 };

@@ -285,6 +285,8 @@ static int kgdb_mips_notify(struct notifier_block *self, unsigned long cmd,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_KPROBES
 	/*
 	 * Return immediately if the kprobes fault notifier has set
@@ -295,6 +297,7 @@ static int kgdb_mips_notify(struct notifier_block *self, unsigned long cmd,
 #endif /* CONFIG_KPROBES */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Userspace events, ignore. */
 	if (user_mode(regs))
 		return NOTIFY_DONE;

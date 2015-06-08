@@ -5,6 +5,9 @@
 
 #include <linux/compiler.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/log2.h>
 
 /*
@@ -57,6 +60,8 @@ int __get_order(unsigned long size)
 	__get_order(n)						\
 )
 
+<<<<<<< HEAD
+=======
 =======
 
 /* Pure 2^n version of get_order */
@@ -74,6 +79,7 @@ static inline __attribute_const__ int get_order(unsigned long size)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __ASSEMBLY__ */
 
 #endif	/* __ASM_GENERIC_GETORDER_H */

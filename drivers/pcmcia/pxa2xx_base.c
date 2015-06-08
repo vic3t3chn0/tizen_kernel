@@ -29,7 +29,14 @@
 #include <mach/smemc.h>
 #include <asm/io.h>
 #include <asm/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/pxa2xx-regs.h>
 #include <asm/mach-types.h>
 
@@ -231,6 +238,13 @@ void pxa2xx_configure_sockets(struct device *dev)
 
 	__raw_writel(mecr, MECR);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL(pxa2xx_configure_sockets);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const char *skt_names[] = {
 	"PCMCIA socket 0",
@@ -317,16 +331,33 @@ static int pxa2xx_drv_pcmcia_probe(struct platform_device *dev)
 
 		skt->nr = ops->first + i;
 		skt->clk = clk;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		soc_pcmcia_init_one(skt, ops, &dev->dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		skt->ops = ops;
 		skt->socket.owner = ops->owner;
 		skt->socket.dev.parent = &dev->dev;
 		skt->socket.pci_irq = NO_IRQ;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ret = pxa2xx_drv_pcmcia_add_one(skt);
 		if (ret)
 			goto err1;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pxa2xx_configure_sockets(&dev->dev);
+	dev_set_drvdata(&dev->dev, sinfo);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		while (--i >= 0)
 			soc_pcmcia_remove_one(&sinfo->skt[i]);
@@ -336,12 +367,23 @@ static int pxa2xx_drv_pcmcia_probe(struct platform_device *dev)
 		pxa2xx_configure_sockets(&dev->dev);
 		dev_set_drvdata(&dev->dev, sinfo);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
 err1:
 	while (--i >= 0)
 		soc_pcmcia_remove_one(&sinfo->skt[i]);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	clk_put(clk);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(sinfo);
 err0:
 	return ret;

@@ -265,8 +265,12 @@ int ubifs_add_bud_to_log(struct ubifs_info *c, int jhead, int lnum, int offs)
 <<<<<<< HEAD
 		err = ubifs_leb_map(c, bud->lnum, UBI_SHORTTERM);
 =======
+<<<<<<< HEAD
+		err = ubifs_leb_map(c, bud->lnum, UBI_SHORTTERM);
+=======
 		err = ubi_leb_map(c->ubi, bud->lnum, UBI_SHORTTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			goto out_unlock;
 	}
@@ -289,9 +293,12 @@ int ubifs_add_bud_to_log(struct ubifs_info *c, int jhead, int lnum, int offs)
 out_unlock:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (err != -EAGAIN)
 		ubifs_ro_mode(c, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&c->log_mutex);
 	kfree(ref);
 	kfree(bud);
@@ -762,8 +769,12 @@ static int dbg_check_bud_bytes(struct ubifs_info *c)
 <<<<<<< HEAD
 	if (!dbg_is_chk_gen(c))
 =======
+<<<<<<< HEAD
+	if (!dbg_is_chk_gen(c))
+=======
 	if (!(ubifs_chk_flags & UBIFS_CHK_GEN))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	spin_lock(&c->buds_lock);

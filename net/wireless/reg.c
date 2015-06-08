@@ -3,6 +3,9 @@
  * Copyright 2005-2006, Devicescape Software, Inc.
  * Copyright 2007	Johannes Berg <johannes@sipsolutions.net>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright 2008-2011	Luis R. Rodriguez <mcgrof@qca.qualcomm.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
@@ -19,6 +22,8 @@
  */
 
 
+<<<<<<< HEAD
+=======
 =======
  * Copyright 2008	Luis R. Rodriguez <lrodriguz@atheros.com>
  *
@@ -28,6 +33,7 @@
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * DOC: Wireless regulatory infrastructure
  *
@@ -58,7 +64,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/list.h>
 #include <linux/random.h>
@@ -68,7 +78,11 @@
 <<<<<<< HEAD
 #include <linux/moduleparam.h>
 =======
+<<<<<<< HEAD
+#include <linux/moduleparam.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/cfg80211.h>
 #include "core.h"
 #include "reg.h"
@@ -80,11 +94,16 @@
 #define REG_DBG_PRINT(format, args...)			\
 	printk(KERN_DEBUG pr_fmt(format), ##args)
 =======
+<<<<<<< HEAD
+#define REG_DBG_PRINT(format, args...)			\
+	printk(KERN_DEBUG pr_fmt(format), ##args)
+=======
 #define REG_DBG_PRINT(format, args...) \
 	do { \
 		printk(KERN_DEBUG pr_fmt(format), ##args);	\
 	} while (0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define REG_DBG_PRINT(args...)
 #endif
@@ -162,9 +181,15 @@ static const struct ieee80211_regdomain world_regdom = {
 		 * channel fits here. */
 		REG_RULE(2467-10, 2472+10, 20, 6, 20,
 =======
+<<<<<<< HEAD
+		/* IEEE 802.11b/g, channels 12..13. No HT40
+		 * channel fits here. */
+		REG_RULE(2467-10, 2472+10, 20, 6, 20,
+=======
 		/* IEEE 802.11b/g, channels 12..13. */
 		REG_RULE(2467-10, 2472+10, 40, 6, 20,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			NL80211_RRF_PASSIVE_SCAN |
 			NL80211_RRF_NO_IBSS),
 		/* IEEE 802.11 channel 14 - Only JP enables
@@ -370,10 +395,13 @@ static void reg_regdb_search(struct work_struct *work)
 	int i, r;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	bool set_reg = false;
 
 	mutex_lock(&cfg80211_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&reg_regdb_search_mutex);
 	while (!list_empty(&reg_regdb_search_list)) {
@@ -394,8 +422,14 @@ static void reg_regdb_search(struct work_struct *work)
 				set_regdom(regdom);
 				mutex_unlock(&cfg80211_mutex);
 =======
+<<<<<<< HEAD
+				mutex_lock(&cfg80211_mutex);
+				set_regdom(regdom);
+				mutex_unlock(&cfg80211_mutex);
+=======
 				set_reg = true;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 		}
@@ -405,12 +439,15 @@ static void reg_regdb_search(struct work_struct *work)
 	mutex_unlock(&reg_regdb_search_mutex);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	if (set_reg)
 		set_regdom(regdom);
 
 	mutex_unlock(&cfg80211_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static DECLARE_WORK(reg_regdb_work, reg_regdb_search);
@@ -437,6 +474,9 @@ static void reg_regdb_query(const char *alpha2)
 <<<<<<< HEAD
 #else
 =======
+<<<<<<< HEAD
+#else
+=======
 
 /* Feel free to add any other sanity checks here */
 static void reg_regdb_size_check(void)
@@ -447,6 +487,7 @@ static void reg_regdb_size_check(void)
 #else
 static inline void reg_regdb_size_check(void) {}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void reg_regdb_query(const char *alpha2) {}
 #endif /* CONFIG_CFG80211_INTERNAL_REGDB */
 
@@ -837,15 +878,21 @@ static void chan_reg_rule_print_dbg(struct ieee80211_channel *chan,
 		      KHZ_TO_MHZ(desired_bw_khz));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	REG_DBG_PRINT("%d KHz - %d KHz @ %d KHz), (%s mBi, %d mBm)\n",
 		      freq_range->start_freq_khz,
 		      freq_range->end_freq_khz,
 		      freq_range->max_bandwidth_khz,
+<<<<<<< HEAD
+=======
 =======
 	REG_DBG_PRINT("%d KHz - %d KHz @  KHz), (%s mBi, %d mBm)\n",
 		      freq_range->start_freq_khz,
 		      freq_range->end_freq_khz,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      max_antenna_gain,
 		      power_rule->max_eirp);
 }
@@ -913,6 +960,9 @@ static void handle_channel(struct wiphy *wiphy,
 			return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (last_request->initiator == NL80211_REGDOM_SET_BY_DRIVER &&
 		    request_wiphy && request_wiphy == wiphy &&
 		    request_wiphy->flags & WIPHY_FLAG_STRICT_REGULATORY) {
@@ -925,10 +975,13 @@ static void handle_channel(struct wiphy *wiphy,
 			chan->center_freq);
 			chan->flags |= IEEE80211_CHAN_DISABLED;
 		}
+<<<<<<< HEAD
+=======
 =======
 		REG_DBG_PRINT("Disabling freq %d MHz\n", chan->center_freq);
 		chan->flags = IEEE80211_CHAN_DISABLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -962,6 +1015,9 @@ static void handle_channel(struct wiphy *wiphy,
 	chan->max_antenna_gain = min(chan->orig_mag,
 		(int) MBI_TO_DBI(power_rule->max_antenna_gain));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chan->max_reg_power = (int) MBM_TO_DBM(power_rule->max_eirp);
 	if (chan->orig_mpwr) {
 		/*
@@ -976,6 +1032,8 @@ static void handle_channel(struct wiphy *wiphy,
 					      chan->max_reg_power);
 	} else
 		chan->max_power = chan->max_reg_power;
+<<<<<<< HEAD
+=======
 =======
 	if (chan->orig_mpwr)
 		chan->max_power = min(chan->orig_mpwr,
@@ -983,6 +1041,7 @@ static void handle_channel(struct wiphy *wiphy,
 	else
 		chan->max_power = (int) MBM_TO_DBM(power_rule->max_eirp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void handle_band(struct wiphy *wiphy,
@@ -1016,8 +1075,12 @@ static bool ignore_reg_update(struct wiphy *wiphy,
 <<<<<<< HEAD
 			      "regulatory domain\n",
 =======
+<<<<<<< HEAD
+			      "regulatory domain\n",
+=======
 			      "regulatory domain ",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      reg_initiator_name(initiator));
 		return true;
 	}
@@ -1034,9 +1097,14 @@ static bool ignore_reg_update(struct wiphy *wiphy,
 			      "since the driver requires its own regulatory "
 			      "domain to be set first\n",
 =======
+<<<<<<< HEAD
+			      "since the driver requires its own regulatory "
+			      "domain to be set first\n",
+=======
 			      "since the driver requires its own regulaotry "
 			      "domain to be set first",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      reg_initiator_name(initiator));
 		return true;
 	}
@@ -1044,6 +1112,8 @@ static bool ignore_reg_update(struct wiphy *wiphy,
 	return false;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void update_all_wiphy_regulatory(enum nl80211_reg_initiator initiator)
@@ -1055,6 +1125,7 @@ static void update_all_wiphy_regulatory(enum nl80211_reg_initiator initiator)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void handle_reg_beacon(struct wiphy *wiphy,
 			      unsigned int chan_idx,
 			      struct reg_beacon *reg_beacon)
@@ -1255,6 +1326,9 @@ static void reg_process_ht_flags(struct wiphy *wiphy)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void wiphy_update_regulatory(struct wiphy *wiphy,
 				    enum nl80211_reg_initiator initiator)
 {
@@ -1267,6 +1341,8 @@ static void wiphy_update_regulatory(struct wiphy *wiphy,
 
 	last_request->dfs_region = cfg80211_regdomain->dfs_region;
 
+<<<<<<< HEAD
+=======
 =======
 void wiphy_update_regulatory(struct wiphy *wiphy,
 			     enum nl80211_reg_initiator initiator)
@@ -1277,6 +1353,7 @@ void wiphy_update_regulatory(struct wiphy *wiphy,
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (band = 0; band < IEEE80211_NUM_BANDS; band++) {
 		if (wiphy->bands[band])
 			handle_band(wiphy, band, initiator);
@@ -1289,6 +1366,9 @@ void wiphy_update_regulatory(struct wiphy *wiphy,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void regulatory_update(struct wiphy *wiphy,
 		       enum nl80211_reg_initiator setby)
 {
@@ -1317,8 +1397,11 @@ static void update_all_wiphy_regulatory(enum nl80211_reg_initiator initiator)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void handle_channel_custom(struct wiphy *wiphy,
 				  enum ieee80211_band band,
 				  unsigned int chan_idx,
@@ -1355,8 +1438,13 @@ static void handle_channel_custom(struct wiphy *wiphy,
 		chan->orig_flags |= IEEE80211_CHAN_DISABLED;
 		chan->flags = chan->orig_flags;
 =======
+<<<<<<< HEAD
+		chan->orig_flags |= IEEE80211_CHAN_DISABLED;
+		chan->flags = chan->orig_flags;
+=======
 		chan->flags = IEEE80211_CHAN_DISABLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -1437,7 +1525,12 @@ static int ignore_request(struct wiphy *wiphy,
 		if (wiphy->country_ie_pref & NL80211_COUNTRY_IE_IGNORE_CORE)
 			return -EALREADY;
 =======
+<<<<<<< HEAD
+		if (wiphy->country_ie_pref & NL80211_COUNTRY_IE_IGNORE_CORE)
+			return -EALREADY;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		last_wiphy = wiphy_idx_to_wiphy(last_request->wiphy_idx);
 
@@ -1527,8 +1620,12 @@ static void reg_set_request_processed(void)
 <<<<<<< HEAD
 		cancel_delayed_work_sync(&reg_timeout);
 =======
+<<<<<<< HEAD
+		cancel_delayed_work_sync(&reg_timeout);
+=======
 		cancel_delayed_work(&reg_timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (need_more_processing)
 		schedule_work(&reg_work);
@@ -1622,11 +1719,16 @@ new_request:
 
 /* This processes *all* regulatory hints */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void reg_process_hint(struct regulatory_request *reg_request,
 			     enum nl80211_reg_initiator reg_initiator)
 {
 	int r = 0;
 	struct wiphy *wiphy = NULL;
+<<<<<<< HEAD
+=======
 =======
 static void reg_process_hint(struct regulatory_request *reg_request)
 {
@@ -1634,6 +1736,7 @@ static void reg_process_hint(struct regulatory_request *reg_request)
 	struct wiphy *wiphy = NULL;
 	enum nl80211_reg_initiator initiator = reg_request->initiator;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(!reg_request->alpha2);
 
@@ -1644,9 +1747,14 @@ static void reg_process_hint(struct regulatory_request *reg_request)
 	if ((reg_initiator == NL80211_REGDOM_SET_BY_DRIVER ||
 	     reg_initiator == NL80211_REGDOM_SET_BY_COUNTRY_IE) && !wiphy) {
 =======
+<<<<<<< HEAD
+	if ((reg_initiator == NL80211_REGDOM_SET_BY_DRIVER ||
+	     reg_initiator == NL80211_REGDOM_SET_BY_COUNTRY_IE) && !wiphy) {
+=======
 	if (reg_request->initiator == NL80211_REGDOM_SET_BY_DRIVER &&
 	    !wiphy) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(reg_request);
 		return;
 	}
@@ -1658,8 +1766,12 @@ static void reg_process_hint(struct regulatory_request *reg_request)
 <<<<<<< HEAD
 		wiphy_update_regulatory(wiphy, reg_initiator);
 =======
+<<<<<<< HEAD
+		wiphy_update_regulatory(wiphy, reg_initiator);
+=======
 		wiphy_update_regulatory(wiphy, initiator);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -1671,8 +1783,12 @@ static void reg_process_hint(struct regulatory_request *reg_request)
 <<<<<<< HEAD
 	    reg_initiator == NL80211_REGDOM_SET_BY_USER)
 =======
+<<<<<<< HEAD
+	    reg_initiator == NL80211_REGDOM_SET_BY_USER)
+=======
 	    reg_request->initiator == NL80211_REGDOM_SET_BY_USER)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		schedule_delayed_work(&reg_timeout, msecs_to_jiffies(3142));
 }
 
@@ -1694,8 +1810,12 @@ static void reg_process_pending_hints(void)
 <<<<<<< HEAD
 			      "for it to be processed...\n");
 =======
+<<<<<<< HEAD
+			      "for it to be processed...\n");
+=======
 			      "for it to be processed...");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -1716,8 +1836,12 @@ static void reg_process_pending_hints(void)
 <<<<<<< HEAD
 	reg_process_hint(reg_request, reg_request->initiator);
 =======
+<<<<<<< HEAD
+	reg_process_hint(reg_request, reg_request->initiator);
+=======
 	reg_process_hint(reg_request);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	mutex_unlock(&reg_mutex);
@@ -1827,7 +1951,11 @@ int regulatory_hint_user(const char *alpha2)
 <<<<<<< HEAD
 EXPORT_SYMBOL(regulatory_hint_user);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(regulatory_hint_user);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Driver hints */
 int regulatory_hint(struct wiphy *wiphy, const char *alpha2)
@@ -1967,6 +2095,9 @@ static void restore_alpha2(char *alpha2, bool reset_user)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void restore_custom_reg_settings(struct wiphy *wiphy)
 {
 	struct ieee80211_supported_band *sband;
@@ -1987,8 +2118,11 @@ static void restore_custom_reg_settings(struct wiphy *wiphy)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Restoring regulatory settings involves ingoring any
  * possibly stale country IE information and user regulatory
@@ -2014,7 +2148,11 @@ static void restore_regulatory_settings(bool reset_user)
 <<<<<<< HEAD
 	struct cfg80211_registered_device *rdev;
 =======
+<<<<<<< HEAD
+	struct cfg80211_registered_device *rdev;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&cfg80211_mutex);
 	mutex_lock(&reg_mutex);
@@ -2066,13 +2204,19 @@ static void restore_regulatory_settings(bool reset_user)
 	world_alpha2[1] = cfg80211_regdomain->alpha2[1];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(rdev, &cfg80211_rdev_list, list) {
 		if (rdev->wiphy.flags & WIPHY_FLAG_CUSTOM_REGULATORY)
 			restore_custom_reg_settings(&rdev->wiphy);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&reg_mutex);
 	mutex_unlock(&cfg80211_mutex);
 
@@ -2176,8 +2320,12 @@ static void print_rd_rules(const struct ieee80211_regdomain *rd)
 <<<<<<< HEAD
 	pr_info("  (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)\n");
 =======
+<<<<<<< HEAD
+	pr_info("  (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)\n");
+=======
 	pr_info("    (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < rd->n_reg_rules; i++) {
 		reg_rule = &rd->reg_rules[i];
@@ -2192,8 +2340,12 @@ static void print_rd_rules(const struct ieee80211_regdomain *rd)
 <<<<<<< HEAD
 			pr_info("  (%d KHz - %d KHz @ %d KHz), (%d mBi, %d mBm)\n",
 =======
+<<<<<<< HEAD
+			pr_info("  (%d KHz - %d KHz @ %d KHz), (%d mBi, %d mBm)\n",
+=======
 			pr_info("    (%d KHz - %d KHz @ %d KHz), (%d mBi, %d mBm)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				freq_range->start_freq_khz,
 				freq_range->end_freq_khz,
 				freq_range->max_bandwidth_khz,
@@ -2203,8 +2355,12 @@ static void print_rd_rules(const struct ieee80211_regdomain *rd)
 <<<<<<< HEAD
 			pr_info("  (%d KHz - %d KHz @ %d KHz), (N/A, %d mBm)\n",
 =======
+<<<<<<< HEAD
+			pr_info("  (%d KHz - %d KHz @ %d KHz), (N/A, %d mBm)\n",
+=======
 			pr_info("    (%d KHz - %d KHz @ %d KHz), (N/A, %d mBm)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				freq_range->start_freq_khz,
 				freq_range->end_freq_khz,
 				freq_range->max_bandwidth_khz,
@@ -2228,6 +2384,9 @@ bool reg_supported_dfs_region(u8 dfs_region)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void print_dfs_region(u8 dfs_region)
 {
 	if (!dfs_region)
@@ -2249,8 +2408,11 @@ static void print_dfs_region(u8 dfs_region)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void print_regdomain(const struct ieee80211_regdomain *rd)
 {
 
@@ -2281,7 +2443,11 @@ static void print_regdomain(const struct ieee80211_regdomain *rd)
 <<<<<<< HEAD
 	print_dfs_region(rd->dfs_region);
 =======
+<<<<<<< HEAD
+	print_dfs_region(rd->dfs_region);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	print_rd_rules(rd);
 }
 
@@ -2327,8 +2493,12 @@ static int __set_regdom(const struct ieee80211_regdomain *rd)
 <<<<<<< HEAD
 			return -EALREADY;
 =======
+<<<<<<< HEAD
+			return -EALREADY;
+=======
 			return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -2399,6 +2569,9 @@ static int __set_regdom(const struct ieee80211_regdomain *rd)
 		 * domain we keep it for its private use
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (last_request->initiator == NL80211_REGDOM_SET_BY_DRIVER) {
 			const struct ieee80211_regdomain *tmp;
 
@@ -2408,12 +2581,15 @@ static int __set_regdom(const struct ieee80211_regdomain *rd)
 		} else {
 			kfree(rd);
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (last_request->initiator == NL80211_REGDOM_SET_BY_DRIVER)
 			request_wiphy->regd = rd;
 		else
 			kfree(rd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		rd = NULL;
 
@@ -2465,7 +2641,13 @@ int set_regdom(const struct ieee80211_regdomain *rd)
 			reg_set_request_processed();
 
 =======
+<<<<<<< HEAD
+		if (r == -EALREADY)
+			reg_set_request_processed();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(rd);
 		mutex_unlock(&reg_mutex);
 		return r;
@@ -2537,8 +2719,12 @@ static void reg_timeout_work(struct work_struct *work)
 <<<<<<< HEAD
 		      "restoring regulatory settings\n");
 =======
+<<<<<<< HEAD
+		      "restoring regulatory settings\n");
+=======
 		      "restoring regulatory settings");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	restore_regulatory_settings(true);
 }
 
@@ -2557,9 +2743,12 @@ int __init regulatory_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	reg_regdb_size_check();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfg80211_regdomain = cfg80211_world_regdom;
 
 	user_alpha2[0] = '9';

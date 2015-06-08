@@ -456,7 +456,15 @@ static inline void ace_fsm_yieldirq(struct ace_device *ace)
 {
 	dev_dbg(ace->dev, "ace_fsm_yieldirq()\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!ace->irq)
+=======
 	if (ace->irq == NO_IRQ)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ace->irq == NO_IRQ)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* No IRQ assigned, so need to poll */
 		tasklet_schedule(&ace->fsm_tasklet);
 	ace->fsm_continue_flag = 0;
@@ -1034,12 +1042,28 @@ static int __devinit ace_setup(struct ace_device *ace)
 		ACE_CTRL_DATABUFRDYIRQ | ACE_CTRL_ERRORIRQ);
 
 	/* Now we can hook up the irq handler */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ace->irq) {
+=======
 	if (ace->irq != NO_IRQ) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ace->irq != NO_IRQ) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = request_irq(ace->irq, ace_interrupt, 0, "systemace", ace);
 		if (rc) {
 			/* Failure - fall back to polled mode */
 			dev_err(ace->dev, "request_irq failed\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ace->irq = 0;
+=======
 			ace->irq = NO_IRQ;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ace->irq = NO_IRQ;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -1086,7 +1110,15 @@ static void __devexit ace_teardown(struct ace_device *ace)
 
 	tasklet_kill(&ace->fsm_tasklet);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ace->irq)
+=======
 	if (ace->irq != NO_IRQ)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ace->irq != NO_IRQ)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_irq(ace->irq, ace);
 
 	iounmap(ace->baseaddr);
@@ -1155,12 +1187,35 @@ static int __devinit ace_probe(struct platform_device *dev)
 {
 	resource_size_t physaddr = 0;
 	int bus_width = ACE_BUS_WIDTH_16; /* FIXME: should not be hard coded */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 id = dev->id;
+	int irq = 0;
+=======
 	int id = dev->id;
 	int irq = NO_IRQ;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int id = dev->id;
+	int irq = NO_IRQ;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	dev_dbg(&dev->dev, "ace_probe(%p)\n", dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* device id and bus width */
+	of_property_read_u32(dev->dev.of_node, "port-number", &id);
+	if (id < 0)
+		id = 0;
+	if (of_find_property(dev->dev.of_node, "8-bit", NULL))
+		bus_width = ACE_BUS_WIDTH_8;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < dev->num_resources; i++) {
 		if (dev->resource[i].flags & IORESOURCE_MEM)
 			physaddr = dev->resource[i].start;
@@ -1181,6 +1236,12 @@ static int __devexit ace_remove(struct platform_device *dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_OF)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver ace_platform_driver = {
 	.probe = ace_probe,
 	.remove = __devexit_p(ace_remove),
@@ -1232,6 +1293,10 @@ static int __devexit ace_of_remove(struct platform_device *op)
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Match table for of_platform binding */
 static const struct of_device_id ace_of_match[] __devinitconst = {
 	{ .compatible = "xlnx,opb-sysace-1.00.b", },
@@ -1241,6 +1306,21 @@ static const struct of_device_id ace_of_match[] __devinitconst = {
 	{},
 };
 MODULE_DEVICE_TABLE(of, ace_of_match);
+<<<<<<< HEAD
+<<<<<<< HEAD
+#else /* CONFIG_OF */
+#define ace_of_match NULL
+#endif /* CONFIG_OF */
+
+static struct platform_driver ace_platform_driver = {
+	.probe = ace_probe,
+	.remove = __devexit_p(ace_remove),
+	.driver = {
+		.owner = THIS_MODULE,
+		.name = "xsysace",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct platform_driver ace_of_driver = {
 	.probe = ace_of_probe,
@@ -1248,10 +1328,19 @@ static struct platform_driver ace_of_driver = {
 	.driver = {
 		.name = "xsysace",
 		.owner = THIS_MODULE,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.of_match_table = ace_of_match,
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Registration helpers to keep the number of #ifdefs to a minimum */
 static inline int __init ace_of_register(void)
 {
@@ -1269,6 +1358,10 @@ static inline int __init ace_of_register(void) { return 0; }
 static inline void __exit ace_of_unregister(void) { }
 #endif /* CONFIG_OF */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ---------------------------------------------------------------------
  * Module init/exit routines
  */
@@ -1282,11 +1375,20 @@ static int __init ace_init(void)
 		goto err_blk;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = ace_of_register();
 	if (rc)
 		goto err_of;
 
 	pr_debug("xsysace: registering platform binding\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = platform_driver_register(&ace_platform_driver);
 	if (rc)
 		goto err_plat;
@@ -1295,21 +1397,47 @@ static int __init ace_init(void)
 	return 0;
 
 err_plat:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ace_of_unregister();
 err_of:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ace_of_unregister();
+err_of:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unregister_blkdev(ace_major, "xsysace");
 err_blk:
 	printk(KERN_ERR "xsysace: registration failed; err=%i\n", rc);
 	return rc;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_init(ace_init);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __exit ace_exit(void)
 {
 	pr_debug("Unregistering Xilinx SystemACE driver\n");
 	platform_driver_unregister(&ace_platform_driver);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unregister_blkdev(ace_major, "xsysace");
+}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ace_of_unregister();
 	unregister_blkdev(ace_major, "xsysace");
 }
 
 module_init(ace_init);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_exit(ace_exit);

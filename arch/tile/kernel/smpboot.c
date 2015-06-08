@@ -200,7 +200,12 @@ void __cpuinit online_secondary(void)
 	notify_cpu_starting(smp_processor_id());
 
 =======
+<<<<<<< HEAD
+	notify_cpu_starting(smp_processor_id());
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We need to hold call_lock, so there is no inconsistency
 	 * between the time smp_call_function() determines number of

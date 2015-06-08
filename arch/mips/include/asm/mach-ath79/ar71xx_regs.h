@@ -21,12 +21,18 @@
 
 #define AR71XX_APB_BASE		0x18000000
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR71XX_EHCI_BASE	0x1b000000
 #define AR71XX_EHCI_SIZE	0x1000
 #define AR71XX_OHCI_BASE	0x1c000000
 #define AR71XX_OHCI_SIZE	0x1000
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR71XX_SPI_BASE		0x1f000000
 #define AR71XX_SPI_SIZE		0x01000000
 
@@ -38,7 +44,12 @@
 #define AR71XX_USB_CTRL_BASE	(AR71XX_APB_BASE + 0x00030000)
 #define AR71XX_USB_CTRL_SIZE	0x100
 =======
+<<<<<<< HEAD
+#define AR71XX_USB_CTRL_BASE	(AR71XX_APB_BASE + 0x00030000)
+#define AR71XX_USB_CTRL_SIZE	0x100
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR71XX_GPIO_BASE        (AR71XX_APB_BASE + 0x00040000)
 #define AR71XX_GPIO_SIZE        0x100
 #define AR71XX_PLL_BASE		(AR71XX_APB_BASE + 0x00050000)
@@ -47,6 +58,9 @@
 #define AR71XX_RESET_SIZE	0x100
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR7240_USB_CTRL_BASE	(AR71XX_APB_BASE + 0x00030000)
 #define AR7240_USB_CTRL_SIZE	0x100
 #define AR7240_OHCI_BASE	0x1b000000
@@ -67,11 +81,14 @@
 #define AR933X_EHCI_BASE	0x1b000000
 #define AR933X_EHCI_SIZE	0x1000
 
+<<<<<<< HEAD
+=======
 =======
 #define AR913X_WMAC_BASE	(AR71XX_APB_BASE + 0x000C0000)
 #define AR913X_WMAC_SIZE	0x30000
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * DDR_CTRL block
  */
@@ -99,13 +116,19 @@
 #define AR913X_DDR_REG_FLUSH_WMAC	0x88
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR933X_DDR_REG_FLUSH_GE0	0x7c
 #define AR933X_DDR_REG_FLUSH_GE1	0x80
 #define AR933X_DDR_REG_FLUSH_USB	0x84
 #define AR933X_DDR_REG_FLUSH_WMAC	0x88
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * PLL block
  */
@@ -148,6 +171,9 @@
 #define AR913X_AHB_DIV_MASK		0x1
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR933X_PLL_CPU_CONFIG_REG	0x00
 #define AR933X_PLL_CLOCK_CTRL_REG	0x08
 
@@ -172,8 +198,11 @@
 #define AR71XX_USB_CTRL_REG_FLADJ	0x00
 #define AR71XX_USB_CTRL_REG_CONFIG	0x04
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * RESET block
  */
@@ -201,6 +230,9 @@
 #define AR724X_RESET_REG_RESET_MODULE		0x1c
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR933X_RESET_REG_RESET_MODULE		0x1c
 #define AR933X_RESET_REG_BOOTSTRAP		0xac
 
@@ -208,8 +240,11 @@
 #define MISC_INT_TIMER4			BIT(10)
 #define MISC_INT_TIMER3			BIT(9)
 #define MISC_INT_TIMER2			BIT(8)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MISC_INT_DMA			BIT(7)
 #define MISC_INT_OHCI			BIT(6)
 #define MISC_INT_PERFC			BIT(5)
@@ -243,13 +278,22 @@
 #define AR7240_RESET_OHCI_DLL		BIT(3)
 
 =======
+<<<<<<< HEAD
+#define AR7240_RESET_USB_HOST		BIT(5)
+#define AR7240_RESET_OHCI_DLL		BIT(3)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR724X_RESET_GE1_MDIO		BIT(23)
 #define AR724X_RESET_GE0_MDIO		BIT(22)
 #define AR724X_RESET_PCIE_PHY_SERIAL	BIT(10)
 #define AR724X_RESET_PCIE_PHY		BIT(7)
 #define AR724X_RESET_PCIE		BIT(6)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR724X_RESET_USB_HOST		BIT(5)
 #define AR724X_RESET_USB_PHY		BIT(4)
 #define AR724X_RESET_USBSUS_OVERRIDE	BIT(3)
@@ -265,11 +309,14 @@
 #define AR933X_RESET_USBSUS_OVERRIDE	BIT(3)
 
 #define AR933X_BOOTSTRAP_REF_CLK_40	BIT(0)
+<<<<<<< HEAD
+=======
 =======
 #define AR724X_RESET_OHCI_DLL		BIT(3)
 
 #define AR913X_RESET_AMBA2WMAC		BIT(22)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define REV_ID_MAJOR_MASK		0xfff0
 #define REV_ID_MAJOR_AR71XX		0x00a0
@@ -281,7 +328,12 @@
 #define REV_ID_MAJOR_AR9330		0x0110
 #define REV_ID_MAJOR_AR9331		0x1110
 =======
+<<<<<<< HEAD
+#define REV_ID_MAJOR_AR9330		0x0110
+#define REV_ID_MAJOR_AR9331		0x1110
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define AR71XX_REV_ID_MINOR_MASK	0x3
 #define AR71XX_REV_ID_MINOR_AR7130	0x0
@@ -300,7 +352,12 @@
 #define AR933X_REV_ID_REVISION_MASK	0x3
 
 =======
+<<<<<<< HEAD
+#define AR933X_REV_ID_REVISION_MASK	0x3
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR724X_REV_ID_REVISION_MASK	0x3
 
 /*
@@ -346,6 +403,10 @@
 <<<<<<< HEAD
 #define AR933X_GPIO_COUNT		30
 =======
+<<<<<<< HEAD
+#define AR933X_GPIO_COUNT		30
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_MACH_AR71XX_REGS_H */

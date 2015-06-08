@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -33,16 +37,22 @@ void originator_free(struct bat_priv *bat_priv);
 void purge_orig_ref(struct bat_priv *bat_priv);
 void orig_node_free_ref(struct orig_node *orig_node);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct orig_node *get_orig_node(struct bat_priv *bat_priv, const uint8_t *addr);
 struct neigh_node *create_neighbor(struct orig_node *orig_node,
 				   struct orig_node *orig_neigh_node,
 				   const uint8_t *neigh,
+<<<<<<< HEAD
+=======
 =======
 struct orig_node *get_orig_node(struct bat_priv *bat_priv, uint8_t *addr);
 struct neigh_node *create_neighbor(struct orig_node *orig_node,
 				   struct orig_node *orig_neigh_node,
 				   uint8_t *neigh,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   struct hard_iface *if_incoming);
 void neigh_node_free_ref(struct neigh_node *neigh_node);
 struct neigh_node *orig_node_get_router(struct orig_node *orig_node);
@@ -52,11 +62,16 @@ int orig_hash_del_if(struct hard_iface *hard_iface, int max_if_num);
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* hashfunction to choose an entry in a hash table of given size */
 /* hash algorithm from http://en.wikipedia.org/wiki/Hash_table */
 static inline uint32_t choose_orig(const void *data, uint32_t size)
 {
 	const unsigned char *key = data;
+<<<<<<< HEAD
+=======
 =======
 /* returns 1 if they are the same originator */
 static inline int compare_orig(struct hlist_node *node, void *data2)
@@ -72,6 +87,7 @@ static inline int choose_orig(void *data, int32_t size)
 {
 	unsigned char *key = data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32_t hash = 0;
 	size_t i;
 
@@ -92,8 +108,12 @@ static inline struct orig_node *orig_hash_find(struct bat_priv *bat_priv,
 <<<<<<< HEAD
 					       const void *data)
 =======
+<<<<<<< HEAD
+					       const void *data)
+=======
 					       void *data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hashtable_t *hash = bat_priv->orig_hash;
 	struct hlist_head *head;

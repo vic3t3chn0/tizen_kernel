@@ -96,8 +96,12 @@ static struct inode *__logfs_iget(struct super_block *sb, ino_t ino)
 <<<<<<< HEAD
 		clear_nlink(inode);
 =======
+<<<<<<< HEAD
+		clear_nlink(inode);
+=======
 		inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		logfs_inode(inode)->li_flags |= LOGFS_IF_ZOMBIE;
 		iget_failed(inode);
 		if (!err)
@@ -150,8 +154,11 @@ static void logfs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(logfs_inode_cache, logfs_inode(inode));
 }
 
@@ -208,8 +215,11 @@ static void logfs_init_inode(struct super_block *sb, struct inode *inode)
 	inode->i_mtime	= CURRENT_TIME;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	inode->i_nlink	= 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	li->li_refcount = 1;
 	INIT_LIST_HEAD(&li->li_freeing_list);
 
@@ -301,8 +311,12 @@ static int logfs_write_inode(struct inode *inode, struct writeback_control *wbc)
 <<<<<<< HEAD
 	ret = __logfs_write_inode(inode, NULL, flags);
 =======
+<<<<<<< HEAD
+	ret = __logfs_write_inode(inode, NULL, flags);
+=======
 	ret = __logfs_write_inode(inode, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LOGFS_BUG_ON(ret, inode->i_sb);
 	return ret;
 }
@@ -342,8 +356,12 @@ static void logfs_set_ino_generation(struct super_block *sb,
 <<<<<<< HEAD
 struct inode *logfs_new_inode(struct inode *dir, umode_t mode)
 =======
+<<<<<<< HEAD
+struct inode *logfs_new_inode(struct inode *dir, umode_t mode)
+=======
 struct inode *logfs_new_inode(struct inode *dir, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = dir->i_sb;
 	struct inode *inode;
@@ -388,8 +406,14 @@ static int logfs_sync_fs(struct super_block *sb, int wait)
 	logfs_write_anchor(sb);
 	logfs_put_wblocks(sb, NULL, WF_LOCK);
 =======
+<<<<<<< HEAD
+	logfs_get_wblocks(sb, NULL, WF_LOCK);
+	logfs_write_anchor(sb);
+	logfs_put_wblocks(sb, NULL, WF_LOCK);
+=======
 	logfs_write_anchor(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

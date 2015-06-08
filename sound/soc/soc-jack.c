@@ -22,6 +22,11 @@
 #include <trace/events/asoc.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <trace/events/asoc.h>
+
+=======
 #include <trace/events/asoc.h>
 
 #ifdef CONFIG_JACK_MON
@@ -42,6 +47,7 @@ struct switch_dev android_switch = {
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * snd_soc_jack_new - Create a new jack
  * @card:  ASoC card
@@ -61,7 +67,11 @@ int snd_soc_jack_new(struct snd_soc_codec *codec, const char *id, int type,
 <<<<<<< HEAD
 	mutex_init(&jack->mutex);
 =======
+<<<<<<< HEAD
+	mutex_init(&jack->mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jack->codec = codec;
 	INIT_LIST_HEAD(&jack->pins);
 	INIT_LIST_HEAD(&jack->jack_zones);
@@ -69,11 +79,14 @@ int snd_soc_jack_new(struct snd_soc_codec *codec, const char *id, int type,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SWITCH
 	switch_dev_register(&android_switch);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return snd_jack_new(codec->card->snd_card, id, type, &jack->jack);
 }
 EXPORT_SYMBOL_GPL(snd_soc_jack_new);
@@ -102,6 +115,8 @@ void snd_soc_jack_report(struct snd_soc_jack *jack, int status, int mask)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SWITCH
 	if (mask & SND_JACK_HEADSET) {
 		if (status & SND_JACK_MICROPHONE)
@@ -125,6 +140,7 @@ void snd_soc_jack_report(struct snd_soc_jack *jack, int status, int mask)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_snd_soc_jack_report(jack, mask, status);
 
 	if (!jack)
@@ -136,8 +152,12 @@ void snd_soc_jack_report(struct snd_soc_jack *jack, int status, int mask)
 <<<<<<< HEAD
 	mutex_lock(&jack->mutex);
 =======
+<<<<<<< HEAD
+	mutex_lock(&jack->mutex);
+=======
 	mutex_lock(&codec->mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	oldstatus = jack->status;
 
@@ -174,13 +194,20 @@ out:
 <<<<<<< HEAD
 	mutex_unlock(&jack->mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&jack->mutex);
+=======
 	mutex_unlock(&codec->mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(snd_soc_jack_report);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * snd_soc_jack_report_no_dapm - Report the current status for a jack
  *				 without DAPM sync
  * @jack:   the jack
@@ -198,8 +225,11 @@ void snd_soc_jack_report_no_dapm(struct snd_soc_jack *jack, int status,
 EXPORT_SYMBOL_GPL(snd_soc_jack_report_no_dapm);
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * snd_soc_jack_add_zones - Associate voltage zones with jack
  *
  * @jack:  ASoC jack
@@ -279,7 +309,12 @@ int snd_soc_jack_add_pins(struct snd_soc_jack *jack, int count,
 	snd_soc_dapm_new_widgets(&jack->codec->card->dapm);
 
 =======
+<<<<<<< HEAD
+	snd_soc_dapm_new_widgets(&jack->codec->card->dapm);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Update to reflect the last reported status; canned jack
 	 * implementations are likely to set their state before the
 	 * card has an opportunity to associate pins.
@@ -434,11 +469,16 @@ int snd_soc_jack_add_gpios(struct snd_soc_jack *jack, int count,
 		/* Expose GPIO value over sysfs for diagnostic purposes */
 		gpio_export(gpios[i].gpio, false);
 =======
+<<<<<<< HEAD
+		/* Expose GPIO value over sysfs for diagnostic purposes */
+		gpio_export(gpios[i].gpio, false);
+=======
 #ifdef CONFIG_GPIO_SYSFS
 		/* Expose GPIO value over sysfs for diagnostic purposes */
 		gpio_export(gpios[i].gpio, false);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Update initial jack status */
 		snd_soc_jack_gpio_detect(&gpios[i]);
@@ -473,10 +513,14 @@ void snd_soc_jack_free_gpios(struct snd_soc_jack *jack, int count,
 <<<<<<< HEAD
 		gpio_unexport(gpios[i].gpio);
 =======
+<<<<<<< HEAD
+		gpio_unexport(gpios[i].gpio);
+=======
 #ifdef CONFIG_GPIO_SYSFS
 		gpio_unexport(gpios[i].gpio);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_irq(gpio_to_irq(gpios[i].gpio), &gpios[i]);
 		cancel_delayed_work_sync(&gpios[i].work);
 		gpio_free(gpios[i].gpio);

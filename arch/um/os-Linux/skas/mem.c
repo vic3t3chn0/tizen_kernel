@@ -11,8 +11,11 @@
 #include "init.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "kern_constants.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "as-layout.h"
 #include "mm_id.h"
 #include "os.h"
@@ -22,8 +25,11 @@
 #include "skas.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "sysdep/ptrace.h"
 #include "sysdep/stub.h"
 
@@ -48,8 +54,12 @@ static int __init init_syscall_regs(void)
 <<<<<<< HEAD
 	get_safe_registers(syscall_regs, NULL);
 =======
+<<<<<<< HEAD
+	get_safe_registers(syscall_regs, NULL);
+=======
 	get_safe_registers(syscall_regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	syscall_regs[REGS_IP_INDEX] = STUB_CODE +
 		((unsigned long) &batch_syscall_stub -
 		 (unsigned long) &__syscall_stub_start);

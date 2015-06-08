@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/kernel.h>
 #include <linux/errno.h>
@@ -41,7 +45,11 @@
 <<<<<<< HEAD
 #include <linux/slab.h>
 =======
+<<<<<<< HEAD
+#include <linux/slab.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/pgalloc.h>
 #include <asm/prom.h>
@@ -61,7 +69,11 @@
 <<<<<<< HEAD
 #include <asm/rtas.h>
 =======
+<<<<<<< HEAD
+#include <asm/rtas.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "mmu_decl.h"
 
@@ -213,8 +225,12 @@ void __init do_init_bootmem(void)
 <<<<<<< HEAD
 		memblock_set_node(0, (phys_addr_t)ULLONG_MAX, 0);
 =======
+<<<<<<< HEAD
+		memblock_set_node(0, (phys_addr_t)ULLONG_MAX, 0);
+=======
 		add_active_range(0, start_pfn, end_pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Add all physical memory to the bootmem map, mark each area
@@ -269,8 +285,12 @@ void __init paging_init(void)
 <<<<<<< HEAD
 	unsigned long long total_ram = memblock_phys_mem_size();
 =======
+<<<<<<< HEAD
+	unsigned long long total_ram = memblock_phys_mem_size();
+=======
 	unsigned long total_ram = memblock_phys_mem_size();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phys_addr_t top_of_ram = memblock_end_of_DRAM();
 	unsigned long max_zone_pfns[MAX_NR_ZONES];
 
@@ -293,8 +313,12 @@ void __init paging_init(void)
 <<<<<<< HEAD
 	printk(KERN_DEBUG "Top of RAM: 0x%llx, Total RAM: 0x%llx\n",
 =======
+<<<<<<< HEAD
+	printk(KERN_DEBUG "Top of RAM: 0x%llx, Total RAM: 0x%llx\n",
+=======
 	printk(KERN_DEBUG "Top of RAM: 0x%llx, Total RAM: 0x%lx\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       (unsigned long long)top_of_ram, total_ram);
 	printk(KERN_DEBUG "Memory hole size: %ldMB\n",
 	       (long int)((top_of_ram - total_ram) >> 20));
@@ -367,9 +391,15 @@ void __init mem_init(void)
 			struct page *page = pfn_to_page(pfn);
 			if (memblock_is_reserved(paddr))
 =======
+<<<<<<< HEAD
+			phys_addr_t paddr = (phys_addr_t)pfn << PAGE_SHIFT;
+			struct page *page = pfn_to_page(pfn);
+			if (memblock_is_reserved(paddr))
+=======
 			struct page *page = pfn_to_page(pfn);
 			if (memblock_is_reserved(pfn << PAGE_SHIFT))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			ClearPageReserved(page);
 			init_page_count(page);
@@ -384,6 +414,9 @@ void __init mem_init(void)
 #endif /* CONFIG_HIGHMEM */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_PPC_FSL_BOOK3E) && !defined(CONFIG_SMP)
 	/*
 	 * If smp is enabled, next_tlbcam_idx is initialized in the cpu up
@@ -393,8 +426,11 @@ void __init mem_init(void)
 		(mfspr(SPRN_TLB1CFG) & TLBnCFG_N_ENTRY) - 1;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "Memory: %luk/%luk available (%luk kernel code, "
 	       "%luk reserved, %luk data, %luk bss, %luk init)\n",
 		nr_free_pages() << (PAGE_SHIFT-10),
@@ -426,6 +462,9 @@ void __init mem_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void free_initmem(void)
 {
 	unsigned long addr;
@@ -445,8 +484,11 @@ void free_initmem(void)
 		(unsigned long)__init_begin) >> 10);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BLK_DEV_INITRD
 void __init free_initrd_mem(unsigned long start, unsigned long end)
 {
@@ -496,10 +538,16 @@ void flush_dcache_icache_page(struct page *page)
 		__flush_dcache_icache(start);
 		kunmap_atomic(start);
 =======
+<<<<<<< HEAD
+		void *start = kmap_atomic(page);
+		__flush_dcache_icache(start);
+		kunmap_atomic(start);
+=======
 		void *start = kmap_atomic(page, KM_PPC_SYNC_ICACHE);
 		__flush_dcache_icache(start);
 		kunmap_atomic(start, KM_PPC_SYNC_ICACHE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #elif defined(CONFIG_8xx) || defined(CONFIG_PPC64)
 	/* On 8xx there is no need to kmap since highmem is not supported */
@@ -591,6 +639,9 @@ void update_mmu_cache(struct vm_area_struct *vma, unsigned long address,
 	hash_preload(vma->vm_mm, address, access, trap);
 #endif /* CONFIG_PPC_STD_MMU */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if (defined(CONFIG_PPC_BOOK3E_64) || defined(CONFIG_PPC_FSL_BOOK3E)) \
 	&& defined(CONFIG_HUGETLB_PAGE)
 	if (is_vm_hugetlb_page(vma))
@@ -646,6 +697,9 @@ int devmem_is_allowed(unsigned long pfn)
 	return 0;
 }
 #endif /* CONFIG_STRICT_DEVMEM */
+<<<<<<< HEAD
+=======
 =======
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

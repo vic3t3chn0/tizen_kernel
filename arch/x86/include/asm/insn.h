@@ -98,6 +98,8 @@ struct insn {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* The last prefix is needed for two-byte and three-byte opcodes */
 static inline insn_byte_t insn_last_prefix(struct insn *insn)
 {
@@ -105,6 +107,7 @@ static inline insn_byte_t insn_last_prefix(struct insn *insn)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void insn_init(struct insn *insn, const void *kaddr, int x86_64);
 extern void insn_get_prefixes(struct insn *insn);
 extern void insn_get_opcode(struct insn *insn);
@@ -141,6 +144,9 @@ static inline int insn_is_avx(struct insn *insn)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Ensure this instruction is decoded completely */
 static inline int insn_complete(struct insn *insn)
 {
@@ -148,8 +154,11 @@ static inline int insn_complete(struct insn *insn)
 		insn->displacement.got && insn->immediate.got;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline insn_byte_t insn_vex_m_bits(struct insn *insn)
 {
 	if (insn->vex_prefix.nbytes == 2)	/* 2 bytes VEX */
@@ -167,6 +176,9 @@ static inline insn_byte_t insn_vex_p_bits(struct insn *insn)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Get the last prefix id from last prefix or VEX prefix */
 static inline int insn_last_prefix_id(struct insn *insn)
 {
@@ -179,8 +191,11 @@ static inline int insn_last_prefix_id(struct insn *insn)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Offset of each field from kaddr */
 static inline int insn_offset_rex_prefix(struct insn *insn)
 {

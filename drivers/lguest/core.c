@@ -117,7 +117,15 @@ static __init int map_switcher(void)
 
 	/*
 	 * Now the Switcher is mapped at the right address, we can't fail!
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * Copy in the compiled-in Switcher code (from x86/switcher_32.S).
+=======
 	 * Copy in the compiled-in Switcher code (from <arch>_switcher.S).
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	 * Copy in the compiled-in Switcher code (from <arch>_switcher.S).
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	memcpy(switcher_vma->addr, start_switcher_text,
 	       end_switcher_text - start_switcher_text);
@@ -232,6 +240,19 @@ int run_guest(struct lg_cpu *cpu, unsigned long __user *user)
 			}
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/*
+		 * All long-lived kernel loops need to check with this horrible
+		 * thing called the freezer.  If the Host is trying to suspend,
+		 * it stops us.
+		 */
+		try_to_freeze();
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Check for signals */
 		if (signal_pending(current))
 			return -ERESTARTSYS;
@@ -246,6 +267,11 @@ int run_guest(struct lg_cpu *cpu, unsigned long __user *user)
 			try_deliver_interrupt(cpu, irq, more);
 
 		/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * All long-lived kernel loops need to check with this horrible
 		 * thing called the freezer.  If the Host is trying to suspend,
 		 * it stops us.
@@ -253,6 +279,10 @@ int run_guest(struct lg_cpu *cpu, unsigned long __user *user)
 		try_to_freeze();
 
 		/*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Just make absolutely sure the Guest is still alive.  One of
 		 * those hypercalls could have been fatal, for example.
 		 */
@@ -313,7 +343,15 @@ static int __init init(void)
 	int err;
 
 	/* Lguest can't run under Xen, VMI or itself.  It does Tricky Stuff. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (get_kernel_rpl() != 0) {
+=======
 	if (paravirt_enabled()) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (paravirt_enabled()) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk("lguest is afraid of being a guest\n");
 		return -EPERM;
 	}

@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/fs_stack.h>
 
@@ -36,11 +40,15 @@ void fsstack_copy_inode_size(struct inode *dst, struct inode *src)
 <<<<<<< HEAD
 	 * i_lock as in inode_add_bytes().
 =======
+<<<<<<< HEAD
+	 * i_lock as in inode_add_bytes().
+=======
 	 * i_lock as in inode_add_bytes().  tmpfs uses other locking, and
 	 * its 32-bit is (just) able to exceed 2TB i_size with the aid of
 	 * holes; but its i_blocks cannot carry into the upper long without
 	 * almost 2TB swap - let's ignore that case.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	if (sizeof(i_blocks) > sizeof(long))
 		spin_lock(&src->i_lock);
@@ -85,7 +93,11 @@ void fsstack_copy_attr_all(struct inode *dest, const struct inode *src)
 <<<<<<< HEAD
 	set_nlink(dest, src->i_nlink);
 =======
+<<<<<<< HEAD
+	set_nlink(dest, src->i_nlink);
+=======
 	dest->i_nlink = src->i_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(fsstack_copy_attr_all);

@@ -16,9 +16,14 @@
 #ifndef LINUX_MMC_TMIO_H
 #define LINUX_MMC_TMIO_H
 =======
+<<<<<<< HEAD
+#ifndef LINUX_MMC_TMIO_H
+#define LINUX_MMC_TMIO_H
+=======
 #ifndef _LINUX_MMC_TMIO_H_
 #define _LINUX_MMC_TMIO_H_
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CTL_SD_CMD 0x00
 #define CTL_ARG_REG 0x04
@@ -29,7 +34,11 @@
 <<<<<<< HEAD
 #define CTL_STATUS2 0x1e
 =======
+<<<<<<< HEAD
+#define CTL_STATUS2 0x1e
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CTL_IRQ_MASK 0x20
 #define CTL_SD_CARD_CLK_CTL 0x24
 #define CTL_SD_XFER_LEN 0x26
@@ -42,7 +51,11 @@
 <<<<<<< HEAD
 #define CTL_DMA_ENABLE 0xd8
 =======
+<<<<<<< HEAD
+#define CTL_DMA_ENABLE 0xd8
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CTL_RESET_SD 0xe0
 #define CTL_SDIO_REGS 0x100
 #define CTL_CLK_AND_WAIT_CTL 0x138
@@ -76,5 +89,9 @@
 <<<<<<< HEAD
 #endif /* LINUX_MMC_TMIO_H */
 =======
+<<<<<<< HEAD
+#endif /* LINUX_MMC_TMIO_H */
+=======
 #endif /* _LINUX_MMC_TMIO_H_ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

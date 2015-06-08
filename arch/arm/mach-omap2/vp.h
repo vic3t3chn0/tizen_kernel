@@ -20,6 +20,9 @@
 #include <linux/kernel.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct voltagedomain;
 
 /*
@@ -31,13 +34,19 @@ struct voltagedomain;
 #define OMAP4_VP_VDD_IVA_ID 1
 #define OMAP4_VP_VDD_MPU_ID 2
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* XXX document */
 #define VP_IDLE_TIMEOUT		200
 #define VP_TRANXDONE_TIMEOUT	300
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct omap_vp_ops - per-VP operations
  * @check_txdone: check for VP transaction done
@@ -54,6 +63,8 @@ struct omap_vp_ops {
  * @vpconfig_errorgain_mask: ERRORGAIN bitmask in the PRM_VP*_CONFIG reg
  * @vpconfig_initvoltage_mask: INITVOLTAGE bitmask in the PRM_VP*_CONFIG reg
  * @vpconfig_timeouten: TIMEOUT bitmask in the PRM_VP*_CONFIG reg
+<<<<<<< HEAD
+=======
 =======
 
 /**
@@ -62,6 +73,7 @@ struct omap_vp_ops {
  * @vpconfig_initvoltage_mask: INITVOLTAGE bitmask in the PRM_VP*_CONFIG reg
  * @vpconfig_timeouten_mask: TIMEOUT bitmask in the PRM_VP*_CONFIG reg
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @vpconfig_initvdd: INITVDD bitmask in the PRM_VP*_CONFIG reg
  * @vpconfig_forceupdate: FORCEUPDATE bitmask in the PRM_VP*_CONFIG reg
  * @vpconfig_vpenable: VPENABLE bitmask in the PRM_VP*_CONFIG reg
@@ -69,6 +81,9 @@ struct omap_vp_ops {
  * @vpconfig_errorgain_shift: ERRORGAIN field shift in PRM_VP*_CONFIG reg
  * @vpconfig_initvoltage_shift: INITVOLTAGE field shift in PRM_VP*_CONFIG reg
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @vstepmin_stepmin_shift: VSTEPMIN field shift in the PRM_VP*_VSTEPMIN reg
  * @vstepmin_smpswaittimemin_shift: SMPSWAITTIMEMIN field shift in PRM_VP*_VSTEPMIN reg
  * @vstepmax_stepmax_shift: VSTEPMAX field shift in the PRM_VP*_VSTEPMAX reg
@@ -86,6 +101,8 @@ struct omap_vp_common {
 	u8 vpconfig_initvdd;
 	u8 vpconfig_forceupdate;
 	u8 vpconfig_vpenable;
+<<<<<<< HEAD
+=======
 =======
  * @vpconfig_stepmin_shift: VSTEPMIN field shift in the PRM_VP*_VSTEPMIN reg
  * @vpconfig_smpswaittimemin_shift: SMPSWAITTIMEMIN field shift in PRM_VP*_VSTEPMIN reg
@@ -110,6 +127,7 @@ struct omap_vp_common_data {
 	u8 vpconfig_errorgain_shift;
 	u8 vpconfig_initvoltage_shift;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 vstepmin_stepmin_shift;
 	u8 vstepmin_smpswaittimemin_shift;
 	u8 vstepmax_stepmax_shift;
@@ -118,6 +136,9 @@ struct omap_vp_common_data {
 	u8 vlimitto_vddmax_shift;
 	u8 vlimitto_timeout_shift;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 vpvoltage_mask;
 
 	const struct omap_vp_ops *ops;
@@ -126,6 +147,8 @@ struct omap_vp_common_data {
 /**
  * struct omap_vp_instance - VP register offsets (per-VDD)
  * @common: pointer to struct omap_vp_common * for this SoC
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -149,12 +172,16 @@ struct omap_vp_prm_irqst_data {
  * @vp_common: pointer to struct omap_vp_common_data * for this SoC
  * @prm_irqst_data: pointer to struct omap_vp_prm_irqst_data for this VDD
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @vpconfig: PRM_VP*_CONFIG reg offset from PRM start
  * @vstepmin: PRM_VP*_VSTEPMIN reg offset from PRM start
  * @vlimitto: PRM_VP*_VLIMITTO reg offset from PRM start
  * @vstatus: PRM_VP*_VSTATUS reg offset from PRM start
  * @voltage: PRM_VP*_VOLTAGE reg offset from PRM start
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @id: Unique identifier for VP instance.
  * @enabled: flag to keep track of whether vp is enabled or not
  *
@@ -162,6 +189,8 @@ struct omap_vp_prm_irqst_data {
  */
 struct omap_vp_instance {
 	const struct omap_vp_common *common;
+<<<<<<< HEAD
+=======
 =======
  *
  * XXX vp_common is probably not needed since it is per-SoC
@@ -170,6 +199,7 @@ struct omap_vp_instance_data {
 	const struct omap_vp_common_data *vp_common;
 	const struct omap_vp_prm_irqst_data *prm_irqst_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 vpconfig;
 	u8 vstepmin;
 	u8 vstepmax;
@@ -177,6 +207,9 @@ struct omap_vp_instance_data {
 	u8 vstatus;
 	u8 voltage;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 id;
 	bool enabled;
 };
@@ -195,6 +228,8 @@ int omap_vp_forceupdate_scale(struct voltagedomain *voltdm,
 			      unsigned long target_volt);
 int omap_vp_update_errorgain(struct voltagedomain *voltdm,
 			     unsigned long target_volt);
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -234,5 +269,6 @@ extern struct omap_vp_instance_data omap4_vp_mpu_data;
 extern struct omap_vp_instance_data omap4_vp_iva_data;
 extern struct omap_vp_instance_data omap4_vp_core_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

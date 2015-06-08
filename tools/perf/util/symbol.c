@@ -2,12 +2,17 @@
 #include <dirent.h>
 #include <errno.h>
 =======
+<<<<<<< HEAD
+#include <dirent.h>
+#include <errno.h>
+=======
 #define _GNU_SOURCE
 #include <ctype.h>
 #include <dirent.h>
 #include <errno.h>
 #include <libgen.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -21,7 +26,11 @@
 <<<<<<< HEAD
 #include "util.h"
 =======
+<<<<<<< HEAD
+#include "util.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "debug.h"
 #include "symbol.h"
 #include "strlist.h"
@@ -36,8 +45,12 @@
 <<<<<<< HEAD
 #define KSYM_NAME_LEN 256
 =======
+<<<<<<< HEAD
+#define KSYM_NAME_LEN 256
+=======
 #define KSYM_NAME_LEN 128
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef NT_GNU_BUILD_ID
@@ -62,7 +75,11 @@ struct symbol_conf symbol_conf = {
 <<<<<<< HEAD
 	.annotate_src	  = true,
 =======
+<<<<<<< HEAD
+	.annotate_src	  = true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.symfs            = "",
 };
 
@@ -72,7 +89,12 @@ int dso__name_len(const struct dso *dso)
 	if (!dso)
 		return strlen("[unknown]");
 =======
+<<<<<<< HEAD
+	if (!dso)
+		return strlen("[unknown]");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (verbose)
 		return dso->long_name_len;
 
@@ -100,7 +122,12 @@ bool symbol_type__is_a(char symbol_type, enum map_type map_type)
 	symbol_type = toupper(symbol_type);
 
 =======
+<<<<<<< HEAD
+	symbol_type = toupper(symbol_type);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (map_type) {
 	case MAP__FUNCTION:
 		return symbol_type == 'T' || symbol_type == 'W';
@@ -108,14 +135,21 @@ bool symbol_type__is_a(char symbol_type, enum map_type map_type)
 <<<<<<< HEAD
 		return symbol_type == 'D';
 =======
+<<<<<<< HEAD
+		return symbol_type == 'D';
+=======
 		return symbol_type == 'D' || symbol_type == 'd';
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return false;
 	}
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int prefix_underscores_count(const char *str)
 {
 	const char *tail = str;
@@ -202,8 +236,11 @@ again:
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void symbols__fixup_end(struct rb_root *symbols)
 {
 	struct rb_node *nd, *prevnd = rb_first(symbols);
@@ -296,6 +333,9 @@ static size_t symbol__fprintf(struct symbol *sym, FILE *fp)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 size_t symbol__fprintf_symname_offs(const struct symbol *sym,
 				    const struct addr_location *al, FILE *fp)
 {
@@ -318,8 +358,11 @@ size_t symbol__fprintf_symname(const struct symbol *sym, FILE *fp)
 	return symbol__fprintf_symname_offs(sym, NULL, fp);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dso__set_long_name(struct dso *dso, char *name)
 {
 	if (name == NULL)
@@ -585,10 +628,13 @@ int kallsyms__parse(const char *filename, void *arg,
 	int err = -1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u64 prev_start = 0;
 	char prev_symbol_type = 0;
 	char *prev_symbol_name;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FILE *file = fopen(filename, "r");
 
 	if (file == NULL)
@@ -596,11 +642,14 @@ int kallsyms__parse(const char *filename, void *arg,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	prev_symbol_name = malloc(KSYM_NAME_LEN);
 	if (prev_symbol_name == NULL)
 		goto out_close;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = 0;
 
 	while (!feof(file)) {
@@ -624,8 +673,12 @@ int kallsyms__parse(const char *filename, void *arg,
 <<<<<<< HEAD
 		symbol_type = line[len];
 =======
+<<<<<<< HEAD
+		symbol_type = line[len];
+=======
 		symbol_type = toupper(line[len]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		len += 2;
 		symbol_name = line + len;
 		len = line_len - len;
@@ -636,6 +689,9 @@ int kallsyms__parse(const char *filename, void *arg,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * module symbols are not sorted so we add all
 		 * symbols with zero length and rely on
@@ -648,6 +704,8 @@ int kallsyms__parse(const char *filename, void *arg,
 	}
 
 	free(line);
+<<<<<<< HEAD
+=======
 =======
 		if (prev_symbol_type) {
 			u64 end = start;
@@ -668,6 +726,7 @@ int kallsyms__parse(const char *filename, void *arg,
 	free(line);
 out_close:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fclose(file);
 	return err;
 
@@ -878,7 +937,13 @@ int dso__load_kallsyms(struct dso *dso, const char *filename,
 	symbols__fixup_end(&dso->symbols[map->type]);
 
 =======
+<<<<<<< HEAD
+	symbols__fixup_duplicate(&dso->symbols[map->type]);
+	symbols__fixup_end(&dso->symbols[map->type]);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dso->kernel == DSO_TYPE_GUEST_KERNEL)
 		dso->symtab_type = SYMTAB__GUEST_KALLSYMS;
 	else
@@ -1057,9 +1122,15 @@ static int
 dso__synthesize_plt_symbols(struct dso *dso, char *name, struct map *map,
 			    symbol_filter_t filter)
 =======
+<<<<<<< HEAD
+static int
+dso__synthesize_plt_symbols(struct dso *dso, char *name, struct map *map,
+			    symbol_filter_t filter)
+=======
 static int dso__synthesize_plt_symbols(struct  dso *dso, struct map *map,
 				       symbol_filter_t filter)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	uint32_t nr_rel_entries, idx;
 	GElf_Sym sym;
@@ -1077,11 +1148,15 @@ static int dso__synthesize_plt_symbols(struct  dso *dso, struct map *map,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	char name[PATH_MAX];
 
 	snprintf(name, sizeof(name), "%s%s",
 		 symbol_conf.symfs, dso->long_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
 		goto out;
@@ -1281,9 +1356,13 @@ static int dso__load_sym(struct dso *dso, struct map *map, const char *name,
 <<<<<<< HEAD
 		if (elf_read_build_id(elf, build_id, BUILD_ID_SIZE) < 0)
 =======
+<<<<<<< HEAD
+		if (elf_read_build_id(elf, build_id, BUILD_ID_SIZE) < 0)
+=======
 		if (elf_read_build_id(elf, build_id,
 				      BUILD_ID_SIZE) != BUILD_ID_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out_elf_end;
 
 		if (!dso__build_id_equal(dso, build_id))
@@ -1471,7 +1550,11 @@ new_symbol:
 <<<<<<< HEAD
 		symbols__fixup_duplicate(&dso->symbols[map->type]);
 =======
+<<<<<<< HEAD
+		symbols__fixup_duplicate(&dso->symbols[map->type]);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		symbols__fixup_end(&dso->symbols[map->type]);
 		if (kmap) {
 			/*
@@ -1562,9 +1645,14 @@ static int elf_read_build_id(Elf *elf, void *bf, size_t size)
 		size_t namesz = NOTE_ALIGN(nhdr->n_namesz),
 		       descsz = NOTE_ALIGN(nhdr->n_descsz);
 =======
+<<<<<<< HEAD
+		size_t namesz = NOTE_ALIGN(nhdr->n_namesz),
+		       descsz = NOTE_ALIGN(nhdr->n_descsz);
+=======
 		int namesz = NOTE_ALIGN(nhdr->n_namesz),
 		    descsz = NOTE_ALIGN(nhdr->n_descsz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const char *name;
 
 		ptr += sizeof(*nhdr);
@@ -1574,14 +1662,20 @@ static int elf_read_build_id(Elf *elf, void *bf, size_t size)
 		    nhdr->n_namesz == sizeof("GNU")) {
 			if (memcmp(name, "GNU", sizeof("GNU")) == 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				size_t sz = min(size, descsz);
 				memcpy(bf, ptr, sz);
 				memset(bf + sz, 0, size - sz);
 				err = descsz;
+<<<<<<< HEAD
+=======
 =======
 				memcpy(bf, ptr, BUILD_ID_SIZE);
 				err = BUILD_ID_SIZE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 		}
@@ -1636,8 +1730,12 @@ int sysfs__read_build_id(const char *filename, void *build_id, size_t size)
 <<<<<<< HEAD
 		size_t namesz, descsz;
 =======
+<<<<<<< HEAD
+		size_t namesz, descsz;
+=======
 		int namesz, descsz;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (read(fd, &nhdr, sizeof(nhdr)) != sizeof(nhdr))
 			break;
@@ -1647,6 +1745,9 @@ int sysfs__read_build_id(const char *filename, void *build_id, size_t size)
 		if (nhdr.n_type == NT_GNU_BUILD_ID &&
 		    nhdr.n_namesz == sizeof("GNU")) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (read(fd, bf, namesz) != (ssize_t)namesz)
 				break;
 			if (memcmp(bf, "GNU", sizeof("GNU")) == 0) {
@@ -1657,6 +1758,8 @@ int sysfs__read_build_id(const char *filename, void *build_id, size_t size)
 					break;
 				}
 			} else if (read(fd, bf, descsz) != (ssize_t)descsz)
+<<<<<<< HEAD
+=======
 =======
 			if (read(fd, bf, namesz) != namesz)
 				break;
@@ -1668,6 +1771,7 @@ int sysfs__read_build_id(const char *filename, void *build_id, size_t size)
 				}
 			} else if (read(fd, bf, descsz) != descsz)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 		} else {
 			int n = namesz + descsz;
@@ -1730,6 +1834,9 @@ int dso__load(struct dso *dso, struct map *map, symbol_filter_t filter)
 
 	if (strncmp(dso->name, "/tmp/perf-", 10) == 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct stat st;
 
 		if (lstat(dso->name, &st) < 0)
@@ -1741,8 +1848,11 @@ int dso__load(struct dso *dso, struct map *map, symbol_filter_t filter)
 			return -1;
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = dso__load_perf_map(dso, map, filter);
 		dso->symtab_type = ret > 0 ? SYMTAB__JAVA_JIT :
 					      SYMTAB__NOT_FOUND;
@@ -1830,9 +1940,15 @@ restart:
 
 			nr_plt = dso__synthesize_plt_symbols(dso, name, map, filter);
 =======
+<<<<<<< HEAD
+			int nr_plt;
+
+			nr_plt = dso__synthesize_plt_symbols(dso, name, map, filter);
+=======
 			int nr_plt = dso__synthesize_plt_symbols(dso, map,
 								 filter);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (nr_plt > 0)
 				ret += nr_plt;
 			break;
@@ -1910,8 +2026,12 @@ static int map_groups__set_modules_path_dir(struct map_groups *mg,
 <<<<<<< HEAD
 		snprintf(path, sizeof(path), "%s/%s", dir_name, dent->d_name);
 =======
+<<<<<<< HEAD
+		snprintf(path, sizeof(path), "%s/%s", dir_name, dent->d_name);
+=======
 		sprintf(path, "%s/%s", dir_name, dent->d_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (stat(path, &st))
 			continue;
 
@@ -1922,9 +2042,12 @@ static int map_groups__set_modules_path_dir(struct map_groups *mg,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			snprintf(path, sizeof(path), "%s/%s",
 				 dir_name, dent->d_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = map_groups__set_modules_path_dir(mg, path);
 			if (ret < 0)
 				goto out;
@@ -1947,10 +2070,13 @@ static int map_groups__set_modules_path_dir(struct map_groups *mg,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			snprintf(path, sizeof(path), "%s/%s",
 				 dir_name, dent->d_name);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			long_name = strdup(path);
 			if (long_name == NULL) {
 				ret = -1;
@@ -2426,6 +2552,9 @@ size_t machines__fprintf_dsos_buildid(struct rb_root *machines,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct dso*
 dso__kernel_findnew(struct machine *machine, const char *name,
 		    const char *short_name, int dso_type)
@@ -2442,6 +2571,8 @@ dso__kernel_findnew(struct machine *machine, const char *name,
 	if (dso != NULL) {
 		dso__set_short_name(dso, short_name);
 		dso->kernel = dso_type;
+<<<<<<< HEAD
+=======
 =======
 struct dso *dso__new_kernel(const char *name)
 {
@@ -2465,6 +2596,7 @@ static struct dso *dso__new_guest_kernel(struct machine *machine,
 		dso__set_short_name(dso, "[guest.kernel]");
 		dso->kernel = DSO_TYPE_GUEST_KERNEL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return dso;
@@ -2485,8 +2617,12 @@ void dso__read_running_kernel_build_id(struct dso *dso, struct machine *machine)
 <<<<<<< HEAD
 static struct dso *machine__get_kernel(struct machine *machine)
 =======
+<<<<<<< HEAD
+static struct dso *machine__get_kernel(struct machine *machine)
+=======
 static struct dso *machine__create_kernel(struct machine *machine)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const char *vmlinux_name = NULL;
 	struct dso *kernel;
@@ -2494,6 +2630,9 @@ static struct dso *machine__create_kernel(struct machine *machine)
 	if (machine__is_host(machine)) {
 		vmlinux_name = symbol_conf.vmlinux_name;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!vmlinux_name)
 			vmlinux_name = "[kernel.kallsyms]";
 
@@ -2517,6 +2656,8 @@ static struct dso *machine__create_kernel(struct machine *machine)
 	if (kernel != NULL && (!kernel->has_build_id))
 		dso__read_running_kernel_build_id(kernel, machine);
 
+<<<<<<< HEAD
+=======
 =======
 		kernel = dso__new_kernel(vmlinux_name);
 	} else {
@@ -2530,6 +2671,7 @@ static struct dso *machine__create_kernel(struct machine *machine)
 		dsos__add(&machine->kernel_dsos, kernel);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return kernel;
 }
 
@@ -2636,8 +2778,12 @@ int machine__create_kernel_maps(struct machine *machine)
 <<<<<<< HEAD
 	struct dso *kernel = machine__get_kernel(machine);
 =======
+<<<<<<< HEAD
+	struct dso *kernel = machine__get_kernel(machine);
+=======
 	struct dso *kernel = machine__create_kernel(machine);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (kernel == NULL ||
 	    __machine__create_kernel_maps(machine, kernel) < 0)
@@ -2816,16 +2962,22 @@ int symbol__init(void)
 	return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_free_comm_list:
 	strlist__delete(symbol_conf.comm_list);
 out_free_dso_list:
 	strlist__delete(symbol_conf.dso_list);
+<<<<<<< HEAD
+=======
 =======
 out_free_dso_list:
 	strlist__delete(symbol_conf.dso_list);
 out_free_comm_list:
 	strlist__delete(symbol_conf.comm_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -1;
 }
 

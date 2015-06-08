@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 extern unsigned char hp300_ledstate;
 =======
+<<<<<<< HEAD
+extern unsigned char hp300_ledstate;
+=======
 extern unsigned char ledstate;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __inline__ void blinken_leds(int on, int off)
 {
@@ -32,10 +36,16 @@ static __inline__ void blinken_leds(int on, int off)
 		hp300_ledstate &= ~off;
 		out_8(HP300_LEDS, ~hp300_ledstate);
 =======
+<<<<<<< HEAD
+		hp300_ledstate |= on;
+		hp300_ledstate &= ~off;
+		out_8(HP300_LEDS, ~hp300_ledstate);
+=======
 		ledstate |= on;
 		ledstate &= ~off;
 		out_8(HP300_LEDS, ~ledstate);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

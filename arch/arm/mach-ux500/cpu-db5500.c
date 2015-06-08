@@ -16,8 +16,12 @@
 <<<<<<< HEAD
 #include <plat/gpio-nomadik.h>
 =======
+<<<<<<< HEAD
+#include <plat/gpio-nomadik.h>
+=======
 #include <plat/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/devices.h>
@@ -35,11 +39,16 @@ static struct map_desc u5500_uart_io_desc[] __initdata = {
 
 static struct map_desc u5500_io_desc[] __initdata = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SCU base also covers GIC CPU BASE and TWD with its 4K page */
 	__IO_DEV_DESC(U5500_SCU_BASE, SZ_4K),
 	__IO_DEV_DESC(U5500_GIC_DIST_BASE, SZ_4K),
 	__IO_DEV_DESC(U5500_L2CC_BASE, SZ_4K),
 	__IO_DEV_DESC(U5500_MTU0_BASE, SZ_4K),
+<<<<<<< HEAD
+=======
 =======
 	__IO_DEV_DESC(U5500_GIC_CPU_BASE, SZ_4K),
 	__IO_DEV_DESC(U5500_GIC_DIST_BASE, SZ_4K),
@@ -48,6 +57,7 @@ static struct map_desc u5500_io_desc[] __initdata = {
 	__IO_DEV_DESC(U5500_MTU0_BASE, SZ_4K),
 	__IO_DEV_DESC(U5500_SCU_BASE, SZ_4K),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__IO_DEV_DESC(U5500_BACKUPRAM0_BASE, SZ_8K),
 
 	__IO_DEV_DESC(U5500_GPIO0_BASE, SZ_4K),
@@ -56,6 +66,9 @@ static struct map_desc u5500_io_desc[] __initdata = {
 	__IO_DEV_DESC(U5500_GPIO3_BASE, SZ_4K),
 	__IO_DEV_DESC(U5500_GPIO4_BASE, SZ_4K),
 	__IO_DEV_DESC(U5500_PRCMU_BASE, SZ_4K),
+<<<<<<< HEAD
+	__IO_DEV_DESC(U5500_PRCMU_TCDM_BASE, SZ_4K),
+=======
 <<<<<<< HEAD
 	__IO_DEV_DESC(U5500_PRCMU_TCDM_BASE, SZ_4K),
 =======
@@ -80,6 +93,7 @@ static struct platform_device db5500_pmu_device = {
 	.num_resources		= ARRAY_SIZE(db5500_pmu_resources),
 	.resource		= db5500_pmu_resources,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource mbox0_resources[] = {
@@ -169,8 +183,11 @@ static struct platform_device mbox2_device = {
 static struct platform_device *db5500_platform_devs[] __initdata = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	&db5500_pmu_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&mbox0_device,
 	&mbox1_device,
 	&mbox2_device,
@@ -190,8 +207,12 @@ static resource_size_t __initdata db5500_gpio_base[] = {
 <<<<<<< HEAD
 static void __init db5500_add_gpios(struct device *parent)
 =======
+<<<<<<< HEAD
+static void __init db5500_add_gpios(struct device *parent)
+=======
 static void __init db5500_add_gpios(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct nmk_gpio_platform_data pdata = {
 		/* No custom data yet */
@@ -200,8 +221,12 @@ static void __init db5500_add_gpios(void)
 <<<<<<< HEAD
 	dbx500_add_gpios(parent, ARRAY_AND_SIZE(db5500_gpio_base),
 =======
+<<<<<<< HEAD
+	dbx500_add_gpios(parent, ARRAY_AND_SIZE(db5500_gpio_base),
+=======
 	dbx500_add_gpios(ARRAY_AND_SIZE(db5500_gpio_base),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 IRQ_DB5500_GPIO0, &pdata);
 }
 
@@ -220,6 +245,9 @@ void __init u5500_map_io(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init db5500_pmu_init(void)
 {
 	struct resource res[] = {
@@ -239,8 +267,11 @@ static void __init db5500_pmu_init(void)
 					res, ARRAY_SIZE(res));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int usb_db5500_rx_dma_cfg[] = {
 	DB5500_DMA_DEV4_USB_OTG_IEP_1_9,
 	DB5500_DMA_DEV5_USB_OTG_IEP_2_10,
@@ -264,6 +295,9 @@ static int usb_db5500_tx_dma_cfg[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *db5500_read_soc_id(void)
 {
 	return kasprintf(GFP_KERNEL, "u5500 currently unsupported\n");
@@ -296,6 +330,8 @@ struct device * __init u5500_init_devices(void)
 			     ARRAY_SIZE(db5500_platform_devs));
 
 	return parent;
+<<<<<<< HEAD
+=======
 =======
 void __init u5500_init_devices(void)
 {
@@ -307,4 +343,5 @@ void __init u5500_init_devices(void)
 	platform_add_devices(db5500_platform_devs,
 			     ARRAY_SIZE(db5500_platform_devs));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/pci.h>
 #include <linux/slab.h>
@@ -22,8 +26,11 @@
 static int debug_pci;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int use_firmware;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * We can't use pci_find_device() here since we are
@@ -304,6 +311,8 @@ static inline int pdev_bad_for_parity(struct pci_dev *dev)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Adjust the device resources from bus-centric to Linux-centric.
  */
 static void __devinit
@@ -342,11 +351,17 @@ pbus_assign_bus_resources(struct pci_bus *bus, struct pci_sys_data *root)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pcibios_fixup_bus - Called after each bus is probed,
  * but before its children are examined.
  */
 void pcibios_fixup_bus(struct pci_bus *bus)
 {
+<<<<<<< HEAD
+	struct pci_dev *dev;
+	u16 features = PCI_COMMAND_SERR | PCI_COMMAND_PARITY | PCI_COMMAND_FAST_BACK;
+
+=======
 <<<<<<< HEAD
 	struct pci_dev *dev;
 	u16 features = PCI_COMMAND_SERR | PCI_COMMAND_PARITY | PCI_COMMAND_FAST_BACK;
@@ -359,6 +374,7 @@ void pcibios_fixup_bus(struct pci_bus *bus)
 	pbus_assign_bus_resources(bus, root);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Walk the devices on this bus, working out what we can
 	 * and can't support.
@@ -368,9 +384,12 @@ void pcibios_fixup_bus(struct pci_bus *bus)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		pdev_fixup_device_resources(root, dev);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_read_config_word(dev, PCI_STATUS, &status);
 
 		/*
@@ -435,6 +454,10 @@ void pcibios_fixup_bus(struct pci_bus *bus)
 #ifdef CONFIG_HOTPLUG
 EXPORT_SYMBOL(pcibios_fixup_bus);
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_HOTPLUG
+EXPORT_SYMBOL(pcibios_fixup_bus);
+=======
 
 /*
  * Convert from Linux-centric to bus-centric addresses for bridge devices.
@@ -476,6 +499,7 @@ EXPORT_SYMBOL(pcibios_fixup_bus);
 EXPORT_SYMBOL(pcibios_resource_to_bus);
 EXPORT_SYMBOL(pcibios_bus_to_resource);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -503,8 +527,12 @@ static u8 __devinit pcibios_swizzle(struct pci_dev *dev, u8 *pin)
 <<<<<<< HEAD
 static int pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+static int pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 static int pcibios_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pci_sys_data *sys = dev->sysdata;
 	int irq = -1;
@@ -540,14 +568,21 @@ static void __init pcibios_init_hw(struct hw_pci *hw)
 <<<<<<< HEAD
 		INIT_LIST_HEAD(&sys->resources);
 =======
+<<<<<<< HEAD
+		INIT_LIST_HEAD(&sys->resources);
+=======
 		sys->resource[0] = &ioport_resource;
 		sys->resource[1] = &iomem_resource;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ret = hw->setup(nr, sys);
 
 		if (ret > 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (list_empty(&sys->resources)) {
 				pci_add_resource_offset(&sys->resources,
 					 &ioport_resource, sys->io_offset);
@@ -555,8 +590,11 @@ static void __init pcibios_init_hw(struct hw_pci *hw)
 					 &iomem_resource, sys->mem_offset);
 			}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sys->bus = hw->scan(nr, sys);
 
 			if (!sys->bus)
@@ -582,7 +620,11 @@ void __init pci_common_init(struct hw_pci *hw)
 <<<<<<< HEAD
 	pci_add_flags(PCI_REASSIGN_ALL_RSRC);
 =======
+<<<<<<< HEAD
+	pci_add_flags(PCI_REASSIGN_ALL_RSRC);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hw->preinit)
 		hw->preinit();
 	pcibios_init_hw(hw);
@@ -597,8 +639,12 @@ void __init pci_common_init(struct hw_pci *hw)
 <<<<<<< HEAD
 		if (!pci_has_flag(PCI_PROBE_ONLY)) {
 =======
+<<<<<<< HEAD
+		if (!pci_has_flag(PCI_PROBE_ONLY)) {
+=======
 		if (!use_firmware) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Size the bridge windows.
 			 */
@@ -623,6 +669,9 @@ void __init pci_common_init(struct hw_pci *hw)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_PCI_HOST_ITE8152
 void pcibios_set_master(struct pci_dev *dev)
 {
@@ -630,8 +679,11 @@ void pcibios_set_master(struct pci_dev *dev)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 char * __init pcibios_setup(char *str)
 {
 	if (!strcmp(str, "debug")) {
@@ -641,8 +693,12 @@ char * __init pcibios_setup(char *str)
 <<<<<<< HEAD
 		pci_add_flags(PCI_PROBE_ONLY);
 =======
+<<<<<<< HEAD
+		pci_add_flags(PCI_PROBE_ONLY);
+=======
 		use_firmware = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 	return str;

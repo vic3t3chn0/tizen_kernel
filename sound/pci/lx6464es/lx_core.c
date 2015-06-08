@@ -82,8 +82,13 @@ unsigned long lx_dsp_reg_read(struct lx6464es *chip, int port)
 static void lx_dsp_reg_readbuf(struct lx6464es *chip, int port, u32 *data,
 			       u32 len)
 =======
+<<<<<<< HEAD
+static void lx_dsp_reg_readbuf(struct lx6464es *chip, int port, u32 *data,
+			       u32 len)
+=======
 void lx_dsp_reg_readbuf(struct lx6464es *chip, int port, u32 *data, u32 len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 __iomem *address = lx_dsp_register(chip, port);
 	int i;
@@ -104,9 +109,14 @@ void lx_dsp_reg_write(struct lx6464es *chip, int port, unsigned data)
 static void lx_dsp_reg_writebuf(struct lx6464es *chip, int port,
 				const u32 *data, u32 len)
 =======
+<<<<<<< HEAD
+static void lx_dsp_reg_writebuf(struct lx6464es *chip, int port,
+				const u32 *data, u32 len)
+=======
 void lx_dsp_reg_writebuf(struct lx6464es *chip, int port, const u32 *data,
 			 u32 len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 __iomem *address = lx_dsp_register(chip, port);
 	int i;
@@ -445,8 +455,12 @@ int lx_dsp_get_clock_frequency(struct lx6464es *chip, u32 *rfreq)
 <<<<<<< HEAD
 int lx_dsp_get_mac(struct lx6464es *chip)
 =======
+<<<<<<< HEAD
+int lx_dsp_get_mac(struct lx6464es *chip)
+=======
 int lx_dsp_get_mac(struct lx6464es *chip, u8 *mac_address)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 macmsb, maclsb;
 
@@ -455,12 +469,17 @@ int lx_dsp_get_mac(struct lx6464es *chip, u8 *mac_address)
 
 	/* todo: endianess handling */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chip->mac_address[5] = ((u8 *)(&maclsb))[0];
 	chip->mac_address[4] = ((u8 *)(&maclsb))[1];
 	chip->mac_address[3] = ((u8 *)(&maclsb))[2];
 	chip->mac_address[2] = ((u8 *)(&macmsb))[0];
 	chip->mac_address[1] = ((u8 *)(&macmsb))[1];
 	chip->mac_address[0] = ((u8 *)(&macmsb))[2];
+<<<<<<< HEAD
+=======
 =======
 	mac_address[5] = ((u8 *)(&maclsb))[0];
 	mac_address[4] = ((u8 *)(&maclsb))[1];
@@ -469,6 +488,7 @@ int lx_dsp_get_mac(struct lx6464es *chip, u8 *mac_address)
 	mac_address[1] = ((u8 *)(&macmsb))[1];
 	mac_address[0] = ((u8 *)(&macmsb))[2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

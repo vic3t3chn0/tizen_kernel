@@ -16,8 +16,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/stackprotector.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/cpu.h>
 #include <linux/errno.h>
 #include <linux/sched.h>
@@ -37,8 +40,11 @@
 #include <linux/kdebug.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/tick.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/prctl.h>
 #include <linux/uaccess.h>
 #include <linux/io.h>
@@ -50,10 +56,16 @@
 #include <asm/i387.h>
 #include <asm/fpu-internal.h>
 =======
+<<<<<<< HEAD
+#include <asm/processor.h>
+#include <asm/i387.h>
+#include <asm/fpu-internal.h>
+=======
 #include <asm/system.h>
 #include <asm/processor.h>
 #include <asm/i387.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu_context.h>
 #include <asm/prctl.h>
 #include <asm/desc.h>
@@ -65,11 +77,17 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 asmlinkage extern void ret_from_fork(void);
 
 DEFINE_PER_CPU(unsigned long, old_rsp);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static DEFINE_PER_CPU(unsigned char, is_idle);
@@ -156,6 +174,7 @@ void cpu_idle(void)
 	}
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Prints also some state that isn't saved in the pt_regs */
 void __show_regs(struct pt_regs *regs, int all)
@@ -284,7 +303,11 @@ int copy_thread(unsigned long clone_flags, unsigned long sp,
 <<<<<<< HEAD
 	p->fpu_counter = 0;
 =======
+<<<<<<< HEAD
+	p->fpu_counter = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p->thread.io_bitmap_ptr = NULL;
 
 	savesegment(gs, p->thread.gsindex);
@@ -302,17 +325,25 @@ int copy_thread(unsigned long clone_flags, unsigned long sp,
 		p->thread.io_bitmap_ptr = kmemdup(me->thread.io_bitmap_ptr,
 						  IO_BITMAP_BYTES, GFP_KERNEL);
 =======
+<<<<<<< HEAD
+		p->thread.io_bitmap_ptr = kmemdup(me->thread.io_bitmap_ptr,
+						  IO_BITMAP_BYTES, GFP_KERNEL);
+=======
 		p->thread.io_bitmap_ptr = kmalloc(IO_BITMAP_BYTES, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!p->thread.io_bitmap_ptr) {
 			p->thread.io_bitmap_max = 0;
 			return -ENOMEM;
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memcpy(p->thread.io_bitmap_ptr, me->thread.io_bitmap_ptr,
 				IO_BITMAP_BYTES);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_tsk_thread_flag(p, TIF_IO_BITMAP);
 	}
 
@@ -352,7 +383,11 @@ start_thread_common(struct pt_regs *regs, unsigned long new_ip,
 <<<<<<< HEAD
 	current->thread.usersp	= new_sp;
 =======
+<<<<<<< HEAD
+	current->thread.usersp	= new_sp;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->ip		= new_ip;
 	regs->sp		= new_sp;
 	percpu_write(old_rsp, new_sp);
@@ -381,8 +416,14 @@ void start_thread_ia32(struct pt_regs *regs, u32 new_ip, u32 new_sp)
 			    ? __USER_CS : __USER32_CS,
 			    __USER_DS, __USER_DS);
 =======
+<<<<<<< HEAD
+			    test_thread_flag(TIF_X32)
+			    ? __USER_CS : __USER32_CS,
+			    __USER_DS, __USER_DS);
+=======
 			    __USER32_CS, __USER32_DS, __USER32_DS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -409,8 +450,12 @@ __switch_to(struct task_struct *prev_p, struct task_struct *next_p)
 <<<<<<< HEAD
 	fpu = switch_fpu_prepare(prev_p, next_p, cpu);
 =======
+<<<<<<< HEAD
+	fpu = switch_fpu_prepare(prev_p, next_p, cpu);
+=======
 	fpu = switch_fpu_prepare(prev_p, next_p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Reload esp0, LDT and the page table pointer:
@@ -513,7 +558,12 @@ void set_personality_64bit(void)
 	clear_thread_flag(TIF_ADDR32);
 	clear_thread_flag(TIF_X32);
 =======
+<<<<<<< HEAD
+	clear_thread_flag(TIF_ADDR32);
+	clear_thread_flag(TIF_X32);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Ensure the corresponding mm is not marked. */
 	if (current->mm)
@@ -529,8 +579,12 @@ void set_personality_64bit(void)
 <<<<<<< HEAD
 void set_personality_ia32(bool x32)
 =======
+<<<<<<< HEAD
+void set_personality_ia32(bool x32)
+=======
 void set_personality_ia32(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* inherit personality from parent */
 
@@ -538,15 +592,22 @@ void set_personality_ia32(void)
 <<<<<<< HEAD
 	set_thread_flag(TIF_ADDR32);
 =======
+<<<<<<< HEAD
+	set_thread_flag(TIF_ADDR32);
+=======
 	set_thread_flag(TIF_IA32);
 	current->personality |= force_personality32;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Mark the associated mm as containing 32-bit tasks. */
 	if (current->mm)
 		current->mm->context.ia32_compat = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (x32) {
 		clear_thread_flag(TIF_IA32);
 		set_thread_flag(TIF_X32);
@@ -563,11 +624,14 @@ void set_personality_ia32(void)
 	}
 }
 EXPORT_SYMBOL_GPL(set_personality_ia32);
+<<<<<<< HEAD
+=======
 =======
 	/* Prepare the first "return" to user space */
 	current_thread_info()->status |= TS_COMPAT;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned long get_wchan(struct task_struct *p)
 {

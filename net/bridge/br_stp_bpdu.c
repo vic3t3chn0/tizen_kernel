@@ -18,8 +18,11 @@
 #include <linux/slab.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/pkt_sched.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/net_namespace.h>
 #include <net/llc.h>
 #include <net/llc_pdu.h>
@@ -46,8 +49,11 @@ static void br_send_bpdu(struct net_bridge_port *p,
 	skb->protocol = htons(ETH_P_802_2);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	skb->priority = TC_PRIO_CONTROL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb_reserve(skb, LLC_RESERVE);
 	memcpy(__skb_put(skb, length), data, length);
@@ -219,6 +225,9 @@ void br_stp_rcv(const struct stp_proto *proto, struct sk_buff *skb,
 		bpdu.forward_delay = br_get_ticks(buf+30);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (bpdu.message_age > bpdu.max_age) {
 			if (net_ratelimit())
 				br_notice(p->br,
@@ -232,12 +241,15 @@ void br_stp_rcv(const struct stp_proto *proto, struct sk_buff *skb,
 
 		br_received_config_bpdu(p, &bpdu);
 	} else if (buf[0] == BPDU_TYPE_TCN) {
+<<<<<<< HEAD
+=======
 =======
 		br_received_config_bpdu(p, &bpdu);
 	}
 
 	else if (buf[0] == BPDU_TYPE_TCN) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		br_received_tcn_bpdu(p);
 	}
  out:

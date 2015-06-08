@@ -140,7 +140,13 @@ extern int unix_gid_cache_create(struct net *net);
 extern void unix_gid_cache_destroy(struct net *net);
 
 =======
+<<<<<<< HEAD
+extern int unix_gid_cache_create(struct net *net);
+extern void unix_gid_cache_destroy(struct net *net);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline unsigned long hash_str(char *name, int bits)
 {
 	unsigned long hash = 0;

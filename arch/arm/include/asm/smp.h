@@ -34,13 +34,19 @@ asmlinkage void do_IPI(int ipinr, struct pt_regs *regs);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Called from C code, this handles an IPI.
  */
 void handle_IPI(int ipinr, struct pt_regs *regs);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Setup the set of possible CPUs (via set_cpu_possible)
  */
 extern void smp_init_cpus(void);
@@ -97,6 +103,9 @@ extern void arch_send_call_function_single_ipi(int cpu);
 extern void arch_send_call_function_ipi_mask(const struct cpumask *mask);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void smp_send_all_cpu_backtrace(void);
 
 struct smp_operations {
@@ -131,6 +140,8 @@ int  (*cpu_disable)(unsigned int cpu);
  * set platform specific SMP operations
  */
 extern void smp_set_ops(struct smp_operations *);
+<<<<<<< HEAD
+=======
 =======
 /*
  * show local interrupt info
@@ -139,5 +150,6 @@ extern void show_local_irqs(struct seq_file *, int);
 
 extern void smp_send_all_cpu_backtrace(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* ifndef __ASM_ARM_SMP_H */

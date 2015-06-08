@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 
 #include <plat/iommu.h>
@@ -74,8 +78,12 @@ static struct iommu_device omap4_devices[] = {
 <<<<<<< HEAD
 			.clk_name = "ipu_fck",
 =======
+<<<<<<< HEAD
+			.clk_name = "ipu_fck",
+=======
 			.clk_name = "ducati_ick",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.da_start = 0x0,
 			.da_end = 0xFFFFF000,
 		},
@@ -161,8 +169,13 @@ err_out:
 /* must be ready before omap3isp is probed */
 subsys_initcall(omap_iommu_init);
 =======
+<<<<<<< HEAD
+/* must be ready before omap3isp is probed */
+subsys_initcall(omap_iommu_init);
+=======
 module_init(omap_iommu_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __exit omap_iommu_exit(void)
 {

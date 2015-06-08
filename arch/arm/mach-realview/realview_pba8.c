@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/amba/bus.h>
 #include <linux/amba/pl061.h>
 #include <linux/amba/mmci.h>
@@ -108,24 +112,33 @@ static struct pl061_platform_data gpio0_plat_data = {
 	.gpio_base	= 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl061_platform_data gpio1_plat_data = {
 	.gpio_base	= 8,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl061_platform_data gpio2_plat_data = {
 	.gpio_base	= 16,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl022_ssp_controller ssp0_plat_data = {
@@ -139,6 +152,9 @@ static struct pl022_ssp_controller ssp0_plat_data = {
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO2_IRQ		{ IRQ_PBA8_GPIO2 }
 #define GPIO3_IRQ		{ IRQ_PBA8_GPIO3 }
 #define AACI_IRQ		{ IRQ_PBA8_AACI }
@@ -185,6 +201,8 @@ APB_DEVICE(ssp0,	"dev:ssp0",	PBA8_SSP,	&ssp0_plat_data);
 /* Primecells on the NEC ISSP chip */
 AHB_DEVICE(clcd,	"issp:clcd",	PBA8_CLCD,	&clcd_plat_data);
 AHB_DEVICE(dmac,	"issp:dmac",	DMAC,		NULL);
+<<<<<<< HEAD
+=======
 =======
 #define GPIO2_IRQ		{ IRQ_PBA8_GPIO2, NO_IRQ }
 #define GPIO3_IRQ		{ IRQ_PBA8_GPIO3, NO_IRQ }
@@ -233,6 +251,7 @@ AMBA_DEVICE(ssp0,	"dev:ssp0",	PBA8_SSP,	&ssp0_plat_data);
 AMBA_DEVICE(clcd,	"issp:clcd",	PBA8_CLCD,	&clcd_plat_data);
 AMBA_DEVICE(dmac,	"issp:dmac",	DMAC,		NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct amba_device *amba_devs[] __initdata = {
 	&dmac_device,
@@ -336,8 +355,12 @@ static struct sys_timer realview_pba8_timer = {
 <<<<<<< HEAD
 static void realview_pba8_restart(char mode, const char *cmd)
 =======
+<<<<<<< HEAD
+static void realview_pba8_restart(char mode, const char *cmd)
+=======
 static void realview_pba8_reset(char mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void __iomem *reset_ctrl = __io_address(REALVIEW_SYS_RESETCTL);
 	void __iomem *lock_ctrl = __io_address(REALVIEW_SYS_LOCK);
@@ -352,7 +375,11 @@ static void realview_pba8_reset(char mode)
 <<<<<<< HEAD
 	dsb();
 =======
+<<<<<<< HEAD
+	dsb();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init realview_pba8_init(void)
@@ -377,8 +404,11 @@ static void __init realview_pba8_init(void)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	realview_reset = realview_pba8_reset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(REALVIEW_PBA8, "ARM-RealView PB-A8")
@@ -386,21 +416,31 @@ MACHINE_START(REALVIEW_PBA8, "ARM-RealView PB-A8")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= PLAT_PHYS_OFFSET + 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fixup		= realview_fixup,
 	.map_io		= realview_pba8_map_io,
 	.init_early	= realview_init_early,
 	.init_irq	= gic_init_irq,
 	.timer		= &realview_pba8_timer,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handle_irq	= gic_handle_irq,
 	.init_machine	= realview_pba8_init,
 #ifdef CONFIG_ZONE_DMA
 	.dma_zone_size	= SZ_256M,
 #endif
 	.restart	= realview_pba8_restart,
+<<<<<<< HEAD
+=======
 =======
 	.init_machine	= realview_pba8_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

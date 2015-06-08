@@ -16,6 +16,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "m5602_ov7660.h"
 
 static int ov7660_get_gain(struct gspca_dev *gspca_dev, __s32 *val);
@@ -149,7 +157,15 @@ int ov7660_probe(struct sd *sd)
 
 	if (force_sensor) {
 		if (force_sensor == OV7660_SENSOR) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("Forcing an %s sensor\n", ov7660.name);
+=======
 			info("Forcing an %s sensor", ov7660.name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			info("Forcing an %s sensor", ov7660.name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto sensor_found;
 		}
 		/* If we want to force another sensor,
@@ -180,10 +196,23 @@ int ov7660_probe(struct sd *sd)
 	if (m5602_read_sensor(sd, OV7660_VER, &ver_id, 1))
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Sensor reported 0x%x%x\n", prod_id, ver_id);
+
+	if ((prod_id == 0x76) && (ver_id == 0x60)) {
+		pr_info("Detected a ov7660 sensor\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info("Sensor reported 0x%x%x", prod_id, ver_id);
 
 	if ((prod_id == 0x76) && (ver_id == 0x60)) {
 		info("Detected a ov7660 sensor");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto sensor_found;
 	}
 	return -ENODEV;
@@ -457,6 +486,21 @@ static int ov7660_set_vflip(struct gspca_dev *gspca_dev, __s32 val)
 static void ov7660_dump_registers(struct sd *sd)
 {
 	int address;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Dumping the ov7660 register state\n");
+	for (address = 0; address < 0xa9; address++) {
+		u8 value;
+		m5602_read_sensor(sd, address, &value, 1);
+		pr_info("register 0x%x contains 0x%x\n", address, value);
+	}
+
+	pr_info("ov7660 register state dump complete\n");
+
+	pr_info("Probing for which registers that are read/write\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info("Dumping the ov7660 register state");
 	for (address = 0; address < 0xa9; address++) {
 		u8 value;
@@ -468,6 +512,10 @@ static void ov7660_dump_registers(struct sd *sd)
 	info("ov7660 register state dump complete");
 
 	info("Probing for which registers that are read/write");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (address = 0; address < 0xff; address++) {
 		u8 old_value, ctrl_value;
 		u8 test_value[2] = {0xff, 0xff};
@@ -477,9 +525,21 @@ static void ov7660_dump_registers(struct sd *sd)
 		m5602_read_sensor(sd, address, &ctrl_value, 1);
 
 		if (ctrl_value == test_value[0])
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("register 0x%x is writeable\n", address);
+		else
+			pr_info("register 0x%x is read only\n", address);
+=======
 			info("register 0x%x is writeable", address);
 		else
 			info("register 0x%x is read only", address);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			info("register 0x%x is writeable", address);
+		else
+			info("register 0x%x is read only", address);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Restore original value */
 		m5602_write_sensor(sd, address, &old_value, 1);

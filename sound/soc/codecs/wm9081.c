@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <linux/regmap.h>
 =======
+<<<<<<< HEAD
+#include <linux/regmap.h>
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -35,6 +39,9 @@
 #include "wm9081.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct reg_default wm9081_reg[] = {
 	{  2, 0x00B9 },     /* R2  - Analogue Lineout */
 	{  3, 0x00B9 },     /* R3  - Analogue Speaker PGA */
@@ -89,6 +96,8 @@ static struct reg_default wm9081_reg[] = {
 	{ 59, 0x0564 },     /* R59 - EQ 18 */
 	{ 60, 0x0559 },     /* R60 - EQ 19 */
 	{ 61, 0x4000 },     /* R61 - EQ 20 */
+<<<<<<< HEAD
+=======
 =======
 static u16 wm9081_reg_defaults[] = {
 	0x0000,     /* R0  - Software Reset */
@@ -154,6 +163,7 @@ static u16 wm9081_reg_defaults[] = {
 	0x0559,     /* R60 - EQ 19 */
 	0x4000,     /* R61 - EQ 20 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct {
@@ -220,9 +230,13 @@ struct wm9081_priv {
 <<<<<<< HEAD
 	struct regmap *regmap;
 =======
+<<<<<<< HEAD
+	struct regmap *regmap;
+=======
 	enum snd_soc_control_type control_type;
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int sysclk_source;
 	int mclk_rate;
 	int sysclk_rate;
@@ -236,6 +250,9 @@ struct wm9081_priv {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool wm9081_volatile_register(struct device *dev, unsigned int reg)
 {
 	switch (reg) {
@@ -314,6 +331,8 @@ static bool wm9081_readable_register(struct device *dev, unsigned int reg)
 static int wm9081_reset(struct regmap *map)
 {
 	return regmap_write(map, WM9081_SOFTWARE_RESET, 0x9081);
+<<<<<<< HEAD
+=======
 =======
 static int wm9081_volatile_register(struct snd_soc_codec *codec, unsigned int reg)
 {
@@ -329,6 +348,7 @@ static int wm9081_reset(struct snd_soc_codec *codec)
 {
 	return snd_soc_write(codec, WM9081_SOFTWARE_RESET, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const DECLARE_TLV_DB_SCALE(drc_in_tlv, -4500, 75, 0);
@@ -876,8 +896,12 @@ SND_SOC_DAPM_PGA("Speaker PGA", WM9081_POWER_MANAGEMENT, 2, 0, NULL, 0),
 <<<<<<< HEAD
 SND_SOC_DAPM_OUT_DRV("Speaker", WM9081_POWER_MANAGEMENT, 1, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+SND_SOC_DAPM_OUT_DRV("Speaker", WM9081_POWER_MANAGEMENT, 1, 0, NULL, 0),
+=======
 SND_SOC_DAPM_PGA("Speaker", WM9081_POWER_MANAGEMENT, 1, 0, NULL, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_OUTPUT("LINEOUT"),
 SND_SOC_DAPM_OUTPUT("SPKN"),
@@ -890,7 +914,11 @@ SND_SOC_DAPM_SUPPLY("TOCLK", WM9081_CLOCK_CONTROL_3, 2, 0, NULL, 0),
 <<<<<<< HEAD
 SND_SOC_DAPM_SUPPLY("TSENSE", WM9081_POWER_MANAGEMENT, 7, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+SND_SOC_DAPM_SUPPLY("TSENSE", WM9081_POWER_MANAGEMENT, 7, 0, NULL, 0),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -916,7 +944,11 @@ static const struct snd_soc_dapm_route wm9081_audio_paths[] = {
 <<<<<<< HEAD
 	{ "Speaker", NULL, "TSENSE" },
 =======
+<<<<<<< HEAD
+	{ "Speaker", NULL, "TSENSE" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "SPKN", NULL, "Speaker" },
 	{ "SPKP", NULL, "Speaker" },
@@ -928,8 +960,12 @@ static int wm9081_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 	struct wm9081_priv *wm9081 = snd_soc_codec_get_drvdata(codec);
 =======
+<<<<<<< HEAD
+	struct wm9081_priv *wm9081 = snd_soc_codec_get_drvdata(codec);
+=======
 	u16 reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (level) {
 	case SND_SOC_BIAS_ON:
@@ -938,12 +974,17 @@ static int wm9081_set_bias_level(struct snd_soc_codec *codec,
 	case SND_SOC_BIAS_PREPARE:
 		/* VMID=2*40k */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_soc_update_bits(codec, WM9081_VMID_CONTROL,
 				    WM9081_VMID_SEL_MASK, 0x2);
 
 		/* Normal bias current */
 		snd_soc_update_bits(codec, WM9081_BIAS_CONTROL_1,
 				    WM9081_STBY_BIAS_ENA, 0);
+<<<<<<< HEAD
+=======
 =======
 		reg = snd_soc_read(codec, WM9081_VMID_CONTROL);
 		reg &= ~WM9081_VMID_SEL_MASK;
@@ -955,12 +996,16 @@ static int wm9081_set_bias_level(struct snd_soc_codec *codec,
 		reg &= ~WM9081_STBY_BIAS_ENA;
 		snd_soc_write(codec, WM9081_BIAS_CONTROL_1, reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case SND_SOC_BIAS_STANDBY:
 		/* Initial cold start */
 		if (codec->dapm.bias_level == SND_SOC_BIAS_OFF) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			regcache_cache_only(wm9081->regmap, false);
 			regcache_sync(wm9081->regmap);
 
@@ -978,6 +1023,8 @@ static int wm9081_set_bias_level(struct snd_soc_codec *codec,
 					    WM9081_VMID_RAMP |
 					    WM9081_VMID_SEL_MASK,
 					    WM9081_VMID_RAMP | 0x6);
+<<<<<<< HEAD
+=======
 =======
 			/* Disable LINEOUT discharge */
 			reg = snd_soc_read(codec, WM9081_ANTI_POP_CONTROL);
@@ -994,11 +1041,15 @@ static int wm9081_set_bias_level(struct snd_soc_codec *codec,
 			reg |= WM9081_VMID_RAMP | 0x6;
 			snd_soc_write(codec, WM9081_VMID_CONTROL, reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			mdelay(100);
 
 			/* Normal bias enable & soft start off */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			snd_soc_update_bits(codec, WM9081_VMID_CONTROL,
 					    WM9081_VMID_RAMP, 0);
 
@@ -1034,6 +1085,8 @@ static int wm9081_set_bias_level(struct snd_soc_codec *codec,
 				    WM9081_LINEOUT_DISCH);
 
 		regcache_cache_only(wm9081->regmap, true);
+<<<<<<< HEAD
+=======
 =======
 			reg |= WM9081_BIAS_ENA;
 			reg &= ~WM9081_VMID_RAMP;
@@ -1074,6 +1127,7 @@ static int wm9081_set_bias_level(struct snd_soc_codec *codec,
 		reg |= WM9081_LINEOUT_DISCH;
 		snd_soc_write(codec, WM9081_ANTI_POP_CONTROL, reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -1353,9 +1407,14 @@ static int wm9081_digital_mute(struct snd_soc_dai *codec_dai, int mute)
 static int wm9081_set_sysclk(struct snd_soc_codec *codec, int clk_id,
 			     int source, unsigned int freq, int dir)
 =======
+<<<<<<< HEAD
+static int wm9081_set_sysclk(struct snd_soc_codec *codec, int clk_id,
+			     int source, unsigned int freq, int dir)
+=======
 static int wm9081_set_sysclk(struct snd_soc_codec *codec,
 			     int clk_id, unsigned int freq, int dir)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct wm9081_priv *wm9081 = snd_soc_codec_get_drvdata(codec);
 
@@ -1422,8 +1481,12 @@ static int wm9081_set_tdm_slot(struct snd_soc_dai *dai,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm9081_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm9081_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm9081_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params = wm9081_hw_params,
 	.set_fmt = wm9081_set_dai_fmt,
 	.digital_mute = wm9081_digital_mute,
@@ -1450,22 +1513,31 @@ static int wm9081_probe(struct snd_soc_codec *codec)
 	struct wm9081_priv *wm9081 = snd_soc_codec_get_drvdata(codec);
 	int ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	codec->control_data = wm9081->regmap;
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 16, SND_SOC_REGMAP);
+<<<<<<< HEAD
+=======
 =======
 	u16 reg;
 
 	codec->control_data = wm9081->control_data;
 	ret = snd_soc_codec_set_cache_io(codec, 8, 16, wm9081->control_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != 0) {
 		dev_err(codec->dev, "Failed to set cache I/O: %d\n", ret);
 		return ret;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Enable zero cross by default */
 	snd_soc_update_bits(codec, WM9081_ANALOGUE_LINEOUT,
 			    WM9081_LINEOUTZC, WM9081_LINEOUTZC);
@@ -1476,6 +1548,8 @@ static int wm9081_probe(struct snd_soc_codec *codec)
 		dev_dbg(codec->dev,
 			"No ReTune Mobile data, using normal EQ\n");
 		snd_soc_add_codec_controls(codec, wm9081_eq_controls,
+<<<<<<< HEAD
+=======
 =======
 	reg = snd_soc_read(codec, WM9081_SOFTWARE_RESET);
 	if (reg != 0x9081) {
@@ -1514,6 +1588,7 @@ static int wm9081_probe(struct snd_soc_codec *codec)
 			"No ReTune Mobile data, using normal EQ\n");
 		snd_soc_add_controls(codec, wm9081_eq_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     ARRAY_SIZE(wm9081_eq_controls));
 	}
 
@@ -1526,6 +1601,11 @@ static int wm9081_remove(struct snd_soc_codec *codec)
 	return 0;
 }
 
+<<<<<<< HEAD
+static struct snd_soc_codec_driver soc_codec_dev_wm9081 = {
+	.probe = 	wm9081_probe,
+	.remove = 	wm9081_remove,
+=======
 <<<<<<< HEAD
 static struct snd_soc_codec_driver soc_codec_dev_wm9081 = {
 	.probe = 	wm9081_probe,
@@ -1566,15 +1646,21 @@ static struct snd_soc_codec_driver soc_codec_dev_wm9081 = {
 	.suspend =	wm9081_suspend,
 	.resume =	wm9081_resume,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.set_sysclk = wm9081_set_sysclk,
 	.set_bias_level = wm9081_set_bias_level,
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.idle_bias_off = true,
 
 	.controls         = wm9081_snd_controls,
 	.num_controls     = ARRAY_SIZE(wm9081_snd_controls),
+<<<<<<< HEAD
+=======
 =======
 	.reg_cache_size = ARRAY_SIZE(wm9081_reg_defaults),
 	.reg_word_size = sizeof(u16),
@@ -1582,6 +1668,7 @@ static struct snd_soc_codec_driver soc_codec_dev_wm9081 = {
 	.volatile_register = wm9081_volatile_register,
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dapm_widgets	  = wm9081_dapm_widgets,
 	.num_dapm_widgets = ARRAY_SIZE(wm9081_dapm_widgets),
 	.dapm_routes     = wm9081_audio_paths,
@@ -1589,6 +1676,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm9081 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct regmap_config wm9081_regmap = {
 	.reg_bits = 8,
 	.val_bits = 16,
@@ -1601,29 +1691,41 @@ static const struct regmap_config wm9081_regmap = {
 	.cache_type = REGCACHE_RBTREE,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 static __devinit int wm9081_i2c_probe(struct i2c_client *i2c,
 				      const struct i2c_device_id *id)
 {
 	struct wm9081_priv *wm9081;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int reg;
 	int ret;
 
 	wm9081 = devm_kzalloc(&i2c->dev, sizeof(struct wm9081_priv),
 			      GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	int ret;
 
 	wm9081 = kzalloc(sizeof(struct wm9081_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wm9081 == NULL)
 		return -ENOMEM;
 
 	i2c_set_clientdata(i2c, wm9081);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wm9081->regmap = regmap_init_i2c(i2c, &wm9081_regmap);
 	if (IS_ERR(wm9081->regmap)) {
@@ -1648,16 +1750,22 @@ static __devinit int wm9081_i2c_probe(struct i2c_client *i2c,
 		dev_err(&i2c->dev, "Failed to issue reset\n");
 		goto err_regmap;
 	}
+<<<<<<< HEAD
+=======
 =======
 	wm9081->control_type = SND_SOC_I2C;
 	wm9081->control_data = i2c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dev_get_platdata(&i2c->dev))
 		memcpy(&wm9081->pdata, dev_get_platdata(&i2c->dev),
 		       sizeof(wm9081->pdata));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = 0;
 	if (wm9081->pdata.irq_high)
 		reg |= WM9081_IRQ_POL;
@@ -1679,26 +1787,35 @@ err_regmap:
 	regmap_exit(wm9081->regmap);
 err:
 
+<<<<<<< HEAD
+=======
 =======
 	ret = snd_soc_register_codec(&i2c->dev,
 			&soc_codec_dev_wm9081, &wm9081_dai, 1);
 	if (ret < 0)
 		kfree(wm9081);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static __devexit int wm9081_i2c_remove(struct i2c_client *client)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm9081_priv *wm9081 = i2c_get_clientdata(client);
 
 	snd_soc_unregister_codec(&client->dev);
 	regmap_exit(wm9081->regmap);
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_codec(&client->dev);
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1719,6 +1836,9 @@ static struct i2c_driver wm9081_i2c_driver = {
 };
 #endif
 
+<<<<<<< HEAD
+module_i2c_driver(wm9081_i2c_driver);
+=======
 <<<<<<< HEAD
 module_i2c_driver(wm9081_i2c_driver);
 =======
@@ -1745,6 +1865,7 @@ static void __exit wm9081_exit(void)
 module_exit(wm9081_exit);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("ASoC WM9081 driver");
 MODULE_AUTHOR("Mark Brown <broonie@opensource.wolfsonmicro.com>");

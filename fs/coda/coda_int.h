@@ -14,8 +14,12 @@ int coda_init_inodecache(void);
 <<<<<<< HEAD
 int coda_fsync(struct file *coda_file, loff_t start, loff_t end, int datasync);
 =======
+<<<<<<< HEAD
+int coda_fsync(struct file *coda_file, loff_t start, loff_t end, int datasync);
+=======
 int coda_fsync(struct file *coda_file, int datasync);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void coda_sysctl_init(void);
 void coda_sysctl_clean(void);
 

@@ -76,19 +76,46 @@ static int ec100_read_reg(struct ec100_state *state, u8 reg, u8 *val)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int ec100_set_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
+=======
 static int ec100_set_frontend(struct dvb_frontend *fe,
 	struct dvb_frontend_parameters *params)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ec100_set_frontend(struct dvb_frontend *fe,
+	struct dvb_frontend_parameters *params)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ec100_state *state = fe->demodulator_priv;
 	int ret;
 	u8 tmp, tmp2;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	deb_info("%s: freq:%d bw:%d\n", __func__, c->frequency,
+		c->bandwidth_hz);
+
+	/* program tuner */
+	if (fe->ops.tuner_ops.set_params)
+		fe->ops.tuner_ops.set_params(fe);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	deb_info("%s: freq:%d bw:%d\n", __func__, params->frequency,
 		params->u.ofdm.bandwidth);
 
 	/* program tuner */
 	if (fe->ops.tuner_ops.set_params)
 		fe->ops.tuner_ops.set_params(fe, params);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = ec100_write_reg(state, 0x04, 0x06);
 	if (ret)
@@ -108,6 +135,21 @@ static int ec100_set_frontend(struct dvb_frontend *fe,
 	   B 0x1b | 0xb7 | 0x00 | 0x49
 	   B 0x1c | 0x55 | 0x64 | 0x72 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (c->bandwidth_hz) {
+	case 6000000:
+		tmp = 0xb7;
+		tmp2 = 0x55;
+		break;
+	case 7000000:
+		tmp = 0x00;
+		tmp2 = 0x64;
+		break;
+	case 8000000:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (params->u.ofdm.bandwidth) {
 	case BANDWIDTH_6_MHZ:
 		tmp = 0xb7;
@@ -118,6 +160,10 @@ static int ec100_set_frontend(struct dvb_frontend *fe,
 		tmp2 = 0x64;
 		break;
 	case BANDWIDTH_8_MHZ:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		tmp = 0x49;
 		tmp2 = 0x72;
@@ -306,9 +352,21 @@ error:
 EXPORT_SYMBOL(ec100_attach);
 
 static struct dvb_frontend_ops ec100_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBT },
+	.info = {
+		.name = "E3C EC100 DVB-T",
+=======
 	.info = {
 		.name = "E3C EC100 DVB-T",
 		.type = FE_OFDM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.info = {
+		.name = "E3C EC100 DVB-T",
+		.type = FE_OFDM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.caps =
 			FE_CAN_FEC_1_2 | FE_CAN_FEC_2_3 | FE_CAN_FEC_3_4 |
 			FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 | FE_CAN_FEC_AUTO |

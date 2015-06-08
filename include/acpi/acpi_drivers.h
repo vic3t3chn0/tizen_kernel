@@ -131,8 +131,12 @@ extern int register_hotplug_dock_device(acpi_handle handle,
 <<<<<<< HEAD
 					const struct acpi_dock_ops *ops,
 =======
+<<<<<<< HEAD
+					const struct acpi_dock_ops *ops,
+=======
 					struct acpi_dock_ops *ops,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					void *context);
 extern void unregister_hotplug_dock_device(acpi_handle handle);
 #else
@@ -151,8 +155,12 @@ static inline int register_hotplug_dock_device(acpi_handle handle,
 <<<<<<< HEAD
 					       const struct acpi_dock_ops *ops,
 =======
+<<<<<<< HEAD
+					       const struct acpi_dock_ops *ops,
+=======
 					       struct acpi_dock_ops *ops,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       void *context)
 {
 	return -ENODEV;

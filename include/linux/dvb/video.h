@@ -58,6 +58,9 @@ typedef enum {
 } video_displayformat_t;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum video_codec_t {
 	VIDEO_CODECTYPE_NONE,
 	VIDEO_CODECTYPE_MPEG2,
@@ -71,8 +74,11 @@ enum video_out_format_t {
 	VIDEO_YUV_FORMAT_TILE_4x2
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	int w;
 	int h;
@@ -101,6 +107,9 @@ typedef enum {
 #define VIDEO_CMD_CONTINUE    (3)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDEO_CMD_SET_CODEC           (4)
 #define VIDEO_CMD_GET_CODEC           (5)
 #define VIDEO_CMD_SET_OUTPUT_FORMAT   (6)
@@ -125,6 +134,8 @@ typedef enum {
 /* Flags for VIDEO_CMD_STOP */
 #define VIDEO_CMD_STOP_TO_BLACK		(1 << 0)
 #define VIDEO_CMD_STOP_IMMEDIATELY	(1 << 1)
+<<<<<<< HEAD
+=======
 =======
 /* Flags for VIDEO_CMD_FREEZE */
 #define VIDEO_CMD_FREEZE_TO_BLACK     	(1 << 0)
@@ -133,6 +144,7 @@ typedef enum {
 #define VIDEO_CMD_STOP_TO_BLACK      	(1 << 0)
 #define VIDEO_CMD_STOP_IMMEDIATELY     	(1 << 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Play input formats: */
 /* The decoder has no special format requirements */
@@ -141,6 +153,9 @@ typedef enum {
 #define VIDEO_PLAY_FMT_GOP          (1)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Picture Resolution for Video Data */
 struct video_pic_res {
 	unsigned int width;
@@ -198,8 +213,11 @@ struct video_mv_buff_size {
 };
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The structure must be zeroed before use by the application
    This ensures it can be extended safely in the future. */
 struct video_command {
@@ -219,13 +237,21 @@ struct video_command {
 			   <-1: reverse playback at (-speed/1000) of
 				the normal speed. */
 =======
+<<<<<<< HEAD
+			   <-1: reverse playback at (-speed/1000) of
+				the normal speed. */
+=======
 			   <-1: reverse playback at (-speed/1000) of the normal speed. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__s32 speed;
 			__u32 format;
 		} play;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		union {
 			enum video_codec_t codec; /* Video Codec Type */
 			enum video_out_format_t format; /* YUV Format */
@@ -237,8 +263,11 @@ struct video_command {
 			struct video_h264_mv mv_buffer_prop;
 		};
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct {
 			__u32 data[16];
 		} raw;
@@ -252,15 +281,23 @@ struct video_command {
 #define VIDEO_VSYNC_FIELD_UNKNOWN	(0)
 #define VIDEO_VSYNC_FIELD_ODD		(1)
 =======
+<<<<<<< HEAD
+#define VIDEO_VSYNC_FIELD_UNKNOWN	(0)
+#define VIDEO_VSYNC_FIELD_ODD		(1)
+=======
 #define VIDEO_VSYNC_FIELD_UNKNOWN  	(0)
 #define VIDEO_VSYNC_FIELD_ODD 		(1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDEO_VSYNC_FIELD_EVEN		(2)
 #define VIDEO_VSYNC_FIELD_PROGRESSIVE	(3)
 
 struct video_event {
 	__s32 type;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDEO_EVENT_SIZE_CHANGED	(1)
 #define VIDEO_EVENT_FRAME_RATE_CHANGED	(2)
 #define VIDEO_EVENT_DECODER_STOPPED	(3)
@@ -295,6 +332,8 @@ struct video_event {
 		unsigned int frame_rate;	/* in frames per 1000sec */
 		unsigned char vsync_field; /* unknown/odd/even/progressive */
 		struct video_data_buffer buffer; /* Output Buffer Details */
+<<<<<<< HEAD
+=======
 =======
 #define VIDEO_EVENT_SIZE_CHANGED	1
 #define VIDEO_EVENT_FRAME_RATE_CHANGED	2
@@ -306,6 +345,7 @@ struct video_event {
 		unsigned int frame_rate;	/* in frames per 1000sec */
 		unsigned char vsync_field;	/* unknown/odd/even/progressive */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} u;
 };
 
@@ -317,9 +357,14 @@ struct video_status {
 	video_stream_source_t stream_source;/* current source (demux/memory) */
 	video_format_t        video_format; /* current aspect ratio of stream*/
 =======
+<<<<<<< HEAD
+	video_stream_source_t stream_source;/* current source (demux/memory) */
+	video_format_t        video_format; /* current aspect ratio of stream*/
+=======
 	video_stream_source_t stream_source; /* current source (demux/memory) */
 	video_format_t        video_format;  /* current aspect ratio of stream*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	video_displayformat_t display_format;/* selected cropping mode */
 };
 
@@ -331,8 +376,11 @@ struct video_still_picture {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef
 struct video_highlight {
 	int     active;      /*    1=show highlight, 0=hide highlight */
@@ -441,15 +489,21 @@ typedef __u16 video_attributes_t;
 
 /* Read the number of displayed frames since the decoder was started */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDEO_GET_FRAME_COUNT	   _IOR('o', 58, __u64)
 
 #define VIDEO_COMMAND		   _IOWR('o', 59, struct video_command)
 #define VIDEO_TRY_COMMAND	   _IOWR('o', 60, struct video_command)
+<<<<<<< HEAD
+=======
 =======
 #define VIDEO_GET_FRAME_COUNT  	   _IOR('o', 58, __u64)
 
 #define VIDEO_COMMAND     	   _IOWR('o', 59, struct video_command)
 #define VIDEO_TRY_COMMAND 	   _IOWR('o', 60, struct video_command)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /*_DVBVIDEO_H_*/

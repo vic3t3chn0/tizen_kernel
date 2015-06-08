@@ -34,7 +34,12 @@
  * @gpio_runtime_close:	clean up platform specific gpio configuration
  * @gpio_runtime_setup:	set up platform specific gpio configuration
 =======
+<<<<<<< HEAD
+ * @gpio_runtime_close:	clean up platform specific gpio configuration
+ * @gpio_runtime_setup:	set up platform specific gpio configuration
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 struct rfkill_gpio_platform_data {
@@ -47,7 +52,12 @@ struct rfkill_gpio_platform_data {
 	void	(*gpio_runtime_close)(struct platform_device *);
 	int	(*gpio_runtime_setup)(struct platform_device *);
 =======
+<<<<<<< HEAD
+	void	(*gpio_runtime_close)(struct platform_device *);
+	int	(*gpio_runtime_setup)(struct platform_device *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __RFKILL_GPIO_H */

@@ -16,6 +16,9 @@
 #define AT91SAM9261_MATRIX_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AT91_MATRIX_MCFG	0x00			/* Master Configuration Register */
 #define		AT91_MATRIX_RCB0	(1 << 0)		/* Remap Command for AHB Master 0 (ARM926EJ-S Instruction Master) */
 #define		AT91_MATRIX_RCB1	(1 << 1)		/* Remap Command for AHB Master 1 (ARM926EJ-S Data Master) */
@@ -25,6 +28,8 @@
 #define AT91_MATRIX_SCFG2	0x0C			/* Slave Configuration Register 2 */
 #define AT91_MATRIX_SCFG3	0x10			/* Slave Configuration Register 3 */
 #define AT91_MATRIX_SCFG4	0x14			/* Slave Configuration Register 4 */
+<<<<<<< HEAD
+=======
 =======
 #define AT91_MATRIX_MCFG	(AT91_MATRIX + 0x00)	/* Master Configuration Register */
 #define		AT91_MATRIX_RCB0	(1 << 0)		/* Remap Command for AHB Master 0 (ARM926EJ-S Instruction Master) */
@@ -36,6 +41,7 @@
 #define AT91_MATRIX_SCFG3	(AT91_MATRIX + 0x10)	/* Slave Configuration Register 3 */
 #define AT91_MATRIX_SCFG4	(AT91_MATRIX + 0x14)	/* Slave Configuration Register 4 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_MATRIX_SLOT_CYCLE		(0xff << 0)	/* Maximum Number of Allowed Cycles for a Burst */
 #define		AT91_MATRIX_DEFMSTR_TYPE	(3    << 16)	/* Default Master Type */
 #define			AT91_MATRIX_DEFMSTR_TYPE_NONE	(0 << 16)
@@ -46,8 +52,12 @@
 <<<<<<< HEAD
 #define AT91_MATRIX_TCR		0x24			/* TCM Configuration Register */
 =======
+<<<<<<< HEAD
+#define AT91_MATRIX_TCR		0x24			/* TCM Configuration Register */
+=======
 #define AT91_MATRIX_TCR		(AT91_MATRIX + 0x24)	/* TCM Configuration Register */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_MATRIX_ITCM_SIZE		(0xf << 0)	/* Size of ITCM enabled memory block */
 #define			AT91_MATRIX_ITCM_0		(0 << 0)
 #define			AT91_MATRIX_ITCM_16		(5 << 0)
@@ -62,8 +72,12 @@
 <<<<<<< HEAD
 #define AT91_MATRIX_EBICSA	0x30			/* EBI Chip Select Assignment Register */
 =======
+<<<<<<< HEAD
+#define AT91_MATRIX_EBICSA	0x30			/* EBI Chip Select Assignment Register */
+=======
 #define AT91_MATRIX_EBICSA	(AT91_MATRIX + 0x30)	/* EBI Chip Select Assignment Register */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_MATRIX_CS1A		(1 << 1)	/* Chip Select 1 Assignment */
 #define			AT91_MATRIX_CS1A_SMC		(0 << 1)
 #define			AT91_MATRIX_CS1A_SDRAMC		(1 << 1)
@@ -81,8 +95,12 @@
 <<<<<<< HEAD
 #define AT91_MATRIX_USBPUCR	0x34			/* USB Pad Pull-Up Control Register */
 =======
+<<<<<<< HEAD
+#define AT91_MATRIX_USBPUCR	0x34			/* USB Pad Pull-Up Control Register */
+=======
 #define AT91_MATRIX_USBPUCR	(AT91_MATRIX + 0x34)	/* USB Pad Pull-Up Control Register */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_MATRIX_USBPUCR_PUON	(1 << 30)	/* USB Device PAD Pull-up Enable */
 
 #endif

@@ -10,6 +10,9 @@
 #include <linux/personality.h>
 #include <linux/random.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cachetype.h>
 
 static inline unsigned long COLOUR_ALIGN_DOWN(unsigned long addr,
@@ -23,16 +26,22 @@ static inline unsigned long COLOUR_ALIGN_DOWN(unsigned long addr,
 
 	return base - off;
 }
+<<<<<<< HEAD
+=======
 =======
 #include <asm/cputype.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define COLOUR_ALIGN(addr,pgoff)		\
 	((((addr)+SHMLBA-1)&~(SHMLBA-1)) +	\
 	 (((pgoff)<<PAGE_SHIFT) & (SHMLBA-1)))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* gap between mmap and stack */
 #define MIN_GAP (128*1024*1024UL)
 #define MAX_GAP ((TASK_SIZE)/6*5)
@@ -60,8 +69,11 @@ static unsigned long mmap_base(unsigned long rnd)
 	return PAGE_ALIGN(TASK_SIZE - gap - rnd);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * We need to ensure that shared mappings are correctly aligned to
  * avoid aliasing issues with VIPT caches.  We need to ensure that
@@ -79,6 +91,9 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
 	struct vm_area_struct *vma;
 	unsigned long start_addr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int do_align = 0;
 	int aliasing = cache_is_vipt_aliasing();
 
@@ -88,6 +103,8 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
 	 */
 	if (aliasing)
 		do_align = filp || (flags & MAP_SHARED);
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_CPU_V6) || defined(CONFIG_CPU_V6K)
 	unsigned int cache_type;
@@ -109,6 +126,7 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
 #define aliasing 0
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We enforce the MAP_FIXED case.
@@ -142,6 +160,11 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
 	        mm->cached_hole_size = 0;
 	}
 =======
+<<<<<<< HEAD
+	        start_addr = addr = mm->mmap_base;
+	        mm->cached_hole_size = 0;
+	}
+=======
 	        start_addr = addr = TASK_UNMAPPED_BASE;
 	        mm->cached_hole_size = 0;
 	}
@@ -150,6 +173,7 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
 	    !(current->personality & ADDR_NO_RANDOMIZE))
 		addr += (get_random_int() % (1 << 8)) << PAGE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 full_search:
 	if (do_align)
@@ -187,6 +211,9 @@ full_search:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long
 arch_get_unmapped_area_topdown(struct file *filp, const unsigned long addr0,
 			const unsigned long len, const unsigned long pgoff,
@@ -315,8 +342,11 @@ void arch_pick_mmap_layout(struct mm_struct *mm)
 		mm->unmap_area = arch_unmap_area_topdown;
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * You really shouldn't be using read() or write() on /dev/mem.  This

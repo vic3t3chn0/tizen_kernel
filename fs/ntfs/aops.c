@@ -95,11 +95,16 @@ static void ntfs_end_buffer_async_read(struct buffer_head *bh, int uptodate)
 				ofs = init_size - file_ofs;
 			local_irq_save(flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			kaddr = kmap_atomic(page);
 			memset(kaddr + bh_offset(bh) + ofs, 0,
 					bh->b_size - ofs);
 			flush_dcache_page(page);
 			kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 			kaddr = kmap_atomic(page, KM_BIO_SRC_IRQ);
 			memset(kaddr + bh_offset(bh) + ofs, 0,
@@ -107,6 +112,7 @@ static void ntfs_end_buffer_async_read(struct buffer_head *bh, int uptodate)
 			flush_dcache_page(page);
 			kunmap_atomic(kaddr, KM_BIO_SRC_IRQ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			local_irq_restore(flags);
 		}
 	} else {
@@ -156,11 +162,16 @@ static void ntfs_end_buffer_async_read(struct buffer_head *bh, int uptodate)
 		BUG_ON(!recs);
 		local_irq_save(flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kaddr = kmap_atomic(page);
 		for (i = 0; i < recs; i++)
 			post_read_mst_fixup((NTFS_RECORD*)(kaddr +
 					i * rec_size), rec_size);
 		kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 		kaddr = kmap_atomic(page, KM_BIO_SRC_IRQ);
 		for (i = 0; i < recs; i++)
@@ -168,6 +179,7 @@ static void ntfs_end_buffer_async_read(struct buffer_head *bh, int uptodate)
 					i * rec_size), rec_size);
 		kunmap_atomic(kaddr, KM_BIO_SRC_IRQ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		local_irq_restore(flags);
 		flush_dcache_page(page);
 		if (likely(page_uptodate && !PageError(page)))
@@ -523,8 +535,12 @@ retry_readpage:
 <<<<<<< HEAD
 	addr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	addr = kmap_atomic(page);
+=======
 	addr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Copy the data to the page. */
 	memcpy(addr, (u8*)ctx->attr +
 			le16_to_cpu(ctx->attr->data.resident.value_offset),
@@ -535,8 +551,12 @@ retry_readpage:
 <<<<<<< HEAD
 	kunmap_atomic(addr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(addr);
+=======
 	kunmap_atomic(addr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 put_unm_err_out:
 	ntfs_attr_put_search_ctx(ctx);
 unm_err_out:
@@ -773,8 +793,12 @@ lock_retry_remap:
 <<<<<<< HEAD
 			kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+			kaddr = kmap_atomic(page);
+=======
 			kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			bpos = (unsigned long *)(kaddr + bh_offset(bh));
 			bend = (unsigned long *)((u8*)bpos + blocksize);
 			do {
@@ -784,8 +808,12 @@ lock_retry_remap:
 <<<<<<< HEAD
 			kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+			kunmap_atomic(kaddr);
+=======
 			kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (bpos == bend) {
 				/*
 				 * Buffer is zero and sparse, no need to write
@@ -1530,8 +1558,12 @@ retry_writepage:
 <<<<<<< HEAD
 	addr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	addr = kmap_atomic(page);
+=======
 	addr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Copy the data from the page to the mft record. */
 	memcpy((u8*)ctx->attr +
 			le16_to_cpu(ctx->attr->data.resident.value_offset),
@@ -1541,8 +1573,12 @@ retry_writepage:
 <<<<<<< HEAD
 	kunmap_atomic(addr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(addr);
+=======
 	kunmap_atomic(addr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flush_dcache_page(page);
 	flush_dcache_mft_record_page(ctx->ntfs_ino);
 	/* We are done with the page. */

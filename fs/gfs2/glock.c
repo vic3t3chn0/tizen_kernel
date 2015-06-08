@@ -32,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/percpu.h>
 =======
+<<<<<<< HEAD
+#include <linux/percpu.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "gfs2.h"
 #include "incore.h"
@@ -175,24 +179,35 @@ void gfs2_glock_add_to_lru(struct gfs2_glock *gl)
 static void __gfs2_glock_remove_from_lru(struct gfs2_glock *gl)
 {
 =======
+<<<<<<< HEAD
+static void __gfs2_glock_remove_from_lru(struct gfs2_glock *gl)
+{
+=======
 static void gfs2_glock_remove_from_lru(struct gfs2_glock *gl)
 {
 	spin_lock(&lru_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!list_empty(&gl->gl_lru)) {
 		list_del_init(&gl->gl_lru);
 		atomic_dec(&lru_count);
 		clear_bit(GLF_LRU, &gl->gl_flags);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void gfs2_glock_remove_from_lru(struct gfs2_glock *gl)
 {
 	spin_lock(&lru_lock);
 	__gfs2_glock_remove_from_lru(gl);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&lru_lock);
 }
 
@@ -236,12 +251,17 @@ void gfs2_glock_put(struct gfs2_glock *gl)
 	struct address_space *mapping = gfs2_glock2aspace(gl);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (atomic_dec_and_lock(&gl->gl_ref, &lru_lock)) {
 		__gfs2_glock_remove_from_lru(gl);
 		spin_unlock(&lru_lock);
 		spin_lock_bucket(gl->gl_hash);
 		hlist_bl_del_rcu(&gl->gl_list);
 		spin_unlock_bucket(gl->gl_hash);
+<<<<<<< HEAD
+=======
 =======
 	if (atomic_dec_and_test(&gl->gl_ref)) {
 		spin_lock_bucket(gl->gl_hash);
@@ -249,6 +269,7 @@ void gfs2_glock_put(struct gfs2_glock *gl)
 		spin_unlock_bucket(gl->gl_hash);
 		gfs2_glock_remove_from_lru(gl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		GLOCK_BUG_ON(gl, !list_empty(&gl->gl_holders));
 		GLOCK_BUG_ON(gl, mapping && mapping->nrpages);
 		trace_gfs2_glock_put(gl);
@@ -437,12 +458,18 @@ static void state_change(struct gfs2_glock *gl, unsigned int new_state)
 		clear_bit(GLF_QUEUED, &gl->gl_flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (new_state != gl->gl_target)
 		/* shorten our minimum hold time */
 		gl->gl_hold_time = max(gl->gl_hold_time - GL_GLOCK_HOLD_DECR,
 				       GL_GLOCK_MIN_HOLD);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gl->gl_state = new_state;
 	gl->gl_tchange = jiffies;
 }
@@ -568,13 +595,19 @@ __acquires(&gl->gl_spin)
 	}
 	gl->gl_req = target;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(GLF_BLOCKING, &gl->gl_flags);
 	if ((gl->gl_req == LM_ST_UNLOCKED) ||
 	    (gl->gl_state == LM_ST_EXCLUSIVE) ||
 	    (lck_flags & (LM_FLAG_TRY|LM_FLAG_TRY_1CB)))
 		clear_bit(GLF_BLOCKING, &gl->gl_flags);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&gl->gl_spin);
 	if (glops->go_xmote_th)
 		glops->go_xmote_th(gl);
@@ -713,8 +746,12 @@ static void glock_work_func(struct work_struct *work)
 <<<<<<< HEAD
 		holdtime = gl->gl_tchange + gl->gl_hold_time;
 =======
+<<<<<<< HEAD
+		holdtime = gl->gl_tchange + gl->gl_hold_time;
+=======
 		holdtime = gl->gl_tchange + gl->gl_ops->go_min_hold_time;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (time_before(now, holdtime))
 			delay = holdtime - now;
 
@@ -726,6 +763,9 @@ static void glock_work_func(struct work_struct *work)
 	run_queue(gl, 0);
 	spin_unlock(&gl->gl_spin);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!delay)
 		gfs2_glock_put(gl);
 	else {
@@ -734,11 +774,14 @@ static void glock_work_func(struct work_struct *work)
 		if (queue_delayed_work(glock_workqueue, &gl->gl_work, delay) == 0)
 			gfs2_glock_put(gl);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!delay ||
 	    queue_delayed_work(glock_workqueue, &gl->gl_work, delay) == 0)
 		gfs2_glock_put(gl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (drop_ref)
 		gfs2_glock_put(gl);
 }
@@ -789,7 +832,11 @@ int gfs2_glock_get(struct gfs2_sbd *sdp, u64 number,
 <<<<<<< HEAD
 	gl->gl_sbd = sdp;
 =======
+<<<<<<< HEAD
+	gl->gl_sbd = sdp;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gl->gl_flags = 0;
 	gl->gl_name = name;
 	atomic_set(&gl->gl_ref, 1);
@@ -799,6 +846,9 @@ int gfs2_glock_get(struct gfs2_sbd *sdp, u64 number,
 	gl->gl_hash = hash;
 	gl->gl_ops = glops;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gl->gl_dstamp = ktime_set(0, 0);
 	preempt_disable();
 	/* We use the global stats to estimate the initial per-glock stats */
@@ -806,9 +856,12 @@ int gfs2_glock_get(struct gfs2_sbd *sdp, u64 number,
 	preempt_enable();
 	gl->gl_stats.stats[GFS2_LKS_DCOUNT] = 0;
 	gl->gl_stats.stats[GFS2_LKS_QCOUNT] = 0;
+<<<<<<< HEAD
+=======
 =======
 	snprintf(gl->gl_strname, GDLM_STRNAME_BYTES, "%8x%16llx", name.ln_type, (unsigned long long)number);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&gl->gl_lksb, 0, sizeof(struct dlm_lksb));
 	gl->gl_lksb.sb_lvbptr = gl->gl_lvb;
 	gl->gl_tchange = jiffies;
@@ -816,8 +869,12 @@ int gfs2_glock_get(struct gfs2_sbd *sdp, u64 number,
 <<<<<<< HEAD
 	gl->gl_hold_time = GL_GLOCK_DFT_HOLD;
 =======
+<<<<<<< HEAD
+	gl->gl_hold_time = GL_GLOCK_DFT_HOLD;
+=======
 	gl->gl_sbd = sdp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_DELAYED_WORK(&gl->gl_work, glock_work_func);
 	INIT_WORK(&gl->gl_delete, delete_work_func);
 
@@ -931,6 +988,9 @@ static int gfs2_glock_demote_wait(void *word)
 static void wait_on_holder(struct gfs2_holder *gh)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long time1 = jiffies;
 
 	might_sleep();
@@ -940,10 +1000,13 @@ static void wait_on_holder(struct gfs2_holder *gh)
 		gh->gh_gl->gl_hold_time = min(gh->gh_gl->gl_hold_time +
 					      GL_GLOCK_HOLD_INCR,
 					      GL_GLOCK_MAX_HOLD);
+<<<<<<< HEAD
+=======
 =======
 	might_sleep();
 	wait_on_bit(&gh->gh_iflags, HIF_WAIT, gfs2_glock_holder_wait, TASK_UNINTERRUPTIBLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void wait_on_demote(struct gfs2_glock *gl)
@@ -1067,7 +1130,12 @@ fail:
 	gfs2_glstats_inc(gl, GFS2_LKS_QCOUNT);
 	gfs2_sbstats_inc(gl, GFS2_LKS_QCOUNT);
 =======
+<<<<<<< HEAD
+	gfs2_glstats_inc(gl, GFS2_LKS_QCOUNT);
+	gfs2_sbstats_inc(gl, GFS2_LKS_QCOUNT);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (likely(insert_pt == NULL)) {
 		list_add_tail(&gh->gh_list, &gl->gl_holders);
 		if (unlikely(gh->gh_flags & LM_FLAG_PRIORITY))
@@ -1190,9 +1258,15 @@ void gfs2_glock_dq(struct gfs2_holder *gh)
 	    gl->gl_name.ln_type == LM_TYPE_INODE)
 		delay = gl->gl_hold_time;
 =======
+<<<<<<< HEAD
+	    !test_bit(GLF_DEMOTE, &gl->gl_flags) &&
+	    gl->gl_name.ln_type == LM_TYPE_INODE)
+		delay = gl->gl_hold_time;
+=======
 	    !test_bit(GLF_DEMOTE, &gl->gl_flags))
 		delay = gl->gl_ops->go_min_hold_time;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (queue_delayed_work(glock_workqueue, &gl->gl_work, delay) == 0)
 		gfs2_glock_put(gl);
 }
@@ -1372,6 +1446,9 @@ void gfs2_glock_cb(struct gfs2_glock *gl, unsigned int state)
 
 	gfs2_glock_hold(gl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	holdtime = gl->gl_tchange + gl->gl_hold_time;
 	if (test_bit(GLF_QUEUED, &gl->gl_flags) &&
 	    gl->gl_name.ln_type == LM_TYPE_INODE) {
@@ -1379,6 +1456,8 @@ void gfs2_glock_cb(struct gfs2_glock *gl, unsigned int state)
 			delay = holdtime - now;
 		if (test_bit(GLF_REPLY_PENDING, &gl->gl_flags))
 			delay = gl->gl_hold_time;
+<<<<<<< HEAD
+=======
 =======
 	holdtime = gl->gl_tchange + gl->gl_ops->go_min_hold_time;
 	if (test_bit(GLF_QUEUED, &gl->gl_flags)) {
@@ -1387,6 +1466,7 @@ void gfs2_glock_cb(struct gfs2_glock *gl, unsigned int state)
 		if (test_bit(GLF_REPLY_PENDING, &gl->gl_flags))
 			delay = gl->gl_ops->go_min_hold_time;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	spin_lock(&gl->gl_spin);
@@ -1445,8 +1525,12 @@ void gfs2_glock_complete(struct gfs2_glock *gl, int ret)
 <<<<<<< HEAD
 	if (unlikely(test_bit(DFL_BLOCK_LOCKS, &ls->ls_recover_flags))) {
 =======
+<<<<<<< HEAD
+	if (unlikely(test_bit(DFL_BLOCK_LOCKS, &ls->ls_recover_flags))) {
+=======
 	if (unlikely(test_bit(DFL_BLOCK_LOCKS, &ls->ls_flags))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (gfs2_should_freeze(gl)) {
 			set_bit(GLF_FROZEN, &gl->gl_flags);
 			spin_unlock(&gl->gl_spin);
@@ -1749,7 +1833,12 @@ static const char *gflags2str(char *buf, const struct gfs2_glock *gl)
 	if (test_bit(GLF_BLOCKING, gflags))
 		*p++ = 'b';
 =======
+<<<<<<< HEAD
+	if (test_bit(GLF_BLOCKING, gflags))
+		*p++ = 'b';
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*p = 0;
 	return buf;
 }
@@ -1787,8 +1876,12 @@ static int __dump_glock(struct seq_file *seq, const struct gfs2_glock *gl)
 <<<<<<< HEAD
 	gfs2_print_dbg(seq, "G:  s:%s n:%u/%llx f:%s t:%s d:%s/%llu a:%d v:%d r:%d m:%ld\n",
 =======
+<<<<<<< HEAD
+	gfs2_print_dbg(seq, "G:  s:%s n:%u/%llx f:%s t:%s d:%s/%llu a:%d v:%d r:%d m:%ld\n",
+=======
 	gfs2_print_dbg(seq, "G:  s:%s n:%u/%llx f:%s t:%s d:%s/%llu a:%d v:%d r:%d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  state2str(gl->gl_state),
 		  gl->gl_name.ln_type,
 		  (unsigned long long)gl->gl_name.ln_number,
@@ -1800,8 +1893,12 @@ static int __dump_glock(struct seq_file *seq, const struct gfs2_glock *gl)
 <<<<<<< HEAD
 		  atomic_read(&gl->gl_ref), gl->gl_hold_time);
 =======
+<<<<<<< HEAD
+		  atomic_read(&gl->gl_ref), gl->gl_hold_time);
+=======
 		  atomic_read(&gl->gl_ref));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_for_each_entry(gh, &gl->gl_holders, gh_list) {
 		error = dump_holder(seq, gh);
@@ -1815,6 +1912,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gfs2_glstats_seq_show(struct seq_file *seq, void *iter_ptr)
 {
 	struct gfs2_glock *gl = iter_ptr;
@@ -1887,10 +1987,13 @@ static int gfs2_sbstats_seq_show(struct seq_file *seq, void *iter_ptr)
 	seq_putc(seq, '\n');
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __init gfs2_glock_init(void)
 {
@@ -2004,6 +2107,9 @@ static int gfs2_glock_seq_show(struct seq_file *seq, void *iter_ptr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void *gfs2_sbstats_seq_start(struct seq_file *seq, loff_t *pos)
 {
 	struct gfs2_glock_iter *gi = seq->private;
@@ -2033,8 +2139,11 @@ static void gfs2_sbstats_seq_stop(struct seq_file *seq, void *iter_ptr)
 	preempt_enable();
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct seq_operations gfs2_glock_seq_ops = {
 	.start = gfs2_glock_seq_start,
 	.next  = gfs2_glock_seq_next,
@@ -2043,6 +2152,9 @@ static const struct seq_operations gfs2_glock_seq_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct seq_operations gfs2_glstats_seq_ops = {
 	.start = gfs2_glock_seq_start,
 	.next  = gfs2_glock_seq_next,
@@ -2058,9 +2170,12 @@ static const struct seq_operations gfs2_sbstats_seq_ops = {
 };
 
 static int gfs2_glocks_open(struct inode *inode, struct file *file)
+<<<<<<< HEAD
+=======
 =======
 static int gfs2_debugfs_open(struct inode *inode, struct file *file)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret = seq_open_private(file, &gfs2_glock_seq_ops,
 				   sizeof(struct gfs2_glock_iter));
@@ -2073,6 +2188,9 @@ static int gfs2_debugfs_open(struct inode *inode, struct file *file)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gfs2_glstats_open(struct inode *inode, struct file *file)
 {
 	int ret = seq_open_private(file, &gfs2_glstats_seq_ops,
@@ -2116,11 +2234,14 @@ static const struct file_operations gfs2_glstats_fops = {
 static const struct file_operations gfs2_sbstats_fops = {
 	.owner   = THIS_MODULE,
 	.open	 = gfs2_sbstats_open,
+<<<<<<< HEAD
+=======
 =======
 static const struct file_operations gfs2_debug_fops = {
 	.owner   = THIS_MODULE,
 	.open    = gfs2_debugfs_open,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read    = seq_read,
 	.llseek  = seq_lseek,
 	.release = seq_release_private,
@@ -2135,6 +2256,9 @@ int gfs2_create_debugfs_file(struct gfs2_sbd *sdp)
 							 S_IFREG | S_IRUGO,
 							 sdp->debugfs_dir, sdp,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							 &gfs2_glocks_fops);
 	if (!sdp->debugfs_dentry_glocks)
 		goto fail;
@@ -2157,6 +2281,8 @@ int gfs2_create_debugfs_file(struct gfs2_sbd *sdp)
 fail:
 	gfs2_delete_debugfs_file(sdp);
 	return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 							 &gfs2_debug_fops);
 	if (!sdp->debugfs_dentry_glocks)
@@ -2164,6 +2290,7 @@ fail:
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void gfs2_delete_debugfs_file(struct gfs2_sbd *sdp)
@@ -2171,13 +2298,20 @@ void gfs2_delete_debugfs_file(struct gfs2_sbd *sdp)
 <<<<<<< HEAD
 	if (sdp->debugfs_dir) {
 =======
+<<<<<<< HEAD
+	if (sdp->debugfs_dir) {
+=======
 	if (sdp && sdp->debugfs_dir) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sdp->debugfs_dentry_glocks) {
 			debugfs_remove(sdp->debugfs_dentry_glocks);
 			sdp->debugfs_dentry_glocks = NULL;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sdp->debugfs_dentry_glstats) {
 			debugfs_remove(sdp->debugfs_dentry_glstats);
 			sdp->debugfs_dentry_glstats = NULL;
@@ -2186,8 +2320,11 @@ void gfs2_delete_debugfs_file(struct gfs2_sbd *sdp)
 			debugfs_remove(sdp->debugfs_dentry_sbstats);
 			sdp->debugfs_dentry_sbstats = NULL;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		debugfs_remove(sdp->debugfs_dir);
 		sdp->debugfs_dir = NULL;
 	}

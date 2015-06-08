@@ -265,6 +265,9 @@ static int init_symlink(struct inode * inode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int create_dir(struct config_item *k, struct dentry *d)
 {
 	int error;
@@ -272,6 +275,8 @@ static int create_dir(struct config_item *k, struct dentry *d)
 	struct dentry *p = d->d_parent;
 
 	BUG_ON(!k);
+<<<<<<< HEAD
+=======
 =======
 static int create_dir(struct config_item * k, struct dentry * p,
 		      struct dentry * d)
@@ -279,6 +284,7 @@ static int create_dir(struct config_item * k, struct dentry * p,
 	int error;
 	umode_t mode = S_IFDIR| S_IRWXU | S_IRUGO | S_IXUGO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = configfs_dirent_exists(p->d_fsdata, d->d_name.name);
 	if (!error)
@@ -317,6 +323,9 @@ static int configfs_create_dir(struct config_item * item, struct dentry *dentry)
 <<<<<<< HEAD
 	int error = create_dir(item, dentry);
 =======
+<<<<<<< HEAD
+	int error = create_dir(item, dentry);
+=======
 	struct dentry * parent;
 	int error = 0;
 
@@ -331,6 +340,7 @@ static int configfs_create_dir(struct config_item * item, struct dentry *dentry)
 
 	error = create_dir(item,parent,dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!error)
 		item->ci_dentry = dentry;
 	return error;
@@ -1096,7 +1106,11 @@ int configfs_depend_item(struct configfs_subsystem *subsys,
 <<<<<<< HEAD
 	struct dentry *root;
 =======
+<<<<<<< HEAD
+	struct dentry *root;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Pin the configfs filesystem.  This means we can safely access
@@ -1107,10 +1121,16 @@ int configfs_depend_item(struct configfs_subsystem *subsys,
 	if (IS_ERR(root))
 		return PTR_ERR(root);
 =======
+<<<<<<< HEAD
+	root = configfs_pin_fs();
+	if (IS_ERR(root))
+		return PTR_ERR(root);
+=======
 	ret = configfs_pin_fs();
 	if (ret)
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Next, lock the root directory.  We're going to check that the
@@ -1122,10 +1142,16 @@ int configfs_depend_item(struct configfs_subsystem *subsys,
 
 	root_sd = root->d_fsdata;
 =======
+<<<<<<< HEAD
+	mutex_lock(&root->d_inode->i_mutex);
+
+	root_sd = root->d_fsdata;
+=======
 	mutex_lock(&configfs_sb->s_root->d_inode->i_mutex);
 
 	root_sd = configfs_sb->s_root->d_fsdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_for_each_entry(p, &root_sd->s_children, s_sibling) {
 		if (p->s_type & CONFIGFS_DIR) {
@@ -1162,8 +1188,12 @@ out_unlock_fs:
 <<<<<<< HEAD
 	mutex_unlock(&root->d_inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&root->d_inode->i_mutex);
+=======
 	mutex_unlock(&configfs_sb->s_root->d_inode->i_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we succeeded, the fs is pinned via other methods.  If not,
@@ -1207,8 +1237,12 @@ EXPORT_SYMBOL(configfs_undepend_item);
 <<<<<<< HEAD
 static int configfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int configfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int configfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret = 0;
 	int module_got = 0;
@@ -1223,12 +1257,15 @@ static int configfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (dentry->d_parent == configfs_sb->s_root) {
 		ret = -EPERM;
 		goto out;
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sd = dentry->d_parent->d_fsdata;
 
 	/*
@@ -1402,10 +1439,13 @@ static int configfs_rmdir(struct inode *dir, struct dentry *dentry)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (dentry->d_parent == configfs_sb->s_root)
 		return -EPERM;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sd = dentry->d_fsdata;
 	if (sd->s_type & CONFIGFS_USET_DEFAULT)
 		return -EPERM;
@@ -1504,13 +1544,19 @@ const struct inode_operations configfs_dir_inode_operations = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const struct inode_operations configfs_root_inode_operations = {
 	.lookup		= configfs_lookup,
 	.setattr	= configfs_setattr,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if 0
 int configfs_rename_dir(struct config_item * item, const char *new_name)
 {
@@ -1601,7 +1647,11 @@ static int configfs_readdir(struct file * filp, void * dirent, filldir_t filldir
 <<<<<<< HEAD
 	struct super_block *sb = dentry->d_sb;
 =======
+<<<<<<< HEAD
+	struct super_block *sb = dentry->d_sb;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct configfs_dirent * parent_sd = dentry->d_fsdata;
 	struct configfs_dirent *cursor = filp->private_data;
 	struct list_head *p, *q = &cursor->s_sibling;
@@ -1667,8 +1717,12 @@ static int configfs_readdir(struct file * filp, void * dirent, filldir_t filldir
 <<<<<<< HEAD
 					ino = iunique(sb, 2);
 =======
+<<<<<<< HEAD
+					ino = iunique(sb, 2);
+=======
 					ino = iunique(configfs_sb, 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				if (filldir(dirent, name, len, filp->f_pos, ino,
 						 dt_type(next)) < 0)
@@ -1741,12 +1795,17 @@ int configfs_register_subsystem(struct configfs_subsystem *subsys)
 	struct qstr name;
 	struct dentry *dentry;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *root;
 	struct configfs_dirent *sd;
 
 	root = configfs_pin_fs();
 	if (IS_ERR(root))
 		return PTR_ERR(root);
+<<<<<<< HEAD
+=======
 =======
 	struct configfs_dirent *sd;
 
@@ -1754,15 +1813,21 @@ int configfs_register_subsystem(struct configfs_subsystem *subsys)
 	if (err)
 		return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!group->cg_item.ci_name)
 		group->cg_item.ci_name = group->cg_item.ci_namebuf;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sd = root->d_fsdata;
 	link_group(to_config_group(sd->s_element), group);
 
 	mutex_lock_nested(&root->d_inode->i_mutex, I_MUTEX_PARENT);
+<<<<<<< HEAD
+=======
 =======
 	sd = configfs_sb->s_root->d_fsdata;
 	link_group(to_config_group(sd->s_element), group);
@@ -1770,6 +1835,7 @@ int configfs_register_subsystem(struct configfs_subsystem *subsys)
 	mutex_lock_nested(&configfs_sb->s_root->d_inode->i_mutex,
 			I_MUTEX_PARENT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	name.name = group->cg_item.ci_name;
 	name.len = strlen(name.name);
@@ -1779,8 +1845,12 @@ int configfs_register_subsystem(struct configfs_subsystem *subsys)
 <<<<<<< HEAD
 	dentry = d_alloc(root, &name);
 =======
+<<<<<<< HEAD
+	dentry = d_alloc(root, &name);
+=======
 	dentry = d_alloc(configfs_sb->s_root, &name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dentry) {
 		d_add(dentry, NULL);
 
@@ -1800,8 +1870,12 @@ int configfs_register_subsystem(struct configfs_subsystem *subsys)
 <<<<<<< HEAD
 	mutex_unlock(&root->d_inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&root->d_inode->i_mutex);
+=======
 	mutex_unlock(&configfs_sb->s_root->d_inode->i_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (err) {
 		unlink_group(group);
@@ -1820,9 +1894,15 @@ void configfs_unregister_subsystem(struct configfs_subsystem *subsys)
 
 	if (dentry->d_parent != root) {
 =======
+<<<<<<< HEAD
+	struct dentry *root = dentry->d_sb->s_root;
+
+	if (dentry->d_parent != root) {
+=======
 
 	if (dentry->d_parent != configfs_sb->s_root) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "configfs: Tried to unregister non-subsystem!\n");
 		return;
 	}
@@ -1830,8 +1910,12 @@ void configfs_unregister_subsystem(struct configfs_subsystem *subsys)
 <<<<<<< HEAD
 	mutex_lock_nested(&root->d_inode->i_mutex,
 =======
+<<<<<<< HEAD
+	mutex_lock_nested(&root->d_inode->i_mutex,
+=======
 	mutex_lock_nested(&configfs_sb->s_root->d_inode->i_mutex,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  I_MUTEX_PARENT);
 	mutex_lock_nested(&dentry->d_inode->i_mutex, I_MUTEX_CHILD);
 	mutex_lock(&configfs_symlink_mutex);
@@ -1851,8 +1935,12 @@ void configfs_unregister_subsystem(struct configfs_subsystem *subsys)
 <<<<<<< HEAD
 	mutex_unlock(&root->d_inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&root->d_inode->i_mutex);
+=======
 	mutex_unlock(&configfs_sb->s_root->d_inode->i_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dput(dentry);
 

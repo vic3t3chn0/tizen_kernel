@@ -58,7 +58,11 @@
 <<<<<<< HEAD
 #include <net/ping.h>
 =======
+<<<<<<< HEAD
+#include <net/ping.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/protocol.h>
 #include <net/raw.h>
 #include <net/rawv6.h>
@@ -72,8 +76,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	The ICMP socket(s). This is the most convenient way to flow control
@@ -88,6 +95,9 @@ static inline struct sock *icmpv6_sk(struct net *net)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void icmpv6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 		       u8 type, u8 code, int offset, __be32 info)
 {
@@ -99,8 +109,11 @@ static void icmpv6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 			ping_err(skb, offset, info);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int icmpv6_rcv(struct sk_buff *skb);
 
 static const struct inet6_protocol icmpv6_protocol = {
@@ -108,7 +121,11 @@ static const struct inet6_protocol icmpv6_protocol = {
 <<<<<<< HEAD
 	.err_handler	=	icmpv6_err,
 =======
+<<<<<<< HEAD
+	.err_handler	=	icmpv6_err,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags		=	INET6_PROTO_NOPOLICY|INET6_PROTO_FINAL,
 };
 
@@ -163,7 +180,11 @@ static int is_ineligible(struct sk_buff *skb)
 <<<<<<< HEAD
 	__be16 frag_off;
 =======
+<<<<<<< HEAD
+	__be16 frag_off;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (len < 0)
 		return 1;
@@ -171,8 +192,12 @@ static int is_ineligible(struct sk_buff *skb)
 <<<<<<< HEAD
 	ptr = ipv6_skip_exthdr(skb, ptr, &nexthdr, &frag_off);
 =======
+<<<<<<< HEAD
+	ptr = ipv6_skip_exthdr(skb, ptr, &nexthdr, &frag_off);
+=======
 	ptr = ipv6_skip_exthdr(skb, ptr, &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ptr < 0)
 		return 0;
 	if (nexthdr == IPPROTO_ICMPV6) {
@@ -254,8 +279,13 @@ static __inline__ int opt_unrec(struct sk_buff *skb, __u32 offset)
 int icmpv6_push_pending_frames(struct sock *sk, struct flowi6 *fl6,
 			       struct icmp6hdr *thdr, int len)
 =======
+<<<<<<< HEAD
+int icmpv6_push_pending_frames(struct sock *sk, struct flowi6 *fl6,
+			       struct icmp6hdr *thdr, int len)
+=======
 static int icmpv6_push_pending_frames(struct sock *sk, struct flowi6 *fl6, struct icmp6hdr *thdr, int len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *skb;
 	struct icmp6hdr *icmp6h;
@@ -333,10 +363,16 @@ static void mip6_addr_swap(struct sk_buff *skb)
 			iph->saddr = hao->addr;
 			hao->addr = tmp;
 =======
+<<<<<<< HEAD
+			tmp = iph->saddr;
+			iph->saddr = hao->addr;
+			hao->addr = tmp;
+=======
 			ipv6_addr_copy(&tmp, &iph->saddr);
 			ipv6_addr_copy(&iph->saddr, &hao->addr);
 			ipv6_addr_copy(&hao->addr, &tmp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -348,9 +384,14 @@ static inline void mip6_addr_swap(struct sk_buff *skb) {}
 struct dst_entry *icmpv6_route_lookup(struct net *net, struct sk_buff *skb,
 				      struct sock *sk, struct flowi6 *fl6)
 =======
+<<<<<<< HEAD
+struct dst_entry *icmpv6_route_lookup(struct net *net, struct sk_buff *skb,
+				      struct sock *sk, struct flowi6 *fl6)
+=======
 static struct dst_entry *icmpv6_route_lookup(struct net *net, struct sk_buff *skb,
 					     struct sock *sk, struct flowi6 *fl6)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dst_entry *dst, *dst2;
 	struct flowi6 fl2;
@@ -498,10 +539,16 @@ void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info)
 	if (saddr)
 		fl6.saddr = *saddr;
 =======
+<<<<<<< HEAD
+	fl6.daddr = hdr->saddr;
+	if (saddr)
+		fl6.saddr = *saddr;
+=======
 	ipv6_addr_copy(&fl6.daddr, &hdr->saddr);
 	if (saddr)
 		ipv6_addr_copy(&fl6.saddr, saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fl6.flowi6_oif = iif;
 	fl6.fl6_icmp_type = type;
 	fl6.fl6_icmp_code = code;
@@ -526,7 +573,12 @@ void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info)
 	else if (!fl6.flowi6_oif)
 		fl6.flowi6_oif = np->ucast_oif;
 =======
+<<<<<<< HEAD
+	else if (!fl6.flowi6_oif)
+		fl6.flowi6_oif = np->ucast_oif;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dst = icmpv6_route_lookup(net, skb, sk, &fl6);
 	if (IS_ERR(dst))
@@ -554,8 +606,13 @@ void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info)
 	rcu_read_lock();
 	idev = __in6_dev_get(skb->dev);
 =======
+<<<<<<< HEAD
+	rcu_read_lock();
+	idev = __in6_dev_get(skb->dev);
+=======
 	idev = in6_dev_get(skb->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = ip6_append_data(sk, icmpv6_getfrag, &msg,
 			      len + sizeof(struct icmp6hdr),
@@ -566,11 +623,16 @@ void icmpv6_send(struct sk_buff *skb, u8 type, u8 code, __u32 info)
 		ICMP6_INC_STATS_BH(net, idev, ICMP6_MIB_OUTERRORS);
 		ip6_flush_pending_frames(sk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		err = icmpv6_push_pending_frames(sk, &fl6, &tmp_hdr,
 						 len + sizeof(struct icmp6hdr));
 	}
 	rcu_read_unlock();
+<<<<<<< HEAD
+=======
 =======
 		goto out_put;
 	}
@@ -580,6 +642,7 @@ out_put:
 	if (likely(idev != NULL))
 		in6_dev_put(idev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_dst_release:
 	dst_release(dst);
 out:
@@ -587,8 +650,11 @@ out:
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(icmpv6_send);
 
 static void icmpv6_echo_reply(struct sk_buff *skb)
@@ -621,10 +687,16 @@ static void icmpv6_echo_reply(struct sk_buff *skb)
 	if (saddr)
 		fl6.saddr = *saddr;
 =======
+<<<<<<< HEAD
+	fl6.daddr = ipv6_hdr(skb)->saddr;
+	if (saddr)
+		fl6.saddr = *saddr;
+=======
 	ipv6_addr_copy(&fl6.daddr, &ipv6_hdr(skb)->saddr);
 	if (saddr)
 		ipv6_addr_copy(&fl6.saddr, saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fl6.flowi6_oif = skb->dev->ifindex;
 	fl6.fl6_icmp_type = ICMPV6_ECHO_REPLY;
 	security_skb_classify_flow(skb, flowi6_to_flowi(&fl6));
@@ -640,7 +712,12 @@ static void icmpv6_echo_reply(struct sk_buff *skb)
 	else if (!fl6.flowi6_oif)
 		fl6.flowi6_oif = np->ucast_oif;
 =======
+<<<<<<< HEAD
+	else if (!fl6.flowi6_oif)
+		fl6.flowi6_oif = np->ucast_oif;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = ip6_dst_lookup(sk, &dst, &fl6);
 	if (err)
@@ -659,8 +736,12 @@ static void icmpv6_echo_reply(struct sk_buff *skb)
 <<<<<<< HEAD
 	idev = __in6_dev_get(skb->dev);
 =======
+<<<<<<< HEAD
+	idev = __in6_dev_get(skb->dev);
+=======
 	idev = in6_dev_get(skb->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	msg.skb = skb;
 	msg.offset = 0;
@@ -675,10 +756,15 @@ static void icmpv6_echo_reply(struct sk_buff *skb)
 		ICMP6_INC_STATS_BH(net, idev, ICMP6_MIB_OUTERRORS);
 		ip6_flush_pending_frames(sk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		err = icmpv6_push_pending_frames(sk, &fl6, &tmp_hdr,
 						 skb->len + sizeof(struct icmp6hdr));
 	}
+<<<<<<< HEAD
+=======
 =======
 		goto out_put;
 	}
@@ -688,6 +774,7 @@ out_put:
 	if (likely(idev != NULL))
 		in6_dev_put(idev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dst_release(dst);
 out:
 	icmpv6_xmit_unlock(sk);
@@ -696,8 +783,12 @@ out:
 <<<<<<< HEAD
 void icmpv6_notify(struct sk_buff *skb, u8 type, u8 code, __be32 info)
 =======
+<<<<<<< HEAD
+void icmpv6_notify(struct sk_buff *skb, u8 type, u8 code, __be32 info)
+=======
 static void icmpv6_notify(struct sk_buff *skb, u8 type, u8 code, __be32 info)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct inet6_protocol *ipprot;
 	int inner_offset;
@@ -706,7 +797,11 @@ static void icmpv6_notify(struct sk_buff *skb, u8 type, u8 code, __be32 info)
 <<<<<<< HEAD
 	__be16 frag_off;
 =======
+<<<<<<< HEAD
+	__be16 frag_off;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pskb_may_pull(skb, sizeof(struct ipv6hdr)))
 		return;
@@ -718,8 +813,13 @@ static void icmpv6_notify(struct sk_buff *skb, u8 type, u8 code, __be32 info)
 		inner_offset = ipv6_skip_exthdr(skb, sizeof(struct ipv6hdr),
 						&nexthdr, &frag_off);
 =======
+<<<<<<< HEAD
+		inner_offset = ipv6_skip_exthdr(skb, sizeof(struct ipv6hdr),
+						&nexthdr, &frag_off);
+=======
 		inner_offset = ipv6_skip_exthdr(skb, sizeof(struct ipv6hdr), &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (inner_offset<0)
 			return;
 	} else {
@@ -801,8 +901,13 @@ static int icmpv6_rcv(struct sk_buff *skb)
 			LIMIT_NETDEBUG(KERN_DEBUG
 				       "ICMPv6 checksum failed [%pI6c > %pI6c]\n",
 =======
+<<<<<<< HEAD
+			LIMIT_NETDEBUG(KERN_DEBUG
+				       "ICMPv6 checksum failed [%pI6c > %pI6c]\n",
+=======
 			LIMIT_NETDEBUG(KERN_DEBUG "ICMPv6 checksum failed [%pI6 > %pI6]\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       saddr, daddr);
 			goto discard_it;
 		}
@@ -826,8 +931,12 @@ static int icmpv6_rcv(struct sk_buff *skb)
 <<<<<<< HEAD
 		ping_rcv(skb);
 =======
+<<<<<<< HEAD
+		ping_rcv(skb);
+=======
 		/* we couldn't care less */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case ICMPV6_PKT_TOOBIG:
@@ -915,9 +1024,14 @@ void icmpv6_flow_init(struct sock *sk, struct flowi6 *fl6,
 	fl6->saddr = *saddr;
 	fl6->daddr = *daddr;
 =======
+<<<<<<< HEAD
+	fl6->saddr = *saddr;
+	fl6->daddr = *daddr;
+=======
 	ipv6_addr_copy(&fl6->saddr, saddr);
 	ipv6_addr_copy(&fl6->daddr, daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fl6->flowi6_proto 	= IPPROTO_ICMPV6;
 	fl6->fl6_icmp_type	= type;
 	fl6->fl6_icmp_code	= 0;
@@ -968,9 +1082,13 @@ static int __net_init icmpv6_sk_init(struct net *net)
 <<<<<<< HEAD
 		sk->sk_sndbuf = 2 * SKB_TRUESIZE(64 * 1024);
 =======
+<<<<<<< HEAD
+		sk->sk_sndbuf = 2 * SKB_TRUESIZE(64 * 1024);
+=======
 		sk->sk_sndbuf =
 			(2 * ((64 * 1024) + sizeof(struct sk_buff)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 
@@ -1048,6 +1166,8 @@ static const struct icmp6_err {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{	/* POLICY_FAIL */
 		.err	= EACCES,
 		.fatal	= 1,
@@ -1057,6 +1177,7 @@ static const struct icmp6_err {
 		.fatal	= 1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int icmpv6_err_convert(u8 type, u8 code, int *err)
@@ -1071,8 +1192,12 @@ int icmpv6_err_convert(u8 type, u8 code, int *err)
 <<<<<<< HEAD
 		if (code <= ICMPV6_PORT_UNREACH) {
 =======
+<<<<<<< HEAD
+		if (code <= ICMPV6_PORT_UNREACH) {
+=======
 		if (code < ARRAY_SIZE(tab_unreach)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*err  = tab_unreach[code].err;
 			fatal = tab_unreach[code].fatal;
 		}

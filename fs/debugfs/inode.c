@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  *  inode.c - part of debugfs, a tiny little debug file system
 =======
+<<<<<<< HEAD
+ *  inode.c - part of debugfs, a tiny little debug file system
+=======
  *  file.c - part of debugfs, a tiny little debug file system
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  Copyright (C) 2004 Greg Kroah-Hartman <greg@kroah.com>
  *  Copyright (C) 2004 IBM Inc.
@@ -28,6 +32,9 @@
 #include <linux/fsnotify.h>
 #include <linux/string.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/seq_file.h>
 #include <linux/parser.h>
 #include <linux/magic.h>
@@ -35,11 +42,14 @@
 
 #define DEBUGFS_DEFAULT_MODE	0755
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/magic.h>
 #include <linux/slab.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct vfsmount *debugfs_mount;
 static int debugfs_mount_count;
 static bool debugfs_registered;
@@ -47,8 +57,12 @@ static bool debugfs_registered;
 <<<<<<< HEAD
 static struct inode *debugfs_get_inode(struct super_block *sb, umode_t mode, dev_t dev,
 =======
+<<<<<<< HEAD
+static struct inode *debugfs_get_inode(struct super_block *sb, umode_t mode, dev_t dev,
+=======
 static struct inode *debugfs_get_inode(struct super_block *sb, int mode, dev_t dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       void *data, const struct file_operations *fops)
 
 {
@@ -90,8 +104,12 @@ static int debugfs_mknod(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 			 umode_t mode, dev_t dev, void *data,
 =======
+<<<<<<< HEAD
+			 umode_t mode, dev_t dev, void *data,
+=======
 			 int mode, dev_t dev, void *data,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 const struct file_operations *fops)
 {
 	struct inode *inode;
@@ -112,8 +130,12 @@ static int debugfs_mknod(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 static int debugfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int debugfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int debugfs_mkdir(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 void *data, const struct file_operations *fops)
 {
 	int res;
@@ -130,8 +152,12 @@ static int debugfs_mkdir(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 static int debugfs_link(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int debugfs_link(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int debugfs_link(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			void *data, const struct file_operations *fops)
 {
 	mode = (mode & S_IALLUGO) | S_IFLNK;
@@ -141,8 +167,12 @@ static int debugfs_link(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 static int debugfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int debugfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int debugfs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  void *data, const struct file_operations *fops)
 {
 	int res;
@@ -160,6 +190,9 @@ static inline int debugfs_positive(struct dentry *dentry)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct debugfs_mount_opts {
 	uid_t uid;
 	gid_t gid;
@@ -308,6 +341,8 @@ fail:
 	kfree(fsi);
 	sb->s_fs_info = NULL;
 	return err;
+<<<<<<< HEAD
+=======
 =======
 static int debug_fill_super(struct super_block *sb, void *data, int silent)
 {
@@ -315,6 +350,7 @@ static int debug_fill_super(struct super_block *sb, void *data, int silent)
 
 	return simple_fill_super(sb, DEBUGFS_MAGIC, debug_files);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct dentry *debug_mount(struct file_system_type *fs_type,
@@ -334,8 +370,12 @@ static struct file_system_type debug_fs_type = {
 <<<<<<< HEAD
 static int debugfs_create_by_name(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static int debugfs_create_by_name(const char *name, umode_t mode,
+=======
 static int debugfs_create_by_name(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  struct dentry *parent,
 				  struct dentry **dentry,
 				  void *data,
@@ -352,8 +392,12 @@ static int debugfs_create_by_name(const char *name, mode_t mode,
 <<<<<<< HEAD
 		parent = debugfs_mount->mnt_root;
 =======
+<<<<<<< HEAD
+		parent = debugfs_mount->mnt_root;
+=======
 		parent = debugfs_mount->mnt_sb->s_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*dentry = NULL;
 	mutex_lock(&parent->d_inode->i_mutex);
@@ -410,8 +454,12 @@ static int debugfs_create_by_name(const char *name, mode_t mode,
 <<<<<<< HEAD
 struct dentry *debugfs_create_file(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+struct dentry *debugfs_create_file(const char *name, umode_t mode,
+=======
 struct dentry *debugfs_create_file(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   struct dentry *parent, void *data,
 				   const struct file_operations *fops)
 {

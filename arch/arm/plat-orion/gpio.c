@@ -387,21 +387,31 @@ void __init orion_gpio_init(int gpio_base, int ngpio,
 <<<<<<< HEAD
 	char gc_label[16];
 =======
+<<<<<<< HEAD
+	char gc_label[16];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (orion_gpio_chip_count == ARRAY_SIZE(orion_gpio_chips))
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snprintf(gc_label, sizeof(gc_label), "orion_gpio%d",
 		orion_gpio_chip_count);
 
 	ochip = orion_gpio_chips + orion_gpio_chip_count;
 	ochip->chip.label = kstrdup(gc_label, GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	ochip = orion_gpio_chips + orion_gpio_chip_count;
 	ochip->chip.label = "orion_gpio";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ochip->chip.request = orion_gpio_request;
 	ochip->chip.direction_input = orion_gpio_direction_input;
 	ochip->chip.get = orion_gpio_get;

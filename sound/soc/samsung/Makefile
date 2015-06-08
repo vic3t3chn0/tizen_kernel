@@ -3,8 +3,11 @@ snd-soc-s3c24xx-objs := dma.o
 snd-soc-idma-objs := idma.o
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 snd-soc-dma-wrapper-objs := dma-wrapper.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 snd-soc-s3c24xx-i2s-objs := s3c24xx-i2s.o
 snd-soc-s3c2412-i2s-objs := s3c2412-i2s.o
 snd-soc-ac97-objs := ac97.o
@@ -14,8 +17,11 @@ snd-soc-pcm-objs := pcm.o
 snd-soc-i2s-objs := i2s.o
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 snd-soc-audss-objs := audss.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-$(CONFIG_SND_SOC_SAMSUNG) += snd-soc-s3c24xx.o
 obj-$(CONFIG_SND_S3C24XX_I2S) += snd-soc-s3c24xx-i2s.o
@@ -28,10 +34,14 @@ obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-i2s.o
 <<<<<<< HEAD
 obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-idma.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-idma.o
+=======
 obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-audss.o
 obj-$(CONFIG_SND_SAMSUNG_I2S) += snd-soc-idma.o
 obj-$(CONFIG_SND_SOC_SAMSUNG_USE_DMA_WRAPPER) += snd-soc-dma-wrapper.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # S3C24XX Machine Support
 snd-soc-jive-wm8750-objs := jive_wm8750.o
@@ -48,19 +58,27 @@ snd-soc-smdk-wm8580-objs := smdk_wm8580.o
 snd-soc-smdk-wm8994-objs := smdk_wm8994.o
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 snd-soc-smdk-wm8994pcm-objs := smdk_wm8994pcm.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 snd-soc-smdk-wm9713-objs := smdk_wm9713.o
 snd-soc-s3c64xx-smartq-wm8987-objs := smartq_wm8987.o
 snd-soc-goni-wm8994-objs := goni_wm8994.o
 snd-soc-smdk-spdif-objs := smdk_spdif.o
 snd-soc-smdk-wm8580pcm-objs := smdk_wm8580pcm.o
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 snd-soc-smdk-wm8994pcm-objs := smdk_wm8994pcm.o
 snd-soc-speyside-objs := speyside.o
 snd-soc-tobermory-objs := tobermory.o
 snd-soc-lowland-objs := lowland.o
 snd-soc-littlemill-objs := littlemill.o
+<<<<<<< HEAD
+=======
 =======
 snd-soc-speyside-objs := speyside.o
 snd-soc-u1-mc1n2-objs := u1_mc1n2.o
@@ -75,6 +93,7 @@ snd-soc-slp-naples-wm1811-objs := slp_naples_wm1811.o
 snd-soc-lungo-wm1811-objs := lungo_wm1811.o
 snd-soc-grande-wm1811-objs := grande_wm1811.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-$(CONFIG_SND_SOC_SAMSUNG_JIVE_WM8750) += snd-soc-jive-wm8750.o
 obj-$(CONFIG_SND_SOC_SAMSUNG_NEO1973_WM8753) += snd-soc-neo1973-wm8753.o
@@ -90,19 +109,27 @@ obj-$(CONFIG_SND_SOC_SAMSUNG_SMDK_WM8580) += snd-soc-smdk-wm8580.o
 obj-$(CONFIG_SND_SOC_SAMSUNG_SMDK_WM8994) += snd-soc-smdk-wm8994.o
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 obj-$(CONFIG_SND_SOC_SAMSUNG_SMDK_WM8994_PCM) += snd-soc-smdk-wm8994pcm.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_SND_SOC_SAMSUNG_SMDK_WM9713) += snd-soc-smdk-wm9713.o
 obj-$(CONFIG_SND_SOC_SMARTQ) += snd-soc-s3c64xx-smartq-wm8987.o
 obj-$(CONFIG_SND_SOC_SAMSUNG_SMDK_SPDIF) += snd-soc-smdk-spdif.o
 obj-$(CONFIG_SND_SOC_GONI_AQUILA_WM8994) += snd-soc-goni-wm8994.o
 obj-$(CONFIG_SND_SOC_SMDK_WM8580_PCM) += snd-soc-smdk-wm8580pcm.o
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_SND_SOC_SMDK_WM8994_PCM) += snd-soc-smdk-wm8994pcm.o
 obj-$(CONFIG_SND_SOC_SPEYSIDE) += snd-soc-speyside.o
 obj-$(CONFIG_SND_SOC_TOBERMORY) += snd-soc-tobermory.o
 obj-$(CONFIG_SND_SOC_LOWLAND) += snd-soc-lowland.o
 obj-$(CONFIG_SND_SOC_LITTLEMILL) += snd-soc-littlemill.o
+<<<<<<< HEAD
+=======
 =======
 obj-$(CONFIG_SND_SOC_SPEYSIDE) += snd-soc-speyside.o
 obj-$(CONFIG_SND_SOC_U1_MC1N2) += snd-soc-u1-mc1n2.o
@@ -121,3 +148,4 @@ obj-$(CONFIG_SND_SAMSUNG_RP)   += srp_ulp/
 obj-$(CONFIG_SND_SAMSUNG_ALP)   += srp_alp/
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

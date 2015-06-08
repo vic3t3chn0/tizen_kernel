@@ -164,8 +164,12 @@ static u_int32_t tcpmss_reverse_mtu(const struct sk_buff *skb,
 <<<<<<< HEAD
 		fl6->daddr = ipv6_hdr(skb)->saddr;
 =======
+<<<<<<< HEAD
+		fl6->daddr = ipv6_hdr(skb)->saddr;
+=======
 		ipv6_addr_copy(&fl6->daddr, &ipv6_hdr(skb)->saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	rcu_read_lock();
 	ai = nf_get_afinfo(family);
@@ -205,8 +209,12 @@ tcpmss_tg4(struct sk_buff *skb, const struct xt_action_param *par)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
+=======
 #if defined(CONFIG_IP6_NF_IPTABLES) || defined(CONFIG_IP6_NF_IPTABLES_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int
 tcpmss_tg6(struct sk_buff *skb, const struct xt_action_param *par)
 {
@@ -215,7 +223,11 @@ tcpmss_tg6(struct sk_buff *skb, const struct xt_action_param *par)
 <<<<<<< HEAD
 	__be16 frag_off;
 =======
+<<<<<<< HEAD
+	__be16 frag_off;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int tcphoff;
 	int ret;
 
@@ -223,8 +235,12 @@ tcpmss_tg6(struct sk_buff *skb, const struct xt_action_param *par)
 <<<<<<< HEAD
 	tcphoff = ipv6_skip_exthdr(skb, sizeof(*ipv6h), &nexthdr, &frag_off);
 =======
+<<<<<<< HEAD
+	tcphoff = ipv6_skip_exthdr(skb, sizeof(*ipv6h), &nexthdr, &frag_off);
+=======
 	tcphoff = ipv6_skip_exthdr(skb, sizeof(*ipv6h), &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tcphoff < 0)
 		return NF_DROP;
 	ret = tcpmss_mangle_packet(skb, par->targinfo,
@@ -278,8 +294,12 @@ static int tcpmss_tg4_check(const struct xt_tgchk_param *par)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
+=======
 #if defined(CONFIG_IP6_NF_IPTABLES) || defined(CONFIG_IP6_NF_IPTABLES_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tcpmss_tg6_check(const struct xt_tgchk_param *par)
 {
 	const struct xt_tcpmss_info *info = par->targinfo;
@@ -315,8 +335,12 @@ static struct xt_target tcpmss_tg_reg[] __read_mostly = {
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
+=======
 #if defined(CONFIG_IP6_NF_IPTABLES) || defined(CONFIG_IP6_NF_IPTABLES_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.family		= NFPROTO_IPV6,
 		.name		= "TCPMSS",

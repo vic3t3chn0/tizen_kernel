@@ -48,11 +48,16 @@ static int spitz_mic_gpio;
 static void spitz_ext_control(struct snd_soc_dapm_context *dapm)
 {
 =======
+<<<<<<< HEAD
+static void spitz_ext_control(struct snd_soc_dapm_context *dapm)
+{
+=======
 static void spitz_ext_control(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (spitz_spk_func == SPITZ_SPK_ON)
 		snd_soc_dapm_enable_pin(dapm, "Ext Spk");
 	else
@@ -121,8 +126,12 @@ static int spitz_startup(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	spitz_ext_control(&codec->dapm);
 =======
+<<<<<<< HEAD
+	spitz_ext_control(&codec->dapm);
+=======
 	spitz_ext_control(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_unlock(&codec->mutex);
 
@@ -154,6 +163,8 @@ static int spitz_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* set codec DAI configuration */
 	ret = snd_soc_dai_set_fmt(codec_dai, SND_SOC_DAIFMT_I2S |
 		SND_SOC_DAIFMT_NB_NF | SND_SOC_DAIFMT_CBS_CFS);
@@ -167,6 +178,7 @@ static int spitz_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set the codec system clock for DAC and ADC */
 	ret = snd_soc_dai_set_sysclk(codec_dai, WM8750_SYSCLK, clk,
 		SND_SOC_CLOCK_IN);
@@ -200,8 +212,12 @@ static int spitz_set_jack(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
 =======
+<<<<<<< HEAD
+	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
+=======
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (spitz_jack_func == ucontrol->value.integer.value[0])
 		return 0;
@@ -210,8 +226,12 @@ static int spitz_set_jack(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	spitz_ext_control(&card->dapm);
 =======
+<<<<<<< HEAD
+	spitz_ext_control(&card->dapm);
+=======
 	spitz_ext_control(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -228,8 +248,12 @@ static int spitz_set_spk(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
 =======
+<<<<<<< HEAD
+	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
+=======
 	struct snd_soc_codec *codec =  snd_kcontrol_chip(kcontrol);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (spitz_spk_func == ucontrol->value.integer.value[0])
 		return 0;
@@ -238,8 +262,12 @@ static int spitz_set_spk(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	spitz_ext_control(&card->dapm);
 =======
+<<<<<<< HEAD
+	spitz_ext_control(&card->dapm);
+=======
 	spitz_ext_control(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -265,8 +293,12 @@ static const struct snd_soc_dapm_widget wm8750_dapm_widgets[] = {
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route spitz_audio_map[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route spitz_audio_map[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* headphone connected to LOUT1, ROUT1 */
 	{"Headphone Jack", NULL, "LOUT1"},
@@ -311,8 +343,11 @@ static int spitz_wm8750_init(struct snd_soc_pcm_runtime *rtd)
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* NC codec pins */
 	snd_soc_dapm_nc_pin(dapm, "RINPUT1");
@@ -323,6 +358,8 @@ static int spitz_wm8750_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_nc_pin(dapm, "OUT3");
 	snd_soc_dapm_nc_pin(dapm, "MONO1");
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Add spitz specific controls */
@@ -340,6 +377,7 @@ static int spitz_wm8750_init(struct snd_soc_pcm_runtime *rtd)
 
 	snd_soc_dapm_sync(dapm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -351,14 +389,20 @@ static struct snd_soc_dai_link spitz_dai = {
 	.codec_dai_name = "wm8750-hifi",
 	.platform_name = "pxa-pcm-audio",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.codec_name = "wm8750.0-001b",
 	.init = spitz_wm8750_init,
 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
 		   SND_SOC_DAIFMT_CBS_CFS,
+<<<<<<< HEAD
+=======
 =======
 	.codec_name = "wm8750-codec.0-001b",
 	.init = spitz_wm8750_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &spitz_ops,
 };
 
@@ -366,6 +410,9 @@ static struct snd_soc_dai_link spitz_dai = {
 static struct snd_soc_card snd_soc_spitz = {
 	.name = "Spitz",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner = THIS_MODULE,
 	.dai_link = &spitz_dai,
 	.num_links = 1,
@@ -376,10 +423,13 @@ static struct snd_soc_card snd_soc_spitz = {
 	.num_dapm_widgets = ARRAY_SIZE(wm8750_dapm_widgets),
 	.dapm_routes = spitz_audio_map,
 	.num_dapm_routes = ARRAY_SIZE(spitz_audio_map),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link = &spitz_dai,
 	.num_links = 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *spitz_snd_device;

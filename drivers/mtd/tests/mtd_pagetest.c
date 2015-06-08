@@ -30,7 +30,15 @@
 
 #define PRINT_PREF KERN_INFO "mtd_pagetest: "
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int dev = -EINVAL;
+=======
 static int dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(dev, int, S_IRUGO);
 MODULE_PARM_DESC(dev, "MTD device number to use");
 
@@ -77,7 +85,15 @@ static int erase_eraseblock(int ebnum)
 	ei.addr = addr;
 	ei.len  = mtd->erasesize;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_erase(mtd, &ei);
+=======
 	err = mtd->erase(mtd, &ei);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->erase(mtd, &ei);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		printk(PRINT_PREF "error %d while erasing EB %d\n", err, ebnum);
 		return err;
@@ -95,12 +111,28 @@ static int erase_eraseblock(int ebnum)
 static int write_eraseblock(int ebnum)
 {
 	int err = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t written;
+=======
 	size_t written = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	size_t written = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	loff_t addr = ebnum * mtd->erasesize;
 
 	set_random_data(writebuf, mtd->erasesize);
 	cond_resched();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_write(mtd, addr, mtd->erasesize, &written, writebuf);
+=======
 	err = mtd->write(mtd, addr, mtd->erasesize, &written, writebuf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->write(mtd, addr, mtd->erasesize, &written, writebuf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err || written != mtd->erasesize)
 		printk(PRINT_PREF "error: write failed at %#llx\n",
 		       (long long)addr);
@@ -111,7 +143,15 @@ static int write_eraseblock(int ebnum)
 static int verify_eraseblock(int ebnum)
 {
 	uint32_t j;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t read;
+=======
 	size_t read = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	size_t read = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0, i;
 	loff_t addr0, addrn;
 	loff_t addr = ebnum * mtd->erasesize;
@@ -127,16 +167,36 @@ static int verify_eraseblock(int ebnum)
 	set_random_data(writebuf, mtd->erasesize);
 	for (j = 0; j < pgcnt - 1; ++j, addr += pgsize) {
 		/* Do a read to set the internal dataRAMs to different data */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mtd_read(mtd, addr0, bufsize, &read, twopages);
+		if (mtd_is_bitflip(err))
+=======
 		err = mtd->read(mtd, addr0, bufsize, &read, twopages);
 		if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = mtd->read(mtd, addr0, bufsize, &read, twopages);
+		if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = 0;
 		if (err || read != bufsize) {
 			printk(PRINT_PREF "error: read failed at %#llx\n",
 			       (long long)addr0);
 			return err;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mtd_read(mtd, addrn - bufsize, bufsize, &read, twopages);
+		if (mtd_is_bitflip(err))
+=======
 		err = mtd->read(mtd, addrn - bufsize, bufsize, &read, twopages);
 		if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = mtd->read(mtd, addrn - bufsize, bufsize, &read, twopages);
+		if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = 0;
 		if (err || read != bufsize) {
 			printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -144,9 +204,20 @@ static int verify_eraseblock(int ebnum)
 			return err;
 		}
 		memset(twopages, 0, bufsize);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mtd_read(mtd, addr, bufsize, &read, twopages);
+		if (mtd_is_bitflip(err))
+=======
 		read = 0;
 		err = mtd->read(mtd, addr, bufsize, &read, twopages);
 		if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		read = 0;
+		err = mtd->read(mtd, addr, bufsize, &read, twopages);
+		if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = 0;
 		if (err || read != bufsize) {
 			printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -163,16 +234,36 @@ static int verify_eraseblock(int ebnum)
 	if (addr <= addrn - pgsize - pgsize && !bbt[ebnum + 1]) {
 		unsigned long oldnext = next;
 		/* Do a read to set the internal dataRAMs to different data */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mtd_read(mtd, addr0, bufsize, &read, twopages);
+		if (mtd_is_bitflip(err))
+=======
 		err = mtd->read(mtd, addr0, bufsize, &read, twopages);
 		if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = mtd->read(mtd, addr0, bufsize, &read, twopages);
+		if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = 0;
 		if (err || read != bufsize) {
 			printk(PRINT_PREF "error: read failed at %#llx\n",
 			       (long long)addr0);
 			return err;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mtd_read(mtd, addrn - bufsize, bufsize, &read, twopages);
+		if (mtd_is_bitflip(err))
+=======
 		err = mtd->read(mtd, addrn - bufsize, bufsize, &read, twopages);
 		if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = mtd->read(mtd, addrn - bufsize, bufsize, &read, twopages);
+		if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = 0;
 		if (err || read != bufsize) {
 			printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -180,9 +271,20 @@ static int verify_eraseblock(int ebnum)
 			return err;
 		}
 		memset(twopages, 0, bufsize);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mtd_read(mtd, addr, bufsize, &read, twopages);
+		if (mtd_is_bitflip(err))
+=======
 		read = 0;
 		err = mtd->read(mtd, addr, bufsize, &read, twopages);
 		if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		read = 0;
+		err = mtd->read(mtd, addr, bufsize, &read, twopages);
+		if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = 0;
 		if (err || read != bufsize) {
 			printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -203,7 +305,15 @@ static int verify_eraseblock(int ebnum)
 
 static int crosstest(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t read;
+=======
 	size_t read = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	size_t read = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0, i;
 	loff_t addr, addr0, addrn;
 	unsigned char *pp1, *pp2, *pp3, *pp4;
@@ -228,10 +338,22 @@ static int crosstest(void)
 		addrn -= mtd->erasesize;
 
 	/* Read 2nd-to-last page to pp1 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	addr = addrn - pgsize - pgsize;
+	err = mtd_read(mtd, addr, pgsize, &read, pp1);
+	if (mtd_is_bitflip(err))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read = 0;
 	addr = addrn - pgsize - pgsize;
 	err = mtd->read(mtd, addr, pgsize, &read, pp1);
 	if (err == -EUCLEAN)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -241,10 +363,22 @@ static int crosstest(void)
 	}
 
 	/* Read 3rd-to-last page to pp1 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	addr = addrn - pgsize - pgsize - pgsize;
+	err = mtd_read(mtd, addr, pgsize, &read, pp1);
+	if (mtd_is_bitflip(err))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read = 0;
 	addr = addrn - pgsize - pgsize - pgsize;
 	err = mtd->read(mtd, addr, pgsize, &read, pp1);
 	if (err == -EUCLEAN)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -254,11 +388,24 @@ static int crosstest(void)
 	}
 
 	/* Read first page to pp2 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	addr = addr0;
+	printk(PRINT_PREF "reading page at %#llx\n", (long long)addr);
+	err = mtd_read(mtd, addr, pgsize, &read, pp2);
+	if (mtd_is_bitflip(err))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read = 0;
 	addr = addr0;
 	printk(PRINT_PREF "reading page at %#llx\n", (long long)addr);
 	err = mtd->read(mtd, addr, pgsize, &read, pp2);
 	if (err == -EUCLEAN)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -268,11 +415,24 @@ static int crosstest(void)
 	}
 
 	/* Read last page to pp3 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	addr = addrn - pgsize;
+	printk(PRINT_PREF "reading page at %#llx\n", (long long)addr);
+	err = mtd_read(mtd, addr, pgsize, &read, pp3);
+	if (mtd_is_bitflip(err))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read = 0;
 	addr = addrn - pgsize;
 	printk(PRINT_PREF "reading page at %#llx\n", (long long)addr);
 	err = mtd->read(mtd, addr, pgsize, &read, pp3);
 	if (err == -EUCLEAN)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -282,11 +442,24 @@ static int crosstest(void)
 	}
 
 	/* Read first page again to pp4 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	addr = addr0;
+	printk(PRINT_PREF "reading page at %#llx\n", (long long)addr);
+	err = mtd_read(mtd, addr, pgsize, &read, pp4);
+	if (mtd_is_bitflip(err))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read = 0;
 	addr = addr0;
 	printk(PRINT_PREF "reading page at %#llx\n", (long long)addr);
 	err = mtd->read(mtd, addr, pgsize, &read, pp4);
 	if (err == -EUCLEAN)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -309,7 +482,15 @@ static int crosstest(void)
 
 static int erasecrosstest(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t read, written;
+=======
 	size_t read = 0, written = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	size_t read = 0, written = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0, i, ebnum, ebnum2;
 	loff_t addr0;
 	char *readbuf = twopages;
@@ -335,7 +516,15 @@ static int erasecrosstest(void)
 	printk(PRINT_PREF "writing 1st page of block %d\n", ebnum);
 	set_random_data(writebuf, pgsize);
 	strcpy(writebuf, "There is no data like this!");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_write(mtd, addr0, pgsize, &written, writebuf);
+=======
 	err = mtd->write(mtd, addr0, pgsize, &written, writebuf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->write(mtd, addr0, pgsize, &written, writebuf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err || written != pgsize) {
 		printk(PRINT_PREF "error: write failed at %#llx\n",
 		       (long long)addr0);
@@ -344,8 +533,18 @@ static int erasecrosstest(void)
 
 	printk(PRINT_PREF "reading 1st page of block %d\n", ebnum);
 	memset(readbuf, 0, pgsize);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_read(mtd, addr0, pgsize, &read, readbuf);
+	if (mtd_is_bitflip(err))
+=======
 	err = mtd->read(mtd, addr0, pgsize, &read, readbuf);
 	if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->read(mtd, addr0, pgsize, &read, readbuf);
+	if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -368,7 +567,15 @@ static int erasecrosstest(void)
 	printk(PRINT_PREF "writing 1st page of block %d\n", ebnum);
 	set_random_data(writebuf, pgsize);
 	strcpy(writebuf, "There is no data like this!");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_write(mtd, addr0, pgsize, &written, writebuf);
+=======
 	err = mtd->write(mtd, addr0, pgsize, &written, writebuf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->write(mtd, addr0, pgsize, &written, writebuf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err || written != pgsize) {
 		printk(PRINT_PREF "error: write failed at %#llx\n",
 		       (long long)addr0);
@@ -382,8 +589,18 @@ static int erasecrosstest(void)
 
 	printk(PRINT_PREF "reading 1st page of block %d\n", ebnum);
 	memset(readbuf, 0, pgsize);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_read(mtd, addr0, pgsize, &read, readbuf);
+	if (mtd_is_bitflip(err))
+=======
 	err = mtd->read(mtd, addr0, pgsize, &read, readbuf);
 	if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->read(mtd, addr0, pgsize, &read, readbuf);
+	if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -405,7 +622,15 @@ static int erasecrosstest(void)
 
 static int erasetest(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t read, written;
+=======
 	size_t read = 0, written = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	size_t read = 0, written = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0, i, ebnum, ok = 1;
 	loff_t addr0;
 
@@ -425,7 +650,15 @@ static int erasetest(void)
 
 	printk(PRINT_PREF "writing 1st page of block %d\n", ebnum);
 	set_random_data(writebuf, pgsize);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_write(mtd, addr0, pgsize, &written, writebuf);
+=======
 	err = mtd->write(mtd, addr0, pgsize, &written, writebuf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->write(mtd, addr0, pgsize, &written, writebuf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err || written != pgsize) {
 		printk(PRINT_PREF "error: write failed at %#llx\n",
 		       (long long)addr0);
@@ -438,8 +671,18 @@ static int erasetest(void)
 		return err;
 
 	printk(PRINT_PREF "reading 1st page of block %d\n", ebnum);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_read(mtd, addr0, pgsize, &read, twopages);
+	if (mtd_is_bitflip(err))
+=======
 	err = mtd->read(mtd, addr0, pgsize, &read, twopages);
 	if (err == -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mtd->read(mtd, addr0, pgsize, &read, twopages);
+	if (err == -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 	if (err || read != pgsize) {
 		printk(PRINT_PREF "error: read failed at %#llx\n",
@@ -469,7 +712,15 @@ static int is_block_bad(int ebnum)
 	loff_t addr = ebnum * mtd->erasesize;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = mtd_block_isbad(mtd, addr);
+=======
 	ret = mtd->block_isbad(mtd, addr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = mtd->block_isbad(mtd, addr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		printk(PRINT_PREF "block %d is bad\n", ebnum);
 	return ret;
@@ -504,6 +755,19 @@ static int __init mtd_pagetest_init(void)
 
 	printk(KERN_INFO "\n");
 	printk(KERN_INFO "=================================================\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (dev < 0) {
+		printk(PRINT_PREF "Please specify a valid mtd-device via module paramter\n");
+		printk(KERN_CRIT "CAREFUL: This test wipes all data on the specified MTD device!\n");
+		return -EINVAL;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(PRINT_PREF "MTD device: %d\n", dev);
 
 	mtd = get_mtd_device(NULL, dev);

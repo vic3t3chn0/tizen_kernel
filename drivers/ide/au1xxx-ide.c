@@ -36,13 +36,31 @@
 #include <linux/ide.h>
 #include <linux/scatterlist.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/mach-au1x00/au1000.h>
+=======
 #include <asm/mach-au1x00/au1xxx.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/mach-au1x00/au1xxx.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-au1x00/au1xxx_dbdma.h>
 #include <asm/mach-au1x00/au1xxx_ide.h>
 
 #define DRV_NAME	"au1200-ide"
 #define DRV_AUTHOR	"Enrico Walther <enrico.walther@amd.com> / Pete Popov <ppopov@embeddedalley.com>"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifndef IDE_REG_SHIFT
+#define IDE_REG_SHIFT 5
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* enable the burstmode in the dbdma */
 #define IDE_AU1XXX_BURSTMODE	1
 
@@ -317,10 +335,24 @@ static void auide_ddma_rx_callback(int irq, void *param)
 }
 #endif /* end CONFIG_BLK_DEV_IDE_AU1XXX_MDMA2_DBDMA */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void auide_init_dbdma_dev(dbdev_tab_t *dev, u32 dev_id, u32 tsize,
+				 u32 devwidth, u32 flags, u32 regbase)
+{
+	dev->dev_id          = dev_id;
+	dev->dev_physaddr    = CPHYSADDR(regbase);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void auide_init_dbdma_dev(dbdev_tab_t *dev, u32 dev_id, u32 tsize, u32 devwidth, u32 flags)
 {
 	dev->dev_id          = dev_id;
 	dev->dev_physaddr    = (u32)IDE_PHYS_ADDR;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev->dev_intlevel    = 0;
 	dev->dev_intpolarity = 0;
 	dev->dev_tsize       = tsize;
@@ -344,7 +376,15 @@ static int auide_ddma_init(ide_hwif_t *hwif, const struct ide_port_info *d)
 	dbdev_tab_t source_dev_tab, target_dev_tab;
 	u32 dev_id, tsize, devwidth, flags;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_id	 = hwif->ddma_id;
+=======
 	dev_id	 = IDE_DDMA_REQ;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_id	 = IDE_DDMA_REQ;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tsize    =  8; /*  1 */
 	devwidth = 32; /* 16 */
@@ -356,6 +396,22 @@ static int auide_ddma_init(ide_hwif_t *hwif, const struct ide_port_info *d)
 #endif
 
 	/* setup dev_tab for tx channel */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	auide_init_dbdma_dev(&source_dev_tab, dev_id, tsize, devwidth,
+			     DEV_FLAGS_OUT | flags, auide->regbase);
+ 	auide->tx_dev_id = au1xxx_ddma_add_device( &source_dev_tab );
+
+	auide_init_dbdma_dev(&source_dev_tab, dev_id, tsize, devwidth,
+			     DEV_FLAGS_IN | flags, auide->regbase);
+ 	auide->rx_dev_id = au1xxx_ddma_add_device( &source_dev_tab );
+	
+	/* We also need to add a target device for the DMA */
+	auide_init_dbdma_dev(&target_dev_tab, (u32)DSCR_CMD0_ALWAYS, tsize,
+			     devwidth, DEV_FLAGS_ANYUSE, auide->regbase);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	auide_init_dbdma_dev( &source_dev_tab,
 			      dev_id,
 			      tsize, devwidth, DEV_FLAGS_OUT | flags);
@@ -370,6 +426,10 @@ static int auide_ddma_init(ide_hwif_t *hwif, const struct ide_port_info *d)
 	auide_init_dbdma_dev( &target_dev_tab,
 			      (u32)DSCR_CMD0_ALWAYS,
 			      tsize, devwidth, DEV_FLAGS_ANYUSE);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	auide->target_dev_id = au1xxx_ddma_add_device(&target_dev_tab);	
  
 	/* Get a channel for TX */
@@ -411,6 +471,17 @@ static int auide_ddma_init(ide_hwif_t *hwif, const struct ide_port_info *d)
 #endif
 
 	/* setup dev_tab for tx channel */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	auide_init_dbdma_dev(&source_dev_tab, (u32)DSCR_CMD0_ALWAYS, 8, 32,
+			     DEV_FLAGS_OUT | flags, auide->regbase);
+ 	auide->tx_dev_id = au1xxx_ddma_add_device( &source_dev_tab );
+
+	auide_init_dbdma_dev(&source_dev_tab, (u32)DSCR_CMD0_ALWAYS, 8, 32,
+			     DEV_FLAGS_IN | flags, auide->regbase);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	auide_init_dbdma_dev( &source_dev_tab,
 			      (u32)DSCR_CMD0_ALWAYS,
 			      8, 32, DEV_FLAGS_OUT | flags);
@@ -419,6 +490,10 @@ static int auide_ddma_init(ide_hwif_t *hwif, const struct ide_port_info *d)
 	auide_init_dbdma_dev( &source_dev_tab,
 			      (u32)DSCR_CMD0_ALWAYS,
 			      8, 32, DEV_FLAGS_IN | flags);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  	auide->rx_dev_id = au1xxx_ddma_add_device( &source_dev_tab );
 	
 	/* Get a channel for TX */
@@ -540,6 +615,20 @@ static int au_ide_probe(struct platform_device *dev)
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = platform_get_resource(dev, IORESOURCE_DMA, 0);
+	if (!res) {
+		pr_debug("%s: no DDMA ID resource\n", DRV_NAME);
+		ret = -ENODEV;
+		goto out;
+	}
+	ahwif->ddma_id = res->start;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&hw, 0, sizeof(hw));
 	auide_setup_ports(&hw, ahwif);
 	hw.irq = ahwif->irq;

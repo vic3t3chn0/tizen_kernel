@@ -115,8 +115,12 @@ xfs_growfs_rt_alloc(
 <<<<<<< HEAD
 		xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+		xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
+=======
 		xfs_trans_ijoin_ref(tp, ip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		xfs_bmap_init(&flist, &firstblock);
 		/*
@@ -129,10 +133,16 @@ xfs_growfs_rt_alloc(
 					XFS_BMAPI_METADATA, &firstblock,
 					resblks, &map, &nmap, &flist);
 =======
+<<<<<<< HEAD
+		error = xfs_bmapi_write(tp, ip, oblocks, nblocks - oblocks,
+					XFS_BMAPI_METADATA, &firstblock,
+					resblks, &map, &nmap, &flist);
+=======
 		error = xfs_bmapi(tp, ip, oblocks, nblocks - oblocks,
 			XFS_BMAPI_WRITE | XFS_BMAPI_METADATA, &firstblock,
 			resblks, &map, &nmap, &flist);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!error && nmap < 1)
 			error = XFS_ERROR(ENOSPC);
 		if (error)
@@ -168,8 +178,12 @@ xfs_growfs_rt_alloc(
 <<<<<<< HEAD
 			xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+			xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
+=======
 			xfs_trans_ijoin_ref(tp, ip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Get a buffer for the block.
 			 */
@@ -185,8 +199,12 @@ error_cancel:
 <<<<<<< HEAD
 			memset(bp->b_addr, 0, mp->m_sb.sb_blocksize);
 =======
+<<<<<<< HEAD
+			memset(bp->b_addr, 0, mp->m_sb.sb_blocksize);
+=======
 			memset(XFS_BUF_PTR(bp), 0, mp->m_sb.sb_blocksize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_trans_log_buf(tp, bp, 0, mp->m_sb.sb_blocksize - 1);
 			/*
 			 * Commit the transaction.
@@ -204,7 +222,11 @@ error_cancel:
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error:
 	return error;
 }
@@ -879,6 +901,9 @@ xfs_rtbuf_get(
 {
 	xfs_buf_t	*bp;		/* block buffer, result */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_inode_t	*ip;		/* bitmap or summary inode */
 	xfs_bmbt_irec_t	map;
 	int		nmap;
@@ -897,6 +922,8 @@ xfs_rtbuf_get(
 	if (error)
 		return error;
 	ASSERT(!xfs_buf_geterror(bp));
+<<<<<<< HEAD
+=======
 =======
 	xfs_daddr_t	d;		/* disk addr of block */
 	int		error;		/* error value */
@@ -927,6 +954,7 @@ xfs_rtbuf_get(
 	}
 	ASSERT(bp && !XFS_BUF_GETERROR(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*bpp = bp;
 	return 0;
 }
@@ -989,8 +1017,12 @@ xfs_rtcheck_range(
 <<<<<<< HEAD
 	bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+	bufp = bp->b_addr;
+=======
 	bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Compute the starting word's address, and starting bit.
 	 */
@@ -1044,8 +1076,12 @@ xfs_rtcheck_range(
 <<<<<<< HEAD
 			b = bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			b = bufp = bp->b_addr;
+=======
 			b = bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = 0;
 		} else {
 			/*
@@ -1094,8 +1130,12 @@ xfs_rtcheck_range(
 <<<<<<< HEAD
 			b = bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			b = bufp = bp->b_addr;
+=======
 			b = bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = 0;
 		} else {
 			/*
@@ -1216,8 +1256,12 @@ xfs_rtfind_back(
 <<<<<<< HEAD
 	bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+	bufp = bp->b_addr;
+=======
 	bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Get the first word's index & point to it.
 	 */
@@ -1272,8 +1316,12 @@ xfs_rtfind_back(
 <<<<<<< HEAD
 			bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			bufp = bp->b_addr;
+=======
 			bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = XFS_BLOCKWMASK(mp);
 			b = &bufp[word];
 		} else {
@@ -1322,8 +1370,12 @@ xfs_rtfind_back(
 <<<<<<< HEAD
 			bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			bufp = bp->b_addr;
+=======
 			bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = XFS_BLOCKWMASK(mp);
 			b = &bufp[word];
 		} else {
@@ -1403,8 +1455,12 @@ xfs_rtfind_forw(
 <<<<<<< HEAD
 	bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+	bufp = bp->b_addr;
+=======
 	bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Get the first word's index & point to it.
 	 */
@@ -1458,8 +1514,12 @@ xfs_rtfind_forw(
 <<<<<<< HEAD
 			b = bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			b = bufp = bp->b_addr;
+=======
 			b = bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = 0;
 		} else {
 			/*
@@ -1507,8 +1567,12 @@ xfs_rtfind_forw(
 <<<<<<< HEAD
 			b = bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			b = bufp = bp->b_addr;
+=======
 			b = bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = 0;
 		} else {
 			/*
@@ -1731,8 +1795,12 @@ xfs_rtmodify_range(
 <<<<<<< HEAD
 	bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+	bufp = bp->b_addr;
+=======
 	bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Compute the starting word's address, and starting bit.
 	 */
@@ -1780,8 +1848,12 @@ xfs_rtmodify_range(
 <<<<<<< HEAD
 			first = b = bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			first = b = bufp = bp->b_addr;
+=======
 			first = b = bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = 0;
 		} else {
 			/*
@@ -1824,8 +1896,12 @@ xfs_rtmodify_range(
 <<<<<<< HEAD
 			first = b = bufp = bp->b_addr;
 =======
+<<<<<<< HEAD
+			first = b = bufp = bp->b_addr;
+=======
 			first = b = bufp = (xfs_rtword_t *)XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			word = 0;
 		} else {
 			/*
@@ -1927,9 +2003,14 @@ xfs_rtmodify_summary(
 	xfs_trans_log_buf(tp, bp, (uint)((char *)sp - (char *)bp->b_addr),
 		(uint)((char *)sp - (char *)bp->b_addr + sizeof(*sp) - 1));
 =======
+<<<<<<< HEAD
+	xfs_trans_log_buf(tp, bp, (uint)((char *)sp - (char *)bp->b_addr),
+		(uint)((char *)sp - (char *)bp->b_addr + sizeof(*sp) - 1));
+=======
 	xfs_trans_log_buf(tp, bp, (uint)((char *)sp - (char *)XFS_BUF_PTR(bp)),
 		(uint)((char *)sp - (char *)XFS_BUF_PTR(bp) + sizeof(*sp) - 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2069,8 +2150,12 @@ xfs_growfs_rt(
 <<<<<<< HEAD
 		xfs_trans_ijoin(tp, mp->m_rbmip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+		xfs_trans_ijoin(tp, mp->m_rbmip, XFS_ILOCK_EXCL);
+=======
 		xfs_trans_ijoin_ref(tp, mp->m_rbmip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Update the bitmap inode's size.
 		 */
@@ -2085,8 +2170,12 @@ xfs_growfs_rt(
 <<<<<<< HEAD
 		xfs_trans_ijoin(tp, mp->m_rsumip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+		xfs_trans_ijoin(tp, mp->m_rsumip, XFS_ILOCK_EXCL);
+=======
 		xfs_trans_ijoin_ref(tp, mp->m_rsumip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Update the summary inode's size.
 		 */
@@ -2258,12 +2347,18 @@ xfs_rtfree_extent(
 	ASSERT(mp->m_rbmip->i_itemp != NULL);
 	ASSERT(xfs_isilocked(mp->m_rbmip, XFS_ILOCK_EXCL));
 =======
+<<<<<<< HEAD
+
+	ASSERT(mp->m_rbmip->i_itemp != NULL);
+	ASSERT(xfs_isilocked(mp->m_rbmip, XFS_ILOCK_EXCL));
+=======
 	/*
 	 * Synchronize by locking the bitmap inode.
 	 */
 	xfs_ilock(mp->m_rbmip, XFS_ILOCK_EXCL);
 	xfs_trans_ijoin_ref(tp, mp->m_rbmip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(__KERNEL__) && defined(DEBUG)
 	/*

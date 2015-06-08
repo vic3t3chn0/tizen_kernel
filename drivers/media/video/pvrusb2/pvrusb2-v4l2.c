@@ -29,6 +29,13 @@
 #include "pvrusb2-v4l2.h"
 #include "pvrusb2-ioread.h"
 #include <linux/videodev2.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/v4l2-dev.h>
 #include <media/v4l2-common.h>
 #include <media/v4l2-ioctl.h>
@@ -91,11 +98,24 @@ static struct v4l2_capability pvr_capability ={
 	.driver         = "pvrusb2",
 	.card           = "Hauppauge WinTV pvr-usb2",
 	.bus_info       = "usb",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.version        = LINUX_VERSION_CODE,
+	.capabilities   = (V4L2_CAP_VIDEO_CAPTURE |
+			   V4L2_CAP_TUNER | V4L2_CAP_AUDIO | V4L2_CAP_RADIO |
+			   V4L2_CAP_READWRITE),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.version        = KERNEL_VERSION(0, 9, 0),
 	.capabilities   = (V4L2_CAP_VIDEO_CAPTURE |
 			   V4L2_CAP_TUNER | V4L2_CAP_AUDIO | V4L2_CAP_RADIO |
 			   V4L2_CAP_READWRITE),
 	.reserved       = {0,0,0,0}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct v4l2_fmtdesc pvr_fmtdesc [] = {
@@ -227,6 +247,20 @@ static long pvr2_v4l2_do_ioctl(struct file *file, unsigned int cmd, void *arg)
 		break;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_QUERYSTD:
+	{
+		v4l2_std_id *std = arg;
+		*std = V4L2_STD_ALL;
+		ret = pvr2_hdw_get_detected_std(hdw, std);
+		break;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_G_STD:
 	{
 		int val = 0;
@@ -369,11 +403,20 @@ static long pvr2_v4l2_do_ioctl(struct file *file, unsigned int cmd, void *arg)
 		break;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_S_AUDIO:
 	{
 		ret = -EINVAL;
 		break;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_G_TUNER:
 	{
 		struct v4l2_tuner *vt = (struct v4l2_tuner *)arg;
@@ -850,7 +893,15 @@ static long pvr2_v4l2_do_ioctl(struct file *file, unsigned int cmd, void *arg)
 #endif
 
 	default :
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = -ENOTTY;
+=======
 		ret = -EINVAL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ret = -EINVAL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 

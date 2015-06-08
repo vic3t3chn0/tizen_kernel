@@ -13,7 +13,11 @@ extern "C" {
 <<<<<<< HEAD
 #include <assert.h>
 =======
+<<<<<<< HEAD
+#include <assert.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <stdio.h>
 #ifndef __cplusplus
 #include <stdbool.h>
@@ -178,9 +182,12 @@ struct menu {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef SWIG
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct file *file_list;
 extern struct file *current_file;
 struct file *lookup_file(const char *name);
@@ -227,8 +234,11 @@ static inline int expr_is_no(struct expr *e)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef __cplusplus
 }

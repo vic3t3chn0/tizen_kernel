@@ -22,8 +22,11 @@ config KVM
 	select ANON_INODES
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	select KVM_MMIO
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config KVM_BOOK3S_HANDLER
 	bool
@@ -34,19 +37,29 @@ config KVM_BOOK3S_32_HANDLER
 <<<<<<< HEAD
 	select KVM_MMIO
 =======
+<<<<<<< HEAD
+	select KVM_MMIO
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config KVM_BOOK3S_64_HANDLER
 	bool
 	select KVM_BOOK3S_HANDLER
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config KVM_BOOK3S_PR
 	bool
 	select KVM_MMIO
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config KVM_BOOK3S_32
 	tristate "KVM support for PowerPC book3s_32 processors"
 	depends on EXPERIMENTAL && PPC_BOOK3S_32 && !SMP && !PTE_64BIT
@@ -55,7 +68,11 @@ config KVM_BOOK3S_32
 <<<<<<< HEAD
 	select KVM_BOOK3S_PR
 =======
+<<<<<<< HEAD
+	select KVM_BOOK3S_PR
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Support running unmodified book3s_32 guest kernels
 	  in virtual machines on book3s_32 host processors.
@@ -72,9 +89,14 @@ config KVM_BOOK3S_64
 	select KVM_BOOK3S_64_HANDLER
 	select KVM
 =======
+<<<<<<< HEAD
+	select KVM_BOOK3S_64_HANDLER
+	select KVM
+=======
 	select KVM
 	select KVM_BOOK3S_64_HANDLER
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Support running unmodified book3s_64 and book3s_32 guest kernels
 	  in virtual machines on book3s_64 host processors.
@@ -85,6 +107,9 @@ config KVM_BOOK3S_64
 	  If unsure, say N.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config KVM_BOOK3S_64_HV
 	bool "KVM support for POWER7 and PPC970 using hypervisor mode in host"
 	depends on KVM_BOOK3S_64
@@ -109,8 +134,11 @@ config KVM_BOOK3S_64_PR
 	depends on KVM_BOOK3S_64 && !KVM_BOOK3S_64_HV
 	select KVM_BOOK3S_PR
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config KVM_440
 	bool "KVM support for PowerPC 440 processors"
 	depends on EXPERIMENTAL && 44x
@@ -118,7 +146,11 @@ config KVM_440
 <<<<<<< HEAD
 	select KVM_MMIO
 =======
+<<<<<<< HEAD
+	select KVM_MMIO
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Support running unmodified 440 guest kernels in virtual machines on
 	  440 host processors.
@@ -146,7 +178,11 @@ config KVM_E500
 <<<<<<< HEAD
 	select KVM_MMIO
 =======
+<<<<<<< HEAD
+	select KVM_MMIO
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Support running unmodified E500 guest kernels in virtual machines on
 	  E500 host processors.
@@ -159,7 +195,10 @@ config KVM_E500
 source drivers/vhost/Kconfig
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 source drivers/virtio/Kconfig
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 endif # VIRTUALIZATION

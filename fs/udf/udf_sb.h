@@ -51,6 +51,9 @@
 #define UDF_METADATA_MAP25		0x2511U
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UDF_INVALID_MODE		((umode_t)-1)
 
 #pragma pack(1) /* XXX(hch): Why?  This file just defines in-core structures */
@@ -58,12 +61,15 @@
 #define MF_DUPLICATE_MD		0x01
 #define MF_MIRROR_FE_LOADED	0x02
 
+<<<<<<< HEAD
+=======
 =======
 #define UDF_INVALID_MODE		((mode_t)-1)
 
 #pragma pack(1) /* XXX(hch): Why?  This file just defines in-core structures */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct udf_meta_data {
 	__u32	s_meta_file_loc;
 	__u32	s_mirror_file_loc;
@@ -73,8 +79,12 @@ struct udf_meta_data {
 <<<<<<< HEAD
 	int	s_flags;
 =======
+<<<<<<< HEAD
+	int	s_flags;
+=======
 	__u8 	s_dup_md_flag;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *s_metadata_fe;
 	struct inode *s_mirror_fe;
 	struct inode *s_bitmap_fe;
@@ -96,8 +106,12 @@ struct udf_bitmap {
 <<<<<<< HEAD
 	__u16			s_nr_groups;
 =======
+<<<<<<< HEAD
+	__u16			s_nr_groups;
+=======
 	int			s_nr_groups;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct buffer_head 	**s_block_bitmap;
 };
 
@@ -143,11 +157,16 @@ struct udf_sb_info {
 
 	/* Default permissions */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	umode_t			s_umask;
 	gid_t			s_gid;
 	uid_t			s_uid;
 	umode_t			s_fmode;
 	umode_t			s_dmode;
+<<<<<<< HEAD
+=======
 =======
 	mode_t			s_umask;
 	gid_t			s_gid;
@@ -155,6 +174,7 @@ struct udf_sb_info {
 	mode_t			s_fmode;
 	mode_t			s_dmode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Lock protecting consistency of above permission settings */
 	rwlock_t		s_cred_lock;
 

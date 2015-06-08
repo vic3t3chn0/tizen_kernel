@@ -11,8 +11,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -27,11 +31,20 @@
 <<<<<<< HEAD
 #include <asm/memblock.h>
 =======
+<<<<<<< HEAD
+#include <asm/memblock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/tc.h>
 #include <plat/board.h>
 #include <plat/mmc.h>
+<<<<<<< HEAD
+#include <plat/menelaus.h>
+#include <plat/omap44xx.h>
+
+=======
 <<<<<<< HEAD
 #include <plat/menelaus.h>
 #include <plat/omap44xx.h>
@@ -123,6 +136,7 @@ static inline void omap_init_mcpdm(void) {}
 /*-------------------------------------------------------------------------*/
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_MMC_OMAP) || defined(CONFIG_MMC_OMAP_MODULE) || \
 	defined(CONFIG_MMC_OMAP_HS) || defined(CONFIG_MMC_OMAP_HS_MODULE)
 
@@ -263,8 +277,12 @@ void __init omap_dsp_reserve_sdram_memblock(void)
 <<<<<<< HEAD
 	paddr = arm_memblock_steal(size, SZ_1M);
 =======
+<<<<<<< HEAD
+	paddr = arm_memblock_steal(size, SZ_1M);
+=======
 	paddr = memblock_alloc(size, SZ_1M);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!paddr) {
 		pr_err("%s: failed to reserve %x bytes\n",
 				__func__, size);
@@ -272,9 +290,12 @@ void __init omap_dsp_reserve_sdram_memblock(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_free(paddr, size);
 	memblock_remove(paddr, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	omap_dsp_phys_mempool_base = paddr;
 }
@@ -314,8 +335,11 @@ static int __init omap_init_devices(void)
 	omap_init_rng();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	omap_init_mcpdm();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_init_uwire();
 	return 0;
 }

@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2009-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2009-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2009-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner
  *
@@ -40,7 +44,13 @@ bool gw_is_dhcp_target(struct sk_buff *skb, unsigned int *header_len);
 bool gw_out_of_range(struct bat_priv *bat_priv,
 		     struct sk_buff *skb, struct ethhdr *ethhdr);
 =======
+<<<<<<< HEAD
+bool gw_is_dhcp_target(struct sk_buff *skb, unsigned int *header_len);
+bool gw_out_of_range(struct bat_priv *bat_priv,
+		     struct sk_buff *skb, struct ethhdr *ethhdr);
+=======
 int gw_is_target(struct bat_priv *bat_priv, struct sk_buff *skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _NET_BATMAN_ADV_GATEWAY_CLIENT_H_ */

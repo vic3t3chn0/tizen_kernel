@@ -23,12 +23,18 @@
 #include <linux/types.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Select powerpc specific features in <linux/kvm.h> */
 #define __KVM_HAVE_SPAPR_TCE
 #define __KVM_HAVE_PPC_SMT
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvm_regs {
 	__u64 pc;
 	__u64 cr;
@@ -177,9 +183,14 @@ struct kvm_sregs {
 				__u64 ibat[8];
 				__u64 dbat[8];
 =======
+<<<<<<< HEAD
+				__u64 ibat[8];
+				__u64 dbat[8];
+=======
 				__u64 ibat[8]; 
 				__u64 dbat[8]; 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} ppc32;
 		} s;
 		struct {
@@ -278,6 +289,11 @@ struct kvm_guest_debug_arch {
 struct kvm_sync_regs {
 };
 =======
+<<<<<<< HEAD
+/* definition of registers in kvm_run */
+struct kvm_sync_regs {
+};
+=======
 #define KVM_REG_MASK		0x001f
 #define KVM_REG_EXT_MASK	0xffe0
 #define KVM_REG_GPR		0x0000
@@ -285,12 +301,16 @@ struct kvm_sync_regs {
 #define KVM_REG_QPR		0x0040
 #define KVM_REG_FQPR		0x0060
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define KVM_INTERRUPT_SET	-1U
 #define KVM_INTERRUPT_UNSET	-2U
 #define KVM_INTERRUPT_SET_LEVEL	-3U
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define KVM_CPU_440		1
 #define KVM_CPU_E500V2		2
 #define KVM_CPU_3S_32		3
@@ -344,6 +364,9 @@ struct kvm_book3e_206_tlb_params {
 
 #define KVM_REG_PPC_HIOR	(KVM_REG_PPC | KVM_REG_SIZE_U64 | 0x1)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __LINUX_KVM_POWERPC_H */

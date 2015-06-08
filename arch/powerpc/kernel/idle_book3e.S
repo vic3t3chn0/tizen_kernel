@@ -30,6 +30,9 @@ _GLOBAL(book3e_idle)
 
 	/* Now check if an interrupt came in while we were soft disabled
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * since we may otherwise lose it (doorbells etc...).
 	 */
 	lbz	r3,PACAIRQHAPPENED(r13)
@@ -37,6 +40,8 @@ _GLOBAL(book3e_idle)
 	bnelr
 
 	/* Now we are going to mark ourselves as soft and hard enabled in
+<<<<<<< HEAD
+=======
 =======
 	 * since we may otherwise lose it (doorbells etc...). We know
 	 * that since PACAHARDIRQEN will have been cleared in that case.
@@ -47,6 +52,7 @@ _GLOBAL(book3e_idle)
 
 	/* Now we are going to mark ourselves as soft and hard enables in
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * order to be able to take interrupts while asleep. We inform lockdep
 	 * of that. We don't actually turn interrupts on just yet tho.
 	 */
@@ -54,22 +60,31 @@ _GLOBAL(book3e_idle)
 	stdu    r1,-128(r1)
 	bl	.trace_hardirqs_on
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addi    r1,r1,128
 #endif
 	li	r0,1
 	stb	r0,PACASOFTIRQEN(r13)
+<<<<<<< HEAD
+=======
 =======
 #endif
 	li	r0,1
 	stb	r0,PACASOFTIRQEN(r13)
 	stb	r0,PACAHARDIRQEN(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	
 	/* Interrupts will make use return to LR, so get something we want
 	 * in there
 	 */
 	bl	1f
 
+<<<<<<< HEAD
+	/* And return (interrupts are on) */
+=======
 <<<<<<< HEAD
 	/* And return (interrupts are on) */
 =======
@@ -87,6 +102,7 @@ _GLOBAL(book3e_idle)
 	addi    r1,r1,128
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r0,16(r1)
 	mtlr	r0
 	blr

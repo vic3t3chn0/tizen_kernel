@@ -27,25 +27,37 @@
 #include <linux/bitops.h>
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/cpu.h>
+#include <linux/bitops.h>
+#include <linux/device.h>
+=======
 #include <linux/highmem.h>
 #include <linux/cpu.h>
 #include <linux/bitops.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/apic.h>
 #include <asm/stacktrace.h>
 #include <asm/nmi.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/smp.h>
 #include <asm/alternative.h>
 #include <asm/timer.h>
 
 #include "perf_event.h"
+<<<<<<< HEAD
+=======
 =======
 #include <asm/compat.h>
 #include <asm/smp.h>
 #include <asm/alternative.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if 0
 #undef wrmsrl
@@ -59,6 +71,9 @@ do {								\
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct x86_pmu x86_pmu __read_mostly;
 
 DEFINE_PER_CPU(struct cpu_hw_events, cpu_hw_events) = {
@@ -70,6 +85,8 @@ u64 __read_mostly hw_cache_event_ids
 				[PERF_COUNT_HW_CACHE_OP_MAX]
 				[PERF_COUNT_HW_CACHE_RESULT_MAX];
 u64 __read_mostly hw_cache_extra_regs
+<<<<<<< HEAD
+=======
 =======
 /*
  * best effort, GUP based copy_from_user() that assumes IRQ or NMI context
@@ -339,6 +356,7 @@ static u64 __read_mostly hw_cache_event_ids
 				[PERF_COUNT_HW_CACHE_RESULT_MAX];
 static u64 __read_mostly hw_cache_extra_regs
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				[PERF_COUNT_HW_CACHE_MAX]
 				[PERF_COUNT_HW_CACHE_OP_MAX]
 				[PERF_COUNT_HW_CACHE_RESULT_MAX];
@@ -351,9 +369,13 @@ static u64 __read_mostly hw_cache_extra_regs
 <<<<<<< HEAD
 u64 x86_perf_event_update(struct perf_event *event)
 =======
+<<<<<<< HEAD
+u64 x86_perf_event_update(struct perf_event *event)
+=======
 static u64
 x86_perf_event_update(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hw_perf_event *hwc = &event->hw;
 	int shift = 64 - x86_pmu.cntval_bits;
@@ -398,6 +420,8 @@ again:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int x86_pmu_addr_offset(int index)
 {
 	int offset;
@@ -423,22 +447,29 @@ static inline unsigned int x86_pmu_event_addr(int index)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Find and validate any extra registers to set up.
  */
 static int x86_pmu_extra_regs(u64 config, struct perf_event *event)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hw_perf_event_extra *reg;
 	struct extra_reg *er;
 
 	reg = &event->hw.extra_reg;
+<<<<<<< HEAD
+=======
 =======
 	struct extra_reg *er;
 
 	event->hw.extra_reg = 0;
 	event->hw.extra_config = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!x86_pmu.extra_regs)
 		return 0;
@@ -449,14 +480,20 @@ static int x86_pmu_extra_regs(u64 config, struct perf_event *event)
 		if (event->attr.config1 & ~er->valid_mask)
 			return -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		reg->idx = er->idx;
 		reg->config = event->attr.config1;
 		reg->reg = er->msr;
+<<<<<<< HEAD
+=======
 =======
 		event->hw.extra_reg = er->msr;
 		event->hw.extra_config = event->attr.config1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	return 0;
@@ -572,10 +609,13 @@ msr_fail:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void reserve_ds_buffers(void);
 static void release_ds_buffers(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void hw_perf_event_destroy(struct perf_event *event)
 {
 	if (atomic_dec_and_mutex_lock(&active_events, &pmc_reserve_mutex)) {
@@ -627,8 +667,12 @@ set_ext_hw_attr(struct hw_perf_event *hwc, struct perf_event *event)
 <<<<<<< HEAD
 int x86_setup_perfctr(struct perf_event *event)
 =======
+<<<<<<< HEAD
+int x86_setup_perfctr(struct perf_event *event)
+=======
 static int x86_setup_perfctr(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct perf_event_attr *attr = &event->attr;
 	struct hw_perf_event *hwc = &event->hw;
@@ -653,6 +697,10 @@ static int x86_setup_perfctr(struct perf_event *event)
 	if (attr->type == PERF_TYPE_RAW)
 		return x86_pmu_extra_regs(event->attr.config, event);
 =======
+<<<<<<< HEAD
+	if (attr->type == PERF_TYPE_RAW)
+		return x86_pmu_extra_regs(event->attr.config, event);
+=======
 	/*
 	 * Do not allow config1 (extended registers) to propagate,
 	 * there's no sane user-space generalization yet:
@@ -660,6 +708,7 @@ static int x86_setup_perfctr(struct perf_event *event)
 	if (attr->type == PERF_TYPE_RAW)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (attr->type == PERF_TYPE_HW_CACHE)
 		return set_ext_hw_attr(hwc, event);
@@ -698,6 +747,9 @@ static int x86_setup_perfctr(struct perf_event *event)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * check that branch_sample_type is compatible with
  * settings needed for precise_ip > 1 which implies
@@ -729,9 +781,12 @@ static inline int precise_br_compat(struct perf_event *event)
 }
 
 int x86_pmu_hw_config(struct perf_event *event)
+<<<<<<< HEAD
+=======
 =======
 static int x86_pmu_hw_config(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (event->attr.precise_ip) {
 		int precise = 0;
@@ -748,6 +803,9 @@ static int x86_pmu_hw_config(struct perf_event *event)
 		if (event->attr.precise_ip > precise)
 			return -EOPNOTSUPP;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * check that PEBS LBR correction does not conflict with
 		 * whatever the user is asking with attr->branch_sample_type
@@ -778,8 +836,11 @@ static int x86_pmu_hw_config(struct perf_event *event)
 					*br_type |= PERF_SAMPLE_BRANCH_KERNEL;
 			}
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -835,6 +896,9 @@ static int __x86_pmu_event_init(struct perf_event *event)
 	event->hw.last_tag = ~0ULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* mark unused */
 	event->hw.extra_reg.idx = EXTRA_REG_NONE;
 
@@ -846,12 +910,15 @@ static int __x86_pmu_event_init(struct perf_event *event)
 }
 
 void x86_pmu_disable_all(void)
+<<<<<<< HEAD
+=======
 =======
 	return x86_pmu.hw_config(event);
 }
 
 static void x86_pmu_disable_all(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 	int idx;
@@ -889,6 +956,9 @@ static void x86_pmu_disable(struct pmu *pmu)
 <<<<<<< HEAD
 void x86_pmu_enable_all(int added)
 =======
+<<<<<<< HEAD
+void x86_pmu_enable_all(int added)
+=======
 static inline void __x86_pmu_enable_event(struct hw_perf_event *hwc,
 					  u64 enable_mask)
 {
@@ -899,6 +969,7 @@ static inline void __x86_pmu_enable_event(struct hw_perf_event *hwc,
 
 static void x86_pmu_enable_all(int added)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 	int idx;
@@ -921,6 +992,9 @@ static inline int is_x86_event(struct perf_event *event)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Event scheduler state:
  *
@@ -1101,6 +1175,8 @@ int x86_schedule_events(struct cpu_hw_events *cpuc, int n, int *assign)
 	struct event_constraint *c, *constraints[X86_PMC_IDX_MAX];
 	unsigned long used_mask[BITS_TO_LONGS(X86_PMC_IDX_MAX)];
 	int i, wmin, wmax, num = 0;
+<<<<<<< HEAD
+=======
 =======
 static int x86_schedule_events(struct cpu_hw_events *cpuc, int n, int *assign)
 {
@@ -1108,21 +1184,28 @@ static int x86_schedule_events(struct cpu_hw_events *cpuc, int n, int *assign)
 	unsigned long used_mask[BITS_TO_LONGS(X86_PMC_IDX_MAX)];
 	int i, j, w, wmax, num = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hw_perf_event *hwc;
 
 	bitmap_zero(used_mask, X86_PMC_IDX_MAX);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0, wmin = X86_PMC_IDX_MAX, wmax = 0; i < n; i++) {
 		c = x86_pmu.get_event_constraints(cpuc, cpuc->event_list[i]);
 		constraints[i] = c;
 		wmin = min(wmin, c->weight);
 		wmax = max(wmax, c->weight);
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < n; i++) {
 		c = x86_pmu.get_event_constraints(cpuc, cpuc->event_list[i]);
 		constraints[i] = c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1149,12 +1232,17 @@ static int x86_schedule_events(struct cpu_hw_events *cpuc, int n, int *assign)
 			assign[i] = hwc->idx;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* slow path */
 	if (i != n)
 		num = perf_assign_events(constraints, n, wmin, wmax, assign);
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 	if (i == n)
 		goto done;
@@ -1211,6 +1299,7 @@ static int x86_schedule_events(struct cpu_hw_events *cpuc, int n, int *assign)
 done:
 	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * scheduling failed or is just a simulation,
 	 * free resources if necessary
 	 */
@@ -1223,8 +1312,12 @@ done:
 <<<<<<< HEAD
 	return num ? -EINVAL : 0;
 =======
+<<<<<<< HEAD
+	return num ? -EINVAL : 0;
+=======
 	return num ? -ENOSPC : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1246,8 +1339,12 @@ static int collect_events(struct cpu_hw_events *cpuc, struct perf_event *leader,
 <<<<<<< HEAD
 			return -EINVAL;
 =======
+<<<<<<< HEAD
+			return -EINVAL;
+=======
 			return -ENOSPC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpuc->event_list[n] = leader;
 		n++;
 	}
@@ -1263,8 +1360,12 @@ static int collect_events(struct cpu_hw_events *cpuc, struct perf_event *leader,
 <<<<<<< HEAD
 			return -EINVAL;
 =======
+<<<<<<< HEAD
+			return -EINVAL;
+=======
 			return -ENOSPC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		cpuc->event_list[n] = event;
 		n++;
@@ -1305,8 +1406,11 @@ static inline int match_prev_assignment(struct hw_perf_event *hwc,
 static void x86_pmu_start(struct perf_event *event, int flags);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void x86_pmu_stop(struct perf_event *event, int flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void x86_pmu_enable(struct pmu *pmu)
 {
@@ -1380,6 +1484,8 @@ static void x86_pmu_enable(struct pmu *pmu)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline void x86_pmu_disable_event(struct perf_event *event)
 {
 	struct hw_perf_event *hwc = &event->hw;
@@ -1388,6 +1494,7 @@ static inline void x86_pmu_disable_event(struct perf_event *event)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PER_CPU(u64 [X86_PMC_IDX_MAX], pmc_prev_left);
 
 /*
@@ -1397,9 +1504,13 @@ static DEFINE_PER_CPU(u64 [X86_PMC_IDX_MAX], pmc_prev_left);
 <<<<<<< HEAD
 int x86_perf_event_set_period(struct perf_event *event)
 =======
+<<<<<<< HEAD
+int x86_perf_event_set_period(struct perf_event *event)
+=======
 static int
 x86_perf_event_set_period(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hw_perf_event *hwc = &event->hw;
 	s64 left = local64_read(&hwc->period_left);
@@ -1462,8 +1573,12 @@ x86_perf_event_set_period(struct perf_event *event)
 <<<<<<< HEAD
 void x86_pmu_enable_event(struct perf_event *event)
 =======
+<<<<<<< HEAD
+void x86_pmu_enable_event(struct perf_event *event)
+=======
 static void x86_pmu_enable_event(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (__this_cpu_read(cpu_hw_events.enabled))
 		__x86_pmu_enable_event(&event->hw,
@@ -1605,8 +1720,12 @@ void perf_event_print_debug(void)
 <<<<<<< HEAD
 void x86_pmu_stop(struct perf_event *event, int flags)
 =======
+<<<<<<< HEAD
+void x86_pmu_stop(struct perf_event *event, int flags)
+=======
 static void x86_pmu_stop(struct perf_event *event, int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 	struct hw_perf_event *hwc = &event->hw;
@@ -1662,8 +1781,12 @@ static void x86_pmu_del(struct perf_event *event, int flags)
 <<<<<<< HEAD
 int x86_pmu_handle_irq(struct pt_regs *regs)
 =======
+<<<<<<< HEAD
+int x86_pmu_handle_irq(struct pt_regs *regs)
+=======
 static int x86_pmu_handle_irq(struct pt_regs *regs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct perf_sample_data data;
 	struct cpu_hw_events *cpuc;
@@ -1715,8 +1838,12 @@ static int x86_pmu_handle_irq(struct pt_regs *regs)
 <<<<<<< HEAD
 		if (perf_event_overflow(event, &data, regs))
 =======
+<<<<<<< HEAD
+		if (perf_event_overflow(event, &data, regs))
+=======
 		if (perf_event_overflow(event, 1, &data, regs))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			x86_pmu_stop(event, 0);
 	}
 
@@ -1738,6 +1865,9 @@ void perf_events_lapic_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __kprobes
 perf_event_nmi_handler(unsigned int cmd, struct pt_regs *regs)
 {
@@ -1749,6 +1879,8 @@ perf_event_nmi_handler(unsigned int cmd, struct pt_regs *regs)
 
 struct event_constraint emptyconstraint;
 struct event_constraint unconstrained;
+<<<<<<< HEAD
+=======
 =======
 struct pmu_nmi_state {
 	unsigned int	marked;
@@ -1845,6 +1977,7 @@ x86_get_event_constraints(struct cpu_hw_events *cpuc, struct perf_event *event)
 #include "perf_event_intel_ds.c"
 #include "perf_event_intel.c"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __cpuinit
 x86_pmu_notifier(struct notifier_block *self, unsigned long action, void *hcpu)
@@ -1853,7 +1986,11 @@ x86_pmu_notifier(struct notifier_block *self, unsigned long action, void *hcpu)
 <<<<<<< HEAD
 	struct cpu_hw_events *cpuc = &per_cpu(cpu_hw_events, cpu);
 =======
+<<<<<<< HEAD
+	struct cpu_hw_events *cpuc = &per_cpu(cpu_hw_events, cpu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = NOTIFY_OK;
 
 	switch (action & ~CPU_TASKS_FROZEN) {
@@ -1861,7 +1998,11 @@ x86_pmu_notifier(struct notifier_block *self, unsigned long action, void *hcpu)
 <<<<<<< HEAD
 		cpuc->kfree_on_online = NULL;
 =======
+<<<<<<< HEAD
+		cpuc->kfree_on_online = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (x86_pmu.cpu_prepare)
 			ret = x86_pmu.cpu_prepare(cpu);
 		break;
@@ -1871,18 +2012,29 @@ x86_pmu_notifier(struct notifier_block *self, unsigned long action, void *hcpu)
 		if (x86_pmu.attr_rdpmc)
 			set_in_cr4(X86_CR4_PCE);
 =======
+<<<<<<< HEAD
+		if (x86_pmu.attr_rdpmc)
+			set_in_cr4(X86_CR4_PCE);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (x86_pmu.cpu_starting)
 			x86_pmu.cpu_starting(cpu);
 		break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case CPU_ONLINE:
 		kfree(cpuc->kfree_on_online);
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case CPU_DYING:
 		if (x86_pmu.cpu_dying)
 			x86_pmu.cpu_dying(cpu);
@@ -1912,6 +2064,9 @@ static void __init pmu_check_apic(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct attribute_group x86_pmu_format_group = {
 	.name = "format",
 	.attrs = NULL,
@@ -1920,10 +2075,13 @@ static struct attribute_group x86_pmu_format_group = {
 static int __init init_hw_perf_events(void)
 {
 	struct x86_pmu_quirk *quirk;
+<<<<<<< HEAD
+=======
 =======
 static int __init init_hw_perf_events(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct event_constraint *c;
 	int err;
 
@@ -1956,9 +2114,14 @@ static int __init init_hw_perf_events(void)
 	for (quirk = x86_pmu.quirks; quirk; quirk = quirk->next)
 		quirk->func();
 =======
+<<<<<<< HEAD
+	for (quirk = x86_pmu.quirks; quirk; quirk = quirk->next)
+		quirk->func();
+=======
 	if (x86_pmu.quirks)
 		x86_pmu.quirks();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (x86_pmu.num_counters > X86_PMC_MAX_GENERIC) {
 		WARN(1, KERN_ERR "hw perf events %d > max(%d), clipping!",
@@ -1978,6 +2141,9 @@ static int __init init_hw_perf_events(void)
 
 	perf_events_lapic_init();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	register_nmi_handler(NMI_LOCAL, perf_event_nmi_handler, 0, "PMI");
 
 	unconstrained = (struct event_constraint)
@@ -1994,6 +2160,8 @@ static int __init init_hw_perf_events(void)
 			    || c->idxmsk64 == X86_PMC_MSK_FIXED_REF_CYCLES) {
 				continue;
 			}
+<<<<<<< HEAD
+=======
 =======
 	register_die_notifier(&perf_event_nmi_notifier);
 
@@ -2006,6 +2174,7 @@ static int __init init_hw_perf_events(void)
 			if (c->cmask != X86_RAW_EVENT_MASK)
 				continue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			c->idxmsk64 |= (1ULL << x86_pmu.num_counters) - 1;
 			c->weight += x86_pmu.num_counters;
@@ -2017,7 +2186,13 @@ static int __init init_hw_perf_events(void)
 	x86_pmu_format_group.attrs = x86_pmu.format_attrs;
 
 =======
+<<<<<<< HEAD
+	x86_pmu.attr_rdpmc = 1; /* enable userspace RDPMC usage by default */
+	x86_pmu_format_group.attrs = x86_pmu.format_attrs;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info("... version:                %d\n",     x86_pmu.version);
 	pr_info("... bit width:              %d\n",     x86_pmu.cntval_bits);
 	pr_info("... generic registers:      %d\n",     x86_pmu.num_counters);
@@ -2097,6 +2272,9 @@ static int x86_pmu_commit_txn(struct pmu *pmu)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * a fake_cpuc is used to validate event groups. Due to
  * the extra reg logic, we need to also allocate a fake
@@ -2131,8 +2309,11 @@ error:
 	free_fake_cpuc(cpuc);
 	return ERR_PTR(-ENOMEM);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * validate that we can schedule this event
@@ -2148,10 +2329,16 @@ static int validate_event(struct perf_event *event)
 	if (IS_ERR(fake_cpuc))
 		return PTR_ERR(fake_cpuc);
 =======
+<<<<<<< HEAD
+	fake_cpuc = allocate_fake_cpuc();
+	if (IS_ERR(fake_cpuc))
+		return PTR_ERR(fake_cpuc);
+=======
 	fake_cpuc = kmalloc(sizeof(*fake_cpuc), GFP_KERNEL | __GFP_ZERO);
 	if (!fake_cpuc)
 		return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	c = x86_pmu.get_event_constraints(fake_cpuc, event);
 
@@ -2159,8 +2346,12 @@ static int validate_event(struct perf_event *event)
 <<<<<<< HEAD
 		ret = -EINVAL;
 =======
+<<<<<<< HEAD
+		ret = -EINVAL;
+=======
 		ret = -ENOSPC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (x86_pmu.put_event_constraints)
 		x86_pmu.put_event_constraints(fake_cpuc, event);
@@ -2168,8 +2359,12 @@ static int validate_event(struct perf_event *event)
 <<<<<<< HEAD
 	free_fake_cpuc(fake_cpuc);
 =======
+<<<<<<< HEAD
+	free_fake_cpuc(fake_cpuc);
+=======
 	kfree(fake_cpuc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -2190,11 +2385,16 @@ static int validate_group(struct perf_event *event)
 	struct perf_event *leader = event->group_leader;
 	struct cpu_hw_events *fake_cpuc;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = -EINVAL, n;
 
 	fake_cpuc = allocate_fake_cpuc();
 	if (IS_ERR(fake_cpuc))
 		return PTR_ERR(fake_cpuc);
+<<<<<<< HEAD
+=======
 =======
 	int ret, n;
 
@@ -2204,6 +2404,7 @@ static int validate_group(struct perf_event *event)
 		goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * the event is not yet connected with its
 	 * siblings therefore we must first collect
@@ -2215,11 +2416,17 @@ static int validate_group(struct perf_event *event)
 	if (n < 0)
 		goto out;
 =======
+<<<<<<< HEAD
+	n = collect_events(fake_cpuc, leader, true);
+	if (n < 0)
+		goto out;
+=======
 	ret = -ENOSPC;
 	n = collect_events(fake_cpuc, leader, true);
 	if (n < 0)
 		goto out_free;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	fake_cpuc->n_events = n;
 	n = collect_events(fake_cpuc, event, false);
@@ -2227,8 +2434,12 @@ static int validate_group(struct perf_event *event)
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		goto out_free;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	fake_cpuc->n_events = n;
 
@@ -2238,10 +2449,15 @@ static int validate_group(struct perf_event *event)
 out:
 	free_fake_cpuc(fake_cpuc);
 =======
+<<<<<<< HEAD
+out:
+	free_fake_cpuc(fake_cpuc);
+=======
 out_free:
 	kfree(fake_cpuc);
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -2286,6 +2502,9 @@ static int x86_pmu_event_init(struct perf_event *event)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int x86_pmu_event_idx(struct perf_event *event)
 {
 	int idx = event->hw.idx;
@@ -2368,6 +2587,8 @@ static struct pmu pmu = {
 	.start			= x86_pmu_start,
 	.stop			= x86_pmu_stop,
 	.read			= x86_pmu_read,
+<<<<<<< HEAD
+=======
 =======
 static struct pmu pmu = {
 	.pmu_enable	= x86_pmu_enable,
@@ -2381,11 +2602,15 @@ static struct pmu pmu = {
 	.stop		= x86_pmu_stop,
 	.read		= x86_pmu_read,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.start_txn	= x86_pmu_start_txn,
 	.cancel_txn	= x86_pmu_cancel_txn,
 	.commit_txn	= x86_pmu_commit_txn,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.event_idx	= x86_pmu_event_idx,
 	.flush_branch_stack	= x86_pmu_flush_branch_stack,
@@ -2409,10 +2634,13 @@ void arch_perf_update_userpage(struct perf_event_mmap_page *userpg, u64 now)
 	userpg->time_offset = this_cpu_read(cyc2ns_offset) - now;
 }
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * callchain support
  */
@@ -2454,7 +2682,13 @@ perf_callchain_kernel(struct perf_callchain_entry *entry, struct pt_regs *regs)
 #include <asm/compat.h>
 
 =======
+<<<<<<< HEAD
+
+#include <asm/compat.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int
 perf_callchain_user32(struct pt_regs *regs, struct perf_callchain_entry *entry)
 {
@@ -2563,6 +2797,9 @@ unsigned long perf_misc_flags(struct pt_regs *regs)
 	return misc;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void perf_get_x86_pmu_capability(struct x86_pmu_capability *cap)
 {
@@ -2575,5 +2812,8 @@ void perf_get_x86_pmu_capability(struct x86_pmu_capability *cap)
 	cap->events_mask_len	= x86_pmu.events_mask_len;
 }
 EXPORT_SYMBOL_GPL(perf_get_x86_pmu_capability);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

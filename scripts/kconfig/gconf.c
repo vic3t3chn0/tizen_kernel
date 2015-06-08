@@ -287,9 +287,12 @@ static void renderer_edited(GtkCellRendererText * cell,
 			    const gchar * new_text, gpointer user_data);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void renderer_toggled(GtkCellRendererToggle * cellrenderertoggle,
 			     gchar * arg1, gpointer user_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void init_right_tree(void)
 {
@@ -325,9 +328,12 @@ void init_right_tree(void)
 					    "radio", COL_BTNRAD, NULL);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*g_signal_connect(G_OBJECT(renderer), "toggled",
 	   G_CALLBACK(renderer_toggled), NULL); */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	renderer = gtk_cell_renderer_text_new();
 	gtk_tree_view_column_pack_start(GTK_TREE_VIEW_COLUMN(column),
 					renderer, FALSE);
@@ -696,8 +702,12 @@ void on_introduction1_activate(GtkMenuItem * menuitem, gpointer user_data)
 <<<<<<< HEAD
 					GTK_BUTTONS_CLOSE, "%s", intro_text);
 =======
+<<<<<<< HEAD
+					GTK_BUTTONS_CLOSE, "%s", intro_text);
+=======
 					GTK_BUTTONS_CLOSE, intro_text);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	g_signal_connect_swapped(GTK_OBJECT(dialog), "response",
 				 G_CALLBACK(gtk_widget_destroy),
 				 GTK_OBJECT(dialog));
@@ -718,8 +728,12 @@ void on_about1_activate(GtkMenuItem * menuitem, gpointer user_data)
 <<<<<<< HEAD
 					GTK_BUTTONS_CLOSE, "%s", about_text);
 =======
+<<<<<<< HEAD
+					GTK_BUTTONS_CLOSE, "%s", about_text);
+=======
 					GTK_BUTTONS_CLOSE, about_text);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	g_signal_connect_swapped(GTK_OBJECT(dialog), "response",
 				 G_CALLBACK(gtk_widget_destroy),
 				 GTK_OBJECT(dialog));
@@ -741,8 +755,12 @@ void on_license1_activate(GtkMenuItem * menuitem, gpointer user_data)
 <<<<<<< HEAD
 					GTK_BUTTONS_CLOSE, "%s", license_text);
 =======
+<<<<<<< HEAD
+					GTK_BUTTONS_CLOSE, "%s", license_text);
+=======
 					GTK_BUTTONS_CLOSE, license_text);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	g_signal_connect_swapped(GTK_OBJECT(dialog), "response",
 				 G_CALLBACK(gtk_widget_destroy),
 				 GTK_OBJECT(dialog));
@@ -855,8 +873,12 @@ static void change_sym_value(struct menu *menu, gint col)
 <<<<<<< HEAD
 	tristate newval;
 =======
+<<<<<<< HEAD
+	tristate newval;
+=======
 	tristate oldval, newval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!sym)
 		return;
@@ -875,8 +897,11 @@ static void change_sym_value(struct menu *menu, gint col)
 	case S_TRISTATE:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		oldval = sym_get_tristate_value(sym);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!sym_tristate_within_range(sym, newval))
 			newval = yes;
 		sym_set_tristate_value(sym, newval);
@@ -915,6 +940,8 @@ static void toggle_sym_value(struct menu *menu)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void renderer_toggled(GtkCellRendererToggle * cell,
 			     gchar * path_string, gpointer user_data)
 {
@@ -945,6 +972,7 @@ static void renderer_toggled(GtkCellRendererToggle * cell,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static gint column2index(GtkTreeViewColumn * column)
 {
 	gint i;
@@ -1203,7 +1231,11 @@ static gchar **fill_row(struct menu *menu)
 <<<<<<< HEAD
 		/* fall through */
 =======
+<<<<<<< HEAD
+		/* fall through */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case S_TRISTATE:
 		val = sym_get_tristate_value(sym);
 		switch (val) {
@@ -1344,8 +1376,11 @@ static void update_tree(struct menu *src, GtkTreeIter * dst)
 	struct symbol *sym;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct property *prop;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct menu *menu1, *menu2;
 
 	if (src == &rootmenu)
@@ -1356,8 +1391,11 @@ static void update_tree(struct menu *src, GtkTreeIter * dst)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		prop = child1->prompt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sym = child1->sym;
 
 	      reparse:
@@ -1546,11 +1584,14 @@ int main(int ac, char *av[])
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef LKC_DIRECT_LINK
 	kconfig_load();
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bindtextdomain(PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset(PACKAGE, "UTF-8");
 	textdomain(PACKAGE);

@@ -57,10 +57,16 @@ static unsigned long virt_to_phys_slow(unsigned long vaddr)
 			      : "=a&" (descaddr), "=m" (mmusr)
 			      : "a" (vaddr), "d" (get_fs().seg));
 =======
+<<<<<<< HEAD
+			      "pmove %%psr,%1"
+			      : "=a&" (descaddr), "=m" (mmusr)
+			      : "a" (vaddr), "d" (get_fs().seg));
+=======
 			      "pmove %%psr,%1@"
 			      : "=a&" (descaddr)
 			      : "a" (&mmusr), "a" (vaddr), "d" (get_fs().seg));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (mmusr & (MMU_I|MMU_B|MMU_L))
 			return 0;
 		descaddr = phys_to_virt((unsigned long)descaddr);
@@ -81,6 +87,9 @@ static unsigned long virt_to_phys_slow(unsigned long vaddr)
 void flush_icache_range(unsigned long address, unsigned long endaddr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (CPU_IS_COLDFIRE) {
 		unsigned long start, end;
 		start = address & ICACHE_SET_MASK;
@@ -91,10 +100,13 @@ void flush_icache_range(unsigned long address, unsigned long endaddr)
 		}
 		flush_cf_icache(start, end);
 	} else if (CPU_IS_040_OR_060) {
+<<<<<<< HEAD
+=======
 =======
 
 	if (CPU_IS_040_OR_060) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		address &= PAGE_MASK;
 
 		do {
@@ -120,6 +132,9 @@ void flush_icache_user_range(struct vm_area_struct *vma, struct page *page,
 			     unsigned long addr, int len)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (CPU_IS_COLDFIRE) {
 		unsigned long start, end;
 		start = addr & ICACHE_SET_MASK;
@@ -131,9 +146,12 @@ void flush_icache_user_range(struct vm_area_struct *vma, struct page *page,
 		flush_cf_icache(start, end);
 
 	} else if (CPU_IS_040_OR_060) {
+<<<<<<< HEAD
+=======
 =======
 	if (CPU_IS_040_OR_060) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		asm volatile ("nop\n\t"
 			      ".chip 68040\n\t"
 			      "cpushp %%bc,(%0)\n\t"

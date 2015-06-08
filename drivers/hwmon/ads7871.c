@@ -34,9 +34,23 @@
 #define REG_SER_CONTROL 24 /*Serial Interface Control Register*/
 #define REG_ID		31 /*ID Register*/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * From figure 17 in the datasheet
+ * These bits get ORed with the address to form
+ * the instruction byte
+ */
+=======
 /*From figure 17 in the datasheet
 * These bits get ORed with the address to form
 * the instruction byte */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*From figure 17 in the datasheet
+* These bits get ORed with the address to form
+* the instruction byte */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*Instruction Bit masks*/
 #define INST_MODE_bm	(1<<7)
 #define INST_READ_bm	(1<<6)
@@ -105,8 +119,20 @@ static ssize_t show_voltage(struct device *dev,
 	uint8_t channel, mux_cnv;
 
 	channel = attr->index;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * TODO: add support for conversions
+	 * other than single ended with a gain of 1
+	 */
+=======
 	/*TODO: add support for conversions
 	 *other than single ended with a gain of 1*/
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/*TODO: add support for conversions
+	 *other than single ended with a gain of 1*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*MUX_M3_bm forces single ended*/
 	/*This is also where the gain of the PGA would be set*/
 	ads7871_write_reg8(spi, REG_GAIN_MUX,
@@ -114,8 +140,20 @@ static ssize_t show_voltage(struct device *dev,
 
 	ret = ads7871_read_reg8(spi, REG_GAIN_MUX);
 	mux_cnv = ((ret & MUX_CNV_bm)>>MUX_CNV_bv);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * on 400MHz arm9 platform the conversion
+	 * is already done when we do this test
+	 */
+=======
 	/*on 400MHz arm9 platform the conversion
 	 *is already done when we do this test*/
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/*on 400MHz arm9 platform the conversion
+	 *is already done when we do this test*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while ((i < 2) && mux_cnv) {
 		i++;
 		ret = ads7871_read_reg8(spi, REG_GAIN_MUX);
@@ -133,12 +171,21 @@ static ssize_t show_voltage(struct device *dev,
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t ads7871_show_name(struct device *dev,
 				 struct device_attribute *devattr, char *buf)
 {
 	return sprintf(buf, "%s\n", to_spi_device(dev)->modalias);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static SENSOR_DEVICE_ATTR(in0_input, S_IRUGO, show_voltage, NULL, 0);
 static SENSOR_DEVICE_ATTR(in1_input, S_IRUGO, show_voltage, NULL, 1);
 static SENSOR_DEVICE_ATTR(in2_input, S_IRUGO, show_voltage, NULL, 2);
@@ -148,8 +195,16 @@ static SENSOR_DEVICE_ATTR(in5_input, S_IRUGO, show_voltage, NULL, 5);
 static SENSOR_DEVICE_ATTR(in6_input, S_IRUGO, show_voltage, NULL, 6);
 static SENSOR_DEVICE_ATTR(in7_input, S_IRUGO, show_voltage, NULL, 7);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static DEVICE_ATTR(name, S_IRUGO, ads7871_show_name, NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static DEVICE_ATTR(name, S_IRUGO, ads7871_show_name, NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct attribute *ads7871_attributes[] = {
 	&sensor_dev_attr_in0_input.dev_attr.attr,
 	&sensor_dev_attr_in1_input.dev_attr.attr,
@@ -159,7 +214,14 @@ static struct attribute *ads7871_attributes[] = {
 	&sensor_dev_attr_in5_input.dev_attr.attr,
 	&sensor_dev_attr_in6_input.dev_attr.attr,
 	&sensor_dev_attr_in7_input.dev_attr.attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	&dev_attr_name.attr,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	&dev_attr_name.attr,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
@@ -188,8 +250,20 @@ static int __devinit ads7871_probe(struct spi_device *spi)
 	ret = ads7871_read_reg8(spi, REG_OSC_CONTROL);
 
 	dev_dbg(&spi->dev, "REG_OSC_CONTROL write:%x, read:%x\n", val, ret);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * because there is no other error checking on an SPI bus
+	 * we need to make sure we really have a chip
+	 */
+=======
 	/*because there is no other error checking on an SPI bus
 	we need to make sure we really have a chip*/
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/*because there is no other error checking on an SPI bus
+	we need to make sure we really have a chip*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (val != ret) {
 		err = -ENODEV;
 		goto exit;
@@ -236,7 +310,14 @@ static int __devexit ads7871_remove(struct spi_device *spi)
 static struct spi_driver ads7871_driver = {
 	.driver = {
 		.name = DEVICE_NAME,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		.bus = &spi_bus_type,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.bus = &spi_bus_type,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 	},
 
@@ -244,6 +325,12 @@ static struct spi_driver ads7871_driver = {
 	.remove = __devexit_p(ads7871_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(ads7871_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ads7871_init(void)
 {
 	return spi_register_driver(&ads7871_driver);
@@ -256,6 +343,10 @@ static void __exit ads7871_exit(void)
 
 module_init(ads7871_init);
 module_exit(ads7871_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Paul Thomas <pthomas8589@gmail.com>");
 MODULE_DESCRIPTION("TI ADS7871 A/D driver");

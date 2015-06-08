@@ -13,16 +13,22 @@
 #define _LINUX_EDAC_H_
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/atomic.h>
 #include <linux/kobject.h>
 #include <linux/completion.h>
 #include <linux/workqueue.h>
 
 struct device;
+<<<<<<< HEAD
+=======
 =======
 #include <asm/atomic.h>
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define EDAC_OPSTATE_INVAL	-1
 #define EDAC_OPSTATE_POLL	0
@@ -33,12 +39,17 @@ extern int edac_op_state;
 extern int edac_err_assert;
 extern atomic_t edac_handlers;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct bus_type edac_subsys;
 
 extern int edac_handler_set(void);
 extern void edac_atomic_assert_error(void);
 extern struct bus_type *edac_get_sysfs_subsys(void);
 extern void edac_put_sysfs_subsys(void);
+<<<<<<< HEAD
+=======
 =======
 extern struct sysdev_class edac_class;
 
@@ -47,6 +58,7 @@ extern void edac_atomic_assert_error(void);
 extern struct sysdev_class *edac_get_sysfs_class(void);
 extern void edac_put_sysfs_class(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void opstate_init(void)
 {
@@ -61,6 +73,9 @@ static inline void opstate_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EDAC_MC_LABEL_LEN	31
 #define MC_PROC_NAME_MAX_LEN	7
 
@@ -488,6 +503,9 @@ struct mem_ctl_info {
 	int op_state;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

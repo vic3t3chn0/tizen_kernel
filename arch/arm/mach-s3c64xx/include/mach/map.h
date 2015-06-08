@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <plat/map-s3c.h>
 =======
+<<<<<<< HEAD
+#include <plat/map-s3c.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Post-mux Chip Select Regions Xm0CSn_
@@ -89,8 +93,11 @@
 #define S3C64XX_PA_GPIO		(0x7F008000)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define S3C64XX_VA_GPIO		S3C_ADDR_CPU(0x00000000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C64XX_SZ_GPIO		SZ_4K
 
 #define S3C64XX_PA_SDRAM	(0x50000000)
@@ -103,12 +110,17 @@
 #define S3C64XX_PA_MODEM	(0x74108000)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define S3C64XX_VA_MODEM	S3C_ADDR_CPU(0x00100000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define S3C64XX_PA_USBHOST	(0x74300000)
 
 #define S3C64XX_PA_USB_HSPHY	(0x7C100000)
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define S3C64XX_VA_USB_HSPHY	S3C_ADDR_CPU(0x00200000)
@@ -117,6 +129,7 @@
 #define VA_VIC0			(S3C_VA_IRQ + 0x00)
 #define VA_VIC1			(S3C_VA_IRQ + 0x10000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* compatibiltiy defines. */
 #define S3C_PA_TIMER		S3C64XX_PA_TIMER
@@ -133,15 +146,21 @@
 #define S3C_PA_USBHOST		S3C64XX_PA_USBHOST
 #define S3C_PA_USB_HSOTG	S3C64XX_PA_USB_HSOTG
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C_PA_RTC		S3C64XX_PA_RTC
 #define S3C_PA_WDT		S3C64XX_PA_WATCHDOG
 #define S3C_PA_SPI0		S3C64XX_PA_SPI0
 #define S3C_PA_SPI1		S3C64XX_PA_SPI1
+<<<<<<< HEAD
+=======
 =======
 #define S3C_VA_USB_HSPHY	S3C64XX_VA_USB_HSPHY
 #define S3C_PA_RTC		S3C64XX_PA_RTC
 #define S3C_PA_WDT		S3C64XX_PA_WATCHDOG
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SAMSUNG_PA_ADC		S3C64XX_PA_ADC
 #define SAMSUNG_PA_CFCON	S3C64XX_PA_CFCON

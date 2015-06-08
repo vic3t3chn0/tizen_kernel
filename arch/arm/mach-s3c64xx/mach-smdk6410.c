@@ -46,7 +46,11 @@
 <<<<<<< HEAD
 #include <asm/hardware/vic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/vic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 #include <asm/mach/irq.h>
@@ -69,8 +73,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/s3c6410.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/clock.h>
 #include <plat/devs.h>
 #include <plat/cpu.h>
@@ -84,7 +91,13 @@
 
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include <plat/udc-hs.h>
+
+#include "common.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UCON S3C2410_UCON_DEFAULT | S3C2410_UCON_UCLK
 #define ULCON S3C2410_LCON_CS8 | S3C2410_LCON_PNONE | S3C2410_LCON_STOPB
@@ -277,6 +290,8 @@ static struct samsung_keypad_platdata smdk6410_keypad_data __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int smdk6410_backlight_init(struct device *dev)
 {
 	int ret;
@@ -317,6 +332,7 @@ static struct platform_device smdk6410_backlight_device = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct map_desc smdk6410_iodesc[] = {};
 
 static struct platform_device *smdk6410_devices[] __initdata = {
@@ -676,6 +692,8 @@ static struct i2c_board_info i2c_devs1[] __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct s3c2410_ts_mach_info s3c_ts_platform __initdata = {
 	.delay			= 10000,
 	.presc			= 49,
@@ -683,6 +701,7 @@ static struct s3c2410_ts_mach_info s3c_ts_platform __initdata = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* LCD Backlight data */
 static struct samsung_bl_gpio_info smdk6410_bl_gpio_info = {
 	.no = S3C64XX_GPF(15),
@@ -697,7 +716,12 @@ static struct platform_pwm_backlight_data smdk6410_bl_data = {
 static struct s3c_hsotg_plat smdk6410_hsotg_pdata;
 
 =======
+<<<<<<< HEAD
+static struct s3c_hsotg_plat smdk6410_hsotg_pdata;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init smdk6410_map_io(void)
 {
 	u32 tmp;
@@ -727,17 +751,23 @@ static void __init smdk6410_machine_init(void)
 	s3c_i2c1_set_platdata(NULL);
 	s3c_fb_set_platdata(&smdk6410_lcd_pdata);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s3c_hsotg_set_platdata(&smdk6410_hsotg_pdata);
 
 	samsung_keypad_set_platdata(&smdk6410_keypad_data);
 
 	s3c24xx_ts_set_platdata(NULL);
+<<<<<<< HEAD
+=======
 =======
 
 	samsung_keypad_set_platdata(&smdk6410_keypad_data);
 
 	s3c24xx_ts_set_platdata(&s3c_ts_platform);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* configure nCS1 width to 16 bits */
 
@@ -775,6 +805,9 @@ static void __init smdk6410_machine_init(void)
 MACHINE_START(SMDK6410, "SMDK6410")
 	/* Maintainer: Ben Dooks <ben-linux@fluff.org> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 
 	.init_irq	= s3c6410_init_irq,
@@ -783,6 +816,8 @@ MACHINE_START(SMDK6410, "SMDK6410")
 	.init_machine	= smdk6410_machine_init,
 	.timer		= &s3c24xx_timer,
 	.restart	= s3c64xx_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= S3C64XX_PA_SDRAM + 0x100,
 
@@ -791,4 +826,5 @@ MACHINE_START(SMDK6410, "SMDK6410")
 	.init_machine	= smdk6410_machine_init,
 	.timer		= &s3c24xx_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

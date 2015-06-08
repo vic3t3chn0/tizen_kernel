@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq.h>
 #include <linux/jiffies.h>
 #include <linux/timer.h>
@@ -37,8 +41,11 @@
 #include <asm/mach/time.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DSMG600_SDA_PIN		5
 #define DSMG600_SCL_PIN		4
@@ -287,6 +294,9 @@ static void __init dsmg600_init(void)
 MACHINE_START(DSMG600, "D-Link DSM-G600 RevA")
 	/* Maintainer: www.nslu2-linux.org */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= ixp4xx_map_io,
 	.init_early	= ixp4xx_init_early,
@@ -297,6 +307,8 @@ MACHINE_START(DSMG600, "D-Link DSM-G600 RevA")
 	.dma_zone_size	= SZ_64M,
 #endif
 	.restart	= ixp4xx_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x00000100,
 	.map_io		= ixp4xx_map_io,
@@ -304,4 +316,5 @@ MACHINE_START(DSMG600, "D-Link DSM-G600 RevA")
 	.timer          = &dsmg600_timer,
 	.init_machine	= dsmg600_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

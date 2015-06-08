@@ -26,12 +26,27 @@
 static u_int *debug;
 
 struct layer1 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u_long Flags;
+	struct FsmInst l1m;
+	struct FsmTimer timer;
+	int delay;
+	struct dchannel *dch;
+	dchannel_l1callback *dcb;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u_long			Flags;
 	struct FsmInst		l1m;
 	struct FsmTimer 	timer;
 	int			delay;
 	struct dchannel		*dch;
 	dchannel_l1callback	*dcb;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define TIMER3_VALUE 7000
@@ -49,7 +64,15 @@ enum {
 	ST_L1_F8,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define L1S_STATE_COUNT (ST_L1_F8 + 1)
+=======
 #define L1S_STATE_COUNT (ST_L1_F8+1)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define L1S_STATE_COUNT (ST_L1_F8+1)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static char *strL1SState[] =
 {
@@ -358,7 +381,15 @@ l1_event(struct layer1 *l1, u_int event)
 	default:
 		if (*debug & DEBUG_L1)
 			printk(KERN_DEBUG "%s %x unhandled\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			       __func__, event);
+=======
 			    __func__, event);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			    __func__, event);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -EINVAL;
 	}
 	return err;

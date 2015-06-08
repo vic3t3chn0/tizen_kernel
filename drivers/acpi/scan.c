@@ -789,8 +789,18 @@ acpi_bus_extract_wakeup_device_power_package(acpi_handle handle,
 static void acpi_bus_set_run_wake_flags(struct acpi_device *device)
 {
 	struct acpi_device_id button_device_ids[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		{"PNP0C0D", 0},
+		{"PNP0C0C", 0},
+=======
 		{"PNP0C0C", 0},
 		{"PNP0C0D", 0},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		{"PNP0C0C", 0},
+		{"PNP0C0D", 0},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{"PNP0C0E", 0},
 		{"", 0},
 	};
@@ -802,11 +812,20 @@ static void acpi_bus_set_run_wake_flags(struct acpi_device *device)
 	/* Power button, Lid switch always enable wakeup */
 	if (!acpi_match_device_ids(device, button_device_ids)) {
 		device->wakeup.flags.run_wake = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!acpi_match_device_ids(device, &button_device_ids[1])) {
 			/* Do not use Lid/sleep button for S5 wakeup */
 			if (device->wakeup.sleep_state == ACPI_STATE_S5)
 				device->wakeup.sleep_state = ACPI_STATE_S4;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		device_set_wakeup_capable(&device->dev, true);
 		return;
 	}
@@ -874,7 +893,15 @@ static int acpi_bus_get_power_flags(struct acpi_device *device)
 	/*
 	 * Enumerate supported power management states
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = ACPI_STATE_D0; i <= ACPI_STATE_D3_HOT; i++) {
+=======
 	for (i = ACPI_STATE_D0; i <= ACPI_STATE_D3; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = ACPI_STATE_D0; i <= ACPI_STATE_D3; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct acpi_device_power_state *ps = &device->power.states[i];
 		char object_name[5] = { '_', 'P', 'R', '0' + i, '\0' };
 
@@ -885,7 +912,14 @@ static int acpi_bus_get_power_flags(struct acpi_device *device)
 			int j;
 
 			device->power.flags.power_resources = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			ps->flags.valid = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ps->flags.valid = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			for (j = 0; j < ps->resources.count; j++)
 				acpi_bus_add_power_resource(ps->resources.handles[j]);
 		}
@@ -893,6 +927,20 @@ static int acpi_bus_get_power_flags(struct acpi_device *device)
 		/* Evaluate "_PSx" to see if we can do explicit sets */
 		object_name[2] = 'S';
 		status = acpi_get_handle(device->handle, object_name, &handle);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (ACPI_SUCCESS(status))
+			ps->flags.explicit_set = 1;
+
+		/*
+		 * State is valid if there are means to put the device into it.
+		 * D3hot is only valid if _PR3 present.
+		 */
+		if (ps->resources.count ||
+		    (ps->flags.explicit_set && i < ACPI_STATE_D3_HOT))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ACPI_SUCCESS(status)) {
 			ps->flags.explicit_set = 1;
 			ps->flags.valid = 1;
@@ -900,6 +948,10 @@ static int acpi_bus_get_power_flags(struct acpi_device *device)
 
 		/* State is valid if we have some power control */
 		if (ps->resources.count || ps->flags.explicit_set)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ps->flags.valid = 1;
 
 		ps->power = -1;	/* Unknown - driver assigned */
@@ -912,6 +964,16 @@ static int acpi_bus_get_power_flags(struct acpi_device *device)
 	device->power.states[ACPI_STATE_D3].flags.valid = 1;
 	device->power.states[ACPI_STATE_D3].power = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Set D3cold's explicit_set flag if _PS3 exists. */
+	if (device->power.states[ACPI_STATE_D3_HOT].flags.explicit_set)
+		device->power.states[ACPI_STATE_D3_COLD].flags.explicit_set = 1;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	acpi_bus_init_power(device);
 
 	return 0;
@@ -1067,13 +1129,28 @@ static void acpi_add_id(struct acpi_device *device, const char *dev_id)
 	if (!id)
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	id->id = kstrdup(dev_id, GFP_KERNEL);
+=======
 	id->id = kmalloc(strlen(dev_id) + 1, GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	id->id = kmalloc(strlen(dev_id) + 1, GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!id->id) {
 		kfree(id);
 		return;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	strcpy(id->id, dev_id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	strcpy(id->id, dev_id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_add_tail(&id->list, &device->pnp.ids);
 }
 
@@ -1158,7 +1235,15 @@ static void acpi_device_set_id(struct acpi_device *device)
 			acpi_add_id(device, ACPI_DOCK_HID);
 		else if (!acpi_ibm_smbus_match(device))
 			acpi_add_id(device, ACPI_SMBUS_IBM_HID);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		else if (!acpi_device_hid(device) &&
+=======
 		else if (list_empty(&device->pnp.ids) &&
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		else if (list_empty(&device->pnp.ids) &&
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 ACPI_IS_ROOT_DEVICE(device->parent)) {
 			acpi_add_id(device, ACPI_BUS_HID); /* \_SB, LNXSYBUS */
 			strcpy(device->pnp.device_name, ACPI_BUS_DEVICE_NAME);

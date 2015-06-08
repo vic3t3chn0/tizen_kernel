@@ -46,7 +46,15 @@ struct k8temp_data {
 	unsigned long last_updated;	/* in jiffies */
 
 	/* registers values */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 sensorsp;		/* sensor presence bits - SEL_CORE, SEL_PLACE */
+=======
 	u8 sensorsp;		/* sensor presence bits - SEL_CORE & SEL_PLACE */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 sensorsp;		/* sensor presence bits - SEL_CORE & SEL_PLACE */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 temp[2][2];		/* core, place */
 	u8 swap_core_select;    /* meaning of SEL_CORE is inverted */
 	u32 temp_offset;
@@ -63,7 +71,15 @@ static struct k8temp_data *k8temp_update_device(struct device *dev)
 	if (!data->valid
 	    || time_after(jiffies, data->last_updated + HZ)) {
 		pci_read_config_byte(pdev, REG_TEMP, &tmp);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tmp &= ~(SEL_PLACE | SEL_CORE);	/* Select sensor 0, core0 */
+=======
 		tmp &= ~(SEL_PLACE | SEL_CORE);		/* Select sensor 0, core0 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		tmp &= ~(SEL_PLACE | SEL_CORE);		/* Select sensor 0, core0 */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_write_config_byte(pdev, REG_TEMP, tmp);
 		pci_read_config_dword(pdev, REG_TEMP, &data->temp[0][0]);
 
@@ -82,7 +98,15 @@ static struct k8temp_data *k8temp_update_device(struct device *dev)
 					      &data->temp[1][0]);
 
 			if (data->sensorsp & SEL_PLACE) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				tmp |= SEL_PLACE; /* Select sensor 1, core1 */
+=======
 				tmp |= SEL_PLACE;	/* Select sensor 1, core1 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				tmp |= SEL_PLACE;	/* Select sensor 1, core1 */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				pci_write_config_byte(pdev, REG_TEMP, tmp);
 				pci_read_config_dword(pdev, REG_TEMP,
 						      &data->temp[1][1]);
@@ -136,7 +160,15 @@ static SENSOR_DEVICE_ATTR_2(temp3_input, S_IRUGO, show_temp, NULL, 1, 0);
 static SENSOR_DEVICE_ATTR_2(temp4_input, S_IRUGO, show_temp, NULL, 1, 1);
 static DEVICE_ATTR(name, S_IRUGO, show_name, NULL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DEFINE_PCI_DEVICE_TABLE(k8temp_ids) = {
+=======
 static const struct pci_device_id k8temp_ids[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct pci_device_id k8temp_ids[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ PCI_DEVICE(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_K8_NB_MISC) },
 	{ 0 },
 };
@@ -183,7 +215,16 @@ static int __devinit k8temp_probe(struct pci_dev *pdev,
 	u8 model, stepping;
 	struct k8temp_data *data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data = kzalloc(sizeof(struct k8temp_data), GFP_KERNEL);
+	if (!data) {
+=======
 	if (!(data = kzalloc(sizeof(struct k8temp_data), GFP_KERNEL))) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!(data = kzalloc(sizeof(struct k8temp_data), GFP_KERNEL))) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENOMEM;
 		goto exit;
 	}
@@ -217,7 +258,15 @@ static int __devinit k8temp_probe(struct pci_dev *pdev,
 		data->temp_offset = 21000;
 
 	pci_read_config_byte(pdev, REG_TEMP, &scfg);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	scfg &= ~(SEL_PLACE | SEL_CORE);	/* Select sensor 0, core0 */
+=======
 	scfg &= ~(SEL_PLACE | SEL_CORE);		/* Select sensor 0, core0 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	scfg &= ~(SEL_PLACE | SEL_CORE);		/* Select sensor 0, core0 */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_write_config_byte(pdev, REG_TEMP, scfg);
 	pci_read_config_byte(pdev, REG_TEMP, &scfg);
 
@@ -238,7 +287,15 @@ static int __devinit k8temp_probe(struct pci_dev *pdev,
 		pci_write_config_byte(pdev, REG_TEMP, scfg);
 		pci_read_config_dword(pdev, REG_TEMP, &temp);
 		scfg |= SEL_CORE;	/* prepare for next selection */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!((temp >> 16) & 0xff)) /* if temp is 0 -49C is unlikely */
+=======
 		if (!((temp >> 16) & 0xff))	/* if temp is 0 -49C is not likely */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!((temp >> 16) & 0xff))	/* if temp is 0 -49C is not likely */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			data->sensorsp &= ~SEL_PLACE;
 	}
 
@@ -246,7 +303,15 @@ static int __devinit k8temp_probe(struct pci_dev *pdev,
 		scfg &= ~SEL_PLACE;	/* Select sensor 0, core1 */
 		pci_write_config_byte(pdev, REG_TEMP, scfg);
 		pci_read_config_dword(pdev, REG_TEMP, &temp);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!((temp >> 16) & 0xff)) /* if temp is 0 -49C is unlikely */
+=======
 		if (!((temp >> 16) & 0xff))	/* if temp is 0 -49C is not likely */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!((temp >> 16) & 0xff))	/* if temp is 0 -49C is not likely */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			data->sensorsp &= ~SEL_CORE;
 	}
 

@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sysctl.h>
 #include <linux/nsproxy.h>
 
@@ -80,10 +84,14 @@ static int __net_init sysctl_net_init(struct net *net)
 <<<<<<< HEAD
 	setup_sysctl_set(&net->sysctls, &net_sysctl_root, is_seen);
 =======
+<<<<<<< HEAD
+	setup_sysctl_set(&net->sysctls, &net_sysctl_root, is_seen);
+=======
 	setup_sysctl_set(&net->sysctls,
 			 &net_sysctl_ro_root.default_set,
 			 is_seen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -92,8 +100,12 @@ static void __net_exit sysctl_net_exit(struct net *net)
 <<<<<<< HEAD
 	retire_sysctl_set(&net->sysctls);
 =======
+<<<<<<< HEAD
+	retire_sysctl_set(&net->sysctls);
+=======
 	WARN_ON(!list_empty(&net->sysctls.list));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct pernet_operations sysctl_pernet_ops = {
@@ -104,14 +116,21 @@ static struct pernet_operations sysctl_pernet_ops = {
 <<<<<<< HEAD
 static __init int net_sysctl_init(void)
 =======
+<<<<<<< HEAD
+static __init int net_sysctl_init(void)
+=======
 static __init int sysctl_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	ret = register_pernet_subsys(&sysctl_pernet_ops);
 	if (ret)
 		goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	setup_sysctl_set(&net_sysctl_ro_root.default_set, &net_sysctl_ro_root, NULL);
 	register_sysctl_root(&net_sysctl_ro_root);
 	register_sysctl_root(&net_sysctl_root);
@@ -119,6 +138,8 @@ out:
 	return ret;
 }
 subsys_initcall(net_sysctl_init);
+<<<<<<< HEAD
+=======
 =======
 	register_sysctl_root(&net_sysctl_root);
 	setup_sysctl_set(&net_sysctl_ro_root.default_set, NULL, NULL);
@@ -128,10 +149,14 @@ out:
 }
 subsys_initcall(sysctl_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct ctl_table_header *register_net_sysctl_table(struct net *net,
 	const struct ctl_path *path, struct ctl_table *table)
 {
+<<<<<<< HEAD
+	return __register_sysctl_paths(&net->sysctls, path, table);
+=======
 <<<<<<< HEAD
 	return __register_sysctl_paths(&net->sysctls, path, table);
 =======
@@ -141,6 +166,7 @@ struct ctl_table_header *register_net_sysctl_table(struct net *net,
 	return __register_sysctl_paths(&net_sysctl_root,
 					&namespaces, path, table);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(register_net_sysctl_table);
 
@@ -151,9 +177,14 @@ struct ctl_table_header *register_net_sysctl_rotable(const
 	return __register_sysctl_paths(&net_sysctl_ro_root.default_set,
 					path, table);
 =======
+<<<<<<< HEAD
+	return __register_sysctl_paths(&net_sysctl_ro_root.default_set,
+					path, table);
+=======
 	return __register_sysctl_paths(&net_sysctl_ro_root,
 			&init_nsproxy, path, table);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(register_net_sysctl_rotable);
 

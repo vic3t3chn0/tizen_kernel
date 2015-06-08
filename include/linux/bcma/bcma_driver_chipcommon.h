@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #define   BCMA_CC_FLASHT_NFLASH		0x00000200
 =======
+<<<<<<< HEAD
+#define   BCMA_CC_FLASHT_NFLASH		0x00000200
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	  BCMA_CC_FLASHT_PARA		0x00000700	/* Parallel flash */
 #define  BCMA_CC_CAP_PLLT		0x00038000	/* PLL Type */
 #define   BCMA_PLLTYPE_NONE		0x00000000
@@ -64,7 +68,13 @@
 #define  BCMA_CC_OTPS_GU_PROG_IND_SHIFT	8
 #define  BCMA_CC_OTPS_GU_PROG_HW	0x00000100	/* HW region programmed */
 =======
+<<<<<<< HEAD
+#define  BCMA_CC_OTPS_GU_PROG_IND	0x00000F00	/* General Use programmed indication */
+#define  BCMA_CC_OTPS_GU_PROG_IND_SHIFT	8
+#define  BCMA_CC_OTPS_GU_PROG_HW	0x00000100	/* HW region programmed */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BCMA_CC_OTPC			0x0014		/* OTP control */
 #define	 BCMA_CC_OTPC_RECWAIT		0xFF000000
 #define	 BCMA_CC_OTPC_PROGWAIT		0x00FFFF00
@@ -85,7 +95,12 @@
 #define BCMA_CC_OTPL			0x001C		/* OTP layout */
 #define  BCMA_CC_OTPL_GURGN_OFFSET	0x00000FFF	/* offset of general use region */
 =======
+<<<<<<< HEAD
+#define BCMA_CC_OTPL			0x001C		/* OTP layout */
+#define  BCMA_CC_OTPL_GURGN_OFFSET	0x00000FFF	/* offset of general use region */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BCMA_CC_IRQSTAT			0x0020
 #define BCMA_CC_IRQMASK			0x0024
 #define	 BCMA_CC_IRQ_GPIO		0x00000001	/* gpio intr */
@@ -94,12 +109,18 @@
 #define BCMA_CC_CHIPCTL			0x0028		/* Rev >= 11 only */
 #define BCMA_CC_CHIPSTAT		0x002C		/* Rev >= 11 only */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define  BCMA_CC_CHIPST_4313_SPROM_PRESENT	1
 #define  BCMA_CC_CHIPST_4313_OTP_PRESENT	2
 #define  BCMA_CC_CHIPST_4331_SPROM_PRESENT	2
 #define  BCMA_CC_CHIPST_4331_OTP_PRESENT	4
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BCMA_CC_JCMD			0x0030		/* Rev >= 10 only */
 #define  BCMA_CC_JCMD_START		0x80000000
 #define  BCMA_CC_JCMD_BUSY		0x80000000
@@ -201,6 +222,9 @@
 #define BCMA_CC_PROG_WAITCNT		0x0124
 #define BCMA_CC_FLASH_CFG		0x0128
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define  BCMA_CC_FLASH_CFG_DS		0x0010	/* Data size, 0=8bit, 1=16bit */
 #define BCMA_CC_FLASH_WAITCNT		0x012C
 #define BCMA_CC_SROM_CONTROL		0x0190
@@ -220,6 +244,8 @@
 #define  BCMA_CC_SROM_CONTROL_SIZE_SHIFT	1
 #define  BCMA_CC_SROM_CONTROL_PRESENT	0x00000001
 /* 0x1E0 is defined as shared BCMA_CLKCTLST */
+<<<<<<< HEAD
+=======
 =======
 #define BCMA_CC_FLASH_WAITCNT		0x012C
 #define BCMA_CC_CLKCTLST		0x01E0 /* Clock control and status (rev >= 20) */
@@ -232,6 +258,7 @@
 #define  BCMA_CC_CLKCTLST_HAVEHT	0x00010000 /* HT available */
 #define  BCMA_CC_CLKCTLST_HAVEALP	0x00020000 /* APL available */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BCMA_CC_HW_WORKAROUND		0x01E4 /* Hardware workaround (rev >= 20) */
 #define BCMA_CC_UART0_DATA		0x0300
 #define BCMA_CC_UART0_IMR		0x0304
@@ -256,7 +283,11 @@
 <<<<<<< HEAD
 #define  BCMA_CC_PMU_CTL_PLL_UPD	0x00000400
 =======
+<<<<<<< HEAD
+#define  BCMA_CC_PMU_CTL_PLL_UPD	0x00000400
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define  BCMA_CC_PMU_CTL_NOILPONW	0x00000200 /* No ILP on wait */
 #define  BCMA_CC_PMU_CTL_HTREQEN	0x00000100 /* HT req enable */
 #define  BCMA_CC_PMU_CTL_ALPREQEN	0x00000080 /* ALP req enable */
@@ -293,6 +324,9 @@
 #define BCMA_CC_PLLCTL_ADDR		0x0660
 #define BCMA_CC_PLLCTL_DATA		0x0664
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BCMA_CC_SPROM			0x0800 /* SPROM beginning */
 
 /* Divider allocation in 4716/47162/5356 */
@@ -352,8 +386,11 @@
 #define BCMA_CHIPCTL_4331_PCIE_PIPE_PLLDOWN	BIT(11)	/* pcie_pipe_pllpowerdown */
 #define BCMA_CHIPCTL_4331_BT_SHD0_ON_GPIO4	BIT(16)	/* enable bt_shd0 at gpio4 */
 #define BCMA_CHIPCTL_4331_BT_SHD1_ON_GPIO5	BIT(17)	/* enable bt_shd1 at gpio5 */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Data for the PMU, if available.
  * Check availability with ((struct bcma_chipcommon)->capabilities & BCMA_CC_CAP_PMU)
@@ -364,6 +401,9 @@ struct bcma_chipcommon_pmu {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BCMA_DRIVER_MIPS
 struct bcma_pflash {
 	u8 buswidth;
@@ -380,14 +420,20 @@ struct bcma_serial_port {
 };
 #endif /* CONFIG_BCMA_DRIVER_MIPS */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct bcma_drv_cc {
 	struct bcma_device *core;
 	u32 status;
 	u32 capabilities;
 	u32 capabilities_ext;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 setup_done:1;
 	/* Fast Powerup Delay constant */
 	u16 fast_pwrup_delay;
@@ -398,11 +444,14 @@ struct bcma_drv_cc {
 	int nr_serial_ports;
 	struct bcma_serial_port serial_ports[4];
 #endif /* CONFIG_BCMA_DRIVER_MIPS */
+<<<<<<< HEAD
+=======
 =======
 	/* Fast Powerup Delay constant */
 	u16 fast_pwrup_delay;
 	struct bcma_chipcommon_pmu pmu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Register access */
@@ -427,7 +476,12 @@ extern void bcma_chipco_resume(struct bcma_drv_cc *cc);
 void bcma_chipco_bcm4331_ext_pa_lines_ctl(struct bcma_drv_cc *cc, bool enable);
 
 =======
+<<<<<<< HEAD
+void bcma_chipco_bcm4331_ext_pa_lines_ctl(struct bcma_drv_cc *cc, bool enable);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void bcma_chipco_watchdog_timer_set(struct bcma_drv_cc *cc,
 					  u32 ticks);
 
@@ -447,6 +501,9 @@ u32 bcma_chipco_gpio_polarity(struct bcma_drv_cc *cc, u32 mask, u32 value);
 extern void bcma_pmu_init(struct bcma_drv_cc *cc);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void bcma_chipco_pll_write(struct bcma_drv_cc *cc, u32 offset,
 				  u32 value);
 extern void bcma_chipco_pll_maskset(struct bcma_drv_cc *cc, u32 offset,
@@ -456,6 +513,9 @@ extern void bcma_chipco_chipctl_maskset(struct bcma_drv_cc *cc,
 extern void bcma_chipco_regctl_maskset(struct bcma_drv_cc *cc,
 				       u32 offset, u32 mask, u32 set);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* LINUX_BCMA_DRIVER_CC_H_ */

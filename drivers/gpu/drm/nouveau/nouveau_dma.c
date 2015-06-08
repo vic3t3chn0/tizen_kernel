@@ -31,7 +31,15 @@
 #include "nouveau_ramht.h"
 
 void
+<<<<<<< HEAD
+<<<<<<< HEAD
+nouveau_dma_init(struct nouveau_channel *chan)
+=======
 nouveau_dma_pre_init(struct nouveau_channel *chan)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+nouveau_dma_pre_init(struct nouveau_channel *chan)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct drm_nouveau_private *dev_priv = chan->dev->dev_private;
 	struct nouveau_bo *pushbuf = chan->pushbuf_bo;
@@ -54,6 +62,11 @@ nouveau_dma_pre_init(struct nouveau_channel *chan)
 	chan->dma.free = chan->dma.max - chan->dma.cur;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 nouveau_dma_init(struct nouveau_channel *chan)
 {
@@ -113,6 +126,10 @@ nouveau_dma_init(struct nouveau_channel *chan)
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 OUT_RINGp(struct nouveau_channel *chan, const void *data, unsigned nr_dwords)
 {

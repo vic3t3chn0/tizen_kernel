@@ -29,6 +29,9 @@
 #include <linux/delay.h>
 #include <linux/slab.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <trace/events/power.h>
 
 #include <asm/suspend.h>
@@ -37,6 +40,8 @@
 #include <plat/sram.h>
 #include "clockdomain.h"
 #include "powerdomain.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/console.h>
 #include <trace/events/power.h>
@@ -46,6 +51,7 @@
 #include "powerdomain.h"
 #include <plat/serial.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/sdrc.h>
 #include <plat/prcm.h>
 #include <plat/gpmc.h>
@@ -54,9 +60,13 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <asm/tlbflush.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cm2xxx_3xxx.h"
 #include "cm-regbits-34xx.h"
 #include "prm-regbits-34xx.h"
@@ -66,6 +76,8 @@
 #include "sdrc.h"
 #include "control.h"
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_SUSPEND
@@ -87,6 +99,7 @@ static inline bool is_suspending(void)
 #define OMAP343X_CONTROL_REG_VALUE_OFFSET  0xc8
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* pm34xx errata defined in pm.h */
 u16 pm34xx_errata;
 
@@ -105,15 +118,22 @@ static LIST_HEAD(pwrst_list);
 static int (*_omap_save_secure_sram)(u32 *addr);
 void (*omap3_do_wfi_sram)(void);
 =======
+<<<<<<< HEAD
+static int (*_omap_save_secure_sram)(u32 *addr);
+void (*omap3_do_wfi_sram)(void);
+=======
 static void (*_omap_sram_idle)(u32 *addr, int save_state);
 
 static int (*_omap_save_secure_sram)(u32 *addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct powerdomain *mpu_pwrdm, *neon_pwrdm;
 static struct powerdomain *core_pwrdm, *per_pwrdm;
 static struct powerdomain *cam_pwrdm;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static inline void omap3_per_save_context(void)
@@ -127,11 +147,15 @@ static inline void omap3_per_restore_context(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void omap3_enable_io_chain(void)
 {
 	int timeout = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap2_prm_set_mod_reg_bits(OMAP3430_EN_IO_CHAIN_MASK, WKUP_MOD,
 				   PM_WKEN);
 	/* Do a readback to assure write has been done */
@@ -146,6 +170,8 @@ static void omap3_enable_io_chain(void)
 		}
 		omap2_prm_set_mod_reg_bits(OMAP3430_ST_IO_CHAIN_MASK,
 					   WKUP_MOD, PM_WKEN);
+<<<<<<< HEAD
+=======
 =======
 	if (omap_rev() >= OMAP3430_REV_ES3_1) {
 		omap2_prm_set_mod_reg_bits(OMAP3430_EN_IO_CHAIN_MASK, WKUP_MOD,
@@ -165,6 +191,7 @@ static void omap3_enable_io_chain(void)
 					     WKUP_MOD, PM_WKEN);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -174,10 +201,15 @@ static void omap3_disable_io_chain(void)
 	omap2_prm_clear_mod_reg_bits(OMAP3430_EN_IO_CHAIN_MASK, WKUP_MOD,
 				     PM_WKEN);
 =======
+<<<<<<< HEAD
+	omap2_prm_clear_mod_reg_bits(OMAP3430_EN_IO_CHAIN_MASK, WKUP_MOD,
+				     PM_WKEN);
+=======
 	if (omap_rev() >= OMAP3430_REV_ES3_1)
 		omap2_prm_clear_mod_reg_bits(OMAP3430_EN_IO_CHAIN_MASK, WKUP_MOD,
 				       PM_WKEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void omap3_core_save_context(void)
@@ -237,9 +269,13 @@ static void omap3_save_secure_ram_context(void)
 <<<<<<< HEAD
 			pr_err("save_secure_sram() returns %08x\n", ret);
 =======
+<<<<<<< HEAD
+			pr_err("save_secure_sram() returns %08x\n", ret);
+=======
 			printk(KERN_ERR "save_secure_sram() returns %08x\n",
 				ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			while (1)
 				;
 		}
@@ -259,8 +295,12 @@ static void omap3_save_secure_ram_context(void)
 <<<<<<< HEAD
 static int prcm_clear_mod_irqs(s16 module, u8 regs, u32 ignore_bits)
 =======
+<<<<<<< HEAD
+static int prcm_clear_mod_irqs(s16 module, u8 regs, u32 ignore_bits)
+=======
 static int prcm_clear_mod_irqs(s16 module, u8 regs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 wkst, fclk, iclk, clken;
 	u16 wkst_off = (regs == 3) ? OMAP3430ES2_PM_WKST3 : PM_WKST1;
@@ -275,7 +315,11 @@ static int prcm_clear_mod_irqs(s16 module, u8 regs)
 <<<<<<< HEAD
 	wkst &= ~ignore_bits;
 =======
+<<<<<<< HEAD
+	wkst &= ~ignore_bits;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wkst) {
 		iclk = omap2_cm_read_mod_reg(module, iclk_off);
 		fclk = omap2_cm_read_mod_reg(module, fclk_off);
@@ -294,7 +338,11 @@ static int prcm_clear_mod_irqs(s16 module, u8 regs)
 <<<<<<< HEAD
 			wkst &= ~ignore_bits;
 =======
+<<<<<<< HEAD
+			wkst &= ~ignore_bits;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			c++;
 		}
 		omap2_cm_write_mod_reg(iclk, module, iclk_off);
@@ -305,6 +353,9 @@ static int prcm_clear_mod_irqs(s16 module, u8 regs)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t _prcm_int_handle_io(int irq, void *unused)
 {
 	int c;
@@ -355,6 +406,8 @@ static int omap34xx_do_sram_idle(unsigned long save_state)
 {
 	omap34xx_cpu_suspend(save_state);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 static int _prcm_int_handle_wakeup(void)
 {
@@ -451,6 +504,7 @@ static void restore_table_entry(void)
 	/* This will enable caches and prediction */
 	set_cr(control_reg_value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void omap_sram_idle(void)
@@ -471,6 +525,8 @@ void omap_sram_idle(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!_omap_sram_idle)
 		return;
 
@@ -480,6 +536,7 @@ void omap_sram_idle(void)
 	pwrdm_clear_all_prev_pwrst(per_pwrdm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpu_next_state = pwrdm_read_next_pwrst(mpu_pwrdm);
 	switch (mpu_next_state) {
 	case PWRDM_POWER_ON:
@@ -497,11 +554,17 @@ void omap_sram_idle(void)
 		return;
 	}
 =======
+<<<<<<< HEAD
+		pr_err("Invalid mpu state in sram_idle\n");
+		return;
+	}
+=======
 		printk(KERN_ERR "Invalid mpu state in sram_idle\n");
 		return;
 	}
 	pwrdm_pre_transition();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* NEON control */
 	if (pwrdm_read_pwrst(neon_pwrdm) == PWRDM_POWER_ON)
@@ -515,11 +578,16 @@ void omap_sram_idle(void)
 	     core_next_state < PWRDM_POWER_ON)) {
 		omap2_prm_set_mod_reg_bits(OMAP3430_EN_IO_MASK, WKUP_MOD, PM_WKEN);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (omap3_has_io_chain_ctrl())
 			omap3_enable_io_chain();
 	}
 
 	pwrdm_pre_transition();
+<<<<<<< HEAD
+=======
 =======
 		omap3_enable_io_chain();
 	}
@@ -531,10 +599,14 @@ void omap_sram_idle(void)
 			if (!console_trylock())
 				goto console_still_active;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* PER */
 	if (per_next_state < PWRDM_POWER_ON) {
 		per_going_off = (per_next_state == PWRDM_POWER_OFF) ? 1 : 0;
+<<<<<<< HEAD
+		omap2_gpio_prepare_for_idle(per_going_off);
+=======
 <<<<<<< HEAD
 		omap2_gpio_prepare_for_idle(per_going_off);
 =======
@@ -544,15 +616,19 @@ void omap_sram_idle(void)
 		if (per_next_state == PWRDM_POWER_OFF)
 				omap3_per_save_context();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* CORE */
 	if (core_next_state < PWRDM_POWER_ON) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		omap_uart_prepare_idle(0);
 		omap_uart_prepare_idle(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (core_next_state == PWRDM_POWER_OFF) {
 			omap3_core_save_context();
 			omap3_cm_save_context();
@@ -563,6 +639,9 @@ void omap_sram_idle(void)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * On EMU/HS devices ROM code restores a SRDC value
 	 * from scratchpad which has automatic self refresh on timeout
 	 * of AUTO_CNT = 1 enabled. This takes care of erratum ID i443.
@@ -571,6 +650,8 @@ void omap_sram_idle(void)
 	if (cpu_is_omap3430() && omap_rev() >= OMAP3430_REV_ES3_0 &&
 	    (omap_type() == OMAP2_DEVICE_TYPE_EMU ||
 	     omap_type() == OMAP2_DEVICE_TYPE_SEC) &&
+<<<<<<< HEAD
+=======
 =======
 	* On EMU/HS devices ROM code restores a SRDC value
 	* from scratchpad which has automatic self refresh on timeout
@@ -580,11 +661,15 @@ void omap_sram_idle(void)
 	if (omap_rev() >= OMAP3430_REV_ES3_0 &&
 	    omap_type() != OMAP2_DEVICE_TYPE_GP &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    core_next_state == PWRDM_POWER_OFF)
 		sdrc_pwr = sdrc_read_reg(SDRC_POWER);
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * omap3_arm_context is the location where some ARM context
 	 * get saved. The rest is placed on the stack, and restored
 	 * from there before resuming.
@@ -603,6 +688,8 @@ void omap_sram_idle(void)
 	    core_next_state == PWRDM_POWER_OFF)
 		sdrc_write_reg(sdrc_pwr, SDRC_POWER);
 
+<<<<<<< HEAD
+=======
 =======
 	 * omap3_arm_context is the location where ARM registers
 	 * get saved. The restore path then reads from this
@@ -622,6 +709,7 @@ void omap_sram_idle(void)
 		restore_table_entry();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* CORE */
 	if (core_next_state < PWRDM_POWER_ON) {
 		core_prev_state = pwrdm_read_prev_pwrst(core_pwrdm);
@@ -633,9 +721,12 @@ void omap_sram_idle(void)
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		omap_uart_resume_idle(0);
 		omap_uart_resume_idle(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (core_next_state == PWRDM_POWER_OFF)
 			omap2_prm_clear_mod_reg_bits(OMAP3430_AUTO_OFF_MASK,
 					       OMAP3430_GR_MOD,
@@ -647,11 +738,20 @@ void omap_sram_idle(void)
 	pwrdm_post_transition();
 
 =======
+<<<<<<< HEAD
+	pwrdm_post_transition();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* PER */
 	if (per_next_state < PWRDM_POWER_ON) {
 		per_prev_state = pwrdm_read_prev_pwrst(per_pwrdm);
 		omap2_gpio_resume_after_idle();
+<<<<<<< HEAD
+	}
+
+=======
 <<<<<<< HEAD
 	}
 
@@ -667,6 +767,7 @@ void omap_sram_idle(void)
 
 console_still_active:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Disable IO-PAD and IO-CHAIN wakeup */
 	if (omap3_has_io_wakeup() &&
 	    (per_next_state < PWRDM_POWER_ON ||
@@ -674,6 +775,9 @@ console_still_active:
 		omap2_prm_clear_mod_reg_bits(OMAP3430_EN_IO_MASK, WKUP_MOD,
 					     PM_WKEN);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (omap3_has_io_chain_ctrl())
 			omap3_disable_io_chain();
 	}
@@ -686,6 +790,8 @@ static void omap3_pm_idle(void)
 	local_fiq_disable();
 
 	if (omap_irq_pending())
+<<<<<<< HEAD
+=======
 =======
 		omap3_disable_io_chain();
 	}
@@ -714,6 +820,7 @@ static void omap3_pm_idle(void)
 
 	if (omap_irq_pending() || need_resched())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	trace_power_start(POWER_CSTATE, 1, smp_processor_id());
@@ -728,8 +835,11 @@ out:
 	local_fiq_enable();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	local_irq_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_SUSPEND
@@ -740,11 +850,14 @@ static int omap3_pm_suspend(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (wakeup_timer_seconds || wakeup_timer_milliseconds)
 		omap2_pm_wakeup_on_timer(wakeup_timer_seconds,
 					 wakeup_timer_milliseconds);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Read current next_pwrsts */
 	list_for_each_entry(pwrst, &pwrst_list, node)
 		pwrst->saved_state = pwrdm_read_next_pwrst(pwrst->pwrdm);
@@ -758,8 +871,11 @@ static int omap3_pm_suspend(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	omap_uart_prepare_suspend();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_intc_suspend();
 
 	omap_sram_idle();
@@ -773,9 +889,14 @@ restore:
 			pr_info("Powerdomain (%s) didn't enter "
 				"target state %d\n",
 =======
+<<<<<<< HEAD
+			pr_info("Powerdomain (%s) didn't enter "
+				"target state %d\n",
+=======
 			printk(KERN_INFO "Powerdomain (%s) didn't enter "
 			       "target state %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       pwrst->pwrdm->name, pwrst->next_state);
 			ret = -1;
 		}
@@ -787,14 +908,22 @@ restore:
 	else
 		pr_info("Successfully put all powerdomains to target state\n");
 =======
+<<<<<<< HEAD
+		pr_err("Could not enter target state in pm_suspend\n");
+	else
+		pr_info("Successfully put all powerdomains to target state\n");
+=======
 		printk(KERN_ERR "Could not enter target state in pm_suspend\n");
 	else
 		printk(KERN_INFO "Successfully put all powerdomains "
 		       "to target state\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 static int omap3_pm_enter(suspend_state_t unused)
 {
 	int ret = 0;
@@ -838,6 +967,7 @@ static const struct platform_suspend_ops omap_pm_ops = {
 	.valid		= suspend_valid_only_mem,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_SUSPEND */
 
 
@@ -943,11 +1073,14 @@ static void __init prcm_setup_regs(void)
 			  WKUP_MOD, OMAP3430_PM_MPUGRPSEL);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* For some reason IO doesn't generate wakeup event even if
 	 * it is selected to mpu wakeup goup */
 	omap2_prm_write_mod_reg(OMAP3430_IO_EN_MASK | OMAP3430_WKUP_EN_MASK,
 			  OCP_MOD, OMAP3_PRM_IRQENABLE_MPU_OFFSET);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Enable PM_WKEN to support DSS LPR */
 	omap2_prm_write_mod_reg(OMAP3430_PM_WKEN_DSS_EN_DSS_MASK,
@@ -1066,6 +1199,9 @@ static int __init pwrdms_setup(struct powerdomain *pwrdm, void *unused)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Push functions to SRAM
  *
  * The minimum set of functions is pushed to SRAM for execution:
@@ -1076,6 +1212,8 @@ void omap_push_sram_idle(void)
 {
 	omap3_do_wfi_sram = omap_sram_push(omap3_do_wfi, omap3_do_wfi_sz);
 
+<<<<<<< HEAD
+=======
 =======
  * Enable hw supervised mode for all clockdomains if it's
  * supported. Initiate sleep transition for other clockdomains, if
@@ -1096,6 +1234,7 @@ void omap_push_sram_idle(void)
 	_omap_sram_idle = omap_sram_push(omap34xx_cpu_suspend,
 					omap34xx_cpu_suspend_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (omap_type() != OMAP2_DEVICE_TYPE_GP)
 		_omap_save_secure_sram = omap_sram_push(save_secure_ram_context,
 				save_secure_ram_context_sz);
@@ -1126,7 +1265,13 @@ static int __init omap3_pm_init(void)
 		pr_warning("PM: no software I/O chain control; some wakeups may be lost\n");
 
 =======
+<<<<<<< HEAD
+	if (!omap3_has_io_chain_ctrl())
+		pr_warning("PM: no software I/O chain control; some wakeups may be lost\n");
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_errata_configure();
 
 	/* XXX prcm_setup_regs needs to be before enabling hw
@@ -1134,6 +1279,9 @@ static int __init omap3_pm_init(void)
 	prcm_setup_regs();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = request_irq(omap_prcm_event_to_irq("wkup"),
 		_prcm_int_handle_wakeup, IRQF_NO_SUSPEND, "pm_wkup", NULL);
 
@@ -1165,6 +1313,8 @@ static int __init omap3_pm_init(void)
 		pr_err("Failed to get mpu_pwrdm\n");
 		ret = -EINVAL;
 		goto err3;
+<<<<<<< HEAD
+=======
 =======
 	ret = request_irq(INT_34XX_PRCM_MPU_IRQ,
 			  (irq_handler_t)prcm_interrupt_handler,
@@ -1188,6 +1338,7 @@ static int __init omap3_pm_init(void)
 		printk(KERN_ERR "Failed to get mpu_pwrdm\n");
 		goto err2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	neon_pwrdm = pwrdm_lookup("neon_pwrdm");
@@ -1201,11 +1352,16 @@ static int __init omap3_pm_init(void)
 	core_clkdm = clkdm_lookup("core_clkdm");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SUSPEND
 	omap_pm_suspend = omap3_pm_suspend;
 #endif
 
 	arm_pm_idle = omap3_pm_idle;
+<<<<<<< HEAD
+=======
 =======
 	omap_push_sram_idle();
 #ifdef CONFIG_SUSPEND
@@ -1214,6 +1370,7 @@ static int __init omap3_pm_init(void)
 
 	pm_idle = omap3_pm_idle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_idle_init();
 
 	/*
@@ -1233,9 +1390,14 @@ static int __init omap3_pm_init(void)
 			pr_err("Memory allocation failed when "
 			       "allocating for secure sram context\n");
 =======
+<<<<<<< HEAD
+			pr_err("Memory allocation failed when "
+			       "allocating for secure sram context\n");
+=======
 			printk(KERN_ERR "Memory allocation failed when"
 					"allocating for secure sram context\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		local_irq_disable();
 		local_fiq_disable();
@@ -1254,22 +1416,34 @@ static int __init omap3_pm_init(void)
 
 err3:
 =======
+<<<<<<< HEAD
+	return ret;
+
+err3:
+=======
 err1:
 	return ret;
 err2:
 	free_irq(INT_34XX_PRCM_MPU_IRQ, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(pwrst, tmp, &pwrst_list, node) {
 		list_del(&pwrst->node);
 		kfree(pwrst);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_irq(omap_prcm_event_to_irq("io"), omap3_pm_init);
 err2:
 	free_irq(omap_prcm_event_to_irq("wkup"), NULL);
 err1:
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

@@ -23,8 +23,12 @@ void crst_table_free(struct mm_struct *, unsigned long *);
 <<<<<<< HEAD
 unsigned long *page_table_alloc(struct mm_struct *, unsigned long);
 =======
+<<<<<<< HEAD
+unsigned long *page_table_alloc(struct mm_struct *, unsigned long);
+=======
 unsigned long *page_table_alloc(struct mm_struct *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void page_table_free(struct mm_struct *, unsigned long *);
 void page_table_free_rcu(struct mmu_gather *, unsigned long *);
 
@@ -119,7 +123,11 @@ static inline pgd_t *pgd_alloc(struct mm_struct *mm)
 <<<<<<< HEAD
 	INIT_LIST_HEAD(&mm->context.gmap_list);
 =======
+<<<<<<< HEAD
+	INIT_LIST_HEAD(&mm->context.gmap_list);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (pgd_t *) crst_table_alloc(mm);
 }
 #define pgd_free(mm, pgd) crst_table_free(mm, (unsigned long *) pgd)
@@ -142,9 +150,14 @@ static inline void pmd_populate(struct mm_struct *mm,
 #define pte_alloc_one_kernel(mm, vmaddr) ((pte_t *) page_table_alloc(mm, vmaddr))
 #define pte_alloc_one(mm, vmaddr) ((pte_t *) page_table_alloc(mm, vmaddr))
 =======
+<<<<<<< HEAD
+#define pte_alloc_one_kernel(mm, vmaddr) ((pte_t *) page_table_alloc(mm, vmaddr))
+#define pte_alloc_one(mm, vmaddr) ((pte_t *) page_table_alloc(mm, vmaddr))
+=======
 #define pte_alloc_one_kernel(mm, vmaddr) ((pte_t *) page_table_alloc(mm))
 #define pte_alloc_one(mm, vmaddr) ((pte_t *) page_table_alloc(mm))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define pte_free_kernel(mm, pte) page_table_free(mm, (unsigned long *) pte)
 #define pte_free(mm, pte) page_table_free(mm, (unsigned long *) pte)

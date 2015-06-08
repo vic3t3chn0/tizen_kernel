@@ -37,9 +37,14 @@ struct vtimer_queue {
 	__u64 idle_enter;	/* cpu timer on idle enter */
 	__u64 idle_exit;	/* cpu timer on idle exit */
 =======
+<<<<<<< HEAD
+	__u64 idle_enter;	/* cpu timer on idle enter */
+	__u64 idle_exit;	/* cpu timer on idle exit */
+=======
 	__u64 idle;		/* temp var for idle */
 	int do_spt;		/* =1: reprogram cpu timer in idle */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern void init_virt_timer(struct vtimer_list *timer);

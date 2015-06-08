@@ -62,10 +62,15 @@
 #define EXC_STD
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __EXCEPTION_PROLOG_1(area, extra, vec)				\
 	GET_PACA(r13);							\
 	std	r9,area+EX_R9(r13);	/* save r9 - r12 */		\
 	std	r10,area+EX_R10(r13);					\
+<<<<<<< HEAD
+=======
 =======
 #define EXCEPTION_PROLOG_1(area)					\
 	GET_PACA(r13);							\
@@ -74,11 +79,15 @@
 	std	r11,area+EX_R11(r13);					\
 	std	r12,area+EX_R12(r13);					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BEGIN_FTR_SECTION_NESTED(66);					\
 	mfspr	r10,SPRN_CFAR;						\
 	std	r10,area+EX_CFAR(r13);					\
 	END_FTR_SECTION_NESTED(CPU_FTR_CFAR, CPU_FTR_CFAR, 66);		\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mfcr	r9;							\
 	extra(vec);							\
 	std	r11,area+EX_R11(r13);					\
@@ -87,11 +96,14 @@
 	std	r10,area+EX_R13(r13)
 #define EXCEPTION_PROLOG_1(area, extra, vec)				\
 	__EXCEPTION_PROLOG_1(area, extra, vec)
+<<<<<<< HEAD
+=======
 =======
 	GET_SCRATCH0(r9);						\
 	std	r9,area+EX_R13(r13);					\
 	mfcr	r9
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define __EXCEPTION_PROLOG_PSERIES_1(label, h)				\
 	ld	r12,PACAKBASE(r13);	/* get high part of &label */	\
@@ -104,6 +116,9 @@
 	h##rfid;							\
 	b	.	/* prevent speculative execution */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXCEPTION_PROLOG_PSERIES_1(label, h)				\
 	__EXCEPTION_PROLOG_PSERIES_1(label, h)
 
@@ -163,6 +178,8 @@ do_kvm_##n:								\
 
 #define NOTEST(n)
 
+<<<<<<< HEAD
+=======
 =======
 #define EXCEPTION_PROLOG_PSERIES_1(label, h) \
 	__EXCEPTION_PROLOG_PSERIES_1(label, h)
@@ -172,6 +189,7 @@ do_kvm_##n:								\
 	EXCEPTION_PROLOG_PSERIES_1(label, h);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The common exception prolog is used for all except a few exceptions
  * such as a segment miss on a kernel address.  We have to be prepared
@@ -249,10 +267,16 @@ label##_pSeries:					\
 	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, label##_common,	\
 				 EXC_STD, KVMTEST_PR, vec)
 =======
+<<<<<<< HEAD
+	SET_SCRATCH0(r13);		/* save r13 */		\
+	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, label##_common,	\
+				 EXC_STD, KVMTEST_PR, vec)
+=======
 	DO_KVM	vec;					\
 	SET_SCRATCH0(r13);		/* save r13 */		\
 	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, label##_common, EXC_STD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define STD_EXCEPTION_HV(loc, vec, label)		\
 	. = loc;					\
@@ -260,6 +284,9 @@ label##_pSeries:					\
 label##_hv:						\
 	HMT_MEDIUM;					\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SET_SCRATCH0(r13);	/* save r13 */			\
 	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, label##_common,	\
 				 EXC_HV, KVMTEST, vec)
@@ -296,6 +323,8 @@ label##_hv:						\
 	EXCEPTION_PROLOG_PSERIES_1(label##_common, h);
 #define _MASKABLE_EXCEPTION_PSERIES(vec, label, h, extra)		\
 	__MASKABLE_EXCEPTION_PSERIES(vec, label, h, extra)
+<<<<<<< HEAD
+=======
 =======
 	DO_KVM	vec;					\
 	SET_SCRATCH0(r13);	/* save r13 */		\
@@ -328,6 +357,7 @@ label##_hv:						\
 #define _MASKABLE_EXCEPTION_PSERIES(vec, label, h)			\
 	__MASKABLE_EXCEPTION_PSERIES(vec, label, h)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MASKABLE_EXCEPTION_PSERIES(loc, vec, label)			\
 	. = loc;							\
@@ -337,14 +367,22 @@ label##_pSeries:							\
 	_MASKABLE_EXCEPTION_PSERIES(vec, label,				\
 				    EXC_STD, SOFTEN_TEST_PR)
 =======
+<<<<<<< HEAD
+	_MASKABLE_EXCEPTION_PSERIES(vec, label,				\
+				    EXC_STD, SOFTEN_TEST_PR)
+=======
 	_MASKABLE_EXCEPTION_PSERIES(vec, label, EXC_STD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MASKABLE_EXCEPTION_HV(loc, vec, label)				\
 	. = loc;							\
 	.globl label##_hv;						\
 label##_hv:								\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_MASKABLE_EXCEPTION_PSERIES(vec, label,				\
 				    EXC_HV, SOFTEN_TEST_HV)
 
@@ -390,6 +428,8 @@ label##_common:							\
 #define STD_EXCEPTION_COMMON_ASYNC(trap, label, hdlr)		  \
 	EXCEPTION_COMMON(trap, label, hdlr, ret_from_except_lite, \
 			 FINISH_NAP;RUNLATCH_ON;DISABLE_INTS)
+<<<<<<< HEAD
+=======
 =======
 	_MASKABLE_EXCEPTION_PSERIES(vec, label, EXC_HV)
 
@@ -461,6 +501,7 @@ END_FTR_SECTION_IFSET(CPU_FTR_CTRL)			\
 	bl	hdlr;					\
 	b	.ret_from_except_lite
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * When the idle code in power4_idle puts the CPU into NAP mode,

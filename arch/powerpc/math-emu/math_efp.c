@@ -173,11 +173,14 @@ static unsigned long insn_type(unsigned long speinsn)
 	case EFDSUB:	ret = AB;	break;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	default:
 		printk(KERN_ERR "\nOoops! SPE instruction no type found.");
 		printk(KERN_ERR "\ninst code: %08lx\n", speinsn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return ret;
@@ -201,8 +204,12 @@ int do_spe_mathemu(struct pt_regs *regs)
 <<<<<<< HEAD
 		goto illegal;
 =======
+<<<<<<< HEAD
+		goto illegal;
+=======
 		return -ENOSYS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	func = speinsn & 0x7ff;
 	fc = (speinsn >> 21) & 0x1f;
@@ -220,10 +227,15 @@ int do_spe_mathemu(struct pt_regs *regs)
 	__FPU_FPSCR = mfspr(SPRN_SPEFSCR);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_debug("speinsn:%08lx spefscr:%08lx\n", speinsn, __FPU_FPSCR);
 	pr_debug("vc: %08x  %08x\n", vc.wp[0], vc.wp[1]);
 	pr_debug("va: %08x  %08x\n", va.wp[0], va.wp[1]);
 	pr_debug("vb: %08x  %08x\n", vb.wp[0], vb.wp[1]);
+<<<<<<< HEAD
+=======
 =======
 #ifdef DEBUG
 	printk("speinsn:%08lx spefscr:%08lx\n", speinsn, __FPU_FPSCR);
@@ -232,6 +244,7 @@ int do_spe_mathemu(struct pt_regs *regs)
 	printk("vb: %08x  %08x\n", vb.wp[0], vb.wp[1]);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (src) {
 	case SPFP: {
@@ -253,11 +266,16 @@ int do_spe_mathemu(struct pt_regs *regs)
 		pr_debug("SA: %ld %08lx %ld (%ld)\n", SA_s, SA_f, SA_e, SA_c);
 		pr_debug("SB: %ld %08lx %ld (%ld)\n", SB_s, SB_f, SB_e, SB_c);
 =======
+<<<<<<< HEAD
+		pr_debug("SA: %ld %08lx %ld (%ld)\n", SA_s, SA_f, SA_e, SA_c);
+		pr_debug("SB: %ld %08lx %ld (%ld)\n", SB_s, SB_f, SB_e, SB_c);
+=======
 #ifdef DEBUG
 		printk("SA: %ld %08lx %ld (%ld)\n", SA_s, SA_f, SA_e, SA_c);
 		printk("SB: %ld %08lx %ld (%ld)\n", SB_s, SB_f, SB_e, SB_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		switch (func) {
 		case EFSABS:
@@ -325,16 +343,22 @@ int do_spe_mathemu(struct pt_regs *regs)
 			FP_CLEAR_EXCEPTIONS;
 			FP_UNPACK_DP(DB, vb.dp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			pr_debug("DB: %ld %08lx %08lx %ld (%ld)\n",
 					DB_s, DB_f1, DB_f0, DB_e, DB_c);
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef DEBUG
 			printk("DB: %ld %08lx %08lx %ld (%ld)\n",
 					DB_s, DB_f1, DB_f0, DB_e, DB_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			FP_CONV(S, D, 1, 2, SR, DB);
 			goto pack_s;
 		}
@@ -362,10 +386,15 @@ pack_s:
 		pr_debug("SR: %ld %08lx %ld (%ld)\n", SR_s, SR_f, SR_e, SR_c);
 
 =======
+<<<<<<< HEAD
+		pr_debug("SR: %ld %08lx %ld (%ld)\n", SR_s, SR_f, SR_e, SR_c);
+
+=======
 #ifdef DEBUG
 		printk("SR: %ld %08lx %ld (%ld)\n", SR_s, SR_f, SR_e, SR_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		FP_PACK_SP(vc.wp + 1, SR);
 		goto update_regs;
 
@@ -397,10 +426,15 @@ cmp_s:
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("DA: %ld %08lx %08lx %ld (%ld)\n",
 				DA_s, DA_f1, DA_f0, DA_e, DA_c);
 		pr_debug("DB: %ld %08lx %08lx %ld (%ld)\n",
 				DB_s, DB_f1, DB_f0, DB_e, DB_c);
+<<<<<<< HEAD
+=======
 =======
 #ifdef DEBUG
 		printk("DA: %ld %08lx %08lx %ld (%ld)\n",
@@ -409,6 +443,7 @@ cmp_s:
 				DB_s, DB_f1, DB_f0, DB_e, DB_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		switch (func) {
 		case EFDABS:
@@ -477,16 +512,22 @@ cmp_s:
 			FP_CLEAR_EXCEPTIONS;
 			FP_UNPACK_SP(SB, vb.wp + 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			pr_debug("SB: %ld %08lx %ld (%ld)\n",
 					SB_s, SB_f, SB_e, SB_c);
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef DEBUG
 			printk("SB: %ld %08lx %ld (%ld)\n",
 					SB_s, SB_f, SB_e, SB_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			FP_CONV(D, S, 2, 1, DR, SB);
 			goto pack_d;
 		}
@@ -521,11 +562,17 @@ pack_d:
 				DR_s, DR_f1, DR_f0, DR_e, DR_c);
 
 =======
+<<<<<<< HEAD
+		pr_debug("DR: %ld %08lx %08lx %ld (%ld)\n",
+				DR_s, DR_f1, DR_f0, DR_e, DR_c);
+
+=======
 #ifdef DEBUG
 		printk("DR: %ld %08lx %08lx %ld (%ld)\n",
 				DR_s, DR_f1, DR_f0, DR_e, DR_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		FP_PACK_DP(vc.dp, DR);
 		goto update_regs;
 
@@ -563,6 +610,9 @@ cmp_d:
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("SA0: %ld %08lx %ld (%ld)\n",
 				SA0_s, SA0_f, SA0_e, SA0_c);
 		pr_debug("SA1: %ld %08lx %ld (%ld)\n",
@@ -571,6 +621,8 @@ cmp_d:
 				SB0_s, SB0_f, SB0_e, SB0_c);
 		pr_debug("SB1: %ld %08lx %ld (%ld)\n",
 				SB1_s, SB1_f, SB1_e, SB1_c);
+<<<<<<< HEAD
+=======
 =======
 #ifdef DEBUG
 		printk("SA0: %ld %08lx %ld (%ld)\n", SA0_s, SA0_f, SA0_e, SA0_c);
@@ -579,6 +631,7 @@ cmp_d:
 		printk("SB1: %ld %08lx %ld (%ld)\n", SB1_s, SB1_f, SB1_e, SB1_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		switch (func) {
 		case EVFSABS:
@@ -668,17 +721,23 @@ cmp_d:
 
 pack_vs:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("SR0: %ld %08lx %ld (%ld)\n",
 				SR0_s, SR0_f, SR0_e, SR0_c);
 		pr_debug("SR1: %ld %08lx %ld (%ld)\n",
 				SR1_s, SR1_f, SR1_e, SR1_c);
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef DEBUG
 		printk("SR0: %ld %08lx %ld (%ld)\n", SR0_s, SR0_f, SR0_e, SR0_c);
 		printk("SR1: %ld %08lx %ld (%ld)\n", SR1_s, SR1_f, SR1_e, SR1_c);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		FP_PACK_SP(vc.wp, SR0);
 		FP_PACK_SP(vc.wp + 1, SR1);
 		goto update_regs;
@@ -717,12 +776,17 @@ update_regs:
 	regs->gpr[fc] = vc.wp[1];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_debug("ccr = %08lx\n", regs->ccr);
 	pr_debug("cur exceptions = %08x spefscr = %08lx\n",
 			FP_CUR_EXCEPTIONS, __FPU_FPSCR);
 	pr_debug("vc: %08x  %08x\n", vc.wp[0], vc.wp[1]);
 	pr_debug("va: %08x  %08x\n", va.wp[0], va.wp[1]);
 	pr_debug("vb: %08x  %08x\n", vb.wp[0], vb.wp[1]);
+<<<<<<< HEAD
+=======
 =======
 #ifdef DEBUG
 	printk("ccr = %08lx\n", regs->ccr);
@@ -733,6 +797,7 @@ update_regs:
 	printk("vb: %08x  %08x\n", vb.wp[0], vb.wp[1]);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -743,10 +808,14 @@ illegal:
 <<<<<<< HEAD
 		pr_debug("re-issue efp inst: %08lx\n", speinsn);
 =======
+<<<<<<< HEAD
+		pr_debug("re-issue efp inst: %08lx\n", speinsn);
+=======
 #ifdef DEBUG
 		printk(KERN_DEBUG "re-issue efp inst: %08lx\n", speinsn);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -769,6 +838,9 @@ int speround_handler(struct pt_regs *regs)
 	if (type == XCR) return -ENOSYS;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__FPU_FPSCR = mfspr(SPRN_SPEFSCR);
 	pr_debug("speinsn:%08lx spefscr:%08lx\n", speinsn, __FPU_FPSCR);
 
@@ -776,8 +848,11 @@ int speround_handler(struct pt_regs *regs)
 	if (!(__FPU_FPSCR & FP_EX_INEXACT))
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fc = (speinsn >> 21) & 0x1f;
 	s_lo = regs->gpr[fc] & SIGN_BIT_S;
 	s_hi = current->thread.evr[fc] & SIGN_BIT_S;
@@ -787,8 +862,12 @@ int speround_handler(struct pt_regs *regs)
 <<<<<<< HEAD
 	pr_debug("round fgpr: %08x  %08x\n", fgpr.wp[0], fgpr.wp[1]);
 =======
+<<<<<<< HEAD
+	pr_debug("round fgpr: %08x  %08x\n", fgpr.wp[0], fgpr.wp[1]);
+=======
 	__FPU_FPSCR = mfspr(SPRN_SPEFSCR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch ((speinsn >> 5) & 0x7) {
 	/* Since SPE instructions on E500 core can handle round to nearest
@@ -832,7 +911,12 @@ int speround_handler(struct pt_regs *regs)
 	pr_debug("  to fgpr: %08x  %08x\n", fgpr.wp[0], fgpr.wp[1]);
 
 =======
+<<<<<<< HEAD
+	pr_debug("  to fgpr: %08x  %08x\n", fgpr.wp[0], fgpr.wp[1]);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

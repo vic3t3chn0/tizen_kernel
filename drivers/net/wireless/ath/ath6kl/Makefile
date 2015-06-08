@@ -22,6 +22,29 @@
 # Author(s): ="Atheros"
 #------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+obj-$(CONFIG_ATH6KL) += ath6kl_core.o
+ath6kl_core-y += debug.o
+ath6kl_core-y += hif.o
+ath6kl_core-y += htc.o
+ath6kl_core-y += bmi.o
+ath6kl_core-y += cfg80211.o
+ath6kl_core-y += init.o
+ath6kl_core-y += main.o
+ath6kl_core-y += txrx.o
+ath6kl_core-y += wmi.o
+ath6kl_core-y += core.o
+ath6kl_core-$(CONFIG_NL80211_TESTMODE) += testmode.o
+
+obj-$(CONFIG_ATH6KL_SDIO) += ath6kl_sdio.o
+ath6kl_sdio-y += sdio.o
+
+obj-$(CONFIG_ATH6KL_USB) += ath6kl_usb.o
+ath6kl_usb-y += usb.o
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_ATH6KL_SDIO) := ath6kl_sdio.o
 ath6kl_sdio-y += debug.o
 ath6kl_sdio-y += debugfs_pri.o
@@ -68,3 +91,7 @@ ccflags-y += -D__CHECK_ENDIAN__
 ifeq ($(CONFIG_5GH_WLAN_COUNTRY_CODE),y)
 ccflags-y += -DGLOBALCONFIG_WLAN_COUNTRY_CODE
 endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

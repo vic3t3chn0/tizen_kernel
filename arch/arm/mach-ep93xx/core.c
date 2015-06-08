@@ -36,7 +36,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/fb.h>
@@ -45,7 +49,11 @@
 <<<<<<< HEAD
 #include <mach/gpio-ep93xx.h>
 =======
+<<<<<<< HEAD
+#include <mach/gpio-ep93xx.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/map.h>
 #include <asm/mach/time.h>
@@ -55,7 +63,11 @@
 <<<<<<< HEAD
 #include "soc.h"
 =======
+<<<<<<< HEAD
+#include "soc.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*************************************************************************
  * Static I/O mappings that are needed for all EP93xx platforms
@@ -188,18 +200,24 @@ struct sys_timer ep93xx_timer = {
  *************************************************************************/
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void ep93xx_gpio_init_irq(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init ep93xx_init_irq(void)
 {
 	vic_init(EP93XX_VIC1_BASE, 0, EP93XX_VIC1_VALID_IRQ_MASK, 0);
 	vic_init(EP93XX_VIC2_BASE, 32, EP93XX_VIC2_VALID_IRQ_MASK, 0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	ep93xx_gpio_init_irq();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -226,8 +244,11 @@ void ep93xx_syscon_swlocked_write(unsigned int val, void __iomem *reg)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(ep93xx_syscon_swlocked_write);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void ep93xx_devcfg_set_clear(unsigned int set_bits, unsigned int clear_bits)
 {
@@ -246,8 +267,11 @@ void ep93xx_devcfg_set_clear(unsigned int set_bits, unsigned int clear_bits)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(ep93xx_devcfg_set_clear);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * ep93xx_chip_revision() - returns the EP93xx chip revision
@@ -266,6 +290,9 @@ unsigned int ep93xx_chip_revision(void)
 
 /*************************************************************************
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * EP93xx GPIO
  *************************************************************************/
 static struct resource ep93xx_gpio_resource[] = {
@@ -284,8 +311,11 @@ static struct platform_device ep93xx_gpio_device = {
 };
 
 /*************************************************************************
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * EP93xx peripheral handling
  *************************************************************************/
 #define EP93XX_UART_MCR_OFFSET		(0x0100)
@@ -309,6 +339,9 @@ static struct amba_pl010_data ep93xx_uart_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static AMBA_APB_DEVICE(uart1, "apb:uart1", 0x00041010, EP93XX_UART1_PHYS_BASE,
 	{ IRQ_EP93XX_UART1 }, &ep93xx_uart_data);
 
@@ -317,6 +350,8 @@ static AMBA_APB_DEVICE(uart2, "apb:uart2", 0x00041010, EP93XX_UART2_PHYS_BASE,
 
 static AMBA_APB_DEVICE(uart3, "apb:uart3", 0x00041010, EP93XX_UART3_PHYS_BASE,
 	{ IRQ_EP93XX_UART3 }, &ep93xx_uart_data);
+<<<<<<< HEAD
+=======
 =======
 static struct amba_device uart1_device = {
 	.dev		= {
@@ -361,6 +396,7 @@ static struct amba_device uart3_device = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource ep93xx_rtc_resource[] = {
 	{
@@ -552,7 +588,12 @@ static struct resource ep93xx_spi_resources[] = {
 static u64 ep93xx_spi_dma_mask = DMA_BIT_MASK(32);
 
 =======
+<<<<<<< HEAD
+static u64 ep93xx_spi_dma_mask = DMA_BIT_MASK(32);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device ep93xx_spi_device = {
 	.name		= "ep93xx-spi",
 	.id		= 0,
@@ -562,8 +603,14 @@ static struct platform_device ep93xx_spi_device = {
 		.coherent_dma_mask	= DMA_BIT_MASK(32),
 		.dma_mask		= &ep93xx_spi_dma_mask,
 =======
+<<<<<<< HEAD
+		.platform_data		= &ep93xx_spi_master_data,
+		.coherent_dma_mask	= DMA_BIT_MASK(32),
+		.dma_mask		= &ep93xx_spi_dma_mask,
+=======
 		.platform_data = &ep93xx_spi_master_data,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources	= ARRAY_SIZE(ep93xx_spi_resources),
 	.resource	= ep93xx_spi_resources,
@@ -730,6 +777,9 @@ static struct platform_device ep93xx_fb_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The backlight use a single register in the framebuffer's register space */
 #define EP93XX_RASTER_REG_BRIGHTNESS 0x20
 
@@ -743,11 +793,14 @@ static struct platform_device ep93xx_bl_device = {
 	.id		= -1,
 	.num_resources	= ARRAY_SIZE(ep93xx_bl_resources),
 	.resource	= ep93xx_bl_resources,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device ep93xx_bl_device = {
 	.name		= "ep93xx-bl",
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -881,12 +934,17 @@ void __init ep93xx_register_i2s(void)
 					 EP93XX_SYSCON_I2SCLKDIV_SPOL)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ep93xx_i2s_acquire(void)
 {
 	unsigned val;
 
 	ep93xx_devcfg_set_clear(EP93XX_SYSCON_DEVCFG_I2SONAC97,
 			EP93XX_SYSCON_DEVCFG_I2S_MASK);
+<<<<<<< HEAD
+=======
 =======
 int ep93xx_i2s_acquire(unsigned i2s_pins, unsigned i2s_config)
 {
@@ -906,6 +964,7 @@ int ep93xx_i2s_acquire(unsigned i2s_pins, unsigned i2s_config)
 	ep93xx_devcfg_clear_bits(EP93XX_SYSCON_DEVCFG_I2S_MASK);
 	ep93xx_devcfg_set_bits(i2s_pins);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * This is potentially racy with the clock api for i2s_mclk, sclk and 
@@ -918,8 +977,12 @@ int ep93xx_i2s_acquire(unsigned i2s_pins, unsigned i2s_config)
 <<<<<<< HEAD
 	val |= EP93XX_SYSCON_I2SCLKDIV_ORIDE | EP93XX_SYSCON_I2SCLKDIV_SPOL;
 =======
+<<<<<<< HEAD
+	val |= EP93XX_SYSCON_I2SCLKDIV_ORIDE | EP93XX_SYSCON_I2SCLKDIV_SPOL;
+=======
 	val |= i2s_config;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ep93xx_syscon_swlocked_write(val, EP93XX_SYSCON_I2SCLKDIV);
 
 	return 0;
@@ -967,6 +1030,9 @@ void __init ep93xx_register_ac97(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*************************************************************************
  * EP93xx Watchdog
  *************************************************************************/
@@ -980,9 +1046,12 @@ static struct platform_device ep93xx_wdt_device = {
 	.num_resources	= ARRAY_SIZE(ep93xx_wdt_resources),
 	.resource	= ep93xx_wdt_resources,
 };
+<<<<<<< HEAD
+=======
 =======
 extern void ep93xx_gpio_init(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init ep93xx_init_devices(void)
 {
@@ -990,6 +1059,9 @@ void __init ep93xx_init_devices(void)
 	ep93xx_devcfg_clear_bits(EP93XX_SYSCON_DEVCFG_CPENA);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Default all ports to GPIO */
 	ep93xx_devcfg_set_bits(EP93XX_SYSCON_DEVCFG_KEYS |
 			       EP93XX_SYSCON_DEVCFG_GONK |
@@ -999,9 +1071,12 @@ void __init ep93xx_init_devices(void)
 
 	/* Get the GPIO working early, other devices need it */
 	platform_device_register(&ep93xx_gpio_device);
+<<<<<<< HEAD
+=======
 =======
 	ep93xx_gpio_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	amba_device_register(&uart1_device, &iomem_resource);
 	amba_device_register(&uart2_device, &iomem_resource);
@@ -1011,6 +1086,9 @@ void __init ep93xx_init_devices(void)
 	platform_device_register(&ep93xx_ohci_device);
 	platform_device_register(&ep93xx_leds);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(&ep93xx_wdt_device);
 }
 
@@ -1024,6 +1102,9 @@ void ep93xx_restart(char mode, const char *cmd)
 
 	while (1)
 		;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

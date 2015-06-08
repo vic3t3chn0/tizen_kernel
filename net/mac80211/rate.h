@@ -16,8 +16,11 @@
 #include <linux/types.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/kref.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/mac80211.h>
 #include "ieee80211_i.h"
 #include "sta_info.h"
@@ -28,8 +31,11 @@ struct rate_control_ref {
 	void *priv;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct kref kref;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void rate_control_get_rate(struct ieee80211_sub_if_data *sdata,
@@ -37,9 +43,12 @@ void rate_control_get_rate(struct ieee80211_sub_if_data *sdata,
 			   struct ieee80211_tx_rate_control *txrc);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct rate_control_ref *rate_control_get(struct rate_control_ref *ref);
 void rate_control_put(struct rate_control_ref *ref);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void rate_control_tx_status(struct ieee80211_local *local,
 					  struct ieee80211_supported_band *sband,
@@ -53,8 +62,12 @@ static inline void rate_control_tx_status(struct ieee80211_local *local,
 <<<<<<< HEAD
 	if (!ref || !test_sta_flag(sta, WLAN_STA_RATE_CONTROL))
 =======
+<<<<<<< HEAD
+	if (!ref || !test_sta_flag(sta, WLAN_STA_RATE_CONTROL))
+=======
 	if (!ref)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	ref->ops->tx_status(ref->priv, sband, ista, priv_sta, skb);
@@ -78,7 +91,11 @@ static inline void rate_control_rate_init(struct sta_info *sta)
 <<<<<<< HEAD
 	set_sta_flag(sta, WLAN_STA_RATE_CONTROL);
 =======
+<<<<<<< HEAD
+	set_sta_flag(sta, WLAN_STA_RATE_CONTROL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void rate_control_rate_update(struct ieee80211_local *local,

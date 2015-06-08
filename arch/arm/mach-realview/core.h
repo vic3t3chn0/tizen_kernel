@@ -29,11 +29,16 @@
 #include <asm/leds.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define APB_DEVICE(name, busid, base, plat)			\
 static AMBA_APB_DEVICE(name, busid, 0, REALVIEW_##base##_BASE, base##_IRQ, plat)
 
 #define AHB_DEVICE(name, busid, base, plat)			\
 static AMBA_AHB_DEVICE(name, busid, 0, REALVIEW_##base##_BASE, base##_IRQ, plat)
+<<<<<<< HEAD
+=======
 =======
 #define AMBA_DEVICE(name,busid,base,plat)			\
 static struct amba_device name##_device = {			\
@@ -51,6 +56,7 @@ static struct amba_device name##_device = {			\
 	.irq		= base##_IRQ,				\
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct machine_desc;
 
@@ -75,9 +81,14 @@ extern void realview_init_early(void);
 extern void realview_fixup(struct tag *tags, char **from,
 			   struct meminfo *meminfo);
 =======
+<<<<<<< HEAD
+extern void realview_fixup(struct tag *tags, char **from,
+			   struct meminfo *meminfo);
+=======
 extern void realview_fixup(struct machine_desc *mdesc, struct tag *tags,
 			   char **from, struct meminfo *meminfo);
 extern void (*realview_reset)(char);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

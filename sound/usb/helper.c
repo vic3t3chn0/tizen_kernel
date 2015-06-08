@@ -84,8 +84,12 @@ int snd_usb_ctl_msg(struct usb_device *dev, unsigned int pipe, __u8 request,
 <<<<<<< HEAD
 		    __u16 size)
 =======
+<<<<<<< HEAD
+		    __u16 size)
+=======
 		    __u16 size, int timeout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	void *buf = NULL;
@@ -99,8 +103,12 @@ int snd_usb_ctl_msg(struct usb_device *dev, unsigned int pipe, __u8 request,
 <<<<<<< HEAD
 			      value, index, buf, size, 1000);
 =======
+<<<<<<< HEAD
+			      value, index, buf, size, 1000);
+=======
 			      value, index, buf, size, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (size > 0) {
 		memcpy(data, buf, size);
 		kfree(buf);

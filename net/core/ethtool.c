@@ -37,6 +37,9 @@ u32 ethtool_op_get_link(struct net_device *dev)
 EXPORT_SYMBOL(ethtool_op_get_link);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Handlers for each ethtool command */
 
 #define ETHTOOL_DEV_FEATURE_WORDS	((NETDEV_FEATURE_COUNT + 31) / 32)
@@ -77,6 +80,8 @@ static const char netdev_features_strings[NETDEV_FEATURE_COUNT][ETH_GSTRING_LEN]
 	[NETIF_F_RXFCS_BIT] =            "rx-fcs",
 	[NETIF_F_RXALL_BIT] =            "rx-all",
 };
+<<<<<<< HEAD
+=======
 =======
 u32 ethtool_op_get_tx_csum(struct net_device *dev)
 {
@@ -320,6 +325,7 @@ static int ethtool_set_features_compat(struct net_device *dev,
 	return compat;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int ethtool_get_features(struct net_device *dev, void __user *useraddr)
 {
@@ -328,6 +334,9 @@ static int ethtool_get_features(struct net_device *dev, void __user *useraddr)
 		.size = ETHTOOL_DEV_FEATURE_WORDS,
 	};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ethtool_get_features_block features[ETHTOOL_DEV_FEATURE_WORDS];
 	u32 __user *sizeaddr;
 	u32 copy_size;
@@ -343,6 +352,8 @@ static int ethtool_get_features(struct net_device *dev, void __user *useraddr)
 		features[i].never_changed =
 			(u32)(NETIF_F_NEVER_CHANGE >> (32 * i));
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct ethtool_get_features_block features[ETHTOOL_DEV_FEATURE_WORDS] = {
 		{
@@ -357,6 +368,7 @@ static int ethtool_get_features(struct net_device *dev, void __user *useraddr)
 
 	ethtool_get_features_compat(dev, features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sizeaddr = useraddr + offsetof(struct ethtool_gfeatures, size);
 	if (get_user(copy_size, sizeaddr))
@@ -382,8 +394,13 @@ static int ethtool_set_features(struct net_device *dev, void __user *useraddr)
 	netdev_features_t wanted = 0, valid = 0;
 	int i, ret = 0;
 =======
+<<<<<<< HEAD
+	netdev_features_t wanted = 0, valid = 0;
+	int i, ret = 0;
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (copy_from_user(&cmd, useraddr, sizeof(cmd)))
 		return -EFAULT;
@@ -396,6 +413,9 @@ static int ethtool_set_features(struct net_device *dev, void __user *useraddr)
 		return -EFAULT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < ETHTOOL_DEV_FEATURE_WORDS; ++i) {
 		valid |= (netdev_features_t)features[i].valid << (32 * i);
 		wanted |= (netdev_features_t)features[i].requested << (32 * i);
@@ -414,6 +434,8 @@ static int ethtool_set_features(struct net_device *dev, void __user *useraddr)
 	__netdev_update_features(dev);
 
 	if ((dev->wanted_features ^ dev->features) & valid)
+<<<<<<< HEAD
+=======
 =======
 	if (features[0].valid & ~NETIF_F_ETHTOOL_BITS)
 		return -EINVAL;
@@ -432,11 +454,14 @@ static int ethtool_set_features(struct net_device *dev, void __user *useraddr)
 
 	if ((dev->wanted_features ^ dev->features) & features[0].valid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret |= ETHTOOL_F_WISH;
 
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static const char netdev_features_strings[ETHTOOL_DEV_FEATURE_WORDS * 32][ETH_GSTRING_LEN] = {
@@ -478,6 +503,7 @@ static const char netdev_features_strings[ETHTOOL_DEV_FEATURE_WORDS * 32][ETH_GS
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __ethtool_get_sset_count(struct net_device *dev, int sset)
 {
 	const struct ethtool_ops *ops = dev->ethtool_ops;
@@ -507,8 +533,12 @@ static void __ethtool_get_strings(struct net_device *dev,
 <<<<<<< HEAD
 static netdev_features_t ethtool_get_feature_mask(u32 eth_cmd)
 =======
+<<<<<<< HEAD
+static netdev_features_t ethtool_get_feature_mask(u32 eth_cmd)
+=======
 static u32 ethtool_get_feature_mask(u32 eth_cmd)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* feature masks of legacy discrete ethtool ops */
 
@@ -540,10 +570,15 @@ static u32 ethtool_get_feature_mask(u32 eth_cmd)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ethtool_get_one_feature(struct net_device *dev,
 	char __user *useraddr, u32 ethcmd)
 {
 	netdev_features_t mask = ethtool_get_feature_mask(ethcmd);
+<<<<<<< HEAD
+=======
 =======
 static void *__ethtool_get_one_feature_actor(struct net_device *dev, u32 ethcmd)
 {
@@ -578,11 +613,14 @@ static int ethtool_get_one_feature(struct net_device *dev,
 {
 	u32 mask = ethtool_get_feature_mask(ethcmd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ethtool_value edata = {
 		.cmd = ethcmd,
 		.data = !!(dev->features & mask),
 	};
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* compatibility with discrete get_ ops */
@@ -600,11 +638,14 @@ static int ethtool_get_one_feature(struct net_device *dev,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (copy_to_user(useraddr, &edata, sizeof(edata)))
 		return -EFAULT;
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int __ethtool_set_tx_csum(struct net_device *dev, u32 data);
@@ -614,6 +655,7 @@ static int __ethtool_set_tso(struct net_device *dev, u32 data);
 static int __ethtool_set_ufo(struct net_device *dev, u32 data);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ethtool_set_one_feature(struct net_device *dev,
 	void __user *useraddr, u32 ethcmd)
 {
@@ -621,8 +663,12 @@ static int ethtool_set_one_feature(struct net_device *dev,
 <<<<<<< HEAD
 	netdev_features_t mask;
 =======
+<<<<<<< HEAD
+	netdev_features_t mask;
+=======
 	u32 mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (copy_from_user(&edata, useraddr, sizeof(edata)))
 		return -EFAULT;
@@ -630,6 +676,9 @@ static int ethtool_set_one_feature(struct net_device *dev,
 	mask = ethtool_get_feature_mask(ethcmd);
 	mask &= dev->hw_features;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!mask)
 		return -EOPNOTSUPP;
 
@@ -676,6 +725,8 @@ static int __ethtool_set_flags(struct net_device *dev, u32 data)
 
 	/* allow changing only bits set in hw_features */
 	changed = (features ^ dev->features) & ETH_ALL_FEATURES;
+<<<<<<< HEAD
+=======
 =======
 	if (mask) {
 		if (edata.data)
@@ -730,6 +781,7 @@ int __ethtool_set_flags(struct net_device *dev, u32 data)
 	/* allow changing only bits set in hw_features */
 	changed = (data ^ dev->features) & flags_dup_features;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (changed & ~dev->hw_features)
 		return (changed & dev->hw_features) ? -EINVAL : -EOPNOTSUPP;
 
@@ -737,8 +789,12 @@ int __ethtool_set_flags(struct net_device *dev, u32 data)
 <<<<<<< HEAD
 		(dev->wanted_features & ~changed) | (features & changed);
 =======
+<<<<<<< HEAD
+		(dev->wanted_features & ~changed) | (features & changed);
+=======
 		(dev->wanted_features & ~changed) | (data & dev->hw_features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__netdev_update_features(dev);
 
@@ -746,6 +802,9 @@ int __ethtool_set_flags(struct net_device *dev, u32 data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __ethtool_get_settings(struct net_device *dev, struct ethtool_cmd *cmd)
 {
 	ASSERT_RTNL();
@@ -765,6 +824,8 @@ static int ethtool_get_settings(struct net_device *dev, void __user *useraddr)
 	struct ethtool_cmd cmd;
 
 	err = __ethtool_get_settings(dev, &cmd);
+<<<<<<< HEAD
+=======
 =======
 static int ethtool_get_settings(struct net_device *dev, void __user *useraddr)
 {
@@ -776,6 +837,7 @@ static int ethtool_get_settings(struct net_device *dev, void __user *useraddr)
 
 	err = dev->ethtool_ops->get_settings(dev, &cmd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 
@@ -907,7 +969,11 @@ static noinline_for_stack int ethtool_set_rxnfc(struct net_device *dev,
 <<<<<<< HEAD
 	int rc;
 =======
+<<<<<<< HEAD
+	int rc;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dev->ethtool_ops->set_rxnfc)
 		return -EOPNOTSUPP;
@@ -924,6 +990,9 @@ static noinline_for_stack int ethtool_set_rxnfc(struct net_device *dev,
 		return -EFAULT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = dev->ethtool_ops->set_rxnfc(dev, &info);
 	if (rc)
 		return rc;
@@ -933,9 +1002,12 @@ static noinline_for_stack int ethtool_set_rxnfc(struct net_device *dev,
 		return -EFAULT;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return dev->ethtool_ops->set_rxnfc(dev, &info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static noinline_for_stack int ethtool_get_rxnfc(struct net_device *dev,
@@ -997,6 +1069,9 @@ static noinline_for_stack int ethtool_get_rxfh_indir(struct net_device *dev,
 						     void __user *useraddr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 user_size, dev_size;
 	u32 *indir;
 	int ret;
@@ -1028,6 +1103,8 @@ static noinline_for_stack int ethtool_get_rxfh_indir(struct net_device *dev,
 	if (!indir)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+=======
 =======
 	struct ethtool_rxfh_indir *indir;
 	u32 table_size;
@@ -1053,6 +1130,7 @@ static noinline_for_stack int ethtool_get_rxfh_indir(struct net_device *dev,
 	indir->cmd = ETHTOOL_GRXFHINDIR;
 	indir->size = table_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = dev->ethtool_ops->get_rxfh_indir(dev, indir);
 	if (ret)
 		goto out;
@@ -1062,8 +1140,14 @@ static noinline_for_stack int ethtool_get_rxfh_indir(struct net_device *dev,
 			 offsetof(struct ethtool_rxfh_indir, ring_index[0]),
 			 indir, dev_size * sizeof(indir[0])))
 =======
+<<<<<<< HEAD
+	if (copy_to_user(useraddr +
+			 offsetof(struct ethtool_rxfh_indir, ring_index[0]),
+			 indir, dev_size * sizeof(indir[0])))
+=======
 	if (copy_to_user(useraddr, indir, full_size))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EFAULT;
 
 out:
@@ -1075,6 +1159,9 @@ static noinline_for_stack int ethtool_set_rxfh_indir(struct net_device *dev,
 						     void __user *useraddr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ethtool_rxnfc rx_rings;
 	u32 user_size, dev_size, i;
 	u32 *indir;
@@ -1131,6 +1218,8 @@ static noinline_for_stack int ethtool_set_rxfh_indir(struct net_device *dev,
 
 out:
 	kfree(indir);
+<<<<<<< HEAD
+=======
 =======
 	struct ethtool_rxfh_indir *indir;
 	u32 table_size;
@@ -1507,6 +1596,7 @@ copy:
 out:
 	kfree(data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1828,6 +1918,8 @@ static int ethtool_set_pauseparam(struct net_device *dev, void __user *useraddr)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int __ethtool_set_sg(struct net_device *dev, u32 data)
 {
 	int err;
@@ -1904,6 +1996,7 @@ static int __ethtool_set_ufo(struct net_device *dev, u32 data)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ethtool_self_test(struct net_device *dev, char __user *useraddr)
 {
 	struct ethtool_test test;
@@ -2151,7 +2244,12 @@ static noinline_for_stack int ethtool_flash_device(struct net_device *dev,
 	efl.data[ETHTOOL_FLASH_MAX_FILENAME - 1] = 0;
 
 =======
+<<<<<<< HEAD
+	efl.data[ETHTOOL_FLASH_MAX_FILENAME - 1] = 0;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return dev->ethtool_ops->flash_device(dev, &efl);
 }
 
@@ -2378,10 +2476,14 @@ int dev_ethtool(struct net *net, struct ifreq *ifr)
 <<<<<<< HEAD
 					__ethtool_get_flags);
 =======
+<<<<<<< HEAD
+					__ethtool_get_flags);
+=======
 				       (dev->ethtool_ops->get_flags ?
 					dev->ethtool_ops->get_flags :
 					ethtool_op_get_flags));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case ETHTOOL_SFLAGS:
 		rc = ethtool_set_value(dev, useraddr, __ethtool_set_flags);
@@ -2414,6 +2516,8 @@ int dev_ethtool(struct net *net, struct ifreq *ifr)
 		break;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	case ETHTOOL_SRXNTUPLE:
 		rc = ethtool_set_rx_ntuple(dev, useraddr);
 		break;
@@ -2421,6 +2525,7 @@ int dev_ethtool(struct net *net, struct ifreq *ifr)
 		rc = ethtool_get_rx_ntuple(dev, useraddr);
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ETHTOOL_GSSET_INFO:
 		rc = ethtool_get_sset_info(dev, useraddr);
 		break;

@@ -8,10 +8,15 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mount.h>
 #include <linux/compat.h>
 #include <asm/uaccess.h>
 #include "ext3.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/fs.h>
 #include <linux/jbd.h>
@@ -23,6 +28,7 @@
 #include <linux/compat.h>
 #include <asm/uaccess.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 long ext3_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
@@ -54,8 +60,12 @@ long ext3_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 		err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(filp);
+=======
 		err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 
@@ -124,8 +134,12 @@ flags_out:
 <<<<<<< HEAD
 		mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(filp);
+=======
 		mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 	case EXT3_IOC_GETVERSION:
@@ -144,8 +158,12 @@ flags_out:
 <<<<<<< HEAD
 		err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(filp);
+=======
 		err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 		if (get_user(generation, (int __user *) arg)) {
@@ -154,17 +172,23 @@ flags_out:
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_lock(&inode->i_mutex);
 		handle = ext3_journal_start(inode, 1);
 		if (IS_ERR(handle)) {
 			err = PTR_ERR(handle);
 			goto unlock_out;
+<<<<<<< HEAD
+=======
 =======
 		handle = ext3_journal_start(inode, 1);
 		if (IS_ERR(handle)) {
 			err = PTR_ERR(handle);
 			goto setversion_out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		err = ext3_reserve_inode_write(handle, inode, &iloc);
 		if (err == 0) {
@@ -174,6 +198,9 @@ flags_out:
 		}
 		ext3_journal_stop(handle);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unlock_out:
 		mutex_unlock(&inode->i_mutex);
@@ -181,6 +208,8 @@ setversion_out:
 		mnt_drop_write_file(filp);
 		return err;
 	}
+<<<<<<< HEAD
+=======
 =======
 setversion_out:
 		mnt_drop_write(filp->f_path.mnt);
@@ -211,6 +240,7 @@ setversion_out:
 		}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case EXT3_IOC_GETRSVSZ:
 		if (test_opt(inode->i_sb, RESERVATION)
 			&& S_ISREG(inode->i_mode)
@@ -228,8 +258,12 @@ setversion_out:
 <<<<<<< HEAD
 		err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(filp);
+=======
 		err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 
@@ -263,8 +297,12 @@ setrsvsz_out:
 <<<<<<< HEAD
 		mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(filp);
+=======
 		mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 	case EXT3_IOC_GROUP_EXTEND: {
@@ -278,8 +316,12 @@ setrsvsz_out:
 <<<<<<< HEAD
 		err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(filp);
+=======
 		err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 
@@ -297,8 +339,12 @@ group_extend_out:
 <<<<<<< HEAD
 		mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(filp);
+=======
 		mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 	case EXT3_IOC_GROUP_ADD: {
@@ -312,8 +358,12 @@ group_extend_out:
 <<<<<<< HEAD
 		err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(filp);
+=======
 		err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 
@@ -333,8 +383,12 @@ group_add_out:
 <<<<<<< HEAD
 		mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(filp);
+=======
 		mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 	case FITRIM: {
@@ -349,8 +403,12 @@ group_add_out:
 <<<<<<< HEAD
 		if (copy_from_user(&range, (struct fstrim_range __user *)arg,
 =======
+<<<<<<< HEAD
+		if (copy_from_user(&range, (struct fstrim_range __user *)arg,
+=======
 		if (copy_from_user(&range, (struct fstrim_range *)arg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   sizeof(range)))
 			return -EFAULT;
 
@@ -361,8 +419,12 @@ group_add_out:
 <<<<<<< HEAD
 		if (copy_to_user((struct fstrim_range __user *)arg, &range,
 =======
+<<<<<<< HEAD
+		if (copy_to_user((struct fstrim_range __user *)arg, &range,
+=======
 		if (copy_to_user((struct fstrim_range *)arg, &range,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 sizeof(range)))
 			return -EFAULT;
 

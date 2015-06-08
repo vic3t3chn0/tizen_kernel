@@ -28,8 +28,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/processor.h>
 #include <asm/cputable.h>
 #include <asm/time.h>
@@ -37,7 +40,11 @@
 <<<<<<< HEAD
 #include <asm/runlatch.h>
 =======
+<<<<<<< HEAD
+#include <asm/runlatch.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/smp.h>
 
 #ifdef CONFIG_HOTPLUG_CPU
@@ -47,6 +54,9 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long cpuidle_disable = IDLE_NO_OVERRIDE;
 EXPORT_SYMBOL(cpuidle_disable);
 
@@ -54,11 +64,14 @@ static int __init powersave_off(char *arg)
 {
 	ppc_md.power_save = NULL;
 	cpuidle_disable = IDLE_POWERSAVE_OFF;
+<<<<<<< HEAD
+=======
 =======
 static int __init powersave_off(char *arg)
 {
 	ppc_md.power_save = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 __setup("powersave=off", powersave_off);
@@ -78,8 +91,14 @@ void cpu_idle(void)
 		rcu_idle_enter();
 
 =======
+<<<<<<< HEAD
+		tick_nohz_idle_enter();
+		rcu_idle_enter();
+
+=======
 		tick_nohz_stop_sched_tick(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (!need_resched() && !cpu_should_die()) {
 			ppc64_runlatch_off();
 
@@ -102,14 +121,20 @@ void cpu_idle(void)
 				start_critical_timings();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* Some power_save functions return with
 				 * interrupts enabled, some don't.
 				 */
 				if (irqs_disabled())
 					local_irq_enable();
+<<<<<<< HEAD
+=======
 =======
 				local_irq_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				set_thread_flag(TIF_POLLING_NRFLAG);
 
 			} else {
@@ -125,6 +150,9 @@ void cpu_idle(void)
 		HMT_medium();
 		ppc64_runlatch_on();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_idle_exit();
 		tick_nohz_idle_exit();
 		if (cpu_should_die()) {
@@ -157,6 +185,8 @@ void cpu_idle_wait(void)
 	put_online_cpus();
 }
 EXPORT_SYMBOL_GPL(cpu_idle_wait);
+<<<<<<< HEAD
+=======
 =======
 		tick_nohz_restart_sched_tick();
 		preempt_enable_no_resched();
@@ -167,6 +197,7 @@ EXPORT_SYMBOL_GPL(cpu_idle_wait);
 	}
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int powersave_nap;
 

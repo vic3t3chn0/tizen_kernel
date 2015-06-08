@@ -36,8 +36,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_BRIDGE_NETFILTER
 #include "../bridge/br_private.h"
@@ -313,10 +317,13 @@ nfulnl_alloc_skb(unsigned int inst_size, unsigned int pkt_size)
 	if (!skb) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		pr_notice("nfnetlink_log: can't alloc whole buffer (%u bytes)\n",
 			inst_size);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (n > pkt_size) {
 			/* try to allocate only as much as we need for current
 			 * packet */
@@ -327,9 +334,14 @@ nfulnl_alloc_skb(unsigned int inst_size, unsigned int pkt_size)
 				pr_err("nfnetlink_log: can't even alloc %u bytes\n",
 				       pkt_size);
 =======
+<<<<<<< HEAD
+				pr_err("nfnetlink_log: can't even alloc %u bytes\n",
+				       pkt_size);
+=======
 				pr_err("nfnetlink_log: can't even alloc %u "
 				       "bytes\n", pkt_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 

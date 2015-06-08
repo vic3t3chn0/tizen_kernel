@@ -15,6 +15,9 @@
 	.text
 	.align	5
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ENTRY(memset)
 	ands	r3, r0, #3		@ 1 unaligned?
@@ -24,6 +27,8 @@ ENTRY(memset)
  * we know that the pointer in ip is aligned to a word boundary.
  */
 1:	orr	r1, r1, r1, lsl #8
+<<<<<<< HEAD
+=======
 =======
 	.word	0
 
@@ -51,6 +56,7 @@ ENTRY(memset)
  */
 	orr	r1, r1, r1, lsl #8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	orr	r1, r1, r1, lsl #16
 	mov	r3, r1
 	cmp	r2, #16
@@ -140,6 +146,9 @@ ENTRY(memset)
 	strneb	r1, [ip], #1
 	mov	pc, lr
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 6:	subs	r2, r2, #4		@ 1 do we have enough
 	blt	5b			@ 1 bytes to align with?
@@ -149,6 +158,9 @@ ENTRY(memset)
 	strb	r1, [ip], #1		@ 1
 	add	r2, r2, r3		@ 1 (r2 = r2 - (4 - r3))
 	b	1b
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENDPROC(memset)

@@ -27,7 +27,14 @@
 #define __BFAD_DRV_H__
 
 #include <linux/types.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pci.h>
 #include <linux/dma-mapping.h>
 #include <linux/idr.h>
@@ -43,6 +50,14 @@
 #include <scsi/scsi_tcq.h>
 #include <scsi/scsi_transport_fc.h>
 #include <scsi/scsi_transport.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <scsi/scsi_bsg_fc.h>
+#include <scsi/scsi_devinfo.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "bfa_modules.h"
 #include "bfa_fcs.h"
@@ -55,7 +70,15 @@
 #ifdef BFA_DRIVER_VERSION
 #define BFAD_DRIVER_VERSION    BFA_DRIVER_VERSION
 #else
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define BFAD_DRIVER_VERSION    "3.0.23.0"
+=======
 #define BFAD_DRIVER_VERSION    "2.3.2.3"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define BFAD_DRIVER_VERSION    "2.3.2.3"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #define BFAD_PROTO_NAME FCPI_NAME
@@ -79,7 +102,15 @@
 #define BFAD_HAL_INIT_FAIL			0x00000100
 #define BFAD_FC4_PROBE_DONE			0x00000200
 #define BFAD_PORT_DELETE			0x00000001
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define BFAD_INTX_ON				0x00000400
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * BFAD related definition
  */
@@ -92,6 +123,14 @@
  */
 #define BFAD_LUN_QUEUE_DEPTH	32
 #define BFAD_IO_MAX_SGE		SG_ALL
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define BFAD_MIN_SECTORS	128 /* 64k   */
+#define BFAD_MAX_SECTORS	0xFFFF  /* 32 MB */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define bfad_isr_t irq_handler_t
 
@@ -110,6 +149,13 @@ struct bfad_msix_s {
 enum {
 	BFA_TRC_LDRV_BFAD		= 1,
 	BFA_TRC_LDRV_IM			= 2,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	BFA_TRC_LDRV_BSG		= 3,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum bfad_port_pvb_type {
@@ -189,8 +235,20 @@ struct bfad_s {
 	struct bfa_pcidev_s hal_pcidev;
 	struct bfa_ioc_pci_attr_s pci_attr;
 	void __iomem   *pci_bar0_kva;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	void __iomem   *pci_bar2_kva;
 	struct completion comp;
 	struct completion suspend;
+	struct completion enable_comp;
+=======
+	struct completion comp;
+	struct completion suspend;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct completion comp;
+	struct completion suspend;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct completion disable_comp;
 	bfa_boolean_t   disable_active;
 	struct bfad_port_s     pport;	/* physical port of the BFAD */
@@ -218,6 +276,17 @@ struct bfad_s {
 	char *regdata;
 	u32 reglen;
 	struct dentry *bfad_dentry_files[5];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct list_head	free_aen_q;
+	struct list_head	active_aen_q;
+	struct bfa_aen_entry_s	aen_list[BFA_AEN_MAX_ENTRY];
+	spinlock_t		bfad_aen_spinlock;
+	struct list_head	vport_list;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* BFAD state machine events */
@@ -273,6 +342,11 @@ struct bfad_hal_comp {
 	struct completion comp;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Macro to obtain the immediate lower power
  * of two for the integer.
@@ -288,6 +362,10 @@ do {                                            \
 } while (0)
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BFA_LOG(level, bfad, mask, fmt, arg...)				\
 do {									\
 	if (((mask) == 4) || (level[1] <= '4'))				\
@@ -354,6 +432,13 @@ extern int      msix_disable_ct;
 extern int      fdmi_enable;
 extern int      supported_fc4s;
 extern int	pcie_max_read_reqsz;
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern int	max_xfer_size;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int bfa_debugfs_enable;
 extern struct mutex bfad_mutex;
 

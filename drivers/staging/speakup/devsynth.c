@@ -18,6 +18,19 @@ static ssize_t speakup_file_write(struct file *fp, const char *buffer,
 {
 	size_t count = nbytes;
 	const char *ptr = buffer;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t bytes;
+	unsigned long flags;
+	u_char buf[256];
+
+	if (synth == NULL)
+		return -ENODEV;
+	while (count > 0) {
+		bytes = min(count, sizeof(buf));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int bytes;
 	unsigned long flags;
 	u_char buf[256];
@@ -25,6 +38,10 @@ static ssize_t speakup_file_write(struct file *fp, const char *buffer,
 		return -ENODEV;
 	while (count > 0) {
 		bytes = min_t(size_t, count, sizeof(buf));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (copy_from_user(buf, ptr, bytes))
 			return -EFAULT;
 		count -= bytes;

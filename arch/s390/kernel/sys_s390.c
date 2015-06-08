@@ -63,15 +63,22 @@ out:
 <<<<<<< HEAD
  * sys_ipc() is the de-multiplexer for the SysV IPC calls.
 =======
+<<<<<<< HEAD
+ * sys_ipc() is the de-multiplexer for the SysV IPC calls.
+=======
  * sys_ipc() is the de-multiplexer for the SysV IPC calls..
  *
  * This is really horribly ugly.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 SYSCALL_DEFINE5(s390_ipc, uint, call, int, first, unsigned long, second,
 		unsigned long, third, void __user *, ptr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (call >> 16)
 		return -EINVAL;
 	/* The s390 sys_ipc variant has only five parameters instead of six
@@ -83,6 +90,8 @@ SYSCALL_DEFINE5(s390_ipc, uint, call, int, first, unsigned long, second,
 	 * third parameter also as fifth parameter.
 	 */
 	return sys_ipc(call, first, second, third, ptr, third);
+<<<<<<< HEAD
+=======
 =======
         struct ipc_kludge tmp;
 	int ret;
@@ -146,6 +155,7 @@ SYSCALL_DEFINE5(s390_ipc, uint, call, int, first, unsigned long, second,
 
 	return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_64BIT

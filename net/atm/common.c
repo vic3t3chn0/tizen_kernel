@@ -26,8 +26,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "resources.h"		/* atm_find_dev */
 #include "common.h"		/* prototypes */
@@ -219,6 +223,9 @@ void vcc_release_async(struct atm_vcc *vcc, int reply)
 EXPORT_SYMBOL(vcc_release_async);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void vcc_process_recv_queue(struct atm_vcc *vcc)
 {
 	struct sk_buff_head queue, *rq;
@@ -239,8 +246,11 @@ void vcc_process_recv_queue(struct atm_vcc *vcc)
 }
 EXPORT_SYMBOL(vcc_process_recv_queue);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void atm_dev_signal_change(struct atm_dev *dev, char signal)
 {
 	pr_debug("%s signal=%d dev=%p number=%d dev->signal=%d\n",
@@ -530,15 +540,21 @@ int vcc_recvmsg(struct kiocb *iocb, struct socket *sock, struct msghdr *msg,
 	if (sock->state != SS_CONNECTED)
 		return -ENOTCONN;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* only handle MSG_DONTWAIT and MSG_PEEK */
 	if (flags & ~(MSG_DONTWAIT | MSG_PEEK))
 		return -EOPNOTSUPP;
 
+<<<<<<< HEAD
+=======
 =======
 	if (flags & ~MSG_DONTWAIT)		/* only handle MSG_DONTWAIT */
 		return -EOPNOTSUPP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vcc = ATM_SD(sock);
 	if (test_bit(ATM_VF_RELEASED, &vcc->flags) ||
 	    test_bit(ATM_VF_CLOSE, &vcc->flags) ||
@@ -560,6 +576,9 @@ int vcc_recvmsg(struct kiocb *iocb, struct socket *sock, struct msghdr *msg,
 		return error;
 	sock_recv_ts_and_drops(msg, sk, skb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!(flags & MSG_PEEK)) {
 		pr_debug("%d -= %d\n", atomic_read(&sk->sk_rmem_alloc),
@@ -567,10 +586,13 @@ int vcc_recvmsg(struct kiocb *iocb, struct socket *sock, struct msghdr *msg,
 		atm_return(vcc, skb->truesize);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	pr_debug("%d -= %d\n", atomic_read(&sk->sk_rmem_alloc), skb->truesize);
 	atm_return(vcc, skb->truesize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_free_datagram(sk, skb);
 	return copied;
 }
@@ -831,8 +853,11 @@ int vcc_getsockopt(struct socket *sock, int level, int optname,
 			return -ENOTCONN;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(&pvc, 0, sizeof(pvc));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pvc.sap_family = AF_ATMPVC;
 		pvc.sap_addr.itf = vcc->dev->number;
 		pvc.sap_addr.vpi = vcc->vpi;

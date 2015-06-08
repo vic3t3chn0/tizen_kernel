@@ -77,7 +77,15 @@ struct wl12xx_ie_header {
 
 struct wl12xx_ie_ssid {
 	struct wl12xx_ie_header header;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	char ssid[IEEE80211_MAX_SSID_LEN];
+=======
 	char ssid[IW_ESSID_MAX_SIZE];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	char ssid[IW_ESSID_MAX_SIZE];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct wl12xx_ie_rates {
@@ -105,6 +113,11 @@ struct wl12xx_ie_country {
 
 /* Templates */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct wl12xx_beacon_template {
 	struct ieee80211_header header;
 	__le32 time_stamp[2];
@@ -117,6 +130,10 @@ struct wl12xx_beacon_template {
 	struct wl12xx_ie_country country;
 } __packed;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct wl12xx_null_data_template {
 	struct ieee80211_header header;
 } __packed;
@@ -128,6 +145,13 @@ struct wl12xx_ps_poll_template {
 	u8 ta[ETH_ALEN];
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct wl12xx_arp_rsp_template {
+	/* not including ieee80211 header */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct wl12xx_qos_null_data_template {
 	struct ieee80211_header header;
 	__le16 qos_ctl;
@@ -135,6 +159,10 @@ struct wl12xx_qos_null_data_template {
 
 struct wl12xx_arp_rsp_template {
 	struct ieee80211_hdr_3addr hdr;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u8 llc_hdr[sizeof(rfc1042_header)];
 	__be16 llc_type;
@@ -146,6 +174,11 @@ struct wl12xx_arp_rsp_template {
 	__be32 target_ip;
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct wl12xx_probe_resp_template {
 	struct ieee80211_header header;
@@ -159,6 +192,10 @@ struct wl12xx_probe_resp_template {
 	struct wl12xx_ie_country country;
 } __packed;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct wl12xx_disconn_template {
 	struct ieee80211_header header;
 	__le16 disconn_reason;

@@ -39,7 +39,11 @@
 <<<<<<< HEAD
 #include <linux/of.h>
 =======
+<<<<<<< HEAD
+#include <linux/of.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/iomap.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -48,8 +52,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "tegra_das.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "tegra_i2s.h"
 
 #define DRV_NAME "tegra-i2s"
@@ -90,7 +97,12 @@ static int tegra_i2s_show(struct seq_file *s, void *unused)
 	clk_enable(i2s->clk_i2s);
 
 =======
+<<<<<<< HEAD
+	clk_enable(i2s->clk_i2s);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < ARRAY_SIZE(regs); i++) {
 		u32 val = tegra_i2s_read(i2s, regs[i].offset);
 		seq_printf(s, "%s = %08x\n", regs[i].name, val);
@@ -100,7 +112,12 @@ static int tegra_i2s_show(struct seq_file *s, void *unused)
 	clk_disable(i2s->clk_i2s);
 
 =======
+<<<<<<< HEAD
+	clk_disable(i2s->clk_i2s);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -117,11 +134,16 @@ static const struct file_operations tegra_i2s_debug_fops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tegra_i2s_debug_add(struct tegra_i2s *i2s)
 {
 	i2s->debug = debugfs_create_file(i2s->dai.name, S_IRUGO,
 					 snd_soc_debugfs_root, i2s,
 					 &tegra_i2s_debug_fops);
+<<<<<<< HEAD
+=======
 =======
 static void tegra_i2s_debug_add(struct tegra_i2s *i2s, int id)
 {
@@ -131,6 +153,7 @@ static void tegra_i2s_debug_add(struct tegra_i2s *i2s, int id)
 	i2s->debug = debugfs_create_file(name, S_IRUGO, snd_soc_debugfs_root,
 						i2s, &tegra_i2s_debug_fops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void tegra_i2s_debug_remove(struct tegra_i2s *i2s)
@@ -142,8 +165,12 @@ static void tegra_i2s_debug_remove(struct tegra_i2s *i2s)
 <<<<<<< HEAD
 static inline void tegra_i2s_debug_add(struct tegra_i2s *i2s)
 =======
+<<<<<<< HEAD
+static inline void tegra_i2s_debug_add(struct tegra_i2s *i2s)
+=======
 static inline void tegra_i2s_debug_add(struct tegra_i2s *i2s, int id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 
@@ -338,14 +365,21 @@ static int tegra_i2s_probe(struct snd_soc_dai *dai)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops tegra_i2s_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops tegra_i2s_dai_ops = {
+=======
 static struct snd_soc_dai_ops tegra_i2s_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_fmt	= tegra_i2s_set_fmt,
 	.hw_params	= tegra_i2s_hw_params,
 	.trigger	= tegra_i2s_trigger,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_soc_dai_driver tegra_i2s_dai_template = {
 	.probe = tegra_i2s_probe,
 	.playback = {
@@ -362,6 +396,8 @@ static const struct snd_soc_dai_driver tegra_i2s_dai_template = {
 	},
 	.ops = &tegra_i2s_dai_ops,
 	.symmetric_rates = 1,
+<<<<<<< HEAD
+=======
 =======
 struct snd_soc_dai_driver tegra_i2s_dai[] = {
 	{
@@ -401,12 +437,16 @@ struct snd_soc_dai_driver tegra_i2s_dai[] = {
 		.symmetric_rates = 1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 {
 	struct tegra_i2s * i2s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct resource *mem, *memregion, *dmareq;
 	u32 of_dma[2];
 	u32 dma_ch;
@@ -428,6 +468,8 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 		dev_err(&pdev->dev, "Can't retrieve i2s clock\n");
 		ret = PTR_ERR(i2s->clk_i2s);
 		goto err;
+<<<<<<< HEAD
+=======
 =======
 	char clk_name[12]; /* tegra-i2s.0 */
 	struct resource *mem, *memregion, *dmareq;
@@ -471,6 +513,7 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 		ret = PTR_ERR(i2s->clk_i2s);
 		goto err_free;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
@@ -483,6 +526,9 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 	dmareq = platform_get_resource(pdev, IORESOURCE_DMA, 0);
 	if (!dmareq) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (of_property_read_u32_array(pdev->dev.of_node,
 					"nvidia,dma-request-selector",
 					of_dma, 2) < 0) {
@@ -497,6 +543,8 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 
 	memregion = devm_request_mem_region(&pdev->dev, mem->start,
 					    resource_size(mem), DRV_NAME);
+<<<<<<< HEAD
+=======
 =======
 		dev_err(&pdev->dev, "No DMA resource\n");
 		ret = -ENODEV;
@@ -506,6 +554,7 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 	memregion = request_mem_region(mem->start, resource_size(mem),
 					DRV_NAME);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!memregion) {
 		dev_err(&pdev->dev, "Memory region already claimed\n");
 		ret = -EBUSY;
@@ -513,11 +562,16 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2s->regs = devm_ioremap(&pdev->dev, mem->start, resource_size(mem));
 	if (!i2s->regs) {
 		dev_err(&pdev->dev, "ioremap failed\n");
 		ret = -ENOMEM;
 		goto err_clk_put;
+<<<<<<< HEAD
+=======
 =======
 	i2s->regs = ioremap(mem->start, resource_size(mem));
 	if (!i2s->regs) {
@@ -525,6 +579,7 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 		ret = -ENOMEM;
 		goto err_release;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	i2s->capture_dma_data.addr = mem->start + TEGRA_I2S_FIFO2;
@@ -533,13 +588,20 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	i2s->capture_dma_data.req_sel = dma_ch;
 =======
+<<<<<<< HEAD
+	i2s->capture_dma_data.req_sel = dma_ch;
+=======
 	i2s->capture_dma_data.req_sel = dmareq->start;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	i2s->playback_dma_data.addr = mem->start + TEGRA_I2S_FIFO1;
 	i2s->playback_dma_data.wrap = 4;
 	i2s->playback_dma_data.width = 32;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2s->playback_dma_data.req_sel = dma_ch;
 
 	i2s->reg_ctrl = TEGRA_I2S_CTRL_FIFO_FORMAT_PACKED;
@@ -558,6 +620,8 @@ static __devinit int tegra_i2s_platform_probe(struct platform_device *pdev)
 err_clk_put:
 	clk_put(i2s->clk_i2s);
 err:
+<<<<<<< HEAD
+=======
 =======
 	i2s->playback_dma_data.req_sel = dmareq->start;
 
@@ -584,6 +648,7 @@ err_free:
 	kfree(i2s);
 exit:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -592,14 +657,20 @@ static int __devexit tegra_i2s_platform_remove(struct platform_device *pdev)
 	struct tegra_i2s *i2s = dev_get_drvdata(&pdev->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct resource *res;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_unregister_dai(&pdev->dev);
 
 	tegra_i2s_debug_remove(i2s);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clk_put(i2s->clk_i2s);
 
 	return 0;
@@ -610,6 +681,8 @@ static const struct of_device_id tegra_i2s_of_match[] __devinitconst = {
 	{},
 };
 
+<<<<<<< HEAD
+=======
 =======
 	iounmap(i2s->regs);
 
@@ -624,6 +697,7 @@ static const struct of_device_id tegra_i2s_of_match[] __devinitconst = {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver tegra_i2s_driver = {
 	.driver = {
 		.name = DRV_NAME,
@@ -631,11 +705,18 @@ static struct platform_driver tegra_i2s_driver = {
 <<<<<<< HEAD
 		.of_match_table = tegra_i2s_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = tegra_i2s_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe = tegra_i2s_platform_probe,
 	.remove = __devexit_p(tegra_i2s_platform_remove),
 };
+<<<<<<< HEAD
+module_platform_driver(tegra_i2s_driver);
+=======
 <<<<<<< HEAD
 module_platform_driver(tegra_i2s_driver);
 =======
@@ -652,6 +733,7 @@ static void __exit snd_tegra_i2s_exit(void)
 }
 module_exit(snd_tegra_i2s_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Stephen Warren <swarren@nvidia.com>");
 MODULE_DESCRIPTION("Tegra I2S ASoC driver");
@@ -660,4 +742,8 @@ MODULE_ALIAS("platform:" DRV_NAME);
 <<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, tegra_i2s_of_match);
 =======
+<<<<<<< HEAD
+MODULE_DEVICE_TABLE(of, tegra_i2s_of_match);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

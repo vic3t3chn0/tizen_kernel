@@ -343,7 +343,15 @@ int lookup_symbol_attrs(unsigned long addr, unsigned long *size,
 
 /* Look up a kernel symbol and return it in a text buffer. */
 static int __sprint_symbol(char *buffer, unsigned long address,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			   int symbol_offset, int add_offset)
+=======
 			   int symbol_offset)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			   int symbol_offset)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *modname;
 	const char *name;
@@ -358,6 +366,18 @@ static int __sprint_symbol(char *buffer, unsigned long address,
 	if (name != buffer)
 		strcpy(buffer, name);
 	len = strlen(buffer);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	offset -= symbol_offset;
+
+	if (add_offset)
+		len += sprintf(buffer + len, "+%#lx/%#lx", offset, size);
+
+	if (modname)
+		len += sprintf(buffer + len, " [%s]", modname);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	buffer += len;
 	offset -= symbol_offset;
 
@@ -365,6 +385,10 @@ static int __sprint_symbol(char *buffer, unsigned long address,
 		len += sprintf(buffer, "+%#lx/%#lx [%s]", offset, size, modname);
 	else
 		len += sprintf(buffer, "+%#lx/%#lx", offset, size);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return len;
 }
@@ -382,10 +406,39 @@ static int __sprint_symbol(char *buffer, unsigned long address,
  */
 int sprint_symbol(char *buffer, unsigned long address)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return __sprint_symbol(buffer, address, 0, 1);
+}
+EXPORT_SYMBOL_GPL(sprint_symbol);
+
+/**
+ * sprint_symbol_no_offset - Look up a kernel symbol and return it in a text buffer
+ * @buffer: buffer to be stored
+ * @address: address to lookup
+ *
+ * This function looks up a kernel symbol with @address and stores its name
+ * and module name to @buffer if possible. If no symbol was found, just saves
+ * its @address as is.
+ *
+ * This function returns the number of bytes stored in @buffer.
+ */
+int sprint_symbol_no_offset(char *buffer, unsigned long address)
+{
+	return __sprint_symbol(buffer, address, 0, 0);
+}
+EXPORT_SYMBOL_GPL(sprint_symbol_no_offset);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return __sprint_symbol(buffer, address, 0);
 }
 
 EXPORT_SYMBOL_GPL(sprint_symbol);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * sprint_backtrace - Look up a backtrace symbol and return it in a text buffer
@@ -403,7 +456,15 @@ EXPORT_SYMBOL_GPL(sprint_symbol);
  */
 int sprint_backtrace(char *buffer, unsigned long address)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return __sprint_symbol(buffer, address, -1, 1);
+=======
 	return __sprint_symbol(buffer, address, -1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return __sprint_symbol(buffer, address, -1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Look up a kernel symbol and print it to the kernel messages. */

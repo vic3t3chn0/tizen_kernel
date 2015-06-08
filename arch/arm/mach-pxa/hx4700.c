@@ -32,8 +32,13 @@
 #include <linux/regulator/driver.h>
 #include <linux/regulator/gpio-regulator.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/driver.h>
+#include <linux/regulator/gpio-regulator.h>
+=======
 #include <linux/regulator/bq24022.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/machine.h>
 #include <linux/regulator/max1586.h>
 #include <linux/spi/ads7846.h>
@@ -53,7 +58,11 @@
 <<<<<<< HEAD
 #include <sound/ak4641.h>
 =======
+<<<<<<< HEAD
+#include <sound/ak4641.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <video/platform_lcd.h>
 #include <video/w100fb.h>
 
@@ -110,10 +119,16 @@ static unsigned long hx4700_pin_config[] __initdata = {
 	GPIO44_BTUART_CTS,
 	GPIO45_BTUART_RTS_LPM_LOW,
 =======
+<<<<<<< HEAD
+	GPIO43_BTUART_TXD_LPM_LOW,
+	GPIO44_BTUART_CTS,
+	GPIO45_BTUART_RTS_LPM_LOW,
+=======
 	GPIO43_BTUART_TXD,
 	GPIO44_BTUART_CTS,
 	GPIO45_BTUART_RTS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* PWM 1 (Backlight) */
 	GPIO17_PWM1_OUT,
@@ -150,6 +165,8 @@ static unsigned long hx4700_pin_config[] __initdata = {
 	GPIO66_GPIO,	/* nSDIO_IRQ */
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define HX4700_GPIO_IN(num, _desc) \
@@ -189,6 +206,7 @@ static int hx4700_gpio_request(struct gpio_ress *gpios, int size)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * IRDA
  */
@@ -299,6 +317,9 @@ static u16 asic3_gpio_config[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct asic3_led asic3_leds[ASIC3_NUM_LEDS] = {
 	[0] = {
 		.name = "hx4700:amber",
@@ -314,8 +335,11 @@ static struct asic3_led asic3_leds[ASIC3_NUM_LEDS] = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource asic3_resources[] = {
 	/* GPIO part */
 	[0] = {
@@ -328,9 +352,14 @@ static struct resource asic3_resources[] = {
 		.start	= PXA_GPIO_TO_IRQ(GPIO12_HX4700_ASIC3_IRQ),
 		.end	= PXA_GPIO_TO_IRQ(GPIO12_HX4700_ASIC3_IRQ),
 =======
+<<<<<<< HEAD
+		.start	= PXA_GPIO_TO_IRQ(GPIO12_HX4700_ASIC3_IRQ),
+		.end	= PXA_GPIO_TO_IRQ(GPIO12_HX4700_ASIC3_IRQ),
+=======
 		.start	= gpio_to_irq(GPIO12_HX4700_ASIC3_IRQ),
 		.end	= gpio_to_irq(GPIO12_HX4700_ASIC3_IRQ),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 	/* SD part */
@@ -344,9 +373,14 @@ static struct resource asic3_resources[] = {
 		.start	= PXA_GPIO_TO_IRQ(GPIO66_HX4700_ASIC3_nSDIO_IRQ),
 		.end	= PXA_GPIO_TO_IRQ(GPIO66_HX4700_ASIC3_nSDIO_IRQ),
 =======
+<<<<<<< HEAD
+		.start	= PXA_GPIO_TO_IRQ(GPIO66_HX4700_ASIC3_nSDIO_IRQ),
+		.end	= PXA_GPIO_TO_IRQ(GPIO66_HX4700_ASIC3_nSDIO_IRQ),
+=======
 		.start	= gpio_to_irq(GPIO66_HX4700_ASIC3_nSDIO_IRQ),
 		.end	= gpio_to_irq(GPIO66_HX4700_ASIC3_nSDIO_IRQ),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 };
@@ -359,7 +393,11 @@ static struct asic3_platform_data asic3_platform_data = {
 <<<<<<< HEAD
 	.leds            = asic3_leds,
 =======
+<<<<<<< HEAD
+	.leds            = asic3_leds,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device asic3 = {
@@ -676,8 +714,12 @@ static struct spi_board_info tsc2046_board_info[] __initdata = {
 <<<<<<< HEAD
 		.irq             = PXA_GPIO_TO_IRQ(GPIO58_HX4700_TSC2046_nPENIRQ),
 =======
+<<<<<<< HEAD
+		.irq             = PXA_GPIO_TO_IRQ(GPIO58_HX4700_TSC2046_nPENIRQ),
+=======
 		.irq             = gpio_to_irq(GPIO58_HX4700_TSC2046_nPENIRQ),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data   = &tsc2046_info,
 		.controller_data = &tsc2046_chip,
 	},
@@ -729,9 +771,14 @@ static struct resource power_supply_resources[] = {
 		.start = PXA_GPIO_TO_IRQ(GPIOD9_nAC_IN),
 		.end   = PXA_GPIO_TO_IRQ(GPIOD9_nAC_IN),
 =======
+<<<<<<< HEAD
+		.start = PXA_GPIO_TO_IRQ(GPIOD9_nAC_IN),
+		.end   = PXA_GPIO_TO_IRQ(GPIOD9_nAC_IN),
+=======
 		.start = gpio_to_irq(GPIOD9_nAC_IN),
 		.end   = gpio_to_irq(GPIOD9_nAC_IN),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	[1] = {
 		.name  = "usb",
@@ -741,9 +788,14 @@ static struct resource power_supply_resources[] = {
 		.start = PXA_GPIO_TO_IRQ(GPIOD14_nUSBC_DETECT),
 		.end   = PXA_GPIO_TO_IRQ(GPIOD14_nUSBC_DETECT),
 =======
+<<<<<<< HEAD
+		.start = PXA_GPIO_TO_IRQ(GPIOD14_nUSBC_DETECT),
+		.end   = PXA_GPIO_TO_IRQ(GPIOD14_nUSBC_DETECT),
+=======
 		.start = gpio_to_irq(GPIOD14_nUSBC_DETECT),
 		.end   = gpio_to_irq(GPIOD14_nUSBC_DETECT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -768,12 +820,18 @@ static struct regulator_consumer_supply bq24022_consumers[] = {
 	},
 	{
 =======
+<<<<<<< HEAD
+		.supply = "vbus_draw",
+	},
+	{
+=======
 		.dev = &gpio_vbus.dev,
 		.supply = "vbus_draw",
 	},
 	{
 		.dev = &power_supply.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.supply = "ac_draw",
 	},
 };
@@ -788,6 +846,9 @@ static struct regulator_init_data bq24022_init_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct gpio bq24022_gpios[] = {
 	{ GPIO96_HX4700_BQ24022_ISET2, GPIOF_OUT_INIT_LOW, "bq24022_iset2" },
 };
@@ -816,6 +877,8 @@ static struct gpio_regulator_config bq24022_info = {
 
 static struct platform_device bq24022 = {
 	.name = "gpio-regulator",
+<<<<<<< HEAD
+=======
 =======
 static struct bq24022_mach_info bq24022_info = {
 	.gpio_nce   = GPIO72_HX4700_BQ24022_nCHARGE_EN,
@@ -826,6 +889,7 @@ static struct bq24022_mach_info bq24022_info = {
 static struct platform_device bq24022 = {
 	.name = "bq24022",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id   = -1,
 	.dev  = {
 		.platform_data = &bq24022_info,
@@ -846,11 +910,17 @@ static struct resource strataflash_resource[] = {
 	[0] = DEFINE_RES_MEM(PXA_CS0_PHYS, SZ_64M),
 	[1] = DEFINE_RES_MEM(PXA_CS0_PHYS + SZ_64M, SZ_64M),
 =======
+<<<<<<< HEAD
+static struct resource strataflash_resource[] = {
+	[0] = DEFINE_RES_MEM(PXA_CS0_PHYS, SZ_64M),
+	[1] = DEFINE_RES_MEM(PXA_CS0_PHYS + SZ_64M, SZ_64M),
+=======
 static struct resource strataflash_resource = {
 	.start = PXA_CS0_PHYS,
 	.end   = PXA_CS0_PHYS + SZ_128M - 1,
 	.flags = IORESOURCE_MEM,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct physmap_flash_data strataflash_data = {
@@ -865,9 +935,14 @@ static struct platform_device strataflash = {
 	.resource      = strataflash_resource,
 	.num_resources = ARRAY_SIZE(strataflash_resource),
 =======
+<<<<<<< HEAD
+	.resource      = strataflash_resource,
+	.num_resources = ARRAY_SIZE(strataflash_resource),
+=======
 	.resource      = &strataflash_resource,
 	.num_resources = 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dev = {
 		.platform_data = &strataflash_data,
 	},
@@ -914,6 +989,9 @@ static struct i2c_board_info __initdata pi2c_board_info[] = {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Asahi Kasei AK4641 on I2C
  */
 
@@ -935,6 +1013,8 @@ static struct platform_device audio = {
 };
 
 
+<<<<<<< HEAD
+=======
 =======
  * PCMCIA
  */
@@ -947,6 +1027,7 @@ static struct platform_device pcmcia = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Platform devices
  */
@@ -963,6 +1044,9 @@ static struct platform_device *devices[] __initdata = {
 	&power_supply,
 	&strataflash,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&audio,
 };
 
@@ -979,6 +1063,8 @@ static struct gpio global_gpios[] = {
 	{ GPIO32_HX4700_RS232_ON,         GPIOF_OUT_INIT_HIGH, "RS232_ON" },
 	{ GPIO71_HX4700_ASIC3_nRESET,     GPIOF_OUT_INIT_HIGH, "ASIC3_nRESET" },
 	{ GPIO82_HX4700_EUART_RESET,      GPIOF_OUT_INIT_HIGH, "EUART_RESET" },
+<<<<<<< HEAD
+=======
 =======
 	&pcmcia,
 };
@@ -998,21 +1084,28 @@ static struct gpio_ress global_gpios[] = {
 	HX4700_GPIO_OUT(GPIO82_HX4700_EUART_RESET,      1, "EUART_RESET"),
 	HX4700_GPIO_OUT(GPIO105_HX4700_nIR_ON,          1, "nIR_EN"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init hx4700_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	pxa2xx_mfp_config(ARRAY_AND_SIZE(hx4700_pin_config));
 	ret = gpio_request_array(ARRAY_AND_SIZE(global_gpios));
 	if (ret)
 		pr_err ("hx4700: Failed to request GPIOs.\n");
+<<<<<<< HEAD
+=======
 =======
 	pxa2xx_mfp_config(ARRAY_AND_SIZE(hx4700_pin_config));
 	hx4700_gpio_request(ARRAY_AND_SIZE(global_gpios));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pxa_set_ffuart_info(NULL);
 	pxa_set_btuart_info(NULL);
@@ -1026,7 +1119,11 @@ static void __init hx4700_init(void)
 <<<<<<< HEAD
 	i2c_register_board_info(0, ARRAY_AND_SIZE(i2c_board_info));
 =======
+<<<<<<< HEAD
+	i2c_register_board_info(0, ARRAY_AND_SIZE(i2c_board_info));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2c_register_board_info(1, ARRAY_AND_SIZE(pi2c_board_info));
 	pxa2xx_set_spi_info(2, &pxa_ssp2_master_info);
 	spi_register_board_info(ARRAY_AND_SIZE(tsc2046_board_info));
@@ -1039,6 +1136,9 @@ static void __init hx4700_init(void)
 
 MACHINE_START(H4700, "HP iPAQ HX4700")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset  = 0x100,
 	.map_io       = pxa27x_map_io,
 	.nr_irqs      = HX4700_NR_IRQS,
@@ -1047,6 +1147,8 @@ MACHINE_START(H4700, "HP iPAQ HX4700")
 	.init_machine = hx4700_init,
 	.timer        = &pxa_timer,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params  = 0xa0000100,
 	.map_io       = pxa27x_map_io,
@@ -1055,4 +1157,5 @@ MACHINE_START(H4700, "HP iPAQ HX4700")
 	.init_machine = hx4700_init,
 	.timer        = &pxa_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

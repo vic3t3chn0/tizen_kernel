@@ -49,8 +49,12 @@ void udf_free_inode(struct inode *inode)
 <<<<<<< HEAD
 struct inode *udf_new_inode(struct inode *dir, umode_t mode, int *err)
 =======
+<<<<<<< HEAD
+struct inode *udf_new_inode(struct inode *dir, umode_t mode, int *err)
+=======
 struct inode *udf_new_inode(struct inode *dir, int mode, int *err)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = dir->i_sb;
 	struct udf_sb_info *sbi = UDF_SB(sb);
@@ -123,7 +127,11 @@ struct inode *udf_new_inode(struct inode *dir, int mode, int *err)
 <<<<<<< HEAD
 	iinfo->i_checkpoint = 1;
 =======
+<<<<<<< HEAD
+	iinfo->i_checkpoint = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (UDF_QUERY_FLAG(inode->i_sb, UDF_FLAG_USE_AD_IN_ICB))
 		iinfo->i_alloc_type = ICBTAG_FLAG_AD_IN_ICB;
 	else if (UDF_QUERY_FLAG(inode->i_sb, UDF_FLAG_USE_SHORT_AD))

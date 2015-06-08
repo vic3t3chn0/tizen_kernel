@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/mxs.h>
 #include <mach/common.h>
@@ -45,7 +49,12 @@
 #define CLKCTRL_TIMEOUT		10	/* 10 ms */
 
 =======
+<<<<<<< HEAD
+#define CLKCTRL_TIMEOUT		10	/* 10 ms */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *mxs_clkctrl_reset_addr;
 
 /*
@@ -54,8 +63,12 @@ static void __iomem *mxs_clkctrl_reset_addr;
 <<<<<<< HEAD
 void mxs_restart(char mode, const char *cmd)
 =======
+<<<<<<< HEAD
+void mxs_restart(char mode, const char *cmd)
+=======
 void arch_reset(char mode, const char *cmd)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* reset the chip */
 	__mxs_setl(MXS_CLKCTRL_RESET_CHIP, mxs_clkctrl_reset_addr);
@@ -69,8 +82,12 @@ void arch_reset(char mode, const char *cmd)
 <<<<<<< HEAD
 	soft_restart(0);
 =======
+<<<<<<< HEAD
+	soft_restart(0);
+=======
 	cpu_reset(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init mxs_arch_reset_init(void)
@@ -86,8 +103,12 @@ static int __init mxs_arch_reset_init(void)
 <<<<<<< HEAD
 		clk_prepare_enable(clk);
 =======
+<<<<<<< HEAD
+		clk_prepare_enable(clk);
+=======
 		clk_enable(clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -159,6 +180,9 @@ error:
 }
 EXPORT_SYMBOL(mxs_reset_block);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int mxs_clkctrl_timeout(unsigned int reg_offset, unsigned int mask)
 {
@@ -173,5 +197,8 @@ int mxs_clkctrl_timeout(unsigned int reg_offset, unsigned int mask)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

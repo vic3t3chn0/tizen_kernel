@@ -18,14 +18,20 @@
 #include <linux/platform_device.h>
 #include <linux/cpuidle.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/export.h>
 #include <asm/proc-fns.h>
 #include <asm/cpuidle.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/proc-fns.h>
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "pm.h"
 
@@ -34,6 +40,9 @@
 static DEFINE_PER_CPU(struct cpuidle_device, at91_cpuidle_device);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Actual code that puts the SoC in different idle states */
 static int at91_enter_idle(struct cpuidle_device *dev,
 			struct cpuidle_driver *drv,
@@ -60,6 +69,8 @@ static struct cpuidle_driver at91_idle_driver = {
 	.state_count = AT91_MAX_STATES,
 };
 
+<<<<<<< HEAD
+=======
 =======
 static struct cpuidle_driver at91_idle_driver = {
 	.name =         "at91_idle",
@@ -94,16 +105,22 @@ static int at91_enter_idle(struct cpuidle_device *dev,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Initialize CPU idle by registering the idle states */
 static int at91_init_cpuidle(void)
 {
 	struct cpuidle_device *device;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	device = &per_cpu(at91_cpuidle_device, smp_processor_id());
 	device->state_count = AT91_MAX_STATES;
 
 	cpuidle_register_driver(&at91_idle_driver);
+<<<<<<< HEAD
+=======
 =======
 	cpuidle_register_driver(&at91_idle_driver);
 
@@ -126,6 +143,7 @@ static int at91_init_cpuidle(void)
 	strcpy(device->states[1].name, "RAM_SR");
 	strcpy(device->states[1].desc, "WFI and RAM Self Refresh");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cpuidle_register_device(device)) {
 		printk(KERN_ERR "at91_init_cpuidle: Failed registering\n");

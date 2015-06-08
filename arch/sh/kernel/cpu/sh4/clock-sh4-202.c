@@ -44,8 +44,12 @@ static inline int frqcr3_lookup(struct clk *clk, unsigned long rate)
 <<<<<<< HEAD
 static struct sh_clk_ops sh4202_emi_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops sh4202_emi_clk_ops = {
+=======
 static struct clk_ops sh4202_emi_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= emi_clk_recalc,
 };
 
@@ -63,8 +67,12 @@ static unsigned long femi_clk_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops sh4202_femi_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops sh4202_femi_clk_ops = {
+=======
 static struct clk_ops sh4202_femi_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= femi_clk_recalc,
 };
 
@@ -141,8 +149,12 @@ static int shoc_clk_set_rate(struct clk *clk, unsigned long rate)
 <<<<<<< HEAD
 static struct sh_clk_ops sh4202_shoc_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops sh4202_shoc_clk_ops = {
+=======
 static struct clk_ops sh4202_shoc_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init		= shoc_clk_init,
 	.recalc		= shoc_clk_recalc,
 	.set_rate	= shoc_clk_set_rate,
@@ -161,9 +173,12 @@ static struct clk *sh4202_onchip_clocks[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define CLKDEV_CON_ID(_id, _clk) { .con_id = _id, .clk = _clk }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk_lookup lookups[] = {
 	/* main clocks */
 	CLKDEV_CON_ID("emi_clk", &sh4202_emi_clk),

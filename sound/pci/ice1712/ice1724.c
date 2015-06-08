@@ -31,8 +31,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 #include <sound/core.h>
 #include <sound/info.h>
@@ -87,8 +91,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;		/* Enable this card */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;		/* Enable this card */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;		/* Enable this card */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static char *model[SNDRV_CARDS];
 
 module_param_array(index, int, NULL, 0444);
@@ -1022,6 +1030,9 @@ static int set_rate_constraints(struct snd_ice1712 *ice,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* if the card has the internal rate locked (is_pro_locked), limit runtime
    hw rates to the current internal rate only.
 */
@@ -1041,8 +1052,11 @@ static void constrain_rate_if_locked(struct snd_pcm_substream *substream)
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* multi-channel playback needs alignment 8x32bit regardless of the channels
  * actually used
  */
@@ -1079,7 +1093,11 @@ static int snd_vt1724_playback_pro_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	constrain_rate_if_locked(substream);
 =======
+<<<<<<< HEAD
+	constrain_rate_if_locked(substream);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ice->pro_open)
 		ice->pro_open(ice, substream);
 	return 0;
@@ -1103,7 +1121,11 @@ static int snd_vt1724_capture_pro_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	constrain_rate_if_locked(substream);
 =======
+<<<<<<< HEAD
+	constrain_rate_if_locked(substream);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ice->pro_open)
 		ice->pro_open(ice, substream);
 	return 0;
@@ -1156,6 +1178,9 @@ static int __devinit snd_vt1724_pcm_profi(struct snd_ice1712 *ice, int device)
 {
 	struct snd_pcm *pcm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int capt, err;
 
 	if ((ice->eeprom.data[ICE_EEP2_SYSCONF] & VT1724_CFG_ADC_MASK) ==
@@ -1164,11 +1189,14 @@ static int __devinit snd_vt1724_pcm_profi(struct snd_ice1712 *ice, int device)
 	else
 		capt = 1;
 	err = snd_pcm_new(ice->card, "ICE1724", device, 1, capt, &pcm);
+<<<<<<< HEAD
+=======
 =======
 	int err;
 
 	err = snd_pcm_new(ice->card, "ICE1724", device, 1, 1, &pcm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 
@@ -1178,8 +1206,14 @@ static int __devinit snd_vt1724_pcm_profi(struct snd_ice1712 *ice, int device)
 		snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE,
 			&snd_vt1724_capture_pro_ops);
 =======
+<<<<<<< HEAD
+	if (capt)
+		snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE,
+			&snd_vt1724_capture_pro_ops);
+=======
 	snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE, &snd_vt1724_capture_pro_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pcm->private_data = ice;
 	pcm->info_flags = 0;
@@ -1266,7 +1300,11 @@ static int snd_vt1724_playback_spdif_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	constrain_rate_if_locked(substream);
 =======
+<<<<<<< HEAD
+	constrain_rate_if_locked(substream);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ice->spdif.ops.open)
 		ice->spdif.ops.open(ice, substream);
 	return 0;
@@ -1306,7 +1344,11 @@ static int snd_vt1724_capture_spdif_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	constrain_rate_if_locked(substream);
 =======
+<<<<<<< HEAD
+	constrain_rate_if_locked(substream);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ice->spdif.ops.open)
 		ice->spdif.ops.open(ice, substream);
 	return 0;
@@ -1889,15 +1931,21 @@ static int snd_vt1724_pro_internal_clock_info(struct snd_kcontrol *kcontrol,
 	uinfo->count = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* internal clocks */
 	uinfo->value.enumerated.items = hw_rates_count;
 	/* external clocks */
 	if (ice->force_rdma1 ||
 	    (ice->eeprom.data[ICE_EEP2_SPDIF] & VT1724_CFG_SPDIF_IN))
 		uinfo->value.enumerated.items += ice->ext_clock_count;
+<<<<<<< HEAD
+=======
 =======
 	uinfo->value.enumerated.items = hw_rates_count + ice->ext_clock_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* upper limit - keep at top */
 	if (uinfo->value.enumerated.item >= uinfo->value.enumerated.items)
 		uinfo->value.enumerated.item = uinfo->value.enumerated.items - 1;
@@ -2246,6 +2294,9 @@ static struct snd_kcontrol_new snd_vt1724_mixer_pro_peak __devinitdata = {
 static struct snd_ice1712_card_info no_matched __devinitdata;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
   ooAoo cards with no controls
@@ -2280,8 +2331,11 @@ struct snd_ice1712_card_info snd_vt1724_ooaoo_cards[] __devinitdata = {
 	{ } /* terminator */
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_ice1712_card_info *card_tables[] __devinitdata = {
 	snd_vt1724_revo_cards,
 	snd_vt1724_amp_cards,
@@ -2299,7 +2353,11 @@ static struct snd_ice1712_card_info *card_tables[] __devinitdata = {
 <<<<<<< HEAD
 	snd_vt1724_ooaoo_cards,
 =======
+<<<<<<< HEAD
+	snd_vt1724_ooaoo_cards,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL,
 };
 
@@ -2386,8 +2444,12 @@ static int __devinit snd_vt1724_read_eeprom(struct snd_ice1712 *ice,
 <<<<<<< HEAD
 		for (c = *tbl; c->name; c++) {
 =======
+<<<<<<< HEAD
+		for (c = *tbl; c->name; c++) {
+=======
 		for (c = *tbl; c->subvendor; c++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (modelname && c->model &&
 			    !strcmp(modelname, c->model)) {
 				printk(KERN_INFO "ice1724: Using board model %s\n",
@@ -2629,8 +2691,12 @@ static int __devinit snd_vt1724_create(struct snd_card *card,
 <<<<<<< HEAD
 			IRQF_SHARED, KBUILD_MODNAME, ice)) {
 =======
+<<<<<<< HEAD
+			IRQF_SHARED, KBUILD_MODNAME, ice)) {
+=======
 			IRQF_SHARED, "ICE1724", ice)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_vt1724_free(ice);
 		return -EIO;
@@ -2701,14 +2767,20 @@ static int __devinit snd_vt1724_probe(struct pci_dev *pci,
 
 	for (tbl = card_tables; *tbl; tbl++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (c = *tbl; c->name; c++) {
 			if ((model[dev] && c->model &&
 			     !strcmp(model[dev], c->model)) ||
 			    (c->subvendor == ice->eeprom.subvendor)) {
+<<<<<<< HEAD
+=======
 =======
 		for (c = *tbl; c->subvendor; c++) {
 			if (c->subvendor == ice->eeprom.subvendor) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				strcpy(card->shortname, c->name);
 				if (c->driver) /* specific driver? */
 					strcpy(card->driver, c->driver);
@@ -2933,8 +3005,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "ICE1724",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_vt1724_ids,
 	.probe = snd_vt1724_probe,
 	.remove = __devexit_p(snd_vt1724_remove),

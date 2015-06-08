@@ -14,6 +14,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct mc13783;
 
 struct mc13xxx *mc13783_to_mc13xxx(struct mc13783 *mc13783);
@@ -126,6 +128,7 @@ int mc13783_adc_do_conversion(struct mc13783 *mc13783, unsigned int mode,
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	MC13783_REG_SW1A		0
 #define	MC13783_REG_SW1B		1
 #define	MC13783_REG_SW2A		2

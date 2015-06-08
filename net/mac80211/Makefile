@@ -12,8 +12,12 @@ mac80211-y := \
 <<<<<<< HEAD
 	work.o \
 =======
+<<<<<<< HEAD
+	work.o \
+=======
 	mlme.o work.o \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iface.o \
 	rate.o \
 	michael.o \
@@ -32,8 +36,13 @@ mac80211-y := \
 	chan.o \
 	driver-trace.o mlme.o
 =======
+<<<<<<< HEAD
+	chan.o \
+	driver-trace.o mlme.o
+=======
 	chan.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 mac80211-$(CONFIG_MAC80211_LEDS) += led.o
 mac80211-$(CONFIG_MAC80211_DEBUGFS) += \
@@ -52,8 +61,11 @@ mac80211-$(CONFIG_PM) += pm.o
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 mac80211-$(CONFIG_MAC80211_DRIVER_API_TRACER) += driver-trace.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 CFLAGS_driver-trace.o := -I$(src)
 
 # objects for PID algorithm

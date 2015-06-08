@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/irq_regs.h>
 #include <asm/machdep.h>
@@ -398,8 +402,12 @@ static int __init cbe_init_pm_irq(void)
 <<<<<<< HEAD
 				 0, "cbe-pmu-0", NULL);
 =======
+<<<<<<< HEAD
+				 0, "cbe-pmu-0", NULL);
+=======
 				 IRQF_DISABLED, "cbe-pmu-0", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc) {
 			printk("ERROR: Request for irq on node %d failed\n",
 			       node);

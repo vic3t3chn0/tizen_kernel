@@ -5,6 +5,9 @@
  * License terms: GNU General Public License (GPL), version 2
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gpio.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -13,6 +16,8 @@
 #include <linux/mfd/tc3589x.h>
 #include <linux/input/matrix_keypad.h>
 
+<<<<<<< HEAD
+=======
 =======
 
 #include <linux/kernel.h>
@@ -26,10 +31,15 @@
 
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 
 #include "board-mop500.h"
 
+<<<<<<< HEAD
+/* Dummy data that can be overridden by staging driver */
+struct i2c_board_info __initdata __weak mop500_i2c3_devices_u8500[] = {
+=======
 <<<<<<< HEAD
 /* Dummy data that can be overridden by staging driver */
 struct i2c_board_info __initdata __weak mop500_i2c3_devices_u8500[] = {
@@ -56,6 +66,7 @@ static struct i2c_board_info __initdata mop500_i2c3_devices_u8500[] = {
 		.platform_data = &rmi4_i2c_dev_platformdata,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*

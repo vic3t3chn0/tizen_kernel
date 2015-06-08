@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # This is the world regulatory domain
 country 00:
 	(2402 - 2472 @ 40), (3, 20)
@@ -983,6 +986,8 @@ country ZW:
 	(5250 - 5350 @ 80), (N/A, 20), DFS
 	(5470 - 5725 @ 80), (N/A, 27), DFS
 
+<<<<<<< HEAD
+=======
 =======
 #
 # This file is a placeholder to prevent accidental build breakage if someone
@@ -1002,3 +1007,4 @@ country ZW:
 #   git://git.kernel.org/pub/scm/linux/kernel/git/linville/wireless-regdb.git
 #
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

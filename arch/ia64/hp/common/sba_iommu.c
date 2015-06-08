@@ -45,8 +45,11 @@
 #include <asm/dma.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>		/* wmb() */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/acpi-ext.h>
 
@@ -921,8 +924,12 @@ sba_mark_invalid(struct ioc *ioc, dma_addr_t iova, size_t byte_cnt)
 <<<<<<< HEAD
  * See Documentation/DMA-API-HOWTO.txt
 =======
+<<<<<<< HEAD
+ * See Documentation/DMA-API-HOWTO.txt
+=======
  * See Documentation/PCI/PCI-DMA-mapping.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static dma_addr_t sba_map_page(struct device *dev, struct page *page,
 			       unsigned long poff, size_t size,
@@ -1054,8 +1061,12 @@ sba_mark_clean(struct ioc *ioc, dma_addr_t iova, size_t size)
 <<<<<<< HEAD
  * See Documentation/DMA-API-HOWTO.txt
 =======
+<<<<<<< HEAD
+ * See Documentation/DMA-API-HOWTO.txt
+=======
  * See Documentation/PCI/PCI-DMA-mapping.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void sba_unmap_page(struct device *dev, dma_addr_t iova, size_t size,
 			   enum dma_data_direction dir, struct dma_attrs *attrs)
@@ -1139,17 +1150,23 @@ void sba_unmap_single_attrs(struct device *dev, dma_addr_t iova, size_t size,
  * @dma_handle:  IOVA of new buffer.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * See Documentation/DMA-API-HOWTO.txt
  */
 static void *
 sba_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle,
 		   gfp_t flags, struct dma_attrs *attrs)
+<<<<<<< HEAD
+=======
 =======
  * See Documentation/PCI/PCI-DMA-mapping.txt
  */
 static void *
 sba_alloc_coherent (struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ioc *ioc;
 	void *addr;
@@ -1210,16 +1227,22 @@ sba_alloc_coherent (struct device *dev, size_t size, dma_addr_t *dma_handle, gfp
  * @dma_handler:  IO virtual address of "consistent" buffer.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * See Documentation/DMA-API-HOWTO.txt
  */
 static void sba_free_coherent(struct device *dev, size_t size, void *vaddr,
 			      dma_addr_t dma_handle, struct dma_attrs *attrs)
+<<<<<<< HEAD
+=======
 =======
  * See Documentation/PCI/PCI-DMA-mapping.txt
  */
 static void sba_free_coherent (struct device *dev, size_t size, void *vaddr,
 			       dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	sba_unmap_single_attrs(dev, dma_handle, size, 0, NULL);
 	free_pages((unsigned long) vaddr, get_order(size));
@@ -1482,8 +1505,12 @@ static void sba_unmap_sg_attrs(struct device *dev, struct scatterlist *sglist,
 <<<<<<< HEAD
  * See Documentation/DMA-API-HOWTO.txt
 =======
+<<<<<<< HEAD
+ * See Documentation/DMA-API-HOWTO.txt
+=======
  * See Documentation/PCI/PCI-DMA-mapping.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int sba_map_sg_attrs(struct device *dev, struct scatterlist *sglist,
 			    int nents, enum dma_data_direction dir,
@@ -1582,8 +1609,12 @@ static int sba_map_sg_attrs(struct device *dev, struct scatterlist *sglist,
 <<<<<<< HEAD
  * See Documentation/DMA-API-HOWTO.txt
 =======
+<<<<<<< HEAD
+ * See Documentation/DMA-API-HOWTO.txt
+=======
  * See Documentation/PCI/PCI-DMA-mapping.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void sba_unmap_sg_attrs(struct device *dev, struct scatterlist *sglist,
 			       int nents, enum dma_data_direction dir,
@@ -2251,9 +2282,14 @@ struct dma_map_ops sba_dma_ops = {
 	.alloc			= sba_alloc_coherent,
 	.free			= sba_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc			= sba_alloc_coherent,
+	.free			= sba_free_coherent,
+=======
 	.alloc_coherent		= sba_alloc_coherent,
 	.free_coherent		= sba_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_page		= sba_map_page,
 	.unmap_page		= sba_unmap_page,
 	.map_sg			= sba_map_sg_attrs,

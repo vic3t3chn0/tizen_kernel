@@ -57,7 +57,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/net_namespace.h>
 #include <net/arp.h>
 #include <net/ip.h>
@@ -147,8 +151,12 @@ u8 root_server_path[256] = { 0, };	/* Path to mount as root */
 <<<<<<< HEAD
 __be32 ic_dev_xid;		/* Device under configuration */
 =======
+<<<<<<< HEAD
+__be32 ic_dev_xid;		/* Device under configuration */
+=======
 u32 ic_dev_xid;		/* Device under configuration */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* vendor class identifier */
 static char vendor_class_identifier[253] __initdata;
@@ -224,8 +232,12 @@ static int __init ic_open_devs(void)
 <<<<<<< HEAD
 			pr_err("IP-Config: Failed to open %s\n", dev->name);
 =======
+<<<<<<< HEAD
+			pr_err("IP-Config: Failed to open %s\n", dev->name);
+=======
 			printk(KERN_ERR "IP-Config: Failed to open %s\n", dev->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for_each_netdev(&init_net, dev) {
@@ -238,8 +250,13 @@ static int __init ic_open_devs(void)
 				pr_warn("DHCP/BOOTP: Ignoring device %s, MTU %d too small",
 					dev->name, dev->mtu);
 =======
+<<<<<<< HEAD
+				pr_warn("DHCP/BOOTP: Ignoring device %s, MTU %d too small",
+					dev->name, dev->mtu);
+=======
 				printk(KERN_WARNING "DHCP/BOOTP: Ignoring device %s, MTU %d too small", dev->name, dev->mtu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(dev->flags & IFF_NOARP))
 				able |= IC_RARP;
 			able &= ic_proto_enabled;
@@ -251,8 +268,13 @@ static int __init ic_open_devs(void)
 				pr_err("IP-Config: Failed to open %s\n",
 				       dev->name);
 =======
+<<<<<<< HEAD
+				pr_err("IP-Config: Failed to open %s\n",
+				       dev->name);
+=======
 				printk(KERN_ERR "IP-Config: Failed to open %s\n", dev->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			}
 			if (!(d = kmalloc(sizeof(struct ic_device), GFP_KERNEL))) {
@@ -295,15 +317,21 @@ have_carrier:
 	if (!ic_first_dev) {
 		if (user_dev_name[0])
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_err("IP-Config: Device `%s' not found\n",
 			       user_dev_name);
 		else
 			pr_err("IP-Config: No network devices available\n");
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_ERR "IP-Config: Device `%s' not found.\n", user_dev_name);
 		else
 			printk(KERN_ERR "IP-Config: No network devices available.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 	return 0;
@@ -391,8 +419,13 @@ static int __init ic_setup_if(void)
 		pr_err("IP-Config: Unable to set interface address (%d)\n",
 		       err);
 =======
+<<<<<<< HEAD
+		pr_err("IP-Config: Unable to set interface address (%d)\n",
+		       err);
+=======
 		printk(KERN_ERR "IP-Config: Unable to set interface address (%d).\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	set_sockaddr(sin, ic_netmask, 0);
@@ -401,8 +434,13 @@ static int __init ic_setup_if(void)
 		pr_err("IP-Config: Unable to set interface netmask (%d)\n",
 		       err);
 =======
+<<<<<<< HEAD
+		pr_err("IP-Config: Unable to set interface netmask (%d)\n",
+		       err);
+=======
 		printk(KERN_ERR "IP-Config: Unable to set interface netmask (%d).\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	set_sockaddr(sin, ic_myaddr | ~ic_netmask, 0);
@@ -411,8 +449,13 @@ static int __init ic_setup_if(void)
 		pr_err("IP-Config: Unable to set interface broadcast address (%d)\n",
 		       err);
 =======
+<<<<<<< HEAD
+		pr_err("IP-Config: Unable to set interface broadcast address (%d)\n",
+		       err);
+=======
 		printk(KERN_ERR "IP-Config: Unable to set interface broadcast address (%d).\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	/* Handle the case where we need non-standard MTU on the boot link (a network
@@ -427,9 +470,14 @@ static int __init ic_setup_if(void)
 			pr_err("IP-Config: Unable to set interface mtu to %d (%d)\n",
 			       ic_dev_mtu, err);
 =======
+<<<<<<< HEAD
+			pr_err("IP-Config: Unable to set interface mtu to %d (%d)\n",
+			       ic_dev_mtu, err);
+=======
 			printk(KERN_ERR "IP-Config: Unable to set interface mtu to %d (%d).\n",
 			                 ic_dev_mtu, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -447,8 +495,12 @@ static int __init ic_setup_routes(void)
 <<<<<<< HEAD
 			pr_err("IP-Config: Gateway not on directly connected network\n");
 =======
+<<<<<<< HEAD
+			pr_err("IP-Config: Gateway not on directly connected network\n");
+=======
 			printk(KERN_ERR "IP-Config: Gateway not on directly connected network.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 		}
 		set_sockaddr((struct sockaddr_in *) &rm.rt_dst, 0, 0);
@@ -460,8 +512,13 @@ static int __init ic_setup_routes(void)
 			pr_err("IP-Config: Cannot add default route (%d)\n",
 			       err);
 =======
+<<<<<<< HEAD
+			pr_err("IP-Config: Cannot add default route (%d)\n",
+			       err);
+=======
 			printk(KERN_ERR "IP-Config: Cannot add default route (%d).\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 		}
 	}
@@ -498,9 +555,14 @@ static int __init ic_defaults(void)
 			pr_err("IP-Config: Unable to guess netmask for address %pI4\n",
 			       &ic_myaddr);
 =======
+<<<<<<< HEAD
+			pr_err("IP-Config: Unable to guess netmask for address %pI4\n",
+			       &ic_myaddr);
+=======
 			printk(KERN_ERR "IP-Config: Unable to guess netmask for address %pI4\n",
 				&ic_myaddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 		}
 		printk("IP-Config: Guessing netmask %pI4\n", &ic_netmask);
@@ -754,9 +816,14 @@ ic_dhcp_init_options(u8 *options)
 			pr_info("DHCP: sending class identifier \"%s\"\n",
 				vendor_class_identifier);
 =======
+<<<<<<< HEAD
+			pr_info("DHCP: sending class identifier \"%s\"\n",
+				vendor_class_identifier);
+=======
 			printk(KERN_INFO "DHCP: sending class identifier \"%s\"\n",
 			       vendor_class_identifier);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*e++ = 60;	/* Class-identifier */
 			len = strlen(vendor_class_identifier);
 			*e++ = len;
@@ -835,6 +902,9 @@ static void __init ic_bootp_send_if(struct ic_device *d, unsigned long jiffies_d
 	struct bootp_pkt *b;
 	struct iphdr *h;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int hlen = LL_RESERVED_SPACE(dev);
 	int tlen = dev->needed_tailroom;
 
@@ -844,6 +914,8 @@ static void __init ic_bootp_send_if(struct ic_device *d, unsigned long jiffies_d
 	if (!skb)
 		return;
 	skb_reserve(skb, hlen);
+<<<<<<< HEAD
+=======
 =======
 
 	/* Allocate packet */
@@ -853,6 +925,7 @@ static void __init ic_bootp_send_if(struct ic_device *d, unsigned long jiffies_d
 		return;
 	skb_reserve(skb, LL_RESERVED_SPACE(dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b = (struct bootp_pkt *) skb_put(skb, sizeof(struct bootp_pkt));
 	memset(b, 0, sizeof(struct bootp_pkt));
 
@@ -906,6 +979,9 @@ static void __init ic_bootp_send_if(struct ic_device *d, unsigned long jiffies_d
 	skb->protocol = htons(ETH_P_IP);
 	if (dev_hard_header(skb, dev, ntohs(skb->protocol),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    dev->broadcast, dev->dev_addr, skb->len) < 0) {
 		kfree_skb(skb);
 		printk("E");
@@ -913,10 +989,13 @@ static void __init ic_bootp_send_if(struct ic_device *d, unsigned long jiffies_d
 	}
 
 	if (dev_queue_xmit(skb) < 0)
+<<<<<<< HEAD
+=======
 =======
 			    dev->broadcast, dev->dev_addr, skb->len) < 0 ||
 	    dev_queue_xmit(skb) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk("E");
 }
 
@@ -946,10 +1025,16 @@ static void __init ic_do_bootp_ext(u8 *ext)
 	int i;
 	__be16 mtu;
 =======
+<<<<<<< HEAD
+	u8 servers;
+	int i;
+	__be16 mtu;
+=======
        u8 servers;
        int i;
 	u16 mtu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef IPCONFIG_DEBUG
 	u8 *c;
@@ -962,6 +1047,9 @@ static void __init ic_do_bootp_ext(u8 *ext)
 
 	switch (*ext++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 1:		/* Subnet mask */
 		if (ic_netmask == NONE)
 			memcpy(&ic_netmask, ext+1, 4);
@@ -1000,6 +1088,8 @@ static void __init ic_do_bootp_ext(u8 *ext)
 		ic_bootp_string(utsname()->domainname, ext+1, *ext,
 				__NEW_UTS_LEN);
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case 1:		/* Subnet mask */
 			if (ic_netmask == NONE)
@@ -1037,6 +1127,7 @@ static void __init ic_do_bootp_ext(u8 *ext)
 			ic_bootp_string(utsname()->domainname, ext+1, *ext, __NEW_UTS_LEN);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1078,11 +1169,17 @@ static int __init ic_bootp_recv(struct sk_buff *skb, struct net_device *dev, str
 		if (net_ratelimit())
 			pr_err("DHCP/BOOTP: Ignoring fragmented reply\n");
 =======
+<<<<<<< HEAD
+	if (ip_is_fragment(h)) {
+		if (net_ratelimit())
+			pr_err("DHCP/BOOTP: Ignoring fragmented reply\n");
+=======
 	if (h->frag_off & htons(IP_OFFSET | IP_MF)) {
 		if (net_ratelimit())
 			printk(KERN_ERR "DHCP/BOOTP: Ignoring fragmented "
 			       "reply.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto drop;
 	}
 
@@ -1134,9 +1231,13 @@ static int __init ic_bootp_recv(struct sk_buff *skb, struct net_device *dev, str
 <<<<<<< HEAD
 			pr_err("DHCP/BOOTP: Reply not for us, op[%x] xid[%x]\n",
 =======
+<<<<<<< HEAD
+			pr_err("DHCP/BOOTP: Reply not for us, op[%x] xid[%x]\n",
+=======
 			printk(KERN_ERR "DHCP/BOOTP: Reply not for us, "
 			       "op[%x] xid[%x]\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       b->op, b->xid);
 		goto drop_unlock;
 	}
@@ -1147,8 +1248,12 @@ static int __init ic_bootp_recv(struct sk_buff *skb, struct net_device *dev, str
 <<<<<<< HEAD
 			pr_err("DHCP/BOOTP: Ignoring delayed packet\n");
 =======
+<<<<<<< HEAD
+			pr_err("DHCP/BOOTP: Ignoring delayed packet\n");
+=======
 			printk(KERN_ERR "DHCP/BOOTP: Ignoring delayed packet\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto drop_unlock;
 	}
 
@@ -1289,19 +1394,28 @@ static int __init ic_dynamic(void)
 <<<<<<< HEAD
 		pr_err("IP-Config: Incomplete network configuration information\n");
 =======
+<<<<<<< HEAD
+		pr_err("IP-Config: Incomplete network configuration information\n");
+=======
 		printk(KERN_ERR "IP-Config: Incomplete network configuration information.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 
 #ifdef IPCONFIG_BOOTP
 	if ((ic_proto_enabled ^ ic_proto_have_if) & IC_BOOTP)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("DHCP/BOOTP: No suitable device found\n");
 #endif
 #ifdef IPCONFIG_RARP
 	if ((ic_proto_enabled ^ ic_proto_have_if) & IC_RARP)
 		pr_err("RARP: No suitable device found\n");
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_ERR "DHCP/BOOTP: No suitable device found.\n");
 #endif
@@ -1309,6 +1423,7 @@ static int __init ic_dynamic(void)
 	if ((ic_proto_enabled ^ ic_proto_have_if) & IC_RARP)
 		printk(KERN_ERR "RARP: No suitable device found.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	if (!ic_proto_have_if)
@@ -1336,11 +1451,16 @@ static int __init ic_dynamic(void)
 	 *  applies.. - AC]
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_notice("Sending %s%s%s requests .",
 		  do_bootp
 		  ? ((ic_proto_enabled & IC_USE_DHCP) ? "DHCP" : "BOOTP") : "",
 		  (do_bootp && do_rarp) ? " and " : "",
 		  do_rarp ? "RARP" : "");
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_NOTICE "Sending %s%s%s requests .",
 	       do_bootp
@@ -1348,6 +1468,7 @@ static int __init ic_dynamic(void)
 	       (do_bootp && do_rarp) ? " and " : "",
 	       do_rarp ? "RARP" : "");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	start_jiffies = jiffies;
 	d = ic_first_dev;
@@ -1379,8 +1500,12 @@ static int __init ic_dynamic(void)
 <<<<<<< HEAD
 			pr_cont(",");
 =======
+<<<<<<< HEAD
+			pr_cont(",");
+=======
 			printk(KERN_CONT ",");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		}
 #endif /* IPCONFIG_DHCP */
@@ -1389,8 +1514,12 @@ static int __init ic_dynamic(void)
 <<<<<<< HEAD
 			pr_cont(" OK\n");
 =======
+<<<<<<< HEAD
+			pr_cont(" OK\n");
+=======
 			printk(KERN_CONT " OK\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 
@@ -1401,8 +1530,12 @@ static int __init ic_dynamic(void)
 <<<<<<< HEAD
 			pr_cont(" timed out!\n");
 =======
+<<<<<<< HEAD
+			pr_cont(" timed out!\n");
+=======
 			printk(KERN_CONT " timed out!\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 
@@ -1415,8 +1548,12 @@ static int __init ic_dynamic(void)
 <<<<<<< HEAD
 		pr_cont(".");
 =======
+<<<<<<< HEAD
+		pr_cont(".");
+=======
 		printk(KERN_CONT ".");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 #ifdef IPCONFIG_BOOTP
@@ -1440,9 +1577,14 @@ static int __init ic_dynamic(void)
 	       &ic_servaddr);
 	pr_cont("my address is %pI4\n", &ic_myaddr);
 =======
+<<<<<<< HEAD
+	       &ic_servaddr);
+	pr_cont("my address is %pI4\n", &ic_myaddr);
+=======
 		&ic_servaddr);
 	printk(KERN_CONT "my address is %pI4\n", &ic_myaddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1621,9 +1763,13 @@ static int __init ip_auto_config(void)
 <<<<<<< HEAD
 				pr_err("IP-Config: Retrying forever (NFS root)...\n");
 =======
+<<<<<<< HEAD
+				pr_err("IP-Config: Retrying forever (NFS root)...\n");
+=======
 				printk(KERN_ERR
 					"IP-Config: Retrying forever (NFS root)...\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto try_try_again;
 			}
 #endif
@@ -1632,19 +1778,28 @@ static int __init ip_auto_config(void)
 <<<<<<< HEAD
 				pr_err("IP-Config: Reopening network devices...\n");
 =======
+<<<<<<< HEAD
+				pr_err("IP-Config: Reopening network devices...\n");
+=======
 				printk(KERN_ERR
 				       "IP-Config: Reopening network devices...\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto try_try_again;
 			}
 
 			/* Oh, well.  At least we tried. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_err("IP-Config: Auto-configuration of network failed\n");
 			return -1;
 		}
 #else /* !DYNAMIC */
 		pr_err("IP-Config: Incomplete network configuration information\n");
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_ERR "IP-Config: Auto-configuration of network failed.\n");
 			return -1;
@@ -1652,6 +1807,7 @@ static int __init ip_auto_config(void)
 #else /* !DYNAMIC */
 		printk(KERN_ERR "IP-Config: Incomplete network configuration information.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ic_close_devs();
 		return -1;
 #endif /* IPCONFIG_DYNAMIC */
@@ -1690,6 +1846,9 @@ static int __init ip_auto_config(void)
 	 * Clue in the operator.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info("IP-Config: Complete:\n");
 	pr_info("     device=%s, addr=%pI4, mask=%pI4, gw=%pI4\n",
 		ic_dev->name, &ic_myaddr, &ic_netmask, &ic_gateway);
@@ -1700,6 +1859,8 @@ static int __init ip_auto_config(void)
 	if (ic_dev_mtu)
 		pr_cont(", mtu=%d", ic_dev_mtu);
 	pr_cont("\n");
+<<<<<<< HEAD
+=======
 =======
 	printk("IP-Config: Complete:\n");
 	printk("     device=%s", ic_dev->name);
@@ -1715,6 +1876,7 @@ static int __init ip_auto_config(void)
 		printk(KERN_CONT ", mtu=%d", ic_dev_mtu);
 	printk(KERN_CONT "\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !SILENT */
 
 	return 0;
@@ -1851,9 +2013,14 @@ static int __init vendor_class_identifier_setup(char *addrs)
 		pr_warn("DHCP: vendorclass too long, truncated to \"%s\"",
 			vendor_class_identifier);
 =======
+<<<<<<< HEAD
+		pr_warn("DHCP: vendorclass too long, truncated to \"%s\"",
+			vendor_class_identifier);
+=======
 		printk(KERN_WARNING "DHCP: vendorclass too long, truncated to \"%s\"",
 		       vendor_class_identifier);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 

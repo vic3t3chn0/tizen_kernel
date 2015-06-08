@@ -29,7 +29,12 @@
 #include <linux/bcma/bcma.h>
 #include <bcm47xx.h>
 =======
+<<<<<<< HEAD
+#include <linux/bcma/bcma.h>
+#include <bcm47xx.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __init pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 {
@@ -40,8 +45,13 @@ int __init pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 #ifdef CONFIG_BCM47XX_SSB
 static int bcm47xx_pcibios_plat_dev_init_ssb(struct pci_dev *dev)
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_BCM47XX_SSB
+static int bcm47xx_pcibios_plat_dev_init_ssb(struct pci_dev *dev)
+=======
 int pcibios_plat_dev_init(struct pci_dev *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int res;
 	u8 slot, pin;
@@ -68,6 +78,9 @@ int pcibios_plat_dev_init(struct pci_dev *dev)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_BCM47XX_BCMA
@@ -110,5 +123,8 @@ int pcibios_plat_dev_init(struct pci_dev *dev)
 #endif
 		return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

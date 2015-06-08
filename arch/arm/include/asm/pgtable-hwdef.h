@@ -11,11 +11,16 @@
 #define _ASMARM_PGTABLE_HWDEF_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_LPAE
 #include <asm/pgtable-3level-hwdef.h>
 #else
 #include <asm/pgtable-2level-hwdef.h>
 #endif
+<<<<<<< HEAD
+=======
 =======
 /*
  * Hardware page table definitions.
@@ -94,5 +99,6 @@
 #define PTE_SMALL_AP_URO_SRW	(0xaa << 4)
 #define PTE_SMALL_AP_URW_SRW	(0xff << 4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

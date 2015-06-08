@@ -20,8 +20,12 @@ struct dst_ops {
 <<<<<<< HEAD
 	unsigned int		(*mtu)(const struct dst_entry *);
 =======
+<<<<<<< HEAD
+	unsigned int		(*mtu)(const struct dst_entry *);
+=======
 	unsigned int		(*default_mtu)(const struct dst_entry *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 *			(*cow_metrics)(struct dst_entry *, unsigned long);
 	void			(*destroy)(struct dst_entry *);
 	void			(*ifdown)(struct dst_entry *,
@@ -33,7 +37,11 @@ struct dst_ops {
 <<<<<<< HEAD
 	struct neighbour *	(*neigh_lookup)(const struct dst_entry *dst, const void *daddr);
 =======
+<<<<<<< HEAD
+	struct neighbour *	(*neigh_lookup)(const struct dst_entry *dst, const void *daddr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct kmem_cache	*kmem_cachep;
 

@@ -44,8 +44,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/net_namespace.h>
 #include <net/neighbour.h>
 #include <net/dst.h>
@@ -441,6 +444,9 @@ int dn_dev_ioctl(unsigned int cmd, void __user *arg)
 	dev_load(&init_net, ifr->ifr_name);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (cmd) {
 	case SIOCGIFADDR:
 		break;
@@ -452,6 +458,8 @@ int dn_dev_ioctl(unsigned int cmd, void __user *arg)
 		break;
 	default:
 		return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	switch(cmd) {
 		case SIOCGIFADDR:
@@ -465,6 +473,7 @@ int dn_dev_ioctl(unsigned int cmd, void __user *arg)
 		default:
 			return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rtnl_lock();
@@ -488,6 +497,9 @@ int dn_dev_ioctl(unsigned int cmd, void __user *arg)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (cmd) {
 	case SIOCGIFADDR:
 		*((__le16 *)sdn->sdn_nodeaddr) = ifa->ifa_local;
@@ -509,6 +521,8 @@ int dn_dev_ioctl(unsigned int cmd, void __user *arg)
 		ifa->ifa_local = ifa->ifa_address = dn_saddr2dn(sdn);
 
 		ret = dn_dev_set_ifa(dev, ifa);
+<<<<<<< HEAD
+=======
 =======
 	switch(cmd) {
 		case SIOCGIFADDR:
@@ -532,6 +546,7 @@ int dn_dev_ioctl(unsigned int cmd, void __user *arg)
 
 			ret = dn_dev_set_ifa(dev, ifa);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 done:
 	rtnl_unlock();
@@ -1145,8 +1160,12 @@ static struct dn_dev *dn_dev_create(struct net_device *dev, int *err)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(dev->dn_ptr, NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(dev->dn_ptr, NULL);
+=======
 		rcu_assign_pointer(dev->dn_ptr, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(dn_db);
 		return NULL;
 	}
@@ -1361,8 +1380,12 @@ static void *dn_dev_seq_next(struct seq_file *seq, void *v, loff_t *pos)
 <<<<<<< HEAD
 	dev = v;
 =======
+<<<<<<< HEAD
+	dev = v;
+=======
 	dev = (struct net_device *)v;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (v == SEQ_START_TOKEN)
 		dev = net_device_entry(&init_net.dev_base_head);
 
@@ -1385,6 +1408,9 @@ static void dn_dev_seq_stop(struct seq_file *seq, void *v)
 static char *dn_type2asc(char type)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (type) {
 	case DN_DEV_BCAST:
 		return "B";
@@ -1392,6 +1418,8 @@ static char *dn_type2asc(char type)
 		return "U";
 	case DN_DEV_MPOINT:
 		return "M";
+<<<<<<< HEAD
+=======
 =======
 	switch(type) {
 		case DN_DEV_BCAST:
@@ -1401,6 +1429,7 @@ static char *dn_type2asc(char type)
 		case DN_DEV_MPOINT:
 			return "M";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return "?";

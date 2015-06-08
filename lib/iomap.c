@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Read/write from/to an (offsettable) iomem cookie. It might be a PIO
@@ -231,7 +235,11 @@ EXPORT_SYMBOL(iowrite32_rep);
 <<<<<<< HEAD
 #ifdef CONFIG_HAS_IOPORT
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_HAS_IOPORT
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Create a virtual mapping cookie for an IO port range */
 void __iomem *ioport_map(unsigned long port, unsigned int nr)
 {
@@ -247,11 +255,16 @@ void ioport_unmap(void __iomem *addr)
 EXPORT_SYMBOL(ioport_map);
 EXPORT_SYMBOL(ioport_unmap);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_HAS_IOPORT */
 
 #ifdef CONFIG_PCI
 /* Hide the details if this is a MMIO or PIO address space and just do what
  * you expect in the correct way. */
+<<<<<<< HEAD
+=======
 =======
 
 /**
@@ -290,6 +303,7 @@ void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long maxlen)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pci_iounmap(struct pci_dev *dev, void __iomem * addr)
 {
 	IO_COND(addr, /* nothing */, iounmap(addr));
@@ -298,6 +312,11 @@ void pci_iounmap(struct pci_dev *dev, void __iomem * addr)
 EXPORT_SYMBOL(pci_iounmap);
 #endif /* CONFIG_PCI */
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(pci_iounmap);
+#endif /* CONFIG_PCI */
+=======
 EXPORT_SYMBOL(pci_iomap);
 EXPORT_SYMBOL(pci_iounmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -4,7 +4,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -17,6 +21,9 @@
  *
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASM_ARCH_MEMORY_H
 #define __ASM_ARCH_MEMORY_H
 #include <linux/types.h>
@@ -167,6 +174,8 @@ extern char *__compat_exports_end[];
 #define CONSISTENT_DMA_SIZE	(SZ_1M * 14)
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 #ifndef __ASM_ARCH_MEMORY_H
@@ -190,3 +199,4 @@ extern char *__compat_exports_end[];
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

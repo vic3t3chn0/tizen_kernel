@@ -478,6 +478,11 @@ extern int dev_get_bridge_context(struct dev_object *hdev_obj,
 				      **phbridge_context);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dev_exit ========
  *  Purpose:
  *      Decrement reference count, and free resources when reference count is
@@ -505,6 +510,10 @@ extern void dev_exit(void);
 extern bool dev_init(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dev_insert_proc_object ========
  *  Purpose:
  *      Inserts the Processor Object into the List of PROC Objects

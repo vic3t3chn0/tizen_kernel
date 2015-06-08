@@ -23,6 +23,9 @@
 #include <asm/io.h>
 #include <linux/delay.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/slab.h>
@@ -32,6 +35,8 @@
 #include <media/v4l2-fh.h>
 #include <media/v4l2-ioctl.h>
 #include <media/v4l2-event.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/interrupt.h>
 #include <linux/init.h>
@@ -39,12 +44,17 @@
 #include <linux/version.h>
 #include <sound/core.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/tea575x-tuner.h>
 
 MODULE_AUTHOR("Jaroslav Kysela <perex@perex.cz>");
 MODULE_DESCRIPTION("Routines for control of TEA5757/5759 Philips AM/FM radio tuner chips");
 MODULE_LICENSE("GPL");
 
+<<<<<<< HEAD
+#define FREQ_LO		 (76U * 16000)
+#define FREQ_HI		(108U * 16000)
+=======
 <<<<<<< HEAD
 #define FREQ_LO		 (76U * 16000)
 #define FREQ_HI		(108U * 16000)
@@ -56,6 +66,7 @@ module_param(radio_nr, int, 0);
 #define FREQ_LO		 (50UL * 16000)
 #define FREQ_HI		(150UL * 16000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * definitions
@@ -81,6 +92,8 @@ module_param(radio_nr, int, 0);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct v4l2_queryctrl radio_qctrl[] = {
 	{
 		.id            = V4L2_CID_AUDIO_MUTE,
@@ -93,6 +106,7 @@ static struct v4l2_queryctrl radio_qctrl[] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * lowlevel part
  */
@@ -123,8 +137,12 @@ static void snd_tea575x_write(struct snd_tea575x *tea, unsigned int val)
 <<<<<<< HEAD
 static u32 snd_tea575x_read(struct snd_tea575x *tea)
 =======
+<<<<<<< HEAD
+static u32 snd_tea575x_read(struct snd_tea575x *tea)
+=======
 static unsigned int snd_tea575x_read(struct snd_tea575x *tea)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u16 l, rdata;
 	u32 data = 0;
@@ -156,6 +174,9 @@ static unsigned int snd_tea575x_read(struct snd_tea575x *tea)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 snd_tea575x_get_freq(struct snd_tea575x *tea)
 {
 	u32 freq = snd_tea575x_read(tea) & TEA575X_BIT_FREQ_MASK;
@@ -163,6 +184,8 @@ static u32 snd_tea575x_get_freq(struct snd_tea575x *tea)
 	if (freq == 0)
 		return freq;
 
+<<<<<<< HEAD
+=======
 =======
 static void snd_tea575x_get_freq(struct snd_tea575x *tea)
 {
@@ -170,6 +193,7 @@ static void snd_tea575x_get_freq(struct snd_tea575x *tea)
 
 	freq = snd_tea575x_read(tea) & TEA575X_BIT_FREQ_MASK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* freq *= 12.5 */
 	freq *= 125;
 	freq /= 10;
@@ -182,8 +206,12 @@ static void snd_tea575x_get_freq(struct snd_tea575x *tea)
 <<<<<<< HEAD
 	return clamp(freq * 16, FREQ_LO, FREQ_HI); /* from kHz */
 =======
+<<<<<<< HEAD
+	return clamp(freq * 16, FREQ_LO, FREQ_HI); /* from kHz */
+=======
 	tea->freq = freq * 16;		/* from kHz */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void snd_tea575x_set_freq(struct snd_tea575x *tea)
@@ -192,10 +220,15 @@ static void snd_tea575x_set_freq(struct snd_tea575x *tea)
 	u32 freq = tea->freq;
 
 =======
+<<<<<<< HEAD
+	u32 freq = tea->freq;
+
+=======
 	unsigned long freq;
 
 	freq = clamp(tea->freq, FREQ_LO, FREQ_HI);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	freq /= 16;		/* to kHz */
 	/* crystal fixup */
 	if (tea->tea5759)
@@ -221,6 +254,9 @@ static int vidioc_querycap(struct file *file, void  *priv,
 	struct snd_tea575x *tea = video_drvdata(file);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	strlcpy(v->driver, tea->v4l2_dev->name, sizeof(v->driver));
 	strlcpy(v->card, tea->card, sizeof(v->card));
 	strlcat(v->card, tea->tea5759 ? " TEA5759" : " TEA5757", sizeof(v->card));
@@ -229,6 +265,8 @@ static int vidioc_querycap(struct file *file, void  *priv,
 	if (!tea->cannot_read_data)
 		v->device_caps |= V4L2_CAP_HW_FREQ_SEEK;
 	v->capabilities = v->device_caps | V4L2_CAP_DEVICE_CAPS;
+<<<<<<< HEAD
+=======
 =======
 	strlcpy(v->driver, "tea575x-tuner", sizeof(v->driver));
 	strlcpy(v->card, tea->card, sizeof(v->card));
@@ -237,6 +275,7 @@ static int vidioc_querycap(struct file *file, void  *priv,
 	v->version = RADIO_VERSION;
 	v->capabilities = V4L2_CAP_TUNER | V4L2_CAP_RADIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -256,16 +295,22 @@ static int vidioc_g_tuner(struct file *file, void *priv,
 	v->rangelow = FREQ_LO;
 	v->rangehigh = FREQ_HI;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	v->rxsubchans = tea->stereo ? V4L2_TUNER_SUB_STEREO : V4L2_TUNER_SUB_MONO;
 	v->audmode = (tea->val & TEA575X_BIT_MONO) ?
 		V4L2_TUNER_MODE_MONO : V4L2_TUNER_MODE_STEREO;
 	v->signal = tea->tuned ? 0xffff : 0;
+<<<<<<< HEAD
+=======
 =======
 	v->rxsubchans = V4L2_TUNER_SUB_MONO | V4L2_TUNER_SUB_STEREO;
 	v->audmode = tea->stereo ? V4L2_TUNER_MODE_STEREO : V4L2_TUNER_MODE_MONO;
 	v->signal = tea->tuned ? 0xffff : 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -273,6 +318,9 @@ static int vidioc_s_tuner(struct file *file, void *priv,
 					struct v4l2_tuner *v)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_tea575x *tea = video_drvdata(file);
 
 	if (v->index)
@@ -281,10 +329,13 @@ static int vidioc_s_tuner(struct file *file, void *priv,
 	if (v->audmode == V4L2_TUNER_MODE_MONO)
 		tea->val |= TEA575X_BIT_MONO;
 	snd_tea575x_write(tea, tea->val);
+<<<<<<< HEAD
+=======
 =======
 	if (v->index > 0)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -298,8 +349,11 @@ static int vidioc_g_frequency(struct file *file, void *priv,
 	f->type = V4L2_TUNER_RADIO;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_tea575x_get_freq(tea);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	f->frequency = tea->freq;
 	return 0;
 }
@@ -313,6 +367,9 @@ static int vidioc_s_frequency(struct file *file, void *priv,
 		return -EINVAL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tea->val &= ~TEA575X_BIT_SEARCH;
 	tea->freq = clamp(f->frequency, FREQ_LO, FREQ_HI);
 	snd_tea575x_set_freq(tea);
@@ -401,6 +458,8 @@ static const struct v4l2_file_operations tea575x_fops = {
 	.open           = v4l2_fh_open,
 	.release        = v4l2_fh_release,
 	.poll           = v4l2_ctrl_poll,
+<<<<<<< HEAD
+=======
 =======
 	if (f->frequency < FREQ_LO || f->frequency > FREQ_HI)
 		return -EINVAL;
@@ -509,6 +568,7 @@ static const struct v4l2_file_operations tea575x_fops = {
 	.release        = snd_tea575x_exclusive_release,
 	.ioctl		= video_ioctl2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct v4l2_ioctl_ops tea575x_ioctl_ops = {
@@ -516,6 +576,9 @@ static const struct v4l2_ioctl_ops tea575x_ioctl_ops = {
 	.vidioc_g_tuner     = vidioc_g_tuner,
 	.vidioc_s_tuner     = vidioc_s_tuner,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.vidioc_g_frequency = vidioc_g_frequency,
 	.vidioc_s_frequency = vidioc_s_frequency,
 	.vidioc_s_hw_freq_seek = vidioc_s_hw_freq_seek,
@@ -532,6 +595,8 @@ static const struct video_device tea575x_radio = {
 
 static const struct v4l2_ctrl_ops tea575x_ctrl_ops = {
 	.s_ctrl = tea575x_s_ctrl,
+<<<<<<< HEAD
+=======
 =======
 	.vidioc_g_audio     = vidioc_g_audio,
 	.vidioc_s_audio     = vidioc_s_audio,
@@ -550,6 +615,7 @@ static struct video_device tea575x_radio = {
 	.ioctl_ops 	= &tea575x_ioctl_ops,
 	.release	= video_device_release,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -559,6 +625,9 @@ int snd_tea575x_init(struct snd_tea575x *tea)
 {
 	int retval;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tea->mute = true;
 
@@ -609,6 +678,8 @@ int snd_tea575x_init(struct snd_tea575x *tea)
 		return retval;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	struct video_device *tea575x_radio_inst;
 
@@ -647,6 +718,7 @@ int snd_tea575x_init(struct snd_tea575x *tea)
 	tea->vd = tea575x_radio_inst;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -656,11 +728,16 @@ void snd_tea575x_exit(struct snd_tea575x *tea)
 	video_unregister_device(&tea->vd);
 	v4l2_ctrl_handler_free(&tea->ctrl_handler);
 =======
+<<<<<<< HEAD
+	video_unregister_device(&tea->vd);
+	v4l2_ctrl_handler_free(&tea->ctrl_handler);
+=======
 	if (tea->vd) {
 		video_unregister_device(tea->vd);
 		tea->vd = NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init alsa_tea575x_module_init(void)

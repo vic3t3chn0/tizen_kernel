@@ -15,12 +15,15 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define gpio_get_value	__gpio_get_value
 #define gpio_set_value	__gpio_set_value
 #define gpio_cansleep	__gpio_cansleep
 #define gpio_to_irq	__gpio_to_irq
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Practically, GPIO banks up to MP03 are the configurable gpio banks */
 
 /* GPIO bank sizes */
@@ -147,7 +150,10 @@ enum s5p_gpio_number {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/gpio.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_ARCH_GPIO_H */

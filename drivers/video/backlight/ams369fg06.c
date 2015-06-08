@@ -22,17 +22,33 @@
  */
 
 #include <linux/wait.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fb.h>
 #include <linux/delay.h>
 #include <linux/gpio.h>
 #include <linux/spi/spi.h>
 #include <linux/lcd.h>
 #include <linux/backlight.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAS_EARLYSUSPEND
 #include <linux/earlysuspend.h>
 #endif
 
 #include "ams369fg06_gamma.h"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SLEEPMSEC		0x1000
 #define ENDDEF			0x2000
@@ -40,12 +56,29 @@
 #define COMMAND_ONLY		0xFE
 #define DATA_ONLY		0xFF
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MAX_GAMMA_LEVEL		5
+#define GAMMA_TABLE_COUNT	21
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MIN_BRIGHTNESS		0
 #define MAX_BRIGHTNESS		255
 #define DEFAULT_BRIGHTNESS	150
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define POWER_IS_ON(pwr)	((pwr) <= FB_BLANK_NORMAL)
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define POWER_IS_ON(pwr)	((pwr) <= FB_BLANK_NORMAL)
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ams369fg06 {
 	struct device			*dev;
 	struct spi_device		*spi;
@@ -53,34 +86,78 @@ struct ams369fg06 {
 	struct lcd_device		*ld;
 	struct backlight_device		*bd;
 	struct lcd_platform_data	*lcd_pd;
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+
+static const unsigned short seq_display_on[] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAS_EARLYSUSPEND
 	struct early_suspend		early_suspend;
 #endif
 };
 
 const unsigned short SEQ_DISPLAY_ON[] = {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	0x14, 0x03,
 	ENDDEF, 0x0000
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const unsigned short seq_display_off[] = {
+=======
 const unsigned short SEQ_DISPLAY_OFF[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+const unsigned short SEQ_DISPLAY_OFF[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	0x14, 0x00,
 	ENDDEF, 0x0000
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const unsigned short seq_stand_by_on[] = {
+=======
 const unsigned short SEQ_STAND_BY_ON[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+const unsigned short SEQ_STAND_BY_ON[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	0x1D, 0xA1,
 	SLEEPMSEC, 200,
 	ENDDEF, 0x0000
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const unsigned short seq_stand_by_off[] = {
+=======
 const unsigned short SEQ_STAND_BY_OFF[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+const unsigned short SEQ_STAND_BY_OFF[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	0x1D, 0xA0,
 	SLEEPMSEC, 250,
 	ENDDEF, 0x0000
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const unsigned short seq_setting[] = {
+=======
 const unsigned short SEQ_SETTING[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+const unsigned short SEQ_SETTING[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	0x31, 0x08,
 	0x32, 0x14,
 	0x30, 0x02,
@@ -132,6 +209,55 @@ const unsigned short SEQ_SETTING[] = {
 	ENDDEF, 0x0000
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* gamma value: 2.2 */
+static const unsigned int ams369fg06_22_250[] = {
+	0x00, 0x3f, 0x2a, 0x27, 0x27, 0x1f, 0x44,
+	0x00, 0x00, 0x17, 0x24, 0x26, 0x1f, 0x43,
+	0x00, 0x3f, 0x2a, 0x25, 0x24, 0x1b, 0x5c,
+};
+
+static const unsigned int ams369fg06_22_200[] = {
+	0x00, 0x3f, 0x28, 0x29, 0x27, 0x21, 0x3e,
+	0x00, 0x00, 0x10, 0x25, 0x27, 0x20, 0x3d,
+	0x00, 0x3f, 0x28, 0x27, 0x25, 0x1d, 0x53,
+};
+
+static const unsigned int ams369fg06_22_150[] = {
+	0x00, 0x3f, 0x2d, 0x29, 0x28, 0x23, 0x37,
+	0x00, 0x00, 0x0b, 0x25, 0x28, 0x22, 0x36,
+	0x00, 0x3f, 0x2b, 0x28, 0x26, 0x1f, 0x4a,
+};
+
+static const unsigned int ams369fg06_22_100[] = {
+	0x00, 0x3f, 0x30, 0x2a, 0x2b, 0x24, 0x2f,
+	0x00, 0x00, 0x00, 0x25, 0x29, 0x24, 0x2e,
+	0x00, 0x3f, 0x2f, 0x29, 0x29, 0x21, 0x3f,
+};
+
+static const unsigned int ams369fg06_22_50[] = {
+	0x00, 0x3f, 0x3c, 0x2c, 0x2d, 0x27, 0x24,
+	0x00, 0x00, 0x00, 0x22, 0x2a, 0x27, 0x23,
+	0x00, 0x3f, 0x3b, 0x2c, 0x2b, 0x24, 0x31,
+};
+
+struct ams369fg06_gamma {
+	unsigned int *gamma_22_table[MAX_GAMMA_LEVEL];
+};
+
+static struct ams369fg06_gamma gamma_table = {
+	.gamma_22_table[0] = (unsigned int *)&ams369fg06_22_50,
+	.gamma_22_table[1] = (unsigned int *)&ams369fg06_22_100,
+	.gamma_22_table[2] = (unsigned int *)&ams369fg06_22_150,
+	.gamma_22_table[3] = (unsigned int *)&ams369fg06_22_200,
+	.gamma_22_table[4] = (unsigned int *)&ams369fg06_22_250,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ams369fg06_spi_write_byte(struct ams369fg06 *lcd, int addr, int data)
 {
 	u16 buf[1];
@@ -174,7 +300,15 @@ static int ams369fg06_panel_send_sequence(struct ams369fg06 *lcd,
 			if (ret)
 				break;
 		} else
+<<<<<<< HEAD
+<<<<<<< HEAD
+			mdelay(wbuf[i+1]);
+=======
 			udelay(wbuf[i+1]*1000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			udelay(wbuf[i+1]*1000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		i += 2;
 	}
 
@@ -225,9 +359,21 @@ static int ams369fg06_gamma_ctl(struct ams369fg06 *lcd, int brightness)
 static int ams369fg06_ldi_init(struct ams369fg06 *lcd)
 {
 	int ret, i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static const unsigned short *init_seq[] = {
+		seq_setting,
+		seq_stand_by_off,
+=======
 	const unsigned short *init_seq[] = {
 		SEQ_SETTING,
 		SEQ_STAND_BY_OFF,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	const unsigned short *init_seq[] = {
+		SEQ_SETTING,
+		SEQ_STAND_BY_OFF,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	for (i = 0; i < ARRAY_SIZE(init_seq); i++) {
@@ -242,9 +388,21 @@ static int ams369fg06_ldi_init(struct ams369fg06 *lcd)
 static int ams369fg06_ldi_enable(struct ams369fg06 *lcd)
 {
 	int ret, i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static const unsigned short *init_seq[] = {
+		seq_stand_by_off,
+		seq_display_on,
+=======
 	const unsigned short *init_seq[] = {
 		SEQ_STAND_BY_OFF,
 		SEQ_DISPLAY_ON,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	const unsigned short *init_seq[] = {
+		SEQ_STAND_BY_OFF,
+		SEQ_DISPLAY_ON,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	for (i = 0; i < ARRAY_SIZE(init_seq); i++) {
@@ -260,9 +418,21 @@ static int ams369fg06_ldi_disable(struct ams369fg06 *lcd)
 {
 	int ret, i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static const unsigned short *init_seq[] = {
+		seq_display_off,
+		seq_stand_by_on,
+=======
 	const unsigned short *init_seq[] = {
 		SEQ_DISPLAY_OFF,
 		SEQ_STAND_BY_ON,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	const unsigned short *init_seq[] = {
+		SEQ_DISPLAY_OFF,
+		SEQ_STAND_BY_ON,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	for (i = 0; i < ARRAY_SIZE(init_seq); i++) {
@@ -274,6 +444,17 @@ static int ams369fg06_ldi_disable(struct ams369fg06 *lcd)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int ams369fg06_power_is_on(int power)
+{
+	return ((power) <= FB_BLANK_NORMAL);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ams369fg06_power_on(struct ams369fg06 *lcd)
 {
 	int ret = 0;
@@ -362,9 +543,23 @@ static int ams369fg06_power(struct ams369fg06 *lcd, int power)
 {
 	int ret = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ams369fg06_power_is_on(power) &&
+		!ams369fg06_power_is_on(lcd->power))
+		ret = ams369fg06_power_on(lcd);
+	else if (!ams369fg06_power_is_on(power) &&
+		ams369fg06_power_is_on(lcd->power))
+=======
 	if (POWER_IS_ON(power) && !POWER_IS_ON(lcd->power))
 		ret = ams369fg06_power_on(lcd);
 	else if (!POWER_IS_ON(power) && POWER_IS_ON(lcd->power))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (POWER_IS_ON(power) && !POWER_IS_ON(lcd->power))
+		ret = ams369fg06_power_on(lcd);
+	else if (!POWER_IS_ON(power) && POWER_IS_ON(lcd->power))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = ams369fg06_power_off(lcd);
 
 	if (!ret)
@@ -430,6 +625,12 @@ static const struct backlight_ops ams369fg06_backlight_ops = {
 	.update_status = ams369fg06_set_brightness,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit ams369fg06_probe(struct spi_device *spi)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef	CONFIG_HAS_EARLYSUSPEND
 unsigned int before_power;
 
@@ -458,11 +659,22 @@ static void ams369fg06_late_resume(struct early_suspend *handler)
 #endif
 
 static int __init ams369fg06_probe(struct spi_device *spi)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret = 0;
 	struct ams369fg06 *lcd = NULL;
 	struct lcd_device *ld = NULL;
 	struct backlight_device *bd = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct backlight_properties props;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lcd = kzalloc(sizeof(struct ams369fg06), GFP_KERNEL);
 	if (!lcd)
@@ -480,7 +692,15 @@ static int __init ams369fg06_probe(struct spi_device *spi)
 	lcd->spi = spi;
 	lcd->dev = &spi->dev;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	lcd->lcd_pd = spi->dev.platform_data;
+=======
 	lcd->lcd_pd = (struct lcd_platform_data *)spi->dev.platform_data;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	lcd->lcd_pd = (struct lcd_platform_data *)spi->dev.platform_data;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!lcd->lcd_pd) {
 		dev_err(&spi->dev, "platform data is NULL\n");
 		goto out_free_lcd;
@@ -495,16 +715,40 @@ static int __init ams369fg06_probe(struct spi_device *spi)
 
 	lcd->ld = ld;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memset(&props, 0, sizeof(struct backlight_properties));
+	props.type = BACKLIGHT_RAW;
+	props.max_brightness = MAX_BRIGHTNESS;
+
+	bd = backlight_device_register("ams369fg06-bl", &spi->dev, lcd,
+		&ams369fg06_backlight_ops, &props);
+=======
 	bd = backlight_device_register("ams369fg06-bl", &spi->dev, lcd,
 		&ams369fg06_backlight_ops, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bd = backlight_device_register("ams369fg06-bl", &spi->dev, lcd,
+		&ams369fg06_backlight_ops, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(bd)) {
 		ret =  PTR_ERR(bd);
 		goto out_lcd_unregister;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bd->props.brightness = DEFAULT_BRIGHTNESS;
+=======
 	bd->props.max_brightness = MAX_BRIGHTNESS;
 	bd->props.brightness = DEFAULT_BRIGHTNESS;
 	bd->props.type = BACKLIGHT_RAW;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bd->props.max_brightness = MAX_BRIGHTNESS;
+	bd->props.brightness = DEFAULT_BRIGHTNESS;
+	bd->props.type = BACKLIGHT_RAW;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lcd->bd = bd;
 
 	if (!lcd->lcd_pd->lcd_enabled) {
@@ -521,12 +765,21 @@ static int __init ams369fg06_probe(struct spi_device *spi)
 
 	dev_set_drvdata(&spi->dev, lcd);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAS_EARLYSUSPEND
 	lcd->early_suspend.suspend = ams369fg06_early_suspend;
 	lcd->early_suspend.resume = ams369fg06_late_resume;
 	lcd->early_suspend.level = EARLY_SUSPEND_LEVEL_DISABLE_FB - 1;
 	register_early_suspend(&lcd->early_suspend);
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_info(&spi->dev, "ams369fg06 panel driver has been probed.\n");
 
 	return 0;
@@ -543,6 +796,13 @@ static int __devexit ams369fg06_remove(struct spi_device *spi)
 	struct ams369fg06 *lcd = dev_get_drvdata(&spi->dev);
 
 	ams369fg06_power(lcd, FB_BLANK_POWERDOWN);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	backlight_device_unregister(lcd->bd);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lcd_device_unregister(lcd->ld);
 	kfree(lcd);
 
@@ -550,8 +810,17 @@ static int __devexit ams369fg06_remove(struct spi_device *spi)
 }
 
 #if defined(CONFIG_PM)
+<<<<<<< HEAD
+<<<<<<< HEAD
+static unsigned int before_power;
+=======
 #ifndef CONFIG_HAS_EARLYSUSPEND
 unsigned int before_power;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifndef CONFIG_HAS_EARLYSUSPEND
+unsigned int before_power;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int ams369fg06_suspend(struct spi_device *spi, pm_message_t mesg)
 {
@@ -590,13 +859,28 @@ static int ams369fg06_resume(struct spi_device *spi)
 
 	return ret;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define ams369fg06_suspend	NULL
 #define ams369fg06_resume	NULL
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void ams369fg06_shutdown(struct spi_device *spi)
+=======
 void ams369fg06_shutdown(struct spi_device *spi)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ams369fg06_shutdown(struct spi_device *spi)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ams369fg06 *lcd = dev_get_drvdata(&spi->dev);
 
@@ -612,6 +896,16 @@ static struct spi_driver ams369fg06_driver = {
 	.probe		= ams369fg06_probe,
 	.remove		= __devexit_p(ams369fg06_remove),
 	.shutdown	= ams369fg06_shutdown,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.suspend	= ams369fg06_suspend,
+	.resume		= ams369fg06_resume,
+};
+
+module_spi_driver(ams369fg06_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_HAS_EARLYSUSPEND
 	.suspend	= ams369fg06_suspend,
 	.resume		= ams369fg06_resume,
@@ -630,6 +924,10 @@ static void __exit ams369fg06_exit(void)
 
 module_init(ams369fg06_init);
 module_exit(ams369fg06_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Jingoo Han <jg1.han@samsung.com>");
 MODULE_DESCRIPTION("ams369fg06 LCD Driver");

@@ -15,6 +15,9 @@
 #include <linux/err.h>
 #include <linux/opp.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/suspend.h>
 
@@ -25,6 +28,8 @@
 #include "common.h"
 
 #include "prcm-common.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include <plat/omap-pm.h>
@@ -32,11 +37,15 @@
 #include <plat/common.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "voltage.h"
 #include "powerdomain.h"
 #include "clockdomain.h"
 #include "pm.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "twl-common.h"
 
 static struct omap_device_pm_latency *pm_lats;
@@ -51,6 +60,8 @@ static int __init _init_omap_device(char *name)
 {
 	struct omap_hwmod *oh;
 	struct platform_device *pdev;
+<<<<<<< HEAD
+=======
 =======
 
 static struct omap_device_pm_latency *pm_lats;
@@ -91,6 +102,7 @@ static int _init_omap_device(char *name, struct device **new_dev)
 	struct omap_hwmod *oh;
 	struct omap_device *od;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	oh = omap_hwmod_lookup(name);
 	if (WARN(!oh, "%s: could not find omap_hwmod for %s\n",
@@ -98,11 +110,16 @@ static int _init_omap_device(char *name, struct device **new_dev)
 		return -ENODEV;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdev = omap_device_build(oh->name, 0, oh, NULL, 0, pm_lats, 0, false);
 	if (WARN(IS_ERR(pdev), "%s: could not build omap_device for %s\n",
 		 __func__, name))
 		return -ENODEV;
 
+<<<<<<< HEAD
+=======
 =======
 	od = omap_device_build(oh->name, 0, oh, NULL, 0, pm_lats, 0, false);
 	if (WARN(IS_ERR(od), "%s: could not build omap_device for %s\n",
@@ -112,6 +129,7 @@ static int _init_omap_device(char *name, struct device **new_dev)
 	*new_dev = &od->pdev.dev;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -119,6 +137,9 @@ static int _init_omap_device(char *name, struct device **new_dev)
  * Build omap_devices for processors and bus.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap2_init_processor_devices(void)
 {
 	_init_omap_device("mpu");
@@ -131,6 +152,8 @@ static void __init omap2_init_processor_devices(void)
 		_init_omap_device("iva");
 	} else {
 		_init_omap_device("l3_main");
+<<<<<<< HEAD
+=======
 =======
 static void omap2_init_processor_devices(void)
 {
@@ -145,6 +168,7 @@ static void omap2_init_processor_devices(void)
 	} else {
 		_init_omap_device("l3_main", &l3_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -153,6 +177,9 @@ static void omap2_init_processor_devices(void)
 #define LOWPOWERSTATE_SWITCH	1
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init omap_pm_clkdms_setup(struct clockdomain *clkdm, void *unused)
 {
 	if (clkdm->flags & CLKDM_CAN_ENABLE_AUTO)
@@ -163,13 +190,19 @@ int __init omap_pm_clkdms_setup(struct clockdomain *clkdm, void *unused)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This sets pwrdm state (other than mpu & core. Currently only ON &
  * RET are supported.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 pwrst)
 {
 	u8 curr_pwrst, next_pwrst;
@@ -196,6 +229,8 @@ int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 pwrst)
 		} else {
 			hwsup = clkdm_in_hwsup(pwrdm->pwrdm_clkdms[0]);
 			clkdm_wakeup(pwrdm->pwrdm_clkdms[0]);
+<<<<<<< HEAD
+=======
 =======
 int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 state)
 {
@@ -224,11 +259,15 @@ int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 state)
 			clkdm_wakeup(pwrdm->pwrdm_clkdms[0]);
 			pwrdm_wait_transition(pwrdm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sleep_switch = FORCEWAKEUP_SWITCH;
 		}
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = pwrdm_set_next_pwrst(pwrdm, pwrst);
 	if (ret)
 		pr_err("%s: unable to set power state of powerdomain: %s\n",
@@ -237,6 +276,8 @@ int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 state)
 	switch (sleep_switch) {
 	case FORCEWAKEUP_SWITCH:
 		if (hwsup)
+<<<<<<< HEAD
+=======
 =======
 	ret = pwrdm_set_next_pwrst(pwrdm, state);
 	if (ret) {
@@ -249,6 +290,7 @@ int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 state)
 	case FORCEWAKEUP_SWITCH:
 		if (pwrdm->pwrdm_clkdms[0]->flags & CLKDM_CAN_ENABLE_AUTO)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			clkdm_allow_idle(pwrdm->pwrdm_clkdms[0]);
 		else
 			clkdm_sleep(pwrdm->pwrdm_clkdms[0]);
@@ -256,6 +298,9 @@ int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 state)
 	case LOWPOWERSTATE_SWITCH:
 		pwrdm_set_lowpwrstchange(pwrdm);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pwrdm_wait_transition(pwrdm);
 		pwrdm_state_switch(pwrdm);
 		break;
@@ -276,6 +321,8 @@ int omap_set_pwrdm_state(struct powerdomain *pwrdm, u32 state)
  */
 static int __init omap2_set_init_voltage(char *vdd_name, char *clk_name,
 					 const char *oh_name)
+<<<<<<< HEAD
+=======
 =======
 		break;
 	default:
@@ -299,12 +346,16 @@ err:
 static int __init omap2_set_init_voltage(char *vdd_name, char *clk_name,
 						struct device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct voltagedomain *voltdm;
 	struct clk *clk;
 	struct opp *opp;
 	unsigned long freq, bootup_volt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev;
 
 	if (!vdd_name || !clk_name || !oh_name) {
@@ -322,6 +373,8 @@ static int __init omap2_set_init_voltage(char *vdd_name, char *clk_name,
 	voltdm = voltdm_lookup(vdd_name);
 	if (IS_ERR(voltdm)) {
 		pr_err("%s: unable to get vdd pointer for vdd_%s\n",
+<<<<<<< HEAD
+=======
 =======
 
 	if (!vdd_name || !clk_name || !dev) {
@@ -333,6 +386,7 @@ static int __init omap2_set_init_voltage(char *vdd_name, char *clk_name,
 	if (IS_ERR(voltdm)) {
 		printk(KERN_ERR "%s: Unable to get vdd pointer for vdd_%s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, vdd_name);
 		goto exit;
 	}
@@ -342,9 +396,13 @@ static int __init omap2_set_init_voltage(char *vdd_name, char *clk_name,
 <<<<<<< HEAD
 		pr_err("%s: unable to get clk %s\n", __func__, clk_name);
 =======
+<<<<<<< HEAD
+		pr_err("%s: unable to get clk %s\n", __func__, clk_name);
+=======
 		printk(KERN_ERR "%s: unable to get clk %s\n",
 			__func__, clk_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit;
 	}
 
@@ -352,16 +410,22 @@ static int __init omap2_set_init_voltage(char *vdd_name, char *clk_name,
 	clk_put(clk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 	opp = opp_find_freq_ceil(dev, &freq);
 	if (IS_ERR(opp)) {
 		rcu_read_unlock();
 		pr_err("%s: unable to find boot up OPP for vdd_%s\n",
+<<<<<<< HEAD
+=======
 =======
 	opp = opp_find_freq_ceil(dev, &freq);
 	if (IS_ERR(opp)) {
 		printk(KERN_ERR "%s: unable to find boot up OPP for vdd_%s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, vdd_name);
 		goto exit;
 	}
@@ -372,14 +436,23 @@ static int __init omap2_set_init_voltage(char *vdd_name, char *clk_name,
 	if (!bootup_volt) {
 		pr_err("%s: unable to find voltage corresponding "
 =======
+<<<<<<< HEAD
+	rcu_read_unlock();
+	if (!bootup_volt) {
+		pr_err("%s: unable to find voltage corresponding "
+=======
 	if (!bootup_volt) {
 		printk(KERN_ERR "%s: unable to find voltage corresponding"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"to the bootup OPP for vdd_%s\n", __func__, vdd_name);
 		goto exit;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	voltdm_scale(voltdm, bootup_volt);
 	return 0;
 
@@ -438,6 +511,8 @@ static const struct platform_suspend_ops omap_pm_ops = {
 
 #endif /* CONFIG_SUSPEND */
 
+<<<<<<< HEAD
+=======
 =======
 	omap_voltage_scale_vdd(voltdm, bootup_volt);
 	return 0;
@@ -449,6 +524,7 @@ exit:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap3_init_voltages(void)
 {
 	if (!cpu_is_omap34xx())
@@ -458,9 +534,14 @@ static void __init omap3_init_voltages(void)
 	omap2_set_init_voltage("mpu_iva", "dpll1_ck", "mpu");
 	omap2_set_init_voltage("core", "l3_ick", "l3_main");
 =======
+<<<<<<< HEAD
+	omap2_set_init_voltage("mpu_iva", "dpll1_ck", "mpu");
+	omap2_set_init_voltage("core", "l3_ick", "l3_main");
+=======
 	omap2_set_init_voltage("mpu", "dpll1_ck", mpu_dev);
 	omap2_set_init_voltage("core", "l3_ick", l3_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init omap4_init_voltages(void)
@@ -473,10 +554,16 @@ static void __init omap4_init_voltages(void)
 	omap2_set_init_voltage("core", "l3_div_ck", "l3_main_1");
 	omap2_set_init_voltage("iva", "dpll_iva_m5x2_ck", "iva");
 =======
+<<<<<<< HEAD
+	omap2_set_init_voltage("mpu", "dpll_mpu_ck", "mpu");
+	omap2_set_init_voltage("core", "l3_div_ck", "l3_main_1");
+	omap2_set_init_voltage("iva", "dpll_iva_m5x2_ck", "iva");
+=======
 	omap2_set_init_voltage("mpu", "dpll_mpu_ck", mpu_dev);
 	omap2_set_init_voltage("core", "l3_div_ck", l3_dev);
 	omap2_set_init_voltage("iva", "dpll_iva_m5x2_ck", iva_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init omap2_common_pm_init(void)
@@ -485,8 +572,13 @@ static int __init omap2_common_pm_init(void)
 	if (!of_have_populated_dt())
 		omap2_init_processor_devices();
 =======
+<<<<<<< HEAD
+	if (!of_have_populated_dt())
+		omap2_init_processor_devices();
+=======
 	omap2_init_processor_devices();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_pm_if_init();
 
 	return 0;
@@ -496,6 +588,9 @@ postcore_initcall(omap2_common_pm_init);
 static int __init omap2_common_pm_late_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * In the case of DT, the PMIC and SR initialization will be done using
 	 * a completely different mechanism.
@@ -506,6 +601,8 @@ static int __init omap2_common_pm_late_init(void)
 
 	/* Init the voltage layer */
 	omap_pmic_late_init();
+<<<<<<< HEAD
+=======
 =======
 	/* Init the OMAP TWL parameters */
 	omap3_twl_init();
@@ -513,6 +610,7 @@ static int __init omap2_common_pm_late_init(void)
 
 	/* Init the voltage layer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_voltage_late_init();
 
 	/* Initialize the voltages */
@@ -523,12 +621,18 @@ static int __init omap2_common_pm_late_init(void)
 	omap_devinit_smartreflex();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SUSPEND
 	suspend_set_ops(&omap_pm_ops);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 late_initcall(omap2_common_pm_late_init);

@@ -10,9 +10,14 @@
 #include <asm/asi.h>
 #include <asm-generic/pci_iomap.h>
 =======
+<<<<<<< HEAD
+#include <asm/asi.h>
+#include <asm-generic/pci_iomap.h>
+=======
 #include <asm/system.h>
 #include <asm/asi.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* PC crapola... */
 #define __SLOW_DOWN_IO	do { } while (0)
@@ -521,8 +526,11 @@ extern void ioport_unmap(void __iomem *);
 struct pci_dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long max);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void pci_iounmap(struct pci_dev *dev, void __iomem *);
 
 static inline int sbus_can_dma_64bit(void)

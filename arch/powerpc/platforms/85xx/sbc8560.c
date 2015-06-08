@@ -23,8 +23,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -39,13 +42,21 @@
 #include "mpc85xx.h"
 
 =======
+<<<<<<< HEAD
+#include "mpc85xx.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CPM2
 #include <asm/cpm2.h>
 #include <sysdev/cpm2_pic.h>
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init sbc8560_pic_init(void)
 {
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN,
@@ -54,6 +65,8 @@ static void __init sbc8560_pic_init(void)
 	mpic_init(mpic);
 
 	mpc85xx_cpm2_pic_init();
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CPM2
 
@@ -113,6 +126,7 @@ static void __init sbc8560_pic_init(void)
 	irq_set_chained_handler(irq, cpm2_cascade);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -230,6 +244,9 @@ static void sbc8560_show_cpuinfo(struct seq_file *m)
 <<<<<<< HEAD
 machine_device_initcall(sbc8560, mpc85xx_common_publish_devices);
 =======
+<<<<<<< HEAD
+machine_device_initcall(sbc8560, mpc85xx_common_publish_devices);
+=======
 static struct of_device_id __initdata of_bus_ids[] = {
 	{ .name = "soc", },
 	{ .type = "soc", },
@@ -248,6 +265,7 @@ static int __init declare_of_platform_devices(void)
 }
 machine_device_initcall(sbc8560, declare_of_platform_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called very early, device-tree isn't unflattened
@@ -311,10 +329,16 @@ static int __init sbc8560_bdrstcr_init(void)
 
 	brstcr = ioremap(res.start, resource_size(&res));
 =======
+<<<<<<< HEAD
+	printk(KERN_INFO "sbc8560: Found BRSTCR at %pR\n", &res);
+
+	brstcr = ioremap(res.start, resource_size(&res));
+=======
 	printk(KERN_INFO "sbc8560: Found BRSTCR at i/o 0x%x\n", res.start);
 
 	brstcr = ioremap(res.start, res.end - res.start);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if(!brstcr)
 		printk(KERN_WARNING "sbc8560: ioremap of brstcr failed.\n");
 

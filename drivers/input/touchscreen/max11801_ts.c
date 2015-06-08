@@ -9,7 +9,16 @@
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+=======
  * the Free Software Foundation; either version 2 of the License.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * the Free Software Foundation; either version 2 of the License.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /*
@@ -254,6 +263,12 @@ static struct i2c_driver max11801_ts_driver = {
 	.remove		= __devexit_p(max11801_ts_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(max11801_ts_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init max11801_ts_init(void)
 {
 	return i2c_add_driver(&max11801_ts_driver);
@@ -266,6 +281,10 @@ static void __exit max11801_ts_exit(void)
 
 module_init(max11801_ts_init);
 module_exit(max11801_ts_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Zhang Jiejing <jiejing.zhang@freescale.com>");
 MODULE_DESCRIPTION("Touchscreen driver for MAXI MAX11801 controller");

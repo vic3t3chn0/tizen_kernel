@@ -46,14 +46,20 @@
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Out-of-range value for link sequence numbers
  */
 
 #define INVALID_LINK_SEQ 0x10000
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Link states
  */
 
@@ -73,8 +79,12 @@
 <<<<<<< HEAD
  * struct tipc_link - TIPC link data structure
 =======
+<<<<<<< HEAD
+ * struct tipc_link - TIPC link data structure
+=======
  * struct link - TIPC link data structure
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @addr: network address of link's peer node
  * @name: link name character string
  * @media_addr: media address to use when sending messages over link
@@ -125,8 +135,12 @@
 <<<<<<< HEAD
 struct tipc_link {
 =======
+<<<<<<< HEAD
+struct tipc_link {
+=======
 struct link {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 addr;
 	char name[TIPC_MAX_LINK_NAME];
 	struct tipc_media_addr media_addr;
@@ -225,6 +239,9 @@ struct link {
 struct tipc_port;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tipc_link *tipc_link_create(struct tipc_node *n_ptr,
 			      struct tipc_bearer *b_ptr,
 			      const struct tipc_media_addr *media_addr);
@@ -243,6 +260,8 @@ void tipc_link_reset(struct tipc_link *l_ptr);
 int tipc_link_send(struct sk_buff *buf, u32 dest, u32 selector);
 void tipc_link_send_names(struct list_head *message_list, u32 dest);
 int tipc_link_send_buf(struct tipc_link *l_ptr, struct sk_buff *buf);
+<<<<<<< HEAD
+=======
 =======
 struct link *tipc_link_create(struct tipc_node *n_ptr,
 			      struct tipc_bearer *b_ptr,
@@ -262,6 +281,7 @@ void tipc_link_reset(struct link *l_ptr);
 int tipc_link_send(struct sk_buff *buf, u32 dest, u32 selector);
 int tipc_link_send_buf(struct link *l_ptr, struct sk_buff *buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u32 tipc_link_get_max_pkt(u32 dest, u32 selector);
 int tipc_link_send_sections_fast(struct tipc_port *sender,
 				 struct iovec const *msg_sect,
@@ -273,6 +293,9 @@ int  tipc_link_recv_fragment(struct sk_buff **pending,
 			     struct sk_buff **fb,
 			     struct tipc_msg **msg);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void tipc_link_send_proto_msg(struct tipc_link *l_ptr, u32 msg_typ, int prob,
 			      u32 gap, u32 tolerance, u32 priority,
 			      u32 acked_mtu);
@@ -283,6 +306,8 @@ void tipc_link_wakeup_ports(struct tipc_link *l_ptr, int all);
 void tipc_link_set_queue_limits(struct tipc_link *l_ptr, u32 window);
 void tipc_link_retransmit(struct tipc_link *l_ptr,
 			  struct sk_buff *start, u32 retransmits);
+<<<<<<< HEAD
+=======
 =======
 void tipc_link_send_proto_msg(struct link *l_ptr, u32 msg_typ, int prob, u32 gap,
 			      u32 tolerance, u32 priority, u32 acked_mtu);
@@ -293,19 +318,26 @@ void tipc_link_wakeup_ports(struct link *l_ptr, int all);
 void tipc_link_set_queue_limits(struct link *l_ptr, u32 window);
 void tipc_link_retransmit(struct link *l_ptr, struct sk_buff *start, u32 retransmits);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Link sequence number manipulation routines (uses modulo 2**16 arithmetic)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline u32 buf_seqno(struct sk_buff *buf)
 {
 	return msg_seqno(buf_msg(buf));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline u32 mod(u32 x)
 {
 	return x & 0xffffu;
@@ -343,8 +375,12 @@ static inline u32 lesser(u32 left, u32 right)
 <<<<<<< HEAD
 static inline int link_working_working(struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+static inline int link_working_working(struct tipc_link *l_ptr)
+=======
 static inline int link_working_working(struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return l_ptr->state == WORKING_WORKING;
 }
@@ -352,8 +388,12 @@ static inline int link_working_working(struct link *l_ptr)
 <<<<<<< HEAD
 static inline int link_working_unknown(struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+static inline int link_working_unknown(struct tipc_link *l_ptr)
+=======
 static inline int link_working_unknown(struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return l_ptr->state == WORKING_UNKNOWN;
 }
@@ -361,8 +401,12 @@ static inline int link_working_unknown(struct link *l_ptr)
 <<<<<<< HEAD
 static inline int link_reset_unknown(struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+static inline int link_reset_unknown(struct tipc_link *l_ptr)
+=======
 static inline int link_reset_unknown(struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return l_ptr->state == RESET_UNKNOWN;
 }
@@ -370,8 +414,12 @@ static inline int link_reset_unknown(struct link *l_ptr)
 <<<<<<< HEAD
 static inline int link_reset_reset(struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+static inline int link_reset_reset(struct tipc_link *l_ptr)
+=======
 static inline int link_reset_reset(struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return l_ptr->state == RESET_RESET;
 }
@@ -379,8 +427,12 @@ static inline int link_reset_reset(struct link *l_ptr)
 <<<<<<< HEAD
 static inline int link_blocked(struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+static inline int link_blocked(struct tipc_link *l_ptr)
+=======
 static inline int link_blocked(struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return l_ptr->exp_msg_count || l_ptr->blocked;
 }
@@ -388,8 +440,12 @@ static inline int link_blocked(struct link *l_ptr)
 <<<<<<< HEAD
 static inline int link_congested(struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+static inline int link_congested(struct tipc_link *l_ptr)
+=======
 static inline int link_congested(struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return l_ptr->out_queue_size >= l_ptr->queue_limit[0];
 }

@@ -85,7 +85,12 @@ static u32 mcfslt_cnt;
 static irq_handler_t timer_interrupt;
 
 =======
+<<<<<<< HEAD
+static irq_handler_t timer_interrupt;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t mcfslt_tick(int irq, void *dummy)
 {
 	/* Reset Slice Timer 0 */
@@ -94,8 +99,12 @@ static irqreturn_t mcfslt_tick(int irq, void *dummy)
 <<<<<<< HEAD
 	return timer_interrupt(irq, dummy);
 =======
+<<<<<<< HEAD
+	return timer_interrupt(irq, dummy);
+=======
 	return arch_timer_interrupt(irq, dummy);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct irqaction mcfslt_timer_irq = {
@@ -110,14 +119,21 @@ static cycle_t mcfslt_read_clk(struct clocksource *cs)
 <<<<<<< HEAD
 	u32 cycles, scnt;
 =======
+<<<<<<< HEAD
+	u32 cycles, scnt;
+=======
 	u32 cycles;
 	u16 scnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	local_irq_save(flags);
 	scnt = __raw_readl(TA(MCFSLT_SCNT));
 	cycles = mcfslt_cnt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (__raw_readl(TA(MCFSLT_SSR)) & MCFSLT_SSR_TE) {
 		cycles += mcfslt_cycles_per_jiffy;
 		scnt = __raw_readl(TA(MCFSLT_SCNT));
@@ -126,12 +142,15 @@ static cycle_t mcfslt_read_clk(struct clocksource *cs)
 
 	/* subtract because slice timers count down */
 	return cycles + ((mcfslt_cycles_per_jiffy - 1) - scnt);
+<<<<<<< HEAD
+=======
 =======
 	local_irq_restore(flags);
 
 	/* subtract because slice timers count down */
 	return cycles - scnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct clocksource mcfslt_clk = {
@@ -140,8 +159,11 @@ static struct clocksource mcfslt_clk = {
 	.read	= mcfslt_read_clk,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.shift	= 20,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.mask	= CLOCKSOURCE_MASK(32),
 	.flags	= CLOCK_SOURCE_IS_CONTINUOUS,
 };
@@ -149,8 +171,12 @@ static struct clocksource mcfslt_clk = {
 <<<<<<< HEAD
 void hw_timer_init(irq_handler_t handler)
 =======
+<<<<<<< HEAD
+void hw_timer_init(irq_handler_t handler)
+=======
 void hw_timer_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mcfslt_cycles_per_jiffy = MCF_BUSCLK / HZ;
 	/*
@@ -166,16 +192,22 @@ void hw_timer_init(void)
 	mcfslt_cnt = mcfslt_cycles_per_jiffy;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	timer_interrupt = handler;
 	setup_irq(MCF_IRQ_TIMER, &mcfslt_timer_irq);
 
 	clocksource_register_hz(&mcfslt_clk, MCF_BUSCLK);
+<<<<<<< HEAD
+=======
 =======
 	setup_irq(MCF_IRQ_TIMER, &mcfslt_timer_irq);
 
 	mcfslt_clk.mult = clocksource_hz2mult(MCF_BUSCLK, mcfslt_clk.shift);
 	clocksource_register(&mcfslt_clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_HIGHPROFILE
 	mcfslt_profile_init();

@@ -20,8 +20,11 @@
 #include "ctmixer.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "cthardware.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ctsrc.h"
 #include "ctamixer.h"
 #include "ctdaio.h"
@@ -35,8 +38,11 @@
 #define MONO_SUM_SCALE	0x19a8	/* 2^(-0.5) in 14-bit floating format */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define DAIONUM		7
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAX_MULTI_CHN	8
 
 #define IEC958_DEFAULT_CON ((IEC958_AES0_NONAUDIO \
@@ -63,7 +69,12 @@ static struct snd_pci_quirk __devinitdata subsys_20k2_list[] = {
 	SND_PCI_QUIRK(PCI_VENDOR_ID_CREATIVE, PCI_SUBDEVICE_ID_CREATIVE_SB1270,
 		      "SB1270", CTSB1270),
 =======
+<<<<<<< HEAD
+	SND_PCI_QUIRK(PCI_VENDOR_ID_CREATIVE, PCI_SUBDEVICE_ID_CREATIVE_SB1270,
+		      "SB1270", CTSB1270),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_PCI_QUIRK(PCI_VENDOR_ID_CREATIVE, PCI_SUBDEVICE_ID_CREATIVE_SB08801,
 		      "SB0880", CTSB0880),
 	SND_PCI_QUIRK(PCI_VENDOR_ID_CREATIVE, PCI_SUBDEVICE_ID_CREATIVE_SB08802,
@@ -89,7 +100,11 @@ static const char *ct_subsys_name[NUM_CTCARDS] = {
 <<<<<<< HEAD
 	[CTSB1270]      = "SB1270",
 =======
+<<<<<<< HEAD
+	[CTSB1270]      = "SB1270",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[CT20K2_UNKNOWN] = "Unknown",
 };
 
@@ -477,8 +492,12 @@ static void setup_src_node_conf(struct ct_atc *atc, struct ct_atc_pcm *apcm,
 <<<<<<< HEAD
 	if (1 == atc->msr) { /* FIXME: do we really need SRC here if pitch==1 */
 =======
+<<<<<<< HEAD
+	if (1 == atc->msr) { /* FIXME: do we really need SRC here if pitch==1 */
+=======
 	if (1 == atc->msr) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*n_srcc = apcm->substream->runtime->channels;
 		conf[0].pitch = pitch;
 		conf[0].mix_msr = conf[0].imp_msr = conf[0].msr = 1;
@@ -486,8 +505,12 @@ static void setup_src_node_conf(struct ct_atc *atc, struct ct_atc_pcm *apcm,
 <<<<<<< HEAD
 	} else if (2 <= atc->msr) {
 =======
+<<<<<<< HEAD
+	} else if (2 <= atc->msr) {
+=======
 	} else if (2 == atc->msr) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (0x8000000 < pitch) {
 			/* Need two-stage SRCs, SRCIMPs and
 			 * AMIXERs for converting format */
@@ -994,6 +1017,9 @@ static int atc_select_mic_in(struct ct_atc *atc)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct capabilities atc_capabilities(struct ct_atc *atc)
 {
 	struct hw *hw = atc->hw;
@@ -1027,6 +1053,8 @@ static int atc_mic_source_switch_put(struct ct_atc *atc, int position)
 	struct hw *hw = atc->hw;
 
 	return hw->mic_source_switch_put(hw, position);
+<<<<<<< HEAD
+=======
 =======
 static int atc_have_digit_io_switch(struct ct_atc *atc)
 {
@@ -1034,6 +1062,7 @@ static int atc_have_digit_io_switch(struct ct_atc *atc)
 
 	return hw->have_digit_io_switch(hw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int atc_select_digit_io(struct ct_atc *atc)
@@ -1105,13 +1134,19 @@ static int atc_line_in_unmute(struct ct_atc *atc, unsigned char state)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int atc_mic_unmute(struct ct_atc *atc, unsigned char state)
 {
 	return atc_daio_unmute(atc, state, MIC);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int atc_spdif_out_unmute(struct ct_atc *atc, unsigned char state)
 {
 	return atc_daio_unmute(atc, state, SPDIFOO);
@@ -1399,6 +1434,9 @@ static int atc_get_resources(struct ct_atc *atc)
 	struct sum_desc sum_dsc = {0};
 	struct sum_mgr *sum_mgr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err, i, num_srcs, num_daios;
 
 	num_daios = ((atc->model == CTSB1270) ? 8 : 7);
@@ -1413,6 +1451,8 @@ static int atc_get_resources(struct ct_atc *atc)
 		return -ENOMEM;
 
 	atc->srcimps = kzalloc(sizeof(void *)*num_srcs, GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	int err, i;
 
@@ -1426,6 +1466,7 @@ static int atc_get_resources(struct ct_atc *atc)
 
 	atc->srcimps = kzalloc(sizeof(void *)*(2*2), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!atc->srcimps)
 		return -ENOMEM;
 
@@ -1440,9 +1481,15 @@ static int atc_get_resources(struct ct_atc *atc)
 		da_desc.type = (atc->model != CTSB073X) ? i :
 			     ((i == SPDIFIO) ? SPDIFI1 : i);
 =======
+<<<<<<< HEAD
+	for (i = 0, atc->n_daio = 0; i < num_daios; i++) {
+		da_desc.type = (atc->model != CTSB073X) ? i :
+			     ((i == SPDIFIO) ? SPDIFI1 : i);
+=======
 	for (i = 0, atc->n_daio = 0; i < DAIONUM-1; i++) {
 		da_desc.type = i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = daio_mgr->get_daio(daio_mgr, &da_desc,
 					(struct daio **)&atc->daios[i]);
 		if (err) {
@@ -1452,6 +1499,8 @@ static int atc_get_resources(struct ct_atc *atc)
 		}
 		atc->n_daio++;
 	}
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (atc->model == CTSB073X)
@@ -1466,6 +1515,7 @@ static int atc_get_resources(struct ct_atc *atc)
 	}
 	atc->n_daio++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	src_mgr = atc->rsc_mgrs[SRC];
 	src_dsc.multi = 1;
@@ -1474,8 +1524,12 @@ static int atc_get_resources(struct ct_atc *atc)
 <<<<<<< HEAD
 	for (i = 0, atc->n_src = 0; i < num_srcs; i++) {
 =======
+<<<<<<< HEAD
+	for (i = 0, atc->n_src = 0; i < num_srcs; i++) {
+=======
 	for (i = 0, atc->n_src = 0; i < (2*2); i++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = src_mgr->get_src(src_mgr, &src_dsc,
 					(struct src **)&atc->srcs[i]);
 		if (err)
@@ -1489,9 +1543,14 @@ static int atc_get_resources(struct ct_atc *atc)
 	srcimp_dsc.msr = 8;
 	for (i = 0, atc->n_srcimp = 0; i < num_srcs; i++) {
 =======
+<<<<<<< HEAD
+	srcimp_dsc.msr = 8;
+	for (i = 0, atc->n_srcimp = 0; i < num_srcs; i++) {
+=======
 	srcimp_dsc.msr = 8; /* SRCIMPs for S/PDIFIn SRT */
 	for (i = 0, atc->n_srcimp = 0; i < (2*1); i++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = srcimp_mgr->get_srcimp(srcimp_mgr, &srcimp_dsc,
 					(struct srcimp **)&atc->srcimps[i]);
 		if (err)
@@ -1499,6 +1558,8 @@ static int atc_get_resources(struct ct_atc *atc)
 
 		atc->n_srcimp++;
 	}
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	srcimp_dsc.msr = 8; /* SRCIMPs for LINE/MICIn SRT */
@@ -1511,6 +1572,7 @@ static int atc_get_resources(struct ct_atc *atc)
 		atc->n_srcimp++;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sum_mgr = atc->rsc_mgrs[SUM];
 	sum_dsc.msr = atc->msr;
@@ -1594,6 +1656,9 @@ static void atc_connect_resources(struct ct_atc *atc)
 	mixer->set_input_right(mixer, MIX_LINE_IN, &src->rsc);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (atc->model == CTSB1270) {
 		/* Titanium HD has a dedicated ADC for the Mic. */
 		dai = container_of(atc->daios[MIC], struct dai, daio);
@@ -1606,8 +1671,11 @@ static void atc_connect_resources(struct ct_atc *atc)
 		mixer->set_input_right(mixer, MIX_MIC_IN, &src->rsc);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dai = container_of(atc->daios[SPDIFIO], struct dai, daio);
 	atc_connect_dai(atc->rsc_mgrs[SRC], dai,
 			(struct src **)&atc->srcs[0],
@@ -1729,21 +1797,31 @@ static struct ct_atc atc_preset __devinitdata = {
 <<<<<<< HEAD
 	.mic_unmute = atc_mic_unmute,
 =======
+<<<<<<< HEAD
+	.mic_unmute = atc_mic_unmute,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.spdif_out_unmute = atc_spdif_out_unmute,
 	.spdif_in_unmute = atc_spdif_in_unmute,
 	.spdif_out_get_status = atc_spdif_out_get_status,
 	.spdif_out_set_status = atc_spdif_out_set_status,
 	.spdif_out_passthru = atc_spdif_out_passthru,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.capabilities = atc_capabilities,
 	.output_switch_get = atc_output_switch_get,
 	.output_switch_put = atc_output_switch_put,
 	.mic_source_switch_get = atc_mic_source_switch_get,
 	.mic_source_switch_put = atc_mic_source_switch_put,
+<<<<<<< HEAD
+=======
 =======
 	.have_digit_io_switch = atc_have_digit_io_switch,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 	.suspend = atc_suspend,
 	.resume = atc_resume,

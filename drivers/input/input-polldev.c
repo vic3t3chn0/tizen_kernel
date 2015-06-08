@@ -14,6 +14,13 @@
 #include <linux/slab.h>
 #include <linux/mutex.h>
 #include <linux/workqueue.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/input-polldev.h>
 
 MODULE_AUTHOR("Dmitry Torokhov <dtor@mail.ru>");
@@ -49,8 +56,20 @@ static int input_open_polled_device(struct input_dev *input)
 		dev->open(dev);
 
 	/* Only start polling if polling is enabled */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (dev->poll_interval > 0) {
+		dev->poll(dev);
+		input_polldev_queue_work(dev);
+	}
+=======
 	if (dev->poll_interval > 0)
 		queue_delayed_work(system_freezable_wq, &dev->work, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (dev->poll_interval > 0)
+		queue_delayed_work(system_freezable_wq, &dev->work, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -81,10 +100,25 @@ static ssize_t input_polldev_set_poll(struct device *dev,
 {
 	struct input_polled_dev *polldev = dev_get_drvdata(dev);
 	struct input_dev *input = polldev->input;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int interval;
+	int err;
+
+	err = kstrtouint(buf, 0, &interval);
+	if (err)
+		return err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long interval;
 
 	if (strict_strtoul(buf, 0, &interval))
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (interval < polldev->poll_interval_min)
 		return -EINVAL;

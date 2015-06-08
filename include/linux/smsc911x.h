@@ -25,6 +25,9 @@
 
 /* platform_device configuration data, should be assigned to
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * the platform_device's dev.platform_data
  * Provides 2 GPIO-related fields
  * reset_gpio to map the ETHERNET_RESET GPIO pin
@@ -33,9 +36,12 @@
  * Default would be zero if its not being assigned any value.
  * Both values would need to set in the appropriate board file
  */
+<<<<<<< HEAD
+=======
 =======
  * the platform_device's dev.platform_data */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct smsc911x_platform_config {
 	unsigned int irq_polarity;
 	unsigned int irq_type;
@@ -47,7 +53,12 @@ struct smsc911x_platform_config {
 	unsigned char has_reset_gpio;
 	unsigned int reset_gpio;
 =======
+<<<<<<< HEAD
+	unsigned char has_reset_gpio;
+	unsigned int reset_gpio;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Constants for platform_device irq polarity configuration */

@@ -24,8 +24,11 @@
 #include <linux/module.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/soc.h>
@@ -47,8 +50,11 @@ struct cs42l51_private {
 	enum snd_soc_control_type control_type;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int mclk;
 	unsigned int audio_mode;	/* The mode (I2S or left-justified) */
 	enum master_slave_mode func;
@@ -66,8 +72,12 @@ static int cs42l51_fill_cache(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	struct i2c_client *i2c_client = to_i2c_client(codec->dev);
 =======
+<<<<<<< HEAD
+	struct i2c_client *i2c_client = to_i2c_client(codec->dev);
+=======
 	struct i2c_client *i2c_client = codec->control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s32 length;
 
 	length = i2c_smbus_read_i2c_block_data(i2c_client,
@@ -187,6 +197,9 @@ static int cs42l51_pdn_event(struct snd_soc_dapm_widget *w,
 		struct snd_kcontrol *kcontrol, int event)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (event) {
 	case SND_SOC_DAPM_PRE_PMD:
 		snd_soc_update_bits(w->codec, CS42L51_POWER_CTL1,
@@ -199,6 +212,8 @@ static int cs42l51_pdn_event(struct snd_soc_dapm_widget *w,
 				    CS42L51_POWER_CTL1_PDN, 0);
 		break;
 	}
+<<<<<<< HEAD
+=======
 =======
 	unsigned long value;
 
@@ -216,6 +231,7 @@ static int cs42l51_pdn_event(struct snd_soc_dapm_widget *w,
 	snd_soc_update_bits(w->codec, CS42L51_POWER_CTL1,
 		CS42L51_POWER_CTL1_PDN, value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -316,8 +332,11 @@ static int cs42l51_set_dai_fmt(struct snd_soc_dai *codec_dai,
 	struct cs42l51_private *cs42l51 = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (format & SND_SOC_DAIFMT_FORMAT_MASK) {
 	case SND_SOC_DAIFMT_I2S:
@@ -330,8 +349,12 @@ static int cs42l51_set_dai_fmt(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 		return -EINVAL;
 =======
+<<<<<<< HEAD
+		return -EINVAL;
+=======
 		ret = -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	switch (format & SND_SOC_DAIFMT_MASTER_MASK) {
@@ -343,11 +366,16 @@ static int cs42l51_set_dai_fmt(struct snd_soc_dai *codec_dai,
 		break;
 	default:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(codec->dev, "Unknown master/slave configuration\n");
 		return -EINVAL;
 	}
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 		ret = -EINVAL;
 		break;
@@ -355,6 +383,7 @@ static int cs42l51_set_dai_fmt(struct snd_soc_dai *codec_dai,
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct cs42l51_ratios {
@@ -531,8 +560,12 @@ static int cs42l51_dai_mute(struct snd_soc_dai *dai, int mute)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops cs42l51_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops cs42l51_dai_ops = {
+=======
 static struct snd_soc_dai_ops cs42l51_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params      = cs42l51_hw_params,
 	.set_sysclk     = cs42l51_set_dai_sysclk,
 	.set_fmt        = cs42l51_set_dai_fmt,
@@ -565,12 +598,17 @@ static int cs42l51_probe(struct snd_soc_codec *codec)
 	int ret, reg;
 
 =======
+<<<<<<< HEAD
+	int ret, reg;
+
+=======
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 	int ret, reg;
 
 	codec->control_data = cs42l51->control_data;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = cs42l51_fill_cache(codec);
 	if (ret < 0) {
 		dev_err(codec->dev, "failed to fill register cache\n");
@@ -598,6 +636,8 @@ static int cs42l51_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_add_controls(codec, cs42l51_snd_controls,
 		ARRAY_SIZE(cs42l51_snd_controls));
 	snd_soc_dapm_new_controls(dapm, cs42l51_dapm_widgets,
@@ -606,11 +646,15 @@ static int cs42l51_probe(struct snd_soc_codec *codec)
 		ARRAY_SIZE(cs42l51_routes));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static struct snd_soc_codec_driver soc_codec_device_cs42l51 = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.probe = cs42l51_probe,
 	.reg_cache_size = CS42L51_NUMREGS + 1,
 	.reg_word_size = sizeof(u8),
@@ -621,11 +665,14 @@ static struct snd_soc_codec_driver soc_codec_device_cs42l51 = {
 	.num_dapm_widgets = ARRAY_SIZE(cs42l51_dapm_widgets),
 	.dapm_routes = cs42l51_routes,
 	.num_dapm_routes = ARRAY_SIZE(cs42l51_routes),
+<<<<<<< HEAD
+=======
 =======
 	.probe =	cs42l51_probe,
 	.reg_cache_size = CS42L51_NUMREGS,
 	.reg_word_size = sizeof(u8),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int cs42l51_i2c_probe(struct i2c_client *i2c_client,
@@ -655,8 +702,13 @@ static int cs42l51_i2c_probe(struct i2c_client *i2c_client,
 	cs42l51 = devm_kzalloc(&i2c_client->dev, sizeof(struct cs42l51_private),
 			       GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	cs42l51 = devm_kzalloc(&i2c_client->dev, sizeof(struct cs42l51_private),
+			       GFP_KERNEL);
+=======
 	cs42l51 = kzalloc(sizeof(struct cs42l51_private), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cs42l51) {
 		dev_err(&i2c_client->dev, "could not allocate codec\n");
 		return -ENOMEM;
@@ -665,17 +717,23 @@ static int cs42l51_i2c_probe(struct i2c_client *i2c_client,
 	i2c_set_clientdata(i2c_client, cs42l51);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cs42l51->control_data = i2c_client;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cs42l51->control_type = SND_SOC_I2C;
 
 	ret =  snd_soc_register_codec(&i2c_client->dev,
 			&soc_codec_device_cs42l51, &cs42l51_dai, 1);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ret < 0)
 		kfree(cs42l51);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error:
 	return ret;
 }
@@ -685,11 +743,15 @@ static int cs42l51_i2c_remove(struct i2c_client *client)
 <<<<<<< HEAD
 	snd_soc_unregister_codec(&client->dev);
 =======
+<<<<<<< HEAD
+	snd_soc_unregister_codec(&client->dev);
+=======
 	struct cs42l51_private *cs42l51 = i2c_get_clientdata(client);
 
 	snd_soc_unregister_codec(&client->dev);
 	kfree(cs42l51);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

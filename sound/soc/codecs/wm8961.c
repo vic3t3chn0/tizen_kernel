@@ -19,8 +19,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -427,11 +430,16 @@ static int wm8961_spk_event(struct snd_soc_dapm_widget *w,
 
 	if (event & SND_SOC_DAPM_PRE_PMD) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Disable the amplifier */
 		spk_reg &= ~(WM8961_SPKL_ENA | WM8961_SPKR_ENA);
 		snd_soc_write(codec, WM8961_CLASS_D_CONTROL_1, spk_reg);
 
 		/* Disable the PGA */
+<<<<<<< HEAD
+=======
 =======
 		/* Enable the amplifier */
 		spk_reg &= ~(WM8961_SPKL_ENA | WM8961_SPKR_ENA);
@@ -439,6 +447,7 @@ static int wm8961_spk_event(struct snd_soc_dapm_widget *w,
 
 		/* Enable the PGA */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pwr_reg &= ~(WM8961_SPKL_PGA | WM8961_SPKR_PGA);
 		snd_soc_write(codec, WM8961_PWR_MGMT_2, pwr_reg);
 	}
@@ -545,8 +554,12 @@ SND_SOC_DAPM_ADC("ADCR", "HiFi Capture", WM8961_PWR_MGMT_1, 2, 0),
 <<<<<<< HEAD
 SND_SOC_DAPM_SUPPLY("MICBIAS", WM8961_PWR_MGMT_1, 1, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+SND_SOC_DAPM_SUPPLY("MICBIAS", WM8961_PWR_MGMT_1, 1, 0, NULL, 0),
+=======
 SND_SOC_DAPM_MICBIAS("MICBIAS", WM8961_PWR_MGMT_1, 1, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_MUX("DACL Sidetone", SND_SOC_NOPM, 0, 0, &dacl_mux),
 SND_SOC_DAPM_MUX("DACR Sidetone", SND_SOC_NOPM, 0, 0, &dacr_mux),
@@ -947,8 +960,12 @@ static int wm8961_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8961_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8961_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8961_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params = wm8961_hw_params,
 	.set_sysclk = wm8961_set_sysclk,
 	.set_fmt = wm8961_set_fmt,
@@ -998,8 +1015,14 @@ static int wm8961_probe(struct snd_soc_codec *codec)
 	reg = snd_soc_read(codec, WM8961_RIGHT_INPUT_VOLUME);
 	codec->cache_bypass = 0;
 =======
+<<<<<<< HEAD
+	codec->cache_bypass = 1;
+	reg = snd_soc_read(codec, WM8961_RIGHT_INPUT_VOLUME);
+	codec->cache_bypass = 0;
+=======
 	reg = codec->hw_read(codec, WM8961_RIGHT_INPUT_VOLUME);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_info(codec->dev, "WM8961 family %d revision %c\n",
 		 (reg & WM8961_DEVICE_ID_MASK) >> WM8961_DEVICE_ID_SHIFT,
 		 ((reg & WM8961_CHIP_REV_MASK) >> WM8961_CHIP_REV_SHIFT)
@@ -1049,8 +1072,12 @@ static int wm8961_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, wm8961_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, wm8961_snd_controls,
+=======
 	snd_soc_add_controls(codec, wm8961_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ARRAY_SIZE(wm8961_snd_controls));
 	snd_soc_dapm_new_controls(dapm, wm8961_dapm_widgets,
 				  ARRAY_SIZE(wm8961_dapm_widgets));
@@ -1069,8 +1096,12 @@ static int wm8961_remove(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 static int wm8961_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8961_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8961_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8961_set_bias_level(codec, SND_SOC_BIAS_OFF);
 
@@ -1079,6 +1110,9 @@ static int wm8961_suspend(struct snd_soc_codec *codec, pm_message_t state)
 
 static int wm8961_resume(struct snd_soc_codec *codec)
 {
+<<<<<<< HEAD
+	snd_soc_cache_sync(codec);
+=======
 <<<<<<< HEAD
 	snd_soc_cache_sync(codec);
 =======
@@ -1095,6 +1129,7 @@ static int wm8961_resume(struct snd_soc_codec *codec)
 		snd_soc_write(codec, i, reg_cache[i]);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wm8961_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
@@ -1119,8 +1154,11 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8961 = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __devinit int wm8961_i2c_probe(struct i2c_client *i2c,
 				      const struct i2c_device_id *id)
 {
@@ -1131,8 +1169,13 @@ static __devinit int wm8961_i2c_probe(struct i2c_client *i2c,
 	wm8961 = devm_kzalloc(&i2c->dev, sizeof(struct wm8961_priv),
 			      GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	wm8961 = devm_kzalloc(&i2c->dev, sizeof(struct wm8961_priv),
+			      GFP_KERNEL);
+=======
 	wm8961 = kzalloc(sizeof(struct wm8961_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wm8961 == NULL)
 		return -ENOMEM;
 
@@ -1143,9 +1186,13 @@ static __devinit int wm8961_i2c_probe(struct i2c_client *i2c,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	if (ret < 0)
 		kfree(wm8961);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1155,8 +1202,12 @@ static __devexit int wm8961_i2c_remove(struct i2c_client *client)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1171,8 +1222,12 @@ static struct i2c_driver wm8961_i2c_driver = {
 <<<<<<< HEAD
 		.name = "wm8961",
 =======
+<<<<<<< HEAD
+		.name = "wm8961",
+=======
 		.name = "wm8961-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 	},
 	.probe =    wm8961_i2c_probe,
@@ -1181,16 +1236,22 @@ static struct i2c_driver wm8961_i2c_driver = {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init wm8961_modinit(void)
 {
 	int ret = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = i2c_add_driver(&wm8961_i2c_driver);
 	if (ret != 0) {
 		printk(KERN_ERR "Failed to register wm8961 I2C driver: %d\n",
@@ -1198,8 +1259,11 @@ static int __init wm8961_modinit(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 module_init(wm8961_modinit);
@@ -1209,10 +1273,14 @@ static void __exit wm8961_exit(void)
 <<<<<<< HEAD
 	i2c_del_driver(&wm8961_i2c_driver);
 =======
+<<<<<<< HEAD
+	i2c_del_driver(&wm8961_i2c_driver);
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	i2c_del_driver(&wm8961_i2c_driver);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(wm8961_exit);
 

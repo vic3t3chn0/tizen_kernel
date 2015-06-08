@@ -15,8 +15,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/platform_device.h>
 #include <linux/syscore_ops.h>
@@ -49,8 +53,11 @@
 #include <mach/pxa27x.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/mainstone.h>
 #include <mach/audio.h>
 #include <mach/pxafb.h>
@@ -190,9 +197,14 @@ static void __init mainstone_init_irq(void)
 	irq_set_chained_handler(PXA_GPIO_TO_IRQ(0), mainstone_irq_handler);
 	irq_set_irq_type(PXA_GPIO_TO_IRQ(0), IRQ_TYPE_EDGE_FALLING);
 =======
+<<<<<<< HEAD
+	irq_set_chained_handler(PXA_GPIO_TO_IRQ(0), mainstone_irq_handler);
+	irq_set_irq_type(PXA_GPIO_TO_IRQ(0), IRQ_TYPE_EDGE_FALLING);
+=======
 	irq_set_chained_handler(IRQ_GPIO(0), mainstone_irq_handler);
 	irq_set_irq_type(IRQ_GPIO(0), IRQ_TYPE_EDGE_FALLING);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_PM
@@ -629,6 +641,9 @@ static void __init mainstone_map_io(void)
 MACHINE_START(MAINSTONE, "Intel HCDDBBVA0 Development Platform (aka Mainstone)")
 	/* Maintainer: MontaVista Software Inc. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,	/* BLOB boot parameter setting */
 	.map_io		= mainstone_map_io,
 	.nr_irqs	= MAINSTONE_NR_IRQS,
@@ -637,6 +652,8 @@ MACHINE_START(MAINSTONE, "Intel HCDDBBVA0 Development Platform (aka Mainstone)")
 	.timer		= &pxa_timer,
 	.init_machine	= mainstone_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,	/* BLOB boot parameter setting */
 	.map_io		= mainstone_map_io,
@@ -645,4 +662,5 @@ MACHINE_START(MAINSTONE, "Intel HCDDBBVA0 Development Platform (aka Mainstone)")
 	.timer		= &pxa_timer,
 	.init_machine	= mainstone_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

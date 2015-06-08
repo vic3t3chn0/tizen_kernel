@@ -3,7 +3,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gfp.h>
 #include <linux/blkpg.h>
 #include <linux/hdreg.h>
@@ -11,8 +15,12 @@
 <<<<<<< HEAD
 #include <linux/fs.h>
 =======
+<<<<<<< HEAD
+#include <linux/fs.h>
+=======
 #include <linux/buffer_head.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/blktrace_api.h>
 #include <asm/uaccess.h>
 
@@ -112,8 +120,12 @@ static int blkdev_reread_part(struct block_device *bdev)
 <<<<<<< HEAD
 	if (!disk_part_scan_enabled(disk) || bdev != bdev->bd_contains)
 =======
+<<<<<<< HEAD
+	if (!disk_part_scan_enabled(disk) || bdev != bdev->bd_contains)
+=======
 	if (!disk_partitionable(disk) || bdev != bdev->bd_contains)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	if (!capable(CAP_SYS_ADMIN))
 		return -EACCES;
@@ -144,13 +156,19 @@ static int blk_ioctl_discard(struct block_device *bdev, uint64_t start,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int blk_ioctl_sanitize(struct block_device *bdev)
 {
 	return blkdev_issue_sanitize(bdev, GFP_KERNEL);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int put_ushort(unsigned long arg, unsigned short val)
 {
 	return put_user(val, (unsigned short __user *)arg);
@@ -200,6 +218,9 @@ EXPORT_SYMBOL_GPL(__blkdev_driver_ioctl);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Is it an unrecognized ioctl? The correct returns are either
  * ENOTTY (final) or ENOIOCTLCMD ("I don't know this one, try a
  * fallback"). ENOIOCTLCMD gets turned into ENOTTY by the ioctl
@@ -220,8 +241,11 @@ static inline int is_unrecognized_ioctl(int ret)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * always keep this in sync with compat_blkdev_ioctl()
  */
 int blkdev_ioctl(struct block_device *bdev, fmode_t mode, unsigned cmd,
@@ -241,9 +265,13 @@ int blkdev_ioctl(struct block_device *bdev, fmode_t mode, unsigned cmd,
 <<<<<<< HEAD
 		if (!is_unrecognized_ioctl(ret))
 =======
+<<<<<<< HEAD
+		if (!is_unrecognized_ioctl(ret))
+=======
 		/* -EINVAL to handle old uncorrected drivers */
 		if (ret != -EINVAL && ret != -ENOTTY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return ret;
 
 		fsync_bdev(bdev);
@@ -255,9 +283,13 @@ int blkdev_ioctl(struct block_device *bdev, fmode_t mode, unsigned cmd,
 <<<<<<< HEAD
 		if (!is_unrecognized_ioctl(ret))
 =======
+<<<<<<< HEAD
+		if (!is_unrecognized_ioctl(ret))
+=======
 		/* -EINVAL to handle old uncorrected drivers */
 		if (ret != -EINVAL && ret != -ENOTTY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return ret;
 		if (!capable(CAP_SYS_ADMIN))
 			return -EACCES;
@@ -267,12 +299,18 @@ int blkdev_ioctl(struct block_device *bdev, fmode_t mode, unsigned cmd,
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BLKSANITIZE:
 		ret = blk_ioctl_sanitize(bdev);
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BLKDISCARD:
 	case BLKSECDISCARD: {
 		uint64_t range[2];
@@ -339,7 +377,12 @@ int blkdev_ioctl(struct block_device *bdev, fmode_t mode, unsigned cmd,
 	case BLKROTATIONAL:
 		return put_ushort(arg, !blk_queue_nonrot(bdev_get_queue(bdev)));
 =======
+<<<<<<< HEAD
+	case BLKROTATIONAL:
+		return put_ushort(arg, !blk_queue_nonrot(bdev_get_queue(bdev)));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BLKRASET:
 	case BLKFRASET:
 		if(!capable(CAP_SYS_ADMIN))

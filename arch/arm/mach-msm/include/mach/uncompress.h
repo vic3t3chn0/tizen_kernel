@@ -3,10 +3,16 @@
  * Copyright (C) 2007 Google, Inc.
  * Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/*
+ * Copyright (C) 2007 Google, Inc.
+ * Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+=======
 /* arch/arm/mach-msm/include/mach/uncompress.h
  *
  * Copyright (C) 2007 Google, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -21,6 +27,9 @@
 
 #ifndef __ASM_ARCH_MSM_UNCOMPRESS_H
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __ASM_ARCH_MSM_UNCOMPRESS_H
 
 #include <linux/io.h>
@@ -65,6 +74,8 @@ static void putc(int c)
 #endif
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 #include "hardware.h"
@@ -80,6 +91,7 @@ static void putc(int c)
 #endif
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void flush(void)
 {

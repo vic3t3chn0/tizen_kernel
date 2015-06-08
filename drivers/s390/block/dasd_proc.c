@@ -32,6 +32,11 @@ static struct proc_dir_entry *dasd_proc_root_entry = NULL;
 static struct proc_dir_entry *dasd_devices_entry = NULL;
 static struct proc_dir_entry *dasd_statistics_entry = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DASD_PROFILE
 static char *
 dasd_get_user_string(const char __user *user_buf, size_t user_len)
@@ -54,6 +59,10 @@ dasd_get_user_string(const char __user *user_buf, size_t user_len)
 }
 #endif /* CONFIG_DASD_PROFILE */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 dasd_devices_show(struct seq_file *m, void *v)
 {
@@ -167,6 +176,61 @@ static const struct file_operations dasd_devices_file_ops = {
 };
 
 #ifdef CONFIG_DASD_PROFILE
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int dasd_stats_all_block_on(void)
+{
+	int i, rc;
+	struct dasd_device *device;
+
+	rc = 0;
+	for (i = 0; i < dasd_max_devindex; ++i) {
+		device = dasd_device_from_devindex(i);
+		if (IS_ERR(device))
+			continue;
+		if (device->block)
+			rc = dasd_profile_on(&device->block->profile);
+		dasd_put_device(device);
+		if (rc)
+			return rc;
+	}
+	return 0;
+}
+
+static void dasd_stats_all_block_off(void)
+{
+	int i;
+	struct dasd_device *device;
+
+	for (i = 0; i < dasd_max_devindex; ++i) {
+		device = dasd_device_from_devindex(i);
+		if (IS_ERR(device))
+			continue;
+		if (device->block)
+			dasd_profile_off(&device->block->profile);
+		dasd_put_device(device);
+	}
+}
+
+static void dasd_stats_all_block_reset(void)
+{
+	int i;
+	struct dasd_device *device;
+
+	for (i = 0; i < dasd_max_devindex; ++i) {
+		device = dasd_device_from_devindex(i);
+		if (IS_ERR(device))
+			continue;
+		if (device->block)
+			dasd_profile_reset(&device->block->profile);
+		dasd_put_device(device);
+	}
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void dasd_statistics_array(struct seq_file *m, unsigned int *array, int factor)
 {
 	int i;
@@ -183,18 +247,42 @@ static void dasd_statistics_array(struct seq_file *m, unsigned int *array, int f
 static int dasd_stats_proc_show(struct seq_file *m, void *v)
 {
 #ifdef CONFIG_DASD_PROFILE
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct dasd_profile_info *prof;
+	int factor;
+
+	/* check for active profiling */
+	if (!dasd_global_profile_level) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dasd_profile_info_t *prof;
 	int factor;
 
 	/* check for active profiling */
 	if (dasd_profile_level == DASD_PROFILE_OFF) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(m, "Statistics are off - they might be "
 				    "switched on using 'echo set on > "
 				    "/proc/dasd/statistics'\n");
 		return 0;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	prof = &dasd_global_profile_data;
+
+=======
 
 	prof = &dasd_global_profile;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	prof = &dasd_global_profile;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* prevent counter 'overflow' on output */
 	for (factor = 1; (prof->dasd_io_reqs / factor) > 9999999;
 	     factor *= 10);
@@ -245,6 +333,13 @@ static ssize_t dasd_stats_proc_write(struct file *file,
 {
 #ifdef CONFIG_DASD_PROFILE
 	char *buffer, *str;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int rc;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (user_len > 65536)
 		user_len = 65536;
@@ -259,11 +354,53 @@ static ssize_t dasd_stats_proc_write(struct file *file,
 		str = skip_spaces(str + 4);
 		if (strcmp(str, "on") == 0) {
 			/* switch on statistics profiling */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			rc = dasd_stats_all_block_on();
+			if (rc) {
+				dasd_stats_all_block_off();
+				goto out_error;
+			}
+			dasd_global_profile_reset();
+			dasd_global_profile_level = DASD_PROFILE_ON;
+=======
 			dasd_profile_level = DASD_PROFILE_ON;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			dasd_profile_level = DASD_PROFILE_ON;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_info("The statistics feature has been switched "
 				"on\n");
 		} else if (strcmp(str, "off") == 0) {
 			/* switch off and reset statistics profiling */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dasd_global_profile_level = DASD_PROFILE_OFF;
+			dasd_global_profile_reset();
+			dasd_stats_all_block_off();
+			pr_info("The statistics feature has been switched "
+				"off\n");
+		} else
+			goto out_parse_error;
+	} else if (strncmp(str, "reset", 5) == 0) {
+		/* reset the statistics */
+		dasd_global_profile_reset();
+		dasd_stats_all_block_reset();
+		pr_info("The statistics have been reset\n");
+	} else
+		goto out_parse_error;
+	vfree(buffer);
+	return user_len;
+out_parse_error:
+	rc = -EINVAL;
+	pr_warning("%s is not a supported value for /proc/dasd/statistics\n",
+		str);
+out_error:
+	vfree(buffer);
+	return rc;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			memset(&dasd_global_profile,
 			       0, sizeof (struct dasd_profile_info_t));
 			dasd_profile_level = DASD_PROFILE_OFF;
@@ -285,6 +422,10 @@ out_error:
 		str);
 	kfree(buffer);
 	return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	pr_warning("/proc/dasd/statistics: is not activated in this kernel\n");
 	return user_len;

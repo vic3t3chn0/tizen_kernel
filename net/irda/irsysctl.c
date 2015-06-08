@@ -45,10 +45,16 @@ extern unsigned int sysctl_min_tx_turn_time;
 extern unsigned int sysctl_max_tx_data_size;
 extern unsigned int sysctl_max_tx_window;
 =======
+<<<<<<< HEAD
+extern unsigned int sysctl_min_tx_turn_time;
+extern unsigned int sysctl_max_tx_data_size;
+extern unsigned int sysctl_max_tx_window;
+=======
 extern int  sysctl_min_tx_turn_time;
 extern int  sysctl_max_tx_data_size;
 extern int  sysctl_max_tx_window;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int  sysctl_max_noreply_time;
 extern int  sysctl_warn_noreply_time;
 extern int  sysctl_lap_keepalive_time;

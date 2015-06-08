@@ -11,8 +11,11 @@
 #include <linux/sunrpc/svcsock.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/nfsd/syscall.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/lockd/lockd.h>
 #include <linux/sunrpc/clnt.h>
 #include <linux/sunrpc/gss_api.h>
@@ -21,7 +24,12 @@
 #include <linux/sunrpc/rpc_pipe_fs.h>
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/sunrpc/rpc_pipe_fs.h>
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "idmap.h"
 #include "nfsd.h"
@@ -30,13 +38,20 @@
 #include "fault_inject.h"
 #include "netns.h"
 =======
+<<<<<<< HEAD
+#include "fault_inject.h"
+#include "netns.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	We have a single directory with several nodes in it.
  */
 enum {
 	NFSD_Root = 1,
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_NFSD_DEPRECATED
@@ -49,6 +64,7 @@ enum {
 	NFSD_Getfs,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NFSD_List,
 	NFSD_Export_features,
 	NFSD_Fh,
@@ -77,6 +93,8 @@ enum {
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 static ssize_t write_svc(struct file *file, char *buf, size_t size);
 static ssize_t write_add(struct file *file, char *buf, size_t size);
@@ -87,6 +105,7 @@ static ssize_t write_getfd(struct file *file, char *buf, size_t size);
 static ssize_t write_getfs(struct file *file, char *buf, size_t size);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t write_filehandle(struct file *file, char *buf, size_t size);
 static ssize_t write_unlock_ip(struct file *file, char *buf, size_t size);
 static ssize_t write_unlock_fs(struct file *file, char *buf, size_t size);
@@ -104,6 +123,8 @@ static ssize_t write_recoverydir(struct file *file, char *buf, size_t size);
 static ssize_t (*write_op[])(struct file *, char *, size_t) = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 	[NFSD_Svc] = write_svc,
 	[NFSD_Add] = write_add,
@@ -114,6 +135,7 @@ static ssize_t (*write_op[])(struct file *, char *, size_t) = {
 	[NFSD_Getfs] = write_getfs,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[NFSD_Fh] = write_filehandle,
 	[NFSD_FO_UnlockIP] = write_unlock_ip,
 	[NFSD_FO_UnlockFS] = write_unlock_fs,
@@ -154,6 +176,8 @@ static ssize_t nfsctl_transaction_read(struct file *file, char __user *buf, size
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 	static int warned;
 	if (file->f_dentry->d_name.name[0] == '.' && !warned) {
@@ -165,6 +189,7 @@ static ssize_t nfsctl_transaction_read(struct file *file, char __user *buf, size
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (! file->private_data) {
 		/* An attempt to read a transaction file without writing
 		 * causes a 0-byte write so that the file can return
@@ -251,6 +276,8 @@ static const struct file_operations pool_stats_operations = {
  * payload - write methods
  */
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_NFSD_DEPRECATED
@@ -551,6 +578,7 @@ static ssize_t write_getfd(struct file *file, char *buf, size_t size)
 }
 #endif /* CONFIG_NFSD_DEPRECATED */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * write_unlock_ip - Release all locks used by a client
@@ -587,8 +615,12 @@ static ssize_t write_unlock_ip(struct file *file, char *buf, size_t size)
 <<<<<<< HEAD
 	if (rpc_pton(&init_net, fo_path, size, sap, salen) == 0)
 =======
+<<<<<<< HEAD
+	if (rpc_pton(&init_net, fo_path, size, sap, salen) == 0)
+=======
 	if (rpc_pton(fo_path, size, sap, salen) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	return nlmsvc_unlock_all_by_ip(sap);
@@ -641,8 +673,12 @@ static ssize_t write_unlock_fs(struct file *file, char *buf, size_t size)
 <<<<<<< HEAD
 	error = nlmsvc_unlock_all_by_sb(path.dentry->d_sb);
 =======
+<<<<<<< HEAD
+	error = nlmsvc_unlock_all_by_sb(path.dentry->d_sb);
+=======
 	error = nlmsvc_unlock_all_by_sb(path.mnt->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	path_put(&path);
 	return error;
@@ -1094,8 +1130,12 @@ out_close:
 <<<<<<< HEAD
 	xprt = svc_find_xprt(nfsd_serv, transport, &init_net, PF_INET, port);
 =======
+<<<<<<< HEAD
+	xprt = svc_find_xprt(nfsd_serv, transport, &init_net, PF_INET, port);
+=======
 	xprt = svc_find_xprt(nfsd_serv, transport, PF_INET, port);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (xprt != NULL) {
 		svc_close_xprt(xprt);
 		svc_xprt_put(xprt);
@@ -1124,8 +1164,12 @@ static ssize_t __write_ports_delxprt(char *buf)
 <<<<<<< HEAD
 	xprt = svc_find_xprt(nfsd_serv, transport, &init_net, AF_UNSPEC, port);
 =======
+<<<<<<< HEAD
+	xprt = svc_find_xprt(nfsd_serv, transport, &init_net, AF_UNSPEC, port);
+=======
 	xprt = svc_find_xprt(nfsd_serv, transport, AF_UNSPEC, port);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (xprt == NULL)
 		return -ENOTCONN;
 
@@ -1443,6 +1487,8 @@ static int nfsd_fill_super(struct super_block * sb, void * data, int silent)
 	static struct tree_descr nfsd_files[] = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 		[NFSD_Svc] = {".svc", &transaction_ops, S_IWUSR},
 		[NFSD_Add] = {".add", &transaction_ops, S_IWUSR},
@@ -1453,6 +1499,7 @@ static int nfsd_fill_super(struct super_block * sb, void * data, int silent)
 		[NFSD_Getfs] = {".getfs", &transaction_ops, S_IWUSR|S_IRUSR},
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		[NFSD_List] = {"exports", &exports_operations, S_IRUGO},
 		[NFSD_Export_features] = {"export_features",
 					&export_features_operations, S_IRUGO},
@@ -1514,20 +1561,29 @@ static int create_proc_exports_entry(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int nfsd_net_id;
 static struct pernet_operations nfsd_net_ops = {
 	.id   = &nfsd_net_id,
 	.size = sizeof(struct nfsd_net),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init init_nfsd(void)
 {
 	int retval;
 	printk(KERN_INFO "Installing knfsd (copyright (C) 1996 okir@monad.swb.de).\n");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	retval = register_cld_notifier();
 	if (retval)
 		return retval;
@@ -1541,11 +1597,14 @@ static int __init init_nfsd(void)
 	retval = nfsd_fault_inject_init(); /* nfsd fault injection controls */
 	if (retval)
 		goto out_free_slabs;
+<<<<<<< HEAD
+=======
 =======
 	retval = nfs4_state_init(); /* nfs4 locking state */
 	if (retval)
 		return retval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nfsd_stat_init();	/* Statistics */
 	retval = nfsd_reply_cache_init();
 	if (retval)
@@ -1577,6 +1636,9 @@ out_free_cache:
 out_free_stat:
 	nfsd_stat_shutdown();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nfsd_fault_inject_cleanup();
 out_free_slabs:
 	nfsd4_free_slabs();
@@ -1584,9 +1646,12 @@ out_unregister_pernet:
 	unregister_pernet_subsys(&nfsd_net_ops);
 out_unregister_notifier:
 	unregister_cld_notifier();
+<<<<<<< HEAD
+=======
 =======
 	nfsd4_free_slabs();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -1601,13 +1666,19 @@ static void __exit exit_nfsd(void)
 	nfsd_idmap_shutdown();
 	nfsd4_free_slabs();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nfsd_fault_inject_cleanup();
 	unregister_filesystem(&nfsd_fs_type);
 	unregister_pernet_subsys(&nfsd_net_ops);
 	unregister_cld_notifier();
+<<<<<<< HEAD
+=======
 =======
 	unregister_filesystem(&nfsd_fs_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MODULE_AUTHOR("Olaf Kirch <okir@monad.swb.de>");

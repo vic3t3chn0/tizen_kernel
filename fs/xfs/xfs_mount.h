@@ -216,7 +216,13 @@ typedef struct xfs_mount {
 	struct workqueue_struct	*m_data_workqueue;
 	struct workqueue_struct	*m_unwritten_workqueue;
 =======
+<<<<<<< HEAD
+
+	struct workqueue_struct	*m_data_workqueue;
+	struct workqueue_struct	*m_unwritten_workqueue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } xfs_mount_t;
 
 /*
@@ -227,8 +233,11 @@ typedef struct xfs_mount {
 						   for space allocations */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define XFS_MOUNT_DELAYLOG	(1ULL << 1)	/* delayed logging is enabled */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define XFS_MOUNT_WAS_CLEAN	(1ULL << 3)
 #define XFS_MOUNT_FS_SHUTDOWN	(1ULL << 4)	/* atomic stop of all filesystem
 						   operations, typically for
@@ -383,8 +392,12 @@ typedef struct xfs_mod_sb {
 <<<<<<< HEAD
 extern int	xfs_log_sbcount(xfs_mount_t *);
 =======
+<<<<<<< HEAD
+extern int	xfs_log_sbcount(xfs_mount_t *);
+=======
 extern int	xfs_log_sbcount(xfs_mount_t *, uint);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __uint64_t xfs_default_resblks(xfs_mount_t *mp);
 extern int	xfs_mountfs(xfs_mount_t *mp);
 
@@ -412,8 +425,12 @@ extern int	xfs_initialize_perag(struct xfs_mount *, xfs_agnumber_t,
 <<<<<<< HEAD
 extern void	xfs_sb_from_disk(struct xfs_mount *, struct xfs_dsb *);
 =======
+<<<<<<< HEAD
+extern void	xfs_sb_from_disk(struct xfs_mount *, struct xfs_dsb *);
+=======
 extern void	xfs_sb_from_disk(struct xfs_sb *, struct xfs_dsb *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void	xfs_sb_to_disk(struct xfs_dsb *, struct xfs_sb *, __int64_t);
 
 #endif	/* __XFS_MOUNT_H__ */

@@ -48,8 +48,12 @@ struct media5200_irq {
 <<<<<<< HEAD
 	struct irq_domain *irqhost;
 =======
+<<<<<<< HEAD
+	struct irq_domain *irqhost;
+=======
 	struct irq_host *irqhost;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 struct media5200_irq media5200_irq;
 
@@ -119,8 +123,12 @@ void media5200_irq_cascade(unsigned int virq, struct irq_desc *desc)
 <<<<<<< HEAD
 static int media5200_irq_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int media5200_irq_map(struct irq_domain *h, unsigned int virq,
+=======
 static int media5200_irq_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     irq_hw_number_t hw)
 {
 	pr_debug("%s: h=%p, virq=%i, hwirq=%i\n", __func__, h, virq, (int)hw);
@@ -133,8 +141,12 @@ static int media5200_irq_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static int media5200_irq_xlate(struct irq_domain *h, struct device_node *ct,
 =======
+<<<<<<< HEAD
+static int media5200_irq_xlate(struct irq_domain *h, struct device_node *ct,
+=======
 static int media5200_irq_xlate(struct irq_host *h, struct device_node *ct,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 const u32 *intspec, unsigned int intsize,
 				 irq_hw_number_t *out_hwirq,
 				 unsigned int *out_flags)
@@ -151,8 +163,12 @@ static int media5200_irq_xlate(struct irq_host *h, struct device_node *ct,
 <<<<<<< HEAD
 static const struct irq_domain_ops media5200_irq_ops = {
 =======
+<<<<<<< HEAD
+static const struct irq_domain_ops media5200_irq_ops = {
+=======
 static struct irq_host_ops media5200_irq_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map = media5200_irq_map,
 	.xlate = media5200_irq_xlate,
 };
@@ -193,19 +209,27 @@ static void __init media5200_init_irq(void)
 	media5200_irq.irqhost = irq_domain_add_linear(fpga_np,
 			MEDIA5200_NUM_IRQS, &media5200_irq_ops, &media5200_irq);
 =======
+<<<<<<< HEAD
+	media5200_irq.irqhost = irq_domain_add_linear(fpga_np,
+			MEDIA5200_NUM_IRQS, &media5200_irq_ops, &media5200_irq);
+=======
 	media5200_irq.irqhost = irq_alloc_host(fpga_np, IRQ_HOST_MAP_LINEAR,
 					       MEDIA5200_NUM_IRQS,
 					       &media5200_irq_ops, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!media5200_irq.irqhost)
 		goto out;
 	pr_debug("%s: allocated irqhost\n", __func__);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	media5200_irq.irqhost->host_data = &media5200_irq;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_set_handler_data(cascade_virq, &media5200_irq);
 	irq_set_chained_handler(cascade_virq, media5200_irq_cascade);
 

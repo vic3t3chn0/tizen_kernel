@@ -288,8 +288,11 @@ static void befs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         kmem_cache_free(befs_inode_cachep, BEFS_I(inode));
 }
 
@@ -363,8 +366,12 @@ static struct inode *befs_iget(struct super_block *sb, unsigned long ino)
 <<<<<<< HEAD
 	set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 1);
+=======
 	inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * BEFS's time is 64 bits, but current VFS is 32 bits...
@@ -864,10 +871,15 @@ befs_fill_super(struct super_block *sb, void *data, int silent)
 	sb->s_root = d_make_root(root);
 	if (!sb->s_root) {
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(root);
+	if (!sb->s_root) {
+=======
 	sb->s_root = d_alloc_root(root);
 	if (!sb->s_root) {
 		iput(root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		befs_error(sb, "get root inode failed");
 		goto unacquire_priv_sbp;
 	}

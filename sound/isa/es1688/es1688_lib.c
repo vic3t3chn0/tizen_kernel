@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/es1688.h>
 #include <sound/initval.h>
@@ -668,8 +672,12 @@ int snd_es1688_create(struct snd_card *card,
 <<<<<<< HEAD
 	if (request_irq(irq, snd_es1688_interrupt, 0, "ES1688", (void *) chip)) {
 =======
+<<<<<<< HEAD
+	if (request_irq(irq, snd_es1688_interrupt, 0, "ES1688", (void *) chip)) {
+=======
 	if (request_irq(irq, snd_es1688_interrupt, IRQF_DISABLED, "ES1688", (void *) chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "es1688: can't grab IRQ %d\n", irq);
 		return -EBUSY;
 	}

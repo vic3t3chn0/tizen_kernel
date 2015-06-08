@@ -14,7 +14,12 @@
 #include <linux/errno.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/errno.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct clock_event_device;
 
 /*
@@ -23,6 +28,9 @@ struct clock_event_device;
 void percpu_timer_setup(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct local_timer_ops {
 	int  (*setup)(struct clock_event_device *);
 	void (*stop)(struct clock_event_device *);
@@ -35,6 +43,8 @@ struct local_timer_ops {
 int local_timer_register(struct local_timer_ops *);
 #else
 static inline int local_timer_register(struct local_timer_ops *ops)
+<<<<<<< HEAD
+=======
 =======
 /*
  * Called from assembly, this is the local timer IRQ handler
@@ -69,6 +79,7 @@ int local_timer_setup(struct clock_event_device *);
 
 static inline int local_timer_setup(struct clock_event_device *evt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -ENXIO;
 }

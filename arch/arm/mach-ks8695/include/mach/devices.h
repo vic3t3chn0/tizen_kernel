@@ -33,8 +33,12 @@ struct ks8695_pci_cfg {
 <<<<<<< HEAD
 	int (*map_irq)(const struct pci_dev *, u8, u8);
 =======
+<<<<<<< HEAD
+	int (*map_irq)(const struct pci_dev *, u8, u8);
+=======
 	int (*map_irq)(struct pci_dev *, u8, u8);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 extern __init void ks8695_init_pci(struct ks8695_pci_cfg *);
 

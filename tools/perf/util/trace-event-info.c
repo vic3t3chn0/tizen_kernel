@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include "util.h"
 =======
+<<<<<<< HEAD
+#include "util.h"
+=======
 #define _GNU_SOURCE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <dirent.h>
 #include <mntent.h>
 #include <stdio.h>
@@ -37,8 +41,11 @@
 #include <unistd.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <ctype.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <errno.h>
 #include <stdbool.h>
 #include <linux/list.h>
@@ -53,11 +60,14 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _STR(x) #x
 #define STR(x) _STR(x)
 #define MAX_PATH 256
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TRACE_CTRL	"tracing_on"
 #define TRACE		"trace"
 #define AVAILABLE	"available_tracers"
@@ -85,6 +95,8 @@ struct events {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 static void die(const char *fmt, ...)
 {
@@ -106,6 +118,7 @@ static void die(const char *fmt, ...)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void *malloc_or_die(unsigned int size)
 {
 	void *data;
@@ -197,6 +210,9 @@ int bigendian(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* unfortunately, you can not stat debugfs or proc files for size */
 static void record_file(const char *file, size_t hdr_sz)
 {
@@ -204,6 +220,8 @@ static void record_file(const char *file, size_t hdr_sz)
 	char buf[BUFSIZ], *sizep;
 	off_t hdr_pos = lseek(output_fd, 0, SEEK_CUR);
 	int r, fd;
+<<<<<<< HEAD
+=======
 =======
 static unsigned long long copy_file_fd(int fd)
 {
@@ -227,11 +245,15 @@ static unsigned long long copy_file(const char *file)
 	unsigned long long size = 0;
 	int fd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		die("Can't read '%s'", file);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* put in zeros for file size, then fill true size later */
 	if (hdr_sz)
@@ -253,6 +275,8 @@ static unsigned long long copy_file(const char *file)
 
 	if (hdr_sz && pwrite(output_fd, sizep, hdr_sz, hdr_pos) < 0)
 		die("writing to %s", output_file);
+<<<<<<< HEAD
+=======
 =======
 	size = copy_file_fd(fd);
 	close(fd);
@@ -290,11 +314,15 @@ static unsigned long get_size(const char *file)
 
 	return size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void read_header_files(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *path;
 	struct stat st;
 
@@ -313,6 +341,8 @@ static void read_header_files(void)
 	write_or_die("header_event", 13);
 	record_file(path, 8);
 	put_tracing_file(path);
+<<<<<<< HEAD
+=======
 =======
 	unsigned long long size, check_size;
 	char *path;
@@ -351,6 +381,7 @@ static void read_header_files(void)
 	put_tracing_file(path);
 	close(fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static bool name_in_tp_list(char *sys, struct tracepoint_path *tps)
@@ -368,8 +399,11 @@ static void copy_event_system(const char *sys, struct tracepoint_path *tps)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long long size, check_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dirent *dent;
 	struct stat st;
 	char *format;
@@ -413,6 +447,10 @@ static void copy_event_system(const char *sys, struct tracepoint_path *tps)
 		if (ret >= 0)
 			record_file(format, 8);
 =======
+<<<<<<< HEAD
+		if (ret >= 0)
+			record_file(format, 8);
+=======
 		if (ret >= 0) {
 			/* unfortunately, you can not stat debugfs files for size */
 			size = get_size(format);
@@ -422,6 +460,7 @@ static void copy_event_system(const char *sys, struct tracepoint_path *tps)
 				die("error in size of file '%s'", format);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		free(format);
 	}
@@ -505,8 +544,12 @@ static void read_proc_kallsyms(void)
 <<<<<<< HEAD
 	unsigned int size;
 =======
+<<<<<<< HEAD
+	unsigned int size;
+=======
 	unsigned int size, check_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *path = "/proc/kallsyms";
 	struct stat st;
 	int ret;
@@ -521,6 +564,9 @@ static void read_proc_kallsyms(void)
 <<<<<<< HEAD
 	record_file(path, 4);
 =======
+<<<<<<< HEAD
+	record_file(path, 4);
+=======
 	size = get_size(path);
 	write_or_die(&size, 4);
 	check_size = copy_file(path);
@@ -528,6 +574,7 @@ static void read_proc_kallsyms(void)
 		die("error in size of file '%s'", path);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void read_ftrace_printk(void)
@@ -535,8 +582,12 @@ static void read_ftrace_printk(void)
 <<<<<<< HEAD
 	unsigned int size;
 =======
+<<<<<<< HEAD
+	unsigned int size;
+=======
 	unsigned int size, check_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *path;
 	struct stat st;
 	int ret;
@@ -553,12 +604,17 @@ static void read_ftrace_printk(void)
 	record_file(path, 4);
 
 =======
+<<<<<<< HEAD
+	record_file(path, 4);
+
+=======
 	size = get_size(path);
 	write_or_die(&size, 4);
 	check_size = copy_file(path);
 	if (size != check_size)
 		die("error in size of file '%s'", path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	put_tracing_file(path);
 }
@@ -584,6 +640,9 @@ get_tracepoints_path(struct list_head *pattrs)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 put_tracepoints_path(struct tracepoint_path *tps)
 {
@@ -597,8 +656,11 @@ put_tracepoints_path(struct tracepoint_path *tps)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool have_tracepoints(struct list_head *pattrs)
 {
 	struct perf_evsel *pos;
@@ -611,11 +673,16 @@ bool have_tracepoints(struct list_head *pattrs)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tracing_data_header(void)
 {
 	char buf[20];
 
 	/* just guessing this is someone's birthday.. ;) */
+<<<<<<< HEAD
+=======
 =======
 int read_tracing_data(int fd, struct list_head *pattrs)
 {
@@ -631,6 +698,7 @@ int read_tracing_data(int fd, struct list_head *pattrs)
 	output_fd = fd;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	buf[0] = 23;
 	buf[1] = 8;
 	buf[2] = 68;
@@ -656,6 +724,9 @@ int read_tracing_data(int fd, struct list_head *pattrs)
 	page_size = sysconf(_SC_PAGESIZE);
 	write_or_die(&page_size, 4);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct tracing_data *tracing_data_get(struct list_head *pattrs,
@@ -694,9 +765,12 @@ struct tracing_data *tracing_data_get(struct list_head *pattrs,
 	}
 
 	tracing_data_header();
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_header_files();
 	read_ftrace_files(tps);
 	read_event_files(tps);
@@ -704,6 +778,9 @@ struct tracing_data *tracing_data_get(struct list_head *pattrs,
 	read_ftrace_printk();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * All tracing data are stored by now, we can restore
 	 * the default output file in case we used temp file.
@@ -742,6 +819,8 @@ int read_tracing_data(int fd, struct list_head *pattrs)
 
 	tracing_data_put(tdata);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 }
@@ -761,4 +840,5 @@ ssize_t read_tracing_data_size(int fd, struct list_head *pattrs)
 
 	return size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

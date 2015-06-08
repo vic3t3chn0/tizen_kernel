@@ -16,17 +16,24 @@
 #include "ssl.h"
 #include "chan.h"
 =======
+<<<<<<< HEAD
+#include "ssl.h"
+#include "chan.h"
+=======
 #include "line.h"
 #include "ssl.h"
 #include "chan_kern.h"
 #include "kern.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "init.h"
 #include "irq_user.h"
 #include "mconsole_kern.h"
 
 static const int ssl_version = 1;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Referenced only by tty_driver below - presumably it's locked correctly
@@ -36,6 +43,7 @@ static const int ssl_version = 1;
 static struct tty_driver *ssl_driver;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NR_PORTS 64
 
 static void ssl_announce(char *dev_name, int dev)
@@ -86,9 +94,15 @@ static char *conf[NR_PORTS];
 static char *def_conf = CONFIG_SSL_CHAN;
 static struct line serial_lines[NR_PORTS];
 =======
+<<<<<<< HEAD
+static char *conf[NR_PORTS];
+static char *def_conf = CONFIG_SSL_CHAN;
+static struct line serial_lines[NR_PORTS];
+=======
 static struct line serial_lines[NR_PORTS] =
 	{ [0 ... NR_PORTS - 1] = LINE_INIT(CONFIG_SSL_CHAN, &driver) };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int ssl_config(char *str, char **error_out)
 {
@@ -175,8 +189,12 @@ static void ssl_console_write(struct console *c, const char *string,
 <<<<<<< HEAD
 	console_write_chan(line->chan_out, string, len);
 =======
+<<<<<<< HEAD
+	console_write_chan(line->chan_out, string, len);
+=======
 	console_write_chan(&line->chan_list, string, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&line->lock, flags);
 }
 
@@ -186,8 +204,12 @@ static struct tty_driver *ssl_console_device(struct console *c, int *index)
 <<<<<<< HEAD
 	return driver.driver;
 =======
+<<<<<<< HEAD
+	return driver.driver;
+=======
 	return ssl_driver;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ssl_console_setup(struct console *co, char *options)
@@ -211,6 +233,9 @@ static int ssl_init(void)
 {
 	char *new_title;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	int i;
 
@@ -221,6 +246,8 @@ static int ssl_init(void)
 				    ARRAY_SIZE(serial_lines));
 	if (err)
 		return err;
+<<<<<<< HEAD
+=======
 =======
 
 	printk(KERN_INFO "Initializing software serial port version %d\n",
@@ -228,12 +255,16 @@ static int ssl_init(void)
 	ssl_driver = register_lines(&driver, &ssl_ops, serial_lines,
 				    ARRAY_SIZE(serial_lines));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	new_title = add_xterm_umid(opts.xterm_title);
 	if (new_title != NULL)
 		opts.xterm_title = new_title;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < NR_PORTS; i++) {
 		char *error;
 		char *s = conf[i];
@@ -243,9 +274,12 @@ static int ssl_init(void)
 			printk(KERN_ERR "setup_one_line failed for "
 			       "device %d : %s\n", i, error);
 	}
+<<<<<<< HEAD
+=======
 =======
 	lines_init(serial_lines, ARRAY_SIZE(serial_lines), &opts);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ssl_init_done = 1;
 	register_console(&ssl_cons);
@@ -266,6 +300,9 @@ static int ssl_chan_setup(char *str)
 <<<<<<< HEAD
 	line_setup(conf, NR_PORTS, &def_conf, str, "serial line");
 =======
+<<<<<<< HEAD
+	line_setup(conf, NR_PORTS, &def_conf, str, "serial line");
+=======
 	char *error;
 	int ret;
 
@@ -275,6 +312,7 @@ static int ssl_chan_setup(char *str)
 		       "configuration string \"%s\" : %s\n", str, error);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 

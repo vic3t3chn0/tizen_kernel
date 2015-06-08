@@ -27,8 +27,12 @@ extern void swiotlb_init_with_tbl(char *tlb, unsigned long nslabs, int verbose);
 <<<<<<< HEAD
 extern unsigned long swiotlb_nr_tbl(void);
 =======
+<<<<<<< HEAD
+extern unsigned long swiotlb_nr_tbl(void);
+=======
 extern unsigned long swioltb_nr_tbl(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Enumeration for sync targets

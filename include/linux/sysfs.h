@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct kobject;
 struct module;
@@ -32,8 +36,12 @@ struct attribute {
 <<<<<<< HEAD
 	umode_t			mode;
 =======
+<<<<<<< HEAD
+	umode_t			mode;
+=======
 	mode_t			mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_LOCK_ALLOC
 	struct lock_class_key	*key;
 	struct lock_class_key	skey;
@@ -66,8 +74,12 @@ struct attribute_group {
 <<<<<<< HEAD
 	umode_t			(*is_visible)(struct kobject *,
 =======
+<<<<<<< HEAD
+	umode_t			(*is_visible)(struct kobject *,
+=======
 	mode_t			(*is_visible)(struct kobject *,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					      struct attribute *, int);
 	struct attribute	**attrs;
 };
@@ -127,7 +139,11 @@ struct sysfs_ops {
 <<<<<<< HEAD
 	const void *(*namespace)(struct kobject *, const struct attribute *);
 =======
+<<<<<<< HEAD
+	const void *(*namespace)(struct kobject *, const struct attribute *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct sysfs_dirent;
@@ -151,8 +167,12 @@ int __must_check sysfs_chmod_file(struct kobject *kobj,
 <<<<<<< HEAD
 				  const struct attribute *attr, umode_t mode);
 =======
+<<<<<<< HEAD
+				  const struct attribute *attr, umode_t mode);
+=======
 				  const struct attribute *attr, mode_t mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sysfs_remove_file(struct kobject *kobj, const struct attribute *attr);
 void sysfs_remove_files(struct kobject *kobj, const struct attribute **attr);
 
@@ -243,8 +263,12 @@ static inline int sysfs_chmod_file(struct kobject *kobj,
 <<<<<<< HEAD
 				   const struct attribute *attr, umode_t mode)
 =======
+<<<<<<< HEAD
+				   const struct attribute *attr, umode_t mode)
+=======
 				   const struct attribute *attr, mode_t mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 0;
 }

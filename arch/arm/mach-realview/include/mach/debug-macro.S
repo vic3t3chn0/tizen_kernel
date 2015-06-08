@@ -11,10 +11,15 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_REALVIEW_STD_PORT
 #define DEBUG_LL_UART_OFFSET	0x00009000
 #elif defined(CONFIG_DEBUG_REALVIEW_PB1176_PORT)
 #define DEBUG_LL_UART_OFFSET	0x0010c000
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_MACH_REALVIEW_EB) || \
     defined(CONFIG_MACH_REALVIEW_PB11MP) || \
@@ -34,6 +39,7 @@
 #warning "DEBUG_LL_UART_OFFSET already defined to a different value"
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef DEBUG_LL_UART_OFFSET
@@ -43,8 +49,12 @@
 <<<<<<< HEAD
 		.macro	addruart, rp, rv, tmp
 =======
+<<<<<<< HEAD
+		.macro	addruart, rp, rv, tmp
+=======
 		.macro	addruart, rp, rv
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	\rp, #DEBUG_LL_UART_OFFSET
 		orr	\rv, \rp, #0xfb000000	@ virtual base
 		orr	\rp, \rp, #0x10000000	@ physical base

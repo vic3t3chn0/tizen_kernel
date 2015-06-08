@@ -88,6 +88,9 @@ struct max8998_regulator_data {
  * @rtc_delay: LP3974 RTC chip bug that requires delay after a register
  * write before reading it.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @eoc: End of Charge Level in percent: 10% ~ 45% by 5% step
  *   If it equals 0, leave it unchanged.
  *   Otherwise, it is a invalid value.
@@ -97,8 +100,11 @@ struct max8998_regulator_data {
  * @timeout: Full Timeout in hours: 5, 6, 7, and -1 for disable.
  *   If it equals 0, leave it unchanged.
  *   Otherwise, leave it unchanged.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct max8998_platform_data {
 	struct max8998_regulator_data	*regulators;
@@ -124,7 +130,13 @@ struct max8998_platform_data {
 	int				restart;
 	int				timeout;
 =======
+<<<<<<< HEAD
+	int				eoc;
+	int				restart;
+	int				timeout;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /*  __LINUX_MFD_MAX8998_H */

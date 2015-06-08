@@ -10,6 +10,9 @@
 #if defined(__sparc__) && defined(__arch64__)
 /* sparc 64 bit */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef unsigned int           __kernel_nlink_t;
 #define __kernel_nlink_t __kernel_nlink_t
 
@@ -20,6 +23,8 @@ typedef unsigned short         __kernel_old_gid_t;
 /* Note this piece of asymmetry from the v9 ABI.  */
 typedef int		       __kernel_suseconds_t;
 #define __kernel_suseconds_t __kernel_suseconds_t
+<<<<<<< HEAD
+=======
 =======
 typedef unsigned long          __kernel_size_t;
 typedef long                   __kernel_ssize_t;
@@ -52,6 +57,7 @@ typedef unsigned int	       __kernel_old_dev_t;
 /* Note this piece of asymmetry from the v9 ABI.  */
 typedef int		       __kernel_suseconds_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else
 /* sparc 32 bit */
@@ -60,6 +66,9 @@ typedef unsigned int           __kernel_size_t;
 typedef int                    __kernel_ssize_t;
 typedef long int               __kernel_ptrdiff_t;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __kernel_size_t __kernel_size_t
 
 typedef unsigned short         __kernel_ipc_pid_t;
@@ -85,6 +94,8 @@ typedef unsigned short	       __kernel_old_dev_t;
 
 #include <asm-generic/posix_types.h>
 
+<<<<<<< HEAD
+=======
 =======
 typedef long                   __kernel_time_t;
 typedef long		       __kernel_suseconds_t;
@@ -193,4 +204,5 @@ static inline void __FD_ZERO(__kernel_fd_set *p)
 
 #endif /* __KERNEL__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __SPARC_POSIX_TYPES_H */

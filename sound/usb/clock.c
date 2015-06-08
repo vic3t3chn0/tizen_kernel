@@ -94,8 +94,12 @@ static int uac_clock_selector_get_val(struct snd_usb_audio *chip, int selector_i
 <<<<<<< HEAD
 			      &buf, sizeof(buf));
 =======
+<<<<<<< HEAD
+			      &buf, sizeof(buf));
+=======
 			      &buf, sizeof(buf), 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret < 0)
 		return ret;
@@ -118,9 +122,13 @@ static bool uac_clock_source_is_valid(struct snd_usb_audio *chip, int source_id)
 <<<<<<< HEAD
 	if (!uac2_control_is_readable(cs_desc->bmControls, UAC2_CS_CONTROL_CLOCK_VALID))
 =======
+<<<<<<< HEAD
+	if (!uac2_control_is_readable(cs_desc->bmControls, UAC2_CS_CONTROL_CLOCK_VALID))
+=======
 	if (!uac2_control_is_readable(cs_desc->bmControls,
 				      UAC2_CS_CONTROL_CLOCK_VALID - 1))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 
 	err = snd_usb_ctl_msg(dev, usb_rcvctrlpipe(dev, 0), UAC2_CS_CUR,
@@ -130,8 +138,12 @@ static bool uac_clock_source_is_valid(struct snd_usb_audio *chip, int source_id)
 <<<<<<< HEAD
 			      &data, sizeof(data));
 =======
+<<<<<<< HEAD
+			      &data, sizeof(data));
+=======
 			      &data, sizeof(data), 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (err < 0) {
 		snd_printk(KERN_WARNING "%s(): cannot get clock validity for id %d\n",
@@ -238,8 +250,12 @@ static int set_sample_rate_v1(struct snd_usb_audio *chip, int iface,
 <<<<<<< HEAD
 				   data, sizeof(data))) < 0) {
 =======
+<<<<<<< HEAD
+				   data, sizeof(data))) < 0) {
+=======
 				   data, sizeof(data), 1000)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "%d:%d:%d: cannot set freq %d to ep %#x\n",
 			   dev->devnum, iface, fmt->altsetting, rate, ep);
 		return err;
@@ -251,8 +267,12 @@ static int set_sample_rate_v1(struct snd_usb_audio *chip, int iface,
 <<<<<<< HEAD
 				   data, sizeof(data))) < 0) {
 =======
+<<<<<<< HEAD
+				   data, sizeof(data))) < 0) {
+=======
 				   data, sizeof(data), 1000)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_WARNING "%d:%d:%d: cannot get freq at ep %#x\n",
 			   dev->devnum, iface, fmt->altsetting, ep);
 		return 0; /* some devices don't support reading */
@@ -297,8 +317,12 @@ static int set_sample_rate_v2(struct snd_usb_audio *chip, int iface,
 <<<<<<< HEAD
 				   data, sizeof(data))) < 0) {
 =======
+<<<<<<< HEAD
+				   data, sizeof(data))) < 0) {
+=======
 				   data, sizeof(data), 1000)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "%d:%d:%d: cannot set freq %d (v2)\n",
 			   dev->devnum, iface, fmt->altsetting, rate);
 		return err;
@@ -311,8 +335,12 @@ static int set_sample_rate_v2(struct snd_usb_audio *chip, int iface,
 <<<<<<< HEAD
 				   data, sizeof(data))) < 0) {
 =======
+<<<<<<< HEAD
+				   data, sizeof(data))) < 0) {
+=======
 				   data, sizeof(data), 1000)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_WARNING "%d:%d:%d: cannot get freq (v2)\n",
 			   dev->devnum, iface, fmt->altsetting);
 		return err;

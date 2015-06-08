@@ -17,8 +17,12 @@
 <<<<<<< HEAD
  *	Paul Moore <paul@paul-moore.com>
 =======
+<<<<<<< HEAD
+ *	Paul Moore <paul@paul-moore.com>
+=======
  *	Paul Moore <paul.moore@hp.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Copyright (C) 2007 Hitachi Software Engineering Co., Ltd.
  *		       Yuichi Nakamura <ynakam@hitachisoft.jp>
  *
@@ -34,8 +38,11 @@
 #include <linux/errno.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/ext2_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/security.h>
 #include <linux/xattr.h>
@@ -67,8 +74,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bitops.h>
 #include <linux/interrupt.h>
 #include <linux/netdevice.h>	/* for network interface checks */
@@ -96,7 +107,13 @@
 #include <linux/msg.h>
 #include <linux/shm.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/msg.h>
+#include <linux/shm.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "avc.h"
 #include "objsec.h"
@@ -107,6 +124,9 @@
 #include "netlabel.h"
 #include "audit.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "avc_ss.h"
 
 #define NUM_SEL_MNT_OPTS 5
@@ -115,6 +135,8 @@ extern struct security_operations *security_ops;
 
 /* SECMARK reference count */
 static atomic_t selinux_secmark_refcount = ATOMIC_INIT(0);
+<<<<<<< HEAD
+=======
 =======
 
 #define NUM_SEL_MNT_OPTS 5
@@ -125,6 +147,7 @@ extern struct security_operations *security_ops;
 /* SECMARK reference count */
 atomic_t selinux_secmark_refcount = ATOMIC_INIT(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SECURITY_SELINUX_DEVELOP
 int selinux_enforcing;
@@ -244,6 +267,9 @@ static int inode_alloc_security(struct inode *inode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void inode_free_rcu(struct rcu_head *head)
 {
 	struct inode_security_struct *isec;
@@ -252,8 +278,11 @@ static void inode_free_rcu(struct rcu_head *head)
 	kmem_cache_free(sel_inode_cache, isec);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void inode_free_security(struct inode *inode)
 {
 	struct inode_security_struct *isec = inode->i_security;
@@ -265,6 +294,9 @@ static void inode_free_security(struct inode *inode)
 	spin_unlock(&sbsec->isec_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The inode may still be referenced in a path walk and
 	 * a call to selinux_inode_permission() can be made
@@ -275,10 +307,13 @@ static void inode_free_security(struct inode *inode)
 	 * The inode will be freed after the RCU grace period too.
 	 */
 	call_rcu(&isec->rcu, inode_free_rcu);
+<<<<<<< HEAD
+=======
 =======
 	inode->i_security = NULL;
 	kmem_cache_free(sel_inode_cache, isec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int file_alloc_security(struct file *file)
@@ -333,11 +368,14 @@ static void superblock_free_security(struct super_block *sb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* The security server must be initialized before
    any labeling or access decisions can be provided. */
 extern int ss_initialized;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The file system's label must be initialized prior to use. */
 
 static const char *labeling_behaviors[6] = {
@@ -1151,8 +1189,12 @@ static inline u16 socket_type_to_security_class(int family, int type, int protoc
 <<<<<<< HEAD
 		case NETLINK_SOCK_DIAG:
 =======
+<<<<<<< HEAD
+		case NETLINK_SOCK_DIAG:
+=======
 		case NETLINK_INET_DIAG:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return SECCLASS_NETLINK_TCPDIAG_SOCKET;
 		case NETLINK_NFLOG:
 			return SECCLASS_NETLINK_NFLOG_SOCKET;
@@ -1478,11 +1520,16 @@ static int current_has_perm(const struct task_struct *tsk,
 
 /* Check whether a task is allowed to use a capability. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cred_has_capability(const struct cred *cred,
 			       int cap, int audit)
 {
 	struct common_audit_data ad;
 	struct selinux_audit_data sad = {0,};
+<<<<<<< HEAD
+=======
 =======
 static int task_has_capability(struct task_struct *tsk,
 			       const struct cred *cred,
@@ -1490,6 +1537,7 @@ static int task_has_capability(struct task_struct *tsk,
 {
 	struct common_audit_data ad;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct av_decision avd;
 	u16 sclass;
 	u32 sid = cred_sid(cred);
@@ -1501,8 +1549,13 @@ static int task_has_capability(struct task_struct *tsk,
 	ad.selinux_audit_data = &sad;
 	ad.tsk = current;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+	ad.tsk = current;
+=======
 	ad.tsk = tsk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.cap = cap;
 
 	switch (CAP_TO_INDEX(cap)) {
@@ -1568,16 +1621,22 @@ static int inode_has_perm_noadp(const struct cred *cred,
 {
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 
 	COMMON_AUDIT_DATA_INIT(&ad, INODE);
 	ad.u.inode = inode;
 	ad.selinux_audit_data = &sad;
+<<<<<<< HEAD
+=======
 =======
 
 	COMMON_AUDIT_DATA_INIT(&ad, INODE);
 	ad.u.inode = inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return inode_has_perm(cred, inode, perms, &ad, flags);
 }
 
@@ -1591,16 +1650,22 @@ static inline int dentry_has_perm(const struct cred *cred,
 	struct inode *inode = dentry->d_inode;
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 
 	COMMON_AUDIT_DATA_INIT(&ad, DENTRY);
 	ad.u.dentry = dentry;
 	ad.selinux_audit_data = &sad;
+<<<<<<< HEAD
+=======
 =======
 
 	COMMON_AUDIT_DATA_INIT(&ad, DENTRY);
 	ad.u.dentry = dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return inode_has_perm(cred, inode, av, &ad, 0);
 }
 
@@ -1614,16 +1679,22 @@ static inline int path_has_perm(const struct cred *cred,
 	struct inode *inode = path->dentry->d_inode;
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 
 	COMMON_AUDIT_DATA_INIT(&ad, PATH);
 	ad.u.path = *path;
 	ad.selinux_audit_data = &sad;
+<<<<<<< HEAD
+=======
 =======
 
 	COMMON_AUDIT_DATA_INIT(&ad, PATH);
 	ad.u.path = *path;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return inode_has_perm(cred, inode, av, &ad, 0);
 }
 
@@ -1645,7 +1716,11 @@ static int file_has_perm(const struct cred *cred,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = cred_sid(cred);
 	int rc;
 
@@ -1654,7 +1729,11 @@ static int file_has_perm(const struct cred *cred,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sid != fsec->sid) {
 		rc = avc_has_perm(sid, fsec->sid,
@@ -1687,7 +1766,11 @@ static int may_create(struct inode *dir,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc;
 
 	dsec = dir->i_security;
@@ -1701,7 +1784,11 @@ static int may_create(struct inode *dir,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rc = avc_has_perm(sid, dsec->sid, SECCLASS_DIR,
 			  DIR__ADD_NAME | DIR__SEARCH,
@@ -1749,7 +1836,11 @@ static int may_link(struct inode *dir,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 	u32 av;
 	int rc;
@@ -1762,7 +1853,11 @@ static int may_link(struct inode *dir,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	av = DIR__SEARCH;
 	av |= (kind ? DIR__REMOVE_NAME : DIR__ADD_NAME);
@@ -1800,7 +1895,11 @@ static inline int may_rename(struct inode *old_dir,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 	u32 av;
 	int old_is_dir, new_is_dir;
@@ -1815,7 +1914,11 @@ static inline int may_rename(struct inode *old_dir,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ad.u.dentry = old_dentry;
 	rc = avc_has_perm(sid, old_dsec->sid, SECCLASS_DIR,
@@ -1874,8 +1977,12 @@ static inline u32 file_mask_to_av(int mode, int mask)
 <<<<<<< HEAD
 	if (!S_ISDIR(mode)) {
 =======
+<<<<<<< HEAD
+	if (!S_ISDIR(mode)) {
+=======
 	if ((mode & S_IFMT) != S_IFDIR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (mask & MAY_EXEC)
 			av |= FILE__EXECUTE;
 		if (mask & MAY_READ)
@@ -1938,6 +2045,9 @@ static inline u32 open_file_to_av(struct file *file)
 /* Hook functions begin here. */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int selinux_binder_set_context_mgr(struct task_struct *mgr)
 {
 	u32 mysid = current_sid();
@@ -1999,8 +2109,11 @@ static int selinux_binder_transfer_file(struct task_struct *from, struct task_st
 			    &ad);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int selinux_ptrace_access_check(struct task_struct *child,
 				     unsigned int mode)
 {
@@ -2013,8 +2126,12 @@ static int selinux_ptrace_access_check(struct task_struct *child,
 <<<<<<< HEAD
 	if (mode & PTRACE_MODE_READ) {
 =======
+<<<<<<< HEAD
+	if (mode & PTRACE_MODE_READ) {
+=======
 	if (mode == PTRACE_MODE_READ) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 sid = current_sid();
 		u32 csid = task_sid(child);
 		return avc_has_perm(sid, csid, SECCLASS_FILE, FILE__READ, NULL);
@@ -2072,6 +2189,9 @@ static int selinux_capset(struct cred *new, const struct cred *old,
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int selinux_capable(const struct cred *cred, struct user_namespace *ns,
 			   int cap, int audit)
 {
@@ -2082,6 +2202,8 @@ static int selinux_capable(const struct cred *cred, struct user_namespace *ns,
 		return rc;
 
 	return cred_has_capability(cred, cap, audit);
+<<<<<<< HEAD
+=======
 =======
 static int selinux_capable(struct task_struct *tsk, const struct cred *cred,
 			   struct user_namespace *ns, int cap, int audit)
@@ -2094,6 +2216,7 @@ static int selinux_capable(struct task_struct *tsk, const struct cred *cred,
 
 	return task_has_capability(tsk, cred, cap, audit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int selinux_quotactl(int cmds, int type, int id, struct super_block *sb)
@@ -2173,9 +2296,13 @@ static int selinux_vm_enough_memory(struct mm_struct *mm, long pages)
 <<<<<<< HEAD
 	rc = selinux_capable(current_cred(), &init_user_ns, CAP_SYS_ADMIN,
 =======
+<<<<<<< HEAD
+	rc = selinux_capable(current_cred(), &init_user_ns, CAP_SYS_ADMIN,
+=======
 	rc = selinux_capable(current, current_cred(),
 			     &init_user_ns, CAP_SYS_ADMIN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     SECURITY_CAP_NOAUDIT);
 	if (rc == 0)
 		cap_sys_admin = 1;
@@ -2194,7 +2321,11 @@ static int selinux_bprm_set_creds(struct linux_binprm *bprm)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode = bprm->file->f_path.dentry->d_inode;
 	int rc;
 
@@ -2237,7 +2368,11 @@ static int selinux_bprm_set_creds(struct linux_binprm *bprm)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.path = bprm->file->f_path;
 
 	if (bprm->file->f_path.mnt->mnt_flags & MNT_NOSUID)
@@ -2281,8 +2416,12 @@ static int selinux_bprm_set_creds(struct linux_binprm *bprm)
 <<<<<<< HEAD
 			tracer = ptrace_parent(current);
 =======
+<<<<<<< HEAD
+			tracer = ptrace_parent(current);
+=======
 			tracer = tracehook_tracer_task(current);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (likely(tracer != NULL)) {
 				sec = __task_cred(tracer)->security;
 				ptsid = sec->sid;
@@ -2328,10 +2467,13 @@ static int selinux_bprm_secureexec(struct linux_binprm *bprm)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct vfsmount *selinuxfs_mount;
 extern struct dentry *selinux_null;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Derived from fs/exec.c:flush_old_files. */
 static inline void flush_unauthorized_files(const struct cred *cred,
 					    struct files_struct *files)
@@ -2340,7 +2482,11 @@ static inline void flush_unauthorized_files(const struct cred *cred,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct file *file, *devnull = NULL;
 	struct tty_struct *tty;
 	struct fdtable *fdt;
@@ -2381,7 +2527,11 @@ static inline void flush_unauthorized_files(const struct cred *cred,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&files->file_lock);
 	for (;;) {
@@ -2396,8 +2546,12 @@ static inline void flush_unauthorized_files(const struct cred *cred,
 <<<<<<< HEAD
 		set = fdt->open_fds[j];
 =======
+<<<<<<< HEAD
+		set = fdt->open_fds[j];
+=======
 		set = fdt->open_fds->fds_bits[j];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!set)
 			continue;
 		spin_unlock(&files->file_lock);
@@ -2726,7 +2880,11 @@ static int selinux_sb_kern_mount(struct super_block *sb, int flags, void *data)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc;
 
 	rc = superblock_doinit(sb, data);
@@ -2741,7 +2899,11 @@ static int selinux_sb_kern_mount(struct super_block *sb, int flags, void *data)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.dentry = sb->s_root;
 	return superblock_has_perm(cred, sb, FILESYSTEM__MOUNT, &ad);
 }
@@ -2751,14 +2913,20 @@ static int selinux_sb_statfs(struct dentry *dentry)
 	const struct cred *cred = current_cred();
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 
 	COMMON_AUDIT_DATA_INIT(&ad, DENTRY);
 	ad.selinux_audit_data = &sad;
+<<<<<<< HEAD
+=======
 =======
 
 	COMMON_AUDIT_DATA_INIT(&ad, DENTRY);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.dentry = dentry->d_sb->s_root;
 	return superblock_has_perm(cred, dentry->d_sb, FILESYSTEM__GETATTR, &ad);
 }
@@ -2775,8 +2943,12 @@ static int selinux_mount(char *dev_name,
 <<<<<<< HEAD
 		return superblock_has_perm(cred, path->dentry->d_sb,
 =======
+<<<<<<< HEAD
+		return superblock_has_perm(cred, path->dentry->d_sb,
+=======
 		return superblock_has_perm(cred, path->mnt->mnt_sb,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   FILESYSTEM__REMOUNT, NULL);
 	else
 		return path_has_perm(cred, path, FILE__MOUNTON);
@@ -2870,8 +3042,12 @@ static int selinux_inode_init_security(struct inode *inode, struct inode *dir,
 <<<<<<< HEAD
 static int selinux_inode_create(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int selinux_inode_create(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int selinux_inode_create(struct inode *dir, struct dentry *dentry, int mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return may_create(dir, dentry, SECCLASS_FILE);
 }
@@ -2894,8 +3070,12 @@ static int selinux_inode_symlink(struct inode *dir, struct dentry *dentry, const
 <<<<<<< HEAD
 static int selinux_inode_mkdir(struct inode *dir, struct dentry *dentry, umode_t mask)
 =======
+<<<<<<< HEAD
+static int selinux_inode_mkdir(struct inode *dir, struct dentry *dentry, umode_t mask)
+=======
 static int selinux_inode_mkdir(struct inode *dir, struct dentry *dentry, int mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return may_create(dir, dentry, SECCLASS_DIR);
 }
@@ -2908,8 +3088,12 @@ static int selinux_inode_rmdir(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 static int selinux_inode_mknod(struct inode *dir, struct dentry *dentry, umode_t mode, dev_t dev)
 =======
+<<<<<<< HEAD
+static int selinux_inode_mknod(struct inode *dir, struct dentry *dentry, umode_t mode, dev_t dev)
+=======
 static int selinux_inode_mknod(struct inode *dir, struct dentry *dentry, int mode, dev_t dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return may_create(dir, dentry, inode_mode_to_security_class(mode));
 }
@@ -2935,6 +3119,9 @@ static int selinux_inode_follow_link(struct dentry *dentry, struct nameidata *na
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int selinux_inode_permission(struct inode *inode, int mask)
 {
 	const struct cred *cred = current_cred();
@@ -2943,6 +3130,8 @@ static int selinux_inode_permission(struct inode *inode, int mask)
 	u32 perms;
 	bool from_access;
 	unsigned flags = mask & MAY_NOT_BLOCK;
+<<<<<<< HEAD
+=======
 =======
 static int selinux_inode_permission(struct inode *inode, int mask, unsigned flags)
 {
@@ -2951,6 +3140,7 @@ static int selinux_inode_permission(struct inode *inode, int mask, unsigned flag
 	u32 perms;
 	bool from_access;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	from_access = mask & MAY_ACCESS;
 	mask &= (MAY_READ|MAY_WRITE|MAY_EXEC|MAY_APPEND);
@@ -2961,17 +3151,23 @@ static int selinux_inode_permission(struct inode *inode, int mask, unsigned flag
 
 	COMMON_AUDIT_DATA_INIT(&ad, INODE);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.selinux_audit_data = &sad;
 	ad.u.inode = inode;
 
 	if (from_access)
 		ad.selinux_audit_data->auditdeny |= FILE__AUDIT_ACCESS;
+<<<<<<< HEAD
+=======
 =======
 	ad.u.inode = inode;
 
 	if (from_access)
 		ad.selinux_audit_data.auditdeny |= FILE__AUDIT_ACCESS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	perms = file_mask_to_av(inode->i_mode, mask);
 
@@ -3040,7 +3236,11 @@ static int selinux_inode_setxattr(struct dentry *dentry, const char *name,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 newsid, sid = current_sid();
 	int rc = 0;
 
@@ -3058,7 +3258,11 @@ static int selinux_inode_setxattr(struct dentry *dentry, const char *name,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.dentry = dentry;
 
 	rc = avc_has_perm(sid, isec->sid, isec->sclass,
@@ -3169,9 +3373,13 @@ static int selinux_inode_getsecurity(const struct inode *inode, const char *name
 <<<<<<< HEAD
 	error = selinux_capable(current_cred(), &init_user_ns, CAP_MAC_ADMIN,
 =======
+<<<<<<< HEAD
+	error = selinux_capable(current_cred(), &init_user_ns, CAP_MAC_ADMIN,
+=======
 	error = selinux_capable(current, current_cred(),
 				&init_user_ns, CAP_MAC_ADMIN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				SECURITY_CAP_NOAUDIT);
 	if (!error)
 		error = security_sid_to_context_force(isec->sid, &context,
@@ -3284,6 +3492,9 @@ static int selinux_file_ioctl(struct file *file, unsigned int cmd,
 	case FIGETBSZ:
 	/* fall through */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case FS_IOC_GETFLAGS:
 	/* fall through */
 	case FS_IOC_GETVERSION:
@@ -3293,6 +3504,8 @@ static int selinux_file_ioctl(struct file *file, unsigned int cmd,
 	case FS_IOC_SETFLAGS:
 	/* fall through */
 	case FS_IOC_SETVERSION:
+<<<<<<< HEAD
+=======
 =======
 	case EXT2_IOC_GETFLAGS:
 	/* fall through */
@@ -3304,6 +3517,7 @@ static int selinux_file_ioctl(struct file *file, unsigned int cmd,
 	/* fall through */
 	case EXT2_IOC_SETVERSION:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = file_has_perm(cred, file, FILE__SETATTR);
 		break;
 
@@ -3320,9 +3534,14 @@ static int selinux_file_ioctl(struct file *file, unsigned int cmd,
 		error = cred_has_capability(cred, CAP_SYS_TTY_CONFIG,
 					    SECURITY_CAP_AUDIT);
 =======
+<<<<<<< HEAD
+		error = cred_has_capability(cred, CAP_SYS_TTY_CONFIG,
+					    SECURITY_CAP_AUDIT);
+=======
 		error = task_has_capability(current, cred, CAP_SYS_TTY_CONFIG,
 					SECURITY_CAP_AUDIT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	/* default case assumes that the command will go
@@ -3678,7 +3897,11 @@ static int selinux_kernel_module_request(char *kmod_name)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sid = task_sid(current);
 
@@ -3686,7 +3909,11 @@ static int selinux_kernel_module_request(char *kmod_name)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.kmod_name = kmod_name;
 
 	return avc_has_perm(sid, SECINITSID_KERNEL, SECCLASS_SYSTEM,
@@ -3829,9 +4056,14 @@ static int selinux_parse_skb_ipv4(struct sk_buff *skb,
 	ad->u.net->v4info.saddr = ih->saddr;
 	ad->u.net->v4info.daddr = ih->daddr;
 =======
+<<<<<<< HEAD
+	ad->u.net->v4info.saddr = ih->saddr;
+	ad->u.net->v4info.daddr = ih->daddr;
+=======
 	ad->u.net.v4info.saddr = ih->saddr;
 	ad->u.net.v4info.daddr = ih->daddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 0;
 
 	if (proto)
@@ -3853,9 +4085,14 @@ static int selinux_parse_skb_ipv4(struct sk_buff *skb,
 		ad->u.net->sport = th->source;
 		ad->u.net->dport = th->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = th->source;
+		ad->u.net->dport = th->dest;
+=======
 		ad->u.net.sport = th->source;
 		ad->u.net.dport = th->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -3874,9 +4111,14 @@ static int selinux_parse_skb_ipv4(struct sk_buff *skb,
 		ad->u.net->sport = uh->source;
 		ad->u.net->dport = uh->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = uh->source;
+		ad->u.net->dport = uh->dest;
+=======
 		ad->u.net.sport = uh->source;
 		ad->u.net.dport = uh->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -3895,9 +4137,14 @@ static int selinux_parse_skb_ipv4(struct sk_buff *skb,
 		ad->u.net->sport = dh->dccph_sport;
 		ad->u.net->dport = dh->dccph_dport;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = dh->dccph_sport;
+		ad->u.net->dport = dh->dccph_dport;
+=======
 		ad->u.net.sport = dh->dccph_sport;
 		ad->u.net.dport = dh->dccph_dport;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -3920,7 +4167,11 @@ static int selinux_parse_skb_ipv6(struct sk_buff *skb,
 <<<<<<< HEAD
 	__be16 frag_off;
 =======
+<<<<<<< HEAD
+	__be16 frag_off;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	offset = skb_network_offset(skb);
 	ip6 = skb_header_pointer(skb, offset, sizeof(_ipv6h), &_ipv6h);
@@ -3931,9 +4182,14 @@ static int selinux_parse_skb_ipv6(struct sk_buff *skb,
 	ad->u.net->v6info.saddr = ip6->saddr;
 	ad->u.net->v6info.daddr = ip6->daddr;
 =======
+<<<<<<< HEAD
+	ad->u.net->v6info.saddr = ip6->saddr;
+	ad->u.net->v6info.daddr = ip6->daddr;
+=======
 	ipv6_addr_copy(&ad->u.net.v6info.saddr, &ip6->saddr);
 	ipv6_addr_copy(&ad->u.net.v6info.daddr, &ip6->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 0;
 
 	nexthdr = ip6->nexthdr;
@@ -3941,8 +4197,12 @@ static int selinux_parse_skb_ipv6(struct sk_buff *skb,
 <<<<<<< HEAD
 	offset = ipv6_skip_exthdr(skb, offset, &nexthdr, &frag_off);
 =======
+<<<<<<< HEAD
+	offset = ipv6_skip_exthdr(skb, offset, &nexthdr, &frag_off);
+=======
 	offset = ipv6_skip_exthdr(skb, offset, &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (offset < 0)
 		goto out;
 
@@ -3961,9 +4221,14 @@ static int selinux_parse_skb_ipv6(struct sk_buff *skb,
 		ad->u.net->sport = th->source;
 		ad->u.net->dport = th->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = th->source;
+		ad->u.net->dport = th->dest;
+=======
 		ad->u.net.sport = th->source;
 		ad->u.net.dport = th->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -3978,9 +4243,14 @@ static int selinux_parse_skb_ipv6(struct sk_buff *skb,
 		ad->u.net->sport = uh->source;
 		ad->u.net->dport = uh->dest;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = uh->source;
+		ad->u.net->dport = uh->dest;
+=======
 		ad->u.net.sport = uh->source;
 		ad->u.net.dport = uh->dest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -3995,9 +4265,14 @@ static int selinux_parse_skb_ipv6(struct sk_buff *skb,
 		ad->u.net->sport = dh->dccph_sport;
 		ad->u.net->dport = dh->dccph_dport;
 =======
+<<<<<<< HEAD
+		ad->u.net->sport = dh->dccph_sport;
+		ad->u.net->dport = dh->dccph_dport;
+=======
 		ad->u.net.sport = dh->dccph_sport;
 		ad->u.net.dport = dh->dccph_dport;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -4020,8 +4295,12 @@ static int selinux_parse_skb(struct sk_buff *skb, struct common_audit_data *ad,
 <<<<<<< HEAD
 	switch (ad->u.net->family) {
 =======
+<<<<<<< HEAD
+	switch (ad->u.net->family) {
+=======
 	switch (ad->u.net.family) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PF_INET:
 		ret = selinux_parse_skb_ipv4(skb, ad, proto);
 		if (ret)
@@ -4030,9 +4309,14 @@ static int selinux_parse_skb(struct sk_buff *skb, struct common_audit_data *ad,
 		addrp = (char *)(src ? &ad->u.net->v4info.saddr :
 				       &ad->u.net->v4info.daddr);
 =======
+<<<<<<< HEAD
+		addrp = (char *)(src ? &ad->u.net->v4info.saddr :
+				       &ad->u.net->v4info.daddr);
+=======
 		addrp = (char *)(src ? &ad->u.net.v4info.saddr :
 				       &ad->u.net.v4info.daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto okay;
 
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
@@ -4044,9 +4328,14 @@ static int selinux_parse_skb(struct sk_buff *skb, struct common_audit_data *ad,
 		addrp = (char *)(src ? &ad->u.net->v6info.saddr :
 				       &ad->u.net->v6info.daddr);
 =======
+<<<<<<< HEAD
+		addrp = (char *)(src ? &ad->u.net->v6info.saddr :
+				       &ad->u.net->v6info.daddr);
+=======
 		addrp = (char *)(src ? &ad->u.net.v6info.saddr :
 				       &ad->u.net.v6info.daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto okay;
 #endif	/* IPV6 */
 	default:
@@ -4121,6 +4410,9 @@ static int sock_has_perm(struct task_struct *task, struct sock *sk, u32 perms)
 	struct sk_security_struct *sksec = sk->sk_security;
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 	u32 tsid = task_sid(task);
@@ -4130,10 +4422,13 @@ static int sock_has_perm(struct task_struct *task, struct sock *sk, u32 perms)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	u32 tsid = task_sid(task);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sksec->sid == SECINITSID_KERNEL)
 		return 0;
 
@@ -4143,8 +4438,14 @@ static int sock_has_perm(struct task_struct *task, struct sock *sk, u32 perms)
 	ad.u.net = &net;
 	ad.u.net->sk = sk;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+	ad.u.net = &net;
+	ad.u.net->sk = sk;
+=======
 	ad.u.net.sk = sk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return avc_has_perm(tsid, sksec->sid, sksec->sclass, perms, &ad);
 }
@@ -4226,7 +4527,12 @@ static int selinux_socket_bind(struct socket *sock, struct sockaddr *address, in
 		struct selinux_audit_data sad = {0,};
 		struct lsm_network_audit net = {0,};
 =======
+<<<<<<< HEAD
+		struct selinux_audit_data sad = {0,};
+		struct lsm_network_audit net = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct sockaddr_in *addr4 = NULL;
 		struct sockaddr_in6 *addr6 = NULL;
 		unsigned short snum;
@@ -4254,14 +4560,20 @@ static int selinux_socket_bind(struct socket *sock, struct sockaddr *address, in
 					goto out;
 				COMMON_AUDIT_DATA_INIT(&ad, NET);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ad.selinux_audit_data = &sad;
 				ad.u.net = &net;
 				ad.u.net->sport = htons(snum);
 				ad.u.net->family = family;
+<<<<<<< HEAD
+=======
 =======
 				ad.u.net.sport = htons(snum);
 				ad.u.net.family = family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				err = avc_has_perm(sksec->sid, sid,
 						   sksec->sclass,
 						   SOCKET__NAME_BIND, &ad);
@@ -4294,6 +4606,9 @@ static int selinux_socket_bind(struct socket *sock, struct sockaddr *address, in
 
 		COMMON_AUDIT_DATA_INIT(&ad, NET);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ad.selinux_audit_data = &sad;
 		ad.u.net = &net;
 		ad.u.net->sport = htons(snum);
@@ -4303,6 +4618,8 @@ static int selinux_socket_bind(struct socket *sock, struct sockaddr *address, in
 			ad.u.net->v4info.saddr = addr4->sin_addr.s_addr;
 		else
 			ad.u.net->v6info.saddr = addr6->sin6_addr;
+<<<<<<< HEAD
+=======
 =======
 		ad.u.net.sport = htons(snum);
 		ad.u.net.family = family;
@@ -4312,6 +4629,7 @@ static int selinux_socket_bind(struct socket *sock, struct sockaddr *address, in
 		else
 			ipv6_addr_copy(&ad.u.net.v6info.saddr, &addr6->sin6_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		err = avc_has_perm(sksec->sid, sid,
 				   sksec->sclass, node_perm, &ad);
@@ -4342,7 +4660,12 @@ static int selinux_socket_connect(struct socket *sock, struct sockaddr *address,
 		struct selinux_audit_data sad = {0,};
 		struct lsm_network_audit net = {0,};
 =======
+<<<<<<< HEAD
+		struct selinux_audit_data sad = {0,};
+		struct lsm_network_audit net = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct sockaddr_in *addr4 = NULL;
 		struct sockaddr_in6 *addr6 = NULL;
 		unsigned short snum;
@@ -4369,14 +4692,20 @@ static int selinux_socket_connect(struct socket *sock, struct sockaddr *address,
 
 		COMMON_AUDIT_DATA_INIT(&ad, NET);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ad.selinux_audit_data = &sad;
 		ad.u.net = &net;
 		ad.u.net->dport = htons(snum);
 		ad.u.net->family = sk->sk_family;
+<<<<<<< HEAD
+=======
 =======
 		ad.u.net.dport = htons(snum);
 		ad.u.net.family = sk->sk_family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = avc_has_perm(sksec->sid, sid, sksec->sclass, perm, &ad);
 		if (err)
 			goto out;
@@ -4466,6 +4795,9 @@ static int selinux_socket_unix_stream_connect(struct sock *sock,
 	struct sk_security_struct *sksec_new = newsk->sk_security;
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 	int err;
@@ -4474,12 +4806,15 @@ static int selinux_socket_unix_stream_connect(struct sock *sock,
 	ad.selinux_audit_data = &sad;
 	ad.u.net = &net;
 	ad.u.net->sk = other;
+<<<<<<< HEAD
+=======
 =======
 	int err;
 
 	COMMON_AUDIT_DATA_INIT(&ad, NET);
 	ad.u.net.sk = other;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = avc_has_perm(sksec_sock->sid, sksec_other->sid,
 			   sksec_other->sclass,
@@ -4507,6 +4842,9 @@ static int selinux_socket_unix_may_send(struct socket *sock,
 	struct sk_security_struct *osec = other->sk->sk_security;
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 
@@ -4514,11 +4852,14 @@ static int selinux_socket_unix_may_send(struct socket *sock,
 	ad.selinux_audit_data = &sad;
 	ad.u.net = &net;
 	ad.u.net->sk = other->sk;
+<<<<<<< HEAD
+=======
 =======
 
 	COMMON_AUDIT_DATA_INIT(&ad, NET);
 	ad.u.net.sk = other->sk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return avc_has_perm(ssec->sid, osec->sid, osec->sclass, SOCKET__SENDTO,
 			    &ad);
@@ -4555,6 +4896,9 @@ static int selinux_sock_rcv_skb_compat(struct sock *sk, struct sk_buff *skb,
 	u32 sk_sid = sksec->sid;
 	struct common_audit_data ad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 	char *addrp;
@@ -4564,6 +4908,8 @@ static int selinux_sock_rcv_skb_compat(struct sock *sk, struct sk_buff *skb,
 	ad.u.net = &net;
 	ad.u.net->netif = skb->skb_iif;
 	ad.u.net->family = family;
+<<<<<<< HEAD
+=======
 =======
 	char *addrp;
 
@@ -4571,6 +4917,7 @@ static int selinux_sock_rcv_skb_compat(struct sock *sk, struct sk_buff *skb,
 	ad.u.net.netif = skb->skb_iif;
 	ad.u.net.family = family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = selinux_parse_skb(skb, &ad, &addrp, 1, NULL);
 	if (err)
 		return err;
@@ -4601,7 +4948,12 @@ static int selinux_socket_sock_rcv_skb(struct sock *sk, struct sk_buff *skb)
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+	struct lsm_network_audit net = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *addrp;
 	u8 secmark_active;
 	u8 peerlbl_active;
@@ -4627,14 +4979,20 @@ static int selinux_socket_sock_rcv_skb(struct sock *sk, struct sk_buff *skb)
 
 	COMMON_AUDIT_DATA_INIT(&ad, NET);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.selinux_audit_data = &sad;
 	ad.u.net = &net;
 	ad.u.net->netif = skb->skb_iif;
 	ad.u.net->family = family;
+<<<<<<< HEAD
+=======
 =======
 	ad.u.net.netif = skb->skb_iif;
 	ad.u.net.family = family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = selinux_parse_skb(skb, &ad, &addrp, 1, NULL);
 	if (err)
 		return err;
@@ -4973,7 +5331,12 @@ static unsigned int selinux_ip_forward(struct sk_buff *skb, int ifindex,
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+	struct lsm_network_audit net = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 secmark_active;
 	u8 netlbl_active;
 	u8 peerlbl_active;
@@ -4992,14 +5355,20 @@ static unsigned int selinux_ip_forward(struct sk_buff *skb, int ifindex,
 
 	COMMON_AUDIT_DATA_INIT(&ad, NET);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.selinux_audit_data = &sad;
 	ad.u.net = &net;
 	ad.u.net->netif = ifindex;
 	ad.u.net->family = family;
+<<<<<<< HEAD
+=======
 =======
 	ad.u.net.netif = ifindex;
 	ad.u.net.family = family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (selinux_parse_skb(skb, &ad, &addrp, 1, NULL) != 0)
 		return NF_DROP;
 
@@ -5090,7 +5459,12 @@ static unsigned int selinux_ip_postroute_compat(struct sk_buff *skb,
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+	struct lsm_network_audit net = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *addrp;
 	u8 proto;
 
@@ -5100,14 +5474,20 @@ static unsigned int selinux_ip_postroute_compat(struct sk_buff *skb,
 
 	COMMON_AUDIT_DATA_INIT(&ad, NET);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.selinux_audit_data = &sad;
 	ad.u.net = &net;
 	ad.u.net->netif = ifindex;
 	ad.u.net->family = family;
+<<<<<<< HEAD
+=======
 =======
 	ad.u.net.netif = ifindex;
 	ad.u.net.family = family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (selinux_parse_skb(skb, &ad, &addrp, 0, &proto))
 		return NF_DROP;
 
@@ -5133,7 +5513,12 @@ static unsigned int selinux_ip_postroute(struct sk_buff *skb, int ifindex,
 	struct selinux_audit_data sad = {0,};
 	struct lsm_network_audit net = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+	struct lsm_network_audit net = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *addrp;
 	u8 secmark_active;
 	u8 peerlbl_active;
@@ -5181,14 +5566,20 @@ static unsigned int selinux_ip_postroute(struct sk_buff *skb, int ifindex,
 
 	COMMON_AUDIT_DATA_INIT(&ad, NET);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.selinux_audit_data = &sad;
 	ad.u.net = &net;
 	ad.u.net->netif = ifindex;
 	ad.u.net->family = family;
+<<<<<<< HEAD
+=======
 =======
 	ad.u.net.netif = ifindex;
 	ad.u.net.family = family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (selinux_parse_skb(skb, &ad, &addrp, 0, NULL))
 		return NF_DROP;
 
@@ -5252,6 +5643,8 @@ static int selinux_netlink_send(struct sock *sk, struct sk_buff *skb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int selinux_netlink_recv(struct sk_buff *skb, int capability)
 {
 	int err;
@@ -5271,6 +5664,7 @@ static int selinux_netlink_recv(struct sk_buff *skb, int capability)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ipc_alloc_security(struct task_struct *task,
 			      struct kern_ipc_perm *perm,
 			      u16 sclass)
@@ -5327,7 +5721,11 @@ static int ipc_has_perm(struct kern_ipc_perm *ipc_perms,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 
 	isec = ipc_perms->security;
@@ -5336,7 +5734,11 @@ static int ipc_has_perm(struct kern_ipc_perm *ipc_perms,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = ipc_perms->key;
 
 	return avc_has_perm(sid, isec->sid, isec->sclass, perms, &ad);
@@ -5360,7 +5762,11 @@ static int selinux_msg_queue_alloc_security(struct msg_queue *msq)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 	int rc;
 
@@ -5374,7 +5780,11 @@ static int selinux_msg_queue_alloc_security(struct msg_queue *msq)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = msq->q_perm.key;
 
 	rc = avc_has_perm(sid, isec->sid, SECCLASS_MSGQ,
@@ -5398,7 +5808,11 @@ static int selinux_msg_queue_associate(struct msg_queue *msq, int msqflg)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 
 	isec = msq->q_perm.security;
@@ -5407,7 +5821,11 @@ static int selinux_msg_queue_associate(struct msg_queue *msq, int msqflg)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = msq->q_perm.key;
 
 	return avc_has_perm(sid, isec->sid, SECCLASS_MSGQ,
@@ -5450,7 +5868,11 @@ static int selinux_msg_queue_msgsnd(struct msg_queue *msq, struct msg_msg *msg, 
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 	int rc;
 
@@ -5475,7 +5897,11 @@ static int selinux_msg_queue_msgsnd(struct msg_queue *msq, struct msg_msg *msg, 
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = msq->q_perm.key;
 
 	/* Can this process write to the queue? */
@@ -5503,7 +5929,11 @@ static int selinux_msg_queue_msgrcv(struct msg_queue *msq, struct msg_msg *msg,
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = task_sid(target);
 	int rc;
 
@@ -5514,7 +5944,11 @@ static int selinux_msg_queue_msgrcv(struct msg_queue *msq, struct msg_msg *msg,
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = msq->q_perm.key;
 
 	rc = avc_has_perm(sid, isec->sid,
@@ -5533,7 +5967,11 @@ static int selinux_shm_alloc_security(struct shmid_kernel *shp)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 	int rc;
 
@@ -5547,7 +5985,11 @@ static int selinux_shm_alloc_security(struct shmid_kernel *shp)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = shp->shm_perm.key;
 
 	rc = avc_has_perm(sid, isec->sid, SECCLASS_SHM,
@@ -5571,7 +6013,11 @@ static int selinux_shm_associate(struct shmid_kernel *shp, int shmflg)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 
 	isec = shp->shm_perm.security;
@@ -5580,7 +6026,11 @@ static int selinux_shm_associate(struct shmid_kernel *shp, int shmflg)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = shp->shm_perm.key;
 
 	return avc_has_perm(sid, isec->sid, SECCLASS_SHM,
@@ -5641,7 +6091,11 @@ static int selinux_sem_alloc_security(struct sem_array *sma)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 	int rc;
 
@@ -5655,7 +6109,11 @@ static int selinux_sem_alloc_security(struct sem_array *sma)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = sma->sem_perm.key;
 
 	rc = avc_has_perm(sid, isec->sid, SECCLASS_SEM,
@@ -5679,7 +6137,11 @@ static int selinux_sem_associate(struct sem_array *sma, int semflg)
 <<<<<<< HEAD
 	struct selinux_audit_data sad = {0,};
 =======
+<<<<<<< HEAD
+	struct selinux_audit_data sad = {0,};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 sid = current_sid();
 
 	isec = sma->sem_perm.security;
@@ -5688,7 +6150,11 @@ static int selinux_sem_associate(struct sem_array *sma, int semflg)
 <<<<<<< HEAD
 	ad.selinux_audit_data = &sad;
 =======
+<<<<<<< HEAD
+	ad.selinux_audit_data = &sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad.u.ipc_id = sma->sem_perm.key;
 
 	return avc_has_perm(sid, isec->sid, SECCLASS_SEM,
@@ -5925,8 +6391,12 @@ static int selinux_setprocattr(struct task_struct *p,
 <<<<<<< HEAD
 		tracer = ptrace_parent(p);
 =======
+<<<<<<< HEAD
+		tracer = ptrace_parent(p);
+=======
 		tracer = tracehook_tracer_task(p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (tracer)
 			ptsid = task_sid(tracer);
 		task_unlock(p);
@@ -6065,13 +6535,19 @@ static struct security_operations selinux_ops = {
 	.name =				"selinux",
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.binder_set_context_mgr =	selinux_binder_set_context_mgr,
 	.binder_transaction =		selinux_binder_transaction,
 	.binder_transfer_binder =	selinux_binder_transfer_binder,
 	.binder_transfer_file =		selinux_binder_transfer_file,
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ptrace_access_check =		selinux_ptrace_access_check,
 	.ptrace_traceme =		selinux_ptrace_traceme,
 	.capget =			selinux_capget,
@@ -6085,8 +6561,11 @@ static struct security_operations selinux_ops = {
 	.netlink_send =			selinux_netlink_send,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.netlink_recv =			selinux_netlink_recv,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.bprm_set_creds =		selinux_bprm_set_creds,
 	.bprm_committing_creds =	selinux_bprm_committing_creds,
@@ -6422,9 +6901,12 @@ int selinux_disable(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	extern void exit_sel_fs(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ss_initialized) {
 		/* Not permitted after initial policy load. */
 		return -EINVAL;

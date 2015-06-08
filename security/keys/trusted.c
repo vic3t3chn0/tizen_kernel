@@ -780,13 +780,19 @@ static int getoptions(char *c, struct trusted_key_payload *pay,
 			if (opt->pcrinfo_len > MAX_PCRINFO_SIZE)
 				return -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			res = hex2bin(opt->pcrinfo, args[0].from,
 				      opt->pcrinfo_len);
 			if (res < 0)
 				return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 			hex2bin(opt->pcrinfo, args[0].from, opt->pcrinfo_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case Opt_keyhandle:
 			res = strict_strtoul(args[0].from, 16, &handle);
@@ -799,25 +805,37 @@ static int getoptions(char *c, struct trusted_key_payload *pay,
 			if (strlen(args[0].from) != 2 * SHA1_DIGEST_SIZE)
 				return -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			res = hex2bin(opt->keyauth, args[0].from,
 				      SHA1_DIGEST_SIZE);
 			if (res < 0)
 				return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 			hex2bin(opt->keyauth, args[0].from, SHA1_DIGEST_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case Opt_blobauth:
 			if (strlen(args[0].from) != 2 * SHA1_DIGEST_SIZE)
 				return -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			res = hex2bin(opt->blobauth, args[0].from,
 				      SHA1_DIGEST_SIZE);
 			if (res < 0)
 				return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 			hex2bin(opt->blobauth, args[0].from, SHA1_DIGEST_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case Opt_migratable:
 			if (*args[0].from == '0')
@@ -886,8 +904,14 @@ static int datablob_parse(char *datablob, struct trusted_key_payload *p,
 		if (ret < 0)
 			return -EINVAL;
 =======
+<<<<<<< HEAD
+		ret = hex2bin(p->blob, c, p->blob_len);
+		if (ret < 0)
+			return -EINVAL;
+=======
 		hex2bin(p->blob, c, p->blob_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = getoptions(datablob, p, o);
 		if (ret < 0)
 			return ret;
@@ -1012,8 +1036,12 @@ out:
 <<<<<<< HEAD
 		rcu_assign_keypointer(key, payload);
 =======
+<<<<<<< HEAD
+		rcu_assign_keypointer(key, payload);
+=======
 		rcu_assign_pointer(key->payload.data, payload);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		kfree(payload);
 	return ret;
@@ -1090,8 +1118,12 @@ static int trusted_update(struct key *key, const void *data, size_t datalen)
 <<<<<<< HEAD
 	rcu_assign_keypointer(key, new_p);
 =======
+<<<<<<< HEAD
+	rcu_assign_keypointer(key, new_p);
+=======
 	rcu_assign_pointer(key->payload.data, new_p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	call_rcu(&p->rcu, trusted_rcu_free);
 out:
 	kfree(datablob);
@@ -1125,8 +1157,12 @@ static long trusted_read(const struct key *key, char __user *buffer,
 <<<<<<< HEAD
 		bufp = hex_byte_pack(bufp, p->blob[i]);
 =======
+<<<<<<< HEAD
+		bufp = hex_byte_pack(bufp, p->blob[i]);
+=======
 		bufp = pack_hex_byte(bufp, p->blob[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((copy_to_user(buffer, ascii_buf, 2 * p->blob_len)) != 0) {
 		kfree(ascii_buf);
 		return -EFAULT;

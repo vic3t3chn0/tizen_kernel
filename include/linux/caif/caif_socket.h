@@ -12,6 +12,9 @@
 <<<<<<< HEAD
 #include <linux/socket.h>
 =======
+<<<<<<< HEAD
+#include <linux/socket.h>
+=======
 
 #ifdef __KERNEL__
 #include <linux/socket.h>
@@ -19,6 +22,7 @@
 #include <sys/socket.h>
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * enum caif_link_selector -    Physical Link Selection.
@@ -151,8 +155,12 @@ struct sockaddr_caif {
 <<<<<<< HEAD
 	__kernel_sa_family_t  family;
 =======
+<<<<<<< HEAD
+	__kernel_sa_family_t  family;
+=======
 	sa_family_t  family;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	union {
 		struct {
 			__u8  type;		/* type: enum caif_at_type */

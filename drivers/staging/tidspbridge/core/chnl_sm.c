@@ -50,9 +50,18 @@
 /*  ----------------------------------- DSP/BIOS Bridge */
 #include <dspbridge/dbdefs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Trace & Debug */
 #include <dspbridge/dbc.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Trace & Debug */
+#include <dspbridge/dbc.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- OS Adaptation Layer */
 #include <dspbridge/sync.h>
 
@@ -123,7 +132,14 @@ int bridge_chnl_add_io_req(struct chnl_object *chnl_obj, void *host_buf,
 				CHNL_IS_OUTPUT(pchnl->chnl_mode))
 			return -EPIPE;
 		/* No other possible states left */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		DBC_ASSERT(0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DBC_ASSERT(0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	dev_obj = dev_get_first();
@@ -190,7 +206,14 @@ func_cont:
 	 * Note: for dma chans dw_dsp_addr contains dsp address
 	 * of SM buffer.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ASSERT(chnl_mgr_obj->word_size != 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ASSERT(chnl_mgr_obj->word_size != 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* DSP address */
 	chnl_packet_obj->dsp_tx_addr = dw_dsp_addr / chnl_mgr_obj->word_size;
 	chnl_packet_obj->byte_size = byte_size;
@@ -201,7 +224,14 @@ func_cont:
 			CHNL_IOCSTATCOMPLETE);
 	list_add_tail(&chnl_packet_obj->link, &pchnl->io_requests);
 	pchnl->cio_reqs++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ASSERT(pchnl->cio_reqs <= pchnl->chnl_packets);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ASSERT(pchnl->cio_reqs <= pchnl->chnl_packets);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If end of stream, update the channel state to prevent
 	 * more IOR's.
@@ -209,8 +239,16 @@ func_cont:
 	if (is_eos)
 		pchnl->state |= CHNL_STATEEOS;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* Legacy DSM Processor-Copy */
 	DBC_ASSERT(pchnl->chnl_type == CHNL_PCPY);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Legacy DSM Processor-Copy */
+	DBC_ASSERT(pchnl->chnl_type == CHNL_PCPY);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Request IO from the DSP */
 	io_request_chnl(chnl_mgr_obj->iomgr, pchnl,
 			(CHNL_IS_INPUT(pchnl->chnl_mode) ? IO_INPUT :
@@ -283,7 +321,14 @@ int bridge_chnl_cancel_io(struct chnl_object *chnl_obj)
 		list_add_tail(&chirp->link, &pchnl->io_completions);
 		pchnl->cio_cs++;
 		pchnl->cio_reqs--;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		DBC_ASSERT(pchnl->cio_reqs >= 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DBC_ASSERT(pchnl->cio_reqs >= 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	spin_unlock_bh(&chnl_mgr_obj->chnl_mgr_lock);
@@ -311,8 +356,16 @@ int bridge_chnl_close(struct chnl_object *chnl_obj)
 	status = bridge_chnl_cancel_io(chnl_obj);
 	if (status)
 		return status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* Assert I/O on this channel is now cancelled: Protects from io_dpc */
 	DBC_ASSERT((pchnl->state & CHNL_STATECANCEL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Assert I/O on this channel is now cancelled: Protects from io_dpc */
+	DBC_ASSERT((pchnl->state & CHNL_STATECANCEL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Invalidate channel object: Protects from CHNL_GetIOCompletion() */
 	/* Free the slot in the channel manager: */
 	pchnl->chnl_mgr_obj->channels[pchnl->chnl_id] = NULL;
@@ -358,6 +411,11 @@ int bridge_chnl_create(struct chnl_mgr **channel_mgr,
 	struct chnl_mgr *chnl_mgr_obj = NULL;
 	u8 max_channels;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Check DBC requirements: */
 	DBC_REQUIRE(channel_mgr != NULL);
 	DBC_REQUIRE(mgr_attrts != NULL);
@@ -365,6 +423,10 @@ int bridge_chnl_create(struct chnl_mgr **channel_mgr,
 	DBC_REQUIRE(mgr_attrts->max_channels <= CHNL_MAXCHANNELS);
 	DBC_REQUIRE(mgr_attrts->word_size != 0);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Allocate channel manager object */
 	chnl_mgr_obj = kzalloc(sizeof(struct chnl_mgr), GFP_KERNEL);
 	if (chnl_mgr_obj) {
@@ -374,7 +436,14 @@ int bridge_chnl_create(struct chnl_mgr **channel_mgr,
 		 *      mgr_attrts->max_channels = CHNL_MAXCHANNELS =
 		 *                       DDMA_MAXDDMACHNLS = DDMA_MAXZCPYCHNLS.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		DBC_ASSERT(mgr_attrts->max_channels == CHNL_MAXCHANNELS);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DBC_ASSERT(mgr_attrts->max_channels == CHNL_MAXCHANNELS);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		max_channels = CHNL_MAXCHANNELS + CHNL_MAXCHANNELS * CHNL_PCPY;
 		/* Create array of channels */
 		chnl_mgr_obj->channels = kzalloc(sizeof(struct chnl_object *)
@@ -491,7 +560,14 @@ int bridge_chnl_flush_io(struct chnl_object *chnl_obj, u32 timeout)
 			pchnl->state &= ~CHNL_STATECANCEL;
 		}
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(status || list_empty(&pchnl->io_requests));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(status || list_empty(&pchnl->io_requests));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -592,7 +668,14 @@ int bridge_chnl_get_ioc(struct chnl_object *chnl_obj, u32 timeout,
 	omap_mbox_disable_irq(dev_ctxt->mbox, IRQ_RX);
 	if (dequeue_ioc) {
 		/* Dequeue IOC and set chan_ioc; */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		DBC_ASSERT(!list_empty(&pchnl->io_completions));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DBC_ASSERT(!list_empty(&pchnl->io_completions));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chnl_packet_obj = list_first_entry(&pchnl->io_completions,
 				struct chnl_irp, link);
 		list_del(&chnl_packet_obj->link);
@@ -705,8 +788,16 @@ int bridge_chnl_idle(struct chnl_object *chnl_obj, u32 timeout,
 	struct chnl_mgr *chnl_mgr_obj;
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(chnl_obj);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(chnl_obj);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chnl_mode = chnl_obj->chnl_mode;
 	chnl_mgr_obj = chnl_obj->chnl_mgr_obj;
 
@@ -736,10 +827,20 @@ int bridge_chnl_open(struct chnl_object **chnl,
 	struct chnl_mgr *chnl_mgr_obj = hchnl_mgr;
 	struct chnl_object *pchnl = NULL;
 	struct sync_object *sync_event = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Ensure DBC requirements: */
 	DBC_REQUIRE(chnl != NULL);
 	DBC_REQUIRE(pattrs != NULL);
 	DBC_REQUIRE(hchnl_mgr != NULL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*chnl = NULL;
 
 	/* Validate Args: */
@@ -761,7 +862,14 @@ int bridge_chnl_open(struct chnl_object **chnl,
 			return status;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ASSERT(ch_id < chnl_mgr_obj->max_channels);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ASSERT(ch_id < chnl_mgr_obj->max_channels);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Create channel object: */
 	pchnl = kzalloc(sizeof(struct chnl_object), GFP_KERNEL);
@@ -850,7 +958,14 @@ int bridge_chnl_register_notify(struct chnl_object *chnl_obj,
 {
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ASSERT(!(event_mask & ~(DSP_STREAMDONE | DSP_STREAMIOCOMPLETION)));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ASSERT(!(event_mask & ~(DSP_STREAMDONE | DSP_STREAMIOCOMPLETION)));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (event_mask)
 		status = ntfy_register(chnl_obj->ntfy_obj, hnotification,
@@ -906,8 +1021,16 @@ static void free_chirp_list(struct list_head *chirp_list)
 {
 	struct chnl_irp *chirp, *tmp;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(chirp_list != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(chirp_list != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(chirp, tmp, chirp_list, link) {
 		list_del(&chirp->link);
 		kfree(chirp);
@@ -924,8 +1047,16 @@ static int search_free_channel(struct chnl_mgr *chnl_mgr_obj,
 	int status = -ENOSR;
 	u32 i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(chnl_mgr_obj);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(chnl_mgr_obj);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < chnl_mgr_obj->max_channels; i++) {
 		if (chnl_mgr_obj->channels[i] == NULL) {
 			status = 0;

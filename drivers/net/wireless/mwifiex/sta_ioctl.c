@@ -54,7 +54,22 @@ int mwifiex_copy_mcast_addr(struct mwifiex_multicast_list *mlist,
 int mwifiex_wait_queue_complete(struct mwifiex_adapter *adapter)
 {
 	bool cancel_flag = false;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int status;
+	struct cmd_ctrl_node *cmd_queued;
+
+	if (!adapter->cmd_queued)
+		return 0;
+
+	cmd_queued = adapter->cmd_queued;
+	adapter->cmd_queued = NULL;
+=======
 	int status = adapter->cmd_wait_q.status;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int status = adapter->cmd_wait_q.status;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(adapter->dev, "cmd pending\n");
 	atomic_inc(&adapter->cmd_pending);
@@ -64,14 +79,32 @@ int mwifiex_wait_queue_complete(struct mwifiex_adapter *adapter)
 
 	/* Wait for completion */
 	wait_event_interruptible(adapter->cmd_wait_q.wait,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 *(cmd_queued->condition));
+	if (!*(cmd_queued->condition))
+=======
 					adapter->cmd_wait_q.condition);
 	if (!adapter->cmd_wait_q.condition)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					adapter->cmd_wait_q.condition);
+	if (!adapter->cmd_wait_q.condition)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cancel_flag = true;
 
 	if (cancel_flag) {
 		mwifiex_cancel_pending_ioctl(adapter);
 		dev_dbg(adapter->dev, "cmd cancel\n");
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	status = adapter->cmd_wait_q.status;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	adapter->cmd_wait_q.status = 0;
 
 	return status;
@@ -142,10 +175,92 @@ int mwifiex_request_set_multicast_list(struct mwifiex_private *priv,
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This function fills bss descriptor structure using provided
+ * information.
+ */
+int mwifiex_fill_new_bss_desc(struct mwifiex_private *priv,
+			      u8 *bssid, s32 rssi, u8 *ie_buf,
+			      size_t ie_len, u16 beacon_period,
+			      u16 cap_info_bitmap, u8 band,
+			      struct mwifiex_bssdescriptor *bss_desc)
+{
+	int ret;
+
+	memcpy(bss_desc->mac_address, bssid, ETH_ALEN);
+	bss_desc->rssi = rssi;
+	bss_desc->beacon_buf = ie_buf;
+	bss_desc->beacon_buf_size = ie_len;
+	bss_desc->beacon_period = beacon_period;
+	bss_desc->cap_info_bitmap = cap_info_bitmap;
+	bss_desc->bss_band = band;
+	if (bss_desc->cap_info_bitmap & WLAN_CAPABILITY_PRIVACY) {
+		dev_dbg(priv->adapter->dev, "info: InterpretIE: AP WEP enabled\n");
+		bss_desc->privacy = MWIFIEX_802_11_PRIV_FILTER_8021X_WEP;
+	} else {
+		bss_desc->privacy = MWIFIEX_802_11_PRIV_FILTER_ACCEPT_ALL;
+	}
+	if (bss_desc->cap_info_bitmap & WLAN_CAPABILITY_IBSS)
+		bss_desc->bss_mode = NL80211_IFTYPE_ADHOC;
+	else
+		bss_desc->bss_mode = NL80211_IFTYPE_STATION;
+
+	ret = mwifiex_update_bss_desc_with_ie(priv->adapter, bss_desc,
+					      ie_buf, ie_len);
+
+	return ret;
+}
+
+/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * In Ad-Hoc mode, the IBSS is created if not found in scan list.
  * In both Ad-Hoc and infra mode, an deauthentication is performed
  * first.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int mwifiex_bss_start(struct mwifiex_private *priv, struct cfg80211_bss *bss,
+		      struct cfg80211_ssid *req_ssid)
+{
+	int ret;
+	struct mwifiex_adapter *adapter = priv->adapter;
+	struct mwifiex_bssdescriptor *bss_desc = NULL;
+	u8 *beacon_ie = NULL;
+
+	priv->scan_block = false;
+
+	if (bss) {
+		/* Allocate and fill new bss descriptor */
+		bss_desc = kzalloc(sizeof(struct mwifiex_bssdescriptor),
+				GFP_KERNEL);
+		if (!bss_desc) {
+			dev_err(priv->adapter->dev, " failed to alloc bss_desc\n");
+			return -ENOMEM;
+		}
+
+		beacon_ie = kmemdup(bss->information_elements,
+					bss->len_beacon_ies, GFP_KERNEL);
+		if (!beacon_ie) {
+			kfree(bss_desc);
+			dev_err(priv->adapter->dev, " failed to alloc beacon_ie\n");
+			return -ENOMEM;
+		}
+
+		ret = mwifiex_fill_new_bss_desc(priv, bss->bssid, bss->signal,
+						beacon_ie, bss->len_beacon_ies,
+						bss->beacon_interval,
+						bss->capability,
+						*(u8 *)bss->priv, bss_desc);
+		if (ret)
+			goto done;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mwifiex_bss_start(struct mwifiex_private *priv,
 		      struct mwifiex_ssid_bssid *ssid_bssid)
 {
@@ -156,11 +271,33 @@ int mwifiex_bss_start(struct mwifiex_private *priv,
 	priv->scan_block = false;
 	if (!ssid_bssid)
 		return -1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (priv->bss_mode == NL80211_IFTYPE_STATION) {
 		/* Infra mode */
 		ret = mwifiex_deauthenticate(priv, NULL);
 		if (ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			goto done;
+
+		ret = mwifiex_check_network_compatibility(priv, bss_desc);
+		if (ret)
+			goto done;
+
+		dev_dbg(adapter->dev, "info: SSID found in scan list ... "
+				      "associating...\n");
+
+		if (!netif_queue_stopped(priv->netdev))
+			mwifiex_stop_net_dev_queue(priv->netdev, adapter);
+		if (netif_carrier_ok(priv->netdev))
+			netif_carrier_off(priv->netdev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return ret;
 
 		/* Search for the requested SSID in the scan table */
@@ -176,10 +313,43 @@ int mwifiex_bss_start(struct mwifiex_private *priv,
 
 		dev_dbg(adapter->dev,
 			"info: SSID found in scan list ... associating...\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Clear any past association response stored for
 		 * application retrieval */
 		priv->assoc_rsp_size = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = mwifiex_associate(priv, bss_desc);
+
+		/* If auth type is auto and association fails using open mode,
+		 * try to connect using shared mode */
+		if (ret == WLAN_STATUS_NOT_SUPPORTED_AUTH_ALG &&
+		    priv->sec_info.is_authtype_auto &&
+		    priv->sec_info.wep_enabled) {
+			priv->sec_info.authentication_mode =
+						NL80211_AUTHTYPE_SHARED_KEY;
+			ret = mwifiex_associate(priv, bss_desc);
+		}
+
+		if (bss)
+			cfg80211_put_bss(bss);
+	} else {
+		/* Adhoc mode */
+		/* If the requested SSID matches current SSID, return */
+		if (bss_desc && bss_desc->ssid.ssid_len &&
+		    (!mwifiex_ssid_cmp(&priv->curr_bss_params.bss_descriptor.
+				       ssid, &bss_desc->ssid))) {
+			kfree(bss_desc);
+			kfree(beacon_ie);
+			return 0;
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = mwifiex_associate(priv, &adapter->scan_table[i]);
 		if (ret)
 			return ret;
@@ -191,11 +361,48 @@ int mwifiex_bss_start(struct mwifiex_private *priv,
 		     (&priv->curr_bss_params.bss_descriptor.ssid,
 		      &ssid_bssid->ssid)))
 			return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Exit Adhoc mode first */
 		dev_dbg(adapter->dev, "info: Sending Adhoc Stop\n");
 		ret = mwifiex_deauthenticate(priv, NULL);
 		if (ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			goto done;
+
+		priv->adhoc_is_link_sensed = false;
+
+		ret = mwifiex_check_network_compatibility(priv, bss_desc);
+
+		if (!netif_queue_stopped(priv->netdev))
+			mwifiex_stop_net_dev_queue(priv->netdev, adapter);
+		if (netif_carrier_ok(priv->netdev))
+			netif_carrier_off(priv->netdev);
+
+		if (!ret) {
+			dev_dbg(adapter->dev, "info: network found in scan"
+							" list. Joining...\n");
+			ret = mwifiex_adhoc_join(priv, bss_desc);
+			if (bss)
+				cfg80211_put_bss(bss);
+		} else {
+			dev_dbg(adapter->dev, "info: Network not found in "
+				"the list, creating adhoc with ssid = %s\n",
+				req_ssid->ssid);
+			ret = mwifiex_adhoc_start(priv, req_ssid);
+		}
+	}
+
+done:
+	kfree(bss_desc);
+	kfree(beacon_ie);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return ret;
 
 		priv->adhoc_is_link_sensed = false;
@@ -226,6 +433,10 @@ int mwifiex_bss_start(struct mwifiex_private *priv,
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -235,8 +446,18 @@ int mwifiex_bss_start(struct mwifiex_private *priv,
  * This function prepares the correct firmware command and
  * issues it.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int mwifiex_set_hs_params(struct mwifiex_private *priv, u16 action,
+				 int cmd_type, struct mwifiex_ds_hs_cfg *hs_cfg)
+=======
 int mwifiex_set_hs_params(struct mwifiex_private *priv, u16 action,
 			  int cmd_type, struct mwifiex_ds_hs_cfg *hs_cfg)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int mwifiex_set_hs_params(struct mwifiex_private *priv, u16 action,
+			  int cmd_type, struct mwifiex_ds_hs_cfg *hs_cfg)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 {
 	struct mwifiex_adapter *adapter = priv->adapter;
@@ -270,9 +491,20 @@ int mwifiex_set_hs_params(struct mwifiex_private *priv, u16 action,
 				adapter->hs_cfg.gpio = (u8)hs_cfg->gpio;
 				if (hs_cfg->gap)
 					adapter->hs_cfg.gap = (u8)hs_cfg->gap;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			} else if (adapter->hs_cfg.conditions
+				   == cpu_to_le32(HOST_SLEEP_CFG_CANCEL)) {
+=======
 			} else if (adapter->hs_cfg.conditions ==
 						cpu_to_le32(
 						HOST_SLEEP_CFG_CANCEL)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			} else if (adapter->hs_cfg.conditions ==
+						cpu_to_le32(
+						HOST_SLEEP_CFG_CANCEL)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* Return failure if no parameters for HS
 				   enable */
 				status = -1;
@@ -294,7 +526,15 @@ int mwifiex_set_hs_params(struct mwifiex_private *priv, u16 action,
 						cpu_to_le32(prev_cond);
 		} else {
 			adapter->hs_cfg.conditions =
+<<<<<<< HEAD
+<<<<<<< HEAD
+						cpu_to_le32(hs_cfg->conditions);
+=======
 				cpu_to_le32(hs_cfg->conditions);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				cpu_to_le32(hs_cfg->conditions);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			adapter->hs_cfg.gpio = (u8)hs_cfg->gpio;
 			adapter->hs_cfg.gap = (u8)hs_cfg->gap;
 		}
@@ -347,11 +587,25 @@ int mwifiex_enable_hs(struct mwifiex_adapter *adapter)
 
 	adapter->hs_activate_wait_q_woken = false;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memset(&hscfg, 0, sizeof(struct mwifiex_ds_hs_cfg));
+	hscfg.is_invoke_hostcmd = true;
+
+	if (mwifiex_set_hs_params(mwifiex_get_priv(adapter,
+						   MWIFIEX_BSS_ROLE_STA),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&hscfg, 0, sizeof(struct mwifiex_hs_config_param));
 	hscfg.is_invoke_hostcmd = true;
 
 	if (mwifiex_set_hs_params(mwifiex_get_priv(adapter,
 						       MWIFIEX_BSS_ROLE_STA),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  HostCmd_ACT_GEN_SET, MWIFIEX_SYNC_CMD,
 				  &hscfg)) {
 		dev_err(adapter->dev, "IOCTL request HS enable failed\n");
@@ -359,7 +613,15 @@ int mwifiex_enable_hs(struct mwifiex_adapter *adapter)
 	}
 
 	wait_event_interruptible(adapter->hs_activate_wait_q,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 adapter->hs_activate_wait_q_woken);
+=======
 			adapter->hs_activate_wait_q_woken);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			adapter->hs_activate_wait_q_woken);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return true;
 }
@@ -376,7 +638,14 @@ int mwifiex_get_bss_info(struct mwifiex_private *priv,
 {
 	struct mwifiex_adapter *adapter = priv->adapter;
 	struct mwifiex_bssdescriptor *bss_desc;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	s32 tbl_idx;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	s32 tbl_idx;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!info)
 		return -1;
@@ -385,8 +654,17 @@ int mwifiex_get_bss_info(struct mwifiex_private *priv,
 
 	info->bss_mode = priv->bss_mode;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memcpy(&info->ssid, &bss_desc->ssid, sizeof(struct cfg80211_ssid));
+=======
 	memcpy(&info->ssid, &bss_desc->ssid,
 	       sizeof(struct mwifiex_802_11_ssid));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	memcpy(&info->ssid, &bss_desc->ssid,
+	       sizeof(struct mwifiex_802_11_ssid));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memcpy(&info->bssid, &bss_desc->mac_address, ETH_ALEN);
 
@@ -394,6 +672,11 @@ int mwifiex_get_bss_info(struct mwifiex_private *priv,
 
 	info->region_code = adapter->region_code;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Scan table index if connected */
 	info->scan_table_idx = 0;
 	if (priv->media_connected) {
@@ -405,6 +688,10 @@ int mwifiex_get_bss_info(struct mwifiex_private *priv,
 			info->scan_table_idx = tbl_idx;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info->media_connected = priv->media_connected;
 
 	info->max_power_level = priv->max_tx_power_level;
@@ -414,7 +701,15 @@ int mwifiex_get_bss_info(struct mwifiex_private *priv,
 
 	info->bcn_nf_last = priv->bcn_nf_last;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (priv->sec_info.wep_enabled)
+=======
 	if (priv->sec_info.wep_status == MWIFIEX_802_11_WEP_ENABLED)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (priv->sec_info.wep_status == MWIFIEX_802_11_WEP_ENABLED)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info->wep_status = true;
 	else
 		info->wep_status = false;
@@ -426,6 +721,23 @@ int mwifiex_get_bss_info(struct mwifiex_private *priv,
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * The function disables auto deep sleep mode.
+ */
+int mwifiex_disable_auto_ds(struct mwifiex_private *priv)
+{
+	struct mwifiex_ds_auto_ds auto_ds;
+
+	auto_ds.auto_ds = DEEP_SLEEP_OFF;
+
+	return mwifiex_send_cmd_sync(priv, HostCmd_CMD_802_11_PS_MODE_ENH,
+				     DIS_AUTO_PS, BITMAP_AUTO_DS, &auto_ds);
+}
+EXPORT_SYMBOL_GPL(mwifiex_disable_auto_ds);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The function sets band configurations.
  *
  * it performs extra checks to make sure the Ad-Hoc
@@ -485,6 +797,10 @@ int mwifiex_set_radio_band_cfg(struct mwifiex_private *priv,
 
 	return 0;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * IOCTL request handler to set/get active channel.
@@ -509,6 +825,19 @@ int mwifiex_bss_set_channel(struct mwifiex_private *priv,
 		adapter->adhoc_start_band = BAND_G | BAND_B;
 	if (chan->channel) {
 		if (chan->channel <= MAX_CHANNEL_BAND_BG)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			cfp = mwifiex_get_cfp(priv, 0, (u16) chan->channel, 0);
+		if (!cfp) {
+			cfp = mwifiex_get_cfp(priv, BAND_A,
+					      (u16) chan->channel, 0);
+			if (cfp) {
+				if (adapter->adhoc_11n_enabled)
+					adapter->adhoc_start_band = BAND_A
+								    | BAND_AN;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cfp = mwifiex_get_cfp_by_band_and_channel_from_cfg80211
 					(priv, 0, (u16) chan->channel);
 		if (!cfp) {
@@ -518,12 +847,28 @@ int mwifiex_bss_set_channel(struct mwifiex_private *priv,
 				if (adapter->adhoc_11n_enabled)
 					adapter->adhoc_start_band = BAND_A
 						| BAND_AN;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				else
 					adapter->adhoc_start_band = BAND_A;
 			}
 		}
 	} else {
 		if (chan->freq <= MAX_FREQUENCY_BAND_BG)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			cfp = mwifiex_get_cfp(priv, 0, 0, chan->freq);
+		if (!cfp) {
+			cfp = mwifiex_get_cfp(priv, BAND_A, 0, chan->freq);
+			if (cfp) {
+				if (adapter->adhoc_11n_enabled)
+					adapter->adhoc_start_band = BAND_A
+								    | BAND_AN;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cfp = mwifiex_get_cfp_by_band_and_freq_from_cfg80211(
 							priv, 0, chan->freq);
 		if (!cfp) {
@@ -533,6 +878,10 @@ int mwifiex_bss_set_channel(struct mwifiex_private *priv,
 				if (adapter->adhoc_11n_enabled)
 					adapter->adhoc_start_band = BAND_A
 						| BAND_AN;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				else
 					adapter->adhoc_start_band = BAND_A;
 			}
@@ -568,6 +917,12 @@ static int mwifiex_bss_ioctl_ibss_channel(struct mwifiex_private *priv,
 	}
 
 	return mwifiex_send_cmd_sync(priv, HostCmd_CMD_802_11_RF_CHANNEL,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				     action, 0, channel);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    action, 0, channel);
 }
 
@@ -613,6 +968,10 @@ int mwifiex_bss_ioctl_find_bss(struct mwifiex_private *priv,
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -633,12 +992,29 @@ int mwifiex_bss_ioctl_find_bss(struct mwifiex_private *priv,
  *          - Start/Join the IBSS
  */
 int
+<<<<<<< HEAD
+<<<<<<< HEAD
+mwifiex_drv_change_adhoc_chan(struct mwifiex_private *priv, u16 channel)
+=======
 mwifiex_drv_change_adhoc_chan(struct mwifiex_private *priv, int channel)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+mwifiex_drv_change_adhoc_chan(struct mwifiex_private *priv, int channel)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	struct mwifiex_bss_info bss_info;
 	struct mwifiex_ssid_bssid ssid_bssid;
 	u16 curr_chan = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct cfg80211_bss *bss = NULL;
+	struct ieee80211_channel *chan;
+	enum ieee80211_band band;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(&bss_info, 0, sizeof(bss_info));
 
@@ -655,7 +1031,15 @@ mwifiex_drv_change_adhoc_chan(struct mwifiex_private *priv, int channel)
 		goto done;
 	}
 	dev_dbg(priv->adapter->dev, "cmd: updating channel from %d to %d\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		curr_chan, channel);
+=======
 			curr_chan, channel);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			curr_chan, channel);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!bss_info.media_connected) {
 		ret = 0;
@@ -667,19 +1051,51 @@ mwifiex_drv_change_adhoc_chan(struct mwifiex_private *priv, int channel)
 	ret = mwifiex_deauthenticate(priv, ssid_bssid.bssid);
 
 	ret = mwifiex_bss_ioctl_ibss_channel(priv, HostCmd_ACT_GEN_SET,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					     &channel);
+=======
 					     (u16 *) &channel);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					     (u16 *) &channel);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Do specific SSID scanning */
 	if (mwifiex_request_scan(priv, &bss_info.ssid)) {
 		ret = -1;
 		goto done;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	band = mwifiex_band_to_radio_type(priv->curr_bss_params.band);
+	chan = __ieee80211_get_channel(priv->wdev->wiphy,
+				       ieee80211_channel_to_frequency(channel,
+								      band));
+
+	/* Find the BSS we want using available scan results */
+	bss = cfg80211_get_bss(priv->wdev->wiphy, chan, bss_info.bssid,
+			       bss_info.ssid.ssid, bss_info.ssid.ssid_len,
+			       WLAN_CAPABILITY_ESS, WLAN_CAPABILITY_ESS);
+	if (!bss)
+		wiphy_warn(priv->wdev->wiphy, "assoc: bss %pM not in scan results\n",
+			   bss_info.bssid);
+
+	ret = mwifiex_bss_start(priv, bss, &bss_info.ssid);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Start/Join Adhoc network */
 	memset(&ssid_bssid, 0, sizeof(struct mwifiex_ssid_bssid));
 	memcpy(&ssid_bssid.ssid, &bss_info.ssid,
 	       sizeof(struct mwifiex_802_11_ssid));
 
 	ret = mwifiex_bss_start(priv, &ssid_bssid);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 done:
 	return ret;
 }
@@ -695,6 +1111,14 @@ done:
 static int mwifiex_rate_ioctl_get_rate_value(struct mwifiex_private *priv,
 					     struct mwifiex_rate_cfg *rate_cfg)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rate_cfg->is_rate_auto = priv->is_data_rate_auto;
+	return mwifiex_send_cmd_sync(priv, HostCmd_CMD_802_11_TX_RATE_QUERY,
+				     HostCmd_ACT_GEN_GET, 0, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mwifiex_adapter *adapter = priv->adapter;
 
 	rate_cfg->is_rate_auto = priv->is_data_rate_auto;
@@ -740,6 +1164,10 @@ static int mwifiex_rate_ioctl_get_rate_value(struct mwifiex_private *priv,
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -780,7 +1208,15 @@ static int mwifiex_rate_ioctl_set_rate_value(struct mwifiex_private *priv,
 			if ((rate[i] & 0x7f) == (rate_cfg->rate & 0x7f))
 				break;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((i == MWIFIEX_SUPPORTED_RATES) || !rate[i]) {
+=======
 		if (!rate[i] || (i == MWIFIEX_SUPPORTED_RATES)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!rate[i] || (i == MWIFIEX_SUPPORTED_RATES)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev_err(adapter->dev, "fixed data rate %#x is out "
 			       "of range\n", rate_cfg->rate);
 			return -1;
@@ -846,10 +1282,25 @@ int mwifiex_drv_get_data_rate(struct mwifiex_private *priv,
 	ret = mwifiex_rate_ioctl_cfg(priv, rate);
 
 	if (!ret) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (rate->is_rate_auto)
+			rate->rate = mwifiex_index_to_data_rate(priv,
+								priv->tx_rate,
+								priv->tx_htinfo
+								);
+		else
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rate && rate->is_rate_auto)
 			rate->rate = mwifiex_index_to_data_rate(priv->tx_rate,
 							priv->tx_htinfo);
 		else if (rate)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rate->rate = priv->data_rate;
 	} else {
 		ret = -1;
@@ -885,16 +1336,36 @@ int mwifiex_set_tx_power(struct mwifiex_private *priv,
 		if ((dbm < priv->min_tx_power_level) ||
 		    (dbm > priv->max_tx_power_level)) {
 			dev_err(priv->adapter->dev, "txpower value %d dBm"
+<<<<<<< HEAD
+<<<<<<< HEAD
+				" is out of range (%d dBm-%d dBm)\n",
+				dbm, priv->min_tx_power_level,
+				priv->max_tx_power_level);
+=======
 					" is out of range (%d dBm-%d dBm)\n",
 					dbm, priv->min_tx_power_level,
 					priv->max_tx_power_level);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					" is out of range (%d dBm-%d dBm)\n",
+					dbm, priv->min_tx_power_level,
+					priv->max_tx_power_level);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 		}
 	}
 	buf = kzalloc(MWIFIEX_SIZE_OF_CMD_BUFFER, GFP_KERNEL);
 	if (!buf) {
 		dev_err(priv->adapter->dev, "%s: failed to alloc cmd buffer\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			__func__);
+=======
 				__func__);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				__func__);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 
@@ -902,6 +1373,18 @@ int mwifiex_set_tx_power(struct mwifiex_private *priv,
 	txp_cfg->action = cpu_to_le16(HostCmd_ACT_GEN_SET);
 	if (!power_cfg->is_power_auto) {
 		txp_cfg->mode = cpu_to_le32(1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pg_tlv = (struct mwifiex_types_power_group *)
+			 (buf + sizeof(struct host_cmd_ds_txpwr_cfg));
+		pg_tlv->type = TLV_TYPE_POWER_GROUP;
+		pg_tlv->length = 4 * sizeof(struct mwifiex_power_group);
+		pg = (struct mwifiex_power_group *)
+		     (buf + sizeof(struct host_cmd_ds_txpwr_cfg)
+		      + sizeof(struct mwifiex_types_power_group));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pg_tlv = (struct mwifiex_types_power_group *) (buf +
 				sizeof(struct host_cmd_ds_txpwr_cfg));
 		pg_tlv->type = TLV_TYPE_POWER_GROUP;
@@ -909,6 +1392,10 @@ int mwifiex_set_tx_power(struct mwifiex_private *priv,
 		pg = (struct mwifiex_power_group *) (buf +
 				sizeof(struct host_cmd_ds_txpwr_cfg) +
 				sizeof(struct mwifiex_types_power_group));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Power group for modulation class HR/DSSS */
 		pg->first_rate_code = 0x00;
 		pg->last_rate_code = 0x03;
@@ -971,8 +1458,18 @@ int mwifiex_drv_set_power(struct mwifiex_private *priv, u32 *ps_mode)
 				    sub_cmd, BITMAP_STA_PS, NULL);
 	if ((!ret) && (sub_cmd == DIS_AUTO_PS))
 		ret = mwifiex_send_cmd_async(priv,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					     HostCmd_CMD_802_11_PS_MODE_ENH,
+					     GET_PS, 0, NULL);
+=======
 				HostCmd_CMD_802_11_PS_MODE_ENH, GET_PS,
 				0, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				HostCmd_CMD_802_11_PS_MODE_ENH, GET_PS,
+				0, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -996,7 +1493,15 @@ static int mwifiex_set_wpa_ie_helper(struct mwifiex_private *priv,
 		memcpy(priv->wpa_ie, ie_data_ptr, ie_len);
 		priv->wpa_ie_len = (u8) ie_len;
 		dev_dbg(priv->adapter->dev, "cmd: Set Wpa_ie_len=%d IE=%#x\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			priv->wpa_ie_len, priv->wpa_ie[0]);
+=======
 				priv->wpa_ie_len, priv->wpa_ie[0]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				priv->wpa_ie_len, priv->wpa_ie[0]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (priv->wpa_ie[0] == WLAN_EID_WPA) {
 			priv->sec_info.wpa_enabled = true;
@@ -1037,7 +1542,15 @@ static int mwifiex_set_wapi_ie(struct mwifiex_private *priv,
 		memcpy(priv->wapi_ie, ie_data_ptr, ie_len);
 		priv->wapi_ie_len = ie_len;
 		dev_dbg(priv->adapter->dev, "cmd: Set wapi_ie_len=%d IE=%#x\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			priv->wapi_ie_len, priv->wapi_ie[0]);
+=======
 				priv->wapi_ie_len, priv->wapi_ie[0]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				priv->wapi_ie_len, priv->wapi_ie[0]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (priv->wapi_ie[0] == WLAN_EID_BSS_AC_ACCESS_DELAY)
 			priv->sec_info.wapi_enabled = true;
@@ -1063,8 +1576,18 @@ static int mwifiex_sec_ioctl_set_wapi_key(struct mwifiex_private *priv,
 {
 
 	return mwifiex_send_cmd_sync(priv, HostCmd_CMD_802_11_KEY_MATERIAL,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				     HostCmd_ACT_GEN_SET, KEY_INFO_ENABLED,
+				     encrypt_key);
+=======
 				    HostCmd_ACT_GEN_SET, KEY_INFO_ENABLED,
 				    encrypt_key);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    HostCmd_ACT_GEN_SET, KEY_INFO_ENABLED,
+				    encrypt_key);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1085,7 +1608,15 @@ static int mwifiex_sec_ioctl_set_wep_key(struct mwifiex_private *priv,
 	wep_key = &priv->wep_key[priv->wep_key_curr_index];
 	index = encrypt_key->key_index;
 	if (encrypt_key->key_disable) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		priv->sec_info.wep_enabled = 0;
+=======
 		priv->sec_info.wep_status = MWIFIEX_802_11_WEP_DISABLED;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		priv->sec_info.wep_status = MWIFIEX_802_11_WEP_DISABLED;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (!encrypt_key->key_len) {
 		/* Copy the required key as the current key */
 		wep_key = &priv->wep_key[index];
@@ -1095,7 +1626,15 @@ static int mwifiex_sec_ioctl_set_wep_key(struct mwifiex_private *priv,
 			return -1;
 		}
 		priv->wep_key_curr_index = (u16) index;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		priv->sec_info.wep_enabled = 1;
+=======
 		priv->sec_info.wep_status = MWIFIEX_802_11_WEP_ENABLED;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		priv->sec_info.wep_status = MWIFIEX_802_11_WEP_ENABLED;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		wep_key = &priv->wep_key[index];
 		memset(wep_key, 0, sizeof(struct mwifiex_wep_key));
@@ -1105,7 +1644,15 @@ static int mwifiex_sec_ioctl_set_wep_key(struct mwifiex_private *priv,
 		       encrypt_key->key_len);
 		wep_key->key_index = index;
 		wep_key->key_length = encrypt_key->key_len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		priv->sec_info.wep_enabled = 1;
+=======
 		priv->sec_info.wep_status = MWIFIEX_802_11_WEP_ENABLED;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		priv->sec_info.wep_status = MWIFIEX_802_11_WEP_ENABLED;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (wep_key->key_length) {
 		/* Send request to firmware */
@@ -1115,7 +1662,15 @@ static int mwifiex_sec_ioctl_set_wep_key(struct mwifiex_private *priv,
 		if (ret)
 			return ret;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (priv->sec_info.wep_enabled)
+=======
 	if (priv->sec_info.wep_status == MWIFIEX_802_11_WEP_ENABLED)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (priv->sec_info.wep_status == MWIFIEX_802_11_WEP_ENABLED)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->curr_pkt_filter |= HostCmd_ACT_MAC_WEP_ENABLE;
 	else
 		priv->curr_pkt_filter &= ~HostCmd_ACT_MAC_WEP_ENABLE;
@@ -1158,9 +1713,21 @@ static int mwifiex_sec_ioctl_set_wpa_key(struct mwifiex_private *priv,
 		/* Send the key as PTK to firmware */
 		encrypt_key->key_index = MWIFIEX_KEY_INDEX_UNICAST;
 		ret = mwifiex_send_cmd_async(priv,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					     HostCmd_CMD_802_11_KEY_MATERIAL,
+					     HostCmd_ACT_GEN_SET,
+					     KEY_INFO_ENABLED, encrypt_key);
+=======
 					HostCmd_CMD_802_11_KEY_MATERIAL,
 					HostCmd_ACT_GEN_SET, KEY_INFO_ENABLED,
 					encrypt_key);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					HostCmd_CMD_802_11_KEY_MATERIAL,
+					HostCmd_ACT_GEN_SET, KEY_INFO_ENABLED,
+					encrypt_key);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret)
 			return ret;
 
@@ -1185,6 +1752,19 @@ static int mwifiex_sec_ioctl_set_wpa_key(struct mwifiex_private *priv,
 
 	if (remove_key)
 		ret = mwifiex_send_cmd_sync(priv,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					    HostCmd_CMD_802_11_KEY_MATERIAL,
+					    HostCmd_ACT_GEN_SET,
+					    !KEY_INFO_ENABLED, encrypt_key);
+	else
+		ret = mwifiex_send_cmd_sync(priv,
+					    HostCmd_CMD_802_11_KEY_MATERIAL,
+					    HostCmd_ACT_GEN_SET,
+					    KEY_INFO_ENABLED, encrypt_key);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       HostCmd_CMD_802_11_KEY_MATERIAL,
 				       HostCmd_ACT_GEN_SET, !(KEY_INFO_ENABLED),
 				       encrypt_key);
@@ -1193,6 +1773,10 @@ static int mwifiex_sec_ioctl_set_wpa_key(struct mwifiex_private *priv,
 					HostCmd_CMD_802_11_KEY_MATERIAL,
 					HostCmd_ACT_GEN_SET, KEY_INFO_ENABLED,
 					encrypt_key);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -1266,9 +1850,21 @@ int mwifiex_get_signal_info(struct mwifiex_private *priv,
 
 	if (!status) {
 		if (signal->selector & BCN_RSSI_AVG_MASK)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			priv->qual_level = signal->bcn_rssi_avg;
+		if (signal->selector & BCN_NF_AVG_MASK)
+			priv->qual_noise = signal->bcn_nf_avg;
+=======
 			priv->w_stats.qual.level = signal->bcn_rssi_avg;
 		if (signal->selector & BCN_NF_AVG_MASK)
 			priv->w_stats.qual.noise = signal->bcn_nf_avg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			priv->w_stats.qual.level = signal->bcn_rssi_avg;
+		if (signal->selector & BCN_NF_AVG_MASK)
+			priv->w_stats.qual.noise = signal->bcn_nf_avg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return status;
@@ -1311,7 +1907,15 @@ mwifiex_get_ver_ext(struct mwifiex_private *priv)
 
 	memset(&ver_ext, 0, sizeof(struct host_cmd_ds_version_ext));
 	if (mwifiex_send_cmd_sync(priv, HostCmd_CMD_VERSION_EXT,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  HostCmd_ACT_GEN_GET, 0, &ver_ext))
+=======
 				    HostCmd_ACT_GEN_GET, 0, &ver_ext))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    HostCmd_ACT_GEN_GET, 0, &ver_ext))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 
 	return 0;
@@ -1327,6 +1931,13 @@ int
 mwifiex_get_stats_info(struct mwifiex_private *priv,
 		       struct mwifiex_ds_get_stats *log)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return mwifiex_send_cmd_sync(priv, HostCmd_CMD_802_11_GET_LOG,
+				     HostCmd_ACT_GEN_GET, 0, log);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	ret = mwifiex_send_cmd_sync(priv, HostCmd_CMD_802_11_GET_LOG,
@@ -1339,6 +1950,10 @@ mwifiex_get_stats_info(struct mwifiex_private *priv,
 	}
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1478,9 +2093,21 @@ mwifiex_set_gen_ie_helper(struct mwifiex_private *priv, u8 *ie_data_ptr,
 	}
 	pvendor_ie = (struct ieee_types_vendor_header *) ie_data_ptr;
 	/* Test to see if it is a WPA IE, if not, then it is a gen IE */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (((pvendor_ie->element_id == WLAN_EID_WPA) &&
+	     (!memcmp(pvendor_ie->oui, wpa_oui, sizeof(wpa_oui)))) ||
+	    (pvendor_ie->element_id == WLAN_EID_RSN)) {
+=======
 	if (((pvendor_ie->element_id == WLAN_EID_WPA)
 	     && (!memcmp(pvendor_ie->oui, wpa_oui, sizeof(wpa_oui))))
 			|| (pvendor_ie->element_id == WLAN_EID_RSN)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (((pvendor_ie->element_id == WLAN_EID_WPA)
+	     && (!memcmp(pvendor_ie->oui, wpa_oui, sizeof(wpa_oui))))
+			|| (pvendor_ie->element_id == WLAN_EID_RSN)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* IE is a WPA/WPA2 IE so call set_wpa function */
 		ret = mwifiex_set_wpa_ie_helper(priv, ie_data_ptr, ie_len);
@@ -1503,9 +2130,20 @@ mwifiex_set_gen_ie_helper(struct mwifiex_private *priv, u8 *ie_data_ptr,
 		 * wps session flag
 		 */
 		pvendor_ie = (struct ieee_types_vendor_header *) ie_data_ptr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((pvendor_ie->element_id == WLAN_EID_VENDOR_SPECIFIC) &&
+		    (!memcmp(pvendor_ie->oui, wps_oui, sizeof(wps_oui)))) {
+=======
 		if ((pvendor_ie->element_id == WLAN_EID_VENDOR_SPECIFIC)
 				&& (!memcmp(pvendor_ie->oui, wps_oui,
 						sizeof(wps_oui)))) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((pvendor_ie->element_id == WLAN_EID_VENDOR_SPECIFIC)
+				&& (!memcmp(pvendor_ie->oui, wps_oui,
+						sizeof(wps_oui)))) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			priv->wps.session_enable = true;
 			dev_dbg(priv->adapter->dev,
 				"info: WPS Session Enabled.\n");
@@ -1514,7 +2152,15 @@ mwifiex_set_gen_ie_helper(struct mwifiex_private *priv, u8 *ie_data_ptr,
 		/* Append the passed data to the end of the
 		   genIeBuffer */
 		memcpy(priv->gen_ie_buf + priv->gen_ie_buf_len, ie_data_ptr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		       ie_len);
+=======
 									ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+									ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Increment the stored buffer length by the
 		   size passed */
 		priv->gen_ie_buf_len += ie_len;
@@ -1558,7 +2204,15 @@ static int mwifiex_misc_ioctl_gen_ie(struct mwifiex_private *priv,
 			return -1;
 		} else {
 			memcpy(adapter->arp_filter, gen_ie->ie_data,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			       gen_ie->len);
+=======
 								gen_ie->len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+								gen_ie->len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			adapter->arp_filter_size = gen_ie->len;
 		}
 		break;
@@ -1580,7 +2234,15 @@ mwifiex_set_gen_ie(struct mwifiex_private *priv, u8 *ie, int ie_len)
 {
 	struct mwifiex_ds_misc_gen_ie gen_ie;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ie_len > IEEE_MAX_IE_SIZE)
+=======
 	if (ie_len > IW_CUSTOM_MAX)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ie_len > IW_CUSTOM_MAX)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EFAULT;
 
 	gen_ie.type = MWIFIEX_IE_TYPE_GEN_IE;

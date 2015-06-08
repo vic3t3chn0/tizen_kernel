@@ -8,6 +8,9 @@
 
 struct device;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct resource;
 
 struct sh_mobile_ceu_companion {
@@ -22,12 +25,15 @@ struct sh_mobile_ceu_info {
 	int max_width;
 	int max_height;
 	struct sh_mobile_ceu_companion *csi2;
+<<<<<<< HEAD
+=======
 =======
 
 struct sh_mobile_ceu_info {
 	unsigned long flags;
 	struct device *csi2_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __ASM_SH_MOBILE_CEU_H__ */

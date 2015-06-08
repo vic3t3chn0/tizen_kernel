@@ -10,12 +10,18 @@ void get_term_dimensions(struct winsize *ws);
 #define rmb()		asm volatile("lock; addl $0,0(%%esp)" ::: "memory")
 #define cpu_relax()	asm volatile("rep; nop" ::: "memory");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CPUINFO_PROC	"model name"
 #ifndef __NR_perf_event_open
 # define __NR_perf_event_open 336
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #if defined(__x86_64__)
@@ -23,12 +29,18 @@ void get_term_dimensions(struct winsize *ws);
 #define rmb()		asm volatile("lfence" ::: "memory")
 #define cpu_relax()	asm volatile("rep; nop" ::: "memory");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CPUINFO_PROC	"model name"
 #ifndef __NR_perf_event_open
 # define __NR_perf_event_open 298
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __powerpc__
@@ -38,7 +50,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"cpu"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"cpu"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __s390__
@@ -58,7 +74,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"cpu type"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"cpu type"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __hppa__
@@ -68,7 +88,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"cpu"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"cpu"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __sparc__
@@ -78,7 +102,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"cpu"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"cpu"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __alpha__
@@ -88,7 +116,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"cpu model"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"cpu model"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __ia64__
@@ -98,7 +130,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"model name"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"model name"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __arm__
@@ -112,7 +148,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"Processor"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"Processor"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __mips__
@@ -128,7 +168,11 @@ void get_term_dimensions(struct winsize *ws);
 <<<<<<< HEAD
 #define CPUINFO_PROC	"cpu model"
 =======
+<<<<<<< HEAD
+#define CPUINFO_PROC	"cpu model"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #include <time.h>
@@ -205,8 +249,11 @@ sys_perf_event_open(struct perf_event_attr *attr,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	attr->size = sizeof(*attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return syscall(__NR_perf_event_open, attr, pid, cpu,
 		       group_fd, flags);
 }
@@ -220,6 +267,9 @@ struct ip_callchain {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct branch_flags {
 	u64 mispred:1;
 	u64 predicted:1;
@@ -268,8 +318,11 @@ struct perf_record_opts {
 	u64	     user_interval;
 	const char   *cpu_list;
 };
+<<<<<<< HEAD
+=======
 =======
 extern bool perf_host, perf_guest;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

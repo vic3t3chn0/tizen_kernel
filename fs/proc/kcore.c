@@ -161,8 +161,13 @@ static int kcore_update_ram(void)
 static int
 get_sparsemem_vmemmap_info(struct kcore_list *ent, struct list_head *head)
 =======
+<<<<<<< HEAD
+static int
+get_sparsemem_vmemmap_info(struct kcore_list *ent, struct list_head *head)
+=======
 int get_sparsemem_vmemmap_info(struct kcore_list *ent, struct list_head *head)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long pfn = __pa(ent->addr) >> PAGE_SHIFT;
 	unsigned long nr_pages = ent->size >> PAGE_SHIFT;
@@ -198,8 +203,13 @@ int get_sparsemem_vmemmap_info(struct kcore_list *ent, struct list_head *head)
 static int
 get_sparsemem_vmemmap_info(struct kcore_list *ent, struct list_head *head)
 =======
+<<<<<<< HEAD
+static int
+get_sparsemem_vmemmap_info(struct kcore_list *ent, struct list_head *head)
+=======
 int get_sparsemem_vmemmap_info(struct kcore_list *ent, struct list_head *head)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 1;
 }
@@ -526,8 +536,12 @@ read_kcore(struct file *file, char __user *buffer, size_t buflen, loff_t *fpos)
 <<<<<<< HEAD
 				 * We cannot distinguish between fault on source
 =======
+<<<<<<< HEAD
+				 * We cannot distinguish between fault on source
+=======
 				 * We cannot distingush between fault on source
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 * and fault on destination. When this happens
 				 * we clear too and hope it will trigger the
 				 * EFAULT again.

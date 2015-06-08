@@ -40,8 +40,11 @@
 #include <mach/iomux-mx35.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/audmux.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "devices-imx35.h"
 
@@ -200,12 +203,19 @@ static struct gpio_led eukrea_mbimxsd_leds[] = {
 static const struct gpio_led_platform_data
 		eukrea_mbimxsd_led_info __initconst = {
 =======
+<<<<<<< HEAD
+static const struct gpio_led_platform_data
+		eukrea_mbimxsd_led_info __initconst = {
+=======
 static struct gpio_led_platform_data eukrea_mbimxsd_led_info = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.leds		= eukrea_mbimxsd_leds,
 	.num_leds	= ARRAY_SIZE(eukrea_mbimxsd_leds),
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct platform_device eukrea_mbimxsd_leds_gpio = {
@@ -217,6 +227,7 @@ static struct platform_device eukrea_mbimxsd_leds_gpio = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct gpio_keys_button eukrea_mbimxsd_gpio_buttons[] = {
 	{
 		.gpio		= GPIO_SWITCH1,
@@ -236,8 +247,11 @@ static const struct gpio_keys_platform_data
 static struct platform_device *platform_devices[] __initdata = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	&eukrea_mbimxsd_leds_gpio,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&eukrea_mbimxsd_lcd_powerdev,
 };
 
@@ -262,8 +276,13 @@ static struct esdhc_platform_data sd1_pdata = {
 	.cd_type = ESDHC_CD_GPIO,
 	.wp_type = ESDHC_WP_NONE,
 =======
+<<<<<<< HEAD
+	.cd_type = ESDHC_CD_GPIO,
+	.wp_type = ESDHC_WP_NONE,
+=======
 	.wp_gpio = -EINVAL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -278,6 +297,8 @@ void __init eukrea_mbimxsd35_baseboard_init(void)
 			ARRAY_SIZE(eukrea_mbimxsd_pads)))
 		printk(KERN_ERR "error setting mbimxsd pads !\n");
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #if defined(CONFIG_SND_SOC_EUKREA_TLV320)
@@ -297,6 +318,7 @@ void __init eukrea_mbimxsd35_baseboard_init(void)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	imx35_add_imx_uart1(&uart_pdata);
 	imx35_add_ipu_core(&mx3_ipu_data);
 	imx35_add_mx3_sdc_fb(&mx3fb_pdata);
@@ -324,6 +346,10 @@ void __init eukrea_mbimxsd35_baseboard_init(void)
 <<<<<<< HEAD
 	gpio_led_register_device(-1, &eukrea_mbimxsd_led_info);
 =======
+<<<<<<< HEAD
+	gpio_led_register_device(-1, &eukrea_mbimxsd_led_info);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	imx_add_gpio_keys(&eukrea_mbimxsd_button_data);
 }

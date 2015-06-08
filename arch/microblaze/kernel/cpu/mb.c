@@ -98,12 +98,18 @@ static int show_cpuinfo(struct seq_file *m, void *v)
 		(cpuinfo.use_exc & PVR2_USE_FSL_EXC) ? "fsl " : "");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	count += seq_printf(m,
 			"Stream-insns:\t%sprivileged\n",
 			cpuinfo.mmu_privins ? "un" : "");
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpuinfo.use_icache)
 		count += seq_printf(m,
 				"Icache:\t\t%ukB\tline length:\t%dB\n",
@@ -118,17 +124,23 @@ static int show_cpuinfo(struct seq_file *m, void *v)
 				cpuinfo.dcache_size >> 10,
 				cpuinfo.dcache_line_length);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(m, "Dcache-Policy:\t");
 		if (cpuinfo.dcache_wb)
 			count += seq_printf(m, "write-back\n");
 		else
 			count += seq_printf(m, "write-through\n");
+<<<<<<< HEAD
+=======
 =======
 		if (cpuinfo.dcache_wb)
 			count += seq_printf(m, "\t\twrite-back\n");
 		else
 			count += seq_printf(m, "\t\twrite-through\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		count += seq_printf(m, "Dcache:\t\tno\n");
 

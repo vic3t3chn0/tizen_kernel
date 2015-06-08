@@ -250,8 +250,12 @@ static void palmtx_nand_cmd_ctl(struct mtd_info *mtd, int cmd,
 <<<<<<< HEAD
 	char __iomem *nandaddr = this->IO_ADDR_W;
 =======
+<<<<<<< HEAD
+	char __iomem *nandaddr = this->IO_ADDR_W;
+=======
 	unsigned long nandaddr = (unsigned long)this->IO_ADDR_W;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cmd == NAND_CMD_NONE)
 		return;
@@ -322,8 +326,12 @@ static struct map_desc palmtx_io_desc[] __initdata = {
 <<<<<<< HEAD
 	.virtual	= (unsigned long)PALMTX_PCMCIA_VIRT,
 =======
+<<<<<<< HEAD
+	.virtual	= (unsigned long)PALMTX_PCMCIA_VIRT,
+=======
 	.virtual	= PALMTX_PCMCIA_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pfn		= __phys_to_pfn(PALMTX_PCMCIA_PHYS),
 	.length		= PALMTX_PCMCIA_SIZE,
 	.type		= MT_DEVICE,
@@ -331,8 +339,12 @@ static struct map_desc palmtx_io_desc[] __initdata = {
 <<<<<<< HEAD
 	.virtual	= (unsigned long)PALMTX_NAND_ALE_VIRT,
 =======
+<<<<<<< HEAD
+	.virtual	= (unsigned long)PALMTX_NAND_ALE_VIRT,
+=======
 	.virtual	= PALMTX_NAND_ALE_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pfn		= __phys_to_pfn(PALMTX_NAND_ALE_PHYS),
 	.length		= SZ_1M,
 	.type		= MT_DEVICE,
@@ -340,8 +352,12 @@ static struct map_desc palmtx_io_desc[] __initdata = {
 <<<<<<< HEAD
 	.virtual	= (unsigned long)PALMTX_NAND_CLE_VIRT,
 =======
+<<<<<<< HEAD
+	.virtual	= (unsigned long)PALMTX_NAND_CLE_VIRT,
+=======
 	.virtual	= PALMTX_NAND_CLE_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pfn		= __phys_to_pfn(PALMTX_NAND_CLE_PHYS),
 	.length		= SZ_1M,
 	.type		= MT_DEVICE,
@@ -381,6 +397,9 @@ static void __init palmtx_init(void)
 
 MACHINE_START(PALMTX, "Palm T|X")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= palmtx_map_io,
 	.nr_irqs	= PXA_NR_IRQS,
@@ -389,6 +408,8 @@ MACHINE_START(PALMTX, "Palm T|X")
 	.timer		= &pxa_timer,
 	.init_machine	= palmtx_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= palmtx_map_io,
@@ -396,4 +417,5 @@ MACHINE_START(PALMTX, "Palm T|X")
 	.timer		= &pxa_timer,
 	.init_machine	= palmtx_init
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

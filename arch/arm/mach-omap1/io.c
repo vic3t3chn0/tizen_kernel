@@ -16,6 +16,9 @@
 #include <asm/tlb.h>
 #include <asm/mach/map.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/mux.h>
 #include <plat/tc.h>
@@ -25,6 +28,8 @@
 #include "clock.h"
 
 extern void omap_check_revision(void);
+<<<<<<< HEAD
+=======
 =======
 #include <plat/mux.h>
 #include <plat/tc.h>
@@ -34,6 +39,7 @@ extern void omap_check_revision(void);
 extern void omap_check_revision(void);
 extern void omap_sram_init(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The machine specific code may provide the extra mapping besides the
@@ -98,6 +104,9 @@ static struct map_desc omap16xx_io_desc[] __initdata = {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Maps common IO regions for omap1
  */
 static void __init omap1_map_common_io(void)
@@ -136,6 +145,8 @@ void __init omap1_init_early(void)
 {
 	omap_check_revision();
 
+<<<<<<< HEAD
+=======
 =======
  * Maps common IO regions for omap1. This should only get called from
  * board specific init.
@@ -182,6 +193,7 @@ void __init omap1_map_common_io(void)
 void __init omap1_init_common_hw(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* REVISIT: Refer to OMAP5910 Errata, Advisory SYS_1: "Timeout Abort
 	 * on a Posted Write in the TIPB Bridge".
 	 */
@@ -195,9 +207,14 @@ void __init omap1_init_common_hw(void)
 	omap1_mux_init();
 	omap_init_consistent_dma_size();
 =======
+<<<<<<< HEAD
+	omap1_mux_init();
+	omap_init_consistent_dma_size();
+=======
 
 	omap1_mux_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

@@ -28,10 +28,13 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #define pr_fmt(fmt) "IPv6: " fmt
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/errno.h>
 #include <linux/types.h>
 #include <linux/string.h>
@@ -51,7 +54,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <net/sock.h>
 #include <net/snmp.h>
@@ -166,9 +173,14 @@ void ip6_frag_init(struct inet_frag_queue *q, void *a)
 	fq->saddr = *arg->src;
 	fq->daddr = *arg->dst;
 =======
+<<<<<<< HEAD
+	fq->saddr = *arg->src;
+	fq->daddr = *arg->dst;
+=======
 	ipv6_addr_copy(&fq->saddr, arg->src);
 	ipv6_addr_copy(&fq->daddr, arg->dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(ip6_frag_init);
 
@@ -259,11 +271,17 @@ fq_find(struct net *net, __be32 id, const struct in6_addr *src, const struct in6
 		return NULL;
 
 =======
+<<<<<<< HEAD
+	if (q == NULL)
+		return NULL;
+
+=======
 	if (IS_ERR_OR_NULL(q)) {
 		inet_frag_maybe_warn_overflow(q, pr_fmt());
 		return NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return container_of(q, struct frag_queue, q);
 }
 
@@ -358,11 +376,16 @@ static int ip6_frag_queue(struct frag_queue *fq, struct sk_buff *skb,
 
 found:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* RFC5722, Section 4, amended by Errata ID : 3089
 	 *                          When reassembling an IPv6 datagram, if
 	 *   one or more its constituent fragments is determined to be an
 	 *   overlapping fragment, the entire datagram (and any constituent
 	 *   fragments) MUST be silently discarded.
+<<<<<<< HEAD
+=======
 =======
 	/* RFC5722, Section 4:
 	 *                                  When reassembling an IPv6 datagram, if
@@ -371,6 +394,7 @@ found:
 	 *   fragments, including those not yet received) MUST be silently
 	 *   discarded.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 
 	/* Check for overlap with preceding fragment. */
@@ -498,9 +522,14 @@ static int ip6_frag_reasm(struct frag_queue *fq, struct sk_buff *prev,
 		for (i = 0; i < skb_shinfo(head)->nr_frags; i++)
 			plen += skb_frag_size(&skb_shinfo(head)->frags[i]);
 =======
+<<<<<<< HEAD
+		for (i = 0; i < skb_shinfo(head)->nr_frags; i++)
+			plen += skb_frag_size(&skb_shinfo(head)->frags[i]);
+=======
 		for (i=0; i<skb_shinfo(head)->nr_frags; i++)
 			plen += skb_shinfo(head)->frags[i].size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clone->len = clone->data_len = head->data_len - plen;
 		head->data_len -= clone->len;
 		head->len -= clone->len;
@@ -540,8 +569,11 @@ static int ip6_frag_reasm(struct frag_queue *fq, struct sk_buff *prev,
 	IP6CB(head)->nhoff = nhoff;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	IP6CB(head)->flags |= IP6SKB_FRAGMENTED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Yes, and fold redundant checksum back. 8) */
 	if (head->ip_summed == CHECKSUM_COMPLETE)
@@ -579,10 +611,13 @@ static int ipv6_frag_rcv(struct sk_buff *skb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (IP6CB(skb)->flags & IP6SKB_FRAGMENTED)
 		goto fail_hdr;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IP6_INC_STATS_BH(net, ip6_dst_idev(skb_dst(skb)), IPSTATS_MIB_REASMREQDS);
 
 	/* Jumbo payload inhibits frag. header */
@@ -605,8 +640,11 @@ static int ipv6_frag_rcv(struct sk_buff *skb)
 		IP6CB(skb)->nhoff = (u8 *)fhdr - skb_network_header(skb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		IP6CB(skb)->flags |= IP6SKB_FRAGMENTED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 	}
 

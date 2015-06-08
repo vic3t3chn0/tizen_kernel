@@ -20,11 +20,16 @@ static int handle; /* reset pin handle */
 static unsigned int reset_val;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void of_platform_reset_gpio_probe(void)
 {
 	int ret;
 	handle = of_get_named_gpio(of_find_node_by_path("/"),
 				   "hard-reset-gpios", 0);
+<<<<<<< HEAD
+=======
 =======
 static int of_reset_gpio_handle(void)
 {
@@ -71,6 +76,7 @@ void of_platform_reset_gpio_probe(void)
 	int ret;
 	handle = of_reset_gpio_handle();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!gpio_is_valid(handle)) {
 		printk(KERN_INFO "Skipping unavailable RESET gpio %d (%s)\n",

@@ -2,6 +2,9 @@
 #define __PERF_TOP_H 1
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "tool.h"
 #include "types.h"
 #include <stddef.h>
@@ -13,6 +16,8 @@ struct perf_session;
 
 struct perf_top {
 	struct perf_tool   tool;
+<<<<<<< HEAD
+=======
 =======
 #include "types.h"
 #include "../perf.h"
@@ -40,6 +45,7 @@ static inline struct symbol *sym_entry__symbol(struct sym_entry *self)
 
 struct perf_top {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct perf_evlist *evlist;
 	/*
 	 * Symbols will be added here in perf_event__process_sample and will
@@ -47,16 +53,22 @@ struct perf_top {
 	 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct list_head   active_symbols;
 	pthread_mutex_t	   active_symbols_lock;
 	pthread_cond_t	   active_symbols_cond;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64		   samples;
 	u64		   kernel_samples, us_samples;
 	u64		   exact_samples;
 	u64		   guest_us_samples, guest_kernel_samples;
 	int		   print_entries, count_filter, delay_secs;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		   freq;
 	const char	   *target_pid, *target_tid;
 	uid_t		   uid;
@@ -83,6 +95,8 @@ struct perf_top {
 	int		   sym_pcnt_filter;
 	const char	   *sym_filter;
 	const char	   *uid_str;
+<<<<<<< HEAD
+=======
 =======
 	int		   display_weighted, freq, rb_entries;
 	pid_t		   target_pid, target_tid;
@@ -91,10 +105,13 @@ struct perf_top {
 	struct sym_entry   *sym_filter_entry;
 	struct perf_evsel  *sym_evsel;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 size_t perf_top__header_snprintf(struct perf_top *top, char *bf, size_t size);
 void perf_top__reset_sample_counters(struct perf_top *top);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 float perf_top__decay_samples(struct perf_top *top, struct rb_root *root);
@@ -110,4 +127,5 @@ static inline int perf_top__tui_browser(struct perf_top *top __used)
 int perf_top__tui_browser(struct perf_top *top);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __PERF_TOP_H */

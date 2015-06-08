@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <crypto/aes.h>
 =======
+<<<<<<< HEAD
+#include <crypto/aes.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "ieee80211_i.h"
 #include "michael.h"
@@ -60,8 +64,13 @@ ieee80211_tx_h_michael_mic_add(struct ieee80211_tx_data *tx)
 	    (info->flags & IEEE80211_TX_CTL_DONTFRAG ||
 	     tx->local->ops->set_frag_threshold) &&
 =======
+<<<<<<< HEAD
+	    (info->flags & IEEE80211_TX_CTL_DONTFRAG ||
+	     tx->local->ops->set_frag_threshold) &&
+=======
 	    !(tx->flags & IEEE80211_TX_FRAGMENTED) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    !(tx->key->conf.flags & IEEE80211_KEY_FLAG_GENERATE_MMIC)) {
 		/* hwaccel - with no need for SW-generated MMIC */
 		return TX_CONTINUE;
@@ -97,12 +106,15 @@ ieee80211_rx_h_michael_mic_verify(struct ieee80211_rx_data *rx)
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int queue = rx->queue;
 
 	/* otherwise, TKIP is vulnerable to TID 0 vs. non-QoS replays */
 	if (rx->queue == NUM_RX_DATA_QUEUES - 1)
 		queue = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * it makes no sense to check for MIC errors on anything other
@@ -124,9 +136,13 @@ ieee80211_rx_h_michael_mic_verify(struct ieee80211_rx_data *rx)
 <<<<<<< HEAD
 		if (!(status->flag & RX_FLAG_IV_STRIPPED) && rx->key)
 =======
+<<<<<<< HEAD
+		if (!(status->flag & RX_FLAG_IV_STRIPPED) && rx->key)
+=======
 		if (!(status->flag & RX_FLAG_IV_STRIPPED) && rx->key &&
 		    rx->key->conf.cipher == WLAN_CIPHER_SUITE_TKIP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto update_iv;
 
 		return RX_CONTINUE;
@@ -159,12 +175,18 @@ ieee80211_rx_h_michael_mic_verify(struct ieee80211_rx_data *rx)
 		return RX_DROP_UNUSABLE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (skb_linearize(rx->skb))
 		return RX_DROP_UNUSABLE;
 	hdr = (void *)skb->data;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data = skb->data + hdrlen;
 	data_len = skb->len - hdrlen - MICHAEL_MIC_LEN;
 	key = &rx->key->conf.key[NL80211_TKIP_DATA_OFFSET_RX_MIC_KEY];
@@ -181,9 +203,14 @@ update_iv:
 	rx->key->u.tkip.rx[rx->security_idx].iv32 = rx->tkip_iv32;
 	rx->key->u.tkip.rx[rx->security_idx].iv16 = rx->tkip_iv16;
 =======
+<<<<<<< HEAD
+	rx->key->u.tkip.rx[rx->security_idx].iv32 = rx->tkip_iv32;
+	rx->key->u.tkip.rx[rx->security_idx].iv16 = rx->tkip_iv16;
+=======
 	rx->key->u.tkip.rx[queue].iv32 = rx->tkip_iv32;
 	rx->key->u.tkip.rx[queue].iv16 = rx->tkip_iv16;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return RX_CONTINUE;
 
@@ -208,7 +235,11 @@ static int tkip_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 <<<<<<< HEAD
 	unsigned long flags;
 =======
+<<<<<<< HEAD
+	unsigned long flags;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int hdrlen;
 	int len, tail;
 	u8 *pos;
@@ -237,12 +268,17 @@ static int tkip_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 
 	/* Increase IV for the frame */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&key->u.tkip.txlock, flags);
 	key->u.tkip.tx.iv16++;
 	if (key->u.tkip.tx.iv16 == 0)
 		key->u.tkip.tx.iv32++;
 	pos = ieee80211_tkip_add_iv(pos, key);
 	spin_unlock_irqrestore(&key->u.tkip.txlock, flags);
+<<<<<<< HEAD
+=======
 =======
 	key->u.tkip.tx.iv16++;
 	if (key->u.tkip.tx.iv16 == 0)
@@ -250,6 +286,7 @@ static int tkip_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 
 	pos = ieee80211_tkip_add_iv(pos, key, key->u.tkip.tx.iv16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* hwaccel - with software IV */
 	if (info->control.hw_key)
@@ -262,10 +299,15 @@ static int tkip_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 	return ieee80211_tkip_encrypt_data(tx->local->wep_tx_tfm,
 					   key, skb, pos, len);
 =======
+<<<<<<< HEAD
+	return ieee80211_tkip_encrypt_data(tx->local->wep_tx_tfm,
+					   key, skb, pos, len);
+=======
 	hdr = (struct ieee80211_hdr *) skb->data;
 	return ieee80211_tkip_encrypt_data(tx->local->wep_tx_tfm,
 					   key, pos, len, hdr->addr2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -273,6 +315,9 @@ ieee80211_tx_result
 ieee80211_crypto_tkip_encrypt(struct ieee80211_tx_data *tx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *skb;
 
 	ieee80211_tx_set_protected(tx);
@@ -281,6 +326,8 @@ ieee80211_crypto_tkip_encrypt(struct ieee80211_tx_data *tx)
 		if (tkip_encrypt_skb(tx, skb) < 0)
 			return TX_DROP;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct sk_buff *skb = tx->skb;
 
@@ -291,6 +338,7 @@ ieee80211_crypto_tkip_encrypt(struct ieee80211_tx_data *tx)
 			return TX_DROP;
 	} while ((skb = skb->next));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return TX_CONTINUE;
 }
@@ -306,12 +354,15 @@ ieee80211_crypto_tkip_decrypt(struct ieee80211_rx_data *rx)
 	struct ieee80211_rx_status *status = IEEE80211_SKB_RXCB(skb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int queue = rx->queue;
 
 	/* otherwise, TKIP is vulnerable to TID 0 vs. non-QoS replays */
 	if (rx->queue == NUM_RX_DATA_QUEUES - 1)
 		queue = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hdrlen = ieee80211_hdrlen(hdr->frame_control);
 
@@ -322,13 +373,19 @@ ieee80211_crypto_tkip_decrypt(struct ieee80211_rx_data *rx)
 		return RX_DROP_UNUSABLE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* it may be possible to optimize this a bit more */
 	if (skb_linearize(rx->skb))
 		return RX_DROP_UNUSABLE;
 	hdr = (void *)skb->data;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Let TKIP code verify IV, but skip decryption.
 	 * In the case where hardware checks the IV as well,
@@ -343,8 +400,12 @@ ieee80211_crypto_tkip_decrypt(struct ieee80211_rx_data *rx)
 <<<<<<< HEAD
 					  hdr->addr1, hwaccel, rx->security_idx,
 =======
+<<<<<<< HEAD
+					  hdr->addr1, hwaccel, rx->security_idx,
+=======
 					  hdr->addr1, hwaccel, queue,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  &rx->tkip_iv32,
 					  &rx->tkip_iv16);
 	if (res != TKIP_DECRYPT_OK)
@@ -373,14 +434,20 @@ static void ccmp_special_blocks(struct sk_buff *skb, u8 *pn, u8 *scratch,
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(scratch, 0, 6 * AES_BLOCK_SIZE);
 
 	b_0 = scratch + 3 * AES_BLOCK_SIZE;
 	aad = scratch + 4 * AES_BLOCK_SIZE;
+<<<<<<< HEAD
+=======
 =======
 	b_0 = scratch + 3 * AES_BLOCK_LEN;
 	aad = scratch + 4 * AES_BLOCK_LEN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Mask FC: zero subtype b4 b5 b6 (if not mgmt)
@@ -470,6 +537,9 @@ static int ccmp_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
 	int hdrlen, len, tail;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 *pos;
 	u8 pn[6];
 	u64 pn64;
@@ -478,6 +548,8 @@ static int ccmp_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 	if (info->control.hw_key &&
 	    !(info->control.hw_key->flags & IEEE80211_KEY_FLAG_GENERATE_IV) &&
 	    !(info->control.hw_key->flags & IEEE80211_KEY_FLAG_PUT_IV_SPACE)) {
+<<<<<<< HEAD
+=======
 =======
 	u8 *pos, *pn;
 	int i;
@@ -485,6 +557,7 @@ static int ccmp_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 	if (info->control.hw_key &&
 	    !(info->control.hw_key->flags & IEEE80211_KEY_FLAG_GENERATE_IV)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * hwaccel has no need for preallocated room for CCMP
 		 * header or MIC fields
@@ -507,6 +580,9 @@ static int ccmp_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 	pos = skb_push(skb, CCMP_HDR_LEN);
 	memmove(pos, pos + CCMP_HDR_LEN, hdrlen);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* the HW only needs room for the IV, but not the actual IV */
 	if (info->control.hw_key &&
@@ -524,6 +600,8 @@ static int ccmp_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 	pn[2] = pn64 >> 24;
 	pn[1] = pn64 >> 32;
 	pn[0] = pn64 >> 40;
+<<<<<<< HEAD
+=======
 =======
 	hdr = (struct ieee80211_hdr *) pos;
 	pos += hdrlen;
@@ -537,6 +615,7 @@ static int ccmp_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 			break;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ccmp_pn2hdr(pos, pn, key->conf.keyidx);
 
@@ -549,9 +628,14 @@ static int ccmp_encrypt_skb(struct ieee80211_tx_data *tx, struct sk_buff *skb)
 	ccmp_special_blocks(skb, pn, scratch, 0);
 	ieee80211_aes_ccm_encrypt(key->u.ccmp.tfm, scratch, pos, len,
 =======
+<<<<<<< HEAD
+	ccmp_special_blocks(skb, pn, scratch, 0);
+	ieee80211_aes_ccm_encrypt(key->u.ccmp.tfm, scratch, pos, len,
+=======
 	ccmp_special_blocks(skb, pn, key->u.ccmp.tx_crypto_buf, 0);
 	ieee80211_aes_ccm_encrypt(key->u.ccmp.tfm, key->u.ccmp.tx_crypto_buf, pos, len,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  pos, skb_put(skb, CCMP_MIC_LEN));
 
 	return 0;
@@ -562,6 +646,9 @@ ieee80211_tx_result
 ieee80211_crypto_ccmp_encrypt(struct ieee80211_tx_data *tx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *skb;
 
 	ieee80211_tx_set_protected(tx);
@@ -570,6 +657,8 @@ ieee80211_crypto_ccmp_encrypt(struct ieee80211_tx_data *tx)
 		if (ccmp_encrypt_skb(tx, skb) < 0)
 			return TX_DROP;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct sk_buff *skb = tx->skb;
 
@@ -580,6 +669,7 @@ ieee80211_crypto_ccmp_encrypt(struct ieee80211_tx_data *tx)
 			return TX_DROP;
 	} while ((skb = skb->next));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return TX_CONTINUE;
 }
@@ -608,6 +698,9 @@ ieee80211_crypto_ccmp_decrypt(struct ieee80211_rx_data *rx)
 		return RX_DROP_UNUSABLE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status->flag & RX_FLAG_DECRYPTED) {
 		if (!pskb_may_pull(rx->skb, hdrlen + CCMP_HDR_LEN))
 			return RX_DROP_UNUSABLE;
@@ -619,12 +712,15 @@ ieee80211_crypto_ccmp_decrypt(struct ieee80211_rx_data *rx)
 	ccmp_hdr2pn(pn, skb->data + hdrlen);
 
 	queue = rx->security_idx;
+<<<<<<< HEAD
+=======
 =======
 	ccmp_hdr2pn(pn, skb->data + hdrlen);
 
 	queue = ieee80211_is_mgmt(hdr->frame_control) ?
 		NUM_RX_DATA_QUEUES : rx->queue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (memcmp(pn, key->u.ccmp.rx_pn[queue], CCMP_PN_LEN) <= 0) {
 		key->u.ccmp.replays++;
@@ -633,12 +729,17 @@ ieee80211_crypto_ccmp_decrypt(struct ieee80211_rx_data *rx)
 
 	if (!(status->flag & RX_FLAG_DECRYPTED)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u8 scratch[6 * AES_BLOCK_SIZE];
 		/* hardware didn't decrypt/verify MIC */
 		ccmp_special_blocks(skb, pn, scratch, 1);
 
 		if (ieee80211_aes_ccm_decrypt(
 			    key->u.ccmp.tfm, scratch,
+<<<<<<< HEAD
+=======
 =======
 		/* hardware didn't decrypt/verify MIC */
 		ccmp_special_blocks(skb, pn, key->u.ccmp.rx_crypto_buf, 1);
@@ -646,6 +747,7 @@ ieee80211_crypto_ccmp_decrypt(struct ieee80211_rx_data *rx)
 		if (ieee80211_aes_ccm_decrypt(
 			    key->u.ccmp.tfm, key->u.ccmp.rx_crypto_buf,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    skb->data + hdrlen + CCMP_HDR_LEN, data_len,
 			    skb->data + skb->len - CCMP_MIC_LEN,
 			    skb->data + hdrlen + CCMP_HDR_LEN))
@@ -659,8 +761,13 @@ ieee80211_crypto_ccmp_decrypt(struct ieee80211_rx_data *rx)
 	if (pskb_trim(skb, skb->len - CCMP_MIC_LEN))
 		return RX_DROP_UNUSABLE;
 =======
+<<<<<<< HEAD
+	if (pskb_trim(skb, skb->len - CCMP_MIC_LEN))
+		return RX_DROP_UNUSABLE;
+=======
 	skb_trim(skb, skb->len - CCMP_MIC_LEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memmove(skb->data + CCMP_HDR_LEN, skb->data, hdrlen);
 	skb_pull(skb, CCMP_HDR_LEN);
 
@@ -682,6 +789,9 @@ static void bip_aad(struct sk_buff *skb, u8 *aad)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void bip_ipn_set64(u8 *d, u64 pn)
 {
 	*d++ = pn;
@@ -692,8 +802,11 @@ static inline void bip_ipn_set64(u8 *d, u64 pn)
 	*d = pn >> 40;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void bip_ipn_swap(u8 *d, const u8 *s)
 {
 	*d++ = s[5];
@@ -709,6 +822,9 @@ ieee80211_tx_result
 ieee80211_crypto_aes_cmac_encrypt(struct ieee80211_tx_data *tx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *skb;
 	struct ieee80211_tx_info *info;
 	struct ieee80211_key *key = tx->key;
@@ -725,6 +841,8 @@ ieee80211_crypto_aes_cmac_encrypt(struct ieee80211_tx_data *tx)
 
 	if (info->control.hw_key)
 		return TX_CONTINUE;
+<<<<<<< HEAD
+=======
 =======
 	struct sk_buff *skb = tx->skb;
 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
@@ -736,6 +854,7 @@ ieee80211_crypto_aes_cmac_encrypt(struct ieee80211_tx_data *tx)
 	if (info->control.hw_key)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (WARN_ON(skb_tailroom(skb) < sizeof(*mmie)))
 		return TX_DROP;
@@ -751,6 +870,11 @@ ieee80211_crypto_aes_cmac_encrypt(struct ieee80211_tx_data *tx)
 
 	bip_ipn_set64(mmie->sequence_number, pn64);
 =======
+<<<<<<< HEAD
+	pn64 = atomic64_inc_return(&key->u.aes_cmac.tx_pn);
+
+	bip_ipn_set64(mmie->sequence_number, pn64);
+=======
 	pn = key->u.aes_cmac.tx_pn;
 
 	for (i = sizeof(key->u.aes_cmac.tx_pn) - 1; i >= 0; i--) {
@@ -760,6 +884,7 @@ ieee80211_crypto_aes_cmac_encrypt(struct ieee80211_tx_data *tx)
 	}
 	bip_ipn_swap(mmie->sequence_number, pn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bip_aad(skb, aad);
 
@@ -770,9 +895,14 @@ ieee80211_crypto_aes_cmac_encrypt(struct ieee80211_tx_data *tx)
 	ieee80211_aes_cmac(key->u.aes_cmac.tfm, aad,
 			   skb->data + 24, skb->len - 24, mmie->mic);
 =======
+<<<<<<< HEAD
+	ieee80211_aes_cmac(key->u.aes_cmac.tfm, aad,
+			   skb->data + 24, skb->len - 24, mmie->mic);
+=======
 	ieee80211_aes_cmac(key->u.aes_cmac.tfm, key->u.aes_cmac.tx_crypto_buf,
 			   aad, skb->data + 24, skb->len - 24, mmie->mic);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return TX_CONTINUE;
 }
@@ -795,7 +925,12 @@ ieee80211_crypto_aes_cmac_decrypt(struct ieee80211_rx_data *rx)
 	/* management frames are already linear */
 
 =======
+<<<<<<< HEAD
+	/* management frames are already linear */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (skb->len < 24 + sizeof(*mmie))
 		return RX_DROP_UNUSABLE;
 
@@ -818,9 +953,13 @@ ieee80211_crypto_aes_cmac_decrypt(struct ieee80211_rx_data *rx)
 <<<<<<< HEAD
 		ieee80211_aes_cmac(key->u.aes_cmac.tfm, aad,
 =======
+<<<<<<< HEAD
+		ieee80211_aes_cmac(key->u.aes_cmac.tfm, aad,
+=======
 		ieee80211_aes_cmac(key->u.aes_cmac.tfm,
 				   key->u.aes_cmac.rx_crypto_buf, aad,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   skb->data + 24, skb->len - 24, mic);
 		if (memcmp(mic, mmie->mic, sizeof(mmie->mic)) != 0) {
 			key->u.aes_cmac.icverrors++;
@@ -836,6 +975,9 @@ ieee80211_crypto_aes_cmac_decrypt(struct ieee80211_rx_data *rx)
 	return RX_CONTINUE;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ieee80211_tx_result
 ieee80211_crypto_hw_encrypt(struct ieee80211_tx_data *tx)
@@ -855,5 +997,8 @@ ieee80211_crypto_hw_encrypt(struct ieee80211_tx_data *tx)
 
 	return TX_CONTINUE;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

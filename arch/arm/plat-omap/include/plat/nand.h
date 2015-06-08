@@ -20,11 +20,16 @@ enum nand_io {
 
 struct omap_nand_platform_data {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			cs;
 	struct mtd_partition	*parts;
 	struct gpmc_timings	*gpmc_t;
 	int			nr_parts;
 	bool			dev_ready;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int		options;
 	int			cs;
@@ -36,6 +41,7 @@ struct omap_nand_platform_data {
 	int			(*dev_ready)(struct omap_nand_platform_data *);
 	int			dma_channel;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			gpmc_irq;
 	enum nand_io		xfer_type;
 	unsigned long		phys_base;

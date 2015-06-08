@@ -4,10 +4,14 @@
 <<<<<<< HEAD
  * Copyright (C) 2005-2011  NTT DATA CORPORATION
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2005-2011  NTT DATA CORPORATION
+=======
  * Memory management functions for TOMOYO.
  *
  * Copyright (C) 2005-2010  NTT DATA CORPORATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/hash.h>
@@ -34,16 +38,22 @@ void tomoyo_warn_oom(const char *function)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Memoy currently used by policy/audit log/query. */
 unsigned int tomoyo_memory_used[TOMOYO_MAX_MEMORY_STAT];
 /* Memory quota for "policy"/"audit log"/"query". */
 unsigned int tomoyo_memory_quota[TOMOYO_MAX_MEMORY_STAT];
+<<<<<<< HEAD
+=======
 =======
 /* Memory allocated for policy. */
 static atomic_t tomoyo_policy_memory_size;
 /* Quota for holding policy. */
 static unsigned int tomoyo_quota_for_policy;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * tomoyo_memory_ok - Check memory quota.
@@ -54,6 +64,9 @@ static unsigned int tomoyo_quota_for_policy;
  *
  * Returns true if @ptr is not NULL and quota not exceeded, false otherwise.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Caller holds tomoyo_policy_lock mutex.
  */
@@ -68,6 +81,8 @@ bool tomoyo_memory_ok(void *ptr)
 			return true;
 		tomoyo_memory_used[TOMOYO_MEMORY_POLICY] -= s;
 	}
+<<<<<<< HEAD
+=======
 =======
  */
 bool tomoyo_memory_ok(void *ptr)
@@ -82,6 +97,7 @@ bool tomoyo_memory_ok(void *ptr)
 	}
 	atomic_sub(s, &tomoyo_policy_memory_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_warn_oom(__func__);
 	return false;
 }
@@ -98,7 +114,12 @@ bool tomoyo_memory_ok(void *ptr)
  *
  * Caller holds tomoyo_policy_lock mutex.
 =======
+<<<<<<< HEAD
+ *
+ * Caller holds tomoyo_policy_lock mutex.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void *tomoyo_commit_ok(void *data, const unsigned int size)
 {
@@ -114,6 +135,9 @@ void *tomoyo_commit_ok(void *data, const unsigned int size)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_get_group - Allocate memory for "struct tomoyo_path_group"/"struct tomoyo_number_group".
  *
  * @param: Pointer to "struct tomoyo_acl_param".
@@ -128,6 +152,8 @@ struct tomoyo_group *tomoyo_get_group(struct tomoyo_acl_param *param,
 	struct tomoyo_group *group = NULL;
 	struct list_head *list;
 	const char *group_name = tomoyo_read_token(param);
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_memory_free - Free memory for elements.
  *
@@ -152,6 +178,7 @@ struct tomoyo_group *tomoyo_get_group(const char *group_name, const u8 idx)
 	struct tomoyo_group e = { };
 	struct tomoyo_group *group = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool found = false;
 	if (!tomoyo_correct_word(group_name) || idx >= TOMOYO_MAX_GROUP)
 		return NULL;
@@ -161,18 +188,24 @@ struct tomoyo_group *tomoyo_get_group(const char *group_name, const u8 idx)
 	if (mutex_lock_interruptible(&tomoyo_policy_lock))
 		goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list = &param->ns->group_list[idx];
 	list_for_each_entry(group, list, head.list) {
 		if (e.group_name != group->group_name ||
 		    atomic_read(&group->head.users) == TOMOYO_GC_IN_PROGRESS)
 			continue;
 		atomic_inc(&group->head.users);
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_entry(group, &tomoyo_group_list[idx], list) {
 		if (e.group_name != group->group_name)
 			continue;
 		atomic_inc(&group->users);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		found = true;
 		break;
 	}
@@ -184,10 +217,15 @@ struct tomoyo_group *tomoyo_get_group(const char *group_name, const u8 idx)
 			atomic_set(&entry->head.users, 1);
 			list_add_tail_rcu(&entry->head.list, list);
 =======
+<<<<<<< HEAD
+			atomic_set(&entry->head.users, 1);
+			list_add_tail_rcu(&entry->head.list, list);
+=======
 			atomic_set(&entry->users, 1);
 			list_add_tail_rcu(&entry->list,
 					  &tomoyo_group_list[idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			group = entry;
 			found = true;
 		}
@@ -196,8 +234,12 @@ struct tomoyo_group *tomoyo_get_group(const char *group_name, const u8 idx)
 <<<<<<< HEAD
 out:
 =======
+<<<<<<< HEAD
+out:
+=======
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_put_name(e.group_name);
 	return found ? group : NULL;
 }
@@ -224,8 +266,11 @@ const struct tomoyo_path_info *tomoyo_get_name(const char *name)
 	int len;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int allocated_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head *head;
 
 	if (!name)
@@ -236,6 +281,9 @@ const struct tomoyo_path_info *tomoyo_get_name(const char *name)
 	if (mutex_lock_interruptible(&tomoyo_policy_lock))
 		return NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(ptr, head, head.list) {
 		if (hash != ptr->entry.hash || strcmp(name, ptr->entry.name) ||
 		    atomic_read(&ptr->head.users) == TOMOYO_GC_IN_PROGRESS)
@@ -255,6 +303,8 @@ const struct tomoyo_path_info *tomoyo_get_name(const char *name)
 		ptr = NULL;
 	}
 out:
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_entry(ptr, head, list) {
 		if (hash != ptr->entry.hash || strcmp(name, ptr->entry.name))
@@ -280,6 +330,7 @@ out:
 	list_add_tail(&ptr->list, head);
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&tomoyo_policy_lock);
 	return ptr ? &ptr->entry : NULL;
 }
@@ -289,7 +340,13 @@ out:
 struct tomoyo_policy_namespace tomoyo_kernel_namespace;
 
 =======
+<<<<<<< HEAD
+/* Initial namespace.*/
+struct tomoyo_policy_namespace tomoyo_kernel_namespace;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_mm_init - Initialize mm related code.
  */
@@ -297,6 +354,9 @@ void __init tomoyo_mm_init(void)
 {
 	int idx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (idx = 0; idx < TOMOYO_MAX_HASH; idx++)
 		INIT_LIST_HEAD(&tomoyo_name_list[idx]);
 	tomoyo_kernel_namespace.name = "<kernel>";
@@ -305,6 +365,8 @@ void __init tomoyo_mm_init(void)
 	INIT_LIST_HEAD(&tomoyo_kernel_domain.acl_info_list);
 	tomoyo_kernel_domain.domainname = tomoyo_get_name("<kernel>");
 	list_add_tail_rcu(&tomoyo_kernel_domain.list, &tomoyo_domain_list);
+<<<<<<< HEAD
+=======
 =======
 
 	for (idx = 0; idx < TOMOYO_MAX_POLICY; idx++)
@@ -390,4 +452,5 @@ int tomoyo_write_memory_quota(struct tomoyo_io_buffer *head)
 		tomoyo_quota_for_query = size;
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

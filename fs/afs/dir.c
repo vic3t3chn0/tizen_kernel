@@ -33,10 +33,16 @@ static int afs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 		      struct nameidata *nd);
 static int afs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode);
 =======
+<<<<<<< HEAD
+static int afs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+		      struct nameidata *nd);
+static int afs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode);
+=======
 static int afs_create(struct inode *dir, struct dentry *dentry, int mode,
 		      struct nameidata *nd);
 static int afs_mkdir(struct inode *dir, struct dentry *dentry, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int afs_rmdir(struct inode *dir, struct dentry *dentry);
 static int afs_unlink(struct inode *dir, struct dentry *dentry);
 static int afs_link(struct dentry *from, struct inode *dir,
@@ -773,8 +779,12 @@ static void afs_d_release(struct dentry *dentry)
 <<<<<<< HEAD
 static int afs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int afs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int afs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct afs_file_status status;
 	struct afs_callback cb;
@@ -790,8 +800,12 @@ static int afs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 	_enter("{%x:%u},{%s},%ho",
 =======
+<<<<<<< HEAD
+	_enter("{%x:%u},{%s},%ho",
+=======
 	_enter("{%x:%u},{%s},%o",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       dvnode->fid.vid, dvnode->fid.vnode, dentry->d_name.name, mode);
 
 	ret = -ENAMETOOLONG;
@@ -965,8 +979,12 @@ error:
 <<<<<<< HEAD
 static int afs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int afs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int afs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      struct nameidata *nd)
 {
 	struct afs_file_status status;
@@ -983,8 +1001,12 @@ static int afs_create(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 	_enter("{%x:%u},{%s},%ho,",
 =======
+<<<<<<< HEAD
+	_enter("{%x:%u},{%s},%ho,",
+=======
 	_enter("{%x:%u},{%s},%o,",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       dvnode->fid.vid, dvnode->fid.vnode, dentry->d_name.name, mode);
 
 	ret = -ENAMETOOLONG;

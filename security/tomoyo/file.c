@@ -4,16 +4,23 @@
 <<<<<<< HEAD
  * Copyright (C) 2005-2011  NTT DATA CORPORATION
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2005-2011  NTT DATA CORPORATION
+=======
  * Pathname restriction functions.
  *
  * Copyright (C) 2005-2010  NTT DATA CORPORATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include "common.h"
 #include <linux/slab.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Mapping table from "enum tomoyo_path_acl_index" to "enum tomoyo_mac_index".
  */
@@ -27,6 +34,8 @@ static const u8 tomoyo_p2mac[TOMOYO_MAX_PATH_OPERATION] = {
 	[TOMOYO_TYPE_RMDIR]      = TOMOYO_MAC_FILE_RMDIR,
 	[TOMOYO_TYPE_TRUNCATE]   = TOMOYO_MAC_FILE_TRUNCATE,
 	[TOMOYO_TYPE_SYMLINK]    = TOMOYO_MAC_FILE_SYMLINK,
+<<<<<<< HEAD
+=======
 =======
 /* Keyword array for operations with one pathname. */
 const char *tomoyo_path_keyword[TOMOYO_MAX_PATH_OPERATION] = {
@@ -79,44 +88,63 @@ static const u8 tomoyo_p2mac[TOMOYO_MAX_PATH_OPERATION] = {
 	[TOMOYO_TYPE_SYMLINK]    = TOMOYO_MAC_FILE_SYMLINK,
 	[TOMOYO_TYPE_REWRITE]    = TOMOYO_MAC_FILE_REWRITE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[TOMOYO_TYPE_CHROOT]     = TOMOYO_MAC_FILE_CHROOT,
 	[TOMOYO_TYPE_UMOUNT]     = TOMOYO_MAC_FILE_UMOUNT,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Mapping table from "enum tomoyo_mkdev_acl_index" to "enum tomoyo_mac_index".
  */
 const u8 tomoyo_pnnn2mac[TOMOYO_MAX_MKDEV_OPERATION] = {
+<<<<<<< HEAD
+=======
 =======
 static const u8 tomoyo_pnnn2mac[TOMOYO_MAX_MKDEV_OPERATION] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[TOMOYO_TYPE_MKBLOCK] = TOMOYO_MAC_FILE_MKBLOCK,
 	[TOMOYO_TYPE_MKCHAR]  = TOMOYO_MAC_FILE_MKCHAR,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Mapping table from "enum tomoyo_path2_acl_index" to "enum tomoyo_mac_index".
  */
 const u8 tomoyo_pp2mac[TOMOYO_MAX_PATH2_OPERATION] = {
+<<<<<<< HEAD
+=======
 =======
 static const u8 tomoyo_pp2mac[TOMOYO_MAX_PATH2_OPERATION] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[TOMOYO_TYPE_LINK]       = TOMOYO_MAC_FILE_LINK,
 	[TOMOYO_TYPE_RENAME]     = TOMOYO_MAC_FILE_RENAME,
 	[TOMOYO_TYPE_PIVOT_ROOT] = TOMOYO_MAC_FILE_PIVOT_ROOT,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Mapping table from "enum tomoyo_path_number_acl_index" to
  * "enum tomoyo_mac_index".
  */
 const u8 tomoyo_pn2mac[TOMOYO_MAX_PATH_NUMBER_OPERATION] = {
+<<<<<<< HEAD
+=======
 =======
 static const u8 tomoyo_pn2mac[TOMOYO_MAX_PATH_NUMBER_OPERATION] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[TOMOYO_TYPE_CREATE] = TOMOYO_MAC_FILE_CREATE,
 	[TOMOYO_TYPE_MKDIR]  = TOMOYO_MAC_FILE_MKDIR,
 	[TOMOYO_TYPE_MKFIFO] = TOMOYO_MAC_FILE_MKFIFO,
@@ -128,6 +156,9 @@ static const u8 tomoyo_pn2mac[TOMOYO_MAX_PATH_NUMBER_OPERATION] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_put_name_union - Drop reference on "struct tomoyo_name_union".
  *
@@ -149,6 +180,8 @@ void tomoyo_put_name_union(struct tomoyo_name_union *ptr)
  *
  * Returns "struct tomoyo_path_info" if @name matches @ptr, NULL otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 void tomoyo_put_name_union(struct tomoyo_name_union *ptr)
 {
@@ -161,6 +194,7 @@ void tomoyo_put_name_union(struct tomoyo_name_union *ptr)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const struct tomoyo_path_info *
 tomoyo_compare_name_union(const struct tomoyo_path_info *name,
 			  const struct tomoyo_name_union *ptr)
@@ -168,8 +202,12 @@ tomoyo_compare_name_union(const struct tomoyo_path_info *name,
 <<<<<<< HEAD
 	if (ptr->group)
 =======
+<<<<<<< HEAD
+	if (ptr->group)
+=======
 	if (ptr->is_group)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return tomoyo_path_matches_group(name, ptr->group);
 	if (tomoyo_path_matches_pattern(name, ptr->filename))
 		return ptr->filename;
@@ -177,6 +215,9 @@ tomoyo_compare_name_union(const struct tomoyo_path_info *name,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_put_number_union - Drop reference on "struct tomoyo_number_union".
  *
@@ -201,6 +242,8 @@ bool tomoyo_compare_number_union(const unsigned long value,
 				 const struct tomoyo_number_union *ptr)
 {
 	if (ptr->group)
+<<<<<<< HEAD
+=======
 =======
 void tomoyo_put_number_union(struct tomoyo_number_union *ptr)
 {
@@ -213,11 +256,15 @@ bool tomoyo_compare_number_union(const unsigned long value,
 {
 	if (ptr->is_group)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return tomoyo_number_matches_group(value, value, ptr->group);
 	return value >= ptr->values[0] && value <= ptr->values[1];
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_add_slash - Add trailing '/' if needed.
  *
@@ -228,8 +275,11 @@ bool tomoyo_compare_number_union(const unsigned long value,
  * @buf must be generated by tomoyo_encode() because this function does not
  * allocate memory for adding '/'.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tomoyo_add_slash(struct tomoyo_path_info *buf)
 {
 	if (buf->is_dir)
@@ -242,6 +292,8 @@ static void tomoyo_add_slash(struct tomoyo_path_info *buf)
 }
 
 /**
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * tomoyo_strendswith - Check whether the token ends with the given token.
@@ -263,6 +315,7 @@ static bool tomoyo_strendswith(const char *name, const char *tail)
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_get_realpath - Get realpath.
  *
  * @buf:  Pointer to "struct tomoyo_path_info".
@@ -280,8 +333,12 @@ static bool tomoyo_get_realpath(struct tomoyo_path_info *buf, struct path *path)
 <<<<<<< HEAD
 	return false;
 =======
+<<<<<<< HEAD
+	return false;
+=======
         return false;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -298,6 +355,11 @@ static int tomoyo_audit_path_log(struct tomoyo_request_info *r)
 				 [r->param.path.operation],
 				 r->param.path.filename->name);
 =======
+<<<<<<< HEAD
+	return tomoyo_supervisor(r, "file %s %s\n", tomoyo_path_keyword
+				 [r->param.path.operation],
+				 r->param.path.filename->name);
+=======
 	const char *operation = tomoyo_path_keyword[r->param.path.operation];
 	const struct tomoyo_path_info *filename = r->param.path.filename;
 	if (r->granted)
@@ -306,6 +368,7 @@ static int tomoyo_audit_path_log(struct tomoyo_request_info *r)
 	return tomoyo_supervisor(r, "allow_%s %s\n", operation,
 				 tomoyo_pattern(filename));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -318,10 +381,15 @@ static int tomoyo_audit_path_log(struct tomoyo_request_info *r)
 static int tomoyo_audit_path2_log(struct tomoyo_request_info *r)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_supervisor(r, "file %s %s %s\n", tomoyo_mac_keywords
 				 [tomoyo_pp2mac[r->param.path2.operation]],
 				 r->param.path2.filename1->name,
 				 r->param.path2.filename2->name);
+<<<<<<< HEAD
+=======
 =======
 	const char *operation = tomoyo_path2_keyword[r->param.path2.operation];
 	const struct tomoyo_path_info *filename1 = r->param.path2.filename1;
@@ -334,6 +402,7 @@ static int tomoyo_audit_path2_log(struct tomoyo_request_info *r)
 				 tomoyo_pattern(filename1),
 				 tomoyo_pattern(filename2));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -346,12 +415,17 @@ static int tomoyo_audit_path2_log(struct tomoyo_request_info *r)
 static int tomoyo_audit_mkdev_log(struct tomoyo_request_info *r)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_supervisor(r, "file %s %s 0%o %u %u\n",
 				 tomoyo_mac_keywords
 				 [tomoyo_pnnn2mac[r->param.mkdev.operation]],
 				 r->param.mkdev.filename->name,
 				 r->param.mkdev.mode, r->param.mkdev.major,
 				 r->param.mkdev.minor);
+<<<<<<< HEAD
+=======
 =======
 	const char *operation = tomoyo_mkdev_keyword[r->param.mkdev.operation];
 	const struct tomoyo_path_info *filename = r->param.mkdev.filename;
@@ -365,6 +439,7 @@ static int tomoyo_audit_mkdev_log(struct tomoyo_request_info *r)
 	return tomoyo_supervisor(r, "allow_%s %s 0%o %u %u\n", operation,
 				 tomoyo_pattern(filename), mode, major, minor);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -373,9 +448,13 @@ static int tomoyo_audit_mkdev_log(struct tomoyo_request_info *r)
 <<<<<<< HEAD
  * @r: Pointer to "struct tomoyo_request_info".
 =======
+<<<<<<< HEAD
+ * @r: Pointer to "struct tomoyo_request_info".
+=======
  * @r:     Pointer to "struct tomoyo_request_info".
  * @error: Error code.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 on success, negative value otherwise.
  */
@@ -386,12 +465,16 @@ static int tomoyo_audit_path_number_log(struct tomoyo_request_info *r)
 <<<<<<< HEAD
 	char buffer[64];
 =======
+<<<<<<< HEAD
+	char buffer[64];
+=======
 	const struct tomoyo_path_info *filename = r->param.path_number.filename;
 	const char *operation = tomoyo_path_number_keyword[type];
 	char buffer[64];
 	if (r->granted)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (type) {
 	case TOMOYO_TYPE_CREATE:
 	case TOMOYO_TYPE_MKDIR:
@@ -410,6 +493,9 @@ static int tomoyo_audit_path_number_log(struct tomoyo_request_info *r)
 	tomoyo_print_ulong(buffer, sizeof(buffer), r->param.path_number.number,
 			   radix);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_supervisor(r, "file %s %s %s\n", tomoyo_mac_keywords
 				 [tomoyo_pn2mac[type]],
 				 r->param.path_number.filename->name, buffer);
@@ -427,6 +513,8 @@ static int tomoyo_audit_path_number_log(struct tomoyo_request_info *r)
  * matching entry on success. Since the caller holds tomoyo_read_lock(),
  * it is safe to set matching entry.
  */
+<<<<<<< HEAD
+=======
 =======
 	tomoyo_warn_log(r, "%s %s %s", operation, filename->name, buffer);
 	return tomoyo_supervisor(r, "allow_%s %s %s\n", operation,
@@ -674,6 +762,7 @@ int tomoyo_write_no_rewrite(char *data, const bool is_delete)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_check_path_acl(struct tomoyo_request_info *r,
 				  const struct tomoyo_acl_info *ptr)
 {
@@ -689,6 +778,9 @@ static bool tomoyo_check_path_acl(struct tomoyo_request_info *r,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_check_path_number_acl - Check permission for path number operation.
  *
@@ -697,8 +789,11 @@ static bool tomoyo_check_path_acl(struct tomoyo_request_info *r,
  *
  * Returns true if granted, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_check_path_number_acl(struct tomoyo_request_info *r,
 					 const struct tomoyo_acl_info *ptr)
 {
@@ -712,6 +807,9 @@ static bool tomoyo_check_path_number_acl(struct tomoyo_request_info *r,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_check_path2_acl - Check permission for path path operation.
  *
@@ -720,8 +818,11 @@ static bool tomoyo_check_path_number_acl(struct tomoyo_request_info *r,
  *
  * Returns true if granted, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_check_path2_acl(struct tomoyo_request_info *r,
 				   const struct tomoyo_acl_info *ptr)
 {
@@ -734,6 +835,9 @@ static bool tomoyo_check_path2_acl(struct tomoyo_request_info *r,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_check_mkdev_acl - Check permission for path number number number operation.
  *
@@ -744,10 +848,13 @@ static bool tomoyo_check_path2_acl(struct tomoyo_request_info *r,
  */
 static bool tomoyo_check_mkdev_acl(struct tomoyo_request_info *r,
 				   const struct tomoyo_acl_info *ptr)
+<<<<<<< HEAD
+=======
 =======
 static bool tomoyo_check_mkdev_acl(struct tomoyo_request_info *r,
 				const struct tomoyo_acl_info *ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct tomoyo_mkdev_acl *acl =
 		container_of(ptr, typeof(*acl), head);
@@ -763,6 +870,9 @@ static bool tomoyo_check_mkdev_acl(struct tomoyo_request_info *r,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_same_path_acl - Check for duplicated "struct tomoyo_path_acl" entry.
  *
@@ -771,14 +881,20 @@ static bool tomoyo_check_mkdev_acl(struct tomoyo_request_info *r,
  *
  * Returns true if @a == @b except permission bits, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_same_path_acl(const struct tomoyo_acl_info *a,
 				 const struct tomoyo_acl_info *b)
 {
 	const struct tomoyo_path_acl *p1 = container_of(a, typeof(*p1), head);
 	const struct tomoyo_path_acl *p2 = container_of(b, typeof(*p2), head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_same_name_union(&p1->name, &p2->name);
 }
 
@@ -791,12 +907,15 @@ static bool tomoyo_same_path_acl(const struct tomoyo_acl_info *a,
  *
  * Returns true if @a is empty, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 	return tomoyo_same_acl_head(&p1->head, &p2->head) &&
 		tomoyo_same_name_union(&p1->name, &p2->name);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_merge_path_acl(struct tomoyo_acl_info *a,
 				  struct tomoyo_acl_info *b,
 				  const bool is_delete)
@@ -806,10 +925,15 @@ static bool tomoyo_merge_path_acl(struct tomoyo_acl_info *a,
 	u16 perm = *a_perm;
 	const u16 b_perm = container_of(b, struct tomoyo_path_acl, head)->perm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (is_delete)
 		perm &= ~b_perm;
 	else
 		perm |= b_perm;
+<<<<<<< HEAD
+=======
 =======
 	if (is_delete) {
 		perm &= ~b_perm;
@@ -825,6 +949,7 @@ static bool tomoyo_merge_path_acl(struct tomoyo_acl_info *a,
 			perm |= TOMOYO_RW_MASK;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*a_perm = perm;
 	return !perm;
 }
@@ -836,17 +961,25 @@ static bool tomoyo_merge_path_acl(struct tomoyo_acl_info *a,
  * @perm:  Permission.
  * @param: Pointer to "struct tomoyo_acl_param".
 =======
+<<<<<<< HEAD
+ * @perm:  Permission.
+ * @param: Pointer to "struct tomoyo_acl_param".
+=======
  * @type:      Type of operation.
  * @filename:  Filename.
  * @domain:    Pointer to "struct tomoyo_domain_info".
  * @is_delete: True if it is a delete request.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 on success, negative value otherwise.
  *
  * Caller holds tomoyo_read_lock().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tomoyo_update_path_acl(const u16 perm,
 				  struct tomoyo_acl_param *param)
 {
@@ -861,6 +994,8 @@ static int tomoyo_update_path_acl(const u16 perm,
 		error = tomoyo_update_domain(&e.head, sizeof(e), param,
 					     tomoyo_same_path_acl,
 					     tomoyo_merge_path_acl);
+<<<<<<< HEAD
+=======
 =======
 static int tomoyo_update_path_acl(const u8 type, const char *filename,
 				  struct tomoyo_domain_info * const domain,
@@ -879,11 +1014,15 @@ static int tomoyo_update_path_acl(const u8 type, const char *filename,
 				     tomoyo_same_path_acl,
 				     tomoyo_merge_path_acl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_put_name_union(&e.name);
 	return error;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_same_mkdev_acl - Check for duplicated "struct tomoyo_mkdev_acl" entry.
  *
@@ -915,6 +1054,8 @@ static bool tomoyo_same_mkdev_acl(const struct tomoyo_acl_info *a,
 static bool tomoyo_merge_mkdev_acl(struct tomoyo_acl_info *a,
 				   struct tomoyo_acl_info *b,
 				   const bool is_delete)
+<<<<<<< HEAD
+=======
 =======
 static bool tomoyo_same_mkdev_acl(const struct tomoyo_acl_info *a,
 					 const struct tomoyo_acl_info *b)
@@ -934,6 +1075,7 @@ static bool tomoyo_merge_mkdev_acl(struct tomoyo_acl_info *a,
 					  struct tomoyo_acl_info *b,
 					  const bool is_delete)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 *const a_perm = &container_of(a, struct tomoyo_mkdev_acl,
 					 head)->perm;
@@ -955,6 +1097,10 @@ static bool tomoyo_merge_mkdev_acl(struct tomoyo_acl_info *a,
  * @perm:  Permission.
  * @param: Pointer to "struct tomoyo_acl_param".
 =======
+<<<<<<< HEAD
+ * @perm:  Permission.
+ * @param: Pointer to "struct tomoyo_acl_param".
+=======
  * @type:      Type of operation.
  * @filename:  Filename.
  * @mode:      Create mode.
@@ -963,12 +1109,16 @@ static bool tomoyo_merge_mkdev_acl(struct tomoyo_acl_info *a,
  * @domain:    Pointer to "struct tomoyo_domain_info".
  * @is_delete: True if it is a delete request.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 on success, negative value otherwise.
  *
  * Caller holds tomoyo_read_lock().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tomoyo_update_mkdev_acl(const u8 perm,
 				   struct tomoyo_acl_param *param)
 {
@@ -986,6 +1136,8 @@ static int tomoyo_update_mkdev_acl(const u8 perm,
 		error = tomoyo_update_domain(&e.head, sizeof(e), param,
 					     tomoyo_same_mkdev_acl,
 					     tomoyo_merge_mkdev_acl);
+<<<<<<< HEAD
+=======
 =======
 static int tomoyo_update_mkdev_acl(const u8 type, const char *filename,
 					  char *mode, char *major, char *minor,
@@ -1007,6 +1159,7 @@ static int tomoyo_update_mkdev_acl(const u8 type, const char *filename,
 				     tomoyo_merge_mkdev_acl);
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_put_name_union(&e.name);
 	tomoyo_put_number_union(&e.mode);
 	tomoyo_put_number_union(&e.major);
@@ -1015,6 +1168,9 @@ static int tomoyo_update_mkdev_acl(const u8 type, const char *filename,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_same_path2_acl - Check for duplicated "struct tomoyo_path2_acl" entry.
  *
@@ -1023,14 +1179,20 @@ static int tomoyo_update_mkdev_acl(const u8 type, const char *filename,
  *
  * Returns true if @a == @b except permission bits, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_same_path2_acl(const struct tomoyo_acl_info *a,
 				  const struct tomoyo_acl_info *b)
 {
 	const struct tomoyo_path2_acl *p1 = container_of(a, typeof(*p1), head);
 	const struct tomoyo_path2_acl *p2 = container_of(b, typeof(*p2), head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_same_name_union(&p1->name1, &p2->name1) &&
 		tomoyo_same_name_union(&p1->name2, &p2->name2);
 }
@@ -1044,6 +1206,8 @@ static bool tomoyo_same_path2_acl(const struct tomoyo_acl_info *a,
  *
  * Returns true if @a is empty, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 	return tomoyo_same_acl_head(&p1->head, &p2->head)
 		&& tomoyo_same_name_union(&p1->name1, &p2->name1)
@@ -1051,6 +1215,7 @@ static bool tomoyo_same_path2_acl(const struct tomoyo_acl_info *a,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_merge_path2_acl(struct tomoyo_acl_info *a,
 				   struct tomoyo_acl_info *b,
 				   const bool is_delete)
@@ -1074,18 +1239,26 @@ static bool tomoyo_merge_path2_acl(struct tomoyo_acl_info *a,
  * @perm:  Permission.
  * @param: Pointer to "struct tomoyo_acl_param".
 =======
+<<<<<<< HEAD
+ * @perm:  Permission.
+ * @param: Pointer to "struct tomoyo_acl_param".
+=======
  * @type:      Type of operation.
  * @filename1: First filename.
  * @filename2: Second filename.
  * @domain:    Pointer to "struct tomoyo_domain_info".
  * @is_delete: True if it is a delete request.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 on success, negative value otherwise.
  *
  * Caller holds tomoyo_read_lock().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tomoyo_update_path2_acl(const u8 perm,
 				   struct tomoyo_acl_param *param)
 {
@@ -1101,6 +1274,8 @@ static int tomoyo_update_path2_acl(const u8 perm,
 		error = tomoyo_update_domain(&e.head, sizeof(e), param,
 					     tomoyo_same_path2_acl,
 					     tomoyo_merge_path2_acl);
+<<<<<<< HEAD
+=======
 =======
 static int tomoyo_update_path2_acl(const u8 type, const char *filename1,
 				   const char *filename2,
@@ -1120,6 +1295,7 @@ static int tomoyo_update_path2_acl(const u8 type, const char *filename1,
 				     tomoyo_merge_path2_acl);
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_put_name_union(&e.name1);
 	tomoyo_put_name_union(&e.name2);
 	return error;
@@ -1137,6 +1313,9 @@ static int tomoyo_update_path2_acl(const u8 type, const char *filename1,
  * Caller holds tomoyo_read_lock().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tomoyo_path_permission(struct tomoyo_request_info *r, u8 operation,
 				  const struct tomoyo_path_info *filename)
 {
@@ -1144,6 +1323,8 @@ static int tomoyo_path_permission(struct tomoyo_request_info *r, u8 operation,
 
 	r->type = tomoyo_p2mac[operation];
 	r->mode = tomoyo_get_mode(r->domain->ns, r->profile, r->type);
+<<<<<<< HEAD
+=======
 =======
 int tomoyo_path_permission(struct tomoyo_request_info *r, u8 operation,
 			   const struct tomoyo_path_info *filename)
@@ -1154,6 +1335,7 @@ int tomoyo_path_permission(struct tomoyo_request_info *r, u8 operation,
 	r->type = tomoyo_p2mac[operation];
 	r->mode = tomoyo_get_mode(r->profile, r->type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (r->mode == TOMOYO_CONFIG_DISABLED)
 		return 0;
 	r->param_type = TOMOYO_TYPE_PATH_ACL;
@@ -1162,6 +1344,9 @@ int tomoyo_path_permission(struct tomoyo_request_info *r, u8 operation,
 	do {
 		tomoyo_check_acl(r, tomoyo_check_path_acl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = tomoyo_audit_path_log(r);
 	} while (error == TOMOYO_RETRY_REQUEST);
 	return error;
@@ -1206,6 +1391,8 @@ int tomoyo_execute_permission(struct tomoyo_request_info *r,
  *
  * Returns true if @a == @b except permission bits, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 		if (!r->granted && operation == TOMOYO_TYPE_READ &&
 		    !r->domain->ignore_global_allow_read &&
@@ -1232,6 +1419,7 @@ int tomoyo_execute_permission(struct tomoyo_request_info *r,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_same_path_number_acl(const struct tomoyo_acl_info *a,
 					const struct tomoyo_acl_info *b)
 {
@@ -1240,6 +1428,9 @@ static bool tomoyo_same_path_number_acl(const struct tomoyo_acl_info *a,
 	const struct tomoyo_path_number_acl *p2 = container_of(b, typeof(*p2),
 							       head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_same_name_union(&p1->name, &p2->name) &&
 		tomoyo_same_number_union(&p1->number, &p2->number);
 }
@@ -1253,6 +1444,8 @@ static bool tomoyo_same_path_number_acl(const struct tomoyo_acl_info *a,
  *
  * Returns true if @a is empty, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 	return tomoyo_same_acl_head(&p1->head, &p2->head)
 		&& tomoyo_same_name_union(&p1->name, &p2->name)
@@ -1260,6 +1453,7 @@ static bool tomoyo_same_path_number_acl(const struct tomoyo_acl_info *a,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_merge_path_number_acl(struct tomoyo_acl_info *a,
 					 struct tomoyo_acl_info *b,
 					 const bool is_delete)
@@ -1281,6 +1475,9 @@ static bool tomoyo_merge_path_number_acl(struct tomoyo_acl_info *a,
  * tomoyo_update_path_number_acl - Update ioctl/chmod/chown/chgrp ACL.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @perm:  Permission.
  * @param: Pointer to "struct tomoyo_acl_param".
  *
@@ -1301,6 +1498,8 @@ static int tomoyo_update_path_number_acl(const u8 perm,
 		error = tomoyo_update_domain(&e.head, sizeof(e), param,
 					     tomoyo_same_path_number_acl,
 					     tomoyo_merge_path_number_acl);
+<<<<<<< HEAD
+=======
 =======
  * @type:      Type of operation.
  * @filename:  Filename.
@@ -1330,6 +1529,7 @@ static int tomoyo_update_path_number_acl(const u8 type, const char *filename,
 				     tomoyo_merge_path_number_acl);
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_put_name_union(&e.name);
 	tomoyo_put_number_union(&e.number);
 	return error;
@@ -1353,7 +1553,13 @@ int tomoyo_path_number_perm(const u8 type, struct path *path,
 		.path1 = *path,
 	};
 =======
+<<<<<<< HEAD
+	struct tomoyo_obj_info obj = {
+		.path1 = *path,
+	};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = -ENOMEM;
 	struct tomoyo_path_info buf;
 	int idx;
@@ -1362,8 +1568,12 @@ int tomoyo_path_number_perm(const u8 type, struct path *path,
 <<<<<<< HEAD
 	    == TOMOYO_CONFIG_DISABLED || !path->dentry)
 =======
+<<<<<<< HEAD
+	    == TOMOYO_CONFIG_DISABLED || !path->dentry)
+=======
 	    == TOMOYO_CONFIG_DISABLED || !path->mnt || !path->dentry)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	idx = tomoyo_read_lock();
 	if (!tomoyo_get_realpath(&buf, path))
@@ -1371,7 +1581,11 @@ int tomoyo_path_number_perm(const u8 type, struct path *path,
 <<<<<<< HEAD
 	r.obj = &obj;
 =======
+<<<<<<< HEAD
+	r.obj = &obj;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (type == TOMOYO_TYPE_MKDIR)
 		tomoyo_add_slash(&buf);
 	r.param_type = TOMOYO_TYPE_PATH_NUMBER_ACL;
@@ -1407,6 +1621,9 @@ int tomoyo_check_open_permission(struct tomoyo_domain_info *domain,
 	struct tomoyo_path_info buf;
 	struct tomoyo_request_info r;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_obj_info obj = {
 		.path1 = *path,
 	};
@@ -1417,6 +1634,8 @@ int tomoyo_check_open_permission(struct tomoyo_domain_info *domain,
 	idx = tomoyo_read_lock();
 	if (acc_mode &&
 	    tomoyo_init_request_info(&r, domain, TOMOYO_MAC_FILE_OPEN)
+<<<<<<< HEAD
+=======
 =======
 	int idx;
 
@@ -1434,12 +1653,16 @@ int tomoyo_check_open_permission(struct tomoyo_domain_info *domain,
 	if ((acc_mode & MAY_WRITE) && !(flag & O_APPEND)
 	    && tomoyo_init_request_info(&r, domain, TOMOYO_MAC_FILE_REWRITE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    != TOMOYO_CONFIG_DISABLED) {
 		if (!tomoyo_get_realpath(&buf, path)) {
 			error = -ENOMEM;
 			goto out;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		r.obj = &obj;
 		if (acc_mode & MAY_READ)
 			error = tomoyo_path_permission(&r, TOMOYO_TYPE_READ,
@@ -1450,6 +1673,8 @@ int tomoyo_check_open_permission(struct tomoyo_domain_info *domain,
 						       TOMOYO_TYPE_WRITE,
 						       &buf);
 	}
+<<<<<<< HEAD
+=======
 =======
 		if (tomoyo_no_rewrite_file(&buf))
 			error = tomoyo_path_permission(&r, TOMOYO_TYPE_REWRITE,
@@ -1472,6 +1697,7 @@ int tomoyo_check_open_permission(struct tomoyo_domain_info *domain,
 		error = tomoyo_path_permission(&r, operation, &buf);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  out:
 	kfree(buf.name);
 	tomoyo_read_unlock(idx);
@@ -1482,6 +1708,9 @@ int tomoyo_check_open_permission(struct tomoyo_domain_info *domain,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_path_perm - Check permission for "unlink", "rmdir", "truncate", "symlink", "append", "chroot" and "unmount".
  *
  * @operation: Type of operation.
@@ -1508,6 +1737,8 @@ int tomoyo_path_perm(const u8 operation, struct path *path, const char *target)
 		return 0;
 	is_enforce = (r.mode == TOMOYO_CONFIG_ENFORCING);
 	error = -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_path_perm - Check permission for "unlink", "rmdir", "truncate", "symlink", "rewrite", "chroot" and "unmount".
  *
@@ -1529,10 +1760,15 @@ int tomoyo_path_perm(const u8 operation, struct path *path)
 	    == TOMOYO_CONFIG_DISABLED)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	buf.name = NULL;
 	idx = tomoyo_read_lock();
 	if (!tomoyo_get_realpath(&buf, path))
 		goto out;
+<<<<<<< HEAD
+	r.obj = &obj;
+	switch (operation) {
+=======
 <<<<<<< HEAD
 	r.obj = &obj;
 	switch (operation) {
@@ -1545,11 +1781,15 @@ int tomoyo_path_perm(const u8 operation, struct path *path)
 		}
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TOMOYO_TYPE_RMDIR:
 	case TOMOYO_TYPE_CHROOT:
 		tomoyo_add_slash(&buf);
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TOMOYO_TYPE_SYMLINK:
 		symlink_target.name = tomoyo_encode(target);
 		if (!symlink_target.name)
@@ -1565,6 +1805,8 @@ int tomoyo_path_perm(const u8 operation, struct path *path)
 	kfree(buf.name);
 	tomoyo_read_unlock(idx);
 	if (!is_enforce)
+<<<<<<< HEAD
+=======
 =======
 	}
 	error = tomoyo_path_permission(&r, operation, &buf);
@@ -1573,6 +1815,7 @@ int tomoyo_path_perm(const u8 operation, struct path *path)
 	tomoyo_read_unlock(idx);
 	if (r.mode != TOMOYO_CONFIG_ENFORCING)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = 0;
 	return error;
 }
@@ -1589,17 +1832,23 @@ int tomoyo_path_perm(const u8 operation, struct path *path)
  */
 int tomoyo_mkdev_perm(const u8 operation, struct path *path,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      const unsigned int mode, unsigned int dev)
 {
 	struct tomoyo_request_info r;
 	struct tomoyo_obj_info obj = {
 		.path1 = *path,
 	};
+<<<<<<< HEAD
+=======
 =======
 			     const unsigned int mode, unsigned int dev)
 {
 	struct tomoyo_request_info r;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = -ENOMEM;
 	struct tomoyo_path_info buf;
 	int idx;
@@ -1607,9 +1856,13 @@ int tomoyo_mkdev_perm(const u8 operation, struct path *path,
 <<<<<<< HEAD
 	if (tomoyo_init_request_info(&r, NULL, tomoyo_pnnn2mac[operation])
 =======
+<<<<<<< HEAD
+	if (tomoyo_init_request_info(&r, NULL, tomoyo_pnnn2mac[operation])
+=======
 	if (!path->mnt ||
 	    tomoyo_init_request_info(&r, NULL, tomoyo_pnnn2mac[operation])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    == TOMOYO_CONFIG_DISABLED)
 		return 0;
 	idx = tomoyo_read_lock();
@@ -1618,7 +1871,11 @@ int tomoyo_mkdev_perm(const u8 operation, struct path *path,
 <<<<<<< HEAD
 		r.obj = &obj;
 =======
+<<<<<<< HEAD
+		r.obj = &obj;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev = new_decode_dev(dev);
 		r.param_type = TOMOYO_TYPE_MKDEV_ACL;
 		r.param.mkdev.filename = &buf;
@@ -1653,6 +1910,9 @@ int tomoyo_path2_perm(const u8 operation, struct path *path1,
 	struct tomoyo_path_info buf2;
 	struct tomoyo_request_info r;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_obj_info obj = {
 		.path1 = *path1,
 		.path2 = *path2,
@@ -1660,12 +1920,15 @@ int tomoyo_path2_perm(const u8 operation, struct path *path1,
 	int idx;
 
 	if (tomoyo_init_request_info(&r, NULL, tomoyo_pp2mac[operation])
+<<<<<<< HEAD
+=======
 =======
 	int idx;
 
 	if (!path1->mnt || !path2->mnt ||
 	    tomoyo_init_request_info(&r, NULL, tomoyo_pp2mac[operation])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    == TOMOYO_CONFIG_DISABLED)
 		return 0;
 	buf1.name = NULL;
@@ -1678,6 +1941,9 @@ int tomoyo_path2_perm(const u8 operation, struct path *path1,
 		struct dentry *dentry;
 	case TOMOYO_TYPE_RENAME:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TOMOYO_TYPE_LINK:
 		dentry = path1->dentry;
 		if (!dentry->d_inode || !S_ISDIR(dentry->d_inode->i_mode))
@@ -1689,6 +1955,8 @@ int tomoyo_path2_perm(const u8 operation, struct path *path1,
 		break;
 	}
 	r.obj = &obj;
+<<<<<<< HEAD
+=======
 =======
         case TOMOYO_TYPE_LINK:
 		dentry = path1->dentry;
@@ -1701,6 +1969,7 @@ int tomoyo_path2_perm(const u8 operation, struct path *path1,
 		break;
         }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r.param_type = TOMOYO_TYPE_PATH2_ACL;
 	r.param.path2.operation = operation;
 	r.param.path2.filename1 = &buf1;
@@ -1720,6 +1989,9 @@ int tomoyo_path2_perm(const u8 operation, struct path *path1,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_same_mount_acl - Check for duplicated "struct tomoyo_mount_acl" entry.
  *
  * @a: Pointer to "struct tomoyo_acl_info".
@@ -1770,6 +2042,8 @@ static int tomoyo_update_mount_acl(struct tomoyo_acl_param *param)
  * tomoyo_write_file - Update file related list.
  *
  * @param: Pointer to "struct tomoyo_acl_param".
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_write_file - Update file related list.
  *
@@ -1777,12 +2051,16 @@ static int tomoyo_update_mount_acl(struct tomoyo_acl_param *param)
  * @domain:    Pointer to "struct tomoyo_domain_info".
  * @is_delete: True if it is a delete request.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 on success, negative value otherwise.
  *
  * Caller holds tomoyo_read_lock().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tomoyo_write_file(struct tomoyo_acl_param *param)
 {
 	u16 perm = 0;
@@ -1814,6 +2092,8 @@ int tomoyo_write_file(struct tomoyo_acl_param *param)
 	if (tomoyo_permstr(operation,
 			   tomoyo_mac_keywords[TOMOYO_MAC_FILE_MOUNT]))
 		return tomoyo_update_mount_acl(param);
+<<<<<<< HEAD
+=======
 =======
 int tomoyo_write_file(char *data, struct tomoyo_domain_info *domain,
 		      const bool is_delete)
@@ -1854,5 +2134,6 @@ int tomoyo_write_file(char *data, struct tomoyo_domain_info *domain,
 	}
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -EINVAL;
 }

@@ -122,7 +122,14 @@ static SIMPLE_DEV_PM_OPS(adxl34x_spi_pm, adxl34x_spi_suspend,
 static struct spi_driver adxl34x_driver = {
 	.driver = {
 		.name = "adxl34x",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		.bus = &spi_bus_type,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.bus = &spi_bus_type,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 		.pm = &adxl34x_spi_pm,
 	},
@@ -130,6 +137,12 @@ static struct spi_driver adxl34x_driver = {
 	.remove  = __devexit_p(adxl34x_spi_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(adxl34x_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init adxl34x_spi_init(void)
 {
 	return spi_register_driver(&adxl34x_driver);
@@ -141,6 +154,10 @@ static void __exit adxl34x_spi_exit(void)
 	spi_unregister_driver(&adxl34x_driver);
 }
 module_exit(adxl34x_spi_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Michael Hennerich <hennerich@blackfin.uclinux.org>");
 MODULE_DESCRIPTION("ADXL345/346 Three-Axis Digital Accelerometer SPI Bus Driver");

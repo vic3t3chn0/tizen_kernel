@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASM_ARCH_DMA_H
 #define __ASM_ARCH_DMA_H
 
@@ -90,6 +93,8 @@ ep93xx_dma_chan_direction(struct dma_chan *chan)
 	/* even channels are for TX, odd for RX */
 	return (chan->chan_id % 2 == 0) ? DMA_MEM_TO_DEV : DMA_DEV_TO_MEM;
 }
+<<<<<<< HEAD
+=======
 =======
 /**
  * DOC: EP93xx DMA M2P memory to peripheral and peripheral to memory engine
@@ -239,5 +244,6 @@ void ep93xx_dma_m2p_submit_recursive(struct ep93xx_dma_m2p_client *m2p,
  */
 void ep93xx_dma_m2p_flush(struct ep93xx_dma_m2p_client *m2p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_DMA_H */

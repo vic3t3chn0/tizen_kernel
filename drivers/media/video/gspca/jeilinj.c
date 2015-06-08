@@ -24,6 +24,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "jeilinj"
 
 #include <linux/slab.h>
@@ -113,8 +121,18 @@ static void jlj_write2(struct gspca_dev *gspca_dev, unsigned char *command)
 			usb_sndbulkpipe(gspca_dev->dev, 3),
 			gspca_dev->usb_buf, 2, NULL, 500);
 	if (retval < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("command write [%02x] error %d\n",
+		       gspca_dev->usb_buf[0], retval);
+=======
 		err("command write [%02x] error %d",
 				gspca_dev->usb_buf[0], retval);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("command write [%02x] error %d",
+				gspca_dev->usb_buf[0], retval);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = retval;
 	}
 }
@@ -131,8 +149,18 @@ static void jlj_read1(struct gspca_dev *gspca_dev, unsigned char response)
 				gspca_dev->usb_buf, 1, NULL, 500);
 	response = gspca_dev->usb_buf[0];
 	if (retval < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("read command [%02x] error %d\n",
+		       gspca_dev->usb_buf[0], retval);
+=======
 		err("read command [%02x] error %d",
 				gspca_dev->usb_buf[0], retval);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("read command [%02x] error %d",
+				gspca_dev->usb_buf[0], retval);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = retval;
 	}
 }
@@ -403,6 +431,12 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	dev->type = id->driver_info;
 	gspca_dev->cam.ctrls = dev->ctrls;
 	dev->quality = QUALITY_DEF;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev->ctrls[LIGHTFREQ].def = V4L2_CID_POWER_LINE_FREQUENCY_60HZ;
 	dev->ctrls[RED].def = RED_BALANCE_DEF;
 	dev->ctrls[GREEN].def = GREEN_BALANCE_DEF;
@@ -410,6 +444,10 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	PDEBUG(D_PROBE,
 		"JEILINJ camera detected"
 		" (vid/pid 0x%04X:0x%04X)", id->idVendor, id->idProduct);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cam->cam_mode = jlj_mode;
 	cam->nmodes = ARRAY_SIZE(jlj_mode);
 	cam->bulk = 1;
@@ -422,7 +460,15 @@ static void sd_stopN(struct gspca_dev *gspca_dev)
 {
 	int i;
 	u8 *buf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static u8 stop_commands[][2] = {
+=======
 	u8 stop_commands[][2] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 stop_commands[][2] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{0x71, 0x00},
 		{0x70, 0x09},
 		{0x71, 0x80},
@@ -586,6 +632,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -599,3 +651,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

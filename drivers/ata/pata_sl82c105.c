@@ -1,6 +1,13 @@
 /*
  * pata_sl82c105.c 	- SL82C105 PATA for new ATA layer
  *			  (C) 2005 Red Hat Inc
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *			  (C) 2011 Bartlomiej Zolnierkiewicz
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Based in part on linux/drivers/ide/pci/sl82c105.c
  * 		SL82C105/Winbond 553 IDE driver
@@ -289,6 +296,20 @@ static int sl82c105_bridge_revision(struct pci_dev *pdev)
 	return bridge->revision;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void sl82c105_fixup(struct pci_dev *pdev)
+{
+	u32 val;
+
+	pci_read_config_dword(pdev, 0x40, &val);
+	val |= CTRL_P0EN | CTRL_P0F16 | CTRL_P1F16;
+	pci_write_config_dword(pdev, 0x40, val);
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int sl82c105_init_one(struct pci_dev *dev, const struct pci_device_id *id)
 {
@@ -306,7 +327,14 @@ static int sl82c105_init_one(struct pci_dev *dev, const struct pci_device_id *id
 	/* for now use only the first port */
 	const struct ata_port_info *ppi[] = { &info_early,
 					       NULL };
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u32 val;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 val;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rev;
 	int rc;
 
@@ -317,6 +345,20 @@ static int sl82c105_init_one(struct pci_dev *dev, const struct pci_device_id *id
 	rev = sl82c105_bridge_revision(dev);
 
 	if (rev == -1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_warn(&dev->dev,
+			 "pata_sl82c105: Unable to find bridge, disabling DMA\n");
+	else if (rev <= 5)
+		dev_warn(&dev->dev,
+			 "pata_sl82c105: Early bridge revision, no DMA available\n");
+	else
+		ppi[0] = &info_dma;
+
+	sl82c105_fixup(dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_printk(KERN_WARNING, &dev->dev, "pata_sl82c105: Unable to find bridge, disabling DMA.\n");
 	else if (rev <= 5)
 		dev_printk(KERN_WARNING, &dev->dev, "pata_sl82c105: Early bridge revision, no DMA available.\n");
@@ -326,10 +368,37 @@ static int sl82c105_init_one(struct pci_dev *dev, const struct pci_device_id *id
 	pci_read_config_dword(dev, 0x40, &val);
 	val |= CTRL_P0EN | CTRL_P0F16 | CTRL_P1F16;
 	pci_write_config_dword(dev, 0x40, val);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ata_pci_bmdma_init_one(dev, ppi, &sl82c105_sht, NULL, 0);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+static int sl82c105_reinit_one(struct pci_dev *pdev)
+{
+	struct ata_host *host = dev_get_drvdata(&pdev->dev);
+	int rc;
+
+	rc = ata_pci_device_do_resume(pdev);
+	if (rc)
+		return rc;
+
+	sl82c105_fixup(pdev);
+
+	ata_host_resume(host);
+	return 0;
+}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct pci_device_id sl82c105[] = {
 	{ PCI_VDEVICE(WINBOND, PCI_DEVICE_ID_WINBOND_82C105), },
 
@@ -340,7 +409,19 @@ static struct pci_driver sl82c105_pci_driver = {
 	.name 		= DRV_NAME,
 	.id_table	= sl82c105,
 	.probe 		= sl82c105_init_one,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.remove		= ata_pci_remove_one,
+#ifdef CONFIG_PM
+	.suspend	= ata_pci_device_suspend,
+	.resume		= sl82c105_reinit_one,
+#endif
+=======
 	.remove		= ata_pci_remove_one
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.remove		= ata_pci_remove_one
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init sl82c105_init(void)

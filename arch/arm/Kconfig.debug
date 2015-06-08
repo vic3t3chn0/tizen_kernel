@@ -68,8 +68,12 @@ config DEBUG_LL
 <<<<<<< HEAD
 	bool "Kernel low-level debugging functions (read help!)"
 =======
+<<<<<<< HEAD
+	bool "Kernel low-level debugging functions (read help!)"
+=======
 	bool "Kernel low-level debugging functions"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	depends on DEBUG_KERNEL
 	help
 	  Say Y here to include definitions of printascii, printch, printhex
@@ -77,6 +81,9 @@ config DEBUG_LL
 	  executes before the console is initialized.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  Note that selecting this option will limit the kernel to a single
 	  UART definition, as specified below. Attempting to boot the kernel
 	  image on a different platform *will not work*, so this option should
@@ -278,8 +285,11 @@ choice
 
 endchoice
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EARLY_PRINTK
 	bool "Early printk"
 	depends on DEBUG_LL
@@ -288,6 +298,11 @@ config EARLY_PRINTK
 	  kernel low-level debugging functions. Add earlyprintk to your
 	  kernel parameters to enable this console.
 
+<<<<<<< HEAD
+config OC_ETM
+	bool "On-chip ETM and ETB"
+	depends on ARM_AMBA
+=======
 <<<<<<< HEAD
 config OC_ETM
 	bool "On-chip ETM and ETB"
@@ -309,12 +324,16 @@ config OC_ETM
 	bool "On-chip ETM and ETB"
 	select ARM_AMBA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Enables the on-chip embedded trace macrocell and embedded trace
 	  buffer driver that will allow you to collect traces of the
 	  kernel code.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARM_KPROBES_TEST
 	tristate "Kprobes test module"
 	depends on KPROBES && MODULES
@@ -340,6 +359,8 @@ config DEBUG_SET_MODULE_RONX
 	  patching and dynamic kernel tracing - and they might also protect
 	  against certain classes of kernel exploits.
 	  If in doubt, say "N".
+<<<<<<< HEAD
+=======
 =======
 config DEBUG_DC21285_PORT
 	bool "Kernel low-level debugging messages via footbridge serial port"
@@ -375,5 +396,6 @@ config CACHE_PERF
 	help
 	  Measure the performance of cache maintenance operation.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 endmenu

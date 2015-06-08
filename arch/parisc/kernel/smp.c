@@ -36,10 +36,16 @@
 
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/cpu.h>
+
+#include <linux/atomic.h>
+=======
 
 #include <asm/system.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/current.h>
 #include <asm/delay.h>
 #include <asm/tlbflush.h>
@@ -300,14 +306,21 @@ smp_cpu_init(int cpunum)
 <<<<<<< HEAD
 	if (cpu_online(cpunum))	{
 =======
+<<<<<<< HEAD
+	if (cpu_online(cpunum))	{
+=======
 	if (cpu_isset(cpunum, cpu_online_map))
 	{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		extern void machine_halt(void); /* arch/parisc.../process.c */
 
 		printk(KERN_CRIT "CPU#%d already initialized!\n", cpunum);
 		machine_halt();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	notify_cpu_starting(cpunum);
@@ -315,10 +328,13 @@ smp_cpu_init(int cpunum)
 	ipi_call_lock();
 	set_cpu_online(cpunum, true);
 	ipi_call_unlock();
+<<<<<<< HEAD
+=======
 =======
 	}  
 	set_cpu_online(cpunum, true);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Initialise the idle task for this CPU */
 	atomic_inc(&init_mm.mm_count);

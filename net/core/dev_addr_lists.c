@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/list.h>
 #include <linux/proc_fs.h>
 
@@ -314,9 +318,13 @@ int dev_addr_del(struct net_device *dev, unsigned char *addr,
 <<<<<<< HEAD
 	if (ha->addr == dev->dev_addr && ha->refcount == 1)
 =======
+<<<<<<< HEAD
+	if (ha->addr == dev->dev_addr && ha->refcount == 1)
+=======
 	if (!memcmp(ha->addr, addr, dev->addr_len) &&
 	    ha->type == addr_type && ha->refcount == 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOENT;
 
 	err = __hw_addr_del(&dev->dev_addrs, addr, dev->addr_len,
@@ -438,8 +446,12 @@ EXPORT_SYMBOL(dev_uc_del);
 <<<<<<< HEAD
  *	locked by netif_addr_lock_bh.
 =======
+<<<<<<< HEAD
+ *	locked by netif_addr_lock_bh.
+=======
  *	locked by netif_tx_lock_bh.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *	This function is intended to be called from the dev->set_rx_mode
  *	function of layered software devices.
@@ -452,11 +464,16 @@ int dev_uc_sync(struct net_device *to, struct net_device *from)
 		return -EINVAL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netif_addr_lock_nested(to);
 	err = __hw_addr_sync(&to->uc, &from->uc, to->addr_len);
 	if (!err)
 		__dev_set_rx_mode(to);
 	netif_addr_unlock(to);
+<<<<<<< HEAD
+=======
 =======
 	netif_addr_lock_bh(to);
 	err = __hw_addr_sync(&to->uc, &from->uc, to->addr_len);
@@ -464,6 +481,7 @@ int dev_uc_sync(struct net_device *to, struct net_device *from)
 		__dev_set_rx_mode(to);
 	netif_addr_unlock_bh(to);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 EXPORT_SYMBOL(dev_uc_sync);
@@ -486,8 +504,12 @@ void dev_uc_unsync(struct net_device *to, struct net_device *from)
 <<<<<<< HEAD
 	netif_addr_lock_nested(to);
 =======
+<<<<<<< HEAD
+	netif_addr_lock_nested(to);
+=======
 	netif_addr_lock(to);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__hw_addr_unsync(&to->uc, &from->uc, to->addr_len);
 	__dev_set_rx_mode(to);
 	netif_addr_unlock(to);
@@ -615,16 +637,22 @@ EXPORT_SYMBOL(dev_mc_del_global);
  *	Add newly added addresses to the destination device and release
  *	addresses that have no users left. The source device must be
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	locked by netif_addr_lock_bh.
  *
  *	This function is intended to be called from the ndo_set_rx_mode
  *	function of layered software devices.
+<<<<<<< HEAD
+=======
 =======
  *	locked by netif_tx_lock_bh.
  *
  *	This function is intended to be called from the dev->set_multicast_list
  *	or dev->set_rx_mode function of layered software devices.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int dev_mc_sync(struct net_device *to, struct net_device *from)
 {
@@ -634,11 +662,16 @@ int dev_mc_sync(struct net_device *to, struct net_device *from)
 		return -EINVAL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netif_addr_lock_nested(to);
 	err = __hw_addr_sync(&to->mc, &from->mc, to->addr_len);
 	if (!err)
 		__dev_set_rx_mode(to);
 	netif_addr_unlock(to);
+<<<<<<< HEAD
+=======
 =======
 	netif_addr_lock_bh(to);
 	err = __hw_addr_sync(&to->mc, &from->mc, to->addr_len);
@@ -646,6 +679,7 @@ int dev_mc_sync(struct net_device *to, struct net_device *from)
 		__dev_set_rx_mode(to);
 	netif_addr_unlock_bh(to);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 EXPORT_SYMBOL(dev_mc_sync);
@@ -668,8 +702,12 @@ void dev_mc_unsync(struct net_device *to, struct net_device *from)
 <<<<<<< HEAD
 	netif_addr_lock_nested(to);
 =======
+<<<<<<< HEAD
+	netif_addr_lock_nested(to);
+=======
 	netif_addr_lock(to);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__hw_addr_unsync(&to->mc, &from->mc, to->addr_len);
 	__dev_set_rx_mode(to);
 	netif_addr_unlock(to);

@@ -158,8 +158,12 @@ int ipv6_sock_mc_join(struct sock *sk, int ifindex, const struct in6_addr *addr)
 <<<<<<< HEAD
 	mc_lst->addr = *addr;
 =======
+<<<<<<< HEAD
+	mc_lst->addr = *addr;
+=======
 	ipv6_addr_copy(&mc_lst->addr, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_read_lock();
 	if (ifindex == 0) {
@@ -169,8 +173,12 @@ int ipv6_sock_mc_join(struct sock *sk, int ifindex, const struct in6_addr *addr)
 <<<<<<< HEAD
 			dev = rt->dst.dev;
 =======
+<<<<<<< HEAD
+			dev = rt->dst.dev;
+=======
 			dev = rt->rt6i_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dst_release(&rt->dst);
 		}
 	} else
@@ -267,8 +275,12 @@ static struct inet6_dev *ip6_mc_find_dev_rcu(struct net *net,
 <<<<<<< HEAD
 			dev = rt->dst.dev;
 =======
+<<<<<<< HEAD
+			dev = rt->dst.dev;
+=======
 			dev = rt->rt6i_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dst_release(&rt->dst);
 		}
 	} else
@@ -872,8 +884,12 @@ int ipv6_dev_mc_inc(struct net_device *dev, const struct in6_addr *addr)
 <<<<<<< HEAD
 	mc->mca_addr = *addr;
 =======
+<<<<<<< HEAD
+	mc->mca_addr = *addr;
+=======
 	ipv6_addr_copy(&mc->mca_addr, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mc->idev = idev; /* (reference taken) */
 	mc->mca_users = 1;
 	/* mca_stamp should be updated upon changes */
@@ -1354,10 +1370,15 @@ mld_scount(struct ifmcaddr6 *pmc, int type, int gdeleted, int sdeleted)
 static struct sk_buff *mld_newpack(struct net_device *dev, int size)
 {
 =======
+<<<<<<< HEAD
+static struct sk_buff *mld_newpack(struct net_device *dev, int size)
+{
+=======
 static struct sk_buff *mld_newpack(struct inet6_dev *idev, int size)
 {
 	struct net_device *dev = idev->dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net *net = dev_net(dev);
 	struct sock *sk = net->ipv6.igmp_sk;
 	struct sk_buff *skb;
@@ -1368,7 +1389,12 @@ static struct sk_buff *mld_newpack(struct inet6_dev *idev, int size)
 	int hlen = LL_RESERVED_SPACE(dev);
 	int tlen = dev->needed_tailroom;
 =======
+<<<<<<< HEAD
+	int hlen = LL_RESERVED_SPACE(dev);
+	int tlen = dev->needed_tailroom;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	u8 ra[8] = { IPPROTO_ICMPV6, 0,
 		     IPV6_TLV_ROUTERALERT, 2, 0, 0,
@@ -1378,8 +1404,12 @@ static struct sk_buff *mld_newpack(struct inet6_dev *idev, int size)
 <<<<<<< HEAD
 	size += hlen + tlen;
 =======
+<<<<<<< HEAD
+	size += hlen + tlen;
+=======
 	size += LL_ALLOCATED_SPACE(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* limit our allocations to order-0 page */
 	size = min_t(int, size, SKB_MAX_ORDER(0, 0));
 	skb = sock_alloc_send_skb(sk, size, 1, &err);
@@ -1392,10 +1422,16 @@ static struct sk_buff *mld_newpack(struct inet6_dev *idev, int size)
 
 	if (ipv6_get_lladdr(dev, &addr_buf, IFA_F_TENTATIVE)) {
 =======
+<<<<<<< HEAD
+	skb_reserve(skb, hlen);
+
+	if (ipv6_get_lladdr(dev, &addr_buf, IFA_F_TENTATIVE)) {
+=======
 	skb_reserve(skb, LL_RESERVED_SPACE(dev));
 
 	if (__ipv6_get_lladdr(idev, &addr_buf, IFA_F_TENTATIVE)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* <draft-ietf-magma-mld-source-05.txt>:
 		 * use unspecified address as the source address
 		 * when a valid link-local address is not available.
@@ -1445,11 +1481,16 @@ static void mld_sendpack(struct sk_buff *skb)
 							mldlen, 0));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	icmpv6_flow_init(net->ipv6.igmp_sk, &fl6, ICMPV6_MLD2_REPORT,
 			 &ipv6_hdr(skb)->saddr, &ipv6_hdr(skb)->daddr,
 			 skb->dev->ifindex);
 	dst = icmp6_dst_alloc(skb->dev, NULL, &fl6);
 
+<<<<<<< HEAD
+=======
 =======
 	dst = icmp6_dst_alloc(skb->dev, NULL, &ipv6_hdr(skb)->daddr);
 
@@ -1464,6 +1505,7 @@ static void mld_sendpack(struct sk_buff *skb)
 
 	dst = xfrm_lookup(net, dst, flowi6_to_flowi(&fl6), NULL, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = 0;
 	if (IS_ERR(dst)) {
 		err = PTR_ERR(dst);
@@ -1509,8 +1551,12 @@ static struct sk_buff *add_grhead(struct sk_buff *skb, struct ifmcaddr6 *pmc,
 <<<<<<< HEAD
 		skb = mld_newpack(dev, dev->mtu);
 =======
+<<<<<<< HEAD
+		skb = mld_newpack(dev, dev->mtu);
+=======
 		skb = mld_newpack(pmc->idev, dev->mtu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!skb)
 		return NULL;
 	pgr = (struct mld2_grec *)skb_put(skb, sizeof(struct mld2_grec));
@@ -1533,9 +1579,13 @@ static struct sk_buff *add_grec(struct sk_buff *skb, struct ifmcaddr6 *pmc,
 <<<<<<< HEAD
 	struct net_device *dev = pmc->idev->dev;
 =======
+<<<<<<< HEAD
+	struct net_device *dev = pmc->idev->dev;
+=======
 	struct inet6_dev *idev = pmc->idev;
 	struct net_device *dev = idev->dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mld2_report *pmr;
 	struct mld2_grec *pgr = NULL;
 	struct ip6_sf_list *psf, *psf_next, *psf_prev, **psf_list;
@@ -1567,8 +1617,12 @@ static struct sk_buff *add_grec(struct sk_buff *skb, struct ifmcaddr6 *pmc,
 <<<<<<< HEAD
 			skb = mld_newpack(dev, dev->mtu);
 =======
+<<<<<<< HEAD
+			skb = mld_newpack(dev, dev->mtu);
+=======
 			skb = mld_newpack(idev, dev->mtu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	first = 1;
@@ -1598,8 +1652,12 @@ static struct sk_buff *add_grec(struct sk_buff *skb, struct ifmcaddr6 *pmc,
 <<<<<<< HEAD
 			skb = mld_newpack(dev, dev->mtu);
 =======
+<<<<<<< HEAD
+			skb = mld_newpack(dev, dev->mtu);
+=======
 			skb = mld_newpack(idev, dev->mtu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			first = 1;
 			scount = 0;
 		}
@@ -1658,9 +1716,14 @@ static void mld_send_report(struct inet6_dev *idev, struct ifmcaddr6 *pmc)
 	if (!pmc) {
 		read_lock_bh(&idev->lock);
 =======
+<<<<<<< HEAD
+	if (!pmc) {
+		read_lock_bh(&idev->lock);
+=======
 	read_lock_bh(&idev->lock);
 	if (!pmc) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (pmc=idev->mc_list; pmc; pmc=pmc->next) {
 			if (pmc->mca_flags & MAF_NOREPORT)
 				continue;
@@ -1675,7 +1738,11 @@ static void mld_send_report(struct inet6_dev *idev, struct ifmcaddr6 *pmc)
 <<<<<<< HEAD
 		read_unlock_bh(&idev->lock);
 =======
+<<<<<<< HEAD
+		read_unlock_bh(&idev->lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		spin_lock_bh(&pmc->mca_lock);
 		if (pmc->mca_sfcount[MCAST_EXCLUDE])
@@ -1687,8 +1754,11 @@ static void mld_send_report(struct inet6_dev *idev, struct ifmcaddr6 *pmc)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	read_unlock_bh(&idev->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (skb)
 		mld_sendpack(skb);
 }
@@ -1800,7 +1870,12 @@ static void igmp6_send(struct in6_addr *addr, struct net_device *dev, int type)
 	int hlen = LL_RESERVED_SPACE(dev);
 	int tlen = dev->needed_tailroom;
 =======
+<<<<<<< HEAD
+	int hlen = LL_RESERVED_SPACE(dev);
+	int tlen = dev->needed_tailroom;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err, len, payload_len, full_len;
 	u8 ra[8] = { IPPROTO_ICMPV6, 0,
 		     IPV6_TLV_ROUTERALERT, 2, 0, 0,
@@ -1825,8 +1900,12 @@ static void igmp6_send(struct in6_addr *addr, struct net_device *dev, int type)
 <<<<<<< HEAD
 	skb = sock_alloc_send_skb(sk, hlen + tlen + full_len, 1, &err);
 =======
+<<<<<<< HEAD
+	skb = sock_alloc_send_skb(sk, hlen + tlen + full_len, 1, &err);
+=======
 	skb = sock_alloc_send_skb(sk, LL_ALLOCATED_SPACE(dev) + full_len, 1, &err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (skb == NULL) {
 		rcu_read_lock();
@@ -1839,8 +1918,12 @@ static void igmp6_send(struct in6_addr *addr, struct net_device *dev, int type)
 <<<<<<< HEAD
 	skb_reserve(skb, hlen);
 =======
+<<<<<<< HEAD
+	skb_reserve(skb, hlen);
+=======
 	skb_reserve(skb, LL_RESERVED_SPACE(dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ipv6_get_lladdr(dev, &addr_buf, IFA_F_TENTATIVE)) {
 		/* <draft-ietf-magma-mld-source-05.txt>:
@@ -1861,8 +1944,12 @@ static void igmp6_send(struct in6_addr *addr, struct net_device *dev, int type)
 <<<<<<< HEAD
 	hdr->mld_mca = *addr;
 =======
+<<<<<<< HEAD
+	hdr->mld_mca = *addr;
+=======
 	ipv6_addr_copy(&hdr->mld_mca, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hdr->mld_cksum = csum_ipv6_magic(saddr, snd_addr, len,
 					 IPPROTO_ICMPV6,
@@ -1872,10 +1959,15 @@ static void igmp6_send(struct in6_addr *addr, struct net_device *dev, int type)
 	idev = __in6_dev_get(skb->dev);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	icmpv6_flow_init(sk, &fl6, type,
 			 &ipv6_hdr(skb)->saddr, &ipv6_hdr(skb)->daddr,
 			 skb->dev->ifindex);
 	dst = icmp6_dst_alloc(skb->dev, NULL, &fl6);
+<<<<<<< HEAD
+=======
 =======
 	dst = icmp6_dst_alloc(skb->dev, NULL, &ipv6_hdr(skb)->daddr);
 	if (!dst) {
@@ -1889,6 +1981,7 @@ static void igmp6_send(struct in6_addr *addr, struct net_device *dev, int type)
 
 	dst = xfrm_lookup(net, dst, flowi6_to_flowi(&fl6), NULL, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(dst)) {
 		err = PTR_ERR(dst);
 		goto err_out;
@@ -2014,8 +2107,12 @@ static int ip6_mc_add1_src(struct ifmcaddr6 *pmc, int sfmode,
 <<<<<<< HEAD
 	const struct in6_addr *psfsrc)
 =======
+<<<<<<< HEAD
+	const struct in6_addr *psfsrc)
+=======
 	const struct in6_addr *psfsrc, int delta)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ip6_sf_list *psf, *psf_prev;
 
@@ -2149,8 +2246,12 @@ static int ip6_mc_add_src(struct inet6_dev *idev, const struct in6_addr *pmca,
 <<<<<<< HEAD
 		err = ip6_mc_add1_src(pmc, sfmode, &psfsrc[i]);
 =======
+<<<<<<< HEAD
+		err = ip6_mc_add1_src(pmc, sfmode, &psfsrc[i]);
+=======
 		err = ip6_mc_add1_src(pmc, sfmode, &psfsrc[i], delta);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			break;
 	}
@@ -2266,8 +2367,12 @@ static void mld_gq_timer_expire(unsigned long data)
 <<<<<<< HEAD
 	__in6_dev_put(idev);
 =======
+<<<<<<< HEAD
+	__in6_dev_put(idev);
+=======
 	in6_dev_put(idev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void mld_ifc_timer_expire(unsigned long data)
@@ -2283,8 +2388,12 @@ static void mld_ifc_timer_expire(unsigned long data)
 <<<<<<< HEAD
 	__in6_dev_put(idev);
 =======
+<<<<<<< HEAD
+	__in6_dev_put(idev);
+=======
 	in6_dev_put(idev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void mld_ifc_event(struct inet6_dev *idev)

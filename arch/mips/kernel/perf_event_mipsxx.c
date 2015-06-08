@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Linux performance counter support for MIPS.
  *
@@ -108,6 +111,8 @@ static struct mips_pmu mipspmu;
 #define M_PERFCTL_SUPERVISOR		(1      <<  2)
 #define M_PERFCTL_USER			(1      <<  3)
 #define M_PERFCTL_INTERRUPT_ENABLE	(1      <<  4)
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_CPU_MIPS32) || defined(CONFIG_CPU_MIPS64) || \
     defined(CONFIG_CPU_R10000) || defined(CONFIG_CPU_SB1)
@@ -120,6 +125,7 @@ static struct mips_pmu mipspmu;
 #define M_PERFCTL_USER			(1UL      <<  3)
 #define M_PERFCTL_INTERRUPT_ENABLE	(1UL      <<  4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define M_PERFCTL_EVENT(event)		(((event) & 0x3ff)  << 5)
 #define M_PERFCTL_VPEID(vpe)		((vpe)    << 16)
 #define M_PERFCTL_MT_EN(filter)		((filter) << 20)
@@ -131,9 +137,14 @@ static struct mips_pmu mipspmu;
 #define M_PERFCTL_WIDE			(1      << 30)
 #define M_PERFCTL_MORE			(1      << 31)
 =======
+<<<<<<< HEAD
+#define M_PERFCTL_WIDE			(1      << 30)
+#define M_PERFCTL_MORE			(1      << 31)
+=======
 #define M_PERFCTL_WIDE			(1UL      << 30)
 #define M_PERFCTL_MORE			(1UL      << 31)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define M_PERFCTL_COUNT_EVENT_WHENEVER	(M_PERFCTL_EXL |		\
 					M_PERFCTL_KERNEL |		\
@@ -150,8 +161,11 @@ static struct mips_pmu mipspmu;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define M_COUNTER_OVERFLOW		(1UL      << 31)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MIPS_MT_SMP
 static int cpu_has_mipsmt_pertccounters;
@@ -160,7 +174,12 @@ static int cpu_has_mipsmt_pertccounters;
 static DEFINE_RWLOCK(pmuint_rwlock);
 
 =======
+<<<<<<< HEAD
+static DEFINE_RWLOCK(pmuint_rwlock);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * FIXME: For VSMP, vpe_id() is redefined for Perf-events, because
  * cpu_data[cpuid].vpe_id reports 0 for _both_ CPUs.
@@ -177,8 +196,12 @@ static DEFINE_RWLOCK(pmuint_rwlock);
 <<<<<<< HEAD
 static unsigned int vpe_shift(void)
 =======
+<<<<<<< HEAD
+static unsigned int vpe_shift(void)
+=======
 static inline unsigned int vpe_shift(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (num_possible_cpus() > 1)
 		return 1;
@@ -186,6 +209,9 @@ static inline unsigned int vpe_shift(void)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static unsigned int counters_total_to_per_cpu(unsigned int counters)
 {
@@ -309,6 +335,8 @@ static unsigned int mipsxx_pmu_read_control(unsigned int idx)
 		return read_c0_perfctrl2();
 	case 3:
 		return read_c0_perfctrl3();
+<<<<<<< HEAD
+=======
 =======
 #else /* !CONFIG_MIPS_MT_SMP */
 #define vpe_id()	0
@@ -442,6 +470,7 @@ mipsxx_pmu_read_counter(unsigned int idx)
 	case 3:
 		return r_c0_perfcntr3();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		WARN_ONCE(1, "Invalid performance counter number (%d)\n", idx);
 		return 0;
@@ -449,6 +478,9 @@ mipsxx_pmu_read_counter(unsigned int idx)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mipsxx_pmu_write_control(unsigned int idx, unsigned int val)
 {
 	idx = mipsxx_pmu_swizzle_perf_idx(idx);
@@ -465,6 +497,8 @@ static void mipsxx_pmu_write_control(unsigned int idx, unsigned int val)
 		return;
 	case 3:
 		write_c0_perfctrl3(val);
+<<<<<<< HEAD
+=======
 =======
 static inline void
 mipsxx_pmu_write_counter(unsigned int idx, u64 val)
@@ -482,11 +516,15 @@ mipsxx_pmu_write_counter(unsigned int idx, u64 val)
 	case 3:
 		w_c0_perfcntr3(val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mipsxx_pmu_alloc_counter(struct cpu_hw_events *cpuc,
 				    struct hw_perf_event *hwc)
 {
@@ -982,6 +1020,8 @@ static void reset_counters(void *arg)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 static inline unsigned int
 mipsxx_pmu_read_control(unsigned int idx)
@@ -1025,6 +1065,7 @@ static DEFINE_RWLOCK(pmuint_rwlock);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 24K/34K/1004K cores can share the same event map. */
 static const struct mips_perf_event mipsxxcore_event_map
 				[PERF_COUNT_HW_MAX] = {
@@ -1050,6 +1091,9 @@ static const struct mips_perf_event mipsxx74Kcore_event_map
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct mips_perf_event octeon_event_map[PERF_COUNT_HW_MAX] = {
 	[PERF_COUNT_HW_CPU_CYCLES] = { 0x01, CNTR_ALL },
 	[PERF_COUNT_HW_INSTRUCTIONS] = { 0x03, CNTR_ALL },
@@ -1060,8 +1104,11 @@ static const struct mips_perf_event octeon_event_map[PERF_COUNT_HW_MAX] = {
 	[PERF_COUNT_HW_BUS_CYCLES] = { 0x25, CNTR_ALL },
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 24K/34K/1004K cores can share the same cache event map. */
 static const struct mips_perf_event mipsxxcore_cache_map
 				[PERF_COUNT_HW_CACHE_MAX]
@@ -1163,6 +1210,9 @@ static const struct mips_perf_event mipsxxcore_cache_map
 	},
 },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 [C(NODE)] = {
 	[C(OP_READ)] = {
 		[C(RESULT_ACCESS)]	= { UNSUPPORTED_PERF_EVENT_ID },
@@ -1177,8 +1227,11 @@ static const struct mips_perf_event mipsxxcore_cache_map
 		[C(RESULT_MISS)]	= { UNSUPPORTED_PERF_EVENT_ID },
 	},
 },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* 74K core has completely different cache event map. */
@@ -1283,6 +1336,9 @@ static const struct mips_perf_event mipsxx74Kcore_cache_map
 	},
 },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 [C(NODE)] = {
 	[C(OP_READ)] = {
 		[C(RESULT_ACCESS)]	= { UNSUPPORTED_PERF_EVENT_ID },
@@ -1398,6 +1454,8 @@ static const struct mips_perf_event octeon_cache_map
 #ifdef CONFIG_MIPS_MT_SMP
 static void check_and_calc_range(struct perf_event *event,
 				 const struct mips_perf_event *pev)
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -1406,6 +1464,7 @@ static void
 check_and_calc_range(struct perf_event *event,
 			const struct mips_perf_event *pev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hw_perf_event *hwc = &event->hw;
 
@@ -1432,10 +1491,15 @@ check_and_calc_range(struct perf_event *event,
 static void check_and_calc_range(struct perf_event *event,
 				 const struct mips_perf_event *pev)
 =======
+<<<<<<< HEAD
+static void check_and_calc_range(struct perf_event *event,
+				 const struct mips_perf_event *pev)
+=======
 static void
 check_and_calc_range(struct perf_event *event,
 			const struct mips_perf_event *pev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 #endif
@@ -1460,8 +1524,12 @@ static int __hw_perf_event_init(struct perf_event *event)
 <<<<<<< HEAD
 		pev = mipspmu.map_raw_event(event->attr.config);
 =======
+<<<<<<< HEAD
+		pev = mipspmu.map_raw_event(event->attr.config);
+=======
 		pev = mipspmu->map_raw_event(event->attr.config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* The event type is not (yet) supported. */
 		return -EOPNOTSUPP;
@@ -1509,14 +1577,21 @@ static int __hw_perf_event_init(struct perf_event *event)
 <<<<<<< HEAD
 		hwc->sample_period  = mipspmu.max_period;
 =======
+<<<<<<< HEAD
+		hwc->sample_period  = mipspmu.max_period;
+=======
 		hwc->sample_period  = MAX_PERIOD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hwc->last_period    = hwc->sample_period;
 		local64_set(&hwc->period_left, hwc->sample_period);
 	}
 
 	err = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (event->group_leader != event)
 		err = validate_group(event);
 
@@ -1525,6 +1600,8 @@ static int __hw_perf_event_init(struct perf_event *event)
 	if (err)
 		event->destroy(event);
 
+<<<<<<< HEAD
+=======
 =======
 	if (event->group_leader != event) {
 		err = validate_group(event);
@@ -1535,6 +1612,7 @@ static int __hw_perf_event_init(struct perf_event *event)
 	event->destroy = hw_perf_event_destroy;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -1542,6 +1620,9 @@ static void pause_local_counters(void)
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ctr = mipspmu.num_counters;
 	unsigned long flags;
 
@@ -1552,6 +1633,8 @@ static void pause_local_counters(void)
 		mipsxx_pmu_write_control(ctr, cpuc->saved_ctrl[ctr] &
 					 ~M_PERFCTL_COUNT_EVENT_WHENEVER);
 	} while (ctr > 0);
+<<<<<<< HEAD
+=======
 =======
 	int counters = mipspmu->num_counters;
 	unsigned long flags;
@@ -1576,6 +1659,7 @@ static void pause_local_counters(void)
 			~M_PERFCTL_COUNT_EVENT_WHENEVER);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_irq_restore(flags);
 }
 
@@ -1583,12 +1667,17 @@ static void resume_local_counters(void)
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ctr = mipspmu.num_counters;
 
 	do {
 		ctr--;
 		mipsxx_pmu_write_control(ctr, cpuc->saved_ctrl[ctr]);
 	} while (ctr > 0);
+<<<<<<< HEAD
+=======
 =======
 	int counters = mipspmu->num_counters;
 	unsigned long flags;
@@ -1606,6 +1695,7 @@ static void resume_local_counters(void)
 	}
 	local_irq_restore(flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int mipsxx_pmu_handle_shared_irq(void)
@@ -1616,9 +1706,14 @@ static int mipsxx_pmu_handle_shared_irq(void)
 	unsigned int counters = mipspmu.num_counters;
 	u64 counter;
 =======
+<<<<<<< HEAD
+	unsigned int counters = mipspmu.num_counters;
+	u64 counter;
+=======
 	unsigned int counters = mipspmu->num_counters;
 	unsigned int counter;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int handled = IRQ_NONE;
 	struct pt_regs *regs;
 
@@ -1626,8 +1721,11 @@ static int mipsxx_pmu_handle_shared_irq(void)
 		return handled;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * First we pause the local counters, so that when we are locked
 	 * here, the counters are all paused. When it gets locked due to
@@ -1653,6 +1751,11 @@ static int mipsxx_pmu_handle_shared_irq(void)
 			if (counter & mipspmu.overflow) {		\
 				handle_associated_event(cpuc, n, &data, regs); \
 =======
+<<<<<<< HEAD
+			counter = mipspmu.read_counter(n);		\
+			if (counter & mipspmu.overflow) {		\
+				handle_associated_event(cpuc, n, &data, regs); \
+=======
 			counter = r_c0_perfcntr ## n();			\
 			if (counter & M_COUNTER_OVERFLOW) {		\
 				w_c0_perfcntr ## n(counter &		\
@@ -1661,6 +1764,7 @@ static int mipsxx_pmu_handle_shared_irq(void)
 					handle_associated_event(cpuc,	\
 						n, &data, regs);	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				handled = IRQ_HANDLED;			\
 			}						\
 		}
@@ -1688,13 +1792,20 @@ static int mipsxx_pmu_handle_shared_irq(void)
 <<<<<<< HEAD
 static irqreturn_t mipsxx_pmu_handle_irq(int irq, void *dev)
 =======
+<<<<<<< HEAD
+static irqreturn_t mipsxx_pmu_handle_irq(int irq, void *dev)
+=======
 static irqreturn_t
 mipsxx_pmu_handle_irq(int irq, void *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return mipsxx_pmu_handle_shared_irq();
 }
 
+<<<<<<< HEAD
+/* 24K */
+=======
 <<<<<<< HEAD
 /* 24K */
 =======
@@ -1798,10 +1909,13 @@ mipsxx_pmu_disable_event(int idx)
 	 (r) == 172 || (b) == 47 || ((b) >= 56 && (b) <= 63) ||		\
 	 ((b) >= 68 && (b) <= 127))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IS_BOTH_COUNTERS_24K_EVENT(b)					\
 	((b) == 0 || (b) == 1 || (b) == 11)
 
 /* 34K */
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define IS_UNSUPPORTED_34K_EVENT(r, b)					\
@@ -1809,6 +1923,7 @@ mipsxx_pmu_disable_event(int idx)
 	 (b) == 38 || (r) == 175 || ((b) >= 56 && (b) <= 63) ||		\
 	 ((b) >= 68 && (b) <= 127))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IS_BOTH_COUNTERS_34K_EVENT(b)					\
 	((b) == 0 || (b) == 1 || (b) == 11)
 #ifdef CONFIG_MIPS_MT_SMP
@@ -1823,6 +1938,8 @@ mipsxx_pmu_disable_event(int idx)
 /* 74K */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IS_UNSUPPORTED_74K_EVENT(r, b)					\
 	((r) == 5 || ((r) >= 135 && (r) <= 137) ||			\
 	 ((b) >= 10 && (b) <= 12) || (b) == 22 || (b) == 27 ||		\
@@ -1831,16 +1948,20 @@ mipsxx_pmu_disable_event(int idx)
 	 (b) == 61 || (r) == 62 || (r) == 191 ||			\
 	 ((b) >= 64 && (b) <= 127))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IS_BOTH_COUNTERS_74K_EVENT(b)					\
 	((b) == 0 || (b) == 1)
 
 /* 1004K */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IS_UNSUPPORTED_1004K_EVENT(r, b)				\
 	((b) == 12 || (r) == 27 || (r) == 158 || (b) == 38 ||		\
 	 (r) == 175 || (b) == 63 || ((b) >= 68 && (b) <= 127))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IS_BOTH_COUNTERS_1004K_EVENT(b)					\
 	((b) == 0 || (b) == 1 || (b) == 11)
 #ifdef CONFIG_MIPS_MT_SMP
@@ -1864,18 +1985,27 @@ mipsxx_pmu_disable_event(int idx)
 <<<<<<< HEAD
 static const struct mips_perf_event *mipsxx_pmu_map_raw_event(u64 config)
 =======
+<<<<<<< HEAD
+static const struct mips_perf_event *mipsxx_pmu_map_raw_event(u64 config)
+=======
 static const struct mips_perf_event *
 mipsxx_pmu_map_raw_event(u64 config)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int raw_id = config & 0xff;
 	unsigned int base_id = raw_id & 0x7f;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_event.event_id = base_id;
 
 	switch (current_cpu_type()) {
 	case CPU_24K:
+<<<<<<< HEAD
+=======
 =======
 	switch (current_cpu_type()) {
 	case CPU_24K:
@@ -1883,6 +2013,7 @@ mipsxx_pmu_map_raw_event(u64 config)
 			return ERR_PTR(-EOPNOTSUPP);
 		raw_event.event_id = base_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_BOTH_COUNTERS_24K_EVENT(base_id))
 			raw_event.cntr_mask = CNTR_EVEN | CNTR_ODD;
 		else
@@ -1899,10 +2030,13 @@ mipsxx_pmu_map_raw_event(u64 config)
 	case CPU_34K:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (IS_UNSUPPORTED_34K_EVENT(raw_id, base_id))
 			return ERR_PTR(-EOPNOTSUPP);
 		raw_event.event_id = base_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_BOTH_COUNTERS_34K_EVENT(base_id))
 			raw_event.cntr_mask = CNTR_EVEN | CNTR_ODD;
 		else
@@ -1920,10 +2054,13 @@ mipsxx_pmu_map_raw_event(u64 config)
 	case CPU_74K:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (IS_UNSUPPORTED_74K_EVENT(raw_id, base_id))
 			return ERR_PTR(-EOPNOTSUPP);
 		raw_event.event_id = base_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_BOTH_COUNTERS_74K_EVENT(base_id))
 			raw_event.cntr_mask = CNTR_EVEN | CNTR_ODD;
 		else
@@ -1936,10 +2073,13 @@ mipsxx_pmu_map_raw_event(u64 config)
 	case CPU_1004K:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (IS_UNSUPPORTED_1004K_EVENT(raw_id, base_id))
 			return ERR_PTR(-EOPNOTSUPP);
 		raw_event.event_id = base_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_BOTH_COUNTERS_1004K_EVENT(base_id))
 			raw_event.cntr_mask = CNTR_EVEN | CNTR_ODD;
 		else
@@ -1960,6 +2100,9 @@ mipsxx_pmu_map_raw_event(u64 config)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct mips_perf_event *octeon_pmu_map_raw_event(u64 config)
 {
 	unsigned int raw_id = config & 0xff;
@@ -1992,6 +2135,8 @@ static const struct mips_perf_event *octeon_pmu_map_raw_event(u64 config)
 
 	return &raw_event;
 }
+<<<<<<< HEAD
+=======
 =======
 static struct mips_pmu mipsxxcore_pmu = {
 	.handle_irq = mipsxx_pmu_handle_irq,
@@ -2023,6 +2168,7 @@ static struct mips_pmu mipsxx74Kcore_pmu = {
 	.cache_event_map = &mipsxx74Kcore_cache_map,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init
 init_hw_perf_events(void)
@@ -2031,7 +2177,11 @@ init_hw_perf_events(void)
 <<<<<<< HEAD
 	int counter_bits;
 =======
+<<<<<<< HEAD
+	int counter_bits;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_info("Performance counters: ");
 
@@ -2064,6 +2214,9 @@ init_hw_perf_events(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mipspmu.map_raw_event = mipsxx_pmu_map_raw_event;
 
 	switch (current_cpu_type()) {
@@ -2094,6 +2247,8 @@ init_hw_perf_events(void)
 		mipspmu.general_event_map = &octeon_event_map;
 		mipspmu.cache_event_map = &octeon_cache_map;
 		mipspmu.map_raw_event = octeon_pmu_map_raw_event;
+<<<<<<< HEAD
+=======
 =======
 	on_each_cpu(reset_counters, (void *)(long)counters, 1);
 
@@ -2122,6 +2277,7 @@ init_hw_perf_events(void)
 		mipsxxcore_pmu.irq = irq;
 		mipspmu = &mipsxxcore_pmu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		pr_cont("Either hardware does not support performance "
@@ -2130,6 +2286,9 @@ init_hw_perf_events(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mipspmu.num_counters = counters;
 	mipspmu.irq = irq;
 
@@ -2154,12 +2313,15 @@ init_hw_perf_events(void)
 	pr_cont("%s PMU enabled, %d %d-bit counters available to each "
 		"CPU, irq %d%s\n", mipspmu.name, counters, counter_bits, irq,
 		irq < 0 ? " (share with timer interrupt)" : "");
+<<<<<<< HEAD
+=======
 =======
 	if (mipspmu)
 		pr_cont("%s PMU enabled, %d counters available to each "
 			"CPU, irq %d%s\n", mipspmu->name, counters, irq,
 			irq < 0 ? " (share with timer interrupt)" : "");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	perf_pmu_register(&pmu, "cpu", PERF_TYPE_RAW);
 
@@ -2168,6 +2330,9 @@ init_hw_perf_events(void)
 early_initcall(init_hw_perf_events);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #endif /* defined(CONFIG_CPU_MIPS32)... */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

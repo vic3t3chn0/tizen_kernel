@@ -27,9 +27,14 @@
 #include <linux/sh_clk.h>
 #include <asm/clock.h>
 =======
+<<<<<<< HEAD
+#include <linux/sh_clk.h>
+#include <asm/clock.h>
+=======
 #include <asm/clock.h>
 #include <asm/hwblk.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <cpu/sh7724.h>
 
 /* SH7724 registers */
@@ -45,7 +50,13 @@
 #define MSTPCR1		0xa4150034
 #define MSTPCR2		0xa4150038
 =======
+<<<<<<< HEAD
+#define MSTPCR0		0xa4150030
+#define MSTPCR1		0xa4150034
+#define MSTPCR2		0xa4150038
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPUCLKCR	0xa415003c
 #define FLLFRQ		0xa4150050
 #define LSTATS		0xa4150060
@@ -81,8 +92,12 @@ static unsigned long fll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops fll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops fll_clk_ops = {
+=======
 static struct clk_ops fll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= fll_recalc,
 };
 
@@ -105,8 +120,12 @@ static unsigned long pll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops pll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops pll_clk_ops = {
+=======
 static struct clk_ops pll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= pll_recalc,
 };
 
@@ -124,8 +143,12 @@ static unsigned long div3_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops div3_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops div3_clk_ops = {
+=======
 static struct clk_ops div3_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= div3_recalc,
 };
 
@@ -137,8 +160,12 @@ static struct clk div3_clk = {
 <<<<<<< HEAD
 /* External input clock (pin name: FSIMCKA/FSIMCKB/DV_CLKI ) */
 =======
+<<<<<<< HEAD
+/* External input clock (pin name: FSIMCKA/FSIMCKB/DV_CLKI ) */
+=======
 /* External input clock (pin name: FSIMCKA/FSIMCKB ) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct clk sh7724_fsimcka_clk = {
 };
 
@@ -150,7 +177,13 @@ struct clk sh7724_dv_clki = {
 };
 
 =======
+<<<<<<< HEAD
+struct clk sh7724_dv_clki = {
+};
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk *main_clks[] = {
 	&r_clk,
 	&extal_clk,
@@ -162,7 +195,11 @@ static struct clk *main_clks[] = {
 <<<<<<< HEAD
 	&sh7724_dv_clki,
 =======
+<<<<<<< HEAD
+	&sh7724_dv_clki,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void div4_kick(struct clk *clk)
@@ -201,6 +238,9 @@ struct clk div4_clks[DIV4_NR] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum { DIV6_V, DIV6_I, DIV6_S, DIV6_FA, DIV6_FB, DIV6_NR };
 
 /* Indices are important - they are the actual src selecting values */
@@ -215,6 +255,8 @@ static struct clk *vclkcr_parent[8] = {
 	[4] = &extal_clk,
 };
 
+<<<<<<< HEAD
+=======
 =======
 enum { DIV6_V, DIV6_I, DIV6_S, DIV6_NR };
 
@@ -228,6 +270,7 @@ enum { DIV6_FA, DIV6_FB, DIV6_REPARENT_NR };
 
 /* Indices are important - they are the actual src selecting values */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk *fclkacr_parent[] = {
 	[0] = &div3_clk,
 	[1] = NULL,
@@ -243,6 +286,9 @@ static struct clk *fclkbcr_parent[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk div6_clks[DIV6_NR] = {
 	[DIV6_V] = SH_CLK_DIV6_EXT(VCLKCR, 0,
 			vclkcr_parent, ARRAY_SIZE(vclkcr_parent), 12, 3),
@@ -253,17 +299,23 @@ static struct clk div6_clks[DIV6_NR] = {
 	[DIV6_FA] = SH_CLK_DIV6_EXT(FCLKACR, 0,
 				      fclkacr_parent, ARRAY_SIZE(fclkacr_parent), 6, 2),
 	[DIV6_FB] = SH_CLK_DIV6_EXT(FCLKBCR, 0,
+<<<<<<< HEAD
+=======
 =======
 static struct clk div6_reparent_clks[DIV6_REPARENT_NR] = {
 	[DIV6_FA] = SH_CLK_DIV6_EXT(&div3_clk, FCLKACR, 0,
 				      fclkacr_parent, ARRAY_SIZE(fclkacr_parent), 6, 2),
 	[DIV6_FB] = SH_CLK_DIV6_EXT(&div3_clk, FCLKBCR, 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      fclkbcr_parent, ARRAY_SIZE(fclkbcr_parent), 6, 2),
 };
 
 static struct clk mstp_clks[HWBLK_NR] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[HWBLK_TLB] = SH_CLK_MSTP32(&div4_clks[DIV4_I],	    MSTPCR0, 31, CLK_ENABLE_ON_INIT),
 	[HWBLK_IC] = SH_CLK_MSTP32(&div4_clks[DIV4_I],	    MSTPCR0, 30, CLK_ENABLE_ON_INIT),
 	[HWBLK_OC] = SH_CLK_MSTP32(&div4_clks[DIV4_I],	    MSTPCR0, 29, CLK_ENABLE_ON_INIT),
@@ -320,6 +372,8 @@ static struct clk mstp_clks[HWBLK_NR] = {
 	[HWBLK_LCDC] = SH_CLK_MSTP32(&div4_clks[DIV4_B],    MSTPCR2, 0, 0),
 };
 
+<<<<<<< HEAD
+=======
 =======
 	SH_HWBLK_CLK(HWBLK_TLB, &div4_clks[DIV4_I], CLK_ENABLE_ON_INIT),
 	SH_HWBLK_CLK(HWBLK_IC, &div4_clks[DIV4_I], CLK_ENABLE_ON_INIT),
@@ -380,6 +434,7 @@ static struct clk mstp_clks[HWBLK_NR] = {
 #define CLKDEV_CON_ID(_id, _clk) { .con_id = _id, .clk = _clk }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk_lookup lookups[] = {
 	/* main clocks */
 	CLKDEV_CON_ID("rclk", &r_clk),
@@ -401,9 +456,14 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("fsia_clk", &div6_clks[DIV6_FA]),
 	CLKDEV_CON_ID("fsib_clk", &div6_clks[DIV6_FB]),
 =======
+<<<<<<< HEAD
+	CLKDEV_CON_ID("fsia_clk", &div6_clks[DIV6_FA]),
+	CLKDEV_CON_ID("fsib_clk", &div6_clks[DIV6_FB]),
+=======
 	CLKDEV_CON_ID("fsia_clk", &div6_reparent_clks[DIV6_FA]),
 	CLKDEV_CON_ID("fsib_clk", &div6_reparent_clks[DIV6_FB]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_ID("irda_clk", &div6_clks[DIV6_I]),
 	CLKDEV_CON_ID("spu_clk", &div6_clks[DIV6_S]),
 
@@ -417,6 +477,9 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("fpu0", &mstp_clks[HWBLK_FPU]),
 	CLKDEV_CON_ID("intc0", &mstp_clks[HWBLK_INTC]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_DEV_ID("sh-dma-engine.0", &mstp_clks[HWBLK_DMAC0]),
 	CLKDEV_CON_ID("sh0", &mstp_clks[HWBLK_SHYWAY]),
 	CLKDEV_CON_ID("hudi0", &mstp_clks[HWBLK_HUDI]),
@@ -448,6 +511,8 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_DEV_ID("i2c-sh_mobile.1", &mstp_clks[HWBLK_IIC1]),
 	CLKDEV_DEV_ID("sh_mmcif.0", &mstp_clks[HWBLK_MMC]),
 	CLKDEV_DEV_ID("sh-eth.0", &mstp_clks[HWBLK_ETHER]),
+<<<<<<< HEAD
+=======
 =======
 	CLKDEV_CON_ID("dmac0", &mstp_clks[HWBLK_DMAC0]),
 	CLKDEV_CON_ID("sh0", &mstp_clks[HWBLK_SHYWAY]),
@@ -527,6 +592,7 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("mmc0", &mstp_clks[HWBLK_MMC]),
 	CLKDEV_CON_ID("eth0", &mstp_clks[HWBLK_ETHER]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_ID("atapi0", &mstp_clks[HWBLK_ATAPI]),
 	CLKDEV_CON_ID("tpu0", &mstp_clks[HWBLK_TPU]),
 	CLKDEV_CON_ID("irda0", &mstp_clks[HWBLK_IRDA]),
@@ -535,6 +601,9 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("usb0", &mstp_clks[HWBLK_USB0]),
 	CLKDEV_CON_ID("2dg0", &mstp_clks[HWBLK_2DG]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_DEV_ID("sh_mobile_sdhi.0", &mstp_clks[HWBLK_SDHI0]),
 	CLKDEV_DEV_ID("sh_mobile_sdhi.1", &mstp_clks[HWBLK_SDHI1]),
 	CLKDEV_CON_ID("veu1", &mstp_clks[HWBLK_VEU1]),
@@ -549,6 +618,8 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("veu0", &mstp_clks[HWBLK_VEU0]),
 	CLKDEV_CON_ID("vpu0", &mstp_clks[HWBLK_VPU]),
 	CLKDEV_DEV_ID("sh_mobile_lcdc_fb.0", &mstp_clks[HWBLK_LCDC]),
+<<<<<<< HEAD
+=======
 =======
 	CLKDEV_CON_ID("sdhi0", &mstp_clks[HWBLK_SDHI0]),
 	CLKDEV_CON_ID("sdhi1", &mstp_clks[HWBLK_SDHI1]),
@@ -565,6 +636,7 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("vpu0", &mstp_clks[HWBLK_VPU]),
 	CLKDEV_CON_ID("lcdc0", &mstp_clks[HWBLK_LCDC]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int __init arch_clk_init(void)
@@ -587,10 +659,15 @@ int __init arch_clk_init(void)
 
 	if (!ret)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = sh_clk_div6_reparent_register(div6_clks, DIV6_NR);
 
 	if (!ret)
 		ret = sh_clk_mstp32_register(mstp_clks, HWBLK_NR);
+<<<<<<< HEAD
+=======
 =======
 		ret = sh_clk_div6_register(div6_clks, DIV6_NR);
 
@@ -600,6 +677,7 @@ int __init arch_clk_init(void)
 	if (!ret)
 		ret = sh_hwblk_clk_register(mstp_clks, HWBLK_NR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }

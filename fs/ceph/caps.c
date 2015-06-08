@@ -312,8 +312,12 @@ void ceph_reservation_status(struct ceph_fs_client *fsc,
 <<<<<<< HEAD
  * Called with i_ceph_lock held.
 =======
+<<<<<<< HEAD
+ * Called with i_ceph_lock held.
+=======
  * Called with i_lock held.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static struct ceph_cap *__get_cap_for_mds(struct ceph_inode_info *ci, int mds)
 {
@@ -341,10 +345,16 @@ struct ceph_cap *ceph_get_cap_for_mds(struct ceph_inode_info *ci, int mds)
 	cap = __get_cap_for_mds(ci, mds);
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+	cap = __get_cap_for_mds(ci, mds);
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_lock(&ci->vfs_inode.i_lock);
 	cap = __get_cap_for_mds(ci, mds);
 	spin_unlock(&ci->vfs_inode.i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return cap;
 }
 
@@ -372,17 +382,23 @@ static int __ceph_get_cap_mds(struct ceph_inode_info *ci)
 int ceph_get_cap_mds(struct inode *inode)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ceph_inode_info *ci = ceph_inode(inode);
 	int mds;
 	spin_lock(&ci->i_ceph_lock);
 	mds = __ceph_get_cap_mds(ceph_inode(inode));
 	spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 	int mds;
 	spin_lock(&inode->i_lock);
 	mds = __ceph_get_cap_mds(ceph_inode(inode));
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mds;
 }
 
@@ -390,8 +406,12 @@ int ceph_get_cap_mds(struct inode *inode)
 <<<<<<< HEAD
  * Called under i_ceph_lock.
 =======
+<<<<<<< HEAD
+ * Called under i_ceph_lock.
+=======
  * Called under i_lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void __insert_cap_node(struct ceph_inode_info *ci,
 			      struct ceph_cap *new)
@@ -440,8 +460,12 @@ static void __cap_set_timeouts(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
  * Caller holds i_ceph_lock
 =======
+<<<<<<< HEAD
+ * Caller holds i_ceph_lock
+=======
  * Caller holds i_lock
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    -> we take mdsc->cap_delay_lock
  */
 static void __cap_delay_requeue(struct ceph_mds_client *mdsc,
@@ -486,8 +510,12 @@ static void __cap_delay_requeue_front(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
  * Caller must hold i_ceph_lock.
 =======
+<<<<<<< HEAD
+ * Caller must hold i_ceph_lock.
+=======
  * Caller must hold i_lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void __cap_delay_cancel(struct ceph_mds_client *mdsc,
 			       struct ceph_inode_info *ci)
@@ -520,8 +548,12 @@ static void __check_cap_issue(struct ceph_inode_info *ci, struct ceph_cap *cap,
 <<<<<<< HEAD
 	 * if we are newly issued FILE_SHARED, clear D_COMPLETE; we
 =======
+<<<<<<< HEAD
+	 * if we are newly issued FILE_SHARED, clear D_COMPLETE; we
+=======
 	 * if we are newly issued FILE_SHARED, clear I_COMPLETE; we
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * don't know what happened to this directory while we didn't
 	 * have the cap.
 	 */
@@ -532,11 +564,16 @@ static void __check_cap_issue(struct ceph_inode_info *ci, struct ceph_cap *cap,
 		if (S_ISDIR(ci->vfs_inode.i_mode))
 			ceph_dir_clear_complete(&ci->vfs_inode);
 =======
+<<<<<<< HEAD
+		if (S_ISDIR(ci->vfs_inode.i_mode))
+			ceph_dir_clear_complete(&ci->vfs_inode);
+=======
 		if (S_ISDIR(ci->vfs_inode.i_mode)) {
 			dout(" marking %p NOT complete\n", &ci->vfs_inode);
 			ci->i_ceph_flags &= ~CEPH_I_COMPLETE;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -576,8 +613,12 @@ retry:
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap = __get_cap_for_mds(ci, mds);
 	if (!cap) {
 		if (new_cap) {
@@ -587,8 +628,12 @@ retry:
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			new_cap = get_cap(mdsc, caps_reservation);
 			if (new_cap == NULL)
 				return -ENOMEM;
@@ -677,8 +722,12 @@ retry:
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wake_up_all(&ci->i_cap_wq);
 	return 0;
 }
@@ -694,16 +743,22 @@ static int __cap_is_valid(struct ceph_cap *cap)
 	u32 gen;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&cap->session->s_gen_ttl_lock);
 	gen = cap->session->s_cap_gen;
 	ttl = cap->session->s_cap_ttl;
 	spin_unlock(&cap->session->s_gen_ttl_lock);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&cap->session->s_cap_lock);
 	gen = cap->session->s_cap_gen;
 	ttl = cap->session->s_cap_ttl;
 	spin_unlock(&cap->session->s_cap_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cap->cap_gen < gen || time_after_eq(jiffies, ttl)) {
 		dout("__cap_is_valid %p cap %p issued %s "
@@ -855,8 +910,12 @@ int ceph_caps_revoking(struct ceph_inode_info *ci, int mask)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (p = rb_first(&ci->i_caps); p; p = rb_next(p)) {
 		cap = rb_entry(p, struct ceph_cap, ci_node);
 		if (__cap_is_valid(cap) &&
@@ -868,8 +927,12 @@ int ceph_caps_revoking(struct ceph_inode_info *ci, int mask)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("ceph_caps_revoking %p %s = %d\n", inode,
 	     ceph_cap_string(mask), ret);
 	return ret;
@@ -926,8 +989,12 @@ int __ceph_caps_mds_wanted(struct ceph_inode_info *ci)
 <<<<<<< HEAD
  * called under i_ceph_lock
 =======
+<<<<<<< HEAD
+ * called under i_ceph_lock
+=======
  * called under i_lock
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int __ceph_is_any_caps(struct ceph_inode_info *ci)
 {
@@ -940,8 +1007,12 @@ static int __ceph_is_any_caps(struct ceph_inode_info *ci)
 <<<<<<< HEAD
  * caller should hold i_ceph_lock.
 =======
+<<<<<<< HEAD
+ * caller should hold i_ceph_lock.
+=======
  * caller should hold i_lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * caller will not hold session s_mutex if called from destroy_inode.
  */
 void __ceph_remove_cap(struct ceph_cap *cap)
@@ -1006,8 +1077,12 @@ static int send_cap_msg(struct ceph_mds_session *session,
 <<<<<<< HEAD
 			uid_t uid, gid_t gid, umode_t mode,
 =======
+<<<<<<< HEAD
+			uid_t uid, gid_t gid, umode_t mode,
+=======
 			uid_t uid, gid_t gid, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			u64 xattr_version,
 			struct ceph_buffer *xattrs_buf,
 			u64 follows)
@@ -1026,8 +1101,12 @@ static int send_cap_msg(struct ceph_mds_session *session,
 <<<<<<< HEAD
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_CAPS, sizeof(*fc), GFP_NOFS, false);
 =======
+<<<<<<< HEAD
+	msg = ceph_msg_new(CEPH_MSG_CLIENT_CAPS, sizeof(*fc), GFP_NOFS, false);
+=======
 	msg = ceph_msg_new(CEPH_MSG_CLIENT_CAPS, sizeof(*fc), GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!msg)
 		return -ENOMEM;
 
@@ -1115,8 +1194,12 @@ static void __queue_cap_release(struct ceph_mds_session *session,
 <<<<<<< HEAD
  * inode is about to be destroyed, there is no need for i_ceph_lock.
 =======
+<<<<<<< HEAD
+ * inode is about to be destroyed, there is no need for i_ceph_lock.
+=======
  * inode is about to be destroyed, there is no need for i_lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void ceph_queue_caps_release(struct inode *inode)
 {
@@ -1140,8 +1223,12 @@ void ceph_queue_caps_release(struct inode *inode)
 <<<<<<< HEAD
  * drop i_ceph_lock and send the message.
 =======
+<<<<<<< HEAD
+ * drop i_ceph_lock and send the message.
+=======
  * drop i_lock and send the message.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Make note of max_size reported/requested from mds, revoked caps
  * that have now been implemented.
@@ -1156,8 +1243,12 @@ void ceph_queue_caps_release(struct inode *inode)
 <<<<<<< HEAD
  * called with i_ceph_lock, then drops it.
 =======
+<<<<<<< HEAD
+ * called with i_ceph_lock, then drops it.
+=======
  * called with i_lock, then drops it.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * caller should hold snap_rwsem (read), s_mutex.
  */
 static int __send_cap(struct ceph_mds_client *mdsc, struct ceph_cap *cap,
@@ -1166,8 +1257,12 @@ static int __send_cap(struct ceph_mds_client *mdsc, struct ceph_cap *cap,
 <<<<<<< HEAD
 	__releases(cap->ci->i_ceph_lock)
 =======
+<<<<<<< HEAD
+	__releases(cap->ci->i_ceph_lock)
+=======
 	__releases(cap->ci->vfs_inode->i_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_inode_info *ci = cap->ci;
 	struct inode *inode = &ci->vfs_inode;
@@ -1180,8 +1275,12 @@ static int __send_cap(struct ceph_mds_client *mdsc, struct ceph_cap *cap,
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uid_t uid;
 	gid_t gid;
 	struct ceph_mds_session *session;
@@ -1277,8 +1376,12 @@ static int __send_cap(struct ceph_mds_client *mdsc, struct ceph_cap *cap,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = send_cap_msg(session, ceph_vino(inode).ino, cap_id,
 		op, keep, want, flushing, seq, flush_tid, issue_seq, mseq,
@@ -1309,8 +1412,12 @@ static int __send_cap(struct ceph_mds_client *mdsc, struct ceph_cap *cap,
 <<<<<<< HEAD
  * Called under i_ceph_lock.  Takes s_mutex as needed.
 =======
+<<<<<<< HEAD
+ * Called under i_ceph_lock.  Takes s_mutex as needed.
+=======
  * Called under i_lock.  Takes s_mutex as needed.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void __ceph_flush_snaps(struct ceph_inode_info *ci,
 			struct ceph_mds_session **psession,
@@ -1319,9 +1426,14 @@ void __ceph_flush_snaps(struct ceph_inode_info *ci,
 		__releases(ci->i_ceph_lock)
 		__acquires(ci->i_ceph_lock)
 =======
+<<<<<<< HEAD
+		__releases(ci->i_ceph_lock)
+		__acquires(ci->i_ceph_lock)
+=======
 		__releases(ci->vfs_inode->i_lock)
 		__acquires(ci->vfs_inode->i_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode = &ci->vfs_inode;
 	int mds;
@@ -1381,8 +1493,12 @@ retry:
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mutex_lock(&mdsc->mutex);
 			session = __ceph_lookup_mds_session(mdsc, mds);
 			mutex_unlock(&mdsc->mutex);
@@ -1399,8 +1515,12 @@ retry:
 <<<<<<< HEAD
 			spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_lock(&ci->i_ceph_lock);
+=======
 			spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto retry;
 		}
 
@@ -1413,8 +1533,12 @@ retry:
 <<<<<<< HEAD
 		spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_unlock(&ci->i_ceph_lock);
+=======
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		dout("flush_snaps %p cap_snap %p follows %lld tid %llu\n",
 		     inode, capsnap, capsnap->follows, capsnap->flush_tid);
@@ -1434,8 +1558,12 @@ retry:
 <<<<<<< HEAD
 		spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_lock(&ci->i_ceph_lock);
+=======
 		spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto retry;
 	}
 
@@ -1460,12 +1588,18 @@ static void ceph_flush_snaps(struct ceph_inode_info *ci)
 	__ceph_flush_snaps(ci, NULL, 0);
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+	__ceph_flush_snaps(ci, NULL, 0);
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	struct inode *inode = &ci->vfs_inode;
 
 	spin_lock(&inode->i_lock);
 	__ceph_flush_snaps(ci, NULL, 0);
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1515,8 +1649,12 @@ int __ceph_mark_dirty_caps(struct ceph_inode_info *ci, int mask)
 <<<<<<< HEAD
  * Called under i_ceph_lock.
 =======
+<<<<<<< HEAD
+ * Called under i_ceph_lock.
+=======
  * Called under i_lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int __mark_caps_flushing(struct inode *inode,
 				 struct ceph_mds_session *session)
@@ -1569,10 +1707,16 @@ static int try_nonblocking_invalidate(struct inode *inode)
 	invalidate_mapping_pages(&inode->i_data, 0, -1);
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+	invalidate_mapping_pages(&inode->i_data, 0, -1);
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 	invalidate_mapping_pages(&inode->i_data, 0, -1);
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (inode->i_data.nrpages == 0 &&
 	    invalidating_gen == ci->i_rdcache_gen) {
@@ -1622,8 +1766,12 @@ void ceph_check_caps(struct ceph_inode_info *ci, int flags,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ci->i_ceph_flags & CEPH_I_FLUSH)
 		flags |= CHECK_CAPS_FLUSH;
@@ -1636,8 +1784,12 @@ retry:
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 retry_locked:
 	file_wanted = __ceph_caps_file_wanted(ci);
 	used = __ceph_caps_used(ci);
@@ -1794,8 +1946,12 @@ ack:
 <<<<<<< HEAD
 				spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+				spin_unlock(&ci->i_ceph_lock);
+=======
 				spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (took_snap_rwsem) {
 					up_read(&mdsc->snap_rwsem);
 					took_snap_rwsem = 0;
@@ -1812,8 +1968,12 @@ ack:
 <<<<<<< HEAD
 				spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+				spin_unlock(&ci->i_ceph_lock);
+=======
 				spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				down_read(&mdsc->snap_rwsem);
 				took_snap_rwsem = 1;
 				goto retry;
@@ -1830,16 +1990,22 @@ ack:
 		sent++;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* __send_cap drops i_ceph_lock */
 		delayed += __send_cap(mdsc, cap, CEPH_CAP_OP_UPDATE, used, want,
 				      retain, flushing, NULL);
 		goto retry; /* retake i_ceph_lock and restart our cap scan. */
+<<<<<<< HEAD
+=======
 =======
 		/* __send_cap drops i_lock */
 		delayed += __send_cap(mdsc, cap, CEPH_CAP_OP_UPDATE, used, want,
 				      retain, flushing, NULL);
 		goto retry; /* retake i_lock and restart our cap scan. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1856,8 +2022,12 @@ ack:
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (queue_invalidate)
 		ceph_queue_invalidate(inode);
@@ -1883,8 +2053,12 @@ retry:
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ci->i_ceph_flags & CEPH_I_NOFLUSH) {
 		dout("try_flush_caps skipping %p I_NOFLUSH set\n", inode);
 		goto out;
@@ -1899,8 +2073,12 @@ retry:
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			session = cap->session;
 			mutex_lock(&session->s_mutex);
 			goto retry;
@@ -1914,8 +2092,12 @@ retry:
 <<<<<<< HEAD
 		/* __send_cap drops i_ceph_lock */
 =======
+<<<<<<< HEAD
+		/* __send_cap drops i_ceph_lock */
+=======
 		/* __send_cap drops i_lock */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		delayed = __send_cap(mdsc, cap, CEPH_CAP_OP_FLUSH, used, want,
 				     cap->issued | cap->implemented, flushing,
 				     flush_tid);
@@ -1923,11 +2105,16 @@ retry:
 			goto out_unlocked;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&ci->i_ceph_lock);
 		__cap_delay_requeue(mdsc, ci);
 	}
 out:
 	spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 		spin_lock(&inode->i_lock);
 		__cap_delay_requeue(mdsc, ci);
@@ -1935,6 +2122,7 @@ out:
 out:
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_unlocked:
 	if (session && unlock_session)
 		mutex_unlock(&session->s_mutex);
@@ -1952,8 +2140,12 @@ static int caps_are_flushed(struct inode *inode, unsigned tid)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < CEPH_CAP_BITS; i++)
 		if ((ci->i_flushing_caps & (1 << i)) &&
 		    ci->i_cap_flush_tid[i] <= tid) {
@@ -1964,8 +2156,12 @@ static int caps_are_flushed(struct inode *inode, unsigned tid)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -2016,8 +2212,12 @@ out:
 <<<<<<< HEAD
 int ceph_fsync(struct file *file, loff_t start, loff_t end, int datasync)
 =======
+<<<<<<< HEAD
+int ceph_fsync(struct file *file, loff_t start, loff_t end, int datasync)
+=======
 int ceph_fsync(struct file *file, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode = file->f_mapping->host;
 	struct ceph_inode_info *ci = ceph_inode(inode);
@@ -2029,15 +2229,21 @@ int ceph_fsync(struct file *file, int datasync)
 	sync_write_wait(inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = filemap_write_and_wait_range(inode->i_mapping, start, end);
 	if (ret < 0)
 		return ret;
 	mutex_lock(&inode->i_mutex);
+<<<<<<< HEAD
+=======
 =======
 	ret = filemap_write_and_wait(inode->i_mapping);
 	if (ret < 0)
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dirty = try_flush_caps(inode, NULL, &flush_tid);
 	dout("fsync dirty caps are %s\n", ceph_cap_string(dirty));
@@ -2057,7 +2263,11 @@ int ceph_fsync(struct file *file, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&inode->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -2086,16 +2296,22 @@ int ceph_write_inode(struct inode *inode, struct writeback_control *wbc)
 			ceph_sb_to_client(inode->i_sb)->mdsc;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&ci->i_ceph_lock);
 		if (__ceph_caps_dirty(ci))
 			__cap_delay_requeue_front(mdsc, ci);
 		spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 		spin_lock(&inode->i_lock);
 		if (__ceph_caps_dirty(ci))
 			__cap_delay_requeue_front(mdsc, ci);
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return err;
 }
@@ -2121,8 +2337,12 @@ static void kick_flushing_capsnaps(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 		spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_lock(&ci->i_ceph_lock);
+=======
 		spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cap = ci->i_auth_cap;
 		if (cap && cap->session == session) {
 			dout("kick_flushing_caps %p cap %p capsnap %p\n", inode,
@@ -2135,8 +2355,12 @@ static void kick_flushing_capsnaps(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 		spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_unlock(&ci->i_ceph_lock);
+=======
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -2156,8 +2380,12 @@ void ceph_kick_flushing_caps(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 		spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_lock(&ci->i_ceph_lock);
+=======
 		spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cap = ci->i_auth_cap;
 		if (cap && cap->session == session) {
 			dout("kick_flushing_caps %p cap %p %s\n", inode,
@@ -2173,10 +2401,16 @@ void ceph_kick_flushing_caps(struct ceph_mds_client *mdsc,
 				__cap_delay_requeue(mdsc, ci);
 				spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+				spin_lock(&ci->i_ceph_lock);
+				__cap_delay_requeue(mdsc, ci);
+				spin_unlock(&ci->i_ceph_lock);
+=======
 				spin_lock(&inode->i_lock);
 				__cap_delay_requeue(mdsc, ci);
 				spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		} else {
 			pr_err("%p auth cap %p not mds%d ???\n", inode,
@@ -2184,8 +2418,12 @@ void ceph_kick_flushing_caps(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -2201,8 +2439,12 @@ static void kick_flushing_inode_caps(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap = ci->i_auth_cap;
 	dout("kick_flushing_inode_caps %p flushing %s flush_seq %lld\n", inode,
 	     ceph_cap_string(ci->i_flushing_caps), ci->i_cap_flush_seq);
@@ -2215,12 +2457,17 @@ static void kick_flushing_inode_caps(struct ceph_mds_client *mdsc,
 				     ci->i_flushing_caps, NULL);
 		if (delayed) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_lock(&ci->i_ceph_lock);
 			__cap_delay_requeue(mdsc, ci);
 			spin_unlock(&ci->i_ceph_lock);
 		}
 	} else {
 		spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 			spin_lock(&inode->i_lock);
 			__cap_delay_requeue(mdsc, ci);
@@ -2229,6 +2476,7 @@ static void kick_flushing_inode_caps(struct ceph_mds_client *mdsc,
 	} else {
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -2240,8 +2488,12 @@ static void kick_flushing_inode_caps(struct ceph_mds_client *mdsc,
 <<<<<<< HEAD
  * Protected by i_ceph_lock.
 =======
+<<<<<<< HEAD
+ * Protected by i_ceph_lock.
+=======
  * Protected by i_lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void __take_cap_refs(struct ceph_inode_info *ci, int got)
 {
@@ -2282,8 +2534,12 @@ static int try_get_cap_refs(struct ceph_inode_info *ci, int need, int want,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* make sure file is actually open */
 	file_wanted = __ceph_caps_file_wanted(ci);
@@ -2347,8 +2603,12 @@ out:
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("get_cap_refs %p ret %d got %s\n", inode,
 	     ret, ceph_cap_string(*got));
 	return ret;
@@ -2368,8 +2628,12 @@ static void check_max_size(struct inode *inode, loff_t endoff)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((endoff >= ci->i_max_size ||
 	     endoff > (inode->i_size << 1)) &&
 	    endoff > ci->i_wanted_max_size) {
@@ -2381,8 +2645,12 @@ static void check_max_size(struct inode *inode, loff_t endoff)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (check)
 		ceph_check_caps(ci, CHECK_CAPS_AUTHONLY, NULL);
 }
@@ -2424,10 +2692,16 @@ void ceph_get_cap_refs(struct ceph_inode_info *ci, int caps)
 	__take_cap_refs(ci, caps);
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+	__take_cap_refs(ci, caps);
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_lock(&ci->vfs_inode.i_lock);
 	__take_cap_refs(ci, caps);
 	spin_unlock(&ci->vfs_inode.i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2448,8 +2722,12 @@ void ceph_put_cap_refs(struct ceph_inode_info *ci, int had)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (had & CEPH_CAP_PIN)
 		--ci->i_pin_ref;
 	if (had & CEPH_CAP_FILE_RD)
@@ -2485,8 +2763,12 @@ void ceph_put_cap_refs(struct ceph_inode_info *ci, int had)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dout("put_cap_refs %p had %s%s%s\n", inode, ceph_cap_string(had),
 	     last ? " last" : "", put ? " put" : "");
@@ -2521,8 +2803,12 @@ void ceph_put_wrbuffer_cap_refs(struct ceph_inode_info *ci, int nr,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ci->i_wrbuffer_ref -= nr;
 	last = !ci->i_wrbuffer_ref;
 
@@ -2574,8 +2860,12 @@ void ceph_put_wrbuffer_cap_refs(struct ceph_inode_info *ci, int nr,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (last) {
 		ceph_check_caps(ci, CHECK_CAPS_AUTHONLY, NULL);
@@ -2595,8 +2885,12 @@ void ceph_put_wrbuffer_cap_refs(struct ceph_inode_info *ci, int nr,
 <<<<<<< HEAD
  * caller holds s_mutex and i_ceph_lock, we drop both.
 =======
+<<<<<<< HEAD
+ * caller holds s_mutex and i_ceph_lock, we drop both.
+=======
  * caller holds s_mutex and i_lock, we drop both.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * return value:
  *  0 - ok
@@ -2610,8 +2904,12 @@ static void handle_cap_grant(struct inode *inode, struct ceph_mds_caps *grant,
 <<<<<<< HEAD
 		__releases(ci->i_ceph_lock)
 =======
+<<<<<<< HEAD
+		__releases(ci->i_ceph_lock)
+=======
 		__releases(inode->i_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_inode_info *ci = ceph_inode(inode);
 	int mds = session->s_mds;
@@ -2673,8 +2971,12 @@ static void handle_cap_grant(struct inode *inode, struct ceph_mds_caps *grant,
 <<<<<<< HEAD
 		set_nlink(inode, le32_to_cpu(grant->nlink));
 =======
+<<<<<<< HEAD
+		set_nlink(inode, le32_to_cpu(grant->nlink));
+=======
 		inode->i_nlink = le32_to_cpu(grant->nlink);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((issued & CEPH_CAP_XATTR_EXCL) == 0 && grant->xattr_len) {
 		int len = le32_to_cpu(grant->xattr_len);
@@ -2769,8 +3071,12 @@ static void handle_cap_grant(struct inode *inode, struct ceph_mds_caps *grant,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (writeback)
 		/*
 		 * queue inode for writeback: we can't actually call
@@ -2803,8 +3109,12 @@ static void handle_cap_flush_ack(struct inode *inode, u64 flush_tid,
 <<<<<<< HEAD
 	__releases(ci->i_ceph_lock)
 =======
+<<<<<<< HEAD
+	__releases(ci->i_ceph_lock)
+=======
 	__releases(inode->i_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_inode_info *ci = ceph_inode(inode);
 	struct ceph_mds_client *mdsc = ceph_sb_to_client(inode->i_sb)->mdsc;
@@ -2863,8 +3173,12 @@ out:
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (drop)
 		iput(inode);
 }
@@ -2890,8 +3204,12 @@ static void handle_cap_flushsnap_ack(struct inode *inode, u64 flush_tid,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(capsnap, &ci->i_cap_snaps, ci_item) {
 		if (capsnap->follows == follows) {
 			if (capsnap->flush_tid != flush_tid) {
@@ -2917,8 +3235,12 @@ static void handle_cap_flushsnap_ack(struct inode *inode, u64 flush_tid,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (drop)
 		iput(inode);
 }
@@ -2934,8 +3256,12 @@ static void handle_cap_trunc(struct inode *inode,
 <<<<<<< HEAD
 	__releases(ci->i_ceph_lock)
 =======
+<<<<<<< HEAD
+	__releases(ci->i_ceph_lock)
+=======
 	__releases(inode->i_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_inode_info *ci = ceph_inode(inode);
 	int mds = session->s_mds;
@@ -2957,8 +3283,12 @@ static void handle_cap_trunc(struct inode *inode,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (queue_trunc)
 		ceph_queue_vmtruncate(inode);
@@ -2990,8 +3320,12 @@ static void handle_cap_export(struct inode *inode, struct ceph_mds_caps *ex,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* make sure we haven't seen a higher mseq */
 	for (p = rb_first(&ci->i_caps); p; p = rb_next(p)) {
@@ -3038,8 +3372,12 @@ static void handle_cap_export(struct inode *inode, struct ceph_mds_caps *ex,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -3099,10 +3437,16 @@ static void handle_cap_import(struct ceph_mds_client *mdsc,
 	ci->i_requested_max_size = 0;
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+	ci->i_requested_max_size = 0;
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 	ci->i_requested_max_size = 0;
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -3120,7 +3464,11 @@ void ceph_handle_caps(struct ceph_mds_session *session,
 <<<<<<< HEAD
 	struct ceph_inode_info *ci;
 =======
+<<<<<<< HEAD
+	struct ceph_inode_info *ci;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ceph_cap *cap;
 	struct ceph_mds_caps *h;
 	int mds = session->s_mds;
@@ -3177,7 +3525,11 @@ void ceph_handle_caps(struct ceph_mds_session *session,
 <<<<<<< HEAD
 	ci = ceph_inode(inode);
 =======
+<<<<<<< HEAD
+	ci = ceph_inode(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout(" op %s ino %llx.%llx inode %p\n", ceph_cap_op_name(op), vino.ino,
 	     vino.snap, inode);
 	if (!inode) {
@@ -3210,18 +3562,27 @@ void ceph_handle_caps(struct ceph_mds_session *session,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap = __get_cap_for_mds(ceph_inode(inode), mds);
 	if (!cap) {
 		dout(" no cap on %p ino %llx.%llx from mds%d\n",
 		     inode, ceph_ino(inode), ceph_snap(inode), mds);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&ci->i_ceph_lock);
 		goto flush_cap_releases;
 	}
 
 	/* note that each of these drops i_ceph_lock for us */
+<<<<<<< HEAD
+=======
 =======
 		spin_unlock(&inode->i_lock);
 		goto flush_cap_releases;
@@ -3229,6 +3590,7 @@ void ceph_handle_caps(struct ceph_mds_session *session,
 
 	/* note that each of these drops i_lock for us */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (op) {
 	case CEPH_CAP_OP_REVOKE:
 	case CEPH_CAP_OP_GRANT:
@@ -3247,8 +3609,12 @@ void ceph_handle_caps(struct ceph_mds_session *session,
 <<<<<<< HEAD
 		spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_unlock(&ci->i_ceph_lock);
+=======
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("ceph_handle_caps: unknown cap op %d %s\n", op,
 		       ceph_cap_op_name(op));
 	}
@@ -3344,8 +3710,12 @@ void ceph_put_fmode(struct ceph_inode_info *ci, int fmode)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("put_fmode %p fmode %d %d -> %d\n", inode, fmode,
 	     ci->i_nr_by_mode[fmode], ci->i_nr_by_mode[fmode]-1);
 	BUG_ON(ci->i_nr_by_mode[fmode] == 0);
@@ -3354,8 +3724,12 @@ void ceph_put_fmode(struct ceph_inode_info *ci, int fmode)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (last && ci->i_vino.snap == CEPH_NOSNAP)
 		ceph_check_caps(ci, 0, NULL);
@@ -3381,8 +3755,12 @@ int ceph_encode_inode_release(void **p, struct inode *inode,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	used = __ceph_caps_used(ci);
 	dirty = __ceph_caps_dirty(ci);
 
@@ -3440,8 +3818,12 @@ int ceph_encode_inode_release(void **p, struct inode *inode,
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -3459,8 +3841,12 @@ int ceph_encode_dentry_release(void **p, struct dentry *dentry,
 <<<<<<< HEAD
 	 * this is racy (can't take i_ceph_lock and d_lock together), but it
 =======
+<<<<<<< HEAD
+	 * this is racy (can't take i_ceph_lock and d_lock together), but it
+=======
 	 * this is racy (can't take i_lock and d_lock together), but it
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * doesn't have to be perfect; the mds will revoke anything we don't
 	 * release.
 	 */

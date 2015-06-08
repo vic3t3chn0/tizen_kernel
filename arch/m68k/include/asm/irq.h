@@ -29,6 +29,10 @@
 #if defined(CONFIG_M68020) || defined(CONFIG_M68030) || \
     defined(CONFIG_M68040) || defined(CONFIG_M68060)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_M68020) || defined(CONFIG_M68030) || \
+    defined(CONFIG_M68040) || defined(CONFIG_M68060)
+=======
 #ifdef CONFIG_MMU
 
 #include <linux/linkage.h>
@@ -45,6 +49,7 @@
 # error HARDIRQ_BITS is too low!
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Interrupt source definitions
@@ -69,6 +74,9 @@
 #define IRQ_USER	8
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct irq_data;
 struct irq_chip;
 struct irq_desc;
@@ -91,6 +99,8 @@ extern unsigned int irq_canonicalize(unsigned int irq);
 
 asmlinkage void do_IRQ(int irq, struct pt_regs *regs);
 extern atomic_t irq_err_count;
+<<<<<<< HEAD
+=======
 =======
 extern unsigned int irq_canonicalize(unsigned int irq);
 
@@ -160,5 +170,6 @@ asmlinkage void __m68k_handle_int(unsigned int, struct pt_regs *);
 #define irq_canonicalize(irq)  (irq)
 #endif /* CONFIG_MMU */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _M68K_IRQ_H_ */

@@ -30,7 +30,11 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "compat_linux.h"
 #include "compat_ptrace.h"
 #include "entry.h"
@@ -149,8 +153,13 @@ int copy_siginfo_from_user32(siginfo_t *to, compat_siginfo_t __user *from)
 			to->si_addr = (void __force __user *)
 				(u64) (tmp & PSW32_ADDR_INSN);
 =======
+<<<<<<< HEAD
+			to->si_addr = (void __force __user *)
+				(u64) (tmp & PSW32_ADDR_INSN);
+=======
 			to->si_addr = (void __user *)(u64) (tmp & PSW32_ADDR_INSN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case __SI_POLL >> 16:
 			err |= __get_user(to->si_band, &from->si_band);
@@ -226,6 +235,10 @@ sys32_rt_sigaction(int sig, const struct sigaction32 __user *act,
 		new_ka.sa.sa_mask.sig[0] =
 			set32.sig[0] | (((long)set32.sig[1]) << 32);
 =======
+<<<<<<< HEAD
+		new_ka.sa.sa_mask.sig[0] =
+			set32.sig[0] | (((long)set32.sig[1]) << 32);
+=======
 		switch (_NSIG_WORDS) {
 		case 4: new_ka.sa.sa_mask.sig[3] = set32.sig[6]
 				| (((long)set32.sig[7]) << 32);
@@ -237,6 +250,7 @@ sys32_rt_sigaction(int sig, const struct sigaction32 __user *act,
 				| (((long)set32.sig[1]) << 32);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret |= __get_user(new_ka.sa.sa_flags, &act->sa_flags);
 		
 		if (ret)
@@ -247,6 +261,10 @@ sys32_rt_sigaction(int sig, const struct sigaction32 __user *act,
 	ret = do_sigaction(sig, act ? &new_ka : NULL, oact ? &old_ka : NULL);
 
 	if (!ret && oact) {
+<<<<<<< HEAD
+		set32.sig[1] = (old_ka.sa.sa_mask.sig[0] >> 32);
+		set32.sig[0] = old_ka.sa.sa_mask.sig[0];
+=======
 <<<<<<< HEAD
 		set32.sig[1] = (old_ka.sa.sa_mask.sig[0] >> 32);
 		set32.sig[0] = old_ka.sa.sa_mask.sig[0];
@@ -266,6 +284,7 @@ sys32_rt_sigaction(int sig, const struct sigaction32 __user *act,
 			set32.sig[0] = old_ka.sa.sa_mask.sig[0];
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = put_user((unsigned long)old_ka.sa.sa_handler, &oact->sa_handler);
 		ret |= __copy_to_user(&oact->sa_mask, &set32,
 				      sizeof(compat_sigset_t));
@@ -320,15 +339,21 @@ static int save_sigregs32(struct pt_regs *regs, _sigregs32 __user *sregs)
 	int err, i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs32.psw.mask = psw32_user_bits |
 		((__u32)(regs->psw.mask >> 32) & PSW32_MASK_USER);
 	regs32.psw.addr = (__u32) regs->psw.addr |
 		(__u32)(regs->psw.mask & PSW_MASK_BA);
+<<<<<<< HEAD
+=======
 =======
 	regs32.psw.mask = PSW32_MASK_MERGE(psw32_user_bits,
 					   (__u32)(regs->psw.mask >> 32));
 	regs32.psw.addr = PSW32_ADDR_AMODE31 | (__u32) regs->psw.addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < NUM_GPRS; i++)
 		regs32.gprs[i] = (__u32) regs->gprs[i];
 	save_access_regs(current->thread.acrs);
@@ -358,9 +383,15 @@ static int restore_sigregs32(struct pt_regs *regs,_sigregs32 __user *sregs)
 		(__u64)(regs32.psw.mask & PSW32_MASK_USER) << 32 |
 		(__u64)(regs32.psw.addr & PSW32_ADDR_AMODE);
 =======
+<<<<<<< HEAD
+	regs->psw.mask = (regs->psw.mask & ~PSW_MASK_USER) |
+		(__u64)(regs32.psw.mask & PSW32_MASK_USER) << 32 |
+		(__u64)(regs32.psw.addr & PSW32_ADDR_AMODE);
+=======
 	regs->psw.mask = PSW_MASK_MERGE(regs->psw.mask,
 				        (__u64)regs32.psw.mask << 32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->psw.addr = (__u64)(regs32.psw.addr & PSW32_ADDR_INSN);
 	for (i = 0; i < NUM_GPRS; i++)
 		regs->gprs[i] = (__u64) regs32.gprs[i];
@@ -377,8 +408,12 @@ static int restore_sigregs32(struct pt_regs *regs,_sigregs32 __user *sregs)
 <<<<<<< HEAD
 	clear_thread_flag(TIF_SYSCALL);	/* No longer in a system call */
 =======
+<<<<<<< HEAD
+	clear_thread_flag(TIF_SYSCALL);	/* No longer in a system call */
+=======
 	regs->svcnr = 0;	/* disable syscall checks */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -420,6 +455,10 @@ asmlinkage long sys32_sigreturn(void)
 	sigdelsetmask(&set, ~_BLOCKABLE);
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	sigdelsetmask(&set, ~_BLOCKABLE);
+	set_current_blocked(&set);
+=======
 
 	sigdelsetmask(&set, ~_BLOCKABLE);
 	spin_lock_irq(&current->sighand->siglock);
@@ -428,6 +467,7 @@ asmlinkage long sys32_sigreturn(void)
 	spin_unlock_irq(&current->sighand->siglock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (restore_sigregs32(regs, &frame->sregs))
 		goto badframe;
 	if (restore_sigregs_gprs_high(regs, frame->gprs_high))
@@ -435,10 +475,14 @@ asmlinkage long sys32_sigreturn(void)
 <<<<<<< HEAD
 	return regs->gprs[2];
 =======
+<<<<<<< HEAD
+	return regs->gprs[2];
+=======
 
 	return regs->gprs[2];
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 badframe:
 	force_sig(SIGSEGV, current);
 	return 0;
@@ -462,6 +506,10 @@ asmlinkage long sys32_rt_sigreturn(void)
 	sigdelsetmask(&set, ~_BLOCKABLE);
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	sigdelsetmask(&set, ~_BLOCKABLE);
+	set_current_blocked(&set);
+=======
 
 	sigdelsetmask(&set, ~_BLOCKABLE);
 	spin_lock_irq(&current->sighand->siglock);
@@ -470,14 +518,18 @@ asmlinkage long sys32_rt_sigreturn(void)
 	spin_unlock_irq(&current->sighand->siglock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (restore_sigregs32(regs, &frame->uc.uc_mcontext))
 		goto badframe;
 	if (restore_sigregs_gprs_high(regs, frame->gprs_high))
 		goto badframe;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = __get_user(ss_sp, &frame->uc.uc_stack.ss_sp);
 	st.ss_sp = compat_ptr(ss_sp);
 	err |= __get_user(st.ss_size, &frame->uc.uc_stack.ss_size);
@@ -485,10 +537,15 @@ asmlinkage long sys32_rt_sigreturn(void)
 	if (err)
 		goto badframe; 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_fs (KERNEL_DS);
 	do_sigaltstack((stack_t __force __user *)&st, NULL, regs->gprs[15]);
 	set_fs (old_fs);
 	return regs->gprs[2];
+<<<<<<< HEAD
+=======
 =======
 
 	set_fs (KERNEL_DS);
@@ -498,6 +555,7 @@ asmlinkage long sys32_rt_sigreturn(void)
 	return regs->gprs[2];
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 badframe:
 	force_sig(SIGSEGV, current);
 	return 0;
@@ -573,11 +631,16 @@ static int setup_frame32(int sig, struct k_sigaction *ka,
 	   already in userspace.  */
 	if (ka->sa.sa_flags & SA_RESTORER) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		regs->gprs[14] = (__u64) ka->sa.sa_restorer | PSW32_ADDR_AMODE;
 	} else {
 		regs->gprs[14] = (__u64) frame->retcode | PSW32_ADDR_AMODE;
 		if (__put_user(S390_SYSCALL_OPCODE | __NR_sigreturn,
 			       (u16 __force __user *)(frame->retcode)))
+<<<<<<< HEAD
+=======
 =======
 		regs->gprs[14] = (__u64) ka->sa.sa_restorer;
 	} else {
@@ -585,6 +648,7 @@ static int setup_frame32(int sig, struct k_sigaction *ka,
 		if (__put_user(S390_SYSCALL_OPCODE | __NR_sigreturn,
 		               (u16 __user *)(frame->retcode)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto give_sigsegv;
         }
 
@@ -594,6 +658,9 @@ static int setup_frame32(int sig, struct k_sigaction *ka,
 
 	/* Set up registers for signal handler */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->gprs[15] = (__force __u64) frame;
 	regs->psw.mask |= PSW_MASK_BA;		/* force amode 31 */
 	regs->psw.addr = (__force __u64) ka->sa.sa_handler;
@@ -612,6 +679,8 @@ static int setup_frame32(int sig, struct k_sigaction *ka,
 
 	/* Place signal number on stack to allow backtrace from handler.  */
 	if (__put_user(regs->gprs[2], (int __force __user *) &frame->signo))
+<<<<<<< HEAD
+=======
 =======
 	regs->gprs[15] = (__u64) frame;
 	regs->psw.addr = (__u64) ka->sa.sa_handler;
@@ -627,6 +696,7 @@ static int setup_frame32(int sig, struct k_sigaction *ka,
 	/* Place signal number on stack to allow backtrace from handler.  */
 	if (__put_user(regs->gprs[2], (int __user *) &frame->signo))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto give_sigsegv;
 	return 0;
 
@@ -666,6 +736,9 @@ static int setup_rt_frame32(int sig, struct k_sigaction *ka, siginfo_t *info,
 	   already in userspace.  */
 	if (ka->sa.sa_flags & SA_RESTORER) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		regs->gprs[14] = (__u64) ka->sa.sa_restorer | PSW32_ADDR_AMODE;
 	} else {
 		regs->gprs[14] = (__u64) frame->retcode | PSW32_ADDR_AMODE;
@@ -685,6 +758,8 @@ static int setup_rt_frame32(int sig, struct k_sigaction *ka, siginfo_t *info,
 	regs->gprs[2] = map_signal(sig);
 	regs->gprs[3] = (__force __u64) &frame->info;
 	regs->gprs[4] = (__force __u64) &frame->uc;
+<<<<<<< HEAD
+=======
 =======
 		regs->gprs[14] = (__u64) ka->sa.sa_restorer;
 	} else {
@@ -705,6 +780,7 @@ static int setup_rt_frame32(int sig, struct k_sigaction *ka, siginfo_t *info,
 	regs->gprs[3] = (__u64) &frame->info;
 	regs->gprs[4] = (__u64) &frame->uc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 give_sigsegv:
@@ -720,10 +796,15 @@ give_sigsegv:
 int handle_signal32(unsigned long sig, struct k_sigaction *ka,
 		    siginfo_t *info, sigset_t *oldset, struct pt_regs *regs)
 =======
+<<<<<<< HEAD
+int handle_signal32(unsigned long sig, struct k_sigaction *ka,
+		    siginfo_t *info, sigset_t *oldset, struct pt_regs *regs)
+=======
 int
 handle_signal32(unsigned long sig, struct k_sigaction *ka,
 		siginfo_t *info, sigset_t *oldset, struct pt_regs * regs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 
@@ -733,10 +814,15 @@ handle_signal32(unsigned long sig, struct k_sigaction *ka,
 	else
 		ret = setup_frame32(sig, ka, oldset, regs);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 	block_sigmask(ka, sig);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 
 	if (ret == 0) {
@@ -749,5 +835,6 @@ handle_signal32(unsigned long sig, struct k_sigaction *ka,
 	}
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

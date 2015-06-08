@@ -14,6 +14,13 @@
 
 #include <asm/msr.h>
 #include <asm/processor.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/cpu_device_id.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct cpufreq_driver	longrun_driver;
 
@@ -288,6 +295,18 @@ static struct cpufreq_driver longrun_driver = {
 	.owner		= THIS_MODULE,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct x86_cpu_id longrun_ids[] = {
+	{ X86_VENDOR_TRANSMETA, X86_FAMILY_ANY, X86_MODEL_ANY,
+	  X86_FEATURE_LONGRUN },
+	{}
+};
+MODULE_DEVICE_TABLE(x86cpu, longrun_ids);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * longrun_init - initializes the Transmeta Crusoe LongRun CPUFreq driver
@@ -296,12 +315,23 @@ static struct cpufreq_driver longrun_driver = {
  */
 static int __init longrun_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!x86_match_cpu(longrun_ids))
+		return -ENODEV;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cpuinfo_x86 *c = &cpu_data(0);
 
 	if (c->x86_vendor != X86_VENDOR_TRANSMETA ||
 	    !cpu_has(c, X86_FEATURE_LONGRUN))
 		return -ENODEV;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return cpufreq_register_driver(&longrun_driver);
 }
 

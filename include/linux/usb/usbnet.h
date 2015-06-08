@@ -59,8 +59,12 @@ struct usbnet {
 <<<<<<< HEAD
 	struct work_struct	bh_w;
 =======
+<<<<<<< HEAD
+	struct work_struct	bh_w;
+=======
 	struct tasklet_struct	bh;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct work_struct	kevent;
 	unsigned long		flags;
@@ -140,7 +144,13 @@ struct driver_info {
 	void (*rx_complete) (struct urb *);
 
 =======
+<<<<<<< HEAD
+	/*in case if usbnet wrapper wants to override rx_complete()*/
+	void (*rx_complete) (struct urb *);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* fixup rx packet (strip framing) */
 	int	(*rx_fixup)(struct usbnet *dev, struct sk_buff *skb);
 
@@ -242,6 +252,11 @@ extern int usbnet_nway_reset(struct net_device *net);
 extern void usbnet_terminate_urbs(struct usbnet *dev);
 extern void rx_complete(struct urb *urb);
 =======
+<<<<<<< HEAD
+extern void usbnet_terminate_urbs(struct usbnet *dev);
+extern void rx_complete(struct urb *urb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __LINUX_USB_USBNET_H */

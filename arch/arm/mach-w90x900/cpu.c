@@ -31,23 +31,33 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/regs-serial.h>
 #include <mach/regs-clock.h>
 #include <mach/regs-ebi.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/regs-timer.h>
 
 #include "cpu.h"
 #include "clock.h"
 #include "nuc9xx.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "cpu.h"
 #include "clock.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Initial IO mappings */
 
@@ -75,8 +85,12 @@ static DEFINE_CLK(usbh, 9);
 <<<<<<< HEAD
 static DEFINE_CLK(g2d, 10);
 =======
+<<<<<<< HEAD
+static DEFINE_CLK(g2d, 10);
+=======
 static DEFINE_CLK(g2d, 10);;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_CLK(pwm, 18);
 static DEFINE_CLK(ps2, 24);
 static DEFINE_CLK(kpi, 25);
@@ -96,8 +110,12 @@ static struct clk_lookup nuc900_clkregs[] = {
 <<<<<<< HEAD
 	DEF_CLKLOOK(&clk_audio, "nuc900-ac97", NULL),
 =======
+<<<<<<< HEAD
+	DEF_CLKLOOK(&clk_audio, "nuc900-ac97", NULL),
+=======
 	DEF_CLKLOOK(&clk_audio, "nuc900-audio", NULL),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEF_CLKLOOK(&clk_fmi, "nuc900-fmi", NULL),
 	DEF_CLKLOOK(&clk_ms, "nuc900-fmi", "MS"),
 	DEF_CLKLOOK(&clk_sd, "nuc900-fmi", "SD"),
@@ -243,6 +261,9 @@ void __init nuc900_init_clocks(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	WTCR	(TMR_BA + 0x1C)
 #define	WTCLK	(1 << 10)
 #define	WTE	(1 << 7)
@@ -257,5 +278,8 @@ void nuc9xx_restart(char mode, const char *cmd)
 		__raw_writel(WTE | WTRE | WTCLK, WTCR);
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

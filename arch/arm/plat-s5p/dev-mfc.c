@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2010-2011 Samsung Electronics Co.Ltd
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010-2011 Samsung Electronics Co.Ltd
+=======
  * Copyright (c) 2011 Samsung Electronics
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Base S5P MFC resource and device definitions
  *
@@ -14,6 +18,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/kernel.h>
 #include <linux/interrupt.h>
@@ -76,6 +83,8 @@ static int __init s5p_mfc_memory_init(void)
 	return 0;
 }
 device_initcall(s5p_mfc_memory_init);
+<<<<<<< HEAD
+=======
 =======
 #include <linux/kernel.h>
 #include <linux/dma-mapping.h>
@@ -115,3 +124,4 @@ struct platform_device s5p_device_mfc = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

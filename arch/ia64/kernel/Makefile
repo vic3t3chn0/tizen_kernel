@@ -46,8 +46,12 @@ endif
 <<<<<<< HEAD
 obj-$(CONFIG_INTEL_IOMMU)	+= pci-dma.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_INTEL_IOMMU)	+= pci-dma.o
+=======
 obj-$(CONFIG_DMAR)		+= pci-dma.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_SWIOTLB)		+= pci-swiotlb.o
 
 obj-$(CONFIG_BINFMT_ELF)	+= elfcore.o

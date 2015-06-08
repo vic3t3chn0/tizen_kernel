@@ -29,7 +29,15 @@ MODULE_PARM_DESC(force_pid_filter_usage, "force all dvb-usb-devices to use a PID
 static int dvb_usb_adapter_init(struct dvb_usb_device *d, short *adapter_nrs)
 {
 	struct dvb_usb_adapter *adap;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret, n, o;
+=======
 	int ret, n;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret, n;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (n = 0; n < d->props.num_adapters; n++) {
 		adap = &d->adapter[n];
@@ -38,12 +46,57 @@ static int dvb_usb_adapter_init(struct dvb_usb_device *d, short *adapter_nrs)
 
 		memcpy(&adap->props, &d->props.adapter[n], sizeof(struct dvb_usb_adapter_properties));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (o = 0; o < adap->props.num_frontends; o++) {
+		struct dvb_usb_adapter_fe_properties *props = &adap->props.fe[o];
+		/* speed - when running at FULL speed we need a HW PID filter */
+		if (d->udev->speed == USB_SPEED_FULL && !(props->caps & DVB_USB_ADAP_HAS_PID_FILTER)) {
+=======
 		/* speed - when running at FULL speed we need a HW PID filter */
 		if (d->udev->speed == USB_SPEED_FULL && !(adap->props.caps & DVB_USB_ADAP_HAS_PID_FILTER)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* speed - when running at FULL speed we need a HW PID filter */
+		if (d->udev->speed == USB_SPEED_FULL && !(adap->props.caps & DVB_USB_ADAP_HAS_PID_FILTER)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err("This USB2.0 device cannot be run on a USB1.1 port. (it lacks a hardware PID filter)");
 			return -ENODEV;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((d->udev->speed == USB_SPEED_FULL && props->caps & DVB_USB_ADAP_HAS_PID_FILTER) ||
+			(props->caps & DVB_USB_ADAP_NEED_PID_FILTERING)) {
+			info("will use the device's hardware PID filter (table count: %d).", props->pid_filter_count);
+			adap->fe_adap[o].pid_filtering  = 1;
+			adap->fe_adap[o].max_feed_count = props->pid_filter_count;
+		} else {
+			info("will pass the complete MPEG2 transport stream to the software demuxer.");
+			adap->fe_adap[o].pid_filtering  = 0;
+			adap->fe_adap[o].max_feed_count = 255;
+		}
+
+		if (!adap->fe_adap[o].pid_filtering &&
+			dvb_usb_force_pid_filter_usage &&
+			props->caps & DVB_USB_ADAP_HAS_PID_FILTER) {
+			info("pid filter enabled by module option.");
+			adap->fe_adap[o].pid_filtering  = 1;
+			adap->fe_adap[o].max_feed_count = props->pid_filter_count;
+		}
+
+		if (props->size_of_priv > 0) {
+			adap->fe_adap[o].priv = kzalloc(props->size_of_priv, GFP_KERNEL);
+			if (adap->fe_adap[o].priv == NULL) {
+				err("no memory for priv for adapter %d fe %d.", n, o);
+				return -ENOMEM;
+			}
+		}
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((d->udev->speed == USB_SPEED_FULL && adap->props.caps & DVB_USB_ADAP_HAS_PID_FILTER) ||
 			(adap->props.caps & DVB_USB_ADAP_NEED_PID_FILTERING)) {
 			info("will use the device's hardware PID filter (table count: %d).", adap->props.pid_filter_count);
@@ -63,6 +116,10 @@ static int dvb_usb_adapter_init(struct dvb_usb_device *d, short *adapter_nrs)
 			adap->max_feed_count = adap->props.pid_filter_count;
 		}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (adap->props.size_of_priv > 0) {
 			adap->priv = kzalloc(adap->props.size_of_priv, GFP_KERNEL);
 			if (adap->priv == NULL) {
@@ -77,6 +134,16 @@ static int dvb_usb_adapter_init(struct dvb_usb_device *d, short *adapter_nrs)
 			return ret;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* use exclusive FE lock if there is multiple shared FEs */
+		if (adap->fe_adap[1].fe)
+			adap->dvb_adap.mfe_shared = 1;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		d->num_adapters_initialized++;
 		d->state |= DVB_USB_STATE_DVB;
 	}

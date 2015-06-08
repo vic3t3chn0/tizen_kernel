@@ -4,6 +4,9 @@
 extern pmd_t *top_pmd;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * 0xffff8000 to 0xffffffff is reserved for any ARM architecture
  * specific hacks for copying pages efficiently, while 0xffff4000
@@ -29,9 +32,12 @@ static inline pte_t get_top_pte(unsigned long va)
 	pte_t *ptep = pte_offset_kernel(top_pmd, va);
 	return *ptep;
 }
+<<<<<<< HEAD
+=======
 =======
 #define TOP_PTE(x)	pte_offset_kernel(top_pmd, x)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline pmd_t *pmd_off_k(unsigned long virt)
 {
@@ -44,9 +50,14 @@ struct mem_type {
 	pmdval_t prot_l1;
 	pmdval_t prot_sect;
 =======
+<<<<<<< HEAD
+	pmdval_t prot_l1;
+	pmdval_t prot_sect;
+=======
 	unsigned int prot_l1;
 	unsigned int prot_sect;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int domain;
 };
 
@@ -55,6 +66,9 @@ const struct mem_type *get_mem_type(unsigned int type);
 extern void __flush_dcache_page(struct address_space *mapping, struct page *page);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ARM specific vm_struct->flags bits.
  */
@@ -75,14 +89,20 @@ extern void __flush_dcache_page(struct address_space *mapping, struct page *page
 /* consistent regions used by dma_alloc_attrs() */
 #define VM_ARM_DMA_CONSISTENT	0x20000000
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_ZONE_DMA
 extern phys_addr_t arm_dma_limit;
 #else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define arm_dma_limit ((phys_addr_t)~0)
 #endif
 
@@ -91,6 +111,8 @@ extern phys_addr_t arm_lowmem_limit;
 void __init bootmem_init(void);
 void arm_mm_memblock_reserve(void);
 void dma_contiguous_remap(void);
+<<<<<<< HEAD
+=======
 =======
 #define arm_dma_limit ((u32)~0)
 #endif
@@ -106,3 +128,4 @@ void dma_contiguous_remap(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

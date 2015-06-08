@@ -41,7 +41,12 @@ struct sockaddr;
 struct iscsi_iface;
 struct bsg_job;
 =======
+<<<<<<< HEAD
+struct iscsi_iface;
+struct bsg_job;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct iscsi_transport - iSCSI Transport template
@@ -92,10 +97,14 @@ struct iscsi_transport {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	/* LLD sets this to indicate what values it can export to sysfs */
 	uint64_t param_mask;
 	uint64_t host_param_mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iscsi_cls_session *(*create_session) (struct iscsi_endpoint *ep,
 					uint16_t cmds_max, uint16_t qdepth,
 					uint32_t sn);
@@ -147,6 +156,9 @@ struct iscsi_transport {
 			  uint32_t enable, struct sockaddr *dst_addr);
 	int (*set_path) (struct Scsi_Host *shost, struct iscsi_path *params);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*set_iface_param) (struct Scsi_Host *shost, void *data,
 				uint32_t len);
 	int (*get_iface_param) (struct iscsi_iface *iface,
@@ -160,8 +172,11 @@ struct iscsi_transport {
 	int (*get_chap) (struct Scsi_Host *shost, uint16_t chap_tbl_idx,
 			 uint32_t *num_entries, char *buf);
 	int (*delete_chap) (struct Scsi_Host *shost, uint16_t chap_tbl_idx);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -179,7 +194,12 @@ extern void iscsi_conn_error_event(struct iscsi_cls_conn *conn,
 extern void iscsi_conn_login_event(struct iscsi_cls_conn *conn,
 				   enum iscsi_conn_state state);
 =======
+<<<<<<< HEAD
+extern void iscsi_conn_login_event(struct iscsi_cls_conn *conn,
+				   enum iscsi_conn_state state);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int iscsi_recv_pdu(struct iscsi_cls_conn *conn, struct iscsi_hdr *hdr,
 			  char *data, uint32_t data_size);
 
@@ -188,6 +208,9 @@ extern int iscsi_offload_mesg(struct Scsi_Host *shost,
 			      char *data, uint16_t data_size);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void iscsi_post_host_event(uint32_t host_no,
 				  struct iscsi_transport *transport,
 				  enum iscsi_host_event_code code,
@@ -199,8 +222,11 @@ extern void iscsi_ping_comp_event(uint32_t host_no,
 				  uint32_t status, uint32_t pid,
 				  uint32_t data_size, uint8_t *data);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct iscsi_cls_conn {
 	struct list_head conn_list;	/* item in connlist */
 	void *dd_data;			/* LLD private data */
@@ -220,7 +246,13 @@ struct iscsi_cls_conn {
 	iscsi_dev_to_conn(_cdev->parent)
 
 =======
+<<<<<<< HEAD
+#define transport_class_to_conn(_cdev) \
+	iscsi_dev_to_conn(_cdev->parent)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define iscsi_conn_to_session(_conn) \
 	iscsi_dev_to_session(_conn->dev.parent)
 
@@ -248,6 +280,9 @@ struct iscsi_cls_session {
 
 	unsigned int target_id;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool ida_used;
 
 	/*
@@ -255,9 +290,12 @@ struct iscsi_cls_session {
 	 * created by the kernel.
 	 */
 	pid_t creator;
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int state;
 	int sid;				/* session id */
 	void *dd_data;				/* LLD private data */
@@ -272,7 +310,13 @@ struct iscsi_cls_session {
 	iscsi_dev_to_session(_cdev->parent)
 
 =======
+<<<<<<< HEAD
+#define transport_class_to_session(_cdev) \
+	iscsi_dev_to_session(_cdev->parent)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define iscsi_session_to_shost(_session) \
 	dev_to_shost(_session->dev.parent)
 
@@ -283,6 +327,9 @@ struct iscsi_cls_host {
 	atomic_t nr_scans;
 	struct mutex mutex;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct request_queue *bsg_q;
 	uint32_t port_speed;
 	uint32_t port_state;
@@ -291,10 +338,13 @@ struct iscsi_cls_host {
 #define iscsi_job_to_shost(_job) \
         dev_to_shost(_job->dev)
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void iscsi_host_for_each_session(struct Scsi_Host *shost,
 				void (*fn)(struct iscsi_cls_session *));
 
@@ -306,6 +356,9 @@ struct iscsi_endpoint {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct iscsi_iface {
 	struct device dev;
 	struct iscsi_transport *transport;
@@ -320,8 +373,11 @@ struct iscsi_iface {
 #define iscsi_iface_to_shost(_iface) \
 	dev_to_shost(_iface->dev.parent)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * session and connection functions that can be used by HW iSCSI LLDs
  */
@@ -335,7 +391,11 @@ extern int iscsi_session_chkready(struct iscsi_cls_session *session);
 <<<<<<< HEAD
 extern int iscsi_is_session_online(struct iscsi_cls_session *session);
 =======
+<<<<<<< HEAD
+extern int iscsi_is_session_online(struct iscsi_cls_session *session);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct iscsi_cls_session *iscsi_alloc_session(struct Scsi_Host *shost,
 				struct iscsi_transport *transport, int dd_size);
 extern int iscsi_add_session(struct iscsi_cls_session *session,
@@ -360,6 +420,9 @@ extern void iscsi_destroy_endpoint(struct iscsi_endpoint *ep);
 extern struct iscsi_endpoint *iscsi_lookup_endpoint(u64 handle);
 extern int iscsi_block_scsi_eh(struct scsi_cmnd *cmd);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct iscsi_iface *iscsi_create_iface(struct Scsi_Host *shost,
 					      struct iscsi_transport *t,
 					      uint32_t iface_type,
@@ -369,7 +432,10 @@ extern struct iscsi_iface *iscsi_lookup_iface(int handle);
 extern char *iscsi_get_port_speed_name(struct Scsi_Host *shost);
 extern char *iscsi_get_port_state_name(struct Scsi_Host *shost);
 extern int iscsi_is_session_dev(const struct device *dev);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

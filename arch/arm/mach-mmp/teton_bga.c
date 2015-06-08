@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "common.h"
 
@@ -73,8 +77,12 @@ static struct i2c_board_info teton_bga_i2c_info[] __initdata = {
 <<<<<<< HEAD
 		.irq = MMP_GPIO_TO_IRQ(RTC_INT_GPIO)
 =======
+<<<<<<< HEAD
+		.irq = MMP_GPIO_TO_IRQ(RTC_INT_GPIO)
+=======
 		.irq = gpio_to_irq(RTC_INT_GPIO)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -89,21 +97,31 @@ static void __init teton_bga_init(void)
 <<<<<<< HEAD
 	platform_device_register(&pxa168_device_gpio);
 =======
+<<<<<<< HEAD
+	platform_device_register(&pxa168_device_gpio);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(TETON_BGA, "PXA168-based Teton BGA Development Platform")
 	.map_io		= mmp_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.nr_irqs	= MMP_NR_IRQS,
 	.init_irq       = pxa168_init_irq,
 	.timer          = &pxa168_timer,
 	.init_machine   = teton_bga_init,
 	.restart	= pxa168_restart,
+<<<<<<< HEAD
+=======
 =======
 	.nr_irqs	= IRQ_BOARD_START,
 	.init_irq       = pxa168_init_irq,
 	.timer          = &pxa168_timer,
 	.init_machine   = teton_bga_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

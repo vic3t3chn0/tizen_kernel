@@ -39,7 +39,15 @@
 #define	 ASL0_R_ISAC		0x20 /* active low */
 #define	 ASL0_R_HSCX		0x40 /* active low */
 #define	 ASL0_R_TESTBIT		0x80
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define  ASL0_R_IRQPENDING	(ASL0_R_ISAC | ASL0_R_HSCX | ASL0_R_TIMER)
+=======
 #define  ASL0_R_IRQPENDING	(ASL0_R_ISAC|ASL0_R_HSCX|ASL0_R_TIMER)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define  ASL0_R_IRQPENDING	(ASL0_R_ISAC|ASL0_R_HSCX|ASL0_R_TIMER)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* write bits ASL0 */
 #define	 ASL0_W_RESET		0x01
@@ -52,8 +60,18 @@
 #define	 ASL1_W_LED0		0x10
 #define	 ASL1_W_LED1		0x20
 #define	 ASL1_W_ENABLE_S0	0xC0
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#define byteout(addr, val) outb(val, addr)
+=======
  
 #define byteout(addr,val) outb(val,addr)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ 
+#define byteout(addr,val) outb(val,addr)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define bytein(addr) inb(addr)
 
 static const char *avm_revision = "$Revision: 2.9.2.5 $";
@@ -61,17 +79,53 @@ static const char *avm_revision = "$Revision: 2.9.2.5 $";
 static inline u_char
 ReadISAC(struct IsdnCardState *cs, u_char offset)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u_char ret;
+
+	offset -= 0x20;
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET, ISAC_REG_OFFSET + offset);
+	ret = bytein(cs->hw.avm.cfg_reg + DATAREG_OFFSET);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         u_char ret;
 
         offset -= 0x20;
         byteout(cs->hw.avm.cfg_reg+ADDRREG_OFFSET,ISAC_REG_OFFSET+offset);
 	ret = bytein(cs->hw.avm.cfg_reg+DATAREG_OFFSET);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static inline void
 WriteISAC(struct IsdnCardState *cs, u_char offset, u_char value)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	offset -= 0x20;
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET, ISAC_REG_OFFSET + offset);
+	byteout(cs->hw.avm.cfg_reg + DATAREG_OFFSET, value);
+}
+
+static inline void
+ReadISACfifo(struct IsdnCardState *cs, u_char *data, int size)
+{
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET, ISAC_FIFO_OFFSET);
+	insb(cs->hw.avm.cfg_reg + DATAREG_OFFSET, data, size);
+}
+
+static inline void
+WriteISACfifo(struct IsdnCardState *cs, u_char *data, int size)
+{
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET, ISAC_FIFO_OFFSET);
+	outsb(cs->hw.avm.cfg_reg + DATAREG_OFFSET, data, size);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         offset -= 0x20;
         byteout(cs->hw.avm.cfg_reg+ADDRREG_OFFSET,ISAC_REG_OFFSET+offset);
 	byteout(cs->hw.avm.cfg_reg+DATAREG_OFFSET, value);
@@ -89,6 +143,10 @@ WriteISACfifo(struct IsdnCardState *cs, u_char * data, int size)
 {
 	byteout(cs->hw.avm.cfg_reg+ADDRREG_OFFSET,ISAC_FIFO_OFFSET);
 	outsb(cs->hw.avm.cfg_reg+DATAREG_OFFSET, data, size);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline u_char
@@ -96,16 +154,54 @@ ReadHSCX(struct IsdnCardState *cs, int hscx, u_char offset)
 {
 	u_char ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	offset -= 0x20;
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET,
+		HSCX_REG_OFFSET + hscx * HSCX_CH_DIFF + offset);
+	ret = bytein(cs->hw.avm.cfg_reg + DATAREG_OFFSET);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         offset -= 0x20;
 	byteout(cs->hw.avm.cfg_reg+ADDRREG_OFFSET,
 			HSCX_REG_OFFSET+hscx*HSCX_CH_DIFF+offset);
 	ret = bytein(cs->hw.avm.cfg_reg+DATAREG_OFFSET);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static inline void
 WriteHSCX(struct IsdnCardState *cs, int hscx, u_char offset, u_char value)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	offset -= 0x20;
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET,
+		HSCX_REG_OFFSET + hscx * HSCX_CH_DIFF + offset);
+	byteout(cs->hw.avm.cfg_reg + DATAREG_OFFSET, value);
+}
+
+static inline void
+ReadHSCXfifo(struct IsdnCardState *cs, int hscx, u_char *data, int size)
+{
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET,
+		HSCX_FIFO_OFFSET + hscx * HSCX_CH_DIFF);
+	insb(cs->hw.avm.cfg_reg + DATAREG_OFFSET, data, size);
+}
+
+static inline void
+WriteHSCXfifo(struct IsdnCardState *cs, int hscx, u_char *data, int size)
+{
+	byteout(cs->hw.avm.cfg_reg + ADDRREG_OFFSET,
+		HSCX_FIFO_OFFSET + hscx * HSCX_CH_DIFF);
+	outsb(cs->hw.avm.cfg_reg + DATAREG_OFFSET, data, size);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         offset -= 0x20;
 	byteout(cs->hw.avm.cfg_reg+ADDRREG_OFFSET,
 			HSCX_REG_OFFSET+hscx*HSCX_CH_DIFF+offset);
@@ -126,6 +222,10 @@ WriteHSCXfifo(struct IsdnCardState *cs, int hscx, u_char * data, int size)
 	byteout(cs->hw.avm.cfg_reg+ADDRREG_OFFSET,
 			HSCX_FIFO_OFFSET+hscx*HSCX_CH_DIFF);
 	outsb(cs->hw.avm.cfg_reg+DATAREG_OFFSET, data, size);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -134,7 +234,15 @@ WriteHSCXfifo(struct IsdnCardState *cs, int hscx, u_char * data, int size)
 
 #define READHSCX(cs, nr, reg) ReadHSCX(cs, nr, reg)
 #define WRITEHSCX(cs, nr, reg, data) WriteHSCX(cs, nr, reg, data)
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define READHSCXFIFO(cs, nr, ptr, cnt) ReadHSCXfifo(cs, nr, ptr, cnt)
+=======
 #define READHSCXFIFO(cs, nr, ptr, cnt) ReadHSCXfifo(cs, nr, ptr, cnt) 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define READHSCXFIFO(cs, nr, ptr, cnt) ReadHSCXfifo(cs, nr, ptr, cnt) 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WRITEHSCXFIFO(cs, nr, ptr, cnt) WriteHSCXfifo(cs, nr, ptr, cnt)
 
 #include "hscx_irq.c"
@@ -147,11 +255,25 @@ avm_a1p_interrupt(int intno, void *dev_id)
 	u_long flags;
 
 	spin_lock_irqsave(&cs->lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	while ((sval = (~bytein(cs->hw.avm.cfg_reg + ASL0_OFFSET) & ASL0_R_IRQPENDING))) {
+		if (cs->debug & L1_DEB_INTSTAT)
+			debugl1(cs, "avm IntStatus %x", sval);
+		if (sval & ASL0_R_HSCX) {
+			val = ReadHSCX(cs, 1, HSCX_ISTA);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while ((sval = (~bytein(cs->hw.avm.cfg_reg+ASL0_OFFSET) & ASL0_R_IRQPENDING))) {
 		if (cs->debug & L1_DEB_INTSTAT)
 			debugl1(cs, "avm IntStatus %x", sval);
 		if (sval & ASL0_R_HSCX) {
                         val = ReadHSCX(cs, 1, HSCX_ISTA);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (val)
 				hscx_int_main(cs, val);
 		}
@@ -177,6 +299,43 @@ AVM_card_msg(struct IsdnCardState *cs, int mt, void *arg)
 	u_long flags;
 
 	switch (mt) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case CARD_RESET:
+		spin_lock_irqsave(&cs->lock, flags);
+		byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, 0x00);
+		HZDELAY(HZ / 5 + 1);
+		byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, ASL0_W_RESET);
+		HZDELAY(HZ / 5 + 1);
+		byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, 0x00);
+		spin_unlock_irqrestore(&cs->lock, flags);
+		return 0;
+
+	case CARD_RELEASE:
+		/* free_irq is done in HiSax_closecard(). */
+		/* free_irq(cs->irq, cs); */
+		return 0;
+
+	case CARD_INIT:
+		spin_lock_irqsave(&cs->lock, flags);
+		byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, ASL0_W_TDISABLE | ASL0_W_TRESET | ASL0_W_IRQENABLE);
+		clear_pending_isac_ints(cs);
+		clear_pending_hscx_ints(cs);
+		inithscxisac(cs, 1);
+		inithscxisac(cs, 2);
+		spin_unlock_irqrestore(&cs->lock, flags);
+		return 0;
+
+	case CARD_TEST:
+		/* we really don't need it for the PCMCIA Version */
+		return 0;
+
+	default:
+		/* all card drivers ignore others, so we do the same */
+		return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case CARD_RESET:
 			spin_lock_irqsave(&cs->lock, flags);
 			byteout(cs->hw.avm.cfg_reg+ASL0_OFFSET,0x00);
@@ -209,6 +368,10 @@ AVM_card_msg(struct IsdnCardState *cs, int mt, void *arg)
 		default:
 			/* all card drivers ignore others, so we do the same */
 			return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -222,7 +385,15 @@ int __devinit setup_avm_a1_pcmcia(struct IsdnCard *card)
 
 	strcpy(tmp, avm_revision);
 	printk(KERN_INFO "HiSax: AVM A1 PCMCIA driver Rev. %s\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	       HiSax_getrev(tmp));
+=======
 						 HiSax_getrev(tmp));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						 HiSax_getrev(tmp));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cs->typ != ISDN_CTYPE_A1_PCMCIA)
 		return (0);
 
@@ -230,6 +401,25 @@ int __devinit setup_avm_a1_pcmcia(struct IsdnCard *card)
 	cs->irq = card->para[0];
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	byteout(cs->hw.avm.cfg_reg + ASL1_OFFSET, ASL1_W_ENABLE_S0);
+	byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, 0x00);
+	HZDELAY(HZ / 5 + 1);
+	byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, ASL0_W_RESET);
+	HZDELAY(HZ / 5 + 1);
+	byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, 0x00);
+
+	byteout(cs->hw.avm.cfg_reg + ASL0_OFFSET, ASL0_W_TDISABLE | ASL0_W_TRESET);
+
+	model = bytein(cs->hw.avm.cfg_reg + MODREG_OFFSET);
+	vers = bytein(cs->hw.avm.cfg_reg + VERREG_OFFSET);
+
+	printk(KERN_INFO "AVM A1 PCMCIA: io 0x%x irq %d model %d version %d\n",
+	       cs->hw.avm.cfg_reg, cs->irq, model, vers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	byteout(cs->hw.avm.cfg_reg+ASL1_OFFSET, ASL1_W_ENABLE_S0);
 	byteout(cs->hw.avm.cfg_reg+ASL0_OFFSET,0x00);
 	HZDELAY(HZ / 5 + 1);
@@ -244,6 +434,10 @@ int __devinit setup_avm_a1_pcmcia(struct IsdnCard *card)
 
 	printk(KERN_INFO "AVM A1 PCMCIA: io 0x%x irq %d model %d version %d\n",
 				cs->hw.avm.cfg_reg, cs->irq, model, vers);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setup_isac(cs);
 	cs->readisac = &ReadISAC;

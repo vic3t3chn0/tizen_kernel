@@ -384,7 +384,15 @@ static void dm9601_set_multicast(struct net_device *net)
 		rx_ctl |= 0x02;
 	} else if (net->flags & IFF_ALLMULTI ||
 		   netdev_mc_count(net) > DM_MAX_MCAST) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rx_ctl |= 0x04;
+=======
 		rx_ctl |= 0x08;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rx_ctl |= 0x08;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (!netdev_mc_empty(net)) {
 		struct netdev_hw_addr *ha;
 
@@ -428,7 +436,15 @@ static const struct net_device_ops dm9601_netdev_ops = {
 	.ndo_change_mtu		= usbnet_change_mtu,
 	.ndo_validate_addr	= eth_validate_addr,
 	.ndo_do_ioctl 		= dm9601_ioctl,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= dm9601_set_multicast,
+=======
 	.ndo_set_multicast_list = dm9601_set_multicast,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.ndo_set_multicast_list = dm9601_set_multicast,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_set_mac_address	= dm9601_set_mac_address,
 };
 
@@ -672,6 +688,12 @@ static struct usb_driver dm9601_driver = {
 	.resume = usbnet_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(dm9601_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init dm9601_init(void)
 {
 	return usb_register(&dm9601_driver);
@@ -684,6 +706,10 @@ static void __exit dm9601_exit(void)
 
 module_init(dm9601_init);
 module_exit(dm9601_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Peter Korsgaard <jacmet@sunsite.dk>");
 MODULE_DESCRIPTION("Davicom DM9601 USB 1.1 ethernet devices");

@@ -480,6 +480,9 @@
 
 /* Memory DMA1 Controller registers (0xFFC0 1E80-0xFFC0 1FFF) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MDMA_D0_CONFIG 0xFFC01F08	/*MemDMA1 Stream 0 Destination Configuration */
 #define MDMA_D0_NEXT_DESC_PTR 0xFFC01F00	/*MemDMA1 Stream 0 Destination Next Descriptor Ptr Reg */
 #define MDMA_D0_START_ADDR 0xFFC01F04	/*MemDMA1 Stream 0 Destination Start Address */
@@ -535,6 +538,8 @@
 #define MDMA_S1_CURR_Y_COUNT 0xFFC01FF8	/*MemDMA1 Stream 1 Source Current Outer-Loop Count */
 #define MDMA_S1_IRQ_STATUS 0xFFC01FE8	/*MemDMA1 Stream 1 Source Interrupt/Status */
 #define MDMA_S1_PERIPHERAL_MAP 0xFFC01FEC	/*MemDMA1 Stream 1 Source Peripheral Map */
+<<<<<<< HEAD
+=======
 =======
 #define MDMA_D2_CONFIG 0xFFC01F08	/*MemDMA1 Stream 0 Destination Configuration */
 #define MDMA_D2_NEXT_DESC_PTR 0xFFC01F00	/*MemDMA1 Stream 0 Destination Next Descriptor Ptr Reg */
@@ -592,6 +597,7 @@
 #define MDMA_S3_IRQ_STATUS 0xFFC01FE8	/*MemDMA1 Stream 1 Source Interrupt/Status */
 #define MDMA_S3_PERIPHERAL_MAP 0xFFC01FEC	/*MemDMA1 Stream 1 Source Peripheral Map */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* DMA2 Controller registers (0xFFC0 0C00-0xFFC0 0DFF) */
 #define DMA2_0_CONFIG 0xFFC00C08	/* DMA2 Channel 0 Configuration register */
@@ -764,6 +770,9 @@
 
 /* Memory DMA2 Controller registers (0xFFC0 0E80-0xFFC0 0FFF) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MDMA_D2_CONFIG 0xFFC00F08	/*MemDMA2 Stream 0 Destination Configuration register */
 #define MDMA_D2_NEXT_DESC_PTR 0xFFC00F00	/*MemDMA2 Stream 0 Destination Next Descriptor Ptr Reg */
 #define MDMA_D2_START_ADDR 0xFFC00F04	/*MemDMA2 Stream 0 Destination Start Address */
@@ -819,6 +828,8 @@
 #define MDMA_S3_CURR_Y_COUNT 0xFFC00FF8	/*MemDMA2 Stream 1 Source Current Outer-Loop Count */
 #define MDMA_S3_IRQ_STATUS 0xFFC00FE8	/*MemDMA2 Stream 1 Source Interrupt/Status Register */
 #define MDMA_S3_PERIPHERAL_MAP 0xFFC00FEC	/*MemDMA2 Stream 1 Source Peripheral Map register */
+<<<<<<< HEAD
+=======
 =======
 #define MDMA_D0_CONFIG 0xFFC00F08	/*MemDMA2 Stream 0 Destination Configuration register */
 #define MDMA_D0_NEXT_DESC_PTR 0xFFC00F00	/*MemDMA2 Stream 0 Destination Next Descriptor Ptr Reg */
@@ -876,6 +887,7 @@
 #define MDMA_S1_IRQ_STATUS 0xFFC00FE8	/*MemDMA2 Stream 1 Source Interrupt/Status Register */
 #define MDMA_S1_PERIPHERAL_MAP 0xFFC00FEC	/*MemDMA2 Stream 1 Source Peripheral Map register */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Internal Memory DMA Registers (0xFFC0_1800 - 0xFFC0_19FF) */
 #define IMDMA_D0_CONFIG 0xFFC01808	/*IMDMA Stream 0 Destination Configuration */
@@ -996,6 +1008,9 @@
 #define DLEN_8		     0x0	/* PPI Data Length mask for DLEN=8 */
 #define DLEN(x)	(((x-9) & 0x07) << 11)	/* PPI Data Length (only works for x=10-->x=16) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DLEN_10              0x00000800 /* Data Length = 10 Bits */
 #define DLEN_11              0x00001000 /* Data Length = 11 Bits */
 #define DLEN_12              0x00001800 /* Data Length = 12 Bits */
@@ -1003,8 +1018,11 @@
 #define DLEN_14              0x00002800 /* Data Length = 14 Bits */
 #define DLEN_15              0x00003000 /* Data Length = 15 Bits */
 #define DLEN_16              0x00003800 /* Data Length = 16 Bits */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define POL                  0x0000C000	/* PPI Signal Polarities       */
 #define	POLC		0x4000		/* PPI Clock Polarity */
 #define	POLS		0x8000		/* PPI Frame Sync Polarity */

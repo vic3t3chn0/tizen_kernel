@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/setup.h>
 #include <asm/mach-types.h>
@@ -558,8 +562,12 @@ static struct spi_board_info spitz_spi_devices[] = {
 <<<<<<< HEAD
 		.irq			= PXA_GPIO_TO_IRQ(SPITZ_GPIO_TP_INT),
 =======
+<<<<<<< HEAD
+		.irq			= PXA_GPIO_TO_IRQ(SPITZ_GPIO_TP_INT),
+=======
 		.irq			= gpio_to_irq(SPITZ_GPIO_TP_INT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.modalias		= "corgi-lcd",
 		.max_speed_hz		= 50000,
@@ -936,8 +944,12 @@ static void spitz_poweroff(void)
 <<<<<<< HEAD
 	pxa_restart('g', NULL);
 =======
+<<<<<<< HEAD
+	pxa_restart('g', NULL);
+=======
 	arm_machine_restart('g', NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void spitz_restart(char mode, const char *cmd)
@@ -956,8 +968,11 @@ static void __init spitz_init(void)
 	pm_power_off = spitz_poweroff;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	arm_pm_restart = spitz_restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	PMCR = 0x00;
 
@@ -989,9 +1004,14 @@ static void __init spitz_init(void)
 static void __init spitz_fixup(struct tag *tags, char **cmdline,
 			       struct meminfo *mi)
 =======
+<<<<<<< HEAD
+static void __init spitz_fixup(struct tag *tags, char **cmdline,
+			       struct meminfo *mi)
+=======
 static void __init spitz_fixup(struct machine_desc *desc,
 		struct tag *tags, char **cmdline, struct meminfo *mi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	sharpsl_save_param();
 	mi->nr_banks = 1;
@@ -1002,6 +1022,9 @@ static void __init spitz_fixup(struct machine_desc *desc,
 #ifdef CONFIG_MACH_SPITZ
 MACHINE_START(SPITZ, "SHARP Spitz")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.restart_mode	= 'g',
 	.fixup		= spitz_fixup,
 	.map_io		= pxa27x_map_io,
@@ -1011,6 +1034,8 @@ MACHINE_START(SPITZ, "SHARP Spitz")
 	.init_machine	= spitz_init,
 	.timer		= &pxa_timer,
 	.restart	= spitz_restart,
+<<<<<<< HEAD
+=======
 =======
 	.fixup		= spitz_fixup,
 	.map_io		= pxa27x_map_io,
@@ -1018,12 +1043,16 @@ MACHINE_START(SPITZ, "SHARP Spitz")
 	.init_machine	= spitz_init,
 	.timer		= &pxa_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
 #ifdef CONFIG_MACH_BORZOI
 MACHINE_START(BORZOI, "SHARP Borzoi")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.restart_mode	= 'g',
 	.fixup		= spitz_fixup,
 	.map_io		= pxa27x_map_io,
@@ -1033,6 +1062,8 @@ MACHINE_START(BORZOI, "SHARP Borzoi")
 	.init_machine	= spitz_init,
 	.timer		= &pxa_timer,
 	.restart	= spitz_restart,
+<<<<<<< HEAD
+=======
 =======
 	.fixup		= spitz_fixup,
 	.map_io		= pxa27x_map_io,
@@ -1040,12 +1071,16 @@ MACHINE_START(BORZOI, "SHARP Borzoi")
 	.init_machine	= spitz_init,
 	.timer		= &pxa_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
 #ifdef CONFIG_MACH_AKITA
 MACHINE_START(AKITA, "SHARP Akita")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.restart_mode	= 'g',
 	.fixup		= spitz_fixup,
 	.map_io		= pxa27x_map_io,
@@ -1055,6 +1090,8 @@ MACHINE_START(AKITA, "SHARP Akita")
 	.init_machine	= spitz_init,
 	.timer		= &pxa_timer,
 	.restart	= spitz_restart,
+<<<<<<< HEAD
+=======
 =======
 	.fixup		= spitz_fixup,
 	.map_io		= pxa27x_map_io,
@@ -1062,5 +1099,6 @@ MACHINE_START(AKITA, "SHARP Akita")
 	.init_machine	= spitz_init,
 	.timer		= &pxa_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif

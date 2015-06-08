@@ -95,7 +95,11 @@ typedef __s32 sctp_assoc_t;
 <<<<<<< HEAD
 #define SCTP_AUTO_ASCONF       30
 =======
+<<<<<<< HEAD
+#define SCTP_AUTO_ASCONF       30
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Internal Socket Options. Some of the sctp library functions are
  * implemented using these socket options.

@@ -5,7 +5,12 @@
 #include <linux/sysinfo.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/sysinfo.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * 'kernel.h' contains some often-used function prototypes etc
  */
@@ -27,8 +32,11 @@
 #include <asm/byteorder.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/bug.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define USHRT_MAX	((u16)(~0U))
 #define SHRT_MAX	((s16)(USHRT_MAX>>1))
@@ -65,6 +73,9 @@
 #define FIELD_SIZEOF(t, f) (sizeof(((t*)0)->f))
 #define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DIV_ROUND_UP_ULL(ll,d) \
 	({ unsigned long long _tmp = (ll)+(d)-1; do_div(_tmp, d); _tmp; })
 
@@ -73,8 +84,11 @@
 #else
 # define DIV_ROUND_UP_SECTOR_T(ll,d) DIV_ROUND_UP(ll,d)
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The `const' in roundup() prevents gcc-3.3 from calling __divdi3 */
 #define roundup(x, y) (					\
@@ -156,8 +170,12 @@ extern int _cond_resched(void);
 <<<<<<< HEAD
 #ifdef CONFIG_DEBUG_ATOMIC_SLEEP
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_DEBUG_ATOMIC_SLEEP
+=======
 #ifdef CONFIG_DEBUG_SPINLOCK_SLEEP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   void __might_sleep(const char *file, int line, int preempt_offset);
 /**
  * might_sleep - annotation for functions that can sleep
@@ -218,24 +236,36 @@ __printf(1, 2)
 void panic(const char *fmt, ...)
 	__noreturn __cold;
 =======
+<<<<<<< HEAD
+__printf(1, 2)
+void panic(const char *fmt, ...)
+	__noreturn __cold;
+=======
 NORET_TYPE void panic(const char * fmt, ...)
 	__attribute__ ((NORET_AND format (printf, 1, 2))) __cold;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void oops_enter(void);
 extern void oops_exit(void);
 void print_oops_end_marker(void);
 extern int oops_may_print(void);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void do_exit(long error_code)
 	__noreturn;
 void complete_and_exit(struct completion *, long)
 	__noreturn;
+<<<<<<< HEAD
+=======
 =======
 NORET_TYPE void do_exit(long error_code)
 	ATTRIB_NORET;
 NORET_TYPE void complete_and_exit(struct completion *, long)
 	ATTRIB_NORET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Internal, do not use. */
 int __must_check _kstrtoul(const char *s, unsigned int base, unsigned long *res);
@@ -332,7 +362,12 @@ static inline int __must_check kstrtos32_from_user(const char __user *s, size_t 
 /* Obsolete, do not use.  Use kstrto<foo> instead */
 
 =======
+<<<<<<< HEAD
+/* Obsolete, do not use.  Use kstrto<foo> instead */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern unsigned long simple_strtoul(const char *,char **,unsigned int);
 extern long simple_strtol(const char *,char **,unsigned int);
 extern unsigned long long simple_strtoull(const char *,char **,unsigned int);
@@ -343,6 +378,9 @@ extern long long simple_strtoll(const char *,char **,unsigned int);
 #define strict_strtoll	kstrtoll
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int num_to_str(char *buf, int size, unsigned long long num);
 
 /* lib/printf utilities */
@@ -365,6 +403,8 @@ extern __scanf(2, 3)
 int sscanf(const char *, const char *, ...);
 extern __scanf(2, 0)
 int vsscanf(const char *, const char *, va_list);
+<<<<<<< HEAD
+=======
 =======
 extern int sprintf(char * buf, const char * fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
@@ -387,6 +427,7 @@ extern int sscanf(const char *, const char *, ...)
 extern int vsscanf(const char *, const char *, va_list)
 	__attribute__ ((format (scanf, 2, 0)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int get_option(char **str, int *pint);
 extern char *get_options(const char *str, int nints, int *ints);
@@ -413,7 +454,11 @@ extern int panic_on_io_nmi;
 <<<<<<< HEAD
 extern int sysctl_panic_on_stackoverflow;
 =======
+<<<<<<< HEAD
+extern int sysctl_panic_on_stackoverflow;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const char *print_tainted(void);
 extern void add_taint(unsigned flag);
 extern int test_taint(unsigned flag);
@@ -447,7 +492,11 @@ extern enum system_states {
 <<<<<<< HEAD
 #define TAINT_OOT_MODULE		12
 =======
+<<<<<<< HEAD
+#define TAINT_OOT_MODULE		12
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern const char hex_asc[];
 #define hex_asc_lo(x)	hex_asc[((x) & 0x0f)]
@@ -456,8 +505,12 @@ extern const char hex_asc[];
 <<<<<<< HEAD
 static inline char *hex_byte_pack(char *buf, u8 byte)
 =======
+<<<<<<< HEAD
+static inline char *hex_byte_pack(char *buf, u8 byte)
+=======
 static inline char *pack_hex_byte(char *buf, u8 byte)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	*buf++ = hex_asc_hi(byte);
 	*buf++ = hex_asc_lo(byte);
@@ -465,6 +518,9 @@ static inline char *pack_hex_byte(char *buf, u8 byte)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline char * __deprecated pack_hex_byte(char *buf, u8 byte)
 {
 	return hex_byte_pack(buf, byte);
@@ -472,10 +528,13 @@ static inline char * __deprecated pack_hex_byte(char *buf, u8 byte)
 
 extern int hex_to_bin(char ch);
 extern int __must_check hex2bin(u8 *dst, const char *src, size_t count);
+<<<<<<< HEAD
+=======
 =======
 extern int hex_to_bin(char ch);
 extern void hex2bin(u8 *dst, const char *src, size_t count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * General tracing related utility functions - trace_printk(),
@@ -498,10 +557,15 @@ extern void hex2bin(u8 *dst, const char *src, size_t count);
  */
 #ifdef CONFIG_RING_BUFFER
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* trace_off_permanent stops recording with no way to bring it back */
 void tracing_off_permanent(void);
 #else
 static inline void tracing_off_permanent(void) { }
+<<<<<<< HEAD
+=======
 =======
 void tracing_on(void);
 void tracing_off(void);
@@ -514,6 +578,7 @@ static inline void tracing_off(void) { }
 static inline void tracing_off_permanent(void) { }
 static inline int tracing_is_on(void) { return 0; }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 enum ftrace_dump_mode {
@@ -524,12 +589,18 @@ enum ftrace_dump_mode {
 
 #ifdef CONFIG_TRACING
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void tracing_on(void);
 void tracing_off(void);
 int tracing_is_on(void);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void tracing_start(void);
 extern void tracing_stop(void);
 extern void ftrace_off_permanent(void);
@@ -538,9 +609,14 @@ extern void ftrace_off_permanent(void);
 static inline __printf(1, 2)
 void ____trace_printk_check_format(const char *fmt, ...)
 =======
+<<<<<<< HEAD
+static inline __printf(1, 2)
+void ____trace_printk_check_format(const char *fmt, ...)
+=======
 static inline void __attribute__ ((format (printf, 1, 2)))
 ____trace_printk_check_format(const char *fmt, ...)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 #define __trace_printk_check_format(fmt, args...)			\
@@ -577,18 +653,27 @@ do {									\
 <<<<<<< HEAD
 		__trace_printk(_THIS_IP_, trace_printk_fmt, ##args);	\
 =======
+<<<<<<< HEAD
+		__trace_printk(_THIS_IP_, trace_printk_fmt, ##args);	\
+=======
 		__trace_bprintk(_THIS_IP_, trace_printk_fmt, ##args);	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else								\
 		__trace_printk(_THIS_IP_, fmt, ##args);		\
 } while (0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __printf(2, 3)
 int __trace_bprintk(unsigned long ip, const char *fmt, ...);
 
 extern __printf(2, 3)
 int __trace_printk(unsigned long ip, const char *fmt, ...);
+<<<<<<< HEAD
+=======
 =======
 extern int
 __trace_bprintk(unsigned long ip, const char *fmt, ...)
@@ -598,6 +683,7 @@ extern int
 __trace_printk(unsigned long ip, const char *fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void trace_dump_stack(void);
 
@@ -630,22 +716,33 @@ extern void ftrace_dump(enum ftrace_dump_mode oops_dump_mode);
 static inline __printf(1, 2)
 int trace_printk(const char *fmt, ...);
 =======
+<<<<<<< HEAD
+static inline __printf(1, 2)
+int trace_printk(const char *fmt, ...);
+=======
 static inline int
 trace_printk(const char *fmt, ...) __attribute__ ((format (printf, 1, 2)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void tracing_start(void) { }
 static inline void tracing_stop(void) { }
 static inline void ftrace_off_permanent(void) { }
 static inline void trace_dump_stack(void) { }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void tracing_on(void) { }
 static inline void tracing_off(void) { }
 static inline int tracing_is_on(void) { return 0; }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int
 trace_printk(const char *fmt, ...)
 {
@@ -793,6 +890,8 @@ static inline void ftrace_dump(enum ftrace_dump_mode oops_dump_mode) { }
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct sysinfo;
 extern int do_sysinfo(struct sysinfo *info);
 
@@ -862,6 +961,7 @@ extern int __build_bug_on_failed;
 #endif	/* __CHECKER__ */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Trap pasters of __FUNCTION__ at compile-time */
 #define __FUNCTION__ (__func__)
 
@@ -885,6 +985,9 @@ extern int __build_bug_on_failed;
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int do_sysinfo(struct sysinfo *info);
 
 /* To identify board information in panic logs, set this */
@@ -893,6 +996,8 @@ extern char *mach_panic_string;
 #endif /* __KERNEL__ */
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 /* To identify board information in panic logs, set this */
 extern char *mach_panic_string;
@@ -911,3 +1016,4 @@ extern char *mach_panic_string;
 #define CYANOGENMOD if( (rom_feature_set & (1<<FEATURE_BIT_AOSP_TYPE) ) == (1<<FEATURE_BIT_AOSP_TYPE) )
 //more to come...
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

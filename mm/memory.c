@@ -50,8 +50,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delayacct.h>
 #include <linux/delay.h>
 #include <linux/init.h>
@@ -65,8 +69,12 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 #include <linux/migrate.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/io.h>
 #include <asm/pgalloc.h>
@@ -138,19 +146,28 @@ core_initcall(init_zero_pfn);
 <<<<<<< HEAD
 void sync_mm_rss(struct mm_struct *mm)
 =======
+<<<<<<< HEAD
+void sync_mm_rss(struct mm_struct *mm)
+=======
 static void __sync_task_rss_stat(struct task_struct *task, struct mm_struct *mm)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
 	for (i = 0; i < NR_MM_COUNTERS; i++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (current->rss_stat.count[i]) {
 			add_mm_counter(mm, i, current->rss_stat.count[i]);
 			current->rss_stat.count[i] = 0;
 		}
 	}
 	current->rss_stat.events = 0;
+<<<<<<< HEAD
+=======
 =======
 		if (task->rss_stat.count[i]) {
 			add_mm_counter(mm, i, task->rss_stat.count[i]);
@@ -159,6 +176,7 @@ static void __sync_task_rss_stat(struct task_struct *task, struct mm_struct *mm)
 	}
 	task->rss_stat.events = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void add_mm_counter_fast(struct mm_struct *mm, int member, int val)
@@ -174,6 +192,10 @@ static void add_mm_counter_fast(struct mm_struct *mm, int member, int val)
 #define inc_mm_counter_fast(mm, member) add_mm_counter_fast(mm, member, 1)
 #define dec_mm_counter_fast(mm, member) add_mm_counter_fast(mm, member, -1)
 =======
+<<<<<<< HEAD
+#define inc_mm_counter_fast(mm, member) add_mm_counter_fast(mm, member, 1)
+#define dec_mm_counter_fast(mm, member) add_mm_counter_fast(mm, member, -1)
+=======
 #ifdef CONFIG_LOWMEM_CHECK
 #define inc_mm_counter_fast(mm, member, page) inc_mm_counter(mm, member, page)
 #define dec_mm_counter_fast(mm, member, page) dec_mm_counter(mm, member, page)
@@ -182,6 +204,7 @@ static void add_mm_counter_fast(struct mm_struct *mm, int member, int val)
 #define dec_mm_counter_fast(mm, member) add_mm_counter_fast(mm, member, -1)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* sync counter once per 64 page faults */
 #define TASK_RSS_EVENTS_THRESH	(64)
@@ -191,6 +214,9 @@ static void check_sync_rss_stat(struct task_struct *task)
 		return;
 	if (unlikely(task->rss_stat.events++ > TASK_RSS_EVENTS_THRESH))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sync_mm_rss(task->mm);
 }
 #else /* SPLIT_RSS_COUNTING */
@@ -198,6 +224,8 @@ static void check_sync_rss_stat(struct task_struct *task)
 #define inc_mm_counter_fast(mm, member) inc_mm_counter(mm, member)
 #define dec_mm_counter_fast(mm, member) dec_mm_counter(mm, member)
 
+<<<<<<< HEAD
+=======
 =======
 		__sync_task_rss_stat(task, task->mm);
 }
@@ -234,6 +262,7 @@ void sync_mm_rss(struct task_struct *task, struct mm_struct *mm)
 #define dec_mm_counter_fast(mm, member) dec_mm_counter(mm, member)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void check_sync_rss_stat(struct task_struct *task)
 {
 }
@@ -254,18 +283,24 @@ static int tlb_next_batch(struct mmu_gather *tlb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (tlb->batch_count == MAX_GATHER_BATCH_COUNT)
 		return 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	batch = (void *)__get_free_pages(GFP_NOWAIT | __GFP_NOWARN, 0);
 	if (!batch)
 		return 0;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	tlb->batch_count++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	batch->next = NULL;
 	batch->nr   = 0;
 	batch->max  = MAX_GATHER_BATCH;
@@ -294,8 +329,11 @@ void tlb_gather_mmu(struct mmu_gather *tlb, struct mm_struct *mm, bool fullmm)
 	tlb->active     = &tlb->local;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	tlb->batch_count = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_HAVE_RCU_TABLE_FREE
 	tlb->batch = NULL;
@@ -357,8 +395,12 @@ int __tlb_remove_page(struct mmu_gather *tlb, struct page *page)
 <<<<<<< HEAD
 	VM_BUG_ON(!tlb->need_flush);
 =======
+<<<<<<< HEAD
+	VM_BUG_ON(!tlb->need_flush);
+=======
 	tlb->need_flush = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (tlb_fast_mode(tlb)) {
 		free_page_and_swap_cache(page);
@@ -729,8 +771,12 @@ static inline void add_mm_rss_vec(struct mm_struct *mm, int *rss)
 <<<<<<< HEAD
 		sync_mm_rss(mm);
 =======
+<<<<<<< HEAD
+		sync_mm_rss(mm);
+=======
 		sync_mm_rss(current, mm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < NR_MM_COUNTERS; i++)
 		if (rss[i])
 			add_mm_counter(mm, i, rss[i]);
@@ -801,7 +847,13 @@ static void print_bad_pte(struct vm_area_struct *vma, unsigned long addr,
 	BUG_ON(PANIC_CORRUPTION);
 
 =======
+<<<<<<< HEAD
+
+	BUG_ON(PANIC_CORRUPTION);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dump_stack();
 	add_taint(TAINT_BAD_PAGE);
 }
@@ -954,6 +1006,9 @@ copy_one_pte(struct mm_struct *dst_mm, struct mm_struct *src_mm,
 			if (likely(!non_swap_entry(entry)))
 				rss[MM_SWAPENTS]++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else if (is_migration_entry(entry)) {
 				page = migration_entry_to_page(entry);
 
@@ -972,6 +1027,8 @@ copy_one_pte(struct mm_struct *dst_mm, struct mm_struct *src_mm,
 					pte = swp_entry_to_pte(entry);
 					set_pte_at(src_mm, addr, src_pte, pte);
 				}
+<<<<<<< HEAD
+=======
 =======
 			else if (is_write_migration_entry(entry) &&
 					is_cow_mapping(vm_flags)) {
@@ -983,6 +1040,7 @@ copy_one_pte(struct mm_struct *dst_mm, struct mm_struct *src_mm,
 				pte = swp_entry_to_pte(entry);
 				set_pte_at(src_mm, addr, src_pte, pte);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 		goto out_set_pte;
@@ -1007,6 +1065,14 @@ copy_one_pte(struct mm_struct *dst_mm, struct mm_struct *src_mm,
 
 	page = vm_normal_page(vma, addr, pte);
 	if (page) {
+<<<<<<< HEAD
+		get_page(page);
+		page_dup_rmap(page);
+		if (PageAnon(page))
+			rss[MM_ANONPAGES]++;
+		else
+			rss[MM_FILEPAGES]++;
+=======
 <<<<<<< HEAD
 		get_page(page);
 		page_dup_rmap(page);
@@ -1040,6 +1106,7 @@ copy_one_pte(struct mm_struct *dst_mm, struct mm_struct *src_mm,
 		}
 	#endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 out_set_pte:
@@ -1237,10 +1304,13 @@ static unsigned long zap_pte_range(struct mmu_gather *tlb,
 	int rss[NR_MM_COUNTERS];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_LOWMEM_CHECK
 	int type;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t *ptl;
 	pte_t *start_pte;
 	pte_t *pte;
@@ -1292,18 +1362,26 @@ again:
 <<<<<<< HEAD
 				rss[MM_ANONPAGES]--;
 =======
+<<<<<<< HEAD
+				rss[MM_ANONPAGES]--;
+=======
 			#ifdef CONFIG_LOWMEM_CHECK
 				type = MM_ANONPAGES;
 			#else
 				rss[MM_ANONPAGES]--;
 			#endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else {
 				if (pte_dirty(ptent))
 					set_page_dirty(page);
 				if (pte_young(ptent) &&
 				    likely(!VM_SequentialReadHint(vma)))
 					mark_page_accessed(page);
+<<<<<<< HEAD
+				rss[MM_FILEPAGES]--;
+			}
+=======
 <<<<<<< HEAD
 				rss[MM_FILEPAGES]--;
 			}
@@ -1322,6 +1400,7 @@ again:
 			}
 		#endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			page_remove_rmap(page);
 			if (unlikely(page_mapcount(page) < 0))
 				print_bad_pte(vma, addr, ptent, page);
@@ -1345,6 +1424,9 @@ again:
 			if (!non_swap_entry(entry))
 				rss[MM_SWAPENTS]--;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else if (is_migration_entry(entry)) {
 				struct page *page;
 
@@ -1355,8 +1437,11 @@ again:
 				else
 					rss[MM_FILEPAGES]--;
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (unlikely(!free_swap_and_cache(entry)))
 				print_bad_pte(vma, addr, ptent, NULL);
 		}
@@ -1400,8 +1485,12 @@ static inline unsigned long zap_pmd_range(struct mmu_gather *tlb,
 <<<<<<< HEAD
 			} else if (zap_huge_pmd(tlb, vma, pmd, addr))
 =======
+<<<<<<< HEAD
+			} else if (zap_huge_pmd(tlb, vma, pmd, addr))
+=======
 			} else if (zap_huge_pmd(tlb, vma, pmd))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto next;
 			/* fall through */
 		}
@@ -1442,16 +1531,22 @@ static inline unsigned long zap_pud_range(struct mmu_gather *tlb,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void unmap_page_range(struct mmu_gather *tlb,
 			     struct vm_area_struct *vma,
 			     unsigned long addr, unsigned long end,
 			     struct zap_details *details)
+<<<<<<< HEAD
+=======
 =======
 static unsigned long unmap_page_range(struct mmu_gather *tlb,
 				struct vm_area_struct *vma,
 				unsigned long addr, unsigned long end,
 				struct zap_details *details)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pgd_t *pgd;
 	unsigned long next;
@@ -1472,6 +1567,9 @@ static unsigned long unmap_page_range(struct mmu_gather *tlb,
 	tlb_end_vma(tlb, vma);
 	mem_cgroup_uncharge_end();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -1515,6 +1613,8 @@ static void unmap_single_vma(struct mmu_gather *tlb,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 
 	return addr;
@@ -1528,6 +1628,7 @@ static void unmap_single_vma(struct mmu_gather *tlb,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * unmap_vmas - unmap a range of memory covered by a list of vma's
  * @tlb: address of the caller's struct mmu_gather
@@ -1541,6 +1642,10 @@ static void unmap_single_vma(struct mmu_gather *tlb,
  * Unmap all pages in the vma list.
  *
 =======
+<<<<<<< HEAD
+ * Unmap all pages in the vma list.
+ *
+=======
  * Returns the end address of the unmapping (restart addr if interrupted).
  *
  * Unmap all pages in the vma list.
@@ -1550,6 +1655,7 @@ static void unmap_single_vma(struct mmu_gather *tlb,
  * return the ending mmu_gather to the caller.
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Only addresses between `start' and `end' will be unmapped.
  *
  * The VMA list must be sorted in ascending virtual address order.
@@ -1562,13 +1668,20 @@ static void unmap_single_vma(struct mmu_gather *tlb,
 <<<<<<< HEAD
 void unmap_vmas(struct mmu_gather *tlb,
 =======
+<<<<<<< HEAD
+void unmap_vmas(struct mmu_gather *tlb,
+=======
 unsigned long unmap_vmas(struct mmu_gather *tlb,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct vm_area_struct *vma, unsigned long start_addr,
 		unsigned long end_addr, unsigned long *nr_accounted,
 		struct zap_details *details)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mm_struct *mm = vma->vm_mm;
 
 	mmu_notifier_invalidate_range_start(mm, start_addr, end_addr);
@@ -1604,6 +1717,8 @@ void zap_page_range(struct vm_area_struct *vma, unsigned long address,
 
 /**
  * zap_page_range_single - remove user pages in a given range
+<<<<<<< HEAD
+=======
 =======
 	unsigned long start = start_addr;
 	struct mm_struct *mm = vma->vm_mm;
@@ -1654,19 +1769,26 @@ void zap_page_range(struct vm_area_struct *vma, unsigned long address,
 /**
  * zap_page_range - remove user pages in a given range
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @vma: vm_area_struct holding the applicable pages
  * @address: starting address of pages to zap
  * @size: number of bytes to zap
  * @details: details of nonlinear truncation or shared cache invalidation
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The range must fit into one VMA.
  */
 static void zap_page_range_single(struct vm_area_struct *vma, unsigned long address,
+<<<<<<< HEAD
+=======
 =======
  */
 unsigned long zap_page_range(struct vm_area_struct *vma, unsigned long address,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long size, struct zap_details *details)
 {
 	struct mm_struct *mm = vma->vm_mm;
@@ -1678,15 +1800,21 @@ unsigned long zap_page_range(struct vm_area_struct *vma, unsigned long address,
 	tlb_gather_mmu(&tlb, mm, 0);
 	update_hiwater_rss(mm);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mmu_notifier_invalidate_range_start(mm, address, end);
 	unmap_single_vma(&tlb, vma, address, end, &nr_accounted, details);
 	mmu_notifier_invalidate_range_end(mm, address, end);
 	tlb_finish_mmu(&tlb, address, end);
+<<<<<<< HEAD
+=======
 =======
 	end = unmap_vmas(&tlb, vma, address, end, &nr_accounted, details);
 	tlb_finish_mmu(&tlb, address, end);
 	return end;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1710,8 +1838,12 @@ int zap_vma_ptes(struct vm_area_struct *vma, unsigned long address,
 <<<<<<< HEAD
 	zap_page_range_single(vma, address, size, NULL);
 =======
+<<<<<<< HEAD
+	zap_page_range_single(vma, address, size, NULL);
+=======
 	zap_page_range(vma, address, size, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL_GPL(zap_vma_ptes);
@@ -1881,6 +2013,8 @@ static inline int stack_guard_page(struct vm_area_struct *vma, unsigned long add
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DMA_CMA
 static inline int __replace_cma_page(struct page *page, struct page **res)
 {
@@ -1901,6 +2035,7 @@ static inline int __replace_cma_page(struct page *page, struct page **res)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * __get_user_pages() - pin user pages in memory
  * @tsk:	task_struct of target task
@@ -2025,6 +2160,9 @@ int __get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (use_user_accessible_timers()) {
 			if (!vma && in_user_timers_area(mm, start)) {
 				int goto_next_page = 0;
@@ -2038,8 +2176,11 @@ int __get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
 			}
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!vma ||
 		    (vma->vm_flags & (VM_IO | VM_PFNMAP)) ||
 		    !(vm_flags & vma->vm_flags))
@@ -2069,12 +2210,15 @@ int __get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DMA_CMA
 				if (gup_flags & FOLL_NO_CMA)
 					fault_flags = FAULT_FLAG_NO_CMA;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* For mlock, just skip the stack guard page. */
 				if (foll_flags & FOLL_MLOCK) {
 					if (stack_guard_page(vma, start))
@@ -2142,6 +2286,8 @@ int __get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
 				return i ? i : PTR_ERR(page);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #ifdef CONFIG_DMA_CMA
 			if ((gup_flags & FOLL_NO_CMA)
@@ -2153,6 +2299,7 @@ int __get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (pages) {
 				pages[i] = page;
 
@@ -2298,6 +2445,8 @@ EXPORT_SYMBOL(get_user_pages);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DMA_CMA
 int get_user_pages_nocma(struct task_struct *tsk, struct mm_struct *mm,
 		unsigned long start, int nr_pages, int write, int force,
@@ -2319,6 +2468,7 @@ EXPORT_SYMBOL(get_user_pages_nocma);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * get_dump_page() - pin user page in memory while writing it to core dump
  * @addr: user address
@@ -2395,12 +2545,16 @@ static int insert_page(struct vm_area_struct *vma, unsigned long addr,
 <<<<<<< HEAD
 	inc_mm_counter_fast(mm, MM_FILEPAGES);
 =======
+<<<<<<< HEAD
+	inc_mm_counter_fast(mm, MM_FILEPAGES);
+=======
 #ifdef CONFIG_LOWMEM_CHECK
 	inc_mm_counter_fast(mm, MM_FILEPAGES, page);
 #else
 	inc_mm_counter_fast(mm, MM_FILEPAGES);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	page_add_file_rmap(page);
 	set_pte_at(mm, addr, pte, mk_pte(page, prot));
 
@@ -2692,6 +2846,8 @@ EXPORT_SYMBOL(remap_pfn_range);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * vm_iomap_memory - remap memory to userspace
  * @vma: user vma to map to
@@ -2740,6 +2896,7 @@ int vm_iomap_memory(struct vm_area_struct *vma, phys_addr_t start, unsigned long
 EXPORT_SYMBOL(vm_iomap_memory);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int apply_to_pte_range(struct mm_struct *mm, pmd_t *pmd,
 				     unsigned long addr, unsigned long end,
 				     pte_fn_t fn, void *data)
@@ -2878,8 +3035,12 @@ static inline void cow_user_page(struct page *dst, struct page *src, unsigned lo
 <<<<<<< HEAD
 		void *kaddr = kmap_atomic(dst);
 =======
+<<<<<<< HEAD
+		void *kaddr = kmap_atomic(dst);
+=======
 		void *kaddr = kmap_atomic(dst, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		void __user *uaddr = (void __user *)(va & PAGE_MASK);
 
 		/*
@@ -2893,8 +3054,12 @@ static inline void cow_user_page(struct page *dst, struct page *src, unsigned lo
 <<<<<<< HEAD
 		kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(kaddr);
+=======
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flush_dcache_page(dst);
 	} else
 		copy_user_highpage(dst, src, va, vma);
@@ -2923,12 +3088,16 @@ static int do_wp_page(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
 		spinlock_t *ptl, pte_t orig_pte)
 =======
+<<<<<<< HEAD
+		spinlock_t *ptl, pte_t orig_pte)
+=======
 #ifdef CONFIG_DMA_CMA
 		spinlock_t *ptl, pte_t orig_pte, unsigned int flags)
 #else
 		spinlock_t *ptl, pte_t orig_pte)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__releases(ptl)
 {
 	struct page *old_page, *new_page;
@@ -3101,11 +3270,16 @@ gotten:
 
 	if (is_zero_pfn(pte_pfn(orig_pte))) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		new_page = alloc_zeroed_user_highpage_movable(vma, address);
 		if (!new_page)
 			goto oom;
 	} else {
 		new_page = alloc_page_vma(GFP_HIGHUSER_MOVABLE, vma, address);
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_DMA_CMA
 		if (flags & FAULT_FLAG_NO_CMA)
@@ -3127,6 +3301,7 @@ gotten:
 			   alloc_page_vma(GFP_HIGHUSER_MOVABLE, vma, address);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!new_page)
 			goto oom;
 		cow_user_page(new_page, old_page, address, vma);
@@ -3144,11 +3319,16 @@ gotten:
 		if (old_page) {
 			if (!PageAnon(old_page)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				dec_mm_counter_fast(mm, MM_FILEPAGES);
 				inc_mm_counter_fast(mm, MM_ANONPAGES);
 			}
 		} else
 			inc_mm_counter_fast(mm, MM_ANONPAGES);
+<<<<<<< HEAD
+=======
 =======
 			#ifdef CONFIG_LOWMEM_CHECK
 				dec_mm_counter_fast(mm, MM_FILEPAGES, old_page);
@@ -3165,6 +3345,7 @@ gotten:
 			inc_mm_counter_fast(mm, MM_ANONPAGES);
 		#endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flush_cache_page(vma, address, pte_pfn(orig_pte));
 		entry = mk_pte(new_page, vma->vm_page_prot);
 		entry = maybe_mkwrite(pte_mkdirty(entry), vma);
@@ -3256,8 +3437,12 @@ static void unmap_mapping_range_vma(struct vm_area_struct *vma,
 <<<<<<< HEAD
 	zap_page_range_single(vma, start_addr, end_addr - start_addr, details);
 =======
+<<<<<<< HEAD
+	zap_page_range_single(vma, start_addr, end_addr - start_addr, details);
+=======
 	zap_page_range(vma, start_addr, end_addr - start_addr, details);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void unmap_mapping_range_tree(struct prio_tree_root *root,
@@ -3377,8 +3562,12 @@ static int do_swap_page(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
 #ifdef CONFIG_CMA
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_CMA
+=======
 #ifdef CONFIG_DMA_CMA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * FIXME: mszyprow: cruel, brute-force method for
 			 * letting cma/migration to finish it's job without
@@ -3402,8 +3591,11 @@ static int do_swap_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	if (!page) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		grab_swap_token(mm); /* Contend for token _before_ read-in */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		page = swapin_readahead(entry,
 					GFP_HIGHUSER_MOVABLE, vma, address);
 		if (!page) {
@@ -3436,7 +3628,11 @@ static int do_swap_page(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	delayacct_clear_flag(DELAYACCT_PF_SWAPIN);
 	if (!locked) {
 		ret |= VM_FAULT_RETRY;
@@ -3499,6 +3695,11 @@ static int do_swap_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	inc_mm_counter_fast(mm, MM_ANONPAGES);
 	dec_mm_counter_fast(mm, MM_SWAPENTS);
 =======
+<<<<<<< HEAD
+
+	inc_mm_counter_fast(mm, MM_ANONPAGES);
+	dec_mm_counter_fast(mm, MM_SWAPENTS);
+=======
 #ifdef CONFIG_LOWMEM_CHECK
 	inc_mm_counter_fast(mm, MM_ANONPAGES, page);
 	dec_mm_counter_fast(mm, MM_SWAPENTS, page);
@@ -3507,6 +3708,7 @@ static int do_swap_page(struct mm_struct *mm, struct vm_area_struct *vma,
 	dec_mm_counter_fast(mm, MM_SWAPENTS);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pte = mk_pte(page, vma->vm_page_prot);
 	if ((flags & FAULT_FLAG_WRITE) && reuse_swap_page(page)) {
 		pte = maybe_mkwrite(pte_mkdirty(pte), vma);
@@ -3541,6 +3743,9 @@ static int do_swap_page(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
 		ret |= do_wp_page(mm, vma, address, page_table, pmd, ptl, pte);
 =======
+<<<<<<< HEAD
+		ret |= do_wp_page(mm, vma, address, page_table, pmd, ptl, pte);
+=======
 #ifdef CONFIG_DMA_CMA
 		ret |= do_wp_page(mm, vma, address, page_table,
 				  pmd, ptl, pte, flags);
@@ -3548,6 +3753,7 @@ static int do_swap_page(struct mm_struct *mm, struct vm_area_struct *vma,
 		ret |= do_wp_page(mm, vma, address, page_table, pmd, ptl, pte);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret & VM_FAULT_ERROR)
 			ret &= VM_FAULT_ERROR;
 		goto out;
@@ -3658,12 +3864,17 @@ static int do_anonymous_page(struct mm_struct *mm, struct vm_area_struct *vma,
 
 	inc_mm_counter_fast(mm, MM_ANONPAGES);
 =======
+<<<<<<< HEAD
+
+	inc_mm_counter_fast(mm, MM_ANONPAGES);
+=======
 #ifdef CONFIG_LOWMEM_CHECK
 	inc_mm_counter_fast(mm, MM_ANONPAGES, page);
 #else
 	inc_mm_counter_fast(mm, MM_ANONPAGES);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	page_add_new_anon_rmap(page, vma, address);
 setpte:
 	set_pte_at(mm, address, page_table, entry);
@@ -3708,16 +3919,25 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	pte_t entry;
 	int anon = 0;
 =======
+<<<<<<< HEAD
+	struct page *cow_page;
+	pte_t entry;
+	int anon = 0;
+=======
 	pte_t entry;
 	int anon = 0;
 	int charged = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page *dirty_page = NULL;
 	struct vm_fault vmf;
 	int ret;
 	int page_mkwrite = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If we do COW later, allocate page befor taking lock_page()
 	 * on the file cache page. This will reduce lock holding time.
@@ -3738,8 +3958,11 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	} else
 		cow_page = NULL;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vmf.virtual_address = (void __user *)(address & PAGE_MASK);
 	vmf.pgoff = pgoff;
 	vmf.flags = flags;
@@ -3751,8 +3974,12 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
 		goto uncharge_out;
 =======
+<<<<<<< HEAD
+		goto uncharge_out;
+=======
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(PageHWPoison(vmf.page))) {
 		if (ret & VM_FAULT_LOCKED)
@@ -3761,8 +3988,13 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		ret = VM_FAULT_HWPOISON;
 		goto uncharge_out;
 =======
+<<<<<<< HEAD
+		ret = VM_FAULT_HWPOISON;
+		goto uncharge_out;
+=======
 		return VM_FAULT_HWPOISON;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -3780,6 +4012,10 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 	page = vmf.page;
 	if (flags & FAULT_FLAG_WRITE) {
 		if (!(vma->vm_flags & VM_SHARED)) {
+<<<<<<< HEAD
+			page = cow_page;
+			anon = 1;
+=======
 <<<<<<< HEAD
 			page = cow_page;
 			anon = 1;
@@ -3810,6 +4046,7 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 			}
 			charged = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			copy_user_highpage(page, vmf.page, address, vma);
 			__SetPageUptodate(page);
 		} else {
@@ -3869,6 +4106,12 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		} else {
 			inc_mm_counter_fast(mm, MM_FILEPAGES);
 =======
+<<<<<<< HEAD
+			inc_mm_counter_fast(mm, MM_ANONPAGES);
+			page_add_new_anon_rmap(page, vma, address);
+		} else {
+			inc_mm_counter_fast(mm, MM_FILEPAGES);
+=======
 		#ifdef CONFIG_LOWMEM_CHECK
 			inc_mm_counter_fast(mm, MM_ANONPAGES, page);
 		#else
@@ -3882,6 +4125,7 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 			inc_mm_counter_fast(mm, MM_FILEPAGES);
 		#endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			page_add_file_rmap(page);
 			if (flags & FAULT_FLAG_WRITE) {
 				dirty_page = page;
@@ -3897,9 +4141,14 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 		if (cow_page)
 			mem_cgroup_uncharge_page(cow_page);
 =======
+<<<<<<< HEAD
+		if (cow_page)
+			mem_cgroup_uncharge_page(cow_page);
+=======
 		if (charged)
 			mem_cgroup_uncharge_page(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (anon)
 			page_cache_release(page);
 		else
@@ -3910,8 +4159,11 @@ static int __do_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dirty_page) {
 		struct address_space *mapping = page->mapping;
 
@@ -3942,6 +4194,9 @@ unwritable_page:
 	page_cache_release(page);
 	return ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 uncharge_out:
 	/* fs's fault handler get error */
 	if (cow_page) {
@@ -3949,8 +4204,11 @@ uncharge_out:
 		page_cache_release(cow_page);
 	}
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int do_linear_fault(struct mm_struct *mm, struct vm_area_struct *vma,
@@ -4044,6 +4302,10 @@ int handle_pte_fault(struct mm_struct *mm,
 			return do_wp_page(mm, vma, address,
 					pte, pmd, ptl, entry);
 =======
+<<<<<<< HEAD
+			return do_wp_page(mm, vma, address,
+					pte, pmd, ptl, entry);
+=======
 #ifdef CONFIG_DMA_CMA
 			return do_wp_page(mm, vma, address,
 					pte, pmd, ptl, entry, flags);
@@ -4052,6 +4314,7 @@ int handle_pte_fault(struct mm_struct *mm,
 					pte, pmd, ptl, entry);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		entry = pte_mkdirty(entry);
 	}
 	entry = pte_mkyoung(entry);
@@ -4096,8 +4359,11 @@ int handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 retry:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pgd = pgd_offset(mm, address);
 	pud = pud_alloc(mm, pgd, address);
 	if (!pud)
@@ -4113,13 +4379,21 @@ retry:
 		pmd_t orig_pmd = *pmd;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		int ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		barrier();
 		if (pmd_trans_huge(orig_pmd)) {
 			if (flags & FAULT_FLAG_WRITE &&
 			    !pmd_write(orig_pmd) &&
+<<<<<<< HEAD
+			    !pmd_trans_splitting(orig_pmd))
+				return do_huge_pmd_wp_page(mm, vma, address,
+							   pmd, orig_pmd);
+=======
 <<<<<<< HEAD
 			    !pmd_trans_splitting(orig_pmd))
 				return do_huge_pmd_wp_page(mm, vma, address,
@@ -4138,6 +4412,7 @@ retry:
 				return ret;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 0;
 		}
 	}
@@ -4255,6 +4530,9 @@ static int __init gate_vma_init(void)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	/*
 	 * Make sure the vDSO gets into every core dump.
 	 * Dumping its contents makes post-mortem fully interpretable later
@@ -4263,6 +4541,7 @@ static int __init gate_vma_init(void)
 	 */
 	gate_vma.vm_flags |= VM_ALWAYSDUMP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 __initcall(gate_vma_init);

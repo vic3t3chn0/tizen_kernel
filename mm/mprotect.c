@@ -63,8 +63,12 @@ static void change_pte_range(struct mm_struct *mm, pmd_t *pmd,
 <<<<<<< HEAD
 		} else if (IS_ENABLED(CONFIG_MIGRATION) && !pte_file(oldpte)) {
 =======
+<<<<<<< HEAD
+		} else if (IS_ENABLED(CONFIG_MIGRATION) && !pte_file(oldpte)) {
+=======
 		} else if (PAGE_MIGRATION && !pte_file(oldpte)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			swp_entry_t entry = pte_to_swp_entry(oldpte);
 
 			if (is_write_migration_entry(entry)) {
@@ -175,8 +179,12 @@ mprotect_fixup(struct vm_area_struct *vma, struct vm_area_struct **pprev,
 <<<<<<< HEAD
 			if (security_vm_enough_memory_mm(mm, charged))
 =======
+<<<<<<< HEAD
+			if (security_vm_enough_memory_mm(mm, charged))
+=======
 			if (security_vm_enough_memory(charged))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return -ENOMEM;
 			newflags |= VM_ACCOUNT;
 		}
@@ -271,17 +279,23 @@ SYSCALL_DEFINE3(mprotect, unsigned long, start, size_t, len,
 	down_write(&current->mm->mmap_sem);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vma = find_vma(current->mm, start);
 	error = -ENOMEM;
 	if (!vma)
 		goto out;
 	prev = vma->vm_prev;
+<<<<<<< HEAD
+=======
 =======
 	vma = find_vma_prev(current->mm, start, &prev);
 	error = -ENOMEM;
 	if (!vma)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(grows & PROT_GROWSDOWN)) {
 		if (vma->vm_start >= end)
 			goto out;

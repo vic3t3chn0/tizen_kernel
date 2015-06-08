@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/input.h>
@@ -35,17 +39,25 @@
 #include <linux/omapfb.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/omapfb.h>
+
+=======
 
 #include <mach/hardware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/flash.h>
 #include <plat/mux.h>
 #include <plat/usb.h>
@@ -55,13 +67,19 @@
 #include <plat/irda.h>
 #include <plat/keypad.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PALMTE_USBDETECT_GPIO	0
 #define PALMTE_USB_OR_DC_GPIO	1
@@ -80,6 +98,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init omap_palmte_init_irq(void)
 {
 	omap1_init_common_hw();
@@ -87,6 +107,7 @@ static void __init omap_palmte_init_irq(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned int palmte_keymap[] = {
 	KEY(0, 0, KEY_F1),		/* Calendar */
 	KEY(1, 0, KEY_F2),		/* Contacts */
@@ -240,11 +261,14 @@ static struct omap_lcd_config palmte_lcd_config __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct omap_board_config_kernel palmte_config[] __initdata = {
 	{ OMAP_TAG_LCD,		&palmte_lcd_config },
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct spi_board_info palmte_spi_info[] __initdata = {
 	{
 		.modalias	= "tsc2102",
@@ -252,8 +276,11 @@ static struct spi_board_info palmte_spi_info[] __initdata = {
 		.chip_select	= 0,	/* As opposed to 3 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq		= OMAP_GPIO_IRQ(PALMTE_PINTDAV_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.max_speed_hz	= 8000000,
 	},
 };
@@ -290,18 +317,27 @@ static void __init omap_palmte_init(void)
 
 	palmte_spi_info[0].irq = gpio_to_irq(PALMTE_PINTDAV_GPIO);
 =======
+<<<<<<< HEAD
+	platform_add_devices(palmte_devices, ARRAY_SIZE(palmte_devices));
+
+	palmte_spi_info[0].irq = gpio_to_irq(PALMTE_PINTDAV_GPIO);
+=======
 	omap_board_config = palmte_config;
 	omap_board_config_size = ARRAY_SIZE(palmte_config);
 
 	platform_add_devices(palmte_devices, ARRAY_SIZE(palmte_devices));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_register_board_info(palmte_spi_info, ARRAY_SIZE(palmte_spi_info));
 	palmte_misc_gpio_setup();
 	omap_serial_init();
 	omap1_usb_init(&palmte_usb_config);
 	omap_register_i2c_bus(1, 100, NULL, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	omapfb_set_lcd_config(&palmte_lcd_config);
 }
@@ -315,6 +351,8 @@ MACHINE_START(OMAP_PALMTE, "OMAP310 based Palm Tungsten E")
 	.init_machine	= omap_palmte_init,
 	.timer		= &omap1_timer,
 	.restart	= omap1_restart,
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -331,4 +369,5 @@ MACHINE_START(OMAP_PALMTE, "OMAP310 based Palm Tungsten E")
 	.init_machine	= omap_palmte_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

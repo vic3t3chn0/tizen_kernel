@@ -39,8 +39,12 @@ static int rfkill_regulator_set_block(void *data, bool blocked)
 <<<<<<< HEAD
 			rfkill_data->reg_enabled = false;
 =======
+<<<<<<< HEAD
+			rfkill_data->reg_enabled = false;
+=======
 			rfkill_data->reg_enabled = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else {
 		if (!rfkill_data->reg_enabled) {
@@ -48,8 +52,12 @@ static int rfkill_regulator_set_block(void *data, bool blocked)
 <<<<<<< HEAD
 			rfkill_data->reg_enabled = true;
 =======
+<<<<<<< HEAD
+			rfkill_data->reg_enabled = true;
+=======
 			rfkill_data->reg_enabled = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -100,8 +108,11 @@ static int __devinit rfkill_regulator_probe(struct platform_device *pdev)
 	if (rf_kill == NULL) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dev_err(&pdev->dev, "Cannot alloc rfkill device\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -ENOMEM;
 		goto err_rfkill_alloc;
 	}
@@ -111,8 +122,12 @@ static int __devinit rfkill_regulator_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		rfkill_data->reg_enabled = true;
 =======
+<<<<<<< HEAD
+		rfkill_data->reg_enabled = true;
+=======
 		rfkill_data->reg_enabled = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	rfkill_data->vcc = vcc;
 	rfkill_data->rf_kill = rf_kill;
@@ -163,6 +178,9 @@ static struct platform_driver rfkill_regulator_driver = {
 <<<<<<< HEAD
 module_platform_driver(rfkill_regulator_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(rfkill_regulator_driver);
+=======
 static int __init rfkill_regulator_init(void)
 {
 	return platform_driver_register(&rfkill_regulator_driver);
@@ -175,6 +193,7 @@ static void __exit rfkill_regulator_exit(void)
 }
 module_exit(rfkill_regulator_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Guiming Zhuo <gmzhuo@gmail.com>");
 MODULE_AUTHOR("Antonio Ospite <ospite@studenti.unina.it>");

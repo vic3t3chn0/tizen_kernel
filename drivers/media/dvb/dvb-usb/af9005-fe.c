@@ -63,11 +63,23 @@ static int af9005_write_word_agc(struct dvb_usb_device *d, u16 reghi,
 				 u16 reglo, u8 pos, u8 len, u16 value)
 {
 	int ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if ((ret = af9005_write_ofdm_register(d, reglo, (u8) (value & 0xff))))
+		return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 temp;
 
 	if ((ret = af9005_write_ofdm_register(d, reglo, (u8) (value & 0xff))))
 		return ret;
 	temp = (u8) ((value & 0x0300) >> 8);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return af9005_write_register_bits(d, reghi, pos, len,
 					  (u8) ((value & 0x300) >> 8));
 }
@@ -305,7 +317,15 @@ static int af9005_get_pre_vit_err_bit_count(struct dvb_frontend *fe,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* read modulation mode */
+=======
 	/* read constellation mode */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* read constellation mode */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret =
 	    af9005_read_register_bits(state->d, xd_g_reg_tpsd_const,
 				      reg_tpsd_const_pos, reg_tpsd_const_len,
@@ -323,7 +343,15 @@ static int af9005_get_pre_vit_err_bit_count(struct dvb_frontend *fe,
 		bits = 6;
 		break;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err("invalid modulation mode");
+=======
 		err("invalid constellation mode");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("invalid constellation mode");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 	*pre_bit_count = super_frame_count * 68 * 4 * x * bits;
@@ -535,13 +563,29 @@ static int af9005_fe_read_signal_strength(struct dvb_frontend *fe,
 
 static int af9005_fe_read_snr(struct dvb_frontend *fe, u16 * snr)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* the snr can be derived from the ber and the modulation
+=======
 	/* the snr can be derived from the ber and the constellation
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* the snr can be derived from the ber and the constellation
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	   but I don't think this kind of complex calculations belong
 	   in the driver. I may be wrong.... */
 	return -ENOSYS;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int af9005_fe_program_cfoe(struct dvb_usb_device *d, u32 bw)
+=======
 static int af9005_fe_program_cfoe(struct dvb_usb_device *d, fe_bandwidth_t bw)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int af9005_fe_program_cfoe(struct dvb_usb_device *d, fe_bandwidth_t bw)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 temp0, temp1, temp2, temp3, buf[4];
 	int ret;
@@ -553,7 +597,15 @@ static int af9005_fe_program_cfoe(struct dvb_usb_device *d, fe_bandwidth_t bw)
 	u32 NS_coeff2_8k;
 
 	switch (bw) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 6000000:
+=======
 	case BANDWIDTH_6_MHZ:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case BANDWIDTH_6_MHZ:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		NS_coeff1_2048Nu = 0x2ADB6DC;
 		NS_coeff1_8191Nu = 0xAB7313;
 		NS_coeff1_8192Nu = 0xAB6DB7;
@@ -562,7 +614,15 @@ static int af9005_fe_program_cfoe(struct dvb_usb_device *d, fe_bandwidth_t bw)
 		NS_coeff2_8k = 0x55B6DC;
 		break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 7000000:
+=======
 	case BANDWIDTH_7_MHZ:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case BANDWIDTH_7_MHZ:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		NS_coeff1_2048Nu = 0x3200001;
 		NS_coeff1_8191Nu = 0xC80640;
 		NS_coeff1_8192Nu = 0xC80000;
@@ -571,7 +631,15 @@ static int af9005_fe_program_cfoe(struct dvb_usb_device *d, fe_bandwidth_t bw)
 		NS_coeff2_8k = 0x640000;
 		break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 8000000:
+=======
 	case BANDWIDTH_8_MHZ:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case BANDWIDTH_8_MHZ:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		NS_coeff1_2048Nu = 0x3924926;
 		NS_coeff1_8191Nu = 0xE4996E;
 		NS_coeff1_8192Nu = 0xE49249;
@@ -775,6 +843,22 @@ static int af9005_fe_program_cfoe(struct dvb_usb_device *d, fe_bandwidth_t bw)
 
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int af9005_fe_select_bw(struct dvb_usb_device *d, u32 bw)
+{
+	u8 temp;
+	switch (bw) {
+	case 6000000:
+		temp = 0;
+		break;
+	case 7000000:
+		temp = 1;
+		break;
+	case 8000000:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int af9005_fe_select_bw(struct dvb_usb_device *d, fe_bandwidth_t bw)
 {
 	u8 temp;
@@ -786,6 +870,10 @@ static int af9005_fe_select_bw(struct dvb_usb_device *d, fe_bandwidth_t bw)
 		temp = 1;
 		break;
 	case BANDWIDTH_8_MHZ:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		temp = 2;
 		break;
 	default:
@@ -932,10 +1020,24 @@ static int af9005_fe_init(struct dvb_frontend *fe)
 
 	/* init other parameters: program cfoe and select bandwidth */
 	deb_info("program cfoe\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = af9005_fe_program_cfoe(state->d, 6000000);
+	if (ret)
+		return ret;
+	/* set read-update bit for modulation */
+	deb_info("set read-update bit for modulation\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((ret = af9005_fe_program_cfoe(state->d, BANDWIDTH_6_MHZ)))
 		return ret;
 	/* set read-update bit for constellation */
 	deb_info("set read-update bit for constellation\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((ret =
 	     af9005_write_register_bits(state->d, xd_p_reg_feq_read_update,
 					reg_feq_read_update_pos,
@@ -945,8 +1047,18 @@ static int af9005_fe_init(struct dvb_frontend *fe)
 	/* sample code has a set MPEG TS code here
 	   but sniffing reveals that it doesn't do it */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* set read-update bit to 1 for DCA modulation */
+	deb_info("set read-update bit 1 for DCA modulation\n");
+=======
 	/* set read-update bit to 1 for DCA constellation */
 	deb_info("set read-update bit 1 for DCA constellation\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* set read-update bit to 1 for DCA constellation */
+	deb_info("set read-update bit 1 for DCA constellation\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((ret =
 	     af9005_write_register_bits(state->d, xd_p_reg_dca_read_update,
 					reg_dca_read_update_pos,
@@ -1101,15 +1213,35 @@ static int af9005_ts_bus_ctrl(struct dvb_frontend *fe, int acquire)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int af9005_fe_set_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *fep = &fe->dtv_property_cache;
+=======
 static int af9005_fe_set_frontend(struct dvb_frontend *fe,
 				  struct dvb_frontend_parameters *fep)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int af9005_fe_set_frontend(struct dvb_frontend *fe,
+				  struct dvb_frontend_parameters *fep)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct af9005_fe_state *state = fe->demodulator_priv;
 	int ret;
 	u8 temp, temp0, temp1, temp2;
 
 	deb_info("af9005_fe_set_frontend freq %d bw %d\n", fep->frequency,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 fep->bandwidth_hz);
+=======
 		 fep->u.ofdm.bandwidth);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 fep->u.ofdm.bandwidth);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fe->ops.tuner_ops.release == NULL) {
 		err("Tuner not attached");
 		return -ENODEV;
@@ -1169,10 +1301,23 @@ static int af9005_fe_set_frontend(struct dvb_frontend *fe,
 
 	/* select bandwidth */
 	deb_info("select bandwidth");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = af9005_fe_select_bw(state->d, fep->bandwidth_hz);
+	if (ret)
+		return ret;
+	ret = af9005_fe_program_cfoe(state->d, fep->bandwidth_hz);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = af9005_fe_select_bw(state->d, fep->u.ofdm.bandwidth);
 	if (ret)
 		return ret;
 	ret = af9005_fe_program_cfoe(state->d, fep->u.ofdm.bandwidth);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -1191,7 +1336,15 @@ static int af9005_fe_set_frontend(struct dvb_frontend *fe,
 		return ret;
 	/* set tuner */
 	deb_info("set tuner\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = fe->ops.tuner_ops.set_params(fe);
+=======
 	ret = fe->ops.tuner_ops.set_params(fe, fep);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = fe->ops.tuner_ops.set_params(fe, fep);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -1227,9 +1380,21 @@ static int af9005_fe_set_frontend(struct dvb_frontend *fe,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int af9005_fe_get_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *fep = &fe->dtv_property_cache;
+=======
 static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 				  struct dvb_frontend_parameters *fep)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int af9005_fe_get_frontend(struct dvb_frontend *fe,
+				  struct dvb_frontend_parameters *fep)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct af9005_fe_state *state = fe->demodulator_priv;
 	int ret;
 	u8 temp;
@@ -1241,6 +1406,24 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 				      &temp);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	deb_info("===== fe_get_frontend_legacy = =============\n");
+	deb_info("CONSTELLATION ");
+	switch (temp) {
+	case 0:
+		fep->modulation = QPSK;
+		deb_info("QPSK\n");
+		break;
+	case 1:
+		fep->modulation = QAM_16;
+		deb_info("QAM_16\n");
+		break;
+	case 2:
+		fep->modulation = QAM_64;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	deb_info("===== fe_get_frontend ==============\n");
 	deb_info("CONSTELLATION ");
 	switch (temp) {
@@ -1254,6 +1437,10 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 		break;
 	case 2:
 		fep->u.ofdm.constellation = QAM_64;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		deb_info("QAM_64\n");
 		break;
 	}
@@ -1268,6 +1455,24 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 	deb_info("HIERARCHY ");
 	switch (temp) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fep->hierarchy = HIERARCHY_NONE;
+		deb_info("NONE\n");
+		break;
+	case 1:
+		fep->hierarchy = HIERARCHY_1;
+		deb_info("1\n");
+		break;
+	case 2:
+		fep->hierarchy = HIERARCHY_2;
+		deb_info("2\n");
+		break;
+	case 3:
+		fep->hierarchy = HIERARCHY_4;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fep->u.ofdm.hierarchy_information = HIERARCHY_NONE;
 		deb_info("NONE\n");
 		break;
@@ -1281,6 +1486,10 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 		break;
 	case 3:
 		fep->u.ofdm.hierarchy_information = HIERARCHY_4;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		deb_info("4\n");
 		break;
 	}
@@ -1304,6 +1513,28 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 	deb_info("CODERATE HP ");
 	switch (temp) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fep->code_rate_HP = FEC_1_2;
+		deb_info("FEC_1_2\n");
+		break;
+	case 1:
+		fep->code_rate_HP = FEC_2_3;
+		deb_info("FEC_2_3\n");
+		break;
+	case 2:
+		fep->code_rate_HP = FEC_3_4;
+		deb_info("FEC_3_4\n");
+		break;
+	case 3:
+		fep->code_rate_HP = FEC_5_6;
+		deb_info("FEC_5_6\n");
+		break;
+	case 4:
+		fep->code_rate_HP = FEC_7_8;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fep->u.ofdm.code_rate_HP = FEC_1_2;
 		deb_info("FEC_1_2\n");
 		break;
@@ -1321,6 +1552,10 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 		break;
 	case 4:
 		fep->u.ofdm.code_rate_HP = FEC_7_8;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		deb_info("FEC_7_8\n");
 		break;
 	}
@@ -1335,6 +1570,28 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 	deb_info("CODERATE LP ");
 	switch (temp) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fep->code_rate_LP = FEC_1_2;
+		deb_info("FEC_1_2\n");
+		break;
+	case 1:
+		fep->code_rate_LP = FEC_2_3;
+		deb_info("FEC_2_3\n");
+		break;
+	case 2:
+		fep->code_rate_LP = FEC_3_4;
+		deb_info("FEC_3_4\n");
+		break;
+	case 3:
+		fep->code_rate_LP = FEC_5_6;
+		deb_info("FEC_5_6\n");
+		break;
+	case 4:
+		fep->code_rate_LP = FEC_7_8;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fep->u.ofdm.code_rate_LP = FEC_1_2;
 		deb_info("FEC_1_2\n");
 		break;
@@ -1352,6 +1609,10 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 		break;
 	case 4:
 		fep->u.ofdm.code_rate_LP = FEC_7_8;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		deb_info("FEC_7_8\n");
 		break;
 	}
@@ -1365,6 +1626,24 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 	deb_info("GUARD INTERVAL ");
 	switch (temp) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fep->guard_interval = GUARD_INTERVAL_1_32;
+		deb_info("1_32\n");
+		break;
+	case 1:
+		fep->guard_interval = GUARD_INTERVAL_1_16;
+		deb_info("1_16\n");
+		break;
+	case 2:
+		fep->guard_interval = GUARD_INTERVAL_1_8;
+		deb_info("1_8\n");
+		break;
+	case 3:
+		fep->guard_interval = GUARD_INTERVAL_1_4;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fep->u.ofdm.guard_interval = GUARD_INTERVAL_1_32;
 		deb_info("1_32\n");
 		break;
@@ -1378,6 +1657,10 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 		break;
 	case 3:
 		fep->u.ofdm.guard_interval = GUARD_INTERVAL_1_4;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		deb_info("1_4\n");
 		break;
 	}
@@ -1392,11 +1675,25 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 	deb_info("TRANSMISSION MODE ");
 	switch (temp) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fep->transmission_mode = TRANSMISSION_MODE_2K;
+		deb_info("2K\n");
+		break;
+	case 1:
+		fep->transmission_mode = TRANSMISSION_MODE_8K;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fep->u.ofdm.transmission_mode = TRANSMISSION_MODE_2K;
 		deb_info("2K\n");
 		break;
 	case 1:
 		fep->u.ofdm.transmission_mode = TRANSMISSION_MODE_8K;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		deb_info("8K\n");
 		break;
 	}
@@ -1408,6 +1705,20 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 	deb_info("BANDWIDTH ");
 	switch (temp) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fep->bandwidth_hz = 6000000;
+		deb_info("6\n");
+		break;
+	case 1:
+		fep->bandwidth_hz = 7000000;
+		deb_info("7\n");
+		break;
+	case 2:
+		fep->bandwidth_hz = 8000000;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fep->u.ofdm.bandwidth = BANDWIDTH_6_MHZ;
 		deb_info("6\n");
 		break;
@@ -1417,6 +1728,10 @@ static int af9005_fe_get_frontend(struct dvb_frontend *fe,
 		break;
 	case 2:
 		fep->u.ofdm.bandwidth = BANDWIDTH_8_MHZ;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		deb_info("8\n");
 		break;
 	}
@@ -1456,9 +1771,21 @@ struct dvb_frontend *af9005_fe_attach(struct dvb_usb_device *d)
 }
 
 static struct dvb_frontend_ops af9005_fe_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBT },
+	.info = {
+		 .name = "AF9005 USB DVB-T",
+=======
 	.info = {
 		 .name = "AF9005 USB DVB-T",
 		 .type = FE_OFDM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.info = {
+		 .name = "AF9005 USB DVB-T",
+		 .type = FE_OFDM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 .frequency_min = 44250000,
 		 .frequency_max = 867250000,
 		 .frequency_stepsize = 250000,

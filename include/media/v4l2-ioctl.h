@@ -13,8 +13,11 @@
 #include <linux/fs.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 #include <linux/compiler.h> /* need __user */
 #include <linux/videodev2.h>
@@ -129,7 +132,12 @@ struct v4l2_ioctl_ops {
 	int (*vidioc_create_bufs)(struct file *file, void *fh, struct v4l2_create_buffers *b);
 	int (*vidioc_prepare_buf)(struct file *file, void *fh, struct v4l2_buffer *b);
 =======
+<<<<<<< HEAD
+	int (*vidioc_create_bufs)(struct file *file, void *fh, struct v4l2_create_buffers *b);
+	int (*vidioc_prepare_buf)(struct file *file, void *fh, struct v4l2_buffer *b);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int (*vidioc_overlay) (struct file *file, void *fh, unsigned int i);
 	int (*vidioc_g_fbuf)   (struct file *file, void *fh,
@@ -203,12 +211,18 @@ struct v4l2_ioctl_ops {
 	int (*vidioc_s_crop)           (struct file *file, void *fh,
 					struct v4l2_crop *a);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*vidioc_g_selection)      (struct file *file, void *fh,
 					struct v4l2_selection *s);
 	int (*vidioc_s_selection)      (struct file *file, void *fh,
 					struct v4l2_selection *s);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Compression ioctls */
 	int (*vidioc_g_jpegcomp)       (struct file *file, void *fh,
 					struct v4l2_jpegcompression *a);
@@ -221,12 +235,18 @@ struct v4l2_ioctl_ops {
 	int (*vidioc_try_encoder_cmd)  (struct file *file, void *fh,
 					struct v4l2_encoder_cmd *a);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*vidioc_decoder_cmd)      (struct file *file, void *fh,
 					struct v4l2_decoder_cmd *a);
 	int (*vidioc_try_decoder_cmd)  (struct file *file, void *fh,
 					struct v4l2_decoder_cmd *a);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Stream type-dependent parameter ioctls */
 	int (*vidioc_g_parm)           (struct file *file, void *fh,

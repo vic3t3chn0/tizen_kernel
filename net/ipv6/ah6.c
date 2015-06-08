@@ -198,10 +198,16 @@ static void ipv6_rearrange_destopt(struct ipv6hdr *iph, struct ipv6_opt_hdr *des
 				hao->addr = iph->saddr;
 				iph->saddr = final_addr;
 =======
+<<<<<<< HEAD
+				final_addr = hao->addr;
+				hao->addr = iph->saddr;
+				iph->saddr = final_addr;
+=======
 				ipv6_addr_copy(&final_addr, &hao->addr);
 				ipv6_addr_copy(&hao->addr, &iph->saddr);
 				ipv6_addr_copy(&iph->saddr, &final_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			break;
 		}
@@ -250,8 +256,12 @@ static void ipv6_rearrange_rthdr(struct ipv6hdr *iph, struct ipv6_rt_hdr *rthdr)
 <<<<<<< HEAD
 	final_addr = addrs[segments - 1];
 =======
+<<<<<<< HEAD
+	final_addr = addrs[segments - 1];
+=======
 	ipv6_addr_copy(&final_addr, addrs + segments - 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	addrs += segments - segments_left;
 	memmove(addrs + 1, addrs, (segments_left - 1) * sizeof(*addrs));
@@ -260,9 +270,14 @@ static void ipv6_rearrange_rthdr(struct ipv6hdr *iph, struct ipv6_rt_hdr *rthdr)
 	addrs[0] = iph->daddr;
 	iph->daddr = final_addr;
 =======
+<<<<<<< HEAD
+	addrs[0] = iph->daddr;
+	iph->daddr = final_addr;
+=======
 	ipv6_addr_copy(addrs, &iph->daddr);
 	ipv6_addr_copy(&iph->daddr, &final_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ipv6_clear_mutable_options(struct ipv6hdr *iph, int len, int dir)

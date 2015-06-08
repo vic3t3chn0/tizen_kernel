@@ -6,8 +6,12 @@
 <<<<<<< HEAD
  *  interrupts thus output is done via polling. Without interrupt,
 =======
+<<<<<<< HEAD
+ *  interrupts thus output is done via polling. Without interrupt,
+=======
  *  interrupts thus output is done via polling. Also, if irq < 0, then
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  input is done also via polling. Do not expect good performance.
  *
  *
@@ -40,7 +44,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/errno.h>
 #include <sound/core.h>
@@ -385,8 +393,12 @@ snd_mpu401_uart_input_trigger(struct snd_rawmidi_substream *substream, int up)
 <<<<<<< HEAD
 			if (mpu->info_flags & MPU401_INFO_USE_TIMER)
 =======
+<<<<<<< HEAD
+			if (mpu->info_flags & MPU401_INFO_USE_TIMER)
+=======
 			if (mpu->irq < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				snd_mpu401_uart_add_timer(mpu, 1);
 		}
 		
@@ -398,8 +410,12 @@ snd_mpu401_uart_input_trigger(struct snd_rawmidi_substream *substream, int up)
 <<<<<<< HEAD
 		if (mpu->info_flags & MPU401_INFO_USE_TIMER)
 =======
+<<<<<<< HEAD
+		if (mpu->info_flags & MPU401_INFO_USE_TIMER)
+=======
 		if (mpu->irq < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			snd_mpu401_uart_remove_timer(mpu, 1);
 		clear_bit(MPU401_MODE_BIT_INPUT_TRIGGER, &mpu->mode);
 	}
@@ -515,8 +531,12 @@ static void snd_mpu401_uart_free(struct snd_rawmidi *rmidi)
 <<<<<<< HEAD
 	if (mpu->irq >= 0)
 =======
+<<<<<<< HEAD
+	if (mpu->irq >= 0)
+=======
 	if (mpu->irq_flags && mpu->irq >= 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_irq(mpu->irq, (void *) mpu);
 	release_and_free_resource(mpu->res);
 	kfree(mpu);
@@ -532,9 +552,13 @@ static void snd_mpu401_uart_free(struct snd_rawmidi *rmidi)
 <<<<<<< HEAD
  * @irq: the ISA irq number, -1 if not to be allocated
 =======
+<<<<<<< HEAD
+ * @irq: the ISA irq number, -1 if not to be allocated
+=======
  * @irq: the irq number, -1 if no interrupt for mpu
  * @irq_flags: the irq request flags (SA_XXX), 0 if irq was already reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @rrawmidi: the pointer to store the new rawmidi instance
  *
  * Creates a new MPU-401 instance.
@@ -552,8 +576,12 @@ int snd_mpu401_uart_new(struct snd_card *card, int device,
 <<<<<<< HEAD
 			int irq,
 =======
+<<<<<<< HEAD
+			int irq,
+=======
 			int irq, int irq_flags,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct snd_rawmidi ** rrawmidi)
 {
 	struct snd_mpu401 *mpu;
@@ -584,8 +612,11 @@ int snd_mpu401_uart_new(struct snd_card *card, int device,
 	mpu->hardware = hardware;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mpu->irq = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (! (info_flags & MPU401_INFO_INTEGRATED)) {
 		int res_size = hardware == MPU401_HW_PC98II ? 4 : 2;
 		mpu->res = request_region(port, res_size, "MPU401 UART");
@@ -613,9 +644,14 @@ int snd_mpu401_uart_new(struct snd_card *card, int device,
 	if (irq >= 0) {
 		if (request_irq(irq, snd_mpu401_uart_interrupt, 0,
 =======
+<<<<<<< HEAD
+	if (irq >= 0) {
+		if (request_irq(irq, snd_mpu401_uart_interrupt, 0,
+=======
 	if (irq >= 0 && irq_flags) {
 		if (request_irq(irq, snd_mpu401_uart_interrupt, irq_flags,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"MPU401 UART", (void *) mpu)) {
 			snd_printk(KERN_ERR "mpu401_uart: "
 				   "unable to grab IRQ %d\n", irq);
@@ -624,15 +660,21 @@ int snd_mpu401_uart_new(struct snd_card *card, int device,
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (irq < 0 && !(info_flags & MPU401_INFO_IRQ_HOOK))
 		info_flags |= MPU401_INFO_USE_TIMER;
 	mpu->info_flags = info_flags;
 	mpu->irq = irq;
+<<<<<<< HEAD
+=======
 =======
 	mpu->info_flags = info_flags;
 	mpu->irq = irq;
 	mpu->irq_flags = irq_flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (card->shortname[0])
 		snprintf(rmidi->name, sizeof(rmidi->name), "%s MIDI",
 			 card->shortname);

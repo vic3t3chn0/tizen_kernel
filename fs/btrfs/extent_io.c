@@ -22,7 +22,13 @@
 #include "check-integrity.h"
 #include "locking.h"
 =======
+<<<<<<< HEAD
+#include "volumes.h"
+#include "check-integrity.h"
+#include "locking.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct kmem_cache *extent_state_cache;
 static struct kmem_cache *extent_buffer_cache;
@@ -58,6 +64,9 @@ struct extent_page_data {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static noinline void flush_write_bio(void *data);
 static inline struct btrfs_fs_info *
 tree_fs_info(struct extent_io_tree *tree)
@@ -65,8 +74,11 @@ tree_fs_info(struct extent_io_tree *tree)
 	return btrfs_sb(tree->mapping->host->i_sb);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init extent_io_init(void)
 {
 	extent_state_cache = kmem_cache_create("extent_state",
@@ -153,7 +165,11 @@ static struct extent_state *alloc_extent_state(gfp_t mask)
 <<<<<<< HEAD
 	trace_alloc_extent_state(state, mask, _RET_IP_);
 =======
+<<<<<<< HEAD
+	trace_alloc_extent_state(state, mask, _RET_IP_);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return state;
 }
 
@@ -174,7 +190,11 @@ void free_extent_state(struct extent_state *state)
 <<<<<<< HEAD
 		trace_free_extent_state(state, _RET_IP_);
 =======
+<<<<<<< HEAD
+		trace_free_extent_state(state, _RET_IP_);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kmem_cache_free(extent_state_cache, state);
 	}
 }
@@ -282,9 +302,14 @@ static void merge_cb(struct extent_io_tree *tree, struct extent_state *new,
 static void merge_state(struct extent_io_tree *tree,
 		        struct extent_state *state)
 =======
+<<<<<<< HEAD
+static void merge_state(struct extent_io_tree *tree,
+		        struct extent_state *state)
+=======
 static int merge_state(struct extent_io_tree *tree,
 		       struct extent_state *state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct extent_state *other;
 	struct rb_node *other_node;
@@ -293,8 +318,12 @@ static int merge_state(struct extent_io_tree *tree,
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	other_node = rb_prev(&state->rb_node);
 	if (other_node) {
@@ -315,6 +344,9 @@ static int merge_state(struct extent_io_tree *tree,
 		    other->state == state->state) {
 			merge_cb(tree, state, other);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			state->end = other->end;
 			other->tree = NULL;
 			rb_erase(&other->rb_node, &tree->state);
@@ -328,6 +360,8 @@ static void set_state_cb(struct extent_io_tree *tree,
 {
 	if (tree->ops && tree->ops->set_bit_hook)
 		tree->ops->set_bit_hook(tree->mapping->host, state, bits);
+<<<<<<< HEAD
+=======
 =======
 			other->start = state->start;
 			state->tree = NULL;
@@ -350,6 +384,7 @@ static int set_state_cb(struct extent_io_tree *tree,
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void clear_state_cb(struct extent_io_tree *tree,
@@ -364,7 +399,13 @@ static void set_state_bits(struct extent_io_tree *tree,
 			   struct extent_state *state, int *bits);
 
 =======
+<<<<<<< HEAD
+static void set_state_bits(struct extent_io_tree *tree,
+			   struct extent_state *state, int *bits);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * insert an extent_state struct into the tree.  'bits' are set on the
  * struct before it is inserted.
@@ -382,9 +423,12 @@ static int insert_state(struct extent_io_tree *tree,
 	struct rb_node *node;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int bits_to_set = *bits & ~EXTENT_CTLBITS;
 	int ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (end < start) {
 		printk(KERN_ERR "btrfs end < start %llu %llu\n",
@@ -399,6 +443,11 @@ static int insert_state(struct extent_io_tree *tree,
 	set_state_bits(tree, state, bits);
 
 =======
+<<<<<<< HEAD
+
+	set_state_bits(tree, state, bits);
+
+=======
 	ret = set_state_cb(tree, state, bits);
 	if (ret)
 		return ret;
@@ -407,6 +456,7 @@ static int insert_state(struct extent_io_tree *tree,
 		tree->dirty_bytes += end - start + 1;
 	state->state |= bits_to_set;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	node = tree_insert(&tree->state, end, &state->rb_node);
 	if (node) {
 		struct extent_state *found;
@@ -417,8 +467,11 @@ static int insert_state(struct extent_io_tree *tree,
 		       (unsigned long long)start, (unsigned long long)end);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		free_extent_state(state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EEXIST;
 	}
 	state->tree = tree;
@@ -427,11 +480,16 @@ static int insert_state(struct extent_io_tree *tree,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void split_cb(struct extent_io_tree *tree, struct extent_state *orig,
 		     u64 split)
 {
 	if (tree->ops && tree->ops->split_extent_hook)
 		tree->ops->split_extent_hook(tree->mapping->host, orig, split);
+<<<<<<< HEAD
+=======
 =======
 static int split_cb(struct extent_io_tree *tree, struct extent_state *orig,
 		     u64 split)
@@ -441,6 +499,7 @@ static int split_cb(struct extent_io_tree *tree, struct extent_state *orig,
 						    orig, split);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -479,6 +538,9 @@ static int split_state(struct extent_io_tree *tree, struct extent_state *orig,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct extent_state *next_state(struct extent_state *state)
 {
 	struct rb_node *next = rb_next(&state->rb_node);
@@ -491,23 +553,31 @@ static struct extent_state *next_state(struct extent_state *state)
 /*
  * utility function to clear some bits in an extent state struct.
  * it will optionally wake up any one waiting on this state (wake == 1)
+<<<<<<< HEAD
+=======
 =======
 /*
  * utility function to clear some bits in an extent state struct.
  * it will optionally wake up any one waiting on this state (wake == 1), or
  * forcibly remove the state from the tree (delete == 1).
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * If no bits are set on the state struct after clearing things, the
  * struct is freed and removed from the tree
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct extent_state *clear_state_bit(struct extent_io_tree *tree,
 					    struct extent_state *state,
 					    int *bits, int wake)
 {
 	struct extent_state *next;
 	int bits_to_clear = *bits & ~EXTENT_CTLBITS;
+<<<<<<< HEAD
+=======
 =======
 static int clear_state_bit(struct extent_io_tree *tree,
 			    struct extent_state *state,
@@ -516,6 +586,7 @@ static int clear_state_bit(struct extent_io_tree *tree,
 	int bits_to_clear = *bits & ~EXTENT_CTLBITS;
 	int ret = state->state & bits_to_clear;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((bits_to_clear & EXTENT_DIRTY) && (state->state & EXTENT_DIRTY)) {
 		u64 range = state->end - state->start + 1;
@@ -530,7 +601,11 @@ static int clear_state_bit(struct extent_io_tree *tree,
 <<<<<<< HEAD
 		next = next_state(state);
 =======
+<<<<<<< HEAD
+		next = next_state(state);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (state->tree) {
 			rb_erase(&state->rb_node, &tree->state);
 			state->tree = NULL;
@@ -545,9 +620,15 @@ static int clear_state_bit(struct extent_io_tree *tree,
 	}
 	return next;
 =======
+<<<<<<< HEAD
+		next = next_state(state);
+	}
+	return next;
+=======
 	}
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct extent_state *
@@ -560,6 +641,9 @@ alloc_extent_state_atomic(struct extent_state *prealloc)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void extent_io_tree_panic(struct extent_io_tree *tree, int err)
 {
 	btrfs_panic(tree_fs_info(tree), err, "Locking error: "
@@ -567,8 +651,11 @@ void extent_io_tree_panic(struct extent_io_tree *tree, int err)
 		    "thread while locked.");
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * clear some bits on a range in the tree.  This may require splitting
  * or inserting elements in the tree, so the gfp mask is used to
@@ -582,9 +669,13 @@ void extent_io_tree_panic(struct extent_io_tree *tree, int err)
 <<<<<<< HEAD
  * This takes the tree lock, and returns 0 on success and < 0 on error.
 =======
+<<<<<<< HEAD
+ * This takes the tree lock, and returns 0 on success and < 0 on error.
+=======
  * This takes the tree lock, and returns < 0 on error, > 0 if any of the
  * bits were already set, or zero if none of the bits were already set.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int clear_extent_bit(struct extent_io_tree *tree, u64 start, u64 end,
 		     int bits, int wake, int delete,
@@ -599,12 +690,18 @@ int clear_extent_bit(struct extent_io_tree *tree, u64 start, u64 end,
 	u64 last_end;
 	int err;
 =======
+<<<<<<< HEAD
+	struct rb_node *node;
+	u64 last_end;
+	int err;
+=======
 	struct rb_node *next_node;
 	struct rb_node *node;
 	u64 last_end;
 	int err;
 	int set = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int clear = 0;
 
 	if (delete)
@@ -633,8 +730,13 @@ again:
 		if (cached && cached->tree && cached->start <= start &&
 		    cached->end > start) {
 =======
+<<<<<<< HEAD
+		if (cached && cached->tree && cached->start <= start &&
+		    cached->end > start) {
+=======
 		if (cached && cached->tree && cached->start == start) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (clear)
 				atomic_dec(&cached->refs);
 			state = cached;
@@ -658,14 +760,20 @@ hit_next:
 	last_end = state->end;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* the state doesn't have the wanted bits, go ahead */
 	if (!(state->state & bits)) {
 		state = next_state(state);
 		goto next;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 *     | ---- desired range ---- |
 	 *  | state | or
@@ -691,8 +799,14 @@ hit_next:
 			extent_io_tree_panic(tree, err);
 
 =======
+<<<<<<< HEAD
+		if (err)
+			extent_io_tree_panic(tree, err);
+
+=======
 		BUG_ON(err == -EEXIST);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prealloc = NULL;
 		if (err)
 			goto out;
@@ -700,8 +814,12 @@ hit_next:
 <<<<<<< HEAD
 			clear_state_bit(tree, state, &bits, wake);
 =======
+<<<<<<< HEAD
+			clear_state_bit(tree, state, &bits, wake);
+=======
 			set |= clear_state_bit(tree, state, &bits, wake);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (last_end == (u64)-1)
 				goto out;
 			start = last_end + 1;
@@ -719,6 +837,9 @@ hit_next:
 		BUG_ON(!prealloc);
 		err = split_state(tree, state, prealloc, end + 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			extent_io_tree_panic(tree, err);
 
@@ -726,6 +847,8 @@ hit_next:
 			wake_up(&state->wq);
 
 		clear_state_bit(tree, prealloc, &bits, wake);
+<<<<<<< HEAD
+=======
 =======
 		BUG_ON(err == -EEXIST);
 		if (wake)
@@ -733,12 +856,16 @@ hit_next:
 
 		set |= clear_state_bit(tree, prealloc, &bits, wake);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		prealloc = NULL;
 		goto out;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state = clear_state_bit(tree, state, &bits, wake);
 next:
 	if (last_end == (u64)-1)
@@ -746,6 +873,8 @@ next:
 	start = last_end + 1;
 	if (start <= end && state && !need_resched())
 		goto hit_next;
+<<<<<<< HEAD
+=======
 =======
 	if (state->end < end && prealloc && !need_resched())
 		next_node = rb_next(&state->rb_node);
@@ -763,6 +892,7 @@ next:
 			goto hit_next;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	goto search_again;
 
 out:
@@ -773,8 +903,12 @@ out:
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	return set;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 search_again:
 	if (start > end)
@@ -789,9 +923,14 @@ search_again:
 static void wait_on_state(struct extent_io_tree *tree,
 			  struct extent_state *state)
 =======
+<<<<<<< HEAD
+static void wait_on_state(struct extent_io_tree *tree,
+			  struct extent_state *state)
+=======
 static int wait_on_state(struct extent_io_tree *tree,
 			 struct extent_state *state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__releases(tree->lock)
 		__acquires(tree->lock)
 {
@@ -803,8 +942,11 @@ static int wait_on_state(struct extent_io_tree *tree,
 	finish_wait(&state->wq, &wait);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -815,8 +957,12 @@ static int wait_on_state(struct extent_io_tree *tree,
 <<<<<<< HEAD
 void wait_extent_bit(struct extent_io_tree *tree, u64 start, u64 end, int bits)
 =======
+<<<<<<< HEAD
+void wait_extent_bit(struct extent_io_tree *tree, u64 start, u64 end, int bits)
+=======
 int wait_extent_bit(struct extent_io_tree *tree, u64 start, u64 end, int bits)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct extent_state *state;
 	struct rb_node *node;
@@ -850,6 +996,9 @@ again:
 			break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cond_resched_lock(&tree->lock);
 	}
 out:
@@ -863,6 +1012,8 @@ static void set_state_bits(struct extent_io_tree *tree,
 	int bits_to_set = *bits & ~EXTENT_CTLBITS;
 
 	set_state_cb(tree, state, bits);
+<<<<<<< HEAD
+=======
 =======
 		if (need_resched()) {
 			spin_unlock(&tree->lock);
@@ -886,6 +1037,7 @@ static int set_state_bits(struct extent_io_tree *tree,
 	if (ret)
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((bits_to_set & EXTENT_DIRTY) && !(state->state & EXTENT_DIRTY)) {
 		u64 range = state->end - state->start + 1;
 		tree->dirty_bytes += range;
@@ -893,9 +1045,12 @@ static int set_state_bits(struct extent_io_tree *tree,
 	state->state |= bits_to_set;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void cache_state(struct extent_state *state,
@@ -930,15 +1085,21 @@ static void uncache_state(struct extent_state **cached_ptr)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __must_check
 __set_extent_bit(struct extent_io_tree *tree, u64 start, u64 end,
 		 int bits, int exclusive_bits, u64 *failed_start,
 		 struct extent_state **cached_state, gfp_t mask)
+<<<<<<< HEAD
+=======
 =======
 int set_extent_bit(struct extent_io_tree *tree, u64 start, u64 end,
 		   int bits, int exclusive_bits, u64 *failed_start,
 		   struct extent_state **cached_state, gfp_t mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct extent_state *state;
 	struct extent_state *prealloc = NULL;
@@ -961,8 +1122,13 @@ again:
 		if (state->start <= start && state->end > start &&
 		    state->tree) {
 =======
+<<<<<<< HEAD
+		if (state->start <= start && state->end > start &&
+		    state->tree) {
+=======
 		if (state->start == start && state->tree) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			node = &state->rb_node;
 			goto hit_next;
 		}
@@ -977,14 +1143,20 @@ again:
 		BUG_ON(!prealloc);
 		err = insert_state(tree, prealloc, start, end, &bits);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			extent_io_tree_panic(tree, err);
 
 		prealloc = NULL;
+<<<<<<< HEAD
+=======
 =======
 		prealloc = NULL;
 		BUG_ON(err == -EEXIST);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 	state = rb_entry(node, struct extent_state, rb_node);
@@ -1010,12 +1182,17 @@ hit_next:
 		set_state_bits(tree, state, &bits);
 
 =======
+<<<<<<< HEAD
+		set_state_bits(tree, state, &bits);
+
+=======
 		err = set_state_bits(tree, state, &bits);
 		if (err)
 			goto out;
 
 		next_node = rb_next(node);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cache_state(state, cached_state);
 		merge_state(tree, state);
 		if (last_end == (u64)-1)
@@ -1025,7 +1202,11 @@ hit_next:
 <<<<<<< HEAD
 		next_node = rb_next(&state->rb_node);
 =======
+<<<<<<< HEAD
+		next_node = rb_next(&state->rb_node);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (next_node && start < end && prealloc && !need_resched()) {
 			state = rb_entry(next_node, struct extent_state,
 					 rb_node);
@@ -1066,8 +1247,14 @@ hit_next:
 			extent_io_tree_panic(tree, err);
 
 =======
+<<<<<<< HEAD
+		if (err)
+			extent_io_tree_panic(tree, err);
+
+=======
 		BUG_ON(err == -EEXIST);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prealloc = NULL;
 		if (err)
 			goto out;
@@ -1075,10 +1262,14 @@ hit_next:
 <<<<<<< HEAD
 			set_state_bits(tree, state, &bits);
 =======
+<<<<<<< HEAD
+			set_state_bits(tree, state, &bits);
+=======
 			err = set_state_bits(tree, state, &bits);
 			if (err)
 				goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cache_state(state, cached_state);
 			merge_state(tree, state);
 			if (last_end == (u64)-1)
@@ -1109,12 +1300,17 @@ hit_next:
 		 * the later extent.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = insert_state(tree, prealloc, start, this_end,
 				   &bits);
 		if (err)
 			extent_io_tree_panic(tree, err);
 
 		cache_state(prealloc, cached_state);
+<<<<<<< HEAD
+=======
 =======
 		atomic_inc(&prealloc->refs);
 		err = insert_state(tree, prealloc, start, this_end,
@@ -1128,6 +1324,7 @@ hit_next:
 		cache_state(prealloc, cached_state);
 		free_extent_state(prealloc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prealloc = NULL;
 		start = this_end + 1;
 		goto search_again;
@@ -1149,6 +1346,9 @@ hit_next:
 		BUG_ON(!prealloc);
 		err = split_state(tree, state, prealloc, end + 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			extent_io_tree_panic(tree, err);
 
@@ -1354,6 +1554,8 @@ hit_next:
 
 		set_state_bits(tree, prealloc, &bits);
 		clear_state_bit(tree, prealloc, &clear_bits, 0);
+<<<<<<< HEAD
+=======
 =======
 		BUG_ON(err == -EEXIST);
 
@@ -1365,6 +1567,7 @@ hit_next:
 		cache_state(prealloc, cached_state);
 		merge_state(tree, prealloc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prealloc = NULL;
 		goto out;
 	}
@@ -1394,8 +1597,12 @@ int set_extent_dirty(struct extent_io_tree *tree, u64 start, u64 end,
 <<<<<<< HEAD
 	return set_extent_bit(tree, start, end, EXTENT_DIRTY, NULL,
 =======
+<<<<<<< HEAD
+	return set_extent_bit(tree, start, end, EXTENT_DIRTY, NULL,
+=======
 	return set_extent_bit(tree, start, end, EXTENT_DIRTY, 0, NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      NULL, mask);
 }
 
@@ -1405,8 +1612,12 @@ int set_extent_bits(struct extent_io_tree *tree, u64 start, u64 end,
 <<<<<<< HEAD
 	return set_extent_bit(tree, start, end, bits, NULL,
 =======
+<<<<<<< HEAD
+	return set_extent_bit(tree, start, end, bits, NULL,
+=======
 	return set_extent_bit(tree, start, end, bits, 0, NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      NULL, mask);
 }
 
@@ -1424,9 +1635,14 @@ int set_extent_delalloc(struct extent_io_tree *tree, u64 start, u64 end,
 			      EXTENT_DELALLOC | EXTENT_UPTODATE,
 			      NULL, cached_state, mask);
 =======
+<<<<<<< HEAD
+			      EXTENT_DELALLOC | EXTENT_UPTODATE,
+			      NULL, cached_state, mask);
+=======
 			      EXTENT_DELALLOC | EXTENT_DIRTY | EXTENT_UPTODATE,
 			      0, NULL, cached_state, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int clear_extent_dirty(struct extent_io_tree *tree, u64 start, u64 end,
@@ -1443,8 +1659,12 @@ int set_extent_new(struct extent_io_tree *tree, u64 start, u64 end,
 <<<<<<< HEAD
 	return set_extent_bit(tree, start, end, EXTENT_NEW, NULL,
 =======
+<<<<<<< HEAD
+	return set_extent_bit(tree, start, end, EXTENT_NEW, NULL,
+=======
 	return set_extent_bit(tree, start, end, EXTENT_NEW, 0, NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      NULL, mask);
 }
 
@@ -1455,8 +1675,12 @@ int set_extent_uptodate(struct extent_io_tree *tree, u64 start, u64 end,
 <<<<<<< HEAD
 			      cached_state, mask);
 =======
+<<<<<<< HEAD
+			      cached_state, mask);
+=======
 			      NULL, cached_state, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int clear_extent_uptodate(struct extent_io_tree *tree, u64 start,
@@ -1475,13 +1699,20 @@ int lock_extent_bits(struct extent_io_tree *tree, u64 start, u64 end,
 <<<<<<< HEAD
 		     int bits, struct extent_state **cached_state)
 =======
+<<<<<<< HEAD
+		     int bits, struct extent_state **cached_state)
+=======
 		     int bits, struct extent_state **cached_state, gfp_t mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	u64 failed_start;
 	while (1) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = __set_extent_bit(tree, start, end, EXTENT_LOCKED | bits,
 				       EXTENT_LOCKED, &failed_start,
 				       cached_state, GFP_NOFS);
@@ -1490,6 +1721,8 @@ int lock_extent_bits(struct extent_io_tree *tree, u64 start, u64 end,
 			start = failed_start;
 		} else
 			break;
+<<<<<<< HEAD
+=======
 =======
 		err = set_extent_bit(tree, start, end, EXTENT_LOCKED | bits,
 				     EXTENT_LOCKED, &failed_start,
@@ -1501,18 +1734,24 @@ int lock_extent_bits(struct extent_io_tree *tree, u64 start, u64 end,
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		WARN_ON(start > end);
 	}
 	return err;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int lock_extent(struct extent_io_tree *tree, u64 start, u64 end)
 {
 	return lock_extent_bits(tree, start, end, 0, NULL);
 }
 
 int try_lock_extent(struct extent_io_tree *tree, u64 start, u64 end)
+<<<<<<< HEAD
+=======
 =======
 int lock_extent(struct extent_io_tree *tree, u64 start, u64 end, gfp_t mask)
 {
@@ -1522,17 +1761,23 @@ int lock_extent(struct extent_io_tree *tree, u64 start, u64 end, gfp_t mask)
 int try_lock_extent(struct extent_io_tree *tree, u64 start, u64 end,
 		    gfp_t mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	u64 failed_start;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = __set_extent_bit(tree, start, end, EXTENT_LOCKED, EXTENT_LOCKED,
 			       &failed_start, NULL, GFP_NOFS);
 	if (err == -EEXIST) {
 		if (failed_start > start)
 			clear_extent_bit(tree, start, failed_start - 1,
 					 EXTENT_LOCKED, 1, 0, NULL, GFP_NOFS);
+<<<<<<< HEAD
+=======
 =======
 	err = set_extent_bit(tree, start, end, EXTENT_LOCKED, EXTENT_LOCKED,
 			     &failed_start, NULL, mask);
@@ -1541,6 +1786,7 @@ int try_lock_extent(struct extent_io_tree *tree, u64 start, u64 end,
 			clear_extent_bit(tree, start, failed_start - 1,
 					 EXTENT_LOCKED, 1, 0, NULL, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 	return 1;
@@ -1554,16 +1800,22 @@ int unlock_extent_cached(struct extent_io_tree *tree, u64 start, u64 end,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int unlock_extent(struct extent_io_tree *tree, u64 start, u64 end)
 {
 	return clear_extent_bit(tree, start, end, EXTENT_LOCKED, 1, 0, NULL,
 				GFP_NOFS);
+<<<<<<< HEAD
+=======
 =======
 int unlock_extent(struct extent_io_tree *tree, u64 start, u64 end, gfp_t mask)
 {
 	return clear_extent_bit(tree, start, end, EXTENT_LOCKED, 1, 0, NULL,
 				mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1580,8 +1832,12 @@ static int set_range_writeback(struct extent_io_tree *tree, u64 start, u64 end)
 <<<<<<< HEAD
 		BUG_ON(!page); /* Pages should be in the extent_io_tree */
 =======
+<<<<<<< HEAD
+		BUG_ON(!page); /* Pages should be in the extent_io_tree */
+=======
 		BUG_ON(!page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_page_writeback(page);
 		page_cache_release(page);
 		index++;
@@ -1590,6 +1846,9 @@ static int set_range_writeback(struct extent_io_tree *tree, u64 start, u64 end)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* find the first state struct with 'bits' set after 'start', and
  * return it.  tree->lock must be held.  NULL will returned if
  * nothing was found after 'start'
@@ -1600,6 +1859,8 @@ struct extent_state *find_first_extent_bit_state(struct extent_io_tree *tree,
 	struct rb_node *node;
 	struct extent_state *state;
 
+<<<<<<< HEAD
+=======
 =======
 /*
  * find the first offset in the io tree with 'bits' set. zero is
@@ -1617,6 +1878,7 @@ int find_first_extent_bit(struct extent_io_tree *tree, u64 start,
 
 	spin_lock(&tree->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * this search will find all the extents that end after
 	 * our range starts.
@@ -1632,6 +1894,11 @@ int find_first_extent_bit(struct extent_io_tree *tree, u64 start,
 			return state;
 
 =======
+<<<<<<< HEAD
+		if (state->end >= start && (state->state & bits))
+			return state;
+
+=======
 		if (state->end >= start && (state->state & bits)) {
 			*start_ret = state->start;
 			*end_ret = state->end;
@@ -1639,12 +1906,16 @@ int find_first_extent_bit(struct extent_io_tree *tree, u64 start,
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		node = rb_next(node);
 		if (!node)
 			break;
 	}
 out:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -1670,6 +1941,8 @@ int find_first_extent_bit(struct extent_io_tree *tree, u64 start,
 	}
 	spin_unlock(&tree->lock);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	spin_unlock(&tree->lock);
 	return ret;
@@ -1705,6 +1978,7 @@ struct extent_state *find_first_extent_bit_state(struct extent_io_tree *tree,
 out:
 	return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1772,10 +2046,16 @@ static noinline void __unlock_for_delalloc(struct inode *inode,
 					   struct page *locked_page,
 					   u64 start, u64 end)
 =======
+<<<<<<< HEAD
+static noinline void __unlock_for_delalloc(struct inode *inode,
+					   struct page *locked_page,
+					   u64 start, u64 end)
+=======
 static noinline int __unlock_for_delalloc(struct inode *inode,
 					  struct page *locked_page,
 					  u64 start, u64 end)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	struct page *pages[16];
@@ -1788,8 +2068,12 @@ static noinline int __unlock_for_delalloc(struct inode *inode,
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (nr_pages > 0) {
 		ret = find_get_pages_contig(inode->i_mapping, index,
@@ -1806,8 +2090,11 @@ static noinline int __unlock_for_delalloc(struct inode *inode,
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static noinline int lock_delalloc_pages(struct inode *inode,
@@ -1938,10 +2225,15 @@ again:
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(ret); /* Only valid values are 0 and -EAGAIN */
 
 	/* step three, lock the state bits for the whole range */
 	lock_extent_bits(tree, delalloc_start, delalloc_end, 0, &cached_state);
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(ret);
 
@@ -1949,6 +2241,7 @@ again:
 	lock_extent_bits(tree, delalloc_start, delalloc_end,
 			 0, &cached_state, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* then test to make sure it is all still delalloc */
 	ret = test_range_bit(tree, delalloc_start, delalloc_end,
@@ -2163,8 +2456,13 @@ int test_range_bit(struct extent_io_tree *tree, u64 start, u64 end,
 	if (cached && cached->tree && cached->start <= start &&
 	    cached->end > start)
 =======
+<<<<<<< HEAD
+	if (cached && cached->tree && cached->start <= start &&
+	    cached->end > start)
+=======
 	if (cached && cached->tree && cached->start == start)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		node = &cached->rb_node;
 	else
 		node = tree_search(tree, start);
@@ -2212,9 +2510,13 @@ int test_range_bit(struct extent_io_tree *tree, u64 start, u64 end,
 <<<<<<< HEAD
 static void check_page_uptodate(struct extent_io_tree *tree, struct page *page)
 =======
+<<<<<<< HEAD
+static void check_page_uptodate(struct extent_io_tree *tree, struct page *page)
+=======
 static int check_page_uptodate(struct extent_io_tree *tree,
 			       struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u64 start = (u64)page->index << PAGE_CACHE_SHIFT;
 	u64 end = start + PAGE_CACHE_SIZE - 1;
@@ -2222,8 +2524,11 @@ static int check_page_uptodate(struct extent_io_tree *tree,
 		SetPageUptodate(page);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2233,9 +2538,13 @@ static int check_page_uptodate(struct extent_io_tree *tree,
 <<<<<<< HEAD
 static void check_page_locked(struct extent_io_tree *tree, struct page *page)
 =======
+<<<<<<< HEAD
+static void check_page_locked(struct extent_io_tree *tree, struct page *page)
+=======
 static int check_page_locked(struct extent_io_tree *tree,
 			     struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u64 start = (u64)page->index << PAGE_CACHE_SHIFT;
 	u64 end = start + PAGE_CACHE_SIZE - 1;
@@ -2243,8 +2552,11 @@ static int check_page_locked(struct extent_io_tree *tree,
 		unlock_page(page);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2252,6 +2564,9 @@ static int check_page_locked(struct extent_io_tree *tree,
  * in the tree for that page are done with writeback
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void check_page_writeback(struct extent_io_tree *tree,
 				 struct page *page)
 {
@@ -2679,6 +2994,8 @@ int end_extent_writepage(struct page *page, int err, u64 start, u64 end)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 static int check_page_writeback(struct extent_io_tree *tree,
 			     struct page *page)
@@ -2690,6 +3007,7 @@ static int check_page_writeback(struct extent_io_tree *tree,
 /* lots and lots of room for performance fixes in the end_bio funcs */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * after a writepage IO is done, we need to:
  * clear the uptodate bits on error
@@ -2703,8 +3021,11 @@ static void end_bio_extent_writepage(struct bio *bio, int err)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int uptodate = err == 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bio_vec *bvec = bio->bi_io_vec + bio->bi_vcnt - 1;
 	struct extent_io_tree *tree;
 	u64 start;
@@ -2712,8 +3033,11 @@ static void end_bio_extent_writepage(struct bio *bio, int err)
 	int whole_page;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	do {
 		struct page *page = bvec->bv_page;
@@ -2730,6 +3054,11 @@ static void end_bio_extent_writepage(struct bio *bio, int err)
 
 		if (--bvec >= bio->bi_io_vec)
 			prefetchw(&bvec->bv_page->flags);
+<<<<<<< HEAD
+
+		if (end_extent_writepage(page, err, start, end))
+			continue;
+=======
 <<<<<<< HEAD
 
 		if (end_extent_writepage(page, err, start, end))
@@ -2758,6 +3087,7 @@ static void end_bio_extent_writepage(struct bio *bio, int err)
 			SetPageError(page);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (whole_page)
 			end_page_writeback(page);
@@ -2791,7 +3121,11 @@ static void end_bio_extent_readpage(struct bio *bio, int err)
 <<<<<<< HEAD
 	int mirror;
 =======
+<<<<<<< HEAD
+	int mirror;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	if (err)
@@ -2807,7 +3141,13 @@ static void end_bio_extent_readpage(struct bio *bio, int err)
 			 "mirror=%ld\n", bio->bi_vcnt, bio->bi_idx, err,
 			 (long int)bio->bi_bdev);
 =======
+<<<<<<< HEAD
+		pr_debug("end_bio_extent_readpage: bi_vcnt=%d, idx=%d, err=%d, "
+			 "mirror=%ld\n", bio->bi_vcnt, bio->bi_idx, err,
+			 (long int)bio->bi_bdev);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tree = &BTRFS_I(page->mapping->host)->io_tree;
 
 		start = ((u64)page->index << PAGE_CACHE_SHIFT) +
@@ -2834,6 +3174,9 @@ static void end_bio_extent_readpage(struct bio *bio, int err)
 		spin_unlock(&tree->lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mirror = (int)(unsigned long)bio->bi_bdev;
 		if (uptodate && tree->ops && tree->ops->readpage_end_io_hook) {
 			ret = tree->ops->readpage_end_io_hook(page, start, end,
@@ -2861,6 +3204,8 @@ static void end_bio_extent_readpage(struct bio *bio, int err)
 			 * remain responsible for that page.
 			 */
 			ret = bio_readpage_error(bio, page, start, end, mirror, NULL);
+<<<<<<< HEAD
+=======
 =======
 		if (uptodate && tree->ops && tree->ops->readpage_end_io_hook) {
 			ret = tree->ops->readpage_end_io_hook(page, start, end,
@@ -2873,6 +3218,7 @@ static void end_bio_extent_readpage(struct bio *bio, int err)
 			ret = tree->ops->readpage_io_failed_hook(bio, page,
 							 start, end, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret == 0) {
 				uptodate =
 					test_bit(BIO_UPTODATE, &bio->bi_flags);
@@ -2886,8 +3232,12 @@ static void end_bio_extent_readpage(struct bio *bio, int err)
 <<<<<<< HEAD
 		if (uptodate && tree->track_uptodate) {
 =======
+<<<<<<< HEAD
+		if (uptodate && tree->track_uptodate) {
+=======
 		if (uptodate) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_extent_uptodate(tree, start, end, &cached,
 					    GFP_ATOMIC);
 		}
@@ -2937,16 +3287,22 @@ btrfs_bio_alloc(struct block_device *bdev, u64 first_sector, int nr_vecs,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Since writes are async, they will only return -ENOMEM.
  * Reads can return the full range of I/O error conditions.
  */
 static int __must_check submit_one_bio(int rw, struct bio *bio,
 				       int mirror_num, unsigned long bio_flags)
+<<<<<<< HEAD
+=======
 =======
 static int submit_one_bio(int rw, struct bio *bio, int mirror_num,
 			  unsigned long bio_flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret = 0;
 	struct bio_vec *bvec = bio->bi_io_vec + bio->bi_vcnt - 1;
@@ -2968,8 +3324,13 @@ static int submit_one_bio(int rw, struct bio *bio, int mirror_num,
 		btrfsic_submit_bio(rw, bio);
 
 =======
+<<<<<<< HEAD
+		btrfsic_submit_bio(rw, bio);
+
+=======
 		submit_bio(rw, bio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bio_flagged(bio, BIO_EOPNOTSUPP))
 		ret = -EOPNOTSUPP;
 	bio_put(bio);
@@ -2977,6 +3338,9 @@ static int submit_one_bio(int rw, struct bio *bio, int mirror_num,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int merge_bio(struct extent_io_tree *tree, struct page *page,
 		     unsigned long offset, size_t size, struct bio *bio,
 		     unsigned long bio_flags)
@@ -2990,8 +3354,11 @@ static int merge_bio(struct extent_io_tree *tree, struct page *page,
 
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int submit_extent_page(int rw, struct extent_io_tree *tree,
 			      struct page *page, sector_t sector,
 			      size_t size, unsigned long offset,
@@ -3021,12 +3388,17 @@ static int submit_extent_page(int rw, struct extent_io_tree *tree,
 
 		if (prev_bio_flags != bio_flags || !contig ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    merge_bio(tree, page, offset, page_size, bio, bio_flags) ||
 		    bio_add_page(bio, page, page_size, offset) < page_size) {
 			ret = submit_one_bio(rw, bio, mirror_num,
 					     prev_bio_flags);
 			if (ret < 0)
 				return ret;
+<<<<<<< HEAD
+=======
 =======
 		    (tree->ops && tree->ops->merge_bio_hook &&
 		     tree->ops->merge_bio_hook(page, offset, page_size, bio,
@@ -3035,6 +3407,7 @@ static int submit_extent_page(int rw, struct extent_io_tree *tree,
 			ret = submit_one_bio(rw, bio, mirror_num,
 					     prev_bio_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			bio = NULL;
 		} else {
 			return 0;
@@ -3064,13 +3437,20 @@ static int submit_extent_page(int rw, struct extent_io_tree *tree,
 <<<<<<< HEAD
 void attach_extent_buffer_page(struct extent_buffer *eb, struct page *page)
 =======
+<<<<<<< HEAD
+void attach_extent_buffer_page(struct extent_buffer *eb, struct page *page)
+=======
 void set_page_extent_mapped(struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!PagePrivate(page)) {
 		SetPagePrivate(page);
 		page_cache_get(page);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_page_private(page, (unsigned long)eb);
 	} else {
 		WARN_ON(page->private != (unsigned long)eb);
@@ -3084,6 +3464,8 @@ void set_page_extent_mapped(struct page *page)
 		page_cache_get(page);
 		set_page_private(page, EXTENT_PAGE_PRIVATE);
 	}
+<<<<<<< HEAD
+=======
 =======
 		set_page_private(page, EXTENT_PAGE_PRIVATE);
 	}
@@ -3094,6 +3476,7 @@ static void set_page_extent_head(struct page *page, unsigned long len)
 	WARN_ON(!PagePrivate(page));
 	set_page_private(page, EXTENT_PAGE_PRIVATE_FIRST_PAGE | len << 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -3103,7 +3486,11 @@ static void set_page_extent_head(struct page *page, unsigned long len)
 <<<<<<< HEAD
  * XXX JDM: This needs looking at to ensure proper page locking
 =======
+<<<<<<< HEAD
+ * XXX JDM: This needs looking at to ensure proper page locking
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int __extent_read_full_page(struct extent_io_tree *tree,
 				   struct page *page,
@@ -3144,11 +3531,16 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 	end = page_end;
 	while (1) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		lock_extent(tree, start, end);
 		ordered = btrfs_lookup_ordered_extent(inode, start);
 		if (!ordered)
 			break;
 		unlock_extent(tree, start, end);
+<<<<<<< HEAD
+=======
 =======
 		lock_extent(tree, start, end, GFP_NOFS);
 		ordered = btrfs_lookup_ordered_extent(inode, start);
@@ -3156,6 +3548,7 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 			break;
 		unlock_extent(tree, start, end, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		btrfs_start_ordered_extent(inode, ordered, 1);
 		btrfs_put_ordered_extent(ordered);
 	}
@@ -3167,16 +3560,22 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 		if (zero_offset) {
 			iosize = PAGE_CACHE_SIZE - zero_offset;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			userpage = kmap_atomic(page);
 			memset(userpage + zero_offset, 0, iosize);
 			flush_dcache_page(page);
 			kunmap_atomic(userpage);
+<<<<<<< HEAD
+=======
 =======
 			userpage = kmap_atomic(page, KM_USER0);
 			memset(userpage + zero_offset, 0, iosize);
 			flush_dcache_page(page);
 			kunmap_atomic(userpage, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	while (cur <= end) {
@@ -3186,16 +3585,22 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 
 			iosize = PAGE_CACHE_SIZE - pg_offset;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			userpage = kmap_atomic(page);
 			memset(userpage + pg_offset, 0, iosize);
 			flush_dcache_page(page);
 			kunmap_atomic(userpage);
+<<<<<<< HEAD
+=======
 =======
 			userpage = kmap_atomic(page, KM_USER0);
 			memset(userpage + pg_offset, 0, iosize);
 			flush_dcache_page(page);
 			kunmap_atomic(userpage, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_extent_uptodate(tree, cur, cur + iosize - 1,
 					    &cached, GFP_NOFS);
 			unlock_extent_cached(tree, cur, cur + iosize - 1,
@@ -3209,8 +3614,12 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 <<<<<<< HEAD
 			unlock_extent(tree, cur, end);
 =======
+<<<<<<< HEAD
+			unlock_extent(tree, cur, end);
+=======
 			unlock_extent(tree, cur, end, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 		extent_offset = cur - em->start;
@@ -3246,16 +3655,22 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 			struct extent_state *cached = NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			userpage = kmap_atomic(page);
 			memset(userpage + pg_offset, 0, iosize);
 			flush_dcache_page(page);
 			kunmap_atomic(userpage);
+<<<<<<< HEAD
+=======
 =======
 			userpage = kmap_atomic(page, KM_USER0);
 			memset(userpage + pg_offset, 0, iosize);
 			flush_dcache_page(page);
 			kunmap_atomic(userpage, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			set_extent_uptodate(tree, cur, cur + iosize - 1,
 					    &cached, GFP_NOFS);
@@ -3272,8 +3687,12 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 <<<<<<< HEAD
 			unlock_extent(tree, cur, cur + iosize - 1);
 =======
+<<<<<<< HEAD
+			unlock_extent(tree, cur, cur + iosize - 1);
+=======
 			unlock_extent(tree, cur, cur + iosize - 1, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cur = cur + iosize;
 			pg_offset += iosize;
 			continue;
@@ -3286,8 +3705,12 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 <<<<<<< HEAD
 			unlock_extent(tree, cur, cur + iosize - 1);
 =======
+<<<<<<< HEAD
+			unlock_extent(tree, cur, cur + iosize - 1);
+=======
 			unlock_extent(tree, cur, cur + iosize - 1, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cur = cur + iosize;
 			pg_offset += iosize;
 			continue;
@@ -3310,7 +3733,11 @@ static int __extent_read_full_page(struct extent_io_tree *tree,
 <<<<<<< HEAD
 			BUG_ON(ret == -ENOMEM);
 =======
+<<<<<<< HEAD
+			BUG_ON(ret == -ENOMEM);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			nr++;
 			*bio_flags = this_bio_flag;
 		}
@@ -3332,24 +3759,34 @@ int extent_read_full_page(struct extent_io_tree *tree, struct page *page,
 <<<<<<< HEAD
 			    get_extent_t *get_extent, int mirror_num)
 =======
+<<<<<<< HEAD
+			    get_extent_t *get_extent, int mirror_num)
+=======
 			    get_extent_t *get_extent)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bio *bio = NULL;
 	unsigned long bio_flags = 0;
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = __extent_read_full_page(tree, page, get_extent, &bio, mirror_num,
 				      &bio_flags);
 	if (bio)
 		ret = submit_one_bio(READ, bio, mirror_num, bio_flags);
+<<<<<<< HEAD
+=======
 =======
 	ret = __extent_read_full_page(tree, page, get_extent, &bio, 0,
 				      &bio_flags);
 	if (bio)
 		ret = submit_one_bio(READ, bio, 0, bio_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -3403,7 +3840,11 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 <<<<<<< HEAD
 	bool fill_delalloc = true;
 =======
+<<<<<<< HEAD
+	bool fill_delalloc = true;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (wbc->sync_mode == WB_SYNC_ALL)
 		write_flags = WRITE_SYNC;
@@ -3418,7 +3859,13 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 	ClearPageError(page);
 
 =======
+<<<<<<< HEAD
+
+	ClearPageError(page);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pg_offset = i_size & (PAGE_CACHE_SIZE - 1);
 	if (page->index > end_index ||
 	   (page->index == end_index && !pg_offset)) {
@@ -3431,16 +3878,22 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 		char *userpage;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		userpage = kmap_atomic(page);
 		memset(userpage + pg_offset, 0,
 		       PAGE_CACHE_SIZE - pg_offset);
 		kunmap_atomic(userpage);
+<<<<<<< HEAD
+=======
 =======
 		userpage = kmap_atomic(page, KM_USER0);
 		memset(userpage + pg_offset, 0,
 		       PAGE_CACHE_SIZE - pg_offset);
 		kunmap_atomic(userpage, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flush_dcache_page(page);
 	}
 	pg_offset = 0;
@@ -3448,6 +3901,9 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 	set_page_extent_mapped(page);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!tree->ops || !tree->ops->fill_delalloc)
 		fill_delalloc = false;
 
@@ -3455,12 +3911,15 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 	delalloc_end = 0;
 	page_started = 0;
 	if (!epd->extent_locked && fill_delalloc) {
+<<<<<<< HEAD
+=======
 =======
 	delalloc_start = start;
 	delalloc_end = 0;
 	page_started = 0;
 	if (!epd->extent_locked) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u64 delalloc_to_write = 0;
 		/*
 		 * make sure the wbc mapping index is at least updated
@@ -3479,6 +3938,9 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 				continue;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = tree->ops->fill_delalloc(inode, page,
 						       delalloc_start,
 						       delalloc_end,
@@ -3489,11 +3951,14 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 				SetPageError(page);
 				goto done;
 			}
+<<<<<<< HEAD
+=======
 =======
 			tree->ops->fill_delalloc(inode, page, delalloc_start,
 						 delalloc_end, &page_started,
 						 &nr_written);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * delalloc_end is already one less than the total
 			 * length, so we don't subtract one from
@@ -3531,16 +3996,22 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 		ret = tree->ops->writepage_start_hook(page, start,
 						      page_end);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret) {
 			/* Fixup worker will requeue */
 			if (ret == -EBUSY)
 				wbc->pages_skipped++;
 			else
 				redirty_page_for_writepage(wbc, page);
+<<<<<<< HEAD
+=======
 =======
 		if (ret == -EAGAIN) {
 			redirty_page_for_writepage(wbc, page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			update_nr_written(page, wbc, nr_written);
 			unlock_page(page);
 			ret = 0;
@@ -3644,6 +4115,9 @@ static int __extent_writepage(struct page *page, struct writeback_control *wbc,
 				       (unsigned long long)end);
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			ret = submit_extent_page(write_flags, tree, page,
 						 sector, iosize, pg_offset,
@@ -3939,6 +4413,8 @@ retry:
 	}
 	flush_write_bio(&epd);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 
 			ret = submit_extent_page(write_flags, tree, page,
@@ -3967,6 +4443,7 @@ done_unlocked:
 	free_extent_state(cached_state);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -4001,7 +4478,11 @@ static int extent_write_cache_pages(struct extent_io_tree *tree,
 <<<<<<< HEAD
 	int tag;
 =======
+<<<<<<< HEAD
+	int tag;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pagevec_init(&pvec, 0);
 	if (wbc->range_cyclic) {
@@ -4013,6 +4494,9 @@ static int extent_write_cache_pages(struct extent_io_tree *tree,
 		scanned = 1;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wbc->sync_mode == WB_SYNC_ALL)
 		tag = PAGECACHE_TAG_TOWRITE;
 	else
@@ -4023,6 +4507,8 @@ retry:
 	while (!done && !nr_to_write_done && (index <= end) &&
 	       (nr_pages = pagevec_lookup_tag(&pvec, mapping, &index, tag,
 			min(end - index, (pgoff_t)PAGEVEC_SIZE-1) + 1))) {
+<<<<<<< HEAD
+=======
 =======
 retry:
 	while (!done && !nr_to_write_done && (index <= end) &&
@@ -4030,6 +4516,7 @@ retry:
 			      PAGECACHE_TAG_DIRTY, min(end - index,
 				  (pgoff_t)PAGEVEC_SIZE-1) + 1))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned i;
 
 		scanned = 1;
@@ -4044,6 +4531,9 @@ retry:
 			 * mapping
 			 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (tree->ops &&
 			    tree->ops->write_cache_pages_lock_hook) {
 				tree->ops->write_cache_pages_lock_hook(page,
@@ -4054,12 +4544,15 @@ retry:
 					lock_page(page);
 				}
 			}
+<<<<<<< HEAD
+=======
 =======
 			if (tree->ops && tree->ops->write_cache_pages_lock_hook)
 				tree->ops->write_cache_pages_lock_hook(page);
 			else
 				lock_page(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (unlikely(page->mapping != mapping)) {
 				unlock_page(page);
@@ -4119,6 +4612,9 @@ static void flush_epd_write_bio(struct extent_page_data *epd)
 {
 	if (epd->bio) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int rw = WRITE;
 		int ret;
 
@@ -4127,12 +4623,15 @@ static void flush_epd_write_bio(struct extent_page_data *epd)
 
 		ret = submit_one_bio(rw, epd->bio, 0, 0);
 		BUG_ON(ret < 0); /* -ENOMEM */
+<<<<<<< HEAD
+=======
 =======
 		if (epd->sync_io)
 			submit_one_bio(WRITE_SYNC, epd->bio, 0, 0);
 		else
 			submit_one_bio(WRITE, epd->bio, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		epd->bio = NULL;
 	}
 }
@@ -4150,8 +4649,11 @@ int extent_write_full_page(struct extent_io_tree *tree, struct page *page,
 	int ret;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct address_space *mapping = page->mapping;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct extent_page_data epd = {
 		.bio = NULL,
 		.tree = tree,
@@ -4159,6 +4661,11 @@ int extent_write_full_page(struct extent_io_tree *tree, struct page *page,
 		.extent_locked = 0,
 		.sync_io = wbc->sync_mode == WB_SYNC_ALL,
 	};
+<<<<<<< HEAD
+
+	ret = __extent_writepage(page, wbc, &epd);
+
+=======
 <<<<<<< HEAD
 
 	ret = __extent_writepage(page, wbc, &epd);
@@ -4177,6 +4684,7 @@ int extent_write_full_page(struct extent_io_tree *tree, struct page *page,
 	extent_write_cache_pages(tree, mapping, &wbc_writepages,
 				 __extent_writepage, &epd, flush_write_bio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flush_epd_write_bio(&epd);
 	return ret;
 }
@@ -4202,8 +4710,11 @@ int extent_write_locked_range(struct extent_io_tree *tree, struct inode *inode,
 		.sync_mode	= mode,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.older_than_this = NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.nr_to_write	= nr_pages * 2,
 		.range_start	= start,
 		.range_end	= end + 1,
@@ -4275,8 +4786,12 @@ int extent_readpages(struct extent_io_tree *tree,
 <<<<<<< HEAD
 		return submit_one_bio(READ, bio, 0, bio_flags);
 =======
+<<<<<<< HEAD
+		return submit_one_bio(READ, bio, 0, bio_flags);
+=======
 		submit_one_bio(READ, bio, 0, bio_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -4300,8 +4815,12 @@ int extent_invalidatepage(struct extent_io_tree *tree,
 <<<<<<< HEAD
 	lock_extent_bits(tree, start, end, 0, &cached_state);
 =======
+<<<<<<< HEAD
+	lock_extent_bits(tree, start, end, 0, &cached_state);
+=======
 	lock_extent_bits(tree, start, end, 0, &cached_state, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wait_on_page_writeback(page);
 	clear_extent_bit(tree, start, end,
 			 EXTENT_LOCKED | EXTENT_DIRTY | EXTENT_DELALLOC |
@@ -4371,8 +4890,12 @@ int try_release_extent_mapping(struct extent_map_tree *map,
 <<<<<<< HEAD
 			if (!em) {
 =======
+<<<<<<< HEAD
+			if (!em) {
+=======
 			if (IS_ERR_OR_NULL(em)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				write_unlock(&map->lock);
 				break;
 			}
@@ -4476,7 +4999,13 @@ int extent_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
 	len = ALIGN(len, BTRFS_I(inode)->root->sectorsize);
 
 =======
+<<<<<<< HEAD
+	start = ALIGN(start, BTRFS_I(inode)->root->sectorsize);
+	len = ALIGN(len, BTRFS_I(inode)->root->sectorsize);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * lookup the last file extent.  We're not using i_size here
 	 * because there might be preallocation past i_size
@@ -4527,10 +5056,16 @@ int extent_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
 
 	em = get_extent_skip_holes(inode, start, last_for_get_extent,
 =======
+<<<<<<< HEAD
+			 &cached_state);
+
+	em = get_extent_skip_holes(inode, start, last_for_get_extent,
+=======
 			 &cached_state, GFP_NOFS);
 
 	em = get_extent_skip_holes(inode, off, last_for_get_extent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   get_extent);
 	if (!em)
 		goto out;
@@ -4620,6 +5155,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 inline struct page *extent_buffer_page(struct extent_buffer *eb,
 					      unsigned long i)
 {
@@ -4627,6 +5165,8 @@ inline struct page *extent_buffer_page(struct extent_buffer *eb,
 }
 
 inline unsigned long num_extent_pages(u64 start, u64 len)
+<<<<<<< HEAD
+=======
 =======
 static inline struct page *extent_buffer_page(struct extent_buffer *eb,
 					      unsigned long i)
@@ -4655,12 +5195,16 @@ static inline struct page *extent_buffer_page(struct extent_buffer *eb,
 
 static inline unsigned long num_extent_pages(u64 start, u64 len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return ((start + len + PAGE_CACHE_SIZE - 1) >> PAGE_CACHE_SHIFT) -
 		(start >> PAGE_CACHE_SHIFT);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __free_extent_buffer(struct extent_buffer *eb)
 {
 #if LEAK_DEBUG
@@ -4674,8 +5218,11 @@ static void __free_extent_buffer(struct extent_buffer *eb)
 	kmem_cache_free(extent_buffer_cache, eb);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct extent_buffer *__alloc_extent_buffer(struct extent_io_tree *tree,
 						   u64 start,
 						   unsigned long len,
@@ -4692,6 +5239,9 @@ static struct extent_buffer *__alloc_extent_buffer(struct extent_io_tree *tree,
 	eb->start = start;
 	eb->len = len;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eb->tree = tree;
 	rwlock_init(&eb->lock);
 	atomic_set(&eb->write_locks, 0);
@@ -4703,10 +5253,13 @@ static struct extent_buffer *__alloc_extent_buffer(struct extent_io_tree *tree,
 	eb->lock_nested = 0;
 	init_waitqueue_head(&eb->write_lock_wq);
 	init_waitqueue_head(&eb->read_lock_wq);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_init(&eb->lock);
 	init_waitqueue_head(&eb->lock_wq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if LEAK_DEBUG
 	spin_lock_irqsave(&leak_lock, flags);
@@ -4714,6 +5267,9 @@ static struct extent_buffer *__alloc_extent_buffer(struct extent_io_tree *tree,
 	spin_unlock_irqrestore(&leak_lock, flags);
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&eb->refs_lock);
 	atomic_set(&eb->refs, 1);
 	atomic_set(&eb->io_pages, 0);
@@ -4731,19 +5287,27 @@ static struct extent_buffer *__alloc_extent_buffer(struct extent_io_tree *tree,
 	} else {
 		eb->pages = eb->inline_pages;
 	}
+<<<<<<< HEAD
+=======
 =======
 	atomic_set(&eb->refs, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return eb;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int extent_buffer_under_io(struct extent_buffer *eb)
 {
 	return (atomic_read(&eb->io_pages) ||
 		test_bit(EXTENT_BUFFER_WRITEBACK, &eb->bflags) ||
 		test_bit(EXTENT_BUFFER_DIRTY, &eb->bflags));
+<<<<<<< HEAD
+=======
 =======
 static void __free_extent_buffer(struct extent_buffer *eb)
 {
@@ -4755,6 +5319,7 @@ static void __free_extent_buffer(struct extent_buffer *eb)
 #endif
 	kmem_cache_free(extent_buffer_cache, eb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -4769,9 +5334,13 @@ static void btrfs_release_extent_buffer_page(struct extent_buffer *eb,
 <<<<<<< HEAD
 	BUG_ON(extent_buffer_under_io(eb));
 =======
+<<<<<<< HEAD
+	BUG_ON(extent_buffer_under_io(eb));
+=======
 	if (!eb->first_page)
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	index = num_extent_pages(eb->start, eb->len);
 	if (start_idx >= index)
@@ -4781,6 +5350,9 @@ static void btrfs_release_extent_buffer_page(struct extent_buffer *eb,
 		index--;
 		page = extent_buffer_page(eb, index);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (page) {
 			spin_lock(&page->mapping->private_lock);
 			/*
@@ -4809,10 +5381,13 @@ static void btrfs_release_extent_buffer_page(struct extent_buffer *eb,
 			/* One for when we alloced the page */
 			page_cache_release(page);
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (page)
 			page_cache_release(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (index != start_idx);
 }
 
@@ -4826,6 +5401,9 @@ static inline void btrfs_release_extent_buffer(struct extent_buffer *eb)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void check_buffer_tree_ref(struct extent_buffer *eb)
 {
 	/* the ref bit is tricky.  We have to make sure it is set
@@ -4870,11 +5448,14 @@ static void mark_extent_buffer_accessed(struct extent_buffer *eb)
 
 struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 					  u64 start, unsigned long len)
+<<<<<<< HEAD
+=======
 =======
 struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 					  u64 start, unsigned long len,
 					  struct page *page0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long num_pages = num_extent_pages(start, len);
 	unsigned long i;
@@ -4893,8 +5474,12 @@ struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 <<<<<<< HEAD
 		mark_extent_buffer_accessed(eb);
 =======
+<<<<<<< HEAD
+		mark_extent_buffer_accessed(eb);
+=======
 		mark_page_accessed(eb->first_page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return eb;
 	}
 	rcu_read_unlock();
@@ -4903,6 +5488,10 @@ struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 	if (!eb)
 		return NULL;
 
+<<<<<<< HEAD
+	for (i = 0; i < num_pages; i++, index++) {
+		p = find_or_create_page(mapping, index, GFP_NOFS);
+=======
 <<<<<<< HEAD
 	for (i = 0; i < num_pages; i++, index++) {
 		p = find_or_create_page(mapping, index, GFP_NOFS);
@@ -4922,11 +5511,15 @@ struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 	for (; i < num_pages; i++, index++) {
 		p = find_or_create_page(mapping, index, GFP_NOFS | __GFP_HIGHMEM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!p) {
 			WARN_ON(1);
 			goto free_eb;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		spin_lock(&mapping->private_lock);
 		if (PagePrivate(p)) {
@@ -4959,6 +5552,8 @@ struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 		WARN_ON(PageDirty(p));
 		mark_page_accessed(p);
 		eb->pages[i] = p;
+<<<<<<< HEAD
+=======
 =======
 		set_page_extent_mapped(p);
 		mark_page_accessed(p);
@@ -4969,6 +5564,7 @@ struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 			set_page_private(p, EXTENT_PAGE_PRIVATE);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!PageUptodate(p))
 			uptodate = 0;
 
@@ -4977,10 +5573,15 @@ struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 		 * and why we unlock later
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (uptodate)
 		set_bit(EXTENT_BUFFER_UPTODATE, &eb->bflags);
 again:
+<<<<<<< HEAD
+=======
 =======
 		if (i != 0)
 			unlock_page(p);
@@ -4989,6 +5590,7 @@ again:
 		set_bit(EXTENT_BUFFER_UPTODATE, &eb->bflags);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = radix_tree_preload(GFP_NOFS & ~__GFP_HIGHMEM);
 	if (ret)
 		goto free_eb;
@@ -4999,6 +5601,9 @@ again:
 		exists = radix_tree_lookup(&tree->buffer,
 						start >> PAGE_CACHE_SHIFT);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!atomic_inc_not_zero(&exists->refs)) {
 			spin_unlock(&tree->buffer_lock);
 			radix_tree_preload_end();
@@ -5014,6 +5619,8 @@ again:
 	spin_lock(&eb->refs_lock);
 	check_buffer_tree_ref(eb);
 	spin_unlock(&eb->refs_lock);
+<<<<<<< HEAD
+=======
 =======
 		/* add one reference for the caller */
 		atomic_inc(&exists->refs);
@@ -5024,6 +5631,7 @@ again:
 	/* add one reference for the tree */
 	atomic_inc(&eb->refs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&tree->buffer_lock);
 	radix_tree_preload_end();
 
@@ -5037,6 +5645,9 @@ again:
 	 * it doesn't get lost
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SetPageChecked(eb->pages[0]);
 	for (i = 1; i < num_pages; i++) {
 		p = extent_buffer_page(eb, i);
@@ -5053,6 +5664,8 @@ free_eb:
 	}
 
 	WARN_ON(!atomic_dec_and_test(&eb->refs));
+<<<<<<< HEAD
+=======
 =======
 	set_page_extent_mapped(eb->first_page);
 	set_page_extent_head(eb->first_page, eb->len);
@@ -5067,6 +5680,7 @@ free_eb:
 	if (!atomic_dec_and_test(&eb->refs))
 		return exists;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btrfs_release_extent_buffer(eb);
 	return exists;
 }
@@ -5083,8 +5697,12 @@ struct extent_buffer *find_extent_buffer(struct extent_io_tree *tree,
 <<<<<<< HEAD
 		mark_extent_buffer_accessed(eb);
 =======
+<<<<<<< HEAD
+		mark_extent_buffer_accessed(eb);
+=======
 		mark_page_accessed(eb->first_page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return eb;
 	}
 	rcu_read_unlock();
@@ -5093,6 +5711,9 @@ struct extent_buffer *find_extent_buffer(struct extent_io_tree *tree,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void btrfs_release_extent_buffer_rcu(struct rcu_head *head)
 {
 	struct extent_buffer *eb =
@@ -5124,14 +5745,20 @@ static void release_extent_buffer(struct extent_buffer *eb, gfp_t mask)
 	spin_unlock(&eb->refs_lock);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void free_extent_buffer(struct extent_buffer *eb)
 {
 	if (!eb)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&eb->refs_lock);
 	if (atomic_read(&eb->refs) == 2 &&
 	    test_bit(EXTENT_BUFFER_STALE, &eb->bflags) &&
@@ -5161,6 +5788,8 @@ void free_extent_buffer_stale(struct extent_buffer *eb)
 }
 
 void clear_extent_buffer_dirty(struct extent_buffer *eb)
+<<<<<<< HEAD
+=======
 =======
 	if (!atomic_dec_and_test(&eb->refs))
 		return;
@@ -5171,6 +5800,7 @@ void clear_extent_buffer_dirty(struct extent_buffer *eb)
 int clear_extent_buffer_dirty(struct extent_io_tree *tree,
 			      struct extent_buffer *eb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long i;
 	unsigned long num_pages;
@@ -5188,11 +5818,14 @@ int clear_extent_buffer_dirty(struct extent_io_tree *tree,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		set_page_extent_mapped(page);
 		if (i == 0)
 			set_page_extent_head(page, eb->len);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clear_page_dirty_for_io(page);
 		spin_lock_irq(&page->mapping->tree_lock);
 		if (!PageDirty(page)) {
@@ -5202,6 +5835,9 @@ int clear_extent_buffer_dirty(struct extent_io_tree *tree,
 		}
 		spin_unlock_irq(&page->mapping->tree_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ClearPageError(page);
 		unlock_page(page);
 	}
@@ -5209,6 +5845,8 @@ int clear_extent_buffer_dirty(struct extent_io_tree *tree,
 }
 
 int set_extent_buffer_dirty(struct extent_buffer *eb)
+<<<<<<< HEAD
+=======
 =======
 		unlock_page(page);
 	}
@@ -5218,12 +5856,16 @@ int set_extent_buffer_dirty(struct extent_buffer *eb)
 int set_extent_buffer_dirty(struct extent_io_tree *tree,
 			     struct extent_buffer *eb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long i;
 	unsigned long num_pages;
 	int was_dirty = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	check_buffer_tree_ref(eb);
 
 	was_dirty = test_and_set_bit(EXTENT_BUFFER_DIRTY, &eb->bflags);
@@ -5249,6 +5891,8 @@ static int range_straddles_pages(u64 start, u64 len)
 }
 
 int clear_extent_buffer_uptodate(struct extent_buffer *eb)
+<<<<<<< HEAD
+=======
 =======
 	was_dirty = test_and_set_bit(EXTENT_BUFFER_DIRTY, &eb->bflags);
 	num_pages = num_extent_pages(eb->start, eb->len);
@@ -5261,11 +5905,16 @@ int clear_extent_buffer_uptodate(struct extent_io_tree *tree,
 				struct extent_buffer *eb,
 				struct extent_state **cached_state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long i;
 	struct page *page;
 	unsigned long num_pages;
 
+<<<<<<< HEAD
+	clear_bit(EXTENT_BUFFER_UPTODATE, &eb->bflags);
+	num_pages = num_extent_pages(eb->start, eb->len);
+=======
 <<<<<<< HEAD
 	clear_bit(EXTENT_BUFFER_UPTODATE, &eb->bflags);
 	num_pages = num_extent_pages(eb->start, eb->len);
@@ -5276,6 +5925,7 @@ int clear_extent_buffer_uptodate(struct extent_io_tree *tree,
 	clear_extent_uptodate(tree, eb->start, eb->start + eb->len - 1,
 			      cached_state, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < num_pages; i++) {
 		page = extent_buffer_page(eb, i);
 		if (page)
@@ -5287,19 +5937,28 @@ int clear_extent_buffer_uptodate(struct extent_io_tree *tree,
 <<<<<<< HEAD
 int set_extent_buffer_uptodate(struct extent_buffer *eb)
 =======
+<<<<<<< HEAD
+int set_extent_buffer_uptodate(struct extent_buffer *eb)
+=======
 int set_extent_buffer_uptodate(struct extent_io_tree *tree,
 				struct extent_buffer *eb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long i;
 	struct page *page;
 	unsigned long num_pages;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(EXTENT_BUFFER_UPTODATE, &eb->bflags);
 	num_pages = num_extent_pages(eb->start, eb->len);
 	for (i = 0; i < num_pages; i++) {
 		page = extent_buffer_page(eb, i);
+<<<<<<< HEAD
+=======
 =======
 	num_pages = num_extent_pages(eb->start, eb->len);
 
@@ -5314,6 +5973,7 @@ int set_extent_buffer_uptodate(struct extent_io_tree *tree,
 			continue;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		SetPageUptodate(page);
 	}
 	return 0;
@@ -5329,6 +5989,9 @@ int extent_range_uptodate(struct extent_io_tree *tree,
 	unsigned long index;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (range_straddles_pages(start, end - start + 1)) {
 		ret = test_range_bit(tree, start, end,
 				     EXTENT_UPTODATE, 1, NULL);
@@ -5340,6 +6003,8 @@ int extent_range_uptodate(struct extent_io_tree *tree,
 		page = find_get_page(tree->mapping, index);
 		if (!page)
 			return 1;
+<<<<<<< HEAD
+=======
 =======
 	ret = test_range_bit(tree, start, end, EXTENT_UPTODATE, 1, NULL);
 	if (ret)
@@ -5348,6 +6013,7 @@ int extent_range_uptodate(struct extent_io_tree *tree,
 		index = start >> PAGE_CACHE_SHIFT;
 		page = find_get_page(tree->mapping, index);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uptodate = PageUptodate(page);
 		page_cache_release(page);
 		if (!uptodate) {
@@ -5360,6 +6026,9 @@ int extent_range_uptodate(struct extent_io_tree *tree,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int extent_buffer_uptodate(struct extent_buffer *eb)
 {
 	return test_bit(EXTENT_BUFFER_UPTODATE, &eb->bflags);
@@ -5367,6 +6036,8 @@ int extent_buffer_uptodate(struct extent_buffer *eb)
 
 int read_extent_buffer_pages(struct extent_io_tree *tree,
 			     struct extent_buffer *eb, u64 start, int wait,
+<<<<<<< HEAD
+=======
 =======
 int extent_buffer_uptodate(struct extent_io_tree *tree,
 			   struct extent_buffer *eb,
@@ -5401,6 +6072,7 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 			     struct extent_buffer *eb,
 			     u64 start, int wait,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     get_extent_t *get_extent, int mirror_num)
 {
 	unsigned long i;
@@ -5414,9 +6086,14 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 	unsigned long num_pages;
 	unsigned long num_reads = 0;
 =======
+<<<<<<< HEAD
+	unsigned long num_pages;
+	unsigned long num_reads = 0;
+=======
 	int inc_all_pages = 0;
 	unsigned long num_pages;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bio *bio = NULL;
 	unsigned long bio_flags = 0;
 
@@ -5425,12 +6102,15 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (test_range_bit(tree, eb->start, eb->start + eb->len - 1,
 			   EXTENT_UPTODATE, 1, NULL)) {
 		return 0;
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (start) {
 		WARN_ON(start < eb->start);
 		start_i = (start >> PAGE_CACHE_SHIFT) -
@@ -5445,8 +6125,12 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 <<<<<<< HEAD
 		if (wait == WAIT_NONE) {
 =======
+<<<<<<< HEAD
+		if (wait == WAIT_NONE) {
+=======
 		if (!wait) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!trylock_page(page))
 				goto unlock_exit;
 		} else {
@@ -5454,14 +6138,20 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 		}
 		locked_pages++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!PageUptodate(page)) {
 			num_reads++;
 			all_uptodate = 0;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (!PageUptodate(page))
 			all_uptodate = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (all_uptodate) {
 		if (start_i == 0)
@@ -5470,12 +6160,17 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_bit(EXTENT_BUFFER_IOERR, &eb->bflags);
 	eb->read_mirror = 0;
 	atomic_set(&eb->io_pages, num_reads);
 	for (i = start_i; i < num_pages; i++) {
 		page = extent_buffer_page(eb, i);
 		if (!PageUptodate(page)) {
+<<<<<<< HEAD
+=======
 =======
 	for (i = start_i; i < num_pages; i++) {
 		page = extent_buffer_page(eb, i);
@@ -5492,6 +6187,7 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 			if (start_i == 0)
 				inc_all_pages = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ClearPageError(page);
 			err = __extent_read_full_page(tree, page,
 						      get_extent, &bio,
@@ -5504,6 +6200,9 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bio) {
 		err = submit_one_bio(READ, bio, mirror_num, bio_flags);
 		if (err)
@@ -5511,12 +6210,15 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 	}
 
 	if (ret || wait != WAIT_COMPLETE)
+<<<<<<< HEAD
+=======
 =======
 	if (bio)
 		submit_one_bio(READ, bio, mirror_num, bio_flags);
 
 	if (ret || !wait)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 
 	for (i = start_i; i < num_pages; i++) {
@@ -5528,9 +6230,12 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!ret)
 		set_bit(EXTENT_BUFFER_UPTODATE, &eb->bflags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 
 unlock_exit:
@@ -5569,10 +6274,15 @@ void read_extent_buffer(struct extent_buffer *eb, void *dstv,
 		kaddr = page_address(page);
 		memcpy(dst, kaddr + offset, cur);
 =======
+<<<<<<< HEAD
+		kaddr = page_address(page);
+		memcpy(dst, kaddr + offset, cur);
+=======
 		kaddr = kmap_atomic(page, KM_USER1);
 		memcpy(dst, kaddr + offset, cur);
 		kunmap_atomic(kaddr, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		dst += cur;
 		len -= cur;
@@ -5587,10 +6297,16 @@ int map_private_extent_buffer(struct extent_buffer *eb, unsigned long start,
 			       unsigned long *map_start,
 			       unsigned long *map_len)
 =======
+<<<<<<< HEAD
+			       unsigned long min_len, char **map,
+			       unsigned long *map_start,
+			       unsigned long *map_len)
+=======
 			       unsigned long min_len, char **token, char **map,
 			       unsigned long *map_start,
 			       unsigned long *map_len, int km)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	size_t offset = start & (PAGE_CACHE_SIZE - 1);
 	char *kaddr;
@@ -5623,14 +6339,20 @@ int map_private_extent_buffer(struct extent_buffer *eb, unsigned long start,
 <<<<<<< HEAD
 	kaddr = page_address(p);
 =======
+<<<<<<< HEAD
+	kaddr = page_address(p);
+=======
 	kaddr = kmap_atomic(p, km);
 	*token = kaddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*map = kaddr + offset;
 	*map_len = PAGE_CACHE_SIZE - offset;
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 int map_extent_buffer(struct extent_buffer *eb, unsigned long start,
@@ -5663,6 +6385,7 @@ void unmap_extent_buffer(struct extent_buffer *eb, char *token, int km)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int memcmp_extent_buffer(struct extent_buffer *eb, const void *ptrv,
 			  unsigned long start,
 			  unsigned long len)
@@ -5690,10 +6413,15 @@ int memcmp_extent_buffer(struct extent_buffer *eb, const void *ptrv,
 		kaddr = page_address(page);
 		ret = memcmp(ptr, kaddr + offset, cur);
 =======
+<<<<<<< HEAD
+		kaddr = page_address(page);
+		ret = memcmp(ptr, kaddr + offset, cur);
+=======
 		kaddr = kmap_atomic(page, KM_USER0);
 		ret = memcmp(ptr, kaddr + offset, cur);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret)
 			break;
 
@@ -5730,10 +6458,15 @@ void write_extent_buffer(struct extent_buffer *eb, const void *srcv,
 		kaddr = page_address(page);
 		memcpy(kaddr + offset, src, cur);
 =======
+<<<<<<< HEAD
+		kaddr = page_address(page);
+		memcpy(kaddr + offset, src, cur);
+=======
 		kaddr = kmap_atomic(page, KM_USER1);
 		memcpy(kaddr + offset, src, cur);
 		kunmap_atomic(kaddr, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		src += cur;
 		len -= cur;
@@ -5766,10 +6499,15 @@ void memset_extent_buffer(struct extent_buffer *eb, char c,
 		kaddr = page_address(page);
 		memset(kaddr + offset, c, cur);
 =======
+<<<<<<< HEAD
+		kaddr = page_address(page);
+		memset(kaddr + offset, c, cur);
+=======
 		kaddr = kmap_atomic(page, KM_USER0);
 		memset(kaddr + offset, c, cur);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		len -= cur;
 		offset = 0;
@@ -5804,10 +6542,15 @@ void copy_extent_buffer(struct extent_buffer *dst, struct extent_buffer *src,
 		kaddr = page_address(page);
 		read_extent_buffer(src, kaddr + offset, src_offset, cur);
 =======
+<<<<<<< HEAD
+		kaddr = page_address(page);
+		read_extent_buffer(src, kaddr + offset, src_offset, cur);
+=======
 		kaddr = kmap_atomic(page, KM_USER0);
 		read_extent_buffer(src, kaddr + offset, src_offset, cur);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		src_offset += cur;
 		len -= cur;
@@ -5821,11 +6564,16 @@ static void move_pages(struct page *dst_page, struct page *src_page,
 		       unsigned long len)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *dst_kaddr = page_address(dst_page);
 	if (dst_page == src_page) {
 		memmove(dst_kaddr + dst_off, dst_kaddr + src_off, len);
 	} else {
 		char *src_kaddr = page_address(src_page);
+<<<<<<< HEAD
+=======
 =======
 	char *dst_kaddr = kmap_atomic(dst_page, KM_USER0);
 	if (dst_page == src_page) {
@@ -5833,6 +6581,7 @@ static void move_pages(struct page *dst_page, struct page *src_page,
 	} else {
 		char *src_kaddr = kmap_atomic(src_page, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		char *p = dst_kaddr + dst_off + len;
 		char *s = src_kaddr + src_off + len;
 
@@ -5841,11 +6590,15 @@ static void move_pages(struct page *dst_page, struct page *src_page,
 <<<<<<< HEAD
 	}
 =======
+<<<<<<< HEAD
+	}
+=======
 
 		kunmap_atomic(src_kaddr, KM_USER1);
 	}
 	kunmap_atomic(dst_kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline bool areas_overlap(unsigned long src, unsigned long dst, unsigned long len)
@@ -5859,6 +6612,9 @@ static void copy_pages(struct page *dst_page, struct page *src_page,
 		       unsigned long len)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *dst_kaddr = page_address(dst_page);
 	char *src_kaddr;
 	int must_memmove = 0;
@@ -5875,6 +6631,8 @@ static void copy_pages(struct page *dst_page, struct page *src_page,
 		memmove(dst_kaddr + dst_off, src_kaddr + src_off, len);
 	else
 		memcpy(dst_kaddr + dst_off, src_kaddr + src_off, len);
+<<<<<<< HEAD
+=======
 =======
 	char *dst_kaddr = kmap_atomic(dst_page, KM_USER0);
 	char *src_kaddr;
@@ -5891,6 +6649,7 @@ static void copy_pages(struct page *dst_page, struct page *src_page,
 	if (dst_page != src_page)
 		kunmap_atomic(src_kaddr, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void memcpy_extent_buffer(struct extent_buffer *dst, unsigned long dst_offset,
@@ -5963,8 +6722,12 @@ void memmove_extent_buffer(struct extent_buffer *dst, unsigned long dst_offset,
 <<<<<<< HEAD
 	if (dst_offset < src_offset) {
 =======
+<<<<<<< HEAD
+	if (dst_offset < src_offset) {
+=======
 	if (!areas_overlap(src_offset, dst_offset, len)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcpy_extent_buffer(dst, dst_offset, src_offset, len);
 		return;
 	}
@@ -5991,6 +6754,9 @@ void memmove_extent_buffer(struct extent_buffer *dst, unsigned long dst_offset,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int try_release_extent_buffer(struct page *page, gfp_t mask)
 {
 	struct extent_buffer *eb;
@@ -6035,6 +6801,8 @@ int try_release_extent_buffer(struct page *page, gfp_t mask)
 	release_extent_buffer(eb, mask);
 
 	return 1;
+<<<<<<< HEAD
+=======
 =======
 static inline void btrfs_release_extent_buffer_rcu(struct rcu_head *head)
 {
@@ -6080,4 +6848,5 @@ out:
 		call_rcu(&eb->rcu_head, btrfs_release_extent_buffer_rcu);
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -1,9 +1,14 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * max8997.h - Voltage regulator driver for the Maxim 8997
  *
  *  Copyright (C) 2010 Samsung Electrnoics
  *  MyungJoo Ham <myungjoo.ham@samsung.com>
+<<<<<<< HEAD
+=======
 =======
  * max8997-private.h - Voltage regulator driver for the Maxim 8997
  *
@@ -11,6 +16,7 @@
  *
  *  based on max8998-private.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +37,9 @@
 #define __LINUX_MFD_MAX8997_PRIV_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/i2c.h>
 
 #define MAX8997_REG_INVALID	(0xff)
@@ -370,6 +379,8 @@ extern int max8997_update_reg(struct i2c_client *i2c, u8 reg, u8 val, u8 mask);
 #define MAX8997_GPIO_INT_MASK	(0x3 << 4)
 #define MAX8997_GPIO_DATA_MASK	(0x1 << 2)
 #endif /*  __LINUX_MFD_MAX8997_PRIV_H */
+<<<<<<< HEAD
+=======
 =======
 #define MAX8997_NUM_IRQ_PMIC_REGS	4
 #define MAX8997_NUM_IRQ_MUIC_REGS	3
@@ -755,3 +766,4 @@ extern int max8997_update_reg(struct i2c_client *i2c, u8 reg, u8 val, u8 mask);
 #endif /*  __LINUX_MFD_MAX8997_PRIV_H */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

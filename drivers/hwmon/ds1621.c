@@ -1,4 +1,30 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ds1621.c - Part of lm_sensors, Linux kernel modules for hardware
+ *	      monitoring
+ * Christian W. Zuckschwerdt  <zany@triq.net>  2000-11-23
+ * based on lm75.c by Frodo Looijaard <frodol@dds.nl>
+ * Ported to Linux 2.6 by Aurelien Jarno <aurelien@aurel32.net> with
+ * the help of Jean Delvare <khali@linux-fr.org>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     ds1621.c - Part of lm_sensors, Linux kernel modules for hardware
              monitoring
     Christian W. Zuckschwerdt  <zany@triq.net>  2000-11-23
@@ -20,6 +46,10 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/module.h>
 #include <linux/init.h>
@@ -67,7 +97,15 @@ static const u8 DS1621_REG_TEMP[3] = {
 
 /* Conversions */
 #define ALARMS_FROM_REG(val) ((val) & \
+<<<<<<< HEAD
+<<<<<<< HEAD
+			(DS1621_ALARM_TEMP_HIGH | DS1621_ALARM_TEMP_LOW))
+=======
                               (DS1621_ALARM_TEMP_HIGH | DS1621_ALARM_TEMP_LOW))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+                              (DS1621_ALARM_TEMP_HIGH | DS1621_ALARM_TEMP_LOW))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Each client has this additional data */
 struct ds1621_data {
@@ -80,6 +118,11 @@ struct ds1621_data {
 	u8 conf;			/* Register encoding, combined */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Temperature registers are word-sized.
    DS1621 uses a high-byte first convention, which is exactly opposite to
    the SMBus standard. */
@@ -98,6 +141,10 @@ static int ds1621_write_temp(struct i2c_client *client, u8 reg, u16 value)
 	return i2c_smbus_write_word_data(client, reg, swab16(value));
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ds1621_init_client(struct i2c_client *client)
 {
 	u8 conf, new_conf;
@@ -111,10 +158,23 @@ static void ds1621_init_client(struct i2c_client *client)
 		new_conf &= ~DS1621_REG_CONFIG_POLARITY;
 	else if (polarity == 1)
 		new_conf |= DS1621_REG_CONFIG_POLARITY;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (conf != new_conf)
+		i2c_smbus_write_byte_data(client, DS1621_REG_CONF, new_conf);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	
 	if (conf != new_conf)
 		i2c_smbus_write_byte_data(client, DS1621_REG_CONF, new_conf);
 	
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* start conversion */
 	i2c_smbus_write_byte(client, DS1621_COM_START);
 }
@@ -136,7 +196,15 @@ static struct ds1621_data *ds1621_update_client(struct device *dev)
 		data->conf = i2c_smbus_read_byte_data(client, DS1621_REG_CONF);
 
 		for (i = 0; i < ARRAY_SIZE(data->temp); i++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			data->temp[i] = i2c_smbus_read_word_swapped(client,
+=======
 			data->temp[i] = ds1621_read_temp(client,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			data->temp[i] = ds1621_read_temp(client,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							 DS1621_REG_TEMP[i]);
 
 		/* reset alarms if necessary */
@@ -173,12 +241,32 @@ static ssize_t set_temp(struct device *dev, struct device_attribute *da,
 	struct sensor_device_attribute *attr = to_sensor_dev_attr(da);
 	struct i2c_client *client = to_i2c_client(dev);
 	struct ds1621_data *data = i2c_get_clientdata(client);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+
+	mutex_lock(&data->update_lock);
+	data->temp[attr->index] = LM75_TEMP_TO_REG(val);
+	i2c_smbus_write_word_swapped(client, DS1621_REG_TEMP[attr->index],
+				     data->temp[attr->index]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 val = LM75_TEMP_TO_REG(simple_strtol(buf, NULL, 10));
 
 	mutex_lock(&data->update_lock);
 	data->temp[attr->index] = val;
 	ds1621_write_temp(client, DS1621_REG_TEMP[attr->index],
 			  data->temp[attr->index]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&data->update_lock);
 	return count;
 }
@@ -230,6 +318,22 @@ static int ds1621_detect(struct i2c_client *client,
 	int conf, temp;
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!i2c_check_functionality(adapter, I2C_FUNC_SMBUS_BYTE_DATA
+				     | I2C_FUNC_SMBUS_WORD_DATA
+				     | I2C_FUNC_SMBUS_WRITE_BYTE))
+		return -ENODEV;
+
+	/*
+	 * Now, we do the remaining detection. It is lousy.
+	 *
+	 * The NVB bit should be low if no EEPROM write has been requested
+	 * during the latest 10ms, which is highly improbable in our case.
+	 */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!i2c_check_functionality(adapter, I2C_FUNC_SMBUS_BYTE_DATA 
 				     | I2C_FUNC_SMBUS_WORD_DATA 
 				     | I2C_FUNC_SMBUS_WRITE_BYTE))
@@ -238,6 +342,10 @@ static int ds1621_detect(struct i2c_client *client,
 	/* Now, we do the remaining detection. It is lousy. */
 	/* The NVB bit should be low if no EEPROM write has been  requested
 	   during the latest 10ms, which is highly improbable in our case. */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	conf = i2c_smbus_read_byte_data(client, DS1621_REG_CONF);
 	if (conf < 0 || conf & DS1621_REG_CONFIG_NVB)
 		return -ENODEV;
@@ -272,7 +380,16 @@ static int ds1621_probe(struct i2c_client *client,
 	ds1621_init_client(client);
 
 	/* Register sysfs hooks */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = sysfs_create_group(&client->dev.kobj, &ds1621_group);
+	if (err)
+=======
 	if ((err = sysfs_create_group(&client->dev.kobj, &ds1621_group)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((err = sysfs_create_group(&client->dev.kobj, &ds1621_group)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit_free;
 
 	data->hwmon_dev = hwmon_device_register(&client->dev);
@@ -283,11 +400,25 @@ static int ds1621_probe(struct i2c_client *client,
 
 	return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ exit_remove_files:
+	sysfs_remove_group(&client->dev.kobj, &ds1621_group);
+ exit_free:
+	kfree(data);
+ exit:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
       exit_remove_files:
 	sysfs_remove_group(&client->dev.kobj, &ds1621_group);
       exit_free:
 	kfree(data);
       exit:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -323,6 +454,12 @@ static struct i2c_driver ds1621_driver = {
 	.address_list	= normal_i2c,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(ds1621_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ds1621_init(void)
 {
 	return i2c_add_driver(&ds1621_driver);
@@ -333,10 +470,23 @@ static void __exit ds1621_exit(void)
 	i2c_del_driver(&ds1621_driver);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Christian W. Zuckschwerdt <zany@triq.net>");
 MODULE_DESCRIPTION("DS1621 driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(ds1621_init);
 module_exit(ds1621_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(ds1621_init);
+module_exit(ds1621_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

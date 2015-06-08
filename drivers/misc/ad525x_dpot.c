@@ -64,7 +64,15 @@
  * Author: Chris Verges <chrisv@cyberswitching.com>
  *
  * derived from ad5252.c
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (c) 2006-2011 Michael Hennerich <hennerich@blackfin.uclinux.org>
+=======
  * Copyright (c) 2006 Michael Hennerich <hennerich@blackfin.uclinux.org>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (c) 2006 Michael Hennerich <hennerich@blackfin.uclinux.org>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Licensed under the GPL-2 or later.
  */
@@ -76,8 +84,16 @@
 #include <linux/delay.h>
 #include <linux/slab.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define DRIVER_VERSION			"0.2"
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define DRIVER_VERSION			"0.2"
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ad525x_dpot.h"
 
 /*
@@ -687,8 +703,19 @@ inline void ad_dpot_remove_files(struct device *dev,
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int __devinit ad_dpot_probe(struct device *dev,
+		struct ad_dpot_bus_data *bdata, unsigned long devid,
+			    const char *name)
+=======
 __devinit int ad_dpot_probe(struct device *dev,
 		struct ad_dpot_bus_data *bdata, const struct ad_dpot_id *id)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+__devinit int ad_dpot_probe(struct device *dev,
+		struct ad_dpot_bus_data *bdata, const struct ad_dpot_id *id)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 
 	struct dpot_data *data;
@@ -704,6 +731,18 @@ __devinit int ad_dpot_probe(struct device *dev,
 	mutex_init(&data->update_lock);
 
 	data->bdata = *bdata;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data->devid = devid;
+
+	data->max_pos = 1 << DPOT_MAX_POS(devid);
+	data->rdac_mask = data->max_pos - 1;
+	data->feat = DPOT_FEAT(devid);
+	data->uid = DPOT_UID(devid);
+	data->wipers = DPOT_WIPERS(devid);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data->devid = id->devid;
 
 	data->max_pos = 1 << DPOT_MAX_POS(data->devid);
@@ -711,6 +750,10 @@ __devinit int ad_dpot_probe(struct device *dev,
 	data->feat = DPOT_FEAT(data->devid);
 	data->uid = DPOT_UID(data->devid);
 	data->wipers = DPOT_WIPERS(data->devid);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = DPOT_RDAC0; i < MAX_RDACS; i++)
 		if (data->wipers & (1 << i)) {
@@ -731,7 +774,15 @@ __devinit int ad_dpot_probe(struct device *dev,
 	}
 
 	dev_info(dev, "%s %d-Position Digital Potentiometer registered\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 name, data->max_pos);
+=======
 		 id->name, data->max_pos);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 id->name, data->max_pos);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -745,7 +796,15 @@ exit_free:
 	dev_set_drvdata(dev, NULL);
 exit:
 	dev_err(dev, "failed to create client for %s ID 0x%lX\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		name, devid);
+=======
 			id->name, id->devid);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			id->name, id->devid);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 EXPORT_SYMBOL(ad_dpot_probe);
@@ -770,4 +829,11 @@ MODULE_AUTHOR("Chris Verges <chrisv@cyberswitching.com>, "
 	      "Michael Hennerich <hennerich@blackfin.uclinux.org>");
 MODULE_DESCRIPTION("Digital potentiometer driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 MODULE_VERSION(DRIVER_VERSION);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_VERSION(DRIVER_VERSION);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

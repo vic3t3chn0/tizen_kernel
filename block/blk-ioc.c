@@ -17,6 +17,9 @@
 static struct kmem_cache *iocontext_cachep;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * get_io_context - increment reference count to io_context
  * @ioc: io_context to get
@@ -155,6 +158,8 @@ void put_io_context(struct io_context *ioc)
 		kmem_cache_free(iocontext_cachep, ioc);
 }
 EXPORT_SYMBOL(put_io_context);
+<<<<<<< HEAD
+=======
 =======
 static void cfq_dtor(struct io_context *ioc)
 {
@@ -204,6 +209,7 @@ static void cfq_exit(struct io_context *ioc)
 	rcu_read_unlock();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Called by the exiting task */
 void exit_io_context(struct task_struct *task)
@@ -214,7 +220,13 @@ void exit_io_context(struct task_struct *task)
 	struct hlist_node *n;
 	unsigned long flags;
 =======
+<<<<<<< HEAD
+	struct io_cq *icq;
+	struct hlist_node *n;
+	unsigned long flags;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	task_lock(task);
 	ioc = task->io_context;
@@ -222,6 +234,9 @@ void exit_io_context(struct task_struct *task)
 	task_unlock(task);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!atomic_dec_and_test(&ioc->nr_tasks)) {
 		put_io_context(ioc);
 		return;
@@ -247,15 +262,21 @@ retry:
 		}
 	}
 	spin_unlock_irqrestore(&ioc->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	if (atomic_dec_and_test(&ioc->nr_tasks))
 		cfq_exit(ioc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	put_io_context(ioc);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * ioc_clear_queue - break any ioc association with the specified queue
  * @q: request_queue being cleared
@@ -508,6 +529,8 @@ unsigned icq_get_changed(struct io_cq *icq)
 	return changed;
 }
 EXPORT_SYMBOL(icq_get_changed);
+<<<<<<< HEAD
+=======
 =======
 struct io_context *alloc_io_context(gfp_t gfp_flags, int node)
 {
@@ -584,6 +607,7 @@ struct io_context *get_io_context(gfp_t gfp_flags, int node)
 }
 EXPORT_SYMBOL(get_io_context);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init blk_ioc_init(void)
 {
@@ -594,9 +618,13 @@ static int __init blk_ioc_init(void)
 <<<<<<< HEAD
 subsys_initcall(blk_ioc_init);
 =======
+<<<<<<< HEAD
+subsys_initcall(blk_ioc_init);
+=======
 #ifdef CONFIG_FAST_RESUME
 beforeresume_initcall(blk_ioc_init);
 #else
 subsys_initcall(blk_ioc_init);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -23,8 +23,11 @@ extern void free_stack(unsigned long stack, int order);
 extern int do_signal(void);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void copy_sc(struct uml_pt_regs *regs, void *from);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void interrupt_end(void);
 extern void relay_signal(int sig, struct uml_pt_regs *regs);
 
@@ -55,8 +58,12 @@ extern int __cant_sleep(void);
 <<<<<<< HEAD
 extern int get_current_pid(void);
 =======
+<<<<<<< HEAD
+extern int get_current_pid(void);
+=======
 extern void *get_current(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int copy_from_user_proc(void *to, void *from, int size);
 extern int cpu(void);
 extern char *uml_strdup(const char *string);

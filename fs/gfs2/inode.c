@@ -310,8 +310,12 @@ struct inode *gfs2_lookupi(struct inode *dir, const struct qstr *name,
 <<<<<<< HEAD
 		error = gfs2_permission(dir, MAY_EXEC);
 =======
+<<<<<<< HEAD
+		error = gfs2_permission(dir, MAY_EXEC);
+=======
 		error = gfs2_permission(dir, MAY_EXEC, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out;
 	}
@@ -338,11 +342,16 @@ out:
 
 static int create_ok(struct gfs2_inode *dip, const struct qstr *name,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     umode_t mode)
 {
 	int error;
 
 	error = gfs2_permission(&dip->i_inode, MAY_WRITE | MAY_EXEC);
+<<<<<<< HEAD
+=======
 =======
 		     unsigned int mode)
 {
@@ -350,6 +359,7 @@ static int create_ok(struct gfs2_inode *dip, const struct qstr *name,
 
 	error = gfs2_permission(&dip->i_inode, MAY_WRITE | MAY_EXEC, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 
@@ -379,8 +389,12 @@ static int create_ok(struct gfs2_inode *dip, const struct qstr *name,
 <<<<<<< HEAD
 static void munge_mode_uid_gid(struct gfs2_inode *dip, umode_t *mode,
 =======
+<<<<<<< HEAD
+static void munge_mode_uid_gid(struct gfs2_inode *dip, umode_t *mode,
+=======
 static void munge_mode_uid_gid(struct gfs2_inode *dip, unsigned int *mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       unsigned int *uid, unsigned int *gid)
 {
 	if (GFS2_SB(&dip->i_inode)->sd_args.ar_suiddir &&
@@ -410,6 +424,11 @@ static int alloc_dinode(struct gfs2_inode *dip, u64 *no_addr, u64 *generation)
 
 	error = gfs2_inplace_reserve(dip, RES_DINODE);
 =======
+<<<<<<< HEAD
+	int dblocks = 1;
+
+	error = gfs2_inplace_reserve(dip, RES_DINODE);
+=======
 
 	if (gfs2_alloc_get(dip) == NULL)
 		return -ENOMEM;
@@ -417,6 +436,7 @@ static int alloc_dinode(struct gfs2_inode *dip, u64 *no_addr, u64 *generation)
 	dip->i_alloc->al_requested = RES_DINODE;
 	error = gfs2_inplace_reserve(dip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto out;
 
@@ -427,8 +447,12 @@ static int alloc_dinode(struct gfs2_inode *dip, u64 *no_addr, u64 *generation)
 <<<<<<< HEAD
 	error = gfs2_alloc_blocks(dip, no_addr, &dblocks, 1, generation);
 =======
+<<<<<<< HEAD
+	error = gfs2_alloc_blocks(dip, no_addr, &dblocks, 1, generation);
+=======
 	error = gfs2_alloc_di(dip, no_addr, generation);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	gfs2_trans_end(sdp);
 
@@ -437,8 +461,11 @@ out_ipreserv:
 out:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	gfs2_alloc_put(dip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -479,8 +506,12 @@ static void init_dinode(struct gfs2_inode *dip, struct gfs2_glock *gl,
 <<<<<<< HEAD
 			const struct gfs2_inum_host *inum, umode_t mode,
 =======
+<<<<<<< HEAD
+			const struct gfs2_inum_host *inum, umode_t mode,
+=======
 			const struct gfs2_inum_host *inum, unsigned int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			unsigned int uid, unsigned int gid,
 			const u64 *generation, dev_t dev, const char *symname,
 			unsigned size, struct buffer_head **bhp)
@@ -552,8 +583,12 @@ static int make_dinode(struct gfs2_inode *dip, struct gfs2_glock *gl,
 <<<<<<< HEAD
 		       umode_t mode, const struct gfs2_inum_host *inum,
 =======
+<<<<<<< HEAD
+		       umode_t mode, const struct gfs2_inum_host *inum,
+=======
 		       unsigned int mode, const struct gfs2_inum_host *inum,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       const u64 *generation, dev_t dev, const char *symname,
 		       unsigned int size, struct buffer_head **bhp)
 {
@@ -565,8 +600,12 @@ static int make_dinode(struct gfs2_inode *dip, struct gfs2_glock *gl,
 <<<<<<< HEAD
 	if (!gfs2_qadata_get(dip))
 =======
+<<<<<<< HEAD
+	if (!gfs2_qadata_get(dip))
+=======
 	if (!gfs2_alloc_get(dip))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 
 	error = gfs2_quota_lock(dip, uid, gid);
@@ -591,8 +630,12 @@ out:
 <<<<<<< HEAD
 	gfs2_qadata_put(dip);
 =======
+<<<<<<< HEAD
+	gfs2_qadata_put(dip);
+=======
 	gfs2_alloc_put(dip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -603,8 +646,12 @@ static int link_dinode(struct gfs2_inode *dip, const struct qstr *name,
 <<<<<<< HEAD
 	struct gfs2_qadata *qa;
 =======
+<<<<<<< HEAD
+	struct gfs2_qadata *qa;
+=======
 	struct gfs2_alloc *al;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int alloc_required;
 	struct buffer_head *dibh;
 	int error;
@@ -613,9 +660,14 @@ static int link_dinode(struct gfs2_inode *dip, const struct qstr *name,
 	qa = gfs2_qadata_get(dip);
 	if (!qa)
 =======
+<<<<<<< HEAD
+	qa = gfs2_qadata_get(dip);
+	if (!qa)
+=======
 	al = gfs2_alloc_get(dip);
 	if (!al)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 
 	error = gfs2_quota_lock(dip, NO_QUOTA_CHANGE, NO_QUOTA_CHANGE);
@@ -633,10 +685,14 @@ static int link_dinode(struct gfs2_inode *dip, const struct qstr *name,
 <<<<<<< HEAD
 		error = gfs2_inplace_reserve(dip, sdp->sd_max_dirres);
 =======
+<<<<<<< HEAD
+		error = gfs2_inplace_reserve(dip, sdp->sd_max_dirres);
+=======
 		al->al_requested = sdp->sd_max_dirres;
 
 		error = gfs2_inplace_reserve(dip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto fail_quota_locks;
 
@@ -644,8 +700,12 @@ static int link_dinode(struct gfs2_inode *dip, const struct qstr *name,
 <<<<<<< HEAD
 					 dip->i_rgd->rd_length +
 =======
+<<<<<<< HEAD
+					 dip->i_rgd->rd_length +
+=======
 					 al->al_rgd->rd_length +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 2 * RES_DINODE +
 					 RES_STATFS + RES_QUOTA, 0);
 		if (error)
@@ -666,10 +726,14 @@ static int link_dinode(struct gfs2_inode *dip, const struct qstr *name,
 <<<<<<< HEAD
 	set_nlink(&ip->i_inode, S_ISDIR(ip->i_inode.i_mode) ? 2 : 1);
 =======
+<<<<<<< HEAD
+	set_nlink(&ip->i_inode, S_ISDIR(ip->i_inode.i_mode) ? 2 : 1);
+=======
 	inc_nlink(&ip->i_inode);
 	if (S_ISDIR(ip->i_inode.i_mode))
 		inc_nlink(&ip->i_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_trans_add_bh(ip->i_gl, dibh, 1);
 	gfs2_dinode_out(ip, dibh->b_data);
 	brelse(dibh);
@@ -682,15 +746,22 @@ fail_ipreserv:
 <<<<<<< HEAD
 	gfs2_inplace_release(dip);
 =======
+<<<<<<< HEAD
+	gfs2_inplace_release(dip);
+=======
 	if (dip->i_alloc->al_rgd)
 		gfs2_inplace_release(dip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 fail_quota_locks:
 	gfs2_quota_unlock(dip);
 
 fail:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_qadata_put(dip);
 	return error;
 }
@@ -716,6 +787,8 @@ static int gfs2_security_init(struct gfs2_inode *dip, struct gfs2_inode *ip,
 {
 	return security_inode_init_security(&ip->i_inode, &dip->i_inode, qstr,
 					    &gfs2_initxattrs, NULL);
+<<<<<<< HEAD
+=======
 =======
 	gfs2_alloc_put(dip);
 	return error;
@@ -745,6 +818,7 @@ static int gfs2_security_init(struct gfs2_inode *dip, struct gfs2_inode *ip,
 
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -764,9 +838,14 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 			     umode_t mode, dev_t dev, const char *symname,
 			     unsigned int size, int excl)
 =======
+<<<<<<< HEAD
+			     umode_t mode, dev_t dev, const char *symname,
+			     unsigned int size, int excl)
+=======
 			     unsigned int mode, dev_t dev, const char *symname,
 			     unsigned int size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct qstr *name = &dentry->d_name;
 	struct gfs2_holder ghs[2];
@@ -787,14 +866,20 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 
 	error = create_ok(dip, name, mode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((error == -EEXIST) && S_ISREG(mode) && !excl) {
 		inode = gfs2_lookupi(dir, &dentry->d_name, 0);
 		gfs2_glock_dq_uninit(ghs);
 		d_instantiate(dentry, inode);
 		return IS_ERR(inode) ? PTR_ERR(inode) : 0;
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto fail_gunlock;
 
@@ -838,6 +923,9 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 
 	gfs2_trans_end(sdp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Check if we reserved space in the rgrp. Function link_dinode may
 	   not, depending on whether alloc is required. */
 	if (dip->i_res)
@@ -846,6 +934,8 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 	gfs2_qadata_put(dip);
 	mark_inode_dirty(inode);
 	gfs2_glock_dq_uninit_m(2, ghs);
+<<<<<<< HEAD
+=======
 =======
 	if (dip->i_alloc->al_rgd)
 		gfs2_inplace_release(dip);
@@ -854,24 +944,31 @@ static int gfs2_create_inode(struct inode *dir, struct dentry *dentry,
 	gfs2_glock_dq_uninit_m(2, ghs);
 	mark_inode_dirty(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	d_instantiate(dentry, inode);
 	return 0;
 
 fail_gunlock2:
 	gfs2_glock_dq_uninit(ghs + 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail_gunlock:
 	gfs2_glock_dq_uninit(ghs);
 	if (inode && !IS_ERR(inode)) {
 		set_bit(GIF_ALLOC_FAILED, &GFS2_I(inode)->i_flags);
 		iput(inode);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (inode && !IS_ERR(inode))
 		iput(inode);
 fail_gunlock:
 	gfs2_glock_dq_uninit(ghs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail:
 	if (bh)
 		brelse(bh);
@@ -889,12 +986,17 @@ fail:
 
 static int gfs2_create(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       umode_t mode, struct nameidata *nd)
 {
 	int excl = 0;
 	if (nd && (nd->flags & LOOKUP_EXCL))
 		excl = 1;
 	return gfs2_create_inode(dir, dentry, S_IFREG | mode, 0, NULL, 0, excl);
+<<<<<<< HEAD
+=======
 =======
 		       int mode, struct nameidata *nd)
 {
@@ -917,6 +1019,7 @@ static int gfs2_create(struct inode *dir, struct dentry *dentry,
 	d_instantiate(dentry, inode);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -937,6 +1040,10 @@ static struct dentry *gfs2_lookup(struct inode *dir, struct dentry *dentry,
 	struct inode *inode = gfs2_lookupi(dir, &dentry->d_name, 0);
 	if (inode && !IS_ERR(inode)) {
 =======
+<<<<<<< HEAD
+	struct inode *inode = gfs2_lookupi(dir, &dentry->d_name, 0);
+	if (inode && !IS_ERR(inode)) {
+=======
 	struct inode *inode = NULL;
 
 	inode = gfs2_lookupi(dir, &dentry->d_name, 0);
@@ -945,6 +1052,7 @@ static struct dentry *gfs2_lookup(struct inode *dir, struct dentry *dentry,
 
 	if (inode) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct gfs2_glock *gl = GFS2_I(inode)->i_gl;
 		struct gfs2_holder gh;
 		int error;
@@ -958,12 +1066,17 @@ static struct dentry *gfs2_lookup(struct inode *dir, struct dentry *dentry,
 	}
 	return d_splice_alias(inode, dentry);
 =======
+<<<<<<< HEAD
+	}
+	return d_splice_alias(inode, dentry);
+=======
 		return d_splice_alias(inode, dentry);
 	}
 	d_add(dentry, inode);
 
 	return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1011,8 +1124,12 @@ static int gfs2_link(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 	error = gfs2_permission(dir, MAY_WRITE | MAY_EXEC);
 =======
+<<<<<<< HEAD
+	error = gfs2_permission(dir, MAY_WRITE | MAY_EXEC);
+=======
 	error = gfs2_permission(dir, MAY_WRITE | MAY_EXEC, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto out_gunlock;
 
@@ -1053,9 +1170,15 @@ static int gfs2_link(struct dentry *old_dentry, struct inode *dir,
 
 		if (!qa) {
 =======
+<<<<<<< HEAD
+		struct gfs2_qadata *qa = gfs2_qadata_get(dip);
+
+		if (!qa) {
+=======
 		struct gfs2_alloc *al = gfs2_alloc_get(dip);
 		if (!al) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = -ENOMEM;
 			goto out_gunlock;
 		}
@@ -1067,10 +1190,14 @@ static int gfs2_link(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 		error = gfs2_inplace_reserve(dip, sdp->sd_max_dirres);
 =======
+<<<<<<< HEAD
+		error = gfs2_inplace_reserve(dip, sdp->sd_max_dirres);
+=======
 		al->al_requested = sdp->sd_max_dirres;
 
 		error = gfs2_inplace_reserve(dip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_gunlock_q;
 
@@ -1078,8 +1205,12 @@ static int gfs2_link(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 					 gfs2_rg_blocks(dip) +
 =======
+<<<<<<< HEAD
+					 gfs2_rg_blocks(dip) +
+=======
 					 gfs2_rg_blocks(al) +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 2 * RES_DINODE + RES_STATFS +
 					 RES_QUOTA, 0);
 		if (error)
@@ -1106,9 +1237,15 @@ static int gfs2_link(struct dentry *old_dentry, struct inode *dir,
 	d_instantiate(dentry, inode);
 	mark_inode_dirty(inode);
 =======
+<<<<<<< HEAD
+	ihold(inode);
+	d_instantiate(dentry, inode);
+	mark_inode_dirty(inode);
+=======
 	gfs2_dinode_out(ip, dibh->b_data);
 	mark_inode_dirty(&ip->i_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out_brelse:
 	brelse(dibh);
@@ -1125,8 +1262,12 @@ out_alloc:
 <<<<<<< HEAD
 		gfs2_qadata_put(dip);
 =======
+<<<<<<< HEAD
+		gfs2_qadata_put(dip);
+=======
 		gfs2_alloc_put(dip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_gunlock:
 	gfs2_glock_dq(ghs + 1);
 out_child:
@@ -1136,12 +1277,15 @@ out_parent:
 	gfs2_holder_uninit(ghs + 1);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!error) {
 		ihold(inode);
 		d_instantiate(dentry, inode);
 		mark_inode_dirty(inode);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1175,8 +1319,12 @@ static int gfs2_unlink_ok(struct gfs2_inode *dip, const struct qstr *name,
 <<<<<<< HEAD
 	error = gfs2_permission(&dip->i_inode, MAY_WRITE | MAY_EXEC);
 =======
+<<<<<<< HEAD
+	error = gfs2_permission(&dip->i_inode, MAY_WRITE | MAY_EXEC);
+=======
 	error = gfs2_permission(&dip->i_inode, MAY_WRITE | MAY_EXEC, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 
@@ -1220,9 +1368,12 @@ static int gfs2_unlink_inode(struct gfs2_inode *dip,
 		drop_nlink(inode);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	gfs2_trans_add_bh(ip->i_gl, bh, 1);
 	gfs2_dinode_out(ip, bh->b_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mark_inode_dirty(inode);
 	if (inode->i_nlink == 0)
 		gfs2_unlink_di(inode);
@@ -1251,6 +1402,9 @@ static int gfs2_unlink(struct inode *dir, struct dentry *dentry)
 	struct gfs2_holder ghs[3];
 	struct gfs2_rgrpd *rgd;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	error = gfs2_rindex_update(sdp);
@@ -1266,6 +1420,8 @@ static int gfs2_unlink(struct inode *dir, struct dentry *dentry)
 	if (!rgd)
 		goto out_inodes;
 
+<<<<<<< HEAD
+=======
 =======
 	struct gfs2_holder ri_gh;
 	int error;
@@ -1279,6 +1435,7 @@ static int gfs2_unlink(struct inode *dir, struct dentry *dentry)
 
 	rgd = gfs2_blk2rgrpd(sdp, ip->i_no_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_holder_init(rgd->rd_gl, LM_ST_EXCLUSIVE, 0, ghs + 2);
 
 
@@ -1325,6 +1482,9 @@ out_gunlock:
 	gfs2_glock_dq(ghs + 2);
 out_rgrp:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_glock_dq(ghs + 1);
 out_child:
 	gfs2_glock_dq(ghs);
@@ -1333,6 +1493,8 @@ out_parent:
 out_inodes:
 	gfs2_holder_uninit(ghs + 1);
 	gfs2_holder_uninit(ghs);
+<<<<<<< HEAD
+=======
 =======
 	gfs2_holder_uninit(ghs + 2);
 	gfs2_glock_dq(ghs + 1);
@@ -1343,6 +1505,7 @@ out_parent:
 	gfs2_holder_uninit(ghs);
 	gfs2_glock_dq_uninit(&ri_gh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1368,8 +1531,12 @@ static int gfs2_symlink(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 	return gfs2_create_inode(dir, dentry, S_IFLNK | S_IRWXUGO, 0, symname, size, 0);
 =======
+<<<<<<< HEAD
+	return gfs2_create_inode(dir, dentry, S_IFLNK | S_IRWXUGO, 0, symname, size, 0);
+=======
 	return gfs2_create_inode(dir, dentry, S_IFLNK | S_IRWXUGO, 0, symname, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1386,10 +1553,16 @@ static int gfs2_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 {
 	return gfs2_create_inode(dir, dentry, S_IFDIR | mode, 0, NULL, 0, 0);
 =======
+<<<<<<< HEAD
+static int gfs2_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+{
+	return gfs2_create_inode(dir, dentry, S_IFDIR | mode, 0, NULL, 0, 0);
+=======
 static int gfs2_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 {
 	return gfs2_create_inode(dir, dentry, S_IFDIR | mode, 0, NULL, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1402,16 +1575,22 @@ static int gfs2_mkdir(struct inode *dir, struct dentry *dentry, int mode)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gfs2_mknod(struct inode *dir, struct dentry *dentry, umode_t mode,
 		      dev_t dev)
 {
 	return gfs2_create_inode(dir, dentry, mode, dev, NULL, 0, 0);
+<<<<<<< HEAD
+=======
 =======
 static int gfs2_mknod(struct inode *dir, struct dentry *dentry, int mode,
 		      dev_t dev)
 {
 	return gfs2_create_inode(dir, dentry, mode, dev, NULL, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1480,8 +1659,12 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 <<<<<<< HEAD
 	struct gfs2_holder ghs[5], r_gh = { .gh_gl = NULL, };
 =======
+<<<<<<< HEAD
+	struct gfs2_holder ghs[5], r_gh = { .gh_gl = NULL, };
+=======
 	struct gfs2_holder ghs[5], r_gh = { .gh_gl = NULL, }, ri_gh;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gfs2_rgrpd *nrgd;
 	unsigned int num_gh;
 	int dir_rename = 0;
@@ -1498,8 +1681,12 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 <<<<<<< HEAD
 	error = gfs2_rindex_update(sdp);
 =======
+<<<<<<< HEAD
+	error = gfs2_rindex_update(sdp);
+=======
 	error = gfs2_rindex_hold(sdp, &ri_gh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 
@@ -1537,8 +1724,12 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 <<<<<<< HEAD
 		nrgd = gfs2_blk2rgrpd(sdp, nip->i_no_addr, 1);
 =======
+<<<<<<< HEAD
+		nrgd = gfs2_blk2rgrpd(sdp, nip->i_no_addr, 1);
+=======
 		nrgd = gfs2_blk2rgrpd(sdp, nip->i_no_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (nrgd)
 			gfs2_holder_init(nrgd->rd_gl, LM_ST_EXCLUSIVE, 0, ghs + num_gh++);
 	}
@@ -1586,8 +1777,12 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 <<<<<<< HEAD
 		error = gfs2_permission(ndir, MAY_WRITE | MAY_EXEC);
 =======
+<<<<<<< HEAD
+		error = gfs2_permission(ndir, MAY_WRITE | MAY_EXEC);
+=======
 		error = gfs2_permission(ndir, MAY_WRITE | MAY_EXEC, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_gunlock;
 
@@ -1625,8 +1820,12 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 <<<<<<< HEAD
 		error = gfs2_permission(odentry->d_inode, MAY_WRITE);
 =======
+<<<<<<< HEAD
+		error = gfs2_permission(odentry->d_inode, MAY_WRITE);
+=======
 		error = gfs2_permission(odentry->d_inode, MAY_WRITE, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_gunlock;
 	}
@@ -1637,11 +1836,16 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 	if (error < 0)
 		goto out_gunlock;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (alloc_required) {
 		struct gfs2_qadata *qa = gfs2_qadata_get(ndip);
 
 		if (!qa) {
+<<<<<<< HEAD
+=======
 =======
 	error = 0;
 
@@ -1649,6 +1853,7 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 		struct gfs2_alloc *al = gfs2_alloc_get(ndip);
 		if (!al) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = -ENOMEM;
 			goto out_gunlock;
 		}
@@ -1660,10 +1865,14 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 <<<<<<< HEAD
 		error = gfs2_inplace_reserve(ndip, sdp->sd_max_dirres);
 =======
+<<<<<<< HEAD
+		error = gfs2_inplace_reserve(ndip, sdp->sd_max_dirres);
+=======
 		al->al_requested = sdp->sd_max_dirres;
 
 		error = gfs2_inplace_reserve_ri(ndip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_gunlock_q;
 
@@ -1671,8 +1880,12 @@ static int gfs2_rename(struct inode *odir, struct dentry *odentry,
 <<<<<<< HEAD
 					 gfs2_rg_blocks(ndip) +
 =======
+<<<<<<< HEAD
+					 gfs2_rg_blocks(ndip) +
+=======
 					 gfs2_rg_blocks(al) +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 4 * RES_DINODE + 4 * RES_LEAF +
 					 RES_STATFS + RES_QUOTA + 4, 0);
 		if (error)
@@ -1731,8 +1944,12 @@ out_alloc:
 <<<<<<< HEAD
 		gfs2_qadata_put(ndip);
 =======
+<<<<<<< HEAD
+		gfs2_qadata_put(ndip);
+=======
 		gfs2_alloc_put(ndip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_gunlock:
 	while (x--) {
 		gfs2_glock_dq(ghs + x);
@@ -1744,8 +1961,11 @@ out_gunlock_r:
 out:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	gfs2_glock_dq_uninit(&ri_gh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1824,8 +2044,12 @@ static void gfs2_put_link(struct dentry *dentry, struct nameidata *nd, void *p)
 <<<<<<< HEAD
 int gfs2_permission(struct inode *inode, int mask)
 =======
+<<<<<<< HEAD
+int gfs2_permission(struct inode *inode, int mask)
+=======
 int gfs2_permission(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct gfs2_inode *ip;
 	struct gfs2_holder i_gh;
@@ -1838,8 +2062,12 @@ int gfs2_permission(struct inode *inode, int mask, unsigned int flags)
 <<<<<<< HEAD
 		if (mask & MAY_NOT_BLOCK)
 =======
+<<<<<<< HEAD
+		if (mask & MAY_NOT_BLOCK)
+=======
 		if (flags & IPERM_FLAG_RCU)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ECHILD;
 		error = gfs2_glock_nq_init(ip->i_gl, LM_ST_SHARED, LM_FLAG_ANY, &i_gh);
 		if (error)
@@ -1853,8 +2081,12 @@ int gfs2_permission(struct inode *inode, int mask, unsigned int flags)
 <<<<<<< HEAD
 		error = generic_permission(inode, mask);
 =======
+<<<<<<< HEAD
+		error = generic_permission(inode, mask);
+=======
 		error = generic_permission(inode, mask, flags, gfs2_check_acl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlock)
 		gfs2_glock_dq_uninit(&i_gh);
 
@@ -1862,10 +2094,15 @@ int gfs2_permission(struct inode *inode, int mask, unsigned int flags)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __gfs2_setattr_simple(struct inode *inode, struct iattr *attr)
 {
 	setattr_copy(inode, attr);
 	mark_inode_dirty(inode);
+<<<<<<< HEAD
+=======
 =======
 static int __gfs2_setattr_simple(struct gfs2_inode *ip, struct iattr *attr)
 {
@@ -1883,6 +2120,7 @@ static int __gfs2_setattr_simple(struct gfs2_inode *ip, struct iattr *attr)
 	gfs2_dinode_out(ip, dibh->b_data);
 	brelse(dibh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1897,13 +2135,20 @@ static int __gfs2_setattr_simple(struct gfs2_inode *ip, struct iattr *attr)
 <<<<<<< HEAD
 int gfs2_setattr_simple(struct inode *inode, struct iattr *attr)
 =======
+<<<<<<< HEAD
+int gfs2_setattr_simple(struct inode *inode, struct iattr *attr)
+=======
 int gfs2_setattr_simple(struct gfs2_inode *ip, struct iattr *attr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int error;
 
 	if (current->journal_info)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return __gfs2_setattr_simple(inode, attr);
 
 	error = gfs2_trans_begin(GFS2_SB(inode), RES_DINODE, 0);
@@ -1912,6 +2157,8 @@ int gfs2_setattr_simple(struct gfs2_inode *ip, struct iattr *attr)
 
 	error = __gfs2_setattr_simple(inode, attr);
 	gfs2_trans_end(GFS2_SB(inode));
+<<<<<<< HEAD
+=======
 =======
 		return __gfs2_setattr_simple(ip, attr);
 
@@ -1922,6 +2169,7 @@ int gfs2_setattr_simple(struct gfs2_inode *ip, struct iattr *attr)
 	error = __gfs2_setattr_simple(ip, attr);
 	gfs2_trans_end(GFS2_SB(&ip->i_inode));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1945,8 +2193,12 @@ static int setattr_chown(struct inode *inode, struct iattr *attr)
 <<<<<<< HEAD
 	if (!gfs2_qadata_get(ip))
 =======
+<<<<<<< HEAD
+	if (!gfs2_qadata_get(ip))
+=======
 	if (!gfs2_alloc_get(ip))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 
 	error = gfs2_quota_lock(ip, nuid, ngid);
@@ -1966,8 +2218,12 @@ static int setattr_chown(struct inode *inode, struct iattr *attr)
 <<<<<<< HEAD
 	error = gfs2_setattr_simple(inode, attr);
 =======
+<<<<<<< HEAD
+	error = gfs2_setattr_simple(inode, attr);
+=======
 	error = gfs2_setattr_simple(ip, attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto out_end_trans;
 
@@ -1985,8 +2241,12 @@ out_alloc:
 <<<<<<< HEAD
 	gfs2_qadata_put(ip);
 =======
+<<<<<<< HEAD
+	gfs2_qadata_put(ip);
+=======
 	gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -2028,12 +2288,17 @@ static int gfs2_setattr(struct dentry *dentry, struct iattr *attr)
 		error = gfs2_acl_chmod(ip, attr);
 	else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = gfs2_setattr_simple(inode, attr);
 
 out:
 	if (!error)
 		mark_inode_dirty(inode);
 	gfs2_glock_dq_uninit(&i_gh);
+<<<<<<< HEAD
+=======
 =======
 		error = gfs2_setattr_simple(ip, attr);
 
@@ -2042,6 +2307,7 @@ out:
 	if (!error)
 		mark_inode_dirty(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -2190,7 +2456,11 @@ const struct inode_operations gfs2_file_iops = {
 <<<<<<< HEAD
 	.get_acl = gfs2_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = gfs2_get_acl,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const struct inode_operations gfs2_dir_iops = {
@@ -2214,7 +2484,11 @@ const struct inode_operations gfs2_dir_iops = {
 <<<<<<< HEAD
 	.get_acl = gfs2_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = gfs2_get_acl,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const struct inode_operations gfs2_symlink_iops = {
@@ -2232,6 +2506,10 @@ const struct inode_operations gfs2_symlink_iops = {
 <<<<<<< HEAD
 	.get_acl = gfs2_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = gfs2_get_acl,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 

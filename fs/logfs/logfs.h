@@ -509,8 +509,12 @@ long logfs_ioctl(struct file *file, unsigned int cmd, unsigned long arg);
 <<<<<<< HEAD
 int logfs_fsync(struct file *file, loff_t start, loff_t end, int datasync);
 =======
+<<<<<<< HEAD
+int logfs_fsync(struct file *file, loff_t start, loff_t end, int datasync);
+=======
 int logfs_fsync(struct file *file, int datasync);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* gc.c */
 u32 get_best_cand(struct super_block *sb, struct candidate_list *list, u32 *ec);
@@ -527,8 +531,12 @@ void logfs_safe_iput(struct inode *inode, int cookie);
 <<<<<<< HEAD
 struct inode *logfs_new_inode(struct inode *dir, umode_t mode);
 =======
+<<<<<<< HEAD
+struct inode *logfs_new_inode(struct inode *dir, umode_t mode);
+=======
 struct inode *logfs_new_inode(struct inode *dir, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct inode *logfs_new_meta_inode(struct super_block *sb, u64 ino);
 struct inode *logfs_read_meta_inode(struct super_block *sb, u64 ino);
 int logfs_init_inode_cache(void);
@@ -539,8 +547,12 @@ int logfs_read_inode(struct inode *inode);
 <<<<<<< HEAD
 int __logfs_write_inode(struct inode *inode, struct page *, long flags);
 =======
+<<<<<<< HEAD
+int __logfs_write_inode(struct inode *inode, struct page *, long flags);
+=======
 int __logfs_write_inode(struct inode *inode, long flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void logfs_evict_inode(struct inode *inode);
 
 /* journal.c */
@@ -593,7 +605,12 @@ int get_page_reserve(struct inode *inode, struct page *page);
 void logfs_get_wblocks(struct super_block *sb, struct page *page, int lock);
 void logfs_put_wblocks(struct super_block *sb, struct page *page, int lock);
 =======
+<<<<<<< HEAD
+void logfs_get_wblocks(struct super_block *sb, struct page *page, int lock);
+void logfs_put_wblocks(struct super_block *sb, struct page *page, int lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct logfs_block_ops indirect_block_ops;
 
 /* segment.c */
@@ -614,7 +631,11 @@ void freeseg(struct super_block *sb, u32 segno);
 <<<<<<< HEAD
 void free_areas(struct super_block *sb);
 =======
+<<<<<<< HEAD
+void free_areas(struct super_block *sb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* area handling */
 int logfs_init_areas(struct super_block *sb);
@@ -641,8 +662,11 @@ void emergency_read_end(struct page *page);
 void logfs_crash_dump(struct super_block *sb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void *memchr_inv(const void *s, int c, size_t n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int logfs_statfs(struct dentry *dentry, struct kstatfs *stats);
 int logfs_check_ds(struct logfs_disk_super *ds);
 int logfs_write_sb(struct super_block *sb);

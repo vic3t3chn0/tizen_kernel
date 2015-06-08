@@ -1602,6 +1602,14 @@ static int ntty_install(struct tty_driver *driver, struct tty_struct *tty)
 	int ret;
 	if (!port || !dc || dc->state != NOZOMI_STATE_READY)
 		return -ENODEV;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = tty_standard_install(driver, tty);
+	if (ret == 0)
+		tty->driver_data = port;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = tty_init_termios(tty);
 	if (ret == 0) {
 		tty_driver_kref_get(driver);
@@ -1609,6 +1617,10 @@ static int ntty_install(struct tty_driver *driver, struct tty_struct *tty)
 		tty->driver_data = port;
 		driver->ttys[tty->index] = tty;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1920,7 +1932,14 @@ static __init int nozomi_init(void)
 	if (!ntty_driver)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ntty_driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ntty_driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ntty_driver->driver_name = NOZOMI_NAME_TTY;
 	ntty_driver->name = "noz";
 	ntty_driver->major = 0;

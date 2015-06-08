@@ -133,8 +133,12 @@ static struct tcf_ext_map rsvp_ext_map = {
 <<<<<<< HEAD
 static int rsvp_classify(struct sk_buff *skb, const struct tcf_proto *tp,
 =======
+<<<<<<< HEAD
+static int rsvp_classify(struct sk_buff *skb, const struct tcf_proto *tp,
+=======
 static int rsvp_classify(struct sk_buff *skb, struct tcf_proto *tp,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 struct tcf_result *res)
 {
 	struct rsvp_session **sht = ((struct rsvp_head *)tp->root)->ht;
@@ -174,8 +178,12 @@ restart:
 <<<<<<< HEAD
 	if (ip_is_fragment(nhptr))
 =======
+<<<<<<< HEAD
+	if (ip_is_fragment(nhptr))
+=======
 	if (nhptr->frag_off & htons(IP_MF | IP_OFFSET))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 #endif
 
@@ -436,8 +444,12 @@ static int rsvp_change(struct tcf_proto *tp, unsigned long base,
 <<<<<<< HEAD
 	struct nlattr *opt = tca[TCA_OPTIONS];
 =======
+<<<<<<< HEAD
+	struct nlattr *opt = tca[TCA_OPTIONS];
+=======
 	struct nlattr *opt = tca[TCA_OPTIONS-1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nlattr *tb[TCA_RSVP_MAX + 1];
 	struct tcf_exts e;
 	unsigned int h1, h2;
@@ -454,8 +466,12 @@ static int rsvp_change(struct tcf_proto *tp, unsigned long base,
 <<<<<<< HEAD
 	err = tcf_exts_validate(tp, tb, tca[TCA_RATE], &e, &rsvp_ext_map);
 =======
+<<<<<<< HEAD
+	err = tcf_exts_validate(tp, tb, tca[TCA_RATE], &e, &rsvp_ext_map);
+=======
 	err = tcf_exts_validate(tp, tb, tca[TCA_RATE-1], &e, &rsvp_ext_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 
@@ -469,9 +485,14 @@ static int rsvp_change(struct tcf_proto *tp, unsigned long base,
 		if (tb[TCA_RSVP_CLASSID]) {
 			f->res.classid = nla_get_u32(tb[TCA_RSVP_CLASSID]);
 =======
+<<<<<<< HEAD
+		if (tb[TCA_RSVP_CLASSID]) {
+			f->res.classid = nla_get_u32(tb[TCA_RSVP_CLASSID]);
+=======
 		if (tb[TCA_RSVP_CLASSID-1]) {
 			f->res.classid = nla_get_u32(tb[TCA_RSVP_CLASSID-1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tcf_bind_filter(tp, &f->res, base);
 		}
 
@@ -486,8 +507,12 @@ static int rsvp_change(struct tcf_proto *tp, unsigned long base,
 <<<<<<< HEAD
 	if (tb[TCA_RSVP_DST] == NULL)
 =======
+<<<<<<< HEAD
+	if (tb[TCA_RSVP_DST] == NULL)
+=======
 	if (tb[TCA_RSVP_DST-1] == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto errout2;
 
 	err = -ENOBUFS;
@@ -497,6 +522,9 @@ static int rsvp_change(struct tcf_proto *tp, unsigned long base,
 
 	h2 = 16;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tb[TCA_RSVP_SRC]) {
 		memcpy(f->src, nla_data(tb[TCA_RSVP_SRC]), sizeof(f->src));
 		h2 = hash_src(f->src);
@@ -510,6 +538,8 @@ static int rsvp_change(struct tcf_proto *tp, unsigned long base,
 		f->res.classid = nla_get_u32(tb[TCA_RSVP_CLASSID]);
 
 	dst = nla_data(tb[TCA_RSVP_DST]);
+<<<<<<< HEAD
+=======
 =======
 	if (tb[TCA_RSVP_SRC-1]) {
 		memcpy(f->src, nla_data(tb[TCA_RSVP_SRC-1]), sizeof(f->src));
@@ -525,6 +555,7 @@ static int rsvp_change(struct tcf_proto *tp, unsigned long base,
 
 	dst = nla_data(tb[TCA_RSVP_DST-1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	h1 = hash_dst(dst, pinfo ? pinfo->protocol : 0, pinfo ? pinfo->tunnelid : 0);
 
 	err = -ENOMEM;
@@ -686,9 +717,13 @@ nla_put_failure:
 <<<<<<< HEAD
 static struct tcf_proto_ops RSVP_OPS __read_mostly = {
 =======
+<<<<<<< HEAD
+static struct tcf_proto_ops RSVP_OPS __read_mostly = {
+=======
 static struct tcf_proto_ops RSVP_OPS = {
 	.next		=	NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.kind		=	RSVP_ID,
 	.classify	=	rsvp_classify,
 	.init		=	rsvp_init,

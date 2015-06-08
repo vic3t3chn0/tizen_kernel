@@ -26,6 +26,9 @@ static void pseries_kexec_cpu_down(int crash_shutdown, int secondary)
 	/* Don't risk a hypervisor call if we're crashing */
 	if (firmware_has_feature(FW_FEATURE_SPLPAR) && !crash_shutdown) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int ret;
 		int cpu = smp_processor_id();
 		int hwcpu = hard_smp_processor_id();
@@ -50,6 +53,8 @@ static void pseries_kexec_cpu_down(int crash_shutdown, int secondary)
 		if (ret) {
 			pr_err("WARNING: VPA deregistration for cpu %d "
 			       "(hw %d) failed with %d\n", cpu, hwcpu, ret);
+<<<<<<< HEAD
+=======
 =======
 		unsigned long addr;
 		int ret;
@@ -77,6 +82,7 @@ static void pseries_kexec_cpu_down(int crash_shutdown, int secondary)
 					"failed\n", smp_processor_id(),
 					hard_smp_processor_id());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }

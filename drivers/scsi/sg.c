@@ -50,6 +50,13 @@ static int sg_version_num = 30534;	/* 2 digits for each component */
 #include <linux/delay.h>
 #include <linux/blktrace_api.h>
 #include <linux/mutex.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "scsi.h"
 #include <scsi/scsi_dbg.h>
@@ -626,6 +633,20 @@ sg_write(struct file *filp, const char __user *buf, size_t count, loff_t * ppos)
 	 */
 	if (hp->dxfer_direction == SG_DXFER_TO_FROM_DEV) {
 		static char cmd[TASK_COMM_LEN];
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (strcmp(current->comm, cmd)) {
+			printk_ratelimited(KERN_WARNING
+					   "sg_write: data in/out %d/%d bytes "
+					   "for SCSI command 0x%x-- guessing "
+					   "data in;\n   program %s not setting "
+					   "count and/or reply_len properly\n",
+					   old_hdr.reply_len - (int)SZ_SG_HEADER,
+					   input_size, (unsigned int) cmnd[0],
+					   current->comm);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (strcmp(current->comm, cmd) && printk_ratelimit()) {
 			printk(KERN_WARNING
 			       "sg_write: data in/out %d/%d bytes for SCSI command 0x%x--"
@@ -634,6 +655,10 @@ sg_write(struct file *filp, const char __user *buf, size_t count, loff_t * ppos)
 			       old_hdr.reply_len - (int)SZ_SG_HEADER,
 			       input_size, (unsigned int) cmnd[0],
 			       current->comm);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			strcpy(cmd, current->comm);
 		}
 	}
@@ -2323,16 +2348,37 @@ static struct sg_proc_leaf sg_proc_leaf_arr[] = {
 static int
 sg_proc_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int num_leaves = ARRAY_SIZE(sg_proc_leaf_arr);
+	int k;
+=======
 	int k, mask;
 	int num_leaves = ARRAY_SIZE(sg_proc_leaf_arr);
 	struct sg_proc_leaf * leaf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int k, mask;
+	int num_leaves = ARRAY_SIZE(sg_proc_leaf_arr);
+	struct sg_proc_leaf * leaf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sg_proc_sgp = proc_mkdir(sg_proc_sg_dirname, NULL);
 	if (!sg_proc_sgp)
 		return 1;
 	for (k = 0; k < num_leaves; ++k) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct sg_proc_leaf *leaf = &sg_proc_leaf_arr[k];
+		umode_t mask = leaf->fops->write ? S_IRUGO | S_IWUSR : S_IRUGO;
+=======
 		leaf = &sg_proc_leaf_arr[k];
 		mask = leaf->fops->write ? S_IRUGO | S_IWUSR : S_IRUGO;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		leaf = &sg_proc_leaf_arr[k];
+		mask = leaf->fops->write ? S_IRUGO | S_IWUSR : S_IRUGO;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		proc_create(leaf->name, mask, sg_proc_sgp, leaf->fops);
 	}
 	return 0;
@@ -2367,6 +2413,20 @@ static ssize_t
 sg_proc_write_adio(struct file *filp, const char __user *buffer,
 		   size_t count, loff_t *off)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int err;
+	unsigned long num;
+
+	if (!capable(CAP_SYS_ADMIN) || !capable(CAP_SYS_RAWIO))
+		return -EACCES;
+	err = kstrtoul_from_user(buffer, count, 0, &num);
+	if (err)
+		return err;
+	sg_allow_dio = num ? 1 : 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int num;
 	char buff[11];
 
@@ -2377,6 +2437,10 @@ sg_proc_write_adio(struct file *filp, const char __user *buffer,
 		return -EFAULT;
 	buff[num] = '\0';
 	sg_allow_dio = simple_strtoul(buff, NULL, 10) ? 1 : 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return count;
 }
 
@@ -2389,6 +2453,20 @@ static ssize_t
 sg_proc_write_dressz(struct file *filp, const char __user *buffer,
 		     size_t count, loff_t *off)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int err;
+	unsigned long k = ULONG_MAX;
+
+	if (!capable(CAP_SYS_ADMIN) || !capable(CAP_SYS_RAWIO))
+		return -EACCES;
+
+	err = kstrtoul_from_user(buffer, count, 0, &k);
+	if (err)
+		return err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int num;
 	unsigned long k = ULONG_MAX;
 	char buff[11];
@@ -2400,6 +2478,10 @@ sg_proc_write_dressz(struct file *filp, const char __user *buffer,
 		return -EFAULT;
 	buff[num] = '\0';
 	k = simple_strtoul(buff, NULL, 10);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (k <= 1048576) {	/* limit "big buff" to 1 MB */
 		sg_big_buff = k;
 		return count;

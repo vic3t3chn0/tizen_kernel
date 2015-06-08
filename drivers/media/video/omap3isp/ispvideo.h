@@ -27,7 +27,14 @@
 #define OMAP3_ISP_VIDEO_H
 
 #include <linux/v4l2-mediabus.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/media-entity.h>
 #include <media/v4l2-dev.h>
 #include <media/v4l2-fh.h>
@@ -35,7 +42,15 @@
 #include "ispqueue.h"
 
 #define ISP_VIDEO_DRIVER_NAME		"ispvideo"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ISP_VIDEO_DRIVER_VERSION	"0.0.2"
+=======
 #define ISP_VIDEO_DRIVER_VERSION	KERNEL_VERSION(0, 0, 1)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define ISP_VIDEO_DRIVER_VERSION	KERNEL_VERSION(0, 0, 1)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct isp_device;
 struct isp_video;
@@ -86,6 +101,16 @@ enum isp_pipeline_state {
 	ISP_PIPELINE_STREAM = 64,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * struct isp_pipeline - An ISP hardware pipeline
+ * @error: A hardware error occurred during capture
+ */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct isp_pipeline {
 	struct media_pipeline pipe;
 	spinlock_t lock;		/* Pipeline state and queue flags */
@@ -97,6 +122,13 @@ struct isp_pipeline {
 	unsigned int max_rate;
 	atomic_t frame_number;
 	bool do_propagation; /* of frame number */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool error;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct v4l2_fract max_timeperframe;
 };
 
@@ -191,11 +223,25 @@ struct isp_video_fh {
 				container_of(q, struct isp_video_fh, queue)
 
 int omap3isp_video_init(struct isp_video *video, const char *name);
+<<<<<<< HEAD
+<<<<<<< HEAD
+void omap3isp_video_cleanup(struct isp_video *video);
+int omap3isp_video_register(struct isp_video *video,
+			    struct v4l2_device *vdev);
+void omap3isp_video_unregister(struct isp_video *video);
+struct isp_buffer *omap3isp_video_buffer_next(struct isp_video *video);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap3isp_video_register(struct isp_video *video,
 			    struct v4l2_device *vdev);
 void omap3isp_video_unregister(struct isp_video *video);
 struct isp_buffer *omap3isp_video_buffer_next(struct isp_video *video,
 					      unsigned int error);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void omap3isp_video_resume(struct isp_video *video, int continuous);
 struct media_pad *omap3isp_video_remote_pad(struct isp_video *video);
 

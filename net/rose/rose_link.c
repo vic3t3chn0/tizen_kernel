@@ -24,8 +24,11 @@
 #include <net/sock.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fcntl.h>
 #include <linux/mm.h>
 #include <linux/interrupt.h>
@@ -271,6 +274,8 @@ void rose_transmit_link(struct sk_buff *skb, struct rose_neigh *neigh)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if 0
 	if (call_fw_firewall(PF_ROSE, skb->dev, skb->data, NULL, &skb) != FW_ACCEPT) {
 		kfree_skb(skb);
@@ -279,6 +284,7 @@ void rose_transmit_link(struct sk_buff *skb, struct rose_neigh *neigh)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (neigh->loopback) {
 		rose_loopback_queue(skb, neigh);
 		return;

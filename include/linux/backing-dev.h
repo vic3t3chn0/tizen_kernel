@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct page;
 struct device;
@@ -48,7 +52,12 @@ enum bdi_stat_item {
 	BDI_DIRTIED,
 	BDI_WRITTEN,
 =======
+<<<<<<< HEAD
+	BDI_DIRTIED,
+	BDI_WRITTEN,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NR_BDI_STAT_ITEMS
 };
 
@@ -69,7 +78,11 @@ struct bdi_writeback {
 <<<<<<< HEAD
 	spinlock_t list_lock;		/* protects the b_* lists */
 =======
+<<<<<<< HEAD
+	spinlock_t list_lock;		/* protects the b_* lists */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct backing_dev_info {
@@ -85,6 +98,9 @@ struct backing_dev_info {
 	struct percpu_counter bdi_stat[NR_BDI_STAT_ITEMS];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long bw_time_stamp;	/* last time write bw is updated */
 	unsigned long dirtied_stamp;
 	unsigned long written_stamp;	/* pages written at bw_time_stamp */
@@ -100,8 +116,11 @@ struct backing_dev_info {
 	unsigned long dirty_ratelimit;
 	unsigned long balanced_dirty_ratelimit;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct prop_local_percpu completions;
 	int dirty_exceeded;
 
@@ -135,8 +154,13 @@ int bdi_setup_and_register(struct backing_dev_info *, char *, unsigned int);
 void bdi_start_writeback(struct backing_dev_info *bdi, long nr_pages,
 			enum wb_reason reason);
 =======
+<<<<<<< HEAD
+void bdi_start_writeback(struct backing_dev_info *bdi, long nr_pages,
+			enum wb_reason reason);
+=======
 void bdi_start_writeback(struct backing_dev_info *bdi, long nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void bdi_start_background_writeback(struct backing_dev_info *bdi);
 int bdi_writeback_thread(void *data);
 int bdi_has_dirty_io(struct backing_dev_info *bdi);
@@ -145,7 +169,11 @@ void bdi_wakeup_thread_delayed(struct backing_dev_info *bdi);
 <<<<<<< HEAD
 void bdi_lock_two(struct bdi_writeback *wb1, struct bdi_writeback *wb2);
 =======
+<<<<<<< HEAD
+void bdi_lock_two(struct bdi_writeback *wb1, struct bdi_writeback *wb2);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern spinlock_t bdi_lock;
 extern struct list_head bdi_list;

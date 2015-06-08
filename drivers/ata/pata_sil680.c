@@ -38,11 +38,26 @@
 
 /**
  *	sil680_selreg		-	return register base
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	@ap: ATA interface
+ *	@r: config offset
+ *
+ *	Turn a config register offset into the right address in PCI space
+ *	to access the control register in question.
+ *
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	@hwif: interface
  *	@r: config offset
  *
  *	Turn a config register offset into the right address in either
  *	PCI space or MMIO space to access the control register in question
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Thankfully this is a configuration operation so isn't performance
  *	criticial.
  */
@@ -56,12 +71,27 @@ static unsigned long sil680_selreg(struct ata_port *ap, int r)
 
 /**
  *	sil680_seldev		-	return register base
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	@ap: ATA interface
+ *	@r: config offset
+ *
+ *	Turn a config register offset into the right address in PCI space
+ *	to access the control register in question including accounting for
+ *	the unit shift.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	@hwif: interface
  *	@r: config offset
  *
  *	Turn a config register offset into the right address in either
  *	PCI space or MMIO space to access the control register in question
  *	including accounting for the unit shift.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 static unsigned long sil680_seldev(struct ata_port *ap, struct ata_device *adev, int r)
@@ -81,7 +111,16 @@ static unsigned long sil680_seldev(struct ata_port *ap, struct ata_device *adev,
  *	space for us.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sil680_cable_detect(struct ata_port *ap)
+{
+=======
 static int sil680_cable_detect(struct ata_port *ap) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sil680_cable_detect(struct ata_port *ap) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pci_dev *pdev = to_pci_dev(ap->host->dev);
 	unsigned long addr = sil680_selreg(ap, 0);
 	u8 ata66;
@@ -93,7 +132,15 @@ static int sil680_cable_detect(struct ata_port *ap) {
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	sil680_set_piomode	-	set PIO mode data
+=======
  *	sil680_set_piomode	-	set initial PIO mode data
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *	sil680_set_piomode	-	set initial PIO mode data
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	@ap: ATA interface
  *	@adev: ATA device
  *
@@ -104,8 +151,22 @@ static int sil680_cable_detect(struct ata_port *ap) {
 
 static void sil680_set_piomode(struct ata_port *ap, struct ata_device *adev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static const u16 speed_p[5] = {
+		0x328A, 0x2283, 0x1104, 0x10C3, 0x10C1
+	};
+	static const u16 speed_t[5] = {
+		0x328A, 0x2283, 0x1281, 0x10C3, 0x10C1
+	};
+=======
 	static u16 speed_p[5] = { 0x328A, 0x2283, 0x1104, 0x10C3, 0x10C1 };
 	static u16 speed_t[5] = { 0x328A, 0x2283, 0x1281, 0x10C3, 0x10C1 };
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	static u16 speed_p[5] = { 0x328A, 0x2283, 0x1104, 0x10C3, 0x10C1 };
+	static u16 speed_t[5] = { 0x328A, 0x2283, 0x1281, 0x10C3, 0x10C1 };
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned long tfaddr = sil680_selreg(ap, 0x02);
 	unsigned long addr = sil680_seldev(ap, adev, 0x04);
@@ -140,22 +201,52 @@ static void sil680_set_piomode(struct ata_port *ap, struct ata_device *adev)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	sil680_set_dmamode	-	set DMA mode data
+ *	@ap: ATA interface
+ *	@adev: ATA device
+ *
+ *	Program the MWDMA/UDMA modes for the sil680 chipset.
+ *
+ *	The MWDMA mode values are pulled from a lookup table
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	sil680_set_dmamode	-	set initial DMA mode data
  *	@ap: ATA interface
  *	@adev: ATA device
  *
  *	Program the MWDMA/UDMA modes for the sil680 k
  *	chipset. The MWDMA mode values are pulled from a lookup table
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	while the chipset uses mode number for UDMA.
  */
 
 static void sil680_set_dmamode(struct ata_port *ap, struct ata_device *adev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static const u8 ultra_table[2][7] = {
+		{ 0x0C, 0x07, 0x05, 0x04, 0x02, 0x01, 0xFF },	/* 100MHz */
+		{ 0x0F, 0x0B, 0x07, 0x05, 0x03, 0x02, 0x01 },	/* 133Mhz */
+	};
+	static const u16 dma_table[3] = { 0x2208, 0x10C2, 0x10C1 };
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static u8 ultra_table[2][7] = {
 		{ 0x0C, 0x07, 0x05, 0x04, 0x02, 0x01, 0xFF },	/* 100MHz */
 		{ 0x0F, 0x0B, 0x07, 0x05, 0x03, 0x02, 0x01 },	/* 133Mhz */
 	};
 	static u16 dma_table[3] = { 0x2208, 0x10C2, 0x10C1 };
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct pci_dev *pdev = to_pci_dev(ap->host->dev);
 	unsigned long ma = sil680_seldev(ap, adev, 0x08);
@@ -175,7 +266,15 @@ static void sil680_set_dmamode(struct ata_port *ap, struct ata_device *adev)
 	mode &= ~(0x03 << port_shift);
 
 	/* Extract scsc */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	scsc = (scsc & 0x30) ? 1 : 0;
+=======
 	scsc = (scsc & 0x30) ? 1: 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	scsc = (scsc & 0x30) ? 1: 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (adev->dma_mode >= XFER_UDMA_0) {
 		multi = 0x10C1;
@@ -248,7 +347,15 @@ static u8 sil680_init_chip(struct pci_dev *pdev, int *try_mmio)
 {
 	u8 tmpbyte	= 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* FIXME: double check */
+=======
         /* FIXME: double check */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        /* FIXME: double check */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_write_config_byte(pdev, PCI_CACHE_LINE_SIZE,
 			      pdev->revision ? 1 : 255);
 
@@ -266,6 +373,27 @@ static u8 sil680_init_chip(struct pci_dev *pdev, int *try_mmio)
 		*try_mmio = (tmpbyte & 1) || pci_resource_start(pdev, 5);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (tmpbyte & 0x30) {
+	case 0x00:
+		/* 133 clock attempt to force it on */
+		pci_write_config_byte(pdev, 0x8A, tmpbyte|0x10);
+		break;
+	case 0x30:
+		/* if clocking is disabled */
+		/* 133 clock attempt to force it on */
+		pci_write_config_byte(pdev, 0x8A, tmpbyte & ~0x20);
+		break;
+	case 0x10:
+		/* 133 already */
+		break;
+	case 0x20:
+		/* BIOS set PCI x2 clocking */
+		break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch(tmpbyte & 0x30) {
 		case 0x00:
 			/* 133 clock attempt to force it on */
@@ -282,6 +410,10 @@ static u8 sil680_init_chip(struct pci_dev *pdev, int *try_mmio)
 		case 0x20:
 			/* BIOS set PCI x2 clocking */
 			break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	pci_read_config_byte(pdev,   0x8A, &tmpbyte);
@@ -299,12 +431,34 @@ static u8 sil680_init_chip(struct pci_dev *pdev, int *try_mmio)
 	pci_write_config_dword(pdev, 0xB8, 0x43924392);
 	pci_write_config_dword(pdev, 0xBC, 0x40094009);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (tmpbyte & 0x30) {
+	case 0x00:
+		printk(KERN_INFO "sil680: 100MHz clock.\n");
+		break;
+	case 0x10:
+		printk(KERN_INFO "sil680: 133MHz clock.\n");
+		break;
+	case 0x20:
+		printk(KERN_INFO "sil680: Using PCI clock.\n");
+		break;
+	/* This last case is _NOT_ ok */
+	case 0x30:
+		printk(KERN_ERR "sil680: Clock disabled ?\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch(tmpbyte & 0x30) {
 		case 0x00: printk(KERN_INFO "sil680: 100MHz clock.\n");break;
 		case 0x10: printk(KERN_INFO "sil680: 133MHz clock.\n");break;
 		case 0x20: printk(KERN_INFO "sil680: Using PCI clock.\n");break;
 		/* This last case is _NOT_ ok */
 		case 0x30: printk(KERN_ERR "sil680: Clock disabled ?\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return tmpbyte & 0x30;
 }
@@ -327,13 +481,29 @@ static int __devinit sil680_init_one(struct pci_dev *pdev,
 		.port_ops = &sil680_port_ops
 	};
 	const struct ata_port_info *ppi[] = { &info, NULL };
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	static int printed_version;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	static int printed_version;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ata_host *host;
 	void __iomem *mmio_base;
 	int rc, try_mmio;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ata_print_version_once(&pdev->dev, DRV_VERSION);
+=======
 	if (!printed_version++)
 		dev_printk(KERN_DEBUG, &pdev->dev, "version " DRV_VERSION "\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!printed_version++)
+		dev_printk(KERN_DEBUG, &pdev->dev, "version " DRV_VERSION "\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rc = pcim_enable_device(pdev);
 	if (rc)

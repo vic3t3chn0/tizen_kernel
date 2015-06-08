@@ -26,8 +26,12 @@ obj-y	:=  bitmap.o traps.o time.o process.o base.o early.o setup.o vtime.o \
 <<<<<<< HEAD
 	    sysinfo.o jump_label.o lgr.o os_info.o
 =======
+<<<<<<< HEAD
+	    sysinfo.o jump_label.o lgr.o os_info.o
+=======
 	    sysinfo.o jump_label.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-y	+= $(if $(CONFIG_64BIT),entry64.o,entry.o)
 obj-y	+= $(if $(CONFIG_64BIT),reipl64.o,reipl.o)
@@ -40,10 +44,15 @@ obj-$(CONFIG_MODULES)		+= s390_ksyms.o module.o
 obj-$(CONFIG_SMP)		+= smp.o
 obj-$(CONFIG_SCHED_BOOK)	+= topology.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_SMP)		+= smp.o
+obj-$(CONFIG_SCHED_BOOK)	+= topology.o
+=======
 obj-$(CONFIG_SMP)		+= smp.o topology.o
 obj-$(CONFIG_SMP)		+= $(if $(CONFIG_64BIT),switch_cpu64.o, \
 							switch_cpu.o)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_HIBERNATION)	+= suspend.o swsusp_asm64.o
 obj-$(CONFIG_AUDIT)		+= audit.o
 compat-obj-$(CONFIG_AUDIT)	+= compat_audit.o
@@ -61,7 +70,12 @@ obj-$(CONFIG_FTRACE_SYSCALLS)  += ftrace.o
 obj-$(CONFIG_CRASH_DUMP)	+= crash_dump.o
 obj-$(CONFIG_PERF_EVENTS)	+= perf_event.o perf_cpum_cf.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_CRASH_DUMP)	+= crash_dump.o
+obj-$(CONFIG_PERF_EVENTS)	+= perf_event.o perf_cpum_cf.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # Kexec part
 S390_KEXEC_OBJS := machine_kexec.o crash.o

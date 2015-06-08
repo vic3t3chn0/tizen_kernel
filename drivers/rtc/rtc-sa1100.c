@@ -23,10 +23,34 @@
 
 #include <linux/platform_device.h>
 #include <linux/module.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/clk.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/rtc.h>
 #include <linux/init.h>
 #include <linux/fs.h>
 #include <linux/interrupt.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/slab.h>
+#include <linux/string.h>
+#include <linux/of.h>
+#include <linux/pm.h>
+#include <linux/bitops.h>
+#include <linux/io.h>
+
+#include <mach/hardware.h>
+#include <mach/irqs.h>
+
+#if defined(CONFIG_ARCH_PXA) || defined(CONFIG_ARCH_MMP)
+#include <mach/regs-rtc.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 #include <linux/pm.h>
 #include <linux/bitops.h>
@@ -37,10 +61,37 @@
 #ifdef CONFIG_ARCH_PXA
 #include <mach/regs-rtc.h>
 #include <mach/regs-ost.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #define RTC_DEF_DIVIDER		(32768 - 1)
 #define RTC_DEF_TRIM		0
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define RTC_FREQ		1024
+
+struct sa1100_rtc {
+	spinlock_t		lock;
+	int			irq_1hz;
+	int			irq_alarm;
+	struct rtc_device	*rtc;
+	struct clk		*clk;
+};
+
+static irqreturn_t sa1100_rtc_interrupt(int irq, void *dev_id)
+{
+	struct sa1100_rtc *info = dev_get_drvdata(dev_id);
+	struct rtc_device *rtc = info->rtc;
+	unsigned int rtsr;
+	unsigned long events = 0;
+
+	spin_lock(&info->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const unsigned long RTC_FREQ = 1024;
 static struct rtc_time rtc_alarm;
@@ -112,6 +163,10 @@ static irqreturn_t sa1100_rtc_interrupt(int irq, void *dev_id)
 	unsigned long events = 0;
 
 	spin_lock(&sa1100_rtc_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rtsr = RTSR;
 	/* clear interrupt sources */
@@ -147,16 +202,46 @@ static irqreturn_t sa1100_rtc_interrupt(int irq, void *dev_id)
 
 	rtc_update_irq(rtc, 1, events);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spin_unlock(&info->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rtsr & RTSR_AL && rtc_periodic_alarm(&rtc_alarm))
 		rtc_update_alarm(&rtc_alarm);
 
 	spin_unlock(&sa1100_rtc_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return IRQ_HANDLED;
 }
 
 static int sa1100_rtc_open(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info = dev_get_drvdata(dev);
+	struct rtc_device *rtc = info->rtc;
+	int ret;
+
+	ret = clk_prepare_enable(info->clk);
+	if (ret)
+		goto fail_clk;
+	ret = request_irq(info->irq_1hz, sa1100_rtc_interrupt, 0, "rtc 1Hz", dev);
+	if (ret) {
+		dev_err(dev, "IRQ %d already in use.\n", info->irq_1hz);
+		goto fail_ui;
+	}
+	ret = request_irq(info->irq_alarm, sa1100_rtc_interrupt, 0, "rtc Alrm", dev);
+	if (ret) {
+		dev_err(dev, "IRQ %d already in use.\n", info->irq_alarm);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	struct platform_device *plat_dev = to_platform_device(dev);
 	struct rtc_device *rtc = platform_get_drvdata(plat_dev);
@@ -171,6 +256,10 @@ static int sa1100_rtc_open(struct device *dev)
 		"rtc Alrm", dev);
 	if (ret) {
 		dev_err(dev, "IRQ %d already in use.\n", IRQ_RTCAlrm);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail_ai;
 	}
 	rtc->max_user_freq = RTC_FREQ;
@@ -179,13 +268,39 @@ static int sa1100_rtc_open(struct device *dev)
 	return 0;
 
  fail_ai:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	free_irq(info->irq_1hz, dev);
+ fail_ui:
+	clk_disable_unprepare(info->clk);
+ fail_clk:
+=======
 	free_irq(IRQ_RTC1Hz, dev);
  fail_ui:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	free_irq(IRQ_RTC1Hz, dev);
+ fail_ui:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static void sa1100_rtc_release(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info = dev_get_drvdata(dev);
+
+	spin_lock_irq(&info->lock);
+	RTSR = 0;
+	spin_unlock_irq(&info->lock);
+
+	free_irq(info->irq_alarm, dev);
+	free_irq(info->irq_1hz, dev);
+	clk_disable_unprepare(info->clk);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irq(&sa1100_rtc_lock);
 	RTSR = 0;
 	OIER &= ~OIER_E1;
@@ -194,16 +309,38 @@ static void sa1100_rtc_release(struct device *dev)
 
 	free_irq(IRQ_RTCAlrm, dev);
 	free_irq(IRQ_RTC1Hz, dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int sa1100_rtc_alarm_irq_enable(struct device *dev, unsigned int enabled)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info = dev_get_drvdata(dev);
+
+	spin_lock_irq(&info->lock);
+=======
 	spin_lock_irq(&sa1100_rtc_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irq(&sa1100_rtc_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (enabled)
 		RTSR |= RTSR_ALE;
 	else
 		RTSR &= ~RTSR_ALE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spin_unlock_irq(&info->lock);
+=======
 	spin_unlock_irq(&sa1100_rtc_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irq(&sa1100_rtc_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -228,7 +365,14 @@ static int sa1100_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alrm)
 {
 	u32	rtsr;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	memcpy(&alrm->time, &rtc_alarm, sizeof(struct rtc_time));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	memcpy(&alrm->time, &rtc_alarm, sizeof(struct rtc_time));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rtsr = RTSR;
 	alrm->enabled = (rtsr & RTSR_ALE) ? 1 : 0;
 	alrm->pending = (rtsr & RTSR_AL) ? 1 : 0;
@@ -237,6 +381,27 @@ static int sa1100_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alrm)
 
 static int sa1100_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alrm)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info = dev_get_drvdata(dev);
+	unsigned long time;
+	int ret;
+
+	spin_lock_irq(&info->lock);
+	ret = rtc_tm_to_time(&alrm->time, &time);
+	if (ret != 0)
+		goto out;
+	RTSR = RTSR & (RTSR_HZE|RTSR_ALE|RTSR_AL);
+	RTAR = time;
+	if (alrm->enabled)
+		RTSR |= RTSR_ALE;
+	else
+		RTSR &= ~RTSR_ALE;
+out:
+	spin_unlock_irq(&info->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	spin_lock_irq(&sa1100_rtc_lock);
@@ -248,6 +413,10 @@ static int sa1100_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alrm)
 			RTSR &= ~RTSR_ALE;
 	}
 	spin_unlock_irq(&sa1100_rtc_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -274,6 +443,33 @@ static const struct rtc_class_ops sa1100_rtc_ops = {
 static int sa1100_rtc_probe(struct platform_device *pdev)
 {
 	struct rtc_device *rtc;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info;
+	int irq_1hz, irq_alarm, ret = 0;
+
+	irq_1hz = platform_get_irq_byname(pdev, "rtc 1Hz");
+	irq_alarm = platform_get_irq_byname(pdev, "rtc alarm");
+	if (irq_1hz < 0 || irq_alarm < 0)
+		return -ENODEV;
+
+	info = kzalloc(sizeof(struct sa1100_rtc), GFP_KERNEL);
+	if (!info)
+		return -ENOMEM;
+	info->clk = clk_get(&pdev->dev, NULL);
+	if (IS_ERR(info->clk)) {
+		dev_err(&pdev->dev, "failed to find rtc clock source\n");
+		ret = PTR_ERR(info->clk);
+		goto err_clk;
+	}
+	info->irq_1hz = irq_1hz;
+	info->irq_alarm = irq_alarm;
+	spin_lock_init(&info->lock);
+	platform_set_drvdata(pdev, info);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * According to the manual we should be able to let RTTR be zero
@@ -295,10 +491,24 @@ static int sa1100_rtc_probe(struct platform_device *pdev)
 	rtc = rtc_device_register(pdev->name, &pdev->dev, &sa1100_rtc_ops,
 		THIS_MODULE);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (IS_ERR(rtc)) {
+		ret = PTR_ERR(rtc);
+		goto err_dev;
+	}
+	info->rtc = rtc;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(rtc))
 		return PTR_ERR(rtc);
 
 	platform_set_drvdata(pdev, rtc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Fix for a nasty initialization problem the in SA11xx RTSR register.
 	 * See also the comments in sa1100_rtc_interrupt().
@@ -325,14 +535,43 @@ static int sa1100_rtc_probe(struct platform_device *pdev)
 	RTSR = RTSR_AL | RTSR_HZ;
 
 	return 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+err_dev:
+	platform_set_drvdata(pdev, NULL);
+	clk_put(info->clk);
+err_clk:
+	kfree(info);
+	return ret;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int sa1100_rtc_remove(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info = platform_get_drvdata(pdev);
+
+	if (info) {
+		rtc_device_unregister(info->rtc);
+		clk_put(info->clk);
+		platform_set_drvdata(pdev, NULL);
+		kfree(info);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 
 	if (rtc)
 		rtc_device_unregister(rtc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -340,15 +579,37 @@ static int sa1100_rtc_remove(struct platform_device *pdev)
 #ifdef CONFIG_PM
 static int sa1100_rtc_suspend(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info = dev_get_drvdata(dev);
+	if (device_may_wakeup(dev))
+		enable_irq_wake(info->irq_alarm);
+=======
 	if (device_may_wakeup(dev))
 		enable_irq_wake(IRQ_RTCAlrm);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (device_may_wakeup(dev))
+		enable_irq_wake(IRQ_RTCAlrm);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int sa1100_rtc_resume(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa1100_rtc *info = dev_get_drvdata(dev);
+	if (device_may_wakeup(dev))
+		disable_irq_wake(info->irq_alarm);
+=======
 	if (device_may_wakeup(dev))
 		disable_irq_wake(IRQ_RTCAlrm);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (device_may_wakeup(dev))
+		disable_irq_wake(IRQ_RTCAlrm);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -358,6 +619,19 @@ static const struct dev_pm_ops sa1100_rtc_pm_ops = {
 };
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct of_device_id sa1100_rtc_dt_ids[] = {
+	{ .compatible = "mrvl,sa1100-rtc", },
+	{ .compatible = "mrvl,mmp-rtc", },
+	{}
+};
+MODULE_DEVICE_TABLE(of, sa1100_rtc_dt_ids);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver sa1100_rtc_driver = {
 	.probe		= sa1100_rtc_probe,
 	.remove		= sa1100_rtc_remove,
@@ -366,6 +640,16 @@ static struct platform_driver sa1100_rtc_driver = {
 #ifdef CONFIG_PM
 		.pm	= &sa1100_rtc_pm_ops,
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.of_match_table = sa1100_rtc_dt_ids,
+	},
+};
+
+module_platform_driver(sa1100_rtc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -381,6 +665,10 @@ static void __exit sa1100_rtc_exit(void)
 
 module_init(sa1100_rtc_init);
 module_exit(sa1100_rtc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Richard Purdie <rpurdie@rpsys.net>");
 MODULE_DESCRIPTION("SA11x0/PXA2xx Realtime Clock Driver (RTC)");

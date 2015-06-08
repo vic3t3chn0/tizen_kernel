@@ -225,8 +225,11 @@ static int cpu_clk_set_rate(struct clk *clk, unsigned long rate)
 	unsigned long diff, parent_rate, calc_rate;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	parent_rate = clk_get_rate(clk->parent);
 
@@ -281,6 +284,9 @@ static int cpu_clk_set_rate(struct clk *clk, unsigned long rate)
 <<<<<<< HEAD
 	mxs_clkctrl_timeout(HW_CLKCTRL_CPU, bm_busy);
 =======
+<<<<<<< HEAD
+	mxs_clkctrl_timeout(HW_CLKCTRL_CPU, bm_busy);
+=======
 	for (i = 10000; i; i--)
 		if (!(__raw_readl(CLKCTRL_BASE_ADDR +
 					HW_CLKCTRL_CPU) & bm_busy))
@@ -290,6 +296,7 @@ static int cpu_clk_set_rate(struct clk *clk, unsigned long rate)
 		return -ETIMEDOUT;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -301,8 +308,11 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 	unsigned long parent_rate;					\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int i;								\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 									\
 	parent_rate = clk_get_rate(clk->parent);			\
 	div_max = BM_CLKCTRL_##dr##_DIV >> BP_CLKCTRL_##dr##_DIV;	\
@@ -323,6 +333,9 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 <<<<<<< HEAD
 	mxs_clkctrl_timeout(HW_CLKCTRL_##dr, BM_CLKCTRL_##dr##_BUSY);	\
 =======
+<<<<<<< HEAD
+	mxs_clkctrl_timeout(HW_CLKCTRL_##dr, BM_CLKCTRL_##dr##_BUSY);	\
+=======
 	for (i = 10000; i; i--)						\
 		if (!(__raw_readl(CLKCTRL_BASE_ADDR +			\
 			HW_CLKCTRL_##dr) & BM_CLKCTRL_##dr##_BUSY))	\
@@ -333,6 +346,7 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 	}								\
 									\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;							\
 }
 
@@ -473,7 +487,11 @@ static struct clk_lookup lookups[] = {
 <<<<<<< HEAD
 	_REGISTER_CLOCK("imx23-gpmi-nand", NULL, gpmi_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("imx23-gpmi-nand", NULL, gpmi_clk)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int clk_misc_init(void)
@@ -482,8 +500,12 @@ static int clk_misc_init(void)
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Fix up parent per register setting */
 	reg = __raw_readl(CLKCTRL_BASE_ADDR + HW_CLKCTRL_CLKSEQ);
@@ -535,6 +557,9 @@ static int clk_misc_init(void)
 <<<<<<< HEAD
 	ret = mxs_clkctrl_timeout(HW_CLKCTRL_HBUS, BM_CLKCTRL_HBUS_BUSY);
 =======
+<<<<<<< HEAD
+	ret = mxs_clkctrl_timeout(HW_CLKCTRL_HBUS, BM_CLKCTRL_HBUS_BUSY);
+=======
 	for (i = 10000; i; i--)
 		if (!(__raw_readl(CLKCTRL_BASE_ADDR +
 			HW_CLKCTRL_HBUS) & BM_CLKCTRL_HBUS_BUSY))
@@ -544,6 +569,7 @@ static int clk_misc_init(void)
 		return -ETIMEDOUT;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Gate off cpu clock in WFI for power saving */
 	__raw_writel(BM_CLKCTRL_CPU_INTERRUPT_WAIT,
@@ -561,8 +587,12 @@ static int clk_misc_init(void)
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int __init mx23_clocks_init(void)
@@ -576,11 +606,16 @@ int __init mx23_clocks_init(void)
 	clk_set_parent(&ssp_clk, &ref_io_clk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clk_prepare_enable(&cpu_clk);
 	clk_prepare_enable(&hbus_clk);
 	clk_prepare_enable(&xbus_clk);
 	clk_prepare_enable(&emi_clk);
 	clk_prepare_enable(&uart_clk);
+<<<<<<< HEAD
+=======
 =======
 	clk_enable(&cpu_clk);
 	clk_enable(&hbus_clk);
@@ -588,6 +623,7 @@ int __init mx23_clocks_init(void)
 	clk_enable(&emi_clk);
 	clk_enable(&uart_clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clkdev_add_table(lookups, ARRAY_SIZE(lookups));
 

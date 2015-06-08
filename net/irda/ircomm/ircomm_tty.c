@@ -124,8 +124,11 @@ static int __init ircomm_tty_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	driver->owner		= THIS_MODULE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	driver->driver_name     = "ircomm";
 	driver->name            = "ircomm";
 	driver->major           = IRCOMM_TTY_MAJOR;
@@ -372,8 +375,12 @@ static int ircomm_tty_open(struct tty_struct *tty, struct file *filp)
 <<<<<<< HEAD
 	unsigned int line = tty->index;
 =======
+<<<<<<< HEAD
+	unsigned int line = tty->index;
+=======
 	unsigned int line;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	flags;
 	int ret;
 
@@ -381,11 +388,14 @@ static int ircomm_tty_open(struct tty_struct *tty, struct file *filp)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	line = tty->index;
 	if (line >= IRCOMM_TTY_PORTS)
 		return -ENODEV;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Check if instance already exists */
 	self = hashbin_lock_find(ircomm_tty, line, NULL);
 	if (!self) {
@@ -564,8 +574,12 @@ static void ircomm_tty_close(struct tty_struct *tty, struct file *filp)
 <<<<<<< HEAD
 		tty_wait_until_sent_from_close(tty, self->closing_wait);
 =======
+<<<<<<< HEAD
+		tty_wait_until_sent_from_close(tty, self->closing_wait);
+=======
 		tty_wait_until_sent(tty, self->closing_wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ircomm_tty_shutdown(self);
 

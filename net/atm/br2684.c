@@ -56,7 +56,11 @@ static const unsigned char llc_oui_pid_pad[] =
 <<<<<<< HEAD
 static const unsigned char pad[] = { PAD_BRIDGED };
 =======
+<<<<<<< HEAD
+static const unsigned char pad[] = { PAD_BRIDGED };
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned char llc_oui_ipv4[] = { LLC, SNAP_ROUTED, ETHERTYPE_IPV4 };
 static const unsigned char llc_oui_ipv6[] = { LLC, SNAP_ROUTED, ETHERTYPE_IPV6 };
 
@@ -207,13 +211,19 @@ static int br2684_xmit_vcc(struct sk_buff *skb, struct net_device *dev,
 	struct br2684_dev *brdev = BRPRIV(dev);
 	struct atm_vcc *atmvcc;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int minheadroom = (brvcc->encaps == e_llc) ?
 		((brdev->payload == p_bridged) ?
 			sizeof(llc_oui_pid_pad) : sizeof(llc_oui_ipv4)) :
 		((brdev->payload == p_bridged) ? BR2684_PAD_LEN : 0);
+<<<<<<< HEAD
+=======
 =======
 	int minheadroom = (brvcc->encaps == e_llc) ? 10 : 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (skb_headroom(skb) < minheadroom) {
 		struct sk_buff *skb2 = skb_realloc_headroom(skb, minheadroom);
@@ -464,8 +474,12 @@ static void br2684_push(struct atm_vcc *atmvcc, struct sk_buff *skb)
 <<<<<<< HEAD
 			if (memcmp(skb->data, pad, BR2684_PAD_LEN) != 0)
 =======
+<<<<<<< HEAD
+			if (memcmp(skb->data, pad, BR2684_PAD_LEN) != 0)
+=======
 			if (*((u16 *) (skb->data)) != 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto error;
 			skb_pull(skb, BR2684_PAD_LEN);
 			skb->protocol = eth_type_trans(skb, net_dev);
@@ -505,11 +519,16 @@ free_skb:
 static int br2684_regvcc(struct atm_vcc *atmvcc, void __user * arg)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct br2684_vcc *brvcc;
 	struct br2684_dev *brdev;
 	struct net_device *net_dev;
 	struct atm_backend_br2684 be;
 	int err;
+<<<<<<< HEAD
+=======
 =======
 	struct sk_buff_head queue;
 	int err;
@@ -521,6 +540,7 @@ static int br2684_regvcc(struct atm_vcc *atmvcc, void __user * arg)
 	struct atm_backend_br2684 be;
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (copy_from_user(&be, arg, sizeof be))
 		return -EFAULT;
@@ -575,6 +595,8 @@ static int br2684_regvcc(struct atm_vcc *atmvcc, void __user * arg)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	__skb_queue_head_init(&queue);
 	rq = &sk_atm(atmvcc)->sk_receive_queue;
 
@@ -593,6 +615,7 @@ static int br2684_regvcc(struct atm_vcc *atmvcc, void __user * arg)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* initialize netdev carrier state */
 	if (atmvcc->dev->signal == ATM_PHY_SIG_LOST)
 		netif_carrier_off(net_dev);
@@ -601,12 +624,18 @@ static int br2684_regvcc(struct atm_vcc *atmvcc, void __user * arg)
 
 	__module_get(THIS_MODULE);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* re-process everything received between connection setup and
 	   backend setup */
 	vcc_process_recv_queue(atmvcc);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 error:
@@ -636,7 +665,11 @@ static void br2684_setup(struct net_device *netdev)
 <<<<<<< HEAD
 	netdev->hard_header_len += sizeof(llc_oui_pid_pad); /* worst case */
 =======
+<<<<<<< HEAD
+	netdev->hard_header_len += sizeof(llc_oui_pid_pad); /* worst case */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	brdev->net_dev = netdev;
 
 	netdev->netdev_ops = &br2684_netdev_ops;
@@ -652,8 +685,12 @@ static void br2684_setup_routed(struct net_device *netdev)
 <<<<<<< HEAD
 	netdev->hard_header_len = sizeof(llc_oui_ipv4); /* worst case */
 =======
+<<<<<<< HEAD
+	netdev->hard_header_len = sizeof(llc_oui_ipv4); /* worst case */
+=======
 	netdev->hard_header_len = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netdev->netdev_ops = &br2684_netdev_ops_routed;
 	netdev->addr_len = 0;
 	netdev->mtu = 1500;

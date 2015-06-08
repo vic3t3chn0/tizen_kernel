@@ -6,6 +6,9 @@
  * U5500 PRCMU API.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __MFD_DB5500_PRCMU_H
 #define __MFD_DB5500_PRCMU_H
 
@@ -69,6 +72,8 @@ void db5500_prcmu_early_init(void);
 int db5500_prcmu_set_display_clocks(void);
 int db5500_prcmu_disable_dsipll(void);
 int db5500_prcmu_enable_dsipll(void);
+<<<<<<< HEAD
+=======
 =======
 #ifndef __MACH_PRCMU_U5500_H
 #define __MACH_PRCMU_U5500_H
@@ -78,6 +83,7 @@ int db5500_prcmu_enable_dsipll(void);
 void db5500_prcmu_early_init(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int db5500_prcmu_abb_read(u8 slave, u8 reg, u8 *value, u8 size);
 int db5500_prcmu_abb_write(u8 slave, u8 reg, u8 *value, u8 size);
 
@@ -86,10 +92,14 @@ int db5500_prcmu_abb_write(u8 slave, u8 reg, u8 *value, u8 size);
 <<<<<<< HEAD
 static inline void db5500_prcmu_early_init(void) {}
 =======
+<<<<<<< HEAD
+static inline void db5500_prcmu_early_init(void) {}
+=======
 static inline void db5500_prcmu_early_init(void)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int db5500_prcmu_abb_read(u8 slave, u8 reg, u8 *value, u8 size)
 {
@@ -102,6 +112,9 @@ static inline int db5500_prcmu_abb_write(u8 slave, u8 reg, u8 *value, u8 size)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int db5500_prcmu_set_display_clocks(void)
 {
 	return 0;
@@ -120,6 +133,8 @@ static inline int db5500_prcmu_enable_dsipll(void)
 #endif /* CONFIG_MFD_DB5500_PRCMU */
 
 #endif /* __MFD_DB5500_PRCMU_H */
+<<<<<<< HEAD
+=======
 =======
 #endif /* CONFIG_UX500_SOC_DB5500 */
 
@@ -134,3 +149,4 @@ static inline int db5500_prcmu_config_abb_event_readout(u32 abb_events)
 
 #endif /* __MACH_PRCMU_U5500_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

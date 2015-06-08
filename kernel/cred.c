@@ -8,7 +8,15 @@
  * as published by the Free Software Foundation; either version
  * 2 of the Licence, or (at your option) any later version.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/module.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/cred.h>
 #include <linux/slab.h>
 #include <linux/sched.h>
@@ -16,6 +24,13 @@
 #include <linux/keyctl.h>
 #include <linux/init_task.h>
 #include <linux/security.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/binfmts.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/cn_proc.h>
 
 #if 0
@@ -510,10 +525,21 @@ int commit_creds(struct cred *new)
 		key_fsgid_changed(task);
 
 	/* do it
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * RLIMIT_NPROC limits on user->processes have already been checked
+	 * in set_user().
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * - What if a process setreuid()'s and this brings the
 	 *   new uid over his NPROC rlimit?  We can check this now
 	 *   cheaply with the new uid cache, so if it matters
 	 *   we should be checking for it.  -DaveM
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	alter_cred_subscribers(new, 2);
 	if (new->user != old->user)
@@ -648,6 +674,15 @@ void __init cred_init(void)
  */
 struct cred *prepare_kernel_cred(struct task_struct *daemon)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_KEYS
+	struct thread_group_cred *tgcred;
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct cred *old;
 	struct cred *new;
 
@@ -655,6 +690,20 @@ struct cred *prepare_kernel_cred(struct task_struct *daemon)
 	if (!new)
 		return NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_KEYS
+	tgcred = kmalloc(sizeof(*tgcred), GFP_KERNEL);
+	if (!tgcred) {
+		kmem_cache_free(cred_jar, new);
+		return NULL;
+	}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kdebug("prepare_kernel_cred() alloc %p", new);
 
 	if (daemon)
@@ -671,8 +720,21 @@ struct cred *prepare_kernel_cred(struct task_struct *daemon)
 	get_group_info(new->group_info);
 
 #ifdef CONFIG_KEYS
+<<<<<<< HEAD
+<<<<<<< HEAD
+	atomic_set(&tgcred->usage, 1);
+	spin_lock_init(&tgcred->lock);
+	tgcred->process_keyring = NULL;
+	tgcred->session_keyring = NULL;
+	new->tgcred = tgcred;
+=======
 	atomic_inc(&init_tgcred.usage);
 	new->tgcred = &init_tgcred;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_inc(&init_tgcred.usage);
+	new->tgcred = &init_tgcred;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	new->request_key_auth = NULL;
 	new->thread_keyring = NULL;
 	new->jit_keyring = KEY_REQKEY_DEFL_THREAD_KEYRING;

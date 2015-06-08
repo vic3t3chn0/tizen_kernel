@@ -76,13 +76,19 @@ static int icmp_print_tuple(struct seq_file *s,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int *icmp_get_timeouts(struct net *net)
 {
 	return &nf_ct_icmp_timeout;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Returns verdict for packet, or -1 for invalid. */
 static int icmp_packet(struct nf_conn *ct,
 		       const struct sk_buff *skb,
@@ -93,8 +99,13 @@ static int icmp_packet(struct nf_conn *ct,
 		       unsigned int hooknum,
 		       unsigned int *timeout)
 =======
+<<<<<<< HEAD
+		       unsigned int hooknum,
+		       unsigned int *timeout)
+=======
 		       unsigned int hooknum)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Do not immediately delete the connection after the first
 	   successful reply to avoid excessive conntrackd traffic
@@ -102,8 +113,12 @@ static int icmp_packet(struct nf_conn *ct,
 <<<<<<< HEAD
 	nf_ct_refresh_acct(ct, ctinfo, skb, *timeout);
 =======
+<<<<<<< HEAD
+	nf_ct_refresh_acct(ct, ctinfo, skb, *timeout);
+=======
 	nf_ct_refresh_acct(ct, ctinfo, skb, nf_ct_icmp_timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return NF_ACCEPT;
 }
@@ -113,8 +128,12 @@ static bool icmp_new(struct nf_conn *ct, const struct sk_buff *skb,
 <<<<<<< HEAD
 		     unsigned int dataoff, unsigned int *timeouts)
 =======
+<<<<<<< HEAD
+		     unsigned int dataoff, unsigned int *timeouts)
+=======
 		     unsigned int dataoff)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	static const u_int8_t valid_new[] = {
 		[ICMP_ECHO] = 1,
@@ -285,6 +304,9 @@ static int icmp_nlattr_tuple_size(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 
 #include <linux/netfilter/nfnetlink.h>
@@ -323,8 +345,11 @@ icmp_timeout_nla_policy[CTA_TIMEOUT_ICMP_MAX+1] = {
 };
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 static struct ctl_table_header *icmp_sysctl_header;
 static struct ctl_table icmp_sysctl_table[] = {
@@ -363,7 +388,11 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_icmp __read_mostly =
 <<<<<<< HEAD
 	.get_timeouts		= icmp_get_timeouts,
 =======
+<<<<<<< HEAD
+	.get_timeouts		= icmp_get_timeouts,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.new			= icmp_new,
 	.error			= icmp_error,
 	.destroy		= NULL,
@@ -375,6 +404,9 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_icmp __read_mostly =
 	.nla_policy		= icmp_nla_policy,
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 	.ctnl_timeout		= {
 		.nlattr_to_obj	= icmp_timeout_nlattr_to_obj,
@@ -384,8 +416,11 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_icmp __read_mostly =
 		.nla_policy	= icmp_timeout_nla_policy,
 	},
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 	.ctl_table_header	= &icmp_sysctl_header,
 	.ctl_table		= icmp_sysctl_table,

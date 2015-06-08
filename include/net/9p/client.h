@@ -41,10 +41,16 @@ enum p9_proto_versions{
 	p9_proto_2000u,
 	p9_proto_2000L,
 =======
+<<<<<<< HEAD
+	p9_proto_legacy,
+	p9_proto_2000u,
+	p9_proto_2000L,
+=======
 	p9_proto_legacy = 0,
 	p9_proto_2000u = 1,
 	p9_proto_2000L = 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -160,8 +166,12 @@ struct p9_client {
 <<<<<<< HEAD
 	unsigned int msize;
 =======
+<<<<<<< HEAD
+	unsigned int msize;
+=======
 	int msize;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char proto_version;
 	struct p9_trans_module *trans_mod;
 	enum p9_trans_status status;
@@ -222,13 +232,19 @@ struct p9_dirent {
 
 int p9_client_statfs(struct p9_fid *fid, struct p9_rstatfs *sb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int p9_client_rename(struct p9_fid *fid, struct p9_fid *newdirfid,
 		     const char *name);
 int p9_client_renameat(struct p9_fid *olddirfid, const char *old_name,
 		       struct p9_fid *newdirfid, const char *new_name);
+<<<<<<< HEAD
+=======
 =======
 int p9_client_rename(struct p9_fid *fid, struct p9_fid *newdirfid, char *name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct p9_client *p9_client_create(const char *dev_name, char *options);
 void p9_client_destroy(struct p9_client *clnt);
 void p9_client_disconnect(struct p9_client *clnt);
@@ -251,7 +267,11 @@ int p9_client_remove(struct p9_fid *fid);
 <<<<<<< HEAD
 int p9_client_unlinkat(struct p9_fid *dfid, const char *name, int flags);
 =======
+<<<<<<< HEAD
+int p9_client_unlinkat(struct p9_fid *dfid, const char *name, int flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int p9_client_read(struct p9_fid *fid, char *data, char __user *udata,
 							u64 offset, u32 count);
 int p9_client_write(struct p9_fid *fid, char *data, const char __user *udata,
@@ -261,9 +281,14 @@ int p9_client_readdir(struct p9_fid *fid, char *data, u32 count, u64 offset);
 int p9dirent_read(struct p9_client *clnt, char *buf, int len,
 		  struct p9_dirent *dirent);
 =======
+<<<<<<< HEAD
+int p9dirent_read(struct p9_client *clnt, char *buf, int len,
+		  struct p9_dirent *dirent);
+=======
 int p9dirent_read(char *buf, int len, struct p9_dirent *dirent,
 							int proto_version);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct p9_wstat *p9_client_stat(struct p9_fid *fid);
 int p9_client_wstat(struct p9_fid *fid, struct p9_wstat *wst);
 int p9_client_setattr(struct p9_fid *fid, struct p9_iattr_dotl *attr);
@@ -284,8 +309,12 @@ int p9_parse_header(struct p9_fcall *, int32_t *, int8_t *, int16_t *, int);
 <<<<<<< HEAD
 int p9stat_read(struct p9_client *, char *, int, struct p9_wstat *);
 =======
+<<<<<<< HEAD
+int p9stat_read(struct p9_client *, char *, int, struct p9_wstat *);
+=======
 int p9stat_read(char *, int, struct p9_wstat *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void p9stat_free(struct p9_wstat *);
 
 int p9_is_proto_dotu(struct p9_client *clnt);

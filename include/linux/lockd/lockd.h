@@ -70,7 +70,11 @@ struct nlm_host {
 <<<<<<< HEAD
 	struct net		*net;		/* host net */
 =======
+<<<<<<< HEAD
+	struct net		*net;		/* host net */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -195,8 +199,12 @@ struct nlm_block {
 <<<<<<< HEAD
 extern const struct rpc_program	nlm_program;
 =======
+<<<<<<< HEAD
+extern const struct rpc_program	nlm_program;
+=======
 extern struct rpc_program	nlm_program;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct svc_procedure	nlmsvc_procedures[];
 #ifdef CONFIG_LOCKD_V4
 extern struct svc_procedure	nlmsvc_procedures4[];
@@ -206,8 +214,12 @@ extern unsigned long		nlmsvc_timeout;
 <<<<<<< HEAD
 extern bool			nsm_use_hostnames;
 =======
+<<<<<<< HEAD
+extern bool			nsm_use_hostnames;
+=======
 extern int			nsm_use_hostnames;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern u32			nsm_local_state;
 
 /*
@@ -238,8 +250,13 @@ struct nlm_host  *nlmclnt_lookup_host(const struct sockaddr *sap,
 					int noresvport,
 					struct net *net);
 =======
+<<<<<<< HEAD
+					int noresvport,
+					struct net *net);
+=======
 					int noresvport);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void		  nlmclnt_release_host(struct nlm_host *);
 struct nlm_host  *nlmsvc_lookup_host(const struct svc_rqst *rqstp,
 					const char *hostname,
@@ -252,7 +269,11 @@ void		  nlm_shutdown_hosts(void);
 <<<<<<< HEAD
 void		  nlm_shutdown_hosts_net(struct net *net);
 =======
+<<<<<<< HEAD
+void		  nlm_shutdown_hosts_net(struct net *net);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void		  nlm_host_rebooted(const struct nlm_reboot *);
 
 /*
@@ -325,8 +346,12 @@ static inline int __nlm_privileged_request4(const struct sockaddr *sap)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __nlm_privileged_request6(const struct sockaddr *sap)
 {
 	const struct sockaddr_in6 *sin6 = (struct sockaddr_in6 *)sap;
@@ -342,8 +367,12 @@ static inline int __nlm_privileged_request6(const struct sockaddr *sap)
 <<<<<<< HEAD
 #else	/* IS_ENABLED(CONFIG_IPV6) */
 =======
+<<<<<<< HEAD
+#else	/* IS_ENABLED(CONFIG_IPV6) */
+=======
 #else	/* defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __nlm_privileged_request6(const struct sockaddr *sap)
 {
 	return 0;
@@ -351,8 +380,12 @@ static inline int __nlm_privileged_request6(const struct sockaddr *sap)
 <<<<<<< HEAD
 #endif	/* IS_ENABLED(CONFIG_IPV6) */
 =======
+<<<<<<< HEAD
+#endif	/* IS_ENABLED(CONFIG_IPV6) */
+=======
 #endif	/* defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Ensure incoming requests are from local privileged callers.

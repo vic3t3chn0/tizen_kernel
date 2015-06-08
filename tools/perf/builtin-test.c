@@ -10,21 +10,31 @@
 <<<<<<< HEAD
 #include "util/debugfs.h"
 =======
+<<<<<<< HEAD
+#include "util/debugfs.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "util/evlist.h"
 #include "util/parse-options.h"
 #include "util/parse-events.h"
 #include "util/symbol.h"
 #include "util/thread_map.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "util/pmu.h"
 #include "../../include/linux/hw_breakpoint.h"
 
 #include <sys/mman.h>
+<<<<<<< HEAD
+=======
 =======
 
 static long page_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int vmlinux_matches_kallsyms_filter(struct map *map __used, struct symbol *sym)
 {
@@ -44,7 +54,11 @@ static int test__vmlinux_matches_kallsyms(void)
 <<<<<<< HEAD
 	long page_size = sysconf(_SC_PAGE_SIZE);
 =======
+<<<<<<< HEAD
+	long page_size = sysconf(_SC_PAGE_SIZE);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ref_reloc_sym ref_reloc_sym = { .name = "_stext", };
 
 	/*
@@ -264,9 +278,14 @@ static int trace_event__id(const char *evname)
 		     "%s/syscalls/%s/id",
 		     tracing_events_path, evname) < 0)
 =======
+<<<<<<< HEAD
+		     "%s/syscalls/%s/id",
+		     tracing_events_path, evname) < 0)
+=======
 		     "/sys/kernel/debug/tracing/events/syscalls/%s/id",
 		     evname) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 
 	fd = open(filename, O_RDONLY);
@@ -298,8 +317,12 @@ static int test__open_syscall_event(void)
 <<<<<<< HEAD
 	threads = thread_map__new(-1, getpid(), UINT_MAX);
 =======
+<<<<<<< HEAD
+	threads = thread_map__new(-1, getpid(), UINT_MAX);
+=======
 	threads = thread_map__new(-1, getpid());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (threads == NULL) {
 		pr_debug("thread_map__new\n");
 		return -1;
@@ -317,8 +340,12 @@ static int test__open_syscall_event(void)
 <<<<<<< HEAD
 	if (perf_evsel__open_per_thread(evsel, threads, false, NULL) < 0) {
 =======
+<<<<<<< HEAD
+	if (perf_evsel__open_per_thread(evsel, threads, false, NULL) < 0) {
+=======
 	if (perf_evsel__open_per_thread(evsel, threads, false) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("failed to open counter: %s, "
 			 "tweak /proc/sys/kernel/perf_event_paranoid?\n",
 			 strerror(errno));
@@ -372,8 +399,12 @@ static int test__open_syscall_event_on_all_cpus(void)
 <<<<<<< HEAD
 	threads = thread_map__new(-1, getpid(), UINT_MAX);
 =======
+<<<<<<< HEAD
+	threads = thread_map__new(-1, getpid(), UINT_MAX);
+=======
 	threads = thread_map__new(-1, getpid());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (threads == NULL) {
 		pr_debug("thread_map__new\n");
 		return -1;
@@ -400,8 +431,12 @@ static int test__open_syscall_event_on_all_cpus(void)
 <<<<<<< HEAD
 	if (perf_evsel__open(evsel, cpus, threads, false, NULL) < 0) {
 =======
+<<<<<<< HEAD
+	if (perf_evsel__open(evsel, cpus, threads, false, NULL) < 0) {
+=======
 	if (perf_evsel__open(evsel, cpus, threads, false) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("failed to open counter: %s, "
 			 "tweak /proc/sys/kernel/perf_event_paranoid?\n",
 			 strerror(errno));
@@ -528,8 +563,12 @@ static int test__basic_mmap(void)
 <<<<<<< HEAD
 	threads = thread_map__new(-1, getpid(), UINT_MAX);
 =======
+<<<<<<< HEAD
+	threads = thread_map__new(-1, getpid(), UINT_MAX);
+=======
 	threads = thread_map__new(-1, getpid());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (threads == NULL) {
 		pr_debug("thread_map__new\n");
 		return -1;
@@ -573,8 +612,12 @@ static int test__basic_mmap(void)
 <<<<<<< HEAD
 		if (perf_evsel__open(evsels[i], cpus, threads, false, NULL) < 0) {
 =======
+<<<<<<< HEAD
+		if (perf_evsel__open(evsels[i], cpus, threads, false, NULL) < 0) {
+=======
 		if (perf_evsel__open(evsels[i], cpus, threads, false) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_debug("failed to open counter: %s, "
 				 "tweak /proc/sys/kernel/perf_event_paranoid?\n",
 				 strerror(errno));
@@ -607,8 +650,12 @@ static int test__basic_mmap(void)
 <<<<<<< HEAD
 					       false, &sample, false);
 =======
+<<<<<<< HEAD
+					       false, &sample, false);
+=======
 					       false, &sample);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err) {
 			pr_err("Can't parse sample, err = %d\n", err);
 			goto out_munmap;
@@ -649,6 +696,9 @@ out_free_threads:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TEST_ASSERT_VAL(text, cond) \
 do { \
 	if (!(cond)) { \
@@ -1697,8 +1747,11 @@ static int test__perf_pmu(void)
 	return perf_pmu__test();
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct test {
 	const char *desc;
 	int (*func)(void);
@@ -1721,6 +1774,9 @@ static struct test {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.desc = "parse events tests",
 		.func = test__parse_events,
 	},
@@ -1739,13 +1795,19 @@ static struct test {
 		.func = test__perf_pmu,
 	},
 	{
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.func = NULL,
 	},
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool perf_test__matches(int curr, int argc, const char *argv[])
 {
 	int i;
@@ -1785,6 +1847,8 @@ static int __cmd_test(int argc, const char *argv[])
 		err = tests[curr].func();
 		pr_debug("---- end ----\n%s:", tests[curr].desc);
 		pr_info(" %s\n", err ? "FAILED!\n" : "Ok");
+<<<<<<< HEAD
+=======
 =======
 static int __cmd_test(void)
 {
@@ -1801,12 +1865,16 @@ static int __cmd_test(void)
 		pr_info(" %s\n", err ? "FAILED!\n" : "Ok");
 		++i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int perf_test__list(int argc, const char **argv)
 {
 	int i = 0;
@@ -1838,6 +1906,8 @@ int cmd_test(int argc, const char **argv, const char *prefix __used)
 	argc = parse_options(argc, argv, test_options, test_usage, 0);
 	if (argc >= 1 && !strcmp(argv[0], "list"))
 		return perf_test__list(argc, argv);
+<<<<<<< HEAD
+=======
 =======
 static const char * const test_usage[] = {
 	"perf test [<options>]",
@@ -1856,6 +1926,7 @@ int cmd_test(int argc, const char **argv, const char *prefix __used)
 	if (argc)
 		usage_with_options(test_usage, test_options);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	symbol_conf.priv_size = sizeof(int);
 	symbol_conf.sort_by_name = true;
@@ -1867,8 +1938,12 @@ int cmd_test(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 	return __cmd_test(argc, argv);
 =======
+<<<<<<< HEAD
+	return __cmd_test(argc, argv);
+=======
 	setup_pager();
 
 	return __cmd_test();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

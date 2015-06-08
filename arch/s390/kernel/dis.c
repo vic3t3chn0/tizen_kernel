@@ -29,11 +29,17 @@
 #include <asm/io.h>
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <asm/uaccess.h>
+#include <asm/io.h>
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/uaccess.h>
 #include <asm/io.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mathemu.h>
 #include <asm/cpcmd.h>
 #include <asm/lowcore.h>
@@ -1585,6 +1591,9 @@ void show_code(struct pt_regs *regs)
 	hops = 0;
 	while (start < end && hops < 8) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		opsize = insn_length(code[start]);
 		if  (start + opsize == 32)
 			*ptr++ = '#';
@@ -1594,12 +1603,15 @@ void show_code(struct pt_regs *regs)
 			*ptr++ = ' ';
 		addr = regs->psw.addr + start - 32;
 		ptr += sprintf(ptr, ONELONG, addr);
+<<<<<<< HEAD
+=======
 =======
 		*ptr++ = (start == 32) ? '>' : ' ';
 		addr = regs->psw.addr + start - 32;
 		ptr += sprintf(ptr, ONELONG, addr);
 		opsize = insn_length(code[start]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (start + opsize >= end)
 			break;
 		for (i = 0; i < opsize; i++)

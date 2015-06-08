@@ -29,7 +29,12 @@ struct xfs_busy_extent;
 extern struct workqueue_struct *xfs_alloc_wq;
 
 =======
+<<<<<<< HEAD
+extern struct workqueue_struct *xfs_alloc_wq;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Freespace allocation types.  Argument to xfs_alloc_[v]extent.
  */
@@ -129,7 +134,13 @@ typedef struct xfs_alloc_arg {
 	struct work_struct work;
 	int		result;
 =======
+<<<<<<< HEAD
+	struct completion *done;
+	struct work_struct work;
+	int		result;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } xfs_alloc_arg_t;
 
 /*
@@ -255,6 +266,9 @@ xfs_alloc_lookup_le(
 	int			*stat);	/* success/failure */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int				/* error */
 xfs_alloc_lookup_ge(
 	struct xfs_btree_cur	*cur,	/* btree cursor */
@@ -262,8 +276,11 @@ xfs_alloc_lookup_ge(
 	xfs_extlen_t		len,	/* length of extent */
 	int			*stat);	/* success/failure */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int					/* error */
 xfs_alloc_get_rec(
 	struct xfs_btree_cur	*cur,	/* btree cursor */

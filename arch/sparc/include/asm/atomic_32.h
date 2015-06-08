@@ -18,12 +18,18 @@
 #include <asm-generic/atomic64.h>
 
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+#include <asm-generic/atomic64.h>
+
+=======
 #ifdef __KERNEL__
 
 #include <asm-generic/atomic64.h>
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ATOMIC_INIT(i)  { (i) }
 
@@ -33,8 +39,12 @@ extern int atomic_cmpxchg(atomic_t *, int, int);
 <<<<<<< HEAD
 extern int __atomic_add_unless(atomic_t *, int, int);
 =======
+<<<<<<< HEAD
+extern int __atomic_add_unless(atomic_t *, int, int);
+=======
 extern int atomic_add_unless(atomic_t *, int, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void atomic_set(atomic_t *, int);
 
 #define atomic_read(v)          (*(volatile int *)&(v)->counter)
@@ -64,6 +74,8 @@ extern void atomic_set(atomic_t *, int);
 #define atomic_dec_and_test(v) (atomic_dec_return(v) == 0)
 #define atomic_sub_and_test(i, v) (atomic_sub_return(i, v) == 0)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
@@ -168,6 +180,7 @@ static inline int __atomic24_sub(int i, atomic24_t *v)
 #define atomic24_add_negative(i, v) (__atomic24_add((i), (v)) < 0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Atomic operations are already serializing */
 #define smp_mb__before_atomic_dec()	barrier()
 #define smp_mb__after_atomic_dec()	barrier()
@@ -176,8 +189,11 @@ static inline int __atomic24_sub(int i, atomic24_t *v)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* !(__KERNEL__) */
 
 #include <asm-generic/atomic-long.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !(__ARCH_SPARC_ATOMIC__) */

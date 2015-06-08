@@ -93,6 +93,12 @@
 #define LP5521_REG_R_CURR_DEFAULT	0xAF
 
 /* Pattern Mode */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PATTERN_OFF	0
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PATTERN_OFF			0
 
 /* Blink time unit */
@@ -103,6 +109,10 @@
 #define CMD_WAIT_MSB			0x60	/* 500ms unit */
 #define CMD_WAIT_LSB			0x00
 #define WAIT_UNIT			500
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct lp5521_engine {
 	int		id;
@@ -131,6 +141,11 @@ struct lp5521_chip {
 	u8			num_leds;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct lp5521_pattern_cmd {
 	u8 r[LP5521_PROGRAM_LENGTH];
 	u8 g[LP5521_PROGRAM_LENGTH];
@@ -140,6 +155,10 @@ struct lp5521_pattern_cmd {
 	int pc_b;
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct lp5521_led *cdev_to_led(struct led_classdev *cdev)
 {
 	return container_of(cdev, struct lp5521_led, cdev);
@@ -211,6 +230,14 @@ static int lp5521_load_program(struct lp5521_engine *eng, const u8 *pattern)
 
 	/* move current engine to direct mode and remember the state */
 	ret = lp5521_set_engine_mode(eng, LP5521_CMD_DIRECT);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Mode change requires min 500 us delay. 1 - 2 ms  with margin */
+	usleep_range(1000, 2000);
+	ret |= lp5521_read(client, LP5521_REG_OP_MODE, &mode);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -219,6 +246,10 @@ static int lp5521_load_program(struct lp5521_engine *eng, const u8 *pattern)
 	ret = lp5521_read(client, LP5521_REG_OP_MODE, &mode);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* For loading, all the engines to load mode */
 	lp5521_write(client, LP5521_REG_OP_MODE, LP5521_CMD_DIRECT);
@@ -234,7 +265,16 @@ static int lp5521_load_program(struct lp5521_engine *eng, const u8 *pattern)
 				LP5521_PROG_MEM_SIZE,
 				pattern);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret |= lp5521_write(client, LP5521_REG_OP_MODE, mode);
+	return ret;
+=======
 	return lp5521_write(client, LP5521_REG_OP_MODE, mode);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return lp5521_write(client, LP5521_REG_OP_MODE, mode);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int lp5521_set_led_current(struct lp5521_chip *chip, int led, u8 curr)
@@ -590,6 +630,11 @@ static inline struct lp5521_led_pattern *lp5521_get_pattern
 	return ptn;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void _run_led_pattern(struct lp5521_chip *chip,
 			struct lp5521_led_pattern *ptn)
 {
@@ -612,6 +657,10 @@ static void _run_led_pattern(struct lp5521_chip *chip,
 	lp5521_write(cl, LP5521_REG_ENABLE, LP5521_ENABLE_RUN_PROGRAM);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void lp5521_run_led_pattern(int mode, struct lp5521_chip *chip)
 {
 	struct lp5521_led_pattern *ptn;
@@ -630,7 +679,29 @@ static void lp5521_run_led_pattern(int mode, struct lp5521_chip *chip)
 		if (!ptn)
 			return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		lp5521_write(cl, LP5521_REG_OP_MODE, LP5521_CMD_LOAD);
+		usleep_range(1000, 2000);
+
+		lp5521_clear_program_memory(cl);
+
+		lp5521_write_program_memory(cl, LP5521_REG_R_PROG_MEM,
+					ptn->r, ptn->size_r);
+		lp5521_write_program_memory(cl, LP5521_REG_G_PROG_MEM,
+					ptn->g, ptn->size_g);
+		lp5521_write_program_memory(cl, LP5521_REG_B_PROG_MEM,
+					ptn->b, ptn->size_b);
+
+		lp5521_write(cl, LP5521_REG_OP_MODE, LP5521_CMD_RUN);
+		usleep_range(1000, 2000);
+		lp5521_write(cl, LP5521_REG_ENABLE, LP5521_ENABLE_RUN_PROGRAM);
+=======
 		_run_led_pattern(chip, ptn);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		_run_led_pattern(chip, ptn);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -651,6 +722,11 @@ static ssize_t store_led_pattern(struct device *dev,
 	return len;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void _set_pwm_cmd(struct lp5521_pattern_cmd *cmd, unsigned int color)
 {
 	u8 r = (color >> 16) & 0xFF;
@@ -736,6 +812,10 @@ static ssize_t store_led_blink(struct device *dev,
 	return len;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* led class device attributes */
 static DEVICE_ATTR(led_current, S_IRUGO | S_IWUSR, show_current, store_current);
 static DEVICE_ATTR(max_current, S_IRUGO , show_max_current, NULL);
@@ -762,7 +842,14 @@ static DEVICE_ATTR(engine2_load, S_IWUSR, NULL, store_engine2_load);
 static DEVICE_ATTR(engine3_load, S_IWUSR, NULL, store_engine3_load);
 static DEVICE_ATTR(selftest, S_IRUGO, lp5521_selftest, NULL);
 static DEVICE_ATTR(led_pattern, S_IWUSR, NULL, store_led_pattern);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static DEVICE_ATTR(led_blink, S_IWUSR, NULL, store_led_blink);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static DEVICE_ATTR(led_blink, S_IWUSR, NULL, store_led_blink);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct attribute *lp5521_attributes[] = {
 	&dev_attr_engine1_mode.attr,
@@ -773,7 +860,14 @@ static struct attribute *lp5521_attributes[] = {
 	&dev_attr_engine2_load.attr,
 	&dev_attr_engine3_load.attr,
 	&dev_attr_led_pattern.attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	&dev_attr_led_blink.attr,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	&dev_attr_led_blink.attr,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
@@ -902,7 +996,15 @@ static int __devinit lp5521_probe(struct i2c_client *client,
 	 * LP5521_REG_ENABLE register will not have any effect - strange!
 	 */
 	ret = lp5521_read(client, LP5521_REG_R_CURRENT, &buf);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (buf != LP5521_REG_R_CURR_DEFAULT) {
+=======
 	if (ret || buf != LP5521_REG_R_CURR_DEFAULT) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ret || buf != LP5521_REG_R_CURR_DEFAULT) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(&client->dev, "error in resetting chip\n");
 		goto fail2;
 	}
@@ -1007,6 +1109,12 @@ static struct i2c_driver lp5521_driver = {
 	.id_table	= lp5521_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(lp5521_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init lp5521_init(void)
 {
 	int ret;
@@ -1026,6 +1134,10 @@ static void __exit lp5521_exit(void)
 
 module_init(lp5521_init);
 module_exit(lp5521_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Mathias Nyman, Yuri Zaporozhets, Samu Onkalo");
 MODULE_DESCRIPTION("LP5521 LED engine");

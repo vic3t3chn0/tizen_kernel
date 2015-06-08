@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <asm/traps.h>
 =======
+<<<<<<< HEAD
+#include <asm/traps.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 
 #include "mm.h"
@@ -37,7 +41,12 @@ void __init sanity_check_meminfo(void)
 	phys_addr_t end = bank_phys_end(&meminfo.bank[meminfo.nr_banks - 1]);
 	high_memory = __va(end - 1) + 1;
 =======
+<<<<<<< HEAD
+	phys_addr_t end = bank_phys_end(&meminfo.bank[meminfo.nr_banks - 1]);
+	high_memory = __va(end - 1) + 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -49,7 +58,11 @@ void __init paging_init(struct machine_desc *mdesc)
 <<<<<<< HEAD
 	early_trap_init((void *)CONFIG_VECTORS_BASE);
 =======
+<<<<<<< HEAD
+	early_trap_init((void *)CONFIG_VECTORS_BASE);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bootmem_init();
 }
 
@@ -59,8 +72,12 @@ void __init paging_init(struct machine_desc *mdesc)
 <<<<<<< HEAD
 void setup_mm_for_reboot(void)
 =======
+<<<<<<< HEAD
+void setup_mm_for_reboot(void)
+=======
 void setup_mm_for_reboot(char mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 
@@ -105,7 +122,12 @@ EXPORT_SYMBOL(__arm_ioremap);
 void __iomem * (*arch_ioremap_caller)(unsigned long, size_t, unsigned int, void *);
 
 =======
+<<<<<<< HEAD
+void __iomem * (*arch_ioremap_caller)(unsigned long, size_t, unsigned int, void *);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __iomem *__arm_ioremap_caller(unsigned long phys_addr, size_t size,
 				   unsigned int mtype, void *caller)
 {
@@ -113,15 +135,21 @@ void __iomem *__arm_ioremap_caller(unsigned long phys_addr, size_t size,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void (*arch_iounmap)(volatile void __iomem *);
 
 void __arm_iounmap(volatile void __iomem *addr)
 {
 }
 EXPORT_SYMBOL(__arm_iounmap);
+<<<<<<< HEAD
+=======
 =======
 void __iounmap(volatile void __iomem *addr)
 {
 }
 EXPORT_SYMBOL(__iounmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

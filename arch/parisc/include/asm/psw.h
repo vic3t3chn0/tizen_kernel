@@ -60,6 +60,9 @@
 #define USER_PSW      (PSW_C | PSW_Q | PSW_P | PSW_D | PSW_I)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASSEMBLY__
 
 /* The program status word as bitfields.  */
@@ -101,6 +104,9 @@ struct pa_psw {
 
 #endif /* !__ASSEMBLY__ */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

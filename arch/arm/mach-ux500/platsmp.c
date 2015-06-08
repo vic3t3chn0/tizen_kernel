@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include <asm/smp_plat.h>
 =======
+<<<<<<< HEAD
+#include <asm/smp_plat.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/smp_scu.h>
 #include <mach/hardware.h>
 #include <mach/setup.h>
@@ -105,10 +109,16 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 
 	smp_send_reschedule(cpu);
 =======
+<<<<<<< HEAD
+	write_pen_release(cpu_logical_map(cpu));
+
+	smp_send_reschedule(cpu);
+=======
 	write_pen_release(cpu);
 
 	gic_raise_softirq(cpumask_of(cpu), 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	timeout = jiffies + (1 * HZ);
 	while (time_before(jiffies, timeout)) {
@@ -167,10 +177,15 @@ void __init smp_init_cpus(void)
 
 	/* sanity check */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ncores > nr_cpu_ids) {
 		pr_warn("SMP: %u cores greater than maximum (%u), clipping\n",
 			ncores, nr_cpu_ids);
 		ncores = nr_cpu_ids;
+<<<<<<< HEAD
+=======
 =======
 	if (ncores > NR_CPUS) {
 		printk(KERN_WARNING
@@ -179,6 +194,7 @@ void __init smp_init_cpus(void)
 		       ncores, NR_CPUS);
 		ncores = NR_CPUS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for (i = 0; i < ncores; i++)
@@ -191,6 +207,8 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int i;
 
 	/*
@@ -200,6 +218,7 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 	for (i = 0; i < max_cpus; i++)
 		set_cpu_present(i, true);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	scu_enable(scu_base_addr());
 	wakeup_secondary();

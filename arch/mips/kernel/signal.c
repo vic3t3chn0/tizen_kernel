@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #include <linux/irqflags.h>
 =======
+<<<<<<< HEAD
+#include <linux/irqflags.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/mm.h>
 #include <linux/personality.h>
@@ -40,7 +44,11 @@
 <<<<<<< HEAD
 #include <asm/dsp.h>
 =======
+<<<<<<< HEAD
+#include <asm/dsp.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "signal-common.h"
 
@@ -267,12 +275,17 @@ asmlinkage int sys_sigsuspend(nabi_no_regargs struct pt_regs regs)
 	current->saved_sigmask = current->blocked;
 	set_current_blocked(&newset);
 =======
+<<<<<<< HEAD
+	current->saved_sigmask = current->blocked;
+	set_current_blocked(&newset);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->saved_sigmask = current->blocked;
 	current->blocked = newset;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	current->state = TASK_INTERRUPTIBLE;
 	schedule();
@@ -301,12 +314,17 @@ asmlinkage int sys_rt_sigsuspend(nabi_no_regargs struct pt_regs regs)
 	current->saved_sigmask = current->blocked;
 	set_current_blocked(&newset);
 =======
+<<<<<<< HEAD
+	current->saved_sigmask = current->blocked;
+	set_current_blocked(&newset);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->saved_sigmask = current->blocked;
 	current->blocked = newset;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	current->state = TASK_INTERRUPTIBLE;
 	schedule();
@@ -381,11 +399,15 @@ asmlinkage void sys_sigreturn(nabi_no_regargs struct pt_regs regs)
 <<<<<<< HEAD
 	set_current_blocked(&blocked);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&blocked);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = blocked;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sig = restore_sigcontext(&regs, &frame->sf_sc);
 	if (sig < 0)
@@ -424,11 +446,15 @@ asmlinkage void sys_rt_sigreturn(nabi_no_regargs struct pt_regs regs)
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sig = restore_sigcontext(&regs, &frame->rs_uc.uc_mcontext);
 	if (sig < 0)
@@ -607,6 +633,9 @@ static int handle_signal(unsigned long sig, siginfo_t *info,
 <<<<<<< HEAD
 	block_sigmask(ka, sig);
 =======
+<<<<<<< HEAD
+	block_sigmask(ka, sig);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	sigorsets(&current->blocked, &current->blocked, &ka->sa.sa_mask);
 	if (!(ka->sa.sa_flags & SA_NODEFER))
@@ -614,6 +643,7 @@ static int handle_signal(unsigned long sig, siginfo_t *info,
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -692,7 +722,12 @@ asmlinkage void do_notify_resume(struct pt_regs *regs, void *unused,
 	local_irq_enable();
 
 =======
+<<<<<<< HEAD
+	local_irq_enable();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* deal with pending signal delivery */
 	if (thread_info_flags & (_TIF_SIGPENDING | _TIF_RESTORE_SIGMASK))
 		do_signal(regs);

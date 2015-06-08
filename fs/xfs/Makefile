@@ -17,6 +17,9 @@
 #
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ccflags-y += -I$(src)			# needed for trace events
 
 ccflags-$(CONFIG_XFS_DEBUG) += -g
@@ -57,6 +60,8 @@ xfs-y				+= xfs_aops.o \
 				   uuid.o
 
 # code shared with libxfs
+<<<<<<< HEAD
+=======
 =======
 ccflags-y := -I$(src) -I$(src)/linux-2.6
 ccflags-$(CONFIG_XFS_DEBUG) += -g
@@ -88,10 +93,16 @@ xfs-$(CONFIG_COMPAT)		+= $(XFS_LINUX)/xfs_ioctl32.o
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 xfs-y				+= xfs_alloc.o \
 				   xfs_alloc_btree.o \
 				   xfs_attr.o \
 				   xfs_attr_leaf.o \
+<<<<<<< HEAD
+				   xfs_bmap.o \
+				   xfs_bmap_btree.o \
+				   xfs_btree.o \
+=======
 <<<<<<< HEAD
 				   xfs_bmap.o \
 				   xfs_bmap_btree.o \
@@ -103,6 +114,7 @@ xfs-y				+= xfs_alloc.o \
 				   xfs_btree.o \
 				   xfs_buf_item.o \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   xfs_da_btree.o \
 				   xfs_dir2.o \
 				   xfs_dir2_block.o \
@@ -111,6 +123,9 @@ xfs-y				+= xfs_alloc.o \
 				   xfs_dir2_node.o \
 				   xfs_dir2_sf.o \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   xfs_ialloc.o \
 				   xfs_ialloc_btree.o \
 				   xfs_inode.o \
@@ -124,6 +139,8 @@ xfs-y				+= xfs_log.o \
 				   xfs_buf_item.o \
 				   xfs_extfree_item.o \
 				   xfs_inode_item.o \
+<<<<<<< HEAD
+=======
 =======
 				   xfs_error.o \
 				   xfs_extfree_item.o \
@@ -145,11 +162,15 @@ xfs-y				+= xfs_log.o \
 				   xfs_rename.o \
 				   xfs_trans.o \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   xfs_trans_ail.o \
 				   xfs_trans_buf.o \
 				   xfs_trans_extfree.o \
 				   xfs_trans_inode.o \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # optional features
 xfs-$(CONFIG_XFS_QUOTA)		+= xfs_dquot.o \
@@ -164,6 +185,8 @@ xfs-$(CONFIG_XFS_POSIX_ACL)	+= xfs_acl.o
 xfs-$(CONFIG_PROC_FS)		+= xfs_stats.o
 xfs-$(CONFIG_SYSCTL)		+= xfs_sysctl.o
 xfs-$(CONFIG_COMPAT)		+= xfs_ioctl32.o
+<<<<<<< HEAD
+=======
 =======
 				   xfs_utils.o \
 				   xfs_vnodeops.o \
@@ -191,3 +214,4 @@ xfs-y				+= $(addprefix $(XFS_LINUX)/, \
 # Objects in support/
 xfs-y				+= support/uuid.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

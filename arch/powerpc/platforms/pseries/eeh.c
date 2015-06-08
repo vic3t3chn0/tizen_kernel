@@ -1,15 +1,21 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright IBM Corporation 2001, 2005, 2006
  * Copyright Dave Engebretsen & Todd Inglett 2001
  * Copyright Linas Vepstas 2005, 2006
  * Copyright 2001-2012 IBM Corporation.
+<<<<<<< HEAD
+=======
 =======
  * eeh.c
  * Copyright IBM Corporation 2001, 2005, 2006
  * Copyright Dave Engebretsen & Todd Inglett 2001
  * Copyright Linas Vepstas 2005, 2006
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +38,11 @@
 <<<<<<< HEAD
 #include <linux/sched.h>
 =======
+<<<<<<< HEAD
+#include <linux/sched.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/list.h>
 #include <linux/pci.h>
@@ -41,15 +51,21 @@
 #include <linux/seq_file.h>
 #include <linux/spinlock.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/of.h>
 
 #include <linux/atomic.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/of.h>
 
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/eeh.h>
 #include <asm/eeh_event.h>
 #include <asm/io.h>
@@ -106,6 +122,10 @@
 /* Platform dependent EEH operations */
 struct eeh_ops *eeh_ops = NULL;
 =======
+<<<<<<< HEAD
+/* Platform dependent EEH operations */
+struct eeh_ops *eeh_ops = NULL;
+=======
 /* RTAS tokens */
 static int ibm_set_eeh_option;
 static int ibm_set_slot_reset;
@@ -117,6 +137,7 @@ static int ibm_get_config_addr_info2;
 static int ibm_configure_bridge;
 static int ibm_configure_pe;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int eeh_subsystem_enabled;
 EXPORT_SYMBOL(eeh_subsystem_enabled);
@@ -124,6 +145,8 @@ EXPORT_SYMBOL(eeh_subsystem_enabled);
 /* Lock to avoid races due to multiple reports of an error */
 static DEFINE_RAW_SPINLOCK(confirm_error_lock);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Buffer for reporting slot-error-detail rtas calls. Its here
@@ -135,6 +158,7 @@ static DEFINE_SPINLOCK(slot_errbuf_lock);
 static int eeh_error_buf_size;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Buffer for reporting pci register dumps. Its here in BSS, and
  * not dynamically alloced, so that it ends up in RMO where RTAS
  * can access it.
@@ -143,6 +167,9 @@ static int eeh_error_buf_size;
 static unsigned char pci_regs_buf[EEH_PCI_REGS_LOG_LEN];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The struct is used to maintain the EEH global statistic
  * information. Besides, the EEH global statistics will be
@@ -165,6 +192,8 @@ static struct eeh_stats eeh_stats;
 /**
  * eeh_gather_pci_data - Copy assorted PCI config space registers to buff
  * @edev: device to report data for
+<<<<<<< HEAD
+=======
 =======
 /* System monitoring statistics */
 static unsigned long no_device;
@@ -214,6 +243,7 @@ static void rtas_slot_error_detail(struct pci_dn *pdn, int severity,
  * gather_pci_data - copy assorted PCI config space registers to buff
  * @pdn: device to report data for
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @buf: point to buffer in which to log
  * @len: amount of room in buffer
  *
@@ -221,20 +251,29 @@ static void rtas_slot_error_detail(struct pci_dn *pdn, int severity,
  * and puts them into a buffer for RTAS error logging.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static size_t eeh_gather_pci_data(struct eeh_dev *edev, char * buf, size_t len)
 {
 	struct device_node *dn = eeh_dev_to_of_node(edev);
 	struct pci_dev *dev = eeh_dev_to_pci_dev(edev);
+<<<<<<< HEAD
+=======
 =======
 static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 {
 	struct pci_dev *dev = pdn->pcidev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 cfg;
 	int cap, i;
 	int n = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n += scnprintf(buf+n, len-n, "%s\n", dn->full_name);
 	printk(KERN_WARNING "EEH: of node=%s\n", dn->full_name);
 
@@ -243,6 +282,8 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 	printk(KERN_WARNING "EEH: PCI device/vendor: %08x\n", cfg);
 
 	eeh_ops->read_config(dn, PCI_COMMAND, 4, &cfg);
+<<<<<<< HEAD
+=======
 =======
 	n += scnprintf(buf+n, len-n, "%s\n", pdn->node->full_name);
 	printk(KERN_WARNING "EEH: of node=%s\n", pdn->node->full_name);
@@ -253,6 +294,7 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 
 	rtas_read_config(pdn, PCI_COMMAND, 4, &cfg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n += scnprintf(buf+n, len-n, "cmd/stat:%x\n", cfg);
 	printk(KERN_WARNING "EEH: PCI cmd/status register: %08x\n", cfg);
 
@@ -264,11 +306,16 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 	/* Gather bridge-specific registers */
 	if (dev->class >> 16 == PCI_BASE_CLASS_BRIDGE) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		eeh_ops->read_config(dn, PCI_SEC_STATUS, 2, &cfg);
 		n += scnprintf(buf+n, len-n, "sec stat:%x\n", cfg);
 		printk(KERN_WARNING "EEH: Bridge secondary status: %04x\n", cfg);
 
 		eeh_ops->read_config(dn, PCI_BRIDGE_CONTROL, 2, &cfg);
+<<<<<<< HEAD
+=======
 =======
 		rtas_read_config(pdn, PCI_SEC_STATUS, 2, &cfg);
 		n += scnprintf(buf+n, len-n, "sec stat:%x\n", cfg);
@@ -276,6 +323,7 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 
 		rtas_read_config(pdn, PCI_BRIDGE_CONTROL, 2, &cfg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		n += scnprintf(buf+n, len-n, "brdg ctl:%x\n", cfg);
 		printk(KERN_WARNING "EEH: Bridge control: %04x\n", cfg);
 	}
@@ -284,11 +332,16 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 	cap = pci_find_capability(dev, PCI_CAP_ID_PCIX);
 	if (cap) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		eeh_ops->read_config(dn, cap, 4, &cfg);
 		n += scnprintf(buf+n, len-n, "pcix-cmd:%x\n", cfg);
 		printk(KERN_WARNING "EEH: PCI-X cmd: %08x\n", cfg);
 
 		eeh_ops->read_config(dn, cap+4, 4, &cfg);
+<<<<<<< HEAD
+=======
 =======
 		rtas_read_config(pdn, cap, 4, &cfg);
 		n += scnprintf(buf+n, len-n, "pcix-cmd:%x\n", cfg);
@@ -296,6 +349,7 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 
 		rtas_read_config(pdn, cap+4, 4, &cfg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		n += scnprintf(buf+n, len-n, "pcix-stat:%x\n", cfg);
 		printk(KERN_WARNING "EEH: PCI-X status: %08x\n", cfg);
 	}
@@ -311,8 +365,12 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 <<<<<<< HEAD
 			eeh_ops->read_config(dn, cap+4*i, 4, &cfg);
 =======
+<<<<<<< HEAD
+			eeh_ops->read_config(dn, cap+4*i, 4, &cfg);
+=======
 			rtas_read_config(pdn, cap+4*i, 4, &cfg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			n += scnprintf(buf+n, len-n, "%02x:%x\n", 4*i, cfg);
 			printk(KERN_WARNING "EEH: PCI-E %02x: %08x\n", i, cfg);
 		}
@@ -327,8 +385,12 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 <<<<<<< HEAD
 				eeh_ops->read_config(dn, cap+4*i, 4, &cfg);
 =======
+<<<<<<< HEAD
+				eeh_ops->read_config(dn, cap+4*i, 4, &cfg);
+=======
 				rtas_read_config(pdn, cap+4*i, 4, &cfg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				n += scnprintf(buf+n, len-n, "%02x:%x\n", 4*i, cfg);
 				printk(KERN_WARNING "EEH: PCI-E AER %02x: %08x\n", i, cfg);
 			}
@@ -338,11 +400,16 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 	/* Gather status on devices under the bridge */
 	if (dev->class >> 16 == PCI_BASE_CLASS_BRIDGE) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct device_node *child;
 
 		for_each_child_of_node(dn, child) {
 			if (of_node_to_eeh_dev(child))
 				n += eeh_gather_pci_data(of_node_to_eeh_dev(child), buf+n, len-n);
+<<<<<<< HEAD
+=======
 =======
 		struct device_node *dn;
 
@@ -351,6 +418,7 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 			if (pdn)
 				n += gather_pci_data(pdn, buf+n, len-n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -358,6 +426,9 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * eeh_slot_error_detail - Generate combined log including driver log and error log
  * @edev: device to report error log for
@@ -369,14 +440,20 @@ static size_t gather_pci_data(struct pci_dn *pdn, char * buf, size_t len)
  * the error log is fetched through platform dependent function call.
  */
 void eeh_slot_error_detail(struct eeh_dev *edev, int severity)
+<<<<<<< HEAD
+=======
 =======
 void eeh_slot_error_detail(struct pci_dn *pdn, int severity)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	size_t loglen = 0;
 	pci_regs_buf[0] = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eeh_pci_enable(edev, EEH_OPT_THAW_MMIO);
 	eeh_ops->configure_bridge(eeh_dev_to_of_node(edev));
 	eeh_restore_bars(edev);
@@ -391,6 +468,8 @@ void eeh_slot_error_detail(struct pci_dn *pdn, int severity)
  *
  * This routine should be called to convert virtual I/O address
  * to physical one.
+<<<<<<< HEAD
+=======
 =======
 	rtas_pci_enable(pdn, EEH_THAW_MMIO);
 	rtas_configure_bridge(pdn);
@@ -481,6 +560,7 @@ eeh_wait_for_slot_status(struct pci_dn *pdn, int max_wait_msecs)
  * eeh_token_to_phys - convert EEH address token to phys address
  * @token i/o token, should be address in the form 0xA....
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline unsigned long eeh_token_to_phys(unsigned long token)
 {
@@ -496,6 +576,9 @@ static inline unsigned long eeh_token_to_phys(unsigned long token)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * eeh_find_device_pe - Retrieve the PE for the given device
  * @dn: device node
@@ -506,6 +589,8 @@ struct device_node *eeh_find_device_pe(struct device_node *dn)
 {
 	while (dn->parent && of_node_to_eeh_dev(dn->parent) &&
 	       (of_node_to_eeh_dev(dn->parent)->mode & EEH_MODE_SUPPORTED)) {
+<<<<<<< HEAD
+=======
 =======
 /** 
  * Return the "partitionable endpoint" (pe) under which this device lies
@@ -515,12 +600,16 @@ struct device_node * find_device_pe(struct device_node *dn)
 	while ((dn->parent) && PCI_DN(dn->parent) &&
 	      (PCI_DN(dn->parent)->eeh_mode & EEH_MODE_SUPPORTED)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dn = dn->parent;
 	}
 	return dn;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * __eeh_mark_slot - Mark all child devices as failed
  * @parent: parent device
@@ -533,6 +622,8 @@ struct device_node * find_device_pe(struct device_node *dn)
  * and the slot is frozen, then the driver can deadlock in
  * an interrupt context, which is bad.
  */
+<<<<<<< HEAD
+=======
 =======
 /** Mark all devices that are children of this device as failed.
  *  Mark the device driver too, so that it can see the failure
@@ -543,17 +634,23 @@ struct device_node * find_device_pe(struct device_node *dn)
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __eeh_mark_slot(struct device_node *parent, int mode_flag)
 {
 	struct device_node *dn;
 
 	for_each_child_of_node(parent, dn) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (of_node_to_eeh_dev(dn)) {
 			/* Mark the pci device driver too */
 			struct pci_dev *dev = of_node_to_eeh_dev(dn)->pdev;
 
 			of_node_to_eeh_dev(dn)->mode |= mode_flag;
+<<<<<<< HEAD
+=======
 =======
 		if (PCI_DN(dn)) {
 			/* Mark the pci device driver too */
@@ -561,6 +658,7 @@ static void __eeh_mark_slot(struct device_node *parent, int mode_flag)
 
 			PCI_DN(dn)->eeh_mode |= mode_flag;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (dev && dev->driver)
 				dev->error_state = pci_channel_io_frozen;
@@ -571,6 +669,9 @@ static void __eeh_mark_slot(struct device_node *parent, int mode_flag)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * eeh_mark_slot - Mark the indicated device and its children as failed
  * @dn: parent device
@@ -592,6 +693,8 @@ void eeh_mark_slot(struct device_node *dn, int mode_flag)
 
 	/* Mark the pci device too */
 	dev = of_node_to_eeh_dev(dn)->pdev;
+<<<<<<< HEAD
+=======
 =======
 void eeh_mark_slot (struct device_node *dn, int mode_flag)
 {
@@ -607,6 +710,7 @@ void eeh_mark_slot (struct device_node *dn, int mode_flag)
 	/* Mark the pci device too */
 	dev = PCI_DN(dn)->pcidev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev)
 		dev->error_state = pci_channel_io_frozen;
 
@@ -614,6 +718,9 @@ void eeh_mark_slot (struct device_node *dn, int mode_flag)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * __eeh_clear_slot - Clear failure flag for the child devices
  * @parent: parent device
@@ -621,8 +728,11 @@ void eeh_mark_slot (struct device_node *dn, int mode_flag)
  *
  * Clear failure flag for the child devices.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __eeh_clear_slot(struct device_node *parent, int mode_flag)
 {
 	struct device_node *dn;
@@ -633,16 +743,25 @@ static void __eeh_clear_slot(struct device_node *parent, int mode_flag)
 			of_node_to_eeh_dev(dn)->mode &= ~mode_flag;
 			of_node_to_eeh_dev(dn)->check_count = 0;
 =======
+<<<<<<< HEAD
+		if (of_node_to_eeh_dev(dn)) {
+			of_node_to_eeh_dev(dn)->mode &= ~mode_flag;
+			of_node_to_eeh_dev(dn)->check_count = 0;
+=======
 		if (PCI_DN(dn)) {
 			PCI_DN(dn)->eeh_mode &= ~mode_flag;
 			PCI_DN(dn)->eeh_check_count = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__eeh_clear_slot(dn, mode_flag);
 		}
 	}
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * eeh_clear_slot - Clear failure flag for the indicated device and its children
  * @dn: parent device
@@ -651,14 +770,20 @@ static void __eeh_clear_slot(struct device_node *parent, int mode_flag)
  * Clear failure flag for the indicated device and its children.
  */
 void eeh_clear_slot(struct device_node *dn, int mode_flag)
+<<<<<<< HEAD
+=======
 =======
 void eeh_clear_slot (struct device_node *dn, int mode_flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 	raw_spin_lock_irqsave(&confirm_error_lock, flags);
 	
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dn = eeh_find_device_pe(dn);
 	
 	/* Back up one, since config addrs might be shared */
@@ -667,6 +792,8 @@ void eeh_clear_slot (struct device_node *dn, int mode_flag)
 
 	of_node_to_eeh_dev(dn)->mode &= ~mode_flag;
 	of_node_to_eeh_dev(dn)->check_count = 0;
+<<<<<<< HEAD
+=======
 =======
 	dn = find_device_pe (dn);
 	
@@ -677,15 +804,21 @@ void eeh_clear_slot (struct device_node *dn, int mode_flag)
 	PCI_DN(dn)->eeh_mode &= ~mode_flag;
 	PCI_DN(dn)->eeh_check_count = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__eeh_clear_slot(dn, mode_flag);
 	raw_spin_unlock_irqrestore(&confirm_error_lock, flags);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * eeh_dn_check_failure - Check if all 1's data is due to EEH slot freeze
  * @dn: device node
  * @dev: pci device, if known
+<<<<<<< HEAD
+=======
 =======
 void __eeh_set_pe_freset(struct device_node *parent, unsigned int *freset)
 {
@@ -725,6 +858,7 @@ void eeh_set_pe_freset(struct device_node *dn, unsigned int *freset)
  * @dn device node
  * @dev pci device, if known
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Check for an EEH failure for the given device node.  Call this
  * routine if the result of a read was all 0xff's and you want to
@@ -740,12 +874,17 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 {
 	int ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	struct eeh_dev *edev;
 	int rc = 0;
 	const char *location;
 
 	eeh_stats.total_mmio_ffs++;
+<<<<<<< HEAD
+=======
 =======
 	int rets[3];
 	unsigned long flags;
@@ -755,12 +894,16 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 
 	total_mmio_ffs++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!eeh_subsystem_enabled)
 		return 0;
 
 	if (!dn) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		eeh_stats.no_dn++;
 		return 0;
 	}
@@ -778,6 +921,8 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 
 	if (!edev->config_addr && !edev->pe_config_addr) {
 		eeh_stats.no_cfg_addr++;
+<<<<<<< HEAD
+=======
 =======
 		no_dn++;
 		return 0;
@@ -797,6 +942,7 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	if (!pdn->eeh_config_addr && !pdn->eeh_pe_config_addr) {
 		no_cfg_addr++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -809,6 +955,9 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	raw_spin_lock_irqsave(&confirm_error_lock, flags);
 	rc = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (edev->mode & EEH_MODE_ISOLATED) {
 		edev->check_count++;
 		if (edev->check_count % EEH_MAX_FAILS == 0) {
@@ -819,6 +968,8 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 				eeh_driver_name(dev), eeh_pci_name(dev));
 			printk(KERN_ERR "EEH: Might be infinite loop in %s driver\n",
 				eeh_driver_name(dev));
+<<<<<<< HEAD
+=======
 =======
 	if (pdn->eeh_mode & EEH_MODE_ISOLATED) {
 		pdn->eeh_check_count ++;
@@ -831,6 +982,7 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 			printk (KERN_ERR "EEH: Might be infinite loop in %s driver\n",
 				dev->driver->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dump_stack();
 		}
 		goto dn_unlock;
@@ -844,6 +996,9 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	 * In any case they must share a common PHB.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = eeh_ops->get_state(dn, NULL);
 
 	/* Note that config-io to empty slots may fail;
@@ -858,6 +1013,8 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	    (EEH_STATE_MMIO_ACTIVE | EEH_STATE_DMA_ACTIVE)) {
 		eeh_stats.false_positives++;
 		edev->false_positives ++;
+<<<<<<< HEAD
+=======
 =======
 	ret = read_slot_reset_state(pdn, rets);
 
@@ -876,10 +1033,13 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	if ((rets[0] == 5) && (rets[2] == 0) && (dn->child == NULL)) {
 		false_positives++;
 		pdn->eeh_false_positives ++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = 0;
 		goto dn_unlock;
 	}
 
+<<<<<<< HEAD
+=======
 	/* If EEH is not supported on this device, punt. */
 	if (rets[1] != 1) {
 		printk(KERN_WARNING "EEH: event on unsupported device, rc=%d dn=%s\n",
@@ -900,6 +1060,7 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	}
 
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eeh_stats.slot_resets++;
  
 	/* Avoid repeated reports of this failure, including problems
@@ -915,6 +1076,8 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	 * a stack trace will help the device-driver authors figure
 	 * out what happened.  So print that out.
 	 */
+<<<<<<< HEAD
+=======
 =======
 	slot_resets++;
  
@@ -930,6 +1093,7 @@ int eeh_dn_check_failure(struct device_node *dn, struct pci_dev *dev)
 	 * a stack trace will help the device-driver authors figure
 	 * out what happened.  So print that out. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dump_stack();
 	return 1;
 
@@ -946,10 +1110,16 @@ EXPORT_SYMBOL_GPL(eeh_dn_check_failure);
  * @token: I/O token, should be address in the form 0xA....
  * @val: value, should be all 1's (XXX why do we need this arg??)
 =======
+<<<<<<< HEAD
+ * eeh_check_failure - Check if all 1's data is due to EEH slot freeze
+ * @token: I/O token, should be address in the form 0xA....
+ * @val: value, should be all 1's (XXX why do we need this arg??)
+=======
  * eeh_check_failure - check if all 1's data is due to EEH slot freeze
  * @token i/o token, should be address in the form 0xA....
  * @val value, should be all 1's (XXX why do we need this arg??)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Check for an EEH failure at the given token address.  Call this
  * routine if the result of a read was all 0xff's and you want to
@@ -971,10 +1141,16 @@ unsigned long eeh_check_failure(const volatile void __iomem *token, unsigned lon
 	if (!dev) {
 		eeh_stats.no_device++;
 =======
+<<<<<<< HEAD
+	dev = pci_addr_cache_get_device(addr);
+	if (!dev) {
+		eeh_stats.no_device++;
+=======
 	dev = pci_get_device_by_addr(addr);
 	if (!dev) {
 		no_device++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return val;
 	}
 
@@ -982,8 +1158,12 @@ unsigned long eeh_check_failure(const volatile void __iomem *token, unsigned lon
 <<<<<<< HEAD
 	eeh_dn_check_failure(dn, dev);
 =======
+<<<<<<< HEAD
+	eeh_dn_check_failure(dn, dev);
+=======
 	eeh_dn_check_failure (dn, dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pci_dev_put(dev);
 	return val;
@@ -992,6 +1172,9 @@ unsigned long eeh_check_failure(const volatile void __iomem *token, unsigned lon
 EXPORT_SYMBOL(eeh_check_failure);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * eeh_pci_enable - Enable MMIO or DMA transfers for this slot
@@ -1014,6 +1197,8 @@ int eeh_pci_enable(struct eeh_dev *edev, int function)
 	rc = eeh_ops->wait_state(dn, PCI_BUS_RESET_WAIT_MSEC);
 	if (rc > 0 && (rc & EEH_STATE_MMIO_ENABLED) &&
 	   (function == EEH_OPT_THAW_MMIO))
+<<<<<<< HEAD
+=======
 =======
 /* ------------------------------------------------------------- */
 /* The code below deals with error recovery */
@@ -1047,6 +1232,7 @@ rtas_pci_enable(struct pci_dn *pdn, int function)
 	rc = eeh_wait_for_slot_status (pdn, PCI_BUS_RESET_WAIT_MSEC);
 	if ((rc == 4) && (function == EEH_THAW_MMIO))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	return rc;
@@ -1054,6 +1240,9 @@ rtas_pci_enable(struct pci_dn *pdn, int function)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pcibios_set_pcie_slot_reset - Set PCI-E reset state
  * @dev: pci device struct
  * @state: reset state to enter
@@ -1074,6 +1263,8 @@ int pcibios_set_pcie_reset_state(struct pci_dev *dev, enum pcie_reset_state stat
 		break;
 	case pcie_warm_reset:
 		eeh_ops->reset(dn, EEH_RESET_FUNDAMENTAL);
+<<<<<<< HEAD
+=======
 =======
  * rtas_pci_slot_reset - raises/lowers the pci #RST line
  * @pdn pci device node
@@ -1148,6 +1339,7 @@ int pcibios_set_pcie_reset_state(struct pci_dev *dev, enum pcie_reset_state stat
 	case pcie_warm_reset:
 		rtas_pci_slot_reset(pdn, 3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		return -EINVAL;
@@ -1158,6 +1350,9 @@ int pcibios_set_pcie_reset_state(struct pci_dev *dev, enum pcie_reset_state stat
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * __eeh_set_pe_freset - Check the required reset for child devices
  * @parent: parent device
  * @freset: return value
@@ -1218,6 +1413,8 @@ static void eeh_reset_pe_once(struct eeh_dev *edev)
 {
 	unsigned int freset = 0;
 	struct device_node *dn = eeh_dev_to_of_node(edev);
+<<<<<<< HEAD
+=======
 =======
  * rtas_set_slot_reset -- assert the pci #RST line for 1/4 second
  * @pdn: pci device node to be reset.
@@ -1227,6 +1424,7 @@ static void __rtas_set_slot_reset(struct pci_dn *pdn)
 {
 	unsigned int freset = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Determine type of EEH reset required for
 	 * Partitionable Endpoint, a hot-reset (1)
@@ -1235,6 +1433,9 @@ static void __rtas_set_slot_reset(struct pci_dn *pdn)
 	 * Partitionable Endpoint trumps hot-reset.
   	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eeh_set_pe_freset(dn, &freset);
 
 	if (freset)
@@ -1283,6 +1484,8 @@ int eeh_reset_pe(struct eeh_dev *edev)
 
 		rc = eeh_ops->wait_state(dn, PCI_BUS_RESET_WAIT_MSEC);
 		if (rc == (EEH_STATE_MMIO_ACTIVE | EEH_STATE_DMA_ACTIVE))
+<<<<<<< HEAD
+=======
 =======
 	eeh_set_pe_freset(pdn->node, &freset);
 
@@ -1322,16 +1525,22 @@ int rtas_set_slot_reset(struct pci_dn *pdn)
 		rc = eeh_wait_for_slot_status(pdn, PCI_BUS_RESET_WAIT_MSEC);
 		if (rc == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 0;
 
 		if (rc < 0) {
 			printk(KERN_ERR "EEH: unrecoverable slot failure %s\n",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       dn->full_name);
 			return -1;
 		}
 		printk(KERN_ERR "EEH: bus reset %d failed on slot %s, rc=%d\n",
 		       i+1, dn->full_name, rc);
+<<<<<<< HEAD
+=======
 =======
 			       pdn->node->full_name);
 			return -1;
@@ -1339,6 +1548,7 @@ int rtas_set_slot_reset(struct pci_dn *pdn)
 		printk(KERN_ERR "EEH: bus reset %d failed on slot %s, rc=%d\n",
 		       i+1, pdn->node->full_name, rc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return -1;
@@ -1346,8 +1556,11 @@ int rtas_set_slot_reset(struct pci_dn *pdn)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* ------------------------------------------------------- */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** Save and restore of PCI BARs
  *
  * Although firmware will set up BARs during boot, it doesn't
@@ -1361,15 +1574,23 @@ int rtas_set_slot_reset(struct pci_dn *pdn)
  * eeh_restore_one_device_bars - Restore the Base Address Registers for one device
  * @edev: PCI device associated EEH device
 =======
+<<<<<<< HEAD
+ * eeh_restore_one_device_bars - Restore the Base Address Registers for one device
+ * @edev: PCI device associated EEH device
+=======
  * __restore_bars - Restore the Base Address Registers
  * @pdn: pci device node
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Loads the PCI configuration space base address registers,
  * the expansion ROM base address, the latency timer, and etc.
  * from the saved values in the device node.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void eeh_restore_one_device_bars(struct eeh_dev *edev)
 {
 	int i;
@@ -1416,6 +1637,8 @@ static inline void eeh_restore_one_device_bars(struct eeh_dev *edev)
 /**
  * eeh_restore_bars - Restore the PCI config space info
  * @edev: EEH device
+<<<<<<< HEAD
+=======
 =======
 static inline void __restore_bars (struct pci_dn *pdn)
 {
@@ -1459,11 +1682,15 @@ static inline void __restore_bars (struct pci_dn *pdn)
 /**
  * eeh_restore_bars - restore the PCI config space info
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This routine performs a recursive walk to the children
  * of this device as well.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void eeh_restore_bars(struct eeh_dev *edev)
 {
 	struct device_node *dn;
@@ -1480,6 +1707,8 @@ void eeh_restore_bars(struct eeh_dev *edev)
 /**
  * eeh_save_bars - Save device bars
  * @edev: PCI device associated EEH device
+<<<<<<< HEAD
+=======
 =======
 void eeh_restore_bars(struct pci_dn *pdn)
 {
@@ -1497,6 +1726,7 @@ void eeh_restore_bars(struct pci_dn *pdn)
 /**
  * eeh_save_bars - save device bars
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Save the values of the device bars. Unlike the restore
  * routine, this routine is *not* recursive. This is because
@@ -1504,6 +1734,9 @@ void eeh_restore_bars(struct pci_dn *pdn)
  * an entire slot is reset at a time.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void eeh_save_bars(struct eeh_dev *edev)
 {
 	int i;
@@ -1528,6 +1761,8 @@ static void eeh_save_bars(struct eeh_dev *edev)
  */
 static void *eeh_early_enable(struct device_node *dn, void *data)
 {
+<<<<<<< HEAD
+=======
 =======
 static void eeh_save_bars(struct pci_dn *pdn)
 {
@@ -1619,6 +1854,7 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	unsigned int rets[3];
 	struct eeh_early_enable_info *info = data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	const u32 *class_code = of_get_property(dn, "class-code", NULL);
 	const u32 *vendor_id = of_get_property(dn, "vendor-id", NULL);
@@ -1626,6 +1862,9 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	const u32 *regs;
 	int enable;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct eeh_dev *edev = of_node_to_eeh_dev(dn);
 
 	edev->class_code = 0;
@@ -1633,6 +1872,8 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	edev->check_count = 0;
 	edev->freeze_count = 0;
 	edev->false_positives = 0;
+<<<<<<< HEAD
+=======
 =======
 	struct pci_dn *pdn = PCI_DN(dn);
 
@@ -1642,6 +1883,7 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	pdn->eeh_freeze_count = 0;
 	pdn->eeh_false_positives = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!of_device_is_available(dn))
 		return NULL;
@@ -1653,6 +1895,9 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	/* There is nothing to check on PCI to ISA bridges */
 	if (dn->type && !strcmp(dn->type, "isa")) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		edev->mode |= EEH_MODE_NOCHECK;
 		return NULL;
 	}
@@ -1661,6 +1906,8 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	/* Ok... see if this device supports EEH.  Some do, some don't,
 	 * and the only way to find out is to check each and every one.
 	 */
+<<<<<<< HEAD
+=======
 =======
 		pdn->eeh_mode |= EEH_MODE_NOCHECK;
 		return NULL;
@@ -1670,11 +1917,15 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	/* Ok... see if this device supports EEH.  Some do, some don't,
 	 * and the only way to find out is to check each and every one. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs = of_get_property(dn, "reg", NULL);
 	if (regs) {
 		/* First register entry is addr (00BBSS00)  */
 		/* Try to enable eeh */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = eeh_ops->set_option(dn, EEH_OPT_ENABLE);
 
 		enable = 0;
@@ -1685,6 +1936,8 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 			 * then use that instead.
 			 */
 			edev->pe_config_addr = eeh_ops->get_pe_addr(dn);
+<<<<<<< HEAD
+=======
 =======
 		ret = rtas_call(ibm_set_eeh_option, 4, 1, NULL,
 		                regs[0], info->buid_hi, info->buid_lo,
@@ -1698,26 +1951,36 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 			 * then use that instead. */
 			pdn->eeh_pe_config_addr = get_pe_addr(pdn->eeh_config_addr, info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* Some older systems (Power4) allow the
 			 * ibm,set-eeh-option call to succeed even on nodes
 			 * where EEH is not supported. Verify support
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 * explicitly.
 			 */
 			ret = eeh_ops->get_state(dn, NULL);
 			if (ret > 0 && ret != EEH_STATE_NOT_SUPPORT)
+<<<<<<< HEAD
+=======
 =======
 			 * explicitly. */
 			ret = read_slot_reset_state(pdn, rets);
 			if ((ret == 0) && (rets[1] == 1))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				enable = 1;
 		}
 
 		if (enable) {
 			eeh_subsystem_enabled = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			edev->mode |= EEH_MODE_SUPPORTED;
 
 			pr_debug("EEH: %s: eeh enabled, config=%x pe_config=%x\n",
@@ -1733,6 +1996,8 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 				/* Parent supports EEH. */
 				edev->mode |= EEH_MODE_SUPPORTED;
 				edev->config_addr = of_node_to_eeh_dev(dn->parent)->config_addr;
+<<<<<<< HEAD
+=======
 =======
 			pdn->eeh_mode |= EEH_MODE_SUPPORTED;
 
@@ -1749,6 +2014,7 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 				pdn->eeh_mode |= EEH_MODE_SUPPORTED;
 				pdn->eeh_config_addr = PCI_DN(dn->parent)->eeh_config_addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return NULL;
 			}
 		}
@@ -1758,6 +2024,9 @@ static void *early_enable_eeh(struct device_node *dn, void *data)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eeh_save_bars(edev);
 	return NULL;
 }
@@ -1815,6 +2084,8 @@ int __exit eeh_ops_unregister(const char *name)
 /**
  * eeh_init - EEH initialization
  *
+<<<<<<< HEAD
+=======
 =======
 	eeh_save_bars(pdn);
 	return NULL;
@@ -1822,6 +2093,7 @@ int __exit eeh_ops_unregister(const char *name)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Initialize EEH by trying to enable it for all of the adapters in the system.
  * As a side effect we can determine here if eeh is supported at all.
  * Note that we leave EEH on so failed config cycles won't cause a machine
@@ -1837,6 +2109,9 @@ int __exit eeh_ops_unregister(const char *name)
 void __init eeh_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pci_controller *hose, *tmp;
 	struct device_node *phb;
 	int ret;
@@ -1858,6 +2133,8 @@ void __init eeh_init(void)
 	list_for_each_entry_safe(hose, tmp, &hose_list, list_node) {
 		phb = hose->dn;
 		traverse_pci_devices(phb, eeh_early_enable, NULL);
+<<<<<<< HEAD
+=======
 =======
 	struct device_node *phb, *np;
 	struct eeh_early_enable_info info;
@@ -1905,6 +2182,7 @@ void __init eeh_init(void)
 		info.buid_hi = BUID_HI(buid);
 		traverse_pci_devices(phb, early_enable_eeh, &info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (eeh_subsystem_enabled)
@@ -1917,8 +2195,12 @@ void __init eeh_init(void)
 <<<<<<< HEAD
  * eeh_add_device_early - Enable EEH for the indicated device_node
 =======
+<<<<<<< HEAD
+ * eeh_add_device_early - Enable EEH for the indicated device_node
+=======
  * eeh_add_device_early - enable EEH for the indicated device_node
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dn: device node for which to set up EEH
  *
  * This routine must be used to perform EEH initialization for PCI
@@ -1933,10 +2215,15 @@ static void eeh_add_device_early(struct device_node *dn)
 {
 	struct pci_controller *phb;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dn || !of_node_to_eeh_dev(dn))
 		return;
 	phb = of_node_to_eeh_dev(dn)->phb;
+<<<<<<< HEAD
+=======
 =======
 	struct eeh_early_enable_info info;
 
@@ -1944,12 +2231,16 @@ static void eeh_add_device_early(struct device_node *dn)
 		return;
 	phb = PCI_DN(dn)->phb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* USB Bus children of PCI devices will not have BUID's */
 	if (NULL == phb || 0 == phb->buid)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eeh_early_enable(dn, NULL);
 }
 
@@ -1961,6 +2252,8 @@ static void eeh_add_device_early(struct device_node *dn)
  * indicated PCI device that was added after system boot (e.g.
  * hotplug, dlpar).
  */
+<<<<<<< HEAD
+=======
 =======
 	info.buid_hi = BUID_HI(phb->buid);
 	info.buid_lo = BUID_LO(phb->buid);
@@ -1968,6 +2261,7 @@ static void eeh_add_device_early(struct device_node *dn)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void eeh_add_device_tree_early(struct device_node *dn)
 {
 	struct device_node *sib;
@@ -1982,8 +2276,12 @@ EXPORT_SYMBOL_GPL(eeh_add_device_tree_early);
 <<<<<<< HEAD
  * eeh_add_device_late - Perform EEH initialization for the indicated pci device
 =======
+<<<<<<< HEAD
+ * eeh_add_device_late - Perform EEH initialization for the indicated pci device
+=======
  * eeh_add_device_late - perform EEH initialization for the indicated pci device
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: pci device for which to set up EEH
  *
  * This routine must be used to complete EEH initialization for PCI
@@ -1995,8 +2293,12 @@ static void eeh_add_device_late(struct pci_dev *dev)
 <<<<<<< HEAD
 	struct eeh_dev *edev;
 =======
+<<<<<<< HEAD
+	struct eeh_dev *edev;
+=======
 	struct pci_dn *pdn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dev || !eeh_subsystem_enabled)
 		return;
@@ -2005,6 +2307,9 @@ static void eeh_add_device_late(struct pci_dev *dev)
 
 	dn = pci_device_to_OF_node(dev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	edev = of_node_to_eeh_dev(dn);
 	if (edev->pdev == dev) {
 		pr_debug("EEH: Already referenced !\n");
@@ -2015,6 +2320,8 @@ static void eeh_add_device_late(struct pci_dev *dev)
 	pci_dev_get(dev);
 	edev->pdev = dev;
 	dev->dev.archdata.edev = edev;
+<<<<<<< HEAD
+=======
 =======
 	pdn = PCI_DN(dn);
 	if (pdn->pcidev == dev) {
@@ -2026,12 +2333,16 @@ static void eeh_add_device_late(struct pci_dev *dev)
 	pci_dev_get (dev);
 	pdn->pcidev = dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pci_addr_cache_insert_device(dev);
 	eeh_sysfs_add_device(dev);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * eeh_add_device_tree_late - Perform EEH initialization for the indicated PCI bus
  * @bus: PCI bus
@@ -2040,8 +2351,11 @@ static void eeh_add_device_late(struct pci_dev *dev)
  * devices which are attached to the indicated PCI bus. The PCI bus
  * is added after system boot through hotplug or dlpar.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void eeh_add_device_tree_late(struct pci_bus *bus)
 {
 	struct pci_dev *dev;
@@ -2061,8 +2375,12 @@ EXPORT_SYMBOL_GPL(eeh_add_device_tree_late);
 <<<<<<< HEAD
  * eeh_remove_device - Undo EEH setup for the indicated pci device
 =======
+<<<<<<< HEAD
+ * eeh_remove_device - Undo EEH setup for the indicated pci device
+=======
  * eeh_remove_device - undo EEH setup for the indicated pci device
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: pci device to be removed
  *
  * This routine should be called when a device is removed from
@@ -2074,21 +2392,30 @@ EXPORT_SYMBOL_GPL(eeh_add_device_tree_late);
 static void eeh_remove_device(struct pci_dev *dev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct eeh_dev *edev;
 
 	if (!dev || !eeh_subsystem_enabled)
 		return;
 	edev = pci_dev_to_eeh_dev(dev);
+<<<<<<< HEAD
+=======
 =======
 	struct device_node *dn;
 	if (!dev || !eeh_subsystem_enabled)
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Unregister the device with the EEH/PCI address search system */
 	pr_debug("EEH: Removing device %s\n", pci_name(dev));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!edev || !edev->pdev) {
 		pr_debug("EEH: Not referenced !\n");
 		return;
@@ -2096,6 +2423,8 @@ static void eeh_remove_device(struct pci_dev *dev)
 	edev->pdev = NULL;
 	dev->dev.archdata.edev = NULL;
 	pci_dev_put(dev);
+<<<<<<< HEAD
+=======
 =======
 	dn = pci_device_to_OF_node(dev);
 	if (PCI_DN(dn)->pcidev == NULL) {
@@ -2105,12 +2434,16 @@ static void eeh_remove_device(struct pci_dev *dev)
 	PCI_DN(dn)->pcidev = NULL;
 	pci_dev_put (dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pci_addr_cache_remove_device(dev);
 	eeh_sysfs_remove_device(dev);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * eeh_remove_bus_device - Undo EEH setup for the indicated PCI device
  * @dev: PCI device
@@ -2119,8 +2452,11 @@ static void eeh_remove_device(struct pci_dev *dev)
  * running system through hotplug or dlpar. The corresponding
  * PCI address cache will be removed.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void eeh_remove_bus_device(struct pci_dev *dev)
 {
 	struct pci_bus *bus = dev->subordinate;
@@ -2140,6 +2476,9 @@ static int proc_eeh_show(struct seq_file *m, void *v)
 	if (0 == eeh_subsystem_enabled) {
 		seq_printf(m, "EEH Subsystem is globally disabled\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(m, "eeh_total_mmio_ffs=%llu\n", eeh_stats.total_mmio_ffs);
 	} else {
 		seq_printf(m, "EEH Subsystem is enabled\n");
@@ -2158,6 +2497,8 @@ static int proc_eeh_show(struct seq_file *m, void *v)
 				eeh_stats.total_mmio_ffs,
 				eeh_stats.false_positives,
 				eeh_stats.slot_resets);
+<<<<<<< HEAD
+=======
 =======
 		seq_printf(m, "eeh_total_mmio_ffs=%ld\n", total_mmio_ffs);
 	} else {
@@ -2175,6 +2516,7 @@ static int proc_eeh_show(struct seq_file *m, void *v)
 				false_positives,
 				slot_resets);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;

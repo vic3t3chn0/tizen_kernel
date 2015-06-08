@@ -37,6 +37,13 @@
 #include <linux/vmalloc.h>
 #include <linux/delay.h>
 #include <linux/idr.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "qib.h"
 #include "qib_common.h"
@@ -183,6 +190,15 @@ struct qib_ctxtdata *qib_create_ctxtdata(struct qib_pportdata *ppd, u32 ctxt)
 		rcd->rcvegrbuf_chunks = (rcd->rcvegrcnt +
 			rcd->rcvegrbufs_perchunk - 1) /
 			rcd->rcvegrbufs_perchunk;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		BUG_ON(!is_power_of_2(rcd->rcvegrbufs_perchunk));
+		rcd->rcvegrbufs_perchunk_shift =
+			ilog2(rcd->rcvegrbufs_perchunk);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return rcd;
 }
@@ -398,6 +414,13 @@ static void enable_chip(struct qib_devdata *dd)
 		if (rcd)
 			dd->f_rcvctrl(rcd->ppd, rcvmask, i);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dd->freectxts = dd->cfgctxts - dd->first_user_ctxt;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void verify_interrupt(unsigned long opaque)
@@ -581,10 +604,19 @@ int qib_init(struct qib_devdata *dd, int reinit)
 			continue;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* let link come up, and enable IBC */
 		spin_lock_irqsave(&ppd->lflags_lock, flags);
 		ppd->lflags &= ~QIBL_IB_LINK_DISABLED;
 		spin_unlock_irqrestore(&ppd->lflags_lock, flags);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		portok++;
 	}
 
@@ -1014,7 +1046,15 @@ static int __devinit qib_init_one(struct pci_dev *,
 #define DRIVER_LOAD_MSG "QLogic " QIB_DRV_NAME " loaded: "
 #define PFX QIB_DRV_NAME ": "
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DEFINE_PCI_DEVICE_TABLE(qib_pci_tbl) = {
+=======
 static const struct pci_device_id qib_pci_tbl[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct pci_device_id qib_pci_tbl[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ PCI_DEVICE(PCI_VENDOR_ID_PATHSCALE, PCI_DEVICE_ID_QLOGIC_IB_6120) },
 	{ PCI_DEVICE(PCI_VENDOR_ID_QLOGIC, PCI_DEVICE_ID_QLOGIC_IB_7220) },
 	{ PCI_DEVICE(PCI_VENDOR_ID_QLOGIC, PCI_DEVICE_ID_QLOGIC_IB_7322) },

@@ -269,7 +269,15 @@ static const struct file_operations tower_fops = {
 	.llseek =	tower_llseek,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static char *legousbtower_devnode(struct device *dev, umode_t *mode)
+=======
 static char *legousbtower_devnode(struct device *dev, mode_t *mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static char *legousbtower_devnode(struct device *dev, mode_t *mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return kasprintf(GFP_KERNEL, "usb/%s", dev_name(dev));
 }
@@ -409,7 +417,15 @@ static int tower_open (struct inode *inode, struct file *file)
 			  dev->udev,
 			  usb_rcvintpipe(dev->udev, dev->interrupt_in_endpoint->bEndpointAddress),
 			  dev->interrupt_in_buffer,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			  usb_endpoint_maxp(dev->interrupt_in_endpoint),
+=======
 			  le16_to_cpu(dev->interrupt_in_endpoint->wMaxPacketSize),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			  le16_to_cpu(dev->interrupt_in_endpoint->wMaxPacketSize),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  tower_interrupt_in_callback,
 			  dev,
 			  dev->interrupt_in_interval);
@@ -928,7 +944,15 @@ static int tower_probe (struct usb_interface *interface, const struct usb_device
 		err("Couldn't allocate read_buffer");
 		goto error;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->interrupt_in_buffer = kmalloc (usb_endpoint_maxp(dev->interrupt_in_endpoint), GFP_KERNEL);
+=======
 	dev->interrupt_in_buffer = kmalloc (le16_to_cpu(dev->interrupt_in_endpoint->wMaxPacketSize), GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev->interrupt_in_buffer = kmalloc (le16_to_cpu(dev->interrupt_in_endpoint->wMaxPacketSize), GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dev->interrupt_in_buffer) {
 		err("Couldn't allocate interrupt_in_buffer");
 		goto error;
@@ -1043,6 +1067,12 @@ static void tower_disconnect (struct usb_interface *interface)
 	dbg(2, "%s: leave", __func__);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(tower_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /**
@@ -1088,6 +1118,10 @@ static void __exit lego_usb_tower_exit(void)
 
 module_init (lego_usb_tower_init);
 module_exit (lego_usb_tower_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

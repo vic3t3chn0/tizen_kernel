@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/types.h>
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/core.h>
 #include <sound/initval.h>
@@ -32,6 +36,9 @@
 #include <sound/pcm_params.h>
 #include <sound/soc.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/dmaengine_pcm.h>
 
 #include <mach/dma.h>
@@ -55,6 +62,8 @@ static int snd_imx_pcm_hw_params(struct snd_pcm_substream *substream,
 	struct dma_chan *chan = snd_dmaengine_pcm_get_chan(substream);
 	struct imx_pcm_dma_params *dma_params;
 	struct dma_slave_config slave_config;
+<<<<<<< HEAD
+=======
 =======
 
 #include <mach/dma.h>
@@ -109,11 +118,15 @@ static int imx_ssi_dma_alloc(struct snd_pcm_substream *substream,
 	dma_cap_mask_t mask;
 	enum dma_slave_buswidth buswidth;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	dma_params = snd_soc_dai_get_dma_data(rtd->cpu_dai, substream);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_hwparams_to_dma_slave_config(substream, params, &slave_config);
 	if (ret)
 		return ret;
@@ -137,6 +150,8 @@ static int imx_ssi_dma_alloc(struct snd_pcm_substream *substream,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	iprtd->dma_data.peripheral_type = IMX_DMATYPE_SSI;
 	iprtd->dma_data.priority = DMA_PRIO_HIGH;
@@ -287,6 +302,7 @@ static snd_pcm_uframes_t snd_imx_pcm_pointer(struct snd_pcm_substream *substream
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_pcm_hardware snd_imx_hardware = {
 	.info = SNDRV_PCM_INFO_INTERLEAVED |
 		SNDRV_PCM_INFO_BLOCK_TRANSFER |
@@ -309,6 +325,9 @@ static struct snd_pcm_hardware snd_imx_hardware = {
 static int snd_imx_open(struct snd_pcm_substream *substream)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
 	struct imx_pcm_dma_params *dma_params;
 	struct imx_dma_data *dma_data;
@@ -330,6 +349,8 @@ static int snd_imx_open(struct snd_pcm_substream *substream)
 	}
 
 	snd_dmaengine_pcm_set_data(substream, dma_data);
+<<<<<<< HEAD
+=======
 =======
 	struct snd_pcm_runtime *runtime = substream->runtime;
 	struct imx_pcm_runtime_data *iprtd;
@@ -349,6 +370,7 @@ static int snd_imx_open(struct snd_pcm_substream *substream)
 
 	snd_soc_set_runtime_hwparams(substream, &snd_imx_hardware);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -356,16 +378,22 @@ static int snd_imx_open(struct snd_pcm_substream *substream)
 static int snd_imx_close(struct snd_pcm_substream *substream)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct imx_dma_data *dma_data = snd_dmaengine_pcm_get_data(substream);
 
 	snd_dmaengine_pcm_close(substream);
 	kfree(dma_data);
+<<<<<<< HEAD
+=======
 =======
 	struct snd_pcm_runtime *runtime = substream->runtime;
 	struct imx_pcm_runtime_data *iprtd = runtime->private_data;
 
 	kfree(iprtd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -379,11 +407,16 @@ static struct snd_pcm_ops imx_pcm_ops = {
 	.trigger	= snd_dmaengine_pcm_trigger,
 	.pointer	= snd_dmaengine_pcm_pointer,
 =======
+<<<<<<< HEAD
+	.trigger	= snd_dmaengine_pcm_trigger,
+	.pointer	= snd_dmaengine_pcm_pointer,
+=======
 	.hw_free	= snd_imx_pcm_hw_free,
 	.prepare	= snd_imx_pcm_prepare,
 	.trigger	= snd_imx_pcm_trigger,
 	.pointer	= snd_imx_pcm_pointer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.mmap		= snd_imx_pcm_mmap,
 };
 
@@ -397,12 +430,15 @@ static int __devinit imx_soc_platform_probe(struct platform_device *pdev)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct imx_ssi *ssi = platform_get_drvdata(pdev);
 
 	ssi->dma_params_tx.burstsize = 6;
 	ssi->dma_params_rx.burstsize = 4;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return snd_soc_register_platform(&pdev->dev, &imx_soc_platform_mx2);
 }
 
@@ -424,6 +460,9 @@ static struct platform_driver imx_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(imx_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(imx_pcm_driver);
+=======
 static int __init snd_imx_pcm_init(void)
 {
 	return platform_driver_register(&imx_pcm_driver);
@@ -436,5 +475,6 @@ static void __exit snd_imx_pcm_exit(void)
 }
 module_exit(snd_imx_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:imx-pcm-audio");

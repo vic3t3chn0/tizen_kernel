@@ -229,7 +229,15 @@ dasd_diag_term_IO(struct dasd_ccw_req * cqr)
 }
 
 /* Handle external interruption. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void dasd_ext_handler(struct ext_code ext_code,
+=======
 static void dasd_ext_handler(unsigned int ext_int_code,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void dasd_ext_handler(unsigned int ext_int_code,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     unsigned int param32, unsigned long param64)
 {
 	struct dasd_ccw_req *cqr, *next;
@@ -239,7 +247,15 @@ static void dasd_ext_handler(unsigned int ext_int_code,
 	addr_t ip;
 	int rc;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (ext_code.subcode >> 8) {
+=======
 	switch (ext_int_code >> 24) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (ext_int_code >> 24) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case DASD_DIAG_CODE_31BIT:
 		ip = (addr_t) param32;
 		break;
@@ -280,7 +296,15 @@ static void dasd_ext_handler(unsigned int ext_int_code,
 	cqr->stopclk = get_clock();
 
 	expires = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((ext_code.subcode & 0xff) == 0) {
+=======
 	if ((ext_int_code & 0xff0000) == 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((ext_int_code & 0xff0000) == 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cqr->status = DASD_CQR_SUCCESS;
 		/* Start first request on queue if possible -> fast_io. */
 		if (!list_empty(&device->ccw_queue)) {
@@ -296,7 +320,15 @@ static void dasd_ext_handler(unsigned int ext_int_code,
 		cqr->status = DASD_CQR_QUEUED;
 		DBF_DEV_EVENT(DBF_DEBUG, device, "interrupt status for "
 			      "request %p was %d (%d retries left)", cqr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			      ext_code.subcode & 0xff, cqr->retries);
+=======
 			      (ext_int_code >> 16) & 0xff, cqr->retries);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			      (ext_int_code >> 16) & 0xff, cqr->retries);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dasd_diag_erp(device);
 	}
 

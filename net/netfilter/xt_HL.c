@@ -39,6 +39,9 @@ ttl_tg(struct sk_buff *skb, const struct xt_action_param *par)
 
 	switch (info->mode) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IPT_TTL_SET:
 		new_ttl = info->ttl;
 		break;
@@ -55,6 +58,8 @@ ttl_tg(struct sk_buff *skb, const struct xt_action_param *par)
 	default:
 		new_ttl = iph->ttl;
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case IPT_TTL_SET:
 			new_ttl = info->ttl;
@@ -73,6 +78,7 @@ ttl_tg(struct sk_buff *skb, const struct xt_action_param *par)
 			new_ttl = iph->ttl;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (new_ttl != iph->ttl) {
@@ -98,6 +104,9 @@ hl_tg6(struct sk_buff *skb, const struct xt_action_param *par)
 
 	switch (info->mode) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IP6T_HL_SET:
 		new_hl = info->hop_limit;
 		break;
@@ -114,6 +123,8 @@ hl_tg6(struct sk_buff *skb, const struct xt_action_param *par)
 	default:
 		new_hl = ip6h->hop_limit;
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case IP6T_HL_SET:
 			new_hl = info->hop_limit;
@@ -132,6 +143,7 @@ hl_tg6(struct sk_buff *skb, const struct xt_action_param *par)
 			new_hl = ip6h->hop_limit;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ip6h->hop_limit = new_hl;

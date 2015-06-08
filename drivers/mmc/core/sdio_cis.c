@@ -55,7 +55,15 @@ static int cistpl_vers_1(struct mmc_card *card, struct sdio_func *func,
 
 	for (i = 0; i < nr_strings; i++) {
 		buffer[i] = string;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		strlcpy(string, buf, strlen(buf) + 1);
+=======
 		strcpy(string, buf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		strcpy(string, buf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		string += strlen(string) + 1;
 		buf += strlen(buf) + 1;
 	}
@@ -132,7 +140,15 @@ static int cis_tpl_parse(struct mmc_card *card, struct sdio_func *func,
 			ret = -EINVAL;
 		}
 		if (ret && ret != -EILSEQ && ret != -ENOENT) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("%s: bad %s tuple 0x%02x (%u bytes)\n",
+=======
 			printk(KERN_ERR "%s: bad %s tuple 0x%02x (%u bytes)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_ERR "%s: bad %s tuple 0x%02x (%u bytes)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       mmc_hostname(card->host), tpl_descr, code, size);
 		}
 	} else {
@@ -270,8 +286,26 @@ static int sdio_read_cis(struct mmc_card *card, struct sdio_func *func)
 			break;
 
 		/* null entries have no link field or data */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (tpl_code == 0x00) {
+			if (card->cis.vendor == 0x70 &&
+				(card->cis.device == 0x2460 ||
+				 card->cis.device == 0x0460 ||
+				 card->cis.device == 0x23F1 ||
+				 card->cis.device == 0x23F0))
+				break;
+			else
+				continue;
+		}
+=======
 		if (tpl_code == 0x00)
 			continue;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (tpl_code == 0x00)
+			continue;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ret = mmc_io_rw_direct(card, 0, 0, ptr++, 0, &tpl_link);
 		if (ret)
@@ -313,7 +347,15 @@ static int sdio_read_cis(struct mmc_card *card, struct sdio_func *func)
 
 			if (ret == -ENOENT) {
 				/* warn about unknown tuples */
+<<<<<<< HEAD
+<<<<<<< HEAD
+				pr_warning("%s: queuing unknown"
+=======
 				printk(KERN_WARNING "%s: queuing unknown"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				printk(KERN_WARNING "%s: queuing unknown"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       " CIS tuple 0x%02x (%u bytes)\n",
 				       mmc_hostname(card->host),
 				       tpl_code, tpl_link);

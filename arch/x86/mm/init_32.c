@@ -37,8 +37,11 @@
 #include <asm/processor.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/pgtable.h>
 #include <asm/dma.h>
@@ -431,6 +434,9 @@ void __init add_highpages_with_active_regions(int nid,
 			 unsigned long start_pfn, unsigned long end_pfn)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phys_addr_t start, end;
 	u64 i;
 
@@ -442,6 +448,8 @@ void __init add_highpages_with_active_regions(int nid,
 		for ( ; pfn < e_pfn; pfn++)
 			if (pfn_valid(pfn))
 				add_one_highpage_init(pfn_to_page(pfn));
+<<<<<<< HEAD
+=======
 =======
 	struct range *range;
 	int nr_range;
@@ -461,6 +469,7 @@ void __init add_highpages_with_active_regions(int nid,
 			add_one_highpage_init(page);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 #else
@@ -669,15 +678,21 @@ void __init initmem_init(void)
 		highstart_pfn = max_low_pfn;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_x86_register_active_regions(0, 0, highend_pfn);
 	sparse_memory_present_with_active_regions(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_NOTICE "%ldMB HIGHMEM available.\n",
 		pages_to_mb(highend_pfn - highstart_pfn));
 	num_physpages = highend_pfn;
 	high_memory = (void *) __va(highstart_pfn * PAGE_SIZE - 1) + 1;
 #else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	num_physpages = max_low_pfn;
 	high_memory = (void *) __va(max_low_pfn * PAGE_SIZE - 1) + 1;
 #endif
@@ -685,6 +700,8 @@ void __init initmem_init(void)
 	memblock_set_node(0, (phys_addr_t)ULLONG_MAX, 0);
 	sparse_memory_present_with_active_regions(0);
 
+<<<<<<< HEAD
+=======
 =======
 	memblock_x86_register_active_regions(0, 0, max_low_pfn);
 	sparse_memory_present_with_active_regions(0);
@@ -692,6 +709,7 @@ void __init initmem_init(void)
 	high_memory = (void *) __va(max_low_pfn * PAGE_SIZE - 1) + 1;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_FLATMEM
 	max_mapnr = num_physpages;
 #endif
@@ -704,6 +722,8 @@ void __init initmem_init(void)
 }
 #endif /* !CONFIG_NEED_MULTIPLE_NODES */
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void __init zone_sizes_init(void)
@@ -723,6 +743,7 @@ static void __init zone_sizes_init(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init setup_bootmem_allocator(void)
 {
 	printk(KERN_INFO "  mapped low ram: 0 - %08lx\n",
@@ -794,6 +815,9 @@ void __init mem_init(void)
 	BUG_ON(!mem_map);
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * With CONFIG_DEBUG_PAGEALLOC initialization of highmem pages has to
 	 * be done before free_all_bootmem(). Memblock use free low memory for
@@ -805,8 +829,11 @@ void __init mem_init(void)
 	 */
 	set_highmem_pages_init();
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* this will put all low memory onto the freelists */
 	totalram_pages += free_all_bootmem();
 
@@ -820,9 +847,12 @@ void __init mem_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	set_highmem_pages_init();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	codesize =  (unsigned long) &_etext - (unsigned long) &_text;
 	datasize =  (unsigned long) &_edata - (unsigned long) &_etext;
 	initsize =  (unsigned long) &__init_end - (unsigned long) &__init_begin;

@@ -17,6 +17,13 @@
 #include <linux/io.h>
 #include <linux/platform_device.h>
 #include <linux/dma-mapping.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/prefetch.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/cacheflush.h>
 
@@ -316,7 +323,15 @@ static void bfin_musb_set_vbus(struct musb *musb, int is_on)
 		musb_readb(musb->mregs, MUSB_DEVCTL));
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int bfin_musb_set_power(struct usb_phy *x, unsigned mA)
+=======
 static int bfin_musb_set_power(struct otg_transceiver *x, unsigned mA)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int bfin_musb_set_power(struct otg_transceiver *x, unsigned mA)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 0;
 }
@@ -414,7 +429,15 @@ static int bfin_musb_init(struct musb *musb)
 	gpio_direction_output(musb->config->gpio_vrsel, 0);
 
 	usb_nop_xceiv_register();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	musb->xceiv = usb_get_transceiver();
+=======
 	musb->xceiv = otg_get_transceiver();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	musb->xceiv = otg_get_transceiver();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!musb->xceiv) {
 		gpio_free(musb->config->gpio_vrsel);
 		return -ENODEV;
@@ -439,7 +462,15 @@ static int bfin_musb_exit(struct musb *musb)
 {
 	gpio_free(musb->config->gpio_vrsel);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_put_transceiver(musb->xceiv);
+=======
 	otg_put_transceiver(musb->xceiv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	otg_put_transceiver(musb->xceiv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_nop_xceiv_unregister();
 	return 0;
 }
@@ -462,7 +493,15 @@ static const struct musb_platform_ops bfin_ops = {
 
 static u64 bfin_dmamask = DMA_BIT_MASK(32);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit bfin_probe(struct platform_device *pdev)
+=======
 static int __init bfin_probe(struct platform_device *pdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __init bfin_probe(struct platform_device *pdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct musb_hdrc_platform_data	*pdata = pdev->dev.platform_data;
 	struct platform_device		*musb;
@@ -524,7 +563,15 @@ err0:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devexit bfin_remove(struct platform_device *pdev)
+=======
 static int __exit bfin_remove(struct platform_device *pdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __exit bfin_remove(struct platform_device *pdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bfin_glue		*glue = platform_get_drvdata(pdev);
 
@@ -574,6 +621,13 @@ static struct dev_pm_ops bfin_pm_ops = {
 #endif
 
 static struct platform_driver bfin_driver = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.probe		= bfin_probe,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.remove		= __exit_p(bfin_remove),
 	.driver		= {
 		.name	= "musb-blackfin",
@@ -587,9 +641,21 @@ MODULE_LICENSE("GPL v2");
 
 static int __init bfin_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return platform_driver_register(&bfin_driver);
+}
+module_init(bfin_init);
+=======
 	return platform_driver_probe(&bfin_driver, bfin_probe);
 }
 subsys_initcall(bfin_init);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return platform_driver_probe(&bfin_driver, bfin_probe);
+}
+subsys_initcall(bfin_init);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __exit bfin_exit(void)
 {

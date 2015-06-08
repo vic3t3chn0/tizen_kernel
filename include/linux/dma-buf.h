@@ -52,6 +52,9 @@ struct dma_buf_attachment;
  * @release: release this buffer; to be called after the last dma_buf_put.
  * @begin_cpu_access: [optional] called before cpu access to invalidate cpu
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * 		      caches and allocate backing storage (if not yet done)
  * 		      respectively pin the objet into memory.
  * @end_cpu_access: [optional] called after cpu access to flush cashes.
@@ -66,6 +69,8 @@ struct dma_buf_attachment;
  * 	  mapping needs to be coherent - if the exporter doesn't directly
  * 	  support this, it needs to fake coherency by shooting down any ptes
  * 	  when transitioning away from the cpu domain.
+<<<<<<< HEAD
+=======
 =======
  *		      caches and allocate backing storage (if not yet done)
  *		      respectively pin the objet into memory.
@@ -78,6 +83,7 @@ struct dma_buf_attachment;
  * @kmap: maps a page from the buffer into kernel address space.
  * @kunmap: [optional] unmaps a page from the buffer.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct dma_buf_ops {
 	int (*attach)(struct dma_buf *, struct device *,
@@ -113,7 +119,12 @@ struct dma_buf_ops {
 
 	int (*mmap)(struct dma_buf *, struct vm_area_struct *vma);
 =======
+<<<<<<< HEAD
+
+	int (*mmap)(struct dma_buf *, struct vm_area_struct *vma);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -194,7 +205,13 @@ void dma_buf_kunmap(struct dma_buf *, unsigned long, void *);
 int dma_buf_mmap(struct dma_buf *, struct vm_area_struct *,
 		 unsigned long);
 =======
+<<<<<<< HEAD
+
+int dma_buf_mmap(struct dma_buf *, struct vm_area_struct *,
+		 unsigned long);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 
 static inline struct dma_buf_attachment *dma_buf_attach(struct dma_buf *dmabuf,
@@ -277,6 +294,9 @@ static inline void dma_buf_kunmap(struct dma_buf *dmabuf,
 {
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int dma_buf_mmap(struct dma_buf *dmabuf,
 			       struct vm_area_struct *vma,
@@ -284,8 +304,11 @@ static inline int dma_buf_mmap(struct dma_buf *dmabuf,
 {
 	return -ENODEV;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_DMA_SHARED_BUFFER */
 
 #endif /* __DMA_BUF_H__ */

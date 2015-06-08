@@ -457,8 +457,12 @@ static const char * udp_state_name(int state)
 <<<<<<< HEAD
 static void
 =======
+<<<<<<< HEAD
+static void
+=======
 static int
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 udp_state_transition(struct ip_vs_conn *cp, int direction,
 		     const struct sk_buff *skb,
 		     struct ip_vs_proto_data *pd)
@@ -466,6 +470,9 @@ udp_state_transition(struct ip_vs_conn *cp, int direction,
 	if (unlikely(!pd)) {
 		pr_err("UDP no ns data\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -473,6 +480,8 @@ udp_state_transition(struct ip_vs_conn *cp, int direction,
 }
 
 static int __udp_init(struct net *net, struct ip_vs_proto_data *pd)
+<<<<<<< HEAD
+=======
 =======
 		return 0;
 	}
@@ -483,6 +492,7 @@ static int __udp_init(struct net *net, struct ip_vs_proto_data *pd)
 
 static void __udp_init(struct net *net, struct ip_vs_proto_data *pd)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct netns_ipvs *ipvs = net_ipvs(net);
 
@@ -495,7 +505,13 @@ static void __udp_init(struct net *net, struct ip_vs_proto_data *pd)
 		return -ENOMEM;
 	return 0;
 =======
+<<<<<<< HEAD
+	if (!pd->timeout_table)
+		return -ENOMEM;
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __udp_exit(struct net *net, struct ip_vs_proto_data *pd)

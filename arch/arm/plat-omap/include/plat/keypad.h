@@ -16,7 +16,12 @@
 #define omap_readw(reg)		0
 #define omap_writew(val, reg)	do {} while (0)
 =======
+<<<<<<< HEAD
+#define omap_readw(reg)		0
+#define omap_writew(val, reg)	do {} while (0)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #include <linux/input/matrix_keypad.h>
 

@@ -15,14 +15,20 @@ extern struct pglist_data *node_data[];
 #include <asm/numaq.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void resume_map_numa_kva(pgd_t *pgd);
 
 #else /* !CONFIG_NUMA */
 
 static inline void resume_map_numa_kva(pgd_t *pgd) {}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_NUMA */
 
 #ifdef CONFIG_DISCONTIGMEM
@@ -41,9 +47,14 @@ static inline void resume_map_numa_kva(pgd_t *pgd) {}
 #define MAX_SECTIONS 1024
 #define PAGES_PER_SECTION (MAX_NR_PAGES/MAX_SECTIONS)
 =======
+<<<<<<< HEAD
+#define MAX_SECTIONS 1024
+#define PAGES_PER_SECTION (MAX_NR_PAGES/MAX_SECTIONS)
+=======
 #define MAX_ELEMENTS 1024
 #define PAGES_PER_ELEMENT (MAX_NR_PAGES/MAX_ELEMENTS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern s8 physnode_map[];
 
@@ -53,8 +64,12 @@ static inline int pfn_to_nid(unsigned long pfn)
 <<<<<<< HEAD
 	return((int) physnode_map[(pfn) / PAGES_PER_SECTION]);
 =======
+<<<<<<< HEAD
+	return((int) physnode_map[(pfn) / PAGES_PER_SECTION]);
+=======
 	return((int) physnode_map[(pfn) / PAGES_PER_ELEMENT]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	return 0;
 #endif

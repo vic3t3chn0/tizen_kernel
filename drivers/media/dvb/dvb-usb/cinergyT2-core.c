@@ -69,7 +69,15 @@ static int cinergyt2_frontend_attach(struct dvb_usb_adapter *adap)
 	char state[3];
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	adap->fe_adap[0].fe = cinergyt2_fe_attach(adap->dev);
+=======
 	adap->fe = cinergyt2_fe_attach(adap->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	adap->fe = cinergyt2_fe_attach(adap->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = dvb_usb_generic_rw(adap->dev, query, sizeof(query), state,
 				sizeof(state), 0);
@@ -198,6 +206,14 @@ static struct dvb_usb_device_properties cinergyt2_properties = {
 	.num_adapters = 1,
 	.adapter = {
 		{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.num_frontends = 1,
+		.fe = {{
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.streaming_ctrl   = cinergyt2_streaming_ctrl,
 			.frontend_attach  = cinergyt2_frontend_attach,
 
@@ -212,6 +228,13 @@ static struct dvb_usb_device_properties cinergyt2_properties = {
 					}
 				}
 			},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	},
 
@@ -244,6 +267,12 @@ static struct usb_driver cinergyt2_driver = {
 	.id_table	= cinergyt2_usb_table
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(cinergyt2_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init cinergyt2_usb_init(void)
 {
 	int err;
@@ -263,6 +292,10 @@ static void __exit cinergyt2_usb_exit(void)
 
 module_init(cinergyt2_usb_init);
 module_exit(cinergyt2_usb_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Terratec Cinergy T2 DVB-T driver");
 MODULE_LICENSE("GPL");

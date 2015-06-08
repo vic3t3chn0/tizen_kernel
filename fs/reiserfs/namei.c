@@ -15,12 +15,17 @@
 #include <linux/bitops.h>
 #include <linux/slab.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "reiserfs.h"
 #include "acl.h"
 #include "xattr.h"
 #include <linux/quotaops.h>
 
 #define INC_DIR_INODE_NLINK(i) if (i->i_nlink != 1) { inc_nlink(i); if (i->i_nlink >= REISERFS_LINK_MAX) set_nlink(i, 1); }
+<<<<<<< HEAD
+=======
 =======
 #include <linux/reiserfs_fs.h>
 #include <linux/reiserfs_acl.h>
@@ -29,6 +34,7 @@
 
 #define INC_DIR_INODE_NLINK(i) if (i->i_nlink != 1) { inc_nlink(i); if (i->i_nlink >= REISERFS_LINK_MAX) i->i_nlink=1; }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DEC_DIR_INODE_NLINK(i) if (i->i_nlink != 1) drop_nlink(i);
 
 // directory item contains array of entry headers. This performs
@@ -571,8 +577,12 @@ static int drop_new_inode(struct inode *inode)
 <<<<<<< HEAD
 static int new_inode_init(struct inode *inode, struct inode *dir, umode_t mode)
 =======
+<<<<<<< HEAD
+static int new_inode_init(struct inode *inode, struct inode *dir, umode_t mode)
+=======
 static int new_inode_init(struct inode *inode, struct inode *dir, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Make inode invalid - just in case we are going to drop it before
 	 * the initialization happens */
@@ -588,8 +598,12 @@ static int new_inode_init(struct inode *inode, struct inode *dir, int mode)
 <<<<<<< HEAD
 static int reiserfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int reiserfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int reiserfs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   struct nameidata *nd)
 {
 	int retval;
@@ -642,8 +656,12 @@ static int reiserfs_create(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 		drop_nlink(inode);
 =======
+<<<<<<< HEAD
+		drop_nlink(inode);
+=======
 		inode->i_nlink--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reiserfs_update_sd(&th, inode);
 		err = journal_end(&th, dir->i_sb, jbegin_count);
 		if (err)
@@ -667,8 +685,12 @@ static int reiserfs_create(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 static int reiserfs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int reiserfs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int reiserfs_mknod(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  dev_t rdev)
 {
 	int retval;
@@ -730,8 +752,12 @@ static int reiserfs_mknod(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 		drop_nlink(inode);
 =======
+<<<<<<< HEAD
+		drop_nlink(inode);
+=======
 		inode->i_nlink--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reiserfs_update_sd(&th, inode);
 		err = journal_end(&th, dir->i_sb, jbegin_count);
 		if (err)
@@ -753,8 +779,12 @@ static int reiserfs_mknod(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 static int reiserfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int reiserfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int reiserfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int retval;
 	struct inode *inode;
@@ -823,8 +853,12 @@ static int reiserfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 		clear_nlink(inode);
 =======
+<<<<<<< HEAD
+		clear_nlink(inode);
+=======
 		inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		DEC_DIR_INODE_NLINK(dir);
 		reiserfs_update_sd(&th, inode);
 		err = journal_end(&th, dir->i_sb, jbegin_count);
@@ -1004,8 +1038,12 @@ static int reiserfs_unlink(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 		set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, 1);
+=======
 		inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	drop_nlink(inode);
@@ -1130,8 +1168,12 @@ static int reiserfs_symlink(struct inode *parent_dir,
 <<<<<<< HEAD
 		drop_nlink(inode);
 =======
+<<<<<<< HEAD
+		drop_nlink(inode);
+=======
 		inode->i_nlink--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reiserfs_update_sd(&th, inode);
 		err = journal_end(&th, parent_dir->i_sb, jbegin_count);
 		if (err)
@@ -1177,8 +1219,12 @@ static int reiserfs_link(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 		drop_nlink(inode);
 =======
+<<<<<<< HEAD
+		drop_nlink(inode);
+=======
 		inode->i_nlink--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reiserfs_write_unlock(dir->i_sb);
 		return retval;
 	}
@@ -1196,8 +1242,12 @@ static int reiserfs_link(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 		drop_nlink(inode);
 =======
+<<<<<<< HEAD
+		drop_nlink(inode);
+=======
 		inode->i_nlink--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = journal_end(&th, dir->i_sb, jbegin_count);
 		reiserfs_write_unlock(dir->i_sb);
 		return err ? err : retval;
@@ -1585,7 +1635,11 @@ const struct inode_operations reiserfs_dir_inode_operations = {
 <<<<<<< HEAD
 	.get_acl = reiserfs_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = reiserfs_get_acl,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -1605,7 +1659,11 @@ const struct inode_operations reiserfs_symlink_inode_operations = {
 <<<<<<< HEAD
 	.get_acl = reiserfs_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = reiserfs_get_acl,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 };
 
@@ -1622,6 +1680,10 @@ const struct inode_operations reiserfs_special_inode_operations = {
 <<<<<<< HEAD
 	.get_acl = reiserfs_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = reiserfs_get_acl,
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

@@ -74,6 +74,14 @@
  * The Sync PPP/Cisco HDLC layer (syncppp.c) ported to Linux by Alan Cox
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/sched.h>
@@ -361,14 +369,31 @@ static int __init cosa_init(void)
 
 	if (cosa_major > 0) {
 		if (register_chrdev(cosa_major, "cosa", &cosa_fops)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_warn("unable to get major %d\n", cosa_major);
+=======
 			printk(KERN_WARNING "cosa: unable to get major %d\n",
 				cosa_major);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING "cosa: unable to get major %d\n",
+				cosa_major);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = -EIO;
 			goto out;
 		}
 	} else {
 		if (!(cosa_major=register_chrdev(0, "cosa", &cosa_fops))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_warn("unable to register chardev\n");
+=======
 			printk(KERN_WARNING "cosa: unable to register chardev\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING "cosa: unable to register chardev\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = -EIO;
 			goto out;
 		}
@@ -378,7 +403,15 @@ static int __init cosa_init(void)
 	for (i=0; io[i] != 0 && i < MAX_CARDS; i++)
 		cosa_probe(io[i], irq[i], dma[i]);
 	if (!nr_cards) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("no devices found\n");
+=======
 		printk(KERN_WARNING "cosa: no devices found.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "cosa: no devices found.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unregister_chrdev(cosa_major, "cosa");
 		err = -ENODEV;
 		goto out;
@@ -447,26 +480,61 @@ static int cosa_probe(int base, int irq, int dma)
 	/* Checking validity of parameters: */
 	/* IRQ should be 2-7 or 10-15; negative IRQ means autoprobe */
 	if ((irq >= 0  && irq < 2) || irq > 15 || (irq < 10 && irq > 7)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("invalid IRQ %d\n", irq);
+=======
 		printk (KERN_INFO "cosa_probe: invalid IRQ %d\n", irq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk (KERN_INFO "cosa_probe: invalid IRQ %d\n", irq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	/* I/O address should be between 0x100 and 0x3ff and should be
 	 * multiple of 8. */
 	if (base < 0x100 || base > 0x3ff || base & 0x7) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("invalid I/O address 0x%x\n", base);
+=======
 		printk (KERN_INFO "cosa_probe: invalid I/O address 0x%x\n",
 			base);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk (KERN_INFO "cosa_probe: invalid I/O address 0x%x\n",
+			base);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	/* DMA should be 0,1 or 3-7 */
 	if (dma < 0 || dma == 4 || dma > 7) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("invalid DMA %d\n", dma);
+=======
 		printk (KERN_INFO "cosa_probe: invalid DMA %d\n", dma);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk (KERN_INFO "cosa_probe: invalid DMA %d\n", dma);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	/* and finally, on 16-bit COSA DMA should be 4-7 and 
 	 * I/O base should not be multiple of 0x10 */
 	if (((base & 0x8) && dma < 4) || (!(base & 0x8) && dma > 3)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("8/16 bit base and DMA mismatch (base=0x%x, dma=%d)\n",
+			base, dma);
+=======
 		printk (KERN_INFO "cosa_probe: 8/16 bit base and DMA mismatch"
 			" (base=0x%x, dma=%d)\n", base, dma);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk (KERN_INFO "cosa_probe: 8/16 bit base and DMA mismatch"
+			" (base=0x%x, dma=%d)\n", base, dma);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 
@@ -479,7 +547,15 @@ static int cosa_probe(int base, int irq, int dma)
 		return -1;
 	
 	if (cosa_reset_and_read_id(cosa, cosa->id_string) < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_DEBUG "probe at 0x%x failed.\n", base);
+=======
 		printk(KERN_DEBUG "cosa: probe at 0x%x failed.\n", base);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_DEBUG "cosa: probe at 0x%x failed.\n", base);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -1;
 		goto err_out;
 	}
@@ -492,8 +568,17 @@ static int cosa_probe(int base, int irq, int dma)
 	else {
 /* Print a warning only if we are not autoprobing */
 #ifndef COSA_ISA_AUTOPROBE
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("valid signature not found at 0x%x\n", base);
+=======
 		printk(KERN_INFO "cosa: valid signature not found at 0x%x.\n",
 			base);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "cosa: valid signature not found at 0x%x.\n",
+			base);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 		err = -1;
 		goto err_out;
@@ -501,14 +586,30 @@ static int cosa_probe(int base, int irq, int dma)
 	/* Update the name of the region now we know the type of card */ 
 	release_region(base, is_8bit(cosa)?2:4);
 	if (!request_region(base, is_8bit(cosa)?2:4, cosa->type)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_DEBUG "changing name at 0x%x failed.\n", base);
+=======
 		printk(KERN_DEBUG "cosa: changing name at 0x%x failed.\n", base);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_DEBUG "cosa: changing name at 0x%x failed.\n", base);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 
 	/* Now do IRQ autoprobe */
 	if (irq < 0) {
 		unsigned long irqs;
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*		pr_info("IRQ autoprobe\n"); */
+=======
 /*		printk(KERN_INFO "IRQ autoprobe\n"); */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*		printk(KERN_INFO "IRQ autoprobe\n"); */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		irqs = probe_irq_on();
 		/* 
 		 * Enable interrupt on tx buffer empty (it sure is) 
@@ -526,13 +627,29 @@ static int cosa_probe(int base, int irq, int dma)
 		cosa_getdata8(cosa);
 
 		if (irq < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("multiple interrupts obtained (%d, board at 0x%x)\n",
+=======
 			printk (KERN_INFO "cosa IRQ autoprobe: multiple interrupts obtained (%d, board at 0x%x)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk (KERN_INFO "cosa IRQ autoprobe: multiple interrupts obtained (%d, board at 0x%x)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				irq, cosa->datareg);
 			err = -1;
 			goto err_out;
 		}
 		if (irq == 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("no interrupt obtained (board at 0x%x)\n",
+=======
 			printk (KERN_INFO "cosa IRQ autoprobe: no interrupt obtained (board at 0x%x)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk (KERN_INFO "cosa IRQ autoprobe: no interrupt obtained (board at 0x%x)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				cosa->datareg);
 		/*	return -1; */
 		}
@@ -579,8 +696,17 @@ static int cosa_probe(int base, int irq, int dma)
 
 		/* Register the network interface */
 		if (!(chan->netdev = alloc_hdlcdev(chan))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_warn("%s: alloc_hdlcdev failed\n", chan->name);
+=======
 			printk(KERN_WARNING "%s: alloc_hdlcdev failed.\n",
 			       chan->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING "%s: alloc_hdlcdev failed.\n",
+			       chan->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto err_hdlcdev;
 		}
 		dev_to_hdlc(chan->netdev)->attach = cosa_net_attach;
@@ -591,14 +717,32 @@ static int cosa_probe(int base, int irq, int dma)
 		chan->netdev->irq = chan->cosa->irq;
 		chan->netdev->dma = chan->cosa->dma;
 		if (register_hdlc_device(chan->netdev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_warn(chan->netdev,
+				    "register_hdlc_device() failed\n");
+=======
 			printk(KERN_WARNING "%s: register_hdlc_device()"
 			       " failed.\n", chan->netdev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING "%s: register_hdlc_device()"
+			       " failed.\n", chan->netdev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free_netdev(chan->netdev);
 			goto err_hdlcdev;
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("cosa%d: %s (%s at 0x%x irq %d dma %d), %d channels\n",
+=======
 	printk (KERN_INFO "cosa%d: %s (%s at 0x%x irq %d dma %d), %d channels\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk (KERN_INFO "cosa%d: %s (%s at 0x%x irq %d dma %d), %d channels\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa->num, cosa->id_string, cosa->type,
 		cosa->datareg, cosa->irq, cosa->dma, cosa->nchannels);
 
@@ -618,8 +762,17 @@ err_out1:
 	free_irq(cosa->irq, cosa);
 err_out:
 	release_region(cosa->datareg,is_8bit(cosa)?2:4);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_notice("cosa%d: allocating resources failed\n", cosa->num);
+=======
 	printk(KERN_NOTICE "cosa%d: allocating resources failed\n",
 	       cosa->num);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_NOTICE "cosa%d: allocating resources failed\n",
+	       cosa->num);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -641,14 +794,34 @@ static int cosa_net_open(struct net_device *dev)
 	unsigned long flags;
 
 	if (!(chan->cosa->firmware_status & COSA_FW_START)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("%s: start the firmware first (status %d)\n",
+			  chan->cosa->name, chan->cosa->firmware_status);
+=======
 		printk(KERN_NOTICE "%s: start the firmware first (status %d)\n",
 			chan->cosa->name, chan->cosa->firmware_status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_NOTICE "%s: start the firmware first (status %d)\n",
+			chan->cosa->name, chan->cosa->firmware_status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 	}
 	spin_lock_irqsave(&chan->cosa->lock, flags);
 	if (chan->usage != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("%s: cosa_net_open called with usage count %d\n",
+			chan->name, chan->usage);
+=======
 		printk(KERN_WARNING "%s: cosa_net_open called with usage count"
 		       " %d\n", chan->name, chan->usage);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "%s: cosa_net_open called with usage count"
+		       " %d\n", chan->name, chan->usage);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock_irqrestore(&chan->cosa->lock, flags);
 		return -EBUSY;
 	}
@@ -736,8 +909,17 @@ static char *cosa_net_setup_rx(struct channel_data *chan, int size)
 	kfree_skb(chan->rx_skb);
 	chan->rx_skb = dev_alloc_skb(size);
 	if (chan->rx_skb == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("%s: Memory squeeze, dropping packet\n", chan->name);
+=======
 		printk(KERN_NOTICE "%s: Memory squeeze, dropping packet\n",
 			chan->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_NOTICE "%s: Memory squeeze, dropping packet\n",
+			chan->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chan->netdev->stats.rx_dropped++;
 		return NULL;
 	}
@@ -748,8 +930,17 @@ static char *cosa_net_setup_rx(struct channel_data *chan, int size)
 static int cosa_net_rx_done(struct channel_data *chan)
 {
 	if (!chan->rx_skb) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("%s: rx_done with empty skb!\n", chan->name);
+=======
 		printk(KERN_WARNING "%s: rx_done with empty skb!\n",
 			chan->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "%s: rx_done with empty skb!\n",
+			chan->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chan->netdev->stats.rx_errors++;
 		chan->netdev->stats.rx_frame_errors++;
 		return 0;
@@ -768,8 +959,17 @@ static int cosa_net_rx_done(struct channel_data *chan)
 static int cosa_net_tx_done(struct channel_data *chan, int size)
 {
 	if (!chan->tx_skb) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("%s: tx_done with empty skb!\n", chan->name);
+=======
 		printk(KERN_WARNING "%s: tx_done with empty skb!\n",
 			chan->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "%s: tx_done with empty skb!\n",
+			chan->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chan->netdev->stats.tx_errors++;
 		chan->netdev->stats.tx_aborted_errors++;
 		return 1;
@@ -794,15 +994,33 @@ static ssize_t cosa_read(struct file *file,
 	char *kbuf;
 
 	if (!(cosa->firmware_status & COSA_FW_START)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("%s: start the firmware first (status %d)\n",
+			  cosa->name, cosa->firmware_status);
+=======
 		printk(KERN_NOTICE "%s: start the firmware first (status %d)\n",
 			cosa->name, cosa->firmware_status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_NOTICE "%s: start the firmware first (status %d)\n",
+			cosa->name, cosa->firmware_status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 	}
 	if (mutex_lock_interruptible(&chan->rlock))
 		return -ERESTARTSYS;
 	
 	if ((chan->rxdata = kmalloc(COSA_MTU, GFP_DMA|GFP_KERNEL)) == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("%s: cosa_read() - OOM\n", cosa->name);
+=======
 		printk(KERN_INFO "%s: cosa_read() - OOM\n", cosa->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "%s: cosa_read() - OOM\n", cosa->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&chan->rlock);
 		return -ENOMEM;
 	}
@@ -869,8 +1087,18 @@ static ssize_t cosa_write(struct file *file,
 	char *kbuf;
 
 	if (!(cosa->firmware_status & COSA_FW_START)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("%s: start the firmware first (status %d)\n",
+			  cosa->name, cosa->firmware_status);
+=======
 		printk(KERN_NOTICE "%s: start the firmware first (status %d)\n",
 			cosa->name, cosa->firmware_status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_NOTICE "%s: start the firmware first (status %d)\n",
+			cosa->name, cosa->firmware_status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 	}
 	if (down_interruptible(&chan->wsem))
@@ -881,8 +1109,18 @@ static ssize_t cosa_write(struct file *file,
 	
 	/* Allocate the buffer */
 	if ((kbuf = kmalloc(count, GFP_KERNEL|GFP_DMA)) == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("%s: cosa_write() OOM - dropping packet\n",
+			  cosa->name);
+=======
 		printk(KERN_NOTICE "%s: cosa_write() OOM - dropping packet\n",
 			cosa->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_NOTICE "%s: cosa_write() OOM - dropping packet\n",
+			cosa->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		up(&chan->wsem);
 		return -ENOMEM;
 	}
@@ -932,7 +1170,15 @@ static int chrdev_tx_done(struct channel_data *chan, int size)
 
 static unsigned int cosa_poll(struct file *file, poll_table *poll)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("cosa_poll is here\n");
+=======
 	printk(KERN_INFO "cosa_poll is here\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "cosa_poll is here\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1017,6 +1263,19 @@ static inline int cosa_reset(struct cosa_data *cosa)
 {
 	char idstring[COSA_MAX_ID_STRING];
 	if (cosa->usage > 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("cosa%d: WARNING: reset requested with cosa->usage > 1 (%d). Odd things may happen.\n",
+			cosa->num, cosa->usage);
+	cosa->firmware_status &= ~(COSA_FW_RESET|COSA_FW_START);
+	if (cosa_reset_and_read_id(cosa, idstring) < 0) {
+		pr_notice("cosa%d: reset failed\n", cosa->num);
+		return -EIO;
+	}
+	pr_info("cosa%d: resetting device: %s\n", cosa->num, idstring);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO "cosa%d: WARNING: reset requested with cosa->usage > 1 (%d). Odd things may happen.\n",
 			cosa->num, cosa->usage);
 	cosa->firmware_status &= ~(COSA_FW_RESET|COSA_FW_START);
@@ -1026,6 +1285,10 @@ static inline int cosa_reset(struct cosa_data *cosa)
 	}
 	printk(KERN_INFO "cosa%d: resetting device: %s\n", cosa->num,
 		idstring);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cosa->firmware_status |= COSA_FW_RESET;
 	return 0;
 }
@@ -1037,11 +1300,25 @@ static inline int cosa_download(struct cosa_data *cosa, void __user *arg)
 	int i;
 
 	if (cosa->usage > 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("%s: WARNING: download of microcode requested with cosa->usage > 1 (%d). Odd things may happen.\n",
+			cosa->name, cosa->usage);
+	if (!(cosa->firmware_status & COSA_FW_RESET)) {
+		pr_notice("%s: reset the card first (status %d)\n",
+			  cosa->name, cosa->firmware_status);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO "%s: WARNING: download of microcode requested with cosa->usage > 1 (%d). Odd things may happen.\n",
 			cosa->name, cosa->usage);
 	if (!(cosa->firmware_status & COSA_FW_RESET)) {
 		printk(KERN_NOTICE "%s: reset the card first (status %d).\n",
 			cosa->name, cosa->firmware_status);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 	}
 	
@@ -1059,11 +1336,25 @@ static inline int cosa_download(struct cosa_data *cosa, void __user *arg)
 
 	i = download(cosa, d.code, d.len, d.addr);
 	if (i < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("cosa%d: microcode download failed: %d\n",
+			  cosa->num, i);
+		return -EIO;
+	}
+	pr_info("cosa%d: downloading microcode - 0x%04x bytes at 0x%04x\n",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_NOTICE "cosa%d: microcode download failed: %d\n",
 			cosa->num, i);
 		return -EIO;
 	}
 	printk(KERN_INFO "cosa%d: downloading microcode - 0x%04x bytes at 0x%04x\n",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa->num, d.len, d.addr);
 	cosa->firmware_status |= COSA_FW_RESET|COSA_FW_DOWNLOAD;
 	return 0;
@@ -1076,12 +1367,26 @@ static inline int cosa_readmem(struct cosa_data *cosa, void __user *arg)
 	int i;
 
 	if (cosa->usage > 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("cosa%d: WARNING: readmem requested with cosa->usage > 1 (%d). Odd things may happen.\n",
+			cosa->num, cosa->usage);
+	if (!(cosa->firmware_status & COSA_FW_RESET)) {
+		pr_notice("%s: reset the card first (status %d)\n",
+			  cosa->name, cosa->firmware_status);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO "cosa%d: WARNING: readmem requested with "
 			"cosa->usage > 1 (%d). Odd things may happen.\n",
 			cosa->num, cosa->usage);
 	if (!(cosa->firmware_status & COSA_FW_RESET)) {
 		printk(KERN_NOTICE "%s: reset the card first (status %d).\n",
 			cosa->name, cosa->firmware_status);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 	}
 
@@ -1093,11 +1398,24 @@ static inline int cosa_readmem(struct cosa_data *cosa, void __user *arg)
 
 	i = readmem(cosa, d.code, d.len, d.addr);
 	if (i < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("cosa%d: reading memory failed: %d\n", cosa->num, i);
+		return -EIO;
+	}
+	pr_info("cosa%d: reading card memory - 0x%04x bytes at 0x%04x\n",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_NOTICE "cosa%d: reading memory failed: %d\n",
 			cosa->num, i);
 		return -EIO;
 	}
 	printk(KERN_INFO "cosa%d: reading card memory - 0x%04x bytes at 0x%04x\n",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa->num, d.len, d.addr);
 	cosa->firmware_status |= COSA_FW_RESET;
 	return 0;
@@ -1109,23 +1427,55 @@ static inline int cosa_start(struct cosa_data *cosa, int address)
 	int i;
 
 	if (cosa->usage > 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("cosa%d: WARNING: start microcode requested with cosa->usage > 1 (%d). Odd things may happen.\n",
+=======
 		printk(KERN_INFO "cosa%d: WARNING: start microcode requested with cosa->usage > 1 (%d). Odd things may happen.\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "cosa%d: WARNING: start microcode requested with cosa->usage > 1 (%d). Odd things may happen.\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cosa->num, cosa->usage);
 
 	if ((cosa->firmware_status & (COSA_FW_RESET|COSA_FW_DOWNLOAD))
 		!= (COSA_FW_RESET|COSA_FW_DOWNLOAD)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("%s: download the microcode and/or reset the card first (status %d)\n",
+			  cosa->name, cosa->firmware_status);
+=======
 		printk(KERN_NOTICE "%s: download the microcode and/or reset the card first (status %d).\n",
 			cosa->name, cosa->firmware_status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_NOTICE "%s: download the microcode and/or reset the card first (status %d).\n",
+			cosa->name, cosa->firmware_status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 	}
 	cosa->firmware_status &= ~COSA_FW_RESET;
 	if ((i=startmicrocode(cosa, address)) < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("cosa%d: start microcode at 0x%04x failed: %d\n",
+			  cosa->num, address, i);
+		return -EIO;
+	}
+	pr_info("cosa%d: starting microcode at 0x%04x\n", cosa->num, address);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_NOTICE "cosa%d: start microcode at 0x%04x failed: %d\n",
 			cosa->num, address, i);
 		return -EIO;
 	}
 	printk(KERN_INFO "cosa%d: starting microcode at 0x%04x\n",
 		cosa->num, address);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cosa->startaddr = address;
 	cosa->firmware_status |= COSA_FW_START;
 	return 0;
@@ -1255,11 +1605,25 @@ static int cosa_start_tx(struct channel_data *chan, char *buf, int len)
 #ifdef DEBUG_DATA
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("cosa%dc%d: starting tx(0x%x)",
+		chan->cosa->num, chan->num, len);
+	for (i=0; i<len; i++)
+		pr_cont(" %02x", buf[i]&0xff);
+	pr_cont("\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "cosa%dc%d: starting tx(0x%x)", chan->cosa->num,
 		chan->num, len);
 	for (i=0; i<len; i++)
 		printk(" %02x", buf[i]&0xff);
 	printk("\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	spin_lock_irqsave(&cosa->lock, flags);
 	chan->txbuf = buf;
@@ -1353,7 +1717,15 @@ static void cosa_kick(struct cosa_data *cosa)
 	if (test_bit(TXBIT, &cosa->rxtx))
 		s = "TX DMA";
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s: %s timeout - restarting\n", cosa->name, s);
+=======
 	printk(KERN_INFO "%s: %s timeout - restarting.\n", cosa->name, s); 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "%s: %s timeout - restarting.\n", cosa->name, s); 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&cosa->lock, flags);
 	cosa->rxtx = 0;
 
@@ -1387,7 +1759,15 @@ static int cosa_dma_able(struct channel_data *chan, char *buf, int len)
 		return 0;
 	if ((b^ (b+len)) & 0x10000) {
 		if (count++ < 5)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("%s: packet spanning a 64k boundary\n",
+=======
 			printk(KERN_INFO "%s: packet spanning a 64k boundary\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "%s: packet spanning a 64k boundary\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				chan->name);
 		return 0;
 	}
@@ -1498,8 +1878,17 @@ static int readmem(struct cosa_data *cosa, char __user *microcode, int length, i
 		char c;
 		int i;
 		if ((i=get_wait_data(cosa)) == -1) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("0x%04x bytes remaining\n", length);
+=======
 			printk (KERN_INFO "cosa: 0x%04x bytes remaining\n",
 				length);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk (KERN_INFO "cosa: 0x%04x bytes remaining\n",
+				length);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -11;
 		}
 		c=i;
@@ -1582,14 +1971,31 @@ static int get_wait_data(struct cosa_data *cosa)
 			short r;
 			r = cosa_getdata8(cosa);
 #if 0
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("get_wait_data returning after %d retries\n",
+				999-retries);
+=======
 			printk(KERN_INFO "cosa: get_wait_data returning after %d retries\n", 999-retries);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "cosa: get_wait_data returning after %d retries\n", 999-retries);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 			return r;
 		}
 		/* sleep if not ready to read */
 		schedule_timeout_interruptible(1);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("timeout in get_wait_data (status 0x%x)\n",
+=======
 	printk(KERN_INFO "cosa: timeout in get_wait_data (status 0x%x)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "cosa: timeout in get_wait_data (status 0x%x)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa_getstatus(cosa));
 	return -1;
 }
@@ -1607,7 +2013,15 @@ static int put_wait_data(struct cosa_data *cosa, int data)
 		if (cosa_getstatus(cosa) & SR_TX_RDY) {
 			cosa_putdata8(cosa, data);
 #if 0
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("Putdata: %d retries\n", 999-retries);
+=======
 			printk(KERN_INFO "Putdata: %d retries\n", 999-retries);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "Putdata: %d retries\n", 999-retries);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 			return 0;
 		}
@@ -1616,7 +2030,15 @@ static int put_wait_data(struct cosa_data *cosa, int data)
 		schedule_timeout_interruptible(1);
 #endif
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("cosa%d: timeout in put_wait_data (status 0x%x)\n",
+=======
 	printk(KERN_INFO "cosa%d: timeout in put_wait_data (status 0x%x)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "cosa%d: timeout in put_wait_data (status 0x%x)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa->num, cosa_getstatus(cosa));
 	return -1;
 }
@@ -1636,6 +2058,18 @@ static int puthexnumber(struct cosa_data *cosa, int number)
 	sprintf(temp, "%04X", number);
 	for (i=0; i<4; i++) {
 		if (put_wait_data(cosa, temp[i]) == -1) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_notice("cosa%d: puthexnumber failed to write byte %d\n",
+				  cosa->num, i);
+			return -1-2*i;
+		}
+		if (get_wait_data(cosa) != temp[i]) {
+			pr_notice("cosa%d: puthexhumber failed to read echo of byte %d\n",
+				  cosa->num, i);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_NOTICE "cosa%d: puthexnumber failed to write byte %d\n",
 				cosa->num, i);
 			return -1-2*i;
@@ -1643,6 +2077,10 @@ static int puthexnumber(struct cosa_data *cosa, int number)
 		if (get_wait_data(cosa) != temp[i]) {
 			printk(KERN_NOTICE "cosa%d: puthexhumber failed to read echo of byte %d\n",
 				cosa->num, i);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -2-2*i;
 		}
 	}
@@ -1687,8 +2125,17 @@ static inline void tx_interrupt(struct cosa_data *cosa, int status)
 {
 	unsigned long flags, flags1;
 #ifdef DEBUG_IRQS
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("cosa%d: SR_DOWN_REQUEST status=0x%04x\n", cosa->num, status);
+=======
 	printk(KERN_INFO "cosa%d: SR_DOWN_REQUEST status=0x%04x\n",
 		cosa->num, status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "cosa%d: SR_DOWN_REQUEST status=0x%04x\n",
+		cosa->num, status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	spin_lock_irqsave(&cosa->lock, flags);
 	set_bit(TXBIT, &cosa->rxtx);
@@ -1696,8 +2143,17 @@ static inline void tx_interrupt(struct cosa_data *cosa, int status)
 		/* flow control, see the comment above */
 		int i=0;
 		if (!cosa->txbitmap) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_warn("%s: No channel wants data in TX IRQ. Expect DMA timeout.\n",
+=======
 			printk(KERN_WARNING "%s: No channel wants data "
 				"in TX IRQ. Expect DMA timeout.",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING "%s: No channel wants data "
+				"in TX IRQ. Expect DMA timeout.",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				cosa->name);
 			put_driver_status_nolock(cosa);
 			clear_bit(TXBIT, &cosa->rxtx);
@@ -1780,14 +2236,32 @@ static inline void tx_interrupt(struct cosa_data *cosa, int status)
 	if (cosa->busmaster) {
 		unsigned long addr = virt_to_bus(cosa->txbuf);
 		int count=0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("busmaster IRQ\n");
+=======
 		printk(KERN_INFO "busmaster IRQ\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "busmaster IRQ\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (!(cosa_getstatus(cosa)&SR_TX_RDY)) {
 			count++;
 			udelay(10);
 			if (count > 1000) break;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("status %x\n", cosa_getstatus(cosa));
+		pr_info("ready after %d loops\n", count);
+=======
 		printk(KERN_INFO "status %x\n", cosa_getstatus(cosa));
 		printk(KERN_INFO "ready after %d loops\n", count);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "status %x\n", cosa_getstatus(cosa));
+		printk(KERN_INFO "ready after %d loops\n", count);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa_putdata16(cosa, (addr >> 16)&0xffff);
 
 		count = 0;
@@ -1796,7 +2270,15 @@ static inline void tx_interrupt(struct cosa_data *cosa, int status)
 			if (count > 1000) break;
 			udelay(10);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("ready after %d loops\n", count);
+=======
 		printk(KERN_INFO "ready after %d loops\n", count);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "ready after %d loops\n", count);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa_putdata16(cosa, addr &0xffff);
 		flags1 = claim_dma_lock();
 		set_dma_mode(cosa->dma, DMA_MODE_CASCADE);
@@ -1824,7 +2306,15 @@ static inline void rx_interrupt(struct cosa_data *cosa, int status)
 {
 	unsigned long flags;
 #ifdef DEBUG_IRQS
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("cosa%d: SR_UP_REQUEST\n", cosa->num);
+=======
 	printk(KERN_INFO "cosa%d: SR_UP_REQUEST\n", cosa->num);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "cosa%d: SR_UP_REQUEST\n", cosa->num);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	spin_lock_irqsave(&cosa->lock, flags);
@@ -1847,7 +2337,15 @@ static inline void rx_interrupt(struct cosa_data *cosa, int status)
 			debug_data_in(cosa, cosa->rxsize & 0xff);
 #endif
 #if 0
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("cosa%d: receive rxsize = (0x%04x)\n",
+=======
 			printk(KERN_INFO "cosa%d: receive rxsize = (0x%04x).\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "cosa%d: receive rxsize = (0x%04x).\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				cosa->num, cosa->rxsize);
 #endif
 		}
@@ -1857,12 +2355,28 @@ static inline void rx_interrupt(struct cosa_data *cosa, int status)
 		debug_data_in(cosa, cosa->rxsize);
 #endif
 #if 0
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("cosa%d: receive rxsize = (0x%04x)\n",
+=======
 		printk(KERN_INFO "cosa%d: receive rxsize = (0x%04x).\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "cosa%d: receive rxsize = (0x%04x).\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cosa->num, cosa->rxsize);
 #endif
 	}
 	if (((cosa->rxsize & 0xe000) >> 13) >= cosa->nchannels) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("%s: rx for unknown channel (0x%04x)\n",
+=======
 		printk(KERN_WARNING "%s: rx for unknown channel (0x%04x)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "%s: rx for unknown channel (0x%04x)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cosa->name, cosa->rxsize);
 		spin_unlock_irqrestore(&cosa->lock, flags);
 		goto reject;
@@ -1877,7 +2391,15 @@ static inline void rx_interrupt(struct cosa_data *cosa, int status)
 
 	if (!cosa->rxbuf) {
 reject:		/* Reject the packet */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("cosa%d: rejecting packet on channel %d\n",
+=======
 		printk(KERN_INFO "cosa%d: rejecting packet on channel %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "cosa%d: rejecting packet on channel %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cosa->num, cosa->rxchan->num);
 		cosa->rxbuf = cosa->bouncebuf;
 	}
@@ -1924,11 +2446,25 @@ static inline void eot_interrupt(struct cosa_data *cosa, int status)
 #ifdef DEBUG_DATA
 	{
 		int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("cosa%dc%d: done rx(0x%x)",
+			cosa->num, cosa->rxchan->num, cosa->rxsize);
+		for (i=0; i<cosa->rxsize; i++)
+			pr_cont(" %02x", cosa->rxbuf[i]&0xff);
+		pr_cont("\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO "cosa%dc%d: done rx(0x%x)", cosa->num, 
 			cosa->rxchan->num, cosa->rxsize);
 		for (i=0; i<cosa->rxsize; i++)
 			printk (" %02x", cosa->rxbuf[i]&0xff);
 		printk("\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #endif
 		/* Packet for unknown channel? */
@@ -1940,8 +2476,17 @@ static inline void eot_interrupt(struct cosa_data *cosa, int status)
 			if (cosa->rxchan->rx_done(cosa->rxchan))
 				clear_bit(cosa->rxchan->num, &cosa->rxbitmap);
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_notice("cosa%d: unexpected EOT interrupt\n", cosa->num);
+=======
 		printk(KERN_NOTICE "cosa%d: unexpected EOT interrupt\n",
 			cosa->num);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_NOTICE "cosa%d: unexpected EOT interrupt\n",
+			cosa->num);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/*
 	 * Clear the RXBIT, TXBIT and IRQBIT (the latest should be
@@ -1963,8 +2508,17 @@ static irqreturn_t cosa_interrupt(int irq, void *cosa_)
 again:
 	status = cosa_getstatus(cosa);
 #ifdef DEBUG_IRQS
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("cosa%d: got IRQ, status 0x%02x\n", cosa->num, status & 0xff);
+=======
 	printk(KERN_INFO "cosa%d: got IRQ, status 0x%02x\n", cosa->num,
 		status & 0xff);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "cosa%d: got IRQ, status 0x%02x\n", cosa->num,
+		status & 0xff);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #ifdef DEBUG_IO
 	debug_status_in(cosa, status);
@@ -1985,15 +2539,36 @@ again:
 			udelay(100);
 			goto again;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("cosa%d: unknown status 0x%02x in IRQ after %d retries\n",
+=======
 		printk(KERN_INFO "cosa%d: unknown status 0x%02x in IRQ after %d retries\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "cosa%d: unknown status 0x%02x in IRQ after %d retries\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cosa->num, status & 0xff, count);
 	}
 #ifdef DEBUG_IRQS
 	if (count)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("%s: %d-times got unknown status in IRQ\n",
+			cosa->name, count);
+	else
+		pr_info("%s: returning from IRQ\n", cosa->name);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO "%s: %d-times got unknown status in IRQ\n",
 			cosa->name, count);
 	else
 		printk(KERN_INFO "%s: returning from IRQ\n", cosa->name);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	return IRQ_HANDLED;
 }
@@ -2024,17 +2599,46 @@ static void debug_status_in(struct cosa_data *cosa, int status)
 		s = "NO_REQ";
 		break;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s: IO: status -> 0x%02x (%s%s%s%s)\n",
+		cosa->name,
+		status,
+		status & SR_USR_RQ ? "USR_RQ|" : "",
+		status & SR_TX_RDY ? "TX_RDY|" : "",
+		status & SR_RX_RDY ? "RX_RDY|" : "",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "%s: IO: status -> 0x%02x (%s%s%s%s)\n",
 		cosa->name,
 		status,
 		status & SR_USR_RQ ? "USR_RQ|":"",
 		status & SR_TX_RDY ? "TX_RDY|":"",
 		status & SR_RX_RDY ? "RX_RDY|":"",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		s);
 }
 
 static void debug_status_out(struct cosa_data *cosa, int status)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s: IO: status <- 0x%02x (%s%s%s%s%s%s)\n",
+		cosa->name,
+		status,
+		status & SR_RX_DMA_ENA  ? "RXDMA|"  : "!rxdma|",
+		status & SR_TX_DMA_ENA  ? "TXDMA|"  : "!txdma|",
+		status & SR_RST         ? "RESET|"  : "",
+		status & SR_USR_INT_ENA ? "USRINT|" : "!usrint|",
+		status & SR_TX_INT_ENA  ? "TXINT|"  : "!txint|",
+		status & SR_RX_INT_ENA  ? "RXINT"   : "!rxint");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "%s: IO: status <- 0x%02x (%s%s%s%s%s%s)\n",
 		cosa->name,
 		status,
@@ -2044,21 +2648,49 @@ static void debug_status_out(struct cosa_data *cosa, int status)
 		status & SR_USR_INT_ENA ? "USRINT|":"!usrint|",
 		status & SR_TX_INT_ENA  ? "TXINT|":"!txint|",
 		status & SR_RX_INT_ENA  ? "RXINT":"!rxint");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void debug_data_in(struct cosa_data *cosa, int data)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s: IO: data -> 0x%04x\n", cosa->name, data);
+=======
 	printk(KERN_INFO "%s: IO: data -> 0x%04x\n", cosa->name, data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "%s: IO: data -> 0x%04x\n", cosa->name, data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void debug_data_out(struct cosa_data *cosa, int data)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s: IO: data <- 0x%04x\n", cosa->name, data);
+=======
 	printk(KERN_INFO "%s: IO: data <- 0x%04x\n", cosa->name, data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "%s: IO: data <- 0x%04x\n", cosa->name, data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void debug_data_cmd(struct cosa_data *cosa, int data)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s: IO: data <- 0x%04x (%s|%s)\n",
+=======
 	printk(KERN_INFO "%s: IO: data <- 0x%04x (%s|%s)\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "%s: IO: data <- 0x%04x (%s|%s)\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cosa->name, data,
 		data & SR_RDY_RCV ? "RX_RDY" : "!rx_rdy",
 		data & SR_RDY_SND ? "TX_RDY" : "!tx_rdy");

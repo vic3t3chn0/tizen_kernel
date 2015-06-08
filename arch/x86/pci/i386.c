@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pci.h>
 #include <linux/init.h>
 #include <linux/ioport.h>
@@ -43,6 +47,9 @@
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This list of dynamic mappings is for temporarily maintaining
  * original BIOS BAR addresses for possible reinstatement.
@@ -124,8 +131,11 @@ static void pcibios_fw_addr_list_del(void)
 	spin_unlock_irqrestore(&pcibios_fwaddrmap_lock, flags);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 skip_isa_ioresource_align(struct pci_dev *dev) {
 
@@ -273,8 +283,13 @@ static void __init pcibios_allocate_resources(int pass)
 					pcibios_save_fw_addr(dev,
 							idx, r->start);
 =======
+<<<<<<< HEAD
+					pcibios_save_fw_addr(dev,
+							idx, r->start);
+=======
 					dev->fw_addr[idx] = r->start;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					r->end -= r->start;
 					r->start = 0;
 				}
@@ -323,7 +338,11 @@ static int __init pcibios_assign_resources(void)
 <<<<<<< HEAD
 	pcibios_fw_addr_list_del();
 =======
+<<<<<<< HEAD
+	pcibios_fw_addr_list_del();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -352,6 +371,8 @@ fs_initcall(pcibios_assign_resources);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  *  If we set up a device for bus mastering, we need to check the latency
  *  timer as certain crappy BIOSes forget to set it properly.
@@ -373,6 +394,7 @@ void pcibios_set_master(struct pci_dev *dev)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct vm_operations_struct pci_mmap_ops = {
 	.access = generic_access_phys,
 };

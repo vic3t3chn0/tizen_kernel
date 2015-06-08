@@ -23,8 +23,11 @@
 #include <linux/device.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/amba/bus.h>
 #include <linux/amba/pl061.h>
 #include <linux/amba/mmci.h>
@@ -34,7 +37,11 @@
 <<<<<<< HEAD
 #include <asm/hardware/vic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/vic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <asm/mach-types.h>
 
@@ -69,9 +76,14 @@ static struct pl061_platform_data gpio3_plat_data = {
 #define UART3_IRQ	{ IRQ_SIC_UART3 }
 #define SCI1_IRQ	{ IRQ_SIC_SCI3 }
 =======
+<<<<<<< HEAD
+#define UART3_IRQ	{ IRQ_SIC_UART3 }
+#define SCI1_IRQ	{ IRQ_SIC_SCI3 }
+=======
 #define UART3_IRQ	{ IRQ_SIC_UART3, NO_IRQ }
 #define SCI1_IRQ	{ IRQ_SIC_SCI3, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MMCI1_IRQ	{ IRQ_MMCI1A, IRQ_SIC_MMCI1B }
 
 /*
@@ -81,9 +93,14 @@ static struct pl061_platform_data gpio3_plat_data = {
 #define GPIO2_IRQ	{ IRQ_GPIOINT2 }
 #define GPIO3_IRQ	{ IRQ_GPIOINT3 }
 =======
+<<<<<<< HEAD
+#define GPIO2_IRQ	{ IRQ_GPIOINT2 }
+#define GPIO3_IRQ	{ IRQ_GPIOINT3 }
+=======
 #define GPIO2_IRQ	{ IRQ_GPIOINT2, NO_IRQ }
 #define GPIO3_IRQ	{ IRQ_GPIOINT3, NO_IRQ }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These devices are connected via the DMA APB bridge
@@ -91,6 +108,9 @@ static struct pl061_platform_data gpio3_plat_data = {
 
 /* FPGA Primecells */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 APB_DEVICE(uart3, "fpga:09", UART3,    NULL);
 APB_DEVICE(sci1,  "fpga:0a", SCI1,     NULL);
 APB_DEVICE(mmc1,  "fpga:0b", MMCI1,    &mmc1_plat_data);
@@ -98,6 +118,8 @@ APB_DEVICE(mmc1,  "fpga:0b", MMCI1,    &mmc1_plat_data);
 /* DevChip Primecells */
 APB_DEVICE(gpio2, "dev:e6",  GPIO2,    &gpio2_plat_data);
 APB_DEVICE(gpio3, "dev:e7",  GPIO3,    &gpio3_plat_data);
+<<<<<<< HEAD
+=======
 =======
 AMBA_DEVICE(uart3, "fpga:09", UART3,    NULL);
 AMBA_DEVICE(sci1,  "fpga:0a", SCI1,     NULL);
@@ -107,6 +129,7 @@ AMBA_DEVICE(mmc1,  "fpga:0b", MMCI1,    &mmc1_plat_data);
 AMBA_DEVICE(gpio2, "dev:e6",  GPIO2,    &gpio2_plat_data);
 AMBA_DEVICE(gpio3, "dev:e7",  GPIO3,    &gpio3_plat_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct amba_device *amba_devs[] __initdata = {
 	&uart3_device,
@@ -131,6 +154,9 @@ static void __init versatile_pb_init(void)
 MACHINE_START(VERSATILE_PB, "ARM-Versatile PB")
 	/* Maintainer: ARM Ltd/Deep Blue Solutions Ltd */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= versatile_map_io,
 	.init_early	= versatile_init_early,
@@ -139,6 +165,8 @@ MACHINE_START(VERSATILE_PB, "ARM-Versatile PB")
 	.timer		= &versatile_timer,
 	.init_machine	= versatile_pb_init,
 	.restart	= versatile_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x00000100,
 	.map_io		= versatile_map_io,
@@ -147,4 +175,5 @@ MACHINE_START(VERSATILE_PB, "ARM-Versatile PB")
 	.timer		= &versatile_timer,
 	.init_machine	= versatile_pb_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

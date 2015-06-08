@@ -200,7 +200,14 @@ int mthca_alloc_srq(struct mthca_dev *dev, struct mthca_pd *pd,
 		    struct ib_srq_attr *attr, struct mthca_srq *srq)
 {
 	struct mthca_mailbox *mailbox;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u8 status;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 status;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ds;
 	int err;
 
@@ -266,18 +273,35 @@ int mthca_alloc_srq(struct mthca_dev *dev, struct mthca_pd *pd,
 	else
 		mthca_tavor_init_srq_context(dev, pd, srq, mailbox->buf);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mthca_SW2HW_SRQ(dev, mailbox, srq->srqn);
+=======
 	err = mthca_SW2HW_SRQ(dev, mailbox, srq->srqn, &status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mthca_SW2HW_SRQ(dev, mailbox, srq->srqn, &status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (err) {
 		mthca_warn(dev, "SW2HW_SRQ failed (%d)\n", err);
 		goto err_out_free_buf;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status) {
 		mthca_warn(dev, "SW2HW_SRQ returned status 0x%02x\n",
 			   status);
 		err = -EINVAL;
 		goto err_out_free_buf;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irq(&dev->srq_table.lock);
 	if (mthca_array_set(&dev->srq_table.srq,
@@ -299,11 +323,23 @@ int mthca_alloc_srq(struct mthca_dev *dev, struct mthca_pd *pd,
 	return 0;
 
 err_out_free_srq:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mthca_HW2SW_SRQ(dev, mailbox, srq->srqn);
+	if (err)
+		mthca_warn(dev, "HW2SW_SRQ failed (%d)\n", err);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = mthca_HW2SW_SRQ(dev, mailbox, srq->srqn, &status);
 	if (err)
 		mthca_warn(dev, "HW2SW_SRQ failed (%d)\n", err);
 	else if (status)
 		mthca_warn(dev, "HW2SW_SRQ returned status 0x%02x\n", status);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 err_out_free_buf:
 	if (!pd->ibpd.uobject)
@@ -340,7 +376,14 @@ void mthca_free_srq(struct mthca_dev *dev, struct mthca_srq *srq)
 {
 	struct mthca_mailbox *mailbox;
 	int err;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u8 status;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 status;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mailbox = mthca_alloc_mailbox(dev, GFP_KERNEL);
 	if (IS_ERR(mailbox)) {
@@ -348,11 +391,23 @@ void mthca_free_srq(struct mthca_dev *dev, struct mthca_srq *srq)
 		return;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mthca_HW2SW_SRQ(dev, mailbox, srq->srqn);
+	if (err)
+		mthca_warn(dev, "HW2SW_SRQ failed (%d)\n", err);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = mthca_HW2SW_SRQ(dev, mailbox, srq->srqn, &status);
 	if (err)
 		mthca_warn(dev, "HW2SW_SRQ failed (%d)\n", err);
 	else if (status)
 		mthca_warn(dev, "HW2SW_SRQ returned status 0x%02x\n", status);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irq(&dev->srq_table.lock);
 	mthca_array_clear(&dev->srq_table.srq,
@@ -378,8 +433,17 @@ int mthca_modify_srq(struct ib_srq *ibsrq, struct ib_srq_attr *attr,
 {
 	struct mthca_dev *dev = to_mdev(ibsrq->device);
 	struct mthca_srq *srq = to_msrq(ibsrq);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = 0;
+=======
 	int ret;
 	u8 status;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret;
+	u8 status;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We don't support resizing SRQs (yet?) */
 	if (attr_mask & IB_SRQ_MAX_WR)
@@ -391,6 +455,16 @@ int mthca_modify_srq(struct ib_srq *ibsrq, struct ib_srq_attr *attr,
 			return -EINVAL;
 
 		mutex_lock(&srq->mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = mthca_ARM_SRQ(dev, srq->srqn, attr->srq_limit);
+		mutex_unlock(&srq->mutex);
+	}
+
+	return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = mthca_ARM_SRQ(dev, srq->srqn, attr->srq_limit, &status);
 		mutex_unlock(&srq->mutex);
 
@@ -401,6 +475,10 @@ int mthca_modify_srq(struct ib_srq *ibsrq, struct ib_srq_attr *attr,
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int mthca_query_srq(struct ib_srq *ibsrq, struct ib_srq_attr *srq_attr)
@@ -410,14 +488,29 @@ int mthca_query_srq(struct ib_srq *ibsrq, struct ib_srq_attr *srq_attr)
 	struct mthca_mailbox *mailbox;
 	struct mthca_arbel_srq_context *arbel_ctx;
 	struct mthca_tavor_srq_context *tavor_ctx;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u8 status;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 status;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	mailbox = mthca_alloc_mailbox(dev, GFP_KERNEL);
 	if (IS_ERR(mailbox))
 		return PTR_ERR(mailbox);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mthca_QUERY_SRQ(dev, srq->srqn, mailbox);
+=======
 	err = mthca_QUERY_SRQ(dev, srq->srqn, mailbox, &status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = mthca_QUERY_SRQ(dev, srq->srqn, mailbox, &status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 

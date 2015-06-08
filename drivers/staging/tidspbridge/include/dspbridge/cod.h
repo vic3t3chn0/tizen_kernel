@@ -100,6 +100,11 @@ extern int cod_create(struct cod_manager **mgr,
 extern void cod_delete(struct cod_manager *cod_mgr_obj);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== cod_exit ========
  *  Purpose:
  *      Discontinue usage of the COD module.
@@ -115,6 +120,10 @@ extern void cod_delete(struct cod_manager *cod_mgr_obj);
 extern void cod_exit(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== cod_get_base_lib ========
  *  Purpose:
  *      Get handle to the base image DBL library.
@@ -243,6 +252,11 @@ extern int cod_get_sym_value(struct cod_manager *cod_mgr_obj,
 				    char *str_sym, u32 * pul_value);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== cod_init ========
  *  Purpose:
  *      Initialize the COD module's private state.
@@ -257,6 +271,10 @@ extern int cod_get_sym_value(struct cod_manager *cod_mgr_obj,
 extern bool cod_init(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== cod_load_base ========
  *  Purpose:
  *      Load the initial program image, optionally with command-line arguments,

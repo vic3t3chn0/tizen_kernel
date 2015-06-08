@@ -435,6 +435,15 @@ int usbnet_cdc_bind(struct usbnet *dev, struct usb_interface *intf)
 	int				status;
 	struct cdc_state		*info = (void *) &dev->data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	BUILD_BUG_ON((sizeof(((struct usbnet *)0)->data)
+			< sizeof(struct cdc_state)));
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = usbnet_generic_cdc_bind(dev, intf);
 	if (status < 0)
 		return status;
@@ -578,7 +587,15 @@ static const struct usb_device_id	products [] = {
 {
 	USB_DEVICE_AND_INTERFACE_INFO(0x1004, 0x61aa, USB_CLASS_COMM,
 			USB_CDC_SUBCLASS_ETHERNET, USB_CDC_PROTO_NONE),
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.driver_info = 0,
+=======
 	.driver_info = (unsigned long)&wwan_info,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.driver_info = (unsigned long)&wwan_info,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 },
 
 /* Logitech Harmony 900 - uses the pseudo-MDLM (BLAN) driver */
@@ -615,11 +632,20 @@ static const struct usb_device_id	products [] = {
 	.bInterfaceProtocol	= USB_CDC_PROTO_NONE,
 	.driver_info = (unsigned long)&wwan_info,
 }, {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Telit modules */
 	USB_VENDOR_AND_INTERFACE_INFO(0x1bc7, USB_CLASS_COMM,
 			USB_CDC_SUBCLASS_ETHERNET, USB_CDC_PROTO_NONE),
 	.driver_info = (kernel_ulong_t) &wwan_info,
 }, {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	USB_INTERFACE_INFO(USB_CLASS_COMM, USB_CDC_SUBCLASS_ETHERNET,
 			USB_CDC_PROTO_NONE),
 	.driver_info = (unsigned long) &cdc_info,
@@ -653,6 +679,12 @@ static struct usb_driver cdc_driver = {
 	.supports_autosuspend = 1,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(cdc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init cdc_init(void)
 {
@@ -668,6 +700,10 @@ static void __exit cdc_exit(void)
  	usb_deregister(&cdc_driver);
 }
 module_exit(cdc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("David Brownell");
 MODULE_DESCRIPTION("USB CDC Ethernet devices");

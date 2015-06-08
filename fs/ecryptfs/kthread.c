@@ -152,8 +152,12 @@ int ecryptfs_privileged_open(struct file **lower_file,
 <<<<<<< HEAD
 	if (flags & O_RDONLY) {
 =======
+<<<<<<< HEAD
+	if (flags & O_RDONLY) {
+=======
 	if ((flags & O_ACCMODE) == O_RDONLY) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = PTR_ERR((*lower_file));
 		goto out;
 	}

@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include <linux/pm_qos.h>
 =======
+<<<<<<< HEAD
+#include <linux/pm_qos.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/mux.h>
 
@@ -41,7 +45,12 @@
 #define OMAP_UART_SCR_TX_EMPTY	0x08
 
 =======
+<<<<<<< HEAD
+#define OMAP_UART_SCR_TX_EMPTY	0x08
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* WER = 0x7F
  * Enable module level wakeup in WER reg
  */
@@ -62,13 +71,19 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define RX_TIMEOUT		(3 * HZ)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP_MAX_HSUART_PORTS	4
 
 #define MSR_SAVE_FLAGS		UART_MSR_ANY_DELTA
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UART_ERRATA_i202_MDR1_ACCESS	BIT(0)
 #define UART_ERRATA_i291_DMA_FORCEIDLE	BIT(1)
 
@@ -86,6 +101,8 @@ struct omap_uart_port_info {
 	void (*set_forceidle)(struct platform_device *);
 	void (*set_noidle)(struct platform_device *);
 	void (*enable_wakeup)(struct platform_device *, bool);
+<<<<<<< HEAD
+=======
 =======
 struct omap_uart_port_info {
 	bool			dma_enabled;	/* To specify DMA Mode */
@@ -95,6 +112,7 @@ struct omap_uart_port_info {
 	unsigned long		irqflags;	/* request_irq flags */
 	upf_t			flags;		/* UPF_* flags */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct uart_omap_dma {
@@ -123,9 +141,15 @@ struct uart_omap_dma {
 	unsigned int		rx_poll_rate;
 	unsigned int		rx_timeout;
 =======
+<<<<<<< HEAD
+	unsigned int		rx_buf_size;
+	unsigned int		rx_poll_rate;
+	unsigned int		rx_timeout;
+=======
 	int			rx_buf_size;
 	int			rx_timeout;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct uart_omap_port {
@@ -139,12 +163,18 @@ struct uart_omap_port {
 	unsigned char		fcr;
 	unsigned char		efr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char		dll;
 	unsigned char		dlh;
 	unsigned char		mdr1;
 	unsigned char		scr;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int			use_dma;
 	/*
@@ -157,6 +187,9 @@ struct uart_omap_port {
 	char			name[20];
 	unsigned long		port_activity;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			context_loss_cnt;
 	u32			errata;
 	u8			wakeups_enabled;
@@ -165,8 +198,11 @@ struct uart_omap_port {
 	u32			latency;
 	u32			calc_latency;
 	struct work_struct	qos_work;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __OMAP_SERIAL_H__ */

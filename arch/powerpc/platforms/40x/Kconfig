@@ -1,5 +1,7 @@
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #config BUBINGA
 #	bool "Bubinga"
 #	depends on 40x
@@ -17,6 +19,7 @@
 #	  This option enables support for the CPCI405 board.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ACADIA
 	bool "Acadia"
 	depends on 40x
@@ -37,6 +40,8 @@ config EP405
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config HCU4
 	bool "Hcu4"
 	depends on 40x
@@ -46,6 +51,7 @@ config HCU4
 	  This option enables support for the Nestal Maschinen HCU4 board.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HOTFOOT
         bool "Hotfoot"
 	depends on 40x
@@ -81,6 +87,8 @@ config MAKALU
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #config SYCAMORE
 #	bool "Sycamore"
 #	depends on 40x
@@ -90,6 +98,7 @@ config MAKALU
 #	  This option enables support for the IBM PPC405GPr evaluation board.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config WALNUT
 	bool "Walnut"
 	depends on 40x
@@ -118,6 +127,9 @@ config XILINX_VIRTEX_GENERIC_BOARD
 	  special configuration at board probe time.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config OBS600
 	bool "OpenBlockS 600"
 	depends on 40x
@@ -128,8 +140,11 @@ config OBS600
 	  This option enables support for PlatHome OpenBlockS 600 server
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config PPC40x_SIMPLE
 	bool "Simple PowerPC 40x board support"
 	depends on 40x
@@ -139,12 +154,15 @@ config PPC40x_SIMPLE
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # 40x specific CPU modules, selected based on the board above.
 config NP405H
 	bool
 	#depends on ASH
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # OAK doesn't exist but wanted to keep this around for any future 403GCX boards
 config 403GCX
 	bool
@@ -158,8 +176,12 @@ config 405GP
 <<<<<<< HEAD
 	select IBM_EMAC_ZMII
 =======
+<<<<<<< HEAD
+	select IBM_EMAC_ZMII
+=======
 	select IBM_NEW_EMAC_ZMII
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config 405EP
 	bool
@@ -167,6 +189,9 @@ config 405EP
 config 405EX
 	bool
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IBM_EMAC_EMAC4
 	select IBM_EMAC_RGMII
 
@@ -175,6 +200,8 @@ config 405EZ
 	select IBM_EMAC_NO_FLOW_CTRL
 	select IBM_EMAC_MAL_CLR_ICINTSTAT
 	select IBM_EMAC_MAL_COMMON_ERR
+<<<<<<< HEAD
+=======
 =======
 	select IBM_NEW_EMAC_EMAC4
 	select IBM_NEW_EMAC_RGMII
@@ -185,6 +212,7 @@ config 405EZ
 	select IBM_NEW_EMAC_MAL_CLR_ICINTSTAT
 	select IBM_NEW_EMAC_MAL_COMMON_ERR
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config 405GPR
 	bool
@@ -227,6 +255,9 @@ config IBM405_ERR51
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config APM8018X
 	bool "APM8018X"
 	depends on 40x
@@ -235,6 +266,8 @@ config APM8018X
 	help
 	  This option enables support for the AppliedMicro APM8018X evaluation
 	  board.
+<<<<<<< HEAD
+=======
 =======
 #config BIOS_FIXUP
 #	bool
@@ -250,3 +283,4 @@ config APM8018X
 #	depends on !STB03xxx && PPC4xx_DMA
 #	default y
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

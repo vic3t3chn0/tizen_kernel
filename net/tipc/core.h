@@ -50,8 +50,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardirq.h>
 #include <linux/netdevice.h>
 #include <linux/in.h>
@@ -68,6 +72,8 @@ struct print_buf;	/* log.h */
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * TIPC sanity test macros
  */
 
@@ -75,6 +81,7 @@ struct print_buf;	/* log.h */
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * TIPC system monitoring code
  */
 
@@ -145,6 +152,8 @@ void tipc_msg_dbg(struct print_buf *, struct tipc_msg *, const char *);
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * TIPC operating mode routines
  */
 #define TIPC_NOT_RUNNING  0
@@ -153,6 +162,7 @@ void tipc_msg_dbg(struct print_buf *, struct tipc_msg *, const char *);
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Global configuration variables
  */
 
@@ -169,8 +179,11 @@ extern int tipc_remote_management;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int tipc_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int tipc_random;
 extern const char tipc_alphabet[];
 
@@ -189,6 +202,8 @@ extern void tipc_socket_stop(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int delimit(int val, int min, int max)
 {
 	if (val > max)
@@ -200,6 +215,7 @@ static inline int delimit(int val, int min, int max)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * TIPC timer and signal code
  */
@@ -303,6 +319,8 @@ extern struct sk_buff *tipc_buf_acquire(u32 size);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * buf_discard - frees a TIPC message buffer
  * @skb: message buffer
@@ -328,4 +346,5 @@ static inline int buf_linearize(struct sk_buff *skb)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

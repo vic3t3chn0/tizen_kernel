@@ -49,6 +49,14 @@
 		for max gain, 0x14 for minimal gain.
 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "pac7311"
 
 #include <linux/input.h>
@@ -276,8 +284,18 @@ static void reg_w_buf(struct gspca_dev *gspca_dev,
 			index, gspca_dev->usb_buf, len,
 			500);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_w_buf() failed index 0x%02x, error %d\n",
+		       index, ret);
+=======
 		err("reg_w_buf() failed index 0x%02x, error %d",
 			index, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_w_buf() failed index 0x%02x, error %d",
+			index, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -299,8 +317,18 @@ static void reg_w(struct gspca_dev *gspca_dev,
 			0, index, gspca_dev->usb_buf, 1,
 			500);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_w() failed index 0x%02x, value 0x%02x, error %d\n",
+		       index, value, ret);
+=======
 		err("reg_w() failed index 0x%02x, value 0x%02x, error %d",
 			index, value, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_w() failed index 0x%02x, value 0x%02x, error %d",
+			index, value, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -334,9 +362,20 @@ static void reg_w_page(struct gspca_dev *gspca_dev,
 				0, index, gspca_dev->usb_buf, 1,
 				500);
 		if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("reg_w_page() failed index 0x%02x, value 0x%02x, error %d\n",
+			       index, page[index], ret);
+=======
 			err("reg_w_page() failed index 0x%02x, "
 			"value 0x%02x, error %d",
 				index, page[index], ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("reg_w_page() failed index 0x%02x, "
+			"value 0x%02x, error %d",
+				index, page[index], ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			gspca_dev->usb_err = ret;
 			break;
 		}
@@ -867,6 +906,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -879,3 +924,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -27,8 +27,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/core.h>
 #include <sound/control.h>
@@ -46,9 +50,14 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 static bool precise_ptr[SNDRV_CARDS];			/* Enable precise pointer */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
+static bool precise_ptr[SNDRV_CARDS];			/* Enable precise pointer */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 static int precise_ptr[SNDRV_CARDS];			/* Enable precise pointer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for RME Digi9652 (Hammerfall) soundcard.");
@@ -2491,8 +2500,12 @@ static int __devinit snd_rme9652_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, rme9652)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, rme9652)) {
+=======
 			"rme9652", rme9652)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to request IRQ %d\n", pci->irq);
 		return -EBUSY;
 	}
@@ -2648,8 +2661,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name	  = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name	  = KBUILD_MODNAME,
+=======
 	.name	  = "RME Digi9652 (Hammerfall)",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_rme9652_ids,
 	.probe	  = snd_rme9652_probe,
 	.remove	  = __devexit_p(snd_rme9652_remove),

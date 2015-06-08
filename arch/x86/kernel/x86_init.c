@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <asm/mach_traps.h>
 =======
+<<<<<<< HEAD
+#include <asm/mach_traps.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __cpuinit x86_init_noop(void) { }
 void __init x86_init_uint_noop(unsigned int unused) { }
@@ -34,7 +38,11 @@ void iommu_shutdown_noop(void) { }
 <<<<<<< HEAD
 void wallclock_init_noop(void) { }
 =======
+<<<<<<< HEAD
+void wallclock_init_noop(void) { }
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The platform setup functions are preset with the default functions
@@ -100,7 +108,11 @@ struct x86_cpuinit_ops x86_cpuinit __cpuinitdata = {
 <<<<<<< HEAD
 	.early_percpu_clock_init	= x86_init_noop,
 =======
+<<<<<<< HEAD
+	.early_percpu_clock_init	= x86_init_noop,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.setup_percpu_clockev		= setup_secondary_APIC_clock,
 };
 
@@ -112,20 +124,30 @@ struct x86_platform_ops x86_platform = {
 <<<<<<< HEAD
 	.wallclock_init			= wallclock_init_noop,
 =======
+<<<<<<< HEAD
+	.wallclock_init			= wallclock_init_noop,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_wallclock			= mach_get_cmos_time,
 	.set_wallclock			= mach_set_rtc_mmss,
 	.iommu_shutdown			= iommu_shutdown_noop,
 	.is_untracked_pat_range		= is_ISA_range,
 	.nmi_init			= default_nmi_init,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_nmi_reason			= default_get_nmi_reason,
 	.i8042_detect			= default_i8042_detect,
 	.save_sched_clock_state 	= tsc_save_sched_clock_state,
 	.restore_sched_clock_state 	= tsc_restore_sched_clock_state,
+<<<<<<< HEAD
+=======
 =======
 	.i8042_detect			= default_i8042_detect
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 EXPORT_SYMBOL_GPL(x86_platform);
@@ -136,5 +158,9 @@ struct x86_msi_ops x86_msi = {
 <<<<<<< HEAD
 	.restore_msi_irqs = default_restore_msi_irqs,
 =======
+<<<<<<< HEAD
+	.restore_msi_irqs = default_restore_msi_irqs,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

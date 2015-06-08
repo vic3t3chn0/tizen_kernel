@@ -10,7 +10,12 @@
 #include <linux/platform_data/macb.h>
 #include <linux/platform_data/atmel.h>
 =======
+<<<<<<< HEAD
+#include <linux/platform_data/macb.h>
+#include <linux/platform_data/atmel.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GPIO_PIN_NONE	(-1)
 
@@ -51,6 +56,10 @@ struct platform_device *at32_add_device_usart(unsigned int id);
 struct platform_device *
 at32_add_device_eth(unsigned int id, struct macb_platform_data *data);
 =======
+<<<<<<< HEAD
+struct platform_device *
+at32_add_device_eth(unsigned int id, struct macb_platform_data *data);
+=======
 struct eth_platform_data {
 	u32	phy_mask;
 	u8	is_rmii;
@@ -58,6 +67,7 @@ struct eth_platform_data {
 struct platform_device *
 at32_add_device_eth(unsigned int id, struct eth_platform_data *data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct spi_board_info;
 struct platform_device *
@@ -131,6 +141,8 @@ at32_add_device_cf(unsigned int id, unsigned int extint,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* NAND / SmartMedia */
 struct atmel_nand_data {
 	int	enable_pin;	/* chip enable */
@@ -143,6 +155,7 @@ struct atmel_nand_data {
 	struct mtd_partition *(*partition_info)(int size, int *num_partitions);
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_device *
 at32_add_device_nand(unsigned int id, struct atmel_nand_data *data);
 

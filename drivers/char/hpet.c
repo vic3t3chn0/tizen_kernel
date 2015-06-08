@@ -36,7 +36,14 @@
 #include <linux/io.h>
 
 #include <asm/current.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <asm/div64.h>
 
@@ -374,14 +381,42 @@ static int hpet_mmap(struct file *file, struct vm_area_struct *vma)
 	struct hpet_dev *devp;
 	unsigned long addr;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (((vma->vm_end - vma->vm_start) != PAGE_SIZE) || vma->vm_pgoff)
+		return -EINVAL;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	devp = file->private_data;
 	addr = devp->hd_hpets->hp_hpet_phys;
 
 	if (addr & (PAGE_SIZE - 1))
 		return -ENOSYS;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	vma->vm_flags |= VM_IO;
+	vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
+
+	if (io_remap_pfn_range(vma, vma->vm_start, addr >> PAGE_SHIFT,
+					PAGE_SIZE, vma->vm_page_prot)) {
+		printk(KERN_ERR "%s: io_remap_pfn_range failed\n",
+			__func__);
+		return -EAGAIN;
+	}
+
+	return 0;
+=======
 	vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
 	return vm_iomap_memory(vma, addr, PAGE_SIZE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
+	return vm_iomap_memory(vma, addr, PAGE_SIZE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	return -ENOSYS;
 #endif
@@ -895,8 +930,18 @@ int hpet_alloc(struct hpet_data *hdp)
 		hpetp->hp_which, hdp->hd_phys_address,
 		hpetp->hp_ntimer > 1 ? "s" : "");
 	for (i = 0; i < hpetp->hp_ntimer; i++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_CONT "%s %d", i > 0 ? "," : "", hdp->hd_irq[i]);
+	printk(KERN_CONT "\n");
+=======
 		printk("%s %d", i > 0 ? "," : "", hdp->hd_irq[i]);
 	printk("\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk("%s %d", i > 0 ? "," : "", hdp->hd_irq[i]);
+	printk("\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	temp = hpetp->hp_tick_freq;
 	remainder = do_div(temp, 1000000);
@@ -940,7 +985,15 @@ int hpet_alloc(struct hpet_data *hdp)
 #ifdef CONFIG_IA64
 	if (!hpet_clocksource) {
 		hpet_mctr = (void __iomem *)&hpetp->hp_hpet->hpet_mc;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		clocksource_hpet.archdata.fsys_mmio = hpet_mctr;
+=======
 		CLKSRC_FSYS_MMIO_SET(clocksource_hpet.fsys_mmio, hpet_mctr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		CLKSRC_FSYS_MMIO_SET(clocksource_hpet.fsys_mmio, hpet_mctr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clocksource_register_hz(&clocksource_hpet, hpetp->hp_tick_freq);
 		hpetp->hp_clocksource = &clocksource_hpet;
 		hpet_clocksource = &clocksource_hpet;

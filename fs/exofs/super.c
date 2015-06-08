@@ -38,7 +38,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/exportfs.h>
 #include <linux/slab.h>
 
@@ -48,7 +52,12 @@
 #define EXOFS_DBGMSG2(M...) do {} while (0)
 
 =======
+<<<<<<< HEAD
+#define EXOFS_DBGMSG2(M...) do {} while (0)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /******************************************************************************
  * MOUNT OPTIONS
  *****************************************************************************/
@@ -174,8 +183,11 @@ static void exofs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(exofs_inode_cachep, exofs_i(inode));
 }
 
@@ -221,6 +233,9 @@ static void destroy_inodecache(void)
 
 /******************************************************************************
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Some osd helpers
  *****************************************************************************/
 void exofs_make_credential(u8 cred_a[OSD_CAP_LEN], const struct osd_obj_id *obj)
@@ -263,12 +278,15 @@ out:
 		      _LLU(obj->id), _LLU(offset), _LLU(length), od, ret);
 	return ret;
 }
+<<<<<<< HEAD
+=======
 =======
  * SUPERBLOCK FUNCTIONS
  *****************************************************************************/
 static const struct super_operations exofs_sops;
 static const struct export_operations exofs_export_ops;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct osd_attr g_attr_sb_stats = ATTR_DEF(
 	EXOFS_APAGE_SB_DATA,
@@ -281,6 +299,9 @@ static int __sbi_read_stats(struct exofs_sb_info *sbi)
 		[0] = g_attr_sb_stats,
 	};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ore_io_state *ios;
 	int ret;
 
@@ -294,6 +315,8 @@ static int __sbi_read_stats(struct exofs_sb_info *sbi)
 	ios->in_attr_len = ARRAY_SIZE(attrs);
 
 	ret = ore_read(ios);
+<<<<<<< HEAD
+=======
 =======
 	struct exofs_io_state *ios;
 	int ret;
@@ -311,6 +334,7 @@ static int __sbi_read_stats(struct exofs_sb_info *sbi)
 
 	ret = exofs_sbi_read(ios);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(ret)) {
 		EXOFS_ERR("Error reading super_block stats => %d\n", ret);
 		goto out;
@@ -338,6 +362,9 @@ static int __sbi_read_stats(struct exofs_sb_info *sbi)
 
 out:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ore_put_io_state(ios);
 	return ret;
 }
@@ -345,6 +372,8 @@ out:
 static void stats_done(struct ore_io_state *ios, void *p)
 {
 	ore_put_io_state(ios);
+<<<<<<< HEAD
+=======
 =======
 	exofs_put_io_state(ios);
 	return ret;
@@ -354,6 +383,7 @@ static void stats_done(struct exofs_io_state *ios, void *p)
 {
 	exofs_put_io_state(ios);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Good thanks nothing to do anymore */
 }
 
@@ -364,12 +394,17 @@ int exofs_sbi_write_stats(struct exofs_sb_info *sbi)
 		[0] = g_attr_sb_stats,
 	};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ore_io_state *ios;
 	int ret;
 
 	ret = ore_get_io_state(&sbi->layout, &sbi->oc, &ios);
 	if (unlikely(ret)) {
 		EXOFS_ERR("%s: ore_get_io_state failed.\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 	struct exofs_io_state *ios;
 	int ret;
@@ -378,6 +413,7 @@ int exofs_sbi_write_stats(struct exofs_sb_info *sbi)
 	if (unlikely(ret)) {
 		EXOFS_ERR("%s: exofs_get_io_state failed.\n", __func__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -388,30 +424,43 @@ int exofs_sbi_write_stats(struct exofs_sb_info *sbi)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	ios->cred = sbi->s_cred;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ios->done = stats_done;
 	ios->private = sbi;
 	ios->out_attr = attrs;
 	ios->out_attr_len = ARRAY_SIZE(attrs);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ore_write(ios);
 	if (unlikely(ret)) {
 		EXOFS_ERR("%s: ore_write failed.\n", __func__);
 		ore_put_io_state(ios);
+<<<<<<< HEAD
+=======
 =======
 	ret = exofs_sbi_write(ios);
 	if (unlikely(ret)) {
 		EXOFS_ERR("%s: exofs_sbi_write failed.\n", __func__);
 		exofs_put_io_state(ios);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /******************************************************************************
  * SUPERBLOCK FUNCTIONS
  *****************************************************************************/
@@ -428,6 +477,8 @@ static int exofs_sync_fs(struct super_block *sb, int wait)
 	struct ore_comp one_comp;
 	struct ore_components oc;
 	struct ore_io_state *ios;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Write the superblock to the OSD
@@ -438,6 +489,7 @@ int exofs_sync_fs(struct super_block *sb, int wait)
 	struct exofs_fscb *fscb;
 	struct exofs_io_state *ios;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = -ENOMEM;
 
 	fscb = kmalloc(sizeof(*fscb), GFP_KERNEL);
@@ -454,13 +506,19 @@ int exofs_sync_fs(struct super_block *sb, int wait)
 	 * the writeable info is set in exofs_sbi_write_stats() above.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	exofs_init_comps(&oc, &one_comp, sbi, EXOFS_SUPER_ID);
 
 	ret = ore_get_io_state(&sbi->layout, &oc, &ios);
+<<<<<<< HEAD
+=======
 =======
 	ret = exofs_get_io_state(&sbi->layout, &ios);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(ret))
 		goto out;
 
@@ -472,19 +530,28 @@ int exofs_sync_fs(struct super_block *sb, int wait)
 <<<<<<< HEAD
 	fscb->s_numfiles = cpu_to_le64(sbi->s_numfiles);
 =======
+<<<<<<< HEAD
+	fscb->s_numfiles = cpu_to_le64(sbi->s_numfiles);
+=======
 	fscb->s_numfiles = cpu_to_le32(sbi->s_numfiles);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fscb->s_magic = cpu_to_le16(sb->s_magic);
 	fscb->s_newfs = 0;
 	fscb->s_version = EXOFS_FSCB_VER;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ios->offset = 0;
 	ios->kern_buff = fscb;
 
 	ret = ore_write(ios);
 	if (unlikely(ret))
 		EXOFS_ERR("%s: ore_write failed.\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 	ios->obj.id = EXOFS_SUPER_ID;
 	ios->offset = 0;
@@ -495,6 +562,7 @@ int exofs_sync_fs(struct super_block *sb, int wait)
 	if (unlikely(ret))
 		EXOFS_ERR("%s: exofs_sbi_write failed.\n", __func__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		sb->s_dirt = 0;
 
@@ -505,8 +573,12 @@ out:
 <<<<<<< HEAD
 	ore_put_io_state(ios);
 =======
+<<<<<<< HEAD
+	ore_put_io_state(ios);
+=======
 	exofs_put_io_state(ios);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(fscb);
 	return ret;
 }
@@ -529,6 +601,9 @@ static void _exofs_print_device(const char *msg, const char *dev_path,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void exofs_free_sbi(struct exofs_sb_info *sbi)
 {
 	unsigned numdevs = sbi->oc.numdevs;
@@ -543,6 +618,8 @@ static void exofs_free_sbi(struct exofs_sb_info *sbi)
 		}
 	}
 	kfree(sbi->oc.ods);
+<<<<<<< HEAD
+=======
 =======
 void exofs_free_sbi(struct exofs_sb_info *sbi)
 {
@@ -556,6 +633,7 @@ void exofs_free_sbi(struct exofs_sb_info *sbi)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(sbi);
 }
 
@@ -586,9 +664,14 @@ static void exofs_put_super(struct super_block *sb)
 	_exofs_print_device("Unmounting", NULL, ore_comp_dev(&sbi->oc, 0),
 			    sbi->one_comp.obj.partition);
 =======
+<<<<<<< HEAD
+	_exofs_print_device("Unmounting", NULL, ore_comp_dev(&sbi->oc, 0),
+			    sbi->one_comp.obj.partition);
+=======
 	_exofs_print_device("Unmounting", NULL, sbi->layout.s_ods[0],
 			    sbi->layout.s_pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bdi_destroy(&sbi->bdi);
 	exofs_free_sbi(sbi);
@@ -599,6 +682,9 @@ static int _read_and_match_data_map(struct exofs_sb_info *sbi, unsigned numdevs,
 				    struct exofs_device_table *dt)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	sbi->layout.stripe_unit =
@@ -627,6 +713,8 @@ static int _read_and_match_data_map(struct exofs_sb_info *sbi, unsigned numdevs,
 }
 
 static unsigned __ra_pages(struct ore_layout *layout)
+<<<<<<< HEAD
+=======
 =======
 	u64 stripe_length;
 
@@ -704,6 +792,7 @@ static unsigned __ra_pages(struct ore_layout *layout)
 
 static unsigned __ra_pages(struct exofs_layout *layout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const unsigned _MIN_RA = 32; /* min 128K read-ahead */
 	unsigned ra_pages = layout->group_width * layout->stripe_unit /
@@ -729,8 +818,13 @@ static int exofs_devs_2_odi(struct exofs_dt_device_info *dt_dev,
 	if (likely(odi->systemid_len))
 		memcpy(odi->systemid, dt_dev->systemid, OSD_SYSTEMID_LEN);
 =======
+<<<<<<< HEAD
+	if (likely(odi->systemid_len))
+		memcpy(odi->systemid, dt_dev->systemid, OSD_SYSTEMID_LEN);
+=======
 	memcpy(odi->systemid, dt_dev->systemid, odi->systemid_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	odi->osdname_len = le32_to_cpu(dt_dev->osdname_len);
 	odi->osdname = dt_dev->osdname;
@@ -752,6 +846,9 @@ static int exofs_devs_2_odi(struct exofs_dt_device_info *dt_dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __alloc_dev_table(struct exofs_sb_info *sbi, unsigned numdevs,
 		      struct exofs_dev **peds)
 {
@@ -786,6 +883,8 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info *sbi,
 	struct ore_comp comp;
 	struct exofs_device_table *dt;
 	struct exofs_dev *eds;
+<<<<<<< HEAD
+=======
 =======
 static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 				       unsigned table_count)
@@ -796,6 +895,7 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 				 .id = EXOFS_DEVTABLE_ID};
 	struct exofs_device_table *dt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned table_bytes = table_count * sizeof(dt->dt_dev_table[0]) +
 					     sizeof(*dt);
 	unsigned numdevs, i;
@@ -809,6 +909,9 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sbi->oc.numdevs = 0;
 
 	comp.obj.partition = sbi->one_comp.obj.partition;
@@ -817,12 +920,15 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 
 	ret = exofs_read_kern(fscb_od, comp.cred, &comp.obj, 0, dt,
 			      table_bytes);
+<<<<<<< HEAD
+=======
 =======
 	fscb_od = sbi->layout.s_ods[0];
 	sbi->layout.s_ods[0] = NULL;
 	sbi->layout.s_numdevs = 0;
 	ret = exofs_read_kern(fscb_od, sbi->s_cred, &obj, 0, dt, table_bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(ret)) {
 		EXOFS_ERR("ERROR: reading device table\n");
 		goto out;
@@ -840,6 +946,9 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = __alloc_dev_table(sbi, numdevs, &eds);
 	if (unlikely(ret))
 		goto out;
@@ -850,6 +959,8 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 	 */
 	memcpy(&sbi->oc.ods[numdevs], &sbi->oc.ods[0],
 		(numdevs - 1) * sizeof(sbi->oc.ods[0]));
+<<<<<<< HEAD
+=======
 =======
 	if (likely(numdevs > 1)) {
 		unsigned size = numdevs * sizeof(sbi->layout.s_ods[0]);
@@ -864,6 +975,7 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 		*psbi = sbi;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < numdevs; i++) {
 		struct exofs_fscb fscb;
@@ -884,7 +996,13 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 		eds[i].did = i;
 
 =======
+<<<<<<< HEAD
+		/* the exofs id is currently the table index */
+		eds[i].did = i;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* On all devices the device table is identical. The user can
 		 * specify any one of the participating devices on the command
 		 * line. We always keep them in device-table order.
@@ -894,9 +1012,14 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 			eds[i].ored.od = fscb_od;
 			++sbi->oc.numdevs;
 =======
+<<<<<<< HEAD
+			eds[i].ored.od = fscb_od;
+			++sbi->oc.numdevs;
+=======
 			sbi->layout.s_ods[i] = fscb_od;
 			++sbi->layout.s_numdevs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fscb_od = NULL;
 			continue;
 		}
@@ -913,9 +1036,14 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 		eds[i].ored.od = od;
 		++sbi->oc.numdevs;
 =======
+<<<<<<< HEAD
+		eds[i].ored.od = od;
+		++sbi->oc.numdevs;
+=======
 		sbi->layout.s_ods[i] = od;
 		++sbi->layout.s_numdevs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Read the fscb of the other devices to make sure the FS
 		 * partition is there.
@@ -923,8 +1051,12 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 <<<<<<< HEAD
 		ret = exofs_read_kern(od, comp.cred, &comp.obj, 0, &fscb,
 =======
+<<<<<<< HEAD
+		ret = exofs_read_kern(od, comp.cred, &comp.obj, 0, &fscb,
+=======
 		ret = exofs_read_kern(od, sbi->s_cred, &obj, 0, &fscb,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      sizeof(fscb));
 		if (unlikely(ret)) {
 			EXOFS_ERR("ERROR: Malformed participating device "
@@ -942,11 +1074,16 @@ static int exofs_read_lookup_dev_table(struct exofs_sb_info **psbi,
 out:
 	kfree(dt);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(fscb_od && !ret)) {
 			EXOFS_ERR("ERROR: Bad device-table container device not present\n");
 			osduld_put_device(fscb_od);
 			return -EINVAL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (unlikely(!ret && fscb_od)) {
 		EXOFS_ERR(
@@ -956,6 +1093,7 @@ out:
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -972,8 +1110,12 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 	struct ore_comp comp;
 =======
+<<<<<<< HEAD
+	struct ore_comp comp;
+=======
 	struct osd_obj_id obj;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned table_count;
 	int ret;
 
@@ -983,11 +1125,14 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ret = bdi_setup_and_register(&sbi->bdi, "exofs", BDI_CAP_MAP_COPY);
 	if (ret)
 		goto free_bdi;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* use mount options to fill superblock */
 	if (opts->is_osdname) {
 		struct osd_dev_info odi = {.systemid_len = 0};
@@ -999,7 +1144,12 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 		kfree(opts->dev_name);
 		opts->dev_name = NULL;
 =======
+<<<<<<< HEAD
+		kfree(opts->dev_name);
+		opts->dev_name = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		od = osduld_path_lookup(opts->dev_name);
 	}
@@ -1015,6 +1165,9 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 	sbi->layout.group_depth = -1;
 	sbi->layout.group_count = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sbi->s_timeout = opts->timeout;
 
 	sbi->one_comp.obj.partition = opts->pid;
@@ -1024,6 +1177,8 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 	sbi->oc.single_comp = EC_SINGLE_COMP;
 	sbi->oc.comps = &sbi->one_comp;
 
+<<<<<<< HEAD
+=======
 =======
 	sbi->layout.s_ods[0] = od;
 	sbi->layout.s_numdevs = 1;
@@ -1031,6 +1186,7 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 	sbi->s_timeout = opts->timeout;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* fill in some other data by hand */
 	memset(sb->s_id, 0, sizeof(sb->s_id));
 	strcpy(sb->s_id, "exofs");
@@ -1040,17 +1196,26 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 	sb->s_max_links = EXOFS_LINK_MAX;
 =======
+<<<<<<< HEAD
+	sb->s_max_links = EXOFS_LINK_MAX;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_set(&sbi->s_curr_pending, 0);
 	sb->s_bdev = NULL;
 	sb->s_dev = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	comp.obj.partition = sbi->one_comp.obj.partition;
 	comp.obj.id = EXOFS_SUPER_ID;
 	exofs_make_credential(comp.cred, &comp.obj);
 
 	ret = exofs_read_kern(od, comp.cred, &comp.obj, 0, &fscb, sizeof(fscb));
+<<<<<<< HEAD
+=======
 =======
 	obj.partition = sbi->layout.s_pid;
 	obj.id = EXOFS_SUPER_ID;
@@ -1058,6 +1223,7 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 
 	ret = exofs_read_kern(od, sbi->s_cred, &obj, 0, &fscb, sizeof(fscb));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(ret))
 		goto free_sbi;
 
@@ -1087,6 +1253,9 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 	table_count = le64_to_cpu(fscb.s_dev_table_count);
 	if (table_count) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = exofs_read_lookup_dev_table(sbi, od, table_count);
 		if (unlikely(ret))
 			goto free_sbi;
@@ -1098,11 +1267,14 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 			goto free_sbi;
 
 		ore_comp_set_dev(&sbi->oc, 0, od);
+<<<<<<< HEAD
+=======
 =======
 		ret = exofs_read_lookup_dev_table(&sbi, table_count);
 		if (unlikely(ret))
 			goto free_sbi;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	__sbi_read_stats(sbi);
@@ -1123,10 +1295,15 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 	sb->s_root = d_make_root(root);
 	if (!sb->s_root) {
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(root);
+	if (!sb->s_root) {
+=======
 	sb->s_root = d_alloc_root(root);
 	if (!sb->s_root) {
 		iput(root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		EXOFS_ERR("ERROR: get root inode failed\n");
 		ret = -ENOMEM;
 		goto free_sbi;
@@ -1142,6 +1319,9 @@ static int exofs_fill_super(struct super_block *sb, void *data, int silent)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = bdi_setup_and_register(&sbi->bdi, "exofs", BDI_CAP_MAP_COPY);
 	if (ret) {
 		EXOFS_DBGMSG("Failed to bdi_setup_and_register\n");
@@ -1159,6 +1339,8 @@ free_sbi:
 	EXOFS_ERR("Unable to mount exofs on %s pid=0x%llx err=%d\n",
 		  opts->dev_name, sbi->one_comp.obj.partition, ret);
 	exofs_free_sbi(sbi);
+<<<<<<< HEAD
+=======
 =======
 	_exofs_print_device("Mounting", opts->dev_name, sbi->layout.s_ods[0],
 			    sbi->layout.s_pid);
@@ -1175,6 +1357,7 @@ free_bdi:
 	if (opts->is_osdname)
 		kfree(opts->dev_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1208,8 +1391,12 @@ static int exofs_statfs(struct dentry *dentry, struct kstatfs *buf)
 <<<<<<< HEAD
 	struct ore_io_state *ios;
 =======
+<<<<<<< HEAD
+	struct ore_io_state *ios;
+=======
 	struct exofs_io_state *ios;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct osd_attr attrs[] = {
 		ATTR_DEF(OSD_APAGE_PARTITION_QUOTAS,
 			OSD_ATTR_PQ_CAPACITY_QUOTA, sizeof(__be64)),
@@ -1219,6 +1406,9 @@ static int exofs_statfs(struct dentry *dentry, struct kstatfs *buf)
 	uint64_t capacity = ULLONG_MAX;
 	uint64_t used = ULLONG_MAX;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	ret = ore_get_io_state(&sbi->layout, &sbi->oc, &ios);
@@ -1231,6 +1421,8 @@ static int exofs_statfs(struct dentry *dentry, struct kstatfs *buf)
 	ios->in_attr_len = ARRAY_SIZE(attrs);
 
 	ret = ore_read(ios);
+<<<<<<< HEAD
+=======
 =======
 	uint8_t cred_a[OSD_CAP_LEN];
 	int ret;
@@ -1248,6 +1440,7 @@ static int exofs_statfs(struct dentry *dentry, struct kstatfs *buf)
 
 	ret = exofs_sbi_read(ios);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(ret))
 		goto out;
 
@@ -1279,8 +1472,12 @@ out:
 <<<<<<< HEAD
 	ore_put_io_state(ios);
 =======
+<<<<<<< HEAD
+	ore_put_io_state(ios);
+=======
 	exofs_put_io_state(ios);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1302,8 +1499,12 @@ static const struct super_operations exofs_sops = {
 <<<<<<< HEAD
 static struct dentry *exofs_get_parent(struct dentry *child)
 =======
+<<<<<<< HEAD
+static struct dentry *exofs_get_parent(struct dentry *child)
+=======
 struct dentry *exofs_get_parent(struct dentry *child)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long ino = exofs_parent_ino(child);
 

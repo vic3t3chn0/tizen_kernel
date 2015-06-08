@@ -11,15 +11,21 @@
 #include <linux/pfn.h>
 #include <linux/pci.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 
 #include <asm/probe_roms.h>
 #include <asm/pci-direct.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/pci-direct.h>
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/e820.h>
 #include <asm/mmzone.h>
 #include <asm/setup.h>
@@ -244,8 +250,12 @@ void __init probe_roms(void)
 <<<<<<< HEAD
 		length = resource_size(&extension_rom_resource);
 =======
+<<<<<<< HEAD
+		length = resource_size(&extension_rom_resource);
+=======
 		length = extension_rom_resource.end - extension_rom_resource.start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (romchecksum(rom, length)) {
 			request_resource(&iomem_resource, &extension_rom_resource);
 			upper = extension_rom_resource.start;

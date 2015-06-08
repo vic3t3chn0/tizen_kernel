@@ -43,12 +43,16 @@
 <<<<<<< HEAD
 int __init omap_pm_if_early_init(void);
 =======
+<<<<<<< HEAD
+int __init omap_pm_if_early_init(void);
+=======
 #ifdef CONFIG_OMAP_PM_NONE
 #define omap_pm_if_early_init() 0
 #else
 int __init omap_pm_if_early_init(void);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * omap_pm_if_init - OMAP PM init code called after clock fw init
@@ -59,12 +63,16 @@ int __init omap_pm_if_early_init(void);
 <<<<<<< HEAD
 int __init omap_pm_if_init(void);
 =======
+<<<<<<< HEAD
+int __init omap_pm_if_init(void);
+=======
 #ifdef CONFIG_OMAP_PM_NONE
 #define omap_pm_if_init() 0
 #else
 int __init omap_pm_if_init(void);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * omap_pm_if_exit - OMAP PM exit code
@@ -363,10 +371,16 @@ unsigned long omap_pm_cpu_get_freq(void);
  */
 int omap_pm_get_dev_context_loss_count(struct device *dev);
 =======
+<<<<<<< HEAD
+ * or negative value upon error.
+ */
+int omap_pm_get_dev_context_loss_count(struct device *dev);
+=======
  * or zero upon error.
  */
 u32 omap_pm_get_dev_context_loss_count(struct device *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void omap_pm_enable_off_mode(void);
 void omap_pm_disable_off_mode(void);

@@ -179,7 +179,11 @@ struct x86_emulate_ops {
 <<<<<<< HEAD
 	void (*set_rflags)(struct x86_emulate_ctxt *ctxt, ulong val);
 =======
+<<<<<<< HEAD
+	void (*set_rflags)(struct x86_emulate_ctxt *ctxt, ulong val);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*cpl)(struct x86_emulate_ctxt *ctxt);
 	int (*get_dr)(struct x86_emulate_ctxt *ctxt, int dr, ulong *dest);
 	int (*set_dr)(struct x86_emulate_ctxt *ctxt, int dr, ulong value);
@@ -188,7 +192,11 @@ struct x86_emulate_ops {
 <<<<<<< HEAD
 	int (*read_pmc)(struct x86_emulate_ctxt *ctxt, u32 pmc, u64 *pdata);
 =======
+<<<<<<< HEAD
+	int (*read_pmc)(struct x86_emulate_ctxt *ctxt, u32 pmc, u64 *pdata);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void (*halt)(struct x86_emulate_ctxt *ctxt);
 	void (*wbinvd)(struct x86_emulate_ctxt *ctxt);
 	int (*fix_hypercall)(struct x86_emulate_ctxt *ctxt);
@@ -241,6 +249,9 @@ struct read_cache {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct x86_emulate_ctxt {
 	struct x86_emulate_ops *ops;
 
@@ -261,9 +272,12 @@ struct x86_emulate_ctxt {
 	struct x86_exception exception;
 
 	/* decode cache */
+<<<<<<< HEAD
+=======
 =======
 struct decode_cache {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 twobyte;
 	u8 b;
 	u8 intercept;
@@ -282,12 +296,18 @@ struct decode_cache {
 	int (*execute)(struct x86_emulate_ctxt *ctxt);
 	int (*check_perm)(struct x86_emulate_ctxt *ctxt);
 =======
+<<<<<<< HEAD
+	u64 d;
+	int (*execute)(struct x86_emulate_ctxt *ctxt);
+	int (*check_perm)(struct x86_emulate_ctxt *ctxt);
+=======
 	unsigned int d;
 	int (*execute)(struct x86_emulate_ctxt *ctxt);
 	int (*check_perm)(struct x86_emulate_ctxt *ctxt);
 	unsigned long regs[NR_VCPU_REGS];
 	unsigned long eip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* modrm */
 	u8 modrm;
 	u8 modrm_mod;
@@ -296,18 +316,26 @@ struct decode_cache {
 	u8 modrm_seg;
 	bool rip_relative;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long _eip;
 	/* Fields above regs are cleared together. */
 	unsigned long regs[NR_VCPU_REGS];
 	struct operand memop;
 	struct operand *memopp;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct fetch_cache fetch;
 	struct read_cache io_read;
 	struct read_cache mem_read;
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 struct x86_emulate_ctxt {
@@ -334,6 +362,7 @@ struct x86_emulate_ctxt {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Repeat String Operation Prefix */
 #define REPE_PREFIX	0xf3
 #define REPNE_PREFIX	0xf2
@@ -432,7 +461,11 @@ int x86_decode_insn(struct x86_emulate_ctxt *ctxt, void *insn, int insn_len);
 <<<<<<< HEAD
 bool x86_page_table_writing_insn(struct x86_emulate_ctxt *ctxt);
 =======
+<<<<<<< HEAD
+bool x86_page_table_writing_insn(struct x86_emulate_ctxt *ctxt);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EMULATION_FAILED -1
 #define EMULATION_OK 0
 #define EMULATION_RESTART 1
@@ -444,9 +477,15 @@ int emulator_task_switch(struct x86_emulate_ctxt *ctxt,
 			 bool has_error_code, u32 error_code);
 int emulate_int_real(struct x86_emulate_ctxt *ctxt, int irq);
 =======
+<<<<<<< HEAD
+			 u16 tss_selector, int idt_index, int reason,
+			 bool has_error_code, u32 error_code);
+int emulate_int_real(struct x86_emulate_ctxt *ctxt, int irq);
+=======
 			 u16 tss_selector, int reason,
 			 bool has_error_code, u32 error_code);
 int emulate_int_real(struct x86_emulate_ctxt *ctxt,
 		     struct x86_emulate_ops *ops, int irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_X86_KVM_X86_EMULATE_H */

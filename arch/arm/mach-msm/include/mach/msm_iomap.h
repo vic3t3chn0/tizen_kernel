@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2013, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2008-2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -42,6 +46,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_DEBUG_UART_SIZE	SZ_4K
 
 #if defined(CONFIG_DEBUG_MSM_UART1) || defined(CONFIG_DEBUG_MSM_UART2) \
@@ -145,6 +152,8 @@
 #include "msm_iomap-samarium.h"
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 #ifdef __ASSEMBLY__
 #define IOMEM(x)	x
@@ -171,5 +180,6 @@
 #define MSM_TMR_BASE		IOMEM(0xF0200000)
 #define MSM_TMR0_BASE		IOMEM(0xF0201000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

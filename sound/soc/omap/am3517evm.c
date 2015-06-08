@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/soc.h>
@@ -49,6 +53,8 @@ static int am3517evm_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Set codec DAI configuration */
 	ret = snd_soc_dai_set_fmt(codec_dai,
 				  SND_SOC_DAIFMT_DSP_B |
@@ -70,6 +76,7 @@ static int am3517evm_hw_params(struct snd_pcm_substream *substream,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set the codec system clock for DAC and ADC */
 	ret = snd_soc_dai_set_sysclk(codec_dai, 0,
 			CODEC_CLOCK, SND_SOC_CLOCK_IN);
@@ -119,6 +126,8 @@ static const struct snd_soc_dapm_route audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int am3517evm_aic23_init(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_soc_codec *codec = rtd->codec;
@@ -142,17 +151,23 @@ static int am3517evm_aic23_init(struct snd_soc_pcm_runtime *rtd)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Digital audio interface glue - connects codec <--> CPU */
 static struct snd_soc_dai_link am3517evm_dai = {
 	.name = "TLV320AIC23",
 	.stream_name = "AIC23",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.cpu_dai_name = "omap-mcbsp.1",
 	.codec_dai_name = "tlv320aic23-hifi",
 	.platform_name = "omap-pcm-audio",
 	.codec_name = "tlv320aic23-codec.2-001a",
 	.dai_fmt = SND_SOC_DAIFMT_DSP_B | SND_SOC_DAIFMT_NB_NF |
 		   SND_SOC_DAIFMT_CBM_CFM,
+<<<<<<< HEAD
+=======
 =======
 	.cpu_dai_name ="omap-mcbsp-dai.0",
 	.codec_dai_name = "tlv320aic23-hifi",
@@ -160,6 +175,7 @@ static struct snd_soc_dai_link am3517evm_dai = {
 	.codec_name = "tlv320aic23-codec.2-001a",
 	.init = am3517evm_aic23_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &am3517evm_ops,
 };
 
@@ -167,6 +183,9 @@ static struct snd_soc_dai_link am3517evm_dai = {
 static struct snd_soc_card snd_soc_am3517evm = {
 	.name = "am3517evm",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner = THIS_MODULE,
 	.dai_link = &am3517evm_dai,
 	.num_links = 1,
@@ -175,10 +194,13 @@ static struct snd_soc_card snd_soc_am3517evm = {
 	.num_dapm_widgets = ARRAY_SIZE(tlv320aic23_dapm_widgets),
 	.dapm_routes = audio_map,
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link = &am3517evm_dai,
 	.num_links = 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *am3517evm_snd_device;

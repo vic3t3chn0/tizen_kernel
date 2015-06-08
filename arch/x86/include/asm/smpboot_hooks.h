@@ -11,14 +11,20 @@ static inline void smpboot_clear_io_apic_irqs(void)
 static inline void smpboot_setup_warm_reset_vector(unsigned long start_eip)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 
 	spin_lock_irqsave(&rtc_lock, flags);
 	CMOS_WRITE(0xa, 0xf);
 	spin_unlock_irqrestore(&rtc_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	CMOS_WRITE(0xa, 0xf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_flush_tlb();
 	pr_debug("1.\n");
 	*((volatile unsigned short *)phys_to_virt(apic->trampoline_phys_high)) =
@@ -35,7 +41,12 @@ static inline void smpboot_restore_warm_reset_vector(void)
 	unsigned long flags;
 
 =======
+<<<<<<< HEAD
+	unsigned long flags;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Install writable page 0 entry to set BIOS data area.
 	 */
@@ -50,8 +61,14 @@ static inline void smpboot_restore_warm_reset_vector(void)
 	CMOS_WRITE(0, 0xf);
 	spin_unlock_irqrestore(&rtc_lock, flags);
 =======
+<<<<<<< HEAD
+	spin_lock_irqsave(&rtc_lock, flags);
+	CMOS_WRITE(0, 0xf);
+	spin_unlock_irqrestore(&rtc_lock, flags);
+=======
 	CMOS_WRITE(0, 0xf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*((volatile u32 *)phys_to_virt(apic->trampoline_phys_low)) = 0;
 }

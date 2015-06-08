@@ -31,7 +31,11 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "sigutil.h"
 
@@ -280,11 +284,15 @@ void do_sigreturn32(struct pt_regs *regs)
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 
 segv:
@@ -388,11 +396,15 @@ asmlinkage void do_rt_sigreturn32(struct pt_regs *regs)
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 segv:
 	force_sig(SIGSEGV, current);
@@ -598,8 +610,12 @@ static int setup_frame32(struct k_sigaction *ka, struct pt_regs *regs,
 <<<<<<< HEAD
 	}	
 =======
+<<<<<<< HEAD
+	}	
+=======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto sigsegv;
 
@@ -811,6 +827,9 @@ static inline int handle_signal32(unsigned long signr, struct k_sigaction *ka,
 <<<<<<< HEAD
 	block_sigmask(ka, signr);
 =======
+<<<<<<< HEAD
+	block_sigmask(ka, signr);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	sigorsets(&current->blocked,&current->blocked,&ka->sa.sa_mask);
 	if (!(ka->sa.sa_flags & SA_NOMASK))
@@ -819,6 +838,7 @@ static inline int handle_signal32(unsigned long signr, struct k_sigaction *ka,
 	spin_unlock_irq(&current->sighand->siglock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tracehook_signal_handler(signr, info, ka, regs, 0);
 
 	return 0;
@@ -906,8 +926,12 @@ void do_signal32(sigset_t *oldset, struct pt_regs * regs)
 <<<<<<< HEAD
 		set_current_blocked(&current->saved_sigmask);
 =======
+<<<<<<< HEAD
+		set_current_blocked(&current->saved_sigmask);
+=======
 		sigprocmask(SIG_SETMASK, &current->saved_sigmask, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

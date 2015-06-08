@@ -41,9 +41,15 @@ static DEFINE_PER_CPU(struct vcpu_runstate_info, xen_runstate_snapshot);
 static DEFINE_PER_CPU(u64, xen_residual_stolen);
 static DEFINE_PER_CPU(u64, xen_residual_blocked);
 =======
+<<<<<<< HEAD
+/* unused ns of stolen and blocked time */
+static DEFINE_PER_CPU(u64, xen_residual_stolen);
+static DEFINE_PER_CPU(u64, xen_residual_blocked);
+=======
 /* unused ns of stolen time */
 static DEFINE_PER_CPU(u64, xen_residual_stolen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* return an consistent snapshot of 64-bit time/counter value */
 static u64 get64(const u64 *p)
@@ -123,8 +129,12 @@ static void do_stolen_accounting(void)
 <<<<<<< HEAD
 	s64 blocked, runnable, offline, stolen;
 =======
+<<<<<<< HEAD
+	s64 blocked, runnable, offline, stolen;
+=======
 	s64 runnable, offline, stolen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cputime_t ticks;
 
 	get_runstate_snapshot(&state);
@@ -137,7 +147,11 @@ static void do_stolen_accounting(void)
 <<<<<<< HEAD
 	blocked = state.time[RUNSTATE_blocked] - snap->time[RUNSTATE_blocked];
 =======
+<<<<<<< HEAD
+	blocked = state.time[RUNSTATE_blocked] - snap->time[RUNSTATE_blocked];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	runnable = state.time[RUNSTATE_runnable] - snap->time[RUNSTATE_runnable];
 	offline = state.time[RUNSTATE_offline] - snap->time[RUNSTATE_offline];
 
@@ -154,6 +168,9 @@ static void do_stolen_accounting(void)
 	__this_cpu_write(xen_residual_stolen, stolen);
 	account_steal_ticks(ticks);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Add the appropriate number of ticks of blocked time,
 	   including any left-overs from last time. */
@@ -165,8 +182,11 @@ static void do_stolen_accounting(void)
 	ticks = iter_div_u64_rem(blocked, NS_PER_TICK, &blocked);
 	__this_cpu_write(xen_residual_blocked, blocked);
 	account_idle_ticks(ticks);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Get the TSC speed from Xen */
@@ -184,15 +204,21 @@ cycle_t xen_clocksource_read(void)
 	cycle_t ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable_notrace();
 	src = &__get_cpu_var(xen_vcpu)->time;
 	ret = pvclock_clocksource_read(src);
 	preempt_enable_notrace();
+<<<<<<< HEAD
+=======
 =======
 	src = &get_cpu_var(xen_vcpu)->time;
 	ret = pvclock_clocksource_read(src);
 	put_cpu_var(xen_vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -223,6 +249,9 @@ static unsigned long xen_get_wallclock(void)
 static int xen_set_wallclock(unsigned long now)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xen_platform_op op;
 	int rc;
 
@@ -239,10 +268,13 @@ static int xen_set_wallclock(unsigned long now)
 	WARN(rc != 0, "XENPF_settime failed: now=%ld\n", now);
 
 	return rc;
+<<<<<<< HEAD
+=======
 =======
 	/* do nothing for domU */
 	return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct clocksource xen_clocksource __read_mostly = {
@@ -526,12 +558,16 @@ static void xen_hvm_setup_cpu_clockevents(void)
 <<<<<<< HEAD
 	xen_setup_timer(cpu);
 =======
+<<<<<<< HEAD
+	xen_setup_timer(cpu);
+=======
 	/*
 	 * xen_setup_timer(cpu) - snprintf is bad in atomic context. Hence
 	 * doing it xen_hvm_cpu_notify (which gets called by smp_init during
 	 * early bootup and also during CPU hotplug events).
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xen_setup_cpu_clockevents();
 }
 

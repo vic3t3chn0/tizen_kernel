@@ -22,10 +22,16 @@
 #include <asm/tlbflush.h>
 #include <asm/traps.h>
 =======
+<<<<<<< HEAD
+#include <asm/mmu_context.h>
+#include <asm/tlbflush.h>
+#include <asm/traps.h>
+=======
 #include <asm/system.h>
 #include <asm/mmu_context.h>
 #include <asm/tlbflush.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int notify_page_fault(struct pt_regs *regs, int trap)
 {
@@ -95,8 +101,12 @@ static noinline int vmalloc_fault(unsigned long address)
 <<<<<<< HEAD
 	if (!(address >= P3SEG && address < P3_ADDR_MAX))
 =======
+<<<<<<< HEAD
+	if (!(address >= P3SEG && address < P3_ADDR_MAX))
+=======
 	if (!(address >= VMALLOC_START && address < P3_ADDR_MAX))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 
 	/*
@@ -173,8 +183,12 @@ asmlinkage void __kprobes do_page_fault(struct pt_regs *regs,
 <<<<<<< HEAD
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
 =======
+<<<<<<< HEAD
+	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
+=======
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, 0, regs, address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we're in an interrupt, have no user context or are running
@@ -225,11 +239,16 @@ good_area:
 	if (fault & VM_FAULT_MAJOR) {
 		tsk->maj_flt++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ, 1,
 				     regs, address);
 	} else {
 		tsk->min_flt++;
 		perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN, 1,
+<<<<<<< HEAD
+=======
 =======
 		perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ, 1, 0,
 				     regs, address);
@@ -237,6 +256,7 @@ good_area:
 		tsk->min_flt++;
 		perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN, 1, 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     regs, address);
 	}
 

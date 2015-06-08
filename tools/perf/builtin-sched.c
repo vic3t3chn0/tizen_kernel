@@ -7,8 +7,14 @@
 #include "util/cache.h"
 #include "util/evsel.h"
 =======
+<<<<<<< HEAD
+#include "util/evlist.h"
+#include "util/cache.h"
+#include "util/evsel.h"
+=======
 #include "util/cache.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "util/symbol.h"
 #include "util/thread.h"
 #include "util/header.h"
@@ -16,7 +22,11 @@
 <<<<<<< HEAD
 #include "util/tool.h"
 =======
+<<<<<<< HEAD
+#include "util/tool.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "util/parse-options.h"
 #include "util/trace-event.h"
@@ -27,7 +37,11 @@
 <<<<<<< HEAD
 #include <sys/resource.h>
 =======
+<<<<<<< HEAD
+#include <sys/resource.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <semaphore.h>
 #include <pthread.h>
@@ -36,8 +50,12 @@
 <<<<<<< HEAD
 static const char		*input_name;
 =======
+<<<<<<< HEAD
+static const char		*input_name;
+=======
 static char			const *input_name = "perf.data";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static char			default_sort_order[] = "avg, max, switch, runtime";
 static const char		*sort_order = default_sort_order;
@@ -744,8 +762,12 @@ struct trace_sched_handler {
 <<<<<<< HEAD
 			     struct machine *,
 =======
+<<<<<<< HEAD
+			     struct machine *,
+=======
 			     struct perf_session *,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     struct event *,
 			     int cpu,
 			     u64 timestamp,
@@ -755,8 +777,12 @@ struct trace_sched_handler {
 <<<<<<< HEAD
 			      struct machine *,
 =======
+<<<<<<< HEAD
+			      struct machine *,
+=======
 			      struct perf_session *,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      struct event *,
 			      int cpu,
 			      u64 timestamp,
@@ -766,8 +792,12 @@ struct trace_sched_handler {
 <<<<<<< HEAD
 			     struct machine *,
 =======
+<<<<<<< HEAD
+			     struct machine *,
+=======
 			     struct perf_session *,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     struct event *,
 			     int cpu,
 			     u64 timestamp,
@@ -783,8 +813,12 @@ struct trace_sched_handler {
 <<<<<<< HEAD
 			   struct machine *machine,
 =======
+<<<<<<< HEAD
+			   struct machine *machine,
+=======
 			   struct perf_session *session,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   struct event *,
 			   int cpu,
 			   u64 timestamp,
@@ -797,8 +831,12 @@ replay_wakeup_event(struct trace_wakeup_event *wakeup_event,
 <<<<<<< HEAD
 		    struct machine *machine __used,
 =======
+<<<<<<< HEAD
+		    struct machine *machine __used,
+=======
 		    struct perf_session *session __used,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    struct event *event,
 		    int cpu __used,
 		    u64 timestamp __used,
@@ -828,8 +866,12 @@ replay_switch_event(struct trace_switch_event *switch_event,
 <<<<<<< HEAD
 		    struct machine *machine __used,
 =======
+<<<<<<< HEAD
+		    struct machine *machine __used,
+=======
 		    struct perf_session *session __used,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    struct event *event,
 		    int cpu,
 		    u64 timestamp,
@@ -1066,8 +1108,12 @@ latency_switch_event(struct trace_switch_event *switch_event,
 <<<<<<< HEAD
 		     struct machine *machine,
 =======
+<<<<<<< HEAD
+		     struct machine *machine,
+=======
 		     struct perf_session *session,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     struct event *event __used,
 		     int cpu,
 		     u64 timestamp,
@@ -1095,9 +1141,14 @@ latency_switch_event(struct trace_switch_event *switch_event,
 	sched_out = machine__findnew_thread(machine, switch_event->prev_pid);
 	sched_in = machine__findnew_thread(machine, switch_event->next_pid);
 =======
+<<<<<<< HEAD
+	sched_out = machine__findnew_thread(machine, switch_event->prev_pid);
+	sched_in = machine__findnew_thread(machine, switch_event->next_pid);
+=======
 	sched_out = perf_session__findnew(session, switch_event->prev_pid);
 	sched_in = perf_session__findnew(session, switch_event->next_pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	out_events = thread_atoms_search(&atom_root, sched_out, &cmp_pid);
 	if (!out_events) {
@@ -1128,8 +1179,12 @@ latency_runtime_event(struct trace_runtime_event *runtime_event,
 <<<<<<< HEAD
 		     struct machine *machine,
 =======
+<<<<<<< HEAD
+		     struct machine *machine,
+=======
 		     struct perf_session *session,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     struct event *event __used,
 		     int cpu,
 		     u64 timestamp,
@@ -1138,8 +1193,12 @@ latency_runtime_event(struct trace_runtime_event *runtime_event,
 <<<<<<< HEAD
 	struct thread *thread = machine__findnew_thread(machine, runtime_event->pid);
 =======
+<<<<<<< HEAD
+	struct thread *thread = machine__findnew_thread(machine, runtime_event->pid);
+=======
 	struct thread *thread = perf_session__findnew(session, runtime_event->pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct work_atoms *atoms = thread_atoms_search(&atom_root, thread, &cmp_pid);
 
 	BUG_ON(cpu >= MAX_CPUS || cpu < 0);
@@ -1159,8 +1218,12 @@ latency_wakeup_event(struct trace_wakeup_event *wakeup_event,
 <<<<<<< HEAD
 		     struct machine *machine,
 =======
+<<<<<<< HEAD
+		     struct machine *machine,
+=======
 		     struct perf_session *session,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     struct event *__event __used,
 		     int cpu __used,
 		     u64 timestamp,
@@ -1177,8 +1240,12 @@ latency_wakeup_event(struct trace_wakeup_event *wakeup_event,
 <<<<<<< HEAD
 	wakee = machine__findnew_thread(machine, wakeup_event->pid);
 =======
+<<<<<<< HEAD
+	wakee = machine__findnew_thread(machine, wakeup_event->pid);
+=======
 	wakee = perf_session__findnew(session, wakeup_event->pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atoms = thread_atoms_search(&atom_root, wakee, &cmp_pid);
 	if (!atoms) {
 		thread_atoms_insert(wakee);
@@ -1215,8 +1282,12 @@ latency_migrate_task_event(struct trace_migrate_task_event *migrate_task_event,
 <<<<<<< HEAD
 		     struct machine *machine,
 =======
+<<<<<<< HEAD
+		     struct machine *machine,
+=======
 		     struct perf_session *session,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     struct event *__event __used,
 		     int cpu __used,
 		     u64 timestamp,
@@ -1235,8 +1306,12 @@ latency_migrate_task_event(struct trace_migrate_task_event *migrate_task_event,
 <<<<<<< HEAD
 	migrant = machine__findnew_thread(machine, migrate_task_event->pid);
 =======
+<<<<<<< HEAD
+	migrant = machine__findnew_thread(machine, migrate_task_event->pid);
+=======
 	migrant = perf_session__findnew(session, migrate_task_event->pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atoms = thread_atoms_search(&atom_root, migrant, &cmp_pid);
 	if (!atoms) {
 		thread_atoms_insert(migrant);
@@ -1432,6 +1507,9 @@ static struct trace_sched_handler *trace_handler;
 
 static void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 process_sched_wakeup_event(struct perf_tool *tool __used,
 			   struct event *event,
 			   struct perf_sample *sample,
@@ -1439,6 +1517,8 @@ process_sched_wakeup_event(struct perf_tool *tool __used,
 			   struct thread *thread)
 {
 	void *data = sample->raw_data;
+<<<<<<< HEAD
+=======
 =======
 process_sched_wakeup_event(void *data, struct perf_session *session,
 			   struct event *event,
@@ -1447,6 +1527,7 @@ process_sched_wakeup_event(void *data, struct perf_session *session,
 			   struct thread *thread __used)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct trace_wakeup_event wakeup_event;
 
 	FILL_COMMON_FIELDS(wakeup_event, event, data);
@@ -1462,9 +1543,14 @@ process_sched_wakeup_event(void *data, struct perf_session *session,
 		trace_handler->wakeup_event(&wakeup_event, machine, event,
 					    sample->cpu, sample->time, thread);
 =======
+<<<<<<< HEAD
+		trace_handler->wakeup_event(&wakeup_event, machine, event,
+					    sample->cpu, sample->time, thread);
+=======
 		trace_handler->wakeup_event(&wakeup_event, session, event,
 					    cpu, timestamp, thread);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1485,8 +1571,12 @@ map_switch_event(struct trace_switch_event *switch_event,
 <<<<<<< HEAD
 		 struct machine *machine,
 =======
+<<<<<<< HEAD
+		 struct machine *machine,
+=======
 		 struct perf_session *session,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 struct event *event __used,
 		 int this_cpu,
 		 u64 timestamp,
@@ -1518,9 +1608,14 @@ map_switch_event(struct trace_switch_event *switch_event,
 	sched_out = machine__findnew_thread(machine, switch_event->prev_pid);
 	sched_in = machine__findnew_thread(machine, switch_event->next_pid);
 =======
+<<<<<<< HEAD
+	sched_out = machine__findnew_thread(machine, switch_event->prev_pid);
+	sched_in = machine__findnew_thread(machine, switch_event->next_pid);
+=======
 	sched_out = perf_session__findnew(session, switch_event->prev_pid);
 	sched_in = perf_session__findnew(session, switch_event->next_pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	curr_thread[this_cpu] = sched_in;
 
@@ -1569,6 +1664,9 @@ map_switch_event(struct trace_switch_event *switch_event,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 process_sched_switch_event(struct perf_tool *tool __used,
 			   struct event *event,
@@ -1578,6 +1676,8 @@ process_sched_switch_event(struct perf_tool *tool __used,
 {
 	int this_cpu = sample->cpu;
 	void *data = sample->raw_data;
+<<<<<<< HEAD
+=======
 =======
 
 static void
@@ -1588,6 +1688,7 @@ process_sched_switch_event(void *data, struct perf_session *session,
 			   struct thread *thread __used)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct trace_switch_event switch_event;
 
 	FILL_COMMON_FIELDS(switch_event, event, data);
@@ -1613,15 +1714,23 @@ process_sched_switch_event(void *data, struct perf_session *session,
 		trace_handler->switch_event(&switch_event, machine, event,
 					    this_cpu, sample->time, thread);
 =======
+<<<<<<< HEAD
+		trace_handler->switch_event(&switch_event, machine, event,
+					    this_cpu, sample->time, thread);
+=======
 		trace_handler->switch_event(&switch_event, session, event,
 					    this_cpu, timestamp, thread);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	curr_pid[this_cpu] = switch_event.next_pid;
 }
 
 static void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 process_sched_runtime_event(struct perf_tool *tool __used,
 			    struct event *event,
 			    struct perf_sample *sample,
@@ -1629,6 +1738,8 @@ process_sched_runtime_event(struct perf_tool *tool __used,
 			    struct thread *thread)
 {
 	void *data = sample->raw_data;
+<<<<<<< HEAD
+=======
 =======
 process_sched_runtime_event(void *data, struct perf_session *session,
 			   struct event *event,
@@ -1637,6 +1748,7 @@ process_sched_runtime_event(void *data, struct perf_session *session,
 			   struct thread *thread __used)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct trace_runtime_event runtime_event;
 
 	FILL_ARRAY(runtime_event, comm, event, data);
@@ -1646,6 +1758,9 @@ process_sched_runtime_event(void *data, struct perf_session *session,
 
 	if (trace_handler->runtime_event)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_handler->runtime_event(&runtime_event, machine, event,
 					     sample->cpu, sample->time, thread);
 }
@@ -1658,6 +1773,8 @@ process_sched_fork_event(struct perf_tool *tool __used,
 			 struct thread *thread)
 {
 	void *data = sample->raw_data;
+<<<<<<< HEAD
+=======
 =======
 		trace_handler->runtime_event(&runtime_event, session, event, cpu, timestamp, thread);
 }
@@ -1670,6 +1787,7 @@ process_sched_fork_event(void *data,
 			 struct thread *thread __used)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct trace_fork_event fork_event;
 
 	FILL_COMMON_FIELDS(fork_event, event, data);
@@ -1682,6 +1800,9 @@ process_sched_fork_event(void *data,
 	if (trace_handler->fork_event)
 		trace_handler->fork_event(&fork_event, event,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  sample->cpu, sample->time, thread);
 }
 
@@ -1690,6 +1811,8 @@ process_sched_exit_event(struct perf_tool *tool __used,
 			 struct event *event,
 			 struct perf_sample *sample __used,
 			 struct machine *machine __used,
+<<<<<<< HEAD
+=======
 =======
 					  cpu, timestamp, thread);
 }
@@ -1699,6 +1822,7 @@ process_sched_exit_event(struct event *event,
 			 int cpu __used,
 			 u64 timestamp __used,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 struct thread *thread __used)
 {
 	if (verbose)
@@ -1707,6 +1831,9 @@ process_sched_exit_event(struct event *event,
 
 static void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 process_sched_migrate_task_event(struct perf_tool *tool __used,
 				 struct event *event,
 				 struct perf_sample *sample,
@@ -1714,6 +1841,8 @@ process_sched_migrate_task_event(struct perf_tool *tool __used,
 				 struct thread *thread)
 {
 	void *data = sample->raw_data;
+<<<<<<< HEAD
+=======
 =======
 process_sched_migrate_task_event(void *data, struct perf_session *session,
 			   struct event *event,
@@ -1722,6 +1851,7 @@ process_sched_migrate_task_event(void *data, struct perf_session *session,
 			   struct thread *thread __used)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct trace_migrate_task_event migrate_task_event;
 
 	FILL_COMMON_FIELDS(migrate_task_event, event, data);
@@ -1733,6 +1863,9 @@ process_sched_migrate_task_event(void *data, struct perf_session *session,
 
 	if (trace_handler->migrate_task_event)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_handler->migrate_task_event(&migrate_task_event, machine,
 						  event, sample->cpu,
 						  sample->time, thread);
@@ -1768,6 +1901,8 @@ static int perf_sched__process_tracepoint_sample(struct perf_tool *tool,
 
 		f(tool, evsel->handler.data, sample, machine, thread);
 	}
+<<<<<<< HEAD
+=======
 =======
 		trace_handler->migrate_task_event(&migrate_task_event, session,
 						 event, cpu, timestamp, thread);
@@ -1825,6 +1960,7 @@ static int process_sample_event(union perf_event *event,
 	process_raw_event(event, session, sample->raw_data, sample->cpu,
 			  sample->time, thread);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1833,9 +1969,14 @@ static int process_sample_event(union perf_event *event,
 static struct perf_tool perf_sched = {
 	.sample			= perf_sched__process_tracepoint_sample,
 =======
+<<<<<<< HEAD
+static struct perf_tool perf_sched = {
+	.sample			= perf_sched__process_tracepoint_sample,
+=======
 static struct perf_event_ops event_ops = {
 	.sample			= process_sample_event,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.comm			= perf_event__process_comm,
 	.lost			= perf_event__process_lost,
 	.fork			= perf_event__process_task,
@@ -1843,6 +1984,9 @@ static struct perf_event_ops event_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void read_events(bool destroy, struct perf_session **psession)
 {
 	int err = -EINVAL;
@@ -1868,6 +2012,8 @@ static void read_events(bool destroy, struct perf_session **psession)
 		if (err)
 			die("Failed to process events, error %d", err);
 
+<<<<<<< HEAD
+=======
 =======
 static int read_events(void)
 {
@@ -1880,21 +2026,28 @@ static int read_events(void)
 	if (perf_session__has_traces(session, "record -R")) {
 		err = perf_session__process_events(session, &event_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nr_events      = session->hists.stats.nr_events[0];
 		nr_lost_events = session->hists.stats.total_lost;
 		nr_lost_chunks = session->hists.stats.nr_events[PERF_RECORD_LOST];
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (destroy)
 		perf_session__delete(session);
 
 	if (psession)
 		*psession = session;
+<<<<<<< HEAD
+=======
 =======
 	perf_session__delete(session);
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_bad_events(void)
@@ -1931,15 +2084,21 @@ static void __cmd_lat(void)
 {
 	struct rb_node *next;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct perf_session *session;
 
 	setup_pager();
 	read_events(false, &session);
+<<<<<<< HEAD
+=======
 =======
 
 	setup_pager();
 	read_events();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sort_lat();
 
 	printf("\n ---------------------------------------------------------------------------------------------------------------\n");
@@ -1968,7 +2127,11 @@ static void __cmd_lat(void)
 <<<<<<< HEAD
 	perf_session__delete(session);
 =======
+<<<<<<< HEAD
+	perf_session__delete(session);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct trace_sched_handler map_ops  = {
@@ -1986,8 +2149,12 @@ static void __cmd_map(void)
 <<<<<<< HEAD
 	read_events(true, NULL);
 =======
+<<<<<<< HEAD
+	read_events(true, NULL);
+=======
 	read_events();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	print_bad_events();
 }
 
@@ -2003,8 +2170,12 @@ static void __cmd_replay(void)
 <<<<<<< HEAD
 	read_events(true, NULL);
 =======
+<<<<<<< HEAD
+	read_events(true, NULL);
+=======
 	read_events();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printf("nr_run_events:        %ld\n", nr_run_events);
 	printf("nr_sleep_events:      %ld\n", nr_sleep_events);
@@ -2032,8 +2203,12 @@ static const char * const sched_usage[] = {
 <<<<<<< HEAD
 	"perf sched [<options>] {record|latency|map|replay|script}",
 =======
+<<<<<<< HEAD
+	"perf sched [<options>] {record|latency|map|replay|script}",
+=======
 	"perf sched [<options>] {record|latency|map|replay|trace}",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 

@@ -92,6 +92,13 @@ struct ctlr_info
 	unsigned int intr[4];
 	unsigned int msix_vector;
 	unsigned int msi_vector;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int	intr_mode;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int 	cciss_max_sectors;
 	BYTE	cciss_read;
 	BYTE	cciss_write;

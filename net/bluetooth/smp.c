@@ -21,6 +21,9 @@
 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/module.h>
 
@@ -47,6 +50,8 @@
 
 static int smp_distribute_keys(struct l2cap_conn *conn, __u8 force);
 
+<<<<<<< HEAD
+=======
 =======
 #include <net/bluetooth/bluetooth.h>
 #include <net/bluetooth/hci_core.h>
@@ -59,6 +64,7 @@ static int smp_distribute_keys(struct l2cap_conn *conn, __u8 force);
 #define SMP_TIMEOUT 30000 /* 30 seconds */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void swap128(u8 src[16], u8 dst[16])
 {
 	int i;
@@ -178,8 +184,12 @@ static struct sk_buff *smp_build_cmd(struct l2cap_conn *conn, u8 code,
 <<<<<<< HEAD
 		u16 dlen, void *data)
 =======
+<<<<<<< HEAD
+		u16 dlen, void *data)
+=======
 						u16 dlen, void *data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *skb;
 	struct l2cap_hdr *lh;
@@ -215,6 +225,9 @@ static void smp_send_cmd(struct l2cap_conn *conn, u8 code, u16 len, void *data)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hci_send_acl(conn->hcon, NULL, skb, 0);
 }
 
@@ -226,9 +239,12 @@ static __u8 authreq_to_seclevel(__u8 authreq)
 		return BT_SECURITY_MEDIUM;
 	else
 		return BT_SECURITY_LOW;
+<<<<<<< HEAD
+=======
 =======
 	hci_send_acl(conn->hcon, skb, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static __u8 seclevel_to_authreq(__u8 level)
@@ -239,10 +255,16 @@ static __u8 seclevel_to_authreq(__u8 level)
 	case BT_SECURITY_HIGH:
 		return SMP_AUTH_MITM | SMP_AUTH_BONDING;
 =======
+<<<<<<< HEAD
+	case BT_SECURITY_VERY_HIGH:
+	case BT_SECURITY_HIGH:
+		return SMP_AUTH_MITM | SMP_AUTH_BONDING;
+=======
 	case BT_SECURITY_HIGH:
 		/* Right now we don't support bonding */
 		return SMP_AUTH_MITM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	default:
 		return SMP_AUTH_NONE;
@@ -255,6 +277,9 @@ static void build_pairing_cmd(struct l2cap_conn *conn,
 				__u8 authreq)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hci_conn *hcon = conn->hcon;
 	u8 all_keys = 0;
 	u8 dist_keys = 0;
@@ -295,6 +320,8 @@ static void build_pairing_cmd(struct l2cap_conn *conn,
 			req->io_capability, req->oob_flag, req->auth_req,
 			req->max_key_size, req->init_key_dist,
 			req->resp_key_dist);
+<<<<<<< HEAD
+=======
 =======
 	u8 dist_keys;
 
@@ -321,6 +348,7 @@ static void build_pairing_cmd(struct l2cap_conn *conn,
 	rsp->resp_key_dist = req->resp_key_dist & dist_keys;
 	rsp->auth_req = authreq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static u8 check_enc_key_size(struct l2cap_conn *conn, __u8 max_key_size)
@@ -329,12 +357,20 @@ static u8 check_enc_key_size(struct l2cap_conn *conn, __u8 max_key_size)
 	struct hci_conn *hcon = conn->hcon;
 
 =======
+<<<<<<< HEAD
+	struct hci_conn *hcon = conn->hcon;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((max_key_size > SMP_MAX_ENC_KEY_SIZE) ||
 			(max_key_size < SMP_MIN_ENC_KEY_SIZE))
 		return SMP_ENC_KEY_SIZE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hcon->smp_key_size = max_key_size;
 
 	return 0;
@@ -466,14 +502,20 @@ static int send_pairing_confirm(struct l2cap_conn *conn)
 	hcon->cfm_pending = FALSE;
 
 	smp_send_cmd(conn, SMP_CMD_PAIRING_CONFIRM, sizeof(cp), &cp);
+<<<<<<< HEAD
+=======
 =======
 	conn->smp_key_size = max_key_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int le_user_confirm_reply(struct hci_conn *hcon, u16 mgmt_op, void *cp)
 {
 	struct mgmt_cp_user_passkey_reply *psk_reply = cp;
@@ -546,6 +588,8 @@ static u8 smp_cmd_pairing_req(struct l2cap_conn *conn, struct sk_buff *skb)
 
 	/* We didn't start the pairing, so no requirements */
 	build_pairing_cmd(conn, req, &rsp, auth);
+<<<<<<< HEAD
+=======
 =======
 static u8 smp_cmd_pairing_req(struct l2cap_conn *conn, struct sk_buff *skb)
 {
@@ -564,12 +608,16 @@ static u8 smp_cmd_pairing_req(struct l2cap_conn *conn, struct sk_buff *skb)
 	/* We didn't start the pairing, so no requirements */
 	build_pairing_cmd(conn, req, &rsp, SMP_AUTH_NONE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	key_size = min(req->max_key_size, rsp.max_key_size);
 	if (check_enc_key_size(conn, key_size))
 		return SMP_ENC_KEY_SIZE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = smp_rand(hcon->prnd);
 	if (ret)
 		return SMP_UNSPECIFIED;
@@ -586,6 +634,8 @@ static u8 smp_cmd_pairing_req(struct l2cap_conn *conn, struct sk_buff *skb)
 	smp_send_cmd(conn, SMP_CMD_PAIRING_RSP, sizeof(rsp), &rsp);
 
 	mod_timer(&hcon->smp_timer, jiffies + msecs_to_jiffies(SMP_TIMEOUT));
+<<<<<<< HEAD
+=======
 =======
 	/* Just works */
 	memset(conn->tk, 0, sizeof(conn->tk));
@@ -598,6 +648,7 @@ static u8 smp_cmd_pairing_req(struct l2cap_conn *conn, struct sk_buff *skb)
 	mod_timer(&conn->security_timer, jiffies +
 					msecs_to_jiffies(SMP_TIMEOUT));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -605,10 +656,15 @@ static u8 smp_cmd_pairing_req(struct l2cap_conn *conn, struct sk_buff *skb)
 static u8 smp_cmd_pairing_rsp(struct l2cap_conn *conn, struct sk_buff *skb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hci_conn *hcon = conn->hcon;
 	struct smp_cmd_pairing *req, *rsp = (void *) skb->data;
 	u8 key_size, auth = SMP_AUTH_NONE;
 	int ret;
+<<<<<<< HEAD
+=======
 =======
 	struct smp_cmd_pairing *req, *rsp = (void *) skb->data;
 	struct smp_cmd_pairing_confirm cp;
@@ -616,6 +672,7 @@ static u8 smp_cmd_pairing_rsp(struct l2cap_conn *conn, struct sk_buff *skb)
 	int ret;
 	u8 res[16], key_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BT_DBG("conn %p", conn);
 
@@ -624,14 +681,21 @@ static u8 smp_cmd_pairing_rsp(struct l2cap_conn *conn, struct sk_buff *skb)
 <<<<<<< HEAD
 	req = (void *) &hcon->preq[1];
 =======
+<<<<<<< HEAD
+	req = (void *) &hcon->preq[1];
+=======
 	req = (void *) &conn->preq[1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	key_size = min(req->max_key_size, rsp->max_key_size);
 	if (check_enc_key_size(conn, key_size))
 		return SMP_ENC_KEY_SIZE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hcon->prsp[0] = SMP_CMD_PAIRING_RSP;
 	memcpy(&hcon->prsp[1], rsp, sizeof(*rsp));
 
@@ -659,6 +723,8 @@ static u8 smp_cmd_pairing_rsp(struct l2cap_conn *conn, struct sk_buff *skb)
 	ret = send_pairing_confirm(conn);
 	if (ret)
 		return SMP_CONFIRM_FAILED;
+<<<<<<< HEAD
+=======
 =======
 	if (rsp->oob_flag)
 		return SMP_OOB_NOT_AVAIL;
@@ -682,6 +748,7 @@ static u8 smp_cmd_pairing_rsp(struct l2cap_conn *conn, struct sk_buff *skb)
 
 	smp_send_cmd(conn, SMP_CMD_PAIRING_CONFIRM, sizeof(cp), &cp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -689,6 +756,9 @@ static u8 smp_cmd_pairing_rsp(struct l2cap_conn *conn, struct sk_buff *skb)
 static u8 smp_cmd_pairing_confirm(struct l2cap_conn *conn, struct sk_buff *skb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hci_conn *hcon = conn->hcon;
 	int ret;
 
@@ -696,6 +766,8 @@ static u8 smp_cmd_pairing_confirm(struct l2cap_conn *conn, struct sk_buff *skb)
 
 	memcpy(hcon->pcnf, skb->data, sizeof(hcon->pcnf));
 	skb_pull(skb, sizeof(hcon->pcnf));
+<<<<<<< HEAD
+=======
 =======
 	struct crypto_blkcipher *tfm = conn->hcon->hdev->tfm;
 
@@ -704,11 +776,15 @@ static u8 smp_cmd_pairing_confirm(struct l2cap_conn *conn, struct sk_buff *skb)
 	memcpy(conn->pcnf, skb->data, sizeof(conn->pcnf));
 	skb_pull(skb, sizeof(conn->pcnf));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (conn->hcon->out) {
 		u8 random[16];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		swap128(hcon->prnd, random);
 		smp_send_cmd(conn, SMP_CMD_PAIRING_RANDOM, sizeof(random),
 								random);
@@ -722,6 +798,8 @@ static u8 smp_cmd_pairing_confirm(struct l2cap_conn *conn, struct sk_buff *skb)
 
 
 	mod_timer(&hcon->smp_timer, jiffies + msecs_to_jiffies(SMP_TIMEOUT));
+<<<<<<< HEAD
+=======
 =======
 		swap128(conn->prnd, random);
 		smp_send_cmd(conn, SMP_CMD_PAIRING_RANDOM, sizeof(random),
@@ -749,6 +827,7 @@ static u8 smp_cmd_pairing_confirm(struct l2cap_conn *conn, struct sk_buff *skb)
 	mod_timer(&conn->security_timer, jiffies +
 					msecs_to_jiffies(SMP_TIMEOUT));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -765,12 +844,17 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 
 	if (conn->hcon->out)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = smp_c1(tfm, hcon->tk, random, hcon->preq, hcon->prsp, 0,
 				conn->src, hcon->dst_type, conn->dst,
 				res);
 	else
 		ret = smp_c1(tfm, hcon->tk, random, hcon->preq, hcon->prsp,
 				hcon->dst_type, conn->dst, 0, conn->src,
+<<<<<<< HEAD
+=======
 =======
 		ret = smp_c1(tfm, conn->tk, random, conn->preq, conn->prsp, 0,
 				conn->src, conn->hcon->dst_type, conn->dst,
@@ -779,6 +863,7 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 		ret = smp_c1(tfm, conn->tk, random, conn->preq, conn->prsp,
 				conn->hcon->dst_type, conn->dst, 0, conn->src,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				res);
 	if (ret)
 		return SMP_UNSPECIFIED;
@@ -790,8 +875,12 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 <<<<<<< HEAD
 	if (memcmp(hcon->pcnf, confirm, sizeof(hcon->pcnf)) != 0) {
 =======
+<<<<<<< HEAD
+	if (memcmp(hcon->pcnf, confirm, sizeof(hcon->pcnf)) != 0) {
+=======
 	if (memcmp(conn->pcnf, confirm, sizeof(conn->pcnf)) != 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BT_ERR("Pairing failed (confirmation values mismatch)");
 		return SMP_CONFIRM_FAILED;
 	}
@@ -804,6 +893,9 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 		ediv = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		smp_s1(tfm, hcon->tk, random, hcon->prnd, key);
 		swap128(key, stk);
 
@@ -812,6 +904,8 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 
 		hci_le_start_enc(hcon, ediv, rand, stk);
 		hcon->enc_key_size = hcon->smp_key_size;
+<<<<<<< HEAD
+=======
 =======
 		smp_s1(tfm, conn->tk, random, conn->prnd, key);
 		swap128(key, stk);
@@ -822,6 +916,7 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 		hci_le_start_enc(hcon, ediv, rand, stk);
 		hcon->enc_key_size = conn->smp_key_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		u8 stk[16], r[16], rand[8];
 		__le16 ediv;
@@ -830,6 +925,9 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 		ediv = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		swap128(hcon->prnd, r);
 		smp_send_cmd(conn, SMP_CMD_PAIRING_RANDOM, sizeof(r), r);
 
@@ -841,6 +939,8 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 
 		hci_add_ltk(conn->hcon->hdev, 0, conn->dst, hcon->dst_type,
 			hcon->smp_key_size, hcon->auth, ediv, rand, stk);
+<<<<<<< HEAD
+=======
 =======
 		swap128(conn->prnd, r);
 		smp_send_cmd(conn, SMP_CMD_PAIRING_RANDOM, sizeof(r), r);
@@ -854,12 +954,16 @@ static u8 smp_cmd_pairing_random(struct l2cap_conn *conn, struct sk_buff *skb)
 		hci_add_ltk(conn->hcon->hdev, 0, conn->dst, conn->smp_key_size,
 							ediv, rand, stk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int smp_encrypt_link(struct hci_conn *hcon, struct link_key *key)
 {
 	struct key_master_id *master;
@@ -900,6 +1004,8 @@ static u8 smp_cmd_security_req(struct l2cap_conn *conn, struct sk_buff *skb)
 	struct smp_cmd_security_req *rp = (void *) skb->data;
 	struct smp_cmd_pairing cp;
 	struct link_key *key;
+<<<<<<< HEAD
+=======
 =======
 static u8 smp_cmd_security_req(struct l2cap_conn *conn, struct sk_buff *skb)
 {
@@ -907,6 +1013,7 @@ static u8 smp_cmd_security_req(struct l2cap_conn *conn, struct sk_buff *skb)
 	struct smp_cmd_pairing cp;
 	struct hci_conn *hcon = conn->hcon;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BT_DBG("conn %p", conn);
 
@@ -914,6 +1021,9 @@ static u8 smp_cmd_security_req(struct l2cap_conn *conn, struct sk_buff *skb)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	key = hci_find_link_key_type(hcon->hdev, conn->dst, KEY_TYPE_LTK);
 	if (key && ((key->auth & SMP_AUTH_MITM) ||
 					!(rp->auth_req & SMP_AUTH_MITM))) {
@@ -927,14 +1037,20 @@ static u8 smp_cmd_security_req(struct l2cap_conn *conn, struct sk_buff *skb)
 invalid_key:
 	hcon->sec_req = FALSE;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_pull(skb, sizeof(*rp));
 
 	memset(&cp, 0, sizeof(cp));
 	build_pairing_cmd(conn, &cp, NULL, rp->auth_req);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hcon->pending_sec_level = authreq_to_seclevel(rp->auth_req);
 	hcon->preq[0] = SMP_CMD_PAIRING_REQ;
 	memcpy(&hcon->preq[1], &cp, sizeof(cp));
@@ -947,6 +1063,8 @@ invalid_key:
 
 	hci_conn_hold(hcon);
 
+<<<<<<< HEAD
+=======
 =======
 	conn->preq[0] = SMP_CMD_PAIRING_REQ;
 	memcpy(&conn->preq[1], &cp, sizeof(cp));
@@ -959,6 +1077,7 @@ invalid_key:
 	set_bit(HCI_CONN_ENCRYPT_PEND, &hcon->pend);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -971,11 +1090,16 @@ int smp_conn_security(struct l2cap_conn *conn, __u8 sec_level)
 	BT_DBG("conn %p hcon %p %d req: %d",
 			conn, hcon, hcon->sec_level, sec_level);
 =======
+<<<<<<< HEAD
+	BT_DBG("conn %p hcon %p %d req: %d",
+			conn, hcon, hcon->sec_level, sec_level);
+=======
 	BT_DBG("conn %p hcon %p level 0x%2.2x", conn, hcon, sec_level);
 
 	if (!lmp_host_le_capable(hcon->hdev))
 		return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (IS_ERR(hcon->hdev->tfm))
 		return 1;
@@ -984,8 +1108,12 @@ int smp_conn_security(struct l2cap_conn *conn, __u8 sec_level)
 <<<<<<< HEAD
 		return -EINPROGRESS;
 =======
+<<<<<<< HEAD
+		return -EINPROGRESS;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sec_level == BT_SECURITY_LOW)
 		return 1;
@@ -993,13 +1121,20 @@ int smp_conn_security(struct l2cap_conn *conn, __u8 sec_level)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hcon->sec_level >= sec_level)
 		return 1;
 
 	authreq = seclevel_to_authreq(sec_level);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hcon->smp_conn = conn;
 	hcon->pending_sec_level = sec_level;
 	if (hcon->link_mode & HCI_LM_MASTER) {
@@ -1026,6 +1161,8 @@ int smp_conn_security(struct l2cap_conn *conn, __u8 sec_level)
 
 		smp_send_cmd(conn, SMP_CMD_PAIRING_REQ, sizeof(cp), &cp);
 		hci_conn_hold(hcon);
+<<<<<<< HEAD
+=======
 =======
 	if (hcon->link_mode & HCI_LM_MASTER) {
 		struct smp_cmd_pairing cp;
@@ -1052,6 +1189,7 @@ int smp_conn_security(struct l2cap_conn *conn, __u8 sec_level)
 
 		smp_send_cmd(conn, SMP_CMD_PAIRING_REQ, sizeof(cp), &cp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		struct smp_cmd_security_req cp;
 		cp.auth_req = authreq;
@@ -1061,8 +1199,11 @@ int smp_conn_security(struct l2cap_conn *conn, __u8 sec_level)
 done:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	hcon->pending_sec_level = sec_level;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(HCI_CONN_ENCRYPT_PEND, &hcon->pend);
 
 	return 0;
@@ -1071,6 +1212,9 @@ done:
 static int smp_cmd_encrypt_info(struct l2cap_conn *conn, struct sk_buff *skb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hci_conn *hcon = conn->hcon;
 	struct smp_cmd_encrypt_info *rp = (void *) skb->data;
 	u8 rand[8];
@@ -1086,6 +1230,8 @@ static int smp_cmd_encrypt_info(struct l2cap_conn *conn, struct sk_buff *skb)
 						0, 0, 0, rand, rp->ltk);
 	if (err)
 		return SMP_UNSPECIFIED;
+<<<<<<< HEAD
+=======
 =======
 	struct smp_cmd_encrypt_info *rp = (void *) skb->data;
 
@@ -1093,6 +1239,7 @@ static int smp_cmd_encrypt_info(struct l2cap_conn *conn, struct sk_buff *skb)
 
 	memcpy(conn->tk, rp->ltk, sizeof(conn->tk));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1100,6 +1247,9 @@ static int smp_cmd_encrypt_info(struct l2cap_conn *conn, struct sk_buff *skb)
 static int smp_cmd_master_ident(struct l2cap_conn *conn, struct sk_buff *skb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hci_conn *hcon = conn->hcon;
 	struct smp_cmd_master_ident *rp = (void *) skb->data;
 	struct smp_cmd_pairing *paircmd = (void *) &hcon->prsp[1];
@@ -1128,6 +1278,8 @@ static int smp_cmd_master_ident(struct l2cap_conn *conn, struct sk_buff *skb)
 		if (!(*keydist))
 			smp_distribute_keys(conn, 1);
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct smp_cmd_master_ident *rp = (void *) skb->data;
 
@@ -1138,6 +1290,7 @@ static int smp_cmd_master_ident(struct l2cap_conn *conn, struct sk_buff *skb)
 
 	smp_distribute_keys(conn, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1147,12 +1300,19 @@ int smp_sig_channel(struct l2cap_conn *conn, struct sk_buff *skb)
 <<<<<<< HEAD
 	struct hci_conn *hcon = conn->hcon;
 =======
+<<<<<<< HEAD
+	struct hci_conn *hcon = conn->hcon;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u8 code = skb->data[0];
 	__u8 reason;
 	int err = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(hcon->hdev->tfm)) {
 		err = PTR_ERR(hcon->hdev->tfm);
 		reason = SMP_PAIRING_NOTSUPP;
@@ -1161,6 +1321,8 @@ int smp_sig_channel(struct l2cap_conn *conn, struct sk_buff *skb)
 	}
 
 	hcon->smp_conn = conn;
+<<<<<<< HEAD
+=======
 =======
 	if (!lmp_host_le_capable(conn->hcon->hdev)) {
 		err = -ENOTSUPP;
@@ -1175,6 +1337,7 @@ int smp_sig_channel(struct l2cap_conn *conn, struct sk_buff *skb)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_pull(skb, sizeof(code));
 
 	switch (code) {
@@ -1186,12 +1349,18 @@ int smp_sig_channel(struct l2cap_conn *conn, struct sk_buff *skb)
 		reason = 0;
 		err = -EPERM;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		del_timer(&hcon->smp_timer);
 		clear_bit(HCI_CONN_ENCRYPT_PEND, &hcon->pend);
 		mgmt_auth_failed(hcon->hdev->id, conn->dst, skb->data[0]);
 		hci_conn_put(hcon);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case SMP_CMD_PAIRING_RSP:
@@ -1235,6 +1404,9 @@ int smp_sig_channel(struct l2cap_conn *conn, struct sk_buff *skb)
 
 done:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (reason) {
 		BT_ERR("SMP_CMD_PAIRING_FAIL: %d", reason);
 		smp_send_cmd(conn, SMP_CMD_PAIRING_FAIL, sizeof(reason),
@@ -1244,11 +1416,14 @@ done:
 		mgmt_auth_failed(hcon->hdev->id, conn->dst, reason);
 		hci_conn_put(hcon);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (reason)
 		smp_send_cmd(conn, SMP_CMD_PAIRING_FAIL, sizeof(reason),
 								&reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kfree_skb(skb);
 	return err;
@@ -1259,15 +1434,24 @@ static int smp_distribute_keys(struct l2cap_conn *conn, __u8 force)
 {
 	struct hci_conn *hcon = conn->hcon;
 =======
+<<<<<<< HEAD
+static int smp_distribute_keys(struct l2cap_conn *conn, __u8 force)
+{
+	struct hci_conn *hcon = conn->hcon;
+=======
 int smp_distribute_keys(struct l2cap_conn *conn, __u8 force)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct smp_cmd_pairing *req, *rsp;
 	__u8 *keydist;
 
 	BT_DBG("conn %p force %d", conn, force);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(hcon->hdev->tfm))
 		return PTR_ERR(hcon->hdev->tfm);
 
@@ -1280,6 +1464,8 @@ int smp_distribute_keys(struct l2cap_conn *conn, __u8 force)
 	req = (void *) &hcon->preq[1];
 
 	if (hcon->out) {
+<<<<<<< HEAD
+=======
 =======
 	if (IS_ERR(conn->hcon->hdev->tfm))
 		return PTR_ERR(conn->hcon->hdev->tfm);
@@ -1294,6 +1480,7 @@ int smp_distribute_keys(struct l2cap_conn *conn, __u8 force)
 
 	if (conn->hcon->out) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		keydist = &rsp->init_key_dist;
 		*keydist &= req->init_key_dist;
 	} else {
@@ -1320,9 +1507,15 @@ int smp_distribute_keys(struct l2cap_conn *conn, __u8 force)
 				hcon->smp_key_size, hcon->auth, ediv,
 				ident.rand, enc.ltk);
 =======
+<<<<<<< HEAD
+		hci_add_ltk(hcon->hdev, 1, conn->dst, hcon->dst_type,
+				hcon->smp_key_size, hcon->auth, ediv,
+				ident.rand, enc.ltk);
+=======
 		hci_add_ltk(conn->hcon->hdev, 1, conn->dst, conn->smp_key_size,
 						ediv, ident.rand, enc.ltk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ident.ediv = cpu_to_le16(ediv);
 
@@ -1362,6 +1555,9 @@ int smp_distribute_keys(struct l2cap_conn *conn, __u8 force)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hcon->out) {
 		if (hcon->disconn_cfm_cb)
 			hcon->disconn_cfm_cb(hcon, 0);
@@ -1414,7 +1610,10 @@ void smp_timeout(unsigned long arg)
 	mgmt_auth_failed(conn->hcon->hdev->id, conn->dst, SMP_UNSPECIFIED);
 	hci_conn_put(conn->hcon);
 }
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

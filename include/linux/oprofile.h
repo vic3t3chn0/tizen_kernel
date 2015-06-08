@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  
 /* Each escaped entry is prefixed by ESCAPE_CODE
  * then one of the following codes, then the
@@ -173,8 +177,12 @@ int oprofilefs_ulong_from_user(unsigned long * val, char const __user * buf, siz
 <<<<<<< HEAD
 extern raw_spinlock_t oprofilefs_lock;
 =======
+<<<<<<< HEAD
+extern raw_spinlock_t oprofilefs_lock;
+=======
 extern spinlock_t oprofilefs_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * Add the contents of a circular buffer to the event buffer.

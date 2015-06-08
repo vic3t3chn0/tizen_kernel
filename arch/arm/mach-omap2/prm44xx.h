@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2009-2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2009-2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2009-2010 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2009-2010 Nokia Corporation
  *
  * Paul Walmsley (paul@pwsan.com)
@@ -38,8 +42,12 @@
 <<<<<<< HEAD
 	OMAP2_L4_IO_ADDRESS(OMAP4430_PRM_BASE + (inst) + (reg))
 =======
+<<<<<<< HEAD
+	OMAP2_L4_IO_ADDRESS(OMAP4430_PRM_BASE + (inst) + (reg))
+=======
 	OMAP2_L4_IO_ADDRESS(OMAP4430_PRM_BASE +	(inst) + (reg))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* PRM instances */
@@ -55,6 +63,9 @@
 #define OMAP4430_PRM_DSS_INST		0x1100
 #define OMAP4430_PRM_GFX_INST		0x1200
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP4430_PRM_L3INIT_INST	0x1300
 #define OMAP4430_PRM_L4PER_INST		0x1400
 #define OMAP4430_PRM_CEFUSE_INST	0x1600
@@ -67,6 +78,8 @@
 
 /* PRM clockdomain register offsets (from instance start) */
 #define OMAP4430_PRM_WKUP_CM_WKUP_CDOFFS	0x0000
+<<<<<<< HEAD
+=======
 =======
 #define OMAP4430_PRM_L3INIT_INST		0x1300
 #define OMAP4430_PRM_L4PER_INST		0x1400
@@ -93,6 +106,7 @@
 #define OMAP4430_PRM_WKUP_CM_WKUP_CDOFFS	0x0000
 #define OMAP4430_PRM_EMU_EMU_CDOFFS		0x0000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP4430_PRM_EMU_CM_EMU_CDOFFS		0x0000
 
 /* OMAP4 specific register offsets */
@@ -274,9 +288,14 @@
 #define OMAP4_RM_D2D_MODEM_ICR_CONTEXT_OFFSET		0x052c
 #define OMAP4430_RM_D2D_MODEM_ICR_CONTEXT		OMAP44XX_PRM_REGADDR(OMAP4430_PRM_CORE_INST, 0x052c)
 =======
+<<<<<<< HEAD
+#define OMAP4_RM_D2D_MODEM_ICR_CONTEXT_OFFSET		0x052c
+#define OMAP4430_RM_D2D_MODEM_ICR_CONTEXT		OMAP44XX_PRM_REGADDR(OMAP4430_PRM_CORE_INST, 0x052c)
+=======
 #define OMAP4_RM_D2D_INSTEM_ICR_CONTEXT_OFFSET		0x052c
 #define OMAP4430_RM_D2D_INSTEM_ICR_CONTEXT		OMAP44XX_PRM_REGADDR(OMAP4430_PRM_CORE_INST, 0x052c)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP4_RM_D2D_SAD2D_FW_CONTEXT_OFFSET		0x0534
 #define OMAP4430_RM_D2D_SAD2D_FW_CONTEXT		OMAP44XX_PRM_REGADDR(OMAP4430_PRM_CORE_INST, 0x0534)
 #define OMAP4_RM_L4CFG_L4_CFG_CONTEXT_OFFSET		0x0624
@@ -745,9 +764,14 @@
 #define OMAP4_PRM_VC_CFG_I2C_MODE_OFFSET		0x00a8
 #define OMAP4430_PRM_VC_CFG_I2C_MODE			OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00a8)
 =======
+<<<<<<< HEAD
+#define OMAP4_PRM_VC_CFG_I2C_MODE_OFFSET		0x00a8
+#define OMAP4430_PRM_VC_CFG_I2C_MODE			OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00a8)
+=======
 #define OMAP4_PRM_VC_CFG_I2C_INSTE_OFFSET		0x00a8
 #define OMAP4430_PRM_VC_CFG_I2C_INSTE			OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00a8)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP4_PRM_VC_CFG_I2C_CLK_OFFSET			0x00ac
 #define OMAP4430_PRM_VC_CFG_I2C_CLK			OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00ac)
 #define OMAP4_PRM_SRAM_COUNT_OFFSET			0x00b0
@@ -788,9 +812,14 @@
 #define OMAP4_PRM_MODEM_IF_CTRL_OFFSET			0x00f4
 #define OMAP4430_PRM_MODEM_IF_CTRL			OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00f4)
 =======
+<<<<<<< HEAD
+#define OMAP4_PRM_MODEM_IF_CTRL_OFFSET			0x00f4
+#define OMAP4430_PRM_MODEM_IF_CTRL			OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00f4)
+=======
 #define OMAP4_PRM_INSTEM_IF_CTRL_OFFSET			0x00f4
 #define OMAP4430_PRM_INSTEM_IF_CTRL			OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00f4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP4_PRM_VC_ERRST_OFFSET			0x00f8
 #define OMAP4430_PRM_VC_ERRST				OMAP44XX_PRM_REGADDR(OMAP4430_PRM_DEVICE_INST, 0x00f8)
 
@@ -801,6 +830,9 @@ extern u32 omap4_prm_read_inst_reg(s16 inst, u16 idx);
 extern void omap4_prm_write_inst_reg(u32 val, s16 inst, u16 idx);
 extern u32 omap4_prm_rmw_inst_reg_bits(u32 mask, u32 bits, s16 inst, s16 idx);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* OMAP4-specific VP functions */
 u32 omap4_prm_vp_check_txdone(u8 vp_id);
@@ -819,6 +851,8 @@ extern void omap44xx_prm_read_pending_irqs(unsigned long *events);
 extern void omap44xx_prm_ocp_barrier(void);
 extern void omap44xx_prm_save_and_clear_irqen(u32 *saved_mask);
 extern void omap44xx_prm_restore_irqen(u32 *saved_mask);
+<<<<<<< HEAD
+=======
 =======
 extern u32 omap4_prm_rmw_reg_bits(u32 mask, u32 bits, void __iomem *reg);
 extern u32 omap4_prm_set_inst_reg_bits(u32 bits, s16 inst, s16 idx);
@@ -831,6 +865,7 @@ extern int omap4_prm_deassert_hardreset(void __iomem *rstctrl_reg, u8 shift);
 
 extern void omap4_prm_global_warm_sw_reset(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # endif
 

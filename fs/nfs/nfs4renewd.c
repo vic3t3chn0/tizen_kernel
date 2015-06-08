@@ -63,7 +63,11 @@ nfs4_renew_state(struct work_struct *work)
 <<<<<<< HEAD
 	unsigned renew_flags = 0;
 =======
+<<<<<<< HEAD
+	unsigned renew_flags = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ops = clp->cl_mvops->state_renewal_ops;
 	dprintk("%s: start\n", __func__);
@@ -77,6 +81,9 @@ nfs4_renew_state(struct work_struct *work)
 	now = jiffies;
 	/* Are we close to a lease timeout? */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (time_after(now, last + lease/3))
 		renew_flags |= NFS4_RENEW_TIMEOUT;
 	if (nfs_delegations_present(clp))
@@ -87,6 +94,8 @@ nfs4_renew_state(struct work_struct *work)
 		spin_unlock(&clp->cl_lock);
 		if (cred == NULL) {
 			if (!(renew_flags & NFS4_RENEW_DELEGATION_CB)) {
+<<<<<<< HEAD
+=======
 =======
 	if (time_after(now, last + lease/3)) {
 		cred = ops->get_state_renewal_cred_locked(clp);
@@ -94,6 +103,7 @@ nfs4_renew_state(struct work_struct *work)
 		if (cred == NULL) {
 			if (!nfs_delegations_present(clp)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				set_bit(NFS4CLNT_LEASE_EXPIRED, &clp->cl_state);
 				goto out;
 			}
@@ -103,8 +113,12 @@ nfs4_renew_state(struct work_struct *work)
 <<<<<<< HEAD
 			ops->sched_state_renewal(clp, cred, renew_flags);
 =======
+<<<<<<< HEAD
+			ops->sched_state_renewal(clp, cred, renew_flags);
+=======
 			ops->sched_state_renewal(clp, cred);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			put_rpccred(cred);
 			goto out_exp;
 		}

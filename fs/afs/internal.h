@@ -630,8 +630,12 @@ extern struct key *afs_request_key(struct afs_cell *);
 <<<<<<< HEAD
 extern int afs_permission(struct inode *, int);
 =======
+<<<<<<< HEAD
+extern int afs_permission(struct inode *, int);
+=======
 extern int afs_permission(struct inode *, int, unsigned int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * server.c
@@ -757,8 +761,12 @@ extern int afs_writeback_all(struct afs_vnode *);
 <<<<<<< HEAD
 extern int afs_fsync(struct file *, loff_t, loff_t, int);
 =======
+<<<<<<< HEAD
+extern int afs_fsync(struct file *, loff_t, loff_t, int);
+=======
 extern int afs_fsync(struct file *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*****************************************************************************/

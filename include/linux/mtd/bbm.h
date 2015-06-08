@@ -87,6 +87,9 @@ struct nand_bbt_descr {
 /* Create a bbt if none exists */
 #define NAND_BBT_CREATE		0x00000200
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Create an empty BBT with no vendor information. Vendor's information may be
  * unavailable, for example, if the NAND controller has a different data and OOB
@@ -125,6 +128,8 @@ struct nand_bbt_descr {
  * in nand_chip.bbt_options.
  */
 #define NAND_BBT_DYNAMICSTRUCT	0x80000000
+<<<<<<< HEAD
+=======
 =======
 /* Search good / bad pattern through all pages of a block */
 #define NAND_BBT_SCANALLPAGES	0x00000400
@@ -145,6 +150,7 @@ struct nand_bbt_descr {
 /* The bad block table does not OOB for marker */
 #define NAND_BBT_NO_OOB		0x00400000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The maximum number of blocks to scan for a bbt */
 #define NAND_BBT_SCAN_MAXBLOCKS	4

@@ -11,8 +11,11 @@
 #include <linux/vmalloc.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/pagevec.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "super.h"
 #include "mds_client.h"
@@ -305,7 +308,12 @@ struct inode *ceph_alloc_inode(struct super_block *sb)
 	spin_lock_init(&ci->i_ceph_lock);
 
 =======
+<<<<<<< HEAD
+	spin_lock_init(&ci->i_ceph_lock);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ci->i_version = 0;
 	ci->i_time_warp_seq = 0;
 	ci->i_ceph_flags = 0;
@@ -393,8 +401,11 @@ static void ceph_i_callback(struct rcu_head *head)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(ceph_inode_cachep, ci);
 }
 
@@ -575,8 +586,13 @@ static int fill_inode(struct inode *inode,
 	int issued = 0, implemented;
 	int updating_inode = 0;
 =======
+<<<<<<< HEAD
+	int issued = 0, implemented;
+	int updating_inode = 0;
+=======
 	int issued, implemented;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timespec mtime, atime, ctime;
 	u32 nsplits;
 	struct ceph_buffer *xattr_blob = NULL;
@@ -602,8 +618,12 @@ static int fill_inode(struct inode *inode,
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * provided version will be odd if inode value is projected,
@@ -623,8 +643,13 @@ static int fill_inode(struct inode *inode,
 	
 	updating_inode = 1;
 =======
+<<<<<<< HEAD
+	
+	updating_inode = 1;
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	issued = __ceph_caps_issued(ci, &implemented);
 	issued |= implemented | __ceph_caps_dirty(ci);
 
@@ -645,8 +670,12 @@ static int fill_inode(struct inode *inode,
 <<<<<<< HEAD
 		set_nlink(inode, le32_to_cpu(info->nlink));
 =======
+<<<<<<< HEAD
+		set_nlink(inode, le32_to_cpu(info->nlink));
+=======
 		inode->i_nlink = le32_to_cpu(info->nlink);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* be careful with mtime, atime, size */
 	ceph_decode_timespec(&atime, &info->atime);
@@ -705,6 +734,9 @@ static int fill_inode(struct inode *inode,
 		inode->i_op = &ceph_symlink_iops;
 		if (!ci->i_symlink) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			u32 symlen = iinfo->symlink_len;
 			char *sym;
 
@@ -720,6 +752,8 @@ static int fill_inode(struct inode *inode,
 				goto out;
 
 			spin_lock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 			int symlen = iinfo->symlink_len;
 			char *sym;
@@ -736,6 +770,7 @@ static int fill_inode(struct inode *inode,
 
 			spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!ci->i_symlink)
 				ci->i_symlink = sym;
 			else
@@ -756,6 +791,8 @@ static int fill_inode(struct inode *inode,
 		ceph_decode_timespec(&ci->i_rctime, &info->rctime);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 		/* set dir completion flag? */
 		if (ci->i_files == 0 && ci->i_subdirs == 0 &&
@@ -768,6 +805,7 @@ static int fill_inode(struct inode *inode,
 			ci->i_max_offset = 2;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		pr_err("fill_inode %llx.%llx BAD mode 0%o\n",
@@ -778,8 +816,12 @@ no_change:
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* queue truncate if we saw i_size decrease */
 	if (queue_trunc)
@@ -817,8 +859,12 @@ no_change:
 <<<<<<< HEAD
 			spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_lock(&ci->i_ceph_lock);
+=======
 			spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dout(" %p got snap_caps %s\n", inode,
 			     ceph_cap_string(le32_to_cpu(info->cap.caps)));
 			ci->i_snap_caps |= le32_to_cpu(info->cap.caps);
@@ -827,8 +873,12 @@ no_change:
 <<<<<<< HEAD
 			spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+			spin_unlock(&ci->i_ceph_lock);
+=======
 			spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else if (cap_fmode >= 0) {
 		pr_warning("mds issued no caps on %llx.%llx\n",
@@ -837,6 +887,9 @@ no_change:
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set dir completion flag? */
 	if (S_ISDIR(inode->i_mode) &&
 	    updating_inode &&                 /* didn't jump to no_change */
@@ -850,8 +903,11 @@ no_change:
 		ci->i_max_offset = 2;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* update delegation info? */
 	if (dirinfo)
 		ceph_fill_dirfrag(inode, dirinfo);
@@ -887,9 +943,14 @@ static void update_dentry_lease(struct dentry *dentry,
 	dout("update_dentry_lease %p duration %lu ms ttl %lu\n",
 	     dentry, duration, ttl);
 =======
+<<<<<<< HEAD
+	dout("update_dentry_lease %p duration %lu ms ttl %lu\n",
+	     dentry, duration, ttl);
+=======
 	dout("update_dentry_lease %p mask %d duration %lu ms ttl %lu\n",
 	     dentry, le16_to_cpu(lease->mask), duration, ttl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* make lease_rdcache_gen match directory */
 	dir = dentry->d_parent->d_inode;
@@ -898,8 +959,12 @@ static void update_dentry_lease(struct dentry *dentry,
 <<<<<<< HEAD
 	if (duration == 0)
 =======
+<<<<<<< HEAD
+	if (duration == 0)
+=======
 	if (lease->mask == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_unlock;
 
 	if (di->lease_gen == session->s_cap_gen &&
@@ -930,7 +995,12 @@ out_unlock:
  *
  * Always called under directory's i_mutex.
 =======
+<<<<<<< HEAD
+ *
+ * Always called under directory's i_mutex.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void ceph_set_dentry_offset(struct dentry *dn)
 {
@@ -939,13 +1009,21 @@ static void ceph_set_dentry_offset(struct dentry *dn)
 	struct inode *inode = dir->d_inode;
 	struct ceph_inode_info *ci;
 =======
+<<<<<<< HEAD
+	struct inode *inode = dir->d_inode;
+	struct ceph_inode_info *ci;
+=======
 	struct inode *inode = dn->d_parent->d_inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ceph_dentry_info *di;
 
 	BUG_ON(!inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ci = ceph_inode(inode);
 	di = ceph_dentry(dn);
 
@@ -956,6 +1034,8 @@ static void ceph_set_dentry_offset(struct dentry *dn)
 	}
 	di->offset = ceph_inode(inode)->i_max_offset++;
 	spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 	di = ceph_dentry(dn);
 
@@ -967,6 +1047,7 @@ static void ceph_set_dentry_offset(struct dentry *dn)
 	di->offset = ceph_inode(inode)->i_max_offset++;
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&dir->d_lock);
 	spin_lock_nested(&dn->d_lock, DENTRY_D_LOCK_NESTED);
@@ -1135,10 +1216,14 @@ int ceph_fill_trace(struct super_block *sb, struct ceph_mds_request *req,
 <<<<<<< HEAD
 			le32_to_cpu(rinfo->dlease->duration_ms);
 =======
+<<<<<<< HEAD
+			le32_to_cpu(rinfo->dlease->duration_ms);
+=======
 			(le16_to_cpu(rinfo->dlease->mask) &
 			 CEPH_LOCK_DN);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!have_lease)
 			dout("fill_trace  no dentry lease or dir cap\n");
 
@@ -1170,8 +1255,12 @@ int ceph_fill_trace(struct super_block *sb, struct ceph_mds_request *req,
 <<<<<<< HEAD
 			 * D_COMPLETE.
 =======
+<<<<<<< HEAD
+			 * D_COMPLETE.
+=======
 			 * I_COMPLETE.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 */
 			ceph_set_dentry_offset(req->r_old_dentry);
 			dout("dn %p gets new offset %lld\n", req->r_old_dentry, 
@@ -1426,8 +1515,12 @@ int ceph_inode_set_size(struct inode *inode, loff_t size)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("set_size %p %llu -> %llu\n", inode, inode->i_size, size);
 	inode->i_size = size;
 	inode->i_blocks = (size + (1 << 9) - 1) >> 9;
@@ -1440,8 +1533,12 @@ int ceph_inode_set_size(struct inode *inode, loff_t size)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1452,6 +1549,9 @@ int ceph_inode_set_size(struct inode *inode, loff_t size)
 void ceph_queue_writeback(struct inode *inode)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ihold(inode);
 	if (queue_work(ceph_inode_to_client(inode)->wb_wq,
 		       &ceph_inode(inode)->i_wb_work)) {
@@ -1459,6 +1559,8 @@ void ceph_queue_writeback(struct inode *inode)
 	} else {
 		dout("ceph_queue_writeback %p failed\n", inode);
 		iput(inode);
+<<<<<<< HEAD
+=======
 =======
 	if (queue_work(ceph_inode_to_client(inode)->wb_wq,
 		       &ceph_inode(inode)->i_wb_work)) {
@@ -1467,6 +1569,7 @@ void ceph_queue_writeback(struct inode *inode)
 	} else {
 		dout("ceph_queue_writeback %p failed\n", inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1487,6 +1590,9 @@ static void ceph_writeback_work(struct work_struct *work)
 void ceph_queue_invalidate(struct inode *inode)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ihold(inode);
 	if (queue_work(ceph_inode_to_client(inode)->pg_inv_wq,
 		       &ceph_inode(inode)->i_pg_inv_work)) {
@@ -1494,6 +1600,8 @@ void ceph_queue_invalidate(struct inode *inode)
 	} else {
 		dout("ceph_queue_invalidate %p failed\n", inode);
 		iput(inode);
+<<<<<<< HEAD
+=======
 =======
 	if (queue_work(ceph_inode_to_client(inode)->pg_inv_wq,
 		       &ceph_inode(inode)->i_pg_inv_work)) {
@@ -1545,6 +1653,7 @@ static void ceph_invalidate_nondirty_pages(struct address_space *mapping)
 		pagevec_release(&pvec);
 		cond_resched();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1563,13 +1672,20 @@ static void ceph_invalidate_work(struct work_struct *work)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("invalidate_pages %p gen %d revoking %d\n", inode,
 	     ci->i_rdcache_gen, ci->i_rdcache_revoking);
 	if (ci->i_rdcache_revoking != ci->i_rdcache_gen) {
 		/* nevermind! */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&ci->i_ceph_lock);
 		goto out;
 	}
@@ -1579,6 +1695,8 @@ static void ceph_invalidate_work(struct work_struct *work)
 	truncate_inode_pages(&inode->i_data, 0);
 
 	spin_lock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 		spin_unlock(&inode->i_lock);
 		goto out;
@@ -1590,6 +1708,7 @@ static void ceph_invalidate_work(struct work_struct *work)
 
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (orig_gen == ci->i_rdcache_gen &&
 	    orig_gen == ci->i_rdcache_revoking) {
 		dout("invalidate_pages %p gen %d successful\n", inode,
@@ -1604,8 +1723,12 @@ static void ceph_invalidate_work(struct work_struct *work)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (check)
 		ceph_check_caps(ci, 0, NULL);
@@ -1641,6 +1764,9 @@ void ceph_queue_vmtruncate(struct inode *inode)
 	struct ceph_inode_info *ci = ceph_inode(inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ihold(inode);
 	if (queue_work(ceph_sb_to_client(inode->i_sb)->trunc_wq,
 		       &ci->i_vmtruncate_work)) {
@@ -1649,6 +1775,8 @@ void ceph_queue_vmtruncate(struct inode *inode)
 		dout("ceph_queue_vmtruncate %p failed, pending=%d\n",
 		     inode, ci->i_truncate_pending);
 		iput(inode);
+<<<<<<< HEAD
+=======
 =======
 	if (queue_work(ceph_sb_to_client(inode->i_sb)->trunc_wq,
 		       &ci->i_vmtruncate_work)) {
@@ -1658,6 +1786,7 @@ void ceph_queue_vmtruncate(struct inode *inode)
 		dout("ceph_queue_vmtruncate %p failed, pending=%d\n",
 		     inode, ci->i_truncate_pending);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1675,16 +1804,22 @@ void __ceph_do_pending_vmtruncate(struct inode *inode)
 
 retry:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&ci->i_ceph_lock);
 	if (ci->i_truncate_pending == 0) {
 		dout("__do_pending_vmtruncate %p none pending\n", inode);
 		spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&inode->i_lock);
 	if (ci->i_truncate_pending == 0) {
 		dout("__do_pending_vmtruncate %p none pending\n", inode);
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -1698,8 +1833,12 @@ retry:
 <<<<<<< HEAD
 		spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+		spin_unlock(&ci->i_ceph_lock);
+=======
 		spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		filemap_write_and_wait_range(&inode->i_data, 0,
 					     inode->i_sb->s_maxbytes);
 		goto retry;
@@ -1710,6 +1849,9 @@ retry:
 	dout("__do_pending_vmtruncate %p (%d) to %lld\n", inode,
 	     ci->i_truncate_pending, to);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&ci->i_ceph_lock);
 
 	truncate_inode_pages(inode->i_mapping, to);
@@ -1719,6 +1861,8 @@ retry:
 	if (ci->i_truncate_pending == 0)
 		wake = 1;
 	spin_unlock(&ci->i_ceph_lock);
+<<<<<<< HEAD
+=======
 =======
 	spin_unlock(&inode->i_lock);
 
@@ -1730,6 +1874,7 @@ retry:
 		wake = 1;
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (wrbuffer_refs == 0)
 		ceph_check_caps(ci, CHECK_CAPS_AUTHONLY, NULL);
@@ -1763,8 +1908,12 @@ int ceph_setattr(struct dentry *dentry, struct iattr *attr)
 <<<<<<< HEAD
 	struct inode *parent_inode;
 =======
+<<<<<<< HEAD
+	struct inode *parent_inode;
+=======
 	struct inode *parent_inode = dentry->d_parent->d_inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const unsigned int ia_valid = attr->ia_valid;
 	struct ceph_mds_request *req;
 	struct ceph_mds_client *mdsc = ceph_sb_to_client(dentry->d_sb)->mdsc;
@@ -1791,8 +1940,12 @@ int ceph_setattr(struct dentry *dentry, struct iattr *attr)
 <<<<<<< HEAD
 	spin_lock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&ci->i_ceph_lock);
+=======
 	spin_lock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	issued = __ceph_caps_issued(ci, NULL);
 	dout("setattr %p issued %s\n", inode, ceph_cap_string(issued));
 
@@ -1943,8 +2096,12 @@ int ceph_setattr(struct dentry *dentry, struct iattr *attr)
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (inode_dirty_flags)
 		__mark_inode_dirty(inode, inode_dirty_flags);
@@ -1960,8 +2117,14 @@ int ceph_setattr(struct dentry *dentry, struct iattr *attr)
 		err = ceph_mdsc_do_request(mdsc, parent_inode, req);
 		iput(parent_inode);
 =======
+<<<<<<< HEAD
+		parent_inode = ceph_get_dentry_parent_inode(dentry);
+		err = ceph_mdsc_do_request(mdsc, parent_inode, req);
+		iput(parent_inode);
+=======
 		err = ceph_mdsc_do_request(mdsc, parent_inode, req);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	dout("setattr %p result=%d (%s locally, %d remote)\n", inode, err,
 	     ceph_cap_string(dirtied), mask);
@@ -1973,8 +2136,12 @@ out:
 <<<<<<< HEAD
 	spin_unlock(&ci->i_ceph_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&ci->i_ceph_lock);
+=======
 	spin_unlock(&inode->i_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ceph_mdsc_put_request(req);
 	return err;
 }
@@ -2018,11 +2185,16 @@ int ceph_do_getattr(struct inode *inode, int mask)
  * the AUTH cap, then call the generic handler.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ceph_permission(struct inode *inode, int mask)
 {
 	int err;
 
 	if (mask & MAY_NOT_BLOCK)
+<<<<<<< HEAD
+=======
 =======
 int ceph_permission(struct inode *inode, int mask, unsigned int flags)
 {
@@ -2030,6 +2202,7 @@ int ceph_permission(struct inode *inode, int mask, unsigned int flags)
 
 	if (flags & IPERM_FLAG_RCU)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ECHILD;
 
 	err = ceph_do_getattr(inode, CEPH_CAP_AUTH_SHARED);
@@ -2038,8 +2211,12 @@ int ceph_permission(struct inode *inode, int mask, unsigned int flags)
 <<<<<<< HEAD
 		err = generic_permission(inode, mask);
 =======
+<<<<<<< HEAD
+		err = generic_permission(inode, mask);
+=======
 		err = generic_permission(inode, mask, flags, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 

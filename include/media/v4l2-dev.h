@@ -67,7 +67,13 @@ struct v4l2_file_operations {
 	long (*compat_ioctl32) (struct file *, unsigned int, unsigned long);
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_COMPAT
+	long (*compat_ioctl32) (struct file *, unsigned int, unsigned long);
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long (*get_unmapped_area) (struct file *, unsigned long,
 				unsigned long, unsigned long, unsigned long);
 	int (*mmap) (struct file *, struct vm_area_struct *);

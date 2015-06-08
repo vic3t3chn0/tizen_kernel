@@ -82,8 +82,11 @@ static int e800_ac97_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_add_routes(dapm, audio_map, ARRAY_SIZE(audio_map));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -113,12 +116,19 @@ static struct snd_soc_card e800 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = e800_dai,
 	.num_links = ARRAY_SIZE(e800_dai),
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct gpio e800_audio_gpios[] = {
 	{ GPIO_E800_SPK_AMP_ON, GPIOF_OUT_INIT_HIGH, "Headphone amp" },
 	{ GPIO_E800_HP_AMP_OFF, GPIOF_OUT_INIT_HIGH, "Speaker amp" },
@@ -164,6 +174,8 @@ static struct platform_driver e800_driver = {
 };
 
 module_platform_driver(e800_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *e800_snd_device;
 
@@ -220,6 +232,7 @@ static void __exit e800_exit(void)
 module_init(e800_init);
 module_exit(e800_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR("Ian Molton <spyro@f2s.com>");
@@ -228,4 +241,8 @@ MODULE_LICENSE("GPL v2");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:e800-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:e800-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

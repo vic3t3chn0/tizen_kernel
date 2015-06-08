@@ -68,7 +68,14 @@
 #include <linux/shmem_fs.h>
 #include <linux/slab.h>
 #include <linux/perf_event.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/random.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/random.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/io.h>
 #include <asm/bugs.h>
@@ -88,7 +95,14 @@ extern void mca_init(void);
 extern void sbus_init(void);
 extern void prio_tree_init(void);
 extern void radix_tree_init(void);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 extern void free_initmem(void);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern void free_initmem(void);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_DEBUG_RODATA
 static inline void mark_rodata_ro(void) { }
 #endif
@@ -130,7 +144,14 @@ static char *static_command_line;
 static char *execute_command;
 static char *ramdisk_execute_command;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 unsigned int rom_feature_set = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+unsigned int rom_feature_set = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * If set, this is an indication to the drivers that reset the underlying
  * device before going ahead with the initialization otherwise driver might
@@ -165,7 +186,15 @@ static int __init obsolete_checksetup(char *line)
 	p = __setup_start;
 	do {
 		int n = strlen(p->str);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (parameqn(line, p->str, n)) {
+=======
 		if (!strncmp(line, p->str, n)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!strncmp(line, p->str, n)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (p->early) {
 				/* Already done in parse_early_param?
 				 * (Needs exact match on param part).
@@ -211,12 +240,41 @@ early_param("quiet", quiet_kernel);
 
 static int __init loglevel(char *str)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int newlevel;
+
+	/*
+	 * Only update loglevel value when a correct setting was passed,
+	 * to prevent blind crashes (when loglevel being set to 0) that
+	 * are quite hard to debug
+	 */
+	if (get_option(&str, &newlevel)) {
+		console_loglevel = newlevel;
+		return 0;
+	}
+
+	return -EINVAL;
+=======
 	get_option(&str, &console_loglevel);
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	get_option(&str, &console_loglevel);
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 early_param("loglevel", loglevel);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Change NUL term back to "=", to make "param" the whole string. */
+static int __init repair_env_string(char *param, char *val)
+{
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Unknown boot options get handed to init, unless they look like
  * unused parameters (modprobe will find them in /proc/cmdline).
@@ -224,6 +282,10 @@ early_param("loglevel", loglevel);
 static int __init unknown_bootoption(char *param, char *val)
 {
 	/* Change NUL term back to "=", to make "param" the whole string. */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (val) {
 		/* param=val or param="val"? */
 		if (val == param+strlen(param)+1)
@@ -235,6 +297,22 @@ static int __init unknown_bootoption(char *param, char *val)
 		} else
 			BUG();
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+}
+
+/*
+ * Unknown boot options get handed to init, unless they look like
+ * unused parameters (modprobe will find them in /proc/cmdline).
+ */
+static int __init unknown_bootoption(char *param, char *val)
+{
+	repair_env_string(param, val);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Handle obsolete-style parameters */
 	if (obsolete_checksetup(param))
@@ -273,10 +351,19 @@ static int __init unknown_bootoption(char *param, char *val)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_PAGEALLOC
 int __read_mostly debug_pagealloc_enabled = 0;
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init init_setup(char *str)
 {
 	unsigned int i;
@@ -349,6 +436,13 @@ static __initdata DECLARE_COMPLETION(kthreadd_done);
 static noinline void __init_refok rest_init(void)
 {
 	int pid;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	const struct sched_param param = { .sched_priority = 1 };
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_scheduler_starting();
 	/*
@@ -362,6 +456,13 @@ static noinline void __init_refok rest_init(void)
 	rcu_read_lock();
 	kthreadd_task = find_task_by_pid_ns(pid, &init_pid_ns);
 	rcu_read_unlock();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sched_setscheduler_nocheck(kthreadd_task, SCHED_FIFO, &param);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	complete(&kthreadd_done);
 
 	/*
@@ -369,10 +470,20 @@ static noinline void __init_refok rest_init(void)
 	 * at least once to get things moving:
 	 */
 	init_idle_bootup_task(current);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	schedule_preempt_disabled();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_enable_no_resched();
 	schedule();
 	preempt_disable();
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Call into cpu_idle with preempt disabled */
 	cpu_idle();
 }
@@ -383,7 +494,15 @@ static int __init do_early_param(char *param, char *val)
 	const struct obs_kernel_param *p;
 
 	for (p = __setup_start; p < __setup_end; p++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((p->early && parameq(param, p->str)) ||
+=======
 		if ((p->early && strcmp(param, p->str) == 0) ||
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((p->early && strcmp(param, p->str) == 0) ||
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    (strcmp(param, "console") == 0 &&
 		     strcmp(p->str, "earlycon") == 0)
 		) {
@@ -398,7 +517,15 @@ static int __init do_early_param(char *param, char *val)
 
 void __init parse_early_options(char *cmdline)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	parse_args("early options", cmdline, NULL, 0, 0, 0, do_early_param);
+=======
 	parse_args("early options", cmdline, NULL, 0, do_early_param);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	parse_args("early options", cmdline, NULL, 0, do_early_param);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Arch code calls this early on, or if not, just before other parsing. */
@@ -444,8 +571,18 @@ void __init __weak thread_info_cache_init(void)
 static void __init mm_init(void)
 {
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * page_cgroup requires contiguous pages,
+	 * bigger than MAX_ORDER unless SPARSEMEM.
+=======
 	 * page_cgroup requires countinous pages as memmap
 	 * and it's bigger than MAX_ORDER unless SPARSEMEM.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	 * page_cgroup requires countinous pages as memmap
+	 * and it's bigger than MAX_ORDER unless SPARSEMEM.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	page_cgroup_init_flatmem();
 	mem_init();
@@ -460,13 +597,29 @@ asmlinkage void __init start_kernel(void)
 	char * command_line;
 	extern const struct kernel_param __start___param[], __stop___param[];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	smp_setup_processor_id();
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	smp_setup_processor_id();
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Need to run as early as possible, to initialize the
 	 * lockdep hash:
 	 */
 	lockdep_init();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	smp_setup_processor_id();
+	debug_objects_early_init();
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	debug_objects_early_init();
 
 	/*
@@ -474,6 +627,10 @@ asmlinkage void __init start_kernel(void)
 	 */
 	boot_init_stack_canary();
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cgroup_init_early();
 
 	local_irq_disable();
@@ -488,6 +645,16 @@ asmlinkage void __init start_kernel(void)
 	page_address_init();
 	printk(KERN_NOTICE "%s", linux_banner);
 	setup_arch(&command_line);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Set up the the initial canary ASAP:
+	 */
+	boot_init_stack_canary();
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mm_init_owner(&init_mm, &init_task);
 	mm_init_cpumask(&init_mm);
 	setup_command_line(command_line);
@@ -502,7 +669,18 @@ asmlinkage void __init start_kernel(void)
 	parse_early_param();
 	parse_args("Booting kernel", static_command_line, __start___param,
 		   __stop___param - __start___param,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		   0, 0, &unknown_bootoption);
+
+	jump_label_init();
+
+=======
 		   &unknown_bootoption);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		   &unknown_bootoption);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * These use large bootmem allocations and must precede
 	 * kmem_cache_init()
@@ -551,6 +729,15 @@ asmlinkage void __init start_kernel(void)
 	early_boot_irqs_disabled = false;
 	local_irq_enable();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Interrupts are enabled now so all GFP allocations are safe. */
+	gfp_allowed_mask = __GFP_BITS_MASK;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_init_late();
 
 	/*
@@ -582,7 +769,14 @@ asmlinkage void __init start_kernel(void)
 	}
 #endif
 	page_cgroup_init();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	enable_debug_pagealloc();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	enable_debug_pagealloc();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	debug_objects_mem_init();
 	kmemleak_init();
 	setup_per_cpu_pageset();
@@ -639,7 +833,15 @@ static void __init do_ctors(void)
 #endif
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+bool initcall_debug;
+=======
 int initcall_debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int initcall_debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 core_param(initcall_debug, initcall_debug, bool, 0644);
 
 static char msgbuf[64];
@@ -693,6 +895,67 @@ int __init_or_module do_one_initcall(initcall_t fn)
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern initcall_t __initcall_start[];
+extern initcall_t __initcall0_start[];
+extern initcall_t __initcall1_start[];
+extern initcall_t __initcall2_start[];
+extern initcall_t __initcall3_start[];
+extern initcall_t __initcall4_start[];
+extern initcall_t __initcall5_start[];
+extern initcall_t __initcall6_start[];
+extern initcall_t __initcall7_start[];
+extern initcall_t __initcall_end[];
+
+static initcall_t *initcall_levels[] __initdata = {
+	__initcall0_start,
+	__initcall1_start,
+	__initcall2_start,
+	__initcall3_start,
+	__initcall4_start,
+	__initcall5_start,
+	__initcall6_start,
+	__initcall7_start,
+	__initcall_end,
+};
+
+static char *initcall_level_names[] __initdata = {
+	"early parameters",
+	"core parameters",
+	"postcore parameters",
+	"arch parameters",
+	"subsys parameters",
+	"fs parameters",
+	"device parameters",
+	"late parameters",
+};
+
+static void __init do_initcall_level(int level)
+{
+	extern const struct kernel_param __start___param[], __stop___param[];
+	initcall_t *fn;
+
+	strcpy(static_command_line, saved_command_line);
+	parse_args(initcall_level_names[level],
+		   static_command_line, __start___param,
+		   __stop___param - __start___param,
+		   level, level,
+		   repair_env_string);
+
+	for (fn = initcall_levels[level]; fn < initcall_levels[level+1]; fn++)
+		do_one_initcall(*fn);
+}
+
+static void __init do_initcalls(void)
+{
+	int level;
+
+	for (level = 0; level < ARRAY_SIZE(initcall_levels) - 1; level++)
+		do_initcall_level(level);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern initcall_t __initcall_start[], __initcall_end[], __early_initcall_end[];
 
 static void __init do_initcalls(void)
@@ -701,6 +964,10 @@ static void __init do_initcalls(void)
 
 	for (fn = __early_initcall_end; fn < __initcall_end; fn++)
 		do_one_initcall(*fn);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -714,28 +981,62 @@ static void __init do_basic_setup(void)
 {
 	cpuset_init_smp();
 	usermodehelper_init();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	shmem_init();
+	driver_init();
+	init_irq_proc();
+	do_ctors();
+	usermodehelper_enable();
+	do_initcalls();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_tmpfs();
 	driver_init();
 	init_irq_proc();
 	do_ctors();
 	do_initcalls();
 	random_int_secret_init();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init do_pre_smp_initcalls(void)
 {
 	initcall_t *fn;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (fn = __initcall_start; fn < __initcall0_start; fn++)
+=======
 	for (fn = __initcall_start; fn < __early_initcall_end; fn++)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (fn = __initcall_start; fn < __early_initcall_end; fn++)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		do_one_initcall(*fn);
 }
 
 static void run_init_process(const char *init_filename)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	argv_init[0] = init_filename;
+	kernel_execve(init_filename, argv_init, envp_init);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 	argv_init[0] = init_filename;
 	ret = kernel_execve(init_filename, argv_init, envp_init);
 	pr_info("run_init_process Ret : %d\n", ret);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* This is a non __init function. Force it to be noinline otherwise gcc
@@ -785,10 +1086,19 @@ static int __init kernel_init(void * unused)
 	 * Wait until kthreadd is all set-up.
 	 */
 	wait_for_completion(&kthreadd_done);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Now the scheduler is fully set up and can do blocking allocations */
 	gfp_allowed_mask = __GFP_BITS_MASK;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * init can allocate pages on any node
 	 */

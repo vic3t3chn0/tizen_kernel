@@ -165,7 +165,16 @@ static int xenvif_change_mtu(struct net_device *dev, int mtu)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static netdev_features_t xenvif_fix_features(struct net_device *dev,
+	netdev_features_t features)
+=======
 static u32 xenvif_fix_features(struct net_device *dev, u32 features)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u32 xenvif_fix_features(struct net_device *dev, u32 features)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct xenvif *vif = netdev_priv(dev);
 
@@ -222,7 +231,15 @@ static void xenvif_get_strings(struct net_device *dev, u32 stringset, u8 * data)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct ethtool_ops xenvif_ethtool_ops = {
+=======
 static struct ethtool_ops xenvif_ethtool_ops = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct ethtool_ops xenvif_ethtool_ops = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_link	= ethtool_op_get_link,
 
 	.get_sset_count = xenvif_get_sset_count,
@@ -230,7 +247,15 @@ static struct ethtool_ops xenvif_ethtool_ops = {
 	.get_strings = xenvif_get_strings,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct net_device_ops xenvif_netdev_ops = {
+=======
 static struct net_device_ops xenvif_netdev_ops = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct net_device_ops xenvif_netdev_ops = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_start_xmit	= xenvif_start_xmit,
 	.ndo_get_stats	= xenvif_get_stats,
 	.ndo_open	= xenvif_open,
@@ -342,6 +367,22 @@ err:
 	return err;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void xenvif_disconnect(struct xenvif *vif)
+{
+	struct net_device *dev = vif->dev;
+	if (netif_carrier_ok(dev)) {
+		rtnl_lock();
+		netif_carrier_off(dev); /* discard queued packets */
+		if (netif_running(dev))
+			xenvif_down(vif);
+		rtnl_unlock();
+		xenvif_put(vif);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void xenvif_carrier_off(struct xenvif *vif)
 {
 	struct net_device *dev = vif->dev;
@@ -358,6 +399,10 @@ void xenvif_disconnect(struct xenvif *vif)
 {
 	if (netif_carrier_ok(vif->dev))
 		xenvif_carrier_off(vif);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	atomic_dec(&vif->refcnt);
 	wait_event(vif->waiting_to_free, atomic_read(&vif->refcnt) == 0);

@@ -4,7 +4,11 @@
 <<<<<<< HEAD
 #define MAX_NR_RATES	1024
 =======
+<<<<<<< HEAD
+#define MAX_NR_RATES	1024
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAX_PACKS	20
 #define MAX_PACKS_HS	(MAX_PACKS * 8)	/* in high speed mode */
 #define MAX_URBS	8
@@ -92,8 +96,11 @@ struct snd_usb_substream {
 	dma_addr_t sync_dma;			/* DMA address of syncbuf */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int speed;		/* USB_SPEED_XXX */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u64 formats;			/* format bitmasks (all or'ed) */
 	unsigned int num_formats;		/* number of supported audio formats (list) */
@@ -106,7 +113,12 @@ struct snd_usb_substream {
 	int last_frame_number;          /* stored frame number */
 	int last_delay;                 /* stored delay */
 =======
+<<<<<<< HEAD
+	int last_frame_number;          /* stored frame number */
+	int last_delay;                 /* stored delay */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct snd_usb_stream {

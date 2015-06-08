@@ -32,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/miscdevice.h>
 #include <linux/wait.h>
 #include <linux/poll.h>
@@ -242,8 +246,12 @@ static bool __rfkill_set_hw_state(struct rfkill *rfkill,
 <<<<<<< HEAD
 	any = !!(rfkill->state & RFKILL_BLOCK_ANY);
 =======
+<<<<<<< HEAD
+	any = !!(rfkill->state & RFKILL_BLOCK_ANY);
+=======
 	any = rfkill->state & RFKILL_BLOCK_ANY;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&rfkill->lock, flags);
 
 	rfkill_led_trigger_event(rfkill);
@@ -266,7 +274,11 @@ static void rfkill_set_block(struct rfkill *rfkill, bool blocked)
 <<<<<<< HEAD
 	bool prev, curr;
 =======
+<<<<<<< HEAD
+	bool prev, curr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	if (unlikely(rfkill->dev.power.power_state.event & PM_EVENT_SLEEP))
@@ -285,7 +297,12 @@ static void rfkill_set_block(struct rfkill *rfkill, bool blocked)
 	prev = rfkill->state & RFKILL_BLOCK_SW;
 
 =======
+<<<<<<< HEAD
+	prev = rfkill->state & RFKILL_BLOCK_SW;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rfkill->state & RFKILL_BLOCK_SW)
 		rfkill->state |= RFKILL_BLOCK_SW_PREV;
 	else
@@ -316,6 +333,9 @@ static void rfkill_set_block(struct rfkill *rfkill, bool blocked)
 	rfkill->state &= ~RFKILL_BLOCK_SW_SETCALL;
 	rfkill->state &= ~RFKILL_BLOCK_SW_PREV;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	curr = rfkill->state & RFKILL_BLOCK_SW;
 
 	spin_unlock_irqrestore(&rfkill->lock, flags);
@@ -325,12 +345,15 @@ static void rfkill_set_block(struct rfkill *rfkill, bool blocked)
 	if (prev != curr)
 		rfkill_event(rfkill);
 
+<<<<<<< HEAD
+=======
 =======
 	spin_unlock_irqrestore(&rfkill->lock, flags);
 
 	rfkill_led_trigger_event(rfkill);
 	rfkill_event(rfkill);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_RFKILL_INPUT
@@ -676,8 +699,12 @@ static ssize_t rfkill_soft_store(struct device *dev,
 <<<<<<< HEAD
 	err = kstrtoul(buf, 0, &state);
 =======
+<<<<<<< HEAD
+	err = kstrtoul(buf, 0, &state);
+=======
 	err = strict_strtoul(buf, 0, &state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 
@@ -724,8 +751,12 @@ static ssize_t rfkill_state_store(struct device *dev,
 <<<<<<< HEAD
 	err = kstrtoul(buf, 0, &state);
 =======
+<<<<<<< HEAD
+	err = kstrtoul(buf, 0, &state);
+=======
 	err = strict_strtoul(buf, 0, &state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 

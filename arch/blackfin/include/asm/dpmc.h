@@ -119,8 +119,11 @@
 void sleep_mode(u32 sic_iwr0, u32 sic_iwr1, u32 sic_iwr2);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void hibernate_mode(u32 sic_iwr0, u32 sic_iwr1, u32 sic_iwr2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sleep_deeper(u32 sic_iwr0, u32 sic_iwr1, u32 sic_iwr2);
 void do_hibernate(int wakeup);
 void set_dram_srfs(void);
@@ -137,6 +140,8 @@ struct bfin_dpmc_platform_data {
 	unsigned short vr_settling_time; /* in us */
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #else
@@ -166,6 +171,7 @@ struct bfin_dpmc_platform_data {
 	w[P0 + (x - PLL_CTL)] = R0;\
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif	/*_BLACKFIN_DPMC_H_*/

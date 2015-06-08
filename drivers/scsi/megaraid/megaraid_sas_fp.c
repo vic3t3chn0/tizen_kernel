@@ -52,6 +52,13 @@
 #include <scsi/scsi_host.h>
 
 #include "megaraid_sas_fusion.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "megaraid_sas.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/div64.h>
 
 #define ABS_DIFF(a, b)   (((a) > (b)) ? ((a) - (b)) : ((b) - (a)))
@@ -226,8 +233,19 @@ u32 MR_GetSpanBlock(u32 ld, u64 row, u64 *span_blk,
 *    span          - Span number
 *    block         - Absolute Block number in the physical disk
 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+u8 MR_GetPhyParams(struct megasas_instance *instance, u32 ld, u64 stripRow,
+		   u16 stripRef, u64 *pdBlock, u16 *pDevHandle,
+		   struct RAID_CONTEXT *pRAID_Context,
+=======
 u8 MR_GetPhyParams(u32 ld, u64 stripRow, u16 stripRef, u64 *pdBlock,
 		   u16 *pDevHandle, struct RAID_CONTEXT *pRAID_Context,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u8 MR_GetPhyParams(u32 ld, u64 stripRow, u16 stripRef, u64 *pdBlock,
+		   u16 *pDevHandle, struct RAID_CONTEXT *pRAID_Context,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		   struct MR_FW_RAID_MAP_ALL *map)
 {
 	struct MR_LD_RAID  *raid = MR_LdRaidGet(ld, map);
@@ -279,7 +297,18 @@ u8 MR_GetPhyParams(u32 ld, u64 stripRow, u16 stripRef, u64 *pdBlock,
 		*pDevHandle = MR_PdDevHandleGet(pd, map);
 	else {
 		*pDevHandle = MR_PD_INVALID; /* set dev handle as invalid. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((raid->level >= 5) &&
+		    ((instance->pdev->device != PCI_DEVICE_ID_LSI_INVADER) ||
+		     (instance->pdev->device == PCI_DEVICE_ID_LSI_INVADER &&
+		      raid->regTypeReqOnRead != REGION_TYPE_UNUSED)))
+=======
 		if (raid->level >= 5)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (raid->level >= 5)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pRAID_Context->regLockFlags = REGION_TYPE_EXCLUSIVE;
 		else if (raid->level == 1) {
 			/* Get alternate Pd. */
@@ -288,7 +317,14 @@ u8 MR_GetPhyParams(u32 ld, u64 stripRow, u16 stripRef, u64 *pdBlock,
 				/* Get dev handle from Pd */
 				*pDevHandle = MR_PdDevHandleGet(pd, map);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		retval = FALSE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		retval = FALSE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	*pdBlock += stripRef + MR_LdSpanPtrGet(ld, span, map)->startBlk;
@@ -307,7 +343,16 @@ u8 MR_GetPhyParams(u32 ld, u64 stripRow, u16 stripRef, u64 *pdBlock,
 * This function will return 0 if region lock was acquired OR return num strips
 */
 u8
+<<<<<<< HEAD
+<<<<<<< HEAD
+MR_BuildRaidContext(struct megasas_instance *instance,
+		    struct IO_REQUEST_INFO *io_info,
+=======
 MR_BuildRaidContext(struct IO_REQUEST_INFO *io_info,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MR_BuildRaidContext(struct IO_REQUEST_INFO *io_info,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    struct RAID_CONTEXT *pRAID_Context,
 		    struct MR_FW_RAID_MAP_ALL *map)
 {
@@ -395,8 +440,22 @@ MR_BuildRaidContext(struct IO_REQUEST_INFO *io_info,
 	}
 
 	pRAID_Context->timeoutValue     = map->raidMap.fpPdIoTimeoutSec;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (instance->pdev->device == PCI_DEVICE_ID_LSI_INVADER)
+		pRAID_Context->regLockFlags = (isRead) ?
+			raid->regTypeReqOnRead : raid->regTypeReqOnWrite;
+	else
+		pRAID_Context->regLockFlags = (isRead) ?
+			REGION_TYPE_SHARED_READ : raid->regTypeReqOnWrite;
+=======
 	pRAID_Context->regLockFlags     = (isRead) ? REGION_TYPE_SHARED_READ :
 		raid->regTypeReqOnWrite;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pRAID_Context->regLockFlags     = (isRead) ? REGION_TYPE_SHARED_READ :
+		raid->regTypeReqOnWrite;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pRAID_Context->VirtualDiskTgtId = raid->targetId;
 	pRAID_Context->regLockRowLBA    = regStart;
 	pRAID_Context->regLockLength    = regSize;
@@ -405,7 +464,16 @@ MR_BuildRaidContext(struct IO_REQUEST_INFO *io_info,
 	/*Get Phy Params only if FP capable, or else leave it to MR firmware
 	  to do the calculation.*/
 	if (io_info->fpOkForIo) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		retval = MR_GetPhyParams(instance, ld, start_strip,
+					 ref_in_start_stripe,
+=======
 		retval = MR_GetPhyParams(ld, start_strip, ref_in_start_stripe,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		retval = MR_GetPhyParams(ld, start_strip, ref_in_start_stripe,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 &io_info->pdBlock,
 					 &io_info->devHandle, pRAID_Context,
 					 map);
@@ -416,7 +484,16 @@ MR_BuildRaidContext(struct IO_REQUEST_INFO *io_info,
 	} else if (isRead) {
 		uint stripIdx;
 		for (stripIdx = 0; stripIdx < num_strips; stripIdx++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (!MR_GetPhyParams(instance, ld,
+					     start_strip + stripIdx,
+=======
 			if (!MR_GetPhyParams(ld, start_strip + stripIdx,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (!MR_GetPhyParams(ld, start_strip + stripIdx,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     ref_in_start_stripe,
 					     &io_info->pdBlock,
 					     &io_info->devHandle,

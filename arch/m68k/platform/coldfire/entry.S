@@ -56,8 +56,11 @@ sw_usp:
 .globl inthandler
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 .globl fasthandler
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enosys:
 	mov.l	#sys_ni_syscall,%d3
@@ -69,9 +72,15 @@ ENTRY(system_call)
 	move	#0x2000,%sr		/* enable intrs again */
 	GET_CURRENT(%d2)
 =======
+<<<<<<< HEAD
+	SAVE_ALL_SYS
+	move	#0x2000,%sr		/* enable intrs again */
+	GET_CURRENT(%d2)
+=======
 	SAVE_ALL
 	move	#0x2000,%sr		/* enable intrs again */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cmpl	#NR_syscalls,%d0
 	jcc	enosys
@@ -148,8 +157,12 @@ Luser_return:
 <<<<<<< HEAD
 	moveb	%a0@(TINFO_FLAGS+3),%d1	/* thread_info->flags (low 8 bits) */
 =======
+<<<<<<< HEAD
+	moveb	%a0@(TINFO_FLAGS+3),%d1	/* thread_info->flags (low 8 bits) */
+=======
 	movel	%a0@(TINFO_FLAGS),%d1	/* get thread_info->flags */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jne	Lwork_to_do		/* still work to do */
 
 Lreturn:
@@ -163,9 +176,12 @@ Lwork_to_do:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* GERG: do we need something here for TRACEing?? */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 Lsignal_return:
 	subql	#4,%sp			/* dummy return address */
 	SAVE_SWITCH_STACK
@@ -185,10 +201,15 @@ ENTRY(inthandler)
 	SAVE_ALL_INT
 	GET_CURRENT(%d2)
 =======
+<<<<<<< HEAD
+	SAVE_ALL_INT
+	GET_CURRENT(%d2)
+=======
 	SAVE_ALL
 	moveq	#-1,%d0
 	movel	%d0,%sp@(PT_OFF_ORIG_D0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	movew	%sp@(PT_OFF_FORMATVEC),%d0 /* put exception # in d0 */
 	andl	#0x03fc,%d0		/* mask out vector only */
@@ -204,6 +225,9 @@ ENTRY(inthandler)
 /*
  * Beware - when entering resume, prev (the current task) is
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * in a0, next (the new task) is in a1, so don't change these
  * registers until their contents are no longer needed.
  */
@@ -226,6 +250,8 @@ ENTRY(resume)
 	RESTORE_SWITCH_STACK
 	rts
 
+<<<<<<< HEAD
+=======
 =======
  * in a0, next (the new task) is in a1,so don't change these
  * registers until their contents are no longer needed.
@@ -246,3 +272,4 @@ ENTRY(resume)
 	WRUSP
 	rts
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

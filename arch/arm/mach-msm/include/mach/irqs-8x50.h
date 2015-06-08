@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2008-2010, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2008-2010, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2008-2009, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -64,8 +68,12 @@
 <<<<<<< HEAD
 #define INT_ARMQC_PERFMON    (32 + 9)
 =======
+<<<<<<< HEAD
+#define INT_ARMQC_PERFMON    (32 + 9)
+=======
 #define INT_ARM11_PM         (32 + 9)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INT_SDMA_NON_SECURE  (32 + 10)
 #define INT_TSIF_IRQ         (32 + 11)
 #define INT_UART1DM_IRQ      (32 + 12)
@@ -96,5 +104,9 @@
 <<<<<<< HEAD
 #define INT_ADSP_A11_SMSM    INT_ADSP_A11
 =======
+<<<<<<< HEAD
+#define INT_ADSP_A11_SMSM    INT_ADSP_A11
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

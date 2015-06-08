@@ -9,7 +9,12 @@
 struct io_cq;
 
 =======
+<<<<<<< HEAD
+struct io_cq;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef int (elevator_merge_fn) (struct request_queue *, struct request **,
 				 struct bio *);
 
@@ -30,7 +35,13 @@ typedef int (elevator_reinsert_req_fn) (struct request_queue *,
 					struct request *);
 typedef bool (elevator_is_urgent_fn) (struct request_queue *);
 =======
+<<<<<<< HEAD
+typedef int (elevator_reinsert_req_fn) (struct request_queue *,
+					struct request *);
+typedef bool (elevator_is_urgent_fn) (struct request_queue *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct request *(elevator_request_list_fn) (struct request_queue *, struct request *);
 typedef void (elevator_completed_req_fn) (struct request_queue *, struct request *);
 typedef int (elevator_may_queue_fn) (struct request_queue *, int);
@@ -39,7 +50,12 @@ typedef int (elevator_may_queue_fn) (struct request_queue *, int);
 typedef void (elevator_init_icq_fn) (struct io_cq *);
 typedef void (elevator_exit_icq_fn) (struct io_cq *);
 =======
+<<<<<<< HEAD
+typedef void (elevator_init_icq_fn) (struct io_cq *);
+typedef void (elevator_exit_icq_fn) (struct io_cq *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef int (elevator_set_req_fn) (struct request_queue *, struct request *, gfp_t);
 typedef void (elevator_put_req_fn) (struct request *);
 typedef void (elevator_activate_req_fn) (struct request_queue *, struct request *);
@@ -63,7 +79,13 @@ struct elevator_ops
 	elevator_is_urgent_fn *elevator_is_urgent_fn;
 
 =======
+<<<<<<< HEAD
+	elevator_reinsert_req_fn *elevator_reinsert_req_fn;
+	elevator_is_urgent_fn *elevator_is_urgent_fn;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	elevator_activate_req_fn *elevator_activate_req_fn;
 	elevator_deactivate_req_fn *elevator_deactivate_req_fn;
 
@@ -77,7 +99,13 @@ struct elevator_ops
 	elevator_exit_icq_fn *elevator_exit_icq_fn;	/* ditto */
 
 =======
+<<<<<<< HEAD
+	elevator_init_icq_fn *elevator_init_icq_fn;	/* see iocontext.h */
+	elevator_exit_icq_fn *elevator_exit_icq_fn;	/* ditto */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	elevator_set_req_fn *elevator_set_req_fn;
 	elevator_put_req_fn *elevator_put_req_fn;
 
@@ -87,8 +115,11 @@ struct elevator_ops
 	elevator_exit_fn *elevator_exit_fn;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	void (*trim)(struct io_context *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define ELV_NAME_MAX	(16)
@@ -105,6 +136,9 @@ struct elv_fs_entry {
 struct elevator_type
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* managed by elevator core */
 	struct kmem_cache *icq_cache;
 
@@ -119,6 +153,8 @@ struct elevator_type
 	/* managed by elevator core */
 	char icq_cache_name[ELV_NAME_MAX + 5];	/* elvname + "_io_cq" */
 	struct list_head list;
+<<<<<<< HEAD
+=======
 =======
 	struct list_head list;
 	struct elevator_ops ops;
@@ -126,6 +162,7 @@ struct elevator_type
 	char elevator_name[ELV_NAME_MAX];
 	struct module *elevator_owner;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -138,11 +175,17 @@ struct elevator_queue
 	void *elevator_data;
 	struct kobject kobj;
 =======
+<<<<<<< HEAD
+	struct elevator_type *type;
+	void *elevator_data;
+	struct kobject kobj;
+=======
 	struct elevator_ops *ops;
 	void *elevator_data;
 	struct kobject kobj;
 	struct elevator_type *elevator_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mutex sysfs_lock;
 	struct hlist_head *hash;
 	unsigned int registered:1;
@@ -158,8 +201,11 @@ extern void __elv_add_request(struct request_queue *, struct request *, int);
 extern int elv_merge(struct request_queue *, struct request **, struct bio *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int elv_try_merge(struct request *, struct bio *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void elv_merge_requests(struct request_queue *, struct request *,
 			       struct request *);
 extern void elv_merged_request(struct request_queue *, struct request *, int);
@@ -169,7 +215,11 @@ extern void elv_requeue_request(struct request_queue *, struct request *);
 <<<<<<< HEAD
 extern int elv_reinsert_request(struct request_queue *, struct request *);
 =======
+<<<<<<< HEAD
+extern int elv_reinsert_request(struct request_queue *, struct request *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct request *elv_former_request(struct request_queue *, struct request *);
 extern struct request *elv_latter_request(struct request_queue *, struct request *);
 extern int elv_register_queue(struct request_queue *q);
@@ -187,8 +237,12 @@ extern void elv_drain_elevator(struct request_queue *);
 <<<<<<< HEAD
 extern int elv_register(struct elevator_type *);
 =======
+<<<<<<< HEAD
+extern int elv_register(struct elevator_type *);
+=======
 extern void elv_register(struct elevator_type *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void elv_unregister(struct elevator_type *);
 
 /*
@@ -203,8 +257,12 @@ extern int elevator_change(struct request_queue *, const char *);
 <<<<<<< HEAD
 extern bool elv_rq_merge_ok(struct request *, struct bio *);
 =======
+<<<<<<< HEAD
+extern bool elv_rq_merge_ok(struct request *, struct bio *);
+=======
 extern int elv_rq_merge_ok(struct request *, struct bio *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Helper functions.
@@ -218,8 +276,12 @@ extern struct request *elv_rb_latter_request(struct request_queue *, struct requ
 <<<<<<< HEAD
 extern void elv_rb_add(struct rb_root *, struct request *);
 =======
+<<<<<<< HEAD
+extern void elv_rb_add(struct rb_root *, struct request *);
+=======
 extern struct request *elv_rb_add(struct rb_root *, struct request *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void elv_rb_del(struct rb_root *, struct request *);
 extern struct request *elv_rb_find(struct rb_root *, sector_t);
 
@@ -266,6 +328,8 @@ enum {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * io context count accounting
  */
@@ -284,5 +348,6 @@ enum {
 })
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_BLOCK */
 #endif

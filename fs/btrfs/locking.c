@@ -25,6 +25,9 @@
 #include "locking.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void btrfs_assert_tree_read_locked(struct extent_buffer *eb);
 
 /*
@@ -160,6 +163,8 @@ int btrfs_try_tree_write_lock(struct extent_buffer *eb)
 	atomic_inc(&eb->write_locks);
 	atomic_inc(&eb->spinning_writers);
 	eb->lock_owner = current->pid;
+<<<<<<< HEAD
+=======
 =======
 static inline void spin_nested(struct extent_buffer *eb)
 {
@@ -271,11 +276,15 @@ static int btrfs_wake_function(wait_queue_t *wait, unsigned mode,
 {
 	autoremove_wake_function(wait, mode, sync, key);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * drop a spinning read lock
  */
 void btrfs_tree_read_unlock(struct extent_buffer *eb)
@@ -377,6 +386,8 @@ void btrfs_assert_tree_locked(struct extent_buffer *eb)
 void btrfs_assert_tree_read_locked(struct extent_buffer *eb)
 {
 	BUG_ON(!atomic_read(&eb->read_locks));
+<<<<<<< HEAD
+=======
 =======
  * returns with the extent buffer spinlocked.
  *
@@ -447,4 +458,5 @@ void btrfs_assert_tree_locked(struct extent_buffer *eb)
 	if (!test_bit(EXTENT_BUFFER_BLOCKING, &eb->bflags))
 		assert_spin_locked(&eb->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

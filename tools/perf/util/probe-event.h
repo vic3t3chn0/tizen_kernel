@@ -13,7 +13,11 @@ struct probe_trace_point {
 <<<<<<< HEAD
 	char		*module;	/* Module name */
 =======
+<<<<<<< HEAD
+	char		*module;	/* Module name */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	offset;		/* Offset from symbol */
 	bool		retprobe;	/* Return probe flag */
 };

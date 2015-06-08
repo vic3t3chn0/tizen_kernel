@@ -1,7 +1,15 @@
 /*
  *	w1_therm.c
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (c) 2004 Evgeniy Polyakov <zbr@ioremap.net>
+=======
  * Copyright (c) 2004 Evgeniy Polyakov <johnpol@2ka.mipt.ru>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (c) 2004 Evgeniy Polyakov <johnpol@2ka.mipt.ru>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *
  * This program is free software; you can redistribute it and/or modify
@@ -34,7 +42,15 @@
 #include "../w1_family.h"
 
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_AUTHOR("Evgeniy Polyakov <zbr@ioremap.net>");
+=======
 MODULE_AUTHOR("Evgeniy Polyakov <johnpol@2ka.mipt.ru>");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_AUTHOR("Evgeniy Polyakov <johnpol@2ka.mipt.ru>");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_DESCRIPTION("Driver for 1-wire Dallas network protocol, temperature family.");
 
 /* Allow the strong pullup to be disabled, but default to enabled.
@@ -86,6 +102,17 @@ static struct w1_family w1_therm_family_DS1822 = {
 	.fops = &w1_therm_fops,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct w1_family w1_therm_family_DS28EA00 = {
+	.fid = W1_THERM_DS28EA00,
+	.fops = &w1_therm_fops,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct w1_therm_family_converter
 {
 	u8			broken;
@@ -111,6 +138,16 @@ static struct w1_therm_family_converter w1_therm_families[] = {
 		.f		= &w1_therm_family_DS18B20,
 		.convert 	= w1_DS18B20_convert_temp
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.f		= &w1_therm_family_DS28EA00,
+		.convert	= w1_DS18B20_convert_temp
+	},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline int w1_DS18B20_convert_temp(u8 rom[9])
@@ -166,11 +203,27 @@ static ssize_t w1_therm_read(struct device *device,
 {
 	struct w1_slave *sl = dev_to_w1_slave(device);
 	struct w1_master *dev = sl->master;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 rom[9], crc, verdict, external_power;
+	int i, max_trying = 10;
+	ssize_t c = PAGE_SIZE;
+
+	i = mutex_lock_interruptible(&dev->mutex);
+	if (i != 0)
+		return i;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 rom[9], crc, verdict;
 	int i, max_trying = 10;
 	ssize_t c = PAGE_SIZE;
 
 	mutex_lock(&dev->mutex);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(rom, 0, sizeof(rom));
 
@@ -181,6 +234,42 @@ static ssize_t w1_therm_read(struct device *device,
 		if (!w1_reset_select_slave(sl)) {
 			int count = 0;
 			unsigned int tm = 750;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			unsigned long sleep_rem;
+
+			w1_write_8(dev, W1_READ_PSUPPLY);
+			external_power = w1_read_8(dev);
+
+			if (w1_reset_select_slave(sl))
+				continue;
+
+			/* 750ms strong pullup (or delay) after the convert */
+			if (!external_power && w1_strong_pullup)
+				w1_next_pullup(dev, tm);
+
+			w1_write_8(dev, W1_CONVERT_TEMP);
+
+			if (external_power) {
+				mutex_unlock(&dev->mutex);
+
+				sleep_rem = msleep_interruptible(tm);
+				if (sleep_rem != 0)
+					return -EINTR;
+
+				i = mutex_lock_interruptible(&dev->mutex);
+				if (i != 0)
+					return i;
+			} else if (!w1_strong_pullup) {
+				sleep_rem = msleep_interruptible(tm);
+				if (sleep_rem != 0) {
+					mutex_unlock(&dev->mutex);
+					return -EINTR;
+				}
+			}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* 750ms strong pullup (or delay) after the convert */
 			if (w1_strong_pullup)
@@ -188,6 +277,10 @@ static ssize_t w1_therm_read(struct device *device,
 			w1_write_8(dev, W1_CONVERT_TEMP);
 			if (!w1_strong_pullup)
 				msleep(tm);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (!w1_reset_select_slave(sl)) {
 

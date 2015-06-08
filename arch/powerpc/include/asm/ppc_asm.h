@@ -64,7 +64,12 @@ BEGIN_FW_FTR_SECTION;							\
 	ld	r12,_MSR(r1);						\
 	andi.	r10,r12,MSR_PR;		/* Restore cr0 (coming from user) */ \
 =======
+<<<<<<< HEAD
+	ld	r12,_MSR(r1);						\
+	andi.	r10,r12,MSR_PR;		/* Restore cr0 (coming from user) */ \
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 33:									\
 END_FW_FTR_SECTION_IFSET(FW_FEATURE_SPLPAR)
 
@@ -156,6 +161,9 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_SPLPAR)
 #define REST_32VSRSU(n,b,base)	REST_16VSRSU(n,b,base); REST_16VSRSU(n+16,b,base)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * b = base register for addressing, o = base offset from register of 1st EVR
  * n = first EVR, s = scratch
@@ -172,6 +180,8 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_SPLPAR)
 #define REST_8EVRS(n,s,b,o)	REST_4EVRS(n,s,b,o); REST_4EVRS(n+4,s,b,o)
 #define REST_16EVRS(n,s,b,o)	REST_8EVRS(n,s,b,o); REST_8EVRS(n+8,s,b,o)
 #define REST_32EVRS(n,s,b,o)	REST_16EVRS(n,s,b,o); REST_16EVRS(n+16,s,b,o)
+<<<<<<< HEAD
+=======
 =======
 #define SAVE_EVR(n,s,base)	evmergehi s,s,n; stw s,THREAD_EVR0+4*(n)(base)
 #define SAVE_2EVRS(n,s,base)	SAVE_EVR(n,s,base); SAVE_EVR(n+1,s,base)
@@ -186,6 +196,7 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_SPLPAR)
 #define REST_16EVRS(n,s,base)	REST_8EVRS(n,s,base); REST_8EVRS(n+8,s,base)
 #define REST_32EVRS(n,s,base)	REST_16EVRS(n,s,base); REST_16EVRS(n+16,s,base)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Macros to adjust thread priority for hardware multithreading */
 #define HMT_VERY_LOW	or	31,31,31	# very low priority

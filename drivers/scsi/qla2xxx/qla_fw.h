@@ -537,6 +537,17 @@ struct sts_entry_24xx {
 	/*
 	 * If DIF Error is set in comp_status, these additional fields are
 	 * defined:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 *
+	 * !!! NOTE: Firmware sends expected/actual DIF data in big endian
+	 * format; but all of the "data" field gets swab32-d in the beginning
+	 * of qla2x00_status_entry().
+	 *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * &data[10] : uint8_t report_runt_bg[2];	- computed guard
 	 * &data[12] : uint8_t actual_dif[8];		- DIF Data received
 	 * &data[20] : uint8_t expected_dif[8];		- DIF Data computed
@@ -1322,6 +1333,17 @@ struct qla_flt_header {
 #define FLT_REG_GOLD_FW		0x2f
 #define FLT_REG_FCP_PRIO_0	0x87
 #define FLT_REG_FCP_PRIO_1	0x88
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define FLT_REG_FCOE_FW		0xA4
+#define FLT_REG_FCOE_VPD_0	0xA9
+#define FLT_REG_FCOE_NVRAM_0	0xAA
+#define FLT_REG_FCOE_VPD_1	0xAB
+#define FLT_REG_FCOE_NVRAM_1	0xAC
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct qla_flt_region {
 	uint32_t code;
@@ -1489,6 +1511,17 @@ struct access_chip_rsp_84xx {
 #define MBC_GET_XGMAC_STATS	0x7a
 #define MBC_GET_DCBX_PARAMS	0x51
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * ISP83xx mailbox commands
+ */
+#define MBC_WRITE_REMOTE_REG 0x0001 /* Write remote register */
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Flash access control option field bit definitions */
 #define FAC_OPT_FORCE_SEMAPHORE		BIT_15
 #define FAC_OPT_REQUESTOR_ID		BIT_14
@@ -1870,4 +1903,13 @@ struct qla_fcp_prio_cfg {
 #define FA_NPIV_CONF0_ADDR_81	0xD1000
 #define FA_NPIV_CONF1_ADDR_81	0xD2000
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* 83XX Flash locations -- occupies second 8MB region. */
+#define FA_FLASH_LAYOUT_ADDR_83	0xFC400
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

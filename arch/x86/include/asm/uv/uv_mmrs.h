@@ -60,12 +60,19 @@
 <<<<<<< HEAD
 #define UV2_HUB_PART_NUMBER_X	0x1111
 =======
+<<<<<<< HEAD
+#define UV2_HUB_PART_NUMBER_X	0x1111
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Compat: if this #define is present, UV headers support UV2 */
 #define UV2_HUB_IS_SUPPORTED	1
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ========================================================================= */
 /*                          UVH_BAU_DATA_BROADCAST                           */
 /* ========================================================================= */
@@ -81,6 +88,8 @@ union uvh_bau_data_broadcast_u {
 		unsigned long	enable:1;			/* RW */
 		unsigned long	rsvd_1_63:63;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 /* KABI compat: if this #define is present, KABI hacks are present */
 #define UV2_HUB_KABI_HACKS	1
@@ -101,12 +110,16 @@ union uvh_bau_data_broadcast_u {
 	unsigned long	rsvd_1_63: 63;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                           UVH_BAU_DATA_CONFIG                             */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_BAU_DATA_CONFIG				0x61680UL
 #define UVH_BAU_DATA_CONFIG_32				0x438
 
@@ -141,6 +154,8 @@ union uvh_bau_data_config_u {
 		unsigned long	rsvd_17_31:15;
 		unsigned long	apic_id:32;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_BAU_DATA_CONFIG 0x61680UL
 #define UVH_BAU_DATA_CONFIG_32 0x438
@@ -177,12 +192,16 @@ union uvh_bau_data_config_u {
 	unsigned long	apic_id  : 32;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                           UVH_EVENT_OCCURRED0                             */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_EVENT_OCCURRED0				0x70000UL
 #define UVH_EVENT_OCCURRED0_32				0x5e8
 
@@ -544,6 +563,8 @@ union uvh_event_occurred0_u {
 		unsigned long	profile_int:1;			/* RW */
 		unsigned long	rsvd_59_63:5;
 	} s2;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_EVENT_OCCURRED0 0x70000UL
 #define UVH_EVENT_OCCURRED0_32 0x5e8
@@ -907,6 +928,7 @@ union uvh_event_occurred0_u {
 	unsigned long	rsvd_59_63          :  5;  /*    */
     } s2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
@@ -916,14 +938,22 @@ union uvh_event_occurred0_u {
 #define UVH_EVENT_OCCURRED0_ALIAS			0x0000000000070008UL
 #define UVH_EVENT_OCCURRED0_ALIAS_32			0x5f0
 =======
+<<<<<<< HEAD
+#define UVH_EVENT_OCCURRED0_ALIAS			0x0000000000070008UL
+#define UVH_EVENT_OCCURRED0_ALIAS_32			0x5f0
+=======
 #define UVH_EVENT_OCCURRED0_ALIAS 0x0000000000070008UL
 #define UVH_EVENT_OCCURRED0_ALIAS_32 0x5f0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ========================================================================= */
 /*                         UVH_GR0_TLB_INT0_CONFIG                           */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_GR0_TLB_INT0_CONFIG				0x61b00UL
 
 #define UVH_GR0_TLB_INT0_CONFIG_VECTOR_SHFT		0
@@ -957,6 +987,8 @@ union uvh_gr0_tlb_int0_config_u {
 		unsigned long	rsvd_17_31:15;
 		unsigned long	apic_id:32;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_GR0_TLB_INT0_CONFIG 0x61b00UL
 
@@ -992,12 +1024,16 @@ union uvh_gr0_tlb_int0_config_u {
 	unsigned long	apic_id  : 32;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                         UVH_GR0_TLB_INT1_CONFIG                           */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_GR0_TLB_INT1_CONFIG				0x61b40UL
 
 #define UVH_GR0_TLB_INT1_CONFIG_VECTOR_SHFT		0
@@ -1204,6 +1240,8 @@ union uvh_gr0_tlb_mmr_read_data_lo_u {
 		unsigned long	asid:24;			/* RO */
 		unsigned long	valid:1;			/* RO */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_GR0_TLB_INT1_CONFIG 0x61b40UL
 
@@ -1239,12 +1277,16 @@ union uvh_gr0_tlb_int1_config_u {
 	unsigned long	apic_id  : 32;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                         UVH_GR1_TLB_INT0_CONFIG                           */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_GR1_TLB_INT0_CONFIG				0x61f00UL
 
 #define UVH_GR1_TLB_INT0_CONFIG_VECTOR_SHFT		0
@@ -1278,6 +1320,8 @@ union uvh_gr1_tlb_int0_config_u {
 		unsigned long	rsvd_17_31:15;
 		unsigned long	apic_id:32;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_GR1_TLB_INT0_CONFIG 0x61f00UL
 
@@ -1313,12 +1357,16 @@ union uvh_gr1_tlb_int0_config_u {
 	unsigned long	apic_id  : 32;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                         UVH_GR1_TLB_INT1_CONFIG                           */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_GR1_TLB_INT1_CONFIG				0x61f40UL
 
 #define UVH_GR1_TLB_INT1_CONFIG_VECTOR_SHFT		0
@@ -1525,6 +1573,8 @@ union uvh_gr1_tlb_mmr_read_data_lo_u {
 		unsigned long	asid:24;			/* RO */
 		unsigned long	valid:1;			/* RO */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_GR1_TLB_INT1_CONFIG 0x61f40UL
 
@@ -1560,12 +1610,16 @@ union uvh_gr1_tlb_int1_config_u {
 	unsigned long	apic_id  : 32;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                               UVH_INT_CMPB                                */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_INT_CMPB					0x22080UL
 
 #define UVH_INT_CMPB_REAL_TIME_CMPB_SHFT		0
@@ -1577,6 +1631,8 @@ union uvh_int_cmpb_u {
 		unsigned long	real_time_cmpb:56;		/* RW */
 		unsigned long	rsvd_56_63:8;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_INT_CMPB 0x22080UL
 
@@ -1590,12 +1646,16 @@ union uvh_int_cmpb_u {
 	unsigned long	rsvd_56_63     :  8;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                               UVH_INT_CMPC                                */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_INT_CMPC					0x22100UL
 
 #define UVH_INT_CMPC_REAL_TIME_CMPC_SHFT		0
@@ -1607,6 +1667,8 @@ union uvh_int_cmpc_u {
 		unsigned long	real_time_cmpc:56;		/* RW */
 		unsigned long	rsvd_56_63:8;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_INT_CMPC 0x22100UL
 
@@ -1628,12 +1690,16 @@ union uvh_int_cmpc_u {
 	unsigned long	rsvd_56_63     :  8;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                               UVH_INT_CMPD                                */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_INT_CMPD					0x22180UL
 
 #define UVH_INT_CMPD_REAL_TIME_CMPD_SHFT		0
@@ -1645,6 +1711,8 @@ union uvh_int_cmpd_u {
 		unsigned long	real_time_cmpd:56;		/* RW */
 		unsigned long	rsvd_56_63:8;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_INT_CMPD 0x22180UL
 
@@ -1666,12 +1734,16 @@ union uvh_int_cmpd_u {
 	unsigned long	rsvd_56_63     :  8;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                               UVH_IPI_INT                                 */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_IPI_INT					0x60500UL
 #define UVH_IPI_INT_32					0x348
 
@@ -1697,6 +1769,8 @@ union uvh_ipi_int_u {
 		unsigned long	rsvd_48_62:15;
 		unsigned long	send:1;				/* WP */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_IPI_INT 0x60500UL
 #define UVH_IPI_INT_32 0x348
@@ -1724,12 +1798,16 @@ union uvh_ipi_int_u {
 	unsigned long	send          :  1;  /* WP */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                   UVH_LB_BAU_INTD_PAYLOAD_QUEUE_FIRST                     */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_FIRST		0x320050UL
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_FIRST_32		0x9c0
 
@@ -1747,6 +1825,8 @@ union uvh_lb_bau_intd_payload_queue_first_u {
 		unsigned long	node_id:14;			/* RW */
 		unsigned long	rsvd_63:1;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_FIRST 0x320050UL
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_FIRST_32 0x9c0
@@ -1766,12 +1846,16 @@ union uvh_lb_bau_intd_payload_queue_first_u {
 	unsigned long	rsvd_63 :  1;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                    UVH_LB_BAU_INTD_PAYLOAD_QUEUE_LAST                     */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_LAST		0x320060UL
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_LAST_32		0x9c8
 
@@ -1785,6 +1869,8 @@ union uvh_lb_bau_intd_payload_queue_last_u {
 		unsigned long	address:39;			/* RW */
 		unsigned long	rsvd_43_63:21;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_LAST 0x320060UL
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_LAST_32 0x9c8
@@ -1800,12 +1886,16 @@ union uvh_lb_bau_intd_payload_queue_last_u {
 	unsigned long	rsvd_43_63: 21;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                    UVH_LB_BAU_INTD_PAYLOAD_QUEUE_TAIL                     */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_TAIL		0x320070UL
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_TAIL_32		0x9d0
 
@@ -1819,6 +1909,8 @@ union uvh_lb_bau_intd_payload_queue_tail_u {
 		unsigned long	address:39;			/* RW */
 		unsigned long	rsvd_43_63:21;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_TAIL 0x320070UL
 #define UVH_LB_BAU_INTD_PAYLOAD_QUEUE_TAIL_32 0x9d0
@@ -1834,12 +1926,16 @@ union uvh_lb_bau_intd_payload_queue_tail_u {
 	unsigned long	rsvd_43_63: 21;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                   UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE                    */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE		0x320080UL
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_32		0xa68
 
@@ -1897,6 +1993,8 @@ union uvh_lb_bau_intd_software_acknowledge_u {
 		unsigned long	timeout_7:1;			/* RW, W1C */
 		unsigned long	rsvd_16_63:48;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE 0x320080UL
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_32 0xa68
@@ -1956,6 +2054,7 @@ union uvh_lb_bau_intd_software_acknowledge_u {
 	unsigned long	rsvd_16_63: 48;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
@@ -1965,14 +2064,22 @@ union uvh_lb_bau_intd_software_acknowledge_u {
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_ALIAS	0x0000000000320088UL
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_ALIAS_32	0xa70
 =======
+<<<<<<< HEAD
+#define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_ALIAS	0x0000000000320088UL
+#define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_ALIAS_32	0xa70
+=======
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_ALIAS 0x0000000000320088UL
 #define UVH_LB_BAU_INTD_SOFTWARE_ACKNOWLEDGE_ALIAS_32 0xa70
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ========================================================================= */
 /*                         UVH_LB_BAU_MISC_CONTROL                           */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_MISC_CONTROL				0x320170UL
 #define UVH_LB_BAU_MISC_CONTROL_32			0xa10
 
@@ -2152,6 +2259,8 @@ union uvh_lb_bau_misc_control_u {
 		unsigned long	rsvd_36_47:12;
 		unsigned long	fun:16;				/* RW */
 	} s2;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_MISC_CONTROL 0x320170UL
 #define UVH_LB_BAU_MISC_CONTROL_32 0xa10
@@ -2333,12 +2442,16 @@ union uvh_lb_bau_misc_control_u {
 	unsigned long	fun                                  : 16;  /* RW */
     } s2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                     UVH_LB_BAU_SB_ACTIVATION_CONTROL                      */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_SB_ACTIVATION_CONTROL		0x320020UL
 #define UVH_LB_BAU_SB_ACTIVATION_CONTROL_32		0x9a8
 
@@ -2357,6 +2470,8 @@ union uvh_lb_bau_sb_activation_control_u {
 		unsigned long	push:1;				/* WP */
 		unsigned long	init:1;				/* WP */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_SB_ACTIVATION_CONTROL 0x320020UL
 #define UVH_LB_BAU_SB_ACTIVATION_CONTROL_32 0x9a8
@@ -2377,12 +2492,16 @@ union uvh_lb_bau_sb_activation_control_u {
 	unsigned long	init  :  1;  /* WP */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                    UVH_LB_BAU_SB_ACTIVATION_STATUS_0                      */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_0		0x320030UL
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_0_32		0x9b0
 
@@ -2394,6 +2513,8 @@ union uvh_lb_bau_sb_activation_status_0_u {
 	struct uvh_lb_bau_sb_activation_status_0_s {
 		unsigned long	status:64;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_0 0x320030UL
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_0_32 0x9b0
@@ -2407,12 +2528,16 @@ union uvh_lb_bau_sb_activation_status_0_u {
 	unsigned long	status : 64;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                    UVH_LB_BAU_SB_ACTIVATION_STATUS_1                      */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_1		0x320040UL
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_1_32		0x9b8
 
@@ -2424,6 +2549,8 @@ union uvh_lb_bau_sb_activation_status_1_u {
 	struct uvh_lb_bau_sb_activation_status_1_s {
 		unsigned long	status:64;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_1 0x320040UL
 #define UVH_LB_BAU_SB_ACTIVATION_STATUS_1_32 0x9b8
@@ -2437,12 +2564,16 @@ union uvh_lb_bau_sb_activation_status_1_u {
 	unsigned long	status : 64;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                      UVH_LB_BAU_SB_DESCRIPTOR_BASE                        */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_LB_BAU_SB_DESCRIPTOR_BASE			0x320010UL
 #define UVH_LB_BAU_SB_DESCRIPTOR_BASE_32		0x9a0
 
@@ -2460,6 +2591,8 @@ union uvh_lb_bau_sb_descriptor_base_u {
 		unsigned long	node_id:14;			/* RW */
 		unsigned long	rsvd_63:1;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_LB_BAU_SB_DESCRIPTOR_BASE 0x320010UL
 #define UVH_LB_BAU_SB_DESCRIPTOR_BASE_32 0x9a0
@@ -2479,12 +2612,16 @@ union uvh_lb_bau_sb_descriptor_base_u {
 	unsigned long	rsvd_63      :  1;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                               UVH_NODE_ID                                 */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_NODE_ID					0x0UL
 
 #define UVH_NODE_ID_FORCE1_SHFT				0
@@ -2561,6 +2698,8 @@ union uvh_node_id_u {
 		unsigned long	ni_port:5;			/* RO */
 		unsigned long	rsvd_62_63:2;
 	} s2;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_NODE_ID 0x0UL
 
@@ -2639,12 +2778,16 @@ union uvh_node_id_u {
 	unsigned long	rsvd_62_63    :  2;  /*    */
     } s2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                          UVH_NODE_PRESENT_TABLE                           */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_NODE_PRESENT_TABLE				0x1400UL
 #define UVH_NODE_PRESENT_TABLE_DEPTH			16
 
@@ -2656,6 +2799,8 @@ union uvh_node_present_table_u {
 	struct uvh_node_present_table_s {
 		unsigned long	nodes:64;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_NODE_PRESENT_TABLE 0x1400UL
 #define UVH_NODE_PRESENT_TABLE_DEPTH 16
@@ -2669,12 +2814,16 @@ union uvh_node_present_table_u {
 	unsigned long	nodes : 64;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                 UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_0_MMR                  */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_0_MMR	0x16000c8UL
 
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_0_MMR_BASE_SHFT 24
@@ -2694,6 +2843,8 @@ union uvh_rh_gam_alias210_overlay_config_0_mmr_u {
 		unsigned long	rsvd_53_62:10;
 		unsigned long	enable:1;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_0_MMR 0x16000c8UL
 
@@ -2715,12 +2866,16 @@ union uvh_rh_gam_alias210_overlay_config_0_mmr_u {
 	unsigned long	enable  :  1;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                 UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_1_MMR                  */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_1_MMR	0x16000d8UL
 
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_1_MMR_BASE_SHFT 24
@@ -2740,6 +2895,8 @@ union uvh_rh_gam_alias210_overlay_config_1_mmr_u {
 		unsigned long	rsvd_53_62:10;
 		unsigned long	enable:1;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_1_MMR 0x16000d8UL
 
@@ -2761,12 +2918,16 @@ union uvh_rh_gam_alias210_overlay_config_1_mmr_u {
 	unsigned long	enable  :  1;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                 UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_2_MMR                  */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_2_MMR	0x16000e8UL
 
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_2_MMR_BASE_SHFT 24
@@ -2786,6 +2947,8 @@ union uvh_rh_gam_alias210_overlay_config_2_mmr_u {
 		unsigned long	rsvd_53_62:10;
 		unsigned long	enable:1;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RH_GAM_ALIAS210_OVERLAY_CONFIG_2_MMR 0x16000e8UL
 
@@ -2807,6 +2970,7 @@ union uvh_rh_gam_alias210_overlay_config_2_mmr_u {
 	unsigned long	enable  :  1;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
@@ -2815,20 +2979,29 @@ union uvh_rh_gam_alias210_overlay_config_2_mmr_u {
 <<<<<<< HEAD
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_0_MMR	0x16000d0UL
 =======
+<<<<<<< HEAD
+#define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_0_MMR	0x16000d0UL
+=======
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_0_MMR 0x16000d0UL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_0_MMR_DEST_BASE_SHFT 24
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_0_MMR_DEST_BASE_MASK 0x00003fffff000000UL
 
 union uvh_rh_gam_alias210_redirect_config_0_mmr_u {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	v;
 	struct uvh_rh_gam_alias210_redirect_config_0_mmr_s {
 		unsigned long	rsvd_0_23:24;
 		unsigned long	dest_base:22;			/* RW */
 		unsigned long	rsvd_46_63:18;
 	} s;
+<<<<<<< HEAD
+=======
 =======
     unsigned long	v;
     struct uvh_rh_gam_alias210_redirect_config_0_mmr_s {
@@ -2837,6 +3010,7 @@ union uvh_rh_gam_alias210_redirect_config_0_mmr_u {
 	unsigned long	rsvd_46_63: 18;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
@@ -2845,20 +3019,29 @@ union uvh_rh_gam_alias210_redirect_config_0_mmr_u {
 <<<<<<< HEAD
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_1_MMR	0x16000e0UL
 =======
+<<<<<<< HEAD
+#define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_1_MMR	0x16000e0UL
+=======
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_1_MMR 0x16000e0UL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_1_MMR_DEST_BASE_SHFT 24
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_1_MMR_DEST_BASE_MASK 0x00003fffff000000UL
 
 union uvh_rh_gam_alias210_redirect_config_1_mmr_u {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	v;
 	struct uvh_rh_gam_alias210_redirect_config_1_mmr_s {
 		unsigned long	rsvd_0_23:24;
 		unsigned long	dest_base:22;			/* RW */
 		unsigned long	rsvd_46_63:18;
 	} s;
+<<<<<<< HEAD
+=======
 =======
     unsigned long	v;
     struct uvh_rh_gam_alias210_redirect_config_1_mmr_s {
@@ -2867,6 +3050,7 @@ union uvh_rh_gam_alias210_redirect_config_1_mmr_u {
 	unsigned long	rsvd_46_63: 18;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
@@ -2875,20 +3059,29 @@ union uvh_rh_gam_alias210_redirect_config_1_mmr_u {
 <<<<<<< HEAD
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_2_MMR	0x16000f0UL
 =======
+<<<<<<< HEAD
+#define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_2_MMR	0x16000f0UL
+=======
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_2_MMR 0x16000f0UL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_2_MMR_DEST_BASE_SHFT 24
 #define UVH_RH_GAM_ALIAS210_REDIRECT_CONFIG_2_MMR_DEST_BASE_MASK 0x00003fffff000000UL
 
 union uvh_rh_gam_alias210_redirect_config_2_mmr_u {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	v;
 	struct uvh_rh_gam_alias210_redirect_config_2_mmr_s {
 		unsigned long	rsvd_0_23:24;
 		unsigned long	dest_base:22;			/* RW */
 		unsigned long	rsvd_46_63:18;
 	} s;
+<<<<<<< HEAD
+=======
 =======
     unsigned long	v;
     struct uvh_rh_gam_alias210_redirect_config_2_mmr_s {
@@ -2897,12 +3090,16 @@ union uvh_rh_gam_alias210_redirect_config_2_mmr_u {
 	unsigned long	rsvd_46_63: 18;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                          UVH_RH_GAM_CONFIG_MMR                            */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RH_GAM_CONFIG_MMR				0x1600000UL
 
 #define UVH_RH_GAM_CONFIG_MMR_M_SKT_SHFT		0
@@ -2941,6 +3138,8 @@ union uvh_rh_gam_config_mmr_u {
 		unsigned long	n_skt:4;			/* RW */
 		unsigned long	rsvd_10_63:54;
 	} s2;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RH_GAM_CONFIG_MMR 0x1600000UL
 
@@ -2981,12 +3180,16 @@ union uvh_rh_gam_config_mmr_u {
 	unsigned long	rsvd_10_63: 54;  /*    */
     } s2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                    UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR                      */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR		0x1600010UL
 
 #define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR_BASE_SHFT	28
@@ -3034,6 +3237,8 @@ union uvh_rh_gam_gru_overlay_config_mmr_u {
 		unsigned long	rsvd_56_62:7;
 		unsigned long	enable:1;			/* RW */
 	} s2;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RH_GAM_GRU_OVERLAY_CONFIG_MMR 0x1600010UL
 
@@ -3083,12 +3288,16 @@ union uvh_rh_gam_gru_overlay_config_mmr_u {
 	unsigned long	enable :  1;  /* RW */
     } s2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                   UVH_RH_GAM_MMIOH_OVERLAY_CONFIG_MMR                     */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG_MMR		0x1600030UL
 
 #define UV1H_RH_GAM_MMIOH_OVERLAY_CONFIG_MMR_BASE_SHFT	30
@@ -3127,6 +3336,8 @@ union uvh_rh_gam_mmioh_overlay_config_mmr_u {
 		unsigned long	rsvd_56_62:7;
 		unsigned long	enable:1;			/* RW */
 	} s2;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RH_GAM_MMIOH_OVERLAY_CONFIG_MMR 0x1600030UL
 
@@ -3167,12 +3378,16 @@ union uvh_rh_gam_mmioh_overlay_config_mmr_u {
 	unsigned long	enable :  1;  /* RW */
     } s2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                    UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR                      */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR		0x1600028UL
 
 #define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR_BASE_SHFT	26
@@ -3211,6 +3426,8 @@ union uvh_rh_gam_mmr_overlay_config_mmr_u {
 		unsigned long	rsvd_46_62:17;
 		unsigned long	enable:1;			/* RW */
 	} s2;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RH_GAM_MMR_OVERLAY_CONFIG_MMR 0x1600028UL
 
@@ -3251,12 +3468,16 @@ union uvh_rh_gam_mmr_overlay_config_mmr_u {
 	unsigned long	enable :  1;  /* RW */
     } s2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                                 UVH_RTC                                   */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RTC						0x340000UL
 
 #define UVH_RTC_REAL_TIME_CLOCK_SHFT			0
@@ -3268,6 +3489,8 @@ union uvh_rtc_u {
 		unsigned long	real_time_clock:56;		/* RW */
 		unsigned long	rsvd_56_63:8;
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RTC 0x340000UL
 
@@ -3281,12 +3504,16 @@ union uvh_rtc_u {
 	unsigned long	rsvd_56_63      :  8;  /*    */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                           UVH_RTC1_INT_CONFIG                             */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_RTC1_INT_CONFIG				0x615c0UL
 
 #define UVH_RTC1_INT_CONFIG_VECTOR_SHFT			0
@@ -3320,6 +3547,8 @@ union uvh_rtc1_int_config_u {
 		unsigned long	rsvd_17_31:15;
 		unsigned long	apic_id:32;			/* RW */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_RTC1_INT_CONFIG 0x615c0UL
 
@@ -3355,12 +3584,16 @@ union uvh_rtc1_int_config_u {
 	unsigned long	apic_id  : 32;  /* RW */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                               UVH_SCRATCH5                                */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UVH_SCRATCH5					0x2d0200UL
 #define UVH_SCRATCH5_32					0x778
 
@@ -3372,6 +3605,8 @@ union uvh_scratch5_u {
 	struct uvh_scratch5_s {
 		unsigned long	scratch5:64;			/* RW, W1CS */
 	} s;
+<<<<<<< HEAD
+=======
 =======
 #define UVH_SCRATCH5 0x2d0200UL
 #define UVH_SCRATCH5_32 0x778
@@ -3385,12 +3620,16 @@ union uvh_scratch5_u {
 	unsigned long	scratch5 : 64;  /* RW, W1CS */
     } s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
 /*                           UV2H_EVENT_OCCURRED2                            */
 /* ========================================================================= */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UV2H_EVENT_OCCURRED2				0x70100UL
 #define UV2H_EVENT_OCCURRED2_32				0xb68
 
@@ -3496,6 +3735,8 @@ union uv2h_event_occurred2_u {
 		unsigned long	rtc_31:1;			/* RW */
 		unsigned long	rsvd_32_63:32;
 	} s1;
+<<<<<<< HEAD
+=======
 =======
 #define UV2H_EVENT_OCCURRED2 0x70100UL
 #define UV2H_EVENT_OCCURRED2_32 0xb68
@@ -3603,6 +3844,7 @@ union uv2h_event_occurred2_u {
 	unsigned long	rsvd_32_63: 32;  /*    */
     } s1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
@@ -3612,9 +3854,14 @@ union uv2h_event_occurred2_u {
 #define UV2H_EVENT_OCCURRED2_ALIAS			0x70108UL
 #define UV2H_EVENT_OCCURRED2_ALIAS_32			0xb70
 =======
+<<<<<<< HEAD
+#define UV2H_EVENT_OCCURRED2_ALIAS			0x70108UL
+#define UV2H_EVENT_OCCURRED2_ALIAS_32			0xb70
+=======
 #define UV2H_EVENT_OCCURRED2_ALIAS 0x70108UL
 #define UV2H_EVENT_OCCURRED2_ALIAS_32 0xb70
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ========================================================================= */
 /*                    UV2H_LB_BAU_SB_ACTIVATION_STATUS_2                     */
@@ -3623,25 +3870,36 @@ union uv2h_event_occurred2_u {
 #define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2		0x320130UL
 #define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2_32		0x9f0
 =======
+<<<<<<< HEAD
+#define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2		0x320130UL
+#define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2_32		0x9f0
+=======
 #define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2 0x320130UL
 #define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2_32 0x9f0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2_AUX_ERROR_SHFT 0
 #define UV2H_LB_BAU_SB_ACTIVATION_STATUS_2_AUX_ERROR_MASK 0xffffffffffffffffUL
 
 union uv2h_lb_bau_sb_activation_status_2_u {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	v;
 	struct uv2h_lb_bau_sb_activation_status_2_s {
 		unsigned long	aux_error:64;			/* RW */
 	} s1;
+<<<<<<< HEAD
+=======
 =======
     unsigned long	v;
     struct uv2h_lb_bau_sb_activation_status_2_s {
 	unsigned long	aux_error : 64;  /* RW */
     } s1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ========================================================================= */
@@ -3651,15 +3909,23 @@ union uv2h_lb_bau_sb_activation_status_2_u {
 #define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK		0x320130UL
 #define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK_32		0x9f0
 =======
+<<<<<<< HEAD
+#define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK		0x320130UL
+#define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK_32		0x9f0
+=======
 #define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK 0x320130UL
 #define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK_32 0x9f0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK_BIT_ENABLES_SHFT 0
 #define UV1H_LB_TARGET_PHYSICAL_APIC_ID_MASK_BIT_ENABLES_MASK 0x00000000ffffffffUL
 
 union uv1h_lb_target_physical_apic_id_mask_u {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	v;
 	struct uv1h_lb_target_physical_apic_id_mask_s {
 		unsigned long	bit_enables:32;			/* RW */
@@ -3669,6 +3935,8 @@ union uv1h_lb_target_physical_apic_id_mask_u {
 
 
 #endif /* _ASM_X86_UV_UV_MMRS_H */
+<<<<<<< HEAD
+=======
 =======
     unsigned long	v;
     struct uv1h_lb_target_physical_apic_id_mask_s {
@@ -3680,3 +3948,4 @@ union uv1h_lb_target_physical_apic_id_mask_u {
 
 #endif /* __ASM_UV_MMRS_X86_H__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

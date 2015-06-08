@@ -24,6 +24,9 @@
 #include <plat/omap_hwmod.h>
 #include <plat/omap_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/omap-pm.h>
 
 #include "powerdomain.h"
@@ -31,6 +34,8 @@
 static int __init omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 {
 	struct platform_device *pdev;
+<<<<<<< HEAD
+=======
 =======
 
 static struct omap_device_pm_latency omap_gpio_latency[] = {
@@ -45,6 +50,7 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 {
 	struct omap_device *od;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_gpio_platform_data *pdata;
 	struct omap_gpio_dev_attr *dev_attr;
 	char *name = "omap_gpio";
@@ -52,7 +58,11 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 <<<<<<< HEAD
 	struct powerdomain *pwrdm;
 =======
+<<<<<<< HEAD
+	struct powerdomain *pwrdm;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * extract the device id from name field available in the
@@ -75,6 +85,9 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 	pdata->dbck_flag = dev_attr->dbck_flag;
 	pdata->virtual_irq_start = IH_GPIO_BASE + 32 * (id - 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdata->get_context_loss_count = omap_pm_get_dev_context_loss_count;
 	pdata->regs = kzalloc(sizeof(struct omap_gpio_reg_offs), GFP_KERNEL);
 	if (!pdata) {
@@ -135,6 +148,8 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 		pdata->regs->leveldetect1 = OMAP4_GPIO_LEVELDETECT1;
 		pdata->regs->risingdetect = OMAP4_GPIO_RISINGDETECT;
 		pdata->regs->fallingdetect = OMAP4_GPIO_FALLINGDETECT;
+<<<<<<< HEAD
+=======
 =======
 
 	switch (oh->class->rev) {
@@ -145,6 +160,7 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 	case 2:
 		pdata->bank_type = METHOD_GPIO_44XX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		WARN(1, "Invalid gpio bank_type\n");
@@ -153,6 +169,9 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pwrdm = omap_hwmod_get_pwrdm(oh);
 	pdata->loses_context = pwrdm_can_ever_lose_context(pwrdm);
 
@@ -166,6 +185,8 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 		return PTR_ERR(pdev);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	od = omap_device_build(name, id - 1, oh, pdata,
 				sizeof(*pdata),	omap_gpio_latency,
@@ -181,6 +202,7 @@ static int omap2_gpio_dev_init(struct omap_hwmod *oh, void *unused)
 
 	gpio_bank_count++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

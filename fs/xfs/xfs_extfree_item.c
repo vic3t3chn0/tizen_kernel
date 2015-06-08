@@ -220,8 +220,12 @@ xfs_efi_item_committing(
 <<<<<<< HEAD
 static const struct xfs_item_ops xfs_efi_item_ops = {
 =======
+<<<<<<< HEAD
+static const struct xfs_item_ops xfs_efi_item_ops = {
+=======
 static struct xfs_item_ops xfs_efi_item_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.iop_size	= xfs_efi_item_size,
 	.iop_format	= xfs_efi_item_format,
 	.iop_pin	= xfs_efi_item_pin,
@@ -484,8 +488,12 @@ xfs_efd_item_committing(
 <<<<<<< HEAD
 static const struct xfs_item_ops xfs_efd_item_ops = {
 =======
+<<<<<<< HEAD
+static const struct xfs_item_ops xfs_efd_item_ops = {
+=======
 static struct xfs_item_ops xfs_efd_item_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.iop_size	= xfs_efd_item_size,
 	.iop_format	= xfs_efd_item_format,
 	.iop_pin	= xfs_efd_item_pin,

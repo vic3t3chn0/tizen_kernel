@@ -7,6 +7,9 @@
 #define CEPH_IOCTL_MAGIC 0x97
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * CEPH_IOC_GET_LAYOUT - get file layout or dir layout policy
  * CEPH_IOC_SET_LAYOUT - set file layout
@@ -32,9 +35,12 @@
  */
 
 /* use u64 to align sanely on all archs */
+<<<<<<< HEAD
+=======
 =======
 /* just use u64 to align sanely on all archs */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ceph_ioctl_layout {
 	__u64 stripe_unit, stripe_count, object_size;
 	__u64 data_pool;
@@ -53,7 +59,12 @@ struct ceph_ioctl_layout {
  * CEPH_IOC_GET_DATALOC - get location of file data in the cluster
  *
 =======
+<<<<<<< HEAD
+ * CEPH_IOC_GET_DATALOC - get location of file data in the cluster
+ *
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Extract identity, address of the OSD and object storing a given
  * file offset.
  */
@@ -73,6 +84,9 @@ struct ceph_ioctl_dataloc {
 				   struct ceph_ioctl_dataloc)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * CEPH_IOC_LAZYIO - relax consistency
  *
@@ -103,8 +117,11 @@ struct ceph_ioctl_dataloc {
  */
 #define CEPH_IOC_SYNCIO _IO(CEPH_IOCTL_MAGIC, 5)
 
+<<<<<<< HEAD
+=======
 =======
 #define CEPH_IOC_LAZYIO _IO(CEPH_IOCTL_MAGIC, 4)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

@@ -18,12 +18,18 @@
  *   along with this library; if not, write to the Free Software
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  Contains pick of e73f843a3235a19de38359c91586e9eadef12238
  *  from future version of this file, with
  *  Copyright (C) International Business Machines Corp., 2002,2011
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #include <linux/fs.h>
 #include <linux/net.h>
@@ -45,14 +51,20 @@
 #include <asm/processor.h>
 #include <linux/inet.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <keys/user-type.h>
 #include <net/ipv6.h>
 #include <linux/parser.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <net/ipv6.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cifspdu.h"
 #include "cifsglob.h"
 #include "cifsproto.h"
@@ -77,6 +89,9 @@ extern mempool_t *cifs_req_poolp;
 #define TLINK_IDLE_EXPIRE	(600 * HZ)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 
 	/* Mount options that take no arguments */
@@ -273,8 +288,11 @@ static const match_table_t cifs_secflavor_tokens = {
 	{ Opt_sec_err, NULL }
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ip_connect(struct TCP_Server_Info *server);
 static int generic_ip_connect(struct TCP_Server_Info *server);
 static void tlink_rb_insert(struct rb_root *root, struct tcon_link *new_tlink);
@@ -359,9 +377,14 @@ cifs_reconnect(struct TCP_Server_Info *server)
 		if (mid_entry->mid_state == MID_REQUEST_SUBMITTED)
 			mid_entry->mid_state = MID_RETRY_NEEDED;
 =======
+<<<<<<< HEAD
+		if (mid_entry->mid_state == MID_REQUEST_SUBMITTED)
+			mid_entry->mid_state = MID_RETRY_NEEDED;
+=======
 		if (mid_entry->midState == MID_REQUEST_SUBMITTED)
 			mid_entry->midState = MID_RETRY_NEEDED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list_move(&mid_entry->qhead, &retry_list);
 	}
 	spin_unlock(&GlobalMid_Lock);
@@ -379,8 +402,11 @@ cifs_reconnect(struct TCP_Server_Info *server)
 		/* we should try only the port we connected to before */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		mutex_lock(&server->srv_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = generic_ip_connect(server);
 		if (rc) {
 			cFYI(1, "reconnect error %d", rc);
@@ -394,8 +420,11 @@ cifs_reconnect(struct TCP_Server_Info *server)
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		mutex_unlock(&server->srv_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (server->tcpStatus == CifsNeedReconnect);
 
 	return rc;
@@ -413,9 +442,15 @@ static int check2ndT2(char *buf)
 {
 	struct smb_hdr *pSMB = (struct smb_hdr *)buf;
 =======
+<<<<<<< HEAD
+static int check2ndT2(char *buf)
+{
+	struct smb_hdr *pSMB = (struct smb_hdr *)buf;
+=======
 static int check2ndT2(struct smb_hdr *pSMB, unsigned int maxBufSize)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct smb_t2_rsp *pSMBt;
 	int remaining;
 	__u16 total_data_size, data_in_this_rsp;
@@ -452,16 +487,25 @@ static int check2ndT2(struct smb_hdr *pSMB, unsigned int maxBufSize)
 		cERROR(1, "TotalDataSize %d is over maximum buffer %d",
 			total_data_size, CIFSMaxBufSize);
 =======
+<<<<<<< HEAD
+	if (total_data_size > CIFSMaxBufSize) {
+		cERROR(1, "TotalDataSize %d is over maximum buffer %d",
+			total_data_size, CIFSMaxBufSize);
+=======
 	if (total_data_size > maxBufSize) {
 		cERROR(1, "TotalDataSize %d is over maximum buffer %d",
 			total_data_size, maxBufSize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 	return remaining;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int coalesce_t2(char *second_buf, struct smb_hdr *target_hdr)
 {
 	struct smb_t2_rsp *pSMBs = (struct smb_t2_rsp *)second_buf;
@@ -548,6 +592,8 @@ static int coalesce_t2(char *second_buf, struct smb_hdr *target_hdr)
 	/* we are done */
 	cFYI(1, "found the last secondary response");
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 static int coalesce_t2(struct smb_hdr *psecond, struct smb_hdr *pTargetSMB)
 {
@@ -620,6 +666,7 @@ static int coalesce_t2(struct smb_hdr *psecond, struct smb_hdr *pTargetSMB)
 	} else /* more responses to go */
 		return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -645,6 +692,9 @@ cifs_echo_request(struct work_struct *work)
 
 requeue_echo:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	queue_delayed_work(cifsiod_wq, &server->echo, SMB_ECHO_INTERVAL);
 }
 
@@ -953,6 +1003,8 @@ handle_mid(struct mid_q_entry *mid, struct TCP_Server_Info *server,
 static void clean_demultiplex_info(struct TCP_Server_Info *server)
 {
 	int length;
+<<<<<<< HEAD
+=======
 =======
 	queue_delayed_work(system_nrt_wq, &server->echo, SMB_ECHO_INTERVAL);
 }
@@ -1295,6 +1347,7 @@ multi_t2_fnd:
 		}
 	} /* end while !EXITING */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* take it off the list, if it's not already */
 	spin_lock(&cifs_tcp_ses_lock);
@@ -1308,6 +1361,9 @@ multi_t2_fnd:
 
 	/* check if we have blocked requests that need to free */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&server->req_lock);
 	if (server->credits <= 0)
 		server->credits = 1;
@@ -1319,6 +1375,8 @@ multi_t2_fnd:
 	 * same server - they now will see the session is in exit state and get
 	 * out of SendReceive.
 	 */
+<<<<<<< HEAD
+=======
 =======
 	/* Note that cifs_max_pending is normally 50, but
 	can be set at module install time to as little as two */
@@ -1334,12 +1392,16 @@ multi_t2_fnd:
 	to the same server - they now will see the session is in exit state
 	and get out of SendReceive.  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wake_up_all(&server->request_q);
 	/* give those requests time to exit */
 	msleep(125);
 
 	if (server->ssocket) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sock_release(server->ssocket);
 		server->ssocket = NULL;
 	}
@@ -1348,6 +1410,8 @@ multi_t2_fnd:
 		struct list_head dispose_list;
 		struct mid_q_entry *mid_entry;
 		struct list_head *tmp, *tmp2;
+<<<<<<< HEAD
+=======
 =======
 		sock_release(csocket);
 		server->ssocket = NULL;
@@ -1360,6 +1424,7 @@ multi_t2_fnd:
 	if (!list_empty(&server->pending_mid_q)) {
 		struct list_head dispose_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		INIT_LIST_HEAD(&dispose_list);
 		spin_lock(&GlobalMid_Lock);
@@ -1369,9 +1434,14 @@ multi_t2_fnd:
 			cFYI(1, "Clearing mid 0x%llx", mid_entry->mid);
 			mid_entry->mid_state = MID_SHUTDOWN;
 =======
+<<<<<<< HEAD
+			cFYI(1, "Clearing mid 0x%llx", mid_entry->mid);
+			mid_entry->mid_state = MID_SHUTDOWN;
+=======
 			cFYI(1, "Clearing mid 0x%x", mid_entry->mid);
 			mid_entry->midState = MID_SHUTDOWN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_move(&mid_entry->qhead, &dispose_list);
 		}
 		spin_unlock(&GlobalMid_Lock);
@@ -1382,8 +1452,12 @@ multi_t2_fnd:
 <<<<<<< HEAD
 			cFYI(1, "Callback mid 0x%llx", mid_entry->mid);
 =======
+<<<<<<< HEAD
+			cFYI(1, "Callback mid 0x%llx", mid_entry->mid);
+=======
 			cFYI(1, "Callback mid 0x%x", mid_entry->mid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_del_init(&mid_entry->qhead);
 			mid_entry->callback(mid_entry);
 		}
@@ -1393,6 +1467,9 @@ multi_t2_fnd:
 
 	if (!list_empty(&server->pending_mid_q)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * mpx threads have not exited yet give them at least the smb
 		 * send timeout time for long ops.
@@ -1569,6 +1646,8 @@ cifs_demultiplex_thread(void *p)
 
 	task_to_wake = xchg(&server->tsk, NULL);
 	clean_demultiplex_info(server);
+<<<<<<< HEAD
+=======
 =======
 		/* mpx threads have not exited yet give them
 		at least the smb send timeout time for long ops */
@@ -1591,6 +1670,7 @@ cifs_demultiplex_thread(void *p)
 		mempool_resize(cifs_req_poolp, length + cifs_min_rcv,
 				GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* if server->tsk was NULL then wait for a signal before exiting */
 	if (!task_to_wake) {
@@ -1634,6 +1714,9 @@ extract_hostname(const char *unc)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int get_option_ul(substring_t args[], unsigned long *option)
 {
 	int rc;
@@ -1701,8 +1784,11 @@ static int cifs_parse_security_flavors(char *value,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 cifs_parse_mount_options(const char *mountdata, const char *devname,
 			 struct smb_vol *vol)
@@ -1710,8 +1796,12 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 <<<<<<< HEAD
 	char *data, *end;
 =======
+<<<<<<< HEAD
+	char *data, *end;
+=======
 	char *value, *data, *end;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *mountdata_copy = NULL, *options;
 	unsigned int  temp_len, i, j;
 	char separator[2];
@@ -1720,6 +1810,9 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 	bool uid_specified = false;
 	bool gid_specified = false;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool sloppy = false;
 	char *invalid = NULL;
 	char *nodename = utsname()->nodename;
@@ -1730,12 +1823,15 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 	separator[0] = ',';
 	separator[1] = 0;
 	delim = separator[0];
+<<<<<<< HEAD
+=======
 =======
 	char *nodename = utsname()->nodename;
 
 	separator[0] = ',';
 	separator[1] = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * does not have to be perfect mapping since field is
@@ -1777,7 +1873,11 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (strncmp(options, "sep=", 4) == 0) {
 		if (options[4] != 0) {
 			separator[0] = options[4];
@@ -1787,6 +1887,9 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vol->backupuid_specified = false; /* no backup intent for a user */
 	vol->backupgid_specified = false; /* no backup intent for a group */
 
@@ -2167,6 +2270,8 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 
 			if (strnlen(string, INET6_ADDRSTRLEN) >
 						INET6_ADDRSTRLEN) {
+<<<<<<< HEAD
+=======
 =======
 
 	while ((data = strsep(&options, separator)) != NULL) {
@@ -2297,11 +2402,15 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 				}
 			} else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk(KERN_WARNING "CIFS: ip address "
 						    "too long\n");
 				goto cifs_parse_mount_err;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			vol->UNCip = kstrdup(string, GFP_KERNEL);
 			if (!vol->UNCip) {
 				printk(KERN_WARNING "CIFS: no memory "
@@ -2402,6 +2511,8 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 				goto out_nomem;
 
 			if (strnlen(string, 1024) >= 65) {
+<<<<<<< HEAD
+=======
 =======
 		} else if (strnicmp(data, "sec", 3) == 0) {
 			if (!value || !*value) {
@@ -2563,11 +2674,15 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 				cFYI(1, "iocharset set to %s", value);
 			} else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk(KERN_WARNING "CIFS: iocharset name "
 						    "too long.\n");
 				goto cifs_parse_mount_err;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			 if (strnicmp(string, "default", 7) != 0) {
 				vol->iocharset = kstrdup(string,
@@ -2693,6 +2808,8 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 		goto cifs_parse_mount_err;
 	}
 #endif
+<<<<<<< HEAD
+=======
 =======
 		} else if (!strnicmp(data, "uid", 3) && value && *value) {
 			vol->linux_uid = simple_strtoul(value, &value, 0);
@@ -2996,6 +3113,7 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 		goto cifs_parse_mount_err;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (vol->UNCip == NULL)
 		vol->UNCip = &vol->UNC[2];
@@ -3016,13 +3134,19 @@ cifs_parse_mount_options(const char *mountdata, const char *devname,
 	return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_nomem:
 	printk(KERN_WARNING "Could not allocate temporary buffer\n");
 cifs_parse_mount_err:
 	kfree(string);
+<<<<<<< HEAD
+=======
 =======
 cifs_parse_mount_err:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(mountdata_copy);
 	return 1;
 }
@@ -3312,8 +3436,13 @@ cifs_get_tcp_session(struct smb_vol *volume_info)
 	tcp_ses->in_flight = 0;
 	tcp_ses->credits = 1;
 =======
+<<<<<<< HEAD
+	tcp_ses->in_flight = 0;
+	tcp_ses->credits = 1;
+=======
 	atomic_set(&tcp_ses->inFlight, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_waitqueue_head(&tcp_ses->response_q);
 	init_waitqueue_head(&tcp_ses->request_q);
 	INIT_LIST_HEAD(&tcp_ses->pending_mid_q);
@@ -3328,7 +3457,11 @@ cifs_get_tcp_session(struct smb_vol *volume_info)
 <<<<<<< HEAD
 	spin_lock_init(&tcp_ses->req_lock);
 =======
+<<<<<<< HEAD
+	spin_lock_init(&tcp_ses->req_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&tcp_ses->tcp_ses_list);
 	INIT_LIST_HEAD(&tcp_ses->smb_ses_list);
 	INIT_DELAYED_WORK(&tcp_ses->echo, cifs_echo_request);
@@ -3367,8 +3500,12 @@ cifs_get_tcp_session(struct smb_vol *volume_info)
 <<<<<<< HEAD
 	tcp_ses->tsk = kthread_run(cifs_demultiplex_thread,
 =======
+<<<<<<< HEAD
+	tcp_ses->tsk = kthread_run(cifs_demultiplex_thread,
+=======
 	tcp_ses->tsk = kthread_run((void *)(void *)cifs_demultiplex_thread,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  tcp_ses, "cifsd");
 	if (IS_ERR(tcp_ses->tsk)) {
 		rc = PTR_ERR(tcp_ses->tsk);
@@ -3389,8 +3526,12 @@ cifs_get_tcp_session(struct smb_vol *volume_info)
 <<<<<<< HEAD
 	queue_delayed_work(cifsiod_wq, &tcp_ses->echo, SMB_ECHO_INTERVAL);
 =======
+<<<<<<< HEAD
+	queue_delayed_work(cifsiod_wq, &tcp_ses->echo, SMB_ECHO_INTERVAL);
+=======
 	queue_delayed_work(system_nrt_wq, &tcp_ses->echo, SMB_ECHO_INTERVAL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return tcp_ses;
 
@@ -3419,6 +3560,9 @@ static int match_session(struct cifs_ses *ses, struct smb_vol *vol)
 		break;
 	default:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* NULL username means anonymous session */
 		if (ses->user_name == NULL) {
 			if (!vol->nullauth)
@@ -3429,12 +3573,15 @@ static int match_session(struct cifs_ses *ses, struct smb_vol *vol)
 		/* anything else takes username/password */
 		if (strncmp(ses->user_name,
 			    vol->username ? vol->username : "",
+<<<<<<< HEAD
+=======
 =======
 		/* anything else takes username/password */
 		if (ses->user_name == NULL)
 			return 0;
 		if (strncmp(ses->user_name, vol->username,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    MAX_USERNAME_SIZE))
 			return 0;
 		if (strlen(vol->username) != 0 &&
@@ -3490,6 +3637,9 @@ cifs_put_smb_ses(struct cifs_ses *ses)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KEYS
 
 /* strlen("cifs:a:") + INET6_ADDRSTRLEN + 1 */
@@ -3616,8 +3766,11 @@ cifs_set_cifscreds(struct smb_vol *vol __attribute__((unused)),
 }
 #endif /* CONFIG_KEYS */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool warned_on_ntlm;  /* globals init to false automatically */
 
 static struct cifs_ses *
@@ -3704,8 +3857,12 @@ cifs_get_smb_ses(struct TCP_Server_Info *server, struct smb_vol *volume_info)
 <<<<<<< HEAD
 			"ntlmv2 in kernel release 3.3");
 =======
+<<<<<<< HEAD
+			"ntlmv2 in kernel release 3.3");
+=======
 			"ntlmv2 in kernel release 3.1");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	ses->overrideSecFlg = volume_info->secFlg;
 
@@ -3901,6 +4058,11 @@ compare_mount_options(struct super_block *sb, struct cifs_mnt_data *mnt_data)
 	 * We want to share sb only if we don't specify an r/wsize or
 	 * specified r/wsize is greater than or equal to existing one.
 =======
+<<<<<<< HEAD
+	/*
+	 * We want to share sb only if we don't specify an r/wsize or
+	 * specified r/wsize is greater than or equal to existing one.
+=======
 	if (old->rsize != new->rsize)
 		return 0;
 
@@ -3908,6 +4070,7 @@ compare_mount_options(struct super_block *sb, struct cifs_mnt_data *mnt_data)
 	 * We want to share sb only if we don't specify wsize or specified wsize
 	 * is greater or equal than existing one.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	if (new->wsize && new->wsize < old->wsize)
 		return 0;
@@ -3917,7 +4080,13 @@ compare_mount_options(struct super_block *sb, struct cifs_mnt_data *mnt_data)
 		return 0;
 
 =======
+<<<<<<< HEAD
+	if (new->rsize && new->rsize < old->rsize)
+		return 0;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (old->mnt_uid != new->mnt_uid || old->mnt_gid != new->mnt_gid)
 		return 0;
 
@@ -4357,6 +4526,8 @@ void reset_cifs_unix_caps(int xid, struct cifs_tcon *tcon,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (cifs_sb && (cifs_sb->rsize > 127 * 1024)) {
 			if ((cap & CIFS_UNIX_LARGE_READ_CAP) == 0) {
 				cifs_sb->rsize = 127 * 1024;
@@ -4366,6 +4537,7 @@ void reset_cifs_unix_caps(int xid, struct cifs_tcon *tcon,
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cFYI(1, "Negotiate caps 0x%x", (int)cap);
 #ifdef CONFIG_CIFS_DEBUG2
 		if (cap & CIFS_UNIX_FCNTL_CAP)
@@ -4411,11 +4583,16 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
 	cifs_sb->tlink_tree = RB_ROOT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Temporarily set r/wsize for matching superblock. If we end up using
 	 * new sb then client will later negotiate it downward if needed.
 	 */
 	cifs_sb->rsize = pvolume_info->rsize;
+<<<<<<< HEAD
+=======
 =======
 	if (pvolume_info->rsize > CIFSMaxBufSize) {
 		cERROR(1, "rsize %d too large, using MaxBufSize",
@@ -4439,6 +4616,7 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
 	 * if needed.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cifs_sb->wsize = pvolume_info->wsize;
 
 	cifs_sb->mnt_uid = pvolume_info->linux_uid;
@@ -4448,8 +4626,12 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
 <<<<<<< HEAD
 	cFYI(1, "file mode: 0x%hx  dir mode: 0x%hx",
 =======
+<<<<<<< HEAD
+	cFYI(1, "file mode: 0x%hx  dir mode: 0x%hx",
+=======
 	cFYI(1, "file mode: 0x%x  dir mode: 0x%x",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cifs_sb->mnt_file_mode, cifs_sb->mnt_dir_mode);
 
 	cifs_sb->actimeo = pvolume_info->actimeo;
@@ -4478,6 +4660,9 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
 	if (pvolume_info->cifs_acl)
 		cifs_sb->mnt_cifs_flags |= CIFS_MOUNT_CIFS_ACL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pvolume_info->backupuid_specified) {
 		cifs_sb->mnt_cifs_flags |= CIFS_MOUNT_CIFS_BACKUPUID;
 		cifs_sb->mnt_backupuid = pvolume_info->backupuid;
@@ -4486,8 +4671,11 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
 		cifs_sb->mnt_cifs_flags |= CIFS_MOUNT_CIFS_BACKUPGID;
 		cifs_sb->mnt_backupgid = pvolume_info->backupgid;
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pvolume_info->override_uid)
 		cifs_sb->mnt_cifs_flags |= CIFS_MOUNT_OVERR_UID;
 	if (pvolume_info->override_gid)
@@ -4525,15 +4713,24 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
  * we can allow up to 2^24-1, minus the size of a READ/WRITE_AND_X header, not
  * including the RFC1001 length.
 =======
+<<<<<<< HEAD
+ * When the server supports very large reads and writes via POSIX extensions,
+ * we can allow up to 2^24-1, minus the size of a READ/WRITE_AND_X header, not
+ * including the RFC1001 length.
+=======
  * When the server supports very large writes via POSIX extensions, we can
  * allow up to 2^24-1, minus the size of a WRITE_AND_X header, not including
  * the RFC1001 length.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note that this might make for "interesting" allocation problems during
  * writeback however as we have to allocate an array of pointers for the
  * pages. A 16M write means ~32kb page array with PAGE_CACHE_SIZE == 4096.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * For reads, there is a similar problem as we need to allocate an array
  * of kvecs to handle the receive, though that should only need to be done
@@ -4549,6 +4746,8 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
  */
 #define CIFS_MAX_RFC1002_WSIZE ((1<<17) - 1 - sizeof(WRITE_REQ) + 4)
 #define CIFS_MAX_RFC1002_RSIZE ((1<<17) - 1 - sizeof(READ_RSP) + 4)
+<<<<<<< HEAD
+=======
 =======
  */
 #define CIFS_MAX_WSIZE ((1<<24) - 1 - sizeof(WRITE_REQ) + 4)
@@ -4560,6 +4759,7 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
  */
 #define CIFS_MAX_RFC1002_WSIZE ((1<<17) - 1 - sizeof(WRITE_REQ) + 4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The default wsize is 1M. find_get_pages seems to return a maximum of 256
@@ -4567,6 +4767,9 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
  * a single wsize request with a single call.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CIFS_DEFAULT_IOSIZE (1024 * 1024)
 
 /*
@@ -4582,9 +4785,12 @@ void cifs_setup_cifs_sb(struct smb_vol *pvolume_info,
  */
 #define CIFS_DEFAULT_NON_POSIX_RSIZE (60 * 1024)
 #define CIFS_DEFAULT_NON_POSIX_WSIZE (65536)
+<<<<<<< HEAD
+=======
 =======
 #define CIFS_DEFAULT_WSIZE (1024 * 1024)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static unsigned int
 cifs_negotiate_wsize(struct cifs_tcon *tcon, struct smb_vol *pvolume_info)
@@ -4592,6 +4798,9 @@ cifs_negotiate_wsize(struct cifs_tcon *tcon, struct smb_vol *pvolume_info)
 	__u64 unix_cap = le64_to_cpu(tcon->fsUnixInfo.Capability);
 	struct TCP_Server_Info *server = tcon->ses->server;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int wsize;
 
 	/* start with specified wsize, or default */
@@ -4601,10 +4810,13 @@ cifs_negotiate_wsize(struct cifs_tcon *tcon, struct smb_vol *pvolume_info)
 		wsize = CIFS_DEFAULT_IOSIZE;
 	else
 		wsize = CIFS_DEFAULT_NON_POSIX_WSIZE;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int wsize = pvolume_info->wsize ? pvolume_info->wsize :
 				CIFS_DEFAULT_WSIZE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* can server support 24-bit write sizes? (via UNIX extensions) */
 	if (!tcon->unix_ext || !(unix_cap & CIFS_UNIX_LARGE_WRITE_CAP))
@@ -4628,6 +4840,9 @@ cifs_negotiate_wsize(struct cifs_tcon *tcon, struct smb_vol *pvolume_info)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int
 cifs_negotiate_rsize(struct cifs_tcon *tcon, struct smb_vol *pvolume_info)
 {
@@ -4672,8 +4887,11 @@ cifs_negotiate_rsize(struct cifs_tcon *tcon, struct smb_vol *pvolume_info)
 	return rsize;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 is_path_accessible(int xid, struct cifs_tcon *tcon,
 		   struct cifs_sb_info *cifs_sb, const char *full_path)
@@ -4708,10 +4926,16 @@ cleanup_volume_info_contents(struct smb_vol *volume_info)
 		kfree(volume_info->UNCip);
 	kfree(volume_info->UNC);
 =======
+<<<<<<< HEAD
+	if (volume_info->UNCip != volume_info->UNC + 2)
+		kfree(volume_info->UNCip);
+	kfree(volume_info->UNC);
+=======
 	kfree(volume_info->UNC);
 	if (volume_info->UNCip != volume_info->UNC + 2)
 		kfree(volume_info->UNCip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(volume_info->domainname);
 	kfree(volume_info->iocharset);
 	kfree(volume_info->prepath);
@@ -4829,11 +5053,17 @@ cifs_setup_volume_info(struct smb_vol *volume_info, char *mount_data,
 		kfree(volume_info->username);
 		volume_info->username = NULL;
 =======
+<<<<<<< HEAD
+		cFYI(1, "Anonymous login");
+		kfree(volume_info->username);
+		volume_info->username = NULL;
+=======
 		cFYI(1, "null user");
 		volume_info->username = kzalloc(1, GFP_KERNEL);
 		if (volume_info->username == NULL)
 			return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (volume_info->username) {
 		/* BB fixme parse for domain name here */
 		cFYI(1, "Username: %s", volume_info->username);
@@ -4899,9 +5129,12 @@ cifs_mount(struct cifs_sb_info *cifs_sb, struct smb_vol *volume_info)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cifs_sb->bdi.ra_pages = default_backing_dev_info.ra_pages;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CIFS_DFS_UPCALL
 try_mount_again:
 	/* cleanup activities if we're chasing a referral */
@@ -4968,11 +5201,16 @@ try_mount_again:
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cifs_sb->wsize = cifs_negotiate_wsize(tcon, volume_info);
 	cifs_sb->rsize = cifs_negotiate_rsize(tcon, volume_info);
 
 	/* tune readahead according to rsize */
 	cifs_sb->bdi.ra_pages = cifs_sb->rsize / PAGE_CACHE_SIZE;
+<<<<<<< HEAD
+=======
 =======
 	if ((tcon->unix_ext == 0) && (cifs_sb->rsize > (1024 * 127))) {
 		cifs_sb->rsize = 1024 * 127;
@@ -4984,6 +5222,7 @@ try_mount_again:
 
 	cifs_sb->wsize = cifs_negotiate_wsize(tcon, volume_info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 remote_path_check:
 #ifdef CONFIG_CIFS_DFS_UPCALL
@@ -5071,8 +5310,12 @@ remote_path_check:
 <<<<<<< HEAD
 	queue_delayed_work(cifsiod_wq, &cifs_sb->prune_tlinks,
 =======
+<<<<<<< HEAD
+	queue_delayed_work(cifsiod_wq, &cifs_sb->prune_tlinks,
+=======
 	queue_delayed_work(system_nrt_wq, &cifs_sb->prune_tlinks,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				TLINK_IDLE_EXPIRE);
 
 mount_fail_check:
@@ -5092,6 +5335,11 @@ mount_fail_check:
 
 out:
 =======
+<<<<<<< HEAD
+	}
+
+out:
+=======
 		goto out;
 	}
 
@@ -5102,6 +5350,7 @@ out:
 out:
 	/* zero out password before freeing */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FreeXid(xid);
 	return rc;
 }
@@ -5170,8 +5419,12 @@ CIFSTCon(unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 					bcc_ptr, nls_codepage);
 =======
+<<<<<<< HEAD
+					bcc_ptr, nls_codepage);
+=======
 					bcc_ptr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		bcc_ptr += CIFS_AUTH_RESP_SIZE;
 		if (ses->capabilities & CAP_UNICODE) {
@@ -5197,8 +5450,12 @@ CIFSTCon(unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		    cifs_strtoUTF16((__le16 *) bcc_ptr, tree,
 =======
+<<<<<<< HEAD
+		    cifs_strtoUTF16((__le16 *) bcc_ptr, tree,
+=======
 		    cifs_strtoUCS((__le16 *) bcc_ptr, tree,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			6 /* max utf8 char length in bytes */ *
 			(/* server len*/ + 256 /* share len */), nls_codepage);
 		bcc_ptr += 2 * length;	/* convert num 16 bit words to bytes */
@@ -5256,8 +5513,12 @@ CIFSTCon(unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		tcon->nativeFileSystem = cifs_strndup_from_utf16(bcc_ptr,
 =======
+<<<<<<< HEAD
+		tcon->nativeFileSystem = cifs_strndup_from_utf16(bcc_ptr,
+=======
 		tcon->nativeFileSystem = cifs_strndup_from_ucs(bcc_ptr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						      bytes_left, is_unicode,
 						      nls_codepage);
 
@@ -5317,16 +5578,22 @@ int cifs_negotiate_protocol(unsigned int xid, struct cifs_ses *ses)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cifs_set_credits(server, 1);
 	rc = CIFSSMBNegotiate(xid, ses);
 	if (rc == -EAGAIN) {
 		/* retry only once on 1st time connection */
 		cifs_set_credits(server, 1);
+<<<<<<< HEAD
+=======
 =======
 	rc = CIFSSMBNegotiate(xid, ses);
 	if (rc == -EAGAIN) {
 		/* retry only once on 1st time connection */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = CIFSSMBNegotiate(xid, ses);
 		if (rc == -EAGAIN)
 			rc = -EHOSTDOWN;
@@ -5390,6 +5657,9 @@ int cifs_setup_session(unsigned int xid, struct cifs_ses *ses,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 cifs_set_vol_auth(struct smb_vol *vol, struct cifs_ses *ses)
 {
@@ -5418,21 +5688,29 @@ static struct cifs_tcon *
 cifs_construct_tcon(struct cifs_sb_info *cifs_sb, uid_t fsuid)
 {
 	int rc;
+<<<<<<< HEAD
+=======
 =======
 static struct cifs_tcon *
 cifs_construct_tcon(struct cifs_sb_info *cifs_sb, uid_t fsuid)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cifs_tcon *master_tcon = cifs_sb_master_tcon(cifs_sb);
 	struct cifs_ses *ses;
 	struct cifs_tcon *tcon = NULL;
 	struct smb_vol *vol_info;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	vol_info = kzalloc(sizeof(*vol_info), GFP_KERNEL);
 	if (vol_info == NULL)
 		return ERR_PTR(-ENOMEM);
 
+<<<<<<< HEAD
+=======
 =======
 	char username[28]; /* big enough for "krb50x" + hex of ULONG_MAX 6+16 */
 			   /* We used to have this as MAX_USERNAME which is   */
@@ -5447,6 +5725,7 @@ cifs_construct_tcon(struct cifs_sb_info *cifs_sb, uid_t fsuid)
 	snprintf(username, sizeof(username), "krb50x%x", fsuid);
 	vol_info->username = username;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vol_info->local_nls = cifs_sb->local_nls;
 	vol_info->linux_uid = fsuid;
 	vol_info->cred_uid = fsuid;
@@ -5457,15 +5736,21 @@ cifs_construct_tcon(struct cifs_sb_info *cifs_sb, uid_t fsuid)
 	vol_info->no_linux_ext = !master_tcon->unix_ext;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = cifs_set_vol_auth(vol_info, master_tcon->ses);
 	if (rc) {
 		tcon = ERR_PTR(rc);
 		goto out;
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* FIXME: allow for other secFlg settings */
 	vol_info->secFlg = CIFSSEC_MUST_KRB5;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* get a reference for the same TCP session */
 	spin_lock(&cifs_tcp_ses_lock);
@@ -5492,7 +5777,12 @@ out:
 	kfree(vol_info->username);
 	kfree(vol_info->password);
 =======
+<<<<<<< HEAD
+	kfree(vol_info->username);
+	kfree(vol_info->password);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(vol_info);
 
 	return tcon;
@@ -5688,7 +5978,11 @@ cifs_prune_tlinks(struct work_struct *work)
 <<<<<<< HEAD
 	queue_delayed_work(cifsiod_wq, &cifs_sb->prune_tlinks,
 =======
+<<<<<<< HEAD
+	queue_delayed_work(cifsiod_wq, &cifs_sb->prune_tlinks,
+=======
 	queue_delayed_work(system_nrt_wq, &cifs_sb->prune_tlinks,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				TLINK_IDLE_EXPIRE);
 }

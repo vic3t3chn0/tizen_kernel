@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/mempool.h>
 #include <linux/pagemap.h>
@@ -42,8 +46,12 @@
 <<<<<<< HEAD
 #define CEPH_OPT_DEFAULT   (0)
 =======
+<<<<<<< HEAD
+#define CEPH_OPT_DEFAULT   (0)
+=======
 #define CEPH_OPT_DEFAULT   (0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ceph_set_opt(client, opt) \
 	(client)->options->flags |= CEPH_OPT_##opt;
@@ -218,8 +226,12 @@ extern struct kmem_cache *ceph_file_cachep;
 <<<<<<< HEAD
 extern struct ceph_options *ceph_parse_options(char *options,
 =======
+<<<<<<< HEAD
+extern struct ceph_options *ceph_parse_options(char *options,
+=======
 extern int ceph_parse_options(struct ceph_options **popt, char *options,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      const char *dev_name, const char *dev_name_end,
 			      int (*parse_extra_token)(char *c, void *private),
 			      void *private);
@@ -232,8 +244,14 @@ extern struct ceph_client *ceph_create_client(struct ceph_options *opt,
 					      unsigned supported_features,
 					      unsigned required_features);
 =======
+<<<<<<< HEAD
+					      void *private,
+					      unsigned supported_features,
+					      unsigned required_features);
+=======
 					      void *private);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern u64 ceph_client_id(struct ceph_client *client);
 extern void ceph_destroy_client(struct ceph_client *client);
 extern int __ceph_open_session(struct ceph_client *client,

@@ -13,7 +13,11 @@ obj-pci-$(CONFIG_MACH_GTWX5715)		+= gtwx5715-pci.o
 <<<<<<< HEAD
 obj-pci-$(CONFIG_MACH_MICCPT)		+= miccpt-pci.o
 =======
+<<<<<<< HEAD
+obj-pci-$(CONFIG_MACH_MICCPT)		+= miccpt-pci.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-pci-$(CONFIG_MACH_NSLU2)		+= nslu2-pci.o
 obj-pci-$(CONFIG_MACH_NAS100D)		+= nas100d-pci.o
 obj-pci-$(CONFIG_MACH_DSMG600)		+= dsmg600-pci.o
@@ -34,7 +38,13 @@ obj-$(CONFIG_MACH_DEVIXP)	+= omixp-setup.o
 obj-$(CONFIG_MACH_MICCPT)	+= omixp-setup.o
 obj-$(CONFIG_MACH_MIC256)	+= omixp-setup.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_MACH_DEVIXP)	+= omixp-setup.o
+obj-$(CONFIG_MACH_MICCPT)	+= omixp-setup.o
+obj-$(CONFIG_MACH_MIC256)	+= omixp-setup.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_MACH_NSLU2)	+= nslu2-setup.o
 obj-$(CONFIG_MACH_NAS100D)	+= nas100d-setup.o
 obj-$(CONFIG_MACH_DSMG600)      += dsmg600-setup.o

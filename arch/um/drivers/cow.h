@@ -5,6 +5,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(__KERNEL__)
 
 # include <asm/byteorder.h>
@@ -41,6 +43,7 @@
 #endif /* ! defined(__KERNEL__) */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int init_cow_file(int fd, char *cow_file, char *backing_file,
 			 int sectorsize, int alignment, int *bitmap_offset_out,
 			 unsigned long *bitmap_len_out, int *data_offset_out);

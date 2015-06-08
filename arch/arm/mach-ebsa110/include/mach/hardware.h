@@ -17,6 +17,11 @@
 #define ISAIO_BASE		0xf0000000
 
 =======
+<<<<<<< HEAD
+#define ISAMEM_BASE		0xe0000000
+#define ISAIO_BASE		0xf0000000
+
+=======
 /*
  * The EBSA110 has a weird "ISA IO" region:
  *
@@ -60,6 +65,7 @@
 #define SOFT_BASE		0xfd000000
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * RAM definitions
  */

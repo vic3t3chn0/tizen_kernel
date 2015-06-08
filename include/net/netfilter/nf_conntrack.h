@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/netfilter/nf_conntrack_tcp.h>
 #include <linux/netfilter/nf_conntrack_dccp.h>
@@ -105,13 +109,19 @@ struct nf_conn_help {
 #include <net/netfilter/ipv6/nf_conntrack_ipv6.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Handle NATTYPE Stuff,only if NATTYPE module was defined */
 #if defined(CONFIG_IP_NF_TARGET_NATTYPE_MODULE)
 #include <linux/netfilter_ipv4/ipt_NATTYPE.h>
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nf_conn {
 	/* Usage count in here is 1 for hash table/destruct timer, 1 per skb,
            plus 1 for any connection(s) we are `master' for */
@@ -147,12 +157,18 @@ struct nf_conn {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_IP_NF_TARGET_NATTYPE_MODULE)
 	unsigned long nattype_entry;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Storage reserved for other modules, must be the last member */
 	union nf_conntrack_proto proto;
 };
@@ -231,8 +247,12 @@ __nf_conntrack_find(struct net *net, u16 zone,
 <<<<<<< HEAD
 extern int nf_conntrack_hash_check_insert(struct nf_conn *ct);
 =======
+<<<<<<< HEAD
+extern int nf_conntrack_hash_check_insert(struct nf_conn *ct);
+=======
 extern void nf_conntrack_hash_insert(struct nf_conn *ct);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void nf_ct_delete_from_lists(struct nf_conn *ct);
 extern void nf_ct_insert_dying_list(struct nf_conn *ct);
 
@@ -340,7 +360,12 @@ static inline bool nf_is_loopback_packet(const struct sk_buff *skb)
 struct kernel_param;
 
 =======
+<<<<<<< HEAD
+struct kernel_param;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int nf_conntrack_set_hashsize(const char *val, struct kernel_param *kp);
 extern unsigned int nf_conntrack_htable_size;
 extern unsigned int nf_conntrack_max;

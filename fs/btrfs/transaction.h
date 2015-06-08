@@ -46,7 +46,11 @@ struct btrfs_transaction {
 <<<<<<< HEAD
 	int aborted;
 =======
+<<<<<<< HEAD
+	int aborted;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct btrfs_trans_handle {
@@ -62,7 +66,11 @@ struct btrfs_trans_handle {
 <<<<<<< HEAD
 	int aborted;
 =======
+<<<<<<< HEAD
+	int aborted;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct btrfs_pending_snapshot {
@@ -125,5 +133,9 @@ int btrfs_transaction_in_commit(struct btrfs_fs_info *info);
 <<<<<<< HEAD
 void put_transaction(struct btrfs_transaction *transaction);
 =======
+<<<<<<< HEAD
+void put_transaction(struct btrfs_transaction *transaction);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

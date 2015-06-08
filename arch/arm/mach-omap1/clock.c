@@ -19,9 +19,14 @@
 #include <linux/io.h>
 #include <linux/clk.h>
 =======
+<<<<<<< HEAD
+#include <linux/io.h>
+#include <linux/clk.h>
+=======
 #include <linux/clk.h>
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clkdev.h>
 
 #include <asm/mach-types.h>
@@ -37,7 +42,13 @@
 
 #include "iomap.h"
 =======
+<<<<<<< HEAD
+#include <mach/hardware.h>
+
+#include "iomap.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "clock.h"
 #include "opp.h"
 
@@ -209,10 +220,15 @@ int omap1_select_table_rate(struct clk *clk, unsigned long rate)
 
 	for (ptr = omap1_rate_table; ptr->rate; ptr++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!(ptr->flags & cpu_mask))
 			continue;
 
 		if (ptr->xtal != ref_rate)
+<<<<<<< HEAD
+=======
 =======
 		if (ptr->xtal != ref_rate)
 			continue;
@@ -220,6 +236,7 @@ int omap1_select_table_rate(struct clk *clk, unsigned long rate)
 		/* DPLL1 cannot be reprogrammed without risking system crash */
 		if (likely(dpll1_rate != 0) && ptr->pll_rate != dpll1_rate)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		/* Can check only after xtal frequency check */
@@ -237,6 +254,10 @@ int omap1_select_table_rate(struct clk *clk, unsigned long rate)
 	 */
 	omap_sram_reprogram_clock(ptr->dpllctl_val, ptr->ckctl_val);
 =======
+<<<<<<< HEAD
+	 */
+	omap_sram_reprogram_clock(ptr->dpllctl_val, ptr->ckctl_val);
+=======
 	 * (on 730, bit 13 must always be 1)
 	 */
 	if (cpu_is_omap7xx())
@@ -244,6 +265,7 @@ int omap1_select_table_rate(struct clk *clk, unsigned long rate)
 	else
 		omap_sram_reprogram_clock(ptr->dpllctl_val, ptr->ckctl_val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* XXX Do we need to recalculate the tree below DPLL1 at this point? */
 	ck_dpll1_p->rate = ptr->pll_rate;
@@ -318,7 +340,13 @@ long omap1_round_to_table_rate(struct clk *clk, unsigned long rate)
 			continue;
 
 =======
+<<<<<<< HEAD
+		if (!(ptr->flags & cpu_mask))
+			continue;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ptr->xtal != ref_rate)
 			continue;
 

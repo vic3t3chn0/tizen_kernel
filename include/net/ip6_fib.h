@@ -88,11 +88,14 @@ struct rt6_info {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define rt6i_dev			dst.dev
 #define rt6i_nexthop			dst.neighbour
 #define rt6i_expires			dst.expires
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Tail elements of dst_entry (__refcnt etc.)
 	 * and these elements (rarely used in hot path) are in
@@ -131,6 +134,9 @@ static inline struct inet6_dev *ip6_dst_idev(struct dst_entry *dst)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void rt6_clean_expires(struct rt6_info *rt)
 {
 	if (!(rt->rt6i_flags & RTF_EXPIRES) && rt->dst.from)
@@ -179,8 +185,11 @@ static inline void rt6_set_from(struct rt6_info *rt, struct rt6_info *from)
 	dst_hold(new);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct fib6_walker_t {
 	struct list_head lh;
 	struct fib6_node *root, *node;
@@ -258,12 +267,18 @@ struct fib6_node		*fib6_locate(struct fib6_node *root,
 					     const struct in6_addr *saddr, int src_len);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void			fib6_clean_all_ro(struct net *net,
 					       int (*func)(struct rt6_info *, void *arg),
 					       int prune, void *arg);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void			fib6_clean_all(struct net *net,
 					       int (*func)(struct rt6_info *, void *arg),
 					       int prune, void *arg);

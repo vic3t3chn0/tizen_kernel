@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/sn/sn_sal.h>
 #include <asm/sn/addrs.h>
 #include <asm/sn/io.h>
@@ -604,11 +608,16 @@ tioca_bus_fixup(struct pcibus_bussoft *prom_bussoft, struct pci_controller *cont
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tioca_common = kmemdup(prom_bussoft, sizeof(struct tioca_common),
 			       GFP_KERNEL);
 	if (!tioca_common)
 		return NULL;
 
+<<<<<<< HEAD
+=======
 =======
 	tioca_common = kzalloc(sizeof(struct tioca_common), GFP_KERNEL);
 	if (!tioca_common)
@@ -616,6 +625,7 @@ tioca_bus_fixup(struct pcibus_bussoft *prom_bussoft, struct pci_controller *cont
 
 	memcpy(tioca_common, prom_bussoft, sizeof(struct tioca_common));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tioca_common->ca_common.bs_base = (unsigned long)
 		ioremap(REGION_OFFSET(tioca_common->ca_common.bs_base),
 			sizeof(struct tioca_common));
@@ -663,7 +673,11 @@ tioca_bus_fixup(struct pcibus_bussoft *prom_bussoft, struct pci_controller *cont
 <<<<<<< HEAD
 	irq_set_handler(SGI_TIOCA_ERROR, handle_level_irq);
 =======
+<<<<<<< HEAD
+	irq_set_handler(SGI_TIOCA_ERROR, handle_level_irq);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sn_set_err_irq_affinity(SGI_TIOCA_ERROR);
 
 	/* Setup locality information */

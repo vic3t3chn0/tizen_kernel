@@ -33,6 +33,13 @@
 #include <linux/gpio.h>
 
 #include <linux/spi/ad7879.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ad7879.h"
 
 #define AD7879_REG_ZEROS		0
@@ -249,12 +256,28 @@ static void __ad7879_enable(struct ad7879 *ts)
 
 static void __ad7879_disable(struct ad7879 *ts)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u16 reg = (ts->cmd_crtl2 & ~AD7879_PM(-1)) |
+		AD7879_PM(AD7879_PM_SHUTDOWN);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	disable_irq(ts->irq);
 
 	if (del_timer_sync(&ts->timer))
 		ad7879_ts_event_release(ts);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ad7879_write(ts, AD7879_REG_CTRL2, reg);
+=======
 	ad7879_write(ts, AD7879_REG_CTRL2, AD7879_PM(AD7879_PM_SHUTDOWN));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ad7879_write(ts, AD7879_REG_CTRL2, AD7879_PM(AD7879_PM_SHUTDOWN));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -278,8 +301,21 @@ static void ad7879_close(struct input_dev* input)
 		__ad7879_disable(ts);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+static int ad7879_suspend(struct device *dev)
+{
+	struct ad7879 *ts = dev_get_drvdata(dev);
+
+=======
 void ad7879_suspend(struct ad7879 *ts)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ad7879_suspend(struct ad7879 *ts)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&ts->input->mutex);
 
 	if (!ts->suspended && !ts->disabled && ts->input->users)
@@ -288,11 +324,28 @@ void ad7879_suspend(struct ad7879 *ts)
 	ts->suspended = true;
 
 	mutex_unlock(&ts->input->mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	return 0;
+}
+
+static int ad7879_resume(struct device *dev)
+{
+	struct ad7879 *ts = dev_get_drvdata(dev);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(ad7879_suspend);
 
 void ad7879_resume(struct ad7879 *ts)
 {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&ts->input->mutex);
 
 	if (ts->suspended && !ts->disabled && ts->input->users)
@@ -301,8 +354,23 @@ void ad7879_resume(struct ad7879 *ts)
 	ts->suspended = false;
 
 	mutex_unlock(&ts->input->mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	return 0;
+}
+#endif
+
+SIMPLE_DEV_PM_OPS(ad7879_pm_ops, ad7879_suspend, ad7879_resume);
+EXPORT_SYMBOL(ad7879_pm_ops);
+=======
 }
 EXPORT_SYMBOL(ad7879_resume);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+}
+EXPORT_SYMBOL(ad7879_resume);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void ad7879_toggle(struct ad7879 *ts, bool disable)
 {
@@ -337,10 +405,23 @@ static ssize_t ad7879_disable_store(struct device *dev,
 				     const char *buf, size_t count)
 {
 	struct ad7879 *ts = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int val;
+	int error;
+
+	error = kstrtouint(buf, 10, &val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long val;
 	int error;
 
 	error = strict_strtoul(buf, 10, &val);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		return error;
 

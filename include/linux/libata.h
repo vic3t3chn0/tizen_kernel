@@ -75,6 +75,9 @@
 #define BPRINTK(fmt, args...) if (ap->flags & ATA_FLAG_DEBUGMSG) printk(KERN_ERR "%s: " fmt, __func__, ## args)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ata_print_version_once(dev, version)			\
 ({								\
 	static bool __print_once;				\
@@ -85,8 +88,11 @@
 	}							\
 })
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* NEW: debug levels */
 #define HAVE_LIBATA_MSG 1
 
@@ -397,8 +403,11 @@ enum {
 	ATA_HORKAGE_DUMP_ID	= (1 << 16),	/* dump IDENTIFY data */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ATA_HORKAGE_MAX_SEC_LBA48 = (1 << 17),	/* Set max sects to 65535 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	 /* DMA mask for user DMA control: User visible values; DO NOT
 	    renumber */
@@ -1007,7 +1016,12 @@ extern struct ata_port *ata_sas_port_alloc(struct ata_host *,
 extern void ata_sas_async_probe(struct ata_port *ap);
 extern int ata_sas_sync_probe(struct ata_port *ap);
 =======
+<<<<<<< HEAD
+extern void ata_sas_async_probe(struct ata_port *ap);
+extern int ata_sas_sync_probe(struct ata_port *ap);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int ata_sas_port_init(struct ata_port *);
 extern int ata_sas_port_start(struct ata_port *ap);
 extern void ata_sas_port_stop(struct ata_port *ap);
@@ -1068,7 +1082,12 @@ extern int ata_scsi_change_queue_depth(struct scsi_device *sdev,
 extern int __ata_change_queue_depth(struct ata_port *ap, struct scsi_device *sdev,
 				    int queue_depth, int reason);
 =======
+<<<<<<< HEAD
+extern int __ata_change_queue_depth(struct ata_port *ap, struct scsi_device *sdev,
+				    int queue_depth, int reason);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct ata_device *ata_dev_pair(struct ata_device *adev);
 extern int ata_do_set_mode(struct ata_link *link, struct ata_device **r_failed_dev);
 extern void ata_scsi_port_error_handler(struct Scsi_Host *host, struct ata_port *ap);
@@ -1165,7 +1184,11 @@ extern void ata_port_schedule_eh(struct ata_port *ap);
 <<<<<<< HEAD
 extern void ata_port_wait_eh(struct ata_port *ap);
 =======
+<<<<<<< HEAD
+extern void ata_port_wait_eh(struct ata_port *ap);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int ata_link_abort(struct ata_link *link);
 extern int ata_port_abort(struct ata_port *ap);
 extern int ata_port_freeze(struct ata_port *ap);
@@ -1276,6 +1299,9 @@ static inline int sata_srst_pmp(struct ata_link *link)
  * printk helpers
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __printf(3, 4)
 int ata_port_printk(const struct ata_port *ap, const char *level,
 		    const char *fmt, ...);
@@ -1320,6 +1346,8 @@ int ata_dev_printk(const struct ata_device *dev, const char *level,
 	ata_dev_printk(dev, KERN_DEBUG, fmt, ##__VA_ARGS__)
 
 void ata_print_version(const struct device *dev, const char *version);
+<<<<<<< HEAD
+=======
 =======
 #define ata_port_printk(ap, lv, fmt, args...) \
 	printk("%sata%u: "fmt, lv, (ap)->print_id , ##args)
@@ -1336,21 +1364,28 @@ void ata_print_version(const struct device *dev, const char *version);
 	printk("%sata%u.%02u: "fmt, lv, (dev)->link->ap->print_id,	\
 	       (dev)->link->pmp + (dev)->devno , ##args)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * ata_eh_info helpers
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __printf(2, 3)
 void __ata_ehi_push_desc(struct ata_eh_info *ehi, const char *fmt, ...);
 extern __printf(2, 3)
 void ata_ehi_push_desc(struct ata_eh_info *ehi, const char *fmt, ...);
+<<<<<<< HEAD
+=======
 =======
 extern void __ata_ehi_push_desc(struct ata_eh_info *ehi, const char *fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
 extern void ata_ehi_push_desc(struct ata_eh_info *ehi, const char *fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void ata_ehi_clear_desc(struct ata_eh_info *ehi);
 
 static inline void ata_ehi_hotplugged(struct ata_eh_info *ehi)
@@ -1368,9 +1403,14 @@ static inline void ata_ehi_hotplugged(struct ata_eh_info *ehi)
 extern __printf(2, 3)
 void ata_port_desc(struct ata_port *ap, const char *fmt, ...);
 =======
+<<<<<<< HEAD
+extern __printf(2, 3)
+void ata_port_desc(struct ata_port *ap, const char *fmt, ...);
+=======
 extern void ata_port_desc(struct ata_port *ap, const char *fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PCI
 extern void ata_port_pbar_desc(struct ata_port *ap, int bar, ssize_t offset,
 			       const char *name);

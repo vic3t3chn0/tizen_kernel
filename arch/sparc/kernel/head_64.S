@@ -136,8 +136,12 @@ prom_sparc_prefix:
 <<<<<<< HEAD
 	.asciz	"SPARC-"
 =======
+<<<<<<< HEAD
+	.asciz	"SPARC-"
+=======
 	.asciz	"SPARC-T"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.align	4
 prom_root_compatible:
 	.skip	64
@@ -403,8 +407,12 @@ sun4v_chip_type:
 <<<<<<< HEAD
 	mov	6, %g3
 =======
+<<<<<<< HEAD
+	mov	6, %g3
+=======
 	mov	7, %g3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 90:	ldub	[%g7], %g2
 	ldub	[%g1], %g4
 	cmp	%g2, %g4
@@ -417,6 +425,9 @@ sun4v_chip_type:
 	sethi	%hi(prom_cpu_compatible), %g1
 	or	%g1, %lo(prom_cpu_compatible), %g1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldub	[%g1 + 6], %g2
 	cmp	%g2, 'T'
 	be,pt	%xcc, 70f
@@ -434,12 +445,15 @@ sun4v_chip_type:
 	cmp	%g2, '5'
 	be,pt	%xcc, 5f
 	 mov	SUN4V_CHIP_NIAGARA5, %g4
+<<<<<<< HEAD
+=======
 =======
 	ldub	[%g1 + 7], %g2
 	cmp	%g2, '3'
 	be,pt	%xcc, 5f
 	 mov	SUN4V_CHIP_NIAGARA3, %g4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ba,pt	%xcc, 4f
 	 nop
 
@@ -455,8 +469,12 @@ sun4v_chip_type:
 <<<<<<< HEAD
 	
 =======
+<<<<<<< HEAD
+	
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 4:
 	mov	SUN4V_CHIP_UNKNOWN, %g4
 5:	sethi	%hi(sun4v_chip_type), %g2
@@ -578,14 +596,20 @@ niagara_tlb_fixup:
 	be,pt	%xcc, niagara2_patch
 	 nop
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cmp	%g1, SUN4V_CHIP_NIAGARA4
 	be,pt	%xcc, niagara2_patch
 	 nop
 	cmp	%g1, SUN4V_CHIP_NIAGARA5
 	be,pt	%xcc, niagara2_patch
 	 nop
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	call	generic_patch_copyops
 	 nop

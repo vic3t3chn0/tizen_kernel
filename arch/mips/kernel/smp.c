@@ -35,6 +35,9 @@
 #include <linux/ftrace.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/atomic.h>
 #include <asm/cpu.h>
 #include <asm/processor.h>
@@ -42,6 +45,8 @@
 #include <asm/mmu_context.h>
 #include <asm/time.h>
 #include <asm/setup.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/atomic.h>
 #include <asm/cpu.h>
@@ -51,6 +56,7 @@
 #include <asm/mmu_context.h>
 #include <asm/time.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MIPS_MT_SMTC
 #include <asm/mipsmtregs.h>
@@ -161,8 +167,12 @@ static void stop_this_cpu(void *dummy)
 <<<<<<< HEAD
 	set_cpu_online(smp_processor_id(), false);
 =======
+<<<<<<< HEAD
+	set_cpu_online(smp_processor_id(), false);
+=======
 	cpu_clear(smp_processor_id(), cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (;;) {
 		if (cpu_wait)
 			(*cpu_wait)();		/* Wait if available. */
@@ -191,8 +201,12 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
 <<<<<<< HEAD
 	init_cpu_present(cpu_possible_mask);
 =======
+<<<<<<< HEAD
+	init_cpu_present(cpu_possible_mask);
+=======
 	init_cpu_present(&cpu_possible_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 
@@ -269,8 +283,12 @@ int __cpuinit __cpu_up(unsigned int cpu)
 <<<<<<< HEAD
 	set_cpu_online(cpu, true);
 =======
+<<<<<<< HEAD
+	set_cpu_online(cpu, true);
+=======
 	cpu_set(cpu, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -343,12 +361,17 @@ void flush_tlb_mm(struct mm_struct *mm)
 		smp_on_other_tlbs(flush_tlb_mm_ipi, mm);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned int cpu;
 
 		for_each_online_cpu(cpu) {
 			if (cpu != smp_processor_id() && cpu_context(cpu, mm))
 				cpu_context(cpu, mm) = 0;
 		}
+<<<<<<< HEAD
+=======
 =======
 		cpumask_t mask = cpu_online_map;
 		unsigned int cpu;
@@ -358,6 +381,7 @@ void flush_tlb_mm(struct mm_struct *mm)
 			if (cpu_context(cpu, mm))
 				cpu_context(cpu, mm) = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	local_flush_tlb_mm(mm);
 
@@ -392,12 +416,17 @@ void flush_tlb_range(struct vm_area_struct *vma, unsigned long start, unsigned l
 		smp_on_other_tlbs(flush_tlb_range_ipi, &fd);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned int cpu;
 
 		for_each_online_cpu(cpu) {
 			if (cpu != smp_processor_id() && cpu_context(cpu, mm))
 				cpu_context(cpu, mm) = 0;
 		}
+<<<<<<< HEAD
+=======
 =======
 		cpumask_t mask = cpu_online_map;
 		unsigned int cpu;
@@ -407,6 +436,7 @@ void flush_tlb_range(struct vm_area_struct *vma, unsigned long start, unsigned l
 			if (cpu_context(cpu, mm))
 				cpu_context(cpu, mm) = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	local_flush_tlb_range(vma, start, end);
 	preempt_enable();
@@ -448,12 +478,17 @@ void flush_tlb_page(struct vm_area_struct *vma, unsigned long page)
 		smp_on_other_tlbs(flush_tlb_page_ipi, &fd);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned int cpu;
 
 		for_each_online_cpu(cpu) {
 			if (cpu != smp_processor_id() && cpu_context(cpu, vma->vm_mm))
 				cpu_context(cpu, vma->vm_mm) = 0;
 		}
+<<<<<<< HEAD
+=======
 =======
 		cpumask_t mask = cpu_online_map;
 		unsigned int cpu;
@@ -463,6 +498,7 @@ void flush_tlb_page(struct vm_area_struct *vma, unsigned long page)
 			if (cpu_context(cpu, vma->vm_mm))
 				cpu_context(cpu, vma->vm_mm) = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	local_flush_tlb_page(vma, page);
 	preempt_enable();

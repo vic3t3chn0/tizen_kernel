@@ -16,8 +16,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/delay.h>
@@ -39,10 +43,16 @@
 #include <asm/mach/pci.h>
 #include <asm/system_info.h>
 =======
+<<<<<<< HEAD
+#include <asm/mach/arch.h>
+#include <asm/mach/pci.h>
+#include <asm/system_info.h>
+=======
 #include <asm/gpio.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/pci.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/orion5x.h>
 #include "common.h"
 #include "mpp.h"
@@ -83,8 +93,12 @@ enum {
 <<<<<<< HEAD
 static int __init dns323_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+static int __init dns323_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 static int __init dns323_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq;
 
@@ -747,8 +761,12 @@ MACHINE_START(DNS323, "D-Link DNS-323")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= dns323_init,
 	.map_io		= orion5x_map_io,
 	.init_early	= orion5x_init_early,
@@ -758,5 +776,9 @@ MACHINE_START(DNS323, "D-Link DNS-323")
 <<<<<<< HEAD
 	.restart	= orion5x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= orion5x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -68,8 +68,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define PLDSIZE	(CONFIG_ARM_PLD_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		enter	r4, lr
 
@@ -95,6 +98,9 @@
 
 	PLD(	pld	[r1, #0]		)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 2:	PLD(	subs	r2, r2, #96		)
 	PLD(	pld	[r1, #28]		)
 	PLD(	blt	4f			)
@@ -108,6 +114,8 @@
 		bge	3b
 	PLD(	cmn	r2, #96			)
 	PLD(	bge	4b			)
+<<<<<<< HEAD
+=======
 =======
 
 #if (PLDSIZE == 64)
@@ -150,6 +158,7 @@
 	PLD(	bge	4b			)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 5:		ands	ip, r2, #28
 		rsb	ip, ip, #32

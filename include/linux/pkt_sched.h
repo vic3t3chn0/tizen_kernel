@@ -33,8 +33,12 @@ struct tc_stats {
 <<<<<<< HEAD
 	__u64	bytes;			/* Number of enqueued bytes */
 =======
+<<<<<<< HEAD
+	__u64	bytes;			/* Number of enqueued bytes */
+=======
 	__u64	bytes;			/* NUmber of enqueues bytes */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32	packets;		/* Number of enqueued packets	*/
 	__u32	drops;			/* Packets dropped because of lack of resources */
 	__u32	overlimits;		/* Number of throttle events when this
@@ -125,7 +129,11 @@ struct tc_prio_qopt {
 <<<<<<< HEAD
 	__u8	enable_flow;		/* Enable dequeue */
 =======
+<<<<<<< HEAD
+	__u8	enable_flow;		/* Enable dequeue */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* MULTIQ section */
@@ -136,6 +144,9 @@ struct tc_multiq_qopt {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLUG section */
 
 #define TCQ_PLUG_BUFFER                0
@@ -157,8 +168,11 @@ struct tc_plug_qopt {
 	__u32           limit;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* TBF section */
 
 struct tc_tbf_qopt {
@@ -195,6 +209,9 @@ struct tc_sfq_qopt {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tc_sfqred_stats {
 	__u32           prob_drop;      /* Early drops, below max threshold */
 	__u32           forced_drop;	/* Early drops, after max threshold */
@@ -222,12 +239,17 @@ struct tc_sfq_qopt_v1 {
 };
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tc_sfq_xstats {
 	__s32		allot;
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -240,6 +262,7 @@ struct tc_sfq_xstats {
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* RED section */
 
 enum {
@@ -249,7 +272,11 @@ enum {
 <<<<<<< HEAD
 	TCA_RED_MAX_P,
 =======
+<<<<<<< HEAD
+	TCA_RED_MAX_P,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__TCA_RED_MAX,
 };
 
@@ -268,9 +295,15 @@ struct tc_red_qopt {
 #define TC_RED_HARDDROP		2
 #define TC_RED_ADAPTATIVE	4
 =======
+<<<<<<< HEAD
+#define TC_RED_ECN		1
+#define TC_RED_HARDDROP		2
+#define TC_RED_ADAPTATIVE	4
+=======
 #define TC_RED_ECN	1
 #define TC_RED_HARDDROP	2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct tc_red_xstats {
@@ -292,7 +325,11 @@ enum {
 <<<<<<< HEAD
        TCA_GRED_MAX_P,
 =======
+<<<<<<< HEAD
+       TCA_GRED_MAX_P,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	   __TCA_GRED_MAX,
 };
 
@@ -335,7 +372,11 @@ enum {
 <<<<<<< HEAD
 	TCA_CHOKE_MAX_P,
 =======
+<<<<<<< HEAD
+	TCA_CHOKE_MAX_P,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__TCA_CHOKE_MAX,
 };
 
@@ -383,8 +424,12 @@ struct tc_htb_glob {
 <<<<<<< HEAD
 	__u32 direct_pkts; /* count of non shaped packets */
 =======
+<<<<<<< HEAD
+	__u32 direct_pkts; /* count of non shaped packets */
+=======
 	__u32 direct_pkts; /* count of non shapped packets */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 enum {
 	TCA_HTB_UNSPEC,
@@ -555,7 +600,11 @@ enum {
 <<<<<<< HEAD
 	TCA_NETEM_RATE,
 =======
+<<<<<<< HEAD
+	TCA_NETEM_RATE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__TCA_NETEM_MAX,
 };
 
@@ -587,6 +636,9 @@ struct tc_netem_corrupt {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tc_netem_rate {
 	__u32	rate;	/* byte/s */
 	__s32	packet_overhead;
@@ -594,8 +646,11 @@ struct tc_netem_rate {
 	__s32	cell_overhead;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	NETEM_LOSS_UNSPEC,
 	NETEM_LOSS_GI,		/* General Intuitive - 4 state model */
@@ -607,8 +662,12 @@ enum {
 <<<<<<< HEAD
 /* State transition probabilities for 4 state model */
 =======
+<<<<<<< HEAD
+/* State transition probabilities for 4 state model */
+=======
 /* State transition probablities for 4 state model */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tc_netem_gimodel {
 	__u32	p13;
 	__u32	p31;

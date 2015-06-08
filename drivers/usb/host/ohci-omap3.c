@@ -31,6 +31,13 @@
 
 #include <linux/platform_device.h>
 #include <plat/usb.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/pm_runtime.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*-------------------------------------------------------------------------*/
 
@@ -134,7 +141,15 @@ static int __devinit ohci_hcd_omap3_probe(struct platform_device *pdev)
 	int			irq;
 
 	if (usb_disabled())
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -ENODEV;
+=======
 		goto err_end;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		goto err_end;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dev->parent) {
 		dev_err(dev, "Missing parent device\n");
@@ -149,7 +164,15 @@ static int __devinit ohci_hcd_omap3_probe(struct platform_device *pdev)
 
 	res = platform_get_resource_byname(pdev,
 				IORESOURCE_MEM, "ohci");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!res) {
+=======
 	if (!ret) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!ret) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(dev, "UHH OHCI get resource failed\n");
 		return -ENOMEM;
 	}
@@ -172,6 +195,17 @@ static int __devinit ohci_hcd_omap3_probe(struct platform_device *pdev)
 	hcd->rsrc_len = resource_size(res);
 	hcd->regs =  regs;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_enable(dev);
+	pm_runtime_get_sync(dev);
+
+	ohci_hcd_init(hcd_to_ohci(hcd));
+
+	ret = usb_add_hcd(hcd, irq, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = omap_usbhs_enable(dev);
 	if (ret) {
 		dev_dbg(dev, "failed to start ohci\n");
@@ -181,6 +215,10 @@ static int __devinit ohci_hcd_omap3_probe(struct platform_device *pdev)
 	ohci_hcd_init(hcd_to_ohci(hcd));
 
 	ret = usb_add_hcd(hcd, irq, IRQF_DISABLED);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		dev_dbg(dev, "failed to add hcd with err %d\n", ret);
 		goto err_add_hcd;
@@ -189,9 +227,19 @@ static int __devinit ohci_hcd_omap3_probe(struct platform_device *pdev)
 	return 0;
 
 err_add_hcd:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_put_sync(dev);
+=======
 	omap_usbhs_disable(dev);
 
 err_end:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	omap_usbhs_disable(dev);
+
+err_end:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_put_hcd(hcd);
 
 err_io:
@@ -220,9 +268,21 @@ static int __devexit ohci_hcd_omap3_remove(struct platform_device *pdev)
 
 	iounmap(hcd->regs);
 	usb_remove_hcd(hcd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pm_runtime_put_sync(dev);
+	pm_runtime_disable(dev);
+	usb_put_hcd(hcd);
+=======
 	omap_usbhs_disable(dev);
 	usb_put_hcd(hcd);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	omap_usbhs_disable(dev);
+	usb_put_hcd(hcd);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

@@ -63,6 +63,9 @@ static int brnf_filter_pppoe_tagged __read_mostly = 0;
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IS_IP(skb) \
 	(!vlan_tx_tag_present(skb) && skb->protocol == htons(ETH_P_IP))
 
@@ -72,8 +75,11 @@ static int brnf_filter_pppoe_tagged __read_mostly = 0;
 #define IS_ARP(skb) \
 	(!vlan_tx_tag_present(skb) && skb->protocol == htons(ETH_P_ARP))
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline __be16 vlan_proto(const struct sk_buff *skb)
 {
 	if (vlan_tx_tag_present(skb))
@@ -122,6 +128,9 @@ static u32 *fake_cow_metrics(struct dst_entry *dst, unsigned long old)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct neighbour *fake_neigh_lookup(const struct dst_entry *dst, const void *daddr)
 {
 	return NULL;
@@ -132,8 +141,11 @@ static unsigned int fake_mtu(const struct dst_entry *dst)
 	return dst->dev->mtu;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct dst_ops fake_dst_ops = {
 	.family =		AF_INET,
 	.protocol =		cpu_to_be16(ETH_P_IP),
@@ -143,7 +155,12 @@ static struct dst_ops fake_dst_ops = {
 	.neigh_lookup =		fake_neigh_lookup,
 	.mtu =			fake_mtu,
 =======
+<<<<<<< HEAD
+	.neigh_lookup =		fake_neigh_lookup,
+	.mtu =			fake_mtu,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -168,8 +185,12 @@ void br_netfilter_rtable_init(struct net_bridge *br)
 <<<<<<< HEAD
 	rt->dst.flags	= DST_NOXFRM | DST_NOPEER | DST_FAKE_RTABLE;
 =======
+<<<<<<< HEAD
+	rt->dst.flags	= DST_NOXFRM | DST_NOPEER | DST_FAKE_RTABLE;
+=======
 	rt->dst.flags	= DST_NOXFRM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rt->dst.ops = &fake_dst_ops;
 }
 
@@ -269,10 +290,13 @@ static int br_parse_ip_options(struct sk_buff *skb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!pskb_may_pull(skb, sizeof(struct iphdr)))
 		goto inhdr_error;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iph = ip_hdr(skb);
 	opt = &(IPCB(skb)->opt);
 
@@ -391,12 +415,17 @@ static int br_nf_pre_routing_finish_bridge(struct sk_buff *skb)
 		goto free_skb;
 	dst = skb_dst(skb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	neigh = dst_get_neighbour_noref(dst);
 	if (neigh->hh.hh_len) {
 		neigh_hh_bridge(&neigh->hh, skb);
 		skb->dev = nf_bridge->physindev;
 		return br_handle_frame_finish(skb);
 	} else {
+<<<<<<< HEAD
+=======
 =======
 	neigh = dst_get_neighbour(dst);
 	if (dst->hh) {
@@ -405,6 +434,7 @@ static int br_nf_pre_routing_finish_bridge(struct sk_buff *skb)
 		return br_handle_frame_finish(skb);
 	} else if (neigh) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* the neighbour function below overwrites the complete
 		 * MAC header, so we save the Ethernet source address and
 		 * protocol number. */
@@ -414,8 +444,12 @@ static int br_nf_pre_routing_finish_bridge(struct sk_buff *skb)
 <<<<<<< HEAD
 		return neigh->output(neigh, skb);
 =======
+<<<<<<< HEAD
+		return neigh->output(neigh, skb);
+=======
 		return neigh->output(skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 free_skb:
 	kfree_skb(skb);
@@ -683,9 +717,13 @@ static unsigned int br_nf_pre_routing(unsigned int hook, struct sk_buff *skb,
 <<<<<<< HEAD
 	if (IS_IPV6(skb) || IS_VLAN_IPV6(skb) || IS_PPPOE_IPV6(skb)) {
 =======
+<<<<<<< HEAD
+	if (IS_IPV6(skb) || IS_VLAN_IPV6(skb) || IS_PPPOE_IPV6(skb)) {
+=======
 	if (skb->protocol == htons(ETH_P_IPV6) || IS_VLAN_IPV6(skb) ||
 	    IS_PPPOE_IPV6(skb)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!brnf_call_ip6tables && !br->nf_call_ip6tables)
 			return NF_ACCEPT;
 
@@ -699,9 +737,13 @@ static unsigned int br_nf_pre_routing(unsigned int hook, struct sk_buff *skb,
 <<<<<<< HEAD
 	if (!IS_IP(skb) && !IS_VLAN_IP(skb) && !IS_PPPOE_IP(skb))
 =======
+<<<<<<< HEAD
+	if (!IS_IP(skb) && !IS_VLAN_IP(skb) && !IS_PPPOE_IP(skb))
+=======
 	if (skb->protocol != htons(ETH_P_IP) && !IS_VLAN_IP(skb) &&
 	    !IS_PPPOE_IP(skb))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NF_ACCEPT;
 
 	nf_bridge_pull_encap_header_rcsum(skb);
@@ -739,12 +781,16 @@ static unsigned int br_nf_local_in(unsigned int hook, struct sk_buff *skb,
 <<<<<<< HEAD
 	br_drop_fake_rtable(skb);
 =======
+<<<<<<< HEAD
+	br_drop_fake_rtable(skb);
+=======
 	struct rtable *rt = skb_rtable(skb);
 
 	if (rt && rt == bridge_parent_rtable(in))
 		skb_dst_drop(skb);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NF_ACCEPT;
 }
 
@@ -757,8 +803,12 @@ static int br_nf_forward_finish(struct sk_buff *skb)
 <<<<<<< HEAD
 	if (!IS_ARP(skb) && !IS_VLAN_ARP(skb)) {
 =======
+<<<<<<< HEAD
+	if (!IS_ARP(skb) && !IS_VLAN_ARP(skb)) {
+=======
 	if (skb->protocol != htons(ETH_P_ARP) && !IS_VLAN_ARP(skb)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		in = nf_bridge->physindev;
 		if (nf_bridge->mask & BRNF_PKT_TYPE) {
 			skb->pkt_type = PACKET_OTHERHOST;
@@ -778,7 +828,11 @@ static int br_nf_forward_finish(struct sk_buff *skb)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* This is the 'purely bridged' case.  For IP, we pass the packet to
  * netfilter with indev and outdev set to the bridge device,
  * but we are still able to filter on the 'real' indev/outdev
@@ -810,12 +864,18 @@ static unsigned int br_nf_forward_ip(unsigned int hook, struct sk_buff *skb,
 		pf = PF_INET;
 	else if (IS_IPV6(skb) || IS_VLAN_IPV6(skb) || IS_PPPOE_IPV6(skb))
 =======
+<<<<<<< HEAD
+	if (IS_IP(skb) || IS_VLAN_IP(skb) || IS_PPPOE_IP(skb))
+		pf = PF_INET;
+	else if (IS_IPV6(skb) || IS_VLAN_IPV6(skb) || IS_PPPOE_IPV6(skb))
+=======
 	if (skb->protocol == htons(ETH_P_IP) || IS_VLAN_IP(skb) ||
 	    IS_PPPOE_IP(skb))
 		pf = PF_INET;
 	else if (skb->protocol == htons(ETH_P_IPV6) || IS_VLAN_IPV6(skb) ||
 		 IS_PPPOE_IPV6(skb))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pf = PF_INET6;
 	else
 		return NF_ACCEPT;
@@ -865,8 +925,12 @@ static unsigned int br_nf_forward_arp(unsigned int hook, struct sk_buff *skb,
 <<<<<<< HEAD
 	if (!IS_ARP(skb)) {
 =======
+<<<<<<< HEAD
+	if (!IS_ARP(skb)) {
+=======
 	if (skb->protocol != htons(ETH_P_ARP)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!IS_VLAN_ARP(skb))
 			return NF_ACCEPT;
 		nf_bridge_pull_encap_header(skb);
@@ -887,8 +951,12 @@ static unsigned int br_nf_forward_arp(unsigned int hook, struct sk_buff *skb,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_NF_CONNTRACK_IPV4)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_NF_CONNTRACK_IPV4)
+=======
 #if defined(CONFIG_NF_CONNTRACK_IPV4) || defined(CONFIG_NF_CONNTRACK_IPV4_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int br_nf_dev_queue_xmit(struct sk_buff *skb)
 {
 	int ret;
@@ -933,12 +1001,18 @@ static unsigned int br_nf_post_routing(unsigned int hook, struct sk_buff *skb,
 		pf = PF_INET;
 	else if (IS_IPV6(skb) || IS_VLAN_IPV6(skb) || IS_PPPOE_IPV6(skb))
 =======
+<<<<<<< HEAD
+	if (IS_IP(skb) || IS_VLAN_IP(skb) || IS_PPPOE_IP(skb))
+		pf = PF_INET;
+	else if (IS_IPV6(skb) || IS_VLAN_IPV6(skb) || IS_PPPOE_IPV6(skb))
+=======
 	if (skb->protocol == htons(ETH_P_IP) || IS_VLAN_IP(skb) ||
 	    IS_PPPOE_IP(skb))
 		pf = PF_INET;
 	else if (skb->protocol == htons(ETH_P_IPV6) || IS_VLAN_IPV6(skb) ||
 		 IS_PPPOE_IPV6(skb))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pf = PF_INET6;
 	else
 		return NF_ACCEPT;

@@ -20,6 +20,9 @@
 #define UBD_SHIFT 4
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/blkdev.h>
@@ -40,6 +43,8 @@
 #include "irq_kern.h"
 #include "ubd.h"
 #include "os.h"
+<<<<<<< HEAD
+=======
 =======
 #include "linux/kernel.h"
 #include "linux/module.h"
@@ -78,6 +83,7 @@
 #include "mem.h"
 #include "mem_kern.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cow.h"
 
 enum ubd_req { UBD_READ, UBD_WRITE };
@@ -1143,8 +1149,12 @@ static int __init ubd_driver_init(void){
 <<<<<<< HEAD
 			     0, "ubd", ubd_devs);
 =======
+<<<<<<< HEAD
+			     0, "ubd", ubd_devs);
+=======
 			     IRQF_DISABLED, "ubd", ubd_devs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if(err != 0)
 		printk(KERN_ERR "um_request_irq failed - errno = %d\n", -err);
 	return 0;

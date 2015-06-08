@@ -142,6 +142,11 @@ static void cryptd_queue_worker(struct work_struct *work)
 	 * workqueue. preempt_disable/enable is used to prevent
 	 * being preempted by cryptd_enqueue_request() */
 =======
+<<<<<<< HEAD
+	/* Only handle one request at a time to avoid hogging crypto
+	 * workqueue. preempt_disable/enable is used to prevent
+	 * being preempted by cryptd_enqueue_request() */
+=======
 	/*
 	 * Only handle one request at a time to avoid hogging crypto workqueue.
 	 * preempt_disable/enable is used to prevent being preempted by
@@ -150,14 +155,18 @@ static void cryptd_queue_worker(struct work_struct *work)
 	 */
 	local_bh_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 	backlog = crypto_get_backlog(&cpu_queue->queue);
 	req = crypto_dequeue_request(&cpu_queue->queue);
 	preempt_enable();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	local_bh_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!req)
 		return;

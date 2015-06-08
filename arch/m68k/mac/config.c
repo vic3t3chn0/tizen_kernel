@@ -32,8 +32,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/irq.h>
 #include <asm/pgtable.h>
@@ -75,6 +78,9 @@ static void mac_identify(void);
 static void mac_report_hardware(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_EARLY_PRINTK
 asmlinkage void __init mac_early_print(const char *s, unsigned n);
 
@@ -100,8 +106,11 @@ int __init mac_unregister_early_cons(void)
 late_initcall(mac_unregister_early_cons);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mac_sched_init(irq_handler_t vector)
 {
 	via_init_clock(vector);
@@ -196,12 +205,18 @@ void __init config_mac(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_EARLY_PRINTK
 	register_console(&mac_early_cons);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Determine hardware present
 	 */
@@ -233,8 +248,12 @@ void __init config_mac(void)
 <<<<<<< HEAD
  * Meaning it should have MAC_VIA_IICI here :-)
 =======
+<<<<<<< HEAD
+ * Meaning it should have MAC_VIA_IICI here :-)
+=======
  * Meaning it should have MAC_VIA_IIci here :-)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 struct mac_model *macintosh_config;
@@ -312,8 +331,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -325,8 +348,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_IOP,
 		.nubus_type	= MAC_NUBUS,
@@ -338,8 +365,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -351,8 +382,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -364,8 +399,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -383,8 +422,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -396,8 +439,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -409,8 +456,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -428,8 +479,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -441,8 +496,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -454,8 +513,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -586,8 +649,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -617,8 +684,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -630,8 +701,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -666,8 +741,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_QUADRA,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -679,8 +758,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_II,
 		.nubus_type	= MAC_NUBUS,
@@ -755,9 +838,14 @@ static struct mac_model mac_data_table[] = {
 		.adb_type	= MAC_ADB_PB2,
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.adb_type	= MAC_ADB_PB2,
+		.via_type	= MAC_VIA_IICI,
+=======
 		.adb_type	= MAC_ADB_PB1,
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.ide_type	= MAC_IDE_PB,
 		.scc_type	= MAC_SCC_QUADRA,
@@ -845,11 +933,14 @@ static struct mac_model mac_data_table[] = {
 	 * means we'll have to probe for it eventually.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 *
 	 * Are these really MAC_VIA_IIci? The developer notes for the
 	 * Duos show pretty much the same custom parts as in most of
 	 * the other PowerBooks which would imply MAC_VIA_QUADRA.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 
 	{
@@ -859,8 +950,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_QUADRA,
 		.nubus_type	= MAC_NUBUS,
@@ -872,8 +967,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_QUADRA,
 		.nubus_type	= MAC_NUBUS,
@@ -885,8 +984,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_QUADRA,
 		.nubus_type	= MAC_NUBUS,
@@ -898,8 +1001,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_QUADRA,
 		.nubus_type	= MAC_NUBUS,
@@ -911,8 +1018,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_QUADRA,
 		.nubus_type	= MAC_NUBUS,
@@ -924,8 +1035,12 @@ static struct mac_model mac_data_table[] = {
 <<<<<<< HEAD
 		.via_type	= MAC_VIA_IICI,
 =======
+<<<<<<< HEAD
+		.via_type	= MAC_VIA_IICI,
+=======
 		.via_type	= MAC_VIA_IIci,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.scsi_type	= MAC_SCSI_OLD,
 		.scc_type	= MAC_SCC_QUADRA,
 		.nubus_type	= MAC_NUBUS,
@@ -1003,6 +1118,9 @@ static void __init mac_identify(void)
 		break;
 	default:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* On non-PSC machines, the serial ports share an IRQ. */
 		if (macintosh_config->ident == MAC_MODEL_IIFX) {
 			scc_a_rsrcs[1].start = scc_a_rsrcs[1].end = IRQ_MAC_SCC;
@@ -1011,10 +1129,13 @@ static void __init mac_identify(void)
 			scc_a_rsrcs[1].start = scc_a_rsrcs[1].end = IRQ_AUTO_4;
 			scc_b_rsrcs[1].start = scc_b_rsrcs[1].end = IRQ_AUTO_4;
 		}
+<<<<<<< HEAD
+=======
 =======
 		scc_a_rsrcs[1].start = scc_a_rsrcs[1].end = IRQ_MAC_SCC;
 		scc_b_rsrcs[1].start = scc_b_rsrcs[1].end = IRQ_MAC_SCC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 

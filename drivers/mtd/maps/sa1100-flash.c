@@ -23,6 +23,11 @@
 #include <asm/sizes.h>
 #include <asm/mach/flash.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if 0
 /*
  * This is here for documentation purposes only - until these people
@@ -123,6 +128,10 @@ static void jornada56x_set_vpp(int vpp)
  */
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sa_subdev_info {
 	char name[16];
 	struct map_info map;
@@ -131,6 +140,32 @@ struct sa_subdev_info {
 };
 
 struct sa_info {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mtd_info		*mtd;
+	int			num_subdev;
+	struct sa_subdev_info	subdev[0];
+};
+
+static DEFINE_SPINLOCK(sa1100_vpp_lock);
+static int sa1100_vpp_refcnt;
+static void sa1100_set_vpp(struct map_info *map, int on)
+{
+	struct sa_subdev_info *subdev = container_of(map, struct sa_subdev_info, map);
+	unsigned long flags;
+
+	spin_lock_irqsave(&sa1100_vpp_lock, flags);
+	if (on) {
+		if (++sa1100_vpp_refcnt == 1)   /* first nested 'on' */
+			subdev->plat->set_vpp(1);
+	} else {
+		if (--sa1100_vpp_refcnt == 0)   /* last nested 'off' */
+			subdev->plat->set_vpp(0);
+	}
+	spin_unlock_irqrestore(&sa1100_vpp_lock, flags);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mtd_partition	*parts;
 	struct mtd_info		*mtd;
 	int			num_subdev;
@@ -142,6 +177,10 @@ static void sa1100_set_vpp(struct map_info *map, int on)
 {
 	struct sa_subdev_info *subdev = container_of(map, struct sa_subdev_info, map);
 	subdev->plat->set_vpp(on);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void sa1100_destroy_subdev(struct sa_subdev_info *subdev)
@@ -231,8 +270,16 @@ static void sa1100_destroy(struct sa_info *info, struct flash_platform_data *pla
 			mtd_concat_destroy(info->mtd);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(info->parts);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(info->parts);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = info->num_subdev - 1; i >= 0; i--)
 		sa1100_destroy_subdev(&info->subdev[i]);
 	kfree(info);
@@ -341,10 +388,21 @@ static const char *part_probes[] = { "cmdlinepart", "RedBoot", NULL };
 static int __devinit sa1100_mtd_probe(struct platform_device *pdev)
 {
 	struct flash_platform_data *plat = pdev->dev.platform_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sa_info *info;
+	int err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mtd_partition *parts;
 	const char *part_type = NULL;
 	struct sa_info *info;
 	int err, nr_parts = 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!plat)
 		return -ENODEV;
@@ -358,6 +416,13 @@ static int __devinit sa1100_mtd_probe(struct platform_device *pdev)
 	/*
 	 * Partition selection stuff.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mtd_device_parse_register(info->mtd, part_probes, NULL, plat->parts,
+				  plat->nr_parts);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nr_parts = parse_mtd_partitions(info->mtd, part_probes, &parts, 0);
 	if (nr_parts > 0) {
 		info->parts = parts;
@@ -378,6 +443,10 @@ static int __devinit sa1100_mtd_probe(struct platform_device *pdev)
 	mtd_device_register(info->mtd, parts, nr_parts);
 
 	info->nr_parts = nr_parts;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_set_drvdata(pdev, info);
 	err = 0;
@@ -397,6 +466,14 @@ static int __exit sa1100_mtd_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct platform_driver sa1100_mtd_driver = {
+	.probe		= sa1100_mtd_probe,
+	.remove		= __exit_p(sa1100_mtd_remove),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 static void sa1100_mtd_shutdown(struct platform_device *dev)
 {
@@ -412,12 +489,22 @@ static struct platform_driver sa1100_mtd_driver = {
 	.probe		= sa1100_mtd_probe,
 	.remove		= __exit_p(sa1100_mtd_remove),
 	.shutdown	= sa1100_mtd_shutdown,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver		= {
 		.name	= "sa1100-mtd",
 		.owner	= THIS_MODULE,
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(sa1100_mtd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sa1100_mtd_init(void)
 {
 	return platform_driver_register(&sa1100_mtd_driver);
@@ -430,6 +517,10 @@ static void __exit sa1100_mtd_exit(void)
 
 module_init(sa1100_mtd_init);
 module_exit(sa1100_mtd_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Nicolas Pitre");
 MODULE_DESCRIPTION("SA1100 CFI map driver");

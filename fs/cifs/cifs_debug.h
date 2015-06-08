@@ -29,8 +29,12 @@ void cifs_dump_mem(char *label, void *data, int length);
 <<<<<<< HEAD
 void cifs_dump_detail(void *);
 =======
+<<<<<<< HEAD
+void cifs_dump_detail(void *);
+=======
 void cifs_dump_detail(struct smb_hdr *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void cifs_dump_mids(struct TCP_Server_Info *);
 #else
 #define DBG2 0
@@ -39,8 +43,12 @@ extern int traceSMB;		/* flag which enables the function below */
 <<<<<<< HEAD
 void dump_smb(void *, int);
 =======
+<<<<<<< HEAD
+void dump_smb(void *, int);
+=======
 void dump_smb(struct smb_hdr *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CIFS_INFO	0x01
 #define CIFS_RC		0x02
 #define CIFS_TIMER	0x04

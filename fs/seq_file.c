@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/seq_file.h>
 #include <linux/slab.h>
 
@@ -18,6 +22,9 @@
 #include <asm/page.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * seq_files have a buffer which can may overflow. When this happens a larger
@@ -34,8 +41,11 @@ static void seq_set_overflow(struct seq_file *m)
 	m->count = m->size;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  *	seq_open -	initialize sequential file
  *	@file: file we initialize
@@ -118,8 +128,12 @@ static int traverse(struct seq_file *m, loff_t offset)
 <<<<<<< HEAD
 		if (seq_overflow(m))
 =======
+<<<<<<< HEAD
+		if (seq_overflow(m))
+=======
 		if (m->count == m->size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto Eoverflow;
 		if (pos + m->count > offset) {
 			m->from = offset - pos;
@@ -168,6 +182,9 @@ ssize_t seq_read(struct file *file, char __user *buf, size_t size, loff_t *ppos)
 	mutex_lock(&m->lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * seq_file->op->..m_start/m_stop/m_next may do special actions
 	 * or optimisations based on the file->f_version, so we want to
@@ -183,11 +200,14 @@ ssize_t seq_read(struct file *file, char __user *buf, size_t size, loff_t *ppos)
 
 	/* Don't assume *ppos is where we left it */
 	if (unlikely(*ppos != m->read_pos)) {
+<<<<<<< HEAD
+=======
 =======
 	/* Don't assume *ppos is where we left it */
 	if (unlikely(*ppos != m->read_pos)) {
 		m->read_pos = *ppos;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while ((err = traverse(m, *ppos)) == -EAGAIN)
 			;
 		if (err) {
@@ -198,11 +218,16 @@ ssize_t seq_read(struct file *file, char __user *buf, size_t size, loff_t *ppos)
 			m->count = 0;
 			goto Done;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			m->read_pos = *ppos;
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		}
 	}
@@ -220,6 +245,7 @@ ssize_t seq_read(struct file *file, char __user *buf, size_t size, loff_t *ppos)
 	 */
 	m->version = file->f_version;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* grab buffer if we didn't have one */
 	if (!m->buf) {
 		m->buf = kmalloc(m->size = PAGE_SIZE, GFP_KERNEL);
@@ -288,8 +314,12 @@ Fill:
 <<<<<<< HEAD
 		if (seq_overflow(m) || err) {
 =======
+<<<<<<< HEAD
+		if (seq_overflow(m) || err) {
+=======
 		if (m->count == m->size || err) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			m->count = offs;
 			if (likely(err <= 0))
 				break;
@@ -419,8 +449,12 @@ int seq_escape(struct seq_file *m, const char *s, const char *esc)
 <<<<<<< HEAD
 		seq_set_overflow(m);
 =======
+<<<<<<< HEAD
+		seq_set_overflow(m);
+=======
 		m->count = m->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
         }
 	m->count = p - m->buf;
@@ -445,8 +479,12 @@ int seq_printf(struct seq_file *m, const char *f, ...)
 <<<<<<< HEAD
 	seq_set_overflow(m);
 =======
+<<<<<<< HEAD
+	seq_set_overflow(m);
+=======
 	m->count = m->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -1;
 }
 EXPORT_SYMBOL(seq_printf);
@@ -465,8 +503,12 @@ EXPORT_SYMBOL(seq_printf);
 <<<<<<< HEAD
 char *mangle_path(char *s, const char *p, const char *esc)
 =======
+<<<<<<< HEAD
+char *mangle_path(char *s, const char *p, const char *esc)
+=======
 char *mangle_path(char *s, char *p, char *esc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	while (s <= p) {
 		char c = *p++;
@@ -499,8 +541,12 @@ EXPORT_SYMBOL(mangle_path);
 <<<<<<< HEAD
 int seq_path(struct seq_file *m, const struct path *path, const char *esc)
 =======
+<<<<<<< HEAD
+int seq_path(struct seq_file *m, const struct path *path, const char *esc)
+=======
 int seq_path(struct seq_file *m, struct path *path, char *esc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *buf;
 	size_t size = seq_get_buf(m, &buf);
@@ -527,9 +573,14 @@ EXPORT_SYMBOL(seq_path);
 int seq_path_root(struct seq_file *m, const struct path *path,
 		  const struct path *root, const char *esc)
 =======
+<<<<<<< HEAD
+int seq_path_root(struct seq_file *m, const struct path *path,
+		  const struct path *root, const char *esc)
+=======
 int seq_path_root(struct seq_file *m, struct path *path, struct path *root,
 		  char *esc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *buf;
 	size_t size = seq_get_buf(m, &buf);
@@ -561,8 +612,12 @@ int seq_path_root(struct seq_file *m, struct path *path, struct path *root,
 <<<<<<< HEAD
 int seq_dentry(struct seq_file *m, struct dentry *dentry, const char *esc)
 =======
+<<<<<<< HEAD
+int seq_dentry(struct seq_file *m, struct dentry *dentry, const char *esc)
+=======
 int seq_dentry(struct seq_file *m, struct dentry *dentry, char *esc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *buf;
 	size_t size = seq_get_buf(m, &buf);
@@ -595,8 +650,12 @@ int seq_bitmap(struct seq_file *m, const unsigned long *bits,
 <<<<<<< HEAD
 	seq_set_overflow(m);
 =======
+<<<<<<< HEAD
+	seq_set_overflow(m);
+=======
 	m->count = m->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -1;
 }
 EXPORT_SYMBOL(seq_bitmap);
@@ -615,8 +674,12 @@ int seq_bitmap_list(struct seq_file *m, const unsigned long *bits,
 <<<<<<< HEAD
 	seq_set_overflow(m);
 =======
+<<<<<<< HEAD
+	seq_set_overflow(m);
+=======
 	m->count = m->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -1;
 }
 EXPORT_SYMBOL(seq_bitmap_list);
@@ -730,13 +793,20 @@ int seq_puts(struct seq_file *m, const char *s)
 <<<<<<< HEAD
 	seq_set_overflow(m);
 =======
+<<<<<<< HEAD
+	seq_set_overflow(m);
+=======
 	m->count = m->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -1;
 }
 EXPORT_SYMBOL(seq_puts);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * A helper routine for putting decimal numbers without rich format of printf().
  * only 'unsigned long long' is supported.
@@ -789,8 +859,11 @@ int seq_put_decimal_ll(struct seq_file *m, char delimiter,
 }
 EXPORT_SYMBOL(seq_put_decimal_ll);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * seq_write - write arbitrary data to buffer
  * @seq: seq_file identifying the buffer to which data should be written
@@ -809,8 +882,12 @@ int seq_write(struct seq_file *seq, const void *data, size_t len)
 <<<<<<< HEAD
 	seq_set_overflow(seq);
 =======
+<<<<<<< HEAD
+	seq_set_overflow(seq);
+=======
 	seq->count = seq->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -1;
 }
 EXPORT_SYMBOL(seq_write);

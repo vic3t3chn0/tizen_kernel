@@ -28,6 +28,10 @@
 #include <linux/spinlock.h>
 #include <linux/clk.h>
 =======
+<<<<<<< HEAD
+#include <linux/spinlock.h>
+#include <linux/clk.h>
+=======
 #include <linux/completion.h>
 #include <linux/spinlock.h>
 
@@ -41,11 +45,14 @@ static struct platform_device omap_mcbsp##port_nr = {	\
 	.id	= OMAP_MCBSP##port_nr,			\
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MCBSP_CONFIG_TYPE2	0x2
 #define MCBSP_CONFIG_TYPE3	0x3
 #define MCBSP_CONFIG_TYPE4	0x4
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define OMAP7XX_MCBSP1_BASE	0xfffb1000
@@ -393,11 +400,15 @@ struct omap_mcbsp_spi_cfg {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Platform specific configuration */
 struct omap_mcbsp_ops {
 	void (*request)(unsigned int);
 	void (*free)(unsigned int);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct omap_mcbsp_platform_data {
@@ -412,6 +423,8 @@ struct omap_mcbsp_platform_data {
 	int (*enable_st_clock)(unsigned int, bool);
 	int (*set_clk_src)(struct device *dev, struct clk *clk, const char *src);
 	int (*mux_signal)(struct device *dev, const char *signal, const char *src);
+<<<<<<< HEAD
+=======
 =======
 	int (*set_clks_src)(u8, u8);
 };
@@ -479,6 +492,7 @@ struct omap_mcbsp {
 	void *reg_cache;
 	unsigned int mcbsp_config_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -489,6 +503,8 @@ struct omap_mcbsp_dev_attr {
 	const char *sidetone;
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 extern struct omap_mcbsp **mcbsp_ptr;
@@ -570,4 +586,5 @@ static inline int omap_st_is_enabled(unsigned int id) {  return 0; }
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

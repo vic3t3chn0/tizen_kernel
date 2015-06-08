@@ -5,13 +5,19 @@
  * Author: Fabio Estevam <fabio.estevam@freescale.com>
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2011 Meprolight, Ltd.
  * Alex Gershgorin <alexg@meprolight.com>
  *
  * Modified from i.MX31 3-Stack Development System
  *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -45,7 +51,11 @@
 <<<<<<< HEAD
 #include <asm/memblock.h>
 =======
+<<<<<<< HEAD
+#include <asm/memblock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/common.h>
@@ -53,6 +63,9 @@
 #include <mach/irqs.h>
 #include <mach/3ds_debugboard.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <video/platform_lcd.h>
 
 #include <media/soc_camera.h>
@@ -143,12 +156,15 @@ static struct platform_device mx35_3ds_lcd = {
 };
 
 #define EXPIO_PARENT_INT	gpio_to_irq(IMX_GPIO_NR(1, 1))
+<<<<<<< HEAD
+=======
 =======
 
 #include "devices-imx35.h"
 
 #define EXPIO_PARENT_INT	(MXC_INTERNAL_IRQS + GPIO_PORTA + 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct imxuart_platform_data uart_pdata __initconst = {
 	.flags = IMXUART_HAVE_RTSCTS,
@@ -226,6 +242,9 @@ static iomux_v3_cfg_t mx35pdk_pads[] = {
 	MX35_PAD_I2C1_CLK__I2C1_SCL,
 	MX35_PAD_I2C1_DAT__I2C1_SDA,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Display */
 	MX35_PAD_LD0__IPU_DISPB_DAT_0,
 	MX35_PAD_LD1__IPU_DISPB_DAT_1,
@@ -329,8 +348,11 @@ static struct platform_device mx35_3ds_ov2640 = {
 	.dev	= {
 		.platform_data = &iclink_ov2640,
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int mx35_3ds_otg_init(struct platform_device *pdev)
@@ -391,12 +413,18 @@ static const struct imxi2c_platform_data mx35_3ds_i2c0_data __initconst = {
 static void __init mx35_3ds_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct platform_device *imx35_fb_pdev;
 
 	imx35_soc_init();
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_iomux_v3_setup_multiple_pads(mx35pdk_pads, ARRAY_SIZE(mx35pdk_pads));
 
 	imx35_add_fec(NULL);
@@ -421,6 +449,9 @@ static void __init mx35_3ds_init(void)
 				"devices on the debugboard are unusable.\n");
 	imx35_add_imx_i2c0(&mx35_3ds_i2c0_data);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	i2c_register_board_info(
 		0, i2c_devices_3ds, ARRAY_SIZE(i2c_devices_3ds));
@@ -432,8 +463,11 @@ static void __init mx35_3ds_init(void)
 	imx35_fb_pdev = imx35_add_mx3_sdc_fb(&mx3fb_pdata);
 	mx35_3ds_lcd.dev.parent = &imx35_fb_pdev->dev;
 	platform_device_register(&mx35_3ds_lcd);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init mx35pdk_timer_init(void)
@@ -446,6 +480,9 @@ struct sys_timer mx35pdk_timer = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mx35_3ds_reserve(void)
 {
 	/* reserve MX35_3DS_CAMERA_BUF_SIZE bytes for mx3-camera */
@@ -464,6 +501,8 @@ MACHINE_START(MX35_3DS, "Freescale MX35PDK")
 	.init_machine = mx35_3ds_init,
 	.reserve = mx35_3ds_reserve,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 MACHINE_START(MX35_3DS, "Freescale MX35PDK")
 	/* Maintainer: Freescale Semiconductor, Inc */
@@ -474,4 +513,5 @@ MACHINE_START(MX35_3DS, "Freescale MX35PDK")
 	.timer = &mx35pdk_timer,
 	.init_machine = mx35_3ds_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

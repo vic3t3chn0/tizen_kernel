@@ -27,6 +27,9 @@ static char nvram_buf[NVRAM_SPACE];
 static void early_nvram_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BCM47XX_SSB
 	struct ssb_mipscore *mcore_ssb;
 #endif
@@ -56,6 +59,8 @@ static void early_nvram_init(void)
 		break;
 #endif
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct ssb_mipscore *mcore = &ssb_bcm47xx.mipscore;
 	struct nvram_header *header;
@@ -66,6 +71,7 @@ static void early_nvram_init(void)
 	base = mcore->flash_window;
 	lim = mcore->flash_window_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	off = FLASH_MIN;
 	while (off <= lim) {
@@ -121,9 +127,13 @@ int nvram_getenv(char *name, char *val, size_t val_len)
 <<<<<<< HEAD
 			return snprintf(val, val_len, "%s", value);
 =======
+<<<<<<< HEAD
+			return snprintf(val, val_len, "%s", value);
+=======
 			snprintf(val, val_len, "%s", value);
 			return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return NVRAM_ERR_ENVNOTFOUND;

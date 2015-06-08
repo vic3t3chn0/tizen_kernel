@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2012  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2012  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -32,7 +36,11 @@ HPI internal definitions
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** maximum number of memory regions mapped to an adapter */
 #define HPI_MAX_ADAPTER_MEM_SPACES (2)
 
@@ -42,6 +50,8 @@ HPI internal definitions
 /* physical memory allocation */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void hpios_locked_mem_init(void
 	);
 void hpios_locked_mem_free_all(void
@@ -49,6 +59,7 @@ void hpios_locked_mem_free_all(void
 #define hpios_locked_mem_prepare(a, b, c, d);
 #define hpios_locked_mem_unprepare(a)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /** Allocate and map an area of locked memory for bus master DMA operations.
 
@@ -239,9 +250,12 @@ enum HPI_CONTROL_ATTRIBUTES {
 	HPI_COBRANET_GET = HPI_CTL_ATTR(COBRANET, 2),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	HPI_COBRANET_SET_DATA = HPI_CTL_ATTR(COBRANET, 3),
 	HPI_COBRANET_GET_DATA = HPI_CTL_ATTR(COBRANET, 4),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_COBRANET_GET_STATUS = HPI_CTL_ATTR(COBRANET, 5),
 	HPI_COBRANET_SEND_PACKET = HPI_CTL_ATTR(COBRANET, 6),
 	HPI_COBRANET_GET_PACKET = HPI_CTL_ATTR(COBRANET, 7),
@@ -266,8 +280,14 @@ enum HPI_CONTROL_ATTRIBUTES {
 
 	HPI_UNIVERSAL_ENTITY = HPI_CTL_ATTR(UNIVERSAL, 1)
 =======
+<<<<<<< HEAD
+	HPI_PAD_TA_ACTIVE = HPI_CTL_ATTR(PAD, 8),
+
+	HPI_UNIVERSAL_ENTITY = HPI_CTL_ATTR(UNIVERSAL, 1)
+=======
 	HPI_PAD_TA_ACTIVE = HPI_CTL_ATTR(PAD, 8)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define HPI_POLARITY_POSITIVE           0
@@ -385,18 +405,24 @@ Used in DLL to indicate device not present
 
 enum HPI_MESSAGE_TYPES {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_TYPE_REQUEST = 1,
 	HPI_TYPE_RESPONSE = 2,
 	HPI_TYPE_DATA = 3,
 	HPI_TYPE_SSX2BYPASS_MESSAGE = 4,
 	HPI_TYPE_COMMAND = 5,
 	HPI_TYPE_NOTIFICATION = 6
+<<<<<<< HEAD
+=======
 =======
 	HPI_TYPE_MESSAGE = 1,
 	HPI_TYPE_RESPONSE = 2,
 	HPI_TYPE_DATA = 3,
 	HPI_TYPE_SSX2BYPASS_MESSAGE = 4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum HPI_OBJECT_TYPES {
@@ -415,8 +441,12 @@ enum HPI_OBJECT_TYPES {
 <<<<<<< HEAD
 	/* HPI_ OBJ_ CONTROLEX  = 13, */
 =======
+<<<<<<< HEAD
+	/* HPI_ OBJ_ CONTROLEX  = 13, */
+=======
 	HPI_OBJ_CONTROLEX = 13,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_OBJ_ASYNCEVENT = 14
 #define HPI_OBJ_MAXINDEX 14
 };
@@ -436,6 +466,12 @@ enum HPI_FUNCTION_IDS {
 	HPI_SUBSYS_DRIVER_LOAD = HPI_FUNC_ID(SUBSYSTEM, 8),
 	HPI_SUBSYS_DRIVER_UNLOAD = HPI_FUNC_ID(SUBSYSTEM, 9),
 =======
+<<<<<<< HEAD
+	HPI_SUBSYS_CREATE_ADAPTER = HPI_FUNC_ID(SUBSYSTEM, 5),
+	HPI_SUBSYS_CLOSE = HPI_FUNC_ID(SUBSYSTEM, 6),
+	HPI_SUBSYS_DRIVER_LOAD = HPI_FUNC_ID(SUBSYSTEM, 8),
+	HPI_SUBSYS_DRIVER_UNLOAD = HPI_FUNC_ID(SUBSYSTEM, 9),
+=======
 	/* HPI_SUBSYS_FIND_ADAPTERS     = HPI_FUNC_ID(SUBSYSTEM, 4), */
 	HPI_SUBSYS_CREATE_ADAPTER = HPI_FUNC_ID(SUBSYSTEM, 5),
 	HPI_SUBSYS_CLOSE = HPI_FUNC_ID(SUBSYSTEM, 6),
@@ -445,6 +481,7 @@ enum HPI_FUNCTION_IDS {
 	/* HPI_SUBSYS_READ_PORT_8               = HPI_FUNC_ID(SUBSYSTEM, 10), */
 	/* HPI_SUBSYS_WRITE_PORT_8              = HPI_FUNC_ID(SUBSYSTEM, 11), */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_SUBSYS_GET_NUM_ADAPTERS = HPI_FUNC_ID(SUBSYSTEM, 12),
 	HPI_SUBSYS_GET_ADAPTER = HPI_FUNC_ID(SUBSYSTEM, 13),
 	HPI_SUBSYS_SET_NETWORK_INTERFACE = HPI_FUNC_ID(SUBSYSTEM, 14),
@@ -475,13 +512,19 @@ enum HPI_FUNCTION_IDS {
 	HPI_ADAPTER_IRQ_CALLBACK = HPI_FUNC_ID(ADAPTER, 20),
 	HPI_ADAPTER_DELETE = HPI_FUNC_ID(ADAPTER, 21),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HPI_ADAPTER_READ_FLASH = HPI_FUNC_ID(ADAPTER, 22),
 	HPI_ADAPTER_END_FLASH = HPI_FUNC_ID(ADAPTER, 23),
 	HPI_ADAPTER_FILESTORE_DELETE_ALL = HPI_FUNC_ID(ADAPTER, 24),
 #define HPI_ADAPTER_FUNCTION_COUNT 24
+<<<<<<< HEAD
+=======
 =======
 #define HPI_ADAPTER_FUNCTION_COUNT 21
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	HPI_OSTREAM_OPEN = HPI_FUNC_ID(OSTREAM, 1),
 	HPI_OSTREAM_CLOSE = HPI_FUNC_ID(OSTREAM, 2),
@@ -551,8 +594,14 @@ enum HPI_FUNCTION_IDS {
 	HPI_MIXER_GET_PARAMETER_HANDLE = HPI_FUNC_ID(MIXER, 14),
 #define HPI_MIXER_FUNCTION_COUNT 14
 =======
+<<<<<<< HEAD
+	HPI_MIXER_GET_BLOCK_HANDLE = HPI_FUNC_ID(MIXER, 13),
+	HPI_MIXER_GET_PARAMETER_HANDLE = HPI_FUNC_ID(MIXER, 14),
+#define HPI_MIXER_FUNCTION_COUNT 14
+=======
 #define HPI_MIXER_FUNCTION_COUNT 12
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	HPI_CONTROL_GET_INFO = HPI_FUNC_ID(CONTROL, 1),
 	HPI_CONTROL_GET_STATE = HPI_FUNC_ID(CONTROL, 2),
@@ -664,8 +713,12 @@ struct hpi_buffer {
 <<<<<<< HEAD
   /** placeholder for backward compatibility (see dwBufferSize) */
 =======
+<<<<<<< HEAD
+  /** placeholder for backward compatibility (see dwBufferSize) */
+=======
   /** placehoder for backward compatibility (see dwBufferSize) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hpi_msg_format reserved;
 	u32 command; /**< HPI_BUFFER_CMD_xxx*/
 	u32 pci_address; /**< PCI physical address of buffer for DSP DMA */
@@ -682,8 +735,12 @@ struct hpi_hostbuffer_status {
 <<<<<<< HEAD
 	u32 dsp_index;
 =======
+<<<<<<< HEAD
+	u32 dsp_index;
+=======
 	u32 dSP_index;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Host index in to the host bus master buffer. */
 	u32 host_index;
 	u32 size_in_bytes;
@@ -728,6 +785,8 @@ union hpi_adapterx_msg {
 	struct {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		u32 checksum;
 		u16 sequence;
 		u16 length;
@@ -736,6 +795,7 @@ union hpi_adapterx_msg {
 	} program_flash;
 	struct {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u16 index;
 		u16 what;
 		u16 property_index;
@@ -748,15 +808,20 @@ union hpi_adapterx_msg {
 	struct {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		u32 offset;
 	} query_flash;
 	struct {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 pad32;
 		u16 key1;
 		u16 key2;
 	} restart;
 	struct {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		u32 offset;
@@ -765,6 +830,7 @@ union hpi_adapterx_msg {
 	} start_flash;
 	struct {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 pad32;
 		u16 value;
 	} test_assert;
@@ -774,7 +840,11 @@ union hpi_adapterx_msg {
 <<<<<<< HEAD
 	u32 pad[3];
 =======
+<<<<<<< HEAD
+	u32 pad[3];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct hpi_adapter_res {
@@ -804,14 +874,19 @@ union hpi_adapterx_res {
 	struct {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		u16 sequence;
 	} program_flash;
 	struct {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u16 parameter1;
 		u16 parameter2;
 	} property_get;
 	struct {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		u32 checksum;
@@ -820,6 +895,7 @@ union hpi_adapterx_res {
 	} query_flash;
 	struct {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 yes;
 	} irq_query;
 };
@@ -993,6 +1069,9 @@ union hpi_control_union_res {
 	} chars8;
 	char c_data12[12];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	union {
 		struct {
 			u32 status;
@@ -1000,6 +1079,8 @@ union hpi_control_union_res {
 			u32 writeable_size;
 		} status;
 	} cobranet;
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -1091,6 +1172,7 @@ struct hpi_controlx_res {
 		/*struct param_value universal_value; */
 	} u;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct hpi_nvmemory_msg {
@@ -1218,8 +1300,11 @@ struct hpi_message {
 		struct hpi_control_union_msg cu;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct hpi_controlx_msg cx;	/* extended mixer control; */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct hpi_nvmemory_msg n;
 		struct hpi_gpio_msg l;	/* digital i/o */
 		struct hpi_watchdog_msg w;
@@ -1247,8 +1332,12 @@ struct hpi_message {
 <<<<<<< HEAD
 	sizeof(struct hpi_message_header), /* controlx obj removed */ \
 =======
+<<<<<<< HEAD
+	sizeof(struct hpi_message_header), /* controlx obj removed */ \
+=======
 	sizeof(struct hpi_message_header) + sizeof(struct hpi_controlx_msg),\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sizeof(struct hpi_message_header) + sizeof(struct hpi_async_msg) \
 }
 
@@ -1287,8 +1376,11 @@ struct hpi_response {
 		union hpi_control_union_res cu;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct hpi_controlx_res cx;	/* extended mixer control; */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct hpi_nvmemory_res n;
 		struct hpi_gpio_res l;	/* digital i/o */
 		struct hpi_watchdog_res w;
@@ -1316,8 +1408,12 @@ struct hpi_response {
 <<<<<<< HEAD
 	sizeof(struct hpi_response_header), /* controlx obj removed */ \
 =======
+<<<<<<< HEAD
+	sizeof(struct hpi_response_header), /* controlx obj removed */ \
+=======
 	sizeof(struct hpi_response_header) + sizeof(struct hpi_controlx_res),\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sizeof(struct hpi_response_header) + sizeof(struct hpi_async_res) \
 }
 
@@ -1343,6 +1439,9 @@ struct hpi_res_adapter_get_info {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hpi_res_adapter_debug_read {
 	struct hpi_response_header h;
 	u8 bytes[1024];
@@ -1369,6 +1468,8 @@ struct hpi_msg_cobranet_hmiread {
 struct hpi_res_cobranet_hmiread {
 	struct hpi_response_header h;
 	u32 byte_count;
+<<<<<<< HEAD
+=======
 =======
 /* padding is so these are same size as v0 hpi_message */
 struct hpi_msg_adapter_query_flash {
@@ -1438,6 +1539,7 @@ struct hpi_msg_adapter_debug_read {
 struct hpi_res_adapter_debug_read {
 	struct hpi_response_header h;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 bytes[256];
 };
 
@@ -1473,8 +1575,11 @@ struct hpi_msg_payload_v0 {
 		struct hpi_control_union_msg cu;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct hpi_controlx_msg cx;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct hpi_nvmemory_msg n;
 		struct hpi_gpio_msg l;
 		struct hpi_watchdog_msg w;
@@ -1496,8 +1601,11 @@ struct hpi_res_payload_v0 {
 		union hpi_control_union_res cu;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct hpi_controlx_res cx;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct hpi_nvmemory_res n;
 		struct hpi_gpio_res l;
 		struct hpi_watchdog_res w;
@@ -1634,6 +1742,8 @@ struct hpi_control_cache_microphone {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct hpi_control_cache_generic {
 	struct hpi_control_cache_info i;
 	u32 dw1;
@@ -1641,6 +1751,7 @@ struct hpi_control_cache_generic {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hpi_control_cache_single {
 	union {
 		struct hpi_control_cache_info i;
@@ -1658,8 +1769,11 @@ struct hpi_control_cache_single {
 		struct hpi_control_cache_microphone microphone;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct hpi_control_cache_generic generic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} u;
 };
 
@@ -1682,8 +1796,12 @@ struct hpi_fifo_buffer {
 <<<<<<< HEAD
 	u32 dsp_index;
 =======
+<<<<<<< HEAD
+	u32 dsp_index;
+=======
 	u32 dSP_index;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 host_index;
 };
 

@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #define IRQ_RESCHEDULE 0
 =======
+<<<<<<< HEAD
+#define IRQ_RESCHEDULE 0
+=======
 #define IRQ_RESCHEDULE 1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define irq_canonicalize(irq)   (irq)
 
@@ -80,6 +84,8 @@ void tile_irq_activate(unsigned int irq, int tile_irq_type);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * For onboard, non-PCI (e.g. TILE_IRQ_PERCPU) devices, drivers know
  * how to use enable/disable_percpu_irq() to manage interrupts on each
@@ -91,6 +97,7 @@ void disable_percpu_irq(unsigned int irq);
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void setup_irq_regs(void);
 
 #endif /* _ASM_TILE_IRQ_H */

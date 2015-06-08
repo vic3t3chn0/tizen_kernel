@@ -21,8 +21,11 @@
 #include <linux/gpio.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/irq.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spi/spi.h>
 
 #include <asm/mach-types.h>
@@ -97,7 +100,11 @@ static void __init stmp378x_dvb_init(void)
 <<<<<<< HEAD
 	mx23_add_rtc_stmp3xxx();
 =======
+<<<<<<< HEAD
+	mx23_add_rtc_stmp3xxx();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* power on mmc slot */
 	ret = gpio_request_one(STMP378X_DEVB_MMC0_SLOT_POWER,
@@ -127,7 +134,13 @@ MACHINE_START(STMP378X, "STMP378X")
 	.init_machine	= stmp378x_dvb_init,
 	.restart	= mxs_restart,
 =======
+<<<<<<< HEAD
+	.timer		= &stmp378x_dvb_timer,
+	.init_machine	= stmp378x_dvb_init,
+	.restart	= mxs_restart,
+=======
 	.init_machine	= stmp378x_dvb_init,
 	.timer		= &stmp378x_dvb_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

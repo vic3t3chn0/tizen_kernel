@@ -104,8 +104,12 @@ static struct i2c_board_info evb3_i2c_info[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO83)),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO83)),
+=======
 		.irq		= gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO83)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -130,6 +134,9 @@ static void __init evb3_init(void)
 
 MACHINE_START(TAVOREVB3, "PXA950 Evaluation Board (aka TavorEVB3)")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io         = pxa3xx_map_io,
 	.nr_irqs	= TAVOREVB3_NR_IRQS,
@@ -138,6 +145,8 @@ MACHINE_START(TAVOREVB3, "PXA950 Evaluation Board (aka TavorEVB3)")
 	.timer          = &pxa_timer,
 	.init_machine   = evb3_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io         = pxa3xx_map_io,
@@ -146,4 +155,5 @@ MACHINE_START(TAVOREVB3, "PXA950 Evaluation Board (aka TavorEVB3)")
 	.timer          = &pxa_timer,
 	.init_machine   = evb3_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

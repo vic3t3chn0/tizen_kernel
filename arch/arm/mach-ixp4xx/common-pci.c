@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/dma-mapping.h>
 
 #include <asm/cputype.h>
@@ -37,8 +41,11 @@
 #include <asm/sizes.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/pci.h>
 #include <mach/hardware.h>
 
@@ -64,8 +71,12 @@ unsigned long ixp4xx_pci_reg_base = 0;
 <<<<<<< HEAD
 static DEFINE_RAW_SPINLOCK(ixp4xx_pci_lock);
 =======
+<<<<<<< HEAD
+static DEFINE_RAW_SPINLOCK(ixp4xx_pci_lock);
+=======
 static DEFINE_SPINLOCK(ixp4xx_pci_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Read from PCI config space
@@ -74,16 +85,22 @@ static void crp_read(u32 ad_cbe, u32 *data)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 	*PCI_CRP_AD_CBE = ad_cbe;
 	*data = *PCI_CRP_RDATA;
 	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 	*PCI_CRP_AD_CBE = ad_cbe;
 	*data = *PCI_CRP_RDATA;
 	spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -93,16 +110,22 @@ static void crp_write(u32 ad_cbe, u32 data)
 { 
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 	*PCI_CRP_AD_CBE = CRP_AD_CBE_WRITE | ad_cbe;
 	*PCI_CRP_WDATA = data;
 	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 	*PCI_CRP_AD_CBE = CRP_AD_CBE_WRITE | ad_cbe;
 	*PCI_CRP_WDATA = data;
 	spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int check_master_abort(void)
@@ -129,8 +152,12 @@ int ixp4xx_pci_read_errata(u32 addr, u32 cmd, u32* data)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
+=======
 	spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*PCI_NP_AD = addr;
 
@@ -150,8 +177,12 @@ int ixp4xx_pci_read_errata(u32 addr, u32 cmd, u32* data)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
+=======
 	spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -163,8 +194,12 @@ int ixp4xx_pci_read_no_errata(u32 addr, u32 cmd, u32* data)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
+=======
 	spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*PCI_NP_AD = addr;
 
@@ -180,8 +215,12 @@ int ixp4xx_pci_read_no_errata(u32 addr, u32 cmd, u32* data)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
+=======
 	spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -193,8 +232,12 @@ int ixp4xx_pci_write(u32 addr, u32 cmd, u32 data)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&ixp4xx_pci_lock, flags);
+=======
 	spin_lock_irqsave(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*PCI_NP_AD = addr;
 
@@ -210,8 +253,12 @@ int ixp4xx_pci_write(u32 addr, u32 cmd, u32 data)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
+=======
 	spin_unlock_irqrestore(&ixp4xx_pci_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -366,13 +413,19 @@ static int abort_handler(unsigned long addr, unsigned int fsr, struct pt_regs *r
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ixp4xx_needs_bounce(struct device *dev, dma_addr_t dma_addr, size_t size)
 {
 	return (dma_addr + size) >= SZ_64M;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Setup DMA mask to 64MB on PCI devices. Ignore all other devices.
  */
@@ -384,8 +437,12 @@ static int ixp4xx_pci_platform_notify(struct device *dev)
 <<<<<<< HEAD
 		dmabounce_register_dev(dev, 2048, 4096, ixp4xx_needs_bounce);
 =======
+<<<<<<< HEAD
+		dmabounce_register_dev(dev, 2048, 4096, ixp4xx_needs_bounce);
+=======
 		dmabounce_register_dev(dev, 2048, 4096);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -400,24 +457,33 @@ static int ixp4xx_pci_platform_notify_remove(struct device *dev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int dma_needs_bounce(struct device *dev, dma_addr_t dma_addr, size_t size)
 {
 	return (dev->bus == &pci_bus_type ) && ((dma_addr + size) >= SZ_64M);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init ixp4xx_pci_preinit(void)
 {
 	unsigned long cpuid = read_cpuid_id();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_IXP4XX_INDIRECT_PCI
 	pcibios_min_mem = 0x10000000; /* 1 GB of indirect PCI MMIO space */
 #else
 	pcibios_min_mem = 0x48000000; /* 64 MB of PCI MMIO space */
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Determine which PCI read method to use.
 	 * Rev 0 IXP425 requires workaround.
@@ -468,8 +534,13 @@ void __init ixp4xx_pci_preinit(void)
 		local_write_config(PCI_BASE_ADDRESS_3, 4,
 					PHYS_OFFSET + SZ_32M + SZ_16M);
 =======
+<<<<<<< HEAD
+		local_write_config(PCI_BASE_ADDRESS_3, 4,
+					PHYS_OFFSET + SZ_32M + SZ_16M);
+=======
 		local_write_config(PCI_BASE_ADDRESS_3, 4, PHYS_OFFSET + SZ_48M);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Enable CSR window at 64 MiB to allow PCI masters
@@ -546,10 +617,15 @@ int ixp4xx_setup(int nr, struct pci_sys_data *sys)
 	pci_add_resource_offset(&sys->resources, &res[0], sys->io_offset);
 	pci_add_resource_offset(&sys->resources, &res[1], sys->mem_offset);
 =======
+<<<<<<< HEAD
+	pci_add_resource_offset(&sys->resources, &res[0], sys->io_offset);
+	pci_add_resource_offset(&sys->resources, &res[1], sys->mem_offset);
+=======
 	sys->resource[0] = &res[0];
 	sys->resource[1] = &res[1];
 	sys->resource[2] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_notify = ixp4xx_pci_platform_notify;
 	platform_notify_remove = ixp4xx_pci_platform_notify_remove;
@@ -563,8 +639,13 @@ struct pci_bus * __devinit ixp4xx_scan_bus(int nr, struct pci_sys_data *sys)
 	return pci_scan_root_bus(NULL, sys->busnr, &ixp4xx_ops, sys,
 				 &sys->resources);
 =======
+<<<<<<< HEAD
+	return pci_scan_root_bus(NULL, sys->busnr, &ixp4xx_ops, sys,
+				 &sys->resources);
+=======
 	return pci_scan_bus(sys->busnr, &ixp4xx_ops, sys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int dma_set_coherent_mask(struct device *dev, u64 mask)

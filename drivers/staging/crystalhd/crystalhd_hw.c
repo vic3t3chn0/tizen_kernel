@@ -22,10 +22,24 @@
  * along with this driver.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "crystalhd.h"
+
+#include <linux/pci.h>
+#include <linux/slab.h>
+#include <linux/delay.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pci.h>
 #include <linux/slab.h>
 #include <linux/delay.h>
 #include "crystalhd_hw.h"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Functions internal to this file */
 
@@ -766,7 +780,15 @@ static enum BC_STATUS crystalhd_hw_fill_desc(struct crystalhd_dio_req *ioreq,
 	crystalhd_hw_dump_desc(desc, last_desc_ix, 1);
 
 	if (count != xfr_sz) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		BCMLOG_ERR("internal error sz curr:%x exp:%x\n", count, xfr_sz);
+=======
 		BCMLOG_ERR("interal error sz curr:%x exp:%x\n", count, xfr_sz);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		BCMLOG_ERR("interal error sz curr:%x exp:%x\n", count, xfr_sz);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return BC_STS_ERROR;
 	}
 
@@ -868,8 +890,17 @@ static enum BC_STATUS crystalhd_stop_tx_dma_engine(struct crystalhd_hw *hw)
 
 	BCMLOG(BCMLOG_DBG, "Stopping TX DMA Engine..\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!(dma_cntrl & DMA_START_BIT)) {
+=======
 	/* FIXME: jarod: invert dma_ctrl and check bit? or are there missing parens? */
 	if (!dma_cntrl & DMA_START_BIT) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* FIXME: jarod: invert dma_ctrl and check bit? or are there missing parens? */
+	if (!dma_cntrl & DMA_START_BIT) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BCMLOG(BCMLOG_DBG, "Already Stopped\n");
 		return BC_STS_SUCCESS;
 	}
@@ -1628,7 +1659,14 @@ enum BC_STATUS crystalhd_download_fw(struct crystalhd_adp *adp, void *buffer, ui
 	uint32_t fw_sig_len = 36;
 	uint32_t dram_offset = BC_FWIMG_ST_ADDR, sig_reg;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	BCMLOG_ENTER;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	BCMLOG_ENTER;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!adp || !buffer || !sz) {
 		BCMLOG_ERR("Invalid Params.\n");
@@ -1725,8 +1763,16 @@ enum BC_STATUS crystalhd_do_fw_cmd(struct crystalhd_hw *hw,
 
 	crystalhd_create_event(&fw_cmd_event);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	BCMLOG_ENTER;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	BCMLOG_ENTER;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!hw || !fw_cmd) {
 		BCMLOG_ERR("Invalid Arguments\n");
 		return BC_STS_INV_ARG;

@@ -189,8 +189,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 #include <sound/core.h>
 #include <sound/control.h>
@@ -308,8 +312,12 @@ MODULE_PARM_DESC(id, "ID string for AZF3328 soundcard.");
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_array(enable, bool, NULL, 0444);
 MODULE_PARM_DESC(enable, "Enable AZF3328 soundcard.");
 
@@ -2570,8 +2578,12 @@ snd_azf3328_create(struct snd_card *card,
 <<<<<<< HEAD
 			IRQF_SHARED, KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			IRQF_SHARED, KBUILD_MODNAME, chip)) {
+=======
 			IRQF_SHARED, card->shortname, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		err = -EBUSY;
 		goto out_err;
@@ -2638,6 +2650,9 @@ snd_azf3328_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 
 	snd_azf3328_dbgcallenter();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev >= SNDRV_CARDS) {
 		err = -ENODEV;
 		goto out;
@@ -2646,6 +2661,8 @@ snd_azf3328_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 		dev++;
 		err = -ENOENT;
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	if (dev >= SNDRV_CARDS)
 		return -ENODEV;
@@ -2653,6 +2670,7 @@ snd_azf3328_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 		dev++;
 		return -ENOENT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	err = snd_card_create(index[dev], id[dev], THIS_MODULE, 0, &card);
@@ -2660,8 +2678,12 @@ snd_azf3328_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	strcpy(card->driver, "AZF3328");
 	strcpy(card->shortname, "Aztech AZF3328 (PCI168)");
@@ -2681,9 +2703,15 @@ snd_azf3328_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 		MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
 		-1, &chip->rmidi
 =======
+<<<<<<< HEAD
+		MPU401_HW_AZT2320, chip->mpu_io,
+		MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
+		-1, &chip->rmidi
+=======
 		MPU401_HW_AZT2320, chip->mpu_io, MPU401_INFO_INTEGRATED,
 		pci->irq, 0, &chip->rmidi
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	);
 	if (err < 0) {
 		snd_printk(KERN_ERR "azf3328: no MPU-401 device at 0x%lx?\n",
@@ -2718,11 +2746,17 @@ snd_azf3328_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 	}
 
 =======
+<<<<<<< HEAD
+		opl3->private_data = chip;
+	}
+
+=======
 	}
 
 	opl3->private_data = chip;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sprintf(card->longname, "%s at 0x%lx, irq %i",
 		card->shortname, chip->ctrl_io, chip->irq);
 
@@ -2902,8 +2936,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "AZF3328",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_azf3328_ids,
 	.probe = snd_azf3328_probe,
 	.remove = __devexit_p(snd_azf3328_remove),

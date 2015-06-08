@@ -31,6 +31,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define GET_SHADOW_VCPU(reg)    \
         addi    reg, r13, PACA_KVM_SVCPU
 
@@ -41,11 +43,14 @@
 	mtmsrd  r0,1;		\
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_PPC_BOOK3S_32)
 
 #define ULONG_SIZE              4
 #define FUNC(name)		name
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define GET_SHADOW_VCPU(reg)    \
@@ -57,6 +62,7 @@
 	mtmsr   r0;		\
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PPC_BOOK3S_XX */
 
 
@@ -94,8 +100,12 @@
 <<<<<<< HEAD
 _GLOBAL(__kvmppc_vcpu_run)
 =======
+<<<<<<< HEAD
+_GLOBAL(__kvmppc_vcpu_run)
+=======
 _GLOBAL(__kvmppc_vcpu_entry)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 kvm_start_entry:
 	/* Write correct stack frame */
@@ -112,12 +122,18 @@ kvm_start_entry:
 	SAVE_NVGPRS(r1)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Save CR */
 	mfcr	r14
 	stw	r14, _CCR(r1)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Save LR */
 	PPC_STL	r0, _LINK(r1)
 
@@ -125,6 +141,9 @@ kvm_start_entry:
 	VCPU_LOAD_NVGPRS(r4)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kvm_start_lightweight:
 
 #ifdef CONFIG_PPC_BOOK3S_64
@@ -138,6 +157,8 @@ kvm_start_lightweight:
 	/* Jump to segment patching handler and into our guest */
 	bl	FUNC(kvmppc_entry_trampoline)
 	nop
+<<<<<<< HEAD
+=======
 =======
 	GET_SHADOW_VCPU(r5)
 
@@ -186,6 +207,7 @@ no_dcbz32_on:
 	/* Jump to segment patching handler and into our guest */
 	bctr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * This is the handler in module memory. It gets jumped at from the
@@ -212,6 +234,8 @@ kvmppc_handler_highmem:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_BOOK3S_64
 
 	PPC_LL	r5, VCPU_HFLAGS(r7)
@@ -228,6 +252,7 @@ no_dcbz32_off:
 #endif /* CONFIG_PPC_BOOK3S_64 */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PPC_STL	r14, VCPU_GPR(r14)(r7)
 	PPC_STL	r15, VCPU_GPR(r15)(r7)
 	PPC_STL	r16, VCPU_GPR(r16)(r7)
@@ -247,6 +272,8 @@ no_dcbz32_off:
 	PPC_STL	r30, VCPU_GPR(r30)(r7)
 	PPC_STL	r31, VCPU_GPR(r31)(r7)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Restore host msr -> SRR1 */
@@ -311,6 +338,7 @@ kvm_return_point:
 	/* go back into the guest */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Pass the exit number as 3rd argument to kvmppc_handle_exit */
 	mr	r5, r12
 
@@ -335,7 +363,13 @@ kvm_exit_loop:
 	mtcr	r14
 
 =======
+<<<<<<< HEAD
+	lwz	r14, _CCR(r1)
+	mtcr	r14
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Restore non-volatile host registers (r14 - r31) */
 	REST_NVGPRS(r1)
 

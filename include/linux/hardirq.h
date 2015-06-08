@@ -96,8 +96,12 @@
 <<<<<<< HEAD
 #if defined(CONFIG_PREEMPT_COUNT)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_PREEMPT_COUNT)
+=======
 #if defined(CONFIG_PREEMPT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # define PREEMPT_CHECK_OFFSET 1
 #else
 # define PREEMPT_CHECK_OFFSET 0
@@ -122,8 +126,12 @@
 <<<<<<< HEAD
 #ifdef CONFIG_PREEMPT_COUNT
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PREEMPT_COUNT
+=======
 #ifdef CONFIG_PREEMPT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # define preemptible()	(preempt_count() == 0 && !irqs_disabled())
 # define IRQ_EXIT_OFFSET (HARDIRQ_OFFSET-1)
 #else
@@ -150,6 +158,9 @@ extern void account_system_vtime(struct task_struct *tsk);
 <<<<<<< HEAD
 #if defined(CONFIG_TINY_RCU) || defined(CONFIG_TINY_PREEMPT_RCU)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_TINY_RCU) || defined(CONFIG_TINY_PREEMPT_RCU)
+=======
 #if defined(CONFIG_NO_HZ)
 #if defined(CONFIG_TINY_RCU) || defined(CONFIG_TINY_PREEMPT_RCU)
 extern void rcu_enter_nohz(void);
@@ -165,6 +176,7 @@ static inline void rcu_irq_exit(void)
 	rcu_enter_nohz();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void rcu_nmi_enter(void)
 {
@@ -175,6 +187,11 @@ static inline void rcu_nmi_exit(void)
 }
 
 #else
+<<<<<<< HEAD
+extern void rcu_nmi_enter(void);
+extern void rcu_nmi_exit(void);
+#endif
+=======
 <<<<<<< HEAD
 extern void rcu_nmi_enter(void);
 extern void rcu_nmi_exit(void);
@@ -192,6 +209,7 @@ extern void rcu_nmi_exit(void);
 # define rcu_nmi_exit() do { } while (0)
 #endif /* #if defined(CONFIG_NO_HZ) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * It is safe to do non-atomic ops on ->hardirq_context,

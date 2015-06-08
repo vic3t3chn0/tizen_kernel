@@ -128,6 +128,30 @@ static struct hash_cell *__get_uuid_cell(const char *str)
 	return NULL;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct hash_cell *__get_dev_cell(uint64_t dev)
+{
+	struct mapped_device *md;
+	struct hash_cell *hc;
+
+	md = dm_get_md(huge_decode_dev(dev));
+	if (!md)
+		return NULL;
+
+	hc = dm_get_mdptr(md);
+	if (!hc) {
+		dm_put(md);
+		return NULL;
+	}
+
+	return hc;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-----------------------------------------------------------------
  * Inserting, removing and renaming a device.
  *---------------------------------------------------------------*/
@@ -718,6 +742,50 @@ static int dev_create(struct dm_ioctl *param, size_t param_size)
  */
 static struct hash_cell *__find_device_hash_cell(struct dm_ioctl *param)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct hash_cell *hc = NULL;
+
+	if (*param->uuid) {
+		if (*param->name || param->dev)
+			return NULL;
+
+		hc = __get_uuid_cell(param->uuid);
+		if (!hc)
+			return NULL;
+	} else if (*param->name) {
+		if (param->dev)
+			return NULL;
+
+		hc = __get_name_cell(param->name);
+		if (!hc)
+			return NULL;
+	} else if (param->dev) {
+		hc = __get_dev_cell(param->dev);
+		if (!hc)
+			return NULL;
+	} else
+		return NULL;
+
+	/*
+	 * Sneakily write in both the name and the uuid
+	 * while we have the cell.
+	 */
+	strlcpy(param->name, hc->name, sizeof(param->name));
+	if (hc->uuid)
+		strlcpy(param->uuid, hc->uuid, sizeof(param->uuid));
+	else
+		param->uuid[0] = '\0';
+
+	if (hc->new_map)
+		param->flags |= DM_INACTIVE_PRESENT_FLAG;
+	else
+		param->flags &= ~DM_INACTIVE_PRESENT_FLAG;
+
+	return hc;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mapped_device *md;
 	void *mdptr = NULL;
 
@@ -737,6 +805,10 @@ static struct hash_cell *__find_device_hash_cell(struct dm_ioctl *param)
 
 out:
 	return mdptr;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct mapped_device *find_device(struct dm_ioctl *param)
@@ -746,6 +818,13 @@ static struct mapped_device *find_device(struct dm_ioctl *param)
 
 	down_read(&_hash_lock);
 	hc = __find_device_hash_cell(param);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (hc)
+		md = hc->md;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hc) {
 		md = hc->md;
 
@@ -764,6 +843,10 @@ static struct mapped_device *find_device(struct dm_ioctl *param)
 		else
 			param->flags &= ~DM_INACTIVE_PRESENT_FLAG;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	up_read(&_hash_lock);
 
 	return md;
@@ -858,6 +941,13 @@ static int dev_set_geometry(struct dm_ioctl *param, size_t param_size)
 	struct hd_geometry geometry;
 	unsigned long indata[4];
 	char *geostr = (char *) param + param->data_start;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	char dummy;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	md = find_device(param);
 	if (!md)
@@ -869,8 +959,18 @@ static int dev_set_geometry(struct dm_ioctl *param, size_t param_size)
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	x = sscanf(geostr, "%lu %lu %lu %lu%c", indata,
+		   indata + 1, indata + 2, indata + 3, &dummy);
+=======
 	x = sscanf(geostr, "%lu %lu %lu %lu", indata,
 		   indata + 1, indata + 2, indata + 3);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	x = sscanf(geostr, "%lu %lu %lu %lu", indata,
+		   indata + 1, indata + 2, indata + 3);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (x != 4) {
 		DMWARN("Unable to interpret geometry settings.");
@@ -1193,6 +1293,13 @@ static int table_load(struct dm_ioctl *param, size_t param_size)
 	struct hash_cell *hc;
 	struct dm_table *t;
 	struct mapped_device *md;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct target_type *immutable_target_type;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	md = find_device(param);
 	if (!md)
@@ -1208,6 +1315,22 @@ static int table_load(struct dm_ioctl *param, size_t param_size)
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	immutable_target_type = dm_get_immutable_target_type(md);
+	if (immutable_target_type &&
+	    (immutable_target_type != dm_table_get_immutable_target_type(t))) {
+		DMWARN("can't replace immutable target type %s",
+		       immutable_target_type->name);
+		dm_table_destroy(t);
+		r = -EINVAL;
+		goto out;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Protect md->type and md->queue against concurrent table loads. */
 	dm_lock_md_type(md);
 	if (dm_get_md_type(md) == DM_TYPE_NONE)
@@ -1402,6 +1525,17 @@ static int target_message(struct dm_ioctl *param, size_t param_size)
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!argc) {
+		DMWARN("Empty message received.");
+		goto out_argv;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	table = dm_get_live_table(md);
 	if (!table)
 		goto out_argv;
@@ -1524,6 +1658,11 @@ static int copy_params(struct dm_ioctl __user *user, struct dm_ioctl **param)
 	if (copy_from_user(dmi, user, tmp.data_size))
 		goto bad;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Abort if something changed the ioctl data while it was being copied.
 	 */
@@ -1532,6 +1671,10 @@ static int copy_params(struct dm_ioctl __user *user, struct dm_ioctl **param)
 		goto bad;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Wipe the user buffer so we do not return it to userspace */
 	if (secure_data && clear_user(user, tmp.data_size))
 		goto bad;

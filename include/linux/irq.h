@@ -32,7 +32,11 @@ struct seq_file;
 <<<<<<< HEAD
 struct module;
 =======
+<<<<<<< HEAD
+struct module;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct irq_desc;
 struct irq_data;
 typedef	void (*irq_flow_handler_t)(unsigned int irq,
@@ -53,14 +57,20 @@ typedef	void (*irq_preflow_handler_t)(struct irq_data *data);
  * IRQ_TYPE_LEVEL_MASK		- Mask to filter out the level bits
  * IRQ_TYPE_SENSE_MASK		- Mask for all the above bits
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * IRQ_TYPE_DEFAULT		- For use by some PICs to ask irq_set_type
  *				  to setup the HW to a sane default (used
  *                                by irqdomain map() callbacks to synchronize
  *                                the HW state and SW flags for a newly
  *                                allocated descriptor).
  *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * IRQ_TYPE_PROBE		- Special flag for probing in progress
  *
  * Bits which can be modified via irq_set/clear/modify_status_flags()
@@ -81,7 +91,11 @@ typedef	void (*irq_preflow_handler_t)(struct irq_data *data);
 <<<<<<< HEAD
  * IRQ_PER_CPU_DEVID		- Dev_id is a per-cpu variable
 =======
+<<<<<<< HEAD
+ * IRQ_PER_CPU_DEVID		- Dev_id is a per-cpu variable
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 enum {
 	IRQ_TYPE_NONE		= 0x00000000,
@@ -95,7 +109,11 @@ enum {
 <<<<<<< HEAD
 	IRQ_TYPE_DEFAULT	= IRQ_TYPE_SENSE_MASK,
 =======
+<<<<<<< HEAD
+	IRQ_TYPE_DEFAULT	= IRQ_TYPE_SENSE_MASK,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRQ_TYPE_PROBE		= 0x00000010,
 
@@ -111,17 +129,26 @@ enum {
 <<<<<<< HEAD
 	IRQ_PER_CPU_DEVID	= (1 << 17),
 =======
+<<<<<<< HEAD
+	IRQ_PER_CPU_DEVID	= (1 << 17),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define IRQF_MODIFY_MASK	\
 	(IRQ_TYPE_SENSE_MASK | IRQ_NOPROBE | IRQ_NOREQUEST | \
 	 IRQ_NOAUTOEN | IRQ_MOVE_PCNTXT | IRQ_LEVEL | IRQ_NO_BALANCING | \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 IRQ_PER_CPU | IRQ_NESTED_THREAD | IRQ_NOTHREAD | IRQ_PER_CPU_DEVID)
 
 #define IRQ_NO_BALANCING_MASK	(IRQ_PER_CPU | IRQ_NO_BALANCING)
 
+<<<<<<< HEAD
+=======
 =======
 	 IRQ_PER_CPU | IRQ_NESTED_THREAD)
 
@@ -133,6 +160,7 @@ static inline __deprecated bool CHECK_IRQ_PER_CPU(unsigned int status)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Return value for chip->irq_set_affinity()
  *
@@ -148,7 +176,11 @@ struct msi_desc;
 <<<<<<< HEAD
 struct irq_domain;
 =======
+<<<<<<< HEAD
+struct irq_domain;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct irq_data - per irq and irq chip data passed down to chip functions
@@ -156,7 +188,11 @@ struct irq_domain;
 <<<<<<< HEAD
  * @hwirq:		hardware interrupt number, local to the interrupt domain
 =======
+<<<<<<< HEAD
+ * @hwirq:		hardware interrupt number, local to the interrupt domain
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @node:		node index useful for balancing
  * @state_use_accessors: status information for irq chip functions.
  *			Use accessor functions to deal with it
@@ -165,7 +201,12 @@ struct irq_domain;
  * @domain:		Interrupt translation domain; responsible for mapping
  *			between hwirq number and linux irq number.
 =======
+<<<<<<< HEAD
+ * @domain:		Interrupt translation domain; responsible for mapping
+ *			between hwirq number and linux irq number.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @handler_data:	per-IRQ data for the irq_chip methods
  * @chip_data:		platform-specific per-chip private data for the chip
  *			methods, to allow shared chip implementations
@@ -179,16 +220,22 @@ struct irq_domain;
 struct irq_data {
 	unsigned int		irq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long		hwirq;
 	unsigned int		node;
 	unsigned int		state_use_accessors;
 	struct irq_chip		*chip;
 	struct irq_domain	*domain;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int		node;
 	unsigned int		state_use_accessors;
 	struct irq_chip		*chip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void			*handler_data;
 	void			*chip_data;
 	struct msi_desc		*msi_desc;
@@ -313,13 +360,19 @@ static inline void irqd_clr_chained_irq_inprogress(struct irq_data *d)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline irq_hw_number_t irqd_to_hwirq(struct irq_data *d)
 {
 	return d->hwirq;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct irq_chip - hardware interrupt chip descriptor
  *
@@ -340,7 +393,11 @@ static inline irq_hw_number_t irqd_to_hwirq(struct irq_data *d)
 <<<<<<< HEAD
  * @irq_read_line:	return the current value on the irq line
 =======
+<<<<<<< HEAD
+ * @irq_read_line:	return the current value on the irq line
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @irq_bus_lock:	function to lock access to slow bus (i2c) chips
  * @irq_bus_sync_unlock:function to sync and unlock slow bus (i2c) chips
  * @irq_cpu_online:	configure an interrupt source for a secondary CPU
@@ -372,7 +429,11 @@ struct irq_chip {
 <<<<<<< HEAD
 	int		(*irq_read_line)(struct irq_data *data);
 =======
+<<<<<<< HEAD
+	int		(*irq_read_line)(struct irq_data *data);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		(*irq_set_wake)(struct irq_data *data, unsigned int on);
 
 	void		(*irq_bus_lock)(struct irq_data *data);
@@ -406,7 +467,11 @@ struct irq_chip {
 <<<<<<< HEAD
  * IRQCHIP_SKIP_SET_WAKE:	Skip chip.irq_set_wake(), for this irq chip
 =======
+<<<<<<< HEAD
+ * IRQCHIP_SKIP_SET_WAKE:	Skip chip.irq_set_wake(), for this irq chip
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 enum {
 	IRQCHIP_SET_TYPE_MASKED		= (1 <<  0),
@@ -416,7 +481,11 @@ enum {
 <<<<<<< HEAD
 	IRQCHIP_SKIP_SET_WAKE		= (1 <<  4),
 =======
+<<<<<<< HEAD
+	IRQCHIP_SKIP_SET_WAKE		= (1 <<  4),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* This include will go away once we isolated irq_desc usage to core code */
@@ -444,7 +513,12 @@ extern void remove_irq(unsigned int irq, struct irqaction *act);
 extern int setup_percpu_irq(unsigned int irq, struct irqaction *new);
 extern void remove_percpu_irq(unsigned int irq, struct irqaction *act);
 =======
+<<<<<<< HEAD
+extern int setup_percpu_irq(unsigned int irq, struct irqaction *new);
+extern void remove_percpu_irq(unsigned int irq, struct irqaction *act);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void irq_cpu_online(void);
 extern void irq_cpu_offline(void);
@@ -475,7 +549,11 @@ extern void handle_percpu_irq(unsigned int irq, struct irq_desc *desc);
 <<<<<<< HEAD
 extern void handle_percpu_devid_irq(unsigned int irq, struct irq_desc *desc);
 =======
+<<<<<<< HEAD
+extern void handle_percpu_devid_irq(unsigned int irq, struct irq_desc *desc);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void handle_bad_irq(unsigned int irq, struct irq_desc *desc);
 extern void handle_nested_irq(unsigned int irq);
 
@@ -487,7 +565,12 @@ extern void note_interrupt(unsigned int irq, struct irq_desc *desc,
 /* Resending of interrupts :*/
 void check_irq_resend(struct irq_desc *desc, unsigned int irq);
 =======
+<<<<<<< HEAD
+/* Resending of interrupts :*/
+void check_irq_resend(struct irq_desc *desc, unsigned int irq);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Enable/disable irq debugging output: */
 extern int noirqdebug_setup(char *str);
@@ -513,7 +596,12 @@ static inline void irq_set_chip_and_handler(unsigned int irq, struct irq_chip *c
 extern int irq_set_percpu_devid(unsigned int irq);
 
 =======
+<<<<<<< HEAD
+extern int irq_set_percpu_devid(unsigned int irq);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void
 __irq_set_handler(unsigned int irq, irq_flow_handler_t handle, int is_chained,
 		  const char *name);
@@ -576,6 +664,9 @@ static inline void irq_set_nested_thread(unsigned int irq, bool nest)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void irq_set_percpu_devid_flags(unsigned int irq)
 {
 	irq_set_status_flags(irq,
@@ -583,8 +674,11 @@ static inline void irq_set_percpu_devid_flags(unsigned int irq)
 			     IRQ_NOPROBE | IRQ_PER_CPU_DEVID);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Handle dynamic irq creation and destruction */
 extern unsigned int create_irq_nr(unsigned int irq_want, int node);
 extern int create_irq(void);
@@ -653,6 +747,9 @@ static inline struct msi_desc *irq_data_get_msi(struct irq_data *d)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __irq_alloc_descs(int irq, unsigned int from, unsigned int cnt, int node,
 		struct module *owner);
 
@@ -671,6 +768,8 @@ int __irq_alloc_descs(int irq, unsigned int from, unsigned int cnt, int node,
 
 void irq_free_descs(unsigned int irq, unsigned int cnt);
 int irq_reserve_irqs(unsigned int from, unsigned int cnt);
+<<<<<<< HEAD
+=======
 =======
 int irq_alloc_descs(int irq, unsigned int from, unsigned int cnt, int node);
 void irq_free_descs(unsigned int irq, unsigned int cnt);
@@ -691,6 +790,7 @@ static inline int irq_alloc_desc_from(unsigned int from, int node)
 	return irq_alloc_descs(-1, from, 1, node);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void irq_free_desc(unsigned int irq)
 {
@@ -808,8 +908,11 @@ void irq_gc_ack_clr_bit(struct irq_data *d);
 void irq_gc_mask_disable_reg_and_ack(struct irq_data *d);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void irq_gc_mask_and_ack_set(struct irq_data *d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void irq_gc_eoi(struct irq_data *d);
 int irq_gc_set_wake(struct irq_data *d, unsigned int on);
 

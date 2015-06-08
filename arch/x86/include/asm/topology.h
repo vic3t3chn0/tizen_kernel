@@ -134,11 +134,16 @@ extern void setup_node_to_cpumask_map(void);
 extern int __node_distance(int, int);
 #define node_distance(a, b) __node_distance(a, b)
 =======
+<<<<<<< HEAD
+extern int __node_distance(int, int);
+#define node_distance(a, b) __node_distance(a, b)
+=======
 #ifdef CONFIG_X86_64
 extern int __node_distance(int, int);
 #define node_distance(a, b) __node_distance(a, b)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* !CONFIG_NUMA */
 
@@ -182,8 +187,12 @@ struct pci_bus;
 <<<<<<< HEAD
 void x86_pci_root_bus_resources(int bus, struct list_head *resources);
 =======
+<<<<<<< HEAD
+void x86_pci_root_bus_resources(int bus, struct list_head *resources);
+=======
 void x86_pci_root_bus_res_quirks(struct pci_bus *b);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SMP
 #define mc_capable()	((boot_cpu_data.x86_max_cores > 1) && \

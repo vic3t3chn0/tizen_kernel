@@ -6,10 +6,16 @@
  *  Copyright (C) 2010 Waldemar Brodkorb <wbx@openadk.org>
  *  Copyright (C) 2010-2012 Hauke Mehrtens <hauke@hauke-m.de>
 =======
+<<<<<<< HEAD
+ *  Copyright (C) 2006 Michael Buesch <m@bues.ch>
+ *  Copyright (C) 2010 Waldemar Brodkorb <wbx@openadk.org>
+ *  Copyright (C) 2010-2012 Hauke Mehrtens <hauke@hauke-m.de>
+=======
  *  Copyright (C) 2006 Michael Buesch <mb@bu3sch.de>
  *  Copyright (C) 2010 Waldemar Brodkorb <wbx@openadk.org>
  *  Copyright (C) 2010-2011 Hauke Mehrtens <hauke@hauke-m.de>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  This program is free software; you can redistribute  it and/or modify it
  *  under  the terms of  the GNU General  Public License as published by the
@@ -33,16 +39,22 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/types.h>
 #include <linux/ssb/ssb.h>
 #include <linux/ssb/ssb_embedded.h>
 #include <linux/bcma/bcma_soc.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/types.h>
 #include <linux/ssb/ssb.h>
 #include <linux/ssb/ssb_embedded.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/bootinfo.h>
 #include <asm/reboot.h>
 #include <asm/time.h>
@@ -50,15 +62,21 @@
 #include <asm/mach-bcm47xx/nvram.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 union bcm47xx_bus bcm47xx_bus;
 EXPORT_SYMBOL(bcm47xx_bus);
 
 enum bcm47xx_bus_type bcm47xx_bus_type;
 EXPORT_SYMBOL(bcm47xx_bus_type);
+<<<<<<< HEAD
+=======
 =======
 struct ssb_bus ssb_bcm47xx;
 EXPORT_SYMBOL(ssb_bcm47xx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void bcm47xx_machine_restart(char *command)
 {
@@ -66,6 +84,9 @@ static void bcm47xx_machine_restart(char *command)
 	local_irq_disable();
 	/* Set the watchdog timer to reset immediately */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bcm47xx_bus_type) {
 #ifdef CONFIG_BCM47XX_SSB
 	case BCM47XX_BUS_TYPE_SSB:
@@ -78,9 +99,12 @@ static void bcm47xx_machine_restart(char *command)
 		break;
 #endif
 	}
+<<<<<<< HEAD
+=======
 =======
 	ssb_watchdog_timer_set(&ssb_bcm47xx, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (1)
 		cpu_relax();
 }
@@ -90,6 +114,9 @@ static void bcm47xx_machine_halt(void)
 	/* Disable interrupts and watchdog and spin forever */
 	local_irq_disable();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bcm47xx_bus_type) {
 #ifdef CONFIG_BCM47XX_SSB
 	case BCM47XX_BUS_TYPE_SSB:
@@ -102,13 +129,20 @@ static void bcm47xx_machine_halt(void)
 		break;
 #endif
 	}
+<<<<<<< HEAD
+=======
 =======
 	ssb_watchdog_timer_set(&ssb_bcm47xx, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (1)
 		cpu_relax();
 }
 
+<<<<<<< HEAD
+#ifdef CONFIG_BCM47XX_SSB
+static int bcm47xx_get_sprom_ssb(struct ssb_bus *bus, struct ssb_sprom *out)
+=======
 <<<<<<< HEAD
 #ifdef CONFIG_BCM47XX_SSB
 static int bcm47xx_get_sprom_ssb(struct ssb_bus *bus, struct ssb_sprom *out)
@@ -264,6 +298,7 @@ static void bcm47xx_fill_sprom(struct ssb_sprom *sprom, const char *prefix)
 
 int bcm47xx_get_sprom(struct ssb_bus *bus, struct ssb_sprom *out)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char prefix[10];
 
@@ -283,8 +318,12 @@ static int bcm47xx_get_invariants(struct ssb_bus *bus,
 <<<<<<< HEAD
 				  struct ssb_init_invariants *iv)
 =======
+<<<<<<< HEAD
+				  struct ssb_init_invariants *iv)
+=======
 				   struct ssb_init_invariants *iv)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char buf[20];
 
@@ -311,8 +350,12 @@ static int bcm47xx_get_invariants(struct ssb_bus *bus,
 <<<<<<< HEAD
 static void __init bcm47xx_register_ssb(void)
 =======
+<<<<<<< HEAD
+static void __init bcm47xx_register_ssb(void)
+=======
 void __init plat_mem_setup(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	char buf[100];
@@ -321,19 +364,28 @@ void __init plat_mem_setup(void)
 <<<<<<< HEAD
 	err = ssb_arch_register_fallback_sprom(&bcm47xx_get_sprom_ssb);
 =======
+<<<<<<< HEAD
+	err = ssb_arch_register_fallback_sprom(&bcm47xx_get_sprom_ssb);
+=======
 	err = ssb_arch_register_fallback_sprom(&bcm47xx_get_sprom);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		printk(KERN_WARNING "bcm47xx: someone else already registered"
 			" a ssb SPROM callback handler (err %d)\n", err);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ssb_bus_ssbbus_register(&(bcm47xx_bus.ssb), SSB_ENUM_BASE,
 				      bcm47xx_get_invariants);
 	if (err)
 		panic("Failed to initialize SSB bus (err %d)", err);
 
 	mcore = &bcm47xx_bus.ssb.mipscore;
+<<<<<<< HEAD
+=======
 =======
 	err = ssb_bus_ssbbus_register(&ssb_bcm47xx, SSB_ENUM_BASE,
 				      bcm47xx_get_invariants);
@@ -342,6 +394,7 @@ void __init plat_mem_setup(void)
 
 	mcore = &ssb_bcm47xx.mipscore;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (nvram_getenv("kernel_args", buf, sizeof(buf)) >= 0) {
 		if (strstr(buf, "console=ttyS1")) {
 			struct ssb_serial_port port;
@@ -355,6 +408,9 @@ void __init plat_mem_setup(void)
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -417,14 +473,20 @@ void __init plat_mem_setup(void)
 		bcm47xx_register_ssb();
 #endif
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	_machine_restart = bcm47xx_machine_restart;
 	_machine_halt = bcm47xx_machine_halt;
 	pm_power_off = bcm47xx_machine_halt;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init bcm47xx_register_bus_complete(void)
 {
@@ -443,5 +505,8 @@ static int __init bcm47xx_register_bus_complete(void)
 	return 0;
 }
 device_initcall(bcm47xx_register_bus_complete);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

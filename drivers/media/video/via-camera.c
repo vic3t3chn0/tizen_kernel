@@ -21,7 +21,15 @@
 #include <media/videobuf-dma-sg.h>
 #include <linux/delay.h>
 #include <linux/dma-mapping.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/pm_qos.h>
+=======
 #include <linux/pm_qos_params.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/pm_qos_params.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/via-core.h>
 #include <linux/via-gpio.h>
 #include <linux/via_i2c.h>
@@ -34,13 +42,29 @@ MODULE_AUTHOR("Jonathan Corbet <corbet@lwn.net>");
 MODULE_DESCRIPTION("VIA framebuffer-based camera controller driver");
 MODULE_LICENSE("GPL");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool flip_image;
+=======
 static int flip_image;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int flip_image;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(flip_image, bool, 0444);
 MODULE_PARM_DESC(flip_image,
 		"If set, the sensor will be instructed to flip the image "
 		"vertically.");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool override_serial;
+=======
 static int override_serial;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int override_serial;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(override_serial, bool, 0444);
 MODULE_PARM_DESC(override_serial,
 		"The camera driver will normally refuse to load if "
@@ -69,7 +93,15 @@ struct via_camera {
 	struct mutex lock;
 	enum viacam_opstate opstate;
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct pm_qos_request qos_request;
+=======
 	struct pm_qos_request_list qos_request;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct pm_qos_request_list qos_request;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * GPIO info for power/reset management
 	 */
@@ -156,6 +188,15 @@ static struct via_format {
 		.mbus_code	= V4L2_MBUS_FMT_YUYV8_2X8,
 		.bpp		= 2,
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* RGB444 and Bayer should be doable, but have never been
+	   tested with this driver. RGB565 seems to work at the default
+	   resolution, but results in color corruption when being scaled by
+	   viacam_set_scaled(), and is disabled as a result. */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.desc		= "RGB 565",
 		.pixelformat	= V4L2_PIX_FMT_RGB565,
@@ -164,6 +205,10 @@ static struct via_format {
 	},
 	/* RGB444 and Bayer should be doable, but have never been
 	   tested with this driver. */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #define N_VIA_FMTS ARRAY_SIZE(via_formats)
 
@@ -1332,6 +1377,14 @@ static __devinit bool viacam_serial_is_enabled(void)
 	struct pci_bus *pbus = pci_find_bus(0, 0);
 	u8 cbyte;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!pbus)
+		return false;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_bus_read_config_byte(pbus, VIACAM_SERIAL_DEVFN,
 			VIACAM_SERIAL_CREG, &cbyte);
 	if ((cbyte & VIACAM_SERIAL_BIT) == 0)
@@ -1502,6 +1555,12 @@ static struct platform_driver viacam_driver = {
 	.remove = viacam_remove,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(viacam_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int viacam_init(void)
 {
 	return platform_driver_register(&viacam_driver);
@@ -1513,3 +1572,7 @@ static void viacam_exit(void)
 	platform_driver_unregister(&viacam_driver);
 }
 module_exit(viacam_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

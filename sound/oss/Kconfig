@@ -435,10 +435,14 @@ config SOUND_SB
 <<<<<<< HEAD
 	  <file:Documentation/sound/oss/ESS>). If you have an IBM Mwave
 =======
+<<<<<<< HEAD
+	  <file:Documentation/sound/oss/ESS>). If you have an IBM Mwave
+=======
 	  <file:Documentation/sound/oss/ESS>). If you have an SB AWE 32 or SB AWE
 	  64, say Y here and also to "AWE32 synth" below and read
 	  <file:Documentation/sound/oss/INSTALL.awe>. If you have an IBM Mwave
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  card, say Y here and read <file:Documentation/sound/oss/mwave>.
 
 	  If you compile the driver into the kernel and don't want to use
@@ -530,8 +534,12 @@ config SOUND_VIDC
 <<<<<<< HEAD
 	depends on ARM && ARCH_ACORN
 =======
+<<<<<<< HEAD
+	depends on ARM && ARCH_ACORN
+=======
 	depends on ARM && (ARCH_ACORN || ARCH_CLPS7500)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  16-bit support for the VIDC onboard sound hardware found on Acorn
 	  machines.

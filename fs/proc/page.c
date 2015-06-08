@@ -119,7 +119,12 @@ u64 stable_page_flags(struct page *page)
 	else if (PageTransCompound(page))
 		u |= 1 << KPF_THP;
 =======
+<<<<<<< HEAD
+	else if (PageTransCompound(page))
+		u |= 1 << KPF_THP;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Caveats on high order pages: page->_count will only be set

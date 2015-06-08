@@ -238,8 +238,12 @@ extern void nilfs_set_link(struct inode *, struct nilfs_dir_entry *,
 <<<<<<< HEAD
 extern int nilfs_sync_file(struct file *, loff_t, loff_t, int);
 =======
+<<<<<<< HEAD
+extern int nilfs_sync_file(struct file *, loff_t, loff_t, int);
+=======
 extern int nilfs_sync_file(struct file *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ioctl.c */
 long nilfs_ioctl(struct file *, unsigned int, unsigned long);
@@ -253,8 +257,12 @@ void nilfs_inode_sub_blocks(struct inode *inode, int n);
 <<<<<<< HEAD
 extern struct inode *nilfs_new_inode(struct inode *, umode_t);
 =======
+<<<<<<< HEAD
+extern struct inode *nilfs_new_inode(struct inode *, umode_t);
+=======
 extern struct inode *nilfs_new_inode(struct inode *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void nilfs_free_inode(struct inode *);
 extern int nilfs_get_block(struct inode *, sector_t, struct buffer_head *, int);
 extern void nilfs_set_inode_flags(struct inode *);
@@ -275,8 +283,12 @@ extern int nilfs_setattr(struct dentry *, struct iattr *);
 <<<<<<< HEAD
 int nilfs_permission(struct inode *inode, int mask);
 =======
+<<<<<<< HEAD
+int nilfs_permission(struct inode *inode, int mask);
+=======
 int nilfs_permission(struct inode *inode, int mask, unsigned int flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int nilfs_load_inode_block(struct inode *inode, struct buffer_head **pbh);
 extern int nilfs_inode_dirty(struct inode *);
 int nilfs_set_file_dirty(struct inode *inode, unsigned nr_dirty);
@@ -289,16 +301,22 @@ int nilfs_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
 extern struct inode *nilfs_alloc_inode(struct super_block *);
 extern void nilfs_destroy_inode(struct inode *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __printf(3, 4)
 void nilfs_error(struct super_block *, const char *, const char *, ...);
 extern __printf(3, 4)
 void nilfs_warning(struct super_block *, const char *, const char *, ...);
+<<<<<<< HEAD
+=======
 =======
 extern void nilfs_error(struct super_block *, const char *, const char *, ...)
 	__attribute__ ((format (printf, 3, 4)));
 extern void nilfs_warning(struct super_block *, const char *, const char *, ...)
 	__attribute__ ((format (printf, 3, 4)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct nilfs_super_block *
 nilfs_read_super_block(struct super_block *, u64, int, struct buffer_head **);
 extern int nilfs_store_magic_and_option(struct super_block *,

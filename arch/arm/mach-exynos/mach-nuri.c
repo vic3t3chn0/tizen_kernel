@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * linux/arch/arm/mach-exynos4/mach-nuri.c
 =======
+<<<<<<< HEAD
+ * linux/arch/arm/mach-exynos4/mach-nuri.c
+=======
  * linux/arch/arm/mach-exynos/mach-nuri.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *
@@ -18,6 +22,9 @@
 #include <linux/i2c.h>
 #include <linux/i2c/atmel_mxt_ts.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/i2c-gpio.h>
 #include <linux/gpio_keys.h>
 #include <linux/gpio.h>
@@ -27,18 +34,24 @@
 #include <linux/regulator/fixed.h>
 #include <linux/mfd/max8997.h>
 #include <linux/mfd/max8997-private.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/gpio_keys.h>
 #include <linux/gpio.h>
 #include <linux/regulator/machine.h>
 #include <linux/regulator/fixed.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mmc/host.h>
 #include <linux/fb.h>
 #include <linux/pwm_backlight.h>
 
 #include <video/platform_lcd.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/m5mols.h>
 #include <media/s5k6aa.h>
 #include <media/s5p_fimc.h>
@@ -54,6 +67,8 @@
 #include <plat/cpu.h>
 #include <plat/devs.h>
 #include <plat/fb.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/mach/arch.h>
@@ -64,12 +79,16 @@
 #include <plat/cpu.h>
 #include <plat/devs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/sdhci.h>
 #include <plat/ehci.h>
 #include <plat/clock.h>
 #include <plat/gpio-cfg.h>
 #include <plat/iic.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/mfc.h>
 #include <plat/pd.h>
 #include <plat/fimc-core.h>
@@ -80,11 +99,14 @@
 
 #include "common.h"
 
+<<<<<<< HEAD
+=======
 =======
 
 #include <mach/map.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Following are default values for UCON, ULCON and UFCON UART registers */
 #define NURI_UCON_DEFAULT	(S3C2410_UCON_TXILEVEL |	\
 				 S3C2410_UCON_RXILEVEL |	\
@@ -102,12 +124,18 @@
 enum fixed_regulator_id {
 	FIXED_REG_ID_MMC = 0,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FIXED_REG_ID_MAX8903,
 	FIXED_REG_ID_CAM_A28V,
 	FIXED_REG_ID_CAM_12V,
 	FIXED_REG_ID_CAM_VT_15V,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct s3c2410_uartcfg nuri_uartcfgs[] __initdata = {
@@ -146,8 +174,13 @@ static struct s3c_sdhci_platdata nuri_hsmmc0_data __initdata = {
 				MMC_CAP_ERASE),
 	.host_caps2		= MMC_CAP2_BROKEN_VOLTAGE,
 =======
+<<<<<<< HEAD
+				MMC_CAP_ERASE),
+	.host_caps2		= MMC_CAP2_BROKEN_VOLTAGE,
+=======
 				MMC_CAP_DISABLE | MMC_CAP_ERASE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.cd_type		= S3C_SDHCI_CD_PERMANENT,
 	.clk_type		= S3C_SDHCI_CLK_DIV_EXTERNAL,
 };
@@ -156,8 +189,12 @@ static struct regulator_consumer_supply emmc_supplies[] = {
 <<<<<<< HEAD
 	REGULATOR_SUPPLY("vmmc", "exynos4-sdhci.0"),
 =======
+<<<<<<< HEAD
+	REGULATOR_SUPPLY("vmmc", "exynos4-sdhci.0"),
+=======
 	REGULATOR_SUPPLY("vmmc", "s3c-sdhci.0"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	REGULATOR_SUPPLY("vmmc", "dw_mmc"),
 };
 
@@ -193,9 +230,13 @@ static struct s3c_sdhci_platdata nuri_hsmmc2_data __initdata = {
 <<<<<<< HEAD
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED,
 =======
+<<<<<<< HEAD
+				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED,
+=======
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED |
 				MMC_CAP_DISABLE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ext_cd_gpio		= EXYNOS4_GPX3(3),	/* XEINT_27 */
 	.ext_cd_gpio_invert	= 1,
 	.cd_type		= S3C_SDHCI_CD_GPIO,
@@ -258,6 +299,9 @@ static struct platform_device nuri_gpio_keys = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Frame Buffer */
 static struct s3c_fb_pd_win nuri_fb_win0 = {
 	.win_mode = {
@@ -285,8 +329,11 @@ static struct s3c_fb_platdata nuri_fb_pdata __initdata = {
 	.setup_gpio	= exynos4_fimd0_gpio_setup_24bpp,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void nuri_lcd_power_on(struct plat_lcd_data *pd, unsigned int power)
 {
 	int gpio = EXYNOS4_GPE1(5);
@@ -302,6 +349,10 @@ static int nuri_bl_init(struct device *dev)
 	return gpio_request_one(EXYNOS4_GPE2(3), GPIOF_OUT_INIT_LOW,
 				"LCD_LD0_EN");
 =======
+<<<<<<< HEAD
+	return gpio_request_one(EXYNOS4_GPE2(3), GPIOF_OUT_INIT_LOW,
+				"LCD_LD0_EN");
+=======
 	int ret, gpio = EXYNOS4_GPE2(3);
 
 	ret = gpio_request(gpio, "LCD_LDO_EN");
@@ -310,6 +361,7 @@ static int nuri_bl_init(struct device *dev)
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int nuri_bl_notify(struct device *dev, int brightness)
@@ -368,6 +420,9 @@ static struct i2c_board_info i2c1_devs[] __initdata = {
 <<<<<<< HEAD
 static struct mxt_platform_data mxt_platform_data = {
 =======
+<<<<<<< HEAD
+static struct mxt_platform_data mxt_platform_data = {
+=======
 static u8 mxt_init_vals[] = {
 	/* MXT_GEN_COMMAND(6) */
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -412,6 +467,7 @@ static struct mxt_platform_data mxt_platform_data = {
 	.config_length		= ARRAY_SIZE(mxt_init_vals),
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.x_line			= 18,
 	.y_line			= 11,
 	.x_size			= 1024,
@@ -451,6 +507,9 @@ static void __init nuri_tsp_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply __initdata max8997_ldo1_[] = {
 	REGULATOR_SUPPLY("vdd", "s5p-adc"), /* Used by CPU's ADC drv */
 };
@@ -1173,6 +1232,8 @@ static void __init nuri_power_init(void)
 	gpio_direction_output(gpio, ta_en);
 }
 
+<<<<<<< HEAD
+=======
 =======
 /* GPIO I2C 5 (PMIC) */
 static struct i2c_board_info i2c5_devs[] __initdata = {
@@ -1180,6 +1241,7 @@ static struct i2c_board_info i2c5_devs[] __initdata = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* USB EHCI */
 static struct s5p_ehci_platdata nuri_ehci_pdata;
 
@@ -1191,6 +1253,9 @@ static void __init nuri_ehci_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* CAMERA */
 static struct regulator_consumer_supply cam_vt_cam15_supply =
 	REGULATOR_SUPPLY("vdd_core", "6-003c");
@@ -1387,11 +1452,14 @@ static struct platform_device *nuri_devices[] __initdata = {
 	&s5p_device_fimc2,
 	&s5p_device_fimc3,
 	&s5p_device_fimd0,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *nuri_devices[] __initdata = {
 	/* Samsung Platform Devices */
 	&emmc_fixed_voltage,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&s3c_device_hsmmc0,
 	&s3c_device_hsmmc2,
 	&s3c_device_hsmmc3,
@@ -1400,6 +1468,9 @@ static struct platform_device *nuri_devices[] __initdata = {
 	&s5p_device_ehci,
 	&s3c_device_i2c3,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&i2c9_gpio,
 	&s3c_device_adc,
 	&s5p_device_g2d,
@@ -1409,22 +1480,31 @@ static struct platform_device *nuri_devices[] __initdata = {
 	&s5p_device_mfc_l,
 	&s5p_device_mfc_r,
 	&s5p_device_fimc_md,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* NURI Devices */
 	&nuri_gpio_keys,
 	&nuri_lcd_device,
 	&nuri_backlight_device,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&max8903_fixed_reg_dev,
 	&nuri_max8903_device,
 	&cam_vt_cam15_fixed_rdev,
 	&cam_vdda_fixed_rdev,
 	&cam_8m_12v_fixed_rdev,
 	&exynos4_bus_devfreq,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init nuri_map_io(void)
@@ -1433,25 +1513,39 @@ static void __init nuri_map_io(void)
 	clk_xusbxti.rate = 24000000;
 	exynos_init_io(NULL, 0);
 =======
+<<<<<<< HEAD
+	clk_xusbxti.rate = 24000000;
+	exynos_init_io(NULL, 0);
+=======
 	s5p_init_io(NULL, 0, S5P_VA_CHIPID);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s3c24xx_init_clocks(24000000);
 	s3c24xx_init_uarts(nuri_uartcfgs, ARRAY_SIZE(nuri_uartcfgs));
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init nuri_reserve(void)
 {
 	s5p_mfc_reserve_mem(0x43000000, 8 << 20, 0x51000000, 8 << 20);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init nuri_machine_init(void)
 {
 	nuri_sdhci_init();
 	nuri_tsp_init();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nuri_power_init();
 
 	s3c_i2c0_set_platdata(&nuri_i2c0_platdata);
@@ -1470,6 +1564,8 @@ static void __init nuri_machine_init(void)
 	nuri_camera_init();
 
 	nuri_ehci_init();
+<<<<<<< HEAD
+=======
 =======
 
 	i2c_register_board_info(1, i2c1_devs, ARRAY_SIZE(i2c1_devs));
@@ -1480,6 +1576,7 @@ static void __init nuri_machine_init(void)
 	nuri_ehci_init();
 	clk_xusbxti.rate = 24000000;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Last */
 	platform_add_devices(nuri_devices, ARRAY_SIZE(nuri_devices));
@@ -1488,6 +1585,9 @@ static void __init nuri_machine_init(void)
 MACHINE_START(NURI, "NURI")
 	/* Maintainer: Kyungmin Park <kyungmin.park@samsung.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_irq	= exynos4_init_irq,
 	.map_io		= nuri_map_io,
@@ -1496,6 +1596,8 @@ MACHINE_START(NURI, "NURI")
 	.timer		= &exynos4_timer,
 	.reserve        = &nuri_reserve,
 	.restart	= exynos4_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= S5P_PA_SDRAM + 0x100,
 	.init_irq	= exynos4_init_irq,
@@ -1503,4 +1605,5 @@ MACHINE_START(NURI, "NURI")
 	.init_machine	= nuri_machine_init,
 	.timer		= &exynos4_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

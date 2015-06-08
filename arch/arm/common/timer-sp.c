@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <asm/sched_clock.h>
 =======
+<<<<<<< HEAD
+#include <asm/sched_clock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardware/arm_timer.h>
 
 static long __init sp804_get_clock_rate(const char *name)
@@ -46,6 +50,9 @@ static long __init sp804_get_clock_rate(const char *name)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = clk_prepare(clk);
 	if (err) {
 		pr_err("sp804: %s clock failed to prepare: %d\n", name, err);
@@ -57,11 +64,14 @@ static long __init sp804_get_clock_rate(const char *name)
 	if (err) {
 		pr_err("sp804: %s clock failed to enable: %d\n", name, err);
 		clk_unprepare(clk);
+<<<<<<< HEAD
+=======
 =======
 	err = clk_enable(clk);
 	if (err) {
 		pr_err("sp804: %s clock failed to enable: %d\n", name, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clk_put(clk);
 		return err;
 	}
@@ -73,7 +83,11 @@ static long __init sp804_get_clock_rate(const char *name)
 <<<<<<< HEAD
 		clk_unprepare(clk);
 =======
+<<<<<<< HEAD
+		clk_unprepare(clk);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clk_put(clk);
 	}
 
@@ -81,6 +95,9 @@ static long __init sp804_get_clock_rate(const char *name)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *sched_clock_base;
 
 static u32 sp804_read(void)
@@ -91,9 +108,12 @@ static u32 sp804_read(void)
 void __init __sp804_clocksource_and_sched_clock_init(void __iomem *base,
 						     const char *name,
 						     int use_sched_clock)
+<<<<<<< HEAD
+=======
 =======
 void __init sp804_clocksource_init(void __iomem *base, const char *name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	long rate = sp804_get_clock_rate(name);
 
@@ -110,13 +130,19 @@ void __init sp804_clocksource_init(void __iomem *base, const char *name)
 	clocksource_mmio_init(base + TIMER_VALUE, name,
 		rate, 200, 32, clocksource_mmio_readl_down);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (use_sched_clock) {
 		sched_clock_base = base;
 		setup_sched_clock(sp804_read, 32, rate);
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -179,8 +205,11 @@ static int sp804_set_next_event(unsigned long next,
 static struct clock_event_device sp804_clockevent = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.shift		= 32,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.features       = CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT,
 	.set_mode	= sp804_set_mode,
 	.set_next_event	= sp804_set_next_event,
@@ -207,11 +236,16 @@ void __init sp804_clockevents_init(void __iomem *base, unsigned int irq,
 	clkevt_base = base;
 	clkevt_reload = DIV_ROUND_CLOSEST(rate, HZ);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	evt->name = name;
 	evt->irq = irq;
 
 	setup_irq(irq, &sp804_timer_irq);
 	clockevents_config_and_register(evt, rate, 0xf, 0xffffffff);
+<<<<<<< HEAD
+=======
 =======
 
 	evt->name = name;
@@ -223,4 +257,5 @@ void __init sp804_clockevents_init(void __iomem *base, unsigned int irq,
 	setup_irq(irq, &sp804_timer_irq);
 	clockevents_register_device(evt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

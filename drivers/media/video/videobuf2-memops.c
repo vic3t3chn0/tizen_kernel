@@ -18,7 +18,14 @@
 #include <linux/mm.h>
 #include <linux/sched.h>
 #include <linux/file.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/slab.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/slab.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <media/videobuf2-core.h>
 #include <media/videobuf2-memops.h>
@@ -56,6 +63,13 @@ struct vm_area_struct *vb2_get_vma(struct vm_area_struct *vma)
 
 	return vma_copy;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(vb2_get_vma);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * vb2_put_userptr() - release a userspace virtual memory area
@@ -69,12 +83,27 @@ void vb2_put_vma(struct vm_area_struct *vma)
 	if (!vma)
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (vma->vm_ops && vma->vm_ops->close)
+		vma->vm_ops->close(vma);
+
+	if (vma->vm_file)
+		fput(vma->vm_file);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (vma->vm_file)
 		fput(vma->vm_file);
 
 	if (vma->vm_ops && vma->vm_ops->close)
 		vma->vm_ops->close(vma);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(vma);
 }
 EXPORT_SYMBOL_GPL(vb2_put_vma);
@@ -101,12 +130,39 @@ int vb2_get_contig_userptr(unsigned long vaddr, unsigned long size,
 	unsigned long offset, start, end;
 	unsigned long this_pfn, prev_pfn;
 	dma_addr_t pa = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int ret = -EFAULT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret = -EFAULT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	start = vaddr;
 	offset = start & ~PAGE_MASK;
 	end = start + size;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	vma = find_vma(mm, start);
+
+	if (vma == NULL || vma->vm_end < end)
+		return -EFAULT;
+
+	for (prev_pfn = 0; start < end; start += PAGE_SIZE) {
+		int ret = follow_pfn(vma, start, &this_pfn);
+		if (ret)
+			return ret;
+
+		if (prev_pfn == 0)
+			pa = this_pfn << PAGE_SHIFT;
+		else if (this_pfn != prev_pfn + 1)
+			return -EFAULT;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	down_read(&mm->mmap_sem);
 	vma = find_vma(mm, start);
 
@@ -124,6 +180,10 @@ int vb2_get_contig_userptr(unsigned long vaddr, unsigned long size,
 			ret = -EFAULT;
 			goto done;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prev_pfn = this_pfn;
 	}
 
@@ -131,6 +191,16 @@ int vb2_get_contig_userptr(unsigned long vaddr, unsigned long size,
 	 * Memory is contigous, lock vma and return to the caller
 	 */
 	*res_vma = vb2_get_vma(vma);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (*res_vma == NULL)
+		return -ENOMEM;
+
+	*res_pa = pa + offset;
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (*res_vma == NULL) {
 		ret = -ENOMEM;
 		goto done;
@@ -141,6 +211,10 @@ int vb2_get_contig_userptr(unsigned long vaddr, unsigned long size,
 done:
 	up_read(&mm->mmap_sem);
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(vb2_get_contig_userptr);
 
@@ -177,7 +251,15 @@ int vb2_mmap_pfn_range(struct vm_area_struct *vma, unsigned long paddr,
 
 	vma->vm_ops->open(vma);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("%s: mapped paddr 0x%08lx at 0x%08lx, size %ld\n",
+=======
 	printk(KERN_DEBUG "%s: mapped paddr 0x%08lx at 0x%08lx, size %ld\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_DEBUG "%s: mapped paddr 0x%08lx at 0x%08lx, size %ld\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, paddr, vma->vm_start, size);
 
 	return 0;
@@ -195,7 +277,15 @@ static void vb2_common_vm_open(struct vm_area_struct *vma)
 {
 	struct vb2_vmarea_handler *h = vma->vm_private_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("%s: %p, refcount: %d, vma: %08lx-%08lx\n",
+=======
 	printk(KERN_DEBUG "%s: %p, refcount: %d, vma: %08lx-%08lx\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_DEBUG "%s: %p, refcount: %d, vma: %08lx-%08lx\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       __func__, h, atomic_read(h->refcount), vma->vm_start,
 	       vma->vm_end);
 
@@ -213,7 +303,15 @@ static void vb2_common_vm_close(struct vm_area_struct *vma)
 {
 	struct vb2_vmarea_handler *h = vma->vm_private_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("%s: %p, refcount: %d, vma: %08lx-%08lx\n",
+=======
 	printk(KERN_DEBUG "%s: %p, refcount: %d, vma: %08lx-%08lx\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_DEBUG "%s: %p, refcount: %d, vma: %08lx-%08lx\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       __func__, h, atomic_read(h->refcount), vma->vm_start,
 	       vma->vm_end);
 

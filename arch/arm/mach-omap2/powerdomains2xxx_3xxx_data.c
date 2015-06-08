@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2008, 2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2008, 2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2007-2008 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2007-2011 Nokia Corporation
  *
  * Paul Walmsley, Jouni Högander
@@ -16,6 +20,8 @@
  */
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * To Do List
@@ -33,6 +39,7 @@
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The names for the DSP/IVA2 powerdomains are confusing.
  *
  * Most OMAP chips have an on-board DSP.
@@ -68,9 +75,12 @@ struct powerdomain gfx_omap2_pwrdm = {
 	.prcm_offs	  = GFX_MOD,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.omap_chip	  = OMAP_CHIP_INIT(CHIP_IS_OMAP24XX |
 					   CHIP_IS_OMAP3430ES1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pwrsts		  = PWRSTS_OFF_RET_ON,
 	.pwrsts_logic_ret = PWRSTS_RET,
 	.banks		  = 1,
@@ -83,7 +93,11 @@ struct powerdomain gfx_omap2_pwrdm = {
 <<<<<<< HEAD
 	.voltdm           = { .name = "core" },
 =======
+<<<<<<< HEAD
+	.voltdm           = { .name = "core" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct powerdomain wkup_omap2_pwrdm = {
@@ -93,7 +107,12 @@ struct powerdomain wkup_omap2_pwrdm = {
 	.pwrsts		= PWRSTS_ON,
 	.voltdm         = { .name = "wakeup" },
 =======
+<<<<<<< HEAD
+	.pwrsts		= PWRSTS_ON,
+	.voltdm         = { .name = "wakeup" },
+=======
 	.omap_chip	= OMAP_CHIP_INIT(CHIP_IS_OMAP24XX | CHIP_IS_OMAP3430),
 	.pwrsts		= PWRSTS_ON,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

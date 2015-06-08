@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bitops.h>
 #include <linux/types.h>
 #include <linux/slab.h>
@@ -7,12 +10,15 @@
 #include <asm/insn.h>
 
 #include "perf_event.h"
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CPU_SUP_INTEL
 
 /* The maximal number of PEBS events: */
 #define MAX_PEBS_EVENTS		4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The size of a BTS record in bytes: */
 #define BTS_RECORD_SIZE		24
@@ -51,6 +57,9 @@ struct pebs_record_nhm {
 <<<<<<< HEAD
 void init_debug_store_on_cpu(int cpu)
 =======
+<<<<<<< HEAD
+void init_debug_store_on_cpu(int cpu)
+=======
 /*
  * A debug store configuration.
  *
@@ -70,6 +79,7 @@ struct debug_store {
 
 static void init_debug_store_on_cpu(int cpu)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct debug_store *ds = per_cpu(cpu_hw_events, cpu).ds;
 
@@ -84,8 +94,12 @@ static void init_debug_store_on_cpu(int cpu)
 <<<<<<< HEAD
 void fini_debug_store_on_cpu(int cpu)
 =======
+<<<<<<< HEAD
+void fini_debug_store_on_cpu(int cpu)
+=======
 static void fini_debug_store_on_cpu(int cpu)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!per_cpu(cpu_hw_events, cpu).ds)
 		return;
@@ -197,8 +211,12 @@ static void release_ds_buffer(int cpu)
 <<<<<<< HEAD
 void release_ds_buffers(void)
 =======
+<<<<<<< HEAD
+void release_ds_buffers(void)
+=======
 static void release_ds_buffers(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int cpu;
 
@@ -220,8 +238,12 @@ static void release_ds_buffers(void)
 <<<<<<< HEAD
 void reserve_ds_buffers(void)
 =======
+<<<<<<< HEAD
+void reserve_ds_buffers(void)
+=======
 static void reserve_ds_buffers(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int bts_err = 0, pebs_err = 0;
 	int cpu;
@@ -288,16 +310,22 @@ static void reserve_ds_buffers(void)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct event_constraint bts_constraint =
 	EVENT_CONSTRAINT(0, 1ULL << X86_PMC_IDX_FIXED_BTS, 0);
 
 void intel_pmu_enable_bts(u64 config)
+<<<<<<< HEAD
+=======
 =======
 static struct event_constraint bts_constraint =
 	EVENT_CONSTRAINT(0, 1ULL << X86_PMC_IDX_FIXED_BTS, 0);
 
 static void intel_pmu_enable_bts(u64 config)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long debugctlmsr;
 
@@ -319,8 +347,12 @@ static void intel_pmu_enable_bts(u64 config)
 <<<<<<< HEAD
 void intel_pmu_disable_bts(void)
 =======
+<<<<<<< HEAD
+void intel_pmu_disable_bts(void)
+=======
 static void intel_pmu_disable_bts(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 	unsigned long debugctlmsr;
@@ -340,8 +372,12 @@ static void intel_pmu_disable_bts(void)
 <<<<<<< HEAD
 int intel_pmu_drain_bts_buffer(void)
 =======
+<<<<<<< HEAD
+int intel_pmu_drain_bts_buffer(void)
+=======
 static int intel_pmu_drain_bts_buffer(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 	struct debug_store *ds = cpuc->ds;
@@ -385,8 +421,12 @@ static int intel_pmu_drain_bts_buffer(void)
 <<<<<<< HEAD
 	if (perf_output_begin(&handle, event, header.size * (top - at)))
 =======
+<<<<<<< HEAD
+	if (perf_output_begin(&handle, event, header.size * (top - at)))
+=======
 	if (perf_output_begin(&handle, event, header.size * (top - at), 1, 1))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 
 	for (; at < top; at++) {
@@ -410,8 +450,12 @@ static int intel_pmu_drain_bts_buffer(void)
 <<<<<<< HEAD
 struct event_constraint intel_core2_pebs_event_constraints[] = {
 =======
+<<<<<<< HEAD
+struct event_constraint intel_core2_pebs_event_constraints[] = {
+=======
 static struct event_constraint intel_core2_pebs_event_constraints[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_UEVENT_CONSTRAINT(0x00c0, 0x1), /* INST_RETIRED.ANY */
 	INTEL_UEVENT_CONSTRAINT(0xfec1, 0x1), /* X87_OPS_RETIRED.ANY */
 	INTEL_UEVENT_CONSTRAINT(0x00c5, 0x1), /* BR_INST_RETIRED.MISPRED */
@@ -423,8 +467,12 @@ static struct event_constraint intel_core2_pebs_event_constraints[] = {
 <<<<<<< HEAD
 struct event_constraint intel_atom_pebs_event_constraints[] = {
 =======
+<<<<<<< HEAD
+struct event_constraint intel_atom_pebs_event_constraints[] = {
+=======
 static struct event_constraint intel_atom_pebs_event_constraints[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_UEVENT_CONSTRAINT(0x00c0, 0x1), /* INST_RETIRED.ANY */
 	INTEL_UEVENT_CONSTRAINT(0x00c5, 0x1), /* MISPREDICTED_BRANCH_RETIRED */
 	INTEL_EVENT_CONSTRAINT(0xcb, 0x1),    /* MEM_LOAD_RETIRED.* */
@@ -434,8 +482,12 @@ static struct event_constraint intel_atom_pebs_event_constraints[] = {
 <<<<<<< HEAD
 struct event_constraint intel_nehalem_pebs_event_constraints[] = {
 =======
+<<<<<<< HEAD
+struct event_constraint intel_nehalem_pebs_event_constraints[] = {
+=======
 static struct event_constraint intel_nehalem_pebs_event_constraints[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_EVENT_CONSTRAINT(0x0b, 0xf),    /* MEM_INST_RETIRED.* */
 	INTEL_EVENT_CONSTRAINT(0x0f, 0xf),    /* MEM_UNCORE_RETIRED.* */
 	INTEL_UEVENT_CONSTRAINT(0x010c, 0xf), /* MEM_STORE_RETIRED.DTLB_MISS */
@@ -453,8 +505,12 @@ static struct event_constraint intel_nehalem_pebs_event_constraints[] = {
 <<<<<<< HEAD
 struct event_constraint intel_westmere_pebs_event_constraints[] = {
 =======
+<<<<<<< HEAD
+struct event_constraint intel_westmere_pebs_event_constraints[] = {
+=======
 static struct event_constraint intel_westmere_pebs_event_constraints[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_EVENT_CONSTRAINT(0x0b, 0xf),    /* MEM_INST_RETIRED.* */
 	INTEL_EVENT_CONSTRAINT(0x0f, 0xf),    /* MEM_UNCORE_RETIRED.* */
 	INTEL_UEVENT_CONSTRAINT(0x010c, 0xf), /* MEM_STORE_RETIRED.DTLB_MISS */
@@ -472,8 +528,12 @@ static struct event_constraint intel_westmere_pebs_event_constraints[] = {
 <<<<<<< HEAD
 struct event_constraint intel_snb_pebs_event_constraints[] = {
 =======
+<<<<<<< HEAD
+struct event_constraint intel_snb_pebs_event_constraints[] = {
+=======
 static struct event_constraint intel_snb_pebs_events[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_UEVENT_CONSTRAINT(0x01c0, 0x2), /* INST_RETIRED.PRECDIST */
 	INTEL_UEVENT_CONSTRAINT(0x01c2, 0xf), /* UOPS_RETIRED.ALL */
 	INTEL_UEVENT_CONSTRAINT(0x02c2, 0xf), /* UOPS_RETIRED.RETIRE_SLOTS */
@@ -497,9 +557,13 @@ static struct event_constraint intel_snb_pebs_events[] = {
 <<<<<<< HEAD
 struct event_constraint *intel_pebs_constraints(struct perf_event *event)
 =======
+<<<<<<< HEAD
+struct event_constraint *intel_pebs_constraints(struct perf_event *event)
+=======
 static struct event_constraint *
 intel_pebs_constraints(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct event_constraint *c;
 
@@ -519,8 +583,12 @@ intel_pebs_constraints(struct perf_event *event)
 <<<<<<< HEAD
 void intel_pmu_pebs_enable(struct perf_event *event)
 =======
+<<<<<<< HEAD
+void intel_pmu_pebs_enable(struct perf_event *event)
+=======
 static void intel_pmu_pebs_enable(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 	struct hw_perf_event *hwc = &event->hw;
@@ -528,6 +596,11 @@ static void intel_pmu_pebs_enable(struct perf_event *event)
 	hwc->config &= ~ARCH_PERFMON_EVENTSEL_INT;
 
 	cpuc->pebs_enabled |= 1ULL << hwc->idx;
+<<<<<<< HEAD
+}
+
+void intel_pmu_pebs_disable(struct perf_event *event)
+=======
 <<<<<<< HEAD
 }
 
@@ -541,6 +614,7 @@ void intel_pmu_pebs_disable(struct perf_event *event)
 
 static void intel_pmu_pebs_disable(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 	struct hw_perf_event *hwc = &event->hw;
@@ -555,6 +629,11 @@ static void intel_pmu_pebs_disable(struct perf_event *event)
 
 void intel_pmu_pebs_enable_all(void)
 =======
+<<<<<<< HEAD
+}
+
+void intel_pmu_pebs_enable_all(void)
+=======
 
 	if (x86_pmu.intel_cap.pebs_trap && event->attr.precise_ip > 1)
 		intel_pmu_lbr_disable(event);
@@ -562,6 +641,7 @@ void intel_pmu_pebs_enable_all(void)
 
 static void intel_pmu_pebs_enable_all(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
@@ -572,8 +652,12 @@ static void intel_pmu_pebs_enable_all(void)
 <<<<<<< HEAD
 void intel_pmu_pebs_disable_all(void)
 =======
+<<<<<<< HEAD
+void intel_pmu_pebs_disable_all(void)
+=======
 static void intel_pmu_pebs_disable_all(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
@@ -581,6 +665,8 @@ static void intel_pmu_pebs_disable_all(void)
 		wrmsrl(MSR_IA32_PEBS_ENABLE, 0);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #include <asm/insn.h>
@@ -595,6 +681,7 @@ static inline bool kernel_ip(unsigned long ip)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int intel_pmu_pebs_fixup_ip(struct pt_regs *regs)
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
@@ -675,9 +762,12 @@ static int intel_pmu_pebs_fixup_ip(struct pt_regs *regs)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int intel_pmu_save_and_restart(struct perf_event *event);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __intel_pmu_pebs_event(struct perf_event *event,
 				   struct pt_regs *iregs, void *__pebs)
 {
@@ -689,7 +779,11 @@ static void __intel_pmu_pebs_event(struct perf_event *event,
 <<<<<<< HEAD
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 =======
+<<<<<<< HEAD
+	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pebs_record_core *pebs = __pebs;
 	struct perf_sample_data data;
 	struct pt_regs regs;
@@ -721,13 +815,19 @@ static void __intel_pmu_pebs_event(struct perf_event *event,
 		regs.flags &= ~PERF_EFLAGS_EXACT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (has_branch_stack(event))
 		data.br_stack = &cpuc->lbr_stack;
 
 	if (perf_event_overflow(event, &data, &regs))
+<<<<<<< HEAD
+=======
 =======
 	if (perf_event_overflow(event, 1, &data, &regs))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		x86_pmu_stop(event, 0);
 }
 
@@ -830,8 +930,12 @@ static void intel_pmu_drain_pebs_nhm(struct pt_regs *iregs)
 <<<<<<< HEAD
 void intel_ds_init(void)
 =======
+<<<<<<< HEAD
+void intel_ds_init(void)
+=======
 static void intel_ds_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * No support for 32bit formats
@@ -866,6 +970,8 @@ static void intel_ds_init(void)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 void perf_restore_debug_store(void)
 {
@@ -889,3 +995,4 @@ static void release_ds_buffers(void)
 
 #endif /* CONFIG_CPU_SUP_INTEL */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

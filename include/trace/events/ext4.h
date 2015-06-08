@@ -10,17 +10,23 @@
 struct ext4_allocation_context;
 struct ext4_allocation_request;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ext4_extent;
 struct ext4_prealloc_space;
 struct ext4_inode_info;
 struct mpage_da_data;
 struct ext4_map_blocks;
 struct ext4_extent;
+<<<<<<< HEAD
+=======
 =======
 struct ext4_prealloc_space;
 struct ext4_inode_info;
 struct mpage_da_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define EXT4_I(inode) (container_of(inode, struct ext4_inode_info, vfs_inode))
 
@@ -35,8 +41,12 @@ TRACE_EVENT(ext4_free_inode,
 <<<<<<< HEAD
 		__field(	__u16, mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16, mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(	uid_t,	uid			)
 		__field(	gid_t,	gid			)
 		__field(	__u64, blocks			)
@@ -68,8 +78,12 @@ TRACE_EVENT(ext4_request_inode,
 <<<<<<< HEAD
 		__field(	__u16, mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16, mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	),
 
 	TP_fast_assign(
@@ -95,8 +109,12 @@ TRACE_EVENT(ext4_allocate_inode,
 <<<<<<< HEAD
 		__field(	__u16,	mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16,	mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	),
 
 	TP_fast_assign(
@@ -403,8 +421,11 @@ TRACE_EVENT(ext4_da_writepages_result,
 		__field(	int,	sync_mode		)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		__field(	char,	more_io			)	
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(       pgoff_t,	writeback_index		)
 	),
 
@@ -417,18 +438,26 @@ TRACE_EVENT(ext4_da_writepages_result,
 		__entry->sync_mode	= wbc->sync_mode;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		__entry->more_io	= wbc->more_io;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->writeback_index = inode->i_mapping->writeback_index;
 	),
 
 	TP_printk("dev %d,%d ino %lu ret %d pages_written %d pages_skipped %ld "
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  "sync_mode %d writeback_index %lu",
 		  MAJOR(__entry->dev), MINOR(__entry->dev),
 		  (unsigned long) __entry->ino, __entry->ret,
 		  __entry->pages_written, __entry->pages_skipped,
 		  __entry->sync_mode,
+<<<<<<< HEAD
+=======
 =======
 		  " more_io %d sync_mode %d writeback_index %lu",
 		  MAJOR(__entry->dev), MINOR(__entry->dev),
@@ -436,6 +465,7 @@ TRACE_EVENT(ext4_da_writepages_result,
 		  __entry->pages_written, __entry->pages_skipped,
 		  __entry->more_io, __entry->sync_mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  (unsigned long) __entry->writeback_index)
 );
 
@@ -612,10 +642,16 @@ TRACE_EVENT(ext4_mb_release_group_pa,
 
 	TP_ARGS(sb, pa),
 =======
+<<<<<<< HEAD
+	TP_PROTO(struct super_block *sb, struct ext4_prealloc_space *pa),
+
+	TP_ARGS(sb, pa),
+=======
 	TP_PROTO(struct ext4_prealloc_space *pa),
 
 	TP_ARGS(pa),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	TP_STRUCT__entry(
 		__field(	dev_t,	dev			)
@@ -628,8 +664,12 @@ TRACE_EVENT(ext4_mb_release_group_pa,
 <<<<<<< HEAD
 		__entry->dev		= sb->s_dev;
 =======
+<<<<<<< HEAD
+		__entry->dev		= sb->s_dev;
+=======
 		__entry->dev		= pa->pa_inode->i_sb->s_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->pa_pstart	= pa->pa_pstart;
 		__entry->pa_len		= pa->pa_len;
 	),
@@ -775,8 +815,12 @@ TRACE_EVENT(ext4_free_blocks,
 <<<<<<< HEAD
 		__field(	__u16,	mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16,	mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(	__u64,	block			)
 		__field(	unsigned long,	count		)
 		__field(	int,	flags			)
@@ -1066,8 +1110,12 @@ TRACE_EVENT(ext4_forget,
 <<<<<<< HEAD
 		__field(	__u16,	mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16,	mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(	int,	is_metadata		)
 		__field(	__u64,	block			)
 	),
@@ -1092,10 +1140,16 @@ TRACE_EVENT(ext4_da_update_reserve_space,
 
 	TP_ARGS(inode, used_blocks, quota_claim),
 =======
+<<<<<<< HEAD
+	TP_PROTO(struct inode *inode, int used_blocks, int quota_claim),
+
+	TP_ARGS(inode, used_blocks, quota_claim),
+=======
 	TP_PROTO(struct inode *inode, int used_blocks),
 
 	TP_ARGS(inode, used_blocks),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	TP_STRUCT__entry(
 		__field(	dev_t,	dev			)
@@ -1103,8 +1157,12 @@ TRACE_EVENT(ext4_da_update_reserve_space,
 <<<<<<< HEAD
 		__field(	__u16,	mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16,	mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(	__u64,	i_blocks		)
 		__field(	int,	used_blocks		)
 		__field(	int,	reserved_data_blocks	)
@@ -1113,7 +1171,11 @@ TRACE_EVENT(ext4_da_update_reserve_space,
 <<<<<<< HEAD
 		__field(	int,	quota_claim		)
 =======
+<<<<<<< HEAD
+		__field(	int,	quota_claim		)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	),
 
 	TP_fast_assign(
@@ -1123,6 +1185,9 @@ TRACE_EVENT(ext4_da_update_reserve_space,
 		__entry->i_blocks = inode->i_blocks;
 		__entry->used_blocks = used_blocks;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->reserved_data_blocks =
 				EXT4_I(inode)->i_reserved_data_blocks;
 		__entry->reserved_meta_blocks =
@@ -1130,11 +1195,14 @@ TRACE_EVENT(ext4_da_update_reserve_space,
 		__entry->allocated_meta_blocks =
 				EXT4_I(inode)->i_allocated_meta_blocks;
 		__entry->quota_claim = quota_claim;
+<<<<<<< HEAD
+=======
 =======
 		__entry->reserved_data_blocks = EXT4_I(inode)->i_reserved_data_blocks;
 		__entry->reserved_meta_blocks = EXT4_I(inode)->i_reserved_meta_blocks;
 		__entry->allocated_meta_blocks = EXT4_I(inode)->i_allocated_meta_blocks;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	),
 
 	TP_printk("dev %d,%d ino %lu mode 0%o i_blocks %llu used_blocks %d "
@@ -1142,8 +1210,12 @@ TRACE_EVENT(ext4_da_update_reserve_space,
 <<<<<<< HEAD
 		  "allocated_meta_blocks %d quota_claim %d",
 =======
+<<<<<<< HEAD
+		  "allocated_meta_blocks %d quota_claim %d",
+=======
 		  "allocated_meta_blocks %d",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  MAJOR(__entry->dev), MINOR(__entry->dev),
 		  (unsigned long) __entry->ino,
 		  __entry->mode, __entry->i_blocks,
@@ -1152,8 +1224,13 @@ TRACE_EVENT(ext4_da_update_reserve_space,
 		  __entry->reserved_meta_blocks, __entry->allocated_meta_blocks,
 		  __entry->quota_claim)
 =======
+<<<<<<< HEAD
+		  __entry->reserved_meta_blocks, __entry->allocated_meta_blocks,
+		  __entry->quota_claim)
+=======
 		  __entry->reserved_meta_blocks, __entry->allocated_meta_blocks)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 );
 
 TRACE_EVENT(ext4_da_reserve_space,
@@ -1167,8 +1244,12 @@ TRACE_EVENT(ext4_da_reserve_space,
 <<<<<<< HEAD
 		__field(	__u16,  mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16,  mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(	__u64,	i_blocks		)
 		__field(	int,	md_needed		)
 		__field(	int,	reserved_data_blocks	)
@@ -1205,8 +1286,12 @@ TRACE_EVENT(ext4_da_release_space,
 <<<<<<< HEAD
 		__field(	__u16,  mode			)
 =======
+<<<<<<< HEAD
+		__field(	__u16,  mode			)
+=======
 		__field(	umode_t, mode			)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(	__u64,	i_blocks		)
 		__field(	int,	freed_blocks		)
 		__field(	int,	reserved_data_blocks	)
@@ -1483,6 +1568,9 @@ DEFINE_EVENT(ext4__truncate, ext4_truncate_exit,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 'ux' is the uninitialized extent. */
 TRACE_EVENT(ext4_ext_convert_to_initialized_enter,
 	TP_PROTO(struct inode *inode, struct ext4_map_blocks *map,
@@ -1564,8 +1652,11 @@ TRACE_EVENT(ext4_ext_convert_to_initialized_fastpath,
 		  __entry->i_lblk, __entry->i_len, __entry->i_pblk)
 );
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_EVENT_CLASS(ext4__map_blocks_enter,
 	TP_PROTO(struct inode *inode, ext4_lblk_t lblk,
 		 unsigned int len, unsigned int flags),
@@ -1699,6 +1790,9 @@ TRACE_EVENT(ext4_load_inode,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TRACE_EVENT(ext4_journal_start,
 	TP_PROTO(struct super_block *sb, int nblocks, unsigned long IP),
 
@@ -2146,8 +2240,11 @@ TRACE_EVENT(ext4_ext_remove_space_done,
 		  (unsigned short) __entry->eh_entries)
 );
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _TRACE_EXT4_H */
 
 /* This part must be outside protection */

@@ -27,6 +27,11 @@
  * implemented in order to get working module support.
  */
 =======
+<<<<<<< HEAD
+/* TODO: At least one of apply_relocate or apply_relocate_add must be
+ * implemented in order to get working module support.
+ */
+=======
 void *module_alloc(unsigned long size)
 {
 	if (size == 0)
@@ -82,3 +87,4 @@ void module_arch_cleanup(struct module *mod)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

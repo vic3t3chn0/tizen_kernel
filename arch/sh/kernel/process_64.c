@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct task_struct *last_task_used_math = NULL;
 
@@ -292,8 +296,12 @@ void show_regs(struct pt_regs *regs)
 <<<<<<< HEAD
 __noreturn void kernel_thread_helper(void *arg, int (*fn)(void *))
 =======
+<<<<<<< HEAD
+__noreturn void kernel_thread_helper(void *arg, int (*fn)(void *))
+=======
 ATTRIB_NORET void kernel_thread_helper(void *arg, int (*fn)(void *))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	do_exit(fn(arg));
 }

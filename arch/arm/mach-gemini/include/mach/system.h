@@ -16,6 +16,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline void arch_idle(void)
 {
 	/*
@@ -31,6 +33,7 @@ static inline void arch_idle(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void arch_reset(char mode, const char *cmd)
 {
 	__raw_writel(RESET_GLOBAL | RESET_CPU1,

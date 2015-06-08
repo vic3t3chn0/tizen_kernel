@@ -33,8 +33,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <net/neighbour.h>
 #include <net/dst.h>
@@ -419,6 +423,9 @@ int dn_fib_semantic_match(int type, struct dn_fib_info *fi, const struct flowidn
 		res->fi = fi;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (type) {
 		case RTN_NAT:
 			DN_FIB_RES_RESET(*res);
@@ -447,6 +454,8 @@ int dn_fib_semantic_match(int type, struct dn_fib_info *fi, const struct flowidn
 				       type);
 			res->fi = NULL;
 			return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 		switch(type) {
 			case RTN_NAT:
@@ -476,6 +485,7 @@ int dn_fib_semantic_match(int type, struct dn_fib_info *fi, const struct flowidn
 				res->fi = NULL;
 				return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return err;
@@ -683,6 +693,9 @@ static int dn_fib_dnaddr_event(struct notifier_block *this, unsigned long event,
 	struct dn_ifaddr *ifa = (struct dn_ifaddr *)ptr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (event) {
 	case NETDEV_UP:
 		dn_fib_add_ifaddr(ifa);
@@ -697,6 +710,8 @@ static int dn_fib_dnaddr_event(struct notifier_block *this, unsigned long event,
 			dn_rt_cache_flush(-1);
 		}
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(event) {
 		case NETDEV_UP:
@@ -713,6 +728,7 @@ static int dn_fib_dnaddr_event(struct notifier_block *this, unsigned long event,
 			}
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return NOTIFY_DONE;
 }

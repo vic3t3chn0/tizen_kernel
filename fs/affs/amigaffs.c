@@ -218,8 +218,12 @@ affs_remove_link(struct dentry *dentry)
 <<<<<<< HEAD
 					set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+					set_nlink(inode, 1);
+=======
 					inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			affs_free_block(sb, link_ino);
 			goto done;
@@ -323,8 +327,12 @@ affs_remove_header(struct dentry *dentry)
 <<<<<<< HEAD
 		clear_nlink(inode);
 =======
+<<<<<<< HEAD
+		clear_nlink(inode);
+=======
 		inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	affs_unlock_link(inode);
 	inode->i_ctime = CURRENT_TIME_SEC;
 	mark_inode_dirty(inode);
@@ -399,16 +407,22 @@ secs_to_datestamp(time_t secs, struct affs_date *ds)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 umode_t
 prot_to_mode(u32 prot)
 {
 	umode_t mode = 0;
+<<<<<<< HEAD
+=======
 =======
 mode_t
 prot_to_mode(u32 prot)
 {
 	int mode = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!(prot & FIBF_NOWRITE))
 		mode |= S_IWUSR;
@@ -439,8 +453,12 @@ mode_to_prot(struct inode *inode)
 <<<<<<< HEAD
 	umode_t mode = inode->i_mode;
 =======
+<<<<<<< HEAD
+	umode_t mode = inode->i_mode;
+=======
 	mode_t mode = inode->i_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!(mode & S_IXUSR))
 		prot |= FIBF_NOEXECUTE;

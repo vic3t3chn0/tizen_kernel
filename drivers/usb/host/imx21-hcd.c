@@ -473,7 +473,15 @@ static void free_epdmem(struct imx21 *imx21, struct usb_host_endpoint *ep)
 /* End handling 				*/
 /* ===========================================	*/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Endpoint now idle - release its ETD(s) or assign to queued request */
+=======
 /* Endpoint now idle - release it's ETD(s) or asssign to queued request */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Endpoint now idle - release it's ETD(s) or asssign to queued request */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ep_idle(struct imx21 *imx21, struct ep_priv *ep_priv)
 {
 	int i;
@@ -1891,7 +1899,15 @@ static int imx21_probe(struct platform_device *pdev)
 	dev_info(imx21->dev, "Hardware HC revision: 0x%02X\n",
 		(readl(imx21->regs + USBOTG_HWMODE) >> 16) & 0xFF);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = usb_add_hcd(hcd, irq, 0);
+=======
 	ret = usb_add_hcd(hcd, irq, IRQF_DISABLED);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = usb_add_hcd(hcd, irq, IRQF_DISABLED);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != 0) {
 		dev_err(imx21->dev, "usb_add_hcd() returned %d\n", ret);
 		goto failed_add_hcd;
@@ -1924,6 +1940,12 @@ static struct platform_driver imx21_hcd_driver = {
 	.resume = NULL,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(imx21_hcd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init imx21_hcd_init(void)
 {
 	return platform_driver_register(&imx21_hcd_driver);
@@ -1936,6 +1958,10 @@ static void __exit imx21_hcd_cleanup(void)
 
 module_init(imx21_hcd_init);
 module_exit(imx21_hcd_cleanup);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("i.MX21 USB Host controller");
 MODULE_AUTHOR("Martin Fuzzey");

@@ -12,8 +12,11 @@
 #include <linux/bitops.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ktime.h>
 #include <linux/sched.h>
 #include <linux/types.h>
@@ -25,7 +28,11 @@
 <<<<<<< HEAD
 struct module;
 =======
+<<<<<<< HEAD
+struct module;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ftrace_hash;
 
 #ifdef CONFIG_FUNCTION_TRACER
@@ -39,6 +46,9 @@ ftrace_enable_sysctl(struct ctl_table *table, int write,
 typedef void (*ftrace_func_t)(unsigned long ip, unsigned long parent_ip);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * FTRACE_OPS_FL_* bits denote the state of ftrace_ops struct and are
  * set in the flags member.
@@ -54,8 +64,11 @@ typedef void (*ftrace_func_t)(unsigned long ip, unsigned long parent_ip);
  *             ftrace_function_local_enable
  *             ftrace_function_local_disable
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	FTRACE_OPS_FL_ENABLED		= 1 << 0,
 	FTRACE_OPS_FL_GLOBAL		= 1 << 1,
@@ -63,7 +76,11 @@ enum {
 <<<<<<< HEAD
 	FTRACE_OPS_FL_CONTROL		= 1 << 3,
 =======
+<<<<<<< HEAD
+	FTRACE_OPS_FL_CONTROL		= 1 << 3,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct ftrace_ops {
@@ -73,7 +90,11 @@ struct ftrace_ops {
 <<<<<<< HEAD
 	int __percpu			*disabled;
 =======
+<<<<<<< HEAD
+	int __percpu			*disabled;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DYNAMIC_FTRACE
 	struct ftrace_hash		*notrace_hash;
 	struct ftrace_hash		*filter_hash;
@@ -131,6 +152,9 @@ int unregister_ftrace_function(struct ftrace_ops *ops);
 void clear_ftrace_function(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * ftrace_function_local_enable - enable controlled ftrace_ops on current cpu
  *
@@ -180,8 +204,11 @@ static inline int ftrace_function_local_disabled(struct ftrace_ops *ops)
 	return *this_cpu_ptr(ops->disabled);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void ftrace_stub(unsigned long a0, unsigned long a1);
 
 #else /* !CONFIG_FUNCTION_TRACER */
@@ -222,7 +249,12 @@ int ftrace_arch_code_modify_post_process(void);
 void ftrace_bug(int err, unsigned long ip);
 
 =======
+<<<<<<< HEAD
+void ftrace_bug(int err, unsigned long ip);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct seq_file;
 
 struct ftrace_probe_ops {
@@ -253,8 +285,11 @@ enum {
 	FTRACE_FL_ENABLED	= (1 << 30),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	FTRACE_FL_FREE		= (1 << 31),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define FTRACE_FL_MASK		(0x3UL << 30)
@@ -268,16 +303,23 @@ struct dyn_ftrace {
 <<<<<<< HEAD
 	unsigned long		flags;
 =======
+<<<<<<< HEAD
+	unsigned long		flags;
+=======
 	union {
 		unsigned long		flags;
 		struct dyn_ftrace	*newlist;
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dyn_arch_ftrace		arch;
 };
 
 int ftrace_force_update(void);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ftrace_set_filter(struct ftrace_ops *ops, unsigned char *buf,
 		       int len, int reset);
 int ftrace_set_notrace(struct ftrace_ops *ops, unsigned char *buf,
@@ -285,6 +327,8 @@ int ftrace_set_notrace(struct ftrace_ops *ops, unsigned char *buf,
 void ftrace_set_global_filter(unsigned char *buf, int len, int reset);
 void ftrace_set_global_notrace(unsigned char *buf, int len, int reset);
 void ftrace_free_filter(struct ftrace_ops *ops);
+<<<<<<< HEAD
+=======
 =======
 void ftrace_set_filter(struct ftrace_ops *ops, unsigned char *buf,
 		       int len, int reset);
@@ -293,11 +337,15 @@ void ftrace_set_notrace(struct ftrace_ops *ops, unsigned char *buf,
 void ftrace_set_global_filter(unsigned char *buf, int len, int reset);
 void ftrace_set_global_notrace(unsigned char *buf, int len, int reset);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int register_ftrace_command(struct ftrace_func_command *cmd);
 int unregister_ftrace_command(struct ftrace_func_command *cmd);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	FTRACE_UPDATE_CALLS		= (1 << 0),
 	FTRACE_DISABLE_CALLS		= (1 << 1),
@@ -348,8 +396,11 @@ int ftrace_regex_release(struct inode *inode, struct file *file);
 void __init
 ftrace_set_early_filter(struct ftrace_ops *ops, char *buf, int enable);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* defined in arch */
 extern int ftrace_ip_converted(unsigned long ip);
 extern int ftrace_dyn_arch_init(void *data);
@@ -428,10 +479,13 @@ static inline int skip_trace(unsigned long ip) { return 0; }
 static inline int ftrace_force_update(void) { return 0; }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline void ftrace_set_filter(unsigned char *buf, int len, int reset)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void ftrace_disable_daemon(void) { }
 static inline void ftrace_enable_daemon(void) { }
 static inline void ftrace_release_mod(struct module *mod) {}
@@ -448,6 +502,9 @@ static inline int ftrace_text_reserved(void *start, void *end)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Again users of functions that have ftrace_ops may not
@@ -470,8 +527,11 @@ static inline loff_t ftrace_regex_lseek(struct file *file, loff_t offset, int or
 }
 static inline int
 ftrace_regex_release(struct inode *inode, struct file *file) { return -ENODEV; }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_DYNAMIC_FTRACE */
 
 /* totally disable ftrace - can not re-enable after this */
@@ -543,6 +603,10 @@ static inline void __ftrace_enabled_restore(int enabled)
   static inline void trace_preempt_on(unsigned long a0, unsigned long a1) { }
   static inline void trace_preempt_off(unsigned long a0, unsigned long a1) { }
 =======
+<<<<<<< HEAD
+  static inline void trace_preempt_on(unsigned long a0, unsigned long a1) { }
+  static inline void trace_preempt_off(unsigned long a0, unsigned long a1) { }
+=======
 /*
  * Use defines instead of static inlines because some arches will make code out
  * of the CALLER_ADDR, when we really want these to be a real nop.
@@ -550,6 +614,7 @@ static inline void __ftrace_enabled_restore(int enabled)
 # define trace_preempt_on(a0, a1) do { } while (0)
 # define trace_preempt_off(a0, a1) do { } while (0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_FTRACE_MCOUNT_RECORD

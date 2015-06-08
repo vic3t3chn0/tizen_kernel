@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/moduleparam.h>
 =======
+<<<<<<< HEAD
+#include <linux/moduleparam.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/smsc911x.h>
 #include <linux/mfd/mc13783.h>
 #include <linux/spi/spi.h>
@@ -36,7 +40,12 @@
 #include <linux/regulator/machine.h>
 #include <linux/regulator/fixed.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/machine.h>
+#include <linux/regulator/fixed.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
@@ -124,9 +133,13 @@ static struct mc13xxx_platform_data mc13783_pdata __initdata = {
 <<<<<<< HEAD
 	.flags = MC13XXX_USE_RTC,
 =======
+<<<<<<< HEAD
+	.flags = MC13XXX_USE_RTC,
+=======
 	.flags  = MC13XXX_USE_RTC |
 		  MC13XXX_USE_REGULATOR,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct spi_board_info mc13783_spi_dev __initdata = {
@@ -240,13 +253,19 @@ static int mx31lite_baseboard;
 core_param(mx31lite_baseboard, mx31lite_baseboard, int, 0444);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply dummy_supplies[] = {
 	REGULATOR_SUPPLY("vdd33a", "smsc911x"),
 	REGULATOR_SUPPLY("vddvario", "smsc911x"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mx31lite_init(void)
 {
 	int ret;
@@ -255,7 +274,12 @@ static void __init mx31lite_init(void)
 	imx31_soc_init();
 
 =======
+<<<<<<< HEAD
+	imx31_soc_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (mx31lite_baseboard) {
 	case MX31LITE_NOBOARD:
 		break;
@@ -287,7 +311,12 @@ static void __init mx31lite_init(void)
 	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
 
 =======
+<<<<<<< HEAD
+	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SMSC9117 IRQ pin */
 	ret = gpio_request(IOMUX_TO_GPIO(MX31_PIN_SFS6), "sms9117-irq");
 	if (ret)
@@ -310,6 +339,9 @@ struct sys_timer mx31lite_timer = {
 MACHINE_START(MX31LITE, "LogicPD i.MX31 SOM")
 	/* Maintainer: Freescale Semiconductor, Inc. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset = 0x100,
 	.map_io = mx31lite_map_io,
 	.init_early = imx31_init_early,
@@ -318,6 +350,8 @@ MACHINE_START(MX31LITE, "LogicPD i.MX31 SOM")
 	.timer = &mx31lite_timer,
 	.init_machine = mx31lite_init,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params = MX3x_PHYS_OFFSET + 0x100,
 	.map_io = mx31lite_map_io,
@@ -326,4 +360,5 @@ MACHINE_START(MX31LITE, "LogicPD i.MX31 SOM")
 	.timer = &mx31lite_timer,
 	.init_machine = mx31lite_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

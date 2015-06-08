@@ -17,6 +17,9 @@
 #define AT91_RSTC_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASSEMBLY__
 extern void __iomem *at91_rstc_base;
 
@@ -30,9 +33,12 @@ extern void __iomem *at91_rstc_base;
 #endif
 
 #define AT91_RSTC_CR		0x00			/* Reset Controller Control Register */
+<<<<<<< HEAD
+=======
 =======
 #define AT91_RSTC_CR		(AT91_RSTC + 0x00)	/* Reset Controller Control Register */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_RSTC_PROCRST	(1 << 0)		/* Processor Reset */
 #define		AT91_RSTC_PERRST	(1 << 2)		/* Peripheral Reset */
 #define		AT91_RSTC_EXTRST	(1 << 3)		/* External Reset */
@@ -41,8 +47,12 @@ extern void __iomem *at91_rstc_base;
 <<<<<<< HEAD
 #define AT91_RSTC_SR		0x04			/* Reset Controller Status Register */
 =======
+<<<<<<< HEAD
+#define AT91_RSTC_SR		0x04			/* Reset Controller Status Register */
+=======
 #define AT91_RSTC_SR		(AT91_RSTC + 0x04)	/* Reset Controller Status Register */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_RSTC_URSTS		(1 << 0)		/* User Reset Status */
 #define		AT91_RSTC_RSTTYP	(7 << 8)		/* Reset Type */
 #define			AT91_RSTC_RSTTYP_GENERAL	(0 << 8)
@@ -56,8 +66,12 @@ extern void __iomem *at91_rstc_base;
 <<<<<<< HEAD
 #define AT91_RSTC_MR		0x08			/* Reset Controller Mode Register */
 =======
+<<<<<<< HEAD
+#define AT91_RSTC_MR		0x08			/* Reset Controller Mode Register */
+=======
 #define AT91_RSTC_MR		(AT91_RSTC + 0x08)	/* Reset Controller Mode Register */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define		AT91_RSTC_URSTEN	(1 << 0)		/* User Reset Enable */
 #define		AT91_RSTC_URSTIEN	(1 << 4)		/* User Reset Interrupt Enable */
 #define		AT91_RSTC_ERSTL		(0xf << 8)		/* External Reset Length */

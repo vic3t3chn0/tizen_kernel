@@ -32,6 +32,8 @@ static int imote2_asoc_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* set codec DAI configuration */
 	ret = snd_soc_dai_set_fmt(codec_dai, SND_SOC_DAIFMT_I2S
 				  | SND_SOC_DAIFMT_NB_NF
@@ -47,6 +49,7 @@ static int imote2_asoc_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_dai_set_sysclk(codec_dai, 0, clk,
 				     SND_SOC_CLOCK_IN);
 	if (ret < 0)
@@ -71,6 +74,9 @@ static struct snd_soc_dai_link imote2_dai = {
 	.platform_name = "pxa-pcm-audio",
 	.codec_name = "wm8940-codec.0-0034",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
 		   SND_SOC_DAIFMT_CBS_CFS,
 	.ops = &imote2_asoc_ops,
@@ -79,6 +85,8 @@ static struct snd_soc_dai_link imote2_dai = {
 static struct snd_soc_card imote2 = {
 	.name = "Imote2",
 	.owner = THIS_MODULE,
+<<<<<<< HEAD
+=======
 =======
 	.ops = &imote2_asoc_ops,
 };
@@ -86,11 +94,15 @@ static struct snd_soc_card imote2 = {
 static struct snd_soc_card snd_soc_imote2 = {
 	.name = "Imote2",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &imote2_dai,
 	.num_links = 1,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit imote2_probe(struct platform_device *pdev)
 {
 	struct snd_soc_card *card = &imote2;
@@ -123,6 +135,8 @@ static struct platform_driver imote2_driver = {
 };
 
 module_platform_driver(imote2_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *imote2_snd_device;
 
@@ -151,6 +165,7 @@ static void __exit imote2_asoc_exit(void)
 }
 module_exit(imote2_asoc_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Jonathan Cameron");
 MODULE_DESCRIPTION("ALSA SoC Imote 2");
@@ -158,4 +173,8 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:imote2-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:imote2-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <asm/assembler.h>
 =======
+<<<<<<< HEAD
+#include <asm/assembler.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/memory.h>
 #include <asm/glue-df.h>
 #include <asm/glue-pf.h>
@@ -28,8 +32,14 @@
 #include <mach/entry-macro.S>
 #endif
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_MULTI_IRQ_HANDLER
+#include <mach/entry-macro.S>
+#endif
+=======
 #include <mach/entry-macro.S>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/thread_notify.h>
 #include <asm/unwind.h>
 #include <asm/unistd.h>
@@ -37,13 +47,20 @@
 <<<<<<< HEAD
 #include <asm/system_info.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_info.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "entry-header.S"
 #include <asm/entry-macro-multi.S>
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Interrupt handling.
  */
 	.macro	irq_handler
@@ -90,6 +107,8 @@
 #endif
 	.endm
 
+<<<<<<< HEAD
+=======
 =======
  * Interrupt handling.  Preserves r7, r8, r9
  */
@@ -107,6 +126,7 @@
 	.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KPROBES
 	.section	.kprobes.text,"ax",%progbits
 #else
@@ -190,6 +210,9 @@ ENDPROC(__und_invalid)
 	stmia	sp, {r1 - r12}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldmia	r0, {r3 - r5}
 	add	r7, sp, #S_SP - 4	@ here for interlock avoidance
 	mov	r6, #-1			@  ""  ""      ""       ""
@@ -199,6 +222,8 @@ ENDPROC(__und_invalid)
 					@ from the exception stack
 
 	mov	r3, lr
+<<<<<<< HEAD
+=======
 =======
 	ldmia	r0, {r1 - r3}
 	add	r5, sp, #S_SP - 4	@ here for interlock avoidance
@@ -210,11 +235,15 @@ ENDPROC(__und_invalid)
 
 	mov	r1, lr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	@
 	@ We are now ready to fill in the remaining blanks on the stack:
 	@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@  r2 - sp_svc
 	@  r3 - lr_svc
 	@  r4 - lr_<exception>, already fixed up for correct return/restart
@@ -226,6 +255,8 @@ ENDPROC(__und_invalid)
 #ifdef CONFIG_TRACE_IRQFLAGS
 	bl	trace_hardirqs_off
 #endif
+<<<<<<< HEAD
+=======
 =======
 	@  r0 - sp_svc
 	@  r1 - lr_svc
@@ -235,11 +266,16 @@ ENDPROC(__und_invalid)
 	@
 	stmia	r5, {r0 - r4}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.endm
 
 	.align	5
 __dabt_svc:
 	svc_entry
+<<<<<<< HEAD
+	mov	r2, sp
+	dabt_helper
+=======
 <<<<<<< HEAD
 	mov	r2, sp
 	dabt_helper
@@ -277,6 +313,7 @@ __dabt_svc:
 	mov	r2, sp
 	bl	do_DataAbort
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	@
 	@ IRQs off again before pulling preserved data off the stack
@@ -284,6 +321,9 @@ __dabt_svc:
 	disable_irq_notrace
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_TRACE_IRQFLAGS
 	tst	r5, #PSR_I_BIT
 	bleq	trace_hardirqs_on
@@ -291,6 +331,8 @@ __dabt_svc:
 	blne	trace_hardirqs_off
 #endif
 	svc_exit r5				@ return from exception
+<<<<<<< HEAD
+=======
 =======
 	@
 	@ restore SPSR and restart the instruction
@@ -298,6 +340,7 @@ __dabt_svc:
 	ldr	r2, [sp, #S_PSR]
 	svc_exit r2				@ return from exception
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  UNWIND(.fnend		)
 ENDPROC(__dabt_svc)
 
@@ -305,11 +348,16 @@ ENDPROC(__dabt_svc)
 __irq_svc:
 	svc_entry
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_handler
 
 #ifdef CONFIG_PREEMPT
 	get_thread_info tsk
 	ldr	r8, [tsk, #TI_PREEMPT]		@ get preempt count
+<<<<<<< HEAD
+=======
 =======
 
 #ifdef CONFIG_TRACE_IRQFLAGS
@@ -326,6 +374,7 @@ __irq_svc:
 #ifdef CONFIG_PREEMPT
 	str	r8, [tsk, #TI_PREEMPT]		@ restore preempt count
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r0, [tsk, #TI_FLAGS]		@ get flags
 	teq	r8, #0				@ if preempt count != 0
 	movne	r0, #0				@ force flags to 0
@@ -333,6 +382,9 @@ __irq_svc:
 	blne	svc_preempt
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_TRACE_IRQFLAGS
 	@ The parent context IRQs must have been enabled to get here in
@@ -340,6 +392,8 @@ __irq_svc:
 	bl	trace_hardirqs_on
 #endif
 	svc_exit r5				@ return from exception
+<<<<<<< HEAD
+=======
 =======
 	ldr	r4, [sp, #S_PSR]		@ irqs are already disabled
 #ifdef CONFIG_TRACE_IRQFLAGS
@@ -348,6 +402,7 @@ __irq_svc:
 #endif
 	svc_exit r4				@ return from exception
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  UNWIND(.fnend		)
 ENDPROC(__irq_svc)
 
@@ -375,8 +430,11 @@ __und_svc:
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@
 	@ call emulation code, which returns using r9 if it has emulated
 	@ the instruction, or the more conventional lr if we are to treat
@@ -386,6 +444,9 @@ __und_svc:
 	@
 #ifndef	CONFIG_THUMB2_KERNEL
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r0, [r4, #-4]
 #else
 	ldrh	r0, [r4, #-2]			@ Thumb instruction at LR - 2
@@ -395,6 +456,8 @@ __und_svc:
 #endif
 	adr	r9, BSYM(1f)
 	mov	r2, r4
+<<<<<<< HEAD
+=======
 =======
 	ldr	r0, [r2, #-4]
 #else
@@ -406,6 +469,7 @@ __und_svc:
 #endif
 	adr	r9, BSYM(1f)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	call_fpe
 
 	mov	r0, sp				@ struct pt_regs *regs
@@ -420,6 +484,9 @@ __und_svc:
 	@ restore SPSR and restart the instruction
 	@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r5, [sp, #S_PSR]		@ Get SVC cpsr
 #ifdef CONFIG_TRACE_IRQFLAGS
 	tst	r5, #PSR_I_BIT
@@ -428,16 +495,23 @@ __und_svc:
 	blne	trace_hardirqs_off
 #endif
 	svc_exit r5				@ return from exception
+<<<<<<< HEAD
+=======
 =======
 	ldr	r2, [sp, #S_PSR]		@ Get SVC cpsr
 	svc_exit r2				@ return from exception
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  UNWIND(.fnend		)
 ENDPROC(__und_svc)
 
 	.align	5
 __pabt_svc:
 	svc_entry
+<<<<<<< HEAD
+	mov	r2, sp				@ regs
+	pabt_helper
+=======
 <<<<<<< HEAD
 	mov	r2, sp				@ regs
 	pabt_helper
@@ -463,6 +537,7 @@ __pabt_svc:
 	mov	r2, sp				@ regs
 	bl	do_PrefetchAbort		@ call abort handler
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	@
 	@ IRQs off again before pulling preserved data off the stack
@@ -470,6 +545,9 @@ __pabt_svc:
 	disable_irq_notrace
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_TRACE_IRQFLAGS
 	tst	r5, #PSR_I_BIT
 	bleq	trace_hardirqs_on
@@ -477,6 +555,8 @@ __pabt_svc:
 	blne	trace_hardirqs_off
 #endif
 	svc_exit r5				@ return from exception
+<<<<<<< HEAD
+=======
 =======
 	@
 	@ restore SPSR and restart the instruction
@@ -484,6 +564,7 @@ __pabt_svc:
 	ldr	r2, [sp, #S_PSR]
 	svc_exit r2				@ return from exception
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  UNWIND(.fnend		)
 ENDPROC(__pabt_svc)
 
@@ -515,11 +596,16 @@ ENDPROC(__pabt_svc)
  THUMB(	stmia	sp, {r0 - r12}	)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldmia	r0, {r3 - r5}
 	add	r0, sp, #S_PC		@ here for interlock avoidance
 	mov	r6, #-1			@  ""  ""     ""        ""
 
 	str	r3, [sp]		@ save the "real" r0 copied
+<<<<<<< HEAD
+=======
 =======
 	ldmia	r0, {r1 - r3}
 	add	r0, sp, #S_PC		@ here for interlock avoidance
@@ -527,12 +613,16 @@ ENDPROC(__pabt_svc)
 
 	str	r1, [sp]		@ save the "real" r0 copied
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					@ from the exception stack
 
 	@
 	@ We are now ready to fill in the remaining blanks on the stack:
 	@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@  r4 - lr_<exception>, already fixed up for correct return/restart
 	@  r5 - spsr_<exception>
 	@  r6 - orig_r0 (see pt_regs definition in ptrace.h)
@@ -540,6 +630,8 @@ ENDPROC(__pabt_svc)
 	@ Also, separately save sp_usr and lr_usr
 	@
 	stmia	r0, {r4 - r6}
+<<<<<<< HEAD
+=======
 =======
 	@  r2 - lr_<exception>, already fixed up for correct return/restart
 	@  r3 - spsr_<exception>
@@ -549,6 +641,7 @@ ENDPROC(__pabt_svc)
 	@
 	stmia	r0, {r2 - r4}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  ARM(	stmdb	r0, {sp, lr}^			)
  THUMB(	store_user_sp_lr r0, r1, S_SP - S_PC	)
 
@@ -562,6 +655,9 @@ ENDPROC(__pabt_svc)
 	@
 	zero_fp
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_IRQSOFF_TRACER
 	bl	trace_hardirqs_off
@@ -570,12 +666,15 @@ ENDPROC(__pabt_svc)
 
 	.macro	kuser_cmpxchg_check
 #if !defined(CONFIG_CPU_32v6K) && !defined(CONFIG_NEEDS_SYSCALL_FOR_CMPXCHG)
+<<<<<<< HEAD
+=======
 =======
 	.endm
 
 	.macro	kuser_cmpxchg_check
 #if __LINUX_ARM_ARCH__ < 6 && !defined(CONFIG_NEEDS_SYSCALL_FOR_CMPXCHG)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_MMU
 #warning "NPTL on non MMU needs fixing"
 #else
@@ -587,9 +686,14 @@ ENDPROC(__pabt_svc)
 	cmp	r4, #TASK_SIZE
 	blhs	kuser_cmpxchg64_fixup
 =======
+<<<<<<< HEAD
+	cmp	r4, #TASK_SIZE
+	blhs	kuser_cmpxchg64_fixup
+=======
 	cmp	r2, #TASK_SIZE
 	blhs	kuser_cmpxchg_fixup
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #endif
 	.endm
@@ -598,6 +702,11 @@ ENDPROC(__pabt_svc)
 __dabt_usr:
 	usr_entry
 	kuser_cmpxchg_check
+<<<<<<< HEAD
+	mov	r2, sp
+	dabt_helper
+	b	ret_from_exception
+=======
 <<<<<<< HEAD
 	mov	r2, sp
 	dabt_helper
@@ -630,6 +739,7 @@ __dabt_usr:
 	adr	lr, BSYM(ret_from_exception)
 	b	do_DataAbort
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  UNWIND(.fnend		)
 ENDPROC(__dabt_usr)
 
@@ -637,6 +747,10 @@ ENDPROC(__dabt_usr)
 __irq_usr:
 	usr_entry
 	kuser_cmpxchg_check
+<<<<<<< HEAD
+	irq_handler
+	get_thread_info tsk
+=======
 <<<<<<< HEAD
 	irq_handler
 	get_thread_info tsk
@@ -664,6 +778,7 @@ __irq_usr:
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	why, #0
 	b	ret_to_user_from_irq
  UNWIND(.fnend		)
@@ -680,7 +795,13 @@ __und_usr:
 	mov	r3, r5
 
 =======
+<<<<<<< HEAD
+	mov	r2, r4
+	mov	r3, r5
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@
 	@ fall through to the emulation code, which returns using r9 if
 	@ it has emulated the instruction, or the more conventional lr
@@ -701,6 +822,9 @@ __und_usr:
 	beq	call_fpe
 	@ Thumb instruction
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if CONFIG_ARM_THUMB && __LINUX_ARM_ARCH__ >= 6 && CONFIG_CPU_V7
 /*
  * Thumb-2 instruction handling.  Note that because pre-v6 and >= v6 platforms
@@ -722,14 +846,20 @@ __und_usr:
  */
 	.arch	armv6t2
 #endif
+<<<<<<< HEAD
+=======
 =======
 #if __LINUX_ARM_ARCH__ >= 7
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 2:
  ARM(	ldrht	r5, [r4], #2	)
  THUMB(	ldrht	r5, [r4]	)
  THUMB(	add	r4, r4, #2	)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cmp	r5, #0xe800			@ 32bit instruction if xx != 0
 	blo	__und_usr_unknown
 3:	ldrht	r0, [r4]
@@ -745,6 +875,8 @@ __und_usr:
 #endif
 #endif /* __LINUX_ARM_ARCH__ < 7 */
 #else /* !(CONFIG_ARM_THUMB && __LINUX_ARM_ARCH__ >= 6 && CONFIG_CPU_V7) */
+<<<<<<< HEAD
+=======
 =======
 	and	r0, r5, #0xf800			@ mask bits 111x x... .... ....
 	cmp	r0, #0xe800			@ 32bit instruction if xx != 0
@@ -754,6 +886,7 @@ __und_usr:
 	orr    	r0, r0, r5, lsl #16
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	__und_usr_unknown
 #endif
  UNWIND(.fnend		)
@@ -774,8 +907,12 @@ ENDPROC(__und_usr)
 <<<<<<< HEAD
 #if CONFIG_ARM_THUMB && __LINUX_ARM_ARCH__ >= 6 && CONFIG_CPU_V7
 =======
+<<<<<<< HEAD
+#if CONFIG_ARM_THUMB && __LINUX_ARM_ARCH__ >= 6 && CONFIG_CPU_V7
+=======
 #if __LINUX_ARM_ARCH__ >= 7
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.long	2b, 4b
 	.long	3b, 4b
 #endif
@@ -885,14 +1022,20 @@ call_fpe:
 	movw_pc	lr				@ CP#15 (Control)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef NEED_CPU_ARCHITECTURE
 	.align	2
 .LCcpu_architecture:
 	.word	__cpu_architecture
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NEON
 	.align	6
 
@@ -955,6 +1098,10 @@ __pabt_usr:
 	mov	r2, sp				@ regs
 	pabt_helper
 =======
+<<<<<<< HEAD
+	mov	r2, sp				@ regs
+	pabt_helper
+=======
 
 	mov	r0, r2			@ pass address of aborted instruction.
 #ifdef MULTI_PABORT
@@ -969,6 +1116,7 @@ __pabt_usr:
 	mov	r2, sp				@ regs
 	bl	do_PrefetchAbort		@ call abort handler
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  UNWIND(.fnend		)
 	/* fall through */
 /*
@@ -995,25 +1143,34 @@ ENTRY(__switch_to)
 	add	ip, r1, #TI_CPU_SAVE
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ldr	r3, [r2, #TI_TP_VALUE]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  ARM(	stmia	ip!, {r4 - sl, fp, sp, lr} )	@ Store most regs on stack
  THUMB(	stmia	ip!, {r4 - sl, fp}	   )	@ Store most regs on stack
  THUMB(	str	sp, [ip], #4		   )
  THUMB(	str	lr, [ip], #4		   )
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r4, [r2, #TI_TP_VALUE]
 	ldr	r5, [r2, #TI_TP_VALUE + 4]
 #ifdef CONFIG_CPU_USE_DOMAINS
 	ldr	r6, [r2, #TI_CPU_DOMAIN]
 #endif
 	switch_tls r1, r4, r5, r3, r7
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CPU_USE_DOMAINS
 	ldr	r6, [r2, #TI_CPU_DOMAIN]
 #endif
 	set_tls	r3, r4, r5
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_CC_STACKPROTECTOR) && !defined(CONFIG_SMP)
 	ldr	r7, [r2, #TI_TASK]
 	ldr	r8, =__stack_chk_guard
@@ -1046,6 +1203,8 @@ ENDPROC(__switch_to)
  *
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * These are segment of kernel provided user code reachable from user space
  * at a fixed address in kernel memory.  This is used to provide user space
  * with some operations which require kernel help because of unimplemented
@@ -1059,11 +1218,15 @@ ENDPROC(__switch_to)
  * results are guaranteed to be stable.
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Each segment is 32-byte aligned and will be moved to the top of the high
  * vector page.  New segments (if ever needed) must be added in front of
  * existing ones.  This mechanism should be used only for things that are
  * really small and justified, and not be abused freely.
  *
+<<<<<<< HEAD
+ * See Documentation/arm/kernel_user_helpers.txt for formal definitions.
+=======
 <<<<<<< HEAD
  * See Documentation/arm/kernel_user_helpers.txt for formal definitions.
 =======
@@ -1076,6 +1239,7 @@ ENDPROC(__switch_to)
  * if your compiled code is not going to use the new instructions for other
  * purpose.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
  THUMB(	.arm	)
 
@@ -1088,6 +1252,9 @@ ENDPROC(__switch_to)
 	.endm
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro	kuser_pad, sym, size
 	.if	(. - \sym) & 3
 	.rept	4 - (. - \sym) & 3
@@ -1283,6 +1450,8 @@ kuser_cmpxchg64_fixup:
 
 	kuser_pad __kuser_cmpxchg64, 64
 
+<<<<<<< HEAD
+=======
 =======
 	.align	5
 	.globl	__kuser_helper_start
@@ -1321,10 +1490,14 @@ __kuser_helper_start:
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __kuser_memory_barrier:				@ 0xffff0fa0
 	smp_dmb	arm
 	usr_ret	lr
 
+<<<<<<< HEAD
+	kuser_pad __kuser_memory_barrier, 32
+=======
 <<<<<<< HEAD
 	kuser_pad __kuser_memory_barrier, 32
 =======
@@ -1384,6 +1557,7 @@ __kuser_memory_barrier:				@ 0xffff0fa0
  *	   __result; })
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 __kuser_cmpxchg:				@ 0xffff0fc0
 
@@ -1421,6 +1595,9 @@ __kuser_cmpxchg:				@ 0xffff0fc0
 
 	.text
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kuser_cmpxchg32_fixup:
 	@ Called from kuser_cmpxchg_check macro.
 	@ r4 = address of interrupted insn (must be preserved).
@@ -1430,6 +1607,8 @@ kuser_cmpxchg32_fixup:
 	mov	r7, #0xffff0fff
 	sub	r7, r7, #(0xffff0fff - (0xffff0fc0 + (1b - __kuser_cmpxchg)))
 	subs	r8, r4, r7
+<<<<<<< HEAD
+=======
 =======
 kuser_cmpxchg_fixup:
 	@ Called from kuser_cmpxchg_check macro.
@@ -1441,6 +1620,7 @@ kuser_cmpxchg_fixup:
 	sub	r7, r7, #(0xffff0fff - (0xffff0fc0 + (1b - __kuser_cmpxchg)))
 	subs	r8, r2, r7
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rsbcss	r8, r8, #(2b - 1b)
 	strcs	r7, [sp, #S_PC]
 	mov	pc, lr
@@ -1468,6 +1648,9 @@ kuser_cmpxchg_fixup:
 
 #endif
 
+<<<<<<< HEAD
+	kuser_pad __kuser_cmpxchg, 32
+=======
 <<<<<<< HEAD
 	kuser_pad __kuser_cmpxchg, 32
 =======
@@ -1506,17 +1689,23 @@ kuser_cmpxchg_fixup:
  *	   __val; })
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 __kuser_get_tls:				@ 0xffff0fe0
 	ldr	r0, [pc, #(16 - 8)]	@ read TLS, set in kuser_get_tls_init
 	usr_ret	lr
 	mrc	p15, 0, r0, c13, c0, 3	@ 0xffff0fe8 hardware TLS code
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kuser_pad __kuser_get_tls, 16
 	.rep	3
 	.word	0			@ 0xffff0ff0 software TLS value, then
 	.endr				@ pad up to __kuser_helper_version
 
+<<<<<<< HEAD
+=======
 =======
 	.rep	4
 	.word	0			@ 0xffff0ff0 software TLS value, then
@@ -1536,6 +1725,7 @@ __kuser_get_tls:				@ 0xffff0fe0
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __kuser_helper_version:				@ 0xffff0ffc
 	.word	((__kuser_helper_end - __kuser_helper_start) >> 5)
 
@@ -1546,7 +1736,12 @@ __kuser_helper_end:
 #endif
 
 =======
+<<<<<<< HEAD
+#endif
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  THUMB(	.thumb	)
 
 /*
@@ -1557,10 +1752,16 @@ __kuser_helper_end:
  * vectors, rather than ldr's.  Note that this code must not exceed
  * a page size.
 =======
+<<<<<<< HEAD
+ * This code is copied to 0xffff1000 so we can use branches in the
+ * vectors, rather than ldr's.  Note that this code must not exceed
+ * a page size.
+=======
  * This code is copied to 0xffff0200 so we can use branches in the
  * vectors, rather than ldr's.  Note that this code must not
  * exceed 0x300 bytes.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Common stub entry macro:
  *   Enter in IRQ mode, spsr = SVC/USR CPSR, lr = SVC/USR PC
@@ -1571,8 +1772,12 @@ __kuser_helper_end:
 <<<<<<< HEAD
 	.macro	vector_stub, name, mode, fixup, correction=0
 =======
+<<<<<<< HEAD
+	.macro	vector_stub, name, mode, fixup, correction=0
+=======
 	.macro	vector_stub, name, mode, correction=0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.align	5
 
 vector_\name:
@@ -1602,6 +1807,9 @@ vector_\name:
  THUMB(	adr	r0, 1f			)
  THUMB(	ldr	lr, [r0, lr, lsl #2]	)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.if	\fixup
 #ifdef CONFIG_MSM_KRAIT_WFE_FIXUP
 	ldr	r0, .krait_fixup
@@ -1614,8 +1822,11 @@ vector_\name:
 10:	isb
 #endif
 	.endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	r0, sp
  ARM(	ldr	lr, [pc, lr, lsl #2]	)
 	movs	pc, lr			@ branch to handler in SVC mode
@@ -1627,6 +1838,9 @@ ENDPROC(vector_\name)
 	.endm
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.section .stubs, "ax", %progbits
 __stubs_start:
 	@ This must be the first word
@@ -1642,6 +1856,8 @@ vector_rst:
  * Interrupt dispatcher
  */
 	vector_stub	irq, IRQ_MODE, 1, 4
+<<<<<<< HEAD
+=======
 =======
 	.globl	__stubs_start
 __stubs_start:
@@ -1650,6 +1866,7 @@ __stubs_start:
  */
 	vector_stub	irq, IRQ_MODE, 4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.long	__irq_usr			@  0  (USR_26 / USR_32)
 	.long	__irq_invalid			@  1  (FIQ_26 / FIQ_32)
@@ -1675,8 +1892,12 @@ __stubs_start:
 <<<<<<< HEAD
 	vector_stub	dabt, ABT_MODE, 0, 8
 =======
+<<<<<<< HEAD
+	vector_stub	dabt, ABT_MODE, 0, 8
+=======
 	vector_stub	dabt, ABT_MODE, 8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.long	__dabt_usr			@  0  (USR_26 / USR_32)
 	.long	__dabt_invalid			@  1  (FIQ_26 / FIQ_32)
@@ -1702,8 +1923,12 @@ __stubs_start:
 <<<<<<< HEAD
 	vector_stub	pabt, ABT_MODE, 0, 4
 =======
+<<<<<<< HEAD
+	vector_stub	pabt, ABT_MODE, 0, 4
+=======
 	vector_stub	pabt, ABT_MODE, 4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.long	__pabt_usr			@  0 (USR_26 / USR_32)
 	.long	__pabt_invalid			@  1 (FIQ_26 / FIQ_32)
@@ -1729,8 +1954,12 @@ __stubs_start:
 <<<<<<< HEAD
 	vector_stub	und, UND_MODE, 0
 =======
+<<<<<<< HEAD
+	vector_stub	und, UND_MODE, 0
+=======
 	vector_stub	und, UND_MODE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.long	__und_usr			@  0 (USR_26 / USR_32)
 	.long	__und_invalid			@  1 (FIQ_26 / FIQ_32)
@@ -1753,6 +1982,9 @@ __stubs_start:
 
 /*=============================================================================
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Address exception handler
  *-----------------------------------------------------------------------------
  * These aren't too critical.
@@ -1763,8 +1995,11 @@ vector_addrexcptn:
 	b	vector_addrexcptn
 
 /*=============================================================================
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Undefined FIQs
  *-----------------------------------------------------------------------------
  * Enter in FIQ mode, spsr = ANY CPSR, lr = ANY PC
@@ -1776,6 +2011,9 @@ vector_addrexcptn:
  */
 vector_fiq:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	subs	pc, lr, #4
 
 .krait_fixup:
@@ -1794,6 +2032,8 @@ __vectors_start:
 	W(b)	vector_addrexcptn
 	W(b)	vector_irq
 	W(b)	vector_fiq
+<<<<<<< HEAD
+=======
 =======
 	disable_fiq
 	subs	pc, lr, #4
@@ -1838,6 +2078,7 @@ __vectors_start:
 	.globl	__vectors_end
 __vectors_end:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.data
 

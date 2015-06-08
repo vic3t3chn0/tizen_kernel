@@ -56,7 +56,14 @@
 #include <asm/io.h>
 #include <asm/irq.h>
 #include <asm/pgtable.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MTRR
 #include <asm/mtrr.h>
@@ -1477,6 +1484,14 @@ static void savagefb_set_par_int(struct savagefb_par  *par, struct savage_reg *r
 	vgaHWProtect(par, 0);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void savagefb_update_start(struct savagefb_par *par, int base)
+{
+	/* program the start address registers */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void savagefb_update_start(struct savagefb_par      *par,
 				  struct fb_var_screeninfo *var)
 {
@@ -1486,6 +1501,10 @@ static void savagefb_update_start(struct savagefb_par      *par,
 		* ((var->bits_per_pixel+7) / 8)) >> 2;
 
 	/* now program the start address registers */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vga_out16(0x3d4, (base & 0x00ff00) | 0x0c, par);
 	vga_out16(0x3d4, ((base & 0x00ff) << 8) | 0x0d, par);
 	vga_out8(0x3d4, 0x69, par);
@@ -1550,8 +1569,22 @@ static int savagefb_pan_display(struct fb_var_screeninfo *var,
 				struct fb_info           *info)
 {
 	struct savagefb_par *par = info->par;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int base;
+
+	base = (var->yoffset * info->fix.line_length
+	     + (var->xoffset & ~1) * ((info->var.bits_per_pixel+7) / 8)) >> 2;
+
+	savagefb_update_start(par, base);
+=======
 
 	savagefb_update_start(par, var);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	savagefb_update_start(par, var);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

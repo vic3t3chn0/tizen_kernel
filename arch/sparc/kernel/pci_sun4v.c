@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/log2.h>
 #include <linux/of_device.h>
 
@@ -135,8 +139,13 @@ static void *dma_4v_alloc_coherent(struct device *dev, size_t size,
 				   dma_addr_t *dma_addrp, gfp_t gfp,
 				   struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				   dma_addr_t *dma_addrp, gfp_t gfp,
+				   struct dma_attrs *attrs)
+=======
 				   dma_addr_t *dma_addrp, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags, order, first_page, npages, n;
 	struct iommu *iommu;
@@ -209,8 +218,12 @@ static void dma_4v_free_coherent(struct device *dev, size_t size, void *cpu,
 <<<<<<< HEAD
 				 dma_addr_t dvma, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				 dma_addr_t dvma, struct dma_attrs *attrs)
+=======
 				 dma_addr_t dvma)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pci_pbm_info *pbm;
 	struct iommu *iommu;
@@ -543,9 +556,14 @@ static struct dma_map_ops sun4v_dma_ops = {
 	.alloc				= dma_4v_alloc_coherent,
 	.free				= dma_4v_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc				= dma_4v_alloc_coherent,
+	.free				= dma_4v_free_coherent,
+=======
 	.alloc_coherent			= dma_4v_alloc_coherent,
 	.free_coherent			= dma_4v_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_page			= dma_4v_map_page,
 	.unmap_page			= dma_4v_unmap_page,
 	.map_sg				= dma_4v_map_sg,

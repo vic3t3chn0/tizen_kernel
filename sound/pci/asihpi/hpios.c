@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2012  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2012  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -48,6 +52,11 @@ void hpios_delay_micro_seconds(u32 num_micro_sec)
 
 If allocation fails, return 1, and *pMemArea.size = 0
 =======
+<<<<<<< HEAD
+/** Allocate an area of locked memory for bus master DMA operations.
+
+If allocation fails, return 1, and *pMemArea.size = 0
+=======
 void hpios_locked_mem_init(void)
 {
 }
@@ -56,6 +65,7 @@ void hpios_locked_mem_init(void)
 
 On error, return -ENOMEM, and *pMemArea.size = 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 */
 u16 hpios_locked_mem_alloc(struct consistent_dma_area *p_mem_area, u32 size,
 	struct pci_dev *pdev)
@@ -79,8 +89,12 @@ u16 hpios_locked_mem_alloc(struct consistent_dma_area *p_mem_area, u32 size,
 <<<<<<< HEAD
 		return 1;
 =======
+<<<<<<< HEAD
+		return 1;
+=======
 		return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -101,8 +115,11 @@ u16 hpios_locked_mem_free(struct consistent_dma_area *p_mem_area)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 void hpios_locked_mem_free_all(void)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -25,6 +25,9 @@
 #include <net/netfilter/nf_log.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum udplite_conntrack {
 	UDPLITE_CT_UNREPLIED,
 	UDPLITE_CT_REPLIED,
@@ -35,10 +38,13 @@ static unsigned int udplite_timeouts[UDPLITE_CT_MAX] = {
 	[UDPLITE_CT_UNREPLIED]	= 30*HZ,
 	[UDPLITE_CT_REPLIED]	= 180*HZ,
 };
+<<<<<<< HEAD
+=======
 =======
 static unsigned int nf_ct_udplite_timeout __read_mostly = 30*HZ;
 static unsigned int nf_ct_udplite_timeout_stream __read_mostly = 180*HZ;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static bool udplite_pkt_to_tuple(const struct sk_buff *skb,
 				 unsigned int dataoff,
@@ -74,13 +80,19 @@ static int udplite_print_tuple(struct seq_file *s,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int *udplite_get_timeouts(struct net *net)
 {
 	return udplite_timeouts;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Returns verdict for packet, and may modify conntracktype */
 static int udplite_packet(struct nf_conn *ct,
 			  const struct sk_buff *skb,
@@ -91,14 +103,22 @@ static int udplite_packet(struct nf_conn *ct,
 			  unsigned int hooknum,
 			  unsigned int *timeouts)
 =======
+<<<<<<< HEAD
+			  unsigned int hooknum,
+			  unsigned int *timeouts)
+=======
 			  unsigned int hooknum)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* If we've seen traffic both ways, this is some kind of UDP
 	   stream.  Extend timeout. */
 	if (test_bit(IPS_SEEN_REPLY_BIT, &ct->status)) {
 		nf_ct_refresh_acct(ct, ctinfo, skb,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   timeouts[UDPLITE_CT_REPLIED]);
 		/* Also, more likely to be important, and not a probe */
 		if (!test_and_set_bit(IPS_ASSURED_BIT, &ct->status))
@@ -107,6 +127,8 @@ static int udplite_packet(struct nf_conn *ct,
 		nf_ct_refresh_acct(ct, ctinfo, skb,
 				   timeouts[UDPLITE_CT_UNREPLIED]);
 	}
+<<<<<<< HEAD
+=======
 =======
 				   nf_ct_udplite_timeout_stream);
 		/* Also, more likely to be important, and not a probe */
@@ -116,6 +138,7 @@ static int udplite_packet(struct nf_conn *ct,
 		nf_ct_refresh_acct(ct, ctinfo, skb, nf_ct_udplite_timeout);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NF_ACCEPT;
 }
 
@@ -124,8 +147,12 @@ static bool udplite_new(struct nf_conn *ct, const struct sk_buff *skb,
 <<<<<<< HEAD
 			unsigned int dataoff, unsigned int *timeouts)
 =======
+<<<<<<< HEAD
+			unsigned int dataoff, unsigned int *timeouts)
+=======
 			unsigned int dataoff)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return true;
 }
@@ -183,6 +210,9 @@ static int udplite_error(struct net *net, struct nf_conn *tmpl,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 
 #include <linux/netfilter/nfnetlink.h>
@@ -229,8 +259,11 @@ udplite_timeout_nla_policy[CTA_TIMEOUT_UDPLITE_MAX+1] = {
 };
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 static unsigned int udplite_sysctl_table_users;
 static struct ctl_table_header *udplite_sysctl_header;
@@ -240,8 +273,12 @@ static struct ctl_table udplite_sysctl_table[] = {
 <<<<<<< HEAD
 		.data		= &udplite_timeouts[UDPLITE_CT_UNREPLIED],
 =======
+<<<<<<< HEAD
+		.data		= &udplite_timeouts[UDPLITE_CT_UNREPLIED],
+=======
 		.data		= &nf_ct_udplite_timeout,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.maxlen		= sizeof(unsigned int),
 		.mode		= 0644,
 		.proc_handler	= proc_dointvec_jiffies,
@@ -251,8 +288,12 @@ static struct ctl_table udplite_sysctl_table[] = {
 <<<<<<< HEAD
 		.data		= &udplite_timeouts[UDPLITE_CT_REPLIED],
 =======
+<<<<<<< HEAD
+		.data		= &udplite_timeouts[UDPLITE_CT_REPLIED],
+=======
 		.data		= &nf_ct_udplite_timeout_stream,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.maxlen		= sizeof(unsigned int),
 		.mode		= 0644,
 		.proc_handler	= proc_dointvec_jiffies,
@@ -271,21 +312,30 @@ static struct nf_conntrack_l4proto nf_conntrack_l4proto_udplite4 __read_mostly =
 	.print_tuple		= udplite_print_tuple,
 	.packet			= udplite_packet,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_timeouts		= udplite_get_timeouts,
 	.new			= udplite_new,
 	.error			= udplite_error,
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK)
+<<<<<<< HEAD
+=======
 =======
 	.new			= udplite_new,
 	.error			= udplite_error,
 #if defined(CONFIG_NF_CT_NETLINK) || defined(CONFIG_NF_CT_NETLINK_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.tuple_to_nlattr	= nf_ct_port_tuple_to_nlattr,
 	.nlattr_tuple_size	= nf_ct_port_nlattr_tuple_size,
 	.nlattr_to_tuple	= nf_ct_port_nlattr_to_tuple,
 	.nla_policy		= nf_ct_port_nla_policy,
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 	.ctnl_timeout		= {
 		.nlattr_to_obj	= udplite_timeout_nlattr_to_obj,
@@ -296,8 +346,11 @@ static struct nf_conntrack_l4proto nf_conntrack_l4proto_udplite4 __read_mostly =
 		.nla_policy	= udplite_timeout_nla_policy,
 	},
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 	.ctl_table_users	= &udplite_sysctl_table_users,
 	.ctl_table_header	= &udplite_sysctl_header,
@@ -315,21 +368,30 @@ static struct nf_conntrack_l4proto nf_conntrack_l4proto_udplite6 __read_mostly =
 	.print_tuple		= udplite_print_tuple,
 	.packet			= udplite_packet,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_timeouts		= udplite_get_timeouts,
 	.new			= udplite_new,
 	.error			= udplite_error,
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK)
+<<<<<<< HEAD
+=======
 =======
 	.new			= udplite_new,
 	.error			= udplite_error,
 #if defined(CONFIG_NF_CT_NETLINK) || defined(CONFIG_NF_CT_NETLINK_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.tuple_to_nlattr	= nf_ct_port_tuple_to_nlattr,
 	.nlattr_tuple_size	= nf_ct_port_nlattr_tuple_size,
 	.nlattr_to_tuple	= nf_ct_port_nlattr_to_tuple,
 	.nla_policy		= nf_ct_port_nla_policy,
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 	.ctnl_timeout		= {
 		.nlattr_to_obj	= udplite_timeout_nlattr_to_obj,
@@ -340,8 +402,11 @@ static struct nf_conntrack_l4proto nf_conntrack_l4proto_udplite6 __read_mostly =
 		.nla_policy	= udplite_timeout_nla_policy,
 	},
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 	.ctl_table_users	= &udplite_sysctl_table_users,
 	.ctl_table_header	= &udplite_sysctl_header,

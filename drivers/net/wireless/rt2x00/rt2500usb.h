@@ -189,6 +189,19 @@
  * MAC_CSR19: GPIO control register.
  */
 #define MAC_CSR19			0x0426
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MAC_CSR19_BIT0			FIELD32(0x0001)
+#define MAC_CSR19_BIT1			FIELD32(0x0002)
+#define MAC_CSR19_BIT2			FIELD32(0x0004)
+#define MAC_CSR19_BIT3			FIELD32(0x0008)
+#define MAC_CSR19_BIT4			FIELD32(0x0010)
+#define MAC_CSR19_BIT5			FIELD32(0x0020)
+#define MAC_CSR19_BIT6			FIELD32(0x0040)
+#define MAC_CSR19_BIT7			FIELD32(0x0080)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAC_CSR19_BIT0			FIELD16(0x0001)
 #define MAC_CSR19_BIT1			FIELD16(0x0002)
 #define MAC_CSR19_BIT2			FIELD16(0x0004)
@@ -198,6 +211,10 @@
 #define MAC_CSR19_BIT6			FIELD16(0x0040)
 #define MAC_CSR19_BIT7			FIELD16(0x0080)
 #define MAC_CSR19_BIT8			FIELD16(0x0100)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * MAC_CSR20: LED control register.

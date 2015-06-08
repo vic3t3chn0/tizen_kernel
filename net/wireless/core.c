@@ -489,6 +489,9 @@ int wiphy_register(struct wiphy *wiphy)
 	u16 ifmodes = wiphy->interface_modes;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (WARN_ON((wiphy->wowlan.flags & WIPHY_WOWLAN_GTK_REKEY_FAILURE) &&
 		    !(wiphy->wowlan.flags & WIPHY_WOWLAN_SUPPORTS_GTK_REKEY)))
 		return -EINVAL;
@@ -497,8 +500,11 @@ int wiphy_register(struct wiphy *wiphy)
 		    !(wiphy->flags & WIPHY_FLAG_HAVE_AP_SME)))
 		return -EINVAL;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (WARN_ON(wiphy->addresses && !wiphy->n_addresses))
 		return -EINVAL;
 
@@ -509,13 +515,19 @@ int wiphy_register(struct wiphy *wiphy)
 		return -EINVAL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (WARN_ON(wiphy->max_acl_mac_addrs &&
 		    (!(wiphy->flags & WIPHY_FLAG_HAVE_AP_SME) ||
 		     !rdev->ops->set_mac_acl)))
 		return -EINVAL;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wiphy->addresses)
 		memcpy(wiphy->perm_addr, wiphy->addresses[0].addr, ETH_ALEN);
 
@@ -567,8 +579,13 @@ int wiphy_register(struct wiphy *wiphy)
 			sband->channels[i].orig_mag =
 				sband->channels[i].max_antenna_gain;
 =======
+<<<<<<< HEAD
+			sband->channels[i].orig_mag =
+				sband->channels[i].max_antenna_gain;
+=======
 			sband->channels[i].orig_mag = INT_MAX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sband->channels[i].orig_mpwr =
 				sband->channels[i].max_power;
 			sband->channels[i].band = band;
@@ -604,8 +621,12 @@ int wiphy_register(struct wiphy *wiphy)
 <<<<<<< HEAD
 	regulatory_update(wiphy, NL80211_REGDOM_SET_BY_CORE);
 =======
+<<<<<<< HEAD
+	regulatory_update(wiphy, NL80211_REGDOM_SET_BY_CORE);
+=======
 	wiphy_update_regulatory(wiphy, NL80211_REGDOM_SET_BY_CORE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_add_rcu(&rdev->list, &cfg80211_rdev_list);
 	cfg80211_rdev_list_generation++;
@@ -644,7 +665,13 @@ int wiphy_register(struct wiphy *wiphy)
 	rdev->wiphy.registered = true;
 	rtnl_unlock();
 =======
+<<<<<<< HEAD
+	rtnl_lock();
+	rdev->wiphy.registered = true;
+	rtnl_unlock();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 out_rm_dev:
@@ -677,12 +704,18 @@ void wiphy_unregister(struct wiphy *wiphy)
 	struct cfg80211_registered_device *rdev = wiphy_to_dev(wiphy);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rtnl_lock();
 	rdev->wiphy.registered = false;
 	rtnl_unlock();
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rfkill_unregister(rdev->rfkill);
 
 	/* protect the device list */
@@ -962,8 +995,13 @@ static int cfg80211_netdev_notifier_call(struct notifier_block * nb,
 		if ((wdev->iftype == NL80211_IFTYPE_STATION ||
 		     wdev->iftype == NL80211_IFTYPE_P2P_CLIENT) &&
 =======
+<<<<<<< HEAD
+		if ((wdev->iftype == NL80211_IFTYPE_STATION ||
+		     wdev->iftype == NL80211_IFTYPE_P2P_CLIENT) &&
+=======
 		if (wdev->iftype == NL80211_IFTYPE_STATION &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    rdev->ops->set_power_mgmt)
 			if (rdev->ops->set_power_mgmt(wdev->wiphy, dev,
 						      wdev->ps,
@@ -1006,12 +1044,15 @@ static int cfg80211_netdev_notifier_call(struct notifier_block * nb,
 		INIT_LIST_HEAD(&wdev->list);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		/*
 		 * Ensure that all events have been processed and
 		 * freed.
 		 */
 		cfg80211_process_wdev_events(wdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case NETDEV_PRE_UP:
 		if (!(wdev->wiphy->interface_modes & BIT(wdev->iftype)))

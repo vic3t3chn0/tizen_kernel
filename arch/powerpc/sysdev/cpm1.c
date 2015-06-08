@@ -57,8 +57,12 @@ static cpic8xx_t __iomem *cpic_reg;
 <<<<<<< HEAD
 static struct irq_domain *cpm_pic_host;
 =======
+<<<<<<< HEAD
+static struct irq_domain *cpm_pic_host;
+=======
 static struct irq_host *cpm_pic_host;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void cpm_mask_irq(struct irq_data *d)
 {
@@ -105,8 +109,12 @@ int cpm_get_irq(void)
 <<<<<<< HEAD
 static int cpm_pic_host_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int cpm_pic_host_map(struct irq_domain *h, unsigned int virq,
+=======
 static int cpm_pic_host_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  irq_hw_number_t hw)
 {
 	pr_debug("cpm_pic_host_map(%d, 0x%lx)\n", virq, hw);
@@ -134,8 +142,12 @@ static struct irqaction cpm_error_irqaction = {
 <<<<<<< HEAD
 static const struct irq_domain_ops cpm_pic_host_ops = {
 =======
+<<<<<<< HEAD
+static const struct irq_domain_ops cpm_pic_host_ops = {
+=======
 static struct irq_host_ops cpm_pic_host_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map = cpm_pic_host_map,
 };
 
@@ -163,8 +175,12 @@ unsigned int cpm_pic_init(void)
 <<<<<<< HEAD
 	cpic_reg = ioremap(res.start, resource_size(&res));
 =======
+<<<<<<< HEAD
+	cpic_reg = ioremap(res.start, resource_size(&res));
+=======
 	cpic_reg = ioremap(res.start, res.end - res.start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpic_reg == NULL)
 		goto end;
 
@@ -183,9 +199,13 @@ unsigned int cpm_pic_init(void)
 <<<<<<< HEAD
 	cpm_pic_host = irq_domain_add_linear(np, 64, &cpm_pic_host_ops, NULL);
 =======
+<<<<<<< HEAD
+	cpm_pic_host = irq_domain_add_linear(np, 64, &cpm_pic_host_ops, NULL);
+=======
 	cpm_pic_host = irq_alloc_host(np, IRQ_HOST_MAP_LINEAR,
 				      64, &cpm_pic_host_ops, 64);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpm_pic_host == NULL) {
 		printk(KERN_ERR "CPM2 PIC: failed to allocate irq host!\n");
 		sirq = NO_IRQ;

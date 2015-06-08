@@ -58,6 +58,9 @@ static struct platform_driver dfmcs320_driver = {
 <<<<<<< HEAD
 module_platform_driver(dfmcs320_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(dfmcs320_driver);
+=======
 static int __init dfbmcs320_init(void)
 {
 	return platform_driver_register(&dfmcs320_driver);
@@ -70,6 +73,7 @@ static void __exit dfbmcs320_exit(void)
 }
 module_exit(dfbmcs320_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Lars-Peter Clausen <lars@metafoo.de>");
 MODULE_DESCRIPTION("ASoC DFBM-CS320 bluethooth module driver");

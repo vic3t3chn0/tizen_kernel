@@ -16,17 +16,23 @@
 #include <linux/init.h>
 #include <asm/pci_x86.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pci-direct.h>
 
 #include "bus_numa.h"
 
 static void __init cnb20le_res(u8 bus, u8 slot, u8 func)
+<<<<<<< HEAD
+=======
 =======
 
 #include "bus_numa.h"
 
 static void __devinit cnb20le_res(struct pci_dev *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pci_root_info *info;
 	struct resource res;
@@ -34,6 +40,8 @@ static void __devinit cnb20le_res(struct pci_dev *dev)
 	u8 fbus, lbus;
 	int i;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_ACPI
@@ -46,6 +54,7 @@ static void __devinit cnb20le_res(struct pci_dev *dev)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info = &pci_root_info[pci_root_num];
 	pci_root_num++;
 
@@ -54,9 +63,14 @@ static void __devinit cnb20le_res(struct pci_dev *dev)
 	fbus = read_pci_config_byte(bus, slot, func, 0x44);
 	lbus = read_pci_config_byte(bus, slot, func, 0x45);
 =======
+<<<<<<< HEAD
+	fbus = read_pci_config_byte(bus, slot, func, 0x44);
+	lbus = read_pci_config_byte(bus, slot, func, 0x45);
+=======
 	pci_read_config_byte(dev, 0x44, &fbus);
 	pci_read_config_byte(dev, 0x45, &lbus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info->bus_min = fbus;
 	info->bus_max = lbus;
 
@@ -79,9 +93,14 @@ static void __devinit cnb20le_res(struct pci_dev *dev)
 	word1 = read_pci_config_16(bus, slot, func, 0xc0);
 	word2 = read_pci_config_16(bus, slot, func, 0xc2);
 =======
+<<<<<<< HEAD
+	word1 = read_pci_config_16(bus, slot, func, 0xc0);
+	word2 = read_pci_config_16(bus, slot, func, 0xc2);
+=======
 	pci_read_config_word(dev, 0xc0, &word1);
 	pci_read_config_word(dev, 0xc2, &word2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (word1 != word2) {
 		res.start = (word1 << 16) | 0x0000;
 		res.end   = (word2 << 16) | 0xffff;
@@ -94,9 +113,14 @@ static void __devinit cnb20le_res(struct pci_dev *dev)
 	word1 = read_pci_config_16(bus, slot, func, 0xc4);
 	word2 = read_pci_config_16(bus, slot, func, 0xc6);
 =======
+<<<<<<< HEAD
+	word1 = read_pci_config_16(bus, slot, func, 0xc4);
+	word2 = read_pci_config_16(bus, slot, func, 0xc6);
+=======
 	pci_read_config_word(dev, 0xc4, &word1);
 	pci_read_config_word(dev, 0xc6, &word2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (word1 != word2) {
 		res.start = (word1 << 16) | 0x0000;
 		res.end   = (word2 << 16) | 0xffff;
@@ -109,9 +133,14 @@ static void __devinit cnb20le_res(struct pci_dev *dev)
 	word1 = read_pci_config_16(bus, slot, func, 0xd0);
 	word2 = read_pci_config_16(bus, slot, func, 0xd2);
 =======
+<<<<<<< HEAD
+	word1 = read_pci_config_16(bus, slot, func, 0xd0);
+	word2 = read_pci_config_16(bus, slot, func, 0xd2);
+=======
 	pci_read_config_word(dev, 0xd0, &word1);
 	pci_read_config_word(dev, 0xd2, &word2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (word1 != word2) {
 		res.start = word1;
 		res.end   = word2;
@@ -124,6 +153,9 @@ static void __devinit cnb20le_res(struct pci_dev *dev)
 	res.end   = lbus;
 	res.flags = IORESOURCE_BUS;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "CNB20LE PCI Host Bridge (domain 0000 %pR)\n", &res);
 
 	for (i = 0; i < info->res_num; i++)
@@ -158,6 +190,8 @@ static int __init broadcom_postcore_init(void)
 }
 
 postcore_initcall(broadcom_postcore_init);
+<<<<<<< HEAD
+=======
 =======
 	dev_info(&dev->dev, "CNB20LE PCI Host Bridge (domain %04x %pR)\n",
 			    pci_domain_nr(dev->bus), &res);
@@ -170,3 +204,4 @@ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_SERVERWORKS, PCI_DEVICE_ID_SERVERWORKS_LE,
 			cnb20le_res);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

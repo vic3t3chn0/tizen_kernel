@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2006-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2006-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2006-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Simon Wunderlich, Marek Lindner
  *
@@ -32,8 +36,12 @@ static void hash_init(struct hashtable_t *hash)
 <<<<<<< HEAD
 	uint32_t i;
 =======
+<<<<<<< HEAD
+	uint32_t i;
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0 ; i < hash->size; i++) {
 		INIT_HLIST_HEAD(&hash->table[i]);
@@ -51,6 +59,9 @@ void hash_destroy(struct hashtable_t *hash)
 
 /* allocates and clears the hash */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hashtable_t *hash_new(uint32_t size)
 {
 	struct hashtable_t *hash;
@@ -65,6 +76,8 @@ struct hashtable_t *hash_new(uint32_t size)
 
 	hash->list_locks = kmalloc(sizeof(*hash->list_locks) * size,
 				   GFP_ATOMIC);
+<<<<<<< HEAD
+=======
 =======
 struct hashtable_t *hash_new(int size)
 {
@@ -80,6 +93,7 @@ struct hashtable_t *hash_new(int size)
 
 	hash->list_locks = kmalloc(sizeof(spinlock_t) * size, GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!hash->list_locks)
 		goto free_table;
 

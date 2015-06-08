@@ -36,6 +36,13 @@
  *    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/div64.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "carl9170.h"
 #include "cmd.h"
 
@@ -165,6 +172,45 @@ int carl9170_bcn_ctrl(struct ar9170 *ar, const unsigned int vif_id,
 	return __carl9170_exec_cmd(ar, cmd, true);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int carl9170_collect_tally(struct ar9170 *ar)
+{
+	struct carl9170_tally_rsp tally;
+	struct survey_info *info;
+	unsigned int tick;
+	int err;
+
+	err = carl9170_exec_cmd(ar, CARL9170_CMD_TALLY, 0, NULL,
+				sizeof(tally), (u8 *)&tally);
+	if (err)
+		return err;
+
+	tick = le32_to_cpu(tally.tick);
+	if (tick) {
+		ar->tally.active += le32_to_cpu(tally.active) / tick;
+		ar->tally.cca += le32_to_cpu(tally.cca) / tick;
+		ar->tally.tx_time += le32_to_cpu(tally.tx_time) / tick;
+		ar->tally.rx_total += le32_to_cpu(tally.rx_total);
+		ar->tally.rx_overrun += le32_to_cpu(tally.rx_overrun);
+
+		if (ar->channel) {
+			info = &ar->survey[ar->channel->hw_value];
+			info->channel_time = ar->tally.active;
+			info->channel_time_busy = ar->tally.cca;
+			info->channel_time_tx = ar->tally.tx_time;
+			do_div(info->channel_time, 1000);
+			do_div(info->channel_time_busy, 1000);
+			do_div(info->channel_time_tx, 1000);
+		}
+	}
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int carl9170_powersave(struct ar9170 *ar, const bool ps)
 {
 	struct carl9170_cmd *cmd;

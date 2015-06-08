@@ -84,14 +84,22 @@ generic_acl_set(struct dentry *dentry, const char *name, const void *value,
 	if (acl) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		mode_t mode;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = posix_acl_valid(acl);
 		if (error)
 			goto failed;
 		switch (type) {
 		case ACL_TYPE_ACCESS:
+<<<<<<< HEAD
+			error = posix_acl_equiv_mode(acl, &inode->i_mode);
+			if (error < 0)
+				goto failed;
+=======
 <<<<<<< HEAD
 			error = posix_acl_equiv_mode(acl, &inode->i_mode);
 			if (error < 0)
@@ -103,6 +111,7 @@ generic_acl_set(struct dentry *dentry, const char *name, const void *value,
 				goto failed;
 			inode->i_mode = mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			inode->i_ctime = CURRENT_TIME;
 			if (error == 0) {
 				posix_acl_release(acl);
@@ -135,6 +144,9 @@ generic_acl_init(struct inode *inode, struct inode *dir)
 {
 	struct posix_acl *acl = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	if (!S_ISLNK(inode->i_mode))
@@ -152,6 +164,8 @@ generic_acl_init(struct inode *inode, struct inode *dir)
 	}
 	error = 0;
 
+<<<<<<< HEAD
+=======
 =======
 	mode_t mode = inode->i_mode;
 	int error;
@@ -186,6 +200,7 @@ generic_acl_init(struct inode *inode, struct inode *dir)
 
 cleanup:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	posix_acl_release(acl);
 	return error;
 }
@@ -202,8 +217,12 @@ generic_acl_chmod(struct inode *inode)
 <<<<<<< HEAD
 	struct posix_acl *acl;
 =======
+<<<<<<< HEAD
+	struct posix_acl *acl;
+=======
 	struct posix_acl *acl, *clone;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = 0;
 
 	if (S_ISLNK(inode->i_mode))
@@ -211,11 +230,16 @@ generic_acl_chmod(struct inode *inode)
 	acl = get_cached_acl(inode, ACL_TYPE_ACCESS);
 	if (acl) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = posix_acl_chmod(&acl, GFP_KERNEL, inode->i_mode);
 		if (error)
 			return error;
 		set_cached_acl(inode, ACL_TYPE_ACCESS, acl);
 		posix_acl_release(acl);
+<<<<<<< HEAD
+=======
 =======
 		clone = posix_acl_clone(acl, GFP_KERNEL);
 		posix_acl_release(acl);
@@ -226,10 +250,13 @@ generic_acl_chmod(struct inode *inode)
 			set_cached_acl(inode, ACL_TYPE_ACCESS, clone);
 		posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return error;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 int
@@ -252,6 +279,7 @@ generic_check_acl(struct inode *inode, int mask, unsigned int flags)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const struct xattr_handler generic_acl_access_handler = {
 	.prefix = POSIX_ACL_XATTR_ACCESS,
 	.flags	= ACL_TYPE_ACCESS,

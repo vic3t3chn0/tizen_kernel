@@ -52,6 +52,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IMX_CHIP_REVISION_1_0_STRING		"1.0"
 #define IMX_CHIP_REVISION_1_1_STRING		"1.1"
 #define IMX_CHIP_REVISION_1_2_STRING		"1.2"
@@ -67,6 +69,7 @@
 #define IMX_CHIP_REVISION_UNKNOWN_STRING	"unknown"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASSEMBLY__
 extern unsigned int __mxc_cpu_type;
 #endif
@@ -74,8 +77,12 @@ extern unsigned int __mxc_cpu_type;
 <<<<<<< HEAD
 #ifdef CONFIG_SOC_IMX1
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SOC_IMX1
+=======
 #ifdef CONFIG_ARCH_MX1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # ifdef mxc_cpu_type
 #  undef mxc_cpu_type
 #  define mxc_cpu_type __mxc_cpu_type
@@ -90,8 +97,12 @@ extern unsigned int __mxc_cpu_type;
 <<<<<<< HEAD
 #ifdef CONFIG_SOC_IMX21
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SOC_IMX21
+=======
 #ifdef CONFIG_MACH_MX21
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # ifdef mxc_cpu_type
 #  undef mxc_cpu_type
 #  define mxc_cpu_type __mxc_cpu_type
@@ -106,8 +117,12 @@ extern unsigned int __mxc_cpu_type;
 <<<<<<< HEAD
 #ifdef CONFIG_SOC_IMX25
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SOC_IMX25
+=======
 #ifdef CONFIG_ARCH_MX25
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # ifdef mxc_cpu_type
 #  undef mxc_cpu_type
 #  define mxc_cpu_type __mxc_cpu_type
@@ -122,8 +137,12 @@ extern unsigned int __mxc_cpu_type;
 <<<<<<< HEAD
 #ifdef CONFIG_SOC_IMX27
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SOC_IMX27
+=======
 #ifdef CONFIG_MACH_MX27
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # ifdef mxc_cpu_type
 #  undef mxc_cpu_type
 #  define mxc_cpu_type __mxc_cpu_type
@@ -204,6 +223,9 @@ struct cpu_op {
 <<<<<<< HEAD
 int tzic_enable_wake(void);
 =======
+<<<<<<< HEAD
+int tzic_enable_wake(void);
+=======
 int tzic_enable_wake(int is_idle);
 enum mxc_cpu_pwr_mode {
 	WAIT_CLOCKED,		/* wfi only */
@@ -213,6 +235,7 @@ enum mxc_cpu_pwr_mode {
 	STOP_POWER_OFF,		/* STOP + SRPG */
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct cpu_op *(*get_cpu_op)(int *op);
 #endif

@@ -17,6 +17,9 @@
 #include <asm/coldfire.h>
 #include <asm/mcfsim.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /***************************************************************************/
 
@@ -29,6 +32,8 @@ void __init config_BSP(char *commandp, int size)
 #endif /* CONFIG_NETtel */
 
 	mach_sched_init = hw_timer_init;
+<<<<<<< HEAD
+=======
 =======
 #include <asm/mcfuart.h>
 
@@ -116,6 +121,7 @@ void __init config_BSP(char *commandp, int size)
 	m5206_timers_init();
 	m5206_uarts_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Only support the external interrupts on their primary level */
 	mcf_mapirq2imr(25, MCFINTC_EINT1);
@@ -124,6 +130,8 @@ void __init config_BSP(char *commandp, int size)
 }
 
 /***************************************************************************/
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -137,3 +145,4 @@ arch_initcall(init_BSP);
 
 /***************************************************************************/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -11,6 +11,9 @@
 
 enum {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HEADER_RESERVED		= 0,	/* always cleared */
 	HEADER_FIRST_FEATURE	= 1,
 	HEADER_TRACE_INFO	= 1,
@@ -33,6 +36,8 @@ enum {
 	HEADER_FEAT_BITS	= 256,
 };
 
+<<<<<<< HEAD
+=======
 =======
 	HEADER_TRACE_INFO = 1,
 	HEADER_BUILD_ID,
@@ -42,6 +47,7 @@ enum {
 #define HEADER_FEAT_BITS			256
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct perf_file_section {
 	u64 offset;
 	u64 size;
@@ -82,7 +88,11 @@ struct perf_evlist;
 <<<<<<< HEAD
 struct perf_session;
 =======
+<<<<<<< HEAD
+struct perf_session;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int perf_session__read_header(struct perf_session *session, int fd);
 int perf_session__write_header(struct perf_session *session,
@@ -98,6 +108,9 @@ void perf_header__clear_feat(struct perf_header *header, int feat);
 bool perf_header__has_feat(const struct perf_header *header, int feat);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_header__set_cmdline(int argc, const char **argv);
 
 int perf_header__process_sections(struct perf_header *header, int fd,
@@ -107,18 +120,24 @@ int perf_header__process_sections(struct perf_header *header, int fd,
 				  int feat, int fd, void *data));
 
 int perf_header__fprintf_info(struct perf_session *s, FILE *fp, bool full);
+<<<<<<< HEAD
+=======
 =======
 int perf_header__process_sections(struct perf_header *header, int fd,
 				  int (*process)(struct perf_file_section *section,
 						 struct perf_header *ph,
 						 int feat, int fd));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int build_id_cache__add_s(const char *sbuild_id, const char *debugdir,
 			  const char *name, bool is_kallsyms);
 int build_id_cache__remove_s(const char *sbuild_id, const char *debugdir);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_event__synthesize_attr(struct perf_tool *tool,
 				struct perf_event_attr *attr, u16 ids, u64 *id,
 				perf_event__handler_t process);
@@ -156,6 +175,8 @@ int perf_event__process_build_id(struct perf_tool *tool,
  */
 int get_cpuid(char *buffer, size_t sz);
 
+<<<<<<< HEAD
+=======
 =======
 int perf_event__synthesize_attr(struct perf_event_attr *attr, u16 ids, u64 *id,
 				perf_event__handler_t process,
@@ -185,4 +206,5 @@ int perf_event__synthesize_build_id(struct dso *pos, u16 misc,
 int perf_event__process_build_id(union perf_event *event,
 				 struct perf_session *session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __PERF_HEADER_H */

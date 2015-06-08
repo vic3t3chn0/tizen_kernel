@@ -201,6 +201,8 @@ struct xfs_btree_ops {
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/* btree tracing */
 #ifdef XFS_BTREE_TRACE
@@ -221,6 +223,7 @@ struct xfs_btree_ops {
 					__uint64_t *, __uint64_t *);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -287,8 +290,12 @@ typedef struct xfs_btree_cur
 <<<<<<< HEAD
 #define	XFS_BUF_TO_BLOCK(bp)	((struct xfs_btree_block *)((bp)->b_addr))
 =======
+<<<<<<< HEAD
+#define	XFS_BUF_TO_BLOCK(bp)	((struct xfs_btree_block *)((bp)->b_addr))
+=======
 #define	XFS_BUF_TO_BLOCK(bp)	((struct xfs_btree_block *)XFS_BUF_PTR(bp))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -460,6 +467,9 @@ static inline int xfs_btree_get_level(struct xfs_btree_block *block)
 		XFS_FSB_TO_AGBNO(mp, fsb) < mp->m_sb.sb_agblocks)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Trace hooks.  Currently not implemented as they need to be ported
  * over to the generic tracing functionality, which is some effort.
@@ -479,6 +489,9 @@ static inline int xfs_btree_get_level(struct xfs_btree_block *block)
 #define XFS_BTREE_TRACE_ARGR(c, r)
 #define	XFS_BTREE_TRACE_CURSOR(c, t)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __XFS_BTREE_H__ */

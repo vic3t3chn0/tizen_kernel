@@ -15,6 +15,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef unsigned short  __kernel_mode_t;
 #define __kernel_mode_t __kernel_mode_t
 
@@ -37,6 +40,8 @@ typedef unsigned short  __kernel_old_dev_t;
 #define __kernel_old_dev_t __kernel_old_dev_t
 
 #include <asm-generic/posix_types.h>
+<<<<<<< HEAD
+=======
 =======
 typedef unsigned long   __kernel_ino_t;
 typedef unsigned short  __kernel_mode_t;
@@ -146,5 +151,6 @@ static __inline__ void __FD_ZERO(__kernel_fd_set *__p)
 
 #endif /* defined(__KERNEL__) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_AVR32_POSIX_TYPES_H */

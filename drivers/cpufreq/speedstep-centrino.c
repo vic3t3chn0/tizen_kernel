@@ -25,6 +25,13 @@
 #include <asm/msr.h>
 #include <asm/processor.h>
 #include <asm/cpufeature.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/cpu_device_id.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PFX		"speedstep-centrino: "
 #define MAINTAINER	"cpufreq@vger.kernel.org"
@@ -595,6 +602,30 @@ static struct cpufreq_driver centrino_driver = {
 	.owner		= THIS_MODULE,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * This doesn't replace the detailed checks above because
+ * the generic CPU IDs don't have a way to match for steppings
+ * or ASCII model IDs.
+ */
+static const struct x86_cpu_id centrino_ids[] = {
+	{ X86_VENDOR_INTEL, 6, 9, X86_FEATURE_EST },
+	{ X86_VENDOR_INTEL, 6, 13, X86_FEATURE_EST },
+	{ X86_VENDOR_INTEL, 6, 13, X86_FEATURE_EST },
+	{ X86_VENDOR_INTEL, 6, 13, X86_FEATURE_EST },
+	{ X86_VENDOR_INTEL, 15, 3, X86_FEATURE_EST },
+	{ X86_VENDOR_INTEL, 15, 4, X86_FEATURE_EST },
+	{}
+};
+#if 0
+/* Autoload or not? Do not for now. */
+MODULE_DEVICE_TABLE(x86cpu, centrino_ids);
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * centrino_init - initializes the Enhanced SpeedStep CPUFreq driver
@@ -612,11 +643,22 @@ static struct cpufreq_driver centrino_driver = {
  */
 static int __init centrino_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!x86_match_cpu(centrino_ids))
+		return -ENODEV;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cpuinfo_x86 *cpu = &cpu_data(0);
 
 	if (!cpu_has(cpu, X86_FEATURE_EST))
 		return -ENODEV;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return cpufreq_register_driver(&centrino_driver);
 }
 

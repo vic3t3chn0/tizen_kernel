@@ -35,7 +35,11 @@
 <<<<<<< HEAD
 #define cpu_has_clo_clz		1
 =======
+<<<<<<< HEAD
+#define cpu_has_clo_clz		1
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_has_nofpuex		0
 /* #define cpu_has_64bits	? */
 /* #define cpu_has_64bit_zero_reg ? */
@@ -65,7 +69,11 @@
 <<<<<<< HEAD
 #define cpu_has_clo_clz		1
 =======
+<<<<<<< HEAD
+#define cpu_has_clo_clz		1
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_has_nofpuex		0
 /* #define cpu_has_64bits	? */
 /* #define cpu_has_64bit_zero_reg ? */

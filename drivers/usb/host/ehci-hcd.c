@@ -45,9 +45,24 @@
 #include <asm/byteorder.h>
 #include <asm/io.h>
 #include <asm/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/unaligned.h>
+
+#if defined(CONFIG_PPC_PS3)
+#include <asm/firmware.h>
+#endif
+
+=======
 #include <asm/system.h>
 #include <asm/unaligned.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+#include <asm/unaligned.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-------------------------------------------------------------------------*/
 
 /*
@@ -91,11 +106,25 @@ static const char	hcd_name [] = "ehci_hcd";
  */
 #define	EHCI_TUNE_FLS		1	/* (medium) 512-frame schedule */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define EHCI_IAA_MSECS		100		/* arbitrary */
+#define EHCI_IO_JIFFIES		(HZ/10)		/* io watchdog > irq_thresh */
+#define EHCI_ASYNC_JIFFIES	(HZ/20)		/* async idle timeout */
+#define EHCI_SHRINK_JIFFIES	(DIV_ROUND_UP(HZ, 200) + 1)
+						/* 5-ms async qh unlink delay */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EHCI_IAA_MSECS		10		/* arbitrary */
 #define EHCI_IO_JIFFIES		(HZ/10)		/* io watchdog > irq_thresh */
 #define EHCI_ASYNC_JIFFIES	(HZ/20)		/* async idle timeout */
 #define EHCI_SHRINK_JIFFIES	(DIV_ROUND_UP(HZ, 200) + 1)
 						/* 200-ms async qh unlink delay */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Initial IRQ latency:  faster than hw default */
 static int log2_irq_thresh = 0;		// 0 to 6
@@ -108,14 +137,30 @@ module_param (park, uint, S_IRUGO);
 MODULE_PARM_DESC (park, "park setting; 1-3 back-to-back async packets");
 
 /* for flakey hardware, ignore overcurrent indicators */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool ignore_oc = 0;
+=======
 static int ignore_oc = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ignore_oc = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param (ignore_oc, bool, S_IRUGO);
 MODULE_PARM_DESC (ignore_oc, "ignore bogus hardware overcurrent indications");
 
 /* for link power management(LPM) feature */
 static unsigned int hird;
 module_param(hird, int, S_IRUGO);
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_PARM_DESC(hird, "host initiated resume duration, +1 for each 75us");
+=======
 MODULE_PARM_DESC(hird, "host initiated resume duration, +1 for each 75us\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_PARM_DESC(hird, "host initiated resume duration, +1 for each 75us\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define	INTR_MASK (STS_IAA | STS_FATAL | STS_PCD | STS_ERR | STS_INT)
 
@@ -230,15 +275,79 @@ static int ehci_halt (struct ehci_hcd *ehci)
 			  STS_HALT, STS_HALT, 16 * 125);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_USB_SUSPEND) && defined(CONFIG_PPC_PS3)
+
+/*
+ * The EHCI controller of the Cell Super Companion Chip used in the
+ * PS3 will stop the root hub after all root hub ports are suspended.
+ * When in this condition handshake will return -ETIMEDOUT.  The
+ * STS_HLT bit will not be set, so inspection of the frame index is
+ * used here to test for the condition.  If the condition is found
+ * return success to allow the USB suspend to complete.
+ */
+
+static int handshake_for_broken_root_hub(struct ehci_hcd *ehci,
+					 void __iomem *ptr, u32 mask, u32 done,
+					 int usec)
+{
+	unsigned int old_index;
+	int error;
+
+	if (!firmware_has_feature(FW_FEATURE_PS3_LV1))
+		return -ETIMEDOUT;
+
+	old_index = ehci_read_frame_index(ehci);
+
+	error = handshake(ehci, ptr, mask, done, usec);
+
+	if (error == -ETIMEDOUT && ehci_read_frame_index(ehci) == old_index)
+		return 0;
+
+	return error;
+}
+
+#else
+
+static int handshake_for_broken_root_hub(struct ehci_hcd *ehci,
+					 void __iomem *ptr, u32 mask, u32 done,
+					 int usec)
+{
+	return -ETIMEDOUT;
+}
+
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int handshake_on_error_set_halt(struct ehci_hcd *ehci, void __iomem *ptr,
 				       u32 mask, u32 done, int usec)
 {
 	int error;
 
 	error = handshake(ehci, ptr, mask, done, usec);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (error == -ETIMEDOUT)
+		error = handshake_for_broken_root_hub(ehci, ptr, mask, done,
+						      usec);
+
+	if (error) {
+		ehci_halt(ehci);
+		ehci->rh_state = EHCI_RH_HALTED;
+=======
 	if (error) {
 		ehci_halt(ehci);
 		ehci_to_hcd(ehci)->state = HC_STATE_HALT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (error) {
+		ehci_halt(ehci);
+		ehci_to_hcd(ehci)->state = HC_STATE_HALT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ehci_err(ehci, "force halt; handshake %p %08x %08x -> %d\n",
 			ptr, mask, done, error);
 	}
@@ -278,7 +387,15 @@ static int ehci_reset (struct ehci_hcd *ehci)
 	command |= CMD_RESET;
 	dbg_cmd (ehci, "reset", command);
 	ehci_writel(ehci, command, &ehci->regs->command);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ehci->rh_state = EHCI_RH_HALTED;
+=======
 	ehci_to_hcd(ehci)->state = HC_STATE_HALT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ehci_to_hcd(ehci)->state = HC_STATE_HALT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ehci->next_statechange = jiffies;
 	retval = handshake (ehci, &ehci->regs->command,
 			    CMD_RESET, 0, 250 * 1000);
@@ -298,6 +415,14 @@ static int ehci_reset (struct ehci_hcd *ehci)
 	if (ehci->debug)
 		dbgp_external_startup();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ehci->port_c_suspend = ehci->suspended_ports =
+			ehci->resuming_ports = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -307,7 +432,15 @@ static void ehci_quiesce (struct ehci_hcd *ehci)
 	u32	temp;
 
 #ifdef DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ehci->rh_state != EHCI_RH_RUNNING)
+=======
 	if (!HC_IS_RUNNING (ehci_to_hcd(ehci)->state))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!HC_IS_RUNNING (ehci_to_hcd(ehci)->state))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG ();
 #endif
 
@@ -338,6 +471,13 @@ static void ehci_work(struct ehci_hcd *ehci);
 #include "ehci-mem.c"
 #include "ehci-q.c"
 #include "ehci-sched.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "ehci-sysfs.c"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*-------------------------------------------------------------------------*/
 
@@ -355,7 +495,15 @@ static void ehci_iaa_watchdog(unsigned long param)
 	 */
 	if (ehci->reclaim
 			&& !timer_pending(&ehci->iaa_watchdog)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			&& ehci->rh_state == EHCI_RH_RUNNING) {
+=======
 			&& HC_IS_RUNNING(ehci_to_hcd(ehci)->state)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			&& HC_IS_RUNNING(ehci_to_hcd(ehci)->state)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 cmd, status;
 
 		/* If we get here, IAA is *REALLY* late.  It's barely
@@ -451,7 +599,15 @@ static void ehci_shutdown(struct usb_hcd *hcd)
 	spin_unlock_irq(&ehci->lock);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __maybe_unused ehci_port_power (struct ehci_hcd *ehci, int is_on)
+=======
 static void ehci_port_power (struct ehci_hcd *ehci, int is_on)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ehci_port_power (struct ehci_hcd *ehci, int is_on)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned port;
 
@@ -495,7 +651,15 @@ static void ehci_work (struct ehci_hcd *ehci)
 	 * misplace IRQs, and should let us run completely without IRQs.
 	 * such lossage has been observed on both VT6202 and VT8235.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ehci->rh_state == EHCI_RH_RUNNING &&
+=======
 	if (HC_IS_RUNNING (ehci_to_hcd(ehci)->state) &&
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (HC_IS_RUNNING (ehci_to_hcd(ehci)->state) &&
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(ehci->async->qh_next.ptr != NULL ||
 			 ehci->periodic_sched != 0))
 		timer_action (ehci, TIMER_IO_WATCHDOG);
@@ -515,19 +679,42 @@ static void ehci_stop (struct usb_hcd *hcd)
 	del_timer_sync(&ehci->iaa_watchdog);
 
 	spin_lock_irq(&ehci->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ehci->rh_state == EHCI_RH_RUNNING)
+=======
 	if (HC_IS_RUNNING (hcd->state))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (HC_IS_RUNNING (hcd->state))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ehci_quiesce (ehci);
 
 	ehci_silence_controller(ehci);
 	ehci_reset (ehci);
 	spin_unlock_irq(&ehci->lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	remove_sysfs_files(ehci);
+=======
 	remove_companion_file(ehci);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	remove_companion_file(ehci);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	remove_debug_files (ehci);
 
 	/* root hub is shut down separately (first, when possible) */
 	spin_lock_irq (&ehci->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_MDM_HSIC_PM
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_MDM_HSIC_PM
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ehci->async) {
 		/*
 		 * TODO: Observed that ehci->async next ptr is not
@@ -541,12 +728,23 @@ static void ehci_stop (struct usb_hcd *hcd)
 		 */
 		if (ehci->async->qh_next.ptr != NULL)
 			start_unlink_async(ehci, ehci->async->qh_next.qh);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ehci_work (ehci);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ehci_work(ehci);
 	}
 #else
 	if (ehci->async)
 		ehci_work (ehci);
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irq (&ehci->lock);
 	ehci_mem_cleanup (ehci);
 
@@ -591,6 +789,18 @@ static int ehci_init(struct usb_hcd *hcd)
 	hcc_params = ehci_readl(ehci, &ehci->caps->hcc_params);
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * by default set standard 80% (== 100 usec/uframe) max periodic
+	 * bandwidth as required by USB 2.0
+	 */
+	ehci->uframe_periodic_max = 100;
+
+	/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * hw default: 1K periodic list heads, one per frame.
 	 * periodic_size can shrink by USBCMD update if hcc_params allows.
 	 */
@@ -631,12 +841,27 @@ static int ehci_init(struct usb_hcd *hcd)
 	hw = ehci->async->hw;
 	hw->hw_next = QH_NEXT(ehci, ehci->async->qh_dma);
 	hw->hw_info1 = cpu_to_hc32(ehci, QH_HEAD);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hw->hw_info1 |= cpu_to_hc32(ehci, (1 << 7));	/* I = 1 */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hw->hw_token = cpu_to_hc32(ehci, QTD_STS_HALT);
 	hw->hw_qtd_next = EHCI_LIST_END(ehci);
 	ehci->async->qh_state = QH_STATE_LINKED;
 	hw->hw_alt_next = QTD_NEXT(ehci, ehci->async->dummy->qtd_dma);
 
 	/* clear interrupt enables, set irq latency */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	log2_irq_thresh = ehci->log2_irq_thresh;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (log2_irq_thresh < 0 || log2_irq_thresh > 6)
 		log2_irq_thresh = 0;
 	temp = 1 << (16 + log2_irq_thresh);
@@ -685,16 +910,34 @@ static int ehci_init(struct usb_hcd *hcd)
 }
 
 /* start HC running; it's halted, ehci_init() has been run (once) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __maybe_unused ehci_run (struct usb_hcd *hcd)
+{
+	struct ehci_hcd		*ehci = hcd_to_ehci (hcd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ehci_run (struct usb_hcd *hcd)
 {
 	struct ehci_hcd		*ehci = hcd_to_ehci (hcd);
 	int			retval;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			temp;
 	u32			hcc_params;
 
 	hcd->uses_new_polling = 1;
 
 	/* EHCI spec section 4.1 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * TDI driver does the ehci_reset in their reset callback.
 	 * Don't reset here, because configuration settings will
@@ -704,6 +947,10 @@ static int ehci_run (struct usb_hcd *hcd)
 		ehci_mem_cleanup(ehci);
 		return retval;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ehci_writel(ehci, ehci->periodic_dma, &ehci->regs->frame_list);
 	ehci_writel(ehci, (u32)ehci->async->qh_dma, &ehci->regs->async_next);
 
@@ -752,7 +999,15 @@ static int ehci_run (struct usb_hcd *hcd)
 	 * be started before the port switching actions could complete.
 	 */
 	down_write(&ehci_cf_port_reset_rwsem);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ehci->rh_state = EHCI_RH_RUNNING;
+=======
 	hcd->state = HC_STATE_RUNNING;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hcd->state = HC_STATE_RUNNING;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ehci_writel(ehci, FLAG_CF, &ehci->regs->configured_flag);
 	ehci_readl(ehci, &ehci->regs->command);	/* unblock posted writes */
 	msleep(5);
@@ -774,7 +1029,15 @@ static int ehci_run (struct usb_hcd *hcd)
 	 * since the class device isn't created that early.
 	 */
 	create_debug_files(ehci);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	create_sysfs_files(ehci);
+=======
 	create_companion_file(ehci);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	create_companion_file(ehci);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -833,7 +1096,15 @@ static irqreturn_t ehci_irq (struct usb_hcd *hcd)
 	masked_status = status & (INTR_MASK | STS_FLR);
 
 	/* Shared IRQ? */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!masked_status || unlikely(ehci->rh_state == EHCI_RH_HALTED)) {
+=======
 	if (!masked_status || unlikely(hcd->state == HC_STATE_HALT)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!masked_status || unlikely(hcd->state == HC_STATE_HALT)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&ehci->lock);
 		return IRQ_NONE;
 	}
@@ -883,7 +1154,15 @@ static irqreturn_t ehci_irq (struct usb_hcd *hcd)
 		pcd_status = status;
 
 		/* resume root hub? */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (ehci->rh_state == EHCI_RH_SUSPENDED)
+=======
 		if (hcd->state == HC_STATE_SUSPENDED)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (hcd->state == HC_STATE_SUSPENDED)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			usb_hcd_resume_root_hub(hcd);
 
 		/* get per-port change detect bits */
@@ -899,13 +1178,28 @@ static irqreturn_t ehci_irq (struct usb_hcd *hcd)
 			pstatus = ehci_readl(ehci,
 					 &ehci->regs->port_status[i]);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_MDM_HSIC_PM
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_MDM_HSIC_PM
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*set RS bit in case of remote wakeup*/
 			if (ehci_is_TDI(ehci) && !(cmd & CMD_RUN) &&
 					(pstatus & PORT_SUSPEND))
 				ehci_writel(ehci, cmd | CMD_RUN,
 						&ehci->regs->command);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (pstatus & PORT_OWNER)
 				continue;
 			if (!(test_bit(i, &ehci->suspended_ports) &&
@@ -915,6 +1209,11 @@ static irqreturn_t ehci_irq (struct usb_hcd *hcd)
 					ehci->reset_done[i] == 0))
 				continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_LINK_DEVICE_HSIC)
 			/* FIXME: Debugging
 			 * HSIC with XMM6262 don't use the remote wakeup,
@@ -929,11 +1228,22 @@ static irqreturn_t ehci_irq (struct usb_hcd *hcd)
 				ehci->suspended_ports, ehci->reset_done[i]);
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* start 20 msec resume signaling from this port,
 			 * and make khubd collect PORT_STAT_C_SUSPEND to
 			 * stop that signaling.  Use 5 ms extra for safety,
 			 * like usb_port_resume() does.
 			 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ehci->reset_done[i] = jiffies + msecs_to_jiffies(25);
+			set_bit(i, &ehci->resuming_ports);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_LINK_DEVICE_HSIC
 			/* ensure suspend bit clear by adding 5 msec delay. */
 			ehci->reset_done[i] = jiffies + msecs_to_jiffies(50);
@@ -941,6 +1251,10 @@ static irqreturn_t ehci_irq (struct usb_hcd *hcd)
 			ehci->reset_done[i] = jiffies + msecs_to_jiffies(25);
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ehci_dbg (ehci, "port %d remote wakeup\n", i + 1);
 			mod_timer(&hcd->rh_timer, ehci->reset_done[i]);
 		}
@@ -949,6 +1263,16 @@ static irqreturn_t ehci_irq (struct usb_hcd *hcd)
 	/* PCI errors [4.15.2.4] */
 	if (unlikely ((status & STS_FATAL) != 0)) {
 		ehci_err(ehci, "fatal error\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (hcd->driver->dump_regs) {
+			hcd->driver->dump_regs(hcd);
+			panic("System error\n");
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dbg_cmd(ehci, "fatal", cmd);
 		dbg_status(ehci, "fatal", status);
 		ehci_halt(ehci);
@@ -1024,7 +1348,15 @@ static int ehci_urb_enqueue (
 static void unlink_async (struct ehci_hcd *ehci, struct ehci_qh *qh)
 {
 	/* failfast */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ehci->rh_state != EHCI_RH_RUNNING && ehci->reclaim)
+=======
 	if (!HC_IS_RUNNING(ehci_to_hcd(ehci)->state) && ehci->reclaim)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!HC_IS_RUNNING(ehci_to_hcd(ehci)->state) && ehci->reclaim)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		end_unlink_async(ehci);
 
 	/* If the QH isn't linked then there's nothing we can do
@@ -1151,7 +1483,15 @@ rescan:
 		goto idle_timeout;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ehci->rh_state != EHCI_RH_RUNNING)
+=======
 	if (!HC_IS_RUNNING (hcd->state))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!HC_IS_RUNNING (hcd->state))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		qh->qh_state = QH_STATE_IDLE;
 	switch (qh->qh_state) {
 	case QH_STATE_LINKED:
@@ -1194,7 +1534,15 @@ done:
 	spin_unlock_irqrestore (&ehci->lock, flags);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __maybe_unused
+=======
 static void
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ehci_endpoint_reset(struct usb_hcd *hcd, struct usb_host_endpoint *ep)
 {
 	struct ehci_hcd		*ehci = hcd_to_ehci(hcd);
@@ -1252,28 +1600,84 @@ MODULE_LICENSE ("GPL");
 #define	PCI_DRIVER		ehci_pci_driver
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PPC_PS3
+#include "ehci-ps3.c"
+#define	PS3_SYSTEM_BUS_DRIVER	ps3_ehci_driver
+#endif
+
+#ifdef CONFIG_USB_EHCI_HCD_PPC_OF
+#include "ehci-ppc-of.c"
+#define OF_PLATFORM_DRIVER	ehci_hcd_ppc_of_driver
+#endif
+
+#ifdef CONFIG_XPS_USB_HCD_XILINX
+#include "ehci-xilinx-of.c"
+#define XILINX_OF_PLATFORM_DRIVER	ehci_hcd_xilinx_of_driver
+#endif
+
+#ifdef CONFIG_USB_EHCI_FSL
+#include "ehci-fsl.c"
+#define PLATFORM_DRIVER_PRESENT
+=======
 #ifdef CONFIG_USB_EHCI_FSL
 #include "ehci-fsl.c"
 #define	PLATFORM_DRIVER		ehci_fsl_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_USB_EHCI_FSL
+#include "ehci-fsl.c"
+#define	PLATFORM_DRIVER		ehci_fsl_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_MXC
 #include "ehci-mxc.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		ehci_mxc_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		ehci_mxc_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_SH
 #include "ehci-sh.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_MIPS_ALCHEMY
+#include "ehci-au1xxx.c"
+#define PLATFORM_DRIVER_PRESENT
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PLATFORM_DRIVER		ehci_hcd_sh_driver
 #endif
 
 #ifdef CONFIG_SOC_AU1200
 #include "ehci-au1xxx.c"
 #define	PLATFORM_DRIVER		ehci_hcd_au1xxx_driver
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_HCD_OMAP
 #include "ehci-omap.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define        PLATFORM_DRIVER         ehci_hcd_omap_driver
 #endif
 
@@ -1290,87 +1694,363 @@ MODULE_LICENSE ("GPL");
 #ifdef CONFIG_XPS_USB_HCD_XILINX
 #include "ehci-xilinx-of.c"
 #define XILINX_OF_PLATFORM_DRIVER	ehci_hcd_xilinx_of_driver
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_PLAT_ORION
 #include "ehci-orion.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define	PLATFORM_DRIVER		ehci_orion_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	PLATFORM_DRIVER		ehci_orion_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_ARCH_IXP4XX
 #include "ehci-ixp4xx.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define	PLATFORM_DRIVER		ixp4xx_ehci_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	PLATFORM_DRIVER		ixp4xx_ehci_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_W90X900_EHCI
 #include "ehci-w90x900.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define	PLATFORM_DRIVER		ehci_hcd_w90x900_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	PLATFORM_DRIVER		ehci_hcd_w90x900_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_ARCH_AT91
 #include "ehci-atmel.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define	PLATFORM_DRIVER		ehci_atmel_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	PLATFORM_DRIVER		ehci_atmel_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_OCTEON_EHCI
 #include "ehci-octeon.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		ehci_octeon_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		ehci_octeon_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_CNS3XXX_EHCI
 #include "ehci-cns3xxx.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		cns3xxx_ehci_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		cns3xxx_ehci_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_ARCH_VT8500
 #include "ehci-vt8500.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define	PLATFORM_DRIVER		vt8500_ehci_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	PLATFORM_DRIVER		vt8500_ehci_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_PLAT_SPEAR
 #include "ehci-spear.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_USB_EHCI_MSM_72K
+#include "ehci-msm72k.c"
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		spear_ehci_hcd_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		spear_ehci_hcd_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_MSM
 #include "ehci-msm.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "ehci-msm2.c"
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		ehci_msm_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		ehci_msm_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_HCD_PMC_MSP
 #include "ehci-pmcmsp.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define	PLATFORM_DRIVER		ehci_hcd_msp_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	PLATFORM_DRIVER		ehci_hcd_msp_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_TEGRA
 #include "ehci-tegra.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		tegra_ehci_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		tegra_ehci_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_S5P
 #include "ehci-s5p.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		s5p_ehci_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		s5p_ehci_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_USB_EHCI_ATH79
 #include "ehci-ath79.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+=======
 #define PLATFORM_DRIVER		ehci_ath79_driver
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PLATFORM_DRIVER		ehci_ath79_driver
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_SPARC_LEON
 #include "ehci-grlib.c"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_USB_EHCI_MSM_HSIC
+#include "ehci-msm-hsic.c"
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_USB_PXA168_EHCI
+#include "ehci-pxa168.c"
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_CPU_XLR
+#include "ehci-xls.c"
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_USB_EHCI_MV
+#include "ehci-mv.c"
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_MACH_LOONGSON1
+#include "ehci-ls1x.c"
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#ifdef CONFIG_USB_EHCI_HCD_PLATFORM
+#include "ehci-platform.c"
+#define PLATFORM_DRIVER_PRESENT
+#endif
+
+#if !defined(PCI_DRIVER) && !defined(PLATFORM_DRIVER_PRESENT) && \
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PLATFORM_DRIVER		ehci_grlib_driver
 #endif
 
 #if !defined(PCI_DRIVER) && !defined(PLATFORM_DRIVER) && \
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     !defined(PS3_SYSTEM_BUS_DRIVER) && !defined(OF_PLATFORM_DRIVER) && \
     !defined(XILINX_OF_PLATFORM_DRIVER)
 #error "missing bus glue for ehci-hcd"
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct platform_driver *plat_drivers[]  = {
+#ifdef CONFIG_USB_EHCI_FSL
+	&ehci_fsl_driver,
+#endif
+
+#ifdef CONFIG_USB_EHCI_MXC
+	&ehci_mxc_driver,
+#endif
+
+#ifdef CONFIG_CPU_SUBTYPE_SH7786
+	&ehci_hcd_sh_driver,
+#endif
+
+#ifdef CONFIG_SOC_AU1200
+	&ehci_hcd_au1xxx_driver,
+#endif
+
+#ifdef CONFIG_USB_EHCI_HCD_OMAP
+	&ehci_hcd_omap_driver,
+#endif
+
+#ifdef CONFIG_PLAT_ORION
+	&ehci_orion_driver,
+#endif
+
+#ifdef CONFIG_ARCH_IXP4XX
+	&ixp4xx_ehci_driver,
+#endif
+
+#ifdef CONFIG_USB_W90X900_EHCI
+	&ehci_hcd_w90x900_driver,
+#endif
+
+#ifdef CONFIG_ARCH_AT91
+	&ehci_atmel_driver,
+#endif
+
+#ifdef CONFIG_USB_OCTEON_EHCI
+	&ehci_octeon_driver,
+#endif
+
+#ifdef CONFIG_USB_CNS3XXX_EHCI
+	&cns3xxx_ehci_driver,
+#endif
+
+#ifdef CONFIG_ARCH_VT8500
+	&vt8500_ehci_driver,
+#endif
+
+#ifdef CONFIG_PLAT_SPEAR
+	&spear_ehci_hcd_driver,
+#endif
+
+#ifdef CONFIG_USB_EHCI_HCD_PMC_MSP
+	&ehci_hcd_msp_driver
+#endif
+
+#ifdef CONFIG_USB_EHCI_TEGRA
+	&tegra_ehci_driver
+#endif
+
+#ifdef CONFIG_USB_EHCI_S5P
+	&s5p_ehci_driver
+#endif
+
+#ifdef CONFIG_USB_EHCI_ATH79
+	&ehci_ath79_driver
+#endif
+
+#ifdef CONFIG_SPARC_LEON
+	&ehci_grlib_driver
+#endif
+
+#if defined(CONFIG_USB_EHCI_MSM_72K) || defined(CONFIG_USB_EHCI_MSM)
+	&ehci_msm_driver,
+#endif
+
+#ifdef CONFIG_USB_EHCI_MSM_HSIC
+	&ehci_msm_hsic_driver,
+#endif
+
+#ifdef CONFIG_USB_EHCI_MSM
+	&ehci_msm2_driver,
+#endif
+
+#ifdef CONFIG_USB_PXA168_EHCI
+	&ehci_pxa168_driver,
+#endif
+
+#ifdef CONFIG_CPU_XLR
+	&ehci_xls_driver,
+#endif
+
+#ifdef CONFIG_USB_EHCI_MV
+	&ehci_mv_driver,
+#endif
+
+#ifdef CONFIG_MACH_LOONGSON1
+	&ehci_ls1x_driver,
+#endif
+
+#ifdef CONFIG_USB_EHCI_HCD_PLATFORM
+	&ehci_platform_driver,
+#endif
+};
+
+
+static int __init ehci_hcd_init(void)
+{
+	int i, retval = 0;
+=======
 static int __init ehci_hcd_init(void)
 {
 	int retval = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __init ehci_hcd_init(void)
+{
+	int retval = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (usb_disabled())
 		return -ENODEV;
@@ -1395,11 +2075,28 @@ static int __init ehci_hcd_init(void)
 	}
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < ARRAY_SIZE(plat_drivers); i++) {
+		retval = platform_driver_register(plat_drivers[i]);
+		if (retval) {
+			while (--i >= 0)
+				platform_driver_unregister(plat_drivers[i]);
+			goto clean0;
+		}
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef PLATFORM_DRIVER
 	retval = platform_driver_register(&PLATFORM_DRIVER);
 	if (retval < 0)
 		goto clean0;
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef PCI_DRIVER
 	retval = pci_register_driver(&PCI_DRIVER);
@@ -1442,10 +2139,22 @@ clean2:
 	pci_unregister_driver(&PCI_DRIVER);
 clean1:
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < ARRAY_SIZE(plat_drivers); i++)
+		platform_driver_unregister(plat_drivers[i]);
+clean0:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef PLATFORM_DRIVER
 	platform_driver_unregister(&PLATFORM_DRIVER);
 clean0:
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 	debugfs_remove(ehci_debug_root);
 	ehci_debug_root = NULL;
@@ -1458,15 +2167,35 @@ module_init(ehci_hcd_init);
 
 static void __exit ehci_hcd_cleanup(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int i;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef XILINX_OF_PLATFORM_DRIVER
 	platform_driver_unregister(&XILINX_OF_PLATFORM_DRIVER);
 #endif
 #ifdef OF_PLATFORM_DRIVER
 	platform_driver_unregister(&OF_PLATFORM_DRIVER);
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	for (i = 0; i < ARRAY_SIZE(plat_drivers); i++)
+		platform_driver_unregister(plat_drivers[i]);
+
+=======
 #ifdef PLATFORM_DRIVER
 	platform_driver_unregister(&PLATFORM_DRIVER);
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef PLATFORM_DRIVER
+	platform_driver_unregister(&PLATFORM_DRIVER);
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef PCI_DRIVER
 	pci_unregister_driver(&PCI_DRIVER);
 #endif

@@ -28,9 +28,21 @@
 #define MAX_CMDLEN 240
 #define MIN_INTERVAL 15
 static char vmwdt_cmd[MAX_CMDLEN] = "IPL";
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool vmwdt_conceal;
+
+static bool vmwdt_nowayout = WATCHDOG_NOWAYOUT;
+=======
 static int vmwdt_conceal;
 
 static int vmwdt_nowayout = WATCHDOG_NOWAYOUT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int vmwdt_conceal;
+
+static int vmwdt_nowayout = WATCHDOG_NOWAYOUT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Arnd Bergmann <arndb@de.ibm.com>");
@@ -258,13 +270,29 @@ static int vmwdt_suspend(void)
 	if (test_and_set_bit(VMWDT_OPEN, &vmwdt_is_open)) {
 		pr_err("The system cannot be suspended while the watchdog"
 			" is in use\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return notifier_from_errno(-EBUSY);
+=======
 		return NOTIFY_BAD;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return NOTIFY_BAD;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (test_bit(VMWDT_RUNNING, &vmwdt_is_open)) {
 		clear_bit(VMWDT_OPEN, &vmwdt_is_open);
 		pr_err("The system cannot be suspended while the watchdog"
 			" is running\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return notifier_from_errno(-EBUSY);
+=======
 		return NOTIFY_BAD;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return NOTIFY_BAD;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return NOTIFY_DONE;
 }

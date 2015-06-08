@@ -53,10 +53,15 @@ static struct btrfs_dir_item *insert_with_overflow(struct btrfs_trans_handle
 		btrfs_extend_item(trans, root, path, data_size);
 	} else if (ret < 0)
 =======
+<<<<<<< HEAD
+		btrfs_extend_item(trans, root, path, data_size);
+	} else if (ret < 0)
+=======
 		ret = btrfs_extend_item(trans, root, path, data_size);
 	}
 	if (ret < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ERR_PTR(ret);
 	WARN_ON(ret > 0);
 	leaf = path->nodes[0];
@@ -98,6 +103,10 @@ int btrfs_insert_xattr_item(struct btrfs_trans_handle *trans,
 	if (IS_ERR(dir_item))
 		return PTR_ERR(dir_item);
 =======
+<<<<<<< HEAD
+	if (IS_ERR(dir_item))
+		return PTR_ERR(dir_item);
+=======
 	/*
 	 * FIXME: at some point we should handle xattr's that are larger than
 	 * what we can fit in our leaf.  We set location to NULL b/c we arent
@@ -106,6 +115,7 @@ int btrfs_insert_xattr_item(struct btrfs_trans_handle *trans,
 	 */
 	BUG_ON(IS_ERR(dir_item));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&location, 0, sizeof(location));
 
 	leaf = path->nodes[0];
@@ -134,7 +144,11 @@ int btrfs_insert_xattr_item(struct btrfs_trans_handle *trans,
 <<<<<<< HEAD
  * Will return 0 or -ENOMEM
 =======
+<<<<<<< HEAD
+ * Will return 0 or -ENOMEM
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int btrfs_insert_dir_item(struct btrfs_trans_handle *trans, struct btrfs_root
 			  *root, const char *name, int name_len,
@@ -219,9 +233,12 @@ struct btrfs_dir_item *btrfs_lookup_dir_item(struct btrfs_trans_handle *trans,
 	int cow = mod != 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct btrfs_key found_key;
 	struct extent_buffer *leaf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	key.objectid = dir;
 	btrfs_set_key_type(&key, BTRFS_DIR_ITEM_KEY);
@@ -231,6 +248,9 @@ struct btrfs_dir_item *btrfs_lookup_dir_item(struct btrfs_trans_handle *trans,
 	ret = btrfs_search_slot(trans, root, &key, path, ins_len, cow);
 	if (ret < 0)
 		return ERR_PTR(ret);
+<<<<<<< HEAD
+	if (ret > 0)
+=======
 <<<<<<< HEAD
 	if (ret > 0)
 =======
@@ -247,6 +267,7 @@ struct btrfs_dir_item *btrfs_lookup_dir_item(struct btrfs_trans_handle *trans,
 	    btrfs_key_type(&found_key) != BTRFS_DIR_ITEM_KEY ||
 	    found_key.offset != key.offset)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 
 	return btrfs_match_dir_item_name(root, path, name, name_len);
@@ -343,9 +364,12 @@ struct btrfs_dir_item *btrfs_lookup_xattr(struct btrfs_trans_handle *trans,
 	int cow = mod != 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct btrfs_key found_key;
 	struct extent_buffer *leaf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	key.objectid = dir;
 	btrfs_set_key_type(&key, BTRFS_XATTR_ITEM_KEY);
@@ -353,6 +377,9 @@ struct btrfs_dir_item *btrfs_lookup_xattr(struct btrfs_trans_handle *trans,
 	ret = btrfs_search_slot(trans, root, &key, path, ins_len, cow);
 	if (ret < 0)
 		return ERR_PTR(ret);
+<<<<<<< HEAD
+	if (ret > 0)
+=======
 <<<<<<< HEAD
 	if (ret > 0)
 =======
@@ -369,6 +396,7 @@ struct btrfs_dir_item *btrfs_lookup_xattr(struct btrfs_trans_handle *trans,
 	    btrfs_key_type(&found_key) != BTRFS_XATTR_ITEM_KEY ||
 	    found_key.offset != key.offset)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 
 	return btrfs_match_dir_item_name(root, path, name, name_len);
@@ -446,9 +474,14 @@ int btrfs_delete_one_dir_name(struct btrfs_trans_handle *trans,
 		btrfs_truncate_item(trans, root, path,
 				    item_len - sub_item_len, 1);
 =======
+<<<<<<< HEAD
+		btrfs_truncate_item(trans, root, path,
+				    item_len - sub_item_len, 1);
+=======
 		ret = btrfs_truncate_item(trans, root, path,
 					  item_len - sub_item_len, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return ret;
 }

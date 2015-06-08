@@ -24,8 +24,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -43,7 +46,13 @@
 
 #include "mpc85xx.h"
 =======
+<<<<<<< HEAD
+#include "smp.h"
+
+#include "mpc85xx.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef DEBUG
 
@@ -73,16 +82,24 @@ void __init mpc85xx_ds_pic_init(void)
 #ifdef CONFIG_PPC_I8259
 	struct device_node *np;
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PPC_I8259
+	struct device_node *np;
+=======
 	struct resource r;
 	struct device_node *np;
 #ifdef CONFIG_PPC_I8259
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device_node *cascade_node = NULL;
 	int cascade_irq;
 #endif
 	unsigned long root = of_get_flat_dt_root();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (of_flat_dt_is_compatible(root, "fsl,MPC8572DS-CAMP")) {
 		mpic = mpic_alloc(NULL, 0,
 			MPIC_NO_RESET |
@@ -92,6 +109,8 @@ void __init mpc85xx_ds_pic_init(void)
 	} else {
 		mpic = mpic_alloc(NULL, 0,
 			  MPIC_BIG_ENDIAN |
+<<<<<<< HEAD
+=======
 =======
 	np = of_find_node_by_type(NULL, "open-pic");
 	if (np == NULL) {
@@ -115,6 +134,7 @@ void __init mpc85xx_ds_pic_init(void)
 			  MPIC_PRIMARY | MPIC_WANTS_RESET |
 			  MPIC_BIG_ENDIAN | MPIC_BROKEN_FRR_NIRQS |
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  MPIC_SINGLE_DEST_CPU,
 			0, 256, " OpenPIC  ");
 	}
@@ -122,9 +142,12 @@ void __init mpc85xx_ds_pic_init(void)
 	BUG_ON(mpic == NULL);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	of_node_put(np);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpic_init(mpic);
 
 #ifdef CONFIG_PPC_I8259
@@ -182,10 +205,13 @@ static int mpc85xx_exclude_device(struct pci_controller *hose,
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SMP
 extern void __init mpc85xx_smp_init(void);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mpc85xx_ds_setup_arch(void)
 {
 #ifdef CONFIG_PCI
@@ -221,10 +247,14 @@ static void __init mpc85xx_ds_setup_arch(void)
 <<<<<<< HEAD
 	mpc85xx_smp_init();
 =======
+<<<<<<< HEAD
+	mpc85xx_smp_init();
+=======
 #ifdef CONFIG_SMP
 	mpc85xx_smp_init();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SWIOTLB
 	if (memblock_end_of_DRAM() > max) {
@@ -259,6 +289,11 @@ machine_device_initcall(mpc8544_ds, mpc85xx_common_publish_devices);
 machine_device_initcall(mpc8572_ds, mpc85xx_common_publish_devices);
 machine_device_initcall(p2020_ds, mpc85xx_common_publish_devices);
 =======
+<<<<<<< HEAD
+machine_device_initcall(mpc8544_ds, mpc85xx_common_publish_devices);
+machine_device_initcall(mpc8572_ds, mpc85xx_common_publish_devices);
+machine_device_initcall(p2020_ds, mpc85xx_common_publish_devices);
+=======
 static struct of_device_id __initdata mpc85xxds_ids[] = {
 	{ .type = "soc", },
 	{ .compatible = "soc", },
@@ -275,6 +310,7 @@ machine_device_initcall(mpc8544_ds, mpc85xxds_publish_devices);
 machine_device_initcall(mpc8572_ds, mpc85xxds_publish_devices);
 machine_device_initcall(p2020_ds, mpc85xxds_publish_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 machine_arch_initcall(mpc8544_ds, swiotlb_setup_bus_notifier);
 machine_arch_initcall(mpc8572_ds, swiotlb_setup_bus_notifier);

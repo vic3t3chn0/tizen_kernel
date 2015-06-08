@@ -5,7 +5,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -283,8 +291,19 @@ acpi_ns_repair_object(struct acpi_predefined_data *data,
 		      union acpi_operand_object **return_object_ptr);
 
 acpi_status
+<<<<<<< HEAD
+<<<<<<< HEAD
+acpi_ns_wrap_with_package(struct acpi_predefined_data *data,
+			  union acpi_operand_object *original_object,
+			  union acpi_operand_object **obj_desc_ptr);
+=======
 acpi_ns_repair_package_list(struct acpi_predefined_data *data,
 			    union acpi_operand_object **obj_desc_ptr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+acpi_ns_repair_package_list(struct acpi_predefined_data *data,
+			    union acpi_operand_object **obj_desc_ptr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 acpi_status
 acpi_ns_repair_null_element(struct acpi_predefined_data *data,

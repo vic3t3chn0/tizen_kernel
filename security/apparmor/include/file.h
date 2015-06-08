@@ -120,8 +120,12 @@ static inline u16 dfa_map_xindex(u16 mask)
 <<<<<<< HEAD
 	} else if (old_index) {
 =======
+<<<<<<< HEAD
+	} else if (old_index) {
+=======
 	} else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		index |= AA_X_TABLE;
 		index |= old_index - 4;
 	}

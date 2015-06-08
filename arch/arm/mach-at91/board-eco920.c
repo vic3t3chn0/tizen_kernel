@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <mach/at91_ramc.h>
 =======
+<<<<<<< HEAD
+#include <mach/at91_ramc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cpu.h>
 
 #include "generic.h"
@@ -42,8 +46,12 @@ static void __init eco920_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91rm9200_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Setup the LEDs */
 	at91_init_leds(AT91_PIN_PB0, AT91_PIN_PB1);
@@ -58,6 +66,9 @@ static void __init eco920_init_early(void)
 <<<<<<< HEAD
 static struct macb_platform_data __initdata eco920_eth_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata eco920_eth_data = {
+=======
 static void __init eco920_init_irq(void)
 {
 	at91rm9200_init_interrupts(NULL);
@@ -65,6 +76,7 @@ static void __init eco920_init_irq(void)
 
 static struct at91_eth_data __initdata eco920_eth_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PC2,
 	.is_rmii	= 1,
 };
@@ -75,7 +87,12 @@ static struct at91_usbh_data __initdata eco920_usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_udc_data __initdata eco920_udc_data = {
@@ -91,7 +108,13 @@ static struct at91_mmc_data __initdata eco920_mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.det_pin	= -EINVAL,
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct physmap_flash_data eco920_flash_data = {
@@ -136,8 +159,12 @@ static void __init eco920_board_init(void)
 <<<<<<< HEAD
 	at91_ramc_write(0, AT91_SMC_CSR(7),	AT91_SMC_RWHOLD_(1)
 =======
+<<<<<<< HEAD
+	at91_ramc_write(0, AT91_SMC_CSR(7),	AT91_SMC_RWHOLD_(1)
+=======
 	at91_sys_write(AT91_SMC_CSR(7),	AT91_SMC_RWHOLD_(1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				| AT91_SMC_RWSETUP_(1)
 				| AT91_SMC_DBW_8
 				| AT91_SMC_WSEN
@@ -152,8 +179,12 @@ static void __init eco920_board_init(void)
 <<<<<<< HEAD
 	at91_ramc_write(0, AT91_SMC_CSR(3),
 =======
+<<<<<<< HEAD
+	at91_ramc_write(0, AT91_SMC_CSR(3),
+=======
 	at91_sys_write(AT91_SMC_CSR(3),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		AT91_SMC_DBW_16  |	/* 16 bit */
 		AT91_SMC_WSEN    |
 		AT91_SMC_NWS_(5) |	/* wait states */
@@ -171,9 +202,15 @@ MACHINE_START(ECO920, "eco920")
 	.init_early	= eco920_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= eco920_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91rm9200_map_io,
 	.init_early	= eco920_init_early,
 	.init_irq	= eco920_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= eco920_board_init,
 MACHINE_END

@@ -601,8 +601,12 @@ static void rds_iw_cong_recv(struct rds_connection *conn,
 <<<<<<< HEAD
 		addr = kmap_atomic(frag->f_page);
 =======
+<<<<<<< HEAD
+		addr = kmap_atomic(frag->f_page);
+=======
 		addr = kmap_atomic(frag->f_page, KM_SOFTIRQ0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		src = addr + frag_off;
 		dst = (void *)map->m_page_addrs[map_page] + map_off;
@@ -615,8 +619,12 @@ static void rds_iw_cong_recv(struct rds_connection *conn,
 <<<<<<< HEAD
 		kunmap_atomic(addr);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(addr);
+=======
 		kunmap_atomic(addr, KM_SOFTIRQ0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		copied += to_copy;
 
@@ -672,8 +680,12 @@ static void rds_iw_process_recv(struct rds_connection *conn,
 <<<<<<< HEAD
 		       "from %pI4 didn't include a "
 =======
+<<<<<<< HEAD
+		       "from %pI4 didn't include a "
+=======
 		       "from %pI4 didn't inclue a "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       "header, disconnecting and "
 		       "reconnecting\n",
 		       &conn->c_faddr);
@@ -769,9 +781,13 @@ static void rds_iw_process_recv(struct rds_connection *conn,
 <<<<<<< HEAD
 					  &iwinc->ii_inc, GFP_ATOMIC);
 =======
+<<<<<<< HEAD
+					  &iwinc->ii_inc, GFP_ATOMIC);
+=======
 					  &iwinc->ii_inc, GFP_ATOMIC,
 					  KM_SOFTIRQ0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			state->ack_next = be64_to_cpu(hdr->h_sequence);
 			state->ack_next_valid = 1;
 		}

@@ -17,16 +17,22 @@
 #include <linux/pm.h>
 #include <linux/i2c.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/consumer.h>
 #include <linux/spi/spi.h>
 #include <linux/slab.h>
 #include <linux/of_device.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/platform_device.h>
 #include <linux/regulator/consumer.h>
 #include <linux/spi/spi.h>
 #include <linux/slab.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
@@ -530,8 +536,12 @@ static int wm8737_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8737_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8737_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8737_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= wm8737_hw_params,
 	.set_sysclk	= wm8737_set_dai_sysclk,
 	.set_fmt	= wm8737_set_dai_fmt,
@@ -553,8 +563,12 @@ static struct snd_soc_dai_driver wm8737_dai = {
 <<<<<<< HEAD
 static int wm8737_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8737_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8737_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8737_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -617,8 +631,12 @@ static int wm8737_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, wm8737_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, wm8737_snd_controls,
+=======
 	snd_soc_add_controls(codec, wm8737_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(wm8737_snd_controls));
 	wm8737_add_widgets(codec);
 
@@ -654,6 +672,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8737 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct of_device_id wm8737_of_match[] = {
 	{ .compatible = "wlf,wm8737", },
 	{ }
@@ -661,8 +682,11 @@ static const struct of_device_id wm8737_of_match[] = {
 
 MODULE_DEVICE_TABLE(of, wm8737_of_match);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 static __devinit int wm8737_i2c_probe(struct i2c_client *i2c,
 				      const struct i2c_device_id *id)
@@ -705,7 +729,11 @@ static struct i2c_driver wm8737_i2c_driver = {
 <<<<<<< HEAD
 		.of_match_table = wm8737_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = wm8737_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe =    wm8737_i2c_probe,
 	.remove =   __devexit_p(wm8737_i2c_remove),
@@ -747,7 +775,11 @@ static struct spi_driver wm8737_spi_driver = {
 <<<<<<< HEAD
 		.of_match_table = wm8737_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = wm8737_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe		= wm8737_spi_probe,
 	.remove		= __devexit_p(wm8737_spi_remove),

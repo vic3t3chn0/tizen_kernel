@@ -167,10 +167,15 @@ struct xfs_log_item_desc {
 	struct list_head	lid_trans;
 	unsigned char		lid_flags;
 =======
+<<<<<<< HEAD
+	struct list_head	lid_trans;
+	unsigned char		lid_flags;
+=======
 	ushort			lid_size;
 	unsigned char		lid_flags;
 	struct list_head	lid_trans;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define XFS_LID_DIRTY		0x1
@@ -334,8 +339,12 @@ typedef struct xfs_log_item {
 <<<<<<< HEAD
 	const struct xfs_item_ops	*li_ops;	/* function list */
 =======
+<<<<<<< HEAD
+	const struct xfs_item_ops	*li_ops;	/* function list */
+=======
 	struct xfs_item_ops		*li_ops;	/* function list */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* delayed logging */
 	struct list_head		li_cil;		/* CIL pointers */
@@ -353,8 +362,12 @@ typedef struct xfs_log_item {
 <<<<<<< HEAD
 struct xfs_item_ops {
 =======
+<<<<<<< HEAD
+struct xfs_item_ops {
+=======
 typedef struct xfs_item_ops {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint (*iop_size)(xfs_log_item_t *);
 	void (*iop_format)(xfs_log_item_t *, struct xfs_log_iovec *);
 	void (*iop_pin)(xfs_log_item_t *);
@@ -368,8 +381,12 @@ typedef struct xfs_item_ops {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } xfs_item_ops_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define IOP_SIZE(ip)		(*(ip)->li_ops->iop_size)(ip)
 #define IOP_FORMAT(ip,vp)	(*(ip)->li_ops->iop_format)(ip, vp)
@@ -490,9 +507,13 @@ void		xfs_trans_ichgtime(struct xfs_trans *, struct xfs_inode *, int);
 <<<<<<< HEAD
 void		xfs_trans_ijoin(struct xfs_trans *, struct xfs_inode *, uint);
 =======
+<<<<<<< HEAD
+void		xfs_trans_ijoin(struct xfs_trans *, struct xfs_inode *, uint);
+=======
 void		xfs_trans_ijoin_ref(struct xfs_trans *, struct xfs_inode *, uint);
 void		xfs_trans_ijoin(struct xfs_trans *, struct xfs_inode *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void		xfs_trans_log_buf(xfs_trans_t *, struct xfs_buf *, uint, uint);
 void		xfs_trans_log_inode(xfs_trans_t *, struct xfs_inode *, uint);
 struct xfs_efi_log_item	*xfs_trans_get_efi(xfs_trans_t *, uint);
@@ -511,11 +532,15 @@ void		xfs_trans_log_efd_extent(xfs_trans_t *,
 <<<<<<< HEAD
 int		xfs_trans_commit(xfs_trans_t *, uint flags);
 =======
+<<<<<<< HEAD
+int		xfs_trans_commit(xfs_trans_t *, uint flags);
+=======
 int		_xfs_trans_commit(xfs_trans_t *,
 				  uint flags,
 				  int *);
 #define xfs_trans_commit(tp, flags)	_xfs_trans_commit(tp, flags, NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void		xfs_trans_cancel(xfs_trans_t *, int);
 int		xfs_trans_ail_init(struct xfs_mount *);
 void		xfs_trans_ail_destroy(struct xfs_mount *);

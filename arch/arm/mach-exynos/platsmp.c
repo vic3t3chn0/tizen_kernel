@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* linux/arch/arm/mach-exynos4/platsmp.c
 =======
+<<<<<<< HEAD
+/* linux/arch/arm/mach-exynos4/platsmp.c
+=======
 /* linux/arch/arm/mach-exynos/platsmp.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2010-2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
@@ -31,14 +35,22 @@
 #include <asm/smp_plat.h>
 #include <asm/smp_scu.h>
 =======
+<<<<<<< HEAD
+#include <asm/smp_plat.h>
+#include <asm/smp_scu.h>
+=======
 #include <asm/smp_scu.h>
 #include <asm/unified.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/regs-clock.h>
 #include <mach/regs-pmu.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/cpu.h>
 
@@ -46,6 +58,8 @@ extern void exynos4_secondary_startup(void);
 
 #define CPU1_BOOT_REG		(samsung_rev() == EXYNOS4210_REV_1_1 ? \
 				S5P_INFORM5 : S5P_VA_SYSRAM)
+<<<<<<< HEAD
+=======
 =======
 #include <mach/smc.h>
 
@@ -65,6 +79,7 @@ struct _cpu_boot_info {
 
 struct _cpu_boot_info cpu_boot_info[NR_CPUS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * control for which core is the next to come out of the secondary
@@ -74,8 +89,13 @@ struct _cpu_boot_info cpu_boot_info[NR_CPUS];
 
 volatile int __cpuinitdata pen_release = -1;
 =======
+<<<<<<< HEAD
+
+volatile int __cpuinitdata pen_release = -1;
+=======
 volatile int pen_release = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Write pen_release in a way that is guaranteed to be visible to all
@@ -94,10 +114,13 @@ static void __iomem *scu_base_addr(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (soc_is_exynos5210() || soc_is_exynos5250())
 		return 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (void __iomem *)(S5P_VA_SCU);
 }
 
@@ -105,6 +128,8 @@ static DEFINE_SPINLOCK(boot_lock);
 
 void __cpuinit platform_secondary_init(unsigned int cpu)
 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	void __iomem *dist_base = S5P_VA_GIC_DIST +
@@ -117,6 +142,7 @@ void __cpuinit platform_secondary_init(unsigned int cpu)
 		enable_cache_foz();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * if any interrupts are already enabled for the primary
 	 * core (e.g. timer irq), then they will not have been enabled
@@ -125,8 +151,12 @@ void __cpuinit platform_secondary_init(unsigned int cpu)
 <<<<<<< HEAD
 	gic_secondary_init(0);
 =======
+<<<<<<< HEAD
+	gic_secondary_init(0);
+=======
 	gic_secondary_init_base(0, dist_base, cpu_base);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * let the primary processor know we're out of the
@@ -141,6 +171,11 @@ void __cpuinit platform_secondary_init(unsigned int cpu)
 	spin_unlock(&boot_lock);
 }
 
+<<<<<<< HEAD
+int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
+{
+	unsigned long timeout;
+=======
 <<<<<<< HEAD
 int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 {
@@ -185,6 +220,7 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	unsigned int tmp_wtcon;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Set synchronisation state between this boot processor
@@ -192,6 +228,8 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	 */
 	spin_lock(&boot_lock);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_SEC_WATCHDOG_RESET
@@ -205,6 +243,7 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The secondary processor is waiting to be released from
 	 * the holding pen - release it, then wait for it to flag
@@ -214,6 +253,9 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	 * "cpu" is Linux's internal ID.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	write_pen_release(cpu_logical_map(cpu));
 
 	if (!(__raw_readl(S5P_ARM_CORE1_STATUS) & S5P_CORE_LOCAL_PWR_EN)) {
@@ -237,10 +279,13 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 			return -ETIMEDOUT;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	write_pen_release(cpu);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Send the secondary CPU a soft interrupt, thereby causing
 	 * the boot monitor to read the system wide flags register,
@@ -249,11 +294,20 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	timeout = jiffies + (1 * HZ);
 	while (time_before(jiffies, timeout)) {
 		smp_rmb();
 
+<<<<<<< HEAD
+		__raw_writel(virt_to_phys(exynos4_secondary_startup),
+			CPU1_BOOT_REG);
+		gic_raise_softirq(cpumask_of(cpu), 1);
+=======
 <<<<<<< HEAD
 		__raw_writel(virt_to_phys(exynos4_secondary_startup),
 			CPU1_BOOT_REG);
@@ -270,6 +324,7 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 #endif
 		smp_send_reschedule(cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (pen_release == -1)
 			break;
@@ -279,11 +334,14 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SEC_WATCHDOG_RESET
 	__raw_writel(tmp_wtcon, S3C2410_WTCON);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * now the secondary core is starting up let it run its
 	 * calibrations, then wait for it to finish
@@ -293,6 +351,8 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	return pen_release != -1 ? -ENOSYS : 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static inline unsigned long exynos5_get_core_count(void)
@@ -309,11 +369,15 @@ static inline unsigned long exynos5_get_core_count(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Initialise the CPU possible map early - this describes the CPUs
  * which may be present or become present in the system.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init smp_init_cpus(void)
 {
@@ -330,6 +394,8 @@ void __init smp_init_cpus(void)
 		pr_warn("SMP: %u cores greater than maximum (%u), clipping\n",
 			ncores, nr_cpu_ids);
 		ncores = nr_cpu_ids;
+<<<<<<< HEAD
+=======
 =======
 void __init smp_init_cpus(void)
 {
@@ -348,6 +414,7 @@ void __init smp_init_cpus(void)
 		       ncores, NR_CPUS);
 		ncores = NR_CPUS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for (i = 0; i < ncores; i++)
@@ -359,6 +426,9 @@ void __init smp_init_cpus(void)
 void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!soc_is_exynos5250())
 		scu_enable(scu_base_addr());
 
@@ -370,6 +440,8 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 	 */
 	__raw_writel(virt_to_phys(exynos4_secondary_startup),
 			CPU1_BOOT_REG);
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -400,4 +472,5 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 		cpu_boot_info[i].power_base = S5P_ARM_CORE_CONFIGURATION(i);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

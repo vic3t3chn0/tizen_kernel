@@ -1,6 +1,9 @@
 config PPC_WSP
 	bool
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PPC_A2
 	select GENERIC_TBSYNC
 	select PPC_ICSWX
@@ -11,8 +14,11 @@ config PPC_WSP
 	select PPC_IO_WORKAROUNDS if PCI
 	select PPC_INDIRECT_PIO if PCI
 	select PPC_WSP_COPRO
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default n
 
 menu "WSP platform selection"
@@ -20,6 +26,9 @@ menu "WSP platform selection"
 
 config PPC_PSR2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "PowerEN System Reference Platform 2"
 	select EPAPR_BOOT
 	select PPC_WSP
@@ -30,6 +39,8 @@ config PPC_CHROMA
 	select EPAPR_BOOT
 	select PPC_WSP
 	select OF_DYNAMIC
+<<<<<<< HEAD
+=======
 =======
 	bool "PSR-2 platform"
 	select PPC_A2
@@ -40,6 +51,7 @@ config PPC_CHROMA
 	select PPC_XICS
 	select PPC_ICP_NATIVE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default y
 
 endmenu
@@ -49,9 +61,12 @@ config PPC_A2_DD2
 	depends on PPC_A2
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 config WORKAROUND_ERRATUM_463
 	depends on PPC_A2_DD2
 	bool "Workaround erratum 463"
 	default y
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

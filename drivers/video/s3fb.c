@@ -727,7 +727,15 @@ static int s3fb_set_par(struct fb_info *info)
 	if (par->chip == CHIP_988_VIRGE_VX) {
 		vga_wcrt(par->state.vgabase, 0x50, 0x00);
 		vga_wcrt(par->state.vgabase, 0x67, 0x50);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		msleep(10); /* screen remains blank sometimes without this */
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		vga_wcrt(par->state.vgabase, 0x63, (mode <= 2) ? 0x90 : 0x09);
 		vga_wcrt(par->state.vgabase, 0x66, 0x90);
 	}
@@ -901,7 +909,16 @@ static int s3fb_set_par(struct fb_info *info)
 
 	/* Set Data Transfer Position */
 	hsstart = ((info->var.xres + info->var.right_margin) * hmul) / 8;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* + 2 is needed for Virge/VX, does no harm on other cards */
+	value = clamp((htotal + hsstart + 1) / 2 + 2, hsstart + 4, htotal + 1);
+=======
 	value = clamp((htotal + hsstart + 1) / 2, hsstart + 4, htotal + 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	value = clamp((htotal + hsstart + 1) / 2, hsstart + 4, htotal + 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	svga_wcrt_multi(par->state.vgabase, s3_dtpc_regs, value);
 
 	memset_io(info->screen_base, 0x00, screen_size);
@@ -1019,12 +1036,28 @@ static int s3fb_pan_display(struct fb_var_screeninfo *var, struct fb_info *info)
 	unsigned int offset;
 
 	/* Calculate the offset */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (info->var.bits_per_pixel == 0) {
+		offset = (var->yoffset / 16) * (info->var.xres_virtual / 2)
+		       + (var->xoffset / 2);
+		offset = offset >> 2;
+	} else {
+		offset = (var->yoffset * info->fix.line_length) +
+			 (var->xoffset * info->var.bits_per_pixel / 8);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (var->bits_per_pixel == 0) {
 		offset = (var->yoffset / 16) * (var->xres_virtual / 2) + (var->xoffset / 2);
 		offset = offset >> 2;
 	} else {
 		offset = (var->yoffset * info->fix.line_length) +
 			 (var->xoffset * var->bits_per_pixel / 8);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		offset = offset >> 2;
 	}
 
@@ -1215,6 +1248,37 @@ static int __devinit s3_pci_probe(struct pci_dev *dev, const struct pci_device_i
 			info->screen_size = 2 << 20;
 			break;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else if (par->chip == CHIP_988_VIRGE_VX) {
+		switch ((regval & 0x60) >> 5) {
+		case 0: /* 2MB */
+			info->screen_size = 2 << 20;
+			break;
+		case 1: /* 4MB */
+			info->screen_size = 4 << 20;
+			break;
+		case 2: /* 6MB */
+			info->screen_size = 6 << 20;
+			break;
+		case 3: /* 8MB */
+			info->screen_size = 8 << 20;
+			break;
+		}
+		/* off-screen memory */
+		regval = vga_rcrt(par->state.vgabase, 0x37);
+		switch ((regval & 0x60) >> 5) {
+		case 1: /* 4MB */
+			info->screen_size -= 4 << 20;
+			break;
+		case 2: /* 2MB */
+			info->screen_size -= 2 << 20;
+			break;
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		info->screen_size = s3_memsizes[regval >> 5] << 10;
 	info->fix.smem_len = info->screen_size;
@@ -1504,7 +1568,15 @@ static struct pci_driver s3fb_pci_driver = {
 	.resume		= s3_pci_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Parse user specified options */
+=======
 /* Parse user speficied options */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Parse user speficied options */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef MODULE
 static int  __init s3fb_setup(char *options)

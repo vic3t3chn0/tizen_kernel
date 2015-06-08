@@ -5,6 +5,9 @@
 #include <video/sh_mobile_meram.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Register definitions */
 #define _LDDCKR			0x410
 #define LDDCKR_ICKSEL_BUS	(0 << 16)
@@ -122,6 +125,8 @@ enum {
 	SYS16C	= LDMT1R_IFM | LDMT1R_MIFTYP_SYS16C,	/* 18bpp, 2:16 */
 	SYS18	= LDMT1R_IFM | LDMT1R_MIFTYP_SYS18,	/* 18bpp */
 	SYS24	= LDMT1R_IFM | LDMT1R_MIFTYP_SYS24,	/* 24bpp */
+<<<<<<< HEAD
+=======
 =======
 enum {
 	RGB8,   /* 24bpp, 8:8:8 */
@@ -144,6 +149,7 @@ enum {
 	SYS18,  /* 18bpp */
 	SYS24,  /* 24bpp */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum { LCDC_CHAN_DISABLED = 0,
@@ -171,6 +177,9 @@ struct sh_mobile_lcdc_sys_bus_ops {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sh_mobile_lcdc_panel_cfg {
 	unsigned long width;		/* Panel width in mm */
 	unsigned long height;		/* Panel height in mm */
@@ -180,6 +189,8 @@ struct sh_mobile_lcdc_panel_cfg {
 			       struct sh_mobile_lcdc_sys_bus_ops *sys_ops);
 	void (*display_on)(void);
 	void (*display_off)(void);
+<<<<<<< HEAD
+=======
 =======
 struct module;
 struct sh_mobile_lcdc_board_cfg {
@@ -199,6 +210,7 @@ struct sh_mobile_lcdc_lcd_size_cfg { /* width and height of panel in mm */
 	unsigned long width;
 	unsigned long height;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* backlight info */
@@ -209,12 +221,20 @@ struct sh_mobile_lcdc_bl_info {
 	int (*set_brightness)(int brightness);
 	int (*get_brightness)(void);
 =======
+<<<<<<< HEAD
+	int (*set_brightness)(int brightness);
+	int (*get_brightness)(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct sh_mobile_lcdc_chan_cfg {
 	int chan;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int fourcc;
 	int colorspace;
 	int interface_type; /* selects RGBn or SYSn I/F, see above */
@@ -228,6 +248,8 @@ struct sh_mobile_lcdc_chan_cfg {
 	const struct sh_mobile_meram_cfg *meram_cfg;
 
 	struct platform_device *tx_dev;	/* HDMI/DSI transmitter device */
+<<<<<<< HEAD
+=======
 =======
 	int bpp;
 	int interface_type; /* selects RGBn or SYSn I/F, see above */
@@ -242,6 +264,7 @@ struct sh_mobile_lcdc_chan_cfg {
 	int nonstd;
 	struct sh_mobile_meram_cfg *meram_cfg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct sh_mobile_lcdc_info {

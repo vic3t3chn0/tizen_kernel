@@ -106,7 +106,11 @@ struct rpc_call_ops {
 <<<<<<< HEAD
 	void (*rpc_count_stats)(struct rpc_task *, void *);
 =======
+<<<<<<< HEAD
+	void (*rpc_count_stats)(struct rpc_task *, void *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void (*rpc_release)(void *);
 };
 
@@ -202,8 +206,12 @@ struct rpc_wait_queue {
 <<<<<<< HEAD
 #if defined(RPC_DEBUG) || defined(RPC_TRACEPOINTS)
 =======
+<<<<<<< HEAD
+#if defined(RPC_DEBUG) || defined(RPC_TRACEPOINTS)
+=======
 #ifdef RPC_DEBUG
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *		name;
 #endif
 };
@@ -236,12 +244,18 @@ void		rpc_destroy_wait_queue(struct rpc_wait_queue *);
 void		rpc_sleep_on(struct rpc_wait_queue *, struct rpc_task *,
 					rpc_action action);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void		rpc_sleep_on_priority(struct rpc_wait_queue *,
 					struct rpc_task *,
 					rpc_action action,
 					int priority);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void		rpc_wake_up_queued_task(struct rpc_wait_queue *,
 					struct rpc_task *);
 void		rpc_wake_up(struct rpc_wait_queue *);
@@ -251,7 +265,13 @@ struct rpc_task *rpc_wake_up_first(struct rpc_wait_queue *,
 					bool (*)(struct rpc_task *, void *),
 					void *);
 =======
+<<<<<<< HEAD
+struct rpc_task *rpc_wake_up_first(struct rpc_wait_queue *,
+					bool (*)(struct rpc_task *, void *),
+					void *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void		rpc_wake_up_status(struct rpc_wait_queue *, int);
 int		rpc_queue_empty(struct rpc_wait_queue *);
 void		rpc_delay(struct rpc_task *, unsigned long);
@@ -265,8 +285,13 @@ int		__rpc_wait_for_completion_task(struct rpc_task *task, int (*)(void *));
 struct net;
 void		rpc_show_tasks(struct net *);
 =======
+<<<<<<< HEAD
+struct net;
+void		rpc_show_tasks(struct net *);
+=======
 void		rpc_show_tasks(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 int		rpc_init_mempool(void);
 void		rpc_destroy_mempool(void);
@@ -289,6 +314,9 @@ static inline int rpc_task_has_priority(struct rpc_task *task, unsigned char pri
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(RPC_DEBUG) || defined (RPC_TRACEPOINTS)
 static inline const char * rpc_qname(const struct rpc_wait_queue *q)
 {
@@ -305,6 +333,8 @@ static inline void rpc_assign_waitqueue_name(struct rpc_wait_queue *q,
 		const char *name)
 {
 }
+<<<<<<< HEAD
+=======
 =======
 #ifdef RPC_DEBUG
 static inline const char * rpc_qname(struct rpc_wait_queue *q)
@@ -312,6 +342,7 @@ static inline const char * rpc_qname(struct rpc_wait_queue *q)
 	return ((q && q->name) ? q->name : "unknown");
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* _LINUX_SUNRPC_SCHED_H_ */

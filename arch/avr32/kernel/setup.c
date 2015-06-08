@@ -447,8 +447,12 @@ find_bootmap_pfn(const struct resource *mem)
 <<<<<<< HEAD
 	unsigned long node_pages = PFN_UP(resource_size(mem));
 =======
+<<<<<<< HEAD
+	unsigned long node_pages = PFN_UP(resource_size(mem));
+=======
 	unsigned long node_pages = PFN_UP(mem->end - mem->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long bootmap_start;
 
 	bootmap_pages = bootmem_bootmap_pages(node_pages);
@@ -546,16 +550,22 @@ static void __init setup_bootmem(void)
 			if (res->start >= PFN_PHYS(first_pfn)
 			    && res->end < PFN_PHYS(max_pfn))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				reserve_bootmem_node(NODE_DATA(node),
 						     res->start,
 						     resource_size(res),
 						     BOOTMEM_DEFAULT);
+<<<<<<< HEAD
+=======
 =======
 				reserve_bootmem_node(
 					NODE_DATA(node), res->start,
 					res->end - res->start + 1,
 					BOOTMEM_DEFAULT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		node_set_online(node);

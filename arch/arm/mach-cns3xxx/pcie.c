@@ -52,8 +52,12 @@ static struct cns3xxx_pcie *sysdata_to_cnspci(void *sysdata)
 <<<<<<< HEAD
 static struct cns3xxx_pcie *pdev_to_cnspci(const struct pci_dev *dev)
 =======
+<<<<<<< HEAD
+static struct cns3xxx_pcie *pdev_to_cnspci(const struct pci_dev *dev)
+=======
 static struct cns3xxx_pcie *pdev_to_cnspci(struct pci_dev *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return sysdata_to_cnspci(dev->sysdata);
 }
@@ -157,8 +161,11 @@ static int cns3xxx_pci_setup(int nr, struct pci_sys_data *sys)
 	struct resource *res_mem = &cnspci->res_mem;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct resource **sysres = sys->resource;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(request_resource(&iomem_resource, res_io) ||
 	       request_resource(&iomem_resource, res_mem));
@@ -167,9 +174,14 @@ static int cns3xxx_pci_setup(int nr, struct pci_sys_data *sys)
 	pci_add_resource_offset(&sys->resources, res_io, sys->io_offset);
 	pci_add_resource_offset(&sys->resources, res_mem, sys->mem_offset);
 =======
+<<<<<<< HEAD
+	pci_add_resource_offset(&sys->resources, res_io, sys->io_offset);
+	pci_add_resource_offset(&sys->resources, res_mem, sys->mem_offset);
+=======
 	sysres[0] = res_io;
 	sysres[1] = res_mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
@@ -182,17 +194,23 @@ static struct pci_ops cns3xxx_pcie_ops = {
 static struct pci_bus *cns3xxx_pci_scan_bus(int nr, struct pci_sys_data *sys)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return pci_scan_root_bus(NULL, sys->busnr, &cns3xxx_pcie_ops, sys,
 				 &sys->resources);
 }
 
 static int cns3xxx_pcie_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+<<<<<<< HEAD
+=======
 =======
 	return pci_scan_bus(sys->busnr, &cns3xxx_pcie_ops, sys);
 }
 
 static int cns3xxx_pcie_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cns3xxx_pcie *cnspci = pdev_to_cnspci(dev);
 	int irq = cnspci->irqs[slot];
@@ -394,7 +412,13 @@ static int __init cns3xxx_pcie_init(void)
 	pcibios_min_mem = 0;
 
 =======
+<<<<<<< HEAD
+	pcibios_min_io = 0;
+	pcibios_min_mem = 0;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hook_fault_code(16 + 6, cns3xxx_pcie_abort_handler, SIGBUS, 0,
 			"imprecise external abort");
 

@@ -41,10 +41,15 @@ typedef void (*wm8958_micdet_cb)(u16 status, void *data);
 
 int wm8994_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      int micbias);
 int wm8958_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack,
 		      wm8958_micdet_cb cb, void *cb_data);
 
+<<<<<<< HEAD
+=======
 =======
 		      int micbias, int det, int shrt);
 int wm8958_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack,
@@ -61,6 +66,7 @@ extern const struct wm8994_access_mask wm8994_access_masks[WM8994_CACHE_SIZE];
 extern const u16 wm8994_reg_defaults[WM8994_CACHE_SIZE];
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int wm8994_vmid_mode(struct snd_soc_codec *codec, enum wm8994_vmid_mode mode);
 
 int wm8958_aif_ev(struct snd_soc_dapm_widget *w,
@@ -73,9 +79,13 @@ struct wm8994_micdet {
 <<<<<<< HEAD
 	bool detecting;
 =======
+<<<<<<< HEAD
+	bool detecting;
+=======
 	int det;
 	int shrt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* codec private data */
@@ -89,17 +99,23 @@ struct wm8994_fll_config {
 #define WM8994_NUM_EQ  3
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct wm8994;
 
 struct wm8994_priv {
 	struct wm_hubs_data hubs;
 	struct wm8994 *wm8994;
+<<<<<<< HEAD
+=======
 =======
 struct wm8994_priv {
 	struct wm_hubs_data hubs;
 	enum snd_soc_control_type control_type;
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_soc_codec *codec;
 	int sysclk[2];
 	int sysclk_rate[2];
@@ -110,8 +126,11 @@ struct wm8994_priv {
 	bool fll_locked_irq;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	bool fll_byp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int vmid_refcount;
 	int active_refcount;

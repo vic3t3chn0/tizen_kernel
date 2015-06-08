@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <linux/ptrace.h>
 =======
+<<<<<<< HEAD
+#include <linux/ptrace.h>
+=======
 #include <linux/tracehook.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/timer.h>
 #include <linux/mm.h>
 #include <linux/smp.h>
@@ -42,22 +46,33 @@
 #include <asm/io.h>
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <asm/uaccess.h>
+#include <asm/io.h>
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/uaccess.h>
 #include <asm/io.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mathemu.h>
 #include <asm/cpcmd.h>
 #include <asm/lowcore.h>
 #include <asm/debug.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/ipl.h>
 #include "entry.h"
 
 void (*pgm_check_table[128])(struct pt_regs *regs);
 
 int show_unhandled_signals = 1;
+<<<<<<< HEAD
+=======
 =======
 #include "entry.h"
 
@@ -69,6 +84,7 @@ extern pgm_check_handler_t do_protection_exception;
 extern pgm_check_handler_t do_dat_exception;
 extern pgm_check_handler_t do_asce_exception;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define stack_pointer ({ void **sp; asm("la %0,0(15)" : "=&d" (sp)); sp; })
 
@@ -171,9 +187,14 @@ void show_stack(struct task_struct *task, unsigned long *sp)
 		if ((i * sizeof(long) % 32) == 0)
 			printk("%s       ", i == 0 ? "" : "\n");
 =======
+<<<<<<< HEAD
+		if ((i * sizeof(long) % 32) == 0)
+			printk("%s       ", i == 0 ? "" : "\n");
+=======
 		if (i && ((i * sizeof (long) % 32) == 0))
 			printk("\n       ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(LONG, *stack++);
 	}
 	printk("\n");
@@ -231,8 +252,12 @@ void show_registers(struct pt_regs *regs)
 <<<<<<< HEAD
 	printk(" EA:%x", mask_bits(regs, PSW_MASK_EA | PSW_MASK_BA));
 =======
+<<<<<<< HEAD
+	printk(" EA:%x", mask_bits(regs, PSW_MASK_EA | PSW_MASK_BA));
+=======
 	printk(" EA:%x", mask_bits(regs, PSW_BASE_BITS));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	printk("\n%s GPRS: " FOURLONG, mode,
 	       regs->gprs[0], regs->gprs[1], regs->gprs[2], regs->gprs[3]);
@@ -269,8 +294,12 @@ static DEFINE_SPINLOCK(die_lock);
 <<<<<<< HEAD
 void die(struct pt_regs *regs, const char *str)
 =======
+<<<<<<< HEAD
+void die(struct pt_regs *regs, const char *str)
+=======
 void die(const char * str, struct pt_regs * regs, long err)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	static int die_counter;
 
@@ -278,7 +307,11 @@ void die(const char * str, struct pt_regs * regs, long err)
 <<<<<<< HEAD
 	lgr_info_log();
 =======
+<<<<<<< HEAD
+	lgr_info_log();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	debug_stop_all();
 	console_verbose();
 	spin_lock_irq(&die_lock);
@@ -286,8 +319,12 @@ void die(const char * str, struct pt_regs * regs, long err)
 <<<<<<< HEAD
 	printk("%s: %04x [#%d] ", str, regs->int_code & 0xffff, ++die_counter);
 =======
+<<<<<<< HEAD
+	printk("%s: %04x [#%d] ", str, regs->int_code & 0xffff, ++die_counter);
+=======
 	printk("%s: %04lx [#%d] ", str, err & 0xffff, ++die_counter);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PREEMPT
 	printk("PREEMPT ");
 #endif
@@ -301,8 +338,12 @@ void die(const char * str, struct pt_regs * regs, long err)
 <<<<<<< HEAD
 	notify_die(DIE_OOPS, str, regs, 0, regs->int_code & 0xffff, SIGSEGV);
 =======
+<<<<<<< HEAD
+	notify_die(DIE_OOPS, str, regs, 0, regs->int_code & 0xffff, SIGSEGV);
+=======
 	notify_die(DIE_OOPS, str, regs, err, current->thread.trap_no, SIGSEGV);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	show_regs(regs);
 	bust_spinlocks(0);
 	add_taint(TAINT_DIE);
@@ -318,9 +359,13 @@ void die(const char * str, struct pt_regs * regs, long err)
 <<<<<<< HEAD
 static inline void report_user_fault(struct pt_regs *regs, int signr)
 =======
+<<<<<<< HEAD
+static inline void report_user_fault(struct pt_regs *regs, int signr)
+=======
 static void inline report_user_fault(struct pt_regs *regs, long int_code,
 				     int signr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if ((task_pid_nr(current) > 1) && !show_unhandled_signals)
 		return;
@@ -331,8 +376,12 @@ static void inline report_user_fault(struct pt_regs *regs, long int_code,
 <<<<<<< HEAD
 	printk("User process fault: interruption code 0x%X ", regs->int_code);
 =======
+<<<<<<< HEAD
+	printk("User process fault: interruption code 0x%X ", regs->int_code);
+=======
 	printk("User process fault: interruption code 0x%lX ", int_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	print_vma_addr("in ", regs->psw.addr & PSW_ADDR_INSN);
 	printk("\n");
 	show_regs(regs);
@@ -344,6 +393,9 @@ int is_valid_bugaddr(unsigned long addr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void __user *get_psw_address(struct pt_regs *regs)
 {
 	return (void __user *)
@@ -366,6 +418,8 @@ static void __kprobes do_trap(struct pt_regs *regs,
 		info.si_addr = get_psw_address(regs);
 		force_sig_info(si_signo, &info, current);
 		report_user_fault(regs, si_signo);
+<<<<<<< HEAD
+=======
 =======
 static inline void __kprobes do_trap(long pgm_int_code, int signr, char *str,
 				     struct pt_regs *regs, siginfo_t *info)
@@ -381,6 +435,7 @@ static inline void __kprobes do_trap(long pgm_int_code, int signr, char *str,
 		force_sig_info(signr, info, tsk);
 		report_user_fault(regs, pgm_int_code, signr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         } else {
                 const struct exception_table_entry *fixup;
                 fixup = search_exception_tables(regs->psw.addr & PSW_ADDR_INSN);
@@ -395,13 +450,20 @@ static inline void __kprobes do_trap(long pgm_int_code, int signr, char *str,
 <<<<<<< HEAD
 			die(regs, str);
 =======
+<<<<<<< HEAD
+			die(regs, str);
+=======
 			die(str, regs, pgm_int_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
         }
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __kprobes do_per_trap(struct pt_regs *regs)
 {
 	siginfo_t info;
@@ -431,6 +493,8 @@ static void default_trap_handler(struct pt_regs *regs)
 static void name(struct pt_regs *regs) \
 { \
 	do_trap(regs, signr, sicode, str); \
+<<<<<<< HEAD
+=======
 =======
 static inline void __user *get_psw_address(struct pt_regs *regs,
 					   long pgm_int_code)
@@ -468,6 +532,7 @@ static void name(struct pt_regs *regs, long pgm_int_code, \
 	info.si_addr = get_psw_address(regs, pgm_int_code); \
 	do_trap(pgm_int_code, signr, str, regs, &info);	    \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 DO_ERROR_INFO(addressing_exception, SIGILL, ILL_ILLADR,
@@ -502,6 +567,11 @@ static inline void do_fp_trap(struct pt_regs *regs, int fpc)
 {
 	int si_code = 0;
 =======
+<<<<<<< HEAD
+static inline void do_fp_trap(struct pt_regs *regs, int fpc)
+{
+	int si_code = 0;
+=======
 static inline void do_fp_trap(struct pt_regs *regs, void __user *location,
 			      int fpc, long pgm_int_code)
 {
@@ -512,11 +582,15 @@ static inline void do_fp_trap(struct pt_regs *regs, void __user *location,
 	si.si_addr = location;
 	si.si_code = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* FPC[2] is Data Exception Code */
 	if ((fpc & 0x00000300) == 0) {
 		/* bits 6 and 7 of DXC are 0 iff IEEE exception */
 		if (fpc & 0x8000) /* invalid fp operation */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			si_code = FPE_FLTINV;
 		else if (fpc & 0x4000) /* div by 0 */
 			si_code = FPE_FLTDIV;
@@ -531,6 +605,8 @@ static inline void do_fp_trap(struct pt_regs *regs, void __user *location,
 }
 
 static void __kprobes illegal_op(struct pt_regs *regs)
+<<<<<<< HEAD
+=======
 =======
 			si.si_code = FPE_FLTINV;
 		else if (fpc & 0x4000) /* div by 0 */
@@ -549,6 +625,7 @@ static void __kprobes illegal_op(struct pt_regs *regs)
 static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 				 unsigned long trans_exc_code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	siginfo_t info;
         __u8 opcode[6];
@@ -558,14 +635,21 @@ static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 <<<<<<< HEAD
 	location = get_psw_address(regs);
 =======
+<<<<<<< HEAD
+	location = get_psw_address(regs);
+=======
 	location = get_psw_address(regs, pgm_int_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (regs->psw.mask & PSW_MASK_PSTATE) {
 		if (get_user(*((__u16 *) opcode), (__u16 __user *) location))
 			return;
 		if (*((__u16 *) opcode) == S390_BREAKPOINT_U16) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (current->ptrace) {
 				info.si_signo = SIGTRAP;
 				info.si_errno = 0;
@@ -573,11 +657,14 @@ static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 				info.si_addr = location;
 				force_sig_info(SIGTRAP, &info, current);
 			} else
+<<<<<<< HEAD
+=======
 =======
 			if (tracehook_consider_fatal_signal(current, SIGTRAP))
 				force_sig(SIGTRAP, current);
 			else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				signal = SIGILL;
 #ifdef CONFIG_MATHEMU
 		} else if (opcode[0] == 0xb3) {
@@ -612,8 +699,12 @@ static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 <<<<<<< HEAD
 		if (notify_die(DIE_BPT, "bpt", regs, 0,
 =======
+<<<<<<< HEAD
+		if (notify_die(DIE_BPT, "bpt", regs, 0,
+=======
 		if (notify_die(DIE_BPT, "bpt", regs, pgm_int_code,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       3, SIGTRAP) != NOTIFY_STOP)
 			signal = SIGILL;
 	}
@@ -621,6 +712,9 @@ static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 #ifdef CONFIG_MATHEMU
         if (signal == SIGFPE)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		do_fp_trap(regs, current->thread.fp_regs.fpc);
 	else if (signal == SIGSEGV)
 		do_trap(regs, signal, SEGV_MAPERR, "user address fault");
@@ -628,6 +722,8 @@ static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 #endif
 	if (signal)
 		do_trap(regs, signal, ILL_ILLOPC, "illegal operation");
+<<<<<<< HEAD
+=======
 =======
 		do_fp_trap(regs, location,
 			   current->thread.fp_regs.fpc, pgm_int_code);
@@ -649,6 +745,7 @@ static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 			"illegal operation", regs, &info);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -656,10 +753,14 @@ static void __kprobes illegal_op(struct pt_regs *regs, long pgm_int_code,
 <<<<<<< HEAD
 void specification_exception(struct pt_regs *regs)
 =======
+<<<<<<< HEAD
+void specification_exception(struct pt_regs *regs)
+=======
 asmlinkage void specification_exception(struct pt_regs *regs,
 					long pgm_int_code,
 					unsigned long trans_exc_code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
         __u8 opcode[6];
 	__u16 __user *location = NULL;
@@ -668,8 +769,12 @@ asmlinkage void specification_exception(struct pt_regs *regs,
 <<<<<<< HEAD
 	location = (__u16 __user *) get_psw_address(regs);
 =======
+<<<<<<< HEAD
+	location = (__u16 __user *) get_psw_address(regs);
+=======
 	location = (__u16 __user *) get_psw_address(regs, pgm_int_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
         if (regs->psw.mask & PSW_MASK_PSTATE) {
 		get_user(*((__u16 *) opcode), location);
@@ -709,6 +814,11 @@ asmlinkage void specification_exception(struct pt_regs *regs,
 	else if (signal)
 		do_trap(regs, signal, ILL_ILLOPN, "specification exception");
 =======
+<<<<<<< HEAD
+		do_fp_trap(regs, current->thread.fp_regs.fpc);
+	else if (signal)
+		do_trap(regs, signal, ILL_ILLOPN, "specification exception");
+=======
 		do_fp_trap(regs, location,
 			   current->thread.fp_regs.fpc, pgm_int_code);
         else if (signal) {
@@ -721,6 +831,7 @@ asmlinkage void specification_exception(struct pt_regs *regs,
 			"specification exception", regs, &info);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else
 DO_ERROR_INFO(specification_exception, SIGILL, ILL_ILLOPN,
@@ -730,9 +841,13 @@ DO_ERROR_INFO(specification_exception, SIGILL, ILL_ILLOPN,
 <<<<<<< HEAD
 static void data_exception(struct pt_regs *regs)
 =======
+<<<<<<< HEAD
+static void data_exception(struct pt_regs *regs)
+=======
 static void data_exception(struct pt_regs *regs, long pgm_int_code,
 			   unsigned long trans_exc_code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	__u16 __user *location;
 	int signal = 0;
@@ -740,8 +855,12 @@ static void data_exception(struct pt_regs *regs, long pgm_int_code,
 <<<<<<< HEAD
 	location = get_psw_address(regs);
 =======
+<<<<<<< HEAD
+	location = get_psw_address(regs);
+=======
 	location = get_psw_address(regs, pgm_int_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (MACHINE_HAS_IEEE)
 		asm volatile("stfpc %0" : "=m" (current->thread.fp_regs.fpc));
@@ -807,6 +926,9 @@ static void data_exception(struct pt_regs *regs, long pgm_int_code,
 		signal = SIGILL;
         if (signal == SIGFPE)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		do_fp_trap(regs, current->thread.fp_regs.fpc);
 	else if (signal)
 		do_trap(regs, signal, ILL_ILLOPN, "data exception");
@@ -814,6 +936,8 @@ static void data_exception(struct pt_regs *regs, long pgm_int_code,
 
 static void space_switch_exception(struct pt_regs *regs)
 {
+<<<<<<< HEAD
+=======
 =======
 		do_fp_trap(regs, location,
 			   current->thread.fp_regs.fpc, pgm_int_code);
@@ -833,15 +957,21 @@ static void space_switch_exception(struct pt_regs *regs, long pgm_int_code,
         siginfo_t info;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set user psw back to home space mode. */
 	if (regs->psw.mask & PSW_MASK_PSTATE)
 		regs->psw.mask |= PSW_ASC_HOME;
 	/* Send SIGILL. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	do_trap(regs, SIGILL, ILL_PRVOPC, "space switch event");
 }
 
 void __kprobes kernel_stack_overflow(struct pt_regs * regs)
+<<<<<<< HEAD
+=======
 =======
         info.si_signo = SIGILL;
         info.si_errno = 0;
@@ -852,6 +982,7 @@ void __kprobes kernel_stack_overflow(struct pt_regs * regs)
 
 asmlinkage void __kprobes kernel_stack_overflow(struct pt_regs * regs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	bust_spinlocks(1);
 	printk("Kernel stack overflow.\n");

@@ -25,9 +25,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/mca.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * 'what should we do if we get a hw irq event on an illegal vector'.
  * each architecture has to answer this themselves.
@@ -90,6 +93,8 @@ bool is_affinity_mask_valid(const struct cpumask *cpumask)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int __init arch_early_irq_init(void)
 {
 	ia64_mca_irq_init();
@@ -97,6 +102,7 @@ int __init arch_early_irq_init(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HOTPLUG_CPU
 unsigned int vectors_in_migration[NR_IRQS];
 

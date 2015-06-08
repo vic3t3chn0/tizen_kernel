@@ -37,7 +37,14 @@
 #include <linux/list.h>
 #include <linux/timer.h>
 #include <linux/spinlock.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/init.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/init.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/device.h>
 #include <linux/interrupt.h>
 
@@ -88,7 +95,14 @@ static int service_tx_status_request(
 	case USB_RECIP_DEVICE:
 		result[0] = musb->is_self_powered << USB_DEVICE_SELF_POWERED;
 		result[0] |= musb->may_wakeup << USB_DEVICE_REMOTE_WAKEUP;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_USB_MUSB_OTG
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_USB_MUSB_OTG
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (musb->g.is_otg) {
 			result[0] |= musb->g.b_hnp_enable
 				<< USB_DEVICE_B_HNP_ENABLE;
@@ -97,7 +111,14 @@ static int service_tx_status_request(
 			result[0] |= musb->g.a_hnp_support
 				<< USB_DEVICE_A_HNP_SUPPORT;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case USB_RECIP_INTERFACE:
@@ -392,7 +413,14 @@ __acquires(musb->lock)
 					if (handled > 0)
 						musb->test_mode = true;
 					break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_USB_MUSB_OTG
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_USB_MUSB_OTG
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				case USB_DEVICE_B_HNP_ENABLE:
 					if (!musb->g.is_otg)
 						goto stall;
@@ -409,7 +437,14 @@ __acquires(musb->lock)
 						goto stall;
 					musb->g.a_alt_hnp_support = 1;
 					break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				case USB_DEVICE_DEBUG_MODE:
 					handled = 0;
 					break;
@@ -683,6 +718,20 @@ irqreturn_t musb_g_ep0_irq(struct musb *musb)
 			musb_readb(mbase, MUSB_FADDR),
 			decode_ep0stage(musb->ep0_state));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (csr & MUSB_CSR0_P_DATAEND) {
+		/*
+		 * If DATAEND is set we should not call the callback,
+		 * hence the status stage is not complete.
+		 */
+		return IRQ_HANDLED;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* I sent a stall.. need to acknowledge it now.. */
 	if (csr & MUSB_CSR0_P_SENTSTALL) {
 		musb_writew(regs, MUSB_CSR0,

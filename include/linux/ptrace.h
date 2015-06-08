@@ -52,6 +52,11 @@
 #define PTRACE_INTERRUPT	0x4207
 #define PTRACE_LISTEN		0x4208
 =======
+<<<<<<< HEAD
+#define PTRACE_SEIZE		0x4206
+#define PTRACE_INTERRUPT	0x4207
+#define PTRACE_LISTEN		0x4208
+=======
 /* options set using PTRACE_SETOPTIONS */
 #define PTRACE_O_TRACESYSGOOD	0x00000001
 #define PTRACE_O_TRACEFORK	0x00000002
@@ -63,6 +68,7 @@
 
 #define PTRACE_O_MASK		0x0000007f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Wait extended result codes for the above trace options.  */
 #define PTRACE_EVENT_FORK	1
@@ -72,6 +78,9 @@
 #define PTRACE_EVENT_VFORK_DONE	5
 #define PTRACE_EVENT_EXIT	6
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Extended result codes which enabled by means other than options.  */
 #define PTRACE_EVENT_STOP	128
 
@@ -85,8 +94,11 @@
 #define PTRACE_O_TRACEEXIT	(1 << PTRACE_EVENT_EXIT)
 
 #define PTRACE_O_MASK		0x0000007f
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/ptrace.h>
 
@@ -100,6 +112,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PT_SEIZED	0x00010000	/* SEIZE used, enable new behavior */
 #define PT_PTRACED	0x00000001
 #define PT_DTRACE	0x00000002	/* delayed trace (used on m68k, i386) */
@@ -115,6 +130,8 @@
 #define PT_TRACE_EXEC		PT_EVENT_FLAG(PTRACE_EVENT_EXEC)
 #define PT_TRACE_VFORK_DONE	PT_EVENT_FLAG(PTRACE_EVENT_VFORK_DONE)
 #define PT_TRACE_EXIT		PT_EVENT_FLAG(PTRACE_EVENT_EXIT)
+<<<<<<< HEAD
+=======
 =======
 #define PT_PTRACED	0x00000001
 #define PT_DTRACE	0x00000002	/* delayed trace (used on m68k, i386) */
@@ -129,6 +146,7 @@
 
 #define PT_TRACE_MASK	0x000003f4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* single stepping state bits (used on ARM and PA-RISC) */
 #define PT_SINGLESTEP_BIT	31
@@ -142,7 +160,12 @@
 #include <linux/err.h>			/* for IS_ERR_VALUE */
 #include <linux/bug.h>			/* For BUG_ON.  */
 =======
+<<<<<<< HEAD
+#include <linux/err.h>			/* for IS_ERR_VALUE */
+#include <linux/bug.h>			/* For BUG_ON.  */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 extern long arch_ptrace(struct task_struct *child, long request,
@@ -153,8 +176,12 @@ extern void ptrace_disable(struct task_struct *);
 <<<<<<< HEAD
 extern int ptrace_check_attach(struct task_struct *task, bool ignore_state);
 =======
+<<<<<<< HEAD
+extern int ptrace_check_attach(struct task_struct *task, bool ignore_state);
+=======
 extern int ptrace_check_attach(struct task_struct *task, int kill);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int ptrace_request(struct task_struct *child, long request,
 			  unsigned long addr, unsigned long data);
 extern void ptrace_notify(int exit_code);
@@ -167,9 +194,15 @@ extern void exit_ptrace(struct task_struct *tracer);
 #define PTRACE_MODE_ATTACH	0x02
 #define PTRACE_MODE_NOAUDIT	0x04
 =======
+<<<<<<< HEAD
+#define PTRACE_MODE_READ	0x01
+#define PTRACE_MODE_ATTACH	0x02
+#define PTRACE_MODE_NOAUDIT	0x04
+=======
 #define PTRACE_MODE_READ   1
 #define PTRACE_MODE_ATTACH 2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Returns 0 on success, -errno on denial. */
 extern int __ptrace_may_access(struct task_struct *task, unsigned int mode);
 /* Returns true on success, false on denial. */
@@ -180,8 +213,12 @@ static inline int ptrace_reparented(struct task_struct *child)
 <<<<<<< HEAD
 	return !same_thread_group(child->real_parent, child->parent);
 =======
+<<<<<<< HEAD
+	return !same_thread_group(child->real_parent, child->parent);
+=======
 	return child->real_parent != child->parent;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void ptrace_unlink(struct task_struct *child)
@@ -197,6 +234,9 @@ int generic_ptrace_pokedata(struct task_struct *tsk, unsigned long addr,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ptrace_parent - return the task that is tracing the given task
  * @task: task to consider
  *
@@ -226,6 +266,8 @@ static inline struct task_struct *ptrace_parent(struct task_struct *task)
 static inline bool ptrace_event_enabled(struct task_struct *task, int event)
 {
 	return task->ptrace & PT_EVENT_FLAG(event);
+<<<<<<< HEAD
+=======
 =======
  * task_ptrace - return %PT_* flags that apply to a task
  * @task:	pointer to &task_struct in question
@@ -236,11 +278,15 @@ static inline int task_ptrace(struct task_struct *task)
 {
 	return task->ptrace;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
  * ptrace_event - possibly stop for a ptrace event notification
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @event:	%PTRACE_EVENT_* value to report
  * @message:	value for %PTRACE_GETEVENTMSG to return
  *
@@ -259,6 +305,8 @@ static inline void ptrace_event(int event, unsigned long message)
 		if ((current->ptrace & (PT_PTRACED|PT_SEIZED)) == PT_PTRACED)
 			send_sig(SIGTRAP, current, 0);
 	}
+<<<<<<< HEAD
+=======
 =======
  * @mask:	%PT_* bit to check in @current->ptrace
  * @event:	%PTRACE_EVENT_* value to report if @mask is set
@@ -279,6 +327,7 @@ static inline int ptrace_event(int mask, int event, unsigned long message)
 	ptrace_notify((event << 8) | SIGTRAP);
 	return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -296,6 +345,9 @@ static inline void ptrace_init_task(struct task_struct *child, bool ptrace)
 	INIT_LIST_HEAD(&child->ptrace_entry);
 	INIT_LIST_HEAD(&child->ptraced);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAVE_HW_BREAKPOINT
 	atomic_set(&child->ptrace_bp_refcnt, 1);
 #endif
@@ -314,6 +366,8 @@ static inline void ptrace_init_task(struct task_struct *child, bool ptrace)
 
 		set_tsk_thread_flag(child, TIF_SIGPENDING);
 	}
+<<<<<<< HEAD
+=======
 =======
 	child->parent = child->real_parent;
 	child->ptrace = 0;
@@ -326,6 +380,7 @@ static inline void ptrace_init_task(struct task_struct *child, bool ptrace)
 	atomic_set(&child->ptrace_bp_refcnt, 1);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -357,6 +412,9 @@ static inline void ptrace_release_task(struct task_struct *task)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef is_syscall_success
 /*
  * On most systems we can tell if a syscall is a success based on if the retval
@@ -366,8 +424,11 @@ static inline void ptrace_release_task(struct task_struct *task)
 #define is_syscall_success(regs) (!IS_ERR_VALUE((unsigned long)(regs_return_value(regs))))
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * <asm/ptrace.h> should define the following things inside #ifdef __KERNEL__.
  *

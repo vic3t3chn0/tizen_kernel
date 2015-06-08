@@ -3,11 +3,14 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef __ASSEMBLER__
 #include <linux/io.h>
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * IRAM
  */
@@ -127,6 +130,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef __ASSEMBLER__
 static inline void mx31_setup_weimcs(size_t cs,
 		unsigned upper, unsigned lower, unsigned addional)
@@ -138,6 +143,7 @@ static inline void mx31_setup_weimcs(size_t cs,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX31_INT_I2C3		3
 #define MX31_INT_I2C2		4
 #define MX31_INT_MPEG4_ENCODER	5

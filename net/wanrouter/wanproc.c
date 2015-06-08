@@ -83,8 +83,11 @@ static struct proc_dir_entry *proc_router;
 static void *r_start(struct seq_file *m, loff_t *pos)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	__acquires(kernel_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct wan_device *wandev;
 	loff_t l = *pos;
@@ -108,8 +111,11 @@ static void *r_next(struct seq_file *m, void *v, loff_t *pos)
 static void r_stop(struct seq_file *m, void *v)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	__releases(kernel_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mutex_unlock(&config_mutex);
 }

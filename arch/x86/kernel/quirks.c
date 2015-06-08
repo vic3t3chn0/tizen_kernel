@@ -13,8 +13,12 @@ static void __devinit quirk_intel_irqbalance(struct pci_dev *dev)
 <<<<<<< HEAD
 	u8 config;
 =======
+<<<<<<< HEAD
+	u8 config;
+=======
 	u8 config, rev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 word;
 
 	/* BIOS may enable hardware IRQ balancing for
@@ -25,9 +29,13 @@ static void __devinit quirk_intel_irqbalance(struct pci_dev *dev)
 <<<<<<< HEAD
 	if (dev->revision > 0x9)
 =======
+<<<<<<< HEAD
+	if (dev->revision > 0x9)
+=======
 	pci_read_config_byte(dev, PCI_CLASS_REVISION, &rev);
 	if (rev > 0x9)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	/* enable access to config space*/
@@ -563,6 +571,9 @@ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_10H_NB_MISC,
 DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_10H_NB_LINK,
 			quirk_amd_nb_node);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_15H_NB_F0,
 			quirk_amd_nb_node);
 DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_15H_NB_F1,
@@ -576,6 +587,9 @@ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_15H_NB_F4,
 DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_15H_NB_F5,
 			quirk_amd_nb_node);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

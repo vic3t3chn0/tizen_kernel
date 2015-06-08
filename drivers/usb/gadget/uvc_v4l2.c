@@ -8,7 +8,14 @@
  *	it under the terms of the GNU General Public License as published by
  *	the Free Software Foundation; either version 2 of the License, or
  *	(at your option) any later version.
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -16,7 +23,14 @@
 #include <linux/errno.h>
 #include <linux/list.h>
 #include <linux/mutex.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/videodev2.h>
 #include <linux/vmalloc.h>
 #include <linux/wait.h>
@@ -124,12 +138,25 @@ uvc_v4l2_open(struct file *file)
 	struct video_device *vdev = video_devdata(file);
 	struct uvc_device *uvc = video_get_drvdata(vdev);
 	struct uvc_file_handle *handle;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int ret;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	handle = kzalloc(sizeof(*handle), GFP_KERNEL);
 	if (handle == NULL)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	v4l2_fh_init(&handle->vfh, vdev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = v4l2_fh_init(&handle->vfh, vdev);
 	if (ret < 0)
 		goto error;
@@ -142,6 +169,10 @@ uvc_v4l2_open(struct file *file)
 	if (ret < 0)
 		goto error;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	v4l2_fh_add(&handle->vfh);
 
 	handle->device = &uvc->video;
@@ -149,10 +180,19 @@ uvc_v4l2_open(struct file *file)
 
 	uvc_function_connect(uvc);
 	return 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 error:
 	v4l2_fh_exit(&handle->vfh);
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -314,7 +354,15 @@ uvc_v4l2_do_ioctl(struct file *file, unsigned int cmd, void *arg)
 		if (sub->type < UVC_EVENT_FIRST || sub->type > UVC_EVENT_LAST)
 			return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return v4l2_event_subscribe(&handle->vfh, arg, 2);
+=======
 		return v4l2_event_subscribe(&handle->vfh, arg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return v4l2_event_subscribe(&handle->vfh, arg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	case VIDIOC_UNSUBSCRIBE_EVENT:
@@ -354,7 +402,15 @@ uvc_v4l2_poll(struct file *file, poll_table *wait)
 	struct uvc_file_handle *handle = to_uvc_file_handle(file->private_data);
 	unsigned int mask = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	poll_wait(file, &handle->vfh.wait, wait);
+=======
 	poll_wait(file, &handle->vfh.events->wait, wait);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	poll_wait(file, &handle->vfh.events->wait, wait);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (v4l2_event_pending(&handle->vfh))
 		mask |= POLLPRI;
 

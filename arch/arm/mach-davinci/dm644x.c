@@ -17,12 +17,18 @@
 #include <asm/mach/map.h>
 
 =======
+<<<<<<< HEAD
+
+#include <asm/mach/map.h>
+
+=======
 #include <linux/gpio.h>
 
 #include <asm/mach/map.h>
 
 #include <mach/dm644x.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cputype.h>
 #include <mach/edma.h>
 #include <mach/irqs.h>
@@ -37,8 +43,14 @@
 
 #include "davinci.h"
 =======
+<<<<<<< HEAD
+#include <mach/gpio-davinci.h>
+
+#include "davinci.h"
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "clock.h"
 #include "mux.h"
 
@@ -48,6 +60,9 @@
 #define DM644X_REF_FREQ		27000000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DM644X_EMAC_BASE		0x01c80000
 #define DM644X_EMAC_MDIO_BASE		(DM644X_EMAC_BASE + 0x4000)
 #define DM644X_EMAC_CNTRL_OFFSET	0x0000
@@ -55,8 +70,11 @@
 #define DM644X_EMAC_CNTRL_RAM_OFFSET	0x2000
 #define DM644X_EMAC_CNTRL_RAM_SIZE	0x2000
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pll_data pll1_data = {
 	.num       = 1,
 	.phys_base = DAVINCI_PLL1_BASE,
@@ -155,8 +173,12 @@ static struct clk dsp_clk = {
 <<<<<<< HEAD
 	.domain = DAVINCI_GPSC_DSPDOMAIN,
 =======
+<<<<<<< HEAD
+	.domain = DAVINCI_GPSC_DSPDOMAIN,
+=======
 	.flags = PSC_DSP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.usecount = 1,			/* REVISIT how to disable? */
 };
 
@@ -174,8 +196,12 @@ static struct clk vicp_clk = {
 <<<<<<< HEAD
 	.domain = DAVINCI_GPSC_DSPDOMAIN,
 =======
+<<<<<<< HEAD
+	.domain = DAVINCI_GPSC_DSPDOMAIN,
+=======
 	.flags = PSC_DSP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.usecount = 1,			/* REVISIT how to disable? */
 };
 
@@ -547,7 +573,11 @@ static struct edma_soc_info edma_cc0_info = {
 <<<<<<< HEAD
 	.default_queue		= EVENTQ_1,
 =======
+<<<<<<< HEAD
+	.default_queue		= EVENTQ_1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct edma_soc_info *dm644x_edma_info[EDMA_MAX_CC] = {
@@ -624,7 +654,12 @@ static struct platform_device dm644x_asp_device = {
 #define DM644X_VPSS_BASE	0x01c73400
 
 =======
+<<<<<<< HEAD
+#define DM644X_VPSS_BASE	0x01c73400
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource dm644x_vpss_resources[] = {
 	{
 		/* VPSS Base address */
@@ -634,10 +669,16 @@ static struct resource dm644x_vpss_resources[] = {
 		.end		= DM644X_VPSS_BASE + 0xff,
 		.flags		= IORESOURCE_MEM,
 =======
+<<<<<<< HEAD
+		.start		= DM644X_VPSS_BASE,
+		.end		= DM644X_VPSS_BASE + 0xff,
+		.flags		= IORESOURCE_MEM,
+=======
 		.start          = 0x01c73400,
 		.end            = 0x01c73400 + 0xff,
 		.flags          = IORESOURCE_MEM,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -652,8 +693,12 @@ static struct platform_device dm644x_vpss_device = {
 <<<<<<< HEAD
 static struct resource dm644x_vpfe_resources[] = {
 =======
+<<<<<<< HEAD
+static struct resource dm644x_vpfe_resources[] = {
+=======
 static struct resource vpfe_resources[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.start          = IRQ_VDINT0,
 		.end            = IRQ_VDINT0,
@@ -669,8 +714,12 @@ static struct resource vpfe_resources[] = {
 <<<<<<< HEAD
 static u64 dm644x_video_dma_mask = DMA_BIT_MASK(32);
 =======
+<<<<<<< HEAD
+static u64 dm644x_video_dma_mask = DMA_BIT_MASK(32);
+=======
 static u64 vpfe_capture_dma_mask = DMA_BIT_MASK(32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource dm644x_ccdc_resource[] = {
 	/* CCDC Base address */
 	{
@@ -689,13 +738,20 @@ static struct platform_device dm644x_ccdc_dev = {
 <<<<<<< HEAD
 		.dma_mask               = &dm644x_video_dma_mask,
 =======
+<<<<<<< HEAD
+		.dma_mask               = &dm644x_video_dma_mask,
+=======
 		.dma_mask               = &vpfe_capture_dma_mask,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.coherent_dma_mask      = DMA_BIT_MASK(32),
 	},
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device dm644x_vpfe_dev = {
 	.name		= CAPTURE_DRV_NAME,
 	.id		= -1,
@@ -834,6 +890,8 @@ static struct platform_device dm644x_vpbe_dev = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device vpfe_capture_dev = {
 	.name		= CAPTURE_DRV_NAME,
@@ -852,6 +910,7 @@ void dm644x_set_vpfe_config(struct vpfe_config *cfg)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*----------------------------------------------------------------------*/
 
 static struct map_desc dm644x_io_desc[] = {
@@ -966,8 +1025,11 @@ static struct davinci_soc_info davinci_soc_info_dm644x = {
 	.sram_len		= SZ_16K,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.reset_device		= &davinci_wdt_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init dm644x_init_asp(struct snd_platform_data *pdata)
@@ -981,6 +1043,9 @@ void __init dm644x_init(void)
 {
 	davinci_common_init(&davinci_soc_info_dm644x);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	davinci_map_sysmod();
 }
 
@@ -1010,8 +1075,11 @@ int __init dm644x_init_video(struct vpfe_config *vpfe_cfg,
 	}
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init dm644x_init_devices(void)
@@ -1021,10 +1089,13 @@ static int __init dm644x_init_devices(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Add ccdc clock aliases */
 	clk_add_alias("master", dm644x_ccdc_dev.name, "vpss_master", NULL);
 	clk_add_alias("slave", dm644x_ccdc_dev.name, "vpss_slave", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(&dm644x_edma_device);
 
 	platform_device_register(&dm644x_mdio_device);
@@ -1034,11 +1105,14 @@ static int __init dm644x_init_devices(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	platform_device_register(&dm644x_vpss_device);
 	platform_device_register(&dm644x_ccdc_dev);
 	platform_device_register(&vpfe_capture_dev);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 postcore_initcall(dm644x_init_devices);

@@ -28,6 +28,9 @@ static int t5325_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 	unsigned int freq;
 =======
+<<<<<<< HEAD
+	unsigned int freq;
+=======
 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
 	int ret;
 	unsigned int freq, fmt;
@@ -41,6 +44,7 @@ static int t5325_hw_params(struct snd_pcm_substream *substream,
 	if (ret < 0)
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	freq = params_rate(params) * 256;
 
@@ -76,21 +80,27 @@ static int t5325_dai_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_new_controls(dapm, t5325_dapm_widgets,
 				ARRAY_SIZE(t5325_dapm_widgets));
 
 	snd_soc_dapm_add_routes(dapm, t5325_route, ARRAY_SIZE(t5325_route));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_dapm_enable_pin(dapm, "Mic Jack");
 	snd_soc_dapm_enable_pin(dapm, "Headphone Jack");
 	snd_soc_dapm_enable_pin(dapm, "Speaker");
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -105,13 +115,20 @@ static struct snd_soc_dai_link t5325_dai[] = {
 <<<<<<< HEAD
 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS,
 =======
+<<<<<<< HEAD
+	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &t5325_ops,
 	.init = t5325_dai_init,
 },
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_card t5325 = {
 	.name = "t5325",
 	.owner = THIS_MODULE,
@@ -156,6 +173,8 @@ static struct platform_driver t5325_driver = {
 };
 
 module_platform_driver(t5325_driver);
+<<<<<<< HEAD
+=======
 =======
 
 static struct snd_soc_card t5325 = {
@@ -196,6 +215,7 @@ static void __exit t5325_exit(void)
 }
 module_exit(t5325_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Arnaud Patard <arnaud.patard@rtp-net.org>");
 MODULE_DESCRIPTION("ALSA SoC t5325 audio client");
@@ -203,4 +223,8 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:t5325-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:t5325-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

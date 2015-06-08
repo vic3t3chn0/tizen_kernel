@@ -120,6 +120,9 @@ static void __hfsplus_ext_write_extent(struct inode *inode,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hfsplus_ext_write_extent_locked(struct inode *inode)
 {
 	int res;
@@ -145,6 +148,8 @@ int hfsplus_ext_write_extent(struct inode *inode)
 	mutex_unlock(&HFSPLUS_I(inode)->extents_lock);
 
 	return res;
+<<<<<<< HEAD
+=======
 =======
 static void hfsplus_ext_write_extent_locked(struct inode *inode)
 {
@@ -163,6 +168,7 @@ void hfsplus_ext_write_extent(struct inode *inode)
 	hfsplus_ext_write_extent_locked(inode);
 	mutex_unlock(&HFSPLUS_I(inode)->extents_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int __hfsplus_ext_read_extent(struct hfs_find_data *fd,
@@ -223,16 +229,22 @@ static int hfsplus_ext_read_extent(struct inode *inode, u32 block)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	res = hfs_find_init(HFSPLUS_SB(inode->i_sb)->ext_tree, &fd);
 	if (!res) {
 		res = __hfsplus_ext_cache_extent(&fd, inode, block);
 		hfs_find_exit(&fd);
 	}
+<<<<<<< HEAD
+=======
 =======
 	hfs_find_init(HFSPLUS_SB(inode->i_sb)->ext_tree, &fd);
 	res = __hfsplus_ext_cache_extent(&fd, inode, block);
 	hfs_find_exit(&fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return res;
 }
 
@@ -248,7 +260,11 @@ int hfsplus_get_block(struct inode *inode, sector_t iblock,
 <<<<<<< HEAD
 	sector_t sector;
 =======
+<<<<<<< HEAD
+	sector_t sector;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int was_dirty = 0;
 	int shift;
 
@@ -296,18 +312,24 @@ done:
 	dprint(DBG_EXTENT, "get_block(%lu): %llu - %u\n",
 		inode->i_ino, (long long)iblock, dblock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mask = (1 << sbi->fs_shift) - 1;
 	sector = ((sector_t)dblock << sbi->fs_shift) +
 		  sbi->blockoffset + (iblock & mask);
 	map_bh(bh_result, sb, sector);
 
+<<<<<<< HEAD
+=======
 =======
 	mask = (1 << sbi->fs_shift) - 1;
 	map_bh(bh_result, sb,
 		(dblock << sbi->fs_shift) + sbi->blockoffset +
 			(iblock & mask));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (create) {
 		set_buffer_new(bh_result);
 		hip->phys_size += sb->s_blocksize;
@@ -425,8 +447,14 @@ int hfsplus_free_fork(struct super_block *sb, u32 cnid,
 	if (res)
 		return res;
 =======
+<<<<<<< HEAD
+	res = hfs_find_init(HFSPLUS_SB(sb)->ext_tree, &fd);
+	if (res)
+		return res;
+=======
 	hfs_find_init(HFSPLUS_SB(sb)->ext_tree, &fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	do {
 		res = __hfsplus_ext_read_extent(&fd, ext_entry, cnid,
 						total_blocks, type);
@@ -529,8 +557,14 @@ insert_extent:
 	if (res)
 		goto out;
 =======
+<<<<<<< HEAD
+	res = hfsplus_ext_write_extent_locked(inode);
+	if (res)
+		goto out;
+=======
 	hfsplus_ext_write_extent_locked(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(hip->cached_extents, 0, sizeof(hfsplus_extent_rec));
 	hip->cached_extents[0].start_block = cpu_to_be32(start);
@@ -563,9 +597,13 @@ void hfsplus_file_truncate(struct inode *inode)
 <<<<<<< HEAD
 		u32 size = inode->i_size;
 =======
+<<<<<<< HEAD
+		u32 size = inode->i_size;
+=======
 		loff_t size = inode->i_size;
 		int res;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		res = pagecache_write_begin(NULL, mapping, size, 0,
 						AOP_FLAG_UNINTERRUPTIBLE,
@@ -589,15 +627,21 @@ void hfsplus_file_truncate(struct inode *inode)
 
 	mutex_lock(&hip->extents_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	res = hfs_find_init(HFSPLUS_SB(sb)->ext_tree, &fd);
 	if (res) {
 		mutex_unlock(&hip->extents_lock);
 		/* XXX: We lack error handling of hfsplus_file_truncate() */
 		return;
 	}
+<<<<<<< HEAD
+=======
 =======
 	hfs_find_init(HFSPLUS_SB(sb)->ext_tree, &fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (1) {
 		if (alloc_cnt == hip->first_blocks) {
 			hfsplus_free_extents(sb, hip->first_extents,

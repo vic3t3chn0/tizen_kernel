@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned long PCIBIOS_MIN_IO = 0x0000;
 unsigned long PCIBIOS_MIN_MEM = 0;
@@ -40,6 +44,9 @@ static void __devinit pcibios_scanbus(struct pci_channel *hose)
 	static int next_busno;
 	static int need_domain_info;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LIST_HEAD(resources);
 	struct resource *res;
 	resource_size_t offset;
@@ -58,11 +65,14 @@ static void __devinit pcibios_scanbus(struct pci_channel *hose)
 
 	bus = pci_scan_root_bus(NULL, next_busno, hose->pci_ops, hose,
 				&resources);
+<<<<<<< HEAD
+=======
 =======
 	struct pci_bus *bus;
 
 	bus = pci_scan_bus(next_busno, hose->pci_ops, hose);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hose->bus = bus;
 
 	need_domain_info = need_domain_info || hose->index;
@@ -83,7 +93,12 @@ static void __devinit pcibios_scanbus(struct pci_channel *hose)
 	} else {
 		pci_free_resource_list(&resources);
 =======
+<<<<<<< HEAD
+	} else {
+		pci_free_resource_list(&resources);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -166,6 +181,8 @@ subsys_initcall(pcibios_init);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void pcibios_fixup_device_resources(struct pci_dev *dev,
 	struct pci_bus *bus)
 {
@@ -188,12 +205,15 @@ static void pcibios_fixup_device_resources(struct pci_dev *dev,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  Called after each bus is probed, but before its children
  *  are examined.
  */
 void __devinit pcibios_fixup_bus(struct pci_bus *bus)
 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	struct pci_dev *dev = bus->self;
@@ -214,6 +234,7 @@ void __devinit pcibios_fixup_bus(struct pci_bus *bus)
 			pcibios_fixup_device_resources(dev, bus);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -243,6 +264,8 @@ resource_size_t pcibios_align_resource(void *data, const struct resource *res,
 	return start;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void pcibios_resource_to_bus(struct pci_dev *dev, struct pci_bus_region *region,
@@ -276,11 +299,14 @@ void pcibios_bus_to_resource(struct pci_dev *dev, struct resource *res,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int pcibios_enable_device(struct pci_dev *dev, int mask)
 {
 	return pci_enable_resources(dev, mask);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -305,6 +331,7 @@ void pcibios_set_master(struct pci_dev *dev)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init pcibios_update_irq(struct pci_dev *dev, int irq)
 {
 	pci_write_config_byte(dev, PCI_INTERRUPT_LINE, irq);
@@ -422,9 +449,14 @@ int pci_mmap_page_range(struct pci_dev *dev, struct vm_area_struct *vma,
 void __iomem *__pci_ioport_map(struct pci_dev *dev,
 			       unsigned long port, unsigned int nr)
 =======
+<<<<<<< HEAD
+void __iomem *__pci_ioport_map(struct pci_dev *dev,
+			       unsigned long port, unsigned int nr)
+=======
 static void __iomem *ioport_map_pci(struct pci_dev *dev,
 				    unsigned long port, unsigned int nr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pci_channel *chan = dev->sysdata;
 
@@ -439,6 +471,8 @@ static void __iomem *ioport_map_pci(struct pci_dev *dev,
 	return (void __iomem *)(chan->io_map_base + port);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long maxlen)
@@ -465,6 +499,7 @@ void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long maxlen)
 EXPORT_SYMBOL(pci_iomap);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pci_iounmap(struct pci_dev *dev, void __iomem *addr)
 {
 	iounmap(addr);
@@ -476,9 +511,12 @@ EXPORT_SYMBOL(pci_iounmap);
 #ifdef CONFIG_HOTPLUG
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(pcibios_resource_to_bus);
 EXPORT_SYMBOL(pcibios_bus_to_resource);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(PCIBIOS_MIN_IO);
 EXPORT_SYMBOL(PCIBIOS_MIN_MEM);
 #endif

@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <asm/timer.h>
 =======
+<<<<<<< HEAD
+#include <asm/timer.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __delay(unsigned long loops)
 {
@@ -33,6 +37,9 @@ void __delay(unsigned long loops)
 static void __udelay_disabled(unsigned long long usecs)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long cr0, cr6, new;
 	u64 clock_saved, end;
 
@@ -53,6 +60,8 @@ static void __udelay_disabled(unsigned long long usecs)
 	lockdep_on();
 	__ctl_load(cr0, 0, 0);
 	__ctl_load(cr6, 6, 6);
+<<<<<<< HEAD
+=======
 =======
 	unsigned long mask, cr0, cr0_saved;
 	u64 clock_saved;
@@ -74,11 +83,16 @@ static void __udelay_disabled(unsigned long long usecs)
 	lockdep_on();
 	__ctl_load(cr0_saved, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_tick_enable(clock_saved);
 }
 
 static void __udelay_enabled(unsigned long long usecs)
 {
+<<<<<<< HEAD
+	u64 clock_saved, end;
+
+=======
 <<<<<<< HEAD
 	u64 clock_saved, end;
 
@@ -89,6 +103,7 @@ static void __udelay_enabled(unsigned long long usecs)
 
 	mask = psw_kernel_bits | PSW_MASK_WAIT | PSW_MASK_EXT | PSW_MASK_IO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	end = get_clock() + (usecs << 12);
 	do {
 		clock_saved = 0;
@@ -99,9 +114,13 @@ static void __udelay_enabled(unsigned long long usecs)
 <<<<<<< HEAD
 		vtime_stop_cpu();
 =======
+<<<<<<< HEAD
+		vtime_stop_cpu();
+=======
 		trace_hardirqs_on();
 		__load_psw_mask(mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		local_irq_disable();
 		if (clock_saved)
 			local_tick_enable(clock_saved);

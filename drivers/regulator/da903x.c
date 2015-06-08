@@ -12,6 +12,13 @@
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/err.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/regulator/driver.h>
 #include <linux/regulator/machine.h>
@@ -118,7 +125,15 @@ static int da903x_set_ldo_voltage(struct regulator_dev *rdev,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	val = DIV_ROUND_UP(min_uV - info->min_uV, info->step_uV);
+=======
 	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*selector = val;
 	val <<= info->vol_shift;
 	mask = ((1 << info->vol_nbits) - 1)  << info->vol_shift;
@@ -201,7 +216,15 @@ static int da9030_set_ldo1_15_voltage(struct regulator_dev *rdev,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	val = DIV_ROUND_UP(min_uV - info->min_uV, info->step_uV);
+=======
 	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*selector = val;
 	val <<= info->vol_shift;
 	mask = ((1 << info->vol_nbits) - 1)  << info->vol_shift;
@@ -232,10 +255,23 @@ static int da9030_set_ldo14_voltage(struct regulator_dev *rdev,
 
 	thresh = (info->max_uV + info->min_uV) / 2;
 	if (min_uV < thresh) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		val = DIV_ROUND_UP(thresh - min_uV, info->step_uV);
+		val |= 0x4;
+	} else {
+		val = DIV_ROUND_UP(min_uV - thresh, info->step_uV);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val = (thresh - min_uV + info->step_uV - 1) / info->step_uV;
 		val |= 0x4;
 	} else {
 		val = (min_uV - thresh + info->step_uV - 1) / info->step_uV;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	*selector = val;
@@ -280,7 +316,15 @@ static int da9034_set_dvc_voltage(struct regulator_dev *rdev,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	val = DIV_ROUND_UP(min_uV - info->min_uV, info->step_uV);
+=======
 	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*selector = val;
 	val <<= info->vol_shift;
 	mask = ((1 << info->vol_nbits) - 1)  << info->vol_shift;
@@ -306,7 +350,15 @@ static int da9034_set_ldo12_voltage(struct regulator_dev *rdev,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	val = DIV_ROUND_UP(min_uV - info->min_uV, info->step_uV);
+=======
 	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	val = (min_uV - info->min_uV + info->step_uV - 1) / info->step_uV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	val = (val >= 20) ? val - 12 : ((val > 7) ? 8 : val);
 	*selector = val;
 	val <<= info->vol_shift;
@@ -536,7 +588,15 @@ static int __devinit da903x_regulator_probe(struct platform_device *pdev)
 		ri->desc.ops = &da9030_regulator_ldo1_15_ops;
 
 	rdev = regulator_register(&ri->desc, &pdev->dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  pdev->dev.platform_data, ri, NULL);
+=======
 				  pdev->dev.platform_data, ri);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				  pdev->dev.platform_data, ri);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(rdev)) {
 		dev_err(&pdev->dev, "failed to register regulator %s\n",
 				ri->desc.name);

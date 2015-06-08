@@ -603,6 +603,9 @@ static int wanrouter_device_new_if(struct wan_device *wandev,
 		 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dev->name == NULL) {
 			err = -EINVAL;
 		} else {
@@ -633,6 +636,8 @@ static int wanrouter_device_new_if(struct wan_device *wandev,
 				err = 0;	/* done !!! */
 				goto out;
 			}
+<<<<<<< HEAD
+=======
 =======
 #ifdef WANDEBUG
 		printk(KERN_INFO "%s: registering interface %s...\n",
@@ -660,6 +665,7 @@ static int wanrouter_device_new_if(struct wan_device *wandev,
 			err = 0;	/* done !!! */
 			goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if (wandev->del_if)
 			wandev->del_if(wandev, dev);

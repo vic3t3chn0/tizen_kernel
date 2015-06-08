@@ -10,9 +10,15 @@
  *  Copyright (C) VMware, Inc. 2013
  */
 =======
+<<<<<<< HEAD
+ *
+ *  Copyright (C) VMware, Inc. 2013
+ */
+=======
  */
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/gfp.h>
 #include <linux/kernel_stat.h>
@@ -22,8 +28,11 @@
 #include <linux/pagemap.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/buffer_head.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/backing-dev.h>
 #include <linux/pagevec.h>
 #include <linux/migrate.h>
@@ -31,7 +40,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/pgtable.h>
 
@@ -60,7 +73,11 @@ struct address_space swapper_space = {
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(swapper_space);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(swapper_space);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define INC_CACHE_INFO(x)	do { swap_cache_info.x++; } while (0)
 
@@ -81,8 +98,13 @@ void show_swap_cache_info(void)
 	printk("Free swap  = %ldkB\n",
 		get_nr_swap_pages() << (PAGE_SHIFT - 10));
 =======
+<<<<<<< HEAD
+	printk("Free swap  = %ldkB\n",
+		get_nr_swap_pages() << (PAGE_SHIFT - 10));
+=======
 	printk("Free swap  = %ldkB\n", nr_swap_pages << (PAGE_SHIFT - 10));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk("Total swap = %lukB\n", total_swap_pages << (PAGE_SHIFT - 10));
 }
 
@@ -341,6 +363,10 @@ struct page *read_swap_cache_async(swp_entry_t entry, gfp_t gfp_mask,
 		if (err == -EEXIST) {	/* seems racy */
 			radix_tree_preload_end();
 =======
+<<<<<<< HEAD
+		if (err == -EEXIST) {	/* seems racy */
+			radix_tree_preload_end();
+=======
 		if (err == -EEXIST) {
 			radix_tree_preload_end();
 			/*
@@ -360,6 +386,7 @@ struct page *read_swap_cache_async(swp_entry_t entry, gfp_t gfp_mask,
 			 */
 			cond_resched();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		}
 		if (err) {		/* swp entry is obsolete ? */
@@ -418,6 +445,9 @@ struct page *swapin_readahead(swp_entry_t entry, gfp_t gfp_mask,
 			struct vm_area_struct *vma, unsigned long addr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page *page;
 	unsigned long offset = swp_offset(entry);
 	unsigned long start_offset, end_offset;
@@ -430,6 +460,8 @@ struct page *swapin_readahead(swp_entry_t entry, gfp_t gfp_mask,
 		start_offset++;
 
 	for (offset = start_offset; offset <= end_offset ; offset++) {
+<<<<<<< HEAD
+=======
 =======
 	int nr_pages;
 	struct page *page;
@@ -446,6 +478,7 @@ struct page *swapin_readahead(swp_entry_t entry, gfp_t gfp_mask,
 	nr_pages = valid_swaphandles(entry, &offset);
 	for (end_offset = offset + nr_pages; offset < end_offset; offset++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Ok, do the async read-ahead now */
 		page = read_swap_cache_async(swp_entry(swp_type(entry), offset),
 						gfp_mask, vma, addr);
@@ -453,8 +486,12 @@ struct page *swapin_readahead(swp_entry_t entry, gfp_t gfp_mask,
 <<<<<<< HEAD
 			continue;
 =======
+<<<<<<< HEAD
+			continue;
+=======
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		page_cache_release(page);
 	}
 	lru_add_drain();	/* Push any new pages onto the LRU now */

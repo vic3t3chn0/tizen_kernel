@@ -16,11 +16,16 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gfp.h>
 #include <linux/init.h>
 #include <linux/ratelimit.h>
 #include <linux/usb.h>
 #include <linux/usb/audio.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/init.h>
 #include <linux/slab.h>
@@ -28,12 +33,16 @@
 #include <linux/usb/audio.h>
 #include <linux/usb/audio-v2.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/core.h>
 #include <sound/pcm.h>
 
 #include "usbaudio.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "helper.h"
 #include "card.h"
 #include "endpoint.h"
@@ -212,6 +221,8 @@ static void snd_complete_sync_urb(struct urb *urb)
 			snd_printd(KERN_ERR "cannot submit sync urb (err = %d)\n", err);
 			snd_pcm_stop(substream, SNDRV_PCM_STATE_XRUN);
 		}
+<<<<<<< HEAD
+=======
 =======
 #include "card.h"
 #include "proc.h"
@@ -259,12 +270,16 @@ static void snd_usb_audio_pcm_free(struct snd_pcm *pcm)
 		stream->pcm = NULL;
 		snd_usb_audio_stream_free(stream);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * initialize a substream for plaback/capture
  */
 int snd_usb_init_substream_urbs(struct snd_usb_substream *subs,
@@ -1018,6 +1033,8 @@ int snd_usb_substream_prepare(struct snd_usb_substream *subs,
 		return start_urbs(subs, runtime);
 	}
 
+<<<<<<< HEAD
+=======
 =======
  * add this endpoint to the chip instance.
  * if a stream with the same endpoint already exists, append to it.
@@ -1388,6 +1405,7 @@ int snd_usb_parse_audio_endpoints(struct snd_usb_audio *chip, int iface_no)
 		snd_usb_init_sample_rate(chip, iface_no, alts, fp, fp->rate_max);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

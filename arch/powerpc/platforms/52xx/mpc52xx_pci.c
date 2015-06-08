@@ -96,8 +96,12 @@ struct mpc52xx_pci {
 <<<<<<< HEAD
 const struct of_device_id mpc52xx_pci_ids[] __initconst = {
 =======
+<<<<<<< HEAD
+const struct of_device_id mpc52xx_pci_ids[] __initconst = {
+=======
 const struct of_device_id mpc52xx_pci_ids[] __initdata = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ .type = "pci", .compatible = "fsl,mpc5200-pci", },
 	{ .type = "pci", .compatible = "mpc5200-pci", },
 	{}
@@ -271,8 +275,12 @@ mpc52xx_pci_setup(struct pci_controller *hose,
 <<<<<<< HEAD
 							resource_size(res)));
 =======
+<<<<<<< HEAD
+							resource_size(res)));
+=======
 		                  res->end - res->start + 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iwcr0 = MPC52xx_PCI_IWCR_ENABLE | MPC52xx_PCI_IWCR_MEM;
 		if (res->flags & IORESOURCE_PREFETCH)
 			iwcr0 |= MPC52xx_PCI_IWCR_READ_MULTI;
@@ -289,8 +297,12 @@ mpc52xx_pci_setup(struct pci_controller *hose,
 <<<<<<< HEAD
 							resource_size(res)));
 =======
+<<<<<<< HEAD
+							resource_size(res)));
+=======
 		                  res->end - res->start + 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iwcr1 = MPC52xx_PCI_IWCR_ENABLE | MPC52xx_PCI_IWCR_MEM;
 		if (res->flags & IORESOURCE_PREFETCH)
 			iwcr1 |= MPC52xx_PCI_IWCR_READ_MULTI;
@@ -315,8 +327,12 @@ mpc52xx_pci_setup(struct pci_controller *hose,
 <<<<<<< HEAD
 						resource_size(res)));
 =======
+<<<<<<< HEAD
+						resource_size(res)));
+=======
 	                                        res->end - res->start + 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iwcr2 = MPC52xx_PCI_IWCR_ENABLE | MPC52xx_PCI_IWCR_IO;
 
 	/* Set all the IWCR fields at once; they're in the same reg */
@@ -390,8 +406,12 @@ mpc52xx_add_bridge(struct device_node *node)
 <<<<<<< HEAD
 	pci_add_flags(PCI_REASSIGN_ALL_BUS);
 =======
+<<<<<<< HEAD
+	pci_add_flags(PCI_REASSIGN_ALL_BUS);
+=======
 	ppc_pci_add_flags(PPC_PCI_REASSIGN_ALL_BUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (of_address_to_resource(node, 0, &rsrc) != 0) {
 		printk(KERN_ERR "Can't get %s resources\n", node->full_name);
@@ -425,8 +445,12 @@ mpc52xx_add_bridge(struct device_node *node)
 <<<<<<< HEAD
 	pci_regs = ioremap(rsrc.start, resource_size(&rsrc));
 =======
+<<<<<<< HEAD
+	pci_regs = ioremap(rsrc.start, resource_size(&rsrc));
+=======
 	pci_regs = ioremap(rsrc.start, rsrc.end - rsrc.start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!pci_regs)
 		return -ENOMEM;
 

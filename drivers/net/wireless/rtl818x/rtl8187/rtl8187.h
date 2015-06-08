@@ -89,6 +89,20 @@ enum {
 	DEVICE_RTL8187B
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct rtl8187_vif {
+	struct ieee80211_hw *dev;
+
+	/* beaconing */
+	struct delayed_work beacon_work;
+	bool enable_beacon;
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct rtl8187_priv {
 	/* common between rtl818x drivers */
 	struct rtl818x_csr *map;
@@ -141,6 +155,13 @@ struct rtl8187_priv {
 		__le32 bits32;
 	} *io_dmabuf;
 	bool rfkill_off;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u16 seqno;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void rtl8187_write_phy(struct ieee80211_hw *dev, u8 addr, u32 data);

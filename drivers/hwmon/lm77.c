@@ -1,4 +1,34 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * lm77.c - Part of lm_sensors, Linux kernel modules for hardware
+ *	    monitoring
+ *
+ * Copyright (c) 2004  Andras BALI <drewie@freemail.hu>
+ *
+ * Heavily based on lm75.c by Frodo Looijaard <frodol@dds.nl>.  The LM77
+ * is a temperature sensor and thermal window comparator with 0.5 deg
+ * resolution made by National Semiconductor.  Complete datasheet can be
+ * obtained at their site:
+ *	http://www.national.com/pf/LM/LM77.html
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     lm77.c - Part of lm_sensors, Linux kernel modules for hardware
              monitoring
 
@@ -24,6 +54,10 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/module.h>
 #include <linux/init.h>
@@ -49,7 +83,15 @@ static const unsigned short normal_i2c[] = { 0x48, 0x49, 0x4a, 0x4b,
 
 /* Each client has this additional data */
 struct lm77_data {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct device		*hwmon_dev;
+=======
 	struct device 		*hwmon_dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct device 		*hwmon_dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mutex		update_lock;
 	char			valid;
 	unsigned long		last_updated;	/* In jiffies */
@@ -95,8 +137,20 @@ static struct i2c_driver lm77_driver = {
 #define LM77_TEMP_MIN (-55000)
 #define LM77_TEMP_MAX 125000
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * In the temperature registers, the low 3 bits are not part of the
+ * temperature values; they are the status bits.
+ */
+=======
 /* In the temperature registers, the low 3 bits are not part of the
    temperature values; they are the status bits. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* In the temperature registers, the low 3 bits are not part of the
+   temperature values; they are the status bits. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline s16 LM77_TEMP_TO_REG(int temp)
 {
 	int ntemp = SENSORS_LIMIT(temp, LM77_TEMP_MIN, LM77_TEMP_MAX);
@@ -112,7 +166,17 @@ static inline int LM77_TEMP_FROM_REG(s16 reg)
 
 /* read routines for temperature limits */
 #define show(value)	\
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t show_##value(struct device *dev,			\
+			    struct device_attribute *attr,	\
+			    char *buf)				\
+=======
 static ssize_t show_##value(struct device *dev, struct device_attribute *attr, char *buf)	\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static ssize_t show_##value(struct device *dev, struct device_attribute *attr, char *buf)	\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {								\
 	struct lm77_data *data = lm77_update_device(dev);	\
 	return sprintf(buf, "%d\n", data->value);		\
@@ -124,17 +188,44 @@ show(temp_min);
 show(temp_max);
 
 /* read routines for hysteresis values */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t show_temp_crit_hyst(struct device *dev,
+				   struct device_attribute *attr, char *buf)
+=======
 static ssize_t show_temp_crit_hyst(struct device *dev, struct device_attribute *attr, char *buf)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static ssize_t show_temp_crit_hyst(struct device *dev, struct device_attribute *attr, char *buf)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct lm77_data *data = lm77_update_device(dev);
 	return sprintf(buf, "%d\n", data->temp_crit - data->temp_hyst);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t show_temp_min_hyst(struct device *dev,
+				  struct device_attribute *attr, char *buf)
+=======
 static ssize_t show_temp_min_hyst(struct device *dev, struct device_attribute *attr, char *buf)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static ssize_t show_temp_min_hyst(struct device *dev, struct device_attribute *attr, char *buf)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct lm77_data *data = lm77_update_device(dev);
 	return sprintf(buf, "%d\n", data->temp_min + data->temp_hyst);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t show_temp_max_hyst(struct device *dev,
+				  struct device_attribute *attr, char *buf)
+=======
 static ssize_t show_temp_max_hyst(struct device *dev, struct device_attribute *attr, char *buf)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static ssize_t show_temp_max_hyst(struct device *dev, struct device_attribute *attr, char *buf)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct lm77_data *data = lm77_update_device(dev);
 	return sprintf(buf, "%d\n", data->temp_max - data->temp_hyst);
@@ -142,6 +233,26 @@ static ssize_t show_temp_max_hyst(struct device *dev, struct device_attribute *a
 
 /* write routines */
 #define set(value, reg)	\
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t set_##value(struct device *dev, struct device_attribute *attr, \
+			   const char *buf, size_t count)		\
+{									\
+	struct i2c_client *client = to_i2c_client(dev);			\
+	struct lm77_data *data = i2c_get_clientdata(client);		\
+	long val;							\
+	int err = kstrtol(buf, 10, &val);				\
+	if (err)							\
+		return err;						\
+									\
+	mutex_lock(&data->update_lock);					\
+	data->value = val;						\
+	lm77_write_value(client, reg, LM77_TEMP_TO_REG(data->value));	\
+	mutex_unlock(&data->update_lock);				\
+	return count;							\
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t set_##value(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)	\
 {										\
 	struct i2c_client *client = to_i2c_client(dev);				\
@@ -153,11 +264,36 @@ static ssize_t set_##value(struct device *dev, struct device_attribute *attr, co
 	lm77_write_value(client, reg, LM77_TEMP_TO_REG(data->value));		\
 	mutex_unlock(&data->update_lock);					\
 	return count;								\
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 set(temp_min, LM77_REG_TEMP_MIN);
 set(temp_max, LM77_REG_TEMP_MAX);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * hysteresis is stored as a relative value on the chip, so it has to be
+ * converted first
+ */
+static ssize_t set_temp_crit_hyst(struct device *dev,
+				  struct device_attribute *attr,
+				  const char *buf, size_t count)
+{
+	struct i2c_client *client = to_i2c_client(dev);
+	struct lm77_data *data = i2c_get_clientdata(client);
+	unsigned long val;
+	int err;
+
+	err = kstrtoul(buf, 10, &val);
+	if (err)
+		return err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* hysteresis is stored as a relative value on the chip, so it has to be
    converted first */
 static ssize_t set_temp_crit_hyst(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
@@ -165,6 +301,10 @@ static ssize_t set_temp_crit_hyst(struct device *dev, struct device_attribute *a
 	struct i2c_client *client = to_i2c_client(dev);
 	struct lm77_data *data = i2c_get_clientdata(client);
 	unsigned long val = simple_strtoul(buf, NULL, 10);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 	data->temp_hyst = data->temp_crit - val;
@@ -175,6 +315,24 @@ static ssize_t set_temp_crit_hyst(struct device *dev, struct device_attribute *a
 }
 
 /* preserve hysteresis when setting T_crit */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t set_temp_crit(struct device *dev, struct device_attribute *attr,
+			     const char *buf, size_t count)
+{
+	struct i2c_client *client = to_i2c_client(dev);
+	struct lm77_data *data = i2c_get_clientdata(client);
+	int oldcrithyst;
+	unsigned long val;
+	int err;
+
+	err = kstrtoul(buf, 10, &val);
+	if (err)
+		return err;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t set_temp_crit(struct device *dev, struct device_attribute *attr, const char *buf, size_t count)
 {
 	struct i2c_client *client = to_i2c_client(dev);
@@ -182,6 +340,10 @@ static ssize_t set_temp_crit(struct device *dev, struct device_attribute *attr, 
 	long val = simple_strtoul(buf, NULL, 10);
 	int oldcrithyst;
 	
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&data->update_lock);
 	oldcrithyst = data->temp_crit - data->temp_hyst;
 	data->temp_crit = val;
@@ -251,6 +413,24 @@ static int lm77_detect(struct i2c_client *new_client,
 				     I2C_FUNC_SMBUS_WORD_DATA))
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Here comes the remaining detection.  Since the LM77 has no
+	 * register dedicated to identification, we have to rely on the
+	 * following tricks:
+	 *
+	 * 1. the high 4 bits represent the sign and thus they should
+	 *    always be the same
+	 * 2. the high 3 bits are unused in the configuration register
+	 * 3. addresses 0x06 and 0x07 return the last read value
+	 * 4. registers cycling over 8-address boundaries
+	 *
+	 * Word-sized registers are high-byte first.
+	 */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Here comes the remaining detection.  Since the LM77 has no
 	   register dedicated to identification, we have to rely on the
 	   following tricks:
@@ -262,6 +442,10 @@ static int lm77_detect(struct i2c_client *new_client,
 	   4. registers cycling over 8-address boundaries
 
 	   Word-sized registers are high-byte first. */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* addresses cycling */
 	cur = i2c_smbus_read_word_data(new_client, 0);
@@ -330,7 +514,16 @@ static int lm77_probe(struct i2c_client *new_client,
 	lm77_init_client(new_client);
 
 	/* Register sysfs hooks */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = sysfs_create_group(&new_client->dev.kobj, &lm77_group);
+	if (err)
+=======
 	if ((err = sysfs_create_group(&new_client->dev.kobj, &lm77_group)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((err = sysfs_create_group(&new_client->dev.kobj, &lm77_group)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit_free;
 
 	data->hwmon_dev = hwmon_device_register(&new_client->dev);
@@ -358,14 +551,34 @@ static int lm77_remove(struct i2c_client *client)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * All registers are word-sized, except for the configuration register.
+ * The LM77 uses the high-byte first convention.
+ */
+=======
 /* All registers are word-sized, except for the configuration register.
    The LM77 uses the high-byte first convention. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* All registers are word-sized, except for the configuration register.
+   The LM77 uses the high-byte first convention. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u16 lm77_read_value(struct i2c_client *client, u8 reg)
 {
 	if (reg == LM77_REG_CONF)
 		return i2c_smbus_read_byte_data(client, reg);
 	else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return i2c_smbus_read_word_swapped(client, reg);
+=======
 		return swab16(i2c_smbus_read_word_data(client, reg));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return swab16(i2c_smbus_read_word_data(client, reg));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int lm77_write_value(struct i2c_client *client, u8 reg, u16 value)
@@ -373,7 +586,15 @@ static int lm77_write_value(struct i2c_client *client, u8 reg, u16 value)
 	if (reg == LM77_REG_CONF)
 		return i2c_smbus_write_byte_data(client, reg, value);
 	else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return i2c_smbus_write_word_swapped(client, reg, value);
+=======
 		return i2c_smbus_write_word_data(client, reg, swab16(value));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return i2c_smbus_write_word_data(client, reg, swab16(value));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void lm77_init_client(struct i2c_client *client)
@@ -420,6 +641,12 @@ static struct lm77_data *lm77_update_device(struct device *dev)
 	return data;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(lm77_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sensors_lm77_init(void)
 {
 	return i2c_add_driver(&lm77_driver);
@@ -429,10 +656,23 @@ static void __exit sensors_lm77_exit(void)
 {
 	i2c_del_driver(&lm77_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Andras BALI <drewie@freemail.hu>");
 MODULE_DESCRIPTION("LM77 driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(sensors_lm77_init);
 module_exit(sensors_lm77_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(sensors_lm77_init);
+module_exit(sensors_lm77_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

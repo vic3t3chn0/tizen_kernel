@@ -47,6 +47,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void *module_alloc(unsigned long size)
 {
 	if (size == 0)
@@ -55,6 +57,7 @@ void *module_alloc(unsigned long size)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Free memory returned from module_alloc */
 void module_free(struct module *mod, void *module_region)
 {
@@ -181,6 +184,8 @@ module_frob_arch_sections(Elf_Ehdr *hdr, Elf_Shdr *sechdrs,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int
 apply_relocate(Elf_Shdr *sechdrs, const char *strtab, unsigned int symindex,
 	       unsigned int relsec, struct module *me)
@@ -191,6 +196,7 @@ apply_relocate(Elf_Shdr *sechdrs, const char *strtab, unsigned int symindex,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 apply_rela(Elf_Rela *rela, Elf_Addr base, Elf_Sym *symtab, 
 	   struct module *me)
@@ -417,8 +423,11 @@ int module_finalize(const Elf_Ehdr *hdr,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 void module_arch_cleanup(struct module *mod)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -26,10 +26,15 @@
 static struct cgroup_subsys_state *cgrp_create(struct cgroup *cgrp);
 static void cgrp_destroy(struct cgroup *cgrp);
 =======
+<<<<<<< HEAD
+static struct cgroup_subsys_state *cgrp_create(struct cgroup *cgrp);
+static void cgrp_destroy(struct cgroup *cgrp);
+=======
 static struct cgroup_subsys_state *cgrp_create(struct cgroup_subsys *ss,
 					       struct cgroup *cgrp);
 static void cgrp_destroy(struct cgroup_subsys *ss, struct cgroup *cgrp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cgrp_populate(struct cgroup_subsys *ss, struct cgroup *cgrp);
 
 struct cgroup_subsys net_cls_subsys = {
@@ -59,9 +64,13 @@ static inline struct cgroup_cls_state *task_cls_state(struct task_struct *p)
 <<<<<<< HEAD
 static struct cgroup_subsys_state *cgrp_create(struct cgroup *cgrp)
 =======
+<<<<<<< HEAD
+static struct cgroup_subsys_state *cgrp_create(struct cgroup *cgrp)
+=======
 static struct cgroup_subsys_state *cgrp_create(struct cgroup_subsys *ss,
 						 struct cgroup *cgrp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cgroup_cls_state *cs;
 
@@ -78,8 +87,12 @@ static struct cgroup_subsys_state *cgrp_create(struct cgroup_subsys *ss,
 <<<<<<< HEAD
 static void cgrp_destroy(struct cgroup *cgrp)
 =======
+<<<<<<< HEAD
+static void cgrp_destroy(struct cgroup *cgrp)
+=======
 static void cgrp_destroy(struct cgroup_subsys *ss, struct cgroup *cgrp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	kfree(cgrp_cls_state(cgrp));
 }
@@ -117,8 +130,12 @@ struct cls_cgroup_head {
 <<<<<<< HEAD
 static int cls_cgroup_classify(struct sk_buff *skb, const struct tcf_proto *tp,
 =======
+<<<<<<< HEAD
+static int cls_cgroup_classify(struct sk_buff *skb, const struct tcf_proto *tp,
+=======
 static int cls_cgroup_classify(struct sk_buff *skb, struct tcf_proto *tp,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       struct tcf_result *res)
 {
 	struct cls_cgroup_head *head = tp->root;

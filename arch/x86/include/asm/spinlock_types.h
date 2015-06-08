@@ -6,6 +6,9 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 
 #if (CONFIG_NR_CPUS < 256)
@@ -30,6 +33,8 @@ typedef struct arch_spinlock {
 #define __ARCH_SPIN_LOCK_UNLOCKED	{ { 0 } }
 
 #include <asm/rwlock.h>
+<<<<<<< HEAD
+=======
 =======
 typedef struct arch_spinlock {
 	unsigned int slock;
@@ -43,5 +48,6 @@ typedef struct {
 
 #define __ARCH_RW_LOCK_UNLOCKED		{ RW_LOCK_BIAS }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _ASM_X86_SPINLOCK_TYPES_H */

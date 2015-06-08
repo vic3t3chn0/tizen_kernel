@@ -635,6 +635,12 @@ static struct usb_driver rndis_driver = {
 	.resume =	usbnet_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(rndis_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init rndis_init(void)
 {
 	return usb_register(&rndis_driver);
@@ -646,6 +652,10 @@ static void __exit rndis_exit(void)
 	usb_deregister(&rndis_driver);
 }
 module_exit(rndis_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("David Brownell");
 MODULE_DESCRIPTION("USB Host side RNDIS driver");

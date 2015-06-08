@@ -4,6 +4,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config CPU_S3C2412
 	bool
 	depends on ARCH_S3C2410
@@ -41,6 +43,7 @@ config S3C2412_PM_SLEEP
 	  Can be selected by another SoCs with similar sleep procedure.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Note, the S3C2412 IOtiming support is in plat-s3c24xx
 
 config S3C2412_CPUFREQ
@@ -50,6 +53,8 @@ config S3C2412_CPUFREQ
 	default y
 	help
 	  CPU Frequency scaling support for S3C2412 and S3C2413 SoC CPUs.
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -103,3 +108,4 @@ config MACH_VSTMS
 
 endmenu
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

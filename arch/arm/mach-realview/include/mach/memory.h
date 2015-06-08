@@ -31,11 +31,14 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ZONE_DMA
 #define ARM_DMA_ZONE_SIZE	SZ_256M
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SPARSEMEM
 
 /*

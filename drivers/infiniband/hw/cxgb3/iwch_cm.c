@@ -753,6 +753,17 @@ static void connect_request_upcall(struct iwch_ep *ep)
 	event.private_data_len = ep->plen;
 	event.private_data = ep->mpa_pkt + sizeof(struct mpa_message);
 	event.provider_data = ep;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Until ird/ord negotiation via MPAv2 support is added, send max
+	 * supported values
+	 */
+	event.ird = event.ord = 8;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (state_read(&ep->parent_ep->com) != DEAD) {
 		get_ep(&ep->com);
 		ep->parent_ep->com.cm_id->event_handler(
@@ -770,6 +781,17 @@ static void established_upcall(struct iwch_ep *ep)
 	PDBG("%s ep %p\n", __func__, ep);
 	memset(&event, 0, sizeof(event));
 	event.event = IW_CM_EVENT_ESTABLISHED;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Until ird/ord negotiation via MPAv2 support is added, send max
+	 * supported values
+	 */
+	event.ird = event.ord = 8;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ep->com.cm_id) {
 		PDBG("%s ep %p tid %d\n", __func__, ep, ep->hwtid);
 		ep->com.cm_id->event_handler(ep->com.cm_id, &event);
@@ -1328,7 +1350,14 @@ static int pass_accept_req(struct t3cdev *tdev, struct sk_buff *skb, void *ctx)
 	struct iwch_ep *child_ep, *parent_ep = ctx;
 	struct cpl_pass_accept_req *req = cplhdr(skb);
 	unsigned int hwtid = GET_TID(req);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct neighbour *neigh;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct neighbour *neigh;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dst_entry *dst;
 	struct l2t_entry *l2t;
 	struct rtable *rt;
@@ -1365,10 +1394,20 @@ static int pass_accept_req(struct t3cdev *tdev, struct sk_buff *skb, void *ctx)
 		goto reject;
 	}
 	dst = &rt->dst;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	l2t = t3_l2t_get(tdev, dst, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 	neigh = dst_get_neighbour(dst);
 	l2t = t3_l2t_get(tdev, neigh, neigh->dev);
 	rcu_read_unlock();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!l2t) {
 		printk(KERN_ERR MOD "%s - failed to allocate l2t entry!\n",
 		       __func__);
@@ -1879,7 +1918,14 @@ static int is_loopback_dst(struct iw_cm_id *cm_id)
 int iwch_connect(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 {
 	struct iwch_dev *h = to_iwch_dev(cm_id->device);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct neighbour *neigh;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct neighbour *neigh;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iwch_ep *ep;
 	struct rtable *rt;
 	int err = 0;
@@ -1937,6 +1983,12 @@ int iwch_connect(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 		goto fail3;
 	}
 	ep->dst = &rt->dst;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ep->l2t = t3_l2t_get(ep->com.tdev, ep->dst, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_read_lock();
 	neigh = dst_get_neighbour(ep->dst);
@@ -1944,6 +1996,10 @@ int iwch_connect(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
 	/* get a l2t entry */
 	ep->l2t = t3_l2t_get(ep->com.tdev, neigh, neigh->dev);
 	rcu_read_unlock();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ep->l2t) {
 		printk(KERN_ERR MOD "%s - cannot alloc l2e.\n", __func__);
 		err = -ENOMEM;

@@ -297,7 +297,15 @@ static struct scsi_device *scsi_alloc_sdev(struct scsi_target *starget,
 		kfree(sdev);
 		goto out;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	WARN_ON_ONCE(!blk_get_queue(sdev->request_queue));
+=======
 	blk_get_queue(sdev->request_queue);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	blk_get_queue(sdev->request_queue);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sdev->request_queue->queuedata = sdev;
 	scsi_adjust_queue_depth(sdev, 0, sdev->host->cmd_per_lun);
 
@@ -776,6 +784,11 @@ static int scsi_add_lun(struct scsi_device *sdev, unsigned char *inq_result,
 	sdev->model = (char *) (sdev->inquiry + 16);
 	sdev->rev = (char *) (sdev->inquiry + 32);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (strncmp(sdev->vendor, "ATA     ", 8) == 0) {
 		/*
 		 * sata emulation layer device.  This is a hack to work around
@@ -786,6 +799,10 @@ static int scsi_add_lun(struct scsi_device *sdev, unsigned char *inq_result,
 		sdev->allow_restart = 1;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (*bflags & BLIST_ISROM) {
 		sdev->type = TYPE_ROM;
 		sdev->removable = 1;
@@ -935,6 +952,16 @@ static int scsi_add_lun(struct scsi_device *sdev, unsigned char *inq_result,
 
 	transport_configure_device(&sdev->sdev_gendev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* The LLD can override auto suspend tunables in ->slave_configure() */
+	sdev->use_rpm_auto = 0;
+	sdev->autosuspend_delay = SCSI_DEFAULT_AUTOSUSPEND_DELAY;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sdev->host->hostt->slave_configure) {
 		ret = sdev->host->hostt->slave_configure(sdev);
 		if (ret) {
@@ -1305,6 +1332,13 @@ EXPORT_SYMBOL(int_to_scsilun);
  *   LUNs even if it's older than SCSI-3.
  *   If BLIST_NOREPORTLUN is set, return 1 always.
  *   If BLIST_NOLUN is set, return 0 always.
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *   If starget->no_report_luns is set, return 1 always.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Return:
  *     0: scan completed (or no memory, so further scanning is futile)
@@ -1331,6 +1365,13 @@ static int scsi_report_lun_scan(struct scsi_target *starget, int bflags,
 	 * Only support SCSI-3 and up devices if BLIST_NOREPORTLUN is not set.
 	 * Also allow SCSI-2 if BLIST_REPORTLUN2 is set and host adapter does
 	 * support more than 8 LUNs.
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * Don't attempt if the target doesn't support REPORT LUNS.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	if (bflags & BLIST_NOREPORTLUN)
 		return 1;
@@ -1342,6 +1383,14 @@ static int scsi_report_lun_scan(struct scsi_target *starget, int bflags,
 		return 1;
 	if (bflags & BLIST_NOLUN)
 		return 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (starget->no_report_luns)
+		return 1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!(sdev = scsi_device_lookup_by_target(starget, 0))) {
 		sdev = scsi_alloc_sdev(starget, 0, NULL);
@@ -1720,9 +1769,18 @@ static void scsi_sysfs_add_devices(struct Scsi_Host *shost)
 {
 	struct scsi_device *sdev;
 	shost_for_each_device(sdev, shost) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		/* target removed before the device could be added */
 		if (sdev->sdev_state == SDEV_DEL)
 			continue;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* target removed before the device could be added */
+		if (sdev->sdev_state == SDEV_DEL)
+			continue;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!scsi_host_scan_allowed(shost) ||
 		    scsi_sysfs_add_sdev(sdev) != 0)
 			__scsi_remove_device(sdev);

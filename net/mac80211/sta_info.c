@@ -12,7 +12,11 @@
 <<<<<<< HEAD
 #include <linux/etherdevice.h>
 =======
+<<<<<<< HEAD
+#include <linux/etherdevice.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/netdevice.h>
 #include <linux/types.h>
 #include <linux/slab.h>
@@ -31,7 +35,11 @@
 <<<<<<< HEAD
 #include "wme.h"
 =======
+<<<<<<< HEAD
+#include "wme.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * DOC: STA information lifetime rules
@@ -72,8 +80,12 @@
 <<<<<<< HEAD
 /* Caller must hold local->sta_mtx */
 =======
+<<<<<<< HEAD
+/* Caller must hold local->sta_mtx */
+=======
 /* Caller must hold local->sta_lock */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sta_info_hash_del(struct ieee80211_local *local,
 			     struct sta_info *sta)
 {
@@ -83,8 +95,12 @@ static int sta_info_hash_del(struct ieee80211_local *local,
 <<<<<<< HEAD
 				      lockdep_is_held(&local->sta_mtx));
 =======
+<<<<<<< HEAD
+				      lockdep_is_held(&local->sta_mtx));
+=======
 				      lockdep_is_held(&local->sta_lock));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!s)
 		return -ENOENT;
 	if (s == sta) {
@@ -99,8 +115,12 @@ static int sta_info_hash_del(struct ieee80211_local *local,
 <<<<<<< HEAD
 					lockdep_is_held(&local->sta_mtx));
 =======
+<<<<<<< HEAD
+					lockdep_is_held(&local->sta_mtx));
+=======
 					lockdep_is_held(&local->sta_lock));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rcu_access_pointer(s->hnext)) {
 		rcu_assign_pointer(s->hnext, sta->hnext);
 		return 0;
@@ -118,12 +138,17 @@ struct sta_info *sta_info_get(struct ieee80211_sub_if_data *sdata,
 
 	sta = rcu_dereference_check(local->sta_hash[STA_HASH(addr)],
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    lockdep_is_held(&local->sta_mtx));
 	while (sta) {
 		if (sta->sdata == sdata &&
 		    compare_ether_addr(sta->sta.addr, addr) == 0)
 			break;
 		sta = rcu_dereference_check(sta->hnext,
+<<<<<<< HEAD
+=======
 =======
 				    rcu_read_lock_held() ||
 				    lockdep_is_held(&local->sta_lock) ||
@@ -136,6 +161,7 @@ struct sta_info *sta_info_get(struct ieee80211_sub_if_data *sdata,
 					    rcu_read_lock_held() ||
 					    lockdep_is_held(&local->sta_lock) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    lockdep_is_held(&local->sta_mtx));
 	}
 	return sta;
@@ -154,13 +180,21 @@ struct sta_info *sta_info_get_bss(struct ieee80211_sub_if_data *sdata,
 	sta = rcu_dereference_check(local->sta_hash[STA_HASH(addr)],
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				    rcu_read_lock_held() ||
 				    lockdep_is_held(&local->sta_lock) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    lockdep_is_held(&local->sta_mtx));
 	while (sta) {
 		if ((sta->sdata == sdata ||
 		     (sta->sdata->bss && sta->sdata->bss == sdata->bss)) &&
+<<<<<<< HEAD
+		    compare_ether_addr(sta->sta.addr, addr) == 0)
+			break;
+		sta = rcu_dereference_check(sta->hnext,
+=======
 <<<<<<< HEAD
 		    compare_ether_addr(sta->sta.addr, addr) == 0)
 			break;
@@ -172,6 +206,7 @@ struct sta_info *sta_info_get_bss(struct ieee80211_sub_if_data *sdata,
 					    rcu_read_lock_held() ||
 					    lockdep_is_held(&local->sta_lock) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    lockdep_is_held(&local->sta_mtx));
 	}
 	return sta;
@@ -201,14 +236,21 @@ struct sta_info *sta_info_get_by_idx(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
  * sta_info_free - free STA
 =======
+<<<<<<< HEAD
+ * sta_info_free - free STA
+=======
  * __sta_info_free - internal STA free helper
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * @local: pointer to the global information
  * @sta: STA info to free
  *
  * This function must undo everything done by sta_info_alloc()
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * that may happen before sta_info_insert(). It may only be
  * called when sta_info_insert() has not been attempted (and
  * if that fails, the station is freed anyway.)
@@ -217,6 +259,8 @@ void sta_info_free(struct ieee80211_local *local, struct sta_info *sta)
 {
 	if (sta->rate_ctrl)
 		rate_control_free_sta(sta);
+<<<<<<< HEAD
+=======
 =======
  * that may happen before sta_info_insert().
  */
@@ -228,6 +272,7 @@ static void __sta_info_free(struct ieee80211_local *local,
 		rate_control_put(sta->rate_ctrl);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MAC80211_VERBOSE_DEBUG
 	wiphy_debug(local->hw.wiphy, "Destroyed STA %pM\n", sta->sta.addr);
@@ -237,17 +282,23 @@ static void __sta_info_free(struct ieee80211_local *local,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Caller must hold local->sta_mtx */
 static void sta_info_hash_add(struct ieee80211_local *local,
 			      struct sta_info *sta)
 {
 	lockdep_assert_held(&local->sta_mtx);
+<<<<<<< HEAD
+=======
 =======
 /* Caller must hold local->sta_lock */
 static void sta_info_hash_add(struct ieee80211_local *local,
 			      struct sta_info *sta)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sta->hnext = local->sta_hash[STA_HASH(sta->sta.addr)];
 	rcu_assign_pointer(local->sta_hash[STA_HASH(sta->sta.addr)], sta);
 }
@@ -262,6 +313,9 @@ static void sta_unblock(struct work_struct *wk)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!test_sta_flag(sta, WLAN_STA_PS_STA)) {
 		local_bh_disable();
 		ieee80211_sta_ps_deliver_wakeup(sta);
@@ -280,6 +334,8 @@ static void sta_unblock(struct work_struct *wk)
 		local_bh_enable();
 	} else
 		clear_sta_flag(sta, WLAN_STA_PS_DRIVER);
+<<<<<<< HEAD
+=======
 =======
 	if (!test_sta_flags(sta, WLAN_STA_PS_STA))
 		ieee80211_sta_ps_deliver_wakeup(sta);
@@ -289,6 +345,7 @@ static void sta_unblock(struct work_struct *wk)
 	} else
 		clear_sta_flags(sta, WLAN_STA_PS_DRIVER);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int sta_prepare_rate_control(struct ieee80211_local *local,
@@ -298,11 +355,16 @@ static int sta_prepare_rate_control(struct ieee80211_local *local,
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sta->rate_ctrl = local->rate_ctrl;
 	sta->rate_ctrl_priv = rate_control_alloc_sta(sta->rate_ctrl,
 						     &sta->sta, gfp);
 	if (!sta->rate_ctrl_priv)
 		return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 	sta->rate_ctrl = rate_control_get(local->rate_ctrl);
 	sta->rate_ctrl_priv = rate_control_alloc_sta(sta->rate_ctrl,
@@ -312,6 +374,7 @@ static int sta_prepare_rate_control(struct ieee80211_local *local,
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -320,8 +383,12 @@ struct sta_info *sta_info_alloc(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
 				const u8 *addr, gfp_t gfp)
 =======
+<<<<<<< HEAD
+				const u8 *addr, gfp_t gfp)
+=======
 				u8 *addr, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_local *local = sdata->local;
 	struct sta_info *sta;
@@ -335,8 +402,11 @@ struct sta_info *sta_info_alloc(struct ieee80211_sub_if_data *sdata,
 	spin_lock_init(&sta->lock);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_lock_init(&sta->flaglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_WORK(&sta->drv_unblock_wk, sta_unblock);
 	INIT_WORK(&sta->ampdu_mlme.work, ieee80211_ba_session_work);
 	mutex_init(&sta->ampdu_mlme.mtx);
@@ -350,7 +420,12 @@ struct sta_info *sta_info_alloc(struct ieee80211_sub_if_data *sdata,
 	sta->sta_state = IEEE80211_STA_NONE;
 
 =======
+<<<<<<< HEAD
+	sta->sta_state = IEEE80211_STA_NONE;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	do_posix_clock_monotonic_gettime(&uptime);
 	sta->last_connected = uptime.tv_sec;
 	ewma_init(&sta->avg_signal, 1024, 8);
@@ -369,14 +444,20 @@ struct sta_info *sta_info_alloc(struct ieee80211_sub_if_data *sdata,
 		sta->timer_to_tid[i] = i;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < IEEE80211_NUM_ACS; i++) {
 		skb_queue_head_init(&sta->ps_tx_buf[i]);
 		skb_queue_head_init(&sta->tx_filtered[i]);
 	}
+<<<<<<< HEAD
+=======
 =======
 	skb_queue_head_init(&sta->ps_tx_buf);
 	skb_queue_head_init(&sta->tx_filtered);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < NUM_RX_DATA_QUEUES; i++)
 		sta->last_seq_ctrl[i] = cpu_to_le16(USHRT_MAX);
@@ -394,6 +475,9 @@ struct sta_info *sta_info_alloc(struct ieee80211_sub_if_data *sdata,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sta_info_insert_check(struct sta_info *sta)
 {
 	struct ieee80211_sub_if_data *sdata = sta->sdata;
@@ -409,6 +493,8 @@ static int sta_info_insert_check(struct sta_info *sta)
 	if (WARN_ON(compare_ether_addr(sta->sta.addr, sdata->vif.addr) == 0 ||
 		    is_multicast_ether_addr(sta->sta.addr)))
 		return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 static int sta_info_finish_insert(struct sta_info *sta, bool async)
 {
@@ -466,11 +552,15 @@ static int sta_info_finish_insert(struct sta_info *sta, bool async)
 	cfg80211_new_sta(sdata->dev, sta->sta.addr, &sinfo, GFP_KERNEL);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sta_info_insert_drv_state(struct ieee80211_local *local,
 				     struct ieee80211_sub_if_data *sdata,
 				     struct sta_info *sta)
@@ -588,6 +678,8 @@ int sta_info_insert_rcu(struct sta_info *sta) __acquires(RCU)
 	err = sta_info_insert_finish(sta);
 	if (err)
 		goto out_free;
+<<<<<<< HEAD
+=======
 =======
 static void sta_info_finish_pending(struct ieee80211_local *local)
 {
@@ -727,6 +819,7 @@ int sta_info_insert_rcu(struct sta_info *sta) __acquires(RCU)
 	if (ieee80211_vif_is_mesh(&sdata->vif))
 		mesh_accept_plinks_update(sdata);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
  out_free:
@@ -734,8 +827,12 @@ int sta_info_insert_rcu(struct sta_info *sta) __acquires(RCU)
 <<<<<<< HEAD
 	sta_info_free(local, sta);
 =======
+<<<<<<< HEAD
+	sta_info_free(local, sta);
+=======
 	__sta_info_free(local, sta);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -767,6 +864,9 @@ static inline void __bss_tim_clear(struct ieee80211_if_ap *bss, u16 aid)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long ieee80211_tids_for_ac(int ac)
 {
 	/* If we ever support TIDs > 7, this obviously needs to be adjusted */
@@ -848,6 +948,8 @@ void sta_info_recalc_tim(struct sta_info *sta)
 }
 
 static bool sta_info_buffer_expired(struct sta_info *sta, struct sk_buff *skb)
+<<<<<<< HEAD
+=======
 =======
 static void __sta_info_set_tim_bit(struct ieee80211_if_ap *bss,
 				   struct sta_info *sta)
@@ -902,6 +1004,7 @@ void sta_info_clear_tim_bit(struct sta_info *sta)
 static int sta_info_buffer_expired(struct sta_info *sta,
 				   struct sk_buff *skb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_tx_info *info;
 	int timeout;
@@ -910,8 +1013,12 @@ static int sta_info_buffer_expired(struct sta_info *sta,
 <<<<<<< HEAD
 		return false;
 =======
+<<<<<<< HEAD
+		return false;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info = IEEE80211_SKB_CB(skb);
 
@@ -929,14 +1036,22 @@ static int sta_info_buffer_expired(struct sta_info *sta,
 static bool sta_info_cleanup_expire_buffered_ac(struct ieee80211_local *local,
 						struct sta_info *sta, int ac)
 =======
+<<<<<<< HEAD
+static bool sta_info_cleanup_expire_buffered_ac(struct ieee80211_local *local,
+						struct sta_info *sta, int ac)
+=======
 static bool sta_info_cleanup_expire_buffered(struct ieee80211_local *local,
 					     struct sta_info *sta)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 	struct sk_buff *skb;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * First check for frames that should expire on the filtered
 	 * queue. Frames here were rejected by the driver and are on
@@ -984,6 +1099,8 @@ static bool sta_info_cleanup_expire_buffered(struct ieee80211_local *local,
 		 * hasn't expired yet (or we reached the end of
 		 * the queue) we can stop testing
 		 */
+<<<<<<< HEAD
+=======
 =======
 	if (skb_queue_empty(&sta->ps_tx_buf))
 		return false;
@@ -998,6 +1115,7 @@ static bool sta_info_cleanup_expire_buffered(struct ieee80211_local *local,
 		spin_unlock_irqrestore(&sta->ps_tx_buf.lock, flags);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!skb)
 			break;
 
@@ -1008,6 +1126,9 @@ static bool sta_info_cleanup_expire_buffered(struct ieee80211_local *local,
 #endif
 		dev_kfree_skb(skb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1049,6 +1170,8 @@ int __must_check __sta_info_destroy(struct sta_info *sta)
 	struct ieee80211_sub_if_data *sdata;
 	int ret, i, ac;
 	struct tid_ampdu_tx *tid_tx;
+<<<<<<< HEAD
+=======
 =======
 
 		if (skb_queue_empty(&sta->ps_tx_buf) &&
@@ -1067,6 +1190,7 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 	unsigned long flags;
 	int ret, i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	might_sleep();
 
@@ -1080,7 +1204,12 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 	lockdep_assert_held(&local->sta_mtx);
 
 =======
+<<<<<<< HEAD
+	lockdep_assert_held(&local->sta_mtx);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Before removing the station from the driver and
 	 * rate control, it might still start new aggregation
@@ -1088,6 +1217,9 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 	 * will be sufficient.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_sta_flag(sta, WLAN_STA_BLOCK_BA);
 	ieee80211_sta_tear_down_BA_sessions(sta, true);
 
@@ -1097,6 +1229,8 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 
 	list_del(&sta->list);
 
+<<<<<<< HEAD
+=======
 =======
 	set_sta_flags(sta, WLAN_STA_BLOCK_BA);
 	ieee80211_sta_tear_down_BA_sessions(sta, true);
@@ -1111,6 +1245,7 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&local->key_mtx);
 	for (i = 0; i < NUM_DEFAULT_KEYS; i++)
 		__ieee80211_key_free(key_mtx_dereference(local, sta->gtk[i]));
@@ -1122,6 +1257,8 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (test_and_clear_sta_flags(sta,
 				WLAN_STA_PS_STA | WLAN_STA_PS_DRIVER)) {
 		BUG_ON(!sdata->bss);
@@ -1131,11 +1268,15 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local->num_sta--;
 	local->sta_generation++;
 
 	if (sdata->vif.type == NL80211_IFTYPE_AP_VLAN)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		RCU_INIT_POINTER(sdata->u.vlan.sta, NULL);
 
 	while (sta->sta_state > IEEE80211_STA_NONE) {
@@ -1150,6 +1291,8 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 		ret = drv_sta_state(local, sdata, sta, IEEE80211_STA_NONE,
 				    IEEE80211_STA_NOTEXIST);
 		WARN_ON_ONCE(ret != 0);
+<<<<<<< HEAD
+=======
 =======
 		rcu_assign_pointer(sdata->u.vlan.sta, NULL);
 
@@ -1161,6 +1304,7 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 		drv_sta_remove(local, sdata, &sta->sta);
 		sdata = sta->sdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1172,6 +1316,9 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 	synchronize_rcu();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (test_sta_flag(sta, WLAN_STA_PS_STA)) {
 		BUG_ON(!sdata->bss);
 
@@ -1187,8 +1334,11 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 		__skb_queue_purge(&sta->tx_filtered[ac]);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MAC80211_MESH
 	if (ieee80211_vif_is_mesh(&sdata->vif))
 		mesh_accept_plinks_update(sdata);
@@ -1212,6 +1362,9 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Destroy aggregation state here. It would be nice to wait for the
 	 * driver to finish aggregation stop and then clean up, but for now
@@ -1227,6 +1380,8 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 	}
 
 	sta_info_free(local, sta);
+<<<<<<< HEAD
+=======
 =======
 	while ((skb = skb_dequeue(&sta->ps_tx_buf)) != NULL) {
 		local->total_ps_buffered--;
@@ -1238,6 +1393,7 @@ static int __must_check __sta_info_destroy(struct sta_info *sta)
 
 	__sta_info_free(local, sta);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1298,12 +1454,18 @@ void sta_info_init(struct ieee80211_local *local)
 	mutex_init(&local->sta_mtx);
 	INIT_LIST_HEAD(&local->sta_list);
 =======
+<<<<<<< HEAD
+	spin_lock_init(&local->tim_lock);
+	mutex_init(&local->sta_mtx);
+	INIT_LIST_HEAD(&local->sta_list);
+=======
 	spin_lock_init(&local->sta_lock);
 	mutex_init(&local->sta_mtx);
 	INIT_LIST_HEAD(&local->sta_list);
 	INIT_LIST_HEAD(&local->sta_pending_list);
 	INIT_WORK(&local->sta_finish_work, sta_info_finish_work);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setup_timer(&local->sta_cleanup, sta_info_cleanup,
 		    (unsigned long)local);
@@ -1314,8 +1476,12 @@ void sta_info_stop(struct ieee80211_local *local)
 <<<<<<< HEAD
 	del_timer(&local->sta_cleanup);
 =======
+<<<<<<< HEAD
+	del_timer(&local->sta_cleanup);
+=======
 	del_timer_sync(&local->sta_cleanup);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sta_info_flush(local, NULL);
 }
 
@@ -1337,11 +1503,16 @@ int sta_info_flush(struct ieee80211_local *local,
 
 	mutex_lock(&local->sta_mtx);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(sta, tmp, &local->sta_list, list) {
 		if (!sdata || sdata == sta->sdata) {
 			WARN_ON(__sta_info_destroy(sta));
 			ret++;
 		}
+<<<<<<< HEAD
+=======
 =======
 
 	sta_info_finish_pending(local);
@@ -1350,6 +1521,7 @@ int sta_info_flush(struct ieee80211_local *local,
 		if (!sdata || sdata == sta->sdata)
 			WARN_ON(__sta_info_destroy(sta));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	mutex_unlock(&local->sta_mtx);
 
@@ -1364,14 +1536,20 @@ void ieee80211_sta_expire(struct ieee80211_sub_if_data *sdata,
 
 	mutex_lock(&local->sta_mtx);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_for_each_entry_safe(sta, tmp, &local->sta_list, list) {
 		if (sdata != sta->sdata)
 			continue;
 
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_entry_safe(sta, tmp, &local->sta_list, list)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (time_after(jiffies, sta->last_rx + exp_time)) {
 #ifdef CONFIG_MAC80211_IBSS_DEBUG
 			printk(KERN_DEBUG "%s: expiring inactive STA %pM\n",
@@ -1383,7 +1561,12 @@ void ieee80211_sta_expire(struct ieee80211_sub_if_data *sdata,
 	}
 
 =======
+<<<<<<< HEAD
+	}
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&local->sta_mtx);
 }
 
@@ -1433,15 +1616,21 @@ static void clear_sta_ps_flags(void *_sta)
 {
 	struct sta_info *sta = _sta;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ieee80211_sub_if_data *sdata = sta->sdata;
 
 	clear_sta_flag(sta, WLAN_STA_PS_DRIVER);
 	if (test_and_clear_sta_flag(sta, WLAN_STA_PS_STA))
 		atomic_dec(&sdata->bss->num_sta_ps);
+<<<<<<< HEAD
+=======
 =======
 
 	clear_sta_flags(sta, WLAN_STA_PS_DRIVER | WLAN_STA_PS_STA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* powersave support code */
@@ -1450,6 +1639,9 @@ void ieee80211_sta_ps_deliver_wakeup(struct sta_info *sta)
 	struct ieee80211_sub_if_data *sdata = sta->sdata;
 	struct ieee80211_local *local = sdata->local;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff_head pending;
 	int filtered = 0, buffered = 0, ac;
 
@@ -1783,6 +1975,8 @@ void ieee80211_sta_ps_deliver_uapsd(struct sta_info *sta)
 
 	ieee80211_sta_ps_deliver_response(sta, n_frames, ~delivery_enabled,
 					  IEEE80211_FRAME_RELEASE_UAPSD);
+<<<<<<< HEAD
+=======
 =======
 	int sent, buffered;
 
@@ -1865,6 +2059,7 @@ void ieee80211_sta_ps_deliver_poll_response(struct sta_info *sta)
 #endif /* CONFIG_MAC80211_VERBOSE_PS_DEBUG */
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ieee80211_sta_block_awake(struct ieee80211_hw *hw,
@@ -1879,14 +2074,22 @@ void ieee80211_sta_block_awake(struct ieee80211_hw *hw,
 		set_sta_flag(sta, WLAN_STA_PS_DRIVER);
 	else if (test_sta_flag(sta, WLAN_STA_PS_DRIVER))
 =======
+<<<<<<< HEAD
+		set_sta_flag(sta, WLAN_STA_PS_DRIVER);
+	else if (test_sta_flag(sta, WLAN_STA_PS_DRIVER))
+=======
 		set_sta_flags(sta, WLAN_STA_PS_DRIVER);
 	else if (test_sta_flags(sta, WLAN_STA_PS_DRIVER))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ieee80211_queue_work(hw, &sta->drv_unblock_wk);
 }
 EXPORT_SYMBOL(ieee80211_sta_block_awake);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ieee80211_sta_eosp_irqsafe(struct ieee80211_sta *pubsta)
 {
 	struct sta_info *sta = container_of(pubsta, struct sta_info, sta);
@@ -2016,6 +2219,8 @@ int sta_info_move_state(struct sta_info *sta,
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 void ieee80211_sta_set_tim(struct ieee80211_sta *pubsta)
 {
@@ -2026,3 +2231,4 @@ void ieee80211_sta_set_tim(struct ieee80211_sta *pubsta)
 }
 EXPORT_SYMBOL(ieee80211_sta_set_tim);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

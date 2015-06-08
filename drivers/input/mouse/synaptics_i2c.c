@@ -185,17 +185,41 @@
 #define NO_DATA_SLEEP_MSECS	(MSEC_PER_SEC / 4)
 
 /* Control touchpad's No Deceleration option */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool no_decel = 1;
+=======
 static int no_decel = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int no_decel = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(no_decel, bool, 0644);
 MODULE_PARM_DESC(no_decel, "No Deceleration. Default = 1 (on)");
 
 /* Control touchpad's Reduced Reporting option */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool reduce_report;
+=======
 static int reduce_report;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int reduce_report;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(reduce_report, bool, 0644);
 MODULE_PARM_DESC(reduce_report, "Reduced Reporting. Default = 0 (off)");
 
 /* Control touchpad's No Filter option */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool no_filter;
+=======
 static int no_filter;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int no_filter;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(no_filter, bool, 0644);
 MODULE_PARM_DESC(no_filter, "No Filter. Default = 0 (off)");
 
@@ -570,7 +594,15 @@ static int __devinit synaptics_i2c_probe(struct i2c_client *client,
 			 "Requesting IRQ: %d\n", touch->client->irq);
 
 		ret = request_irq(touch->client->irq, synaptics_i2c_irq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  IRQ_TYPE_EDGE_FALLING,
+=======
 				  IRQF_DISABLED|IRQ_TYPE_EDGE_FALLING,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				  IRQF_DISABLED|IRQ_TYPE_EDGE_FALLING,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  DRIVER_NAME, touch);
 		if (ret) {
 			dev_warn(&touch->client->dev,
@@ -619,7 +651,15 @@ static int __devexit synaptics_i2c_remove(struct i2c_client *client)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+=======
 #ifdef CONFIG_PM
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_PM
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int synaptics_i2c_suspend(struct device *dev)
 {
 	struct i2c_client *client = to_i2c_client(dev);
@@ -672,6 +712,12 @@ static struct i2c_driver synaptics_i2c_driver = {
 	.id_table	= synaptics_i2c_id_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(synaptics_i2c_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init synaptics_i2c_init(void)
 {
 	return i2c_add_driver(&synaptics_i2c_driver);
@@ -684,6 +730,10 @@ static void __exit synaptics_i2c_exit(void)
 
 module_init(synaptics_i2c_init);
 module_exit(synaptics_i2c_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Synaptics I2C touchpad driver");
 MODULE_AUTHOR("Mike Rapoport, Igor Grinberg, Compulab");

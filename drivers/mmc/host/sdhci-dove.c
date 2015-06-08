@@ -20,9 +20,21 @@
  */
 
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+#include <linux/mmc/host.h>
+
+=======
 #include <linux/mmc/host.h>
 
 #include "sdhci.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/mmc/host.h>
+
+#include "sdhci.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "sdhci-pltfm.h"
 
 static u16 sdhci_dove_readw(struct sdhci_host *host, int reg)
@@ -61,10 +73,51 @@ static struct sdhci_ops sdhci_dove_ops = {
 	.read_l	= sdhci_dove_readl,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct sdhci_pltfm_data sdhci_dove_pdata = {
+=======
 struct sdhci_pltfm_data sdhci_dove_pdata = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct sdhci_pltfm_data sdhci_dove_pdata = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops	= &sdhci_dove_ops,
 	.quirks	= SDHCI_QUIRK_NO_SIMULT_VDD_AND_POWER |
 		  SDHCI_QUIRK_NO_BUSY_IRQ |
 		  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL |
 		  SDHCI_QUIRK_FORCE_DMA,
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+static int __devinit sdhci_dove_probe(struct platform_device *pdev)
+{
+	return sdhci_pltfm_register(pdev, &sdhci_dove_pdata);
+}
+
+static int __devexit sdhci_dove_remove(struct platform_device *pdev)
+{
+	return sdhci_pltfm_unregister(pdev);
+}
+
+static struct platform_driver sdhci_dove_driver = {
+	.driver		= {
+		.name	= "sdhci-dove",
+		.owner	= THIS_MODULE,
+		.pm	= SDHCI_PLTFM_PMOPS,
+	},
+	.probe		= sdhci_dove_probe,
+	.remove		= __devexit_p(sdhci_dove_remove),
+};
+
+module_platform_driver(sdhci_dove_driver);
+
+MODULE_DESCRIPTION("SDHCI driver for Dove");
+MODULE_AUTHOR("Saeed Bishara <saeed@marvell.com>, "
+	      "Mike Rapoport <mike@compulab.co.il>");
+MODULE_LICENSE("GPL v2");
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

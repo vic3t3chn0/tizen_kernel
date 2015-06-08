@@ -18,13 +18,22 @@
 #include <linux/bootmem.h>
 #include <asm/pgalloc.h>
 =======
+<<<<<<< HEAD
+#include <linux/mm.h>
+#include <linux/bootmem.h>
+#include <asm/pgalloc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/machdep.h>
 #include <asm/coldfire.h>
 #include <asm/m54xxsim.h>
 #include <asm/mcfuart.h>
 #include <asm/m54xxgpt.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMU
 #include <asm/mmu_context.h>
 #endif
@@ -42,6 +51,8 @@ static void __init m54xx_uarts_init(void)
 		MCF_PAR_PSC_CTS_CTS, MCF_MBAR + MCF_PAR_PSC(2));
 	__raw_writeb(MCF_PAR_PSC_TXD | MCF_PAR_PSC_RXD,
 		MCF_MBAR + MCF_PAR_PSC(3));
+<<<<<<< HEAD
+=======
 =======
 
 /***************************************************************************/
@@ -105,6 +116,7 @@ static void __init m54xx_uarts_init(void)
 	for (line = 0; (line < nrlines); line++)
 		m54xx_uart_init_line(line, m54xx_uart_platform[line].irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/
@@ -122,6 +134,9 @@ static void mcf54xx_reset(void)
 /***************************************************************************/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMU
 
 unsigned long num_pages;
@@ -170,6 +185,8 @@ void __init config_BSP(char *commandp, int size)
 	m54xx_uarts_init();
 }
 
+<<<<<<< HEAD
+=======
 =======
 void __init config_BSP(char *commandp, int size)
 {
@@ -189,4 +206,5 @@ static int __init init_BSP(void)
 arch_initcall(init_BSP);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /***************************************************************************/

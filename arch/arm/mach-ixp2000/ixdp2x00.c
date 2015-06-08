@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/mm.h>
@@ -35,8 +39,11 @@
 #include <asm/page.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 
@@ -50,9 +57,13 @@
 <<<<<<< HEAD
 #include <mach/gpio-ixp2000.h>
 =======
+<<<<<<< HEAD
+#include <mach/gpio-ixp2000.h>
+=======
 #include <mach/gpio.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*************************************************************************
  * IXDP2x00 IRQ Initialization
@@ -253,8 +264,12 @@ void ixdp2x00_slave_pci_postinit(void)
 <<<<<<< HEAD
 		pci_stop_and_remove_bus_device(dev);
 =======
+<<<<<<< HEAD
+		pci_stop_and_remove_bus_device(dev);
+=======
 		pci_remove_bus_device(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_dev_put(dev);
 	}
 
@@ -262,8 +277,12 @@ void ixdp2x00_slave_pci_postinit(void)
 <<<<<<< HEAD
 	pci_stop_and_remove_bus_device(dev);
 =======
+<<<<<<< HEAD
+	pci_stop_and_remove_bus_device(dev);
+=======
 	pci_remove_bus_device(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_dev_put(dev);
 }
 

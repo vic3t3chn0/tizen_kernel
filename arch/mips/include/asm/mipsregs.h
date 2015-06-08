@@ -1010,7 +1010,12 @@ do {									\
 #define read_c0_perfcntr0_64()	__read_64bit_c0_register($25, 1)
 #define write_c0_perfcntr0_64(val) __write_64bit_c0_register($25, 1, val)
 =======
+<<<<<<< HEAD
+#define read_c0_perfcntr0_64()	__read_64bit_c0_register($25, 1)
+#define write_c0_perfcntr0_64(val) __write_64bit_c0_register($25, 1, val)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define read_c0_perfctrl1()	__read_32bit_c0_register($25, 2)
 #define write_c0_perfctrl1(val)	__write_32bit_c0_register($25, 2, val)
 #define read_c0_perfcntr1()	__read_32bit_c0_register($25, 3)
@@ -1019,7 +1024,12 @@ do {									\
 #define read_c0_perfcntr1_64()	__read_64bit_c0_register($25, 3)
 #define write_c0_perfcntr1_64(val) __write_64bit_c0_register($25, 3, val)
 =======
+<<<<<<< HEAD
+#define read_c0_perfcntr1_64()	__read_64bit_c0_register($25, 3)
+#define write_c0_perfcntr1_64(val) __write_64bit_c0_register($25, 3, val)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define read_c0_perfctrl2()	__read_32bit_c0_register($25, 4)
 #define write_c0_perfctrl2(val)	__write_32bit_c0_register($25, 4, val)
 #define read_c0_perfcntr2()	__read_32bit_c0_register($25, 5)
@@ -1028,7 +1038,12 @@ do {									\
 #define read_c0_perfcntr2_64()	__read_64bit_c0_register($25, 5)
 #define write_c0_perfcntr2_64(val) __write_64bit_c0_register($25, 5, val)
 =======
+<<<<<<< HEAD
+#define read_c0_perfcntr2_64()	__read_64bit_c0_register($25, 5)
+#define write_c0_perfcntr2_64(val) __write_64bit_c0_register($25, 5, val)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define read_c0_perfctrl3()	__read_32bit_c0_register($25, 6)
 #define write_c0_perfctrl3(val)	__write_32bit_c0_register($25, 6, val)
 #define read_c0_perfcntr3()	__read_32bit_c0_register($25, 7)
@@ -1037,7 +1052,12 @@ do {									\
 #define read_c0_perfcntr3_64()	__read_64bit_c0_register($25, 7)
 #define write_c0_perfcntr3_64(val) __write_64bit_c0_register($25, 7, val)
 =======
+<<<<<<< HEAD
+#define read_c0_perfcntr3_64()	__read_64bit_c0_register($25, 7)
+#define write_c0_perfcntr3_64(val) __write_64bit_c0_register($25, 7, val)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* RM9000 PerfCount performance counter register */
 #define read_c0_perfcount()	__read_64bit_c0_register($25, 0)
@@ -1121,8 +1141,12 @@ do {									\
 <<<<<<< HEAD
 /* BMIPS43xx */
 =======
+<<<<<<< HEAD
+/* BMIPS43xx */
+=======
 /* BMIPS4380 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define read_c0_brcm_cmt_intr()		__read_32bit_c0_register($22, 1)
 #define write_c0_brcm_cmt_intr(val)	__write_32bit_c0_register($22, 1, val)
 
@@ -1684,6 +1708,9 @@ __BUILD_SET_C0(intcontrol)
 __BUILD_SET_C0(intctl)
 __BUILD_SET_C0(srsmap)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __BUILD_SET_C0(brcm_config_0)
 __BUILD_SET_C0(brcm_bus_pll)
 __BUILD_SET_C0(brcm_reset)
@@ -1691,8 +1718,11 @@ __BUILD_SET_C0(brcm_cmt_intr)
 __BUILD_SET_C0(brcm_cmt_ctrl)
 __BUILD_SET_C0(brcm_config)
 __BUILD_SET_C0(brcm_mode)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* !__ASSEMBLY__ */
 

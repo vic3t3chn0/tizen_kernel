@@ -18,12 +18,17 @@
 #define __ASM_ARCH_HARDWARE_H__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_IXP4XX_INDIRECT_PCI
 #define PCIBIOS_MAX_MEM		0x4FFFFFFF
 #else
 #define PCIBIOS_MAX_MEM		0x4BFFFFFF
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #define PCIBIOS_MIN_IO		0x00001000
 #ifdef CONFIG_IXP4XX_INDIRECT_PCI
@@ -39,6 +44,7 @@
 #define pcibios_assign_all_busses()	1
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Register locations and bits */
 #include "ixp4xx-regs.h"
 

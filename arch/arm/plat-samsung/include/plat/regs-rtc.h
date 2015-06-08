@@ -19,6 +19,9 @@
 #define S3C2410_INTP_TIC	(1 << 0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C2410_RTCCON		S3C2410_RTCREG(0x40)
 #define S3C2410_RTCCON_RTCEN	(1 << 0)
 #define S3C2410_RTCCON_CNTSEL	(1 << 2)
@@ -68,6 +71,8 @@
 #define S3C2410_RTCDATE		S3C2410_RTCREG(0x7c)
 #define S3C2410_RTCMON		S3C2410_RTCREG(0x84)
 #define S3C2410_RTCYEAR		S3C2410_RTCREG(0x88)
+<<<<<<< HEAD
+=======
 =======
 #define S3C2410_RTCCON	      S3C2410_RTCREG(0x40)
 #define S3C2410_RTCCON_RTCEN  (1<<0)
@@ -116,5 +121,6 @@
 #define S3C2410_RTCYEAR	      S3C2410_RTCREG(0x88)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_REGS_RTC_H */

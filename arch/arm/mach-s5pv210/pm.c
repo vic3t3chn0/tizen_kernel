@@ -91,8 +91,12 @@ static struct sleep_save s5pv210_core_save[] = {
 <<<<<<< HEAD
 static int s5pv210_cpu_suspend(unsigned long arg)
 =======
+<<<<<<< HEAD
+static int s5pv210_cpu_suspend(unsigned long arg)
+=======
 void s5pv210_cpu_suspend(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long tmp;
 
@@ -140,8 +144,12 @@ static void s5pv210_pm_prepare(void)
 <<<<<<< HEAD
 static int s5pv210_pm_add(struct device *dev, struct subsys_interface *sif)
 =======
+<<<<<<< HEAD
+static int s5pv210_pm_add(struct device *dev, struct subsys_interface *sif)
+=======
 static int s5pv210_pm_add(struct sys_device *sysdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pm_cpu_prep = s5pv210_pm_prepare;
 	pm_cpu_sleep = s5pv210_cpu_suspend;
@@ -150,14 +158,20 @@ static int s5pv210_pm_add(struct sys_device *sysdev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct subsys_interface s5pv210_pm_interface = {
 	.name		= "s5pv210_pm",
 	.subsys		= &s5pv210_subsys,
 	.add_dev	= s5pv210_pm_add,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_driver s5pv210_pm_driver = {
 	.add		= s5pv210_pm_add,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __init int s5pv210_pm_drvinit(void)
@@ -165,8 +179,12 @@ static __init int s5pv210_pm_drvinit(void)
 <<<<<<< HEAD
 	return subsys_interface_register(&s5pv210_pm_interface);
 =======
+<<<<<<< HEAD
+	return subsys_interface_register(&s5pv210_pm_interface);
+=======
 	return sysdev_driver_register(&s5pv210_sysclass, &s5pv210_pm_driver);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 arch_initcall(s5pv210_pm_drvinit);
 

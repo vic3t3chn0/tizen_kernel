@@ -147,7 +147,11 @@ link_address='0x400000'
 <<<<<<< HEAD
 make_space=y
 =======
+<<<<<<< HEAD
+make_space=y
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 case "$platform" in
 pseries)
@@ -170,8 +174,12 @@ coff)
 <<<<<<< HEAD
 miboot|uboot*)
 =======
+<<<<<<< HEAD
+miboot|uboot*)
+=======
 miboot|uboot)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     # miboot and U-boot want just the bare bits, not an ELF binary
     ext=bin
     objflags="-O binary"
@@ -221,7 +229,11 @@ ps3)
 <<<<<<< HEAD
     make_space=n
 =======
+<<<<<<< HEAD
+    make_space=n
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     pie=
     ;;
 ep88xc|ep405|ep8248e)
@@ -261,7 +273,13 @@ treeboot-currituck)
     link_address='0x1000000'
     ;;
 =======
+<<<<<<< HEAD
+treeboot-currituck)
+    link_address='0x1000000'
+    ;;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 treeboot-iss4xx-mpic)
     platformo="$object/treeboot-iss4xx.o"
     ;;
@@ -279,7 +297,12 @@ if [ -z "$cacheit" -o ! -f "$vmz$gzip" -o "$vmz$gzip" -ot "$kernel" ]; then
     strip_size=$(stat -c %s $vmz.$$)
 
 =======
+<<<<<<< HEAD
+    strip_size=$(stat -c %s $vmz.$$)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if [ -n "$gzip" ]; then
         gzip -n -f -9 "$vmz.$$"
     fi
@@ -290,6 +313,9 @@ if [ -z "$cacheit" -o ! -f "$vmz$gzip" -o "$vmz$gzip" -ot "$kernel" ]; then
 	vmz="$vmz.$$"
     fi
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 else
     # Calculate the vmlinux.strip size
     ${CROSS}objcopy $objflags "$kernel" "$vmz.$$"
@@ -310,8 +336,11 @@ if [ "$make_space" = "y" ]; then
 	    echo "INFO: Fixing the link_address of wrapper to ($round_size)"
 	    link_address=$round_size
 	fi
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fi
 
 vmz="$vmz$gzip"
@@ -338,6 +367,9 @@ uboot)
     exit 0
     ;;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 uboot-obs600)
     rm -f "$ofile"
     # obs600 wants a multi image with an initrd, so we need to put a fake
@@ -358,8 +390,11 @@ uboot-obs600)
     fi
     exit 0
     ;;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 esac
 
 addsec() {

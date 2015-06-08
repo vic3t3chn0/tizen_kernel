@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <net/net_namespace.h>
 =======
+<<<<<<< HEAD
+#include <net/net_namespace.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "nfsd.h"
 
@@ -101,8 +105,12 @@ nfsd_stat_init(void)
 <<<<<<< HEAD
 	svc_proc_register(&init_net, &nfsd_svcstats, &nfsd_proc_fops);
 =======
+<<<<<<< HEAD
+	svc_proc_register(&init_net, &nfsd_svcstats, &nfsd_proc_fops);
+=======
 	svc_proc_register(&nfsd_svcstats, &nfsd_proc_fops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void
@@ -111,6 +119,10 @@ nfsd_stat_shutdown(void)
 <<<<<<< HEAD
 	svc_proc_unregister(&init_net, "nfsd");
 =======
+<<<<<<< HEAD
+	svc_proc_unregister(&init_net, "nfsd");
+=======
 	svc_proc_unregister("nfsd");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

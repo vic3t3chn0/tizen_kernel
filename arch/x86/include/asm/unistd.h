@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _ASM_X86_UNISTD_H
 #define _ASM_X86_UNISTD_H 1
 
@@ -72,6 +75,8 @@
 #endif
 
 #endif /* _ASM_X86_UNISTD_H */
+<<<<<<< HEAD
+=======
 =======
 #ifdef __KERNEL__
 # ifdef CONFIG_X86_32
@@ -87,3 +92,4 @@
 # endif
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

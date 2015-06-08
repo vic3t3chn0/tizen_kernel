@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include "../mount.h"
 =======
+<<<<<<< HEAD
+#include "../mount.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Clear all of the marks on an inode when it is being evicted from core
@@ -212,8 +216,12 @@ int fsnotify(struct inode *to_tell, __u32 mask, void *data, int data_is,
 <<<<<<< HEAD
 	struct mount *mnt;
 =======
+<<<<<<< HEAD
+	struct mount *mnt;
+=======
 	struct vfsmount *mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int idx, ret = 0;
 	/* global tests shouldn't care about events on child only the specific event */
 	__u32 test_mask = (mask & ~FS_EVENT_ON_CHILD);
@@ -222,8 +230,12 @@ int fsnotify(struct inode *to_tell, __u32 mask, void *data, int data_is,
 <<<<<<< HEAD
 		mnt = real_mount(((struct path *)data)->mnt);
 =======
+<<<<<<< HEAD
+		mnt = real_mount(((struct path *)data)->mnt);
+=======
 		mnt = ((struct path *)data)->mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		mnt = NULL;
 
@@ -275,11 +287,16 @@ int fsnotify(struct inode *to_tell, __u32 mask, void *data, int data_is,
 			vfsmount_group = NULL;
 		} else if (vfsmount_group > inode_group) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = send_to_group(to_tell, &mnt->mnt, NULL, vfsmount_mark, mask, data,
 					    data_is, cookie, file_name, &event);
 			inode_group = NULL;
 		} else {
 			ret = send_to_group(to_tell, &mnt->mnt, inode_mark, vfsmount_mark,
+<<<<<<< HEAD
+=======
 =======
 			ret = send_to_group(to_tell, mnt, NULL, vfsmount_mark, mask, data,
 					    data_is, cookie, file_name, &event);
@@ -287,6 +304,7 @@ int fsnotify(struct inode *to_tell, __u32 mask, void *data, int data_is,
 		} else {
 			ret = send_to_group(to_tell, mnt, inode_mark, vfsmount_mark,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    mask, data, data_is, cookie, file_name,
 					    &event);
 		}

@@ -41,7 +41,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/mac80211.h>
 #include "ieee80211_i.h"
 #include "driver-ops.h"
@@ -76,6 +80,9 @@ void ___ieee80211_stop_rx_ba_session(struct sta_info *sta, u16 tid,
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RCU_INIT_POINTER(sta->ampdu_mlme.tid_rx[tid], NULL);
 
 #ifdef CONFIG_MAC80211_HT_DEBUG
@@ -84,6 +91,8 @@ void ___ieee80211_stop_rx_ba_session(struct sta_info *sta, u16 tid,
 	       sta->sta.addr, tid,
 	       initiator == WLAN_BACK_RECIPIENT ? "recipient" : "inititator",
 	       (int)reason);
+<<<<<<< HEAD
+=======
 =======
 	rcu_assign_pointer(sta->ampdu_mlme.tid_rx[tid], NULL);
 
@@ -91,6 +100,7 @@ void ___ieee80211_stop_rx_ba_session(struct sta_info *sta, u16 tid,
 	printk(KERN_DEBUG "Rx BA session stop requested for %pM tid %u\n",
 	       sta->sta.addr, tid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_MAC80211_HT_DEBUG */
 
 	if (drv_ampdu_action(local, sta->sdata, IEEE80211_AMPDU_RX_STOP,
@@ -104,8 +114,12 @@ void ___ieee80211_stop_rx_ba_session(struct sta_info *sta, u16 tid,
 <<<<<<< HEAD
 				     tid, WLAN_BACK_RECIPIENT, reason);
 =======
+<<<<<<< HEAD
+				     tid, WLAN_BACK_RECIPIENT, reason);
+=======
 				     tid, 0, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	del_timer_sync(&tid_rx->session_timer);
 
@@ -121,6 +135,9 @@ void __ieee80211_stop_rx_ba_session(struct sta_info *sta, u16 tid,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ieee80211_stop_rx_ba_session(struct ieee80211_vif *vif, u16 ba_rx_bitmap,
 				  const u8 *addr)
 {
@@ -144,8 +161,11 @@ void ieee80211_stop_rx_ba_session(struct ieee80211_vif *vif, u16 ba_rx_bitmap,
 }
 EXPORT_SYMBOL(ieee80211_stop_rx_ba_session);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * After accepting the AddBA Request we activated a timer,
  * resetting it after each frame that arrives from the originator.
@@ -194,6 +214,10 @@ static void ieee80211_send_addba_resp(struct ieee80211_sub_if_data *sdata, u8 *d
 	if (!skb)
 		return;
 =======
+<<<<<<< HEAD
+	if (!skb)
+		return;
+=======
 
 	if (!skb) {
 		printk(KERN_DEBUG "%s: failed to allocate buffer "
@@ -201,6 +225,7 @@ static void ieee80211_send_addba_resp(struct ieee80211_sub_if_data *sdata, u8 *d
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb_reserve(skb, local->hw.extra_tx_headroom);
 	mgmt = (struct ieee80211_mgmt *) skb_put(skb, 24);
@@ -209,6 +234,9 @@ static void ieee80211_send_addba_resp(struct ieee80211_sub_if_data *sdata, u8 *d
 	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
 	if (sdata->vif.type == NL80211_IFTYPE_AP ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    sdata->vif.type == NL80211_IFTYPE_AP_VLAN ||
 	    sdata->vif.type == NL80211_IFTYPE_MESH_POINT)
 		memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
@@ -216,12 +244,15 @@ static void ieee80211_send_addba_resp(struct ieee80211_sub_if_data *sdata, u8 *d
 		memcpy(mgmt->bssid, sdata->u.mgd.bssid, ETH_ALEN);
 	else if (sdata->vif.type == NL80211_IFTYPE_ADHOC)
 		memcpy(mgmt->bssid, sdata->u.ibss.bssid, ETH_ALEN);
+<<<<<<< HEAD
+=======
 =======
 	    sdata->vif.type == NL80211_IFTYPE_AP_VLAN)
 		memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
 	else if (sdata->vif.type == NL80211_IFTYPE_STATION)
 		memcpy(mgmt->bssid, sdata->u.mgd.bssid, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mgmt->frame_control = cpu_to_le16(IEEE80211_FTYPE_MGMT |
 					  IEEE80211_STYPE_ACTION);
@@ -268,8 +299,12 @@ void ieee80211_process_addba_request(struct ieee80211_local *local,
 <<<<<<< HEAD
 	if (test_sta_flag(sta, WLAN_STA_BLOCK_BA)) {
 =======
+<<<<<<< HEAD
+	if (test_sta_flag(sta, WLAN_STA_BLOCK_BA)) {
+=======
 	if (test_sta_flags(sta, WLAN_STA_BLOCK_BA)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MAC80211_HT_DEBUG
 		printk(KERN_DEBUG "Suspend in progress. "
 		       "Denying ADDBA request\n");
@@ -313,18 +348,28 @@ void ieee80211_process_addba_request(struct ieee80211_local *local,
 				mgmt->sa, tid);
 #endif /* CONFIG_MAC80211_HT_DEBUG */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* delete existing Rx BA session on the same tid */
 		___ieee80211_stop_rx_ba_session(sta, tid, WLAN_BACK_RECIPIENT,
 						WLAN_STATUS_UNSPECIFIED_QOS,
 						false);
+<<<<<<< HEAD
+=======
 =======
 		goto end;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* prepare A-MPDU MLME for Rx aggregation */
 	tid_agg_rx = kmalloc(sizeof(struct tid_ampdu_rx), GFP_KERNEL);
+<<<<<<< HEAD
+	if (!tid_agg_rx)
+		goto end;
+=======
 <<<<<<< HEAD
 	if (!tid_agg_rx)
 		goto end;
@@ -338,6 +383,7 @@ void ieee80211_process_addba_request(struct ieee80211_local *local,
 		goto end;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_init(&tid_agg_rx->reorder_lock);
 
@@ -359,12 +405,15 @@ void ieee80211_process_addba_request(struct ieee80211_local *local,
 	if (!tid_agg_rx->reorder_buf || !tid_agg_rx->reorder_time) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_MAC80211_HT_DEBUG
 		if (net_ratelimit())
 			printk(KERN_ERR "can not allocate reordering buffer "
 			       "to tid %d\n", tid);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(tid_agg_rx->reorder_buf);
 		kfree(tid_agg_rx->reorder_time);
 		kfree(tid_agg_rx);

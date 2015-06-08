@@ -173,16 +173,22 @@ extern phys_addr_t per_cpu_ptr_to_phys(void *addr);
  * all others to void.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * These operations are guaranteed to be atomic.
  * The generic versions disable interrupts.  Archs are
  * encouraged to implement single-instruction alternatives which don't
  * require protection.
+<<<<<<< HEAD
+=======
 =======
  * These operations are guaranteed to be atomic w.r.t. preemption.
  * The generic versions use plain get/put_cpu_var().  Archs are
  * encouraged to implement single-instruction alternatives which don't
  * require preemption protection.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #ifndef percpu_read
 # define percpu_read(var)						\
@@ -355,15 +361,21 @@ do {									\
 #define _this_cpu_generic_to_op(pcp, val, op)				\
 do {									\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;						\
 	raw_local_irq_save(flags);					\
 	*__this_cpu_ptr(&(pcp)) op val;					\
 	raw_local_irq_restore(flags);					\
+<<<<<<< HEAD
+=======
 =======
 	preempt_disable();						\
 	*__this_cpu_ptr(&(pcp)) op val;					\
 	preempt_enable();						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } while (0)
 
 #ifndef this_cpu_write
@@ -462,17 +474,23 @@ do {									\
 ({									\
 	typeof(pcp) ret__;						\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;						\
 	raw_local_irq_save(flags);					\
 	__this_cpu_add(pcp, val);					\
 	ret__ = __this_cpu_read(pcp);					\
 	raw_local_irq_restore(flags);					\
+<<<<<<< HEAD
+=======
 =======
 	preempt_disable();						\
 	__this_cpu_add(pcp, val);					\
 	ret__ = __this_cpu_read(pcp);					\
 	preempt_enable();						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret__;								\
 })
 
@@ -499,17 +517,23 @@ do {									\
 #define _this_cpu_generic_xchg(pcp, nval)				\
 ({	typeof(pcp) ret__;						\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;						\
 	raw_local_irq_save(flags);					\
 	ret__ = __this_cpu_read(pcp);					\
 	__this_cpu_write(pcp, nval);					\
 	raw_local_irq_restore(flags);					\
+<<<<<<< HEAD
+=======
 =======
 	preempt_disable();						\
 	ret__ = __this_cpu_read(pcp);					\
 	__this_cpu_write(pcp, nval);					\
 	preempt_enable();						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret__;								\
 })
 
@@ -532,6 +556,9 @@ do {									\
 
 #define _this_cpu_generic_cmpxchg(pcp, oval, nval)			\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ({									\
 	typeof(pcp) ret__;						\
 	unsigned long flags;						\
@@ -540,6 +567,8 @@ do {									\
 	if (ret__ == (oval))						\
 		__this_cpu_write(pcp, nval);				\
 	raw_local_irq_restore(flags);					\
+<<<<<<< HEAD
+=======
 =======
 ({	typeof(pcp) ret__;						\
 	preempt_disable();						\
@@ -548,6 +577,7 @@ do {									\
 		__this_cpu_write(pcp, nval);				\
 	preempt_enable();						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret__;								\
 })
 
@@ -580,17 +610,23 @@ do {									\
 ({									\
 	int ret__;							\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;						\
 	raw_local_irq_save(flags);					\
 	ret__ = __this_cpu_generic_cmpxchg_double(pcp1, pcp2,		\
 			oval1, oval2, nval1, nval2);			\
 	raw_local_irq_restore(flags);					\
+<<<<<<< HEAD
+=======
 =======
 	preempt_disable();						\
 	ret__ = __this_cpu_generic_cmpxchg_double(pcp1, pcp2,		\
 			oval1, oval2, nval1, nval2);			\
 	preempt_enable();						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret__;								\
 })
 
@@ -621,10 +657,16 @@ do {									\
  * Either we do not care about races or the caller has the
  * responsibility of handling preemption/interrupt issues. Arch code can still
 =======
+<<<<<<< HEAD
+ * Generic percpu operations for context that are safe from preemption/interrupts.
+ * Either we do not care about races or the caller has the
+ * responsibility of handling preemption/interrupt issues. Arch code can still
+=======
  * Generic percpu operations that do not require preemption handling.
  * Either we do not care about races or the caller has the
  * responsibility of handling preemptions issues. Arch code can still
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * override these instructions since the arch per cpu code may be more
  * efficient and may actually get race freeness for free (that is the
  * case for x86 for example).
@@ -768,6 +810,9 @@ do {									\
 #  define __this_cpu_add_return_8(pcp, val)	__this_cpu_generic_add_return(pcp, val)
 # endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # define __this_cpu_add_return(pcp, val)	\
 	__pcpu_size_call_return2(__this_cpu_add_return_, pcp, val)
 #endif
@@ -775,6 +820,8 @@ do {									\
 #define __this_cpu_sub_return(pcp, val)	__this_cpu_add_return(pcp, -(val))
 #define __this_cpu_inc_return(pcp)	__this_cpu_add_return(pcp, 1)
 #define __this_cpu_dec_return(pcp)	__this_cpu_add_return(pcp, -1)
+<<<<<<< HEAD
+=======
 =======
 # define __this_cpu_add_return(pcp, val)	__pcpu_size_call_return2(this_cpu_add_return_, pcp, val)
 #endif
@@ -783,6 +830,7 @@ do {									\
 #define __this_cpu_inc_return(pcp)	this_cpu_add_return(pcp, 1)
 #define __this_cpu_dec_return(pcp)	this_cpu_add_return(pcp, -1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define __this_cpu_generic_xchg(pcp, nval)				\
 ({	typeof(pcp) ret__;						\
@@ -867,6 +915,8 @@ do {									\
 	__pcpu_double_call_return_bool(__this_cpu_cmpxchg_double_, (pcp1), (pcp2), (oval1), (oval2), (nval1), (nval2))
 #endif
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -1022,4 +1072,5 @@ do {									\
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __LINUX_PERCPU_H */

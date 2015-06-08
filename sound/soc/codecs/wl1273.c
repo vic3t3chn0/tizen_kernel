@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
 #include <sound/soc.h>
@@ -392,8 +396,12 @@ static int wl1273_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wl1273_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wl1273_dai_ops = {
+=======
 static struct snd_soc_dai_ops wl1273_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= wl1273_startup,
 	.hw_params	= wl1273_hw_params,
 };
@@ -474,10 +482,15 @@ static int wl1273_probe(struct snd_soc_codec *codec)
 
 	r = snd_soc_add_codec_controls(codec, wl1273_controls,
 =======
+<<<<<<< HEAD
+
+	r = snd_soc_add_codec_controls(codec, wl1273_controls,
+=======
 	mutex_init(&codec->mutex);
 
 	r = snd_soc_add_controls(codec, wl1273_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 ARRAY_SIZE(wl1273_controls));
 	if (r)
 		kfree(wl1273);
@@ -526,6 +539,9 @@ static struct platform_driver wl1273_platform_driver = {
 <<<<<<< HEAD
 module_platform_driver(wl1273_platform_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(wl1273_platform_driver);
+=======
 static int __init wl1273_init(void)
 {
 	return platform_driver_register(&wl1273_platform_driver);
@@ -538,6 +554,7 @@ static void __exit wl1273_exit(void)
 }
 module_exit(wl1273_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Matti Aaltonen <matti.j.aaltonen@nokia.com>");
 MODULE_DESCRIPTION("ASoC WL1273 codec driver");

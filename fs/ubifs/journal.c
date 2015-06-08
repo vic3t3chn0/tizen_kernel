@@ -701,10 +701,15 @@ int ubifs_jnl_write_data(struct ubifs_info *c, const struct inode *inode,
 	dbg_jnlk(key, "ino %lu, blk %u, len %d, key ",
 		(unsigned long)key_inum(c, key), key_block(c, key), len);
 =======
+<<<<<<< HEAD
+	dbg_jnlk(key, "ino %lu, blk %u, len %d, key ",
+		(unsigned long)key_inum(c, key), key_block(c, key), len);
+=======
 	dbg_jnl("ino %lu, blk %u, len %d, key %s",
 		(unsigned long)key_inum(c, key), key_block(c, key), len,
 		DBGKEY(key));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ubifs_assert(len <= UBIFS_BLOCK_SIZE);
 
 	data = kmalloc(dlen, GFP_NOFS | __GFP_NOWARN);
@@ -1185,8 +1190,12 @@ int ubifs_jnl_truncate(struct ubifs_info *c, const struct inode *inode,
 <<<<<<< HEAD
 		dbg_jnlk(&key, "last block key ");
 =======
+<<<<<<< HEAD
+		dbg_jnlk(&key, "last block key ");
+=======
 		dbg_jnl("last block key %s", DBGKEY(&key));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ubifs_tnc_lookup(c, &key, dn);
 		if (err == -ENOENT)
 			dlen = 0; /* Not found (so it is a hole) */

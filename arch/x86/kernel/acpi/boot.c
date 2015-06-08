@@ -223,7 +223,12 @@ acpi_parse_x2apic(struct acpi_subtable_header *header, const unsigned long end)
 	int apic_id;
 	u8 enabled;
 =======
+<<<<<<< HEAD
+	int apic_id;
+	u8 enabled;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	processor = (struct acpi_madt_local_x2apic *)header;
 
@@ -236,7 +241,12 @@ acpi_parse_x2apic(struct acpi_subtable_header *header, const unsigned long end)
 	apic_id = processor->local_apic_id;
 	enabled = processor->lapic_flags & ACPI_MADT_ENABLED;
 =======
+<<<<<<< HEAD
+	apic_id = processor->local_apic_id;
+	enabled = processor->lapic_flags & ACPI_MADT_ENABLED;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_X2APIC
 	/*
 	 * We need to register disabled CPU as well to permit
@@ -246,14 +256,20 @@ acpi_parse_x2apic(struct acpi_subtable_header *header, const unsigned long end)
 	 * when we use CPU hotplug.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!apic->apic_id_valid(apic_id) && enabled)
 		printk(KERN_WARNING PREFIX "x2apic entry ignored\n");
 	else
 		acpi_register_lapic(apic_id, enabled);
+<<<<<<< HEAD
+=======
 =======
 	acpi_register_lapic(processor->local_apic_id,	/* APIC ID */
 			    processor->lapic_flags & ACPI_MADT_ENABLED);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	printk(KERN_WARNING PREFIX "x2apic entry ignored\n");
 #endif
@@ -434,12 +450,17 @@ acpi_parse_int_src_ovr(struct acpi_subtable_header * header,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (intsrc->source_irq == 0 && intsrc->global_irq == 2) {
 		if (acpi_skip_timer_override) {
 			printk(PREFIX "BIOS IRQ0 pin2 override ignored.\n");
 			return 0;
 		}
 		if (acpi_fix_pin2_polarity && (intsrc->inti_flags & ACPI_MADT_POLARITY_MASK)) {
+<<<<<<< HEAD
+=======
 =======
 	if (intsrc->source_irq == 0) {
 		if (acpi_skip_timer_override) {
@@ -450,6 +471,7 @@ acpi_parse_int_src_ovr(struct acpi_subtable_header * header,
 		if ((intsrc->global_irq == 2) && acpi_fix_pin2_polarity
 			&& (intsrc->inti_flags & ACPI_MADT_POLARITY_MASK)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			intsrc->inti_flags &= ~ACPI_MADT_POLARITY_MASK;
 			printk(PREFIX "BIOS IRQ0 pin2 override: forcing polarity to high active.\n");
 		}
@@ -618,8 +640,12 @@ void __init acpi_set_irq_model_ioapic(void)
 <<<<<<< HEAD
 static void __cpuinit acpi_map_cpu2node(acpi_handle handle, int cpu, int physid)
 =======
+<<<<<<< HEAD
+static void __cpuinit acpi_map_cpu2node(acpi_handle handle, int cpu, int physid)
+=======
 static void acpi_map_cpu2node(acpi_handle handle, int cpu, int physid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_ACPI_NUMA
 	int nid;
@@ -671,7 +697,11 @@ static int __cpuinit _acpi_map_lsapic(acpi_handle handle, int *pcpu)
 <<<<<<< HEAD
 	lapic = NULL;
 =======
+<<<<<<< HEAD
+	lapic = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!alloc_cpumask_var(&tmp_map, GFP_KERNEL))
 		goto out;
@@ -683,8 +713,12 @@ static int __cpuinit _acpi_map_lsapic(acpi_handle handle, int *pcpu)
 <<<<<<< HEAD
 	acpi_register_lapic(physid, ACPI_MADT_ENABLED);
 =======
+<<<<<<< HEAD
+	acpi_register_lapic(physid, ACPI_MADT_ENABLED);
+=======
 	acpi_register_lapic(physid, lapic->lapic_flags & ACPI_MADT_ENABLED);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If mp_register_lapic successfully generates a new logical cpu
@@ -1368,6 +1402,9 @@ static int __init dmi_disable_acpi(const struct dmi_system_id *d)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Force ignoring BIOS IRQ0 pin2 override
  */
 static int __init dmi_ignore_irq0_timer_override(const struct dmi_system_id *d)
@@ -1379,6 +1416,8 @@ static int __init dmi_ignore_irq0_timer_override(const struct dmi_system_id *d)
 	if (!acpi_skip_timer_override) {
 		WARN(1, KERN_ERR "ati_ixp4x0 quirk not complete.\n");
 		pr_notice("%s detected: Ignoring BIOS IRQ0 pin2 override\n",
+<<<<<<< HEAD
+=======
 =======
  * Force ignoring BIOS IRQ0 override
  */
@@ -1387,6 +1426,7 @@ static int __init dmi_ignore_irq0_timer_override(const struct dmi_system_id *d)
 	if (!acpi_skip_timer_override) {
 		pr_notice("%s detected: Ignoring BIOS IRQ0 override\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			d->ident);
 		acpi_skip_timer_override = 1;
 	}
@@ -1483,8 +1523,12 @@ static struct dmi_system_id __initdata acpi_dmi_table_late[] = {
 <<<<<<< HEAD
 	 * is not connected at all.  Force ignoring BIOS IRQ0 pin2
 =======
+<<<<<<< HEAD
+	 * is not connected at all.  Force ignoring BIOS IRQ0 pin2
+=======
 	 * is not connected at all.  Force ignoring BIOS IRQ0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * override in that cases.
 	 */
 	{
@@ -1521,6 +1565,8 @@ static struct dmi_system_id __initdata acpi_dmi_table_late[] = {
 	 },
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{
 	 .callback = dmi_ignore_irq0_timer_override,
 	 .ident = "FUJITSU SIEMENS",
@@ -1530,6 +1576,7 @@ static struct dmi_system_id __initdata acpi_dmi_table_late[] = {
 		     },
 	 },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{}
 };
 

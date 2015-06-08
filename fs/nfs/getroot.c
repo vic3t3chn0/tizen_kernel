@@ -34,8 +34,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 
 #include "nfs4_fs.h"
@@ -57,12 +60,18 @@ static int nfs_superblock_set_dummy_root(struct super_block *sb, struct inode *i
 		if (sb->s_root == NULL)
 			return -ENOMEM;
 =======
+<<<<<<< HEAD
+		sb->s_root = d_make_root(inode);
+		if (sb->s_root == NULL)
+			return -ENOMEM;
+=======
 		sb->s_root = d_alloc_root(inode);
 		if (sb->s_root == NULL) {
 			iput(inode);
 			return -ENOMEM;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ihold(inode);
 		/*
 		 * Ensure that this dentry is invisible to d_find_alias().

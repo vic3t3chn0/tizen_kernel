@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/tlv.h>
@@ -55,8 +59,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  Enable TEA575x tuner
  *    1 = MediaForte 256-PCS
@@ -69,7 +77,11 @@ static int tea575x_tuner[SNDRV_CARDS];
 <<<<<<< HEAD
 static int radio_nr[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = -1};
 =======
+<<<<<<< HEAD
+static int radio_nr[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = -1};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for the FM801 soundcard.");
@@ -84,7 +96,13 @@ module_param_array(radio_nr, int, NULL, 0444);
 MODULE_PARM_DESC(radio_nr, "Radio device numbers");
 
 =======
+<<<<<<< HEAD
+module_param_array(radio_nr, int, NULL, 0444);
+MODULE_PARM_DESC(radio_nr, "Radio device numbers");
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define TUNER_DISABLED		(1<<3)
 #define TUNER_ONLY		(1<<4)
@@ -218,7 +236,11 @@ struct fm801 {
 <<<<<<< HEAD
 	struct v4l2_device v4l2_dev;
 =======
+<<<<<<< HEAD
+	struct v4l2_device v4l2_dev;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_tea575x tea;
 #endif
 
@@ -756,7 +778,13 @@ static struct snd_fm801_tea575x_gpio snd_fm801_tea575x_gpios[] = {
 	(&snd_fm801_tea575x_gpios[((chip)->tea575x_tuner & TUNER_TYPE_MASK) - 1])
 
 =======
+<<<<<<< HEAD
+#define get_tea575x_gpio(chip) \
+	(&snd_fm801_tea575x_gpios[((chip)->tea575x_tuner & TUNER_TYPE_MASK) - 1])
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void snd_fm801_tea575x_set_pins(struct snd_tea575x *tea, u8 pins)
 {
 	struct fm801 *chip = tea->private_data;
@@ -764,8 +792,12 @@ static void snd_fm801_tea575x_set_pins(struct snd_tea575x *tea, u8 pins)
 <<<<<<< HEAD
 	struct snd_fm801_tea575x_gpio gpio = *get_tea575x_gpio(chip);
 =======
+<<<<<<< HEAD
+	struct snd_fm801_tea575x_gpio gpio = *get_tea575x_gpio(chip);
+=======
 	struct snd_fm801_tea575x_gpio gpio = snd_fm801_tea575x_gpios[(chip->tea575x_tuner & TUNER_TYPE_MASK) - 1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	reg &= ~(FM801_GPIO_GP(gpio.data) |
 		 FM801_GPIO_GP(gpio.clk) |
@@ -786,8 +818,12 @@ static u8 snd_fm801_tea575x_get_pins(struct snd_tea575x *tea)
 <<<<<<< HEAD
 	struct snd_fm801_tea575x_gpio gpio = *get_tea575x_gpio(chip);
 =======
+<<<<<<< HEAD
+	struct snd_fm801_tea575x_gpio gpio = *get_tea575x_gpio(chip);
+=======
 	struct snd_fm801_tea575x_gpio gpio = snd_fm801_tea575x_gpios[(chip->tea575x_tuner & TUNER_TYPE_MASK) - 1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return  (reg & FM801_GPIO_GP(gpio.data)) ? TEA575X_DATA : 0 |
 		(reg & FM801_GPIO_GP(gpio.most)) ? TEA575X_MOST : 0;
@@ -800,8 +836,12 @@ static void snd_fm801_tea575x_set_direction(struct snd_tea575x *tea, bool output
 <<<<<<< HEAD
 	struct snd_fm801_tea575x_gpio gpio = *get_tea575x_gpio(chip);
 =======
+<<<<<<< HEAD
+	struct snd_fm801_tea575x_gpio gpio = *get_tea575x_gpio(chip);
+=======
 	struct snd_fm801_tea575x_gpio gpio = snd_fm801_tea575x_gpios[(chip->tea575x_tuner & TUNER_TYPE_MASK) - 1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* use GPIO lines and set write enable bit */
 	reg |= FM801_GPIO_GS(gpio.data) |
@@ -1192,14 +1232,20 @@ static int snd_fm801_free(struct fm801 *chip)
       __end_hw:
 #ifdef CONFIG_SND_FM801_TEA575X_BOOL
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!(chip->tea575x_tuner & TUNER_DISABLED)) {
 		snd_tea575x_exit(&chip->tea);
 		v4l2_device_unregister(&chip->v4l2_dev);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!(chip->tea575x_tuner & TUNER_DISABLED))
 		snd_tea575x_exit(&chip->tea);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	if (chip->irq >= 0)
 		free_irq(chip->irq, chip);
@@ -1222,7 +1268,11 @@ static int __devinit snd_fm801_create(struct snd_card *card,
 <<<<<<< HEAD
 				      int radio_nr,
 =======
+<<<<<<< HEAD
+				      int radio_nr,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      struct fm801 ** rchip)
 {
 	struct fm801 *chip;
@@ -1255,8 +1305,12 @@ static int __devinit snd_fm801_create(struct snd_card *card,
 <<<<<<< HEAD
 				KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+				KBUILD_MODNAME, chip)) {
+=======
 				"FM801", chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			snd_printk(KERN_ERR "unable to grab IRQ %d\n", chip->irq);
 			snd_fm801_free(chip);
 			return -EBUSY;
@@ -1287,6 +1341,9 @@ static int __devinit snd_fm801_create(struct snd_card *card,
 
 #ifdef CONFIG_SND_FM801_TEA575X_BOOL
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = v4l2_device_register(&pci->dev, &chip->v4l2_dev);
 	if (err < 0) {
 		snd_fm801_free(chip);
@@ -1294,8 +1351,11 @@ static int __devinit snd_fm801_create(struct snd_card *card,
 	}
 	chip->tea.v4l2_dev = &chip->v4l2_dev;
 	chip->tea.radio_nr = radio_nr;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chip->tea.private_data = chip;
 	chip->tea.ops = &snd_fm801_tea_ops;
 	sprintf(chip->tea.bus_info, "PCI:%s", pci_name(pci));
@@ -1306,7 +1366,11 @@ static int __devinit snd_fm801_create(struct snd_card *card,
 <<<<<<< HEAD
 			snd_fm801_free(chip);
 =======
+<<<<<<< HEAD
+			snd_fm801_free(chip);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENODEV;
 		}
 	} else if ((tea575x_tuner & TUNER_TYPE_MASK) == 0) {
@@ -1318,8 +1382,12 @@ static int __devinit snd_fm801_create(struct snd_card *card,
 <<<<<<< HEAD
 					   get_tea575x_gpio(chip)->name);
 =======
+<<<<<<< HEAD
+					   get_tea575x_gpio(chip)->name);
+=======
 					snd_fm801_tea575x_gpios[tea575x_tuner - 1].name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 		}
@@ -1332,10 +1400,14 @@ static int __devinit snd_fm801_create(struct snd_card *card,
 <<<<<<< HEAD
 		strlcpy(chip->tea.card, get_tea575x_gpio(chip)->name,
 =======
+<<<<<<< HEAD
+		strlcpy(chip->tea.card, get_tea575x_gpio(chip)->name,
+=======
 		strlcpy(chip->tea.card,
 			snd_fm801_tea575x_gpios[(tea575x_tuner &
 						 TUNER_TYPE_MASK) - 1].name,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sizeof(chip->tea.card));
 	}
 #endif
@@ -1366,8 +1438,12 @@ static int __devinit snd_card_fm801_probe(struct pci_dev *pci,
 <<<<<<< HEAD
 	if ((err = snd_fm801_create(card, pci, tea575x_tuner[dev], radio_nr[dev], &chip)) < 0) {
 =======
+<<<<<<< HEAD
+	if ((err = snd_fm801_create(card, pci, tea575x_tuner[dev], radio_nr[dev], &chip)) < 0) {
+=======
 	if ((err = snd_fm801_create(card, pci, tea575x_tuner[dev], &chip)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_card_free(card);
 		return err;
 	}
@@ -1397,9 +1473,15 @@ static int __devinit snd_card_fm801_probe(struct pci_dev *pci,
 				       MPU401_INFO_IRQ_HOOK,
 				       -1, &chip->rmidi)) < 0) {
 =======
+<<<<<<< HEAD
+				       MPU401_INFO_INTEGRATED |
+				       MPU401_INFO_IRQ_HOOK,
+				       -1, &chip->rmidi)) < 0) {
+=======
 				       MPU401_INFO_INTEGRATED,
 				       chip->irq, 0, &chip->rmidi)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_card_free(card);
 		return err;
 	}
@@ -1489,8 +1571,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "FM801",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_fm801_ids,
 	.probe = snd_card_fm801_probe,
 	.remove = __devexit_p(snd_card_fm801_remove),

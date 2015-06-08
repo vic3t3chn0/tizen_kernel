@@ -246,6 +246,9 @@ struct mdp_superblock_1 {
 	__u8	devflags;	/* per-device flags.  Only one defined...*/
 #define	WriteMostly1	1	/* mask for writemostly flag in above */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Bad block log.  If there are any bad blocks the feature flag is set.
 	 * If offset and size are non-zero, that space is reserved and available
 	 */
@@ -256,12 +259,15 @@ struct mdp_superblock_1 {
 
 	/* array state information - 64 bytes */
 	__le64	utime;		/* 40 bits second, 24 bits microseconds */
+<<<<<<< HEAD
+=======
 =======
 	__u8	pad2[64-57];	/* set to 0 when writing */
 
 	/* array state information - 64 bytes */
 	__le64	utime;		/* 40 bits second, 24 btes microseconds */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le64	events;		/* incremented when superblock updated */
 	__le64	resync_offset;	/* data before this offset (from data_offset) known to be in sync */
 	__le32	sb_csum;	/* checksum up to devs[max_dev] */
@@ -284,6 +290,9 @@ struct mdp_superblock_1 {
 					   */
 #define	MD_FEATURE_RESHAPE_ACTIVE	4
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	MD_FEATURE_BAD_BLOCKS		8 /* badblock list is not empty */
 #define	MD_FEATURE_REPLACEMENT		16 /* This device is replacing an
 					    * active device with same 'role'.
@@ -296,6 +305,8 @@ struct mdp_superblock_1 {
 					|MD_FEATURE_REPLACEMENT)
 
 #endif 
+<<<<<<< HEAD
+=======
 =======
 
 #define	MD_FEATURE_ALL			(1|2|4)
@@ -303,3 +314,4 @@ struct mdp_superblock_1 {
 #endif 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

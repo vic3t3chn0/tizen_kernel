@@ -19,16 +19,22 @@
 #include <linux/init.h>
 #include <linux/timex.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/clocksource.h>
 #include <linux/clockchips.h>
 #include <linux/export.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/sched.h>
 #include <linux/io.h>
 #include <linux/clocksource.h>
 #include <linux/clockchips.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/irq.h>
 #include <asm/sched_clock.h>
@@ -59,12 +65,17 @@ static struct clocksource iop_clocksource = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * IOP sched_clock() implementation via its clocksource.
  */
 static u32 notrace iop_read_sched_clock(void)
 {
 	return 0xffffffffu - read_tcr1();
+<<<<<<< HEAD
+=======
 =======
 static DEFINE_CLOCK_DATA(cd);
 
@@ -82,6 +93,7 @@ static void notrace iop_update_sched_clock(void)
 	u32 cyc = 0xffffffffu - read_tcr1();
 	update_sched_clock(&cd, cyc, (u32)~0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -170,8 +182,12 @@ void __init iop_init_time(unsigned long tick_rate)
 <<<<<<< HEAD
 	setup_sched_clock(iop_read_sched_clock, 32, tick_rate);
 =======
+<<<<<<< HEAD
+	setup_sched_clock(iop_read_sched_clock, 32, tick_rate);
+=======
 	init_sched_clock(&cd, iop_update_sched_clock, 32, tick_rate);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ticks_per_jiffy = DIV_ROUND_CLOSEST(tick_rate, HZ);
 	iop_tick_rate = tick_rate;

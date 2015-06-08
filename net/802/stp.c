@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/llc.h>
 #include <net/llc_pdu.h>
 #include <net/stp.h>
@@ -97,10 +101,16 @@ void stp_proto_unregister(const struct stp_proto *proto)
 	else
 		RCU_INIT_POINTER(garp_protos[proto->group_address[5] -
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(stp_proto, NULL);
+	else
+		RCU_INIT_POINTER(garp_protos[proto->group_address[5] -
+=======
 		rcu_assign_pointer(stp_proto, NULL);
 	else
 		rcu_assign_pointer(garp_protos[proto->group_address[5] -
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       GARP_ADDR_MIN], NULL);
 	synchronize_rcu();
 

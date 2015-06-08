@@ -15,9 +15,14 @@
 #ifndef LINUX_MMC_SH_MMCIF_H
 #define LINUX_MMC_SH_MMCIF_H
 =======
+<<<<<<< HEAD
+#ifndef LINUX_MMC_SH_MMCIF_H
+#define LINUX_MMC_SH_MMCIF_H
+=======
 #ifndef __SH_MMCIF_H__
 #define __SH_MMCIF_H__
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/io.h>
 #include <linux/platform_device.h>
@@ -51,8 +56,14 @@ struct sh_mmcif_plat_data {
 	unsigned int		slave_id_tx;	/* use embedded slave_id_[tr]x */
 	unsigned int		slave_id_rx;
 =======
+<<<<<<< HEAD
+	struct sh_mmcif_dma	*dma;		/* Deprecated. Instead */
+	unsigned int		slave_id_tx;	/* use embedded slave_id_[tr]x */
+	unsigned int		slave_id_rx;
+=======
 	struct sh_mmcif_dma	*dma;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8			sup_pclk;	/* 1 :SH7757, 0: SH7724/SH7372 */
 	unsigned long		caps;
 	u32			ocr;
@@ -87,6 +98,9 @@ struct sh_mmcif_plat_data {
 /* CE_CLK_CTRL */
 #define CLK_ENABLE		(1 << 24) /* 1: output mmc clock */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CLK_CLEAR		(0xf << 16)
 #define CLK_SUP_PCLK		(0xf << 16)
 #define CLKDIV_4		(1 << 16) /* mmc clock frequency.
@@ -96,6 +110,8 @@ struct sh_mmcif_plat_data {
 #define SRBSYTO_29		(0xf << 8) /* resp busy timeout */
 #define SRWDTO_29		(0xf << 4) /* read/write timeout */
 #define SCCSTO_29		(0xf << 0) /* ccs timeout */
+<<<<<<< HEAD
+=======
 =======
 #define CLK_CLEAR		((1 << 19) | (1 << 18) | (1 << 17) | (1 << 16))
 #define CLK_SUP_PCLK		((1 << 19) | (1 << 18) | (1 << 17) | (1 << 16))
@@ -110,6 +126,7 @@ struct sh_mmcif_plat_data {
 #define SCCSTO_29		((1 << 3) | (1 << 2) |		\
 				 (1 << 1) | (1 << 0)) /* ccs timeout */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* CE_VERSION */
 #define SOFT_RST_ON		(1 << 31)
@@ -246,5 +263,9 @@ static inline void sh_mmcif_boot_init(void __iomem *base)
 <<<<<<< HEAD
 #endif /* LINUX_MMC_SH_MMCIF_H */
 =======
+<<<<<<< HEAD
+#endif /* LINUX_MMC_SH_MMCIF_H */
+=======
 #endif /* __SH_MMCIF_H__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

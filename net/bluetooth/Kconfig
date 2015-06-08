@@ -7,6 +7,9 @@ menuconfig BT
 	depends on NET && !S390
 	depends on RFKILL || !RFKILL
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRC16
 	select CRYPTO
 	select CRYPTO_BLKCIPHER
@@ -14,9 +17,12 @@ menuconfig BT
 	select CRYPTO_ECB
 	select CRYPTO_HMAC
 	select CRYPTO_SHA256
+<<<<<<< HEAD
+=======
 =======
 	select CRYPTO
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Bluetooth is low-cost, low-power, short-range wireless technology.
 	  It was designed as a replacement for cables and other short-range
@@ -26,26 +32,35 @@ menuconfig BT
 
 	  Linux Bluetooth subsystem consist of several layers:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	     Bluetooth Core
 		HCI device and connection manager, scheduler
 		SCO audio links
 		L2CAP (Logical Link Control and Adaptation Protocol)
 		SMP (Security Manager Protocol) on LE (Low Energy) links
 	     HCI Device drivers (Interface to the hardware)
+<<<<<<< HEAD
+=======
 =======
 	     Bluetooth Core (HCI device and connection manager, scheduler)
 	     HCI Device drivers (Interface to the hardware)
 	     SCO Module (SCO audio links)
 	     L2CAP Module (Logical Link Control and Adaptation Protocol)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	     RFCOMM Module (RFCOMM Protocol)  
 	     BNEP Module (Bluetooth Network Encapsulation Protocol)
 	     CMTP Module (CAPI Message Transport Protocol)
 	     HIDP Module (Human Interface Device Protocol)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	     SMP Module (Security Manager Protocol)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	  Say Y here to compile Bluetooth support into the kernel or say M to
 	  compile it as module (bluetooth).
@@ -55,6 +70,8 @@ menuconfig BT
 	  to Bluetooth kernel modules are provided in the BlueZ packages.  For
 	  more information, see <http://www.bluez.org/>.
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 if BT != n
@@ -83,6 +100,7 @@ config BT_SCO
 endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 source "net/bluetooth/rfcomm/Kconfig"
 
 source "net/bluetooth/bnep/Kconfig"

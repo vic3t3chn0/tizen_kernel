@@ -40,7 +40,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/console.h>
 #include <linux/kobject.h>
 #include <linux/dma-mapping.h>
@@ -50,7 +54,11 @@
 <<<<<<< HEAD
 #include <linux/stat.h>
 =======
+<<<<<<< HEAD
+#include <linux/stat.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/of_platform.h>
 #include <asm/ibmebus.h>
 #include <asm/abs_addr.h>
@@ -75,8 +83,13 @@ static void *ibmebus_alloc_coherent(struct device *dev,
 				    gfp_t flag,
 				    struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				    gfp_t flag,
+				    struct dma_attrs *attrs)
+=======
 				    gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void *mem;
 
@@ -92,8 +105,13 @@ static void ibmebus_free_coherent(struct device *dev,
 				  dma_addr_t dma_handle,
 				  struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				  dma_addr_t dma_handle,
+				  struct dma_attrs *attrs)
+=======
 				  dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	kfree(vaddr);
 }
@@ -144,6 +162,9 @@ static void ibmebus_unmap_sg(struct device *dev,
 static int ibmebus_dma_supported(struct device *dev, u64 mask)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mask == DMA_BIT_MASK(64);
 }
 
@@ -161,6 +182,8 @@ static struct dma_map_ops ibmebus_dma_ops = {
 	.get_required_mask  = ibmebus_dma_get_required_mask,
 	.map_page           = ibmebus_map_page,
 	.unmap_page         = ibmebus_unmap_page,
+<<<<<<< HEAD
+=======
 =======
 	return 1;
 }
@@ -174,6 +197,7 @@ static struct dma_map_ops ibmebus_dma_ops = {
 	.map_page       = ibmebus_map_page,
 	.unmap_page     = ibmebus_unmap_page,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int ibmebus_match_path(struct device *dev, void *data)
@@ -746,8 +770,12 @@ struct bus_type ibmebus_bus_type = {
 <<<<<<< HEAD
 	.uevent    = of_device_uevent_modalias,
 =======
+<<<<<<< HEAD
+	.uevent    = of_device_uevent_modalias,
+=======
 	.uevent    = of_device_uevent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.bus_attrs = ibmebus_bus_attrs,
 	.match     = ibmebus_bus_bus_match,
 	.probe     = ibmebus_bus_device_probe,

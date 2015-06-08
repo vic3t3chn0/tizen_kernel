@@ -30,6 +30,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void *module_alloc(unsigned long size)
 {
 	if (size == 0)
@@ -58,6 +60,7 @@ int module_frob_arch_sections(Elf_Ehdr *hdr,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define COPY_UNALIGNED_WORD(sw, tw, align) \
 { \
 	void *__s = &(sw), *__t = &(tw); \
@@ -248,6 +251,8 @@ int apply_relocate(Elf32_Shdr *sechdrs,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 int module_finalize(const Elf_Ehdr *hdr,
 		    const Elf_Shdr *sechdrs,
@@ -260,3 +265,4 @@ void module_arch_cleanup(struct module *mod)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

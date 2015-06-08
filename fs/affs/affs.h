@@ -139,8 +139,12 @@ extern void	secs_to_datestamp(time_t secs, struct affs_date *ds);
 <<<<<<< HEAD
 extern umode_t	prot_to_mode(u32 prot);
 =======
+<<<<<<< HEAD
+extern umode_t	prot_to_mode(u32 prot);
+=======
 extern mode_t	prot_to_mode(u32 prot);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void	mode_to_prot(struct inode *inode);
 extern void	affs_error(struct super_block *sb, const char *function, const char *fmt, ...);
 extern void	affs_warning(struct super_block *sb, const char *function, const char *fmt, ...);
@@ -164,9 +168,14 @@ extern int	affs_unlink(struct inode *dir, struct dentry *dentry);
 extern int	affs_create(struct inode *dir, struct dentry *dentry, umode_t mode, struct nameidata *);
 extern int	affs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode);
 =======
+<<<<<<< HEAD
+extern int	affs_create(struct inode *dir, struct dentry *dentry, umode_t mode, struct nameidata *);
+extern int	affs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode);
+=======
 extern int	affs_create(struct inode *dir, struct dentry *dentry, int mode, struct nameidata *);
 extern int	affs_mkdir(struct inode *dir, struct dentry *dentry, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int	affs_rmdir(struct inode *dir, struct dentry *dentry);
 extern int	affs_link(struct dentry *olddentry, struct inode *dir,
 			  struct dentry *dentry);
@@ -194,8 +203,12 @@ extern void	affs_truncate(struct inode *);
 <<<<<<< HEAD
 int		affs_file_fsync(struct file *, loff_t, loff_t, int);
 =======
+<<<<<<< HEAD
+int		affs_file_fsync(struct file *, loff_t, loff_t, int);
+=======
 int		affs_file_fsync(struct file *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* dir.c */
 

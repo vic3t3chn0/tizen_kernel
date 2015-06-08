@@ -31,6 +31,9 @@
 #include <linux/sh_intc.h>
 #include <linux/sh_timer.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pm_domain.h>
 #include <linux/dma-mapping.h>
 #include <mach/hardware.h>
@@ -64,12 +67,15 @@ void __init sh7372_map_io(void)
 	 */
 	init_consistent_dma_size(12 << 20);
 }
+<<<<<<< HEAD
+=======
 =======
 #include <mach/hardware.h>
 #include <mach/sh7372.h>
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* SCIFA0 */
 static struct plat_sci_port scif0_platform_data = {
@@ -206,21 +212,30 @@ static struct platform_device scif6_device = {
 
 /* CMT */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_timer_config cmt2_platform_data = {
 	.name = "CMT2",
 	.channel_offset = 0x40,
 	.timer_bit = 5,
+<<<<<<< HEAD
+=======
 =======
 static struct sh_timer_config cmt10_platform_data = {
 	.name = "CMT10",
 	.channel_offset = 0x10,
 	.timer_bit = 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.clockevent_rating = 125,
 	.clocksource_rating = 125,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource cmt2_resources[] = {
 	[0] = {
 		.name	= "CMT2",
@@ -230,6 +245,8 @@ static struct resource cmt2_resources[] = {
 	},
 	[1] = {
 		.start	= evt2irq(0x0b80), /* CMT2 */
+<<<<<<< HEAD
+=======
 =======
 static struct resource cmt10_resources[] = {
 	[0] = {
@@ -241,11 +258,15 @@ static struct resource cmt10_resources[] = {
 	[1] = {
 		.start	= evt2irq(0x0b00), /* CMT1_CMT10 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device cmt2_device = {
 	.name		= "sh_cmt",
 	.id		= 2,
@@ -254,6 +275,8 @@ static struct platform_device cmt2_device = {
 	},
 	.resource	= cmt2_resources,
 	.num_resources	= ARRAY_SIZE(cmt2_resources),
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device cmt10_device = {
 	.name		= "sh_cmt",
@@ -264,6 +287,7 @@ static struct platform_device cmt10_device = {
 	.resource	= cmt10_resources,
 	.num_resources	= ARRAY_SIZE(cmt10_resources),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* TMU */
@@ -514,7 +538,12 @@ static const struct sh_dmae_slave_config sh7372_dmae_slaves[] = {
 #define SH7372_CHCLR 0x220
 
 =======
+<<<<<<< HEAD
+#define SH7372_CHCLR 0x220
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct sh_dmae_channel sh7372_dmae_channels[] = {
 	{
 		.offset = 0,
@@ -523,7 +552,11 @@ static const struct sh_dmae_channel sh7372_dmae_channels[] = {
 <<<<<<< HEAD
 		.chclr_offset = SH7372_CHCLR + 0,
 =======
+<<<<<<< HEAD
+		.chclr_offset = SH7372_CHCLR + 0,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.offset = 0x10,
 		.dmars = 0,
@@ -531,7 +564,11 @@ static const struct sh_dmae_channel sh7372_dmae_channels[] = {
 <<<<<<< HEAD
 		.chclr_offset = SH7372_CHCLR + 0x10,
 =======
+<<<<<<< HEAD
+		.chclr_offset = SH7372_CHCLR + 0x10,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.offset = 0x20,
 		.dmars = 4,
@@ -539,7 +576,11 @@ static const struct sh_dmae_channel sh7372_dmae_channels[] = {
 <<<<<<< HEAD
 		.chclr_offset = SH7372_CHCLR + 0x20,
 =======
+<<<<<<< HEAD
+		.chclr_offset = SH7372_CHCLR + 0x20,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.offset = 0x30,
 		.dmars = 4,
@@ -547,7 +588,11 @@ static const struct sh_dmae_channel sh7372_dmae_channels[] = {
 <<<<<<< HEAD
 		.chclr_offset = SH7372_CHCLR + 0x30,
 =======
+<<<<<<< HEAD
+		.chclr_offset = SH7372_CHCLR + 0x30,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.offset = 0x50,
 		.dmars = 8,
@@ -555,7 +600,11 @@ static const struct sh_dmae_channel sh7372_dmae_channels[] = {
 <<<<<<< HEAD
 		.chclr_offset = SH7372_CHCLR + 0x50,
 =======
+<<<<<<< HEAD
+		.chclr_offset = SH7372_CHCLR + 0x50,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.offset = 0x60,
 		.dmars = 8,
@@ -563,7 +612,11 @@ static const struct sh_dmae_channel sh7372_dmae_channels[] = {
 <<<<<<< HEAD
 		.chclr_offset = SH7372_CHCLR + 0x60,
 =======
+<<<<<<< HEAD
+		.chclr_offset = SH7372_CHCLR + 0x60,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 };
 
@@ -584,7 +637,11 @@ static struct sh_dmae_pdata dma_platform_data = {
 <<<<<<< HEAD
 	.chclr_present	= 1,
 =======
+<<<<<<< HEAD
+	.chclr_present	= 1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Resource order important! */
@@ -595,8 +652,12 @@ static struct resource sh7372_dmae0_resources[] = {
 <<<<<<< HEAD
 		.end	= 0xfe00828f,
 =======
+<<<<<<< HEAD
+		.end	= 0xfe00828f,
+=======
 		.end	= 0xfe00808f,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -609,8 +670,12 @@ static struct resource sh7372_dmae0_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 		/* DMA error IRQ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= evt2irq(0x20c0),
 		.end	= evt2irq(0x20c0),
 		.flags	= IORESOURCE_IRQ,
@@ -631,8 +696,12 @@ static struct resource sh7372_dmae1_resources[] = {
 <<<<<<< HEAD
 		.end	= 0xfe01828f,
 =======
+<<<<<<< HEAD
+		.end	= 0xfe01828f,
+=======
 		.end	= 0xfe01808f,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -645,8 +714,12 @@ static struct resource sh7372_dmae1_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 		/* DMA error IRQ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= evt2irq(0x21c0),
 		.end	= evt2irq(0x21c0),
 		.flags	= IORESOURCE_IRQ,
@@ -667,8 +740,12 @@ static struct resource sh7372_dmae2_resources[] = {
 <<<<<<< HEAD
 		.end	= 0xfe02828f,
 =======
+<<<<<<< HEAD
+		.end	= 0xfe02828f,
+=======
 		.end	= 0xfe02808f,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -681,8 +758,12 @@ static struct resource sh7372_dmae2_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 		/* DMA error IRQ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= evt2irq(0x22c0),
 		.end	= evt2irq(0x22c0),
 		.flags	= IORESOURCE_IRQ,
@@ -726,6 +807,9 @@ static struct platform_device dma2_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * USB-DMAC
  */
@@ -872,8 +956,11 @@ static struct platform_device usb_dma1_device = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* VPU */
 static struct uio_info vpu_platform_data = {
 	.name = "VPU5HG",
@@ -1093,8 +1180,12 @@ static struct platform_device *sh7372_early_devices[] __initdata = {
 <<<<<<< HEAD
 	&cmt2_device,
 =======
+<<<<<<< HEAD
+	&cmt2_device,
+=======
 	&cmt10_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&tmu00_device,
 	&tmu01_device,
 };
@@ -1109,7 +1200,12 @@ static struct platform_device *sh7372_late_devices[] __initdata = {
 	&usb_dma0_device,
 	&usb_dma1_device,
 =======
+<<<<<<< HEAD
+	&usb_dma0_device,
+	&usb_dma1_device,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&vpu_device,
 	&veu0_device,
 	&veu1_device,
@@ -1123,6 +1219,9 @@ static struct platform_device *sh7372_late_devices[] __initdata = {
 void __init sh7372_add_standard_devices(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sh7372_init_pm_domain(&sh7372_a4lc);
 	sh7372_init_pm_domain(&sh7372_a4mp);
 	sh7372_init_pm_domain(&sh7372_d4);
@@ -1139,14 +1238,20 @@ void __init sh7372_add_standard_devices(void)
 	sh7372_pm_add_subdomain(&sh7372_a4s, &sh7372_a3sg);
 	sh7372_pm_add_subdomain(&sh7372_a4s, &sh7372_a3sp);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_add_devices(sh7372_early_devices,
 			    ARRAY_SIZE(sh7372_early_devices));
 
 	platform_add_devices(sh7372_late_devices,
 			    ARRAY_SIZE(sh7372_late_devices));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sh7372_add_device_to_domain(&sh7372_a3rv, &vpu_device);
 	sh7372_add_device_to_domain(&sh7372_a4mp, &spu0_device);
@@ -1178,8 +1283,11 @@ static void __init sh7372_earlytimer_init(void)
 {
 	sh7372_clock_init();
 	shmobile_earlytimer_init();
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init sh7372_add_early_devices(void)
@@ -1187,12 +1295,18 @@ void __init sh7372_add_early_devices(void)
 	early_platform_add_devices(sh7372_early_devices,
 				   ARRAY_SIZE(sh7372_early_devices));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* setup early console here as well */
 	shmobile_setup_console();
 
 	/* override timer setup with soc-specific code */
 	shmobile_timer.init = sh7372_earlytimer_init;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

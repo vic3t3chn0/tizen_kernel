@@ -3,6 +3,8 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 				/* this file has an amazingly stupid
 				   name, yura please fix it to be
@@ -11,12 +13,15 @@
 				   directory into it.  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _LINUX_REISER_FS_H
 #define _LINUX_REISER_FS_H
 
 #include <linux/types.h>
 #include <linux/magic.h>
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef __KERNEL__
@@ -33,6 +38,7 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  include/linux/reiser_fs.h
  *
@@ -49,6 +55,8 @@
 #define REISERFS_IOC_GETVERSION		FS_IOC_GETVERSION
 #define REISERFS_IOC_SETVERSION		FS_IOC_SETVERSION
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef __KERNEL__
@@ -2363,4 +2371,5 @@ int reiserfs_unpack(struct inode *inode, struct file *filp);
 #endif /* __KERNEL__ */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif				/* _LINUX_REISER_FS_H */

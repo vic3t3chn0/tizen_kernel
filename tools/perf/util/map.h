@@ -19,16 +19,22 @@ extern const char *map_type__name[MAP__NR_TYPES];
 
 struct dso;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ip_callchain;
 struct ref_reloc_sym;
 struct map_groups;
 struct machine;
 struct perf_evsel;
+<<<<<<< HEAD
+=======
 =======
 struct ref_reloc_sym;
 struct map_groups;
 struct machine;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct map {
 	union {
@@ -42,7 +48,11 @@ struct map {
 <<<<<<< HEAD
 	bool			erange_warned;
 =======
+<<<<<<< HEAD
+	bool			erange_warned;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			priv;
 	u64			pgoff;
 
@@ -74,14 +84,20 @@ struct machine {
 	struct rb_node	  rb_node;
 	pid_t		  pid;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16		  id_hdr_size;
 	char		  *root_dir;
 	struct rb_root	  threads;
 	struct list_head  dead_threads;
 	struct thread	  *last_match;
+<<<<<<< HEAD
+=======
 =======
 	char		  *root_dir;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head  user_dsos;
 	struct list_head  kernel_dsos;
 	struct map_groups kmaps;
@@ -135,7 +151,11 @@ size_t map__fprintf(struct map *self, FILE *fp);
 <<<<<<< HEAD
 size_t map__fprintf_dsoname(struct map *map, FILE *fp);
 =======
+<<<<<<< HEAD
+size_t map__fprintf_dsoname(struct map *map, FILE *fp);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int map__load(struct map *self, symbol_filter_t filter);
 struct symbol *map__find_symbol(struct map *self,
@@ -148,6 +168,9 @@ void map__fixup_end(struct map *self);
 void map__reloc_vmlinux(struct map *self);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 size_t __map_groups__fprintf_maps(struct map_groups *mg,
 				  enum map_type type, int verbose, FILE *fp);
 void maps__insert(struct rb_root *maps, struct map *map);
@@ -159,6 +182,8 @@ int map_groups__clone(struct map_groups *mg,
 		      struct map_groups *parent, enum map_type type);
 size_t map_groups__fprintf(struct map_groups *mg, int verbose, FILE *fp);
 size_t map_groups__fprintf_maps(struct map_groups *mg, int verbose, FILE *fp);
+<<<<<<< HEAD
+=======
 =======
 size_t __map_groups__fprintf_maps(struct map_groups *self,
 				  enum map_type type, int verbose, FILE *fp);
@@ -172,6 +197,7 @@ int map_groups__clone(struct map_groups *self,
 size_t map_groups__fprintf(struct map_groups *self, int verbose, FILE *fp);
 size_t map_groups__fprintf_maps(struct map_groups *self, int verbose, FILE *fp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef void (*machine__process_t)(struct machine *self, void *data);
 
@@ -187,6 +213,9 @@ void machine__exit(struct machine *self);
 void machine__delete(struct machine *self);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int machine__resolve_callchain(struct machine *machine,
 			       struct perf_evsel *evsel, struct thread *thread,
 			       struct ip_callchain *chain,
@@ -194,8 +223,11 @@ int machine__resolve_callchain(struct machine *machine,
 int maps__set_kallsyms_ref_reloc_sym(struct map **maps, const char *symbol_name,
 				     u64 addr);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Default guest kernel is defined by parameter --guestkallsyms
  * and --guestmodules
@@ -211,6 +243,9 @@ static inline bool machine__is_host(struct machine *self)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void map_groups__insert(struct map_groups *mg, struct map *map)
 {
 	maps__insert(&mg->maps[map->type], map);
@@ -229,6 +264,8 @@ static inline struct map *map_groups__find(struct map_groups *mg,
 }
 
 struct symbol *map_groups__find_symbol(struct map_groups *mg,
+<<<<<<< HEAD
+=======
 =======
 static inline void map_groups__insert(struct map_groups *self, struct map *map)
 {
@@ -249,6 +286,7 @@ static inline struct map *map_groups__find(struct map_groups *self,
 
 struct symbol *map_groups__find_symbol(struct map_groups *self,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       enum map_type type, u64 addr,
 				       struct map **mapp,
 				       symbol_filter_t filter);
@@ -256,22 +294,32 @@ struct symbol *map_groups__find_symbol(struct map_groups *self,
 <<<<<<< HEAD
 struct symbol *map_groups__find_symbol_by_name(struct map_groups *mg,
 =======
+<<<<<<< HEAD
+struct symbol *map_groups__find_symbol_by_name(struct map_groups *mg,
+=======
 struct symbol *map_groups__find_symbol_by_name(struct map_groups *self,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       enum map_type type,
 					       const char *name,
 					       struct map **mapp,
 					       symbol_filter_t filter);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct thread *machine__findnew_thread(struct machine *machine, pid_t pid);
 void machine__remove_thread(struct machine *machine, struct thread *th);
 
 size_t machine__fprintf(struct machine *machine, FILE *fp);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline
 struct symbol *machine__find_kernel_symbol(struct machine *self,
 					   enum map_type type, u64 addr,
@@ -291,11 +339,16 @@ struct symbol *machine__find_kernel_function(struct machine *self, u64 addr,
 
 static inline
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct symbol *map_groups__find_function_by_name(struct map_groups *mg,
 						 const char *name, struct map **mapp,
 						 symbol_filter_t filter)
 {
 	return map_groups__find_symbol_by_name(mg, MAP__FUNCTION, name, mapp, filter);
+<<<<<<< HEAD
+=======
 =======
 struct symbol *map_groups__find_function_by_name(struct map_groups *self,
 						 const char *name, struct map **mapp,
@@ -303,6 +356,7 @@ struct symbol *map_groups__find_function_by_name(struct map_groups *self,
 {
 	return map_groups__find_symbol_by_name(self, MAP__FUNCTION, name, mapp, filter);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline
@@ -316,6 +370,9 @@ struct symbol *machine__find_kernel_function_by_name(struct machine *self,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int map_groups__fixup_overlappings(struct map_groups *mg, struct map *map,
 				   int verbose, FILE *fp);
 
@@ -324,6 +381,8 @@ struct map *map_groups__find_by_name(struct map_groups *mg,
 struct map *machine__new_module(struct machine *self, u64 start, const char *filename);
 
 void map_groups__flush(struct map_groups *mg);
+<<<<<<< HEAD
+=======
 =======
 int map_groups__fixup_overlappings(struct map_groups *self, struct map *map,
 				   int verbose, FILE *fp);
@@ -334,5 +393,6 @@ struct map *machine__new_module(struct machine *self, u64 start, const char *fil
 
 void map_groups__flush(struct map_groups *self);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __PERF_MAP_H */

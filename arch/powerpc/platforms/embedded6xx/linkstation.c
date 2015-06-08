@@ -82,6 +82,9 @@ static void __init linkstation_init_IRQ(void)
 {
 	struct mpic *mpic;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mpic = mpic_alloc(NULL, 0, 0, 4, 0, " EPIC     ");
 	BUG_ON(mpic == NULL);
@@ -94,6 +97,8 @@ static void __init linkstation_init_IRQ(void)
 
 	/* ttyS0, ttyS1 */
 	mpic_assign_isu(mpic, 2, mpic->paddr + 0x11100);
+<<<<<<< HEAD
+=======
 =======
 	struct device_node *dnp;
 	const u32 *prop;
@@ -119,6 +124,7 @@ static void __init linkstation_init_IRQ(void)
 	/* ttyS0, ttyS1 */
 	mpic_assign_isu(mpic, 2, paddr + 0x11100);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mpic_init(mpic);
 }

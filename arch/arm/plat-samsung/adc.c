@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/regulator/consumer.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/consumer.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/regs-adc.h>
 #include <plat/adc.h>
@@ -45,20 +49,29 @@
 enum s3c_cpu_type {
 	TYPE_ADCV1, /* S3C24XX */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TYPE_ADCV11, /* S3C2443 */
 	TYPE_ADCV12, /* S3C2416, S3C2450 */
 	TYPE_ADCV2, /* S3C64XX, S5P64X0, S5PC100 */
 	TYPE_ADCV3, /* S5PV210, S5PC110, EXYNOS4210 */
+<<<<<<< HEAD
+=======
 =======
 	TYPE_ADCV2, /* S3C64XX, S5P64X0, S5PC100 */
 	TYPE_ADCV3, /* S5PV210, S5PC110, EXYNOS4210 */
 	TYPE_ADCV4, /* EXYNOS4412, EXYNOS5250 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct s3c_adc_client {
 	struct platform_device	*pdev;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	 pend;
 	wait_queue_head_t	*wait;
 
@@ -66,6 +79,8 @@ struct s3c_adc_client {
 	int			 result;
 	unsigned char		 is_ts;
 	unsigned char		 channel;
+<<<<<<< HEAD
+=======
 =======
 	struct list_head	pend;
 	wait_queue_head_t	*wait;
@@ -75,6 +90,7 @@ struct s3c_adc_client {
 	unsigned char		is_ts;
 	unsigned char		channel;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	void	(*select_cb)(struct s3c_adc_client *c, unsigned selected);
 	void	(*convert_cb)(struct s3c_adc_client *c,
@@ -82,9 +98,12 @@ struct s3c_adc_client {
 			      unsigned *samples_left);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	atomic_t		running;
 	int			error_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct adc_device {
@@ -102,7 +121,11 @@ struct adc_device {
 <<<<<<< HEAD
 	struct regulator	*vdd;
 =======
+<<<<<<< HEAD
+	struct regulator	*vdd;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct adc_device *adc_dev;
@@ -128,6 +151,9 @@ static inline void s3c_adc_select(struct adc_device *adc,
 	client->select_cb(client, 1);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu == TYPE_ADCV1 || cpu == TYPE_ADCV2)
 		con &= ~S3C2410_ADCCON_MUXMASK;
 	con &= ~S3C2410_ADCCON_STDBM;
@@ -139,6 +165,8 @@ static inline void s3c_adc_select(struct adc_device *adc,
 		else if (cpu == TYPE_ADCV11 || cpu == TYPE_ADCV12)
 			writel(client->channel & 0xf,
 						adc->regs + S3C2443_ADCMUX);
+<<<<<<< HEAD
+=======
 =======
 	con &= ~S3C2410_ADCCON_MUXMASK;
 	con &= ~S3C2410_ADCCON_STDBM;
@@ -150,6 +178,7 @@ static inline void s3c_adc_select(struct adc_device *adc,
 			writel(S5PV210_ADCCON_SELMUX(client->channel),
 				adc->regs + S5P_ADCMUX);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			con |= S3C2410_ADCCON_SELMUX(client->channel);
 	}
@@ -164,9 +193,15 @@ static void s3c_adc_dbgshow(struct adc_device *adc)
 		readl(adc->regs + S3C2410_ADCCON),
 		readl(adc->regs + S3C2410_ADCTSC),
 =======
+<<<<<<< HEAD
+	adc_dbg(adc, "CON=%08x, TSC=%08x, DLY=%08x\n",
+		readl(adc->regs + S3C2410_ADCCON),
+		readl(adc->regs + S3C2410_ADCTSC),
+=======
 	adc_dbg(adc, "CON=%08x, DLY=%08x\n",
 		readl(adc->regs + S3C2410_ADCCON),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		readl(adc->regs + S3C2410_ADCDLY));
 }
 
@@ -175,8 +210,11 @@ static void s3c_adc_try(struct adc_device *adc)
 	struct s3c_adc_client *next = adc->ts_pend;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int con = readl(adc->regs + S3C2410_ADCCON);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!next && !list_empty(&adc_pending)) {
 		next = list_first_entry(&adc_pending,
@@ -192,11 +230,16 @@ static void s3c_adc_try(struct adc_device *adc)
 		s3c_adc_convert(adc);
 		s3c_adc_dbgshow(adc);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
 int s3c_adc_start(struct s3c_adc_client *client,
 		  unsigned int channel, unsigned int nr_samples)
+<<<<<<< HEAD
+=======
 =======
 	} else {
 		con &= ~S3C2410_ADCCON_PRSCEN;
@@ -216,22 +259,33 @@ int s3c_adc_start(struct s3c_adc_client *client,
 		  unsigned int channel, unsigned int nr_samples,
 		  wait_queue_head_t *pwake)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct adc_device *adc = adc_dev;
 	unsigned long flags;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!adc) {
 		printk(KERN_ERR "%s: failed to find adc\n", __func__);
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(!adc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (client->is_ts && adc->ts_pend)
 		return -EAGAIN;
 
+<<<<<<< HEAD
+	spin_lock_irqsave(&adc->lock, flags);
+
+=======
 <<<<<<< HEAD
 	spin_lock_irqsave(&adc->lock, flags);
 
@@ -248,6 +302,7 @@ int s3c_adc_start(struct s3c_adc_client *client,
 	client->result = -1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	client->channel = channel;
 	client->nr_samples = nr_samples;
 
@@ -266,11 +321,16 @@ int s3c_adc_start(struct s3c_adc_client *client,
 EXPORT_SYMBOL_GPL(s3c_adc_start);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void s3c_convert_done(struct s3c_adc_client *client,
 			     unsigned v, unsigned u, unsigned *left)
 {
 	client->result = v;
 	wake_up(client->wait);
+<<<<<<< HEAD
+=======
 =======
 static void s3c_adc_stop(struct s3c_adc_client *client)
 {
@@ -302,12 +362,16 @@ static void s3c_adc_stop(struct s3c_adc_client *client)
 
 	spin_unlock_irqrestore(&adc_dev->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int s3c_adc_read(struct s3c_adc_client *client, unsigned int ch)
 {
 	DECLARE_WAIT_QUEUE_HEAD_ONSTACK(wake);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	client->convert_cb = s3c_convert_done;
@@ -315,6 +379,8 @@ int s3c_adc_read(struct s3c_adc_client *client, unsigned int ch)
 	client->result = -1;
 
 	ret = s3c_adc_start(client, ch, 1);
+<<<<<<< HEAD
+=======
 =======
 	struct adc_device *adc = adc_dev;
 	unsigned long flags;
@@ -322,11 +388,16 @@ int s3c_adc_read(struct s3c_adc_client *client, unsigned int ch)
 
 	ret = s3c_adc_start(client, ch, 1, &wake);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		goto err;
 
 	ret = wait_event_timeout(wake, client->result >= 0, HZ / 2);
 	if (client->result < 0) {
+<<<<<<< HEAD
+		ret = -ETIMEDOUT;
+		goto err;
+=======
 <<<<<<< HEAD
 		ret = -ETIMEDOUT;
 		goto err;
@@ -350,6 +421,7 @@ int s3c_adc_read(struct s3c_adc_client *client, unsigned int ch)
 		   executed which will destroy stack */
 		spin_unlock_irqrestore(&adc->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	client->convert_cb = NULL;
@@ -401,6 +473,9 @@ EXPORT_SYMBOL_GPL(s3c_adc_register);
 void s3c_adc_release(struct s3c_adc_client *client)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 
 	spin_lock_irqsave(&adc_dev->lock, flags);
@@ -425,9 +500,12 @@ void s3c_adc_release(struct s3c_adc_client *client)
 		s3c_adc_try(adc_dev);
 
 	spin_unlock_irqrestore(&adc_dev->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	s3c_adc_stop(client);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(client);
 }
 EXPORT_SYMBOL_GPL(s3c_adc_release);
@@ -442,18 +520,27 @@ static irqreturn_t s3c_adc_irq(int irq, void *pw)
 
 	if (!client) {
 =======
+<<<<<<< HEAD
+	unsigned data0, data1;
+
+	if (!client) {
+=======
 	unsigned data0 = 0, data1 = 0;
 
 	spin_lock(&adc->lock);
 
 	if (!client || !client->nr_samples) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_warn(&adc->pdev->dev, "%s: no adc pending\n", __func__);
 		goto exit;
 	}
 
 	data0 = readl(adc->regs + S3C2410_ADCDAT0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data1 = readl(adc->regs + S3C2410_ADCDAT1);
 	adc_dbg(adc, "read %d: 0x%04x, 0x%04x\n", client->nr_samples, data0, data1);
 
@@ -464,6 +551,8 @@ static irqreturn_t s3c_adc_irq(int irq, void *pw)
 		data1 &= 0x3ff;
 	} else {
 		/* S3C2416/S3C64XX/S5P ADC resolution is 12-bit */
+<<<<<<< HEAD
+=======
 =======
 	if (cpu != TYPE_ADCV4)
 		data1 = readl(adc->regs + S3C2410_ADCDAT1);
@@ -479,6 +568,7 @@ static irqreturn_t s3c_adc_irq(int irq, void *pw)
 	} else {
 		/* S3C64XX/S5P  ADC resolution is 12-bit */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		data0 &= 0xfff;
 		data1 &= 0xfff;
 	}
@@ -488,6 +578,9 @@ static irqreturn_t s3c_adc_irq(int irq, void *pw)
 
 	if (client->nr_samples > 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* fire another conversion for this */
 
 		client->select_cb(client, 1);
@@ -506,6 +599,8 @@ exit:
 		/* Clear ADC interrupt */
 		writel(0, adc->regs + S3C64XX_ADCCLRINT);
 	}
+<<<<<<< HEAD
+=======
 =======
 		/* fire another conversion for this client */
 		(client->select_cb)(client, 1);
@@ -531,6 +626,7 @@ exit:
 	spin_unlock(&adc->lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return IRQ_HANDLED;
 }
 
@@ -547,8 +643,12 @@ static int s3c_adc_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	if (adc == NULL) {
 =======
+<<<<<<< HEAD
+	if (adc == NULL) {
+=======
 	if (unlikely(adc == NULL)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(dev, "failed to allocate adc_device\n");
 		return -ENOMEM;
 	}
@@ -559,6 +659,9 @@ static int s3c_adc_probe(struct platform_device *pdev)
 	adc->prescale = S3C2410_ADCCON_PRSCVL(49);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	adc->vdd = regulator_get(dev, "vdd");
 	if (IS_ERR(adc->vdd)) {
 		dev_err(dev, "operating without regulator \"vdd\" .\n");
@@ -588,6 +691,8 @@ static int s3c_adc_probe(struct platform_device *pdev)
 
 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (!regs) {
+<<<<<<< HEAD
+=======
 =======
 	adc->clk = clk_get(NULL, "adc");
 	if (unlikely(IS_ERR(adc->clk))) {
@@ -599,6 +704,7 @@ static int s3c_adc_probe(struct platform_device *pdev)
 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (unlikely(!regs)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(dev, "failed to find registers\n");
 		ret = -ENXIO;
 		goto err_clk;
@@ -608,14 +714,21 @@ static int s3c_adc_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	if (!adc->regs) {
 =======
+<<<<<<< HEAD
+	if (!adc->regs) {
+=======
 	if (unlikely(!adc->regs)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(dev, "failed to map registers\n");
 		ret = -ENXIO;
 		goto err_clk;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = regulator_enable(adc->vdd);
 	if (ret)
 		goto err_ioremap;
@@ -632,6 +745,8 @@ static int s3c_adc_probe(struct platform_device *pdev)
 
 	writel(tmp, adc->regs + S3C2410_ADCCON);
 
+<<<<<<< HEAD
+=======
 =======
 	clk_enable(adc->clk);
 
@@ -665,6 +780,7 @@ static int s3c_adc_probe(struct platform_device *pdev)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_info(dev, "attached adc driver\n");
 
 	platform_set_drvdata(pdev, adc);
@@ -673,6 +789,9 @@ static int s3c_adc_probe(struct platform_device *pdev)
 	return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  err_ioremap:
 	iounmap(adc->regs);
  err_clk:
@@ -682,11 +801,14 @@ static int s3c_adc_probe(struct platform_device *pdev)
 	free_irq(adc->irq, adc);
  err_reg:
 	regulator_put(adc->vdd);
+<<<<<<< HEAD
+=======
 =======
  err_clk:
 	clk_put(adc->clk);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  err_alloc:
 	kfree(adc);
 	return ret;
@@ -703,7 +825,12 @@ static int __devexit s3c_adc_remove(struct platform_device *pdev)
 	regulator_disable(adc->vdd);
 	regulator_put(adc->vdd);
 =======
+<<<<<<< HEAD
+	regulator_disable(adc->vdd);
+	regulator_put(adc->vdd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clk_put(adc->clk);
 	kfree(adc);
 
@@ -712,14 +839,20 @@ static int __devexit s3c_adc_remove(struct platform_device *pdev)
 
 #ifdef CONFIG_PM
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int s3c_adc_suspend(struct device *dev)
 {
 	struct platform_device *pdev = container_of(dev,
 			struct platform_device, dev);
+<<<<<<< HEAD
+=======
 =======
 static int s3c_adc_suspend(struct platform_device *pdev, pm_message_t state)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct adc_device *adc = platform_get_drvdata(pdev);
 	unsigned long flags;
 	u32 con;
@@ -736,12 +869,19 @@ static int s3c_adc_suspend(struct platform_device *pdev, pm_message_t state)
 <<<<<<< HEAD
 	regulator_disable(adc->vdd);
 =======
+<<<<<<< HEAD
+	regulator_disable(adc->vdd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int s3c_adc_resume(struct device *dev)
 {
 	struct platform_device *pdev = container_of(dev,
@@ -765,6 +905,8 @@ static int s3c_adc_resume(struct device *dev)
 	if (cpu == TYPE_ADCV2 || cpu == TYPE_ADCV3)
 		tmp |= S3C64XX_ADCCON_RESSEL;
 
+<<<<<<< HEAD
+=======
 =======
 static int s3c_adc_resume(struct platform_device *pdev)
 {
@@ -787,6 +929,7 @@ static int s3c_adc_resume(struct platform_device *pdev)
 	if (cpu != TYPE_ADCV1)
 		tmp |= S3C64XX_ADCCON_RESSEL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(tmp, adc->regs + S3C2410_ADCCON);
 
 	return 0;
@@ -800,6 +943,9 @@ static int s3c_adc_resume(struct platform_device *pdev)
 static struct platform_device_id s3c_adc_driver_ids[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name           = "s3c24xx-adc",
 		.driver_data    = TYPE_ADCV1,
 	}, {
@@ -814,6 +960,8 @@ static struct platform_device_id s3c_adc_driver_ids[] = {
 	}, {
 		.name		= "samsung-adc-v3",
 		.driver_data	= TYPE_ADCV3,
+<<<<<<< HEAD
+=======
 =======
 		.name		= "s3c24xx-adc",
 		.driver_data	= TYPE_ADCV1,
@@ -827,29 +975,41 @@ static struct platform_device_id s3c_adc_driver_ids[] = {
 		.name		= "samsung-adc-v4",
 		.driver_data	= TYPE_ADCV4,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{ }
 };
 MODULE_DEVICE_TABLE(platform, s3c_adc_driver_ids);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct dev_pm_ops adc_pm_ops = {
 	.suspend	= s3c_adc_suspend,
 	.resume		= s3c_adc_resume,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver s3c_adc_driver = {
 	.id_table	= s3c_adc_driver_ids,
 	.driver		= {
 		.name	= "s3c-adc",
 		.owner	= THIS_MODULE,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pm	= &adc_pm_ops,
 	},
 	.probe		= s3c_adc_probe,
 	.remove		= __devexit_p(s3c_adc_remove),
+<<<<<<< HEAD
+=======
 =======
 	},
 	.probe		= s3c_adc_probe,
@@ -857,6 +1017,7 @@ static struct platform_driver s3c_adc_driver = {
 	.suspend	= s3c_adc_suspend,
 	.resume		= s3c_adc_resume,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init adc_init(void)
@@ -873,5 +1034,9 @@ static int __init adc_init(void)
 <<<<<<< HEAD
 module_init(adc_init);
 =======
+<<<<<<< HEAD
+module_init(adc_init);
+=======
 arch_initcall(adc_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -29,6 +29,9 @@ static int openrd_client_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 	unsigned int freq;
 =======
+<<<<<<< HEAD
+	unsigned int freq;
+=======
 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
 	int ret;
 	unsigned int freq, fmt;
@@ -42,6 +45,7 @@ static int openrd_client_hw_params(struct snd_pcm_substream *substream,
 	if (ret < 0)
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (params_rate(params)) {
 	default:
@@ -76,7 +80,11 @@ static struct snd_soc_dai_link openrd_client_dai[] = {
 <<<<<<< HEAD
 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS,
 =======
+<<<<<<< HEAD
+	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_CBS_CFS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &openrd_client_ops,
 },
 };
@@ -87,12 +95,19 @@ static struct snd_soc_card openrd_client = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = openrd_client_dai,
 	.num_links = ARRAY_SIZE(openrd_client_dai),
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit openrd_probe(struct platform_device *pdev)
 {
 	struct snd_soc_card *card = &openrd_client;
@@ -125,6 +140,8 @@ static struct platform_driver openrd_driver = {
 };
 
 module_platform_driver(openrd_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *openrd_client_snd_device;
 
@@ -159,6 +176,7 @@ static void __exit openrd_client_exit(void)
 module_init(openrd_client_init);
 module_exit(openrd_client_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR("Arnaud Patard <arnaud.patard@rtp-net.org>");
@@ -167,5 +185,9 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:openrd-client-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:openrd-client-audio");
+=======
 MODULE_ALIAS("platform:soc-audio");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

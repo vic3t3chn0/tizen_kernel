@@ -44,7 +44,12 @@
 #elif defined(CONFIG_COLDFIRE)
 #define PGDIR_SHIFT     22
 =======
+<<<<<<< HEAD
+#elif defined(CONFIG_COLDFIRE)
+#define PGDIR_SHIFT     22
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define PGDIR_SHIFT	25
 #endif
@@ -60,12 +65,18 @@
 #define PTRS_PER_PMD   1
 #define PTRS_PER_PGD   2048
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_COLDFIRE)
 #define PTRS_PER_PTE	512
 #define PTRS_PER_PMD	1
 #define PTRS_PER_PGD	1024
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define PTRS_PER_PTE	1024
 #define PTRS_PER_PMD	8
@@ -83,13 +94,22 @@
 #define KMAP_START	0xe0000000
 #define KMAP_END	0xf0000000
 =======
+<<<<<<< HEAD
+#elif defined(CONFIG_COLDFIRE)
+#define KMAP_START	0xe0000000
+#define KMAP_END	0xf0000000
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define	KMAP_START	0xd0000000
 #define	KMAP_END	0xf0000000
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SUN3
 extern unsigned long m68k_vmalloc_end;
 #define VMALLOC_START 0x0f800000
@@ -98,9 +118,12 @@ extern unsigned long m68k_vmalloc_end;
 #define VMALLOC_START	0xd0000000
 #define VMALLOC_END	0xe0000000
 #else
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_SUN3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Just any arbitrary offset to the start of the vmalloc VM area: the
  * current 8MB value just means that there will be a 8MB "hole" after the
  * physical memory until the kernel virtual memory starts.  That means that
@@ -114,12 +137,16 @@ extern unsigned long m68k_vmalloc_end;
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 #else
 extern unsigned long m68k_vmalloc_end;
 #define VMALLOC_START 0x0f800000
 #define VMALLOC_END m68k_vmalloc_end
 #endif /* CONFIG_SUN3 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* zero page used for uninitialized stuff */
 extern void *empty_zero_page;
@@ -167,7 +194,12 @@ static inline void update_mmu_cache(struct vm_area_struct *vma,
 #elif defined(CONFIG_COLDFIRE)
 #include <asm/mcf_pgtable.h>
 =======
+<<<<<<< HEAD
+#elif defined(CONFIG_COLDFIRE)
+#include <asm/mcf_pgtable.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #include <asm/motorola_pgtable.h>
 #endif
@@ -181,7 +213,13 @@ static inline void update_mmu_cache(struct vm_area_struct *vma,
 # define pgprot_noncached(prot) (__pgprot(pgprot_val(prot) | CF_PAGE_NOCACHE))
 #else
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_COLDFIRE
+# define pgprot_noncached(prot) (__pgprot(pgprot_val(prot) | CF_PAGE_NOCACHE))
+#else
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef SUN3_PAGE_NOCACHE
 # define __SUN3_PAGE_NOCACHE	SUN3_PAGE_NOCACHE
 #else
@@ -199,7 +237,11 @@ static inline void update_mmu_cache(struct vm_area_struct *vma,
 <<<<<<< HEAD
 #endif /* CONFIG_COLDFIRE */
 =======
+<<<<<<< HEAD
+#endif /* CONFIG_COLDFIRE */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm-generic/pgtable.h>
 #endif /* !__ASSEMBLY__ */
 

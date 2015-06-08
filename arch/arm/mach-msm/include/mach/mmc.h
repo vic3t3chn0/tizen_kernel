@@ -10,6 +10,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct embedded_sdio_data {
 	struct sdio_cis cis;
 	struct sdio_cccr cccr;
@@ -18,6 +20,7 @@ struct embedded_sdio_data {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct msm_mmc_gpio {
 	unsigned no;
 	const char *name;
@@ -37,10 +40,16 @@ struct msm_mmc_platform_data {
 	struct msm_mmc_gpio_data *gpio_data;
 	void (*init_card)(struct mmc_card *card);
 =======
+<<<<<<< HEAD
+	int (*register_status_notify)(void (*callback)(int card_present, void *dev_id), void *dev_id);
+	struct msm_mmc_gpio_data *gpio_data;
+	void (*init_card)(struct mmc_card *card);
+=======
 	struct embedded_sdio_data *embedded_sdio;
 	int (*register_status_notify)(void (*callback)(int card_present, void *dev_id), void *dev_id);
 	struct msm_mmc_gpio_data *gpio_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif

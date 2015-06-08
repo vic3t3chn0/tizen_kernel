@@ -384,7 +384,12 @@ static inline unsigned long __fls(unsigned long word)
 #undef ADDR
 
 =======
+<<<<<<< HEAD
+#undef ADDR
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __KERNEL__
 /**
  * ffs - find first set bit in word
@@ -401,6 +406,9 @@ static inline int ffs(int x)
 {
 	int r;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_X86_64
 	/*
@@ -420,12 +428,15 @@ static inline int ffs(int x)
 	asm("bsfl %1,%0\n\t"
 	    "cmovzl %2,%0"
 	    : "=&r" (r) : "rm" (x), "r" (-1));
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_X86_CMOV
 	asm("bsfl %1,%0\n\t"
 	    "cmovzl %2,%0"
 	    : "=r" (r) : "rm" (x), "r" (-1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	asm("bsfl %1,%0\n\t"
 	    "jnz 1f\n\t"
@@ -450,6 +461,9 @@ static inline int fls(int x)
 {
 	int r;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_X86_64
 	/*
@@ -466,9 +480,12 @@ static inline int fls(int x)
 	    : "=r" (r)
 	    : "rm" (x), "0" (tmp));
 #elif defined(CONFIG_X86_CMOV)
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_X86_CMOV
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asm("bsrl %1,%0\n\t"
 	    "cmovzl %2,%0"
 	    : "=&r" (r) : "rm" (x), "rm" (-1));
@@ -481,6 +498,9 @@ static inline int fls(int x)
 	return r + 1;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * fls64 - find last set bit in a 64-bit word
@@ -510,6 +530,8 @@ static __always_inline int fls64(__u64 x)
 #else
 #include <asm-generic/bitops/fls64.h>
 #endif
+<<<<<<< HEAD
+=======
 =======
 #endif /* __KERNEL__ */
 
@@ -517,6 +539,7 @@ static __always_inline int fls64(__u64 x)
 
 #ifdef __KERNEL__
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm-generic/bitops/find.h>
 
@@ -528,6 +551,11 @@ static __always_inline int fls64(__u64 x)
 
 #include <asm-generic/bitops/const_hweight.h>
 
+<<<<<<< HEAD
+#include <asm-generic/bitops/le.h>
+
+#include <asm-generic/bitops/ext2-atomic-setbit.h>
+=======
 <<<<<<< HEAD
 #include <asm-generic/bitops/le.h>
 
@@ -546,6 +574,7 @@ static __always_inline int fls64(__u64 x)
 #define ext2_clear_bit_atomic(lock, nr, addr)			\
 	test_and_clear_bit((nr), (unsigned long *)(addr))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __KERNEL__ */
 #endif /* _ASM_X86_BITOPS_H */

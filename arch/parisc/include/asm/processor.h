@@ -18,8 +18,11 @@
 #include <asm/types.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/percpu.h>
 
 #endif /* __ASSEMBLY__ */
@@ -175,7 +178,11 @@ struct thread_struct {
 <<<<<<< HEAD
 struct task_struct;
 =======
+<<<<<<< HEAD
+struct task_struct;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long thread_saved_pc(struct task_struct *t);
 void show_trace(struct task_struct *task, unsigned long *stack);
 
@@ -205,8 +212,11 @@ typedef unsigned int elf_caddr_t;
 							\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	set_fs(USER_DS);				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->iasq[0] = spaceid;			\
 	regs->iasq[1] = spaceid;			\
 	regs->iaoq[0] = pc;				\
@@ -311,8 +321,11 @@ on downward growing arches, it looks like this:
 							\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	set_fs(USER_DS);				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->iasq[0] = spaceid;			\
 	regs->iasq[1] = spaceid;			\
 	regs->iaoq[0] = pc;				\

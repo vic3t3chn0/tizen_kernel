@@ -355,6 +355,13 @@ struct dasd_discipline {
 	int (*reload) (struct dasd_device *);
 
 	int (*get_uid) (struct dasd_device *, struct dasd_uid *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	void (*kick_validate) (struct dasd_device *);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern struct dasd_discipline *dasd_diag_discipline_pointer;
@@ -382,6 +389,47 @@ struct dasd_path {
 	__u8 npm;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct dasd_profile_info {
+	/* legacy part of profile data, as in dasd_profile_info_t */
+	unsigned int dasd_io_reqs;	 /* number of requests processed */
+	unsigned int dasd_io_sects;	 /* number of sectors processed */
+	unsigned int dasd_io_secs[32];	 /* histogram of request's sizes */
+	unsigned int dasd_io_times[32];	 /* histogram of requests's times */
+	unsigned int dasd_io_timps[32];	 /* h. of requests's times per sector */
+	unsigned int dasd_io_time1[32];	 /* hist. of time from build to start */
+	unsigned int dasd_io_time2[32];	 /* hist. of time from start to irq */
+	unsigned int dasd_io_time2ps[32]; /* hist. of time from start to irq */
+	unsigned int dasd_io_time3[32];	 /* hist. of time from irq to end */
+	unsigned int dasd_io_nr_req[32]; /* hist. of # of requests in chanq */
+
+	/* new data */
+	struct timespec starttod;	   /* time of start or last reset */
+	unsigned int dasd_io_alias;	   /* requests using an alias */
+	unsigned int dasd_io_tpm;	   /* requests using transport mode */
+	unsigned int dasd_read_reqs;	   /* total number of read  requests */
+	unsigned int dasd_read_sects;	   /* total number read sectors */
+	unsigned int dasd_read_alias;	   /* read request using an alias */
+	unsigned int dasd_read_tpm;	   /* read requests in transport mode */
+	unsigned int dasd_read_secs[32];   /* histogram of request's sizes */
+	unsigned int dasd_read_times[32];  /* histogram of requests's times */
+	unsigned int dasd_read_time1[32];  /* hist. time from build to start */
+	unsigned int dasd_read_time2[32];  /* hist. of time from start to irq */
+	unsigned int dasd_read_time3[32];  /* hist. of time from irq to end */
+	unsigned int dasd_read_nr_req[32]; /* hist. of # of requests in chanq */
+};
+
+struct dasd_profile {
+	struct dentry *dentry;
+	struct dasd_profile_info *data;
+	spinlock_t lock;
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct dasd_device {
 	/* Block device stuff. */
 	struct dasd_block *block;
@@ -420,6 +468,13 @@ struct dasd_device {
 	struct work_struct kick_work;
 	struct work_struct restore_device;
 	struct work_struct reload_device;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct work_struct kick_validate;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timer_list timer;
 
 	debug_info_t *debug_area;
@@ -431,6 +486,15 @@ struct dasd_device {
 
 	/* default expiration time in s */
 	unsigned long default_expires;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	struct dentry *debugfs_dentry;
+	struct dasd_profile profile;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct dasd_block {
@@ -453,9 +517,20 @@ struct dasd_block {
 	struct tasklet_struct tasklet;
 	struct timer_list timer;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct dentry *debugfs_dentry;
+	struct dasd_profile profile;
+=======
 #ifdef CONFIG_DASD_PROFILE
 	struct dasd_profile_info_t profile;
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_DASD_PROFILE
+	struct dasd_profile_info_t profile;
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -479,6 +554,13 @@ struct dasd_block {
 					 */
 #define DASD_FLAG_IS_RESERVED	7	/* The device is reserved */
 #define DASD_FLAG_LOCK_STOLEN	8	/* The device lock was stolen */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DASD_FLAG_SUSPENDED	9	/* The device was suspended */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 void dasd_put_device_wake(struct dasd_device *);
@@ -589,12 +671,28 @@ dasd_check_blocksize(int bsize)
 }
 
 /* externals in dasd.c */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DASD_PROFILE_OFF	 0
+#define DASD_PROFILE_ON 	 1
+#define DASD_PROFILE_GLOBAL_ONLY 2
+
+extern debug_info_t *dasd_debug_area;
+extern struct dasd_profile_info dasd_global_profile_data;
+extern unsigned int dasd_global_profile_level;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DASD_PROFILE_ON	 1
 #define DASD_PROFILE_OFF 0
 
 extern debug_info_t *dasd_debug_area;
 extern struct dasd_profile_info_t dasd_global_profile;
 extern unsigned int dasd_profile_level;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const struct block_device_operations dasd_device_operations;
 
 extern struct kmem_cache *dasd_page_cache;
@@ -605,6 +703,13 @@ struct dasd_ccw_req *
 dasd_smalloc_request(int , int, int, struct dasd_device *);
 void dasd_kfree_request(struct dasd_ccw_req *, struct dasd_device *);
 void dasd_sfree_request(struct dasd_ccw_req *, struct dasd_device *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+void dasd_wakeup_cb(struct dasd_ccw_req *, void *);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int
 dasd_kmalloc_set_cda(struct ccw1 *ccw, void *cda, struct dasd_device *device)
@@ -662,6 +767,17 @@ void dasd_device_remove_stop_bits(struct dasd_device *, int);
 
 int dasd_device_is_ro(struct dasd_device *);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void dasd_profile_reset(struct dasd_profile *);
+int dasd_profile_on(struct dasd_profile *);
+void dasd_profile_off(struct dasd_profile *);
+void dasd_global_profile_reset(void);
+char *dasd_get_user_string(const char __user *, size_t);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* externals in dasd_devmap.c */
 extern int dasd_max_devindex;

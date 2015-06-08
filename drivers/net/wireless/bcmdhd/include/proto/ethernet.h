@@ -21,10 +21,23 @@
  * software in any way with any other Broadcom software provided under a license
  * other than the GPL, without Broadcom's express prior written consent.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * $Id: ethernet.h 309193 2012-01-19 00:03:57Z $
+ */
+
+#ifndef _NET_ETHERNET_H_	      
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * $Id: ethernet.h 354714 2012-09-03 03:12:21Z $
  */
 
 #ifndef _NET_ETHERNET_H_	  
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define _NET_ETHERNET_H_
 
 #ifndef _TYPEDEFS_H_
@@ -67,11 +80,20 @@
 #define	ETHER_TYPE_IPV6		0x86dd		
 #define	ETHER_TYPE_BRCM		0x886c		
 #define	ETHER_TYPE_802_1X	0x888e		
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef PLC
 #define	ETHER_TYPE_88E1		0x88e1		
 #define	ETHER_TYPE_8912		0x8912		
 #define ETHER_TYPE_GIGLED	0xffff		
 #endif 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	ETHER_TYPE_802_1X_PREAUTH 0x88c7	
 #define ETHER_TYPE_WAI		0x88b4		
 #define ETHER_TYPE_89_0D	0x890d		
@@ -99,7 +121,15 @@
 		((uint8 *)ea)[5] = ((mgrp_ip) >>  0) & 0xff;	\
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifndef __INCif_etherh       
+=======
 #ifndef __INCif_etherh   
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifndef __INCif_etherh   
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 BWL_PRE_PACKED_STRUCT struct ether_header {
 	uint8	ether_dhost[ETHER_ADDR_LEN];
@@ -127,6 +157,20 @@ BWL_PRE_PACKED_STRUCT struct	ether_addr {
 
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define	ether_cmp(a, b)	(!(((short*)(a))[0] == ((short*)(b))[0]) | \
+			 !(((short*)(a))[1] == ((short*)(b))[1]) | \
+			 !(((short*)(a))[2] == ((short*)(b))[2]))
+
+
+#define	ether_copy(s, d) { \
+		((short*)(d))[0] = ((const short*)(s))[0]; \
+		((short*)(d))[1] = ((const short*)(s))[1]; \
+		((short*)(d))[2] = ((const short*)(s))[2]; }
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define eacmp(a, b)	((((uint16 *)(a))[0] ^ ((uint16 *)(b))[0]) | \
 	                 (((uint16 *)(a))[1] ^ ((uint16 *)(b))[1]) | \
 	                 (((uint16 *)(a))[2] ^ ((uint16 *)(b))[2]))
@@ -142,11 +186,22 @@ do { \
 } while (0)
 
 #define	ether_copy(s, d) eacopy(s, d)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 static const struct ether_addr ether_bcast = {{255, 255, 255, 255, 255, 255}};
 static const struct ether_addr ether_null = {{0, 0, 0, 0, 0, 0}};
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static const struct ether_addr ether_ipv6_mcast = {{0x33, 0x33, 0x00, 0x00, 0x00, 0x01}};
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct ether_addr ether_ipv6_mcast = {{0x33, 0x33, 0x00, 0x00, 0x00, 0x01}};
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ETHER_ISBCAST(ea)	((((uint8 *)(ea))[0] &		\
 	                          ((uint8 *)(ea))[1] &		\
@@ -161,11 +216,20 @@ static const struct ether_addr ether_ipv6_mcast = {{0x33, 0x33, 0x00, 0x00, 0x00
 				  ((uint8 *)(ea))[4] |		\
 				  ((uint8 *)(ea))[5]) == 0)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ETHER_ISNULLDEST(da)	((((const uint16 *)(da))[0] |           \
 				  ((const uint16 *)(da))[1] |           \
 				  ((const uint16 *)(da))[2]) == 0)
 #define ETHER_ISNULLSRC(sa)	ETHER_ISNULLDEST(sa)
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ETHER_MOVE_HDR(d, s) \
 do { \
 	struct ether_header t; \
@@ -173,8 +237,16 @@ do { \
 	*(struct ether_header *)(d) = t; \
 } while (0)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define  ETHER_ISUCAST(ea) ((((uint8 *)(ea))[0] & 0x01) == 0)
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define  ETHER_ISUCAST(ea) ((((uint8 *)(ea))[0] & 0x01) == 0)
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <packed_section_end.h>
 

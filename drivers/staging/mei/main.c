@@ -1,7 +1,15 @@
 /*
  *
  * Intel Management Engine Interface (Intel MEI) Linux driver
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (c) 2003-2012, Intel Corporation.
+=======
  * Copyright (c) 2003-2011, Intel Corporation.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (c) 2003-2011, Intel Corporation.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -14,8 +22,16 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/kernel.h>
@@ -30,17 +46,38 @@
 #include <linux/init.h>
 #include <linux/ioctl.h>
 #include <linux/cdev.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/uuid.h>
 #include <linux/compat.h>
 #include <linux/jiffies.h>
 #include <linux/interrupt.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/miscdevice.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "mei_dev.h"
 #include "mei.h"
 #include "interface.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include "mei_version.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "mei_version.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 #define MEI_READ_TIMEOUT 45
@@ -52,6 +89,15 @@
  */
 static char mei_driver_name[] = MEI_DRIVER_NAME;
 static const char mei_driver_string[] = "Intel(R) Management Engine Interface";
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/* The device pointer */
+/* Currently this driver works as long as there is only a single AMT device. */
+struct pci_dev *mei_device;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char mei_driver_version[] = MEI_DRIVER_VERSION;
 
 /* mei char device for registration */
@@ -65,6 +111,10 @@ static struct pci_dev *mei_device;
 
 static struct class *mei_class;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* mei_pci_tbl - PCI Device ID Table */
 static DEFINE_PCI_DEVICE_TABLE(mei_pci_tbl) = {
@@ -108,6 +158,11 @@ MODULE_DEVICE_TABLE(pci, mei_pci_tbl);
 
 static DEFINE_MUTEX(mei_mutex);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mei_probe - Device Initialization Routine
  *
@@ -260,6 +315,10 @@ static void __devexit mei_remove(struct pci_dev *pdev)
 	pci_release_regions(pdev);
 	pci_disable_device(pdev);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * mei_clear_list - removes all callbacks associated with file
@@ -360,6 +419,22 @@ static struct mei_cl_cb *find_read_list_entry(
 		struct mei_device *dev,
 		struct mei_cl *cl)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mei_cl_cb *pos = NULL;
+	struct mei_cl_cb *next = NULL;
+
+	dev_dbg(&dev->pdev->dev, "remove read_list CB\n");
+	list_for_each_entry_safe(pos, next,
+			&dev->read_list.mei_cb.cb_list, cb_list) {
+		struct mei_cl *cl_temp;
+		cl_temp = (struct mei_cl *)pos->file_private;
+
+		if (mei_cl_cmp_id(cl, cl_temp))
+			return pos;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mei_cl_cb *cb_pos = NULL;
 	struct mei_cl_cb *cb_next = NULL;
 	struct mei_cl *cl_list_temp;
@@ -379,6 +454,10 @@ static struct mei_cl_cb *find_read_list_entry(
 				return cb_pos;
 
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return NULL;
 }
@@ -394,22 +473,53 @@ static struct mei_cl_cb *find_read_list_entry(
 static int mei_open(struct inode *inode, struct file *file)
 {
 	struct mei_cl *cl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mei_device *dev;
+	unsigned long cl_id;
+	int err;
+=======
 	int if_num = iminor(inode), err;
 	struct mei_device *dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int if_num = iminor(inode), err;
+	struct mei_device *dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -ENODEV;
 	if (!mei_device)
 		goto out;
 
 	dev = pci_get_drvdata(mei_device);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!dev)
+=======
 	if (if_num != MEI_MINOR_NUMBER || !dev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (if_num != MEI_MINOR_NUMBER || !dev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	mutex_lock(&dev->device_lock);
 	err = -ENOMEM;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cl = mei_cl_allocate(dev);
+	if (!cl)
+		goto out_unlock;
+=======
 	cl = mei_alloc_file_private(dev);
 	if (!cl)
 		goto out;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cl = mei_alloc_file_private(dev);
+	if (!cl)
+		goto out;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -ENODEV;
 	if (dev->mei_state != MEI_ENABLED) {
@@ -421,6 +531,21 @@ static int mei_open(struct inode *inode, struct file *file)
 	if (dev->open_handle_count >= MEI_MAX_OPEN_HANDLE_COUNT)
 		goto out_unlock;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cl_id = find_first_zero_bit(dev->host_clients_map, MEI_CLIENTS_MAX);
+	if (cl_id >= MEI_CLIENTS_MAX)
+		goto out_unlock;
+
+	cl->host_client_id  = cl_id;
+
+	dev_dbg(&dev->pdev->dev, "client_id = %d\n", cl->host_client_id);
+
+	dev->open_handle_count++;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cl->host_client_id = find_first_zero_bit(dev->host_clients_map,
 							MEI_CLIENTS_MAX);
 	if (cl->host_client_id > MEI_CLIENTS_MAX)
@@ -429,6 +554,10 @@ static int mei_open(struct inode *inode, struct file *file)
 	dev_dbg(&dev->pdev->dev, "client_id = %d\n", cl->host_client_id);
 
 	dev->open_handle_count++;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_add_tail(&cl->link, &dev->file_list);
 
 	set_bit(cl->host_client_id, dev->host_clients_map);
@@ -438,7 +567,15 @@ static int mei_open(struct inode *inode, struct file *file)
 	file->private_data = cl;
 	mutex_unlock(&dev->device_lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return nonseekable_open(inode, file);
+=======
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out_unlock:
 	mutex_unlock(&dev->device_lock);
@@ -478,14 +615,31 @@ static int mei_release(struct inode *inode, struct file *file)
 			    cl->me_client_id);
 			rets = mei_disconnect_host_client(dev, cl);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mei_cl_flush_queues(cl);
+=======
 		mei_flush_queues(dev, cl);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		mei_flush_queues(dev, cl);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_dbg(&dev->pdev->dev, "remove client host client = %d, ME client = %d\n",
 		    cl->host_client_id,
 		    cl->me_client_id);
 
 		if (dev->open_handle_count > 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			clear_bit(cl->host_client_id, dev->host_clients_map);
+=======
 			clear_bit(cl->host_client_id,
 				  dev->host_clients_map);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			clear_bit(cl->host_client_id,
+				  dev->host_clients_map);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev->open_handle_count--;
 		}
 		mei_remove_client_from_file_list(dev, cl->host_client_id);
@@ -519,10 +673,23 @@ static int mei_release(struct inode *inode, struct file *file)
 
 			dev_dbg(&dev->pdev->dev, "amthi canceled iamthif state %d\n",
 			    dev->iamthif_state);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev->iamthif_canceled = true;
+			if (dev->iamthif_state == MEI_IAMTHIF_READ_COMPLETE) {
+				dev_dbg(&dev->pdev->dev, "run next amthi iamthif cb\n");
+				mei_run_next_iamthif_cmd(dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev->iamthif_canceled = 1;
 			if (dev->iamthif_state == MEI_IAMTHIF_READ_COMPLETE) {
 				dev_dbg(&dev->pdev->dev, "run next amthi iamthif cb\n");
 				run_next_iamthif_cmd(dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 
@@ -546,7 +713,15 @@ static int mei_release(struct inode *inode, struct file *file)
  * returns >=0 data length on success , <0 on error
  */
 static ssize_t mei_read(struct file *file, char __user *ubuf,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			size_t length, loff_t *offset)
+=======
 			 size_t length, loff_t *offset)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			 size_t length, loff_t *offset)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mei_cl *cl = file->private_data;
 	struct mei_cl_cb *cb_pos = NULL;
@@ -598,7 +773,15 @@ static ssize_t mei_read(struct file *file, char __user *ubuf,
 		goto free;
 	} else if ((!cl->read_cb || !cl->read_cb->information) &&
 		    *offset > 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/*Offset needs to be cleaned for contiguous reads*/
+=======
 		/*Offset needs to be cleaned for contingous reads*/
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/*Offset needs to be cleaned for contingous reads*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*offset = 0;
 		rets = 0;
 		goto out;
@@ -661,6 +844,16 @@ copy_buffer:
 		goto free;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* length is being truncated to PAGE_SIZE, however, */
+	/* information size may be longer */
+	length = min_t(size_t, length, (cb->information - *offset));
+
+	if (copy_to_user(ubuf, cb->response_buffer.data + *offset, length)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* length is being turncated to PAGE_SIZE, however, */
 	/* information size may be longer */
 	length = min_t(size_t, length, (cb->information - *offset));
@@ -668,6 +861,10 @@ copy_buffer:
 	if (copy_to_user(ubuf,
 			 cb->response_buffer.data + *offset,
 			 length)) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rets = -EFAULT;
 		goto free;
 	}
@@ -703,7 +900,15 @@ out:
  * returns >=0 data length on success , <0 on error
  */
 static ssize_t mei_write(struct file *file, const char __user *ubuf,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 size_t length, loff_t *offset)
+=======
 			  size_t length, loff_t *offset)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			  size_t length, loff_t *offset)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mei_cl *cl = file->private_data;
 	struct mei_cl_cb *write_cb = NULL;
@@ -754,8 +959,17 @@ static ssize_t mei_write(struct file *file, const char __user *ubuf,
 			cl->read_cb = NULL;
 			cl->read_pending = 0;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else if (cl->reading_state == MEI_IDLE && !cl->read_pending)
+=======
 	} else if (cl->reading_state == MEI_IDLE &&
 		   !cl->read_pending)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} else if (cl->reading_state == MEI_IDLE &&
+		   !cl->read_pending)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*offset = 0;
 
 
@@ -800,7 +1014,15 @@ static ssize_t mei_write(struct file *file, const char __user *ubuf,
 			rets = -ENODEV;
 			goto unlock_dev;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		for (i = 0; i < dev->me_clients_num; i++) {
+=======
 		for (i = 0; i < dev->num_mei_me_clients; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		for (i = 0; i < dev->num_mei_me_clients; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dev->me_clients[i].client_id ==
 				dev->iamthif_cl.me_client_id)
 				break;
@@ -810,7 +1032,15 @@ static ssize_t mei_write(struct file *file, const char __user *ubuf,
 			rets = -ENODEV;
 			goto unlock_dev;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (i == dev->me_clients_num ||
+=======
 		if (i == dev->num_mei_me_clients ||
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (i == dev->num_mei_me_clients ||
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    (dev->me_clients[i].client_id !=
 		      dev->iamthif_cl.me_client_id)) {
 			rets = -ENODEV;
@@ -868,7 +1098,15 @@ static ssize_t mei_write(struct file *file, const char __user *ubuf,
 		    cl->me_client_id);
 		goto unlock_dev;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < dev->me_clients_num; i++) {
+=======
 	for (i = 0; i < dev->num_mei_me_clients; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = 0; i < dev->num_mei_me_clients; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dev->me_clients[i].client_id ==
 		    cl->me_client_id)
 			break;
@@ -877,7 +1115,15 @@ static ssize_t mei_write(struct file *file, const char __user *ubuf,
 		rets = -ENODEV;
 		goto unlock_dev;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (i == dev->me_clients_num) {
+=======
 	if (i == dev->num_mei_me_clients) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (i == dev->num_mei_me_clients) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rets = -ENODEV;
 		goto unlock_dev;
 	}
@@ -893,7 +1139,15 @@ static ssize_t mei_write(struct file *file, const char __user *ubuf,
 
 	if (rets && dev->mei_host_buffer_is_empty) {
 		rets = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev->mei_host_buffer_is_empty = false;
+=======
 		dev->mei_host_buffer_is_empty = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev->mei_host_buffer_is_empty = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (length > ((((dev->host_hw_state & H_CBD) >> 24) *
 			sizeof(u32)) - sizeof(struct mei_msg_hdr))) {
 
@@ -911,7 +1165,15 @@ static ssize_t mei_write(struct file *file, const char __user *ubuf,
 		mei_hdr.reserved = 0;
 		dev_dbg(&dev->pdev->dev, "call mei_write_message header=%08x.\n",
 		    *((u32 *) &mei_hdr));
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (mei_write_message(dev, &mei_hdr,
+=======
 		if (!mei_write_message(dev, &mei_hdr,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!mei_write_message(dev, &mei_hdr,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(unsigned char *) (write_cb->request_buffer.data),
 			mei_hdr.length)) {
 			rets = -ENODEV;
@@ -1026,7 +1288,15 @@ out:
  */
 #ifdef CONFIG_COMPAT
 static long mei_compat_ioctl(struct file *file,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			unsigned int cmd, unsigned long data)
+=======
 		      unsigned int cmd, unsigned long data)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		      unsigned int cmd, unsigned long data)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return mei_ioctl(file, cmd, (unsigned long)compat_ptr(data));
 }
@@ -1066,7 +1336,15 @@ static unsigned int mei_poll(struct file *file, poll_table *wait)
 			dev->iamthif_file_object == file) {
 			mask |= (POLLIN | POLLRDNORM);
 			dev_dbg(&dev->pdev->dev, "run next amthi cb\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+			mei_run_next_iamthif_cmd(dev);
+=======
 			run_next_iamthif_cmd(dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			run_next_iamthif_cmd(dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		goto out;
 	}
@@ -1082,6 +1360,212 @@ out:
 	return mask;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * file operations structure will be used for mei char device.
+ */
+static const struct file_operations mei_fops = {
+	.owner = THIS_MODULE,
+	.read = mei_read,
+	.unlocked_ioctl = mei_ioctl,
+#ifdef CONFIG_COMPAT
+	.compat_ioctl = mei_compat_ioctl,
+#endif
+	.open = mei_open,
+	.release = mei_release,
+	.write = mei_write,
+	.poll = mei_poll,
+	.llseek = no_llseek
+};
+
+
+/*
+ * Misc Device Struct
+ */
+static struct miscdevice  mei_misc_device = {
+		.name = MEI_DRIVER_NAME,
+		.fops = &mei_fops,
+		.minor = MISC_DYNAMIC_MINOR,
+};
+
+/**
+ * mei_probe - Device Initialization Routine
+ *
+ * @pdev: PCI device structure
+ * @ent: entry in kcs_pci_tbl
+ *
+ * returns 0 on success, <0 on failure.
+ */
+static int __devinit mei_probe(struct pci_dev *pdev,
+				const struct pci_device_id *ent)
+{
+	struct mei_device *dev;
+	int err;
+
+	mutex_lock(&mei_mutex);
+	if (mei_device) {
+		err = -EEXIST;
+		goto end;
+	}
+	/* enable pci dev */
+	err = pci_enable_device(pdev);
+	if (err) {
+		printk(KERN_ERR "mei: Failed to enable pci device.\n");
+		goto end;
+	}
+	/* set PCI host mastering  */
+	pci_set_master(pdev);
+	/* pci request regions for mei driver */
+	err = pci_request_regions(pdev, mei_driver_name);
+	if (err) {
+		printk(KERN_ERR "mei: Failed to get pci regions.\n");
+		goto disable_device;
+	}
+	/* allocates and initializes the mei dev structure */
+	dev = mei_device_init(pdev);
+	if (!dev) {
+		err = -ENOMEM;
+		goto release_regions;
+	}
+	/* mapping  IO device memory */
+	dev->mem_addr = pci_iomap(pdev, 0, 0);
+	if (!dev->mem_addr) {
+		printk(KERN_ERR "mei: mapping I/O device memory failure.\n");
+		err = -ENOMEM;
+		goto free_device;
+	}
+	pci_enable_msi(pdev);
+
+	 /* request and enable interrupt */
+	if (pci_dev_msi_enabled(pdev))
+		err = request_threaded_irq(pdev->irq,
+			NULL,
+			mei_interrupt_thread_handler,
+			0, mei_driver_name, dev);
+	else
+		err = request_threaded_irq(pdev->irq,
+			mei_interrupt_quick_handler,
+			mei_interrupt_thread_handler,
+			IRQF_SHARED, mei_driver_name, dev);
+
+	if (err) {
+		printk(KERN_ERR "mei: request_threaded_irq failure. irq = %d\n",
+		       pdev->irq);
+		goto unmap_memory;
+	}
+	INIT_DELAYED_WORK(&dev->timer_work, mei_timer);
+	if (mei_hw_init(dev)) {
+		printk(KERN_ERR "mei: Init hw failure.\n");
+		err = -ENODEV;
+		goto release_irq;
+	}
+
+	err = misc_register(&mei_misc_device);
+	if (err)
+		goto release_irq;
+
+	mei_device = pdev;
+	pci_set_drvdata(pdev, dev);
+
+
+	schedule_delayed_work(&dev->timer_work, HZ);
+
+	mutex_unlock(&mei_mutex);
+
+	pr_debug("mei: Driver initialization successful.\n");
+
+	return 0;
+
+release_irq:
+	/* disable interrupts */
+	dev->host_hw_state = mei_hcsr_read(dev);
+	mei_disable_interrupts(dev);
+	flush_scheduled_work();
+	free_irq(pdev->irq, dev);
+	pci_disable_msi(pdev);
+unmap_memory:
+	pci_iounmap(pdev, dev->mem_addr);
+free_device:
+	kfree(dev);
+release_regions:
+	pci_release_regions(pdev);
+disable_device:
+	pci_disable_device(pdev);
+end:
+	mutex_unlock(&mei_mutex);
+	printk(KERN_ERR "mei: Driver initialization failed.\n");
+	return err;
+}
+
+/**
+ * mei_remove - Device Removal Routine
+ *
+ * @pdev: PCI device structure
+ *
+ * mei_remove is called by the PCI subsystem to alert the driver
+ * that it should release a PCI device.
+ */
+static void __devexit mei_remove(struct pci_dev *pdev)
+{
+	struct mei_device *dev;
+
+	if (mei_device != pdev)
+		return;
+
+	dev = pci_get_drvdata(pdev);
+	if (!dev)
+		return;
+
+	mutex_lock(&dev->device_lock);
+
+	mei_wd_stop(dev, false);
+
+	mei_device = NULL;
+
+	if (dev->iamthif_cl.state == MEI_FILE_CONNECTED) {
+		dev->iamthif_cl.state = MEI_FILE_DISCONNECTING;
+		mei_disconnect_host_client(dev, &dev->iamthif_cl);
+	}
+	if (dev->wd_cl.state == MEI_FILE_CONNECTED) {
+		dev->wd_cl.state = MEI_FILE_DISCONNECTING;
+		mei_disconnect_host_client(dev, &dev->wd_cl);
+	}
+
+	/* Unregistering watchdog device */
+	mei_watchdog_unregister(dev);
+
+	/* remove entry if already in list */
+	dev_dbg(&pdev->dev, "list del iamthif and wd file list.\n");
+	mei_remove_client_from_file_list(dev, dev->wd_cl.host_client_id);
+	mei_remove_client_from_file_list(dev, dev->iamthif_cl.host_client_id);
+
+	dev->iamthif_current_cb = NULL;
+	dev->me_clients_num = 0;
+
+	mutex_unlock(&dev->device_lock);
+
+	flush_scheduled_work();
+
+	/* disable interrupts */
+	mei_disable_interrupts(dev);
+
+	free_irq(pdev->irq, dev);
+	pci_disable_msi(pdev);
+	pci_set_drvdata(pdev, NULL);
+
+	if (dev->mem_addr)
+		pci_iounmap(pdev, dev->mem_addr);
+
+	kfree(dev);
+
+	pci_release_regions(pdev);
+	pci_disable_device(pdev);
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 static int mei_pci_suspend(struct device *device)
 {
@@ -1103,7 +1587,15 @@ static int mei_pci_suspend(struct device *device)
 	mutex_unlock(&dev->device_lock);
 
 	free_irq(pdev->irq, dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pci_disable_msi(pdev);
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -1118,11 +1610,34 @@ static int mei_pci_resume(struct device *device)
 	if (!dev)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pci_enable_msi(pdev);
+
+	/* request and enable interrupt */
+	if (pci_dev_msi_enabled(pdev))
+		err = request_threaded_irq(pdev->irq,
+			NULL,
+			mei_interrupt_thread_handler,
+			0, mei_driver_name, dev);
+	else
+		err = request_threaded_irq(pdev->irq,
+			mei_interrupt_quick_handler,
+			mei_interrupt_thread_handler,
+			IRQF_SHARED, mei_driver_name, dev);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* request and enable interrupt   */
 	err = request_threaded_irq(pdev->irq,
 			mei_interrupt_quick_handler,
 			mei_interrupt_thread_handler,
 			IRQF_SHARED, mei_driver_name, dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		printk(KERN_ERR "mei: Request_irq failure. irq = %d\n",
 		       pdev->irq);
@@ -1134,12 +1649,24 @@ static int mei_pci_resume(struct device *device)
 	mei_reset(dev, 1);
 	mutex_unlock(&dev->device_lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Start timer if stopped in suspend */
+	schedule_delayed_work(&dev->timer_work, HZ);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Start watchdog if stopped in suspend */
 	if (dev->wd_timeout) {
 		mei_wd_start_setup(dev);
 		dev->wd_due_counter = 1;
 		schedule_delayed_work(&dev->wd_work, HZ);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 static SIMPLE_DEV_PM_OPS(mei_pm_ops, mei_pci_suspend, mei_pci_resume);
@@ -1159,6 +1686,11 @@ static struct pci_driver mei_driver = {
 	.driver.pm = MEI_PM_OPS,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * file operations structure will be used for mei char device.
  */
@@ -1284,6 +1816,10 @@ static void mei_sysfs_device_remove(void)
 	class_destroy(mei_class);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mei_init_module - Driver Registration Routine
  *
@@ -1296,6 +1832,17 @@ static int __init mei_init_module(void)
 {
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("mei: %s\n", mei_driver_string);
+	/* init pci module */
+	ret = pci_register_driver(&mei_driver);
+	if (ret < 0)
+		printk(KERN_ERR "mei: Error registering driver.\n");
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_debug("mei: %s - version %s\n",
 		mei_driver_string, mei_driver_version);
 	/* init pci module */
@@ -1320,6 +1867,10 @@ unregister_cdev:
 unregister_pci:
 	pci_unregister_driver(&mei_driver);
 end:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1333,9 +1884,20 @@ module_init(mei_init_module);
  */
 static void __exit mei_exit_module(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	misc_deregister(&mei_misc_device);
+	pci_unregister_driver(&mei_driver);
+=======
 	pci_unregister_driver(&mei_driver);
 	mei_sysfs_device_remove();
 	mei_unregister_cdev();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pci_unregister_driver(&mei_driver);
+	mei_sysfs_device_remove();
+	mei_unregister_cdev();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("mei: Driver unloaded successfully.\n");
 }
@@ -1346,4 +1908,11 @@ module_exit(mei_exit_module);
 MODULE_AUTHOR("Intel Corporation");
 MODULE_DESCRIPTION("Intel(R) Management Engine Interface");
 MODULE_LICENSE("GPL v2");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 MODULE_VERSION(MEI_DRIVER_VERSION);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_VERSION(MEI_DRIVER_VERSION);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

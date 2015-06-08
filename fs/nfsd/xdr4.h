@@ -44,6 +44,9 @@
 #define XDR_LEN(n)                     (((n) + 3) & ~3)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CURRENT_STATE_ID_FLAG (1<<0)
 #define SAVED_STATE_ID_FLAG (1<<1)
 
@@ -51,8 +54,11 @@
 #define HAS_STATE_ID(c, f) ((c)->sid_flags & (f))
 #define CLEAR_STATE_ID(c, f) ((c)->sid_flags &= ~(f))
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfsd4_compound_state {
 	struct svc_fh		current_fh;
 	struct svc_fh		save_fh;
@@ -65,12 +71,18 @@ struct nfsd4_compound_state {
 	u32			minorversion;
 	u32			status;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stateid_t	current_stateid;
 	stateid_t	save_stateid;
 	/* to indicate current and saved state id presents */
 	u32		sid_flags;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline bool nfsd4_has_session(struct nfsd4_compound_state *cs)
@@ -100,8 +112,11 @@ struct nfsd4_close {
 	stateid_t	cl_stateid;         /* request+response */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct nfs4_stateowner * cl_stateowner;	/* response */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct nfsd4_commit {
@@ -154,8 +169,12 @@ struct nfsd4_lock_denied {
 <<<<<<< HEAD
 	struct xdr_netobj	ld_owner;
 =======
+<<<<<<< HEAD
+	struct xdr_netobj	ld_owner;
+=======
 	struct nfs4_stateowner   *ld_sop;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64             ld_start;
 	u64             ld_length;
 	u32             ld_type;
@@ -191,10 +210,13 @@ struct nfsd4_lock {
 	} u;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* The lk_replay_owner is the open owner in the open_to_lock_owner
 	 * case and the lock owner otherwise: */
 	struct nfs4_stateowner *lk_replay_owner;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #define lk_new_open_seqid       v.new.open_seqid
 #define lk_new_open_stateid     v.new.open_stateid
@@ -217,8 +239,11 @@ struct nfsd4_lockt {
 	u64				lt_length;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct nfs4_stateowner * 	lt_stateowner;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nfsd4_lock_denied  	lt_denied;
 };
 
@@ -231,8 +256,11 @@ struct nfsd4_locku {
 	u64             lu_length;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct nfs4_stateowner  *lu_stateowner;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -254,7 +282,11 @@ struct nfsd4_open {
 <<<<<<< HEAD
 	u32		op_why_no_deleg;    /* response - DELEG_NONE_EXT only */
 =======
+<<<<<<< HEAD
+	u32		op_why_no_deleg;    /* response - DELEG_NONE_EXT only */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32		op_create;     	    /* request */
 	u32		op_createmode;      /* request */
 	u32		op_bmval[3];        /* request */
@@ -263,8 +295,13 @@ struct nfsd4_open {
 	nfs4_verifier	op_verf __attribute__((aligned(32)));
 					    /* EXCLUSIVE4 */
 =======
+<<<<<<< HEAD
+	nfs4_verifier	op_verf __attribute__((aligned(32)));
+					    /* EXCLUSIVE4 */
+=======
 	nfs4_verifier	verf;               /* EXCLUSIVE4 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clientid_t	op_clientid;        /* request */
 	struct xdr_netobj op_owner;           /* request */
 	u32		op_seqid;           /* request */
@@ -273,12 +310,19 @@ struct nfsd4_open {
 <<<<<<< HEAD
 	u32		op_deleg_want;      /* request */
 =======
+<<<<<<< HEAD
+	u32		op_deleg_want;      /* request */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stateid_t	op_stateid;         /* response */
 	u32		op_recall;          /* recall */
 	struct nfsd4_change_info  op_cinfo; /* response */
 	u32		op_rflags;          /* response */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool		op_truncate;        /* used during processing */
 	bool		op_created;         /* used during processing */
 	struct nfs4_openowner *op_openowner; /* used during processing */
@@ -287,6 +331,8 @@ struct nfsd4_open {
 	struct nfs4_acl *op_acl;
 };
 #define op_iattr	iattr
+<<<<<<< HEAD
+=======
 =======
 	int		op_truncate;        /* used during processing */
 	struct nfs4_stateowner *op_stateowner; /* used during processing */
@@ -295,6 +341,7 @@ struct nfsd4_open {
 #define op_iattr	iattr
 #define op_verf		verf
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct nfsd4_open_confirm {
 	stateid_t	oc_req_stateid		/* request */;
@@ -302,8 +349,11 @@ struct nfsd4_open_confirm {
 	stateid_t	oc_resp_stateid		/* response */;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct nfs4_stateowner * oc_stateowner;	/* response */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct nfsd4_open_downgrade {
@@ -314,10 +364,16 @@ struct nfsd4_open_downgrade {
 	u32		od_deleg_want;		/* request */
 	u32             od_share_deny;		/* request */
 =======
+<<<<<<< HEAD
+	u32             od_share_access;	/* request */
+	u32		od_deleg_want;		/* request */
+	u32             od_share_deny;		/* request */
+=======
 	u32             od_share_access;
 	u32             od_share_deny;
 	struct nfs4_stateowner *od_stateowner;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -394,9 +450,13 @@ struct nfsd4_setclientid {
 <<<<<<< HEAD
 	struct xdr_netobj se_name;
 =======
+<<<<<<< HEAD
+	struct xdr_netobj se_name;
+=======
 	u32		se_namelen;         /* request */
 	char *		se_name;            /* request */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32		se_callback_prog;   /* request */
 	u32		se_callback_netid_len;  /* request */
 	char *		se_callback_netid_val;  /* request */
@@ -413,6 +473,9 @@ struct nfsd4_setclientid_confirm {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfsd4_saved_compoundargs {
 	__be32 *p;
 	__be32 *end;
@@ -436,8 +499,11 @@ struct nfsd4_free_stateid {
 	__be32		fr_status;          /* response */
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* also used for NVERIFY */
 struct nfsd4_verify {
 	u32		ve_bmval[3];        /* request */
@@ -483,12 +549,18 @@ struct nfsd4_destroy_session {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfsd4_destroy_clientid {
 	clientid_t clientid;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfsd4_reclaim_complete {
 	u32 rca_one_fs;
 };
@@ -539,7 +611,12 @@ struct nfsd4_op {
 		struct nfsd4_test_stateid	test_stateid;
 		struct nfsd4_free_stateid	free_stateid;
 =======
+<<<<<<< HEAD
+		struct nfsd4_test_stateid	test_stateid;
+		struct nfsd4_free_stateid	free_stateid;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} u;
 	struct nfs4_replay *			replay;
 };
@@ -548,7 +625,12 @@ struct nfsd4_op {
 bool nfsd4_cache_this_op(struct nfsd4_op *);
 
 =======
+<<<<<<< HEAD
+bool nfsd4_cache_this_op(struct nfsd4_op *);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfsd4_compoundargs {
 	/* scratch variables for XDR decode */
 	__be32 *			p;
@@ -574,7 +656,11 @@ struct nfsd4_compoundargs {
 <<<<<<< HEAD
 	int				cachetype;
 =======
+<<<<<<< HEAD
+	int				cachetype;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct nfsd4_compoundres {
@@ -603,8 +689,13 @@ static inline bool nfsd4_not_cached(struct nfsd4_compoundres *resp)
 	return !(resp->cstate.slot->sl_flags & NFSD4_SLOT_CACHETHIS)
 		|| nfsd4_is_solo_sequence(resp);
 =======
+<<<<<<< HEAD
+	return !(resp->cstate.slot->sl_flags & NFSD4_SLOT_CACHETHIS)
+		|| nfsd4_is_solo_sequence(resp);
+=======
 	return !resp->cstate.slot->sl_cachethis || nfsd4_is_solo_sequence(resp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define NFS4_SVC_XDRSIZE		sizeof(struct nfsd4_compoundargs)
@@ -633,7 +724,11 @@ int nfs4svc_encode_compoundres(struct svc_rqst *, __be32 *,
 <<<<<<< HEAD
 int nfsd4_check_resp_size(struct nfsd4_compoundres *, u32);
 =======
+<<<<<<< HEAD
+int nfsd4_check_resp_size(struct nfsd4_compoundres *, u32);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void nfsd4_encode_operation(struct nfsd4_compoundres *, struct nfsd4_op *);
 void nfsd4_encode_replay(struct nfsd4_compoundres *resp, struct nfsd4_op *op);
 __be32 nfsd4_encode_fattr(struct svc_fh *fhp, struct svc_export *exp,
@@ -663,7 +758,11 @@ extern __be32 nfsd4_destroy_session(struct svc_rqst *,
 <<<<<<< HEAD
 extern __be32 nfsd4_destroy_clientid(struct svc_rqst *, struct nfsd4_compound_state *, struct nfsd4_destroy_clientid *);
 =======
+<<<<<<< HEAD
+extern __be32 nfsd4_destroy_clientid(struct svc_rqst *, struct nfsd4_compound_state *, struct nfsd4_destroy_clientid *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __be32 nfsd4_reclaim_complete(struct svc_rqst *, struct nfsd4_compound_state *, struct nfsd4_reclaim_complete *);
 extern __be32 nfsd4_process_open1(struct nfsd4_compound_state *,
 		struct nfsd4_open *open);
@@ -672,7 +771,11 @@ extern __be32 nfsd4_process_open2(struct svc_rqst *rqstp,
 <<<<<<< HEAD
 extern void nfsd4_cleanup_open_state(struct nfsd4_open *open, __be32 status);
 =======
+<<<<<<< HEAD
+extern void nfsd4_cleanup_open_state(struct nfsd4_open *open, __be32 status);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __be32 nfsd4_open_confirm(struct svc_rqst *rqstp,
 		struct nfsd4_compound_state *, struct nfsd4_open_confirm *oc);
 extern __be32 nfsd4_close(struct svc_rqst *rqstp,
@@ -696,19 +799,29 @@ nfsd4_release_lockowner(struct svc_rqst *rqstp,
 <<<<<<< HEAD
 extern int nfsd4_release_compoundargs(void *rq, __be32 *p, void *resp);
 =======
+<<<<<<< HEAD
+extern int nfsd4_release_compoundargs(void *rq, __be32 *p, void *resp);
+=======
 extern void nfsd4_release_compoundargs(struct nfsd4_compoundargs *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __be32 nfsd4_delegreturn(struct svc_rqst *rqstp,
 		struct nfsd4_compound_state *, struct nfsd4_delegreturn *dr);
 extern __be32 nfsd4_renew(struct svc_rqst *rqstp,
 			  struct nfsd4_compound_state *, clientid_t *clid);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __be32 nfsd4_test_stateid(struct svc_rqst *rqstp,
 		struct nfsd4_compound_state *, struct nfsd4_test_stateid *test_stateid);
 extern __be32 nfsd4_free_stateid(struct svc_rqst *rqstp,
 		struct nfsd4_compound_state *, struct nfsd4_free_stateid *free_stateid);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*

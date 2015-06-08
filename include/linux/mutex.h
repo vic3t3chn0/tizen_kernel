@@ -18,8 +18,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Simple, straightforward mutexes with strict semantics:
@@ -99,8 +103,12 @@ do {							\
 <<<<<<< HEAD
 static inline void mutex_destroy(struct mutex *lock) {}
 =======
+<<<<<<< HEAD
+static inline void mutex_destroy(struct mutex *lock) {}
+=======
 # define mutex_destroy(mutex)				do { } while (0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_DEBUG_LOCK_ALLOC

@@ -54,8 +54,12 @@ u32 tsi108_csr_vir_base;
 <<<<<<< HEAD
 static struct irq_domain *pci_irq_host;
 =======
+<<<<<<< HEAD
+static struct irq_domain *pci_irq_host;
+=======
 static struct irq_host *pci_irq_host;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern u32 get_vir_csrbase(void);
 extern u32 tsi108_read_reg(u32 reg_offset);
@@ -383,8 +387,12 @@ static struct irq_chip tsi108_pci_irq = {
 <<<<<<< HEAD
 static int pci_irq_host_xlate(struct irq_domain *h, struct device_node *ct,
 =======
+<<<<<<< HEAD
+static int pci_irq_host_xlate(struct irq_domain *h, struct device_node *ct,
+=======
 static int pci_irq_host_xlate(struct irq_host *h, struct device_node *ct,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    const u32 *intspec, unsigned int intsize,
 			    irq_hw_number_t *out_hwirq, unsigned int *out_flags)
 {
@@ -396,8 +404,12 @@ static int pci_irq_host_xlate(struct irq_host *h, struct device_node *ct,
 <<<<<<< HEAD
 static int pci_irq_host_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int pci_irq_host_map(struct irq_domain *h, unsigned int virq,
+=======
 static int pci_irq_host_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  irq_hw_number_t hw)
 {	unsigned int irq;
 	DBG("%s(%d, 0x%lx)\n", __func__, virq, hw);
@@ -412,8 +424,12 @@ static int pci_irq_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static struct irq_domain_ops pci_irq_domain_ops = {
 =======
+<<<<<<< HEAD
+static struct irq_domain_ops pci_irq_domain_ops = {
+=======
 static struct irq_host_ops pci_irq_host_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map = pci_irq_host_map,
 	.xlate = pci_irq_host_xlate,
 };
@@ -440,11 +456,17 @@ void __init tsi108_pci_int_init(struct device_node *node)
 	if (pci_irq_host == NULL) {
 		printk(KERN_ERR "pci_irq_host: failed to allocate irq domain!\n");
 =======
+<<<<<<< HEAD
+	pci_irq_host = irq_domain_add_legacy_isa(node, &pci_irq_domain_ops, NULL);
+	if (pci_irq_host == NULL) {
+		printk(KERN_ERR "pci_irq_host: failed to allocate irq domain!\n");
+=======
 	pci_irq_host = irq_alloc_host(node, IRQ_HOST_MAP_LEGACY,
 				      0, &pci_irq_host_ops, 0);
 	if (pci_irq_host == NULL) {
 		printk(KERN_ERR "pci_irq_host: failed to allocate irq host !\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 

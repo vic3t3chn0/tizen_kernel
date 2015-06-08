@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/sn/addrs.h>
 #include <asm/sn/geo.h>
 #include <asm/sn/pcibr_provider.h>
@@ -133,16 +137,23 @@ pcibr_bus_fixup(struct pcibus_bussoft *prom_bussoft, struct pci_controller *cont
 <<<<<<< HEAD
 	soft = kmemdup(prom_bussoft, sizeof(struct pcibus_info), GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	soft = kmemdup(prom_bussoft, sizeof(struct pcibus_info), GFP_KERNEL);
+=======
 	soft = kmalloc(sizeof(struct pcibus_info), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!soft) {
 		return NULL;
 	}
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memcpy(soft, prom_bussoft, sizeof(struct pcibus_info));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	soft->pbi_buscommon.bs_base = (unsigned long)
 		ioremap(REGION_OFFSET(soft->pbi_buscommon.bs_base),
 			sizeof(struct pic));
@@ -160,7 +171,11 @@ pcibr_bus_fixup(struct pcibus_bussoft *prom_bussoft, struct pci_controller *cont
 <<<<<<< HEAD
 	irq_set_handler(SGI_PCIASIC_ERROR, handle_level_irq);
 =======
+<<<<<<< HEAD
+	irq_set_handler(SGI_PCIASIC_ERROR, handle_level_irq);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sn_set_err_irq_affinity(SGI_PCIASIC_ERROR);
 
 	/* 

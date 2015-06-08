@@ -46,8 +46,11 @@ struct crypto_rfc4543_req_ctx {
 	u8 auth_tag[16];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u8 assocbuf[32];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct scatterlist cipher[1];
 	struct scatterlist payload[2];
 	struct scatterlist assoc[2];
@@ -1151,6 +1154,11 @@ static struct aead_request *crypto_rfc4543_crypt(struct aead_request *req,
 	sg_set_page(assoc, sg_page(req->assoc), req->assoc->length,
 		    req->assoc->offset);
 =======
+<<<<<<< HEAD
+	sg_init_table(assoc, 2);
+	sg_set_page(assoc, sg_page(req->assoc), req->assoc->length,
+		    req->assoc->offset);
+=======
 	if (req->assoc->length == req->assoclen) {
 		sg_init_table(assoc, 2);
 		sg_set_page(assoc, sg_page(req->assoc), req->assoc->length,
@@ -1165,6 +1173,7 @@ static struct aead_request *crypto_rfc4543_crypt(struct aead_request *req,
 		sg_set_buf(assoc, rctx->assocbuf, req->assoclen);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	scatterwalk_crypto_chain(assoc, payload, 0, 2);
 
 	aead_request_set_tfm(subreq, ctx->child);

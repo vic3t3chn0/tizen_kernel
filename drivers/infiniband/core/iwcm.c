@@ -45,6 +45,13 @@
 #include <linux/workqueue.h>
 #include <linux/completion.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <rdma/iw_cm.h>
 #include <rdma/ib_addr.h>
@@ -623,6 +630,11 @@ static void cm_conn_req_handler(struct iwcm_id_private *listen_id_priv,
 	 */
 	BUG_ON(iw_event->status);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We could be destroying the listening id. If so, ignore this
 	 * upcall.
@@ -634,6 +646,10 @@ static void cm_conn_req_handler(struct iwcm_id_private *listen_id_priv,
 	}
 	spin_unlock_irqrestore(&listen_id_priv->lock, flags);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cm_id = iw_create_cm_id(listen_id_priv->id.device,
 				listen_id_priv->id.cm_handler,
 				listen_id_priv->id.context);
@@ -648,6 +664,25 @@ static void cm_conn_req_handler(struct iwcm_id_private *listen_id_priv,
 	cm_id_priv = container_of(cm_id, struct iwcm_id_private, id);
 	cm_id_priv->state = IW_CM_STATE_CONN_RECV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * We could be destroying the listening id. If so, ignore this
+	 * upcall.
+	 */
+	spin_lock_irqsave(&listen_id_priv->lock, flags);
+	if (listen_id_priv->state != IW_CM_STATE_LISTEN) {
+		spin_unlock_irqrestore(&listen_id_priv->lock, flags);
+		iw_cm_reject(cm_id, NULL, 0);
+		iw_destroy_cm_id(cm_id);
+		goto out;
+	}
+	spin_unlock_irqrestore(&listen_id_priv->lock, flags);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = alloc_work_entries(cm_id_priv, 3);
 	if (ret) {
 		iw_cm_reject(cm_id, NULL, 0);

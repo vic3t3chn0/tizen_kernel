@@ -56,18 +56,24 @@ enum s5m8767_regulators {
 	S5M8767_CP_EN32KHZ,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	S5M8767_BT_EN32KHZ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	S5M8767_REG_MAX,
 };
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #define S5M8767_PMIC_EN_SHIFT	6
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* S5M8763 regulator ids */
 enum s5m8763_regulators {
 	S5M8763_LDO1,
@@ -109,6 +115,8 @@ struct s5m_regulator_data {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct s5m_opmode_data {
 	int id;
 	int mode;
@@ -121,4 +129,5 @@ enum s5m_opmode {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /*  __LINUX_MFD_S5M_PMIC_H */

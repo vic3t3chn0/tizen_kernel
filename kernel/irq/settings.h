@@ -13,6 +13,13 @@ enum {
 	_IRQ_MOVE_PCNTXT	= IRQ_MOVE_PCNTXT,
 	_IRQ_NO_BALANCING	= IRQ_NO_BALANCING,
 	_IRQ_NESTED_THREAD	= IRQ_NESTED_THREAD,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	_IRQ_PER_CPU_DEVID	= IRQ_PER_CPU_DEVID,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_IRQF_MODIFY_MASK	= IRQF_MODIFY_MASK,
 };
 
@@ -24,6 +31,13 @@ enum {
 #define IRQ_NOTHREAD		GOT_YOU_MORON
 #define IRQ_NOAUTOEN		GOT_YOU_MORON
 #define IRQ_NESTED_THREAD	GOT_YOU_MORON
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define IRQ_PER_CPU_DEVID	GOT_YOU_MORON
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #undef IRQF_MODIFY_MASK
 #define IRQF_MODIFY_MASK	GOT_YOU_MORON
 
@@ -39,6 +53,17 @@ static inline bool irq_settings_is_per_cpu(struct irq_desc *desc)
 	return desc->status_use_accessors & _IRQ_PER_CPU;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline bool irq_settings_is_per_cpu_devid(struct irq_desc *desc)
+{
+	return desc->status_use_accessors & _IRQ_PER_CPU_DEVID;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void irq_settings_set_per_cpu(struct irq_desc *desc)
 {
 	desc->status_use_accessors |= _IRQ_PER_CPU;

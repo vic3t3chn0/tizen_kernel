@@ -22,7 +22,12 @@
 #include <linux/ctype.h>
 #include <linux/zlib.h>
 =======
+<<<<<<< HEAD
+#include <linux/ctype.h>
+#include <linux/zlib.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/nvram.h>
 #include <asm/rtas.h>
@@ -84,6 +89,9 @@ static struct kmsg_dumper nvram_kmsg_dumper = {
 static unsigned long last_unread_rtas_event;	/* timestamp */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * For capturing and compressing an oops or panic report...
 
@@ -119,10 +127,13 @@ static size_t oops_data_sz;
 #define WINDOW_BITS 12
 #define MEM_LEVEL 4
 static struct z_stream_s stream;
+<<<<<<< HEAD
+=======
 =======
 /* We preallocate oops_buf during init to avoid kmalloc during oops/panic. */
 static char *oops_buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static ssize_t pSeries_nvram_read(char *buf, size_t count, loff_t *index)
 {
@@ -431,6 +442,9 @@ static void __init nvram_init_oops_partition(int rtas_partition_exists)
 	}
 	oops_buf = kmalloc(oops_log_partition.size, GFP_KERNEL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!oops_buf) {
 		pr_err("nvram: No memory for %s partition\n",
 						oops_log_partition.name);
@@ -463,8 +477,11 @@ static void __init nvram_init_oops_partition(int rtas_partition_exists)
 		stream.workspace = NULL;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = kmsg_dump_register(&nvram_kmsg_dumper);
 	if (rc != 0) {
 		pr_err("nvram: kmsg_dump_register() failed; returned %d\n", rc);
@@ -473,8 +490,13 @@ static void __init nvram_init_oops_partition(int rtas_partition_exists)
 		kfree(big_oops_buf);
 		kfree(stream.workspace);
 =======
+<<<<<<< HEAD
+		kfree(big_oops_buf);
+		kfree(stream.workspace);
+=======
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -557,6 +579,9 @@ static int clobbering_unread_rtas_event(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Squeeze out each line's <n> severity prefix. */
 static size_t elide_severities(char *buf, size_t len)
 {
@@ -634,9 +659,12 @@ static int zip_oops(size_t text_len)
  * that we think will compress sufficiently to fit in the lnx,oops-log
  * partition.  If that's too much, go back and capture uncompressed text.
  */
+<<<<<<< HEAD
+=======
 =======
 /* our kmsg_dump callback */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void oops_to_nvram(struct kmsg_dumper *dumper,
 		enum kmsg_dump_reason reason,
 		const char *old_msgs, unsigned long old_len,
@@ -645,14 +673,20 @@ static void oops_to_nvram(struct kmsg_dumper *dumper,
 	static unsigned int oops_count = 0;
 	static bool panicking = false;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static DEFINE_SPINLOCK(lock);
 	unsigned long flags;
 	size_t text_len;
 	unsigned int err_type = ERR_TYPE_KERNEL_PANIC_GZ;
 	int rc = -1;
+<<<<<<< HEAD
+=======
 =======
 	size_t text_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (reason) {
 	case KMSG_DUMP_RESTART:
@@ -663,8 +697,11 @@ static void oops_to_nvram(struct kmsg_dumper *dumper,
 	case KMSG_DUMP_OOPS:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	case KMSG_DUMP_KEXEC:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case KMSG_DUMP_PANIC:
 		panicking = true;
@@ -684,6 +721,9 @@ static void oops_to_nvram(struct kmsg_dumper *dumper,
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!spin_trylock_irqsave(&lock, flags))
 		return;
 
@@ -704,10 +744,13 @@ static void oops_to_nvram(struct kmsg_dumper *dumper,
 		(int) (sizeof(*oops_len) + *oops_len), err_type, ++oops_count);
 
 	spin_unlock_irqrestore(&lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	text_len = capture_last_msgs(old_msgs, old_len, new_msgs, new_len,
 					oops_buf, oops_log_partition.size);
 	(void) nvram_write_os_partition(&oops_log_partition, oops_buf,
 		(int) text_len, ERR_TYPE_KERNEL_PANIC, ++oops_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

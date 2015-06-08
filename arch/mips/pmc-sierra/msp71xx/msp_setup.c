@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <asm/smp-ops.h>
 =======
+<<<<<<< HEAD
+#include <asm/smp-ops.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 
 #include <msp_prom.h>
@@ -215,8 +219,12 @@ void __init prom_init(void)
 <<<<<<< HEAD
 		panic("***Bogosity factor five***, exiting");
 =======
+<<<<<<< HEAD
+		panic("***Bogosity factor five***, exiting");
+=======
 		panic("***Bogosity factor five***, exiting\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -237,11 +245,16 @@ void __init prom_init(void)
 	msp_serial_setup();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (register_vsmp_smp_ops()) {
 #ifdef CONFIG_MIPS_MT_SMTC
 		register_smp_ops(&msp_smtc_smp_ops);
 #endif
 	}
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_MIPS_MT_SMP
 	register_smp_ops(&vsmp_smp_ops);
@@ -251,6 +264,7 @@ void __init prom_init(void)
 	register_smp_ops(&msp_smtc_smp_ops);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PMCTWILED
 	/*

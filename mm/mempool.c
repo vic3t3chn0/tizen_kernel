@@ -13,8 +13,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mempool.h>
 #include <linux/blkdev.h>
 #include <linux/writeback.h>
@@ -32,6 +36,9 @@ static void *remove_element(mempool_t *pool)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mempool_destroy - deallocate a memory pool
  * @pool:      pointer to the memory pool which was allocated via
@@ -41,9 +48,12 @@ static void *remove_element(mempool_t *pool)
  * only sleeps if the free_fn() function sleeps.
  */
 void mempool_destroy(mempool_t *pool)
+<<<<<<< HEAD
+=======
 =======
 static void free_pool(mempool_t *pool)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	while (pool->curr_nr) {
 		void *element = remove_element(pool);
@@ -55,7 +65,11 @@ static void free_pool(mempool_t *pool)
 <<<<<<< HEAD
 EXPORT_SYMBOL(mempool_destroy);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(mempool_destroy);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * mempool_create - create a memory pool
@@ -109,8 +123,12 @@ mempool_t *mempool_create_node(int min_nr, mempool_alloc_t *alloc_fn,
 <<<<<<< HEAD
 			mempool_destroy(pool);
 =======
+<<<<<<< HEAD
+			mempool_destroy(pool);
+=======
 			free_pool(pool);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return NULL;
 		}
 		add_element(pool, element);
@@ -198,6 +216,8 @@ EXPORT_SYMBOL(mempool_resize);
 /**
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * mempool_destroy - deallocate a memory pool
  * @pool:      pointer to the memory pool which was allocated via
  *             mempool_create().
@@ -216,6 +236,7 @@ EXPORT_SYMBOL(mempool_destroy);
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * mempool_alloc - allocate an element from a specific memory pool
  * @pool:      pointer to the memory pool which was allocated via
  *             mempool_create().
@@ -252,6 +273,9 @@ repeat_alloc:
 		element = remove_element(pool);
 		spin_unlock_irqrestore(&pool->lock, flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* paired with rmb in mempool_free(), read comment there */
 		smp_wmb();
 		return element;
@@ -286,6 +310,8 @@ repeat_alloc:
 	io_schedule_timeout(5*HZ);
 
 	finish_wait(&pool->wait, &wait);
+<<<<<<< HEAD
+=======
 =======
 		return element;
 	}
@@ -310,6 +336,7 @@ repeat_alloc:
 	finish_wait(&pool->wait, &wait);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	goto repeat_alloc;
 }
 EXPORT_SYMBOL(mempool_alloc);
@@ -330,6 +357,9 @@ void mempool_free(void *element, mempool_t *pool)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Paired with the wmb in mempool_alloc().  The preceding read is
 	 * for @element and the following @pool->curr_nr.  This ensures
@@ -363,9 +393,12 @@ void mempool_free(void *element, mempool_t *pool)
 	 * ensures that there will be frees which return elements to the
 	 * pool waking up the waiters.
 	 */
+<<<<<<< HEAD
+=======
 =======
 	smp_mb();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pool->curr_nr < pool->min_nr) {
 		spin_lock_irqsave(&pool->lock, flags);
 		if (pool->curr_nr < pool->min_nr) {

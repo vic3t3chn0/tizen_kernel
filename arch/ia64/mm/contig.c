@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/memblock.h>
 =======
+<<<<<<< HEAD
+#include <linux/memblock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/nmi.h>
 #include <linux/swap.h>
@@ -355,8 +359,12 @@ paging_init (void)
 <<<<<<< HEAD
 	memblock_add_node(0, PFN_PHYS(max_low_pfn), 0);
 =======
+<<<<<<< HEAD
+	memblock_add_node(0, PFN_PHYS(max_low_pfn), 0);
+=======
 	add_active_range(0, 0, max_low_pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_area_init_nodes(max_zone_pfns);
 #endif /* !CONFIG_VIRTUAL_MEM_MAP */
 	zero_page_memmap_ptr = virt_to_page(ia64_imva(empty_zero_page));

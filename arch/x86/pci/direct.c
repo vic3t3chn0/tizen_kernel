@@ -25,8 +25,12 @@ static int pci_conf1_read(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	if (seg || (bus > 255) || (devfn > 255) || (reg > 4095)) {
 =======
+<<<<<<< HEAD
+	if (seg || (bus > 255) || (devfn > 255) || (reg > 4095)) {
+=======
 	if ((bus > 255) || (devfn > 255) || (reg > 4095)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*value = -1;
 		return -EINVAL;
 	}
@@ -60,8 +64,12 @@ static int pci_conf1_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	if (seg || (bus > 255) || (devfn > 255) || (reg > 4095))
 =======
+<<<<<<< HEAD
+	if (seg || (bus > 255) || (devfn > 255) || (reg > 4095))
+=======
 	if ((bus > 255) || (devfn > 255) || (reg > 4095))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	raw_spin_lock_irqsave(&pci_config_lock, flags);
@@ -90,8 +98,12 @@ static int pci_conf1_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 const struct pci_raw_ops pci_direct_conf1 = {
 =======
+<<<<<<< HEAD
+const struct pci_raw_ops pci_direct_conf1 = {
+=======
 struct pci_raw_ops pci_direct_conf1 = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read =		pci_conf1_read,
 	.write =	pci_conf1_write,
 };
@@ -112,7 +124,11 @@ static int pci_conf2_read(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	WARN_ON(seg);
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((bus > 255) || (devfn > 255) || (reg > 255)) {
 		*value = -1;
 		return -EINVAL;
@@ -157,7 +173,11 @@ static int pci_conf2_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	WARN_ON(seg);
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((bus > 255) || (devfn > 255) || (reg > 255)) 
 		return -EINVAL;
 
@@ -196,8 +216,12 @@ static int pci_conf2_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 static const struct pci_raw_ops pci_direct_conf2 = {
 =======
+<<<<<<< HEAD
+static const struct pci_raw_ops pci_direct_conf2 = {
+=======
 struct pci_raw_ops pci_direct_conf2 = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read =		pci_conf2_read,
 	.write =	pci_conf2_write,
 };
@@ -216,8 +240,12 @@ struct pci_raw_ops pci_direct_conf2 = {
 <<<<<<< HEAD
 static int __init pci_sanity_check(const struct pci_raw_ops *o)
 =======
+<<<<<<< HEAD
+static int __init pci_sanity_check(const struct pci_raw_ops *o)
+=======
 static int __init pci_sanity_check(struct pci_raw_ops *o)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 x = 0;
 	int year, devfn;

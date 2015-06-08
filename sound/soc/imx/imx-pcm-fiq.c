@@ -239,6 +239,9 @@ static struct snd_pcm_ops imx_pcm_ops = {
 static int ssi_irq = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int imx_pcm_fiq_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_pcm *pcm = rtd->pcm;
@@ -251,6 +254,8 @@ static int imx_pcm_fiq_new(struct snd_soc_pcm_runtime *rtd)
 
 	substream = pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream;
 	if (substream) {
+<<<<<<< HEAD
+=======
 =======
 static int imx_pcm_fiq_new(struct snd_card *card, struct snd_soc_dai *dai,
 	struct snd_pcm *pcm)
@@ -265,6 +270,7 @@ static int imx_pcm_fiq_new(struct snd_card *card, struct snd_soc_dai *dai,
 		struct snd_pcm_substream *substream =
 			pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct snd_dma_buffer *buf = &substream->dma_buffer;
 
 		imx_ssi_fiq_tx_buffer = (unsigned long)buf->area;
@@ -274,10 +280,15 @@ static int imx_pcm_fiq_new(struct snd_card *card, struct snd_soc_dai *dai,
 	substream = pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream;
 	if (substream) {
 =======
+<<<<<<< HEAD
+	substream = pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream;
+	if (substream) {
+=======
 	if (dai->driver->capture.channels_min) {
 		struct snd_pcm_substream *substream =
 			pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct snd_dma_buffer *buf = &substream->dma_buffer;
 
 		imx_ssi_fiq_rx_buffer = (unsigned long)buf->area;
@@ -357,6 +368,11 @@ module_platform_driver(imx_pcm_driver);
 
 MODULE_LICENSE("GPL");
 =======
+<<<<<<< HEAD
+module_platform_driver(imx_pcm_driver);
+
+MODULE_LICENSE("GPL");
+=======
 static int __init snd_imx_pcm_init(void)
 {
 	return platform_driver_register(&imx_pcm_driver);
@@ -369,3 +385,4 @@ static void __exit snd_imx_pcm_exit(void)
 }
 module_exit(snd_imx_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

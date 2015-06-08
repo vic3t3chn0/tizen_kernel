@@ -272,10 +272,16 @@ enum {
 #define DM_VERSION_PATCHLEVEL	0
 #define DM_VERSION_EXTRA	"-ioctl (2011-10-19)"
 =======
+<<<<<<< HEAD
+#define DM_VERSION_MINOR	22
+#define DM_VERSION_PATCHLEVEL	0
+#define DM_VERSION_EXTRA	"-ioctl (2011-10-19)"
+=======
 #define DM_VERSION_MINOR	20
 #define DM_VERSION_PATCHLEVEL	0
 #define DM_VERSION_EXTRA	"-ioctl (2011-02-02)"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Status bits */
 #define DM_READONLY_FLAG	(1 << 0) /* In/Out */

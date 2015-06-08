@@ -18,8 +18,16 @@
 #include <linux/interrupt.h>
 #include <linux/delay.h>
 #include <linux/device.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/cpu.h>
 #include <linux/module.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/cpu.h>
+#include <linux/module.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/err.h>
 #include <linux/slab.h>
 #include <asm/uv/uv_hub.h>
@@ -61,8 +69,16 @@ static struct xpc_heartbeat_uv *xpc_heartbeat_uv;
 					 XPC_NOTIFY_MSG_SIZE_UV)
 #define XPC_NOTIFY_IRQ_NAME		"xpc_notify"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static int xpc_mq_node = -1;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int xpc_mq_node = -1;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct xpc_gru_mq_uv *xpc_activate_mq_uv;
 static struct xpc_gru_mq_uv *xpc_notify_mq_uv;
 
@@ -113,8 +129,21 @@ xpc_get_gru_mq_irq_uv(struct xpc_gru_mq_uv *mq, int cpu, char *irq_name)
 #if defined CONFIG_X86_64
 	mq->irq = uv_setup_irq(irq_name, cpu, mq->mmr_blade, mq->mmr_offset,
 			UV_AFFINITY_CPU);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (mq->irq < 0) {
+		dev_err(xpc_part, "uv_setup_irq() returned error=%d\n",
+			-mq->irq);
+		return mq->irq;
+	}
+=======
 	if (mq->irq < 0)
 		return mq->irq;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (mq->irq < 0)
+		return mq->irq;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mq->mmr_value = uv_read_global_mmr64(mmr_pnode, mq->mmr_offset);
 
@@ -239,9 +268,20 @@ xpc_create_gru_mq_uv(unsigned int mq_size, int cpu, char *irq_name,
 	mq->mmr_blade = uv_cpu_to_blade_id(cpu);
 
 	nid = cpu_to_node(cpu);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	page = alloc_pages_exact_node(nid, GFP_KERNEL | __GFP_ZERO | GFP_THISNODE,
+				pg_order);
+=======
 	page = alloc_pages_exact_node(nid,
 				      GFP_KERNEL | __GFP_ZERO | GFP_THISNODE,
 				      pg_order);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	page = alloc_pages_exact_node(nid,
+				      GFP_KERNEL | __GFP_ZERO | GFP_THISNODE,
+				      pg_order);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (page == NULL) {
 		dev_err(xpc_part, "xpc_create_gru_mq_uv() failed to alloc %d "
 			"bytes of memory on nid=%d for GRU mq\n", mq_size, nid);
@@ -1733,6 +1773,14 @@ static struct xpc_arch_operations xpc_arch_ops_uv = {
 	.notify_senders_of_disconnect = xpc_notify_senders_of_disconnect_uv,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int
+xpc_init_uv(void)
+{
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 xpc_init_mq_node(int nid)
 {
@@ -1777,6 +1825,10 @@ xpc_init_uv(void)
 	int nid;
 	int ret = 0;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xpc_arch_ops = xpc_arch_ops_uv;
 
 	if (sizeof(struct xpc_notify_mq_msghdr_uv) > XPC_MSG_HDR_MAX_SIZE) {
@@ -1785,6 +1837,26 @@ xpc_init_uv(void)
 		return -E2BIG;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	xpc_activate_mq_uv = xpc_create_gru_mq_uv(XPC_ACTIVATE_MQ_SIZE_UV, 0,
+						  XPC_ACTIVATE_IRQ_NAME,
+						  xpc_handle_activate_IRQ_uv);
+	if (IS_ERR(xpc_activate_mq_uv))
+		return PTR_ERR(xpc_activate_mq_uv);
+
+	xpc_notify_mq_uv = xpc_create_gru_mq_uv(XPC_NOTIFY_MQ_SIZE_UV, 0,
+						XPC_NOTIFY_IRQ_NAME,
+						xpc_handle_notify_IRQ_uv);
+	if (IS_ERR(xpc_notify_mq_uv)) {
+		xpc_destroy_gru_mq_uv(xpc_activate_mq_uv);
+		return PTR_ERR(xpc_notify_mq_uv);
+	}
+
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (xpc_mq_node < 0)
 		for_each_online_node(nid) {
 			ret = xpc_init_mq_node(nid);
@@ -1800,6 +1872,10 @@ xpc_init_uv(void)
 			-ret);
 
 	return ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void
@@ -1808,6 +1884,15 @@ xpc_exit_uv(void)
 	xpc_destroy_gru_mq_uv(xpc_notify_mq_uv);
 	xpc_destroy_gru_mq_uv(xpc_activate_mq_uv);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_param(xpc_mq_node, int, 0);
 MODULE_PARM_DESC(xpc_mq_node, "Node number on which to allocate message queues.");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_param(xpc_mq_node, int, 0);
+MODULE_PARM_DESC(xpc_mq_node, "Node number on which to allocate message queues.");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

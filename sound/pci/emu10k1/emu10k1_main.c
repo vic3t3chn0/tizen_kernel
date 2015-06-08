@@ -38,7 +38,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/pci.h>
 #include <linux/slab.h>
@@ -1421,6 +1425,8 @@ static struct snd_emu_chip_details emu_chip_details[] = {
 	 .emu_model = EMU_MODEL_EMU1010B}, /* EMU 1010 new revision */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Tested by Maxim Kachur <mcdebugger@duganet.ru> 17th Oct 2012. */
 	/* This is MAEM8986, 0202 is MAEM8980 */
 	{.vendor = 0x1102, .device = 0x0008, .subsystem = 0x40071102,
@@ -1431,6 +1437,7 @@ static struct snd_emu_chip_details emu_chip_details[] = {
 	 .spk71 = 1,
 	 .emu_model = EMU_MODEL_EMU1010B}, /* EMU 1010 PCIe */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Tested by James@superbug.co.uk 8th July 2005. */
 	/* This is MAEM8810, 0202 is MAEM8820 */
 	{.vendor = 0x1102, .device = 0x0004, .subsystem = 0x40011102,
@@ -1496,6 +1503,9 @@ static struct snd_emu_chip_details emu_chip_details[] = {
 	 .invert_shared_spdif = 1,	/* digital/analog switch swapped */
 	 .ac97_chip = 1} ,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* 0x20051102 also has SB0350 written on it, treated as Audigy 2 ZS by
 	   Creative's Windows driver */
 	{.vendor = 0x1102, .device = 0x0004, .subsystem = 0x20051102,
@@ -1508,8 +1518,11 @@ static struct snd_emu_chip_details emu_chip_details[] = {
 	 .spdif_bug = 1,
 	 .invert_shared_spdif = 1,	/* digital/analog switch swapped */
 	 .ac97_chip = 1} ,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{.vendor = 0x1102, .device = 0x0004, .subsystem = 0x20021102,
 	 .driver = "Audigy2", .name = "SB Audigy 2 ZS [SB0350]",
 	 .id = "Audigy2",
@@ -1946,8 +1959,12 @@ int __devinit snd_emu10k1_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, emu)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, emu)) {
+=======
 			"EMU10K1", emu)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -EBUSY;
 		goto error;
 	}

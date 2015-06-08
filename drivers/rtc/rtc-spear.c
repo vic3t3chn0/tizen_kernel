@@ -77,9 +77,23 @@
 #define STATUS_FAIL		(LOST_WR_TIME | LOST_WR_DATE)
 
 struct spear_rtc_config {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct rtc_device *rtc;
 	struct clk *clk;
 	spinlock_t lock;
 	void __iomem *ioaddr;
+	unsigned int irq_wake;
+=======
+	struct clk *clk;
+	spinlock_t lock;
+	void __iomem *ioaddr;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct clk *clk;
+	spinlock_t lock;
+	void __iomem *ioaddr;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void spear_rtc_clear_interrupt(struct spear_rtc_config *config)
@@ -149,8 +163,17 @@ static void rtc_wait_not_busy(struct spear_rtc_config *config)
 
 static irqreturn_t spear_rtc_irq(int irq, void *dev_id)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = dev_id;
+=======
 	struct rtc_device *rtc = (struct rtc_device *)dev_id;
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct rtc_device *rtc = (struct rtc_device *)dev_id;
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags, events = 0;
 	unsigned int irq_data;
 
@@ -161,7 +184,15 @@ static irqreturn_t spear_rtc_irq(int irq, void *dev_id)
 	if ((irq_data & RTC_INT_MASK)) {
 		spear_rtc_clear_interrupt(config);
 		events = RTC_IRQF | RTC_AF;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rtc_update_irq(config->rtc, 1, events);
+=======
 		rtc_update_irq(rtc, 1, events);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rtc_update_irq(rtc, 1, events);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return IRQ_HANDLED;
 	} else
 		return IRQ_NONE;
@@ -203,9 +234,19 @@ static void bcd2tm(struct rtc_time *tm)
  */
 static int spear_rtc_read_time(struct device *dev, struct rtc_time *tm)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = dev_get_drvdata(dev);
+=======
 	struct platform_device *pdev = to_platform_device(dev);
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct platform_device *pdev = to_platform_device(dev);
+	struct rtc_device *rtc = platform_get_drvdata(pdev);
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int time, date;
 
 	/* we don't report wday/yday/isdst ... */
@@ -234,9 +275,19 @@ static int spear_rtc_read_time(struct device *dev, struct rtc_time *tm)
  */
 static int spear_rtc_set_time(struct device *dev, struct rtc_time *tm)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = dev_get_drvdata(dev);
+=======
 	struct platform_device *pdev = to_platform_device(dev);
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct platform_device *pdev = to_platform_device(dev);
+	struct rtc_device *rtc = platform_get_drvdata(pdev);
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int time, date, err = 0;
 
 	if (tm2bcd(tm) < 0)
@@ -266,9 +317,19 @@ static int spear_rtc_set_time(struct device *dev, struct rtc_time *tm)
  */
 static int spear_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = dev_get_drvdata(dev);
+=======
 	struct platform_device *pdev = to_platform_device(dev);
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct platform_device *pdev = to_platform_device(dev);
+	struct rtc_device *rtc = platform_get_drvdata(pdev);
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int time, date;
 
 	rtc_wait_not_busy(config);
@@ -298,9 +359,19 @@ static int spear_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
  */
 static int spear_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = dev_get_drvdata(dev);
+=======
 	struct platform_device *pdev = to_platform_device(dev);
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct platform_device *pdev = to_platform_device(dev);
+	struct rtc_device *rtc = platform_get_drvdata(pdev);
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int time, date, err = 0;
 
 	if (tm2bcd(&alm->time) < 0)
@@ -326,17 +397,62 @@ static int spear_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
 
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+static int spear_alarm_irq_enable(struct device *dev, unsigned int enabled)
+{
+	struct spear_rtc_config *config = dev_get_drvdata(dev);
+	int ret = 0;
+
+	spear_rtc_clear_interrupt(config);
+
+	switch (enabled) {
+	case 0:
+		/* alarm off */
+		spear_rtc_disable_interrupt(config);
+		break;
+	case 1:
+		/* alarm on */
+		spear_rtc_enable_interrupt(config);
+		break;
+	default:
+		ret = -EINVAL;
+		break;
+	}
+
+	return ret;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct rtc_class_ops spear_rtc_ops = {
 	.read_time = spear_rtc_read_time,
 	.set_time = spear_rtc_set_time,
 	.read_alarm = spear_rtc_read_alarm,
 	.set_alarm = spear_rtc_set_alarm,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.alarm_irq_enable = spear_alarm_irq_enable,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __devinit spear_rtc_probe(struct platform_device *pdev)
 {
 	struct resource *res;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct rtc_device *rtc;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct rtc_device *rtc;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct spear_rtc_config *config;
 	unsigned int status = 0;
 	int irq;
@@ -376,6 +492,22 @@ static int __devinit spear_rtc_probe(struct platform_device *pdev)
 	}
 
 	spin_lock_init(&config->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	platform_set_drvdata(pdev, config);
+
+	config->rtc = rtc_device_register(pdev->name, &pdev->dev,
+			&spear_rtc_ops, THIS_MODULE);
+	if (IS_ERR(config->rtc)) {
+		dev_err(&pdev->dev, "can't register RTC device, err %ld\n",
+				PTR_ERR(config->rtc));
+		status = PTR_ERR(config->rtc);
+		goto err_iounmap;
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rtc = rtc_device_register(pdev->name, &pdev->dev, &spear_rtc_ops,
 			THIS_MODULE);
@@ -389,6 +521,10 @@ static int __devinit spear_rtc_probe(struct platform_device *pdev)
 	platform_set_drvdata(pdev, rtc);
 	dev_set_drvdata(&rtc->dev, config);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* alarm irqs */
 	irq = platform_get_irq(pdev, 0);
 	if (irq < 0) {
@@ -397,7 +533,15 @@ static int __devinit spear_rtc_probe(struct platform_device *pdev)
 		goto err_clear_platdata;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = request_irq(irq, spear_rtc_irq, 0, pdev->name, config);
+=======
 	status = request_irq(irq, spear_rtc_irq, 0, pdev->name, rtc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	status = request_irq(irq, spear_rtc_irq, 0, pdev->name, rtc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status) {
 		dev_err(&pdev->dev, "Alarm interrupt IRQ%d already \
 				claimed\n", irq);
@@ -411,8 +555,17 @@ static int __devinit spear_rtc_probe(struct platform_device *pdev)
 
 err_clear_platdata:
 	platform_set_drvdata(pdev, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rtc_device_unregister(config->rtc);
+=======
 	dev_set_drvdata(&rtc->dev, NULL);
 	rtc_device_unregister(rtc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_set_drvdata(&rtc->dev, NULL);
+	rtc_device_unregister(rtc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_iounmap:
 	iounmap(config->ioaddr);
 err_disable_clock:
@@ -429,8 +582,17 @@ err_release_region:
 
 static int __devexit spear_rtc_remove(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = platform_get_drvdata(pdev);
+=======
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct rtc_device *rtc = platform_get_drvdata(pdev);
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int irq;
 	struct resource *res;
 
@@ -448,8 +610,17 @@ static int __devexit spear_rtc_remove(struct platform_device *pdev)
 	if (res)
 		release_mem_region(res->start, resource_size(res));
 	platform_set_drvdata(pdev, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rtc_device_unregister(config->rtc);
+=======
 	dev_set_drvdata(&rtc->dev, NULL);
 	rtc_device_unregister(rtc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_set_drvdata(&rtc->dev, NULL);
+	rtc_device_unregister(rtc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -458,6 +629,19 @@ static int __devexit spear_rtc_remove(struct platform_device *pdev)
 
 static int spear_rtc_suspend(struct platform_device *pdev, pm_message_t state)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = platform_get_drvdata(pdev);
+	int irq;
+
+	irq = platform_get_irq(pdev, 0);
+	if (device_may_wakeup(&pdev->dev)) {
+		if (!enable_irq_wake(irq))
+			config->irq_wake = 1;
+	} else {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
 	int irq;
@@ -466,6 +650,10 @@ static int spear_rtc_suspend(struct platform_device *pdev, pm_message_t state)
 	if (device_may_wakeup(&pdev->dev))
 		enable_irq_wake(irq);
 	else {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spear_rtc_disable_interrupt(config);
 		clk_disable(config->clk);
 	}
@@ -475,15 +663,39 @@ static int spear_rtc_suspend(struct platform_device *pdev, pm_message_t state)
 
 static int spear_rtc_resume(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = platform_get_drvdata(pdev);
+=======
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct rtc_device *rtc = platform_get_drvdata(pdev);
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int irq;
 
 	irq = platform_get_irq(pdev, 0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (device_may_wakeup(&pdev->dev)) {
+		if (config->irq_wake) {
+			disable_irq_wake(irq);
+			config->irq_wake = 0;
+		}
+	} else {
+=======
 	if (device_may_wakeup(&pdev->dev))
 		disable_irq_wake(irq);
 	else {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (device_may_wakeup(&pdev->dev))
+		disable_irq_wake(irq);
+	else {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clk_enable(config->clk);
 		spear_rtc_enable_interrupt(config);
 	}
@@ -498,8 +710,17 @@ static int spear_rtc_resume(struct platform_device *pdev)
 
 static void spear_rtc_shutdown(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spear_rtc_config *config = platform_get_drvdata(pdev);
+=======
 	struct rtc_device *rtc = platform_get_drvdata(pdev);
 	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct rtc_device *rtc = platform_get_drvdata(pdev);
+	struct spear_rtc_config *config = dev_get_drvdata(&rtc->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spear_rtc_disable_interrupt(config);
 	clk_disable(config->clk);
@@ -516,6 +737,12 @@ static struct platform_driver spear_rtc_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(spear_rtc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init rtc_init(void)
 {
 	return platform_driver_register(&spear_rtc_driver);
@@ -527,6 +754,10 @@ static void __exit rtc_exit(void)
 	platform_driver_unregister(&spear_rtc_driver);
 }
 module_exit(rtc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_ALIAS("platform:rtc-spear");
 MODULE_AUTHOR("Rajeev Kumar <rajeev-dlh.kumar@st.com>");

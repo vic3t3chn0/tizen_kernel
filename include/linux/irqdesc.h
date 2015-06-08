@@ -14,7 +14,11 @@ struct timer_rand_state;
 <<<<<<< HEAD
 struct module;
 =======
+<<<<<<< HEAD
+struct module;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct irq_desc - interrupt descriptor
  * @irq_data:		per irq and chip data passed down to chip functions
@@ -45,7 +49,11 @@ struct irq_desc {
 <<<<<<< HEAD
 	struct timer_rand_state *timer_rand_state;
 =======
+<<<<<<< HEAD
+	struct timer_rand_state *timer_rand_state;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int __percpu	*kstat_irqs;
 	irq_flow_handler_t	handle_irq;
 #ifdef CONFIG_IRQ_PREFLOW_FASTEOI
@@ -63,7 +71,11 @@ struct irq_desc {
 <<<<<<< HEAD
 	struct cpumask		*percpu_enabled;
 =======
+<<<<<<< HEAD
+	struct cpumask		*percpu_enabled;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 	const struct cpumask	*affinity_hint;
 	struct irq_affinity_notify *affinity_notify;
@@ -80,7 +92,11 @@ struct irq_desc {
 <<<<<<< HEAD
 	struct module		*owner;
 =======
+<<<<<<< HEAD
+	struct module		*owner;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char		*name;
 } ____cacheline_internodealigned_in_smp;
 
@@ -167,6 +183,9 @@ static inline int irq_balancing_disabled(unsigned int irq)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int irq_is_per_cpu(unsigned int irq)
 {
 	struct irq_desc *desc;
@@ -175,8 +194,11 @@ static inline int irq_is_per_cpu(unsigned int irq)
 	return desc->status_use_accessors & IRQ_PER_CPU;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void
 irq_set_lockdep_class(unsigned int irq, struct lock_class_key *class)
 {

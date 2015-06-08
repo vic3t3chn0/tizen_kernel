@@ -14,13 +14,19 @@ config ARCH_OMAP1
 	select CLKDEV_LOOKUP
 	select CLKSRC_MMIO
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select GENERIC_IRQ_CHIP
 	select IRQ_DOMAIN
 	select HAVE_IDE
 	select NEED_MACH_MEMORY_H
 	select NEED_MACH_IO_H if PCCARD
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  "Systems based on omap7xx, omap15xx or omap16xx"
 
@@ -33,7 +39,12 @@ config ARCH_OMAP2PLUS
 	select USE_OF
 	select PROC_DEVICETREE if PROC_FS
 =======
+<<<<<<< HEAD
+	select USE_OF
+	select PROC_DEVICETREE if PROC_FS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  "Systems based on OMAP2, OMAP3 or OMAP4"
 
@@ -122,6 +133,8 @@ config OMAP_MUX_WARNINGS
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config OMAP_MCBSP
 	bool "McBSP support"
 	depends on ARCH_OMAP
@@ -131,6 +144,7 @@ config OMAP_MCBSP
 	  Buffered Serial Port.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config OMAP_MBOX_FWK
 	tristate "Mailbox framework support"
 	depends on ARCH_OMAP
@@ -149,6 +163,8 @@ config OMAP_MBOX_KFIFO_SIZE
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config OMAP_IOMMU
 	tristate
 
@@ -162,6 +178,7 @@ config OMAP_IOMMU_DEBUG
          Say N unless you know you need this.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config OMAP_IOMMU_IVA2
 	bool
 
@@ -232,10 +249,13 @@ choice
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config OMAP_PM_NONE
 	bool "No PM layer"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config OMAP_PM_NOOP
 	bool "No-op/debug PM layer"
 

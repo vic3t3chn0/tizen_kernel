@@ -112,7 +112,11 @@ typedef enum {
 <<<<<<< HEAD
 	SCTP_CMD_SET_ASOC,	 /* Restore association context */
 =======
+<<<<<<< HEAD
+	SCTP_CMD_SET_ASOC,	 /* Restore association context */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SCTP_CMD_LAST
 } sctp_verb_t;
 

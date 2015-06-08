@@ -18,9 +18,14 @@
 #include <linux/of_device.h>
 #include <linux/pm.h>
 =======
+<<<<<<< HEAD
+#include <linux/of_device.h>
+#include <linux/pm.h>
+=======
 #include <linux/pm.h>
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spi/spi.h>
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
@@ -535,8 +540,12 @@ static int wm8770_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8770_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8770_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8770_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.digital_mute = wm8770_mute,
 	.hw_params = wm8770_hw_params,
 	.set_fmt = wm8770_set_fmt,
@@ -567,8 +576,12 @@ static struct snd_soc_dai_driver wm8770_dai = {
 <<<<<<< HEAD
 static int wm8770_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8770_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8770_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8770_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -595,9 +608,12 @@ static int wm8770_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	codec->dapm.idle_bias_off = 1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_codec_set_cache_io(codec, 7, 9, wm8770->control_type);
 	if (ret < 0) {
 		dev_err(codec->dev, "Failed to set cache I/O: %d\n", ret);
@@ -662,8 +678,12 @@ static int wm8770_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, wm8770_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, wm8770_snd_controls,
+=======
 	snd_soc_add_controls(codec, wm8770_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(wm8770_snd_controls));
 	snd_soc_dapm_new_controls(&codec->dapm, wm8770_dapm_widgets,
 				  ARRAY_SIZE(wm8770_dapm_widgets));
@@ -702,22 +722,32 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8770 = {
 <<<<<<< HEAD
 	.idle_bias_off = true,
 =======
+<<<<<<< HEAD
+	.idle_bias_off = true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.reg_cache_size = ARRAY_SIZE(wm8770_reg_defs),
 	.reg_word_size = sizeof (u16),
 	.reg_cache_default = wm8770_reg_defs
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct of_device_id wm8770_of_match[] = {
 	{ .compatible = "wlf,wm8770", },
 	{ }
 };
 MODULE_DEVICE_TABLE(of, wm8770_of_match);
 
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SPI_MASTER)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit wm8770_spi_probe(struct spi_device *spi)
 {
 	struct wm8770_priv *wm8770;
@@ -727,8 +757,13 @@ static int __devinit wm8770_spi_probe(struct spi_device *spi)
 	wm8770 = devm_kzalloc(&spi->dev, sizeof(struct wm8770_priv),
 			      GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	wm8770 = devm_kzalloc(&spi->dev, sizeof(struct wm8770_priv),
+			      GFP_KERNEL);
+=======
 	wm8770 = kzalloc(sizeof(struct wm8770_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!wm8770)
 		return -ENOMEM;
 
@@ -740,9 +775,13 @@ static int __devinit wm8770_spi_probe(struct spi_device *spi)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	if (ret < 0)
 		kfree(wm8770);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -751,8 +790,11 @@ static int __devexit wm8770_spi_remove(struct spi_device *spi)
 	snd_soc_unregister_codec(&spi->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(spi_get_drvdata(spi));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -763,15 +805,22 @@ static struct spi_driver wm8770_spi_driver = {
 <<<<<<< HEAD
 		.of_match_table = wm8770_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = wm8770_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe = wm8770_spi_probe,
 	.remove = __devexit_p(wm8770_spi_remove)
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init wm8770_modinit(void)
 {
@@ -779,8 +828,11 @@ static int __init wm8770_modinit(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_SPI_MASTER)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = spi_register_driver(&wm8770_spi_driver);
 	if (ret) {
 		printk(KERN_ERR "Failed to register wm8770 SPI driver: %d\n",
@@ -788,8 +840,11 @@ static int __init wm8770_modinit(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 module_init(wm8770_modinit);
@@ -799,10 +854,14 @@ static void __exit wm8770_exit(void)
 <<<<<<< HEAD
 	spi_unregister_driver(&wm8770_spi_driver);
 =======
+<<<<<<< HEAD
+	spi_unregister_driver(&wm8770_spi_driver);
+=======
 #if defined(CONFIG_SPI_MASTER)
 	spi_unregister_driver(&wm8770_spi_driver);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(wm8770_exit);
 

@@ -190,18 +190,27 @@ struct tagtable {
 <<<<<<< HEAD
 static const struct tagtable __tagtable_##fn __tag = { tag, fn }
 =======
+<<<<<<< HEAD
+static const struct tagtable __tagtable_##fn __tag = { tag, fn }
+=======
 static struct tagtable __tagtable_##fn __tag = { tag, fn }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Memory map description
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NR_BANKS	CONFIG_ARM_NR_BANKS
 
 struct membank {
 	phys_addr_t start;
 	phys_addr_t size;
+<<<<<<< HEAD
+=======
 =======
 #ifndef NR_BANKS
 #define NR_BANKS 8
@@ -211,6 +220,7 @@ struct membank {
 	phys_addr_t start;
 	unsigned long size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int highmem;
 };
 
@@ -229,8 +239,13 @@ extern struct meminfo meminfo;
 #define bank_pfn_end(bank)	(__phys_to_pfn((bank)->start) + \
 						__phys_to_pfn((bank)->size))
 =======
+<<<<<<< HEAD
+#define bank_pfn_end(bank)	(__phys_to_pfn((bank)->start) + \
+						__phys_to_pfn((bank)->size))
+=======
 #define bank_pfn_end(bank)	__phys_to_pfn((bank)->start + (bank)->size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define bank_pfn_size(bank)	((bank)->size >> PAGE_SHIFT)
 #define bank_phys_start(bank)	(bank)->start
 #define bank_phys_end(bank)	((bank)->start + (bank)->size)
@@ -239,8 +254,12 @@ extern struct meminfo meminfo;
 <<<<<<< HEAD
 extern int arm_add_memory(phys_addr_t start, phys_addr_t size);
 =======
+<<<<<<< HEAD
+extern int arm_add_memory(phys_addr_t start, phys_addr_t size);
+=======
 extern int arm_add_memory(phys_addr_t start, unsigned long size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void early_print(const char *str, ...);
 extern void dump_machine_table(void);
 

@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #include <linux/linkage.h>
 =======
+<<<<<<< HEAD
+#include <linux/linkage.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/ptrace.h>
 #include <asm/thread_info.h>
@@ -29,10 +33,14 @@
 <<<<<<< HEAD
 ENTRY(swsusp_arch_suspend)
 =======
+<<<<<<< HEAD
+ENTRY(swsusp_arch_suspend)
+=======
 	.align	4
 	.globl swsusp_arch_suspend
 swsusp_arch_suspend:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stmg	%r6,%r15,__SF_GPRS(%r15)
 	lgr	%r1,%r15
 	aghi	%r15,-STACK_FRAME_OVERHEAD
@@ -54,8 +62,12 @@ swsusp_arch_suspend:
 <<<<<<< HEAD
 	stap	__LC_EXT_CPU_ADDR(%r0)
 =======
+<<<<<<< HEAD
+	stap	__LC_EXT_CPU_ADDR(%r0)
+=======
 	stap	__LC_CPU_ADDRESS(%r0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Store registers */
 	mvc	0x318(4,%r1),__SF_EMPTY(%r15)	/* move prefix to lowcore */
@@ -127,9 +139,13 @@ swsusp_arch_suspend:
 <<<<<<< HEAD
 ENTRY(swsusp_arch_resume)
 =======
+<<<<<<< HEAD
+ENTRY(swsusp_arch_resume)
+=======
 	.globl swsusp_arch_resume
 swsusp_arch_resume:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stmg	%r6,%r15,__SF_GPRS(%r15)
 	lgr	%r1,%r15
 	aghi	%r15,-STACK_FRAME_OVERHEAD
@@ -157,7 +173,11 @@ swsusp_arch_resume:
 <<<<<<< HEAD
 	iske	%r0,%r4
 =======
+<<<<<<< HEAD
+	iske	%r0,%r4
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lghi	%r3,PAGE_SIZE
 	lghi	%r5,PAGE_SIZE
 1:
@@ -167,7 +187,12 @@ swsusp_arch_resume:
 	lg	%r2,8(%r1)
 	sske	%r0,%r2
 =======
+<<<<<<< HEAD
+	lg	%r2,8(%r1)
+	sske	%r0,%r2
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lg	%r1,16(%r1)
 	ltgr	%r1,%r1
 	jnz	0b
@@ -200,8 +225,12 @@ pgm_check_entry:
 <<<<<<< HEAD
 	llgh	%r1,__LC_EXT_CPU_ADDR(%r0)	/* Suspend CPU address: r1 */
 =======
+<<<<<<< HEAD
+	llgh	%r1,__LC_EXT_CPU_ADDR(%r0)	/* Suspend CPU address: r1 */
+=======
 	llgh	%r1,__LC_CPU_ADDRESS(%r0)	/* Suspend CPU address: r1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cgr	%r1,%r2
 	je	restore_registers		/* r1 = r2 -> nothing to do */
 	larl	%r4,.Lrestart_suspend_psw	/* Set new restart PSW */
@@ -212,10 +241,16 @@ pgm_check_entry:
 	brc	8,4f				/* accepted */
 	brc	2,3b				/* busy, try again */
 =======
+<<<<<<< HEAD
+	sigp	%r9,%r1,11			/* sigp initial cpu reset */
+	brc	8,4f				/* accepted */
+	brc	2,3b				/* busy, try again */
+=======
 	sigp	%r9,%r1,__SIGP_INITIAL_CPU_RESET
 	brc	8,4f	/* accepted */
 	brc	2,3b	/* busy, try again */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Suspend CPU not available -> panic */
 	larl	%r15,init_thread_union
@@ -231,16 +266,22 @@ pgm_check_entry:
 4:
 	/* Switch to suspend CPU */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigp	%r9,%r1,6		/* sigp restart to suspend CPU */
 	brc	2,4b			/* busy, try again */
 5:
 	sigp	%r9,%r2,5		/* sigp stop to current resume CPU */
+<<<<<<< HEAD
+=======
 =======
 	sigp	%r9,%r1,__SIGP_RESTART	/* start suspend CPU */
 	brc	2,4b			/* busy, try again */
 5:
 	sigp	%r9,%r2,__SIGP_STOP	/* stop resume (current) CPU */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	brc	2,5b			/* busy, try again */
 6:	j	6b
 
@@ -251,8 +292,12 @@ restart_suspend:
 <<<<<<< HEAD
 	sigp	%r9,%r2,1		/* sigp sense, wait for resume CPU */
 =======
+<<<<<<< HEAD
+	sigp	%r9,%r2,1		/* sigp sense, wait for resume CPU */
+=======
 	sigp	%r9,%r2,__SIGP_SENSE	/* Wait for resume CPU */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	brc	8,7b			/* accepted, status 0, still running */
 	brc	2,7b			/* busy, try again */
 	tmll	%r9,0x40		/* Test if resume CPU is stopped */
@@ -307,7 +352,13 @@ restore_registers:
 	brasl	%r14,lgr_info_log
 
 =======
+<<<<<<< HEAD
+	/* Log potential guest relocation */
+	brasl	%r14,lgr_info_log
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Reinitialize the channel subsystem */
 	brasl	%r14,channel_subsystem_reinit
 

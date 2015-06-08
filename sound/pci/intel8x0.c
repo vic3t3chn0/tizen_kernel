@@ -35,8 +35,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/ac97_codec.h>
@@ -47,14 +51,20 @@
 #include <asm/cacheflush.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KVM_GUEST
 #include <linux/kvm_para.h>
 #else
 #define kvm_para_available() (0)
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_AUTHOR("Jaroslav Kysela <perex@perex.cz>");
 MODULE_DESCRIPTION("Intel 82801AA,82901AB,i810,i820,i830,i840,i845,MX440; SiS 7012; Ali 5455");
 MODULE_LICENSE("GPL");
@@ -87,17 +97,23 @@ static char *id = SNDRV_DEFAULT_STR1;	/* ID for this card */
 static int ac97_clock;
 static char *ac97_quirk;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool buggy_semaphore;
 static int buggy_irq = -1; /* auto-check */
 static bool xbox;
 static int spdif_aclink = -1;
 static int inside_vm = -1;
+<<<<<<< HEAD
+=======
 =======
 static int buggy_semaphore;
 static int buggy_irq = -1; /* auto-check */
 static int xbox;
 static int spdif_aclink = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param(index, int, 0444);
 MODULE_PARM_DESC(index, "Index value for Intel i8x0 soundcard.");
@@ -112,24 +128,34 @@ MODULE_PARM_DESC(buggy_semaphore, "Enable workaround for hardwares with problema
 <<<<<<< HEAD
 module_param(buggy_irq, bint, 0444);
 =======
+<<<<<<< HEAD
+module_param(buggy_irq, bint, 0444);
+=======
 module_param(buggy_irq, bool, 0444);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(buggy_irq, "Enable workaround for buggy interrupts on some motherboards.");
 module_param(xbox, bool, 0444);
 MODULE_PARM_DESC(xbox, "Set to 1 for Xbox, if you have problems with the AC'97 codec detection.");
 module_param(spdif_aclink, int, 0444);
 MODULE_PARM_DESC(spdif_aclink, "S/PDIF over AC-link.");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(inside_vm, bint, 0444);
 MODULE_PARM_DESC(inside_vm, "KVM/Parallels optimization.");
 
 /* just for backward compatibility */
 static bool enable;
+<<<<<<< HEAD
+=======
 =======
 
 /* just for backward compatibility */
 static int enable;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(enable, bool, 0444);
 static int joystick;
 module_param(joystick, int, 0444);
@@ -436,7 +462,11 @@ struct intel8x0 {
 <<<<<<< HEAD
 	unsigned inside_vm: 1;		/* enable VM optimization */
 =======
+<<<<<<< HEAD
+	unsigned inside_vm: 1;		/* enable VM optimization */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int spdif_idx;	/* SPDIF BAR index; *_SPBAR or -1 if use PCMOUT */
 	unsigned int sdm_saved;	/* SDM reg value */
@@ -1103,6 +1133,9 @@ static snd_pcm_uframes_t snd_intel8x0_pcm_pointer(struct snd_pcm_substream *subs
 			continue;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (civ != igetbyte(chip, ichdev->reg_offset + ICH_REG_OFF_CIV))
 			continue;
 
@@ -1115,10 +1148,13 @@ static snd_pcm_uframes_t snd_intel8x0_pcm_pointer(struct snd_pcm_substream *subs
 		if (chip->inside_vm)
 			break;
 		if (ptr1 == igetword(chip, ichdev->reg_offset + ichdev->roff_picb))
+<<<<<<< HEAD
+=======
 =======
 		if (civ == igetbyte(chip, ichdev->reg_offset + ICH_REG_OFF_CIV) &&
 		    ptr1 == igetword(chip, ichdev->reg_offset + ichdev->roff_picb))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 	} while (timeout--);
 	ptr = ichdev->last_pos;
@@ -1937,14 +1973,20 @@ static struct ac97_quirk ac97_quirks[] __devinitdata = {
 	{
 		.subvendor = 0x1028,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.subdevice = 0x0189,
 		.name = "Dell Inspiron 9300",
 		.type = AC97_TUNE_HP_MUTE_LED
 	},
 	{
 		.subvendor = 0x1028,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.subdevice = 0x0191,
 		.name = "Dell Inspiron 8600",
 		.type = AC97_TUNE_HP_ONLY
@@ -2717,8 +2759,12 @@ static int intel8x0_resume(struct pci_dev *pci)
 <<<<<<< HEAD
 			IRQF_SHARED, KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			IRQF_SHARED, KBUILD_MODNAME, chip)) {
+=======
 			IRQF_SHARED, card->shortname, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "intel8x0: unable to grab IRQ %d, "
 		       "disabling device\n", pci->irq);
 		snd_card_disconnect(card);
@@ -2983,6 +3029,9 @@ static unsigned int sis_codec_bits[3] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit snd_intel8x0_inside_vm(struct pci_dev *pci)
 {
 	int result  = inside_vm;
@@ -3022,8 +3071,11 @@ fini:
 	return result;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit snd_intel8x0_create(struct snd_card *card,
 					 struct pci_dev *pci,
 					 unsigned long device_type,
@@ -3095,7 +3147,12 @@ static int __devinit snd_intel8x0_create(struct snd_card *card,
 	chip->inside_vm = snd_intel8x0_inside_vm(pci);
 
 =======
+<<<<<<< HEAD
+	chip->inside_vm = snd_intel8x0_inside_vm(pci);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pci->vendor == PCI_VENDOR_ID_INTEL &&
 	    pci->device == PCI_DEVICE_ID_INTEL_440MX)
 		chip->fix_nocache = 1; /* enable workaround */
@@ -3227,8 +3284,12 @@ static int __devinit snd_intel8x0_create(struct snd_card *card,
 <<<<<<< HEAD
 			IRQF_SHARED, KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			IRQF_SHARED, KBUILD_MODNAME, chip)) {
+=======
 			IRQF_SHARED, card->shortname, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_intel8x0_free(chip);
 		return -EBUSY;
@@ -3391,8 +3452,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "Intel ICH",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_intel8x0_ids,
 	.probe = snd_intel8x0_probe,
 	.remove = __devexit_p(snd_intel8x0_remove),

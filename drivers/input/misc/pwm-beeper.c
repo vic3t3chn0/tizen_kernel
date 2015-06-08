@@ -180,6 +180,12 @@ static struct platform_driver pwm_beeper_driver = {
 		.pm	= PWM_BEEPER_PM_OPS,
 	},
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(pwm_beeper_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init pwm_beeper_init(void)
 {
@@ -192,6 +198,10 @@ static void __exit pwm_beeper_exit(void)
 	platform_driver_unregister(&pwm_beeper_driver);
 }
 module_exit(pwm_beeper_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Lars-Peter Clausen <lars@metafoo.de>");
 MODULE_DESCRIPTION("PWM beeper driver");

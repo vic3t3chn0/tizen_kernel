@@ -24,7 +24,12 @@
 #include "netns.h"
 
 =======
+<<<<<<< HEAD
+#include "netns.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Declare the debug flags here
  */
@@ -118,8 +123,12 @@ proc_dodebug(ctl_table *table, int write,
 <<<<<<< HEAD
 			rpc_show_tasks(&init_net);
 =======
+<<<<<<< HEAD
+			rpc_show_tasks(&init_net);
+=======
 			rpc_show_tasks();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		if (!access_ok(VERIFY_WRITE, buffer, left))
 			return -EFAULT;

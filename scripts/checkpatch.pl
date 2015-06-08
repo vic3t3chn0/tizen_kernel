@@ -8,6 +8,9 @@
 use strict;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 use constant BEFORE_SHORTTEXT => 0;
 use constant IN_SHORTTEXT_BLANKLINE => 1;
 use constant IN_SHORTTEXT => 2;
@@ -15,8 +18,11 @@ use constant AFTER_SHORTTEXT => 3;
 use constant CHECK_NEXT_SHORTTEXT => 4;
 use constant SHORTTEXT_LIMIT => 75;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $P = $0;
 $P =~ s@.*/@@g;
 
@@ -28,8 +34,11 @@ my $quiet = 0;
 my $tree = 1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 my $chk_subject = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $chk_signoff = 1;
 my $chk_patch = 1;
 my $tst_only;
@@ -114,8 +123,11 @@ GetOptions(
 	'tree!'		=> \$tree,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	'subject!'	=> \$chk_subject,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	'signoff!'	=> \$chk_signoff,
 	'patch!'	=> \$chk_patch,
 	'emacs!'	=> \$emacs,
@@ -248,8 +260,12 @@ our $Lval	= qr{$Ident(?:$Member)*};
 <<<<<<< HEAD
 our $Constant	= qr{(?i:(?:[0-9]+|0x[0-9a-f]+)[ul]*)};
 =======
+<<<<<<< HEAD
+our $Constant	= qr{(?i:(?:[0-9]+|0x[0-9a-f]+)[ul]*)};
+=======
 our $Constant	= qr{(?:[0-9]+|0x[0-9a-fA-F]+)[UL]*};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 our $Assignment	= qr{(?:\*\=|/=|%=|\+=|-=|<<=|>>=|&=|\^=|\|=|=)};
 our $Compare    = qr{<=|>=|==|!=|<|>};
 our $Operators	= qr{
@@ -266,10 +282,15 @@ our $Declare;
 our $NON_ASCII_UTF8	= qr{
 	[\xC2-\xDF][\x80-\xBF]               # non-overlong 2-byte
 =======
+<<<<<<< HEAD
+our $NON_ASCII_UTF8	= qr{
+	[\xC2-\xDF][\x80-\xBF]               # non-overlong 2-byte
+=======
 our $UTF8	= qr {
 	[\x09\x0A\x0D\x20-\x7E]              # ASCII
 	| [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	|  \xE0[\xA0-\xBF][\x80-\xBF]        # excluding overlongs
 	| [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
 	|  \xED[\x80-\x9F][\x80-\xBF]        # excluding surrogates
@@ -279,13 +300,19 @@ our $UTF8	= qr {
 }x;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 our $UTF8	= qr{
 	[\x09\x0A\x0D\x20-\x7E]              # ASCII
 	| $NON_ASCII_UTF8
 }x;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 our $typeTypedefs = qr{(?x:
 	(?:__)?(?:u|s|be|le)(?:8|16|32|64)|
 	atomic_t
@@ -349,8 +376,12 @@ sub build_types {
 <<<<<<< HEAD
 				(?:typeof|__typeof__)\s*\([^\)]*\)|
 =======
+<<<<<<< HEAD
+				(?:typeof|__typeof__)\s*\([^\)]*\)|
+=======
 				(?:typeof|__typeof__)\s*\(\s*\**\s*$Ident\s*\)|
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				(?:$typeTypedefs\b)|
 				(?:${all}\b)
 			)
@@ -361,8 +392,12 @@ sub build_types {
 <<<<<<< HEAD
 			(?:(?:\s|\*|\[\])+\s*const|(?:\s|\*|\[\])+|(?:\s*\[\s*\])+)?
 =======
+<<<<<<< HEAD
+			(?:(?:\s|\*|\[\])+\s*const|(?:\s|\*|\[\])+|(?:\s*\[\s*\])+)?
+=======
 			(?:[\s\*]+\s*const|[\s\*]+|(?:\s*\[\s*\])+)?
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(?:\s+$Inline|\s+$Modifier)*
 		  }x;
 	$Declare	= qr{(?:$Storage\s+)?$Type};
@@ -370,6 +405,9 @@ sub build_types {
 build_types();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 our $Typecast	= qr{\s*(\(\s*$NonptrType\s*\)){0,1}\s*};
 
@@ -380,12 +418,15 @@ our $Typecast	= qr{\s*(\(\s*$NonptrType\s*\)){0,1}\s*};
 our $balanced_parens = qr/(\((?:[^\(\)]++|(?-1))*\))/;
 our $LvalOrFunc	= qr{($Lval)\s*($balanced_parens{0,1})\s*};
 our $FuncArg = qr{$Typecast{0,1}($LvalOrFunc|$Constant)};
+<<<<<<< HEAD
+=======
 =======
 our $match_balanced_parentheses = qr/(\((?:[^\(\)]+|(-1))*\))/;
 
 our $Typecast	= qr{\s*(\(\s*$NonptrType\s*\)){0,1}\s*};
 our $LvalOrFunc	= qr{($Lval)\s*($match_balanced_parentheses{0,1})\s*};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 sub deparenthesize {
 	my ($string) = @_;
@@ -398,8 +439,11 @@ sub deparenthesize {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 $chk_subject = 0 if ($file);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 $chk_signoff = 0 if ($file);
 
 my @dep_includes = ();
@@ -733,12 +777,18 @@ sub ctx_statement_block {
 				last;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ($level == 0 && substr($blk, $off) =~ /^.\s*#\s*define/) {
 				$level++;
 				$type = '#';
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		$p = $c;
 		$c = substr($blk, $off, 1);
@@ -802,6 +852,9 @@ sub ctx_statement_block {
 			}
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		# Preprocessor commands end at the newline unless escaped.
 		if ($type eq '#' && $c eq "\n" && $p ne "\\") {
 			$level--;
@@ -809,8 +862,11 @@ sub ctx_statement_block {
 			$off++;
 			last;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		$off++;
 	}
 	# We are truly at the end, so shuffle to the next line.
@@ -1096,8 +1152,12 @@ sub annotate_values {
 <<<<<<< HEAD
 			$type = 'c';
 =======
+<<<<<<< HEAD
+			$type = 'c';
+=======
 			$type = 'C';
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		} elsif ($cur =~ /^($Type)\s*(?:$Ident|,|\)|\(|\s*$)/) {
 			print "DECLARE($1)\n" if ($dbg_values > 1);
@@ -1294,8 +1354,14 @@ sub possible {
 			\#|
 			\#\#|
 =======
+<<<<<<< HEAD
+			do|
+			\#|
+			\#\#|
+=======
 			do
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		)(?:\s|$)|
 		^(?:typedef|struct|enum)\b
 	    )}x;
@@ -1400,6 +1466,9 @@ sub check_absolute_file {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub cleanup_continuation_headers {
 	# Collapse any header-continuation lines into a single line so they
 	# can be parsed meaningfully, as the parser only has one line
@@ -1457,8 +1526,11 @@ sub pos_last_openparen {
 	return $last_openparen + 1;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub process {
 	my $filename = shift;
 
@@ -1471,7 +1543,12 @@ sub process {
 	my $subjectline="";
 	my $sublinenr="";
 =======
+<<<<<<< HEAD
+	my $subjectline="";
+	my $sublinenr="";
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	my $length;
 	my $indent;
@@ -1487,7 +1564,13 @@ sub process {
 	my $in_commit_log = 0;		#Scanning lines before patch
 
 =======
+<<<<<<< HEAD
+	my $in_header_lines = 1;
+	my $in_commit_log = 0;		#Scanning lines before patch
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	our @report = ();
 	our $cnt_lines = 0;
 	our $cnt_error = 0;
@@ -1513,7 +1596,11 @@ sub process {
 <<<<<<< HEAD
 	my $suppress_statement = 0;
 =======
+<<<<<<< HEAD
+	my $suppress_statement = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	# Pre-scan the patch sanitizing the lines.
 	# Pre-scan the patch looking for any __setup documentation.
@@ -1522,6 +1609,9 @@ sub process {
 	my $setup_docs = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	my $exec_file = "";
 
 	my $shorttext = BEFORE_SHORTTEXT;
@@ -1532,10 +1622,13 @@ sub process {
 	cleanup_continuation_headers();
 	my $line;
 
+<<<<<<< HEAD
+=======
 =======
 	sanitise_line_reset();
 	my $line;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	foreach my $rawline (@rawlines) {
 		$linenr++;
 		$line = $rawline;
@@ -1639,7 +1732,11 @@ sub process {
 <<<<<<< HEAD
 			$suppress_statement = 0;
 =======
+<<<<<<< HEAD
+			$suppress_statement = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			next;
 
 # track the line number as we move through the hunk, note that
@@ -1677,18 +1774,24 @@ sub process {
 			$realfile = $1;
 			$realfile =~ s@^([^/]*)/@@;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			$in_commit_log = 0;
 			$exec_file = $realfile;
 		} elsif ($line =~ /^\+\+\+\s+(\S+)/) {
 			$realfile = $1;
 			$realfile =~ s@^([^/]*)/@@;
 			$in_commit_log = 0;
+<<<<<<< HEAD
+=======
 =======
 
 		} elsif ($line =~ /^\+\+\+\s+(\S+)/) {
 			$realfile = $1;
 			$realfile =~ s@^([^/]*)/@@;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			$p1_prefix = $1;
 			if (!$file && $tree && $p1_prefix ne '' &&
@@ -1702,6 +1805,9 @@ sub process {
 				      "do not modify files in include/asm, change architecture specific files in include/asm-<architecture>\n" . "$here$rawline\n");
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			$exec_file = "";
 			next;
 		}
@@ -1725,11 +1831,14 @@ sub process {
 				  "Source file has +x permissions: " .
 			    "$exec_file\n");
 		}
+<<<<<<< HEAD
+=======
 =======
 			next;
 		}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		$here .= "FILE: $realfile:$realline:" if ($realcnt != 0);
 
 		my $hereline = "$here\n$rawline\n";
@@ -1737,6 +1846,9 @@ sub process {
 		my $hereprev = "$here\n$prevrawline\n$rawline\n";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ($shorttext != AFTER_SHORTTEXT) {
 			if ($shorttext == IN_SHORTTEXT_BLANKLINE && $line=~/\S/) {
 				# the subject line was just processed,
@@ -1840,8 +1952,11 @@ sub process {
 			}
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		$cnt_lines++ if ($realcnt != 0);
 
 # Check for incorrect file permissions
@@ -1854,6 +1969,9 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Check the patch for a signoff:
 		if ($line =~ /^\s*signed-off-by:/i) {
 			$signoff++;
@@ -1863,6 +1981,8 @@ sub process {
 # Check signature styles
 		if (!$in_header_lines &&
 		    $line =~ /^(\s*)($signature_tags)(\s*)(.*)/) {
+<<<<<<< HEAD
+=======
 =======
 # Check for subject:
 		if ($chk_subject && $line =~ /^Subject: \[PATCH\] (\s*)(\[.*\])?/i) {
@@ -1892,6 +2012,7 @@ sub process {
 # Check signature styles
 		if ($line =~ /^(\s*)($signature_tags)(\s*)(.*)/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			my $space_before = $1;
 			my $sign_off = $2;
 			my $space_after = $3;
@@ -1930,6 +2051,9 @@ sub process {
 				}
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ($line =~ /^\s*signed-off-by:.*(quicinc|qualcomm)\.com/i) {
 				WARN("BAD_SIGN_OFF",
 				     "invalid Signed-off-by identity\n" . $line );
@@ -1939,8 +2063,11 @@ sub process {
 #check the patch for invalid author credentials
 		if ($line =~ /^From:.*(quicinc|qualcomm)\.com/) {
 			WARN("BAD_AUTHOR", "invalid author identity\n" . $line );
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 # Check for wrappage within a valid hunk of the file
@@ -1978,6 +2105,9 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Check if it's the start of a commit log
 # (not a header line and we haven't seen the patch filename)
 		if ($in_header_lines && $realfile =~ /^$/ &&
@@ -1993,8 +2123,11 @@ sub process {
 			    "8-bit UTF-8 used in possible commit log\n" . $herecurr);
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # ignore non-hunk lines and lines being removed
 		next if (!$hunk_line || $line =~ /^-/);
 
@@ -2018,13 +2151,20 @@ sub process {
 <<<<<<< HEAD
 		    $line =~ /.\s*config\s+/) {
 =======
+<<<<<<< HEAD
+		    $line =~ /.\s*config\s+/) {
+=======
 		    $line =~ /\+\s*(?:---)?help(?:---)?$/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			my $length = 0;
 			my $cnt = $realcnt;
 			my $ln = $linenr + 1;
 			my $f;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			my $is_start = 0;
 			my $is_end = 0;
 			for (; $cnt > 0 && defined $lines[$ln - 1]; $ln++) {
@@ -2040,6 +2180,8 @@ sub process {
 					$length = -1;
 				}
 
+<<<<<<< HEAD
+=======
 =======
 			my $is_end = 0;
 			while ($cnt > 0 && defined $lines[$ln - 1]) {
@@ -2050,6 +2192,7 @@ sub process {
 
 				next if ($f =~ /^-/);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				$f =~ s/^.//;
 				$f =~ s/#.*//;
 				$f =~ s/^\s+//;
@@ -2062,6 +2205,9 @@ sub process {
 			}
 			WARN("CONFIG_DESCRIPTION",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     "please write a paragraph that describes the config symbol fully\n" . $herecurr) if ($is_start && $is_end && $length < 4);
 			#print "is_start<$is_start> is_end<$is_end> length<$length>\n";
 		}
@@ -2078,10 +2224,13 @@ sub process {
 
 			WARN("DEPRECATED_VARIABLE",
 			     "Use of $flag is deprecated, please use \`$replacement->{$flag} instead.\n" . $herecurr) if ($replacement->{$flag});
+<<<<<<< HEAD
+=======
 =======
 			     "please write a paragraph that describes the config symbol fully\n" . $herecurr) if ($is_end && $length < 4);
 			#print "is_end<$is_end> length<$length>\n";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 # check we are in a valid source file if not then ignore this hunk
@@ -2095,7 +2244,11 @@ sub process {
 <<<<<<< HEAD
 		    $realfile ne "scripts/checkpatch.pl" &&
 =======
+<<<<<<< HEAD
+		    $realfile ne "scripts/checkpatch.pl" &&
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    $length > 80)
 		{
 			WARN("LONG_LINE",
@@ -2103,6 +2256,9 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Check for user-visible strings broken across lines, which breaks the ability
 # to grep for the string.  Limited to strings used as parameters (those
 # following an open parenthesis), which almost completely eliminates false
@@ -2118,8 +2274,11 @@ sub process {
 			     "quoted string split across lines\n" . $hereprev);
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for spaces before a quoted newline
 		if ($rawline =~ /^.*\".*\s\\n/) {
 			WARN("QUOTED_WHITESPACE_BEFORE_NEWLINE",
@@ -2167,6 +2326,9 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for && or || at the start of a line
 		if ($rawline =~ /^\+\s*(&&|\|\|)/) {
 			CHK("LOGICAL_CONTINUATIONS",
@@ -2203,8 +2365,11 @@ sub process {
 			    "No space is necessary after a cast\n" . $hereprev);
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for spaces at the beginning of a line.
 # Exceptions:
 #  1) within comments
@@ -2245,14 +2410,23 @@ sub process {
 		if ($linenr >= $suppress_statement &&
 		    $realcnt && $line =~ /.\s*\S/) {
 =======
+<<<<<<< HEAD
+#print "LINE<$line>\n";
+		if ($linenr >= $suppress_statement &&
+		    $realcnt && $line =~ /.\s*\S/) {
+=======
 		if ($realcnt && $line =~ /.\s*\S/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			($stat, $cond, $line_nr_next, $remain_next, $off_next) =
 				ctx_statement_block($linenr, $realcnt, 0);
 			$stat =~ s/\n./\n /g;
 			$cond =~ s/\n./\n /g;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #print "linenr<$linenr> <$stat>\n";
 			# If this statement has no statement boundaries within
 			# it there is no point in retrying a statement scan
@@ -2263,8 +2437,11 @@ sub process {
 				$suppress_statement = $line_nr_next;
 			}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			# Find the real next line.
 			$realline_next = $line_nr_next;
 			if (defined $realline_next &&
@@ -2354,14 +2531,20 @@ sub process {
 
 			my ($level, @ctx) = ctx_statement_level($linenr, $realcnt, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if ($line =~ /^\+\t{6,}/) {
 				WARN("DEEP_INDENTATION",
 				     "Too many leading tabs - consider code refactoring\n" . $herecurr);
 			}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			my $ctx_cnt = $realcnt - $#ctx - 1;
 			my $ctx = join("\n", @ctx);
 
@@ -2404,7 +2587,13 @@ sub process {
 				ctx_statement_block($linenr, $realcnt, 0)
 					if (!defined $stat);
 =======
+<<<<<<< HEAD
+			($stat, $cond, $line_nr_next, $remain_next, $off_next) =
+				ctx_statement_block($linenr, $realcnt, 0)
+					if (!defined $stat);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			my ($s, $c) = ($stat, $cond);
 
 			substr($s, 0, length($c), '');
@@ -2575,8 +2764,12 @@ sub process {
 <<<<<<< HEAD
 			if ($stat =~ /^(?:.\s*}\s*\n)?.([A-Z_]+)\s*\(\s*($Ident)/ &&
 =======
+<<<<<<< HEAD
+			if ($stat =~ /^(?:.\s*}\s*\n)?.([A-Z_]+)\s*\(\s*($Ident)/ &&
+=======
 			if ($stat =~ /^.([A-Z_]+)\s*\(\s*($Ident)/ &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    $name =~ /^${Ident}_$2/) {
 #print "FOO C name<$name>\n";
 				$suppress_export{$realline_next} = 1;
@@ -2659,9 +2852,15 @@ sub process {
 			#print "AA<$1>\n";
 			my ($from, $to) = ($2, $2);
 =======
+<<<<<<< HEAD
+		while ($line =~ m{(\($NonptrType(\s*(?:$Modifier\b\s*|\*\s*)+)\))}g) {
+			#print "AA<$1>\n";
+			my ($from, $to) = ($2, $2);
+=======
 		if ($line =~ m{\($NonptrType(\s*(?:$Modifier\b\s*|\*\s*)+)\)}) {
 			my ($from, $to) = ($1, $1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			# Should start with a space.
 			$to =~ s/^(\S)/ $1/;
@@ -2677,14 +2876,20 @@ sub process {
 				      "\"(foo$from)\" should be \"(foo$to)\"\n" .  $herecurr);
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		while ($line =~ m{(\b$NonptrType(\s*(?:$Modifier\b\s*|\*\s*)+)($Ident))}g) {
 			#print "BB<$1>\n";
 			my ($from, $to, $ident) = ($2, $2, $3);
+<<<<<<< HEAD
+=======
 =======
 		} elsif ($line =~ m{\b$NonptrType(\s*(?:$Modifier\b\s*|\*\s*)+)($Ident)}) {
 			my ($from, $to, $ident) = ($1, $1, $2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			# Should start with a space.
 			$to =~ s/^(\S)/ $1/;
@@ -2777,8 +2982,12 @@ sub process {
 <<<<<<< HEAD
 			    $prefix !~ /[{,]\s+$/) {
 =======
+<<<<<<< HEAD
+			    $prefix !~ /[{,]\s+$/) {
+=======
 			    $prefix !~ /{\s+$/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ERROR("BRACKET_SPACE",
 				      "space prohibited before open square bracket '['\n" . $herecurr);
 			}
@@ -3050,10 +3259,16 @@ sub process {
 			ERROR("SPACING",
 				  "space prohibited after that open parenthesis '('\n" . $herecurr);
 =======
+<<<<<<< HEAD
+		    $line !~ /for\s*\(\s+;/ && $line !~ /^\+\s*[A-Z_][A-Z\d_]*\(\s*\d+(\,.*)?\)\,?$/) {
+			ERROR("SPACING",
+				  "space prohibited after that open parenthesis '('\n" . $herecurr);
+=======
 		    $line !~ /for\s*\(\s+;/) {
 			ERROR("SPACING",
 			      "space prohibited after that open parenthesis '('\n" . $herecurr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if ($line =~ /(\s+)\)/ && $line !~ /^.\s*\)/ &&
 		    $line !~ /for\s*\(.*;\s+\)/ &&
@@ -3080,8 +3295,12 @@ sub process {
 <<<<<<< HEAD
 			while ($value =~ s/\[[^\[\]]*\]/1/ ||
 =======
+<<<<<<< HEAD
+			while ($value =~ s/\[[^\[\]]*\]/1/ ||
+=======
 			while ($value =~ s/\[[^\{\}]*\]/1/ ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       $value !~ /(?:$Ident|-?$Constant)\s*
 					     $Compare\s*
 					     (?:$Ident|-?$Constant)/x &&
@@ -3108,6 +3327,8 @@ sub process {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # typecasts on min/max could be min_t/max_t
 		if ($line =~ /^\+(?:.*?)\b(min|max)\s*\($Typecast{0,1}($LvalOrFunc)\s*,\s*$Typecast{0,1}($LvalOrFunc)\s*\)/) {
 			if (defined $2 || defined $8) {
@@ -3131,6 +3352,7 @@ sub process {
 		}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Need a space before open parenthesis after if, while etc
 		if ($line=~/\b(if|while|for|switch)\(/) {
 			ERROR("SPACING", "space required before the open parenthesis '('\n" . $herecurr);
@@ -3144,7 +3366,13 @@ sub process {
 				ctx_statement_block($linenr, $realcnt, 0)
 					if (!defined $stat);
 =======
+<<<<<<< HEAD
+			($stat, $cond, $line_nr_next, $remain_next, $off_next) =
+				ctx_statement_block($linenr, $realcnt, 0)
+					if (!defined $stat);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			my ($stat_next) = ctx_statement_block($line_nr_next,
 						$remain_next, $off_next);
 			$stat_next =~ s/\n./\n /g;
@@ -3298,6 +3526,9 @@ sub process {
 		    $line =~ /^.\s*\#\s*define\s*$Ident(\()?/) {
 			my $ln = $linenr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			my $cnt = $realcnt - 1;
 			my ($off, $dstat, $dcond, $rest);
 			my $ctx = '';
@@ -3308,6 +3539,8 @@ sub process {
 			#print "LINE<$lines[$ln-1]> len<" . length($lines[$ln-1]) . "\n";
 
 			$dstat =~ s/^.\s*\#\s*define\s+$Ident(?:\([^\)]*\))?\s*//;
+<<<<<<< HEAD
+=======
 =======
 			my $cnt = $realcnt;
 			my ($off, $dstat, $dcond, $rest);
@@ -3354,6 +3587,7 @@ sub process {
 				$dstat =~ s/^.\s*\#\s*define\s+$Ident\s*//;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			$dstat =~ s/$;//g;
 			$dstat =~ s/\\\n.//g;
 			$dstat =~ s/^\s*//s;
@@ -3363,6 +3597,9 @@ sub process {
 			while ($dstat =~ s/\([^\(\)]*\)/1/ ||
 			       $dstat =~ s/\{[^\{\}]*\}/1/ ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       $dstat =~ s/\[[^\[\]]*\]/1/)
 			{
 			}
@@ -3376,9 +3613,12 @@ sub process {
 			# Flatten any obvious string concatentation.
 			while ($dstat =~ s/("X*")\s*$Ident/$1/ ||
 			       $dstat =~ s/$Ident\s*("X*")/$1/)
+<<<<<<< HEAD
+=======
 =======
 			       $dstat =~ s/\[[^\{\}]*\]/1/)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			{
 			}
 
@@ -3391,7 +3631,11 @@ sub process {
 <<<<<<< HEAD
 				CLK_[A-Z\d_]+|
 =======
+<<<<<<< HEAD
+				CLK_[A-Z\d_]+|
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				__typeof__\(|
 				union|
 				struct|
@@ -3400,6 +3644,9 @@ sub process {
 			}x;
 			#print "REST<$rest> dstat<$dstat> ctx<$ctx>\n";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ($dstat ne '' &&
 			    $dstat !~ /^(?:$Ident|-?$Constant),$/ &&			# 10, // foo(),
 			    $dstat !~ /^(?:$Ident|-?$Constant);$/ &&			# foo();
@@ -3427,6 +3674,8 @@ sub process {
 				} else {
 					ERROR("COMPLEX_MACRO",
 					      "Macros with complex values should be enclosed in parenthesis\n" . "$herectx");
+<<<<<<< HEAD
+=======
 =======
 			if ($rest ne '' && $rest ne ',') {
 				if ($rest !~ /while\s*\(/ &&
@@ -3446,6 +3695,7 @@ sub process {
 					ERROR("COMPLEX_MACRO",
 					      "Macros with complex values should be enclosed in parenthesis\n" . "$here\n$ctx\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				}
 			}
 		}
@@ -3471,8 +3721,13 @@ sub process {
 				my @allowed = ();
 				my $allow = 0;
 =======
+<<<<<<< HEAD
+				my @allowed = ();
+				my $allow = 0;
+=======
 				my $allowed = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				my $seen = 0;
 				my $herectx = $here . "\n";
 				my $ln = $linenr - 1;
@@ -3486,7 +3741,11 @@ sub process {
 <<<<<<< HEAD
 					$allowed[$allow] = 0;
 =======
+<<<<<<< HEAD
+					$allowed[$allow] = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					#print "COND<$cond> whitespace<$whitespace> offset<$offset>\n";
 
 					# We have looked at and allowed this specific line.
@@ -3500,6 +3759,9 @@ sub process {
 					$seen++ if ($block =~ /^\s*{/);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					#print "cond<$cond> block<$block> allowed<$allowed[$allow]>\n";
 					if (statement_lines($cond) > 1) {
 						#print "APW: ALLOWED: cond<$cond>\n";
@@ -3528,6 +3790,8 @@ sub process {
 						CHK("BRACES",
 						    "braces {} should be used on all arms of this statement\n" . $herectx);
 					}
+<<<<<<< HEAD
+=======
 =======
 					#print "cond<$cond> block<$block> allowed<$allowed>\n";
 					if (statement_lines($cond) > 1) {
@@ -3547,6 +3811,7 @@ sub process {
 					WARN("BRACES",
 					     "braces {} are not necessary for any arm of this statement\n" . $herectx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				}
 			}
 		}
@@ -3629,6 +3894,9 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # sys_open/read/write/close are not allowed in the kernel
 		if ($line =~ /\b(sys_(?:open|read|write|close))\b/) {
 			ERROR("FILE_OPS", "$1 is inappropriate in kernel code.\n" .
@@ -3714,6 +3982,8 @@ sub process {
 			WARN("IF_1",
 			     "if this code is required consider removing"
 				. " #if 1\n" .  $herecurr);
+<<<<<<< HEAD
+=======
 =======
 # warn about #if 0
 		if ($line =~ /^.\s*\#\s*if\s+0\b/) {
@@ -3721,6 +3991,7 @@ sub process {
 			    "if this code is redundant consider removing it\n" .
 				$herecurr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 # check for needless kfree() checks
@@ -3758,14 +4029,20 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check the patch for use of mdelay
 		if ($line =~ /\bmdelay\s*\(/) {
 			WARN("MDELAY",
 			     "use of mdelay() found: msleep() is the preferred API.\n" . $line );
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # warn about #ifdefs in C files
 #		if ($line =~ /^.\s*\#\s*if(|n)def/ && ($realfile =~ /\.c$/)) {
 #			print "#ifdef in C files should be avoided\n";
@@ -3834,6 +4111,9 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Check for __attribute__ format(printf, prefer __printf
 		if ($line =~ /\b__attribute__\s*\(\s*\(\s*format\s*\(\s*printf/) {
 			WARN("PREFER_PRINTF",
@@ -3846,8 +4126,11 @@ sub process {
 			     "__scanf(string-index, first-to-check) is preferred over __attribute__((format(scanf, string-index, first-to-check)))\n" . $herecurr);
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for sizeof(&)
 		if ($line =~ /\bsizeof\s*\(\s*\&/) {
 			WARN("SIZEOF_ADDRESS",
@@ -3861,6 +4144,9 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Check for misused memsets
 		if ($^V && $^V ge 5.10.0 &&
 		    defined $stat &&
@@ -3903,8 +4189,11 @@ sub process {
 			}
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for new externs in .c files.
 		if ($realfile =~ /\.c$/ && defined $stat &&
 		    $stat =~ /^.\s*(?:extern\s+)?$Type\s+($Ident)(\s*)\(/s)
@@ -3958,14 +4247,20 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for return codes on error paths
 		if ($line =~ /\breturn\s+-\d+/) {
 			ERROR("NO_ERROR_CODE",
 			      "illegal return value, please use an error code\n" . $herecurr);
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for gcc specific __FUNCTION__
 		if ($line =~ /__FUNCTION__/) {
 			WARN("USE_FUNC",
@@ -3973,19 +4268,28 @@ sub process {
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for use of yield()
 		if ($line =~ /\byield\s*\(\s*\)/) {
 			WARN("YIELD",
 			     "Using yield() is generally wrong. See yield() kernel-doc (sched/core.c)\n"  . $herecurr);
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for semaphores initialized locked
 		if ($line =~ /^.\s*sema_init.+,\W?0\W?\)/) {
 			WARN("CONSIDER_COMPLETION",
 			     "consider using a completion\n" . $herecurr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 # recommend kstrto* over simple_strto* and strict_strto*
@@ -3994,6 +4298,8 @@ sub process {
 			     "$1 is obsolete, use k$3 instead\n" . $herecurr);
 		}
 
+<<<<<<< HEAD
+=======
 =======
 
 		}
@@ -4003,6 +4309,7 @@ sub process {
 			     "consider using kstrto* in preference to simple_$1\n" . $herecurr);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for __initcall(), use device_initcall() explicitly please
 		if ($line =~ /^.\s*__initcall\s*\(/) {
 			WARN("USE_DEVICE_INITCALL",
@@ -4011,7 +4318,11 @@ sub process {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # check for various ops structs, ensure they are const.
 		my $struct_ops = qr{acpi_dock_ops|
 				address_space_operations|
@@ -4111,6 +4422,8 @@ sub process {
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 		# Check for memset with swapped arguments
 		if ($line =~ /memset.*\,(\ |)(0x|)0(\ |0|)\);/) {
@@ -4118,6 +4431,7 @@ sub process {
 			      "memset size is 3rd argument, not the second.\n" . $herecurr);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	# If we have no input at all, then there is nothing to report on
@@ -4158,14 +4472,20 @@ sub process {
 
 	if ($quiet == 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if ($^V lt 5.10.0) {
 			print("NOTE: perl $^V is not modern enough to detect all possible issues.\n");
 			print("An upgrade to at least perl v5.10.0 is suggested.\n\n");
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		# If there were whitespace errors which cleanpatch can fix
 		# then suggest that.
 		if ($rpt_cleaners) {
@@ -4178,8 +4498,12 @@ sub process {
 <<<<<<< HEAD
 	if ($quiet == 0 && keys %ignore_type) {
 =======
+<<<<<<< HEAD
+	if ($quiet == 0 && keys %ignore_type) {
+=======
 	if (keys %ignore_type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    print "NOTE: Ignored message types:";
 	    foreach my $ignore (sort keys %ignore_type) {
 		print " $ignore";
@@ -4187,9 +4511,13 @@ sub process {
 <<<<<<< HEAD
 	    print "\n\n";
 =======
+<<<<<<< HEAD
+	    print "\n\n";
+=======
 	    print "\n";
 	    print "\n" if ($quiet == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if ($clean == 1 && $quiet == 0) {

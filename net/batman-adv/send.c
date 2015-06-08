@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -32,18 +36,26 @@
 #include "vis.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "aggregation.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "gateway_common.h"
 #include "originator.h"
 
 static void send_outstanding_bcast_packet(struct work_struct *work);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* send out an already prepared packet to the given address via the
  * specified batman interface */
 int send_skb_packet(struct sk_buff *skb, struct hard_iface *hard_iface,
 		    const uint8_t *dst_addr)
+<<<<<<< HEAD
+=======
 =======
 /* apply hop penalty for a normal link */
 static uint8_t hop_penalty(const uint8_t tq, struct bat_priv *bat_priv)
@@ -72,6 +84,7 @@ int send_skb_packet(struct sk_buff *skb,
 				struct hard_iface *hard_iface,
 				uint8_t *dst_addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ethhdr *ethhdr;
 
@@ -86,9 +99,14 @@ int send_skb_packet(struct sk_buff *skb,
 		pr_warning("Interface %s is not up - can't send packet via that interface!\n",
 			   hard_iface->net_dev->name);
 =======
+<<<<<<< HEAD
+		pr_warning("Interface %s is not up - can't send packet via that interface!\n",
+			   hard_iface->net_dev->name);
+=======
 		pr_warning("Interface %s is not up - can't send packet via "
 			   "that interface!\n", hard_iface->net_dev->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto send_skb_err;
 	}
 
@@ -96,8 +114,12 @@ int send_skb_packet(struct sk_buff *skb,
 <<<<<<< HEAD
 	if (my_skb_head_push(skb, sizeof(*ethhdr)) < 0)
 =======
+<<<<<<< HEAD
+	if (my_skb_head_push(skb, sizeof(*ethhdr)) < 0)
+=======
 	if (my_skb_head_push(skb, sizeof(struct ethhdr)) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto send_skb_err;
 
 	skb_reset_mac_header(skb);
@@ -105,8 +127,12 @@ int send_skb_packet(struct sk_buff *skb,
 <<<<<<< HEAD
 	ethhdr = (struct ethhdr *)skb_mac_header(skb);
 =======
+<<<<<<< HEAD
+	ethhdr = (struct ethhdr *)skb_mac_header(skb);
+=======
 	ethhdr = (struct ethhdr *) skb_mac_header(skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(ethhdr->h_source, hard_iface->net_dev->dev_addr, ETH_ALEN);
 	memcpy(ethhdr->h_dest, dst_addr, ETH_ALEN);
 	ethhdr->h_proto = __constant_htons(ETH_P_BATMAN);
@@ -128,6 +154,9 @@ send_skb_err:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void realloc_packet_buffer(struct hard_iface *hard_iface,
 				  int new_len)
 {
@@ -184,6 +213,8 @@ void schedule_bat_ogm(struct hard_iface *hard_iface)
 	struct bat_priv *bat_priv = netdev_priv(hard_iface->soft_iface);
 	struct hard_iface *primary_if;
 	int tt_num_changes = -1;
+<<<<<<< HEAD
+=======
 =======
 /* Send a packet to a given interface */
 static void send_packet_to_if(struct forw_packet *forw_packet,
@@ -334,6 +365,7 @@ void schedule_own_packet(struct hard_iface *hard_iface)
 	struct batman_packet *batman_packet;
 	int vis_server;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((hard_iface->if_status == IF_NOT_IN_USE) ||
 	    (hard_iface->if_status == IF_TO_BE_REMOVED))
@@ -341,10 +373,13 @@ void schedule_own_packet(struct hard_iface *hard_iface)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	vis_server = atomic_read(&bat_priv->vis_mode);
 	primary_if = primary_if_get_selected(bat_priv);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/**
 	 * the interface gets activated here to avoid race conditions between
 	 * the moment of activating the interface in
@@ -356,6 +391,9 @@ void schedule_own_packet(struct hard_iface *hard_iface)
 		hard_iface->if_status = IF_ACTIVE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	primary_if = primary_if_get_selected(bat_priv);
 
 	if (hard_iface == primary_if) {
@@ -376,6 +414,8 @@ void schedule_own_packet(struct hard_iface *hard_iface)
 		hardif_free_ref(primary_if);
 
 	bat_priv->bat_algo_ops->bat_ogm_schedule(hard_iface, tt_num_changes);
+<<<<<<< HEAD
+=======
 =======
 	/* if local tt has changed and interface is a primary interface */
 	if ((atomic_read(&bat_priv->tt_local_changed)) &&
@@ -483,6 +523,7 @@ void schedule_forward_packet(struct orig_node *orig_node,
 			       sizeof(struct batman_packet) + tt_buff_len,
 			       if_incoming, 0, send_time);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void forw_packet_free(struct forw_packet *forw_packet)
@@ -516,8 +557,12 @@ static void _add_bcast_packet_to_list(struct bat_priv *bat_priv,
 <<<<<<< HEAD
  * are sent multiple times to increase probability for being received.
 =======
+<<<<<<< HEAD
+ * are sent multiple times to increase probability for being received.
+=======
  * are sent multiple times to increase probability for beeing received.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This function returns NETDEV_TX_OK on success and NETDEV_TX_BUSY on
  * errors.
@@ -528,8 +573,13 @@ static void _add_bcast_packet_to_list(struct bat_priv *bat_priv,
 int add_bcast_packet_to_list(struct bat_priv *bat_priv,
 			     const struct sk_buff *skb, unsigned long delay)
 =======
+<<<<<<< HEAD
+int add_bcast_packet_to_list(struct bat_priv *bat_priv,
+			     const struct sk_buff *skb, unsigned long delay)
+=======
 int add_bcast_packet_to_list(struct bat_priv *bat_priv, struct sk_buff *skb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hard_iface *primary_if = NULL;
 	struct forw_packet *forw_packet;
@@ -537,7 +587,11 @@ int add_bcast_packet_to_list(struct bat_priv *bat_priv, struct sk_buff *skb)
 <<<<<<< HEAD
 	struct sk_buff *newskb;
 =======
+<<<<<<< HEAD
+	struct sk_buff *newskb;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!atomic_dec_not_zero(&bat_priv->bcast_queue_left)) {
 		bat_dbg(DBG_BATMAN, bat_priv, "bcast packet queue full\n");
@@ -551,13 +605,20 @@ int add_bcast_packet_to_list(struct bat_priv *bat_priv, struct sk_buff *skb)
 <<<<<<< HEAD
 	forw_packet = kmalloc(sizeof(*forw_packet), GFP_ATOMIC);
 =======
+<<<<<<< HEAD
+	forw_packet = kmalloc(sizeof(*forw_packet), GFP_ATOMIC);
+=======
 	forw_packet = kmalloc(sizeof(struct forw_packet), GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!forw_packet)
 		goto out_and_inc;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	newskb = skb_copy(skb, GFP_ATOMIC);
 	if (!newskb)
 		goto packet_free;
@@ -569,6 +630,8 @@ int add_bcast_packet_to_list(struct bat_priv *bat_priv, struct sk_buff *skb)
 	skb_reset_mac_header(newskb);
 
 	forw_packet->skb = newskb;
+<<<<<<< HEAD
+=======
 =======
 	skb = skb_copy(skb, GFP_ATOMIC);
 	if (!skb)
@@ -582,6 +645,7 @@ int add_bcast_packet_to_list(struct bat_priv *bat_priv, struct sk_buff *skb)
 
 	forw_packet->skb = skb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	forw_packet->if_incoming = primary_if;
 
 	/* how often did we send the bcast packet ? */
@@ -590,8 +654,12 @@ int add_bcast_packet_to_list(struct bat_priv *bat_priv, struct sk_buff *skb)
 <<<<<<< HEAD
 	_add_bcast_packet_to_list(bat_priv, forw_packet, delay);
 =======
+<<<<<<< HEAD
+	_add_bcast_packet_to_list(bat_priv, forw_packet, delay);
+=======
 	_add_bcast_packet_to_list(bat_priv, forw_packet, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NETDEV_TX_OK;
 
 packet_free:
@@ -652,8 +720,12 @@ out:
 <<<<<<< HEAD
 void send_outstanding_bat_ogm_packet(struct work_struct *work)
 =======
+<<<<<<< HEAD
+void send_outstanding_bat_ogm_packet(struct work_struct *work)
+=======
 void send_outstanding_bat_packet(struct work_struct *work)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct delayed_work *delayed_work =
 		container_of(work, struct delayed_work, work);
@@ -672,8 +744,12 @@ void send_outstanding_bat_packet(struct work_struct *work)
 <<<<<<< HEAD
 	bat_priv->bat_algo_ops->bat_ogm_emit(forw_packet);
 =======
+<<<<<<< HEAD
+	bat_priv->bat_algo_ops->bat_ogm_emit(forw_packet);
+=======
 	send_packet(forw_packet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/**
 	 * we have to have at least one packet in the queue
@@ -684,8 +760,12 @@ void send_outstanding_bat_packet(struct work_struct *work)
 <<<<<<< HEAD
 		schedule_bat_ogm(forw_packet->if_incoming);
 =======
+<<<<<<< HEAD
+		schedule_bat_ogm(forw_packet->if_incoming);
+=======
 		schedule_own_packet(forw_packet->if_incoming);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	/* don't count own packet */
@@ -699,8 +779,12 @@ void purge_outstanding_packets(struct bat_priv *bat_priv,
 <<<<<<< HEAD
 			       const struct hard_iface *hard_iface)
 =======
+<<<<<<< HEAD
+			       const struct hard_iface *hard_iface)
+=======
 			       struct hard_iface *hard_iface)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct forw_packet *forw_packet;
 	struct hlist_node *tmp_node, *safe_tmp_node;
@@ -723,8 +807,12 @@ void purge_outstanding_packets(struct bat_priv *bat_priv,
 <<<<<<< HEAD
 		 * if purge_outstanding_packets() was called with an argument
 =======
+<<<<<<< HEAD
+		 * if purge_outstanding_packets() was called with an argument
+=======
 		 * if purge_outstanding_packets() was called with an argmument
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * we delete only packets belonging to the given interface
 		 */
 		if ((hard_iface) &&
@@ -756,8 +844,12 @@ void purge_outstanding_packets(struct bat_priv *bat_priv,
 <<<<<<< HEAD
 		 * if purge_outstanding_packets() was called with an argument
 =======
+<<<<<<< HEAD
+		 * if purge_outstanding_packets() was called with an argument
+=======
 		 * if purge_outstanding_packets() was called with an argmument
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * we delete only packets belonging to the given interface
 		 */
 		if ((hard_iface) &&

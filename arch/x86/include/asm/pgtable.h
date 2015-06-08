@@ -144,12 +144,15 @@ static inline unsigned long pmd_pfn(pmd_t pmd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline unsigned long pud_pfn(pud_t pud)
 {
 	return (pud_val(pud) & PTE_PFN_MASK) >> PAGE_SHIFT;
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define pte_page(pte)	pfn_to_page(pte_pfn(pte))
 
 static inline int pmd_large(pmd_t pte)
@@ -158,8 +161,13 @@ static inline int pmd_large(pmd_t pte)
 	return (pmd_flags(pte) & (_PAGE_PSE | _PAGE_PRESENT)) ==
 		(_PAGE_PSE | _PAGE_PRESENT);
 =======
+<<<<<<< HEAD
+	return (pmd_flags(pte) & (_PAGE_PSE | _PAGE_PRESENT)) ==
+		(_PAGE_PSE | _PAGE_PRESENT);
+=======
 	return pmd_flags(pte) & _PAGE_PSE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_TRANSPARENT_HUGEPAGE
@@ -430,6 +438,9 @@ static inline int pmd_present(pmd_t pmd)
 <<<<<<< HEAD
 	return pmd_flags(pmd) & _PAGE_PRESENT;
 =======
+<<<<<<< HEAD
+	return pmd_flags(pmd) & _PAGE_PRESENT;
+=======
 	/*
 	 * Checking for _PAGE_PSE is needed too because
 	 * split_huge_page will temporarily clear the present bit (but
@@ -438,6 +449,7 @@ static inline int pmd_present(pmd_t pmd)
 	 */
 	return pmd_flags(pmd) & (_PAGE_PRESENT | _PAGE_PROTNONE | _PAGE_PSE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int pmd_none(pmd_t pmd)
@@ -728,8 +740,12 @@ static inline void ptep_set_wrprotect(struct mm_struct *mm,
 <<<<<<< HEAD
 #define flush_tlb_fix_spurious_fault(vma, address) do { } while (0)
 =======
+<<<<<<< HEAD
+#define flush_tlb_fix_spurious_fault(vma, address) do { } while (0)
+=======
 #define flush_tlb_fix_spurious_fault(vma, address)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define mk_pmd(page, pgprot)   pfn_pmd(page_to_pfn(page), (pgprot))
 

@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/namei.h>
 #include <linux/sched.h>
 #include <linux/writeback.h>
@@ -18,6 +22,11 @@
 #include <linux/linkage.h>
 #include <linux/pagemap.h>
 #include <linux/quotaops.h>
+<<<<<<< HEAD
+#include <linux/backing-dev.h>
+#include "internal.h"
+
+=======
 <<<<<<< HEAD
 #include <linux/backing-dev.h>
 #include "internal.h"
@@ -33,6 +42,7 @@ extern bool dyn_fsync_active;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VALID_FLAGS (SYNC_FILE_RANGE_WAIT_BEFORE|SYNC_FILE_RANGE_WRITE| \
 			SYNC_FILE_RANGE_WAIT_AFTER)
 
@@ -61,8 +71,12 @@ static int __sync_filesystem(struct super_block *sb, int wait)
 <<<<<<< HEAD
 		writeback_inodes_sb(sb, WB_REASON_SYNC);
 =======
+<<<<<<< HEAD
+		writeback_inodes_sb(sb, WB_REASON_SYNC);
+=======
 		writeback_inodes_sb(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sb->s_op->sync_fs)
 		sb->s_op->sync_fs(sb, wait);
@@ -109,8 +123,12 @@ static void sync_one_sb(struct super_block *sb, void *arg)
 <<<<<<< HEAD
 static void sync_filesystems(int wait)
 =======
+<<<<<<< HEAD
+static void sync_filesystems(int wait)
+=======
 void sync_filesystems(int wait)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	iterate_supers(sync_one_sb, &wait);
 }
@@ -124,8 +142,12 @@ SYSCALL_DEFINE0(sync)
 <<<<<<< HEAD
 	wakeup_flusher_threads(0, WB_REASON_SYNC);
 =======
+<<<<<<< HEAD
+	wakeup_flusher_threads(0, WB_REASON_SYNC);
+=======
 	wakeup_flusher_threads(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sync_filesystems(0);
 	sync_filesystems(1);
 	if (unlikely(laptop_mode))
@@ -197,6 +219,11 @@ int vfs_fsync_range(struct file *file, loff_t start, loff_t end, int datasync)
 		return -EINVAL;
 	return file->f_op->fsync(file, start, end, datasync);
 =======
+<<<<<<< HEAD
+	if (!file->f_op || !file->f_op->fsync)
+		return -EINVAL;
+	return file->f_op->fsync(file, start, end, datasync);
+=======
 #ifdef CONFIG_DYNAMIC_FSYNC
 	if (unlikely(dyn_fsync_active && !early_suspend_active))
 		return 0;
@@ -229,6 +256,7 @@ out:
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(vfs_fsync_range);
 
@@ -251,11 +279,16 @@ static int do_fsync(unsigned int fd, int datasync)
 	struct file *file;
 	int ret = -EBADF;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	file = fget(fd);
 	if (file) {
 		ret = vfs_fsync(file, datasync);
 		fput(file);
+<<<<<<< HEAD
+=======
 =======
 	int fput_needed;
 
@@ -264,6 +297,7 @@ static int do_fsync(unsigned int fd, int datasync)
 		ret = vfs_fsync(file, datasync);
 		fput_light(file, fput_needed);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return ret;
 }
@@ -272,17 +306,6 @@ SYSCALL_DEFINE1(fsync, unsigned int, fd)
 {
 <<<<<<< HEAD
 =======
-#ifdef CONFIG_DYNAMIC_FSYNC
-	if (unlikely(dyn_fsync_active && !early_suspend_active))
-		return 0;
-	else
-#endif
->>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
-	return do_fsync(fd, 0);
-}
-
-SYSCALL_DEFINE1(fdatasync, unsigned int, fd)
-{
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_DYNAMIC_FSYNC
@@ -291,6 +314,23 @@ SYSCALL_DEFINE1(fdatasync, unsigned int, fd)
 	else
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
+	return do_fsync(fd, 0);
+}
+
+SYSCALL_DEFINE1(fdatasync, unsigned int, fd)
+{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_DYNAMIC_FSYNC
+	if (unlikely(dyn_fsync_active && !early_suspend_active))
+		return 0;
+	else
+#endif
+>>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return do_fsync(fd, 1);
 }
 
@@ -363,6 +403,8 @@ SYSCALL_DEFINE(sync_file_range)(int fd, loff_t offset, loff_t nbytes,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DYNAMIC_FSYNC
 	if (unlikely(dyn_fsync_active && !early_suspend_active))
 		return 0;
@@ -370,6 +412,7 @@ SYSCALL_DEFINE(sync_file_range)(int fd, loff_t offset, loff_t nbytes,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	struct file *file;
 	struct address_space *mapping;
@@ -451,10 +494,13 @@ out:
 	return ret;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DYNAMIC_FSYNC
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #ifdef CONFIG_HAVE_SYSCALL_WRAPPERS
 asmlinkage long SyS_sync_file_range(long fd, loff_t offset, loff_t nbytes,
@@ -473,12 +519,15 @@ SYSCALL_DEFINE(sync_file_range2)(int fd, unsigned int flags,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DYNAMIC_FSYNC
 	if (unlikely(dyn_fsync_active && !early_suspend_active))
 		return 0;
 	else
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return sys_sync_file_range(fd, offset, nbytes, flags);
 }
 #ifdef CONFIG_HAVE_SYSCALL_WRAPPERS

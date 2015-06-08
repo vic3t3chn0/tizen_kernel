@@ -21,6 +21,8 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Valid flags for the radix tree
  */
 #define NFS_PAGE_TAG_LOCKED	0
@@ -28,6 +30,7 @@
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Valid flags for a dirty buffer
  */
 enum {
@@ -40,12 +43,20 @@ enum {
 	PG_PARTIAL_READ_FAILED,
 	PG_COMMIT_TO_DS,
 =======
+<<<<<<< HEAD
+	PG_PARTIAL_READ_FAILED,
+	PG_COMMIT_TO_DS,
+=======
 	PG_PNFS_COMMIT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct nfs_inode;
 struct nfs_page {
+<<<<<<< HEAD
+	struct list_head	wb_list;	/* Defines state of page: */
+=======
 <<<<<<< HEAD
 	struct list_head	wb_list;	/* Defines state of page: */
 =======
@@ -54,6 +65,7 @@ struct nfs_page {
 		struct pnfs_layout_segment *wb_commit_lseg; /* Used when PG_PNFS_COMMIT set */
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page		*wb_page;	/* page to read in/write out */
 	struct nfs_open_context	*wb_context;	/* File state context info */
 	struct nfs_lock_context	*wb_lock_context;	/* lock context info */
@@ -68,6 +80,9 @@ struct nfs_page {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfs_pageio_descriptor;
 struct nfs_pageio_ops {
 	void	(*pg_init)(struct nfs_pageio_descriptor *, struct nfs_page *);
@@ -75,8 +90,11 @@ struct nfs_pageio_ops {
 	int	(*pg_doio)(struct nfs_pageio_descriptor *);
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfs_pageio_descriptor {
 	struct list_head	pg_list;
 	unsigned long		pg_bytes_written;
@@ -84,6 +102,9 @@ struct nfs_pageio_descriptor {
 	size_t			pg_bsize;
 	unsigned int		pg_base;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char		pg_moreio : 1,
 				pg_recoalesce : 1;
 
@@ -93,6 +114,8 @@ struct nfs_pageio_descriptor {
 	int			pg_error;
 	const struct rpc_call_ops *pg_rpc_callops;
 	struct pnfs_layout_segment *pg_lseg;
+<<<<<<< HEAD
+=======
 =======
 	char			pg_moreio;
 
@@ -103,6 +126,7 @@ struct nfs_pageio_descriptor {
 	struct pnfs_layout_segment *pg_lseg;
 	bool			(*pg_test)(struct nfs_pageio_descriptor *, struct nfs_page *, struct nfs_page *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define NFS_WBACK_BUSY(req)	(test_bit(PG_BUSY,&(req)->wb_flags))
@@ -120,12 +144,18 @@ extern	void nfs_pageio_init(struct nfs_pageio_descriptor *desc,
 			     struct inode *inode,
 			     const struct nfs_pageio_ops *pg_ops,
 =======
+<<<<<<< HEAD
+extern	void nfs_pageio_init(struct nfs_pageio_descriptor *desc,
+			     struct inode *inode,
+			     const struct nfs_pageio_ops *pg_ops,
+=======
 extern	int nfs_scan_list(struct nfs_inode *nfsi, struct list_head *dst,
 			  pgoff_t idx_start, unsigned int npages, int tag);
 extern	void nfs_pageio_init(struct nfs_pageio_descriptor *desc,
 			     struct inode *inode,
 			     int (*doio)(struct nfs_pageio_descriptor *desc),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     size_t bsize,
 			     int how);
 extern	int nfs_pageio_add_request(struct nfs_pageio_descriptor *,
@@ -139,10 +169,13 @@ extern  int nfs_wait_on_request(struct nfs_page *);
 extern	void nfs_unlock_request(struct nfs_page *req);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern	int nfs_set_page_tag_locked(struct nfs_page *req);
 extern  void nfs_clear_page_tag_locked(struct nfs_page *req);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Lock the page of an asynchronous request without getting a new reference
@@ -154,6 +187,9 @@ nfs_lock_request_dontget(struct nfs_page *req)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int
 nfs_lock_request(struct nfs_page *req)
 {
@@ -164,8 +200,11 @@ nfs_lock_request(struct nfs_page *req)
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * nfs_list_add_request - Insert a request into a list
  * @req: request

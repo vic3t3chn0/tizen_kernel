@@ -207,10 +207,16 @@ extern void __kernel_vsyscall;
 #else
 #define VSYSCALL_AUX_ENT
 =======
+<<<<<<< HEAD
+		NEW_AUX_ENT(AT_IGNORE, 0);
+#else
+#define VSYSCALL_AUX_ENT
+=======
 		NEW_AUX_ENT(AT_IGNORE, 0)
 #else
 #define VSYSCALL_AUX_ENT	NEW_AUX_ENT(AT_IGNORE, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_VSYSCALL */
 
 #ifdef CONFIG_SH_FPU

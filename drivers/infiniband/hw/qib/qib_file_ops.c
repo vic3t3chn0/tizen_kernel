@@ -43,6 +43,13 @@
 #include <linux/jiffies.h>
 #include <asm/pgtable.h>
 #include <linux/delay.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "qib.h"
 #include "qib_common.h"
@@ -1284,6 +1291,13 @@ static int setup_ctxt(struct qib_pportdata *ppd, int ctxt,
 	strlcpy(rcd->comm, current->comm, sizeof(rcd->comm));
 	ctxt_fp(fp) = rcd;
 	qib_stats.sps_ctxts++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dd->freectxts--;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 0;
 	goto bail;
 
@@ -1527,6 +1541,13 @@ done_chk_sdma:
 		struct qib_filedata *fd = fp->private_data;
 		const struct qib_ctxtdata *rcd = fd->rcd;
 		const struct qib_devdata *dd = rcd->dd;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		unsigned int weight;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (dd->flags & QIB_HAS_SEND_DMA) {
 			fd->pq = qib_user_sdma_queue_create(&dd->pcidev->dev,
@@ -1545,8 +1566,18 @@ done_chk_sdma:
 		 * it just means that sooner or later we don't recommend
 		 * a cpu, and let the scheduler do it's best.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		weight = cpumask_weight(tsk_cpus_allowed(current));
+		if (!ret && weight >= qib_cpulist_count) {
+=======
 		if (!ret && cpus_weight(current->cpus_allowed) >=
 		    qib_cpulist_count) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!ret && cpus_weight(current->cpus_allowed) >=
+		    qib_cpulist_count) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			int cpu;
 			cpu = find_first_zero_bit(qib_cpulist,
 						  qib_cpulist_count);
@@ -1554,13 +1585,31 @@ done_chk_sdma:
 				__set_bit(cpu, qib_cpulist);
 				fd->rec_cpu_num = cpu;
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		} else if (weight == 1 &&
+			test_bit(cpumask_first(tsk_cpus_allowed(current)),
+=======
 		} else if (cpus_weight(current->cpus_allowed) == 1 &&
 			test_bit(first_cpu(current->cpus_allowed),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		} else if (cpus_weight(current->cpus_allowed) == 1 &&
+			test_bit(first_cpu(current->cpus_allowed),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 qib_cpulist))
 			qib_devinfo(dd->pcidev, "%s PID %u affinity "
 				    "set to cpu %d; already allocated\n",
 				    current->comm, current->pid,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				    cpumask_first(tsk_cpus_allowed(current)));
+=======
 				    first_cpu(current->cpus_allowed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    first_cpu(current->cpus_allowed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	mutex_unlock(&qib_mutex);
@@ -1791,6 +1840,13 @@ static int qib_close(struct inode *in, struct file *fp)
 		if (dd->pageshadow)
 			unlock_expected_tids(rcd);
 		qib_stats.sps_ctxts--;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dd->freectxts++;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	mutex_unlock(&qib_mutex);
@@ -1904,8 +1960,19 @@ int qib_set_uevent_bits(struct qib_pportdata *ppd, const int evtbit)
 	struct qib_ctxtdata *rcd;
 	unsigned ctxt;
 	int ret = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long flags;
+
+	spin_lock_irqsave(&ppd->dd->uctxt_lock, flags);
+=======
 
 	spin_lock(&ppd->dd->uctxt_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	spin_lock(&ppd->dd->uctxt_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (ctxt = ppd->dd->first_user_ctxt; ctxt < ppd->dd->cfgctxts;
 	     ctxt++) {
 		rcd = ppd->dd->rcd[ctxt];
@@ -1924,7 +1991,15 @@ int qib_set_uevent_bits(struct qib_pportdata *ppd, const int evtbit)
 		ret = 1;
 		break;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spin_unlock_irqrestore(&ppd->dd->uctxt_lock, flags);
+=======
 	spin_unlock(&ppd->dd->uctxt_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock(&ppd->dd->uctxt_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }

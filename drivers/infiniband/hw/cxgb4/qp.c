@@ -29,6 +29,15 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#include <linux/module.h>
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "iw_cxgb4.h"
 
 static int ocqp_support = 1;
@@ -917,7 +926,19 @@ static void post_terminate(struct c4iw_qp *qhp, struct t4_cqe *err_cqe,
 	wqe->u.terminate.type = FW_RI_TYPE_TERMINATE;
 	wqe->u.terminate.immdlen = cpu_to_be32(sizeof *term);
 	term = (struct terminate_message *)wqe->u.terminate.termmsg;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (qhp->attr.layer_etype == (LAYER_MPA|DDP_LLP)) {
+		term->layer_etype = qhp->attr.layer_etype;
+		term->ecode = qhp->attr.ecode;
+	} else
+		build_term_codes(err_cqe, &term->layer_etype, &term->ecode);
+=======
 	build_term_codes(err_cqe, &term->layer_etype, &term->ecode);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	build_term_codes(err_cqe, &term->layer_etype, &term->ecode);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	c4iw_ofld_send(&qhp->rhp->rdev, skb);
 }
 
@@ -941,8 +962,21 @@ static void __flush_qp(struct c4iw_qp *qhp, struct c4iw_cq *rchp,
 	flushed = c4iw_flush_rq(&qhp->wq, &rchp->cq, count);
 	spin_unlock(&qhp->lock);
 	spin_unlock_irqrestore(&rchp->lock, flag);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (flushed) {
+		spin_lock_irqsave(&rchp->comp_handler_lock, flag);
+		(*rchp->ibcq.comp_handler)(&rchp->ibcq, rchp->ibcq.cq_context);
+		spin_unlock_irqrestore(&rchp->comp_handler_lock, flag);
+	}
+=======
 	if (flushed)
 		(*rchp->ibcq.comp_handler)(&rchp->ibcq, rchp->ibcq.cq_context);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (flushed)
+		(*rchp->ibcq.comp_handler)(&rchp->ibcq, rchp->ibcq.cq_context);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* locking hierarchy: cq lock first, then qp lock. */
 	spin_lock_irqsave(&schp->lock, flag);
@@ -952,13 +986,33 @@ static void __flush_qp(struct c4iw_qp *qhp, struct c4iw_cq *rchp,
 	flushed = c4iw_flush_sq(&qhp->wq, &schp->cq, count);
 	spin_unlock(&qhp->lock);
 	spin_unlock_irqrestore(&schp->lock, flag);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (flushed) {
+		spin_lock_irqsave(&schp->comp_handler_lock, flag);
+		(*schp->ibcq.comp_handler)(&schp->ibcq, schp->ibcq.cq_context);
+		spin_unlock_irqrestore(&schp->comp_handler_lock, flag);
+	}
+=======
 	if (flushed)
 		(*schp->ibcq.comp_handler)(&schp->ibcq, schp->ibcq.cq_context);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (flushed)
+		(*schp->ibcq.comp_handler)(&schp->ibcq, schp->ibcq.cq_context);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void flush_qp(struct c4iw_qp *qhp)
 {
 	struct c4iw_cq *rchp, *schp;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long flag;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rchp = get_chp(qhp->rhp, qhp->attr.rcq);
 	schp = get_chp(qhp->rhp, qhp->attr.scq);
@@ -966,8 +1020,26 @@ static void flush_qp(struct c4iw_qp *qhp)
 	if (qhp->ibqp.uobject) {
 		t4_set_wq_in_error(&qhp->wq);
 		t4_set_cq_in_error(&rchp->cq);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		spin_lock_irqsave(&rchp->comp_handler_lock, flag);
+		(*rchp->ibcq.comp_handler)(&rchp->ibcq, rchp->ibcq.cq_context);
+		spin_unlock_irqrestore(&rchp->comp_handler_lock, flag);
+		if (schp != rchp) {
+			t4_set_cq_in_error(&schp->cq);
+			spin_lock_irqsave(&schp->comp_handler_lock, flag);
+			(*schp->ibcq.comp_handler)(&schp->ibcq,
+					schp->ibcq.cq_context);
+			spin_unlock_irqrestore(&schp->comp_handler_lock, flag);
+		}
+=======
 		if (schp != rchp)
 			t4_set_cq_in_error(&schp->cq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (schp != rchp)
+			t4_set_cq_in_error(&schp->cq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	__flush_qp(qhp, rchp, schp);
@@ -1012,6 +1084,13 @@ out:
 
 static void build_rtr_msg(u8 p2p_type, struct fw_ri_init *init)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	PDBG("%s p2p_type = %d\n", __func__, p2p_type);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&init->u, 0, sizeof init->u);
 	switch (p2p_type) {
 	case FW_RI_INIT_P2PTYPE_RDMA_WRITE:
@@ -1206,12 +1285,28 @@ int c4iw_modify_qp(struct c4iw_dev *rhp, struct c4iw_qp *qhp,
 				disconnect = 1;
 				c4iw_get_ep(&qhp->ep->com);
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (qhp->ibqp.uobject)
+				t4_set_wq_in_error(&qhp->wq);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = rdma_fini(rhp, qhp, ep);
 			if (ret)
 				goto err;
 			break;
 		case C4IW_QP_STATE_TERMINATE:
 			set_state(qhp, C4IW_QP_STATE_TERMINATE);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			qhp->attr.layer_etype = attrs->layer_etype;
+			qhp->attr.ecode = attrs->ecode;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (qhp->ibqp.uobject)
 				t4_set_wq_in_error(&qhp->wq);
 			ep = qhp->ep;
@@ -1222,6 +1317,14 @@ int c4iw_modify_qp(struct c4iw_dev *rhp, struct c4iw_qp *qhp,
 			break;
 		case C4IW_QP_STATE_ERROR:
 			set_state(qhp, C4IW_QP_STATE_ERROR);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (qhp->ibqp.uobject)
+				t4_set_wq_in_error(&qhp->wq);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!internal) {
 				abort = 1;
 				disconnect = 1;
@@ -1334,7 +1437,18 @@ int c4iw_destroy_qp(struct ib_qp *ib_qp)
 	rhp = qhp->rhp;
 
 	attrs.next_state = C4IW_QP_STATE_ERROR;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (qhp->attr.state == C4IW_QP_STATE_TERMINATE)
+		c4iw_modify_qp(rhp, qhp, C4IW_QP_ATTR_NEXT_STATE, &attrs, 1);
+	else
+		c4iw_modify_qp(rhp, qhp, C4IW_QP_ATTR_NEXT_STATE, &attrs, 0);
+=======
 	c4iw_modify_qp(rhp, qhp, C4IW_QP_ATTR_NEXT_STATE, &attrs, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	c4iw_modify_qp(rhp, qhp, C4IW_QP_ATTR_NEXT_STATE, &attrs, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wait_event(qhp->wait, !qhp->ep);
 
 	remove_handle(rhp, &rhp->qpidr, qhp->wq.sq.qid);

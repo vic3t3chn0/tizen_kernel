@@ -28,6 +28,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * The placement of the Command Latch Enable (CLE) and
  * Address Latch Enable (ALE) is twisted around in the
@@ -42,6 +44,7 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FSMC_MAX_NOR_BANKS	4
 #define FSMC_MAX_NAND_BANKS	4
 
@@ -49,6 +52,9 @@
 #define FSMC_FLASH_WIDTH16	2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* fsmc controller registers for NOR flash */
 #define CTRL			0x0
 	/* ctrl register definitions */
@@ -120,6 +126,8 @@
 
 #define FSMC_BUSY_WAIT_TIMEOUT	(1 * HZ)
 
+<<<<<<< HEAD
+=======
 =======
 struct fsmc_nor_bank_regs {
 	uint32_t ctrl;
@@ -192,6 +200,7 @@ struct fsmc_regs {
 #define FSMC_THIZ_1		(1 << 24)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * There are 13 bytes of ecc for every 512 byte block in FSMC version 8
  * and it has to be read consecutively and immediately after the 512
@@ -211,6 +220,9 @@ struct fsmc_eccplace {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct fsmc_nand_timings {
 	uint8_t tclr;
 	uint8_t tar;
@@ -225,8 +237,11 @@ enum access_mode {
 	USE_WORD_ACCESS,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * fsmc_nand_platform_data - platform specific NAND controller config
  * @partitions: partition table for the platform, use a default fallback
@@ -243,13 +258,20 @@ struct fsmc_nand_platform_data {
 <<<<<<< HEAD
 	struct fsmc_nand_timings *nand_timings;
 =======
+<<<<<<< HEAD
+	struct fsmc_nand_timings *nand_timings;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mtd_partition	*partitions;
 	unsigned int		nr_partitions;
 	unsigned int		options;
 	unsigned int		width;
 	unsigned int		bank;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* CLE, ALE offsets */
 	unsigned int		cle_off;
@@ -261,9 +283,12 @@ struct fsmc_nand_platform_data {
 	/* priv structures for dma accesses */
 	void			*read_dma_priv;
 	void			*write_dma_priv;
+<<<<<<< HEAD
+=======
 =======
 	void			(*select_bank)(uint32_t bank, uint32_t busw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern int __init fsmc_nor_init(struct platform_device *pdev,

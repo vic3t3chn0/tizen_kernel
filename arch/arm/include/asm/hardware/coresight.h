@@ -23,7 +23,13 @@
 #define TRACER_BRANCHOUTPUT_BIT	5
 #define TRACER_RETURN_STACK_BIT	6
 =======
+<<<<<<< HEAD
+#define TRACER_TIMESTAMP_BIT	4
+#define TRACER_BRANCHOUTPUT_BIT	5
+#define TRACER_RETURN_STACK_BIT	6
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TRACER_ACCESSED		BIT(TRACER_ACCESSED_BIT)
 #define TRACER_RUNNING		BIT(TRACER_RUNNING_BIT)
 #define TRACER_CYCLE_ACC	BIT(TRACER_CYCLE_ACC_BIT)
@@ -33,7 +39,13 @@
 #define TRACER_BRANCHOUTPUT	BIT(TRACER_BRANCHOUTPUT_BIT)
 #define TRACER_RETURN_STACK	BIT(TRACER_RETURN_STACK_BIT)
 =======
+<<<<<<< HEAD
+#define TRACER_TIMESTAMP	BIT(TRACER_TIMESTAMP_BIT)
+#define TRACER_BRANCHOUTPUT	BIT(TRACER_BRANCHOUTPUT_BIT)
+#define TRACER_RETURN_STACK	BIT(TRACER_RETURN_STACK_BIT)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define TRACER_TIMEOUT 10000
 
@@ -60,8 +72,12 @@
 <<<<<<< HEAD
 #define ETMCTRL_CONTEXTIDSIZE(x) (((x) & 3) << 14)
 =======
+<<<<<<< HEAD
+#define ETMCTRL_CONTEXTIDSIZE(x) (((x) & 3) << 14)
+=======
 #define ETMCTRL_DO_CONTEXTID	(3 << 14)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ETMCTRL_PORTMASK1	(7 << 4)
 #define ETMCTRL_PORTMASK2	(1 << 21)
 #define ETMCTRL_PORTMASK	(ETMCTRL_PORTMASK1 | ETMCTRL_PORTMASK2)
@@ -74,17 +90,23 @@
 #define ETMCTRL_BRANCH_OUTPUT	(1 << 8)
 #define ETMCTRL_CYCLEACCURATE	(1 << 12)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ETMCTRL_TIMESTAMP_EN	(1 << 28)
 #define ETMCTRL_RETURN_STACK_EN	(1 << 29)
 
 /* ETM configuration code register */
 #define ETMR_CONFCODE		(0x04)
 #define ETMCCR_ETMIDR_PRESENT	BIT(31)
+<<<<<<< HEAD
+=======
 =======
 
 /* ETM configuration code register */
 #define ETMR_CONFCODE		(0x04)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ETM trace start/stop resource control register */
 #define ETMR_TRACESSCTRL	(0x18)
@@ -148,6 +170,9 @@
 #define ETMVDC3_EXCLONLY	BIT(16)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ETMCTRL_OPTS		(ETMCTRL_DO_CPRT)
 
 #define ETMR_ID			0x1e4
@@ -158,11 +183,14 @@
 #define ETMR_CCE		0x1e8
 #define ETMCCER_RETURN_STACK_IMPLEMENTED	BIT(23)
 #define ETMCCER_TIMESTAMPING_IMPLEMENTED	BIT(22)
+<<<<<<< HEAD
+=======
 =======
 #define ETMCTRL_OPTS		(ETMCTRL_DO_CPRT | \
 				ETMCTRL_BRANCH_OUTPUT | \
 				ETMCTRL_DO_CONTEXTID)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ETMR_TRACEIDR		0x200
 

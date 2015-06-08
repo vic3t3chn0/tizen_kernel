@@ -15,8 +15,13 @@
 #include <linux/export.h>
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/bug.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __raw_spin_lock_init(raw_spinlock_t *lock, const char *name,
 			  struct lock_class_key *key)
@@ -55,10 +60,15 @@ void __rwlock_init(rwlock_t *lock, const char *name,
 EXPORT_SYMBOL(__rwlock_init);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void spin_dump(raw_spinlock_t *lock, const char *msg)
 {
 	struct task_struct *owner = NULL;
 
+<<<<<<< HEAD
+=======
 =======
 static void spin_bug(raw_spinlock_t *lock, const char *msg)
 {
@@ -68,6 +78,7 @@ static void spin_bug(raw_spinlock_t *lock, const char *msg)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (lock->owner && lock->owner != SPINLOCK_OWNER_INIT)
 		owner = lock->owner;
 	printk(KERN_EMERG "BUG: spinlock %s on CPU#%d, %s/%d\n",
@@ -76,14 +87,21 @@ static void spin_bug(raw_spinlock_t *lock, const char *msg)
 <<<<<<< HEAD
 	printk(KERN_EMERG " lock: %pS, .magic: %08x, .owner: %s/%d, "
 =======
+<<<<<<< HEAD
+	printk(KERN_EMERG " lock: %pS, .magic: %08x, .owner: %s/%d, "
+=======
 	printk(KERN_EMERG " lock: %p, .magic: %08x, .owner: %s/%d, "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			".owner_cpu: %d\n",
 		lock, lock->magic,
 		owner ? owner->comm : "<none>",
 		owner ? task_pid_nr(owner) : -1,
 		lock->owner_cpu);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(PANIC_CORRUPTION);
 	dump_stack();
 }
@@ -96,11 +114,14 @@ static void spin_bug(raw_spinlock_t *lock, const char *msg)
 	spin_dump(lock, msg);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	dump_stack();
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPIN_BUG_ON(cond, lock, msg) if (unlikely(cond)) spin_bug(lock, msg)
 
 static inline void
@@ -133,6 +154,9 @@ static void __spin_lock_debug(raw_spinlock_t *lock)
 {
 	u64 i;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 loops = (loops_per_jiffy * HZ);
 
 	for (i = 0; i < loops; i++) {
@@ -155,6 +179,8 @@ static void __spin_lock_debug(raw_spinlock_t *lock)
 	 * progress.
 	 */
 	arch_spin_lock(&lock->raw_lock);
+<<<<<<< HEAD
+=======
 =======
 	u64 loops = loops_per_jiffy * HZ;
 	int print_once = 1;
@@ -179,6 +205,7 @@ static void __spin_lock_debug(raw_spinlock_t *lock)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void do_raw_spin_lock(raw_spinlock_t *lock)

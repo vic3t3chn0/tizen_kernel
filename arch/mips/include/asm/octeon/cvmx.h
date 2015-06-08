@@ -32,6 +32,9 @@
 #include <linux/string.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum cvmx_mips_space {
 	CVMX_MIPS_SPACE_XKSEG = 3LL,
 	CVMX_MIPS_SPACE_XKPHYS = 2LL,
@@ -53,8 +56,11 @@ enum cvmx_mips_space {
 #define CVMX_ADD_IO_SEG(add) CVMX_ADD_SEG(CVMX_IO_SEG, (add))
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cvmx-asm.h"
 #include "cvmx-packet.h"
 #include "cvmx-sysinfo.h"
@@ -155,6 +161,8 @@ static inline uint64_t cvmx_build_bits(uint64_t high_bit,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 enum cvmx_mips_space {
 	CVMX_MIPS_SPACE_XKSEG = 3LL,
 	CVMX_MIPS_SPACE_XKPHYS = 2LL,
@@ -177,6 +185,7 @@ enum cvmx_mips_space {
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * Convert a memory pointer (void*) into a hardware compatible
  * memory address (uint64_t). Octeon hardware widgets don't

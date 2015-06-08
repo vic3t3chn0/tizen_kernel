@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/dsa.h>
 #include "dsa_priv.h"
 
@@ -35,7 +39,11 @@ void register_switch_driver(struct dsa_switch_driver *drv)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(register_switch_driver);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(register_switch_driver);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void unregister_switch_driver(struct dsa_switch_driver *drv)
 {
@@ -46,7 +54,11 @@ void unregister_switch_driver(struct dsa_switch_driver *drv)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(unregister_switch_driver);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(unregister_switch_driver);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct dsa_switch_driver *
 dsa_switch_probe(struct mii_bus *bus, int sw_addr, char **_name)
@@ -212,6 +224,8 @@ static void dsa_switch_destroy(struct dsa_switch *ds)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* hooks for ethertype-less tagging formats *********************************/
 /*
  * The original DSA tag format and some other tag formats have no
@@ -236,6 +250,7 @@ bool dsa_uses_trailer_tags(void *dsa_ptr)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* link polling *************************************************************/
 static void dsa_link_poll_work(struct work_struct *ugly)
 {
@@ -434,6 +449,9 @@ static struct platform_driver dsa_driver = {
 static int __init dsa_init_module(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc;
 
 	rc = platform_driver_register(&dsa_driver);
@@ -450,15 +468,21 @@ static int __init dsa_init_module(void)
 	dev_add_pack(&trailer_packet_type);
 #endif
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return platform_driver_register(&dsa_driver);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_init(dsa_init_module);
 
 static void __exit dsa_cleanup_module(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NET_DSA_TAG_TRAILER
 	dev_remove_pack(&trailer_packet_type);
 #endif
@@ -468,8 +492,11 @@ static void __exit dsa_cleanup_module(void)
 #ifdef CONFIG_NET_DSA_TAG_DSA
 	dev_remove_pack(&dsa_packet_type);
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_driver_unregister(&dsa_driver);
 }
 module_exit(dsa_cleanup_module);

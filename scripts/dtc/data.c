@@ -70,6 +70,8 @@ struct data data_copy_mem(const char *mem, int len)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static char get_oct_char(const char *s, int *i)
 {
 	char x[4];
@@ -105,6 +107,7 @@ static char get_hex_char(const char *s, int *i)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct data data_copy_escape_string(const char *s, int len)
 {
 	int i = 0;
@@ -118,10 +121,15 @@ struct data data_copy_escape_string(const char *s, int len)
 		char c = s[i++];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (c == '\\')
 			c = get_escape_char(s, &i);
 
 		q[d.len++] = c;
+<<<<<<< HEAD
+=======
 =======
 		if (c != '\\') {
 			q[d.len++] = c;
@@ -171,6 +179,7 @@ struct data data_copy_escape_string(const char *s, int len)
 			q[d.len++] = c;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	q[d.len++] = '\0';
@@ -256,6 +265,9 @@ struct data data_merge(struct data d1, struct data d2)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct data data_append_integer(struct data d, uint64_t value, int bits)
 {
 	uint8_t value_8;
@@ -283,6 +295,8 @@ struct data data_append_integer(struct data d, uint64_t value, int bits)
 	default:
 		die("Invalid literal size (%d)\n", bits);
 	}
+<<<<<<< HEAD
+=======
 =======
 struct data data_append_cell(struct data d, cell_t word)
 {
@@ -290,6 +304,7 @@ struct data data_append_cell(struct data d, cell_t word)
 
 	return data_append_data(d, &beword, sizeof(beword));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct data data_append_re(struct data d, const struct fdt_reserve_entry *re)
@@ -303,6 +318,9 @@ struct data data_append_re(struct data d, const struct fdt_reserve_entry *re)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct data data_append_cell(struct data d, cell_t word)
 {
 	return data_append_integer(d, word, sizeof(word) * 8);
@@ -311,6 +329,8 @@ struct data data_append_cell(struct data d, cell_t word)
 struct data data_append_addr(struct data d, uint64_t addr)
 {
 	return data_append_integer(d, addr, sizeof(addr) * 8);
+<<<<<<< HEAD
+=======
 =======
 struct data data_append_addr(struct data d, uint64_t addr)
 {
@@ -318,6 +338,7 @@ struct data data_append_addr(struct data d, uint64_t addr)
 
 	return data_append_data(d, &beaddr, sizeof(beaddr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct data data_append_byte(struct data d, uint8_t byte)

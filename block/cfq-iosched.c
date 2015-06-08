@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include "blk.h"
 =======
+<<<<<<< HEAD
+#include "blk.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cfq.h"
 
 /*
@@ -58,11 +62,16 @@ static const int cfq_hist_divisor = 4;
 #define CFQQ_SEEKY(cfqq)	(hweight32(cfqq->seek_history) > 32/8)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RQ_CIC(rq)		icq_to_cic((rq)->elv.icq)
 #define RQ_CFQQ(rq)		(struct cfq_queue *) ((rq)->elv.priv[0])
 #define RQ_CFQG(rq)		(struct cfq_group *) ((rq)->elv.priv[1])
 
 static struct kmem_cache *cfq_pool;
+<<<<<<< HEAD
+=======
 =======
 #define RQ_CIC(rq)		\
 	((struct cfq_io_context *) (rq)->elevator_private[0])
@@ -79,6 +88,7 @@ static DEFINE_SPINLOCK(ioc_gone_lock);
 static DEFINE_SPINLOCK(cic_index_lock);
 static DEFINE_IDA(cic_index_ida);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CFQ_PRIO_LISTS		IOPRIO_BE_NR
 #define cfq_class_idle(cfqq)	((cfqq)->ioprio_class == IOPRIO_CLASS_IDLE)
@@ -88,6 +98,9 @@ static DEFINE_IDA(cic_index_ida);
 #define rb_entry_cfqg(node)	rb_entry((node), struct cfq_group, rb_node)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cfq_ttime {
 	unsigned long last_end_request;
 
@@ -96,8 +109,11 @@ struct cfq_ttime {
 	unsigned long ttime_mean;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Most of our rbtree usage is for sorting with min extraction, so
  * if we cache the leftmost node we don't have to walk down the tree
@@ -111,15 +127,21 @@ struct cfq_rb_root {
 	unsigned total_weight;
 	u64 min_vdisktime;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_ttime ttime;
 };
 #define CFQ_RB_ROOT	(struct cfq_rb_root) { .rb = RB_ROOT, \
 			.ttime = {.last_end_request = jiffies,},}
+<<<<<<< HEAD
+=======
 =======
 };
 #define CFQ_RB_ROOT	(struct cfq_rb_root) { .rb = RB_ROOT, .left = NULL, \
 			.count = 0, .min_vdisktime = 0, }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Per process-grouping structure
@@ -163,9 +185,14 @@ struct cfq_queue {
 	/* pending priority requests */
 	int prio_pending;
 =======
+<<<<<<< HEAD
+	/* pending priority requests */
+	int prio_pending;
+=======
 	/* pending metadata requests */
 	int meta_pending;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* number of requests that are on the dispatch list or inside driver */
 	int dispatched;
 
@@ -174,8 +201,12 @@ struct cfq_queue {
 <<<<<<< HEAD
 	unsigned short ioprio_class;
 =======
+<<<<<<< HEAD
+	unsigned short ioprio_class;
+=======
 	unsigned short ioprio_class, org_ioprio_class;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pid_t pid;
 
@@ -252,6 +283,9 @@ struct cfq_group {
 	/* number of requests that are on the dispatch list or inside driver */
 	int dispatched;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_ttime ttime;
 };
 
@@ -259,8 +293,11 @@ struct cfq_io_cq {
 	struct io_cq		icq;		/* must be the first member */
 	struct cfq_queue	*cfqq[2];
 	struct cfq_ttime	ttime;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -317,8 +354,12 @@ struct cfq_data {
 <<<<<<< HEAD
 	struct cfq_io_cq *active_cic;
 =======
+<<<<<<< HEAD
+	struct cfq_io_cq *active_cic;
+=======
 	struct cfq_io_context *active_cic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * async queue for each priority case
@@ -343,10 +384,14 @@ struct cfq_data {
 <<<<<<< HEAD
 	unsigned int cfq_target_latency;
 =======
+<<<<<<< HEAD
+	unsigned int cfq_target_latency;
+=======
 
 	unsigned int cic_index;
 	struct list_head cic_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Fallback dummy cfqq for extreme OOM conditions
@@ -451,6 +496,9 @@ CFQ_CFQQ_FNS(wait_busy);
 			&cfqg->service_trees[i][j]: NULL) \
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool cfq_io_thinktime_big(struct cfq_data *cfqd,
 	struct cfq_ttime *ttime, bool group_idle)
 {
@@ -463,8 +511,11 @@ static inline bool cfq_io_thinktime_big(struct cfq_data *cfqd,
 		slice = cfqd->cfq_slice_idle;
 	return ttime->ttime_mean > slice;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline bool iops_mode(struct cfq_data *cfqd)
 {
@@ -523,6 +574,9 @@ static void cfq_dispatch_insert(struct request_queue *, struct request *);
 static struct cfq_queue *cfq_get_queue(struct cfq_data *, bool,
 				       struct io_context *, gfp_t);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct cfq_io_cq *icq_to_cic(struct io_cq *icq)
 {
@@ -552,6 +606,8 @@ static inline void cic_set_cfqq(struct cfq_io_cq *cic, struct cfq_queue *cfqq,
 static inline struct cfq_data *cic_to_cfqd(struct cfq_io_cq *cic)
 {
 	return cic->icq.q->elevator->elevator_data;
+<<<<<<< HEAD
+=======
 =======
 static struct cfq_io_context *cfq_cic_lookup(struct cfq_data *,
 						struct io_context *);
@@ -585,6 +641,7 @@ static inline struct cfq_data *cic_to_cfqd(struct cfq_io_context *cic)
 
 	return cfqd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -696,8 +753,12 @@ cfq_group_slice(struct cfq_data *cfqd, struct cfq_group *cfqg)
 <<<<<<< HEAD
 	return cfqd->cfq_target_latency * cfqg->weight / st->total_weight;
 =======
+<<<<<<< HEAD
+	return cfqd->cfq_target_latency * cfqg->weight / st->total_weight;
+=======
 	return cfq_target_latency * cfqg->weight / st->total_weight;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline unsigned
@@ -782,9 +843,14 @@ cfq_choose_req(struct cfq_data *cfqd, struct request *rq1, struct request *rq2, 
 	if ((rq1->cmd_flags ^ rq2->cmd_flags) & REQ_PRIO)
 		return rq1->cmd_flags & REQ_PRIO ? rq1 : rq2;
 =======
+<<<<<<< HEAD
+	if ((rq1->cmd_flags ^ rq2->cmd_flags) & REQ_PRIO)
+		return rq1->cmd_flags & REQ_PRIO ? rq1 : rq2;
+=======
 	if ((rq1->cmd_flags ^ rq2->cmd_flags) & REQ_META)
 		return rq1->cmd_flags & REQ_META ? rq1 : rq2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	s1 = blk_rq_pos(rq1);
 	s2 = blk_rq_pos(rq2);
@@ -1122,9 +1188,14 @@ static inline struct cfq_group *cfqg_of_blkg(struct blkio_group *blkg)
 static void cfq_update_blkio_group_weight(void *key, struct blkio_group *blkg,
 					  unsigned int weight)
 =======
+<<<<<<< HEAD
+static void cfq_update_blkio_group_weight(void *key, struct blkio_group *blkg,
+					  unsigned int weight)
+=======
 void cfq_update_blkio_group_weight(void *key, struct blkio_group *blkg,
 					unsigned int weight)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cfq_group *cfqg = cfqg_of_blkg(blkg);
 	cfqg->new_weight = weight;
@@ -1181,7 +1252,12 @@ static struct cfq_group * cfq_alloc_cfqg(struct cfq_data *cfqd)
 	cfqg->ttime.last_end_request = jiffies;
 
 =======
+<<<<<<< HEAD
+	cfqg->ttime.last_end_request = jiffies;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Take the initial reference that will be released on destroy
 	 * This can be thought of a joint reference by cgroup and
@@ -1326,7 +1402,13 @@ static void cfq_destroy_cfqg(struct cfq_data *cfqd, struct cfq_group *cfqg)
 	cfqd->nr_blkcg_linked_grps--;
 
 =======
+<<<<<<< HEAD
+	BUG_ON(cfqd->nr_blkcg_linked_grps <= 0);
+	cfqd->nr_blkcg_linked_grps--;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Put the reference taken at the time of creation so that when all
 	 * queues are gone, group can be destroyed.
@@ -1367,8 +1449,12 @@ static void cfq_release_cfq_groups(struct cfq_data *cfqd)
 <<<<<<< HEAD
 static void cfq_unlink_blkio_group(void *key, struct blkio_group *blkg)
 =======
+<<<<<<< HEAD
+static void cfq_unlink_blkio_group(void *key, struct blkio_group *blkg)
+=======
 void cfq_unlink_blkio_group(void *key, struct blkio_group *blkg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long  flags;
 	struct cfq_data *cfqd = key;
@@ -1636,11 +1722,16 @@ static void cfq_add_rq_rb(struct request *rq)
 	struct cfq_queue *cfqq = RQ_CFQQ(rq);
 	struct cfq_data *cfqd = cfqq->cfqd;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct request *prev;
 
 	cfqq->queued[rq_is_sync(rq)]++;
 
 	elv_rb_add(&cfqq->sort_list, rq);
+<<<<<<< HEAD
+=======
 =======
 	struct request *__alias, *prev;
 
@@ -1653,6 +1744,7 @@ static void cfq_add_rq_rb(struct request *rq)
 	while ((__alias = elv_rb_add(&cfqq->sort_list, rq)) != NULL)
 		cfq_dispatch_insert(cfqd->queue, __alias);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!cfq_cfqq_on_rr(cfqq))
 		cfq_add_cfqq_rr(cfqd, cfqq);
@@ -1691,8 +1783,12 @@ cfq_find_rq_fmerge(struct cfq_data *cfqd, struct bio *bio)
 <<<<<<< HEAD
 	struct cfq_io_cq *cic;
 =======
+<<<<<<< HEAD
+	struct cfq_io_cq *cic;
+=======
 	struct cfq_io_context *cic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_queue *cfqq;
 
 	cic = cfq_cic_lookup(cfqd, tsk->io_context);
@@ -1748,10 +1844,16 @@ static void cfq_remove_request(struct request *rq)
 		WARN_ON(!cfqq->prio_pending);
 		cfqq->prio_pending--;
 =======
+<<<<<<< HEAD
+	if (rq->cmd_flags & REQ_PRIO) {
+		WARN_ON(!cfqq->prio_pending);
+		cfqq->prio_pending--;
+=======
 	if (rq->cmd_flags & REQ_META) {
 		WARN_ON(!cfqq->meta_pending);
 		cfqq->meta_pending--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1796,7 +1898,12 @@ cfq_merged_requests(struct request_queue *q, struct request *rq,
 	struct cfq_data *cfqd = q->elevator->elevator_data;
 
 =======
+<<<<<<< HEAD
+	struct cfq_data *cfqd = q->elevator->elevator_data;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * reposition in fifo if next is older than rq
 	 */
@@ -1812,6 +1919,9 @@ cfq_merged_requests(struct request_queue *q, struct request *rq,
 	cfq_blkiocg_update_io_merged_stats(&(RQ_CFQG(rq))->blkg,
 					rq_data_dir(next), rq_is_sync(next));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cfqq = RQ_CFQQ(next);
 	/*
@@ -1822,8 +1932,11 @@ cfq_merged_requests(struct request_queue *q, struct request *rq,
 	if (cfq_cfqq_on_rr(cfqq) && RB_EMPTY_ROOT(&cfqq->sort_list) &&
 	    cfqq != cfqd->active_queue)
 		cfq_del_cfqq_rr(cfqd, cfqq);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int cfq_allow_merge(struct request_queue *q, struct request *rq,
@@ -1833,8 +1946,12 @@ static int cfq_allow_merge(struct request_queue *q, struct request *rq,
 <<<<<<< HEAD
 	struct cfq_io_cq *cic;
 =======
+<<<<<<< HEAD
+	struct cfq_io_cq *cic;
+=======
 	struct cfq_io_context *cic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_queue *cfqq;
 
 	/*
@@ -1847,8 +1964,12 @@ static int cfq_allow_merge(struct request_queue *q, struct request *rq,
 <<<<<<< HEAD
 	 * Lookup the cfqq that this bio will be queued with and allow
 =======
+<<<<<<< HEAD
+	 * Lookup the cfqq that this bio will be queued with and allow
+=======
 	 * Lookup the cfqq that this bio will be queued with. Allow
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * merge only if rq is queued there.
 	 */
 	cic = cfq_cic_lookup(cfqd, current->io_context);
@@ -1940,8 +2061,12 @@ __cfq_slice_expired(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 <<<<<<< HEAD
 		put_io_context(cfqd->active_cic->icq.ioc);
 =======
+<<<<<<< HEAD
+		put_io_context(cfqd->active_cic->icq.ioc);
+=======
 		put_io_context(cfqd->active_cic->ioc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cfqd->active_cic = NULL;
 	}
 }
@@ -2154,8 +2279,13 @@ static bool cfq_should_idle(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 	if (service_tree->count == 1 && cfq_cfqq_sync(cfqq) &&
 	   !cfq_io_thinktime_big(cfqd, &service_tree->ttime, false))
 =======
+<<<<<<< HEAD
+	if (service_tree->count == 1 && cfq_cfqq_sync(cfqq) &&
+	   !cfq_io_thinktime_big(cfqd, &service_tree->ttime, false))
+=======
 	if (service_tree->count == 1 && cfq_cfqq_sync(cfqq))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 	cfq_log_cfqq(cfqd, cfqq, "Not idling. st->count:%d",
 			service_tree->count);
@@ -2168,8 +2298,12 @@ static void cfq_arm_slice_timer(struct cfq_data *cfqd)
 <<<<<<< HEAD
 	struct cfq_io_cq *cic;
 =======
+<<<<<<< HEAD
+	struct cfq_io_cq *cic;
+=======
 	struct cfq_io_context *cic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long sl, group_idle = 0;
 
 	/*
@@ -2207,8 +2341,12 @@ static void cfq_arm_slice_timer(struct cfq_data *cfqd)
 <<<<<<< HEAD
 	if (!cic || !atomic_read(&cic->icq.ioc->nr_tasks))
 =======
+<<<<<<< HEAD
+	if (!cic || !atomic_read(&cic->icq.ioc->nr_tasks))
+=======
 	if (!cic || !atomic_read(&cic->ioc->nr_tasks))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	/*
@@ -2217,16 +2355,22 @@ static void cfq_arm_slice_timer(struct cfq_data *cfqd)
 	 * time slice.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sample_valid(cic->ttime.ttime_samples) &&
 	    (cfqq->slice_end - jiffies < cic->ttime.ttime_mean)) {
 		cfq_log_cfqq(cfqd, cfqq, "Not idling. think_time:%lu",
 			     cic->ttime.ttime_mean);
+<<<<<<< HEAD
+=======
 =======
 	if (sample_valid(cic->ttime_samples) &&
 	    (cfqq->slice_end - jiffies < cic->ttime_mean)) {
 		cfq_log_cfqq(cfqd, cfqq, "Not idling. think_time:%lu",
 			     cic->ttime_mean);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -2263,8 +2407,11 @@ static void cfq_dispatch_insert(struct request_queue *q, struct request *rq)
 	(RQ_CFQG(rq))->dispatched++;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	rq->ioprio = IOPRIO_PRIO_VALUE(cfqq->ioprio_class, cfqq->ioprio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	elv_dispatch_sort(q, rq);
 
 	cfqd->rq_in_flight[cfq_cfqq_sync(cfqq)]++;
@@ -2452,8 +2599,13 @@ new_workload:
 		tmp = cfqd->cfq_target_latency *
 			cfqg_busy_async_queues(cfqd, cfqg);
 =======
+<<<<<<< HEAD
+		tmp = cfqd->cfq_target_latency *
+			cfqg_busy_async_queues(cfqd, cfqg);
+=======
 		tmp = cfq_target_latency * cfqg_busy_async_queues(cfqd, cfqg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tmp = tmp/cfqd->busy_queues;
 		slice = min_t(unsigned, slice, tmp);
 
@@ -2490,7 +2642,13 @@ static void cfq_choose_cfqg(struct cfq_data *cfqd)
 		return;
 
 =======
+<<<<<<< HEAD
+	if (!cfqg)
+		return;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfqd->serving_group = cfqg;
 
 	/* Restore the workload type data */
@@ -2602,9 +2760,15 @@ check_group_idle:
 	    cfqq->cfqg->dispatched &&
 	    !cfq_io_thinktime_big(cfqd, &cfqq->cfqg->ttime, true)) {
 =======
+<<<<<<< HEAD
+	if (cfqd->cfq_group_idle && cfqq->cfqg->nr_cfqq == 1 &&
+	    cfqq->cfqg->dispatched &&
+	    !cfq_io_thinktime_big(cfqd, &cfqq->cfqg->ttime, true)) {
+=======
 	if (cfqd->cfq_group_idle && cfqq->cfqg->nr_cfqq == 1
 	    && cfqq->cfqg->dispatched) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cfqq = NULL;
 		goto keep_queue;
 	}
@@ -2791,10 +2955,16 @@ static bool cfq_dispatch_request(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 
 		atomic_long_inc(&cic->icq.ioc->refcount);
 =======
+<<<<<<< HEAD
+		struct cfq_io_cq *cic = RQ_CIC(rq);
+
+		atomic_long_inc(&cic->icq.ioc->refcount);
+=======
 		struct cfq_io_context *cic = RQ_CIC(rq);
 
 		atomic_long_inc(&cic->ioc->refcount);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cfqd->active_cic = cic;
 	}
 
@@ -2879,6 +3049,8 @@ static void cfq_put_queue(struct cfq_queue *cfqq)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Call func for each cic attached to this ioc.
  */
@@ -2958,6 +3130,7 @@ static void cfq_free_io_context(struct io_context *ioc)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void cfq_put_cooperator(struct cfq_queue *cfqq)
 {
 	struct cfq_queue *__cfqq, *next;
@@ -2992,6 +3165,9 @@ static void cfq_exit_cfqq(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void cfq_init_icq(struct io_cq *icq)
 {
 	struct cfq_io_cq *cic = icq_to_cic(icq);
@@ -3003,6 +3179,8 @@ static void cfq_exit_icq(struct io_cq *icq)
 {
 	struct cfq_io_cq *cic = icq_to_cic(icq);
 	struct cfq_data *cfqd = cic_to_cfqd(cic);
+<<<<<<< HEAD
+=======
 =======
 static void __cfq_exit_single_io_context(struct cfq_data *cfqd,
 					 struct cfq_io_context *cic)
@@ -3026,6 +3204,7 @@ static void __cfq_exit_single_io_context(struct cfq_data *cfqd,
 	} else
 		rcu_read_unlock();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cic->cfqq[BLK_RW_ASYNC]) {
 		cfq_exit_cfqq(cfqd, cic->cfqq[BLK_RW_ASYNC]);
@@ -3038,6 +3217,8 @@ static void __cfq_exit_single_io_context(struct cfq_data *cfqd,
 	}
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void cfq_exit_single_io_context(struct io_context *ioc,
@@ -3092,6 +3273,7 @@ cfq_alloc_io_context(struct cfq_data *cfqd, gfp_t gfp_mask)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void cfq_init_prio_data(struct cfq_queue *cfqq, struct io_context *ioc)
 {
 	struct task_struct *tsk = current;
@@ -3132,6 +3314,9 @@ static void cfq_init_prio_data(struct cfq_queue *cfqq, struct io_context *ioc)
 	 */
 	cfqq->org_ioprio = cfqq->ioprio;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfq_clear_cfqq_prio_changed(cfqq);
 }
 
@@ -3139,6 +3324,8 @@ static void changed_ioprio(struct cfq_io_cq *cic)
 {
 	struct cfq_data *cfqd = cic_to_cfqd(cic);
 	struct cfq_queue *cfqq;
+<<<<<<< HEAD
+=======
 =======
 	cfqq->org_ioprio_class = cfqq->ioprio_class;
 	cfq_clear_cfqq_prio_changed(cfqq);
@@ -3150,15 +3337,21 @@ static void changed_ioprio(struct io_context *ioc, struct cfq_io_context *cic)
 	struct cfq_queue *cfqq;
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(!cfqd))
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfqq = cic->cfqq[BLK_RW_ASYNC];
 	if (cfqq) {
 		struct cfq_queue *new_cfqq;
 		new_cfqq = cfq_get_queue(cfqd, BLK_RW_ASYNC, cic->icq.ioc,
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(cfqd->queue->queue_lock, flags);
 
@@ -3167,6 +3360,7 @@ static void changed_ioprio(struct io_context *ioc, struct cfq_io_context *cic)
 		struct cfq_queue *new_cfqq;
 		new_cfqq = cfq_get_queue(cfqd, BLK_RW_ASYNC, cic->ioc,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						GFP_ATOMIC);
 		if (new_cfqq) {
 			cic->cfqq[BLK_RW_ASYNC] = new_cfqq;
@@ -3179,6 +3373,8 @@ static void changed_ioprio(struct io_context *ioc, struct cfq_io_context *cic)
 		cfq_mark_cfqq_prio_changed(cfqq);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	spin_unlock_irqrestore(cfqd->queue->queue_lock, flags);
 }
@@ -3188,6 +3384,7 @@ static void cfq_ioc_set_ioprio(struct io_context *ioc)
 	call_for_each_cic(ioc, changed_ioprio);
 	ioc->ioprio_changed = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void cfq_init_cfqq(struct cfq_data *cfqd, struct cfq_queue *cfqq,
@@ -3212,10 +3409,15 @@ static void cfq_init_cfqq(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 
 #ifdef CONFIG_CFQ_GROUP_IOSCHED
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void changed_cgroup(struct cfq_io_cq *cic)
 {
 	struct cfq_queue *sync_cfqq = cic_to_cfqq(cic, 1);
 	struct cfq_data *cfqd = cic_to_cfqd(cic);
+<<<<<<< HEAD
+=======
 =======
 static void changed_cgroup(struct io_context *ioc, struct cfq_io_context *cic)
 {
@@ -3223,6 +3425,7 @@ static void changed_cgroup(struct io_context *ioc, struct cfq_io_context *cic)
 	struct cfq_data *cfqd = cic_to_cfqd(cic);
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct request_queue *q;
 
 	if (unlikely(!cfqd))
@@ -3232,9 +3435,12 @@ static void changed_cgroup(struct io_context *ioc, struct cfq_io_context *cic)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_lock_irqsave(q->queue_lock, flags);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sync_cfqq) {
 		/*
 		 * Drop reference to sync queue. A new sync queue will be
@@ -3246,6 +3452,8 @@ static void changed_cgroup(struct io_context *ioc, struct cfq_io_context *cic)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	spin_unlock_irqrestore(q->queue_lock, flags);
 }
@@ -3255,6 +3463,7 @@ static void cfq_ioc_set_cgroup(struct io_context *ioc)
 	call_for_each_cic(ioc, changed_cgroup);
 	ioc->cgroup_changed = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif  /* CONFIG_CFQ_GROUP_IOSCHED */
 
@@ -3266,8 +3475,12 @@ cfq_find_alloc_queue(struct cfq_data *cfqd, bool is_sync,
 <<<<<<< HEAD
 	struct cfq_io_cq *cic;
 =======
+<<<<<<< HEAD
+	struct cfq_io_cq *cic;
+=======
 	struct cfq_io_context *cic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_group *cfqg;
 
 retry:
@@ -3359,6 +3572,9 @@ cfq_get_queue(struct cfq_data *cfqd, bool is_sync, struct io_context *ioc,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 __cfq_update_io_thinktime(struct cfq_ttime *ttime, unsigned long slice_idle)
 {
@@ -3382,6 +3598,8 @@ cfq_update_io_thinktime(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 #ifdef CONFIG_CFQ_GROUP_IOSCHED
 	__cfq_update_io_thinktime(&cfqq->cfqg->ttime, cfqd->cfq_group_idle);
 #endif
+<<<<<<< HEAD
+=======
 =======
 /*
  * We drop cfq io contexts lazily, so we may find a dead one.
@@ -3547,6 +3765,7 @@ cfq_update_io_thinktime(struct cfq_data *cfqd, struct cfq_io_context *cic)
 	cic->ttime_total = (7*cic->ttime_total + 256*ttime) / 8;
 	cic->ttime_mean = (cic->ttime_total + 128) / cic->ttime_samples;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -3578,8 +3797,12 @@ cfq_update_idle_window(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 <<<<<<< HEAD
 		       struct cfq_io_cq *cic)
 =======
+<<<<<<< HEAD
+		       struct cfq_io_cq *cic)
+=======
 		       struct cfq_io_context *cic)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int old_idle, enable_idle;
 
@@ -3597,12 +3820,17 @@ cfq_update_idle_window(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 	if (cfqq->next_rq && (cfqq->next_rq->cmd_flags & REQ_NOIDLE))
 		enable_idle = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (!atomic_read(&cic->icq.ioc->nr_tasks) ||
 		 !cfqd->cfq_slice_idle ||
 		 (!cfq_cfqq_deep(cfqq) && CFQQ_SEEKY(cfqq)))
 		enable_idle = 0;
 	else if (sample_valid(cic->ttime.ttime_samples)) {
 		if (cic->ttime.ttime_mean > cfqd->cfq_slice_idle)
+<<<<<<< HEAD
+=======
 =======
 	else if (!atomic_read(&cic->ioc->nr_tasks) || !cfqd->cfq_slice_idle ||
 	    (!cfq_cfqq_deep(cfqq) && CFQQ_SEEKY(cfqq)))
@@ -3610,6 +3838,7 @@ cfq_update_idle_window(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 	else if (sample_valid(cic->ttime_samples)) {
 		if (cic->ttime_mean > cfqd->cfq_slice_idle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			enable_idle = 0;
 		else
 			enable_idle = 1;
@@ -3677,8 +3906,12 @@ cfq_should_preempt(struct cfq_data *cfqd, struct cfq_queue *new_cfqq,
 <<<<<<< HEAD
 	if ((rq->cmd_flags & REQ_PRIO) && !cfqq->prio_pending)
 =======
+<<<<<<< HEAD
+	if ((rq->cmd_flags & REQ_PRIO) && !cfqq->prio_pending)
+=======
 	if ((rq->cmd_flags & REQ_META) && !cfqq->meta_pending)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 
 	/*
@@ -3713,8 +3946,12 @@ static void cfq_preempt_queue(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 <<<<<<< HEAD
 	enum wl_type_t old_type = cfqq_type(cfqd->active_queue);
 =======
+<<<<<<< HEAD
+	enum wl_type_t old_type = cfqq_type(cfqd->active_queue);
+=======
 	struct cfq_queue *old_cfqq = cfqd->active_queue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cfq_log_cfqq(cfqd, cfqq, "preempt");
 	cfq_slice_expired(cfqd, 1);
@@ -3726,8 +3963,12 @@ static void cfq_preempt_queue(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 <<<<<<< HEAD
 	if (old_type != cfqq_type(cfqq))
 =======
+<<<<<<< HEAD
+	if (old_type != cfqq_type(cfqq))
+=======
 	if (cfqq_type(old_cfqq) != cfqq_type(cfqq))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cfqq->cfqg->saved_workload_slice = 0;
 
 	/*
@@ -3751,6 +3992,9 @@ cfq_rq_enqueued(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 		struct request *rq)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_io_cq *cic = RQ_CIC(rq);
 
 	cfqd->rq_queued++;
@@ -3758,6 +4002,8 @@ cfq_rq_enqueued(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 		cfqq->prio_pending++;
 
 	cfq_update_io_thinktime(cfqd, cfqq, cic);
+<<<<<<< HEAD
+=======
 =======
 	struct cfq_io_context *cic = RQ_CIC(rq);
 
@@ -3767,6 +4013,7 @@ cfq_rq_enqueued(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 
 	cfq_update_io_thinktime(cfqd, cic);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfq_update_io_seektime(cfqd, cfqq, rq);
 	cfq_update_idle_window(cfqd, cfqq, cic);
 
@@ -3816,8 +4063,12 @@ static void cfq_insert_request(struct request_queue *q, struct request *rq)
 <<<<<<< HEAD
 	cfq_init_prio_data(cfqq, RQ_CIC(rq)->icq.ioc);
 =======
+<<<<<<< HEAD
+	cfq_init_prio_data(cfqq, RQ_CIC(rq)->icq.ioc);
+=======
 	cfq_init_prio_data(cfqq, RQ_CIC(rq)->ioc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rq_set_fifo_time(rq, jiffies + cfqd->cfq_fifo_expire[rq_is_sync(rq)]);
 	list_add_tail(&rq->queuelist, &cfqq->fifo);
@@ -3870,8 +4121,12 @@ static bool cfq_should_wait_busy(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 <<<<<<< HEAD
 	struct cfq_io_cq *cic = cfqd->active_cic;
 =======
+<<<<<<< HEAD
+	struct cfq_io_cq *cic = cfqd->active_cic;
+=======
 	struct cfq_io_context *cic = cfqd->active_cic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If the queue already has requests, don't wait */
 	if (!RB_EMPTY_ROOT(&cfqq->sort_list))
@@ -3882,12 +4137,18 @@ static bool cfq_should_wait_busy(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 		return false;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* the only queue in the group, but think time is big */
 	if (cfq_io_thinktime_big(cfqd, &cfqq->cfqg->ttime, true))
 		return false;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cfq_slice_used(cfqq))
 		return true;
 
@@ -3896,9 +4157,14 @@ static bool cfq_should_wait_busy(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 	if (cic && sample_valid(cic->ttime.ttime_samples)
 	    && (cfqq->slice_end - jiffies < cic->ttime.ttime_mean))
 =======
+<<<<<<< HEAD
+	if (cic && sample_valid(cic->ttime.ttime_samples)
+	    && (cfqq->slice_end - jiffies < cic->ttime.ttime_mean))
+=======
 	if (cic && sample_valid(cic->ttime_samples)
 	    && (cfqq->slice_end - jiffies < cic->ttime_mean))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 
 	/*
@@ -3940,6 +4206,9 @@ static void cfq_completed_request(struct request_queue *q, struct request *rq)
 
 	if (sync) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct cfq_rb_root *service_tree;
 
 		RQ_CIC(rq)->ttime.last_end_request = now;
@@ -3950,20 +4219,29 @@ static void cfq_completed_request(struct request_queue *q, struct request *rq)
 			service_tree = service_tree_for(cfqq->cfqg,
 				cfqq_prio(cfqq), cfqq_type(cfqq));
 		service_tree->ttime.last_end_request = now;
+<<<<<<< HEAD
+=======
 =======
 		RQ_CIC(rq)->last_end_request = now;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!time_after(rq->start_time + cfqd->cfq_fifo_expire[1], now))
 			cfqd->last_delayed_sync = now;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CFQ_GROUP_IOSCHED
 	cfqq->cfqg->ttime.last_end_request = now;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If this is the active queue, check if it needs to be expired,
 	 * or if we want to idle in case it has no pending requests.
@@ -4011,6 +4289,8 @@ static void cfq_completed_request(struct request_queue *q, struct request *rq)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * we temporarily boost lower priority queues if they are holding fs exclusive
  * resources. they are boosted to normal prio (CLASS_BE/4)
@@ -4036,6 +4316,7 @@ static void cfq_prio_boost(struct cfq_queue *cfqq)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __cfq_may_queue(struct cfq_queue *cfqq)
 {
 	if (cfq_cfqq_wait_request(cfqq) && !cfq_cfqq_must_alloc_slice(cfqq)) {
@@ -4053,8 +4334,12 @@ static int cfq_may_queue(struct request_queue *q, int rw)
 <<<<<<< HEAD
 	struct cfq_io_cq *cic;
 =======
+<<<<<<< HEAD
+	struct cfq_io_cq *cic;
+=======
 	struct cfq_io_context *cic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_queue *cfqq;
 
 	/*
@@ -4072,9 +4357,13 @@ static int cfq_may_queue(struct request_queue *q, int rw)
 <<<<<<< HEAD
 		cfq_init_prio_data(cfqq, cic->icq.ioc);
 =======
+<<<<<<< HEAD
+		cfq_init_prio_data(cfqq, cic->icq.ioc);
+=======
 		cfq_init_prio_data(cfqq, cic->ioc);
 		cfq_prio_boost(cfqq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		return __cfq_may_queue(cfqq);
 	}
@@ -4096,10 +4385,15 @@ static void cfq_put_request(struct request *rq)
 		cfqq->allocated[rw]--;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Put down rq reference on cfqg */
 		cfq_put_cfqg(RQ_CFQG(rq));
 		rq->elv.priv[0] = NULL;
 		rq->elv.priv[1] = NULL;
+<<<<<<< HEAD
+=======
 =======
 		put_io_context(RQ_CIC(rq)->ioc);
 
@@ -4110,6 +4404,7 @@ static void cfq_put_request(struct request *rq)
 		cfq_put_cfqg(RQ_CFQG(rq));
 		rq->elevator_private[2] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		cfq_put_queue(cfqq);
 	}
@@ -4119,8 +4414,12 @@ static struct cfq_queue *
 <<<<<<< HEAD
 cfq_merge_cfqqs(struct cfq_data *cfqd, struct cfq_io_cq *cic,
 =======
+<<<<<<< HEAD
+cfq_merge_cfqqs(struct cfq_data *cfqd, struct cfq_io_cq *cic,
+=======
 cfq_merge_cfqqs(struct cfq_data *cfqd, struct cfq_io_context *cic,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct cfq_queue *cfqq)
 {
 	cfq_log_cfqq(cfqd, cfqq, "merging with queue %p", cfqq->new_cfqq);
@@ -4138,8 +4437,12 @@ static struct cfq_queue *
 <<<<<<< HEAD
 split_cfqq(struct cfq_io_cq *cic, struct cfq_queue *cfqq)
 =======
+<<<<<<< HEAD
+split_cfqq(struct cfq_io_cq *cic, struct cfq_queue *cfqq)
+=======
 split_cfqq(struct cfq_io_context *cic, struct cfq_queue *cfqq)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (cfqq_process_refs(cfqq) == 1) {
 		cfqq->pid = current->pid;
@@ -4163,6 +4466,9 @@ cfq_set_request(struct request_queue *q, struct request *rq, gfp_t gfp_mask)
 {
 	struct cfq_data *cfqd = q->elevator->elevator_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfq_io_cq *cic = icq_to_cic(rq->elv.icq);
 	const int rw = rq_data_dir(rq);
 	const bool is_sync = rq_is_sync(rq);
@@ -4181,6 +4487,8 @@ cfq_set_request(struct request_queue *q, struct request *rq, gfp_t gfp_mask)
 	if (unlikely(changed & ICQ_CGROUP_CHANGED))
 		changed_cgroup(cic);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	struct cfq_io_context *cic;
 	const int rw = rq_data_dir(rq);
@@ -4197,6 +4505,7 @@ cfq_set_request(struct request_queue *q, struct request *rq, gfp_t gfp_mask)
 	if (!cic)
 		goto queue_fail;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 new_queue:
 	cfqq = cic_to_cfqq(cic, is_sync);
@@ -4204,8 +4513,12 @@ new_queue:
 <<<<<<< HEAD
 		cfqq = cfq_get_queue(cfqd, is_sync, cic->icq.ioc, gfp_mask);
 =======
+<<<<<<< HEAD
+		cfqq = cfq_get_queue(cfqd, is_sync, cic->icq.ioc, gfp_mask);
+=======
 		cfqq = cfq_get_queue(cfqd, is_sync, cic->ioc, gfp_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cic_set_cfqq(cic, cfqq, is_sync);
 	} else {
 		/*
@@ -4232,10 +4545,15 @@ new_queue:
 
 	cfqq->ref++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rq->elv.priv[0] = cfqq;
 	rq->elv.priv[1] = cfq_ref_get_cfqg(cfqq->cfqg);
 	spin_unlock_irq(q->queue_lock);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	rq->elevator_private[0] = cic;
 	rq->elevator_private[1] = cfqq;
@@ -4249,6 +4567,7 @@ queue_fail:
 	cfq_log(cfqd, "set_request fail");
 	return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void cfq_kick_queue(struct work_struct *work)
@@ -4354,6 +4673,8 @@ static void cfq_exit_queue(struct elevator_queue *e)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	while (!list_empty(&cfqd->cic_list)) {
 		struct cfq_io_context *cic = list_entry(cfqd->cic_list.next,
 							struct cfq_io_context,
@@ -4363,6 +4684,7 @@ static void cfq_exit_queue(struct elevator_queue *e)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfq_put_async_queues(cfqd);
 	cfq_release_cfq_groups(cfqd);
 
@@ -4379,11 +4701,14 @@ static void cfq_exit_queue(struct elevator_queue *e)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_lock(&cic_index_lock);
 	ida_remove(&cic_index_ida, cfqd->cic_index);
 	spin_unlock(&cic_index_lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Wait for cfqg->blkg->key accessors to exit their grace periods.
 	 * Do this wait only if there are other unlinked groups out
@@ -4407,6 +4732,8 @@ static void cfq_exit_queue(struct elevator_queue *e)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int cfq_alloc_cic_index(void)
 {
 	int index, error;
@@ -4426,6 +4753,7 @@ static int cfq_alloc_cic_index(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void *cfq_init_queue(struct request_queue *q)
 {
 	struct cfq_data *cfqd;
@@ -4433,6 +4761,11 @@ static void *cfq_init_queue(struct request_queue *q)
 	struct cfq_group *cfqg;
 	struct cfq_rb_root *st;
 
+<<<<<<< HEAD
+	cfqd = kmalloc_node(sizeof(*cfqd), GFP_KERNEL | __GFP_ZERO, q->node);
+	if (!cfqd)
+		return NULL;
+=======
 <<<<<<< HEAD
 	cfqd = kmalloc_node(sizeof(*cfqd), GFP_KERNEL | __GFP_ZERO, q->node);
 	if (!cfqd)
@@ -4456,6 +4789,7 @@ static void *cfq_init_queue(struct request_queue *q)
 	 */
 	cfqd->cic_index = i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Init root service tree */
 	cfqd->grp_service_tree = CFQ_RB_ROOT;
@@ -4483,12 +4817,15 @@ static void *cfq_init_queue(struct request_queue *q)
 		kfree(cfqg);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 		spin_lock(&cic_index_lock);
 		ida_remove(&cic_index_ida, cfqd->cic_index);
 		spin_unlock(&cic_index_lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(cfqd);
 		return NULL;
 	}
@@ -4522,9 +4859,12 @@ static void *cfq_init_queue(struct request_queue *q)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&cfqd->cic_list);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfqd->queue = q;
 
 	init_timer(&cfqd->idle_slice_timer);
@@ -4543,7 +4883,11 @@ static void *cfq_init_queue(struct request_queue *q)
 <<<<<<< HEAD
 	cfqd->cfq_target_latency = cfq_target_latency;
 =======
+<<<<<<< HEAD
+	cfqd->cfq_target_latency = cfq_target_latency;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfqd->cfq_slice_async_rq = cfq_slice_async_rq;
 	cfqd->cfq_slice_idle = cfq_slice_idle;
 	cfqd->cfq_group_idle = cfq_group_idle;
@@ -4557,6 +4901,8 @@ static void *cfq_init_queue(struct request_queue *q)
 	return cfqd;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void cfq_slab_kill(void)
@@ -4588,6 +4934,7 @@ fail:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * sysfs parts below -->
  */
@@ -4629,7 +4976,11 @@ SHOW_FUNCTION(cfq_low_latency_show, cfqd->cfq_latency, 0);
 <<<<<<< HEAD
 SHOW_FUNCTION(cfq_target_latency_show, cfqd->cfq_target_latency, 1);
 =======
+<<<<<<< HEAD
+SHOW_FUNCTION(cfq_target_latency_show, cfqd->cfq_target_latency, 1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #undef SHOW_FUNCTION
 
 #define STORE_FUNCTION(__FUNC, __PTR, MIN, MAX, __CONV)			\
@@ -4666,7 +5017,11 @@ STORE_FUNCTION(cfq_low_latency_store, &cfqd->cfq_latency, 0, 1, 0);
 <<<<<<< HEAD
 STORE_FUNCTION(cfq_target_latency_store, &cfqd->cfq_target_latency, 1, UINT_MAX, 1);
 =======
+<<<<<<< HEAD
+STORE_FUNCTION(cfq_target_latency_store, &cfqd->cfq_target_latency, 1, UINT_MAX, 1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #undef STORE_FUNCTION
 
 #define CFQ_ATTR(name) \
@@ -4687,7 +5042,11 @@ static struct elv_fs_entry cfq_attrs[] = {
 <<<<<<< HEAD
 	CFQ_ATTR(target_latency),
 =======
+<<<<<<< HEAD
+	CFQ_ATTR(target_latency),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__ATTR_NULL
 };
 
@@ -4709,24 +5068,35 @@ static struct elevator_type iosched_cfq = {
 		.elevator_init_icq_fn =		cfq_init_icq,
 		.elevator_exit_icq_fn =		cfq_exit_icq,
 =======
+<<<<<<< HEAD
+		.elevator_init_icq_fn =		cfq_init_icq,
+		.elevator_exit_icq_fn =		cfq_exit_icq,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.elevator_set_req_fn =		cfq_set_request,
 		.elevator_put_req_fn =		cfq_put_request,
 		.elevator_may_queue_fn =	cfq_may_queue,
 		.elevator_init_fn =		cfq_init_queue,
 		.elevator_exit_fn =		cfq_exit_queue,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.icq_size	=	sizeof(struct cfq_io_cq),
 	.icq_align	=	__alignof__(struct cfq_io_cq),
 	.elevator_attrs =	cfq_attrs,
 	.elevator_name	=	"cfq",
+<<<<<<< HEAD
+=======
 =======
 		.trim =				cfq_free_io_context,
 	},
 	.elevator_attrs =	cfq_attrs,
 	.elevator_name =	"cfq",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.elevator_owner =	THIS_MODULE,
 };
 
@@ -4748,7 +5118,12 @@ static int __init cfq_init(void)
 	int ret;
 
 =======
+<<<<<<< HEAD
+	int ret;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * could be 0 on HZ < 1000 setups
 	 */
@@ -4764,6 +5139,9 @@ static int __init cfq_init(void)
 		cfq_group_idle = 0;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfq_pool = KMEM_CACHE(cfq_queue, 0);
 	if (!cfq_pool)
 		return -ENOMEM;
@@ -4774,12 +5152,15 @@ static int __init cfq_init(void)
 		return ret;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	if (cfq_slab_setup())
 		return -ENOMEM;
 
 	elv_register(&iosched_cfq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blkio_policy_register(&blkio_policy_cfq);
 
 	return 0;
@@ -4788,12 +5169,17 @@ static int __init cfq_init(void)
 static void __exit cfq_exit(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blkio_policy_unregister(&blkio_policy_cfq);
 	elv_unregister(&iosched_cfq);
 	kmem_cache_destroy(cfq_pool);
 }
 
 module_init(cfq_init);
+<<<<<<< HEAD
+=======
 =======
 	DECLARE_COMPLETION_ONSTACK(all_gone);
 	blkio_policy_unregister(&blkio_policy_cfq);
@@ -4818,6 +5204,7 @@ beforeresume_initcall(cfq_init);
 module_init(cfq_init);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_exit(cfq_exit);
 
 MODULE_AUTHOR("Jens Axboe");

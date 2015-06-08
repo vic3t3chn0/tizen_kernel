@@ -122,6 +122,9 @@
 #else	/* CONFIG_THUMB2_KERNEL */
 	.macro	svc_exit, rpsr
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	lr, [sp, #S_SP]			@ top of the stack
 	ldrd	r0, r1, [sp, #S_LR]		@ calling lr and pc
 	clrex					@ clear the exclusive monitor
@@ -129,6 +132,8 @@
 	ldmia	sp, {r0 - r12}
 	mov	sp, lr
 	ldr	lr, [sp], #4
+<<<<<<< HEAD
+=======
 =======
 	clrex					@ clear the exclusive monitor
 	ldr	r0, [sp, #S_SP]			@ top of the stack
@@ -140,6 +145,7 @@
 	addeq	sp, sp, #S_FRAME_SIZE - 8	@ aligned
 	addne	sp, sp, #S_FRAME_SIZE - 4	@ not aligned
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rfeia	sp!
 	.endm
 
@@ -177,6 +183,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	@
 	@ Debug exceptions are taken as prefetch or data aborts.
 	@ We must disable preemption during the handler so that
@@ -197,6 +205,7 @@
 	.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * These are the registers used in the syscall handler, and allow us to
  * have in theory up to 7 arguments to a function - r0 to r6.

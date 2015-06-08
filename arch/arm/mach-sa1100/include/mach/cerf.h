@@ -15,11 +15,16 @@
 #define CERF_ETH_IRQ IRQ_GPIO26
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CERF_GPIO_CF_BVD2		19
 #define CERF_GPIO_CF_BVD1		20
 #define CERF_GPIO_CF_RESET		21
 #define CERF_GPIO_CF_IRQ		22
 #define CERF_GPIO_CF_CD			23
+<<<<<<< HEAD
+=======
 =======
 #define CERF_GPIO_CF_BVD2		GPIO_GPIO (19)
 #define CERF_GPIO_CF_BVD1		GPIO_GPIO (20)
@@ -32,5 +37,6 @@
 #define CERF_IRQ_GPIO_CF_IRQ		IRQ_GPIO22
 #define CERF_IRQ_GPIO_CF_CD		IRQ_GPIO23
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif // _INCLUDE_CERF_H_

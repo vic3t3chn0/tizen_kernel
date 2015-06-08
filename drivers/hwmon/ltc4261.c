@@ -85,6 +85,13 @@ static struct ltc4261_data *ltc4261_update_device(struct device *dev)
 					"Failed to read ADC value: error %d\n",
 					val);
 				ret = ERR_PTR(val);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				data->valid = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto abort;
 			}
 			data->regs[i] = val;
@@ -234,11 +241,23 @@ static int ltc4261_probe(struct i2c_client *client,
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data = devm_kzalloc(&client->dev, sizeof(*data), GFP_KERNEL);
+	if (!data)
+		return -ENOMEM;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data = kzalloc(sizeof(*data), GFP_KERNEL);
 	if (!data) {
 		ret = -ENOMEM;
 		goto out_kzalloc;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	i2c_set_clientdata(client, data);
 	mutex_init(&data->update_lock);
@@ -249,7 +268,15 @@ static int ltc4261_probe(struct i2c_client *client,
 	/* Register sysfs hooks */
 	ret = sysfs_create_group(&client->dev.kobj, &ltc4261_group);
 	if (ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return ret;
+=======
 		goto out_sysfs_create_group;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		goto out_sysfs_create_group;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	data->hwmon_dev = hwmon_device_register(&client->dev);
 	if (IS_ERR(data->hwmon_dev)) {
@@ -261,9 +288,18 @@ static int ltc4261_probe(struct i2c_client *client,
 
 out_hwmon_device_register:
 	sysfs_remove_group(&client->dev.kobj, &ltc4261_group);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 out_sysfs_create_group:
 	kfree(data);
 out_kzalloc:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+out_sysfs_create_group:
+	kfree(data);
+out_kzalloc:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -274,8 +310,16 @@ static int ltc4261_remove(struct i2c_client *client)
 	hwmon_device_unregister(data->hwmon_dev);
 	sysfs_remove_group(&client->dev.kobj, &ltc4261_group);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(data);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(data);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -296,6 +340,12 @@ static struct i2c_driver ltc4261_driver = {
 	.id_table = ltc4261_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(ltc4261_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ltc4261_init(void)
 {
 	return i2c_add_driver(&ltc4261_driver);
@@ -305,10 +355,23 @@ static void __exit ltc4261_exit(void)
 {
 	i2c_del_driver(&ltc4261_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Guenter Roeck <guenter.roeck@ericsson.com>");
 MODULE_DESCRIPTION("LTC4261 driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(ltc4261_init);
 module_exit(ltc4261_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(ltc4261_init);
+module_exit(ltc4261_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

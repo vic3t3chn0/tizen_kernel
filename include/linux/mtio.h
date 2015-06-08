@@ -197,7 +197,11 @@ struct	mtpos {
 <<<<<<< HEAD
 #define MT_ST_NOWAIT_EOF	0x8000
 =======
+<<<<<<< HEAD
+#define MT_ST_NOWAIT_EOF	0x8000
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The mode parameters to be controlled. Parameter chosen with bits 20-28 */
 #define MT_ST_CLEAR_DEFAULT	0xfffff

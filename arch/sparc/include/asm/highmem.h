@@ -73,8 +73,12 @@ static inline void kunmap(struct page *page)
 <<<<<<< HEAD
 extern void *kmap_atomic(struct page *page);
 =======
+<<<<<<< HEAD
+extern void *kmap_atomic(struct page *page);
+=======
 extern void *__kmap_atomic(struct page *page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __kunmap_atomic(void *kvaddr);
 extern struct page *kmap_atomic_to_page(void *vaddr);
 

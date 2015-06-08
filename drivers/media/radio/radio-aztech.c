@@ -1,5 +1,17 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * radio-aztech.c - Aztech radio card driver
+ *
+ * Converted to the radio-isa framework by Hans Verkuil <hans.verkuil@xs4all.nl>
+=======
 /* radio-aztech.c - Aztech radio card driver for Linux 2.2
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* radio-aztech.c - Aztech radio card driver for Linux 2.2
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Converted to V4L2 API by Mauro Carvalho Chehab <mchehab@infradead.org>
  * Adapted to support the Video for Linux API by
  * Russell Kroll <rkroll@exploits.org>.  Based on original tuner code by:
@@ -10,6 +22,12 @@
  * Scott McGrath    (smcgrath@twilight.vtc.vsc.edu)
  * William McGrath  (wmcgrath@twilight.vtc.vsc.edu)
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Fully tested with the Keene USB FM Transmitter and the v4l2-compliance tool.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The basis for this code may be found at http://bigbang.vtc.vsc.edu/fmradio/
  * along with more information on the card itself.
  *
@@ -23,6 +41,10 @@
  * - for loops used as delays replaced with udelay()
  * - #defines removed, changed to static values
  * - tuning structure changed - no more character arrays, other changes
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 */
 
 #include <linux/module.h>	/* Modules 			*/
@@ -30,21 +52,75 @@
 #include <linux/ioport.h>	/* request_region		*/
 #include <linux/delay.h>	/* udelay			*/
 #include <linux/videodev2.h>	/* kernel radio structs		*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/io.h>		/* outb, outb_p			*/
+#include <linux/slab.h>
+#include <media/v4l2-device.h>
+#include <media/v4l2-ioctl.h>
+#include <media/v4l2-ctrls.h>
+#include "radio-isa.h"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/version.h>      /* for KERNEL_VERSION MACRO     */
 #include <linux/io.h>		/* outb, outb_p			*/
 #include <media/v4l2-device.h>
 #include <media/v4l2-ioctl.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Russell Kroll, Quay Lu, Donald Song, Jason Lewis, Scott McGrath, William McGrath");
 MODULE_DESCRIPTION("A driver for the Aztech radio card.");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_VERSION("1.0.0");
+
+/* acceptable ports: 0x350 (JP3 shorted), 0x358 (JP3 open) */
+=======
 
 /* acceptable ports: 0x350 (JP3 shorted), 0x358 (JP3 open) */
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+/* acceptable ports: 0x350 (JP3 shorted), 0x358 (JP3 open) */
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_RADIO_AZTECH_PORT
 #define CONFIG_RADIO_AZTECH_PORT -1
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define AZTECH_MAX 2
+
+static int io[AZTECH_MAX] = { [0] = CONFIG_RADIO_AZTECH_PORT,
+			      [1 ... (AZTECH_MAX - 1)] = -1 };
+static int radio_nr[AZTECH_MAX]	= { [0 ... (AZTECH_MAX - 1)] = -1 };
+static const int radio_wait_time = 1000;
+
+module_param_array(io, int, NULL, 0444);
+MODULE_PARM_DESC(io, "I/O addresses of the Aztech card (0x350 or 0x358)");
+module_param_array(radio_nr, int, NULL, 0444);
+MODULE_PARM_DESC(radio_nr, "Radio device numbers");
+
+struct aztech {
+	struct radio_isa_card isa;
+	int curvol;
+};
+
+static void send_0_byte(struct aztech *az)
+{
+	udelay(radio_wait_time);
+	outb_p(2 + az->curvol, az->isa.io);
+	outb_p(64 + 2 + az->curvol, az->isa.io);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int io = CONFIG_RADIO_AZTECH_PORT;
 static int radio_nr = -1;
 static int radio_wait_time = 1000;
@@ -92,10 +168,38 @@ static void send_0_byte(struct aztech *az)
 	udelay(radio_wait_time);
 	outb_p(2 + volconvert(az->curvol), az->io);
 	outb_p(64 + 2 + volconvert(az->curvol), az->io);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void send_1_byte(struct aztech *az)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	udelay(radio_wait_time);
+	outb_p(128 + 2 + az->curvol, az->isa.io);
+	outb_p(128 + 64 + 2 + az->curvol, az->isa.io);
+}
+
+static struct radio_isa_card *aztech_alloc(void)
+{
+	struct aztech *az = kzalloc(sizeof(*az), GFP_KERNEL);
+
+	return az ? &az->isa : NULL;
+}
+
+static int aztech_s_frequency(struct radio_isa_card *isa, u32 freq)
+{
+	struct aztech *az = container_of(isa, struct aztech, isa);
+	int  i;
+
+	freq += 171200;			/* Add 10.7 MHz IF		*/
+	freq /= 800;			/* Convert to 50 kHz units	*/
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	udelay (radio_wait_time);
 	outb_p(128 + 2 + volconvert(az->curvol), az->io);
 	outb_p(128 + 64 + 2 + volconvert(az->curvol), az->io);
@@ -148,11 +252,23 @@ static int az_setfreq(struct aztech *az, unsigned long frequency)
 	az->curfreq = frequency;
 	frequency += 171200;		/* Add 10.7 MHz IF		*/
 	frequency /= 800;		/* Convert to 50 kHz units	*/
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	send_0_byte(az);		/*  0: LSB of frequency       */
 
 	for (i = 0; i < 13; i++)	/*   : frequency bits (1-13)  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (freq & (1 << i))
+=======
 		if (frequency & (1 << i))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (frequency & (1 << i))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			send_1_byte(az);
 		else
 			send_0_byte(az);
@@ -160,7 +276,15 @@ static int az_setfreq(struct aztech *az, unsigned long frequency)
 	send_0_byte(az);		/* 14: test bit - always 0    */
 	send_0_byte(az);		/* 15: test bit - always 0    */
 	send_0_byte(az);		/* 16: band data 0 - always 0 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (isa->stereo)		/* 17: stereo (1 to enable)   */
+=======
 	if (az->stereo)		/* 17: stereo (1 to enable)   */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (az->stereo)		/* 17: stereo (1 to enable)   */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		send_1_byte(az);
 	else
 		send_0_byte(az);
@@ -175,13 +299,84 @@ static int az_setfreq(struct aztech *az, unsigned long frequency)
 	/* latch frequency */
 
 	udelay(radio_wait_time);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	outb_p(128 + 64 + az->curvol, az->isa.io);
+=======
 	outb_p(128 + 64 + volconvert(az->curvol), az->io);
 
 	mutex_unlock(&az->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	outb_p(128 + 64 + volconvert(az->curvol), az->io);
+
+	mutex_unlock(&az->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* thanks to Michael Dwyer for giving me a dose of clues in
+ * the signal strength department..
+ *
+ * This card has a stereo bit - bit 0 set = mono, not set = stereo
+ */
+static u32 aztech_g_rxsubchans(struct radio_isa_card *isa)
+{
+	if (inb(isa->io) & 1)
+		return V4L2_TUNER_SUB_MONO;
+	return V4L2_TUNER_SUB_STEREO;
+}
+
+static int aztech_s_stereo(struct radio_isa_card *isa, bool stereo)
+{
+	return aztech_s_frequency(isa, isa->freq);
+}
+
+static int aztech_s_mute_volume(struct radio_isa_card *isa, bool mute, int vol)
+{
+	struct aztech *az = container_of(isa, struct aztech, isa);
+
+	if (mute)
+		vol = 0;
+	az->curvol = (vol & 1) + ((vol & 2) << 1);
+	outb(az->curvol, isa->io);
+	return 0;
+}
+
+static const struct radio_isa_ops aztech_ops = {
+	.alloc = aztech_alloc,
+	.s_mute_volume = aztech_s_mute_volume,
+	.s_frequency = aztech_s_frequency,
+	.s_stereo = aztech_s_stereo,
+	.g_rxsubchans = aztech_g_rxsubchans,
+};
+
+static const int aztech_ioports[] = { 0x350, 0x358 };
+
+static struct radio_isa_driver aztech_driver = {
+	.driver = {
+		.match		= radio_isa_match,
+		.probe		= radio_isa_probe,
+		.remove		= radio_isa_remove,
+		.driver		= {
+			.name	= "radio-aztech",
+		},
+	},
+	.io_params = io,
+	.radio_nr_params = radio_nr,
+	.io_ports = aztech_ioports,
+	.num_of_io_ports = ARRAY_SIZE(aztech_ioports),
+	.region_size = 2,
+	.card = "Aztech Radio",
+	.ops = &aztech_ops,
+	.has_stereo = true,
+	.max_volume = 3,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int vidioc_querycap(struct file *file, void  *priv,
 					struct v4l2_capability *v)
 {
@@ -340,10 +535,20 @@ static const struct v4l2_ioctl_ops aztech_ioctl_ops = {
 	.vidioc_queryctrl   = vidioc_queryctrl,
 	.vidioc_g_ctrl      = vidioc_g_ctrl,
 	.vidioc_s_ctrl      = vidioc_s_ctrl,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init aztech_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return isa_register_driver(&aztech_driver.driver, AZTECH_MAX);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct aztech *az = &aztech_card;
 	struct v4l2_device *v4l2_dev = &az->v4l2_dev;
 	int res;
@@ -386,15 +591,29 @@ static int __init aztech_init(void)
 
 	v4l2_info(v4l2_dev, "Aztech radio card driver v1.00/19990224 rkroll@exploits.org\n");
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __exit aztech_exit(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	isa_unregister_driver(&aztech_driver.driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct aztech *az = &aztech_card;
 
 	video_unregister_device(&az->vdev);
 	v4l2_device_unregister(&az->v4l2_dev);
 	release_region(az->io, 2);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init(aztech_init);

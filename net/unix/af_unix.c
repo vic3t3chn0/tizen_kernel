@@ -115,17 +115,23 @@
 #include <net/checksum.h>
 #include <linux/security.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/freezer.h>
 
 struct hlist_head unix_socket_table[UNIX_HASH_SIZE + 1];
 EXPORT_SYMBOL_GPL(unix_socket_table);
 DEFINE_SPINLOCK(unix_table_lock);
 EXPORT_SYMBOL_GPL(unix_table_lock);
+<<<<<<< HEAD
+=======
 =======
 
 static struct hlist_head unix_socket_table[UNIX_HASH_SIZE + 1];
 static DEFINE_SPINLOCK(unix_table_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static atomic_long_t unix_nr_socks;
 
 #define unix_sockets_unbound	(&unix_socket_table[UNIX_HASH_SIZE])
@@ -184,8 +190,12 @@ static inline int unix_recvq_full(struct sock const *sk)
 <<<<<<< HEAD
 struct sock *unix_peer_get(struct sock *s)
 =======
+<<<<<<< HEAD
+struct sock *unix_peer_get(struct sock *s)
+=======
 static struct sock *unix_peer_get(struct sock *s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sock *peer;
 
@@ -199,7 +209,11 @@ static struct sock *unix_peer_get(struct sock *s)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(unix_peer_get);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(unix_peer_get);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void unix_release_addr(struct unix_address *addr)
 {
@@ -310,8 +324,12 @@ static struct sock *unix_find_socket_byinode(struct inode *i)
 <<<<<<< HEAD
 		struct dentry *dentry = unix_sk(s)->path.dentry;
 =======
+<<<<<<< HEAD
+		struct dentry *dentry = unix_sk(s)->path.dentry;
+=======
 		struct dentry *dentry = unix_sk(s)->dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (dentry && dentry->d_inode == i) {
 			sock_hold(s);
@@ -378,8 +396,12 @@ static void unix_sock_destructor(struct sock *sk)
 <<<<<<< HEAD
 		WARN(1, "Attempt to release alive unix socket: %p\n", sk);
 =======
+<<<<<<< HEAD
+		WARN(1, "Attempt to release alive unix socket: %p\n", sk);
+=======
 		printk(KERN_INFO "Attempt to release alive unix socket: %p\n", sk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -397,10 +419,15 @@ static void unix_sock_destructor(struct sock *sk)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int unix_release_sock(struct sock *sk, int embrion)
 {
 	struct unix_sock *u = unix_sk(sk);
 	struct path path;
+<<<<<<< HEAD
+=======
 =======
 static void unix_release_sock(struct sock *sk, int embrion)
 {
@@ -408,6 +435,7 @@ static void unix_release_sock(struct sock *sk, int embrion)
 	struct dentry *dentry;
 	struct vfsmount *mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sock *skpair;
 	struct sk_buff *skb;
 	int state;
@@ -423,11 +451,17 @@ static void unix_release_sock(struct sock *sk, int embrion)
 	u->path.dentry = NULL;
 	u->path.mnt = NULL;
 =======
+<<<<<<< HEAD
+	path	     = u->path;
+	u->path.dentry = NULL;
+	u->path.mnt = NULL;
+=======
 	dentry	     = u->dentry;
 	u->dentry    = NULL;
 	mnt	     = u->mnt;
 	u->mnt	     = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state = sk->sk_state;
 	sk->sk_state = TCP_CLOSE;
 	unix_state_unlock(sk);
@@ -464,11 +498,16 @@ static void unix_release_sock(struct sock *sk, int embrion)
 	if (path.dentry)
 		path_put(&path);
 =======
+<<<<<<< HEAD
+	if (path.dentry)
+		path_put(&path);
+=======
 	if (dentry) {
 		dput(dentry);
 		mntput(mnt);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sock_put(sk);
 
@@ -491,7 +530,12 @@ static void unix_release_sock(struct sock *sk, int embrion)
 
 	return 0;
 =======
+<<<<<<< HEAD
+
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void init_peercred(struct sock *sk)
@@ -574,6 +618,9 @@ static int unix_seqpacket_recvmsg(struct kiocb *, struct socket *,
 				  struct msghdr *, size_t, int);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void unix_set_peek_off(struct sock *sk, int val)
 {
 	struct unix_sock *u = unix_sk(sk);
@@ -584,8 +631,11 @@ static void unix_set_peek_off(struct sock *sk, int val)
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct proto_ops unix_stream_ops = {
 	.family =	PF_UNIX,
 	.owner =	THIS_MODULE,
@@ -608,7 +658,11 @@ static const struct proto_ops unix_stream_ops = {
 <<<<<<< HEAD
 	.set_peek_off =	unix_set_peek_off,
 =======
+<<<<<<< HEAD
+	.set_peek_off =	unix_set_peek_off,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct proto_ops unix_dgram_ops = {
@@ -633,7 +687,11 @@ static const struct proto_ops unix_dgram_ops = {
 <<<<<<< HEAD
 	.set_peek_off =	unix_set_peek_off,
 =======
+<<<<<<< HEAD
+	.set_peek_off =	unix_set_peek_off,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct proto_ops unix_seqpacket_ops = {
@@ -658,7 +716,11 @@ static const struct proto_ops unix_seqpacket_ops = {
 <<<<<<< HEAD
 	.set_peek_off =	unix_set_peek_off,
 =======
+<<<<<<< HEAD
+	.set_peek_off =	unix_set_peek_off,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct proto unix_proto = {
@@ -700,9 +762,14 @@ static struct sock *unix_create1(struct net *net, struct socket *sock)
 	u->path.dentry = NULL;
 	u->path.mnt = NULL;
 =======
+<<<<<<< HEAD
+	u->path.dentry = NULL;
+	u->path.mnt = NULL;
+=======
 	u->dentry = NULL;
 	u->mnt	  = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&u->lock);
 	atomic_long_set(&u->inflight, 0);
 	INIT_LIST_HEAD(&u->link);
@@ -763,11 +830,17 @@ static int unix_release(struct socket *sock)
 
 	return unix_release_sock(sk, 0);
 =======
+<<<<<<< HEAD
+	sock->sk = NULL;
+
+	return unix_release_sock(sk, 0);
+=======
 	unix_release_sock(sk, 0);
 	sock->sk = NULL;
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int unix_autobind(struct socket *sock)
@@ -858,8 +931,12 @@ static struct sock *unix_find_other(struct net *net,
 <<<<<<< HEAD
 			touch_atime(&path);
 =======
+<<<<<<< HEAD
+			touch_atime(&path);
+=======
 			touch_atime(path.mnt, path.dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		path_put(&path);
 
@@ -878,10 +955,16 @@ static struct sock *unix_find_other(struct net *net,
 			if (dentry)
 				touch_atime(&unix_sk(u)->path);
 =======
+<<<<<<< HEAD
+			dentry = unix_sk(u)->path.dentry;
+			if (dentry)
+				touch_atime(&unix_sk(u)->path);
+=======
 			dentry = unix_sk(u)->dentry;
 			if (dentry)
 				touch_atime(unix_sk(u)->mnt, dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else
 			goto fail;
 	}
@@ -906,9 +989,15 @@ static int unix_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 	struct dentry *dentry = NULL;
 	struct path path;
 =======
+<<<<<<< HEAD
+	char *sun_path = sunaddr->sun_path;
+	struct dentry *dentry = NULL;
+	struct path path;
+=======
 	struct dentry *dentry = NULL;
 	struct nameidata nd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	unsigned hash;
 	struct unix_address *addr;
@@ -948,19 +1037,29 @@ static int unix_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 	if (sun_path[0]) {
 		umode_t mode;
 =======
+<<<<<<< HEAD
+	if (sun_path[0]) {
+		umode_t mode;
+=======
 	if (sunaddr->sun_path[0]) {
 		unsigned int mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = 0;
 		/*
 		 * Get the parent directory, calculate the hash for last
 		 * component.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dentry = kern_path_create(AT_FDCWD, sun_path, &path, 0);
 		err = PTR_ERR(dentry);
 		if (IS_ERR(dentry))
 			goto out_mknod_parent;
+<<<<<<< HEAD
+=======
 =======
 		err = kern_path_parent(sunaddr->sun_path, &nd);
 		if (err)
@@ -971,6 +1070,7 @@ static int unix_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 		if (IS_ERR(dentry))
 			goto out_mknod_unlock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * All right, let's create it.
@@ -978,6 +1078,9 @@ static int unix_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 		mode = S_IFSOCK |
 		       (SOCK_INODE(sock)->i_mode & ~current_umask());
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = mnt_want_write(path.mnt);
 		if (err)
 			goto out_mknod_dput;
@@ -992,6 +1095,8 @@ out_mknod_drop_write:
 		mutex_unlock(&path.dentry->d_inode->i_mutex);
 		dput(path.dentry);
 		path.dentry = dentry;
+<<<<<<< HEAD
+=======
 =======
 		err = mnt_want_write(nd.path.mnt);
 		if (err)
@@ -1008,6 +1113,7 @@ out_mknod_drop_write:
 		dput(nd.path.dentry);
 		nd.path.dentry = dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		addr->hash = UNIX_HASH_SIZE;
 	}
@@ -1017,8 +1123,12 @@ out_mknod_drop_write:
 <<<<<<< HEAD
 	if (!sun_path[0]) {
 =======
+<<<<<<< HEAD
+	if (!sun_path[0]) {
+=======
 	if (!sunaddr->sun_path[0]) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -EADDRINUSE;
 		if (__unix_find_socket_byname(net, sunaddr, addr_len,
 					      sk->sk_type, hash)) {
@@ -1032,9 +1142,13 @@ out_mknod_drop_write:
 <<<<<<< HEAD
 		u->path = path;
 =======
+<<<<<<< HEAD
+		u->path = path;
+=======
 		u->dentry = nd.path.dentry;
 		u->mnt    = nd.path.mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	err = 0;
@@ -1055,10 +1169,15 @@ out_mknod_dput:
 	mutex_unlock(&path.dentry->d_inode->i_mutex);
 	path_put(&path);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&path.dentry->d_inode->i_mutex);
+	path_put(&path);
+=======
 out_mknod_unlock:
 	mutex_unlock(&nd.path.dentry->d_inode->i_mutex);
 	path_put(&nd.path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_mknod_parent:
 	if (err == -EEXIST)
 		err = -EADDRINUSE;
@@ -1327,10 +1446,16 @@ restart:
 		path_get(&otheru->path);
 		newu->path = otheru->path;
 =======
+<<<<<<< HEAD
+	if (otheru->path.dentry) {
+		path_get(&otheru->path);
+		newu->path = otheru->path;
+=======
 	if (otheru->dentry) {
 		newu->dentry	= dget(otheru->dentry);
 		newu->mnt	= mntget(otheru->mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Set credentials */
@@ -1533,14 +1658,20 @@ static int unix_scm_to_skb(struct scm_cookie *scm, struct sk_buff *skb, bool sen
 {
 	int err = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	UNIXCB(skb).pid  = get_pid(scm->pid);
 	if (scm->cred)
 		UNIXCB(skb).cred = get_cred(scm->cred);
+<<<<<<< HEAD
+=======
 =======
 	UNIXCB(skb).pid  = get_pid(scm->pid);
 	UNIXCB(skb).cred = get_cred(scm->cred);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	UNIXCB(skb).fp = NULL;
 	if (scm->fp && send_fds)
 		err = unix_attach_fds(scm, skb);
@@ -1551,6 +1682,9 @@ static int unix_scm_to_skb(struct scm_cookie *scm, struct sk_buff *skb, bool sen
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Some apps rely on write() giving SCM_CREDENTIALS
  * We include credentials if source or destination socket
  * asserted SOCK_PASSCRED.
@@ -1569,8 +1703,11 @@ static void maybe_add_creds(struct sk_buff *skb, const struct socket *sock,
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Send AF_UNIX data.
  */
 
@@ -1597,8 +1734,12 @@ static int unix_dgram_sendmsg(struct kiocb *kiocb, struct socket *sock,
 <<<<<<< HEAD
 	err = scm_send(sock, msg, siocb->scm, false);
 =======
+<<<<<<< HEAD
+	err = scm_send(sock, msg, siocb->scm, false);
+=======
 	err = scm_send(sock, msg, siocb->scm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 
@@ -1724,7 +1865,11 @@ restart:
 <<<<<<< HEAD
 	maybe_add_creds(skb, sock, other);
 =======
+<<<<<<< HEAD
+	maybe_add_creds(skb, sock, other);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_queue_tail(&other->sk_receive_queue, skb);
 	if (max_level > unix_sk(other)->recursion_level)
 		unix_sk(other)->recursion_level = max_level;
@@ -1765,8 +1910,12 @@ static int unix_stream_sendmsg(struct kiocb *kiocb, struct socket *sock,
 <<<<<<< HEAD
 	err = scm_send(sock, msg, siocb->scm, false);
 =======
+<<<<<<< HEAD
+	err = scm_send(sock, msg, siocb->scm, false);
+=======
 	err = scm_send(sock, msg, siocb->scm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 
@@ -1846,7 +1995,11 @@ static int unix_stream_sendmsg(struct kiocb *kiocb, struct socket *sock,
 <<<<<<< HEAD
 		maybe_add_creds(skb, sock, other);
 =======
+<<<<<<< HEAD
+		maybe_add_creds(skb, sock, other);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		skb_queue_tail(&other->sk_receive_queue, skb);
 		if (max_level > unix_sk(other)->recursion_level)
 			unix_sk(other)->recursion_level = max_level;
@@ -1929,7 +2082,11 @@ static int unix_dgram_recvmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 	int peeked, skip;
 =======
+<<<<<<< HEAD
+	int peeked, skip;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -EOPNOTSUPP;
 	if (flags&MSG_OOB)
@@ -1948,8 +2105,14 @@ static int unix_dgram_recvmsg(struct kiocb *iocb, struct socket *sock,
 
 	skb = __skb_recv_datagram(sk, flags, &peeked, &skip, &err);
 =======
+<<<<<<< HEAD
+	skip = sk_peek_offset(sk, flags);
+
+	skb = __skb_recv_datagram(sk, flags, &peeked, &skip, &err);
+=======
 	skb = skb_recv_datagram(sk, flags, noblock, &err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!skb) {
 		unix_state_lock(sk);
 		/* Signal EOF on disconnected non-blocking SEQPACKET socket. */
@@ -1967,12 +2130,17 @@ static int unix_dgram_recvmsg(struct kiocb *iocb, struct socket *sock,
 		unix_copy_addr(msg, skb->sk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (size > skb->len - skip)
 		size = skb->len - skip;
 	else if (size < skb->len - skip)
 		msg->msg_flags |= MSG_TRUNC;
 
 	err = skb_copy_datagram_iovec(skb, skip, msg->msg_iov, size);
+<<<<<<< HEAD
+=======
 =======
 	if (size > skb->len)
 		size = skb->len;
@@ -1981,6 +2149,7 @@ static int unix_dgram_recvmsg(struct kiocb *iocb, struct socket *sock,
 
 	err = skb_copy_datagram_iovec(skb, 0, msg->msg_iov, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out_free;
 
@@ -2001,7 +2170,12 @@ static int unix_dgram_recvmsg(struct kiocb *iocb, struct socket *sock,
 
 		sk_peek_offset_bwd(sk, skb->len);
 =======
+<<<<<<< HEAD
+
+		sk_peek_offset_bwd(sk, skb->len);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* It is questionable: on PEEK we could:
 		   - do not return fds - good, but too simple 8)
@@ -2016,6 +2190,9 @@ static int unix_dgram_recvmsg(struct kiocb *iocb, struct socket *sock,
 
 		*/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		sk_peek_offset_fwd(sk, size);
 
@@ -2023,12 +2200,15 @@ static int unix_dgram_recvmsg(struct kiocb *iocb, struct socket *sock,
 			siocb->scm->fp = scm_fp_dup(UNIXCB(skb).fp);
 	}
 	err = (flags & MSG_TRUNC) ? skb->len - skip : size;
+<<<<<<< HEAD
+=======
 =======
 		if (UNIXCB(skb).fp)
 			siocb->scm->fp = scm_fp_dup(UNIXCB(skb).fp);
 	}
 	err = size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	scm_recv(sock, msg, siocb->scm, flags);
 
@@ -2065,8 +2245,12 @@ static long unix_stream_data_wait(struct sock *sk, long timeo)
 <<<<<<< HEAD
 		timeo = freezable_schedule_timeout(timeo);
 =======
+<<<<<<< HEAD
+		timeo = freezable_schedule_timeout(timeo);
+=======
 		timeo = schedule_timeout(timeo);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unix_state_lock(sk);
 		clear_bit(SOCK_ASYNC_WAITDATA, &sk->sk_socket->flags);
 	}
@@ -2095,7 +2279,11 @@ static int unix_stream_recvmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 	int skip;
 =======
+<<<<<<< HEAD
+	int skip;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -EINVAL;
 	if (sk->sk_state != TCP_ESTABLISHED)
@@ -2129,7 +2317,12 @@ static int unix_stream_recvmsg(struct kiocb *iocb, struct socket *sock,
 	skip = sk_peek_offset(sk, flags);
 
 =======
+<<<<<<< HEAD
+	skip = sk_peek_offset(sk, flags);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	do {
 		int chunk;
 		struct sk_buff *skb;
@@ -2139,8 +2332,13 @@ static int unix_stream_recvmsg(struct kiocb *iocb, struct socket *sock,
 		skb = skb_peek(&sk->sk_receive_queue);
 again:
 =======
+<<<<<<< HEAD
+		skb = skb_peek(&sk->sk_receive_queue);
+again:
+=======
 		skb = skb_dequeue(&sk->sk_receive_queue);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (skb == NULL) {
 			unix_sk(sk)->recursion_level = 0;
 			if (copied >= target)
@@ -2176,6 +2374,9 @@ again:
 			break;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (skip >= skb->len) {
 			skip -= skb->len;
@@ -2183,8 +2384,11 @@ again:
 			goto again;
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unix_state_unlock(sk);
 
 		if (check_creds) {
@@ -2194,11 +2398,16 @@ again:
 			    (UNIXCB(skb).cred != siocb->scm->cred))
 				break;
 =======
+<<<<<<< HEAD
+			    (UNIXCB(skb).cred != siocb->scm->cred))
+				break;
+=======
 			    (UNIXCB(skb).cred != siocb->scm->cred)) {
 				skb_queue_head(&sk->sk_receive_queue, skb);
 				break;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/* Copy credentials */
 			scm_set_cred(siocb->scm, UNIXCB(skb).pid, UNIXCB(skb).cred);
@@ -2215,10 +2424,15 @@ again:
 		chunk = min_t(unsigned int, skb->len - skip, size);
 		if (memcpy_toiovec(msg->msg_iov, skb->data + skip, chunk)) {
 =======
+<<<<<<< HEAD
+		chunk = min_t(unsigned int, skb->len - skip, size);
+		if (memcpy_toiovec(msg->msg_iov, skb->data + skip, chunk)) {
+=======
 		chunk = min_t(unsigned int, skb->len, size);
 		if (memcpy_toiovec(msg->msg_iov, skb->data, chunk)) {
 			skb_queue_head(&sk->sk_receive_queue, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (copied == 0)
 				copied = -EFAULT;
 			break;
@@ -2231,6 +2445,9 @@ again:
 			skb_pull(skb, chunk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sk_peek_offset_bwd(sk, chunk);
 
 			if (UNIXCB(skb).fp)
@@ -2240,6 +2457,8 @@ again:
 				break;
 
 			skb_unlink(skb, &sk->sk_receive_queue);
+<<<<<<< HEAD
+=======
 =======
 			if (UNIXCB(skb).fp)
 				unix_detach_fds(siocb->scm, skb);
@@ -2251,6 +2470,7 @@ again:
 			}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			consume_skb(skb);
 
 			if (siocb->scm->fp)
@@ -2265,9 +2485,14 @@ again:
 			sk_peek_offset_fwd(sk, chunk);
 
 =======
+<<<<<<< HEAD
+			sk_peek_offset_fwd(sk, chunk);
+
+=======
 			/* put message back and return */
 			skb_queue_head(&sk->sk_receive_queue, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	} while (size);
@@ -2321,6 +2546,9 @@ static int unix_shutdown(struct socket *sock, int mode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long unix_inq_len(struct sock *sk)
 {
 	struct sk_buff *skb;
@@ -2351,8 +2579,11 @@ long unix_outq_len(struct sock *sk)
 }
 EXPORT_SYMBOL_GPL(unix_outq_len);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int unix_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 {
 	struct sock *sk = sock->sk;
@@ -2362,6 +2593,9 @@ static int unix_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 	switch (cmd) {
 	case SIOCOUTQ:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		amount = unix_outq_len(sk);
 		err = put_user(amount, (int __user *)arg);
 		break;
@@ -2372,6 +2606,8 @@ static int unix_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 		else
 			err = put_user(amount, (int __user *)arg);
 		break;
+<<<<<<< HEAD
+=======
 =======
 		amount = sk_wmem_alloc_get(sk);
 		err = put_user(amount, (int __user *)arg);
@@ -2401,6 +2637,7 @@ static int unix_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 		}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		err = -ENOIOCTLCMD;
 		break;
@@ -2477,8 +2714,12 @@ static unsigned int unix_dgram_poll(struct file *file, struct socket *sock,
 <<<<<<< HEAD
 	if (!(poll_requested_events(wait) & (POLLWRBAND|POLLWRNORM|POLLOUT)))
 =======
+<<<<<<< HEAD
+	if (!(poll_requested_events(wait) & (POLLWRBAND|POLLWRNORM|POLLOUT)))
+=======
 	if (wait && !(wait->key & (POLLWRBAND | POLLWRNORM | POLLOUT)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return mask;
 
 	writable = unix_writable(sk);

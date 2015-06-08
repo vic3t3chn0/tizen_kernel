@@ -66,8 +66,12 @@ static int switch_drv_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 			  psw_info->irq_flags,
 =======
+<<<<<<< HEAD
+			  psw_info->irq_flags,
+=======
 			  IRQF_DISABLED | psw_info->irq_flags,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  psw_info->name ? psw_info->name : DRV_NAME, pdev);
 	if (unlikely(ret < 0))
 		goto err;

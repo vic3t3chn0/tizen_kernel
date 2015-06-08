@@ -37,7 +37,11 @@
 <<<<<<< HEAD
 #include <linux/of_gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/of_gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/tegra_wm8903_pdata.h>
 
@@ -68,9 +72,15 @@ struct tegra_wm8903 {
 	struct platform_device *pcm_dev;
 	struct tegra_asoc_utils_data util_data;
 =======
+<<<<<<< HEAD
+	struct tegra_wm8903_platform_data pdata;
+	struct platform_device *pcm_dev;
+	struct tegra_asoc_utils_data util_data;
+=======
 	struct tegra_asoc_utils_data util_data;
 	struct tegra_wm8903_platform_data *pdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int gpio_requested;
 };
 
@@ -173,8 +183,12 @@ static int tegra_wm8903_event_int_spk(struct snd_soc_dapm_widget *w,
 <<<<<<< HEAD
 	struct tegra_wm8903_platform_data *pdata = &machine->pdata;
 =======
+<<<<<<< HEAD
+	struct tegra_wm8903_platform_data *pdata = &machine->pdata;
+=======
 	struct tegra_wm8903_platform_data *pdata = machine->pdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!(machine->gpio_requested & GPIO_SPKR_EN))
 		return 0;
@@ -194,8 +208,12 @@ static int tegra_wm8903_event_hp(struct snd_soc_dapm_widget *w,
 <<<<<<< HEAD
 	struct tegra_wm8903_platform_data *pdata = &machine->pdata;
 =======
+<<<<<<< HEAD
+	struct tegra_wm8903_platform_data *pdata = &machine->pdata;
+=======
 	struct tegra_wm8903_platform_data *pdata = machine->pdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!(machine->gpio_requested & GPIO_HP_MUTE))
 		return 0;
@@ -223,9 +241,14 @@ static const struct snd_soc_dapm_route harmony_audio_map[] = {
 	{"Mic Jack", NULL, "MICBIAS"},
 	{"IN1L", NULL, "Mic Jack"},
 =======
+<<<<<<< HEAD
+	{"Mic Jack", NULL, "MICBIAS"},
+	{"IN1L", NULL, "Mic Jack"},
+=======
 	{"Mic Bias", NULL, "Mic Jack"},
 	{"IN1L", NULL, "Mic Bias"},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_soc_dapm_route seaboard_audio_map[] = {
@@ -239,9 +262,14 @@ static const struct snd_soc_dapm_route seaboard_audio_map[] = {
 	{"Mic Jack", NULL, "MICBIAS"},
 	{"IN1R", NULL, "Mic Jack"},
 =======
+<<<<<<< HEAD
+	{"Mic Jack", NULL, "MICBIAS"},
+	{"IN1R", NULL, "Mic Jack"},
+=======
 	{"Mic Bias", NULL, "Mic Jack"},
 	{"IN1R", NULL, "Mic Bias"},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_soc_dapm_route kaen_audio_map[] = {
@@ -255,9 +283,14 @@ static const struct snd_soc_dapm_route kaen_audio_map[] = {
 	{"Mic Jack", NULL, "MICBIAS"},
 	{"IN2R", NULL, "Mic Jack"},
 =======
+<<<<<<< HEAD
+	{"Mic Jack", NULL, "MICBIAS"},
+	{"IN2R", NULL, "Mic Jack"},
+=======
 	{"Mic Bias", NULL, "Mic Jack"},
 	{"IN2R", NULL, "Mic Bias"},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_soc_dapm_route aebl_audio_map[] = {
@@ -269,9 +302,14 @@ static const struct snd_soc_dapm_route aebl_audio_map[] = {
 	{"Mic Jack", NULL, "MICBIAS"},
 	{"IN1R", NULL, "Mic Jack"},
 =======
+<<<<<<< HEAD
+	{"Mic Jack", NULL, "MICBIAS"},
+	{"IN1R", NULL, "Mic Jack"},
+=======
 	{"Mic Bias", NULL, "Mic Jack"},
 	{"IN1R", NULL, "Mic Bias"},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_kcontrol_new tegra_wm8903_controls[] = {
@@ -285,6 +323,9 @@ static int tegra_wm8903_init(struct snd_soc_pcm_runtime *rtd)
 	struct snd_soc_card *card = codec->card;
 	struct tegra_wm8903 *machine = snd_soc_card_get_drvdata(card);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tegra_wm8903_platform_data *pdata = &machine->pdata;
 	struct device_node *np = card->dev->of_node;
 	int ret;
@@ -315,11 +356,14 @@ static int tegra_wm8903_init(struct snd_soc_pcm_runtime *rtd)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	struct tegra_wm8903_platform_data *pdata = machine->pdata;
 	int ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (gpio_is_valid(pdata->gpio_spkr_en)) {
 		ret = gpio_request(pdata->gpio_spkr_en, "spkr_en");
 		if (ret) {
@@ -342,8 +386,12 @@ static int tegra_wm8903_init(struct snd_soc_pcm_runtime *rtd)
 <<<<<<< HEAD
 		gpio_direction_output(pdata->gpio_hp_mute, 1);
 =======
+<<<<<<< HEAD
+		gpio_direction_output(pdata->gpio_hp_mute, 1);
+=======
 		gpio_direction_output(pdata->gpio_hp_mute, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (gpio_is_valid(pdata->gpio_int_mic_en)) {
@@ -394,6 +442,9 @@ static int tegra_wm8903_init(struct snd_soc_pcm_runtime *rtd)
 <<<<<<< HEAD
 	snd_soc_dapm_force_enable_pin(dapm, "MICBIAS");
 =======
+<<<<<<< HEAD
+	snd_soc_dapm_force_enable_pin(dapm, "MICBIAS");
+=======
 	snd_soc_dapm_force_enable_pin(dapm, "Mic Bias");
 
 	/* FIXME: Calculate automatically based on DAPM routes? */
@@ -419,6 +470,7 @@ static int tegra_wm8903_init(struct snd_soc_pcm_runtime *rtd)
 
 	snd_soc_dapm_sync(dapm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -439,7 +491,11 @@ static struct snd_soc_card snd_soc_tegra_wm8903 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &tegra_wm8903_dai,
 	.num_links = 1,
 
@@ -450,7 +506,11 @@ static struct snd_soc_card snd_soc_tegra_wm8903 = {
 <<<<<<< HEAD
 	.fully_routed = true,
 =======
+<<<<<<< HEAD
+	.fully_routed = true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __devinit int tegra_wm8903_driver_probe(struct platform_device *pdev)
@@ -462,17 +522,26 @@ static __devinit int tegra_wm8903_driver_probe(struct platform_device *pdev)
 
 	if (!pdev->dev.platform_data && !pdev->dev.of_node) {
 =======
+<<<<<<< HEAD
+	int ret;
+
+	if (!pdev->dev.platform_data && !pdev->dev.of_node) {
+=======
 	struct tegra_wm8903_platform_data *pdata;
 	int ret;
 
 	pdata = pdev->dev.platform_data;
 	if (!pdata) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(&pdev->dev, "No platform data supplied\n");
 		return -EINVAL;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	machine = devm_kzalloc(&pdev->dev, sizeof(struct tegra_wm8903),
 			       GFP_KERNEL);
 	if (!machine) {
@@ -481,6 +550,8 @@ static __devinit int tegra_wm8903_driver_probe(struct platform_device *pdev)
 		goto err;
 	}
 	machine->pcm_dev = ERR_PTR(-EINVAL);
+<<<<<<< HEAD
+=======
 =======
 	machine = kzalloc(sizeof(struct tegra_wm8903), GFP_KERNEL);
 	if (!machine) {
@@ -494,12 +565,16 @@ static __devinit int tegra_wm8903_driver_probe(struct platform_device *pdev)
 	if (ret)
 		goto err_free_machine;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	card->dev = &pdev->dev;
 	platform_set_drvdata(pdev, card);
 	snd_soc_card_set_drvdata(card, machine);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pdev->dev.of_node) {
 		ret = snd_soc_of_parse_card_name(card, "nvidia,model");
 		if (ret)
@@ -558,6 +633,8 @@ static __devinit int tegra_wm8903_driver_probe(struct platform_device *pdev)
 	if (ret)
 		goto err_unregister;
 
+<<<<<<< HEAD
+=======
 =======
 	if (machine_is_harmony() || machine_is_ventana()) {
 		card->dapm_routes = harmony_audio_map;
@@ -574,6 +651,7 @@ static __devinit int tegra_wm8903_driver_probe(struct platform_device *pdev)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_register_card(card);
 	if (ret) {
 		dev_err(&pdev->dev, "snd_soc_register_card failed (%d)\n",
@@ -586,14 +664,20 @@ static __devinit int tegra_wm8903_driver_probe(struct platform_device *pdev)
 err_fini_utils:
 	tegra_asoc_utils_fini(&machine->util_data);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_unregister:
 	if (!IS_ERR(machine->pcm_dev))
 		platform_device_unregister(machine->pcm_dev);
 err:
+<<<<<<< HEAD
+=======
 =======
 err_free_machine:
 	kfree(machine);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -604,8 +688,12 @@ static int __devexit tegra_wm8903_driver_remove(struct platform_device *pdev)
 <<<<<<< HEAD
 	struct tegra_wm8903_platform_data *pdata = &machine->pdata;
 =======
+<<<<<<< HEAD
+	struct tegra_wm8903_platform_data *pdata = &machine->pdata;
+=======
 	struct tegra_wm8903_platform_data *pdata = machine->pdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (machine->gpio_requested & GPIO_HP_DET)
 		snd_soc_jack_free_gpios(&tegra_wm8903_hp_jack,
@@ -628,21 +716,32 @@ static int __devexit tegra_wm8903_driver_remove(struct platform_device *pdev)
 	if (!IS_ERR(machine->pcm_dev))
 		platform_device_unregister(machine->pcm_dev);
 =======
+<<<<<<< HEAD
+	if (!IS_ERR(machine->pcm_dev))
+		platform_device_unregister(machine->pcm_dev);
+=======
 
 	kfree(machine);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct of_device_id tegra_wm8903_of_match[] __devinitconst = {
 	{ .compatible = "nvidia,tegra-audio-wm8903", },
 	{},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver tegra_wm8903_driver = {
 	.driver = {
 		.name = DRV_NAME,
@@ -651,11 +750,18 @@ static struct platform_driver tegra_wm8903_driver = {
 <<<<<<< HEAD
 		.of_match_table = tegra_wm8903_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = tegra_wm8903_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe = tegra_wm8903_driver_probe,
 	.remove = __devexit_p(tegra_wm8903_driver_remove),
 };
+<<<<<<< HEAD
+module_platform_driver(tegra_wm8903_driver);
+=======
 <<<<<<< HEAD
 module_platform_driver(tegra_wm8903_driver);
 =======
@@ -672,6 +778,7 @@ static void __exit tegra_wm8903_modexit(void)
 }
 module_exit(tegra_wm8903_modexit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Stephen Warren <swarren@nvidia.com>");
 MODULE_DESCRIPTION("Tegra+WM8903 machine ASoC driver");
@@ -680,4 +787,8 @@ MODULE_ALIAS("platform:" DRV_NAME);
 <<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, tegra_wm8903_of_match);
 =======
+<<<<<<< HEAD
+MODULE_DEVICE_TABLE(of, tegra_wm8903_of_match);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

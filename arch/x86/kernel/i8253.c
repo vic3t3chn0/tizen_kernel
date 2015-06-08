@@ -4,6 +4,9 @@
  */
 #include <linux/clockchips.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/timex.h>
 #include <linux/i8253.h>
@@ -12,6 +15,8 @@
 #include <asm/time.h>
 #include <asm/smp.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/interrupt.h>
 #include <linux/spinlock.h>
@@ -30,6 +35,7 @@ DEFINE_RAW_SPINLOCK(i8253_lock);
 EXPORT_SYMBOL(i8253_lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * HPET replaces the PIT, when enabled. So we need to know, which of
  * the two timers is used
@@ -37,10 +43,15 @@ EXPORT_SYMBOL(i8253_lock);
 struct clock_event_device *global_clock_event;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init setup_pit_timer(void)
 {
 	clockevent_i8253_init(true);
 	global_clock_event = &i8253_clockevent;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Initialize the PIT timer.
@@ -128,6 +139,7 @@ void __init setup_pit_timer(void)
 	clockevents_config_and_register(&pit_ce, CLOCK_TICK_RATE, 0xF, 0x7FFF);
 	global_clock_event = &pit_ce;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifndef CONFIG_X86_64
@@ -144,8 +156,12 @@ static int __init init_pit_clocksource(void)
 <<<<<<< HEAD
 	    i8253_clockevent.mode != CLOCK_EVT_MODE_PERIODIC)
 =======
+<<<<<<< HEAD
+	    i8253_clockevent.mode != CLOCK_EVT_MODE_PERIODIC)
+=======
 	    pit_ce.mode != CLOCK_EVT_MODE_PERIODIC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	return clocksource_i8253_init();

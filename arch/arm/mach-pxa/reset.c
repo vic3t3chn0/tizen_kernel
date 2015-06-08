@@ -12,7 +12,11 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/regs-ost.h>
 #include <mach/reset.h>
@@ -86,15 +90,21 @@ static void do_hw_reset(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pxa_restart(char mode, const char *cmd)
 {
 	local_irq_disable();
 	local_fiq_disable();
 
+<<<<<<< HEAD
+=======
 =======
 void arch_reset(char mode, const char *cmd)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_reset_status(RESET_STATUS_ALL);
 
 	switch (mode) {
@@ -103,8 +113,12 @@ void arch_reset(char mode, const char *cmd)
 <<<<<<< HEAD
 		soft_restart(0);
 =======
+<<<<<<< HEAD
+		soft_restart(0);
+=======
 		cpu_reset(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case 'g':
 		do_gpio_reset();

@@ -25,8 +25,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/sock.h>
 #include <net/netlink.h>
 #include <linux/init.h>
@@ -43,8 +46,12 @@ static char __initdata nfversion[] = "0.30";
 <<<<<<< HEAD
 static const struct nfnetlink_subsystem __rcu *subsys_table[NFNL_SUBSYS_COUNT];
 =======
+<<<<<<< HEAD
+static const struct nfnetlink_subsystem __rcu *subsys_table[NFNL_SUBSYS_COUNT];
+=======
 static const struct nfnetlink_subsystem *subsys_table[NFNL_SUBSYS_COUNT];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_MUTEX(nfnl_mutex);
 
 void nfnl_lock(void)
@@ -69,8 +76,12 @@ int nfnetlink_subsys_register(const struct nfnetlink_subsystem *n)
 <<<<<<< HEAD
 	rcu_assign_pointer(subsys_table[n->subsys_id], n);
 =======
+<<<<<<< HEAD
+	rcu_assign_pointer(subsys_table[n->subsys_id], n);
+=======
 	subsys_table[n->subsys_id] = n;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nfnl_unlock();
 
 	return 0;
@@ -85,8 +96,12 @@ int nfnetlink_subsys_unregister(const struct nfnetlink_subsystem *n)
 <<<<<<< HEAD
 	synchronize_rcu();
 =======
+<<<<<<< HEAD
+	synchronize_rcu();
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL_GPL(nfnetlink_subsys_unregister);
@@ -101,8 +116,12 @@ static inline const struct nfnetlink_subsystem *nfnetlink_get_subsys(u_int16_t t
 <<<<<<< HEAD
 	return rcu_dereference(subsys_table[subsys_id]);
 =======
+<<<<<<< HEAD
+	return rcu_dereference(subsys_table[subsys_id]);
+=======
 	return subsys_table[subsys_id];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline const struct nfnl_callback *
@@ -152,8 +171,12 @@ static int nfnetlink_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 <<<<<<< HEAD
 	if (!capable(CAP_NET_ADMIN))
 =======
+<<<<<<< HEAD
+	if (!capable(CAP_NET_ADMIN))
+=======
 	if (security_netlink_recv(skb, CAP_NET_ADMIN))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 
 	/* All the messages must at least contain nfgenmsg */
@@ -163,6 +186,9 @@ static int nfnetlink_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 	type = nlh->nlmsg_type;
 replay:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 	ss = nfnetlink_get_subsys(type);
 	if (!ss) {
@@ -184,6 +210,8 @@ replay:
 		rcu_read_unlock();
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	ss = nfnetlink_get_subsys(type);
 	if (!ss) {
@@ -201,6 +229,7 @@ replay:
 	if (!nc)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{
 		int min_len = NLMSG_SPACE(sizeof(struct nfgenmsg));
@@ -215,6 +244,9 @@ replay:
 			return err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (nc->call_rcu) {
 			err = nc->call_rcu(net->nfnl, skb, nlh,
 					   (const struct nlattr **)cda);
@@ -232,9 +264,12 @@ replay:
 						   (const struct nlattr **)cda);
 			nfnl_unlock();
 		}
+<<<<<<< HEAD
+=======
 =======
 		err = nc->call(net->nfnl, skb, nlh, (const struct nlattr **)cda);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err == -EAGAIN)
 			goto replay;
 		return err;
@@ -246,10 +281,14 @@ static void nfnetlink_rcv(struct sk_buff *skb)
 <<<<<<< HEAD
 	netlink_rcv_skb(skb, &nfnetlink_rcv_msg);
 =======
+<<<<<<< HEAD
+	netlink_rcv_skb(skb, &nfnetlink_rcv_msg);
+=======
 	nfnl_lock();
 	netlink_rcv_skb(skb, &nfnetlink_rcv_msg);
 	nfnl_unlock();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __net_init nfnetlink_net_init(struct net *net)
@@ -273,8 +312,12 @@ static void __net_exit nfnetlink_net_exit_batch(struct list_head *net_exit_list)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(net->nfnl, NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(net->nfnl, NULL);
+=======
 		rcu_assign_pointer(net->nfnl, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	synchronize_net();
 	list_for_each_entry(net, net_exit_list, exit_list)
 		netlink_kernel_release(net->nfnl_stash);

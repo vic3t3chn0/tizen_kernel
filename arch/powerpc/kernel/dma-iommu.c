@@ -8,7 +8,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/iommu.h>
 
 /*
@@ -24,8 +28,13 @@ static void *dma_iommu_alloc_coherent(struct device *dev, size_t size,
 				      dma_addr_t *dma_handle, gfp_t flag,
 				      struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				      dma_addr_t *dma_handle, gfp_t flag,
+				      struct dma_attrs *attrs)
+=======
 				      dma_addr_t *dma_handle, gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return iommu_alloc_coherent(dev, get_iommu_table_base(dev), size,
 				    dma_handle, dev->coherent_dma_mask, flag,
@@ -37,8 +46,13 @@ static void dma_iommu_free_coherent(struct device *dev, size_t size,
 				    void *vaddr, dma_addr_t dma_handle,
 				    struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				    void *vaddr, dma_addr_t dma_handle,
+				    struct dma_attrs *attrs)
+=======
 				    void *vaddr, dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	iommu_free_coherent(get_iommu_table_base(dev), size, vaddr, dma_handle);
 }
@@ -105,6 +119,9 @@ static int dma_iommu_dma_supported(struct device *dev, u64 mask)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 dma_iommu_get_required_mask(struct device *dev)
 {
 	struct iommu_table *tbl = get_iommu_table_base(dev);
@@ -127,6 +144,8 @@ struct dma_map_ops dma_iommu_ops = {
 	.map_page		= dma_iommu_map_page,
 	.unmap_page		= dma_iommu_unmap_page,
 	.get_required_mask	= dma_iommu_get_required_mask,
+<<<<<<< HEAD
+=======
 =======
 struct dma_map_ops dma_iommu_ops = {
 	.alloc_coherent	= dma_iommu_alloc_coherent,
@@ -137,5 +156,6 @@ struct dma_map_ops dma_iommu_ops = {
 	.map_page	= dma_iommu_map_page,
 	.unmap_page	= dma_iommu_unmap_page,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 EXPORT_SYMBOL(dma_iommu_ops);

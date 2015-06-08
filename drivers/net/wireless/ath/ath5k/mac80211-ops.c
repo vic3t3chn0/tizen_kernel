@@ -41,6 +41,18 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <net/mac80211.h>
+#include <asm/unaligned.h>
+
+#include "ath5k.h"
+#include "base.h"
+#include "reg.h"
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/unaligned.h>
 
 #include "base.h"
@@ -48,6 +60,10 @@
 
 extern int ath5k_modparam_nohwcrypt;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /********************\
 * Mac80211 functions *
 \********************/
@@ -55,14 +71,33 @@ extern int ath5k_modparam_nohwcrypt;
 static void
 ath5k_tx(struct ieee80211_hw *hw, struct sk_buff *skb)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	u16 qnum = skb_get_queue_mapping(skb);
+
+	if (WARN_ON(qnum >= ah->ah_capabilities.cap_queues.q_tx_num)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 	u16 qnum = skb_get_queue_mapping(skb);
 
 	if (WARN_ON(qnum >= sc->ah->ah_capabilities.cap_queues.q_tx_num)) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_kfree_skb_any(skb);
 		return;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath5k_tx_queue(hw, skb, &ah->txqs[qnum]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ath5k_tx_queue(hw, skb, &sc->txqs[qnum]);
 }
 
@@ -78,12 +113,30 @@ static void
 ath5k_stop(struct ieee80211_hw *hw)
 {
 	ath5k_stop_hw(hw->priv);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
 static int
 ath5k_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	int ret;
+	struct ath5k_vif *avf = (void *)vif->drv_priv;
+
+	mutex_lock(&ah->lock);
+
+	if ((vif->type == NL80211_IFTYPE_AP ||
+	     vif->type == NL80211_IFTYPE_ADHOC)
+	    && (ah->num_ap_vifs + ah->num_adhoc_vifs) >= ATH_BCBUF) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 	int ret;
 	struct ath5k_vif *avf = (void *)vif->drv_priv;
@@ -93,6 +146,10 @@ ath5k_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
 	if ((vif->type == NL80211_IFTYPE_AP ||
 	     vif->type == NL80211_IFTYPE_ADHOC)
 	    && (sc->num_ap_vifs + sc->num_adhoc_vifs) >= ATH_BCBUF) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -ELNRNG;
 		goto end;
 	}
@@ -102,9 +159,21 @@ ath5k_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
 	 * We would need to operate the HW in ad-hoc mode to allow TSF updates
 	 * for the IBSS, but this breaks with additional AP or STA interfaces
 	 * at the moment. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ah->num_adhoc_vifs ||
+	    (ah->nvifs && vif->type == NL80211_IFTYPE_ADHOC)) {
+		ATH5K_ERR(ah, "Only one single ad-hoc interface is allowed.\n");
+=======
 	if (sc->num_adhoc_vifs ||
 	    (sc->nvifs && vif->type == NL80211_IFTYPE_ADHOC)) {
 		ATH5K_ERR(sc, "Only one single ad-hoc interface is allowed.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (sc->num_adhoc_vifs ||
+	    (sc->nvifs && vif->type == NL80211_IFTYPE_ADHOC)) {
+		ATH5K_ERR(sc, "Only one single ad-hoc interface is allowed.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -ELNRNG;
 		goto end;
 	}
@@ -121,8 +190,18 @@ ath5k_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
 		goto end;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ah->nvifs++;
+	ATH5K_DBG(ah, ATH5K_DEBUG_MODE, "add interface mode %d\n", avf->opmode);
+=======
 	sc->nvifs++;
 	ATH5K_DBG(sc, ATH5K_DEBUG_MODE, "add interface mode %d\n", avf->opmode);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sc->nvifs++;
+	ATH5K_DBG(sc, ATH5K_DEBUG_MODE, "add interface mode %d\n", avf->opmode);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Assign the vap/adhoc to a beacon xmit slot. */
 	if ((avf->opmode == NL80211_IFTYPE_AP) ||
@@ -130,29 +209,75 @@ ath5k_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
 	    (avf->opmode == NL80211_IFTYPE_MESH_POINT)) {
 		int slot;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		WARN_ON(list_empty(&ah->bcbuf));
+		avf->bbuf = list_first_entry(&ah->bcbuf, struct ath5k_buf,
+=======
 		WARN_ON(list_empty(&sc->bcbuf));
 		avf->bbuf = list_first_entry(&sc->bcbuf, struct ath5k_buf,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		WARN_ON(list_empty(&sc->bcbuf));
+		avf->bbuf = list_first_entry(&sc->bcbuf, struct ath5k_buf,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     list);
 		list_del(&avf->bbuf->list);
 
 		avf->bslot = 0;
 		for (slot = 0; slot < ATH_BCBUF; slot++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (!ah->bslot[slot]) {
+=======
 			if (!sc->bslot[slot]) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (!sc->bslot[slot]) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				avf->bslot = slot;
 				break;
 			}
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		BUG_ON(ah->bslot[avf->bslot] != NULL);
+		ah->bslot[avf->bslot] = vif;
+		if (avf->opmode == NL80211_IFTYPE_AP)
+			ah->num_ap_vifs++;
+		else if (avf->opmode == NL80211_IFTYPE_ADHOC)
+			ah->num_adhoc_vifs++;
+		else if (avf->opmode == NL80211_IFTYPE_MESH_POINT)
+			ah->num_mesh_vifs++;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG_ON(sc->bslot[avf->bslot] != NULL);
 		sc->bslot[avf->bslot] = vif;
 		if (avf->opmode == NL80211_IFTYPE_AP)
 			sc->num_ap_vifs++;
 		else if (avf->opmode == NL80211_IFTYPE_ADHOC)
 			sc->num_adhoc_vifs++;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Any MAC address is fine, all others are included through the
 	 * filter.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath5k_hw_set_lladdr(ah, vif->addr);
+
+	ath5k_update_bssid_mask_and_opmode(ah, vif);
+	ret = 0;
+end:
+	mutex_unlock(&ah->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&sc->lladdr, vif->addr, ETH_ALEN);
 	ath5k_hw_set_lladdr(sc->ah, vif->addr);
 
@@ -162,6 +287,10 @@ ath5k_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
 	ret = 0;
 end:
 	mutex_unlock(&sc->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -170,6 +299,24 @@ static void
 ath5k_remove_interface(struct ieee80211_hw *hw,
 		       struct ieee80211_vif *vif)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	struct ath5k_vif *avf = (void *)vif->drv_priv;
+	unsigned int i;
+
+	mutex_lock(&ah->lock);
+	ah->nvifs--;
+
+	if (avf->bbuf) {
+		ath5k_txbuf_free_skb(ah, avf->bbuf);
+		list_add_tail(&avf->bbuf->list, &ah->bcbuf);
+		for (i = 0; i < ATH_BCBUF; i++) {
+			if (ah->bslot[i] == vif) {
+				ah->bslot[i] = NULL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 	struct ath5k_vif *avf = (void *)vif->drv_priv;
 	unsigned int i;
@@ -183,18 +330,39 @@ ath5k_remove_interface(struct ieee80211_hw *hw,
 		for (i = 0; i < ATH_BCBUF; i++) {
 			if (sc->bslot[i] == vif) {
 				sc->bslot[i] = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 		}
 		avf->bbuf = NULL;
 	}
 	if (avf->opmode == NL80211_IFTYPE_AP)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ah->num_ap_vifs--;
+	else if (avf->opmode == NL80211_IFTYPE_ADHOC)
+		ah->num_adhoc_vifs--;
+	else if (avf->opmode == NL80211_IFTYPE_MESH_POINT)
+		ah->num_mesh_vifs--;
+
+	ath5k_update_bssid_mask_and_opmode(ah, NULL);
+	mutex_unlock(&ah->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sc->num_ap_vifs--;
 	else if (avf->opmode == NL80211_IFTYPE_ADHOC)
 		sc->num_adhoc_vifs--;
 
 	ath5k_update_bssid_mask_and_opmode(sc, NULL);
 	mutex_unlock(&sc->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -204,23 +372,55 @@ ath5k_remove_interface(struct ieee80211_hw *hw,
 static int
 ath5k_config(struct ieee80211_hw *hw, u32 changed)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+=======
 	struct ath5k_softc *sc = hw->priv;
 	struct ath5k_hw *ah = sc->ah;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+	struct ath5k_hw *ah = sc->ah;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ieee80211_conf *conf = &hw->conf;
 	int ret = 0;
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&ah->lock);
+
+	if (changed & IEEE80211_CONF_CHANGE_CHANNEL) {
+		ret = ath5k_chan_set(ah, conf->channel);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&sc->lock);
 
 	if (changed & IEEE80211_CONF_CHANGE_CHANNEL) {
 		ret = ath5k_chan_set(sc, conf->channel);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0)
 			goto unlock;
 	}
 
 	if ((changed & IEEE80211_CONF_CHANGE_POWER) &&
+<<<<<<< HEAD
+<<<<<<< HEAD
+	(ah->power_level != conf->power_level)) {
+		ah->power_level = conf->power_level;
+=======
 	(sc->power_level != conf->power_level)) {
 		sc->power_level = conf->power_level;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	(sc->power_level != conf->power_level)) {
+		sc->power_level = conf->power_level;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Half dB steps */
 		ath5k_hw_set_txpower_limit(ah, (conf->power_level * 2));
@@ -254,7 +454,15 @@ ath5k_config(struct ieee80211_hw *hw, u32 changed)
 	ath5k_hw_set_antenna_mode(ah, ah->ah_ant_mode);
 
 unlock:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&ah->lock);
+=======
 	mutex_unlock(&sc->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_unlock(&sc->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -264,12 +472,26 @@ ath5k_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
 		       struct ieee80211_bss_conf *bss_conf, u32 changes)
 {
 	struct ath5k_vif *avf = (void *)vif->drv_priv;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	struct ath_common *common = ath5k_hw_common(ah);
+	unsigned long flags;
+
+	mutex_lock(&ah->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 	struct ath5k_hw *ah = sc->ah;
 	struct ath_common *common = ath5k_hw_common(ah);
 	unsigned long flags;
 
 	mutex_lock(&sc->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (changes & BSS_CHANGED_BSSID) {
 		/* Cache for later use during resets */
@@ -280,7 +502,15 @@ ath5k_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
 	}
 
 	if (changes & BSS_CHANGED_BEACON_INT)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ah->bintval = bss_conf->beacon_int;
+=======
 		sc->bintval = bss_conf->beacon_int;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sc->bintval = bss_conf->beacon_int;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (changes & BSS_CHANGED_ERP_SLOT) {
 		int slot_time;
@@ -294,6 +524,21 @@ ath5k_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
 	if (changes & BSS_CHANGED_ASSOC) {
 		avf->assoc = bss_conf->assoc;
 		if (bss_conf->assoc)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ah->assoc = bss_conf->assoc;
+		else
+			ah->assoc = ath5k_any_vif_assoc(ah);
+
+		if (ah->opmode == NL80211_IFTYPE_STATION)
+			ath5k_set_beacon_filter(hw, ah->assoc);
+		ath5k_hw_set_ledstate(ah, ah->assoc ?
+			AR5K_LED_ASSOC : AR5K_LED_INIT);
+		if (bss_conf->assoc) {
+			ATH5K_DBG(ah, ATH5K_DEBUG_ANY,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sc->assoc = bss_conf->assoc;
 		else
 			sc->assoc = ath_any_vif_assoc(sc);
@@ -304,6 +549,10 @@ ath5k_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
 			AR5K_LED_ASSOC : AR5K_LED_INIT);
 		if (bss_conf->assoc) {
 			ATH5K_DBG(sc, ATH5K_DEBUG_ANY,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  "Bss Info ASSOC %d, bssid: %pM\n",
 				  bss_conf->aid, common->curbssid);
 			common->curaid = bss_conf->aid;
@@ -313,6 +562,24 @@ ath5k_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
 	}
 
 	if (changes & BSS_CHANGED_BEACON) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		spin_lock_irqsave(&ah->block, flags);
+		ath5k_beacon_update(hw, vif);
+		spin_unlock_irqrestore(&ah->block, flags);
+	}
+
+	if (changes & BSS_CHANGED_BEACON_ENABLED)
+		ah->enable_beacon = bss_conf->enable_beacon;
+
+	if (changes & (BSS_CHANGED_BEACON | BSS_CHANGED_BEACON_ENABLED |
+		       BSS_CHANGED_BEACON_INT))
+		ath5k_beacon_config(ah);
+
+	mutex_unlock(&ah->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock_irqsave(&sc->block, flags);
 		ath5k_beacon_update(hw, vif);
 		spin_unlock_irqrestore(&sc->block, flags);
@@ -326,6 +593,10 @@ ath5k_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
 		ath5k_beacon_config(sc);
 
 	mutex_unlock(&sc->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -350,7 +621,15 @@ ath5k_prepare_multicast(struct ieee80211_hw *hw,
 		mfilt[pos / 32] |= (1 << (pos % 32));
 		/* XXX: we might be able to just do this instead,
 		* but not sure, needs testing, if we do use this we'd
+<<<<<<< HEAD
+<<<<<<< HEAD
+		* need to inform below not to reset the mcast */
+=======
 		* neet to inform below to not reset the mcast */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		* neet to inform below to not reset the mcast */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* ath5k_hw_set_mcast_filterindex(ah,
 		 *      ha->addr[5]); */
 	}
@@ -386,12 +665,26 @@ ath5k_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 	FIF_PLCPFAIL | FIF_CONTROL | FIF_OTHER_BSS | \
 	FIF_BCN_PRBRESP_PROMISC)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	u32 mfilt[2], rfilt;
+	struct ath5k_vif_iter_data iter_data; /* to count STA interfaces */
+
+	mutex_lock(&ah->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 	struct ath5k_hw *ah = sc->ah;
 	u32 mfilt[2], rfilt;
 	struct ath5k_vif_iter_data iter_data; /* to count STA interfaces */
 
 	mutex_lock(&sc->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mfilt[0] = multicast;
 	mfilt[1] = multicast >> 32;
@@ -409,12 +702,27 @@ ath5k_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 
 	if (changed_flags & (FIF_PROMISC_IN_BSS | FIF_OTHER_BSS)) {
 		if (*new_flags & FIF_PROMISC_IN_BSS)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			__set_bit(ATH_STAT_PROMISC, ah->status);
+		else
+			__clear_bit(ATH_STAT_PROMISC, ah->status);
+	}
+
+	if (test_bit(ATH_STAT_PROMISC, ah->status))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__set_bit(ATH_STAT_PROMISC, sc->status);
 		else
 			__clear_bit(ATH_STAT_PROMISC, sc->status);
 	}
 
 	if (test_bit(ATH_STAT_PROMISC, sc->status))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rfilt |= AR5K_RX_FILTER_PROM;
 
 	/* Note, AR5K_RX_FILTER_MCAST is already enabled */
@@ -429,7 +737,15 @@ ath5k_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 
 	/* FIF_BCN_PRBRESP_PROMISC really means to enable beacons
 	* and probes for any BSSID */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((*new_flags & FIF_BCN_PRBRESP_PROMISC) || (ah->nvifs > 1))
+=======
 	if ((*new_flags & FIF_BCN_PRBRESP_PROMISC) || (sc->nvifs > 1))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((*new_flags & FIF_BCN_PRBRESP_PROMISC) || (sc->nvifs > 1))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rfilt |= AR5K_RX_FILTER_BEACON;
 
 	/* FIF_CONTROL doc says that if FIF_PROMISC_IN_BSS is not
@@ -444,7 +760,15 @@ ath5k_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 
 	/* XXX move these to mac80211, and add a beacon IFF flag to mac80211 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (ah->opmode) {
+=======
 	switch (sc->opmode) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (sc->opmode) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case NL80211_IFTYPE_MESH_POINT:
 		rfilt |= AR5K_RX_FILTER_CONTROL |
 			 AR5K_RX_FILTER_BEACON |
@@ -457,7 +781,15 @@ ath5k_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 			 AR5K_RX_FILTER_BEACON;
 		break;
 	case NL80211_IFTYPE_STATION:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (ah->assoc)
+=======
 		if (sc->assoc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (sc->assoc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rfilt |= AR5K_RX_FILTER_BEACON;
 	default:
 		break;
@@ -466,14 +798,30 @@ ath5k_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 	iter_data.hw_macaddr = NULL;
 	iter_data.n_stas = 0;
 	iter_data.need_set_hw_addr = false;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ieee80211_iterate_active_interfaces_atomic(ah->hw, ath5k_vif_iter,
+=======
 	ieee80211_iterate_active_interfaces_atomic(sc->hw, ath5k_vif_iter,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ieee80211_iterate_active_interfaces_atomic(sc->hw, ath5k_vif_iter,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						   &iter_data);
 
 	/* Set up RX Filter */
 	if (iter_data.n_stas > 1) {
 		/* If you have multiple STA interfaces connected to
 		 * different APs, ARPs are not received (most of the time?)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 * Enabling PROMISC appears to fix that problem.
+=======
 		 * Enabling PROMISC appears to fix that probem.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 * Enabling PROMISC appears to fix that probem.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 */
 		rfilt |= AR5K_RX_FILTER_PROM;
 	}
@@ -485,9 +833,21 @@ ath5k_configure_filter(struct ieee80211_hw *hw, unsigned int changed_flags,
 	ath5k_hw_set_mcast_filter(ah, mfilt[0], mfilt[1]);
 	/* Set the cached hw filter flags, this will later actually
 	 * be set in HW */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ah->filter_flags = rfilt;
+
+	mutex_unlock(&ah->lock);
+=======
 	sc->filter_flags = rfilt;
 
 	mutex_unlock(&sc->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sc->filter_flags = rfilt;
+
+	mutex_unlock(&sc->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -496,14 +856,37 @@ ath5k_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 	      struct ieee80211_vif *vif, struct ieee80211_sta *sta,
 	      struct ieee80211_key_conf *key)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+=======
 	struct ath5k_softc *sc = hw->priv;
 	struct ath5k_hw *ah = sc->ah;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+	struct ath5k_hw *ah = sc->ah;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath_common *common = ath5k_hw_common(ah);
 	int ret = 0;
 
 	if (ath5k_modparam_nohwcrypt)
 		return -EOPNOTSUPP;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (vif->type == NL80211_IFTYPE_ADHOC &&
+	    (key->cipher == WLAN_CIPHER_SUITE_TKIP ||
+	     key->cipher == WLAN_CIPHER_SUITE_CCMP) &&
+	    !(key->flags & IEEE80211_KEY_FLAG_PAIRWISE)) {
+		/* don't program group keys when using IBSS_RSN */
+		return -EOPNOTSUPP;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (key->cipher) {
 	case WLAN_CIPHER_SUITE_WEP40:
 	case WLAN_CIPHER_SUITE_WEP104:
@@ -518,7 +901,15 @@ ath5k_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&ah->lock);
+=======
 	mutex_lock(&sc->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_lock(&sc->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (cmd) {
 	case SET_KEY:
@@ -542,7 +933,15 @@ ath5k_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 	}
 
 	mmiowb();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&ah->lock);
+=======
 	mutex_unlock(&sc->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_unlock(&sc->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -550,17 +949,39 @@ ath5k_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 static void
 ath5k_sw_scan_start(struct ieee80211_hw *hw)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	if (!ah->assoc)
+		ath5k_hw_set_ledstate(ah, AR5K_LED_SCAN);
+=======
 	struct ath5k_softc *sc = hw->priv;
 	if (!sc->assoc)
 		ath5k_hw_set_ledstate(sc->ah, AR5K_LED_SCAN);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+	if (!sc->assoc)
+		ath5k_hw_set_ledstate(sc->ah, AR5K_LED_SCAN);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
 static void
 ath5k_sw_scan_complete(struct ieee80211_hw *hw)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	ath5k_hw_set_ledstate(ah, ah->assoc ?
+=======
 	struct ath5k_softc *sc = hw->priv;
 	ath5k_hw_set_ledstate(sc->ah, sc->assoc ?
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+	ath5k_hw_set_ledstate(sc->ah, sc->assoc ?
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		AR5K_LED_ASSOC : AR5K_LED_INIT);
 }
 
@@ -569,6 +990,20 @@ static int
 ath5k_get_stats(struct ieee80211_hw *hw,
 		struct ieee80211_low_level_stats *stats)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+
+	/* Force update */
+	ath5k_hw_update_mib_counters(ah);
+
+	stats->dot11ACKFailureCount = ah->stats.ack_fail;
+	stats->dot11RTSFailureCount = ah->stats.rts_fail;
+	stats->dot11RTSSuccessCount = ah->stats.rts_ok;
+	stats->dot11FCSErrorCount = ah->stats.fcs_error;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 
 	/* Force update */
@@ -578,24 +1013,49 @@ ath5k_get_stats(struct ieee80211_hw *hw,
 	stats->dot11RTSFailureCount = sc->stats.rts_fail;
 	stats->dot11RTSSuccessCount = sc->stats.rts_ok;
 	stats->dot11FCSErrorCount = sc->stats.fcs_error;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 
 static int
+<<<<<<< HEAD
+<<<<<<< HEAD
+ath5k_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif, u16 queue,
+	      const struct ieee80211_tx_queue_params *params)
+{
+	struct ath5k_hw *ah = hw->priv;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ath5k_conf_tx(struct ieee80211_hw *hw, u16 queue,
 	      const struct ieee80211_tx_queue_params *params)
 {
 	struct ath5k_softc *sc = hw->priv;
 	struct ath5k_hw *ah = sc->ah;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_txq_info qi;
 	int ret = 0;
 
 	if (queue >= ah->ah_capabilities.cap_queues.q_tx_num)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&ah->lock);
+=======
 	mutex_lock(&sc->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_lock(&sc->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ath5k_hw_get_tx_queueprops(ah, queue, &qi);
 
@@ -604,65 +1064,154 @@ ath5k_conf_tx(struct ieee80211_hw *hw, u16 queue,
 	qi.tqi_cw_max = params->cw_max;
 	qi.tqi_burst_time = params->txop;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ATH5K_DBG(ah, ATH5K_DEBUG_ANY,
+=======
 	ATH5K_DBG(sc, ATH5K_DEBUG_ANY,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ATH5K_DBG(sc, ATH5K_DEBUG_ANY,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  "Configure tx [queue %d],  "
 		  "aifs: %d, cw_min: %d, cw_max: %d, txop: %d\n",
 		  queue, params->aifs, params->cw_min,
 		  params->cw_max, params->txop);
 
 	if (ath5k_hw_set_tx_queueprops(ah, queue, &qi)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ATH5K_ERR(ah,
+=======
 		ATH5K_ERR(sc,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ATH5K_ERR(sc,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  "Unable to update hardware queue %u!\n", queue);
 		ret = -EIO;
 	} else
 		ath5k_hw_reset_tx_queue(ah, queue);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&ah->lock);
+=======
 	mutex_unlock(&sc->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_unlock(&sc->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
 
 
 static u64
+<<<<<<< HEAD
+<<<<<<< HEAD
+ath5k_get_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+{
+	struct ath5k_hw *ah = hw->priv;
+
+	return ath5k_hw_get_tsf64(ah);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ath5k_get_tsf(struct ieee80211_hw *hw)
 {
 	struct ath5k_softc *sc = hw->priv;
 
 	return ath5k_hw_get_tsf64(sc->ah);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+ath5k_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif, u64 tsf)
+{
+	struct ath5k_hw *ah = hw->priv;
+
+	ath5k_hw_set_tsf64(ah, tsf);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ath5k_set_tsf(struct ieee80211_hw *hw, u64 tsf)
 {
 	struct ath5k_softc *sc = hw->priv;
 
 	ath5k_hw_set_tsf64(sc->ah, tsf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+ath5k_reset_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+{
+	struct ath5k_hw *ah = hw->priv;
+=======
 ath5k_reset_tsf(struct ieee80211_hw *hw)
 {
 	struct ath5k_softc *sc = hw->priv;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ath5k_reset_tsf(struct ieee80211_hw *hw)
+{
+	struct ath5k_softc *sc = hw->priv;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * in IBSS mode we need to update the beacon timers too.
 	 * this will also reset the TSF if we call it with 0
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ah->opmode == NL80211_IFTYPE_ADHOC)
+		ath5k_beacon_update_timers(ah, 0);
+	else
+		ath5k_hw_reset_tsf(ah);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sc->opmode == NL80211_IFTYPE_ADHOC)
 		ath5k_beacon_update_timers(sc, 0);
 	else
 		ath5k_hw_reset_tsf(sc->ah);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
 static int
 ath5k_get_survey(struct ieee80211_hw *hw, int idx, struct survey_info *survey)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+	struct ieee80211_conf *conf = &hw->conf;
+	struct ath_common *common = ath5k_hw_common(ah);
+=======
 	struct ath5k_softc *sc = hw->priv;
 	struct ieee80211_conf *conf = &hw->conf;
 	struct ath_common *common = ath5k_hw_common(sc->ah);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+	struct ieee80211_conf *conf = &hw->conf;
+	struct ath_common *common = ath5k_hw_common(sc->ah);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath_cycle_counters *cc = &common->cc_survey;
 	unsigned int div = common->clockrate * 1000;
 
@@ -672,18 +1221,44 @@ ath5k_get_survey(struct ieee80211_hw *hw, int idx, struct survey_info *survey)
 	spin_lock_bh(&common->cc_lock);
 	ath_hw_cycle_counters_update(common);
 	if (cc->cycles > 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ah->survey.channel_time += cc->cycles / div;
+		ah->survey.channel_time_busy += cc->rx_busy / div;
+		ah->survey.channel_time_rx += cc->rx_frame / div;
+		ah->survey.channel_time_tx += cc->tx_frame / div;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sc->survey.channel_time += cc->cycles / div;
 		sc->survey.channel_time_busy += cc->rx_busy / div;
 		sc->survey.channel_time_rx += cc->rx_frame / div;
 		sc->survey.channel_time_tx += cc->tx_frame / div;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	memset(cc, 0, sizeof(*cc));
 	spin_unlock_bh(&common->cc_lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memcpy(survey, &ah->survey, sizeof(*survey));
+
+	survey->channel = conf->channel;
+	survey->noise = ah->ah_noise_floor;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(survey, &sc->survey, sizeof(*survey));
 
 	survey->channel = conf->channel;
 	survey->noise = sc->ah->ah_noise_floor;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	survey->filled = SURVEY_INFO_NOISE_DBM |
 			SURVEY_INFO_CHANNEL_TIME |
 			SURVEY_INFO_CHANNEL_TIME_BUSY |
@@ -707,17 +1282,44 @@ ath5k_get_survey(struct ieee80211_hw *hw, int idx, struct survey_info *survey)
 static void
 ath5k_set_coverage_class(struct ieee80211_hw *hw, u8 coverage_class)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+
+	mutex_lock(&ah->lock);
+	ath5k_hw_set_coverage_class(ah, coverage_class);
+	mutex_unlock(&ah->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 
 	mutex_lock(&sc->lock);
 	ath5k_hw_set_coverage_class(sc->ah, coverage_class);
 	mutex_unlock(&sc->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
 static int
 ath5k_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+
+	if (tx_ant == 1 && rx_ant == 1)
+		ath5k_hw_set_antenna_mode(ah, AR5K_ANTMODE_FIXED_A);
+	else if (tx_ant == 2 && rx_ant == 2)
+		ath5k_hw_set_antenna_mode(ah, AR5K_ANTMODE_FIXED_B);
+	else if ((tx_ant & 3) == 3 && (rx_ant & 3) == 3)
+		ath5k_hw_set_antenna_mode(ah, AR5K_ANTMODE_DEFAULT);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath5k_softc *sc = hw->priv;
 
 	if (tx_ant == 1 && rx_ant == 1)
@@ -726,6 +1328,10 @@ ath5k_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
 		ath5k_hw_set_antenna_mode(sc->ah, AR5K_ANTMODE_FIXED_B);
 	else if ((tx_ant & 3) == 3 && (rx_ant & 3) == 3)
 		ath5k_hw_set_antenna_mode(sc->ah, AR5K_ANTMODE_DEFAULT);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		return -EINVAL;
 	return 0;
@@ -735,9 +1341,21 @@ ath5k_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
 static int
 ath5k_get_antenna(struct ieee80211_hw *hw, u32 *tx_ant, u32 *rx_ant)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+
+	switch (ah->ah_ant_mode) {
+=======
 	struct ath5k_softc *sc = hw->priv;
 
 	switch (sc->ah->ah_ant_mode) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+
+	switch (sc->ah->ah_ant_mode) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case AR5K_ANTMODE_FIXED_A:
 		*tx_ant = 1; *rx_ant = 1; break;
 	case AR5K_ANTMODE_FIXED_B:
@@ -752,9 +1370,21 @@ ath5k_get_antenna(struct ieee80211_hw *hw, u32 *tx_ant, u32 *rx_ant)
 static void ath5k_get_ringparam(struct ieee80211_hw *hw,
 				u32 *tx, u32 *tx_max, u32 *rx, u32 *rx_max)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+
+	*tx = ah->txqs[AR5K_TX_QUEUE_ID_DATA_MIN].txq_max;
+=======
 	struct ath5k_softc *sc = hw->priv;
 
 	*tx = sc->txqs[AR5K_TX_QUEUE_ID_DATA_MIN].txq_max;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+
+	*tx = sc->txqs[AR5K_TX_QUEUE_ID_DATA_MIN].txq_max;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*tx_max = ATH5K_TXQ_LEN_MAX;
 	*rx = *rx_max = ATH_RXBUF;
@@ -763,7 +1393,15 @@ static void ath5k_get_ringparam(struct ieee80211_hw *hw,
 
 static int ath5k_set_ringparam(struct ieee80211_hw *hw, u32 tx, u32 rx)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath5k_hw *ah = hw->priv;
+=======
 	struct ath5k_softc *sc = hw->priv;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath5k_softc *sc = hw->priv;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 qnum;
 
 	/* only support setting tx ring size for now */
@@ -774,6 +1412,21 @@ static int ath5k_set_ringparam(struct ieee80211_hw *hw, u32 tx, u32 rx)
 	if (!tx || tx > ATH5K_TXQ_LEN_MAX)
 		return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (qnum = 0; qnum < ARRAY_SIZE(ah->txqs); qnum++) {
+		if (!ah->txqs[qnum].setup)
+			continue;
+		if (ah->txqs[qnum].qnum < AR5K_TX_QUEUE_ID_DATA_MIN ||
+		    ah->txqs[qnum].qnum > AR5K_TX_QUEUE_ID_DATA_MAX)
+			continue;
+
+		ah->txqs[qnum].txq_max = tx;
+		if (ah->txqs[qnum].txq_len >= ah->txqs[qnum].txq_max)
+			ieee80211_stop_queue(hw, ah->txqs[qnum].qnum);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (qnum = 0; qnum < ARRAY_SIZE(sc->txqs); qnum++) {
 		if (!sc->txqs[qnum].setup)
 			continue;
@@ -784,6 +1437,10 @@ static int ath5k_set_ringparam(struct ieee80211_hw *hw, u32 tx, u32 rx)
 		sc->txqs[qnum].txq_max = tx;
 		if (sc->txqs[qnum].txq_len >= sc->txqs[qnum].txq_max)
 			ieee80211_stop_queue(hw, sc->txqs[qnum].qnum);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;

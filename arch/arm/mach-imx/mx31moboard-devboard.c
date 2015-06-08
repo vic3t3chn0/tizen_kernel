@@ -161,8 +161,12 @@ static int devboard_usbh1_hw_init(struct platform_device *pdev)
 <<<<<<< HEAD
 static int devboard_isp1105_init(struct usb_phy *otg)
 =======
+<<<<<<< HEAD
+static int devboard_isp1105_init(struct usb_phy *otg)
+=======
 static int devboard_isp1105_init(struct otg_transceiver *otg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret = gpio_request(USBH1_MODE, "usbh1-mode");
 	if (ret)
@@ -184,8 +188,12 @@ static int devboard_isp1105_init(struct otg_transceiver *otg)
 <<<<<<< HEAD
 static int devboard_isp1105_set_vbus(struct usb_otg *otg, bool on)
 =======
+<<<<<<< HEAD
+static int devboard_isp1105_set_vbus(struct usb_otg *otg, bool on)
+=======
 static int devboard_isp1105_set_vbus(struct otg_transceiver *otg, bool on)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (on)
 		gpio_set_value(USBH1_VBUSEN_B, 0);
@@ -203,6 +211,9 @@ static struct mxc_usbh_platform_data usbh1_pdata __initdata = {
 static int __init devboard_usbh1_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct usb_phy *phy;
 	struct platform_device *pdev;
 
@@ -221,6 +232,8 @@ static int __init devboard_usbh1_init(void)
 	phy->otg->set_vbus	= devboard_isp1105_set_vbus;
 
 	usbh1_pdata.otg = phy;
+<<<<<<< HEAD
+=======
 =======
 	struct otg_transceiver *otg;
 	struct platform_device *pdev;
@@ -235,6 +248,7 @@ static int __init devboard_usbh1_init(void)
 
 	usbh1_pdata.otg = otg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pdev = imx31_add_mxc_ehci_hs(1, &usbh1_pdata);
 	if (IS_ERR(pdev))

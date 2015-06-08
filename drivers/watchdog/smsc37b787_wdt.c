@@ -40,9 +40,23 @@
  *  mknod /dev/watchdog c 10 130
  *
  * For an example userspace keep-alive daemon, see:
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *   Documentation/watchdog/wdt.txt
+ */
+
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
  *   Documentation/watchdog/watchdog.txt
  */
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *   Documentation/watchdog/watchdog.txt
+ */
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/types.h>
@@ -58,7 +72,14 @@
 #include <linux/io.h>
 #include <linux/uaccess.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* enable support for minutes as units? */
 /* (does not always work correctly, so disabled by default!) */
@@ -70,7 +91,14 @@
 #define UNIT_SECOND     0
 #define UNIT_MINUTE     1
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define MODNAME		"smsc37b787_wdt: "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MODNAME		"smsc37b787_wdt: "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VERSION		"1.1"
 
 #define IOPORT		0x3F0
@@ -85,7 +113,15 @@ static char expect_close;       /* is the close expected? */
 
 static DEFINE_SPINLOCK(io_lock);/* to guard the watchdog from io races */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+=======
 static int nowayout = WATCHDOG_NOWAYOUT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nowayout = WATCHDOG_NOWAYOUT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* -- Low level function ----------------------------------------*/
 
@@ -363,8 +399,17 @@ static int wb_smsc_wdt_open(struct inode *inode, struct file *file)
 	/* Reload and activate timer */
 	wb_smsc_wdt_enable();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Watchdog enabled. Timeout set to %d %s\n",
+=======
 	printk(KERN_INFO MODNAME
 		"Watchdog enabled. Timeout set to %d %s.\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO MODNAME
+		"Watchdog enabled. Timeout set to %d %s.\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		timeout, (unit == UNIT_SECOND) ? "second(s)" : "minute(s)");
 
 	return nonseekable_open(inode, file);
@@ -378,11 +423,23 @@ static int wb_smsc_wdt_release(struct inode *inode, struct file *file)
 
 	if (expect_close == 42) {
 		wb_smsc_wdt_disable();
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Watchdog disabled, sleeping again...\n");
+	} else {
+		pr_crit("Unexpected close, not stopping watchdog!\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO MODNAME
 				"Watchdog disabled, sleeping again...\n");
 	} else {
 		printk(KERN_CRIT MODNAME
 				"Unexpected close, not stopping watchdog!\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wb_smsc_wdt_reset_timer();
 	}
 
@@ -534,12 +591,26 @@ static int __init wb_smsc_wdt_init(void)
 {
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("SMsC 37B787 watchdog component driver "
+		VERSION " initialising...\n");
+
+	if (!request_region(IOPORT, IOPORT_SIZE, "SMsC 37B787 watchdog")) {
+		pr_err("Unable to register IO port %#x\n", IOPORT);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "SMsC 37B787 watchdog component driver "
 					VERSION " initialising...\n");
 
 	if (!request_region(IOPORT, IOPORT_SIZE, "SMsC 37B787 watchdog")) {
 		printk(KERN_ERR MODNAME "Unable to register IO port %#x\n",
 								IOPORT);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EBUSY;
 		goto out_pnp;
 	}
@@ -553,25 +624,58 @@ static int __init wb_smsc_wdt_init(void)
 
 	ret = register_reboot_notifier(&wb_smsc_wdt_notifier);
 	if (ret) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Unable to register reboot notifier err = %d\n", ret);
+=======
 		printk(KERN_ERR MODNAME
 			"Unable to register reboot notifier err = %d\n", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR MODNAME
+			"Unable to register reboot notifier err = %d\n", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_io;
 	}
 
 	ret = misc_register(&wb_smsc_wdt_miscdev);
 	if (ret) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Unable to register miscdev on minor %d\n",
+		       WATCHDOG_MINOR);
+=======
 		printk(KERN_ERR MODNAME
 			"Unable to register miscdev on minor %d\n",
 							WATCHDOG_MINOR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR MODNAME
+			"Unable to register miscdev on minor %d\n",
+							WATCHDOG_MINOR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_rbt;
 	}
 
 	/* output info */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Timeout set to %d %s\n",
+		timeout, (unit == UNIT_SECOND) ? "second(s)" : "minute(s)");
+	pr_info("Watchdog initialized and sleeping (nowayout=%d)...\n",
+		nowayout);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO MODNAME "Timeout set to %d %s.\n",
 		timeout, (unit == UNIT_SECOND) ? "second(s)" : "minute(s)");
 	printk(KERN_INFO MODNAME
 		"Watchdog initialized and sleeping (nowayout=%d)...\n",
 								nowayout);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_clean:
 	return ret;
 
@@ -592,14 +696,30 @@ static void __exit wb_smsc_wdt_exit(void)
 	/* Stop the timer before we leave */
 	if (!nowayout) {
 		wb_smsc_wdt_shutdown();
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Watchdog disabled\n");
+=======
 		printk(KERN_INFO MODNAME "Watchdog disabled.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO MODNAME "Watchdog disabled.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	misc_deregister(&wb_smsc_wdt_miscdev);
 	unregister_reboot_notifier(&wb_smsc_wdt_notifier);
 	release_region(IOPORT, IOPORT_SIZE);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("SMsC 37B787 watchdog component driver removed\n");
+=======
 	printk(KERN_INFO "SMsC 37B787 watchdog component driver removed.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "SMsC 37B787 watchdog component driver removed.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init(wb_smsc_wdt_init);
@@ -621,7 +741,15 @@ MODULE_PARM_DESC(unit,
 module_param(timeout, int, 0);
 MODULE_PARM_DESC(timeout, "range is 1-255 units, default is 60");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_param(nowayout, bool, 0);
+=======
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout,
 		"Watchdog cannot be stopped once started (default="
 				__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");

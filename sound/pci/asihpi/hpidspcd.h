@@ -5,8 +5,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -26,6 +30,8 @@ Functions for reading DSP code to load into DSP
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  hpi_dspcode_defines HPI DSP code loading method
 Define exactly one of these to select how the DSP code is supplied to
 the adapter.
@@ -40,6 +46,7 @@ HPI_DSPCODE_FIRMWARE:
 DSP code is read using the hotplug firmware loader module.
      Only valid when compiling the HPI kernel driver under Linux.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 */
 /***********************************************************************/
 #ifndef _HPIDSPCD_H_
@@ -48,6 +55,9 @@ DSP code is read using the hotplug firmware loader module.
 #include "hpi_internal.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** Header structure for dsp firmware file
  This structure must match that used in s2bin.c for generation of asidsp.bin
  */
@@ -88,6 +98,8 @@ struct dsp_code {
 
 /** Prepare *psDspCode to refer to the requested adapter's firmware.
 Code file name is obtained from HpiOs_GetDspCodePath
+<<<<<<< HEAD
+=======
 =======
 #ifndef DISABLE_PRAGMA_PACK1
 #pragma pack(push, 1)
@@ -115,6 +127,7 @@ struct dsp_code {
 /** Prepare *psDspCode to refer to the requuested adapter.
  Searches the file, or selects the appropriate linked array
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 \return 0 for success, or error code if requested code is not available
 */
@@ -123,8 +136,12 @@ short hpi_dsp_code_open(
 <<<<<<< HEAD
 	u32 adapter, void *pci_dev,
 =======
+<<<<<<< HEAD
+	u32 adapter, void *pci_dev,
+=======
 	u32 adapter,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/** Pointer to DSP code control structure */
 	struct dsp_code *ps_dsp_code,
 	/** Pointer to dword to receive OS specific error code */

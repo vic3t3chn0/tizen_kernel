@@ -14,8 +14,12 @@
 <<<<<<< HEAD
 #include <video/vga.h>
 =======
+<<<<<<< HEAD
+#include <video/vga.h>
+=======
 #include <linux/mbus.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <asm/mach/pci.h>
 #include <plat/pcie.h>
@@ -23,7 +27,11 @@
 <<<<<<< HEAD
 #include <plat/addr-map.h>
 =======
+<<<<<<< HEAD
+#include <plat/addr-map.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 
 void kirkwood_enable_pcie(void)
@@ -210,11 +218,17 @@ static int __init kirkwood_pcie_setup(int nr, struct pci_sys_data *sys)
 	pci_add_resource_offset(&sys->resources, &pp->res[0], sys->io_offset);
 	pci_add_resource_offset(&sys->resources, &pp->res[1], sys->mem_offset);
 =======
+<<<<<<< HEAD
+	sys->io_offset = 0;
+	pci_add_resource_offset(&sys->resources, &pp->res[0], sys->io_offset);
+	pci_add_resource_offset(&sys->resources, &pp->res[1], sys->mem_offset);
+=======
 	sys->resource[0] = &pp->res[0];
 	sys->resource[1] = &pp->res[1];
 	sys->resource[2] = NULL;
 	sys->io_offset = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Generic PCIe unit setup.
@@ -224,8 +238,12 @@ static int __init kirkwood_pcie_setup(int nr, struct pci_sys_data *sys)
 <<<<<<< HEAD
 	orion_pcie_setup(pp->base);
 =======
+<<<<<<< HEAD
+	orion_pcie_setup(pp->base);
+=======
 	orion_pcie_setup(pp->base, &kirkwood_mbus_dram_info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
@@ -257,8 +275,13 @@ kirkwood_pcie_scan_bus(int nr, struct pci_sys_data *sys)
 		bus = pci_scan_root_bus(NULL, sys->busnr, &pcie_ops, sys,
 					&sys->resources);
 =======
+<<<<<<< HEAD
+		bus = pci_scan_root_bus(NULL, sys->busnr, &pcie_ops, sys,
+					&sys->resources);
+=======
 		bus = pci_scan_bus(sys->busnr, &pcie_ops, sys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		bus = NULL;
 		BUG();
@@ -271,8 +294,13 @@ kirkwood_pcie_scan_bus(int nr, struct pci_sys_data *sys)
 static int __init kirkwood_pcie_map_irq(const struct pci_dev *dev, u8 slot,
 	u8 pin)
 =======
+<<<<<<< HEAD
+static int __init kirkwood_pcie_map_irq(const struct pci_dev *dev, u8 slot,
+	u8 pin)
+=======
 static int __init kirkwood_pcie_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pcie_port *pp = bus_to_port(dev->bus);
 
@@ -303,7 +331,12 @@ void __init kirkwood_pcie_init(unsigned int portmask)
 	vga_base = KIRKWOOD_PCIE_MEM_PHYS_BASE;
 
 =======
+<<<<<<< HEAD
+	vga_base = KIRKWOOD_PCIE_MEM_PHYS_BASE;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (portmask & KW_PCIE0)
 		add_pcie_port(0, PCIE_VIRT_BASE);
 

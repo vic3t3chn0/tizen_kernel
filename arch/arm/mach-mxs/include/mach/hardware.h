@@ -22,6 +22,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef __ASSEMBLER__
 #define IOMEM(addr)	(addr)
 #else
@@ -29,4 +31,5 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __MACH_MXS_HARDWARE_H__ */

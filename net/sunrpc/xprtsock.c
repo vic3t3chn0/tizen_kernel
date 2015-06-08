@@ -40,8 +40,12 @@
 <<<<<<< HEAD
 #ifdef CONFIG_SUNRPC_BACKCHANNEL
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SUNRPC_BACKCHANNEL
+=======
 #ifdef CONFIG_NFS_V4_1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sunrpc/bc_xprt.h>
 #endif
 
@@ -58,12 +62,17 @@ static void xs_close(struct rpc_xprt *xprt);
  * xprtsock tunables
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int xprt_udp_slot_table_entries = RPC_DEF_SLOT_TABLE;
 static unsigned int xprt_tcp_slot_table_entries = RPC_MIN_SLOT_TABLE;
 static unsigned int xprt_max_tcp_slot_table_entries = RPC_MAX_SLOT_TABLE;
 
 static unsigned int xprt_min_resvport = RPC_DEF_MIN_RESVPORT;
 static unsigned int xprt_max_resvport = RPC_DEF_MAX_RESVPORT;
+<<<<<<< HEAD
+=======
 =======
 unsigned int xprt_udp_slot_table_entries = RPC_DEF_SLOT_TABLE;
 unsigned int xprt_tcp_slot_table_entries = RPC_DEF_SLOT_TABLE;
@@ -71,6 +80,7 @@ unsigned int xprt_tcp_slot_table_entries = RPC_DEF_SLOT_TABLE;
 unsigned int xprt_min_resvport = RPC_DEF_MIN_RESVPORT;
 unsigned int xprt_max_resvport = RPC_DEF_MAX_RESVPORT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define XS_TCP_LINGER_TO	(15U * HZ)
 static unsigned int xs_tcp_fin_timeout __read_mostly = XS_TCP_LINGER_TO;
@@ -91,7 +101,11 @@ static unsigned int max_slot_table_size = RPC_MAX_SLOT_TABLE;
 <<<<<<< HEAD
 static unsigned int max_tcp_slot_table_limit = RPC_MAX_SLOT_TABLE_LIMIT;
 =======
+<<<<<<< HEAD
+static unsigned int max_tcp_slot_table_limit = RPC_MAX_SLOT_TABLE_LIMIT;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int xprt_min_resvport_limit = RPC_MIN_RESVPORT;
 static unsigned int xprt_max_resvport_limit = RPC_MAX_RESVPORT;
 
@@ -122,6 +136,9 @@ static ctl_table xs_tunables_table[] = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.procname	= "tcp_max_slot_table_entries",
 		.data		= &xprt_max_tcp_slot_table_entries,
 		.maxlen		= sizeof(unsigned int),
@@ -131,8 +148,11 @@ static ctl_table xs_tunables_table[] = {
 		.extra2		= &max_tcp_slot_table_limit
 	},
 	{
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.procname	= "min_resvport",
 		.data		= &xprt_min_resvport,
 		.maxlen		= sizeof(unsigned int),
@@ -275,7 +295,11 @@ struct sock_xprt {
 <<<<<<< HEAD
 	void			(*old_error_report)(struct sock *);
 =======
+<<<<<<< HEAD
+	void			(*old_error_report)(struct sock *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -759,16 +783,22 @@ static int xs_tcp_send_request(struct rpc_task *task)
 			-status);
 	case -ECONNRESET:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case -EPIPE:
 		xs_tcp_shutdown(xprt);
 	case -ECONNREFUSED:
 	case -ENOTCONN:
+<<<<<<< HEAD
+=======
 =======
 		xs_tcp_shutdown(xprt);
 	case -ECONNREFUSED:
 	case -ENOTCONN:
 	case -EPIPE:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clear_bit(SOCK_ASYNC_NOSPACE, &transport->sock->flags);
 	}
 
@@ -797,7 +827,12 @@ static void xs_tcp_release_xprt(struct rpc_xprt *xprt, struct rpc_task *task)
 	if (req == NULL)
 		goto out_release;
 =======
+<<<<<<< HEAD
+	if (req == NULL)
+		goto out_release;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (req->rq_bytes_sent == 0)
 		goto out_release;
 	if (req->rq_bytes_sent == req->rq_snd_buf.len)
@@ -815,7 +850,11 @@ static void xs_save_old_callbacks(struct sock_xprt *transport, struct sock *sk)
 <<<<<<< HEAD
 	transport->old_error_report = sk->sk_error_report;
 =======
+<<<<<<< HEAD
+	transport->old_error_report = sk->sk_error_report;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xs_restore_old_callbacks(struct sock_xprt *transport, struct sock *sk)
@@ -826,7 +865,11 @@ static void xs_restore_old_callbacks(struct sock_xprt *transport, struct sock *s
 <<<<<<< HEAD
 	sk->sk_error_report = transport->old_error_report;
 =======
+<<<<<<< HEAD
+	sk->sk_error_report = transport->old_error_report;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xs_reset_transport(struct sock_xprt *transport)
@@ -1067,6 +1110,8 @@ static void xs_udp_data_ready(struct sock *sk, int len)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Helper function to force a TCP close if the server is sending
  * junk and/or it has put us in CLOSE_WAIT
@@ -1078,6 +1123,7 @@ static void xs_tcp_force_close(struct rpc_xprt *xprt)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void xs_tcp_read_fraghdr(struct rpc_xprt *xprt, struct xdr_skb_reader *desc)
 {
 	struct sock_xprt *transport = container_of(xprt, struct sock_xprt, xprt);
@@ -1107,8 +1153,12 @@ static inline void xs_tcp_read_fraghdr(struct rpc_xprt *xprt, struct xdr_skb_rea
 <<<<<<< HEAD
 		xprt_force_disconnect(xprt);
 =======
+<<<<<<< HEAD
+		xprt_force_disconnect(xprt);
+=======
 		xs_tcp_force_close(xprt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	dprintk("RPC:       reading TCP record fragment of length %d\n",
@@ -1192,8 +1242,12 @@ static inline void xs_tcp_read_calldir(struct sock_xprt *transport,
 <<<<<<< HEAD
 		xprt_force_disconnect(&transport->xprt);
 =======
+<<<<<<< HEAD
+		xprt_force_disconnect(&transport->xprt);
+=======
 		xs_tcp_force_close(&transport->xprt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	xs_tcp_check_fraghdr(transport);
 }
@@ -1309,8 +1363,12 @@ static inline int xs_tcp_read_reply(struct rpc_xprt *xprt,
 <<<<<<< HEAD
 #if defined(CONFIG_SUNRPC_BACKCHANNEL)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SUNRPC_BACKCHANNEL)
+=======
 #if defined(CONFIG_NFS_V4_1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Obtains an rpc_rqst previously allocated and invokes the common
  * tcp read code to read the data.  The result is placed in the callback
@@ -1376,8 +1434,12 @@ static inline int _xs_tcp_read_data(struct rpc_xprt *xprt,
 <<<<<<< HEAD
 #endif /* CONFIG_SUNRPC_BACKCHANNEL */
 =======
+<<<<<<< HEAD
+#endif /* CONFIG_SUNRPC_BACKCHANNEL */
+=======
 #endif /* CONFIG_NFS_V4_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Read data off the transport.  This can be either an RPC_CALL or an
@@ -1522,12 +1584,17 @@ static void xs_tcp_cancel_linger_timeout(struct rpc_xprt *xprt)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xs_sock_mark_closed(struct rpc_xprt *xprt)
 {
 	smp_mb__before_clear_bit();
 	clear_bit(XPRT_CLOSE_WAIT, &xprt->state);
 	clear_bit(XPRT_CLOSING, &xprt->state);
 	smp_mb__after_clear_bit();
+<<<<<<< HEAD
+=======
 =======
 static void xs_sock_reset_connection_flags(struct rpc_xprt *xprt)
 {
@@ -1543,6 +1610,7 @@ static void xs_sock_mark_closed(struct rpc_xprt *xprt)
 {
 	xs_sock_reset_connection_flags(xprt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Mark transport as closed and wake up all pending tasks */
 	xprt_disconnect_done(xprt);
 }
@@ -1601,10 +1669,15 @@ static void xs_tcp_state_change(struct sock *sk)
 		xprt_force_disconnect(xprt);
 		xprt->connect_cookie++;
 =======
+<<<<<<< HEAD
+		xprt_force_disconnect(xprt);
+		xprt->connect_cookie++;
+=======
 		xprt->connect_cookie++;
 		clear_bit(XPRT_CONNECTED, &xprt->state);
 		xs_tcp_force_close(xprt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TCP_CLOSING:
 		/*
 		 * If the server closed down the connection, make sure that
@@ -1629,6 +1702,9 @@ static void xs_tcp_state_change(struct sock *sk)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * xs_error_report - callback mainly for catching socket errors
  * @sk: socket
@@ -1648,8 +1724,11 @@ out:
 	read_unlock_bh(&sk->sk_callback_lock);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xs_write_space(struct sock *sk)
 {
 	struct socket *sock;
@@ -1952,7 +2031,11 @@ static int xs_local_finish_connecting(struct rpc_xprt *xprt,
 <<<<<<< HEAD
 		sk->sk_error_report = xs_error_report;
 =======
+<<<<<<< HEAD
+		sk->sk_error_report = xs_error_report;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sk->sk_allocation = GFP_ATOMIC;
 
 		xprt_clear_connected(xprt);
@@ -1991,9 +2074,12 @@ static void xs_local_setup_socket(struct work_struct *work)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current->flags |= PF_FSTRANS;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_bit(XPRT_CONNECTION_ABORT, &xprt->state);
 	status = __sock_create(xprt->xprt_net, AF_LOCAL,
 					SOCK_STREAM, 0, &sock, 1);
@@ -2029,8 +2115,11 @@ out:
 	xprt_wake_pending_tasks(xprt, status);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current->flags &= ~PF_FSTRANS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xs_udp_finish_connecting(struct rpc_xprt *xprt, struct socket *sock)
@@ -2050,7 +2139,11 @@ static void xs_udp_finish_connecting(struct rpc_xprt *xprt, struct socket *sock)
 <<<<<<< HEAD
 		sk->sk_error_report = xs_error_report;
 =======
+<<<<<<< HEAD
+		sk->sk_error_report = xs_error_report;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sk->sk_no_check = UDP_CSUM_NORCV;
 		sk->sk_allocation = GFP_ATOMIC;
 
@@ -2078,9 +2171,12 @@ static void xs_udp_setup_socket(struct work_struct *work)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current->flags |= PF_FSTRANS;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Start by resetting any existing state */
 	xs_reset_transport(transport);
 	sock = xs_create_sock(xprt, transport,
@@ -2101,8 +2197,11 @@ out:
 	xprt_wake_pending_tasks(xprt, status);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current->flags &= ~PF_FSTRANS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2125,14 +2224,20 @@ static void xs_abort_connection(struct sock_xprt *transport)
 	result = kernel_connect(transport->sock, &any, sizeof(any), 0);
 	if (!result)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xs_sock_mark_closed(&transport->xprt);
 	else
 		dprintk("RPC:       AF_UNSPEC connect return code %d\n",
 				result);
+<<<<<<< HEAD
+=======
 =======
 		xs_sock_reset_connection_flags(&transport->xprt);
 	dprintk("RPC:       AF_UNSPEC connect return code %d\n", result);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xs_tcp_reuse_connection(struct sock_xprt *transport)
@@ -2180,7 +2285,11 @@ static int xs_tcp_finish_connecting(struct rpc_xprt *xprt, struct socket *sock)
 <<<<<<< HEAD
 		sk->sk_error_report = xs_error_report;
 =======
+<<<<<<< HEAD
+		sk->sk_error_report = xs_error_report;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sk->sk_allocation = GFP_ATOMIC;
 
 		/* socket options */
@@ -2238,9 +2347,12 @@ static void xs_tcp_setup_socket(struct work_struct *work)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current->flags |= PF_FSTRANS;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sock) {
 		clear_bit(XPRT_CONNECTION_ABORT, &xprt->state);
 		sock = xs_create_sock(xprt, transport,
@@ -2283,8 +2395,13 @@ static void xs_tcp_setup_socket(struct work_struct *work)
 		set_bit(XPRT_CONNECTION_CLOSE, &xprt->state);
 		xprt_force_disconnect(xprt);
 =======
+<<<<<<< HEAD
+		set_bit(XPRT_CONNECTION_CLOSE, &xprt->state);
+		xprt_force_disconnect(xprt);
+=======
 		xs_tcp_force_close(xprt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case -ECONNREFUSED:
 	case -ECONNRESET:
@@ -2296,8 +2413,11 @@ static void xs_tcp_setup_socket(struct work_struct *work)
 		xprt_clear_connecting(xprt);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		current->flags &= ~PF_FSTRANS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	case -EINVAL:
 		/* Happens, for instance, if the user specified a link
@@ -2312,8 +2432,11 @@ out:
 	xprt_wake_pending_tasks(xprt, status);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	current->flags &= ~PF_FSTRANS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2370,8 +2493,12 @@ static void xs_local_print_stats(struct rpc_xprt *xprt, struct seq_file *seq)
 <<<<<<< HEAD
 			"%llu %llu %lu %llu %llu\n",
 =======
+<<<<<<< HEAD
+			"%llu %llu %lu %llu %llu\n",
+=======
 			"%llu %llu\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xprt->stat.bind_count,
 			xprt->stat.connect_count,
 			xprt->stat.connect_time,
@@ -2381,13 +2508,19 @@ static void xs_local_print_stats(struct rpc_xprt *xprt, struct seq_file *seq)
 			xprt->stat.bad_xids,
 			xprt->stat.req_u,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xprt->stat.bklog_u,
 			xprt->stat.max_slots,
 			xprt->stat.sending_u,
 			xprt->stat.pending_u);
+<<<<<<< HEAD
+=======
 =======
 			xprt->stat.bklog_u);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2404,8 +2537,13 @@ static void xs_udp_print_stats(struct rpc_xprt *xprt, struct seq_file *seq)
 	seq_printf(seq, "\txprt:\tudp %u %lu %lu %lu %lu %llu %llu "
 			"%lu %llu %llu\n",
 =======
+<<<<<<< HEAD
+	seq_printf(seq, "\txprt:\tudp %u %lu %lu %lu %lu %llu %llu "
+			"%lu %llu %llu\n",
+=======
 	seq_printf(seq, "\txprt:\tudp %u %lu %lu %lu %lu %Lu %Lu\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			transport->srcport,
 			xprt->stat.bind_count,
 			xprt->stat.sends,
@@ -2413,13 +2551,19 @@ static void xs_udp_print_stats(struct rpc_xprt *xprt, struct seq_file *seq)
 			xprt->stat.bad_xids,
 			xprt->stat.req_u,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xprt->stat.bklog_u,
 			xprt->stat.max_slots,
 			xprt->stat.sending_u,
 			xprt->stat.pending_u);
+<<<<<<< HEAD
+=======
 =======
 			xprt->stat.bklog_u);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2440,8 +2584,13 @@ static void xs_tcp_print_stats(struct rpc_xprt *xprt, struct seq_file *seq)
 	seq_printf(seq, "\txprt:\ttcp %u %lu %lu %lu %ld %lu %lu %lu "
 			"%llu %llu %lu %llu %llu\n",
 =======
+<<<<<<< HEAD
+	seq_printf(seq, "\txprt:\ttcp %u %lu %lu %lu %ld %lu %lu %lu "
+			"%llu %llu %lu %llu %llu\n",
+=======
 	seq_printf(seq, "\txprt:\ttcp %u %lu %lu %lu %ld %lu %lu %lu %Lu %Lu\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			transport->srcport,
 			xprt->stat.bind_count,
 			xprt->stat.connect_count,
@@ -2452,13 +2601,19 @@ static void xs_tcp_print_stats(struct rpc_xprt *xprt, struct seq_file *seq)
 			xprt->stat.bad_xids,
 			xprt->stat.req_u,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xprt->stat.bklog_u,
 			xprt->stat.max_slots,
 			xprt->stat.sending_u,
 			xprt->stat.pending_u);
+<<<<<<< HEAD
+=======
 =======
 			xprt->stat.bklog_u);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2642,7 +2797,11 @@ static struct rpc_xprt_ops bc_tcp_ops = {
 <<<<<<< HEAD
 	.rpcbind		= xs_local_rpcbind,
 =======
+<<<<<<< HEAD
+	.rpcbind		= xs_local_rpcbind,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.buf_alloc		= bc_malloc,
 	.buf_free		= bc_free,
 	.send_request		= bc_send_request,
@@ -2684,8 +2843,13 @@ static struct rpc_xprt *xs_setup_xprt(struct xprt_create *args,
 				      unsigned int slot_table_size,
 				      unsigned int max_slot_table_size)
 =======
+<<<<<<< HEAD
+				      unsigned int slot_table_size,
+				      unsigned int max_slot_table_size)
+=======
 				      unsigned int slot_table_size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rpc_xprt *xprt;
 	struct sock_xprt *new;
@@ -2699,8 +2863,13 @@ static struct rpc_xprt *xs_setup_xprt(struct xprt_create *args,
 	xprt = xprt_alloc(args->net, sizeof(*new), slot_table_size,
 			max_slot_table_size);
 =======
+<<<<<<< HEAD
+	xprt = xprt_alloc(args->net, sizeof(*new), slot_table_size,
+			max_slot_table_size);
+=======
 	xprt = xprt_alloc(args->net, sizeof(*new), slot_table_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (xprt == NULL) {
 		dprintk("RPC:       xs_setup_xprt: couldn't allocate "
 				"rpc_xprt\n");
@@ -2717,14 +2886,20 @@ static struct rpc_xprt *xs_setup_xprt(struct xprt_create *args,
 		err = xs_init_anyaddr(args->dstaddr->sa_family,
 					(struct sockaddr *)&new->srcaddr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err != 0) {
 			xprt_free(xprt);
 			return ERR_PTR(err);
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (err != 0)
 			return ERR_PTR(err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return xprt;
@@ -2753,8 +2928,13 @@ static struct rpc_xprt *xs_setup_local(struct xprt_create *args)
 	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries,
 			xprt_max_tcp_slot_table_entries);
 =======
+<<<<<<< HEAD
+	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries,
+			xprt_max_tcp_slot_table_entries);
+=======
 	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(xprt))
 		return xprt;
 	transport = container_of(xprt, struct sock_xprt, xprt);
@@ -2822,8 +3002,13 @@ static struct rpc_xprt *xs_setup_udp(struct xprt_create *args)
 	xprt = xs_setup_xprt(args, xprt_udp_slot_table_entries,
 			xprt_udp_slot_table_entries);
 =======
+<<<<<<< HEAD
+	xprt = xs_setup_xprt(args, xprt_udp_slot_table_entries,
+			xprt_udp_slot_table_entries);
+=======
 	xprt = xs_setup_xprt(args, xprt_udp_slot_table_entries);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(xprt))
 		return xprt;
 	transport = container_of(xprt, struct sock_xprt, xprt);
@@ -2903,8 +3088,13 @@ static struct rpc_xprt *xs_setup_tcp(struct xprt_create *args)
 	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries,
 			xprt_max_tcp_slot_table_entries);
 =======
+<<<<<<< HEAD
+	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries,
+			xprt_max_tcp_slot_table_entries);
+=======
 	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(xprt))
 		return xprt;
 	transport = container_of(xprt, struct sock_xprt, xprt);
@@ -2987,8 +3177,13 @@ static struct rpc_xprt *xs_setup_bc_tcp(struct xprt_create *args)
 	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries,
 			xprt_tcp_slot_table_entries);
 =======
+<<<<<<< HEAD
+	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries,
+			xprt_tcp_slot_table_entries);
+=======
 	xprt = xs_setup_xprt(args, xprt_tcp_slot_table_entries);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(xprt))
 		return xprt;
 	transport = container_of(xprt, struct sock_xprt, xprt);
@@ -3176,6 +3371,9 @@ static struct kernel_param_ops param_ops_slot_table_size = {
 	__param_check(name, p, unsigned int);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int param_set_max_slot_table_size(const char *val,
 				     const struct kernel_param *kp)
 {
@@ -3196,10 +3394,13 @@ module_param_named(tcp_slot_table_entries, xprt_tcp_slot_table_entries,
 		   slot_table_size, 0644);
 module_param_named(tcp_max_slot_table_entries, xprt_max_tcp_slot_table_entries,
 		   max_slot_table_size, 0644);
+<<<<<<< HEAD
+=======
 =======
 module_param_named(tcp_slot_table_entries, xprt_tcp_slot_table_entries,
 		   slot_table_size, 0644);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_named(udp_slot_table_entries, xprt_udp_slot_table_entries,
 		   slot_table_size, 0644);
 

@@ -66,8 +66,13 @@ void __init setup_bios_corruption_check(void)
 	phys_addr_t start, end;
 	u64 i;
 =======
+<<<<<<< HEAD
+	phys_addr_t start, end;
+	u64 i;
+=======
 	u64 addr = PAGE_SIZE;	/* assume first page is reserved anyway */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (memory_corruption_check == -1) {
 		memory_corruption_check =
@@ -88,6 +93,9 @@ void __init setup_bios_corruption_check(void)
 	corruption_check_size = round_up(corruption_check_size, PAGE_SIZE);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_free_mem_range(i, MAX_NUMNODES, &start, &end, NULL) {
 		start = clamp_t(phys_addr_t, round_up(start, PAGE_SIZE),
 				PAGE_SIZE, corruption_check_size);
@@ -105,6 +113,8 @@ void __init setup_bios_corruption_check(void)
 
 		if (++num_scan_areas >= MAX_SCAN_AREAS)
 			break;
+<<<<<<< HEAD
+=======
 =======
 	while (addr < corruption_check_size && num_scan_areas < MAX_SCAN_AREAS) {
 		u64 size;
@@ -129,6 +139,7 @@ void __init setup_bios_corruption_check(void)
 
 		addr += size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (num_scan_areas)

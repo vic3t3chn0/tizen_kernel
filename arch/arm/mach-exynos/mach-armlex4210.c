@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* linux/arch/arm/mach-exynos4/mach-armlex4210.c
 =======
+<<<<<<< HEAD
+/* linux/arch/arm/mach-exynos4/mach-armlex4210.c
+=======
 /* linux/arch/arm/mach-exynos/mach-armlex4210.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
@@ -23,15 +27,22 @@
 <<<<<<< HEAD
 #include <asm/hardware/gic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/gic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 
 #include <plat/cpu.h>
 #include <plat/devs.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/exynos4.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/gpio-cfg.h>
 #include <plat/regs-serial.h>
 #include <plat/regs-srom.h>
@@ -43,7 +54,12 @@
 #include "common.h"
 
 =======
+<<<<<<< HEAD
+#include "common.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Following are default values for UCON, ULCON and UFCON UART registers */
 #define ARMLEX4210_UCON_DEFAULT	(S3C2410_UCON_TXILEVEL |	\
 				 S3C2410_UCON_RXILEVEL |	\
@@ -174,7 +190,11 @@ static struct platform_device *armlex4210_devices[] __initdata = {
 <<<<<<< HEAD
 	&exynos4_device_sysmmu,
 =======
+<<<<<<< HEAD
+	&exynos4_device_sysmmu,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&samsung_asoc_dma,
 	&armlex4210_smsc911x,
 	&exynos4_device_ahci,
@@ -209,8 +229,12 @@ static void __init armlex4210_map_io(void)
 <<<<<<< HEAD
 	exynos_init_io(NULL, 0);
 =======
+<<<<<<< HEAD
+	exynos_init_io(NULL, 0);
+=======
 	s5p_init_io(NULL, 0, S5P_VA_CHIPID);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s3c24xx_init_clocks(24000000);
 	s3c24xx_init_uarts(armlex4210_uartcfgs,
 			   ARRAY_SIZE(armlex4210_uartcfgs));
@@ -231,6 +255,9 @@ static void __init armlex4210_machine_init(void)
 MACHINE_START(ARMLEX4210, "ARMLEX4210")
 	/* Maintainer: Alim Akhtar <alim.akhtar@samsung.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_irq	= exynos4_init_irq,
 	.map_io		= armlex4210_map_io,
@@ -238,6 +265,8 @@ MACHINE_START(ARMLEX4210, "ARMLEX4210")
 	.init_machine	= armlex4210_machine_init,
 	.timer		= &exynos4_timer,
 	.restart	= exynos4_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= S5P_PA_SDRAM + 0x100,
 	.init_irq	= exynos4_init_irq,
@@ -245,4 +274,5 @@ MACHINE_START(ARMLEX4210, "ARMLEX4210")
 	.init_machine	= armlex4210_machine_init,
 	.timer		= &exynos4_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

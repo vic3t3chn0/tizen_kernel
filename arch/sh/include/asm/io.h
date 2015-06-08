@@ -16,8 +16,11 @@
 #include <asm/cache.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/addrspace.h>
 #include <asm/machvec.h>
 #include <asm/pgtable.h>
@@ -30,7 +33,11 @@
 <<<<<<< HEAD
 #include <mach/mangle-port.h>
 =======
+<<<<<<< HEAD
+#include <mach/mangle-port.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define __raw_writeb(v,a)	(__chk_io_ptr(a), *(volatile u8  __force *)(a) = (v))
 #define __raw_writew(v,a)	(__chk_io_ptr(a), *(volatile u16 __force *)(a) = (v))
@@ -43,6 +50,9 @@
 #define __raw_readq(a)		(__chk_io_ptr(a), *(volatile u64 __force *)(a))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define readb_relaxed(c)	({ u8  __v = ioswabb(__raw_readb(c)); __v; })
 #define readw_relaxed(c)	({ u16 __v = ioswabw(__raw_readw(c)); __v; })
 #define readl_relaxed(c)	({ u32 __v = ioswabl(__raw_readl(c)); __v; })
@@ -52,6 +62,8 @@
 #define writew_relaxed(v,c)	((void)__raw_writew((__force u16)ioswabw(v),c))
 #define writel_relaxed(v,c)	((void)__raw_writel((__force u32)ioswabl(v),c))
 #define writeq_relaxed(v,c)	((void)__raw_writeq((__force u64)ioswabq(v),c))
+<<<<<<< HEAD
+=======
 =======
 #define readb_relaxed(c)	({ u8  __v = __raw_readb(c); __v; })
 #define readw_relaxed(c)	({ u16 __v = le16_to_cpu((__force __le16) \
@@ -69,6 +81,7 @@
 #define writeq_relaxed(v,c)	((void)__raw_writeq((__force u64) \
 					cpu_to_le64(v),c))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define readb(a)		({ u8  r_ = readb_relaxed(a); rmb(); r_; })
 #define readw(a)		({ u16 r_ = readw_relaxed(a); rmb(); r_; })

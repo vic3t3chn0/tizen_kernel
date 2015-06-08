@@ -69,7 +69,12 @@
 #define pr_fmt(fmt) "IPv4: " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) "IPv4: " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/err.h>
 #include <linux/errno.h>
 #include <linux/types.h>
@@ -96,8 +101,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/inet.h>
 #include <linux/igmp.h>
@@ -164,8 +172,12 @@ void inet_sock_destruct(struct sock *sk)
 <<<<<<< HEAD
 		WARN(1, "Attempt to release TCP socket in state %d %p\n",
 =======
+<<<<<<< HEAD
+		WARN(1, "Attempt to release TCP socket in state %d %p\n",
+=======
 		pr_err("Attempt to release TCP socket in state %d %p\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       sk->sk_state, sk);
 		return;
 	}
@@ -173,8 +185,12 @@ void inet_sock_destruct(struct sock *sk)
 <<<<<<< HEAD
 		WARN(1, "Attempt to release alive inet socket %p\n", sk);
 =======
+<<<<<<< HEAD
+		WARN(1, "Attempt to release alive inet socket %p\n", sk);
+=======
 		pr_err("Attempt to release alive inet socket %p\n", sk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -259,6 +275,10 @@ EXPORT_SYMBOL(inet_ehash_secret);
 /*
  * inet_ehash_secret must be set exactly once
 =======
+<<<<<<< HEAD
+/*
+ * inet_ehash_secret must be set exactly once
+=======
 u32 ipv6_hash_secret __read_mostly;
 EXPORT_SYMBOL(ipv6_hash_secret);
 
@@ -266,6 +286,7 @@ EXPORT_SYMBOL(ipv6_hash_secret);
  * inet_ehash_secret must be set exactly once, and to a non nul value
  * ipv6_hash_secret must be set exactly once.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void build_ehash_secret(void)
 {
@@ -278,9 +299,13 @@ void build_ehash_secret(void)
 <<<<<<< HEAD
 	cmpxchg(&inet_ehash_secret, 0, rnd);
 =======
+<<<<<<< HEAD
+	cmpxchg(&inet_ehash_secret, 0, rnd);
+=======
 	if (cmpxchg(&inet_ehash_secret, 0, rnd) == 0)
 		get_random_bytes(&ipv6_hash_secret, sizeof(ipv6_hash_secret));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(build_ehash_secret);
 
@@ -431,7 +456,11 @@ lookup_protocol:
 <<<<<<< HEAD
 	inet->rcv_tos	= 0;
 =======
+<<<<<<< HEAD
+	inet->rcv_tos	= 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sk_refcnt_debug_inc(sk);
 
@@ -518,6 +547,9 @@ int inet_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 
 	if (addr->sin_family != AF_INET) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Compatibility games : accept AF_UNSPEC (mapped to AF_INET)
 		 * only if s_addr is INADDR_ANY.
 		 */
@@ -525,10 +557,13 @@ int inet_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 		if (addr->sin_family != AF_UNSPEC ||
 		    addr->sin_addr.s_addr != htonl(INADDR_ANY))
 			goto out;
+<<<<<<< HEAD
+=======
 =======
 		err = -EAFNOSUPPORT;
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	chk_addr_ret = inet_addr_type(sock_net(sk), addr->sin_addr.s_addr);
@@ -953,8 +988,12 @@ EXPORT_SYMBOL(inet_ioctl);
 <<<<<<< HEAD
 static int inet_compat_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 =======
+<<<<<<< HEAD
+static int inet_compat_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
+=======
 int inet_compat_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sock *sk = sock->sk;
 	int err = -ENOIOCTLCMD;
@@ -1146,11 +1185,16 @@ out:
 
 out_permanent:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_err("Attempt to override permanent protocol %d\n", protocol);
 	goto out;
 
 out_illegal:
 	pr_err("Ignoring attempt to register invalid socket type %d\n",
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_ERR "Attempt to override permanent protocol %d.\n",
 	       protocol);
@@ -1160,6 +1204,7 @@ out_illegal:
 	printk(KERN_ERR
 	       "Ignoring attempt to register invalid socket type %d.\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       p->type);
 	goto out;
 }
@@ -1171,9 +1216,13 @@ void inet_unregister_protosw(struct inet_protosw *p)
 <<<<<<< HEAD
 		pr_err("Attempt to unregister permanent protocol %d\n",
 =======
+<<<<<<< HEAD
+		pr_err("Attempt to unregister permanent protocol %d\n",
+=======
 		printk(KERN_ERR
 		       "Attempt to unregister permanent protocol %d.\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       p->protocol);
 	} else {
 		spin_lock_bh(&inetsw_lock);
@@ -1226,9 +1275,14 @@ static int inet_sk_reselect_saddr(struct sock *sk)
 		pr_info("%s(): shifting inet->saddr from %pI4 to %pI4\n",
 			__func__, &old_saddr, &new_saddr);
 =======
+<<<<<<< HEAD
+		pr_info("%s(): shifting inet->saddr from %pI4 to %pI4\n",
+			__func__, &old_saddr, &new_saddr);
+=======
 		printk(KERN_INFO "%s(): shifting inet->saddr from %pI4 to %pI4\n",
 		       __func__, &old_saddr, &new_saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	inet->inet_saddr = inet->inet_rcv_saddr = new_saddr;
@@ -1332,8 +1386,13 @@ out:
 static struct sk_buff *inet_gso_segment(struct sk_buff *skb,
 	netdev_features_t features)
 =======
+<<<<<<< HEAD
+static struct sk_buff *inet_gso_segment(struct sk_buff *skb,
+	netdev_features_t features)
+=======
 static struct sk_buff *inet_gso_segment(struct sk_buff *skb, u32 features)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *segs = ERR_PTR(-EINVAL);
 	struct iphdr *iph;
@@ -1529,11 +1588,16 @@ unsigned long snmp_fold_field(void __percpu *mib[], int offt)
 {
 	unsigned long res = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, j;
 
 	for_each_possible_cpu(i) {
 		for (j = 0; j < SNMP_ARRAY_SZ; j++)
 			res += *(((unsigned long *) per_cpu_ptr(mib[j], i)) + offt);
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -1541,6 +1605,7 @@ unsigned long snmp_fold_field(void __percpu *mib[], int offt)
 		res += *(((unsigned long *) per_cpu_ptr(mib[0], i)) + offt);
 		res += *(((unsigned long *) per_cpu_ptr(mib[1], i)) + offt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return res;
 }
@@ -1555,6 +1620,9 @@ u64 snmp_fold_field64(void __percpu *mib[], int offt, size_t syncp_offset)
 
 	for_each_possible_cpu(cpu) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		void *bhptr;
 		struct u64_stats_sync *syncp;
 		u64 v;
@@ -1568,6 +1636,8 @@ u64 snmp_fold_field64(void __percpu *mib[], int offt, size_t syncp_offset)
 		} while (u64_stats_fetch_retry_bh(syncp, start));
 
 		res += v;
+<<<<<<< HEAD
+=======
 =======
 		void *bhptr, *userptr;
 		struct u64_stats_sync *syncp;
@@ -1592,6 +1662,7 @@ u64 snmp_fold_field64(void __percpu *mib[], int offt, size_t syncp_offset)
 
 		res += v_bh + v_user;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return res;
 }
@@ -1604,6 +1675,9 @@ int snmp_mib_init(void __percpu *ptr[2], size_t mibsize, size_t align)
 	ptr[0] = __alloc_percpu(mibsize, align);
 	if (!ptr[0])
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 #if SNMP_ARRAY_SZ == 2
 	ptr[1] = __alloc_percpu(mibsize, align);
@@ -1626,6 +1700,8 @@ void snmp_mib_free(void __percpu *ptr[SNMP_ARRAY_SZ])
 		free_percpu(ptr[i]);
 		ptr[i] = NULL;
 	}
+<<<<<<< HEAD
+=======
 =======
 		goto err0;
 	ptr[1] = __alloc_percpu(mibsize, align);
@@ -1647,6 +1723,7 @@ void snmp_mib_free(void __percpu *ptr[2])
 	free_percpu(ptr[1]);
 	ptr[0] = ptr[1] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(snmp_mib_free);
 
@@ -1682,8 +1759,12 @@ static const struct net_protocol icmp_protocol = {
 <<<<<<< HEAD
 	.err_handler =	ping_v4_err,
 =======
+<<<<<<< HEAD
+	.err_handler =	ping_v4_err,
+=======
 	.err_handler =	ping_err,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.no_policy =	1,
 	.netns_ok =	1,
 };
@@ -1719,10 +1800,16 @@ static __net_init int ipv4_mib_init_net(struct net *net)
 					      GFP_KERNEL);
 	if (!net->mib.icmpmsg_statistics)
 =======
+<<<<<<< HEAD
+	net->mib.icmpmsg_statistics = kzalloc(sizeof(struct icmpmsg_mib),
+					      GFP_KERNEL);
+	if (!net->mib.icmpmsg_statistics)
+=======
 	if (snmp_mib_init((void __percpu **)net->mib.icmpmsg_statistics,
 			  sizeof(struct icmpmsg_mib),
 			  __alignof__(struct icmpmsg_mib)) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_icmpmsg_mib;
 
 	tcp_mib_init(net);
@@ -1749,8 +1836,12 @@ static __net_exit void ipv4_mib_exit_net(struct net *net)
 <<<<<<< HEAD
 	kfree(net->mib.icmpmsg_statistics);
 =======
+<<<<<<< HEAD
+	kfree(net->mib.icmpmsg_statistics);
+=======
 	snmp_mib_free((void __percpu **)net->mib.icmpmsg_statistics);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snmp_mib_free((void __percpu **)net->mib.icmp_statistics);
 	snmp_mib_free((void __percpu **)net->mib.udplite_statistics);
 	snmp_mib_free((void __percpu **)net->mib.udp_statistics);
@@ -1827,13 +1918,21 @@ static int __init inet_init(void)
 	tcp_prot.sysctl_mem = init_net.ipv4.sysctl_tcp_mem;
 
 =======
+<<<<<<< HEAD
+	tcp_prot.sysctl_mem = init_net.ipv4.sysctl_tcp_mem;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 *	Add all the base protocols.
 	 */
 
 	if (inet_add_protocol(&icmp_protocol, IPPROTO_ICMP) < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_crit("%s: Cannot add ICMP protocol\n", __func__);
 	if (inet_add_protocol(&udp_protocol, IPPROTO_UDP) < 0)
 		pr_crit("%s: Cannot add UDP protocol\n", __func__);
@@ -1842,6 +1941,8 @@ static int __init inet_init(void)
 #ifdef CONFIG_IP_MULTICAST
 	if (inet_add_protocol(&igmp_protocol, IPPROTO_IGMP) < 0)
 		pr_crit("%s: Cannot add IGMP protocol\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_CRIT "inet_init: Cannot add ICMP protocol\n");
 	if (inet_add_protocol(&udp_protocol, IPPROTO_UDP) < 0)
@@ -1852,6 +1953,7 @@ static int __init inet_init(void)
 	if (inet_add_protocol(&igmp_protocol, IPPROTO_IGMP) < 0)
 		printk(KERN_CRIT "inet_init: Cannot add IGMP protocol\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	/* Register the socket-side information for inet_create. */
@@ -1901,8 +2003,12 @@ static int __init inet_init(void)
 <<<<<<< HEAD
 		pr_crit("%s: Cannot init ipv4 mroute\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_crit("%s: Cannot init ipv4 mroute\n", __func__);
+=======
 		printk(KERN_CRIT "inet_init: Cannot init ipv4 mroute\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/*
 	 *	Initialise per-cpu ipv4 mibs
@@ -1912,8 +2018,12 @@ static int __init inet_init(void)
 <<<<<<< HEAD
 		pr_crit("%s: Cannot init ipv4 mibs\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_crit("%s: Cannot init ipv4 mibs\n", __func__);
+=======
 		printk(KERN_CRIT "inet_init: Cannot init ipv4 mibs\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ipv4_proc_init();
 

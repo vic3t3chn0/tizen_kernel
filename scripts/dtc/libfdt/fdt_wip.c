@@ -95,6 +95,9 @@ int fdt_nop_property(void *fdt, int nodeoffset, const char *name)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int _fdt_node_end_offset(void *fdt, int offset)
 {
 	int depth = 0;
@@ -103,6 +106,8 @@ int _fdt_node_end_offset(void *fdt, int offset)
 		offset = fdt_next_node(fdt, offset, &depth);
 
 	return offset;
+<<<<<<< HEAD
+=======
 =======
 int _fdt_node_end_offset(void *fdt, int nodeoffset)
 {
@@ -140,6 +145,7 @@ int _fdt_node_end_offset(void *fdt, int nodeoffset)
 
 	return nextoffset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int fdt_nop_node(void *fdt, int nodeoffset)

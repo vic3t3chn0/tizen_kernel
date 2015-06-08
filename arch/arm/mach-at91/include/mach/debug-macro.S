@@ -15,6 +15,9 @@
 #include <mach/at91_dbgu.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_AT91_DEBUG_LL_DBGU0)
 #define AT91_DBGU AT91_BASE_DBGU0
 #else
@@ -33,6 +36,8 @@
 	.macro	waituart,rd,rx
 1001:	ldr	\rd, [\rx, #(AT91_DBGU_SR)]		@ Read Status Register
 	tst	\rd, #AT91_DBGU_TXRDY			@ DBGU_TXRDY = 1 when ready to transmit
+<<<<<<< HEAD
+=======
 =======
 	.macro	addruart, rp, rv
 	ldr	\rp, =(AT91_BASE_SYS + AT91_DBGU)		@ System peripherals (phys address)
@@ -47,6 +52,7 @@
 1001:	ldr	\rd, [\rx, #(AT91_DBGU_SR - AT91_DBGU)]		@ Read Status Register
 	tst	\rd, #AT91_DBGU_TXRDY				@ DBGU_TXRDY = 1 when ready to transmit
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	1001b
 	.endm
 
@@ -55,9 +61,14 @@
 1001:	ldr	\rd, [\rx, #(AT91_DBGU_SR)]		@ Read Status Register
 	tst	\rd, #AT91_DBGU_TXEMPTY			@ DBGU_TXEMPTY = 1 when transmission complete
 =======
+<<<<<<< HEAD
+1001:	ldr	\rd, [\rx, #(AT91_DBGU_SR)]		@ Read Status Register
+	tst	\rd, #AT91_DBGU_TXEMPTY			@ DBGU_TXEMPTY = 1 when transmission complete
+=======
 1001:	ldr	\rd, [\rx, #(AT91_DBGU_SR - AT91_DBGU)]		@ Read Status Register
 	tst	\rd, #AT91_DBGU_TXEMPTY				@ DBGU_TXEMPTY = 1 when transmission complete
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	1001b
 	.endm
 

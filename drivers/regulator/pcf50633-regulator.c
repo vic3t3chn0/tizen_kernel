@@ -142,6 +142,13 @@ static int pcf50633_regulator_set_voltage(struct regulator_dev *rdev,
 	case PCF50633_REGULATOR_LDO5:
 	case PCF50633_REGULATOR_LDO6:
 	case PCF50633_REGULATOR_HCLDO:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case PCF50633_REGULATOR_MEMLDO:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		volt_bits = ldo_voltage_bits(millivolts);
 		break;
 	default:
@@ -175,6 +182,13 @@ static int pcf50633_regulator_voltage_value(enum pcf50633_regulator_id id,
 	case PCF50633_REGULATOR_LDO5:
 	case PCF50633_REGULATOR_LDO6:
 	case PCF50633_REGULATOR_HCLDO:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case PCF50633_REGULATOR_MEMLDO:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		millivolts = ldo_voltage_value(bits);
 		break;
 	default:
@@ -217,9 +231,18 @@ static int pcf50633_regulator_list_voltage(struct regulator_dev *rdev,
 	case PCF50633_REGULATOR_AUTO:
 		index += 0x2f;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	case PCF50633_REGULATOR_HCLDO:
 		index += 0x01;
 		break;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case PCF50633_REGULATOR_HCLDO:
+		index += 0x01;
+		break;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		break;
 	}
@@ -288,6 +311,32 @@ static struct regulator_ops pcf50633_regulator_ops = {
 
 static struct regulator_desc regulators[] = {
 	[PCF50633_REGULATOR_AUTO] =
+<<<<<<< HEAD
+<<<<<<< HEAD
+		PCF50633_REGULATOR("auto", PCF50633_REGULATOR_AUTO, 81),
+	[PCF50633_REGULATOR_DOWN1] =
+		PCF50633_REGULATOR("down1", PCF50633_REGULATOR_DOWN1, 96),
+	[PCF50633_REGULATOR_DOWN2] =
+		PCF50633_REGULATOR("down2", PCF50633_REGULATOR_DOWN2, 96),
+	[PCF50633_REGULATOR_LDO1] =
+		PCF50633_REGULATOR("ldo1", PCF50633_REGULATOR_LDO1, 28),
+	[PCF50633_REGULATOR_LDO2] =
+		PCF50633_REGULATOR("ldo2", PCF50633_REGULATOR_LDO2, 28),
+	[PCF50633_REGULATOR_LDO3] =
+		PCF50633_REGULATOR("ldo3", PCF50633_REGULATOR_LDO3, 28),
+	[PCF50633_REGULATOR_LDO4] =
+		PCF50633_REGULATOR("ldo4", PCF50633_REGULATOR_LDO4, 28),
+	[PCF50633_REGULATOR_LDO5] =
+		PCF50633_REGULATOR("ldo5", PCF50633_REGULATOR_LDO5, 28),
+	[PCF50633_REGULATOR_LDO6] =
+		PCF50633_REGULATOR("ldo6", PCF50633_REGULATOR_LDO6, 28),
+	[PCF50633_REGULATOR_HCLDO] =
+		PCF50633_REGULATOR("hcldo", PCF50633_REGULATOR_HCLDO, 28),
+	[PCF50633_REGULATOR_MEMLDO] =
+		PCF50633_REGULATOR("memldo", PCF50633_REGULATOR_MEMLDO, 28),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		PCF50633_REGULATOR("auto", PCF50633_REGULATOR_AUTO, 80),
 	[PCF50633_REGULATOR_DOWN1] =
 		PCF50633_REGULATOR("down1", PCF50633_REGULATOR_DOWN1, 95),
@@ -309,6 +358,10 @@ static struct regulator_desc regulators[] = {
 		PCF50633_REGULATOR("hcldo", PCF50633_REGULATOR_HCLDO, 26),
 	[PCF50633_REGULATOR_MEMLDO] =
 		PCF50633_REGULATOR("memldo", PCF50633_REGULATOR_MEMLDO, 0),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __devinit pcf50633_regulator_probe(struct platform_device *pdev)
@@ -320,7 +373,15 @@ static int __devinit pcf50633_regulator_probe(struct platform_device *pdev)
 	pcf = dev_to_pcf50633(pdev->dev.parent);
 
 	rdev = regulator_register(&regulators[pdev->id], &pdev->dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  pdev->dev.platform_data, pcf, NULL);
+=======
 				  pdev->dev.platform_data, pcf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				  pdev->dev.platform_data, pcf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(rdev))
 		return PTR_ERR(rdev);
 

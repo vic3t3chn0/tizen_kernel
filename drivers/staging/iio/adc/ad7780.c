@@ -16,11 +16,24 @@
 #include <linux/err.h>
 #include <linux/sched.h>
 #include <linux/gpio.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+
+#include "../iio.h"
+#include "../sysfs.h"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../iio.h"
 #include "../sysfs.h"
 #include "../ring_generic.h"
 #include "adc.h"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "ad7780.h"
 
@@ -115,7 +128,15 @@ static int ad7780_read_raw(struct iio_dev *indio_dev,
 			*val *= 128;
 
 		return IIO_VAL_INT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case IIO_CHAN_INFO_SCALE:
+=======
 	case (1 << IIO_CHAN_INFO_SCALE_SHARED):
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case (1 << IIO_CHAN_INFO_SCALE_SHARED):
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		scale_uv = (st->int_vref_mv * 100000)
 			>> (channel.scan_type.realbits - 1);
 		*val =  scale_uv / 100000;
@@ -127,6 +148,18 @@ static int ad7780_read_raw(struct iio_dev *indio_dev,
 
 static const struct ad7780_chip_info ad7780_chip_info_tbl[] = {
 	[ID_AD7780] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.channel = IIO_CHAN(IIO_VOLTAGE, 0, 1, 0, NULL, 0, 0,
+				    IIO_CHAN_INFO_SCALE_SHARED_BIT,
+				    0, 0, IIO_ST('s', 24, 32, 8), 0),
+	},
+	[ID_AD7781] = {
+		.channel = IIO_CHAN(IIO_VOLTAGE, 0, 1, 0, NULL, 0, 0,
+				    IIO_CHAN_INFO_SCALE_SHARED_BIT,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.channel = IIO_CHAN(IIO_IN, 0, 1, 0, NULL, 0, 0,
 				    (1 << IIO_CHAN_INFO_SCALE_SHARED),
 				    0, 0, IIO_ST('s', 24, 32, 8), 0),
@@ -134,6 +167,10 @@ static const struct ad7780_chip_info ad7780_chip_info_tbl[] = {
 	[ID_AD7781] = {
 		.channel = IIO_CHAN(IIO_IN, 0, 1, 0, NULL, 0, 0,
 				    (1 << IIO_CHAN_INFO_SCALE_SHARED),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    0, 0, IIO_ST('s', 20, 32, 12), 0),
 	},
 };
@@ -256,13 +293,28 @@ static int ad7780_remove(struct spi_device *spi)
 	struct iio_dev *indio_dev = spi_get_drvdata(spi);
 	struct ad7780_state *st = iio_priv(indio_dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_device_unregister(indio_dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_irq(spi->irq, st);
 	gpio_free(st->pdata->gpio_pdrst);
 	if (!IS_ERR(st->reg)) {
 		regulator_disable(st->reg);
 		regulator_put(st->reg);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_free_device(indio_dev);
+=======
 	iio_device_unregister(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	iio_device_unregister(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -272,17 +324,37 @@ static const struct spi_device_id ad7780_id[] = {
 	{"ad7781", ID_AD7781},
 	{}
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_DEVICE_TABLE(spi, ad7780_id);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct spi_driver ad7780_driver = {
 	.driver = {
 		.name	= "ad7780",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		.bus	= &spi_bus_type,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.bus	= &spi_bus_type,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner	= THIS_MODULE,
 	},
 	.probe		= ad7780_probe,
 	.remove		= __devexit_p(ad7780_remove),
 	.id_table	= ad7780_id,
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(ad7780_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init ad7780_init(void)
 {
@@ -295,6 +367,10 @@ static void __exit ad7780_exit(void)
 	spi_unregister_driver(&ad7780_driver);
 }
 module_exit(ad7780_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Michael Hennerich <hennerich@blackfin.uclinux.org>");
 MODULE_DESCRIPTION("Analog Devices AD7780/1 ADC");

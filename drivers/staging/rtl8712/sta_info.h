@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/******************************************************************************
+ *
+ * Copyright(c) 2007 - 2010 Realtek Corporation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+ *
+ * Modifications for inclusion into the Linux staging tree are
+ * Copyright(c) 2010 Larry Finger. All rights reserved.
+ *
+ * Contact information:
+ * WLAN FAE <wlanfae@realtek.com>
+ * Larry Finger <Larry.Finger@lwfinger.net>
+ *
+ ******************************************************************************/
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __STA_INFO_H_
 #define __STA_INFO_H_
 
@@ -38,8 +69,18 @@ struct sta_info {
 	struct sta_recv_priv sta_recvpriv;
 	uint state;
 	uint aid;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint	mac_id;
+	uint	qos_option;
+=======
 	u8	mac_id;
 	u8	qos_option;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8	mac_id;
+	u8	qos_option;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8	hwaddr[ETH_ALEN];
 	uint	ieee8021x_blocked;	/*0: allowed, 1:blocked */
 	uint	XPrivacy; /*aes, tkip...*/
@@ -65,7 +106,14 @@ struct sta_info {
 	 * curr_network(mlme_priv/security_priv/qos/ht) : AP CAP/INFO
 	 * sta_info: (AP & STA) CAP/INFO
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_R8712_AP
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_R8712_AP
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head asoc_list;
 	struct list_head auth_list;
 	unsigned int expire_to;
@@ -73,7 +121,14 @@ struct sta_info {
 	unsigned int authalg;
 	unsigned char chg_txt[128];
 	unsigned int tx_ra_bitmap;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct	sta_priv {
@@ -86,13 +141,27 @@ struct	sta_priv {
 	struct  __queue sleep_q;
 	struct  __queue wakeup_q;
 	struct _adapter *padapter;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_R8712_AP
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_R8712_AP
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head asoc_list;
 	struct list_head auth_list;
 	unsigned int auth_to;  /* sec, time to expire in authenticating. */
 	unsigned int assoc_to; /* sec, time to expire before associating. */
 	unsigned int expire_to; /* sec , time to expire after associated. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline u32 wifi_mac_hash(u8 *mac)

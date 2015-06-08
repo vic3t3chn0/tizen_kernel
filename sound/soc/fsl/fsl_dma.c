@@ -295,15 +295,21 @@ static irqreturn_t fsl_dma_isr(int irq, void *dev_id)
  * technically DMA to any 36-bit address, we do need to set the DMA mask to 36.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int fsl_dma_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static int fsl_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 	struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static u64 fsl_dma_dmamask = DMA_BIT_MASK(36);
 	int ret;
 
@@ -318,16 +324,22 @@ static int fsl_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
 		ret = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, card->dev,
 			fsl_dma_hardware.buffer_bytes_max,
 			&pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream->dma_buffer);
+<<<<<<< HEAD
+=======
 =======
 	if (pcm->streams[0].substream) {
 		ret = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, card->dev,
 			fsl_dma_hardware.buffer_bytes_max,
 			&pcm->streams[0].substream->dma_buffer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret) {
 			dev_err(card->dev, "can't alloc playback dma buffer\n");
 			return ret;
@@ -335,6 +347,9 @@ static int fsl_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
 		ret = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, card->dev,
 			fsl_dma_hardware.buffer_bytes_max,
@@ -342,6 +357,8 @@ static int fsl_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 		if (ret) {
 			dev_err(card->dev, "can't alloc capture dma buffer\n");
 			snd_dma_free_pages(&pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream->dma_buffer);
+<<<<<<< HEAD
+=======
 =======
 	if (pcm->streams[1].substream) {
 		ret = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, card->dev,
@@ -351,6 +368,7 @@ static int fsl_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 			dev_err(card->dev, "can't alloc capture dma buffer\n");
 			snd_dma_free_pages(&pcm->streams[0].substream->dma_buffer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return ret;
 		}
 	}
@@ -904,7 +922,11 @@ static struct device_node *find_ssi_node(struct device_node *dma_channel_np)
 <<<<<<< HEAD
 		of_node_put(np);
 =======
+<<<<<<< HEAD
+		of_node_put(np);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (np == dma_channel_np)
 			return ssi_np;
 
@@ -912,7 +934,11 @@ static struct device_node *find_ssi_node(struct device_node *dma_channel_np)
 <<<<<<< HEAD
 		of_node_put(np);
 =======
+<<<<<<< HEAD
+		of_node_put(np);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (np == dma_channel_np)
 			return ssi_np;
 	}
@@ -974,8 +1000,12 @@ static int __devinit fsl_soc_dma_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		dma->ssi_fifo_depth = be32_to_cpup(iprop);
 =======
+<<<<<<< HEAD
+		dma->ssi_fifo_depth = be32_to_cpup(iprop);
+=======
 		dma->ssi_fifo_depth = *iprop;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
                 /* Older 8610 DTs didn't have the fifo-depth property */
 		dma->ssi_fifo_depth = 8;
@@ -1028,6 +1058,9 @@ static struct platform_driver fsl_soc_dma_driver = {
 <<<<<<< HEAD
 module_platform_driver(fsl_soc_dma_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(fsl_soc_dma_driver);
+=======
 static int __init fsl_soc_dma_init(void)
 {
 	pr_info("Freescale Elo DMA ASoC PCM Driver\n");
@@ -1043,6 +1076,7 @@ static void __exit fsl_soc_dma_exit(void)
 module_init(fsl_soc_dma_init);
 module_exit(fsl_soc_dma_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Timur Tabi <timur@freescale.com>");
 MODULE_DESCRIPTION("Freescale Elo DMA ASoC PCM Driver");

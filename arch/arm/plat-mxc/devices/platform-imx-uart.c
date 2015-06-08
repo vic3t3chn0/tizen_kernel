@@ -127,7 +127,12 @@ const struct imx_imx_uart_1irq_data imx53_imx_uart_data[] __initconst = {
 	imx53_imx_uart_data_entry(3, 4),
 	imx53_imx_uart_data_entry(4, 5),
 =======
+<<<<<<< HEAD
+	imx53_imx_uart_data_entry(3, 4),
+	imx53_imx_uart_data_entry(4, 5),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif /* ifdef CONFIG_SOC_IMX53 */
 
@@ -158,8 +163,12 @@ struct platform_device *__init imx_add_imx_uart_3irq(
 <<<<<<< HEAD
 	return imx_add_platform_device("imx1-uart", data->id, res,
 =======
+<<<<<<< HEAD
+	return imx_add_platform_device("imx1-uart", data->id, res,
+=======
 	return imx_add_platform_device("imx-uart", data->id, res,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ARRAY_SIZE(res), pdata, sizeof(*pdata));
 }
 
@@ -184,7 +193,13 @@ struct platform_device *__init imx_add_imx_uart_1irq(
 	return imx_add_platform_device("imx21-uart", data->id,
 			res, ARRAY_SIZE(res), pdata, sizeof(*pdata));
 =======
+<<<<<<< HEAD
+	/* i.mx21 type uart runs on all i.mx except i.mx1 */
+	return imx_add_platform_device("imx21-uart", data->id,
+			res, ARRAY_SIZE(res), pdata, sizeof(*pdata));
+=======
 	return imx_add_platform_device("imx-uart", data->id, res, ARRAY_SIZE(res),
 			pdata, sizeof(*pdata));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

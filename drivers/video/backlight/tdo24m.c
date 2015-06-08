@@ -459,6 +459,12 @@ static struct spi_driver tdo24m_driver = {
 	.resume		= tdo24m_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(tdo24m_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init tdo24m_init(void)
 {
 	return spi_register_driver(&tdo24m_driver);
@@ -470,6 +476,10 @@ static void __exit tdo24m_exit(void)
 	spi_unregister_driver(&tdo24m_driver);
 }
 module_exit(tdo24m_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Eric Miao <eric.miao@marvell.com>");
 MODULE_DESCRIPTION("Driver for Toppoly TDO24M LCD Panel");

@@ -155,8 +155,12 @@ static struct regulator_consumer_supply stargate2_sensor_3_con[] = {
 <<<<<<< HEAD
 		.dev_name = "sht15",
 =======
+<<<<<<< HEAD
+		.dev_name = "sht15",
+=======
 		.dev = &sht15.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.supply = "vcc",
 	},
 };
@@ -383,8 +387,12 @@ static struct spi_board_info spi_board_info[] __initdata = {
 <<<<<<< HEAD
 		.irq = PXA_GPIO_TO_IRQ(96),
 =======
+<<<<<<< HEAD
+		.irq = PXA_GPIO_TO_IRQ(96),
+=======
 		.irq = IRQ_GPIO(96),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.modalias = "cc2420",
 		.max_speed_hz = 6500000,
@@ -557,8 +565,12 @@ static struct i2c_board_info __initdata imote2_pwr_i2c_board_info[] = {
 <<<<<<< HEAD
 		.irq = PXA_GPIO_TO_IRQ(1),
 =======
+<<<<<<< HEAD
+		.irq = PXA_GPIO_TO_IRQ(1),
+=======
 		.irq = gpio_to_irq(1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -575,8 +587,12 @@ static struct i2c_board_info __initdata imote2_i2c_board_info[] = {
 <<<<<<< HEAD
 		.irq = PXA_GPIO_TO_IRQ(99),
 =======
+<<<<<<< HEAD
+		.irq = PXA_GPIO_TO_IRQ(99),
+=======
 		.irq = IRQ_GPIO(99),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, { /* ITS400 Sensor board only */
 		.type = "tsl2561",
 		.addr = 0x49,
@@ -584,11 +600,16 @@ static struct i2c_board_info __initdata imote2_i2c_board_info[] = {
 		 * pull up resistors are missing.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irq = PXA_GPIO_TO_IRQ(99),
 	}, { /* ITS400 Sensor board only */
 		.type = "tmp175",
 		.addr = 0x4A,
 		.irq = PXA_GPIO_TO_IRQ(96),
+<<<<<<< HEAD
+=======
 =======
 		.irq = IRQ_GPIO(99),
 	}, { /* ITS400 Sensor board only */
@@ -596,6 +617,7 @@ static struct i2c_board_info __initdata imote2_i2c_board_info[] = {
 		.addr = 0x4A,
 		.irq = IRQ_GPIO(96),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, { /* IMB400 Multimedia board */
 		.type = "wm8940",
 		.addr = 0x1A,
@@ -618,13 +640,19 @@ static struct pxa2xx_udc_mach_info imote2_udc_info __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device imote2_audio_device = {
 	.name = "imote2-audio",
 	.id   = -1,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *imote2_devices[] = {
 	&stargate2_flash_device,
 	&imote2_leds,
@@ -632,7 +660,11 @@ static struct platform_device *imote2_devices[] = {
 <<<<<<< HEAD
 	&imote2_audio_device,
 =======
+<<<<<<< HEAD
+	&imote2_audio_device,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init imote2_init(void)
@@ -701,9 +733,14 @@ static struct resource smc91x_resources[] = {
 		.start = PXA_GPIO_TO_IRQ(40),
 		.end = PXA_GPIO_TO_IRQ(40),
 =======
+<<<<<<< HEAD
+		.start = PXA_GPIO_TO_IRQ(40),
+		.end = PXA_GPIO_TO_IRQ(40),
+=======
 		.start = IRQ_GPIO(40),
 		.end = IRQ_GPIO(40),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	}
 };
@@ -751,8 +788,12 @@ static int stargate2_mci_init(struct device *dev,
 <<<<<<< HEAD
 	err = request_irq(PXA_GPIO_TO_IRQ(SG2_GPIO_nSD_DETECT),
 =======
+<<<<<<< HEAD
+	err = request_irq(PXA_GPIO_TO_IRQ(SG2_GPIO_nSD_DETECT),
+=======
 	err = request_irq(IRQ_GPIO(SG2_GPIO_nSD_DETECT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  stargate2_detect_int,
 			  IRQ_TYPE_EDGE_BOTH,
 			  "MMC card detect",
@@ -786,8 +827,12 @@ static void stargate2_mci_exit(struct device *dev, void *data)
 <<<<<<< HEAD
 	free_irq(PXA_GPIO_TO_IRQ(SG2_GPIO_nSD_DETECT), data);
 =======
+<<<<<<< HEAD
+	free_irq(PXA_GPIO_TO_IRQ(SG2_GPIO_nSD_DETECT), data);
+=======
 	free_irq(IRQ_GPIO(SG2_GPIO_nSD_DETECT), data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gpio_free(SG2_SD_POWER_ENABLE);
 	gpio_free(SG2_GPIO_nSD_DETECT);
 }
@@ -965,8 +1010,12 @@ static struct i2c_board_info __initdata stargate2_pwr_i2c_board_info[] = {
 <<<<<<< HEAD
 		.irq = PXA_GPIO_TO_IRQ(1),
 =======
+<<<<<<< HEAD
+		.irq = PXA_GPIO_TO_IRQ(1),
+=======
 		.irq = gpio_to_irq(1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -994,8 +1043,12 @@ static struct i2c_board_info __initdata stargate2_i2c_board_info[] = {
 <<<<<<< HEAD
 		.irq = PXA_GPIO_TO_IRQ(99),
 =======
+<<<<<<< HEAD
+		.irq = PXA_GPIO_TO_IRQ(99),
+=======
 		.irq = IRQ_GPIO(99),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, { /* ITS400 Sensor board only */
 		.type = "tsl2561",
 		.addr = 0x49,
@@ -1003,11 +1056,16 @@ static struct i2c_board_info __initdata stargate2_i2c_board_info[] = {
 		 * pull up resistors are missing.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irq = PXA_GPIO_TO_IRQ(99),
 	}, { /* ITS400 Sensor board only */
 		.type = "tmp175",
 		.addr = 0x4A,
 		.irq = PXA_GPIO_TO_IRQ(96),
+<<<<<<< HEAD
+=======
 =======
 		.irq = IRQ_GPIO(99),
 	}, { /* ITS400 Sensor board only */
@@ -1015,6 +1073,7 @@ static struct i2c_board_info __initdata stargate2_i2c_board_info[] = {
 		.addr = 0x4A,
 		.irq = IRQ_GPIO(96),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1066,6 +1125,9 @@ static void __init stargate2_init(void)
 MACHINE_START(INTELMOTE2, "IMOTE 2")
 	.map_io		= pxa27x_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.nr_irqs	= PXA_NR_IRQS,
 	.init_irq	= pxa27x_init_irq,
 	.handle_irq	= pxa27x_handle_irq,
@@ -1073,12 +1135,15 @@ MACHINE_START(INTELMOTE2, "IMOTE 2")
 	.init_machine	= imote2_init,
 	.atag_offset	= 0x100,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.init_irq	= pxa27x_init_irq,
 	.timer		= &pxa_timer,
 	.init_machine	= imote2_init,
 	.boot_params	= 0xA0000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -1088,15 +1153,21 @@ MACHINE_START(STARGATE2, "Stargate 2")
 	.nr_irqs = STARGATE_NR_IRQS,
 	.init_irq = pxa27x_init_irq,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handle_irq = pxa27x_handle_irq,
 	.timer = &pxa_timer,
 	.init_machine = stargate2_init,
 	.atag_offset = 0x100,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.timer = &pxa_timer,
 	.init_machine = stargate2_init,
 	.boot_params = 0xA0000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif

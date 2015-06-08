@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
 #include <linux/io.h>
@@ -376,7 +380,13 @@ static struct resource net2272_bfin_resources[] = {
 		.flags = IORESOURCE_BUS,
 	}, {
 =======
+<<<<<<< HEAD
+		.start = 1,
+		.flags = IORESOURCE_BUS,
+	}, {
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = IRQ_PF7,
 		.end = IRQ_PF7,
 		.flags = IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHLEVEL,
@@ -545,6 +555,8 @@ static struct bfin5xx_spi_chip spi_flash_chip_info = {
 	.enable_dma = 0,         /* use dma transfer with this chip*/
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 };
 #endif
@@ -580,6 +592,7 @@ static struct bfin5xx_spi_chip adav801_spi_chip_info = {
 	.enable_dma = 0,
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -587,11 +600,14 @@ static struct bfin5xx_spi_chip adav801_spi_chip_info = {
 #include <linux/input/ad714x.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct bfin5xx_spi_chip ad7147_spi_chip_info = {
 	.enable_dma = 0,
 	.bits_per_word = 16,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct ad714x_slider_plat ad7147_spi_slider_plat[] = {
 	{
@@ -703,8 +719,11 @@ static struct bfin5xx_spi_chip ad2s90_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 16,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -718,8 +737,11 @@ static struct bfin5xx_spi_chip ad2s120x_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 16,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -738,8 +760,11 @@ static struct bfin5xx_spi_chip ad2s1210_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -748,8 +773,11 @@ static struct bfin5xx_spi_chip ad7314_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 16,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -765,8 +793,11 @@ static struct bfin5xx_spi_chip ad7816_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -782,8 +813,11 @@ static struct bfin5xx_spi_chip adt7310_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -794,12 +828,15 @@ static unsigned short ad7298_platform_data[] = {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 static struct bfin5xx_spi_chip ad7298_spi_chip_info = {
 	.enable_dma = 0,
 	.bits_per_word = 16,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #if defined(CONFIG_ADT7316_SPI) || defined(CONFIG_ADT7316_SPI_MODULE)
@@ -812,8 +849,11 @@ static struct bfin5xx_spi_chip adt7316_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -842,8 +882,11 @@ static struct bfin5xx_spi_chip  mmc_spi_chip_info = {
 	.enable_dma = 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pio_interrupt = 0,
 };
 #endif
@@ -852,12 +895,15 @@ static struct bfin5xx_spi_chip  mmc_spi_chip_info = {
 #include <linux/spi/ad7877.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct bfin5xx_spi_chip spi_ad7877_chip_info = {
 	.enable_dma = 0,
 	.bits_per_word = 16,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct ad7877_platform_data bfin_ad7877_ts_info = {
 	.model			= 7877,
 	.vref_delay_usecs	= 50,	/* internal, no capacitor */
@@ -934,6 +980,11 @@ static const struct adxl34x_platform_data adxl34x_info = {
 static struct bfin5xx_spi_chip enc28j60_spi_chip_info = {
 	.enable_dma	= 1,
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_ENC28J60) || defined(CONFIG_ENC28J60_MODULE)
+static struct bfin5xx_spi_chip enc28j60_spi_chip_info = {
+	.enable_dma	= 1,
+=======
 #if defined(CONFIG_TOUCHSCREEN_AD7879_SPI) || defined(CONFIG_TOUCHSCREEN_AD7879_SPI_MODULE)
 static struct bfin5xx_spi_chip spi_ad7879_chip_info = {
 	.enable_dma = 0,
@@ -960,10 +1011,13 @@ static struct bfin5xx_spi_chip enc28j60_spi_chip_info = {
 	.enable_dma	= 1,
 	.bits_per_word	= 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
 #if defined(CONFIG_ADF702X) || defined(CONFIG_ADF702X_MODULE)
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct bfin5xx_spi_chip adf7021_spi_chip_info = {
@@ -971,6 +1025,7 @@ static struct bfin5xx_spi_chip adf7021_spi_chip_info = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spi/adf702x.h>
 #define TXREG 0x0160A470
 static const u32 adf7021_regs[] = {
@@ -1016,11 +1071,14 @@ static inline void adf702x_mac_init(void) {}
 #include <linux/spi/ads7846.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct bfin5xx_spi_chip ad7873_spi_chip_info = {
 	.bits_per_word	= 8,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ads7873_get_pendown_state(void)
 {
 	return gpio_get_value(GPIO_PF6);
@@ -1069,6 +1127,8 @@ static struct bfin5xx_spi_chip data_flash_chip_info = {
 	.enable_dma = 0,         /* use dma transfer with this chip*/
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 };
 #endif
@@ -1078,6 +1138,7 @@ static struct bfin5xx_spi_chip spi_adxl34x_chip_info = {
 	.enable_dma = 0,         /* use dma transfer with this chip*/
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -1086,8 +1147,11 @@ static struct bfin5xx_spi_chip spi_ad7476_chip_info = {
 	.enable_dma = 0,         /* use dma transfer with this chip*/
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.bits_per_word = 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -1118,11 +1182,16 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 	},
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_SND_BF5XX_SOC_AD1836) \
 	|| defined(CONFIG_SND_BF5XX_SOC_AD1836_MODULE)
 	{
 		.modalias = "ad1836",
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_BFIN_SPI_ADC) \
 	|| defined(CONFIG_BFIN_SPI_ADC_MODULE)
@@ -1141,14 +1210,18 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 	{
 		.modalias = "ad183x",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.max_speed_hz = 3125000,     /* max spi clock (SCK) speed in HZ */
 		.bus_num = 0,
 		.chip_select = 4,
 		.platform_data = "ad1836", /* only includes chip name for the moment */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &ad1836_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mode = SPI_MODE_3,
 	},
 #endif
@@ -1156,8 +1229,12 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 <<<<<<< HEAD
 #ifdef CONFIG_SND_SOC_AD193X_SPI
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SND_SOC_AD193X_SPI
+=======
 #if defined(CONFIG_SND_BF5XX_SOC_AD193X) || defined(CONFIG_SND_BF5XX_SOC_AD193X_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.modalias = "ad193x",
 		.max_speed_hz = 3125000,     /* max spi clock (SCK) speed in HZ */
@@ -1165,19 +1242,27 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select = 5,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &ad1938_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mode = SPI_MODE_3,
 	},
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_SOC_ADAV80X) || defined(CONFIG_SND_SOC_ADV80X_MODULE)
 	{
 		.modalias = "adav801",
 		.max_speed_hz = 3125000,     /* max spi clock (SCK) speed in HZ */
 		.bus_num = 0,
 		.chip_select = 1,
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SND_BF5XX_SOC_ADAV80X) || defined(CONFIG_SND_BF5XX_SOC_ADAV80X_MODULE)
 	{
@@ -1187,6 +1272,7 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select = 1,
 		.controller_data = &adav801_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mode = SPI_MODE_3,
 	},
 #endif
@@ -1202,8 +1288,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.platform_data = &ad7147_spi_platform_data,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &ad7147_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 #endif
 
@@ -1284,8 +1373,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.platform_data = ad7298_platform_data,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &ad7298_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mode = SPI_MODE_3,
 	},
 #endif
@@ -1324,8 +1416,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select  = 1,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &spi_ad7877_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 #endif
 #if defined(CONFIG_TOUCHSCREEN_AD7879_SPI) || defined(CONFIG_TOUCHSCREEN_AD7879_SPI_MODULE)
@@ -1338,8 +1433,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select = 1,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &spi_ad7879_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mode = SPI_CPHA | SPI_CPOL,
 	},
 #endif
@@ -1351,8 +1449,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select = 1,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &spidev_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 #endif
 #if defined(CONFIG_FB_BFIN_LQ035Q1) || defined(CONFIG_FB_BFIN_LQ035Q1_MODULE)
@@ -1363,8 +1464,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select = 2,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &lq035q1_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mode = SPI_CPHA | SPI_CPOL,
 	},
 #endif
@@ -1389,8 +1493,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select	= 2,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &spi_adxl34x_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mode = SPI_MODE_3,
 	},
 #endif
@@ -1402,8 +1509,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select = GPIO_PF10 + MAX_CTRL_CS,	/* GPIO controlled SSEL */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &adf7021_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &adf7021_platform_data,
 		.mode = SPI_MODE_0,
 	},
@@ -1417,8 +1527,11 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 		.chip_select = GPIO_PF10 + MAX_CTRL_CS,	/* GPIO controlled SSEL */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.controller_data = &ad7873_spi_chip_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &ad7873_pdata,
 		.mode = SPI_MODE_0,
 	},
@@ -1655,8 +1768,12 @@ static struct spi_board_info bfin_spi_board_info[] __initdata = {
 <<<<<<< HEAD
 #if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
+=======
 #if defined(CONFIG_SPI_BFIN) || defined(CONFIG_SPI_BFIN_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* SPI controller data */
 static struct bfin5xx_spi_master bfin_spi0_info = {
 	.num_chipselect = MAX_CTRL_CS + MAX_BLACKFIN_GPIOS,
@@ -1701,8 +1818,12 @@ static struct bfin5xx_spi_master bfin_sport_spi0_info = {
 <<<<<<< HEAD
 	.num_chipselect = MAX_BLACKFIN_GPIOS,
 =======
+<<<<<<< HEAD
+	.num_chipselect = MAX_BLACKFIN_GPIOS,
+=======
 	.num_chipselect = 1, /* master only supports one device */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.enable_dma = 0,  /* master don't support DMA */
 	.pin_req = {P_SPORT0_DTPRI, P_SPORT0_TSCLK, P_SPORT0_DRPRI,
 		P_SPORT0_RSCLK, P_SPORT0_TFS, P_SPORT0_RFS, 0},
@@ -1735,8 +1856,12 @@ static struct bfin5xx_spi_master bfin_sport_spi1_info = {
 <<<<<<< HEAD
 	.num_chipselect = MAX_BLACKFIN_GPIOS,
 =======
+<<<<<<< HEAD
+	.num_chipselect = MAX_BLACKFIN_GPIOS,
+=======
 	.num_chipselect = 1, /* master only supports one device */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.enable_dma = 0,  /* master don't support DMA */
 	.pin_req = {P_SPORT1_DTPRI, P_SPORT1_TSCLK, P_SPORT1_DRPRI,
 		P_SPORT1_RSCLK, P_SPORT1_TFS, P_SPORT1_RFS, 0},
@@ -1803,6 +1928,9 @@ static struct platform_device bfin_lq035q1_device = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_VIDEO_BLACKFIN_CAPTURE) \
 	|| defined(CONFIG_VIDEO_BLACKFIN_CAPTURE_MODULE)
 #include <linux/videodev2.h>
@@ -1868,8 +1996,11 @@ static struct platform_device bfin_capture_device = {
 };
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SERIAL_BFIN) || defined(CONFIG_SERIAL_BFIN_MODULE)
 #ifdef CONFIG_SERIAL_BFIN_UART0
 static struct resource bfin_uart0_resources[] = {
@@ -1880,6 +2011,9 @@ static struct resource bfin_uart0_resources[] = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = IRQ_UART0_TX,
 		.end = IRQ_UART0_TX,
 		.flags = IORESOURCE_IRQ,
@@ -1887,10 +2021,13 @@ static struct resource bfin_uart0_resources[] = {
 	{
 		.start = IRQ_UART0_RX,
 		.end = IRQ_UART0_RX,
+<<<<<<< HEAD
+=======
 =======
 		.start = IRQ_UART0_RX,
 		.end = IRQ_UART0_RX+1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -1945,6 +2082,9 @@ static struct resource bfin_uart1_resources[] = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = IRQ_UART1_TX,
 		.end = IRQ_UART1_TX,
 		.flags = IORESOURCE_IRQ,
@@ -1952,10 +2092,13 @@ static struct resource bfin_uart1_resources[] = {
 	{
 		.start = IRQ_UART1_RX,
 		.end = IRQ_UART1_RX,
+<<<<<<< HEAD
+=======
 =======
 		.start = IRQ_UART1_RX,
 		.end = IRQ_UART1_RX+1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -2431,8 +2574,12 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 <<<<<<< HEAD
 #ifdef CONFIG_SND_SOC_AD193X_I2C
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SND_SOC_AD193X_I2C
+=======
 #if defined(CONFIG_SND_BF5XX_SOC_AD193X) || defined(CONFIG_SND_BF5XX_SOC_AD193X_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		I2C_BOARD_INFO("ad1937", 0x04),
 	},
@@ -2441,8 +2588,12 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 <<<<<<< HEAD
 #if defined(CONFIG_SND_SOC_ADAV80X) || defined(CONFIG_SND_SOC_ADAV80X_MODULE)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SND_SOC_ADAV80X) || defined(CONFIG_SND_SOC_ADAV80X_MODULE)
+=======
 #if defined(CONFIG_SND_BF5XX_SOC_ADAV80X) || defined(CONFIG_SND_BF5XX_SOC_ADAV80X_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		I2C_BOARD_INFO("adav803", 0x10),
 	},
@@ -2477,6 +2628,8 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_AD7414) || defined(CONFIG_AD7414_MODULE)
 	{
 		I2C_BOARD_INFO("ad7414", 0x9),
@@ -2495,6 +2648,7 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_ADE7854_I2C) || defined(CONFIG_ADE7854_I2C_MODULE)
 	{
 		I2C_BOARD_INFO("ade7854", 0x38),
@@ -2507,6 +2661,8 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 		.irq = IRQ_PG5,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq_flags = IRQF_TRIGGER_LOW,
 	},
 #endif
@@ -2517,6 +2673,7 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 		.irq = IRQ_PG5,
 		.irq_flags = IRQF_TRIGGER_LOW,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 #endif
 
@@ -2527,8 +2684,11 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 		.irq = IRQ_PG5,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq_flags = IRQF_TRIGGER_LOW,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = (void *)&adt7410_platform_data,
 	},
 #endif
@@ -2539,8 +2699,11 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 		.irq = IRQ_PG5,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq_flags = IRQF_TRIGGER_LOW,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 #endif
 
@@ -2629,13 +2792,19 @@ static struct i2c_board_info __initdata bfin_i2c_board_info[] = {
 	},
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_SOC_ADAU1701) || defined(CONFIG_SND_SOC_ADAU1701_MODULE)
 	{
 		I2C_BOARD_INFO("adau1701", 0x34),
 	},
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_AD525X_DPOT) || defined(CONFIG_AD525X_DPOT_MODULE)
 	{
 		I2C_BOARD_INFO("ad5258", 0x18),
@@ -2752,8 +2921,12 @@ static struct pata_platform_info bfin_pata_platform_data = {
 <<<<<<< HEAD
 	.irq_flags = IRQF_TRIGGER_HIGH,
 =======
+<<<<<<< HEAD
+	.irq_flags = IRQF_TRIGGER_HIGH,
+=======
 	.irq_flags = IRQF_TRIGGER_HIGH | IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource bfin_pata_resources[] = {
@@ -2883,6 +3056,9 @@ static struct resource bfin_snd_resources[][4] = {
 	BFIN_SND_RES(1),
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #if defined(CONFIG_SND_BF5XX_I2S) || defined(CONFIG_SND_BF5XX_I2S_MODULE)
@@ -2902,16 +3078,22 @@ static struct platform_device bfin_tdm_pcm = {
 #if defined(CONFIG_SND_BF5XX_AC97) || defined(CONFIG_SND_BF5XX_AC97_MODULE)
 static struct platform_device bfin_ac97_pcm = {
 	.name = "bfin-ac97-pcm-audio",
+<<<<<<< HEAD
+=======
 =======
 
 static struct platform_device bfin_pcm = {
 	.name = "bfin-pcm-audio",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id = -1,
 };
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_BF5XX_SOC_AD73311) || \
 				defined(CONFIG_SND_BF5XX_SOC_AD73311_MODULE)
 static const unsigned ad73311_gpio[] = {
@@ -2928,9 +3110,12 @@ static struct platform_device bfin_ad73311_machine = {
 #endif
 
 #if defined(CONFIG_SND_SOC_AD73311) || defined(CONFIG_SND_SOC_AD73311_MODULE)
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SND_BF5XX_SOC_AD73311) || defined(CONFIG_SND_BF5XX_SOC_AD73311_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device bfin_ad73311_codec_device = {
 	.name = "ad73311",
 	.id = -1,
@@ -2938,6 +3123,9 @@ static struct platform_device bfin_ad73311_codec_device = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_SOC_BFIN_EVAL_ADAV80X) || \
 	defined(CONFIG_SND_SOC_BFIN_EVAL_ADAV80X_MODULE)
 static struct platform_device bfin_eval_adav801_device = {
@@ -2946,8 +3134,11 @@ static struct platform_device bfin_eval_adav801_device = {
 };
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_BF5XX_SOC_I2S) || defined(CONFIG_SND_BF5XX_SOC_I2S_MODULE)
 static struct platform_device bfin_i2s = {
 	.name = "bfin-i2s",
@@ -3063,6 +3254,9 @@ static struct platform_device iio_gpio_trigger = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_SOC_BFIN_EVAL_ADAU1373) || \
 	defined(CONFIG_SND_SOC_BFIN_EVAL_ADAU1373_MODULE)
 static struct platform_device bf5xx_adau1373_device = {
@@ -3077,8 +3271,11 @@ static struct platform_device bf5xx_adau1701_device = {
 };
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *stamp_devices[] __initdata = {
 
 	&bfin_dpmc,
@@ -3127,8 +3324,12 @@ static struct platform_device *stamp_devices[] __initdata = {
 <<<<<<< HEAD
 #if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
+=======
 #if defined(CONFIG_SPI_BFIN) || defined(CONFIG_SPI_BFIN_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&bfin_spi0_device,
 #endif
 
@@ -3146,13 +3347,19 @@ static struct platform_device *stamp_devices[] __initdata = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_VIDEO_BLACKFIN_CAPTURE) \
 	|| defined(CONFIG_VIDEO_BLACKFIN_CAPTURE_MODULE)
 	&bfin_capture_device,
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SERIAL_BFIN) || defined(CONFIG_SERIAL_BFIN_MODULE)
 #ifdef CONFIG_SERIAL_BFIN_UART0
 	&bfin_uart0_device,
@@ -3201,6 +3408,9 @@ static struct platform_device *stamp_devices[] __initdata = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_BF5XX_I2S) || defined(CONFIG_SND_BF5XX_I2S_MODULE)
 	&bfin_i2s_pcm,
 #endif
@@ -3219,6 +3429,8 @@ static struct platform_device *stamp_devices[] __initdata = {
 #endif
 
 #if defined(CONFIG_SND_SOC_AD73311) || defined(CONFIG_SND_SOC_AD73311_MODULE)
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SND_BF5XX_I2S) || defined(CONFIG_SND_BF5XX_I2S_MODULE) || \
 	defined(CONFIG_SND_BF5XX_TDM) || defined(CONFIG_SND_BF5XX_TDM_MODULE) || \
@@ -3228,6 +3440,7 @@ static struct platform_device *stamp_devices[] __initdata = {
 
 #if defined(CONFIG_SND_BF5XX_SOC_AD73311) || defined(CONFIG_SND_BF5XX_SOC_AD73311_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&bfin_ad73311_codec_device,
 #endif
 
@@ -3267,6 +3480,9 @@ static struct platform_device *stamp_devices[] __initdata = {
 	&iio_gpio_trigger,
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_SND_SOC_BFIN_EVAL_ADAU1373) || \
 	defined(CONFIG_SND_SOC_BFIN_EVAL_ADAU1373_MODULE)
@@ -3302,10 +3518,13 @@ static int __init net2272_init(void)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init stamp_init(void)
 {
 	printk(KERN_INFO "%s(): registering device resources\n", __func__);
@@ -3321,7 +3540,13 @@ static int __init stamp_init(void)
 		pr_warning("unable to configure net2272; it probably won't work\n");
 
 =======
+<<<<<<< HEAD
+	if (net2272_init())
+		pr_warning("unable to configure net2272; it probably won't work\n");
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -3367,16 +3592,22 @@ void native_machine_restart(char *cmd)
  */
 #define FLASH_MAC	0x203f0000
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int bfin_get_ether_addr(char *addr)
 {
 	*(u32 *)(&(addr[0])) = bfin_read32(FLASH_MAC);
 	*(u16 *)(&(addr[4])) = bfin_read16(FLASH_MAC + 4);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 void bfin_get_ether_addr(char *addr)
 {
 	*(u32 *)(&(addr[0])) = bfin_read32(FLASH_MAC);
 	*(u16 *)(&(addr[4])) = bfin_read16(FLASH_MAC + 4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(bfin_get_ether_addr);

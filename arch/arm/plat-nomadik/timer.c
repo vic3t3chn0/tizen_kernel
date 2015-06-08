@@ -18,6 +18,9 @@
 #include <linux/jiffies.h>
 #include <linux/err.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/time.h>
 #include <asm/sched_clock.h>
 
@@ -67,6 +70,8 @@ static u32 clk_prescale;
 static u32 nmdk_cycle;		/* write-once */
 
 #ifdef CONFIG_NOMADIK_MTU_SCHED_CLOCK
+<<<<<<< HEAD
+=======
 =======
 #include <linux/sched.h>
 #include <asm/mach/time.h>
@@ -77,12 +82,16 @@ static u32 nmdk_cycle;		/* write-once */
 void __iomem *mtu_base; /* Assigned by machine code */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Override the global weak sched_clock symbol with this
  * local implementation which uses the clocksource to get some
  * better resolution when scheduling the kernel.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 notrace nomadik_read_sched_clock(void)
 {
 	if (unlikely(!mtu_base))
@@ -138,6 +147,8 @@ static void nmdk_clkevt_mode(enum clock_event_mode mode,
 		writel(0, mtu_base + MTU_IMSC);
 		/* disable timer */
 		writel(0, mtu_base + MTU_CR(1));
+<<<<<<< HEAD
+=======
 =======
 static DEFINE_CLOCK_DATA(cd);
 
@@ -184,6 +195,7 @@ static void nmdk_clkevt_mode(enum clock_event_mode mode,
 		cr &= ~MTU_CRn_ENA;
 		writel(cr, mtu_base + MTU_CR(1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* load some high default value */
 		writel(0xffffffff, mtu_base + MTU_LR(1));
 		break;
@@ -192,6 +204,11 @@ static void nmdk_clkevt_mode(enum clock_event_mode mode,
 	}
 }
 
+<<<<<<< HEAD
+static struct clock_event_device nmdk_clkevt = {
+	.name		= "mtu_1",
+	.features	= CLOCK_EVT_FEAT_ONESHOT | CLOCK_EVT_FEAT_PERIODIC,
+=======
 <<<<<<< HEAD
 static struct clock_event_device nmdk_clkevt = {
 	.name		= "mtu_1",
@@ -208,6 +225,7 @@ static struct clock_event_device nmdk_clkevt = {
 	.name		= "mtu_1",
 	.features	= CLOCK_EVT_FEAT_ONESHOT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rating		= 200,
 	.set_mode	= nmdk_clkevt_mode,
 	.set_next_event	= nmdk_clkevt_next,
@@ -233,6 +251,9 @@ static struct irqaction nmdk_timer_irq = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void nmdk_clksrc_reset(void)
 {
 	/* Disable */
@@ -256,6 +277,8 @@ void __init nmdk_timer_init(void __iomem *base)
 	BUG_ON(IS_ERR(clk0));
 	BUG_ON(clk_prepare(clk0) < 0);
 	BUG_ON(clk_enable(clk0) < 0);
+<<<<<<< HEAD
+=======
 =======
 void __init nmdk_timer_init(void)
 {
@@ -268,6 +291,7 @@ void __init nmdk_timer_init(void)
 
 	clk_enable(clk0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Tick rate is 2.4MHz for Nomadik and 2.4Mhz, 100MHz or 133 MHz
@@ -281,6 +305,9 @@ void __init nmdk_timer_init(void)
 	if (rate > 32000000) {
 		rate /= 16;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clk_prescale = MTU_CRn_PRESCALE_16;
 	} else {
 		clk_prescale = MTU_CRn_PRESCALE_1;
@@ -291,6 +318,8 @@ void __init nmdk_timer_init(void)
 
 	/* Timer 0 is the free running clocksource */
 	nmdk_clksrc_reset();
+<<<<<<< HEAD
+=======
 =======
 		cr |= MTU_CRn_PRESCALE_16;
 	} else {
@@ -303,6 +332,7 @@ void __init nmdk_timer_init(void)
 	writel(0, mtu_base + MTU_BGLR(0));
 	writel(cr | MTU_CRn_ENA, mtu_base + MTU_CR(0));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (clocksource_mmio_init(mtu_base + MTU_VAL(0), "mtu_0",
 			rate, 200, 32, clocksource_mmio_readl_down))
@@ -310,6 +340,9 @@ void __init nmdk_timer_init(void)
 		       "mtu_0");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NOMADIK_MTU_SCHED_CLOCK
 	setup_sched_clock(nomadik_read_sched_clock, 32, rate);
 #endif
@@ -318,6 +351,8 @@ void __init nmdk_timer_init(void)
 	setup_irq(IRQ_MTU0, &nmdk_timer_irq);
 	nmdk_clkevt.cpumask = cpumask_of(0);
 	clockevents_config_and_register(&nmdk_clkevt, rate, 2, 0xffffffffU);
+<<<<<<< HEAD
+=======
 =======
 	init_sched_clock(&cd, nomadik_update_sched_clock, 32, rate);
 
@@ -337,4 +372,5 @@ void __init nmdk_timer_init(void)
 	setup_irq(IRQ_MTU0, &nmdk_timer_irq);
 	clockevents_register_device(&nmdk_clkevt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

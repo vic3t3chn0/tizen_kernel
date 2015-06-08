@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "../cache.h"
 #include "progress.h"
 #include "libslang.h"
@@ -8,6 +11,8 @@
 void ui_progress__update(u64 curr, u64 total, const char *title)
 {
 	int bar, y;
+<<<<<<< HEAD
+=======
 =======
 #include <stdlib.h>
 #include <newt.h>
@@ -52,6 +57,7 @@ out_free_self:
 void ui_progress__update(struct ui_progress *self, u64 curr)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * FIXME: We should have a per UI backend way of showing progress,
 	 * stdio will just show a percentage as NN%, etc.
@@ -59,6 +65,9 @@ void ui_progress__update(struct ui_progress *self, u64 curr)
 	if (use_browser <= 0)
 		return;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (total == 0)
 		return;
@@ -75,6 +84,8 @@ void ui_progress__update(struct ui_progress *self, u64 curr)
 	SLsmg_fill_region(y, 1, 1, bar, ' ');
 	SLsmg_refresh();
 	pthread_mutex_unlock(&ui__lock);
+<<<<<<< HEAD
+=======
 =======
 	newtScaleSet(self->scale, curr);
 	newtRefresh();
@@ -88,4 +99,5 @@ void ui_progress__delete(struct ui_progress *self)
 	}
 	free(self);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

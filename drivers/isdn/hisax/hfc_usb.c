@@ -27,7 +27,15 @@
  *
  * See Version Histroy at the bottom of this file
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+=======
 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/types.h>
 #include <linux/stddef.h>
@@ -45,11 +53,25 @@
 #include "hfc_usb.h"
 
 static const char *hfcusb_revision =
+<<<<<<< HEAD
+<<<<<<< HEAD
+	"$Revision: 2.3.2.24 $ $Date: 2007/10/14 08:40:29 $ ";
+
+/* Hisax debug support
+ *  debug flags defined in hfc_usb.h as HFCUSB_DBG_[*]
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     "$Revision: 2.3.2.24 $ $Date: 2007/10/14 08:40:29 $ ";
 
 /* Hisax debug support
 *  debug flags defined in hfc_usb.h as HFCUSB_DBG_[*]
 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __debug_variable hfc_debug
 #include "hisax_debug.h"
 static u_int debug;
@@ -67,6 +89,75 @@ typedef struct {
 /* VID/PID device list */
 static struct usb_device_id hfcusb_idtab[] = {
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		USB_DEVICE(0x0959, 0x2bd0),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_OFF, {4, 0, 2, 1},
+					"ISDN USB TA (Cologne Chip HFC-S USB based)"}),
+	},
+	{
+		USB_DEVICE(0x0675, 0x1688),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {1, 2, 0, 0},
+					"DrayTek miniVigor 128 USB ISDN TA"}),
+	},
+	{
+		USB_DEVICE(0x07b0, 0x0007),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {0x80, -64, -32, -16},
+					"Billion tiny USB ISDN TA 128"}),
+	},
+	{
+		USB_DEVICE(0x0742, 0x2008),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {4, 0, 2, 1},
+					"Stollmann USB TA"}),
+	},
+	{
+		USB_DEVICE(0x0742, 0x2009),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {4, 0, 2, 1},
+					"Aceex USB ISDN TA"}),
+	},
+	{
+		USB_DEVICE(0x0742, 0x200A),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {4, 0, 2, 1},
+					"OEM USB ISDN TA"}),
+	},
+	{
+		USB_DEVICE(0x08e3, 0x0301),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {2, 0, 1, 4},
+					"Olitec USB RNIS"}),
+	},
+	{
+		USB_DEVICE(0x07fa, 0x0846),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {0x80, -64, -32, -16},
+					"Bewan Modem RNIS USB"}),
+	},
+	{
+		USB_DEVICE(0x07fa, 0x0847),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {0x80, -64, -32, -16},
+					"Djinn Numeris USB"}),
+	},
+	{
+		USB_DEVICE(0x07b0, 0x0006),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {0x80, -64, -32, -16},
+					"Twister ISDN TA"}),
+	},
+	{
+		USB_DEVICE(0x071d, 0x1005),
+		.driver_info = (unsigned long) &((hfcsusb_vdata)
+			{LED_SCHEME1, {0x02, 0, 0x01, 0x04},
+					"Eicon DIVA USB 4.0"}),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 USB_DEVICE(0x0959, 0x2bd0),
 	 .driver_info = (unsigned long) &((hfcsusb_vdata)
 			  {LED_OFF, {4, 0, 2, 1},
@@ -131,6 +222,10 @@ static struct usb_device_id hfcusb_idtab[] = {
 	 .driver_info = (unsigned long) &((hfcsusb_vdata)
 			  {LED_SCHEME1, {0x02, 0, 0x01, 0x04},
 			   "Eicon DIVA USB 4.0"}),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{ }
 };
@@ -177,7 +272,15 @@ typedef struct hfcusb_data {
 	int alt_used;		/* used alternate config */
 	int ctrl_paksize;	/* control pipe packet size */
 	int ctrl_in_pipe,	/* handles for control pipe */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ctrl_out_pipe;
+=======
 	    ctrl_out_pipe;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	    ctrl_out_pipe;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int cfg_used;		/* configuration index used */
 	int vend_idx;		/* vendor found */
 	int b_mode[2];		/* B-channel mode */
@@ -206,7 +309,15 @@ typedef struct hfcusb_data {
 } hfcusb_data;
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void collect_rx_frame(usb_fifo *fifo, __u8 *data, int len,
+=======
 static void collect_rx_frame(usb_fifo * fifo, __u8 * data, int len,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void collect_rx_frame(usb_fifo * fifo, __u8 * data, int len,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     int finish);
 
 static inline const char *
@@ -220,6 +331,22 @@ symbolic(struct hfcusb_symbolic_list list[], const int num)
 }
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+ctrl_start_transfer(hfcusb_data *hfc)
+{
+	if (hfc->ctrl_cnt) {
+		hfc->ctrl_urb->pipe = hfc->ctrl_out_pipe;
+		hfc->ctrl_urb->setup_packet = (u_char *)&hfc->ctrl_write;
+		hfc->ctrl_urb->transfer_buffer = NULL;
+		hfc->ctrl_urb->transfer_buffer_length = 0;
+		hfc->ctrl_write.wIndex =
+			cpu_to_le16(hfc->ctrl_buff[hfc->ctrl_out_idx].hfc_reg);
+		hfc->ctrl_write.wValue =
+			cpu_to_le16(hfc->ctrl_buff[hfc->ctrl_out_idx].reg_val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ctrl_start_transfer(hfcusb_data * hfc)
 {
 	if (hfc->ctrl_cnt) {
@@ -231,13 +358,25 @@ ctrl_start_transfer(hfcusb_data * hfc)
 		    cpu_to_le16(hfc->ctrl_buff[hfc->ctrl_out_idx].hfc_reg);
 		hfc->ctrl_write.wValue =
 		    cpu_to_le16(hfc->ctrl_buff[hfc->ctrl_out_idx].reg_val);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		usb_submit_urb(hfc->ctrl_urb, GFP_ATOMIC);	/* start transfer */
 	}
 }				/* ctrl_start_transfer */
 
 static int
+<<<<<<< HEAD
+<<<<<<< HEAD
+queue_control_request(hfcusb_data *hfc, __u8 reg, __u8 val, int action)
+=======
 queue_control_request(hfcusb_data * hfc, __u8 reg, __u8 val, int action)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+queue_control_request(hfcusb_data * hfc, __u8 reg, __u8 val, int action)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ctrl_buft *buf;
 
@@ -271,7 +410,15 @@ ctrl_complete(struct urb *urb)
 
 /* write led data to auxport & invert if necessary */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+write_led(hfcusb_data *hfc, __u8 led_state)
+=======
 write_led(hfcusb_data * hfc, __u8 led_state)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+write_led(hfcusb_data * hfc, __u8 led_state)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (led_state != hfc->old_led_state) {
 		hfc->old_led_state = led_state;
@@ -280,7 +427,15 @@ write_led(hfcusb_data * hfc, __u8 led_state)
 }
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+set_led_bit(hfcusb_data *hfc, signed short led_bits, int on)
+=======
 set_led_bit(hfcusb_data * hfc, signed short led_bits, int on)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+set_led_bit(hfcusb_data * hfc, signed short led_bits, int on)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (on) {
 		if (led_bits < 0)
@@ -297,16 +452,64 @@ set_led_bit(hfcusb_data * hfc, signed short led_bits, int on)
 
 /* handle LED requests */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+handle_led(hfcusb_data *hfc, int event)
+{
+	hfcsusb_vdata *driver_info =
+		(hfcsusb_vdata *) hfcusb_idtab[hfc->vend_idx].driver_info;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 handle_led(hfcusb_data * hfc, int event)
 {
 	hfcsusb_vdata *driver_info =
 	    (hfcsusb_vdata *) hfcusb_idtab[hfc->vend_idx].driver_info;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* if no scheme -> no LED action */
 	if (driver_info->led_scheme == LED_OFF)
 		return;
 
 	switch (event) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case LED_POWER_ON:
+		set_led_bit(hfc, driver_info->led_bits[0], 1);
+		set_led_bit(hfc, driver_info->led_bits[1], 0);
+		set_led_bit(hfc, driver_info->led_bits[2], 0);
+		set_led_bit(hfc, driver_info->led_bits[3], 0);
+		break;
+	case LED_POWER_OFF:
+		set_led_bit(hfc, driver_info->led_bits[0], 0);
+		set_led_bit(hfc, driver_info->led_bits[1], 0);
+		set_led_bit(hfc, driver_info->led_bits[2], 0);
+		set_led_bit(hfc, driver_info->led_bits[3], 0);
+		break;
+	case LED_S0_ON:
+		set_led_bit(hfc, driver_info->led_bits[1], 1);
+		break;
+	case LED_S0_OFF:
+		set_led_bit(hfc, driver_info->led_bits[1], 0);
+		break;
+	case LED_B1_ON:
+		set_led_bit(hfc, driver_info->led_bits[2], 1);
+		break;
+	case LED_B1_OFF:
+		set_led_bit(hfc, driver_info->led_bits[2], 0);
+		break;
+	case LED_B2_ON:
+		set_led_bit(hfc, driver_info->led_bits[3], 1);
+		break;
+	case LED_B2_OFF:
+		set_led_bit(hfc, driver_info->led_bits[3], 0);
+		break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case LED_POWER_ON:
 			set_led_bit(hfc, driver_info->led_bits[0], 1);
 			set_led_bit(hfc, driver_info->led_bits[1], 0);
@@ -337,13 +540,25 @@ handle_led(hfcusb_data * hfc, int event)
 		case LED_B2_OFF:
 			set_led_bit(hfc, driver_info->led_bits[3], 0);
 			break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	write_led(hfc, hfc->led_state);
 }
 
 /* ISDN l1 timer T3 expires */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+l1_timer_expire_t3(hfcusb_data *hfc)
+=======
 l1_timer_expire_t3(hfcusb_data * hfc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+l1_timer_expire_t3(hfcusb_data * hfc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	hfc->d_if.ifc.l1l2(&hfc->d_if.ifc, PH_DEACTIVATE | INDICATION,
 			   NULL);
@@ -360,7 +575,15 @@ l1_timer_expire_t3(hfcusb_data * hfc)
 
 /* ISDN l1 timer T4 expires */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+l1_timer_expire_t4(hfcusb_data *hfc)
+=======
 l1_timer_expire_t4(hfcusb_data * hfc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+l1_timer_expire_t4(hfcusb_data * hfc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	hfc->d_if.ifc.l1l2(&hfc->d_if.ifc, PH_DEACTIVATE | INDICATION,
 			   NULL);
@@ -374,7 +597,15 @@ l1_timer_expire_t4(hfcusb_data * hfc)
 
 /* S0 state changed */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+s0_state_handler(hfcusb_data *hfc, __u8 state)
+=======
 s0_state_handler(hfcusb_data * hfc, __u8 state)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+s0_state_handler(hfcusb_data * hfc, __u8 state)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	__u8 old_state;
 
@@ -402,12 +633,28 @@ s0_state_handler(hfcusb_data * hfc, __u8 state)
 		DBG(HFCUSB_DBG_STATES, "HFC-S USB: PH_ACTIVATE | INDICATION sent");
 		hfc->l1_activated = 1;
 		handle_led(hfc, LED_S0_ON);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else if (state <= 3 /* && activated */) {
+=======
 	} else if (state <= 3 /* && activated */ ) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} else if (state <= 3 /* && activated */ ) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (old_state == 7 || old_state == 8) {
 			DBG(HFCUSB_DBG_STATES, "HFC-S USB: T4 activated");
 			if (!timer_pending(&hfc->t4_timer)) {
 				hfc->t4_timer.expires =
+<<<<<<< HEAD
+<<<<<<< HEAD
+					jiffies + (HFC_TIMER_T4 * HZ) / 1000;
+=======
 				    jiffies + (HFC_TIMER_T4 * HZ) / 1000;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    jiffies + (HFC_TIMER_T4 * HZ) / 1000;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				add_timer(&hfc->t4_timer);
 			}
 		} else {
@@ -451,7 +698,15 @@ fill_isoc_urb(struct urb *urb, struct usb_device *dev, unsigned int pipe,
  * gaps in the transfer chain
  */
 static int
+<<<<<<< HEAD
+<<<<<<< HEAD
+start_isoc_chain(usb_fifo *fifo, int num_packets_per_urb,
+=======
 start_isoc_chain(usb_fifo * fifo, int num_packets_per_urb,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+start_isoc_chain(usb_fifo * fifo, int num_packets_per_urb,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 usb_complete_t complete, int packet_size)
 {
 	int i, k, errcode;
@@ -463,7 +718,15 @@ start_isoc_chain(usb_fifo * fifo, int num_packets_per_urb,
 	for (i = 0; i < 2; i++) {
 		if (!(fifo->iso[i].purb)) {
 			fifo->iso[i].purb =
+<<<<<<< HEAD
+<<<<<<< HEAD
+				usb_alloc_urb(num_packets_per_urb, GFP_KERNEL);
+=======
 			    usb_alloc_urb(num_packets_per_urb, GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			    usb_alloc_urb(num_packets_per_urb, GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(fifo->iso[i].purb)) {
 				printk(KERN_INFO
 				       "alloc urb for fifo %i failed!!!",
@@ -487,11 +750,25 @@ start_isoc_chain(usb_fifo * fifo, int num_packets_per_urb,
 				/* defining packet delimeters in fifo->buffer */
 				for (k = 0; k < num_packets_per_urb; k++) {
 					fifo->iso[i].purb->
+<<<<<<< HEAD
+<<<<<<< HEAD
+						iso_frame_desc[k].offset =
+						k * packet_size;
+					fifo->iso[i].purb->
+						iso_frame_desc[k].length =
+						packet_size;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    iso_frame_desc[k].offset =
 					    k * packet_size;
 					fifo->iso[i].purb->
 					    iso_frame_desc[k].length =
 					    packet_size;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				}
 			} else {
 				printk(KERN_INFO
@@ -511,7 +788,15 @@ start_isoc_chain(usb_fifo * fifo, int num_packets_per_urb,
 
 /* stops running iso chain and frees their pending urbs */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+stop_isoc_chain(usb_fifo *fifo)
+=======
 stop_isoc_chain(usb_fifo * fifo)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+stop_isoc_chain(usb_fifo * fifo)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -534,8 +819,18 @@ stop_isoc_chain(usb_fifo * fifo)
 
 /* defines how much ISO packets are handled in one URB */
 static int iso_packets[8] =
+<<<<<<< HEAD
+<<<<<<< HEAD
+{ ISOC_PACKETS_B, ISOC_PACKETS_B, ISOC_PACKETS_B, ISOC_PACKETS_B,
+  ISOC_PACKETS_D, ISOC_PACKETS_D, ISOC_PACKETS_D, ISOC_PACKETS_D
+=======
     { ISOC_PACKETS_B, ISOC_PACKETS_B, ISOC_PACKETS_B, ISOC_PACKETS_B,
 	ISOC_PACKETS_D, ISOC_PACKETS_D, ISOC_PACKETS_D, ISOC_PACKETS_D
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    { ISOC_PACKETS_B, ISOC_PACKETS_B, ISOC_PACKETS_B, ISOC_PACKETS_B,
+	ISOC_PACKETS_D, ISOC_PACKETS_D, ISOC_PACKETS_D, ISOC_PACKETS_D
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void
@@ -545,7 +840,15 @@ tx_iso_complete(struct urb *urb)
 	usb_fifo *fifo = context_iso_urb->owner_fifo;
 	hfcusb_data *hfc = fifo->hfc;
 	int k, tx_offset, num_isoc_packets, sink, len, current_len,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		errcode;
+=======
 	    errcode;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	    errcode;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int frame_complete, transp_mode, fifon, status;
 	__u8 threshbit;
 
@@ -565,8 +868,18 @@ tx_iso_complete(struct urb *urb)
 			errcode = urb->iso_frame_desc[k].status;
 			if (errcode)
 				DBG(HFCUSB_DBG_VERBOSE_USB, "HFC-S USB: tx_iso_complete "
+<<<<<<< HEAD
+<<<<<<< HEAD
+				    "packet %i, status: %i\n",
+				    k, errcode);
+=======
 				       "packet %i, status: %i\n",
 				       k, errcode);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				       "packet %i, status: %i\n",
+				       k, errcode);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		// clear status, so go on with ISO transfers
@@ -607,8 +920,18 @@ tx_iso_complete(struct urb *urb)
 				if (current_len > 14)
 					current_len = 14;
 				current_len =
+<<<<<<< HEAD
+<<<<<<< HEAD
+					(len <=
+					 current_len) ? len : current_len;
+=======
 				    (len <=
 				     current_len) ? len : current_len;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    (len <=
+				     current_len) ? len : current_len;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* how much bit do we put on the line? */
 				fifo->bit_line += current_len * 8;
 
@@ -617,7 +940,15 @@ tx_iso_complete(struct urb *urb)
 					if (!transp_mode) {
 						/* here frame completion */
 						context_iso_urb->
+<<<<<<< HEAD
+<<<<<<< HEAD
+							buffer[tx_offset] = 1;
+=======
 						    buffer[tx_offset] = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						    buffer[tx_offset] = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						/* add 2 byte flags and 16bit CRC at end of ISDN frame */
 						fifo->bit_line += 32;
 					}
@@ -632,12 +963,28 @@ tx_iso_complete(struct urb *urb)
 				/* define packet delimeters within the URB buffer */
 				urb->iso_frame_desc[k].offset = tx_offset;
 				urb->iso_frame_desc[k].length =
+<<<<<<< HEAD
+<<<<<<< HEAD
+					current_len + 1;
+=======
 				    current_len + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    current_len + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				tx_offset += (current_len + 1);
 			} else {
 				urb->iso_frame_desc[k].offset =
+<<<<<<< HEAD
+<<<<<<< HEAD
+					tx_offset++;
+=======
 				    tx_offset++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    tx_offset++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				urb->iso_frame_desc[k].length = 1;
 				fifo->bit_line -= sink;	/* we lower data margin every msec */
@@ -683,7 +1030,15 @@ rx_iso_complete(struct urb *urb)
 	usb_fifo *fifo = context_iso_urb->owner_fifo;
 	hfcusb_data *hfc = fifo->hfc;
 	int k, len, errcode, offset, num_isoc_packets, fifon, maxlen,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		status;
+=======
 	    status;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	    status;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int iso_status;
 	__u8 *buf;
 	static __u8 eof[8];
@@ -723,10 +1078,23 @@ rx_iso_complete(struct urb *urb)
 
 			if (fifon == HFCUSB_D_RX) {
 				DBG(HFCUSB_DBG_VERBOSE_USB,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				    "HFC-S USB: ISO-D-RX lst_urblen:%2d "
+				    "act_urblen:%2d max-urblen:%2d EOF:0x%0x",
+				    fifo->last_urblen, len, maxlen,
+				    eof[5]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       "HFC-S USB: ISO-D-RX lst_urblen:%2d "
 				       "act_urblen:%2d max-urblen:%2d EOF:0x%0x",
 				       fifo->last_urblen, len, maxlen,
 				       eof[5]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				DBG_PACKET(HFCUSB_DBG_VERBOSE_USB, buf, len);
 			}
@@ -778,7 +1146,15 @@ rx_iso_complete(struct urb *urb)
 
 /* collect rx data from INT- and ISO-URBs  */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+collect_rx_frame(usb_fifo *fifo, __u8 *data, int len, int finish)
+=======
 collect_rx_frame(usb_fifo * fifo, __u8 * data, int len, int finish)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+collect_rx_frame(usb_fifo * fifo, __u8 * data, int len, int finish)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	hfcusb_data *hfc = fifo->hfc;
 	int transp_mode, fifon;
@@ -802,8 +1178,18 @@ collect_rx_frame(usb_fifo * fifo, __u8 * data, int len, int finish)
 			memcpy(skb_put(fifo->skbuff, len), data, len);
 		} else {
 			DBG(HFCUSB_DBG_FIFO_ERR,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			    "HCF-USB: got frame exceeded fifo->max_size(%d) fifo(%d)",
+			    fifo->max_size, fifon);
+=======
 			       "HCF-USB: got frame exceeded fifo->max_size(%d) fifo(%d)",
 			       fifo->max_size, fifon);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			       "HCF-USB: got frame exceeded fifo->max_size(%d) fifo(%d)",
+			       fifo->max_size, fifon);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			DBG_SKB(HFCUSB_DBG_VERBOSE_USB, fifo->skbuff);
 			skb_trim(fifo->skbuff, 0);
 		}
@@ -817,7 +1203,15 @@ collect_rx_frame(usb_fifo * fifo, __u8 * data, int len, int finish)
 	/* we have a complete hdlc packet */
 	if (finish) {
 		if (fifo->skbuff->len > 3 &&
+<<<<<<< HEAD
+<<<<<<< HEAD
+		    !fifo->skbuff->data[fifo->skbuff->len - 1]) {
+=======
 				!fifo->skbuff->data[fifo->skbuff->len - 1]) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				!fifo->skbuff->data[fifo->skbuff->len - 1]) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (fifon == HFCUSB_D_RX) {
 				DBG(HFCUSB_DBG_DCHANNEL,
@@ -876,10 +1270,23 @@ rx_int_complete(struct urb *urb)
 
 	if (fifon == HFCUSB_D_RX) {
 		DBG(HFCUSB_DBG_VERBOSE_USB,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		    "HFC-S USB: INT-D-RX lst_urblen:%2d "
+		    "act_urblen:%2d max-urblen:%2d EOF:0x%0x",
+		    fifo->last_urblen, len, maxlen,
+		    eof[5]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       "HFC-S USB: INT-D-RX lst_urblen:%2d "
 		       "act_urblen:%2d max-urblen:%2d EOF:0x%0x",
 		       fifo->last_urblen, len, maxlen,
 		       eof[5]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		DBG_PACKET(HFCUSB_DBG_VERBOSE_USB, buf, len);
 	}
 
@@ -909,7 +1316,15 @@ rx_int_complete(struct urb *urb)
 
 /* start initial INT-URB for certain fifo */
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+start_int_fifo(usb_fifo *fifo)
+=======
 start_int_fifo(usb_fifo * fifo)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+start_int_fifo(usb_fifo * fifo)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int errcode;
 
@@ -936,7 +1351,15 @@ start_int_fifo(usb_fifo * fifo)
 }
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+setup_bchannel(hfcusb_data *hfc, int channel, int mode)
+=======
 setup_bchannel(hfcusb_data * hfc, int channel, int mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+setup_bchannel(hfcusb_data * hfc, int channel, int mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	__u8 val, idx_table[2] = { 0, 2 };
 
@@ -999,6 +1422,99 @@ hfc_usb_l2l1(struct hisax_if *my_hisax_if, int pr, void *arg)
 	hfcusb_data *hfc = fifo->hfc;
 
 	switch (pr) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case PH_ACTIVATE | REQUEST:
+		if (fifo->fifonum == HFCUSB_D_TX) {
+			DBG(HFCUSB_DBG_STATES,
+			    "HFC_USB: hfc_usb_d_l2l1 D-chan: PH_ACTIVATE | REQUEST");
+
+			if (hfc->l1_state != 3
+			    && hfc->l1_state != 7) {
+				hfc->d_if.ifc.l1l2(&hfc->d_if.ifc,
+						   PH_DEACTIVATE |
+						   INDICATION,
+						   NULL);
+				DBG(HFCUSB_DBG_STATES,
+				    "HFC-S USB: PH_DEACTIVATE | INDICATION sent (not state 3 or 7)");
+			} else {
+				if (hfc->l1_state == 7) {	/* l1 already active */
+					hfc->d_if.ifc.l1l2(&hfc->
+							   d_if.
+							   ifc,
+							   PH_ACTIVATE
+							   |
+							   INDICATION,
+							   NULL);
+					DBG(HFCUSB_DBG_STATES,
+					    "HFC-S USB: PH_ACTIVATE | INDICATION sent again ;)");
+				} else {
+					/* force sending sending INFO1 */
+					queue_control_request(hfc,
+							      HFCUSB_STATES,
+							      0x14,
+							      1);
+					mdelay(1);
+					/* start l1 activation */
+					queue_control_request(hfc,
+							      HFCUSB_STATES,
+							      0x04,
+							      1);
+					if (!timer_pending
+					    (&hfc->t3_timer)) {
+						hfc->t3_timer.
+							expires =
+							jiffies +
+							(HFC_TIMER_T3 *
+							 HZ) / 1000;
+						add_timer(&hfc->
+							  t3_timer);
+					}
+				}
+			}
+		} else {
+			DBG(HFCUSB_DBG_STATES,
+			    "HFC_USB: hfc_usb_d_l2l1 B-chan: PH_ACTIVATE | REQUEST");
+			setup_bchannel(hfc,
+				       (fifo->fifonum ==
+					HFCUSB_B1_TX) ? 0 : 1,
+				       (long) arg);
+			fifo->hif->l1l2(fifo->hif,
+					PH_ACTIVATE | INDICATION,
+					NULL);
+		}
+		break;
+	case PH_DEACTIVATE | REQUEST:
+		if (fifo->fifonum == HFCUSB_D_TX) {
+			DBG(HFCUSB_DBG_STATES,
+			    "HFC_USB: hfc_usb_d_l2l1 D-chan: PH_DEACTIVATE | REQUEST");
+		} else {
+			DBG(HFCUSB_DBG_STATES,
+			    "HFC_USB: hfc_usb_d_l2l1 Bx-chan: PH_DEACTIVATE | REQUEST");
+			setup_bchannel(hfc,
+				       (fifo->fifonum ==
+					HFCUSB_B1_TX) ? 0 : 1,
+				       (int) L1_MODE_NULL);
+			fifo->hif->l1l2(fifo->hif,
+					PH_DEACTIVATE | INDICATION,
+					NULL);
+		}
+		break;
+	case PH_DATA | REQUEST:
+		if (fifo->skbuff && fifo->delete_flg) {
+			dev_kfree_skb_any(fifo->skbuff);
+			fifo->skbuff = NULL;
+			fifo->delete_flg = 0;
+		}
+		fifo->skbuff = arg;	/* we have a new buffer */
+		break;
+	default:
+		DBG(HFCUSB_DBG_STATES,
+		    "HFC_USB: hfc_usb_d_l2l1: unknown state : %#x", pr);
+		break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case PH_ACTIVATE | REQUEST:
 			if (fifo->fifonum == HFCUSB_D_TX) {
 				DBG(HFCUSB_DBG_STATES,
@@ -1087,12 +1603,24 @@ hfc_usb_l2l1(struct hisax_if *my_hisax_if, int pr, void *arg)
 			DBG(HFCUSB_DBG_STATES,
 			       "HFC_USB: hfc_usb_d_l2l1: unknown state : %#x", pr);
 			break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
 /* initial init HFC-S USB chip registers, HiSax interface, USB URBs */
 static int
+<<<<<<< HEAD
+<<<<<<< HEAD
+hfc_usb_init(hfcusb_data *hfc)
+=======
 hfc_usb_init(hfcusb_data * hfc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hfc_usb_init(hfcusb_data * hfc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	usb_fifo *fifo;
 	int i;
@@ -1138,7 +1666,15 @@ hfc_usb_init(hfcusb_data * hfc)
 		write_usb(hfc, HFCUSB_FIFO, i);	/* select the desired fifo */
 		fifo[i].skbuff = NULL;	/* init buffer pointer */
 		fifo[i].max_size =
+<<<<<<< HEAD
+<<<<<<< HEAD
+			(i <= HFCUSB_B2_RX) ? MAX_BCH_SIZE : MAX_DFRAME_LEN;
+=======
 		    (i <= HFCUSB_B2_RX) ? MAX_BCH_SIZE : MAX_DFRAME_LEN;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		    (i <= HFCUSB_B2_RX) ? MAX_BCH_SIZE : MAX_DFRAME_LEN;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fifo[i].last_urblen = 0;
 		/* set 2 bit for D- & E-channel */
 		write_usb(hfc, HFCUSB_HDLC_PAR,
@@ -1185,7 +1721,15 @@ hfc_usb_init(hfcusb_data * hfc)
 	usb_fill_control_urb(hfc->ctrl_urb,
 			     hfc->dev,
 			     hfc->ctrl_out_pipe,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			     (u_char *)&hfc->ctrl_write,
+=======
 			     (u_char *) & hfc->ctrl_write,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			     (u_char *) & hfc->ctrl_write,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     NULL, 0, ctrl_complete, hfc);
 	/* Init All Fifos */
 	for (i = 0; i < HFCUSB_NUM_FIFOS; i++) {
@@ -1264,9 +1808,21 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 	struct usb_host_endpoint *ep;
 	int ifnum = iface->desc.bInterfaceNumber;
 	int i, idx, alt_idx, probe_alt_setting, vend_idx, cfg_used, *vcf,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		attr, cfg_found, cidx, ep_addr;
+	int cmptbl[16], small_match, iso_packet_size, packet_size,
+		alt_used = 0;
+=======
 	    attr, cfg_found, cidx, ep_addr;
 	int cmptbl[16], small_match, iso_packet_size, packet_size,
 	    alt_used = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	    attr, cfg_found, cidx, ep_addr;
+	int cmptbl[16], small_match, iso_packet_size, packet_size,
+	    alt_used = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hfcsusb_vdata *driver_info;
 
 	vend_idx = 0xffff;
@@ -1309,7 +1865,15 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 				for (i = 0; i < iface->desc.bNumEndpoints;
 				     i++) {
 					ep_addr =
+<<<<<<< HEAD
+<<<<<<< HEAD
+						ep->desc.bEndpointAddress;
+=======
 					    ep->desc.bEndpointAddress;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					    ep->desc.bEndpointAddress;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					/* get endpoint base */
 					idx = ((ep_addr & 0x7f) - 1) * 2;
 					if (ep_addr & 0x80)
@@ -1345,7 +1909,15 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 					if (cfg_used < small_match) {
 						small_match = cfg_used;
 						alt_used =
+<<<<<<< HEAD
+<<<<<<< HEAD
+							probe_alt_setting;
+=======
 						    probe_alt_setting;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						    probe_alt_setting;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						iface_used = iface;
 					}
 				}
@@ -1376,6 +1948,86 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 				if (vcf[idx] != EP_NOP
 				    && vcf[idx] != EP_NUL) {
 					switch (attr) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+					case USB_ENDPOINT_XFER_INT:
+						context->
+							fifos[cidx].
+							pipe =
+							usb_rcvintpipe
+							(dev,
+							 ep->desc.
+							 bEndpointAddress);
+						context->
+							fifos[cidx].
+							usb_transfer_mode
+							= USB_INT;
+						packet_size =
+							le16_to_cpu(ep->desc.wMaxPacketSize);
+						break;
+					case USB_ENDPOINT_XFER_BULK:
+						if (ep_addr & 0x80)
+							context->
+								fifos
+								[cidx].
+								pipe =
+								usb_rcvbulkpipe
+								(dev,
+								 ep->
+								 desc.
+								 bEndpointAddress);
+						else
+							context->
+								fifos
+								[cidx].
+								pipe =
+								usb_sndbulkpipe
+								(dev,
+								 ep->
+								 desc.
+								 bEndpointAddress);
+						context->
+							fifos[cidx].
+							usb_transfer_mode
+							= USB_BULK;
+						packet_size =
+							le16_to_cpu(ep->desc.wMaxPacketSize);
+						break;
+					case USB_ENDPOINT_XFER_ISOC:
+						if (ep_addr & 0x80)
+							context->
+								fifos
+								[cidx].
+								pipe =
+								usb_rcvisocpipe
+								(dev,
+								 ep->
+								 desc.
+								 bEndpointAddress);
+						else
+							context->
+								fifos
+								[cidx].
+								pipe =
+								usb_sndisocpipe
+								(dev,
+								 ep->
+								 desc.
+								 bEndpointAddress);
+						context->
+							fifos[cidx].
+							usb_transfer_mode
+							= USB_ISOC;
+						iso_packet_size =
+							le16_to_cpu(ep->desc.wMaxPacketSize);
+						break;
+					default:
+						context->
+							fifos[cidx].
+							pipe = 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						case USB_ENDPOINT_XFER_INT:
 							context->
 							    fifos[cidx].
@@ -1451,10 +2103,29 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 							context->
 							    fifos[cidx].
 							    pipe = 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					}	/* switch attribute */
 
 					if (context->fifos[cidx].pipe) {
 						context->fifos[cidx].
+<<<<<<< HEAD
+<<<<<<< HEAD
+							fifonum = cidx;
+						context->fifos[cidx].hfc =
+							context;
+						context->fifos[cidx].usb_packet_maxlen =
+							le16_to_cpu(ep->desc.wMaxPacketSize);
+						context->fifos[cidx].
+							intervall =
+							ep->desc.bInterval;
+						context->fifos[cidx].
+							skbuff = NULL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						    fifonum = cidx;
 						context->fifos[cidx].hfc =
 						    context;
@@ -1465,6 +2136,10 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 						    ep->desc.bInterval;
 						context->fifos[cidx].
 						    skbuff = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					}
 				}
 				ep++;
@@ -1480,6 +2155,19 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 
 			/* create the control pipes needed for register access */
 			context->ctrl_in_pipe =
+<<<<<<< HEAD
+<<<<<<< HEAD
+				usb_rcvctrlpipe(context->dev, 0);
+			context->ctrl_out_pipe =
+				usb_sndctrlpipe(context->dev, 0);
+			context->ctrl_urb = usb_alloc_urb(0, GFP_KERNEL);
+
+			driver_info =
+				(hfcsusb_vdata *) hfcusb_idtab[vend_idx].
+				driver_info;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    usb_rcvctrlpipe(context->dev, 0);
 			context->ctrl_out_pipe =
 			    usb_sndctrlpipe(context->dev, 0);
@@ -1488,6 +2176,10 @@ hfc_usb_probe(struct usb_interface *intf, const struct usb_device_id *id)
 			driver_info =
 			    (hfcsusb_vdata *) hfcusb_idtab[vend_idx].
 			    driver_info;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_INFO "HFC-S USB: detected \"%s\"\n",
 			       driver_info->vend_name);
 

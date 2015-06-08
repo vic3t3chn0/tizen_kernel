@@ -83,7 +83,11 @@ static struct edma_soc_info edma_cc0_info = {
 <<<<<<< HEAD
 	.default_queue		= EVENTQ_1,
 =======
+<<<<<<< HEAD
+	.default_queue		= EVENTQ_1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct edma_soc_info *tnetv107x_edma_info[EDMA_MAX_CC] = {

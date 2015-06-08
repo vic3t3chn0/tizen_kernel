@@ -279,8 +279,12 @@ static void phonet_route_autodel(struct net_device *dev)
 <<<<<<< HEAD
 			RCU_INIT_POINTER(pnn->routes.table[i], NULL);
 =======
+<<<<<<< HEAD
+			RCU_INIT_POINTER(pnn->routes.table[i], NULL);
+=======
 			rcu_assign_pointer(pnn->routes.table[i], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_bit(i, deleted);
 		}
 	mutex_unlock(&pnn->routes.lock);
@@ -337,6 +341,8 @@ static void __net_exit phonet_exit_net(struct net *net)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct phonet_net *pnn = phonet_pernet(net);
 	struct net_device *dev;
 	unsigned i;
@@ -355,6 +361,7 @@ static void __net_exit phonet_exit_net(struct net *net)
 	rtnl_unlock();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	proc_net_remove(net, "phonet");
 }
 
@@ -371,8 +378,12 @@ int __init phonet_device_init(void)
 <<<<<<< HEAD
 	int err = register_pernet_subsys(&phonet_net_ops);
 =======
+<<<<<<< HEAD
+	int err = register_pernet_subsys(&phonet_net_ops);
+=======
 	int err = register_pernet_device(&phonet_net_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 
@@ -391,8 +402,12 @@ void phonet_device_exit(void)
 <<<<<<< HEAD
 	unregister_pernet_subsys(&phonet_net_ops);
 =======
+<<<<<<< HEAD
+	unregister_pernet_subsys(&phonet_net_ops);
+=======
 	unregister_pernet_device(&phonet_net_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	proc_net_remove(&init_net, "pnresource");
 }
 
@@ -424,8 +439,12 @@ int phonet_route_del(struct net_device *dev, u8 daddr)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(routes->table[daddr], NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(routes->table[daddr], NULL);
+=======
 		rcu_assign_pointer(routes->table[daddr], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		dev = NULL;
 	mutex_unlock(&routes->lock);

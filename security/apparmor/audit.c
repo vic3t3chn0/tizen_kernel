@@ -22,8 +22,12 @@
 <<<<<<< HEAD
 const char *const op_table[] = {
 =======
+<<<<<<< HEAD
+const char *const op_table[] = {
+=======
 const char *op_table[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"null",
 
 	"sysctl",
@@ -80,8 +84,12 @@ const char *op_table[] = {
 <<<<<<< HEAD
 const char *const audit_mode_names[] = {
 =======
+<<<<<<< HEAD
+const char *const audit_mode_names[] = {
+=======
 const char *audit_mode_names[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"normal",
 	"quiet_denied",
 	"quiet",
@@ -92,8 +100,12 @@ const char *audit_mode_names[] = {
 <<<<<<< HEAD
 static const char *const aa_audit_type[] = {
 =======
+<<<<<<< HEAD
+static const char *const aa_audit_type[] = {
+=======
 static char *aa_audit_type[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"AUDIT",
 	"ALLOWED",
 	"DENIED",
@@ -104,7 +116,11 @@ static char *aa_audit_type[] = {
 <<<<<<< HEAD
 	"AUTO"
 =======
+<<<<<<< HEAD
+	"AUTO"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -131,6 +147,9 @@ static void audit_pre(struct audit_buffer *ab, void *ca)
 	if (aa_g_audit_header) {
 		audit_log_format(ab, "apparmor=");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		audit_log_string(ab, aa_audit_type[sa->aad->type]);
 	}
 
@@ -151,6 +170,8 @@ static void audit_pre(struct audit_buffer *ab, void *ca)
 		pid_t pid;
 		rcu_read_lock();
 		pid = rcu_dereference(tsk->real_parent)->pid;
+<<<<<<< HEAD
+=======
 =======
 		audit_log_string(ab, aa_audit_type[sa->aad.type]);
 	}
@@ -173,6 +194,7 @@ static void audit_pre(struct audit_buffer *ab, void *ca)
 		rcu_read_lock();
 		pid = tsk->real_parent->pid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_read_unlock();
 		audit_log_format(ab, " parent=%d", pid);
 		if (profile->ns != root_ns) {
@@ -188,10 +210,16 @@ static void audit_pre(struct audit_buffer *ab, void *ca)
 		audit_log_format(ab, " name=");
 		audit_log_untrustedstring(ab, sa->aad->name);
 =======
+<<<<<<< HEAD
+	if (sa->aad->name) {
+		audit_log_format(ab, " name=");
+		audit_log_untrustedstring(ab, sa->aad->name);
+=======
 	if (sa->aad.name) {
 		audit_log_format(ab, " name=");
 		audit_log_untrustedstring(ab, sa->aad.name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -207,11 +235,16 @@ void aa_audit_msg(int type, struct common_audit_data *sa,
 	sa->aad->type = type;
 	common_lsm_audit(sa, audit_pre, cb);
 =======
+<<<<<<< HEAD
+	sa->aad->type = type;
+	common_lsm_audit(sa, audit_pre, cb);
+=======
 	sa->aad.type = type;
 	sa->lsm_pre_audit = audit_pre;
 	sa->lsm_post_audit = cb;
 	common_lsm_audit(sa);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -236,8 +269,12 @@ int aa_audit(int type, struct aa_profile *profile, gfp_t gfp,
 <<<<<<< HEAD
 		if (likely(!sa->aad->error)) {
 =======
+<<<<<<< HEAD
+		if (likely(!sa->aad->error)) {
+=======
 		if (likely(!sa->aad.error)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (AUDIT_MODE(profile) != AUDIT_ALL)
 				return 0;
 			type = AUDIT_APPARMOR_AUDIT;
@@ -252,14 +289,21 @@ int aa_audit(int type, struct aa_profile *profile, gfp_t gfp,
 <<<<<<< HEAD
 		return sa->aad->error;
 =======
+<<<<<<< HEAD
+		return sa->aad->error;
+=======
 		return sa->aad.error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (KILL_MODE(profile) && type == AUDIT_APPARMOR_DENIED)
 		type = AUDIT_APPARMOR_KILL;
 
 	if (!unconfined(profile))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sa->aad->profile = profile;
 
 	aa_audit_msg(type, sa, cb);
@@ -271,6 +315,8 @@ int aa_audit(int type, struct aa_profile *profile, gfp_t gfp,
 		return complain_error(sa->aad->error);
 
 	return sa->aad->error;
+<<<<<<< HEAD
+=======
 =======
 		sa->aad.profile = profile;
 
@@ -284,4 +330,5 @@ int aa_audit(int type, struct aa_profile *profile, gfp_t gfp,
 
 	return sa->aad.error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -34,8 +34,11 @@
 #include <mach/mux.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/dm365.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/common.h>
 #include <mach/i2c.h>
 #include <mach/serial.h>
@@ -49,7 +52,12 @@
 #include "davinci.h"
 
 =======
+<<<<<<< HEAD
+#include "davinci.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int have_imager(void)
 {
 	/* REVISIT when it's supported, trigger via Kconfig */
@@ -65,8 +73,12 @@ static inline int have_tvp7002(void)
 <<<<<<< HEAD
 #define DM365_EVM_PHY_ID		"davinci_mdio-0:01"
 =======
+<<<<<<< HEAD
+#define DM365_EVM_PHY_ID		"davinci_mdio-0:01"
+=======
 #define DM365_EVM_PHY_ID		"0:01"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * A MAX-II CPLD is used for various board control functions.
  */
@@ -122,8 +134,12 @@ static struct mtd_partition davinci_nand_partitions[] = {
 <<<<<<< HEAD
 		.size		= 30 * NAND_BLOCK_SIZE,
 =======
+<<<<<<< HEAD
+		.size		= 30 * NAND_BLOCK_SIZE,
+=======
 		.size		= 28 * NAND_BLOCK_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mask_flags	= MTD_WRITEABLE, /* force read-only */
 	}, {
 		/* U-Boot environment */
@@ -158,8 +174,12 @@ static struct davinci_nand_pdata davinci_nand_data = {
 <<<<<<< HEAD
 	.bbt_options		= NAND_BBT_USE_FLASH,
 =======
+<<<<<<< HEAD
+	.bbt_options		= NAND_BBT_USE_FLASH,
+=======
 	.options		= NAND_USE_FLASH_BBT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ecc_bits		= 4,
 };
 
@@ -635,8 +655,12 @@ MACHINE_START(DAVINCI_DM365_EVM, "DaVinci DM365 EVM")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= (0x80000100),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= dm365_evm_map_io,
 	.init_irq	= davinci_irq_init,
 	.timer		= &davinci_timer,
@@ -645,6 +669,11 @@ MACHINE_START(DAVINCI_DM365_EVM, "DaVinci DM365 EVM")
 	.dma_zone_size	= SZ_128M,
 	.restart	= davinci_restart,
 =======
+<<<<<<< HEAD
+	.dma_zone_size	= SZ_128M,
+	.restart	= davinci_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 

@@ -26,8 +26,21 @@
  *			Costantino Leandro
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
 #define MODULE_NAME "t613"
 
+#include <linux/input.h>
+=======
+#define MODULE_NAME "t613"
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MODULE_NAME "t613"
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include "gspca.h"
 
@@ -55,6 +68,13 @@ struct sd {
 	u8 effect;
 
 	u8 sensor;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 button_pressed;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 enum sensors {
 	SENSOR_OM6802,
@@ -572,7 +592,15 @@ static void reg_w_buf(struct gspca_dev *gspca_dev,
 
 		tmpbuf = kmemdup(buffer, len, GFP_KERNEL);
 		if (!tmpbuf) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("Out of memory\n");
+=======
 			err("Out of memory");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("Out of memory");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		}
 		usb_control_msg(gspca_dev->dev,
@@ -598,7 +626,15 @@ static void reg_w_ixbuf(struct gspca_dev *gspca_dev,
 	} else {
 		p = tmpbuf = kmalloc(len * 2, GFP_KERNEL);
 		if (!tmpbuf) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("Out of memory\n");
+=======
 			err("Out of memory");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("Out of memory");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		}
 	}
@@ -652,7 +688,15 @@ static void om6802_sensor_init(struct gspca_dev *gspca_dev)
 	}
 	byte = reg_r(gspca_dev, 0x0063);
 	if (byte != 0x17) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Bad sensor reset %02x\n", byte);
+=======
 		err("Bad sensor reset %02x", byte);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Bad sensor reset %02x", byte);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* continue? */
 	}
 
@@ -890,7 +934,15 @@ static int sd_init(struct gspca_dev *gspca_dev)
 		sd->sensor = SENSOR_OM6802;
 		break;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("unknown sensor %04x\n", sensor_id);
+=======
 		err("unknown sensor %04x", sensor_id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("unknown sensor %04x", sensor_id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -905,7 +957,15 @@ static int sd_init(struct gspca_dev *gspca_dev)
 				break;		/* OK */
 		}
 		if (i < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("Bad sensor reset %02x\n", test_byte);
+=======
 			err("Bad sensor reset %02x", test_byte);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("Bad sensor reset %02x", test_byte);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EIO;
 		}
 		reg_w_buf(gspca_dev, n2, sizeof n2);
@@ -1093,15 +1153,53 @@ static void sd_stopN(struct gspca_dev *gspca_dev)
 		msleep(20);
 		reg_w(gspca_dev, 0x0309);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_INPUT) || defined(CONFIG_INPUT_MODULE)
+	/* If the last button state is pressed, release it now! */
+	if (sd->button_pressed) {
+		input_report_key(gspca_dev->input_dev, KEY_CAMERA, 0);
+		input_sync(gspca_dev->input_dev);
+		sd->button_pressed = 0;
+	}
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void sd_pkt_scan(struct gspca_dev *gspca_dev,
 			u8 *data,			/* isoc packet */
 			int len)			/* iso packet length */
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct sd *sd = (struct sd *) gspca_dev;
 	int pkt_type;
 
 	if (data[0] == 0x5a) {
+#if defined(CONFIG_INPUT) || defined(CONFIG_INPUT_MODULE)
+		if (len > 20) {
+			u8 state = (data[20] & 0x80) ? 1 : 0;
+			if (sd->button_pressed != state) {
+				input_report_key(gspca_dev->input_dev,
+						 KEY_CAMERA, state);
+				input_sync(gspca_dev->input_dev);
+				sd->button_pressed = state;
+			}
+		}
+#endif
+=======
+	int pkt_type;
+
+	if (data[0] == 0x5a) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int pkt_type;
+
+	if (data[0] == 0x5a) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Control Packet, after this came the header again,
 		 * but extra bytes came in the packet before this,
 		 * sometimes an EOF arrives, sometimes not... */
@@ -1387,7 +1485,15 @@ static int sd_querymenu(struct gspca_dev *gspca_dev,
 		return 0;
 	case V4L2_CID_EFFECTS:
 		if ((unsigned) menu->index < ARRAY_SIZE(effects_control)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			strlcpy((char *) menu->name,
+=======
 			strncpy((char *) menu->name,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			strncpy((char *) menu->name,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				effects_control[menu->index],
 				sizeof menu->name);
 			return 0;
@@ -1408,6 +1514,15 @@ static const struct sd_desc sd_desc = {
 	.stopN = sd_stopN,
 	.pkt_scan = sd_pkt_scan,
 	.querymenu = sd_querymenu,
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_INPUT) || defined(CONFIG_INPUT_MODULE)
+	.other_input = 1,
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* -- module initialisation -- */
@@ -1436,6 +1551,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -1448,3 +1569,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

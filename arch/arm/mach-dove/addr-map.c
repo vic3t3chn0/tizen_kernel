@@ -18,7 +18,12 @@
 #include <mach/dove.h>
 #include <plat/addr-map.h>
 =======
+<<<<<<< HEAD
+#include <mach/dove.h>
+#include <plat/addr-map.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 
 /*
@@ -41,6 +46,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * CPU Address Decode Windows registers
  */
@@ -52,12 +59,16 @@
 struct mbus_dram_target_info dove_mbus_dram_info;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void __iomem *ddr_map_sc(int i)
 {
 	return (void __iomem *)(DOVE_MC_VIRT_BASE + 0x100 + ((i) << 4));
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Description of the windows needed by the platform code
  */
@@ -114,6 +125,8 @@ void __init dove_setup_cpu_mbus(void)
 	 * Disable, clear and configure windows.
 	 */
 	orion_config_wins(&addr_map_cfg, addr_map_info);
+<<<<<<< HEAD
+=======
 =======
 static int cpu_win_can_remap(int win)
 {
@@ -188,6 +201,7 @@ void __init dove_setup_cpu_mbus(void)
 	setup_cpu_win(6, DOVE_SCRATCHPAD_PHYS_BASE, DOVE_SCRATCHPAD_SIZE,
 		      TARGET_SCRATCHPAD, ATTR_SCRATCHPAD, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Setup MBUS dram target info.
@@ -195,8 +209,12 @@ void __init dove_setup_cpu_mbus(void)
 <<<<<<< HEAD
 	orion_mbus_dram_info.mbus_dram_target_id = TARGET_DDR;
 =======
+<<<<<<< HEAD
+	orion_mbus_dram_info.mbus_dram_target_id = TARGET_DDR;
+=======
 	dove_mbus_dram_info.mbus_dram_target_id = TARGET_DDR;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0, cs = 0; i < 2; i++) {
 		u32 map = readl(ddr_map_sc(i));
@@ -210,8 +228,12 @@ void __init dove_setup_cpu_mbus(void)
 <<<<<<< HEAD
 			w = &orion_mbus_dram_info.cs[cs++];
 =======
+<<<<<<< HEAD
+			w = &orion_mbus_dram_info.cs[cs++];
+=======
 			w = &dove_mbus_dram_info.cs[cs++];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			w->cs_index = i;
 			w->mbus_attr = 0; /* CS address decoding done inside */
 					  /* the DDR controller, no need to  */
@@ -223,6 +245,10 @@ void __init dove_setup_cpu_mbus(void)
 <<<<<<< HEAD
 	orion_mbus_dram_info.num_cs = cs;
 =======
+<<<<<<< HEAD
+	orion_mbus_dram_info.num_cs = cs;
+=======
 	dove_mbus_dram_info.num_cs = cs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

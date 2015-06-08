@@ -9,9 +9,13 @@
 <<<<<<< HEAD
  *   the Free Software Foundation; only version 2 of the License.
 =======
+<<<<<<< HEAD
+ *   the Free Software Foundation; only version 2 of the License.
+=======
  *   the Free Software Foundation; either version 2 of the License, or
  *   (at your option) any later version.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *   This program is distributed in the hope that it will be useful,
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -28,14 +32,20 @@
 #include <linux/time.h>
 #include <linux/math64.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <sound/core.h>
 #include <sound/control.h>
 #include <sound/tlv.h>
+<<<<<<< HEAD
+=======
 =======
 #include <sound/core.h>
 #include <sound/control.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/info.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
@@ -45,7 +55,12 @@
 #define STRING_LENGTH_OF_INT 12
 
 =======
+<<<<<<< HEAD
+#define STRING_LENGTH_OF_INT 12
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * fill ring buffer with silence
  * runtime->silence_start: starting pointer to silence area
@@ -148,8 +163,13 @@ void snd_pcm_playback_silence(struct snd_pcm_substream *substream, snd_pcm_ufram
 #ifdef CONFIG_SND_DEBUG
 void snd_pcm_debug_name(struct snd_pcm_substream *substream,
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SND_DEBUG
+void snd_pcm_debug_name(struct snd_pcm_substream *substream,
+=======
 static void pcm_debug_name(struct snd_pcm_substream *substream,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   char *name, size_t len)
 {
 	snprintf(name, len, "pcmC%dD%d%c:%d",
@@ -162,7 +182,12 @@ static void pcm_debug_name(struct snd_pcm_substream *substream,
 EXPORT_SYMBOL(snd_pcm_debug_name);
 #endif
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(snd_pcm_debug_name);
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define XRUN_DEBUG_BASIC	(1<<0)
 #define XRUN_DEBUG_STACK	(1<<1)	/* dump also stack */
@@ -197,8 +222,12 @@ static void xrun(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 		snd_pcm_debug_name(substream, name, sizeof(name));
 =======
+<<<<<<< HEAD
+		snd_pcm_debug_name(substream, name, sizeof(name));
+=======
 		pcm_debug_name(substream, name, sizeof(name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printd(KERN_DEBUG "XRUN: %s\n", name);
 		dump_stack_on_xrun(substream);
 	}
@@ -276,8 +305,12 @@ static void xrun_log_show(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	snd_pcm_debug_name(substream, name, sizeof(name));
 =======
+<<<<<<< HEAD
+	snd_pcm_debug_name(substream, name, sizeof(name));
+=======
 	pcm_debug_name(substream, name, sizeof(name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (cnt = 0, idx = log->idx; cnt < XRUN_LOG_CNT; cnt++) {
 		entry = &log->entries[idx];
 		if (entry->period_size == 0)
@@ -356,8 +389,12 @@ static int snd_pcm_update_hw_ptr0(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 			snd_pcm_debug_name(substream, name, sizeof(name));
 =======
+<<<<<<< HEAD
+			snd_pcm_debug_name(substream, name, sizeof(name));
+=======
 			pcm_debug_name(substream, name, sizeof(name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xrun_log_show(substream);
 			snd_printd(KERN_ERR  "BUG: %s, pos = %ld, "
 				   "buffer size = %ld, period size = %ld\n",
@@ -405,8 +442,12 @@ static int snd_pcm_update_hw_ptr0(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		snd_pcm_debug_name(substream, name, sizeof(name));
 =======
+<<<<<<< HEAD
+		snd_pcm_debug_name(substream, name, sizeof(name));
+=======
 		pcm_debug_name(substream, name, sizeof(name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printd("%s_update: %s: pos=%u/%u/%u, "
 			   "hwptr=%ld/%ld/%ld/%ld\n",
 			   in_interrupt ? "period" : "hwptr",
@@ -1071,8 +1112,13 @@ static int snd_interval_ratden(struct snd_interval *i,
 int snd_interval_list(struct snd_interval *i, unsigned int count,
 		      unsigned int *list, unsigned int mask)
 =======
+<<<<<<< HEAD
+int snd_interval_list(struct snd_interval *i, unsigned int count,
+		      unsigned int *list, unsigned int mask)
+=======
 int snd_interval_list(struct snd_interval *i, unsigned int count, unsigned int *list, unsigned int mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
         unsigned int k;
 	struct snd_interval list_range;
@@ -1444,6 +1490,9 @@ int snd_pcm_hw_constraint_pow2(struct snd_pcm_runtime *runtime,
 EXPORT_SYMBOL(snd_pcm_hw_constraint_pow2);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_pcm_hw_rule_noresample_func(struct snd_pcm_hw_params *params,
 					   struct snd_pcm_hw_rule *rule)
 {
@@ -1470,8 +1519,11 @@ int snd_pcm_hw_rule_noresample(struct snd_pcm_runtime *runtime,
 }
 EXPORT_SYMBOL(snd_pcm_hw_rule_noresample);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void _snd_pcm_hw_param_any(struct snd_pcm_hw_params *params,
 				  snd_pcm_hw_param_t var)
 {
@@ -1716,13 +1768,19 @@ static int snd_pcm_lib_ioctl_channel_info(struct snd_pcm_substream *substream,
 	case SNDRV_PCM_ACCESS_MMAP_INTERLEAVED:
 	case SNDRV_PCM_ACCESS_RW_INTERLEAVED:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((UINT_MAX/width) < info->channel) {
 			snd_printd("%s: integer overflow while multiply\n",
 				   __func__);
 			return -EINVAL;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info->first = info->channel * width;
 		info->step = runtime->channels * width;
 		break;
@@ -1731,14 +1789,20 @@ static int snd_pcm_lib_ioctl_channel_info(struct snd_pcm_substream *substream,
 	{
 		size_t size = runtime->dma_bytes / runtime->channels;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if ((size > 0) && ((UINT_MAX/(size * 8)) < info->channel)) {
 			snd_printd("%s: integer overflow while multiply\n",
 				   __func__);
 			return -EINVAL;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info->first = info->channel * size * 8;
 		info->step = width;
 		break;
@@ -1861,11 +1925,15 @@ static int wait_for_avail(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		wait_time = 10;
 =======
+<<<<<<< HEAD
+		wait_time = 10;
+=======
 		if (substream->pcm->card->number != 0)
 			wait_time = 1;
 		else
 			wait_time = 10;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (runtime->rate) {
 			long t = runtime->period_size * 2 / runtime->rate;
 			wait_time = max(t, wait_time);
@@ -2066,7 +2134,13 @@ static int pcm_sanity_check(struct snd_pcm_substream *substream)
 	if (substream->hw_no_buffer)
 		snd_printd("%s: warning this PCM is host less\n", __func__);
 =======
+<<<<<<< HEAD
+	/* TODO: consider and -EINVAL here */
+	if (substream->hw_no_buffer)
+		snd_printd("%s: warning this PCM is host less\n", __func__);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	runtime = substream->runtime;
 	if (snd_BUG_ON(!substream->ops->copy && !runtime->dma_area))
 		return -EINVAL;
@@ -2363,6 +2437,9 @@ snd_pcm_sframes_t snd_pcm_lib_readv(struct snd_pcm_substream *substream,
 
 EXPORT_SYMBOL(snd_pcm_lib_readv);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * standard channel mapping helpers
@@ -2664,5 +2741,8 @@ int snd_pcm_add_volume_ctls(struct snd_pcm *pcm, int stream,
 	return 0;
 }
 EXPORT_SYMBOL_GPL(snd_pcm_add_volume_ctls);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

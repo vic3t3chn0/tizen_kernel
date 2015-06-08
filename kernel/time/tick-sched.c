@@ -20,11 +20,29 @@
 #include <linux/profile.h>
 #include <linux/sched.h>
 #include <linux/module.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/rq_stats.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/irq_regs.h>
 
 #include "tick-internal.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+struct rq_data rq_info;
+struct workqueue_struct *rq_wq;
+spinlock_t rq_lock;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Per cpu nohz control structure
  */
@@ -139,7 +157,14 @@ static void tick_nohz_update_jiffies(ktime_t now)
 	struct tick_sched *ts = &per_cpu(tick_cpu_sched, cpu);
 	unsigned long flags;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	cpumask_clear_cpu(cpu, nohz_cpu_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cpumask_clear_cpu(cpu, nohz_cpu_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ts->idle_waketime = now;
 
 	local_irq_save(flags);
@@ -159,9 +184,22 @@ update_ts_time_stats(int cpu, struct tick_sched *ts, ktime_t now, u64 *last_upda
 
 	if (ts->idle_active) {
 		delta = ktime_sub(now, ts->idle_entrytime);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (nr_iowait_cpu(cpu) > 0)
+			ts->iowait_sleeptime = ktime_add(ts->iowait_sleeptime, delta);
+		else
+			ts->idle_sleeptime = ktime_add(ts->idle_sleeptime, delta);
+=======
 		ts->idle_sleeptime = ktime_add(ts->idle_sleeptime, delta);
 		if (nr_iowait_cpu(cpu) > 0)
 			ts->iowait_sleeptime = ktime_add(ts->iowait_sleeptime, delta);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ts->idle_sleeptime = ktime_add(ts->idle_sleeptime, delta);
+		if (nr_iowait_cpu(cpu) > 0)
+			ts->iowait_sleeptime = ktime_add(ts->iowait_sleeptime, delta);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ts->idle_entrytime = now;
 	}
 
@@ -182,11 +220,21 @@ static void tick_nohz_stop_idle(int cpu, ktime_t now)
 
 static ktime_t tick_nohz_start_idle(int cpu, struct tick_sched *ts)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ktime_t now = ktime_get();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ktime_t now;
 
 	now = ktime_get();
 
 	update_ts_time_stats(cpu, ts, now, NULL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ts->idle_entrytime = now;
 	ts->idle_active = 1;
@@ -197,11 +245,25 @@ static ktime_t tick_nohz_start_idle(int cpu, struct tick_sched *ts)
 /**
  * get_cpu_idle_time_us - get the total idle time of a cpu
  * @cpu: CPU number to query
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @last_update_time: variable to store update time in. Do not update
+ * counters if NULL.
+ *
+ * Return the cummulative idle time (since boot) for a given
+ * CPU, in microseconds.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @last_update_time: variable to store update time in
  *
  * Return the cummulative idle time (since boot) for a given
  * CPU, in microseconds. The idle time returned includes
  * the iowait time (unlike what "top" and co report).
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This time is measured via accounting rather than sampling,
  * and is as accurate as ktime_get() is.
@@ -211,10 +273,46 @@ static ktime_t tick_nohz_start_idle(int cpu, struct tick_sched *ts)
 u64 get_cpu_idle_time_us(int cpu, u64 *last_update_time)
 {
 	struct tick_sched *ts = &per_cpu(tick_cpu_sched, cpu);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ktime_t now, idle;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!tick_nohz_enabled)
 		return -1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	now = ktime_get();
+	if (last_update_time) {
+		update_ts_time_stats(cpu, ts, now, last_update_time);
+		idle = ts->idle_sleeptime;
+	} else {
+		if (ts->idle_active && !nr_iowait_cpu(cpu)) {
+			ktime_t delta = ktime_sub(now, ts->idle_entrytime);
+
+			idle = ktime_add(ts->idle_sleeptime, delta);
+		} else {
+			idle = ts->idle_sleeptime;
+		}
+	}
+
+	return ktime_to_us(idle);
+
+}
+EXPORT_SYMBOL_GPL(get_cpu_idle_time_us);
+
+/**
+ * get_cpu_iowait_time_us - get the total iowait time of a cpu
+ * @cpu: CPU number to query
+ * @last_update_time: variable to store update time in. Do not update
+ * counters if NULL.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	update_ts_time_stats(cpu, ts, ktime_get(), last_update_time);
 
 	return ktime_to_us(ts->idle_sleeptime);
@@ -225,6 +323,10 @@ EXPORT_SYMBOL_GPL(get_cpu_idle_time_us);
  * get_cpu_iowait_time_us - get the total iowait time of a cpu
  * @cpu: CPU number to query
  * @last_update_time: variable to store update time in
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Return the cummulative iowait time (since boot) for a given
  * CPU, in microseconds.
@@ -237,10 +339,43 @@ EXPORT_SYMBOL_GPL(get_cpu_idle_time_us);
 u64 get_cpu_iowait_time_us(int cpu, u64 *last_update_time)
 {
 	struct tick_sched *ts = &per_cpu(tick_cpu_sched, cpu);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ktime_t now, iowait;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!tick_nohz_enabled)
 		return -1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	now = ktime_get();
+	if (last_update_time) {
+		update_ts_time_stats(cpu, ts, now, last_update_time);
+		iowait = ts->iowait_sleeptime;
+	} else {
+		if (ts->idle_active && nr_iowait_cpu(cpu) > 0) {
+			ktime_t delta = ktime_sub(now, ts->idle_entrytime);
+
+			iowait = ktime_add(ts->iowait_sleeptime, delta);
+		} else {
+			iowait = ts->iowait_sleeptime;
+		}
+	}
+
+	return ktime_to_us(iowait);
+}
+EXPORT_SYMBOL_GPL(get_cpu_iowait_time_us);
+
+static void tick_nohz_stop_sched_tick(struct tick_sched *ts)
+{
+	unsigned long seq, last_jiffies, next_jiffies, delta_jiffies;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	update_ts_time_stats(cpu, ts, ktime_get(), last_update_time);
 
 	return ktime_to_us(ts->iowait_sleeptime);
@@ -258,11 +393,23 @@ void tick_nohz_stop_sched_tick(int inidle)
 {
 	unsigned long seq, last_jiffies, next_jiffies, delta_jiffies, flags;
 	struct tick_sched *ts;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ktime_t last_update, expires, now;
 	struct clock_event_device *dev = __get_cpu_var(tick_cpu_device).evtdev;
 	u64 time_delta;
 	int cpu;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cpu = smp_processor_id();
+	ts = &per_cpu(tick_cpu_sched, cpu);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_irq_save(flags);
 
 	cpu = smp_processor_id();
@@ -283,6 +430,10 @@ void tick_nohz_stop_sched_tick(int inidle)
 	 */
 	ts->inidle = 1;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	now = tick_nohz_start_idle(cpu, ts);
 
 	/*
@@ -298,10 +449,23 @@ void tick_nohz_stop_sched_tick(int inidle)
 	}
 
 	if (unlikely(ts->nohz_mode == NOHZ_MODE_INACTIVE))
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return;
+
+	if (need_resched())
+		return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto end;
 
 	if (need_resched())
 		goto end;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(local_softirq_pending() && cpu_online(cpu))) {
 		static int ratelimit;
@@ -311,7 +475,15 @@ void tick_nohz_stop_sched_tick(int inidle)
 			       (unsigned int) local_softirq_pending());
 			ratelimit++;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return;
+=======
 		goto end;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		goto end;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ts->idle_calls++;
@@ -389,9 +561,18 @@ void tick_nohz_stop_sched_tick(int inidle)
 		else
 			expires.tv64 = KTIME_MAX;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		if (delta_jiffies > 1)
 			cpumask_set_cpu(cpu, nohz_cpu_mask);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (delta_jiffies > 1)
+			cpumask_set_cpu(cpu, nohz_cpu_mask);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Skip reprogram of event if its not changed */
 		if (ts->tick_stopped && ktime_equal(expires, dev->next_event))
 			goto out;
@@ -409,7 +590,14 @@ void tick_nohz_stop_sched_tick(int inidle)
 			ts->idle_tick = hrtimer_get_expires(&ts->sched_timer);
 			ts->tick_stopped = 1;
 			ts->idle_jiffies = last_jiffies;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			rcu_enter_nohz();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			rcu_enter_nohz();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		ts->idle_sleeps++;
@@ -441,15 +629,89 @@ void tick_nohz_stop_sched_tick(int inidle)
 		 * softirq.
 		 */
 		tick_do_update_jiffies64(ktime_get());
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		cpumask_clear_cpu(cpu, nohz_cpu_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		cpumask_clear_cpu(cpu, nohz_cpu_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	raise_softirq_irqoff(TIMER_SOFTIRQ);
 out:
 	ts->next_jiffies = next_jiffies;
 	ts->last_jiffies = last_jiffies;
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+
+/**
+ * tick_nohz_idle_enter - stop the idle tick from the idle task
+ *
+ * When the next event is more than a tick into the future, stop the idle tick
+ * Called when we start the idle loop.
+ *
+ * The arch is responsible of calling:
+ *
+ * - rcu_idle_enter() after its last use of RCU before the CPU is put
+ *  to sleep.
+ * - rcu_idle_exit() before the first use of RCU after the CPU is woken up.
+ */
+void tick_nohz_idle_enter(void)
+{
+	struct tick_sched *ts;
+
+	WARN_ON_ONCE(irqs_disabled());
+
+	/*
+ 	 * Update the idle state in the scheduler domain hierarchy
+ 	 * when tick_nohz_stop_sched_tick() is called from the idle loop.
+ 	 * State will be updated to busy during the first busy tick after
+ 	 * exiting idle.
+ 	 */
+	set_cpu_sd_state_idle();
+
+	local_irq_disable();
+
+	ts = &__get_cpu_var(tick_cpu_sched);
+	/*
+	 * set ts->inidle unconditionally. even if the system did not
+	 * switch to nohz mode the cpu frequency governers rely on the
+	 * update of the idle time accounting in tick_nohz_start_idle().
+	 */
+	ts->inidle = 1;
+	tick_nohz_stop_sched_tick(ts);
+
+	local_irq_enable();
+}
+
+/**
+ * tick_nohz_irq_exit - update next tick event from interrupt exit
+ *
+ * When an interrupt fires while we are idle and it doesn't cause
+ * a reschedule, it may still add, modify or delete a timer, enqueue
+ * an RCU callback, etc...
+ * So we need to re-calculate and reprogram the next tick event.
+ */
+void tick_nohz_irq_exit(void)
+{
+	struct tick_sched *ts = &__get_cpu_var(tick_cpu_sched);
+
+	if (!ts->inidle)
+		return;
+
+	tick_nohz_stop_sched_tick(ts);
+=======
 	ts->sleep_length = ktime_sub(dev->next_event, now);
 end:
 	local_irq_restore(flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ts->sleep_length = ktime_sub(dev->next_event, now);
+end:
+	local_irq_restore(flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -460,8 +722,18 @@ end:
 ktime_t tick_nohz_get_sleep_length(void)
 {
 	struct tick_sched *ts = &__get_cpu_var(tick_cpu_sched);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct clock_event_device *dev = __get_cpu_var(tick_cpu_device).evtdev;
+	return ktime_sub(dev->next_event, ts->idle_entrytime);
+=======
 
 	return ts->sleep_length;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	return ts->sleep_length;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void tick_nohz_restart(struct tick_sched *ts, ktime_t now)
@@ -491,11 +763,27 @@ static void tick_nohz_restart(struct tick_sched *ts, ktime_t now)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * tick_nohz_idle_exit - restart the idle tick from the idle task
+ *
+ * Restart the idle tick when the CPU is woken up from idle
+ * This also exit the RCU extended quiescent state. The CPU
+ * can use RCU again after this function is called.
+ */
+void tick_nohz_idle_exit(void)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tick_nohz_restart_sched_tick - restart the idle tick from the idle task
  *
  * Restart the idle tick when the CPU is woken up from idle
  */
 void tick_nohz_restart_sched_tick(void)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int cpu = smp_processor_id();
 	struct tick_sched *ts = &per_cpu(tick_cpu_sched, cpu);
@@ -505,18 +793,48 @@ void tick_nohz_restart_sched_tick(void)
 	ktime_t now;
 
 	local_irq_disable();
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	WARN_ON_ONCE(!ts->inidle);
+
+	ts->inidle = 0;
+
+	if (ts->idle_active || ts->tick_stopped)
+=======
 	if (ts->idle_active || (ts->inidle && ts->tick_stopped))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ts->idle_active || (ts->inidle && ts->tick_stopped))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		now = ktime_get();
 
 	if (ts->idle_active)
 		tick_nohz_stop_idle(cpu, now);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!ts->tick_stopped) {
+=======
 	if (!ts->inidle || !ts->tick_stopped) {
 		ts->inidle = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!ts->inidle || !ts->tick_stopped) {
+		ts->inidle = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		local_irq_enable();
 		return;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Update jiffies first */
+	select_nohz_load_balancer(0);
+	tick_do_update_jiffies64(now);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ts->inidle = 0;
 
 	rcu_exit_nohz();
@@ -525,6 +843,10 @@ void tick_nohz_restart_sched_tick(void)
 	select_nohz_load_balancer(0);
 	tick_do_update_jiffies64(now);
 	cpumask_clear_cpu(cpu, nohz_cpu_mask);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef CONFIG_VIRT_CPU_ACCOUNTING
 	/*
@@ -640,8 +962,16 @@ static void tick_nohz_switch_to_nohz(void)
 		next = ktime_add(next, tick_period);
 	}
 	local_irq_enable();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	printk(KERN_INFO "Switched to NOHz mode on CPU #%d\n", smp_processor_id());
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	printk(KERN_INFO "Switched to NOHz mode on CPU #%d\n", smp_processor_id());
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -711,6 +1041,56 @@ void tick_check_idle(int cpu)
  * High resolution timer specific code
  */
 #ifdef CONFIG_HIGH_RES_TIMERS
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void update_rq_stats(void)
+{
+	unsigned long jiffy_gap = 0;
+	unsigned int rq_avg = 0;
+	unsigned long flags = 0;
+
+	jiffy_gap = jiffies - rq_info.rq_poll_last_jiffy;
+
+	if (jiffy_gap >= rq_info.rq_poll_jiffies) {
+
+		spin_lock_irqsave(&rq_lock, flags);
+
+		if (!rq_info.rq_avg)
+			rq_info.rq_poll_total_jiffies = 0;
+
+		rq_avg = nr_running() * 10;
+
+		if (rq_info.rq_poll_total_jiffies) {
+			rq_avg = (rq_avg * jiffy_gap) +
+				(rq_info.rq_avg *
+				 rq_info.rq_poll_total_jiffies);
+			do_div(rq_avg,
+			       rq_info.rq_poll_total_jiffies + jiffy_gap);
+		}
+
+		rq_info.rq_avg =  rq_avg;
+		rq_info.rq_poll_total_jiffies += jiffy_gap;
+		rq_info.rq_poll_last_jiffy = jiffies;
+
+		spin_unlock_irqrestore(&rq_lock, flags);
+	}
+}
+
+static void wakeup_user(void)
+{
+	unsigned long jiffy_gap;
+
+	jiffy_gap = jiffies - rq_info.def_timer_last_jiffy;
+
+	if (jiffy_gap >= rq_info.def_timer_jiffies) {
+		rq_info.def_timer_last_jiffy = jiffies;
+		queue_work(rq_wq, &rq_info.def_timer_work);
+	}
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * We rearm the timer until we get disabled by the idle code.
  * Called with interrupts disabled and timer->base->cpu_base->lock held.
@@ -758,6 +1138,25 @@ static enum hrtimer_restart tick_sched_timer(struct hrtimer *timer)
 		}
 		update_process_times(user_mode(regs));
 		profile_tick(CPU_PROFILING);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		if ((rq_info.init == 1) && (tick_do_timer_cpu == cpu)) {
+
+			/*
+			 * update run queue statistics
+			 */
+			update_rq_stats();
+
+			/*
+			 * wakeup user if needed
+			 */
+			wakeup_user();
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	hrtimer_forward(timer, now, tick_period);
@@ -793,10 +1192,21 @@ void tick_setup_sched_timer(void)
 	}
 
 #ifdef CONFIG_NO_HZ
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (tick_nohz_enabled)
+		ts->nohz_mode = NOHZ_MODE_HIGHRES;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tick_nohz_enabled) {
 		ts->nohz_mode = NOHZ_MODE_HIGHRES;
 		printk(KERN_INFO "Switched to NOHz mode on CPU #%d\n", smp_processor_id());
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 #endif /* HIGH_RES_TIMERS */
@@ -811,8 +1221,17 @@ void tick_cancel_sched_timer(int cpu)
 		hrtimer_cancel(&ts->sched_timer);
 # endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ts->nohz_mode = NOHZ_MODE_INACTIVE;
+=======
 /* 	ts->nohz_mode = NOHZ_MODE_INACTIVE; */
 	memset(ts, 0, sizeof(*ts));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* 	ts->nohz_mode = NOHZ_MODE_INACTIVE; */
+	memset(ts, 0, sizeof(*ts));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 

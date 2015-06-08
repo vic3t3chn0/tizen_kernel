@@ -80,6 +80,9 @@ struct nd_opt_hdr {
 } __packed;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline u32 ndisc_hashfn(const void *pkey, const struct net_device *dev, __u32 *hash_rnd)
 {
 	const u32 *p32 = pkey;
@@ -116,8 +119,11 @@ static inline struct neighbour *__ipv6_neigh_lookup(struct neigh_table *tbl, str
 
 	return n;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int			ndisc_init(void);
 
@@ -138,8 +144,11 @@ extern void			ndisc_send_rs(struct net_device *dev,
 extern void			ndisc_send_redirect(struct sk_buff *skb,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 						    struct neighbour *neigh,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						    const struct in6_addr *target);
 
 extern int			ndisc_mc_map(const struct in6_addr *addr, char *buf,
@@ -189,6 +198,8 @@ extern void 			inet6_ifinfo_notify(int event,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline struct neighbour * ndisc_get_neigh(struct net_device *dev, const struct in6_addr *addr)
 {
 
@@ -199,4 +210,5 @@ static inline struct neighbour * ndisc_get_neigh(struct net_device *dev, const s
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

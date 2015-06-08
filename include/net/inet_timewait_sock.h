@@ -20,8 +20,11 @@
 #include <linux/list.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/timer.h>
 #include <linux/types.h>
 #include <linux/workqueue.h>
@@ -34,8 +37,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct inet_hashinfo;
 
@@ -137,8 +144,13 @@ struct inet_timewait_sock {
 				tw_pad		: 6,	/* 6 bits hole */
 				tw_tos		: 8,
 =======
+<<<<<<< HEAD
+				tw_pad		: 6,	/* 6 bits hole */
+				tw_tos		: 8,
+=======
 				tw_pad		: 14,	/* 14 bits hole */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				tw_ipv6_offset  : 16;
 	kmemcheck_bitfield_end(flags);
 	unsigned long		tw_ttd;
@@ -148,7 +160,11 @@ struct inet_timewait_sock {
 <<<<<<< HEAD
 #define tw_tclass tw_tos
 =======
+<<<<<<< HEAD
+#define tw_tclass tw_tos
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void inet_twsk_add_node_rcu(struct inet_timewait_sock *tw,
 				      struct hlist_nulls_head *list)
@@ -236,6 +252,9 @@ struct net *twsk_net(const struct inet_timewait_sock *twsk)
 <<<<<<< HEAD
 	return read_pnet(&twsk->tw_net);
 =======
+<<<<<<< HEAD
+	return read_pnet(&twsk->tw_net);
+=======
 #ifdef CONFIG_NET_NS
 	return rcu_dereference_raw(twsk->tw_net); /* protected by locking, */
 						  /* reference counting, */
@@ -244,6 +263,7 @@ struct net *twsk_net(const struct inet_timewait_sock *twsk)
 	return &init_net;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline
@@ -252,9 +272,13 @@ void twsk_net_set(struct inet_timewait_sock *twsk, struct net *net)
 <<<<<<< HEAD
 	write_pnet(&twsk->tw_net, net);
 =======
+<<<<<<< HEAD
+	write_pnet(&twsk->tw_net, net);
+=======
 #ifdef CONFIG_NET_NS
 	rcu_assign_pointer(twsk->tw_net, net);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif	/* _INET_TIMEWAIT_SOCK_ */

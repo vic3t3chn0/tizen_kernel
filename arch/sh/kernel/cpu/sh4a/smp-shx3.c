@@ -82,8 +82,12 @@ static void shx3_prepare_cpus(unsigned int max_cpus)
 <<<<<<< HEAD
 			    IRQF_PERCPU, "IPI", (void *)(long)i);
 =======
+<<<<<<< HEAD
+			    IRQF_PERCPU, "IPI", (void *)(long)i);
+=======
 			    IRQF_DISABLED | IRQF_PERCPU, "IPI", (void *)(long)i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < max_cpus; i++)
 		set_cpu_present(i, true);

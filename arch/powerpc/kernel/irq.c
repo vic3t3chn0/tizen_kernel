@@ -33,8 +33,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/threads.h>
 #include <linux/kernel_stat.h>
 #include <linux/signal.h>
@@ -63,8 +67,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/pgtable.h>
 #include <asm/irq.h>
@@ -77,7 +84,11 @@
 <<<<<<< HEAD
 #include <asm/debug.h>
 =======
+<<<<<<< HEAD
+#include <asm/debug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC64
 #include <asm/paca.h>
@@ -105,6 +116,9 @@ extern int tau_interrupts(int);
 #ifdef CONFIG_PPC64
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int distribute_irqs = 1;
 
 static inline notrace unsigned long get_irq_happened(void)
@@ -115,6 +129,8 @@ static inline notrace unsigned long get_irq_happened(void)
 	: "=r" (happened) : "i" (offsetof(struct paca_struct, irq_happened)));
 
 	return happened;
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_SPARSE_IRQ
 EXPORT_SYMBOL(irq_desc);
@@ -131,6 +147,7 @@ static inline notrace unsigned long get_hard_enabled(void)
 
 	return enabled;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline notrace void set_soft_enabled(unsigned long enable)
@@ -140,6 +157,9 @@ static inline notrace void set_soft_enabled(unsigned long enable)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline notrace int decrementer_check_overflow(void)
 {
  	u64 now = get_tb_or_rtc();
@@ -315,6 +335,8 @@ void restore_interrupts(void)
 		__hard_irq_enable();
 }
 
+<<<<<<< HEAD
+=======
 =======
 notrace void arch_local_irq_restore(unsigned long en)
 {
@@ -392,6 +414,7 @@ notrace void arch_local_irq_restore(unsigned long en)
 }
 EXPORT_SYMBOL(arch_local_irq_restore);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PPC64 */
 
 int arch_show_interrupts(struct seq_file *p, int prec)
@@ -456,10 +479,15 @@ void migrate_irqs(void)
 	alloc_cpumask_var(&mask, GFP_KERNEL);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_irq_desc(irq, desc) {
 		struct irq_data *data;
 		struct irq_chip *chip;
 
+<<<<<<< HEAD
+=======
 =======
 	for_each_irq(irq) {
 		struct irq_data *data;
@@ -470,6 +498,7 @@ void migrate_irqs(void)
 			continue;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		data = irq_desc_get_irq_data(desc);
 		if (irqd_is_per_cpu(data))
 			continue;
@@ -567,6 +596,9 @@ void do_IRQ(struct pt_regs *regs)
 	check_stack_overflow();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Query the platform PIC for the interrupt & ack it.
 	 *
@@ -581,6 +613,8 @@ void do_IRQ(struct pt_regs *regs)
 	if (irq != NO_IRQ)
 		handle_one_irq(irq);
 	else
+<<<<<<< HEAD
+=======
 =======
 	irq = ppc_md.get_irq();
 
@@ -588,11 +622,14 @@ void do_IRQ(struct pt_regs *regs)
 		handle_one_irq(irq);
 	else if (irq != NO_IRQ_IGNORE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__get_cpu_var(irq_stat).spurious_irqs++;
 
 	irq_exit();
 	set_irq_regs(old_regs);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_PPC_ISERIES
@@ -605,6 +642,7 @@ void do_IRQ(struct pt_regs *regs)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_irq_exit(regs);
 }
 
@@ -686,21 +724,31 @@ static inline void do_softirq_onstack(void)
 <<<<<<< HEAD
 	irqtp->flags = 0;
 =======
+<<<<<<< HEAD
+	irqtp->flags = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	current->thread.ksp_limit = (unsigned long)irqtp +
 				    _ALIGN_UP(sizeof(struct thread_info), 16);
 	call_do_softirq(irqtp);
 	current->thread.ksp_limit = saved_sp_limit;
 	irqtp->task = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Set any flag that may have been set on the
 	 * alternate stack
 	 */
 	if (irqtp->flags)
 		set_bits(irqtp->flags, &curtp->flags);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void do_softirq(void)
@@ -719,6 +767,9 @@ void do_softirq(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 irq_hw_number_t virq_to_hw(unsigned int virq)
 {
 	struct irq_data *irq_data = irq_get_irq_data(virq);
@@ -761,6 +812,8 @@ int irq_choose_cpu(const struct cpumask *mask)
 	return hard_smp_processor_id();
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 /*
@@ -1315,12 +1368,15 @@ void irq_free_virt(unsigned int virq, unsigned int count)
 	raw_spin_unlock_irqrestore(&irq_big_lock, flags);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int arch_early_irq_init(void)
 {
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_VIRQ_DEBUG
@@ -1396,6 +1452,7 @@ __initcall(irq_debugfs_init);
 #endif /* CONFIG_VIRQ_DEBUG */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC64
 static int __init setup_noirqdistrib(char *str)
 {

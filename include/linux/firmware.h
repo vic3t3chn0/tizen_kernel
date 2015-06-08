@@ -3,8 +3,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/compiler.h>
 #include <linux/gfp.h>
@@ -21,7 +24,11 @@ struct firmware {
 <<<<<<< HEAD
 struct module;
 =======
+<<<<<<< HEAD
+struct module;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct device;
 
 struct builtin_fw {
@@ -47,7 +54,12 @@ struct builtin_fw {
 int request_firmware_direct(const char *name, struct device *device,
 			    phys_addr_t addr, size_t size);
 =======
+<<<<<<< HEAD
+int request_firmware_direct(const char *name, struct device *device,
+			    phys_addr_t addr, size_t size);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int request_firmware(const struct firmware **fw, const char *name,
 		     struct device *device);
 int request_firmware_nowait(
@@ -58,14 +70,20 @@ int request_firmware_nowait(
 void release_firmware(const struct firmware *fw);
 #else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int request_firmware_direct(const char *name,
 					  struct device *device,
 					  phys_addr_t addr, size_t size)
 {
 	return -EINVAL;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int request_firmware(const struct firmware **fw,
 				   const char *name,
 				   struct device *device)

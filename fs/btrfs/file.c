@@ -77,8 +77,12 @@ struct inode_defrag {
 <<<<<<< HEAD
 static void __btrfs_add_inode_defrag(struct inode *inode,
 =======
+<<<<<<< HEAD
+static void __btrfs_add_inode_defrag(struct inode *inode,
+=======
 static int __btrfs_add_inode_defrag(struct inode *inode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    struct inode_defrag *defrag)
 {
 	struct btrfs_root *root = BTRFS_I(inode)->root;
@@ -111,11 +115,16 @@ static int __btrfs_add_inode_defrag(struct inode *inode,
 	rb_link_node(&defrag->rb_node, parent, p);
 	rb_insert_color(&defrag->rb_node, &root->fs_info->defrag_inodes);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 
 exists:
 	kfree(defrag);
 	return;
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 
@@ -123,6 +132,7 @@ exists:
 	kfree(defrag);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 }
 
@@ -137,8 +147,11 @@ int btrfs_add_inode_defrag(struct btrfs_trans_handle *trans,
 	struct inode_defrag *defrag;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 transid;
 
 	if (!btrfs_test_opt(root, AUTO_DEFRAG))
@@ -166,16 +179,22 @@ int btrfs_add_inode_defrag(struct btrfs_trans_handle *trans,
 	spin_lock(&root->fs_info->defrag_inodes_lock);
 	if (!BTRFS_I(inode)->in_defrag)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__btrfs_add_inode_defrag(inode, defrag);
 	else
 		kfree(defrag);
 	spin_unlock(&root->fs_info->defrag_inodes_lock);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 		ret = __btrfs_add_inode_defrag(inode, defrag);
 	spin_unlock(&root->fs_info->defrag_inodes_lock);
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -477,8 +496,12 @@ int btrfs_drop_extent_cache(struct inode *inode, u64 start, u64 end,
 <<<<<<< HEAD
 		BUG_ON(!split || !split2); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+		BUG_ON(!split || !split2); /* -ENOMEM */
+=======
 		BUG_ON(!split || !split2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		write_lock(&em_tree->lock);
 		em = lookup_extent_mapping(em_tree, start, len);
@@ -523,8 +546,12 @@ int btrfs_drop_extent_cache(struct inode *inode, u64 start, u64 end,
 <<<<<<< HEAD
 			BUG_ON(ret); /* Logic error */
 =======
+<<<<<<< HEAD
+			BUG_ON(ret); /* Logic error */
+=======
 			BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free_extent_map(split);
 			split = split2;
 			split2 = NULL;
@@ -553,8 +580,12 @@ int btrfs_drop_extent_cache(struct inode *inode, u64 start, u64 end,
 <<<<<<< HEAD
 			BUG_ON(ret); /* Logic error */
 =======
+<<<<<<< HEAD
+			BUG_ON(ret); /* Logic error */
+=======
 			BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free_extent_map(split);
 			split = NULL;
 		}
@@ -604,7 +635,11 @@ int btrfs_drop_extents(struct btrfs_trans_handle *trans, struct inode *inode,
 <<<<<<< HEAD
 	int modify_tree = -1;
 =======
+<<<<<<< HEAD
+	int modify_tree = -1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (drop_cache)
 		btrfs_drop_extent_cache(inode, start, end - 1, 0);
@@ -614,6 +649,9 @@ int btrfs_drop_extents(struct btrfs_trans_handle *trans, struct inode *inode,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (start >= BTRFS_I(inode)->disk_i_size)
 		modify_tree = 0;
 
@@ -621,12 +659,15 @@ int btrfs_drop_extents(struct btrfs_trans_handle *trans, struct inode *inode,
 		recow = 0;
 		ret = btrfs_lookup_file_extent(trans, root, path, ino,
 					       search_start, modify_tree);
+<<<<<<< HEAD
+=======
 =======
 	while (1) {
 		recow = 0;
 		ret = btrfs_lookup_file_extent(trans, root, path, ino,
 					       search_start, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0)
 			break;
 		if (ret > 0 && path->slots[0] > 0 && search_start == start) {
@@ -686,8 +727,13 @@ next_slot:
 		if (recow || !modify_tree) {
 			modify_tree = -1;
 =======
+<<<<<<< HEAD
+		if (recow || !modify_tree) {
+			modify_tree = -1;
+=======
 		if (recow) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			btrfs_release_path(path);
 			continue;
 		}
@@ -735,9 +781,14 @@ next_slot:
 						start - extent_offset, 0);
 				BUG_ON(ret); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+						start - extent_offset, 0);
+				BUG_ON(ret); /* -ENOMEM */
+=======
 						start - extent_offset);
 				BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				*hint_byte = disk_bytenr;
 			}
 			key.offset = start;
@@ -815,9 +866,14 @@ next_slot:
 						extent_offset, 0);
 				BUG_ON(ret); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+						extent_offset, 0);
+				BUG_ON(ret); /* -ENOMEM */
+=======
 						extent_offset);
 				BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				inode_sub_bytes(inode,
 						extent_end - key.offset);
 				*hint_byte = disk_bytenr;
@@ -834,13 +890,19 @@ next_slot:
 			ret = btrfs_del_items(trans, root, path, del_slot,
 					      del_nr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret) {
 				btrfs_abort_transaction(trans, root, ret);
 				goto out;
 			}
+<<<<<<< HEAD
+=======
 =======
 			BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			del_nr = 0;
 			del_slot = 0;
@@ -853,6 +915,9 @@ next_slot:
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ret && del_nr > 0) {
 		ret = btrfs_del_items(trans, root, path, del_slot, del_nr);
 		if (ret)
@@ -860,6 +925,8 @@ next_slot:
 	}
 
 out:
+<<<<<<< HEAD
+=======
 =======
 	if (del_nr > 0) {
 		ret = btrfs_del_items(trans, root, path, del_slot, del_nr);
@@ -867,6 +934,7 @@ out:
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btrfs_free_path(path);
 	return ret;
 }
@@ -940,8 +1008,13 @@ int btrfs_mark_extent_written(struct btrfs_trans_handle *trans,
 	if (!path)
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+	if (!path)
+		return -ENOMEM;
+=======
 	BUG_ON(!path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 again:
 	recow = 0;
 	split = start;
@@ -1029,13 +1102,19 @@ again:
 			goto again;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0) {
 			btrfs_abort_transaction(trans, root, ret);
 			goto out;
 		}
+<<<<<<< HEAD
+=======
 =======
 		BUG_ON(ret < 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		leaf = path->nodes[0];
 		fi = btrfs_item_ptr(leaf, path->slots[0] - 1,
@@ -1057,9 +1136,14 @@ again:
 					   ino, orig_offset, 0);
 		BUG_ON(ret); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+					   ino, orig_offset, 0);
+		BUG_ON(ret); /* -ENOMEM */
+=======
 					   ino, orig_offset);
 		BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (split == start) {
 			key.offset = start;
@@ -1089,9 +1173,14 @@ again:
 					ino, orig_offset, 0);
 		BUG_ON(ret); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+					ino, orig_offset, 0);
+		BUG_ON(ret); /* -ENOMEM */
+=======
 					ino, orig_offset);
 		BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	other_start = 0;
 	other_end = start;
@@ -1111,9 +1200,14 @@ again:
 					ino, orig_offset, 0);
 		BUG_ON(ret); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+					ino, orig_offset, 0);
+		BUG_ON(ret); /* -ENOMEM */
+=======
 					ino, orig_offset);
 		BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (del_nr == 0) {
 		fi = btrfs_item_ptr(leaf, path->slots[0],
@@ -1132,13 +1226,19 @@ again:
 
 		ret = btrfs_del_items(trans, root, path, del_slot, del_nr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0) {
 			btrfs_abort_transaction(trans, root, ret);
 			goto out;
 		}
+<<<<<<< HEAD
+=======
 =======
 		BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 out:
 	btrfs_free_path(path);
@@ -1150,6 +1250,9 @@ out:
  * on success we return a locked page and 0
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int prepare_uptodate_page(struct page *page, u64 pos,
 				 bool force_uptodate)
 {
@@ -1157,6 +1260,8 @@ static int prepare_uptodate_page(struct page *page, u64 pos,
 
 	if (((pos & (PAGE_CACHE_SIZE - 1)) || force_uptodate) &&
 	    !PageUptodate(page)) {
+<<<<<<< HEAD
+=======
 =======
 static int prepare_uptodate_page(struct page *page, u64 pos)
 {
@@ -1164,6 +1269,7 @@ static int prepare_uptodate_page(struct page *page, u64 pos)
 
 	if ((pos & (PAGE_CACHE_SIZE - 1)) && !PageUptodate(page)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = btrfs_readpage(NULL, page);
 		if (ret)
 			return ret;
@@ -1187,8 +1293,12 @@ static noinline int prepare_pages(struct btrfs_root *root, struct file *file,
 <<<<<<< HEAD
 			 size_t write_bytes, bool force_uptodate)
 =======
+<<<<<<< HEAD
+			 size_t write_bytes, bool force_uptodate)
+=======
 			 unsigned long last_index, size_t write_bytes)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct extent_state *cached_state = NULL;
 	int i;
@@ -1197,7 +1307,11 @@ static noinline int prepare_pages(struct btrfs_root *root, struct file *file,
 <<<<<<< HEAD
 	gfp_t mask = btrfs_alloc_write_mask(inode->i_mapping);
 =======
+<<<<<<< HEAD
+	gfp_t mask = btrfs_alloc_write_mask(inode->i_mapping);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0;
 	int faili = 0;
 	u64 start_pos;
@@ -1207,10 +1321,15 @@ static noinline int prepare_pages(struct btrfs_root *root, struct file *file,
 	last_pos = ((u64)index + num_pages) << PAGE_CACHE_SHIFT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 again:
 	for (i = 0; i < num_pages; i++) {
 		pages[i] = find_or_create_page(inode->i_mapping, index + i,
 					       mask | __GFP_WRITE);
+<<<<<<< HEAD
+=======
 =======
 	if (start_pos > inode->i_size) {
 		err = btrfs_cont_expand(inode, i_size_read(inode), start_pos);
@@ -1222,6 +1341,7 @@ again:
 	for (i = 0; i < num_pages; i++) {
 		pages[i] = grab_cache_page(inode->i_mapping, index + i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!pages[i]) {
 			faili = i - 1;
 			err = -ENOMEM;
@@ -1230,17 +1350,23 @@ again:
 
 		if (i == 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = prepare_uptodate_page(pages[i], pos,
 						    force_uptodate);
 		if (i == num_pages - 1)
 			err = prepare_uptodate_page(pages[i],
 						    pos + write_bytes, false);
+<<<<<<< HEAD
+=======
 =======
 			err = prepare_uptodate_page(pages[i], pos);
 		if (i == num_pages - 1)
 			err = prepare_uptodate_page(pages[i],
 						    pos + write_bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err) {
 			page_cache_release(pages[i]);
 			faili = i - 1;
@@ -1255,9 +1381,13 @@ again:
 <<<<<<< HEAD
 				 start_pos, last_pos - 1, 0, &cached_state);
 =======
+<<<<<<< HEAD
+				 start_pos, last_pos - 1, 0, &cached_state);
+=======
 				 start_pos, last_pos - 1, 0, &cached_state,
 				 GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ordered = btrfs_lookup_first_ordered_extent(inode,
 							    last_pos - 1);
 		if (ordered &&
@@ -1291,8 +1421,13 @@ again:
 		if (clear_page_dirty_for_io(pages[i]))
 			account_page_redirty(pages[i]);
 =======
+<<<<<<< HEAD
+		if (clear_page_dirty_for_io(pages[i]))
+			account_page_redirty(pages[i]);
+=======
 		clear_page_dirty_for_io(pages[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_page_extent_mapped(pages[i]);
 		WARN_ON(!PageLocked(pages[i]));
 	}
@@ -1316,16 +1451,22 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 	struct page **pages = NULL;
 	unsigned long first_index;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t num_written = 0;
 	int nrptrs;
 	int ret = 0;
 	bool force_page_uptodate = false;
+<<<<<<< HEAD
+=======
 =======
 	unsigned long last_index;
 	size_t num_written = 0;
 	int nrptrs;
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nrptrs = min((iov_iter_count(i) + PAGE_CACHE_SIZE - 1) /
 		     PAGE_CACHE_SIZE, PAGE_CACHE_SIZE /
@@ -1334,7 +1475,12 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 	nrptrs = min(nrptrs, current->nr_dirtied_pause - current->nr_dirtied);
 	nrptrs = max(nrptrs, 8);
 =======
+<<<<<<< HEAD
+	nrptrs = min(nrptrs, current->nr_dirtied_pause - current->nr_dirtied);
+	nrptrs = max(nrptrs, 8);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pages = kmalloc(nrptrs * sizeof(struct page *), GFP_KERNEL);
 	if (!pages)
 		return -ENOMEM;
@@ -1342,8 +1488,11 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 	first_index = pos >> PAGE_CACHE_SHIFT;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	last_index = (pos + iov_iter_count(i)) >> PAGE_CACHE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (iov_iter_count(i) > 0) {
 		size_t offset = pos & (PAGE_CACHE_SIZE - 1);
@@ -1381,9 +1530,14 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 				    pos, first_index, write_bytes,
 				    force_page_uptodate);
 =======
+<<<<<<< HEAD
+				    pos, first_index, write_bytes,
+				    force_page_uptodate);
+=======
 				    pos, first_index, last_index,
 				    write_bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret) {
 			btrfs_delalloc_release_space(inode,
 					num_pages << PAGE_CACHE_SHIFT);
@@ -1401,6 +1555,9 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 			nrptrs = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (copied == 0) {
 			force_page_uptodate = true;
 			dirty_pages = 0;
@@ -1410,6 +1567,8 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 				       PAGE_CACHE_SIZE - 1) >>
 				       PAGE_CACHE_SHIFT;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (copied == 0)
 			dirty_pages = 0;
@@ -1418,6 +1577,7 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 				       PAGE_CACHE_SIZE - 1) >>
 				       PAGE_CACHE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * If we had a short copy we need to release the excess delaloc
@@ -1428,16 +1588,22 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 		 */
 		if (num_pages > dirty_pages) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (copied > 0) {
 				spin_lock(&BTRFS_I(inode)->lock);
 				BTRFS_I(inode)->outstanding_extents++;
 				spin_unlock(&BTRFS_I(inode)->lock);
 			}
+<<<<<<< HEAD
+=======
 =======
 			if (copied > 0)
 				atomic_inc(
 					&BTRFS_I(inode)->outstanding_extents);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			btrfs_delalloc_release_space(inode,
 					(num_pages - dirty_pages) <<
 					PAGE_CACHE_SHIFT);
@@ -1465,8 +1631,11 @@ static noinline ssize_t __btrfs_buffered_write(struct file *file,
 			btrfs_btree_balance_dirty(root, 1);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		btrfs_throttle(root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		pos += copied;
 		num_written += copied;
@@ -1539,7 +1708,11 @@ static ssize_t btrfs_file_aio_write(struct kiocb *iocb,
 <<<<<<< HEAD
 	u64 start_pos;
 =======
+<<<<<<< HEAD
+	u64 start_pos;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ssize_t num_written = 0;
 	ssize_t err = 0;
 	size_t count, ocount;
@@ -1586,6 +1759,9 @@ static ssize_t btrfs_file_aio_write(struct kiocb *iocb,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = btrfs_update_time(file);
 	if (err) {
 		mutex_unlock(&inode->i_mutex);
@@ -1602,11 +1778,14 @@ static ssize_t btrfs_file_aio_write(struct kiocb *iocb,
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	file_update_time(file);
 	BTRFS_I(inode)->sequence++;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(file->f_flags & O_DIRECT)) {
 		num_written = __btrfs_direct_write(iocb, iov, nr_segs,
 						   pos, ppos, count, ocount);
@@ -1678,8 +1857,12 @@ int btrfs_release_file(struct inode *inode, struct file *filp)
 <<<<<<< HEAD
 int btrfs_sync_file(struct file *file, loff_t start, loff_t end, int datasync)
 =======
+<<<<<<< HEAD
+int btrfs_sync_file(struct file *file, loff_t start, loff_t end, int datasync)
+=======
 int btrfs_sync_file(struct file *file, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dentry *dentry = file->f_path.dentry;
 	struct inode *inode = dentry->d_inode;
@@ -1690,6 +1873,9 @@ int btrfs_sync_file(struct file *file, int datasync)
 	trace_btrfs_sync_file(file, datasync);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = filemap_write_and_wait_range(inode->i_mapping, start, end);
 	if (ret)
 		return ret;
@@ -1697,11 +1883,14 @@ int btrfs_sync_file(struct file *file, int datasync)
 
 	/* we wait first, since the writeback may change the inode */
 	root->log_batch++;
+<<<<<<< HEAD
+=======
 =======
 	/* we wait first, since the writeback may change the inode */
 	root->log_batch++;
 	/* the VFS called filemap_fdatawrite for us */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btrfs_wait_ordered_range(inode, 0, (u64)-1);
 	root->log_batch++;
 
@@ -1710,14 +1899,20 @@ int btrfs_sync_file(struct file *file, int datasync)
 	 * and see if its already been committed
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!BTRFS_I(inode)->last_trans) {
 		mutex_unlock(&inode->i_mutex);
 		goto out;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!BTRFS_I(inode)->last_trans)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * if the last transaction that changed this file was before
@@ -1731,7 +1926,11 @@ int btrfs_sync_file(struct file *file, int datasync)
 <<<<<<< HEAD
 		mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+		mutex_unlock(&inode->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -1747,20 +1946,30 @@ int btrfs_sync_file(struct file *file, int datasync)
 <<<<<<< HEAD
 		mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+		mutex_unlock(&inode->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
 	ret = btrfs_log_dentry_safe(trans, root, dentry);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		mutex_unlock(&inode->i_mutex);
 		goto out;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (ret < 0)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* we've logged all the items and now have a consistent
 	 * version of the file in the log.  It is possible that
@@ -1775,8 +1984,12 @@ int btrfs_sync_file(struct file *file, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&inode->i_mutex);
+=======
 	mutex_unlock(&dentry->d_inode->i_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret != BTRFS_NO_LOG_SYNC) {
 		if (ret > 0) {
@@ -1793,8 +2006,11 @@ int btrfs_sync_file(struct file *file, int datasync)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_lock(&dentry->d_inode->i_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return ret > 0 ? -EIO : ret;
 }
@@ -1842,6 +2058,9 @@ static long btrfs_fallocate(struct file *file, int mode,
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Make sure we have enough space before we do the
 	 * allocation.
 	 */
@@ -1850,8 +2069,11 @@ static long btrfs_fallocate(struct file *file, int mode,
 		return ret;
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * wait for ordered IO before we have any locks.  We'll loop again
 	 * below with the locks held.
 	 */
@@ -1871,11 +2093,14 @@ static long btrfs_fallocate(struct file *file, int mode,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ret = btrfs_check_data_free_space(inode, alloc_end - alloc_start);
 	if (ret)
 		goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	locked_end = alloc_end - 1;
 	while (1) {
 		struct btrfs_ordered_extent *ordered;
@@ -1887,8 +2112,12 @@ static long btrfs_fallocate(struct file *file, int mode,
 <<<<<<< HEAD
 				 locked_end, 0, &cached_state);
 =======
+<<<<<<< HEAD
+				 locked_end, 0, &cached_state);
+=======
 				 locked_end, 0, &cached_state, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ordered = btrfs_lookup_first_ordered_extent(inode,
 							    alloc_end - 1);
 		if (ordered &&
@@ -1914,6 +2143,9 @@ static long btrfs_fallocate(struct file *file, int mode,
 	cur_offset = alloc_start;
 	while (1) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u64 actual_end;
 
 		em = btrfs_get_extent(inode, NULL, 0, cur_offset,
@@ -1929,6 +2161,8 @@ static long btrfs_fallocate(struct file *file, int mode,
 		actual_end = min_t(u64, extent_map_end(em), offset + len);
 		last_byte = (last_byte + mask) & ~mask;
 
+<<<<<<< HEAD
+=======
 =======
 		em = btrfs_get_extent(inode, NULL, 0, cur_offset,
 				      alloc_end - cur_offset, 0);
@@ -1936,6 +2170,7 @@ static long btrfs_fallocate(struct file *file, int mode,
 		last_byte = min(extent_map_end(em), alloc_end);
 		last_byte = (last_byte + mask) & ~mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (em->block_start == EXTENT_MAP_HOLE ||
 		    (cur_offset >= inode->i_size &&
 		     !test_bit(EXTENT_FLAG_PREALLOC, &em->flags))) {
@@ -1947,12 +2182,19 @@ static long btrfs_fallocate(struct file *file, int mode,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret < 0) {
 				free_extent_map(em);
 				break;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (actual_end > inode->i_size &&
 			   !(mode & FALLOC_FL_KEEP_SIZE)) {
 			/*
@@ -1963,8 +2205,11 @@ static long btrfs_fallocate(struct file *file, int mode,
 			inode->i_ctime = CURRENT_TIME;
 			i_size_write(inode, actual_end);
 			btrfs_ordered_update_i_size(inode, actual_end, NULL);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		free_extent_map(em);
 
@@ -1977,6 +2222,9 @@ static long btrfs_fallocate(struct file *file, int mode,
 	unlock_extent_cached(&BTRFS_I(inode)->io_tree, alloc_start, locked_end,
 			     &cached_state, GFP_NOFS);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	mutex_unlock(&inode->i_mutex);
 	/* Let go of our reservation. */
@@ -2141,6 +2389,8 @@ out:
 
 const struct file_operations btrfs_file_operations = {
 	.llseek		= btrfs_file_llseek,
+<<<<<<< HEAD
+=======
 =======
 
 	btrfs_free_reserved_data_space(inode, alloc_end - alloc_start);
@@ -2152,6 +2402,7 @@ out:
 const struct file_operations btrfs_file_operations = {
 	.llseek		= generic_file_llseek,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read		= do_sync_read,
 	.write		= do_sync_write,
 	.aio_read       = generic_file_aio_read,

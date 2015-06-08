@@ -615,6 +615,13 @@ do_sas_phy_reset(struct device *dev, size_t count, int hard_reset)
 	error = i->f->phy_reset(phy, hard_reset);
 	if (error)
 		return error;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	phy->enabled = 1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return count;
 };
 
@@ -652,9 +659,33 @@ sas_phy_linkerror_attr(running_disparity_error_count);
 sas_phy_linkerror_attr(loss_of_dword_sync_count);
 sas_phy_linkerror_attr(phy_reset_problem_count);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sas_phy_setup(struct transport_container *tc, struct device *dev,
+			 struct device *cdev)
+{
+	struct sas_phy *phy = dev_to_phy(dev);
+	struct Scsi_Host *shost = dev_to_shost(phy->dev.parent);
+	struct sas_internal *i = to_sas_internal(shost->transportt);
+
+	if (i->f->phy_setup)
+		i->f->phy_setup(phy);
+
+	return 0;
+}
+
+static DECLARE_TRANSPORT_CLASS(sas_phy_class,
+		"sas_phy", sas_phy_setup, NULL, NULL);
+=======
 
 static DECLARE_TRANSPORT_CLASS(sas_phy_class,
 		"sas_phy", NULL, NULL, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+static DECLARE_TRANSPORT_CLASS(sas_phy_class,
+		"sas_phy", NULL, NULL, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int sas_phy_match(struct attribute_container *cont, struct device *dev)
 {
@@ -678,7 +709,19 @@ static int sas_phy_match(struct attribute_container *cont, struct device *dev)
 static void sas_phy_release(struct device *dev)
 {
 	struct sas_phy *phy = dev_to_phy(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct Scsi_Host *shost = dev_to_shost(phy->dev.parent);
+	struct sas_internal *i = to_sas_internal(shost->transportt);
 
+	if (i->f->phy_release)
+		i->f->phy_release(phy);
+=======
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	put_device(dev->parent);
 	kfree(phy);
 }
@@ -1044,6 +1087,35 @@ int scsi_is_sas_port(const struct device *dev)
 EXPORT_SYMBOL(scsi_is_sas_port);
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * sas_port_get_phy - try to take a reference on a port member
+ * @port: port to check
+ */
+struct sas_phy *sas_port_get_phy(struct sas_port *port)
+{
+	struct sas_phy *phy;
+
+	mutex_lock(&port->phy_list_mutex);
+	if (list_empty(&port->phy_list))
+		phy = NULL;
+	else {
+		struct list_head *ent = port->phy_list.next;
+
+		phy = list_entry(ent, typeof(*phy), port_siblings);
+		get_device(&phy->dev);
+	}
+	mutex_unlock(&port->phy_list_mutex);
+
+	return phy;
+}
+EXPORT_SYMBOL(sas_port_get_phy);
+
+/**
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * sas_port_add_phy - add another phy to a port to form a wide port
  * @port:	port to add the phy to
  * @phy:	phy to add
@@ -1545,8 +1617,24 @@ int sas_rphy_add(struct sas_rphy *rphy)
 
 	if (identify->device_type == SAS_END_DEVICE &&
 	    rphy->scsi_target_id != -1) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		int lun;
+
+		if (identify->target_port_protocols & SAS_PROTOCOL_SSP)
+			lun = SCAN_WILD_CARD;
+		else
+			lun = 0;
+
+		scsi_scan_target(&rphy->dev, 0, rphy->scsi_target_id, lun, 0);
+=======
 		scsi_scan_target(&rphy->dev, 0,
 				rphy->scsi_target_id, SCAN_WILD_CARD, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		scsi_scan_target(&rphy->dev, 0,
+				rphy->scsi_target_id, SCAN_WILD_CARD, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -1597,6 +1685,26 @@ sas_rphy_delete(struct sas_rphy *rphy)
 EXPORT_SYMBOL(sas_rphy_delete);
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * sas_rphy_unlink  -  unlink SAS remote PHY
+ * @rphy:	SAS remote phy to unlink from its parent port
+ *
+ * Removes port reference to an rphy
+ */
+void sas_rphy_unlink(struct sas_rphy *rphy)
+{
+	struct sas_port *parent = dev_to_sas_port(rphy->dev.parent);
+
+	parent->rphy = NULL;
+}
+EXPORT_SYMBOL(sas_rphy_unlink);
+
+/**
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * sas_rphy_remove  -  remove SAS remote PHY
  * @rphy:	SAS remote phy to remove
  *
@@ -1606,7 +1714,14 @@ void
 sas_rphy_remove(struct sas_rphy *rphy)
 {
 	struct device *dev = &rphy->dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct sas_port *parent = dev_to_sas_port(dev->parent);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct sas_port *parent = dev_to_sas_port(dev->parent);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (rphy->identify.device_type) {
 	case SAS_END_DEVICE:
@@ -1620,10 +1735,22 @@ sas_rphy_remove(struct sas_rphy *rphy)
 		break;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sas_rphy_unlink(rphy);
+	transport_remove_device(dev);
+	device_del(dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	transport_remove_device(dev);
 	device_del(dev);
 
 	parent->rphy = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(sas_rphy_remove);
 

@@ -16,6 +16,15 @@
  * Example maximum bandwidth utilization:
  *
  * -full size, color mode YUYV or YUV422P: 2 channels at once
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * -full or half size Grey scale: all 4 channels at once
+ * -half size, color mode YUYV or YUV422P: all 4 channels at once
+ * -full size, color mode YUYV or YUV422P 1/2 frame rate: all 4 channels
+ *  at once.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * -full or half size Grey scale: all 4 channels at once
  *
@@ -25,6 +34,10 @@
  *  at once.
  *  (TODO: Incorporate videodev2 frame rate(FR) enumeration,
  *  which is currently experimental.)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,7 +60,14 @@
 #include <linux/mutex.h>
 #include <linux/slab.h>
 #include <linux/videodev2.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <media/videobuf-vmalloc.h>
 #include <media/v4l2-common.h>
@@ -56,12 +76,22 @@
 #include <linux/vmalloc.h>
 #include <linux/usb.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define S2255_VERSION		"1.22.1"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S2255_MAJOR_VERSION	1
 #define S2255_MINOR_VERSION	21
 #define S2255_RELEASE		0
 #define S2255_VERSION		KERNEL_VERSION(S2255_MAJOR_VERSION, \
 					       S2255_MINOR_VERSION, \
 					       S2255_RELEASE)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FIRMWARE_FILE_NAME "f2255usb.bin"
 
 /* default JPEG quality */
@@ -126,7 +156,15 @@
 #define MASK_COLOR       0x000000ff
 #define MASK_JPG_QUALITY 0x0000ff00
 #define MASK_INPUT_TYPE  0x000f0000
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* frame decimation. */
+=======
 /* frame decimation. Not implemented by V4L yet(experimental in V4L) */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* frame decimation. Not implemented by V4L yet(experimental in V4L) */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FDEC_1		1	/* capture every frame. default */
 #define FDEC_2		2	/* capture every 2nd frame */
 #define FDEC_3		3	/* capture every 3rd frame */
@@ -145,7 +183,15 @@
 
 /* usb config commands */
 #define IN_DATA_TOKEN	cpu_to_le32(0x2255c0de)
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define CMD_2255	0xc2255000
+=======
 #define CMD_2255	cpu_to_le32(0xc2255000)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define CMD_2255	cpu_to_le32(0xc2255000)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CMD_SET_MODE	cpu_to_le32((CMD_2255 | 0x10))
 #define CMD_START	cpu_to_le32((CMD_2255 | 0x20))
 #define CMD_STOP	cpu_to_le32((CMD_2255 | 0x30))
@@ -312,9 +358,21 @@ struct s2255_fh {
 };
 
 /* current cypress EEPROM firmware version */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define S2255_CUR_USB_FWVER	((3 << 8) | 12)
+/* current DSP FW version */
+#define S2255_CUR_DSP_FWVER     10104
+=======
 #define S2255_CUR_USB_FWVER	((3 << 8) | 11)
 /* current DSP FW version */
 #define S2255_CUR_DSP_FWVER     10102
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define S2255_CUR_USB_FWVER	((3 << 8) | 11)
+/* current DSP FW version */
+#define S2255_CUR_DSP_FWVER     10102
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Need DSP version 5+ for video status feature */
 #define S2255_MIN_DSP_STATUS      5
 #define S2255_MIN_DSP_COLORFILTER 8
@@ -502,7 +560,15 @@ static void planar422p_to_yuv_packed(const unsigned char *in,
 
 static void s2255_reset_dsppower(struct s2255_dev *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	s2255_vendor_req(dev, 0x40, 0x0000, 0x0001, NULL, 0, 1);
+=======
 	s2255_vendor_req(dev, 0x40, 0x0b0b, 0x0b01, NULL, 0, 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	s2255_vendor_req(dev, 0x40, 0x0b0b, 0x0b01, NULL, 0, 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msleep(10);
 	s2255_vendor_req(dev, 0x50, 0x0000, 0x0000, NULL, 0, 1);
 	msleep(600);
@@ -856,7 +922,14 @@ static int vidioc_querycap(struct file *file, void *priv,
 	strlcpy(cap->driver, "s2255", sizeof(cap->driver));
 	strlcpy(cap->card, "s2255", sizeof(cap->card));
 	usb_make_path(dev->udev, cap->bus_info, sizeof(cap->bus_info));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	cap->version = S2255_VERSION;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cap->version = S2255_VERSION;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap->capabilities = V4L2_CAP_VIDEO_CAPTURE | V4L2_CAP_STREAMING;
 	return 0;
 }
@@ -864,6 +937,18 @@ static int vidioc_querycap(struct file *file, void *priv,
 static int vidioc_enum_fmt_vid_cap(struct file *file, void *priv,
 			       struct v4l2_fmtdesc *f)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int index = f->index;
+
+	if (index >= ARRAY_SIZE(formats))
+		return -EINVAL;
+	if (!jpeg_enable && ((formats[index].fourcc == V4L2_PIX_FMT_JPEG) ||
+			(formats[index].fourcc == V4L2_PIX_FMT_MJPEG)))
+		return -EINVAL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int index = 0;
 	if (f)
 		index = f->index;
@@ -873,6 +958,10 @@ static int vidioc_enum_fmt_vid_cap(struct file *file, void *priv,
     if (!jpeg_enable && ((formats[index].fourcc == V4L2_PIX_FMT_JPEG) ||
 			 (formats[index].fourcc == V4L2_PIX_FMT_MJPEG)))
 	return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk(4, "name %s\n", formats[index].name);
 	strlcpy(f->description, formats[index].name, sizeof(f->description));
 	f->pixelformat = formats[index].fourcc;
@@ -1984,9 +2073,20 @@ static int s2255_probe_v4l(struct s2255_dev *dev)
 			  video_device_node_name(&channel->vdev));
 
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	printk(KERN_INFO "Sensoray 2255 V4L driver Revision: %s\n",
+	       S2255_VERSION);
+=======
 	printk(KERN_INFO "Sensoray 2255 V4L driver Revision: %d.%d\n",
 	       S2255_MAJOR_VERSION,
 	       S2255_MINOR_VERSION);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "Sensoray 2255 V4L driver Revision: %d.%d\n",
+	       S2255_MAJOR_VERSION,
+	       S2255_MINOR_VERSION);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* if no channels registered, return error and probe will fail*/
 	if (atomic_read(&dev->num_channels) == 0) {
 		v4l2_device_unregister(&dev->v4l2_dev);
@@ -2040,7 +2140,15 @@ static int save_frame(struct s2255_dev *dev, struct s2255_pipeinfo *pipe_info)
 					pdata[1]);
 				offset = jj + PREFIX_SIZE;
 				bframe = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+				cc = le32_to_cpu(pdword[1]);
+=======
 				cc = pdword[1];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				cc = pdword[1];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (cc >= MAX_CHANNELS) {
 					printk(KERN_ERR
 					       "bad channel\n");
@@ -2049,22 +2157,50 @@ static int save_frame(struct s2255_dev *dev, struct s2255_pipeinfo *pipe_info)
 				/* reverse it */
 				dev->cc = G_chnmap[cc];
 				channel = &dev->channel[dev->cc];
+<<<<<<< HEAD
+<<<<<<< HEAD
+				payload =  le32_to_cpu(pdword[3]);
+=======
 				payload =  pdword[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				payload =  pdword[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (payload > channel->req_image_size) {
 					channel->bad_payload++;
 					/* discard the bad frame */
 					return -EINVAL;
 				}
 				channel->pkt_size = payload;
+<<<<<<< HEAD
+<<<<<<< HEAD
+				channel->jpg_size = le32_to_cpu(pdword[4]);
+=======
 				channel->jpg_size = pdword[4];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				channel->jpg_size = pdword[4];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			case S2255_MARKER_RESPONSE:
 
 				pdata += DEF_USB_BLOCK;
 				jj += DEF_USB_BLOCK;
+<<<<<<< HEAD
+<<<<<<< HEAD
+				if (le32_to_cpu(pdword[1]) >= MAX_CHANNELS)
+					break;
+				cc = G_chnmap[le32_to_cpu(pdword[1])];
+=======
 				if (pdword[1] >= MAX_CHANNELS)
 					break;
 				cc = G_chnmap[pdword[1]];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				if (pdword[1] >= MAX_CHANNELS)
+					break;
+				cc = G_chnmap[pdword[1]];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (cc >= MAX_CHANNELS)
 					break;
 				channel = &dev->channel[cc];
@@ -2087,11 +2223,25 @@ static int save_frame(struct s2255_dev *dev, struct s2255_pipeinfo *pipe_info)
 					wake_up(&dev->fw_data->wait_fw);
 					break;
 				case S2255_RESPONSE_STATUS:
+<<<<<<< HEAD
+<<<<<<< HEAD
+					channel->vidstatus = le32_to_cpu(pdword[3]);
+					channel->vidstatus_ready = 1;
+					wake_up(&channel->wait_vidstatus);
+					dprintk(5, "got vidstatus %x chan %d\n",
+						le32_to_cpu(pdword[3]), cc);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					channel->vidstatus = pdword[3];
 					channel->vidstatus_ready = 1;
 					wake_up(&channel->wait_vidstatus);
 					dprintk(5, "got vidstatus %x chan %d\n",
 						pdword[3], cc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					break;
 				default:
 					printk(KERN_INFO "s2255 unknown resp\n");
@@ -2302,15 +2452,33 @@ static int s2255_board_init(struct s2255_dev *dev)
 	/* query the firmware */
 	fw_ver = s2255_get_fx2fw(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	printk(KERN_INFO "s2255: usb firmware version %d.%d\n",
+=======
 	printk(KERN_INFO "2255 usb firmware version %d.%d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "2255 usb firmware version %d.%d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       (fw_ver >> 8) & 0xff,
 	       fw_ver & 0xff);
 
 	if (fw_ver < S2255_CUR_USB_FWVER)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_INFO "s2255: newer USB firmware available\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(&dev->udev->dev,
 			"usb firmware not up to date %d.%d\n",
 			(fw_ver >> 8) & 0xff,
 			fw_ver & 0xff);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (j = 0; j < MAX_CHANNELS; j++) {
 		struct s2255_channel *channel = &dev->channel[j];
@@ -2621,10 +2789,24 @@ static int s2255_probe(struct usb_interface *interface,
 		__le32 *pRel;
 		pRel = (__le32 *) &dev->fw_data->fw->data[fw_size - 4];
 		printk(KERN_INFO "s2255 dsp fw version %x\n", *pRel);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev->dsp_fw_ver = le32_to_cpu(*pRel);
+		if (dev->dsp_fw_ver < S2255_CUR_DSP_FWVER)
+			printk(KERN_INFO "s2255: f2255usb.bin out of date.\n");
+		if (dev->pid == 0x2257 &&
+				dev->dsp_fw_ver < S2255_MIN_DSP_COLORFILTER)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev->dsp_fw_ver = *pRel;
 		if (*pRel < S2255_CUR_DSP_FWVER)
 			printk(KERN_INFO "s2255: f2255usb.bin out of date.\n");
 		if (dev->pid == 0x2257 && *pRel < S2255_MIN_DSP_COLORFILTER)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_WARNING "s2255: 2257 requires firmware %d"
 			       " or above.\n", S2255_MIN_DSP_COLORFILTER);
 	}
@@ -2698,6 +2880,12 @@ static struct usb_driver s2255_driver = {
 	.id_table = s2255_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(s2255_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init usb_s2255_init(void)
 {
 	int result;
@@ -2717,7 +2905,18 @@ static void __exit usb_s2255_exit(void)
 
 module_init(usb_s2255_init);
 module_exit(usb_s2255_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Sensoray 2255 Video for Linux driver");
 MODULE_AUTHOR("Dean Anderson (Sensoray Company Inc.)");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_VERSION(S2255_VERSION);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

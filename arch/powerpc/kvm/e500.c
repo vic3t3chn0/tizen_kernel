@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2008-2011 Freescale Semiconductor, Inc. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2008-2011 Freescale Semiconductor, Inc. All rights reserved.
+=======
  * Copyright (C) 2008 Freescale Semiconductor, Inc. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author: Yu Liu, <yu.liu@freescale.com>
  *
@@ -22,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/reg.h>
 #include <asm/cputable.h>
@@ -50,13 +58,19 @@ void kvmppc_core_vcpu_put(struct kvm_vcpu *vcpu)
 {
 	kvmppc_e500_tlb_put(vcpu);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SPE
 	if (vcpu->arch.shadow_msr & MSR_SPE)
 		kvmppc_vcpu_disable_spe(vcpu);
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int kvmppc_core_check_processor_compat(void)
@@ -84,9 +98,13 @@ int kvmppc_core_vcpu_setup(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 	vcpu->arch.cpu_type = KVM_CPU_E500V2;
 =======
+<<<<<<< HEAD
+	vcpu->arch.cpu_type = KVM_CPU_E500V2;
+=======
 	/* Since booke kvm only support one core, update all vcpus' PIR to 0 */
 	vcpu->vcpu_id = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -131,12 +149,17 @@ void kvmppc_core_get_sregs(struct kvm_vcpu *vcpu, struct kvm_sregs *sregs)
 	sregs->u.e.impl.fsl.mcar = vcpu_e500->mcar;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sregs->u.e.mas0 = vcpu->arch.shared->mas0;
 	sregs->u.e.mas1 = vcpu->arch.shared->mas1;
 	sregs->u.e.mas2 = vcpu->arch.shared->mas2;
 	sregs->u.e.mas7_3 = vcpu->arch.shared->mas7_3;
 	sregs->u.e.mas4 = vcpu->arch.shared->mas4;
 	sregs->u.e.mas6 = vcpu->arch.shared->mas6;
+<<<<<<< HEAD
+=======
 =======
 	sregs->u.e.mas0 = vcpu_e500->mas0;
 	sregs->u.e.mas1 = vcpu_e500->mas1;
@@ -145,6 +168,7 @@ void kvmppc_core_get_sregs(struct kvm_vcpu *vcpu, struct kvm_sregs *sregs)
 	sregs->u.e.mas4 = vcpu_e500->mas4;
 	sregs->u.e.mas6 = vcpu_e500->mas6;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sregs->u.e.mmucfg = mfspr(SPRN_MMUCFG);
 	sregs->u.e.tlbcfg[0] = vcpu_e500->tlb0cfg;
@@ -173,12 +197,17 @@ int kvmppc_core_set_sregs(struct kvm_vcpu *vcpu, struct kvm_sregs *sregs)
 
 	if (sregs->u.e.features & KVM_SREGS_E_ARCH206_MMU) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		vcpu->arch.shared->mas0 = sregs->u.e.mas0;
 		vcpu->arch.shared->mas1 = sregs->u.e.mas1;
 		vcpu->arch.shared->mas2 = sregs->u.e.mas2;
 		vcpu->arch.shared->mas7_3 = sregs->u.e.mas7_3;
 		vcpu->arch.shared->mas4 = sregs->u.e.mas4;
 		vcpu->arch.shared->mas6 = sregs->u.e.mas6;
+<<<<<<< HEAD
+=======
 =======
 		vcpu_e500->mas0 = sregs->u.e.mas0;
 		vcpu_e500->mas1 = sregs->u.e.mas1;
@@ -188,6 +217,7 @@ int kvmppc_core_set_sregs(struct kvm_vcpu *vcpu, struct kvm_sregs *sregs)
 		vcpu_e500->mas4 = sregs->u.e.mas4;
 		vcpu_e500->mas6 = sregs->u.e.mas6;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!(sregs->u.e.features & KVM_SREGS_E_IVOR))
@@ -264,12 +294,18 @@ static int __init kvmppc_e500_init(void)
 	unsigned long max_ivor = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = kvmppc_core_check_processor_compat();
 	if (r)
 		return r;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = kvmppc_booke_init();
 	if (r)
 		return r;

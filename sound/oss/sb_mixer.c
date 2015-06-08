@@ -235,8 +235,12 @@ static int detect_mixer(sb_devc * devc)
 <<<<<<< HEAD
 static void oss_change_bits(sb_devc *devc, unsigned char *regval, int dev, int chn, int newval)
 =======
+<<<<<<< HEAD
+static void oss_change_bits(sb_devc *devc, unsigned char *regval, int dev, int chn, int newval)
+=======
 static void change_bits(sb_devc * devc, unsigned char *regval, int dev, int chn, int newval)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned char mask;
 	int shift;
@@ -291,8 +295,12 @@ int sb_common_mixer_set(sb_devc * devc, int dev, int left, int right)
 <<<<<<< HEAD
 	oss_change_bits(devc, &val, dev, LEFT_CHN, left);
 =======
+<<<<<<< HEAD
+	oss_change_bits(devc, &val, dev, LEFT_CHN, left);
+=======
 	change_bits(devc, &val, dev, LEFT_CHN, left);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((*devc->iomap)[dev][RIGHT_CHN].regno != regoffs)	/*
 								 * Change register
@@ -315,8 +323,12 @@ int sb_common_mixer_set(sb_devc * devc, int dev, int left, int right)
 <<<<<<< HEAD
 	oss_change_bits(devc, &val, dev, RIGHT_CHN, right);
 =======
+<<<<<<< HEAD
+	oss_change_bits(devc, &val, dev, RIGHT_CHN, right);
+=======
 	change_bits(devc, &val, dev, RIGHT_CHN, right);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sb_setmixer(devc, regoffs, val);
 

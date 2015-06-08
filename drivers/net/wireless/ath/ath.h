@@ -152,6 +152,13 @@ struct ath_common {
 	struct ath_cycle_counters cc_survey;
 
 	struct ath_regulatory regulatory;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath_regulatory reg_world_copy;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct ath_ops *ops;
 	const struct ath_bus_ops *bus_ops;
 
@@ -173,6 +180,29 @@ bool ath_hw_keyreset(struct ath_common *common, u16 entry);
 void ath_hw_cycle_counters_update(struct ath_common *common);
 int32_t ath_hw_get_listen_time(struct ath_common *common);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+__printf(3, 4)
+void ath_printk(const char *level, const struct ath_common *common,
+		const char *fmt, ...);
+
+#define ath_emerg(common, fmt, ...)				\
+	ath_printk(KERN_EMERG, common, fmt, ##__VA_ARGS__)
+#define ath_alert(common, fmt, ...)				\
+	ath_printk(KERN_ALERT, common, fmt, ##__VA_ARGS__)
+#define ath_crit(common, fmt, ...)				\
+	ath_printk(KERN_CRIT, common, fmt, ##__VA_ARGS__)
+#define ath_err(common, fmt, ...)				\
+	ath_printk(KERN_ERR, common, fmt, ##__VA_ARGS__)
+#define ath_warn(common, fmt, ...)				\
+	ath_printk(KERN_WARNING, common, fmt, ##__VA_ARGS__)
+#define ath_notice(common, fmt, ...)				\
+	ath_printk(KERN_NOTICE, common, fmt, ##__VA_ARGS__)
+#define ath_info(common, fmt, ...)				\
+	ath_printk(KERN_INFO, common, fmt, ##__VA_ARGS__)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __printf(2, 3) void ath_printk(const char *level, const char *fmt, ...);
 
 #define _ath_printk(level, common, fmt, ...)			\
@@ -195,6 +225,10 @@ do {								\
 	_ath_printk(KERN_NOTICE, common, fmt, ##__VA_ARGS__)
 #define ath_info(common, fmt, ...)				\
 	_ath_printk(KERN_INFO, common, fmt, ##__VA_ARGS__)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * enum ath_debug_level - atheros wireless debug level
@@ -214,6 +248,16 @@ do {								\
  * @ATH_DBG_HWTIMER: hardware timer handling
  * @ATH_DBG_BTCOEX: bluetooth coexistance
  * @ATH_DBG_BSTUCK: stuck beacons
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @ATH_DBG_MCI: Message Coexistence Interface, a private protocol
+ *	used exclusively for WLAN-BT coexistence starting from
+ *	AR9462.
+ * @ATH_DBG_DFS: radar datection
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ATH_DBG_ANY: enable all debugging
  *
  * The debug level is used to control the amount and type of debugging output
@@ -240,6 +284,13 @@ enum ATH_DEBUG {
 	ATH_DBG_WMI		= 0x00004000,
 	ATH_DBG_BSTUCK		= 0x00008000,
 	ATH_DBG_MCI		= 0x00010000,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ATH_DBG_DFS		= 0x00020000,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ATH_DBG_ANY		= 0xffffffff
 };
 
@@ -249,8 +300,18 @@ enum ATH_DEBUG {
 
 #define ath_dbg(common, dbg_mask, fmt, ...)				\
 do {									\
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((common)->debug_mask & ATH_DBG_##dbg_mask)			\
+		ath_printk(KERN_DEBUG, common, fmt, ##__VA_ARGS__);	\
+=======
 	if ((common)->debug_mask & dbg_mask)				\
 		_ath_printk(KERN_DEBUG, common, fmt, ##__VA_ARGS__);	\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((common)->debug_mask & dbg_mask)				\
+		_ath_printk(KERN_DEBUG, common, fmt, ##__VA_ARGS__);	\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } while (0)
 
 #define ATH_DBG_WARN(foo, arg...) WARN(foo, arg)
@@ -259,10 +320,26 @@ do {									\
 #else
 
 static inline  __attribute__ ((format (printf, 3, 4)))
+<<<<<<< HEAD
+<<<<<<< HEAD
+void _ath_dbg(struct ath_common *common, enum ATH_DEBUG dbg_mask,
+	     const char *fmt, ...)
+{
+}
+#define ath_dbg(common, dbg_mask, fmt, ...)				\
+	_ath_dbg(common, ATH_DBG_##dbg_mask, fmt, ##__VA_ARGS__)
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ath_dbg(struct ath_common *common, enum ATH_DEBUG dbg_mask,
 	     const char *fmt, ...)
 {
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ATH_DBG_WARN(foo, arg...) do {} while (0)
 #define ATH_DBG_WARN_ON_ONCE(foo) ({				\
 	int __ret_warn_once = !!(foo);				\

@@ -50,7 +50,14 @@
 #include <linux/uaccess.h>
 #include <linux/module.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* number of characters left in xmit buffer before select has we have room */
 #define WAKEUP_CHARS 256
@@ -61,7 +68,15 @@
  * controlling the space in the read buffer.
  */
 #define TTY_THRESHOLD_THROTTLE		128 /* now based on remaining room */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TTY_THRESHOLD_UNTHROTTLE	128
+=======
 #define TTY_THRESHOLD_UNTHROTTLE 	128
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TTY_THRESHOLD_UNTHROTTLE 	128
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Special byte codes used in the echo buffer to represent operations
@@ -82,6 +97,19 @@ static inline int tty_put_user(struct tty_struct *tty, unsigned char x,
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	n_tty_set_room	-	receive space
+ *	@tty: terminal
+ *
+ *	Sets tty->receive_room to reflect the currently available space
+ *	in the input buffer, and re-schedules the flip buffer work if space
+ *	just became available.
+ *
+ *	Locks: Concurrent update is protected with read_lock
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	n_tty_set__room	-	receive space
  *	@tty: terminal
  *
@@ -89,13 +117,39 @@ static inline int tty_put_user(struct tty_struct *tty, unsigned char x,
  *	permitted to feed to the line discipline without any being lost
  *	and thus to manage flow control. Not serialized. Answers for the
  *	"instant".
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 static void n_tty_set_room(struct tty_struct *tty)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int left;
+	int old_left;
+	unsigned long flags;
+
+	spin_lock_irqsave(&tty->read_lock, flags);
+
+	if (I_PARMRK(tty)) {
+		/* Multiply read_cnt by 3, since each byte might take up to
+		 * three times as many spaces when PARMRK is set (depending on
+		 * its flags, e.g. parity error). */
+		left = N_TTY_BUF_SIZE - tty->read_cnt * 3 - 1;
+	} else
+		left = N_TTY_BUF_SIZE - tty->read_cnt - 1;
+=======
 	/* tty->read_cnt is not read locked ? */
 	int	left = N_TTY_BUF_SIZE - tty->read_cnt - 1;
 	int old_left;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* tty->read_cnt is not read locked ? */
+	int	left = N_TTY_BUF_SIZE - tty->read_cnt - 1;
+	int old_left;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we are doing input canonicalization, and there are no
@@ -108,6 +162,14 @@ static void n_tty_set_room(struct tty_struct *tty)
 	old_left = tty->receive_room;
 	tty->receive_room = left;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spin_unlock_irqrestore(&tty->read_lock, flags);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Did this open up the receive buffer? We may need to flip */
 	if (left && !old_left)
 		schedule_work(&tty->buf.work);
@@ -185,7 +247,14 @@ static void reset_buffer_flags(struct tty_struct *tty)
 	tty->canon_head = tty->canon_data = tty->erasing = 0;
 	memset(&tty->read_flags, 0, sizeof tty->read_flags);
 	n_tty_set_room(tty);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	check_unthrottle(tty);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	check_unthrottle(tty);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -406,7 +475,15 @@ static ssize_t process_output_block(struct tty_struct *tty,
 				    const unsigned char *buf, unsigned int nr)
 {
 	int	space;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int	i;
+=======
 	int 	i;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int 	i;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const unsigned char *cp;
 
 	mutex_lock(&tty->output_lock);
@@ -1531,6 +1608,11 @@ static void n_tty_set_termios(struct tty_struct *tty, struct ktermios *old)
 			tty->real_raw = 0;
 	}
 	n_tty_set_room(tty);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Fix tty hang when I_IXON(tty) is cleared, but the tty
 	 * been stopped by STOP_CHAR(tty) before it.
@@ -1539,6 +1621,10 @@ static void n_tty_set_termios(struct tty_struct *tty, struct ktermios *old)
 		start_tty(tty);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* The termios change make the tty ready for I/O */
 	wake_up_interruptible(&tty->write_wait);
 	wake_up_interruptible(&tty->read_wait);
@@ -1595,6 +1681,13 @@ static int n_tty_open(struct tty_struct *tty)
 			return -ENOMEM;
 	}
 	reset_buffer_flags(tty);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tty_unthrottle(tty);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tty->column = 0;
 	n_tty_set_termios(tty, NULL);
 	tty->minimum_to_wake = 1;
@@ -1615,7 +1708,15 @@ static inline int input_available_p(struct tty_struct *tty, int amt)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	copy_from_read_buf	-	copy read data directly
+=======
  * 	copy_from_read_buf	-	copy read data directly
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * 	copy_from_read_buf	-	copy read data directly
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	@tty: terminal device
  *	@b: user data
  *	@nr: size of data
@@ -1736,8 +1837,17 @@ static ssize_t n_tty_read(struct tty_struct *tty, struct file *file,
 
 do_it_again:
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	BUG_ON(!tty->read_buf);
+=======
 	if (WARN_ON(!tty->read_buf))
 		return -EAGAIN;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (WARN_ON(!tty->read_buf))
+		return -EAGAIN;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	c = job_control(tty, file);
 	if (c < 0)
@@ -1821,7 +1931,14 @@ do_it_again:
 				retval = -ERESTARTSYS;
 				break;
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			/* FIXME: does n_tty_set_room need locking ? */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			/* FIXME: does n_tty_set_room need locking ? */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			n_tty_set_room(tty);
 			timeout = schedule_timeout(timeout);
 			BUG_ON(!tty->read_buf);
@@ -1918,7 +2035,15 @@ do_it_again:
 		if (nr)
 			clear_bit(TTY_PUSH, &tty->flags);
 	} else if (test_and_clear_bit(TTY_PUSH, &tty->flags))
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto do_it_again;
+=======
 		 goto do_it_again;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 goto do_it_again;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	n_tty_set_room(tty);
 	return retval;
@@ -1997,7 +2122,17 @@ static ssize_t n_tty_write(struct tty_struct *tty, struct file *file,
 				tty->ops->flush_chars(tty);
 		} else {
 			while (nr > 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				mutex_lock(&tty->output_lock);
 				c = tty->ops->write(tty, b, nr);
+				mutex_unlock(&tty->output_lock);
+=======
+				c = tty->ops->write(tty, b, nr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				c = tty->ops->write(tty, b, nr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (c < 0) {
 					retval = c;
 					goto break_out;

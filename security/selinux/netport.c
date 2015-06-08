@@ -8,8 +8,12 @@
 <<<<<<< HEAD
  * Author: Paul Moore <paul@paul-moore.com>
 =======
+<<<<<<< HEAD
+ * Author: Paul Moore <paul@paul-moore.com>
+=======
  * Author: Paul Moore <paul.moore@hp.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This code is heavily based on the "netif" concept originally developed by
  * James Morris <jmorris@redhat.com>
@@ -74,6 +78,8 @@ static struct sel_netport_bkt sel_netport_hash[SEL_NETPORT_HASH_SIZE];
 /**
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * sel_netport_free - Frees a port entry
  * @p: the entry's RCU field
  *
@@ -91,6 +97,7 @@ static void sel_netport_free(struct rcu_head *p)
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * sel_netport_hashfn - Hashing function for the port table
  * @pnum: port number
  *
@@ -154,8 +161,12 @@ static void sel_netport_insert(struct sel_netport *port)
 <<<<<<< HEAD
 		kfree_rcu(tail, rcu);
 =======
+<<<<<<< HEAD
+		kfree_rcu(tail, rcu);
+=======
 		call_rcu(&tail->rcu, sel_netport_free);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		sel_netport_hash[idx].size++;
 }
@@ -257,8 +268,12 @@ static void sel_netport_flush(void)
 <<<<<<< HEAD
 			kfree_rcu(port, rcu);
 =======
+<<<<<<< HEAD
+			kfree_rcu(port, rcu);
+=======
 			call_rcu(&port->rcu, sel_netport_free);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		sel_netport_hash[idx].size = 0;
 	}

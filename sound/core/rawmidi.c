@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <sound/rawmidi.h>
 #include <sound/info.h>
@@ -97,12 +101,17 @@ static inline int snd_rawmidi_ready_append(struct snd_rawmidi_substream *substre
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void snd_rawmidi_input_event_work(struct work_struct *work)
 {
 	struct snd_rawmidi_runtime *runtime =
 		container_of(work, struct snd_rawmidi_runtime, event_work);
 	if (runtime->event)
 		runtime->event(runtime->substream);
+<<<<<<< HEAD
+=======
 =======
 static void snd_rawmidi_input_event_tasklet(unsigned long data)
 {
@@ -115,6 +124,7 @@ static void snd_rawmidi_output_trigger_tasklet(unsigned long data)
 	struct snd_rawmidi_substream *substream = (struct snd_rawmidi_substream *)data;
 	substream->ops->trigger(substream, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int snd_rawmidi_runtime_create(struct snd_rawmidi_substream *substream)
@@ -124,10 +134,15 @@ static int snd_rawmidi_runtime_create(struct snd_rawmidi_substream *substream)
 	if ((runtime = kzalloc(sizeof(*runtime), GFP_KERNEL)) == NULL)
 		return -ENOMEM;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	runtime->substream = substream;
 	spin_lock_init(&runtime->lock);
 	init_waitqueue_head(&runtime->sleep);
 	INIT_WORK(&runtime->event_work, snd_rawmidi_input_event_work);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_init(&runtime->lock);
 	init_waitqueue_head(&runtime->sleep);
@@ -140,6 +155,7 @@ static int snd_rawmidi_runtime_create(struct snd_rawmidi_substream *substream)
 			     snd_rawmidi_output_trigger_tasklet,
 			     (unsigned long)substream);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	runtime->event = NULL;
 	runtime->buffer_size = PAGE_SIZE;
 	runtime->avail_min = 1;
@@ -173,6 +189,9 @@ static inline void snd_rawmidi_output_trigger(struct snd_rawmidi_substream *subs
 <<<<<<< HEAD
 	substream->ops->trigger(substream, up);
 =======
+<<<<<<< HEAD
+	substream->ops->trigger(substream, up);
+=======
 	if (up) {
 		tasklet_schedule(&substream->runtime->tasklet);
 	} else {
@@ -180,6 +199,7 @@ static inline void snd_rawmidi_output_trigger(struct snd_rawmidi_substream *subs
 		substream->ops->trigger(substream, 0);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void snd_rawmidi_input_trigger(struct snd_rawmidi_substream *substream, int up)
@@ -191,9 +211,14 @@ static void snd_rawmidi_input_trigger(struct snd_rawmidi_substream *substream, i
 	if (!up)
 		cancel_work_sync(&substream->runtime->event_work);
 =======
+<<<<<<< HEAD
+	if (!up)
+		cancel_work_sync(&substream->runtime->event_work);
+=======
 	if (!up && substream->runtime->event)
 		tasklet_kill(&substream->runtime->tasklet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int snd_rawmidi_drop_output(struct snd_rawmidi_substream *substream)
@@ -427,11 +452,16 @@ static int snd_rawmidi_open(struct inode *inode, struct file *file)
 	if (!try_module_get(rmidi->card->module))
 		return -ENXIO;
 =======
+<<<<<<< HEAD
+	if (!try_module_get(rmidi->card->module))
+		return -ENXIO;
+=======
 	if (!try_module_get(rmidi->card->module)) {
 		snd_card_unref(rmidi->card);
 		return -ENXIO;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&rmidi->open_mutex);
 	card = rmidi->card;
@@ -475,11 +505,14 @@ static int snd_rawmidi_open(struct inode *inode, struct file *file)
 		mutex_lock(&rmidi->open_mutex);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (rmidi->card->shutdown) {
 			err = -ENODEV;
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (signal_pending(current)) {
 			err = -ERESTARTSYS;
 			break;
@@ -500,8 +533,11 @@ static int snd_rawmidi_open(struct inode *inode, struct file *file)
 	mutex_unlock(&rmidi->open_mutex);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_card_unref(rmidi->card);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
  __error:
@@ -511,8 +547,11 @@ static int snd_rawmidi_open(struct inode *inode, struct file *file)
 	module_put(rmidi->card->module);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_card_unref(rmidi->card);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -693,16 +732,22 @@ int snd_rawmidi_output_params(struct snd_rawmidi_substream *substream,
 	}
 	if (params->buffer_size != runtime->buffer_size) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		newbuf = krealloc(runtime->buffer, params->buffer_size,
 				  GFP_KERNEL);
 		if (!newbuf)
 			return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 		newbuf = kmalloc(params->buffer_size, GFP_KERNEL);
 		if (!newbuf)
 			return -ENOMEM;
 		kfree(runtime->buffer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		runtime->buffer = newbuf;
 		runtime->buffer_size = params->buffer_size;
 		runtime->avail = runtime->buffer_size;
@@ -727,16 +772,22 @@ int snd_rawmidi_input_params(struct snd_rawmidi_substream *substream,
 	}
 	if (params->buffer_size != runtime->buffer_size) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		newbuf = krealloc(runtime->buffer, params->buffer_size,
 				  GFP_KERNEL);
 		if (!newbuf)
 			return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 		newbuf = kmalloc(params->buffer_size, GFP_KERNEL);
 		if (!newbuf)
 			return -ENOMEM;
 		kfree(runtime->buffer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		runtime->buffer = newbuf;
 		runtime->buffer_size = params->buffer_size;
 	}
@@ -994,8 +1045,12 @@ int snd_rawmidi_receive(struct snd_rawmidi_substream *substream,
 <<<<<<< HEAD
 			schedule_work(&runtime->event_work);
 =======
+<<<<<<< HEAD
+			schedule_work(&runtime->event_work);
+=======
 			tasklet_schedule(&runtime->tasklet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else if (snd_rawmidi_ready(substream))
 			wake_up(&runtime->sleep);
 	}
@@ -1077,9 +1132,12 @@ static ssize_t snd_rawmidi_read(struct file *file, char __user *buf, size_t coun
 			remove_wait_queue(&runtime->sleep, &wait);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			if (rfile->rmidi->card->shutdown)
 				return -ENODEV;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (signal_pending(current))
 				return result > 0 ? result : -ERESTARTSYS;
 			if (!runtime->avail)
@@ -1325,9 +1383,12 @@ static ssize_t snd_rawmidi_write(struct file *file, const char __user *buf,
 			remove_wait_queue(&runtime->sleep, &wait);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			if (rfile->rmidi->card->shutdown)
 				return -ENODEV;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (signal_pending(current))
 				return result > 0 ? result : -ERESTARTSYS;
 			if (!runtime->avail && !timeout)
@@ -1708,6 +1769,11 @@ static int snd_rawmidi_dev_disconnect(struct snd_device *device)
 	mutex_lock(&register_mutex);
 	list_del_init(&rmidi->list);
 =======
+<<<<<<< HEAD
+
+	mutex_lock(&register_mutex);
+	list_del_init(&rmidi->list);
+=======
 	int dir;
 
 	mutex_lock(&register_mutex);
@@ -1723,6 +1789,7 @@ static int snd_rawmidi_dev_disconnect(struct snd_device *device)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SND_OSSEMUL
 	if (rmidi->ossreg) {
 		if ((int)rmidi->device == midi_map[rmidi->card->number]) {
@@ -1739,8 +1806,11 @@ static int snd_rawmidi_dev_disconnect(struct snd_device *device)
 	snd_unregister_device(SNDRV_DEVICE_TYPE_RAWMIDI, rmidi->card, rmidi->device);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&rmidi->open_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&register_mutex);
 	return 0;
 }

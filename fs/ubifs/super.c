@@ -88,8 +88,12 @@ static int validate_inode(struct ubifs_info *c, const struct inode *inode)
 <<<<<<< HEAD
 	if (ui->xattr && !S_ISREG(inode->i_mode))
 =======
+<<<<<<< HEAD
+	if (ui->xattr && !S_ISREG(inode->i_mode))
+=======
 	if (ui->xattr && (inode->i_mode & S_IFMT) != S_IFREG)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 5;
 
 	if (!ubifs_compr_present(ui->compr_type)) {
@@ -101,8 +105,12 @@ static int validate_inode(struct ubifs_info *c, const struct inode *inode)
 <<<<<<< HEAD
 	err = dbg_check_dir(c, inode);
 =======
+<<<<<<< HEAD
+	err = dbg_check_dir(c, inode);
+=======
 	err = dbg_check_dir_size(c, inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -140,8 +148,12 @@ struct inode *ubifs_iget(struct super_block *sb, unsigned long inum)
 <<<<<<< HEAD
 	set_nlink(inode, le32_to_cpu(ino->nlink));
 =======
+<<<<<<< HEAD
+	set_nlink(inode, le32_to_cpu(ino->nlink));
+=======
 	inode->i_nlink = le32_to_cpu(ino->nlink);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_uid   = le32_to_cpu(ino->uid);
 	inode->i_gid   = le32_to_cpu(ino->gid);
 	inode->i_atime.tv_sec  = (int64_t)le64_to_cpu(ino->atime_sec);
@@ -290,8 +302,11 @@ static void ubifs_i_callback(struct rcu_head *head)
 	struct ubifs_inode *ui = ubifs_inode(inode);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(ubifs_inode_slab, ui);
 }
 
@@ -440,10 +455,16 @@ static int ubifs_show_options(struct seq_file *s, struct dentry *root)
 {
 	struct ubifs_info *c = root->d_sb->s_fs_info;
 =======
+<<<<<<< HEAD
+static int ubifs_show_options(struct seq_file *s, struct dentry *root)
+{
+	struct ubifs_info *c = root->d_sb->s_fs_info;
+=======
 static int ubifs_show_options(struct seq_file *s, struct vfsmount *mnt)
 {
 	struct ubifs_info *c = mnt->mnt_sb->s_fs_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (c->mount_opts.unmount_mode == 2)
 		seq_printf(s, ",fast_unmount");
@@ -938,8 +959,12 @@ static int check_volume_empty(struct ubifs_info *c)
 <<<<<<< HEAD
 		err = ubifs_is_mapped(c, lnum);
 =======
+<<<<<<< HEAD
+		err = ubifs_is_mapped(c, lnum);
+=======
 		err = ubi_is_mapped(c->ubi, lnum);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (unlikely(err < 0))
 			return err;
 		if (err == 1) {
@@ -1610,6 +1635,8 @@ static int ubifs_remount_rw(struct ubifs_info *c)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (c->space_fixup) {
 		err = ubifs_fixup_free_space(c);
 		if (err)
@@ -1617,6 +1644,7 @@ static int ubifs_remount_rw(struct ubifs_info *c)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = check_free_space(c);
 	if (err)
 		goto out;
@@ -1734,14 +1762,20 @@ static int ubifs_remount_rw(struct ubifs_info *c)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (c->space_fixup) {
 		err = ubifs_fixup_free_space(c);
 		if (err)
 			goto out;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&c->umount_mutex);
 	return err;
 
@@ -2119,19 +2153,28 @@ static int ubifs_fill_super(struct super_block *sb, void *data, int silent)
 	if (!sb->s_root)
 		goto out_umount;
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(root);
+	if (!sb->s_root)
+		goto out_umount;
+=======
 	sb->s_root = d_alloc_root(root);
 	if (!sb->s_root)
 		goto out_iput;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_unlock(&c->umount_mutex);
 	return 0;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 out_iput:
 	iput(root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_umount:
 	ubifs_umount(c);
 out_unlock:
@@ -2312,6 +2355,8 @@ static int __init ubifs_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	err = register_filesystem(&ubifs_fs_type);
 	if (err) {
 		ubifs_err("cannot register file system, error %d", err);
@@ -2320,6 +2365,7 @@ static int __init ubifs_init(void)
 
 	err = -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ubifs_inode_slab = kmem_cache_create("ubifs_inode_slab",
 				sizeof(struct ubifs_inode), 0,
 				SLAB_MEM_SPREAD | SLAB_RECLAIM_ACCOUNT,
@@ -2328,8 +2374,12 @@ static int __init ubifs_init(void)
 <<<<<<< HEAD
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+		return -ENOMEM;
+=======
 		goto out_reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	register_shrinker(&ubifs_shrinker_info);
 
@@ -2342,6 +2392,9 @@ static int __init ubifs_init(void)
 		goto out_compr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = register_filesystem(&ubifs_fs_type);
 	if (err) {
 		ubifs_err("cannot register file system, error %d", err);
@@ -2351,10 +2404,13 @@ static int __init ubifs_init(void)
 
 out_dbg:
 	dbg_debugfs_exit();
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_compr:
 	ubifs_compressors_exit();
 out_shrinker:
@@ -2362,9 +2418,12 @@ out_shrinker:
 	kmem_cache_destroy(ubifs_inode_slab);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 out_reg:
 	unregister_filesystem(&ubifs_fs_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 /* late_initcall to let compressors initialize first */

@@ -1,18 +1,72 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/******************************************************************************
+ *
+ * Copyright(c) 2007 - 2010 Realtek Corporation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+ *
+ * Modifications for inclusion into the Linux staging tree are
+ * Copyright(c) 2010 Larry Finger. All rights reserved.
+ *
+ * Contact information:
+ * WLAN FAE <wlanfae@realtek.com>
+ * Larry Finger <Larry.Finger@lwfinger.net>
+ *
+ ******************************************************************************/
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __OSDEP_SERVICE_H_
 #define __OSDEP_SERVICE_H_
 
 #define _SUCCESS	1
 #define _FAIL		0
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/version.h>
+#include <linux/spinlock.h>
+
+#include <linux/interrupt.h>
+#include <linux/semaphore.h>
+#include <linux/sched.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "basic_types.h"
 #include <linux/version.h>
 #include <linux/spinlock.h>
 
 #include <linux/semaphore.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sem.h>
 #include <linux/netdevice.h>
 #include <linux/etherdevice.h>
 #include <net/iw_handler.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/proc_fs.h>      /* Necessary because we use the proc fs */
+
+#include "basic_types.h"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/proc_fs.h>	/* Necessary because we use the proc fs */
 #include <linux/compiler.h>
 #include <linux/kernel.h>
@@ -38,6 +92,10 @@
 #include <linux/firmware.h>
 #define   _usb_alloc_urb(x, y)       usb_alloc_urb(x, y)
 #define   _usb_submit_urb(x, y)     usb_submit_urb(x, y)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct	__queue	{
 	struct	list_head	queue;
@@ -48,7 +106,14 @@ struct	__queue	{
 #define _buffer unsigned char
 #define thread_exit() complete_and_exit(NULL, 0)
 #define _workitem struct work_struct
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define MSECS(t)        (HZ * ((t) / 1000) + (HZ * ((t) % 1000)) / 1000)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MSECS(t)        (HZ * ((t) / 1000) + (HZ * ((t) % 1000)) / 1000)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define _init_queue(pqueue)				\
 	do {						\
@@ -56,6 +121,11 @@ struct	__queue	{
 		spin_lock_init(&((pqueue)->lock));	\
 	} while (0)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void *_netdev_priv(struct net_device *dev)
 {
 	return netdev_priv(dev);
@@ -66,6 +136,10 @@ static inline void os_free_netdev(struct net_device *dev)
 	free_netdev(dev);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct list_head *get_next(struct list_head *list)
 {
 	return list->next;
@@ -79,6 +153,11 @@ static inline struct list_head *get_list_head(struct  __queue *queue)
 #define LIST_CONTAINOR(ptr, type, member) \
 	((type *)((char *)(ptr)-(SIZE_T)(&((type *)0)->member)))
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void _enter_hwio_critical(struct semaphore *prwlock,
 					unsigned long *pirqL)
 {
@@ -91,6 +170,10 @@ static inline void _exit_hwio_critical(struct semaphore *prwlock,
 	up(prwlock);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void list_delete(struct list_head *plist)
 {
 	list_del_init(plist);
@@ -159,11 +242,20 @@ static inline u32 _down_sema(struct semaphore *sema)
 		return _SUCCESS;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void _rtl_rwlock_init(struct semaphore *prwlock)
 {
 	sema_init(prwlock, 1);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void _init_listhead(struct list_head *list)
 {
 	INIT_LIST_HEAD(list);
@@ -206,7 +298,14 @@ static inline unsigned char _cancel_timer_ex(struct timer_list *ptimer)
 
 static inline void thread_enter(void *context)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	daemonize("%s", "RTKTHREAD");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	daemonize("%s", "RTKTHREAD");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	allow_signal(SIGTERM);
 }
 
@@ -236,7 +335,15 @@ static inline u32 _RND512(u32 sz)
 	return ((sz >> 9) + ((sz & 511) ? 1 : 0)) << 9;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define STRUCT_PACKED __attribute__ ((packed))
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define STRUCT_PACKED __attribute__ ((packed))
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 

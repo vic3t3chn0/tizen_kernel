@@ -65,7 +65,11 @@ ENTRY(cpu_sa110_proc_fin)
 <<<<<<< HEAD
 	.pushsection	.idmap.text, "ax"
 =======
+<<<<<<< HEAD
+	.pushsection	.idmap.text, "ax"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(cpu_sa110_reset)
 	mov	ip, #0
 	mcr	p15, 0, ip, c7, c7, 0		@ invalidate I,D caches
@@ -82,7 +86,12 @@ ENTRY(cpu_sa110_reset)
 ENDPROC(cpu_sa110_reset)
 	.popsection
 =======
+<<<<<<< HEAD
+ENDPROC(cpu_sa110_reset)
+	.popsection
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * cpu_sa110_do_idle(type)

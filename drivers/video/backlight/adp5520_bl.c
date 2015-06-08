@@ -13,6 +13,13 @@
 #include <linux/backlight.h>
 #include <linux/mfd/adp5520.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct adp5520_bl {
 	struct device *master;
@@ -288,7 +295,15 @@ static int __devinit adp5520_bl_probe(struct platform_device *pdev)
 	struct adp5520_bl *data;
 	int ret = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data = devm_kzalloc(&pdev->dev, sizeof(*data), GFP_KERNEL);
+=======
 	data = kzalloc(sizeof(*data), GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	data = kzalloc(sizeof(*data), GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (data == NULL)
 		return -ENOMEM;
 
@@ -297,7 +312,14 @@ static int __devinit adp5520_bl_probe(struct platform_device *pdev)
 
 	if (data->pdata  == NULL) {
 		dev_err(&pdev->dev, "missing platform data\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		kfree(data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		kfree(data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 
@@ -313,7 +335,14 @@ static int __devinit adp5520_bl_probe(struct platform_device *pdev)
 				       &adp5520_bl_ops, &props);
 	if (IS_ERR(bl)) {
 		dev_err(&pdev->dev, "failed to register backlight\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		kfree(data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		kfree(data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return PTR_ERR(bl);
 	}
 
@@ -325,7 +354,14 @@ static int __devinit adp5520_bl_probe(struct platform_device *pdev)
 	if (ret) {
 		dev_err(&pdev->dev, "failed to register sysfs\n");
 		backlight_device_unregister(bl);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		kfree(data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		kfree(data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	platform_set_drvdata(pdev, bl);
@@ -347,7 +383,14 @@ static int __devexit adp5520_bl_remove(struct platform_device *pdev)
 				&adp5520_bl_attr_group);
 
 	backlight_device_unregister(bl);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -383,6 +426,12 @@ static struct platform_driver adp5520_bl_driver = {
 	.resume		= adp5520_bl_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(adp5520_bl_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init adp5520_bl_init(void)
 {
 	return platform_driver_register(&adp5520_bl_driver);
@@ -394,6 +443,10 @@ static void __exit adp5520_bl_exit(void)
 	platform_driver_unregister(&adp5520_bl_driver);
 }
 module_exit(adp5520_bl_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Michael Hennerich <hennerich@blackfin.uclinux.org>");
 MODULE_DESCRIPTION("ADP5520(01) Backlight Driver");

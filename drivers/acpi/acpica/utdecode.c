@@ -5,7 +5,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,6 +49,13 @@
  * POSSIBILITY OF SUCH DAMAGES.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <acpi/acpi.h>
 #include "accommon.h"
 #include "acnamesp.h"
@@ -170,7 +185,17 @@ const char *acpi_gbl_region_types[ACPI_NUM_PREDEFINED_REGIONS] = {
 	"SMBus",
 	"SystemCMOS",
 	"PCIBARTarget",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	"IPMI",
+	"GeneralPurposeIo",
+	"GenericSerialBus"
+=======
 	"IPMI"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	"IPMI"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 char *acpi_ut_get_region_name(u8 space_id)
@@ -494,6 +519,25 @@ char *acpi_ut_get_mutex_name(u32 mutex_id)
 
 /* Names for Notify() values, used for debug output */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char *acpi_gbl_notify_value_names[ACPI_NOTIFY_MAX + 1] = {
+	/* 00 */ "Bus Check",
+	/* 01 */ "Device Check",
+	/* 02 */ "Device Wake",
+	/* 03 */ "Eject Request",
+	/* 04 */ "Device Check Light",
+	/* 05 */ "Frequency Mismatch",
+	/* 06 */ "Bus Mode Mismatch",
+	/* 07 */ "Power Fault",
+	/* 08 */ "Capabilities Check",
+	/* 09 */ "Device PLD Check",
+	/* 10 */ "Reserved",
+	/* 11 */ "System Locality Update",
+	/* 12 */ "Shutdown Request"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *acpi_gbl_notify_value_names[] = {
 	"Bus Check",
 	"Device Check",
@@ -507,6 +551,10 @@ static const char *acpi_gbl_notify_value_names[] = {
 	"Device PLD Check",
 	"Reserved",
 	"System Locality Update"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const char *acpi_ut_get_notify_name(u32 notify_value)
@@ -516,9 +564,22 @@ const char *acpi_ut_get_notify_name(u32 notify_value)
 		return (acpi_gbl_notify_value_names[notify_value]);
 	} else if (notify_value <= ACPI_MAX_SYS_NOTIFY) {
 		return ("Reserved");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else if (notify_value <= ACPI_MAX_DEVICE_SPECIFIC_NOTIFY) {
+		return ("Device Specific");
+	} else {
+		return ("Hardware Specific");
+=======
 	} else {		/* Greater or equal to 0x80 */
 
 		return ("**Device Specific**");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} else {		/* Greater or equal to 0x80 */
+
+		return ("**Device Specific**");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 #endif

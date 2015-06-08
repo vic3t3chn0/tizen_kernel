@@ -20,7 +20,12 @@
 const char 	*disassembler_style;
 
 =======
+<<<<<<< HEAD
+const char 	*disassembler_style;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int symbol__annotate_init(struct map *map __used, struct symbol *sym)
 {
 	struct annotation *notes = symbol__annotation(sym);
@@ -29,6 +34,9 @@ int symbol__annotate_init(struct map *map __used, struct symbol *sym)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int symbol__alloc_hist(struct symbol *sym)
 {
 	struct annotation *notes = symbol__annotation(sym);
@@ -40,6 +48,8 @@ int symbol__alloc_hist(struct symbol *sym)
 		return -1;
 	notes->src->sizeof_sym_hist = sizeof_sym_hist;
 	notes->src->nr_histograms   = symbol_conf.nr_events;
+<<<<<<< HEAD
+=======
 =======
 int symbol__alloc_hist(struct symbol *sym, int nevents)
 {
@@ -53,6 +63,7 @@ int symbol__alloc_hist(struct symbol *sym, int nevents)
 	notes->src->sizeof_sym_hist = sizeof_sym_hist;
 	notes->src->nr_histograms   = nevents;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&notes->src->source);
 	return 0;
 }
@@ -85,9 +96,14 @@ int symbol__inc_addr_samples(struct symbol *sym, struct map *map,
 	if (addr < sym->start || addr > sym->end)
 		return -ERANGE;
 =======
+<<<<<<< HEAD
+	if (addr < sym->start || addr > sym->end)
+		return -ERANGE;
+=======
 	if (addr >= sym->end)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	offset = addr - sym->start;
 	h = annotation__histogram(notes, evidx);
@@ -333,17 +349,23 @@ fallback:
 		err = -ENOENT;
 		dso->annotate_warned = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("Can't annotate %s:\n\n"
 		       "No vmlinux file%s\nwas found in the path.\n\n"
 		       "Please use:\n\n"
 		       "  perf buildid-cache -av vmlinux\n\n"
 		       "or:\n\n"
 		       "  --vmlinux vmlinux\n",
+<<<<<<< HEAD
+=======
 =======
 		pr_err("Can't annotate %s: No vmlinux file%s was found in the "
 		       "path.\nPlease use 'perf buildid-cache -av vmlinux' or "
 		       "--vmlinux vmlinux.\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       sym->name, build_id_msg ?: "");
 		goto out_free_filename;
 	}
@@ -357,6 +379,9 @@ fallback:
 
 	snprintf(command, sizeof(command),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 "objdump %s%s --start-address=0x%016" PRIx64
 		 " --stop-address=0x%016" PRIx64
 		 " -d %s %s -C %s|grep -v %s|expand",
@@ -366,12 +391,15 @@ fallback:
 		 map__rip_2objdump(map, sym->end+1),
 		 symbol_conf.annotate_asm_raw ? "" : "--no-show-raw",
 		 symbol_conf.annotate_src ? "-S" : "",
+<<<<<<< HEAD
+=======
 =======
 		 "objdump --start-address=0x%016" PRIx64
 		 " --stop-address=0x%016" PRIx64 " -dS -C %s|grep -v %s|expand",
 		 map__rip_2objdump(map, sym->start),
 		 map__rip_2objdump(map, sym->end),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 symfs_filename, filename);
 
 	pr_debug("Executing: %s\n", command);
@@ -446,8 +474,12 @@ static int symbol__get_source_line(struct symbol *sym, struct map *map,
 <<<<<<< HEAD
 	start = map__rip_2objdump(map, sym->start);
 =======
+<<<<<<< HEAD
+	start = map__rip_2objdump(map, sym->start);
+=======
 	start = map->unmap_ip(map, sym->start);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < len; i++) {
 		char *path = NULL;
@@ -601,12 +633,17 @@ void symbol__annotate_decay_histogram(struct symbol *sym, int evidx)
 	struct annotation *notes = symbol__annotation(sym);
 	struct sym_hist *h = annotation__histogram(notes, evidx);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int len = sym->end - sym->start, offset;
 
 	h->sum = 0;
 	for (offset = 0; offset < len; ++offset) {
 		h->addr[offset] = h->addr[offset] * 7 / 8;
 		h->sum += h->addr[offset];
+<<<<<<< HEAD
+=======
 =======
 	struct objdump_line *pos;
 	int len = sym->end - sym->start;
@@ -619,6 +656,7 @@ void symbol__annotate_decay_histogram(struct symbol *sym, int evidx)
 			h->sum += h->addr[pos->offset];
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

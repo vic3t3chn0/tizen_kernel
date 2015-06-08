@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2008, 2010-2011 Nokia Corporation
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2008, 2010-2011 Nokia Corporation
+=======
  * Copyright (C) 2008, 2010 Nokia Corporation
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Lauri Leukkunen <lauri.leukkunen@nokia.com>
  *
@@ -24,9 +28,13 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/io.h>
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/clock.h>
 #include <plat/sdrc.h>
 
@@ -116,6 +124,9 @@ static const struct sdram_timings nokia_195dot2mhz_timings[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct sdram_timings nokia_200mhz_timings[] = {
 	{
 		.casl = 3,
@@ -137,8 +148,11 @@ static const struct sdram_timings nokia_200mhz_timings[] = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct {
 	long rate;
 	struct sdram_timings const *data;
@@ -146,14 +160,20 @@ static const struct {
 	{ 83000000, nokia_166mhz_timings },
 	{ 97600000, nokia_97dot6mhz_timings },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 100000000, nokia_200mhz_timings },
 	{ 166000000, nokia_166mhz_timings },
 	{ 195200000, nokia_195dot2mhz_timings },
 	{ 200000000, nokia_200mhz_timings },
+<<<<<<< HEAD
+=======
 =======
 	{ 166000000, nokia_166mhz_timings },
 	{ 195200000, nokia_195dot2mhz_timings },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 static struct omap_sdrc_params nokia_sdrc_params[ARRAY_SIZE(nokia_timings) + 1];
 

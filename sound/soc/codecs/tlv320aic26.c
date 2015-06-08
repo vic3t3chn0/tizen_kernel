@@ -278,8 +278,12 @@ static int aic26_set_fmt(struct snd_soc_dai *codec_dai, unsigned int fmt)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops aic26_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops aic26_dai_ops = {
+=======
 static struct snd_soc_dai_ops aic26_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= aic26_hw_params,
 	.digital_mute	= aic26_mute,
 	.set_sysclk	= aic26_set_sysclk,
@@ -396,8 +400,12 @@ static int aic26_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	err = snd_soc_add_codec_controls(codec, aic26_snd_controls,
 =======
+<<<<<<< HEAD
+	err = snd_soc_add_codec_controls(codec, aic26_snd_controls,
+=======
 	err = snd_soc_add_controls(codec, aic26_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ARRAY_SIZE(aic26_snd_controls));
 	WARN_ON(err < 0);
 
@@ -427,8 +435,12 @@ static int aic26_spi_probe(struct spi_device *spi)
 <<<<<<< HEAD
 	aic26 = devm_kzalloc(&spi->dev, sizeof *aic26, GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	aic26 = devm_kzalloc(&spi->dev, sizeof *aic26, GFP_KERNEL);
+=======
 	aic26 = kzalloc(sizeof *aic26, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!aic26)
 		return -ENOMEM;
 
@@ -442,6 +454,9 @@ static int aic26_spi_probe(struct spi_device *spi)
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	if (ret < 0)
 		kfree(aic26);
 	return ret;
@@ -449,6 +464,7 @@ static int aic26_spi_probe(struct spi_device *spi)
 	dev_dbg(&spi->dev, "SPI device initialized\n");
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int aic26_spi_remove(struct spi_device *spi)
@@ -456,8 +472,11 @@ static int aic26_spi_remove(struct spi_device *spi)
 	snd_soc_unregister_codec(&spi->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(spi_get_drvdata(spi));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

@@ -33,24 +33,33 @@
 
 #include <mach/hardware.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/regs-clock.h>
 #include <asm/irq.h>
 #include <asm/cacheflush.h>
 #include <asm/system_info.h>
 #include <asm/system_misc.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/irq.h>
 #include <asm/cacheflush.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/system-reset.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/regs-gpio.h>
 #include <plat/regs-serial.h>
 
@@ -59,8 +68,11 @@
 #include <plat/clock.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/s3c2400.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/s3c2410.h>
 #include <plat/s3c2412.h>
 #include <plat/s3c2416.h>
@@ -71,8 +83,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static const char name_s3c2400[]  = "S3C2400";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char name_s3c2410[]  = "S3C2410";
 static const char name_s3c2412[]  = "S3C2412";
 static const char name_s3c2416[]  = "S3C2416/S3C2450";
@@ -176,6 +191,8 @@ static struct cpu_table cpu_ids[] __initdata = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{
 		.idcode		= 0x0,   /* S3C2400 doesn't have an idcode */
 		.idmask		= 0xffffffff,
@@ -186,6 +203,7 @@ static struct cpu_table cpu_ids[] __initdata = {
 		.name		= name_s3c2400
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* minimal IO mapping */
@@ -221,6 +239,9 @@ static unsigned long s3c24xx_read_idcode_v5(void)
 static unsigned long s3c24xx_read_idcode_v4(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return __raw_readl(S3C2410_GSTATUS1);
 }
 
@@ -246,6 +267,8 @@ static void s3c24xx_default_idle(void)
 
 	__raw_writel(__raw_readl(S3C2410_CLKCON) & ~S3C2410_CLKCON_IDLE,
 		     S3C2410_CLKCON);
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_CPU_S3C2400
 	return __raw_readl(S3C2410_GSTATUS1);
@@ -274,6 +297,7 @@ static void s3c24xx_pm_restart(char mode, const char *cmd)
 	/* fallback, or unhandled */
 	arm_machine_restart(mode, cmd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init s3c24xx_init_io(struct map_desc *mach_desc, int size)
@@ -282,7 +306,12 @@ void __init s3c24xx_init_io(struct map_desc *mach_desc, int size)
 	arm_pm_idle = s3c24xx_default_idle;
 
 =======
+<<<<<<< HEAD
+	arm_pm_idle = s3c24xx_default_idle;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* initialise the io descriptors we need for initialisation */
 	iotable_init(mach_desc, size);
 	iotable_init(s3c_iodesc, ARRAY_SIZE(s3c_iodesc));
@@ -296,8 +325,11 @@ void __init s3c24xx_init_io(struct map_desc *mach_desc, int size)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	arm_pm_restart = s3c24xx_pm_restart;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s3c_init_cpu(samsung_cpu_id, cpu_ids, ARRAY_SIZE(cpu_ids));
 }

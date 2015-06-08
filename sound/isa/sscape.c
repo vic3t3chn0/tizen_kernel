@@ -31,8 +31,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/dma.h>
 #include <sound/core.h>
 #include <sound/wss.h>
@@ -832,9 +836,13 @@ static int __devinit create_mpu401(struct snd_card *card, int devnum,
 <<<<<<< HEAD
 				  MPU401_INFO_INTEGRATED, irq, &rawmidi);
 =======
+<<<<<<< HEAD
+				  MPU401_INFO_INTEGRATED, irq, &rawmidi);
+=======
 				  MPU401_INFO_INTEGRATED, irq, IRQF_DISABLED,
 				  &rawmidi);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err == 0) {
 		struct snd_mpu401 *mpu = rawmidi->private_data;
 		mpu->open_input = mpu401_open;
@@ -1032,8 +1040,13 @@ static int __devinit create_sscape(int dev, struct snd_card *card)
 		err = -ENXIO;
 		goto _release_dma;
 =======
+<<<<<<< HEAD
+		err = -ENXIO;
+		goto _release_dma;
+=======
 		return -ENXIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	mpu_irq_cfg = get_irq_config(sscape->type, mpu_irq[dev]);
@@ -1043,8 +1056,13 @@ static int __devinit create_sscape(int dev, struct snd_card *card)
 		err = -ENXIO;
 		goto _release_dma;
 =======
+<<<<<<< HEAD
+		err = -ENXIO;
+		goto _release_dma;
+=======
 		return -ENXIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*

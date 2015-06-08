@@ -6,8 +6,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern const char perf_version_string[];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const char perf_usage_string[];
 extern const char perf_more_info_string[];
 
@@ -32,7 +35,11 @@ extern int cmd_stat(int argc, const char **argv, const char *prefix);
 <<<<<<< HEAD
 extern int cmd_periodic(int argc, const char **argv, const char *prefix);
 =======
+<<<<<<< HEAD
+extern int cmd_periodic(int argc, const char **argv, const char *prefix);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int cmd_timechart(int argc, const char **argv, const char *prefix);
 extern int cmd_top(int argc, const char **argv, const char *prefix);
 extern int cmd_script(int argc, const char **argv, const char *prefix);

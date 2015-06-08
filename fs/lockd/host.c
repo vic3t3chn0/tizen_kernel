@@ -21,7 +21,12 @@
 #include <linux/sunrpc/svc_xprt.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/sunrpc/svc_xprt.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/ipv6.h>
 
 #define NLMDBG_FACILITY		NLMDBG_HOSTCACHE
@@ -62,7 +67,11 @@ struct nlm_lookup_host_info {
 <<<<<<< HEAD
 	struct net		*net;		/* network namespace to bind */
 =======
+<<<<<<< HEAD
+	struct net		*net;		/* network namespace to bind */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -167,7 +176,11 @@ static struct nlm_host *nlm_alloc_host(struct nlm_lookup_host_info *ni,
 <<<<<<< HEAD
 	host->net	   = ni->net;
 =======
+<<<<<<< HEAD
+	host->net	   = ni->net;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	return host;
@@ -223,8 +236,13 @@ struct nlm_host *nlmclnt_lookup_host(const struct sockaddr *sap,
 				     int noresvport,
 				     struct net *net)
 =======
+<<<<<<< HEAD
+				     int noresvport,
+				     struct net *net)
+=======
 				     int noresvport)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct nlm_lookup_host_info ni = {
 		.server		= 0,
@@ -238,7 +256,11 @@ struct nlm_host *nlmclnt_lookup_host(const struct sockaddr *sap,
 <<<<<<< HEAD
 		.net		= net,
 =======
+<<<<<<< HEAD
+		.net		= net,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 	struct hlist_head *chain;
 	struct hlist_node *pos;
@@ -257,7 +279,12 @@ struct nlm_host *nlmclnt_lookup_host(const struct sockaddr *sap,
 		if (host->net != net)
 			continue;
 =======
+<<<<<<< HEAD
+		if (host->net != net)
+			continue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rpc_cmp_addr(nlm_addr(host), sap))
 			continue;
 
@@ -348,6 +375,11 @@ struct nlm_host *nlmsvc_lookup_host(const struct svc_rqst *rqstp,
 	size_t src_len = rqstp->rq_daddrlen;
 	struct net *net = rqstp->rq_xprt->xpt_net;
 =======
+<<<<<<< HEAD
+	struct sockaddr *src_sap = svc_daddr(rqstp);
+	size_t src_len = rqstp->rq_daddrlen;
+	struct net *net = rqstp->rq_xprt->xpt_net;
+=======
 	struct sockaddr_in sin = {
 		.sin_family	= AF_INET,
 	};
@@ -357,6 +389,7 @@ struct nlm_host *nlmsvc_lookup_host(const struct svc_rqst *rqstp,
 	struct sockaddr *src_sap;
 	size_t src_len = rqstp->rq_addrlen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nlm_lookup_host_info ni = {
 		.server		= 1,
 		.sap		= svc_addr(rqstp),
@@ -368,7 +401,11 @@ struct nlm_host *nlmsvc_lookup_host(const struct svc_rqst *rqstp,
 <<<<<<< HEAD
 		.net		= net,
 =======
+<<<<<<< HEAD
+		.net		= net,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	dprintk("lockd: %s(host='%*s', vers=%u, proto=%s)\n", __func__,
@@ -377,6 +414,8 @@ struct nlm_host *nlmsvc_lookup_host(const struct svc_rqst *rqstp,
 
 	mutex_lock(&nlm_host_mutex);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	switch (ni.sap->sa_family) {
@@ -395,6 +434,7 @@ struct nlm_host *nlmsvc_lookup_host(const struct svc_rqst *rqstp,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (time_after_eq(jiffies, next_gc))
 		nlm_gc_hosts();
 
@@ -404,7 +444,12 @@ struct nlm_host *nlmsvc_lookup_host(const struct svc_rqst *rqstp,
 		if (host->net != net)
 			continue;
 =======
+<<<<<<< HEAD
+		if (host->net != net)
+			continue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rpc_cmp_addr(nlm_addr(host), ni.sap))
 			continue;
 
@@ -500,8 +545,12 @@ nlm_bind_host(struct nlm_host *host)
 <<<<<<< HEAD
 			.net		= host->net,
 =======
+<<<<<<< HEAD
+			.net		= host->net,
+=======
 			.net		= &init_net,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.protocol	= host->h_proto,
 			.address	= nlm_addr(host),
 			.addrsize	= host->h_addrlen,
@@ -627,6 +676,10 @@ void nlm_host_rebooted(const struct nlm_reboot *info)
 void
 nlm_shutdown_hosts_net(struct net *net)
 =======
+<<<<<<< HEAD
+void
+nlm_shutdown_hosts_net(struct net *net)
+=======
 /*
  * Shut down the hosts module.
  * Note that this routine is called only at server shutdown time.
@@ -634,6 +687,7 @@ nlm_shutdown_hosts_net(struct net *net)
 void
 nlm_shutdown_hosts(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hlist_head *chain;
 	struct hlist_node *pos;
@@ -649,7 +703,12 @@ nlm_shutdown_hosts(void)
 		if (net && host->net != net)
 			continue;
 =======
+<<<<<<< HEAD
+		if (net && host->net != net)
+			continue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		host->h_expires = jiffies - 1;
 		if (host->h_rpcclnt) {
 			rpc_shutdown_client(host->h_rpcclnt);
@@ -661,6 +720,9 @@ nlm_shutdown_hosts(void)
 	nlm_gc_hosts();
 	mutex_unlock(&nlm_host_mutex);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -675,8 +737,11 @@ nlm_shutdown_hosts(void)
 	struct nlm_host	*host;
 
 	nlm_shutdown_hosts_net(NULL);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* complain if any hosts are left */
 	if (nrhosts != 0) {
@@ -688,10 +753,16 @@ nlm_shutdown_hosts(void)
 				host->h_name, atomic_read(&host->h_count),
 				host->h_inuse, host->h_expires, host->net);
 =======
+<<<<<<< HEAD
+			dprintk("       %s (cnt %d use %d exp %ld net %p)\n",
+				host->h_name, atomic_read(&host->h_count),
+				host->h_inuse, host->h_expires, host->net);
+=======
 			dprintk("       %s (cnt %d use %d exp %ld)\n",
 				host->h_name, atomic_read(&host->h_count),
 				host->h_inuse, host->h_expires);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }

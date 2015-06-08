@@ -14,10 +14,15 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int printf(const char *fmt, ...);
 extern void *sbrk(int increment);
 extern int pause(void);
 extern void exit(int);
+<<<<<<< HEAD
+=======
 =======
 extern int errno;
 
@@ -42,6 +47,7 @@ extern int pipe(int *);
 extern int sched_yield(void);
 extern int ptrace(int op, int pid, long addr, long data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

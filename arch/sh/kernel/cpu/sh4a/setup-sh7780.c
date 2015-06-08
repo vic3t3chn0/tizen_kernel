@@ -16,8 +16,11 @@
 #include <linux/sh_timer.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <cpu/dma-register.h>
 
 static struct plat_sci_port scif0_platform_data = {
@@ -30,7 +33,11 @@ static struct plat_sci_port scif0_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif0_device = {
@@ -51,7 +58,11 @@ static struct plat_sci_port scif1_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif1_device = {
@@ -335,7 +346,11 @@ static struct resource sh7780_dmae0_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= 34,
 		.end	= 34,
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_SHAREABLE,
@@ -355,7 +370,11 @@ static struct resource sh7780_dmae1_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= 46,
 		.end	= 46,
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_SHAREABLE,

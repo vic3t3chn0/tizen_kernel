@@ -65,6 +65,11 @@ u32 psw32_user_bits = PSW32_MASK_DAT | PSW32_MASK_IO | PSW32_MASK_EXT |
 		      PSW32_DEFAULT_KEY | PSW32_MASK_BASE | PSW32_MASK_MCHECK |
 		      PSW32_MASK_PSTATE | PSW32_ASC_HOME;
 =======
+<<<<<<< HEAD
+u32 psw32_user_bits = PSW32_MASK_DAT | PSW32_MASK_IO | PSW32_MASK_EXT |
+		      PSW32_DEFAULT_KEY | PSW32_MASK_BASE | PSW32_MASK_MCHECK |
+		      PSW32_MASK_PSTATE | PSW32_ASC_HOME;
+=======
 long psw_user32_bits	= (PSW_BASE32_BITS | PSW_MASK_DAT | PSW_ASC_HOME |
 			   PSW_MASK_IO | PSW_MASK_EXT | PSW_MASK_MCHECK |
 			   PSW_MASK_PSTATE | PSW_DEFAULT_KEY);
@@ -72,6 +77,7 @@ long psw32_user_bits	= (PSW32_BASE_BITS | PSW32_MASK_DAT | PSW32_ASC_HOME |
 			   PSW32_MASK_IO | PSW32_MASK_EXT | PSW32_MASK_MCHECK |
 			   PSW32_MASK_PSTATE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  
 /* For this source file, we want overflow handling. */
 
@@ -289,10 +295,13 @@ asmlinkage long sys32_ipc(u32 call, int first, int second, int third, u32 ptr)
 		return -EINVAL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	call &= 0xffff;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (call) {
 	case SEMTIMEDOP:
 		return compat_sys_semtimedop(first, compat_ptr(ptr),
@@ -377,6 +386,9 @@ asmlinkage long sys32_rt_sigprocmask(int how, compat_sigset_t __user *set,
 <<<<<<< HEAD
 		s.sig[0] = s32.sig[0] | (((long)s32.sig[1]) << 32);
 =======
+<<<<<<< HEAD
+		s.sig[0] = s32.sig[0] | (((long)s32.sig[1]) << 32);
+=======
 		switch (_NSIG_WORDS) {
 		case 4: s.sig[3] = s32.sig[6] | (((long)s32.sig[7]) << 32);
 		case 3: s.sig[2] = s32.sig[4] | (((long)s32.sig[5]) << 32);
@@ -384,6 +396,7 @@ asmlinkage long sys32_rt_sigprocmask(int how, compat_sigset_t __user *set,
 		case 1: s.sig[0] = s32.sig[0] | (((long)s32.sig[1]) << 32);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	set_fs (KERNEL_DS);
 	ret = sys_rt_sigprocmask(how,
@@ -397,6 +410,10 @@ asmlinkage long sys32_rt_sigprocmask(int how, compat_sigset_t __user *set,
 		s32.sig[1] = (s.sig[0] >> 32);
 		s32.sig[0] = s.sig[0];
 =======
+<<<<<<< HEAD
+		s32.sig[1] = (s.sig[0] >> 32);
+		s32.sig[0] = s.sig[0];
+=======
 		switch (_NSIG_WORDS) {
 		case 4: s32.sig[7] = (s.sig[3] >> 32); s32.sig[6] = s.sig[3];
 		case 3: s32.sig[5] = (s.sig[2] >> 32); s32.sig[4] = s.sig[2];
@@ -404,6 +421,7 @@ asmlinkage long sys32_rt_sigprocmask(int how, compat_sigset_t __user *set,
 		case 1: s32.sig[1] = (s.sig[0] >> 32); s32.sig[0] = s.sig[0];
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (copy_to_user (oset, &s32, sizeof(compat_sigset_t)))
 			return -EFAULT;
 	}
@@ -426,6 +444,10 @@ asmlinkage long sys32_rt_sigpending(compat_sigset_t __user *set,
 		s32.sig[1] = (s.sig[0] >> 32);
 		s32.sig[0] = s.sig[0];
 =======
+<<<<<<< HEAD
+		s32.sig[1] = (s.sig[0] >> 32);
+		s32.sig[0] = s.sig[0];
+=======
 		switch (_NSIG_WORDS) {
 		case 4: s32.sig[7] = (s.sig[3] >> 32); s32.sig[6] = s.sig[3];
 		case 3: s32.sig[5] = (s.sig[2] >> 32); s32.sig[4] = s.sig[2];
@@ -433,6 +455,7 @@ asmlinkage long sys32_rt_sigpending(compat_sigset_t __user *set,
 		case 1: s32.sig[1] = (s.sig[0] >> 32); s32.sig[0] = s.sig[0];
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (copy_to_user (set, &s32, sizeof(compat_sigset_t)))
 			return -EFAULT;
 	}
@@ -657,7 +680,11 @@ asmlinkage unsigned long old32_mmap(struct mmap_arg_struct_emu31 __user *arg)
 <<<<<<< HEAD
 	a.addr = (unsigned long) compat_ptr(a.addr);
 =======
+<<<<<<< HEAD
+	a.addr = (unsigned long) compat_ptr(a.addr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return sys_mmap_pgoff(a.addr, a.len, a.prot, a.flags, a.fd,
 			      a.offset >> PAGE_SHIFT);
 }
@@ -671,7 +698,11 @@ asmlinkage long sys32_mmap2(struct mmap_arg_struct_emu31 __user *arg)
 <<<<<<< HEAD
 	a.addr = (unsigned long) compat_ptr(a.addr);
 =======
+<<<<<<< HEAD
+	a.addr = (unsigned long) compat_ptr(a.addr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return sys_mmap_pgoff(a.addr, a.len, a.prot, a.flags, a.fd, a.offset);
 }
 

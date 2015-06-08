@@ -33,7 +33,15 @@
 #include <linux/slab.h>
 
 struct nop_usb_xceiv {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_phy		phy;
+=======
 	struct otg_transceiver	otg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct otg_transceiver	otg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device		*dev;
 };
 
@@ -58,16 +66,57 @@ void usb_nop_xceiv_unregister(void)
 }
 EXPORT_SYMBOL(usb_nop_xceiv_unregister);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int nop_set_suspend(struct usb_phy *x, int suspend)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct nop_usb_xceiv *xceiv_to_nop(struct otg_transceiver *x)
 {
 	return container_of(x, struct nop_usb_xceiv, otg);
 }
 
 static int nop_set_suspend(struct otg_transceiver *x, int suspend)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int nop_set_peripheral(struct usb_otg *otg, struct usb_gadget *gadget)
+{
+	if (!otg)
+		return -ENODEV;
+
+	if (!gadget) {
+		otg->gadget = NULL;
+		return -ENODEV;
+	}
+
+	otg->gadget = gadget;
+	otg->phy->state = OTG_STATE_B_IDLE;
+	return 0;
+}
+
+static int nop_set_host(struct usb_otg *otg, struct usb_bus *host)
+{
+	if (!otg)
+		return -ENODEV;
+
+	if (!host) {
+		otg->host = NULL;
+		return -ENODEV;
+	}
+
+	otg->host = host;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int nop_set_peripheral(struct otg_transceiver *x,
 		struct usb_gadget *gadget)
 {
@@ -103,6 +152,10 @@ static int nop_set_host(struct otg_transceiver *x, struct usb_bus *host)
 	}
 
 	nop->otg.host = host;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -115,6 +168,28 @@ static int __devinit nop_usb_xceiv_probe(struct platform_device *pdev)
 	if (!nop)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	nop->phy.otg = kzalloc(sizeof *nop->phy.otg, GFP_KERNEL);
+	if (!nop->phy.otg) {
+		kfree(nop);
+		return -ENOMEM;
+	}
+
+	nop->dev		= &pdev->dev;
+	nop->phy.dev		= nop->dev;
+	nop->phy.label		= "nop-xceiv";
+	nop->phy.set_suspend	= nop_set_suspend;
+	nop->phy.state		= OTG_STATE_UNDEFINED;
+
+	nop->phy.otg->phy		= &nop->phy;
+	nop->phy.otg->set_host		= nop_set_host;
+	nop->phy.otg->set_peripheral	= nop_set_peripheral;
+
+	err = usb_set_transceiver(&nop->phy);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nop->dev		= &pdev->dev;
 	nop->otg.dev		= nop->dev;
 	nop->otg.label		= "nop-xceiv";
@@ -124,6 +199,10 @@ static int __devinit nop_usb_xceiv_probe(struct platform_device *pdev)
 	nop->otg.set_suspend	= nop_set_suspend;
 
 	err = otg_set_transceiver(&nop->otg);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		dev_err(&pdev->dev, "can't register transceiver, err: %d\n",
 			err);
@@ -132,10 +211,24 @@ static int __devinit nop_usb_xceiv_probe(struct platform_device *pdev)
 
 	platform_set_drvdata(pdev, nop);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ATOMIC_INIT_NOTIFIER_HEAD(&nop->phy.notifier);
+
+	return 0;
+exit:
+	kfree(nop->phy.otg);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ATOMIC_INIT_NOTIFIER_HEAD(&nop->otg.notifier);
 
 	return 0;
 exit:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(nop);
 	return err;
 }
@@ -144,9 +237,22 @@ static int __devexit nop_usb_xceiv_remove(struct platform_device *pdev)
 {
 	struct nop_usb_xceiv *nop = platform_get_drvdata(pdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_set_transceiver(NULL);
+
+	platform_set_drvdata(pdev, NULL);
+	kfree(nop->phy.otg);
+=======
 	otg_set_transceiver(NULL);
 
 	platform_set_drvdata(pdev, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	otg_set_transceiver(NULL);
+
+	platform_set_drvdata(pdev, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(nop);
 
 	return 0;

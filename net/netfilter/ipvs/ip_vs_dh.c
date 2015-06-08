@@ -155,11 +155,17 @@ static int ip_vs_dh_init_svc(struct ip_vs_service *svc)
 		return -ENOMEM;
 
 =======
+<<<<<<< HEAD
+	if (tbl == NULL)
+		return -ENOMEM;
+
+=======
 	if (tbl == NULL) {
 		pr_err("%s(): no memory\n", __func__);
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	svc->sched_data = tbl;
 	IP_VS_DBG(6, "DH hash table (memory=%Zdbytes) allocated for "
 		  "current service\n",

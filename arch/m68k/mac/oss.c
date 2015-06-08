@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  *	Operating System Services (OSS) chip handling
 =======
+<<<<<<< HEAD
+ *	Operating System Services (OSS) chip handling
+=======
  *	OSS handling
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Written by Joshua M. Thompson (funaho@jurai.org)
  *
  *
@@ -26,7 +30,11 @@
 <<<<<<< HEAD
 #include <linux/irq.h>
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/bootinfo.h>
 #include <asm/macintosh.h>
@@ -39,12 +47,15 @@ volatile struct mac_oss *oss;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static irqreturn_t oss_irq(int, void *);
 static irqreturn_t oss_nubus_irq(int, void *);
 
 extern irqreturn_t via1_irq(int, void *);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Initialize the OSS
  *
@@ -64,6 +75,10 @@ void __init oss_init(void)
 	/* do this by setting the source's interrupt level to zero. */
 
 	for (i = 0; i <= OSS_NUM_SOURCES; i++) {
+<<<<<<< HEAD
+		oss->irq_level[i] = 0;
+	}
+=======
 <<<<<<< HEAD
 		oss->irq_level[i] = 0;
 	}
@@ -93,6 +108,7 @@ void __init oss_register_interrupts(void)
 			"via1", (void *) via1))
 		pr_err("Couldn't register %s interrupt\n", "via1");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -105,6 +121,9 @@ void __init oss_nubus_init(void)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Handle miscellaneous OSS interrupts.
  */
 
@@ -134,6 +153,8 @@ static void oss_irq(unsigned int irq, struct irq_desc *desc)
 		oss->irq_pending &= ~OSS_IP_IOPISM;
 		generic_handle_irq(IRQ_MAC_ADB);
 	}
+<<<<<<< HEAD
+=======
 =======
  * Handle miscellaneous OSS interrupts. Right now that's just sound
  * and SCSI; everything else is routed to its own autovector IRQ.
@@ -166,6 +187,7 @@ static irqreturn_t oss_irq(int irq, void *dev_id)
 	}
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -177,8 +199,12 @@ static irqreturn_t oss_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 static void oss_nubus_irq(unsigned int irq, struct irq_desc *desc)
 =======
+<<<<<<< HEAD
+static void oss_nubus_irq(unsigned int irq, struct irq_desc *desc)
+=======
 static irqreturn_t oss_nubus_irq(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int events, irq_bit, i;
 
@@ -187,8 +213,12 @@ static irqreturn_t oss_nubus_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return IRQ_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef DEBUG_NUBUS_INT
 	if (console_loglevel > 7) {
@@ -205,6 +235,9 @@ static irqreturn_t oss_nubus_irq(int irq, void *dev_id)
 		if (events & irq_bit) {
 			oss->irq_pending &= ~irq_bit;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			generic_handle_irq(NUBUS_SOURCE_BASE + i);
 		}
 	} while(events & (irq_bit - 1));
@@ -235,12 +268,15 @@ void __init oss_register_interrupts(void)
 
 	/* OSS_VIA1 gets enabled here because it has no machspec interrupt. */
 	oss->irq_level[OSS_VIA1] = IRQ_AUTO_6;
+<<<<<<< HEAD
+=======
 =======
 			m68k_handle_int(NUBUS_SOURCE_BASE + i);
 		}
 	} while(events & (irq_bit - 1));
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -260,6 +296,9 @@ void oss_irq_enable(int irq) {
 		case IRQ_MAC_SCC:
 			oss->irq_level[OSS_IOPSCC] = OSS_IRQLEV_IOPSCC;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		case IRQ_MAC_ADB:
 			oss->irq_level[OSS_IOPISM] = OSS_IRQLEV_IOPISM;
@@ -267,6 +306,8 @@ void oss_irq_enable(int irq) {
 		case IRQ_MAC_SCSI:
 			oss->irq_level[OSS_SCSI] = OSS_IRQLEV_SCSI;
 			return;
+<<<<<<< HEAD
+=======
 =======
 			break;
 		case IRQ_MAC_ADB:
@@ -276,6 +317,7 @@ void oss_irq_enable(int irq) {
 			oss->irq_level[OSS_SCSI] = OSS_IRQLEV_SCSI;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case IRQ_NUBUS_9:
 		case IRQ_NUBUS_A:
 		case IRQ_NUBUS_B:
@@ -285,11 +327,16 @@ void oss_irq_enable(int irq) {
 			irq -= NUBUS_SOURCE_BASE;
 			oss->irq_level[irq] = OSS_IRQLEV_NUBUS;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 	}
 
 	if (IRQ_SRC(irq) == 1)
 		via_irq_enable(irq);
+<<<<<<< HEAD
+=======
 =======
 			break;
 #ifdef DEBUG_IRQUSE
@@ -299,6 +346,7 @@ void oss_irq_enable(int irq) {
 #endif
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -315,6 +363,9 @@ void oss_irq_disable(int irq) {
 	switch(irq) {
 		case IRQ_MAC_SCC:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			oss->irq_level[OSS_IOPSCC] = 0;
 			return;
 		case IRQ_MAC_ADB:
@@ -323,6 +374,8 @@ void oss_irq_disable(int irq) {
 		case IRQ_MAC_SCSI:
 			oss->irq_level[OSS_SCSI] = 0;
 			return;
+<<<<<<< HEAD
+=======
 =======
 			oss->irq_level[OSS_IOPSCC] = OSS_IRQLEV_DISABLED;
 			break;
@@ -332,6 +385,7 @@ void oss_irq_disable(int irq) {
 		case IRQ_MAC_SCSI:
 			oss->irq_level[OSS_SCSI] = OSS_IRQLEV_DISABLED;
 			break;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case IRQ_NUBUS_9:
 		case IRQ_NUBUS_A:
 		case IRQ_NUBUS_B:
@@ -339,6 +393,8 @@ void oss_irq_disable(int irq) {
 		case IRQ_NUBUS_D:
 		case IRQ_NUBUS_E:
 			irq -= NUBUS_SOURCE_BASE;
+<<<<<<< HEAD
+=======
 			oss->irq_level[irq] = OSS_IRQLEV_DISABLED;
 			break;
 #ifdef DEBUG_IRQUSE
@@ -377,12 +433,15 @@ void oss_irq_clear(int irq) {
 		case IRQ_NUBUS_E:
 			irq -= NUBUS_SOURCE_BASE;
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			oss->irq_level[irq] = 0;
 			return;
 	}
 
 	if (IRQ_SRC(irq) == 1)
 		via_irq_disable(irq);
+<<<<<<< HEAD
+=======
 =======
 			oss->irq_pending &= ~(1 << irq);
 			break;
@@ -417,4 +476,5 @@ int oss_irq_pending(int irq)
 	}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

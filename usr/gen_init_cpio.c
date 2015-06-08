@@ -306,8 +306,12 @@ static int cpio_mkfile(const char *name, const char *location,
 <<<<<<< HEAD
 	int i;
 =======
+<<<<<<< HEAD
+	int i;
+=======
 	unsigned int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mode |= S_IFREG;
 
@@ -386,6 +390,9 @@ error:
 static char *cpio_replace_env(char *new_location)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        char expanded[PATH_MAX + 1];
        char env_var[PATH_MAX + 1];
        char *start;
@@ -405,6 +412,8 @@ static char *cpio_replace_env(char *new_location)
        }
 
        return new_location;
+<<<<<<< HEAD
+=======
 =======
 	char expanded[PATH_MAX + 1];
 	char env_var[PATH_MAX + 1];
@@ -429,6 +438,7 @@ static char *cpio_replace_env(char *new_location)
 
 	return new_location;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 

@@ -27,8 +27,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/mpu401.h>
 #include <sound/initval.h>
@@ -40,6 +44,9 @@ MODULE_LICENSE("GPL");
 static int index[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = -2}; /* exclude the first card */
 static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	/* Enable this card */
 #ifdef CONFIG_PNP
 static bool pnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
@@ -47,6 +54,8 @@ static bool pnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 static long port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;	/* MPU-401 port number */
 static int irq[SNDRV_CARDS] = SNDRV_DEFAULT_IRQ;	/* MPU-401 IRQ */
 static bool uart_enter[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
+<<<<<<< HEAD
+=======
 =======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	/* Enable this card */
 #ifdef CONFIG_PNP
@@ -56,6 +65,7 @@ static long port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;	/* MPU-401 port number */
 static int irq[SNDRV_CARDS] = SNDRV_DEFAULT_IRQ;	/* MPU-401 IRQ */
 static int uart_enter[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for MPU-401 device.");
@@ -103,9 +113,13 @@ static int snd_mpu401_create(int dev, struct snd_card **rcard)
 <<<<<<< HEAD
 				  irq[dev], NULL);
 =======
+<<<<<<< HEAD
+				  irq[dev], NULL);
+=======
 				  irq[dev], irq[dev] >= 0 ? IRQF_DISABLED : 0,
 				  NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		printk(KERN_ERR "MPU401 not detected at 0x%lx\n", port[dev]);
 		goto _err;

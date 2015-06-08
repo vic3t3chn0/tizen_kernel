@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2008, 2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2008, 2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2007-2008 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2007-2011 Nokia Corporation
  *
  * Paul Walmsley, Jouni Högander
@@ -34,8 +38,11 @@ static struct powerdomain dsp_pwrdm = {
 	.prcm_offs	  = OMAP24XX_DSP_MOD,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.omap_chip	  = OMAP_CHIP_INIT(CHIP_IS_OMAP24XX),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pwrsts		  = PWRSTS_OFF_RET_ON,
 	.pwrsts_logic_ret = PWRSTS_RET,
 	.banks		  = 1,
@@ -48,7 +55,11 @@ static struct powerdomain dsp_pwrdm = {
 <<<<<<< HEAD
 	.voltdm           = { .name = "core" },
 =======
+<<<<<<< HEAD
+	.voltdm           = { .name = "core" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct powerdomain mpu_24xx_pwrdm = {
@@ -56,8 +67,11 @@ static struct powerdomain mpu_24xx_pwrdm = {
 	.prcm_offs	  = MPU_MOD,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.omap_chip	  = OMAP_CHIP_INIT(CHIP_IS_OMAP24XX),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pwrsts		  = PWRSTS_OFF_RET_ON,
 	.pwrsts_logic_ret = PWRSTS_OFF_RET,
 	.banks		  = 1,
@@ -70,7 +84,11 @@ static struct powerdomain mpu_24xx_pwrdm = {
 <<<<<<< HEAD
 	.voltdm           = { .name = "core" },
 =======
+<<<<<<< HEAD
+	.voltdm           = { .name = "core" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct powerdomain core_24xx_pwrdm = {
@@ -78,8 +96,11 @@ static struct powerdomain core_24xx_pwrdm = {
 	.prcm_offs	  = CORE_MOD,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.omap_chip	  = OMAP_CHIP_INIT(CHIP_IS_OMAP24XX),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pwrsts		  = PWRSTS_OFF_RET_ON,
 	.banks		  = 3,
 	.pwrsts_mem_ret	  = {
@@ -95,7 +116,11 @@ static struct powerdomain core_24xx_pwrdm = {
 <<<<<<< HEAD
 	.voltdm           = { .name = "core" },
 =======
+<<<<<<< HEAD
+	.voltdm           = { .name = "core" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -105,9 +130,12 @@ static struct powerdomain core_24xx_pwrdm = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SOC_OMAP2430
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* XXX 2430 KILLDOMAINWKUP bit?  No current users apparently */
 
 static struct powerdomain mdm_pwrdm = {
@@ -115,8 +143,11 @@ static struct powerdomain mdm_pwrdm = {
 	.prcm_offs	  = OMAP2430_MDM_MOD,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.omap_chip	  = OMAP_CHIP_INIT(CHIP_IS_OMAP2430),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pwrsts		  = PWRSTS_OFF_RET_ON,
 	.pwrsts_logic_ret = PWRSTS_RET,
 	.banks		  = 1,
@@ -127,6 +158,9 @@ static struct powerdomain mdm_pwrdm = {
 		[0] = PWRSTS_ON,  /* MEMONSTATE */
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.voltdm           = { .name = "core" },
 };
 
@@ -167,6 +201,8 @@ void __init omap243x_powerdomains_init(void)
 	pwrdm_register_pwrdms(powerdomains_omap24xx);
 	pwrdm_register_pwrdms(powerdomains_omap2430);
 	pwrdm_complete_init();
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -194,4 +230,5 @@ void __init omap2xxx_powerdomains_init(void)
 {
 	pwrdm_init(powerdomains_omap2xxx, &omap2_pwrdm_operations);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

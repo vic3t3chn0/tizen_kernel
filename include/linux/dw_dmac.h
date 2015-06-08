@@ -33,6 +33,8 @@ struct dw_dma_platform_data {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * enum dw_dma_slave_width - DMA slave register access width.
  * @DMA_SLAVE_WIDTH_8BIT: Do 8-bit slave register accesses
@@ -46,6 +48,7 @@ enum dw_dma_slave_width {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* bursts size */
 enum dw_dma_msize {
 	DW_DMA_MSIZE_1,
@@ -58,6 +61,8 @@ enum dw_dma_msize {
 	DW_DMA_MSIZE_256,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* flow controller */
@@ -73,10 +78,13 @@ enum dw_dma_fc {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct dw_dma_slave - Controller-specific information about a slave
  *
  * @dma_dev: required DMA master device
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * @tx_reg: physical address of data register used for
@@ -85,10 +93,16 @@ enum dw_dma_fc {
  *	peripheral-to-memory transfers
  * @reg_width: peripheral register width
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @cfg_hi: Platform-specific initializer for the CFG_HI register
  * @cfg_lo: Platform-specific initializer for the CFG_LO register
  * @src_master: src master for transfers on allocated channel.
  * @dst_master: dest master for transfers on allocated channel.
+<<<<<<< HEAD
+ */
+struct dw_dma_slave {
+	struct device		*dma_dev;
+=======
 <<<<<<< HEAD
  */
 struct dw_dma_slave {
@@ -104,16 +118,20 @@ struct dw_dma_slave {
 	dma_addr_t		rx_reg;
 	enum dw_dma_slave_width	reg_width;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			cfg_hi;
 	u32			cfg_lo;
 	u8			src_master;
 	u8			dst_master;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u8			src_msize;
 	u8			dst_msize;
 	u8			fc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Platform-configurable bits in CFG_HI */
@@ -148,8 +166,12 @@ struct dw_cyclic_desc *dw_dma_cyclic_prep(struct dma_chan *chan,
 <<<<<<< HEAD
 		enum dma_transfer_direction direction);
 =======
+<<<<<<< HEAD
+		enum dma_transfer_direction direction);
+=======
 		enum dma_data_direction direction);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dw_dma_cyclic_free(struct dma_chan *chan);
 int dw_dma_cyclic_start(struct dma_chan *chan);
 void dw_dma_cyclic_stop(struct dma_chan *chan);

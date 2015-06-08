@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/mtd/flashchip.h>
 #include <linux/mtd/map.h>
@@ -359,16 +363,22 @@ static inline map_word cfi_build_cmd(u_long cmd, struct map_info *map, struct cf
 		break;
 	case 2:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		onecmd = cpu_to_cfi16(map, cmd);
 		break;
 	case 4:
 		onecmd = cpu_to_cfi32(map, cmd);
+<<<<<<< HEAD
+=======
 =======
 		onecmd = cpu_to_cfi16(cmd);
 		break;
 	case 4:
 		onecmd = cpu_to_cfi32(cmd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -449,16 +459,22 @@ static inline unsigned long cfi_merge_status(map_word val, struct map_info *map,
 		break;
 	case 2:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		res = cfi16_to_cpu(map, res);
 		break;
 	case 4:
 		res = cfi32_to_cpu(map, res);
+<<<<<<< HEAD
+=======
 =======
 		res = cfi16_to_cpu(res);
 		break;
 	case 4:
 		res = cfi32_to_cpu(res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default: BUG();
 	}
@@ -501,8 +517,12 @@ static inline uint8_t cfi_read_query(struct map_info *map, uint32_t addr)
 <<<<<<< HEAD
 		return cfi16_to_cpu(map, val.x[0]);
 =======
+<<<<<<< HEAD
+		return cfi16_to_cpu(map, val.x[0]);
+=======
 		return cfi16_to_cpu(val.x[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* No point in a 64-bit byteswap since that would just be
 		   swapping the responses from different chips, and we are
@@ -510,8 +530,12 @@ static inline uint8_t cfi_read_query(struct map_info *map, uint32_t addr)
 <<<<<<< HEAD
 		return cfi32_to_cpu(map, val.x[0]);
 =======
+<<<<<<< HEAD
+		return cfi32_to_cpu(map, val.x[0]);
+=======
 		return cfi32_to_cpu(val.x[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -525,8 +549,12 @@ static inline uint16_t cfi_read_query16(struct map_info *map, uint32_t addr)
 <<<<<<< HEAD
 		return cfi16_to_cpu(map, val.x[0]);
 =======
+<<<<<<< HEAD
+		return cfi16_to_cpu(map, val.x[0]);
+=======
 		return cfi16_to_cpu(val.x[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* No point in a 64-bit byteswap since that would just be
 		   swapping the responses from different chips, and we are
@@ -534,8 +562,12 @@ static inline uint16_t cfi_read_query16(struct map_info *map, uint32_t addr)
 <<<<<<< HEAD
 		return cfi32_to_cpu(map, val.x[0]);
 =======
+<<<<<<< HEAD
+		return cfi32_to_cpu(map, val.x[0]);
+=======
 		return cfi32_to_cpu(val.x[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

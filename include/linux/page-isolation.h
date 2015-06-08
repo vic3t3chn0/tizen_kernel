@@ -3,6 +3,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef CONFIG_DMA_CMA
 /*
  * Changes migrate type in [start_pfn, end_pfn) to be MIGRATE_ISOLATE.
@@ -38,6 +40,7 @@ extern void unset_migratetype_isolate(struct page *page);
 
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Changes migrate type in [start_pfn, end_pfn) to be MIGRATE_ISOLATE.
  * If specified range includes migrate types other than MOVABLE or CMA,
@@ -52,8 +55,12 @@ start_isolate_page_range(unsigned long start_pfn, unsigned long end_pfn,
 <<<<<<< HEAD
 			 unsigned migratetype);
 =======
+<<<<<<< HEAD
+			 unsigned migratetype);
+=======
 				unsigned migratetype);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Changes MIGRATE_ISOLATE to MIGRATE_MOVABLE.
@@ -64,8 +71,12 @@ undo_isolate_page_range(unsigned long start_pfn, unsigned long end_pfn,
 <<<<<<< HEAD
 			unsigned migratetype);
 =======
+<<<<<<< HEAD
+			unsigned migratetype);
+=======
 				unsigned migratetype);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Test all pages in [start_pfn, end_pfn) are isolated or not.
@@ -80,7 +91,11 @@ extern void unset_migratetype_isolate(struct page *page, unsigned migratetype);
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

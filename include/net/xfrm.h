@@ -271,10 +271,13 @@ struct xfrm_replay {
 			 __be32 net_seq);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int	(*recheck)(struct xfrm_state *x,
 			   struct sk_buff *skb,
 			   __be32 net_seq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void	(*notify)(struct xfrm_state *x, int event);
 	int	(*overflow)(struct xfrm_state *x, struct sk_buff *skb);
 };
@@ -834,6 +837,9 @@ static inline bool addr_match(const void *token1, const void *token2,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool addr4_match(__be32 a1, __be32 a2, u8 prefixlen)
 {
 	/* C99 6.5.7 (3): u32 << 32 is undefined behaviour */
@@ -842,8 +848,11 @@ static inline bool addr4_match(__be32 a1, __be32 a2, u8 prefixlen)
 	return !((a1 ^ a2) & htonl(0xFFFFFFFFu << (32 - prefixlen)));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __inline__
 __be16 xfrm_flowi_sport(const struct flowi *fl, const union flowi_uli *uli)
 {
@@ -1230,9 +1239,14 @@ void xfrm_flowi_addr_get(const struct flowi *fl,
 		*(struct in6_addr *)saddr->a6 = fl->u.ip6.saddr;
 		*(struct in6_addr *)daddr->a6 = fl->u.ip6.daddr;
 =======
+<<<<<<< HEAD
+		*(struct in6_addr *)saddr->a6 = fl->u.ip6.saddr;
+		*(struct in6_addr *)daddr->a6 = fl->u.ip6.daddr;
+=======
 		ipv6_addr_copy((struct in6_addr *)&saddr->a6, &fl->u.ip6.saddr);
 		ipv6_addr_copy((struct in6_addr *)&daddr->a6, &fl->u.ip6.daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 }
@@ -1582,12 +1596,15 @@ extern struct xfrm_algo_desc *xfrm_aead_get_byname(const char *name, int icv_len
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct hash_desc;
 struct scatterlist;
 typedef int (icv_update_fn_t)(struct hash_desc *, struct scatterlist *,
 			      unsigned int);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int xfrm_addr_cmp(const xfrm_address_t *a,
 				const xfrm_address_t *b,
 				int family)

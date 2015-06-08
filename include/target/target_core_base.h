@@ -10,11 +10,16 @@
 #include <net/tcp.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TARGET_CORE_MOD_VERSION		"v4.1.0-rc2-ml"
 #define TARGET_CORE_VERSION		TARGET_CORE_MOD_VERSION
 
 /* Maximum Number of LUNs per Target Portal Group */
 /* Don't raise above 511 or REPORT_LUNS needs to handle >1 page */
+<<<<<<< HEAD
+=======
 =======
 #define TARGET_CORE_MOD_VERSION		"v4.0.0-rc7-ml"
 #define SHUTDOWN_SIGS	(sigmask(SIGKILL)|sigmask(SIGINT)|sigmask(SIGABRT))
@@ -23,6 +28,7 @@
 #define TRANSPORT_IOV_DATA_BUFFER		5
 /* Maximum Number of LUNs per Target Portal Group */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TRANSPORT_MAX_LUNS_PER_TPG		256
 /*
  * By default we use 32-byte CDBs in TCM Core and subsystem plugin code.
@@ -65,6 +71,9 @@
 #define INQUIRY_VPD_DEVICE_IDENTIFIER_LEN	254
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Attempts before moving from SHORT to LONG */
 #define PYX_TRANSPORT_WINDOW_CLOSED_THRESHOLD	3
 #define PYX_TRANSPORT_WINDOW_CLOSED_WAIT_SHORT	3  /* In milliseconds */
@@ -133,8 +142,11 @@
 #define SE_INQUIRY_BUF				512
 #define SE_MODE_PAGE_BUF			512
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* struct se_hba->hba_flags */
 enum hba_flags_table {
 	HBA_FLAGS_INTERNAL_USE	= 0x01,
@@ -154,18 +166,24 @@ enum transport_tpg_type_table {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* struct se_task->task_flags */
 enum se_task_flags {
 	TF_ACTIVE		= (1 << 0),
 	TF_SENT			= (1 << 1),
 	TF_REQUEST_STOP		= (1 << 2),
 	TF_HAS_SENSE		= (1 << 3),
+<<<<<<< HEAD
+=======
 =======
 /* Used for generate timer flags */
 enum timer_flags_table {
 	TF_RUNNING	= 0x01,
 	TF_STOP		= 0x02,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Special transport agnostic struct se_cmd->t_states */
@@ -173,6 +191,9 @@ enum transport_state_table {
 	TRANSPORT_NO_STATE	= 0,
 	TRANSPORT_NEW_CMD	= 1,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TRANSPORT_WRITE_PENDING	= 3,
 	TRANSPORT_PROCESS_WRITE	= 4,
 	TRANSPORT_PROCESSING	= 5,
@@ -182,6 +203,8 @@ enum transport_state_table {
 	TRANSPORT_NEW_CMD_MAP	= 16,
 	TRANSPORT_COMPLETE_QF_WP = 18,
 	TRANSPORT_COMPLETE_QF_OK = 19,
+<<<<<<< HEAD
+=======
 =======
 	TRANSPORT_DEFERRED_CMD	= 2,
 	TRANSPORT_WRITE_PENDING	= 3,
@@ -200,6 +223,7 @@ enum transport_state_table {
 	TRANSPORT_NEW_CMD_MAP	= 16,
 	TRANSPORT_FREE_CMD_INTR = 17,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Used for struct se_cmd->se_cmd_flags */
@@ -210,6 +234,9 @@ enum se_cmd_flags_table {
 	SCF_SCSI_DATA_SG_IO_CDB		= 0x00000008,
 	SCF_SCSI_CONTROL_SG_IO_CDB	= 0x00000010,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SCF_SCSI_NON_DATA_CDB		= 0x00000020,
 	SCF_SCSI_TMR_CDB		= 0x00000040,
 	SCF_SCSI_CDB_EXCEPTION		= 0x00000080,
@@ -218,6 +245,8 @@ enum se_cmd_flags_table {
 	SCF_SE_LUN_CMD			= 0x00000800,
 	SCF_SE_ALLOW_EOO		= 0x00001000,
 	SCF_BIDI			= 0x00002000,
+<<<<<<< HEAD
+=======
 =======
 	SCF_SCSI_CONTROL_NONSG_IO_CDB	= 0x00000020,
 	SCF_SCSI_NON_DATA_CDB		= 0x00000040,
@@ -229,12 +258,18 @@ enum se_cmd_flags_table {
 	SCF_SE_ALLOW_EOO		= 0x00001000,
 	SCF_SE_DISABLE_ONLINE_CHECK	= 0x00002000,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SCF_SENT_CHECK_CONDITION	= 0x00004000,
 	SCF_OVERFLOW_BIT		= 0x00008000,
 	SCF_UNDERFLOW_BIT		= 0x00010000,
 	SCF_SENT_DELAYED_TAS		= 0x00020000,
 	SCF_ALUA_NON_OPTIMIZED		= 0x00040000,
 	SCF_DELAYED_CMD_FROM_SAM_ATTR	= 0x00080000,
+<<<<<<< HEAD
+	SCF_UNUSED			= 0x00100000,
+	SCF_PASSTHROUGH_SG_TO_MEM_NOALLOC = 0x00200000,
+	SCF_ACK_KREF			= 0x00400000,
+=======
 <<<<<<< HEAD
 	SCF_UNUSED			= 0x00100000,
 	SCF_PASSTHROUGH_SG_TO_MEM_NOALLOC = 0x00200000,
@@ -247,6 +282,7 @@ enum se_cmd_flags_table {
 	SCF_EMULATE_CDB_ASYNC		= 0x01000000,
 	SCF_EMULATE_SYNC_UNMAP		= 0x02000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* struct se_dev_entry->lun_flags and struct se_lun->lun_access */
@@ -288,6 +324,9 @@ enum tcm_sense_reason_table {
 	TCM_CHECK_CONDITION_UNIT_ATTENTION	= 0x0e,
 	TCM_CHECK_CONDITION_NOT_READY		= 0x0f,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TCM_RESERVATION_CONFLICT		= 0x10,
 };
 
@@ -319,8 +358,11 @@ enum tcm_tmrsp_table {
 	TMR_TASK_MGMT_FUNCTION_NOT_SUPPORTED	= 5,
 	TMR_FUNCTION_AUTHORIZATION_FAILED = 6,
 	TMR_FUNCTION_REJECTED		= 255,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct se_obj {
@@ -328,8 +370,12 @@ struct se_obj {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Used by TCM Core internally to signal if ALUA emulation is enabled or
@@ -363,12 +409,15 @@ typedef enum {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct scsi_index_table {
 	spinlock_t	lock;
 	u32		scsi_mib_index[SCSI_INDEX_TYPE_MAX];
 } ____cacheline_aligned;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct se_cmd;
 
 struct t10_alua {
@@ -387,20 +436,29 @@ struct t10_alua {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct t10_alua_lu_gp {
 	u16	lu_gp_id;
 	int	lu_gp_valid_id;
 	u32	lu_gp_members;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_t lu_gp_ref_cnt;
 	spinlock_t lu_gp_lock;
 	struct config_group lu_gp_group;
 	struct list_head lu_gp_node;
 	struct list_head lu_gp_mem_list;
 };
+<<<<<<< HEAD
+=======
 =======
 	atomic_t lu_gp_shutdown;
 	atomic_t lu_gp_ref_cnt;
@@ -410,6 +468,7 @@ struct t10_alua_lu_gp {
 	struct list_head lu_gp_mem_list;
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct t10_alua_lu_gp_member {
 	bool lu_gp_assoc;
@@ -421,8 +480,12 @@ struct t10_alua_lu_gp_member {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct t10_alua_tg_pt_gp {
 	u16	tg_pt_gp_id;
@@ -448,8 +511,12 @@ struct t10_alua_tg_pt_gp {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct t10_alua_tg_pt_gp_member {
 	bool tg_pt_gp_assoc;
@@ -461,8 +528,12 @@ struct t10_alua_tg_pt_gp_member {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct t10_vpd {
 	unsigned char device_identifier[INQUIRY_VPD_DEVICE_IDENTIFIER_LEN];
@@ -473,6 +544,9 @@ struct t10_vpd {
 	u32 device_identifier_type;
 	struct list_head vpd_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct t10_wwn {
@@ -480,6 +554,8 @@ struct t10_wwn {
 	char model[16];
 	char revision[4];
 	char unit_serial[INQUIRY_VPD_SERIAL_LEN];
+<<<<<<< HEAD
+=======
 =======
 } ____cacheline_aligned;
 
@@ -489,6 +565,7 @@ struct t10_wwn {
 	unsigned char revision[4];
 	unsigned char unit_serial[INQUIRY_VPD_SERIAL_LEN];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t t10_vpd_lock;
 	struct se_subsystem_dev *t10_sub_dev;
 	struct config_group t10_wwn_group;
@@ -496,8 +573,12 @@ struct t10_wwn {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -553,8 +634,12 @@ struct t10_pr_registration {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * This set of function pointer ops is set based upon SPC3_PERSISTENT_RESERVATIONS,
@@ -571,8 +656,12 @@ struct t10_reservation_ops {
 <<<<<<< HEAD
 struct t10_reservation {
 =======
+<<<<<<< HEAD
+struct t10_reservation {
+=======
 struct t10_reservation_template {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Reservation effects all target ports */
 	int pr_all_tg_pt;
 	/* Activate Persistence across Target Power Loss enabled
@@ -581,8 +670,12 @@ struct t10_reservation_template {
 <<<<<<< HEAD
 	/* Used by struct t10_reservation->pr_aptpl_buf_len */
 =======
+<<<<<<< HEAD
+	/* Used by struct t10_reservation->pr_aptpl_buf_len */
+=======
 	/* Used by struct t10_reservation_template->pr_aptpl_buf_len */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PR_APTPL_BUF_LEN			8192
 	u32 pr_aptpl_buf_len;
 	u32 pr_generation;
@@ -606,6 +699,9 @@ struct t10_reservation_template {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 
 struct se_queue_req {
@@ -614,6 +710,7 @@ struct se_queue_req {
 	struct list_head	qr_list;
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_queue_obj {
 	atomic_t		queue_cnt;
@@ -621,6 +718,9 @@ struct se_queue_obj {
 	struct list_head	qobj_list;
 	wait_queue_head_t	thread_wq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct se_task {
@@ -657,6 +757,8 @@ struct se_tmr_req {
 	struct se_lun		*tmr_lun;
 	struct list_head	tmr_list;
 };
+<<<<<<< HEAD
+=======
 =======
 } ____cacheline_aligned;
 
@@ -750,6 +852,7 @@ struct se_task {
 #define TASK_CMD(task)	((task)->task_se_cmd)
 #define TASK_DEV(task)	((task)->se_dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_cmd {
 	/* SAM response code being sent to initiator */
@@ -767,16 +870,22 @@ struct se_cmd {
 	/* Transport protocol dependent state, see transport_state_table */
 	enum transport_state_table t_state;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Used to signal cmd->se_tfo->check_release_cmd() usage per cmd */
 	unsigned		check_release:1;
 	unsigned		cmd_wait_set:1;
 	unsigned		unknown_data_length:1;
+<<<<<<< HEAD
+=======
 =======
 	/* Transport protocol dependent state for out of order CmdSNs */
 	int			deferred_t_state;
 	/* Transport specific error status */
 	int			transport_error_status;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* See se_cmd_flags_table */
 	u32			se_cmd_flags;
 	u32			se_ordered_id;
@@ -789,6 +898,9 @@ struct se_cmd {
 	/* Persistent Reservation key */
 	u64			pr_res_key;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Used for sense data */
 	void			*sense_buffer;
 	struct list_head	se_delayed_node;
@@ -796,6 +908,8 @@ struct se_cmd {
 	struct list_head	se_qf_node;
 	struct se_device      *se_dev;
 	struct se_dev_entry   *se_deve;
+<<<<<<< HEAD
+=======
 =======
 	atomic_t                transport_sent;
 	/* Used for sense data */
@@ -808,11 +922,15 @@ struct se_cmd {
 	struct se_device	*se_obj_ptr;
 	struct se_device	*se_orig_obj_ptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct se_lun		*se_lun;
 	/* Only used for internal passthrough and legacy TCM fabric modules */
 	struct se_session	*se_sess;
 	struct se_tmr_req	*se_tmr_req;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	se_queue_node;
 	struct list_head	se_cmd_list;
 	struct completion	cmd_wait_comp;
@@ -860,6 +978,8 @@ struct se_cmd {
 	u32			t_task_list_num;
 
 };
+<<<<<<< HEAD
+=======
 =======
 	/* t_task is setup to t_task_backstore in transport_init_se_cmd() */
 	struct se_transport_task *t_task;
@@ -892,6 +1012,7 @@ struct se_tmr_req {
 	struct list_head	tmr_list;
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_ua {
 	u8			ua_asc;
@@ -902,8 +1023,12 @@ struct se_ua {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_node_acl {
 	char			initiatorname[TRANSPORT_IQN_LEN];
@@ -912,7 +1037,11 @@ struct se_node_acl {
 <<<<<<< HEAD
 	bool			acl_stop:1;
 =======
+<<<<<<< HEAD
+	bool			acl_stop:1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			queue_depth;
 	u32			acl_index;
 	u64			num_cmds;
@@ -924,8 +1053,12 @@ struct se_node_acl {
 <<<<<<< HEAD
 	struct se_dev_entry	**device_list;
 =======
+<<<<<<< HEAD
+	struct se_dev_entry	**device_list;
+=======
 	struct se_dev_entry	*device_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct se_session	*nacl_sess;
 	struct se_portal_group *se_tpg;
 	spinlock_t		device_list_lock;
@@ -939,17 +1072,23 @@ struct se_node_acl {
 	struct list_head	acl_list;
 	struct list_head	acl_sess_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct completion	acl_free_comp;
 	struct kref		acl_kref;
 };
 
 struct se_session {
 	unsigned		sess_tearing_down:1;
+<<<<<<< HEAD
+=======
 =======
 } ____cacheline_aligned;
 
 struct se_session {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64			sess_bin_isid;
 	struct se_node_acl	*se_node_acl;
 	struct se_portal_group *se_tpg;
@@ -957,17 +1096,23 @@ struct se_session {
 	struct list_head	sess_list;
 	struct list_head	sess_acl_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	sess_cmd_list;
 	struct list_head	sess_wait_list;
 	spinlock_t		sess_cmd_lock;
 	struct kref		sess_kref;
 };
+<<<<<<< HEAD
+=======
 =======
 } ____cacheline_aligned;
 
 #define SE_SESS(cmd)		((cmd)->se_sess)
 #define SE_NODE_ACL(sess)	((sess)->se_node_acl)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_device;
 struct se_transform_info;
@@ -990,10 +1135,14 @@ struct se_lun_acl {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 }  ____cacheline_aligned;
 
 #define ML_STAT_GRPS(lacl)	(&(lacl)->ml_stat_grps)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_dev_entry {
 	bool			def_pr_registered;
@@ -1021,8 +1170,12 @@ struct se_dev_entry {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 }  ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_dev_limits {
 	/* Max supported HW queue depth */
@@ -1034,8 +1187,12 @@ struct se_dev_limits {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_dev_attrib {
 	int		emulate_dpo;
@@ -1053,22 +1210,33 @@ struct se_dev_attrib {
 	int		is_nonrot;
 	int		emulate_rest_reord;
 =======
+<<<<<<< HEAD
+	int		is_nonrot;
+	int		emulate_rest_reord;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32		hw_block_size;
 	u32		block_size;
 	u32		hw_max_sectors;
 	u32		max_sectors;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32		fabric_max_sectors;
 	u32		optimal_sectors;
 	u32		hw_queue_depth;
 	u32		queue_depth;
+<<<<<<< HEAD
+=======
 =======
 	u32		optimal_sectors;
 	u32		hw_queue_depth;
 	u32		queue_depth;
 	u32		task_timeout;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32		max_unmap_lba_count;
 	u32		max_unmap_block_desc_count;
 	u32		unmap_granularity;
@@ -1078,8 +1246,12 @@ struct se_dev_attrib {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_dev_stat_grps {
 	struct config_group stat_group;
@@ -1109,16 +1281,27 @@ struct se_subsystem_dev {
 	spinlock_t      se_dev_lock;
 	void            *se_dev_su_ptr;
 =======
+<<<<<<< HEAD
+	struct t10_reservation t10_pr;
+	spinlock_t      se_dev_lock;
+	void            *se_dev_su_ptr;
+=======
 	struct t10_reservation_template t10_reservation;
 	spinlock_t      se_dev_lock;
 	void            *se_dev_su_ptr;
 	struct list_head g_se_dev_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct config_group se_dev_group;
 	/* For T10 Reservations */
 	struct config_group se_dev_pr_group;
 	/* For target_core_stat.c groups */
 	struct se_dev_stat_grps dev_stat_grps;
+<<<<<<< HEAD
+};
+
+struct se_device {
+=======
 <<<<<<< HEAD
 };
 
@@ -1136,6 +1319,7 @@ struct se_device {
 	u8			thread_active;
 	u8			dev_status_timer_flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* RELATIVE TARGET PORT IDENTIFER Counter */
 	u16			dev_rpti_counter;
 	/* Used for SAM Task Attribute ordering */
@@ -1146,8 +1330,11 @@ struct se_device {
 	u32			dev_status;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u32			dev_tcq_window_closed;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Physical device queue depth */
 	u32			queue_depth;
 	/* Used for SPC-2 reservations enforce of ISIDs */
@@ -1164,6 +1351,9 @@ struct se_device {
 	spinlock_t		stats_lock;
 	/* Active commands on this virtual SE device */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_t		simple_cmds;
 	atomic_t		dev_ordered_id;
 	atomic_t		execute_tasks;
@@ -1180,6 +1370,8 @@ struct se_device {
 	spinlock_t		se_port_lock;
 	spinlock_t		se_tmr_lock;
 	spinlock_t		qf_cmd_lock;
+<<<<<<< HEAD
+=======
 =======
 	atomic_t		active_cmds;
 	atomic_t		simple_cmds;
@@ -1207,6 +1399,7 @@ struct se_device {
 	spinlock_t		se_port_lock;
 	spinlock_t		se_tmr_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Used for legacy SPC-2 reservationsa */
 	struct se_node_acl	*dev_reserved_node_acl;
 	/* Used for ALUA Logical Unit Group membership */
@@ -1216,6 +1409,9 @@ struct se_device {
 	struct list_head	dev_sep_list;
 	struct list_head	dev_tmr_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Pointer to descriptor for processing thread */
 	struct task_struct	*process_thread;
 	struct work_struct	qf_work_queue;
@@ -1223,6 +1419,8 @@ struct se_device {
 	struct list_head	execute_task_list;
 	struct list_head	state_task_list;
 	struct list_head	qf_cmd_list;
+<<<<<<< HEAD
+=======
 =======
 	struct timer_list	dev_status_timer;
 	/* Pointer to descriptor for processing thread */
@@ -1234,6 +1432,7 @@ struct se_device {
 	struct list_head	execute_task_list;
 	struct list_head	state_task_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Pointer to associated SE HBA */
 	struct se_hba		*se_hba;
 	struct se_subsystem_dev *se_sub_dev;
@@ -1241,6 +1440,9 @@ struct se_device {
 	struct se_subsystem_api *transport;
 	/* Linked list for struct se_hba struct se_device list */
 	struct list_head	dev_list;
+<<<<<<< HEAD
+};
+=======
 <<<<<<< HEAD
 };
 =======
@@ -1253,6 +1455,7 @@ struct se_device {
 #define DEV_ATTRIB(dev)		(&(dev)->se_sub_dev->se_dev_attrib)
 #define DEV_T10_WWN(dev)	(&(dev)->se_sub_dev->t10_wwn)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_hba {
 	u16			hba_tpgt;
@@ -1264,22 +1467,30 @@ struct se_hba {
 	u32			hba_index;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	atomic_t		load_balance_queue;
 	atomic_t		left_queue_depth;
 	/* Maximum queue depth the HBA can handle. */
 	atomic_t		max_queue_depth;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Pointer to transport specific host structure. */
 	void			*hba_ptr;
 	/* Linked list for struct se_device */
 	struct list_head	hba_dev_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	hba_node;
 	spinlock_t		device_lock;
 	struct config_group	hba_group;
 	struct mutex		hba_access_mutex;
 	struct se_subsystem_api *transport;
 };
+<<<<<<< HEAD
+=======
 =======
 	struct list_head	hba_list;
 	spinlock_t		device_lock;
@@ -1291,6 +1502,7 @@ struct se_hba {
 
 #define SE_HBA(dev)		((dev)->se_hba)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_port_stat_grps {
 	struct config_group stat_group;
@@ -1319,11 +1531,15 @@ struct se_lun {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 
 #define SE_LUN(cmd)		((cmd)->se_lun)
 #define PORT_STAT_GRP(lun)	(&(lun)->port_stat_grps)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct scsi_port_stats {
        u64     cmd_pdus;
@@ -1332,8 +1548,12 @@ struct scsi_port_stats {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_port {
 	/* RELATIVE TARGET PORT IDENTIFER */
@@ -1345,8 +1565,11 @@ struct se_port {
 	/* Used for ALUA Target Port Groups membership */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	atomic_t	sep_tg_pt_gp_active;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_t	sep_tg_pt_secondary_offline;
 	/* Used for PR ALL_TG_PT=1 */
 	atomic_t	sep_tg_pt_ref_cnt;
@@ -1360,8 +1583,12 @@ struct se_port {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_tpg_np {
 	struct se_portal_group *tpg_np_parent;
@@ -1369,8 +1596,12 @@ struct se_tpg_np {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_portal_group {
 	/* Type of target portal group, see transport_tpg_type_table */
@@ -1387,16 +1618,22 @@ struct se_portal_group {
 	/* Pointer to $FABRIC_MOD portal group */
 	void			*se_tpg_fabric_ptr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	se_tpg_node;
 	/* linked list for initiator ACL list */
 	struct list_head	acl_node_list;
 	struct se_lun		**tpg_lun_list;
+<<<<<<< HEAD
+=======
 =======
 	struct list_head	se_tpg_list;
 	/* linked list for initiator ACL list */
 	struct list_head	acl_node_list;
 	struct se_lun		*tpg_lun_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct se_lun		tpg_virt_lun0;
 	/* List of TCM sessions associated wth this TPG */
 	struct list_head	tpg_sess_list;
@@ -1413,16 +1650,23 @@ struct se_portal_group {
 <<<<<<< HEAD
 };
 =======
+<<<<<<< HEAD
+};
+=======
 } ____cacheline_aligned;
 
 #define TPG_TFO(se_tpg)	((se_tpg)->se_tpg_tfo)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct se_wwn {
 	struct target_fabric_configfs *wwn_tf;
 	struct config_group	wwn_group;
 	struct config_group	*wwn_default_groups[2];
 	struct config_group	fabric_stat_group;
+<<<<<<< HEAD
+};
+=======
 <<<<<<< HEAD
 };
 =======
@@ -1452,5 +1696,6 @@ struct se_global {
 	spinlock_t		plugin_class_lock;
 } ____cacheline_aligned;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* TARGET_CORE_BASE_H */

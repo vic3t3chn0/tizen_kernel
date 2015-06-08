@@ -13,10 +13,15 @@
 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro	get_irqnr_preamble, base, tmp
 	.endm
 
 	.macro	get_irqnr_and_base, irqnr, irqstat, base, tmp
+<<<<<<< HEAD
+=======
 =======
 #include <asm/hardware/vic.h>
 #include <mach/map.h>
@@ -54,4 +59,5 @@
 	clzne	\irqstat, \irqstat
 	subne	\irqnr, \irqnr, \irqstat
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.endm

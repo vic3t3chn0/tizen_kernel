@@ -165,11 +165,16 @@ DECLARE_PCI_FIXUP_RESUME(PCI_VENDOR_ID_VIA, PCI_DEVICE_ID_VIA_8367_0, pci_fixup_
 static void __devinit pci_fixup_transparent_bridge(struct pci_dev *dev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((dev->device & 0xff00) == 0x2400)
 		dev->transparent = 1;
 }
 DECLARE_PCI_FIXUP_CLASS_HEADER(PCI_VENDOR_ID_INTEL, PCI_ANY_ID,
 			 PCI_CLASS_BRIDGE_PCI, 8, pci_fixup_transparent_bridge);
+<<<<<<< HEAD
+=======
 =======
 	if ((dev->class >> 8) == PCI_CLASS_BRIDGE_PCI &&
 	    (dev->device & 0xff00) == 0x2400)
@@ -177,6 +182,7 @@ DECLARE_PCI_FIXUP_CLASS_HEADER(PCI_VENDOR_ID_INTEL, PCI_ANY_ID,
 }
 DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_INTEL, PCI_ANY_ID, pci_fixup_transparent_bridge);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Fixup for C1 Halt Disconnect problem on nForce2 systems.
@@ -332,10 +338,13 @@ static void __devinit pci_fixup_video(struct pci_dev *pdev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if ((pdev->class >> 8) != PCI_CLASS_DISPLAY_VGA)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Is VGA routed to us? */
 	bus = pdev->bus;
 	while (bus) {
@@ -368,8 +377,13 @@ static void __devinit pci_fixup_video(struct pci_dev *pdev)
 DECLARE_PCI_FIXUP_CLASS_FINAL(PCI_ANY_ID, PCI_ANY_ID,
 				PCI_CLASS_DISPLAY_VGA, 8, pci_fixup_video);
 =======
+<<<<<<< HEAD
+DECLARE_PCI_FIXUP_CLASS_FINAL(PCI_ANY_ID, PCI_ANY_ID,
+				PCI_CLASS_DISPLAY_VGA, 8, pci_fixup_video);
+=======
 DECLARE_PCI_FIXUP_FINAL(PCI_ANY_ID, PCI_ANY_ID, pci_fixup_video);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 static const struct dmi_system_id __devinitconst msi_k8t_dmi_table[] = {
@@ -539,6 +553,8 @@ static void sb600_disable_hpet_bar(struct pci_dev *dev)
 DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_ATI, 0x4385, sb600_disable_hpet_bar);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 /*
  * Twinhead H12Y needs us to block out a region otherwise we map devices
@@ -557,3 +573,4 @@ static void __devinit twinhead_reserve_killing_zone(struct pci_dev *dev)
 }
 DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_INTEL, 0x27B9, twinhead_reserve_killing_zone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

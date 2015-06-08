@@ -54,9 +54,12 @@ static int omap4_clkdm_clear_all_wkup_sleep_deps(struct clockdomain *clkdm)
 	for (cd = clkdm->wkdep_srcs; cd && cd->clkdm_name; cd++) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (!omap_chip_is(cd->omap_chip))
 			continue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!cd->clkdm)
 			continue; /* only happens if data is erroneous */
 
@@ -102,6 +105,10 @@ static int omap4_clkdm_clk_enable(struct clockdomain *clkdm)
 	if (clkdm->flags & CLKDM_CAN_FORCE_WAKEUP)
 		return omap4_clkdm_wakeup(clkdm);
 =======
+<<<<<<< HEAD
+	if (clkdm->flags & CLKDM_CAN_FORCE_WAKEUP)
+		return omap4_clkdm_wakeup(clkdm);
+=======
 	bool hwsup = false;
 
 	hwsup = omap4_cminst_is_clkdm_in_hwsup(clkdm->prcm_partition,
@@ -110,6 +117,7 @@ static int omap4_clkdm_clk_enable(struct clockdomain *clkdm)
 	if (!hwsup)
 		clkdm_wakeup(clkdm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -125,9 +133,14 @@ static int omap4_clkdm_clk_disable(struct clockdomain *clkdm)
 	if (!hwsup && (clkdm->flags & CLKDM_CAN_FORCE_SLEEP))
 		omap4_clkdm_sleep(clkdm);
 =======
+<<<<<<< HEAD
+	if (!hwsup && (clkdm->flags & CLKDM_CAN_FORCE_SLEEP))
+		omap4_clkdm_sleep(clkdm);
+=======
 	if (!hwsup)
 		clkdm_sleep(clkdm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

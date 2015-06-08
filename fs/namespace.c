@@ -10,6 +10,9 @@
 
 #include <linux/syscalls.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/capability.h>
 #include <linux/mnt_namespace.h>
@@ -21,6 +24,8 @@
 #include <linux/fs_struct.h>	/* get_fs_root et.al. */
 #include <linux/fsnotify.h>	/* fsnotify_vfsmount_delete */
 #include <linux/uaccess.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/slab.h>
 #include <linux/sched.h>
@@ -47,6 +52,7 @@
 #include <asm/uaccess.h>
 #include <asm/unistd.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "pnode.h"
 #include "internal.h"
 
@@ -95,8 +101,12 @@ static inline unsigned long hash(struct vfsmount *mnt, struct dentry *dentry)
 <<<<<<< HEAD
 static int mnt_alloc_id(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static int mnt_alloc_id(struct mount *mnt)
+=======
 static int mnt_alloc_id(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int res;
 
@@ -116,8 +126,12 @@ retry:
 <<<<<<< HEAD
 static void mnt_free_id(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static void mnt_free_id(struct mount *mnt)
+=======
 static void mnt_free_id(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int id = mnt->mnt_id;
 	spin_lock(&mnt_id_lock);
@@ -135,8 +149,12 @@ static void mnt_free_id(struct vfsmount *mnt)
 <<<<<<< HEAD
 static int mnt_alloc_group_id(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static int mnt_alloc_group_id(struct mount *mnt)
+=======
 static int mnt_alloc_group_id(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int res;
 
@@ -158,8 +176,12 @@ static int mnt_alloc_group_id(struct vfsmount *mnt)
 <<<<<<< HEAD
 void mnt_release_group_id(struct mount *mnt)
 =======
+<<<<<<< HEAD
+void mnt_release_group_id(struct mount *mnt)
+=======
 void mnt_release_group_id(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int id = mnt->mnt_group_id;
 	ida_remove(&mnt_group_ida, id);
@@ -174,8 +196,12 @@ void mnt_release_group_id(struct vfsmount *mnt)
 <<<<<<< HEAD
 static inline void mnt_add_count(struct mount *mnt, int n)
 =======
+<<<<<<< HEAD
+static inline void mnt_add_count(struct mount *mnt, int n)
+=======
 static inline void mnt_add_count(struct vfsmount *mnt, int n)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_SMP
 	this_cpu_add(mnt->mnt_pcp->mnt_count, n);
@@ -187,10 +213,15 @@ static inline void mnt_add_count(struct vfsmount *mnt, int n)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * vfsmount lock must be held for write
  */
 unsigned int mnt_get_count(struct mount *mnt)
+<<<<<<< HEAD
+=======
 =======
 static inline void mnt_set_count(struct vfsmount *mnt, int n)
 {
@@ -222,6 +253,7 @@ static inline void mnt_dec_count(struct vfsmount *mnt)
  */
 unsigned int mnt_get_count(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_SMP
 	unsigned int count = 0;
@@ -242,10 +274,16 @@ static struct mount *alloc_vfsmnt(const char *name)
 {
 	struct mount *mnt = kmem_cache_zalloc(mnt_cache, GFP_KERNEL);
 =======
+<<<<<<< HEAD
+static struct mount *alloc_vfsmnt(const char *name)
+{
+	struct mount *mnt = kmem_cache_zalloc(mnt_cache, GFP_KERNEL);
+=======
 static struct vfsmount *alloc_vfsmnt(const char *name)
 {
 	struct vfsmount *mnt = kmem_cache_zalloc(mnt_cache, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mnt) {
 		int err;
 
@@ -327,8 +365,12 @@ EXPORT_SYMBOL_GPL(__mnt_is_readonly);
 <<<<<<< HEAD
 static inline void mnt_inc_writers(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static inline void mnt_inc_writers(struct mount *mnt)
+=======
 static inline void mnt_inc_writers(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_SMP
 	this_cpu_inc(mnt->mnt_pcp->mnt_writers);
@@ -340,8 +382,12 @@ static inline void mnt_inc_writers(struct vfsmount *mnt)
 <<<<<<< HEAD
 static inline void mnt_dec_writers(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static inline void mnt_dec_writers(struct mount *mnt)
+=======
 static inline void mnt_dec_writers(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_SMP
 	this_cpu_dec(mnt->mnt_pcp->mnt_writers);
@@ -353,8 +399,12 @@ static inline void mnt_dec_writers(struct vfsmount *mnt)
 <<<<<<< HEAD
 static unsigned int mnt_get_writers(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static unsigned int mnt_get_writers(struct mount *mnt)
+=======
 static unsigned int mnt_get_writers(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_SMP
 	unsigned int count = 0;
@@ -371,6 +421,9 @@ static unsigned int mnt_get_writers(struct vfsmount *mnt)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mnt_is_readonly(struct vfsmount *mnt)
 {
 	if (mnt->mnt_sb->s_readonly_remount)
@@ -380,8 +433,11 @@ static int mnt_is_readonly(struct vfsmount *mnt)
 	return __mnt_is_readonly(mnt);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Most r/o checks on a fs are for operations that take
  * discrete amounts of time, like a write() or unlink().
@@ -395,8 +451,12 @@ static int mnt_is_readonly(struct vfsmount *mnt)
 <<<<<<< HEAD
  * @m: the mount on which to take a write
 =======
+<<<<<<< HEAD
+ * @m: the mount on which to take a write
+=======
  * @mnt: the mount on which to take a write
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This tells the low-level filesystem that a write is
  * about to be performed to it, and makes sure that
@@ -409,9 +469,15 @@ int mnt_want_write(struct vfsmount *m)
 {
 	struct mount *mnt = real_mount(m);
 =======
+<<<<<<< HEAD
+int mnt_want_write(struct vfsmount *m)
+{
+	struct mount *mnt = real_mount(m);
+=======
 int mnt_want_write(struct vfsmount *mnt)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	preempt_disable();
@@ -425,8 +491,12 @@ int mnt_want_write(struct vfsmount *mnt)
 <<<<<<< HEAD
 	while (mnt->mnt.mnt_flags & MNT_WRITE_HOLD)
 =======
+<<<<<<< HEAD
+	while (mnt->mnt.mnt_flags & MNT_WRITE_HOLD)
+=======
 	while (mnt->mnt_flags & MNT_WRITE_HOLD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpu_relax();
 	/*
 	 * After the slowpath clears MNT_WRITE_HOLD, mnt_is_readonly will
@@ -435,10 +505,15 @@ int mnt_want_write(struct vfsmount *mnt)
 	 */
 	smp_rmb();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mnt_is_readonly(m)) {
 		mnt_dec_writers(mnt);
 		ret = -EROFS;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (__mnt_is_readonly(mnt)) {
 		mnt_dec_writers(mnt);
@@ -447,6 +522,7 @@ int mnt_want_write(struct vfsmount *mnt)
 	}
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_enable();
 	return ret;
 }
@@ -473,8 +549,12 @@ int mnt_clone_write(struct vfsmount *mnt)
 <<<<<<< HEAD
 	mnt_inc_writers(real_mount(mnt));
 =======
+<<<<<<< HEAD
+	mnt_inc_writers(real_mount(mnt));
+=======
 	mnt_inc_writers(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_enable();
 	return 0;
 }
@@ -511,13 +591,20 @@ void mnt_drop_write(struct vfsmount *mnt)
 <<<<<<< HEAD
 	mnt_dec_writers(real_mount(mnt));
 =======
+<<<<<<< HEAD
+	mnt_dec_writers(real_mount(mnt));
+=======
 	mnt_dec_writers(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_enable();
 }
 EXPORT_SYMBOL_GPL(mnt_drop_write);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mnt_drop_write_file(struct file *file)
 {
 	mnt_drop_write(file->f_path.mnt);
@@ -525,9 +612,12 @@ void mnt_drop_write_file(struct file *file)
 EXPORT_SYMBOL(mnt_drop_write_file);
 
 static int mnt_make_readonly(struct mount *mnt)
+<<<<<<< HEAD
+=======
 =======
 static int mnt_make_readonly(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret = 0;
 
@@ -535,8 +625,12 @@ static int mnt_make_readonly(struct vfsmount *mnt)
 <<<<<<< HEAD
 	mnt->mnt.mnt_flags |= MNT_WRITE_HOLD;
 =======
+<<<<<<< HEAD
+	mnt->mnt.mnt_flags |= MNT_WRITE_HOLD;
+=======
 	mnt->mnt_flags |= MNT_WRITE_HOLD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * After storing MNT_WRITE_HOLD, we'll read the counters. This store
 	 * should be visible before we do.
@@ -565,8 +659,12 @@ static int mnt_make_readonly(struct vfsmount *mnt)
 <<<<<<< HEAD
 		mnt->mnt.mnt_flags |= MNT_READONLY;
 =======
+<<<<<<< HEAD
+		mnt->mnt.mnt_flags |= MNT_READONLY;
+=======
 		mnt->mnt_flags |= MNT_READONLY;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * MNT_READONLY must become visible before ~MNT_WRITE_HOLD, so writers
 	 * that become unheld will see MNT_READONLY.
@@ -575,13 +673,20 @@ static int mnt_make_readonly(struct vfsmount *mnt)
 <<<<<<< HEAD
 	mnt->mnt.mnt_flags &= ~MNT_WRITE_HOLD;
 =======
+<<<<<<< HEAD
+	mnt->mnt.mnt_flags &= ~MNT_WRITE_HOLD;
+=======
 	mnt->mnt_flags &= ~MNT_WRITE_HOLD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_write_unlock(vfsmount_lock);
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __mnt_unmake_readonly(struct mount *mnt)
 {
 	br_write_lock(vfsmount_lock);
@@ -626,6 +731,8 @@ int sb_prepare_remount_readonly(struct super_block *sb)
 }
 
 static void free_vfsmnt(struct mount *mnt)
+<<<<<<< HEAD
+=======
 =======
 static void __mnt_unmake_readonly(struct vfsmount *mnt)
 {
@@ -636,6 +743,7 @@ static void __mnt_unmake_readonly(struct vfsmount *mnt)
 
 static void free_vfsmnt(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	kfree(mnt->mnt_devname);
 	mnt_free_id(mnt);
@@ -653,8 +761,12 @@ static void free_vfsmnt(struct vfsmount *mnt)
 <<<<<<< HEAD
 struct mount *__lookup_mnt(struct vfsmount *mnt, struct dentry *dentry,
 =======
+<<<<<<< HEAD
+struct mount *__lookup_mnt(struct vfsmount *mnt, struct dentry *dentry,
+=======
 struct vfsmount *__lookup_mnt(struct vfsmount *mnt, struct dentry *dentry,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      int dir)
 {
 	struct list_head *head = mount_hashtable + hash(mnt, dentry);
@@ -662,8 +774,12 @@ struct vfsmount *__lookup_mnt(struct vfsmount *mnt, struct dentry *dentry,
 <<<<<<< HEAD
 	struct mount *p, *found = NULL;
 =======
+<<<<<<< HEAD
+	struct mount *p, *found = NULL;
+=======
 	struct vfsmount *p, *found = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (;;) {
 		tmp = dir ? tmp->next : tmp->prev;
@@ -674,9 +790,14 @@ struct vfsmount *__lookup_mnt(struct vfsmount *mnt, struct dentry *dentry,
 		p = list_entry(tmp, struct mount, mnt_hash);
 		if (&p->mnt_parent->mnt == mnt && p->mnt_mountpoint == dentry) {
 =======
+<<<<<<< HEAD
+		p = list_entry(tmp, struct mount, mnt_hash);
+		if (&p->mnt_parent->mnt == mnt && p->mnt_mountpoint == dentry) {
+=======
 		p = list_entry(tmp, struct vfsmount, mnt_hash);
 		if (p->mnt_parent == mnt && p->mnt_mountpoint == dentry) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			found = p;
 			break;
 		}
@@ -691,6 +812,9 @@ struct vfsmount *__lookup_mnt(struct vfsmount *mnt, struct dentry *dentry,
 struct vfsmount *lookup_mnt(struct path *path)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mount *child_mnt;
 
 	br_read_lock(vfsmount_lock);
@@ -706,6 +830,8 @@ struct vfsmount *lookup_mnt(struct path *path)
 }
 
 static inline int check_mnt(struct mount *mnt)
+<<<<<<< HEAD
+=======
 =======
 	struct vfsmount *child_mnt;
 
@@ -718,6 +844,7 @@ static inline int check_mnt(struct mount *mnt)
 
 static inline int check_mnt(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return mnt->mnt_ns == current->nsproxy->mnt_ns;
 }
@@ -751,8 +878,12 @@ static void __touch_mnt_namespace(struct mnt_namespace *ns)
 <<<<<<< HEAD
 static void dentry_reset_mounted(struct dentry *dentry)
 =======
+<<<<<<< HEAD
+static void dentry_reset_mounted(struct dentry *dentry)
+=======
 static void dentry_reset_mounted(struct vfsmount *mnt, struct dentry *dentry)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned u;
 
@@ -760,8 +891,12 @@ static void dentry_reset_mounted(struct vfsmount *mnt, struct dentry *dentry)
 <<<<<<< HEAD
 		struct mount *p;
 =======
+<<<<<<< HEAD
+		struct mount *p;
+=======
 		struct vfsmount *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		list_for_each_entry(p, &mount_hashtable[u], mnt_hash) {
 			if (p->mnt_mountpoint == dentry)
@@ -777,6 +912,9 @@ static void dentry_reset_mounted(struct vfsmount *mnt, struct dentry *dentry)
  * vfsmount lock must be held for write
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void detach_mnt(struct mount *mnt, struct path *old_path)
 {
 	old_path->dentry = mnt->mnt_mountpoint;
@@ -786,6 +924,8 @@ static void detach_mnt(struct mount *mnt, struct path *old_path)
 	list_del_init(&mnt->mnt_child);
 	list_del_init(&mnt->mnt_hash);
 	dentry_reset_mounted(old_path->dentry);
+<<<<<<< HEAD
+=======
 =======
 static void detach_mnt(struct vfsmount *mnt, struct path *old_path)
 {
@@ -797,18 +937,24 @@ static void detach_mnt(struct vfsmount *mnt, struct path *old_path)
 	list_del_init(&mnt->mnt_hash);
 	dentry_reset_mounted(old_path->mnt, old_path->dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
  * vfsmount lock must be held for write
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mnt_set_mountpoint(struct mount *mnt, struct dentry *dentry,
 			struct mount *child_mnt)
 {
 	mnt_add_count(mnt, 1);	/* essentially, that's mntget */
 	child_mnt->mnt_mountpoint = dget(dentry);
 	child_mnt->mnt_parent = mnt;
+<<<<<<< HEAD
+=======
 =======
 void mnt_set_mountpoint(struct vfsmount *mnt, struct dentry *dentry,
 			struct vfsmount *child_mnt)
@@ -816,6 +962,7 @@ void mnt_set_mountpoint(struct vfsmount *mnt, struct dentry *dentry,
 	child_mnt->mnt_parent = mntget(mnt);
 	child_mnt->mnt_mountpoint = dget(dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&dentry->d_lock);
 	dentry->d_flags |= DCACHE_MOUNTED;
 	spin_unlock(&dentry->d_lock);
@@ -825,6 +972,9 @@ void mnt_set_mountpoint(struct vfsmount *mnt, struct dentry *dentry,
  * vfsmount lock must be held for write
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void attach_mnt(struct mount *mnt, struct path *path)
 {
 	mnt_set_mountpoint(real_mount(path->mnt), path->dentry, mnt);
@@ -834,6 +984,8 @@ static void attach_mnt(struct mount *mnt, struct path *path)
 }
 
 static inline void __mnt_make_longterm(struct mount *mnt)
+<<<<<<< HEAD
+=======
 =======
 static void attach_mnt(struct vfsmount *mnt, struct path *path)
 {
@@ -845,6 +997,7 @@ static void attach_mnt(struct vfsmount *mnt, struct path *path)
 
 static inline void __mnt_make_longterm(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_SMP
 	atomic_inc(&mnt->mnt_longterm);
@@ -855,8 +1008,12 @@ static inline void __mnt_make_longterm(struct vfsmount *mnt)
 <<<<<<< HEAD
 static inline void __mnt_make_shortterm(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static inline void __mnt_make_shortterm(struct mount *mnt)
+=======
 static inline void __mnt_make_shortterm(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_SMP
 	atomic_dec(&mnt->mnt_longterm);
@@ -867,16 +1024,22 @@ static inline void __mnt_make_shortterm(struct vfsmount *mnt)
  * vfsmount lock must be held for write
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void commit_tree(struct mount *mnt)
 {
 	struct mount *parent = mnt->mnt_parent;
 	struct mount *m;
+<<<<<<< HEAD
+=======
 =======
 static void commit_tree(struct vfsmount *mnt)
 {
 	struct vfsmount *parent = mnt->mnt_parent;
 	struct vfsmount *m;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LIST_HEAD(head);
 	struct mnt_namespace *n = parent->mnt_ns;
 
@@ -894,8 +1057,12 @@ static void commit_tree(struct vfsmount *mnt)
 <<<<<<< HEAD
 				hash(&parent->mnt, mnt->mnt_mountpoint));
 =======
+<<<<<<< HEAD
+				hash(&parent->mnt, mnt->mnt_mountpoint));
+=======
 				hash(parent, mnt->mnt_mountpoint));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_add_tail(&mnt->mnt_child, &parent->mnt_mounts);
 	touch_mnt_namespace(n);
 }
@@ -903,8 +1070,12 @@ static void commit_tree(struct vfsmount *mnt)
 <<<<<<< HEAD
 static struct mount *next_mnt(struct mount *p, struct mount *root)
 =======
+<<<<<<< HEAD
+static struct mount *next_mnt(struct mount *p, struct mount *root)
+=======
 static struct vfsmount *next_mnt(struct vfsmount *p, struct vfsmount *root)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct list_head *next = p->mnt_mounts.next;
 	if (next == &p->mnt_mounts) {
@@ -918,6 +1089,9 @@ static struct vfsmount *next_mnt(struct vfsmount *p, struct vfsmount *root)
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return list_entry(next, struct mount, mnt_child);
 }
 
@@ -926,6 +1100,8 @@ static struct mount *skip_mnt_tree(struct mount *p)
 	struct list_head *prev = p->mnt_mounts.prev;
 	while (prev != &p->mnt_mounts) {
 		p = list_entry(prev, struct mount, mnt_child);
+<<<<<<< HEAD
+=======
 =======
 	return list_entry(next, struct vfsmount, mnt_child);
 }
@@ -936,6 +1112,7 @@ static struct vfsmount *skip_mnt_tree(struct vfsmount *p)
 	while (prev != &p->mnt_mounts) {
 		p = list_entry(prev, struct vfsmount, mnt_child);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prev = p->mnt_mounts.prev;
 	}
 	return p;
@@ -947,8 +1124,12 @@ vfs_kern_mount(struct file_system_type *type, int flags, const char *name, void 
 <<<<<<< HEAD
 	struct mount *mnt;
 =======
+<<<<<<< HEAD
+	struct mount *mnt;
+=======
 	struct vfsmount *mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *root;
 
 	if (!type)
@@ -962,8 +1143,12 @@ vfs_kern_mount(struct file_system_type *type, int flags, const char *name, void 
 <<<<<<< HEAD
 		mnt->mnt.mnt_flags = MNT_INTERNAL;
 =======
+<<<<<<< HEAD
+		mnt->mnt.mnt_flags = MNT_INTERNAL;
+=======
 		mnt->mnt_flags = MNT_INTERNAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	root = mount_fs(type, flags, name, data);
 	if (IS_ERR(root)) {
@@ -972,6 +1157,9 @@ vfs_kern_mount(struct file_system_type *type, int flags, const char *name, void 
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mnt->mnt.mnt_root = root;
 	mnt->mnt.mnt_sb = root->d_sb;
 	mnt->mnt_mountpoint = mnt->mnt.mnt_root;
@@ -988,6 +1176,8 @@ static struct mount *clone_mnt(struct mount *old, struct dentry *root,
 {
 	struct super_block *sb = old->mnt.mnt_sb;
 	struct mount *mnt = alloc_vfsmnt(old->mnt_devname);
+<<<<<<< HEAD
+=======
 =======
 	mnt->mnt_root = root;
 	mnt->mnt_sb = root->d_sb;
@@ -1003,6 +1193,7 @@ static struct vfsmount *clone_mnt(struct vfsmount *old, struct dentry *root,
 	struct super_block *sb = old->mnt_sb;
 	struct vfsmount *mnt = alloc_vfsmnt(old->mnt_devname);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mnt) {
 		if (flag & (CL_SLAVE | CL_PRIVATE))
@@ -1017,6 +1208,9 @@ static struct vfsmount *clone_mnt(struct vfsmount *old, struct dentry *root,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mnt->mnt.mnt_flags = old->mnt.mnt_flags & ~MNT_WRITE_HOLD;
 		atomic_inc(&sb->s_active);
 		mnt->mnt.mnt_sb = sb;
@@ -1026,6 +1220,8 @@ static struct vfsmount *clone_mnt(struct vfsmount *old, struct dentry *root,
 		br_write_lock(vfsmount_lock);
 		list_add_tail(&mnt->mnt_instance, &sb->s_mounts);
 		br_write_unlock(vfsmount_lock);
+<<<<<<< HEAD
+=======
 =======
 		mnt->mnt_flags = old->mnt_flags & ~MNT_WRITE_HOLD;
 		atomic_inc(&sb->s_active);
@@ -1034,6 +1230,7 @@ static struct vfsmount *clone_mnt(struct vfsmount *old, struct dentry *root,
 		mnt->mnt_mountpoint = mnt->mnt_root;
 		mnt->mnt_parent = mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (flag & CL_SLAVE) {
 			list_add(&mnt->mnt_slave, &old->mnt_slave_list);
@@ -1064,15 +1261,21 @@ static struct vfsmount *clone_mnt(struct vfsmount *old, struct dentry *root,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void mntfree(struct mount *mnt)
 {
 	struct vfsmount *m = &mnt->mnt;
 	struct super_block *sb = m->mnt_sb;
+<<<<<<< HEAD
+=======
 =======
 static inline void mntfree(struct vfsmount *mnt)
 {
 	struct super_block *sb = mnt->mnt_sb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * This probably indicates that somebody messed
@@ -1089,9 +1292,14 @@ static inline void mntfree(struct vfsmount *mnt)
 	fsnotify_vfsmount_delete(m);
 	dput(m->mnt_root);
 =======
+<<<<<<< HEAD
+	fsnotify_vfsmount_delete(m);
+	dput(m->mnt_root);
+=======
 	fsnotify_vfsmount_delete(mnt);
 	dput(mnt->mnt_root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_vfsmnt(mnt);
 	deactivate_super(sb);
 }
@@ -1099,8 +1307,12 @@ static inline void mntfree(struct vfsmount *mnt)
 <<<<<<< HEAD
 static void mntput_no_expire(struct mount *mnt)
 =======
+<<<<<<< HEAD
+static void mntput_no_expire(struct mount *mnt)
+=======
 static void mntput_no_expire(struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 put_again:
 #ifdef CONFIG_SMP
@@ -1109,8 +1321,12 @@ put_again:
 <<<<<<< HEAD
 		mnt_add_count(mnt, -1);
 =======
+<<<<<<< HEAD
+		mnt_add_count(mnt, -1);
+=======
 		mnt_dec_count(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		br_read_unlock(vfsmount_lock);
 		return;
 	}
@@ -1120,8 +1336,12 @@ put_again:
 <<<<<<< HEAD
 	mnt_add_count(mnt, -1);
 =======
+<<<<<<< HEAD
+	mnt_add_count(mnt, -1);
+=======
 	mnt_dec_count(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mnt_get_count(mnt)) {
 		br_write_unlock(vfsmount_lock);
 		return;
@@ -1130,8 +1350,12 @@ put_again:
 <<<<<<< HEAD
 	mnt_add_count(mnt, -1);
 =======
+<<<<<<< HEAD
+	mnt_add_count(mnt, -1);
+=======
 	mnt_dec_count(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (likely(mnt_get_count(mnt)))
 		return;
 	br_write_lock(vfsmount_lock);
@@ -1141,15 +1365,21 @@ put_again:
 		mnt->mnt_pinned = 0;
 		br_write_unlock(vfsmount_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		acct_auto_close_mnt(&mnt->mnt);
 		goto put_again;
 	}
 	list_del(&mnt->mnt_instance);
+<<<<<<< HEAD
+=======
 =======
 		acct_auto_close_mnt(mnt);
 		goto put_again;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_write_unlock(vfsmount_lock);
 	mntfree(mnt);
 }
@@ -1158,17 +1388,23 @@ void mntput(struct vfsmount *mnt)
 {
 	if (mnt) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mount *m = real_mount(mnt);
 		/* avoid cacheline pingpong, hope gcc doesn't get "smart" */
 		if (unlikely(m->mnt_expiry_mark))
 			m->mnt_expiry_mark = 0;
 		mntput_no_expire(m);
+<<<<<<< HEAD
+=======
 =======
 		/* avoid cacheline pingpong, hope gcc doesn't get "smart" */
 		if (unlikely(mnt->mnt_expiry_mark))
 			mnt->mnt_expiry_mark = 0;
 		mntput_no_expire(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 EXPORT_SYMBOL(mntput);
@@ -1179,8 +1415,12 @@ struct vfsmount *mntget(struct vfsmount *mnt)
 <<<<<<< HEAD
 		mnt_add_count(real_mount(mnt), 1);
 =======
+<<<<<<< HEAD
+		mnt_add_count(real_mount(mnt), 1);
+=======
 		mnt_inc_count(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mnt;
 }
 EXPORT_SYMBOL(mntget);
@@ -1191,19 +1431,28 @@ void mnt_pin(struct vfsmount *mnt)
 <<<<<<< HEAD
 	real_mount(mnt)->mnt_pinned++;
 =======
+<<<<<<< HEAD
+	real_mount(mnt)->mnt_pinned++;
+=======
 	mnt->mnt_pinned++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_write_unlock(vfsmount_lock);
 }
 EXPORT_SYMBOL(mnt_pin);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mnt_unpin(struct vfsmount *m)
 {
 	struct mount *mnt = real_mount(m);
 	br_write_lock(vfsmount_lock);
 	if (mnt->mnt_pinned) {
 		mnt_add_count(mnt, 1);
+<<<<<<< HEAD
+=======
 =======
 void mnt_unpin(struct vfsmount *mnt)
 {
@@ -1211,6 +1460,7 @@ void mnt_unpin(struct vfsmount *mnt)
 	if (mnt->mnt_pinned) {
 		mnt_inc_count(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mnt->mnt_pinned--;
 	}
 	br_write_unlock(vfsmount_lock);
@@ -1231,8 +1481,12 @@ static inline void mangle(struct seq_file *m, const char *s)
 <<<<<<< HEAD
 int generic_show_options(struct seq_file *m, struct dentry *root)
 =======
+<<<<<<< HEAD
+int generic_show_options(struct seq_file *m, struct dentry *root)
+=======
 int generic_show_options(struct seq_file *m, struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const char *options;
 
@@ -1240,8 +1494,12 @@ int generic_show_options(struct seq_file *m, struct vfsmount *mnt)
 <<<<<<< HEAD
 	options = rcu_dereference(root->d_sb->s_options);
 =======
+<<<<<<< HEAD
+	options = rcu_dereference(root->d_sb->s_options);
+=======
 	options = rcu_dereference(mnt->mnt_sb->s_options);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (options != NULL && options[0]) {
 		seq_putc(m, ',');
@@ -1286,16 +1544,22 @@ EXPORT_SYMBOL(replace_mount_options);
 
 #ifdef CONFIG_PROC_FS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* iterator; we want it to have access to namespace_sem, thus here... */
 static void *m_start(struct seq_file *m, loff_t *pos)
 {
 	struct proc_mounts *p = container_of(m, struct proc_mounts, m);
+<<<<<<< HEAD
+=======
 =======
 /* iterator */
 static void *m_start(struct seq_file *m, loff_t *pos)
 {
 	struct proc_mounts *p = m->private;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	down_read(&namespace_sem);
 	return seq_list_start(&p->ns->list, *pos);
@@ -1306,8 +1570,12 @@ static void *m_next(struct seq_file *m, void *v, loff_t *pos)
 <<<<<<< HEAD
 	struct proc_mounts *p = container_of(m, struct proc_mounts, m);
 =======
+<<<<<<< HEAD
+	struct proc_mounts *p = container_of(m, struct proc_mounts, m);
+=======
 	struct proc_mounts *p = m->private;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return seq_list_next(v, &p->ns->list, pos);
 }
@@ -1318,11 +1586,16 @@ static void m_stop(struct seq_file *m, void *v)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int m_show(struct seq_file *m, void *v)
 {
 	struct proc_mounts *p = container_of(m, struct proc_mounts, m);
 	struct mount *r = list_entry(v, struct mount, mnt_list);
 	return p->show(m, &r->mnt);
+<<<<<<< HEAD
+=======
 =======
 int mnt_had_events(struct proc_mounts *p)
 {
@@ -1418,12 +1691,16 @@ static int show_vfsmnt(struct seq_file *m, void *v)
 out:
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 const struct seq_operations mounts_op = {
 	.start	= m_start,
 	.next	= m_next,
 	.stop	= m_stop,
+<<<<<<< HEAD
+	.show	= m_show,
+=======
 <<<<<<< HEAD
 	.show	= m_show,
 =======
@@ -1542,6 +1819,7 @@ const struct seq_operations mountstats_op = {
 	.stop	= m_stop,
 	.show	= show_vfsstat,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif  /* CONFIG_PROC_FS */
 
@@ -1554,6 +1832,9 @@ const struct seq_operations mountstats_op = {
  * busy.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int may_umount_tree(struct vfsmount *m)
 {
 	struct mount *mnt = real_mount(m);
@@ -1561,6 +1842,8 @@ int may_umount_tree(struct vfsmount *m)
 	int minimum_refs = 0;
 	struct mount *p;
 	BUG_ON(!m);
+<<<<<<< HEAD
+=======
 =======
 int may_umount_tree(struct vfsmount *mnt)
 {
@@ -1568,6 +1851,7 @@ int may_umount_tree(struct vfsmount *mnt)
 	int minimum_refs = 0;
 	struct vfsmount *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* write lock needed for mnt_get_count */
 	br_write_lock(vfsmount_lock);
@@ -1606,8 +1890,12 @@ int may_umount(struct vfsmount *mnt)
 <<<<<<< HEAD
 	if (propagate_mount_busy(real_mount(mnt), 2))
 =======
+<<<<<<< HEAD
+	if (propagate_mount_busy(real_mount(mnt), 2))
+=======
 	if (propagate_mount_busy(mnt, 2))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = 0;
 	br_write_unlock(vfsmount_lock);
 	up_read(&namespace_sem);
@@ -1619,6 +1907,9 @@ EXPORT_SYMBOL(may_umount);
 void release_mounts(struct list_head *head)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mount *mnt;
 	while (!list_empty(head)) {
 		mnt = list_first_entry(head, struct mount, mnt_hash);
@@ -1626,6 +1917,8 @@ void release_mounts(struct list_head *head)
 		if (mnt_has_parent(mnt)) {
 			struct dentry *dentry;
 			struct mount *m;
+<<<<<<< HEAD
+=======
 =======
 	struct vfsmount *mnt;
 	while (!list_empty(head)) {
@@ -1635,6 +1928,7 @@ void release_mounts(struct list_head *head)
 			struct dentry *dentry;
 			struct vfsmount *m;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			br_write_lock(vfsmount_lock);
 			dentry = mnt->mnt_mountpoint;
@@ -1642,8 +1936,12 @@ void release_mounts(struct list_head *head)
 <<<<<<< HEAD
 			mnt->mnt_mountpoint = mnt->mnt.mnt_root;
 =======
+<<<<<<< HEAD
+			mnt->mnt_mountpoint = mnt->mnt.mnt_root;
+=======
 			mnt->mnt_mountpoint = mnt->mnt_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mnt->mnt_parent = mnt;
 			m->mnt_ghosts--;
 			br_write_unlock(vfsmount_lock);
@@ -1653,10 +1951,16 @@ void release_mounts(struct list_head *head)
 		}
 		mntput(&mnt->mnt);
 =======
+<<<<<<< HEAD
+			mntput(&m->mnt);
+		}
+		mntput(&mnt->mnt);
+=======
 			mntput(m);
 		}
 		mntput(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1665,16 +1969,22 @@ void release_mounts(struct list_head *head)
  * namespace_sem must be held for write
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void umount_tree(struct mount *mnt, int propagate, struct list_head *kill)
 {
 	LIST_HEAD(tmp_list);
 	struct mount *p;
+<<<<<<< HEAD
+=======
 =======
 void umount_tree(struct vfsmount *mnt, int propagate, struct list_head *kill)
 {
 	LIST_HEAD(tmp_list);
 	struct vfsmount *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (p = mnt; p; p = next_mnt(p, mnt))
 		list_move(&p->mnt_hash, &tmp_list);
@@ -1687,12 +1997,17 @@ void umount_tree(struct vfsmount *mnt, int propagate, struct list_head *kill)
 		list_del_init(&p->mnt_list);
 		__touch_mnt_namespace(p->mnt_ns);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p->mnt_ns = NULL;
 		__mnt_make_shortterm(p);
 		list_del_init(&p->mnt_child);
 		if (mnt_has_parent(p)) {
 			p->mnt_parent->mnt_ghosts++;
 			dentry_reset_mounted(p->mnt_mountpoint);
+<<<<<<< HEAD
+=======
 =======
 		if (p->mnt_ns)
 			__mnt_make_shortterm(p);
@@ -1702,6 +2017,7 @@ void umount_tree(struct vfsmount *mnt, int propagate, struct list_head *kill)
 			p->mnt_parent->mnt_ghosts++;
 			dentry_reset_mounted(p->mnt_parent, p->mnt_mountpoint);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		change_mnt_propagation(p, MS_PRIVATE);
 	}
@@ -1709,6 +2025,9 @@ void umount_tree(struct vfsmount *mnt, int propagate, struct list_head *kill)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void shrink_submounts(struct mount *mnt, struct list_head *umounts);
 
 static int do_umount(struct mount *mnt, int flags)
@@ -1718,6 +2037,8 @@ static int do_umount(struct mount *mnt, int flags)
 	LIST_HEAD(umount_list);
 
 	retval = security_sb_umount(&mnt->mnt, flags);
+<<<<<<< HEAD
+=======
 =======
 static void shrink_submounts(struct vfsmount *mnt, struct list_head *umounts);
 
@@ -1729,6 +2050,7 @@ static int do_umount(struct vfsmount *mnt, int flags)
 
 	retval = security_sb_umount(mnt, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval)
 		return retval;
 
@@ -1742,8 +2064,12 @@ static int do_umount(struct vfsmount *mnt, int flags)
 <<<<<<< HEAD
 		if (&mnt->mnt == current->fs->root.mnt ||
 =======
+<<<<<<< HEAD
+		if (&mnt->mnt == current->fs->root.mnt ||
+=======
 		if (mnt == current->fs->root.mnt ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    flags & (MNT_FORCE | MNT_DETACH))
 			return -EINVAL;
 
@@ -1788,8 +2114,12 @@ static int do_umount(struct vfsmount *mnt, int flags)
 <<<<<<< HEAD
 	if (&mnt->mnt == current->fs->root.mnt && !(flags & MNT_DETACH)) {
 =======
+<<<<<<< HEAD
+	if (&mnt->mnt == current->fs->root.mnt && !(flags & MNT_DETACH)) {
+=======
 	if (mnt == current->fs->root.mnt && !(flags & MNT_DETACH)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Special case for "unmounting" root ...
 		 * we just try to remount it readonly.
@@ -1834,7 +2164,11 @@ SYSCALL_DEFINE2(umount, char __user *, name, int, flags)
 <<<<<<< HEAD
 	struct mount *mnt;
 =======
+<<<<<<< HEAD
+	struct mount *mnt;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int retval;
 	int lookup_flags = 0;
 
@@ -1848,17 +2182,23 @@ SYSCALL_DEFINE2(umount, char __user *, name, int, flags)
 	if (retval)
 		goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mnt = real_mount(path.mnt);
 	retval = -EINVAL;
 	if (path.dentry != path.mnt->mnt_root)
 		goto dput_and_out;
 	if (!check_mnt(mnt))
+<<<<<<< HEAD
+=======
 =======
 	retval = -EINVAL;
 	if (path.dentry != path.mnt->mnt_root)
 		goto dput_and_out;
 	if (!check_mnt(path.mnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto dput_and_out;
 
 	retval = -EPERM;
@@ -1866,11 +2206,16 @@ SYSCALL_DEFINE2(umount, char __user *, name, int, flags)
 		goto dput_and_out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	retval = do_umount(mnt, flags);
 dput_and_out:
 	/* we mustn't call path_put() as that would clear mnt_expiry_mark */
 	dput(path.dentry);
 	mntput_no_expire(mnt);
+<<<<<<< HEAD
+=======
 =======
 	retval = do_umount(path.mnt, flags);
 dput_and_out:
@@ -1878,6 +2223,7 @@ dput_and_out:
 	dput(path.dentry);
 	mntput_no_expire(path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return retval;
 }
@@ -1913,16 +2259,22 @@ static int mount_is_safe(struct path *path)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mount *copy_tree(struct mount *mnt, struct dentry *dentry,
 					int flag)
 {
 	struct mount *res, *p, *q, *r;
+<<<<<<< HEAD
+=======
 =======
 struct vfsmount *copy_tree(struct vfsmount *mnt, struct dentry *dentry,
 					int flag)
 {
 	struct vfsmount *res, *p, *q, *r, *s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct path path;
 
 	if (!(flag & CL_COPY_ALL) && IS_MNT_UNBINDABLE(mnt))
@@ -1938,7 +2290,11 @@ struct vfsmount *copy_tree(struct vfsmount *mnt, struct dentry *dentry,
 <<<<<<< HEAD
 		struct mount *s;
 =======
+<<<<<<< HEAD
+		struct mount *s;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!is_subdir(r->mnt_mountpoint, dentry))
 			continue;
 
@@ -1957,10 +2313,16 @@ struct vfsmount *copy_tree(struct vfsmount *mnt, struct dentry *dentry,
 			path.dentry = p->mnt_mountpoint;
 			q = clone_mnt(p, p->mnt.mnt_root, flag);
 =======
+<<<<<<< HEAD
+			path.mnt = &q->mnt;
+			path.dentry = p->mnt_mountpoint;
+			q = clone_mnt(p, p->mnt.mnt_root, flag);
+=======
 			path.mnt = q;
 			path.dentry = p->mnt_mountpoint;
 			q = clone_mnt(p, p->mnt_root, flag);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!q)
 				goto Enomem;
 			br_write_lock(vfsmount_lock);
@@ -1984,12 +2346,17 @@ Enomem:
 struct vfsmount *collect_mounts(struct path *path)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mount *tree;
 	down_write(&namespace_sem);
 	tree = copy_tree(real_mount(path->mnt), path->dentry,
 			 CL_COPY_ALL | CL_PRIVATE);
 	up_write(&namespace_sem);
 	return tree ? &tree->mnt : NULL;
+<<<<<<< HEAD
+=======
 =======
 	struct vfsmount *tree;
 	down_write(&namespace_sem);
@@ -1997,6 +2364,7 @@ struct vfsmount *collect_mounts(struct path *path)
 	up_write(&namespace_sem);
 	return tree;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void drop_collected_mounts(struct vfsmount *mnt)
@@ -2007,8 +2375,12 @@ void drop_collected_mounts(struct vfsmount *mnt)
 <<<<<<< HEAD
 	umount_tree(real_mount(mnt), 0, &umount_list);
 =======
+<<<<<<< HEAD
+	umount_tree(real_mount(mnt), 0, &umount_list);
+=======
 	umount_tree(mnt, 0, &umount_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_write_unlock(vfsmount_lock);
 	up_write(&namespace_sem);
 	release_mounts(&umount_list);
@@ -2018,12 +2390,17 @@ int iterate_mounts(int (*f)(struct vfsmount *, void *), void *arg,
 		   struct vfsmount *root)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mount *mnt;
 	int res = f(root, arg);
 	if (res)
 		return res;
 	list_for_each_entry(mnt, &real_mount(root)->mnt_list, mnt_list) {
 		res = f(&mnt->mnt, arg);
+<<<<<<< HEAD
+=======
 =======
 	struct vfsmount *mnt;
 	int res = f(root, arg);
@@ -2032,6 +2409,7 @@ int iterate_mounts(int (*f)(struct vfsmount *, void *), void *arg,
 	list_for_each_entry(mnt, &root->mnt_list, mnt_list) {
 		res = f(mnt, arg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (res)
 			return res;
 	}
@@ -2043,10 +2421,16 @@ static void cleanup_group_ids(struct mount *mnt, struct mount *end)
 {
 	struct mount *p;
 =======
+<<<<<<< HEAD
+static void cleanup_group_ids(struct mount *mnt, struct mount *end)
+{
+	struct mount *p;
+=======
 static void cleanup_group_ids(struct vfsmount *mnt, struct vfsmount *end)
 {
 	struct vfsmount *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (p = mnt; p != end; p = next_mnt(p, mnt)) {
 		if (p->mnt_group_id && !IS_MNT_SHARED(p))
@@ -2059,10 +2443,16 @@ static int invent_group_ids(struct mount *mnt, bool recurse)
 {
 	struct mount *p;
 =======
+<<<<<<< HEAD
+static int invent_group_ids(struct mount *mnt, bool recurse)
+{
+	struct mount *p;
+=======
 static int invent_group_ids(struct vfsmount *mnt, bool recurse)
 {
 	struct vfsmount *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (p = mnt; p; p = recurse ? next_mnt(p, mnt) : NULL) {
 		if (!p->mnt_group_id && !IS_MNT_SHARED(p)) {
@@ -2141,6 +2531,9 @@ static int invent_group_ids(struct vfsmount *mnt, bool recurse)
  * in allocations.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int attach_recursive_mnt(struct mount *source_mnt,
 			struct path *path, struct path *parent_path)
 {
@@ -2148,6 +2541,8 @@ static int attach_recursive_mnt(struct mount *source_mnt,
 	struct mount *dest_mnt = real_mount(path->mnt);
 	struct dentry *dest_dentry = path->dentry;
 	struct mount *child, *p;
+<<<<<<< HEAD
+=======
 =======
 static int attach_recursive_mnt(struct vfsmount *source_mnt,
 			struct path *path, struct path *parent_path)
@@ -2157,6 +2552,7 @@ static int attach_recursive_mnt(struct vfsmount *source_mnt,
 	struct dentry *dest_dentry = path->dentry;
 	struct vfsmount *child, *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	if (IS_MNT_SHARED(dest_mnt)) {
@@ -2180,8 +2576,12 @@ static int attach_recursive_mnt(struct vfsmount *source_mnt,
 <<<<<<< HEAD
 		touch_mnt_namespace(source_mnt->mnt_ns);
 =======
+<<<<<<< HEAD
+		touch_mnt_namespace(source_mnt->mnt_ns);
+=======
 		touch_mnt_namespace(parent_path->mnt->mnt_ns);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		mnt_set_mountpoint(dest_mnt, dest_dentry, source_mnt);
 		commit_tree(source_mnt);
@@ -2230,6 +2630,9 @@ static void unlock_mount(struct path *path)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int graft_tree(struct mount *mnt, struct path *path)
 {
 	if (mnt->mnt.mnt_sb->s_flags & MS_NOUSER)
@@ -2237,6 +2640,8 @@ static int graft_tree(struct mount *mnt, struct path *path)
 
 	if (S_ISDIR(path->dentry->d_inode->i_mode) !=
 	      S_ISDIR(mnt->mnt.mnt_root->d_inode->i_mode))
+<<<<<<< HEAD
+=======
 =======
 static int graft_tree(struct vfsmount *mnt, struct path *path)
 {
@@ -2246,6 +2651,7 @@ static int graft_tree(struct vfsmount *mnt, struct path *path)
 	if (S_ISDIR(path->dentry->d_inode->i_mode) !=
 	      S_ISDIR(mnt->mnt_root->d_inode->i_mode))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOTDIR;
 
 	if (d_unlinked(path->dentry))
@@ -2280,8 +2686,13 @@ static int do_change_type(struct path *path, int flag)
 	struct mount *m;
 	struct mount *mnt = real_mount(path->mnt);
 =======
+<<<<<<< HEAD
+	struct mount *m;
+	struct mount *mnt = real_mount(path->mnt);
+=======
 	struct vfsmount *m, *mnt = path->mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int recurse = flag & MS_REC;
 	int type;
 	int err = 0;
@@ -2324,8 +2735,12 @@ static int do_loopback(struct path *path, char *old_name,
 <<<<<<< HEAD
 	struct mount *mnt = NULL, *old;
 =======
+<<<<<<< HEAD
+	struct mount *mnt = NULL, *old;
+=======
 	struct vfsmount *mnt = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = mount_is_safe(path);
 	if (err)
 		return err;
@@ -2340,6 +2755,9 @@ static int do_loopback(struct path *path, char *old_name,
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	old = real_mount(old_path.mnt);
 
 	err = -EINVAL;
@@ -2347,6 +2765,8 @@ static int do_loopback(struct path *path, char *old_name,
 		goto out2;
 
 	if (!check_mnt(real_mount(path->mnt)) || !check_mnt(old))
+<<<<<<< HEAD
+=======
 =======
 	err = -EINVAL;
 	if (IS_MNT_UNBINDABLE(old_path.mnt))
@@ -2354,6 +2774,7 @@ static int do_loopback(struct path *path, char *old_name,
 
 	if (!check_mnt(path->mnt) || !check_mnt(old_path.mnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out2;
 
 	err = -ENOMEM;
@@ -2363,10 +2784,16 @@ static int do_loopback(struct path *path, char *old_name,
 	else
 		mnt = clone_mnt(old, old_path.dentry, 0);
 =======
+<<<<<<< HEAD
+		mnt = copy_tree(old, old_path.dentry, 0);
+	else
+		mnt = clone_mnt(old, old_path.dentry, 0);
+=======
 		mnt = copy_tree(old_path.mnt, old_path.dentry, 0);
 	else
 		mnt = clone_mnt(old_path.mnt, old_path.dentry, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!mnt)
 		goto out2;
@@ -2401,10 +2828,16 @@ static int change_mount_flags(struct vfsmount *mnt, int ms_flags)
 	else
 		__mnt_unmake_readonly(real_mount(mnt));
 =======
+<<<<<<< HEAD
+		error = mnt_make_readonly(real_mount(mnt));
+	else
+		__mnt_unmake_readonly(real_mount(mnt));
+=======
 		error = mnt_make_readonly(mnt);
 	else
 		__mnt_unmake_readonly(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -2421,7 +2854,11 @@ static int do_remount(struct path *path, int flags, int mnt_flags,
 <<<<<<< HEAD
 	struct mount *mnt = real_mount(path->mnt);
 =======
+<<<<<<< HEAD
+	struct mount *mnt = real_mount(path->mnt);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!capable(CAP_SYS_ADMIN))
 		return -EPERM;
@@ -2429,8 +2866,12 @@ static int do_remount(struct path *path, int flags, int mnt_flags,
 <<<<<<< HEAD
 	if (!check_mnt(mnt))
 =======
+<<<<<<< HEAD
+	if (!check_mnt(mnt))
+=======
 	if (!check_mnt(path->mnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	if (path->dentry != path->mnt->mnt_root)
@@ -2451,9 +2892,14 @@ static int do_remount(struct path *path, int flags, int mnt_flags,
 		mnt_flags |= mnt->mnt.mnt_flags & MNT_PROPAGATION_MASK;
 		mnt->mnt.mnt_flags = mnt_flags;
 =======
+<<<<<<< HEAD
+		mnt_flags |= mnt->mnt.mnt_flags & MNT_PROPAGATION_MASK;
+		mnt->mnt.mnt_flags = mnt_flags;
+=======
 		mnt_flags |= path->mnt->mnt_flags & MNT_PROPAGATION_MASK;
 		path->mnt->mnt_flags = mnt_flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		br_write_unlock(vfsmount_lock);
 	}
 	up_write(&sb->s_umount);
@@ -2462,8 +2908,12 @@ static int do_remount(struct path *path, int flags, int mnt_flags,
 <<<<<<< HEAD
 		touch_mnt_namespace(mnt->mnt_ns);
 =======
+<<<<<<< HEAD
+		touch_mnt_namespace(mnt->mnt_ns);
+=======
 		touch_mnt_namespace(path->mnt->mnt_ns);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		br_write_unlock(vfsmount_lock);
 	}
 	return err;
@@ -2474,10 +2924,16 @@ static inline int tree_contains_unbindable(struct mount *mnt)
 {
 	struct mount *p;
 =======
+<<<<<<< HEAD
+static inline int tree_contains_unbindable(struct mount *mnt)
+{
+	struct mount *p;
+=======
 static inline int tree_contains_unbindable(struct vfsmount *mnt)
 {
 	struct vfsmount *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (p = mnt; p; p = next_mnt(p, mnt)) {
 		if (IS_MNT_UNBINDABLE(p))
 			return 1;
@@ -2492,8 +2948,13 @@ static int do_move_mount(struct path *path, char *old_name)
 	struct mount *p;
 	struct mount *old;
 =======
+<<<<<<< HEAD
+	struct mount *p;
+	struct mount *old;
+=======
 	struct vfsmount *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0;
 	if (!capable(CAP_SYS_ADMIN))
 		return -EPERM;
@@ -2508,15 +2969,21 @@ static int do_move_mount(struct path *path, char *old_name)
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	old = real_mount(old_path.mnt);
 	p = real_mount(path->mnt);
 
 	err = -EINVAL;
 	if (!check_mnt(p) || !check_mnt(old))
+<<<<<<< HEAD
+=======
 =======
 	err = -EINVAL;
 	if (!check_mnt(path->mnt) || !check_mnt(old_path.mnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out1;
 
 	if (d_unlinked(path->dentry))
@@ -2529,8 +2996,12 @@ static int do_move_mount(struct path *path, char *old_name)
 <<<<<<< HEAD
 	if (!mnt_has_parent(old))
 =======
+<<<<<<< HEAD
+	if (!mnt_has_parent(old))
+=======
 	if (old_path.mnt == old_path.mnt->mnt_parent)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out1;
 
 	if (S_ISDIR(path->dentry->d_inode->i_mode) !=
@@ -2542,15 +3013,22 @@ static int do_move_mount(struct path *path, char *old_name)
 <<<<<<< HEAD
 	if (IS_MNT_SHARED(old->mnt_parent))
 =======
+<<<<<<< HEAD
+	if (IS_MNT_SHARED(old->mnt_parent))
+=======
 	if (old_path.mnt->mnt_parent &&
 	    IS_MNT_SHARED(old_path.mnt->mnt_parent))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out1;
 	/*
 	 * Don't move a mount tree containing unbindable mounts to a destination
 	 * mount which is shared.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_MNT_SHARED(p) && tree_contains_unbindable(old))
 		goto out1;
 	err = -ELOOP;
@@ -2559,6 +3037,8 @@ static int do_move_mount(struct path *path, char *old_name)
 			goto out1;
 
 	err = attach_recursive_mnt(old, path, &parent_path);
+<<<<<<< HEAD
+=======
 =======
 	if (IS_MNT_SHARED(path->mnt) &&
 	    tree_contains_unbindable(old_path.mnt))
@@ -2570,6 +3050,7 @@ static int do_move_mount(struct path *path, char *old_name)
 
 	err = attach_recursive_mnt(old_path.mnt, path, &parent_path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out1;
 
@@ -2578,8 +3059,12 @@ static int do_move_mount(struct path *path, char *old_name)
 <<<<<<< HEAD
 	list_del_init(&old->mnt_expire);
 =======
+<<<<<<< HEAD
+	list_del_init(&old->mnt_expire);
+=======
 	list_del_init(&old_path.mnt->mnt_expire);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out1:
 	unlock_mount(path);
 out:
@@ -2615,8 +3100,12 @@ static struct vfsmount *fs_set_subtype(struct vfsmount *mnt, const char *fstype)
 <<<<<<< HEAD
 static struct vfsmount *
 =======
+<<<<<<< HEAD
+static struct vfsmount *
+=======
 struct vfsmount *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 do_kern_mount(const char *fstype, int flags, const char *name, void *data)
 {
 	struct file_system_type *type = get_fs_type(fstype);
@@ -2632,8 +3121,11 @@ do_kern_mount(const char *fstype, int flags, const char *name, void *data)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL_GPL(do_kern_mount);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * add a mount into a namespace's mount tree
@@ -2641,8 +3133,12 @@ EXPORT_SYMBOL_GPL(do_kern_mount);
 <<<<<<< HEAD
 static int do_add_mount(struct mount *newmnt, struct path *path, int mnt_flags)
 =======
+<<<<<<< HEAD
+static int do_add_mount(struct mount *newmnt, struct path *path, int mnt_flags)
+=======
 static int do_add_mount(struct vfsmount *newmnt, struct path *path, int mnt_flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 
@@ -2656,8 +3152,12 @@ static int do_add_mount(struct vfsmount *newmnt, struct path *path, int mnt_flag
 <<<<<<< HEAD
 	if (!(mnt_flags & MNT_SHRINKABLE) && !check_mnt(real_mount(path->mnt)))
 =======
+<<<<<<< HEAD
+	if (!(mnt_flags & MNT_SHRINKABLE) && !check_mnt(real_mount(path->mnt)))
+=======
 	if (!(mnt_flags & MNT_SHRINKABLE) && !check_mnt(path->mnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto unlock;
 
 	/* Refuse the same filesystem on the same mount point */
@@ -2665,23 +3165,33 @@ static int do_add_mount(struct vfsmount *newmnt, struct path *path, int mnt_flag
 <<<<<<< HEAD
 	if (path->mnt->mnt_sb == newmnt->mnt.mnt_sb &&
 =======
+<<<<<<< HEAD
+	if (path->mnt->mnt_sb == newmnt->mnt.mnt_sb &&
+=======
 	if (path->mnt->mnt_sb == newmnt->mnt_sb &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    path->mnt->mnt_root == path->dentry)
 		goto unlock;
 
 	err = -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (S_ISLNK(newmnt->mnt.mnt_root->d_inode->i_mode))
 		goto unlock;
 
 	newmnt->mnt.mnt_flags = mnt_flags;
+<<<<<<< HEAD
+=======
 =======
 	if (S_ISLNK(newmnt->mnt_root->d_inode->i_mode))
 		goto unlock;
 
 	newmnt->mnt_flags = mnt_flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = graft_tree(newmnt, path);
 
 unlock:
@@ -2713,8 +3223,12 @@ static int do_new_mount(struct path *path, char *type, int flags,
 <<<<<<< HEAD
 	err = do_add_mount(real_mount(mnt), path, mnt_flags);
 =======
+<<<<<<< HEAD
+	err = do_add_mount(real_mount(mnt), path, mnt_flags);
+=======
 	err = do_add_mount(mnt, path, mnt_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		mntput(mnt);
 	return err;
@@ -2725,7 +3239,11 @@ int finish_automount(struct vfsmount *m, struct path *path)
 <<<<<<< HEAD
 	struct mount *mnt = real_mount(m);
 =======
+<<<<<<< HEAD
+	struct mount *mnt = real_mount(m);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	/* The new mount record should have at least 2 refs to prevent it being
 	 * expired before we get a chance to add it
@@ -2733,8 +3251,12 @@ int finish_automount(struct vfsmount *m, struct path *path)
 <<<<<<< HEAD
 	BUG_ON(mnt_get_count(mnt) < 2);
 =======
+<<<<<<< HEAD
+	BUG_ON(mnt_get_count(mnt) < 2);
+=======
 	BUG_ON(mnt_get_count(m) < 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (m->mnt_sb == path->mnt->mnt_sb &&
 	    m->mnt_root == path->dentry) {
@@ -2745,23 +3267,33 @@ int finish_automount(struct vfsmount *m, struct path *path)
 <<<<<<< HEAD
 	err = do_add_mount(mnt, path, path->mnt->mnt_flags | MNT_SHRINKABLE);
 =======
+<<<<<<< HEAD
+	err = do_add_mount(mnt, path, path->mnt->mnt_flags | MNT_SHRINKABLE);
+=======
 	err = do_add_mount(m, path, path->mnt->mnt_flags | MNT_SHRINKABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!err)
 		return 0;
 fail:
 	/* remove m from any expiration list it may be on */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!list_empty(&mnt->mnt_expire)) {
 		down_write(&namespace_sem);
 		br_write_lock(vfsmount_lock);
 		list_del_init(&mnt->mnt_expire);
+<<<<<<< HEAD
+=======
 =======
 	if (!list_empty(&m->mnt_expire)) {
 		down_write(&namespace_sem);
 		br_write_lock(vfsmount_lock);
 		list_del_init(&m->mnt_expire);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		br_write_unlock(vfsmount_lock);
 		up_write(&namespace_sem);
 	}
@@ -2783,8 +3315,12 @@ void mnt_set_expiry(struct vfsmount *mnt, struct list_head *expiry_list)
 <<<<<<< HEAD
 	list_add_tail(&real_mount(mnt)->mnt_expire, expiry_list);
 =======
+<<<<<<< HEAD
+	list_add_tail(&real_mount(mnt)->mnt_expire, expiry_list);
+=======
 	list_add_tail(&mnt->mnt_expire, expiry_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	br_write_unlock(vfsmount_lock);
 	up_write(&namespace_sem);
@@ -2801,8 +3337,12 @@ void mark_mounts_for_expiry(struct list_head *mounts)
 <<<<<<< HEAD
 	struct mount *mnt, *next;
 =======
+<<<<<<< HEAD
+	struct mount *mnt, *next;
+=======
 	struct vfsmount *mnt, *next;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LIST_HEAD(graveyard);
 	LIST_HEAD(umounts);
 
@@ -2828,8 +3368,12 @@ void mark_mounts_for_expiry(struct list_head *mounts)
 <<<<<<< HEAD
 		mnt = list_first_entry(&graveyard, struct mount, mnt_expire);
 =======
+<<<<<<< HEAD
+		mnt = list_first_entry(&graveyard, struct mount, mnt_expire);
+=======
 		mnt = list_first_entry(&graveyard, struct vfsmount, mnt_expire);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		touch_mnt_namespace(mnt->mnt_ns);
 		umount_tree(mnt, 1, &umounts);
 	}
@@ -2852,10 +3396,16 @@ static int select_submounts(struct mount *parent, struct list_head *graveyard)
 {
 	struct mount *this_parent = parent;
 =======
+<<<<<<< HEAD
+static int select_submounts(struct mount *parent, struct list_head *graveyard)
+{
+	struct mount *this_parent = parent;
+=======
 static int select_submounts(struct vfsmount *parent, struct list_head *graveyard)
 {
 	struct vfsmount *this_parent = parent;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head *next;
 	int found = 0;
 
@@ -2865,16 +3415,22 @@ resume:
 	while (next != &this_parent->mnt_mounts) {
 		struct list_head *tmp = next;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mount *mnt = list_entry(tmp, struct mount, mnt_child);
 
 		next = tmp->next;
 		if (!(mnt->mnt.mnt_flags & MNT_SHRINKABLE))
+<<<<<<< HEAD
+=======
 =======
 		struct vfsmount *mnt = list_entry(tmp, struct vfsmount, mnt_child);
 
 		next = tmp->next;
 		if (!(mnt->mnt_flags & MNT_SHRINKABLE))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		/*
 		 * Descend a level if the d_mounts list is non-empty.
@@ -2907,16 +3463,22 @@ resume:
  * vfsmount_lock must be held for write
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void shrink_submounts(struct mount *mnt, struct list_head *umounts)
 {
 	LIST_HEAD(graveyard);
 	struct mount *m;
+<<<<<<< HEAD
+=======
 =======
 static void shrink_submounts(struct vfsmount *mnt, struct list_head *umounts)
 {
 	LIST_HEAD(graveyard);
 	struct vfsmount *m;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* extract submounts of 'mountpoint' from the expiration list */
 	while (select_submounts(mnt, &graveyard)) {
@@ -2924,8 +3486,12 @@ static void shrink_submounts(struct vfsmount *mnt, struct list_head *umounts)
 <<<<<<< HEAD
 			m = list_first_entry(&graveyard, struct mount,
 =======
+<<<<<<< HEAD
+			m = list_first_entry(&graveyard, struct mount,
+=======
 			m = list_first_entry(&graveyard, struct vfsmount,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						mnt_expire);
 			touch_mnt_namespace(m->mnt_ns);
 			umount_tree(m, 1, umounts);
@@ -3113,6 +3679,9 @@ static struct mnt_namespace *alloc_mnt_ns(void)
 void mnt_make_longterm(struct vfsmount *mnt)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__mnt_make_longterm(real_mount(mnt));
 }
 
@@ -3120,6 +3689,8 @@ void mnt_make_shortterm(struct vfsmount *m)
 {
 #ifdef CONFIG_SMP
 	struct mount *mnt = real_mount(m);
+<<<<<<< HEAD
+=======
 =======
 	__mnt_make_longterm(mnt);
 }
@@ -3128,6 +3699,7 @@ void mnt_make_shortterm(struct vfsmount *mnt)
 {
 #ifdef CONFIG_SMP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (atomic_add_unless(&mnt->mnt_longterm, -1, 1))
 		return;
 	br_write_lock(vfsmount_lock);
@@ -3150,8 +3722,14 @@ static struct mnt_namespace *dup_mnt_ns(struct mnt_namespace *mnt_ns,
 	struct mount *old = mnt_ns->root;
 	struct mount *new;
 =======
+<<<<<<< HEAD
+	struct mount *p, *q;
+	struct mount *old = mnt_ns->root;
+	struct mount *new;
+=======
 	struct vfsmount *p, *q;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	new_ns = alloc_mnt_ns();
 	if (IS_ERR(new_ns))
@@ -3163,10 +3741,15 @@ static struct mnt_namespace *dup_mnt_ns(struct mnt_namespace *mnt_ns,
 	new = copy_tree(old, old->mnt.mnt_root, CL_COPY_ALL | CL_EXPIRE);
 	if (!new) {
 =======
+<<<<<<< HEAD
+	new = copy_tree(old, old->mnt.mnt_root, CL_COPY_ALL | CL_EXPIRE);
+	if (!new) {
+=======
 	new_ns->root = copy_tree(mnt_ns->root, mnt_ns->root->mnt_root,
 					CL_COPY_ALL | CL_EXPIRE);
 	if (!new_ns->root) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		up_write(&namespace_sem);
 		kfree(new_ns);
 		return ERR_PTR(-ENOMEM);
@@ -3176,9 +3759,15 @@ static struct mnt_namespace *dup_mnt_ns(struct mnt_namespace *mnt_ns,
 	br_write_lock(vfsmount_lock);
 	list_add_tail(&new_ns->list, &new->mnt_list);
 =======
+<<<<<<< HEAD
+	new_ns->root = new;
+	br_write_lock(vfsmount_lock);
+	list_add_tail(&new_ns->list, &new->mnt_list);
+=======
 	br_write_lock(vfsmount_lock);
 	list_add_tail(&new_ns->list, &new_ns->root->mnt_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_write_unlock(vfsmount_lock);
 
 	/*
@@ -3190,14 +3779,22 @@ static struct mnt_namespace *dup_mnt_ns(struct mnt_namespace *mnt_ns,
 	p = old;
 	q = new;
 =======
+<<<<<<< HEAD
+	p = old;
+	q = new;
+=======
 	p = mnt_ns->root;
 	q = new_ns->root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (p) {
 		q->mnt_ns = new_ns;
 		__mnt_make_longterm(q);
 		if (fs) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (&p->mnt == fs->root.mnt) {
 				fs->root.mnt = mntget(&q->mnt);
 				__mnt_make_longterm(q);
@@ -3213,6 +3810,8 @@ static struct mnt_namespace *dup_mnt_ns(struct mnt_namespace *mnt_ns,
 		}
 		p = next_mnt(p, old);
 		q = next_mnt(q, new);
+<<<<<<< HEAD
+=======
 =======
 			if (p == fs->root.mnt) {
 				fs->root.mnt = mntget(q);
@@ -3230,6 +3829,7 @@ static struct mnt_namespace *dup_mnt_ns(struct mnt_namespace *mnt_ns,
 		p = next_mnt(p, mnt_ns->root);
 		q = next_mnt(q, new_ns->root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	up_write(&namespace_sem);
 
@@ -3263,6 +3863,9 @@ struct mnt_namespace *copy_mnt_ns(unsigned long flags, struct mnt_namespace *ns,
  * @mnt: pointer to the new root filesystem mountpoint
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct mnt_namespace *create_mnt_ns(struct vfsmount *m)
 {
 	struct mnt_namespace *new_ns = alloc_mnt_ns();
@@ -3307,6 +3910,8 @@ struct dentry *mount_subtree(struct vfsmount *mnt, const char *name)
 	return path.dentry;
 }
 EXPORT_SYMBOL(mount_subtree);
+<<<<<<< HEAD
+=======
 =======
 struct mnt_namespace *create_mnt_ns(struct vfsmount *mnt)
 {
@@ -3323,6 +3928,7 @@ struct mnt_namespace *create_mnt_ns(struct vfsmount *mnt)
 }
 EXPORT_SYMBOL(create_mnt_ns);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SYSCALL_DEFINE5(mount, char __user *, dev_name, char __user *, dir_name,
 		char __user *, type, unsigned long, flags, void __user *, data)
@@ -3367,6 +3973,9 @@ out_type:
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Return true if path is reachable from root
  *
  * namespace_sem or vfsmount_lock is held
@@ -3392,8 +4001,11 @@ int path_is_under(struct path *path1, struct path *path2)
 EXPORT_SYMBOL(path_is_under);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pivot_root Semantics:
  * Moves the root file system of the current process to the directory put_old,
  * makes new_root as the new root file system of the current process, and sets
@@ -3425,9 +4037,14 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 	struct path new, old, parent_path, root_parent, root;
 	struct mount *new_mnt, *root_mnt;
 =======
+<<<<<<< HEAD
+	struct path new, old, parent_path, root_parent, root;
+	struct mount *new_mnt, *root_mnt;
+=======
 	struct vfsmount *tmp;
 	struct path new, old, parent_path, root_parent, root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	if (!capable(CAP_SYS_ADMIN))
@@ -3452,6 +4069,9 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 
 	error = -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	new_mnt = real_mount(new.mnt);
 	root_mnt = real_mount(root.mnt);
 	if (IS_MNT_SHARED(real_mount(old.mnt)) ||
@@ -3459,6 +4079,8 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 		IS_MNT_SHARED(root_mnt->mnt_parent))
 		goto out4;
 	if (!check_mnt(root_mnt) || !check_mnt(new_mnt))
+<<<<<<< HEAD
+=======
 =======
 	if (IS_MNT_SHARED(old.mnt) ||
 		IS_MNT_SHARED(new.mnt->mnt_parent) ||
@@ -3466,6 +4088,7 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 		goto out4;
 	if (!check_mnt(root.mnt) || !check_mnt(new.mnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out4;
 	error = -ENOENT;
 	if (d_unlinked(new.dentry))
@@ -3480,6 +4103,9 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 	if (root.mnt->mnt_root != root.dentry)
 		goto out4; /* not a mountpoint */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!mnt_has_parent(root_mnt))
 		goto out4; /* not attached */
 	if (new.mnt->mnt_root != new.dentry)
@@ -3496,6 +4122,8 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 	attach_mnt(root_mnt, &old);
 	/* mount new_root on / */
 	attach_mnt(new_mnt, &root_parent);
+<<<<<<< HEAD
+=======
 =======
 	if (root.mnt->mnt_parent == root.mnt)
 		goto out4; /* not attached */
@@ -3525,6 +4153,7 @@ SYSCALL_DEFINE2(pivot_root, const char __user *, new_root,
 	/* mount new_root on / */
 	attach_mnt(new.mnt, &root_parent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	touch_mnt_namespace(current->nsproxy->mnt_ns);
 	br_write_unlock(vfsmount_lock);
 	chroot_fs_refs(&root, &new);
@@ -3566,9 +4195,14 @@ static void __init init_mount_tree(void)
 	root.mnt = mnt;
 	root.dentry = mnt->mnt_root;
 =======
+<<<<<<< HEAD
+	root.mnt = mnt;
+	root.dentry = mnt->mnt_root;
+=======
 	root.mnt = ns->root;
 	root.dentry = ns->root->mnt_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	set_fs_pwd(current->fs, &root);
 	set_fs_root(current->fs, &root);
@@ -3584,8 +4218,12 @@ void __init mnt_init(void)
 <<<<<<< HEAD
 	mnt_cache = kmem_cache_create("mnt_cache", sizeof(struct mount),
 =======
+<<<<<<< HEAD
+	mnt_cache = kmem_cache_create("mnt_cache", sizeof(struct mount),
+=======
 	mnt_cache = kmem_cache_create("mnt_cache", sizeof(struct vfsmount),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			0, SLAB_HWCACHE_ALIGN | SLAB_PANIC, NULL);
 
 	mount_hashtable = (struct list_head *)__get_free_page(GFP_ATOMIC);
@@ -3626,6 +4264,9 @@ void put_mnt_ns(struct mnt_namespace *ns)
 	kfree(ns);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct vfsmount *kern_mount_data(struct file_system_type *type, void *data)
 {
@@ -3655,6 +4296,8 @@ EXPORT_SYMBOL(kern_unmount);
 bool our_mnt(struct vfsmount *mnt)
 {
 	return check_mnt(real_mount(mnt));
+<<<<<<< HEAD
+=======
 =======
 EXPORT_SYMBOL(put_mnt_ns);
 
@@ -3668,4 +4311,5 @@ bool our_mnt(struct vfsmount *mnt)
 {
 	return check_mnt(mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

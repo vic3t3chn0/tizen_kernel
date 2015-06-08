@@ -24,8 +24,13 @@
 #include <linux/pm_runtime.h>
 #include <linux/regmap.h>
 =======
+<<<<<<< HEAD
+#include <linux/pm_runtime.h>
+#include <linux/regmap.h>
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
 #include <linux/workqueue.h>
@@ -58,7 +63,11 @@ struct wm8962_priv {
 <<<<<<< HEAD
 	struct regmap *regmap;
 =======
+<<<<<<< HEAD
+	struct regmap *regmap;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_soc_codec *codec;
 
 	int sysclk;
@@ -76,7 +85,12 @@ struct wm8962_priv {
 	u16 dsp2_ena;
 
 =======
+<<<<<<< HEAD
+	u16 dsp2_ena;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct delayed_work mic_work;
 	struct snd_soc_jack *jack;
 
@@ -96,7 +110,12 @@ struct wm8962_priv {
 
 	int irq;
 =======
+<<<<<<< HEAD
+
+	int irq;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* We can't use the same notifier block for more than one supply and
@@ -113,8 +132,12 @@ static int wm8962_regulator_event_##n(struct notifier_block *nb, \
 <<<<<<< HEAD
 		regcache_mark_dirty(wm8962->regmap);	\
 =======
+<<<<<<< HEAD
+		regcache_mark_dirty(wm8962->regmap);	\
+=======
 		wm8962->codec->cache_sync = 1; \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} \
 	return 0; \
 }
@@ -129,6 +152,9 @@ WM8962_REGULATOR_EVENT(6)
 WM8962_REGULATOR_EVENT(7)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct reg_default wm8962_reg[] = {
 	{ 0, 0x009F },   /* R0     - Left Input volume */
 	{ 1, 0x049F },   /* R1     - Right Input volume */
@@ -1468,6 +1494,8 @@ static int wm8962_reset(struct wm8962_priv *wm8962)
 		return ret;
 
 	return regmap_write(wm8962->regmap, WM8962_PLL_SOFTWARE_RESET, 0);
+<<<<<<< HEAD
+=======
 =======
 static const u16 wm8962_reg[WM8962_MAX_REGISTER + 1] = {
 	[0] = 0x009F,     /* R0     - Left Input volume */
@@ -3329,6 +3357,7 @@ static int wm8962_reset(struct snd_soc_codec *codec)
 
 	return snd_soc_write(codec, WM8962_PLL_SOFTWARE_RESET, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const DECLARE_TLV_DB_SCALE(inpga_tlv, -2325, 75, 0);
@@ -3337,8 +3366,12 @@ static const unsigned int mixinpga_tlv[] = {
 <<<<<<< HEAD
 	TLV_DB_RANGE_HEAD(5),
 =======
+<<<<<<< HEAD
+	TLV_DB_RANGE_HEAD(5),
+=======
 	TLV_DB_RANGE_HEAD(7),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	0, 1, TLV_DB_SCALE_ITEM(0, 600, 0),
 	2, 2, TLV_DB_SCALE_ITEM(1300, 1300, 0),
 	3, 4, TLV_DB_SCALE_ITEM(1800, 200, 0),
@@ -3354,6 +3387,9 @@ static const DECLARE_TLV_DB_SCALE(out_tlv, -12100, 100, 1);
 static const DECLARE_TLV_DB_SCALE(hp_tlv, -700, 100, 0);
 static const unsigned int classd_tlv[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TLV_DB_RANGE_HEAD(2),
 	0, 6, TLV_DB_SCALE_ITEM(0, 150, 0),
 	7, 7, TLV_DB_SCALE_ITEM(1200, 0, 0),
@@ -3475,12 +3511,15 @@ out:
 
 	return ret;
 }
+<<<<<<< HEAD
+=======
 =======
 	TLV_DB_RANGE_HEAD(7),
 	0, 6, TLV_DB_SCALE_ITEM(0, 150, 0),
 	7, 7, TLV_DB_SCALE_ITEM(1200, 0, 0),
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The VU bits for the headphones are in a different register to the mute
  * bits and only take effect on the PGA if it is actually powered.
@@ -3548,6 +3587,9 @@ static const struct soc_enum cap_hpf_mode =
 	SOC_ENUM_SINGLE(WM8962_ADC_DAC_CONTROL_2, 10, 2, cap_hpf_mode_text);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const char *cap_lhpf_mode_text[] = {
 	"LPF", "HPF"
@@ -3556,8 +3598,11 @@ static const char *cap_lhpf_mode_text[] = {
 static const struct soc_enum cap_lhpf_mode =
 	SOC_ENUM_SINGLE(WM8962_LHPF1, 1, 2, cap_lhpf_mode_text);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_kcontrol_new wm8962_snd_controls[] = {
 SOC_DOUBLE("Input Mixer Switch", WM8962_INPUT_MIXER_CONTROL_1, 3, 2, 1, 1),
 
@@ -3590,7 +3635,12 @@ SOC_SINGLE("Capture HPF Cutoff", WM8962_ADC_DAC_CONTROL_2, 7, 7, 0),
 SOC_SINGLE("Capture LHPF Switch", WM8962_LHPF1, 0, 1, 0),
 SOC_ENUM("Capture LHPF Mode", cap_lhpf_mode),
 =======
+<<<<<<< HEAD
+SOC_SINGLE("Capture LHPF Switch", WM8962_LHPF1, 0, 1, 0),
+SOC_ENUM("Capture LHPF Mode", cap_lhpf_mode),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SOC_DOUBLE_R_TLV("Sidetone Volume", WM8962_DAC_DSP_MIXING_1,
 		 WM8962_DAC_DSP_MIXING_2, 4, 12, 0, st_tlv),
@@ -3602,7 +3652,12 @@ SOC_SINGLE("DAC High Performance Switch", WM8962_ADC_DAC_CONTROL_2, 0, 1, 0),
 SOC_SINGLE("DAC L/R Swap Switch", WM8962_AUDIO_INTERFACE_0, 5, 1, 0),
 SOC_SINGLE("ADC L/R Swap Switch", WM8962_AUDIO_INTERFACE_0, 8, 1, 0),
 =======
+<<<<<<< HEAD
+SOC_SINGLE("DAC L/R Swap Switch", WM8962_AUDIO_INTERFACE_0, 5, 1, 0),
+SOC_SINGLE("ADC L/R Swap Switch", WM8962_AUDIO_INTERFACE_0, 8, 1, 0),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SOC_SINGLE("ADC High Performance Switch", WM8962_ADDITIONAL_CONTROL_1,
 	   5, 1, 0),
@@ -3642,6 +3697,9 @@ SOC_SINGLE_TLV("HPMIXR MIXINR Volume", WM8962_HEADPHONE_MIXER_4,
 SOC_SINGLE_TLV("Speaker Boost Volume", WM8962_CLASS_D_CONTROL_2, 0, 7, 0,
 	       classd_tlv),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SOC_SINGLE("EQ Switch", WM8962_EQ1, WM8962_EQ_ENA_SHIFT, 1, 0),
 SOC_DOUBLE_R_TLV("EQ1 Volume", WM8962_EQ2, WM8962_EQ22,
@@ -3659,8 +3717,11 @@ WM8962_DSP2_ENABLE("VSS Switch", WM8962_VSS_ENA_SHIFT),
 WM8962_DSP2_ENABLE("HPF1 Switch", WM8962_HPF1_ENA_SHIFT),
 WM8962_DSP2_ENABLE("HPF2 Switch", WM8962_HPF2_ENA_SHIFT),
 WM8962_DSP2_ENABLE("HD Bass Switch", WM8962_HDBASS_ENA_SHIFT),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_kcontrol_new wm8962_spk_mono_controls[] = {
@@ -3724,6 +3785,8 @@ SOC_SINGLE_TLV("SPKOUTR Mixer DACR Volume", WM8962_SPEAKER_MIXER_5,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int sysclk_event(struct snd_soc_dapm_widget *w,
 			struct snd_kcontrol *kcontrol, int event)
 {
@@ -3767,6 +3830,7 @@ static int sysclk_event(struct snd_soc_dapm_widget *w,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cp_event(struct snd_soc_dapm_widget *w,
 		    struct snd_kcontrol *kcontrol, int event)
 {
@@ -3911,6 +3975,9 @@ static int out_pga_event(struct snd_soc_dapm_widget *w,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dsp2_event(struct snd_soc_dapm_widget *w,
 		      struct snd_kcontrol *kcontrol, int event)
 {
@@ -3936,8 +4003,11 @@ static int dsp2_event(struct snd_soc_dapm_widget *w,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *st_text[] = { "None", "Left", "Right" };
 
 static const struct soc_enum str_enum =
@@ -4050,6 +4120,9 @@ SND_SOC_DAPM_INPUT("IN3R"),
 SND_SOC_DAPM_INPUT("IN4L"),
 SND_SOC_DAPM_INPUT("IN4R"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SND_SOC_DAPM_SIGGEN("Beep"),
 SND_SOC_DAPM_INPUT("DMICDAT"),
 
@@ -4065,6 +4138,8 @@ SND_SOC_DAPM_SUPPLY_S("DSP2", 1, WM8962_DSP2_POWER_MANAGEMENT,
 		      SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
 SND_SOC_DAPM_SUPPLY("TEMP_HP", WM8962_ADDITIONAL_CONTROL_4, 2, 0, NULL, 0),
 SND_SOC_DAPM_SUPPLY("TEMP_SPK", WM8962_ADDITIONAL_CONTROL_4, 1, 0, NULL, 0),
+<<<<<<< HEAD
+=======
 =======
 SND_SOC_DAPM_INPUT("Beep"),
 SND_SOC_DAPM_INPUT("DMICDAT"),
@@ -4078,6 +4153,7 @@ SND_SOC_DAPM_SUPPLY("Charge Pump", WM8962_CHARGE_PUMP_1, 0, 0, cp_event,
 		    SND_SOC_DAPM_POST_PMU),
 SND_SOC_DAPM_SUPPLY("TOCLK", WM8962_ADDITIONAL_CONTROL_1, 0, 0, NULL, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_MIXER("INPGAL", WM8962_LEFT_INPUT_PGA_CONTROL, 4, 0,
 		   inpgal, ARRAY_SIZE(inpgal)),
@@ -4091,8 +4167,12 @@ SND_SOC_DAPM_MIXER("MIXINR", WM8962_PWR_MGMT_1, 4, 0,
 <<<<<<< HEAD
 SND_SOC_DAPM_AIF_IN("DMIC_ENA", NULL, 0, WM8962_PWR_MGMT_1, 10, 0),
 =======
+<<<<<<< HEAD
+SND_SOC_DAPM_AIF_IN("DMIC_ENA", NULL, 0, WM8962_PWR_MGMT_1, 10, 0),
+=======
 SND_SOC_DAPM_AIF_IN("DMIC", NULL, 0, WM8962_PWR_MGMT_1, 10, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_ADC("ADCL", "Capture", WM8962_PWR_MGMT_1, 3, 0),
 SND_SOC_DAPM_ADC("ADCR", "Capture", WM8962_PWR_MGMT_1, 2, 0),
@@ -4174,8 +4254,12 @@ static const struct snd_soc_dapm_route wm8962_intercon[] = {
 <<<<<<< HEAD
 	{ "DMIC_ENA", NULL, "DMICDAT" },
 =======
+<<<<<<< HEAD
+	{ "DMIC_ENA", NULL, "DMICDAT" },
+=======
 	{ "DMIC", NULL, "DMICDAT" },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "ADCL", NULL, "SYSCLK" },
 	{ "ADCL", NULL, "TOCLK" },
@@ -4184,13 +4268,21 @@ static const struct snd_soc_dapm_route wm8962_intercon[] = {
 	{ "ADCL", NULL, "DMIC_ENA" },
 	{ "ADCL", NULL, "DSP2" },
 =======
+<<<<<<< HEAD
+	{ "ADCL", NULL, "DMIC_ENA" },
+	{ "ADCL", NULL, "DSP2" },
+=======
 	{ "ADCL", NULL, "DMIC" },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "ADCR", NULL, "SYSCLK" },
 	{ "ADCR", NULL, "TOCLK" },
 	{ "ADCR", NULL, "MIXINR" },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "ADCR", NULL, "DMIC_ENA" },
 	{ "ADCR", NULL, "DSP2" },
 
@@ -4201,6 +4293,8 @@ static const struct snd_soc_dapm_route wm8962_intercon[] = {
 	{ "STR", "Left", "ADCL" },
 	{ "STR", "Right", "ADCR" },
 	{ "STR", NULL, "Class G" },
+<<<<<<< HEAD
+=======
 =======
 	{ "ADCR", NULL, "DMIC" },
 
@@ -4210,6 +4304,7 @@ static const struct snd_soc_dapm_route wm8962_intercon[] = {
 	{ "STR", "Left", "ADCL" },
 	{ "STR", "Right", "ADCR" },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "DACL", NULL, "SYSCLK" },
 	{ "DACL", NULL, "TOCLK" },
@@ -4218,7 +4313,11 @@ static const struct snd_soc_dapm_route wm8962_intercon[] = {
 <<<<<<< HEAD
 	{ "DACL", NULL, "DSP2" },
 =======
+<<<<<<< HEAD
+	{ "DACL", NULL, "DSP2" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "DACR", NULL, "SYSCLK" },
 	{ "DACR", NULL, "TOCLK" },
@@ -4227,7 +4326,11 @@ static const struct snd_soc_dapm_route wm8962_intercon[] = {
 <<<<<<< HEAD
 	{ "DACR", NULL, "DSP2" },
 =======
+<<<<<<< HEAD
+	{ "DACR", NULL, "DSP2" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "HPMIXL", "IN4L Switch", "IN4L" },
 	{ "HPMIXL", "IN4R Switch", "IN4R" },
@@ -4268,7 +4371,13 @@ static const struct snd_soc_dapm_route wm8962_intercon[] = {
 	{ "HPOUTL", NULL, "TEMP_HP" },
 	{ "HPOUTR", NULL, "TEMP_HP" },
 =======
+<<<<<<< HEAD
+
+	{ "HPOUTL", NULL, "TEMP_HP" },
+	{ "HPOUTR", NULL, "TEMP_HP" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_soc_dapm_route wm8962_spk_mono_intercon[] = {
@@ -4288,7 +4397,11 @@ static const struct snd_soc_dapm_route wm8962_spk_mono_intercon[] = {
 <<<<<<< HEAD
 	{ "Speaker Output", NULL, "TEMP_SPK" },
 =======
+<<<<<<< HEAD
+	{ "Speaker Output", NULL, "TEMP_SPK" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "SPKOUT", NULL, "Speaker Output" },
 };
@@ -4320,7 +4433,11 @@ static const struct snd_soc_dapm_route wm8962_spk_stereo_intercon[] = {
 <<<<<<< HEAD
 	{ "SPKOUTL Output", NULL, "TEMP_SPK" },
 =======
+<<<<<<< HEAD
+	{ "SPKOUTL Output", NULL, "TEMP_SPK" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "SPKOUTR Output", NULL, "SPKOUTR PGA" },
 	{ "SPKOUTR Output", NULL, "SYSCLK" },
@@ -4328,7 +4445,11 @@ static const struct snd_soc_dapm_route wm8962_spk_stereo_intercon[] = {
 <<<<<<< HEAD
 	{ "SPKOUTR Output", NULL, "TEMP_SPK" },
 =======
+<<<<<<< HEAD
+	{ "SPKOUTR Output", NULL, "TEMP_SPK" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{ "SPKOUTL", NULL, "SPKOUTL Output" },
 	{ "SPKOUTR", NULL, "SPKOUTR Output" },
@@ -4340,6 +4461,9 @@ static int wm8962_add_widgets(struct snd_soc_codec *codec)
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_add_codec_controls(codec, wm8962_snd_controls,
 			     ARRAY_SIZE(wm8962_snd_controls));
 	if (pdata && pdata->spk_mono)
@@ -4347,6 +4471,8 @@ static int wm8962_add_widgets(struct snd_soc_codec *codec)
 				     ARRAY_SIZE(wm8962_spk_mono_controls));
 	else
 		snd_soc_add_codec_controls(codec, wm8962_spk_stereo_controls,
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_add_controls(codec, wm8962_snd_controls,
 			     ARRAY_SIZE(wm8962_snd_controls));
@@ -4356,6 +4482,7 @@ static int wm8962_add_widgets(struct snd_soc_codec *codec)
 	else
 		snd_soc_add_controls(codec, wm8962_spk_stereo_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     ARRAY_SIZE(wm8962_spk_stereo_controls));
 
 
@@ -4383,6 +4510,8 @@ static int wm8962_add_widgets(struct snd_soc_codec *codec)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void wm8962_sync_cache(struct snd_soc_codec *codec)
@@ -4413,24 +4542,34 @@ static void wm8962_sync_cache(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -1 for reserved values */
 static const int bclk_divs[] = {
 	1, -1, 2, 3, 4, -1, 6, 8, -1, 12, 16, 24, -1, 32, 32, 32
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const int sysclk_rates[] = {
 	64, 128, 192, 256, 384, 512, 768, 1024, 1408, 1536, 3072, 6144
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void wm8962_configure_bclk(struct snd_soc_codec *codec)
 {
 	struct wm8962_priv *wm8962 = snd_soc_codec_get_drvdata(codec);
 	int dspclk, i;
 	int clocking2 = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int clocking4 = 0;
 	int aif2 = 0;
 
@@ -4462,6 +4601,8 @@ static void wm8962_configure_bclk(struct snd_soc_codec *codec)
 	snd_soc_update_bits(codec, WM8962_CLOCKING_4,
 			    WM8962_SYSCLK_RATE_MASK, clocking4);
 
+<<<<<<< HEAD
+=======
 =======
 	int aif2 = 0;
 
@@ -4471,6 +4612,7 @@ static void wm8962_configure_bclk(struct snd_soc_codec *codec)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dspclk = snd_soc_read(codec, WM8962_CLOCKING1);
 	if (dspclk < 0) {
 		dev_err(codec->dev, "Failed to read DSPCLK: %d\n", dspclk);
@@ -4528,10 +4670,13 @@ static int wm8962_set_bias_level(struct snd_soc_codec *codec,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct wm8962_priv *wm8962 = snd_soc_codec_get_drvdata(codec);
 	int ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (level == codec->dapm.bias_level)
 		return 0;
 
@@ -4544,6 +4689,9 @@ static int wm8962_set_bias_level(struct snd_soc_codec *codec,
 		snd_soc_update_bits(codec, WM8962_PWR_MGMT_1,
 				    WM8962_VMID_SEL_MASK, 0x80);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		wm8962_configure_bclk(codec);
 		break;
@@ -4558,6 +4706,8 @@ static int wm8962_set_bias_level(struct snd_soc_codec *codec,
 		break;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		break;
 
@@ -4616,6 +4766,7 @@ static int wm8962_set_bias_level(struct snd_soc_codec *codec,
 		break;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	codec->dapm.bias_level = level;
 	return 0;
 }
@@ -4639,11 +4790,14 @@ static const struct {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static const int sysclk_rates[] = {
 	64, 128, 192, 256, 384, 512, 768, 1024, 1408, 1536,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8962_hw_params(struct snd_pcm_substream *substream,
 			    struct snd_pcm_hw_params *params,
 			    struct snd_soc_dai *dai)
@@ -4652,6 +4806,9 @@ static int wm8962_hw_params(struct snd_pcm_substream *substream,
 	struct snd_soc_codec *codec = rtd->codec;
 	struct wm8962_priv *wm8962 = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 	int aif0 = 0;
 	int adctl3 = 0;
@@ -4664,6 +4821,8 @@ static int wm8962_hw_params(struct snd_pcm_substream *substream,
 
 	for (i = 0; i < ARRAY_SIZE(sr_vals); i++) {
 		if (sr_vals[i].rate == wm8962->lrclk) {
+<<<<<<< HEAD
+=======
 =======
 	int rate = params_rate(params);
 	int i;
@@ -4677,12 +4836,16 @@ static int wm8962_hw_params(struct snd_pcm_substream *substream,
 	for (i = 0; i < ARRAY_SIZE(sr_vals); i++) {
 		if (sr_vals[i].rate == rate) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			adctl3 |= sr_vals[i].reg;
 			break;
 		}
 	}
 	if (i == ARRAY_SIZE(sr_vals)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(codec->dev, "Unsupported rate %dHz\n", wm8962->lrclk);
 		return -EINVAL;
 	}
@@ -4690,6 +4853,8 @@ static int wm8962_hw_params(struct snd_pcm_substream *substream,
 	if (wm8962->lrclk % 8000 == 0)
 		adctl3 |= WM8962_SAMPLE_RATE_INT_MODE;
 
+<<<<<<< HEAD
+=======
 =======
 		dev_err(codec->dev, "Unsupported rate %dHz\n", rate);
 		return -EINVAL;
@@ -4711,6 +4876,7 @@ static int wm8962_hw_params(struct snd_pcm_substream *substream,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (params_format(params)) {
 	case SNDRV_PCM_FORMAT_S16_LE:
 		break;
@@ -4737,11 +4903,17 @@ static int wm8962_hw_params(struct snd_pcm_substream *substream,
 	if (codec->dapm.bias_level == SND_SOC_BIAS_ON)
 		wm8962_configure_bclk(codec);
 =======
+<<<<<<< HEAD
+
+	if (codec->dapm.bias_level == SND_SOC_BIAS_ON)
+		wm8962_configure_bclk(codec);
+=======
 	snd_soc_update_bits(codec, WM8962_CLOCKING_4,
 			    WM8962_SYSCLK_RATE_MASK, clocking4);
 
 	wm8962_configure_bclk(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -4775,7 +4947,12 @@ static int wm8962_set_dai_sysclk(struct snd_soc_dai *dai, int clk_id,
 	wm8962_configure_bclk(codec);
 
 =======
+<<<<<<< HEAD
+	wm8962_configure_bclk(codec);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -4957,8 +5134,12 @@ static int wm8962_set_fll(struct snd_soc_codec *codec, int fll_id, int source,
 <<<<<<< HEAD
 	int fll1 = 0;
 =======
+<<<<<<< HEAD
+	int fll1 = 0;
+=======
 	int fll1 = snd_soc_read(codec, WM8962_FLL_CONTROL_1) & WM8962_FLL_ENA;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Any change? */
 	if (source == wm8962->fll_src && Fref == wm8962->fll_fref &&
@@ -4978,7 +5159,12 @@ static int wm8962_set_fll(struct snd_soc_codec *codec, int fll_id, int source,
 		pm_runtime_put(codec->dev);
 
 =======
+<<<<<<< HEAD
+		pm_runtime_put(codec->dev);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -4991,7 +5177,13 @@ static int wm8962_set_fll(struct snd_soc_codec *codec, int fll_id, int source,
 	snd_soc_update_bits(codec, WM8962_FLL_CONTROL_1, WM8962_FLL_ENA, 0);
 
 =======
+<<<<<<< HEAD
+	/* Parameters good, disable so we can reprogram */
+	snd_soc_update_bits(codec, WM8962_FLL_CONTROL_1, WM8962_FLL_ENA, 0);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (fll_id) {
 	case WM8962_FLL_MCLK:
 	case WM8962_FLL_BCLK:
@@ -5029,6 +5221,9 @@ static int wm8962_set_fll(struct snd_soc_codec *codec, int fll_id, int source,
 	snd_soc_write(codec, WM8962_FLL_CONTROL_8, fll_div.n);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	try_wait_for_completion(&wm8962->fll_lock);
 
 	pm_runtime_get_sync(codec->dev);
@@ -5058,6 +5253,8 @@ static int wm8962_set_fll(struct snd_soc_codec *codec, int fll_id, int source,
 			ret = -ETIMEDOUT;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_update_bits(codec, WM8962_FLL_CONTROL_1,
 			    WM8962_FLL_FRAC | WM8962_FLL_REFCLK_SRC_MASK |
@@ -5070,6 +5267,7 @@ static int wm8962_set_fll(struct snd_soc_codec *codec, int fll_id, int source,
 
 	wait_for_completion_timeout(&wm8962->fll_lock, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wm8962->fll_fref = Fref;
 	wm8962->fll_fout = Fout;
@@ -5078,8 +5276,12 @@ static int wm8962_set_fll(struct snd_soc_codec *codec, int fll_id, int source,
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int wm8962_mute(struct snd_soc_dai *dai, int mute)
@@ -5104,8 +5306,12 @@ static int wm8962_mute(struct snd_soc_dai *dai, int mute)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8962_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8962_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8962_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params = wm8962_hw_params,
 	.set_sysclk = wm8962_set_dai_sysclk,
 	.set_fmt = wm8962_set_dai_fmt,
@@ -5119,8 +5325,12 @@ static struct snd_soc_dai_driver wm8962_dai = {
 <<<<<<< HEAD
 		.channels_min = 1,
 =======
+<<<<<<< HEAD
+		.channels_min = 1,
+=======
 		.channels_min = 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.channels_max = 2,
 		.rates = WM8962_RATES,
 		.formats = WM8962_FORMATS,
@@ -5130,8 +5340,12 @@ static struct snd_soc_dai_driver wm8962_dai = {
 <<<<<<< HEAD
 		.channels_min = 1,
 =======
+<<<<<<< HEAD
+		.channels_min = 1,
+=======
 		.channels_min = 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.channels_max = 2,
 		.rates = WM8962_RATES,
 		.formats = WM8962_FORMATS,
@@ -5173,6 +5387,9 @@ static void wm8962_mic_work(struct work_struct *work)
 static irqreturn_t wm8962_irq(int irq, void *data)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev = data;
 	struct wm8962_priv *wm8962 = dev_get_drvdata(dev);
 	unsigned int mask;
@@ -5205,6 +5422,8 @@ static irqreturn_t wm8962_irq(int irq, void *data)
 
 	if (active & WM8962_FLL_LOCK_EINT) {
 		dev_dbg(dev, "FLL locked\n");
+<<<<<<< HEAD
+=======
 =======
 	struct snd_soc_codec *codec = data;
 	struct wm8962_priv *wm8962 = snd_soc_codec_get_drvdata(codec);
@@ -5219,11 +5438,15 @@ static irqreturn_t wm8962_irq(int irq, void *data)
 	if (active & WM8962_FLL_LOCK_EINT) {
 		dev_dbg(codec->dev, "FLL locked\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		complete(&wm8962->fll_lock);
 	}
 
 	if (active & WM8962_FIFOS_ERR_EINT)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(dev, "FIFO error\n");
 
 	if (active & WM8962_TEMP_SHUT_EINT) {
@@ -5255,6 +5478,8 @@ static irqreturn_t wm8962_irq(int irq, void *data)
 #endif
 
 		pm_wakeup_event(dev, 300);
+<<<<<<< HEAD
+=======
 =======
 		dev_err(codec->dev, "FIFO error\n");
 
@@ -5270,6 +5495,7 @@ static irqreturn_t wm8962_irq(int irq, void *data)
 
 		pm_wakeup_event(codec->dev, 300);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		schedule_delayed_work(&wm8962->mic_work,
 				      msecs_to_jiffies(250));
@@ -5277,10 +5503,13 @@ static irqreturn_t wm8962_irq(int irq, void *data)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Acknowledge the interrupts */
 	snd_soc_write(codec, WM8962_INTERRUPT_STATUS_2, active);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return IRQ_HANDLED;
 }
 
@@ -5321,12 +5550,17 @@ int wm8962_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
 			    SND_JACK_MICROPHONE | SND_JACK_BTN_0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (jack) {
 		snd_soc_dapm_force_enable_pin(&codec->dapm, "SYSCLK");
 		snd_soc_dapm_force_enable_pin(&codec->dapm, "MICBIAS");
 	} else {
 		snd_soc_dapm_disable_pin(&codec->dapm, "SYSCLK");
 		snd_soc_dapm_disable_pin(&codec->dapm, "MICBIAS");
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 }
@@ -5350,6 +5584,7 @@ static int wm8962_resume(struct snd_soc_codec *codec)
 		if (reg_cache[i] != wm8962_reg[i])
 			snd_soc_write(codec, i, reg_cache[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -5357,10 +5592,14 @@ static int wm8962_resume(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(wm8962_mic_detect);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(wm8962_mic_detect);
+=======
 #else
 #define wm8962_resume NULL
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_INPUT) || defined(CONFIG_INPUT_MODULE)
 static int beep_rates[] = {
@@ -5578,23 +5817,33 @@ static int wm8962_gpio_direction_out(struct gpio_chip *chip,
 <<<<<<< HEAD
 	int ret, val;
 =======
+<<<<<<< HEAD
+	int ret, val;
+=======
 	int val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Force function 1 (logic output) */
 	val = (1 << WM8962_GP2_FN_SHIFT) | (value << WM8962_GP2_LVL_SHIFT);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_update_bits(codec, WM8962_GPIO_BASE + offset,
 				  WM8962_GP2_FN_MASK | WM8962_GP2_LVL, val);
 	if (ret < 0)
 		return ret;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return snd_soc_update_bits(codec, WM8962_GPIO_BASE + offset,
 				   WM8962_GP2_FN_MASK | WM8962_GP2_LVL, val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct gpio_chip wm8962_template_chip = {
@@ -5652,21 +5901,29 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 	struct wm8962_pdata *pdata = dev_get_platdata(codec->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct i2c_client *i2c = container_of(codec->dev, struct i2c_client,
 					      dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 *reg_cache = codec->reg_cache;
 	int i, trigger, irq_pol;
 	bool dmicclk, dmicdat;
 
 	wm8962->codec = codec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	codec->control_data = wm8962->regmap;
 
 	ret = snd_soc_codec_set_cache_io(codec, 16, 16, SND_SOC_REGMAP);
 	if (ret != 0) {
 		dev_err(codec->dev, "Failed to set cache I/O: %d\n", ret);
 		return ret;
+<<<<<<< HEAD
+=======
 =======
 	INIT_DELAYED_WORK(&wm8962->mic_work, wm8962_mic_work);
 	init_completion(&wm8962->fll_lock);
@@ -5689,6 +5946,7 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 		dev_err(codec->dev, "Failed to request supplies: %d\n", ret);
 		goto err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	wm8962->disable_nb[0].notifier_call = wm8962_regulator_event_0;
@@ -5711,6 +5969,8 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 		}
 	}
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	ret = regulator_bulk_enable(ARRAY_SIZE(wm8962->supplies),
@@ -5751,18 +6011,25 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SYSCLK defaults to on; make sure it is off so we can safely
 	 * write to registers if the device is declocked.
 	 */
 	snd_soc_update_bits(codec, WM8962_CLOCKING2, WM8962_SYSCLK_ENA, 0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Ensure we have soft control over all registers */
 	snd_soc_update_bits(codec, WM8962_CLOCKING2,
 			    WM8962_CLKREG_OVD, WM8962_CLKREG_OVD);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Ensure that the oscillator and PLLs are disabled */
 	snd_soc_update_bits(codec, WM8962_PLL2,
 			    WM8962_OSC_ENA | WM8962_PLL2_ENA | WM8962_PLL3_ENA,
@@ -5770,9 +6037,12 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	regulator_bulk_disable(ARRAY_SIZE(wm8962->supplies), wm8962->supplies);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pdata) {
 		/* Apply static configuration for GPIOs */
 		for (i = 0; i < ARRAY_SIZE(pdata->gpio_init); i++)
@@ -5821,6 +6091,9 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 			    WM8962_HPOUT_VU, WM8962_HPOUT_VU);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Stereo control for EQ */
 	snd_soc_update_bits(codec, WM8962_EQ1, WM8962_EQ_SHARED_COEFF, 0);
 
@@ -5830,8 +6103,11 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 			    WM8962_PLL2_LOCK_DB | WM8962_TEMP_SHUT_DB,
 			    0);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8962_add_widgets(codec);
 
 	/* Save boards having to disable DMIC when not in use */
@@ -5863,8 +6139,12 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	if (wm8962->irq) {
 =======
+<<<<<<< HEAD
+	if (wm8962->irq) {
+=======
 	if (i2c->irq) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pdata && pdata->irq_active_low) {
 			trigger = IRQF_TRIGGER_LOW;
 			irq_pol = WM8962_IRQ_POL;
@@ -5877,6 +6157,9 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 				    WM8962_IRQ_POL, irq_pol);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = request_threaded_irq(wm8962->irq, NULL, wm8962_irq,
 					   trigger | IRQF_ONESHOT,
 					   "wm8962", codec->dev);
@@ -5884,6 +6167,8 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 			dev_err(codec->dev, "Failed to request IRQ %d: %d\n",
 				wm8962->irq, ret);
 			wm8962->irq = 0;
+<<<<<<< HEAD
+=======
 =======
 		ret = request_threaded_irq(i2c->irq, NULL, wm8962_irq,
 					   trigger | IRQF_ONESHOT,
@@ -5892,6 +6177,7 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 			dev_err(codec->dev, "Failed to request IRQ %d: %d\n",
 				i2c->irq, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Non-fatal */
 		} else {
 			/* Enable some IRQs by default */
@@ -5906,6 +6192,8 @@ static int wm8962_probe(struct snd_soc_codec *codec)
 	return 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 err_enable:
 	regulator_bulk_disable(ARRAY_SIZE(wm8962->supplies), wm8962->supplies);
@@ -5914,16 +6202,22 @@ err_get:
 err:
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int wm8962_remove(struct snd_soc_codec *codec)
 {
 	struct wm8962_priv *wm8962 = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	if (wm8962->irq)
 		free_irq(wm8962->irq, codec);
+<<<<<<< HEAD
+=======
 =======
 	struct i2c_client *i2c = container_of(codec->dev, struct i2c_client,
 					      dev);
@@ -5932,6 +6226,7 @@ static int wm8962_remove(struct snd_soc_codec *codec)
 	if (i2c->irq)
 		free_irq(i2c->irq, codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cancel_delayed_work_sync(&wm8962->mic_work);
 
@@ -5942,8 +6237,11 @@ static int wm8962_remove(struct snd_soc_codec *codec)
 					      &wm8962->disable_nb[i]);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	regulator_bulk_free(ARRAY_SIZE(wm8962->supplies), wm8962->supplies);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -5952,6 +6250,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8962 = {
 	.probe =	wm8962_probe,
 	.remove =	wm8962_remove,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_bias_level = wm8962_set_bias_level,
 	.set_pll = wm8962_set_fll,
 	.idle_bias_off = true,
@@ -5986,6 +6287,8 @@ static __devinit int wm8962_i2c_probe(struct i2c_client *i2c,
 
 	wm8962 = devm_kzalloc(&i2c->dev, sizeof(struct wm8962_priv),
 			      GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	.resume =	wm8962_resume,
 	.set_bias_level = wm8962_set_bias_level,
@@ -6006,12 +6309,16 @@ static __devinit int wm8962_i2c_probe(struct i2c_client *i2c,
 
 	wm8962 = kzalloc(sizeof(struct wm8962_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wm8962 == NULL)
 		return -ENOMEM;
 
 	i2c_set_clientdata(i2c, wm8962);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_DELAYED_WORK(&wm8962->mic_work, wm8962_mic_work);
 	init_completion(&wm8962->fll_lock);
 	wm8962->irq = i2c->irq;
@@ -6109,6 +6416,8 @@ err_enable:
 err_get:
 	regulator_bulk_free(ARRAY_SIZE(wm8962->supplies), wm8962->supplies);
 err:
+<<<<<<< HEAD
+=======
 =======
 	ret = snd_soc_register_codec(&i2c->dev,
 				     &soc_codec_dev_wm8962, &wm8962_dai, 1);
@@ -6116,12 +6425,16 @@ err:
 		kfree(wm8962);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static __devexit int wm8962_i2c_remove(struct i2c_client *client)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8962_priv *wm8962 = dev_get_drvdata(&client->dev);
 
 	snd_soc_unregister_codec(&client->dev);
@@ -6189,6 +6502,8 @@ static struct dev_pm_ops wm8962_pm = {
 	SET_RUNTIME_PM_OPS(wm8962_runtime_suspend, wm8962_runtime_resume, NULL)
 };
 
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_codec(&client->dev);
 	kfree(i2c_get_clientdata(client));
@@ -6196,6 +6511,7 @@ static struct dev_pm_ops wm8962_pm = {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct i2c_device_id wm8962_i2c_id[] = {
 	{ "wm8962", 0 },
 	{ }
@@ -6209,12 +6525,20 @@ static struct i2c_driver wm8962_i2c_driver = {
 <<<<<<< HEAD
 		.pm = &wm8962_pm,
 =======
+<<<<<<< HEAD
+		.pm = &wm8962_pm,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe =    wm8962_i2c_probe,
 	.remove =   __devexit_p(wm8962_i2c_remove),
 	.id_table = wm8962_i2c_id,
 };
+<<<<<<< HEAD
+
+module_i2c_driver(wm8962_i2c_driver);
+=======
 <<<<<<< HEAD
 
 module_i2c_driver(wm8962_i2c_driver);
@@ -6243,6 +6567,7 @@ static void __exit wm8962_exit(void)
 }
 module_exit(wm8962_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("ASoC WM8962 driver");
 MODULE_AUTHOR("Mark Brown <broonie@opensource.wolfsonmicro.com>");

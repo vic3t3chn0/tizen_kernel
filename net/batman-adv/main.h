@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -36,9 +40,15 @@
 #define SOURCE_VERSION "2012.1.0"
 #endif
 =======
+<<<<<<< HEAD
+#ifndef SOURCE_VERSION
+#define SOURCE_VERSION "2012.1.0"
+#endif
+=======
 #define SOURCE_VERSION "next"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* B.A.T.M.A.N. parameters */
 
@@ -51,6 +61,9 @@
 /* purge originators after time in seconds if no valid packet comes in
  * -> TODO: check influence on TQ_LOCAL_WINDOW_SIZE */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PURGE_TIMEOUT 200000 /* 200 seconds */
 #define TT_LOCAL_TIMEOUT 3600000 /* in miliseconds */
 #define TT_CLIENT_ROAM_TIMEOUT 600000 /* in miliseconds */
@@ -60,6 +73,8 @@
 #define TT_REQUEST_TIMEOUT 3000 /* miliseconds we have to keep
 				 * pending tt_req */
 
+<<<<<<< HEAD
+=======
 =======
 #define PURGE_TIMEOUT 200
 #define TT_LOCAL_TIMEOUT 3600 /* in seconds */
@@ -68,12 +83,16 @@
  * (should be a multiple of our word size) */
 #define TQ_LOCAL_WINDOW_SIZE 64
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TQ_GLOBAL_WINDOW_SIZE 5
 #define TQ_LOCAL_BIDRECT_SEND_MINIMUM 1
 #define TQ_LOCAL_BIDRECT_RECV_MINIMUM 1
 #define TQ_TOTAL_BIDRECT_LIMIT 1
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TT_OGM_APPEND_MAX 3 /* number of OGMs sent with the last tt diff */
 
 #define ROAMING_MAX_TIME 20000 /* Time in which a client can roam at most
@@ -84,8 +103,11 @@
 
 #define NULL_IFINDEX 0 /* dummy ifindex used to avoid iface checks */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NUM_WORDS (TQ_LOCAL_WINDOW_SIZE / WORD_BIT_SIZE)
 
 #define LOG_BUF_LEN 8192	  /* has to be a power of 2 */
@@ -108,21 +130,30 @@
 #define EXPECTED_SEQNO_RANGE	65536
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum mesh_state {
 	MESH_INACTIVE,
 	MESH_ACTIVE,
 	MESH_DEACTIVATING
 };
+<<<<<<< HEAD
+=======
 =======
 #define MESH_INACTIVE 0
 #define MESH_ACTIVE 1
 #define MESH_DEACTIVATING 2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define BCAST_QUEUE_LEN		256
 #define BATMAN_QUEUE_LEN	256
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum uev_action {
 	UEV_ADD = 0,
 	UEV_DEL,
@@ -136,11 +167,14 @@ enum uev_type {
 #define GW_THRESHOLD	50
 
 /* Debug Messages */
+<<<<<<< HEAD
+=======
 =======
 /*
  * Debug Messages
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef pr_fmt
 #undef pr_fmt
 #endif
@@ -149,6 +183,9 @@ enum uev_type {
 
 /* all messages related to routing / flooding / broadcasting / etc */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum dbg_level {
 	DBG_BATMAN = 1 << 0,
 	DBG_ROUTES = 1 << 1, /* route added / changed / deleted */
@@ -157,6 +194,8 @@ enum dbg_level {
 };
 
 /* Kernel headers */
+<<<<<<< HEAD
+=======
 =======
 #define DBG_BATMAN 1
 /* route or tt entry added / changed / deleted */
@@ -172,6 +211,7 @@ enum dbg_level {
  * Kernel headers
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/mutex.h>	/* mutex */
 #include <linux/module.h>	/* needed by all modules */
@@ -179,8 +219,12 @@ enum dbg_level {
 <<<<<<< HEAD
 #include <linux/etherdevice.h>  /* ethernet address classification */
 =======
+<<<<<<< HEAD
+#include <linux/etherdevice.h>  /* ethernet address classification */
+=======
 #include <linux/etherdevice.h>  /* ethernet address classifaction */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/if_ether.h>	/* ethernet header */
 #include <linux/poll.h>		/* poll_table */
 #include <linux/kthread.h>	/* kernel threads */
@@ -195,6 +239,9 @@ enum dbg_level {
 <<<<<<< HEAD
 extern char bat_routing_algo[];
 =======
+<<<<<<< HEAD
+extern char bat_routing_algo[];
+=======
 #ifndef REVISION_VERSION
 #define REVISION_VERSION_STR ""
 #else
@@ -202,6 +249,7 @@ extern char bat_routing_algo[];
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct list_head hardif_list;
 
 extern unsigned char broadcast_addr[];
@@ -212,6 +260,9 @@ void mesh_free(struct net_device *soft_iface);
 void inc_module_count(void);
 void dec_module_count(void);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int is_my_mac(const uint8_t *addr);
 int bat_algo_register(struct bat_algo_ops *bat_algo_ops);
 int bat_algo_select(struct bat_priv *bat_priv, char *name);
@@ -219,12 +270,15 @@ int bat_algo_seq_print_text(struct seq_file *seq, void *offset);
 
 #ifdef CONFIG_BATMAN_ADV_DEBUG
 int debug_log(struct bat_priv *bat_priv, const char *fmt, ...) __printf(2, 3);
+<<<<<<< HEAD
+=======
 =======
 int is_my_mac(uint8_t *addr);
 
 #ifdef CONFIG_BATMAN_ADV_DEBUG
 int debug_log(struct bat_priv *bat_priv, char *fmt, ...);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define bat_dbg(type, bat_priv, fmt, arg...)			\
 	do {							\
@@ -234,15 +288,21 @@ int debug_log(struct bat_priv *bat_priv, char *fmt, ...);
 	while (0)
 #else /* !CONFIG_BATMAN_ADV_DEBUG */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __printf(3, 4)
 static inline void bat_dbg(int type __always_unused,
 			   struct bat_priv *bat_priv __always_unused,
 			   const char *fmt __always_unused, ...)
+<<<<<<< HEAD
+=======
 =======
 static inline void bat_dbg(char type __always_unused,
 			   struct bat_priv *bat_priv __always_unused,
 			   char *fmt __always_unused, ...)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 #endif
@@ -271,13 +331,21 @@ static inline void bat_dbg(char type __always_unused,
 
 static inline int compare_eth(const void *data1, const void *data2)
 =======
+<<<<<<< HEAD
+
+static inline int compare_eth(const void *data1, const void *data2)
+=======
 static inline int compare_eth(void *data1, void *data2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return (memcmp(data1, data2, ETH_ALEN) == 0 ? 1 : 0);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * has_timed_out - compares current time (jiffies) and timestamp + timeout
  * @timestamp:		base value to compare with (in jiffies)
@@ -311,8 +379,11 @@ static inline bool has_timed_out(unsigned long timestamp, unsigned int timeout)
 			  _dummy > smallest_signed_int(_dummy); })
 #define seq_after(x, y) seq_before(y, x)
 
+<<<<<<< HEAD
+=======
 =======
 #define atomic_dec_not_zero(v)	atomic_add_unless((v), -1, 0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _NET_BATMAN_ADV_MAIN_H_ */

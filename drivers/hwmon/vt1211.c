@@ -151,8 +151,20 @@ struct vt1211_data {
 #define ISTEMP(ix, uch_config)	((ix) < 2 ? 1 : \
 				 ((uch_config) >> (ix)) & 1)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * in5 (ix = 5) is special. It's the internal 3.3V so it's scaled in the
+ * driver according to the VT1211 BIOS porting guide
+ */
+=======
 /* in5 (ix = 5) is special. It's the internal 3.3V so it's scaled in the
    driver according to the VT1211 BIOS porting guide */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* in5 (ix = 5) is special. It's the internal 3.3V so it's scaled in the
+   driver according to the VT1211 BIOS porting guide */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IN_FROM_REG(ix, reg)	((reg) < 3 ? 0 : (ix) == 5 ? \
 				 (((reg) - 3) * 15882 + 479) / 958 : \
 				 (((reg) - 3) * 10000 + 479) / 958)
@@ -160,11 +172,27 @@ struct vt1211_data {
 				 ((val) * 958 + 7941) / 15882 + 3 : \
 				 ((val) * 958 + 5000) / 10000 + 3, 0, 255))
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * temp1 (ix = 0) is an intel thermal diode which is scaled in user space.
+ * temp2 (ix = 1) is the internal temp diode so it's scaled in the driver
+ * according to some measurements that I took on an EPIA M10000.
+ * temp3-7 are thermistor based so the driver returns the voltage measured at
+ * the pin (range 0V - 2.2V).
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* temp1 (ix = 0) is an intel thermal diode which is scaled in user space.
    temp2 (ix = 1) is the internal temp diode so it's scaled in the driver
    according to some measurements that I took on an EPIA M10000.
    temp3-7 are thermistor based so the driver returns the voltage measured at
    the pin (range 0V - 2.2V). */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TEMP_FROM_REG(ix, reg)	((ix) == 0 ? (reg) * 1000 : \
 				 (ix) == 1 ? (reg) < 51 ? 0 : \
 				 ((reg) - 51) * 1000 : \
@@ -186,8 +214,20 @@ struct vt1211_data {
  * Super-I/O constants and functions
  * --------------------------------------------------------------------- */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Configuration index port registers
+ * The vt1211 can live at 2 different addresses so we need to probe both
+ */
+=======
 /* Configuration index port registers
  * The vt1211 can live at 2 different addresses so we need to probe both */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Configuration index port registers
+ * The vt1211 can live at 2 different addresses so we need to probe both */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SIO_REG_CIP1		0x2e
 #define SIO_REG_CIP2		0x4e
 
@@ -377,7 +417,20 @@ static ssize_t set_in(struct device *dev, struct device_attribute *attr,
 						to_sensor_dev_attr_2(attr);
 	int ix = sensor_attr_2->index;
 	int fn = sensor_attr_2->nr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 	switch (fn) {
@@ -446,7 +499,20 @@ static ssize_t set_temp(struct device *dev, struct device_attribute *attr,
 						to_sensor_dev_attr_2(attr);
 	int ix = sensor_attr_2->index;
 	int fn = sensor_attr_2->nr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 	switch (fn) {
@@ -517,8 +583,23 @@ static ssize_t set_fan(struct device *dev, struct device_attribute *attr,
 						to_sensor_dev_attr_2(attr);
 	int ix = sensor_attr_2->index;
 	int fn = sensor_attr_2->nr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int reg;
+	unsigned long val;
+	int err;
+
+	err = kstrtoul(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
 	int reg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+	int reg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 
@@ -536,6 +617,28 @@ static ssize_t set_fan(struct device *dev, struct device_attribute *attr,
 		break;
 	case SHOW_SET_FAN_DIV:
 		switch (val) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		case 1:
+			data->fan_div[ix] = 0;
+			break;
+		case 2:
+			data->fan_div[ix] = 1;
+			break;
+		case 4:
+			data->fan_div[ix] = 2;
+			break;
+		case 8:
+			data->fan_div[ix] = 3;
+			break;
+		default:
+			count = -EINVAL;
+			dev_warn(dev, "fan div value %ld not supported. "
+				 "Choose one of 1, 2, 4, or 8.\n", val);
+			goto EXIT;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			case 1: data->fan_div[ix] = 0; break;
 			case 2: data->fan_div[ix] = 1; break;
 			case 4: data->fan_div[ix] = 2; break;
@@ -546,6 +649,10 @@ static ssize_t set_fan(struct device *dev, struct device_attribute *attr,
 					 "supported. Choose one of 1, 2, "
 					 "4, or 8.\n", val);
 				goto EXIT;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		vt1211_write8(data, VT1211_REG_FAN_DIV,
 			      ((data->fan_div[1] << 6) |
@@ -610,8 +717,23 @@ static ssize_t set_pwm(struct device *dev, struct device_attribute *attr,
 						to_sensor_dev_attr_2(attr);
 	int ix = sensor_attr_2->index;
 	int fn = sensor_attr_2->nr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int tmp, reg;
+	unsigned long val;
+	int err;
+
+	err = kstrtoul(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
 	int tmp, reg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+	int tmp, reg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 
@@ -628,11 +750,26 @@ static ssize_t set_pwm(struct device *dev, struct device_attribute *attr,
 		switch (val) {
 		case 0:
 			data->pwm_ctl[ix] &= 7;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			/*
+			 * disable SmartGuardian if both PWM outputs are
+			 * disabled
+			 */
+			if ((data->pwm_ctl[ix ^ 1] & 1) == 0)
+				data->fan_ctl &= 0xe;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* disable SmartGuardian if both PWM outputs are
 			 * disabled */
 			if ((data->pwm_ctl[ix ^ 1] & 1) == 0) {
 				data->fan_ctl &= 0xe;
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case 2:
 			data->pwm_ctl[ix] |= 8;
@@ -656,16 +793,35 @@ static ssize_t set_pwm(struct device *dev, struct device_attribute *attr,
 		val = 135000 / SENSORS_LIMIT(val, 135000 >> 7, 135000);
 		/* calculate tmp = log2(val) */
 		tmp = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		for (val >>= 1; val > 0; val >>= 1)
+			tmp++;
+=======
 		for (val >>= 1; val > 0; val >>= 1) {
 			tmp++;
 		}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		for (val >>= 1; val > 0; val >>= 1) {
+			tmp++;
+		}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* sync the data cache */
 		reg = vt1211_read8(data, VT1211_REG_PWM_CLK);
 		data->pwm_clk = (reg & 0xf8) | tmp;
 		vt1211_write8(data, VT1211_REG_PWM_CLK, data->pwm_clk);
 		break;
 	case SHOW_SET_PWM_AUTO_CHANNELS_TEMP:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (val < 1 || val > 7) {
+=======
 		if ((val < 1) || (val > 7)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((val < 1) || (val > 7)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			count = -EINVAL;
 			dev_warn(dev, "temp channel %ld not supported. "
 				 "Choose a value between 1 and 7.\n", val);
@@ -741,8 +897,24 @@ static ssize_t set_pwm_auto_point_temp(struct device *dev,
 						to_sensor_dev_attr_2(attr);
 	int ix = sensor_attr_2->index;
 	int ap = sensor_attr_2->nr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int reg;
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+
+=======
 	long val = simple_strtol(buf, NULL, 10);
 	int reg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+	int reg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 
@@ -774,7 +946,15 @@ static ssize_t set_pwm_auto_point_temp(struct device *dev,
  * 1  1  : pwm2 low speed duty cycle  (pwm_auto_pwm[1][1])
  * 1  2  : pwm2 high speed duty cycle (pwm_auto_pwm[1][2])
  * 1  3  : pwm2 full speed            (pwm_auto_pwm[1][3], hard-wired to 255)
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+=======
 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static ssize_t show_pwm_auto_point_pwm(struct device *dev,
 				       struct device_attribute *attr,
@@ -798,6 +978,20 @@ static ssize_t set_pwm_auto_point_pwm(struct device *dev,
 						to_sensor_dev_attr_2(attr);
 	int ix = sensor_attr_2->index;
 	int ap = sensor_attr_2->nr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long val;
+	int err;
+
+	err = kstrtoul(buf, 10, &val);
+	if (err)
+		return err;
+
+	mutex_lock(&data->update_lock);
+	data->pwm_auto_pwm[ix][ap] = SENSORS_LIMIT(val, 0, 255);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	long val = simple_strtol(buf, NULL, 10);
 
 	if ((val < 0) || (val > 255)) {
@@ -808,6 +1002,10 @@ static ssize_t set_pwm_auto_point_pwm(struct device *dev,
 
 	mutex_lock(&data->update_lock);
 	data->pwm_auto_pwm[ix][ap] = val;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vt1211_write8(data, VT1211_REG_PWM_AUTO_PWM(ix, ap),
 		      data->pwm_auto_pwm[ix][ap]);
 	mutex_unlock(&data->update_lock);
@@ -831,7 +1029,20 @@ static ssize_t set_vrm(struct device *dev, struct device_attribute *attr,
 		       const char *buf, size_t count)
 {
 	struct vt1211_data *data = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long val;
+	int err;
+
+	err = kstrtoul(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	data->vrm = val;
 
@@ -866,6 +1077,104 @@ static ssize_t show_alarms(struct device *dev,
  * Device attribute structs
  * --------------------------------------------------------------------- */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define SENSOR_ATTR_IN(ix) \
+{	SENSOR_ATTR_2(in##ix##_input, S_IRUGO, \
+		show_in, NULL, SHOW_IN_INPUT, ix), \
+	SENSOR_ATTR_2(in##ix##_min, S_IRUGO | S_IWUSR, \
+		show_in, set_in, SHOW_SET_IN_MIN, ix), \
+	SENSOR_ATTR_2(in##ix##_max, S_IRUGO | S_IWUSR, \
+		show_in, set_in, SHOW_SET_IN_MAX, ix), \
+	SENSOR_ATTR_2(in##ix##_alarm, S_IRUGO, \
+		show_in, NULL, SHOW_IN_ALARM, ix) \
+}
+
+static struct sensor_device_attribute_2 vt1211_sysfs_in[][4] = {
+	SENSOR_ATTR_IN(0),
+	SENSOR_ATTR_IN(1),
+	SENSOR_ATTR_IN(2),
+	SENSOR_ATTR_IN(3),
+	SENSOR_ATTR_IN(4),
+	SENSOR_ATTR_IN(5)
+};
+
+#define IN_UNIT_ATTRS(X)			\
+{	&vt1211_sysfs_in[X][0].dev_attr.attr,	\
+	&vt1211_sysfs_in[X][1].dev_attr.attr,	\
+	&vt1211_sysfs_in[X][2].dev_attr.attr,	\
+	&vt1211_sysfs_in[X][3].dev_attr.attr,	\
+	NULL					\
+}
+
+static struct attribute *vt1211_in_attr[][5] = {
+	IN_UNIT_ATTRS(0),
+	IN_UNIT_ATTRS(1),
+	IN_UNIT_ATTRS(2),
+	IN_UNIT_ATTRS(3),
+	IN_UNIT_ATTRS(4),
+	IN_UNIT_ATTRS(5)
+};
+
+static const struct attribute_group vt1211_in_attr_group[] = {
+	{ .attrs = vt1211_in_attr[0] },
+	{ .attrs = vt1211_in_attr[1] },
+	{ .attrs = vt1211_in_attr[2] },
+	{ .attrs = vt1211_in_attr[3] },
+	{ .attrs = vt1211_in_attr[4] },
+	{ .attrs = vt1211_in_attr[5] }
+};
+
+#define SENSOR_ATTR_TEMP(ix) \
+{	SENSOR_ATTR_2(temp##ix##_input, S_IRUGO, \
+		show_temp, NULL, SHOW_TEMP_INPUT, ix-1), \
+	SENSOR_ATTR_2(temp##ix##_max, S_IRUGO | S_IWUSR, \
+		show_temp, set_temp, SHOW_SET_TEMP_MAX, ix-1), \
+	SENSOR_ATTR_2(temp##ix##_max_hyst, S_IRUGO | S_IWUSR, \
+		show_temp, set_temp, SHOW_SET_TEMP_MAX_HYST, ix-1), \
+	SENSOR_ATTR_2(temp##ix##_alarm, S_IRUGO, \
+		show_temp, NULL, SHOW_TEMP_ALARM, ix-1) \
+}
+
+static struct sensor_device_attribute_2 vt1211_sysfs_temp[][4] = {
+	SENSOR_ATTR_TEMP(1),
+	SENSOR_ATTR_TEMP(2),
+	SENSOR_ATTR_TEMP(3),
+	SENSOR_ATTR_TEMP(4),
+	SENSOR_ATTR_TEMP(5),
+	SENSOR_ATTR_TEMP(6),
+	SENSOR_ATTR_TEMP(7),
+};
+
+#define TEMP_UNIT_ATTRS(X)			\
+{	&vt1211_sysfs_temp[X][0].dev_attr.attr,	\
+	&vt1211_sysfs_temp[X][1].dev_attr.attr,	\
+	&vt1211_sysfs_temp[X][2].dev_attr.attr,	\
+	&vt1211_sysfs_temp[X][3].dev_attr.attr,	\
+	NULL					\
+}
+
+static struct attribute *vt1211_temp_attr[][5] = {
+	TEMP_UNIT_ATTRS(0),
+	TEMP_UNIT_ATTRS(1),
+	TEMP_UNIT_ATTRS(2),
+	TEMP_UNIT_ATTRS(3),
+	TEMP_UNIT_ATTRS(4),
+	TEMP_UNIT_ATTRS(5),
+	TEMP_UNIT_ATTRS(6)
+};
+
+static const struct attribute_group vt1211_temp_attr_group[] = {
+	{ .attrs = vt1211_temp_attr[0] },
+	{ .attrs = vt1211_temp_attr[1] },
+	{ .attrs = vt1211_temp_attr[2] },
+	{ .attrs = vt1211_temp_attr[3] },
+	{ .attrs = vt1211_temp_attr[4] },
+	{ .attrs = vt1211_temp_attr[5] },
+	{ .attrs = vt1211_temp_attr[6] }
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SENSOR_ATTR_IN_INPUT(ix) \
 	SENSOR_ATTR_2(in##ix##_input, S_IRUGO, \
 		show_in, NULL, SHOW_IN_INPUT, ix)
@@ -972,6 +1281,10 @@ static struct sensor_device_attribute_2 vt1211_sysfs_temp_alarm[] = {
 	SENSOR_ATTR_TEMP_ALARM(5),
 	SENSOR_ATTR_TEMP_ALARM(6),
 	SENSOR_ATTR_TEMP_ALARM(7),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define SENSOR_ATTR_FAN(ix) \
@@ -1069,7 +1382,16 @@ static void __devinit vt1211_init_device(struct vt1211_data *data)
 		vt1211_write8(data, VT1211_REG_UCH_CONFIG, data->uch_config);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Initialize the interrupt mode (if request at module load time).
+=======
 	/* Initialize the interrupt mode (if request at module load time).
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Initialize the interrupt mode (if request at module load time).
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * The VT1211 implements 3 different modes for clearing interrupts:
 	 * 0: Clear INT when status register is read. Regenerate INT as long
 	 *    as temp stays above hysteresis limit.
@@ -1079,7 +1401,16 @@ static void __devinit vt1211_init_device(struct vt1211_data *data)
 	 * 2: Clear INT when temp falls below max limit.
 	 *
 	 * The driver only allows to force mode 0 since that's the only one
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * that makes sense for 'sensors'
+	 */
+=======
 	 * that makes sense for 'sensors' */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	 * that makes sense for 'sensors' */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (int_mode == 0) {
 		vt1211_write8(data, VT1211_REG_TEMP1_CONFIG, 0);
 		vt1211_write8(data, VT1211_REG_TEMP2_CONFIG, 0);
@@ -1095,6 +1426,17 @@ static void vt1211_remove_sysfs(struct platform_device *pdev)
 	struct device *dev = &pdev->dev;
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < ARRAY_SIZE(vt1211_in_attr_group); i++)
+		sysfs_remove_group(&dev->kobj, &vt1211_in_attr_group[i]);
+
+	for (i = 0; i < ARRAY_SIZE(vt1211_temp_attr_group); i++)
+		sysfs_remove_group(&dev->kobj, &vt1211_temp_attr_group[i]);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_in_input); i++) {
 		device_remove_file(dev,
 			&vt1211_sysfs_in_input[i].dev_attr);
@@ -1115,13 +1457,28 @@ static void vt1211_remove_sysfs(struct platform_device *pdev)
 		device_remove_file(dev,
 			&vt1211_sysfs_temp_alarm[i].dev_attr);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_fan_pwm); i++) {
 		device_remove_file(dev,
 			&vt1211_sysfs_fan_pwm[i].dev_attr);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_misc); i++)
+		device_remove_file(dev, &vt1211_sysfs_misc[i]);
+=======
 	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_misc); i++) {
 		device_remove_file(dev, &vt1211_sysfs_misc[i]);
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_misc); i++) {
+		device_remove_file(dev, &vt1211_sysfs_misc[i]);
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __devinit vt1211_probe(struct platform_device *pdev)
@@ -1131,7 +1488,16 @@ static int __devinit vt1211_probe(struct platform_device *pdev)
 	struct resource *res;
 	int i, err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data = kzalloc(sizeof(struct vt1211_data), GFP_KERNEL);
+	if (!data) {
+=======
 	if (!(data = kzalloc(sizeof(struct vt1211_data), GFP_KERNEL))) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!(data = kzalloc(sizeof(struct vt1211_data), GFP_KERNEL))) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENOMEM;
 		dev_err(dev, "Out of memory\n");
 		goto EXIT;
@@ -1154,6 +1520,25 @@ static int __devinit vt1211_probe(struct platform_device *pdev)
 	vt1211_init_device(data);
 
 	/* Create sysfs interface files */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < ARRAY_SIZE(vt1211_in_attr_group); i++) {
+		if (ISVOLT(i, data->uch_config)) {
+			err = sysfs_create_group(&dev->kobj,
+						 &vt1211_in_attr_group[i]);
+			if (err)
+				goto EXIT_DEV_REMOVE;
+		}
+	}
+	for (i = 0; i < ARRAY_SIZE(vt1211_temp_attr_group); i++) {
+		if (ISTEMP(i, data->uch_config)) {
+			err = sysfs_create_group(&dev->kobj,
+						 &vt1211_temp_attr_group[i]);
+			if (err)
+				goto EXIT_DEV_REMOVE;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_in_input); i++) {
 		if (ISVOLT(i, data->uch_config)) {
 			if ((err = device_create_file(dev,
@@ -1180,21 +1565,47 @@ static int __devinit vt1211_probe(struct platform_device *pdev)
 				&vt1211_sysfs_temp_alarm[i].dev_attr))) {
 				goto EXIT_DEV_REMOVE;
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_fan_pwm); i++) {
 		err = device_create_file(dev,
 			&vt1211_sysfs_fan_pwm[i].dev_attr);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (err)
+			goto EXIT_DEV_REMOVE;
+=======
 		if (err) {
 			goto EXIT_DEV_REMOVE;
 		}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (err) {
+			goto EXIT_DEV_REMOVE;
+		}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	for (i = 0; i < ARRAY_SIZE(vt1211_sysfs_misc); i++) {
 		err = device_create_file(dev,
 		       &vt1211_sysfs_misc[i]);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (err)
+			goto EXIT_DEV_REMOVE;
+=======
 		if (err) {
 			goto EXIT_DEV_REMOVE;
 		}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (err) {
+			goto EXIT_DEV_REMOVE;
+		}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Register device */
@@ -1293,9 +1704,20 @@ static int __init vt1211_find(int sio_cip, unsigned short *address)
 	superio_enter(sio_cip);
 
 	devid = force_id ? force_id : superio_inb(sio_cip, SIO_VT1211_DEVID);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (devid != SIO_VT1211_ID)
+		goto EXIT;
+=======
 	if (devid != SIO_VT1211_ID) {
 		goto EXIT;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (devid != SIO_VT1211_ID) {
+		goto EXIT;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	superio_select(sio_cip, SIO_VT1211_LDN_HWMON);
 
@@ -1325,22 +1747,60 @@ static int __init vt1211_init(void)
 	int err;
 	unsigned short address = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = vt1211_find(SIO_REG_CIP1, &address);
+	if (err) {
+		err = vt1211_find(SIO_REG_CIP2, &address);
+		if (err)
+			goto EXIT;
+=======
 	if ((err = vt1211_find(SIO_REG_CIP1, &address)) &&
 	    (err = vt1211_find(SIO_REG_CIP2, &address))) {
 		goto EXIT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((err = vt1211_find(SIO_REG_CIP1, &address)) &&
+	    (err = vt1211_find(SIO_REG_CIP2, &address))) {
+		goto EXIT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if ((uch_config < -1) || (uch_config > 31)) {
 		err = -EINVAL;
 		pr_warn("Invalid UCH configuration %d. "
 			"Choose a value between 0 and 31.\n", uch_config);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto EXIT;
+=======
 	  goto EXIT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	  goto EXIT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if ((int_mode < -1) || (int_mode > 0)) {
 		err = -EINVAL;
 		pr_warn("Invalid interrupt mode %d. "
 			"Only mode 0 is supported.\n", int_mode);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto EXIT;
+	}
+
+	err = platform_driver_register(&vt1211_driver);
+	if (err)
+		goto EXIT;
+
+	/* Sets global pdev as a side effect */
+	err = vt1211_device_add(address);
+	if (err)
+		goto EXIT_DRV_UNREGISTER;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  goto EXIT;
 	}
 
@@ -1354,6 +1814,10 @@ static int __init vt1211_init(void)
 	if (err) {
 		goto EXIT_DRV_UNREGISTER;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 

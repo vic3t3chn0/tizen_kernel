@@ -17,8 +17,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
@@ -45,8 +48,11 @@ struct max98095_priv {
 	enum max98095_type devtype;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct max98095_pdata *pdata;
 	unsigned int sysclk;
 	struct max98095_cdata dai[3];
@@ -625,6 +631,9 @@ static int max98095_hw_write(struct snd_soc_codec *codec, unsigned int reg,
 			     unsigned int value)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	codec->cache_bypass = 1;
@@ -632,6 +641,8 @@ static int max98095_hw_write(struct snd_soc_codec *codec, unsigned int reg,
 	codec->cache_bypass = 0;
 
 	return ret ? -EIO : 0;
+<<<<<<< HEAD
+=======
 =======
 	u8 data[2];
 
@@ -642,6 +653,7 @@ static int max98095_hw_write(struct snd_soc_codec *codec, unsigned int reg,
 	else
 		return -EIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1306,8 +1318,12 @@ static int max98095_add_widgets(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, max98095_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, max98095_snd_controls,
+=======
 	snd_soc_add_controls(codec, max98095_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(max98095_snd_controls));
 
 	return 0;
@@ -1539,9 +1555,12 @@ static int max98095_dai_set_sysclk(struct snd_soc_dai *dai,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	max98095->sysclk = freq; /* remember current sysclk */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Setup clocks for slave mode, and using the PLL
 	 * PSCLK = 0x01 (when master clk is 10MHz to 20MHz)
 	 *         0x02 (when master clk is 20MHz to 40MHz)..
@@ -1812,8 +1831,12 @@ static int max98095_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops max98095_dai1_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops max98095_dai1_ops = {
+=======
 static struct snd_soc_dai_ops max98095_dai1_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk = max98095_dai_set_sysclk,
 	.set_fmt = max98095_dai1_set_fmt,
 	.hw_params = max98095_dai1_hw_params,
@@ -1822,8 +1845,12 @@ static struct snd_soc_dai_ops max98095_dai1_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops max98095_dai2_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops max98095_dai2_ops = {
+=======
 static struct snd_soc_dai_ops max98095_dai2_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk = max98095_dai_set_sysclk,
 	.set_fmt = max98095_dai2_set_fmt,
 	.hw_params = max98095_dai2_hw_params,
@@ -1832,8 +1859,12 @@ static struct snd_soc_dai_ops max98095_dai2_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops max98095_dai3_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops max98095_dai3_ops = {
+=======
 static struct snd_soc_dai_ops max98095_dai3_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk = max98095_dai_set_sysclk,
 	.set_fmt = max98095_dai3_set_fmt,
 	.hw_params = max98095_dai3_hw_params,
@@ -1903,8 +1934,12 @@ static int max98095_put_eq_enum(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	int sel = ucontrol->value.integer.value[0];
 =======
+<<<<<<< HEAD
+	int sel = ucontrol->value.integer.value[0];
+=======
 	unsigned int sel = ucontrol->value.integer.value[0];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct max98095_eq_cfg *coef_set;
 	int fs, best, best_val, i;
 	int regmask, regsave;
@@ -2031,13 +2066,20 @@ static void max98095_handle_eq_pdata(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	ret = snd_soc_add_codec_controls(codec, controls, ARRAY_SIZE(controls));
 =======
+<<<<<<< HEAD
+	ret = snd_soc_add_codec_controls(codec, controls, ARRAY_SIZE(controls));
+=======
 	ret = snd_soc_add_controls(codec, controls, ARRAY_SIZE(controls));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != 0)
 		dev_err(codec->dev, "Failed to add EQ control: %d\n", ret);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *bq_mode_name[] = {"Biquad1 Mode", "Biquad2 Mode"};
 
 static int max98095_get_bq_channel(struct snd_soc_codec *codec,
@@ -2051,6 +2093,8 @@ static int max98095_get_bq_channel(struct snd_soc_codec *codec,
 
 	/* Shouldn't happen */
 	dev_err(codec->dev, "Bad biquad channel name '%s'\n", name);
+<<<<<<< HEAD
+=======
 =======
 static int max98095_get_bq_channel(const char *name)
 {
@@ -2059,6 +2103,7 @@ static int max98095_get_bq_channel(const char *name)
 	if (strcmp(name, "Biquad2 Mode") == 0)
 		return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -EINVAL;
 }
 
@@ -2073,10 +2118,16 @@ static int max98095_put_bq_enum(struct snd_kcontrol *kcontrol,
 	struct max98095_cdata *cdata;
 	int sel = ucontrol->value.integer.value[0];
 =======
+<<<<<<< HEAD
+	int channel = max98095_get_bq_channel(codec, kcontrol->id.name);
+	struct max98095_cdata *cdata;
+	int sel = ucontrol->value.integer.value[0];
+=======
 	int channel = max98095_get_bq_channel(kcontrol->id.name);
 	struct max98095_cdata *cdata;
 	unsigned int sel = ucontrol->value.integer.value[0];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct max98095_biquad_cfg *coef_set;
 	int fs, best, best_val, i;
 	int regmask, regsave;
@@ -2085,8 +2136,13 @@ static int max98095_put_bq_enum(struct snd_kcontrol *kcontrol,
 	if (channel < 0)
 		return channel;
 =======
+<<<<<<< HEAD
+	if (channel < 0)
+		return channel;
+=======
 	BUG_ON(channel > 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pdata || !max98095->bq_textcnt)
 		return 0;
@@ -2139,17 +2195,23 @@ static int max98095_get_bq_enum(struct snd_kcontrol *kcontrol,
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct max98095_priv *max98095 = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int channel = max98095_get_bq_channel(codec, kcontrol->id.name);
 	struct max98095_cdata *cdata;
 
 	if (channel < 0)
 		return channel;
 
+<<<<<<< HEAD
+=======
 =======
 	int channel = max98095_get_bq_channel(kcontrol->id.name);
 	struct max98095_cdata *cdata;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cdata = &max98095->dai[channel];
 	ucontrol->value.enumerated.item[0] = cdata->bq_sel;
 
@@ -2168,11 +2230,16 @@ static void max98095_handle_bq_pdata(struct snd_soc_codec *codec)
 
 	struct snd_kcontrol_new controls[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		SOC_ENUM_EXT((char *)bq_mode_name[0],
 			max98095->bq_enum,
 			max98095_get_bq_enum,
 			max98095_put_bq_enum),
 		SOC_ENUM_EXT((char *)bq_mode_name[1],
+<<<<<<< HEAD
+=======
 =======
 		SOC_ENUM_EXT("Biquad1 Mode",
 			max98095->bq_enum,
@@ -2180,6 +2247,7 @@ static void max98095_handle_bq_pdata(struct snd_soc_codec *codec)
 			max98095_put_bq_enum),
 		SOC_ENUM_EXT("Biquad2 Mode",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			max98095->bq_enum,
 			max98095_get_bq_enum,
 			max98095_put_bq_enum),
@@ -2187,7 +2255,11 @@ static void max98095_handle_bq_pdata(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	BUILD_BUG_ON(ARRAY_SIZE(controls) != ARRAY_SIZE(bq_mode_name));
 =======
+<<<<<<< HEAD
+	BUILD_BUG_ON(ARRAY_SIZE(controls) != ARRAY_SIZE(bq_mode_name));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cfg = pdata->bq_cfg;
 	cfgcnt = pdata->bq_cfgcnt;
@@ -2226,8 +2298,12 @@ static void max98095_handle_bq_pdata(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	ret = snd_soc_add_codec_controls(codec, controls, ARRAY_SIZE(controls));
 =======
+<<<<<<< HEAD
+	ret = snd_soc_add_codec_controls(codec, controls, ARRAY_SIZE(controls));
+=======
 	ret = snd_soc_add_controls(codec, controls, ARRAY_SIZE(controls));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != 0)
 		dev_err(codec->dev, "Failed to add Biquad control: %d\n", ret);
 }
@@ -2265,8 +2341,12 @@ static void max98095_handle_pdata(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 static int max98095_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int max98095_suspend(struct snd_soc_codec *codec)
+=======
 static int max98095_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	max98095_set_bias_level(codec, SND_SOC_BIAS_OFF);
 
@@ -2361,11 +2441,16 @@ static int max98095_probe(struct snd_soc_codec *codec)
 	ret = snd_soc_read(codec, M98095_0FF_REV_ID);
 	if (ret < 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(codec->dev, "Failure reading hardware revision: %d\n",
 			ret);
 		goto err_access;
 	}
 	dev_info(codec->dev, "Hardware revision: %c\n", ret - 0x40 + 'A');
+<<<<<<< HEAD
+=======
 =======
 		dev_err(codec->dev, "Failed to read device revision: %d\n",
 			ret);
@@ -2373,6 +2458,7 @@ static int max98095_probe(struct snd_soc_codec *codec)
 	}
 	dev_info(codec->dev, "revision %c\n", ret + 'A');
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_write(codec, M98095_097_PWR_SYS, M98095_PWRSV);
 
@@ -2444,18 +2530,28 @@ static int max98095_i2c_probe(struct i2c_client *i2c,
 	max98095 = devm_kzalloc(&i2c->dev, sizeof(struct max98095_priv),
 				GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	max98095 = devm_kzalloc(&i2c->dev, sizeof(struct max98095_priv),
+				GFP_KERNEL);
+=======
 	max98095 = kzalloc(sizeof(struct max98095_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (max98095 == NULL)
 		return -ENOMEM;
 
 	max98095->devtype = id->driver_data;
 	i2c_set_clientdata(i2c, max98095);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	max98095->pdata = i2c->dev.platform_data;
 
 	ret = snd_soc_register_codec(&i2c->dev, &soc_codec_dev_max98095,
 				     max98095_dai, ARRAY_SIZE(max98095_dai));
+<<<<<<< HEAD
+=======
 =======
 	max98095->control_data = i2c;
 	max98095->pdata = i2c->dev.platform_data;
@@ -2465,6 +2561,7 @@ static int max98095_i2c_probe(struct i2c_client *i2c,
 	if (ret < 0)
 		kfree(max98095);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -2473,9 +2570,12 @@ static int __devexit max98095_i2c_remove(struct i2c_client *client)
 	snd_soc_unregister_codec(&client->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(client));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

@@ -9,7 +9,11 @@
 <<<<<<< HEAD
 #include <trace/events/gfpflags.h>
 =======
+<<<<<<< HEAD
+#include <trace/events/gfpflags.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct btrfs_root;
 struct btrfs_fs_info;
@@ -24,7 +28,12 @@ struct btrfs_delayed_ref_head;
 struct btrfs_block_group_cache;
 struct btrfs_free_cluster;
 =======
+<<<<<<< HEAD
+struct btrfs_block_group_cache;
+struct btrfs_free_cluster;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct map_lookup;
 struct extent_buffer;
 
@@ -54,6 +63,9 @@ struct extent_buffer;
 	      (obj <= BTRFS_CSUM_TREE_OBJECTID )) ? __show_root_type(obj) : "-"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BTRFS_GROUP_FLAGS	\
 	{ BTRFS_BLOCK_GROUP_DATA,	"DATA"}, \
 	{ BTRFS_BLOCK_GROUP_SYSTEM,	"SYSTEM"}, \
@@ -65,8 +77,11 @@ struct extent_buffer;
 
 #define BTRFS_UUID_SIZE 16
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TRACE_EVENT(btrfs_transaction_commit,
 
 	TP_PROTO(struct btrfs_root *root),
@@ -309,8 +324,11 @@ DECLARE_EVENT_CLASS(btrfs__writepage,
 		__field(	loff_t, range_end		)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		__field(	char,   nonblocking		)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(	char,   for_kupdate		)
 		__field(	char,   for_reclaim		)
 		__field(	char,   range_cyclic		)
@@ -327,8 +345,11 @@ DECLARE_EVENT_CLASS(btrfs__writepage,
 		__entry->range_end	= wbc->range_end;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		__entry->nonblocking	= wbc->nonblocking;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->for_kupdate	= wbc->for_kupdate;
 		__entry->for_reclaim	= wbc->for_reclaim;
 		__entry->range_cyclic	= wbc->range_cyclic;
@@ -342,8 +363,12 @@ DECLARE_EVENT_CLASS(btrfs__writepage,
 <<<<<<< HEAD
 		  "range_end = %llu, for_kupdate = %d, "
 =======
+<<<<<<< HEAD
+		  "range_end = %llu, for_kupdate = %d, "
+=======
 		  "range_end = %llu, nonblocking = %d, for_kupdate = %d, "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  "for_reclaim = %d, range_cyclic = %d, writeback_index = %lu",
 		  show_root_type(__entry->root_objectid),
 		  (unsigned long)__entry->ino, __entry->index,
@@ -352,8 +377,12 @@ DECLARE_EVENT_CLASS(btrfs__writepage,
 <<<<<<< HEAD
 		  __entry->for_kupdate,
 =======
+<<<<<<< HEAD
+		  __entry->for_kupdate,
+=======
 		  __entry->nonblocking, __entry->for_kupdate,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  __entry->for_reclaim, __entry->range_cyclic,
 		  (unsigned long)__entry->writeback_index)
 );
@@ -661,6 +690,9 @@ TRACE_EVENT(btrfs_cow_block,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TRACE_EVENT(btrfs_space_reservation,
 
 	TP_PROTO(struct btrfs_fs_info *fs_info, char *type, u64 val,
@@ -689,8 +721,11 @@ TRACE_EVENT(btrfs_space_reservation,
 		  __entry->bytes)
 );
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_EVENT_CLASS(btrfs__reserved_extent,
 
 	TP_PROTO(struct btrfs_root *root, u64 start, u64 len),
@@ -730,6 +765,9 @@ DEFINE_EVENT(btrfs__reserved_extent,  btrfs_reserved_extent_free,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TRACE_EVENT(find_free_extent,
 
 	TP_PROTO(struct btrfs_root *root, u64 num_bytes, u64 empty_size,
@@ -935,8 +973,11 @@ TRACE_EVENT(free_extent_state,
 		  (void *)__entry->ip)
 );
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _TRACE_BTRFS_H */
 
 /* This part must be outside protection */

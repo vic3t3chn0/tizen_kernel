@@ -140,8 +140,11 @@ static inline unsigned int get_thread_fault_code(void)
 #define TIF_MEMDIE		18	/* is terminating due to OOM killer */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TIF_FREEZE		19	/* is freezing for suspend */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define _TIF_SYSCALL_TRACE	(1<<TIF_SYSCALL_TRACE)
 #define _TIF_SIGPENDING		(1<<TIF_SIGPENDING)
@@ -154,8 +157,11 @@ static inline unsigned int get_thread_fault_code(void)
 #define _TIF_POLLING_NRFLAG	(1<<TIF_POLLING_NRFLAG)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _TIF_FREEZE		(1<<TIF_FREEZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define _TIF_WORK_MASK		0x0000FFFE	/* work to do on interrupt/exception return */
 #define _TIF_ALLWORK_MASK	0x0000FFFF	/* work to do on any return to u-space */

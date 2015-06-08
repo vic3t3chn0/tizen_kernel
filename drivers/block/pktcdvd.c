@@ -987,14 +987,30 @@ static void pkt_copy_bio_data(struct bio *src_bio, int seg, int offs, struct pag
 
 	while (copy_size > 0) {
 		struct bio_vec *src_bvl = bio_iovec_idx(src_bio, seg);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		void *vfrom = kmap_atomic(src_bvl->bv_page) +
+=======
 		void *vfrom = kmap_atomic(src_bvl->bv_page, KM_USER0) +
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		void *vfrom = kmap_atomic(src_bvl->bv_page, KM_USER0) +
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			src_bvl->bv_offset + offs;
 		void *vto = page_address(dst_page) + dst_offs;
 		int len = min_t(int, copy_size, src_bvl->bv_len - offs);
 
 		BUG_ON(len < 0);
 		memcpy(vto, vfrom, len);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		kunmap_atomic(vfrom);
+=======
 		kunmap_atomic(vfrom, KM_USER0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		kunmap_atomic(vfrom, KM_USER0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		seg++;
 		offs = 0;
@@ -1019,10 +1035,23 @@ static void pkt_make_local_copy(struct packet_data *pkt, struct bio_vec *bvec)
 	offs = 0;
 	for (f = 0; f < pkt->frames; f++) {
 		if (bvec[f].bv_page != pkt->pages[p]) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			void *vfrom = kmap_atomic(bvec[f].bv_page) + bvec[f].bv_offset;
+			void *vto = page_address(pkt->pages[p]) + offs;
+			memcpy(vto, vfrom, CD_FRAMESIZE);
+			kunmap_atomic(vfrom);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			void *vfrom = kmap_atomic(bvec[f].bv_page, KM_USER0) + bvec[f].bv_offset;
 			void *vto = page_address(pkt->pages[p]) + offs;
 			memcpy(vto, vfrom, CD_FRAMESIZE);
 			kunmap_atomic(vfrom, KM_USER0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			bvec[f].bv_page = pkt->pages[p];
 			bvec[f].bv_offset = offs;
 		} else {
@@ -1206,7 +1235,15 @@ static int pkt_start_recovery(struct packet_data *pkt)
 	if (!sb)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!sb->s_op->relocate_blocks)
+=======
 	if (!sb->s_op || !sb->s_op->relocate_blocks)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!sb->s_op || !sb->s_op->relocate_blocks)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	old_block = pkt->sector / (CD_FRAMESIZE >> 9);
@@ -2444,7 +2481,15 @@ static void pkt_end_io_read_cloned(struct bio *bio, int err)
 	pkt_bio_finished(pd);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void pkt_make_request(struct request_queue *q, struct bio *bio)
+=======
 static int pkt_make_request(struct request_queue *q, struct bio *bio)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int pkt_make_request(struct request_queue *q, struct bio *bio)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pktcdvd_device *pd;
 	char b[BDEVNAME_SIZE];
@@ -2473,7 +2518,15 @@ static int pkt_make_request(struct request_queue *q, struct bio *bio)
 		cloned_bio->bi_end_io = pkt_end_io_read_cloned;
 		pd->stats.secs_r += bio->bi_size >> 9;
 		pkt_queue_bio(pd, cloned_bio);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return;
+=======
 		return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!test_bit(PACKET_WRITABLE, &pd->flags)) {
@@ -2509,7 +2562,15 @@ static int pkt_make_request(struct request_queue *q, struct bio *bio)
 			pkt_make_request(q, &bp->bio1);
 			pkt_make_request(q, &bp->bio2);
 			bio_pair_release(bp);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			return;
+=======
 			return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -2533,7 +2594,15 @@ static int pkt_make_request(struct request_queue *q, struct bio *bio)
 				}
 				spin_unlock(&pkt->lock);
 				spin_unlock(&pd->cdrw.active_list_lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				return;
+=======
 				return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} else {
 				blocked_bio = 1;
 			}
@@ -2584,10 +2653,22 @@ static int pkt_make_request(struct request_queue *q, struct bio *bio)
 		 */
 		wake_up(&pd->wqueue);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return;
+end_io:
+	bio_io_error(bio);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 end_io:
 	bio_io_error(bio);
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -2818,7 +2899,15 @@ static const struct block_device_operations pktcdvd_ops = {
 	.check_events =		pkt_check_events,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static char *pktcdvd_devnode(struct gendisk *gd, umode_t *mode)
+=======
 static char *pktcdvd_devnode(struct gendisk *gd, mode_t *mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static char *pktcdvd_devnode(struct gendisk *gd, mode_t *mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return kasprintf(GFP_KERNEL, "pktcdvd/%s", gd->disk_name);
 }

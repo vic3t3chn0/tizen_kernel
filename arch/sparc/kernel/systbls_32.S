@@ -70,8 +70,12 @@ sys_call_table:
 <<<<<<< HEAD
 /*250*/	.long sys_mremap, sys_sysctl, sys_getsid, sys_fdatasync, sys_ni_syscall
 =======
+<<<<<<< HEAD
+/*250*/	.long sys_mremap, sys_sysctl, sys_getsid, sys_fdatasync, sys_ni_syscall
+=======
 /*250*/	.long sys_mremap, sys_sysctl, sys_getsid, sys_fdatasync, sys_nfsservctl
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*255*/	.long sys_sync_file_range, sys_clock_settime, sys_clock_gettime, sys_clock_getres, sys_clock_nanosleep
 /*260*/	.long sys_sched_getaffinity, sys_sched_setaffinity, sys_timer_settime, sys_timer_gettime, sys_timer_getoverrun
 /*265*/	.long sys_timer_delete, sys_timer_create, sys_nis_syscall, sys_io_setup, sys_io_destroy
@@ -91,5 +95,9 @@ sys_call_table:
 <<<<<<< HEAD
 /*335*/	.long sys_syncfs, sys_sendmmsg, sys_setns, sys_process_vm_readv, sys_process_vm_writev
 =======
+<<<<<<< HEAD
+/*335*/	.long sys_syncfs, sys_sendmmsg, sys_setns, sys_process_vm_readv, sys_process_vm_writev
+=======
 /*335*/	.long sys_syncfs, sys_sendmmsg, sys_setns
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

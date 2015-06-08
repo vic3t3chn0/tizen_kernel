@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright 2010,2012 Freescale Semiconductor Inc.
 =======
+<<<<<<< HEAD
+ * Copyright 2010,2012 Freescale Semiconductor Inc.
+=======
  * Copyright 2010 Freescale Semiconductor Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -14,6 +18,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /include/ "fsl/p1021si-pre.dtsi"
 / {
 	model = "fsl,P1021";
@@ -22,6 +29,8 @@
 	aliases {
 		ethernet3 = &enet3;
 		ethernet4 = &enet4;
+<<<<<<< HEAD
+=======
 =======
 /dts-v1/;
 / {
@@ -58,12 +67,17 @@
 			next-level-cache = <&L2>;
 		};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	memory {
 		device_type = "memory";
 	};
 
+<<<<<<< HEAD
+	lbc: localbus@ffe05000 {
+		reg = <0x0 0xffe05000 0x0 0x1000>;
+=======
 <<<<<<< HEAD
 	lbc: localbus@ffe05000 {
 		reg = <0x0 0xffe05000 0x0 0x1000>;
@@ -76,6 +90,7 @@
 		interrupts = <19 2>;
 		interrupt-parent = <&mpic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* NAND Flash, BCSR, PMC0/1*/
 		ranges = <0x0 0x0 0x0 0xfc000000 0x02000000
@@ -159,11 +174,16 @@
 	};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	soc: soc@ffe00000 {
 		compatible = "fsl,p1021-immr", "simple-bus";
 		ranges = <0x0 0x0 0xffe00000 0x100000>;
 
 		i2c@3000 {
+<<<<<<< HEAD
+=======
 =======
 	soc@ffe00000 {
 
@@ -204,6 +224,7 @@
 			interrupt-parent = <&mpic>;
 			dfsrr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rtc@68 {
 				compatible = "dallas,ds1374";
 				reg = <0x68>;
@@ -211,6 +232,9 @@
 		};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spi@7000 {
 
 			flash@0 {
@@ -220,6 +244,8 @@
 				reg = <0>;
 				spi-max-frequency = <40000000>; /* input clock */
 
+<<<<<<< HEAD
+=======
 =======
 		i2c@3100 {
 			#address-cells = <1>;
@@ -271,6 +297,7 @@
 				linux,modalias = "fsl_m25p80";
 				spi-max-frequency = <40000000>; /* input clock */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				partition@u-boot {
 					label = "u-boot-spi";
 					reg = <0x00000000 0x00100000>;
@@ -294,6 +321,9 @@
 		};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		usb@22000 {
 			phy_type = "ulpi";
 			dr_mode = "host";
@@ -318,6 +348,8 @@
 		};
 
 		mdio@25000 {
+<<<<<<< HEAD
+=======
 =======
 		gpio: gpio-controller@f000 {
 			#gpio-cells = <2>;
@@ -412,6 +444,7 @@
 			compatible = "fsl,etsec2-tbi";
 			reg = <0x25000 0x1000 0xb1030 0x4>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tbi0: tbi-phy@11 {
 				reg = <0x11>;
 				device_type = "tbi-phy";
@@ -419,6 +452,9 @@
 		};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ethernet@b0000 {
 			phy-handle = <&phy0>;
 			phy-connection-type = "rgmii-id";
@@ -433,6 +469,8 @@
 		ethernet@b2000 {
 			phy-handle = <&phy1>;
 			phy-connection-type = "rgmii-id";
+<<<<<<< HEAD
+=======
 =======
 		enet0: ethernet@B0000 {
 			#address-cells = <1>;
@@ -568,6 +606,7 @@
 			reg = <0xe0000 0x1000>;
 			fsl,has-rstcr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		};
 
 		par_io@e0100 {
@@ -586,9 +625,13 @@
 <<<<<<< HEAD
 					0x0  0x18 0x2  0x0  0x1  0x0    /* CLK9 */
 =======
+<<<<<<< HEAD
+					0x0  0x18 0x2  0x0  0x1  0x0    /* CLK9 */
+=======
 					0x0  0x18 0x2  0x0  0x1  0x0    /* CLK9
 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					0x0  0x7  0x1  0x0  0x2  0x0    /* ENET1_TXD0_SER1_TXD0 */
 					0x0  0x9  0x1  0x0  0x2  0x0    /* ENET1_TXD1_SER1_TXD1 */
 					0x0  0xb  0x1  0x0  0x2  0x0    /* ENET1_TXD2_SER1_TXD2 */
@@ -629,6 +672,12 @@
 			  0x1000000 0x0 0x00000000 0 0xffc10000 0x0 0x10000>;
 		pcie@0 {
 =======
+<<<<<<< HEAD
+		reg = <0 0xffe09000 0 0x1000>;
+		ranges = <0x2000000 0x0 0xa0000000 0 0xa0000000 0x0 0x20000000
+			  0x1000000 0x0 0x00000000 0 0xffc10000 0x0 0x10000>;
+		pcie@0 {
+=======
 		compatible = "fsl,mpc8548-pcie";
 		device_type = "pci";
 		#interrupt-cells = <1>;
@@ -655,6 +704,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xa0000000
 				  0x2000000 0x0 0xa0000000
 				  0x0 0x20000000
@@ -666,6 +716,12 @@
 	};
 
 	pci1: pcie@ffe0a000 {
+<<<<<<< HEAD
+		reg = <0 0xffe0a000 0 0x1000>;
+		ranges = <0x2000000 0x0 0xc0000000 0 0xc0000000 0x0 0x20000000
+			  0x1000000 0x0 0x00000000 0 0xffc20000 0x0 0x10000>;
+		pcie@0 {
+=======
 <<<<<<< HEAD
 		reg = <0 0xffe0a000 0 0x1000>;
 		ranges = <0x2000000 0x0 0xc0000000 0 0xc0000000 0x0 0x20000000
@@ -698,6 +754,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xc0000000
 				  0x2000000 0x0 0xc0000000
 				  0x0 0x20000000
@@ -711,22 +768,31 @@
 <<<<<<< HEAD
 	qe: qe@ffe80000 {
 =======
+<<<<<<< HEAD
+	qe: qe@ffe80000 {
+=======
 	qe@ffe80000 {
 		#address-cells = <1>;
 		#size-cells = <1>;
 		device_type = "qe";
 		compatible = "fsl,qe";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ranges = <0x0 0x0 0xffe80000 0x40000>;
 		reg = <0 0xffe80000 0 0x480>;
 		brg-frequency = <0>;
 		bus-frequency = <0>;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = "disabled"; /* no firmware loaded */
 
 		enet3: ucc@2000 {
 			device_type = "network";
 			compatible = "ucc_geth";
+<<<<<<< HEAD
+=======
 =======
 		fsl,qe-num-riscs = <1>;
 		fsl,qe-num-snums = <28>;
@@ -750,6 +816,7 @@
 			interrupts = <32>;
 			interrupt-parent = <&qeic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			local-mac-address = [ 00 00 00 00 00 00 ];
 			rx-clock-name = "clk12";
 			tx-clock-name = "clk9";
@@ -764,6 +831,11 @@
 				interrupt-parent = <&mpic>;
 				interrupts = <4 1 0 0>;
 =======
+<<<<<<< HEAD
+			qe_phy0: ethernet-phy@0 {
+				interrupt-parent = <&mpic>;
+				interrupts = <4 1 0 0>;
+=======
 			#address-cells = <1>;
 			#size-cells = <0>;
 			reg = <0x2120 0x18>;
@@ -773,6 +845,7 @@
 				interrupt-parent = <&mpic>;
 				interrupts = <4 1>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				reg = <0x0>;
 				device_type = "ethernet-phy";
 			};
@@ -781,8 +854,12 @@
 <<<<<<< HEAD
 				interrupts = <5 1 0 0>;
 =======
+<<<<<<< HEAD
+				interrupts = <5 1 0 0>;
+=======
 				interrupts = <5 1>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				reg = <0x3>;
 				device_type = "ethernet-phy";
 			};
@@ -797,11 +874,14 @@
 			compatible = "ucc_geth";
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			cell-index = <5>;
 			reg = <0x2400 0x200>;
 			interrupts = <40>;
 			interrupt-parent = <&qeic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			local-mac-address = [ 00 00 00 00 00 00 ];
 			rx-clock-name = "none";
 			tx-clock-name = "clk13";
@@ -810,10 +890,15 @@
 			phy-connection-type = "rmii";
 		};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 };
 
 /include/ "fsl/p1021si-post.dtsi"
+<<<<<<< HEAD
+=======
 =======
 
 		muram@10000 {
@@ -831,3 +916,4 @@
 	};
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

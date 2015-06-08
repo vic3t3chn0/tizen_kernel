@@ -31,8 +31,11 @@
 #include "xfs_ialloc_btree.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_dir2_sf.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_dinode.h"
 #include "xfs_inode.h"
 #include "xfs_btree.h"
@@ -40,10 +43,13 @@
 #include "xfs_itable.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_dir2_data.h"
 #include "xfs_dir2_leaf.h"
 #include "xfs_dir2_block.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_inode_item.h"
 #include "xfs_extfree_item.h"
 #include "xfs_alloc.h"
@@ -62,12 +68,15 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef DEBUG
 STATIC void
 xfs_bmap_check_leaf_extents(xfs_btree_cur_t *cur, xfs_inode_t *ip, int whichfork);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kmem_zone_t		*xfs_bmap_free_item_zone;
 
 /*
@@ -75,6 +84,9 @@ kmem_zone_t		*xfs_bmap_free_item_zone;
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 STATIC void
 xfs_bmap_check_leaf_extents(
@@ -85,8 +97,11 @@ xfs_bmap_check_leaf_extents(
 #define xfs_bmap_check_leaf_extents(cur, ip, whichfork)		do { } while (0)
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called from xfs_bmap_add_attrfork to handle extents format files.
@@ -111,6 +126,8 @@ xfs_bmap_add_attrfork_local(
 	int			*flags);	/* inode logging flags */
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * Called by xfs_bmap_add_extent to handle cases converting a delayed
@@ -165,6 +182,7 @@ xfs_bmap_add_extent_unwritten_real(
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * xfs_bmap_alloc is called by xfs_bmapi to allocate an extent for a file.
  * It figures out where to ask the underlying allocator to put the new extent.
  */
@@ -245,6 +263,8 @@ xfs_bmap_search_extents(
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Check the last inode extent to determine whether this allocation will result
  * in blocks being allocated at the end of the file. When we allocate new data
  * blocks at the end of the file which do not start at the previous data block,
@@ -259,6 +279,7 @@ xfs_bmap_isaeof(
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Compute the worst-case number of indirect blocks that will be used
  * for ip's delayed extent of length "len".
  */
@@ -341,6 +362,9 @@ xfs_bmbt_lookup_ge(
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Check if the inode needs to be converted to btree format.
  */
 static inline bool xfs_bmap_needs_btree(struct xfs_inode *ip, int whichfork)
@@ -362,9 +386,12 @@ static inline bool xfs_bmap_wants_extents(struct xfs_inode *ip, int whichfork)
 
 /*
  * Update the record referred to by cur to the value given
+<<<<<<< HEAD
+=======
 =======
 * Update the record referred to by cur to the value given
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * by [off, bno, len, state].
  * This either works (return 0) or gets an EFSCORRUPTED error.
  */
@@ -472,8 +499,12 @@ xfs_bmap_add_attrfork_local(
 <<<<<<< HEAD
 	if (S_ISDIR(ip->i_d.di_mode)) {
 =======
+<<<<<<< HEAD
+	if (S_ISDIR(ip->i_d.di_mode)) {
+=======
 	if ((ip->i_d.di_mode & S_IFMT) == S_IFDIR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mp = ip->i_mount;
 		memset(&dargs, 0, sizeof(dargs));
 		dargs.dp = ip;
@@ -491,6 +522,9 @@ xfs_bmap_add_attrfork_local(
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Convert a delayed allocation to a real allocation.
  */
 STATIC int				/* error */
@@ -498,6 +532,8 @@ xfs_bmap_add_extent_delay_real(
 	struct xfs_bmalloca	*bma)
 {
 	struct xfs_bmbt_irec	*new = &bma->got;
+<<<<<<< HEAD
+=======
 =======
  * Called by xfs_bmapi to update file extent records and the btree
  * after allocating space (or doing a delayed allocation).
@@ -680,6 +716,7 @@ xfs_bmap_add_extent_delay_real(
 {
 	xfs_btree_cur_t		*cur;	/* btree cursor */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			diff;	/* temp value */
 	xfs_bmbt_rec_host_t	*ep;	/* extent entry for idx */
 	int			error;	/* error return value */
@@ -691,6 +728,9 @@ xfs_bmap_add_extent_delay_real(
 	int			rval=0;	/* return value (logging flags) */
 	int			state = 0;/* state bits, accessed thru macros */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_filblks_t		da_new; /* new count del alloc blocks used */
 	xfs_filblks_t		da_old; /* old count del alloc blocks used */
 	xfs_filblks_t		temp=0;	/* value for da_new calculations */
@@ -707,12 +747,15 @@ xfs_bmap_add_extent_delay_real(
 
 	XFS_STATS_INC(xs_add_exlist);
 
+<<<<<<< HEAD
+=======
 =======
 	xfs_filblks_t		temp=0;	/* value for dnew calculations */
 	xfs_filblks_t		temp2=0;/* value for dnew calculations */
 	int			tmp_rval;	/* partial logging flags */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	LEFT		r[0]
 #define	RIGHT		r[1]
 #define	PREV		r[2]
@@ -723,10 +766,14 @@ xfs_bmap_add_extent_delay_real(
 <<<<<<< HEAD
 	ep = xfs_iext_get_ext(ifp, bma->idx);
 =======
+<<<<<<< HEAD
+	ep = xfs_iext_get_ext(ifp, bma->idx);
+=======
 	cur = *curp;
 	ifp = XFS_IFORK_PTR(ip, XFS_DATA_FORK);
 	ep = xfs_iext_get_ext(ifp, *idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_bmbt_get_all(ep, &PREV);
 	new_endoff = new->br_startoff + new->br_blockcount;
 	ASSERT(PREV.br_startoff <= new->br_startoff);
@@ -737,7 +784,13 @@ xfs_bmap_add_extent_delay_real(
 	da_new = 0;
 
 =======
+<<<<<<< HEAD
+	da_old = startblockval(PREV.br_startblock);
+	da_new = 0;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set flags determining what part of the previous delayed allocation
 	 * extent is being replaced by a real allocation.
@@ -756,10 +809,16 @@ xfs_bmap_add_extent_delay_real(
 		state |= BMAP_LEFT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx - 1), &LEFT);
 =======
+<<<<<<< HEAD
+	if (bma->idx > 0) {
+		state |= BMAP_LEFT_VALID;
+		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx - 1), &LEFT);
+=======
 	if (*idx > 0) {
 		state |= BMAP_LEFT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, *idx - 1), &LEFT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (isnullstartblock(LEFT.br_startblock))
 			state |= BMAP_LEFT_DELAY;
@@ -782,10 +841,16 @@ xfs_bmap_add_extent_delay_real(
 		state |= BMAP_RIGHT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx + 1), &RIGHT);
 =======
+<<<<<<< HEAD
+	if (bma->idx < bma->ip->i_df.if_bytes / (uint)sizeof(xfs_bmbt_rec_t) - 1) {
+		state |= BMAP_RIGHT_VALID;
+		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx + 1), &RIGHT);
+=======
 	if (*idx < ip->i_df.if_bytes / (uint)sizeof(xfs_bmbt_rec_t) - 1) {
 		state |= BMAP_RIGHT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, *idx + 1), &RIGHT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (isnullstartblock(RIGHT.br_startblock))
 			state |= BMAP_RIGHT_DELAY;
@@ -817,6 +882,9 @@ xfs_bmap_add_extent_delay_real(
 		 * The left and right neighbors are both contiguous with new.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bma->idx--;
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(xfs_iext_get_ext(ifp, bma->idx),
@@ -852,6 +920,8 @@ xfs_bmap_add_extent_delay_real(
 			if (error)
 				goto done;
 		}
+<<<<<<< HEAD
+=======
 =======
 		--*idx;
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
@@ -886,6 +956,7 @@ xfs_bmap_add_extent_delay_real(
 		}
 		*dnew = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_LEFT_FILLING | BMAP_RIGHT_FILLING | BMAP_LEFT_CONTIG:
@@ -894,6 +965,9 @@ xfs_bmap_add_extent_delay_real(
 		 * The left neighbor is contiguous, the right is not.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bma->idx--;
 
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
@@ -919,6 +993,8 @@ xfs_bmap_add_extent_delay_real(
 			if (error)
 				goto done;
 		}
+<<<<<<< HEAD
+=======
 =======
 		--*idx;
 
@@ -945,6 +1021,7 @@ xfs_bmap_add_extent_delay_real(
 		}
 		*dnew = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_LEFT_FILLING | BMAP_RIGHT_FILLING | BMAP_RIGHT_CONTIG:
@@ -953,6 +1030,9 @@ xfs_bmap_add_extent_delay_real(
 		 * The right neighbor is contiguous, the left is not.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_startblock(ep, new->br_startblock);
 		xfs_bmbt_set_blockcount(ep,
@@ -977,6 +1057,8 @@ xfs_bmap_add_extent_delay_real(
 			if (error)
 				goto done;
 		}
+<<<<<<< HEAD
+=======
 =======
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
 		xfs_bmbt_set_startblock(ep, new->br_startblock);
@@ -1003,6 +1085,7 @@ xfs_bmap_add_extent_delay_real(
 
 		*dnew = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_LEFT_FILLING | BMAP_RIGHT_FILLING:
@@ -1012,6 +1095,9 @@ xfs_bmap_add_extent_delay_real(
 		 * the new one.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_startblock(ep, new->br_startblock);
 		trace_xfs_bmap_post_update(bma->ip, bma->idx, state, _THIS_IP_);
@@ -1033,6 +1119,8 @@ xfs_bmap_add_extent_delay_real(
 				goto done;
 			XFS_WANT_CORRUPTED_GOTO(i == 1, done);
 		}
+<<<<<<< HEAD
+=======
 =======
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
 		xfs_bmbt_set_startblock(ep, new->br_startblock);
@@ -1056,6 +1144,7 @@ xfs_bmap_add_extent_delay_real(
 
 		*dnew = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_LEFT_FILLING | BMAP_LEFT_CONTIG:
@@ -1064,6 +1153,9 @@ xfs_bmap_add_extent_delay_real(
 		 * The left neighbor is contiguous.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx - 1, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(xfs_iext_get_ext(ifp, bma->idx - 1),
 			LEFT.br_blockcount + new->br_blockcount);
@@ -1098,6 +1190,8 @@ xfs_bmap_add_extent_delay_real(
 		trace_xfs_bmap_post_update(bma->ip, bma->idx, state, _THIS_IP_);
 
 		bma->idx--;
+<<<<<<< HEAD
+=======
 =======
 		trace_xfs_bmap_pre_update(ip, *idx - 1, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(xfs_iext_get_ext(ifp, *idx - 1),
@@ -1133,6 +1227,7 @@ xfs_bmap_add_extent_delay_real(
 		--*idx;
 		*dnew = temp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_LEFT_FILLING:
@@ -1141,6 +1236,9 @@ xfs_bmap_add_extent_delay_real(
 		 * The left neighbor is not contiguous.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_startoff(ep, new_endoff);
 		temp = PREV.br_blockcount - new->br_blockcount;
@@ -1168,6 +1266,8 @@ xfs_bmap_add_extent_delay_real(
 			error = xfs_bmap_extents_to_btree(bma->tp, bma->ip,
 					bma->firstblock, bma->flist,
 					&bma->cur, 1, &tmp_rval, XFS_DATA_FORK);
+<<<<<<< HEAD
+=======
 =======
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
 		xfs_bmbt_set_startoff(ep, new_endoff);
@@ -1195,17 +1295,23 @@ xfs_bmap_add_extent_delay_real(
 					first, flist, &cur, 1, &tmp_rval,
 					XFS_DATA_FORK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rval |= tmp_rval;
 			if (error)
 				goto done;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		da_new = XFS_FILBLKS_MIN(xfs_bmap_worst_indlen(bma->ip, temp),
 			startblockval(PREV.br_startblock) -
 			(bma->cur ? bma->cur->bc_private.b.allocated : 0));
 		ep = xfs_iext_get_ext(ifp, bma->idx + 1);
 		xfs_bmbt_set_startblock(ep, nullstartblock(da_new));
 		trace_xfs_bmap_post_update(bma->ip, bma->idx + 1, state, _THIS_IP_);
+<<<<<<< HEAD
+=======
 =======
 		temp = XFS_FILBLKS_MIN(xfs_bmap_worst_indlen(ip, temp),
 			startblockval(PREV.br_startblock) -
@@ -1216,6 +1322,7 @@ xfs_bmap_add_extent_delay_real(
 
 		*dnew = temp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_RIGHT_FILLING | BMAP_RIGHT_CONTIG:
@@ -1225,6 +1332,9 @@ xfs_bmap_add_extent_delay_real(
 		 */
 		temp = PREV.br_blockcount - new->br_blockcount;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx + 1, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(ep, temp);
 		xfs_bmbt_set_allf(xfs_iext_get_ext(ifp, bma->idx + 1),
@@ -1258,6 +1368,8 @@ xfs_bmap_add_extent_delay_real(
 		trace_xfs_bmap_post_update(bma->ip, bma->idx, state, _THIS_IP_);
 
 		bma->idx++;
+<<<<<<< HEAD
+=======
 =======
 		trace_xfs_bmap_pre_update(ip, *idx + 1, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(ep, temp);
@@ -1292,6 +1404,7 @@ xfs_bmap_add_extent_delay_real(
 		++*idx;
 		*dnew = temp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_RIGHT_FILLING:
@@ -1301,6 +1414,9 @@ xfs_bmap_add_extent_delay_real(
 		 */
 		temp = PREV.br_blockcount - new->br_blockcount;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(ep, temp);
 		xfs_iext_insert(bma->ip, bma->idx + 1, 1, new, state);
@@ -1326,6 +1442,8 @@ xfs_bmap_add_extent_delay_real(
 			error = xfs_bmap_extents_to_btree(bma->tp, bma->ip,
 				bma->firstblock, bma->flist, &bma->cur, 1,
 				&tmp_rval, XFS_DATA_FORK);
+<<<<<<< HEAD
+=======
 =======
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(ep, temp);
@@ -1351,11 +1469,15 @@ xfs_bmap_add_extent_delay_real(
 				first, flist, &cur, 1, &tmp_rval,
 				XFS_DATA_FORK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rval |= tmp_rval;
 			if (error)
 				goto done;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		da_new = XFS_FILBLKS_MIN(xfs_bmap_worst_indlen(bma->ip, temp),
 			startblockval(PREV.br_startblock) -
 			(bma->cur ? bma->cur->bc_private.b.allocated : 0));
@@ -1364,6 +1486,8 @@ xfs_bmap_add_extent_delay_real(
 		trace_xfs_bmap_post_update(bma->ip, bma->idx, state, _THIS_IP_);
 
 		bma->idx++;
+<<<<<<< HEAD
+=======
 =======
 		temp = XFS_FILBLKS_MIN(xfs_bmap_worst_indlen(ip, temp),
 			startblockval(PREV.br_startblock) -
@@ -1375,6 +1499,7 @@ xfs_bmap_add_extent_delay_real(
 		++*idx;
 		*dnew = temp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 0:
@@ -1403,13 +1528,20 @@ xfs_bmap_add_extent_delay_real(
 <<<<<<< HEAD
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, 0, _THIS_IP_);
 =======
+<<<<<<< HEAD
+		trace_xfs_bmap_pre_update(bma->ip, bma->idx, 0, _THIS_IP_);
+=======
 		trace_xfs_bmap_pre_update(ip, *idx, 0, _THIS_IP_);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_bmbt_set_blockcount(ep, temp);	/* truncate PREV */
 		LEFT = *new;
 		RIGHT.br_state = PREV.br_state;
 		RIGHT.br_startblock = nullstartblock(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				(int)xfs_bmap_worst_indlen(bma->ip, temp2));
 		RIGHT.br_startoff = new_endoff;
 		RIGHT.br_blockcount = temp2;
@@ -1437,6 +1569,8 @@ xfs_bmap_add_extent_delay_real(
 			error = xfs_bmap_extents_to_btree(bma->tp, bma->ip,
 					bma->firstblock, bma->flist, &bma->cur,
 					1, &tmp_rval, XFS_DATA_FORK);
+<<<<<<< HEAD
+=======
 =======
 				(int)xfs_bmap_worst_indlen(ip, temp2));
 		RIGHT.br_startoff = new_endoff;
@@ -1464,11 +1598,15 @@ xfs_bmap_add_extent_delay_real(
 					first, flist, &cur, 1, &tmp_rval,
 					XFS_DATA_FORK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rval |= tmp_rval;
 			if (error)
 				goto done;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		temp = xfs_bmap_worst_indlen(bma->ip, temp);
 		temp2 = xfs_bmap_worst_indlen(bma->ip, temp2);
 		diff = (int)(temp + temp2 - startblockval(PREV.br_startblock) -
@@ -1492,6 +1630,8 @@ xfs_bmap_add_extent_delay_real(
 
 		bma->idx++;
 		da_new = temp + temp2;
+<<<<<<< HEAD
+=======
 =======
 		temp = xfs_bmap_worst_indlen(ip, temp);
 		temp2 = xfs_bmap_worst_indlen(ip, temp2);
@@ -1536,6 +1676,7 @@ xfs_bmap_add_extent_delay_real(
 		++*idx;
 		*dnew = temp + temp2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case BMAP_LEFT_FILLING | BMAP_LEFT_CONTIG | BMAP_RIGHT_CONTIG:
@@ -1551,6 +1692,9 @@ xfs_bmap_add_extent_delay_real(
 		ASSERT(0);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* convert to a btree if necessary */
 	if (xfs_bmap_needs_btree(bma->ip, XFS_DATA_FORK)) {
@@ -1584,11 +1728,14 @@ xfs_bmap_add_extent_delay_real(
 	xfs_bmap_check_leaf_extents(bma->cur, bma->ip, XFS_DATA_FORK);
 done:
 	bma->logflags |= rval;
+<<<<<<< HEAD
+=======
 =======
 	*curp = cur;
 done:
 	*logflagsp = rval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 #undef	LEFT
 #undef	RIGHT
@@ -1597,11 +1744,16 @@ done:
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Convert an unwritten allocation to a real allocation or vice versa.
  */
 STATIC int				/* error */
 xfs_bmap_add_extent_unwritten_real(
 	struct xfs_trans	*tp,
+<<<<<<< HEAD
+=======
 =======
  * Called by xfs_bmap_add_extent to handle cases converting an unwritten
  * allocation to a real allocation or vice versa.
@@ -1609,6 +1761,7 @@ xfs_bmap_add_extent_unwritten_real(
 STATIC int				/* error */
 xfs_bmap_add_extent_unwritten_real(
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_inode_t		*ip,	/* incore inode pointer */
 	xfs_extnum_t		*idx,	/* extent number to update/insert */
 	xfs_btree_cur_t		**curp,	/* if *curp is null, not a btree */
@@ -1617,7 +1770,12 @@ xfs_bmap_add_extent_unwritten_real(
 	xfs_fsblock_t		*first,	/* pointer to firstblock variable */
 	xfs_bmap_free_t		*flist,	/* list of extents to be freed */
 =======
+<<<<<<< HEAD
+	xfs_fsblock_t		*first,	/* pointer to firstblock variable */
+	xfs_bmap_free_t		*flist,	/* list of extents to be freed */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			*logflagsp) /* inode logging flags */
 {
 	xfs_btree_cur_t		*cur;	/* btree cursor */
@@ -1634,6 +1792,9 @@ xfs_bmap_add_extent_unwritten_real(
 	int			state = 0;/* state bits, accessed thru macros */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*logflagsp = 0;
 
 	cur = *curp;
@@ -1649,20 +1810,26 @@ xfs_bmap_add_extent_unwritten_real(
 #define	RIGHT		r[1]
 #define	PREV		r[2]
 
+<<<<<<< HEAD
+=======
 =======
 #define	LEFT		r[0]
 #define	RIGHT		r[1]
 #define	PREV		r[2]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set up a bunch of variables to make the tests simpler.
 	 */
 	error = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cur = *curp;
 	ifp = XFS_IFORK_PTR(ip, XFS_DATA_FORK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ep = xfs_iext_get_ext(ifp, *idx);
 	xfs_bmbt_get_all(ep, &PREV);
 	newext = new->br_state;
@@ -1913,17 +2080,23 @@ xfs_bmap_add_extent_unwritten_real(
 			if ((error = xfs_btree_decrement(cur, 0, &i)))
 				goto done;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = xfs_bmbt_update(cur, LEFT.br_startoff,
 				LEFT.br_startblock,
 				LEFT.br_blockcount + new->br_blockcount,
 				LEFT.br_state);
 			if (error)
+<<<<<<< HEAD
+=======
 =======
 			if (xfs_bmbt_update(cur, LEFT.br_startoff,
 				LEFT.br_startblock,
 				LEFT.br_blockcount + new->br_blockcount,
 				LEFT.br_state))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto done;
 		}
 		break;
@@ -2122,6 +2295,9 @@ xfs_bmap_add_extent_unwritten_real(
 		ASSERT(0);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* convert to a btree if necessary */
 	if (xfs_bmap_needs_btree(ip, XFS_DATA_FORK)) {
@@ -2144,11 +2320,14 @@ xfs_bmap_add_extent_unwritten_real(
 	xfs_bmap_check_leaf_extents(*curp, ip, XFS_DATA_FORK);
 done:
 	*logflagsp |= rval;
+<<<<<<< HEAD
+=======
 =======
 	*curp = cur;
 done:
 	*logflagsp = rval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 #undef	LEFT
 #undef	RIGHT
@@ -2157,6 +2336,9 @@ done:
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Convert a hole to a delayed allocation.
  */
 STATIC void
@@ -2164,6 +2346,8 @@ xfs_bmap_add_extent_hole_delay(
 	xfs_inode_t		*ip,	/* incore inode pointer */
 	xfs_extnum_t		*idx,	/* extent number to update/insert */
 	xfs_bmbt_irec_t		*new)	/* new data to add to file extents */
+<<<<<<< HEAD
+=======
 =======
  * Called by xfs_bmap_add_extent to handle cases converting a hole
  * to a delayed allocation.
@@ -2176,6 +2360,7 @@ xfs_bmap_add_extent_hole_delay(
 	xfs_bmbt_irec_t		*new,	/* new data to add to file extents */
 	int			*logflagsp) /* inode logging flags */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	xfs_ifork_t		*ifp;	/* inode fork pointer */
 	xfs_bmbt_irec_t		left;	/* left neighbor extent entry */
@@ -2311,6 +2496,9 @@ xfs_bmap_add_extent_hole_delay(
 		 */
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2322,6 +2510,8 @@ xfs_bmap_add_extent_hole_real(
 	int			whichfork)
 {
 	struct xfs_bmbt_irec	*new = &bma->got;
+<<<<<<< HEAD
+=======
 =======
 	*logflagsp = 0;
 	return 0;
@@ -2341,6 +2531,7 @@ xfs_bmap_add_extent_hole_real(
 	int			whichfork) /* data or attr fork */
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			error;	/* error return value */
 	int			i;	/* temp state */
 	xfs_ifork_t		*ifp;	/* inode fork pointer */
@@ -2350,6 +2541,9 @@ xfs_bmap_add_extent_hole_real(
 	int			state;	/* state bits, accessed thru macros */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ifp = XFS_IFORK_PTR(bma->ip, whichfork);
 
 	ASSERT(bma->idx >= 0);
@@ -2361,12 +2555,15 @@ xfs_bmap_add_extent_hole_real(
 	XFS_STATS_INC(xs_add_exlist);
 
 	state = 0;
+<<<<<<< HEAD
+=======
 =======
 	ifp = XFS_IFORK_PTR(ip, whichfork);
 	ASSERT(*idx <= ifp->if_bytes / (uint)sizeof(xfs_bmbt_rec_t));
 	state = 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (whichfork == XFS_ATTR_FORK)
 		state |= BMAP_ATTRFORK;
 
@@ -2378,10 +2575,16 @@ xfs_bmap_add_extent_hole_real(
 		state |= BMAP_LEFT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx - 1), &left);
 =======
+<<<<<<< HEAD
+	if (bma->idx > 0) {
+		state |= BMAP_LEFT_VALID;
+		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx - 1), &left);
+=======
 	if (*idx > 0) {
 		state |= BMAP_LEFT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, *idx - 1), &left);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (isnullstartblock(left.br_startblock))
 			state |= BMAP_LEFT_DELAY;
 	}
@@ -2395,10 +2598,16 @@ xfs_bmap_add_extent_hole_real(
 		state |= BMAP_RIGHT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx), &right);
 =======
+<<<<<<< HEAD
+	if (bma->idx < ifp->if_bytes / (uint)sizeof(xfs_bmbt_rec_t)) {
+		state |= BMAP_RIGHT_VALID;
+		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, bma->idx), &right);
+=======
 	if (*idx < ifp->if_bytes / (uint)sizeof(xfs_bmbt_rec_t)) {
 		state |= BMAP_RIGHT_VALID;
 		xfs_bmbt_get_all(xfs_iext_get_ext(ifp, *idx), &right);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (isnullstartblock(right.br_startblock))
 			state |= BMAP_RIGHT_DELAY;
 	}
@@ -2436,6 +2645,9 @@ xfs_bmap_add_extent_hole_real(
 		 * Merge all three into a single extent record.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		--bma->idx;
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(xfs_iext_get_ext(ifp, bma->idx),
@@ -2466,6 +2678,8 @@ xfs_bmap_add_extent_hole_real(
 				goto done;
 			XFS_WANT_CORRUPTED_GOTO(i == 1, done);
 			error = xfs_bmbt_update(bma->cur, left.br_startoff,
+<<<<<<< HEAD
+=======
 =======
 		--*idx;
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
@@ -2496,6 +2710,7 @@ xfs_bmap_add_extent_hole_real(
 			XFS_WANT_CORRUPTED_GOTO(i == 1, done);
 			if ((error = xfs_bmbt_update(cur, left.br_startoff,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					left.br_startblock,
 					left.br_blockcount +
 						new->br_blockcount +
@@ -2504,8 +2719,13 @@ xfs_bmap_add_extent_hole_real(
 					left.br_state);
 			if (error)
 =======
+<<<<<<< HEAD
+					left.br_state);
+			if (error)
+=======
 					left.br_state)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto done;
 		}
 		break;
@@ -2517,6 +2737,9 @@ xfs_bmap_add_extent_hole_real(
 		 * Merge the new allocation with the left neighbor.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		--bma->idx;
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_blockcount(xfs_iext_get_ext(ifp, bma->idx),
@@ -2539,6 +2762,8 @@ xfs_bmap_add_extent_hole_real(
 						new->br_blockcount,
 					left.br_state);
 			if (error)
+<<<<<<< HEAD
+=======
 =======
 		--*idx;
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
@@ -2562,6 +2787,7 @@ xfs_bmap_add_extent_hole_real(
 						new->br_blockcount,
 					left.br_state)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto done;
 		}
 		break;
@@ -2573,6 +2799,9 @@ xfs_bmap_add_extent_hole_real(
 		 * Merge the new allocation with the right neighbor.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_bmap_pre_update(bma->ip, bma->idx, state, _THIS_IP_);
 		xfs_bmbt_set_allf(xfs_iext_get_ext(ifp, bma->idx),
 			new->br_startoff, new->br_startblock,
@@ -2597,6 +2826,8 @@ xfs_bmap_add_extent_hole_real(
 						right.br_blockcount,
 					right.br_state);
 			if (error)
+<<<<<<< HEAD
+=======
 =======
 		trace_xfs_bmap_pre_update(ip, *idx, state, _THIS_IP_);
 		xfs_bmbt_set_allf(xfs_iext_get_ext(ifp, *idx),
@@ -2621,6 +2852,7 @@ xfs_bmap_add_extent_hole_real(
 						right.br_blockcount,
 					right.br_state)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto done;
 		}
 		break;
@@ -2632,6 +2864,9 @@ xfs_bmap_add_extent_hole_real(
 		 * Insert a new entry.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_iext_insert(bma->ip, bma->idx, 1, new, state);
 		XFS_IFORK_NEXT_SET(bma->ip, whichfork,
 			XFS_IFORK_NEXTENTS(bma->ip, whichfork) + 1);
@@ -2649,6 +2884,8 @@ xfs_bmap_add_extent_hole_real(
 			bma->cur->bc_rec.b.br_state = new->br_state;
 			error = xfs_btree_insert(bma->cur, &i);
 			if (error)
+<<<<<<< HEAD
+=======
 =======
 		xfs_iext_insert(ip, *idx, 1, new, state);
 		XFS_IFORK_NEXT_SET(ip, whichfork,
@@ -2666,12 +2903,16 @@ xfs_bmap_add_extent_hole_real(
 			cur->bc_rec.b.br_state = new->br_state;
 			if ((error = xfs_btree_insert(cur, &i)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto done;
 			XFS_WANT_CORRUPTED_GOTO(i == 1, done);
 		}
 		break;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* convert to a btree if necessary */
 	if (xfs_bmap_needs_btree(bma->ip, whichfork)) {
@@ -2693,10 +2934,13 @@ xfs_bmap_add_extent_hole_real(
 	xfs_bmap_check_leaf_extents(bma->cur, bma->ip, whichfork);
 done:
 	bma->logflags |= rval;
+<<<<<<< HEAD
+=======
 =======
 done:
 	*logflagsp = rval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -2888,15 +3132,24 @@ xfs_bmap_adjacent(
 	rt = XFS_IS_REALTIME_INODE(ap->ip) && ap->userdata;
 	fb_agno = nullfb ? NULLAGNUMBER : XFS_FSB_TO_AGNO(mp, *ap->firstblock);
 =======
+<<<<<<< HEAD
+	nullfb = *ap->firstblock == NULLFSBLOCK;
+	rt = XFS_IS_REALTIME_INODE(ap->ip) && ap->userdata;
+	fb_agno = nullfb ? NULLAGNUMBER : XFS_FSB_TO_AGNO(mp, *ap->firstblock);
+=======
 	nullfb = ap->firstblock == NULLFSBLOCK;
 	rt = XFS_IS_REALTIME_INODE(ap->ip) && ap->userdata;
 	fb_agno = nullfb ? NULLAGNUMBER : XFS_FSB_TO_AGNO(mp, ap->firstblock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If allocating at eof, and there's a previous real block,
 	 * try to use its last block as our starting point.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ap->eof && ap->prev.br_startoff != NULLFILEOFF &&
 	    !isnullstartblock(ap->prev.br_startblock) &&
 	    ISVALID(ap->prev.br_startblock + ap->prev.br_blockcount,
@@ -2910,6 +3163,8 @@ xfs_bmap_adjacent(
 		if (adjust &&
 		    ISVALID(ap->blkno + adjust, ap->prev.br_startblock))
 			ap->blkno += adjust;
+<<<<<<< HEAD
+=======
 =======
 	if (ap->eof && ap->prevp->br_startoff != NULLFILEOFF &&
 	    !isnullstartblock(ap->prevp->br_startblock) &&
@@ -2925,6 +3180,7 @@ xfs_bmap_adjacent(
 		    ISVALID(ap->rval + adjust, ap->prevp->br_startblock))
 			ap->rval += adjust;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/*
 	 * If not at eof, then compare the two neighbor blocks.
@@ -2942,6 +3198,9 @@ xfs_bmap_adjacent(
 		 * start block based on it.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ap->prev.br_startoff != NULLFILEOFF &&
 		    !isnullstartblock(ap->prev.br_startblock) &&
 		    (prevbno = ap->prev.br_startblock +
@@ -2953,6 +3212,8 @@ xfs_bmap_adjacent(
 			adjust = prevdiff = ap->offset -
 				(ap->prev.br_startoff +
 				 ap->prev.br_blockcount);
+<<<<<<< HEAD
+=======
 =======
 		if (ap->prevp->br_startoff != NULLFILEOFF &&
 		    !isnullstartblock(ap->prevp->br_startblock) &&
@@ -2966,6 +3227,7 @@ xfs_bmap_adjacent(
 				(ap->prevp->br_startoff +
 				 ap->prevp->br_blockcount);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Figure the startblock based on the previous block's
 			 * end and the gap size.
@@ -2979,10 +3241,16 @@ xfs_bmap_adjacent(
 			    ISVALID(prevbno + prevdiff,
 				    ap->prev.br_startblock))
 =======
+<<<<<<< HEAD
+			if (prevdiff <= XFS_ALLOC_GAP_UNITS * ap->length &&
+			    ISVALID(prevbno + prevdiff,
+				    ap->prev.br_startblock))
+=======
 			if (prevdiff <= XFS_ALLOC_GAP_UNITS * ap->alen &&
 			    ISVALID(prevbno + prevdiff,
 				    ap->prevp->br_startblock))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				prevbno += adjust;
 			else
 				prevdiff += adjust;
@@ -3004,11 +3272,16 @@ xfs_bmap_adjacent(
 		 * start block based on it.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!isnullstartblock(ap->got.br_startblock)) {
 			/*
 			 * Calculate gap to start of next block.
 			 */
 			adjust = gotdiff = ap->got.br_startoff - ap->offset;
+<<<<<<< HEAD
+=======
 =======
 		if (!isnullstartblock(ap->gotp->br_startblock)) {
 			/*
@@ -3016,6 +3289,7 @@ xfs_bmap_adjacent(
 			 */
 			adjust = gotdiff = ap->gotp->br_startoff - ap->off;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Figure the startblock based on the next block's
 			 * start and the gap size.
@@ -3023,8 +3297,12 @@ xfs_bmap_adjacent(
 <<<<<<< HEAD
 			gotbno = ap->got.br_startblock;
 =======
+<<<<<<< HEAD
+			gotbno = ap->got.br_startblock;
+=======
 			gotbno = ap->gotp->br_startblock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Heuristic!
 			 * If the gap is large relative to the piece we're
@@ -3033,12 +3311,17 @@ xfs_bmap_adjacent(
 			 * offset by our length.
 			 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (gotdiff <= XFS_ALLOC_GAP_UNITS * ap->length &&
 			    ISVALID(gotbno - gotdiff, gotbno))
 				gotbno -= adjust;
 			else if (ISVALID(gotbno - ap->length, gotbno)) {
 				gotbno -= ap->length;
 				gotdiff += adjust - ap->length;
+<<<<<<< HEAD
+=======
 =======
 			if (gotdiff <= XFS_ALLOC_GAP_UNITS * ap->alen &&
 			    ISVALID(gotbno - gotdiff, gotbno))
@@ -3047,6 +3330,7 @@ xfs_bmap_adjacent(
 				gotbno -= ap->alen;
 				gotdiff += adjust - ap->alen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} else
 				gotdiff += adjust;
 			/*
@@ -3065,6 +3349,9 @@ xfs_bmap_adjacent(
 		/*
 		 * If both valid, pick the better one, else the only good
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * one, else ap->blkno is already set (to 0 or the inode block).
 		 */
 		if (prevbno != NULLFSBLOCK && gotbno != NULLFSBLOCK)
@@ -3073,6 +3360,8 @@ xfs_bmap_adjacent(
 			ap->blkno = prevbno;
 		else if (gotbno != NULLFSBLOCK)
 			ap->blkno = gotbno;
+<<<<<<< HEAD
+=======
 =======
 		 * one, else ap->rval is already set (to 0 or the inode block).
 		 */
@@ -3083,6 +3372,7 @@ xfs_bmap_adjacent(
 		else if (gotbno != NULLFSBLOCK)
 			ap->rval = gotbno;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #undef ISVALID
 }
@@ -3103,6 +3393,9 @@ xfs_bmap_rtalloc(
 	align = xfs_get_extsz_hint(ap->ip);
 	prod = align / mp->m_sb.sb_rextsize;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = xfs_bmap_extsize_align(mp, &ap->got, &ap->prev,
 					align, 1, ap->eof, 0,
 					ap->conv, &ap->offset, &ap->length);
@@ -3110,6 +3403,8 @@ xfs_bmap_rtalloc(
 		return error;
 	ASSERT(ap->length);
 	ASSERT(ap->length % mp->m_sb.sb_rextsize == 0);
+<<<<<<< HEAD
+=======
 =======
 	error = xfs_bmap_extsize_align(mp, ap->gotp, ap->prevp,
 					align, 1, ap->eof, 0,
@@ -3119,6 +3414,7 @@ xfs_bmap_rtalloc(
 	ASSERT(ap->alen);
 	ASSERT(ap->alen % mp->m_sb.sb_rextsize == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If the offset & length are not perfectly aligned
@@ -3127,8 +3423,12 @@ xfs_bmap_rtalloc(
 <<<<<<< HEAD
 	if (do_mod(ap->offset, align) || ap->length % align)
 =======
+<<<<<<< HEAD
+	if (do_mod(ap->offset, align) || ap->length % align)
+=======
 	if (do_mod(ap->off, align) || ap->alen % align)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prod = 1;
 	/*
 	 * Set ralen to be the actual requested length in rtextents.
@@ -3136,8 +3436,12 @@ xfs_bmap_rtalloc(
 <<<<<<< HEAD
 	ralen = ap->length / mp->m_sb.sb_rextsize;
 =======
+<<<<<<< HEAD
+	ralen = ap->length / mp->m_sb.sb_rextsize;
+=======
 	ralen = ap->alen / mp->m_sb.sb_rextsize;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If the old value was close enough to MAXEXTLEN that
 	 * we rounded up to it, cut it back so it's valid again.
@@ -3155,8 +3459,12 @@ xfs_bmap_rtalloc(
 <<<<<<< HEAD
 	xfs_trans_ijoin(ap->tp, mp->m_rbmip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(ap->tp, mp->m_rbmip, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(ap->tp, mp->m_rbmip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If it's an allocation to an empty file at offset 0,
@@ -3165,8 +3473,12 @@ xfs_bmap_rtalloc(
 <<<<<<< HEAD
 	if (ap->eof && ap->offset == 0) {
 =======
+<<<<<<< HEAD
+	if (ap->eof && ap->offset == 0) {
+=======
 	if (ap->eof && ap->off == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_rtblock_t uninitialized_var(rtx); /* realtime extent no */
 
 		error = xfs_rtpick_extent(mp, ap->tp, ralen, &rtx);
@@ -3177,10 +3489,16 @@ xfs_bmap_rtalloc(
 	} else {
 		ap->blkno = 0;
 =======
+<<<<<<< HEAD
+		ap->blkno = rtx * mp->m_sb.sb_rextsize;
+	} else {
+		ap->blkno = 0;
+=======
 		ap->rval = rtx * mp->m_sb.sb_rextsize;
 	} else {
 		ap->rval = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	xfs_bmap_adjacent(ap);
@@ -3189,6 +3507,9 @@ xfs_bmap_rtalloc(
 	 * Realtime allocation, done through xfs_rtallocate_extent.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atype = ap->blkno == 0 ?  XFS_ALLOCTYPE_ANY_AG : XFS_ALLOCTYPE_NEAR_BNO;
 	do_div(ap->blkno, mp->m_sb.sb_rextsize);
 	rtb = ap->blkno;
@@ -3206,6 +3527,8 @@ xfs_bmap_rtalloc(
 		ap->blkno *= mp->m_sb.sb_rextsize;
 		ralen *= mp->m_sb.sb_rextsize;
 		ap->length = ralen;
+<<<<<<< HEAD
+=======
 =======
 	atype = ap->rval == 0 ?  XFS_ALLOCTYPE_ANY_AG : XFS_ALLOCTYPE_NEAR_BNO;
 	do_div(ap->rval, mp->m_sb.sb_rextsize);
@@ -3225,6 +3548,7 @@ xfs_bmap_rtalloc(
 		ralen *= mp->m_sb.sb_rextsize;
 		ap->alen = ralen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ap->ip->i_d.di_nblocks += ralen;
 		xfs_trans_log_inode(ap->tp, ap->ip, XFS_ILOG_CORE);
 		if (ap->wasdel)
@@ -3240,8 +3564,12 @@ xfs_bmap_rtalloc(
 <<<<<<< HEAD
 		ap->length = 0;
 =======
+<<<<<<< HEAD
+		ap->length = 0;
+=======
 		ap->alen = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -3359,8 +3687,12 @@ xfs_bmap_btalloc_nullfb(
 <<<<<<< HEAD
 		ap->blkno = args->fsbno = XFS_AGB_TO_FSB(mp, ag, 0);
 =======
+<<<<<<< HEAD
+		ap->blkno = args->fsbno = XFS_AGB_TO_FSB(mp, ag, 0);
+=======
 		ap->rval = args->fsbno = XFS_AGB_TO_FSB(mp, ag, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -3383,6 +3715,9 @@ xfs_bmap_btalloc(
 	int		error;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(ap->length);
 
 	mp = ap->ip->i_mount;
@@ -3396,6 +3731,8 @@ xfs_bmap_btalloc(
 	}
 	nullfb = *ap->firstblock == NULLFSBLOCK;
 	fb_agno = nullfb ? NULLAGNUMBER : XFS_FSB_TO_AGNO(mp, *ap->firstblock);
+<<<<<<< HEAD
+=======
 =======
 	mp = ap->ip->i_mount;
 	align = ap->userdata ? xfs_get_extsz_hint(ap->ip) : 0;
@@ -3409,17 +3746,23 @@ xfs_bmap_btalloc(
 	nullfb = ap->firstblock == NULLFSBLOCK;
 	fb_agno = nullfb ? NULLAGNUMBER : XFS_FSB_TO_AGNO(mp, ap->firstblock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (nullfb) {
 		if (ap->userdata && xfs_inode_is_filestream(ap->ip)) {
 			ag = xfs_filestream_lookup_ag(ap->ip);
 			ag = (ag != NULLAGNUMBER) ? ag : 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ap->blkno = XFS_AGB_TO_FSB(mp, ag, 0);
 		} else {
 			ap->blkno = XFS_INO_TO_FSB(mp, ap->ip->i_ino);
 		}
 	} else
 		ap->blkno = *ap->firstblock;
+<<<<<<< HEAD
+=======
 =======
 			ap->rval = XFS_AGB_TO_FSB(mp, ag, 0);
 		} else {
@@ -3428,11 +3771,15 @@ xfs_bmap_btalloc(
 	} else
 		ap->rval = ap->firstblock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	xfs_bmap_adjacent(ap);
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * If allowed, use ap->blkno; otherwise must use firstblock since
 	 * it's in the right allocation group.
 	 */
@@ -3440,6 +3787,8 @@ xfs_bmap_btalloc(
 		;
 	else
 		ap->blkno = *ap->firstblock;
+<<<<<<< HEAD
+=======
 =======
 	 * If allowed, use ap->rval; otherwise must use firstblock since
 	 * it's in the right allocation group.
@@ -3449,6 +3798,7 @@ xfs_bmap_btalloc(
 	else
 		ap->rval = ap->firstblock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Normal allocation, done through xfs_alloc_vextent.
 	 */
@@ -3456,11 +3806,16 @@ xfs_bmap_btalloc(
 	args.tp = ap->tp;
 	args.mp = mp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	args.fsbno = ap->blkno;
 
 	/* Trim the allocation back to the maximum an AG can fit. */
 	args.maxlen = MIN(ap->length, XFS_ALLOC_AG_MAX_USABLE(mp));
 	args.firstblock = *ap->firstblock;
+<<<<<<< HEAD
+=======
 =======
 	args.fsbno = ap->rval;
 
@@ -3468,6 +3823,7 @@ xfs_bmap_btalloc(
 	args.maxlen = MIN(ap->alen, XFS_ALLOC_AG_MAX_USABLE(mp));
 	args.firstblock = ap->firstblock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blen = 0;
 	if (nullfb) {
 		error = xfs_bmap_btalloc_nullfb(ap, &args, &blen);
@@ -3476,8 +3832,12 @@ xfs_bmap_btalloc(
 <<<<<<< HEAD
 	} else if (ap->flist->xbf_low) {
 =======
+<<<<<<< HEAD
+	} else if (ap->flist->xbf_low) {
+=======
 	} else if (ap->low) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (xfs_inode_is_filestream(ap->ip))
 			args.type = XFS_ALLOCTYPE_FIRST_AG;
 		else
@@ -3494,8 +3854,12 @@ xfs_bmap_btalloc(
 <<<<<<< HEAD
 		if ((args.mod = (xfs_extlen_t)do_mod(ap->offset, args.prod)))
 =======
+<<<<<<< HEAD
+		if ((args.mod = (xfs_extlen_t)do_mod(ap->offset, args.prod)))
+=======
 		if ((args.mod = (xfs_extlen_t)do_mod(ap->off, args.prod)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			args.mod = (xfs_extlen_t)(args.prod - args.mod);
 	} else if (mp->m_sb.sb_blocksize >= PAGE_CACHE_SIZE) {
 		args.prod = 1;
@@ -3505,8 +3869,12 @@ xfs_bmap_btalloc(
 <<<<<<< HEAD
 		if ((args.mod = (xfs_extlen_t)(do_mod(ap->offset, args.prod))))
 =======
+<<<<<<< HEAD
+		if ((args.mod = (xfs_extlen_t)(do_mod(ap->offset, args.prod))))
+=======
 		if ((args.mod = (xfs_extlen_t)(do_mod(ap->off, args.prod))))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			args.mod = (xfs_extlen_t)(args.prod - args.mod);
 	}
 	/*
@@ -3522,9 +3890,14 @@ xfs_bmap_btalloc(
 	if (!ap->flist->xbf_low && ap->aeof) {
 		if (!ap->offset) {
 =======
+<<<<<<< HEAD
+	if (!ap->flist->xbf_low && ap->aeof) {
+		if (!ap->offset) {
+=======
 	if (!ap->low && ap->aeof) {
 		if (!ap->off) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			args.alignment = mp->m_dalign;
 			atype = args.type;
 			isaligned = 1;
@@ -3580,8 +3953,12 @@ xfs_bmap_btalloc(
 <<<<<<< HEAD
 		args.fsbno = ap->blkno;
 =======
+<<<<<<< HEAD
+		args.fsbno = ap->blkno;
+=======
 		args.fsbno = ap->rval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		args.alignment = mp->m_dalign;
 		args.minlen = nextminlen;
 		args.minalignslop = 0;
@@ -3598,8 +3975,12 @@ xfs_bmap_btalloc(
 <<<<<<< HEAD
 		args.fsbno = ap->blkno;
 =======
+<<<<<<< HEAD
+		args.fsbno = ap->blkno;
+=======
 		args.fsbno = ap->rval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		args.alignment = 0;
 		if ((error = xfs_alloc_vextent(&args)))
 			return error;
@@ -3611,8 +3992,12 @@ xfs_bmap_btalloc(
 <<<<<<< HEAD
 		args.fsbno = ap->blkno;
 =======
+<<<<<<< HEAD
+		args.fsbno = ap->blkno;
+=======
 		args.fsbno = ap->rval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((error = xfs_alloc_vextent(&args)))
 			return error;
 	}
@@ -3624,6 +4009,9 @@ xfs_bmap_btalloc(
 		if ((error = xfs_alloc_vextent(&args)))
 			return error;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ap->flist->xbf_low = 1;
 	}
 	if (args.fsbno != NULLFSBLOCK) {
@@ -3644,6 +4032,8 @@ xfs_bmap_btalloc(
 		ASSERT(nullfb || fb_agno == args.agno ||
 		       (ap->flist->xbf_low && fb_agno < args.agno));
 		ap->length = args.len;
+<<<<<<< HEAD
+=======
 =======
 		ap->low = 1;
 	}
@@ -3653,6 +4043,7 @@ xfs_bmap_btalloc(
 		       (ap->low && fb_agno < args.agno));
 		ap->alen = args.len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ap->ip->i_d.di_nblocks += args.len;
 		xfs_trans_log_inode(ap->tp, ap->ip, XFS_ILOG_CORE);
 		if (ap->wasdel)
@@ -3670,9 +4061,14 @@ xfs_bmap_btalloc(
 		ap->blkno = NULLFSBLOCK;
 		ap->length = 0;
 =======
+<<<<<<< HEAD
+		ap->blkno = NULLFSBLOCK;
+		ap->length = 0;
+=======
 		ap->rval = NULLFSBLOCK;
 		ap->alen = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -3831,9 +4227,14 @@ xfs_bmap_del_extent(
 			error = xfs_rtfree_extent(tp, bno, (xfs_extlen_t)len);
 			if (error)
 =======
+<<<<<<< HEAD
+			error = xfs_rtfree_extent(tp, bno, (xfs_extlen_t)len);
+			if (error)
+=======
 			if ((error = xfs_rtfree_extent(ip->i_transp, bno,
 					(xfs_extlen_t)len)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto done;
 			do_fx = 0;
 			nblks = len * mp->m_sb.sb_rextsize;
@@ -4129,9 +4530,13 @@ xfs_bmap_extents_to_btree(
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	ASSERT(ifp->if_ext_max ==
 	       XFS_IFORK_SIZE(ip, whichfork) / (uint)sizeof(xfs_bmbt_rec_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Make space in the inode incore.
 	 */
@@ -4281,6 +4686,10 @@ xfs_bmap_forkoff_reset(
 		if (dfl_forkoff > ip->i_d.di_forkoff)
 			ip->i_d.di_forkoff = dfl_forkoff;
 =======
+<<<<<<< HEAD
+		if (dfl_forkoff > ip->i_d.di_forkoff)
+			ip->i_d.di_forkoff = dfl_forkoff;
+=======
 		if (dfl_forkoff > ip->i_d.di_forkoff) {
 			ip->i_d.di_forkoff = dfl_forkoff;
 			ip->i_df.if_ext_max =
@@ -4289,6 +4698,7 @@ xfs_bmap_forkoff_reset(
 				XFS_IFORK_ASIZE(ip) / sizeof(xfs_bmbt_rec_t);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -4318,9 +4728,13 @@ xfs_bmap_local_to_extents(
 <<<<<<< HEAD
 	ASSERT(!(S_ISREG(ip->i_d.di_mode) && whichfork == XFS_DATA_FORK));
 =======
+<<<<<<< HEAD
+	ASSERT(!(S_ISREG(ip->i_d.di_mode) && whichfork == XFS_DATA_FORK));
+=======
 	ASSERT(!((ip->i_d.di_mode & S_IFMT) == S_IFREG &&
 		 whichfork == XFS_DATA_FORK));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ifp = XFS_IFORK_PTR(ip, whichfork);
 	ASSERT(XFS_IFORK_FORMAT(ip, whichfork) == XFS_DINODE_FMT_LOCAL);
 	flags = 0;
@@ -4362,9 +4776,13 @@ xfs_bmap_local_to_extents(
 <<<<<<< HEAD
 		memcpy(bp->b_addr, ifp->if_u1.if_data, ifp->if_bytes);
 =======
+<<<<<<< HEAD
+		memcpy(bp->b_addr, ifp->if_u1.if_data, ifp->if_bytes);
+=======
 		memcpy((char *)XFS_BUF_PTR(bp), ifp->if_u1.if_data,
 			ifp->if_bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_trans_log_buf(tp, bp, 0, ifp->if_bytes - 1);
 		xfs_bmap_forkoff_reset(args.mp, ip, whichfork);
 		xfs_idata_realloc(ip, -ifp->if_bytes, whichfork);
@@ -4540,9 +4958,12 @@ xfs_bmap_add_attrfork(
 	ASSERT(XFS_IFORK_Q(ip) == 0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(ip->i_df.if_ext_max ==
 	       XFS_IFORK_DSIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mp = ip->i_mount;
 	ASSERT(!XFS_NOT_DQATTACHED(mp, ip));
@@ -4576,8 +4997,12 @@ xfs_bmap_add_attrfork(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(tp, ip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_trans_log_inode(tp, ip, XFS_ILOG_CORE);
 
 	switch (ip->i_d.di_format) {
@@ -4606,6 +5031,11 @@ xfs_bmap_add_attrfork(
 	ASSERT(ip->i_afp == NULL);
 	ip->i_afp = kmem_zone_zalloc(xfs_ifork_zone, KM_SLEEP);
 =======
+<<<<<<< HEAD
+
+	ASSERT(ip->i_afp == NULL);
+	ip->i_afp = kmem_zone_zalloc(xfs_ifork_zone, KM_SLEEP);
+=======
 	ip->i_df.if_ext_max =
 		XFS_IFORK_DSIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t);
 	ASSERT(ip->i_afp == NULL);
@@ -4613,6 +5043,7 @@ xfs_bmap_add_attrfork(
 	ip->i_afp->if_ext_max =
 		XFS_IFORK_ASIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip->i_afp->if_flags = XFS_IFEXTENTS;
 	logflags = 0;
 	xfs_bmap_init(&flist, &firstblock);
@@ -4657,11 +5088,16 @@ xfs_bmap_add_attrfork(
 			spin_unlock(&mp->m_sb_lock);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = xfs_bmap_finish(&tp, &flist, &committed);
 	if (error)
 		goto error2;
 	return xfs_trans_commit(tp, XFS_TRANS_RELEASE_LOG_RES);
+<<<<<<< HEAD
+=======
 =======
 	if ((error = xfs_bmap_finish(&tp, &flist, &committed)))
 		goto error2;
@@ -4670,6 +5106,7 @@ xfs_bmap_add_attrfork(
 	       XFS_IFORK_DSIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t));
 	return error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error2:
 	xfs_bmap_cancel(&flist);
 error1:
@@ -4678,9 +5115,12 @@ error0:
 	xfs_trans_cancel(tp, XFS_TRANS_RELEASE_LOG_RES|XFS_TRANS_ABORT);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(ip->i_df.if_ext_max ==
 	       XFS_IFORK_DSIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -4992,6 +5432,9 @@ xfs_bmap_last_before(
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 STATIC int
 xfs_bmap_last_extent(
 	struct xfs_trans	*tp,
@@ -5078,14 +5521,20 @@ xfs_bmap_eof(
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Returns the file-relative block number of the first block past eof in
  * the file.  This is not based on i_size, it is based on the extent records.
  * Returns 0 for local files, as they do not have extent records.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 xfs_bmap_last_offset(
 	struct xfs_trans	*tp,
@@ -5111,6 +5560,8 @@ xfs_bmap_last_offset(
 		return error;
 
 	*last_block = rec.br_startoff + rec.br_blockcount;
+<<<<<<< HEAD
+=======
 =======
 int						/* error */
 xfs_bmap_last_offset(
@@ -5144,6 +5595,7 @@ xfs_bmap_last_offset(
 	ep = xfs_iext_get_ext(ifp, nextents - 1);
 	*last_block = xfs_bmbt_get_startoff(ep) + xfs_bmbt_get_blockcount(ep);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -5167,12 +5619,17 @@ xfs_bmap_one_block(
 	if (whichfork == XFS_DATA_FORK)
 		return XFS_ISIZE(ip) == ip->i_mount->m_sb.sb_blocksize;
 =======
+<<<<<<< HEAD
+	if (whichfork == XFS_DATA_FORK)
+		return XFS_ISIZE(ip) == ip->i_mount->m_sb.sb_blocksize;
+=======
 	if (whichfork == XFS_DATA_FORK) {
 		return ((ip->i_d.di_mode & S_IFMT) == S_IFREG) ?
 			(ip->i_size == ip->i_mount->m_sb.sb_blocksize) :
 			(ip->i_d.di_size == ip->i_mount->m_sb.sb_blocksize);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* !DEBUG */
 	if (XFS_IFORK_NEXTENTS(ip, whichfork) != 1)
 		return 0;
@@ -5187,8 +5644,12 @@ xfs_bmap_one_block(
 <<<<<<< HEAD
 		ASSERT(XFS_ISIZE(ip) == ip->i_mount->m_sb.sb_blocksize);
 =======
+<<<<<<< HEAD
+		ASSERT(XFS_ISIZE(ip) == ip->i_mount->m_sb.sb_blocksize);
+=======
 		ASSERT(ip->i_size == ip->i_mount->m_sb.sb_blocksize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rval;
 }
 
@@ -5203,8 +5664,12 @@ xfs_bmap_sanity_check(
 <<<<<<< HEAD
 	if (block->bb_magic != cpu_to_be32(XFS_BMAP_MAGIC) ||
 =======
+<<<<<<< HEAD
+	if (block->bb_magic != cpu_to_be32(XFS_BMAP_MAGIC) ||
+=======
 	if (be32_to_cpu(block->bb_magic) != XFS_BMAP_MAGIC ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    be16_to_cpu(block->bb_level) != level ||
 	    be16_to_cpu(block->bb_numrecs) == 0 ||
 	    be16_to_cpu(block->bb_numrecs) > mp->m_bmap_dmxr[level != 0])
@@ -5288,8 +5753,11 @@ xfs_bmap_read_extents(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		num_recs = xfs_btree_get_numrecs(block);
 		if (unlikely(i + num_recs > room)) {
 			ASSERT(i + num_recs <= room);
@@ -5416,10 +5884,15 @@ xfs_bmap_validate_ret(
 		ASSERT(mval[i].br_startblock != DELAYSTARTBLOCK &&
 		       mval[i].br_startblock != HOLESTARTBLOCK);
 =======
+<<<<<<< HEAD
+		ASSERT(mval[i].br_startblock != DELAYSTARTBLOCK &&
+		       mval[i].br_startblock != HOLESTARTBLOCK);
+=======
 		if ((flags & XFS_BMAPI_WRITE) && !(flags & XFS_BMAPI_DELAY))
 			ASSERT(mval[i].br_startblock != DELAYSTARTBLOCK &&
 			       mval[i].br_startblock != HOLESTARTBLOCK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(mval[i].br_state == XFS_EXT_NORM ||
 		       mval[i].br_state == XFS_EXT_UNWRITTEN);
 	}
@@ -5429,6 +5902,9 @@ xfs_bmap_validate_ret(
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Trim the returned map to the required bounds
  */
 STATIC void
@@ -5994,6 +6470,8 @@ xfs_bmapi_convert_unwritten(
  * parameter.  Only allocates blocks from a single allocation group, to avoid
  * locking problems.
  *
+<<<<<<< HEAD
+=======
 =======
  * Map file blocks to filesystem blocks.
  * File range is given by the bno/len pair.
@@ -6002,6 +6480,7 @@ xfs_bmapi_convert_unwritten(
  * Only allocates blocks from a single allocation group,
  * to avoid locking problems.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The returned value in "firstblock" from the first call in a transaction
  * must be remembered and presented to subsequent calls in "firstblock".
  * An upper bound for the number of blocks to be allocated is supplied to
@@ -6009,6 +6488,9 @@ xfs_bmapi_convert_unwritten(
  * blocks then the call will fail (return NULLFSBLOCK in "firstblock").
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 xfs_bmapi_write(
 	struct xfs_trans	*tp,		/* transaction pointer */
@@ -6041,6 +6523,8 @@ xfs_bmapi_write(
 	xfs_filblks_t		orig_len;	/* original value of len arg */
 	struct xfs_bmbt_irec	*orig_mval;	/* original value of mval */
 	int			orig_nmap;	/* original value of *nmap */
+<<<<<<< HEAD
+=======
 =======
 int					/* error */
 xfs_bmapi(
@@ -6091,6 +6575,7 @@ xfs_bmapi(
 	xfs_bmbt_irec_t	*orig_mval;	/* original value of mval */
 	int		orig_nmap;	/* original value of *nmap */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	orig_bno = bno;
 	orig_len = len;
@@ -6099,6 +6584,9 @@ xfs_bmapi(
 	orig_nmap = *nmap;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT(*nmap >= 1);
 	ASSERT(*nmap <= XFS_BMAP_MAX_NMAP);
@@ -6109,6 +6597,8 @@ xfs_bmapi(
 	whichfork = (flags & XFS_BMAPI_ATTRFORK) ?
 		XFS_ATTR_FORK : XFS_DATA_FORK;
 
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(*nmap >= 1);
 	ASSERT(*nmap <= XFS_BMAP_MAX_NMAP || !(flags & XFS_BMAPI_WRITE));
@@ -6116,12 +6606,16 @@ xfs_bmapi(
 		XFS_ATTR_FORK : XFS_DATA_FORK;
 	mp = ip->i_mount;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(XFS_TEST_ERROR(
 	    (XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_EXTENTS &&
 	     XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_BTREE &&
 	     XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_LOCAL),
 	     mp, XFS_ERRTAG_BMAPIFORMAT, XFS_RANDOM_BMAPIFORMAT))) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		XFS_ERROR_REPORT("xfs_bmapi_write", XFS_ERRLEVEL_LOW, mp);
 		return XFS_ERROR(EFSCORRUPTED);
 	}
@@ -6172,6 +6666,8 @@ xfs_bmapi(
 		inhole = eof || bma.got.br_startoff > bno;
 		wasdelay = !inhole && isnullstartblock(bma.got.br_startblock);
 
+<<<<<<< HEAD
+=======
 =======
 		XFS_ERROR_REPORT("xfs_bmapi", XFS_ERRLEVEL_LOW, mp);
 		return XFS_ERROR(EFSCORRUPTED);
@@ -6244,11 +6740,15 @@ xfs_bmapi(
 		wasdelay = wr && !inhole && !(flags & XFS_BMAPI_DELAY) &&
 			isnullstartblock(got.br_startblock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * First, deal with the hole before the allocated space
 		 * that we found, if any.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (inhole || wasdelay) {
 			bma.eof = eof;
 			bma.conv = !!(flags & XFS_BMAPI_CONVERT);
@@ -6290,6 +6790,8 @@ xfs_bmapi(
 		/* update the extent map to return */
 		xfs_bmapi_update_map(&mval, &bno, &len, obno, end, &n, flags);
 
+<<<<<<< HEAD
+=======
 =======
 		if (wr && (inhole || wasdelay)) {
 			/*
@@ -6662,12 +7164,16 @@ xfs_bmapi(
 			n++;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * If we're done, stop now.  Stop when we've allocated
 		 * XFS_BMAP_MAX_NMAP extents no matter what.  Otherwise
 		 * the transaction may get too big.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (bno >= end || n >= *nmap || bma.nallocs >= *nmap)
 			break;
 
@@ -6698,6 +7204,8 @@ xfs_bmapi(
 	ASSERT(XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_BTREE ||
 	       XFS_IFORK_NEXTENTS(ip, whichfork) >
 		XFS_IFORK_MAXEXT(ip, whichfork));
+<<<<<<< HEAD
+=======
 =======
 		if (bno >= end || n >= *nmap || nallocs >= *nmap)
 			break;
@@ -6730,6 +7238,7 @@ xfs_bmapi(
 	ASSERT(XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_BTREE ||
 	       XFS_IFORK_NEXTENTS(ip, whichfork) > ifp->if_ext_max);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = 0;
 error0:
 	/*
@@ -6737,12 +7246,17 @@ error0:
 	 * logging the extent records if we've converted to btree format.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((bma.logflags & xfs_ilog_fext(whichfork)) &&
 	    XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_EXTENTS)
 		bma.logflags &= ~xfs_ilog_fext(whichfork);
 	else if ((bma.logflags & xfs_ilog_fbroot(whichfork)) &&
 		 XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_BTREE)
 		bma.logflags &= ~xfs_ilog_fbroot(whichfork);
+<<<<<<< HEAD
+=======
 =======
 	if ((logflags & xfs_ilog_fext(whichfork)) &&
 	    XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_EXTENTS)
@@ -6751,16 +7265,22 @@ error0:
 		 XFS_IFORK_FORMAT(ip, whichfork) != XFS_DINODE_FMT_BTREE)
 		logflags &= ~xfs_ilog_fbroot(whichfork);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Log whatever the flags say, even if error.  Otherwise we might miss
 	 * detecting a case where the data is changed, there's an error,
 	 * and it's not logged so we don't shutdown when we should.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bma.logflags)
 		xfs_trans_log_inode(tp, ip, bma.logflags);
 
 	if (bma.cur) {
+<<<<<<< HEAD
+=======
 =======
 	if (logflags) {
 		ASSERT(tp && wr);
@@ -6768,11 +7288,15 @@ error0:
 	}
 	if (cur) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!error) {
 			ASSERT(*firstblock == NULLFSBLOCK ||
 			       XFS_FSB_TO_AGNO(mp, *firstblock) ==
 			       XFS_FSB_TO_AGNO(mp,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       bma.cur->bc_private.b.firstblock) ||
 			       (flist->xbf_low &&
 				XFS_FSB_TO_AGNO(mp, *firstblock) <
@@ -6781,6 +7305,8 @@ error0:
 			*firstblock = bma.cur->bc_private.b.firstblock;
 		}
 		xfs_btree_del_cursor(bma.cur,
+<<<<<<< HEAD
+=======
 =======
 				       cur->bc_private.b.firstblock) ||
 			       (flist->xbf_low &&
@@ -6791,6 +7317,7 @@ error0:
 		}
 		xfs_btree_del_cursor(cur,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error ? XFS_BTREE_ERROR : XFS_BTREE_NOERROR);
 	}
 	if (!error)
@@ -6800,6 +7327,8 @@ error0:
 }
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * Map file blocks to filesystem blocks, simple version.
@@ -6855,6 +7384,7 @@ xfs_bmapi_single(
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Unmap (remove) blocks from a file.
  * If nexts is nonzero then the number of extents to remove is limited to
  * that value.  If not all extents in the block range can be removed then
@@ -6915,9 +7445,13 @@ xfs_bunmapi(
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	ASSERT(ifp->if_ext_max ==
 	       XFS_IFORK_SIZE(ip, whichfork) / (uint)sizeof(xfs_bmbt_rec_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!(ifp->if_flags & XFS_IFEXTENTS) &&
 	    (error = xfs_iread_extents(tp, ip, whichfork)))
 		return error;
@@ -6952,6 +7486,9 @@ xfs_bunmapi(
 	} else
 		cur = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (isrt) {
 		/*
@@ -6961,8 +7498,11 @@ xfs_bunmapi(
 		xfs_trans_ijoin(tp, mp->m_rbmip, XFS_ILOCK_EXCL);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	extno = 0;
 	while (bno != (xfs_fileoff_t)-1 && bno >= start && lastx >= 0 &&
 	       (nexts == 0 || extno < nexts)) {
@@ -7046,10 +7586,16 @@ xfs_bunmapi(
 					&lastx, &cur, &del, firstblock, flist,
 					&logflags);
 =======
+<<<<<<< HEAD
+			error = xfs_bmap_add_extent_unwritten_real(tp, ip,
+					&lastx, &cur, &del, firstblock, flist,
+					&logflags);
+=======
 			error = xfs_bmap_add_extent(ip, &lastx, &cur, &del,
 				firstblock, flist, &logflags,
 				XFS_DATA_FORK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (error)
 				goto error0;
 			goto nodelete;
@@ -7110,10 +7656,16 @@ xfs_bunmapi(
 						ip, &lastx, &cur, &prev,
 						firstblock, flist, &logflags);
 =======
+<<<<<<< HEAD
+				error = xfs_bmap_add_extent_unwritten_real(tp,
+						ip, &lastx, &cur, &prev,
+						firstblock, flist, &logflags);
+=======
 				error = xfs_bmap_add_extent(ip, &lastx, &cur,
 					&prev, firstblock, flist, &logflags,
 					XFS_DATA_FORK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (error)
 					goto error0;
 				goto nodelete;
@@ -7125,10 +7677,16 @@ xfs_bunmapi(
 						ip, &lastx, &cur, &del,
 						firstblock, flist, &logflags);
 =======
+<<<<<<< HEAD
+				error = xfs_bmap_add_extent_unwritten_real(tp,
+						ip, &lastx, &cur, &del,
+						firstblock, flist, &logflags);
+=======
 				error = xfs_bmap_add_extent(ip, &lastx, &cur,
 					&del, firstblock, flist, &logflags,
 					XFS_DATA_FORK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (error)
 					goto error0;
 				goto nodelete;
@@ -7177,8 +7735,13 @@ xfs_bunmapi(
 		    XFS_IFORK_NEXTENTS(ip, whichfork) >= /* Note the >= */
 			XFS_IFORK_MAXEXT(ip, whichfork) &&
 =======
+<<<<<<< HEAD
+		    XFS_IFORK_NEXTENTS(ip, whichfork) >= /* Note the >= */
+			XFS_IFORK_MAXEXT(ip, whichfork) &&
+=======
 		    XFS_IFORK_NEXTENTS(ip, whichfork) >= ifp->if_ext_max &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    del.br_startoff > got.br_startoff &&
 		    del.br_startoff + del.br_blockcount <
 		    got.br_startoff + got.br_blockcount) {
@@ -7210,11 +7773,16 @@ nodelete:
 	}
 	*done = bno == (xfs_fileoff_t)-1 || bno < start || lastx < 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Convert to a btree if necessary.
 	 */
 	if (xfs_bmap_needs_btree(ip, whichfork)) {
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(ifp->if_ext_max ==
 	       XFS_IFORK_SIZE(ip, whichfork) / (uint)sizeof(xfs_bmbt_rec_t));
@@ -7224,6 +7792,7 @@ nodelete:
 	if (XFS_IFORK_FORMAT(ip, whichfork) == XFS_DINODE_FMT_EXTENTS &&
 	    XFS_IFORK_NEXTENTS(ip, whichfork) > ifp->if_ext_max) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(cur == NULL);
 		error = xfs_bmap_extents_to_btree(tp, ip, firstblock, flist,
 			&cur, 0, &tmp_logflags, whichfork);
@@ -7237,9 +7806,13 @@ nodelete:
 <<<<<<< HEAD
 	else if (xfs_bmap_wants_extents(ip, whichfork)) {
 =======
+<<<<<<< HEAD
+	else if (xfs_bmap_wants_extents(ip, whichfork)) {
+=======
 	else if (XFS_IFORK_FORMAT(ip, whichfork) == XFS_DINODE_FMT_BTREE &&
 		 XFS_IFORK_NEXTENTS(ip, whichfork) <= ifp->if_ext_max) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(cur != NULL);
 		error = xfs_bmap_btree_to_extents(tp, ip, cur, &tmp_logflags,
 			whichfork);
@@ -7252,9 +7825,12 @@ nodelete:
 	 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(ifp->if_ext_max ==
 	       XFS_IFORK_SIZE(ip, whichfork) / (uint)sizeof(xfs_bmbt_rec_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = 0;
 error0:
 	/*
@@ -7308,8 +7884,12 @@ xfs_getbmapx_fix_eof_hole(
 <<<<<<< HEAD
 		fixlen = XFS_FSB_TO_BB(mp, XFS_B_TO_FSB(mp, XFS_ISIZE(ip)));
 =======
+<<<<<<< HEAD
+		fixlen = XFS_FSB_TO_BB(mp, XFS_B_TO_FSB(mp, XFS_ISIZE(ip)));
+=======
 		fixlen = XFS_FSB_TO_BB(mp, XFS_B_TO_FSB(mp, ip->i_size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fixlen -= out->bmv_offset;
 		if (prealloced && out->bmv_offset + out->bmv_length == end) {
 			/* Came to hole at EOF. Trim it. */
@@ -7400,8 +7980,12 @@ xfs_getbmap(
 <<<<<<< HEAD
 			fixlen = XFS_ISIZE(ip);
 =======
+<<<<<<< HEAD
+			fixlen = XFS_ISIZE(ip);
+=======
 			fixlen = ip->i_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -7426,6 +8010,9 @@ xfs_getbmap(
 		return XFS_ERROR(ENOMEM);
 	out = kmem_zalloc(bmv->bmv_count * sizeof(struct getbmapx), KM_MAYFAIL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!out) {
 		out = kmem_zalloc_large(bmv->bmv_count *
 					sizeof(struct getbmapx));
@@ -7436,6 +8023,8 @@ xfs_getbmap(
 	xfs_ilock(ip, XFS_IOLOCK_SHARED);
 	if (whichfork == XFS_DATA_FORK && !(iflags & BMV_IF_DELALLOC)) {
 		if (ip->i_delayed_blks || XFS_ISIZE(ip) > ip->i_d.di_size) {
+<<<<<<< HEAD
+=======
 =======
 	if (!out)
 		return XFS_ERROR(ENOMEM);
@@ -7444,6 +8033,7 @@ xfs_getbmap(
 	if (whichfork == XFS_DATA_FORK && !(iflags & BMV_IF_DELALLOC)) {
 		if (ip->i_delayed_blks || ip->i_size > ip->i_d.di_size) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = xfs_flush_pages(ip, 0, -1, 0, FI_REMAPF);
 			if (error)
 				goto out_unlock_iolock;
@@ -7496,11 +8086,17 @@ xfs_getbmap(
 				       XFS_BB_TO_FSB(mp, bmv->bmv_length),
 				       map, &nmap, bmapi_flags);
 =======
+<<<<<<< HEAD
+		error = xfs_bmapi_read(ip, XFS_BB_TO_FSBT(mp, bmv->bmv_offset),
+				       XFS_BB_TO_FSB(mp, bmv->bmv_length),
+				       map, &nmap, bmapi_flags);
+=======
 		error = xfs_bmapi(NULL, ip, XFS_BB_TO_FSBT(mp, bmv->bmv_offset),
 				  XFS_BB_TO_FSB(mp, bmv->bmv_length),
 				  bmapi_flags, NULL, 0, map, &nmap,
 				  NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_free_map;
 		ASSERT(nmap <= subnex);
@@ -7571,6 +8167,9 @@ xfs_getbmap(
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (is_vmalloc_addr(out))
 		kmem_free_large(out);
 	else
@@ -7578,6 +8177,8 @@ xfs_getbmap(
 	return error;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	kmem_free(out);
 	return error;
@@ -7667,6 +8268,7 @@ xfs_bmap_eof(
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 STATIC struct xfs_buf *
 xfs_bmap_get_bp(
@@ -8105,10 +8707,15 @@ xfs_bmap_punch_delalloc_range(
 		error = xfs_bmapi_read(ip, start_fsb, 1, &imap, &nimaps,
 				       XFS_BMAPI_ENTIRE);
 =======
+<<<<<<< HEAD
+		error = xfs_bmapi_read(ip, start_fsb, 1, &imap, &nimaps,
+				       XFS_BMAPI_ENTIRE);
+=======
 		error = xfs_bmapi(NULL, ip, start_fsb, 1,
 				XFS_BMAPI_ENTIRE,  NULL, 0, &imap,
 				&nimaps, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (error) {
 			/* something screwed, just bail */

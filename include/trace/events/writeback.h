@@ -6,6 +6,9 @@
 
 #include <linux/backing-dev.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/writeback.h>
 
 #define show_inode_state(state)					\
@@ -31,11 +34,14 @@
 		{WB_REASON_FS_FREE_SPACE,	"fs_free_space"},	\
 		{WB_REASON_FORKER_THREAD,	"forker_thread"}
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/device.h>
 #include <linux/writeback.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct wb_writeback_work;
 
 DECLARE_EVENT_CLASS(writeback_work_class,
@@ -52,7 +58,11 @@ DECLARE_EVENT_CLASS(writeback_work_class,
 <<<<<<< HEAD
 		__field(int, reason)
 =======
+<<<<<<< HEAD
+		__field(int, reason)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	),
 	TP_fast_assign(
 		struct device *dev = bdi->dev;
@@ -66,15 +76,21 @@ DECLARE_EVENT_CLASS(writeback_work_class,
 		__entry->range_cyclic = work->range_cyclic;
 		__entry->for_background	= work->for_background;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->reason = work->reason;
 	),
 	TP_printk("bdi %s: sb_dev %d:%d nr_pages=%ld sync_mode=%d "
 		  "kupdate=%d range_cyclic=%d background=%d reason=%s",
+<<<<<<< HEAD
+=======
 =======
 	),
 	TP_printk("bdi %s: sb_dev %d:%d nr_pages=%ld sync_mode=%d "
 		  "kupdate=%d range_cyclic=%d background=%d",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  __entry->name,
 		  MAJOR(__entry->sb_dev), MINOR(__entry->sb_dev),
 		  __entry->nr_pages,
@@ -85,8 +101,13 @@ DECLARE_EVENT_CLASS(writeback_work_class,
 		  __entry->for_background,
 		  __print_symbolic(__entry->reason, WB_WORK_REASON)
 =======
+<<<<<<< HEAD
+		  __entry->for_background,
+		  __print_symbolic(__entry->reason, WB_WORK_REASON)
+=======
 		  __entry->for_background
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	)
 );
 #define DEFINE_WRITEBACK_WORK_EVENT(name) \
@@ -101,7 +122,13 @@ DEFINE_WRITEBACK_WORK_EVENT(writeback_start);
 DEFINE_WRITEBACK_WORK_EVENT(writeback_written);
 DEFINE_WRITEBACK_WORK_EVENT(writeback_wait);
 =======
+<<<<<<< HEAD
+DEFINE_WRITEBACK_WORK_EVENT(writeback_start);
+DEFINE_WRITEBACK_WORK_EVENT(writeback_written);
+DEFINE_WRITEBACK_WORK_EVENT(writeback_wait);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 TRACE_EVENT(writeback_pages_written,
 	TP_PROTO(long pages_written),
@@ -156,9 +183,12 @@ DECLARE_EVENT_CLASS(wbc_class,
 		__field(int, range_cyclic)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		__field(int, more_io)
 		__field(unsigned long, older_than_this)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__field(long, range_start)
 		__field(long, range_end)
 	),
@@ -174,10 +204,13 @@ DECLARE_EVENT_CLASS(wbc_class,
 		__entry->range_cyclic	= wbc->range_cyclic;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		__entry->more_io	= wbc->more_io;
 		__entry->older_than_this = wbc->older_than_this ?
 						*wbc->older_than_this : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->range_start	= (long)wbc->range_start;
 		__entry->range_end	= (long)wbc->range_end;
 	),
@@ -186,8 +219,12 @@ DECLARE_EVENT_CLASS(wbc_class,
 <<<<<<< HEAD
 		"bgrd=%d reclm=%d cyclic=%d "
 =======
+<<<<<<< HEAD
+		"bgrd=%d reclm=%d cyclic=%d "
+=======
 		"bgrd=%d reclm=%d cyclic=%d more=%d older=0x%lx "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"start=0x%lx end=0x%lx",
 		__entry->name,
 		__entry->nr_to_write,
@@ -199,9 +236,12 @@ DECLARE_EVENT_CLASS(wbc_class,
 		__entry->range_cyclic,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		__entry->more_io,
 		__entry->older_than_this,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->range_start,
 		__entry->range_end)
 )
@@ -211,6 +251,9 @@ DEFINE_EVENT(wbc_class, name, \
 	TP_PROTO(struct writeback_control *wbc, struct backing_dev_info *bdi), \
 	TP_ARGS(wbc, bdi))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DEFINE_WBC_EVENT(wbc_writepage);
 
 TRACE_EVENT(writeback_queue_io,
@@ -415,6 +458,8 @@ TRACE_EVENT(balance_dirty_pages,
 	  )
 );
 
+<<<<<<< HEAD
+=======
 =======
 DEFINE_WBC_EVENT(wbc_writeback_start);
 DEFINE_WBC_EVENT(wbc_writeback_written);
@@ -425,6 +470,7 @@ DEFINE_WBC_EVENT(wbc_balance_dirty_wait);
 DEFINE_WBC_EVENT(wbc_writepage);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_EVENT_CLASS(writeback_congest_waited_template,
 
 	TP_PROTO(unsigned int usec_timeout, unsigned int usec_delayed),
@@ -461,6 +507,9 @@ DEFINE_EVENT(writeback_congest_waited_template, writeback_wait_iff_congested,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_EVENT_CLASS(writeback_single_inode_template,
 
 	TP_PROTO(struct inode *inode,
@@ -518,8 +567,11 @@ DEFINE_EVENT(writeback_single_inode_template, writeback_single_inode,
 	TP_ARGS(inode, wbc, nr_to_write)
 );
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _TRACE_WRITEBACK_H */
 
 /* This part must be outside protection */

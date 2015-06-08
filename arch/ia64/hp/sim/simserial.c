@@ -7,13 +7,19 @@
 <<<<<<< HEAD
  * case means sys_sim.c console (goes via the simulator).
 =======
+<<<<<<< HEAD
+ * case means sys_sim.c console (goes via the simulator).
+=======
  * case means sys_sim.c console (goes via the simulator). The code hereafter
  * is completely leveraged from the serial.c driver.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (C) 1999-2000, 2002-2003 Hewlett-Packard Co
  *	Stephane Eranian <eranian@hpl.hp.com>
  *	David Mosberger-Tang <davidm@hpl.hp.com>
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  *
@@ -21,6 +27,7 @@
  * 02/25/00 D. Mosberger	Synced up with 2.3.99pre-5 version of serial.c.
  * 07/30/02 D. Mosberger	Replace sti()/cli() with explicit spinlocks & local irq masking
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/init.h>
@@ -35,6 +42,9 @@
 #include <linux/slab.h>
 #include <linux/capability.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/circ_buf.h>
 #include <linux/console.h>
 #include <linux/irq.h>
@@ -46,6 +56,8 @@
 #include <asm/hpsim.h>
 
 #include "hpsim_ssc.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/console.h>
 #include <linux/module.h>
@@ -57,6 +69,7 @@
 #include <asm/hw_irq.h>
 #include <asm/uaccess.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef SIMSERIAL_DEBUG	/* define this to get some debug information */
 
@@ -65,6 +78,9 @@
 #define NR_PORTS	1	/* only one port for now */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct serial_state {
 	struct tty_port port;
 	struct circ_buf xmit;
@@ -79,6 +95,8 @@ struct tty_driver *hp_simserial_driver;
 static struct console *console;
 
 static void receive_chars(struct tty_struct *tty)
+<<<<<<< HEAD
+=======
 =======
 #define IRQ_T(info) ((info->flags & ASYNC_SHARE_IRQ) ? IRQF_SHARED : IRQF_DISABLED)
 
@@ -166,12 +184,16 @@ static void rs_start(struct tty_struct *tty)
 
 static  void receive_chars(struct tty_struct *tty)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned char ch;
 	static unsigned char seen_esc = 0;
 
 	while ( (ch = ia64_ssc(0, 0, 0, 0, SSC_GETCHAR)) ) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ch == 27 && seen_esc == 0) {
 			seen_esc = 1;
 			continue;
@@ -191,6 +213,8 @@ static  void receive_chars(struct tty_struct *tty)
 #endif
 			seen_esc = 0;
 			continue;
+<<<<<<< HEAD
+=======
 =======
 		if ( ch == 27 && seen_esc == 0 ) {
 			seen_esc = 1;
@@ -215,6 +239,7 @@ static  void receive_chars(struct tty_struct *tty)
 				continue;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		seen_esc = 0;
 
@@ -230,11 +255,16 @@ static  void receive_chars(struct tty_struct *tty)
 static irqreturn_t rs_interrupt_single(int irq, void *dev_id)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct serial_state *info = dev_id;
 	struct tty_struct *tty = tty_port_tty_get(&info->port);
 
 	if (!tty) {
 		printk(KERN_INFO "%s: tty=0 problem\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 	struct async_struct * info;
 
@@ -246,6 +276,7 @@ static irqreturn_t rs_interrupt_single(int irq, void *dev_id)
 	if (!info || !info->tty) {
 		printk(KERN_INFO "simrs_interrupt_single: info|tty=0 info=%p problem\n", info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return IRQ_NONE;
 	}
 	/*
@@ -256,8 +287,13 @@ static irqreturn_t rs_interrupt_single(int irq, void *dev_id)
 	receive_chars(tty);
 	tty_kref_put(tty);
 =======
+<<<<<<< HEAD
+	receive_chars(tty);
+	tty_kref_put(tty);
+=======
 	receive_chars(info->tty);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return IRQ_HANDLED;
 }
 
@@ -268,12 +304,17 @@ static irqreturn_t rs_interrupt_single(int irq, void *dev_id)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int rs_put_char(struct tty_struct *tty, unsigned char ch)
 {
 	struct serial_state *info = tty->driver_data;
 	unsigned long flags;
 
 	if (!info->xmit.buf)
+<<<<<<< HEAD
+=======
 =======
 static void do_softint(struct work_struct *private_)
 {
@@ -287,6 +328,7 @@ static int rs_put_char(struct tty_struct *tty, unsigned char ch)
 
 	if (!tty || !info->xmit.buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	local_irq_save(flags);
@@ -304,16 +346,24 @@ static int rs_put_char(struct tty_struct *tty, unsigned char ch)
 static void transmit_chars(struct tty_struct *tty, struct serial_state *info,
 		int *intr_done)
 =======
+<<<<<<< HEAD
+static void transmit_chars(struct tty_struct *tty, struct serial_state *info,
+		int *intr_done)
+=======
 static void transmit_chars(struct async_struct *info, int *intr_done)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int count;
 	unsigned long flags;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_irq_save(flags);
 
 	if (info->x_char) {
@@ -323,25 +373,34 @@ static void transmit_chars(struct async_struct *info, int *intr_done)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		info->state->icount.tx++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info->x_char = 0;
 
 		goto out;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (info->xmit.head == info->xmit.tail || tty->stopped ||
 			tty->hw_stopped) {
 #ifdef SIMSERIAL_DEBUG
 		printk("transmit_chars: head=%d, tail=%d, stopped=%d\n",
 		       info->xmit.head, info->xmit.tail, tty->stopped);
+<<<<<<< HEAD
+=======
 =======
 	if (info->xmit.head == info->xmit.tail || info->tty->stopped || info->tty->hw_stopped) {
 #ifdef SIMSERIAL_DEBUG
 		printk("transmit_chars: head=%d, tail=%d, stopped=%d\n",
 		       info->xmit.head, info->xmit.tail, info->tty->stopped);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 		goto out;
 	}
@@ -374,6 +433,9 @@ out:
 static void rs_flush_chars(struct tty_struct *tty)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct serial_state *info = tty->driver_data;
 
 	if (info->xmit.head == info->xmit.tail || tty->stopped ||
@@ -392,6 +454,8 @@ static int rs_write(struct tty_struct * tty,
 
 	if (!info->xmit.buf)
 		return 0;
+<<<<<<< HEAD
+=======
 =======
 	struct async_struct *info = (struct async_struct *)tty->driver_data;
 
@@ -412,6 +476,7 @@ static int rs_write(struct tty_struct * tty,
 
 	if (!tty || !info->xmit.buf || !tmp_buf) return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	local_irq_save(flags);
 	while (1) {
@@ -433,16 +498,22 @@ static int rs_write(struct tty_struct * tty,
 	 * Hey, we transmit directly from here in our case
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (CIRC_CNT(info->xmit.head, info->xmit.tail, SERIAL_XMIT_SIZE) &&
 			!tty->stopped && !tty->hw_stopped)
 		transmit_chars(tty, info, NULL);
 
+<<<<<<< HEAD
+=======
 =======
 	if (CIRC_CNT(info->xmit.head, info->xmit.tail, SERIAL_XMIT_SIZE)
 	    && !tty->stopped && !tty->hw_stopped) {
 		transmit_chars(info, NULL);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -451,8 +522,12 @@ static int rs_write_room(struct tty_struct *tty)
 <<<<<<< HEAD
 	struct serial_state *info = tty->driver_data;
 =======
+<<<<<<< HEAD
+	struct serial_state *info = tty->driver_data;
+=======
 	struct async_struct *info = (struct async_struct *)tty->driver_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return CIRC_SPACE(info->xmit.head, info->xmit.tail, SERIAL_XMIT_SIZE);
 }
@@ -462,8 +537,12 @@ static int rs_chars_in_buffer(struct tty_struct *tty)
 <<<<<<< HEAD
 	struct serial_state *info = tty->driver_data;
 =======
+<<<<<<< HEAD
+	struct serial_state *info = tty->driver_data;
+=======
 	struct async_struct *info = (struct async_struct *)tty->driver_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return CIRC_CNT(info->xmit.head, info->xmit.tail, SERIAL_XMIT_SIZE);
 }
@@ -473,8 +552,12 @@ static void rs_flush_buffer(struct tty_struct *tty)
 <<<<<<< HEAD
 	struct serial_state *info = tty->driver_data;
 =======
+<<<<<<< HEAD
+	struct serial_state *info = tty->driver_data;
+=======
 	struct async_struct *info = (struct async_struct *)tty->driver_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 
 	local_irq_save(flags);
@@ -493,8 +576,12 @@ static void rs_send_xchar(struct tty_struct *tty, char ch)
 <<<<<<< HEAD
 	struct serial_state *info = tty->driver_data;
 =======
+<<<<<<< HEAD
+	struct serial_state *info = tty->driver_data;
+=======
 	struct async_struct *info = (struct async_struct *)tty->driver_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info->x_char = ch;
 	if (ch) {
@@ -505,8 +592,12 @@ static void rs_send_xchar(struct tty_struct *tty, char ch)
 <<<<<<< HEAD
 		transmit_chars(tty, info, NULL);
 =======
+<<<<<<< HEAD
+		transmit_chars(tty, info, NULL);
+=======
 		transmit_chars(info, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -524,8 +615,13 @@ static void rs_throttle(struct tty_struct * tty)
 	if (I_IXOFF(tty))
 		rs_send_xchar(tty, STOP_CHAR(tty));
 =======
+<<<<<<< HEAD
+	if (I_IXOFF(tty))
+		rs_send_xchar(tty, STOP_CHAR(tty));
+=======
 	if (I_IXOFF(tty)) rs_send_xchar(tty, STOP_CHAR(tty));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "simrs_throttle called\n");
 }
@@ -535,8 +631,12 @@ static void rs_unthrottle(struct tty_struct * tty)
 <<<<<<< HEAD
 	struct serial_state *info = tty->driver_data;
 =======
+<<<<<<< HEAD
+	struct serial_state *info = tty->driver_data;
+=======
 	struct async_struct *info = (struct async_struct *)tty->driver_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (I_IXOFF(tty)) {
 		if (info->x_char)
@@ -549,8 +649,11 @@ static void rs_unthrottle(struct tty_struct * tty)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int rs_ioctl(struct tty_struct *tty, unsigned int cmd, unsigned long arg)
 {
 	if ((cmd != TIOCGSERIAL) && (cmd != TIOCSSERIAL) &&
@@ -562,6 +665,9 @@ static int rs_ioctl(struct tty_struct *tty, unsigned int cmd, unsigned long arg)
 
 	switch (cmd) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TIOCGSERIAL:
 	case TIOCSSERIAL:
 	case TIOCSERGSTRUCT:
@@ -577,6 +683,8 @@ static int rs_ioctl(struct tty_struct *tty, unsigned int cmd, unsigned long arg)
 		return 0;
 	}
 	return -ENOIOCTLCMD;
+<<<<<<< HEAD
+=======
 =======
 		case TIOCGSERIAL:
 			printk(KERN_INFO "simrs_ioctl TIOCGSERIAL called\n");
@@ -621,6 +729,7 @@ static int rs_ioctl(struct tty_struct *tty, unsigned int cmd, unsigned long arg)
 		}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define RELEVANT_IFLAG(iflag) (iflag & (IGNBRK|BRKINT|IGNPAR|PARMRK|INPCK))
@@ -633,8 +742,11 @@ static void rs_set_termios(struct tty_struct *tty, struct ktermios *old_termios)
 		tty->hw_stopped = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		rs_start(tty);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 /*
@@ -642,6 +754,9 @@ static void rs_set_termios(struct tty_struct *tty, struct ktermios *old_termios)
  * DTR is dropped if the hangup on close termio flag is on.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void shutdown(struct tty_port *port)
 {
 	struct serial_state *info = container_of(port, struct serial_state,
@@ -655,6 +770,8 @@ static void shutdown(struct tty_port *port)
 	if (info->xmit.buf) {
 		free_page((unsigned long) info->xmit.buf);
 		info->xmit.buf = NULL;
+<<<<<<< HEAD
+=======
 =======
 static void shutdown(struct async_struct * info)
 {
@@ -709,11 +826,15 @@ static void shutdown(struct async_struct * info)
 
 		info->flags &= ~ASYNC_INITIALIZED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	local_irq_restore(flags);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void rs_close(struct tty_struct *tty, struct file * filp)
 {
 	struct serial_state *info = tty->driver_data;
@@ -735,6 +856,8 @@ static int activate(struct tty_port *port, struct tty_struct *tty)
 			port);
 	unsigned long flags, page;
 	int retval = 0;
+<<<<<<< HEAD
+=======
 =======
 /*
  * ------------------------------------------------------------
@@ -888,6 +1011,7 @@ startup(struct async_struct *info)
 	struct serial_state *state= info->state;
 	unsigned long page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	page = get_zeroed_page(GFP_KERNEL);
 	if (!page)
@@ -896,6 +1020,9 @@ startup(struct async_struct *info)
 	local_irq_save(flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (state->xmit.buf)
 		free_page(page);
 	else
@@ -909,6 +1036,8 @@ startup(struct async_struct *info)
 	}
 
 	state->xmit.head = state->xmit.tail = 0;
+<<<<<<< HEAD
+=======
 =======
 	if (info->flags & ASYNC_INITIALIZED) {
 		free_page(page);
@@ -973,11 +1102,15 @@ startup(struct async_struct *info)
 	timer_active |= 1 << RS_TIMER;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Set up the tty->alt_speed kludge
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((port->flags & ASYNC_SPD_MASK) == ASYNC_SPD_HI)
 		tty->alt_speed = 57600;
 	if ((port->flags & ASYNC_SPD_MASK) == ASYNC_SPD_VHI)
@@ -986,6 +1119,8 @@ startup(struct async_struct *info)
 		tty->alt_speed = 230400;
 	if ((port->flags & ASYNC_SPD_MASK) == ASYNC_SPD_WARP)
 		tty->alt_speed = 460800;
+<<<<<<< HEAD
+=======
 =======
 	if (info->tty) {
 		if ((info->flags & ASYNC_SPD_MASK) == ASYNC_SPD_HI)
@@ -1002,6 +1137,7 @@ startup(struct async_struct *info)
 	local_irq_restore(flags);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 errout:
 	local_irq_restore(flags);
@@ -1018,11 +1154,16 @@ errout:
 static int rs_open(struct tty_struct *tty, struct file * filp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct serial_state *info = rs_table + tty->index;
 	struct tty_port *port = &info->port;
 
 	tty->driver_data = info;
 	tty->low_latency = (port->flags & ASYNC_LOW_LATENCY) ? 1 : 0;
+<<<<<<< HEAD
+=======
 =======
 	struct async_struct	*info;
 	int			retval, line;
@@ -1075,6 +1216,7 @@ static int rs_open(struct tty_struct *tty, struct file * filp)
 		return retval;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * figure out which console to use (should be one already)
@@ -1088,17 +1230,23 @@ static int rs_open(struct tty_struct *tty, struct file * filp)
 <<<<<<< HEAD
 	return tty_port_open(port, tty, filp);
 =======
+<<<<<<< HEAD
+	return tty_port_open(port, tty, filp);
+=======
 #ifdef SIMSERIAL_DEBUG
 	printk("rs_open ttys%d successful\n", info->line);
 #endif
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
  * /proc fs routines....
  */
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static inline void line_info(struct seq_file *m, struct serial_state *state)
@@ -1109,20 +1257,27 @@ static inline void line_info(struct seq_file *m, struct serial_state *state)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int rs_proc_show(struct seq_file *m, void *v)
 {
 	int i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	seq_printf(m, "simserinfo:1.0\n");
 	for (i = 0; i < NR_PORTS; i++)
 		seq_printf(m, "%d: uart:16550 port:3F8 irq:%d\n",
 		       i, rs_table[i].irq);
+<<<<<<< HEAD
+=======
 =======
 	seq_printf(m, "simserinfo:1.0 driver:%s\n", serial_version);
 	for (i = 0; i < NR_PORTS; i++)
 		line_info(m, &rs_table[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1139,6 +1294,8 @@ static const struct file_operations rs_proc_fops = {
 	.release	= single_release,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -1161,6 +1318,7 @@ static inline void show_serial_version(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct tty_operations hp_ops = {
 	.open = rs_open,
 	.close = rs_close,
@@ -1176,6 +1334,9 @@ static const struct tty_operations hp_ops = {
 	.send_xchar = rs_send_xchar,
 	.set_termios = rs_set_termios,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hangup = rs_hangup,
 	.proc_fops = &rs_proc_fops,
 };
@@ -1189,6 +1350,8 @@ static int __init simrs_init(void)
 {
 	struct serial_state *state;
 	int retval;
+<<<<<<< HEAD
+=======
 =======
 	.stop = rs_stop,
 	.start = rs_start,
@@ -1206,11 +1369,15 @@ simrs_init (void)
 	int			i, rc;
 	struct serial_state	*state;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!ia64_platform_is("hpsim"))
 		return -ENODEV;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hp_simserial_driver = alloc_tty_driver(NR_PORTS);
 	if (!hp_simserial_driver)
 		return -ENOMEM;
@@ -1219,6 +1386,8 @@ simrs_init (void)
 
 	/* Initialize the tty_driver structure */
 
+<<<<<<< HEAD
+=======
 =======
 	hp_simserial_driver = alloc_tty_driver(1);
 	if (!hp_simserial_driver)
@@ -1230,6 +1399,7 @@ simrs_init (void)
 
 	hp_simserial_driver->owner = THIS_MODULE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hp_simserial_driver->driver_name = "simserial";
 	hp_simserial_driver->name = "ttyS";
 	hp_simserial_driver->major = TTY_MAJOR;
@@ -1243,6 +1413,9 @@ simrs_init (void)
 	tty_set_operations(hp_simserial_driver, &hp_ops);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state = rs_table;
 	tty_port_init(&state->port);
 	state->port.ops = &hp_port_ops;
@@ -1270,6 +1443,8 @@ simrs_init (void)
 err_free_tty:
 	put_tty_driver(hp_simserial_driver);
 	return retval;
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Let's have a little bit of fun !
@@ -1297,6 +1472,7 @@ err_free_tty:
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifndef MODULE

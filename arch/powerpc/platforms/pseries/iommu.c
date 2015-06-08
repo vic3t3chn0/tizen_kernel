@@ -32,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/sched.h>	/* for show_stack */
 =======
+<<<<<<< HEAD
+#include <linux/sched.h>	/* for show_stack */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 #include <linux/pci.h>
 #include <linux/dma-mapping.h>
@@ -56,6 +60,9 @@
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tce_invalidate_pSeries_sw(struct iommu_table *tbl,
 				      u64 *startp, u64 *endp)
 {
@@ -85,8 +92,11 @@ static void tce_invalidate_pSeries_sw(struct iommu_table *tbl,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tce_build_pSeries(struct iommu_table *tbl, long index,
 			      long npages, unsigned long uaddr,
 			      enum dma_data_direction direction,
@@ -96,8 +106,12 @@ static int tce_build_pSeries(struct iommu_table *tbl, long index,
 <<<<<<< HEAD
 	u64 *tcep, *tces;
 =======
+<<<<<<< HEAD
+	u64 *tcep, *tces;
+=======
 	u64 *tcep;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 rpn;
 
 	proto_tce = TCE_PCI_READ; // Read allowed
@@ -108,8 +122,12 @@ static int tce_build_pSeries(struct iommu_table *tbl, long index,
 <<<<<<< HEAD
 	tces = tcep = ((u64 *)tbl->it_base) + index;
 =======
+<<<<<<< HEAD
+	tces = tcep = ((u64 *)tbl->it_base) + index;
+=======
 	tcep = ((u64 *)tbl->it_base) + index;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (npages--) {
 		/* can't move this out since we might cross MEMBLOCK boundary */
@@ -124,7 +142,13 @@ static int tce_build_pSeries(struct iommu_table *tbl, long index,
 	if (tbl->it_type == TCE_PCI_SWINV_CREATE)
 		tce_invalidate_pSeries_sw(tbl, tces, tcep - 1);
 =======
+<<<<<<< HEAD
+
+	if (tbl->it_type == TCE_PCI_SWINV_CREATE)
+		tce_invalidate_pSeries_sw(tbl, tces, tcep - 1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -132,6 +156,9 @@ static int tce_build_pSeries(struct iommu_table *tbl, long index,
 static void tce_free_pSeries(struct iommu_table *tbl, long index, long npages)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 *tcep, *tces;
 
 	tces = tcep = ((u64 *)tbl->it_base) + index;
@@ -141,6 +168,8 @@ static void tce_free_pSeries(struct iommu_table *tbl, long index, long npages)
 
 	if (tbl->it_type == TCE_PCI_SWINV_FREE)
 		tce_invalidate_pSeries_sw(tbl, tces, tcep - 1);
+<<<<<<< HEAD
+=======
 =======
 	u64 *tcep;
 
@@ -149,6 +178,7 @@ static void tce_free_pSeries(struct iommu_table *tbl, long index, long npages)
 	while (npages--)
 		*(tcep++) = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static unsigned long tce_get_pseries(struct iommu_table *tbl, long index)
@@ -489,8 +519,12 @@ static void iommu_table_setparms(struct pci_controller *phb,
 <<<<<<< HEAD
 	const unsigned long *basep, *sw_inval;
 =======
+<<<<<<< HEAD
+	const unsigned long *basep, *sw_inval;
+=======
 	const unsigned long *basep;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const u32 *sizep;
 
 	node = phb->dn;
@@ -528,6 +562,9 @@ static void iommu_table_setparms(struct pci_controller *phb,
 	tbl->it_blocksize = 16;
 	tbl->it_type = TCE_PCI;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sw_inval = of_get_property(node, "linux,tce-sw-invalidate-info", NULL);
 	if (sw_inval) {
@@ -544,8 +581,11 @@ static void iommu_table_setparms(struct pci_controller *phb,
 		tbl->it_busno = sw_inval[1]; /* overload this with magic */
 		tbl->it_type = TCE_PCI_SWINV_CREATE | TCE_PCI_SWINV_FREE;
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -845,9 +885,13 @@ static int query_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 <<<<<<< HEAD
 	struct eeh_dev *edev;
 =======
+<<<<<<< HEAD
+	struct eeh_dev *edev;
+=======
 	struct device_node *dn;
 	struct pci_dn *pcidn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 cfg_addr;
 	u64 buid;
 	int ret;
@@ -859,12 +903,17 @@ static int query_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 	 * dma-window property
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	edev = pci_dev_to_eeh_dev(dev);
 	cfg_addr = edev->config_addr;
 	if (edev->pe_config_addr)
 		cfg_addr = edev->pe_config_addr;
 	buid = edev->phb->buid;
 
+<<<<<<< HEAD
+=======
 =======
 	dn = pci_device_to_OF_node(dev);
 	pcidn = PCI_DN(dn);
@@ -873,6 +922,7 @@ static int query_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 		cfg_addr = pcidn->eeh_pe_config_addr;
 	buid = pcidn->phb->buid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = rtas_call(ddw_avail[0], 3, 5, (u32 *)query,
 		  cfg_addr, BUID_HI(buid), BUID_LO(buid));
 	dev_info(&dev->dev, "ibm,query-pe-dma-windows(%x) %x %x %x"
@@ -888,9 +938,13 @@ static int create_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 <<<<<<< HEAD
 	struct eeh_dev *edev;
 =======
+<<<<<<< HEAD
+	struct eeh_dev *edev;
+=======
 	struct device_node *dn;
 	struct pci_dn *pcidn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 cfg_addr;
 	u64 buid;
 	int ret;
@@ -902,11 +956,16 @@ static int create_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 	 * dma-window property
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	edev = pci_dev_to_eeh_dev(dev);
 	cfg_addr = edev->config_addr;
 	if (edev->pe_config_addr)
 		cfg_addr = edev->pe_config_addr;
 	buid = edev->phb->buid;
+<<<<<<< HEAD
+=======
 =======
 	dn = pci_device_to_OF_node(dev);
 	pcidn = PCI_DN(dn);
@@ -915,6 +974,7 @@ static int create_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 		cfg_addr = pcidn->eeh_pe_config_addr;
 	buid = pcidn->phb->buid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	do {
 		/* extra outputs are LIOBN and dma-addr (hi, lo) */
@@ -1052,8 +1112,12 @@ static u64 enable_ddw(struct pci_dev *dev, struct device_node *pdn)
 <<<<<<< HEAD
 		goto out_free_window;
 =======
+<<<<<<< HEAD
+		goto out_free_window;
+=======
 		goto out_clear_window;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ret = prom_add_property(pdn, win64);
@@ -1063,8 +1127,12 @@ static u64 enable_ddw(struct pci_dev *dev, struct device_node *pdn)
 <<<<<<< HEAD
 		goto out_free_window;
 =======
+<<<<<<< HEAD
+		goto out_free_window;
+=======
 		goto out_clear_window;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	window->device = pdn;
@@ -1081,7 +1149,13 @@ out_free_window:
 	kfree(window);
 
 =======
+<<<<<<< HEAD
+out_free_window:
+	kfree(window);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_clear_window:
 	remove_ddw(pdn);
 
@@ -1202,6 +1276,9 @@ check_mask:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 dma_get_required_mask_pSeriesLP(struct device *dev)
 {
 	if (!dev->dma_mask)
@@ -1227,8 +1304,11 @@ static u64 dma_get_required_mask_pSeriesLP(struct device *dev)
 	return dma_iommu_ops.get_required_mask(dev);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else  /* CONFIG_PCI */
 #define pci_dma_bus_setup_pSeries	NULL
 #define pci_dma_dev_setup_pSeries	NULL
@@ -1238,7 +1318,11 @@ static u64 dma_get_required_mask_pSeriesLP(struct device *dev)
 <<<<<<< HEAD
 #define dma_get_required_mask_pSeriesLP	NULL
 =======
+<<<<<<< HEAD
+#define dma_get_required_mask_pSeriesLP	NULL
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !CONFIG_PCI */
 
 static int iommu_mem_notifier(struct notifier_block *nb, unsigned long action,
@@ -1345,7 +1429,11 @@ void iommu_init_early_pSeries(void)
 <<<<<<< HEAD
 		ppc_md.dma_get_required_mask = dma_get_required_mask_pSeriesLP;
 =======
+<<<<<<< HEAD
+		ppc_md.dma_get_required_mask = dma_get_required_mask_pSeriesLP;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		ppc_md.tce_build = tce_build_pSeries;
 		ppc_md.tce_free  = tce_free_pSeries;

@@ -35,6 +35,11 @@
 #define VIDTCON1				(0x14)
 #define VIDTCON2				(0x18)
 =======
+<<<<<<< HEAD
+#define VIDTCON0				(0x10)
+#define VIDTCON1				(0x14)
+#define VIDTCON2				(0x18)
+=======
 #ifdef CONFIG_FB_EXYNOS_FIMD_V8
 #define VIDTCON0				(0x20010)
 #define VIDTCON1				(0x20014)
@@ -47,6 +52,7 @@
 #define VIDTCON3				(0x1C)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Window position controls */
 
@@ -62,6 +68,11 @@
 /* WINCONx */
 
 =======
+<<<<<<< HEAD
+
+/* WINCONx */
+
+=======
 #define VIDINTCON1				(0x134)
 
 /* WINCONx */
@@ -69,6 +80,7 @@
 #define WINCONx_CSC_CON_EQ709			(1 << 28)
 #define WINCONx_CSC_CON_EQ601			(0 << 28)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WINCONx_CSCWIDTH_MASK			(0x3 << 26)
 #define WINCONx_CSCWIDTH_SHIFT			(26)
 #define WINCONx_CSCWIDTH_WIDE			(0x0 << 26)

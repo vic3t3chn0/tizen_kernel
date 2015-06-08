@@ -68,7 +68,11 @@ static unsigned int partnumber(unsigned int asicid)
 <<<<<<< HEAD
  * DB8520v2.2	0x412fc091	0x9001DBF4		0x008500B2
 =======
+<<<<<<< HEAD
+ * DB8520v2.2	0x412fc091	0x9001DBF4		0x008500B2
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * DB5500v1	0x412fc091	0x9001FFF4		0x005500A0
  */
 
@@ -85,15 +89,21 @@ void __init ux500_map_io(void)
 		break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 0x412fc091: /* DB8520 / DB8500v2 / DB5500v1 */
 		asicid = ux500_read_asicid(0x9001DBF4);
 		if (partnumber(asicid) == 0x8500 ||
 		    partnumber(asicid) == 0x8520)
+<<<<<<< HEAD
+=======
 =======
 	case 0x412fc091: /* DB8500v2 / DB5500v1 */
 		asicid = ux500_read_asicid(0x9001DBF4);
 		if (partnumber(asicid) == 0x8500)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* DB8500v2 */
 			break;
 

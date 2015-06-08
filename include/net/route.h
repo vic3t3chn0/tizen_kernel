@@ -74,8 +74,12 @@ struct rtable {
 <<<<<<< HEAD
 static inline bool rt_is_input_route(const struct rtable *rt)
 =======
+<<<<<<< HEAD
+static inline bool rt_is_input_route(const struct rtable *rt)
+=======
 static inline bool rt_is_input_route(struct rtable *rt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return rt->rt_route_iif != 0;
 }
@@ -83,8 +87,12 @@ static inline bool rt_is_input_route(struct rtable *rt)
 <<<<<<< HEAD
 static inline bool rt_is_output_route(const struct rtable *rt)
 =======
+<<<<<<< HEAD
+static inline bool rt_is_output_route(const struct rtable *rt)
+=======
 static inline bool rt_is_output_route(struct rtable *rt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return rt->rt_route_iif == 0;
 }

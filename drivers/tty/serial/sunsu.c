@@ -41,14 +41,30 @@
 #include <asm/io.h>
 #include <asm/irq.h>
 #include <asm/prom.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/setup.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_SERIAL_SUNSU_CONSOLE) && defined(CONFIG_MAGIC_SYSRQ)
 #define SUPPORT_SYSRQ
 #endif
 
 #include <linux/serial_core.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/sunserialcore.h>
+=======
 
 #include "suncore.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+#include "suncore.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* We are on a NS PC87303 clocked with 24.0 MHz, which results
  * in a UART clock of 1.8462 MHz.
@@ -968,7 +984,14 @@ static struct uart_ops sunsu_pops = {
 #define UART_NR	4
 
 static struct uart_sunsu_port sunsu_ports[UART_NR];
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static int nr_inst; /* Number of already registered ports */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nr_inst; /* Number of already registered ports */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SERIO
 
@@ -1338,8 +1361,23 @@ static int __init sunsu_console_setup(struct console *co, char *options)
 	printk("Console: ttyS%d (SU)\n",
 	       (sunsu_reg.minor - 64) + co->index);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Check whether an invalid uart number has been specified, and
+	 * if so, search for the first available port that does have
+	 * console support.
+	 */
+	if (co->index >= UART_NR)
+		co->index = 0;
+=======
 	if (co->index > nr_inst)
 		return -ENODEV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (co->index > nr_inst)
+		return -ENODEV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	port = &sunsu_ports[co->index].port;
 
 	/*
@@ -1404,6 +1442,13 @@ static enum su_type __devinit su_get_type(struct device_node *dp)
 
 static int __devinit su_probe(struct platform_device *op)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static int inst;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device_node *dp = op->dev.of_node;
 	struct uart_sunsu_port *up;
 	struct resource *rp;
@@ -1413,16 +1458,36 @@ static int __devinit su_probe(struct platform_device *op)
 
 	type = su_get_type(dp);
 	if (type == SU_PORT_PORT) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (inst >= UART_NR)
+			return -EINVAL;
+		up = &sunsu_ports[inst];
+=======
 		if (nr_inst >= UART_NR)
 			return -EINVAL;
 		up = &sunsu_ports[nr_inst];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (nr_inst >= UART_NR)
+			return -EINVAL;
+		up = &sunsu_ports[nr_inst];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		up = kzalloc(sizeof(*up), GFP_KERNEL);
 		if (!up)
 			return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	up->port.line = inst;
+=======
 	up->port.line = nr_inst;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	up->port.line = nr_inst;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_init(&up->port.lock);
 
@@ -1430,7 +1495,15 @@ static int __devinit su_probe(struct platform_device *op)
 
 	rp = &op->resource[0];
 	up->port.mapbase = rp->start;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	up->reg_size = resource_size(rp);
+=======
 	up->reg_size = (rp->end - rp->start) + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	up->reg_size = (rp->end - rp->start) + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	up->port.membase = of_ioremap(rp, 0, up->reg_size, "su");
 	if (!up->port.membase) {
 		if (type != SU_PORT_PORT)
@@ -1456,8 +1529,16 @@ static int __devinit su_probe(struct platform_device *op)
 		}
 		dev_set_drvdata(&op->dev, up);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		nr_inst++;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		nr_inst++;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -1485,7 +1566,15 @@ static int __devinit su_probe(struct platform_device *op)
 
 	dev_set_drvdata(&op->dev, up);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	inst++;
+=======
 	nr_inst++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	nr_inst++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 

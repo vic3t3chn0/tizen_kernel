@@ -22,7 +22,12 @@
 static int logon_vet_description(const char *desc);
 
 =======
+<<<<<<< HEAD
+static int logon_vet_description(const char *desc);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * user defined keys take an arbitrary string as the description and an
  * arbitrary blob of data as the payload
@@ -42,6 +47,9 @@ EXPORT_SYMBOL_GPL(key_type_user);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This key type is essentially the same as key_type_user, but it does
  * not define a .read op. This is suitable for storing username and
  * password pairs in the keyring that you do not want to be readable
@@ -60,8 +68,11 @@ struct key_type key_type_logon = {
 EXPORT_SYMBOL_GPL(key_type_logon);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * instantiate a user defined key
  */
 int user_instantiate(struct key *key, const void *data, size_t datalen)
@@ -88,8 +99,12 @@ int user_instantiate(struct key *key, const void *data, size_t datalen)
 <<<<<<< HEAD
 	rcu_assign_keypointer(key, upayload);
 =======
+<<<<<<< HEAD
+	rcu_assign_keypointer(key, upayload);
+=======
 	rcu_assign_pointer(key->payload.data, upayload);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 0;
 
 error:
@@ -131,8 +146,12 @@ int user_update(struct key *key, const void *data, size_t datalen)
 <<<<<<< HEAD
 		rcu_assign_keypointer(key, upayload);
 =======
+<<<<<<< HEAD
+		rcu_assign_keypointer(key, upayload);
+=======
 		rcu_assign_pointer(key->payload.data, upayload);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		key->expiry = 0;
 	}
 
@@ -170,8 +189,12 @@ void user_revoke(struct key *key)
 <<<<<<< HEAD
 		rcu_assign_keypointer(key, NULL);
 =======
+<<<<<<< HEAD
+		rcu_assign_keypointer(key, NULL);
+=======
 		rcu_assign_pointer(key->payload.data, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree_rcu(upayload, rcu);
 	}
 }
@@ -228,6 +251,9 @@ long user_read(const struct key *key, char __user *buffer, size_t buflen)
 
 EXPORT_SYMBOL_GPL(user_read);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Vet the description for a "logon" key */
 static int logon_vet_description(const char *desc)
@@ -245,5 +271,8 @@ static int logon_vet_description(const char *desc)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

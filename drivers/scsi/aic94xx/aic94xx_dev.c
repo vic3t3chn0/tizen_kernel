@@ -109,6 +109,21 @@ static int asd_init_sata_tag_ddb(struct domain_device *dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void asd_set_dmamode(struct domain_device *dev)
+{
+	struct asd_ha_struct *asd_ha = dev->port->ha->lldd_ha;
+	struct ata_device *ata_dev = sas_to_ata_dev(dev);
+	int ddb = (int) (unsigned long) dev->lldd_dev;
+	u32 qdepth = 0;
+
+	if (dev->dev_type == SATA_DEV || dev->dev_type == SATA_PM_PORT) {
+		if (ata_id_has_ncq(ata_dev->id))
+			qdepth = ata_id_queue_depth(ata_dev->id);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int asd_init_sata(struct domain_device *dev)
 {
 	struct asd_ha_struct *asd_ha = dev->port->ha->lldd_ha;
@@ -125,10 +140,37 @@ static int asd_init_sata(struct domain_device *dev)
 
 		if (w76 & 0x100) /* NCQ? */
 			qdepth = (w75 & 0x1F) + 1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		asd_ddbsite_write_dword(asd_ha, ddb, SATA_TAG_ALLOC_MASK,
 					(1ULL<<qdepth)-1);
 		asd_ddbsite_write_byte(asd_ha, ddb, NUM_SATA_TAGS, qdepth);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (qdepth > 0)
+		if (asd_init_sata_tag_ddb(dev) != 0) {
+			unsigned long flags;
+
+			spin_lock_irqsave(dev->sata_dev.ap->lock, flags);
+			ata_dev->flags |= ATA_DFLAG_NCQ_OFF;
+			spin_unlock_irqrestore(dev->sata_dev.ap->lock, flags);
+		}
+}
+
+static int asd_init_sata(struct domain_device *dev)
+{
+	struct asd_ha_struct *asd_ha = dev->port->ha->lldd_ha;
+	int ddb = (int) (unsigned long) dev->lldd_dev;
+
+	asd_ddbsite_write_word(asd_ha, ddb, ATA_CMD_SCBPTR, 0xFFFF);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev->dev_type == SATA_DEV || dev->dev_type == SATA_PM ||
 	    dev->dev_type == SATA_PM_PORT) {
 		struct dev_to_host_fis *fis = (struct dev_to_host_fis *)
@@ -136,9 +178,20 @@ static int asd_init_sata(struct domain_device *dev)
 		asd_ddbsite_write_byte(asd_ha, ddb, SATA_STATUS, fis->status);
 	}
 	asd_ddbsite_write_word(asd_ha, ddb, NCQ_DATA_SCB_PTR, 0xFFFF);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	return 0;
+=======
 	if (qdepth > 0)
 		res = asd_init_sata_tag_ddb(dev);
 	return res;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (qdepth > 0)
+		res = asd_init_sata_tag_ddb(dev);
+	return res;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int asd_init_target_ddb(struct domain_device *dev)

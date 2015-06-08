@@ -1,8 +1,11 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * eeh_cache.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * PCI address cache; allows the lookup of PCI devices based on I/O address
  *
  * Copyright IBM Corporation 2004
@@ -31,8 +34,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pci-bridge.h>
 #include <asm/ppc-pci.h>
 
@@ -57,9 +64,13 @@
 <<<<<<< HEAD
 struct pci_io_addr_range {
 =======
+<<<<<<< HEAD
+struct pci_io_addr_range {
+=======
 struct pci_io_addr_range
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rb_node rb_node;
 	unsigned long addr_lo;
 	unsigned long addr_hi;
@@ -70,9 +81,13 @@ struct pci_io_addr_range
 <<<<<<< HEAD
 static struct pci_io_addr_cache {
 =======
+<<<<<<< HEAD
+static struct pci_io_addr_cache {
+=======
 static struct pci_io_addr_cache
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rb_root rb_root;
 	spinlock_t piar_lock;
 } pci_io_addr_cache_root;
@@ -80,8 +95,12 @@ static struct pci_io_addr_cache
 <<<<<<< HEAD
 static inline struct pci_dev *__pci_addr_cache_get_device(unsigned long addr)
 =======
+<<<<<<< HEAD
+static inline struct pci_dev *__pci_addr_cache_get_device(unsigned long addr)
+=======
 static inline struct pci_dev *__pci_get_device_by_addr(unsigned long addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rb_node *n = pci_io_addr_cache_root.rb_root.rb_node;
 
@@ -108,8 +127,12 @@ static inline struct pci_dev *__pci_get_device_by_addr(unsigned long addr)
 <<<<<<< HEAD
  * pci_addr_cache_get_device - Get device, given only address
 =======
+<<<<<<< HEAD
+ * pci_addr_cache_get_device - Get device, given only address
+=======
  * pci_get_device_by_addr - Get device, given only address
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @addr: mmio (PIO) phys address or i/o port number
  *
  * Given an mmio phys address, or a port number, find a pci device
@@ -121,8 +144,12 @@ static inline struct pci_dev *__pci_get_device_by_addr(unsigned long addr)
 <<<<<<< HEAD
 struct pci_dev *pci_addr_cache_get_device(unsigned long addr)
 =======
+<<<<<<< HEAD
+struct pci_dev *pci_addr_cache_get_device(unsigned long addr)
+=======
 struct pci_dev *pci_get_device_by_addr(unsigned long addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pci_dev *dev;
 	unsigned long flags;
@@ -131,8 +158,12 @@ struct pci_dev *pci_get_device_by_addr(unsigned long addr)
 <<<<<<< HEAD
 	dev = __pci_addr_cache_get_device(addr);
 =======
+<<<<<<< HEAD
+	dev = __pci_addr_cache_get_device(addr);
+=======
 	dev = __pci_get_device_by_addr(addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&pci_io_addr_cache_root.piar_lock, flags);
 	return dev;
 }
@@ -200,8 +231,12 @@ pci_addr_cache_insert(struct pci_dev *dev, unsigned long alo,
 <<<<<<< HEAD
 	                  alo, ahi, pci_name(dev));
 =======
+<<<<<<< HEAD
+	                  alo, ahi, pci_name(dev));
+=======
 	                  alo, ahi, pci_name (dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	rb_link_node(&piar->rb_node, parent, p);
@@ -216,8 +251,12 @@ static void __pci_addr_cache_insert_device(struct pci_dev *dev)
 <<<<<<< HEAD
 	struct eeh_dev *edev;
 =======
+<<<<<<< HEAD
+	struct eeh_dev *edev;
+=======
 	struct pci_dn *pdn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	dn = pci_device_to_OF_node(dev);
@@ -227,6 +266,9 @@ static void __pci_addr_cache_insert_device(struct pci_dev *dev)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	edev = of_node_to_eeh_dev(dn);
 	if (!edev) {
 		pr_warning("PCI: no EEH dev found for dn=%s\n",
@@ -240,6 +282,8 @@ static void __pci_addr_cache_insert_device(struct pci_dev *dev)
 #ifdef DEBUG
 		pr_info("PCI: skip building address cache for=%s - %s\n",
 			pci_name(dev), dn->full_name);
+<<<<<<< HEAD
+=======
 =======
 	/* Skip any devices for which EEH is not enabled. */
 	pdn = PCI_DN(dn);
@@ -249,6 +293,7 @@ static void __pci_addr_cache_insert_device(struct pci_dev *dev)
 		printk(KERN_INFO "PCI: skip building address cache for=%s - %s\n",
 		       pci_name(dev), pdn->node->full_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 		return;
 	}
@@ -342,7 +387,11 @@ void __init pci_addr_cache_build(void)
 <<<<<<< HEAD
 	struct eeh_dev *edev;
 =======
+<<<<<<< HEAD
+	struct eeh_dev *edev;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pci_dev *dev = NULL;
 
 	spin_lock_init(&pci_io_addr_cache_root.piar_lock);
@@ -354,6 +403,9 @@ void __init pci_addr_cache_build(void)
 		if (!dn)
 			continue;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		edev = of_node_to_eeh_dev(dn);
 		if (!edev)
@@ -362,10 +414,13 @@ void __init pci_addr_cache_build(void)
 		pci_dev_get(dev);  /* matching put is in eeh_remove_device() */
 		dev->dev.archdata.edev = edev;
 		edev->pdev = dev;
+<<<<<<< HEAD
+=======
 =======
 		pci_dev_get(dev);  /* matching put is in eeh_remove_device() */
 		PCI_DN(dn)->pcidev = dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		eeh_sysfs_add_device(dev);
 	}

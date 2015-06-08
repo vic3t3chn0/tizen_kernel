@@ -26,8 +26,11 @@ struct sysv_sb_info {
 					/* if 0: they are disallowed (ENAMETOOLONG) */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	nlink_t        s_link_max;	/* max number of hard links to a file */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int   s_inodes_per_block;	/* number of inodes per block */
 	unsigned int   s_inodes_per_block_1;	/* inodes_per_block - 1 */
 	unsigned int   s_inodes_per_block_bits;	/* log2(inodes_per_block) */
@@ -131,8 +134,12 @@ extern struct sysv_inode *sysv_raw_inode(struct super_block *, unsigned,
 <<<<<<< HEAD
 extern struct inode * sysv_new_inode(const struct inode *, umode_t);
 =======
+<<<<<<< HEAD
+extern struct inode * sysv_new_inode(const struct inode *, umode_t);
+=======
 extern struct inode * sysv_new_inode(const struct inode *, mode_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void sysv_free_inode(struct inode *);
 extern unsigned long sysv_count_free_inodes(struct super_block *);
 

@@ -2,6 +2,9 @@
 #define _LINUX_JUMP_LABEL_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Jump label support
  *
@@ -72,6 +75,8 @@ struct static_key_deferred {
 # include <asm/jump_label.h>
 # define HAVE_JUMP_LABEL
 #endif	/* CC_HAVE_ASM_GOTO && CONFIG_JUMP_LABEL */
+<<<<<<< HEAD
+=======
 =======
 #include <linux/types.h>
 #include <linux/compiler.h>
@@ -90,6 +95,7 @@ struct jump_label_key {
 # define HAVE_JUMP_LABEL
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum jump_label_type {
 	JUMP_LABEL_DISABLE = 0,
@@ -101,6 +107,9 @@ struct module;
 #ifdef HAVE_JUMP_LABEL
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define JUMP_LABEL_TRUE_BRANCH 1UL
 
 static
@@ -129,6 +138,8 @@ static __always_inline bool static_key_true(struct static_key *key)
 
 /* Deprecated. Please use 'static_key_false() instead. */
 static __always_inline bool static_branch(struct static_key *key)
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_MODULES
 #define JUMP_LABEL_INIT {{ 0 }, NULL, NULL}
@@ -138,6 +149,7 @@ static __always_inline bool static_branch(struct static_key *key)
 
 static __always_inline bool static_branch(struct jump_label_key *key)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return arch_static_branch(key);
 }
@@ -146,6 +158,9 @@ extern struct jump_entry __start___jump_table[];
 extern struct jump_entry __stop___jump_table[];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void jump_label_init(void);
 extern void jump_label_lock(void);
 extern void jump_label_unlock(void);
@@ -185,6 +200,8 @@ struct static_key_deferred {
 static __always_inline bool static_key_false(struct static_key *key)
 {
 	if (unlikely(atomic_read(&key->enabled)) > 0)
+<<<<<<< HEAD
+=======
 =======
 extern void jump_label_lock(void);
 extern void jump_label_unlock(void);
@@ -211,11 +228,15 @@ static __always_inline bool static_branch(struct jump_label_key *key)
 {
 	if (unlikely(atomic_read(&key->enabled)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 	return false;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __always_inline bool static_key_true(struct static_key *key)
 {
 	if (likely(atomic_read(&key->enabled)) > 0)
@@ -232,9 +253,12 @@ static __always_inline bool static_branch(struct static_key *key)
 }
 
 static inline void static_key_slow_inc(struct static_key *key)
+<<<<<<< HEAD
+=======
 =======
 static inline void jump_label_inc(struct jump_label_key *key)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	atomic_inc(&key->enabled);
 }
@@ -242,20 +266,30 @@ static inline void jump_label_inc(struct jump_label_key *key)
 <<<<<<< HEAD
 static inline void static_key_slow_dec(struct static_key *key)
 =======
+<<<<<<< HEAD
+static inline void static_key_slow_dec(struct static_key *key)
+=======
 static inline void jump_label_dec(struct jump_label_key *key)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	atomic_dec(&key->enabled);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void static_key_slow_dec_deferred(struct static_key_deferred *key)
 {
 	static_key_slow_dec(&key->key);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int jump_label_text_reserved(void *start, void *end)
 {
 	return 0;
@@ -265,6 +299,9 @@ static inline void jump_label_lock(void) {}
 static inline void jump_label_unlock(void) {}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int jump_label_apply_nops(struct module *mod)
 {
 	return 0;
@@ -292,6 +329,8 @@ static inline bool static_key_enabled(struct static_key *key)
 }
 
 #endif	/* _LINUX_JUMP_LABEL_H */
+<<<<<<< HEAD
+=======
 =======
 static inline bool jump_label_enabled(struct jump_label_key *key)
 {
@@ -307,3 +346,4 @@ static inline int jump_label_apply_nops(struct module *mod)
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

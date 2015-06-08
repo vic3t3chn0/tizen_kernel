@@ -9,8 +9,11 @@ config ARCH_OMAP2PLUS_TYPICAL
 	select REGULATOR
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	select PM
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PM_RUNTIME
 	select VFP
 	select NEON if ARCH_OMAP3 || ARCH_OMAP4
@@ -20,8 +23,11 @@ config ARCH_OMAP2PLUS_TYPICAL
 	select I2C_OMAP
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	select MFD_SUPPORT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MENELAUS if ARCH_OMAP2
 	select TWL4030_CORE if ARCH_OMAP3 || ARCH_OMAP4
 	select TWL4030_POWER if ARCH_OMAP3 || ARCH_OMAP4
@@ -36,7 +42,11 @@ config ARCH_OMAP2
 <<<<<<< HEAD
 	select MULTI_IRQ_HANDLER
 =======
+<<<<<<< HEAD
+	select MULTI_IRQ_HANDLER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ARCH_OMAP3
 	bool "TI OMAP3"
@@ -44,31 +54,43 @@ config ARCH_OMAP3
 	default y
 	select CPU_V7
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select USB_ARCH_HAS_EHCI if USB_SUPPORT
 	select ARCH_HAS_OPP
 	select PM_OPP if PM
 	select ARM_CPU_SUSPEND if PM
 	select MULTI_IRQ_HANDLER
+<<<<<<< HEAD
+=======
 =======
 	select USB_ARCH_HAS_EHCI
 	select ARM_L1_CACHE_SHIFT_6 if !ARCH_OMAP4
 	select ARCH_HAS_OPP
 	select PM_OPP if PM
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ARCH_OMAP4
 	bool "TI OMAP4"
 	default y
 	depends on ARCH_OMAP2PLUS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CACHE_L2X0
 	select CPU_V7
 	select ARM_GIC
 	select HAVE_SMP
+<<<<<<< HEAD
+=======
 =======
 	select CPU_V7
 	select ARM_GIC
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select LOCAL_TIMERS if SMP
 	select PL310_ERRATA_588369
 	select PL310_ERRATA_727915
@@ -79,8 +101,13 @@ config ARCH_OMAP4
 	select USB_ARCH_HAS_EHCI if USB_SUPPORT
 	select ARM_CPU_SUSPEND if PM
 =======
+<<<<<<< HEAD
+	select USB_ARCH_HAS_EHCI if USB_SUPPORT
+	select ARM_CPU_SUSPEND if PM
+=======
 	select USB_ARCH_HAS_EHCI
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 comment "OMAP Core Type"
 	depends on ARCH_OMAP2
@@ -105,6 +132,9 @@ config SOC_OMAP3430
 	select ARCH_OMAP_OTG
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SOC_OMAPTI81XX
 	bool "TI81XX support"
 	depends on ARCH_OMAP3
@@ -112,10 +142,13 @@ config SOC_OMAPTI81XX
 
 config SOC_OMAPAM33XX
 	bool "AM33XX support"
+<<<<<<< HEAD
+=======
 =======
 config SOC_OMAPTI816X
 	bool "TI816X support"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	depends on ARCH_OMAP3
 	default y
 
@@ -148,17 +181,23 @@ comment "OMAP Board Type"
 
 config MACH_OMAP_GENERIC
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "Generic OMAP2+ board"
 	depends on ARCH_OMAP2PLUS
 	default y
 	help
 	  Support for generic TI OMAP2+ boards using Flattened Device Tree.
 	  More information at Documentation/devicetree
+<<<<<<< HEAD
+=======
 =======
 	bool "Generic OMAP board"
 	depends on ARCH_OMAP2
 	default y
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_OMAP2_TUSB6010
 	bool
@@ -253,8 +292,12 @@ config MACH_OMAP3_PANDORA
 <<<<<<< HEAD
 	select REGULATOR_FIXED_VOLTAGE if REGULATOR
 =======
+<<<<<<< HEAD
+	select REGULATOR_FIXED_VOLTAGE if REGULATOR
+=======
 	select REGULATOR_FIXED_VOLTAGE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_OMAP3_TOUCHBOOK
 	bool "OMAP3 Touch Book"
@@ -262,8 +305,11 @@ config MACH_OMAP3_TOUCHBOOK
 	default y
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	select BACKLIGHT_CLASS_DEVICE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_OMAP_3430SDP
 	bool "OMAP 3430 SDP board"
@@ -291,17 +337,23 @@ config MACH_NOKIA_N8X0
 
 config MACH_NOKIA_RM680
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "Nokia RM-680/696 board"
 	depends on ARCH_OMAP3
 	default y
 	select OMAP_PACKAGE_CBB
 	select MACH_NOKIA_RM696
+<<<<<<< HEAD
+=======
 =======
 	bool "Nokia RM-680 board"
 	depends on ARCH_OMAP3
 	default y
 	select OMAP_PACKAGE_CBB
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_NOKIA_RX51
 	bool "Nokia RX-51 board"
@@ -320,8 +372,12 @@ config MACH_OMAP_ZOOM2
 <<<<<<< HEAD
 	select REGULATOR_FIXED_VOLTAGE if REGULATOR
 =======
+<<<<<<< HEAD
+	select REGULATOR_FIXED_VOLTAGE if REGULATOR
+=======
 	select REGULATOR_FIXED_VOLTAGE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_OMAP_ZOOM3
 	bool "OMAP3630 Zoom3 board"
@@ -332,6 +388,9 @@ config MACH_OMAP_ZOOM3
 	select SERIAL_CORE_CONSOLE
 	select SERIAL_8250_CONSOLE
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select REGULATOR_FIXED_VOLTAGE if REGULATOR
 
 config MACH_CM_T35
@@ -339,6 +398,8 @@ config MACH_CM_T35
 	depends on ARCH_OMAP3
 	default y
 	select MACH_CM_T3730
+<<<<<<< HEAD
+=======
 =======
 	select REGULATOR_FIXED_VOLTAGE
 
@@ -347,6 +408,7 @@ config MACH_CM_T35
 	depends on ARCH_OMAP3
 	default y
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select OMAP_PACKAGE_CUS
 
 config MACH_CM_T3517
@@ -360,7 +422,13 @@ config MACH_CM_T3730
        bool
 
 =======
+<<<<<<< HEAD
+config MACH_CM_T3730
+       bool
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MACH_IGEP0020
 	bool "IGEP v2 board"
 	depends on ARCH_OMAP3
@@ -389,15 +457,21 @@ config MACH_OMAP_3630SDP
 config MACH_TI8168EVM
 	bool "TI8168 Evaluation Module"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	depends on SOC_OMAPTI81XX
 	default y
 
 config MACH_TI8148EVM
 	bool "TI8148 Evaluation Module"
 	depends on SOC_OMAPTI81XX
+<<<<<<< HEAD
+=======
 =======
 	depends on SOC_OMAPTI816X
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default y
 
 config MACH_OMAP_4430SDP
@@ -409,8 +483,12 @@ config MACH_OMAP_4430SDP
 <<<<<<< HEAD
 	select REGULATOR_FIXED_VOLTAGE if REGULATOR
 =======
+<<<<<<< HEAD
+	select REGULATOR_FIXED_VOLTAGE if REGULATOR
+=======
 	select REGULATOR_FIXED_VOLTAGE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_OMAP4_PANDA
 	bool "OMAP4 Panda Board"
@@ -421,8 +499,12 @@ config MACH_OMAP4_PANDA
 <<<<<<< HEAD
 	select REGULATOR_FIXED_VOLTAGE if REGULATOR
 =======
+<<<<<<< HEAD
+	select REGULATOR_FIXED_VOLTAGE if REGULATOR
+=======
 	select REGULATOR_FIXED_VOLTAGE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config OMAP3_EMU
 	bool "OMAP3 debugging peripherals"
@@ -445,6 +527,9 @@ config OMAP3_SDRC_AC_TIMING
 	  going on could result in system crashes;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config OMAP4_ERRATA_I688
 	bool "OMAP4 errata: Async Bridge Corruption"
 	depends on ARCH_OMAP4
@@ -466,8 +551,11 @@ config OMAP4_ERRATA_I688
 	  In MPU case, L3 T2ASYNC FIFO and DDR T2ASYNC FIFO needs to be drained.
 	  IO barrier ensure that there is no synchronisation loss on initiators
 	  operating on both interconnect port simultaneously.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endmenu
 
 endif

@@ -638,8 +638,12 @@ void __kprobes jprobe_return(void)
 <<<<<<< HEAD
 static void __used __kprobes jprobe_return_end(void)
 =======
+<<<<<<< HEAD
+static void __used __kprobes jprobe_return_end(void)
+=======
 void __kprobes jprobe_return_end(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	asm volatile("bcr 0,0");
 }

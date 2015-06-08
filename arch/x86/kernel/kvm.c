@@ -41,9 +41,13 @@
 <<<<<<< HEAD
 #include <asm/idle.h>
 =======
+<<<<<<< HEAD
+#include <asm/idle.h>
+=======
 
 #define MMU_QUEUE_SIZE 1024
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int kvmapf = 1;
 
@@ -56,6 +60,9 @@ static int parse_no_kvmapf(char *arg)
 early_param("no-kvmapf", parse_no_kvmapf);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int steal_acc = 1;
 static int parse_no_stealacc(char *arg)
 {
@@ -68,6 +75,8 @@ early_param("no-steal-acc", parse_no_stealacc);
 static DEFINE_PER_CPU(struct kvm_vcpu_pv_apf_data, apf_reason) __aligned(64);
 static DEFINE_PER_CPU(struct kvm_steal_time, steal_time) __aligned(64);
 static int has_steal_clock = 0;
+<<<<<<< HEAD
+=======
 =======
 struct kvm_para_state {
 	u8 mmu_queue[MMU_QUEUE_SIZE];
@@ -82,6 +91,7 @@ static struct kvm_para_state *kvm_para_state(void)
 	return &per_cpu(para_state, raw_smp_processor_id());
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * No need for any "IO delay" on KVM
@@ -101,8 +111,11 @@ struct kvm_task_sleep_node {
 	bool halted;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct mm_struct *mm;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct kvm_task_sleep_head {
@@ -152,10 +165,14 @@ void kvm_async_pf_task_wait(u32 token)
 <<<<<<< HEAD
 	n.halted = idle || preempt_count() > 1;
 =======
+<<<<<<< HEAD
+	n.halted = idle || preempt_count() > 1;
+=======
 	n.mm = current->active_mm;
 	n.halted = idle || preempt_count() > 1;
 	atomic_inc(&n.mm->mm_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_waitqueue_head(&n.wq);
 	hlist_add_head(&n.link, &b->list);
 	spin_unlock(&b->lock);
@@ -190,10 +207,13 @@ static void apf_task_wake_one(struct kvm_task_sleep_node *n)
 	hlist_del_init(&n->link);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!n->mm)
 		return;
 	mmdrop(n->mm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (n->halted)
 		smp_send_reschedule(n->cpu);
 	else if (waitqueue_active(&n->wq))
@@ -240,8 +260,12 @@ again:
 <<<<<<< HEAD
 		n = kzalloc(sizeof(*n), GFP_ATOMIC);
 =======
+<<<<<<< HEAD
+		n = kzalloc(sizeof(*n), GFP_ATOMIC);
+=======
 		n = kmalloc(sizeof(*n), GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!n) {
 			/*
 			 * Allocation failed! Busy wait while other cpu
@@ -255,8 +279,11 @@ again:
 		n->cpu = smp_processor_id();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		n->mm = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		init_waitqueue_head(&n->wq);
 		hlist_add_head(&n->link, &b->list);
 	} else
@@ -292,17 +319,25 @@ do_async_page_fault(struct pt_regs *regs, unsigned long error_code)
 		break;
 	case KVM_PV_REASON_PAGE_READY:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_irq_enter();
 		exit_idle();
 		kvm_async_pf_task_wake((u32)read_cr2());
 		rcu_irq_exit();
+<<<<<<< HEAD
+=======
 =======
 		kvm_async_pf_task_wake((u32)read_cr2());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void kvm_mmu_op(void *buffer, unsigned len)
@@ -451,6 +486,7 @@ static void kvm_leave_lazy_mmu(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init paravirt_ops_setup(void)
 {
 	pv_info.name = "KVM";
@@ -459,6 +495,8 @@ static void __init paravirt_ops_setup(void)
 	if (kvm_para_has_feature(KVM_FEATURE_NOP_IO_DELAY))
 		pv_cpu_ops.io_delay = kvm_io_delay;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (kvm_para_has_feature(KVM_FEATURE_MMU_OP)) {
@@ -485,12 +523,16 @@ static void __init paravirt_ops_setup(void)
 		pv_mmu_ops.lazy_mode.leave = kvm_leave_lazy_mmu;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_IO_APIC
 	no_timer_check = 1;
 #endif
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void kvm_register_steal_time(void)
 {
 	int cpu = smp_processor_id();
@@ -506,8 +548,11 @@ static void kvm_register_steal_time(void)
 		cpu, __pa(st));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __cpuinit kvm_guest_cpu_init(void)
 {
 	if (!kvm_para_available())
@@ -529,7 +574,13 @@ void __cpuinit kvm_guest_cpu_init(void)
 	if (has_steal_clock)
 		kvm_register_steal_time();
 =======
+<<<<<<< HEAD
+
+	if (has_steal_clock)
+		kvm_register_steal_time();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void kvm_pv_disable_apf(void *unused)
@@ -557,6 +608,9 @@ static struct notifier_block kvm_pv_reboot_nb = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 kvm_steal_clock(int cpu)
 {
 	u64 steal;
@@ -582,8 +636,11 @@ void kvm_disable_steal_time(void)
 	wrmsr(MSR_KVM_STEAL_TIME, 0, 0);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 static void __init kvm_smp_prepare_boot_cpu(void)
 {
@@ -604,7 +661,11 @@ static void kvm_guest_cpu_offline(void *dummy)
 <<<<<<< HEAD
 	kvm_disable_steal_time();
 =======
+<<<<<<< HEAD
+	kvm_disable_steal_time();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kvm_pv_disable_apf(NULL);
 	apf_task_wake_all();
 }
@@ -654,13 +715,19 @@ void __init kvm_guest_init(void)
 		x86_init.irqs.trap_init = kvm_apf_trap_init;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (kvm_para_has_feature(KVM_FEATURE_STEAL_TIME)) {
 		has_steal_clock = 1;
 		pv_time_ops.steal_clock = kvm_steal_clock;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 	smp_ops.smp_prepare_boot_cpu = kvm_smp_prepare_boot_cpu;
 	register_cpu_notifier(&kvm_cpu_notifier);
@@ -669,6 +736,9 @@ void __init kvm_guest_init(void)
 #endif
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __init int activate_jump_labels(void)
 {
@@ -681,5 +751,8 @@ static __init int activate_jump_labels(void)
 	return 0;
 }
 arch_initcall(activate_jump_labels);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

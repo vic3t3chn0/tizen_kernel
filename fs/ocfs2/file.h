@@ -64,8 +64,12 @@ int ocfs2_getattr(struct vfsmount *mnt, struct dentry *dentry,
 <<<<<<< HEAD
 int ocfs2_permission(struct inode *inode, int mask);
 =======
+<<<<<<< HEAD
+int ocfs2_permission(struct inode *inode, int mask);
+=======
 int ocfs2_permission(struct inode *inode, int mask, unsigned int flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int ocfs2_should_update_atime(struct inode *inode,
 			      struct vfsmount *vfsmnt);

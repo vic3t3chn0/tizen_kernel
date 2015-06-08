@@ -10,8 +10,12 @@
 <<<<<<< HEAD
 #include <asm/traps.h>
 =======
+<<<<<<< HEAD
+#include <asm/traps.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_GENERIC_BUG
 static void handle_BUG(struct pt_regs *regs)

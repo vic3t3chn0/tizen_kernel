@@ -8,6 +8,10 @@ enum {
 	PCG_USED, /* this object is in use. */
 	PCG_MIGRATION, /* under page migration */
 =======
+<<<<<<< HEAD
+	PCG_USED, /* this object is in use. */
+	PCG_MIGRATION, /* under page migration */
+=======
 	PCG_CACHE, /* charged as cache */
 	PCG_USED, /* this object is in use. */
 	PCG_MIGRATION, /* under page migration */
@@ -17,6 +21,7 @@ enum {
 	/* No lock in page_cgroup */
 	PCG_ACCT_LRU, /* page has been accounted for (under lru_lock) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__NR_PCG_FLAGS,
 };
 
@@ -38,8 +43,11 @@ struct page_cgroup {
 	struct mem_cgroup *mem_cgroup;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct list_head lru;		/* per cgroup LRU list */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __meminit pgdat_page_cgroup_init(struct pglist_data *pgdat);
@@ -77,16 +85,21 @@ static inline int TestClearPageCgroup##uname(struct page_cgroup *pc)	\
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Cache flag is set only once (at allocation) */
 TESTPCGFLAG(Cache, CACHE)
 CLEARPCGFLAG(Cache, CACHE)
 SETPCGFLAG(Cache, CACHE)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TESTPCGFLAG(Used, USED)
 CLEARPCGFLAG(Used, USED)
 SETPCGFLAG(Used, USED)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 SETPCGFLAG(AcctLRU, ACCT_LRU)
@@ -100,6 +113,7 @@ CLEARPCGFLAG(FileMapped, FILE_MAPPED)
 TESTPCGFLAG(FileMapped, FILE_MAPPED)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SETPCGFLAG(Migration, MIGRATION)
 CLEARPCGFLAG(Migration, MIGRATION)
 TESTPCGFLAG(Migration, MIGRATION)
@@ -111,8 +125,12 @@ static inline void lock_page_cgroup(struct page_cgroup *pc)
 <<<<<<< HEAD
 	 * This lock is for pc->mem_cgroup, USED, MIGRATION
 =======
+<<<<<<< HEAD
+	 * This lock is for pc->mem_cgroup, USED, MIGRATION
+=======
 	 * This lock is for pc->mem_cgroup, USED, CACHE, MIGRATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	bit_spin_lock(PCG_LOCK, &pc->flags);
 }
@@ -122,6 +140,8 @@ static inline void unlock_page_cgroup(struct page_cgroup *pc)
 	bit_spin_unlock(PCG_LOCK, &pc->flags);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static inline void move_lock_page_cgroup(struct page_cgroup *pc,
@@ -176,6 +196,7 @@ static inline unsigned long page_cgroup_array_id(struct page_cgroup *pc)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else /* CONFIG_CGROUP_MEM_RES_CTLR */
 struct page_cgroup;
 
@@ -207,8 +228,12 @@ extern unsigned short swap_cgroup_record(swp_entry_t ent, unsigned short id);
 <<<<<<< HEAD
 extern unsigned short lookup_swap_cgroup_id(swp_entry_t ent);
 =======
+<<<<<<< HEAD
+extern unsigned short lookup_swap_cgroup_id(swp_entry_t ent);
+=======
 extern unsigned short lookup_swap_cgroup(swp_entry_t ent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int swap_cgroup_swapon(int type, unsigned long max_pages);
 extern void swap_cgroup_swapoff(int type);
 #else
@@ -223,8 +248,12 @@ static inline
 <<<<<<< HEAD
 unsigned short lookup_swap_cgroup_id(swp_entry_t ent)
 =======
+<<<<<<< HEAD
+unsigned short lookup_swap_cgroup_id(swp_entry_t ent)
+=======
 unsigned short lookup_swap_cgroup(swp_entry_t ent)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 0;
 }

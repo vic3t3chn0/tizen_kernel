@@ -125,8 +125,11 @@ struct kirkwood_dma_data {
 	int burst;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct mbus_dram_target_info *dram;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif

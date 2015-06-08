@@ -16,6 +16,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /include/ "mpc8572ds.dts"
 
 / {
@@ -84,6 +87,8 @@
 			status = "disabled";
 		};
 		pic@40000 {
+<<<<<<< HEAD
+=======
 =======
 /dts-v1/;
 / {
@@ -249,6 +254,7 @@
 			compatible = "chrp,open-pic";
 			device_type = "open-pic";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			protected-sources = <
 			18 16 10 42 45 58	/* MEM L2 mdio serial crypto */
 			29 30 34 35 36 40	/* enet0 enet1 */
@@ -261,6 +267,9 @@
 			>;
 		};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		timer@41100 {
 			status = "disabled";
 		};
@@ -281,6 +290,8 @@
 	};
 	pcie@ffe09000 {
 		status = "disabled";
+<<<<<<< HEAD
+=======
 =======
 	};
 
@@ -319,5 +330,6 @@
 				  0x0 0x10000>;
 		};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 };

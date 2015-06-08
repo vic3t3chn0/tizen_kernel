@@ -332,9 +332,14 @@ static int read_znode(struct ubifs_info *c, int lnum, int offs, int len,
 			dbg_msg("bad key type at slot %d: %d",
 				i, key_type(c, &zbr->key));
 =======
+<<<<<<< HEAD
+			dbg_msg("bad key type at slot %d: %d",
+				i, key_type(c, &zbr->key));
+=======
 			dbg_msg("bad key type at slot %d: %s", i,
 				DBGKEY(&zbr->key));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = 3;
 			goto out_dump;
 		}
@@ -483,8 +488,12 @@ int ubifs_tnc_read_node(struct ubifs_info *c, struct ubifs_zbranch *zbr,
 <<<<<<< HEAD
 		dbg_tnck(key, "key ");
 =======
+<<<<<<< HEAD
+		dbg_tnck(key, "key ");
+=======
 		dbg_tnc("key %s", DBGKEY(key));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 
@@ -497,9 +506,14 @@ int ubifs_tnc_read_node(struct ubifs_info *c, struct ubifs_zbranch *zbr,
 		dbg_tnck(key, "looked for key ");
 		dbg_tnck(&key1, "but found node's key ");
 =======
+<<<<<<< HEAD
+		dbg_tnck(key, "looked for key ");
+		dbg_tnck(&key1, "but found node's key ");
+=======
 		dbg_tnc("looked for key %s found node's key %s",
 			DBGKEY(key), DBGKEY1(&key1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dbg_dump_node(c, node);
 		return -EINVAL;
 	}

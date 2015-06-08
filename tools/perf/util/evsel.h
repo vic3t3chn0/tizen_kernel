@@ -62,13 +62,19 @@ struct perf_evsel {
 	};
 	struct cgroup_sel	*cgrp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct {
 		void		*func;
 		void		*data;
 	} handler;
 	bool 			supported;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct cpu_map;
@@ -77,7 +83,11 @@ struct perf_evlist;
 <<<<<<< HEAD
 struct perf_record_opts;
 =======
+<<<<<<< HEAD
+struct perf_record_opts;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct perf_evsel *perf_evsel__new(struct perf_event_attr *attr, int idx);
 void perf_evsel__init(struct perf_evsel *evsel,
@@ -86,12 +96,18 @@ void perf_evsel__exit(struct perf_evsel *evsel);
 void perf_evsel__delete(struct perf_evsel *evsel);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void perf_evsel__config(struct perf_evsel *evsel,
 			struct perf_record_opts *opts,
 			struct perf_evsel *first);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_evsel__alloc_fd(struct perf_evsel *evsel, int ncpus, int nthreads);
 int perf_evsel__alloc_id(struct perf_evsel *evsel, int ncpus, int nthreads);
 int perf_evsel__alloc_counts(struct perf_evsel *evsel, int ncpus);
@@ -101,6 +117,9 @@ void perf_evsel__close_fd(struct perf_evsel *evsel, int ncpus, int nthreads);
 
 int perf_evsel__open_per_cpu(struct perf_evsel *evsel,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     struct cpu_map *cpus, bool group,
 			     struct xyarray *group_fds);
 int perf_evsel__open_per_thread(struct perf_evsel *evsel,
@@ -110,6 +129,8 @@ int perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 		     struct thread_map *threads, bool group,
 		     struct xyarray *group_fds);
 void perf_evsel__close(struct perf_evsel *evsel, int ncpus, int nthreads);
+<<<<<<< HEAD
+=======
 =======
 			     struct cpu_map *cpus, bool group);
 int perf_evsel__open_per_thread(struct perf_evsel *evsel,
@@ -117,6 +138,7 @@ int perf_evsel__open_per_thread(struct perf_evsel *evsel,
 int perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 		     struct thread_map *threads, bool group);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define perf_evsel__match(evsel, t, c)		\
 	(evsel->attr.type == PERF_TYPE_##t &&	\
@@ -191,5 +213,10 @@ static inline int perf_evsel__sample_size(struct perf_evsel *evsel)
 void hists__init(struct hists *hists);
 
 =======
+<<<<<<< HEAD
+void hists__init(struct hists *hists);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __PERF_EVSEL_H */

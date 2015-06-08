@@ -36,6 +36,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void *module_alloc(unsigned long size)
 {
 	if (size == 0)
@@ -61,6 +63,7 @@ int module_frob_arch_sections(Elf_Ehdr *hdr,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int apply_relocate_add(Elf32_Shdr *sechdrs,
 		   const char *strtab,
 		   unsigned int symindex,
@@ -138,6 +141,8 @@ int apply_relocate_add(Elf32_Shdr *sechdrs,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int apply_relocate(Elf32_Shdr *sechdrs,
 		       const char *strtab,
 		       unsigned int symindex,
@@ -150,6 +155,7 @@ int apply_relocate(Elf32_Shdr *sechdrs,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int module_finalize(const Elf_Ehdr *hdr,
 		    const Elf_Shdr *sechdrs,
 		    struct module *me)

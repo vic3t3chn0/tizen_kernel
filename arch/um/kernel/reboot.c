@@ -24,10 +24,15 @@ static void kill_off_processes(void)
 		int pid;
 
 =======
+<<<<<<< HEAD
+		int pid;
+
+=======
 		int pid, me;
 
 		me = os_getpid();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for_each_process(p) {
 			if (p->mm == NULL)
 				continue;

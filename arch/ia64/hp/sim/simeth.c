@@ -22,8 +22,11 @@
 #include <linux/bitops.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <asm/hpsim.h>
 
@@ -134,6 +137,8 @@ netdev_probe(char *name, unsigned char *ether)
 static inline int
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 netdev_connect(int irq)
 {
 	/* XXX Fix me
@@ -146,6 +151,7 @@ netdev_connect(int irq)
 
 static inline int
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 netdev_attach(int fd, int irq, unsigned int ipaddr)
 {
 	/* this puts the host interface in the right mode (start interrupting) */
@@ -181,8 +187,12 @@ static const struct net_device_ops simeth_netdev_ops = {
 <<<<<<< HEAD
 	.ndo_set_rx_mode	= set_multicast_list, /* not yet used */
 =======
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= set_multicast_list, /* not yet used */
+=======
 	.ndo_set_multicast_list	= set_multicast_list, /* not yet used */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 };
 
@@ -206,8 +216,12 @@ simeth_probe1(void)
 <<<<<<< HEAD
 	int fd, err, rc;
 =======
+<<<<<<< HEAD
+	int fd, err, rc;
+=======
 	int fd, i, err, rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * XXX Fix me
@@ -242,22 +256,30 @@ simeth_probe1(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if ((rc = assign_irq_vector(AUTO_ASSIGN)) < 0)
 		panic("%s: out of interrupt vectors!\n", __func__);
 	dev->irq = rc;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * attach the interrupt in the simulator, this does enable interrupts
 	 * until a netdev_attach() is called
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((rc = hpsim_get_irq(NETWORK_INTR)) < 0)
 		panic("%s: out of interrupt vectors!\n", __func__);
 	dev->irq = rc;
 
 	printk(KERN_INFO "%s: hosteth=%s simfd=%d, HwAddr=%pm, IRQ %d\n",
 	       dev->name, simeth_device, local->simfd, dev->dev_addr, dev->irq);
+<<<<<<< HEAD
+=======
 =======
 	netdev_connect(dev->irq);
 
@@ -268,6 +290,7 @@ simeth_probe1(void)
 	}
 	printk(", IRQ %d\n", dev->irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

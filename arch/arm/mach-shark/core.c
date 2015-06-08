@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/map.h>
 #include <asm/mach/arch.h>
@@ -35,11 +39,17 @@ static void shark_restart(char mode, const char *cmd)
 {
         short temp;
 =======
+<<<<<<< HEAD
+static void shark_restart(char mode, const char *cmd)
+{
+        short temp;
+=======
 void arch_reset(char mode, const char *cmd)
 {
         short temp;
         local_irq_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         /* Reset the Machine via pc[3] of the sequoia chipset */
         outw(0x09,0x24);
         temp=inw(0x26);
@@ -161,6 +171,9 @@ static struct sys_timer shark_timer = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void shark_init_early(void)
 {
 	disable_hlt();
@@ -175,6 +188,8 @@ MACHINE_START(SHARK, "Shark")
 	.timer		= &shark_timer,
 	.dma_zone_size	= SZ_4M,
 	.restart	= shark_restart,
+<<<<<<< HEAD
+=======
 =======
 MACHINE_START(SHARK, "Shark")
 	/* Maintainer: Alexander Schulz */
@@ -183,4 +198,5 @@ MACHINE_START(SHARK, "Shark")
 	.init_irq	= shark_init_irq,
 	.timer		= &shark_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

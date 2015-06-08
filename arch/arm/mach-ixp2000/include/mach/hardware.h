@@ -23,6 +23,10 @@
 #include "ixp2000-regs.h"	/* Chipset Registers */
 
 =======
+<<<<<<< HEAD
+#include "ixp2000-regs.h"	/* Chipset Registers */
+
+=======
 /*
  * This needs to be platform-specific?
  */
@@ -34,6 +38,7 @@
 #define pcibios_assign_all_busses() 0
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Platform helper functions
  */

@@ -52,7 +52,12 @@
 #include <trace/events/xen.h>
 
 =======
+<<<<<<< HEAD
+#include <trace/events/xen.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable.h>
 #include <asm/tlbflush.h>
 #include <asm/fixmap.h>
@@ -203,7 +208,12 @@ void xen_set_domain_pte(pte_t *ptep, pte_t pteval, unsigned domid)
 	trace_xen_mmu_set_domain_pte(ptep, pteval, domid);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_set_domain_pte(ptep, pteval, domid);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mcs = xen_mc_entry(sizeof(*u));
 	u = mcs.args;
 
@@ -236,6 +246,9 @@ static void xen_extend_mmu_update(const struct mmu_update *update)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xen_extend_mmuext_op(const struct mmuext_op *op)
 {
 	struct multicall_space mcs;
@@ -254,8 +267,11 @@ static void xen_extend_mmuext_op(const struct mmuext_op *op)
 	*u = *op;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xen_set_pmd_hyper(pmd_t *ptr, pmd_t val)
 {
 	struct mmu_update u;
@@ -280,7 +296,12 @@ static void xen_set_pmd(pmd_t *ptr, pmd_t val)
 	trace_xen_mmu_set_pmd(ptr, val);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_set_pmd(ptr, val);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If page is not pinned, we can just update the entry
 	   directly */
 	if (!xen_page_pinned(ptr)) {
@@ -321,14 +342,21 @@ static bool xen_batched_set_pte(pte_t *ptep, pte_t pteval)
 <<<<<<< HEAD
 static inline void __xen_set_pte(pte_t *ptep, pte_t pteval)
 =======
+<<<<<<< HEAD
+static inline void __xen_set_pte(pte_t *ptep, pte_t pteval)
+=======
 static void xen_set_pte(pte_t *ptep, pte_t pteval)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!xen_batched_set_pte(ptep, pteval))
 		native_set_pte(ptep, pteval);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xen_set_pte(pte_t *ptep, pte_t pteval)
 {
 	trace_xen_mmu_set_pte(ptep, pteval);
@@ -340,12 +368,15 @@ static void xen_set_pte_at(struct mm_struct *mm, unsigned long addr,
 {
 	trace_xen_mmu_set_pte_at(mm, addr, ptep, pteval);
 	__xen_set_pte(ptep, pteval);
+<<<<<<< HEAD
+=======
 =======
 static void xen_set_pte_at(struct mm_struct *mm, unsigned long addr,
 		    pte_t *ptep, pte_t pteval)
 {
 	xen_set_pte(ptep, pteval);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 pte_t xen_ptep_modify_prot_start(struct mm_struct *mm,
@@ -355,7 +386,11 @@ pte_t xen_ptep_modify_prot_start(struct mm_struct *mm,
 <<<<<<< HEAD
 	trace_xen_mmu_ptep_modify_prot_start(mm, addr, ptep, *ptep);
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_ptep_modify_prot_start(mm, addr, ptep, *ptep);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return *ptep;
 }
 
@@ -367,7 +402,11 @@ void xen_ptep_modify_prot_commit(struct mm_struct *mm, unsigned long addr,
 <<<<<<< HEAD
 	trace_xen_mmu_ptep_modify_prot_commit(mm, addr, ptep, pte);
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_ptep_modify_prot_commit(mm, addr, ptep, pte);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xen_mc_batch();
 
 	u.ptr = virt_to_machine(ptep).maddr | MMU_PT_UPDATE_PRESERVE_AD;
@@ -452,8 +491,12 @@ static pteval_t xen_pte_val(pte_t pte)
 <<<<<<< HEAD
 #if 0
 =======
+<<<<<<< HEAD
+#if 0
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If this is a WC pte, convert back from Xen WC to Linux WC */
 	if ((pteval & (_PAGE_PAT | _PAGE_PCD | _PAGE_PWT)) == _PAGE_PAT) {
 		WARN_ON(!pat_enabled);
@@ -462,8 +505,12 @@ static pteval_t xen_pte_val(pte_t pte)
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (xen_initial_domain() && (pteval & _PAGE_IOMAP))
 		return pteval;
 
@@ -508,8 +555,12 @@ static pte_t xen_make_pte(pteval_t pte)
 <<<<<<< HEAD
 #if 0
 =======
+<<<<<<< HEAD
+#if 0
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If Linux is trying to set a WC pte, then map to the Xen WC.
 	 * If _PAGE_PAT is set, then it probably means it is really
 	 * _PAGE_PSE, so avoid fiddling with the PAT mapping and hope
@@ -525,8 +576,12 @@ static pte_t xen_make_pte(pteval_t pte)
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Unprivileged domains are allowed to do IOMAPpings for
 	 * PCI passthrough, but not map ISA space.  The ISA
@@ -545,6 +600,8 @@ static pte_t xen_make_pte(pteval_t pte)
 }
 PV_CALLEE_SAVE_REGS_THUNK(xen_make_pte);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_XEN_DEBUG
@@ -583,6 +640,7 @@ PV_CALLEE_SAVE_REGS_THUNK(xen_make_pte_debug);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static pgd_t xen_make_pgd(pgdval_t pgd)
 {
 	pgd = pte_pfn_to_mfn(pgd);
@@ -620,7 +678,12 @@ static void xen_set_pud(pud_t *ptr, pud_t val)
 	trace_xen_mmu_set_pud(ptr, val);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_set_pud(ptr, val);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If page is not pinned, we can just update the entry
 	   directly */
 	if (!xen_page_pinned(ptr)) {
@@ -637,7 +700,11 @@ static void xen_set_pte_atomic(pte_t *ptep, pte_t pte)
 <<<<<<< HEAD
 	trace_xen_mmu_set_pte_atomic(ptep, pte);
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_set_pte_atomic(ptep, pte);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_64bit((u64 *)ptep, native_pte_val(pte));
 }
 
@@ -646,7 +713,11 @@ static void xen_pte_clear(struct mm_struct *mm, unsigned long addr, pte_t *ptep)
 <<<<<<< HEAD
 	trace_xen_mmu_pte_clear(mm, addr, ptep);
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_pte_clear(mm, addr, ptep);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!xen_batched_set_pte(ptep, native_make_pte(0)))
 		native_pte_clear(mm, addr, ptep);
 }
@@ -656,7 +727,11 @@ static void xen_pmd_clear(pmd_t *pmdp)
 <<<<<<< HEAD
 	trace_xen_mmu_pmd_clear(pmdp);
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_pmd_clear(pmdp);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_pmd(pmdp, __pmd(0));
 }
 #endif	/* CONFIG_X86_PAE */
@@ -736,7 +811,12 @@ static void xen_set_pgd(pgd_t *ptr, pgd_t val)
 	trace_xen_mmu_set_pgd(ptr, user_ptr, val);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_set_pgd(ptr, user_ptr, val);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If page is not pinned, we can just update the entry
 	   directly */
 	if (!xen_page_pinned(ptr)) {
@@ -897,12 +977,17 @@ static void xen_pte_unlock(void *v)
 static void xen_do_pin(unsigned level, unsigned long pfn)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mmuext_op op;
 
 	op.cmd = level;
 	op.arg1.mfn = pfn_to_mfn(pfn);
 
 	xen_extend_mmuext_op(&op);
+<<<<<<< HEAD
+=======
 =======
 	struct mmuext_op *op;
 	struct multicall_space mcs;
@@ -913,6 +998,7 @@ static void xen_do_pin(unsigned level, unsigned long pfn)
 	op->arg1.mfn = pfn_to_mfn(pfn);
 	MULTI_mmuext_op(mcs.mc, op, 1, NULL, DOMID_SELF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int xen_pin_page(struct mm_struct *mm, struct page *page,
@@ -984,7 +1070,12 @@ static void __xen_pgd_pin(struct mm_struct *mm, pgd_t *pgd)
 	trace_xen_mmu_pgd_pin(mm, pgd);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_pgd_pin(mm, pgd);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xen_mc_batch();
 
 	if (__xen_pgd_walk(mm, pgd, xen_pin_page, USER_LIMIT)) {
@@ -1114,7 +1205,12 @@ static void __xen_pgd_unpin(struct mm_struct *mm, pgd_t *pgd)
 	trace_xen_mmu_pgd_unpin(mm, pgd);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_pgd_unpin(mm, pgd);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xen_mc_batch();
 
 	xen_do_pin(MMUEXT_UNPIN_TABLE, PFN_DOWN(__pa(pgd)));
@@ -1196,10 +1292,16 @@ static void drop_other_mm_ref(void *info)
 
 	if (active_mm == mm && this_cpu_read(cpu_tlbstate.state) != TLBSTATE_OK)
 =======
+<<<<<<< HEAD
+	active_mm = this_cpu_read(cpu_tlbstate.active_mm);
+
+	if (active_mm == mm && this_cpu_read(cpu_tlbstate.state) != TLBSTATE_OK)
+=======
 	active_mm = percpu_read(cpu_tlbstate.active_mm);
 
 	if (active_mm == mm && percpu_read(cpu_tlbstate.state) != TLBSTATE_OK)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		leave_mm(smp_processor_id());
 
 	/* If this cpu still has a stale cr3 reference, then make sure
@@ -1207,8 +1309,12 @@ static void drop_other_mm_ref(void *info)
 <<<<<<< HEAD
 	if (this_cpu_read(xen_current_cr3) == __pa(mm->pgd))
 =======
+<<<<<<< HEAD
+	if (this_cpu_read(xen_current_cr3) == __pa(mm->pgd))
+=======
 	if (percpu_read(xen_current_cr3) == __pa(mm->pgd))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		load_cr3(swapper_pg_dir);
 }
 
@@ -1318,8 +1424,12 @@ static void xen_write_cr2(unsigned long cr2)
 <<<<<<< HEAD
 	this_cpu_read(xen_vcpu)->arch.cr2 = cr2;
 =======
+<<<<<<< HEAD
+	this_cpu_read(xen_vcpu)->arch.cr2 = cr2;
+=======
 	percpu_read(xen_vcpu)->arch.cr2 = cr2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static unsigned long xen_read_cr2(void)
@@ -1327,8 +1437,12 @@ static unsigned long xen_read_cr2(void)
 <<<<<<< HEAD
 	return this_cpu_read(xen_vcpu)->arch.cr2;
 =======
+<<<<<<< HEAD
+	return this_cpu_read(xen_vcpu)->arch.cr2;
+=======
 	return percpu_read(xen_vcpu)->arch.cr2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 unsigned long xen_read_cr2_direct(void)
@@ -1336,8 +1450,12 @@ unsigned long xen_read_cr2_direct(void)
 <<<<<<< HEAD
 	return this_cpu_read(xen_vcpu_info.arch.cr2);
 =======
+<<<<<<< HEAD
+	return this_cpu_read(xen_vcpu_info.arch.cr2);
+=======
 	return percpu_read(xen_vcpu_info.arch.cr2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xen_flush_tlb(void)
@@ -1349,7 +1467,12 @@ static void xen_flush_tlb(void)
 	trace_xen_mmu_flush_tlb(0);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_flush_tlb(0);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 
 	mcs = xen_mc_entry(sizeof(*op));
@@ -1372,7 +1495,12 @@ static void xen_flush_tlb_single(unsigned long addr)
 	trace_xen_mmu_flush_tlb_single(addr);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_flush_tlb_single(addr);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 
 	mcs = xen_mc_entry(sizeof(*op));
@@ -1403,7 +1531,12 @@ static void xen_flush_tlb_others(const struct cpumask *cpus,
 	trace_xen_mmu_flush_tlb_others(cpus, mm, va);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mmu_flush_tlb_others(cpus, mm, va);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpumask_empty(cpus))
 		return;		/* nothing to do */
 
@@ -1432,8 +1565,12 @@ static unsigned long xen_read_cr3(void)
 <<<<<<< HEAD
 	return this_cpu_read(xen_cr3);
 =======
+<<<<<<< HEAD
+	return this_cpu_read(xen_cr3);
+=======
 	return percpu_read(xen_cr3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void set_current_cr3(void *v)
@@ -1441,24 +1578,34 @@ static void set_current_cr3(void *v)
 <<<<<<< HEAD
 	this_cpu_write(xen_current_cr3, (unsigned long)v);
 =======
+<<<<<<< HEAD
+	this_cpu_write(xen_current_cr3, (unsigned long)v);
+=======
 	percpu_write(xen_current_cr3, (unsigned long)v);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __xen_write_cr3(bool kernel, unsigned long cr3)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mmuext_op op;
 	unsigned long mfn;
 
 	trace_xen_mmu_write_cr3(kernel, cr3);
 
+<<<<<<< HEAD
+=======
 =======
 	struct mmuext_op *op;
 	struct multicall_space mcs;
 	unsigned long mfn;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cr3)
 		mfn = pfn_to_mfn(PFN_DOWN(cr3));
 	else
@@ -1467,6 +1614,9 @@ static void __xen_write_cr3(bool kernel, unsigned long cr3)
 	WARN_ON(mfn == 0 && kernel);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	op.cmd = kernel ? MMUEXT_NEW_BASEPTR : MMUEXT_NEW_USER_BASEPTR;
 	op.arg1.mfn = mfn;
 
@@ -1474,6 +1624,8 @@ static void __xen_write_cr3(bool kernel, unsigned long cr3)
 
 	if (kernel) {
 		this_cpu_write(xen_cr3, cr3);
+<<<<<<< HEAD
+=======
 =======
 	mcs = __xen_mc_entry(sizeof(*op));
 
@@ -1486,6 +1638,7 @@ static void __xen_write_cr3(bool kernel, unsigned long cr3)
 	if (kernel) {
 		percpu_write(xen_cr3, cr3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Update xen_current_cr3 once the batch has actually
 		   been submitted. */
@@ -1504,8 +1657,12 @@ static void xen_write_cr3(unsigned long cr3)
 <<<<<<< HEAD
 	this_cpu_write(xen_cr3, cr3);
 =======
+<<<<<<< HEAD
+	this_cpu_write(xen_cr3, cr3);
+=======
 	percpu_write(xen_cr3, cr3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__xen_write_cr3(true, cr3);
 
@@ -1646,6 +1803,9 @@ static void __init xen_release_pmd_init(unsigned long pfn)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void __pin_pagetable_pfn(unsigned cmd, unsigned long pfn)
 {
 	struct multicall_space mcs;
@@ -1692,6 +1852,8 @@ static inline void xen_alloc_ptpage(struct mm_struct *mm, unsigned long pfn,
 				__pin_pagetable_pfn(MMUEXT_PIN_L1_TABLE, pfn);
 
 			xen_mc_issue(PARAVIRT_LAZY_MMU);
+<<<<<<< HEAD
+=======
 =======
 /* This needs to make sure the new pte page is pinned iff its being
    attached to a pinned pagetable. */
@@ -1707,6 +1869,7 @@ static void xen_alloc_ptpage(struct mm_struct *mm, unsigned long pfn, unsigned l
 			if (level == PT_PTE && USE_SPLIT_PTLOCKS)
 				pin_pagetable_pfn(MMUEXT_PIN_L1_TABLE, pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/* make sure there are no stray mappings of
 			   this page */
@@ -1727,6 +1890,9 @@ static void xen_alloc_pmd(struct mm_struct *mm, unsigned long pfn)
 
 /* This should never happen until we're OK to use struct page */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void xen_release_ptpage(unsigned long pfn, unsigned level)
 {
 	struct page *page = pfn_to_page(pfn);
@@ -1744,6 +1910,8 @@ static inline void xen_release_ptpage(unsigned long pfn, unsigned level)
 			__set_pfn_prot(pfn, PAGE_KERNEL);
 
 			xen_mc_issue(PARAVIRT_LAZY_MMU);
+<<<<<<< HEAD
+=======
 =======
 static void xen_release_ptpage(unsigned long pfn, unsigned level)
 {
@@ -1755,6 +1923,7 @@ static void xen_release_ptpage(unsigned long pfn, unsigned level)
 				pin_pagetable_pfn(MMUEXT_UNPIN_TABLE, pfn);
 			make_lowmem_page_readwrite(__va(PFN_PHYS(pfn)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		ClearPagePinned(page);
 	}
@@ -1901,11 +2070,16 @@ void __init xen_setup_machphys_mapping(void)
 	WARN_ON((machine_to_phys_mapping + (machine_to_phys_nr - 1))
 		< machine_to_phys_mapping);
 =======
+<<<<<<< HEAD
+	WARN_ON((machine_to_phys_mapping + (machine_to_phys_nr - 1))
+		< machine_to_phys_mapping);
+=======
 	if ((machine_to_phys_mapping + machine_to_phys_nr)
 	    < machine_to_phys_mapping)
 		machine_to_phys_nr = (unsigned long *)NULL
 				     - machine_to_phys_mapping;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 
@@ -1996,11 +2170,16 @@ pgd_t * __init xen_setup_kernel_pagetable(pgd_t *pgd,
 	memblock_reserve(__pa(xen_start_info->pt_base),
 			 xen_start_info->nr_pt_frames * PAGE_SIZE);
 =======
+<<<<<<< HEAD
+	memblock_reserve(__pa(xen_start_info->pt_base),
+			 xen_start_info->nr_pt_frames * PAGE_SIZE);
+=======
 	memblock_x86_reserve_range(__pa(xen_start_info->pt_base),
 		      __pa(xen_start_info->pt_base +
 			   xen_start_info->nr_pt_frames * PAGE_SIZE),
 		      "XEN PAGETABLES");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return pgd;
 }
@@ -2080,11 +2259,16 @@ pgd_t * __init xen_setup_kernel_pagetable(pgd_t *pgd,
 	memblock_reserve(__pa(xen_start_info->pt_base),
 			 xen_start_info->nr_pt_frames * PAGE_SIZE);
 =======
+<<<<<<< HEAD
+	memblock_reserve(__pa(xen_start_info->pt_base),
+			 xen_start_info->nr_pt_frames * PAGE_SIZE);
+=======
 	memblock_x86_reserve_range(__pa(xen_start_info->pt_base),
 		      __pa(xen_start_info->pt_base +
 			   xen_start_info->nr_pt_frames * PAGE_SIZE),
 		      "XEN PAGETABLES");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return initial_page_table;
 }
@@ -2094,7 +2278,11 @@ static unsigned char dummy_mapping[PAGE_SIZE] __page_aligned_bss;
 <<<<<<< HEAD
 static unsigned char fake_ioapic_mapping[PAGE_SIZE] __page_aligned_bss;
 =======
+<<<<<<< HEAD
+static unsigned char fake_ioapic_mapping[PAGE_SIZE] __page_aligned_bss;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void xen_set_fixmap(unsigned idx, phys_addr_t phys, pgprot_t prot)
 {
@@ -2118,7 +2306,11 @@ static void xen_set_fixmap(unsigned idx, phys_addr_t phys, pgprot_t prot)
 <<<<<<< HEAD
 	case VVAR_PAGE:
 =======
+<<<<<<< HEAD
+	case VVAR_PAGE:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	case FIX_TEXT_POKE0:
 	case FIX_TEXT_POKE1:
@@ -2141,8 +2333,12 @@ static void xen_set_fixmap(unsigned idx, phys_addr_t phys, pgprot_t prot)
 <<<<<<< HEAD
 		pte = pfn_pte(PFN_DOWN(__pa(fake_ioapic_mapping)), PAGE_KERNEL);
 =======
+<<<<<<< HEAD
+		pte = pfn_pte(PFN_DOWN(__pa(fake_ioapic_mapping)), PAGE_KERNEL);
+=======
 		pte = pfn_pte(PFN_DOWN(__pa(dummy_mapping)), PAGE_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 #endif
 
@@ -2167,8 +2363,13 @@ static void xen_set_fixmap(unsigned idx, phys_addr_t phys, pgprot_t prot)
 	if ((idx >= VSYSCALL_LAST_PAGE && idx <= VSYSCALL_FIRST_PAGE) ||
 	    idx == VVAR_PAGE) {
 =======
+<<<<<<< HEAD
+	if ((idx >= VSYSCALL_LAST_PAGE && idx <= VSYSCALL_FIRST_PAGE) ||
+	    idx == VVAR_PAGE) {
+=======
 	if (idx >= VSYSCALL_LAST_PAGE && idx <= VSYSCALL_FIRST_PAGE) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long vaddr = __fix_to_virt(idx);
 		set_pte_vaddr_pud(level3_user_vsyscall, vaddr, pte);
 	}
@@ -2202,10 +2403,13 @@ static void __init xen_post_allocator_init(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_XEN_DEBUG
 	pv_mmu_ops.make_pte = PV_CALLEE_SAVE(xen_make_pte_debug);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pv_mmu_ops.set_pte = xen_set_pte;
 	pv_mmu_ops.set_pmd = xen_set_pmd;
 	pv_mmu_ops.set_pud = xen_set_pud;
@@ -2306,8 +2510,11 @@ static const struct pv_mmu_ops xen_mmu_ops __initconst = {
 		.leave = xen_leave_lazy_mmu,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.flush = paravirt_flush_lazy_mmu,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 
 	.set_fixmap = xen_set_fixmap,
@@ -2324,7 +2531,11 @@ void __init xen_init_mmu_ops(void)
 <<<<<<< HEAD
 	memset(fake_ioapic_mapping, 0xfd, PAGE_SIZE);
 =======
+<<<<<<< HEAD
+	memset(fake_ioapic_mapping, 0xfd, PAGE_SIZE);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Protected by xen_reservation_lock. */
@@ -2625,6 +2836,8 @@ out:
 EXPORT_SYMBOL_GPL(xen_remap_domain_mfn_range);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #ifdef CONFIG_XEN_DEBUG_FS
 static int p2m_dump_open(struct inode *inode, struct file *filp)
@@ -2640,3 +2853,4 @@ static const struct file_operations p2m_dump_fops = {
 };
 #endif /* CONFIG_XEN_DEBUG_FS */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

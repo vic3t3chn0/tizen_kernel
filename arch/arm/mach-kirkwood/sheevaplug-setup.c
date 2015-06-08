@@ -110,8 +110,12 @@ static void __init sheevaplug_init(void)
 <<<<<<< HEAD
 	if (machine_is_esata_sheevaplug())
 =======
+<<<<<<< HEAD
+	if (machine_is_esata_sheevaplug())
+=======
 	if (machine_is_sheeva_esata())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kirkwood_mpp_conf(sheeva_esata_mpp_config);
 	else
 		kirkwood_mpp_conf(sheevaplug_mpp_config);
@@ -128,11 +132,16 @@ static void __init sheevaplug_init(void)
 
 	/* honor lower power consumption for plugs with out eSATA */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (machine_is_esata_sheevaplug())
 		kirkwood_sata_init(&sheeva_esata_sata_data);
 
 	/* enable sd wp and sd cd on plugs with esata */
 	if (machine_is_esata_sheevaplug())
+<<<<<<< HEAD
+=======
 =======
 	if (machine_is_sheeva_esata())
 		kirkwood_sata_init(&sheeva_esata_sata_data);
@@ -140,6 +149,7 @@ static void __init sheevaplug_init(void)
 	/* enable sd wp and sd cd on plugs with esata */
 	if (machine_is_sheeva_esata())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kirkwood_sdio_init(&sheeva_esata_mvsdio_data);
 	else
 		kirkwood_sdio_init(&sheevaplug_mvsdio_data);
@@ -153,8 +163,12 @@ MACHINE_START(SHEEVAPLUG, "Marvell SheevaPlug Reference Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= sheevaplug_init,
 	.map_io		= kirkwood_map_io,
 	.init_early	= kirkwood_init_early,
@@ -163,7 +177,11 @@ MACHINE_START(SHEEVAPLUG, "Marvell SheevaPlug Reference Board")
 <<<<<<< HEAD
 	.restart	= kirkwood_restart,
 =======
+<<<<<<< HEAD
+	.restart	= kirkwood_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -172,8 +190,12 @@ MACHINE_START(ESATA_SHEEVAPLUG, "Marvell eSATA SheevaPlug Reference Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= sheevaplug_init,
 	.map_io		= kirkwood_map_io,
 	.init_early	= kirkwood_init_early,
@@ -182,6 +204,10 @@ MACHINE_START(ESATA_SHEEVAPLUG, "Marvell eSATA SheevaPlug Reference Board")
 <<<<<<< HEAD
 	.restart	= kirkwood_restart,
 =======
+<<<<<<< HEAD
+	.restart	= kirkwood_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif

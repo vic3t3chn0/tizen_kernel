@@ -28,9 +28,14 @@ config ETRAX_PA_LEDS
 	  <file:arch/cris/include/asm/io.h>, and those macros are defined after
 	  what YOU choose in this option.  The actual bits used are configured
 =======
+<<<<<<< HEAD
+	  <file:arch/cris/include/asm/io.h>, and those macros are defined after
+	  what YOU choose in this option.  The actual bits used are configured
+=======
 	  <file:include/asm-cris/io.h>, and those macros are defined after what
 	  YOU choose in this option.  The actual bits used are configured
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  separately.  Select this if the LEDs are on port PA.  Some products
 	  put the leds on PB or a memory-mapped latch (CSP0) instead.
 
@@ -43,9 +48,14 @@ config ETRAX_PB_LEDS
 	  <file:arch/cris/include/asm/io.h>, and those macros are defined after
 	  what YOU choose in this option.  The actual bits used are configured
 =======
+<<<<<<< HEAD
+	  <file:arch/cris/include/asm/io.h>, and those macros are defined after
+	  what YOU choose in this option.  The actual bits used are configured
+=======
 	  <file:include/asm-cris/io.h>, and those macros are defined after what
 	  YOU choose in this option.  The actual bits used are configured
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  separately.  Select this if the LEDs are on port PB.  Some products
 	  put the leds on PA or a memory-mapped latch (CSP0) instead.
 
@@ -58,9 +68,14 @@ config ETRAX_CSP0_LEDS
 	  <file:arch/cris/include/asm/io.h>, and those macros are defined after
 	  what YOU choose in this option.  The actual bits used are configured
 =======
+<<<<<<< HEAD
+	  <file:arch/cris/include/asm/io.h>, and those macros are defined after
+	  what YOU choose in this option.  The actual bits used are configured
+=======
 	  <file:include/asm-cris/io.h>, and those macros are defined after what
 	  YOU choose in this option.  The actual bits used are configured
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  separately.  Select this if the LEDs are on a memory-mapped latch
 	  using chip select CSP0, this is mapped at 0x90000000.
 	  Some products put the leds on PA or PB instead.

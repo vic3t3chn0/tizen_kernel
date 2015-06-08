@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2009 - 2011  Renesas Solutions Corp.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2009 - 2011  Renesas Solutions Corp.
+=======
  * Copyright (C) 2009 - 2010  Renesas Solutions Corp.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Kuninori Morimoto <morimoto.kuninori@renesas.com>
  * Paul Mundt <paul.mundt@renesas.com>
  *
@@ -40,7 +44,11 @@ static struct plat_sci_port scif0_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif0_device = {
@@ -64,7 +72,11 @@ static struct plat_sci_port scif1_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif1_device = {
@@ -85,7 +97,11 @@ static struct plat_sci_port scif2_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif2_device = {
@@ -106,7 +122,11 @@ static struct plat_sci_port scif3_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif3_device = {
@@ -127,7 +147,11 @@ static struct plat_sci_port scif4_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif4_device = {
@@ -148,7 +172,11 @@ static struct plat_sci_port scif5_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_FIFODATA_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif5_device = {
@@ -543,8 +571,12 @@ static struct resource dmac0_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 		/* DMA error IRQ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= evt2irq(0x5c0),
 		.end	= evt2irq(0x5c0),
 		.flags	= IORESOURCE_IRQ,

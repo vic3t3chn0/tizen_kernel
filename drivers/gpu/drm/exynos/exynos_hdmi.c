@@ -37,7 +37,14 @@
 
 #include "exynos_drm_drv.h"
 #include "exynos_drm_hdmi.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include "exynos_drm_iommu.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "exynos_drm_iommu.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "exynos_hdmi.h"
 
@@ -58,6 +65,23 @@ struct hdmi_resources {
 struct hdmi_context {
 	struct device			*dev;
 	struct drm_device		*drm_dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct fb_videomode		*default_timing;
+	unsigned int			is_v13:1;
+	unsigned int			default_win;
+	unsigned int			default_bpp;
+	bool				hpd_handle;
+	bool				enabled;
+
+	struct resource			*regs_res;
+	void __iomem			*regs;
+	unsigned int			irq;
+	struct workqueue_struct		*wq;
+	struct work_struct		hotplug_work;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool				hpd;
 	bool				powered;
 	bool				is_v13;
@@ -69,6 +93,10 @@ struct hdmi_context {
 	void __iomem			*regs;
 	unsigned int			external_irq;
 	unsigned int			internal_irq;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct i2c_client		*ddc_port;
 	struct i2c_client		*hdmiphy_port;
@@ -78,9 +106,18 @@ struct hdmi_context {
 
 	struct hdmi_resources		res;
 	void				*parent_ctx;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	void				(*cfg_hpd)(bool external);
 	int				(*get_hpd)(void);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	void				(*cfg_hpd)(bool external);
+	int				(*get_hpd)(void);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* HDMI Version 1.3 */
@@ -364,6 +401,11 @@ static const u8 hdmiphy_conf27_027[32] = {
 	0x54, 0xe3, 0x24, 0x00, 0x00, 0x00, 0x01, 0x00,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const u8 hdmiphy_conf74_176[32] = {
 	0x01, 0xd1, 0x1f, 0x10, 0x40, 0x5b, 0xef, 0x08,
 	0x81, 0xa0, 0xb9, 0xd8, 0x45, 0xa0, 0xac, 0x80,
@@ -371,6 +413,10 @@ static const u8 hdmiphy_conf74_176[32] = {
 	0x54, 0xa6, 0x24, 0x01, 0x00, 0x00, 0x01, 0x00,
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const u8 hdmiphy_conf74_25[32] = {
 	0x01, 0xd1, 0x1f, 0x10, 0x40, 0x40, 0xf8, 0x08,
 	0x81, 0xa0, 0xba, 0xd8, 0x45, 0xa0, 0xac, 0x80,
@@ -760,6 +806,11 @@ static const struct hdmi_preset_conf hdmi_conf_1080i60 = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hdmi_preset_conf hdmi_conf_1080p30 = {
 	.core = {
 		.h_blank = {0x18, 0x01},
@@ -817,6 +868,10 @@ static const struct hdmi_preset_conf hdmi_conf_1080p30 = {
 	},
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hdmi_preset_conf hdmi_conf_1080p50 = {
 	.core = {
 		.h_blank = {0xd0, 0x02},
@@ -929,7 +984,18 @@ static const struct hdmi_conf hdmi_confs[] = {
 	{ 720, 480, 60, false, hdmiphy_conf27_027, &hdmi_conf_480p60 },
 	{ 1280, 720, 50, false, hdmiphy_conf74_25, &hdmi_conf_720p50 },
 	{ 1280, 720, 60, false, hdmiphy_conf74_25, &hdmi_conf_720p60 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 1920, 1080, 50, true, hdmiphy_conf74_25, &hdmi_conf_1080i50 },
+	{ 1920, 1080, 60, true, hdmiphy_conf74_25, &hdmi_conf_1080i60 },
+	{ 1920, 1080, 50, false, hdmiphy_conf148_5, &hdmi_conf_1080p50 },
+	{ 1920, 1080, 60, false, hdmiphy_conf148_5, &hdmi_conf_1080p60 },
+=======
 	{ 1920, 1080, 30, false, hdmiphy_conf74_176, &hdmi_conf_1080p30 },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ 1920, 1080, 30, false, hdmiphy_conf74_176, &hdmi_conf_1080p30 },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -1258,8 +1324,22 @@ static int hdmi_conf_index(struct hdmi_context *hdata,
 static bool hdmi_is_connected(void *ctx)
 {
 	struct hdmi_context *hdata = ctx;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 val = hdmi_reg_read(hdata, HDMI_HPD_STATUS);
+
+	if (val)
+		return true;
+
+	return false;
+=======
 
 	return hdata->hpd;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	return hdata->hpd;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int hdmi_get_edid(void *ctx, struct drm_connector *connector,
@@ -1275,12 +1355,25 @@ static int hdmi_get_edid(void *ctx, struct drm_connector *connector,
 
 	raw_edid = drm_get_edid(connector, hdata->ddc_port->adapter);
 	if (raw_edid) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		memcpy(edid, raw_edid, min((1 + raw_edid->extensions)
+					* EDID_LENGTH, len));
+		DRM_DEBUG_KMS("width[%d] x height[%d]\n",
+				raw_edid->width_cm, raw_edid->height_cm);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hdata->dvi_mode = !drm_detect_hdmi_monitor(raw_edid);
 		memcpy(edid, raw_edid, min((1 + raw_edid->extensions)
 					* EDID_LENGTH, len));
 		DRM_DEBUG_KMS("%s : width[%d] x height[%d]\n",
 			(hdata->dvi_mode ? "dvi monitor" : "hdmi monitor"),
 			raw_edid->width_cm, raw_edid->height_cm);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		return -ENODEV;
 	}
@@ -1351,6 +1444,34 @@ static int hdmi_check_timing(void *ctx, void *timing)
 		return hdmi_v14_check_timing(check_timing);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int hdmi_display_power_on(void *ctx, int mode)
+{
+	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
+
+	switch (mode) {
+	case DRM_MODE_DPMS_ON:
+		DRM_DEBUG_KMS("hdmi [on]\n");
+		break;
+	case DRM_MODE_DPMS_STANDBY:
+		break;
+	case DRM_MODE_DPMS_SUSPEND:
+		break;
+	case DRM_MODE_DPMS_OFF:
+		DRM_DEBUG_KMS("hdmi [off]\n");
+		break;
+	default:
+		break;
+	}
+
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void hdmi_set_acr(u32 freq, u8 *acr)
 {
 	u32 n, cts;
@@ -1503,7 +1624,18 @@ static void hdmi_audio_init(struct hdmi_context *hdata)
 
 static void hdmi_audio_control(struct hdmi_context *hdata, bool onoff)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 mod;
+
+	mod = hdmi_reg_read(hdata, HDMI_MODE_SEL);
+	if (mod & HDMI_DVI_MODE_EN)
+=======
 	if (hdata->dvi_mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (hdata->dvi_mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	hdmi_reg_writeb(hdata, HDMI_AUI_CON, onoff ? 2 : 0);
@@ -1515,6 +1647,15 @@ static void hdmi_conf_reset(struct hdmi_context *hdata)
 {
 	u32 reg;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* disable hpd handle for drm */
+	hdata->hpd_handle = false;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdata->is_v13)
 		reg = HDMI_V13_CORE_RSTOUT;
 	else
@@ -1525,10 +1666,28 @@ static void hdmi_conf_reset(struct hdmi_context *hdata)
 	mdelay(10);
 	hdmi_reg_writemask(hdata, reg, ~0, HDMI_CORE_SW_RSTOUT);
 	mdelay(10);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* enable hpd handle for drm */
+	hdata->hpd_handle = true;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void hdmi_conf_init(struct hdmi_context *hdata)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* disable hpd handle for drm */
+	hdata->hpd_handle = false;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* enable HPD interrupts */
 	hdmi_reg_writemask(hdata, HDMI_INTC_CON, 0, HDMI_INTC_EN_GLOBAL |
 		HDMI_INTC_EN_HPD_PLUG | HDMI_INTC_EN_HPD_UNPLUG);
@@ -1542,6 +1701,11 @@ static void hdmi_conf_init(struct hdmi_context *hdata)
 	/* disable bluescreen */
 	hdmi_reg_writemask(hdata, HDMI_CON_0, 0, HDMI_BLUE_SCR_EN);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdata->dvi_mode) {
 		/* choose DVI mode */
 		hdmi_reg_writemask(hdata, HDMI_MODE_SEL,
@@ -1550,6 +1714,10 @@ static void hdmi_conf_init(struct hdmi_context *hdata)
 				HDMI_VID_PREAMBLE_DIS | HDMI_GUARD_BAND_DIS);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdata->is_v13) {
 		/* choose bluescreen (fecal) color */
 		hdmi_reg_writeb(hdata, HDMI_V13_BLUE_SCREEN_0, 0x12);
@@ -1571,6 +1739,15 @@ static void hdmi_conf_init(struct hdmi_context *hdata)
 		hdmi_reg_writeb(hdata, HDMI_AVI_BYTE(1), 2 << 5);
 		hdmi_reg_writemask(hdata, HDMI_CON_1, 2, 3 << 5);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* enable hpd handle for drm */
+	hdata->hpd_handle = true;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void hdmi_v13_timing_apply(struct hdmi_context *hdata)
@@ -1838,6 +2015,11 @@ static void hdmi_timing_apply(struct hdmi_context *hdata)
 		hdmi_v14_timing_apply(hdata);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hdmi_phy_ctrl(struct i2c_client *client, u8 reg, u8 bit,
 		u8 *read_buffer, bool enable)
 {
@@ -1936,6 +2118,10 @@ err_clear:
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void hdmiphy_conf_reset(struct hdmi_context *hdata)
 {
 	u8 buffer[2];
@@ -2021,11 +2207,22 @@ static void hdmi_conf_apply(struct hdmi_context *hdata)
 	hdmiphy_conf_reset(hdata);
 	hdmiphy_conf_apply(hdata);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hdmi_conf_reset(hdata);
+	hdmi_conf_init(hdata);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&hdata->hdmi_mutex);
 	hdmi_conf_reset(hdata);
 	hdmi_conf_init(hdata);
 	mutex_unlock(&hdata->hdmi_mutex);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdmi_audio_init(hdata);
 
 	/* setting core registers */
@@ -2101,14 +2298,32 @@ static void hdmi_get_max_resol(void *ctx, unsigned int *width,
 static void hdmi_commit(void *ctx)
 {
 	struct hdmi_context *hdata = ctx;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct exynos_drm_private *drm_priv;
 	struct exynos_drm_hdmi_context *drm_hdmi_ctx;
 	struct drm_device *drm_dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct exynos_drm_private *drm_priv;
+	struct exynos_drm_hdmi_context *drm_hdmi_ctx;
+	struct drm_device *drm_dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
 
 	hdmi_conf_apply(hdata);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hdata->enabled = true;
+}
+
+static void hdmi_disable(void *ctx)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * parent_ctx is created at hdmi_probe() and
 	 * parent_ctx->drm_dev is set at hdmi_subdrv_probe()
@@ -2258,11 +2473,24 @@ out:
 }
 
 static void hdmi_dpms(void *ctx, int mode)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hdmi_context *hdata = ctx;
 
 	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (hdata->enabled) {
+		hdmi_audio_control(hdata, false);
+		hdmiphy_conf_reset(hdata);
+		hdmi_conf_reset(hdata);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (mode) {
 	case DRM_MODE_DPMS_ON:
 		hdmi_poweron(hdata);
@@ -2275,6 +2503,10 @@ static void hdmi_dpms(void *ctx, int mode)
 	default:
 		DRM_DEBUG_KMS("unknown dpms mode: %d\n", mode);
 		break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -2283,12 +2515,41 @@ static struct exynos_hdmi_ops hdmi_ops = {
 	.is_connected	= hdmi_is_connected,
 	.get_edid	= hdmi_get_edid,
 	.check_timing	= hdmi_check_timing,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.power_on	= hdmi_display_power_on,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* manager */
 	.mode_fixup	= hdmi_mode_fixup,
 	.mode_set	= hdmi_mode_set,
 	.get_max_resol	= hdmi_get_max_resol,
 	.commit		= hdmi_commit,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.disable	= hdmi_disable,
+};
+
+/*
+ * Handle hotplug events outside the interrupt handler proper.
+ */
+static void hdmi_hotplug_func(struct work_struct *work)
+{
+	struct hdmi_context *hdata =
+		container_of(work, struct hdmi_context, hotplug_work);
+	struct exynos_drm_hdmi_context *ctx =
+		(struct exynos_drm_hdmi_context *)hdata->parent_ctx;
+
+	drm_helper_hpd_irq_event(ctx->drm_dev);
+}
+
+static irqreturn_t hdmi_irq_handler(int irq, void *arg)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dpms		= hdmi_dpms,
 };
 
@@ -2312,6 +2573,10 @@ out:
 }
 
 static irqreturn_t hdmi_internal_irq_thread(int irq, void *arg)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct exynos_drm_hdmi_context *ctx = arg;
 	struct hdmi_context *hdata = ctx->ctx;
@@ -2320,16 +2585,40 @@ static irqreturn_t hdmi_internal_irq_thread(int irq, void *arg)
 	intc_flag = hdmi_reg_read(hdata, HDMI_INTC_FLAG);
 	/* clearing flags for HPD plug/unplug */
 	if (intc_flag & HDMI_INTC_FLAG_HPD_UNPLUG) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		DRM_DEBUG_KMS("unplugged, handling:%d\n", hdata->hpd_handle);
+=======
 		DRM_DEBUG_KMS("unplugged\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DRM_DEBUG_KMS("unplugged\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hdmi_reg_writemask(hdata, HDMI_INTC_FLAG, ~0,
 			HDMI_INTC_FLAG_HPD_UNPLUG);
 	}
 	if (intc_flag & HDMI_INTC_FLAG_HPD_PLUG) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		DRM_DEBUG_KMS("plugged, handling:%d\n", hdata->hpd_handle);
+=======
 		DRM_DEBUG_KMS("plugged\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DRM_DEBUG_KMS("plugged\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hdmi_reg_writemask(hdata, HDMI_INTC_FLAG, ~0,
 			HDMI_INTC_FLAG_HPD_PLUG);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ctx->drm_dev && hdata->hpd_handle)
+		queue_work(hdata->wq, &hdata->hotplug_work);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&hdata->hdmi_mutex);
 	hdata->hpd = hdmi_reg_read(hdata, HDMI_HPD_STATUS);
 	if (hdata->powered && hdata->hpd) {
@@ -2342,6 +2631,10 @@ static irqreturn_t hdmi_internal_irq_thread(int irq, void *arg)
 		drm_helper_hpd_irq_event(ctx->drm_dev);
 
 out:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return IRQ_HANDLED;
 }
 
@@ -2350,8 +2643,17 @@ static int __devinit hdmi_resources_init(struct hdmi_context *hdata)
 	struct device *dev = hdata->dev;
 	struct hdmi_resources *res = &hdata->res;
 	static char *supply[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		"hdmi-en",
+=======
 		/* FIXME: control HDMI_EN gpio using fixed regulator */
 		/* "hdmi-en", */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* FIXME: control HDMI_EN gpio using fixed regulator */
+		/* "hdmi-en", */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"vdd",
 		"vdd_osc",
 		"vdd_pll",
@@ -2436,6 +2738,74 @@ static int hdmi_resources_cleanup(struct hdmi_context *hdata)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void hdmi_resource_poweron(struct hdmi_context *hdata)
+{
+	struct hdmi_resources *res = &hdata->res;
+
+	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
+
+	/* turn HDMI power on */
+	regulator_bulk_enable(res->regul_count, res->regul_bulk);
+	/* power-on hdmi physical interface */
+	clk_enable(res->hdmiphy);
+	/* turn clocks on */
+	clk_enable(res->hdmi);
+	clk_enable(res->sclk_hdmi);
+
+	hdmiphy_conf_reset(hdata);
+	hdmi_conf_reset(hdata);
+	hdmi_conf_init(hdata);
+	hdmi_audio_init(hdata);
+}
+
+static void hdmi_resource_poweroff(struct hdmi_context *hdata)
+{
+	struct hdmi_resources *res = &hdata->res;
+
+	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
+
+	/* turn clocks off */
+	clk_disable(res->sclk_hdmi);
+	clk_disable(res->hdmi);
+	/* power-off hdmiphy */
+	clk_disable(res->hdmiphy);
+	/* turn HDMI power off */
+	regulator_bulk_disable(res->regul_count, res->regul_bulk);
+}
+
+static int hdmi_runtime_suspend(struct device *dev)
+{
+	struct exynos_drm_hdmi_context *ctx = get_hdmi_context(dev);
+
+	DRM_DEBUG_KMS("%s\n", __func__);
+
+	hdmi_resource_poweroff(ctx->ctx);
+
+	return 0;
+}
+
+static int hdmi_runtime_resume(struct device *dev)
+{
+	struct exynos_drm_hdmi_context *ctx = get_hdmi_context(dev);
+
+	DRM_DEBUG_KMS("%s\n", __func__);
+
+	hdmi_resource_poweron(ctx->ctx);
+
+	return 0;
+}
+
+static const struct dev_pm_ops hdmi_pm_ops = {
+	.runtime_suspend = hdmi_runtime_suspend,
+	.runtime_resume	 = hdmi_runtime_resume,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct i2c_client *hdmi_ddc, *hdmi_hdmiphy;
 
 void hdmi_attach_ddc_client(struct i2c_client *ddc)
@@ -2480,16 +2850,35 @@ static int __devinit hdmi_probe(struct platform_device *pdev)
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	mutex_init(&hdata->hdmi_mutex);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_init(&hdata->hdmi_mutex);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	drm_hdmi_ctx->ctx = (void *)hdata;
 	hdata->parent_ctx = (void *)drm_hdmi_ctx;
 
 	platform_set_drvdata(pdev, drm_hdmi_ctx);
 
 	hdata->is_v13 = pdata->is_v13;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hdata->default_win = pdata->default_win;
+	hdata->default_timing = &pdata->timing;
+	hdata->default_bpp = pdata->bpp;
+=======
 	hdata->cfg_hpd = pdata->cfg_hpd;
 	hdata->get_hpd = pdata->get_hpd;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hdata->cfg_hpd = pdata->cfg_hpd;
+	hdata->get_hpd = pdata->get_hpd;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdata->dev = dev;
 
 	ret = hdmi_resources_init(hdata);
@@ -2538,6 +2927,36 @@ static int __devinit hdmi_probe(struct platform_device *pdev)
 
 	hdata->hdmiphy_port = hdmi_hdmiphy;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+	if (res == NULL) {
+		DRM_ERROR("get interrupt resource failed.\n");
+		ret = -ENXIO;
+		goto err_hdmiphy;
+	}
+
+	/* create workqueue and hotplug work */
+	hdata->wq = alloc_workqueue("exynos-drm-hdmi",
+			WQ_UNBOUND | WQ_NON_REENTRANT, 1);
+	if (hdata->wq == NULL) {
+		DRM_ERROR("Failed to create workqueue.\n");
+		ret = -ENOMEM;
+		goto err_hdmiphy;
+	}
+	INIT_WORK(&hdata->hotplug_work, hdmi_hotplug_func);
+
+	/* register hpd interrupt */
+	ret = request_irq(res->start, hdmi_irq_handler, 0, "drm_hdmi",
+				drm_hdmi_ctx);
+	if (ret) {
+		DRM_ERROR("request interrupt failed.\n");
+		goto err_workqueue;
+	}
+	hdata->irq = res->start;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * HDMI PHY power off
 	 * HDMI PHY is on as default configuration
@@ -2582,16 +3001,35 @@ static int __devinit hdmi_probe(struct platform_device *pdev)
 		DRM_ERROR("failed to register hdmi internal interrupt\n");
 		goto err_free_irq;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* register specific callbacks to common hdmi. */
 	exynos_hdmi_ops_register(&hdmi_ops);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hdmi_resource_poweron(hdata);
+
+	return 0;
+
+err_workqueue:
+	destroy_workqueue(hdata->wq);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_runtime_enable(dev);
 
 	return 0;
 
 err_free_irq:
 	free_irq(hdata->external_irq, drm_hdmi_ctx);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_hdmiphy:
 	i2c_del_driver(&hdmiphy_driver);
 err_ddc:
@@ -2611,15 +3049,38 @@ err_data:
 
 static int __devexit hdmi_remove(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct device *dev = &pdev->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct device *dev = &pdev->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct exynos_drm_hdmi_context *ctx = platform_get_drvdata(pdev);
 	struct hdmi_context *hdata = ctx->ctx;
 
 	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hdmi_resource_poweroff(hdata);
+
+	disable_irq(hdata->irq);
+	free_irq(hdata->irq, hdata);
+
+	cancel_work_sync(&hdata->hotplug_work);
+	destroy_workqueue(hdata->wq);
+=======
 	pm_runtime_disable(dev);
 
 	free_irq(hdata->internal_irq, hdata);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pm_runtime_disable(dev);
+
+	free_irq(hdata->internal_irq, hdata);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hdmi_resources_cleanup(hdata);
 
@@ -2634,11 +3095,23 @@ static int __devexit hdmi_remove(struct platform_device *pdev)
 	i2c_del_driver(&ddc_driver);
 
 	kfree(hdata);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(ctx);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(ctx);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_SLEEP
 static int hdmi_suspend(struct device *dev)
 {
@@ -2670,12 +3143,24 @@ static int hdmi_resume(struct device *dev)
 
 static SIMPLE_DEV_PM_OPS(hdmi_pm_ops, hdmi_suspend, hdmi_resume);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_driver hdmi_driver = {
 	.probe		= hdmi_probe,
 	.remove		= __devexit_p(hdmi_remove),
 	.driver		= {
 		.name	= "exynos4-hdmi",
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.pm = &hdmi_pm_ops,
+=======
 		.pm	= &hdmi_pm_ops,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.pm	= &hdmi_pm_ops,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };

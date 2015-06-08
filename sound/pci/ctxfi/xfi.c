@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/initval.h>
 #include "ctatc.h"
@@ -38,8 +42,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int subsystem[SNDRV_CARDS];
 
 module_param_array(index, int, NULL, 0444);
@@ -89,11 +97,16 @@ ct_card_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 		reference_rate = 48000;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((multiple != 1) && (multiple != 2) && (multiple != 4)) {
 		printk(KERN_ERR "ctxfi: Invalid multiple value %u!!!\n",
 		       multiple);
 		printk(KERN_ERR "ctxfi: The valid values for multiple are "
 		       "1, 2 and 4, Value 2 is assumed.\n");
+<<<<<<< HEAD
+=======
 =======
 	if ((multiple != 1) && (multiple != 2)) {
 		printk(KERN_ERR "ctxfi: Invalid multiple value %u!!!\n",
@@ -101,6 +114,7 @@ ct_card_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 		printk(KERN_ERR "ctxfi: The valid values for multiple are "
 		       "1 and 2, Value 2 is assumed.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		multiple = 2;
 	}
 	err = ct_atc_create(card, pci, reference_rate, multiple,
@@ -162,8 +176,12 @@ static struct pci_driver ct_driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "SB-XFi",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = ct_pci_dev_ids,
 	.probe = ct_card_probe,
 	.remove = __devexit_p(ct_card_remove),

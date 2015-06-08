@@ -714,6 +714,11 @@ void __init board_prom_init(void)
 	val = bcm_mpi_readl(MPI_CSBASE_REG(0));
 	val &= MPI_CSBASE_BASE_MASK;
 =======
+<<<<<<< HEAD
+	/* read base address of boot chip select (0) */
+	val = bcm_mpi_readl(MPI_CSBASE_REG(0));
+	val &= MPI_CSBASE_BASE_MASK;
+=======
 	/* read base address of boot chip select (0)
 	 * 6345 does not have MPI but boots from standard
 	 * MIPS Flash address */
@@ -724,6 +729,7 @@ void __init board_prom_init(void)
 		val &= MPI_CSBASE_BASE_MASK;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	boot_addr = (u8 *)KSEG1ADDR(val);
 
 	/* dump cfe version */
@@ -805,6 +811,8 @@ void __init board_prom_init(void)
 	bcm_gpio_writel(val, GPIO_MODE_REG);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/* Generate MAC address for WLAN and
 	 * register our SPROM */
@@ -818,6 +826,7 @@ void __init board_prom_init(void)
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -847,7 +856,12 @@ static struct mtd_partition mtd_partitions[] = {
 static const char *bcm63xx_part_types[] = { "bcm63xxpart", NULL };
 
 =======
+<<<<<<< HEAD
+static const char *bcm63xx_part_types[] = { "bcm63xxpart", NULL };
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct physmap_flash_data flash_data = {
 	.width			= 2,
 	.nr_parts		= ARRAY_SIZE(mtd_partitions),
@@ -855,7 +869,11 @@ static struct physmap_flash_data flash_data = {
 <<<<<<< HEAD
 	.part_probe_types	= bcm63xx_part_types,
 =======
+<<<<<<< HEAD
+	.part_probe_types	= bcm63xx_part_types,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource mtd_resources[] = {
@@ -911,6 +929,9 @@ int __init board_register_devices(void)
 		bcm63xx_dsp_register(&board.dsp);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Generate MAC address for WLAN and register our SPROM,
 	 * do this after registering enet devices
 	 */
@@ -928,6 +949,8 @@ int __init board_register_devices(void)
 	val = bcm_mpi_readl(MPI_CSBASE_REG(0));
 	val &= MPI_CSBASE_BASE_MASK;
 
+<<<<<<< HEAD
+=======
 =======
 	/* read base address of boot chip select (0) */
 	if (BCMCPU_IS_6345())
@@ -937,6 +960,7 @@ int __init board_register_devices(void)
 		val &= MPI_CSBASE_BASE_MASK;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtd_resources[0].start = val;
 	mtd_resources[0].end = 0x1FFFFFFF;
 

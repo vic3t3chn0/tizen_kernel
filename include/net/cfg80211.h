@@ -212,6 +212,9 @@ struct ieee80211_sta_ht_cap {
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct ieee80211_sta_vht_cap - STA's VHT capabilities
  *
  * This structure describes most essential parameters needed
@@ -228,8 +231,11 @@ struct ieee80211_sta_vht_cap {
 };
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct ieee80211_supported_band - frequency band definition
  *
  * This structure describes a frequency band a wiphy
@@ -255,7 +261,11 @@ struct ieee80211_supported_band {
 <<<<<<< HEAD
 	struct ieee80211_sta_vht_cap vht_cap;
 =======
+<<<<<<< HEAD
+	struct ieee80211_sta_vht_cap vht_cap;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -423,6 +433,9 @@ struct cfg80211_beacon_data {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mac_address {
 	u8 addr[ETH_ALEN];
 };
@@ -443,8 +456,11 @@ struct cfg80211_acl_data {
 	struct mac_address mac_addrs[];
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct cfg80211_ap_settings - AP configuration
  *
@@ -465,7 +481,12 @@ struct cfg80211_acl_data {
  * @acl: ACL configuration used by the drivers which has support for
  *	MAC address based access control
 =======
+<<<<<<< HEAD
+ * @acl: ACL configuration used by the drivers which has support for
+ *	MAC address based access control
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct cfg80211_ap_settings {
 	struct cfg80211_beacon_data beacon;
@@ -481,7 +502,11 @@ struct cfg80211_ap_settings {
 <<<<<<< HEAD
 	const struct cfg80211_acl_data *acl;
 =======
+<<<<<<< HEAD
+	const struct cfg80211_acl_data *acl;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -503,7 +528,11 @@ enum plink_actions {
 <<<<<<< HEAD
  * @STATION_PARAM_APPLY_CAPABILITY: apply new capability
 =======
+<<<<<<< HEAD
+ * @STATION_PARAM_APPLY_CAPABILITY: apply new capability
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Not all station parameters have in-band "no change" signalling,
  * for those that don't these flags will are used.
@@ -513,7 +542,11 @@ enum station_parameters_apply_mask {
 <<<<<<< HEAD
 	STATION_PARAM_APPLY_CAPABILITY = BIT(1),
 =======
+<<<<<<< HEAD
+	STATION_PARAM_APPLY_CAPABILITY = BIT(1),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -537,7 +570,11 @@ enum station_parameters_apply_mask {
 <<<<<<< HEAD
  * @vht_capa: VHT capabilities of station
 =======
+<<<<<<< HEAD
+ * @vht_capa: VHT capabilities of station
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @uapsd_queues: bitmap of queues configured for uapsd. same format
  *	as the AC bitmap in the QoS info field
  * @max_sp: max Service Period. same format as the MAX_SP in the
@@ -550,7 +587,13 @@ enum station_parameters_apply_mask {
  * @ext_capab: extended capabilities of the station
  * @ext_capab_len: number of extended capabilities
 =======
+<<<<<<< HEAD
+ * @capability: station capability
+ * @ext_capab: extended capabilities of the station
+ * @ext_capab_len: number of extended capabilities
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct station_parameters {
 	u8 *supported_rates;
@@ -564,16 +607,22 @@ struct station_parameters {
 	u8 plink_state;
 	struct ieee80211_ht_cap *ht_capa;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ieee80211_vht_cap *vht_capa;
 	u8 uapsd_queues;
 	u8 max_sp;
 	u16 capability;
 	u8 *ext_capab;
 	u8 ext_capab_len;
+<<<<<<< HEAD
+=======
 =======
 	u8 uapsd_queues;
 	u8 max_sp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -634,6 +683,9 @@ enum station_info_flags {
  * type for 802.11n transmissions.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @RATE_INFO_FLAGS_MCS: mcs field filled with HT MCS
  * @RATE_INFO_FLAGS_VHT_MCS: mcs field filled with VHT MCS
  * @RATE_INFO_FLAGS_40_MHZ_WIDTH: 40 MHz width transmission
@@ -652,6 +704,8 @@ enum rate_info_flags {
 	RATE_INFO_FLAGS_160_MHZ_WIDTH		= BIT(5),
 	RATE_INFO_FLAGS_SHORT_GI		= BIT(6),
 	RATE_INFO_FLAGS_60G			= BIT(7),
+<<<<<<< HEAD
+=======
 =======
  * @RATE_INFO_FLAGS_MCS: @tx_bitrate_mcs filled
  * @RATE_INFO_FLAGS_40_MHZ_WIDTH: 40 Mhz width transmission
@@ -662,6 +716,7 @@ enum rate_info_flags {
 	RATE_INFO_FLAGS_40_MHZ_WIDTH	= 1<<1,
 	RATE_INFO_FLAGS_SHORT_GI	= 1<<2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -675,7 +730,11 @@ enum rate_info_flags {
 <<<<<<< HEAD
  * @nss: number of streams (VHT only)
 =======
+<<<<<<< HEAD
+ * @nss: number of streams (VHT only)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct rate_info {
 	u8 flags;
@@ -684,7 +743,11 @@ struct rate_info {
 <<<<<<< HEAD
 	u8 nss;
 =======
+<<<<<<< HEAD
+	u8 nss;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -785,8 +848,14 @@ struct station_info {
 	u32 beacon_loss_count;
 
 =======
+<<<<<<< HEAD
+
+	u32 beacon_loss_count;
+
+=======
 	u32 beacon_loss_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Note: Add a new enum station_info_flags value for each new field and
 	 * use it to check which fields are initialized.
@@ -1319,7 +1388,11 @@ struct cfg80211_ibss_params {
 <<<<<<< HEAD
  * @mfp: indicate whether management frame protection is used
 =======
+<<<<<<< HEAD
+ * @mfp: indicate whether management frame protection is used
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @crypto: crypto settings
  * @key_len: length of WEP key for shared key authentication
  * @key_idx: index of WEP key for shared key authentication
@@ -1343,7 +1416,11 @@ struct cfg80211_connect_params {
 <<<<<<< HEAD
 	enum nl80211_mfp mfp;
 =======
+<<<<<<< HEAD
+	enum nl80211_mfp mfp;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfg80211_crypto_settings crypto;
 	const u8 *key;
 	u8 key_len, key_idx;
@@ -1444,6 +1521,9 @@ struct cfg80211_gtk_rekey_data {
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct cfg80211_update_ft_ies_params - FT IE Information
  *
  * This structure provides information needed to update the fast transition IE
@@ -1459,8 +1539,11 @@ struct cfg80211_update_ft_ies_params {
 };
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct cfg80211_ops - backend description for wireless configuration
  *
  * This struct is registered by fullmac card drivers and/or wireless stacks
@@ -1645,6 +1728,9 @@ struct cfg80211_update_ft_ies_params {
  *
  * @set_noack_map: Set the NoAck Map for the TIDs.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @set_mac_acl: Sets MAC address control list in AP and P2P GO mode.
  *	Parameters include ACL policy, an array of MAC address of stations
  *	and the number of MAC addresses. If there is already a list in driver
@@ -1652,8 +1738,11 @@ struct cfg80211_update_ft_ies_params {
  *	when number of MAC addresses entries is passed as 0. Drivers which
  *	advertise the support for MAC based ACL have to implement this callback.
  *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct cfg80211_ops {
 	int	(*suspend)(struct wiphy *wiphy, struct cfg80211_wowlan *wow);
@@ -1851,13 +1940,19 @@ struct cfg80211_ops {
 
 	struct ieee80211_channel *(*get_channel)(struct wiphy *wiphy);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int	(*update_ft_ies)(struct wiphy *wiphy, struct net_device *dev,
 				 struct cfg80211_update_ft_ies_params *ftie);
 
 	int (*set_mac_acl)(struct wiphy *wiphy, struct net_device *dev,
 			   const struct cfg80211_acl_data *params);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -1870,6 +1965,9 @@ struct cfg80211_ops {
  *
  * @WIPHY_FLAG_CUSTOM_REGULATORY:  tells us the driver for this device
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	has its own custom regulatory domain and cannot identify the
  *	ISO / IEC 3166 alpha2 it belongs to. When this is enabled
  *	we will disregard the first regulatory hint (when the
@@ -1892,6 +1990,8 @@ struct cfg80211_ops {
  *	will have their wiphy->regd programmed once the regulatory
  *	domain is set, and all other regulatory hints will be ignored
  *	until their own regulatory domain gets programmed.
+<<<<<<< HEAD
+=======
 =======
  * 	has its own custom regulatory domain and cannot identify the
  * 	ISO / IEC 3166 alpha2 it belongs to. When this is enabled
@@ -1910,6 +2010,7 @@ struct cfg80211_ops {
  *	WIPHY_FLAG_CUSTOM_REGULATORY the inspected country IE power settings
  *	will be followed.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @WIPHY_FLAG_DISABLE_BEACON_HINTS: enable this if your driver needs to ensure
  *	that passive scan flags and beaconing flags may not be lifted by
  *	cfg80211 due to regulatory beacon hints. For more information on beacon
@@ -1978,6 +2079,9 @@ enum wiphy_flags {
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * enum nl80211_country_ie_pref - country IE processing preferences
  *
  * enumerates the different preferences a 802.11 card can advertize
@@ -2006,8 +2110,11 @@ enum nl80211_country_ie_pref {
 };
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct ieee80211_iface_limit - limit on certain interface types
  * @max: maximum number of interfaces of these types
  * @types: interface types (bits)
@@ -2083,11 +2190,14 @@ struct ieee80211_iface_combination {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct mac_address {
 	u8 addr[ETH_ALEN];
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ieee80211_txrx_stypes {
 	u16 tx, rx;
 };
@@ -2229,13 +2339,19 @@ struct wiphy_wowlan_support {
  * @ht_capa_mod_mask:  Specify what ht_cap values can be over-ridden.
  *	If null, then none can be over-ridden.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * @max_acl_mac_addrs: Maximum number of MAC addresses that the device
  *	supports for ACL.
  * @country_ie_pref: country IE processing preferences specified
  *	by enum nl80211_country_ie_pref
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct wiphy {
 	/* assign these fields before you register the wiphy */
@@ -2261,7 +2377,12 @@ struct wiphy {
 	u16 max_acl_mac_addrs;
 
 =======
+<<<<<<< HEAD
+	u16 max_acl_mac_addrs;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 flags, features;
 
 	u32 ap_sme_capa;
@@ -2307,7 +2428,12 @@ struct wiphy {
 	u8 country_ie_pref;
 
 =======
+<<<<<<< HEAD
+	u8 country_ie_pref;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If multiple wiphys are registered and you're handed e.g.
 	 * a regular netdev with assigned ieee80211_ptr, you won't
 	 * know whether it points to a wiphy your driver has registered
@@ -2836,6 +2962,9 @@ extern int regulatory_hint(struct wiphy *wiphy, const char *alpha2);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * regulatory_hint_user - hint to the wireless core a regulatory domain
  * which the driver has received from an application
  * @alpha2: the ISO/IEC 3166 alpha2 the driver claims its regulatory domain
@@ -2860,8 +2989,11 @@ extern int regulatory_hint(struct wiphy *wiphy, const char *alpha2);
 extern int regulatory_hint_user(const char *alpha2);
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * wiphy_apply_custom_regulatory - apply a custom driver regulatory domain
  * @wiphy: the wireless device we want to process the regulatory domain on
  * @regd: the custom regulatory domain to use for this wiphy
@@ -3607,6 +3739,9 @@ int cfg80211_can_beacon_sec_chan(struct wiphy *wiphy,
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * cfg80211_tdls_oper_request - request userspace to perform TDLS operation
  * @dev: the device on which the operation is requested
  * @peer: the MAC address of the peer device
@@ -3626,8 +3761,11 @@ void cfg80211_tdls_oper_request(struct net_device *dev, const u8 *peer,
 				u16 reason_code, gfp_t gfp);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * cfg80211_calculate_bitrate - calculate actual bitrate (in 100Kbps units)
  * @rate: given rate_info to calculate bitrate from
  *
@@ -3636,6 +3774,9 @@ void cfg80211_tdls_oper_request(struct net_device *dev, const u8 *peer,
 u16 cfg80211_calculate_bitrate(struct rate_info *rate);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct cfg80211_ft_event - FT Information Elements
  * @ies: FT IEs
@@ -3669,8 +3810,11 @@ void cfg80211_ft_event(struct net_device *netdev,
  */
 void cfg80211_ap_stopped(struct net_device *netdev, gfp_t gfp);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Logging, debugging and troubleshooting/diagnostic helpers. */
 
 /* wiphy_printk helpers, similar to dev_printk */

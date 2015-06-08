@@ -8,12 +8,19 @@
 <<<<<<< HEAD
 #include <linux/dma-attrs.h>
 =======
+<<<<<<< HEAD
+#include <linux/dma-attrs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-debug.h>
 
 #include <asm-generic/dma-coherent.h>
 #include <asm/memory.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DMA_ERROR_CODE	(~0)
 extern struct dma_map_ops arm_dma_ops;
@@ -37,11 +44,14 @@ static inline int dma_set_mask(struct device *dev, u64 mask)
 {
 	return get_dma_ops(dev)->set_dma_mask(dev, mask);
 }
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_DMA_CMA
 #include <linux/dma-contiguous.h>
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef __arch_page_to_dma
 #error Please update to __arch_pfn_to_dma
@@ -68,8 +78,12 @@ static inline void *dma_to_virt(struct device *dev, dma_addr_t addr)
 <<<<<<< HEAD
 	return (void *)__bus_to_virt((unsigned long)addr);
 =======
+<<<<<<< HEAD
+	return (void *)__bus_to_virt((unsigned long)addr);
+=======
 	return (void *)__bus_to_virt(addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline dma_addr_t virt_to_dma(struct device *dev, void *addr)
@@ -99,6 +113,8 @@ static inline dma_addr_t virt_to_dma(struct device *dev, void *addr)
 #endif
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * The DMA API is built upon the notion of "buffer ownership".  A buffer
@@ -190,6 +206,7 @@ static inline int dma_set_mask(struct device *dev, u64 dma_mask)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * DMA errors are defined by all-bits-set in the DMA address.
  */
 static inline int dma_mapping_error(struct device *dev, dma_addr_t dma_addr)
@@ -197,8 +214,12 @@ static inline int dma_mapping_error(struct device *dev, dma_addr_t dma_addr)
 <<<<<<< HEAD
 	return dma_addr == DMA_ERROR_CODE;
 =======
+<<<<<<< HEAD
+	return dma_addr == DMA_ERROR_CODE;
+=======
 	return dma_addr == ~0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -217,6 +238,9 @@ static inline void dma_free_noncoherent(struct device *dev, size_t size,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * dma_coherent_pre_ops - barrier functions for coherent memory before DMA.
@@ -290,6 +314,8 @@ static inline void *dma_alloc_attrs(struct device *dev, size_t size,
 
 /**
  * arm_dma_free - free memory allocated by arm_dma_alloc
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_DMA_CMA
 static inline int dma_prepare_alloc_coherent(struct device *dev, size_t size)
@@ -322,25 +348,35 @@ extern void *dma_alloc_coherent(struct device *, size_t, dma_addr_t *, gfp_t);
 /**
  * dma_free_coherent - free memory allocated by dma_alloc_coherent
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: valid struct device pointer, or NULL for ISA and EISA-like devices
  * @size: size of memory originally requested in dma_alloc_coherent
  * @cpu_addr: CPU-view address returned from dma_alloc_coherent
  * @handle: device-view address returned from dma_alloc_coherent
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @attrs: optinal attributes that specific mapping properties
  *
  * Free (and unmap) a DMA buffer previously allocated by
  * arm_dma_alloc().
+<<<<<<< HEAD
+=======
 =======
  *
  * Free (and unmap) a DMA buffer previously allocated by
  * dma_alloc_coherent().
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * References to memory and mappings associated with cpu_addr/handle
  * during and after this call executing are illegal.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void arm_dma_free(struct device *dev, size_t size, void *cpu_addr,
 			 dma_addr_t handle, struct dma_attrs *attrs);
 
@@ -359,12 +395,15 @@ static inline void dma_free_attrs(struct device *dev, size_t size,
 
 /**
  * arm_dma_mmap - map a coherent DMA allocation into user space
+<<<<<<< HEAD
+=======
 =======
 extern void dma_free_coherent(struct device *, size_t, void *, dma_addr_t);
 
 /**
  * dma_mmap_coherent - map a coherent DMA allocation into user space
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: valid struct device pointer, or NULL for ISA and EISA-like devices
  * @vma: vm_area_struct describing requested user mapping
  * @cpu_addr: kernel CPU-view address returned from dma_alloc_coherent
@@ -373,13 +412,20 @@ extern void dma_free_coherent(struct device *, size_t, void *, dma_addr_t);
 <<<<<<< HEAD
  * @attrs: optinal attributes that specific mapping properties
 =======
+<<<<<<< HEAD
+ * @attrs: optinal attributes that specific mapping properties
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Map a coherent DMA buffer previously allocated by dma_alloc_coherent
  * into user space.  The coherent DMA buffer must not be freed by the
  * driver until the user space mapping has been released.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int arm_dma_mmap(struct device *dev, struct vm_area_struct *vma,
 			void *cpu_addr, dma_addr_t dma_addr, size_t size,
 			struct dma_attrs *attrs);
@@ -478,6 +524,8 @@ static inline int dma_mmap_nonconsistent(struct device *dev,
  */
 static inline void init_consistent_dma_size(unsigned long size) { }
 
+<<<<<<< HEAD
+=======
 =======
 int dma_mmap_coherent(struct device *, struct vm_area_struct *,
 		void *, dma_addr_t, size_t);
@@ -506,6 +554,7 @@ int dma_mmap_writecombine(struct device *, struct vm_area_struct *,
 
 #ifdef CONFIG_DMABOUNCE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * For SA-1111, IXP425, and ADI systems  the dma-mapping functions are "magic"
  * and utilize bounce buffers as needed to work around limited DMA windows.
@@ -527,11 +576,20 @@ int dma_mmap_writecombine(struct device *, struct vm_area_struct *,
 <<<<<<< HEAD
  * @needs_bounce_fn: called to determine whether buffer needs bouncing
 =======
+<<<<<<< HEAD
+ * @needs_bounce_fn: called to determine whether buffer needs bouncing
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This function should be called by low-level platform code to register
  * a device as requireing DMA buffer bouncing. The function will allocate
  * appropriate DMA pools for the device.
+<<<<<<< HEAD
+ */
+extern int dmabounce_register_dev(struct device *, unsigned long,
+		unsigned long, int (*)(struct device *, dma_addr_t, size_t));
+=======
 <<<<<<< HEAD
  */
 extern int dmabounce_register_dev(struct device *, unsigned long,
@@ -542,6 +600,7 @@ extern int dmabounce_register_dev(struct device *, unsigned long,
 extern int dmabounce_register_dev(struct device *, unsigned long,
 		unsigned long);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * dmabounce_unregister_dev
@@ -556,12 +615,17 @@ extern int dmabounce_register_dev(struct device *, unsigned long,
 extern void dmabounce_unregister_dev(struct device *);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /**
  * dma_cache_pre_ops - clean or invalidate cache before dma transfer is
  *                     initiated and perform a barrier operation.
  * @virtual_addr: A kernel logical or kernel virtual address
+<<<<<<< HEAD
+=======
 =======
 /**
  * dma_needs_bounce
@@ -647,6 +711,7 @@ static inline void __dma_unmap_page(struct device *dev, dma_addr_t handle,
  * @dev: valid struct device pointer, or NULL for ISA and EISA-like devices
  * @cpu_addr: CPU direct mapped address of buffer
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @size: size of buffer to map
  * @dir: DMA transfer direction
  *
@@ -654,6 +719,9 @@ static inline void __dma_unmap_page(struct device *dev, dma_addr_t handle,
  * or written back.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline void dma_cache_pre_ops(void *virtual_addr,
 		size_t size, enum dma_data_direction dir)
@@ -671,6 +739,8 @@ static inline void dma_cache_pre_ops(void *virtual_addr,
  * dma_cache_post_ops - clean or invalidate cache after dma transfer is
  *                     initiated and perform a barrier operation.
  * @virtual_addr: A kernel logical or kernel virtual address
+<<<<<<< HEAD
+=======
 =======
  * The device owns this memory once this call has completed.  The CPU
  * can regain ownership by calling dma_unmap_single() or
@@ -697,6 +767,7 @@ static inline dma_addr_t dma_map_single(struct device *dev, void *cpu_addr,
  * @page: page that buffer resides in
  * @offset: offset into page for start of buffer
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @size: size of buffer to map
  * @dir: DMA transfer direction
  *
@@ -704,6 +775,9 @@ static inline dma_addr_t dma_map_single(struct device *dev, void *cpu_addr,
  * or written back.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline void dma_cache_post_ops(void *virtual_addr,
 		size_t size, enum dma_data_direction dir)
@@ -733,6 +807,8 @@ extern void arm_dma_sync_sg_for_cpu(struct device *, struct scatterlist *, int,
 		enum dma_data_direction);
 extern void arm_dma_sync_sg_for_device(struct device *, struct scatterlist *, int,
 		enum dma_data_direction);
+<<<<<<< HEAD
+=======
 =======
  * The device owns this memory once this call has completed.  The CPU
  * can regain ownership by calling dma_unmap_page().
@@ -863,6 +939,7 @@ extern void dma_sync_sg_for_device(struct device *, struct scatterlist *, int,
 		enum dma_data_direction);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __KERNEL__ */
 #endif

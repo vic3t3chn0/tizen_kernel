@@ -68,6 +68,9 @@ static void file_audit_cb(struct audit_buffer *ab, void *va)
 	uid_t fsuid = current_fsuid();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sa->aad->fs.request & AA_AUDIT_FILE_MASK) {
 		audit_log_format(ab, " requested_mask=");
 		audit_file_mask(ab, sa->aad->fs.request);
@@ -84,6 +87,8 @@ static void file_audit_cb(struct audit_buffer *ab, void *va)
 	if (sa->aad->fs.target) {
 		audit_log_format(ab, " target=");
 		audit_log_untrustedstring(ab, sa->aad->fs.target);
+<<<<<<< HEAD
+=======
 =======
 	if (sa->aad.fs.request & AA_AUDIT_FILE_MASK) {
 		audit_log_format(ab, " requested_mask=");
@@ -102,6 +107,7 @@ static void file_audit_cb(struct audit_buffer *ab, void *va)
 		audit_log_format(ab, " target=");
 		audit_log_untrustedstring(ab, sa->aad.fs.target);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -127,6 +133,9 @@ int aa_audit_file(struct aa_profile *profile, struct file_perms *perms,
 	int type = AUDIT_APPARMOR_AUTO;
 	struct common_audit_data sa;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct apparmor_audit_data aad = {0,};
 	COMMON_AUDIT_DATA_INIT(&sa, NONE);
 	sa.aad = &aad;
@@ -139,6 +148,8 @@ int aa_audit_file(struct aa_profile *profile, struct file_perms *perms,
 	aad.error = error;
 
 	if (likely(!sa.aad->error)) {
+<<<<<<< HEAD
+=======
 =======
 	COMMON_AUDIT_DATA_INIT(&sa, NONE);
 	sa.aad.op = op,
@@ -151,6 +162,7 @@ int aa_audit_file(struct aa_profile *profile, struct file_perms *perms,
 
 	if (likely(!sa.aad.error)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 mask = perms->audit;
 
 		if (unlikely(AUDIT_MODE(profile) == AUDIT_ALL))
@@ -162,15 +174,24 @@ int aa_audit_file(struct aa_profile *profile, struct file_perms *perms,
 
 		if (likely(!sa.aad->fs.request))
 =======
+<<<<<<< HEAD
+		sa.aad->fs.request &= mask;
+
+		if (likely(!sa.aad->fs.request))
+=======
 		sa.aad.fs.request &= mask;
 
 		if (likely(!sa.aad.fs.request))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 0;
 		type = AUDIT_APPARMOR_AUDIT;
 	} else {
 		/* only report permissions that were denied */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sa.aad->fs.request = sa.aad->fs.request & ~perms->allow;
 
 		if (sa.aad->fs.request & perms->kill)
@@ -187,6 +208,8 @@ int aa_audit_file(struct aa_profile *profile, struct file_perms *perms,
 	}
 
 	sa.aad->fs.denied = sa.aad->fs.request & ~perms->allow;
+<<<<<<< HEAD
+=======
 =======
 		sa.aad.fs.request = sa.aad.fs.request & ~perms->allow;
 
@@ -205,6 +228,7 @@ int aa_audit_file(struct aa_profile *profile, struct file_perms *perms,
 
 	sa.aad.fs.denied = sa.aad.fs.request & ~perms->allow;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return aa_audit(type, profile, gfp, &sa, file_audit_cb);
 }
 
@@ -234,9 +258,12 @@ static u32 map_old_perms(u32 old)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	new |= AA_MAY_META_READ;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return new;
 }
 
@@ -277,7 +304,11 @@ static struct file_perms compute_perms(struct aa_dfa *dfa, unsigned int state,
 <<<<<<< HEAD
 	perms.allow |= AA_MAY_META_READ;
 =======
+<<<<<<< HEAD
+	perms.allow |= AA_MAY_META_READ;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* change_profile wasn't determined by ownership in old mapping */
 	if (ACCEPT_TABLE(dfa)[state] & 0x80000000)
@@ -286,7 +317,12 @@ static struct file_perms compute_perms(struct aa_dfa *dfa, unsigned int state,
 	if (ACCEPT_TABLE(dfa)[state] & 0x40000000)
 		perms.allow |= AA_MAY_ONEXEC;
 =======
+<<<<<<< HEAD
+	if (ACCEPT_TABLE(dfa)[state] & 0x40000000)
+		perms.allow |= AA_MAY_ONEXEC;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return perms;
 }
@@ -353,14 +389,23 @@ int aa_path_perm(int op, struct aa_profile *profile, struct path *path,
 <<<<<<< HEAD
 	error = aa_path_name(path, flags, &buffer, &name, &info);
 =======
+<<<<<<< HEAD
+	error = aa_path_name(path, flags, &buffer, &name, &info);
+=======
 	error = aa_get_name(path, flags, &buffer, &name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error) {
 		if (error == -ENOENT && is_deleted(path->dentry)) {
 			/* Access to open files that are deleted are
 			 * give a pass (implicit delegation)
 			 */
 			error = 0;
+<<<<<<< HEAD
+			info = NULL;
+			perms.allow = request;
+		}
+=======
 <<<<<<< HEAD
 			info = NULL;
 			perms.allow = request;
@@ -376,6 +421,7 @@ int aa_path_perm(int op, struct aa_profile *profile, struct path *path,
 		else
 			info = "Failed name lookup";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		aa_str_perms(profile->file.dfa, profile->file.start, name, cond,
 			     &perms);
@@ -450,8 +496,13 @@ int aa_path_link(struct aa_profile *profile, struct dentry *old_dentry,
 	error = aa_path_name(&link, profile->path_flags, &buffer, &lname,
 			     &info);
 =======
+<<<<<<< HEAD
+	error = aa_path_name(&link, profile->path_flags, &buffer, &lname,
+			     &info);
+=======
 	error = aa_get_name(&link, profile->path_flags, &buffer, &lname);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto audit;
 
@@ -460,8 +511,13 @@ int aa_path_link(struct aa_profile *profile, struct dentry *old_dentry,
 	error = aa_path_name(&target, profile->path_flags, &buffer2, &tname,
 			     &info);
 =======
+<<<<<<< HEAD
+	error = aa_path_name(&target, profile->path_flags, &buffer2, &tname,
+			     &info);
+=======
 	error = aa_get_name(&target, profile->path_flags, &buffer2, &tname);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto audit;
 

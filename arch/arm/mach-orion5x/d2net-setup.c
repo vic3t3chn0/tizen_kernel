@@ -339,8 +339,12 @@ MACHINE_START(D2NET, "LaCie d2 Network")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= d2net_init,
 	.map_io		= orion5x_map_io,
 	.init_early	= orion5x_init_early,
@@ -350,7 +354,11 @@ MACHINE_START(D2NET, "LaCie d2 Network")
 <<<<<<< HEAD
 	.restart	= orion5x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= orion5x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -359,8 +367,12 @@ MACHINE_START(BIGDISK, "LaCie Big Disk Network")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= d2net_init,
 	.map_io		= orion5x_map_io,
 	.init_early	= orion5x_init_early,
@@ -370,7 +382,11 @@ MACHINE_START(BIGDISK, "LaCie Big Disk Network")
 <<<<<<< HEAD
 	.restart	= orion5x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= orion5x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 

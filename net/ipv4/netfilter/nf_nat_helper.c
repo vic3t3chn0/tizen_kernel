@@ -255,6 +255,8 @@ nf_nat_mangle_udp_packet(struct sk_buff *skb,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* UDP helpers might accidentally mangle the wrong packet */
 	iph = ip_hdr(skb);
 	if (skb->len < iph->ihl*4 + sizeof(*udph) +
@@ -262,6 +264,7 @@ nf_nat_mangle_udp_packet(struct sk_buff *skb,
 		return 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!skb_make_writable(skb, skb->len))
 		return 0;
 
@@ -436,14 +439,21 @@ void nf_nat_follow_master(struct nf_conn *ct,
 <<<<<<< HEAD
 	struct nf_nat_ipv4_range range;
 =======
+<<<<<<< HEAD
+	struct nf_nat_ipv4_range range;
+=======
 	struct nf_nat_range range;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* This must be a fresh one. */
 	BUG_ON(ct->status & IPS_NAT_DONE_MASK);
 
 	/* Change src to where master sends to */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	range.flags = NF_NAT_RANGE_MAP_IPS;
 	range.min_ip = range.max_ip
 		= ct->master->tuplehash[!exp->dir].tuple.dst.u3.ip;
@@ -455,6 +465,8 @@ void nf_nat_follow_master(struct nf_conn *ct,
 	range.min_ip = range.max_ip
 		= ct->master->tuplehash[!exp->dir].tuple.src.u3.ip;
 	nf_nat_setup_info(ct, &range, NF_NAT_MANIP_DST);
+<<<<<<< HEAD
+=======
 =======
 	range.flags = IP_NAT_RANGE_MAP_IPS;
 	range.min_ip = range.max_ip
@@ -468,5 +480,6 @@ void nf_nat_follow_master(struct nf_conn *ct,
 		= ct->master->tuplehash[!exp->dir].tuple.src.u3.ip;
 	nf_nat_setup_info(ct, &range, IP_NAT_MANIP_DST);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(nf_nat_follow_master);

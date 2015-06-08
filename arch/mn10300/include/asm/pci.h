@@ -87,6 +87,8 @@ extern int pci_mmap_page_range(struct pci_dev *dev, struct vm_area_struct *vma,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * pcibios_resource_to_bus - convert resource to PCI bus address
  * @dev: device which owns this resource
@@ -104,6 +106,7 @@ extern void pcibios_bus_to_resource(struct pci_dev *dev,
 				    struct pci_bus_region *region);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct resource *
 pcibios_select_root(struct pci_dev *pdev, struct resource *res)
 {

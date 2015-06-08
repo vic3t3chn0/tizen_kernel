@@ -19,6 +19,9 @@ int dlm_add_lkb_callback(struct dlm_lkb *lkb, uint32_t flags, int mode,
 int dlm_rem_lkb_callback(struct dlm_ls *ls, struct dlm_lkb *lkb,
                          struct dlm_callback *cb, int *resid);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dlm_add_cb(struct dlm_lkb *lkb, uint32_t flags, int mode, int status,
                 uint32_t sbflags);
 
@@ -31,6 +34,8 @@ void dlm_callback_resume(struct dlm_ls *ls);
 #endif
 
 
+<<<<<<< HEAD
+=======
 =======
 void dlm_add_ast(struct dlm_lkb *lkb, uint32_t flags, int mode, int status,
 		 uint32_t sbflags);
@@ -44,3 +49,4 @@ void dlm_astd_resume(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

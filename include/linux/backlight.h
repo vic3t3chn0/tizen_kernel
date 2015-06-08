@@ -57,16 +57,22 @@ struct backlight_ops {
 	int (*check_fb)(struct backlight_device *, struct fb_info *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int (*set_dimming)(struct backlight_device *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* This structure defines all the properties of a backlight */
 struct backlight_properties {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	bool dimming;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Current User requested brightness (0 - max_brightness) */
 	int brightness;
 	/* Maximal value for brightness (read-only) */
@@ -121,6 +127,8 @@ static inline void backlight_update_status(struct backlight_device *bd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline void backlight_set_dimming(struct backlight_device *bd)
 {
 	if (bd->ops && bd->ops->set_dimming)
@@ -128,6 +136,7 @@ static inline void backlight_set_dimming(struct backlight_device *bd)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct backlight_device *backlight_device_register(const char *name,
 	struct device *dev, void *devdata, const struct backlight_ops *ops,
 	const struct backlight_properties *props);
@@ -136,9 +145,12 @@ extern void backlight_force_update(struct backlight_device *bd,
 				   enum backlight_update_reason reason);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int backlight_dimming_mode_register_client(struct notifier_block *nb);
 extern int backlight_dimming_mode_unregister_client(struct notifier_block *nb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define to_backlight_device(obj) container_of(obj, struct backlight_device, dev)
 

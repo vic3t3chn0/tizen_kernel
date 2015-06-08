@@ -153,8 +153,12 @@ xfs_check_agi_freecount(
 <<<<<<< HEAD
 STATIC int
 =======
+<<<<<<< HEAD
+STATIC int
+=======
 STATIC void
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 xfs_ialloc_inode_init(
 	struct xfs_mount	*mp,
 	struct xfs_trans	*tp,
@@ -210,10 +214,15 @@ xfs_ialloc_inode_init(
 		if (!fbuf)
 			return ENOMEM;
 =======
+<<<<<<< HEAD
+		if (!fbuf)
+			return ENOMEM;
+=======
 		ASSERT(fbuf);
 		ASSERT(!XFS_BUF_GETERROR(fbuf));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Initialize all inodes in this buffer and then log them.
 		 *
@@ -238,7 +247,11 @@ xfs_ialloc_inode_init(
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -384,16 +397,22 @@ xfs_ialloc_ag_alloc(
 	 * number from being easily guessable.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = xfs_ialloc_inode_init(args.mp, tp, agno, args.agbno,
 			args.len, random32());
 
 	if (error)
 		return error;
+<<<<<<< HEAD
+=======
 =======
 	xfs_ialloc_inode_init(args.mp, tp, agno, args.agbno, args.len,
 			      random32());
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Convert the results.
 	 */
@@ -469,8 +488,12 @@ xfs_ialloc_ag_select(
 <<<<<<< HEAD
 	umode_t		mode,		/* bits set to indicate file type */
 =======
+<<<<<<< HEAD
+	umode_t		mode,		/* bits set to indicate file type */
+=======
 	mode_t		mode,		/* bits set to indicate file type */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		okalloc)	/* ok to allocate more space */
 {
 	xfs_buf_t	*agbp;		/* allocation group header buffer */
@@ -666,8 +689,12 @@ xfs_dialloc(
 <<<<<<< HEAD
 	umode_t		mode,		/* mode bits for new inode */
 =======
+<<<<<<< HEAD
+	umode_t		mode,		/* mode bits for new inode */
+=======
 	mode_t		mode,		/* mode bits for new inode */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		okalloc,	/* ok to allocate more space */
 	xfs_buf_t	**IO_agbp,	/* in/out ag header's buffer */
 	boolean_t	*alloc_done,	/* true if we needed to replenish
@@ -715,8 +742,12 @@ xfs_dialloc(
 <<<<<<< HEAD
 		ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
 =======
+<<<<<<< HEAD
+		ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
+=======
 		ASSERT(be32_to_cpu(agi->agi_magicnum) == XFS_AGI_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/*
 		 * Continue where we left off before.  In this case, we
@@ -727,8 +758,12 @@ xfs_dialloc(
 <<<<<<< HEAD
 		ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
 =======
+<<<<<<< HEAD
+		ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
+=======
 		ASSERT(be32_to_cpu(agi->agi_magicnum) == XFS_AGI_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(be32_to_cpu(agi->agi_freecount) > 0);
 	}
 	mp = tp->t_mountp;
@@ -815,8 +850,12 @@ nextag:
 <<<<<<< HEAD
 		ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
 =======
+<<<<<<< HEAD
+		ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
+=======
 		ASSERT(be32_to_cpu(agi->agi_magicnum) == XFS_AGI_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/*
 	 * Here with an allocation group that has a free inode.
@@ -988,8 +1027,12 @@ newino:
 <<<<<<< HEAD
 	if (agi->agi_newino != cpu_to_be32(NULLAGINO)) {
 =======
+<<<<<<< HEAD
+	if (agi->agi_newino != cpu_to_be32(NULLAGINO)) {
+=======
 	if (be32_to_cpu(agi->agi_newino) != NULLAGINO) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = xfs_inobt_lookup(cur, be32_to_cpu(agi->agi_newino),
 					 XFS_LOOKUP_EQ, &i);
 		if (error)
@@ -1133,8 +1176,12 @@ xfs_difree(
 <<<<<<< HEAD
 	ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
+=======
 	ASSERT(be32_to_cpu(agi->agi_magicnum) == XFS_AGI_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(agbno < be32_to_cpu(agi->agi_length));
 	/*
 	 * Initialize the cursor.
@@ -1490,8 +1537,12 @@ xfs_ialloc_log_agi(
 <<<<<<< HEAD
 	ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC));
+=======
 	ASSERT(be32_to_cpu(agi->agi_magicnum) == XFS_AGI_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/*
 	 * Compute byte offsets for the first and last fields.
@@ -1542,8 +1593,12 @@ xfs_read_agi(
 <<<<<<< HEAD
 	ASSERT(!xfs_buf_geterror(*bpp));
 =======
+<<<<<<< HEAD
+	ASSERT(!xfs_buf_geterror(*bpp));
+=======
 	ASSERT(*bpp && !XFS_BUF_GETERROR(*bpp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	agi = XFS_BUF_TO_AGI(*bpp);
 
 	/*
@@ -1552,8 +1607,12 @@ xfs_read_agi(
 <<<<<<< HEAD
 	agi_ok = agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC) &&
 =======
+<<<<<<< HEAD
+	agi_ok = agi->agi_magicnum == cpu_to_be32(XFS_AGI_MAGIC) &&
+=======
 	agi_ok = be32_to_cpu(agi->agi_magicnum) == XFS_AGI_MAGIC &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		XFS_AGI_GOOD_VERSION(be32_to_cpu(agi->agi_versionnum)) &&
 		be32_to_cpu(agi->agi_seqno) == agno;
 	if (unlikely(XFS_TEST_ERROR(!agi_ok, mp, XFS_ERRTAG_IALLOC_READ_AGI,
@@ -1567,8 +1626,12 @@ xfs_read_agi(
 <<<<<<< HEAD
 	xfs_buf_set_ref(*bpp, XFS_AGI_REF);
 =======
+<<<<<<< HEAD
+	xfs_buf_set_ref(*bpp, XFS_AGI_REF);
+=======
 	XFS_BUF_SET_VTYPE_REF(*bpp, B_FS_AGI, XFS_AGI_REF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	xfs_check_agi_unlinked(agi);
 	return 0;

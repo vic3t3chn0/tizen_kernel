@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/perf_event.h>
 #include <linux/types.h>
 
@@ -7,9 +10,12 @@
 #include <asm/insn.h>
 
 #include "perf_event.h"
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CPU_SUP_INTEL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	LBR_FORMAT_32		= 0x00,
@@ -20,6 +26,9 @@ enum {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Intel LBR_SELECT bits
  * Intel Vol3a, April 2011, Section 16.7 Table 16-10
  *
@@ -114,8 +123,11 @@ enum {
 static void intel_pmu_lbr_filter(struct cpu_hw_events *cpuc);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * We only support LBR implementations that have FREEZE_LBRS_ON_PMI
  * otherwise it becomes near impossible to get a reliable stack.
  */
@@ -124,12 +136,18 @@ static void __intel_pmu_lbr_enable(void)
 {
 	u64 debugctl;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
 	if (cpuc->lbr_sel)
 		wrmsrl(MSR_LBR_SELECT, cpuc->lbr_sel->config);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rdmsrl(MSR_IA32_DEBUGCTLMSR, debugctl);
 	debugctl |= (DEBUGCTLMSR_LBR | DEBUGCTLMSR_FREEZE_LBRS_ON_PMI);
@@ -166,8 +184,12 @@ static void intel_pmu_lbr_reset_64(void)
 <<<<<<< HEAD
 void intel_pmu_lbr_reset(void)
 =======
+<<<<<<< HEAD
+void intel_pmu_lbr_reset(void)
+=======
 static void intel_pmu_lbr_reset(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!x86_pmu.lbr_nr)
 		return;
@@ -181,8 +203,12 @@ static void intel_pmu_lbr_reset(void)
 <<<<<<< HEAD
 void intel_pmu_lbr_enable(struct perf_event *event)
 =======
+<<<<<<< HEAD
+void intel_pmu_lbr_enable(struct perf_event *event)
+=======
 static void intel_pmu_lbr_enable(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
@@ -191,17 +217,23 @@ static void intel_pmu_lbr_enable(struct perf_event *event)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	WARN_ON_ONCE(cpuc->enabled);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Reset the LBR stack if we changed task context to
 	 * avoid data leaks.
 	 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (event->ctx->task && cpuc->lbr_context != event->ctx) {
 		intel_pmu_lbr_reset();
 		cpuc->lbr_context = event->ctx;
@@ -209,7 +241,11 @@ static void intel_pmu_lbr_enable(struct perf_event *event)
 <<<<<<< HEAD
 	cpuc->br_sel = event->hw.branch_reg.reg;
 =======
+<<<<<<< HEAD
+	cpuc->br_sel = event->hw.branch_reg.reg;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cpuc->lbr_users++;
 }
@@ -217,8 +253,12 @@ static void intel_pmu_lbr_enable(struct perf_event *event)
 <<<<<<< HEAD
 void intel_pmu_lbr_disable(struct perf_event *event)
 =======
+<<<<<<< HEAD
+void intel_pmu_lbr_disable(struct perf_event *event)
+=======
 static void intel_pmu_lbr_disable(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
@@ -229,6 +269,9 @@ static void intel_pmu_lbr_disable(struct perf_event *event)
 	WARN_ON_ONCE(cpuc->lbr_users < 0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpuc->enabled && !cpuc->lbr_users) {
 		__intel_pmu_lbr_disable();
 		/* avoid stale pointer */
@@ -237,6 +280,8 @@ static void intel_pmu_lbr_disable(struct perf_event *event)
 }
 
 void intel_pmu_lbr_enable_all(void)
+<<<<<<< HEAD
+=======
 =======
 	if (cpuc->enabled && !cpuc->lbr_users)
 		__intel_pmu_lbr_disable();
@@ -244,6 +289,7 @@ void intel_pmu_lbr_enable_all(void)
 
 static void intel_pmu_lbr_enable_all(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
@@ -254,8 +300,12 @@ static void intel_pmu_lbr_enable_all(void)
 <<<<<<< HEAD
 void intel_pmu_lbr_disable_all(void)
 =======
+<<<<<<< HEAD
+void intel_pmu_lbr_disable_all(void)
+=======
 static void intel_pmu_lbr_disable_all(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
@@ -268,7 +318,13 @@ static void intel_pmu_lbr_disable_all(void)
  * TOS = most recently recorded branch
  */
 =======
+<<<<<<< HEAD
+/*
+ * TOS = most recently recorded branch
+ */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline u64 intel_pmu_lbr_tos(void)
 {
 	u64 tos;
@@ -297,25 +353,34 @@ static void intel_pmu_lbr_read_32(struct cpu_hw_events *cpuc)
 		rdmsrl(x86_pmu.lbr_from + lbr_idx, msr_lastbranch.lbr);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpuc->lbr_entries[i].from	= msr_lastbranch.from;
 		cpuc->lbr_entries[i].to		= msr_lastbranch.to;
 		cpuc->lbr_entries[i].mispred	= 0;
 		cpuc->lbr_entries[i].predicted	= 0;
 		cpuc->lbr_entries[i].reserved	= 0;
+<<<<<<< HEAD
+=======
 =======
 		cpuc->lbr_entries[i].from  = msr_lastbranch.from;
 		cpuc->lbr_entries[i].to    = msr_lastbranch.to;
 		cpuc->lbr_entries[i].flags = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	cpuc->lbr_stack.nr = i;
 }
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define LBR_FROM_FLAG_MISPRED  (1ULL << 63)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Due to lack of segmentation in Linux the effective address (offset)
  * is the same as the linear address, allowing us to merge the LIP and EIP
@@ -333,14 +398,21 @@ static void intel_pmu_lbr_read_64(struct cpu_hw_events *cpuc)
 <<<<<<< HEAD
 		u64 from, to, mis = 0, pred = 0;
 =======
+<<<<<<< HEAD
+		u64 from, to, mis = 0, pred = 0;
+=======
 		u64 from, to, flags = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		rdmsrl(x86_pmu.lbr_from + lbr_idx, from);
 		rdmsrl(x86_pmu.lbr_to   + lbr_idx, to);
 
 		if (lbr_format == LBR_FORMAT_EIP_FLAGS) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mis = !!(from & LBR_FROM_FLAG_MISPRED);
 			pred = !mis;
 			from = (u64)((((s64)from) << 1) >> 1);
@@ -351,6 +423,8 @@ static void intel_pmu_lbr_read_64(struct cpu_hw_events *cpuc)
 		cpuc->lbr_entries[i].mispred	= mis;
 		cpuc->lbr_entries[i].predicted	= pred;
 		cpuc->lbr_entries[i].reserved	= 0;
+<<<<<<< HEAD
+=======
 =======
 			flags = !!(from & LBR_FROM_FLAG_MISPRED);
 			from = (u64)((((s64)from) << 1) >> 1);
@@ -360,6 +434,7 @@ static void intel_pmu_lbr_read_64(struct cpu_hw_events *cpuc)
 		cpuc->lbr_entries[i].to    = to;
 		cpuc->lbr_entries[i].flags = flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	cpuc->lbr_stack.nr = i;
 }
@@ -367,8 +442,12 @@ static void intel_pmu_lbr_read_64(struct cpu_hw_events *cpuc)
 <<<<<<< HEAD
 void intel_pmu_lbr_read(void)
 =======
+<<<<<<< HEAD
+void intel_pmu_lbr_read(void)
+=======
 static void intel_pmu_lbr_read(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 
@@ -380,6 +459,9 @@ static void intel_pmu_lbr_read(void)
 	else
 		intel_pmu_lbr_read_64(cpuc);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	intel_pmu_lbr_filter(cpuc);
 }
@@ -781,6 +863,8 @@ void intel_pmu_lbr_init_atom(void)
 	 */
 	pr_cont("8-deep LBR, ");
 }
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -810,3 +894,4 @@ static void intel_pmu_lbr_init_atom(void)
 
 #endif /* CONFIG_CPU_SUP_INTEL */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

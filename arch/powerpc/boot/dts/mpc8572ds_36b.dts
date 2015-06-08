@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * MPC8572DS Device Tree Source (36-bit address map)
 =======
+<<<<<<< HEAD
+ * MPC8572DS Device Tree Source (36-bit address map)
+=======
  * MPC8572 DS Device Tree Source
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright 2007-2009 Freescale Semiconductor Inc.
  *
@@ -14,11 +18,16 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /include/ "fsl/mpc8572si-pre.dtsi"
 
 / {
 	model = "fsl,MPC8572DS";
 	compatible = "fsl,MPC8572DS";
+<<<<<<< HEAD
+=======
 =======
 /dts-v1/;
 / {
@@ -70,11 +79,16 @@
 		};
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memory {
 		device_type = "memory";
 	};
 
+<<<<<<< HEAD
+	board_lbc: lbc: localbus@fffe05000 {
+		reg = <0xf 0xffe05000 0 0x1000>;
+=======
 <<<<<<< HEAD
 	board_lbc: lbc: localbus@fffe05000 {
 		reg = <0xf 0xffe05000 0 0x1000>;
@@ -87,6 +101,7 @@
 		interrupts = <19 2>;
 		interrupt-parent = <&mpic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ranges = <0x0 0x0 0xf 0xe8000000 0x08000000
 			  0x1 0x0 0xf 0xe0000000 0x08000000
@@ -96,6 +111,9 @@
 			  0x5 0x0 0xf 0xffa80000 0x00040000
 			  0x6 0x0 0xf 0xffac0000 0x00040000>;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	board_soc: soc: soc8572@fffe00000 {
@@ -107,6 +125,8 @@
 		ranges = <0x2000000 0x0 0xe0000000 0xc 0x00000000 0x0 0x20000000
 			  0x1000000 0x0 0x00000000 0xf 0xffc00000 0x0 0x00010000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 
 		nor@0,0 {
@@ -691,6 +711,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xe0000000
 				  0x2000000 0x0 0xe0000000
 				  0x0 0x20000000
@@ -699,6 +720,9 @@
 				  0x1000000 0x0 0x0
 				  0x0 0x10000>;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		};
 	};
 
@@ -707,6 +731,8 @@
 		ranges = <0x2000000 0x0 0xe0000000 0xc 0x20000000 0x0 0x20000000
 			  0x1000000 0x0 0x00000000 0xf 0xffc10000 0x0 0x00010000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 			uli1575@0 {
 				reg = <0x0 0x0 0x0 0x0 0x0>;
@@ -802,6 +828,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xe0000000
 				  0x2000000 0x0 0xe0000000
 				  0x0 0x20000000
@@ -813,6 +840,12 @@
 	};
 
 	pci2: pcie@fffe0a000 {
+<<<<<<< HEAD
+		reg = <0xf 0xffe0a000 0 0x1000>;
+		ranges = <0x2000000 0x0 0xe0000000 0xc 0x40000000 0x0 0x20000000
+			  0x1000000 0x0 0x00000000 0xf 0xffc20000 0x0 0x00010000>;
+		pcie@0 {
+=======
 <<<<<<< HEAD
 		reg = <0xf 0xffe0a000 0 0x1000>;
 		ranges = <0x2000000 0x0 0xe0000000 0xc 0x40000000 0x0 0x20000000
@@ -845,6 +878,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xe0000000
 				  0x2000000 0x0 0xe0000000
 				  0x0 0x20000000
@@ -856,6 +890,9 @@
 	};
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * mpc8572ds.dtsi must be last to ensure board_pci0 overrides pci0 settings
@@ -864,5 +901,8 @@
 
 /include/ "fsl/mpc8572si-post.dtsi"
 /include/ "mpc8572ds.dtsi"
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

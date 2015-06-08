@@ -38,6 +38,13 @@
 #include <media/videobuf-dvb.h>
 #endif
 #include "tuner-xc2028.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "xc5000.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "em28xx-reg.h"
 
 /* Boards supported by driver */
@@ -117,9 +124,28 @@
 #define EM2800_BOARD_VC211A			  74
 #define EM2882_BOARD_DIKOM_DK300		  75
 #define EM2870_BOARD_KWORLD_A340		  76
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define EM2874_BOARD_LEADERSHIP_ISDBT		  77
+#define EM28174_BOARD_PCTV_290E                   78
+#define EM2884_BOARD_TERRATEC_H5		  79
+#define EM28174_BOARD_PCTV_460E                   80
+#define EM2884_BOARD_HAUPPAUGE_WINTV_HVR_930C	  81
+#define EM2884_BOARD_CINERGY_HTC_STICK		  82
+#define EM2860_BOARD_HT_VIDBOX_NW03 		  83
+#define EM2874_BOARD_MAXMEDIA_UB425_TC            84
+#define EM2884_BOARD_PCTV_510E                    85
+#define EM2884_BOARD_PCTV_520E                    86
+=======
 #define EM2874_LEADERSHIP_ISDBT			  77
 #define EM28174_BOARD_PCTV_290E                   78
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define EM2874_LEADERSHIP_ISDBT			  77
+#define EM28174_BOARD_PCTV_290E                   78
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Limits minimum and default number of buffers */
 #define EM28XX_MIN_BUF 4
@@ -146,12 +172,26 @@
 
 /* number of buffers for isoc transfers */
 #define EM28XX_NUM_BUFS 5
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define EM28XX_DVB_NUM_BUFS 5
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* number of packets for each buffer
    windows requests only 64 packets .. so we better do the same
    this is what I found out for all alternate numbers there!
  */
 #define EM28XX_NUM_PACKETS 64
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define EM28XX_DVB_MAX_PACKETS 64
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define EM28XX_INTERLACED_DEFAULT 1
 
@@ -192,10 +232,26 @@ enum em28xx_mode {
 
 struct em28xx;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct em28xx_usb_isoc_bufs {
+		/* max packet size of isoc transaction */
+	int				max_pkt_size;
+
+		/* number of packets in each buffer */
+	int				num_packets;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct em28xx_usb_isoc_ctl {
 		/* max packet size of isoc transaction */
 	int				max_pkt_size;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* number of allocated urbs */
 	int				num_bufs;
 
@@ -204,6 +260,20 @@ struct em28xx_usb_isoc_ctl {
 
 		/* transfer buffers for isoc transfer */
 	char				**transfer_buffer;
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+
+struct em28xx_usb_isoc_ctl {
+		/* isoc transfer buffers for analog mode */
+	struct em28xx_usb_isoc_bufs	analog_bufs;
+
+		/* isoc transfer buffers for digital mode */
+	struct em28xx_usb_isoc_bufs	digital_bufs;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Last buffer command and region */
 	u8				cmd;
@@ -487,6 +557,14 @@ struct em28xx {
 	int devno;		/* marks the number of this device */
 	enum em28xx_chip_id chip_id;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int audio_ifnum;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct v4l2_device v4l2_dev;
 	struct em28xx_board board;
 
@@ -503,6 +581,13 @@ struct em28xx {
 
 	unsigned int has_audio_class:1;
 	unsigned int has_alsa_audio:1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int is_audio_only:1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Controls audio streaming */
 	struct work_struct wq_trigger;              /* Trigger to start/stop audio for alsa module */
@@ -590,9 +675,20 @@ struct em28xx {
 	int max_pkt_size;	/* max packet size of isoc transaction */
 	int num_alt;		/* Number of alternative settings */
 	unsigned int *alt_max_pkt_size;	/* array of wMaxPacketSize */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int dvb_alt;				/* alternate for DVB */
+	unsigned int dvb_max_pkt_size;		/* wMaxPacketSize for DVB */
+=======
 	struct urb *urb[EM28XX_NUM_BUFS];	/* urb for isoc transfers */
 	char *transfer_buffer[EM28XX_NUM_BUFS];	/* transfer buffers for isoc
 						   transfer */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct urb *urb[EM28XX_NUM_BUFS];	/* urb for isoc transfers */
+	char *transfer_buffer[EM28XX_NUM_BUFS];	/* transfer buffers for isoc
+						   transfer */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char urb_buf[URB_MAX_CTRL_SIZE];	/* urb control msg buffer */
 
 	/* helper funcs that call usb_control_msg */
@@ -666,16 +762,39 @@ int em28xx_vbi_supported(struct em28xx *dev);
 int em28xx_set_outfmt(struct em28xx *dev);
 int em28xx_resolution_set(struct em28xx *dev);
 int em28xx_set_alternate(struct em28xx *dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int em28xx_alloc_isoc(struct em28xx *dev, enum em28xx_mode mode,
+		      int max_packets, int num_bufs, int max_pkt_size);
+int em28xx_init_isoc(struct em28xx *dev, enum em28xx_mode mode,
+		     int max_packets, int num_bufs, int max_pkt_size,
+		     int (*isoc_copy) (struct em28xx *dev, struct urb *urb));
+void em28xx_uninit_isoc(struct em28xx *dev, enum em28xx_mode mode);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int em28xx_init_isoc(struct em28xx *dev, int max_packets,
 		     int num_bufs, int max_pkt_size,
 		     int (*isoc_copy) (struct em28xx *dev, struct urb *urb));
 void em28xx_uninit_isoc(struct em28xx *dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int em28xx_isoc_dvb_max_packetsize(struct em28xx *dev);
 int em28xx_set_mode(struct em28xx *dev, enum em28xx_mode set_mode);
 int em28xx_gpio_set(struct em28xx *dev, struct em28xx_reg_seq *gpio);
 void em28xx_wake_i2c(struct em28xx *dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 void em28xx_remove_from_devlist(struct em28xx *dev);
 void em28xx_add_into_devlist(struct em28xx *dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void em28xx_remove_from_devlist(struct em28xx *dev);
+void em28xx_add_into_devlist(struct em28xx *dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int em28xx_register_extension(struct em28xx_ops *dev);
 void em28xx_unregister_extension(struct em28xx_ops *dev);
 void em28xx_init_extension(struct em28xx *dev);
@@ -697,6 +816,15 @@ int em28xx_tuner_callback(void *ptr, int component, int command, int arg);
 void em28xx_release_resources(struct em28xx *dev);
 
 /* Provided by em28xx-input.c */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#ifdef CONFIG_VIDEO_EM28XX_RC
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int em28xx_get_key_terratec(struct IR_i2c *ir, u32 *ir_key, u32 *ir_raw);
 int em28xx_get_key_em_haup(struct IR_i2c *ir, u32 *ir_key, u32 *ir_raw);
 int em28xx_get_key_pinnacle_usb_grey(struct IR_i2c *ir, u32 *ir_key,
@@ -709,6 +837,26 @@ void em28xx_deregister_snapshot_button(struct em28xx *dev);
 int em28xx_ir_init(struct em28xx *dev);
 int em28xx_ir_fini(struct em28xx *dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#else
+
+#define em28xx_get_key_terratec			NULL
+#define em28xx_get_key_em_haup			NULL
+#define em28xx_get_key_pinnacle_usb_grey	NULL
+#define em28xx_get_key_winfast_usbii_deluxe	NULL
+
+static inline void em28xx_register_snapshot_button(struct em28xx *dev) {}
+static inline void em28xx_deregister_snapshot_button(struct em28xx *dev) {}
+static inline int em28xx_ir_init(struct em28xx *dev) { return 0; }
+static inline int em28xx_ir_fini(struct em28xx *dev) { return 0; }
+
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Provided by em28xx-vbi.c */
 extern struct videobuf_queue_ops em28xx_vbi_qops;
 
@@ -806,7 +954,15 @@ static inline unsigned int norm_maxw(struct em28xx *dev)
 	if (dev->board.is_webcam)
 		return dev->sensor_xres;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (dev->board.max_range_640_480)
+=======
 	if (dev->board.max_range_640_480 || dev->board.is_em2800)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (dev->board.max_range_640_480 || dev->board.is_em2800)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 640;
 
 	return 720;

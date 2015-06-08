@@ -22,14 +22,22 @@
 #include <linux/kernel.h>
 #include <linux/io.h>
 =======
+<<<<<<< HEAD
+#include <linux/kernel.h>
+#include <linux/io.h>
+=======
 #include <linux/io.h>
 #include <linux/sched.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/sched_clock.h>
 #include <plat/sched_clock.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *ctr;
 
 static u32 notrace versatile_read_sched_clock(void)
@@ -38,6 +46,8 @@ static u32 notrace versatile_read_sched_clock(void)
 		return readl(ctr);
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 static DEFINE_CLOCK_DATA(cd);
 static void __iomem *ctr;
@@ -64,6 +74,7 @@ static void notrace versatile_update_sched_clock(void)
 	u32 cyc = readl(ctr);
 	update_sched_clock(&cd, cyc, (u32)~0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init versatile_sched_clock_init(void __iomem *reg, unsigned long rate)
@@ -72,7 +83,11 @@ void __init versatile_sched_clock_init(void __iomem *reg, unsigned long rate)
 <<<<<<< HEAD
 	setup_sched_clock(versatile_read_sched_clock, 32, rate);
 =======
+<<<<<<< HEAD
+	setup_sched_clock(versatile_read_sched_clock, 32, rate);
+=======
 	init_fixed_sched_clock(&cd, versatile_update_sched_clock,
 			       32, rate, SC_MULT, SC_SHIFT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

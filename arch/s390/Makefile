@@ -90,8 +90,11 @@ KBUILD_AFLAGS	+= $(aflags-y)
 OBJCOPYFLAGS	:= -O binary
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 LDFLAGS_vmlinux := -e start
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 head-y		:= arch/s390/kernel/head.o
 head-y		+= arch/s390/kernel/$(if $(CONFIG_64BIT),head64.o,head31.o)
@@ -104,8 +107,11 @@ libs-y		+= arch/s390/lib/
 drivers-y	+= drivers/s390/
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 drivers-$(CONFIG_MATHEMU) += arch/s390/math-emu/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # must be linked after kernel
 drivers-$(CONFIG_OPROFILE)	+= arch/s390/oprofile/

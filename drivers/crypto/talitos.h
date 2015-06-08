@@ -1,7 +1,15 @@
 /*
  * Freescale SEC (talitos) device register and descriptor header defines
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (c) 2006-2011 Freescale Semiconductor, Inc.
+=======
  * Copyright (c) 2006-2010 Freescale Semiconductor, Inc.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (c) 2006-2010 Freescale Semiconductor, Inc.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -34,21 +42,62 @@
 
 /* global register offset addresses */
 #define TALITOS_MCR			0x1030  /* master control register */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define   TALITOS_MCR_RCA0		(1 << 15) /* remap channel 0 */
+#define   TALITOS_MCR_RCA1		(1 << 14) /* remap channel 1 */
+#define   TALITOS_MCR_RCA2		(1 << 13) /* remap channel 2 */
+#define   TALITOS_MCR_RCA3		(1 << 12) /* remap channel 3 */
+#define   TALITOS_MCR_SWR		0x1     /* s/w reset */
+#define TALITOS_MCR_LO			0x1034
+=======
 #define TALITOS_MCR_LO			0x1038
 #define   TALITOS_MCR_SWR		0x1     /* s/w reset */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TALITOS_MCR_LO			0x1038
+#define   TALITOS_MCR_SWR		0x1     /* s/w reset */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TALITOS_IMR			0x1008  /* interrupt mask register */
 #define   TALITOS_IMR_INIT		0x100ff /* enable channel IRQs */
 #define   TALITOS_IMR_DONE		0x00055 /* done IRQs */
 #define TALITOS_IMR_LO			0x100C
 #define   TALITOS_IMR_LO_INIT		0x20000 /* allow RNGU error IRQs */
 #define TALITOS_ISR			0x1010  /* interrupt status register */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define   TALITOS_ISR_4CHERR		0xaa    /* 4 channel errors mask */
+#define   TALITOS_ISR_4CHDONE		0x55    /* 4 channel done mask */
+#define   TALITOS_ISR_CH_0_2_ERR	0x22    /* channels 0, 2 errors mask */
+#define   TALITOS_ISR_CH_0_2_DONE	0x11    /* channels 0, 2 done mask */
+#define   TALITOS_ISR_CH_1_3_ERR	0x88    /* channels 1, 3 errors mask */
+#define   TALITOS_ISR_CH_1_3_DONE	0x44    /* channels 1, 3 done mask */
+=======
 #define   TALITOS_ISR_CHERR		0xaa    /* channel errors mask */
 #define   TALITOS_ISR_CHDONE		0x55    /* channel done mask */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define   TALITOS_ISR_CHERR		0xaa    /* channel errors mask */
+#define   TALITOS_ISR_CHDONE		0x55    /* channel done mask */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TALITOS_ISR_LO			0x1014
 #define TALITOS_ICR			0x1018  /* interrupt clear register */
 #define TALITOS_ICR_LO			0x101C
 
 /* channel register address stride */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TALITOS_CH_BASE_OFFSET		0x1000	/* default channel map base */
+#define TALITOS_CH_STRIDE		0x100
+
+/* channel configuration register  */
+#define TALITOS_CCCR			0x8
+#define   TALITOS_CCCR_CONT		0x2    /* channel continue */
+#define   TALITOS_CCCR_RESET		0x1    /* channel reset */
+#define TALITOS_CCCR_LO			0xc
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TALITOS_CH_STRIDE		0x100
 
 /* channel configuration register  */
@@ -56,6 +105,10 @@
 #define   TALITOS_CCCR_CONT		0x2    /* channel continue */
 #define   TALITOS_CCCR_RESET		0x1    /* channel reset */
 #define TALITOS_CCCR_LO(ch)		(ch * TALITOS_CH_STRIDE + 0x110c)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define   TALITOS_CCCR_LO_IWSE		0x80   /* chan. ICCR writeback enab. */
 #define   TALITOS_CCCR_LO_EAE		0x20   /* extended address enable */
 #define   TALITOS_CCCR_LO_CDWE		0x10   /* chan. done writeback enab. */
@@ -63,8 +116,18 @@
 #define   TALITOS_CCCR_LO_CDIE		0x2    /* channel done IRQ enable */
 
 /* CCPSR: channel pointer status register */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TALITOS_CCPSR			0x10
+#define TALITOS_CCPSR_LO		0x14
+=======
 #define TALITOS_CCPSR(ch)		(ch * TALITOS_CH_STRIDE + 0x1110)
 #define TALITOS_CCPSR_LO(ch)		(ch * TALITOS_CH_STRIDE + 0x1114)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TALITOS_CCPSR(ch)		(ch * TALITOS_CH_STRIDE + 0x1110)
+#define TALITOS_CCPSR_LO(ch)		(ch * TALITOS_CH_STRIDE + 0x1114)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define   TALITOS_CCPSR_LO_DOF		0x8000 /* double FF write oflow error */
 #define   TALITOS_CCPSR_LO_SOF		0x4000 /* single FF write oflow error */
 #define   TALITOS_CCPSR_LO_MDTE		0x2000 /* master data transfer error */
@@ -79,6 +142,29 @@
 #define   TALITOS_CCPSR_LO_SRL		0x0010 /* scatter return/length error */
 
 /* channel fetch fifo register */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TALITOS_FF			0x48
+#define TALITOS_FF_LO			0x4c
+
+/* current descriptor pointer register */
+#define TALITOS_CDPR			0x40
+#define TALITOS_CDPR_LO			0x44
+
+/* descriptor buffer register */
+#define TALITOS_DESCBUF			0x80
+#define TALITOS_DESCBUF_LO		0x84
+
+/* gather link table */
+#define TALITOS_GATHER			0xc0
+#define TALITOS_GATHER_LO		0xc4
+
+/* scatter link table */
+#define TALITOS_SCATTER			0xe0
+#define TALITOS_SCATTER_LO		0xe4
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TALITOS_FF(ch)			(ch * TALITOS_CH_STRIDE + 0x1148)
 #define TALITOS_FF_LO(ch)		(ch * TALITOS_CH_STRIDE + 0x114c)
 
@@ -97,6 +183,10 @@
 /* scatter link table */
 #define TALITOS_SCATTER(ch)		(ch * TALITOS_CH_STRIDE + 0x11e0)
 #define TALITOS_SCATTER_LO(ch)		(ch * TALITOS_CH_STRIDE + 0x11e4)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* execution unit interrupt status registers */
 #define TALITOS_DEUISR			0x2030 /* DES unit */

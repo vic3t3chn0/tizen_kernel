@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/string.h>
 =======
+<<<<<<< HEAD
+#include <linux/string.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
@@ -28,12 +32,19 @@
 <<<<<<< HEAD
 #include <linux/delay.h>
 =======
+<<<<<<< HEAD
+#include <linux/delay.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <video/omapdss.h>
 #include <plat/omap_hwmod.h>
 #include <plat/omap_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/omap-pm.h>
 #include "common.h"
 
@@ -66,8 +77,11 @@
  *     reset before deciding that something has gone wrong
  */
 #define FRAMEDONE_IRQ_TIMEOUT		100
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct platform_device omap_display_device = {
 	.name          = "omapdss",
@@ -77,6 +91,8 @@ static struct platform_device omap_display_device = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct omap_device_pm_latency omap_dss_latency[] = {
@@ -102,6 +118,7 @@ static bool opt_clock_available(const char *clk_role)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct omap_dss_hwmod_data {
 	const char *oh_name;
 	const char *dev_name;
@@ -123,8 +140,12 @@ static const struct omap_dss_hwmod_data omap3_dss_hwmod_data[] __initdata = {
 <<<<<<< HEAD
 	{ "dss_dsi1", "omapdss_dsi", 0 },
 =======
+<<<<<<< HEAD
+	{ "dss_dsi1", "omapdss_dsi", 0 },
+=======
 	{ "dss_dsi1", "omapdss_dsi1", -1 },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct omap_dss_hwmod_data omap4_dss_hwmod_data[] __initdata = {
@@ -133,6 +154,9 @@ static const struct omap_dss_hwmod_data omap4_dss_hwmod_data[] __initdata = {
 	{ "dss_rfbi", "omapdss_rfbi", -1 },
 	{ "dss_venc", "omapdss_venc", -1 },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "dss_dsi1", "omapdss_dsi", 0 },
 	{ "dss_dsi2", "omapdss_dsi", 1 },
 	{ "dss_hdmi", "omapdss_hdmi", -1 },
@@ -219,6 +243,8 @@ static void omap_dsi_disable_pads(int dsi_id, unsigned lane_mask)
 		omap4_dsi_mux_pads(dsi_id, 0);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	{ "dss_dsi1", "omapdss_dsi1", -1 },
 	{ "dss_dsi2", "omapdss_dsi2", -1 },
@@ -226,6 +252,7 @@ static void omap_dsi_disable_pads(int dsi_id, unsigned lane_mask)
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init omap_display_init(struct omap_dss_board_info *board_data)
 {
 	int r = 0;
@@ -233,8 +260,12 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 <<<<<<< HEAD
 	struct platform_device *pdev;
 =======
+<<<<<<< HEAD
+	struct platform_device *pdev;
+=======
 	struct omap_device *od;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, oh_count;
 	struct omap_display_platform_data pdata;
 	const struct omap_dss_hwmod_data *curr_dss_hwmod;
@@ -253,6 +284,9 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (board_data->dsi_enable_pads == NULL)
 		board_data->dsi_enable_pads = omap_dsi_enable_pads;
 	if (board_data->dsi_disable_pads == NULL)
@@ -261,6 +295,8 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 	pdata.board_data = board_data;
 	pdata.board_data->get_context_loss_count =
 		omap_pm_get_dev_context_loss_count;
+<<<<<<< HEAD
+=======
 =======
 	/* opt_clks are always associated with dss hwmod */
 	oh_core = omap_hwmod_lookup("dss_core");
@@ -273,6 +309,7 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 	pdata.board_data->get_last_off_on_transaction_id = NULL;
 	pdata.opt_clock_available = opt_clock_available;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < oh_count; i++) {
 		oh = omap_hwmod_lookup(curr_dss_hwmod[i].oh_name);
@@ -283,12 +320,17 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pdev = omap_device_build(curr_dss_hwmod[i].dev_name,
 				curr_dss_hwmod[i].id, oh, &pdata,
 				sizeof(struct omap_display_platform_data),
 				NULL, 0, 0);
 
 		if (WARN((IS_ERR(pdev)), "Could not build omap_device for %s\n",
+<<<<<<< HEAD
+=======
 =======
 		od = omap_device_build(curr_dss_hwmod[i].dev_name,
 				curr_dss_hwmod[i].id, oh, &pdata,
@@ -298,6 +340,7 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 
 		if (WARN((IS_ERR(od)), "Could not build omap_device for %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				curr_dss_hwmod[i].oh_name))
 			return -ENODEV;
 	}
@@ -310,6 +353,9 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 	return r;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void dispc_disable_outputs(void)
 {
@@ -442,5 +488,8 @@ int omap_dss_reset(struct omap_hwmod *oh)
 
 	return r;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

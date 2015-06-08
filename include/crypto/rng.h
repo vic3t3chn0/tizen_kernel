@@ -60,12 +60,15 @@ static inline int crypto_rng_get_bytes(struct crypto_rng *tfm,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_FIPS
 	if (unlikely(in_fips_err()))
 		return -EACCES;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return crypto_rng_crt(tfm)->rng_gen_random(tfm, rdata, dlen);
 }
 

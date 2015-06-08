@@ -4,12 +4,18 @@
 #include <linux/in6.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_GENERIC_CSUM
 #include <asm-generic/checksum.h>
 #else
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * computes the checksum of a memory block at buff, length len,
  * and adds in "sum" (32-bit)
@@ -43,6 +49,8 @@ extern __wsum csum_partial_copy_nocheck(const void *src,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #ifdef CONFIG_COLDFIRE
 
@@ -68,6 +76,7 @@ static inline __sum16 csum_fold(__wsum sum)
 #else
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	This is a version of ip_fast_csum() optimized for IP headers,
  *	which always checksum on 4 octet boundaries.
@@ -109,9 +118,12 @@ static inline __sum16 csum_fold(__wsum sum)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* CONFIG_COLDFIRE */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline __wsum
 csum_tcpudp_nofold(__be32 saddr, __be32 daddr, unsigned short len,
 		  unsigned short proto, __wsum sum)
@@ -183,5 +195,9 @@ csum_ipv6_magic(const struct in6_addr *saddr, const struct in6_addr *daddr,
 <<<<<<< HEAD
 #endif /* CONFIG_GENERIC_CSUM */
 =======
+<<<<<<< HEAD
+#endif /* CONFIG_GENERIC_CSUM */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _M68K_CHECKSUM_H */

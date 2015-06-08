@@ -37,8 +37,12 @@
 <<<<<<< HEAD
 	.section .text
 =======
+<<<<<<< HEAD
+	.section .text
+=======
 	__INIT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * cpu_sa1100_proc_init()
@@ -51,9 +55,12 @@ ENTRY(cpu_sa1100_proc_init)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.section .text
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * cpu_sa1100_proc_fin()
  *
@@ -82,7 +89,11 @@ ENTRY(cpu_sa1100_proc_fin)
 <<<<<<< HEAD
 	.pushsection	.idmap.text, "ax"
 =======
+<<<<<<< HEAD
+	.pushsection	.idmap.text, "ax"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(cpu_sa1100_reset)
 	mov	ip, #0
 	mcr	p15, 0, ip, c7, c7, 0		@ invalidate I,D caches
@@ -99,7 +110,12 @@ ENTRY(cpu_sa1100_reset)
 ENDPROC(cpu_sa1100_reset)
 	.popsection
 =======
+<<<<<<< HEAD
+ENDPROC(cpu_sa1100_reset)
+	.popsection
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * cpu_sa1100_do_idle(type)
@@ -187,6 +203,9 @@ ENTRY(cpu_sa1100_set_pte_ext)
 
 .globl	cpu_sa1100_suspend_size
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 .equ	cpu_sa1100_suspend_size, 4 * 3
 #ifdef CONFIG_PM_SLEEP
 ENTRY(cpu_sa1100_do_suspend)
@@ -212,6 +231,8 @@ ENTRY(cpu_sa1100_do_resume)
 	mov	r0, r6				@ control register
 	b	cpu_resume_mmu
 ENDPROC(cpu_sa1100_do_resume)
+<<<<<<< HEAD
+=======
 =======
 .equ	cpu_sa1100_suspend_size, 4*4
 #ifdef CONFIG_PM_SLEEP
@@ -247,6 +268,7 @@ ENDPROC(cpu_sa1100_do_resume)
 #define cpu_sa1100_do_suspend	0
 #define cpu_sa1100_do_resume	0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	__CPUINIT

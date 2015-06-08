@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/cpu.h>
 
 #include <mach/id.h>
@@ -37,11 +41,17 @@ static unsigned int omap_revision;
 static const char *cpu_rev;
 u32 omap_features;
 =======
+<<<<<<< HEAD
+static unsigned int omap_revision;
+static const char *cpu_rev;
+u32 omap_features;
+=======
 static struct omap_chip_id omap_chip;
 static unsigned int omap_revision;
 
 u32 omap3_features;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned int omap_rev(void)
 {
@@ -49,6 +59,8 @@ unsigned int omap_rev(void)
 }
 EXPORT_SYMBOL(omap_rev);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /**
@@ -65,6 +77,7 @@ int omap_chip_is(struct omap_chip_id oci)
 EXPORT_SYMBOL(omap_chip_is);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap_type(void)
 {
 	u32 val = 0;
@@ -75,7 +88,12 @@ int omap_type(void)
 	} else if (cpu_is_am33xx()) {
 		val = omap_ctrl_readl(AM33XX_CONTROL_STATUS);
 =======
+<<<<<<< HEAD
+	} else if (cpu_is_am33xx()) {
+		val = omap_ctrl_readl(AM33XX_CONTROL_STATUS);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (cpu_is_omap34xx()) {
 		val = omap_ctrl_readl(OMAP343X_CONTROL_STATUS);
 	} else if (cpu_is_omap44xx()) {
@@ -147,8 +165,12 @@ void omap_get_die_id(struct omap_die_id *odi)
 <<<<<<< HEAD
 void __init omap2xxx_check_revision(void)
 =======
+<<<<<<< HEAD
+void __init omap2xxx_check_revision(void)
+=======
 static void __init omap24xx_check_revision(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i, j;
 	u32 idcode, prod_id;
@@ -203,6 +225,9 @@ static void __init omap24xx_check_revision(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP3_SHOW_FEATURE(feat)		\
 	if (omap3_has_ ##feat())		\
 		printk(#feat" ");
@@ -264,6 +289,8 @@ void __init omap3xxx_check_features(void)
 	u32 status;
 
 	omap_features = 0;
+<<<<<<< HEAD
+=======
 =======
 #define OMAP3_CHECK_FEATURE(status,feat)				\
 	if (((status & OMAP3_ ##feat## _MASK) 				\
@@ -277,6 +304,7 @@ static void __init omap3_check_features(void)
 
 	omap3_features = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	status = omap_ctrl_readl(OMAP3_CONTROL_OMAP_STATUS);
 
@@ -287,6 +315,9 @@ static void __init omap3_check_features(void)
 	OMAP3_CHECK_FEATURE(status, ISP);
 	if (cpu_is_omap3630())
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		omap_features |= OMAP3_HAS_192MHZ_CLK;
 	if (cpu_is_omap3430() || cpu_is_omap3630())
 		omap_features |= OMAP3_HAS_IO_WAKEUP;
@@ -295,6 +326,8 @@ static void __init omap3_check_features(void)
 		omap_features |= OMAP3_HAS_IO_CHAIN_CTRL;
 
 	omap_features |= OMAP3_HAS_SDRC;
+<<<<<<< HEAD
+=======
 =======
 		omap3_features |= OMAP3_HAS_192MHZ_CLK;
 	if (!cpu_is_omap3505() && !cpu_is_omap3517())
@@ -302,12 +335,16 @@ static void __init omap3_check_features(void)
 
 	omap3_features |= OMAP3_HAS_SDRC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * TODO: Get additional info (where applicable)
 	 *       e.g. Size of L2 cache.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	omap3_cpuinfo();
 }
@@ -344,6 +381,8 @@ void __init ti81xx_check_features(void)
 }
 
 void __init omap3xxx_check_revision(void)
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -354,6 +393,7 @@ static void __init ti816x_check_features(void)
 
 static void __init omap3_check_revision(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 cpuid, idcode;
 	u16 hawkeye;
@@ -361,9 +401,12 @@ static void __init omap3_check_revision(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	omap_chip.oc = CHIP_IS_OMAP3430;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We cannot access revision registers on ES1.0.
 	 * If the processor type is Cortex-A8 and the revision is 0x0
@@ -375,8 +418,12 @@ static void __init omap3_check_revision(void)
 <<<<<<< HEAD
 		cpu_rev = "1.0";
 =======
+<<<<<<< HEAD
+		cpu_rev = "1.0";
+=======
 		omap_chip.oc |= CHIP_IS_OMAP3430ES1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -398,6 +445,9 @@ static void __init omap3_check_revision(void)
 		case 1:
 			omap_revision = OMAP3430_REV_ES2_0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cpu_rev = "2.0";
 			break;
 		case 2:
@@ -411,6 +461,8 @@ static void __init omap3_check_revision(void)
 		case 4:
 			omap_revision = OMAP3430_REV_ES3_1;
 			cpu_rev = "3.1";
+<<<<<<< HEAD
+=======
 =======
 			omap_chip.oc |= CHIP_IS_OMAP3430ES2;
 			break;
@@ -426,6 +478,7 @@ static void __init omap3_check_revision(void)
 			omap_revision = OMAP3430_REV_ES3_1;
 			omap_chip.oc |= CHIP_IS_OMAP3430ES3_1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case 7:
 		/* FALLTHROUGH */
@@ -433,6 +486,9 @@ static void __init omap3_check_revision(void)
 			/* Use the latest known revision as default */
 			omap_revision = OMAP3430_REV_ES3_1_2;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cpu_rev = "3.1.2";
 		}
 		break;
@@ -457,6 +513,8 @@ static void __init omap3_check_revision(void)
 		break;
 	case 0xb891:
 		/* Handle 36xx devices */
+<<<<<<< HEAD
+=======
 =======
 
 			/* REVISIT: Add CHIP_IS_OMAP3430ES3_1_2? */
@@ -478,11 +536,15 @@ static void __init omap3_check_revision(void)
 		/* Handle 36xx devices */
 		omap_chip.oc |= CHIP_IS_OMAP3630ES1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		switch(rev) {
 		case 0: /* Take care of early samples */
 			omap_revision = OMAP3630_REV_ES1_0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cpu_rev = "1.0";
 			break;
 		case 1:
@@ -543,6 +605,8 @@ static void __init omap3_check_revision(void)
 }
 
 void __init omap4xxx_check_revision(void)
+<<<<<<< HEAD
+=======
 =======
 			break;
 		case 1:
@@ -578,6 +642,7 @@ void __init omap4xxx_check_revision(void)
 
 static void __init omap4_check_revision(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 idcode;
 	u16 hawkeye;
@@ -594,16 +659,22 @@ static void __init omap4_check_revision(void)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Few initial 4430 ES2.0 samples IDCODE is same as ES1.0
 	 * Use ARM register to detect the correct ES version
 	 */
 	if (!rev && (hawkeye != 0xb94e) && (hawkeye != 0xb975)) {
+<<<<<<< HEAD
+=======
 =======
 	 * Few initial ES2.0 samples IDCODE is same as ES1.0
 	 * Use ARM register to detect the correct ES version
 	 */
 	if (!rev) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		idcode = read_cpuid(CPUID_ID);
 		rev = (idcode & 0xf) - 1;
 	}
@@ -615,16 +686,22 @@ static void __init omap4_check_revision(void)
 			omap_revision = OMAP4430_REV_ES1_0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			omap_chip.oc |= CHIP_IS_OMAP4430ES1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case 1:
 		default:
 			omap_revision = OMAP4430_REV_ES2_0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			omap_chip.oc |= CHIP_IS_OMAP4430ES2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 	case 0xb95c:
@@ -632,6 +709,9 @@ static void __init omap4_check_revision(void)
 		case 3:
 			omap_revision = OMAP4430_REV_ES2_1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case 4:
 			omap_revision = OMAP4430_REV_ES2_2;
@@ -664,6 +744,8 @@ static void __init omap4_check_revision(void)
 
 	pr_info("OMAP%04x ES%d.%d\n", omap_rev() >> 16,
 		((omap_rev() >> 12) & 0xf), ((omap_rev() >> 8) & 0xf));
+<<<<<<< HEAD
+=======
 =======
 			omap_chip.oc |= CHIP_IS_OMAP4430ES2_1;
 			break;
@@ -835,6 +917,7 @@ void __init omap2_check_revision(void)
 
 	pr_err("Uninitialized omap_chip, please fix!\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

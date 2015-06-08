@@ -16,6 +16,9 @@
  * @file
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ABI-related register definitions.
  */
 
@@ -88,6 +91,8 @@ typedef __int_reg_t int_reg_t;
 /** Number of bits in a register. */
 #define INT_REG_BITS __INT_REG_BITS
 
+<<<<<<< HEAD
+=======
 =======
  * ABI-related register definitions helpful when writing assembly code.
  */
@@ -97,6 +102,7 @@ typedef __int_reg_t int_reg_t;
 
 #include <arch/chip.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Registers 0 - 55 are "normal", but some perform special roles. */
 
@@ -137,8 +143,12 @@ typedef __int_reg_t int_reg_t;
 <<<<<<< HEAD
 #define C_ABI_SAVE_AREA_SIZE (2 * (INT_REG_BITS / 8))
 =======
+<<<<<<< HEAD
+#define C_ABI_SAVE_AREA_SIZE (2 * (INT_REG_BITS / 8))
+=======
 #define C_ABI_SAVE_AREA_SIZE (2 * (CHIP_WORD_SIZE() / 8))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * The operand to an 'info' opcode directing the backtracer to not
@@ -147,11 +157,16 @@ typedef __int_reg_t int_reg_t;
 #define INFO_OP_CANNOT_BACKTRACE 2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* !__need_int_reg_t */
 
 /* Make sure we later can get all the definitions and declarations.  */
 #undef __need_int_reg_t
+<<<<<<< HEAD
+=======
 =======
 #ifndef __ASSEMBLER__
 #if CHIP_WORD_SIZE() > 32
@@ -179,5 +194,6 @@ typedef long int_reg_t;
 #endif
 #endif /* __ASSEMBLER__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* !__ARCH_ABI_H__ */

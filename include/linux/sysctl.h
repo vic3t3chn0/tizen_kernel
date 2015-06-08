@@ -157,7 +157,12 @@ enum
 	KERN_BOOT_REASON = 77, /* int: identify reason system was booted */
 	KERN_COLD_BOOT = 78, /* int: identify if system cold booted */
 =======
+<<<<<<< HEAD
+	KERN_BOOT_REASON = 77, /* int: identify reason system was booted */
+	KERN_COLD_BOOT = 78, /* int: identify if system cold booted */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -443,8 +448,12 @@ enum {
 <<<<<<< HEAD
 	NET_IPV4_ROUTE_GC_INTERVAL=8, /* obsolete since 2.6.38 */
 =======
+<<<<<<< HEAD
+	NET_IPV4_ROUTE_GC_INTERVAL=8, /* obsolete since 2.6.38 */
+=======
 	NET_IPV4_ROUTE_GC_INTERVAL=8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NET_IPV4_ROUTE_REDIRECT_LOAD=9,
 	NET_IPV4_ROUTE_REDIRECT_NUMBER=10,
 	NET_IPV4_ROUTE_REDIRECT_SILENCE=11,
@@ -944,12 +953,21 @@ enum
 #include <linux/wait.h>
 #include <linux/rbtree.h>
 =======
+<<<<<<< HEAD
+#include <linux/wait.h>
+#include <linux/rbtree.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* For the /proc/sys support */
 struct ctl_table;
 struct nsproxy;
 struct ctl_table_root;
+<<<<<<< HEAD
+struct ctl_table_header;
+struct ctl_dir;
+=======
 <<<<<<< HEAD
 struct ctl_table_header;
 struct ctl_dir;
@@ -978,6 +996,7 @@ extern void sysctl_head_finish(struct ctl_table_header *prev);
 extern int sysctl_perm(struct ctl_table_root *root,
 		struct ctl_table *table, int op);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef struct ctl_table ctl_table;
 
@@ -1031,6 +1050,9 @@ extern int proc_do_large_bitmap(struct ctl_table *, int,
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Support for userspace poll() to watch for changes */
 struct ctl_table_poll {
 	atomic_t event;
@@ -1049,8 +1071,11 @@ static inline void *proc_sys_poll_event(struct ctl_table_poll *poll)
 #define DEFINE_CTL_TABLE_POLL(name)					\
 	struct ctl_table_poll name = __CTL_TABLE_POLL_INITIALIZER(name)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* A sysctl table is an array of struct ctl_table: */
 struct ctl_table 
 {
@@ -1058,20 +1083,31 @@ struct ctl_table
 	void *data;
 	int maxlen;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	umode_t mode;
 	struct ctl_table *child;	/* Deprecated */
 	proc_handler *proc_handler;	/* Callback for text formatting */
 	struct ctl_table_poll *poll;
+<<<<<<< HEAD
+=======
 =======
 	mode_t mode;
 	struct ctl_table *child;
 	struct ctl_table *parent;	/* Automatically set */
 	proc_handler *proc_handler;	/* Callback for text formatting */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *extra1;
 	void *extra2;
 };
 
+<<<<<<< HEAD
+struct ctl_node {
+	struct rb_node node;
+	struct ctl_table_header *header;
+=======
 <<<<<<< HEAD
 struct ctl_node {
 	struct rb_node node;
@@ -1085,6 +1121,7 @@ struct ctl_table_root {
 	int (*permissions)(struct ctl_table_root *root,
 			struct nsproxy *namespaces, struct ctl_table *table);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* struct ctl_table_header is used to maintain dynamic lists of
@@ -1099,10 +1136,16 @@ struct ctl_table_header
 			int count;
 			int nreg;
 =======
+<<<<<<< HEAD
+			int used;
+			int count;
+			int nreg;
+=======
 			struct list_head ctl_entry;
 			int used;
 			int count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		};
 		struct rcu_head rcu;
 	};
@@ -1111,6 +1154,9 @@ struct ctl_table_header
 	struct ctl_table_root *root;
 	struct ctl_table_set *set;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ctl_dir *parent;
 	struct ctl_node *node;
 };
@@ -1132,11 +1178,14 @@ struct ctl_table_root {
 					   struct nsproxy *namespaces);
 	int (*permissions)(struct ctl_table_root *root,
 			struct nsproxy *namespaces, struct ctl_table *table);
+<<<<<<< HEAD
+=======
 =======
 	struct ctl_table *attached_by;
 	struct ctl_table *attached_to;
 	struct ctl_table_header *parent;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* struct ctl_path describes where in the hierarchy a table is added */
@@ -1145,6 +1194,9 @@ struct ctl_path {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 
 void proc_sys_poll_notify(struct ctl_table_poll *poll);
@@ -1162,18 +1214,24 @@ struct ctl_table_header *__register_sysctl_paths(
 	struct ctl_table_set *set,
 	const struct ctl_path *path, struct ctl_table *table);
 struct ctl_table_header *register_sysctl(const char *path, struct ctl_table *table);
+<<<<<<< HEAD
+=======
 =======
 void register_sysctl_root(struct ctl_table_root *root);
 struct ctl_table_header *__register_sysctl_paths(
 	struct ctl_table_root *root, struct nsproxy *namespaces,
 	const struct ctl_path *path, struct ctl_table *table);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ctl_table_header *register_sysctl_table(struct ctl_table * table);
 struct ctl_table_header *register_sysctl_paths(const struct ctl_path *path,
 						struct ctl_table *table);
 
 void unregister_sysctl_table(struct ctl_table_header * table);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int sysctl_init(void);
 #else /* CONFIG_SYSCTL */
@@ -1199,9 +1257,12 @@ static inline void setup_sysctl_set(struct ctl_table_set *p,
 }
 
 #endif /* CONFIG_SYSCTL */
+<<<<<<< HEAD
+=======
 =======
 int sysctl_check_table(struct nsproxy *namespaces, struct ctl_table *table);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __KERNEL__ */
 

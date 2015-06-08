@@ -14,8 +14,11 @@
 #include <linux/irq.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/sched.h>	/* just for sched_clock() - funny that */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/timex.h>
 #include <linux/clockchips.h>
 
@@ -23,11 +26,16 @@
 #include <asm/sched_clock.h>
 #include <mach/hardware.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 
 static u32 notrace sa1100_read_sched_clock(void)
 {
 	return OSCR;
+<<<<<<< HEAD
+=======
 =======
 
 /*
@@ -54,6 +62,7 @@ static void notrace sa1100_update_sched_clock(void)
 	u32 cyc = OSCR;
 	update_sched_clock(&cd, cyc, (u32)~0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define MIN_OSCR_DELTA 2
@@ -123,9 +132,13 @@ static void __init sa1100_timer_init(void)
 <<<<<<< HEAD
 	setup_sched_clock(sa1100_read_sched_clock, 32, 3686400);
 =======
+<<<<<<< HEAD
+	setup_sched_clock(sa1100_read_sched_clock, 32, 3686400);
+=======
 	init_fixed_sched_clock(&cd, sa1100_update_sched_clock, 32,
 			       3686400, SC_MULT, SC_SHIFT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clockevents_calc_mult_shift(&ckevt_sa1100_osmr0, 3686400, 4);
 	ckevt_sa1100_osmr0.max_delta_ns =

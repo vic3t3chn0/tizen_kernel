@@ -22,7 +22,15 @@
  * software indicates your acceptance of these terms and conditions.  If you do
  * not agree with these terms and conditions, do not use the software.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright Â© 2003 Agere Systems Inc.
+=======
  * Copyright © 2003 Agere Systems Inc.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright © 2003 Agere Systems Inc.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source or binary forms, with or without
@@ -43,7 +51,15 @@
  *
  * Disclaimer
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * THIS SOFTWARE IS PROVIDED Â“AS ISÂ” AND ANY EXPRESS OR IMPLIED WARRANTIES,
+=======
  * THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * THIS SOFTWARE IS PROVIDED “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * INCLUDING, BUT NOT LIMITED TO, INFRINGEMENT AND THE IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  ANY
  * USE, MODIFICATION OR DISTRIBUTION OF THIS SOFTWARE IS SOLELY AT THE USERS OWN
@@ -67,7 +83,14 @@
 /*******************************************************************************
  *  include files
  ******************************************************************************/
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BUS_PCMCIA
 #include <pcmcia/cistpl.h>
 #include <pcmcia/cisreg.h>
@@ -75,6 +98,13 @@
 #include <pcmcia/ds.h>
 #endif  // BUS_PCMCIA
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/wireless.h>
+#include <net/iw_handler.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef HAS_WIRELESS_EXTENSIONS
 #include <linux/wireless.h>
 #if WIRELESS_EXT > 13
@@ -84,6 +114,10 @@
 #define RETURN_CURRENT_NETWORKNAME
 #define USE_FREQUENCY
 #endif // HAS_WIRELESS_EXTENSIONS/
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/list.h>
 
@@ -891,7 +925,15 @@ struct wl_private
 	int                         is_registered;
 	int                         is_handling_int;
 	int                         firmware_present;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool                        sysfsCreated;
+=======
 	char                        sysfsCreated;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	char                        sysfsCreated;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CFG_DRV_INFO_STRCT          driverInfo;
 	CFG_IDENTITY_STRCT          driverIdentity;
 	CFG_FW_IDENTITY_STRCT       StationIdentity;
@@ -988,6 +1030,20 @@ struct wl_private
 #ifdef USE_WDS
 	WVLAN_WDS_IF                wds_port[NUM_WDS_PORTS];
 #endif // USE_WDS
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* Track whether the card is using WEP encryption or WPA
+	 * so we know what to disable next time through.
+	 *  IW_ENCODE_ALG_NONE, IW_ENCODE_ALG_WEP, IW_ENCODE_ALG_TKIP
+	 */
+	int wext_enc;
+}; // wl_private
+
+#define wl_priv(dev) ((struct wl_private *) netdev_priv(dev))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }; // wl_private
 
 #ifdef HAVE_NETDEV_PRIV
@@ -998,6 +1054,10 @@ extern inline struct wl_private *wl_priv(struct net_device *dev)
     return dev->priv;
 }
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /********************************************************************/
 /* Locking and synchronization functions                            */

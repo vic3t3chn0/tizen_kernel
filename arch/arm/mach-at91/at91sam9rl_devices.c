@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/i2c-gpio.h>
 
@@ -26,10 +30,16 @@
 #include <mach/at91sam9rl_matrix.h>
 #include <mach/at91_matrix.h>
 =======
+<<<<<<< HEAD
+#include <mach/at91sam9rl.h>
+#include <mach/at91sam9rl_matrix.h>
+#include <mach/at91_matrix.h>
+=======
 #include <mach/gpio.h>
 #include <mach/at91sam9rl.h>
 #include <mach/at91sam9rl_matrix.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/at91sam9_smc.h>
 #include <mach/at_hdmac.h>
 
@@ -44,10 +54,15 @@
 static u64 hdmac_dmamask = DMA_BIT_MASK(32);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource hdmac_resources[] = {
 	[0] = {
 		.start	= AT91SAM9RL_BASE_DMA,
 		.end	= AT91SAM9RL_BASE_DMA + SZ_512 - 1,
+<<<<<<< HEAD
+=======
 =======
 static struct at_dma_platform_data atdma_pdata = {
 	.nr_channels	= 2,
@@ -58,6 +73,7 @@ static struct resource hdmac_resources[] = {
 		.start	= AT91_BASE_SYS + AT91_DMA,
 		.end	= AT91_BASE_SYS + AT91_DMA + SZ_512 - 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	[2] = {
@@ -71,16 +87,23 @@ static struct platform_device at_hdmac_device = {
 <<<<<<< HEAD
 	.name		= "at91sam9rl_dma",
 =======
+<<<<<<< HEAD
+	.name		= "at91sam9rl_dma",
+=======
 	.name		= "at_hdmac",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id		= -1,
 	.dev		= {
 				.dma_mask		= &hdmac_dmamask,
 				.coherent_dma_mask	= DMA_BIT_MASK(32),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				.platform_data		= &atdma_pdata,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.resource	= hdmac_resources,
 	.num_resources	= ARRAY_SIZE(hdmac_resources),
@@ -90,8 +113,11 @@ void __init at91_add_device_hdmac(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dma_cap_set(DMA_MEMCPY, atdma_pdata.cap_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(&at_hdmac_device);
 }
 #else
@@ -105,8 +131,12 @@ void __init at91_add_device_hdmac(void) {}
 <<<<<<< HEAD
 #if defined(CONFIG_USB_ATMEL_USBA) || defined(CONFIG_USB_ATMEL_USBA_MODULE)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_USB_ATMEL_USBA) || defined(CONFIG_USB_ATMEL_USBA_MODULE)
+=======
 #if defined(CONFIG_USB_GADGET_ATMEL_USBA) || defined(CONFIG_USB_GADGET_ATMEL_USBA_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource usba_udc_resources[] = {
 	[0] = {
@@ -181,8 +211,12 @@ void __init at91_add_device_usba(struct usba_platform_data *data)
 <<<<<<< HEAD
 	if (data && gpio_is_valid(data->vbus_pin)) {
 =======
+<<<<<<< HEAD
+	if (data && gpio_is_valid(data->vbus_pin)) {
+=======
 	if (data && data->vbus_pin > 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		at91_set_gpio_input(data->vbus_pin, 0);
 		at91_set_deglitch(data->vbus_pin, 1);
 		usba_udc_data.pdata.vbus_pin = data->vbus_pin;
@@ -237,6 +271,9 @@ void __init at91_add_device_mmc(short mmc_id, struct at91_mmc_data *data)
 
 	/* input/irq */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (gpio_is_valid(data->det_pin)) {
 		at91_set_gpio_input(data->det_pin, 1);
 		at91_set_deglitch(data->det_pin, 1);
@@ -244,6 +281,8 @@ void __init at91_add_device_mmc(short mmc_id, struct at91_mmc_data *data)
 	if (gpio_is_valid(data->wp_pin))
 		at91_set_gpio_input(data->wp_pin, 1);
 	if (gpio_is_valid(data->vcc_pin))
+<<<<<<< HEAD
+=======
 =======
 	if (data->det_pin) {
 		at91_set_gpio_input(data->det_pin, 1);
@@ -253,6 +292,7 @@ void __init at91_add_device_mmc(short mmc_id, struct at91_mmc_data *data)
 		at91_set_gpio_input(data->wp_pin, 1);
 	if (data->vcc_pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		at91_set_gpio_output(data->vcc_pin, 0);
 
 	/* CLK */
@@ -297,9 +337,14 @@ static struct resource nand_resources[] = {
 		.start	= AT91SAM9RL_BASE_ECC,
 		.end	= AT91SAM9RL_BASE_ECC + SZ_512 - 1,
 =======
+<<<<<<< HEAD
+		.start	= AT91SAM9RL_BASE_ECC,
+		.end	= AT91SAM9RL_BASE_ECC + SZ_512 - 1,
+=======
 		.start	= AT91_BASE_SYS + AT91_ECC,
 		.end	= AT91_BASE_SYS + AT91_ECC + SZ_512 - 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	}
 };
@@ -322,6 +367,9 @@ void __init at91_add_device_nand(struct atmel_nand_data *data)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	csa = at91_matrix_read(AT91_MATRIX_EBICSA);
 	at91_matrix_write(AT91_MATRIX_EBICSA, csa | AT91_MATRIX_CS3A_SMC_SMARTMEDIA);
 
@@ -335,6 +383,8 @@ void __init at91_add_device_nand(struct atmel_nand_data *data)
 
 	/* card detect pin */
 	if (gpio_is_valid(data->det_pin))
+<<<<<<< HEAD
+=======
 =======
 	csa = at91_sys_read(AT91_MATRIX_EBICSA);
 	at91_sys_write(AT91_MATRIX_EBICSA, csa | AT91_MATRIX_CS3A_SMC_SMARTMEDIA);
@@ -350,6 +400,7 @@ void __init at91_add_device_nand(struct atmel_nand_data *data)
 	/* card detect pin */
 	if (data->det_pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		at91_set_gpio_input(data->det_pin, 1);
 
 	at91_set_A_periph(AT91_PIN_PB4, 0);		/* NANDOE */
@@ -388,8 +439,12 @@ static struct platform_device at91sam9rl_twi_device = {
 <<<<<<< HEAD
 	.id			= -1,
 =======
+<<<<<<< HEAD
+	.id			= -1,
+=======
 	.id			= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dev.platform_data	= &pdata,
 };
 
@@ -499,7 +554,13 @@ void __init at91_add_device_spi(struct spi_board_info *devices, int nr_devices)
 			continue;
 
 =======
+<<<<<<< HEAD
+		if (!gpio_is_valid(cs_pin))
+			continue;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* enable chip-select pin */
 		at91_set_gpio_output(cs_pin, 1);
 
@@ -562,8 +623,12 @@ void __init at91_add_device_ac97(struct ac97c_platform_data *data)
 <<<<<<< HEAD
 	if (gpio_is_valid(data->reset_pin))
 =======
+<<<<<<< HEAD
+	if (gpio_is_valid(data->reset_pin))
+=======
 	if (data->reset_pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		at91_set_gpio_output(data->reset_pin, 0);
 
 	ac97_data = *data;
@@ -766,14 +831,20 @@ static void __init at91_add_device_rtc(void) {}
 static struct resource rtt_resources[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= AT91SAM9RL_BASE_RTT,
 		.end	= AT91SAM9RL_BASE_RTT + SZ_16 - 1,
 		.flags	= IORESOURCE_MEM,
 	}, {
+<<<<<<< HEAD
+=======
 =======
 		.start	= AT91_BASE_SYS + AT91_RTT,
 		.end	= AT91_BASE_SYS + AT91_RTT + SZ_16 - 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	}
 };
@@ -783,6 +854,9 @@ static struct platform_device at91sam9rl_rtt_device = {
 	.id		= 0,
 	.resource	= rtt_resources,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if IS_ENABLED(CONFIG_RTC_DRV_AT91SAM9)
@@ -809,6 +883,8 @@ static void __init at91_add_device_rtt_rtc(void)
 static void __init at91_add_device_rtt(void)
 {
 	at91_add_device_rtt_rtc();
+<<<<<<< HEAD
+=======
 =======
 	.num_resources	= ARRAY_SIZE(rtt_resources),
 };
@@ -816,6 +892,7 @@ static void __init at91_add_device_rtt(void)
 static void __init at91_add_device_rtt(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(&at91sam9rl_rtt_device);
 }
 
@@ -826,6 +903,9 @@ static void __init at91_add_device_rtt(void)
 
 #if defined(CONFIG_AT91SAM9X_WATCHDOG) || defined(CONFIG_AT91SAM9X_WATCHDOG_MODULE)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource wdt_resources[] = {
 	{
 		.start	= AT91SAM9RL_BASE_WDT,
@@ -839,12 +919,15 @@ static struct platform_device at91sam9rl_wdt_device = {
 	.id		= -1,
 	.resource	= wdt_resources,
 	.num_resources	= ARRAY_SIZE(wdt_resources),
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device at91sam9rl_wdt_device = {
 	.name		= "at91_wdt",
 	.id		= -1,
 	.num_resources	= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init at91_add_device_watchdog(void)
@@ -1044,9 +1127,14 @@ static struct resource dbgu_resources[] = {
 		.start	= AT91SAM9RL_BASE_DBGU,
 		.end	= AT91SAM9RL_BASE_DBGU + SZ_512 - 1,
 =======
+<<<<<<< HEAD
+		.start	= AT91SAM9RL_BASE_DBGU,
+		.end	= AT91SAM9RL_BASE_DBGU + SZ_512 - 1,
+=======
 		.start	= AT91_VA_BASE_SYS + AT91_DBGU,
 		.end	= AT91_VA_BASE_SYS + AT91_DBGU + SZ_512 - 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	[1] = {
@@ -1061,8 +1149,11 @@ static struct atmel_uart_data dbgu_data = {
 	.use_dma_rx	= 0,		/* DBGU not capable of receive DMA */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.regs		= (void __iomem *)(AT91_VA_BASE_SYS + AT91_DBGU),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static u64 dbgu_dmamask = DMA_BIT_MASK(32);
@@ -1268,8 +1359,11 @@ static inline void configure_usart3_pins(unsigned pins)
 static struct platform_device *__initdata at91_uarts[ATMEL_MAX_UART];	/* the UARTs to use */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct platform_device *atmel_default_console_device;	/* the serial console device */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init at91_register_uart(unsigned id, unsigned portnr, unsigned pins)
 {

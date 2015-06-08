@@ -150,8 +150,12 @@ static int map_read_chunks(struct svcxprt_rdma *xprt,
 <<<<<<< HEAD
 	ch_bytes = ntohl(ch->rc_target.rs_length);
 =======
+<<<<<<< HEAD
+	ch_bytes = ntohl(ch->rc_target.rs_length);
+=======
 	ch_bytes = ch->rc_target.rs_length;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	head->arg.head[0] = rqstp->rq_arg.head[0];
 	head->arg.tail[0] = rqstp->rq_arg.tail[0];
 	head->arg.pages = &head->pages[head->count];
@@ -190,8 +194,12 @@ static int map_read_chunks(struct svcxprt_rdma *xprt,
 <<<<<<< HEAD
 			ch_bytes = ntohl(ch->rc_target.rs_length);
 =======
+<<<<<<< HEAD
+			ch_bytes = ntohl(ch->rc_target.rs_length);
+=======
 			ch_bytes = ch->rc_target.rs_length;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* If bytes remaining account for next chunk */
 			if (byte_count) {
 				head->arg.page_len += ch_bytes;
@@ -290,12 +298,17 @@ static int fast_reg_read_chunks(struct svcxprt_rdma *xprt,
 	ch = (struct rpcrdma_read_chunk *)&rmsgp->rm_body.rm_chunks[0];
 	for (ch_no = 0; ch_no < ch_count; ch_no++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int len = ntohl(ch->rc_target.rs_length);
 		rpl_map->sge[ch_no].iov_base = frmr->kva + offset;
 		rpl_map->sge[ch_no].iov_len = len;
 		chl_map->ch[ch_no].count = 1;
 		chl_map->ch[ch_no].start = ch_no;
 		offset += len;
+<<<<<<< HEAD
+=======
 =======
 		rpl_map->sge[ch_no].iov_base = frmr->kva + offset;
 		rpl_map->sge[ch_no].iov_len = ch->rc_target.rs_length;
@@ -303,6 +316,7 @@ static int fast_reg_read_chunks(struct svcxprt_rdma *xprt,
 		chl_map->ch[ch_no].start = ch_no;
 		offset += ch->rc_target.rs_length;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ch++;
 	}
 
@@ -336,8 +350,12 @@ static int rdma_set_ctxt_sge(struct svcxprt_rdma *xprt,
 <<<<<<< HEAD
 			BUG_ON(!virt_to_page(vec[i].iov_base));
 =======
+<<<<<<< HEAD
+			BUG_ON(!virt_to_page(vec[i].iov_base));
+=======
 			BUG_ON(0 == virt_to_page(vec[i].iov_base));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			off = (unsigned long)vec[i].iov_base & ~PAGE_MASK;
 			ctxt->sge[i].addr =
 				ib_dma_map_page(xprt->sc_cm_id->device,
@@ -450,7 +468,11 @@ static int rdma_read_xdr(struct svcxprt_rdma *xprt,
 <<<<<<< HEAD
 		u64 rs_offset;
 =======
+<<<<<<< HEAD
+		u64 rs_offset;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 next_sge:
 		ctxt = svc_rdma_get_context(xprt);
 		ctxt->direction = DMA_FROM_DEVICE;
@@ -466,16 +488,22 @@ next_sge:
 		ctxt->wr_op = read_wr.opcode;
 		read_wr.send_flags = IB_SEND_SIGNALED;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		read_wr.wr.rdma.rkey = ntohl(ch->rc_target.rs_handle);
 		xdr_decode_hyper((__be32 *)&ch->rc_target.rs_offset,
 				 &rs_offset);
 		read_wr.wr.rdma.remote_addr = rs_offset + sgl_offset;
+<<<<<<< HEAD
+=======
 =======
 		read_wr.wr.rdma.rkey = ch->rc_target.rs_handle;
 		read_wr.wr.rdma.remote_addr =
 			get_unaligned(&(ch->rc_target.rs_offset)) +
 			sgl_offset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		read_wr.sg_list = ctxt->sge;
 		read_wr.num_sge =
 			rdma_read_max_sge(xprt, chl_map->ch[ch_no].count);

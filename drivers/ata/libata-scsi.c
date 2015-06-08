@@ -37,6 +37,13 @@
 #include <linux/kernel.h>
 #include <linux/blkdev.h>
 #include <linux/spinlock.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <scsi/scsi.h>
 #include <scsi/scsi_host.h>
 #include <scsi/scsi_cmnd.h>
@@ -308,8 +315,17 @@ ata_scsi_activity_show(struct device *dev, struct device_attribute *attr,
 	struct ata_port *ap = ata_shost_to_port(sdev->host);
 	struct ata_device *atadev = ata_scsi_find_dev(ap, sdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ap->ops->sw_activity_show && (ap->flags & ATA_FLAG_SW_ACTIVITY))
+=======
 	if (atadev && ap->ops->sw_activity_show &&
 	    (ap->flags & ATA_FLAG_SW_ACTIVITY))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (atadev && ap->ops->sw_activity_show &&
+	    (ap->flags & ATA_FLAG_SW_ACTIVITY))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ap->ops->sw_activity_show(atadev, buf);
 	return -EINVAL;
 }
@@ -324,8 +340,17 @@ ata_scsi_activity_store(struct device *dev, struct device_attribute *attr,
 	enum sw_activity val;
 	int rc;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ap->ops->sw_activity_store && (ap->flags & ATA_FLAG_SW_ACTIVITY)) {
+=======
 	if (atadev && ap->ops->sw_activity_store &&
 	    (ap->flags & ATA_FLAG_SW_ACTIVITY)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (atadev && ap->ops->sw_activity_store &&
+	    (ap->flags & ATA_FLAG_SW_ACTIVITY)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val = simple_strtoul(buf, NULL, 0);
 		switch (val) {
 		case OFF: case BLINK_ON: case BLINK_OFF:
@@ -1110,8 +1135,17 @@ static int ata_scsi_dev_config(struct scsi_device *sdev,
 		/* configure draining */
 		buf = kmalloc(ATAPI_MAX_DRAIN, q->bounce_gfp | GFP_KERNEL);
 		if (!buf) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_dev_err(dev, "drain buffer allocation failed\n");
+=======
 			ata_dev_printk(dev, KERN_ERR,
 				       "drain buffer allocation failed\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_dev_printk(dev, KERN_ERR,
+				       "drain buffer allocation failed\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 		}
 
@@ -1129,7 +1163,15 @@ static int ata_scsi_dev_config(struct scsi_device *sdev,
 	 * IDENTIFY_PACKET is executed as ATA_PROT_PIO.
 	 */
 	if (sdev->sector_size > PAGE_SIZE)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_warn(dev,
+=======
 		ata_dev_printk(dev, KERN_WARNING,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_WARNING,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"sector_size=%u > PAGE_SIZE, PIO may malfunction\n",
 			sdev->sector_size);
 
@@ -1218,11 +1260,32 @@ void ata_scsi_slave_destroy(struct scsi_device *sdev)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	__ata_change_queue_depth - helper for ata_scsi_change_queue_depth
+ *	@ap: ATA port to which the device change the queue depth
+=======
  *	ata_scsi_change_queue_depth - SCSI callback for queue depth config
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *	ata_scsi_change_queue_depth - SCSI callback for queue depth config
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	@sdev: SCSI device to configure queue depth for
  *	@queue_depth: new queue depth
  *	@reason: calling context
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	libsas and libata have different approaches for associating a sdev to
+ *	its ata_port.
+ *
+ */
+int __ata_change_queue_depth(struct ata_port *ap, struct scsi_device *sdev,
+			     int queue_depth, int reason)
+{
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	This is libata standard hostt->change_queue_depth callback.
  *	SCSI will call into this callback when user tries to set queue
  *	depth via sysfs.
@@ -1237,6 +1300,10 @@ int ata_scsi_change_queue_depth(struct scsi_device *sdev, int queue_depth,
 				int reason)
 {
 	struct ata_port *ap = ata_shost_to_port(sdev->host);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ata_device *dev;
 	unsigned long flags;
 
@@ -1272,6 +1339,36 @@ int ata_scsi_change_queue_depth(struct scsi_device *sdev, int queue_depth,
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	ata_scsi_change_queue_depth - SCSI callback for queue depth config
+ *	@sdev: SCSI device to configure queue depth for
+ *	@queue_depth: new queue depth
+ *	@reason: calling context
+ *
+ *	This is libata standard hostt->change_queue_depth callback.
+ *	SCSI will call into this callback when user tries to set queue
+ *	depth via sysfs.
+ *
+ *	LOCKING:
+ *	SCSI layer (we don't care)
+ *
+ *	RETURNS:
+ *	Newly configured queue depth.
+ */
+int ata_scsi_change_queue_depth(struct scsi_device *sdev, int queue_depth,
+				int reason)
+{
+	struct ata_port *ap = ata_shost_to_port(sdev->host);
+
+	return __ata_change_queue_depth(ap, sdev, queue_depth, reason);
+}
+
+/**
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	ata_scsi_start_stop_xlat - Translate SCSI START STOP UNIT command
  *	@qc: Storage for translated ATA taskfile
  *
@@ -1786,8 +1883,17 @@ static int ata_scsi_translate(struct ata_device *dev, struct scsi_cmnd *cmd,
 	if (cmd->sc_data_direction == DMA_FROM_DEVICE ||
 	    cmd->sc_data_direction == DMA_TO_DEVICE) {
 		if (unlikely(scsi_bufflen(cmd) < 1)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_dev_warn(dev, "WARNING: zero len r/w req\n");
+=======
 			ata_dev_printk(dev, KERN_WARNING,
 				       "WARNING: zero len r/w req\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_dev_printk(dev, KERN_WARNING,
+				       "WARNING: zero len r/w req\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto err_did;
 		}
 
@@ -2971,9 +3077,20 @@ static unsigned int ata_scsi_pass_thru(struct ata_queued_cmd *qc)
 		 * with the cached multi_count of libata
 		 */
 		if (multi_count != dev->multi_count)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_dev_warn(dev, "invalid multi_count %u ignored\n",
+				     multi_count);
+=======
 			ata_dev_printk(dev, KERN_WARNING,
 				       "invalid multi_count %u ignored\n",
 				       multi_count);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_dev_printk(dev, KERN_WARNING,
+				       "invalid multi_count %u ignored\n",
+				       multi_count);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -3367,6 +3484,13 @@ int ata_scsi_add_hosts(struct ata_host *host, struct scsi_host_template *sht)
 		if (!shost)
 			goto err_alloc;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		shost->eh_noresume = 1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*(struct ata_port **)&shost->hostdata[0] = ap;
 		ap->scsi_host = shost;
 
@@ -3384,7 +3508,16 @@ int ata_scsi_add_hosts(struct ata_host *host, struct scsi_host_template *sht)
 		 */
 		shost->max_host_blocked = 1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rc = scsi_add_host_with_dma(ap->scsi_host,
+						&ap->tdev, ap->host->dev);
+=======
 		rc = scsi_add_host(ap->scsi_host, ap->host->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rc = scsi_add_host(ap->scsi_host, ap->host->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc)
 			goto err_add;
 	}
@@ -3468,9 +3601,20 @@ void ata_scsi_scan_host(struct ata_port *ap, int sync)
 			goto repeat;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_port_err(ap,
+			     "WARNING: synchronous SCSI scan failed without making any progress, switching to async\n");
+=======
 		ata_port_printk(ap, KERN_ERR, "WARNING: synchronous SCSI scan "
 				"failed without making any progress,\n"
 				"                  switching to async\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_port_printk(ap, KERN_ERR, "WARNING: synchronous SCSI scan "
+				"failed without making any progress,\n"
+				"                  switching to async\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	queue_delayed_work(system_long_wq, &ap->hotplug_task,
@@ -3552,8 +3696,18 @@ static void ata_scsi_remove_dev(struct ata_device *dev)
 	mutex_unlock(&ap->scsi_host->scan_mutex);
 
 	if (sdev) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_info(dev, "detaching (SCSI %s)\n",
+			     dev_name(&sdev->sdev_gendev));
+=======
 		ata_dev_printk(dev, KERN_INFO, "detaching (SCSI %s)\n",
 			       dev_name(&sdev->sdev_gendev));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_INFO, "detaching (SCSI %s)\n",
+			       dev_name(&sdev->sdev_gendev));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		scsi_remove_device(sdev);
 		scsi_device_put(sdev);
@@ -3825,6 +3979,32 @@ void ata_sas_port_stop(struct ata_port *ap)
 EXPORT_SYMBOL_GPL(ata_sas_port_stop);
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ata_sas_async_probe - simply schedule probing and return
+ * @ap: Port to probe
+ *
+ * For batch scheduling of probe for sas attached ata devices, assumes
+ * the port has already been through ata_sas_port_init()
+ */
+void ata_sas_async_probe(struct ata_port *ap)
+{
+	__ata_port_probe(ap);
+}
+EXPORT_SYMBOL_GPL(ata_sas_async_probe);
+
+int ata_sas_sync_probe(struct ata_port *ap)
+{
+	return ata_port_probe(ap);
+}
+EXPORT_SYMBOL_GPL(ata_sas_sync_probe);
+
+
+/**
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	ata_sas_port_init - Initialize a SATA device
  *	@ap: SATA port to initialize
  *
@@ -3839,12 +4019,25 @@ int ata_sas_port_init(struct ata_port *ap)
 {
 	int rc = ap->ops->port_start(ap);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (rc)
+		return rc;
+	ap->print_id = atomic_inc_return(&ata_print_id);
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rc) {
 		ap->print_id = ata_print_id++;
 		rc = ata_port_probe(ap);
 	}
 
 	return rc;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(ata_sas_port_init);
 

@@ -70,10 +70,16 @@ struct dst_entry *inet6_csk_route_req(struct sock *sk,
 	final_p = fl6_update_dst(&fl6, np->opt, &final);
 	fl6.saddr = treq->loc_addr;
 =======
+<<<<<<< HEAD
+	fl6.daddr = treq->rmt_addr;
+	final_p = fl6_update_dst(&fl6, np->opt, &final);
+	fl6.saddr = treq->loc_addr;
+=======
 	ipv6_addr_copy(&fl6.daddr, &treq->rmt_addr);
 	final_p = fl6_update_dst(&fl6, np->opt, &final);
 	ipv6_addr_copy(&fl6.saddr, &treq->loc_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fl6.flowi6_oif = sk->sk_bound_dev_if;
 	fl6.flowi6_mark = sk->sk_mark;
 	fl6.fl6_dport = inet_rsk(req)->rmt_port;
@@ -166,8 +172,12 @@ void inet6_csk_addr2sockaddr(struct sock *sk, struct sockaddr * uaddr)
 <<<<<<< HEAD
 	sin6->sin6_addr = np->daddr;
 =======
+<<<<<<< HEAD
+	sin6->sin6_addr = np->daddr;
+=======
 	ipv6_addr_copy(&sin6->sin6_addr, &np->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sin6->sin6_port	= inet_sk(sk)->inet_dport;
 	/* We do not store received flowlabel for TCP */
 	sin6->sin6_flowinfo = 0;
@@ -222,12 +232,17 @@ int inet6_csk_xmit(struct sk_buff *skb, struct flowi *fl_unused)
 	struct dst_entry *dst;
 	struct in6_addr *final_p, final;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int res;
 
 	memset(&fl6, 0, sizeof(fl6));
 	fl6.flowi6_proto = sk->sk_protocol;
 	fl6.daddr = np->daddr;
 	fl6.saddr = np->saddr;
+<<<<<<< HEAD
+=======
 =======
 
 	memset(&fl6, 0, sizeof(fl6));
@@ -235,6 +250,7 @@ int inet6_csk_xmit(struct sk_buff *skb, struct flowi *fl_unused)
 	ipv6_addr_copy(&fl6.daddr, &np->daddr);
 	ipv6_addr_copy(&fl6.saddr, &np->saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fl6.flowlabel = np->flow_label;
 	IP6_ECN_flow_xmit(sk, fl6.flowlabel);
 	fl6.flowi6_oif = sk->sk_bound_dev_if;
@@ -261,6 +277,9 @@ int inet6_csk_xmit(struct sk_buff *skb, struct flowi *fl_unused)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 	skb_dst_set_noref(skb, dst);
 
@@ -271,6 +290,8 @@ int inet6_csk_xmit(struct sk_buff *skb, struct flowi *fl_unused)
 	rcu_read_unlock();
 	return res;
 }
+<<<<<<< HEAD
+=======
 =======
 	skb_dst_set(skb, dst_clone(dst));
 
@@ -281,4 +302,5 @@ int inet6_csk_xmit(struct sk_buff *skb, struct flowi *fl_unused)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(inet6_csk_xmit);

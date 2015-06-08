@@ -89,6 +89,8 @@ void send_IPI_allbutself(int tag)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 /*
  * Provide smp_call_function_mask, but also run function locally
@@ -109,6 +111,7 @@ void on_each_cpu_mask(const struct cpumask *mask, void (*func)(void *),
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Functions related to starting/stopping cpus.
  */
@@ -128,8 +131,12 @@ static void smp_stop_cpu_interrupt(void)
 <<<<<<< HEAD
 		asm("nap; nop");
 =======
+<<<<<<< HEAD
+		asm("nap; nop");
+=======
 		asm("nap");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* This function calls the 'stop' function on all other CPUs in the system. */
@@ -140,14 +147,20 @@ void smp_send_stop(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* On panic, just wait; we may get an smp_send_stop() later on. */
 void panic_smp_self_stop(void)
 {
 	while (1)
 		asm("nap; nop");
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Dispatch code called from hv_message_intr() for HV_MSG_TILE hv messages.

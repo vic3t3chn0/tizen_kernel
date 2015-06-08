@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/dma-mapping.h>
 =======
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/init.h>
 #include <linux/clk.h>
@@ -42,7 +46,11 @@
 <<<<<<< HEAD
 #include <asm/memblock.h>
 =======
+<<<<<<< HEAD
+#include <asm/memblock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/common.h>
 #include <mach/iomux-mx3.h>
 #include <mach/3ds_debugboard.h>
@@ -65,12 +73,17 @@ static int mx31_3ds_pins[] = {
 	IOMUX_MODE(MX31_PIN_DSR_DCE1, IOMUX_CONFIG_ALT1),
 	IOMUX_MODE(MX31_PIN_RI_DCE1, IOMUX_CONFIG_ALT1),
 =======
+<<<<<<< HEAD
+	IOMUX_MODE(MX31_PIN_DSR_DCE1, IOMUX_CONFIG_ALT1),
+	IOMUX_MODE(MX31_PIN_RI_DCE1, IOMUX_CONFIG_ALT1),
+=======
 	MX31_PIN_CSPI1_SCLK__SCLK,
 	MX31_PIN_CSPI1_MOSI__MOSI,
 	MX31_PIN_CSPI1_MISO__MISO,
 	MX31_PIN_CSPI1_SPI_RDY__SPI_RDY,
 	MX31_PIN_CSPI1_SS2__SS2, /* CS for LCD */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SPI 1 */
 	MX31_PIN_CSPI2_SCLK__SCLK,
 	MX31_PIN_CSPI2_MOSI__MOSI,
@@ -302,9 +315,12 @@ static struct l4f00242t03_pdata mx31_3ds_l4f00242t03_pdata = {
 	.data_enable_gpio	= IOMUX_TO_GPIO(MX31_PIN_SER_RS),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.core_supply		= "lcd_2v8",
 	.io_supply		= "vdd_lcdio",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -432,8 +448,12 @@ static struct regulator_consumer_supply vmmc1_consumers[] = {
 <<<<<<< HEAD
 	REGULATOR_SUPPLY("vcore", "spi0.0"),
 =======
+<<<<<<< HEAD
+	REGULATOR_SUPPLY("vcore", "spi0.0"),
+=======
 	REGULATOR_SUPPLY("lcd_2v8", NULL),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	REGULATOR_SUPPLY("cmos_2v8", "soc-camera-pdrv.0"),
 };
 
@@ -453,8 +473,12 @@ static struct regulator_consumer_supply vgen_consumers[] = {
 <<<<<<< HEAD
 	REGULATOR_SUPPLY("vdd", "spi0.0"),
 =======
+<<<<<<< HEAD
+	REGULATOR_SUPPLY("vdd", "spi0.0"),
+=======
 	REGULATOR_SUPPLY("vdd_lcdio", NULL),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data vgen_init = {
@@ -523,8 +547,12 @@ static struct mc13xxx_platform_data mc13783_pdata = {
 <<<<<<< HEAD
 	.flags  = MC13XXX_USE_TOUCHSCREEN | MC13XXX_USE_RTC,
 =======
+<<<<<<< HEAD
+	.flags  = MC13XXX_USE_TOUCHSCREEN | MC13XXX_USE_RTC,
+=======
 	.flags  = MC13783_USE_REGULATOR | MC13783_USE_TOUCHSCREEN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* SPI */
@@ -575,8 +603,12 @@ mx31_3ds_nand_board_info __initconst = {
 <<<<<<< HEAD
 #ifdef CONFIG_MACH_MX31_3DS_MXC_NAND_USE_BBT
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_MACH_MX31_3DS_MXC_NAND_USE_BBT
+=======
 #ifdef MACH_MX31_3DS_MXC_NAND_USE_BBT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flash_bbt	= 1,
 #endif
 };
@@ -722,13 +754,19 @@ static void __init mx31_3ds_init(void)
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	imx31_soc_init();
 
 	/* Configure SPI1 IOMUX */
 	mxc_iomux_set_gpr(MUX_PGP_CSPI_BB, true);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_iomux_setup_multiple_pins(mx31_3ds_pins, ARRAY_SIZE(mx31_3ds_pins),
 				      "mx31_3ds");
 
@@ -797,16 +835,24 @@ static void __init mx31_3ds_reserve(void)
 	mx3_camera_base = arm_memblock_steal(MX31_3DS_CAMERA_BUF_SIZE,
 					 MX31_3DS_CAMERA_BUF_SIZE);
 =======
+<<<<<<< HEAD
+	mx3_camera_base = arm_memblock_steal(MX31_3DS_CAMERA_BUF_SIZE,
+					 MX31_3DS_CAMERA_BUF_SIZE);
+=======
 	mx3_camera_base = memblock_alloc(MX31_3DS_CAMERA_BUF_SIZE,
 					 MX31_3DS_CAMERA_BUF_SIZE);
 	memblock_free(mx3_camera_base, MX31_3DS_CAMERA_BUF_SIZE);
 	memblock_remove(mx3_camera_base, MX31_3DS_CAMERA_BUF_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(MX31_3DS, "Freescale MX31PDK (3DS)")
 	/* Maintainer: Freescale Semiconductor, Inc. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset = 0x100,
 	.map_io = mx31_map_io,
 	.init_early = imx31_init_early,
@@ -816,6 +862,8 @@ MACHINE_START(MX31_3DS, "Freescale MX31PDK (3DS)")
 	.init_machine = mx31_3ds_init,
 	.reserve = mx31_3ds_reserve,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params = MX3x_PHYS_OFFSET + 0x100,
 	.map_io = mx31_map_io,
@@ -825,4 +873,5 @@ MACHINE_START(MX31_3DS, "Freescale MX31PDK (3DS)")
 	.init_machine = mx31_3ds_init,
 	.reserve = mx31_3ds_reserve,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -131,7 +131,15 @@
 #include <linux/usb.h>
 #include <linux/proc_fs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/blkdev.h>
 #include "../../scsi/scsi.h"
 #include <scsi/scsi_host.h>
@@ -809,6 +817,12 @@ static void mts_usb_disconnect (struct usb_interface *intf)
 	kfree(desc);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(mts_usb_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init microtek_drv_init(void)
 {
@@ -822,6 +836,10 @@ static void __exit microtek_drv_exit(void)
 
 module_init(microtek_drv_init);
 module_exit(microtek_drv_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR( DRIVER_AUTHOR );
 MODULE_DESCRIPTION( DRIVER_DESC );

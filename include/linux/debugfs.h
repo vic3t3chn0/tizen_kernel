@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/seq_file.h>
 =======
+<<<<<<< HEAD
+#include <linux/seq_file.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/types.h>
 
@@ -31,6 +35,9 @@ struct debugfs_blob_wrapper {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct debugfs_reg32 {
 	char *name;
 	unsigned long offset;
@@ -42,8 +49,11 @@ struct debugfs_regset32 {
 	void __iomem *base;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct dentry *arch_debugfs_dir;
 
 #if defined(CONFIG_DEBUG_FS)
@@ -55,8 +65,12 @@ extern const struct inode_operations debugfs_link_operations;
 <<<<<<< HEAD
 struct dentry *debugfs_create_file(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+struct dentry *debugfs_create_file(const char *name, umode_t mode,
+=======
 struct dentry *debugfs_create_file(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   struct dentry *parent, void *data,
 				   const struct file_operations *fops);
 
@@ -72,6 +86,9 @@ struct dentry *debugfs_rename(struct dentry *old_dir, struct dentry *old_dentry,
                 struct dentry *new_dir, const char *new_name);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct dentry *debugfs_create_u8(const char *name, umode_t mode,
 				 struct dentry *parent, u8 *value);
 struct dentry *debugfs_create_u16(const char *name, umode_t mode,
@@ -104,6 +121,8 @@ struct dentry *debugfs_create_regset32(const char *name, umode_t mode,
 int debugfs_print_regs32(struct seq_file *s, const struct debugfs_reg32 *regs,
 			 int nregs, void __iomem *base, char *prefix);
 
+<<<<<<< HEAD
+=======
 =======
 struct dentry *debugfs_create_u8(const char *name, mode_t mode,
 				 struct dentry *parent, u8 *value);
@@ -131,6 +150,7 @@ struct dentry *debugfs_create_blob(const char *name, mode_t mode,
 				  struct debugfs_blob_wrapper *blob);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool debugfs_initialized(void);
 
 #else
@@ -146,8 +166,12 @@ bool debugfs_initialized(void);
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_file(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_file(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_file(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					struct dentry *parent, void *data,
 					const struct file_operations *fops)
 {
@@ -182,8 +206,12 @@ static inline struct dentry *debugfs_rename(struct dentry *old_dir, struct dentr
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_u8(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_u8(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_u8(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       struct dentry *parent,
 					       u8 *value)
 {
@@ -193,8 +221,12 @@ static inline struct dentry *debugfs_create_u8(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_u16(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_u16(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_u16(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						struct dentry *parent,
 						u16 *value)
 {
@@ -204,8 +236,12 @@ static inline struct dentry *debugfs_create_u16(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_u32(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_u32(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_u32(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						struct dentry *parent,
 						u32 *value)
 {
@@ -215,8 +251,12 @@ static inline struct dentry *debugfs_create_u32(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_u64(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_u64(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_u64(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						struct dentry *parent,
 						u64 *value)
 {
@@ -226,8 +266,12 @@ static inline struct dentry *debugfs_create_u64(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_x8(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_x8(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_x8(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       struct dentry *parent,
 					       u8 *value)
 {
@@ -237,8 +281,12 @@ static inline struct dentry *debugfs_create_x8(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_x16(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_x16(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_x16(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						struct dentry *parent,
 						u16 *value)
 {
@@ -248,8 +296,12 @@ static inline struct dentry *debugfs_create_x16(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_x32(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_x32(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_x32(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						struct dentry *parent,
 						u32 *value)
 {
@@ -259,8 +311,12 @@ static inline struct dentry *debugfs_create_x32(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_size_t(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_size_t(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_size_t(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     struct dentry *parent,
 				     size_t *value)
 {
@@ -270,8 +326,12 @@ static inline struct dentry *debugfs_create_size_t(const char *name, mode_t mode
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_bool(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_bool(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_bool(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						 struct dentry *parent,
 						 u32 *value)
 {
@@ -281,8 +341,12 @@ static inline struct dentry *debugfs_create_bool(const char *name, mode_t mode,
 <<<<<<< HEAD
 static inline struct dentry *debugfs_create_blob(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static inline struct dentry *debugfs_create_blob(const char *name, umode_t mode,
+=======
 static inline struct dentry *debugfs_create_blob(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  struct dentry *parent,
 				  struct debugfs_blob_wrapper *blob)
 {
@@ -290,6 +354,9 @@ static inline struct dentry *debugfs_create_blob(const char *name, mode_t mode,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct dentry *debugfs_create_regset32(const char *name,
 				   umode_t mode, struct dentry *parent,
 				   struct debugfs_regset32 *regset)
@@ -297,8 +364,11 @@ static inline struct dentry *debugfs_create_regset32(const char *name,
 	return ERR_PTR(-ENODEV);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool debugfs_initialized(void)
 {
 	return false;

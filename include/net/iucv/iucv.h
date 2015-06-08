@@ -123,8 +123,12 @@ struct iucv_message {
 <<<<<<< HEAD
 } __packed;
 =======
+<<<<<<< HEAD
+} __packed;
+=======
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * struct iucv_handler
@@ -464,6 +468,9 @@ int iucv_message_send2way(struct iucv_path *path, struct iucv_message *msg,
 			  u8 flags, u32 srccls, void *buffer, size_t size,
 			  void *answer, size_t asize, size_t *residual);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct iucv_interface {
 	int (*message_receive)(struct iucv_path *path, struct iucv_message *msg,
@@ -498,5 +505,8 @@ struct iucv_interface {
 };
 
 extern struct iucv_interface iucv_if;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

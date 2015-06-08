@@ -69,19 +69,25 @@ STATIC void xlog_state_want_sync(xlog_t	*log, xlog_in_core_t *iclog);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* local functions to manipulate grant head */
 STATIC int  xlog_grant_log_space(xlog_t		*log,
 				 xlog_ticket_t	*xtic);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 STATIC void xlog_grant_push_ail(struct log	*log,
 				int		need_bytes);
 STATIC void xlog_regrant_reserve_log_space(xlog_t	 *log,
 					   xlog_ticket_t *ticket);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 STATIC int xlog_regrant_write_log_space(xlog_t		*log,
 					 xlog_ticket_t  *ticket);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 STATIC void xlog_ungrant_log_space(xlog_t	 *log,
 				   xlog_ticket_t *ticket);
 
@@ -157,6 +163,9 @@ xlog_grant_add_space(
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 STATIC void
 xlog_grant_head_init(
 	struct xlog_grant_head	*head)
@@ -306,8 +315,11 @@ xlog_grant_head_check(
 	return error;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 xlog_tic_reset_res(xlog_ticket_t *tic)
 {
@@ -334,6 +346,9 @@ xlog_tic_add_region(xlog_ticket_t *tic, uint len, uint type)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Replenish the byte reservation required by moving the grant write head.
  */
 int
@@ -456,8 +471,11 @@ out_error:
 
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * NOTES:
  *
  *	1. currblock field gets updated at startup and after in-core logs
@@ -569,6 +587,8 @@ xfs_log_release_iclog(
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *  1. Reserve an amount of on-disk log space and return a ticket corresponding
  *	to the reservation.
  *  2. Potentially, push buffers at tail of log to disk.
@@ -641,6 +661,7 @@ xfs_log_reserve(
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Mount a log filesystem
  *
  * mp		- ubiquitous xfs mount point structure
@@ -822,9 +843,15 @@ xfs_log_unmount_write(xfs_mount_t *mp)
 			tic->t_flags = 0;
 			tic->t_curr_res -= sizeof(magic);
 =======
+<<<<<<< HEAD
+			/* remove inited flag, and account for space used */
+			tic->t_flags = 0;
+			tic->t_curr_res -= sizeof(magic);
+=======
 			/* remove inited flag */
 			tic->t_flags = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = xlog_write(log, &vec, tic, &lsn,
 					   NULL, XLOG_UNMOUNT_TRANS);
 			/*
@@ -921,8 +948,12 @@ xfs_log_item_init(
 <<<<<<< HEAD
 	const struct xfs_item_ops *ops)
 =======
+<<<<<<< HEAD
+	const struct xfs_item_ops *ops)
+=======
 	struct xfs_item_ops	*ops)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	item->li_mountp = mp;
 	item->li_ailp = mp->m_ail;
@@ -936,6 +967,9 @@ xfs_log_item_init(
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Wake up processes waiting for log space after we have moved the log tail.
  */
 void
@@ -944,6 +978,8 @@ xfs_log_space_wake(
 {
 	struct log		*log = mp->m_log;
 	int			free_bytes;
+<<<<<<< HEAD
+=======
 =======
  * Write region vectors to log.  The write happens using the space reservation
  * of the ticket (tic).  It is not a requirement that all writes for a given
@@ -984,11 +1020,15 @@ xfs_log_move_tail(xfs_mount_t	*mp,
 	xlog_t		*log = mp->m_log;
 	int		need_bytes, free_bytes;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (XLOG_FORCED_SHUTDOWN(log))
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!list_empty_careful(&log->l_write_head.waiters)) {
 		ASSERT(!(log->l_flags & XLOG_ACTIVE_RECOVERY));
 
@@ -1005,6 +1045,8 @@ xfs_log_move_tail(xfs_mount_t	*mp,
 		free_bytes = xlog_space_left(log, &log->l_reserve_head.grant);
 		xlog_grant_head_wake(log, &log->l_reserve_head, &free_bytes);
 		spin_unlock(&log->l_reserve_head.lock);
+<<<<<<< HEAD
+=======
 =======
 	if (tail_lsn == 0)
 		tail_lsn = atomic64_read(&log->l_last_sync_lsn);
@@ -1054,6 +1096,7 @@ xfs_log_move_tail(xfs_mount_t	*mp,
 		}
 		spin_unlock(&log->l_grant_reserve_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1106,6 +1149,9 @@ xfs_log_need_covered(xfs_mount_t *mp)
 <<<<<<< HEAD
 /*
 =======
+<<<<<<< HEAD
+/*
+=======
 /******************************************************************************
  *
  *	local routines
@@ -1122,6 +1168,7 @@ xfs_log_need_covered(xfs_mount_t *mp)
  * tail hits the head.
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * We may be holding the log iclog lock upon entering this routine.
  */
 xfs_lsn_t
@@ -1132,6 +1179,9 @@ xlog_assign_tail_lsn(
 	struct log		*log = mp->m_log;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * To make sure we always have a valid LSN for the log tail we keep
 	 * track of the last LSN which was committed in log->l_last_sync_lsn,
@@ -1143,12 +1193,15 @@ xlog_assign_tail_lsn(
 	tail_lsn = xfs_ail_min_lsn(mp->m_ail);
 	if (!tail_lsn)
 		tail_lsn = atomic64_read(&log->l_last_sync_lsn);
+<<<<<<< HEAD
+=======
 =======
 	tail_lsn = xfs_ail_min_lsn(mp->m_ail);
 	if (!tail_lsn)
 		tail_lsn = atomic64_read(&log->l_last_sync_lsn);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic64_set(&log->l_tail_lsn, tail_lsn);
 	return tail_lsn;
 }
@@ -1220,6 +1273,11 @@ xlog_iodone(xfs_buf_t *bp)
 	xlog_t		*l = iclog->ic_log;
 	int		aborted = 0;
 =======
+<<<<<<< HEAD
+	xlog_in_core_t	*iclog = bp->b_fspriv;
+	xlog_t		*l = iclog->ic_log;
+	int		aborted = 0;
+=======
 	xlog_in_core_t	*iclog;
 	xlog_t		*l;
 	int		aborted;
@@ -1230,21 +1288,28 @@ xlog_iodone(xfs_buf_t *bp)
 	aborted = 0;
 	l = iclog->ic_log;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Race to shutdown the filesystem if we see an error.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (XFS_TEST_ERROR((xfs_buf_geterror(bp)), l->l_mp,
 			XFS_ERRTAG_IODONE_IOERR, XFS_RANDOM_IODONE_IOERR)) {
 		xfs_buf_ioerror_alert(bp, __func__);
 		xfs_buf_stale(bp);
+<<<<<<< HEAD
+=======
 =======
 	if (XFS_TEST_ERROR((XFS_BUF_GETERROR(bp)), l->l_mp,
 			XFS_ERRTAG_IODONE_IOERR, XFS_RANDOM_IODONE_IOERR)) {
 		xfs_ioerror_alert("xlog_iodone", l->l_mp, bp, XFS_BUF_ADDR(bp));
 		XFS_BUF_STALE(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_force_shutdown(l->l_mp, SHUTDOWN_LOG_IO_ERROR);
 		/*
 		 * This flag will be propagated to the trans-committed
@@ -1378,6 +1443,11 @@ xlog_alloc_log(xfs_mount_t	*mp,
 	xlog_grant_head_init(&log->l_reserve_head);
 	xlog_grant_head_init(&log->l_write_head);
 =======
+<<<<<<< HEAD
+
+	xlog_grant_head_init(&log->l_reserve_head);
+	xlog_grant_head_init(&log->l_write_head);
+=======
 	xlog_assign_grant_head(&log->l_grant_reserve_head, 1, 0);
 	xlog_assign_grant_head(&log->l_grant_write_head, 1, 0);
 	INIT_LIST_HEAD(&log->l_reserveq);
@@ -1385,6 +1455,7 @@ xlog_alloc_log(xfs_mount_t	*mp,
 	spin_lock_init(&log->l_grant_reserve_lock);
 	spin_lock_init(&log->l_grant_write_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = EFSCORRUPTED;
 	if (xfs_sb_version_hassector(&mp->m_sb)) {
@@ -1417,11 +1488,16 @@ xlog_alloc_log(xfs_mount_t	*mp,
 
 	error = ENOMEM;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bp = xfs_buf_alloc(mp->m_logdev_targp, 0, log->l_iclog_size, 0);
 	if (!bp)
 		goto out_free_log;
 	bp->b_iodone = xlog_iodone;
 	ASSERT(xfs_buf_islocked(bp));
+<<<<<<< HEAD
+=======
 =======
 	bp = xfs_buf_get_empty(log->l_iclog_size, mp->m_logdev_targp);
 	if (!bp)
@@ -1431,6 +1507,7 @@ xlog_alloc_log(xfs_mount_t	*mp,
 	ASSERT(XFS_BUF_ISBUSY(bp));
 	ASSERT(XFS_BUF_VALUSEMA(bp) <= 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	log->l_xbuf = bp;
 
 	spin_lock_init(&log->l_icloglock);
@@ -1465,11 +1542,16 @@ xlog_alloc_log(xfs_mount_t	*mp,
 
 		bp->b_iodone = xlog_iodone;
 =======
+<<<<<<< HEAD
+
+		bp->b_iodone = xlog_iodone;
+=======
 		if (!XFS_BUF_CPSEMA(bp))
 			ASSERT(0);
 		XFS_BUF_SET_IODONE_FUNC(bp, xlog_iodone);
 		XFS_BUF_SET_FSPRIVATE2(bp, (unsigned long)1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iclog->ic_bp = bp;
 		iclog->ic_data = bp->b_addr;
 #ifdef DEBUG
@@ -1496,9 +1578,13 @@ xlog_alloc_log(xfs_mount_t	*mp,
 <<<<<<< HEAD
 		ASSERT(xfs_buf_islocked(iclog->ic_bp));
 =======
+<<<<<<< HEAD
+		ASSERT(xfs_buf_islocked(iclog->ic_bp));
+=======
 		ASSERT(XFS_BUF_ISBUSY(iclog->ic_bp));
 		ASSERT(XFS_BUF_VALUSEMA(iclog->ic_bp) <= 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		init_waitqueue_head(&iclog->ic_force_wait);
 		init_waitqueue_head(&iclog->ic_write_wait);
 
@@ -1584,8 +1670,12 @@ xlog_grant_push_ail(
 <<<<<<< HEAD
 	free_bytes = xlog_space_left(log, &log->l_reserve_head.grant);
 =======
+<<<<<<< HEAD
+	free_bytes = xlog_space_left(log, &log->l_reserve_head.grant);
+=======
 	free_bytes = xlog_space_left(log, &log->l_grant_reserve_head);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_blocks = BTOBBT(free_bytes);
 
 	/*
@@ -1639,11 +1729,16 @@ xlog_bdstrat(
 	struct xfs_buf		*bp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xlog_in_core	*iclog = bp->b_fspriv;
 
 	if (iclog->ic_state & XLOG_STATE_IOERROR) {
 		xfs_buf_ioerror(bp, EIO);
 		xfs_buf_stale(bp);
+<<<<<<< HEAD
+=======
 =======
 	struct xlog_in_core	*iclog;
 
@@ -1652,6 +1747,7 @@ xlog_bdstrat(
 		XFS_BUF_ERROR(bp, EIO);
 		XFS_BUF_STALE(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_buf_ioend(bp, 0);
 		/*
 		 * It would seem logical to return EIO here, but we rely on
@@ -1663,8 +1759,11 @@ xlog_bdstrat(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	bp->b_flags |= _XBF_RUN_QUEUES;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_buf_iorequest(bp);
 	return 0;
 }
@@ -1734,9 +1833,14 @@ xlog_sync(xlog_t		*log,
 	xlog_grant_add_space(log, &log->l_reserve_head.grant, roundoff);
 	xlog_grant_add_space(log, &log->l_write_head.grant, roundoff);
 =======
+<<<<<<< HEAD
+	xlog_grant_add_space(log, &log->l_reserve_head.grant, roundoff);
+	xlog_grant_add_space(log, &log->l_write_head.grant, roundoff);
+=======
 	xlog_grant_add_space(log, &log->l_grant_reserve_head, roundoff);
 	xlog_grant_add_space(log, &log->l_grant_write_head, roundoff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* put cycle number in every block */
 	xlog_pack_data(log, iclog, roundoff); 
@@ -1753,9 +1857,12 @@ xlog_sync(xlog_t		*log,
 	bp = iclog->ic_bp;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(XFS_BUF_FSPRIVATE2(bp, unsigned long) == (unsigned long)1);
 	XFS_BUF_SET_FSPRIVATE2(bp, (unsigned long)2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	XFS_BUF_SET_ADDR(bp, BLOCK_LSN(be64_to_cpu(iclog->ic_header.h_lsn)));
 
 	XFS_STATS_ADD(xs_log_blocks, BTOBB(count));
@@ -1770,6 +1877,9 @@ xlog_sync(xlog_t		*log,
 	}
 	XFS_BUF_SET_COUNT(bp, count);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bp->b_fspriv = iclog;
 	XFS_BUF_ZEROFLAGS(bp);
 	XFS_BUF_ASYNC(bp);
@@ -1791,6 +1901,8 @@ xlog_sync(xlog_t		*log,
 			xfs_blkdev_issue_flush(log->l_mp->m_ddev_targp);
 		else
 			bp->b_flags |= XBF_FLUSH;
+<<<<<<< HEAD
+=======
 =======
 	XFS_BUF_SET_FSPRIVATE(bp, iclog);	/* save for later */
 	XFS_BUF_ZEROFLAGS(bp);
@@ -1809,6 +1921,7 @@ xlog_sync(xlog_t		*log,
 			xfs_blkdev_issue_flush(log->l_mp->m_ddev_targp);
 		XFS_BUF_ORDERED(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ASSERT(XFS_BUF_ADDR(bp) <= log->l_logBBsize-1);
@@ -1829,15 +1942,24 @@ xlog_sync(xlog_t		*log,
 	if (error) {
 		xfs_buf_ioerror_alert(bp, "xlog_sync");
 =======
+<<<<<<< HEAD
+	error = xlog_bdstrat(bp);
+	if (error) {
+		xfs_buf_ioerror_alert(bp, "xlog_sync");
+=======
 	if ((error = xlog_bdstrat(bp))) {
 		xfs_ioerror_alert("xlog_sync", log->l_mp, bp,
 				  XFS_BUF_ADDR(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return error;
 	}
 	if (split) {
 		bp = iclog->ic_log->l_xbuf;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		XFS_BUF_SET_ADDR(bp, 0);	     /* logical 0 */
 		xfs_buf_associate_memory(bp,
 				(char *)&iclog->ic_header + count, split);
@@ -1848,6 +1970,8 @@ xlog_sync(xlog_t		*log,
 		if (log->l_mp->m_flags & XFS_MOUNT_BARRIER)
 			bp->b_flags |= XBF_FUA;
 		dptr = bp->b_addr;
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(XFS_BUF_FSPRIVATE2(bp, unsigned long) ==
 							(unsigned long)1);
@@ -1864,6 +1988,7 @@ xlog_sync(xlog_t		*log,
 			XFS_BUF_ORDERED(bp);
 		dptr = XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Bump the cycle numbers at the start of each block
 		 * since this part of the buffer is at the start of
@@ -1888,10 +2013,16 @@ xlog_sync(xlog_t		*log,
 		if (error) {
 			xfs_buf_ioerror_alert(bp, "xlog_sync (split)");
 =======
+<<<<<<< HEAD
+		error = xlog_bdstrat(bp);
+		if (error) {
+			xfs_buf_ioerror_alert(bp, "xlog_sync (split)");
+=======
 		if ((error = xlog_bdstrat(bp))) {
 			xfs_ioerror_alert("xlog_sync (split)", log->l_mp,
 					  bp, XFS_BUF_ADDR(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return error;
 		}
 	}
@@ -2032,8 +2163,12 @@ xlog_print_tic_res(
 <<<<<<< HEAD
 		"xlog_write: reservation summary:\n"
 =======
+<<<<<<< HEAD
+		"xlog_write: reservation summary:\n"
+=======
 		"xfs_log_write: reservation summary:\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"  trans type  = %s (%u)\n"
 		"  unit res    = %d bytes\n"
 		"  current res = %d bytes\n"
@@ -2065,8 +2200,12 @@ xlog_print_tic_res(
 <<<<<<< HEAD
 		"xlog_write: reservation ran out. Need to up reservation");
 =======
+<<<<<<< HEAD
+		"xlog_write: reservation ran out. Need to up reservation");
+=======
 		"xfs_log_write: reservation ran out. Need to up reservation");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_force_shutdown(mp, SHUTDOWN_CORRUPT_INCORE);
 }
 
@@ -2321,6 +2460,9 @@ xlog_write(
 
 	len = xlog_write_calc_vec_length(ticket, log_vector);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Region headers and bytes are already accounted for.
@@ -2336,6 +2478,8 @@ xlog_write(
 	 */
 	if (flags & (XLOG_COMMIT_TRANS | XLOG_UNMOUNT_TRANS))
 		ticket->t_curr_res -= sizeof(xlog_op_header_t);
+<<<<<<< HEAD
+=======
 =======
 	if (log->l_cilp) {
 		/*
@@ -2355,6 +2499,7 @@ xlog_write(
 	} else
 		ticket->t_curr_res -= len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ticket->t_curr_res < 0)
 		xlog_print_tic_res(log->l_mp, ticket);
@@ -2972,6 +3117,8 @@ restart:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Atomically get the log space required for a log ticket.
  *
@@ -3210,6 +3357,7 @@ redo:
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The first cnt-1 times through here we don't need to
  * move the grant write head because the permanent
  * reservation has reserved cnt times the unit amount.
@@ -3231,10 +3379,16 @@ xlog_regrant_reserve_log_space(xlog_t	     *log,
 					ticket->t_curr_res);
 	xlog_grant_sub_space(log, &log->l_write_head.grant,
 =======
+<<<<<<< HEAD
+	xlog_grant_sub_space(log, &log->l_reserve_head.grant,
+					ticket->t_curr_res);
+	xlog_grant_sub_space(log, &log->l_write_head.grant,
+=======
 	xlog_grant_sub_space(log, &log->l_grant_reserve_head,
 					ticket->t_curr_res);
 	xlog_grant_sub_space(log, &log->l_grant_write_head,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					ticket->t_curr_res);
 	ticket->t_curr_res = ticket->t_unit_res;
 	xlog_tic_reset_res(ticket);
@@ -3248,8 +3402,12 @@ xlog_regrant_reserve_log_space(xlog_t	     *log,
 <<<<<<< HEAD
 	xlog_grant_add_space(log, &log->l_reserve_head.grant,
 =======
+<<<<<<< HEAD
+	xlog_grant_add_space(log, &log->l_reserve_head.grant,
+=======
 	xlog_grant_add_space(log, &log->l_grant_reserve_head,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					ticket->t_unit_res);
 
 	trace_xfs_log_regrant_reserve_exit(log, ticket);
@@ -3296,6 +3454,9 @@ xlog_ungrant_log_space(xlog_t	     *log,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xlog_grant_sub_space(log, &log->l_reserve_head.grant, bytes);
 	xlog_grant_sub_space(log, &log->l_write_head.grant, bytes);
 
@@ -3303,6 +3464,8 @@ xlog_ungrant_log_space(xlog_t	     *log,
 
 	xfs_log_space_wake(log->l_mp);
 }
+<<<<<<< HEAD
+=======
 =======
 	xlog_grant_sub_space(log, &log->l_grant_reserve_head, bytes);
 	xlog_grant_sub_space(log, &log->l_grant_write_head, bytes);
@@ -3313,6 +3476,7 @@ xlog_ungrant_log_space(xlog_t	     *log,
 }	/* xlog_ungrant_log_space */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Flush iclog to disk if this is the last reference to the given iclog and
@@ -3451,9 +3615,13 @@ _xfs_log_force(
 <<<<<<< HEAD
 	xlog_cil_force(log);
 =======
+<<<<<<< HEAD
+	xlog_cil_force(log);
+=======
 	if (log->l_cilp)
 		xlog_cil_force(log);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&log->l_icloglock);
 
@@ -3607,12 +3775,18 @@ _xfs_log_force_lsn(
 	if (lsn == NULLCOMMITLSN)
 		return 0;
 =======
+<<<<<<< HEAD
+	lsn = xlog_cil_force_lsn(log, lsn);
+	if (lsn == NULLCOMMITLSN)
+		return 0;
+=======
 	if (log->l_cilp) {
 		lsn = xlog_cil_force_lsn(log, lsn);
 		if (lsn == NULLCOMMITLSN)
 			return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 try_again:
 	spin_lock(&log->l_icloglock);
@@ -3786,8 +3960,12 @@ xlog_ticket_alloc(
 <<<<<<< HEAD
 	bool		permanent,
 =======
+<<<<<<< HEAD
+	bool		permanent,
+=======
 	uint		xflags,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		alloc_flags)
 {
 	struct xlog_ticket *tic;
@@ -3884,7 +4062,11 @@ xlog_ticket_alloc(
 <<<<<<< HEAD
 	tic->t_task		= current;
 =======
+<<<<<<< HEAD
+	tic->t_task		= current;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&tic->t_queue);
 	tic->t_unit_res		= unit_bytes;
 	tic->t_curr_res		= unit_bytes;
@@ -3898,10 +4080,15 @@ xlog_ticket_alloc(
 	if (permanent)
 		tic->t_flags |= XLOG_TIC_PERM_RESERV;
 =======
+<<<<<<< HEAD
+	if (permanent)
+		tic->t_flags |= XLOG_TIC_PERM_RESERV;
+=======
 	if (xflags & XFS_LOG_PERM_RESERV)
 		tic->t_flags |= XLOG_TIC_PERM_RESERV;
 	init_waitqueue_head(&tic->t_wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	xlog_tic_reset_res(tic);
 
@@ -3960,8 +4147,12 @@ xlog_verify_grant_tail(
 <<<<<<< HEAD
 	xlog_crack_grant_head(&log->l_write_head.grant, &cycle, &space);
 =======
+<<<<<<< HEAD
+	xlog_crack_grant_head(&log->l_write_head.grant, &cycle, &space);
+=======
 	xlog_crack_grant_head(&log->l_grant_write_head, &cycle, &space);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xlog_crack_atomic_lsn(&log->l_tail_lsn, &tail_cycle, &tail_blocks);
 	if (tail_cycle != cycle) {
 		if (cycle - 1 != tail_cycle &&
@@ -4052,8 +4243,12 @@ xlog_verify_iclog(xlog_t	 *log,
 <<<<<<< HEAD
 	if (iclog->ic_header.h_magicno != cpu_to_be32(XLOG_HEADER_MAGIC_NUM))
 =======
+<<<<<<< HEAD
+	if (iclog->ic_header.h_magicno != cpu_to_be32(XLOG_HEADER_MAGIC_NUM))
+=======
 	if (be32_to_cpu(iclog->ic_header.h_magicno) != XLOG_HEADER_MAGIC_NUM)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_emerg(log->l_mp, "%s: invalid magic num", __func__);
 
 	ptr = (xfs_caddr_t) &iclog->ic_header;
@@ -4062,8 +4257,12 @@ xlog_verify_iclog(xlog_t	 *log,
 <<<<<<< HEAD
 		if (*(__be32 *)ptr == cpu_to_be32(XLOG_HEADER_MAGIC_NUM))
 =======
+<<<<<<< HEAD
+		if (*(__be32 *)ptr == cpu_to_be32(XLOG_HEADER_MAGIC_NUM))
+=======
 		if (be32_to_cpu(*(__be32 *)ptr) == XLOG_HEADER_MAGIC_NUM)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_emerg(log->l_mp, "%s: unexpected magic num",
 				__func__);
 	}
@@ -4173,8 +4372,11 @@ xfs_log_force_umount(
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	xlog_ticket_t	*tic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xlog_t		*log;
 	int		retval;
 
@@ -4211,8 +4413,12 @@ xfs_log_force_umount(
 <<<<<<< HEAD
 	if (!logerror)
 =======
+<<<<<<< HEAD
+	if (!logerror)
+=======
 	if (!logerror && (mp->m_flags & XFS_MOUNT_DELAYLOG))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xlog_cil_force(log);
 
 	/*
@@ -4250,6 +4456,10 @@ xfs_log_force_umount(
 	xlog_grant_head_wake_all(&log->l_reserve_head);
 	xlog_grant_head_wake_all(&log->l_write_head);
 =======
+<<<<<<< HEAD
+	xlog_grant_head_wake_all(&log->l_reserve_head);
+	xlog_grant_head_wake_all(&log->l_write_head);
+=======
 	spin_lock(&log->l_grant_reserve_lock);
 	list_for_each_entry(tic, &log->l_reserveq, t_queue)
 		wake_up(&tic->t_wait);
@@ -4260,6 +4470,7 @@ xfs_log_force_umount(
 		wake_up(&tic->t_wait);
 	spin_unlock(&log->l_grant_write_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!(log->l_iclog->ic_state & XLOG_STATE_IOERROR)) {
 		ASSERT(!logerror);

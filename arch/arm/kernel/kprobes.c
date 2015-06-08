@@ -33,22 +33,34 @@
 #include "patch.h"
 
 =======
+<<<<<<< HEAD
+#include "kprobes.h"
+#include "patch.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MIN_STACK_SIZE(addr) 				\
 	min((unsigned long)MAX_STACK_SIZE,		\
 	    (unsigned long)current_thread_info() + THREAD_START_SP - (addr))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define flush_insns(addr, size)				\
 	flush_icache_range((unsigned long)(addr),	\
 			   (unsigned long)(addr) +	\
 			   (size))
+<<<<<<< HEAD
+=======
 =======
 #define flush_insns(addr, cnt) 				\
 	flush_icache_range((unsigned long)(addr),	\
 			   (unsigned long)(addr) +	\
 			   sizeof(kprobe_opcode_t) * (cnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Used as a marker in ARM_pc to note when we're in a jprobe. */
 #define JPROBE_MAGIC_ADDR		0xffffffff
@@ -63,6 +75,9 @@ int __kprobes arch_prepare_kprobe(struct kprobe *p)
 	kprobe_opcode_t tmp_insn[MAX_INSN_SIZE];
 	unsigned long addr = (unsigned long)p->addr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool thumb;
 	kprobe_decode_insn_t *decode_insn;
 	int is;
@@ -92,6 +107,8 @@ int __kprobes arch_prepare_kprobe(struct kprobe *p)
 	p->ainsn.insn = tmp_insn;
 
 	switch ((*decode_insn)(insn, &p->ainsn)) {
+<<<<<<< HEAD
+=======
 =======
 	int is;
 
@@ -104,6 +121,7 @@ int __kprobes arch_prepare_kprobe(struct kprobe *p)
 
 	switch (arm_kprobe_decode_insn(insn, &p->ainsn)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case INSN_REJECTED:	/* not supported */
 		return -EINVAL;
 
@@ -114,13 +132,19 @@ int __kprobes arch_prepare_kprobe(struct kprobe *p)
 		for (is = 0; is < MAX_INSN_SIZE; ++is)
 			p->ainsn.insn[is] = tmp_insn[is];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flush_insns(p->ainsn.insn,
 				sizeof(p->ainsn.insn[0]) * MAX_INSN_SIZE);
 		p->ainsn.insn_fn = (kprobe_insn_fn_t *)
 					((uintptr_t)p->ainsn.insn | thumb);
+<<<<<<< HEAD
+=======
 =======
 		flush_insns(p->ainsn.insn, MAX_INSN_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case INSN_GOOD_NO_SLOT:	/* instruction doesn't need insn slot */
@@ -134,6 +158,9 @@ int __kprobes arch_prepare_kprobe(struct kprobe *p)
 void __kprobes arch_arm_kprobe(struct kprobe *p)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int brkp;
 	void *addr;
 
@@ -158,10 +185,13 @@ void __kprobes arch_arm_kprobe(struct kprobe *p)
 	}
 
 	patch_text(addr, brkp);
+<<<<<<< HEAD
+=======
 =======
 	*p->addr = KPROBE_BREAKPOINT_INSTRUCTION;
 	flush_insns(p->addr, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -173,21 +203,32 @@ void __kprobes arch_arm_kprobe(struct kprobe *p)
  * memory. It is also needed to atomically set the two half-words of a 32-bit
  * Thumb breakpoint.
 =======
+<<<<<<< HEAD
+ * memory. It is also needed to atomically set the two half-words of a 32-bit
+ * Thumb breakpoint.
+=======
  * memory.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int __kprobes __arch_disarm_kprobe(void *p)
 {
 	struct kprobe *kp = p;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *addr = (void *)((uintptr_t)kp->addr & ~1);
 
 	__patch_text(addr, kp->opcode);
 
+<<<<<<< HEAD
+=======
 =======
 	*kp->addr = kp->opcode;
 	flush_insns(kp->addr, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -196,8 +237,12 @@ void __kprobes arch_disarm_kprobe(struct kprobe *p)
 <<<<<<< HEAD
 	stop_machine(__arch_disarm_kprobe, p, cpu_online_mask);
 =======
+<<<<<<< HEAD
+	stop_machine(__arch_disarm_kprobe, p, cpu_online_mask);
+=======
 	stop_machine(__arch_disarm_kprobe, p, &cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __kprobes arch_remove_kprobe(struct kprobe *p)
@@ -226,6 +271,9 @@ static void __kprobes set_current_kprobe(struct kprobe *p)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __kprobes
 singlestep_skip(struct kprobe *p, struct pt_regs *regs)
 {
@@ -244,6 +292,8 @@ static inline void __kprobes
 singlestep(struct kprobe *p, struct pt_regs *regs, struct kprobe_ctlblk *kcb)
 {
 	p->ainsn.insn_singlestep(p, regs);
+<<<<<<< HEAD
+=======
 =======
 static void __kprobes singlestep(struct kprobe *p, struct pt_regs *regs,
 				 struct kprobe_ctlblk *kcb)
@@ -252,6 +302,7 @@ static void __kprobes singlestep(struct kprobe *p, struct pt_regs *regs,
 	if (p->ainsn.insn_check_cc(regs->ARM_cpsr))
 		p->ainsn.insn_handler(p, regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -266,6 +317,9 @@ void __kprobes kprobe_handler(struct pt_regs *regs)
 	struct kprobe *p, *cur;
 	struct kprobe_ctlblk *kcb;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kcb = get_kprobe_ctlblk();
 	cur = kprobe_running();
@@ -283,6 +337,8 @@ void __kprobes kprobe_handler(struct pt_regs *regs)
 #else /* ! CONFIG_THUMB2_KERNEL */
 	p = get_kprobe((kprobe_opcode_t *)regs->ARM_pc);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	kprobe_opcode_t	*addr = (kprobe_opcode_t *)regs->ARM_pc;
 
@@ -290,6 +346,7 @@ void __kprobes kprobe_handler(struct pt_regs *regs)
 	cur = kprobe_running();
 	p = get_kprobe(addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (p) {
 		if (cur) {
@@ -313,8 +370,13 @@ void __kprobes kprobe_handler(struct pt_regs *regs)
 		} else if (p->ainsn.insn_check_cc(regs->ARM_cpsr)) {
 			/* Probe hit and conditional execution check ok. */
 =======
+<<<<<<< HEAD
+		} else if (p->ainsn.insn_check_cc(regs->ARM_cpsr)) {
+			/* Probe hit and conditional execution check ok. */
+=======
 		} else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_current_kprobe(p);
 			kcb->kprobe_status = KPROBE_HIT_ACTIVE;
 
@@ -335,6 +397,9 @@ void __kprobes kprobe_handler(struct pt_regs *regs)
 				reset_current_kprobe();
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/*
 			 * Probe hit but conditional execution check failed,
@@ -342,8 +407,11 @@ void __kprobes kprobe_handler(struct pt_regs *regs)
 			 * nothing had happened.
 			 */
 			singlestep_skip(p, regs);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else if (cur) {
 		/* We probably hit a jprobe.  Call its break handler. */
@@ -452,14 +520,20 @@ void __naked __kprobes kretprobe_trampoline(void)
 		"mov	lr, r0			\n\t"
 		"ldmia	sp!, {r0 - r11}		\n\t"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_THUMB2_KERNEL
 		"bx	lr			\n\t"
 #else
 		"mov	pc, lr			\n\t"
 #endif
+<<<<<<< HEAD
+=======
 =======
 		"mov	pc, lr			\n\t"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		: : : "memory");
 }
 
@@ -540,12 +614,19 @@ int __kprobes setjmp_pre_handler(struct kprobe *p, struct pt_regs *regs)
 <<<<<<< HEAD
 	long cpsr;
 =======
+<<<<<<< HEAD
+	long cpsr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kcb->jprobe_saved_regs = *regs;
 	memcpy(kcb->jprobes_stack, (void *)sp_addr, MIN_STACK_SIZE(sp_addr));
 	regs->ARM_pc = (long)jp->entry;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cpsr = regs->ARM_cpsr | PSR_I_BIT;
 #ifdef CONFIG_THUMB2_KERNEL
@@ -557,9 +638,12 @@ int __kprobes setjmp_pre_handler(struct kprobe *p, struct pt_regs *regs)
 #endif
 	regs->ARM_cpsr = cpsr;
 
+<<<<<<< HEAD
+=======
 =======
 	regs->ARM_cpsr |= PSR_I_BIT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 	return 1;
 }
@@ -582,15 +666,21 @@ void __kprobes jprobe_return(void)
 		 * over the regs when they are accessing the stack.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_THUMB2_KERNEL
 		"sub    r0, %0, %1		\n\t"
 		"mov    sp, r0			\n\t"
 #else
 		"sub    sp, %0, %1		\n\t"
 #endif
+<<<<<<< HEAD
+=======
 =======
 		"sub    sp, %0, %1		\n\t"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"ldr    r0, ="__stringify(JPROBE_MAGIC_ADDR)"\n\t"
 		"str    %0, [sp, %2]		\n\t"
 		"str    r0, [sp, %3]		\n\t"
@@ -602,6 +692,9 @@ void __kprobes jprobe_return(void)
 		 * and restored by longjmp_break_handler.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_THUMB2_KERNEL
 		"ldr	lr, [sp, %2]		\n\t" /* lr = saved sp */
 		"ldrd	r0, r1, [sp, %5]	\n\t" /* r0,r1 = saved lr,pc */
@@ -617,11 +710,14 @@ void __kprobes jprobe_return(void)
 		"msr	cpsr_cxsf, r0		\n\t"
 		"ldmia	sp, {r0 - pc}		\n\t"
 #endif
+<<<<<<< HEAD
+=======
 =======
 		"ldr	r0, [sp, %4]		\n\t"
 		"msr	cpsr_cxsf, r0		\n\t"
 		"ldmia	sp, {r0 - pc}		\n\t"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		:
 		: "r" (kcb->jprobe_saved_regs.ARM_sp),
 		  "I" (sizeof(struct pt_regs) * 2),
@@ -631,8 +727,13 @@ void __kprobes jprobe_return(void)
 		  "J" (offsetof(struct pt_regs, ARM_cpsr)),
 		  "J" (offsetof(struct pt_regs, ARM_lr))
 =======
+<<<<<<< HEAD
+		  "J" (offsetof(struct pt_regs, ARM_cpsr)),
+		  "J" (offsetof(struct pt_regs, ARM_lr))
+=======
 		  "J" (offsetof(struct pt_regs, ARM_cpsr))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		: "memory", "cc");
 }
 
@@ -670,6 +771,9 @@ int __kprobes arch_trampoline_kprobe(struct kprobe *p)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_THUMB2_KERNEL
 
 static struct undef_hook kprobes_thumb16_break_hook = {
@@ -683,17 +787,23 @@ static struct undef_hook kprobes_thumb16_break_hook = {
 static struct undef_hook kprobes_thumb32_break_hook = {
 	.instr_mask	= 0xffffffff,
 	.instr_val	= KPROBE_THUMB32_BREAKPOINT_INSTRUCTION,
+<<<<<<< HEAD
+=======
 =======
 static struct undef_hook kprobes_break_hook = {
 	.instr_mask	= 0xffffffff,
 	.instr_val	= KPROBE_BREAKPOINT_INSTRUCTION,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.cpsr_mask	= MODE_MASK,
 	.cpsr_val	= SVC_MODE,
 	.fn		= kprobe_trap_handler,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else  /* !CONFIG_THUMB2_KERNEL */
 
 static struct undef_hook kprobes_arm_break_hook = {
@@ -715,11 +825,14 @@ int __init arch_init_kprobes()
 #else
 	register_undef_hook(&kprobes_arm_break_hook);
 #endif
+<<<<<<< HEAD
+=======
 =======
 int __init arch_init_kprobes()
 {
 	arm_kprobe_decode_init();
 	register_undef_hook(&kprobes_break_hook);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }

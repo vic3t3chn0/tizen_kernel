@@ -50,7 +50,15 @@
 /* amount of chips attached via this driver */
 static int zr36060_codecs;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool low_bitrate;
+=======
 static int low_bitrate;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int low_bitrate;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(low_bitrate, bool, 0);
 MODULE_PARM_DESC(low_bitrate, "Buz compatibility option, halves bitrate");
 

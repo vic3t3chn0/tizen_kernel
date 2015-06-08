@@ -28,7 +28,15 @@ int __initdata rd_doload;	/* 1 = load RAM disk, 0 = don't load */
 int root_mountflags = MS_RDONLY | MS_SILENT;
 static char * __initdata root_device_name;
 static char __initdata saved_root_name[64];
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int root_wait;
+=======
 static int __initdata root_wait;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __initdata root_wait;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 dev_t ROOT_DEV;
 
@@ -85,12 +93,29 @@ no_match:
 
 /**
  * devt_from_partuuid - looks up the dev_t of a partition by its UUID
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @uuid:	min 36 byte char array containing a hex ascii UUID
+=======
  * @uuid:	36 byte char array containing a hex ascii UUID
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * @uuid:	36 byte char array containing a hex ascii UUID
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The function will return the first partition which contains a matching
  * UUID value in its partition_meta_info struct.  This does not search
  * by filesystem UUIDs.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * If @uuid is followed by a "/PARTNROFF=%d", then the number will be
+ * extracted and used as an offset from the partition identified by the UUID.
+ *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Returns the matching dev_t on success or 0 on failure.
  */
 static dev_t devt_from_partuuid(char *uuid_str)
@@ -98,6 +123,34 @@ static dev_t devt_from_partuuid(char *uuid_str)
 	dev_t res = 0;
 	struct device *dev = NULL;
 	u8 uuid[16];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct gendisk *disk;
+	struct hd_struct *part;
+	int offset = 0;
+
+	if (strlen(uuid_str) < 36)
+		goto done;
+
+	/* Check for optional partition number offset attributes. */
+	if (uuid_str[36]) {
+		char c = 0;
+		/* Explicitly fail on poor PARTUUID syntax. */
+		if (sscanf(&uuid_str[36],
+			   "/PARTNROFF=%d%c", &offset, &c) != 1) {
+			printk(KERN_ERR "VFS: PARTUUID= is invalid.\n"
+			 "Expected PARTUUID=<valid-uuid-id>[/PARTNROFF=%%d]\n");
+			if (root_wait)
+				printk(KERN_ERR
+				     "Disabling rootwait; root= is invalid.\n");
+			root_wait = 0;
+			goto done;
+		}
+	}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Pack the requested UUID in the expected format. */
 	part_pack_uuid(uuid_str, uuid);
@@ -107,8 +160,31 @@ static dev_t devt_from_partuuid(char *uuid_str)
 		goto done;
 
 	res = dev->devt;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* Attempt to find the partition by offset. */
+	if (!offset)
+		goto no_offset;
+
+	res = 0;
+	disk = part_to_disk(dev_to_part(dev));
+	part = disk_get_part(disk, dev_to_part(dev)->partno + offset);
+	if (part) {
+		res = part_devt(part);
+		put_device(part_to_dev(part));
+	}
+
+no_offset:
+	put_device(dev);
+=======
 	put_device(dev);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	put_device(dev);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 done:
 	return res;
 }
@@ -126,6 +202,14 @@ done:
  *	   used when disk name of partitioned disk ends on a digit.
  *	6) PARTUUID=00112233-4455-6677-8899-AABBCCDDEEFF representing the
  *	   unique id of a partition if the partition table provides it.
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	7) PARTUUID=<UUID>/PARTNROFF=<int> to select a partition in relation to
+ *	   a partition with a known unique id.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *	If name doesn't have fall into the categories above, we return (0,0).
  *	block_class is used to check if something is a disk name. If the disk
@@ -143,8 +227,16 @@ dev_t name_to_dev_t(char *name)
 #ifdef CONFIG_BLOCK
 	if (strncmp(name, "PARTUUID=", 9) == 0) {
 		name += 9;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		if (strlen(name) != 36)
 			goto fail;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (strlen(name) != 36)
+			goto fail;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		res = devt_from_partuuid(name);
 		if (!res)
 			goto fail;
@@ -287,17 +379,40 @@ static void __init get_fs_names(char *page)
 
 static int __init do_mount_root(char *name, char *fs, int flags, void *data)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct super_block *s;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = sys_mount(name, "/root", fs, flags, data);
 	if (err)
 		return err;
 
 	sys_chdir((const char __user __force *)"/root");
+<<<<<<< HEAD
+<<<<<<< HEAD
+	s = current->fs->pwd.dentry->d_sb;
+	ROOT_DEV = s->s_dev;
+	printk(KERN_INFO
+	       "VFS: Mounted root (%s filesystem)%s on device %u:%u.\n",
+	       s->s_type->name,
+	       s->s_flags & MS_RDONLY ?  " readonly" : "",
+	       MAJOR(ROOT_DEV), MINOR(ROOT_DEV));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ROOT_DEV = current->fs->pwd.mnt->mnt_sb->s_dev;
 	printk(KERN_INFO
 	       "VFS: Mounted root (%s filesystem)%s on device %u:%u.\n",
 	       current->fs->pwd.mnt->mnt_sb->s_type->name,
 	       current->fs->pwd.mnt->mnt_sb->s_flags & MS_RDONLY ?
 	       " readonly" : "", MAJOR(ROOT_DEV), MINOR(ROOT_DEV));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -333,8 +448,18 @@ retry:
 #ifdef CONFIG_BLOCK
 		__bdevname(ROOT_DEV, b);
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk("VFS: Cannot open root device \"%s\" or %s: error %d\n",
+				root_device_name, b, err);
+=======
 		printk("VFS: Cannot open root device \"%s\" or %s\n",
 				root_device_name, b);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk("VFS: Cannot open root device \"%s\" or %s\n",
+				root_device_name, b);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk("Please append a correct \"root=\" boot option; here are the available partitions:\n");
 
 		printk_all_partitions();

@@ -229,8 +229,12 @@ static int psc_ac97_probe(struct snd_soc_dai *cpu_dai)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops psc_ac97_analog_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops psc_ac97_analog_ops = {
+=======
 static struct snd_soc_dai_ops psc_ac97_analog_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= psc_ac97_hw_analog_params,
 	.trigger	= psc_ac97_trigger,
 };
@@ -238,8 +242,12 @@ static struct snd_soc_dai_ops psc_ac97_analog_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops psc_ac97_digital_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops psc_ac97_digital_ops = {
+=======
 static struct snd_soc_dai_ops psc_ac97_digital_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= psc_ac97_hw_digital_params,
 };
 
@@ -336,6 +344,9 @@ static struct platform_driver psc_ac97_driver = {
 <<<<<<< HEAD
 module_platform_driver(psc_ac97_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(psc_ac97_driver);
+=======
 /* ---------------------------------------------------------------------
  * Module setup and teardown; simply register the of_platform driver
  * for the PSC in AC97 mode.
@@ -352,6 +363,7 @@ static void __exit psc_ac97_exit(void)
 }
 module_exit(psc_ac97_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Jon Smirl <jonsmirl@gmail.com>");
 MODULE_DESCRIPTION("mpc5200 AC97 module");

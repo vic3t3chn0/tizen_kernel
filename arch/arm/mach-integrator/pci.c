@@ -27,11 +27,16 @@
 #include <linux/init.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/pci.h>
 #include <asm/mach-types.h>
 
 #include <mach/irqs.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/irq.h>
 #include <asm/system.h>
@@ -39,6 +44,7 @@
 #include <asm/mach-types.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 
  * A small note about bridges and interrupts.  The DECchip 21050 (and
  * later) adheres to the PCI-PCI bridge specification.  This says that
@@ -106,8 +112,12 @@ static int irq_tab[4] __initdata = {
 <<<<<<< HEAD
 static int __init integrator_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+static int __init integrator_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 static int __init integrator_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int intnr = ((slot - 9) + (pin - 1)) & 3;
 

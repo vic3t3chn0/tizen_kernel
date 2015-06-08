@@ -51,8 +51,11 @@ static int bf5xx_ssm2602_hw_params(struct snd_pcm_substream *substream,
 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int clk = 0;
 	int ret = 0;
 
@@ -80,6 +83,8 @@ static int bf5xx_ssm2602_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * CODEC is master for BCLK and LRC in this configuration.
 	 */
@@ -96,6 +101,7 @@ static int bf5xx_ssm2602_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_dai_set_sysclk(codec_dai, SSM2602_SYSCLK, clk,
 		SND_SOC_CLOCK_IN);
 	if (ret < 0)
@@ -109,12 +115,18 @@ static struct snd_soc_ops bf5xx_ssm2602_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* CODEC is master for BCLK and LRC in this configuration. */
 #define BF5XX_SSM2602_DAIFMT (SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF | \
 				SND_SOC_DAIFMT_CBM_CFM)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_link bf5xx_ssm2602_dai[] = {
 	{
 		.name = "ssm2602",
@@ -127,7 +139,11 @@ static struct snd_soc_dai_link bf5xx_ssm2602_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_SSM2602_DAIFMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_SSM2602_DAIFMT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.name = "ssm2602",
@@ -140,7 +156,11 @@ static struct snd_soc_dai_link bf5xx_ssm2602_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_SSM2602_DAIFMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_SSM2602_DAIFMT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -149,7 +169,11 @@ static struct snd_soc_card bf5xx_ssm2602 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &bf5xx_ssm2602_dai[CONFIG_SND_BF5XX_SPORT_NUM],
 	.num_links = 1,
 };

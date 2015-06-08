@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/interrupt.h>
 =======
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <asm/natfeat.h>
 #include <asm/virtconvert.h>
@@ -45,8 +49,12 @@ enum {
 <<<<<<< HEAD
 static const char version[] __devinitconst =
 =======
+<<<<<<< HEAD
+static const char version[] __devinitconst =
+=======
 static const char version[] __devinitdata =
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	KERN_INFO KBUILD_MODNAME ".c:v" DRV_VERSION " " DRV_RELDATE
 	" S.Opichal, M.Jurik, P.Stehlik\n"
 	KERN_INFO " http://aranym.org/\n";
@@ -214,8 +222,11 @@ static struct net_device * __init nfeth_probe(int unit)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dev->flags |= NETIF_F_NO_CSUM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(dev->dev_addr, mac, ETH_ALEN);
 
 	priv = netdev_priv(dev);

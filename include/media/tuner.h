@@ -130,7 +130,11 @@
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TUNER_PARTSNIC_PTI_5NF05	81
 #define TUNER_PHILIPS_CU1216L           82
 #define TUNER_NXP_TDA18271		83
@@ -143,7 +147,13 @@
 #define TUNER_XC5000C			88	/* Xceive Silicon Tuner */
 
 =======
+<<<<<<< HEAD
+#define TUNER_XC4000			87	/* Xceive Silicon Tuner */
+#define TUNER_XC5000C			88	/* Xceive Silicon Tuner */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* tv card specific */
 #define TDA9887_PRESENT 		(1<<0)
 #define TDA9887_PORT1_INACTIVE 		(1<<1)

@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/clk.h>
@@ -36,10 +40,16 @@
 #include <mach/tnetv107x.h>
 #include <mach/gpio-davinci.h>
 =======
+<<<<<<< HEAD
+#include <mach/hardware.h>
+#include <mach/tnetv107x.h>
+#include <mach/gpio-davinci.h>
+=======
 #include <mach/gpio.h>
 #include <mach/hardware.h>
 #include <mach/tnetv107x.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "clock.h"
 #include "mux.h"
@@ -740,13 +750,19 @@ static void tnetv107x_watchdog_reset(struct platform_device *pdev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void tnetv107x_restart(char mode, const char *cmd)
 {
 	tnetv107x_watchdog_reset(&tnetv107x_wdt_device);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct davinci_soc_info tnetv107x_soc_info = {
 	.io_desc		= io_desc,
 	.io_desc_num		= ARRAY_SIZE(io_desc),
@@ -771,9 +787,12 @@ static struct davinci_soc_info tnetv107x_soc_info = {
 	.serial_dev		= &tnetv107x_serial_device,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.reset			= tnetv107x_watchdog_reset,
 	.reset_device		= &tnetv107x_wdt_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init tnetv107x_init(void)

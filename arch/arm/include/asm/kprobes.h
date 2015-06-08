@@ -26,6 +26,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * This undefined instruction must be unique and
  * reserved solely for kprobes' use.
@@ -34,6 +36,7 @@
 
 #define regs_return_value(regs)		((regs)->ARM_r0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define flush_insn_slot(p)		do { } while (0)
 #define kretprobe_blacklist_size	0
 
@@ -42,6 +45,9 @@ typedef u32 kprobe_opcode_t;
 struct kprobe;
 typedef void (kprobe_insn_handler_t)(struct kprobe *, struct pt_regs *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef unsigned long (kprobe_check_cc)(unsigned long);
 typedef void (kprobe_insn_singlestep_t)(struct kprobe *, struct pt_regs *);
 typedef void (kprobe_insn_fn_t)(void);
@@ -53,6 +59,8 @@ struct arch_specific_insn {
 	kprobe_check_cc			*insn_check_cc;
 	kprobe_insn_singlestep_t	*insn_singlestep;
 	kprobe_insn_fn_t		*insn_fn;
+<<<<<<< HEAD
+=======
 =======
 
 typedef unsigned long (kprobe_check_cc)(unsigned long);
@@ -63,6 +71,7 @@ struct arch_specific_insn {
 	kprobe_insn_handler_t	*insn_handler;
 	kprobe_check_cc		*insn_check_cc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct prev_kprobe {
@@ -81,13 +90,18 @@ struct kprobe_ctlblk {
 void arch_remove_kprobe(struct kprobe *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void kretprobe_trampoline(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int kprobe_fault_handler(struct pt_regs *regs, unsigned int fsr);
 int kprobe_exceptions_notify(struct notifier_block *self,
 			     unsigned long val, void *data);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 enum kprobe_insn {
@@ -100,5 +114,6 @@ enum kprobe_insn arm_kprobe_decode_insn(kprobe_opcode_t,
 					struct arch_specific_insn *);
 void __init arm_kprobe_decode_init(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _ARM_KPROBES_H */

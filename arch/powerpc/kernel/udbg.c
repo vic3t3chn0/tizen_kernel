@@ -36,7 +36,13 @@ void __init udbg_early_init(void)
 	/* For LPAR machines that have an HVSI console on vterm 0 */
 	udbg_init_debug_lpar_hvsi();
 =======
+<<<<<<< HEAD
+#elif defined(CONFIG_PPC_EARLY_DEBUG_LPAR_HVSI)
+	/* For LPAR machines that have an HVSI console on vterm 0 */
+	udbg_init_debug_lpar_hvsi();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_PPC_EARLY_DEBUG_G5)
 	/* For use on Apple G5 machines */
 	udbg_init_pmac_realmode();
@@ -51,10 +57,13 @@ void __init udbg_early_init(void)
 	udbg_init_maple_realmode();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #elif defined(CONFIG_PPC_EARLY_DEBUG_ISERIES)
 	/* For iSeries - hit Ctrl-x Ctrl-x to see the output */
 	udbg_init_iseries();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_PPC_EARLY_DEBUG_BEAT)
 	udbg_init_debug_beat();
 #elif defined(CONFIG_PPC_EARLY_DEBUG_PAS_REALMODE)
@@ -74,6 +83,9 @@ void __init udbg_early_init(void)
 #elif defined(CONFIG_PPC_EARLY_DEBUG_WSP)
 	udbg_init_wsp();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_PPC_EARLY_DEBUG_EHV_BC)
 	udbg_init_ehv_bc();
 #elif defined(CONFIG_PPC_EARLY_DEBUG_PS3GELIC)
@@ -82,8 +94,11 @@ void __init udbg_early_init(void)
 	udbg_init_debug_opal_raw();
 #elif defined(CONFIG_PPC_EARLY_DEBUG_OPAL_HVSI)
 	udbg_init_debug_opal_hvsi();
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_PPC_EARLY_DEBUG
@@ -92,7 +107,12 @@ void __init udbg_early_init(void)
 
 	register_early_udbg_console();
 =======
+<<<<<<< HEAD
+
+	register_early_udbg_console();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 

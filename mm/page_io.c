@@ -1,7 +1,11 @@
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  linux/mm/page_io.c
  *
@@ -23,6 +27,9 @@
 #include <linux/swapops.h>
 #include <linux/writeback.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/blkdev.h>
 #include <linux/ratelimit.h>
 #include <asm/pgtable.h>
@@ -33,10 +40,13 @@
  */
 #define SWAP_ERROR_LOG_RATE_MS 1000
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/pgtable.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct bio *get_swap_bio(gfp_t gfp_flags,
 				struct page *page, bio_end_io_t end_io)
 {
@@ -64,7 +74,11 @@ static void end_swap_bio_write(struct bio *bio, int err)
 <<<<<<< HEAD
 	static unsigned long swap_error_rs_time;
 =======
+<<<<<<< HEAD
+	static unsigned long swap_error_rs_time;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!uptodate) {
 		SetPageError(page);
@@ -82,8 +96,14 @@ static void end_swap_bio_write(struct bio *bio, int err)
 					   SWAP_ERROR_LOG_RATE_MS))
 			printk(KERN_ALERT "Write-error on swap-device (%u:%u:%Lu)\n",
 =======
+<<<<<<< HEAD
+		if (printk_timed_ratelimit(&swap_error_rs_time,
+					   SWAP_ERROR_LOG_RATE_MS))
+			printk(KERN_ALERT "Write-error on swap-device (%u:%u:%Lu)\n",
+=======
 		printk(KERN_ALERT "Write-error on swap-device (%u:%u:%Lu)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				imajor(bio->bi_bdev->bd_inode),
 				iminor(bio->bi_bdev->bd_inode),
 				(unsigned long long)bio->bi_sector);
@@ -106,6 +126,9 @@ void end_swap_bio_read(struct bio *bio, int err)
 				iminor(bio->bi_bdev->bd_inode),
 				(unsigned long long)bio->bi_sector);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -154,11 +177,14 @@ void end_swap_bio_read(struct bio *bio, int err)
 	}
 
 out:
+<<<<<<< HEAD
+=======
 =======
 	} else {
 		SetPageUptodate(page);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_page(page);
 	bio_put(bio);
 }

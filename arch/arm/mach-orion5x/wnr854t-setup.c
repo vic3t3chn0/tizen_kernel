@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
@@ -23,8 +27,11 @@
 #include <asm/mach-types.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 #include <asm/mach/pci.h>
 #include <mach/orion5x.h>
@@ -144,8 +151,13 @@ static void __init wnr854t_init(void)
 static int __init wnr854t_pci_map_irq(const struct pci_dev *dev, u8 slot,
 	u8 pin)
 =======
+<<<<<<< HEAD
+static int __init wnr854t_pci_map_irq(const struct pci_dev *dev, u8 slot,
+	u8 pin)
+=======
 static int __init wnr854t_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq;
 
@@ -187,8 +199,12 @@ MACHINE_START(WNR854T, "Netgear WNR854T")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= wnr854t_init,
 	.map_io		= orion5x_map_io,
 	.init_early	= orion5x_init_early,
@@ -198,5 +214,9 @@ MACHINE_START(WNR854T, "Netgear WNR854T")
 <<<<<<< HEAD
 	.restart	= orion5x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= orion5x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

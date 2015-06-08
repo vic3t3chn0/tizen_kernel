@@ -20,6 +20,14 @@
  *	software is provided AS-IS with no warranties.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/init.h>
@@ -28,11 +36,26 @@
 #include <linux/notifier.h>
 #include <linux/reboot.h>
 #include <linux/fs.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/spinlock.h>
+#include <linux/uaccess.h>
+#include <linux/io.h>
+#include <linux/ioport.h>
+
+#define DEBUG
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pci.h>
 #include <linux/spinlock.h>
 #include <linux/uaccess.h>
 #include <linux/io.h>
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NAME "it8712f_wdt"
 
 MODULE_AUTHOR("Jorge Boncompte - DTI2 <jorge@dti2.net>");
@@ -45,13 +68,30 @@ static int margin = 60;		/* in seconds */
 module_param(margin, int, 0);
 MODULE_PARM_DESC(margin, "Watchdog margin in seconds");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, bool, 0);
+=======
 static int nowayout = WATCHDOG_NOWAYOUT;
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout, "Disable watchdog shutdown on close");
 
 static unsigned long wdt_open;
 static unsigned expect_close;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static spinlock_t io_lock;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static spinlock_t io_lock;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned char revision;
 
 /* Dog Food address - We use the game port address */
@@ -121,20 +161,52 @@ static inline void superio_select(int ldn)
 	outb(ldn, VAL);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline int superio_enter(void)
+{
+	/*
+	 * Try to reserve REG and REG + 1 for exclusive access.
+	 */
+	if (!request_muxed_region(REG, 2, NAME))
+		return -EBUSY;
+
+=======
 static inline void superio_enter(void)
 {
 	spin_lock(&io_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static inline void superio_enter(void)
+{
+	spin_lock(&io_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	outb(0x87, REG);
 	outb(0x01, REG);
 	outb(0x55, REG);
 	outb(0x55, REG);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void superio_exit(void)
 {
 	outb(0x02, REG);
 	outb(0x02, VAL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	release_region(REG, 2);
+=======
 	spin_unlock(&io_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock(&io_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void it8712f_wdt_ping(void)
@@ -153,10 +225,23 @@ static void it8712f_wdt_update_margin(void)
 	 */
 	if (units <= max_units) {
 		config |= WDT_UNIT_SEC; /* else UNIT is MINUTES */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("timer margin %d seconds\n", units);
+	} else {
+		units /= 60;
+		pr_info("timer margin %d minutes\n", units);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO NAME ": timer margin %d seconds\n", units);
 	} else {
 		units /= 60;
 		printk(KERN_INFO NAME ": timer margin %d minutes\n", units);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	superio_outb(config, WDT_CONFIG);
 
@@ -173,10 +258,26 @@ static int it8712f_wdt_get_status(void)
 		return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int it8712f_wdt_enable(void)
+{
+	int ret = superio_enter();
+	if (ret)
+		return ret;
+
+	pr_debug("enabling watchdog timer\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void it8712f_wdt_enable(void)
 {
 	printk(KERN_DEBUG NAME ": enabling watchdog timer\n");
 	superio_enter();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	superio_select(LDN_GPIO);
 
 	superio_outb(wdt_control_reg, WDT_CONTROL);
@@ -186,6 +287,22 @@ static void it8712f_wdt_enable(void)
 	superio_exit();
 
 	it8712f_wdt_ping();
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	return 0;
+}
+
+static int it8712f_wdt_disable(void)
+{
+	int ret = superio_enter();
+	if (ret)
+		return ret;
+
+	pr_debug("disabling watchdog timer\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void it8712f_wdt_disable(void)
@@ -193,6 +310,10 @@ static void it8712f_wdt_disable(void)
 	printk(KERN_DEBUG NAME ": disabling watchdog timer\n");
 
 	superio_enter();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	superio_select(LDN_GPIO);
 
 	superio_outb(0, WDT_CONFIG);
@@ -202,6 +323,13 @@ static void it8712f_wdt_disable(void)
 	superio_outb(0, WDT_TIMEOUT);
 
 	superio_exit();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int it8712f_wdt_notify(struct notifier_block *this,
@@ -252,6 +380,13 @@ static long it8712f_wdt_ioctl(struct file *file, unsigned int cmd,
 						WDIOF_MAGICCLOSE,
 	};
 	int value;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (cmd) {
 	case WDIOC_GETSUPPORT:
@@ -259,7 +394,17 @@ static long it8712f_wdt_ioctl(struct file *file, unsigned int cmd,
 			return -EFAULT;
 		return 0;
 	case WDIOC_GETSTATUS:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = superio_enter();
+		if (ret)
+			return ret;
+=======
 		superio_enter();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		superio_enter();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		superio_select(LDN_GPIO);
 
 		value = it8712f_wdt_get_status();
@@ -280,7 +425,17 @@ static long it8712f_wdt_ioctl(struct file *file, unsigned int cmd,
 		if (value > (max_units * 60))
 			return -EINVAL;
 		margin = value;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = superio_enter();
+		if (ret)
+			return ret;
+=======
 		superio_enter();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		superio_enter();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		superio_select(LDN_GPIO);
 
 		it8712f_wdt_update_margin();
@@ -299,21 +454,51 @@ static long it8712f_wdt_ioctl(struct file *file, unsigned int cmd,
 
 static int it8712f_wdt_open(struct inode *inode, struct file *file)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+	/* only allow one at a time */
+	if (test_and_set_bit(0, &wdt_open))
+		return -EBUSY;
+
+	ret = it8712f_wdt_enable();
+	if (ret)
+		return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* only allow one at a time */
 	if (test_and_set_bit(0, &wdt_open))
 		return -EBUSY;
 	it8712f_wdt_enable();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return nonseekable_open(inode, file);
 }
 
 static int it8712f_wdt_release(struct inode *inode, struct file *file)
 {
 	if (expect_close != 42) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("watchdog device closed unexpectedly, will not disable the watchdog timer\n");
+	} else if (!nowayout) {
+		if (it8712f_wdt_disable())
+			pr_warn("Watchdog disable failed\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_WARNING NAME
 			": watchdog device closed unexpectedly, will not"
 			" disable the watchdog timer\n");
 	} else if (!nowayout) {
 		it8712f_wdt_disable();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	expect_close = 0;
 	clear_bit(0, &wdt_open);
@@ -340,8 +525,20 @@ static int __init it8712f_wdt_find(unsigned short *address)
 {
 	int err = -ENODEV;
 	int chip_type;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = superio_enter();
+	if (ret)
+		return ret;
+
+=======
 
 	superio_enter();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	superio_enter();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chip_type = superio_inw(DEVID);
 	if (chip_type != IT8712F_DEVID)
 		goto exit;
@@ -349,13 +546,29 @@ static int __init it8712f_wdt_find(unsigned short *address)
 	superio_select(LDN_GAME);
 	superio_outb(1, ACT_REG);
 	if (!(superio_inb(ACT_REG) & 0x01)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Device not activated, skipping\n");
+=======
 		printk(KERN_ERR NAME ": Device not activated, skipping\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR NAME ": Device not activated, skipping\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit;
 	}
 
 	*address = superio_inw(BASE_REG);
 	if (*address == 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Base address not set, skipping\n");
+=======
 		printk(KERN_ERR NAME ": Base address not set, skipping\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR NAME ": Base address not set, skipping\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit;
 	}
 
@@ -369,8 +582,17 @@ static int __init it8712f_wdt_find(unsigned short *address)
 	if (margin > (max_units * 60))
 		margin = (max_units * 60);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Found IT%04xF chip revision %d - using DogFood address 0x%x\n",
+=======
 	printk(KERN_INFO NAME ": Found IT%04xF chip revision %d - "
 		"using DogFood address 0x%x\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO NAME ": Found IT%04xF chip revision %d - "
+		"using DogFood address 0x%x\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chip_type, revision, *address);
 
 exit:
@@ -382,12 +604,38 @@ static int __init it8712f_wdt_init(void)
 {
 	int err = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	spin_lock_init(&io_lock);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_init(&io_lock);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (it8712f_wdt_find(&address))
 		return -ENODEV;
 
 	if (!request_region(address, 1, "IT8712F Watchdog")) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("watchdog I/O region busy\n");
+		return -EBUSY;
+	}
+
+	err = it8712f_wdt_disable();
+	if (err) {
+		pr_err("unable to disable watchdog timer\n");
+		goto out;
+	}
+
+	err = register_reboot_notifier(&it8712f_wdt_notifier);
+	if (err) {
+		pr_err("unable to register reboot notifier\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_WARNING NAME ": watchdog I/O region busy\n");
 		return -EBUSY;
 	}
@@ -397,14 +645,29 @@ static int __init it8712f_wdt_init(void)
 	err = register_reboot_notifier(&it8712f_wdt_notifier);
 	if (err) {
 		printk(KERN_ERR NAME ": unable to register reboot notifier\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
 	err = misc_register(&it8712f_wdt_miscdev);
 	if (err) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("cannot register miscdev on minor=%d (err=%d)\n",
+		       WATCHDOG_MINOR, err);
+=======
 		printk(KERN_ERR NAME
 			": cannot register miscdev on minor=%d (err=%d)\n",
 			WATCHDOG_MINOR, err);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR NAME
+			": cannot register miscdev on minor=%d (err=%d)\n",
+			WATCHDOG_MINOR, err);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto reboot_out;
 	}
 

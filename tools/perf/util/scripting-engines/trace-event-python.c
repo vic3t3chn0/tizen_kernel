@@ -26,8 +26,11 @@
 #include <string.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <ctype.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <errno.h>
 
 #include "../../perf.h"
@@ -36,7 +39,12 @@
 #include "../event.h"
 #include "../thread.h"
 =======
+<<<<<<< HEAD
+#include "../event.h"
+#include "../thread.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "../trace-event.h"
 
 PyMODINIT_FUNC initperf_trace_context(void);
@@ -218,8 +226,12 @@ static void python_process_event(union perf_event *pevent __unused,
 <<<<<<< HEAD
 				 struct machine *machine __unused,
 =======
+<<<<<<< HEAD
+				 struct machine *machine __unused,
+=======
 				 struct perf_session *session __unused,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 struct thread *thread)
 {
 	PyObject *handler, *retval, *context, *t, *obj, *dict = NULL;

@@ -295,9 +295,18 @@ static int at91_i2c_resume(struct platform_device *pdev)
 #define at91_i2c_resume		NULL
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /* work with "modprobe at91_i2c" from hotplugging or coldplugging */
 MODULE_ALIAS("platform:at91_i2c");
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* work with "modprobe at91_i2c" from hotplugging or coldplugging */
+MODULE_ALIAS("platform:at91_i2c");
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver at91_i2c_driver = {
 	.probe		= at91_i2c_probe,
 	.remove		= __devexit_p(at91_i2c_remove),
@@ -309,6 +318,12 @@ static struct platform_driver at91_i2c_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(at91_i2c_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init at91_i2c_init(void)
 {
 	return platform_driver_register(&at91_i2c_driver);
@@ -321,7 +336,18 @@ static void __exit at91_i2c_exit(void)
 
 module_init(at91_i2c_init);
 module_exit(at91_i2c_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Rick Bronson");
 MODULE_DESCRIPTION("I2C (TWI) driver for Atmel AT91");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_ALIAS("platform:at91_i2c");
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

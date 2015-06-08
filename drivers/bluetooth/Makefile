@@ -2,6 +2,13 @@
 # Makefile for the Linux Bluetooth HCI device drivers.
 #
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+obj-$(CONFIG_BT_HCISMD)		+= hci_smd.o
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_BT_HCIVHCI)	+= hci_vhci.o
 obj-$(CONFIG_BT_HCIUART)	+= hci_uart.o
 obj-$(CONFIG_BT_HCIBCM203X)	+= bcm203x.o
@@ -28,4 +35,16 @@ hci_uart-$(CONFIG_BT_HCIUART_H4)	+= hci_h4.o
 hci_uart-$(CONFIG_BT_HCIUART_BCSP)	+= hci_bcsp.o
 hci_uart-$(CONFIG_BT_HCIUART_LL)	+= hci_ll.o
 hci_uart-$(CONFIG_BT_HCIUART_ATH3K)	+= hci_ath.o
+<<<<<<< HEAD
+<<<<<<< HEAD
+hci_uart-$(CONFIG_BT_HCIUART_IBS)	+= hci_ibs.o
 hci_uart-objs				:= $(hci_uart-y)
+obj-$(CONFIG_BT_MSM_SLEEP)              += msm_bt_sleep.o
+msm_bt_sleep-objs                       := bluesleep.o
+obj-$(CONFIG_MSM_BT_POWER)		+= bluetooth-power.o
+=======
+hci_uart-objs				:= $(hci_uart-y)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hci_uart-objs				:= $(hci_uart-y)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

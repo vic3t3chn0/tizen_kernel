@@ -34,6 +34,9 @@ void genl_unlock(void)
 EXPORT_SYMBOL(genl_unlock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PROVE_LOCKING
 int lockdep_genl_is_held(void)
 {
@@ -42,8 +45,11 @@ int lockdep_genl_is_held(void)
 EXPORT_SYMBOL(lockdep_genl_is_held);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GENL_FAM_TAB_SIZE	16
 #define GENL_FAM_TAB_MASK	(GENL_FAM_TAB_SIZE - 1)
 
@@ -112,8 +118,12 @@ static struct genl_ops *genl_get_cmd(u8 cmd, struct genl_family *family)
 <<<<<<< HEAD
 static u16 genl_generate_id(void)
 =======
+<<<<<<< HEAD
+static u16 genl_generate_id(void)
+=======
 static inline u16 genl_generate_id(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	static u16 id_gen_idx = GENL_MIN_ID;
 	int i;
@@ -151,8 +161,11 @@ int genl_register_mc_group(struct genl_family *family,
 	BUG_ON(grp->name[0] == '\0');
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	BUG_ON(memchr(grp->name, '\0', GENL_NAMSIZ) == NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	genl_lock();
 
@@ -510,6 +523,9 @@ int genl_unregister_family(struct genl_family *family)
 EXPORT_SYMBOL(genl_unregister_family);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * genlmsg_put - Add generic netlink header to netlink message
  * @skb: socket buffer holding the message
@@ -541,8 +557,11 @@ void *genlmsg_put(struct sk_buff *skb, u32 pid, u32 seq,
 }
 EXPORT_SYMBOL(genlmsg_put);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int genl_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 {
 	struct genl_ops *ops;
@@ -572,8 +591,12 @@ static int genl_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 <<<<<<< HEAD
 	    !capable(CAP_NET_ADMIN))
 =======
+<<<<<<< HEAD
+	    !capable(CAP_NET_ADMIN))
+=======
 	    security_netlink_recv(skb, CAP_NET_ADMIN))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 
 	if (nlh->nlmsg_flags & NLM_F_DUMP) {
@@ -582,6 +605,9 @@ static int genl_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 
 		genl_unlock();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{
 			struct netlink_dump_control c = {
 				.dump = ops->dumpit,
@@ -589,10 +615,13 @@ static int genl_rcv_msg(struct sk_buff *skb, struct nlmsghdr *nlh)
 			};
 			err = netlink_dump_start(net->genl_sock, skb, nlh, &c);
 		}
+<<<<<<< HEAD
+=======
 =======
 		err = netlink_dump_start(net->genl_sock, skb, nlh,
 					 ops->dumpit, ops->done, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		genl_lock();
 		return err;
 	}
@@ -852,6 +881,9 @@ static int ctrl_getfamily(struct sk_buff *skb, struct genl_info *info)
 		name = nla_data(info->attrs[CTRL_ATTR_FAMILY_NAME]);
 		res = genl_family_find_byname(name);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MODULES
 		if (res == NULL) {
 			genl_unlock();
@@ -861,8 +893,11 @@ static int ctrl_getfamily(struct sk_buff *skb, struct genl_info *info)
 			res = genl_family_find_byname(name);
 		}
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENOENT;
 	}
 
@@ -1026,6 +1061,9 @@ int genlmsg_multicast_allns(struct sk_buff *skb, u32 pid, unsigned int group,
 }
 EXPORT_SYMBOL(genlmsg_multicast_allns);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void genl_notify(struct sk_buff *skb, struct net *net, u32 pid, u32 group,
 		 struct nlmsghdr *nlh, gfp_t flags)
@@ -1039,5 +1077,8 @@ void genl_notify(struct sk_buff *skb, struct net *net, u32 pid, u32 group,
 	nlmsg_notify(sk, skb, pid, group, report, flags);
 }
 EXPORT_SYMBOL(genl_notify);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

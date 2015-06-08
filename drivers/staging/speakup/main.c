@@ -23,7 +23,14 @@
 */
 
 #include <linux/kernel.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/vt.h>
 #include <linux/tty.h>
 #include <linux/mm.h>		/* __get_free_page() and friends */
@@ -1732,6 +1739,20 @@ static void do_handle_spec(struct vc_data *vc, u_char value, char up_flag)
 	switch (value) {
 	case KVAL(K_CAPS):
 		label = msg_get(MSG_KEYNAME_CAPSLOCK);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		on_off = vt_get_leds(fg_console, VC_CAPSLOCK);
+		break;
+	case KVAL(K_NUM):
+		label = msg_get(MSG_KEYNAME_NUMLOCK);
+		on_off = vt_get_leds(fg_console, VC_NUMLOCK);
+		break;
+	case KVAL(K_HOLD):
+		label = msg_get(MSG_KEYNAME_SCROLLLOCK);
+		on_off = vt_get_leds(fg_console, VC_SCROLLOCK);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		on_off = (vc_kbd_led(kbd_table + vc->vc_num, VC_CAPSLOCK));
 		break;
 	case KVAL(K_NUM):
@@ -1741,6 +1762,10 @@ static void do_handle_spec(struct vc_data *vc, u_char value, char up_flag)
 	case KVAL(K_HOLD):
 		label = msg_get(MSG_KEYNAME_SCROLLLOCK);
 		on_off = (vc_kbd_led(kbd_table + vc->vc_num, VC_SCROLLOCK));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (speakup_console[vc->vc_num])
 			speakup_console[vc->vc_num]->tty_stopped = on_off;
 		break;
@@ -1855,7 +1880,15 @@ static void speakup_bits(struct vc_data *vc)
 
 static int handle_goto(struct vc_data *vc, u_char type, u_char ch, u_short key)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static u_char *goto_buf = "\0\0\0\0\0\0";
+=======
 	static u_char goto_buf[8];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	static u_char goto_buf[8];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static int num;
 	int maxlen, go_pos;
 	char *cp;
@@ -2021,7 +2054,15 @@ speakup_key(struct vc_data *vc, int shift_state, int keycode, u_short keysym,
 	if (type >= 0xf0)
 		type -= 0xf0;
 	if (type == KT_PAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+		&& (vt_get_leds(fg_console, VC_NUMLOCK))) {
+=======
 		&& (vc_kbd_led(kbd_table + fg_console, VC_NUMLOCK))) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		&& (vc_kbd_led(kbd_table + fg_console, VC_NUMLOCK))) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (up_flag) {
 			spk_keydown = 0;
 			goto out;
@@ -2269,8 +2310,16 @@ static int __init speakup_init(void)
 		set_mask_bits(0, i, 2);
 
 	set_key_info(key_defaults, key_buf);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (quiet_boot)
 		spk_shut_up |= 0x01;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (quiet_boot)
+		spk_shut_up |= 0x01;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* From here on out, initializations can fail. */
 	err = speakup_add_virtual_keyboard();
@@ -2293,6 +2342,15 @@ static int __init speakup_init(void)
 				goto error_kobjects;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (quiet_boot)
+		spk_shut_up |= 0x01;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = speakup_kobj_init();
 	if (err)
 		goto error_kobjects;

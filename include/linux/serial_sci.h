@@ -12,7 +12,12 @@
 #define SCIx_NOT_SUPPORTED	(-1)
 
 =======
+<<<<<<< HEAD
+#define SCIx_NOT_SUPPORTED	(-1)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	SCBRR_ALGO_1,		/* ((clk + 16 * bps) / (16 * bps) - 1) */
 	SCBRR_ALGO_2,		/* ((clk + 16 * bps) / (32 * bps) - 1) */
@@ -31,6 +36,9 @@ enum {
 #define SCSCR_CKE0	(1 << 0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* SCxSR SCI */
 #define SCI_TDRE  0x80
 #define SCI_RDRF  0x40
@@ -57,8 +65,11 @@ enum {
 #define SCSPTR_RTSIO	(1 << 7)
 #define SCSPTR_CTSIO	(1 << 5)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Offsets into the sci_port->irqs array */
 enum {
 	SCIx_ERI_IRQ,
@@ -67,6 +78,9 @@ enum {
 	SCIx_BRI_IRQ,
 	SCIx_NR_IRQS,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	SCIx_MUX_IRQ = SCIx_NR_IRQS,	/* special case */
 };
@@ -97,8 +111,11 @@ enum {
 	SCIx_SH7705_SCIF_REGTYPE,
 
 	SCIx_NR_REGTYPES,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define SCIx_IRQ_MUXED(irq)		\
@@ -110,6 +127,9 @@ enum {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCIx_IRQ_IS_MUXED(port)			\
 	((port)->cfg->irqs[SCIx_ERI_IRQ] ==	\
 	 (port)->cfg->irqs[SCIx_RXI_IRQ]) ||	\
@@ -138,10 +158,13 @@ struct plat_sci_port_ops {
  */
 #define SCIx_HAVE_RTSCTS	(1 << 0)
 
+<<<<<<< HEAD
+=======
 =======
 struct device;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Platform device specific platform_data struct
  */
@@ -149,19 +172,28 @@ struct plat_sci_port {
 	unsigned long	mapbase;		/* resource base */
 	unsigned int	irqs[SCIx_NR_IRQS];	/* ERI, RXI, TXI, BRI */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int	gpios[SCIx_NR_FNS];	/* SCK, RXD, TXD, CTS, RTS */
 	unsigned int	type;			/* SCI / SCIF / IRDA */
 	upf_t		flags;			/* UPF_* flags */
 	unsigned long	capabilities;		/* Port features/capabilities */
+<<<<<<< HEAD
+=======
 =======
 	unsigned int	type;			/* SCI / SCIF / IRDA */
 	upf_t		flags;			/* UPF_* flags */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int	scbrr_algo_id;		/* SCBRR calculation algo */
 	unsigned int	scscr;			/* SCSCR initialization */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Platform overrides if necessary, defaults otherwise.
 	 */
@@ -173,9 +205,12 @@ struct plat_sci_port {
 	unsigned char	regtype;
 
 	struct plat_sci_port_ops	*ops;
+<<<<<<< HEAD
+=======
 =======
 	struct device	*dma_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int	dma_slave_tx;
 	unsigned int	dma_slave_rx;

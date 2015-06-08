@@ -36,7 +36,13 @@ struct dev_archdata {
 	struct eeh_dev		*edev;
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_EEH
+	struct eeh_dev		*edev;
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct pdev_archdata {
@@ -47,5 +53,10 @@ struct pdev_archdata {
 #define ARCH_HAS_DMA_GET_REQUIRED_MASK
 
 =======
+<<<<<<< HEAD
+#define ARCH_HAS_DMA_GET_REQUIRED_MASK
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_POWERPC_DEVICE_H */

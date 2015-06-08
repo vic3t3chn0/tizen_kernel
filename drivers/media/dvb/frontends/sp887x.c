@@ -209,13 +209,29 @@ static int sp887x_initial_setup (struct dvb_frontend* fe, const struct firmware 
 	return 0;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int configure_reg0xc05(struct dtv_frontend_properties *p, u16 *reg0xc05)
+=======
 static int configure_reg0xc05 (struct dvb_frontend_parameters *p, u16 *reg0xc05)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int configure_reg0xc05 (struct dvb_frontend_parameters *p, u16 *reg0xc05)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int known_parameters = 1;
 
 	*reg0xc05 = 0x000;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (p->modulation) {
+=======
 	switch (p->u.ofdm.constellation) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (p->u.ofdm.constellation) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case QPSK:
 		break;
 	case QAM_16:
@@ -231,7 +247,15 @@ static int configure_reg0xc05 (struct dvb_frontend_parameters *p, u16 *reg0xc05)
 		return -EINVAL;
 	};
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (p->hierarchy) {
+=======
 	switch (p->u.ofdm.hierarchy_information) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (p->u.ofdm.hierarchy_information) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case HIERARCHY_NONE:
 		break;
 	case HIERARCHY_1:
@@ -250,7 +274,15 @@ static int configure_reg0xc05 (struct dvb_frontend_parameters *p, u16 *reg0xc05)
 		return -EINVAL;
 	};
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (p->code_rate_HP) {
+=======
 	switch (p->u.ofdm.code_rate_HP) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (p->u.ofdm.code_rate_HP) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case FEC_1_2:
 		break;
 	case FEC_2_3:
@@ -303,17 +335,50 @@ static void divide (int n, int d, int *quotient_i, int *quotient_f)
 }
 
 static void sp887x_correct_offsets (struct sp887x_state* state,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				    struct dtv_frontend_properties *p,
+				    int actual_freq)
+{
+	static const u32 srate_correction [] = { 1879617, 4544878, 8098561 };
+	int bw_index;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    struct dvb_frontend_parameters *p,
 				    int actual_freq)
 {
 	static const u32 srate_correction [] = { 1879617, 4544878, 8098561 };
 	int bw_index = p->u.ofdm.bandwidth - BANDWIDTH_8_MHZ;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int freq_offset = actual_freq - p->frequency;
 	int sysclock = 61003; //[kHz]
 	int ifreq = 36000000;
 	int freq;
 	int frequency_shift;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (p->bandwidth_hz) {
+	default:
+	case 8000000:
+		bw_index = 0;
+		break;
+	case 7000000:
+		bw_index = 1;
+		break;
+	case 6000000:
+		bw_index = 2;
+		break;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (p->inversion == INVERSION_ON)
 		freq = ifreq - freq_offset;
 	else
@@ -333,17 +398,41 @@ static void sp887x_correct_offsets (struct sp887x_state* state,
 	sp887x_writereg(state, 0x30a, frequency_shift & 0xfff);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sp887x_setup_frontend_parameters(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+=======
 static int sp887x_setup_frontend_parameters (struct dvb_frontend* fe,
 					     struct dvb_frontend_parameters *p)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sp887x_setup_frontend_parameters (struct dvb_frontend* fe,
+					     struct dvb_frontend_parameters *p)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sp887x_state* state = fe->demodulator_priv;
 	unsigned actual_freq;
 	int err;
 	u16 val, reg0xc05;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->bandwidth_hz != 8000000 &&
+	    p->bandwidth_hz != 7000000 &&
+	    p->bandwidth_hz != 6000000)
+=======
 	if (p->u.ofdm.bandwidth != BANDWIDTH_8_MHZ &&
 	    p->u.ofdm.bandwidth != BANDWIDTH_7_MHZ &&
 	    p->u.ofdm.bandwidth != BANDWIDTH_6_MHZ)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (p->u.ofdm.bandwidth != BANDWIDTH_8_MHZ &&
+	    p->u.ofdm.bandwidth != BANDWIDTH_7_MHZ &&
+	    p->u.ofdm.bandwidth != BANDWIDTH_6_MHZ)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	if ((err = configure_reg0xc05(p, &reg0xc05)))
@@ -353,7 +442,15 @@ static int sp887x_setup_frontend_parameters (struct dvb_frontend* fe,
 
 	/* setup the PLL */
 	if (fe->ops.tuner_ops.set_params) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fe->ops.tuner_ops.set_params(fe);
+=======
 		fe->ops.tuner_ops.set_params(fe, p);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fe->ops.tuner_ops.set_params(fe, p);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fe->ops.i2c_gate_ctrl) fe->ops.i2c_gate_ctrl(fe, 0);
 	}
 	if (fe->ops.tuner_ops.get_frequency) {
@@ -369,9 +466,21 @@ static int sp887x_setup_frontend_parameters (struct dvb_frontend* fe,
 	sp887x_correct_offsets(state, p, actual_freq);
 
 	/* filter for 6/7/8 Mhz channel */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->bandwidth_hz == 6000000)
+		val = 2;
+	else if (p->bandwidth_hz == 7000000)
+=======
 	if (p->u.ofdm.bandwidth == BANDWIDTH_6_MHZ)
 		val = 2;
 	else if (p->u.ofdm.bandwidth == BANDWIDTH_7_MHZ)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (p->u.ofdm.bandwidth == BANDWIDTH_6_MHZ)
+		val = 2;
+	else if (p->u.ofdm.bandwidth == BANDWIDTH_7_MHZ)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val = 1;
 	else
 		val = 0;
@@ -379,16 +488,36 @@ static int sp887x_setup_frontend_parameters (struct dvb_frontend* fe,
 	sp887x_writereg(state, 0x311, val);
 
 	/* scan order: 2k first = 0, 8k first = 1 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->transmission_mode == TRANSMISSION_MODE_2K)
+=======
 	if (p->u.ofdm.transmission_mode == TRANSMISSION_MODE_2K)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (p->u.ofdm.transmission_mode == TRANSMISSION_MODE_2K)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sp887x_writereg(state, 0x338, 0x000);
 	else
 		sp887x_writereg(state, 0x338, 0x001);
 
 	sp887x_writereg(state, 0xc05, reg0xc05);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->bandwidth_hz == 6000000)
+		val = 2 << 3;
+	else if (p->bandwidth_hz == 7000000)
+=======
 	if (p->u.ofdm.bandwidth == BANDWIDTH_6_MHZ)
 		val = 2 << 3;
 	else if (p->u.ofdm.bandwidth == BANDWIDTH_7_MHZ)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (p->u.ofdm.bandwidth == BANDWIDTH_6_MHZ)
+		val = 2 << 3;
+	else if (p->u.ofdm.bandwidth == BANDWIDTH_7_MHZ)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val = 3 << 3;
 	else
 		val = 0 << 3;
@@ -579,10 +708,22 @@ error:
 }
 
 static struct dvb_frontend_ops sp887x_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBT },
+	.info = {
+		.name = "Spase SP887x DVB-T",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.info = {
 		.name = "Spase SP887x DVB-T",
 		.type = FE_OFDM,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min =  50500000,
 		.frequency_max = 858000000,
 		.frequency_stepsize = 166666,

@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2009, 2011 The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2009, 2011 The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2009, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -32,7 +36,13 @@
 #include <asm/exception.h>
 #include <asm/cp15.h>
 =======
+<<<<<<< HEAD
+#include <asm/io.h>
+#include <asm/exception.h>
+#include <asm/cp15.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 
@@ -42,8 +52,14 @@
 
 #include "fiq.h"
 =======
+<<<<<<< HEAD
+#include <mach/fiq.h>
+
+#include "fiq.h"
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "smd_private.h"
 
 enum {
@@ -90,8 +106,12 @@ module_param_named(debug_mask, msm_irq_debug_mask, int,
 <<<<<<< HEAD
 #if defined(CONFIG_ARCH_MSM_SCORPION) && !defined(CONFIG_MSM_SMP)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_ARCH_MSM_SCORPION) && !defined(CONFIG_MSM_SMP)
+=======
 #if defined(CONFIG_ARCH_MSM_SCORPION)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIC_NO_PEND_VAL_FIQ VIC_REG(0x0064)
 #define VIC_INT_MASTEREN    VIC_REG(0x0068)  /* 1: IRQ, 2: FIQ     */
 #define VIC_CONFIG          VIC_REG(0x006C)  /* 1: USE SC VIC */
@@ -128,8 +148,12 @@ module_param_named(debug_mask, msm_irq_debug_mask, int,
 <<<<<<< HEAD
 #if defined(CONFIG_ARCH_MSM_SCORPION) && !defined(CONFIG_MSM_SMP)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_ARCH_MSM_SCORPION) && !defined(CONFIG_MSM_SMP)
+=======
 #if defined(CONFIG_ARCH_MSM_SCORPION)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIC_FIQ_VEC_RD      VIC_REG(0x00DC)
 #define VIC_FIQ_VEC_PEND_RD VIC_REG(0x00E0)
 #define VIC_FIQ_VEC_WR      VIC_REG(0x00E4)
@@ -151,8 +175,12 @@ module_param_named(debug_mask, msm_irq_debug_mask, int,
 <<<<<<< HEAD
 #if defined(CONFIG_ARCH_MSM7X30) || defined(CONFIG_ARCH_FSM9XXX)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_ARCH_MSM7X30) || defined(CONFIG_ARCH_FSM9XXX)
+=======
 #if defined(CONFIG_ARCH_MSM7X30)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIC_NUM_REGS	    4
 #else
 #define VIC_NUM_REGS	    2
@@ -189,6 +217,9 @@ static uint32_t msm_irq_idle_disable[VIC_NUM_REGS];
 
 #define SMSM_FAKE_IRQ (0xff)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if !defined(CONFIG_ARCH_FSM9XXX)
 static uint8_t msm_irq_to_smsm[NR_IRQS] = {
 #if !defined(CONFIG_ARCH_MSM7X27A)
@@ -196,12 +227,15 @@ static uint8_t msm_irq_to_smsm[NR_IRQS] = {
 	[INT_MDDI_PRI] = 2,
 	[INT_MDDI_CLIENT] = 3,
 #endif
+<<<<<<< HEAD
+=======
 =======
 static uint8_t msm_irq_to_smsm[NR_IRQS] = {
 	[INT_MDDI_EXT] = 1,
 	[INT_MDDI_PRI] = 2,
 	[INT_MDDI_CLIENT] = 3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[INT_USB_OTG] = 4,
 
 	[INT_PWB_I2C] = 5,
@@ -256,6 +290,9 @@ static uint8_t msm_irq_to_smsm[NR_IRQS] = {
 #endif
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # else /* CONFIG_ARCH_FSM9XXX */
 static uint8_t msm_irq_to_smsm[NR_IRQS] = {
 	[INT_UART1] = 11,
@@ -268,8 +305,11 @@ static uint8_t msm_irq_to_smsm[NR_IRQS] = {
 	[INT_ADSP_A11] = SMSM_FAKE_IRQ,
 };
 #endif /* CONFIG_ARCH_FSM9XXX */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void msm_irq_write_all_regs(void __iomem *base, unsigned int val)
 {
@@ -282,6 +322,9 @@ static inline void msm_irq_write_all_regs(void __iomem *base, unsigned int val)
 static void msm_irq_ack(struct irq_data *d)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32_t mask;
 
 	void __iomem *reg = VIC_INT_TO_REG_ADDR(VIC_INT_CLEAR0, d->irq);
@@ -308,10 +351,13 @@ static void msm_irq_disable(struct irq_data *d)
 			msm_irq_smsm_wake_enable[0] &= ~mask;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	void __iomem *reg = VIC_INT_TO_REG_ADDR(VIC_INT_CLEAR0, d->irq);
 	writel(1 << (d->irq & 31), reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void msm_irq_mask(struct irq_data *d)
@@ -326,7 +372,11 @@ static void msm_irq_mask(struct irq_data *d)
 <<<<<<< HEAD
 	mb();
 =======
+<<<<<<< HEAD
+	mb();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (smsm_irq == 0)
 		msm_irq_idle_disable[index] &= ~mask;
 	else {
@@ -347,7 +397,11 @@ static void msm_irq_unmask(struct irq_data *d)
 <<<<<<< HEAD
 	mb();
 =======
+<<<<<<< HEAD
+	mb();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (smsm_irq == 0)
 		msm_irq_idle_disable[index] |= mask;
@@ -388,8 +442,12 @@ static int msm_irq_set_type(struct irq_data *d, unsigned int flow_type)
 <<<<<<< HEAD
         void __iomem *treg = VIC_INT_TO_REG_ADDR(VIC_INT_TYPE0, d->irq);
 =======
+<<<<<<< HEAD
+        void __iomem *treg = VIC_INT_TO_REG_ADDR(VIC_INT_TYPE0, d->irq);
+=======
 	void __iomem *treg = VIC_INT_TO_REG_ADDR(VIC_INT_TYPE0, d->irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem *preg = VIC_INT_TO_REG_ADDR(VIC_INT_POLARITY0, d->irq);
 	unsigned index = VIC_INT_TO_REG_INDEX(d->irq);
 	int b = 1 << (d->irq & 31);
@@ -417,12 +475,19 @@ static int msm_irq_set_type(struct irq_data *d, unsigned int flow_type)
 <<<<<<< HEAD
 	mb();
 =======
+<<<<<<< HEAD
+	mb();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msm_irq_shadow_reg[index].int_type = type;
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned int msm_irq_pending(void)
 {
 	unsigned int i, pending = 0;
@@ -632,6 +697,8 @@ static struct irq_chip msm_irq_chip = {
 	.irq_unmask	= msm_irq_unmask,
 	.irq_set_wake	= msm_irq_set_wake,
 	.irq_set_type	= msm_irq_set_type,
+<<<<<<< HEAD
+=======
 =======
 static struct irq_chip msm_irq_chip = {
 	.name          = "msm",
@@ -642,6 +709,7 @@ static struct irq_chip msm_irq_chip = {
 	.irq_set_wake  = msm_irq_set_wake,
 	.irq_set_type  = msm_irq_set_type,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init msm_init_irq(void)
@@ -665,15 +733,21 @@ void __init msm_init_irq(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* enable interrupt controller */
 	writel(3, VIC_INT_MASTEREN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (n = 0; n < NR_MSM_IRQS; n++) {
 		irq_set_chip_and_handler(n, &msm_irq_chip, handle_level_irq);
 		set_irq_flags(n, IRQF_VALID);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* enable interrupt controller */
 	writel(3, VIC_INT_MASTEREN);
@@ -789,6 +863,9 @@ int msm_fiq_set_handler(void (*func)(void *data, void *regs), void *data)
 	return ret;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

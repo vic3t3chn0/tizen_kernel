@@ -23,7 +23,14 @@
 static struct gpio palmld_pcmcia_gpios[] = {
 	{ GPIO_NR_PALMLD_PCMCIA_POWER,	GPIOF_INIT_LOW,	"PCMCIA Power" },
 	{ GPIO_NR_PALMLD_PCMCIA_RESET,	GPIOF_INIT_HIGH,"PCMCIA Reset" },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ GPIO_NR_PALMLD_PCMCIA_READY,	GPIOF_IN,	"PCMCIA Ready" },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ GPIO_NR_PALMLD_PCMCIA_READY,	GPIOF_IN,	"PCMCIA Ready" },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int palmld_pcmcia_hw_init(struct soc_pcmcia_socket *skt)
@@ -33,7 +40,16 @@ static int palmld_pcmcia_hw_init(struct soc_pcmcia_socket *skt)
 	ret = gpio_request_array(palmld_pcmcia_gpios,
 				ARRAY_SIZE(palmld_pcmcia_gpios));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	skt->stat[SOC_STAT_RDY].gpio = GPIO_NR_PALMLD_PCMCIA_READY;
+	skt->stat[SOC_STAT_RDY].name = "PCMCIA Ready";
+=======
 	skt->socket.pci_irq = IRQ_GPIO(GPIO_NR_PALMLD_PCMCIA_READY);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	skt->socket.pci_irq = IRQ_GPIO(GPIO_NR_PALMLD_PCMCIA_READY);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -47,10 +63,19 @@ static void palmld_pcmcia_socket_state(struct soc_pcmcia_socket *skt,
 					struct pcmcia_state *state)
 {
 	state->detect = 1; /* always inserted */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state->ready  = !!gpio_get_value(GPIO_NR_PALMLD_PCMCIA_READY);
 	state->bvd1   = 1;
 	state->bvd2   = 1;
 	state->wrprot = 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state->vs_3v  = 1;
 	state->vs_Xv  = 0;
 }
@@ -65,6 +90,11 @@ static int palmld_pcmcia_configure_socket(struct soc_pcmcia_socket *skt,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void palmld_pcmcia_socket_init(struct soc_pcmcia_socket *skt)
 {
 }
@@ -73,6 +103,10 @@ static void palmld_pcmcia_socket_suspend(struct soc_pcmcia_socket *skt)
 {
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pcmcia_low_level palmld_pcmcia_ops = {
 	.owner			= THIS_MODULE,
 
@@ -84,9 +118,18 @@ static struct pcmcia_low_level palmld_pcmcia_ops = {
 
 	.socket_state		= palmld_pcmcia_socket_state,
 	.configure_socket	= palmld_pcmcia_configure_socket,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	.socket_init		= palmld_pcmcia_socket_init,
 	.socket_suspend		= palmld_pcmcia_socket_suspend,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	.socket_init		= palmld_pcmcia_socket_init,
+	.socket_suspend		= palmld_pcmcia_socket_suspend,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *palmld_pcmcia_device;

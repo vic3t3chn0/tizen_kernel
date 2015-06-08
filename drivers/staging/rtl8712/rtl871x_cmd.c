@@ -28,6 +28,30 @@
 
 #define _RTL871X_CMD_C_
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/compiler.h>
+#include <linux/kernel.h>
+#include <linux/errno.h>
+#include <linux/init.h>
+#include <linux/slab.h>
+#include <linux/module.h>
+#include <linux/kref.h>
+#include <linux/netdevice.h>
+#include <linux/skbuff.h>
+#include <linux/usb.h>
+#include <linux/usb/ch9.h>
+#include <linux/circ_buf.h>
+#include <linux/uaccess.h>
+#include <asm/byteorder.h>
+#include <linux/atomic.h>
+#include <linux/semaphore.h>
+#include <linux/rtnetlink.h>
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "osdep_service.h"
 #include "drv_types.h"
 #include "recv_osdep.h"
@@ -222,7 +246,15 @@ u8 r8712_sitesurvey_cmd(struct _adapter *padapter,
 	init_h2fwcmd_w_parm_no_rsp(ph2c, psurveyPara,
 				   GEN_CMD_CODE(_SiteSurvey));
 	psurveyPara->bsslimit = cpu_to_le32(48);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	psurveyPara->passive_mode = cpu_to_le32(pmlmepriv->passive_mode);
+=======
 	psurveyPara->passive_mode = cpu_to_le32(1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	psurveyPara->passive_mode = cpu_to_le32(1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	psurveyPara->ss_ssidlen = 0;
 	memset(psurveyPara->ss_ssid, 0, IW_ESSID_MAX_SIZE + 1);
 	if ((pssid != NULL) && (pssid->SsidLength)) {
@@ -233,6 +265,13 @@ u8 r8712_sitesurvey_cmd(struct _adapter *padapter,
 	r8712_enqueue_cmd(pcmdpriv, ph2c);
 	_set_timer(&pmlmepriv->scan_to_timer, SCANNING_TIMEOUT);
 	padapter->ledpriv.LedControlHandler(padapter, LED_CTL_SITE_SURVEY);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	padapter->blnEnableRxFF0Filter = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return _SUCCESS;
 }
 
@@ -259,6 +298,34 @@ u8 r8712_setdatarate_cmd(struct _adapter *padapter, u8 *rateset)
 	return _SUCCESS;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+u8 r8712_set_chplan_cmd(struct _adapter *padapter, int chplan)
+{
+	struct cmd_obj *ph2c;
+	struct SetChannelPlan_param *psetchplanpara;
+	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+
+	ph2c = (struct cmd_obj *)_malloc(sizeof(struct cmd_obj));
+	if (ph2c == NULL)
+		return _FAIL;
+	psetchplanpara = (struct SetChannelPlan_param *)
+		_malloc(sizeof(struct SetChannelPlan_param));
+	if (psetchplanpara == NULL) {
+		kfree((u8 *) ph2c);
+		return _FAIL;
+	}
+	init_h2fwcmd_w_parm_no_rsp(ph2c, psetchplanpara,
+				GEN_CMD_CODE(_SetChannelPlan));
+	psetchplanpara->ChannelPlan = chplan;
+	r8712_enqueue_cmd(pcmdpriv, ph2c);
+	return _SUCCESS;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u8 r8712_setbasicrate_cmd(struct _adapter *padapter, u8 *rateset)
 {
 	struct cmd_obj *ph2c;
@@ -285,12 +352,75 @@ u8 r8712_setbasicrate_cmd(struct _adapter *padapter, u8 *rateset)
 u8 r8712_setptm_cmd(struct _adapter *padapter, u8 type)
 {
 	struct cmd_obj		*ph2c;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct writePTM_parm	*pwriteptmparm;
+=======
 	struct PT_param		*pptparm;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct PT_param		*pptparm;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cmd_priv		*pcmdpriv = &padapter->cmdpriv;
 
 	ph2c = (struct cmd_obj *)_malloc(sizeof(struct cmd_obj));
 	if (ph2c == NULL)
 		return _FAIL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pwriteptmparm = (struct writePTM_parm *)
+		_malloc(sizeof(struct writePTM_parm));
+	if (pwriteptmparm == NULL) {
+		kfree((u8 *) ph2c);
+		return _FAIL;
+	}
+	init_h2fwcmd_w_parm_no_rsp(ph2c, pwriteptmparm, GEN_CMD_CODE(_SetPT));
+	pwriteptmparm->type = type;
+	r8712_enqueue_cmd(pcmdpriv, ph2c);
+	return _SUCCESS;
+}
+
+u8 r8712_setfwdig_cmd(struct _adapter *padapter, u8 type)
+{
+	struct cmd_obj *ph2c;
+	struct writePTM_parm *pwriteptmparm;
+	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+
+	ph2c = (struct cmd_obj *)_malloc(sizeof(struct cmd_obj));
+	if (ph2c == NULL)
+		return _FAIL;
+	pwriteptmparm = (struct writePTM_parm *)
+		_malloc(sizeof(struct setdig_parm));
+	if (pwriteptmparm == NULL) {
+		kfree((u8 *) ph2c);
+		return _FAIL;
+	}
+	init_h2fwcmd_w_parm_no_rsp(ph2c, pwriteptmparm, GEN_CMD_CODE(_SetDIG));
+	pwriteptmparm->type = type;
+	r8712_enqueue_cmd(pcmdpriv, ph2c);
+	return _SUCCESS;
+}
+
+u8 r8712_setfwra_cmd(struct _adapter *padapter, u8 type)
+{
+	struct cmd_obj *ph2c;
+	struct writePTM_parm *pwriteptmparm;
+	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+
+	ph2c = (struct cmd_obj *)_malloc(sizeof(struct cmd_obj));
+	if (ph2c == NULL)
+		return _FAIL;
+	pwriteptmparm = (struct writePTM_parm *)
+		_malloc(sizeof(struct setra_parm));
+	if (pwriteptmparm == NULL) {
+		kfree((u8 *) ph2c);
+		return _FAIL;
+	}
+	init_h2fwcmd_w_parm_no_rsp(ph2c, pwriteptmparm, GEN_CMD_CODE(_SetRA));
+	pwriteptmparm->type = type;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pptparm = (struct PT_param *)_malloc(sizeof(struct PT_param));
 	if (pptparm == NULL) {
 		kfree((u8 *) ph2c);
@@ -299,6 +429,10 @@ u8 r8712_setptm_cmd(struct _adapter *padapter, u8 type)
 	init_h2fwcmd_w_parm_no_rsp(ph2c, pptparm,
 				   GEN_CMD_CODE(_SetPowerTracking));
 	pptparm->PT_En = type;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r8712_enqueue_cmd(pcmdpriv, ph2c);
 	return _SUCCESS;
 }
@@ -353,8 +487,27 @@ u8 r8712_getrfreg_cmd(struct _adapter *padapter, u8 offset, u8 *pval)
 void r8712_getbbrfreg_cmdrsp_callback(struct _adapter *padapter,
 				      struct cmd_obj *pcmd)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree(pcmd->parmbuf);
+	kfree(pcmd);
+	padapter->mppriv.workparam.bcompleted = true;
+}
+
+void r8712_readtssi_cmdrsp_callback(struct _adapter *padapter,
+				struct cmd_obj *pcmd)
+{
+	kfree(pcmd->parmbuf);
+	kfree(pcmd);
+
+=======
 	kfree((unsigned char *) pcmd->parmbuf);
 	kfree((unsigned char *) pcmd);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree((unsigned char *) pcmd->parmbuf);
+	kfree((unsigned char *) pcmd);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	padapter->mppriv.workparam.bcompleted = true;
 }
 
@@ -485,12 +638,21 @@ u8 r8712_joinbss_cmd(struct _adapter  *padapter, struct wlan_network *pnetwork)
 						&psecnetwork->IEs[0],
 						pnetwork->network.IELength,
 						&psecnetwork->IELength);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE))
 				r8712_add_ht_addt_info(padapter,
 						&pnetwork->network.IEs[0],
 						&psecnetwork->IEs[0],
 						pnetwork->network.IELength,
 						&psecnetwork->IELength);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	psecuritypriv->supplicant_ie[0] = (u8)psecnetwork->IELength;
@@ -675,6 +837,39 @@ u8 r8712_setrttbl_cmd(struct _adapter *padapter,
 	return _SUCCESS;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+u8 r8712_gettssi_cmd(struct _adapter *padapter, u8 offset, u8 *pval)
+{
+	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+	struct cmd_obj *ph2c;
+	struct readTSSI_parm *prdtssiparm;
+
+	ph2c = (struct cmd_obj *)_malloc(sizeof(struct cmd_obj));
+	if (ph2c == NULL)
+		return _FAIL;
+	prdtssiparm = (struct readTSSI_parm *)
+		_malloc(sizeof(struct readTSSI_parm));
+	if (prdtssiparm == NULL) {
+		kfree((unsigned char *) ph2c);
+		return _FAIL;
+	}
+	_init_listhead(&ph2c->list);
+	ph2c->cmdcode = GEN_CMD_CODE(_ReadTSSI);
+	ph2c->parmbuf = (unsigned char *)prdtssiparm;
+	ph2c->cmdsz = sizeof(struct readTSSI_parm);
+	ph2c->rsp = pval;
+	ph2c->rspsz = sizeof(struct readTSSI_rsp);
+
+	prdtssiparm->offset = offset;
+	r8712_enqueue_cmd(pcmdpriv, ph2c);
+	return _SUCCESS;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u8 r8712_setMacAddr_cmd(struct _adapter *padapter, u8 *mac_addr)
 {
 	struct cmd_priv	*pcmdpriv = &padapter->cmdpriv;
@@ -923,3 +1118,38 @@ void r8712_setassocsta_cmdrsp_callback(struct _adapter *padapter,
 	spin_unlock_irqrestore(&pmlmepriv->lock, irqL);
 	r8712_free_cmd_obj(pcmd);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+u8 r8712_disconnectCtrlEx_cmd(struct _adapter *adapter, u32 enableDrvCtrl,
+			u32 tryPktCnt, u32 tryPktInterval, u32 firstStageTO)
+{
+	struct cmd_obj *ph2c;
+	struct DisconnectCtrlEx_param *param;
+	struct cmd_priv *pcmdpriv = &adapter->cmdpriv;
+
+	ph2c = (struct cmd_obj *)_malloc(sizeof(struct cmd_obj));
+	if (ph2c == NULL)
+		return _FAIL;
+	param = (struct DisconnectCtrlEx_param *)
+		_malloc(sizeof(struct DisconnectCtrlEx_param));
+	if (param == NULL) {
+		kfree((unsigned char *) ph2c);
+		return _FAIL;
+	}
+	memset(param, 0, sizeof(struct DisconnectCtrlEx_param));
+
+	param->EnableDrvCtrl = (unsigned char)enableDrvCtrl;
+	param->TryPktCnt = (unsigned char)tryPktCnt;
+	param->TryPktInterval = (unsigned char)tryPktInterval;
+	param->FirstStageTO = (unsigned int)firstStageTO;
+
+	init_h2fwcmd_w_parm_no_rsp(ph2c, param,
+				GEN_CMD_CODE(_DisconnectCtrlEx));
+	r8712_enqueue_cmd(pcmdpriv, ph2c);
+	return _SUCCESS;
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

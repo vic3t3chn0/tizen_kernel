@@ -16,6 +16,9 @@
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/dma-mapping.h>
 
@@ -24,12 +27,15 @@
 #include <mach/dma.h>
 #include <mach/proc_comm.h>
 #include <asm/clkdev.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/clkdev.h>
 
 #include <mach/irqs.h>
 #include <mach/msm_iomap.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "devices.h"
 
 #include <asm/mach/flash.h>
@@ -38,9 +44,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "clock.h"
 #include "clock-pcom.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/mmc.h>
 
 static struct resource resources_uart1[] = {
@@ -107,6 +116,9 @@ struct platform_device msm_device_uart3 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource msm_uart1_dm_resources[] = {
 	{
 		.start = MSM_UART1DM_PHYS,
@@ -193,8 +205,11 @@ struct platform_device msm_device_uart_dm2 = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource resources_i2c[] = {
 	{
 		.start	= MSM_I2C_PHYS,
@@ -216,6 +231,9 @@ struct platform_device msm_device_i2c = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO_I2C_CLK 60
 #define GPIO_I2C_DAT 61
 void msm_set_i2c_mux(bool gpio, int *gpio_clk, int *gpio_dat)
@@ -240,8 +258,11 @@ void msm_set_i2c_mux(bool gpio, int *gpio_clk, int *gpio_dat)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource resources_hsusb[] = {
 	{
 		.start	= MSM_HSUSB_PHYS,
@@ -308,6 +329,8 @@ static struct resource resources_sdc1[] = {
 	{
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.start	= INT_SDC1_1,
 		.end	= INT_SDC1_1,
 		.flags	= IORESOURCE_IRQ,
@@ -315,6 +338,7 @@ static struct resource resources_sdc1[] = {
 	},
 	{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_DISABLED,
 		.name	= "status_irq"
 	},
@@ -339,6 +363,8 @@ static struct resource resources_sdc2[] = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		{
 		.start	= INT_SDC2_1,
 		.end	= INT_SDC2_1,
@@ -346,6 +372,7 @@ static struct resource resources_sdc2[] = {
 		.name	= "pio_irq",
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.flags	= IORESOURCE_IRQ | IORESOURCE_DISABLED,
 		.name	= "status_irq"
@@ -371,6 +398,8 @@ static struct resource resources_sdc3[] = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		{
 		.start	= INT_SDC3_1,
 		.end	= INT_SDC3_1,
@@ -378,6 +407,7 @@ static struct resource resources_sdc3[] = {
 		.name	= "pio_irq",
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.flags	= IORESOURCE_IRQ | IORESOURCE_DISABLED,
 		.name	= "status_irq"
@@ -403,6 +433,8 @@ static struct resource resources_sdc4[] = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		{
 		.start	= INT_SDC4_1,
 		.end	= INT_SDC4_1,
@@ -410,6 +442,7 @@ static struct resource resources_sdc4[] = {
 		.name	= "pio_irq",
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.flags	= IORESOURCE_IRQ | IORESOURCE_DISABLED,
 		.name	= "status_irq"
@@ -471,9 +504,13 @@ static struct platform_device *msm_sdcc_devices[] __initdata = {
 <<<<<<< HEAD
 int __init msm_add_sdcc(unsigned int controller, struct mmc_platform_data *plat,
 =======
+<<<<<<< HEAD
+int __init msm_add_sdcc(unsigned int controller, struct mmc_platform_data *plat,
+=======
 int __init msm_add_sdcc(unsigned int controller,
 			struct msm_mmc_platform_data *plat,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			unsigned int stat_irq, unsigned long stat_irq_flags)
 {
 	struct platform_device	*pdev;
@@ -565,6 +602,9 @@ struct platform_device msm_device_mdp = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource resources_tssc[] = {
 	{
 		.start	= MSM_TSSC_PHYS,
@@ -592,6 +632,8 @@ struct platform_device msm_device_touchscreen = {
 	.num_resources = ARRAY_SIZE(resources_tssc),
 	.resource = resources_tssc,
 };
+<<<<<<< HEAD
+=======
 =======
 struct clk_lookup msm_clocks_7x01a[] = {
 	CLK_PCOM("adm_clk",	ADM_CLK,	NULL, 0),
@@ -639,3 +681,4 @@ struct clk_lookup msm_clocks_7x01a[] = {
 
 unsigned msm_num_clocks_7x01a = ARRAY_SIZE(msm_clocks_7x01a);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -37,11 +37,16 @@
  * kernel only maps the minimum needed range of this mapping.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define io_v2p(x) (0x3c000000 + ((x) & 0x01ffffff) + (((x) & 0x0e000000) << 1))
 #define io_p2v(x) IOMEM(0xf2000000 + ((x) & 0x01ffffff) + (((x) & 0x1c000000) >> 1))
 
 #ifndef __ASSEMBLY__
 # define __REG(x)	(*((volatile u32 __iomem *)io_p2v(x)))
+<<<<<<< HEAD
+=======
 =======
 #define io_p2v(x) (0xf2000000 + ((x) & 0x01ffffff) + (((x) & 0x1c000000) >> 1))
 #define io_v2p(x) (0x3c000000 + ((x) & 0x01ffffff) + (((x) & 0x0e000000) << 1))
@@ -50,6 +55,7 @@
 
 # define __REG(x)	(*((volatile u32 *)io_p2v(x)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* With indexed regs we don't want to feed the index through io_p2v()
    especially if it is a variable, otherwise horrible code will result. */
@@ -57,8 +63,12 @@
 <<<<<<< HEAD
 	(*(volatile u32 __iomem*)((u32)&__REG(x) + (y)))
 =======
+<<<<<<< HEAD
+	(*(volatile u32 __iomem*)((u32)&__REG(x) + (y)))
+=======
 	(*(volatile u32 *)((u32)&__REG(x) + (y)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # define __PREG(x)	(io_v2p((u32)&(x)))
 
@@ -350,6 +360,8 @@ extern unsigned long get_clock_tick_rate(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_MACH_ARMCORE) && defined(CONFIG_PCI)
 #define PCIBIOS_MIN_IO		0
 #define PCIBIOS_MIN_MEM		0
@@ -358,4 +370,5 @@ extern unsigned long get_clock_tick_rate(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif  /* _ASM_ARCH_HARDWARE_H */

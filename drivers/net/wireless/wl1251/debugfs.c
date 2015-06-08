@@ -47,7 +47,15 @@ static ssize_t name## _read(struct file *file, char __user *userbuf,	\
 									\
 static const struct file_operations name## _ops = {			\
 	.read = name## _read,						\
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open = simple_open,						\
+=======
 	.open = wl1251_open_file_generic,				\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open = wl1251_open_file_generic,				\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek	= generic_file_llseek,					\
 };
 
@@ -84,7 +92,15 @@ static ssize_t sub## _ ##name## _read(struct file *file,		\
 									\
 static const struct file_operations sub## _ ##name## _ops = {		\
 	.read = sub## _ ##name## _read,					\
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open = simple_open,						\
+=======
 	.open = wl1251_open_file_generic,				\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open = wl1251_open_file_generic,				\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek	= generic_file_llseek,					\
 };
 
@@ -117,12 +133,21 @@ out:
 	mutex_unlock(&wl->mutex);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wl1251_open_file_generic(struct inode *inode, struct file *file)
 {
 	file->private_data = inode->i_private;
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DEBUGFS_FWSTATS_FILE(tx, internal_desc_overflow, 20, "%u");
 
 DEBUGFS_FWSTATS_FILE(rx, out_of_mem, 20, "%u");
@@ -235,7 +260,15 @@ static ssize_t tx_queue_len_read(struct file *file, char __user *userbuf,
 
 static const struct file_operations tx_queue_len_ops = {
 	.read = tx_queue_len_read,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open = simple_open,
+=======
 	.open = wl1251_open_file_generic,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open = wl1251_open_file_generic,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = generic_file_llseek,
 };
 
@@ -257,7 +290,15 @@ static ssize_t tx_queue_status_read(struct file *file, char __user *userbuf,
 
 static const struct file_operations tx_queue_status_ops = {
 	.read = tx_queue_status_read,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open = simple_open,
+=======
 	.open = wl1251_open_file_generic,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open = wl1251_open_file_generic,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = generic_file_llseek,
 };
 

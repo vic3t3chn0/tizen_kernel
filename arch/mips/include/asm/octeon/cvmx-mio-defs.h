@@ -44,6 +44,9 @@
 #define CVMX_MIO_BOOT_REG_TIMX(offset) (CVMX_ADD_IO_SEG(0x0001180000000040ull) + ((offset) & 7) * 8)
 #define CVMX_MIO_BOOT_THR (CVMX_ADD_IO_SEG(0x00011800000000B0ull))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_MIO_EMM_BUF_DAT (CVMX_ADD_IO_SEG(0x00011800000020E8ull))
 #define CVMX_MIO_EMM_BUF_IDX (CVMX_ADD_IO_SEG(0x00011800000020E0ull))
 #define CVMX_MIO_EMM_CFG (CVMX_ADD_IO_SEG(0x0001180000002000ull))
@@ -60,8 +63,11 @@
 #define CVMX_MIO_EMM_STS_MASK (CVMX_ADD_IO_SEG(0x0001180000002098ull))
 #define CVMX_MIO_EMM_SWITCH (CVMX_ADD_IO_SEG(0x0001180000002048ull))
 #define CVMX_MIO_EMM_WDOG (CVMX_ADD_IO_SEG(0x0001180000002088ull))
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_MIO_FUS_BNK_DATX(offset) (CVMX_ADD_IO_SEG(0x0001180000001520ull) + ((offset) & 3) * 8)
 #define CVMX_MIO_FUS_DAT0 (CVMX_ADD_IO_SEG(0x0001180000001400ull))
 #define CVMX_MIO_FUS_DAT1 (CVMX_ADD_IO_SEG(0x0001180000001408ull))
@@ -82,7 +88,11 @@
 <<<<<<< HEAD
 #define CVMX_MIO_FUS_TGG (CVMX_ADD_IO_SEG(0x0001180000001428ull))
 =======
+<<<<<<< HEAD
+#define CVMX_MIO_FUS_TGG (CVMX_ADD_IO_SEG(0x0001180000001428ull))
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_MIO_FUS_UNLOCK (CVMX_ADD_IO_SEG(0x0001180000001578ull))
 #define CVMX_MIO_FUS_WADR (CVMX_ADD_IO_SEG(0x0001180000001508ull))
 #define CVMX_MIO_GPIO_COMP (CVMX_ADD_IO_SEG(0x00011800000000C8ull))
@@ -92,18 +102,27 @@
 #define CVMX_MIO_PLL_CTL (CVMX_ADD_IO_SEG(0x0001180000001448ull))
 #define CVMX_MIO_PLL_SETTING (CVMX_ADD_IO_SEG(0x0001180000001440ull))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_MIO_PTP_CKOUT_HI_INCR (CVMX_ADD_IO_SEG(0x0001070000000F40ull))
 #define CVMX_MIO_PTP_CKOUT_LO_INCR (CVMX_ADD_IO_SEG(0x0001070000000F48ull))
 #define CVMX_MIO_PTP_CKOUT_THRESH_HI (CVMX_ADD_IO_SEG(0x0001070000000F38ull))
 #define CVMX_MIO_PTP_CKOUT_THRESH_LO (CVMX_ADD_IO_SEG(0x0001070000000F30ull))
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_MIO_PTP_CLOCK_CFG (CVMX_ADD_IO_SEG(0x0001070000000F00ull))
 #define CVMX_MIO_PTP_CLOCK_COMP (CVMX_ADD_IO_SEG(0x0001070000000F18ull))
 #define CVMX_MIO_PTP_CLOCK_HI (CVMX_ADD_IO_SEG(0x0001070000000F10ull))
 #define CVMX_MIO_PTP_CLOCK_LO (CVMX_ADD_IO_SEG(0x0001070000000F08ull))
 #define CVMX_MIO_PTP_EVT_CNT (CVMX_ADD_IO_SEG(0x0001070000000F28ull))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_MIO_PTP_PPS_HI_INCR (CVMX_ADD_IO_SEG(0x0001070000000F60ull))
 #define CVMX_MIO_PTP_PPS_LO_INCR (CVMX_ADD_IO_SEG(0x0001070000000F68ull))
 #define CVMX_MIO_PTP_PPS_THRESH_HI (CVMX_ADD_IO_SEG(0x0001070000000F58ull))
@@ -114,11 +133,14 @@
 #define CVMX_MIO_RST_CFG (CVMX_ADD_IO_SEG(0x0001180000001610ull))
 #define CVMX_MIO_RST_CKILL (CVMX_ADD_IO_SEG(0x0001180000001638ull))
 #define CVMX_MIO_RST_CNTLX(offset) (CVMX_ADD_IO_SEG(0x0001180000001648ull) + ((offset) & 3) * 8)
+<<<<<<< HEAD
+=======
 =======
 #define CVMX_MIO_PTP_TIMESTAMP (CVMX_ADD_IO_SEG(0x0001070000000F20ull))
 #define CVMX_MIO_RST_BOOT (CVMX_ADD_IO_SEG(0x0001180000001600ull))
 #define CVMX_MIO_RST_CFG (CVMX_ADD_IO_SEG(0x0001180000001610ull))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_MIO_RST_CTLX(offset) (CVMX_ADD_IO_SEG(0x0001180000001618ull) + ((offset) & 1) * 8)
 #define CVMX_MIO_RST_DELAY (CVMX_ADD_IO_SEG(0x0001180000001608ull))
 #define CVMX_MIO_RST_INT (CVMX_ADD_IO_SEG(0x0001180000001628ull))
@@ -227,26 +249,38 @@ union cvmx_mio_boot_bist_stat {
 	struct cvmx_mio_boot_bist_stat_cn38xx cn58xx;
 	struct cvmx_mio_boot_bist_stat_cn38xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_bist_stat_cn61xx {
 		uint64_t reserved_12_63:52;
 		uint64_t stat:12;
 	} cn61xx;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_bist_stat_cn63xx {
 		uint64_t reserved_9_63:55;
 		uint64_t stat:9;
 	} cn63xx;
 	struct cvmx_mio_boot_bist_stat_cn63xx cn63xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_bist_stat_cn66xx {
 		uint64_t reserved_10_63:54;
 		uint64_t stat:10;
 	} cn66xx;
 	struct cvmx_mio_boot_bist_stat_cn66xx cn68xx;
 	struct cvmx_mio_boot_bist_stat_cn66xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_comp {
@@ -264,6 +298,9 @@ union cvmx_mio_boot_comp {
 	struct cvmx_mio_boot_comp_cn50xx cn56xx;
 	struct cvmx_mio_boot_comp_cn50xx cn56xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_comp_cn61xx {
 		uint64_t reserved_12_63:52;
 		uint64_t pctl:6;
@@ -274,6 +311,8 @@ union cvmx_mio_boot_comp {
 	struct cvmx_mio_boot_comp_cn61xx cn66xx;
 	struct cvmx_mio_boot_comp_cn61xx cn68xx;
 	struct cvmx_mio_boot_comp_cn61xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_comp_cn63xx {
 		uint64_t reserved_12_63:52;
@@ -282,6 +321,7 @@ union cvmx_mio_boot_comp {
 	} cn63xx;
 	struct cvmx_mio_boot_comp_cn63xx cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_dma_cfgx {
@@ -303,16 +343,22 @@ union cvmx_mio_boot_dma_cfgx {
 	struct cvmx_mio_boot_dma_cfgx_s cn56xx;
 	struct cvmx_mio_boot_dma_cfgx_s cn56xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_dma_cfgx_s cn61xx;
 	struct cvmx_mio_boot_dma_cfgx_s cn63xx;
 	struct cvmx_mio_boot_dma_cfgx_s cn63xxp1;
 	struct cvmx_mio_boot_dma_cfgx_s cn66xx;
 	struct cvmx_mio_boot_dma_cfgx_s cn68xx;
 	struct cvmx_mio_boot_dma_cfgx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_dma_cfgx_s cn63xx;
 	struct cvmx_mio_boot_dma_cfgx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_dma_intx {
@@ -327,16 +373,22 @@ union cvmx_mio_boot_dma_intx {
 	struct cvmx_mio_boot_dma_intx_s cn56xx;
 	struct cvmx_mio_boot_dma_intx_s cn56xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_dma_intx_s cn61xx;
 	struct cvmx_mio_boot_dma_intx_s cn63xx;
 	struct cvmx_mio_boot_dma_intx_s cn63xxp1;
 	struct cvmx_mio_boot_dma_intx_s cn66xx;
 	struct cvmx_mio_boot_dma_intx_s cn68xx;
 	struct cvmx_mio_boot_dma_intx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_dma_intx_s cn63xx;
 	struct cvmx_mio_boot_dma_intx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_dma_int_enx {
@@ -351,16 +403,22 @@ union cvmx_mio_boot_dma_int_enx {
 	struct cvmx_mio_boot_dma_int_enx_s cn56xx;
 	struct cvmx_mio_boot_dma_int_enx_s cn56xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_dma_int_enx_s cn61xx;
 	struct cvmx_mio_boot_dma_int_enx_s cn63xx;
 	struct cvmx_mio_boot_dma_int_enx_s cn63xxp1;
 	struct cvmx_mio_boot_dma_int_enx_s cn66xx;
 	struct cvmx_mio_boot_dma_int_enx_s cn68xx;
 	struct cvmx_mio_boot_dma_int_enx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_dma_int_enx_s cn63xx;
 	struct cvmx_mio_boot_dma_int_enx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_dma_timx {
@@ -387,16 +445,22 @@ union cvmx_mio_boot_dma_timx {
 	struct cvmx_mio_boot_dma_timx_s cn56xx;
 	struct cvmx_mio_boot_dma_timx_s cn56xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_dma_timx_s cn61xx;
 	struct cvmx_mio_boot_dma_timx_s cn63xx;
 	struct cvmx_mio_boot_dma_timx_s cn63xxp1;
 	struct cvmx_mio_boot_dma_timx_s cn66xx;
 	struct cvmx_mio_boot_dma_timx_s cn68xx;
 	struct cvmx_mio_boot_dma_timx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_dma_timx_s cn63xx;
 	struct cvmx_mio_boot_dma_timx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_err {
@@ -418,16 +482,22 @@ union cvmx_mio_boot_err {
 	struct cvmx_mio_boot_err_s cn58xx;
 	struct cvmx_mio_boot_err_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_err_s cn61xx;
 	struct cvmx_mio_boot_err_s cn63xx;
 	struct cvmx_mio_boot_err_s cn63xxp1;
 	struct cvmx_mio_boot_err_s cn66xx;
 	struct cvmx_mio_boot_err_s cn68xx;
 	struct cvmx_mio_boot_err_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_err_s cn63xx;
 	struct cvmx_mio_boot_err_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_int {
@@ -449,16 +519,22 @@ union cvmx_mio_boot_int {
 	struct cvmx_mio_boot_int_s cn58xx;
 	struct cvmx_mio_boot_int_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_int_s cn61xx;
 	struct cvmx_mio_boot_int_s cn63xx;
 	struct cvmx_mio_boot_int_s cn63xxp1;
 	struct cvmx_mio_boot_int_s cn66xx;
 	struct cvmx_mio_boot_int_s cn68xx;
 	struct cvmx_mio_boot_int_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_int_s cn63xx;
 	struct cvmx_mio_boot_int_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_loc_adr {
@@ -480,16 +556,22 @@ union cvmx_mio_boot_loc_adr {
 	struct cvmx_mio_boot_loc_adr_s cn58xx;
 	struct cvmx_mio_boot_loc_adr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_loc_adr_s cn61xx;
 	struct cvmx_mio_boot_loc_adr_s cn63xx;
 	struct cvmx_mio_boot_loc_adr_s cn63xxp1;
 	struct cvmx_mio_boot_loc_adr_s cn66xx;
 	struct cvmx_mio_boot_loc_adr_s cn68xx;
 	struct cvmx_mio_boot_loc_adr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_loc_adr_s cn63xx;
 	struct cvmx_mio_boot_loc_adr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_loc_cfgx {
@@ -513,16 +595,22 @@ union cvmx_mio_boot_loc_cfgx {
 	struct cvmx_mio_boot_loc_cfgx_s cn58xx;
 	struct cvmx_mio_boot_loc_cfgx_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_loc_cfgx_s cn61xx;
 	struct cvmx_mio_boot_loc_cfgx_s cn63xx;
 	struct cvmx_mio_boot_loc_cfgx_s cn63xxp1;
 	struct cvmx_mio_boot_loc_cfgx_s cn66xx;
 	struct cvmx_mio_boot_loc_cfgx_s cn68xx;
 	struct cvmx_mio_boot_loc_cfgx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_loc_cfgx_s cn63xx;
 	struct cvmx_mio_boot_loc_cfgx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_loc_dat {
@@ -542,16 +630,22 @@ union cvmx_mio_boot_loc_dat {
 	struct cvmx_mio_boot_loc_dat_s cn58xx;
 	struct cvmx_mio_boot_loc_dat_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_loc_dat_s cn61xx;
 	struct cvmx_mio_boot_loc_dat_s cn63xx;
 	struct cvmx_mio_boot_loc_dat_s cn63xxp1;
 	struct cvmx_mio_boot_loc_dat_s cn66xx;
 	struct cvmx_mio_boot_loc_dat_s cn68xx;
 	struct cvmx_mio_boot_loc_dat_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_loc_dat_s cn63xx;
 	struct cvmx_mio_boot_loc_dat_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_pin_defs {
@@ -561,8 +655,13 @@ union cvmx_mio_boot_pin_defs {
 		uint64_t reserved_32_63:32;
 		uint64_t user1:16;
 =======
+<<<<<<< HEAD
+		uint64_t reserved_32_63:32;
+		uint64_t user1:16;
+=======
 		uint64_t reserved_16_63:48;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t ale:1;
 		uint64_t width:1;
 		uint64_t dmack_p2:1;
@@ -573,8 +672,12 @@ union cvmx_mio_boot_pin_defs {
 <<<<<<< HEAD
 		uint64_t user0:8;
 =======
+<<<<<<< HEAD
+		uint64_t user0:8;
+=======
 		uint64_t reserved_0_7:8;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} s;
 	struct cvmx_mio_boot_pin_defs_cn52xx {
 		uint64_t reserved_16_63:48;
@@ -598,6 +701,9 @@ union cvmx_mio_boot_pin_defs {
 		uint64_t reserved_0_8:9;
 	} cn56xx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_pin_defs_cn61xx {
 		uint64_t reserved_32_63:32;
 		uint64_t user1:16;
@@ -615,10 +721,13 @@ union cvmx_mio_boot_pin_defs {
 	struct cvmx_mio_boot_pin_defs_cn52xx cn66xx;
 	struct cvmx_mio_boot_pin_defs_cn52xx cn68xx;
 	struct cvmx_mio_boot_pin_defs_cn52xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_pin_defs_cn52xx cn63xx;
 	struct cvmx_mio_boot_pin_defs_cn52xx cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_reg_cfgx {
@@ -681,16 +790,22 @@ union cvmx_mio_boot_reg_cfgx {
 	struct cvmx_mio_boot_reg_cfgx_cn30xx cn58xx;
 	struct cvmx_mio_boot_reg_cfgx_cn30xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_reg_cfgx_s cn61xx;
 	struct cvmx_mio_boot_reg_cfgx_s cn63xx;
 	struct cvmx_mio_boot_reg_cfgx_s cn63xxp1;
 	struct cvmx_mio_boot_reg_cfgx_s cn66xx;
 	struct cvmx_mio_boot_reg_cfgx_s cn68xx;
 	struct cvmx_mio_boot_reg_cfgx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_reg_cfgx_s cn63xx;
 	struct cvmx_mio_boot_reg_cfgx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_reg_timx {
@@ -736,16 +851,22 @@ union cvmx_mio_boot_reg_timx {
 	struct cvmx_mio_boot_reg_timx_s cn58xx;
 	struct cvmx_mio_boot_reg_timx_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_reg_timx_s cn61xx;
 	struct cvmx_mio_boot_reg_timx_s cn63xx;
 	struct cvmx_mio_boot_reg_timx_s cn63xxp1;
 	struct cvmx_mio_boot_reg_timx_s cn66xx;
 	struct cvmx_mio_boot_reg_timx_s cn68xx;
 	struct cvmx_mio_boot_reg_timx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_reg_timx_s cn63xx;
 	struct cvmx_mio_boot_reg_timx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_boot_thr {
@@ -775,6 +896,9 @@ union cvmx_mio_boot_thr {
 	struct cvmx_mio_boot_thr_cn30xx cn58xx;
 	struct cvmx_mio_boot_thr_cn30xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_boot_thr_s cn61xx;
 	struct cvmx_mio_boot_thr_s cn63xx;
 	struct cvmx_mio_boot_thr_s cn63xxp1;
@@ -1000,10 +1124,13 @@ union cvmx_mio_emm_wdog {
 		uint64_t clk_cnt:26;
 	} s;
 	struct cvmx_mio_emm_wdog_s cn61xx;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_boot_thr_s cn63xx;
 	struct cvmx_mio_boot_thr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_bnk_datx {
@@ -1019,16 +1146,22 @@ union cvmx_mio_fus_bnk_datx {
 	struct cvmx_mio_fus_bnk_datx_s cn58xx;
 	struct cvmx_mio_fus_bnk_datx_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_bnk_datx_s cn61xx;
 	struct cvmx_mio_fus_bnk_datx_s cn63xx;
 	struct cvmx_mio_fus_bnk_datx_s cn63xxp1;
 	struct cvmx_mio_fus_bnk_datx_s cn66xx;
 	struct cvmx_mio_fus_bnk_datx_s cn68xx;
 	struct cvmx_mio_fus_bnk_datx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_bnk_datx_s cn63xx;
 	struct cvmx_mio_fus_bnk_datx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_dat0 {
@@ -1049,16 +1182,22 @@ union cvmx_mio_fus_dat0 {
 	struct cvmx_mio_fus_dat0_s cn58xx;
 	struct cvmx_mio_fus_dat0_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_dat0_s cn61xx;
 	struct cvmx_mio_fus_dat0_s cn63xx;
 	struct cvmx_mio_fus_dat0_s cn63xxp1;
 	struct cvmx_mio_fus_dat0_s cn66xx;
 	struct cvmx_mio_fus_dat0_s cn68xx;
 	struct cvmx_mio_fus_dat0_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_dat0_s cn63xx;
 	struct cvmx_mio_fus_dat0_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_dat1 {
@@ -1079,29 +1218,41 @@ union cvmx_mio_fus_dat1 {
 	struct cvmx_mio_fus_dat1_s cn58xx;
 	struct cvmx_mio_fus_dat1_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_dat1_s cn61xx;
 	struct cvmx_mio_fus_dat1_s cn63xx;
 	struct cvmx_mio_fus_dat1_s cn63xxp1;
 	struct cvmx_mio_fus_dat1_s cn66xx;
 	struct cvmx_mio_fus_dat1_s cn68xx;
 	struct cvmx_mio_fus_dat1_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_dat1_s cn63xx;
 	struct cvmx_mio_fus_dat1_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_dat2 {
 	uint64_t u64;
 	struct cvmx_mio_fus_dat2_s {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_48_63:16;
 		uint64_t fus118:1;
 		uint64_t rom_info:10;
 		uint64_t power_limit:2;
+<<<<<<< HEAD
+=======
 =======
 		uint64_t reserved_35_63:29;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t dorm_crypto:1;
 		uint64_t fus318:1;
 		uint64_t raid_en:1;
@@ -1210,6 +1361,9 @@ union cvmx_mio_fus_dat2 {
 	} cn58xx;
 	struct cvmx_mio_fus_dat2_cn58xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_dat2_cn61xx {
 		uint64_t reserved_48_63:16;
 		uint64_t fus118:1;
@@ -1227,8 +1381,11 @@ union cvmx_mio_fus_dat2 {
 		uint64_t reserved_4_15:12;
 		uint64_t pp_dis:4;
 	} cn61xx;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_dat2_cn63xx {
 		uint64_t reserved_35_63:29;
 		uint64_t dorm_crypto:1;
@@ -1245,6 +1402,9 @@ union cvmx_mio_fus_dat2 {
 	} cn63xx;
 	struct cvmx_mio_fus_dat2_cn63xx cn63xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_dat2_cn66xx {
 		uint64_t reserved_48_63:16;
 		uint64_t fus118:1;
@@ -1277,8 +1437,11 @@ union cvmx_mio_fus_dat2 {
 		uint64_t reserved_0_15:16;
 	} cn68xx;
 	struct cvmx_mio_fus_dat2_cn68xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_dat3 {
@@ -1354,8 +1517,12 @@ union cvmx_mio_fus_dat3 {
 <<<<<<< HEAD
 	struct cvmx_mio_fus_dat3_cn61xx {
 =======
+<<<<<<< HEAD
+	struct cvmx_mio_fus_dat3_cn61xx {
+=======
 	struct cvmx_mio_fus_dat3_cn63xx {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_58_63:6;
 		uint64_t pll_ctl:10;
 		uint64_t dfa_info_dte:3;
@@ -1375,16 +1542,22 @@ union cvmx_mio_fus_dat3 {
 		uint64_t nodfa_dte:1;
 		uint64_t reserved_0_23:24;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} cn61xx;
 	struct cvmx_mio_fus_dat3_cn61xx cn63xx;
 	struct cvmx_mio_fus_dat3_cn61xx cn63xxp1;
 	struct cvmx_mio_fus_dat3_cn61xx cn66xx;
 	struct cvmx_mio_fus_dat3_cn61xx cn68xx;
 	struct cvmx_mio_fus_dat3_cn61xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	} cn63xx;
 	struct cvmx_mio_fus_dat3_cn63xx cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_ema {
@@ -1406,16 +1579,22 @@ union cvmx_mio_fus_ema {
 	} cn58xx;
 	struct cvmx_mio_fus_ema_cn58xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_ema_s cn61xx;
 	struct cvmx_mio_fus_ema_s cn63xx;
 	struct cvmx_mio_fus_ema_s cn63xxp1;
 	struct cvmx_mio_fus_ema_s cn66xx;
 	struct cvmx_mio_fus_ema_s cn68xx;
 	struct cvmx_mio_fus_ema_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_ema_s cn63xx;
 	struct cvmx_mio_fus_ema_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_pdf {
@@ -1430,29 +1609,41 @@ union cvmx_mio_fus_pdf {
 	struct cvmx_mio_fus_pdf_s cn56xxp1;
 	struct cvmx_mio_fus_pdf_s cn58xx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_pdf_s cn61xx;
 	struct cvmx_mio_fus_pdf_s cn63xx;
 	struct cvmx_mio_fus_pdf_s cn63xxp1;
 	struct cvmx_mio_fus_pdf_s cn66xx;
 	struct cvmx_mio_fus_pdf_s cn68xx;
 	struct cvmx_mio_fus_pdf_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_pdf_s cn63xx;
 	struct cvmx_mio_fus_pdf_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_pll {
 	uint64_t u64;
 	struct cvmx_mio_fus_pll_s {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_48_63:16;
 		uint64_t rclk_align_r:8;
 		uint64_t rclk_align_l:8;
 		uint64_t reserved_8_31:24;
+<<<<<<< HEAD
+=======
 =======
 		uint64_t reserved_8_63:56;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t c_cout_rst:1;
 		uint64_t c_cout_sel:2;
 		uint64_t pnr_cout_rst:1;
@@ -1472,6 +1663,9 @@ union cvmx_mio_fus_pll {
 	struct cvmx_mio_fus_pll_cn50xx cn58xx;
 	struct cvmx_mio_fus_pll_cn50xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_pll_cn61xx {
 		uint64_t reserved_8_63:56;
 		uint64_t c_cout_rst:1;
@@ -1486,10 +1680,13 @@ union cvmx_mio_fus_pll {
 	struct cvmx_mio_fus_pll_cn61xx cn66xx;
 	struct cvmx_mio_fus_pll_s cn68xx;
 	struct cvmx_mio_fus_pll_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_pll_s cn63xx;
 	struct cvmx_mio_fus_pll_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_prog {
@@ -1514,16 +1711,22 @@ union cvmx_mio_fus_prog {
 	struct cvmx_mio_fus_prog_cn30xx cn58xx;
 	struct cvmx_mio_fus_prog_cn30xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_prog_s cn61xx;
 	struct cvmx_mio_fus_prog_s cn63xx;
 	struct cvmx_mio_fus_prog_s cn63xxp1;
 	struct cvmx_mio_fus_prog_s cn66xx;
 	struct cvmx_mio_fus_prog_s cn68xx;
 	struct cvmx_mio_fus_prog_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_prog_s cn63xx;
 	struct cvmx_mio_fus_prog_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_prog_times {
@@ -1553,8 +1756,12 @@ union cvmx_mio_fus_prog_times {
 <<<<<<< HEAD
 	struct cvmx_mio_fus_prog_times_cn61xx {
 =======
+<<<<<<< HEAD
+	struct cvmx_mio_fus_prog_times_cn61xx {
+=======
 	struct cvmx_mio_fus_prog_times_cn63xx {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_35_63:29;
 		uint64_t vgate_pin:1;
 		uint64_t fsrc_pin:1;
@@ -1564,16 +1771,22 @@ union cvmx_mio_fus_prog_times {
 		uint64_t sclk_hi:15;
 		uint64_t setup:6;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} cn61xx;
 	struct cvmx_mio_fus_prog_times_cn61xx cn63xx;
 	struct cvmx_mio_fus_prog_times_cn61xx cn63xxp1;
 	struct cvmx_mio_fus_prog_times_cn61xx cn66xx;
 	struct cvmx_mio_fus_prog_times_cn61xx cn68xx;
 	struct cvmx_mio_fus_prog_times_cn61xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	} cn63xx;
 	struct cvmx_mio_fus_prog_times_cn63xx cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_rcmd {
@@ -1608,16 +1821,22 @@ union cvmx_mio_fus_rcmd {
 	struct cvmx_mio_fus_rcmd_cn30xx cn58xx;
 	struct cvmx_mio_fus_rcmd_cn30xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_rcmd_s cn61xx;
 	struct cvmx_mio_fus_rcmd_s cn63xx;
 	struct cvmx_mio_fus_rcmd_s cn63xxp1;
 	struct cvmx_mio_fus_rcmd_s cn66xx;
 	struct cvmx_mio_fus_rcmd_s cn68xx;
 	struct cvmx_mio_fus_rcmd_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_rcmd_s cn63xx;
 	struct cvmx_mio_fus_rcmd_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_read_times {
@@ -1631,16 +1850,22 @@ union cvmx_mio_fus_read_times {
 		uint64_t setup:10;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_read_times_s cn61xx;
 	struct cvmx_mio_fus_read_times_s cn63xx;
 	struct cvmx_mio_fus_read_times_s cn63xxp1;
 	struct cvmx_mio_fus_read_times_s cn66xx;
 	struct cvmx_mio_fus_read_times_s cn68xx;
 	struct cvmx_mio_fus_read_times_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_read_times_s cn63xx;
 	struct cvmx_mio_fus_read_times_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_repair_res0 {
@@ -1653,16 +1878,22 @@ union cvmx_mio_fus_repair_res0 {
 		uint64_t repair0:18;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_repair_res0_s cn61xx;
 	struct cvmx_mio_fus_repair_res0_s cn63xx;
 	struct cvmx_mio_fus_repair_res0_s cn63xxp1;
 	struct cvmx_mio_fus_repair_res0_s cn66xx;
 	struct cvmx_mio_fus_repair_res0_s cn68xx;
 	struct cvmx_mio_fus_repair_res0_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_repair_res0_s cn63xx;
 	struct cvmx_mio_fus_repair_res0_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_repair_res1 {
@@ -1674,16 +1905,22 @@ union cvmx_mio_fus_repair_res1 {
 		uint64_t repair3:18;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_repair_res1_s cn61xx;
 	struct cvmx_mio_fus_repair_res1_s cn63xx;
 	struct cvmx_mio_fus_repair_res1_s cn63xxp1;
 	struct cvmx_mio_fus_repair_res1_s cn66xx;
 	struct cvmx_mio_fus_repair_res1_s cn68xx;
 	struct cvmx_mio_fus_repair_res1_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_repair_res1_s cn63xx;
 	struct cvmx_mio_fus_repair_res1_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_repair_res2 {
@@ -1693,16 +1930,22 @@ union cvmx_mio_fus_repair_res2 {
 		uint64_t repair6:18;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_repair_res2_s cn61xx;
 	struct cvmx_mio_fus_repair_res2_s cn63xx;
 	struct cvmx_mio_fus_repair_res2_s cn63xxp1;
 	struct cvmx_mio_fus_repair_res2_s cn66xx;
 	struct cvmx_mio_fus_repair_res2_s cn68xx;
 	struct cvmx_mio_fus_repair_res2_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_repair_res2_s cn63xx;
 	struct cvmx_mio_fus_repair_res2_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_spr_repair_res {
@@ -1724,16 +1967,22 @@ union cvmx_mio_fus_spr_repair_res {
 	struct cvmx_mio_fus_spr_repair_res_s cn58xx;
 	struct cvmx_mio_fus_spr_repair_res_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_spr_repair_res_s cn61xx;
 	struct cvmx_mio_fus_spr_repair_res_s cn63xx;
 	struct cvmx_mio_fus_spr_repair_res_s cn63xxp1;
 	struct cvmx_mio_fus_spr_repair_res_s cn66xx;
 	struct cvmx_mio_fus_spr_repair_res_s cn68xx;
 	struct cvmx_mio_fus_spr_repair_res_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_spr_repair_res_s cn63xx;
 	struct cvmx_mio_fus_spr_repair_res_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_spr_repair_sum {
@@ -1753,6 +2002,9 @@ union cvmx_mio_fus_spr_repair_sum {
 	struct cvmx_mio_fus_spr_repair_sum_s cn58xx;
 	struct cvmx_mio_fus_spr_repair_sum_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_spr_repair_sum_s cn61xx;
 	struct cvmx_mio_fus_spr_repair_sum_s cn63xx;
 	struct cvmx_mio_fus_spr_repair_sum_s cn63xxp1;
@@ -1769,10 +2021,13 @@ union cvmx_mio_fus_tgg {
 	} s;
 	struct cvmx_mio_fus_tgg_s cn61xx;
 	struct cvmx_mio_fus_tgg_s cn66xx;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_spr_repair_sum_s cn63xx;
 	struct cvmx_mio_fus_spr_repair_sum_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_fus_unlock {
@@ -1809,6 +2064,9 @@ union cvmx_mio_fus_wadr {
 	struct cvmx_mio_fus_wadr_cn50xx cn58xx;
 	struct cvmx_mio_fus_wadr_cn50xx cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_fus_wadr_cn61xx {
 		uint64_t reserved_4_63:60;
 		uint64_t addr:4;
@@ -1818,6 +2076,8 @@ union cvmx_mio_fus_wadr {
 	struct cvmx_mio_fus_wadr_cn61xx cn66xx;
 	struct cvmx_mio_fus_wadr_cn61xx cn68xx;
 	struct cvmx_mio_fus_wadr_cn61xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_fus_wadr_cn63xx {
 		uint64_t reserved_4_63:60;
@@ -1825,6 +2085,7 @@ union cvmx_mio_fus_wadr {
 	} cn63xx;
 	struct cvmx_mio_fus_wadr_cn63xx cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_gpio_comp {
@@ -1835,16 +2096,22 @@ union cvmx_mio_gpio_comp {
 		uint64_t nctl:6;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_gpio_comp_s cn61xx;
 	struct cvmx_mio_gpio_comp_s cn63xx;
 	struct cvmx_mio_gpio_comp_s cn63xxp1;
 	struct cvmx_mio_gpio_comp_s cn66xx;
 	struct cvmx_mio_gpio_comp_s cn68xx;
 	struct cvmx_mio_gpio_comp_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_gpio_comp_s cn63xx;
 	struct cvmx_mio_gpio_comp_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ndf_dma_cfg {
@@ -1863,16 +2130,22 @@ union cvmx_mio_ndf_dma_cfg {
 	} s;
 	struct cvmx_mio_ndf_dma_cfg_s cn52xx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ndf_dma_cfg_s cn61xx;
 	struct cvmx_mio_ndf_dma_cfg_s cn63xx;
 	struct cvmx_mio_ndf_dma_cfg_s cn63xxp1;
 	struct cvmx_mio_ndf_dma_cfg_s cn66xx;
 	struct cvmx_mio_ndf_dma_cfg_s cn68xx;
 	struct cvmx_mio_ndf_dma_cfg_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ndf_dma_cfg_s cn63xx;
 	struct cvmx_mio_ndf_dma_cfg_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ndf_dma_int {
@@ -1883,16 +2156,22 @@ union cvmx_mio_ndf_dma_int {
 	} s;
 	struct cvmx_mio_ndf_dma_int_s cn52xx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ndf_dma_int_s cn61xx;
 	struct cvmx_mio_ndf_dma_int_s cn63xx;
 	struct cvmx_mio_ndf_dma_int_s cn63xxp1;
 	struct cvmx_mio_ndf_dma_int_s cn66xx;
 	struct cvmx_mio_ndf_dma_int_s cn68xx;
 	struct cvmx_mio_ndf_dma_int_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ndf_dma_int_s cn63xx;
 	struct cvmx_mio_ndf_dma_int_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ndf_dma_int_en {
@@ -1903,16 +2182,22 @@ union cvmx_mio_ndf_dma_int_en {
 	} s;
 	struct cvmx_mio_ndf_dma_int_en_s cn52xx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ndf_dma_int_en_s cn61xx;
 	struct cvmx_mio_ndf_dma_int_en_s cn63xx;
 	struct cvmx_mio_ndf_dma_int_en_s cn63xxp1;
 	struct cvmx_mio_ndf_dma_int_en_s cn66xx;
 	struct cvmx_mio_ndf_dma_int_en_s cn68xx;
 	struct cvmx_mio_ndf_dma_int_en_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ndf_dma_int_en_s cn63xx;
 	struct cvmx_mio_ndf_dma_int_en_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_pll_ctl {
@@ -1936,6 +2221,9 @@ union cvmx_mio_pll_setting {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 union cvmx_mio_ptp_ckout_hi_incr {
 	uint64_t u64;
 	struct cvmx_mio_ptp_ckout_hi_incr_s {
@@ -2005,11 +2293,14 @@ union cvmx_mio_ptp_clock_cfg {
 	} s;
 	struct cvmx_mio_ptp_clock_cfg_s cn61xx;
 	struct cvmx_mio_ptp_clock_cfg_cn63xx {
+<<<<<<< HEAD
+=======
 =======
 union cvmx_mio_ptp_clock_cfg {
 	uint64_t u64;
 	struct cvmx_mio_ptp_clock_cfg_s {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_24_63:40;
 		uint64_t evcnt_in:6;
 		uint64_t evcnt_edge:1;
@@ -2021,6 +2312,9 @@ union cvmx_mio_ptp_clock_cfg {
 		uint64_t ext_clk_en:1;
 		uint64_t ptp_en:1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} cn63xx;
 	struct cvmx_mio_ptp_clock_cfg_cn63xx cn63xxp1;
 	struct cvmx_mio_ptp_clock_cfg_cn66xx {
@@ -2045,11 +2339,14 @@ union cvmx_mio_ptp_clock_cfg {
 	} cn66xx;
 	struct cvmx_mio_ptp_clock_cfg_s cn68xx;
 	struct cvmx_mio_ptp_clock_cfg_cn63xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	} s;
 	struct cvmx_mio_ptp_clock_cfg_s cn63xx;
 	struct cvmx_mio_ptp_clock_cfg_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ptp_clock_comp {
@@ -2059,16 +2356,22 @@ union cvmx_mio_ptp_clock_comp {
 		uint64_t frnanosec:32;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ptp_clock_comp_s cn61xx;
 	struct cvmx_mio_ptp_clock_comp_s cn63xx;
 	struct cvmx_mio_ptp_clock_comp_s cn63xxp1;
 	struct cvmx_mio_ptp_clock_comp_s cn66xx;
 	struct cvmx_mio_ptp_clock_comp_s cn68xx;
 	struct cvmx_mio_ptp_clock_comp_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ptp_clock_comp_s cn63xx;
 	struct cvmx_mio_ptp_clock_comp_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ptp_clock_hi {
@@ -2077,16 +2380,22 @@ union cvmx_mio_ptp_clock_hi {
 		uint64_t nanosec:64;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ptp_clock_hi_s cn61xx;
 	struct cvmx_mio_ptp_clock_hi_s cn63xx;
 	struct cvmx_mio_ptp_clock_hi_s cn63xxp1;
 	struct cvmx_mio_ptp_clock_hi_s cn66xx;
 	struct cvmx_mio_ptp_clock_hi_s cn68xx;
 	struct cvmx_mio_ptp_clock_hi_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ptp_clock_hi_s cn63xx;
 	struct cvmx_mio_ptp_clock_hi_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ptp_clock_lo {
@@ -2096,16 +2405,22 @@ union cvmx_mio_ptp_clock_lo {
 		uint64_t frnanosec:32;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ptp_clock_lo_s cn61xx;
 	struct cvmx_mio_ptp_clock_lo_s cn63xx;
 	struct cvmx_mio_ptp_clock_lo_s cn63xxp1;
 	struct cvmx_mio_ptp_clock_lo_s cn66xx;
 	struct cvmx_mio_ptp_clock_lo_s cn68xx;
 	struct cvmx_mio_ptp_clock_lo_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ptp_clock_lo_s cn63xx;
 	struct cvmx_mio_ptp_clock_lo_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ptp_evt_cnt {
@@ -2114,6 +2429,9 @@ union cvmx_mio_ptp_evt_cnt {
 		uint64_t cntr:64;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ptp_evt_cnt_s cn61xx;
 	struct cvmx_mio_ptp_evt_cnt_s cn63xx;
 	struct cvmx_mio_ptp_evt_cnt_s cn63xxp1;
@@ -2163,10 +2481,13 @@ union cvmx_mio_ptp_pps_thresh_lo {
 	struct cvmx_mio_ptp_pps_thresh_lo_s cn61xx;
 	struct cvmx_mio_ptp_pps_thresh_lo_s cn66xx;
 	struct cvmx_mio_ptp_pps_thresh_lo_s cn68xx;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ptp_evt_cnt_s cn63xx;
 	struct cvmx_mio_ptp_evt_cnt_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_ptp_timestamp {
@@ -2175,6 +2496,9 @@ union cvmx_mio_ptp_timestamp {
 		uint64_t nanosec:64;
 	} s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_ptp_timestamp_s cn61xx;
 	struct cvmx_mio_ptp_timestamp_s cn63xx;
 	struct cvmx_mio_ptp_timestamp_s cn63xxp1;
@@ -2205,16 +2529,22 @@ union cvmx_mio_qlmx_cfg {
 		uint64_t qlm_cfg:3;
 	} cn68xx;
 	struct cvmx_mio_qlmx_cfg_cn68xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_ptp_timestamp_s cn63xx;
 	struct cvmx_mio_ptp_timestamp_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_rst_boot {
 	uint64_t u64;
 	struct cvmx_mio_rst_boot_s {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t chipkill:1;
 		uint64_t jtcsrdis:1;
 		uint64_t ejtagdis:1;
@@ -2255,8 +2585,11 @@ union cvmx_mio_rst_boot {
 		uint64_t rboot_pin:1;
 	} cn61xx;
 	struct cvmx_mio_rst_boot_cn63xx {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_36_63:28;
 		uint64_t c_mul:6;
 		uint64_t pnr_mul:6;
@@ -2267,6 +2600,9 @@ union cvmx_mio_rst_boot {
 		uint64_t rboot:1;
 		uint64_t rboot_pin:1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} cn63xx;
 	struct cvmx_mio_rst_boot_cn63xx cn63xxp1;
 	struct cvmx_mio_rst_boot_cn66xx {
@@ -2315,25 +2651,34 @@ union cvmx_mio_rst_boot {
 		uint64_t rboot:1;
 		uint64_t rboot_pin:1;
 	} cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	} s;
 	struct cvmx_mio_rst_boot_s cn63xx;
 	struct cvmx_mio_rst_boot_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_rst_cfg {
 	uint64_t u64;
 	struct cvmx_mio_rst_cfg_s {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_3_63:61;
 		uint64_t cntl_clr_bist:1;
 		uint64_t warm_clr_bist:1;
 		uint64_t soft_clr_bist:1;
 	} s;
 	struct cvmx_mio_rst_cfg_cn61xx {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t bist_delay:58;
 		uint64_t reserved_3_5:3;
 		uint64_t cntl_clr_bist:1;
@@ -2343,9 +2688,14 @@ union cvmx_mio_rst_cfg {
 	} cn61xx;
 	struct cvmx_mio_rst_cfg_cn61xx cn63xx;
 =======
+<<<<<<< HEAD
+	} cn61xx;
+	struct cvmx_mio_rst_cfg_cn61xx cn63xx;
+=======
 	} s;
 	struct cvmx_mio_rst_cfg_s cn63xx;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_rst_cfg_cn63xxp1 {
 		uint64_t bist_delay:58;
 		uint64_t reserved_2_5:4;
@@ -2353,6 +2703,9 @@ union cvmx_mio_rst_cfg {
 		uint64_t soft_clr_bist:1;
 	} cn63xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_rst_cfg_cn61xx cn66xx;
 	struct cvmx_mio_rst_cfg_cn68xx {
 		uint64_t bist_delay:56;
@@ -2405,14 +2758,20 @@ union cvmx_mio_rst_cntlx {
 		uint64_t rst_val:1;
 	} cn66xx;
 	struct cvmx_mio_rst_cntlx_cn66xx cn68xx;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_rst_ctlx {
 	uint64_t u64;
 	struct cvmx_mio_rst_ctlx_s {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_13_63:51;
 		uint64_t in_rev_ln:1;
 		uint64_t rev_lanes:1;
@@ -2429,8 +2788,11 @@ union cvmx_mio_rst_ctlx {
 	} s;
 	struct cvmx_mio_rst_ctlx_s cn61xx;
 	struct cvmx_mio_rst_ctlx_cn63xx {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_10_63:54;
 		uint64_t prst_link:1;
 		uint64_t rst_done:1;
@@ -2444,9 +2806,13 @@ union cvmx_mio_rst_ctlx {
 <<<<<<< HEAD
 	} cn63xx;
 =======
+<<<<<<< HEAD
+	} cn63xx;
+=======
 	} s;
 	struct cvmx_mio_rst_ctlx_s cn63xx;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_rst_ctlx_cn63xxp1 {
 		uint64_t reserved_9_63:55;
 		uint64_t rst_done:1;
@@ -2463,7 +2829,13 @@ union cvmx_mio_rst_ctlx {
 	struct cvmx_mio_rst_ctlx_cn63xx cn68xx;
 	struct cvmx_mio_rst_ctlx_cn63xx cn68xxp1;
 =======
+<<<<<<< HEAD
+	struct cvmx_mio_rst_ctlx_cn63xx cn66xx;
+	struct cvmx_mio_rst_ctlx_cn63xx cn68xx;
+	struct cvmx_mio_rst_ctlx_cn63xx cn68xxp1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_rst_delay {
@@ -2471,6 +2843,9 @@ union cvmx_mio_rst_delay {
 	struct cvmx_mio_rst_delay_s {
 		uint64_t reserved_32_63:32;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t warm_rst_dly:16;
 		uint64_t soft_rst_dly:16;
 	} s;
@@ -2480,6 +2855,8 @@ union cvmx_mio_rst_delay {
 	struct cvmx_mio_rst_delay_s cn66xx;
 	struct cvmx_mio_rst_delay_s cn68xx;
 	struct cvmx_mio_rst_delay_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 		uint64_t soft_rst_dly:16;
 		uint64_t warm_rst_dly:16;
@@ -2487,6 +2864,7 @@ union cvmx_mio_rst_delay {
 	struct cvmx_mio_rst_delay_s cn63xx;
 	struct cvmx_mio_rst_delay_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_rst_int {
@@ -2496,6 +2874,9 @@ union cvmx_mio_rst_int {
 		uint64_t perst1:1;
 		uint64_t perst0:1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_4_7:4;
 		uint64_t rst_link3:1;
 		uint64_t rst_link2:1;
@@ -2515,6 +2896,8 @@ union cvmx_mio_rst_int {
 	struct cvmx_mio_rst_int_s cn66xx;
 	struct cvmx_mio_rst_int_cn61xx cn68xx;
 	struct cvmx_mio_rst_int_cn61xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 		uint64_t reserved_2_7:6;
 		uint64_t rst_link1:1;
@@ -2523,6 +2906,7 @@ union cvmx_mio_rst_int {
 	struct cvmx_mio_rst_int_s cn63xx;
 	struct cvmx_mio_rst_int_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_rst_int_en {
@@ -2532,6 +2916,9 @@ union cvmx_mio_rst_int_en {
 		uint64_t perst1:1;
 		uint64_t perst0:1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uint64_t reserved_4_7:4;
 		uint64_t rst_link3:1;
 		uint64_t rst_link2:1;
@@ -2551,6 +2938,8 @@ union cvmx_mio_rst_int_en {
 	struct cvmx_mio_rst_int_en_s cn66xx;
 	struct cvmx_mio_rst_int_en_cn61xx cn68xx;
 	struct cvmx_mio_rst_int_en_cn61xx cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 		uint64_t reserved_2_7:6;
 		uint64_t rst_link1:1;
@@ -2559,6 +2948,7 @@ union cvmx_mio_rst_int_en {
 	struct cvmx_mio_rst_int_en_s cn63xx;
 	struct cvmx_mio_rst_int_en_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_twsx_int {
@@ -2599,16 +2989,22 @@ union cvmx_mio_twsx_int {
 	struct cvmx_mio_twsx_int_s cn58xx;
 	struct cvmx_mio_twsx_int_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_twsx_int_s cn61xx;
 	struct cvmx_mio_twsx_int_s cn63xx;
 	struct cvmx_mio_twsx_int_s cn63xxp1;
 	struct cvmx_mio_twsx_int_s cn66xx;
 	struct cvmx_mio_twsx_int_s cn68xx;
 	struct cvmx_mio_twsx_int_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_twsx_int_s cn63xx;
 	struct cvmx_mio_twsx_int_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_twsx_sw_twsi {
@@ -2639,16 +3035,22 @@ union cvmx_mio_twsx_sw_twsi {
 	struct cvmx_mio_twsx_sw_twsi_s cn58xx;
 	struct cvmx_mio_twsx_sw_twsi_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_twsx_sw_twsi_s cn61xx;
 	struct cvmx_mio_twsx_sw_twsi_s cn63xx;
 	struct cvmx_mio_twsx_sw_twsi_s cn63xxp1;
 	struct cvmx_mio_twsx_sw_twsi_s cn66xx;
 	struct cvmx_mio_twsx_sw_twsi_s cn68xx;
 	struct cvmx_mio_twsx_sw_twsi_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_twsx_sw_twsi_s cn63xx;
 	struct cvmx_mio_twsx_sw_twsi_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_twsx_sw_twsi_ext {
@@ -2670,16 +3072,22 @@ union cvmx_mio_twsx_sw_twsi_ext {
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn58xx;
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn61xx;
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn63xx;
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn63xxp1;
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn66xx;
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn68xx;
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn63xx;
 	struct cvmx_mio_twsx_sw_twsi_ext_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_twsx_twsi_sw {
@@ -2701,16 +3109,22 @@ union cvmx_mio_twsx_twsi_sw {
 	struct cvmx_mio_twsx_twsi_sw_s cn58xx;
 	struct cvmx_mio_twsx_twsi_sw_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_twsx_twsi_sw_s cn61xx;
 	struct cvmx_mio_twsx_twsi_sw_s cn63xx;
 	struct cvmx_mio_twsx_twsi_sw_s cn63xxp1;
 	struct cvmx_mio_twsx_twsi_sw_s cn66xx;
 	struct cvmx_mio_twsx_twsi_sw_s cn68xx;
 	struct cvmx_mio_twsx_twsi_sw_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_twsx_twsi_sw_s cn63xx;
 	struct cvmx_mio_twsx_twsi_sw_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_dlh {
@@ -2731,16 +3145,22 @@ union cvmx_mio_uartx_dlh {
 	struct cvmx_mio_uartx_dlh_s cn58xx;
 	struct cvmx_mio_uartx_dlh_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_dlh_s cn61xx;
 	struct cvmx_mio_uartx_dlh_s cn63xx;
 	struct cvmx_mio_uartx_dlh_s cn63xxp1;
 	struct cvmx_mio_uartx_dlh_s cn66xx;
 	struct cvmx_mio_uartx_dlh_s cn68xx;
 	struct cvmx_mio_uartx_dlh_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_dlh_s cn63xx;
 	struct cvmx_mio_uartx_dlh_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_dll {
@@ -2761,16 +3181,22 @@ union cvmx_mio_uartx_dll {
 	struct cvmx_mio_uartx_dll_s cn58xx;
 	struct cvmx_mio_uartx_dll_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_dll_s cn61xx;
 	struct cvmx_mio_uartx_dll_s cn63xx;
 	struct cvmx_mio_uartx_dll_s cn63xxp1;
 	struct cvmx_mio_uartx_dll_s cn66xx;
 	struct cvmx_mio_uartx_dll_s cn68xx;
 	struct cvmx_mio_uartx_dll_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_dll_s cn63xx;
 	struct cvmx_mio_uartx_dll_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_far {
@@ -2791,16 +3217,22 @@ union cvmx_mio_uartx_far {
 	struct cvmx_mio_uartx_far_s cn58xx;
 	struct cvmx_mio_uartx_far_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_far_s cn61xx;
 	struct cvmx_mio_uartx_far_s cn63xx;
 	struct cvmx_mio_uartx_far_s cn63xxp1;
 	struct cvmx_mio_uartx_far_s cn66xx;
 	struct cvmx_mio_uartx_far_s cn68xx;
 	struct cvmx_mio_uartx_far_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_far_s cn63xx;
 	struct cvmx_mio_uartx_far_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_fcr {
@@ -2826,16 +3258,22 @@ union cvmx_mio_uartx_fcr {
 	struct cvmx_mio_uartx_fcr_s cn58xx;
 	struct cvmx_mio_uartx_fcr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_fcr_s cn61xx;
 	struct cvmx_mio_uartx_fcr_s cn63xx;
 	struct cvmx_mio_uartx_fcr_s cn63xxp1;
 	struct cvmx_mio_uartx_fcr_s cn66xx;
 	struct cvmx_mio_uartx_fcr_s cn68xx;
 	struct cvmx_mio_uartx_fcr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_fcr_s cn63xx;
 	struct cvmx_mio_uartx_fcr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_htx {
@@ -2856,16 +3294,22 @@ union cvmx_mio_uartx_htx {
 	struct cvmx_mio_uartx_htx_s cn58xx;
 	struct cvmx_mio_uartx_htx_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_htx_s cn61xx;
 	struct cvmx_mio_uartx_htx_s cn63xx;
 	struct cvmx_mio_uartx_htx_s cn63xxp1;
 	struct cvmx_mio_uartx_htx_s cn66xx;
 	struct cvmx_mio_uartx_htx_s cn68xx;
 	struct cvmx_mio_uartx_htx_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_htx_s cn63xx;
 	struct cvmx_mio_uartx_htx_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_ier {
@@ -2891,16 +3335,22 @@ union cvmx_mio_uartx_ier {
 	struct cvmx_mio_uartx_ier_s cn58xx;
 	struct cvmx_mio_uartx_ier_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_ier_s cn61xx;
 	struct cvmx_mio_uartx_ier_s cn63xx;
 	struct cvmx_mio_uartx_ier_s cn63xxp1;
 	struct cvmx_mio_uartx_ier_s cn66xx;
 	struct cvmx_mio_uartx_ier_s cn68xx;
 	struct cvmx_mio_uartx_ier_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_ier_s cn63xx;
 	struct cvmx_mio_uartx_ier_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_iir {
@@ -2923,16 +3373,22 @@ union cvmx_mio_uartx_iir {
 	struct cvmx_mio_uartx_iir_s cn58xx;
 	struct cvmx_mio_uartx_iir_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_iir_s cn61xx;
 	struct cvmx_mio_uartx_iir_s cn63xx;
 	struct cvmx_mio_uartx_iir_s cn63xxp1;
 	struct cvmx_mio_uartx_iir_s cn66xx;
 	struct cvmx_mio_uartx_iir_s cn68xx;
 	struct cvmx_mio_uartx_iir_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_iir_s cn63xx;
 	struct cvmx_mio_uartx_iir_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_lcr {
@@ -2959,16 +3415,22 @@ union cvmx_mio_uartx_lcr {
 	struct cvmx_mio_uartx_lcr_s cn58xx;
 	struct cvmx_mio_uartx_lcr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_lcr_s cn61xx;
 	struct cvmx_mio_uartx_lcr_s cn63xx;
 	struct cvmx_mio_uartx_lcr_s cn63xxp1;
 	struct cvmx_mio_uartx_lcr_s cn66xx;
 	struct cvmx_mio_uartx_lcr_s cn68xx;
 	struct cvmx_mio_uartx_lcr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_lcr_s cn63xx;
 	struct cvmx_mio_uartx_lcr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_lsr {
@@ -2996,16 +3458,22 @@ union cvmx_mio_uartx_lsr {
 	struct cvmx_mio_uartx_lsr_s cn58xx;
 	struct cvmx_mio_uartx_lsr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_lsr_s cn61xx;
 	struct cvmx_mio_uartx_lsr_s cn63xx;
 	struct cvmx_mio_uartx_lsr_s cn63xxp1;
 	struct cvmx_mio_uartx_lsr_s cn66xx;
 	struct cvmx_mio_uartx_lsr_s cn68xx;
 	struct cvmx_mio_uartx_lsr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_lsr_s cn63xx;
 	struct cvmx_mio_uartx_lsr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_mcr {
@@ -3031,16 +3499,22 @@ union cvmx_mio_uartx_mcr {
 	struct cvmx_mio_uartx_mcr_s cn58xx;
 	struct cvmx_mio_uartx_mcr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_mcr_s cn61xx;
 	struct cvmx_mio_uartx_mcr_s cn63xx;
 	struct cvmx_mio_uartx_mcr_s cn63xxp1;
 	struct cvmx_mio_uartx_mcr_s cn66xx;
 	struct cvmx_mio_uartx_mcr_s cn68xx;
 	struct cvmx_mio_uartx_mcr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_mcr_s cn63xx;
 	struct cvmx_mio_uartx_mcr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_msr {
@@ -3068,16 +3542,22 @@ union cvmx_mio_uartx_msr {
 	struct cvmx_mio_uartx_msr_s cn58xx;
 	struct cvmx_mio_uartx_msr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_msr_s cn61xx;
 	struct cvmx_mio_uartx_msr_s cn63xx;
 	struct cvmx_mio_uartx_msr_s cn63xxp1;
 	struct cvmx_mio_uartx_msr_s cn66xx;
 	struct cvmx_mio_uartx_msr_s cn68xx;
 	struct cvmx_mio_uartx_msr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_msr_s cn63xx;
 	struct cvmx_mio_uartx_msr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_rbr {
@@ -3098,16 +3578,22 @@ union cvmx_mio_uartx_rbr {
 	struct cvmx_mio_uartx_rbr_s cn58xx;
 	struct cvmx_mio_uartx_rbr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_rbr_s cn61xx;
 	struct cvmx_mio_uartx_rbr_s cn63xx;
 	struct cvmx_mio_uartx_rbr_s cn63xxp1;
 	struct cvmx_mio_uartx_rbr_s cn66xx;
 	struct cvmx_mio_uartx_rbr_s cn68xx;
 	struct cvmx_mio_uartx_rbr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_rbr_s cn63xx;
 	struct cvmx_mio_uartx_rbr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_rfl {
@@ -3128,16 +3614,22 @@ union cvmx_mio_uartx_rfl {
 	struct cvmx_mio_uartx_rfl_s cn58xx;
 	struct cvmx_mio_uartx_rfl_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_rfl_s cn61xx;
 	struct cvmx_mio_uartx_rfl_s cn63xx;
 	struct cvmx_mio_uartx_rfl_s cn63xxp1;
 	struct cvmx_mio_uartx_rfl_s cn66xx;
 	struct cvmx_mio_uartx_rfl_s cn68xx;
 	struct cvmx_mio_uartx_rfl_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_rfl_s cn63xx;
 	struct cvmx_mio_uartx_rfl_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_rfw {
@@ -3160,16 +3652,22 @@ union cvmx_mio_uartx_rfw {
 	struct cvmx_mio_uartx_rfw_s cn58xx;
 	struct cvmx_mio_uartx_rfw_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_rfw_s cn61xx;
 	struct cvmx_mio_uartx_rfw_s cn63xx;
 	struct cvmx_mio_uartx_rfw_s cn63xxp1;
 	struct cvmx_mio_uartx_rfw_s cn66xx;
 	struct cvmx_mio_uartx_rfw_s cn68xx;
 	struct cvmx_mio_uartx_rfw_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_rfw_s cn63xx;
 	struct cvmx_mio_uartx_rfw_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_sbcr {
@@ -3190,16 +3688,22 @@ union cvmx_mio_uartx_sbcr {
 	struct cvmx_mio_uartx_sbcr_s cn58xx;
 	struct cvmx_mio_uartx_sbcr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_sbcr_s cn61xx;
 	struct cvmx_mio_uartx_sbcr_s cn63xx;
 	struct cvmx_mio_uartx_sbcr_s cn63xxp1;
 	struct cvmx_mio_uartx_sbcr_s cn66xx;
 	struct cvmx_mio_uartx_sbcr_s cn68xx;
 	struct cvmx_mio_uartx_sbcr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_sbcr_s cn63xx;
 	struct cvmx_mio_uartx_sbcr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_scr {
@@ -3220,16 +3724,22 @@ union cvmx_mio_uartx_scr {
 	struct cvmx_mio_uartx_scr_s cn58xx;
 	struct cvmx_mio_uartx_scr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_scr_s cn61xx;
 	struct cvmx_mio_uartx_scr_s cn63xx;
 	struct cvmx_mio_uartx_scr_s cn63xxp1;
 	struct cvmx_mio_uartx_scr_s cn66xx;
 	struct cvmx_mio_uartx_scr_s cn68xx;
 	struct cvmx_mio_uartx_scr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_scr_s cn63xx;
 	struct cvmx_mio_uartx_scr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_sfe {
@@ -3250,16 +3760,22 @@ union cvmx_mio_uartx_sfe {
 	struct cvmx_mio_uartx_sfe_s cn58xx;
 	struct cvmx_mio_uartx_sfe_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_sfe_s cn61xx;
 	struct cvmx_mio_uartx_sfe_s cn63xx;
 	struct cvmx_mio_uartx_sfe_s cn63xxp1;
 	struct cvmx_mio_uartx_sfe_s cn66xx;
 	struct cvmx_mio_uartx_sfe_s cn68xx;
 	struct cvmx_mio_uartx_sfe_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_sfe_s cn63xx;
 	struct cvmx_mio_uartx_sfe_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_srr {
@@ -3282,16 +3798,22 @@ union cvmx_mio_uartx_srr {
 	struct cvmx_mio_uartx_srr_s cn58xx;
 	struct cvmx_mio_uartx_srr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_srr_s cn61xx;
 	struct cvmx_mio_uartx_srr_s cn63xx;
 	struct cvmx_mio_uartx_srr_s cn63xxp1;
 	struct cvmx_mio_uartx_srr_s cn66xx;
 	struct cvmx_mio_uartx_srr_s cn68xx;
 	struct cvmx_mio_uartx_srr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_srr_s cn63xx;
 	struct cvmx_mio_uartx_srr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_srt {
@@ -3312,16 +3834,22 @@ union cvmx_mio_uartx_srt {
 	struct cvmx_mio_uartx_srt_s cn58xx;
 	struct cvmx_mio_uartx_srt_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_srt_s cn61xx;
 	struct cvmx_mio_uartx_srt_s cn63xx;
 	struct cvmx_mio_uartx_srt_s cn63xxp1;
 	struct cvmx_mio_uartx_srt_s cn66xx;
 	struct cvmx_mio_uartx_srt_s cn68xx;
 	struct cvmx_mio_uartx_srt_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_srt_s cn63xx;
 	struct cvmx_mio_uartx_srt_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_srts {
@@ -3342,16 +3870,22 @@ union cvmx_mio_uartx_srts {
 	struct cvmx_mio_uartx_srts_s cn58xx;
 	struct cvmx_mio_uartx_srts_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_srts_s cn61xx;
 	struct cvmx_mio_uartx_srts_s cn63xx;
 	struct cvmx_mio_uartx_srts_s cn63xxp1;
 	struct cvmx_mio_uartx_srts_s cn66xx;
 	struct cvmx_mio_uartx_srts_s cn68xx;
 	struct cvmx_mio_uartx_srts_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_srts_s cn63xx;
 	struct cvmx_mio_uartx_srts_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_stt {
@@ -3372,16 +3906,22 @@ union cvmx_mio_uartx_stt {
 	struct cvmx_mio_uartx_stt_s cn58xx;
 	struct cvmx_mio_uartx_stt_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_stt_s cn61xx;
 	struct cvmx_mio_uartx_stt_s cn63xx;
 	struct cvmx_mio_uartx_stt_s cn63xxp1;
 	struct cvmx_mio_uartx_stt_s cn66xx;
 	struct cvmx_mio_uartx_stt_s cn68xx;
 	struct cvmx_mio_uartx_stt_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_stt_s cn63xx;
 	struct cvmx_mio_uartx_stt_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_tfl {
@@ -3402,16 +3942,22 @@ union cvmx_mio_uartx_tfl {
 	struct cvmx_mio_uartx_tfl_s cn58xx;
 	struct cvmx_mio_uartx_tfl_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_tfl_s cn61xx;
 	struct cvmx_mio_uartx_tfl_s cn63xx;
 	struct cvmx_mio_uartx_tfl_s cn63xxp1;
 	struct cvmx_mio_uartx_tfl_s cn66xx;
 	struct cvmx_mio_uartx_tfl_s cn68xx;
 	struct cvmx_mio_uartx_tfl_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_tfl_s cn63xx;
 	struct cvmx_mio_uartx_tfl_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_tfr {
@@ -3432,16 +3978,22 @@ union cvmx_mio_uartx_tfr {
 	struct cvmx_mio_uartx_tfr_s cn58xx;
 	struct cvmx_mio_uartx_tfr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_tfr_s cn61xx;
 	struct cvmx_mio_uartx_tfr_s cn63xx;
 	struct cvmx_mio_uartx_tfr_s cn63xxp1;
 	struct cvmx_mio_uartx_tfr_s cn66xx;
 	struct cvmx_mio_uartx_tfr_s cn68xx;
 	struct cvmx_mio_uartx_tfr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_tfr_s cn63xx;
 	struct cvmx_mio_uartx_tfr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_thr {
@@ -3462,16 +4014,22 @@ union cvmx_mio_uartx_thr {
 	struct cvmx_mio_uartx_thr_s cn58xx;
 	struct cvmx_mio_uartx_thr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_thr_s cn61xx;
 	struct cvmx_mio_uartx_thr_s cn63xx;
 	struct cvmx_mio_uartx_thr_s cn63xxp1;
 	struct cvmx_mio_uartx_thr_s cn66xx;
 	struct cvmx_mio_uartx_thr_s cn68xx;
 	struct cvmx_mio_uartx_thr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_thr_s cn63xx;
 	struct cvmx_mio_uartx_thr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uartx_usr {
@@ -3496,16 +4054,22 @@ union cvmx_mio_uartx_usr {
 	struct cvmx_mio_uartx_usr_s cn58xx;
 	struct cvmx_mio_uartx_usr_s cn58xxp1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cvmx_mio_uartx_usr_s cn61xx;
 	struct cvmx_mio_uartx_usr_s cn63xx;
 	struct cvmx_mio_uartx_usr_s cn63xxp1;
 	struct cvmx_mio_uartx_usr_s cn66xx;
 	struct cvmx_mio_uartx_usr_s cn68xx;
 	struct cvmx_mio_uartx_usr_s cn68xxp1;
+<<<<<<< HEAD
+=======
 =======
 	struct cvmx_mio_uartx_usr_s cn63xx;
 	struct cvmx_mio_uartx_usr_s cn63xxp1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 union cvmx_mio_uart2_dlh {

@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 struct posix_acl *jfs_get_acl(struct inode *inode, int type)
 =======
+<<<<<<< HEAD
+struct posix_acl *jfs_get_acl(struct inode *inode, int type)
+=======
 static struct posix_acl *jfs_get_acl(struct inode *inode, int type)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct posix_acl *acl;
 	char *ea_name;
@@ -123,6 +127,11 @@ int jfs_init_acl(tid_t tid, struct inode *inode, struct inode *dir)
 {
 	struct posix_acl *acl = NULL;
 =======
+<<<<<<< HEAD
+int jfs_init_acl(tid_t tid, struct inode *inode, struct inode *dir)
+{
+	struct posix_acl *acl = NULL;
+=======
 int jfs_check_acl(struct inode *inode, int mask, unsigned int flags)
 {
 	struct posix_acl *acl;
@@ -148,6 +157,7 @@ int jfs_init_acl(tid_t tid, struct inode *inode, struct inode *dir)
 	struct posix_acl *clone;
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc = 0;
 
 	if (S_ISLNK(inode->i_mode))
@@ -164,11 +174,16 @@ int jfs_init_acl(tid_t tid, struct inode *inode, struct inode *dir)
 				goto cleanup;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = posix_acl_create(&acl, GFP_KERNEL, &inode->i_mode);
 		if (rc < 0)
 			goto cleanup; /* posix_acl_release(NULL) is no-op */
 		if (rc > 0)
 			rc = jfs_set_acl(tid, inode, ACL_TYPE_ACCESS, acl);
+<<<<<<< HEAD
+=======
 =======
 		clone = posix_acl_clone(acl, GFP_KERNEL);
 		if (!clone) {
@@ -185,6 +200,7 @@ int jfs_init_acl(tid_t tid, struct inode *inode, struct inode *dir)
 		}
 		posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 cleanup:
 		posix_acl_release(acl);
 	} else
@@ -203,9 +219,15 @@ int jfs_acl_chmod(struct inode *inode)
 	int rc;
 	tid_t tid;
 =======
+<<<<<<< HEAD
+	struct posix_acl *acl;
+	int rc;
+	tid_t tid;
+=======
 	struct posix_acl *acl, *clone;
 	int rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (S_ISLNK(inode->i_mode))
 		return -EOPNOTSUPP;
@@ -215,6 +237,9 @@ int jfs_acl_chmod(struct inode *inode)
 		return PTR_ERR(acl);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = posix_acl_chmod(&acl, GFP_KERNEL, inode->i_mode);
 	if (rc)
 		return rc;
@@ -228,6 +253,8 @@ int jfs_acl_chmod(struct inode *inode)
 	mutex_unlock(&JFS_IP(inode)->commit_mutex);
 
 	posix_acl_release(acl);
+<<<<<<< HEAD
+=======
 =======
 	clone = posix_acl_clone(acl, GFP_KERNEL);
 	posix_acl_release(acl);
@@ -247,5 +274,6 @@ int jfs_acl_chmod(struct inode *inode)
 
 	posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }

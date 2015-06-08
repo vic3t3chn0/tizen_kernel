@@ -36,7 +36,14 @@
 #define ACPI_PROCESSOR_AGGREGATOR_DEVICE_NAME "Processor Aggregator"
 #define ACPI_PROCESSOR_AGGREGATOR_NOTIFY 0x80
 static DEFINE_MUTEX(isolated_cpus_lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static DEFINE_MUTEX(round_robin_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static DEFINE_MUTEX(round_robin_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static unsigned long power_saving_mwait_eax;
 
@@ -108,7 +115,15 @@ static void round_robin_cpu(unsigned int tsk_index)
 	if (!alloc_cpumask_var(&tmp, GFP_KERNEL))
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&isolated_cpus_lock);
+=======
 	mutex_lock(&round_robin_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_lock(&round_robin_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpumask_clear(tmp);
 	for_each_cpu(cpu, pad_busy_cpus)
 		cpumask_or(tmp, tmp, topology_thread_cpumask(cpu));
@@ -117,7 +132,15 @@ static void round_robin_cpu(unsigned int tsk_index)
 	if (cpumask_empty(tmp))
 		cpumask_andnot(tmp, cpu_online_mask, pad_busy_cpus);
 	if (cpumask_empty(tmp)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mutex_unlock(&isolated_cpus_lock);
+=======
 		mutex_unlock(&round_robin_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		mutex_unlock(&round_robin_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	for_each_cpu(cpu, tmp) {
@@ -132,7 +155,15 @@ static void round_robin_cpu(unsigned int tsk_index)
 	tsk_in_cpu[tsk_index] = preferred_cpu;
 	cpumask_set_cpu(preferred_cpu, pad_busy_cpus);
 	cpu_weight[preferred_cpu]++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&isolated_cpus_lock);
+=======
 	mutex_unlock(&round_robin_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_unlock(&round_robin_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	set_cpus_allowed_ptr(current, cpumask_of(preferred_cpu));
 }

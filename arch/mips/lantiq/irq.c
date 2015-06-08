@@ -124,10 +124,15 @@ static unsigned int ltq_startup_eiu_irq(struct irq_data *d)
 {
 	int i;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ltq_enable_irq(d);
 	for (i = 0; i < MAX_EIU; i++) {
 		if (d->irq == ltq_eiu_irq[i]) {
+<<<<<<< HEAD
+=======
 =======
 	int irq_nr = d->irq - INT_NUM_IRQ0;
 
@@ -135,6 +140,7 @@ static unsigned int ltq_startup_eiu_irq(struct irq_data *d)
 	for (i = 0; i < MAX_EIU; i++) {
 		if (irq_nr == ltq_eiu_irq[i]) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* low level - we should really handle set_type */
 			ltq_eiu_w32(ltq_eiu_r32(LTQ_EIU_EXIN_C) |
 				(0x6 << (i * 4)), LTQ_EIU_EXIN_C);
@@ -155,10 +161,15 @@ static void ltq_shutdown_eiu_irq(struct irq_data *d)
 {
 	int i;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ltq_disable_irq(d);
 	for (i = 0; i < MAX_EIU; i++) {
 		if (d->irq == ltq_eiu_irq[i]) {
+<<<<<<< HEAD
+=======
 =======
 	int irq_nr = d->irq - INT_NUM_IRQ0;
 
@@ -166,6 +177,7 @@ static void ltq_shutdown_eiu_irq(struct irq_data *d)
 	for (i = 0; i < MAX_EIU; i++) {
 		if (irq_nr == ltq_eiu_irq[i]) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* disable */
 			ltq_eiu_w32(ltq_eiu_r32(LTQ_EIU_EXIN_INEN) & ~(1 << i),
 				LTQ_EIU_EXIN_INEN);
@@ -258,8 +270,11 @@ static struct irqaction cascade = {
 	.handler = no_action,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.flags = IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "cascade",
 };
 
@@ -269,11 +284,16 @@ void __init arch_init_irq(void)
 
 	if (insert_resource(&iomem_resource, &ltq_icu_resource) < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		panic("Failed to insert icu memory");
 
 	if (request_mem_region(ltq_icu_resource.start,
 			resource_size(&ltq_icu_resource), "icu") < 0)
 		panic("Failed to request icu memory");
+<<<<<<< HEAD
+=======
 =======
 		panic("Failed to insert icu memory\n");
 
@@ -281,11 +301,15 @@ void __init arch_init_irq(void)
 			resource_size(&ltq_icu_resource), "icu") < 0)
 		panic("Failed to request icu memory\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ltq_icu_membase = ioremap_nocache(ltq_icu_resource.start,
 				resource_size(&ltq_icu_resource));
 	if (!ltq_icu_membase)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		panic("Failed to remap icu memory");
 
 	if (insert_resource(&iomem_resource, &ltq_eiu_resource) < 0)
@@ -294,6 +318,8 @@ void __init arch_init_irq(void)
 	if (request_mem_region(ltq_eiu_resource.start,
 			resource_size(&ltq_eiu_resource), "eiu") < 0)
 		panic("Failed to request eiu memory");
+<<<<<<< HEAD
+=======
 =======
 		panic("Failed to remap icu memory\n");
 
@@ -304,6 +330,7 @@ void __init arch_init_irq(void)
 			resource_size(&ltq_eiu_resource), "eiu") < 0)
 		panic("Failed to request eiu memory\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ltq_eiu_membase = ioremap_nocache(ltq_eiu_resource.start,
 				resource_size(&ltq_eiu_resource));
@@ -311,8 +338,12 @@ void __init arch_init_irq(void)
 <<<<<<< HEAD
 		panic("Failed to remap eiu memory");
 =======
+<<<<<<< HEAD
+		panic("Failed to remap eiu memory");
+=======
 		panic("Failed to remap eiu memory\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* make sure all irqs are turned off by default */
 	for (i = 0; i < 5; i++)

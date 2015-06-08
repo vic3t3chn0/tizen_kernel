@@ -14,6 +14,9 @@
 
 /* return the next shared peer mount of @p */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct mount *next_peer(struct mount *p)
 {
 	return list_entry(p->mnt_share.next, struct mount, mnt_share);
@@ -38,6 +41,8 @@ static struct mount *get_peer_under_root(struct mount *mnt,
 	do {
 		/* Check the namespace first for optimization */
 		if (m->mnt_ns == ns && is_path_reachable(m, m->mnt.mnt_root, root))
+<<<<<<< HEAD
+=======
 =======
 static inline struct vfsmount *next_peer(struct vfsmount *p)
 {
@@ -79,6 +84,7 @@ static struct vfsmount *get_peer_under_root(struct vfsmount *mnt,
 		/* Check the namespace first for optimization */
 		if (m->mnt_ns == ns && is_path_reachable(m, m->mnt_root, root))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return m;
 
 		m = next_peer(m);
@@ -94,12 +100,17 @@ static struct vfsmount *get_peer_under_root(struct vfsmount *mnt,
  * Caller must hold namespace_sem
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int get_dominating_id(struct mount *mnt, const struct path *root)
 {
 	struct mount *m;
 
 	for (m = mnt->mnt_master; m != NULL; m = m->mnt_master) {
 		struct mount *d = get_peer_under_root(m, mnt->mnt_ns, root);
+<<<<<<< HEAD
+=======
 =======
 int get_dominating_id(struct vfsmount *mnt, const struct path *root)
 {
@@ -108,6 +119,7 @@ int get_dominating_id(struct vfsmount *mnt, const struct path *root)
 	for (m = mnt->mnt_master; m != NULL; m = m->mnt_master) {
 		struct vfsmount *d = get_peer_under_root(m, mnt->mnt_ns, root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (d)
 			return d->mnt_group_id;
 	}
@@ -116,16 +128,22 @@ int get_dominating_id(struct vfsmount *mnt, const struct path *root)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int do_make_slave(struct mount *mnt)
 {
 	struct mount *peer_mnt = mnt, *master = mnt->mnt_master;
 	struct mount *slave_mnt;
+<<<<<<< HEAD
+=======
 =======
 static int do_make_slave(struct vfsmount *mnt)
 {
 	struct vfsmount *peer_mnt = mnt, *master = mnt->mnt_master;
 	struct vfsmount *slave_mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * slave 'mnt' to a peer mount that has the
@@ -136,8 +154,12 @@ static int do_make_slave(struct vfsmount *mnt)
 <<<<<<< HEAD
 	       peer_mnt->mnt.mnt_root != mnt->mnt.mnt_root) ;
 =======
+<<<<<<< HEAD
+	       peer_mnt->mnt.mnt_root != mnt->mnt.mnt_root) ;
+=======
 	       peer_mnt->mnt_root != mnt->mnt_root) ;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (peer_mnt == mnt) {
 		peer_mnt = next_peer(mnt);
@@ -166,8 +188,12 @@ static int do_make_slave(struct vfsmount *mnt)
 <<<<<<< HEAD
 					struct mount, mnt_slave);
 =======
+<<<<<<< HEAD
+					struct mount, mnt_slave);
+=======
 					struct vfsmount, mnt_slave);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_del_init(&slave_mnt->mnt_slave);
 			slave_mnt->mnt_master = NULL;
 		}
@@ -183,8 +209,12 @@ static int do_make_slave(struct vfsmount *mnt)
 <<<<<<< HEAD
 void change_mnt_propagation(struct mount *mnt, int type)
 =======
+<<<<<<< HEAD
+void change_mnt_propagation(struct mount *mnt, int type)
+=======
 void change_mnt_propagation(struct vfsmount *mnt, int type)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (type == MS_SHARED) {
 		set_mnt_shared(mnt);
@@ -200,10 +230,16 @@ void change_mnt_propagation(struct vfsmount *mnt, int type)
 		else
 			mnt->mnt.mnt_flags &= ~MNT_UNBINDABLE;
 =======
+<<<<<<< HEAD
+			mnt->mnt.mnt_flags |= MNT_UNBINDABLE;
+		else
+			mnt->mnt.mnt_flags &= ~MNT_UNBINDABLE;
+=======
 			mnt->mnt_flags |= MNT_UNBINDABLE;
 		else
 			mnt->mnt_flags &= ~MNT_UNBINDABLE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -221,9 +257,14 @@ void change_mnt_propagation(struct vfsmount *mnt, int type)
 static struct mount *propagation_next(struct mount *m,
 					 struct mount *origin)
 =======
+<<<<<<< HEAD
+static struct mount *propagation_next(struct mount *m,
+					 struct mount *origin)
+=======
 static struct vfsmount *propagation_next(struct vfsmount *m,
 					 struct vfsmount *origin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* are there any slaves of this mount? */
 	if (!IS_MNT_NEW(m) && !list_empty(&m->mnt_slave_list))
@@ -231,11 +272,16 @@ static struct vfsmount *propagation_next(struct vfsmount *m,
 
 	while (1) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mount *master = m->mnt_master;
 
 		if (master == origin->mnt_master) {
 			struct mount *next = next_peer(m);
 			return (next == origin) ? NULL : next;
+<<<<<<< HEAD
+=======
 =======
 		struct vfsmount *next;
 		struct vfsmount *master = m->mnt_master;
@@ -244,6 +290,7 @@ static struct vfsmount *propagation_next(struct vfsmount *m,
 			next = next_peer(m);
 			return ((next == origin) ? NULL : next);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (m->mnt_slave.next != &master->mnt_slave_list)
 			return next_slave(m);
 
@@ -262,6 +309,9 @@ static struct vfsmount *propagation_next(struct vfsmount *m,
  * 		cloned as a slave.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct mount *get_source(struct mount *dest,
 				struct mount *last_dest,
 				struct mount *last_src,
@@ -269,6 +319,8 @@ static struct mount *get_source(struct mount *dest,
 {
 	struct mount *p_last_src = NULL;
 	struct mount *p_last_dest = NULL;
+<<<<<<< HEAD
+=======
 =======
 static struct vfsmount *get_source(struct vfsmount *dest,
 					struct vfsmount *last_dest,
@@ -278,6 +330,7 @@ static struct vfsmount *get_source(struct vfsmount *dest,
 	struct vfsmount *p_last_src = NULL;
 	struct vfsmount *p_last_dest = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (last_dest != dest->mnt_master) {
 		p_last_dest = last_dest;
@@ -318,6 +371,9 @@ static struct vfsmount *get_source(struct vfsmount *dest,
  * @tree_list : list of heads of trees to be attached.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int propagate_mnt(struct mount *dest_mnt, struct dentry *dest_dentry,
 		    struct mount *source_mnt, struct list_head *tree_list)
 {
@@ -325,6 +381,8 @@ int propagate_mnt(struct mount *dest_mnt, struct dentry *dest_dentry,
 	int ret = 0;
 	struct mount *prev_dest_mnt = dest_mnt;
 	struct mount *prev_src_mnt  = source_mnt;
+<<<<<<< HEAD
+=======
 =======
 int propagate_mnt(struct vfsmount *dest_mnt, struct dentry *dest_dentry,
 		    struct vfsmount *source_mnt, struct list_head *tree_list)
@@ -334,6 +392,7 @@ int propagate_mnt(struct vfsmount *dest_mnt, struct dentry *dest_dentry,
 	struct vfsmount *prev_dest_mnt = dest_mnt;
 	struct vfsmount *prev_src_mnt  = source_mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LIST_HEAD(tmp_list);
 	LIST_HEAD(umount_list);
 
@@ -343,8 +402,12 @@ int propagate_mnt(struct vfsmount *dest_mnt, struct dentry *dest_dentry,
 <<<<<<< HEAD
 		struct mount *source;
 =======
+<<<<<<< HEAD
+		struct mount *source;
+=======
 		struct vfsmount *source;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (IS_MNT_NEW(m))
 			continue;
@@ -354,8 +417,12 @@ int propagate_mnt(struct vfsmount *dest_mnt, struct dentry *dest_dentry,
 <<<<<<< HEAD
 		if (!(child = copy_tree(source, source->mnt.mnt_root, type))) {
 =======
+<<<<<<< HEAD
+		if (!(child = copy_tree(source, source->mnt.mnt_root, type))) {
+=======
 		if (!(child = copy_tree(source, source->mnt_root, type))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = -ENOMEM;
 			list_splice(tree_list, tmp_list.prev);
 			goto out;
@@ -364,8 +431,12 @@ int propagate_mnt(struct vfsmount *dest_mnt, struct dentry *dest_dentry,
 <<<<<<< HEAD
 		if (is_subdir(dest_dentry, m->mnt.mnt_root)) {
 =======
+<<<<<<< HEAD
+		if (is_subdir(dest_dentry, m->mnt.mnt_root)) {
+=======
 		if (is_subdir(dest_dentry, m->mnt_root)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mnt_set_mountpoint(m, dest_dentry, child);
 			list_add_tail(&child->mnt_hash, tree_list);
 		} else {
@@ -384,8 +455,12 @@ out:
 <<<<<<< HEAD
 		child = list_first_entry(&tmp_list, struct mount, mnt_hash);
 =======
+<<<<<<< HEAD
+		child = list_first_entry(&tmp_list, struct mount, mnt_hash);
+=======
 		child = list_first_entry(&tmp_list, struct vfsmount, mnt_hash);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		umount_tree(child, 0, &umount_list);
 	}
 	br_write_unlock(vfsmount_lock);
@@ -399,8 +474,12 @@ out:
 <<<<<<< HEAD
 static inline int do_refcount_check(struct mount *mnt, int count)
 =======
+<<<<<<< HEAD
+static inline int do_refcount_check(struct mount *mnt, int count)
+=======
 static inline int do_refcount_check(struct vfsmount *mnt, int count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int mycount = mnt_get_count(mnt) - mnt->mnt_ghosts;
 	return (mycount > count);
@@ -417,16 +496,22 @@ static inline int do_refcount_check(struct vfsmount *mnt, int count)
  * vfsmount lock must be held for write
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int propagate_mount_busy(struct mount *mnt, int refcnt)
 {
 	struct mount *m, *child;
 	struct mount *parent = mnt->mnt_parent;
+<<<<<<< HEAD
+=======
 =======
 int propagate_mount_busy(struct vfsmount *mnt, int refcnt)
 {
 	struct vfsmount *m, *child;
 	struct vfsmount *parent = mnt->mnt_parent;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (mnt == parent)
@@ -445,8 +530,12 @@ int propagate_mount_busy(struct vfsmount *mnt, int refcnt)
 <<<<<<< HEAD
 		child = __lookup_mnt(&m->mnt, mnt->mnt_mountpoint, 0);
 =======
+<<<<<<< HEAD
+		child = __lookup_mnt(&m->mnt, mnt->mnt_mountpoint, 0);
+=======
 		child = __lookup_mnt(m, mnt->mnt_mountpoint, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (child && list_empty(&child->mnt_mounts) &&
 		    (ret = do_refcount_check(child, 1)))
 			break;
@@ -459,16 +548,22 @@ int propagate_mount_busy(struct vfsmount *mnt, int refcnt)
  * parent propagates to.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __propagate_umount(struct mount *mnt)
 {
 	struct mount *parent = mnt->mnt_parent;
 	struct mount *m;
+<<<<<<< HEAD
+=======
 =======
 static void __propagate_umount(struct vfsmount *mnt)
 {
 	struct vfsmount *parent = mnt->mnt_parent;
 	struct vfsmount *m;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(parent == mnt);
 
@@ -478,8 +573,12 @@ static void __propagate_umount(struct vfsmount *mnt)
 <<<<<<< HEAD
 		struct mount *child = __lookup_mnt(&m->mnt,
 =======
+<<<<<<< HEAD
+		struct mount *child = __lookup_mnt(&m->mnt,
+=======
 		struct vfsmount *child = __lookup_mnt(m,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					mnt->mnt_mountpoint, 0);
 		/*
 		 * umount the child only if the child has no
@@ -502,8 +601,12 @@ int propagate_umount(struct list_head *list)
 <<<<<<< HEAD
 	struct mount *mnt;
 =======
+<<<<<<< HEAD
+	struct mount *mnt;
+=======
 	struct vfsmount *mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_for_each_entry(mnt, list, mnt_hash)
 		__propagate_umount(mnt);

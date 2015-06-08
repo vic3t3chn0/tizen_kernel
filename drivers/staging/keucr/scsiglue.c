@@ -144,7 +144,15 @@ static int command_abort(struct scsi_cmnd *srb)
 	scsi_lock(us_to_host(us));
 	if (us->srb != srb) {
 		scsi_unlock(us_to_host(us));
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk("-- nothing to abort\n");
+=======
 		printk ("-- nothing to abort\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk ("-- nothing to abort\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return FAILED;
 	}
 
@@ -279,7 +287,16 @@ static int proc_info(struct Scsi_Host *host, char *buffer, char **start,
 		pos += sprintf(pos, "       Quirks:");
 
 #define US_FLAG(name, value) \
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (us->fflags & value)\
+		pos += sprintf(pos, " " #name);
+=======
 	if (us->fflags & value) pos += sprintf(pos, " " #name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (us->fflags & value) pos += sprintf(pos, " " #name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 US_DO_ALL_FLAGS
 #undef US_FLAG
 

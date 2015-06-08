@@ -39,8 +39,11 @@
 #include "xfs_btree.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_btree_trace.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_alloc.h"
 #include "xfs_ialloc.h"
 #include "xfs_bmap.h"
@@ -58,8 +61,12 @@ kmem_zone_t *xfs_inode_zone;
 <<<<<<< HEAD
  * Used in xfs_itruncate_extents().  This is the maximum number of extents
 =======
+<<<<<<< HEAD
+ * Used in xfs_itruncate_extents().  This is the maximum number of extents
+=======
  * Used in xfs_itruncate().  This is the maximum number of extents
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * freed from a file in a single transaction.
  */
 #define	XFS_ITRUNC_MAX_EXTENTS	2
@@ -177,8 +184,12 @@ xfs_imap_to_bp(
 <<<<<<< HEAD
 		di_ok = dip->di_magic == cpu_to_be16(XFS_DINODE_MAGIC) &&
 =======
+<<<<<<< HEAD
+		di_ok = dip->di_magic == cpu_to_be16(XFS_DINODE_MAGIC) &&
+=======
 		di_ok = be16_to_cpu(dip->di_magic) == XFS_DINODE_MAGIC &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    XFS_DINODE_GOOD_VERSION(dip->di_version);
 		if (unlikely(XFS_TEST_ERROR(!di_ok, mp,
 						XFS_ERRTAG_ITOBP_INOTOBP,
@@ -204,6 +215,8 @@ xfs_imap_to_bp(
 	xfs_inobp_check(mp, bp);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/*
 	 * Mark the buffer as an inode buffer now that it looks good
@@ -211,6 +224,7 @@ xfs_imap_to_bp(
 	XFS_BUF_SET_VTYPE(bp, B_FS_INO);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*bpp = bp;
 	return 0;
 }
@@ -324,12 +338,17 @@ xfs_iformat(
 	int			error = 0;
 	xfs_fsize_t             di_size;
 =======
+<<<<<<< HEAD
+	int			error = 0;
+	xfs_fsize_t             di_size;
+=======
 	int			error;
 	xfs_fsize_t             di_size;
 	ip->i_df.if_ext_max =
 		XFS_IFORK_DSIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t);
 	error = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(be32_to_cpu(dip->di_nextents) +
 		     be16_to_cpu(dip->di_anextents) >
@@ -378,8 +397,11 @@ xfs_iformat(
 		ip->i_d.di_size = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		ip->i_size = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ip->i_df.if_u2.if_rdev = xfs_dinode_get_rdev(dip);
 		break;
 
@@ -394,8 +416,12 @@ xfs_iformat(
 <<<<<<< HEAD
 			if (unlikely(S_ISREG(be16_to_cpu(dip->di_mode)))) {
 =======
+<<<<<<< HEAD
+			if (unlikely(S_ISREG(be16_to_cpu(dip->di_mode)))) {
+=======
 			if (unlikely((be16_to_cpu(dip->di_mode) & S_IFMT) == S_IFREG)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				xfs_warn(ip->i_mount,
 			"corrupt inode %Lu (local format for regular file).",
 					(unsigned long long) ip->i_ino);
@@ -443,16 +469,22 @@ xfs_iformat(
 	if (!XFS_DFORK_Q(dip))
 		return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT(ip->i_afp == NULL);
 	ip->i_afp = kmem_zone_zalloc(xfs_ifork_zone, KM_SLEEP | KM_NOFS);
 
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(ip->i_afp == NULL);
 	ip->i_afp = kmem_zone_zalloc(xfs_ifork_zone, KM_SLEEP | KM_NOFS);
 	ip->i_afp->if_ext_max =
 		XFS_IFORK_ASIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (dip->di_aformat) {
 	case XFS_DINODE_FMT_LOCAL:
 		atp = (xfs_attr_shortform_t *)XFS_DFORK_APTR(dip);
@@ -645,17 +677,23 @@ xfs_iformat_btree(
 	 * blocks.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(XFS_IFORK_NEXTENTS(ip, whichfork) <=
 			XFS_IFORK_MAXEXT(ip, whichfork) ||
 		     XFS_BMDR_SPACE_CALC(nrecs) >
 			XFS_DFORK_SIZE(dip, ip->i_mount, whichfork) ||
 		     XFS_IFORK_NEXTENTS(ip, whichfork) > ip->i_d.di_nblocks)) {
+<<<<<<< HEAD
+=======
 =======
 	if (unlikely(XFS_IFORK_NEXTENTS(ip, whichfork) <= ifp->if_ext_max
 	    || XFS_BMDR_SPACE_CALC(nrecs) >
 			XFS_DFORK_SIZE(dip, ip->i_mount, whichfork)
 	    || XFS_IFORK_NEXTENTS(ip, whichfork) > ip->i_d.di_nblocks)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_warn(ip->i_mount, "corrupt inode %Lu (btree).",
 			(unsigned long long) ip->i_ino);
 		XFS_CORRUPTION_ERROR("xfs_iformat_btree", XFS_ERRLEVEL_LOW,
@@ -846,8 +884,12 @@ xfs_iread(
 <<<<<<< HEAD
 	if (dip->di_magic != cpu_to_be16(XFS_DINODE_MAGIC)) {
 =======
+<<<<<<< HEAD
+	if (dip->di_magic != cpu_to_be16(XFS_DINODE_MAGIC)) {
+=======
 	if (be16_to_cpu(dip->di_magic) != XFS_DINODE_MAGIC) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 		xfs_alert(mp,
 			"%s: dip->di_magic (0x%x) != XFS_DINODE_MAGIC (0x%x)",
@@ -889,6 +931,8 @@ xfs_iread(
 		ip->i_d.di_mode = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		/*
 		 * Initialize the per-fork minima and maxima for a new
 		 * inode here.  xfs_iformat will do it for old inodes.
@@ -896,6 +940,7 @@ xfs_iread(
 		ip->i_df.if_ext_max =
 			XFS_IFORK_DSIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -918,8 +963,11 @@ xfs_iread(
 	ip->i_delayed_blks = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ip->i_size = ip->i_d.di_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Mark the buffer containing the inode as something to keep
@@ -1022,8 +1070,12 @@ xfs_ialloc(
 <<<<<<< HEAD
 	umode_t		mode,
 =======
+<<<<<<< HEAD
+	umode_t		mode,
+=======
 	mode_t		mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_nlink_t	nlink,
 	xfs_dev_t	rdev,
 	prid_t		prid,
@@ -1067,8 +1119,12 @@ xfs_ialloc(
 <<<<<<< HEAD
 	ip->i_d.di_mode = mode;
 =======
+<<<<<<< HEAD
+	ip->i_d.di_mode = mode;
+=======
 	ip->i_d.di_mode = (__uint16_t)mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip->i_d.di_onlink = 0;
 	ip->i_d.di_nlink = nlink;
 	ASSERT(ip->i_d.di_nlink == nlink);
@@ -1103,8 +1159,12 @@ xfs_ialloc(
 <<<<<<< HEAD
 		if ((pip->i_d.di_mode & S_ISGID) && S_ISDIR(mode)) {
 =======
+<<<<<<< HEAD
+		if ((pip->i_d.di_mode & S_ISGID) && S_ISDIR(mode)) {
+=======
 		if ((pip->i_d.di_mode & S_ISGID) && (mode & S_IFMT) == S_IFDIR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ip->i_d.di_mode |= S_ISGID;
 		}
 	}
@@ -1123,8 +1183,11 @@ xfs_ialloc(
 	ip->i_d.di_size = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ip->i_size = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip->i_d.di_nextents = 0;
 	ASSERT(ip->i_d.di_nblocks == 0);
 
@@ -1167,8 +1230,12 @@ xfs_ialloc(
 <<<<<<< HEAD
 			if (S_ISDIR(mode)) {
 =======
+<<<<<<< HEAD
+			if (S_ISDIR(mode)) {
+=======
 			if ((mode & S_IFMT) == S_IFDIR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (pip->i_d.di_flags & XFS_DIFLAG_RTINHERIT)
 					di_flags |= XFS_DIFLAG_RTINHERIT;
 				if (pip->i_d.di_flags & XFS_DIFLAG_EXTSZINHERIT) {
@@ -1178,8 +1245,12 @@ xfs_ialloc(
 <<<<<<< HEAD
 			} else if (S_ISREG(mode)) {
 =======
+<<<<<<< HEAD
+			} else if (S_ISREG(mode)) {
+=======
 			} else if ((mode & S_IFMT) == S_IFREG) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (pip->i_d.di_flags & XFS_DIFLAG_RTINHERIT)
 					di_flags |= XFS_DIFLAG_REALTIME;
 				if (pip->i_d.di_flags & XFS_DIFLAG_EXTSZINHERIT) {
@@ -1230,8 +1301,12 @@ xfs_ialloc(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(tp, ip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_trans_log_inode(tp, ip, flags);
 
 	/* now that we have an i_mode we can setup inode ops and unlock */
@@ -1251,6 +1326,11 @@ xfs_ialloc(
 }
 
 /*
+<<<<<<< HEAD
+ * Free up the underlying blocks past new_size.  The new size must be smaller
+ * than the current size.  This routine can be used both for the attribute and
+ * data fork, and does not modify the inode size, which is left to the caller.
+=======
 <<<<<<< HEAD
  * Free up the underlying blocks past new_size.  The new size must be smaller
  * than the current size.  This routine can be used both for the attribute and
@@ -1460,6 +1540,7 @@ xfs_itruncate_start(
  * the current size.  This will free up the underlying blocks in the removed
  * range after a call to xfs_itruncate_start() or xfs_atruncate_start().
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The transaction passed to this routine must have made a permanent log
  * reservation of at least XFS_ITRUNCATE_LOG_RES.  This routine may commit the
@@ -1471,6 +1552,8 @@ xfs_itruncate_start(
  * will be "held" within the returned transaction.  This routine does NOT
  * require any disk space to be reserved for it within the transaction.
  *
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * The fork parameter must be either xfs_attr_fork or xfs_data_fork, and it
@@ -1499,6 +1582,7 @@ xfs_itruncate_start(
  * based on inode state.
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * If we get an error, we must return with the inode locked and linked into the
  * current transaction. This keeps things simple for the higher level code,
  * because it always knows that the inode is locked and held in the transaction
@@ -1507,6 +1591,9 @@ xfs_itruncate_start(
  */
 int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 xfs_itruncate_extents(
 	struct xfs_trans	**tpp,
 	struct xfs_inode	*ip,
@@ -1533,6 +1620,8 @@ xfs_itruncate_extents(
 	ASSERT(!XFS_NOT_DQATTACHED(mp, ip));
 
 	trace_xfs_itruncate_extents_start(ip, new_size);
+<<<<<<< HEAD
+=======
 =======
 xfs_itruncate_finish(
 	xfs_trans_t	**tp,
@@ -1645,6 +1734,7 @@ xfs_itruncate_finish(
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Since it is possible for space to become allocated beyond
@@ -1656,6 +1746,9 @@ xfs_itruncate_finish(
 	 * then there is nothing to do.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	first_unmap_block = XFS_B_TO_FSB(mp, (xfs_ufsize_t)new_size);
 	last_block = XFS_B_TO_FSB(mp, (xfs_ufsize_t)XFS_MAXIOFFSET(mp));
 	if (first_unmap_block == last_block)
@@ -1673,6 +1766,8 @@ xfs_itruncate_finish(
 				    &done);
 		if (error)
 			goto out_bmap_cancel;
+<<<<<<< HEAD
+=======
 =======
 	last_block = XFS_B_TO_FSB(mp, (xfs_ufsize_t)XFS_MAXIOFFSET(mp));
 	ASSERT(first_unmap_block <= last_block);
@@ -1715,17 +1810,23 @@ xfs_itruncate_finish(
 			return error;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Duplicate the transaction that has the permanent
 		 * reservation and commit the old transaction.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = xfs_bmap_finish(&tp, &free_list, &committed);
 		if (committed)
 			xfs_trans_ijoin(tp, ip, 0);
 		if (error)
 			goto out_bmap_cancel;
+<<<<<<< HEAD
+=======
 =======
 		error = xfs_bmap_finish(tp, &free_list, &committed);
 		ntp = *tp;
@@ -1747,6 +1848,7 @@ xfs_itruncate_finish(
 			return error;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (committed) {
 			/*
@@ -1754,6 +1856,9 @@ xfs_itruncate_finish(
 			 * moved forward in the log as part of every commit.
 			 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_trans_log_inode(tp, ip, XFS_ILOG_CORE);
 		}
 
@@ -1772,6 +1877,8 @@ xfs_itruncate_finish(
 		 */
 		xfs_log_ticket_put(tp->t_ticket);
 		error = xfs_trans_reserve(tp, 0,
+<<<<<<< HEAD
+=======
 =======
 			xfs_trans_log_inode(ntp, ip, XFS_ILOG_CORE);
 		}
@@ -1791,11 +1898,15 @@ xfs_itruncate_finish(
 		xfs_log_ticket_put(ntp->t_ticket);
 		error = xfs_trans_reserve(ntp, 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					XFS_ITRUNCATE_LOG_RES(mp), 0,
 					XFS_TRANS_PERM_LOG_RES,
 					XFS_ITRUNCATE_LOG_COUNT);
 		if (error)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out;
 	}
 
@@ -1818,6 +1929,8 @@ out_bmap_cancel:
 	 */
 	xfs_bmap_cancel(&free_list);
 	goto out;
+<<<<<<< HEAD
+=======
 =======
 			return error;
 	}
@@ -1852,6 +1965,7 @@ out_bmap_cancel:
 	trace_xfs_itruncate_finish_end(ip, new_size);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1878,8 +1992,11 @@ xfs_iunlink(
 	ASSERT(ip->i_d.di_mode != 0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(ip->i_transp == tp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mp = tp->t_mountp;
 
@@ -1905,8 +2022,12 @@ xfs_iunlink(
 <<<<<<< HEAD
 	if (agi->agi_unlinked[bucket_index] != cpu_to_be32(NULLAGINO)) {
 =======
+<<<<<<< HEAD
+	if (agi->agi_unlinked[bucket_index] != cpu_to_be32(NULLAGINO)) {
+=======
 	if (be32_to_cpu(agi->agi_unlinked[bucket_index]) != NULLAGINO) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * There is already another inode in the bucket we need
 		 * to add ourselves to.  Add us at the front of the list.
@@ -1920,9 +2041,13 @@ xfs_iunlink(
 <<<<<<< HEAD
 		ASSERT(dip->di_next_unlinked == cpu_to_be32(NULLAGINO));
 =======
+<<<<<<< HEAD
+		ASSERT(dip->di_next_unlinked == cpu_to_be32(NULLAGINO));
+=======
 		ASSERT(be32_to_cpu(dip->di_next_unlinked) == NULLAGINO);
 		/* both on-disk, don't endian flip twice */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dip->di_next_unlinked = agi->agi_unlinked[bucket_index];
 		offset = ip->i_imap.im_boffset +
 			offsetof(xfs_dinode_t, di_next_unlinked);
@@ -1990,8 +2115,12 @@ xfs_iunlink_remove(
 <<<<<<< HEAD
 	ASSERT(agi->agi_unlinked[bucket_index] != cpu_to_be32(NULLAGINO));
 =======
+<<<<<<< HEAD
+	ASSERT(agi->agi_unlinked[bucket_index] != cpu_to_be32(NULLAGINO));
+=======
 	ASSERT(be32_to_cpu(agi->agi_unlinked[bucket_index]) != NULLAGINO);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(agi->agi_unlinked[bucket_index]);
 
 	if (be32_to_cpu(agi->agi_unlinked[bucket_index]) == agino) {
@@ -2106,8 +2235,12 @@ xfs_iunlink_remove(
 <<<<<<< HEAD
 STATIC int
 =======
+<<<<<<< HEAD
+STATIC int
+=======
 STATIC void
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 xfs_ifree_cluster(
 	xfs_inode_t	*free_ip,
 	xfs_trans_t	*tp,
@@ -2157,7 +2290,12 @@ xfs_ifree_cluster(
 		if (!bp)
 			return ENOMEM;
 =======
+<<<<<<< HEAD
+		if (!bp)
+			return ENOMEM;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Walk the inodes already attached to the buffer and mark them
 		 * stale. These will all have the flush locks held, so an
@@ -2168,8 +2306,12 @@ xfs_ifree_cluster(
 <<<<<<< HEAD
 		lip = bp->b_fspriv;
 =======
+<<<<<<< HEAD
+		lip = bp->b_fspriv;
+=======
 		lip = XFS_BUF_FSPRIVATE(bp, xfs_log_item_t *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (lip) {
 			if (lip->li_type == XFS_LI_INODE) {
 				iip = (xfs_inode_log_item_t *)lip;
@@ -2249,8 +2391,11 @@ retry:
 				ASSERT(ip != free_ip);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				ip->i_update_core = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				xfs_ifunlock(ip);
 				xfs_iunlock(ip, XFS_ILOCK_EXCL);
 				continue;
@@ -2260,9 +2405,14 @@ retry:
 			iip->ili_last_fields = iip->ili_fields;
 			iip->ili_fields = 0;
 =======
+<<<<<<< HEAD
+			iip->ili_last_fields = iip->ili_fields;
+			iip->ili_fields = 0;
+=======
 			iip->ili_last_fields = iip->ili_format.ilf_fields;
 			iip->ili_format.ilf_fields = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			iip->ili_logged = 1;
 			xfs_trans_ail_copy_lsn(mp->m_ail, &iip->ili_flush_lsn,
 						&iip->ili_item.li_lsn);
@@ -2282,7 +2432,11 @@ retry:
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2309,10 +2463,15 @@ xfs_ifree(
 
 	ASSERT(xfs_isilocked(ip, XFS_ILOCK_EXCL));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(ip->i_d.di_nlink == 0);
 	ASSERT(ip->i_d.di_nextents == 0);
 	ASSERT(ip->i_d.di_anextents == 0);
 	ASSERT(ip->i_d.di_size == 0 || !S_ISREG(ip->i_d.di_mode));
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(ip->i_transp == tp);
 	ASSERT(ip->i_d.di_nlink == 0);
@@ -2321,6 +2480,7 @@ xfs_ifree(
 	ASSERT((ip->i_d.di_size == 0 && ip->i_size == 0) ||
 	       ((ip->i_d.di_mode & S_IFMT) != S_IFREG));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(ip->i_d.di_nblocks == 0);
 
 	/*
@@ -2341,9 +2501,12 @@ xfs_ifree(
 	ip->i_d.di_forkoff = 0;		/* mark the attr fork not in use */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ip->i_df.if_ext_max =
 		XFS_IFORK_DSIZE(ip) / (uint)sizeof(xfs_bmbt_rec_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip->i_d.di_format = XFS_DINODE_FMT_EXTENTS;
 	ip->i_d.di_aformat = XFS_DINODE_FMT_EXTENTS;
 	/*
@@ -2374,16 +2537,22 @@ xfs_ifree(
 
 	if (delete) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = xfs_ifree_cluster(ip, tp, first_ino);
 	}
 
 	return error;
+<<<<<<< HEAD
+=======
 =======
 		xfs_ifree_cluster(ip, tp, first_ino);
 	}
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2659,8 +2828,12 @@ static void
 <<<<<<< HEAD
 xfs_iunpin(
 =======
+<<<<<<< HEAD
+xfs_iunpin(
+=======
 xfs_iunpin_nowait(
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xfs_inode	*ip)
 {
 	ASSERT(xfs_isilocked(ip, XFS_ILOCK_EXCL|XFS_ILOCK_SHARED));
@@ -2673,6 +2846,9 @@ xfs_iunpin_nowait(
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 __xfs_iunpin_wait(
 	struct xfs_inode	*ip)
@@ -2690,12 +2866,19 @@ __xfs_iunpin_wait(
 	finish_wait(wq, &wait.wait);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 xfs_iunpin_wait(
 	struct xfs_inode	*ip)
 {
+<<<<<<< HEAD
+	if (xfs_ipincount(ip))
+		__xfs_iunpin_wait(ip);
+=======
 <<<<<<< HEAD
 	if (xfs_ipincount(ip))
 		__xfs_iunpin_wait(ip);
@@ -2705,6 +2888,7 @@ xfs_iunpin_wait(
 		wait_event(ip->i_ipin_wait, (xfs_ipincount(ip) == 0));
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2817,8 +3001,12 @@ xfs_iflush_fork(
 <<<<<<< HEAD
 		if ((iip->ili_fields & dataflag[whichfork]) &&
 =======
+<<<<<<< HEAD
+		if ((iip->ili_fields & dataflag[whichfork]) &&
+=======
 		if ((iip->ili_format.ilf_fields & dataflag[whichfork]) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    (ifp->if_bytes > 0)) {
 			ASSERT(ifp->if_u1.if_data != NULL);
 			ASSERT(ifp->if_bytes <= XFS_IFORK_SIZE(ip, whichfork));
@@ -2832,9 +3020,14 @@ xfs_iflush_fork(
 		       !(iip->ili_fields & extflag[whichfork]));
 		if ((iip->ili_fields & extflag[whichfork]) &&
 =======
+<<<<<<< HEAD
+		       !(iip->ili_fields & extflag[whichfork]));
+		if ((iip->ili_fields & extflag[whichfork]) &&
+=======
 		       !(iip->ili_format.ilf_fields & extflag[whichfork]));
 		if ((iip->ili_format.ilf_fields & extflag[whichfork]) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    (ifp->if_bytes > 0)) {
 			ASSERT(xfs_iext_get_ext(ifp, 0));
 			ASSERT(XFS_IFORK_NEXTENTS(ip, whichfork) > 0);
@@ -2847,8 +3040,12 @@ xfs_iflush_fork(
 <<<<<<< HEAD
 		if ((iip->ili_fields & brootflag[whichfork]) &&
 =======
+<<<<<<< HEAD
+		if ((iip->ili_fields & brootflag[whichfork]) &&
+=======
 		if ((iip->ili_format.ilf_fields & brootflag[whichfork]) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    (ifp->if_broot_bytes > 0)) {
 			ASSERT(ifp->if_broot != NULL);
 			ASSERT(ifp->if_broot_bytes <=
@@ -2864,8 +3061,12 @@ xfs_iflush_fork(
 <<<<<<< HEAD
 		if (iip->ili_fields & XFS_ILOG_DEV) {
 =======
+<<<<<<< HEAD
+		if (iip->ili_fields & XFS_ILOG_DEV) {
+=======
 		if (iip->ili_format.ilf_fields & XFS_ILOG_DEV) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ASSERT(whichfork == XFS_DATA_FORK);
 			xfs_dinode_put_rdev(dip, ip->i_df.if_u2.if_rdev);
 		}
@@ -2875,8 +3076,12 @@ xfs_iflush_fork(
 <<<<<<< HEAD
 		if (iip->ili_fields & XFS_ILOG_UUID) {
 =======
+<<<<<<< HEAD
+		if (iip->ili_fields & XFS_ILOG_UUID) {
+=======
 		if (iip->ili_format.ilf_fields & XFS_ILOG_UUID) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ASSERT(whichfork == XFS_DATA_FORK);
 			memcpy(XFS_DFORK_DPTR(dip),
 			       &ip->i_df.if_u2.if_uuid,
@@ -3023,6 +3228,9 @@ cluster_corrupt_out:
 		 * mark it as stale and brelse.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (bp->b_iodone) {
 			XFS_BUF_UNDONE(bp);
 			xfs_buf_stale(bp);
@@ -3030,6 +3238,8 @@ cluster_corrupt_out:
 			xfs_buf_ioend(bp, 0);
 		} else {
 			xfs_buf_stale(bp);
+<<<<<<< HEAD
+=======
 =======
 		if (XFS_BUF_IODONE_FUNC(bp)) {
 			XFS_BUF_UNDONE(bp);
@@ -3039,6 +3249,7 @@ cluster_corrupt_out:
 		} else {
 			XFS_BUF_STALE(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_buf_relse(bp);
 		}
 	}
@@ -3080,10 +3291,16 @@ xfs_iflush(
 	ASSERT(ip->i_d.di_format != XFS_DINODE_FMT_BTREE ||
 	       ip->i_d.di_nextents > XFS_IFORK_MAXEXT(ip, XFS_DATA_FORK));
 =======
+<<<<<<< HEAD
+	ASSERT(xfs_isiflocked(ip));
+	ASSERT(ip->i_d.di_format != XFS_DINODE_FMT_BTREE ||
+	       ip->i_d.di_nextents > XFS_IFORK_MAXEXT(ip, XFS_DATA_FORK));
+=======
 	ASSERT(!completion_done(&ip->i_flush));
 	ASSERT(ip->i_d.di_format != XFS_DINODE_FMT_BTREE ||
 	       ip->i_d.di_nextents > ip->i_df.if_ext_max);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iip = ip->i_itemp;
 	mp = ip->i_mount;
@@ -3103,8 +3320,12 @@ xfs_iflush(
 <<<<<<< HEAD
 		xfs_iunpin(ip);
 =======
+<<<<<<< HEAD
+		xfs_iunpin(ip);
+=======
 		xfs_iunpin_nowait(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_ifunlock(ip);
 		return EAGAIN;
 	}
@@ -3133,10 +3354,15 @@ xfs_iflush(
 		if (iip)
 			iip->ili_fields = 0;
 =======
+<<<<<<< HEAD
+		if (iip)
+			iip->ili_fields = 0;
+=======
 		ip->i_update_core = 0;
 		if (iip)
 			iip->ili_format.ilf_fields = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_ifunlock(ip);
 		return XFS_ERROR(EIO);
 	}
@@ -3165,8 +3391,12 @@ xfs_iflush(
 <<<<<<< HEAD
 	if (xfs_buf_ispinned(bp))
 =======
+<<<<<<< HEAD
+	if (xfs_buf_ispinned(bp))
+=======
 	if (XFS_BUF_ISPINNED(bp))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_log_force(mp, 0);
 
 	/*
@@ -3179,16 +3409,22 @@ xfs_iflush(
 
 	if (flags & SYNC_WAIT)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = xfs_bwrite(bp);
 	else
 		xfs_buf_delwri_queue(bp);
 
 	xfs_buf_relse(bp);
+<<<<<<< HEAD
+=======
 =======
 		error = xfs_bwrite(mp, bp);
 	else
 		xfs_bdwrite(mp, bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 
 corrupt_out:
@@ -3221,10 +3457,16 @@ xfs_iflush_int(
 	ASSERT(ip->i_d.di_format != XFS_DINODE_FMT_BTREE ||
 	       ip->i_d.di_nextents > XFS_IFORK_MAXEXT(ip, XFS_DATA_FORK));
 =======
+<<<<<<< HEAD
+	ASSERT(xfs_isiflocked(ip));
+	ASSERT(ip->i_d.di_format != XFS_DINODE_FMT_BTREE ||
+	       ip->i_d.di_nextents > XFS_IFORK_MAXEXT(ip, XFS_DATA_FORK));
+=======
 	ASSERT(!completion_done(&ip->i_flush));
 	ASSERT(ip->i_d.di_format != XFS_DINODE_FMT_BTREE ||
 	       ip->i_d.di_nextents > ip->i_df.if_ext_max);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iip = ip->i_itemp;
 	mp = ip->i_mount;
@@ -3232,6 +3474,9 @@ xfs_iflush_int(
 	/* set *dip = inode's place in the buffer */
 	dip = (xfs_dinode_t *)xfs_buf_offset(bp, ip->i_imap.im_boffset);
 
+<<<<<<< HEAD
+	if (XFS_TEST_ERROR(dip->di_magic != cpu_to_be16(XFS_DINODE_MAGIC),
+=======
 <<<<<<< HEAD
 	if (XFS_TEST_ERROR(dip->di_magic != cpu_to_be16(XFS_DINODE_MAGIC),
 =======
@@ -3257,6 +3502,7 @@ xfs_iflush_int(
 
 	if (XFS_TEST_ERROR(be16_to_cpu(dip->di_magic) != XFS_DINODE_MAGIC,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       mp, XFS_ERRTAG_IFLUSH_1, XFS_RANDOM_IFLUSH_1)) {
 		xfs_alert_tag(mp, XFS_PTAG_IFLUSH,
 			"%s: Bad inode %Lu magic number 0x%x, ptr 0x%p",
@@ -3273,8 +3519,12 @@ xfs_iflush_int(
 <<<<<<< HEAD
 	if (S_ISREG(ip->i_d.di_mode)) {
 =======
+<<<<<<< HEAD
+	if (S_ISREG(ip->i_d.di_mode)) {
+=======
 	if ((ip->i_d.di_mode & S_IFMT) == S_IFREG) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (XFS_TEST_ERROR(
 		    (ip->i_d.di_format != XFS_DINODE_FMT_EXTENTS) &&
 		    (ip->i_d.di_format != XFS_DINODE_FMT_BTREE),
@@ -3287,8 +3537,12 @@ xfs_iflush_int(
 <<<<<<< HEAD
 	} else if (S_ISDIR(ip->i_d.di_mode)) {
 =======
+<<<<<<< HEAD
+	} else if (S_ISDIR(ip->i_d.di_mode)) {
+=======
 	} else if ((ip->i_d.di_mode & S_IFMT) == S_IFDIR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (XFS_TEST_ERROR(
 		    (ip->i_d.di_format != XFS_DINODE_FMT_EXTENTS) &&
 		    (ip->i_d.di_format != XFS_DINODE_FMT_BTREE) &&
@@ -3375,6 +3629,9 @@ xfs_iflush_int(
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * We've recorded everything logged in the inode, so we'd like to clear
 	 * the ili_fields bits so we don't log and flush things unnecessarily.
 	 * However, we can't stop logging all this information until the data
@@ -3402,6 +3659,8 @@ xfs_iflush_int(
 	if (iip != NULL && iip->ili_fields != 0) {
 		iip->ili_last_fields = iip->ili_fields;
 		iip->ili_fields = 0;
+<<<<<<< HEAD
+=======
 =======
 	 * We've recorded everything logged in the inode, so we'd
 	 * like to clear the ilf_fields bits so we don't log and
@@ -3434,6 +3693,7 @@ xfs_iflush_int(
 		iip->ili_last_fields = iip->ili_format.ilf_fields;
 		iip->ili_format.ilf_fields = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_logged = 1;
 
 		xfs_trans_ail_copy_lsn(mp->m_ail, &iip->ili_flush_lsn,
@@ -3448,12 +3708,17 @@ xfs_iflush_int(
 		xfs_buf_attach_iodone(bp, xfs_iflush_done, &iip->ili_item);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(bp->b_fspriv != NULL);
 		ASSERT(bp->b_iodone != NULL);
 	} else {
 		/*
 		 * We're flushing an inode which is not in the AIL and has
 		 * not been logged.  For this case we can immediately drop
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(XFS_BUF_FSPRIVATE(bp, void *) != NULL);
 		ASSERT(XFS_BUF_IODONE_FUNC(bp) != NULL);
@@ -3463,6 +3728,7 @@ xfs_iflush_int(
 		 * not been logged but has i_update_core set.  For this
 		 * case we can use a B_DELWRI flush and immediately drop
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * the inode flush lock because we can avoid the whole
 		 * AIL state thing.  It's OK to drop the flush lock now,
 		 * because we've already locked the buffer and to do anything

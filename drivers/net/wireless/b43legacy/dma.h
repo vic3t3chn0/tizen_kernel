@@ -5,7 +5,15 @@
 #include <linux/spinlock.h>
 #include <linux/workqueue.h>
 #include <linux/linkage.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "b43legacy.h"
 
@@ -82,6 +90,11 @@ struct b43legacy_dmadesc32 {
 #define B43legacy_DMA32_DCTL_FRAMESTART		0x80000000
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*** 64-bit DMA Engine. ***/
 
@@ -166,6 +179,10 @@ struct b43legacy_dmadesc_generic {
 } __packed;
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Misc DMA constants */
 #define B43legacy_DMA_RINGMEMSIZE	PAGE_SIZE
 #define B43legacy_DMA0_RX_FRAMEOFFSET	30
@@ -197,6 +214,17 @@ struct b43legacy_dmadesc_meta {
 	bool is_last_fragment;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum b43legacy_dmatype {
+	B43legacy_DMA_30BIT = 30,
+	B43legacy_DMA_32BIT = 32,
+};
+
+struct b43legacy_dmaring {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct b43legacy_dmaring;
 
 /* Lowlevel DMA operations that differ between 32bit and 64bit DMA. */
@@ -226,6 +254,10 @@ enum b43legacy_dmatype {
 struct b43legacy_dmaring {
 	/* Lowlevel DMA ops. */
 	const struct b43legacy_dma_ops *ops;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Kernel virtual base address of the ring memory. */
 	void *descbase;
 	/* Meta data about all descriptors. */
@@ -257,8 +289,19 @@ struct b43legacy_dmaring {
 	enum b43legacy_dmatype type;
 	/* Boolean. Is this ring stopped at ieee80211 level? */
 	bool stopped;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* The QOS priority assigned to this ring. Only used for TX rings.
+	 * This is the mac80211 "queue" value. */
+	u8 queue_prio;
+=======
 	/* Lock, only used for TX. */
 	spinlock_t lock;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Lock, only used for TX. */
+	spinlock_t lock;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct b43legacy_wldev *dev;
 #ifdef CONFIG_B43LEGACY_DEBUG
 	/* Maximum number of used slots. */

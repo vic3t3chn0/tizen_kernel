@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2010-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2010-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Andreas Langer
  *
@@ -47,9 +51,14 @@ static struct sk_buff *frag_merge_packet(struct list_head *head,
 	int hdr_len = sizeof(*unicast_packet);
 	int uni_diff = sizeof(*up) - hdr_len;
 =======
+<<<<<<< HEAD
+	int hdr_len = sizeof(*unicast_packet);
+	int uni_diff = sizeof(*up) - hdr_len;
+=======
 	int hdr_len = sizeof(struct unicast_packet);
 	int uni_diff = sizeof(struct unicast_frag_packet) - hdr_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* set skb to the first part and tmp_skb to the second part */
 	if (up->flags & UNI_FRAG_HEAD) {
@@ -65,8 +74,12 @@ static struct sk_buff *frag_merge_packet(struct list_head *head,
 <<<<<<< HEAD
 	skb_pull(tmp_skb, sizeof(*up));
 =======
+<<<<<<< HEAD
+	skb_pull(tmp_skb, sizeof(*up));
+=======
 	skb_pull(tmp_skb, sizeof(struct unicast_frag_packet));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pskb_expand_head(skb, 0, tmp_skb->len, GFP_ATOMIC) < 0)
 		goto err;
 
@@ -83,9 +96,14 @@ static struct sk_buff *frag_merge_packet(struct list_head *head,
 	unicast_packet = (struct unicast_packet *)skb_pull(skb, uni_diff);
 	unicast_packet->header.packet_type = BAT_UNICAST;
 =======
+<<<<<<< HEAD
+	unicast_packet = (struct unicast_packet *)skb_pull(skb, uni_diff);
+	unicast_packet->header.packet_type = BAT_UNICAST;
+=======
 	unicast_packet = (struct unicast_packet *) skb_pull(skb, uni_diff);
 	unicast_packet->packet_type = BAT_UNICAST;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return skb;
 
@@ -120,9 +138,13 @@ static int frag_create_buffer(struct list_head *head)
 <<<<<<< HEAD
 		tfp = kmalloc(sizeof(*tfp), GFP_ATOMIC);
 =======
+<<<<<<< HEAD
+		tfp = kmalloc(sizeof(*tfp), GFP_ATOMIC);
+=======
 		tfp = kmalloc(sizeof(struct frag_packet_list_entry),
 			GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!tfp) {
 			frag_list_free(head);
 			return -ENOMEM;
@@ -140,8 +162,12 @@ static struct frag_packet_list_entry *frag_search_packet(struct list_head *head,
 <<<<<<< HEAD
 					   const struct unicast_frag_packet *up)
 =======
+<<<<<<< HEAD
+					   const struct unicast_frag_packet *up)
+=======
 						 struct unicast_frag_packet *up)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct frag_packet_list_entry *tfp;
 	struct unicast_frag_packet *tmp_up = NULL;
@@ -247,8 +273,12 @@ int frag_send_skb(struct sk_buff *skb, struct bat_priv *bat_priv,
 <<<<<<< HEAD
 		  struct hard_iface *hard_iface, const uint8_t dstaddr[])
 =======
+<<<<<<< HEAD
+		  struct hard_iface *hard_iface, const uint8_t dstaddr[])
+=======
 		  struct hard_iface *hard_iface, uint8_t dstaddr[])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct unicast_packet tmp_uc, *unicast_packet;
 	struct hard_iface *primary_if;
@@ -258,9 +288,14 @@ int frag_send_skb(struct sk_buff *skb, struct bat_priv *bat_priv,
 	int uc_hdr_len = sizeof(*unicast_packet);
 	int ucf_hdr_len = sizeof(*frag1);
 =======
+<<<<<<< HEAD
+	int uc_hdr_len = sizeof(*unicast_packet);
+	int ucf_hdr_len = sizeof(*frag1);
+=======
 	int uc_hdr_len = sizeof(struct unicast_packet);
 	int ucf_hdr_len = sizeof(struct unicast_frag_packet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int data_len = skb->len - uc_hdr_len;
 	int large_tail = 0, ret = NET_RX_DROP;
 	uint16_t seqno;
@@ -277,8 +312,12 @@ int frag_send_skb(struct sk_buff *skb, struct bat_priv *bat_priv,
 <<<<<<< HEAD
 	unicast_packet = (struct unicast_packet *)skb->data;
 =======
+<<<<<<< HEAD
+	unicast_packet = (struct unicast_packet *)skb->data;
+=======
 	unicast_packet = (struct unicast_packet *) skb->data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&tmp_uc, unicast_packet, uc_hdr_len);
 	skb_split(skb, frag_skb, data_len / 2 + uc_hdr_len);
 
@@ -290,6 +329,9 @@ int frag_send_skb(struct sk_buff *skb, struct bat_priv *bat_priv,
 	frag2 = (struct unicast_frag_packet *)frag_skb->data;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(frag1, &tmp_uc, sizeof(tmp_uc));
 
 	frag1->header.ttl--;
@@ -298,6 +340,8 @@ int frag_send_skb(struct sk_buff *skb, struct bat_priv *bat_priv,
 
 	memcpy(frag1->orig, primary_if->net_dev->dev_addr, ETH_ALEN);
 	memcpy(frag2, frag1, sizeof(*frag2));
+<<<<<<< HEAD
+=======
 =======
 	memcpy(frag1, &tmp_uc, sizeof(struct unicast_packet));
 
@@ -308,6 +352,7 @@ int frag_send_skb(struct sk_buff *skb, struct bat_priv *bat_priv,
 	memcpy(frag1->orig, primary_if->net_dev->dev_addr, ETH_ALEN);
 	memcpy(frag2, frag1, sizeof(struct unicast_frag_packet));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (data_len & 1)
 		large_tail = UNI_FRAG_LARGETAIL;
@@ -348,21 +393,31 @@ int unicast_send_skb(struct sk_buff *skb, struct bat_priv *bat_priv)
 <<<<<<< HEAD
 		orig_node = gw_get_selected_orig(bat_priv);
 =======
+<<<<<<< HEAD
+		orig_node = gw_get_selected_orig(bat_priv);
+=======
 		orig_node = (struct orig_node *)gw_get_selected_orig(bat_priv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (orig_node)
 			goto find_router;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* check for tt host - increases orig_node refcount.
 	 * returns NULL in case of AP isolation */
 	orig_node = transtable_search(bat_priv, ethhdr->h_source,
 				      ethhdr->h_dest);
+<<<<<<< HEAD
+=======
 =======
 	/* check for tt host - increases orig_node refcount */
 	orig_node = transtable_search(bat_priv, ethhdr->h_dest);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 find_router:
 	/**
@@ -378,16 +433,23 @@ find_router:
 <<<<<<< HEAD
 	if (my_skb_head_push(skb, sizeof(*unicast_packet)) < 0)
 =======
+<<<<<<< HEAD
+	if (my_skb_head_push(skb, sizeof(*unicast_packet)) < 0)
+=======
 	if (neigh_node->if_incoming->if_status != IF_ACTIVE)
 		goto out;
 
 	if (my_skb_head_push(skb, sizeof(struct unicast_packet)) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	unicast_packet = (struct unicast_packet *)skb->data;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unicast_packet->header.version = COMPAT_VERSION;
 	/* batman packet type: unicast */
 	unicast_packet->header.packet_type = BAT_UNICAST;
@@ -404,6 +466,8 @@ find_router:
 				neigh_node->if_incoming->net_dev->mtu) {
 		/* send frag skb decreases ttl */
 		unicast_packet->header.ttl++;
+<<<<<<< HEAD
+=======
 =======
 	unicast_packet->version = COMPAT_VERSION;
 	/* batman packet type: unicast */
@@ -419,6 +483,7 @@ find_router:
 		/* send frag skb decreases ttl */
 		unicast_packet->ttl++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = frag_send_skb(skb, bat_priv,
 				    neigh_node->if_incoming, neigh_node->addr);
 		goto out;

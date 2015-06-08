@@ -38,6 +38,9 @@
 #define _TIPC_SUBSCR_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tipc_subscription;
 
 /**
@@ -45,6 +48,8 @@ struct tipc_subscription;
  * @seq: name sequence associated with subscription
  * @timeout: duration of subscription (in ms)
  * @filter: event filtering to be done for subscription
+<<<<<<< HEAD
+=======
 =======
 struct subscription;
 
@@ -59,6 +64,7 @@ typedef void (*tipc_subscr_event) (struct subscription *sub,
  * @filter: event filtering to be done for subscription
  * @event_cb: routine invoked when a subscription event is detected
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @timer: timer governing subscription duration (optional)
  * @nameseq_list: adjacent subscriptions in name sequence's subscription list
  * @subscription_list: adjacent subscriptions in subscriber's subscription list
@@ -68,10 +74,15 @@ typedef void (*tipc_subscr_event) (struct subscription *sub,
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tipc_subscription {
 	struct tipc_name_seq seq;
 	u32 timeout;
 	u32 filter;
+<<<<<<< HEAD
+=======
 =======
 struct subscription {
 	struct tipc_name_seq seq;
@@ -79,6 +90,7 @@ struct subscription {
 	u32 filter;
 	tipc_subscr_event event_cb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timer_list timer;
 	struct list_head nameseq_list;
 	struct list_head subscription_list;
@@ -88,11 +100,16 @@ struct subscription {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tipc_subscr_overlap(struct tipc_subscription *sub,
 			u32 found_lower,
 			u32 found_upper);
 
 void tipc_subscr_report_overlap(struct tipc_subscription *sub,
+<<<<<<< HEAD
+=======
 =======
 int tipc_subscr_overlap(struct subscription *sub,
 			u32 found_lower,
@@ -100,6 +117,7 @@ int tipc_subscr_overlap(struct subscription *sub,
 
 void tipc_subscr_report_overlap(struct subscription *sub,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				u32 found_lower,
 				u32 found_upper,
 				u32 event,

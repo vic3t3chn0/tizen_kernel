@@ -32,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/byteorder.h>
 #include <asm/unaligned.h>
@@ -357,8 +361,12 @@ static int irttp_param_max_sdu_size(void *instance, irda_param_t *param,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return -1;);
 	IRDA_ASSERT(self->magic == TTP_TSAP_MAGIC, return -1;);
@@ -890,8 +898,12 @@ static int irttp_udata_indication(void *instance, void *sap,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return -1;);
 	IRDA_ASSERT(self->magic == TTP_TSAP_MAGIC, return -1;);
@@ -929,8 +941,12 @@ static int irttp_data_indication(void *instance, void *sap,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	n = skb->data[0] & 0x7f;     /* Extract the credits */
 
@@ -1015,8 +1031,12 @@ static void irttp_status_indication(void *instance,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == TTP_TSAP_MAGIC, return;);
@@ -1048,8 +1068,12 @@ static void irttp_flow_indication(void *instance, void *sap, LOCAL_FLOW flow)
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == TTP_TSAP_MAGIC, return;);
@@ -1235,8 +1259,12 @@ static void irttp_connect_confirm(void *instance, void *sap,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == TTP_TSAP_MAGIC, return;);
@@ -1323,8 +1351,12 @@ static void irttp_connect_indication(void *instance, void *sap,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == TTP_TSAP_MAGIC, return;);
@@ -1333,8 +1365,12 @@ static void irttp_connect_indication(void *instance, void *sap,
 <<<<<<< HEAD
 	lsap = sap;
 =======
+<<<<<<< HEAD
+	lsap = sap;
+=======
 	lsap = (struct lsap_cb *) sap;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	self->max_seg_size = max_seg_size - TTP_HEADER;
 	self->max_header_size = max_header_size+TTP_HEADER;
@@ -1499,8 +1535,12 @@ struct tsap_cb *irttp_dup(struct tsap_cb *orig, void *instance)
 <<<<<<< HEAD
 	new = kmemdup(orig, sizeof(struct tsap_cb), GFP_ATOMIC);
 =======
+<<<<<<< HEAD
+	new = kmemdup(orig, sizeof(struct tsap_cb), GFP_ATOMIC);
+=======
 	new = kmalloc(sizeof(struct tsap_cb), GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!new) {
 		IRDA_DEBUG(0, "%s(), unable to kmalloc\n", __func__);
 		spin_unlock_irqrestore(&irttp->tsaps->hb_spinlock, flags);
@@ -1508,9 +1548,12 @@ struct tsap_cb *irttp_dup(struct tsap_cb *orig, void *instance)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Dup */
 	memcpy(new, orig, sizeof(struct tsap_cb));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&new->lock);
 
 	/* We don't need the old instance any more */
@@ -1648,8 +1691,12 @@ static void irttp_disconnect_indication(void *instance, void *sap,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct tsap_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == TTP_TSAP_MAGIC, return;);

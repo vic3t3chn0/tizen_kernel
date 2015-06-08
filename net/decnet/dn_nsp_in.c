@@ -62,8 +62,11 @@
 #include <net/tcp_states.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fcntl.h>
 #include <linux/mm.h>
 #include <linux/termios.h>
@@ -105,6 +108,9 @@ static void dn_ack(struct sock *sk, struct sk_buff *skb, unsigned short ack)
 	int wakeup = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (type) {
 	case 0: /* ACK - Data */
 		if (dn_after(ack, scp->ackrcv_dat)) {
@@ -126,6 +132,8 @@ static void dn_ack(struct sock *sk, struct sk_buff *skb, unsigned short ack)
 		break;
 	case 3: /* NAK - OtherData */
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(type) {
 		case 0: /* ACK - Data */
@@ -145,6 +153,7 @@ static void dn_ack(struct sock *sk, struct sk_buff *skb, unsigned short ack)
 		case 3: /* NAK - OtherData */
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (wakeup && !sock_flag(sk, SOCK_DEAD))
@@ -445,6 +454,9 @@ static void dn_nsp_disc_init(struct sock *sk, struct sk_buff *skb)
 	sk->sk_state = TCP_CLOSE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (scp->state) {
 	case DN_CI:
 	case DN_CD:
@@ -458,6 +470,8 @@ static void dn_nsp_disc_init(struct sock *sk, struct sk_buff *skb)
 	case DN_DI:
 		scp->state = DN_DIC;
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(scp->state) {
 		case DN_CI:
@@ -473,6 +487,7 @@ static void dn_nsp_disc_init(struct sock *sk, struct sk_buff *skb)
 			scp->state = DN_DIC;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!sock_flag(sk, SOCK_DEAD)) {
@@ -514,6 +529,9 @@ static void dn_nsp_disc_conf(struct sock *sk, struct sk_buff *skb)
 	sk->sk_state = TCP_CLOSE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (scp->state) {
 	case DN_CI:
 		scp->state = DN_NR;
@@ -531,6 +549,8 @@ static void dn_nsp_disc_conf(struct sock *sk, struct sk_buff *skb)
 		sk->sk_shutdown |= SHUTDOWN_MASK;
 	case DN_CC:
 		scp->state = DN_CN;
+<<<<<<< HEAD
+=======
 =======
 	switch(scp->state) {
 		case DN_CI:
@@ -550,6 +570,7 @@ static void dn_nsp_disc_conf(struct sock *sk, struct sk_buff *skb)
 		case DN_CC:
 			scp->state = DN_CN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!sock_flag(sk, SOCK_DEAD)) {
@@ -756,6 +777,9 @@ static int dn_nsp_no_socket(struct sk_buff *skb, unsigned short reason)
 
 	if ((reason != NSP_REASON_OK) && ((cb->nsp_flags & 0x0c) == 0x08)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (cb->nsp_flags & 0x70) {
 		case 0x10:
 		case 0x60: /* (Retransmitted) Connect Init */
@@ -766,6 +790,8 @@ static int dn_nsp_no_socket(struct sk_buff *skb, unsigned short reason)
 			dn_nsp_return_disc(skb, NSP_DISCCONF, reason);
 			ret = NET_RX_SUCCESS;
 			break;
+<<<<<<< HEAD
+=======
 =======
 		switch(cb->nsp_flags & 0x70) {
 			case 0x10:
@@ -778,6 +804,7 @@ static int dn_nsp_no_socket(struct sk_buff *skb, unsigned short reason)
 				ret = NET_RX_SUCCESS;
 				break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -810,6 +837,9 @@ static int dn_nsp_rx_packet(struct sk_buff *skb)
 	 */
 	if ((cb->nsp_flags & 0x0c) == 0x08) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (cb->nsp_flags & 0x70) {
 		case 0x00: /* NOP */
 		case 0x70: /* Reserved */
@@ -821,6 +851,8 @@ static int dn_nsp_rx_packet(struct sk_buff *skb)
 				goto free_out;
 			sk = dn_find_listener(skb, &reason);
 			goto got_it;
+<<<<<<< HEAD
+=======
 =======
 		switch(cb->nsp_flags & 0x70) {
 			case 0x00: /* NOP */
@@ -834,6 +866,7 @@ static int dn_nsp_rx_packet(struct sk_buff *skb)
 				sk = dn_find_listener(skb, &reason);
 				goto got_it;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -927,6 +960,9 @@ int dn_nsp_backlog_rcv(struct sock *sk, struct sk_buff *skb)
 	 */
 	if ((cb->nsp_flags & 0x0c) == 0x08) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (cb->nsp_flags & 0x70) {
 		case 0x10:
 		case 0x60:
@@ -941,6 +977,8 @@ int dn_nsp_backlog_rcv(struct sock *sk, struct sk_buff *skb)
 		case 0x40:
 			dn_nsp_disc_conf(sk, skb);
 			break;
+<<<<<<< HEAD
+=======
 =======
 		switch(cb->nsp_flags & 0x70) {
 			case 0x10:
@@ -957,6 +995,7 @@ int dn_nsp_backlog_rcv(struct sock *sk, struct sk_buff *skb)
 				dn_nsp_disc_conf(sk, skb);
 				break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 	} else if (cb->nsp_flags == 0x24) {
@@ -998,6 +1037,9 @@ int dn_nsp_backlog_rcv(struct sock *sk, struct sk_buff *skb)
 				goto free_out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			switch (cb->nsp_flags) {
 			case 0x10: /* LS */
 				dn_nsp_linkservice(sk, skb);
@@ -1007,6 +1049,8 @@ int dn_nsp_backlog_rcv(struct sock *sk, struct sk_buff *skb)
 				break;
 			default:
 				dn_nsp_data(sk, skb);
+<<<<<<< HEAD
+=======
 =======
 			switch(cb->nsp_flags) {
 				case 0x10: /* LS */
@@ -1018,6 +1062,7 @@ int dn_nsp_backlog_rcv(struct sock *sk, struct sk_buff *skb)
 				default:
 					dn_nsp_data(sk, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 
 		} else { /* Ack, chuck it out here */

@@ -15,7 +15,11 @@ struct clkops {
 <<<<<<< HEAD
 	int			(*setrate)(struct clk *, unsigned long);
 =======
+<<<<<<< HEAD
+	int			(*setrate)(struct clk *, unsigned long);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct clk {
@@ -36,8 +40,12 @@ struct clk clk_##_name = {					\
 <<<<<<< HEAD
 		.clk_rst	= APBC_##_reg,			\
 =======
+<<<<<<< HEAD
+		.clk_rst	= APBC_##_reg,			\
+=======
 		.clk_rst	= (void __iomem *)APBC_##_reg,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.fnclksel	= _fnclksel,			\
 		.rate		= _rate,			\
 		.ops		= &apbc_clk_ops,		\
@@ -48,8 +56,12 @@ struct clk clk_##_name = {					\
 <<<<<<< HEAD
 		.clk_rst	= APBC_##_reg,			\
 =======
+<<<<<<< HEAD
+		.clk_rst	= APBC_##_reg,			\
+=======
 		.clk_rst	= (void __iomem *)APBC_##_reg,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.fnclksel	= _fnclksel,			\
 		.rate		= _rate,			\
 		.ops		= _ops,				\
@@ -60,8 +72,12 @@ struct clk clk_##_name = {					\
 <<<<<<< HEAD
 		.clk_rst	= APMU_##_reg,			\
 =======
+<<<<<<< HEAD
+		.clk_rst	= APMU_##_reg,			\
+=======
 		.clk_rst	= (void __iomem *)APMU_##_reg,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.enable_val	= _eval,			\
 		.rate		= _rate,			\
 		.ops		= &apmu_clk_ops,		\
@@ -72,8 +88,12 @@ struct clk clk_##_name = {					\
 <<<<<<< HEAD
 		.clk_rst	= APMU_##_reg,			\
 =======
+<<<<<<< HEAD
+		.clk_rst	= APMU_##_reg,			\
+=======
 		.clk_rst	= (void __iomem *)APMU_##_reg,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.enable_val	= _eval,			\
 		.rate		= _rate,			\
 		.ops		= _ops,				\

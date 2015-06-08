@@ -29,8 +29,13 @@
 #include <linux/device.h>
 #include <linux/mutex.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+#include <linux/mutex.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define LS_SIZE (256 * 1024)
 #define LS_ADDR_MASK (LS_SIZE - 1)
@@ -173,8 +178,12 @@ struct spu {
 <<<<<<< HEAD
 	struct device dev;
 =======
+<<<<<<< HEAD
+	struct device dev;
+=======
 	struct sys_device sysdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int has_mem_affinity;
 	struct list_head aff_list;
@@ -248,8 +257,12 @@ struct spufs_calls {
 <<<<<<< HEAD
 					unsigned int flags, umode_t mode,
 =======
+<<<<<<< HEAD
+					unsigned int flags, umode_t mode,
+=======
 					unsigned int flags, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					struct file *neighbor);
 	long (*spu_run)(struct file *filp, __u32 __user *unpc,
 						__u32 __user *ustatus);
@@ -283,11 +296,16 @@ int register_spu_syscalls(struct spufs_calls *calls);
 void unregister_spu_syscalls(struct spufs_calls *calls);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int spu_add_dev_attr(struct device_attribute *attr);
 void spu_remove_dev_attr(struct device_attribute *attr);
 
 int spu_add_dev_attr_group(struct attribute_group *attrs);
 void spu_remove_dev_attr_group(struct attribute_group *attrs);
+<<<<<<< HEAD
+=======
 =======
 int spu_add_sysdev_attr(struct sysdev_attribute *attr);
 void spu_remove_sysdev_attr(struct sysdev_attribute *attr);
@@ -295,6 +313,7 @@ void spu_remove_sysdev_attr(struct sysdev_attribute *attr);
 int spu_add_sysdev_attr_group(struct attribute_group *attrs);
 void spu_remove_sysdev_attr_group(struct attribute_group *attrs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int spu_handle_mm_fault(struct mm_struct *mm, unsigned long ea,
 		unsigned long dsisr, unsigned *flt);

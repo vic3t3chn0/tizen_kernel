@@ -45,6 +45,9 @@
 #include <linux/types.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage void twofish_enc_blk(struct twofish_ctx *ctx, u8 *dst,
 				const u8 *src);
 EXPORT_SYMBOL_GPL(twofish_enc_blk);
@@ -55,6 +58,8 @@ EXPORT_SYMBOL_GPL(twofish_dec_blk);
 static void twofish_encrypt(struct crypto_tfm *tfm, u8 *dst, const u8 *src)
 {
 	twofish_enc_blk(crypto_tfm_ctx(tfm), dst, src);
+<<<<<<< HEAD
+=======
 =======
 asmlinkage void twofish_enc_blk(struct crypto_tfm *tfm, u8 *dst, const u8 *src);
 asmlinkage void twofish_dec_blk(struct crypto_tfm *tfm, u8 *dst, const u8 *src);
@@ -63,6 +68,7 @@ static void twofish_encrypt(struct crypto_tfm *tfm, u8 *dst, const u8 *src)
 {
 	twofish_enc_blk(tfm, dst, src);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void twofish_decrypt(struct crypto_tfm *tfm, u8 *dst, const u8 *src)
@@ -70,8 +76,12 @@ static void twofish_decrypt(struct crypto_tfm *tfm, u8 *dst, const u8 *src)
 <<<<<<< HEAD
 	twofish_dec_blk(crypto_tfm_ctx(tfm), dst, src);
 =======
+<<<<<<< HEAD
+	twofish_dec_blk(crypto_tfm_ctx(tfm), dst, src);
+=======
 	twofish_dec_blk(tfm, dst, src);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct crypto_alg alg = {
@@ -84,8 +94,12 @@ static struct crypto_alg alg = {
 <<<<<<< HEAD
 	.cra_alignmask		=	0,
 =======
+<<<<<<< HEAD
+	.cra_alignmask		=	0,
+=======
 	.cra_alignmask		=	3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.cra_module		=	THIS_MODULE,
 	.cra_list		=	LIST_HEAD_INIT(alg.cra_list),
 	.cra_u			=	{

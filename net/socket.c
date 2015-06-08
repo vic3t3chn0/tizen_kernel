@@ -184,8 +184,12 @@ static DEFINE_PER_CPU(int, sockets_in_use);
 <<<<<<< HEAD
 int move_addr_to_kernel(void __user *uaddr, int ulen, struct sockaddr_storage *kaddr)
 =======
+<<<<<<< HEAD
+int move_addr_to_kernel(void __user *uaddr, int ulen, struct sockaddr_storage *kaddr)
+=======
 int move_addr_to_kernel(void __user *uaddr, int ulen, struct sockaddr *kaddr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (ulen < 0 || ulen > sizeof(struct sockaddr_storage))
 		return -EINVAL;
@@ -216,8 +220,12 @@ int move_addr_to_kernel(void __user *uaddr, int ulen, struct sockaddr *kaddr)
 <<<<<<< HEAD
 static int move_addr_to_user(struct sockaddr_storage *kaddr, int klen,
 =======
+<<<<<<< HEAD
+static int move_addr_to_user(struct sockaddr_storage *kaddr, int klen,
+=======
 static int move_addr_to_user(struct sockaddr *kaddr, int klen,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     void __user *uaddr, int __user *ulen)
 {
 	int err;
@@ -478,8 +486,12 @@ static struct socket *sock_alloc(void)
 <<<<<<< HEAD
 	inode = new_inode_pseudo(sock_mnt->mnt_sb);
 =======
+<<<<<<< HEAD
+	inode = new_inode_pseudo(sock_mnt->mnt_sb);
+=======
 	inode = new_inode(sock_mnt->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!inode)
 		return NULL;
 
@@ -554,7 +566,12 @@ int sock_tx_timestamp(struct sock *sk, __u8 *tx_flags)
 	if (sock_flag(sk, SOCK_WIFI_STATUS))
 		*tx_flags |= SKBTX_WIFI_STATUS;
 =======
+<<<<<<< HEAD
+	if (sock_flag(sk, SOCK_WIFI_STATUS))
+		*tx_flags |= SKBTX_WIFI_STATUS;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL(sock_tx_timestamp);
@@ -570,7 +587,12 @@ static inline int __sock_sendmsg_nosec(struct kiocb *iocb, struct socket *sock,
 	sock_update_netprioidx(sock->sk);
 
 =======
+<<<<<<< HEAD
+	sock_update_netprioidx(sock->sk);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	si->sock = sock;
 	si->scm = NULL;
 	si->msg = msg;
@@ -605,8 +627,12 @@ EXPORT_SYMBOL(sock_sendmsg);
 <<<<<<< HEAD
 static int sock_sendmsg_nosec(struct socket *sock, struct msghdr *msg, size_t size)
 =======
+<<<<<<< HEAD
+static int sock_sendmsg_nosec(struct socket *sock, struct msghdr *msg, size_t size)
+=======
 int sock_sendmsg_nosec(struct socket *sock, struct msghdr *msg, size_t size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct kiocb iocb;
 	struct sock_iocb siocb;
@@ -701,6 +727,9 @@ void __sock_recv_timestamp(struct msghdr *msg, struct sock *sk,
 EXPORT_SYMBOL_GPL(__sock_recv_timestamp);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __sock_recv_wifi_status(struct msghdr *msg, struct sock *sk,
 	struct sk_buff *skb)
 {
@@ -717,8 +746,11 @@ void __sock_recv_wifi_status(struct msghdr *msg, struct sock *sk,
 }
 EXPORT_SYMBOL_GPL(__sock_recv_wifi_status);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void sock_recv_drops(struct msghdr *msg, struct sock *sk,
 				   struct sk_buff *skb)
 {
@@ -1477,8 +1509,12 @@ SYSCALL_DEFINE3(bind, int, fd, struct sockaddr __user *, umyaddr, int, addrlen)
 <<<<<<< HEAD
 		err = move_addr_to_kernel(umyaddr, addrlen, &address);
 =======
+<<<<<<< HEAD
+		err = move_addr_to_kernel(umyaddr, addrlen, &address);
+=======
 		err = move_addr_to_kernel(umyaddr, addrlen, (struct sockaddr *)&address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err >= 0) {
 			err = security_socket_bind(sock,
 						   (struct sockaddr *)&address,
@@ -1588,8 +1624,12 @@ SYSCALL_DEFINE4(accept4, int, fd, struct sockaddr __user *, upeer_sockaddr,
 <<<<<<< HEAD
 		err = move_addr_to_user(&address,
 =======
+<<<<<<< HEAD
+		err = move_addr_to_user(&address,
+=======
 		err = move_addr_to_user((struct sockaddr *)&address,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					len, upeer_sockaddr, upeer_addrlen);
 		if (err < 0)
 			goto out_fd;
@@ -1641,8 +1681,12 @@ SYSCALL_DEFINE3(connect, int, fd, struct sockaddr __user *, uservaddr,
 <<<<<<< HEAD
 	err = move_addr_to_kernel(uservaddr, addrlen, &address);
 =======
+<<<<<<< HEAD
+	err = move_addr_to_kernel(uservaddr, addrlen, &address);
+=======
 	err = move_addr_to_kernel(uservaddr, addrlen, (struct sockaddr *)&address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		goto out_put;
 
@@ -1685,8 +1729,12 @@ SYSCALL_DEFINE3(getsockname, int, fd, struct sockaddr __user *, usockaddr,
 <<<<<<< HEAD
 	err = move_addr_to_user(&address, len, usockaddr, usockaddr_len);
 =======
+<<<<<<< HEAD
+	err = move_addr_to_user(&address, len, usockaddr, usockaddr_len);
+=======
 	err = move_addr_to_user((struct sockaddr *)&address, len, usockaddr, usockaddr_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out_put:
 	fput_light(sock->file, fput_needed);
@@ -1721,8 +1769,12 @@ SYSCALL_DEFINE3(getpeername, int, fd, struct sockaddr __user *, usockaddr,
 <<<<<<< HEAD
 			err = move_addr_to_user(&address, len, usockaddr,
 =======
+<<<<<<< HEAD
+			err = move_addr_to_user(&address, len, usockaddr,
+=======
 			err = move_addr_to_user((struct sockaddr *)&address, len, usockaddr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						usockaddr_len);
 		fput_light(sock->file, fput_needed);
 	}
@@ -1764,8 +1816,12 @@ SYSCALL_DEFINE6(sendto, int, fd, void __user *, buff, size_t, len,
 <<<<<<< HEAD
 		err = move_addr_to_kernel(addr, addr_len, &address);
 =======
+<<<<<<< HEAD
+		err = move_addr_to_kernel(addr, addr_len, &address);
+=======
 		err = move_addr_to_kernel(addr, addr_len, (struct sockaddr *)&address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			goto out_put;
 		msg.msg_name = (struct sockaddr *)&address;
@@ -1831,8 +1887,12 @@ SYSCALL_DEFINE6(recvfrom, int, fd, void __user *, ubuf, size_t, size,
 <<<<<<< HEAD
 		err2 = move_addr_to_user(&address,
 =======
+<<<<<<< HEAD
+		err2 = move_addr_to_user(&address,
+=======
 		err2 = move_addr_to_user((struct sockaddr *)&address,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 msg.msg_namelen, addr, addr_len);
 		if (err2 < 0)
 			err = err2;
@@ -1991,6 +2051,11 @@ static int __sys_sendmsg(struct socket *sock, struct msghdr __user *msg,
 	} else
 		err = verify_iovec(msg_sys, iov, &address, VERIFY_READ);
 =======
+<<<<<<< HEAD
+		err = verify_compat_iovec(msg_sys, iov, &address, VERIFY_READ);
+	} else
+		err = verify_iovec(msg_sys, iov, &address, VERIFY_READ);
+=======
 		err = verify_compat_iovec(msg_sys, iov,
 					  (struct sockaddr *)&address,
 					  VERIFY_READ);
@@ -1999,6 +2064,7 @@ static int __sys_sendmsg(struct socket *sock, struct msghdr __user *msg,
 				   (struct sockaddr *)&address,
 				   VERIFY_READ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		goto out_freeiov;
 	total_len = err;
@@ -2207,6 +2273,11 @@ static int __sys_recvmsg(struct socket *sock, struct msghdr __user *msg,
 	} else
 		err = verify_iovec(msg_sys, iov, &addr, VERIFY_WRITE);
 =======
+<<<<<<< HEAD
+		err = verify_compat_iovec(msg_sys, iov, &addr, VERIFY_WRITE);
+	} else
+		err = verify_iovec(msg_sys, iov, &addr, VERIFY_WRITE);
+=======
 		err = verify_compat_iovec(msg_sys, iov,
 					  (struct sockaddr *)&addr,
 					  VERIFY_WRITE);
@@ -2215,6 +2286,7 @@ static int __sys_recvmsg(struct socket *sock, struct msghdr __user *msg,
 				   (struct sockaddr *)&addr,
 				   VERIFY_WRITE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		goto out_freeiov;
 	total_len = err;
@@ -2234,8 +2306,12 @@ static int __sys_recvmsg(struct socket *sock, struct msghdr __user *msg,
 <<<<<<< HEAD
 		err = move_addr_to_user(&addr,
 =======
+<<<<<<< HEAD
+		err = move_addr_to_user(&addr,
+=======
 		err = move_addr_to_user((struct sockaddr *)&addr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					msg_sys->msg_namelen, uaddr,
 					uaddr_len);
 		if (err < 0)
@@ -2592,8 +2668,12 @@ void sock_unregister(int family)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(net_families[family], NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(net_families[family], NULL);
+=======
 	rcu_assign_pointer(net_families[family], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&net_family_lock);
 
 	synchronize_rcu();
@@ -2676,8 +2756,12 @@ static int do_siocgstamp(struct net *net, struct socket *sock,
 <<<<<<< HEAD
 			 unsigned int cmd, void __user *up)
 =======
+<<<<<<< HEAD
+			 unsigned int cmd, void __user *up)
+=======
 			 unsigned int cmd, struct compat_timeval __user *up)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mm_segment_t old_fs = get_fs();
 	struct timeval ktv;
@@ -2691,11 +2775,17 @@ static int do_siocgstamp(struct net *net, struct socket *sock,
 		err = compat_put_timeval(up, &ktv);
 
 =======
+<<<<<<< HEAD
+	if (!err)
+		err = compat_put_timeval(up, &ktv);
+
+=======
 	if (!err) {
 		err = put_user(ktv.tv_sec, &up->tv_sec);
 		err |= __put_user(ktv.tv_usec, &up->tv_usec);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -2703,8 +2793,12 @@ static int do_siocgstampns(struct net *net, struct socket *sock,
 <<<<<<< HEAD
 			   unsigned int cmd, void __user *up)
 =======
+<<<<<<< HEAD
+			   unsigned int cmd, void __user *up)
+=======
 			 unsigned int cmd, struct compat_timespec __user *up)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mm_segment_t old_fs = get_fs();
 	struct timespec kts;
@@ -2718,11 +2812,17 @@ static int do_siocgstampns(struct net *net, struct socket *sock,
 		err = compat_put_timespec(up, &kts);
 
 =======
+<<<<<<< HEAD
+	if (!err)
+		err = compat_put_timespec(up, &kts);
+
+=======
 	if (!err) {
 		err = put_user(kts.tv_sec, &up->tv_sec);
 		err |= __put_user(kts.tv_nsec, &up->tv_nsec);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -2760,8 +2860,11 @@ static int dev_ifconf(struct net *net, struct compat_ifconf __user *uifc32)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(&ifc, 0, sizeof(ifc));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ifc32.ifcbuf == 0) {
 		ifc32.ifc_len = 0;
 		ifc.ifc_len = 0;
@@ -2856,16 +2959,22 @@ static int ethtool_ioctl(struct net *net, struct compat_ifreq __user *ifr32)
 	case ETHTOOL_GRXCLSRLCNT:
 	case ETHTOOL_GRXCLSRULE:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ETHTOOL_SRXCLSRLINS:
 		convert_out = true;
 		/* fall through */
 	case ETHTOOL_SRXCLSRLDEL:
+<<<<<<< HEAD
+=======
 =======
 		convert_out = true;
 		/* fall through */
 	case ETHTOOL_SRXCLSRLDEL:
 	case ETHTOOL_SRXCLSRLINS:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		buf_size += sizeof(struct ethtool_rxnfc);
 		convert_in = true;
 		break;
@@ -3010,8 +3119,12 @@ static int bond_ioctl(struct net *net, unsigned int cmd,
 <<<<<<< HEAD
 		return -ENOIOCTLCMD;
 =======
+<<<<<<< HEAD
+		return -ENOIOCTLCMD;
+=======
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -3340,6 +3453,8 @@ static int compat_sock_ioctl_trans(struct file *file, struct socket *sock,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Prevent warning from compat_sys_ioctl, these always
 	 * result in -EINVAL in the native case anyway. */
 	switch (cmd) {
@@ -3355,6 +3470,7 @@ static int compat_sock_ioctl_trans(struct file *file, struct socket *sock,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -ENOIOCTLCMD;
 }
 

@@ -30,9 +30,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/ext2_fs.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define o2info_from_user(a, b)	\
 		copy_from_user(&(a), (b), sizeof(a))
 #define o2info_to_user(a, b)	\
@@ -128,8 +131,12 @@ static int ocfs2_set_inode_attr(struct inode *inode, unsigned flags,
 <<<<<<< HEAD
 			goto bail_commit;
 =======
+<<<<<<< HEAD
+			goto bail_commit;
+=======
 			goto bail_unlock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ocfs2_inode->ip_attr = flags;
@@ -142,7 +149,11 @@ static int ocfs2_set_inode_attr(struct inode *inode, unsigned flags,
 <<<<<<< HEAD
 bail_commit:
 =======
+<<<<<<< HEAD
+bail_commit:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ocfs2_commit_trans(osb, handle);
 bail_unlock:
 	ocfs2_inode_unlock(inode, 1);
@@ -395,8 +406,12 @@ int ocfs2_info_handle_freeinode(struct inode *inode,
 <<<<<<< HEAD
 		goto out_err;
 =======
+<<<<<<< HEAD
+		goto out_err;
+=======
 		goto bail;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (o2info_from_user(*oifi, req))
@@ -449,8 +464,12 @@ bail:
 <<<<<<< HEAD
 out_err:
 =======
+<<<<<<< HEAD
+out_err:
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -688,8 +707,12 @@ int ocfs2_info_handle_freefrag(struct inode *inode,
 <<<<<<< HEAD
 		goto out_err;
 =======
+<<<<<<< HEAD
+		goto out_err;
+=======
 		goto bail;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (o2info_from_user(*oiff, req))
@@ -742,8 +765,12 @@ bail:
 <<<<<<< HEAD
 out_err:
 =======
+<<<<<<< HEAD
+out_err:
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -935,8 +962,12 @@ long ocfs2_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 		status = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		status = mnt_want_write_file(filp);
+=======
 		status = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (status)
 			return status;
 		status = ocfs2_set_inode_attr(inode, flags,
@@ -944,8 +975,12 @@ long ocfs2_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 		mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(filp);
+=======
 		mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return status;
 	case OCFS2_IOC_RESVSP:
 	case OCFS2_IOC_RESVSP64:

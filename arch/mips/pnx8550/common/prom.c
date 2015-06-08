@@ -33,8 +33,12 @@ typedef struct
 <<<<<<< HEAD
 char * __init prom_getcmdline(void)
 =======
+<<<<<<< HEAD
+char * __init prom_getcmdline(void)
+=======
 char * prom_getcmdline(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return &(arcs_cmdline[0]);
 }

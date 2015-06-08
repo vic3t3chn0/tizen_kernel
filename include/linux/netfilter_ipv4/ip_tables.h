@@ -82,12 +82,17 @@ struct ipt_ip {
 
 	/* Protocol, 0 = ANY */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u16 proto;
 
 	/* Flags word */
 	__u8 flags;
 	/* Inverse flags */
 	__u8 invflags;
+<<<<<<< HEAD
+=======
 =======
 	u_int16_t proto;
 
@@ -96,6 +101,7 @@ struct ipt_ip {
 	/* Inverse flags */
 	u_int8_t invflags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Values for "flag" field in struct ipt_ip (general ip structure). */
@@ -128,10 +134,16 @@ struct ipt_entry {
 	/* Size of ipt_entry + matches + target */
 	__u16 next_offset;
 =======
+<<<<<<< HEAD
+	__u16 target_offset;
+	/* Size of ipt_entry + matches + target */
+	__u16 next_offset;
+=======
 	u_int16_t target_offset;
 	/* Size of ipt_entry + matches + target */
 	u_int16_t next_offset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Back pointer */
 	unsigned int comefrom;
@@ -169,10 +181,16 @@ struct ipt_icmp {
 	__u8 code[2];				/* range of code */
 	__u8 invflags;				/* Inverse flags */
 =======
+<<<<<<< HEAD
+	__u8 type;				/* type to match */
+	__u8 code[2];				/* range of code */
+	__u8 invflags;				/* Inverse flags */
+=======
 	u_int8_t type;				/* type to match */
 	u_int8_t code[2];			/* range of code */
 	u_int8_t invflags;			/* Inverse flags */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Values for "inv" field for struct ipt_icmp. */
@@ -313,9 +331,14 @@ struct compat_ipt_entry {
 	__u16 target_offset;
 	__u16 next_offset;
 =======
+<<<<<<< HEAD
+	__u16 target_offset;
+	__u16 next_offset;
+=======
 	u_int16_t target_offset;
 	u_int16_t next_offset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	compat_uint_t comefrom;
 	struct compat_xt_counters counters;
 	unsigned char elems[0];

@@ -48,8 +48,11 @@ static void nlmsvc_freegrantargs(struct nlm_rqst *call);
 static const struct rpc_call_ops nlmsvc_grant_ops;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static const char *nlmdbg_cookie2a(const struct nlm_cookie *cookie);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The list of blocked locks to retry
@@ -58,6 +61,9 @@ static LIST_HEAD(nlm_blocked);
 static DEFINE_SPINLOCK(nlm_blocked_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef LOCKD_DEBUG
 static const char *nlmdbg_cookie2a(const struct nlm_cookie *cookie)
 {
@@ -87,8 +93,11 @@ static const char *nlmdbg_cookie2a(const struct nlm_cookie *cookie)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Insert a blocked lock into the global list
  */
@@ -670,8 +679,12 @@ nlmsvc_cancel_blocked(struct nlm_file *file, struct nlm_lock *lock)
 <<<<<<< HEAD
  * It will be used if lm_grant is defined and the filesystem can not
 =======
+<<<<<<< HEAD
+ * It will be used if lm_grant is defined and the filesystem can not
+=======
  * It will be used if fl_grant is defined and the filesystem can not
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * respond to the request immediately.
  * For GETLK request it will copy the reply to the nlm_block.
  * For SETLK or SETLKW request it will get the local posix lock.
@@ -763,10 +776,16 @@ const struct lock_manager_operations nlmsvc_lock_operations = {
 	.lm_notify = nlmsvc_notify_blocked,
 	.lm_grant = nlmsvc_grant_deferred,
 =======
+<<<<<<< HEAD
+	.lm_compare_owner = nlmsvc_same_owner,
+	.lm_notify = nlmsvc_notify_blocked,
+	.lm_grant = nlmsvc_grant_deferred,
+=======
 	.fl_compare_owner = nlmsvc_same_owner,
 	.fl_notify = nlmsvc_notify_blocked,
 	.fl_grant = nlmsvc_grant_deferred,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -960,8 +979,11 @@ nlmsvc_retry_blocked(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_lock(&nlm_blocked_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (!list_empty(&nlm_blocked) && !kthread_should_stop()) {
 		block = list_entry(nlm_blocked.next, struct nlm_block, b_list);
 
@@ -973,8 +995,11 @@ nlmsvc_retry_blocked(void)
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		spin_unlock(&nlm_blocked_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		dprintk("nlmsvc_retry_blocked(%p, when=%ld)\n",
 			block, block->b_when);
@@ -985,10 +1010,15 @@ nlmsvc_retry_blocked(void)
 		} else
 			nlmsvc_grant_blocked(block);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return timeout;
 }
+<<<<<<< HEAD
+=======
 =======
 		spin_lock(&nlm_blocked_lock);
 	}
@@ -1026,3 +1056,4 @@ static const char *nlmdbg_cookie2a(const struct nlm_cookie *cookie)
 }
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

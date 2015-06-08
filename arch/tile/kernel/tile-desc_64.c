@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* TILE-Gx opcode information.
  *
  * Copyright 2011 Tilera Corporation. All Rights Reserved.
@@ -19,8 +22,11 @@
  *
  */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* This define is BFD_RELOC_##x for real bfd, or -1 for everyone else. */
 #define BFD_RELOC(x) -1
 
@@ -33,11 +39,16 @@
 #include <linux/stddef.h>
 #include <asm/tile-desc.h>
 =======
+<<<<<<< HEAD
+#include <linux/stddef.h>
+#include <asm/tile-desc.h>
+=======
 /* FIXME: Rename this. */
 #include <asm/opcode-tile_64.h>
 
 #include <linux/stddef.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 const struct tilegx_opcode tilegx_opcodes[334] =
 {
@@ -2071,8 +2082,12 @@ const struct tilegx_operand tilegx_operands[35] =
 <<<<<<< HEAD
     TILEGX_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEGX_MMSTART_X0),
 =======
+<<<<<<< HEAD
+    TILEGX_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEGX_MMSTART_X0),
+=======
     TILEGX_OP_TYPE_IMMEDIATE, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 0, 0, 0, 0,
     create_BFStart_X0, get_BFStart_X0
   },
@@ -2080,8 +2095,12 @@ const struct tilegx_operand tilegx_operands[35] =
 <<<<<<< HEAD
     TILEGX_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEGX_MMEND_X0),
 =======
+<<<<<<< HEAD
+    TILEGX_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEGX_MMEND_X0),
+=======
     TILEGX_OP_TYPE_IMMEDIATE, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 0, 0, 0, 0,
     create_BFEnd_X0, get_BFEnd_X0
   },

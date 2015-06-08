@@ -66,11 +66,16 @@ static unsigned char readb_outer_space(unsigned long long phys)
 	__asm__ __volatile__ (
 	"	.set	mips3		\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"	ld	%0, %1		\n"
 	"	lbu	%0, (%0)	\n"
 	"	.set	mips0		\n"
 	: "=r" (res)
 	: "m" (vaddr));
+<<<<<<< HEAD
+=======
 =======
 	"	.set	push		\n"
 	"	.set	noreorder	\n"
@@ -82,6 +87,7 @@ static unsigned char readb_outer_space(unsigned long long phys)
 	: "=r" (res)
 	: "R" (vaddr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	write_c0_status(sr);
 	ssnop_4();
@@ -102,11 +108,16 @@ static void writeb_outer_space(unsigned long long phys, unsigned char c)
 	__asm__ __volatile__ (
 	"	.set	mips3		\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"	ld	%0, %1		\n"
 	"	sb	%2, (%0)	\n"
 	"	.set	mips0		\n"
 	: "=&r" (tmp)
 	: "m" (vaddr), "r" (c));
+<<<<<<< HEAD
+=======
 =======
 	"	.set	push		\n"
 	"	.set	noreorder	\n"
@@ -118,6 +129,7 @@ static void writeb_outer_space(unsigned long long phys, unsigned char c)
 	: "=&r" (tmp)
 	: "R" (vaddr), "r" (c));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	write_c0_status(sr);
 	ssnop_4();

@@ -3,8 +3,13 @@
  * Copyright (C) 2006-2010, 2012 Freescale Semicondutor, Inc.
  * All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2006-2010, 2012 Freescale Semicondutor, Inc.
+ * All rights reserved.
+=======
  * Copyright (C) Freescale Semicondutor, Inc. 2006-2010. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author: Andy Fleming <afleming@freescale.com>
  *
@@ -35,8 +40,11 @@
 #include <linux/initrd.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fsl_devices.h>
 #include <linux/of_platform.h>
 #include <linux/of_device.h>
@@ -46,9 +54,13 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/io.h>
 #include <asm/machdep.h>
@@ -65,12 +77,18 @@
 #include <asm/mpic.h>
 #include <asm/swiotlb.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/fsl_guts.h>
 #include "smp.h"
 
 #include "mpc85xx.h"
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef DEBUG
 #ifdef DEBUG
@@ -176,6 +194,9 @@ static int mpc8568_mds_phy_fixups(struct phy_device *phydev)
 <<<<<<< HEAD
 #ifdef CONFIG_QUICC_ENGINE
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_QUICC_ENGINE
+=======
 #ifdef CONFIG_SMP
 extern void __init mpc85xx_smp_init(void);
 #endif
@@ -201,6 +222,7 @@ static void __init mpc85xx_publish_qe_devices(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mpc85xx_mds_reset_ucc_phys(void)
 {
 	struct device_node *np;
@@ -313,6 +335,9 @@ static void __init mpc85xx_mds_qe_init(void)
 
 	if (machine_is(p1021_mds)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		struct ccsr_guts __iomem *guts;
 
@@ -322,6 +347,8 @@ static void __init mpc85xx_mds_qe_init(void)
 			if (!guts)
 				pr_err("mpc85xx-rdb: could not map global utilities register\n");
 			else{
+<<<<<<< HEAD
+=======
 =======
 #define MPC85xx_PMUXCR_OFFSET           0x60
 #define MPC85xx_PMUXCR_QE0              0x00008000
@@ -341,6 +368,7 @@ static void __init mpc85xx_mds_qe_init(void)
 					" mapped!\n");
 			else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* P1021 has pins muxed for QE and other functions. To
 			 * enable QE UEC mode, we need to set bit QE0 for UCC1
 			 * in Eth mode, QE0 and QE3 for UCC5 in Eth mode, QE9
@@ -348,12 +376,17 @@ static void __init mpc85xx_mds_qe_init(void)
 			 * register.
 			 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				setbits32(&guts->pmuxcr, MPC85xx_PMUXCR_QE(0) |
 						  MPC85xx_PMUXCR_QE(3) |
 						  MPC85xx_PMUXCR_QE(9) |
 						  MPC85xx_PMUXCR_QE(12));
 				iounmap(guts);
 			}
+<<<<<<< HEAD
+=======
 =======
 				setbits32(pmuxcr, MPC85xx_PMUXCR_QE0 |
 						  MPC85xx_PMUXCR_QE3 |
@@ -361,6 +394,7 @@ static void __init mpc85xx_mds_qe_init(void)
 						  MPC85xx_PMUXCR_QE12);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			of_node_put(np);
 		}
 
@@ -394,8 +428,11 @@ static void __init mpc85xx_mds_qeic_init(void)
 #else
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init mpc85xx_publish_qe_devices(void) { }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mpc85xx_mds_qe_init(void) { }
 static void __init mpc85xx_mds_qeic_init(void) { }
 #endif	/* CONFIG_QUICC_ENGINE */
@@ -432,10 +469,14 @@ static void __init mpc85xx_mds_setup_arch(void)
 <<<<<<< HEAD
 	mpc85xx_smp_init();
 =======
+<<<<<<< HEAD
+	mpc85xx_smp_init();
+=======
 #ifdef CONFIG_SMP
 	mpc85xx_smp_init();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mpc85xx_mds_qe_init();
 
@@ -482,6 +523,8 @@ machine_arch_initcall(mpc8569_mds, board_fixups);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct of_device_id mpc85xx_ids[] = {
 	{ .type = "soc", },
 	{ .compatible = "soc", },
@@ -502,6 +545,7 @@ static struct of_device_id p1021_ids[] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init mpc85xx_publish_devices(void)
 {
 	if (machine_is(mpc8568_mds))
@@ -509,6 +553,9 @@ static int __init mpc85xx_publish_devices(void)
 	if (machine_is(mpc8569_mds))
 		simple_gpiochip_init("fsl,mpc8569mds-bcsr-gpio");
 
+<<<<<<< HEAD
+	return mpc85xx_common_publish_devices();
+=======
 <<<<<<< HEAD
 	return mpc85xx_common_publish_devices();
 =======
@@ -525,6 +572,7 @@ static int __init p1021_publish_devices(void)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 machine_device_initcall(mpc8568_mds, mpc85xx_publish_devices);
@@ -532,8 +580,12 @@ machine_device_initcall(mpc8569_mds, mpc85xx_publish_devices);
 <<<<<<< HEAD
 machine_device_initcall(p1021_mds, mpc85xx_common_publish_devices);
 =======
+<<<<<<< HEAD
+machine_device_initcall(p1021_mds, mpc85xx_common_publish_devices);
+=======
 machine_device_initcall(p1021_mds, p1021_publish_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 machine_arch_initcall(mpc8568_mds, swiotlb_setup_bus_notifier);
 machine_arch_initcall(mpc8569_mds, swiotlb_setup_bus_notifier);
@@ -542,10 +594,15 @@ machine_arch_initcall(p1021_mds, swiotlb_setup_bus_notifier);
 static void __init mpc85xx_mds_pic_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN |
 			MPIC_SINGLE_DEST_CPU,
 			0, 256, " OpenPIC  ");
 	BUG_ON(mpic == NULL);
+<<<<<<< HEAD
+=======
 =======
 	struct mpic *mpic;
 	struct resource r;
@@ -568,6 +625,7 @@ static void __init mpc85xx_mds_pic_init(void)
 	BUG_ON(mpic == NULL);
 	of_node_put(np);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mpic_init(mpic);
 	mpc85xx_mds_qeic_init();

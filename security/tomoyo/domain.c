@@ -4,10 +4,14 @@
 <<<<<<< HEAD
  * Copyright (C) 2005-2011  NTT DATA CORPORATION
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2005-2011  NTT DATA CORPORATION
+=======
  * Domain transition functions for TOMOYO.
  *
  * Copyright (C) 2005-2010  NTT DATA CORPORATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include "common.h"
@@ -27,9 +31,13 @@ struct tomoyo_domain_info tomoyo_kernel_domain;
 <<<<<<< HEAD
  * @param:           Pointer to "struct tomoyo_acl_param".
 =======
+<<<<<<< HEAD
+ * @param:           Pointer to "struct tomoyo_acl_param".
+=======
  * @is_delete:       True if it is a delete request.
  * @list:            Pointer to "struct list_head".
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @check_duplicate: Callback function to find duplicated entry.
  *
  * Returns 0 on success, negative value otherwise.
@@ -40,8 +48,12 @@ int tomoyo_update_policy(struct tomoyo_acl_head *new_entry, const int size,
 <<<<<<< HEAD
 			 struct tomoyo_acl_param *param,
 =======
+<<<<<<< HEAD
+			 struct tomoyo_acl_param *param,
+=======
 			 bool is_delete, struct list_head *list,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 bool (*check_duplicate) (const struct tomoyo_acl_head
 						  *,
 						  const struct tomoyo_acl_head
@@ -52,14 +64,23 @@ int tomoyo_update_policy(struct tomoyo_acl_head *new_entry, const int size,
 	struct tomoyo_acl_head *entry;
 	struct list_head *list = param->list;
 =======
+<<<<<<< HEAD
+	int error = param->is_delete ? -ENOENT : -ENOMEM;
+	struct tomoyo_acl_head *entry;
+	struct list_head *list = param->list;
+=======
 	int error = is_delete ? -ENOENT : -ENOMEM;
 	struct tomoyo_acl_head *entry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mutex_lock_interruptible(&tomoyo_policy_lock))
 		return -ENOMEM;
 	list_for_each_entry_rcu(entry, list, list) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (entry->is_deleted == TOMOYO_GC_IN_PROGRESS)
 			continue;
 		if (!check_duplicate(entry, new_entry))
@@ -69,6 +90,8 @@ int tomoyo_update_policy(struct tomoyo_acl_head *new_entry, const int size,
 		break;
 	}
 	if (error && !param->is_delete) {
+<<<<<<< HEAD
+=======
 =======
 		if (!check_duplicate(entry, new_entry))
 			continue;
@@ -78,6 +101,7 @@ int tomoyo_update_policy(struct tomoyo_acl_head *new_entry, const int size,
 	}
 	if (error && !is_delete) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		entry = tomoyo_commit_ok(new_entry, size);
 		if (entry) {
 			list_add_tail_rcu(&entry->list, list);
@@ -90,6 +114,9 @@ int tomoyo_update_policy(struct tomoyo_acl_head *new_entry, const int size,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_same_acl_head - Check for duplicated "struct tomoyo_acl_info" entry.
  *
  * @a: Pointer to "struct tomoyo_acl_info".
@@ -104,8 +131,11 @@ static inline bool tomoyo_same_acl_head(const struct tomoyo_acl_info *a,
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_update_domain - Update an entry for domain policy.
  *
  * @new_entry:       Pointer to "struct tomoyo_acl_info".
@@ -113,9 +143,13 @@ static inline bool tomoyo_same_acl_head(const struct tomoyo_acl_info *a,
 <<<<<<< HEAD
  * @param:           Pointer to "struct tomoyo_acl_param".
 =======
+<<<<<<< HEAD
+ * @param:           Pointer to "struct tomoyo_acl_param".
+=======
  * @is_delete:       True if it is a delete request.
  * @domain:          Pointer to "struct tomoyo_domain_info".
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @check_duplicate: Callback function to find duplicated entry.
  * @merge_duplicate: Callback function to merge duplicated entry.
  *
@@ -127,8 +161,12 @@ int tomoyo_update_domain(struct tomoyo_acl_info *new_entry, const int size,
 <<<<<<< HEAD
 			 struct tomoyo_acl_param *param,
 =======
+<<<<<<< HEAD
+			 struct tomoyo_acl_param *param,
+=======
 			 bool is_delete, struct tomoyo_domain_info *domain,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 bool (*check_duplicate) (const struct tomoyo_acl_info
 						  *,
 						  const struct tomoyo_acl_info
@@ -138,6 +176,9 @@ int tomoyo_update_domain(struct tomoyo_acl_info *new_entry, const int size,
 						  const bool))
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const bool is_delete = param->is_delete;
 	int error = is_delete ? -ENOENT : -ENOMEM;
 	struct tomoyo_acl_info *entry;
@@ -164,6 +205,8 @@ int tomoyo_update_domain(struct tomoyo_acl_info *new_entry, const int size,
 			continue;
 		if (!tomoyo_same_acl_head(entry, new_entry) ||
 		    !check_duplicate(entry, new_entry))
+<<<<<<< HEAD
+=======
 =======
 	int error = is_delete ? -ENOENT : -ENOMEM;
 	struct tomoyo_acl_info *entry;
@@ -173,6 +216,7 @@ int tomoyo_update_domain(struct tomoyo_acl_info *new_entry, const int size,
 	list_for_each_entry_rcu(entry, &domain->acl_info_list, list) {
 		if (!check_duplicate(entry, new_entry))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		if (merge_duplicate)
 			entry->is_deleted = merge_duplicate(entry, new_entry,
@@ -188,13 +232,20 @@ int tomoyo_update_domain(struct tomoyo_acl_info *new_entry, const int size,
 <<<<<<< HEAD
 			list_add_tail_rcu(&entry->list, list);
 =======
+<<<<<<< HEAD
+			list_add_tail_rcu(&entry->list, list);
+=======
 			list_add_tail_rcu(&entry->list, &domain->acl_info_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = 0;
 		}
 	}
 	mutex_unlock(&tomoyo_policy_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	tomoyo_put_condition(new_entry->cond);
 	return error;
@@ -210,11 +261,14 @@ out:
  *
  * Caller holds tomoyo_read_lock().
  */
+<<<<<<< HEAD
+=======
 =======
 	return error;
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void tomoyo_check_acl(struct tomoyo_request_info *r,
 		      bool (*check_entry) (struct tomoyo_request_info *,
 					   const struct tomoyo_acl_info *))
@@ -222,6 +276,9 @@ void tomoyo_check_acl(struct tomoyo_request_info *r,
 	const struct tomoyo_domain_info *domain = r->domain;
 	struct tomoyo_acl_info *ptr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool retried = false;
 	const struct list_head *list = &domain->acl_info_list;
 
@@ -241,6 +298,8 @@ retry:
 		retried = true;
 		list = &domain->ns->acl_group[domain->group];
 		goto retry;
+<<<<<<< HEAD
+=======
 =======
 
 	list_for_each_entry_rcu(ptr, &domain->acl_info_list, list) {
@@ -251,6 +310,7 @@ retry:
 			return;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	r->granted = false;
 }
@@ -259,10 +319,15 @@ retry:
 LIST_HEAD(tomoyo_domain_list);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_last_word - Get last component of a domainname.
  *
  * @name: Domainname to check.
+<<<<<<< HEAD
+=======
 =======
 struct list_head tomoyo_policy_list[TOMOYO_MAX_POLICY];
 struct list_head tomoyo_group_list[TOMOYO_MAX_GROUP];
@@ -272,12 +337,16 @@ struct list_head tomoyo_group_list[TOMOYO_MAX_GROUP];
  *
  * @domainname: Domainname to check.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns the last word of @domainname.
  */
 static const char *tomoyo_last_word(const char *name)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *cp = strrchr(name, ' ');
 	if (cp)
 		return cp + 1;
@@ -292,6 +361,8 @@ static const char *tomoyo_last_word(const char *name)
  *
  * Returns true if @a == @b, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
         const char *cp = strrchr(name, ' ');
         if (cp)
@@ -300,6 +371,7 @@ static const char *tomoyo_last_word(const char *name)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_same_transition_control(const struct tomoyo_acl_head *a,
 					   const struct tomoyo_acl_head *b)
 {
@@ -316,6 +388,9 @@ static bool tomoyo_same_transition_control(const struct tomoyo_acl_head *a,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_write_transition_control - Write "struct tomoyo_transition_control" list.
  *
  * @param: Pointer to "struct tomoyo_acl_param".
@@ -339,6 +414,8 @@ int tomoyo_write_transition_control(struct tomoyo_acl_param *param,
 		program = NULL;
 	}
 	if (program && strcmp(program, "any")) {
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_update_transition_control_entry - Update "struct tomoyo_transition_control" list.
  *
@@ -358,6 +435,7 @@ static int tomoyo_update_transition_control_entry(const char *domainname,
 	int error = is_delete ? -ENOENT : -ENOMEM;
 	if (program) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!tomoyo_correct_path(program))
 			return -EINVAL;
 		e.program = tomoyo_get_name(program);
@@ -367,8 +445,12 @@ static int tomoyo_update_transition_control_entry(const char *domainname,
 <<<<<<< HEAD
 	if (domainname && strcmp(domainname, "any")) {
 =======
+<<<<<<< HEAD
+	if (domainname && strcmp(domainname, "any")) {
+=======
 	if (domainname) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!tomoyo_correct_domain(domainname)) {
 			if (!tomoyo_correct_path(domainname))
 				goto out;
@@ -379,10 +461,15 @@ static int tomoyo_update_transition_control_entry(const char *domainname,
 			goto out;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param->list = &param->ns->policy_list[TOMOYO_ID_TRANSITION_CONTROL];
 	error = tomoyo_update_policy(&e.head, sizeof(e), param,
 				     tomoyo_same_transition_control);
 out:
+<<<<<<< HEAD
+=======
 =======
 	error = tomoyo_update_policy(&e.head, sizeof(e), is_delete,
 				     &tomoyo_policy_list
@@ -390,6 +477,7 @@ out:
 				     tomoyo_same_transition_control);
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_put_name(e.domainname);
 	tomoyo_put_name(e.program);
 	return error;
@@ -397,6 +485,9 @@ out:
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_scan_transition - Try to find specific domain transition type.
  *
  * @list:       Pointer to "struct list_head".
@@ -436,6 +527,8 @@ static inline bool tomoyo_scan_transition
 		return true;
 	}
 	return false;
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_write_transition_control - Write "struct tomoyo_transition_control" list.
  *
@@ -460,12 +553,16 @@ int tomoyo_write_transition_control(char *data, const bool is_delete,
 	return tomoyo_update_transition_control_entry(domainname, data, type,
 						      is_delete);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
  * tomoyo_transition_type - Get domain transition type.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ns:         Pointer to "struct tomoyo_policy_namespace".
  * @domainname: The name of current domain.
  * @program:    The name of requested program.
@@ -522,6 +619,8 @@ static bool tomoyo_same_aggregator(const struct tomoyo_acl_head *a,
 							  head);
 	const struct tomoyo_aggregator *p2 = container_of(b, typeof(*p2),
 							  head);
+<<<<<<< HEAD
+=======
 =======
  * @domainname: The name of domain.
  * @program:    The name of program.
@@ -583,11 +682,17 @@ static bool tomoyo_same_aggregator(const struct tomoyo_acl_head *a,
 	const struct tomoyo_aggregator *p1 = container_of(a, typeof(*p1), head);
 	const struct tomoyo_aggregator *p2 = container_of(b, typeof(*p2), head);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return p1->original_name == p2->original_name &&
 		p1->aggregated_name == p2->aggregated_name;
 }
 
 /**
+<<<<<<< HEAD
+ * tomoyo_write_aggregator - Write "struct tomoyo_aggregator" list.
+ *
+ * @param: Pointer to "struct tomoyo_acl_param".
+=======
 <<<<<<< HEAD
  * tomoyo_write_aggregator - Write "struct tomoyo_aggregator" list.
  *
@@ -599,12 +704,16 @@ static bool tomoyo_same_aggregator(const struct tomoyo_acl_head *a,
  * @aggregated_name: The program name to use.
  * @is_delete:       True if it is a delete request.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns 0 on success, negative value otherwise.
  *
  * Caller holds tomoyo_read_lock().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tomoyo_write_aggregator(struct tomoyo_acl_param *param)
 {
 	struct tomoyo_aggregator e = { };
@@ -612,6 +721,8 @@ int tomoyo_write_aggregator(struct tomoyo_acl_param *param)
 	const char *original_name = tomoyo_read_token(param);
 	const char *aggregated_name = tomoyo_read_token(param);
 	if (!tomoyo_correct_word(original_name) ||
+<<<<<<< HEAD
+=======
 =======
 static int tomoyo_update_aggregator_entry(const char *original_name,
 					  const char *aggregated_name,
@@ -622,6 +733,7 @@ static int tomoyo_update_aggregator_entry(const char *original_name,
 
 	if (!tomoyo_correct_path(original_name) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    !tomoyo_correct_path(aggregated_name))
 		return -EINVAL;
 	e.original_name = tomoyo_get_name(original_name);
@@ -630,16 +742,22 @@ static int tomoyo_update_aggregator_entry(const char *original_name,
 	    e.aggregated_name->is_patterned) /* No patterns allowed. */
 		goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param->list = &param->ns->policy_list[TOMOYO_ID_AGGREGATOR];
 	error = tomoyo_update_policy(&e.head, sizeof(e), param,
 				     tomoyo_same_aggregator);
 out:
+<<<<<<< HEAD
+=======
 =======
 	error = tomoyo_update_policy(&e.head, sizeof(e), is_delete,
 				     &tomoyo_policy_list[TOMOYO_ID_AGGREGATOR],
 				     tomoyo_same_aggregator);
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tomoyo_put_name(e.original_name);
 	tomoyo_put_name(e.aggregated_name);
 	return error;
@@ -647,6 +765,9 @@ out:
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tomoyo_find_namespace - Find specified namespace.
  *
  * @name: Name of namespace to find.
@@ -734,6 +855,8 @@ static bool tomoyo_namespace_jump(const char *domainname)
  *
  * @domainname: The name of domain.
  * @transit:    True if transit to domain found or created.
+<<<<<<< HEAD
+=======
 =======
  * tomoyo_write_aggregator - Write "struct tomoyo_aggregator" list.
  *
@@ -760,6 +883,7 @@ int tomoyo_write_aggregator(char *data, const bool is_delete)
  * @domainname: The name of domain.
  * @profile:    Profile number to assign if the domain was newly created.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns pointer to "struct tomoyo_domain_info" on success, NULL otherwise.
  *
@@ -767,6 +891,9 @@ int tomoyo_write_aggregator(char *data, const bool is_delete)
  */
 struct tomoyo_domain_info *tomoyo_assign_domain(const char *domainname,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						const bool transit)
 {
 	struct tomoyo_domain_info e = { };
@@ -927,6 +1054,8 @@ out:
 	kfree(env_page.data);
 	kfree(arg_ptr);
 	return error;
+<<<<<<< HEAD
+=======
 =======
 						const u8 profile)
 {
@@ -966,6 +1095,7 @@ out:
 	kfree(entry);
 	return found ? domain : NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -980,6 +1110,9 @@ out:
 int tomoyo_find_next_domain(struct linux_binprm *bprm)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tomoyo_domain_info *old_domain = tomoyo_domain();
 	struct tomoyo_domain_info *domain = NULL;
 	const char *original_name = bprm->filename;
@@ -1022,6 +1155,8 @@ retry:
 							 ptr->original_name))
 				continue;
 			candidate = ptr->aggregated_name;
+<<<<<<< HEAD
+=======
 =======
 	struct tomoyo_request_info r;
 	char *tmp = kzalloc(TOMOYO_EXEC_TMPSIZE, GFP_NOFS);
@@ -1066,6 +1201,7 @@ retry:
 			/* This is OK because it is read only. */
 			rn = *ptr->aggregated_name;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -1074,8 +1210,12 @@ retry:
 <<<<<<< HEAD
 	retval = tomoyo_execute_permission(&ee->r, candidate);
 =======
+<<<<<<< HEAD
+	retval = tomoyo_execute_permission(&ee->r, candidate);
+=======
 	retval = tomoyo_path_permission(&r, TOMOYO_TYPE_EXECUTE, &rn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval == TOMOYO_RETRY_REQUEST)
 		goto retry;
 	if (retval < 0)
@@ -1087,6 +1227,9 @@ retry:
 	 * (which never contains wildcard).
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ee->r.param.path.matched_path)
 		candidate = ee->r.param.path.matched_path;
 
@@ -1146,6 +1289,8 @@ force_initialize_domain:
 		break;
 	case TOMOYO_TRANSITION_CONTROL_KEEP:
 force_keep_domain:
+<<<<<<< HEAD
+=======
 =======
 	if (r.param.path.matched_path) {
 		if (need_kfree)
@@ -1164,6 +1309,7 @@ force_keep_domain:
 		break;
 	case TOMOYO_TRANSITION_CONTROL_KEEP:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Keep current domain. */
 		domain = old_domain;
 		break;
@@ -1178,6 +1324,9 @@ force_keep_domain:
 			 */
 			domain = old_domain;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 force_child_domain:
@@ -1208,6 +1357,8 @@ force_jump_domain:
 			       "ERROR: Domain '%s' not defined.\n", ee->tmp);
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 		} else {
 			/* Normal domain transition. */
@@ -1239,6 +1390,7 @@ force_jump_domain:
 	else
 		old_domain->transition_failed = true;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  out:
 	if (!domain)
 		domain = old_domain;
@@ -1246,6 +1398,9 @@ force_jump_domain:
 	atomic_inc(&domain->users);
 	bprm->cred->security = domain;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(exename.name);
 	if (!retval) {
 		ee->r.domain = domain;
@@ -1304,6 +1459,8 @@ bool tomoyo_dump_page(struct linux_binprm *bprm, unsigned long pos,
 #endif
 	return true;
 }
+<<<<<<< HEAD
+=======
 =======
 	if (need_kfree)
 		kfree(rn.name);
@@ -1311,3 +1468,4 @@ bool tomoyo_dump_page(struct linux_binprm *bprm, unsigned long pos,
 	return retval;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

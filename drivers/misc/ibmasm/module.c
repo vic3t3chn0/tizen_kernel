@@ -18,7 +18,15 @@
  *
  * Copyright (C) IBM Corporation, 2004
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Author: Max AsbÃ¶ck <amax@us.ibm.com>
+=======
  * Author: Max Asböck <amax@us.ibm.com>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Author: Max Asböck <amax@us.ibm.com>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This driver is based on code originally written by Pete Reynolds
  * and others.
@@ -211,6 +219,22 @@ static void __exit ibmasm_exit (void)
 
 static int __init ibmasm_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int result = pci_register_driver(&ibmasm_driver);
+	if (result)
+		return result;
+
+	result = ibmasmfs_register();
+	if (result) {
+		pci_unregister_driver(&ibmasm_driver);
+		err("Failed to register ibmasmfs file system");
+		return result;
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int result;
 
 	result = ibmasmfs_register();
@@ -223,6 +247,10 @@ static int __init ibmasm_init(void)
 		ibmasmfs_unregister();
 		return result;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ibmasm_register_panic_notifier();
 	info(DRIVER_DESC " version " DRIVER_VERSION " loaded");
 	return 0;

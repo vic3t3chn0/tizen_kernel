@@ -65,8 +65,12 @@ static int __init br_init(void)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_ATM_LANE)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_ATM_LANE)
+=======
 #if defined(CONFIG_ATM_LANE) || defined(CONFIG_ATM_LANE_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_fdb_test_addr_hook = br_fdb_test_addr;
 #endif
 
@@ -100,8 +104,12 @@ static void __exit br_deinit(void)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_ATM_LANE)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_ATM_LANE)
+=======
 #if defined(CONFIG_ATM_LANE) || defined(CONFIG_ATM_LANE_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_fdb_test_addr_hook = NULL;
 #endif
 

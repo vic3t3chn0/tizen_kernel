@@ -32,7 +32,11 @@ cycles_t get_cycles(void);
 <<<<<<< HEAD
 #define get_cycles_low() __insn_mfspr(SPR_CYCLE_LOW)
 =======
+<<<<<<< HEAD
+#define get_cycles_low() __insn_mfspr(SPR_CYCLE_LOW)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 static inline cycles_t get_cycles(void)
 {
@@ -41,7 +45,11 @@ static inline cycles_t get_cycles(void)
 <<<<<<< HEAD
 #define get_cycles_low() __insn_mfspr(SPR_CYCLE)   /* just get all 64 bits */
 =======
+<<<<<<< HEAD
+#define get_cycles_low() __insn_mfspr(SPR_CYCLE)   /* just get all 64 bits */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 cycles_t get_clock_rate(void);

@@ -97,6 +97,9 @@ extern u8 mb_enable_debug;
 
 struct ext4_free_data {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* MUST be the first member */
 	struct ext4_journal_cb_entry	efd_jce;
 
@@ -114,6 +117,8 @@ struct ext4_free_data {
 
 	/* transaction which freed this extent */
 	tid_t				efd_tid;
+<<<<<<< HEAD
+=======
 =======
 	/* this links the free block information from group_info */
 	struct rb_node node;
@@ -131,6 +136,7 @@ struct ext4_free_data {
 	/* transaction which freed this extent */
 	tid_t	t_tid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct ext4_prealloc_space {
@@ -164,10 +170,16 @@ struct ext4_free_extent {
 	ext4_group_t fe_group;
 	ext4_grpblk_t fe_len;	/* In cluster units */
 =======
+<<<<<<< HEAD
+	ext4_grpblk_t fe_start;	/* In cluster units */
+	ext4_group_t fe_group;
+	ext4_grpblk_t fe_len;	/* In cluster units */
+=======
 	ext4_grpblk_t fe_start;
 	ext4_group_t fe_group;
 	ext4_grpblk_t fe_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -204,8 +216,12 @@ struct ext4_allocation_context {
 <<<<<<< HEAD
 	/* copy of the best found extent taken before preallocation efforts */
 =======
+<<<<<<< HEAD
+	/* copy of the best found extent taken before preallocation efforts */
+=======
 	/* copy of the bext found extent taken before preallocation efforts */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ext4_free_extent ac_f_ex;
 
 	/* number of iterations done. we have to track to limit searching */
@@ -219,8 +235,11 @@ struct ext4_allocation_context {
 	__u8 ac_criteria;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	__u8 ac_repeats;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u8 ac_2order;		/* if request is to allocate 2^N blocks and
 				 * N > 0, the field stores N, otherwise 0 */
 	__u8 ac_op;		/* operation, for history only */
@@ -246,9 +265,12 @@ struct ext4_buddy {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define EXT4_MB_BITMAP(e4b)	((e4b)->bd_bitmap)
 #define EXT4_MB_BUDDY(e4b)	((e4b)->bd_buddy)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline ext4_fsblk_t ext4_grp_offs_to_block(struct super_block *sb,
 					struct ext4_free_extent *fex)
@@ -257,7 +279,12 @@ static inline ext4_fsblk_t ext4_grp_offs_to_block(struct super_block *sb,
 	return ext4_group_first_block_no(sb, fex->fe_group) +
 		(fex->fe_start << EXT4_SB(sb)->s_cluster_bits);
 =======
+<<<<<<< HEAD
+	return ext4_group_first_block_no(sb, fex->fe_group) +
+		(fex->fe_start << EXT4_SB(sb)->s_cluster_bits);
+=======
 	return ext4_group_first_block_no(sb, fex->fe_group) + fex->fe_start;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif

@@ -22,7 +22,11 @@ struct smack_known smack_known_huh = {
 <<<<<<< HEAD
 	.smk_cipso	= NULL,
 =======
+<<<<<<< HEAD
+	.smk_cipso	= NULL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct smack_known smack_known_hat = {
@@ -31,7 +35,11 @@ struct smack_known smack_known_hat = {
 <<<<<<< HEAD
 	.smk_cipso	= NULL,
 =======
+<<<<<<< HEAD
+	.smk_cipso	= NULL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct smack_known smack_known_star = {
@@ -40,7 +48,11 @@ struct smack_known smack_known_star = {
 <<<<<<< HEAD
 	.smk_cipso	= NULL,
 =======
+<<<<<<< HEAD
+	.smk_cipso	= NULL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct smack_known smack_known_floor = {
@@ -49,7 +61,11 @@ struct smack_known smack_known_floor = {
 <<<<<<< HEAD
 	.smk_cipso	= NULL,
 =======
+<<<<<<< HEAD
+	.smk_cipso	= NULL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct smack_known smack_known_invalid = {
@@ -58,7 +74,11 @@ struct smack_known smack_known_invalid = {
 <<<<<<< HEAD
 	.smk_cipso	= NULL,
 =======
+<<<<<<< HEAD
+	.smk_cipso	= NULL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct smack_known smack_known_web = {
@@ -67,7 +87,11 @@ struct smack_known smack_known_web = {
 <<<<<<< HEAD
 	.smk_cipso	= NULL,
 =======
+<<<<<<< HEAD
+	.smk_cipso	= NULL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 LIST_HEAD(smack_known_list);
@@ -245,6 +269,9 @@ int smk_curacc(char *obj_label, u32 mode, struct smk_audit_info *a)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Return if a specific label has been designated as the
 	 * only one that gets privilege and current does not
 	 * have that label.
@@ -253,11 +280,14 @@ int smk_curacc(char *obj_label, u32 mode, struct smk_audit_info *a)
 		goto out_audit;
 
 	if (capable(CAP_MAC_OVERRIDE))
+<<<<<<< HEAD
+=======
 =======
 	 * Allow for priviliged to override policy.
 	 */
 	if (rc != 0 && smack_privileged(CAP_MAC_OVERRIDE))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = 0;
 
 out_audit:
@@ -289,9 +319,12 @@ static inline void smack_str_from_perm(char *string, int access)
 		string[i++] = 'a';
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (access & MAY_TRANSMUTE)
 		string[i++] = 't';
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	string[i] = '\0';
 }
 /**
@@ -309,10 +342,16 @@ static void smack_log_callback(struct audit_buffer *ab, void *a)
 	audit_log_format(ab, "lsm=SMACK fn=%s action=%s",
 			 ad->smack_audit_data->function,
 =======
+<<<<<<< HEAD
+	struct smack_audit_data *sad = ad->smack_audit_data;
+	audit_log_format(ab, "lsm=SMACK fn=%s action=%s",
+			 ad->smack_audit_data->function,
+=======
 	struct smack_audit_data *sad = &ad->smack_audit_data;
 	audit_log_format(ab, "lsm=SMACK fn=%s action=%s",
 			 ad->smack_audit_data.function,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 sad->result ? "denied" : "granted");
 	audit_log_format(ab, " subject=");
 	audit_log_untrustedstring(ab, sad->subject);
@@ -346,12 +385,17 @@ void smack_log(char *subject_label, char *object_label, int request,
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sad = a->smack_audit_data;
 
 	if (sad->function == NULL)
 		sad->function = "unknown";
 
 	/* end preparing the audit data */
+<<<<<<< HEAD
+=======
 =======
 	if (a->smack_audit_data.function == NULL)
 		a->smack_audit_data.function = "unknown";
@@ -359,6 +403,7 @@ void smack_log(char *subject_label, char *object_label, int request,
 	/* end preparing the audit data */
 	sad = &a->smack_audit_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	smack_str_from_perm(request_buffer, request);
 	sad->subject = subject_label;
 	sad->object  = object_label;
@@ -368,10 +413,15 @@ void smack_log(char *subject_label, char *object_label, int request,
 
 	common_lsm_audit(a, smack_log_callback, NULL);
 =======
+<<<<<<< HEAD
+
+	common_lsm_audit(a, smack_log_callback, NULL);
+=======
 	a->lsm_pre_audit = smack_log_callback;
 
 	common_lsm_audit(a);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else /* #ifdef CONFIG_AUDIT */
 void smack_log(char *subject_label, char *object_label, int request,
@@ -383,8 +433,12 @@ void smack_log(char *subject_label, char *object_label, int request,
 <<<<<<< HEAD
 static DEFINE_MUTEX(smack_known_lock);
 =======
+<<<<<<< HEAD
+static DEFINE_MUTEX(smack_known_lock);
+=======
 DEFINE_MUTEX(smack_known_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * smk_find_entry - find a label on the list, return the list entry
@@ -401,8 +455,12 @@ struct smack_known *smk_find_entry(const char *string)
 <<<<<<< HEAD
 		if (strncmp(skp->smk_known, string, SMK_MAXLEN) == 0)
 =======
+<<<<<<< HEAD
+		if (strncmp(skp->smk_known, string, SMK_MAXLEN) == 0)
+=======
 		if (strcmp(skp->smk_known, string) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return skp;
 	}
 
@@ -414,6 +472,9 @@ struct smack_known *smk_find_entry(const char *string)
  * @string: a text string that might contain a Smack label
  * @len: the maximum size, or zero if it is NULL terminated.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @smack: parsed smack label, or NULL if parse error
  */
 void smk_parse_smack(const char *string, int len, char *smack)
@@ -435,6 +496,8 @@ void smk_parse_smack(const char *string, int len, char *smack)
 		} else
 			smack[i] = string[i];
 	}
+<<<<<<< HEAD
+=======
 =======
  *
  * Returns a pointer to the clean label, or NULL
@@ -507,6 +570,7 @@ int smk_netlbl_mls(int level, char *catset, struct netlbl_lsm_secattr *sap,
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -521,10 +585,15 @@ struct smack_known *smk_import_entry(const char *string, int len)
 {
 	struct smack_known *skp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char smack[SMK_LABELLEN];
 
 	smk_parse_smack(string, len, smack);
 	if (smack[0] == '\0')
+<<<<<<< HEAD
+=======
 =======
 	char *smack;
 	int slen;
@@ -533,12 +602,16 @@ struct smack_known *smk_import_entry(const char *string, int len)
 	smack = smk_parse_smack(string, len);
 	if (smack == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 
 	mutex_lock(&smack_known_lock);
 
 	skp = smk_find_entry(smack);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (skp == NULL) {
 		skp = kzalloc(sizeof(struct smack_known), GFP_KERNEL);
@@ -557,6 +630,8 @@ struct smack_known *smk_import_entry(const char *string, int len)
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	if (skp != NULL)
 		goto freeout;
@@ -601,6 +676,7 @@ freeout:
 	kfree(smack);
 unlockout:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&smack_known_lock);
 
 	return skp;
@@ -664,6 +740,9 @@ char *smack_from_secid(const u32 secid)
 u32 smack_to_secid(const char *smack)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct smack_known *skp;
 
 	rcu_read_lock();
@@ -739,6 +818,8 @@ int smack_to_cipso(const char *smack, struct smack_cipso *cp)
 
 	memcpy(cp, kp->smk_cipso, sizeof(struct smack_cipso));
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	struct smack_known *skp = smk_find_entry(smack);
 
@@ -746,4 +827,5 @@ int smack_to_cipso(const char *smack, struct smack_cipso *cp)
 		return 0;
 	return skp->smk_secid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

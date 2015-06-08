@@ -87,6 +87,20 @@ mwifiex_wmm_ac_debug_print(const struct ieee_types_wmm_ac_parameters *ac_param)
 	const char *ac_str[] = { "BK", "BE", "VI", "VO" };
 
 	pr_debug("info: WMM AC_%s: ACI=%d, ACM=%d, Aifsn=%d, "
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 "EcwMin=%d, EcwMax=%d, TxopLimit=%d\n",
+		 ac_str[wmm_aci_to_qidx_map[(ac_param->aci_aifsn_bitmap
+					     & MWIFIEX_ACI) >> 5]],
+		 (ac_param->aci_aifsn_bitmap & MWIFIEX_ACI) >> 5,
+		 (ac_param->aci_aifsn_bitmap & MWIFIEX_ACM) >> 4,
+		 ac_param->aci_aifsn_bitmap & MWIFIEX_AIFSN,
+		 ac_param->ecw_bitmap & MWIFIEX_ECW_MIN,
+		 (ac_param->ecw_bitmap & MWIFIEX_ECW_MAX) >> 4,
+		 le16_to_cpu(ac_param->tx_op_limit));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       "EcwMin=%d, EcwMax=%d, TxopLimit=%d\n",
 	       ac_str[wmm_aci_to_qidx_map[(ac_param->aci_aifsn_bitmap
 	       & MWIFIEX_ACI) >> 5]],
@@ -96,6 +110,10 @@ mwifiex_wmm_ac_debug_print(const struct ieee_types_wmm_ac_parameters *ac_param)
 	       ac_param->ecw_bitmap & MWIFIEX_ECW_MIN,
 	       (ac_param->ecw_bitmap & MWIFIEX_ECW_MAX) >> 4,
 	       le16_to_cpu(ac_param->tx_op_limit));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -112,7 +130,15 @@ mwifiex_wmm_allocate_ralist_node(struct mwifiex_adapter *adapter, u8 *ra)
 
 	if (!ra_list) {
 		dev_err(adapter->dev, "%s: failed to alloc ra_list\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			__func__);
+=======
 						__func__);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						__func__);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 	INIT_LIST_HEAD(&ra_list->list);
@@ -154,7 +180,15 @@ mwifiex_ralist_add(struct mwifiex_private *priv, u8 *ra)
 			ra_list, ra_list->is_11n_enabled);
 
 		list_add_tail(&ra_list->list,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			      &priv->wmm.tid_tbl_ptr[i].ra_list);
+=======
 				&priv->wmm.tid_tbl_ptr[i].ra_list);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				&priv->wmm.tid_tbl_ptr[i].ra_list);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!priv->wmm.tid_tbl_ptr[i].ra_list_curr)
 			priv->wmm.tid_tbl_ptr[i].ra_list_curr = ra_list;
@@ -217,6 +251,24 @@ mwifiex_wmm_setup_queue_priorities(struct mwifiex_private *priv,
 		wmm_ie->reserved);
 
 	for (num_ac = 0; num_ac < ARRAY_SIZE(wmm_ie->ac_params); num_ac++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		u8 ecw = wmm_ie->ac_params[num_ac].ecw_bitmap;
+		u8 aci_aifsn = wmm_ie->ac_params[num_ac].aci_aifsn_bitmap;
+		cw_min = (1 << (ecw & MWIFIEX_ECW_MIN)) - 1;
+		avg_back_off = (cw_min >> 1) + (aci_aifsn & MWIFIEX_AIFSN);
+
+		ac_idx = wmm_aci_to_qidx_map[(aci_aifsn & MWIFIEX_ACI) >> 5];
+		priv->wmm.queue_priority[ac_idx] = ac_idx;
+		tmp[ac_idx] = avg_back_off;
+
+		dev_dbg(priv->adapter->dev,
+			"info: WMM: CWmax=%d CWmin=%d Avg Back-off=%d\n",
+			(1 << ((ecw & MWIFIEX_ECW_MAX) >> 4)) - 1,
+			cw_min, avg_back_off);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cw_min = (1 << (wmm_ie->ac_params[num_ac].ecw_bitmap &
 			MWIFIEX_ECW_MIN)) - 1;
 		avg_back_off = (cw_min >> 1) +
@@ -233,6 +285,10 @@ mwifiex_wmm_setup_queue_priorities(struct mwifiex_private *priv,
 		       (1 << ((wmm_ie->ac_params[num_ac].ecw_bitmap &
 		       MWIFIEX_ECW_MAX) >> 4)) - 1,
 		       cw_min, avg_back_off);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mwifiex_wmm_ac_debug_print(&wmm_ie->ac_params[num_ac]);
 	}
 
@@ -312,13 +368,30 @@ mwifiex_wmm_setup_ac_downgrade(struct mwifiex_private *priv)
 		/* WMM is not enabled, default priorities */
 		for (ac_val = WMM_AC_BK; ac_val <= WMM_AC_VO; ac_val++)
 			priv->wmm.ac_down_graded_vals[ac_val] =
+<<<<<<< HEAD
+<<<<<<< HEAD
+						(enum mwifiex_wmm_ac_e) ac_val;
+=======
 				(enum mwifiex_wmm_ac_e) ac_val;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				(enum mwifiex_wmm_ac_e) ac_val;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		for (ac_val = WMM_AC_BK; ac_val <= WMM_AC_VO; ac_val++) {
 			priv->wmm.ac_down_graded_vals[ac_val]
 				= mwifiex_wmm_eval_downgrade_ac(priv,
 						(enum mwifiex_wmm_ac_e) ac_val);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_dbg(priv->adapter->dev,
+				"info: WMM: AC PRIO %d maps to %d\n",
+=======
 			dev_dbg(priv->adapter->dev, "info: WMM: AC PRIO %d maps to %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			dev_dbg(priv->adapter->dev, "info: WMM: AC PRIO %d maps to %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ac_val, priv->wmm.ac_down_graded_vals[ac_val]);
 		}
 	}
@@ -394,6 +467,18 @@ mwifiex_wmm_init(struct mwifiex_adapter *adapter)
 		}
 
 		priv->aggr_prio_tbl[6].amsdu
+<<<<<<< HEAD
+<<<<<<< HEAD
+					= priv->aggr_prio_tbl[6].ampdu_ap
+					= priv->aggr_prio_tbl[6].ampdu_user
+					= BA_STREAM_NOT_ALLOWED;
+
+		priv->aggr_prio_tbl[7].amsdu = priv->aggr_prio_tbl[7].ampdu_ap
+					= priv->aggr_prio_tbl[7].ampdu_user
+					= BA_STREAM_NOT_ALLOWED;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			= priv->aggr_prio_tbl[6].ampdu_ap
 			= priv->aggr_prio_tbl[6].ampdu_user
 			= BA_STREAM_NOT_ALLOWED;
@@ -401,13 +486,25 @@ mwifiex_wmm_init(struct mwifiex_adapter *adapter)
 		priv->aggr_prio_tbl[7].amsdu = priv->aggr_prio_tbl[7].ampdu_ap
 			= priv->aggr_prio_tbl[7].ampdu_user
 			= BA_STREAM_NOT_ALLOWED;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		priv->add_ba_param.timeout = MWIFIEX_DEFAULT_BLOCK_ACK_TIMEOUT;
 		priv->add_ba_param.tx_win_size = MWIFIEX_AMPDU_DEF_TXWINSIZE;
 		priv->add_ba_param.rx_win_size = MWIFIEX_AMPDU_DEF_RXWINSIZE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		mwifiex_reset_11n_rx_seq_num(priv);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		mwifiex_reset_11n_rx_seq_num(priv);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		atomic_set(&priv->wmm.tx_pkts_queued, 0);
 		atomic_set(&priv->wmm.highest_queued_prio, HIGH_PRIO_TID);
 	}
@@ -474,7 +571,15 @@ static void mwifiex_wmm_cleanup_queues(struct mwifiex_private *priv)
 
 	for (i = 0; i < MAX_NUM_TID; i++)
 		mwifiex_wmm_del_pkts_in_ralist(priv, &priv->wmm.tid_tbl_ptr[i].
+<<<<<<< HEAD
+<<<<<<< HEAD
+								       ra_list);
+=======
 						     ra_list);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						     ra_list);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	atomic_set(&priv->wmm.tx_pkts_queued, 0);
 	atomic_set(&priv->wmm.highest_queued_prio, HIGH_PRIO_TID);
@@ -490,9 +595,22 @@ static void mwifiex_wmm_delete_all_ralist(struct mwifiex_private *priv)
 
 	for (i = 0; i < MAX_NUM_TID; ++i) {
 		dev_dbg(priv->adapter->dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"info: ra_list: freeing buf for tid %d\n", i);
+		list_for_each_entry_safe(ra_list, tmp_node,
+					 &priv->wmm.tid_tbl_ptr[i].ra_list,
+					 list) {
+=======
 				"info: ra_list: freeing buf for tid %d\n", i);
 		list_for_each_entry_safe(ra_list, tmp_node,
 				&priv->wmm.tid_tbl_ptr[i].ra_list, list) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				"info: ra_list: freeing buf for tid %d\n", i);
+		list_for_each_entry_safe(ra_list, tmp_node,
+				&priv->wmm.tid_tbl_ptr[i].ra_list, list) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_del(&ra_list->list);
 			kfree(ra_list);
 		}
@@ -601,11 +719,24 @@ mwifiex_is_ralist_valid(struct mwifiex_private *priv,
  * is queued at the list tail.
  */
 void
+<<<<<<< HEAD
+<<<<<<< HEAD
+mwifiex_wmm_add_buf_txqueue(struct mwifiex_private *priv,
+			    struct sk_buff *skb)
+{
+	struct mwifiex_adapter *adapter = priv->adapter;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 mwifiex_wmm_add_buf_txqueue(struct mwifiex_adapter *adapter,
 			    struct sk_buff *skb)
 {
 	struct mwifiex_txinfo *tx_info = MWIFIEX_SKB_TXCB(skb);
 	struct mwifiex_private *priv = adapter->priv[tx_info->bss_index];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 tid;
 	struct mwifiex_ra_list_tbl *ra_list;
 	u8 ra[ETH_ALEN], tid_down;
@@ -635,6 +766,14 @@ mwifiex_wmm_add_buf_txqueue(struct mwifiex_adapter *adapter,
 			ra_list = NULL;
 	} else {
 		memcpy(ra, skb->data, ETH_ALEN);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (ra[0] & 0x01)
+			memset(ra, 0xff, ETH_ALEN);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ra_list = mwifiex_wmm_get_queue_raptr(priv, tid_down, ra);
 	}
 
@@ -653,7 +792,15 @@ mwifiex_wmm_add_buf_txqueue(struct mwifiex_adapter *adapter,
 	if (atomic_read(&priv->wmm.highest_queued_prio) <
 						tos_to_tid_inv[tid_down])
 		atomic_set(&priv->wmm.highest_queued_prio,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			   tos_to_tid_inv[tid_down]);
+=======
 						tos_to_tid_inv[tid_down]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						tos_to_tid_inv[tid_down]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&priv->wmm.ra_list_spinlock, flags);
 }
@@ -682,7 +829,15 @@ int mwifiex_ret_wmm_get_status(struct mwifiex_private *priv,
 	struct mwifiex_wmm_ac_status *ac_status;
 
 	dev_dbg(priv->adapter->dev, "info: WMM: WMM_GET_STATUS cmdresp received: %d\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		resp_len);
+=======
 			resp_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			resp_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while ((resp_len >= sizeof(tlv_hdr->header)) && valid) {
 		tlv_hdr = (struct mwifiex_ie_types_data *) curr;
@@ -696,15 +851,35 @@ int mwifiex_ret_wmm_get_status(struct mwifiex_private *priv,
 			dev_dbg(priv->adapter->dev,
 				"info: CMD_RESP: WMM_GET_STATUS:"
 				" QSTATUS TLV: %d, %d, %d\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				tlv_wmm_qstatus->queue_index,
+				tlv_wmm_qstatus->flow_required,
+				tlv_wmm_qstatus->disabled);
+=======
 			       tlv_wmm_qstatus->queue_index,
 			       tlv_wmm_qstatus->flow_required,
 			       tlv_wmm_qstatus->disabled);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			       tlv_wmm_qstatus->queue_index,
+			       tlv_wmm_qstatus->flow_required,
+			       tlv_wmm_qstatus->disabled);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			ac_status = &priv->wmm.ac_status[tlv_wmm_qstatus->
 							 queue_index];
 			ac_status->disabled = tlv_wmm_qstatus->disabled;
 			ac_status->flow_required =
+<<<<<<< HEAD
+<<<<<<< HEAD
+						tlv_wmm_qstatus->flow_required;
+=======
 				tlv_wmm_qstatus->flow_required;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				tlv_wmm_qstatus->flow_required;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ac_status->flow_created = tlv_wmm_qstatus->flow_created;
 			break;
 
@@ -773,6 +948,19 @@ mwifiex_wmm_process_association_req(struct mwifiex_private *priv,
 	if (!wmm_ie)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(priv->adapter->dev,
+		"info: WMM: process assoc req: bss->wmm_ie=%#x\n",
+		wmm_ie->vend_hdr.element_id);
+
+	if ((priv->wmm_required ||
+	     (ht_cap && (priv->adapter->config_bands & BAND_GN ||
+	     priv->adapter->config_bands & BAND_AN))) &&
+	    wmm_ie->vend_hdr.element_id == WLAN_EID_VENDOR_SPECIFIC) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_dbg(priv->adapter->dev, "info: WMM: process assoc req:"
 			"bss->wmmIe=0x%x\n",
 			wmm_ie->vend_hdr.element_id);
@@ -782,10 +970,28 @@ mwifiex_wmm_process_association_req(struct mwifiex_private *priv,
 		     || priv->adapter->config_bands & BAND_AN))
 	    )
 	    && wmm_ie->vend_hdr.element_id == WLAN_EID_VENDOR_SPECIFIC) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wmm_tlv = (struct mwifiex_ie_types_wmm_param_set *) *assoc_buf;
 		wmm_tlv->header.type = cpu_to_le16((u16) wmm_info_ie[0]);
 		wmm_tlv->header.len = cpu_to_le16((u16) wmm_info_ie[1]);
 		memcpy(wmm_tlv->wmm_ie, &wmm_info_ie[2],
+<<<<<<< HEAD
+<<<<<<< HEAD
+		       le16_to_cpu(wmm_tlv->header.len));
+		if (wmm_ie->qos_info_bitmap & IEEE80211_WMM_IE_AP_QOSINFO_UAPSD)
+			memcpy((u8 *) (wmm_tlv->wmm_ie
+				       + le16_to_cpu(wmm_tlv->header.len)
+				       - sizeof(priv->wmm_qosinfo)),
+			       &priv->wmm_qosinfo, sizeof(priv->wmm_qosinfo));
+
+		ret_len = sizeof(wmm_tlv->header)
+			  + le16_to_cpu(wmm_tlv->header.len);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			le16_to_cpu(wmm_tlv->header.len));
 		if (wmm_ie->qos_info_bitmap & IEEE80211_WMM_IE_AP_QOSINFO_UAPSD)
 			memcpy((u8 *) (wmm_tlv->wmm_ie
@@ -796,6 +1002,10 @@ mwifiex_wmm_process_association_req(struct mwifiex_private *priv,
 
 		ret_len = sizeof(wmm_tlv->header)
 			+ le16_to_cpu(wmm_tlv->header.len);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		*assoc_buf += ret_len;
 	}
@@ -814,7 +1024,15 @@ mwifiex_wmm_process_association_req(struct mwifiex_private *priv,
  */
 u8
 mwifiex_wmm_compute_drv_pkt_delay(struct mwifiex_private *priv,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  const struct sk_buff *skb)
+=======
 					const struct sk_buff *skb)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					const struct sk_buff *skb)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 ret_val;
 	struct timeval out_tstamp, in_tstamp;
@@ -851,17 +1069,38 @@ mwifiex_wmm_get_highest_priolist_ptr(struct mwifiex_adapter *adapter,
 	struct mwifiex_ra_list_tbl *ptr, *head;
 	struct mwifiex_bss_prio_node *bssprio_node, *bssprio_head;
 	struct mwifiex_tid_tbl *tid_ptr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	atomic_t *hqp;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int is_list_empty;
 	unsigned long flags;
 	int i, j;
 
 	for (j = adapter->priv_num - 1; j >= 0; --j) {
 		spin_lock_irqsave(&adapter->bss_prio_tbl[j].bss_prio_lock,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  flags);
+		is_list_empty = list_empty(&adapter->bss_prio_tbl[j]
+					   .bss_prio_head);
+		spin_unlock_irqrestore(&adapter->bss_prio_tbl[j].bss_prio_lock,
+				       flags);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				flags);
 		is_list_empty = list_empty(&adapter->bss_prio_tbl[j]
 				.bss_prio_head);
 		spin_unlock_irqrestore(&adapter->bss_prio_tbl[j].bss_prio_lock,
 				flags);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (is_list_empty)
 			continue;
 
@@ -880,12 +1119,23 @@ mwifiex_wmm_get_highest_priolist_ptr(struct mwifiex_adapter *adapter,
 		}
 
 		do {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			priv_tmp = bssprio_node->priv;
+			hqp = &priv_tmp->wmm.highest_queued_prio;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			atomic_t *hqp;
 			spinlock_t *lock;
 
 			priv_tmp = bssprio_node->priv;
 			hqp = &priv_tmp->wmm.highest_queued_prio;
 			lock = &priv_tmp->wmm.ra_list_spinlock;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			for (i = atomic_read(hqp); i >= LOW_PRIO_TID; --i) {
 
@@ -924,6 +1174,15 @@ mwifiex_wmm_get_highest_priolist_ptr(struct mwifiex_adapter *adapter,
 				do {
 					is_list_empty =
 						skb_queue_empty(&ptr->skb_head);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+					if (!is_list_empty)
+						goto found;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					if (!is_list_empty) {
 						spin_lock_irqsave(lock, flags);
 						if (atomic_read(hqp) > i)
@@ -934,6 +1193,10 @@ mwifiex_wmm_get_highest_priolist_ptr(struct mwifiex_adapter *adapter,
 						*tid = tos_to_tid[i];
 						return ptr;
 					}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					/* Get next ra */
 					ptr = list_first_entry(&ptr->list,
 						 struct mwifiex_ra_list_tbl,
@@ -970,6 +1233,31 @@ mwifiex_wmm_get_highest_priolist_ptr(struct mwifiex_adapter *adapter,
 		} while (bssprio_node != bssprio_head);
 	}
 	return NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+found:
+	spin_lock_irqsave(&priv_tmp->wmm.ra_list_spinlock, flags);
+	if (atomic_read(hqp) > i)
+		atomic_set(hqp, i);
+	spin_unlock_irqrestore(&priv_tmp->wmm.ra_list_spinlock, flags);
+
+	*priv = priv_tmp;
+	*tid = tos_to_tid[i];
+
+	return ptr;
+}
+
+/*
+ * This function checks if 11n aggregation is possible.
+ */
+static int
+mwifiex_is_11n_aggragation_possible(struct mwifiex_private *priv,
+				    struct mwifiex_ra_list_tbl *ptr,
+				    int max_buf_size)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -979,12 +1267,28 @@ mwifiex_wmm_get_highest_priolist_ptr(struct mwifiex_adapter *adapter,
 static int
 mwifiex_num_pkts_in_txq(struct mwifiex_private *priv,
 			struct mwifiex_ra_list_tbl *ptr, int max_buf_size)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int count = 0, total_size = 0;
 	struct sk_buff *skb, *tmp;
 
 	skb_queue_walk_safe(&ptr->skb_head, skb, tmp) {
 		total_size += skb->len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (total_size >= max_buf_size)
+			break;
+		if (++count >= MIN_NUM_AMSDU)
+			return true;
+	}
+
+	return false;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (total_size < max_buf_size)
 			++count;
 		else
@@ -992,6 +1296,10 @@ mwifiex_num_pkts_in_txq(struct mwifiex_private *priv,
 	}
 
 	return count;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1125,8 +1433,18 @@ mwifiex_send_processed_packet(struct mwifiex_private *priv,
 	tx_param.next_pkt_len =
 		((skb_next) ? skb_next->len +
 		 sizeof(struct txpd) : 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = adapter->if_ops.host_to_card(adapter, MWIFIEX_TYPE_DATA, skb,
+					   &tx_param);
+=======
 	ret = adapter->if_ops.host_to_card(adapter, MWIFIEX_TYPE_DATA,
 					   skb->data, skb->len, &tx_param);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = adapter->if_ops.host_to_card(adapter, MWIFIEX_TYPE_DATA,
+					   skb->data, skb->len, &tx_param);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (ret) {
 	case -EBUSY:
 		dev_dbg(adapter->dev, "data: -EBUSY is returned\n");
@@ -1209,16 +1527,48 @@ mwifiex_dequeue_tx_packet(struct mwifiex_adapter *adapter)
 		return 0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!ptr->is_11n_enabled ||
+	    mwifiex_is_ba_stream_setup(priv, ptr, tid) ||
+	    ((priv->sec_info.wpa_enabled ||
+	      priv->sec_info.wpa2_enabled) &&
+	     !priv->wpa_is_gtk_set)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ptr->is_11n_enabled || mwifiex_is_ba_stream_setup(priv, ptr, tid)
 	    || ((priv->sec_info.wpa_enabled
 		  || priv->sec_info.wpa2_enabled) && !priv->wpa_is_gtk_set)
 		) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mwifiex_send_single_packet(priv, ptr, ptr_index, flags);
 		/* ra_list_spinlock has been freed in
 		   mwifiex_send_single_packet() */
 	} else {
 		if (mwifiex_is_ampdu_allowed(priv, tid)) {
 			if (mwifiex_space_avail_for_new_ba_stream(adapter)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				mwifiex_create_ba_tbl(priv, ptr->ra, tid,
+						      BA_SETUP_INPROGRESS);
+				mwifiex_send_addba(priv, tid, ptr->ra);
+			} else if (mwifiex_find_stream_to_delete
+				   (priv, tid, &tid_del, ra)) {
+				mwifiex_create_ba_tbl(priv, ptr->ra, tid,
+						      BA_SETUP_INPROGRESS);
+				mwifiex_send_delba(priv, tid_del, ra, 1);
+			}
+		}
+		if (mwifiex_is_amsdu_allowed(priv, tid) &&
+		    mwifiex_is_11n_aggragation_possible(priv, ptr,
+							adapter->tx_buf_size))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				mwifiex_11n_create_tx_ba_stream_tbl(priv,
 						ptr->ra, tid,
 						BA_STREAM_SETUP_INPROGRESS);
@@ -1236,6 +1586,10 @@ mwifiex_dequeue_tx_packet(struct mwifiex_adapter *adapter)
 		if (mwifiex_is_amsdu_allowed(priv, tid) &&
 		    (mwifiex_num_pkts_in_txq(priv, ptr, adapter->tx_buf_size) >=
 		     MIN_NUM_AMSDU))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mwifiex_11n_aggregate_pkt(priv, ptr, INTF_HEADER_LEN,
 						  ptr_index, flags);
 			/* ra_list_spinlock has been freed in

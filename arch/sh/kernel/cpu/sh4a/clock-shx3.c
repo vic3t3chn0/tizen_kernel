@@ -35,8 +35,12 @@ static unsigned long pll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops pll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops pll_clk_ops = {
+=======
 static struct clk_ops pll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= pll_recalc,
 };
 
@@ -106,9 +110,12 @@ static struct clk mstp_clks[MSTP_NR] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define CLKDEV_CON_ID(_id, _clk) { .con_id = _id, .clk = _clk }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk_lookup lookups[] = {
 	/* main clocks */
 	CLKDEV_CON_ID("extal", &extal_clk),
@@ -124,11 +131,16 @@ static struct clk_lookup lookups[] = {
 
 	/* MSTP32 clocks */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_ICK_ID("sci_fck", "sh-sci.3", &mstp_clks[MSTP027]),
 	CLKDEV_ICK_ID("sci_fck", "sh-sci.2", &mstp_clks[MSTP026]),
 	CLKDEV_ICK_ID("sci_fck", "sh-sci.1", &mstp_clks[MSTP025]),
 	CLKDEV_ICK_ID("sci_fck", "sh-sci.0", &mstp_clks[MSTP024]),
 
+<<<<<<< HEAD
+=======
 =======
 	{
 		/* SCIF3 */
@@ -152,11 +164,15 @@ static struct clk_lookup lookups[] = {
 		.clk		= &mstp_clks[MSTP024],
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_ID("h8ex_fck", &mstp_clks[MSTP003]),
 	CLKDEV_CON_ID("csm_fck", &mstp_clks[MSTP002]),
 	CLKDEV_CON_ID("fe1_fck", &mstp_clks[MSTP001]),
 	CLKDEV_CON_ID("fe0_fck", &mstp_clks[MSTP000]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	CLKDEV_ICK_ID("tmu_fck", "sh_tmu.0", &mstp_clks[MSTP008]),
 	CLKDEV_ICK_ID("tmu_fck", "sh_tmu.1", &mstp_clks[MSTP008]),
@@ -165,6 +181,8 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_ICK_ID("tmu_fck", "sh_tmu.4", &mstp_clks[MSTP009]),
 	CLKDEV_ICK_ID("tmu_fck", "sh_tmu.5", &mstp_clks[MSTP009]),
 
+<<<<<<< HEAD
+=======
 =======
 	{
 		/* TMU0 */
@@ -198,6 +216,7 @@ static struct clk_lookup lookups[] = {
 		.clk		= &mstp_clks[MSTP009],
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_ID("hudi_fck", &mstp_clks[MSTP119]),
 	CLKDEV_CON_ID("dmac_11_6_fck", &mstp_clks[MSTP105]),
 	CLKDEV_CON_ID("dmac_5_0_fck", &mstp_clks[MSTP104]),

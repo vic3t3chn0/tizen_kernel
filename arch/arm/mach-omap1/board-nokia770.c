@@ -10,8 +10,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/mutex.h>
@@ -27,35 +31,49 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/hardware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/mux.h>
 #include <plat/usb.h>
 #include <plat/board.h>
 #include <plat/keypad.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/common.h>
 #include <plat/hwa742.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/lcd_mipid.h>
 #include <plat/mmc.h>
 #include <plat/clock.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 
 #include "common.h"
 
 #define ADS7846_PENDOWN_GPIO	15
+<<<<<<< HEAD
+=======
 =======
 #define ADS7846_PENDOWN_GPIO	15
 
@@ -74,6 +92,7 @@ static void __init omap_nokia770_init_irq(void)
 	omap_init_irq();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const unsigned int nokia770_keymap[] = {
 	KEY(1, 0, GROUP_0 | KEY_UP),
@@ -137,6 +156,9 @@ static struct mipid_platform_data nokia770_mipid_platform_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_lcd_config nokia770_lcd_config __initdata = {
 	.ctrl_name	= "hwa742",
 };
@@ -147,6 +169,8 @@ static void __init mipid_dev_init(void)
 	nokia770_mipid_platform_data.data_lines = 16;
 
 	omapfb_set_lcd_config(&nokia770_lcd_config);
+<<<<<<< HEAD
+=======
 =======
 static void __init mipid_dev_init(void)
 {
@@ -158,6 +182,7 @@ static void __init mipid_dev_init(void)
 		nokia770_mipid_platform_data.data_lines = conf->data_lines;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init ads7846_dev_init(void)
@@ -197,12 +222,20 @@ static struct spi_board_info nokia770_spi_board_info[] __initdata = {
 		.max_speed_hz   = 2500000,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq		= OMAP_GPIO_IRQ(15),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data	= &nokia770_ads7846_platform_data,
 	},
 };
 
+<<<<<<< HEAD
+static void __init hwa742_dev_init(void)
+{
+	clk_add_alias("hwa_sys_ck", NULL, "bclk", NULL);
+=======
 <<<<<<< HEAD
 static void __init hwa742_dev_init(void)
 {
@@ -217,6 +250,7 @@ static void __init hwa742_dev_init(void)
 	clk_add_alias("hwa_sys_ck", NULL, "bclk", NULL);
 	omapfb_set_ctrl_platform_data(&nokia770_hwa742_platform_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* assume no Mini-AB port */
@@ -290,6 +324,9 @@ static inline void nokia770_mmc_init(void)
 static void __init omap_nokia770_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* On Nokia 770, the SleepX signal is masked with an
 	 * MPUIO line by default.  It has to be unmasked for it
 	 * to become functional */
@@ -301,9 +338,12 @@ static void __init omap_nokia770_init(void)
 
 	platform_add_devices(nokia770_devices, ARRAY_SIZE(nokia770_devices));
 	nokia770_spi_board_info[1].irq = gpio_to_irq(15);
+<<<<<<< HEAD
+=======
 =======
 	platform_add_devices(nokia770_devices, ARRAY_SIZE(nokia770_devices));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_register_board_info(nokia770_spi_board_info,
 				ARRAY_SIZE(nokia770_spi_board_info));
 	omap_serial_init();
@@ -316,6 +356,9 @@ static void __init omap_nokia770_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_START(NOKIA770, "Nokia 770")
 	.atag_offset	= 0x100,
 	.map_io		= omap16xx_map_io,
@@ -325,6 +368,8 @@ MACHINE_START(NOKIA770, "Nokia 770")
 	.init_machine	= omap_nokia770_init,
 	.timer		= &omap1_timer,
 	.restart	= omap1_restart,
+<<<<<<< HEAD
+=======
 =======
 static void __init omap_nokia770_map_io(void)
 {
@@ -339,4 +384,5 @@ MACHINE_START(NOKIA770, "Nokia 770")
 	.init_machine	= omap_nokia770_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

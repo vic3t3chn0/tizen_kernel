@@ -11,8 +11,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * HP-PARISC specific bit operations
@@ -230,6 +234,9 @@ static __inline__ int fls(int x)
 <<<<<<< HEAD
 #include <asm-generic/bitops/ext2-atomic-setbit.h>
 =======
+<<<<<<< HEAD
+#include <asm-generic/bitops/ext2-atomic-setbit.h>
+=======
 
 /* '3' is bits per byte */
 #define LE_BYTE_ADDR ((sizeof(unsigned long) - 1) << 3)
@@ -239,6 +246,7 @@ static __inline__ int fls(int x)
 #define ext2_clear_bit_atomic(l,nr,addr) \
 		test_and_clear_bit( (nr) ^ LE_BYTE_ADDR, (unsigned long *)addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif	/* __KERNEL__ */
 

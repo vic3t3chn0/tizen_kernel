@@ -39,8 +39,12 @@ struct sysfs_dirent sysfs_root = {
 <<<<<<< HEAD
 	.s_mode		= S_IFDIR | S_IRUGO | S_IXUGO,
 =======
+<<<<<<< HEAD
+	.s_mode		= S_IFDIR | S_IRUGO | S_IXUGO,
+=======
 	.s_mode		= S_IFDIR | S_IRWXU | S_IRUGO | S_IXUGO,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.s_ino		= 1,
 };
 
@@ -70,11 +74,17 @@ static int sysfs_fill_super(struct super_block *sb, void *data, int silent)
 	if (!root) {
 		pr_debug("%s: could not get root dentry!\n",__func__);
 =======
+<<<<<<< HEAD
+	root = d_make_root(inode);
+	if (!root) {
+		pr_debug("%s: could not get root dentry!\n",__func__);
+=======
 	root = d_alloc_root(inode);
 	if (!root) {
 		pr_debug("%s: could not get root dentry!\n",__func__);
 		iput(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 	root->d_fsdata = &sysfs_root;

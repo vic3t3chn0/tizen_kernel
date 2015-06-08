@@ -618,7 +618,15 @@ static u32 sierra_net_get_link(struct net_device *net)
 	return sierra_net_get_private(dev)->link_up && netif_running(net);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct ethtool_ops sierra_net_ethtool_ops = {
+=======
 static struct ethtool_ops sierra_net_ethtool_ops = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct ethtool_ops sierra_net_ethtool_ops = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_drvinfo = sierra_net_get_drvinfo,
 	.get_link = sierra_net_get_link,
 	.get_msglevel = usbnet_get_msglevel,
@@ -678,7 +686,15 @@ static int sierra_net_get_fw_attr(struct usbnet *dev, u16 *datap)
 		return -EIO;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	*datap = *attrdata;
+=======
 	*datap = le16_to_cpu(*attrdata);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	*datap = le16_to_cpu(*attrdata);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kfree(attrdata);
 	return result;
@@ -900,6 +916,15 @@ struct sk_buff *sierra_net_tx_fixup(struct usbnet *dev, struct sk_buff *skb,
 	u16 len;
 	bool need_tail;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	BUILD_BUG_ON(FIELD_SIZEOF(struct usbnet, data)
+				< sizeof(struct cdc_state));
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_dbg(&dev->udev->dev, "%s", __func__);
 	if (priv->link_up && check_ethip_packet(skb, dev) && is_ip(skb)) {
 		/* enough head room as is? */
@@ -943,7 +968,15 @@ struct sk_buff *sierra_net_tx_fixup(struct usbnet *dev, struct sk_buff *skb,
 }
 
 static const u8 sierra_net_ifnum_list[] = { 7, 10, 11 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct sierra_net_info_data sierra_net_info_data_68A3 = {
+=======
 static const struct sierra_net_info_data sierra_net_info_data_direct_ip = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct sierra_net_info_data sierra_net_info_data_direct_ip = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rx_urb_size = 8 * 1024,
 	.whitelist = {
 		.infolen = ARRAY_SIZE(sierra_net_ifnum_list),
@@ -951,7 +984,15 @@ static const struct sierra_net_info_data sierra_net_info_data_direct_ip = {
 	}
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct driver_info sierra_net_info_68A3 = {
+=======
 static const struct driver_info sierra_net_info_direct_ip = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct driver_info sierra_net_info_direct_ip = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.description = "Sierra Wireless USB-to-WWAN Modem",
 	.flags = FLAG_WWAN | FLAG_SEND_ZLP,
 	.bind = sierra_net_bind,
@@ -959,11 +1000,25 @@ static const struct driver_info sierra_net_info_direct_ip = {
 	.status = sierra_net_status,
 	.rx_fixup = sierra_net_rx_fixup,
 	.tx_fixup = sierra_net_tx_fixup,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.data = (unsigned long)&sierra_net_info_data_68A3,
+=======
 	.data = (unsigned long)&sierra_net_info_data_direct_ip,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.data = (unsigned long)&sierra_net_info_data_direct_ip,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct usb_device_id products[] = {
 	{USB_DEVICE(0x1199, 0x68A3), /* Sierra Wireless USB-to-WWAN modem */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.driver_info = (unsigned long) &sierra_net_info_68A3},
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver_info = (unsigned long) &sierra_net_info_direct_ip},
 	{USB_DEVICE(0x0F3D, 0x68A3), /* AT&T Direct IP modem */
 	.driver_info = (unsigned long) &sierra_net_info_direct_ip},
@@ -971,6 +1026,10 @@ static const struct usb_device_id products[] = {
 	.driver_info = (unsigned long) &sierra_net_info_direct_ip},
 	{USB_DEVICE(0x0F3D, 0x68AA), /* AT&T Direct IP LTE modem */
 	.driver_info = (unsigned long) &sierra_net_info_direct_ip},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	{}, /* last item */
 };
@@ -987,6 +1046,12 @@ static struct usb_driver sierra_net_driver = {
 	.no_dynamic_id = 1,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sierra_net_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sierra_net_init(void)
 {
 	BUILD_BUG_ON(FIELD_SIZEOF(struct usbnet, data)
@@ -1002,6 +1067,10 @@ static void __exit sierra_net_exit(void)
 
 module_exit(sierra_net_exit);
 module_init(sierra_net_init);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

@@ -47,6 +47,13 @@
 #include <linux/usb.h>
 #include <linux/usb/serial.h>
 #include <linux/uaccess.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "usb-wwan.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Version Information
@@ -143,10 +150,22 @@ static struct usb_driver usb_ipw_driver = {
 	.probe =	usb_serial_probe,
 	.disconnect =	usb_serial_disconnect,
 	.id_table =	usb_ipw_ids,
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+
+static bool debug;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.no_dynamic_id = 	1,
 };
 
 static int debug;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int ipw_open(struct tty_struct *tty, struct usb_serial_port *port)
 {
@@ -185,7 +204,15 @@ static int ipw_open(struct tty_struct *tty, struct usb_serial_port *port)
 
 	/*--2: Start reading from the device */
 	dbg("%s: setting up bulk read callback", __func__);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_wwan_open(tty, port);
+=======
 	usb_serial_generic_open(tty, port);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	usb_serial_generic_open(tty, port);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*--3: Tell the modem to open the floodgates on the rx bulk channel */
 	dbg("%s:asking modem for RxRead (RXBULK_ON)", __func__);
@@ -219,6 +246,35 @@ static int ipw_open(struct tty_struct *tty, struct usb_serial_port *port)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* fake probe - only to allocate data structures */
+static int ipw_probe(struct usb_serial *serial, const struct usb_device_id *id)
+{
+	struct usb_wwan_intf_private *data;
+
+	data = kzalloc(sizeof(struct usb_wwan_intf_private), GFP_KERNEL);
+	if (!data)
+		return -ENOMEM;
+
+	spin_lock_init(&data->susp_lock);
+	usb_set_serial_data(serial, data);
+	return 0;
+}
+
+static void ipw_release(struct usb_serial *serial)
+{
+	struct usb_wwan_intf_private *data = usb_get_serial_data(serial);
+
+	usb_wwan_release(serial);
+	usb_set_serial_data(serial, NULL);
+	kfree(data);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ipw_dtr_rts(struct usb_serial_port *port, int on)
 {
 	struct usb_device *dev = port->serial->dev;
@@ -285,7 +341,15 @@ static void ipw_close(struct usb_serial_port *port)
 		dev_err(&port->dev,
 			"Disabling bulk RxRead failed (error = %d)\n", result);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_wwan_close(port);
+=======
 	usb_serial_generic_close(port);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	usb_serial_generic_close(port);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct usb_serial_driver ipw_device = {
@@ -294,6 +358,28 @@ static struct usb_serial_driver ipw_device = {
 		.name =		"ipw",
 	},
 	.description =		"IPWireless converter",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.id_table =		usb_ipw_ids,
+	.num_ports =		1,
+	.disconnect =		usb_wwan_disconnect,
+	.open =			ipw_open,
+	.close =		ipw_close,
+	.probe =		ipw_probe,
+	.attach =		usb_wwan_startup,
+	.release =		ipw_release,
+	.dtr_rts =		ipw_dtr_rts,
+	.write =		usb_wwan_write,
+};
+
+static struct usb_serial_driver * const serial_drivers[] = {
+	&ipw_device, NULL
+};
+
+module_usb_serial_driver(usb_ipw_driver, serial_drivers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.usb_driver =		&usb_ipw_driver,
 	.id_table =		usb_ipw_ids,
 	.num_ports =		1,
@@ -329,6 +415,10 @@ static void __exit usb_ipw_exit(void)
 
 module_init(usb_ipw_init);
 module_exit(usb_ipw_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR(DRIVER_AUTHOR);

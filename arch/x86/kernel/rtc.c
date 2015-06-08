@@ -8,7 +8,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pnp.h>
 #include <linux/of.h>
 
@@ -18,7 +22,11 @@
 <<<<<<< HEAD
 #include <asm/mrst.h>
 =======
+<<<<<<< HEAD
+#include <asm/mrst.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_X86_32
 /*
@@ -51,15 +59,21 @@ int mach_set_rtc_mmss(unsigned long nowtime)
 	int real_seconds, real_minutes, cmos_minutes;
 	unsigned char save_control, save_freq_select;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	int retval = 0;
 
 	spin_lock_irqsave(&rtc_lock, flags);
 
+<<<<<<< HEAD
+=======
 =======
 	int retval = 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 /* tell the clock it's being set */
 	save_control = CMOS_READ(RTC_CONTROL);
 	CMOS_WRITE((save_control|RTC_SET), RTC_CONTROL);
@@ -113,7 +127,12 @@ int mach_set_rtc_mmss(unsigned long nowtime)
 	spin_unlock_irqrestore(&rtc_lock, flags);
 
 =======
+<<<<<<< HEAD
+	spin_unlock_irqrestore(&rtc_lock, flags);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -125,7 +144,13 @@ unsigned long mach_get_cmos_time(void)
 
 	spin_lock_irqsave(&rtc_lock, flags);
 =======
+<<<<<<< HEAD
+	unsigned long flags;
+
+	spin_lock_irqsave(&rtc_lock, flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If UIP is clear, then we have >= 244 microseconds before
@@ -156,7 +181,12 @@ unsigned long mach_get_cmos_time(void)
 	spin_unlock_irqrestore(&rtc_lock, flags);
 
 =======
+<<<<<<< HEAD
+	spin_unlock_irqrestore(&rtc_lock, flags);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (RTC_ALWAYS_BCD || !(status & RTC_DM_BINARY)) {
 		sec = bcd2bin(sec);
 		min = bcd2bin(min);
@@ -204,6 +234,9 @@ int update_persistent_clock(struct timespec now)
 <<<<<<< HEAD
 	return x86_platform.set_wallclock(now.tv_sec);
 =======
+<<<<<<< HEAD
+	return x86_platform.set_wallclock(now.tv_sec);
+=======
 	unsigned long flags;
 	int retval;
 
@@ -213,11 +246,17 @@ int update_persistent_clock(struct timespec now)
 
 	return retval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* not static: needed by APM */
 void read_persistent_clock(struct timespec *ts)
 {
+<<<<<<< HEAD
+	unsigned long retval;
+
+	retval = x86_platform.get_wallclock();
+=======
 <<<<<<< HEAD
 	unsigned long retval;
 
@@ -229,6 +268,7 @@ void read_persistent_clock(struct timespec *ts)
 	retval = x86_platform.get_wallclock();
 	spin_unlock_irqrestore(&rtc_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ts->tv_sec = retval;
 	ts->tv_nsec = 0;
@@ -283,12 +323,18 @@ static __init int add_rtc_cmos(void)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Intel MID platforms don't have ioport rtc */
 	if (mrst_identify_cpu())
 		return -ENODEV;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(&rtc_device);
 	dev_info(&rtc_device.dev,
 		 "registered platform RTC device (no PNP device found)\n");

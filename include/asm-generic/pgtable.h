@@ -8,7 +8,11 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __HAVE_ARCH_PTEP_SET_ACCESS_FLAGS
 extern int ptep_set_access_flags(struct vm_area_struct *vma,
@@ -451,6 +455,8 @@ static inline int pmd_write(pmd_t pmd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef pmd_read_atomic
 static inline pmd_t pmd_read_atomic(pmd_t *pmdp)
 {
@@ -464,6 +470,7 @@ static inline pmd_t pmd_read_atomic(pmd_t *pmdp)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This function is meant to be used by sites walking pagetables with
  * the mmap_sem hold in read mode to protect against MADV_DONTNEED and
@@ -478,11 +485,16 @@ static inline pmd_t pmd_read_atomic(pmd_t *pmdp)
  * can return none anyway). The compiler level barrier() is critically
  * important to compute the two checks atomically on the same pmdval.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline int pmd_none_or_trans_huge_or_clear_bad(pmd_t *pmd)
 {
 	/* depend on compiler for an atomic pmd read */
 	pmd_t pmdval = *pmd;
+<<<<<<< HEAD
+=======
 =======
  *
  * For 32bit kernels with a 64bit large pmd_t this automatically takes
@@ -496,6 +508,7 @@ static inline int pmd_none_or_trans_huge_or_clear_bad(pmd_t *pmd)
 {
 	pmd_t pmdval = pmd_read_atomic(pmd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The barrier will stabilize the pmdval in a register or on
 	 * the stack so that it will stop changing under the code.

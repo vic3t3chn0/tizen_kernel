@@ -189,14 +189,28 @@ int dasd_alias_make_device_known_to_lcu(struct dasd_device *device)
 	unsigned long flags;
 	struct alias_server *server, *newserver;
 	struct alias_lcu *lcu, *newlcu;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int is_lcu_known;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int is_lcu_known;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dasd_uid uid;
 
 	private = (struct dasd_eckd_private *) device->private;
 
 	device->discipline->get_uid(device, &uid);
 	spin_lock_irqsave(&aliastree.lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	is_lcu_known = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	is_lcu_known = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	server = _find_server(&uid);
 	if (!server) {
 		spin_unlock_irqrestore(&aliastree.lock, flags);
@@ -208,7 +222,14 @@ int dasd_alias_make_device_known_to_lcu(struct dasd_device *device)
 		if (!server) {
 			list_add(&newserver->server, &aliastree.serverlist);
 			server = newserver;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			is_lcu_known = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			is_lcu_known = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/* someone was faster */
 			_free_server(newserver);
@@ -226,12 +247,26 @@ int dasd_alias_make_device_known_to_lcu(struct dasd_device *device)
 		if (!lcu) {
 			list_add(&newlcu->lcu, &server->lculist);
 			lcu = newlcu;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			is_lcu_known = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			is_lcu_known = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/* someone was faster */
 			_free_lcu(newlcu);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		is_lcu_known = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		is_lcu_known = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_lock(&lcu->lock);
 	list_add(&device->alias_list, &lcu->inactive_devices);
@@ -239,6 +274,12 @@ int dasd_alias_make_device_known_to_lcu(struct dasd_device *device)
 	spin_unlock(&lcu->lock);
 	spin_unlock_irqrestore(&aliastree.lock, flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return is_lcu_known;
 }
 
@@ -297,6 +338,10 @@ void dasd_alias_wait_for_lcu_setup(struct dasd_device *device)
 		return;
 	}
 	wait_for_completion(&lcu->lcu_setup);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -705,6 +750,22 @@ struct dasd_device *dasd_alias_get_start_dev(struct dasd_device *base_device)
 	if (lcu->pav == NO_PAV ||
 	    lcu->flags & (NEED_UAC_UPDATE | UPDATE_PENDING))
 		return NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (unlikely(!(private->features.feature[8] & 0x01))) {
+		/*
+		 * PAV enabled but prefix not, very unlikely
+		 * seems to be a lost pathgroup
+		 * use base device to do IO
+		 */
+		DBF_DEV_EVENT(DBF_ERR, base_device, "%s",
+			      "Prefix not enabled with PAV enabled\n");
+		return NULL;
+	}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&lcu->lock, flags);
 	alias_device = group->next;

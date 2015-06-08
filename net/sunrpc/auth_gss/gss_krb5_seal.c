@@ -162,8 +162,12 @@ gss_get_mic_v1(struct krb5_ctx *ctx, struct xdr_buf *text,
 <<<<<<< HEAD
 static u32
 =======
+<<<<<<< HEAD
+static u32
+=======
 u32
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 gss_get_mic_v2(struct krb5_ctx *ctx, struct xdr_buf *text,
 		struct xdr_netobj *token)
 {

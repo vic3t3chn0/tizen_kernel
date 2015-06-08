@@ -39,6 +39,14 @@ static struct mfd_cell max8998_devs[] = {
 		.name = "max8998-pmic",
 	}, {
 		.name = "max8998-rtc",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	}, {
+		.name = "max8998-battery",
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -174,6 +182,14 @@ static int max8998_i2c_probe(struct i2c_client *i2c,
 	if (ret < 0)
 		goto err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	device_init_wakeup(max8998->dev, max8998->wakeup);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 
 err:
@@ -208,7 +224,15 @@ static int max8998_suspend(struct device *dev)
 	struct i2c_client *i2c = container_of(dev, struct i2c_client, dev);
 	struct max8998_dev *max8998 = i2c_get_clientdata(i2c);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (device_may_wakeup(dev))
+=======
 	if (max8998->wakeup)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (max8998->wakeup)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		irq_set_irq_wake(max8998->irq, 1);
 	return 0;
 }
@@ -218,7 +242,15 @@ static int max8998_resume(struct device *dev)
 	struct i2c_client *i2c = container_of(dev, struct i2c_client, dev);
 	struct max8998_dev *max8998 = i2c_get_clientdata(i2c);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (device_may_wakeup(dev))
+=======
 	if (max8998->wakeup)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (max8998->wakeup)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		irq_set_irq_wake(max8998->irq, 0);
 	/*
 	 * In LP3974, if IRQ registers are not "read & clear"

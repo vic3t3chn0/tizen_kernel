@@ -28,12 +28,19 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/soc.h>
 #include <sound/soc-dapm.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/tlv.h>
 #include <asm/mach-types.h>
 #include <mach/iomux-mx27.h>
@@ -59,6 +66,8 @@ static const int mx27vis_amp_pins[] = {
 	MX27VIS_PIN_SDL | GPIO_GPIO | GPIO_OUT,
 	MX27VIS_PIN_SDR | GPIO_GPIO | GPIO_OUT,
 };
+<<<<<<< HEAD
+=======
 =======
 #include <asm/mach-types.h>
 #include <mach/audmux.h>
@@ -66,6 +75,7 @@ static const int mx27vis_amp_pins[] = {
 #include "../codecs/tlv320aic32x4.h"
 #include "imx-ssi.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int mx27vis_aic32x4_hw_params(struct snd_pcm_substream *substream,
 			    struct snd_pcm_hw_params *params)
@@ -107,6 +117,9 @@ static struct snd_soc_ops mx27vis_aic32x4_snd_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mx27vis_amp_set(struct snd_kcontrol *kcontrol,
 			    struct snd_ctl_elem_value *ucontrol)
 {
@@ -177,8 +190,11 @@ static const struct snd_soc_dapm_route aic32x4_dapm_routes[] = {
 	{"IN3_L", NULL, "Mic Bias"},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_link mx27vis_aic32x4_dai = {
 	.name		= "tlv320aic32x4",
 	.stream_name	= "TLV320AIC32X4",
@@ -192,6 +208,9 @@ static struct snd_soc_dai_link mx27vis_aic32x4_dai = {
 static struct snd_soc_card mx27vis_aic32x4 = {
 	.name		= "visstrim_m10-audio",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner		= THIS_MODULE,
 	.dai_link	= &mx27vis_aic32x4_dai,
 	.num_links	= 1,
@@ -253,6 +272,8 @@ static struct platform_driver mx27vis_aic32x4_audio_driver = {
 };
 
 module_platform_driver(mx27vis_aic32x4_audio_driver);
+<<<<<<< HEAD
+=======
 =======
 	.dai_link	= &mx27vis_aic32x4_dai,
 	.num_links	= 1,
@@ -300,6 +321,7 @@ static void __exit mx27vis_aic32x4_exit(void)
 module_init(mx27vis_aic32x4_init);
 module_exit(mx27vis_aic32x4_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Javier Martin <javier.martin@vista-silicon.com>");
 MODULE_DESCRIPTION("ALSA SoC AIC32X4 mx27 visstrim");
@@ -307,4 +329,8 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:mx27vis");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:mx27vis");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -19,9 +19,18 @@
 #include <linux/string.h>
 #include <linux/mfd/mcp.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <mach/dma.h>
 #include <asm/system.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <mach/dma.h>
+#include <asm/system.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define to_mcp(d)		container_of(d, struct mcp, attached_device)
 #define to_mcp_driver(d)	container_of(d, struct mcp_driver, drv)
@@ -48,6 +57,11 @@ static int mcp_bus_remove(struct device *dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mcp_bus_suspend(struct device *dev, pm_message_t state)
 {
 	struct mcp *mcp = to_mcp(dev);
@@ -74,13 +88,25 @@ static int mcp_bus_resume(struct device *dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct bus_type mcp_bus_type = {
 	.name		= "mcp",
 	.match		= mcp_bus_match,
 	.probe		= mcp_bus_probe,
 	.remove		= mcp_bus_remove,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.suspend	= mcp_bus_suspend,
 	.resume		= mcp_bus_resume,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.suspend	= mcp_bus_suspend,
+	.resume		= mcp_bus_resume,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -93,9 +119,23 @@ static struct bus_type mcp_bus_type = {
  */
 void mcp_set_telecom_divisor(struct mcp *mcp, unsigned int div)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long flags;
+
+	spin_lock_irqsave(&mcp->lock, flags);
+	mcp->ops->set_telecom_divisor(mcp, div);
+	spin_unlock_irqrestore(&mcp->lock, flags);
+=======
 	spin_lock_irq(&mcp->lock);
 	mcp->ops->set_telecom_divisor(mcp, div);
 	spin_unlock_irq(&mcp->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irq(&mcp->lock);
+	mcp->ops->set_telecom_divisor(mcp, div);
+	spin_unlock_irq(&mcp->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(mcp_set_telecom_divisor);
 
@@ -108,9 +148,23 @@ EXPORT_SYMBOL(mcp_set_telecom_divisor);
  */
 void mcp_set_audio_divisor(struct mcp *mcp, unsigned int div)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long flags;
+
+	spin_lock_irqsave(&mcp->lock, flags);
+	mcp->ops->set_audio_divisor(mcp, div);
+	spin_unlock_irqrestore(&mcp->lock, flags);
+=======
 	spin_lock_irq(&mcp->lock);
 	mcp->ops->set_audio_divisor(mcp, div);
 	spin_unlock_irq(&mcp->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irq(&mcp->lock);
+	mcp->ops->set_audio_divisor(mcp, div);
+	spin_unlock_irq(&mcp->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(mcp_set_audio_divisor);
 
@@ -163,10 +217,24 @@ EXPORT_SYMBOL(mcp_reg_read);
  */
 void mcp_enable(struct mcp *mcp)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long flags;
+	spin_lock_irqsave(&mcp->lock, flags);
+	if (mcp->use_count++ == 0)
+		mcp->ops->enable(mcp);
+	spin_unlock_irqrestore(&mcp->lock, flags);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irq(&mcp->lock);
 	if (mcp->use_count++ == 0)
 		mcp->ops->enable(mcp);
 	spin_unlock_irq(&mcp->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(mcp_enable);
 
@@ -203,6 +271,13 @@ struct mcp *mcp_host_alloc(struct device *parent, size_t size)
 	mcp = kzalloc(sizeof(struct mcp) + size, GFP_KERNEL);
 	if (mcp) {
 		spin_lock_init(&mcp->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		device_initialize(&mcp->attached_device);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mcp->attached_device.parent = parent;
 		mcp->attached_device.bus = &mcp_bus_type;
 		mcp->attached_device.dma_mask = parent->dma_mask;
@@ -212,6 +287,30 @@ struct mcp *mcp_host_alloc(struct device *parent, size_t size)
 }
 EXPORT_SYMBOL(mcp_host_alloc);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int mcp_host_add(struct mcp *mcp, void *pdata)
+{
+	mcp->attached_device.platform_data = pdata;
+	dev_set_name(&mcp->attached_device, "mcp0");
+	return device_add(&mcp->attached_device);
+}
+EXPORT_SYMBOL(mcp_host_add);
+
+void mcp_host_del(struct mcp *mcp)
+{
+	device_del(&mcp->attached_device);
+}
+EXPORT_SYMBOL(mcp_host_del);
+
+void mcp_host_free(struct mcp *mcp)
+{
+	put_device(&mcp->attached_device);
+}
+EXPORT_SYMBOL(mcp_host_free);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mcp_host_register(struct mcp *mcp)
 {
 	dev_set_name(&mcp->attached_device, "mcp0");
@@ -224,6 +323,10 @@ void mcp_host_unregister(struct mcp *mcp)
 	device_unregister(&mcp->attached_device);
 }
 EXPORT_SYMBOL(mcp_host_unregister);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int mcp_driver_register(struct mcp_driver *mcpdrv)
 {

@@ -41,7 +41,14 @@
 #endif /* CONFIG_P54_SPI_DEFAULT_EEPROM */
 
 MODULE_FIRMWARE("3826.arm");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 MODULE_ALIAS("stlc45xx");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_ALIAS("stlc45xx");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * gpios should be handled in board files and provided via platform data,
@@ -582,11 +589,21 @@ static void p54spi_op_stop(struct ieee80211_hw *dev)
 	struct p54s_priv *priv = dev->priv;
 	unsigned long flags;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&priv->mutex);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mutex_lock_interruptible(&priv->mutex)) {
 		/* FIXME: how to handle this error? */
 		return;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(priv->fw_state != FW_STATE_READY);
 
 	p54spi_power_off(priv);
@@ -711,7 +728,14 @@ static int __devexit p54spi_remove(struct spi_device *spi)
 static struct spi_driver p54spi_driver = {
 	.driver = {
 		.name		= "p54spi",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		.bus		= &spi_bus_type,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.bus		= &spi_bus_type,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner		= THIS_MODULE,
 	},
 
@@ -745,3 +769,10 @@ MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Christian Lamparter <chunkeey@web.de>");
 MODULE_ALIAS("spi:cx3110x");
 MODULE_ALIAS("spi:p54spi");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_ALIAS("spi:stlc45xx");
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

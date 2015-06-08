@@ -15,12 +15,18 @@
 #include "os.h"
 #include "um_malloc.h"
 =======
+<<<<<<< HEAD
+#include "kern_util.h"
+#include "os.h"
+#include "um_malloc.h"
+=======
 #include "kern_constants.h"
 #include "kern_util.h"
 #include "os.h"
 #include "um_malloc.h"
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct helper_data {
 	void (*pre_exec)(void*);
@@ -37,8 +43,12 @@ static int helper_child(void *arg)
 <<<<<<< HEAD
 	int err, ret;
 =======
+<<<<<<< HEAD
+	int err, ret;
+=======
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (data->pre_exec != NULL)
 		(*data->pre_exec)(data->pre_data);
@@ -48,8 +58,12 @@ static int helper_child(void *arg)
 <<<<<<< HEAD
 	CATCH_EINTR(ret = write(data->fd, &err, sizeof(err)));
 =======
+<<<<<<< HEAD
+	CATCH_EINTR(ret = write(data->fd, &err, sizeof(err)));
+=======
 	write(data->fd, &err, sizeof(err));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

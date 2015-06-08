@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 #include <linux/mount.h>	/* mnt_want_write_file(), mnt_drop_write_file() */
 =======
+<<<<<<< HEAD
+#include <linux/mount.h>	/* mnt_want_write_file(), mnt_drop_write_file() */
+=======
 #include <linux/mount.h>	/* mnt_want_write(), mnt_drop_write() */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/buffer_head.h>
 #include <linux/nilfs2_fs.h>
 #include "nilfs.h"
@@ -126,8 +130,12 @@ static int nilfs_ioctl_setflags(struct inode *inode, struct file *filp,
 <<<<<<< HEAD
 	ret = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+	ret = mnt_want_write_file(filp);
+=======
 	ret = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -165,8 +173,12 @@ out:
 <<<<<<< HEAD
 	mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(filp);
+=======
 	mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -189,8 +201,12 @@ static int nilfs_ioctl_change_cpmode(struct inode *inode, struct file *filp,
 <<<<<<< HEAD
 	ret = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+	ret = mnt_want_write_file(filp);
+=======
 	ret = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -201,8 +217,12 @@ static int nilfs_ioctl_change_cpmode(struct inode *inode, struct file *filp,
 <<<<<<< HEAD
 	down_read(&inode->i_sb->s_umount);
 =======
+<<<<<<< HEAD
+	down_read(&inode->i_sb->s_umount);
+=======
 	mutex_lock(&nilfs->ns_snapshot_mount_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nilfs_transaction_begin(inode->i_sb, &ti, 0);
 	ret = nilfs_cpfile_change_cpmode(
@@ -217,10 +237,16 @@ static int nilfs_ioctl_change_cpmode(struct inode *inode, struct file *filp,
 out:
 	mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+	up_read(&inode->i_sb->s_umount);
+out:
+	mnt_drop_write_file(filp);
+=======
 	mutex_unlock(&nilfs->ns_snapshot_mount_mutex);
 out:
 	mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -239,8 +265,12 @@ nilfs_ioctl_delete_checkpoint(struct inode *inode, struct file *filp,
 <<<<<<< HEAD
 	ret = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+	ret = mnt_want_write_file(filp);
+=======
 	ret = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -258,8 +288,12 @@ out:
 <<<<<<< HEAD
 	mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(filp);
+=======
 	mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -628,8 +662,12 @@ static int nilfs_ioctl_clean_segments(struct inode *inode, struct file *filp,
 <<<<<<< HEAD
 	ret = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+	ret = mnt_want_write_file(filp);
+=======
 	ret = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -645,7 +683,12 @@ static int nilfs_ioctl_clean_segments(struct inode *inode, struct file *filp,
 	if (nsegs > UINT_MAX / sizeof(__u64))
 		goto out;
 =======
+<<<<<<< HEAD
+	if (nsegs > UINT_MAX / sizeof(__u64))
+		goto out;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * argv[4] points to segment numbers this ioctl cleans.  We
@@ -673,7 +716,13 @@ static int nilfs_ioctl_clean_segments(struct inode *inode, struct file *filp,
 			goto out_free;
 
 =======
+<<<<<<< HEAD
+		if (argv[n].v_nmembs >= UINT_MAX / argv[n].v_size)
+			goto out_free;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		len = argv[n].v_size * argv[n].v_nmembs;
 		base = (void __user *)(unsigned long)argv[n].v_base;
 		if (len == 0) {
@@ -714,12 +763,17 @@ static int nilfs_ioctl_clean_segments(struct inode *inode, struct file *filp,
 	else
 		ret = nilfs_clean_segments(inode->i_sb, argv, kbufs);
 =======
+<<<<<<< HEAD
+	else
+		ret = nilfs_clean_segments(inode->i_sb, argv, kbufs);
+=======
 	else {
 		if (nilfs_sb_need_update(nilfs))
 			set_nilfs_discontinued(nilfs);
 		ret = nilfs_clean_segments(inode->i_sb, argv, kbufs);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nilfs_remove_all_gcinodes(nilfs);
 	clear_nilfs_gc_running(nilfs);
@@ -732,8 +786,12 @@ out:
 <<<<<<< HEAD
 	mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(filp);
+=======
 	mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -771,8 +829,12 @@ static int nilfs_ioctl_resize(struct inode *inode, struct file *filp,
 <<<<<<< HEAD
 	ret = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+	ret = mnt_want_write_file(filp);
+=======
 	ret = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto out;
 
@@ -786,8 +848,12 @@ out_drop_write:
 <<<<<<< HEAD
 	mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(filp);
+=======
 	mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return ret;
 }

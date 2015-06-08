@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/sections.h>
 #include <asm/setup.h>
@@ -32,7 +36,11 @@
 <<<<<<< HEAD
 #include <asm/memblock.h>
 =======
+<<<<<<< HEAD
+#include <asm/memblock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/map.h>
 
 #include "mm.h"
@@ -254,8 +262,11 @@ void __init uc32_memblock_init(struct meminfo *mi)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < mi->nr_banks; i++)
 		memblock_add(mi->bank[i].start, mi->bank[i].size);
 
@@ -277,8 +288,12 @@ void __init uc32_memblock_init(struct meminfo *mi)
 <<<<<<< HEAD
 	memblock_allow_resize();
 =======
+<<<<<<< HEAD
+	memblock_allow_resize();
+=======
 	memblock_analyze();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memblock_dump_all();
 }
 

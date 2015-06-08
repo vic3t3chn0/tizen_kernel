@@ -75,8 +75,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/errno.h>
 #include <linux/fs.h>
@@ -1163,7 +1166,11 @@ magic_found:
 <<<<<<< HEAD
 	sb->s_max_links = UFS_LINK_MAX;
 =======
+<<<<<<< HEAD
+	sb->s_max_links = UFS_LINK_MAX;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inode = ufs_iget(sb, UFS_ROOTINO);
 	if (IS_ERR(inode)) {
@@ -1171,16 +1178,22 @@ magic_found:
 		goto failed;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sb->s_root = d_make_root(inode);
 	if (!sb->s_root) {
 		ret = -ENOMEM;
 		goto failed;
+<<<<<<< HEAD
+=======
 =======
 	sb->s_root = d_alloc_root(inode);
 	if (!sb->s_root) {
 		ret = -ENOMEM;
 		goto dalloc_failed;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ufs_setup_cstotal(sb);
@@ -1196,9 +1209,12 @@ magic_found:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 dalloc_failed:
 	iput(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 failed:
 	if (ubh)
 		ubh_brelse_uspi (uspi);
@@ -1373,10 +1389,16 @@ static int ufs_show_options(struct seq_file *seq, struct dentry *root)
 {
 	struct ufs_sb_info *sbi = UFS_SB(root->d_sb);
 =======
+<<<<<<< HEAD
+static int ufs_show_options(struct seq_file *seq, struct dentry *root)
+{
+	struct ufs_sb_info *sbi = UFS_SB(root->d_sb);
+=======
 static int ufs_show_options(struct seq_file *seq, struct vfsmount *vfs)
 {
 	struct ufs_sb_info *sbi = UFS_SB(vfs->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned mval = sbi->s_mount_opt & UFS_MOUNT_UFSTYPE;
 	const struct match_token *tp = tokens;
 
@@ -1450,8 +1472,11 @@ static void ufs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(ufs_inode_cachep, UFS_I(inode));
 }
 

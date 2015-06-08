@@ -19,7 +19,12 @@
 #include <linux/i2c/pca953x.h>
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/i2c/pca953x.h>
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
@@ -28,6 +33,9 @@
 #include <mach/mfp-pxa910.h>
 #include <mach/pxa910.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 
 #include "common.h"
@@ -43,12 +51,15 @@
  * 24 board interrupts -- 88PM860x PMIC
  */
 #define TTCDKB_NR_IRQS		(MMP_NR_IRQS + 16 + 16 + 24)
+<<<<<<< HEAD
+=======
 =======
 
 #include "common.h"
 
 #define TTCDKB_NR_IRQS		(IRQ_BOARD_START + 24)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static unsigned long ttc_dkb_pin_config[] __initdata = {
 	/* UART2 */
@@ -107,8 +118,12 @@ static struct mtd_partition ttc_dkb_onenand_partitions[] = {
 <<<<<<< HEAD
 		.size		= SZ_32M + SZ_16M,
 =======
+<<<<<<< HEAD
+		.size		= SZ_32M + SZ_16M,
+=======
 		.size		= SZ_48M,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mask_flags	= 0,
 	}
 };
@@ -138,6 +153,9 @@ static struct platform_device ttc_dkb_device_onenand = {
 
 static struct platform_device *ttc_dkb_devices[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&pxa910_device_gpio,
 	&pxa910_device_rtc,
 	&ttc_dkb_device_onenand,
@@ -159,11 +177,14 @@ static struct i2c_board_info ttc_dkb_i2c_info[] = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 	&ttc_dkb_device_onenand,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init ttc_dkb_init(void)
 {
 	mfp_config(ARRAY_AND_SIZE(ttc_dkb_pin_config));
@@ -175,7 +196,11 @@ static void __init ttc_dkb_init(void)
 <<<<<<< HEAD
 	pxa910_add_twsi(0, NULL, ARRAY_AND_SIZE(ttc_dkb_i2c_info));
 =======
+<<<<<<< HEAD
+	pxa910_add_twsi(0, NULL, ARRAY_AND_SIZE(ttc_dkb_i2c_info));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_add_devices(ARRAY_AND_SIZE(ttc_dkb_devices));
 }
 
@@ -188,5 +213,9 @@ MACHINE_START(TTC_DKB, "PXA910-based TTC_DKB Development Platform")
 <<<<<<< HEAD
 	.restart	= mmp_restart,
 =======
+<<<<<<< HEAD
+	.restart	= mmp_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

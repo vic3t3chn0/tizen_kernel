@@ -5,7 +5,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,11 +77,24 @@ acpi_ev_queue_notify_request(struct acpi_namespace_node *node,
  */
 acpi_status acpi_ev_init_global_lock_handler(void);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ACPI_HW_DEPENDENT_RETURN_OK(acpi_status
+			    acpi_ev_acquire_global_lock(u16 timeout))
+ ACPI_HW_DEPENDENT_RETURN_OK(acpi_status acpi_ev_release_global_lock(void))
+ acpi_status acpi_ev_remove_global_lock_handler(void);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 acpi_status acpi_ev_acquire_global_lock(u16 timeout);
 
 acpi_status acpi_ev_release_global_lock(void);
 
 acpi_status acpi_ev_remove_global_lock_handler(void);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * evgpe - Low-level GPE support
@@ -114,7 +135,17 @@ acpi_ev_initialize_gpe_block(struct acpi_gpe_xrupt_info *gpe_xrupt_info,
 			     struct acpi_gpe_block_info *gpe_block,
 			     void *context);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ACPI_HW_DEPENDENT_RETURN_OK(acpi_status
+			    acpi_ev_delete_gpe_block(struct acpi_gpe_block_info
+						     *gpe_block))
+=======
 acpi_status acpi_ev_delete_gpe_block(struct acpi_gpe_block_info *gpe_block);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+acpi_status acpi_ev_delete_gpe_block(struct acpi_gpe_block_info *gpe_block);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 u32
 acpi_ev_gpe_dispatch(struct acpi_namespace_node *gpe_device,
@@ -126,9 +157,22 @@ acpi_ev_gpe_dispatch(struct acpi_namespace_node *gpe_device,
  */
 acpi_status acpi_ev_gpe_initialize(void);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ACPI_HW_DEPENDENT_RETURN_VOID(void
+			      acpi_ev_update_gpes(acpi_owner_id table_owner_id))
+
+ acpi_status
+=======
 void acpi_ev_update_gpes(acpi_owner_id table_owner_id);
 
 acpi_status
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void acpi_ev_update_gpes(acpi_owner_id table_owner_id);
+
+acpi_status
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 acpi_ev_match_gpe_method(acpi_handle obj_handle,
 			 u32 level, void *context, void **return_value);
 
@@ -162,6 +206,13 @@ acpi_status acpi_ev_initialize_op_regions(void);
 
 acpi_status
 acpi_ev_address_space_dispatch(union acpi_operand_object *region_obj,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			       union acpi_operand_object *field_obj,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       u32 function,
 			       u32 region_offset, u32 bit_width, u64 *value);
 
@@ -236,6 +287,15 @@ acpi_status acpi_ev_remove_sci_handler(void);
 
 u32 acpi_ev_initialize_sCI(u32 program_sCI);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ACPI_HW_DEPENDENT_RETURN_VOID(void acpi_ev_terminate(void))
+=======
 void acpi_ev_terminate(void);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void acpi_ev_terminate(void);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif				/* __ACEVENTS_H__  */

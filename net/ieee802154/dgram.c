@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * IEEE 802.15.4 dgram socket interface
 =======
+<<<<<<< HEAD
+ * IEEE 802.15.4 dgram socket interface
+=======
  * ZigBee socket interface
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright 2007, 2008 Siemens AG
  *
@@ -216,7 +220,11 @@ static int dgram_sendmsg(struct kiocb *iocb, struct sock *sk,
 <<<<<<< HEAD
 	int hlen, tlen;
 =======
+<<<<<<< HEAD
+	int hlen, tlen;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	if (msg->msg_flags & MSG_OOB) {
@@ -242,8 +250,14 @@ static int dgram_sendmsg(struct kiocb *iocb, struct sock *sk,
 	tlen = dev->needed_tailroom;
 	skb = sock_alloc_send_skb(sk, hlen + tlen + size,
 =======
+<<<<<<< HEAD
+	hlen = LL_RESERVED_SPACE(dev);
+	tlen = dev->needed_tailroom;
+	skb = sock_alloc_send_skb(sk, hlen + tlen + size,
+=======
 	skb = sock_alloc_send_skb(sk, LL_ALLOCATED_SPACE(dev) + size,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			msg->msg_flags & MSG_DONTWAIT,
 			&err);
 	if (!skb)
@@ -252,8 +266,12 @@ static int dgram_sendmsg(struct kiocb *iocb, struct sock *sk,
 <<<<<<< HEAD
 	skb_reserve(skb, hlen);
 =======
+<<<<<<< HEAD
+	skb_reserve(skb, hlen);
+=======
 	skb_reserve(skb, LL_RESERVED_SPACE(dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb_reset_network_header(skb);
 

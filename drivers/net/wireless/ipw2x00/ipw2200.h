@@ -27,11 +27,24 @@
 #ifndef __ipw2200_h__
 #define __ipw2200_h__
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+#include <linux/moduleparam.h>
+#include <linux/init.h>
+#include <linux/interrupt.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WEXT_USECHANNELS 1
 
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 
 #include <linux/pci.h>
@@ -1998,6 +2011,11 @@ struct ipw_cmd_log {
 #define CFG_SYS_ANTENNA_B               0x03	/* force antenna B */
 #define CFG_SYS_ANTENNA_SLOW_DIV        0x02	/* consider background noise */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The definitions below were lifted off the ipw2100 driver, which only
  * supports 'b' mode, so I'm sure these are not exactly correct.
@@ -2010,6 +2028,10 @@ struct ipw_cmd_log {
 #define REG_CHANNEL_MASK            0x00003FFF
 #define IPW_IBSS_11B_DEFAULT_MASK   0x87ff
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IPW_MAX_CONFIG_RETRIES 10
 
 #endif				/* __ipw2200_h__ */

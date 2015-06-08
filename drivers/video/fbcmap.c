@@ -166,6 +166,15 @@ int fb_copy_cmap(const struct fb_cmap *from, struct fb_cmap *to)
 	int tooff = 0, fromoff = 0;
 	int size;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!to || !from)
+		return -EINVAL;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (to->start > from->start)
 		fromoff = to->start - from->start;
 	else
@@ -177,9 +186,24 @@ int fb_copy_cmap(const struct fb_cmap *from, struct fb_cmap *to)
 		return -EINVAL;
 	size *= sizeof(u16);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (from->red && to->red)
+		memcpy(to->red+tooff, from->red+fromoff, size);
+	if (from->green && to->green)
+		memcpy(to->green+tooff, from->green+fromoff, size);
+	if (from->blue && to->blue)
+		memcpy(to->blue+tooff, from->blue+fromoff, size);
+=======
 	memcpy(to->red+tooff, from->red+fromoff, size);
 	memcpy(to->green+tooff, from->green+fromoff, size);
 	memcpy(to->blue+tooff, from->blue+fromoff, size);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	memcpy(to->red+tooff, from->red+fromoff, size);
+	memcpy(to->green+tooff, from->green+fromoff, size);
+	memcpy(to->blue+tooff, from->blue+fromoff, size);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (from->transp && to->transp)
 		memcpy(to->transp+tooff, from->transp+fromoff, size);
 	return 0;
@@ -190,10 +214,42 @@ int fb_cmap_to_user(const struct fb_cmap *from, struct fb_cmap_user *to)
 	int tooff = 0, fromoff = 0;
 	int size;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!to || !from)
+		return -EINVAL;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (to->start > from->start)
 		fromoff = to->start - from->start;
 	else
 		tooff = from->start - to->start;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((to->len <= tooff) || (from->len <= fromoff))
+		return -EINVAL;
+
+	size = to->len - tooff;
+
+	if (size > (int) (from->len - fromoff))
+		size = from->len - fromoff;
+	size *= sizeof(u16);
+
+	if (from->red && to->red)
+		if (copy_to_user(to->red+tooff, from->red+fromoff, size))
+			return -EFAULT;
+	if (from->green && to->green)
+		if (copy_to_user(to->green+tooff, from->green+fromoff, size))
+			return -EFAULT;
+	if (from->blue && to->blue)
+		if (copy_to_user(to->blue+tooff, from->blue+fromoff, size))
+			return -EFAULT;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size = to->len - tooff;
 	if (size > (int) (from->len - fromoff))
 		size = from->len - fromoff;
@@ -207,6 +263,10 @@ int fb_cmap_to_user(const struct fb_cmap *from, struct fb_cmap_user *to)
 		return -EFAULT;
 	if (copy_to_user(to->blue+tooff, from->blue+fromoff, size))
 		return -EFAULT;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (from->transp && to->transp)
 		if (copy_to_user(to->transp+tooff, from->transp+fromoff, size))
 			return -EFAULT;

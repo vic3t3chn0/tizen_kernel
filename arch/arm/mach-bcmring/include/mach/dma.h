@@ -31,6 +31,11 @@
 #include <csp/dmacHw.h>
 #include <mach/timer.h>
 =======
+<<<<<<< HEAD
+#include <linux/semaphore.h>
+#include <csp/dmacHw.h>
+#include <mach/timer.h>
+=======
 #include <linux/wait.h>
 #include <linux/semaphore.h>
 #include <csp/dmacHw.h>
@@ -41,6 +46,7 @@
 #include <linux/vmalloc.h>
 #include <linux/pagemap.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ---- Constants and Types ---------------------------------------------- */
 
@@ -121,6 +127,8 @@ typedef struct {
 *
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 *   The DMA_MemType_t and DMA_MemMap_t are helper structures used to setup
 *   DMA chains from a variety of memory sources.
 *
@@ -194,6 +202,7 @@ typedef struct {
 /****************************************************************************
 *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 *   The DMA_DeviceAttribute_t contains information which describes a
 *   particular DMA device (or peripheral).
 *
@@ -581,6 +590,8 @@ int dma_alloc_double_dst_descriptors(DMA_Handle_t handle,	/* DMA Handle */
 /**
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 *   Initializes a DMA_MemMap_t data structure
 */
 /****************************************************************************/
@@ -700,6 +711,7 @@ int dma_unmap(DMA_MemMap_t *memMap,	/* Stores state information about the map */
 /****************************************************************************/
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 *   Initiates a transfer when the descriptors have already been setup.
 *
 *   This is a special case, and normally, the dma_transfer_xxx functions should

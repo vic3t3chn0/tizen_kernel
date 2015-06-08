@@ -28,7 +28,12 @@
 #include <linux/regulator/machine.h>
 #include <linux/regulator/fixed.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/machine.h>
+#include <linux/regulator/fixed.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/irq.h>
 #include <asm/mach-types.h>
@@ -44,7 +49,11 @@
 <<<<<<< HEAD
 #include <mach/hardware.h>
 =======
+<<<<<<< HEAD
+#include <mach/hardware.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/iomux-mx3.h>
 
 #include "devices-imx31.h"
@@ -175,13 +184,19 @@ static struct platform_device kzm_smsc9118_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply dummy_supplies[] = {
 	REGULATOR_SUPPLY("vdd33a", "smsc911x"),
 	REGULATOR_SUPPLY("vddvario", "smsc911x"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init kzm_init_smsc9118(void)
 {
 	/*
@@ -195,7 +210,12 @@ static int __init kzm_init_smsc9118(void)
 	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
 
 =======
+<<<<<<< HEAD
+	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return platform_device_register(&kzm_smsc9118_device);
 }
 #else
@@ -249,7 +269,12 @@ static void __init kzm_board_init(void)
 	imx31_soc_init();
 
 =======
+<<<<<<< HEAD
+	imx31_soc_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_iomux_setup_multiple_pins(kzm_pins,
 				      ARRAY_SIZE(kzm_pins), "kzm");
 	kzm_init_ext_uart();
@@ -297,6 +322,9 @@ static struct sys_timer kzm_timer = {
 
 MACHINE_START(KZM_ARM11_01, "Kyoto Microcomputer Co., Ltd. KZM-ARM11-01")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset = 0x100,
 	.map_io = kzm_map_io,
 	.init_early = imx31_init_early,
@@ -305,6 +333,8 @@ MACHINE_START(KZM_ARM11_01, "Kyoto Microcomputer Co., Ltd. KZM-ARM11-01")
 	.timer = &kzm_timer,
 	.init_machine = kzm_board_init,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params = MX3x_PHYS_OFFSET + 0x100,
 	.map_io = kzm_map_io,
@@ -313,4 +343,5 @@ MACHINE_START(KZM_ARM11_01, "Kyoto Microcomputer Co., Ltd. KZM-ARM11-01")
 	.timer = &kzm_timer,
 	.init_machine = kzm_board_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

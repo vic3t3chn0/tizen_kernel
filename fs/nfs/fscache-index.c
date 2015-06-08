@@ -215,8 +215,12 @@ static uint16_t nfs_fscache_inode_get_aux(const void *cookie_netfs_data,
 <<<<<<< HEAD
 		auxdata.change_attr = nfsi->vfs_inode.i_version;
 =======
+<<<<<<< HEAD
+		auxdata.change_attr = nfsi->vfs_inode.i_version;
+=======
 		auxdata.change_attr = nfsi->change_attr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (bufmax > sizeof(auxdata))
 		bufmax = sizeof(auxdata);
@@ -251,8 +255,12 @@ enum fscache_checkaux nfs_fscache_inode_check_aux(void *cookie_netfs_data,
 <<<<<<< HEAD
 		auxdata.change_attr = nfsi->vfs_inode.i_version;
 =======
+<<<<<<< HEAD
+		auxdata.change_attr = nfsi->vfs_inode.i_version;
+=======
 		auxdata.change_attr = nfsi->change_attr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (memcmp(data, &auxdata, datalen) != 0)
 		return FSCACHE_CHECKAUX_OBSOLETE;

@@ -44,6 +44,10 @@ static int bf5xx_ad1836_hw_params(struct snd_pcm_substream *substream,
 	unsigned int channel_map[] = {0, 4, 1, 5, 2, 6, 3, 7};
 	int ret = 0;
 =======
+<<<<<<< HEAD
+	unsigned int channel_map[] = {0, 4, 1, 5, 2, 6, 3, 7};
+	int ret = 0;
+=======
 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
 	unsigned int channel_map[] = {0, 4, 1, 5, 2, 6, 3, 7};
 	int ret = 0;
@@ -59,6 +63,7 @@ static int bf5xx_ad1836_hw_params(struct snd_pcm_substream *substream,
 	if (ret < 0)
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* set cpu DAI channel mapping */
 	ret = snd_soc_dai_set_channel_map(cpu_dai, ARRAY_SIZE(channel_map),
@@ -78,7 +83,13 @@ static struct snd_soc_ops bf5xx_ad1836_ops = {
 				SND_SOC_DAIFMT_CBM_CFM)
 
 =======
+<<<<<<< HEAD
+#define BF5XX_AD1836_DAIFMT (SND_SOC_DAIFMT_DSP_A | SND_SOC_DAIFMT_IB_IF | \
+				SND_SOC_DAIFMT_CBM_CFM)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_link bf5xx_ad1836_dai[] = {
 	{
 		.name = "ad1836",
@@ -91,7 +102,11 @@ static struct snd_soc_dai_link bf5xx_ad1836_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_AD1836_DAIFMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_AD1836_DAIFMT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.name = "ad1836",
@@ -104,7 +119,11 @@ static struct snd_soc_dai_link bf5xx_ad1836_dai[] = {
 <<<<<<< HEAD
 		.dai_fmt = BF5XX_AD1836_DAIFMT,
 =======
+<<<<<<< HEAD
+		.dai_fmt = BF5XX_AD1836_DAIFMT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -113,7 +132,11 @@ static struct snd_soc_card bf5xx_ad1836 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &bf5xx_ad1836_dai[CONFIG_SND_BF5XX_SPORT_NUM],
 	.num_links = 1,
 };

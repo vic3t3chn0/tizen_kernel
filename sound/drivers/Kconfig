@@ -54,8 +54,13 @@ config SND_PCSP
 	  sound driver, you can add this in a configuration file under
 	  /etc/modprobe.d/ directory:
 =======
+<<<<<<< HEAD
+	  sound driver, you can add this in a configuration file under
+	  /etc/modprobe.d/ directory:
+=======
 	  sound driver, you can add this into your /etc/modprobe.conf:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  options snd-pcsp index=2
 
 	  You don't need this driver if you only want your pc-speaker to beep.

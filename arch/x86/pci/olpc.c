@@ -210,7 +210,12 @@ static int pci_olpc_read(unsigned int seg, unsigned int bus,
 	WARN_ON(seg);
 
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Use the hardware mechanism for non-simulated devices */
 	if (!is_simulated(bus, devfn))
 		return pci_direct_conf1.read(seg, bus, devfn, reg, len, value);
@@ -273,7 +278,12 @@ static int pci_olpc_write(unsigned int seg, unsigned int bus,
 	WARN_ON(seg);
 
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Use the hardware mechanism for non-simulated devices */
 	if (!is_simulated(bus, devfn))
 		return pci_direct_conf1.write(seg, bus, devfn, reg, len, value);
@@ -310,8 +320,12 @@ static int pci_olpc_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 static const struct pci_raw_ops pci_olpc_conf = {
 =======
+<<<<<<< HEAD
+static const struct pci_raw_ops pci_olpc_conf = {
+=======
 static struct pci_raw_ops pci_olpc_conf = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read =	pci_olpc_read,
 	.write = pci_olpc_write,
 };

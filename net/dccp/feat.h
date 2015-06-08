@@ -132,7 +132,11 @@ extern u64  dccp_decode_value_var(const u8 *bf, const u8 len);
 <<<<<<< HEAD
 extern u64  dccp_feat_nn_get(struct sock *sk, u8 feat);
 =======
+<<<<<<< HEAD
+extern u64  dccp_feat_nn_get(struct sock *sk, u8 feat);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int  dccp_insert_option_mandatory(struct sk_buff *skb);
 extern int  dccp_insert_fn_opt(struct sk_buff *skb, u8 type, u8 feat,

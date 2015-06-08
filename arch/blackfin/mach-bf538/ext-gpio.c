@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright 2009-2011 Analog Devices Inc.
 =======
+<<<<<<< HEAD
+ * Copyright 2009-2011 Analog Devices Inc.
+=======
  * Copyright 2009 Analog Devices Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Licensed under the GPL-2 or later.
  */
@@ -126,6 +130,9 @@ static int __init bf538_extgpio_setup(void)
 }
 arch_initcall(bf538_extgpio_setup);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PM
 static struct {
@@ -161,5 +168,8 @@ void bfin_special_gpio_pm_hibernate_restore(void)
 	}
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

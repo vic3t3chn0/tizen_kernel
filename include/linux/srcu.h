@@ -31,7 +31,11 @@
 <<<<<<< HEAD
 #include <linux/rcupdate.h>
 =======
+<<<<<<< HEAD
+#include <linux/rcupdate.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct srcu_struct_array {
 	int c[2];
@@ -66,22 +70,28 @@ int __init_srcu_struct(struct srcu_struct *sp, const char *name,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # define srcu_read_acquire(sp) \
 		lock_acquire(&(sp)->dep_map, 0, 0, 2, 1, NULL, _THIS_IP_)
 # define srcu_read_release(sp) \
 		lock_release(&(sp)->dep_map, 1, _THIS_IP_)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else /* #ifdef CONFIG_DEBUG_LOCK_ALLOC */
 
 int init_srcu_struct(struct srcu_struct *sp);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # define srcu_read_acquire(sp)  do { } while (0)
 # define srcu_read_release(sp)  do { } while (0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* #else #ifdef CONFIG_DEBUG_LOCK_ALLOC */
 
 void cleanup_srcu_struct(struct srcu_struct *sp);
@@ -101,6 +111,9 @@ long srcu_batches_completed(struct srcu_struct *sp);
  * this assumes we are in an SRCU read-side critical section unless it can
  * prove otherwise.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Checks debug_lockdep_rcu_enabled() to prevent false positives during boot
  * and while lockdep is disabled.
@@ -130,6 +143,8 @@ static inline int srcu_read_lock_held(struct srcu_struct *sp)
 	if (!rcu_lockdep_current_cpu_online())
 		return 0;
 	return lock_is_held(&sp->dep_map);
+<<<<<<< HEAD
+=======
 =======
  */
 static inline int srcu_read_lock_held(struct srcu_struct *sp)
@@ -138,6 +153,7 @@ static inline int srcu_read_lock_held(struct srcu_struct *sp)
 		return lock_is_held(&sp->dep_map);
 	return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #else /* #ifdef CONFIG_DEBUG_LOCK_ALLOC */
@@ -188,13 +204,19 @@ static inline int srcu_read_lock_held(struct srcu_struct *sp)
  * a mutex that is held elsewhere while calling synchronize_srcu() or
  * synchronize_srcu_expedited().
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note that srcu_read_lock() and the matching srcu_read_unlock() must
  * occur in the same context, for example, it is illegal to invoke
  * srcu_read_unlock() in an irq handler if the matching srcu_read_lock()
  * was invoked in process context.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline int srcu_read_lock(struct srcu_struct *sp) __acquires(sp)
 {
@@ -205,8 +227,14 @@ static inline int srcu_read_lock(struct srcu_struct *sp) __acquires(sp)
 	rcu_lockdep_assert(!rcu_is_cpu_idle(),
 			   "srcu_read_lock() used illegally while idle");
 =======
+<<<<<<< HEAD
+	rcu_lock_acquire(&(sp)->dep_map);
+	rcu_lockdep_assert(!rcu_is_cpu_idle(),
+			   "srcu_read_lock() used illegally while idle");
+=======
 	srcu_read_acquire(sp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -221,6 +249,9 @@ static inline void srcu_read_unlock(struct srcu_struct *sp, int idx)
 	__releases(sp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_lockdep_assert(!rcu_is_cpu_idle(),
 			   "srcu_read_unlock() used illegally while idle");
 	rcu_lock_release(&(sp)->dep_map);
@@ -268,10 +299,13 @@ static inline void srcu_read_unlock_raw(struct srcu_struct *sp, int idx)
 	local_irq_save(flags);
 	__srcu_read_unlock(sp, idx);
 	local_irq_restore(flags);
+<<<<<<< HEAD
+=======
 =======
 	srcu_read_release(sp);
 	__srcu_read_unlock(sp, idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif

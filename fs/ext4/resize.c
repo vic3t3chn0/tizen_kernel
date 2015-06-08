@@ -17,6 +17,9 @@
 #include "ext4_jbd2.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ext4_resize_begin(struct super_block *sb)
 {
 	int ret = 0;
@@ -46,8 +49,11 @@ void ext4_resize_end(struct super_block *sb)
 	smp_mb__after_clear_bit();
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define outside(b, first, last)	((b) < (first) || (b) >= (last))
 #define inside(b, first, last)	((b) >= (first) && (b) < (last))
 
@@ -138,6 +144,9 @@ static int verify_group_input(struct super_block *sb,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ext4_new_flex_group_data is used by 64bit-resize interface to add a flex
  * group each time.
@@ -304,8 +313,11 @@ next_group:
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct buffer_head *bclean(handle_t *handle, struct super_block *sb,
 				  ext4_fsblk_t blk)
 {
@@ -323,11 +335,16 @@ static struct buffer_head *bclean(handle_t *handle, struct super_block *sb,
 		memset(bh->b_data, 0, sb->s_blocksize);
 		set_buffer_uptodate(bh);
 =======
+<<<<<<< HEAD
+		memset(bh->b_data, 0, sb->s_blocksize);
+		set_buffer_uptodate(bh);
+=======
 		lock_buffer(bh);
 		memset(bh->b_data, 0, sb->s_blocksize);
 		set_buffer_uptodate(bh);
 		unlock_buffer(bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return bh;
@@ -341,9 +358,13 @@ static struct buffer_head *bclean(handle_t *handle, struct super_block *sb,
 <<<<<<< HEAD
 static int extend_or_restart_transaction(handle_t *handle, int thresh)
 =======
+<<<<<<< HEAD
+static int extend_or_restart_transaction(handle_t *handle, int thresh)
+=======
 static int extend_or_restart_transaction(handle_t *handle, int thresh,
 					 struct buffer_head *bh)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 
@@ -355,6 +376,9 @@ static int extend_or_restart_transaction(handle_t *handle, int thresh,
 		return err;
 	if (err) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ext4_journal_restart(handle, EXT4_MAX_TRANS_DATA);
 		if (err)
 			return err;
@@ -417,12 +441,15 @@ static int set_flexbg_block_bitmap(struct super_block *sb, handle_t *handle,
 		if (unlikely(err))
 			return err;
 		brelse(bh);
+<<<<<<< HEAD
+=======
 =======
 		if ((err = ext4_journal_restart(handle, EXT4_MAX_TRANS_DATA)))
 			return err;
 		if ((err = ext4_journal_get_write_access(handle, bh)))
 			return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -432,13 +459,20 @@ static int set_flexbg_block_bitmap(struct super_block *sb, handle_t *handle,
 <<<<<<< HEAD
  * Set up the block and inode bitmaps, and the inode table for the new groups.
 =======
+<<<<<<< HEAD
+ * Set up the block and inode bitmaps, and the inode table for the new groups.
+=======
  * Set up the block and inode bitmaps, and the inode table for the new group.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This doesn't need to be part of the main transaction, since we are only
  * changing blocks outside the actual filesystem.  We still do journaling to
  * ensure the recovery is correct in case of a failure just after resize.
  * If any part of this fails, we simply abort the resize.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * setup_new_flex_group_blocks handles a flex group as follow:
  *  1. copy super block and GDT, and initialize group tables if necessary.
@@ -619,6 +653,8 @@ out:
 	brelse(bh);
 	err2 = ext4_journal_stop(handle);
 	if (err2 && !err)
+<<<<<<< HEAD
+=======
 =======
  */
 static int setup_new_group_blocks(struct super_block *sb,
@@ -749,6 +785,7 @@ exit_journal:
 	mutex_unlock(&sbi->s_resize_lock);
 	if ((err2 = ext4_journal_stop(handle)) && !err)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = err2;
 
 	return err;
@@ -797,16 +834,22 @@ static unsigned ext4_list_backups(struct super_block *sb, unsigned *three,
  */
 static int verify_reserved_gdb(struct super_block *sb,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       ext4_group_t end,
 			       struct buffer_head *primary)
 {
 	const ext4_fsblk_t blk = primary->b_blocknr;
+<<<<<<< HEAD
+=======
 =======
 			       struct buffer_head *primary)
 {
 	const ext4_fsblk_t blk = primary->b_blocknr;
 	const ext4_group_t end = EXT4_SB(sb)->s_groups_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned three = 1;
 	unsigned five = 5;
 	unsigned seven = 7;
@@ -847,6 +890,9 @@ static int verify_reserved_gdb(struct super_block *sb,
  */
 static int add_new_gdb(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       ext4_group_t group)
 {
 	struct super_block *sb = inode->i_sb;
@@ -856,6 +902,8 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 	struct buffer_head **o_group_desc, **n_group_desc;
 	struct buffer_head *dind;
 	struct buffer_head *gdb_bh;
+<<<<<<< HEAD
+=======
 =======
 		       struct ext4_new_group_data *input,
 		       struct buffer_head **primary)
@@ -867,6 +915,7 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 	struct buffer_head **o_group_desc, **n_group_desc;
 	struct buffer_head *dind;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int gdbackups;
 	struct ext4_iloc iloc;
 	__le32 *data;
@@ -890,12 +939,17 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gdb_bh = sb_bread(sb, gdblock);
 	if (!gdb_bh)
 		return -EIO;
 
 	gdbackups = verify_reserved_gdb(sb, group, gdb_bh);
 	if (gdbackups < 0) {
+<<<<<<< HEAD
+=======
 =======
 	*primary = sb_bread(sb, gdblock);
 	if (!*primary)
@@ -903,6 +957,7 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 
 	if ((gdbackups = verify_reserved_gdb(sb, *primary)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = gdbackups;
 		goto exit_bh;
 	}
@@ -920,8 +975,12 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
 			     group, gdblock);
 =======
+<<<<<<< HEAD
+			     group, gdblock);
+=======
 			     input->group, gdblock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -EINVAL;
 		goto exit_dind;
 	}
@@ -933,8 +992,12 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
 	err = ext4_journal_get_write_access(handle, gdb_bh);
 =======
+<<<<<<< HEAD
+	err = ext4_journal_get_write_access(handle, gdb_bh);
+=======
 	err = ext4_journal_get_write_access(handle, *primary);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(err))
 		goto exit_sbh;
 
@@ -948,6 +1011,9 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 		goto exit_dindj;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n_group_desc = ext4_kvmalloc((gdb_num + 1) *
 				     sizeof(struct buffer_head *),
 				     GFP_NOFS);
@@ -955,6 +1021,8 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 		err = -ENOMEM;
 		ext4_warning(sb, "not enough memory for %lu groups",
 			     gdb_num + 1);
+<<<<<<< HEAD
+=======
 =======
 	n_group_desc = kmalloc((gdb_num + 1) * sizeof(struct buffer_head *),
 			GFP_NOFS);
@@ -963,6 +1031,7 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 		ext4_warning(sb,
 			      "not enough memory for %lu groups", gdb_num + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit_inode;
 	}
 
@@ -987,9 +1056,14 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 	memset(gdb_bh->b_data, 0, sb->s_blocksize);
 	err = ext4_handle_dirty_metadata(handle, NULL, gdb_bh);
 =======
+<<<<<<< HEAD
+	memset(gdb_bh->b_data, 0, sb->s_blocksize);
+	err = ext4_handle_dirty_metadata(handle, NULL, gdb_bh);
+=======
 	memset((*primary)->b_data, 0, sb->s_blocksize);
 	err = ext4_handle_dirty_metadata(handle, NULL, *primary);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(err)) {
 		ext4_std_error(sb, err);
 		goto exit_inode;
@@ -1000,16 +1074,22 @@ static int add_new_gdb(handle_t *handle, struct inode *inode,
 	memcpy(n_group_desc, o_group_desc,
 	       EXT4_SB(sb)->s_gdb_count * sizeof(struct buffer_head *));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n_group_desc[gdb_num] = gdb_bh;
 	EXT4_SB(sb)->s_group_desc = n_group_desc;
 	EXT4_SB(sb)->s_gdb_count++;
 	ext4_kvfree(o_group_desc);
+<<<<<<< HEAD
+=======
 =======
 	n_group_desc[gdb_num] = *primary;
 	EXT4_SB(sb)->s_group_desc = n_group_desc;
 	EXT4_SB(sb)->s_gdb_count++;
 	kfree(o_group_desc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	le16_add_cpu(&es->s_reserved_gdt_blocks, -1);
 	err = ext4_handle_dirty_metadata(handle, NULL, EXT4_SB(sb)->s_sbh);
@@ -1022,8 +1102,12 @@ exit_inode:
 <<<<<<< HEAD
 	ext4_kvfree(n_group_desc);
 =======
+<<<<<<< HEAD
+	ext4_kvfree(n_group_desc);
+=======
 	kfree(n_group_desc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* ext4_handle_release_buffer(handle, iloc.bh); */
 	brelse(iloc.bh);
 exit_dindj:
@@ -1036,8 +1120,12 @@ exit_bh:
 <<<<<<< HEAD
 	brelse(gdb_bh);
 =======
+<<<<<<< HEAD
+	brelse(gdb_bh);
+=======
 	brelse(*primary);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ext4_debug("leaving with error %d\n", err);
 	return err;
@@ -1060,8 +1148,12 @@ static int reserve_backup_gdb(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
 			      ext4_group_t group)
 =======
+<<<<<<< HEAD
+			      ext4_group_t group)
+=======
 			      struct ext4_new_group_data *input)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = inode->i_sb;
 	int reserved_gdb =le16_to_cpu(EXT4_SB(sb)->s_es->s_reserved_gdt_blocks);
@@ -1109,8 +1201,13 @@ static int reserve_backup_gdb(handle_t *handle, struct inode *inode,
 		gdbackups = verify_reserved_gdb(sb, group, primary[res]);
 		if (gdbackups < 0) {
 =======
+<<<<<<< HEAD
+		gdbackups = verify_reserved_gdb(sb, group, primary[res]);
+		if (gdbackups < 0) {
+=======
 		if ((gdbackups = verify_reserved_gdb(sb, primary[res])) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			brelse(primary[res]);
 			err = gdbackups;
 			goto exit_bh;
@@ -1140,8 +1237,12 @@ static int reserve_backup_gdb(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
 	blk = group * EXT4_BLOCKS_PER_GROUP(sb);
 =======
+<<<<<<< HEAD
+	blk = group * EXT4_BLOCKS_PER_GROUP(sb);
+=======
 	blk = input->group * EXT4_BLOCKS_PER_GROUP(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < reserved_gdb; i++) {
 		int err2;
 		data = (__le32 *)primary[i]->b_data;
@@ -1258,6 +1359,9 @@ exit_err:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ext4_add_new_descs() adds @count group descriptor of groups
  * starting at @group
@@ -1603,8 +1707,11 @@ static int ext4_setup_next_flex_gd(struct super_block *sb,
 	return 1;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Add group descriptor data to an existing or new group descriptor block.
  * Ensure we handle all possible error conditions _before_ we start modifying
  * the filesystem, because we cannot abort the transaction and not have it
@@ -1623,16 +1730,25 @@ int ext4_group_add(struct super_block *sb, struct ext4_new_group_data *input)
 <<<<<<< HEAD
 	struct ext4_new_flex_group_data flex_gd;
 =======
+<<<<<<< HEAD
+	struct ext4_new_flex_group_data flex_gd;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ext4_sb_info *sbi = EXT4_SB(sb);
 	struct ext4_super_block *es = sbi->s_es;
 	int reserved_gdb = ext4_bg_has_super(sb, input->group) ?
 		le16_to_cpu(es->s_reserved_gdt_blocks) : 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode = NULL;
 	int gdb_off, gdb_num;
 	int err;
 	__u16 bg_flags = 0;
+<<<<<<< HEAD
+=======
 =======
 	struct buffer_head *primary = NULL;
 	struct ext4_group_desc *gdp;
@@ -1641,6 +1757,7 @@ int ext4_group_add(struct super_block *sb, struct ext4_new_group_data *input)
 	int gdb_off, gdb_num;
 	int err, err2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	gdb_num = input->group / EXT4_DESC_PER_BLOCK(sb);
 	gdb_off = input->group % EXT4_DESC_PER_BLOCK(sb);
@@ -1680,6 +1797,9 @@ int ext4_group_add(struct super_block *sb, struct ext4_new_group_data *input)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = verify_group_input(sb, input);
 	if (err)
 		goto out;
@@ -1744,6 +1864,8 @@ errout:
 	}
 	return err;
 }
+<<<<<<< HEAD
+=======
 =======
 	if ((err = verify_group_input(sb, input)))
 		goto exit_put;
@@ -1918,6 +2040,7 @@ exit_put:
 	return err;
 } /* ext4_group_add */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Extend the filesystem to the new number of blocks specified.  This entry
@@ -1937,6 +2060,9 @@ int ext4_group_extend(struct super_block *sb, struct ext4_super_block *es,
 	ext4_grpblk_t add;
 	struct buffer_head *bh;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	ext4_group_t group;
 
@@ -1946,6 +2072,8 @@ int ext4_group_extend(struct super_block *sb, struct ext4_super_block *es,
 		ext4_msg(sb, KERN_DEBUG,
 			 "extending last group from %llu to %llu blocks",
 			 o_blocks_count, n_blocks_count);
+<<<<<<< HEAD
+=======
 =======
 	handle_t *handle;
 	int err;
@@ -1960,6 +2088,7 @@ int ext4_group_extend(struct super_block *sb, struct ext4_super_block *es,
 		printk(KERN_DEBUG "EXT4-fs: extending last group from %llu uto %llu blocks\n",
 		       o_blocks_count, n_blocks_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (n_blocks_count == 0 || n_blocks_count == o_blocks_count)
 		return 0;
@@ -1970,10 +2099,16 @@ int ext4_group_extend(struct super_block *sb, struct ext4_super_block *es,
 			 "filesystem too large to resize to %llu blocks safely",
 			 n_blocks_count);
 =======
+<<<<<<< HEAD
+		ext4_msg(sb, KERN_ERR,
+			 "filesystem too large to resize to %llu blocks safely",
+			 n_blocks_count);
+=======
 		printk(KERN_ERR "EXT4-fs: filesystem on %s:"
 			" too large to resize to %llu blocks safely\n",
 			sb->s_id, n_blocks_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sizeof(sector_t) < 8)
 			ext4_warning(sb, "CONFIG_LBDAF not enabled");
 		return -EINVAL;
@@ -1984,8 +2119,12 @@ int ext4_group_extend(struct super_block *sb, struct ext4_super_block *es,
 <<<<<<< HEAD
 		return -EINVAL;
 =======
+<<<<<<< HEAD
+		return -EINVAL;
+=======
 		return -EBUSY;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Handle the remaining blocks in the last group only. */
@@ -2019,6 +2158,9 @@ int ext4_group_extend(struct super_block *sb, struct ext4_super_block *es,
 	brelse(bh);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ext4_group_extend_no_check(sb, o_blocks_count, add);
 	return err;
 } /* ext4_group_extend */
@@ -2137,6 +2279,8 @@ out:
 		       "upto %llu blocks", o_blocks_count, n_blocks_count);
 	return err;
 }
+<<<<<<< HEAD
+=======
 =======
 	/* We will update the superblock, one block bitmap, and
 	 * one group descriptor via ext4_free_blocks().
@@ -2185,3 +2329,4 @@ exit_put:
 	return err;
 } /* ext4_group_extend */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

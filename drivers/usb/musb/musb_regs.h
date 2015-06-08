@@ -234,7 +234,16 @@
 #define MUSB_TESTMODE		0x0F	/* 8 bit */
 
 /* Get offset for a given FIFO from musb->mregs */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_USB_MUSB_TUSB6010) ||	\
+	defined(CONFIG_USB_MUSB_TUSB6010_MODULE)
+=======
 #ifdef	CONFIG_USB_MUSB_TUSB6010
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef	CONFIG_USB_MUSB_TUSB6010
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MUSB_FIFO_OFFSET(epnum)	(0x200 + ((epnum) * 0x20))
 #else
 #define MUSB_FIFO_OFFSET(epnum)	(0x20 + ((epnum) * 4))
@@ -295,7 +304,16 @@
 #define MUSB_FLAT_OFFSET(_epnum, _offset)	\
 	(0x100 + (0x10*(_epnum)) + (_offset))
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_USB_MUSB_TUSB6010) ||	\
+	defined(CONFIG_USB_MUSB_TUSB6010_MODULE)
+=======
 #ifdef CONFIG_USB_MUSB_TUSB6010
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_USB_MUSB_TUSB6010
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* TUSB6010 EP0 configuration register is special */
 #define MUSB_TUSB_OFFSET(_epnum, _offset)	\
 	(0x10 + _offset)

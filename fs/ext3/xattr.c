@@ -55,6 +55,11 @@
 #include <linux/mbcache.h>
 #include <linux/quotaops.h>
 =======
+<<<<<<< HEAD
+#include "ext3.h"
+#include <linux/mbcache.h>
+#include <linux/quotaops.h>
+=======
 #include <linux/init.h>
 #include <linux/fs.h>
 #include <linux/slab.h>
@@ -64,6 +69,7 @@
 #include <linux/quotaops.h>
 #include <linux/rwsem.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xattr.h"
 #include "acl.h"
 

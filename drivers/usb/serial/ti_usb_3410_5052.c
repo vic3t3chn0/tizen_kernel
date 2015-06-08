@@ -150,7 +150,15 @@ static int ti_download_firmware(struct ti_device *tdev);
 /* Data */
 
 /* module parameters */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int closing_wait = TI_DEFAULT_CLOSING_WAIT;
 static ushort vendor_3410[TI_EXTRA_VID_PID_COUNT];
 static unsigned int vendor_3410_count;
@@ -165,7 +173,15 @@ static unsigned int product_5052_count;
 /* the array dimension is the number of default entries plus */
 /* TI_EXTRA_VID_PID_COUNT user defined entries plus 1 terminating */
 /* null entry */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_device_id ti_id_table_3410[14+TI_EXTRA_VID_PID_COUNT+1] = {
+=======
 static struct usb_device_id ti_id_table_3410[15+TI_EXTRA_VID_PID_COUNT+1] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct usb_device_id ti_id_table_3410[15+TI_EXTRA_VID_PID_COUNT+1] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ USB_DEVICE(TI_VENDOR_ID, TI_3410_PRODUCT_ID) },
 	{ USB_DEVICE(TI_VENDOR_ID, TI_3410_EZ430_ID) },
 	{ USB_DEVICE(MTS_VENDOR_ID, MTS_GSM_NO_FW_PRODUCT_ID) },
@@ -179,9 +195,19 @@ static struct usb_device_id ti_id_table_3410[15+TI_EXTRA_VID_PID_COUNT+1] = {
 	{ USB_DEVICE(IBM_VENDOR_ID, IBM_4543_PRODUCT_ID) },
 	{ USB_DEVICE(IBM_VENDOR_ID, IBM_454B_PRODUCT_ID) },
 	{ USB_DEVICE(IBM_VENDOR_ID, IBM_454C_PRODUCT_ID) },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ USB_DEVICE(ABBOTT_VENDOR_ID, ABBOTT_PRODUCT_ID) },
+=======
 	{ USB_DEVICE(ABBOTT_VENDOR_ID, ABBOTT_STEREO_PLUG_ID) },
 	{ USB_DEVICE(ABBOTT_VENDOR_ID, ABBOTT_STRIP_PORT_ID) },
 	{ USB_DEVICE(TI_VENDOR_ID, FRI2_PRODUCT_ID) },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ USB_DEVICE(ABBOTT_VENDOR_ID, ABBOTT_STEREO_PLUG_ID) },
+	{ USB_DEVICE(ABBOTT_VENDOR_ID, ABBOTT_STRIP_PORT_ID) },
+	{ USB_DEVICE(TI_VENDOR_ID, FRI2_PRODUCT_ID) },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct usb_device_id ti_id_table_5052[5+TI_EXTRA_VID_PID_COUNT+1] = {
@@ -191,7 +217,15 @@ static struct usb_device_id ti_id_table_5052[5+TI_EXTRA_VID_PID_COUNT+1] = {
 	{ USB_DEVICE(TI_VENDOR_ID, TI_5052_FIRMWARE_PRODUCT_ID) },
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_device_id ti_id_table_combined[18+2*TI_EXTRA_VID_PID_COUNT+1] = {
+=======
 static struct usb_device_id ti_id_table_combined[19+2*TI_EXTRA_VID_PID_COUNT+1] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct usb_device_id ti_id_table_combined[19+2*TI_EXTRA_VID_PID_COUNT+1] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ USB_DEVICE(TI_VENDOR_ID, TI_3410_PRODUCT_ID) },
 	{ USB_DEVICE(TI_VENDOR_ID, TI_3410_EZ430_ID) },
 	{ USB_DEVICE(MTS_VENDOR_ID, MTS_GSM_NO_FW_PRODUCT_ID) },
@@ -210,7 +244,14 @@ static struct usb_device_id ti_id_table_combined[19+2*TI_EXTRA_VID_PID_COUNT+1] 
 	{ USB_DEVICE(IBM_VENDOR_ID, IBM_454B_PRODUCT_ID) },
 	{ USB_DEVICE(IBM_VENDOR_ID, IBM_454C_PRODUCT_ID) },
 	{ USB_DEVICE(ABBOTT_VENDOR_ID, ABBOTT_PRODUCT_ID) },
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{ USB_DEVICE(TI_VENDOR_ID, FRI2_PRODUCT_ID) },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ USB_DEVICE(TI_VENDOR_ID, FRI2_PRODUCT_ID) },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ }
 };
 
@@ -219,7 +260,14 @@ static struct usb_driver ti_usb_driver = {
 	.probe			= usb_serial_probe,
 	.disconnect		= usb_serial_disconnect,
 	.id_table		= ti_id_table_combined,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct usb_serial_driver ti_1port_device = {
@@ -228,7 +276,14 @@ static struct usb_serial_driver ti_1port_device = {
 		.name		= "ti_usb_3410_5052_1",
 	},
 	.description		= "TI USB 3410 1 port adapter",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver		= &ti_usb_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver		= &ti_usb_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table		= ti_id_table_3410,
 	.num_ports		= 1,
 	.attach			= ti_startup,
@@ -257,7 +312,14 @@ static struct usb_serial_driver ti_2port_device = {
 		.name		= "ti_usb_3410_5052_2",
 	},
 	.description		= "TI USB 5052 2 port adapter",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver		= &ti_usb_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver		= &ti_usb_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table		= ti_id_table_5052,
 	.num_ports		= 2,
 	.attach			= ti_startup,
@@ -280,6 +342,15 @@ static struct usb_serial_driver ti_2port_device = {
 	.write_bulk_callback	= ti_bulk_out_callback,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&ti_1port_device, &ti_2port_device, NULL
+};
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module */
 
@@ -347,6 +418,15 @@ static int __init ti_init(void)
 		ti_id_table_combined[c].match_flags = USB_DEVICE_ID_MATCH_DEVICE;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = usb_serial_register_drivers(&ti_usb_driver, serial_drivers);
+	if (ret == 0)
+		printk(KERN_INFO KBUILD_MODNAME ": " TI_DRIVER_VERSION ":"
+			       TI_DRIVER_DESC "\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = usb_serial_register(&ti_1port_device);
 	if (ret)
 		goto failed_1port;
@@ -368,15 +448,29 @@ failed_usb:
 failed_2port:
 	usb_serial_deregister(&ti_1port_device);
 failed_1port:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 
 static void __exit ti_exit(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_serial_deregister_drivers(&ti_usb_driver, serial_drivers);
+=======
 	usb_deregister(&ti_usb_driver);
 	usb_serial_deregister(&ti_1port_device);
 	usb_serial_deregister(&ti_2port_device);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	usb_deregister(&ti_usb_driver);
+	usb_serial_deregister(&ti_1port_device);
+	usb_serial_deregister(&ti_2port_device);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -409,7 +503,15 @@ static int ti_startup(struct usb_serial *serial)
 	usb_set_serial_data(serial, tdev);
 
 	/* determine device type */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (usb_match_id(serial->interface, ti_id_table_3410))
+=======
 	if (serial->type == &ti_1port_device)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (serial->type == &ti_1port_device)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tdev->td_is_3410 = 1;
 	dbg("%s - device type is %s", __func__,
 				tdev->td_is_3410 ? "3410" : "5052");
@@ -540,9 +642,19 @@ static int ti_open(struct tty_struct *tty, struct usb_serial_port *port)
 			status = -EINVAL;
 			goto release_lock;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		urb->context = tdev;
+=======
 		urb->complete = ti_interrupt_callback;
 		urb->context = tdev;
 		urb->dev = dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		urb->complete = ti_interrupt_callback;
+		urb->context = tdev;
+		urb->dev = dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = usb_submit_urb(urb, GFP_KERNEL);
 		if (status) {
 			dev_err(&port->dev,
@@ -624,9 +736,19 @@ static int ti_open(struct tty_struct *tty, struct usb_serial_port *port)
 		goto unlink_int_urb;
 	}
 	tport->tp_read_urb_state = TI_READ_URB_RUNNING;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	urb->context = tport;
+=======
 	urb->complete = ti_bulk_in_callback;
 	urb->context = tport;
 	urb->dev = dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	urb->complete = ti_bulk_in_callback;
+	urb->context = tport;
+	urb->dev = dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = usb_submit_urb(urb, GFP_KERNEL);
 	if (status) {
 		dev_err(&port->dev, "%s - submit read urb failed, %d\n",
@@ -1241,12 +1363,26 @@ static void ti_bulk_in_callback(struct urb *urb)
 exit:
 	/* continue to read unless stopping */
 	spin_lock(&tport->tp_lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (tport->tp_read_urb_state == TI_READ_URB_RUNNING)
+		retval = usb_submit_urb(urb, GFP_ATOMIC);
+	else if (tport->tp_read_urb_state == TI_READ_URB_STOPPING)
+		tport->tp_read_urb_state = TI_READ_URB_STOPPED;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tport->tp_read_urb_state == TI_READ_URB_RUNNING) {
 		urb->dev = port->serial->dev;
 		retval = usb_submit_urb(urb, GFP_ATOMIC);
 	} else if (tport->tp_read_urb_state == TI_READ_URB_STOPPING) {
 		tport->tp_read_urb_state = TI_READ_URB_STOPPED;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&tport->tp_lock);
 	if (retval)
 		dev_err(dev, "%s - resubmit read urb failed, %d\n",
@@ -1258,7 +1394,14 @@ static void ti_bulk_out_callback(struct urb *urb)
 {
 	struct ti_port *tport = urb->context;
 	struct usb_serial_port *port = tport->tp_port;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct device *dev = &urb->dev->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct device *dev = &urb->dev->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int status = urb->status;
 
 	dbg("%s - port %d", __func__, port->number);
@@ -1276,7 +1419,15 @@ static void ti_bulk_out_callback(struct urb *urb)
 		wake_up_interruptible(&tport->tp_write_wait);
 		return;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err_console(port, "%s - nonzero urb status, %d\n",
+=======
 		dev_err(dev, "%s - nonzero urb status, %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_err(dev, "%s - nonzero urb status, %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, status);
 		tport->tp_tdev->td_urb_error = 1;
 		wake_up_interruptible(&tport->tp_write_wait);
@@ -1345,7 +1496,15 @@ static void ti_send(struct ti_port *tport)
 
 	result = usb_submit_urb(port->write_urb, GFP_ATOMIC);
 	if (result) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err_console(port, "%s - submit write urb failed, %d\n",
+=======
 		dev_err(&port->dev, "%s - submit write urb failed, %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_err(&port->dev, "%s - submit write urb failed, %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							__func__, result);
 		tport->tp_write_urb_in_use = 0;
 		/* TODO: reschedule ti_send */
@@ -1579,9 +1738,19 @@ static int ti_restart_read(struct ti_port *tport, struct tty_struct *tty)
 		tport->tp_read_urb_state = TI_READ_URB_RUNNING;
 		urb = tport->tp_port->read_urb;
 		spin_unlock_irqrestore(&tport->tp_lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		urb->context = tport;
+=======
 		urb->complete = ti_bulk_in_callback;
 		urb->context = tport;
 		urb->dev = tport->tp_port->serial->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		urb->complete = ti_bulk_in_callback;
+		urb->context = tport;
+		urb->dev = tport->tp_port->serial->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = usb_submit_urb(urb, GFP_KERNEL);
 	} else  {
 		tport->tp_read_urb_state = TI_READ_URB_RUNNING;

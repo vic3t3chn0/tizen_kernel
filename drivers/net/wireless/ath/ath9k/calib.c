@@ -16,6 +16,13 @@
 
 #include "hw.h"
 #include "hw-ops.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Common calibration code */
 
@@ -62,13 +69,39 @@ static s16 ath9k_hw_get_default_nf(struct ath_hw *ah,
 	return ath9k_hw_get_nf_limits(ah, chan)->nominal;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+s16 ath9k_hw_getchan_noise(struct ath_hw *ah, struct ath9k_channel *chan)
+{
+	s8 noise = ATH_DEFAULT_NOISE_FLOOR;
+
+	if (chan && chan->noisefloor) {
+		s8 delta = chan->noisefloor -
+			   ath9k_hw_get_default_nf(ah, chan);
+		if (delta > 0)
+			noise += delta;
+	}
+	return noise;
+}
+EXPORT_SYMBOL(ath9k_hw_getchan_noise);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void ath9k_hw_update_nfcal_hist_buffer(struct ath_hw *ah,
 					      struct ath9k_hw_cal_data *cal,
 					      int16_t *nfarray)
 {
 	struct ath_common *common = ath9k_hw_common(ah);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct ieee80211_conf *conf = &common->hw->conf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ieee80211_conf *conf = &common->hw->conf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ath_nf_limits *limit;
 	struct ath9k_nfcal_hist *h;
 	bool high_nf_mid = false;
@@ -80,7 +113,15 @@ static void ath9k_hw_update_nfcal_hist_buffer(struct ath_hw *ah,
 
 	for (i = 0; i < NUM_NF_READINGS; i++) {
 		if (!(chainmask & (1 << i)) ||
+<<<<<<< HEAD
+<<<<<<< HEAD
+		    ((i >= AR5416_MAX_CHAINS) && !IS_CHAN_HT40(ah->curchan)))
+=======
 		    ((i >= AR5416_MAX_CHAINS) && !conf_is_ht40(conf)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		    ((i >= AR5416_MAX_CHAINS) && !conf_is_ht40(conf)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		h[i].nfCalBuffer[h[i].currIndex] = nfarray[i];
@@ -102,7 +143,15 @@ static void ath9k_hw_update_nfcal_hist_buffer(struct ath_hw *ah,
 		if (h[i].privNF > limit->max) {
 			high_nf_mid = true;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, CALIBRATE,
+=======
 			ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"NFmid[%d] (%d) > MAX (%d), %s\n",
 				i, h[i].privNF, limit->max,
 				(cal->nfcal_interference ?
@@ -185,8 +234,17 @@ bool ath9k_hw_reset_calvalid(struct ath_hw *ah)
 		return true;
 
 	if (currCal->calState != CAL_DONE) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CALIBRATE, "Calibration state incorrect, %d\n",
+=======
 		ath_dbg(common, ATH_DBG_CALIBRATE,
 			"Calibration state incorrect, %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CALIBRATE,
+			"Calibration state incorrect, %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			currCal->calState);
 		return true;
 	}
@@ -194,8 +252,17 @@ bool ath9k_hw_reset_calvalid(struct ath_hw *ah)
 	if (!(ah->supp_cals & currCal->calData->calType))
 		return true;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CALIBRATE, "Resetting Cal %d state for channel %u\n",
+=======
 	ath_dbg(common, ATH_DBG_CALIBRATE,
 		"Resetting Cal %d state for channel %u\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CALIBRATE,
+		"Resetting Cal %d state for channel %u\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		currCal->calData->calType, conf->channel->center_freq);
 
 	ah->caldata->CalValid &= ~currCal->calData->calType;
@@ -288,7 +355,15 @@ void ath9k_hw_loadnf(struct ath_hw *ah, struct ath9k_channel *chan)
 	 * noisefloor until the next calibration timer.
 	 */
 	if (j == 10000) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, ANY,
+=======
 		ath_dbg(common, ATH_DBG_ANY,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_ANY,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Timeout while waiting for nf to load: AR_PHY_AGC_CONTROL=0x%x\n",
 			REG_READ(ah, AR_PHY_AGC_CONTROL));
 		return;
@@ -330,17 +405,41 @@ static void ath9k_hw_nf_sanitize(struct ath_hw *ah, s16 *nf)
 		if (!nf[i])
 			continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CALIBRATE,
+=======
 		ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"NF calibrated [%s] [chain %d] is %d\n",
 			(i >= 3 ? "ext" : "ctl"), i % 3, nf[i]);
 
 		if (nf[i] > limit->max) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, CALIBRATE,
+=======
 			ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"NF[%d] (%d) > MAX (%d), correcting to MAX\n",
 				i, nf[i], limit->max);
 			nf[i] = limit->max;
 		} else if (nf[i] < limit->min) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, CALIBRATE,
+=======
 			ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"NF[%d] (%d) < MIN (%d), correcting to NOM\n",
 				i, nf[i], limit->min);
 			nf[i] = limit->nominal;
@@ -359,7 +458,15 @@ bool ath9k_hw_getnf(struct ath_hw *ah, struct ath9k_channel *chan)
 
 	chan->channelFlags &= (~CHANNEL_CW_INT);
 	if (REG_READ(ah, AR_PHY_AGC_CONTROL) & AR_PHY_AGC_CONTROL_NF) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CALIBRATE,
+=======
 		ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"NF did not complete in calibration window\n");
 		return false;
 	}
@@ -369,7 +476,15 @@ bool ath9k_hw_getnf(struct ath_hw *ah, struct ath9k_channel *chan)
 	nf = nfarray[0];
 	if (ath9k_hw_get_nf_thresh(ah, c->band, &nfThresh)
 	    && nf > nfThresh) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CALIBRATE,
+=======
 		ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CALIBRATE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"noise floor failed detected; detected %d, threshold %d\n",
 			nf, nfThresh);
 		chan->channelFlags |= CHANNEL_CW_INT;
@@ -377,6 +492,13 @@ bool ath9k_hw_getnf(struct ath_hw *ah, struct ath9k_channel *chan)
 
 	if (!caldata) {
 		chan->noisefloor = nf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ah->noise = ath9k_hw_getchan_noise(ah, chan);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return false;
 	}
 
@@ -384,8 +506,20 @@ bool ath9k_hw_getnf(struct ath_hw *ah, struct ath9k_channel *chan)
 	caldata->nfcal_pending = false;
 	ath9k_hw_update_nfcal_hist_buffer(ah, caldata, nfarray);
 	chan->noisefloor = h[0].privNF;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ah->noise = ath9k_hw_getchan_noise(ah, chan);
 	return true;
 }
+EXPORT_SYMBOL(ath9k_hw_getnf);
+=======
+	return true;
+}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return true;
+}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void ath9k_init_nfcal_hist_buffer(struct ath_hw *ah,
 				  struct ath9k_channel *chan)

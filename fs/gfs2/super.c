@@ -753,6 +753,9 @@ static int gfs2_write_inode(struct inode *inode, struct writeback_control *wbc)
 	struct address_space *metamapping = gfs2_glock2aspace(ip->i_gl);
 	struct backing_dev_info *bdi = metamapping->backing_dev_info;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (wbc->sync_mode == WB_SYNC_ALL)
@@ -824,6 +827,8 @@ static void gfs2_dirty_inode(struct inode *inode, int flags)
 out:
 	if (need_unlock)
 		gfs2_glock_dq_uninit(&gh);
+<<<<<<< HEAD
+=======
 =======
 	struct gfs2_holder gh;
 	struct buffer_head *bh;
@@ -871,6 +876,7 @@ do_flush:
 		mark_inode_dirty_sync(inode);
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1087,8 +1093,11 @@ static int gfs2_statfs_slow(struct gfs2_sbd *sdp, struct gfs2_statfs_change_host
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct gfs2_holder ri_gh;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gfs2_rgrpd *rgd_next;
 	struct gfs2_holder *gha, *gh;
 	unsigned int slots = 64;
@@ -1103,11 +1112,14 @@ static int gfs2_statfs_slow(struct gfs2_sbd *sdp, struct gfs2_statfs_change_host
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	error = gfs2_rindex_hold(sdp, &ri_gh);
 	if (error)
 		goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rgd_next = gfs2_rgrpd_get_first(sdp);
 
 	for (;;) {
@@ -1152,10 +1164,13 @@ static int gfs2_statfs_slow(struct gfs2_sbd *sdp, struct gfs2_statfs_change_host
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	gfs2_glock_dq_uninit(&ri_gh);
 
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(gha);
 	return error;
 }
@@ -1208,12 +1223,18 @@ static int gfs2_statfs(struct dentry *dentry, struct kstatfs *buf)
 	int error;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = gfs2_rindex_update(sdp);
 	if (error)
 		return error;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (gfs2_tune_get(sdp, gt_statfs_slow))
 		error = gfs2_statfs_slow(sdp, &sc);
 	else
@@ -1355,13 +1376,20 @@ static int is_ancestor(const struct dentry *d1, const struct dentry *d2)
 <<<<<<< HEAD
  * @root: root of this (sub)tree
 =======
+<<<<<<< HEAD
+ * @root: root of this (sub)tree
+=======
  * @mnt: vfsmount
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns: 0 on success or error code
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gfs2_show_options(struct seq_file *s, struct dentry *root)
 {
 	struct gfs2_sbd *sdp = root->d_sb->s_fs_info;
@@ -1369,6 +1397,8 @@ static int gfs2_show_options(struct seq_file *s, struct dentry *root)
 	int val;
 
 	if (is_ancestor(root, sdp->sd_master_dir))
+<<<<<<< HEAD
+=======
 =======
 static int gfs2_show_options(struct seq_file *s, struct vfsmount *mnt)
 {
@@ -1378,6 +1408,7 @@ static int gfs2_show_options(struct seq_file *s, struct vfsmount *mnt)
 
 	if (is_ancestor(mnt->mnt_root, sdp->sd_master_dir))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(s, ",meta");
 	if (args->ar_lockproto[0])
 		seq_printf(s, ",lockproto=%s", args->ar_lockproto);
@@ -1486,9 +1517,15 @@ static int gfs2_dinode_dealloc(struct gfs2_inode *ip)
 	struct gfs2_rgrpd *rgd;
 	struct gfs2_holder gh;
 =======
+<<<<<<< HEAD
+	struct gfs2_qadata *qa;
+	struct gfs2_rgrpd *rgd;
+	struct gfs2_holder gh;
+=======
 	struct gfs2_alloc *al;
 	struct gfs2_rgrpd *rgd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	if (gfs2_get_inode_blocks(&ip->i_inode) != 1) {
@@ -1500,9 +1537,14 @@ static int gfs2_dinode_dealloc(struct gfs2_inode *ip)
 	qa = gfs2_qadata_get(ip);
 	if (!qa)
 =======
+<<<<<<< HEAD
+	qa = gfs2_qadata_get(ip);
+	if (!qa)
+=======
 	al = gfs2_alloc_get(ip);
 	if (!al)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 
 	error = gfs2_quota_hold(ip, NO_QUOTA_CHANGE, NO_QUOTA_CHANGE);
@@ -1510,6 +1552,9 @@ static int gfs2_dinode_dealloc(struct gfs2_inode *ip)
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rgd = gfs2_blk2rgrpd(sdp, ip->i_no_addr, 1);
 	if (!rgd) {
 		gfs2_consist_inode(ip);
@@ -1520,6 +1565,8 @@ static int gfs2_dinode_dealloc(struct gfs2_inode *ip)
 	error = gfs2_glock_nq_init(rgd->rd_gl, LM_ST_EXCLUSIVE, 0, &gh);
 	if (error)
 		goto out_qs;
+<<<<<<< HEAD
+=======
 =======
 	error = gfs2_rindex_hold(sdp, &al->al_ri_gh);
 	if (error)
@@ -1537,6 +1584,7 @@ static int gfs2_dinode_dealloc(struct gfs2_inode *ip)
 	if (error)
 		goto out_rindex_relse;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = gfs2_trans_begin(sdp, RES_RG_BIT + RES_STATFS + RES_QUOTA,
 				 sdp->sd_jdesc->jd_blocks);
@@ -1551,11 +1599,16 @@ static int gfs2_dinode_dealloc(struct gfs2_inode *ip)
 
 out_rg_gunlock:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_glock_dq_uninit(&gh);
 out_qs:
 	gfs2_quota_unhold(ip);
 out:
 	gfs2_qadata_put(ip);
+<<<<<<< HEAD
+=======
 =======
 	gfs2_glock_dq_uninit(&al->al_rgd_gh);
 out_rindex_relse:
@@ -1565,6 +1618,7 @@ out_qs:
 out:
 	gfs2_alloc_put(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -1608,16 +1662,22 @@ static void gfs2_evict_inode(struct inode *inode)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!test_bit(GIF_ALLOC_FAILED, &ip->i_flags)) {
 		error = gfs2_check_blk_type(sdp, ip->i_no_addr, GFS2_BLKST_UNLINKED);
 		if (error)
 			goto out_truncate;
 	}
+<<<<<<< HEAD
+=======
 =======
 	error = gfs2_check_blk_type(sdp, ip->i_no_addr, GFS2_BLKST_UNLINKED);
 	if (error)
 		goto out_truncate;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(GIF_INVALID, &ip->i_flags)) {
 		error = gfs2_inode_refresh(ip);
@@ -1658,12 +1718,18 @@ static void gfs2_evict_inode(struct inode *inode)
 
 out_truncate:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_log_flush(sdp, ip->i_gl);
 	write_inode_now(inode, 1);
 	gfs2_ail_flush(ip->i_gl, 0);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Case 2 starts here */
 	error = gfs2_trans_begin(sdp, 0, sdp->sd_jdesc->jd_blocks);
 	if (error)
@@ -1689,9 +1755,15 @@ out:
 	ip->i_gl->gl_object = NULL;
 	flush_delayed_work_sync(&ip->i_gl->gl_work);
 =======
+<<<<<<< HEAD
+	gfs2_dir_hash_inval(ip);
+	ip->i_gl->gl_object = NULL;
+	flush_delayed_work_sync(&ip->i_gl->gl_work);
+=======
 
 	ip->i_gl->gl_object = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_glock_add_to_lru(ip->i_gl);
 	gfs2_glock_put(ip->i_gl);
 	ip->i_gl = NULL;
@@ -1712,7 +1784,11 @@ static struct inode *gfs2_alloc_inode(struct super_block *sb)
 <<<<<<< HEAD
 		ip->i_rgd = NULL;
 =======
+<<<<<<< HEAD
+		ip->i_rgd = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return &ip->i_inode;
 }
@@ -1722,8 +1798,11 @@ static void gfs2_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(gfs2_inode_cachep, inode);
 }
 
@@ -1739,7 +1818,11 @@ const struct super_operations gfs2_super_ops = {
 <<<<<<< HEAD
 	.dirty_inode		= gfs2_dirty_inode,
 =======
+<<<<<<< HEAD
+	.dirty_inode		= gfs2_dirty_inode,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.evict_inode		= gfs2_evict_inode,
 	.put_super		= gfs2_put_super,
 	.sync_fs		= gfs2_sync_fs,

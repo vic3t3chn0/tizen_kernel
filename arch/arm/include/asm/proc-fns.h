@@ -66,14 +66,20 @@ extern struct processor {
 	 * ignore 'ext'.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_LPAE
 	void (*set_pte_ext)(pte_t *ptep, pte_t pte);
 #else
 	void (*set_pte_ext)(pte_t *ptep, pte_t pte, unsigned int ext);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	void (*set_pte_ext)(pte_t *ptep, pte_t pte, unsigned int ext);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Suspend/resume */
 	unsigned int suspend_size;
@@ -88,6 +94,9 @@ extern int cpu_do_idle(void);
 extern void cpu_dcache_clean_area(void *, int);
 extern void cpu_do_switch_mm(unsigned long pgd_phys, struct mm_struct *mm);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_LPAE
 extern void cpu_set_pte_ext(pte_t *ptep, pte_t pte);
 #else
@@ -110,6 +119,8 @@ extern void cpu_do_resume(void *);
 /* These three are private to arch/arm/kernel/suspend.c */
 #define cpu_do_suspend			processor.do_suspend
 #define cpu_do_resume			processor.do_resume
+<<<<<<< HEAD
+=======
 =======
 extern void cpu_set_pte_ext(pte_t *ptep, pte_t pte, unsigned int ext);
 extern void cpu_reset(unsigned long addr) __attribute__((noreturn));
@@ -122,6 +133,7 @@ extern void cpu_reset(unsigned long addr) __attribute__((noreturn));
 #define cpu_set_pte_ext(ptep,pte,ext)	processor.set_pte_ext(ptep,pte,ext)
 #define cpu_do_switch_mm(pgd,mm)	processor.switch_mm(pgd,mm)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 extern void cpu_resume(void);
@@ -133,6 +145,9 @@ extern void cpu_resume(void);
 #define cpu_switch_mm(pgd,mm) cpu_do_switch_mm(virt_to_phys(pgd),mm)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_LPAE
 #define cpu_get_pgd()	\
 	({						\
@@ -145,8 +160,11 @@ extern void cpu_resume(void);
 		(pgd_t *)phys_to_virt(pg);		\
 	})
 #else
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_get_pgd()	\
 	({						\
 		unsigned long pg;			\
@@ -158,7 +176,11 @@ extern void cpu_resume(void);
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

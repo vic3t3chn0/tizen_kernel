@@ -43,8 +43,14 @@ config ENCRYPTED_KEYS
 	select CRYPTO
 	select CRYPTO_HMAC
 =======
+<<<<<<< HEAD
+	depends on KEYS
+	select CRYPTO
+	select CRYPTO_HMAC
+=======
 	depends on KEYS && TRUSTED_KEYS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_AES
 	select CRYPTO_CBC
 	select CRYPTO_SHA256
@@ -192,14 +198,20 @@ source security/smack/Kconfig
 source security/tomoyo/Kconfig
 source security/apparmor/Kconfig
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 source security/yama/Kconfig
 source security/sony/Kconfig
 
 source security/integrity/Kconfig
+<<<<<<< HEAD
+=======
 =======
 
 source security/integrity/ima/Kconfig
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 choice
 	prompt "Default security module"
@@ -211,7 +223,12 @@ choice
 	default DEFAULT_SECURITY_YAMA if SECURITY_YAMA
 	default DEFAULT_SECURITY_SONY if SECURITY_SONY_RIC
 =======
+<<<<<<< HEAD
+	default DEFAULT_SECURITY_YAMA if SECURITY_YAMA
+	default DEFAULT_SECURITY_SONY if SECURITY_SONY_RIC
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default DEFAULT_SECURITY_DAC
 
 	help
@@ -231,14 +248,20 @@ choice
 		bool "AppArmor" if SECURITY_APPARMOR=y
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	config DEFAULT_SECURITY_YAMA
 		bool "Yama" if SECURITY_YAMA=y
 
 	config DEFAULT_SECURITY_SONY
 		bool "Sony RIC" if SECURITY_SONY_RIC=y
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	config DEFAULT_SECURITY_DAC
 		bool "Unix Discretionary Access Controls"
 
@@ -254,7 +277,12 @@ config DEFAULT_SECURITY
 	default "yama" if DEFAULT_SECURITY_YAMA
 	default "sony_ric" if DEFAULT_SECURITY_SONY
 =======
+<<<<<<< HEAD
+	default "yama" if DEFAULT_SECURITY_YAMA
+	default "sony_ric" if DEFAULT_SECURITY_SONY
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default "" if DEFAULT_SECURITY_DAC
 
 endmenu

@@ -29,8 +29,11 @@
 #include <asm/mipsregs.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/processor.h>
 #include <asm/pci/bridge.h>
@@ -79,8 +82,12 @@ static inline int alloc_level(int cpu, int irq)
 <<<<<<< HEAD
 		panic("Cpu %d flooded with devices", cpu);
 =======
+<<<<<<< HEAD
+		panic("Cpu %d flooded with devices", cpu);
+=======
 		panic("Cpu %d flooded with devices\n", cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__set_bit(level, hub->irq_alloc_mask);
 	si->level_to_irq[level] = irq;
@@ -106,8 +113,12 @@ static inline int find_level(cpuid_t *cpunum, int irq)
 <<<<<<< HEAD
 	panic("Could not identify cpu/level for irq %d", irq);
 =======
+<<<<<<< HEAD
+	panic("Could not identify cpu/level for irq %d", irq);
+=======
 	panic("Could not identify cpu/level for irq %d\n", irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -130,8 +141,12 @@ static int ms1bit(unsigned long x)
 <<<<<<< HEAD
  * This code is unnecessarily complex, because we do
 =======
+<<<<<<< HEAD
+ * This code is unnecessarily complex, because we do
+=======
  * This code is unnecessarily complex, because we do IRQF_DISABLED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * intr enabling. Basically, once we grab the set of intrs we need
  * to service, we must mask _all_ these interrupts; firstly, to make
  * sure the same intr does not intr again, causing recursion that
@@ -355,8 +370,12 @@ static struct irq_chip bridge_irq_type = {
 <<<<<<< HEAD
 void register_bridge_irq(unsigned int irq)
 =======
+<<<<<<< HEAD
+void register_bridge_irq(unsigned int irq)
+=======
 void __devinit register_bridge_irq(unsigned int irq)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	irq_set_chip_and_handler(irq, &bridge_irq_type, handle_level_irq);
 }
@@ -364,8 +383,12 @@ void __devinit register_bridge_irq(unsigned int irq)
 <<<<<<< HEAD
 int request_bridge_irq(struct bridge_controller *bc)
 =======
+<<<<<<< HEAD
+int request_bridge_irq(struct bridge_controller *bc)
+=======
 int __devinit request_bridge_irq(struct bridge_controller *bc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq = allocate_irqno();
 	int swlevel, cpu;

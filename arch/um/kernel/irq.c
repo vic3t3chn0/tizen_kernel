@@ -261,7 +261,11 @@ void deactivate_fd(int fd, int irqnum)
 <<<<<<< HEAD
 EXPORT_SYMBOL(deactivate_fd);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(deactivate_fd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called just before shutdown in order to provide a clean exec

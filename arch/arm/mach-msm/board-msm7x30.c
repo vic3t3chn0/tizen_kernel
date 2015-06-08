@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2009-2010, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -18,6 +22,11 @@
 
 #include <linux/err.h>
 =======
+<<<<<<< HEAD
+ */
+
+#include <linux/err.h>
+=======
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
@@ -25,12 +34,16 @@
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/irq.h>
 #include <linux/gpio.h>
 #include <linux/platform_device.h>
 #include <linux/delay.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bootmem.h>
 #include <linux/io.h>
 #ifdef CONFIG_SPI_QSD
@@ -7278,6 +7291,8 @@ static void __init msm7x30_allocate_memory_regions(void)
 	pr_debug("allocating %lu bytes at %p (%lx physical) for v4l2\n",
 		size, addr, __pa(addr));
 #endif
+<<<<<<< HEAD
+=======
 =======
 #include <linux/io.h>
 #include <linux/smsc911x.h>
@@ -7357,11 +7372,15 @@ static void __init msm7x30_init(void)
 
 	platform_add_devices(devices, ARRAY_SIZE(devices));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init msm7x30_map_io(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msm_shared_ram_phys = 0x00100000;
 	msm_map_msm7x30_io();
 	if (socinfo_init() < 0)
@@ -7466,6 +7485,8 @@ MACHINE_START(MSM8X55_SVLTE_FFA, "QCT MSM8X55 SVLTE FFA")
 	.init_early = msm7x30_init_early,
 	.handle_irq = vic_handle_irq,
 	.fixup = msm7x30_fixup,
+<<<<<<< HEAD
+=======
 =======
 	msm_map_msm7x30_io();
 	msm_clock_init(msm_clocks_7x30, msm_num_clocks_7x30);
@@ -7494,4 +7515,5 @@ MACHINE_START(MSM7X30_FLUID, "QCT MSM7X30 FLUID")
 	.init_machine = msm7x30_init,
 	.timer = &msm_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

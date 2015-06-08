@@ -25,14 +25,20 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 #include <linux/module.h>
 #include <linux/errno.h>
 #include <linux/sched.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/moduleparam.h>
 #include <net/9p/9p.h>
 #include <linux/fs.h>
@@ -48,6 +54,9 @@ EXPORT_SYMBOL(p9_debug_level);
 module_param_named(debug, p9_debug_level, uint, 0);
 MODULE_PARM_DESC(debug, "9P debugging level");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void _p9_debug(enum p9_debug_flags level, const char *func,
 		const char *fmt, ...)
@@ -71,8 +80,11 @@ void _p9_debug(enum p9_debug_flags level, const char *func,
 	va_end(args);
 }
 EXPORT_SYMBOL(_p9_debug);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -117,8 +129,12 @@ EXPORT_SYMBOL(v9fs_unregister_trans);
 <<<<<<< HEAD
 struct p9_trans_module *v9fs_get_trans_by_name(char *s)
 =======
+<<<<<<< HEAD
+struct p9_trans_module *v9fs_get_trans_by_name(char *s)
+=======
 struct p9_trans_module *v9fs_get_trans_by_name(const substring_t *name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct p9_trans_module *t, *found = NULL;
 
@@ -128,8 +144,12 @@ struct p9_trans_module *v9fs_get_trans_by_name(const substring_t *name)
 <<<<<<< HEAD
 		if (strcmp(t->name, s) == 0 &&
 =======
+<<<<<<< HEAD
+		if (strcmp(t->name, s) == 0 &&
+=======
 		if (strncmp(t->name, name->from, name->to-name->from) == 0 &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    try_module_get(t->owner)) {
 			found = t;
 			break;
@@ -192,8 +212,12 @@ static int __init init_p9(void)
 <<<<<<< HEAD
 	pr_info("Installing 9P2000 support\n");
 =======
+<<<<<<< HEAD
+	pr_info("Installing 9P2000 support\n");
+=======
 	printk(KERN_INFO "Installing 9P2000 support\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p9_trans_fd_init();
 
 	return ret;
@@ -209,8 +233,12 @@ static void __exit exit_p9(void)
 <<<<<<< HEAD
 	pr_info("Unloading 9P2000 support\n");
 =======
+<<<<<<< HEAD
+	pr_info("Unloading 9P2000 support\n");
+=======
 	printk(KERN_INFO "Unloading 9P2000 support\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	p9_trans_fd_exit();
 }

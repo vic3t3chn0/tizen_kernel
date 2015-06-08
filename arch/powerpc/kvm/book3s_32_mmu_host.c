@@ -154,7 +154,11 @@ int kvmppc_mmu_map_page(struct kvm_vcpu *vcpu, struct kvmppc_pte *orig_pte)
 <<<<<<< HEAD
 	int r = 0;
 =======
+<<<<<<< HEAD
+	int r = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Get host physical address for gpa */
 	hpaddr = kvmppc_gfn_to_pfn(vcpu, orig_pte->raddr >> PAGE_SHIFT);
@@ -165,8 +169,13 @@ int kvmppc_mmu_map_page(struct kvm_vcpu *vcpu, struct kvmppc_pte *orig_pte)
 		r = -EINVAL;
 		goto out;
 =======
+<<<<<<< HEAD
+		r = -EINVAL;
+		goto out;
+=======
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	hpaddr <<= PAGE_SHIFT;
 
@@ -262,8 +271,13 @@ next_pteg:
 out:
 	return r;
 =======
+<<<<<<< HEAD
+out:
+	return r;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct kvmppc_sid_map *create_sid_map(struct kvm_vcpu *vcpu, u64 gvsid)
@@ -315,8 +329,13 @@ int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr)
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	int r = 0;
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+	int r = 0;
+=======
 	struct kvmppc_book3s_shadow_vcpu *svcpu = to_svcpu(vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (vcpu->arch.mmu.esid_to_vsid(vcpu, esid, &gvsid)) {
 		/* Invalidate an entry */
@@ -325,8 +344,13 @@ int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr)
 		r = -ENOENT;
 		goto out;
 =======
+<<<<<<< HEAD
+		r = -ENOENT;
+		goto out;
+=======
 		return -ENOENT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	map = find_sid_vsid(vcpu, gvsid);
@@ -344,8 +368,14 @@ out:
 	svcpu_put(svcpu);
 	return r;
 =======
+<<<<<<< HEAD
+out:
+	svcpu_put(svcpu);
+	return r;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void kvmppc_mmu_flush_segments(struct kvm_vcpu *vcpu)
@@ -354,8 +384,12 @@ void kvmppc_mmu_flush_segments(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+=======
 	struct kvmppc_book3s_shadow_vcpu *svcpu = to_svcpu(vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprintk_sr("MMU: flushing all segments (%d)\n", ARRAY_SIZE(svcpu->sr));
 	for (i = 0; i < ARRAY_SIZE(svcpu->sr); i++)
@@ -364,7 +398,12 @@ void kvmppc_mmu_flush_segments(struct kvm_vcpu *vcpu)
 
 	svcpu_put(svcpu);
 =======
+<<<<<<< HEAD
+
+	svcpu_put(svcpu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void kvmppc_mmu_destroy(struct kvm_vcpu *vcpu)

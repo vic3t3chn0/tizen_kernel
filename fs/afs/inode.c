@@ -70,8 +70,12 @@ static int afs_inode_map_status(struct afs_vnode *vnode, struct key *key)
 <<<<<<< HEAD
 	set_nlink(inode, vnode->status.nlink);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, vnode->status.nlink);
+=======
 	inode->i_nlink		= vnode->status.nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_uid		= vnode->status.owner;
 	inode->i_gid		= 0;
 	inode->i_size		= vnode->status.size;
@@ -181,8 +185,12 @@ struct inode *afs_iget_autocell(struct inode *dir, const char *dev_name,
 <<<<<<< HEAD
 	set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 2);
+=======
 	inode->i_nlink		= 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_uid		= 0;
 	inode->i_gid		= 0;
 	inode->i_ctime.tv_sec	= get_seconds();

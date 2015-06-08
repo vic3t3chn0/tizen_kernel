@@ -366,8 +366,12 @@ repeat:
 <<<<<<< HEAD
 			set_nlink(inode, isonum_733(rr->u.PX.n_links));
 =======
+<<<<<<< HEAD
+			set_nlink(inode, isonum_733(rr->u.PX.n_links));
+=======
 			inode->i_nlink = isonum_733(rr->u.PX.n_links);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			inode->i_uid = isonum_733(rr->u.PX.uid);
 			inode->i_gid = isonum_733(rr->u.PX.gid);
 			break;
@@ -503,8 +507,12 @@ repeat:
 <<<<<<< HEAD
 			set_nlink(inode, reloc->i_nlink);
 =======
+<<<<<<< HEAD
+			set_nlink(inode, reloc->i_nlink);
+=======
 			inode->i_nlink = reloc->i_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			inode->i_uid = reloc->i_uid;
 			inode->i_gid = reloc->i_gid;
 			inode->i_rdev = reloc->i_rdev;
@@ -688,8 +696,11 @@ static int rock_ridge_symlink_readpage(struct file *file, struct page *page)
 	block = ei->i_iget5_block;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_lock(&sbi->s_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bh = sb_bread(inode->i_sb, block);
 	if (!bh)
 		goto out_noread;
@@ -761,8 +772,11 @@ repeat:
 	*rpnt = '\0';
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&sbi->s_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SetPageUptodate(page);
 	kunmap(page);
 	unlock_page(page);
@@ -781,8 +795,11 @@ fail:
 	brelse(bh);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&sbi->s_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error:
 	SetPageError(page);
 	kunmap(page);

@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/soc.h>
 #include <sound/pcm_params.h>
@@ -340,8 +344,12 @@ static int spdif_resume(struct snd_soc_dai *cpu_dai)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops spdif_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops spdif_dai_ops = {
+=======
 static struct snd_soc_dai_ops spdif_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk	= spdif_set_sysclk,
 	.trigger	= spdif_trigger,
 	.hw_params	= spdif_hw_params,
@@ -351,8 +359,12 @@ static struct snd_soc_dai_ops spdif_dai_ops = {
 <<<<<<< HEAD
 static struct snd_soc_dai_driver samsung_spdif_dai = {
 =======
+<<<<<<< HEAD
+static struct snd_soc_dai_driver samsung_spdif_dai = {
+=======
 struct snd_soc_dai_driver samsung_spdif_dai = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "samsung-spdif",
 	.playback = {
 		.stream_name = "S/PDIF Playback",
@@ -408,8 +420,12 @@ static __devinit int spdif_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		ret = -ENOENT;
 =======
+<<<<<<< HEAD
+		ret = -ENOENT;
+=======
 		ret = PTR_ERR(spdif->pclk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err0;
 	}
 	clk_enable(spdif->pclk);
@@ -420,8 +436,12 @@ static __devinit int spdif_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		ret = -ENOENT;
 =======
+<<<<<<< HEAD
+		ret = -ENOENT;
+=======
 		ret = PTR_ERR(spdif->sclk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err1;
 	}
 	clk_enable(spdif->sclk);
@@ -498,14 +518,21 @@ static struct platform_driver samsung_spdif_driver = {
 <<<<<<< HEAD
 	.remove	= __devexit_p(spdif_remove),
 =======
+<<<<<<< HEAD
+	.remove	= __devexit_p(spdif_remove),
+=======
 	.remove	= spdif_remove,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver	= {
 		.name	= "samsung-spdif",
 		.owner	= THIS_MODULE,
 	},
 };
 
+<<<<<<< HEAD
+module_platform_driver(samsung_spdif_driver);
+=======
 <<<<<<< HEAD
 module_platform_driver(samsung_spdif_driver);
 =======
@@ -521,6 +548,7 @@ static void __exit spdif_exit(void)
 }
 module_exit(spdif_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Seungwhan Youn, <sw.youn@samsung.com>");
 MODULE_DESCRIPTION("Samsung S/PDIF Controller Driver");

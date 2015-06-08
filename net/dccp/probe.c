@@ -153,6 +153,9 @@ static const struct file_operations dccpprobe_fops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int setup_jprobe(void)
 {
 	int ret = register_jprobe(&dccp_send_probe);
@@ -164,8 +167,11 @@ static __init int setup_jprobe(void)
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int dccpprobe_init(void)
 {
 	int ret = -ENOMEM;
@@ -180,9 +186,13 @@ static __init int dccpprobe_init(void)
 <<<<<<< HEAD
 	ret = setup_jprobe();
 =======
+<<<<<<< HEAD
+	ret = setup_jprobe();
+=======
 	try_then_request_module((ret = register_jprobe(&dccp_send_probe)) == 0,
 				"dccp");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto err1;
 

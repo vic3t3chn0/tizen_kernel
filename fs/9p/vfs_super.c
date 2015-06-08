@@ -118,11 +118,16 @@ static struct dentry *v9fs_mount(struct file_system_type *fs_type, int flags,
 	struct dentry *root = NULL;
 	struct v9fs_session_info *v9ses = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	umode_t mode = S_IRWXUGO | S_ISVTX;
 	struct p9_fid *fid;
 	int retval = 0;
 
 	p9_debug(P9_DEBUG_VFS, "\n");
+<<<<<<< HEAD
+=======
 =======
 	int mode = S_IRWXUGO | S_ISVTX;
 	struct p9_fid *fid;
@@ -130,6 +135,7 @@ static struct dentry *v9fs_mount(struct file_system_type *fs_type, int flags,
 
 	P9_DPRINTK(P9_DEBUG_VFS, " \n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	v9ses = kzalloc(sizeof(struct v9fs_session_info), GFP_KERNEL);
 	if (!v9ses)
@@ -167,10 +173,15 @@ static struct dentry *v9fs_mount(struct file_system_type *fs_type, int flags,
 	root = d_make_root(inode);
 	if (!root) {
 =======
+<<<<<<< HEAD
+	root = d_make_root(inode);
+	if (!root) {
+=======
 	root = d_alloc_root(inode);
 	if (!root) {
 		iput(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retval = -ENOMEM;
 		goto release_sb;
 	}
@@ -207,8 +218,12 @@ static struct dentry *v9fs_mount(struct file_system_type *fs_type, int flags,
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, " simple set mount, return 0\n");
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, " simple set mount, return 0\n");
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, " simple set mount, return 0\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return dget(sb->s_root);
 
 clunk_fid:
@@ -243,8 +258,12 @@ static void v9fs_kill_super(struct super_block *s)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, " %p\n", s);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, " %p\n", s);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, " %p\n", s);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kill_anon_super(s);
 
@@ -255,8 +274,12 @@ static void v9fs_kill_super(struct super_block *s)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "exiting kill_super\n");
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "exiting kill_super\n");
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "exiting kill_super\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -288,8 +311,12 @@ static int v9fs_statfs(struct dentry *dentry, struct kstatfs *buf)
 <<<<<<< HEAD
 			buf->f_type = rs.type;
 =======
+<<<<<<< HEAD
+			buf->f_type = rs.type;
+=======
 			buf->f_type = V9FS_MAGIC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			buf->f_bsize = rs.bsize;
 			buf->f_blocks = rs.blocks;
 			buf->f_bfree = rs.bfree;
@@ -335,8 +362,12 @@ static int v9fs_write_inode(struct inode *inode,
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "%s: inode %p\n", __func__, inode);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "%s: inode %p\n", __func__, inode);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "%s: inode %p\n", __func__, inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	v9inode = V9FS_I(inode);
 	if (!v9inode->writeback_fid)
 		return 0;
@@ -362,8 +393,12 @@ static int v9fs_write_inode_dotl(struct inode *inode,
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "%s: inode %p\n", __func__, inode);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "%s: inode %p\n", __func__, inode);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "%s: inode %p\n", __func__, inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	v9inode = V9FS_I(inode);
 	if (!v9inode->writeback_fid)
 		return 0;

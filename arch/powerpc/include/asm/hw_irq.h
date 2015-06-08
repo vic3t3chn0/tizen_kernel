@@ -12,6 +12,9 @@
 #include <asm/processor.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC64
 
 /*
@@ -33,8 +36,11 @@
 
 extern void __replay_interrupt(unsigned int vector);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void timer_interrupt(struct pt_regs *);
 
 #ifdef CONFIG_PPC64
@@ -68,8 +74,11 @@ static inline unsigned long arch_local_irq_disable(void)
 extern void arch_local_irq_restore(unsigned long);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void iseries_handle_interrupts(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void arch_local_irq_enable(void)
 {
@@ -96,6 +105,9 @@ static inline bool arch_irqs_disabled(void)
 #define __hard_irq_disable()	asm volatile("wrteei 0" : : : "memory");
 #else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __hard_irq_enable()	__mtmsrd(local_paca->kernel_msr | MSR_EE, 1)
 #define __hard_irq_disable()	__mtmsrd(local_paca->kernel_msr, 1)
 #endif
@@ -123,6 +135,8 @@ static inline bool arch_irq_disabled_regs(struct pt_regs *regs)
 {
 	return !regs->softe;
 }
+<<<<<<< HEAD
+=======
 =======
 #define __hard_irq_enable()	__mtmsrd(mfmsr() | MSR_EE, 1)
 #define __hard_irq_disable()	__mtmsrd(mfmsr() & ~MSR_EE, 1)
@@ -135,6 +149,7 @@ static inline bool arch_irq_disabled_regs(struct pt_regs *regs)
 		get_paca()->hard_enabled = 0;	\
 	} while(0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* CONFIG_PPC64 */
 
@@ -197,6 +212,9 @@ static inline bool arch_irqs_disabled(void)
 #define hard_irq_disable()		arch_local_irq_disable()
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool arch_irq_disabled_regs(struct pt_regs *regs)
 {
 	return !(regs->msr & MSR_EE);
@@ -204,8 +222,11 @@ static inline bool arch_irq_disabled_regs(struct pt_regs *regs)
 
 static inline void may_hard_irq_enable(void) { }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PPC64 */
 
 #define ARCH_IRQ_INIT_FLAGS	IRQ_NOREQUEST
@@ -219,6 +240,10 @@ struct irq_chip;
 <<<<<<< HEAD
 #endif  /* __ASSEMBLY__ */
 =======
+<<<<<<< HEAD
+#endif  /* __ASSEMBLY__ */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __KERNEL__ */
 #endif	/* _ASM_POWERPC_HW_IRQ_H */

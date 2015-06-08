@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/time.h>
 
@@ -40,7 +44,12 @@ static struct clock_event_device clkevt;
 #define RM9200_TIMER_LATCH	((AT91_SLOW_CLOCK + HZ/2) / HZ)
 
 =======
+<<<<<<< HEAD
+#define RM9200_TIMER_LATCH	((AT91_SLOW_CLOCK + HZ/2) / HZ)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The ST_CRTR is updated asynchronously to the master clock ... but
  * the updates as seen by the CPU don't seem to be strictly monotonic.
@@ -55,10 +64,16 @@ static inline unsigned long read_CRTR(void)
 	do {
 		x2 = at91_st_read(AT91_ST_CRTR);
 =======
+<<<<<<< HEAD
+	x1 = at91_st_read(AT91_ST_CRTR);
+	do {
+		x2 = at91_st_read(AT91_ST_CRTR);
+=======
 	x1 = at91_sys_read(AT91_ST_CRTR);
 	do {
 		x2 = at91_sys_read(AT91_ST_CRTR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (x1 == x2)
 			break;
 		x1 = x2;
@@ -74,8 +89,12 @@ static irqreturn_t at91rm9200_timer_interrupt(int irq, void *dev_id)
 <<<<<<< HEAD
 	u32	sr = at91_st_read(AT91_ST_SR) & irqmask;
 =======
+<<<<<<< HEAD
+	u32	sr = at91_st_read(AT91_ST_SR) & irqmask;
+=======
 	u32	sr = at91_sys_read(AT91_ST_SR) & irqmask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * irqs should be disabled here, but as the irq is shared they are only
@@ -97,9 +116,14 @@ static irqreturn_t at91rm9200_timer_interrupt(int irq, void *dev_id)
 		while (((crtr - last_crtr) & AT91_ST_CRTV) >= RM9200_TIMER_LATCH) {
 			last_crtr += RM9200_TIMER_LATCH;
 =======
+<<<<<<< HEAD
+		while (((crtr - last_crtr) & AT91_ST_CRTV) >= RM9200_TIMER_LATCH) {
+			last_crtr += RM9200_TIMER_LATCH;
+=======
 		while (((crtr - last_crtr) & AT91_ST_CRTV) >= LATCH) {
 			last_crtr += LATCH;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			clkevt.event_handler(&clkevt);
 		}
 		return IRQ_HANDLED;
@@ -136,9 +160,14 @@ clkevt32k_mode(enum clock_event_mode mode, struct clock_event_device *dev)
 	at91_st_write(AT91_ST_IDR, AT91_ST_PITS | AT91_ST_ALMS);
 	at91_st_read(AT91_ST_SR);
 =======
+<<<<<<< HEAD
+	at91_st_write(AT91_ST_IDR, AT91_ST_PITS | AT91_ST_ALMS);
+	at91_st_read(AT91_ST_SR);
+=======
 	at91_sys_write(AT91_ST_IDR, AT91_ST_PITS | AT91_ST_ALMS);
 	(void) at91_sys_read(AT91_ST_SR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	last_crtr = read_CRTR();
 	switch (mode) {
@@ -148,8 +177,12 @@ clkevt32k_mode(enum clock_event_mode mode, struct clock_event_device *dev)
 <<<<<<< HEAD
 		at91_st_write(AT91_ST_PIMR, RM9200_TIMER_LATCH);
 =======
+<<<<<<< HEAD
+		at91_st_write(AT91_ST_PIMR, RM9200_TIMER_LATCH);
+=======
 		at91_sys_write(AT91_ST_PIMR, LATCH);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case CLOCK_EVT_MODE_ONESHOT:
 		/* ALM for oneshot irqs, set by next_event()
@@ -159,8 +192,12 @@ clkevt32k_mode(enum clock_event_mode mode, struct clock_event_device *dev)
 <<<<<<< HEAD
 		at91_st_write(AT91_ST_RTAR, last_crtr);
 =======
+<<<<<<< HEAD
+		at91_st_write(AT91_ST_RTAR, last_crtr);
+=======
 		at91_sys_write(AT91_ST_RTAR, last_crtr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case CLOCK_EVT_MODE_SHUTDOWN:
 	case CLOCK_EVT_MODE_UNUSED:
@@ -171,8 +208,12 @@ clkevt32k_mode(enum clock_event_mode mode, struct clock_event_device *dev)
 <<<<<<< HEAD
 	at91_st_write(AT91_ST_IER, irqmask);
 =======
+<<<<<<< HEAD
+	at91_st_write(AT91_ST_IER, irqmask);
+=======
 	at91_sys_write(AT91_ST_IER, irqmask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -196,12 +237,17 @@ clkevt32k_next_event(unsigned long delta, struct clock_event_device *dev)
 
 	/* Cancel any pending alarm; flush any pending IRQ */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_st_write(AT91_ST_RTAR, alm);
 	at91_st_read(AT91_ST_SR);
 
 	/* Schedule alarm by writing RTAR. */
 	alm += delta;
 	at91_st_write(AT91_ST_RTAR, alm);
+<<<<<<< HEAD
+=======
 =======
 	at91_sys_write(AT91_ST_RTAR, alm);
 	(void) at91_sys_read(AT91_ST_SR);
@@ -210,6 +256,7 @@ clkevt32k_next_event(unsigned long delta, struct clock_event_device *dev)
 	alm += delta;
 	at91_sys_write(AT91_ST_RTAR, alm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return status;
 }
@@ -224,6 +271,9 @@ static struct clock_event_device clkevt = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __iomem *at91_st_base;
 EXPORT_SYMBOL_GPL(at91_st_base);
 
@@ -234,8 +284,11 @@ void __init at91rm9200_ioremap_st(u32 addr)
 		panic("Impossible to ioremap ST\n");
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ST (system timer) module supports both clockevents and clocksource.
  */
@@ -247,10 +300,16 @@ void __init at91rm9200_timer_init(void)
 		AT91_ST_PITS | AT91_ST_WDOVF | AT91_ST_RTTINC | AT91_ST_ALMS);
 	at91_st_read(AT91_ST_SR);
 =======
+<<<<<<< HEAD
+	at91_st_write(AT91_ST_IDR,
+		AT91_ST_PITS | AT91_ST_WDOVF | AT91_ST_RTTINC | AT91_ST_ALMS);
+	at91_st_read(AT91_ST_SR);
+=======
 	at91_sys_write(AT91_ST_IDR,
 		AT91_ST_PITS | AT91_ST_WDOVF | AT91_ST_RTTINC | AT91_ST_ALMS);
 	(void) at91_sys_read(AT91_ST_SR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Make IRQs happen for the system timer */
 	setup_irq(AT91_ID_SYS, &at91rm9200_timer_irq);
@@ -262,8 +321,12 @@ void __init at91rm9200_timer_init(void)
 <<<<<<< HEAD
 	at91_st_write(AT91_ST_RTMR, 1);
 =======
+<<<<<<< HEAD
+	at91_st_write(AT91_ST_RTMR, 1);
+=======
 	at91_sys_write(AT91_ST_RTMR, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Setup timer clockevent, with minimum of two ticks (important!!) */
 	clkevt.mult = div_sc(AT91_SLOW_CLOCK, NSEC_PER_SEC, clkevt.shift);

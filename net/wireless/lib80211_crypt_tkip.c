@@ -103,8 +103,11 @@ static void *lib80211_tkip_init(int key_idx)
 	if (IS_ERR(priv->tx_tfm_arc4)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_DEBUG pr_fmt("could not allocate crypto API arc4\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->tx_tfm_arc4 = NULL;
 		goto fail;
 	}
@@ -114,8 +117,11 @@ static void *lib80211_tkip_init(int key_idx)
 	if (IS_ERR(priv->tx_tfm_michael)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_DEBUG pr_fmt("could not allocate crypto API michael_mic\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->tx_tfm_michael = NULL;
 		goto fail;
 	}
@@ -125,8 +131,11 @@ static void *lib80211_tkip_init(int key_idx)
 	if (IS_ERR(priv->rx_tfm_arc4)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_DEBUG pr_fmt("could not allocate crypto API arc4\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->rx_tfm_arc4 = NULL;
 		goto fail;
 	}
@@ -136,8 +145,11 @@ static void *lib80211_tkip_init(int key_idx)
 	if (IS_ERR(priv->rx_tfm_michael)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_DEBUG pr_fmt("could not allocate crypto API michael_mic\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		priv->rx_tfm_michael = NULL;
 		goto fail;
 	}

@@ -35,10 +35,16 @@
 
 #include <asm/signal.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+
+#include <asm/signal.h>
+=======
 #include <asm/irq.h>
 #include <asm/signal.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/pci.h>
 #include <asm/irq_regs.h>
 
@@ -172,8 +178,12 @@
 <<<<<<< HEAD
 static DEFINE_RAW_SPINLOCK(v3_lock);
 =======
+<<<<<<< HEAD
+static DEFINE_RAW_SPINLOCK(v3_lock);
+=======
 static DEFINE_SPINLOCK(v3_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PCI_BUS_NONMEM_START	0x00000000
 #define PCI_BUS_NONMEM_SIZE	SZ_256M
@@ -297,8 +307,12 @@ static int v3_read_config(struct pci_bus *bus, unsigned int devfn, int where,
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&v3_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&v3_lock, flags);
+=======
 	spin_lock_irqsave(&v3_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addr = v3_open_config_window(bus, devfn, where);
 
 	switch (size) {
@@ -319,8 +333,12 @@ static int v3_read_config(struct pci_bus *bus, unsigned int devfn, int where,
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&v3_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&v3_lock, flags);
+=======
 	spin_unlock_irqrestore(&v3_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*val = v;
 	return PCIBIOS_SUCCESSFUL;
@@ -335,8 +353,12 @@ static int v3_write_config(struct pci_bus *bus, unsigned int devfn, int where,
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&v3_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&v3_lock, flags);
+=======
 	spin_lock_irqsave(&v3_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addr = v3_open_config_window(bus, devfn, where);
 
 	switch (size) {
@@ -360,8 +382,12 @@ static int v3_write_config(struct pci_bus *bus, unsigned int devfn, int where,
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&v3_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&v3_lock, flags);
+=======
 	spin_unlock_irqrestore(&v3_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return PCIBIOS_SUCCESSFUL;
 }
@@ -388,8 +414,12 @@ static struct resource pre_mem = {
 <<<<<<< HEAD
 static int __init pci_v3_setup_resources(struct pci_sys_data *sys)
 =======
+<<<<<<< HEAD
+static int __init pci_v3_setup_resources(struct pci_sys_data *sys)
+=======
 static int __init pci_v3_setup_resources(struct resource **resource)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (request_resource(&iomem_resource, &non_mem)) {
 		printk(KERN_ERR "PCI: unable to allocate non-prefetchable "
@@ -405,6 +435,9 @@ static int __init pci_v3_setup_resources(struct resource **resource)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * the IO resource for this bus
 	 * the mem resource for this bus
 	 * the prefetch mem resource for this bus
@@ -413,6 +446,8 @@ static int __init pci_v3_setup_resources(struct resource **resource)
 				&ioport_resource, sys->io_offset);
 	pci_add_resource_offset(&sys->resources, &non_mem, sys->mem_offset);
 	pci_add_resource_offset(&sys->resources, &pre_mem, sys->mem_offset);
+<<<<<<< HEAD
+=======
 =======
 	 * bus->resource[0] is the IO resource for this bus
 	 * bus->resource[1] is the mem resource for this bus
@@ -422,6 +457,7 @@ static int __init pci_v3_setup_resources(struct resource **resource)
 	resource[1] = &non_mem;
 	resource[2] = &pre_mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
@@ -525,8 +561,12 @@ int __init pci_v3_setup(int nr, struct pci_sys_data *sys)
 <<<<<<< HEAD
 		ret = pci_v3_setup_resources(sys);
 =======
+<<<<<<< HEAD
+		ret = pci_v3_setup_resources(sys);
+=======
 		ret = pci_v3_setup_resources(sys->resource);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return ret;
@@ -538,8 +578,13 @@ struct pci_bus * __init pci_v3_scan_bus(int nr, struct pci_sys_data *sys)
 	return pci_scan_root_bus(NULL, sys->busnr, &pci_v3_ops, sys,
 				 &sys->resources);
 =======
+<<<<<<< HEAD
+	return pci_scan_root_bus(NULL, sys->busnr, &pci_v3_ops, sys,
+				 &sys->resources);
+=======
 	return pci_scan_bus(sys->busnr, &pci_v3_ops, sys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -557,7 +602,13 @@ void __init pci_v3_preinit(void)
 	pcibios_min_mem = 0x00100000;
 
 =======
+<<<<<<< HEAD
+	pcibios_min_io = 0x6000;
+	pcibios_min_mem = 0x00100000;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Hook in our fault handler for PCI errors
 	 */
@@ -569,8 +620,12 @@ void __init pci_v3_preinit(void)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&v3_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&v3_lock, flags);
+=======
 	spin_lock_irqsave(&v3_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Unlock V3 registers, but only if they were previously locked.
@@ -646,8 +701,12 @@ void __init pci_v3_preinit(void)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&v3_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&v3_lock, flags);
+=======
 	spin_unlock_irqrestore(&v3_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init pci_v3_postinit(void)

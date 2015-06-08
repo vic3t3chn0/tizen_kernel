@@ -3,15 +3,21 @@
 #include <linux/if_vlan.h>
 #include <linux/netpoll.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include "vlan.h"
 
 bool vlan_do_receive(struct sk_buff **skbp, bool last_handler)
+<<<<<<< HEAD
+=======
 =======
 #include "vlan.h"
 
 bool vlan_do_receive(struct sk_buff **skbp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *skb = *skbp;
 	u16 vlan_id = skb->vlan_tci & VLAN_VID_MASK;
@@ -21,13 +27,19 @@ bool vlan_do_receive(struct sk_buff **skbp)
 	vlan_dev = vlan_find_dev(skb->dev, vlan_id);
 	if (!vlan_dev) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Only the last call to vlan_do_receive() should change
 		 * pkt_type to PACKET_OTHERHOST
 		 */
 		if (vlan_id && last_handler)
+<<<<<<< HEAD
+=======
 =======
 		if (vlan_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			skb->pkt_type = PACKET_OTHERHOST;
 		return false;
 	}
@@ -49,8 +61,12 @@ bool vlan_do_receive(struct sk_buff **skbp)
 <<<<<<< HEAD
 	if (!(vlan_dev_priv(vlan_dev)->flags & VLAN_FLAG_REORDER_HDR)) {
 =======
+<<<<<<< HEAD
+	if (!(vlan_dev_priv(vlan_dev)->flags & VLAN_FLAG_REORDER_HDR)) {
+=======
 	if (!(vlan_dev_info(vlan_dev)->flags & VLAN_FLAG_REORDER_HDR)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned int offset = skb->data - skb_mac_header(skb);
 
 		/*
@@ -72,8 +88,12 @@ bool vlan_do_receive(struct sk_buff **skbp)
 <<<<<<< HEAD
 	rx_stats = this_cpu_ptr(vlan_dev_priv(vlan_dev)->vlan_pcpu_stats);
 =======
+<<<<<<< HEAD
+	rx_stats = this_cpu_ptr(vlan_dev_priv(vlan_dev)->vlan_pcpu_stats);
+=======
 	rx_stats = this_cpu_ptr(vlan_dev_info(vlan_dev)->vlan_pcpu_stats);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u64_stats_update_begin(&rx_stats->syncp);
 	rx_stats->rx_packets++;
@@ -86,6 +106,9 @@ bool vlan_do_receive(struct sk_buff **skbp)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Must be invoked with rcu_read_lock or with RTNL. */
 struct net_device *__vlan_find_dev_deep(struct net_device *real_dev,
 					u16 vlan_id)
@@ -118,6 +141,8 @@ u16 vlan_dev_vlan_id(const struct net_device *dev)
 	return vlan_dev_priv(dev)->vlan_id;
 }
 EXPORT_SYMBOL(vlan_dev_vlan_id);
+<<<<<<< HEAD
+=======
 =======
 struct net_device *vlan_dev_real_dev(const struct net_device *dev)
 {
@@ -156,6 +181,7 @@ gro_result_t vlan_gro_frags(struct napi_struct *napi, struct vlan_group *grp,
 }
 EXPORT_SYMBOL(vlan_gro_frags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct sk_buff *vlan_reorder_header(struct sk_buff *skb)
 {
@@ -164,10 +190,15 @@ static struct sk_buff *vlan_reorder_header(struct sk_buff *skb)
 	memmove(skb->data - ETH_HLEN, skb->data - VLAN_ETH_HLEN, 2 * ETH_ALEN);
 	skb->mac_header += VLAN_HLEN;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_reset_mac_len(skb);
 	return skb;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	return skb;
 }
@@ -206,6 +237,7 @@ static void vlan_set_encap_proto(struct sk_buff *skb, struct vlan_hdr *vhdr)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sk_buff *vlan_untag(struct sk_buff *skb)
 {
 	struct vlan_hdr *vhdr;
@@ -238,9 +270,12 @@ struct sk_buff *vlan_untag(struct sk_buff *skb)
 	skb_reset_transport_header(skb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	skb_reset_mac_len(skb);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return skb;
 
 err_free:
@@ -248,6 +283,9 @@ err_free:
 	return NULL;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -471,5 +509,8 @@ void vlan_vids_del_by_dev(struct net_device *dev,
 		vlan_vid_del(dev, vid_info->vid);
 }
 EXPORT_SYMBOL(vlan_vids_del_by_dev);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

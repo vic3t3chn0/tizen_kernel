@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/clk.h>
 #include <linux/io.h>
@@ -666,8 +670,12 @@ int s3c_i2sv2_probe(struct snd_soc_dai *dai,
 <<<<<<< HEAD
 		return -ENOENT;
 =======
+<<<<<<< HEAD
+		return -ENOENT;
+=======
 		return PTR_ERR(i2s->iis_pclk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	clk_enable(i2s->iis_pclk);

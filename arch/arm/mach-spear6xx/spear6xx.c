@@ -10,13 +10,21 @@
  * Copyright 2012 Stefan Roese <sr@denx.de>
  *
 =======
+<<<<<<< HEAD
+ * Copyright 2012 Stefan Roese <sr@denx.de>
+ *
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This file is licensed under the terms of the GNU General Public
  * License version 2. This program is licensed "as is" without any
  * warranty of any kind, whether express or implied.
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/of.h>
 #include <linux/of_address.h>
 #include <linux/of_irq.h>
@@ -25,6 +33,8 @@
 #include <asm/mach/arch.h>
 #include <mach/generic.h>
 #include <mach/hardware.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/types.h>
 #include <linux/amba/pl061.h>
@@ -127,6 +137,7 @@ void __init spear6xx_init_irq(void)
 	vic_init((void __iomem *)VA_SPEAR6XX_CPU_VIC_SEC_BASE, 32, ~0, 0);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Following will create static virtual/physical mappings */
 static struct map_desc spear6xx_io_desc[] __initdata = {
@@ -198,6 +209,9 @@ struct sys_timer spear6xx_timer = {
 	.init = spear6xx_timer_init,
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __init spear600_dt_init(void)
 {
@@ -228,5 +242,8 @@ DT_MACHINE_START(SPEAR600_DT, "ST SPEAr600 (Flattened Device Tree)")
 	.restart	=	spear_restart,
 	.dt_compat	=	spear600_dt_board_compat,
 MACHINE_END
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

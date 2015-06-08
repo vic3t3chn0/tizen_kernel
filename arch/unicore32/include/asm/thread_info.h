@@ -137,8 +137,11 @@ static inline struct thread_info *current_thread_info(void)
 #define TIF_MEMDIE		18
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TIF_FREEZE		19
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TIF_RESTORE_SIGMASK	20
 
 #define _TIF_SIGPENDING		(1 << TIF_SIGPENDING)
@@ -147,8 +150,11 @@ static inline struct thread_info *current_thread_info(void)
 #define _TIF_SYSCALL_TRACE	(1 << TIF_SYSCALL_TRACE)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _TIF_FREEZE		(1 << TIF_FREEZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define _TIF_RESTORE_SIGMASK	(1 << TIF_RESTORE_SIGMASK)
 
 /*

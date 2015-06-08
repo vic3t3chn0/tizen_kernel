@@ -37,7 +37,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
@@ -47,16 +51,22 @@
 #include <plat/board.h>
 #include <plat/usb.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 #include <plat/mcspi.h>
 #include <video/omapdss.h>
 #include <video/omap-panel-dvi.h>
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/mcspi.h>
 #include <video/omapdss.h>
 #include <video/omap-panel-generic-dpi.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "mux.h"
 #include "sdram-micron-mt46h32m32lf-6.h"
@@ -126,6 +136,8 @@ static inline void __init omap3evm_init_smsc911x(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct clk *l3ck;
 	unsigned int rate;
 
@@ -136,6 +148,7 @@ static inline void __init omap3evm_init_smsc911x(void)
 		rate = clk_get_rate(l3ck);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Configure ethernet controller reset gpio */
 	if (cpu_is_omap3430()) {
 		if (get_omap3_evm_rev() == OMAP3EVM_BOARD_GEN_1)
@@ -264,9 +277,13 @@ static void omap3_evm_disable_dvi(struct omap_dss_device *dssdev)
 <<<<<<< HEAD
 static struct panel_dvi_platform_data dvi_panel = {
 =======
+<<<<<<< HEAD
+static struct panel_dvi_platform_data dvi_panel = {
+=======
 static struct panel_generic_dpi_data dvi_panel = {
 	.name			= "generic",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.platform_enable	= omap3_evm_enable_dvi,
 	.platform_disable	= omap3_evm_disable_dvi,
 };
@@ -277,8 +294,12 @@ static struct omap_dss_device omap3_evm_dvi_device = {
 <<<<<<< HEAD
 	.driver_name		= "dvi",
 =======
+<<<<<<< HEAD
+	.driver_name		= "dvi",
+=======
 	.driver_name		= "generic_dpi_panel",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.data			= &dvi_panel,
 	.phy.dpi.data_lines	= 24,
 };
@@ -296,12 +317,17 @@ static struct omap_dss_board_info omap3_evm_dss_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply omap3evm_vmmc1_supply[] = {
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.0"),
 };
 
 static struct regulator_consumer_supply omap3evm_vsim_supply[] = {
 	REGULATOR_SUPPLY("vmmc_aux", "omap_hsmmc.0"),
+<<<<<<< HEAD
+=======
 =======
 static struct regulator_consumer_supply omap3evm_vmmc1_supply = {
 	.supply			= "vmmc",
@@ -310,6 +336,7 @@ static struct regulator_consumer_supply omap3evm_vmmc1_supply = {
 static struct regulator_consumer_supply omap3evm_vsim_supply = {
 	.supply			= "vmmc_aux",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VMMC1 for MMC1 pins CMD, CLK, DAT0..DAT3 (20 mA, plus card == max 220 mA) */
@@ -327,9 +354,14 @@ static struct regulator_init_data omap3evm_vmmc1 = {
 	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vmmc1_supply),
 	.consumer_supplies	= omap3evm_vmmc1_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vmmc1_supply),
+	.consumer_supplies	= omap3evm_vmmc1_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &omap3evm_vmmc1_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VSIM for MMC1 pins DAT4..DAT7 (2 mA, plus card == max 50 mA) */
@@ -347,9 +379,14 @@ static struct regulator_init_data omap3evm_vsim = {
 	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vsim_supply),
 	.consumer_supplies	= omap3evm_vsim_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vsim_supply),
+	.consumer_supplies	= omap3evm_vsim_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &omap3evm_vsim_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct omap2_hsmmc_info mmc[] = {
@@ -361,7 +398,11 @@ static struct omap2_hsmmc_info mmc[] = {
 <<<<<<< HEAD
 		.deferred	= true,
 =======
+<<<<<<< HEAD
+		.deferred	= true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 #ifdef CONFIG_WL12XX_PLATFORM_DATA
 	{
@@ -410,6 +451,10 @@ static int omap3evm_twl_gpio_setup(struct device *dev,
 	mmc[0].gpio_cd = gpio + 0;
 	omap_hsmmc_late_init(mmc);
 =======
+<<<<<<< HEAD
+	mmc[0].gpio_cd = gpio + 0;
+	omap_hsmmc_late_init(mmc);
+=======
 	omap_mux_init_gpio(63, OMAP_PIN_INPUT);
 	mmc[0].gpio_cd = gpio + 0;
 	omap2_hsmmc_init(mmc);
@@ -418,6 +463,7 @@ static int omap3evm_twl_gpio_setup(struct device *dev,
 	omap3evm_vmmc1_supply.dev = mmc[0].dev;
 	omap3evm_vsim_supply.dev = mmc[0].dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Most GPIOs are for USB OTG.  Some are mostly sent to
@@ -438,8 +484,12 @@ static int omap3evm_twl_gpio_setup(struct device *dev,
 <<<<<<< HEAD
 	gpio_leds[0].gpio = gpio + TWL4030_GPIO_MAX + 1;
 =======
+<<<<<<< HEAD
+	gpio_leds[0].gpio = gpio + TWL4030_GPIO_MAX + 1;
+=======
 	gpio_leds[2].gpio = gpio + TWL4030_GPIO_MAX + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_device_register(&leds_gpio);
 
@@ -456,11 +506,14 @@ static struct twl4030_gpio_platform_data omap3evm_gpio_data = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct twl4030_usb_data omap3evm_usb_data = {
 	.usb_mode	= T2_USB_MODE_ULPI,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static uint32_t board_keymap[] = {
 	KEY(0, 0, KEY_LEFT),
 	KEY(0, 1, KEY_DOWN),
@@ -496,11 +549,16 @@ static struct twl4030_keypad_data omap3evm_kp_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ads7846 on SPI */
 static struct regulator_consumer_supply omap3evm_vio_supply[] = {
 	REGULATOR_SUPPLY("vcc", "spi1.0"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 static struct twl4030_madc_platform_data omap3evm_madc_data = {
 	.irq_line	= 1,
@@ -556,6 +614,7 @@ static struct regulator_consumer_supply omap3evm_vio_supply =
 	REGULATOR_SUPPLY("vcc", "spi1.0");
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* VIO for ads7846 */
 static struct regulator_init_data omap3evm_vio = {
 	.constraints = {
@@ -571,9 +630,14 @@ static struct regulator_init_data omap3evm_vio = {
 	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vio_supply),
 	.consumer_supplies	= omap3evm_vio_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vio_supply),
+	.consumer_supplies	= omap3evm_vio_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &omap3evm_vio_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef CONFIG_WL12XX_PLATFORM_DATA
@@ -586,9 +650,15 @@ static struct regulator_consumer_supply omap3evm_vmmc2_supply[] = {
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.1"),
 };
 =======
+<<<<<<< HEAD
+static struct regulator_consumer_supply omap3evm_vmmc2_supply[] = {
+	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.1"),
+};
+=======
 static struct regulator_consumer_supply omap3evm_vmmc2_supply =
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.1");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* VMMC2 for driving the WL12xx module */
 static struct regulator_init_data omap3evm_vmmc2 = {
@@ -599,9 +669,14 @@ static struct regulator_init_data omap3evm_vmmc2 = {
 	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vmmc2_supply),
 	.consumer_supplies	= omap3evm_vmmc2_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(omap3evm_vmmc2_supply),
+	.consumer_supplies	= omap3evm_vmmc2_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies = &omap3evm_vmmc2_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct fixed_voltage_config omap3evm_vwlan = {
@@ -625,13 +700,21 @@ static struct platform_device omap3evm_wlan_regulator = {
 struct wl12xx_platform_data omap3evm_wlan_data __initdata = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq = OMAP_GPIO_IRQ(OMAP3EVM_WLAN_IRQ_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.board_ref_clock = WL12XX_REFCLOCK_38, /* 38.4 MHz */
 };
 #endif
 
 static struct twl4030_platform_data omap3evm_twldata = {
+<<<<<<< HEAD
+	/* platform_data for children goes here */
+	.keypad		= &omap3evm_kp_data,
+	.gpio		= &omap3evm_gpio_data,
+=======
 <<<<<<< HEAD
 	/* platform_data for children goes here */
 	.keypad		= &omap3evm_kp_data,
@@ -649,6 +732,7 @@ static struct twl4030_platform_data omap3evm_twldata = {
 	.vdac		= &omap3_evm_vdac,
 	.vpll2		= &omap3_evm_vpll2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.vio		= &omap3evm_vio,
 	.vmmc1		= &omap3evm_vmmc1,
 	.vsim		= &omap3evm_vsim,
@@ -657,6 +741,9 @@ static struct twl4030_platform_data omap3evm_twldata = {
 static int __init omap3_evm_i2c_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_get_config(&omap3evm_twldata,
 			TWL_COMMON_PDATA_USB | TWL_COMMON_PDATA_MADC |
 			TWL_COMMON_PDATA_AUDIO,
@@ -665,8 +752,11 @@ static int __init omap3_evm_i2c_init(void)
 	omap3evm_twldata.vdac->constraints.apply_uV = true;
 	omap3evm_twldata.vpll2->constraints.apply_uV = true;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_init("twl4030", &omap3evm_twldata);
 	omap_register_i2c_bus(2, 400, NULL, 0);
 	omap_register_i2c_bus(3, 400, NULL, 0);
@@ -678,6 +768,8 @@ static struct omap_board_config_kernel omap3_evm_config[] __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init omap3_evm_init_early(void)
 {
 	omap2_init_common_infrastructure();
@@ -685,6 +777,7 @@ static void __init omap3_evm_init_early(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct usbhs_omap_board_data usbhs_bdata __initdata = {
 
 	.port_mode[0] = OMAP_USBHS_PORT_MODE_UNUSED,
@@ -783,6 +876,9 @@ static struct gpio omap3_evm_ehci_gpios[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap3_evm_wl12xx_init(void)
 {
 #ifdef CONFIG_WL12XX_PLATFORM_DATA
@@ -808,11 +904,14 @@ static void __init omap3_evm_init(void)
 {
 	omap3_evm_get_revision();
 	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
+<<<<<<< HEAD
+=======
 =======
 static void __init omap3_evm_init(void)
 {
 	omap3_evm_get_revision();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cpu_is_omap3630())
 		omap3_mux_init(omap36x_board_mux, OMAP_PACKAGE_CBB);
@@ -827,7 +926,13 @@ static void __init omap3_evm_init(void)
 	omap_hsmmc_init(mmc);
 
 =======
+<<<<<<< HEAD
+	omap_mux_init_gpio(63, OMAP_PIN_INPUT);
+	omap_hsmmc_init(mmc);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_evm_i2c_init();
 
 	omap_display_init(&omap3_evm_dss_data);
@@ -836,7 +941,11 @@ static void __init omap3_evm_init(void)
 <<<<<<< HEAD
 	omap_sdrc_init(mt46h32m32lf6_sdrc_params, NULL);
 =======
+<<<<<<< HEAD
+	omap_sdrc_init(mt46h32m32lf6_sdrc_params, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* OMAP3EVM uses ISP1504 phy and so register nop transceiver */
 	usb_nop_xceiv_register();
@@ -870,6 +979,9 @@ static void __init omap3_evm_init(void)
 <<<<<<< HEAD
 	omap3_evm_wl12xx_init();
 =======
+<<<<<<< HEAD
+	omap3_evm_wl12xx_init();
+=======
 
 #ifdef CONFIG_WL12XX_PLATFORM_DATA
 	/* WL12xx WLAN Init */
@@ -878,11 +990,15 @@ static void __init omap3_evm_init(void)
 	platform_device_register(&omap3evm_wlan_regulator);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(OMAP3EVM, "OMAP3 EVM")
 	/* Maintainer: Syed Mohammed Khasim - Texas Instruments */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= omap_reserve,
 	.map_io		= omap3_map_io,
@@ -892,6 +1008,8 @@ MACHINE_START(OMAP3EVM, "OMAP3 EVM")
 	.init_machine	= omap3_evm_init,
 	.timer		= &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= omap_reserve,
@@ -901,4 +1019,5 @@ MACHINE_START(OMAP3EVM, "OMAP3 EVM")
 	.init_machine	= omap3_evm_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

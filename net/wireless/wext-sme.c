@@ -8,7 +8,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/etherdevice.h>
 #include <linux/if_arp.h>
 #include <linux/slab.h>
@@ -16,7 +20,11 @@
 <<<<<<< HEAD
 #include <net/cfg80211-wext.h>
 =======
+<<<<<<< HEAD
+#include <net/cfg80211-wext.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "wext-compat.h"
 #include "nl80211.h"
 
@@ -41,7 +49,13 @@ int cfg80211_mgd_wext_connect(struct cfg80211_registered_device *rdev,
 	wdev->wext.connect.bg_scan_period = -1;
 
 =======
+<<<<<<< HEAD
+	/* Use default background scan period */
+	wdev->wext.connect.bg_scan_period = -1;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wdev->wext.keys) {
 		wdev->wext.keys->def = wdev->wext.default_key;
 		wdev->wext.keys->defmgmt = wdev->wext.default_mgmt_key;
@@ -381,8 +395,11 @@ int cfg80211_wext_siwgenie(struct net_device *dev,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL_GPL(cfg80211_wext_siwgenie);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int cfg80211_wext_siwmlme(struct net_device *dev,
 			  struct iw_request_info *info,
@@ -421,5 +438,8 @@ int cfg80211_wext_siwmlme(struct net_device *dev,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL_GPL(cfg80211_wext_siwmlme);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

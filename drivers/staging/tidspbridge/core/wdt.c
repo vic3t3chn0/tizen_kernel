@@ -25,8 +25,16 @@
 #include <dspbridge/host_os.h>
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_TIDSPBRIDGE_WDT3
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_TIDSPBRIDGE_WDT3
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP34XX_WDT3_BASE 		(L4_PER_34XX_BASE + 0x30000)
 
 static struct dsp_wdt_setting dsp_wdt;
@@ -55,7 +63,18 @@ int dsp_wdt_init(void)
 	int ret = 0;
 
 	dsp_wdt.sm_wdt = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dsp_wdt.reg_base = ioremap(OMAP34XX_WDT3_BASE, SZ_4K);
+	if (!dsp_wdt.reg_base)
+		return -ENOMEM;
+
+=======
 	dsp_wdt.reg_base = OMAP2_L4_IO_ADDRESS(OMAP34XX_WDT3_BASE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dsp_wdt.reg_base = OMAP2_L4_IO_ADDRESS(OMAP34XX_WDT3_BASE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tasklet_init(&dsp_wdt.wdt3_tasklet, dsp_wdt_dpc, 0);
 
 	dsp_wdt.fclk = clk_get(NULL, "wdt3_fck");
@@ -84,7 +103,15 @@ int dsp_wdt_init(void)
 void dsp_wdt_sm_set(void *data)
 {
 	dsp_wdt.sm_wdt = data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dsp_wdt.sm_wdt->wdt_overflow = 5;	/* in seconds */
+=======
 	dsp_wdt.sm_wdt->wdt_overflow = CONFIG_TIDSPBRIDGE_WDT_TIMEOUT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dsp_wdt.sm_wdt->wdt_overflow = CONFIG_TIDSPBRIDGE_WDT_TIMEOUT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -101,6 +128,15 @@ void dsp_wdt_exit(void)
 	dsp_wdt.fclk = NULL;
 	dsp_wdt.iclk = NULL;
 	dsp_wdt.sm_wdt = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (dsp_wdt.reg_base)
+		iounmap(dsp_wdt.reg_base);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dsp_wdt.reg_base = NULL;
 }
 
@@ -128,6 +164,11 @@ void dsp_wdt_enable(bool enable)
 		clk_disable(dsp_wdt.fclk);
 	}
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else
 void dsp_wdt_enable(bool enable)
@@ -148,3 +189,7 @@ void dsp_wdt_exit(void)
 }
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -412,8 +412,12 @@ static int s6000_i2s_dai_probe(struct snd_soc_dai *dai)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops s6000_i2s_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops s6000_i2s_dai_ops = {
+=======
 static struct snd_soc_dai_ops s6000_i2s_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_fmt = s6000_i2s_set_dai_fmt,
 	.set_clkdiv = s6000_i2s_set_clkdiv,
 	.hw_params = s6000_i2s_hw_params,
@@ -611,6 +615,9 @@ static struct platform_driver s6000_i2s_driver = {
 <<<<<<< HEAD
 module_platform_driver(s6000_i2s_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(s6000_i2s_driver);
+=======
 static int __init s6000_i2s_init(void)
 {
 	return platform_driver_register(&s6000_i2s_driver);
@@ -623,6 +630,7 @@ static void __exit s6000_i2s_exit(void)
 }
 module_exit(s6000_i2s_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Daniel Gloeckner");
 MODULE_DESCRIPTION("Stretch s6000 family I2S SoC Interface");

@@ -5,6 +5,9 @@
 #include <asm/glue-cache.h>
 #include <asm/glue-proc.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.text
 
 /*
@@ -30,6 +33,8 @@ ENTRY(__cpu_suspend)
 	mov	r1, r4			@ size of save block
 	mov	r2, r5			@ virtual SP
 	ldr	r3, =sleep_save_sp
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 	.text
@@ -54,10 +59,13 @@ ENTRY(cpu_suspend)
 	stmfd	sp!, {r1, r2, r3, ip}	@ save v:p, virt SP, retfn, phys resume fn
 	ldr	r3, =sleep_save_sp
 	add	r2, sp, r1		@ convert SP to phys
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 	ALT_SMP(mrc p15, 0, lr, c0, c0, 5)
 	ALT_UP(mov lr, #0)
 	and	lr, lr, #15
+<<<<<<< HEAD
+=======
 	str	r2, [r3, lr, lsl #2]	@ save phys SP
 #else
 	str	r2, [r3]		@ save phys SP
@@ -78,6 +86,7 @@ ENTRY(cpu_suspend)
 	ALT_UP(mov lr, #0)
 	and	lr, lr, #15
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	add	r3, r3, lr, lsl #2
 #endif
 	bl	__cpu_suspend_save
@@ -114,6 +123,8 @@ cpu_resume_after_mmu:
 	bl	cpu_init		@ restore the und/abt/irq banked regs
 	mov	r0, #0			@ return zero on success
 	ldmfd	sp!, {r4 - r11, pc}
+<<<<<<< HEAD
+=======
 =======
 	str	r2, [r3, lr, lsl #2]	@ save phys SP
 #else
@@ -165,6 +176,7 @@ cpu_resume_after_mmu:
 	mcr	p15, 0, r0, c1, c0, 0	@ turn on D-cache
 	mov	pc, lr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENDPROC(cpu_resume_after_mmu)
 
 /*
@@ -188,11 +200,16 @@ ENTRY(cpu_resume)
 #endif
 	setmode	PSR_I_BIT | PSR_F_BIT | SVC_MODE, r1  @ set SVC, irqs off
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@ load phys pgd, stack, resume fn
   ARM(	ldmia	r0!, {r1, sp, pc}	)
 THUMB(	ldmia	r0!, {r1, r2, r3}	)
 THUMB(	mov	sp, r2			)
 THUMB(	bx	r3			)
+<<<<<<< HEAD
+=======
 =======
 #ifdef MULTI_CPU
 	@ load v:p, stack, return fn, resume fn
@@ -209,6 +226,7 @@ THUMB(	mov	sp, r2			)
 	b	cpu_do_resume
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENDPROC(cpu_resume)
 
 sleep_save_sp:

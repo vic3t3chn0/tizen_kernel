@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2008-2011 Freescale Semiconductor, Inc. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2008-2011 Freescale Semiconductor, Inc. All rights reserved.
+=======
  * Copyright (C) 2008 Freescale Semiconductor, Inc. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author: Yu Liu, <yu.liu@freescale.com>
  *
@@ -27,6 +31,9 @@
 #define E500_TLB_NUM   2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define E500_TLB_VALID 1
 #define E500_TLB_DIRTY 2
 
@@ -71,6 +78,8 @@ struct kvmppc_vcpu_e500 {
 	 */
 	struct tlbe_ref *tlb_refs[E500_TLB_NUM];
 	unsigned int host_tlb1_nv;
+<<<<<<< HEAD
+=======
 =======
 struct tlbe{
 	u32 mas1;
@@ -91,11 +100,17 @@ struct kvmppc_vcpu_e500 {
 	unsigned int shadow_tlb_size[E500_TLB_NUM];
 	unsigned int guest_tlb_nv[E500_TLB_NUM];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u32 host_pid[E500_PID_NUM];
 	u32 pid[E500_PID_NUM];
 	u32 svr;
 
+<<<<<<< HEAD
+	/* vcpu id table */
+	struct vcpu_id_table *idt;
+
+=======
 <<<<<<< HEAD
 	/* vcpu id table */
 	struct vcpu_id_table *idt;
@@ -110,6 +125,7 @@ struct kvmppc_vcpu_e500 {
 	u32 mas6;
 	u32 mas7;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 l1csr0;
 	u32 l1csr1;
 	u32 hid0;
@@ -123,7 +139,13 @@ struct kvmppc_vcpu_e500 {
 	int num_shared_tlb_pages;
 
 =======
+<<<<<<< HEAD
+	struct page **shared_tlb_pages;
+	int num_shared_tlb_pages;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvm_vcpu vcpu;
 };
 

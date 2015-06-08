@@ -18,15 +18,21 @@
 #include <linux/pm.h>
 #include <linux/i2c.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spi/spi.h>
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
 #include <linux/of_device.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/platform_device.h>
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
@@ -94,14 +100,20 @@ SND_SOC_DAPM_OUTPUT("VOUTRN"),
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route wm8741_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route wm8741_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route intercon[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "VOUTLP", NULL, "DACL" },
 	{ "VOUTLN", NULL, "DACL" },
 	{ "VOUTRP", NULL, "DACR" },
 	{ "VOUTRN", NULL, "DACR" },
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int wm8741_add_widgets(struct snd_soc_codec *codec)
@@ -116,6 +128,7 @@ static int wm8741_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct {
 	int value;
 	int ratio;
@@ -397,8 +410,12 @@ static int wm8741_set_dai_fmt(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8741_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8741_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8741_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= wm8741_startup,
 	.hw_params	= wm8741_hw_params,
 	.set_sysclk	= wm8741_set_dai_sysclk,
@@ -423,6 +440,9 @@ static int wm8741_resume(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_cache_sync(codec);
 =======
+<<<<<<< HEAD
+	snd_soc_cache_sync(codec);
+=======
 	u16 *cache = codec->reg_cache;
 	int i;
 
@@ -433,6 +453,7 @@ static int wm8741_resume(struct snd_soc_codec *codec)
 		snd_soc_write(codec, i, cache[i]);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 #else
@@ -445,6 +466,9 @@ static int wm8741_probe(struct snd_soc_codec *codec)
 	struct wm8741_priv *wm8741 = snd_soc_codec_get_drvdata(codec);
 	int ret = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	for (i = 0; i < ARRAY_SIZE(wm8741->supplies); i++)
@@ -463,8 +487,11 @@ static int wm8741_probe(struct snd_soc_codec *codec)
 		dev_err(codec->dev, "Failed to enable supplies: %d\n", ret);
 		goto err_get;
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = snd_soc_codec_set_cache_io(codec, 7, 9, wm8741->control_type);
 	if (ret != 0) {
@@ -472,8 +499,12 @@ static int wm8741_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		goto err_enable;
 =======
+<<<<<<< HEAD
+		goto err_enable;
+=======
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ret = wm8741_reset(codec);
@@ -482,8 +513,12 @@ static int wm8741_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		goto err_enable;
 =======
+<<<<<<< HEAD
+		goto err_enable;
+=======
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Change some default settings - latch VU */
@@ -494,6 +529,9 @@ static int wm8741_probe(struct snd_soc_codec *codec)
 	snd_soc_update_bits(codec, WM8741_DACRLSB_ATTENUATION,
 			    WM8741_UPDATERL, WM8741_UPDATERL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_update_bits(codec, WM8741_DACRMSB_ATTENUATION,
 			    WM8741_UPDATERM, WM8741_UPDATERM);
 
@@ -521,6 +559,8 @@ static int wm8741_remove(struct snd_soc_codec *codec)
 static struct snd_soc_codec_driver soc_codec_dev_wm8741 = {
 	.probe =	wm8741_probe,
 	.remove =	wm8741_remove,
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_update_bits(codec, WM8741_DACRLSB_ATTENUATION,
 			    WM8741_UPDATERM, WM8741_UPDATERM);
@@ -536,11 +576,15 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8741 = {
 static struct snd_soc_codec_driver soc_codec_dev_wm8741 = {
 	.probe =	wm8741_probe,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.resume =	wm8741_resume,
 	.reg_cache_size = ARRAY_SIZE(wm8741_reg_defaults),
 	.reg_word_size = sizeof(u16),
 	.reg_cache_default = wm8741_reg_defaults,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = wm8741_snd_controls,
 	.num_controls = ARRAY_SIZE(wm8741_snd_controls),
@@ -555,9 +599,12 @@ static const struct of_device_id wm8741_of_match[] = {
 	{ }
 };
 MODULE_DEVICE_TABLE(of, wm8741_of_match);
+<<<<<<< HEAD
+=======
 =======
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 static int wm8741_i2c_probe(struct i2c_client *i2c,
@@ -565,6 +612,9 @@ static int wm8741_i2c_probe(struct i2c_client *i2c,
 {
 	struct wm8741_priv *wm8741;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	wm8741 = devm_kzalloc(&i2c->dev, sizeof(struct wm8741_priv),
@@ -578,6 +628,8 @@ static int wm8741_i2c_probe(struct i2c_client *i2c,
 	ret = snd_soc_register_codec(&i2c->dev,
 				     &soc_codec_dev_wm8741, &wm8741_dai, 1);
 
+<<<<<<< HEAD
+=======
 =======
 	int ret, i;
 
@@ -619,11 +671,15 @@ err_get:
 err:
 	kfree(wm8741);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static int wm8741_i2c_remove(struct i2c_client *client)
 {
+<<<<<<< HEAD
+	snd_soc_unregister_codec(&client->dev);
+=======
 <<<<<<< HEAD
 	snd_soc_unregister_codec(&client->dev);
 =======
@@ -633,6 +689,7 @@ static int wm8741_i2c_remove(struct i2c_client *client)
 	regulator_bulk_free(ARRAY_SIZE(wm8741->supplies), wm8741->supplies);
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -649,9 +706,15 @@ static struct i2c_driver wm8741_i2c_driver = {
 		.owner = THIS_MODULE,
 		.of_match_table = wm8741_of_match,
 =======
+<<<<<<< HEAD
+		.name = "wm8741",
+		.owner = THIS_MODULE,
+		.of_match_table = wm8741_of_match,
+=======
 		.name = "wm8741-codec",
 		.owner = THIS_MODULE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe =    wm8741_i2c_probe,
 	.remove =   wm8741_i2c_remove,
@@ -660,6 +723,9 @@ static struct i2c_driver wm8741_i2c_driver = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SPI_MASTER)
 static int __devinit wm8741_spi_probe(struct spi_device *spi)
 {
@@ -696,8 +762,11 @@ static struct spi_driver wm8741_spi_driver = {
 };
 #endif /* CONFIG_SPI_MASTER */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init wm8741_modinit(void)
 {
 	int ret = 0;
@@ -708,6 +777,9 @@ static int __init wm8741_modinit(void)
 		pr_err("Failed to register WM8741 I2C driver: %d\n", ret);
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SPI_MASTER)
 	ret = spi_register_driver(&wm8741_spi_driver);
 	if (ret != 0) {
@@ -715,8 +787,11 @@ static int __init wm8741_modinit(void)
 		       ret);
 	}
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -729,7 +804,13 @@ static void __exit wm8741_exit(void)
 	spi_unregister_driver(&wm8741_spi_driver);
 #endif
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SPI_MASTER)
+	spi_unregister_driver(&wm8741_spi_driver);
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	i2c_del_driver(&wm8741_i2c_driver);
 #endif

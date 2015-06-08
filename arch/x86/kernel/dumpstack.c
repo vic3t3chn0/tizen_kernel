@@ -42,10 +42,16 @@ print_ftrace_graph_addr(unsigned long addr, void *data,
 	unsigned long ret_addr;
 	int index;
 =======
+<<<<<<< HEAD
+	struct task_struct *task;
+	unsigned long ret_addr;
+	int index;
+=======
 	struct task_struct *task = tinfo->task;
 	unsigned long ret_addr;
 	int index = task->curr_ret_stack;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (addr != (unsigned long)return_to_handler)
 		return;
@@ -55,7 +61,13 @@ print_ftrace_graph_addr(unsigned long addr, void *data,
 	index = task->curr_ret_stack;
 
 =======
+<<<<<<< HEAD
+	task = tinfo->task;
+	index = task->curr_ret_stack;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!task->ret_stack || index < *graph)
 		return;
 
@@ -268,8 +280,13 @@ int __kprobes __die(const char *str, struct pt_regs *regs, long err)
 	printk(KERN_DEFAULT
 	       "%s: %04lx [#%d] ", str, err & 0xffff, ++die_counter);
 =======
+<<<<<<< HEAD
+	printk(KERN_DEFAULT
+	       "%s: %04lx [#%d] ", str, err & 0xffff, ++die_counter);
+=======
 	printk(KERN_EMERG "%s: %04lx [#%d] ", str, err & 0xffff, ++die_counter);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PREEMPT
 	printk("PREEMPT ");
 #endif
@@ -284,8 +301,12 @@ int __kprobes __die(const char *str, struct pt_regs *regs, long err)
 <<<<<<< HEAD
 			current->thread.trap_nr, SIGSEGV) == NOTIFY_STOP)
 =======
+<<<<<<< HEAD
+			current->thread.trap_nr, SIGSEGV) == NOTIFY_STOP)
+=======
 			current->thread.trap_no, SIGSEGV) == NOTIFY_STOP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 
 	show_registers(regs);

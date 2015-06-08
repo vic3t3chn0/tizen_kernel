@@ -14,8 +14,21 @@
 #include <linux/module.h>
 #include <linux/i2c.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/v4l2-mediabus.h>
+
+#include <media/soc_camera.h>
+#include <media/v4l2-chip-ident.h>
+#include <media/v4l2-ctrls.h>
+=======
 #include <media/v4l2-chip-ident.h>
 #include <media/soc_camera.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <media/v4l2-chip-ident.h>
+#include <media/soc_camera.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define to_ov9740(sd)		container_of(sd, struct ov9740_priv, subdev)
 
@@ -44,12 +57,27 @@
 #define OV9740_Y_ADDR_START_LO		0x0347
 #define OV9740_X_ADDR_END_HI		0x0348
 #define OV9740_X_ADDR_END_LO		0x0349
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define OV9740_Y_ADDR_END_HI		0x034a
+#define OV9740_Y_ADDR_END_LO		0x034b
+#define OV9740_X_OUTPUT_SIZE_HI		0x034c
+#define OV9740_X_OUTPUT_SIZE_LO		0x034d
+#define OV9740_Y_OUTPUT_SIZE_HI		0x034e
+#define OV9740_Y_OUTPUT_SIZE_LO		0x034f
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OV9740_Y_ADDR_END_HI		0x034A
 #define OV9740_Y_ADDR_END_LO		0x034B
 #define OV9740_X_OUTPUT_SIZE_HI		0x034C
 #define OV9740_X_OUTPUT_SIZE_LO		0x034D
 #define OV9740_Y_OUTPUT_SIZE_HI		0x034E
 #define OV9740_Y_OUTPUT_SIZE_LO		0x034F
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* IO Control Registers */
 #define OV9740_IO_CREL00		0x3002
@@ -68,6 +96,13 @@
 #define OV9740_ANALOG_CTRL04		0x3604
 #define OV9740_ANALOG_CTRL10		0x3610
 #define OV9740_ANALOG_CTRL12		0x3612
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define OV9740_ANALOG_CTRL15		0x3615
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OV9740_ANALOG_CTRL20		0x3620
 #define OV9740_ANALOG_CTRL21		0x3621
 #define OV9740_ANALOG_CTRL22		0x3622
@@ -89,6 +124,33 @@
 #define OV9740_TIMING_CTRL35		0x3835
 
 /* Banding Filter */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define OV9740_AEC_MAXEXPO_60_H		0x3a02
+#define OV9740_AEC_MAXEXPO_60_L		0x3a03
+#define OV9740_AEC_B50_STEP_HI		0x3a08
+#define OV9740_AEC_B50_STEP_LO		0x3a09
+#define OV9740_AEC_B60_STEP_HI		0x3a0a
+#define OV9740_AEC_B60_STEP_LO		0x3a0b
+#define OV9740_AEC_CTRL0D		0x3a0d
+#define OV9740_AEC_CTRL0E		0x3a0e
+#define OV9740_AEC_MAXEXPO_50_H		0x3a14
+#define OV9740_AEC_MAXEXPO_50_L		0x3a15
+
+/* AEC/AGC Control */
+#define OV9740_AEC_ENABLE		0x3503
+#define OV9740_GAIN_CEILING_01		0x3a18
+#define OV9740_GAIN_CEILING_02		0x3a19
+#define OV9740_AEC_HI_THRESHOLD		0x3a11
+#define OV9740_AEC_3A1A			0x3a1a
+#define OV9740_AEC_CTRL1B_WPT2		0x3a1b
+#define OV9740_AEC_CTRL0F_WPT		0x3a0f
+#define OV9740_AEC_CTRL10_BPT		0x3a10
+#define OV9740_AEC_CTRL1E_BPT2		0x3a1e
+#define OV9740_AEC_LO_THRESHOLD		0x3a1f
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OV9740_AEC_MAXEXPO_60_H		0x3A02
 #define OV9740_AEC_MAXEXPO_60_L		0x3A03
 #define OV9740_AEC_B50_STEP_HI		0x3A08
@@ -111,6 +173,10 @@
 #define OV9740_AEC_CTRL10_BPT		0x3A10
 #define OV9740_AEC_CTRL1E_BPT2		0x3A1E
 #define OV9740_AEC_LO_THRESHOLD		0x3A1F
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* BLC Control */
 #define OV9740_BLC_AUTO_ENABLE		0x4002
@@ -132,7 +198,15 @@
 #define OV9740_VT_SYS_CLK_DIV		0x0303
 #define OV9740_VT_PIX_CLK_DIV		0x0301
 #define OV9740_PLL_CTRL3010		0x3010
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define OV9740_VFIFO_CTRL00		0x460e
+=======
 #define OV9740_VFIFO_CTRL00		0x460E
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define OV9740_VFIFO_CTRL00		0x460E
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ISP Control */
 #define OV9740_ISP_CTRL00		0x5000
@@ -141,9 +215,21 @@
 #define OV9740_ISP_CTRL05		0x5005
 #define OV9740_ISP_CTRL12		0x5012
 #define OV9740_ISP_CTRL19		0x5019
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define OV9740_ISP_CTRL1A		0x501a
+#define OV9740_ISP_CTRL1E		0x501e
+#define OV9740_ISP_CTRL1F		0x501f
+=======
 #define OV9740_ISP_CTRL1A		0x501A
 #define OV9740_ISP_CTRL1E		0x501E
 #define OV9740_ISP_CTRL1F		0x501F
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define OV9740_ISP_CTRL1A		0x501A
+#define OV9740_ISP_CTRL1E		0x501E
+#define OV9740_ISP_CTRL1F		0x501F
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OV9740_ISP_CTRL20		0x5020
 #define OV9740_ISP_CTRL21		0x5021
 
@@ -158,12 +244,27 @@
 #define OV9740_AWB_ADV_CTRL04		0x5187
 #define OV9740_AWB_ADV_CTRL05		0x5188
 #define OV9740_AWB_ADV_CTRL06		0x5189
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define OV9740_AWB_ADV_CTRL07		0x518a
+#define OV9740_AWB_ADV_CTRL08		0x518b
+#define OV9740_AWB_ADV_CTRL09		0x518c
+#define OV9740_AWB_ADV_CTRL10		0x518d
+#define OV9740_AWB_ADV_CTRL11		0x518e
+#define OV9740_AWB_CTRL0F		0x518f
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OV9740_AWB_ADV_CTRL07		0x518A
 #define OV9740_AWB_ADV_CTRL08		0x518B
 #define OV9740_AWB_ADV_CTRL09		0x518C
 #define OV9740_AWB_ADV_CTRL10		0x518D
 #define OV9740_AWB_ADV_CTRL11		0x518E
 #define OV9740_AWB_CTRL0F		0x518F
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OV9740_AWB_CTRL10		0x5190
 #define OV9740_AWB_CTRL11		0x5191
 #define OV9740_AWB_CTRL12		0x5192
@@ -180,6 +281,13 @@
 #define OV9740_MIPI_CTRL_3012		0x3012
 #define OV9740_SC_CMMM_MIPI_CTR		0x3014
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define OV9740_MAX_WIDTH		1280
+#define OV9740_MAX_HEIGHT		720
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* supported resolutions */
 enum {
 	OV9740_VGA,
@@ -201,6 +309,10 @@ static struct ov9740_resolution ov9740_resolutions[] = {
 		.height	= 720,
 	},
 };
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Misc. structures */
 struct ov9740_reg {
@@ -210,6 +322,13 @@ struct ov9740_reg {
 
 struct ov9740_priv {
 	struct v4l2_subdev		subdev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct v4l2_ctrl_handler	hdl;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int				ident;
 	u16				model;
@@ -219,9 +338,28 @@ struct ov9740_priv {
 
 	bool				flag_vflip;
 	bool				flag_hflip;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* For suspend/resume. */
+	struct v4l2_mbus_framefmt	current_mf;
+	bool				current_enable;
 };
 
 static const struct ov9740_reg ov9740_defaults[] = {
+	/* Software Reset */
+	{ OV9740_SOFTWARE_RESET,	0x01 },
+
+=======
+};
+
+static const struct ov9740_reg ov9740_defaults[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+};
+
+static const struct ov9740_reg ov9740_defaults[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Banding Filter */
 	{ OV9740_AEC_B50_STEP_HI,	0x00 },
 	{ OV9740_AEC_B50_STEP_LO,	0xe8 },
@@ -241,6 +379,25 @@ static const struct ov9740_reg ov9740_defaults[] = {
 	/* Un-documented OV9740 registers */
 	{ 0x5800, 0x29 }, { 0x5801, 0x25 }, { 0x5802, 0x20 }, { 0x5803, 0x21 },
 	{ 0x5804, 0x26 }, { 0x5805, 0x2e }, { 0x5806, 0x11 }, { 0x5807, 0x0c },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x5808, 0x09 }, { 0x5809, 0x0a }, { 0x580a, 0x0e }, { 0x580b, 0x16 },
+	{ 0x580c, 0x06 }, { 0x580d, 0x02 }, { 0x580e, 0x00 }, { 0x580f, 0x00 },
+	{ 0x5810, 0x04 }, { 0x5811, 0x0a }, { 0x5812, 0x05 }, { 0x5813, 0x02 },
+	{ 0x5814, 0x00 }, { 0x5815, 0x00 }, { 0x5816, 0x03 }, { 0x5817, 0x09 },
+	{ 0x5818, 0x0f }, { 0x5819, 0x0a }, { 0x581a, 0x07 }, { 0x581b, 0x08 },
+	{ 0x581c, 0x0b }, { 0x581d, 0x14 }, { 0x581e, 0x28 }, { 0x581f, 0x23 },
+	{ 0x5820, 0x1d }, { 0x5821, 0x1e }, { 0x5822, 0x24 }, { 0x5823, 0x2a },
+	{ 0x5824, 0x4f }, { 0x5825, 0x6f }, { 0x5826, 0x5f }, { 0x5827, 0x7f },
+	{ 0x5828, 0x9f }, { 0x5829, 0x5f }, { 0x582a, 0x8f }, { 0x582b, 0x9e },
+	{ 0x582c, 0x8f }, { 0x582d, 0x9f }, { 0x582e, 0x4f }, { 0x582f, 0x87 },
+	{ 0x5830, 0x86 }, { 0x5831, 0x97 }, { 0x5832, 0xae }, { 0x5833, 0x3f },
+	{ 0x5834, 0x8e }, { 0x5835, 0x7c }, { 0x5836, 0x7e }, { 0x5837, 0xaf },
+	{ 0x5838, 0x8f }, { 0x5839, 0x8f }, { 0x583a, 0x9f }, { 0x583b, 0x7f },
+	{ 0x583c, 0x5f },
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0x5808, 0x09 }, { 0x5809, 0x0a }, { 0x580A, 0x0e }, { 0x580B, 0x16 },
 	{ 0x580C, 0x06 }, { 0x580D, 0x02 }, { 0x580E, 0x00 }, { 0x580F, 0x00 },
 	{ 0x5810, 0x04 }, { 0x5811, 0x0a }, { 0x5812, 0x05 }, { 0x5813, 0x02 },
@@ -255,22 +412,51 @@ static const struct ov9740_reg ov9740_defaults[] = {
 	{ 0x5834, 0x8e }, { 0x5835, 0x7c }, { 0x5836, 0x7e }, { 0x5837, 0xaf },
 	{ 0x5838, 0x8f }, { 0x5839, 0x8f }, { 0x583A, 0x9f }, { 0x583B, 0x7f },
 	{ 0x583C, 0x5f },
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Y Gamma */
 	{ 0x5480, 0x07 }, { 0x5481, 0x18 }, { 0x5482, 0x2c }, { 0x5483, 0x4e },
 	{ 0x5484, 0x5e }, { 0x5485, 0x6b }, { 0x5486, 0x77 }, { 0x5487, 0x82 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x5488, 0x8c }, { 0x5489, 0x95 }, { 0x548a, 0xa4 }, { 0x548b, 0xb1 },
+	{ 0x548c, 0xc6 }, { 0x548d, 0xd8 }, { 0x548e, 0xe9 },
+=======
 	{ 0x5488, 0x8c }, { 0x5489, 0x95 }, { 0x548A, 0xa4 }, { 0x548B, 0xb1 },
 	{ 0x548C, 0xc6 }, { 0x548D, 0xd8 }, { 0x548E, 0xe9 },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ 0x5488, 0x8c }, { 0x5489, 0x95 }, { 0x548A, 0xa4 }, { 0x548B, 0xb1 },
+	{ 0x548C, 0xc6 }, { 0x548D, 0xd8 }, { 0x548E, 0xe9 },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* UV Gamma */
 	{ 0x5490, 0x0f }, { 0x5491, 0xff }, { 0x5492, 0x0d }, { 0x5493, 0x05 },
 	{ 0x5494, 0x07 }, { 0x5495, 0x1a }, { 0x5496, 0x04 }, { 0x5497, 0x01 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x5498, 0x03 }, { 0x5499, 0x53 }, { 0x549a, 0x02 }, { 0x549b, 0xeb },
+	{ 0x549c, 0x02 }, { 0x549d, 0xa0 }, { 0x549e, 0x02 }, { 0x549f, 0x67 },
+	{ 0x54a0, 0x02 }, { 0x54a1, 0x3b }, { 0x54a2, 0x02 }, { 0x54a3, 0x18 },
+	{ 0x54a4, 0x01 }, { 0x54a5, 0xe7 }, { 0x54a6, 0x01 }, { 0x54a7, 0xc3 },
+	{ 0x54a8, 0x01 }, { 0x54a9, 0x94 }, { 0x54aa, 0x01 }, { 0x54ab, 0x72 },
+	{ 0x54ac, 0x01 }, { 0x54ad, 0x57 },
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0x5498, 0x03 }, { 0x5499, 0x53 }, { 0x549A, 0x02 }, { 0x549B, 0xeb },
 	{ 0x549C, 0x02 }, { 0x549D, 0xa0 }, { 0x549E, 0x02 }, { 0x549F, 0x67 },
 	{ 0x54A0, 0x02 }, { 0x54A1, 0x3b }, { 0x54A2, 0x02 }, { 0x54A3, 0x18 },
 	{ 0x54A4, 0x01 }, { 0x54A5, 0xe7 }, { 0x54A6, 0x01 }, { 0x54A7, 0xc3 },
 	{ 0x54A8, 0x01 }, { 0x54A9, 0x94 }, { 0x54AA, 0x01 }, { 0x54AB, 0x72 },
 	{ 0x54AC, 0x01 }, { 0x54AD, 0x57 },
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* AWB */
 	{ OV9740_AWB_CTRL00,		0xf0 },
@@ -296,18 +482,44 @@ static const struct ov9740_reg ov9740_defaults[] = {
 	{ OV9740_AWB_CTRL14,		0x00 },
 
 	/* CIP */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x530d, 0x12 },
+=======
 	{ 0x530D, 0x12 },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ 0x530D, 0x12 },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* CMX */
 	{ 0x5380, 0x01 }, { 0x5381, 0x00 }, { 0x5382, 0x00 }, { 0x5383, 0x17 },
 	{ 0x5384, 0x00 }, { 0x5385, 0x01 }, { 0x5386, 0x00 }, { 0x5387, 0x00 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x5388, 0x00 }, { 0x5389, 0xe0 }, { 0x538a, 0x00 }, { 0x538b, 0x20 },
+	{ 0x538c, 0x00 }, { 0x538d, 0x00 }, { 0x538e, 0x00 }, { 0x538f, 0x16 },
+=======
 	{ 0x5388, 0x00 }, { 0x5389, 0xe0 }, { 0x538A, 0x00 }, { 0x538B, 0x20 },
 	{ 0x538C, 0x00 }, { 0x538D, 0x00 }, { 0x538E, 0x00 }, { 0x538F, 0x16 },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ 0x5388, 0x00 }, { 0x5389, 0xe0 }, { 0x538A, 0x00 }, { 0x538B, 0x20 },
+	{ 0x538C, 0x00 }, { 0x538D, 0x00 }, { 0x538E, 0x00 }, { 0x538F, 0x16 },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0x5390, 0x00 }, { 0x5391, 0x9c }, { 0x5392, 0x00 }, { 0x5393, 0xa0 },
 	{ 0x5394, 0x18 },
 
 	/* 50/60 Detection */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x3c0a, 0x9c }, { 0x3c0b, 0x3f },
+=======
 	{ 0x3C0A, 0x9c }, { 0x3C0B, 0x3f },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ 0x3C0A, 0x9c }, { 0x3C0B, 0x3f },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Output Select */
 	{ OV9740_IO_OUTPUT_SEL01,	0x00 },
@@ -333,6 +545,13 @@ static const struct ov9740_reg ov9740_defaults[] = {
 	{ OV9740_ANALOG_CTRL10,		0xa1 },
 	{ OV9740_ANALOG_CTRL12,		0x24 },
 	{ OV9740_ANALOG_CTRL22,		0x9f },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ OV9740_ANALOG_CTRL15,		0xf0 },
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Sensor Control */
 	{ OV9740_SENSOR_CTRL03,		0x42 },
@@ -385,7 +604,15 @@ static const struct ov9740_reg ov9740_defaults[] = {
 	{ OV9740_LN_LENGTH_PCK_LO,	0x62 },
 
 	/* MIPI Control */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ OV9740_MIPI_CTRL00,		0x44 }, /* 0x64 for discontinuous clk */
+=======
 	{ OV9740_MIPI_CTRL00,		0x44 },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ OV9740_MIPI_CTRL00,		0x44 },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ OV9740_MIPI_3837,		0x01 },
 	{ OV9740_MIPI_CTRL01,		0x0f },
 	{ OV9740_MIPI_CTRL03,		0x05 },
@@ -393,6 +620,14 @@ static const struct ov9740_reg ov9740_defaults[] = {
 	{ OV9740_VFIFO_RD_CTRL,		0x16 },
 	{ OV9740_MIPI_CTRL_3012,	0x70 },
 	{ OV9740_SC_CMMM_MIPI_CTR,	0x01 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* YUYV order */
+	{ OV9740_ISP_CTRL19,		0x02 },
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct ov9740_reg ov9740_regs_vga[] = {
@@ -441,12 +676,21 @@ static const struct ov9740_reg ov9740_regs_720p[] = {
 	{ OV9740_ISP_CTRL00,		0xff },
 	{ OV9740_ISP_CTRL01,		0xef },
 	{ OV9740_ISP_CTRL03,		0xff },
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static enum v4l2_mbus_pixelcode ov9740_codes[] = {
 	V4L2_MBUS_FMT_YUYV8_2X8,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct v4l2_queryctrl ov9740_controls[] = {
 	{
 		.id		= V4L2_CID_VFLIP,
@@ -468,6 +712,10 @@ static const struct v4l2_queryctrl ov9740_controls[] = {
 	},
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* read a register */
 static int ov9740_reg_read(struct i2c_client *client, u16 reg, u8 *val)
 {
@@ -537,7 +785,16 @@ static int ov9740_reg_rmw(struct i2c_client *client, u16 reg, u8 set, u8 unset)
 	ret = ov9740_reg_read(client, reg, &val);
 	if (ret < 0) {
 		dev_err(&client->dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"[Read]-Modify-Write of register 0x%04x failed!\n",
+			reg);
+=======
 			"[Read]-Modify-Write of register %02x failed!\n", reg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			"[Read]-Modify-Write of register %02x failed!\n", reg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -547,7 +804,16 @@ static int ov9740_reg_rmw(struct i2c_client *client, u16 reg, u8 set, u8 unset)
 	ret = ov9740_reg_write(client, reg, val);
 	if (ret < 0) {
 		dev_err(&client->dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"Read-Modify-[Write] of register 0x%04x failed!\n",
+			reg);
+=======
 			"Read-Modify-[Write] of register %02x failed!\n", reg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			"Read-Modify-[Write] of register %02x failed!\n", reg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -608,6 +874,137 @@ static int ov9740_s_stream(struct v4l2_subdev *sd, int enable)
 					       0x00);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	priv->current_enable = enable;
+
+	return ret;
+}
+
+/* select nearest higher resolution for capture */
+static void ov9740_res_roundup(u32 *width, u32 *height)
+{
+	/* Width must be a multiple of 4 pixels. */
+	*width = ALIGN(*width, 4);
+
+	/* Max resolution is 1280x720 (720p). */
+	if (*width > OV9740_MAX_WIDTH)
+		*width = OV9740_MAX_WIDTH;
+
+	if (*height > OV9740_MAX_HEIGHT)
+		*height = OV9740_MAX_HEIGHT;
+}
+
+/* Setup registers according to resolution and color encoding */
+static int ov9740_set_res(struct i2c_client *client, u32 width, u32 height)
+{
+	u32 x_start;
+	u32 y_start;
+	u32 x_end;
+	u32 y_end;
+	bool scaling = 0;
+	u32 scale_input_x;
+	u32 scale_input_y;
+	int ret;
+
+	if ((width != OV9740_MAX_WIDTH) || (height != OV9740_MAX_HEIGHT))
+		scaling = 1;
+
+	/*
+	 * Try to use as much of the sensor area as possible when supporting
+	 * smaller resolutions.  Depending on the aspect ratio of the
+	 * chosen resolution, we can either use the full width of the sensor,
+	 * or the full height of the sensor (or both if the aspect ratio is
+	 * the same as 1280x720.
+	 */
+	if ((OV9740_MAX_WIDTH * height) > (OV9740_MAX_HEIGHT * width)) {
+		scale_input_x = (OV9740_MAX_HEIGHT * width) / height;
+		scale_input_y = OV9740_MAX_HEIGHT;
+	} else {
+		scale_input_x = OV9740_MAX_WIDTH;
+		scale_input_y = (OV9740_MAX_WIDTH * height) / width;
+	}
+
+	/* These describe the area of the sensor to use. */
+	x_start = (OV9740_MAX_WIDTH - scale_input_x) / 2;
+	y_start = (OV9740_MAX_HEIGHT - scale_input_y) / 2;
+	x_end = x_start + scale_input_x - 1;
+	y_end = y_start + scale_input_y - 1;
+
+	ret = ov9740_reg_write(client, OV9740_X_ADDR_START_HI, x_start >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_X_ADDR_START_LO, x_start & 0xff);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_Y_ADDR_START_HI, y_start >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_Y_ADDR_START_LO, y_start & 0xff);
+	if (ret)
+		goto done;
+
+	ret = ov9740_reg_write(client, OV9740_X_ADDR_END_HI, x_end >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_X_ADDR_END_LO, x_end & 0xff);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_Y_ADDR_END_HI, y_end >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_Y_ADDR_END_LO, y_end & 0xff);
+	if (ret)
+		goto done;
+
+	ret = ov9740_reg_write(client, OV9740_X_OUTPUT_SIZE_HI, width >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_X_OUTPUT_SIZE_LO, width & 0xff);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_Y_OUTPUT_SIZE_HI, height >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_Y_OUTPUT_SIZE_LO, height & 0xff);
+	if (ret)
+		goto done;
+
+	ret = ov9740_reg_write(client, OV9740_ISP_CTRL1E, scale_input_x >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_ISP_CTRL1F, scale_input_x & 0xff);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_ISP_CTRL20, scale_input_y >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_ISP_CTRL21, scale_input_y & 0xff);
+	if (ret)
+		goto done;
+
+	ret = ov9740_reg_write(client, OV9740_VFIFO_READ_START_HI,
+			       (scale_input_x - width) >> 8);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_VFIFO_READ_START_LO,
+			       (scale_input_x - width) & 0xff);
+	if (ret)
+		goto done;
+
+	ret = ov9740_reg_write(client, OV9740_ISP_CTRL00, 0xff);
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_ISP_CTRL01, 0xef |
+							  (scaling << 4));
+	if (ret)
+		goto done;
+	ret = ov9740_reg_write(client, OV9740_ISP_CTRL03, 0xff);
+
+done:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -750,6 +1147,10 @@ static int ov9740_set_res(struct i2c_client *client, u32 width)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -758,6 +1159,13 @@ static int ov9740_s_fmt(struct v4l2_subdev *sd,
 			struct v4l2_mbus_framefmt *mf)
 {
 	struct i2c_client *client = v4l2_get_subdevdata(sd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ov9740_priv *priv = to_ov9740(sd);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum v4l2_colorspace cspace;
 	enum v4l2_mbus_pixelcode code = mf->code;
 	int ret;
@@ -777,13 +1185,29 @@ static int ov9740_s_fmt(struct v4l2_subdev *sd,
 	if (ret < 0)
 		return ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = ov9740_set_res(client, mf->width, mf->height);
+=======
 	ret = ov9740_set_res(client, mf->width);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = ov9740_set_res(client, mf->width);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		return ret;
 
 	mf->code	= code;
 	mf->colorspace	= cspace;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memcpy(&priv->current_mf, mf, sizeof(struct v4l2_mbus_framefmt));
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -814,8 +1238,18 @@ static int ov9740_cropcap(struct v4l2_subdev *sd, struct v4l2_cropcap *a)
 {
 	a->bounds.left		= 0;
 	a->bounds.top		= 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	a->bounds.width		= OV9740_MAX_WIDTH;
+	a->bounds.height	= OV9740_MAX_HEIGHT;
+=======
 	a->bounds.width		= ov9740_resolutions[OV9740_720P].width;
 	a->bounds.height	= ov9740_resolutions[OV9740_720P].height;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	a->bounds.width		= ov9740_resolutions[OV9740_720P].width;
+	a->bounds.height	= ov9740_resolutions[OV9740_720P].height;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	a->defrect		= a->bounds;
 	a->type			= V4L2_BUF_TYPE_VIDEO_CAPTURE;
 	a->pixelaspect.numerator	= 1;
@@ -828,15 +1262,118 @@ static int ov9740_g_crop(struct v4l2_subdev *sd, struct v4l2_crop *a)
 {
 	a->c.left		= 0;
 	a->c.top		= 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	a->c.width		= OV9740_MAX_WIDTH;
+	a->c.height		= OV9740_MAX_HEIGHT;
+=======
 	a->c.width		= ov9740_resolutions[OV9740_720P].width;
 	a->c.height		= ov9740_resolutions[OV9740_720P].height;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	a->c.width		= ov9740_resolutions[OV9740_720P].width;
+	a->c.height		= ov9740_resolutions[OV9740_720P].height;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	a->type			= V4L2_BUF_TYPE_VIDEO_CAPTURE;
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Set status of additional camera capabilities */
+static int ov9740_s_ctrl(struct v4l2_ctrl *ctrl)
+{
+	struct ov9740_priv *priv =
+		container_of(ctrl->handler, struct ov9740_priv, hdl);
+
+	switch (ctrl->id) {
+	case V4L2_CID_VFLIP:
+		priv->flag_vflip = ctrl->val;
+		break;
+	case V4L2_CID_HFLIP:
+		priv->flag_hflip = ctrl->val;
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	return 0;
+}
+
+/* Get chip identification */
+static int ov9740_g_chip_ident(struct v4l2_subdev *sd,
+			       struct v4l2_dbg_chip_ident *id)
+{
+	struct ov9740_priv *priv = to_ov9740(sd);
+
+	id->ident = priv->ident;
+	id->revision = priv->revision;
+
+	return 0;
+}
+
+static int ov9740_s_power(struct v4l2_subdev *sd, int on)
+{
+	struct ov9740_priv *priv = to_ov9740(sd);
+
+	if (!priv->current_enable)
+		return 0;
+
+	if (on) {
+		ov9740_s_fmt(sd, &priv->current_mf);
+		ov9740_s_stream(sd, priv->current_enable);
+	} else {
+		ov9740_s_stream(sd, 0);
+		priv->current_enable = true;
+	}
+
+	return 0;
+}
+
+#ifdef CONFIG_VIDEO_ADV_DEBUG
+static int ov9740_get_register(struct v4l2_subdev *sd,
+			       struct v4l2_dbg_register *reg)
+{
+	struct i2c_client *client = v4l2_get_subdevdata(sd);
+	int ret;
+	u8 val;
+
+	if (reg->reg & ~0xffff)
+		return -EINVAL;
+
+	reg->size = 2;
+
+	ret = ov9740_reg_read(client, reg->reg, &val);
+	if (ret)
+		return ret;
+
+	reg->val = (__u64)val;
+
+	return ret;
+}
+
+static int ov9740_set_register(struct v4l2_subdev *sd,
+			       struct v4l2_dbg_register *reg)
+{
+	struct i2c_client *client = v4l2_get_subdevdata(sd);
+
+	if (reg->reg & ~0xffff || reg->val & ~0xff)
+		return -EINVAL;
+
+	return ov9740_reg_write(client, reg->reg, reg->val);
+}
+#endif
+
+static int ov9740_video_probe(struct i2c_client *client)
+=======
 static int ov9740_video_probe(struct soc_camera_device *icd,
 			      struct i2c_client *client)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ov9740_video_probe(struct soc_camera_device *icd,
+			      struct i2c_client *client)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct v4l2_subdev *sd = i2c_get_clientdata(client);
 	struct ov9740_priv *priv = to_ov9740(sd);
@@ -844,6 +1381,11 @@ static int ov9740_video_probe(struct soc_camera_device *icd,
 	int ret;
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * We must have a parent by now. And it cannot be a wrong one.
 	 * So this entire test is completely redundant.
 	 */
@@ -855,6 +1397,10 @@ static int ov9740_video_probe(struct soc_camera_device *icd,
 	}
 
 	/*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * check and show product ID and manufacturer ID
 	 */
 	ret = ov9740_reg_read(client, OV9740_MODEL_ID_HI, &modelhi);
@@ -894,6 +1440,40 @@ err:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Request bus settings on camera side */
+static int ov9740_g_mbus_config(struct v4l2_subdev *sd,
+				struct v4l2_mbus_config *cfg)
+{
+	struct i2c_client *client = v4l2_get_subdevdata(sd);
+	struct soc_camera_link *icl = soc_camera_i2c_to_link(client);
+
+	cfg->flags = V4L2_MBUS_PCLK_SAMPLE_RISING | V4L2_MBUS_MASTER |
+		V4L2_MBUS_VSYNC_ACTIVE_HIGH | V4L2_MBUS_HSYNC_ACTIVE_HIGH |
+		V4L2_MBUS_DATA_ACTIVE_HIGH;
+	cfg->type = V4L2_MBUS_PARALLEL;
+	cfg->flags = soc_camera_apply_board_flags(icl, cfg);
+
+	return 0;
+}
+
+static struct v4l2_subdev_video_ops ov9740_video_ops = {
+	.s_stream	= ov9740_s_stream,
+	.s_mbus_fmt	= ov9740_s_fmt,
+	.try_mbus_fmt	= ov9740_try_fmt,
+	.enum_mbus_fmt	= ov9740_enum_fmt,
+	.cropcap	= ov9740_cropcap,
+	.g_crop		= ov9740_g_crop,
+	.g_mbus_config	= ov9740_g_mbus_config,
+};
+
+static struct v4l2_subdev_core_ops ov9740_core_ops = {
+	.g_chip_ident		= ov9740_g_chip_ident,
+	.s_power		= ov9740_s_power,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct soc_camera_ops ov9740_ops = {
 	.set_bus_param		= ov9740_set_bus_param,
 	.query_bus_param	= ov9740_query_bus_param,
@@ -905,10 +1485,19 @@ static struct v4l2_subdev_core_ops ov9740_core_ops = {
 	.g_ctrl			= ov9740_g_ctrl,
 	.s_ctrl			= ov9740_s_ctrl,
 	.g_chip_ident		= ov9740_g_chip_ident,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_VIDEO_ADV_DEBUG
 	.g_register		= ov9740_get_register,
 	.s_register		= ov9740_set_register,
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 };
 
@@ -919,6 +1508,10 @@ static struct v4l2_subdev_video_ops ov9740_video_ops = {
 	.enum_mbus_fmt		= ov9740_enum_fmt,
 	.cropcap		= ov9740_cropcap,
 	.g_crop			= ov9740_g_crop,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct v4l2_subdev_ops ov9740_subdev_ops = {
@@ -926,6 +1519,16 @@ static struct v4l2_subdev_ops ov9740_subdev_ops = {
 	.video			= &ov9740_video_ops,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct v4l2_ctrl_ops ov9740_ctrl_ops = {
+	.s_ctrl = ov9740_s_ctrl,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * i2c_driver function
  */
@@ -933,6 +1536,14 @@ static int ov9740_probe(struct i2c_client *client,
 			const struct i2c_device_id *did)
 {
 	struct ov9740_priv *priv;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct soc_camera_link *icl = soc_camera_i2c_to_link(client);
+	int ret;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct soc_camera_device *icd	= client->dev.platform_data;
 	struct soc_camera_link *icl;
 	int ret;
@@ -943,6 +1554,10 @@ static int ov9740_probe(struct i2c_client *client,
 	}
 
 	icl = to_soc_camera_link(icd);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!icl) {
 		dev_err(&client->dev, "Missing platform_data for driver\n");
 		return -EINVAL;
@@ -955,12 +1570,39 @@ static int ov9740_probe(struct i2c_client *client,
 	}
 
 	v4l2_i2c_subdev_init(&priv->subdev, client, &ov9740_subdev_ops);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	v4l2_ctrl_handler_init(&priv->hdl, 13);
+	v4l2_ctrl_new_std(&priv->hdl, &ov9740_ctrl_ops,
+			V4L2_CID_VFLIP, 0, 1, 1, 0);
+	v4l2_ctrl_new_std(&priv->hdl, &ov9740_ctrl_ops,
+			V4L2_CID_HFLIP, 0, 1, 1, 0);
+	priv->subdev.ctrl_handler = &priv->hdl;
+	if (priv->hdl.error) {
+		int err = priv->hdl.error;
+
+		kfree(priv);
+		return err;
+	}
+
+	ret = ov9740_video_probe(client);
+	if (!ret)
+		ret = v4l2_ctrl_handler_setup(&priv->hdl);
+	if (ret < 0) {
+		v4l2_ctrl_handler_free(&priv->hdl);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	icd->ops = &ov9740_ops;
 
 	ret = ov9740_video_probe(icd, client);
 	if (ret < 0) {
 		icd->ops = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(priv);
 	}
 
@@ -971,8 +1613,19 @@ static int ov9740_remove(struct i2c_client *client)
 {
 	struct ov9740_priv *priv = i2c_get_clientdata(client);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	v4l2_device_unregister_subdev(&priv->subdev);
+	v4l2_ctrl_handler_free(&priv->hdl);
+	kfree(priv);
+=======
 	kfree(priv);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(priv);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -991,6 +1644,12 @@ static struct i2c_driver ov9740_i2c_driver = {
 	.id_table = ov9740_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(ov9740_i2c_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ov9740_module_init(void)
 {
 	return i2c_add_driver(&ov9740_i2c_driver);
@@ -1003,6 +1662,10 @@ static void __exit ov9740_module_exit(void)
 
 module_init(ov9740_module_init);
 module_exit(ov9740_module_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("SoC Camera driver for OmniVision OV9740");
 MODULE_AUTHOR("Andrew Chew <achew@nvidia.com>");

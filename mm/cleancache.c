@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/debugfs.h>
 =======
+<<<<<<< HEAD
+#include <linux/debugfs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/cleancache.h>
 
 /*
@@ -26,8 +30,12 @@
 <<<<<<< HEAD
  * by cleancache_get/put/invalidate even on systems where cleancache_ops
 =======
+<<<<<<< HEAD
+ * by cleancache_get/put/invalidate even on systems where cleancache_ops
+=======
  * by cleancache_get/put/flush even on systems where cleancache_ops
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * is not claimed (e.g. cleancache is config'ed on but remains
  * disabled), so is preferred to the slower alternative: a function
  * call that checks a non-global.
@@ -35,8 +43,12 @@
 <<<<<<< HEAD
 int cleancache_enabled __read_mostly;
 =======
+<<<<<<< HEAD
+int cleancache_enabled __read_mostly;
+=======
 int cleancache_enabled;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(cleancache_enabled);
 
 /*
@@ -44,6 +56,9 @@ EXPORT_SYMBOL(cleancache_enabled);
  * to the cleancache "backend" implementation functions.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct cleancache_ops cleancache_ops __read_mostly;
 
 /*
@@ -55,6 +70,8 @@ static u64 cleancache_succ_gets;
 static u64 cleancache_failed_gets;
 static u64 cleancache_puts;
 static u64 cleancache_invalidates;
+<<<<<<< HEAD
+=======
 =======
 static struct cleancache_ops cleancache_ops;
 
@@ -64,6 +81,7 @@ static unsigned long cleancache_failed_gets;
 static unsigned long cleancache_puts;
 static unsigned long cleancache_flushes;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * register operations for cleancache, returning previous thus allowing
@@ -175,17 +193,23 @@ EXPORT_SYMBOL(__cleancache_put_page);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Invalidate any data from cleancache associated with the poolid and the
  * page's inode and page index so that a subsequent "get" will fail.
  */
 void __cleancache_invalidate_page(struct address_space *mapping,
 					struct page *page)
+<<<<<<< HEAD
+=======
 =======
  * Flush any data from cleancache associated with the poolid and the
  * page's inode and page index so that a subsequent "get" will fail.
  */
 void __cleancache_flush_page(struct address_space *mapping, struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* careful... page->mapping is NULL sometimes when this is called */
 	int pool_id = mapping->host->i_sb->cleancache_poolid;
@@ -195,6 +219,9 @@ void __cleancache_flush_page(struct address_space *mapping, struct page *page)
 		VM_BUG_ON(!PageLocked(page));
 		if (cleancache_get_key(mapping->host, &key) >= 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(*cleancache_ops.invalidate_page)(pool_id,
 							  key, page->index);
 			cleancache_invalidates++;
@@ -209,6 +236,8 @@ EXPORT_SYMBOL(__cleancache_invalidate_page);
  * will fail.
  */
 void __cleancache_invalidate_inode(struct address_space *mapping)
+<<<<<<< HEAD
+=======
 =======
 			(*cleancache_ops.flush_page)(pool_id, key, page->index);
 			cleancache_flushes++;
@@ -224,6 +253,7 @@ EXPORT_SYMBOL(__cleancache_flush_page);
  */
 void __cleancache_flush_inode(struct address_space *mapping)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int pool_id = mapping->host->i_sb->cleancache_poolid;
 	struct cleancache_filekey key = { .u.key = { 0 } };
@@ -234,10 +264,16 @@ void __cleancache_flush_inode(struct address_space *mapping)
 }
 EXPORT_SYMBOL(__cleancache_invalidate_inode);
 =======
+<<<<<<< HEAD
+		(*cleancache_ops.invalidate_inode)(pool_id, key);
+}
+EXPORT_SYMBOL(__cleancache_invalidate_inode);
+=======
 		(*cleancache_ops.flush_inode)(pool_id, key);
 }
 EXPORT_SYMBOL(__cleancache_flush_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called by any cleancache-enabled filesystem at time of unmount;
@@ -247,13 +283,20 @@ EXPORT_SYMBOL(__cleancache_flush_inode);
 <<<<<<< HEAD
 void __cleancache_invalidate_fs(struct super_block *sb)
 =======
+<<<<<<< HEAD
+void __cleancache_invalidate_fs(struct super_block *sb)
+=======
 void __cleancache_flush_fs(struct super_block *sb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (sb->cleancache_poolid >= 0) {
 		int old_poolid = sb->cleancache_poolid;
 		sb->cleancache_poolid = -1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(*cleancache_ops.invalidate_fs)(old_poolid);
 	}
 }
@@ -272,6 +315,8 @@ static int __init init_cleancache(void)
 	debugfs_create_u64("invalidates", S_IRUGO,
 				root, &cleancache_invalidates);
 #endif
+<<<<<<< HEAD
+=======
 =======
 		(*cleancache_ops.flush_fs)(old_poolid);
 	}
@@ -321,6 +366,7 @@ static int __init init_cleancache(void)
 	err = sysfs_create_group(mm_kobj, &cleancache_attr_group);
 #endif /* CONFIG_SYSFS */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 module_init(init_cleancache)

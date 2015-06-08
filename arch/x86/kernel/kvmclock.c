@@ -75,15 +75,21 @@ static cycle_t kvm_clock_read(void)
 	cycle_t ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable_notrace();
 	src = &__get_cpu_var(hv_clock);
 	ret = pvclock_clocksource_read(src);
 	preempt_enable_notrace();
+<<<<<<< HEAD
+=======
 =======
 	src = &get_cpu_var(hv_clock);
 	ret = pvclock_clocksource_read(src);
 	put_cpu_var(hv_clock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -143,6 +149,9 @@ int kvm_register_clock(char *txt)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void kvm_save_sched_clock_state(void)
 {
 }
@@ -152,8 +161,11 @@ static void kvm_restore_sched_clock_state(void)
 	kvm_register_clock("primary cpu clock, resume");
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_LOCAL_APIC
 static void __cpuinit kvm_setup_secondary_clock(void)
 {
@@ -164,9 +176,12 @@ static void __cpuinit kvm_setup_secondary_clock(void)
 	WARN_ON(kvm_register_clock("secondary cpu clock"));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* ok, done with our trickery, call native */
 	setup_secondary_APIC_clock();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -185,7 +200,11 @@ static void kvm_crash_shutdown(struct pt_regs *regs)
 <<<<<<< HEAD
 	kvm_disable_steal_time();
 =======
+<<<<<<< HEAD
+	kvm_disable_steal_time();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	native_machine_crash_shutdown(regs);
 }
 #endif
@@ -196,7 +215,11 @@ static void kvm_shutdown(void)
 <<<<<<< HEAD
 	kvm_disable_steal_time();
 =======
+<<<<<<< HEAD
+	kvm_disable_steal_time();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	native_machine_shutdown();
 }
 
@@ -222,16 +245,22 @@ void __init kvmclock_init(void)
 	x86_platform.set_wallclock = kvm_set_wallclock;
 #ifdef CONFIG_X86_LOCAL_APIC
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	x86_cpuinit.early_percpu_clock_init =
 		kvm_setup_secondary_clock;
 #endif
 	x86_platform.save_sched_clock_state = kvm_save_sched_clock_state;
 	x86_platform.restore_sched_clock_state = kvm_restore_sched_clock_state;
+<<<<<<< HEAD
+=======
 =======
 	x86_cpuinit.setup_percpu_clockev =
 		kvm_setup_secondary_clock;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	machine_ops.shutdown  = kvm_shutdown;
 #ifdef CONFIG_KEXEC
 	machine_ops.crash_shutdown  = kvm_crash_shutdown;

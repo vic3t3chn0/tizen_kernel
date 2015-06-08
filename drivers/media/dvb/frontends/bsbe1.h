@@ -69,18 +69,42 @@ static int alps_bsbe1_set_symbol_rate(struct dvb_frontend* fe, u32 srate, u32 ra
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int alps_bsbe1_tuner_set_params(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+=======
 static int alps_bsbe1_tuner_set_params(struct dvb_frontend* fe, struct dvb_frontend_parameters *params)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int alps_bsbe1_tuner_set_params(struct dvb_frontend* fe, struct dvb_frontend_parameters *params)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	u8 data[4];
 	u32 div;
 	struct i2c_msg msg = { .addr = 0x61, .flags = 0, .buf = data, .len = sizeof(data) };
 	struct i2c_adapter *i2c = fe->tuner_priv;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((p->frequency < 950000) || (p->frequency > 2150000))
+		return -EINVAL;
+
+	div = p->frequency / 1000;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((params->frequency < 950000) || (params->frequency > 2150000))
 		return -EINVAL;
 
 	div = params->frequency / 1000;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data[0] = (div >> 8) & 0x7f;
 	data[1] = div & 0xff;
 	data[2] = 0x80 | ((div & 0x18000) >> 10) | 0x1;

@@ -31,6 +31,9 @@
 
 /* Power and Sleep Controller (PSC) Domains */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DAVINCI_GPSC_ARMDOMAIN		0
 #define DAVINCI_GPSC_DSPDOMAIN		1
 
@@ -72,6 +75,8 @@
 #define DAVINCI_LPSC_CFG5		38
 #define DAVINCI_LPSC_GEM		39
 #define DAVINCI_LPSC_IMCOP		40
+<<<<<<< HEAD
+=======
 =======
 #define DAVINCI_GPSC_ARMDOMAIN      0
 #define DAVINCI_GPSC_DSPDOMAIN      1
@@ -115,6 +120,7 @@
 #define DAVINCI_LPSC_GEM            39
 #define DAVINCI_LPSC_IMCOP          40
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DM355_LPSC_TIMER3		5
 #define DM355_LPSC_SPI1			6
@@ -147,6 +153,9 @@
  * LPSC Assignments
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DM646X_LPSC_ARM		0
 #define DM646X_LPSC_C64X_CPU	1
 #define DM646X_LPSC_HDVICP0	2
@@ -180,6 +189,8 @@
 #define DM646X_LPSC_TIMER0	34
 #define DM646X_LPSC_TIMER1	35
 #define DM646X_LPSC_ARM_INTC	45
+<<<<<<< HEAD
+=======
 =======
 #define DM646X_LPSC_ARM            0
 #define DM646X_LPSC_C64X_CPU       1
@@ -215,6 +226,7 @@
 #define DM646X_LPSC_TIMER1         35
 #define DM646X_LPSC_ARM_INTC       45
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* PSC0 defines */
 #define DA8XX_LPSC0_TPCC		0
@@ -316,8 +328,12 @@
 <<<<<<< HEAD
 #define PDCTL		0x300
 =======
+<<<<<<< HEAD
+#define PDCTL		0x300
+=======
 #define PDCTL1		0x304
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MDSTAT		0x800
 #define MDCTL		0xA00
 
@@ -328,14 +344,20 @@
 #define PSC_STATE_ENABLE	3
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MDSTAT_STATE_MASK	0x3f
 #define PDSTAT_STATE_MASK	0x1f
 #define MDCTL_FORCE		BIT(31)
 #define PDCTL_NEXT		BIT(1)
 #define PDCTL_EPCGOOD		BIT(8)
+<<<<<<< HEAD
+=======
 =======
 #define MDSTAT_STATE_MASK 0x1f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __ASSEMBLER__
 
@@ -344,8 +366,12 @@ extern void davinci_psc_config(unsigned int domain, unsigned int ctlr,
 <<<<<<< HEAD
 		unsigned int id, bool enable, u32 flags);
 =======
+<<<<<<< HEAD
+		unsigned int id, bool enable, u32 flags);
+=======
 		unsigned int id, u32 next_state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

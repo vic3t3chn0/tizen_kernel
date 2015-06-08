@@ -10,8 +10,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/string.h>
 #include <linux/cryptohash.h>
@@ -24,8 +28,11 @@
 #include <asm/checksum.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/ftrace.h>
 
 /*
@@ -60,6 +67,10 @@ extern void fpundefinstr(void);
 	/* platform dependent support */
 EXPORT_SYMBOL(arm_delay_ops);
 =======
+<<<<<<< HEAD
+	/* platform dependent support */
+EXPORT_SYMBOL(arm_delay_ops);
+=======
 
 EXPORT_SYMBOL(__backtrace);
 
@@ -67,6 +78,7 @@ EXPORT_SYMBOL(__backtrace);
 EXPORT_SYMBOL(__udelay);
 EXPORT_SYMBOL(__const_udelay);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* networking */
 EXPORT_SYMBOL(csum_partial);

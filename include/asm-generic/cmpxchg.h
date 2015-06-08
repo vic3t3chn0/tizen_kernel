@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Generic UP xchg and cmpxchg using interrupt disablement.  Does not
  * support SMP.
@@ -7,6 +10,8 @@
 #ifndef __ASM_GENERIC_CMPXCHG_H
 #define __ASM_GENERIC_CMPXCHG_H
 
+<<<<<<< HEAD
+=======
 =======
 #ifndef __ASM_GENERIC_CMPXCHG_H
 #define __ASM_GENERIC_CMPXCHG_H
@@ -17,11 +22,15 @@
  * Uses the local cmpxchg. Does not support SMP.
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 #error "Cannot use generic cmpxchg on SMP"
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/irqflags.h>
 
@@ -96,8 +105,11 @@ unsigned long __xchg(unsigned long x, volatile void *ptr, int size)
 
 #endif /* xchg */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Atomic compare and exchange.
  *
@@ -105,15 +117,21 @@ unsigned long __xchg(unsigned long x, volatile void *ptr, int size)
  * a cmpxchg primitive faster than repeated local irq save/restore exists.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm-generic/cmpxchg-local.h>
 
 #define cmpxchg(ptr, o, n)	cmpxchg_local((ptr), (o), (n))
 #define cmpxchg64(ptr, o, n)	cmpxchg64_local((ptr), (o), (n))
 
 #endif /* __ASM_GENERIC_CMPXCHG_H */
+<<<<<<< HEAD
+=======
 =======
 #define cmpxchg(ptr, o, n)	cmpxchg_local((ptr), (o), (n))
 #define cmpxchg64(ptr, o, n)	cmpxchg64_local((ptr), (o), (n))
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -15,6 +15,9 @@
 #include <asm/memory.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__CPUINIT
 
 /* Cache invalidation nicked from arch/arm/mach-imx/head-v7.S, thanks!
@@ -69,9 +72,12 @@ ENTRY(shmobile_invalidate_start)
 	bl	v7_invalidate_l1
 	b	secondary_startup
 ENDPROC(shmobile_invalidate_start)
+<<<<<<< HEAD
+=======
 =======
 	__INIT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Reset vector for secondary CPUs.
@@ -85,5 +91,10 @@ ENTRY(shmobile_secondary_vector)
 1:	.long   shmobile_invalidate_start - PAGE_OFFSET + PLAT_PHYS_OFFSET
 ENDPROC(shmobile_secondary_vector)
 =======
+<<<<<<< HEAD
+1:	.long   shmobile_invalidate_start - PAGE_OFFSET + PLAT_PHYS_OFFSET
+ENDPROC(shmobile_secondary_vector)
+=======
 1:	.long   secondary_startup - PAGE_OFFSET + PLAT_PHYS_OFFSET
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

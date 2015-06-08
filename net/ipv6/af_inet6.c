@@ -52,7 +52,11 @@
 <<<<<<< HEAD
 #include <net/ping.h>
 =======
+<<<<<<< HEAD
+#include <net/ping.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/protocol.h>
 #include <net/inet_common.h>
 #include <net/route.h>
@@ -66,8 +70,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mroute6.h>
 
 #ifdef CONFIG_ANDROID_PARANOID_NETWORK
@@ -241,7 +248,11 @@ lookup_protocol:
 <<<<<<< HEAD
 	inet->rcv_tos	= 0;
 =======
+<<<<<<< HEAD
+	inet->rcv_tos	= 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ipv4_config.no_pmtu_disc)
 		inet->pmtudisc = IP_PMTUDISC_DONT;
@@ -378,8 +389,12 @@ int inet6_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 <<<<<<< HEAD
 				if (!(inet->freebind || inet->transparent) &&
 =======
+<<<<<<< HEAD
+				if (!(inet->freebind || inet->transparent) &&
+=======
 				if (!inet->transparent &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    !ipv6_chk_addr(net, &addr->sin6_addr,
 						   dev, 0)) {
 					err = -EADDRNOTAVAIL;
@@ -394,16 +409,22 @@ int inet6_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 	inet->inet_saddr = v4addr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	np->rcv_saddr = addr->sin6_addr;
 
 	if (!(addr_type & IPV6_ADDR_MULTICAST))
 		np->saddr = addr->sin6_addr;
+<<<<<<< HEAD
+=======
 =======
 	ipv6_addr_copy(&np->rcv_saddr, &addr->sin6_addr);
 
 	if (!(addr_type & IPV6_ADDR_MULTICAST))
 		ipv6_addr_copy(&np->saddr, &addr->sin6_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Make sure we are allowed to bind here. */
 	if (sk->sk_prot->get_port(sk, snum)) {
@@ -500,8 +521,12 @@ int inet6_getname(struct socket *sock, struct sockaddr *uaddr,
 <<<<<<< HEAD
 		sin->sin6_addr = np->daddr;
 =======
+<<<<<<< HEAD
+		sin->sin6_addr = np->daddr;
+=======
 		ipv6_addr_copy(&sin->sin6_addr, &np->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (np->sndflow)
 			sin->sin6_flowinfo = np->flow_label;
 	} else {
@@ -511,10 +536,16 @@ int inet6_getname(struct socket *sock, struct sockaddr *uaddr,
 		else
 			sin->sin6_addr = np->rcv_saddr;
 =======
+<<<<<<< HEAD
+			sin->sin6_addr = np->saddr;
+		else
+			sin->sin6_addr = np->rcv_saddr;
+=======
 			ipv6_addr_copy(&sin->sin6_addr, &np->saddr);
 		else
 			ipv6_addr_copy(&sin->sin6_addr, &np->rcv_saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		sin->sin6_port = inet->inet_sport;
 	}
@@ -540,8 +571,12 @@ int inet6_killaddr_ioctl(struct net *net, void __user *arg) {
 <<<<<<< HEAD
 	sin6.sin6_addr = ireq.ifr6_addr;
 =======
+<<<<<<< HEAD
+	sin6.sin6_addr = ireq.ifr6_addr;
+=======
 	ipv6_addr_copy(&sin6.sin6_addr, &ireq.ifr6_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tcp_nuke_addr(net, (struct sockaddr *) &sin6);
 }
 
@@ -734,9 +769,14 @@ int inet6_sk_rebuild_header(struct sock *sk)
 		fl6.daddr = np->daddr;
 		fl6.saddr = np->saddr;
 =======
+<<<<<<< HEAD
+		fl6.daddr = np->daddr;
+		fl6.saddr = np->saddr;
+=======
 		ipv6_addr_copy(&fl6.daddr, &np->daddr);
 		ipv6_addr_copy(&fl6.saddr, &np->saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fl6.flowlabel = np->flow_label;
 		fl6.flowi6_oif = sk->sk_bound_dev_if;
 		fl6.flowi6_mark = sk->sk_mark;
@@ -848,8 +888,13 @@ out:
 static struct sk_buff *ipv6_gso_segment(struct sk_buff *skb,
 	netdev_features_t features)
 =======
+<<<<<<< HEAD
+static struct sk_buff *ipv6_gso_segment(struct sk_buff *skb,
+	netdev_features_t features)
+=======
 static struct sk_buff *ipv6_gso_segment(struct sk_buff *skb, u32 features)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *segs = ERR_PTR(-EINVAL);
 	struct ipv6hdr *ipv6h;
@@ -958,7 +1003,11 @@ static struct sk_buff **ipv6_gro_receive(struct sk_buff **head,
 <<<<<<< HEAD
 		ops = rcu_dereference(inet6_protos[proto]);
 =======
+<<<<<<< HEAD
+		ops = rcu_dereference(inet6_protos[proto]);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!ops || !ops->gro_receive)
 			goto out_unlock;
 
@@ -1073,10 +1122,16 @@ static int __net_init ipv6_init_mibs(struct net *net)
 						GFP_KERNEL);
 	if (!net->mib.icmpv6msg_statistics)
 =======
+<<<<<<< HEAD
+	net->mib.icmpv6msg_statistics = kzalloc(sizeof(struct icmpv6msg_mib),
+						GFP_KERNEL);
+	if (!net->mib.icmpv6msg_statistics)
+=======
 	if (snmp_mib_init((void __percpu **)net->mib.icmpv6msg_statistics,
 			  sizeof(struct icmpv6msg_mib),
 			  __alignof__(struct icmpv6msg_mib)) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_icmpmsg_mib;
 	return 0;
 
@@ -1100,8 +1155,12 @@ static void ipv6_cleanup_mibs(struct net *net)
 <<<<<<< HEAD
 	kfree(net->mib.icmpv6msg_statistics);
 =======
+<<<<<<< HEAD
+	kfree(net->mib.icmpv6msg_statistics);
+=======
 	snmp_mib_free((void __percpu **)net->mib.icmpv6msg_statistics);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __net_init inet6_net_init(struct net *net)
@@ -1174,9 +1233,12 @@ static int __init inet6_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	initialize_hashidentrnd();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = proto_register(&tcpv6_prot, 1);
 	if (err)
 		goto out;
@@ -1198,7 +1260,13 @@ static int __init inet6_init(void)
 	if (err)
 		goto out_unregister_ping_proto;
 =======
+<<<<<<< HEAD
+	err = proto_register(&pingv6_prot, 1);
+	if (err)
+		goto out_unregister_ping_proto;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We MUST register RAW sockets before we create the ICMP6,
 	 * IGMP6, or NDISC control sockets.
@@ -1223,7 +1291,12 @@ static int __init inet6_init(void)
 	tcpv6_prot.sysctl_mem = init_net.ipv4.sysctl_tcp_mem;
 
 =======
+<<<<<<< HEAD
+	tcpv6_prot.sysctl_mem = init_net.ipv4.sysctl_tcp_mem;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 *	ipngwg API draft makes clear that the correct semantics
 	 *	for TCP and UDP is to consider one TCP and UDP instance
@@ -1298,12 +1371,18 @@ static int __init inet6_init(void)
 		goto ipv6_packet_fail;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = pingv6_init();
 	if (err)
 		goto pingv6_fail;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 	err = ipv6_sysctl_register();
 	if (err)
@@ -1320,7 +1399,12 @@ sysctl_fail:
 pingv6_fail:
 	pingv6_exit();
 =======
+<<<<<<< HEAD
+pingv6_fail:
+	pingv6_exit();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ipv6_packet_fail:
 	tcpv6_exit();
 tcpv6_fail:
@@ -1372,7 +1456,12 @@ out_sock_register_fail:
 out_unregister_ping_proto:
 	proto_unregister(&pingv6_prot);
 =======
+<<<<<<< HEAD
+out_unregister_ping_proto:
+	proto_unregister(&pingv6_prot);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_unregister_raw_proto:
 	proto_unregister(&rawv6_prot);
 out_unregister_udplite_proto:

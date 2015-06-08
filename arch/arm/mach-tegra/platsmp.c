@@ -22,6 +22,9 @@
 #include <asm/cacheflush.h>
 #include <asm/hardware/gic.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/smp_scu.h>
 
@@ -35,6 +38,8 @@
 
 extern void tegra_secondary_startup(void);
 
+<<<<<<< HEAD
+=======
 =======
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
@@ -46,6 +51,7 @@ extern void tegra_secondary_startup(void);
 
 static DEFINE_SPINLOCK(boot_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *scu_base = IO_ADDRESS(TEGRA_ARM_PERIF_BASE);
 
 #define EVP_CPU_RESET_VECTOR \
@@ -53,6 +59,9 @@ static void __iomem *scu_base = IO_ADDRESS(TEGRA_ARM_PERIF_BASE);
 #define CLK_RST_CONTROLLER_CLK_CPU_CMPLX \
 	(IO_ADDRESS(TEGRA_CLK_RESET_BASE) + 0x4c)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CLK_RST_CONTROLLER_RST_CPU_CMPLX_SET \
 	(IO_ADDRESS(TEGRA_CLK_RESET_BASE) + 0x340)
 #define CLK_RST_CONTROLLER_RST_CPU_CMPLX_CLR \
@@ -62,10 +71,13 @@ static void __iomem *scu_base = IO_ADDRESS(TEGRA_ARM_PERIF_BASE);
 
 #define CPU_CLOCK(cpu)	(0x1<<(8+cpu))
 #define CPU_RESET(cpu)	(0x1111ul<<(cpu))
+<<<<<<< HEAD
+=======
 =======
 #define CLK_RST_CONTROLLER_RST_CPU_CMPLX_CLR \
 	(IO_ADDRESS(TEGRA_CLK_RESET_BASE) + 0x344)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __cpuinit platform_secondary_init(unsigned int cpu)
 {
@@ -77,6 +89,9 @@ void __cpuinit platform_secondary_init(unsigned int cpu)
 	gic_secondary_init(0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int tegra20_power_up_cpu(unsigned int cpu)
@@ -177,6 +192,8 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	wmb();
 done:
 	return status;
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Synchronise with the boot thread.
@@ -236,6 +253,7 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -247,6 +265,9 @@ void __init smp_init_cpus(void)
 	unsigned int i, ncores = scu_get_core_count(scu_base);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ncores > nr_cpu_ids) {
 		pr_warn("SMP: %u cores greater than maximum (%u), clipping\n",
 			ncores, nr_cpu_ids);
@@ -255,6 +276,8 @@ void __init smp_init_cpus(void)
 
 	for (i = 0; i < ncores; i++)
 		set_cpu_possible(i, true);
+<<<<<<< HEAD
+=======
 =======
 	if (ncores > NR_CPUS) {
 		printk(KERN_ERR "Tegra: no. of cores (%u) greater than configured (%u), clipping\n",
@@ -265,12 +288,16 @@ void __init smp_init_cpus(void)
 	for (i = 0; i < ncores; i++)
 		cpu_set(i, cpu_possible_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	set_smp_cross_call(gic_raise_softirq);
 }
 
 void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 {
+<<<<<<< HEAD
+	tegra_cpu_reset_handler_init();
+=======
 <<<<<<< HEAD
 	tegra_cpu_reset_handler_init();
 =======
@@ -284,5 +311,6 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 		set_cpu_present(i, true);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	scu_enable(scu_base);
 }

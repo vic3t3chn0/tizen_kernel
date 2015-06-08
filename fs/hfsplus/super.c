@@ -74,6 +74,9 @@ struct inode *hfsplus_iget(struct super_block *sb, unsigned long ino)
 	if (inode->i_ino >= HFSPLUS_FIRSTUSER_CNID ||
 	    inode->i_ino == HFSPLUS_ROOT_CNID) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = hfs_find_init(HFSPLUS_SB(inode->i_sb)->cat_tree, &fd);
 		if (!err) {
 			err = hfsplus_find_cat(inode->i_sb, inode->i_ino, &fd);
@@ -81,6 +84,8 @@ struct inode *hfsplus_iget(struct super_block *sb, unsigned long ino)
 				err = hfsplus_cat_read_inode(inode, &fd);
 			hfs_find_exit(&fd);
 		}
+<<<<<<< HEAD
+=======
 =======
 		hfs_find_init(HFSPLUS_SB(inode->i_sb)->cat_tree, &fd);
 		err = hfsplus_find_cat(inode->i_sb, inode->i_ino, &fd);
@@ -88,6 +93,7 @@ struct inode *hfsplus_iget(struct super_block *sb, unsigned long ino)
 			err = hfsplus_cat_read_inode(inode, &fd);
 		hfs_find_exit(&fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		err = hfsplus_system_read_inode(inode);
 	}
@@ -144,6 +150,9 @@ static int hfsplus_write_inode(struct inode *inode,
 		struct writeback_control *wbc)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	dprint(DBG_INODE, "hfsplus_write_inode: %lu\n", inode->i_ino);
@@ -151,11 +160,14 @@ static int hfsplus_write_inode(struct inode *inode,
 	err = hfsplus_ext_write_extent(inode);
 	if (err)
 		return err;
+<<<<<<< HEAD
+=======
 =======
 	dprint(DBG_INODE, "hfsplus_write_inode: %lu\n", inode->i_ino);
 
 	hfsplus_ext_write_extent(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (inode->i_ino >= HFSPLUS_FIRSTUSER_CNID ||
 	    inode->i_ino == HFSPLUS_ROOT_CNID)
@@ -361,7 +373,11 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 	u64 last_fs_block, last_fs_page;
 =======
+<<<<<<< HEAD
+	u64 last_fs_block, last_fs_page;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	err = -EINVAL;
@@ -418,6 +434,9 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 		sbi->rsrc_clump_blocks = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = -EFBIG;
 	last_fs_block = sbi->total_blocks - 1;
 	last_fs_page = (last_fs_block << sbi->alloc_blksz_shift) >>
@@ -429,8 +448,11 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 		goto out_free_vhdr;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set up operations so we can load metadata */
 	sb->s_op = &hfsplus_sops;
 	sb->s_maxbytes = MAX_LFS_FILESIZE;
@@ -459,7 +481,12 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 	err = -EINVAL;
 
 =======
+<<<<<<< HEAD
+	err = -EINVAL;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Load metadata objects (B*Trees) */
 	sbi->ext_tree = hfs_btree_open(sb, HFSPLUS_EXT_CNID);
 	if (!sbi->ext_tree) {
@@ -489,6 +516,9 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sb->s_d_op = &hfsplus_dentry_operations;
 	sb->s_root = d_make_root(root);
 	if (!sb->s_root) {
@@ -501,11 +531,14 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 	err = hfs_find_init(sbi->cat_tree, &fd);
 	if (err)
 		goto out_put_root;
+<<<<<<< HEAD
+=======
 =======
 	str.len = sizeof(HFSP_HIDDENDIR_NAME) - 1;
 	str.name = HFSP_HIDDENDIR_NAME;
 	hfs_find_init(sbi->cat_tree, &fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hfsplus_cat_build_key(sb, fd.search_key, HFSPLUS_ROOT_CNID, &str);
 	if (!hfs_brec_read(&fd, &entry, sizeof(entry))) {
 		hfs_find_exit(&fd);
@@ -536,6 +569,9 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 			mutex_lock(&sbi->vh_mutex);
 			sbi->hidden_dir = hfsplus_new_inode(sb, S_IFDIR);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!sbi->hidden_dir) {
 				mutex_unlock(&sbi->vh_mutex);
 				err = -ENOMEM;
@@ -546,17 +582,22 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 			mutex_unlock(&sbi->vh_mutex);
 			if (err)
 				goto out_put_hidden_dir;
+<<<<<<< HEAD
+=======
 =======
 			hfsplus_create_cat(sbi->hidden_dir->i_ino, root, &str,
 					   sbi->hidden_dir);
 			mutex_unlock(&sbi->vh_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			hfsplus_mark_inode_dirty(sbi->hidden_dir,
 						 HFSPLUS_I_CAT_DIRTY);
 		}
 	}
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	sb->s_d_op = &hfsplus_dentry_operations;
@@ -567,6 +608,7 @@ static int hfsplus_fill_super(struct super_block *sb, void *data, int silent)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unload_nls(sbi->nls);
 	sbi->nls = nls;
 	return 0;
@@ -578,8 +620,13 @@ out_put_root:
 	dput(sb->s_root);
 	sb->s_root = NULL;
 =======
+<<<<<<< HEAD
+	dput(sb->s_root);
+	sb->s_root = NULL;
+=======
 	iput(root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_put_alloc_file:
 	iput(sbi->alloc_file);
 out_close_cat_tree:
@@ -617,8 +664,11 @@ static void hfsplus_i_callback(struct rcu_head *head)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(hfsplus_inode_cachep, HFSPLUS_I(inode));
 }
 

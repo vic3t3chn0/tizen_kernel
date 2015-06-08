@@ -39,6 +39,29 @@
 
 #define ADXRS450_GET_ST(a)	((a >> 26) & 0x3)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum {
+	ID_ADXRS450,
+	ID_ADXRS453,
+};
+
+/**
+ * struct adxrs450_state - device instance specific data
+ * @us:			actual spi_device
+ * @buf_lock:		mutex to protect tx and rx
+ * @tx:			transmit buffer
+ * @rx:			recieve buffer
+ **/
+struct adxrs450_state {
+	struct spi_device	*us;
+	struct mutex		buf_lock;
+	u8			tx[ADXRS450_MAX_RX] ____cacheline_aligned;
+	u8			rx[ADXRS450_MAX_TX];
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct adxrs450_state - device instance specific data
  * @us:			actual spi_device
@@ -53,6 +76,10 @@ struct adxrs450_state {
 	u8				*tx;
 	u8				*rx;
 	struct mutex			buf_lock;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* SPI_ADXRS450_H_ */

@@ -146,8 +146,11 @@ static struct clocksource pit_clk = {
 	.read	= pit_read_clk,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.shift	= 20,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.mask	= CLOCKSOURCE_MASK(32),
 };
 
@@ -156,8 +159,12 @@ static struct clocksource pit_clk = {
 <<<<<<< HEAD
 void hw_timer_init(irq_handler_t handler)
 =======
+<<<<<<< HEAD
+void hw_timer_init(irq_handler_t handler)
+=======
 void hw_timer_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	cf_pit_clockevent.cpumask = cpumask_of(smp_processor_id());
 	cf_pit_clockevent.mult = div_sc(FREQ, NSEC_PER_SEC, 32);
@@ -172,9 +179,13 @@ void hw_timer_init(void)
 <<<<<<< HEAD
 	clocksource_register_hz(&pit_clk, FREQ);
 =======
+<<<<<<< HEAD
+	clocksource_register_hz(&pit_clk, FREQ);
+=======
 	pit_clk.mult = clocksource_hz2mult(FREQ, pit_clk.shift);
 	clocksource_register(&pit_clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/

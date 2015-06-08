@@ -36,8 +36,12 @@ static const struct file_operations sta_ ##name## _ops = {		\
 <<<<<<< HEAD
 	.open = simple_open,						\
 =======
+<<<<<<< HEAD
+	.open = simple_open,						\
+=======
 	.open = mac80211_open_file_generic,				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = generic_file_llseek,					\
 }
 
@@ -48,8 +52,12 @@ static const struct file_operations sta_ ##name## _ops = {		\
 <<<<<<< HEAD
 	.open = simple_open,						\
 =======
+<<<<<<< HEAD
+	.open = simple_open,						\
+=======
 	.open = mac80211_open_file_generic,				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = generic_file_llseek,					\
 }
 
@@ -65,6 +73,9 @@ static ssize_t sta_flags_read(struct file *file, char __user *userbuf,
 			      size_t count, loff_t *ppos)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char buf[121];
 	struct sta_info *sta = file->private_data;
 
@@ -82,6 +93,8 @@ static ssize_t sta_flags_read(struct file *file, char __user *userbuf,
 			    TEST(TDLS_PEER_AUTH), TEST(4ADDR_EVENT),
 			    TEST(INSERTED), TEST(RATE_CONTROL));
 #undef TEST
+<<<<<<< HEAD
+=======
 =======
 	char buf[100];
 	struct sta_info *sta = file->private_data;
@@ -97,6 +110,7 @@ static ssize_t sta_flags_read(struct file *file, char __user *userbuf,
 		staflags & WLAN_STA_WDS ? "WDS\n" : "",
 		staflags & WLAN_STA_MFP ? "MFP\n" : "");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return simple_read_from_buffer(userbuf, count, ppos, buf, res);
 }
 STA_OPS(flags);
@@ -107,6 +121,9 @@ static ssize_t sta_num_ps_buf_frames_read(struct file *file,
 {
 	struct sta_info *sta = file->private_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char buf[17*IEEE80211_NUM_ACS], *p = buf;
 	int ac;
 
@@ -115,10 +132,13 @@ static ssize_t sta_num_ps_buf_frames_read(struct file *file,
 			       skb_queue_len(&sta->ps_tx_buf[ac]) +
 			       skb_queue_len(&sta->tx_filtered[ac]));
 	return simple_read_from_buffer(userbuf, count, ppos, buf, p - buf);
+<<<<<<< HEAD
+=======
 =======
 	return mac80211_format_buffer(userbuf, count, ppos, "%u\n",
 				      skb_queue_len(&sta->ps_tx_buf));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 STA_OPS(num_ps_buf_frames);
 
@@ -309,10 +329,16 @@ static ssize_t sta_ht_capa_read(struct file *file, char __user *userbuf,
 			     "3839 bytes");
 		PRINT_HT_CAP((htc->cap & BIT(11)), "Max AMSDU length: "
 =======
+<<<<<<< HEAD
+		PRINT_HT_CAP(!(htc->cap & BIT(11)), "Max AMSDU length: "
+			     "3839 bytes");
+		PRINT_HT_CAP((htc->cap & BIT(11)), "Max AMSDU length: "
+=======
 		PRINT_HT_CAP((htc->cap & BIT(11)), "Max AMSDU length: "
 			     "3839 bytes");
 		PRINT_HT_CAP(!(htc->cap & BIT(11)), "Max AMSDU length: "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     "7935 bytes");
 
 		/*

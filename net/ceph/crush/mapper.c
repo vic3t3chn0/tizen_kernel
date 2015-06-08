@@ -479,8 +479,11 @@ int crush_do_rule(struct crush_map *map,
 	int firstn;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int rc = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(ruleno >= map->max_rules);
 
@@ -495,6 +498,9 @@ int crush_do_rule(struct crush_map *map,
 	 * referenced by the crush rule.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (force >= 0 &&
 	    force < map->max_devices &&
 	    map->device_parents[force] != 0 &&
@@ -507,6 +513,8 @@ int crush_do_rule(struct crush_map *map,
 				force = map->bucket_parents[-1-force];
 			if (force == 0)
 				break;
+<<<<<<< HEAD
+=======
 =======
 	if (force >= 0) {
 		if (force >= map->max_devices ||
@@ -526,6 +534,7 @@ int crush_do_rule(struct crush_map *map,
 					break;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -535,6 +544,9 @@ int crush_do_rule(struct crush_map *map,
 		case CRUSH_RULE_TAKE:
 			w[0] = rule->steps[step].arg1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* find position in force_context/hierarchy */
 			while (force_pos >= 0 &&
@@ -544,12 +556,15 @@ int crush_do_rule(struct crush_map *map,
 			if (force_pos >= 0)
 				force_pos--;
 
+<<<<<<< HEAD
+=======
 =======
 			if (force_pos >= 0) {
 				BUG_ON(force_context[force_pos] != w[0]);
 				force_pos--;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			wsize = 1;
 			break;
 
@@ -633,11 +648,15 @@ int crush_do_rule(struct crush_map *map,
 <<<<<<< HEAD
 	return result_len;
 =======
+<<<<<<< HEAD
+	return result_len;
+=======
 	rc = result_len;
 
 out:
 	return rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 

@@ -4,11 +4,15 @@
 <<<<<<< HEAD
  * Copyright (C) 2005-2011  NTT DATA CORPORATION
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2005-2011  NTT DATA CORPORATION
+=======
  * Implementation of the Domain-Based Mandatory Access Control.
  *
  * Copyright (C) 2005-2010  NTT DATA CORPORATION
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include "common.h"
@@ -16,6 +20,9 @@
 #include <linux/slab.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_memory_free - Free memory for elements.
  *
@@ -112,6 +119,8 @@ static bool tomoyo_name_used_by_io_buffer(const char *string)
  * Returns nothing.
  */
 static inline void tomoyo_del_transition_control(struct list_head *element)
+<<<<<<< HEAD
+=======
 =======
 struct tomoyo_gc {
 	struct list_head list;
@@ -157,6 +166,7 @@ static void tomoyo_del_no_rewrite(struct list_head *element)
 
 static void tomoyo_del_transition_control(struct list_head *element)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tomoyo_transition_control *ptr =
 		container_of(element, typeof(*ptr), head.list);
@@ -165,6 +175,9 @@ static void tomoyo_del_transition_control(struct list_head *element)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_del_aggregator - Delete members in "struct tomoyo_aggregator".
  *
@@ -173,9 +186,12 @@ static void tomoyo_del_transition_control(struct list_head *element)
  * Returns nothing.
  */
 static inline void tomoyo_del_aggregator(struct list_head *element)
+<<<<<<< HEAD
+=======
 =======
 static void tomoyo_del_aggregator(struct list_head *element)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tomoyo_aggregator *ptr =
 		container_of(element, typeof(*ptr), head.list);
@@ -184,6 +200,9 @@ static void tomoyo_del_aggregator(struct list_head *element)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_del_manager - Delete members in "struct tomoyo_manager".
  *
@@ -192,9 +211,12 @@ static void tomoyo_del_aggregator(struct list_head *element)
  * Returns nothing.
  */
 static inline void tomoyo_del_manager(struct list_head *element)
+<<<<<<< HEAD
+=======
 =======
 static void tomoyo_del_manager(struct list_head *element)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tomoyo_manager *ptr =
 		container_of(element, typeof(*ptr), head.list);
@@ -202,6 +224,9 @@ static void tomoyo_del_manager(struct list_head *element)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_del_acl - Delete members in "struct tomoyo_acl_info".
  *
@@ -209,8 +234,11 @@ static void tomoyo_del_manager(struct list_head *element)
  *
  * Returns nothing.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tomoyo_del_acl(struct list_head *element)
 {
 	struct tomoyo_acl_info *acl =
@@ -218,7 +246,11 @@ static void tomoyo_del_acl(struct list_head *element)
 <<<<<<< HEAD
 	tomoyo_put_condition(acl->cond);
 =======
+<<<<<<< HEAD
+	tomoyo_put_condition(acl->cond);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (acl->type) {
 	case TOMOYO_TYPE_PATH_ACL:
 		{
@@ -264,6 +296,9 @@ static void tomoyo_del_acl(struct list_head *element)
 		}
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TOMOYO_TYPE_ENV_ACL:
 		{
 			struct tomoyo_env_acl *entry =
@@ -309,12 +344,15 @@ static void tomoyo_del_acl(struct list_head *element)
  * Caller holds tomoyo_policy_lock mutex.
  */
 static inline void tomoyo_del_domain(struct list_head *element)
+<<<<<<< HEAD
+=======
 =======
 	}
 }
 
 static bool tomoyo_del_domain(struct list_head *element)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tomoyo_domain_info *domain =
 		container_of(element, typeof(*domain), list);
@@ -322,10 +360,15 @@ static bool tomoyo_del_domain(struct list_head *element)
 	struct tomoyo_acl_info *tmp;
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Since this domain is referenced from neither
 	 * "struct tomoyo_io_buffer" nor "struct cred"->security, we can delete
 	 * elements without checking for is_deleted flag.
 	 */
+<<<<<<< HEAD
+=======
 =======
 	 * Since we don't protect whole execve() operation using SRCU,
 	 * we need to recheck domain->users at this point.
@@ -351,12 +394,16 @@ static bool tomoyo_del_domain(struct list_head *element)
 	if (atomic_read(&domain->users))
 		return false;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(acl, tmp, &domain->acl_info_list, list) {
 		tomoyo_del_acl(&acl->list);
 		tomoyo_memory_free(acl);
 	}
 	tomoyo_put_name(domain->domainname);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -418,6 +465,8 @@ static inline void tomoyo_del_name(struct list_head *element)
  * Returns nothing.
  */
 static inline void tomoyo_del_path_group(struct list_head *element)
+<<<<<<< HEAD
+=======
 =======
 	return true;
 }
@@ -431,6 +480,7 @@ static void tomoyo_del_name(struct list_head *element)
 
 static void tomoyo_del_path_group(struct list_head *element)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tomoyo_path_group *member =
 		container_of(element, typeof(*member), head.list);
@@ -438,6 +488,9 @@ static void tomoyo_del_path_group(struct list_head *element)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tomoyo_del_group - Delete "struct tomoyo_group".
  *
@@ -767,6 +820,8 @@ void tomoyo_notify_gc(struct tomoyo_io_buffer *head, const bool is_register)
 		if (!IS_ERR(task))
 			wake_up_process(task);
 	}
+<<<<<<< HEAD
+=======
 =======
 static void tomoyo_del_group(struct list_head *element)
 {
@@ -941,4 +996,5 @@ void tomoyo_run_gc(void)
 	if (!IS_ERR(task))
 		wake_up_process(task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

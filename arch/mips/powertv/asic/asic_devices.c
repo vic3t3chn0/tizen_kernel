@@ -397,17 +397,26 @@ void __init platform_alloc_bootmem(void)
 <<<<<<< HEAD
 		int size = resource_size(&gp_resources[i]);
 =======
+<<<<<<< HEAD
+		int size = resource_size(&gp_resources[i]);
+=======
 		int size = gp_resources[i].end - gp_resources[i].start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((gp_resources[i].start != 0) &&
 			((gp_resources[i].flags & IORESOURCE_MEM) != 0)) {
 			reserve_bootmem(dma_to_phys(gp_resources[i].start),
 				size, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			total += resource_size(&gp_resources[i]);
 			pr_info("reserve resource %s at %08x (%u bytes)\n",
 				gp_resources[i].name, gp_resources[i].start,
 				resource_size(&gp_resources[i]));
+<<<<<<< HEAD
+=======
 =======
 			total += gp_resources[i].end -
 				gp_resources[i].start + 1;
@@ -416,6 +425,7 @@ void __init platform_alloc_bootmem(void)
 				gp_resources[i].end -
 					gp_resources[i].start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -424,8 +434,12 @@ void __init platform_alloc_bootmem(void)
 <<<<<<< HEAD
 		int size = resource_size(&gp_resources[i]);
 =======
+<<<<<<< HEAD
+		int size = resource_size(&gp_resources[i]);
+=======
 		int size = gp_resources[i].end - gp_resources[i].start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((gp_resources[i].start == 0) &&
 			((gp_resources[i].flags & IORESOURCE_MEM) != 0)) {
 			void *mem = alloc_bootmem_pages(size);

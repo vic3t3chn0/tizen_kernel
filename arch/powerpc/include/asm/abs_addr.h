@@ -19,8 +19,11 @@
 #include <asm/prom.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/firmware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct mschunks_map {
         unsigned long num_chunks;
@@ -52,6 +55,9 @@ static inline unsigned long phys_to_abs(unsigned long pa)
 <<<<<<< HEAD
 	return pa;
 =======
+<<<<<<< HEAD
+	return pa;
+=======
 	unsigned long chunk;
 
 	/* This is a no-op on non-iSeries */
@@ -65,12 +71,15 @@ static inline unsigned long phys_to_abs(unsigned long pa)
 
 	return chunk_to_addr(chunk) + (pa & MSCHUNKS_OFFSET_MASK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Convenience macros */
 #define virt_to_abs(va) phys_to_abs(__pa(va))
 #define abs_to_virt(aa) __va(aa)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -81,5 +90,6 @@ static inline unsigned long phys_to_abs(unsigned long pa)
 	(0x8000000000000000UL | virt_to_abs(virtaddr))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 #endif /* _ASM_POWERPC_ABS_ADDR_H */

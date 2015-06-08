@@ -165,7 +165,12 @@ struct kvm_pit_config {
 #define KVM_EXIT_PAPR_HCALL	  19
 #define KVM_EXIT_S390_UCONTROL	  20
 =======
+<<<<<<< HEAD
+#define KVM_EXIT_PAPR_HCALL	  19
+#define KVM_EXIT_S390_UCONTROL	  20
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* For KVM_EXIT_INTERNAL_ERROR */
 #define KVM_INTERNAL_ERROR_EMULATION 1
@@ -254,13 +259,19 @@ struct kvm_run {
 #define KVM_S390_RESET_IPL       16
 		__u64 s390_reset_flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* KVM_EXIT_S390_UCONTROL */
 		struct {
 			__u64 trans_exc_code;
 			__u32 pgm_code;
 		} s390_ucontrol;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* KVM_EXIT_DCR */
 		struct {
 			__u32 dcrn;
@@ -278,6 +289,9 @@ struct kvm_run {
 			__u64 gprs[32];
 		} osi;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct {
 			__u64 nr;
 			__u64 ret;
@@ -300,11 +314,14 @@ struct kvm_run {
 		struct kvm_sync_regs regs;
 		char padding[1024];
 	} s;
+<<<<<<< HEAD
+=======
 =======
 		/* Fix the size of the union. */
 		char padding[256];
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* for KVM_REGISTER_COALESCED_MMIO / KVM_UNREGISTER_COALESCED_MMIO */
@@ -406,7 +423,11 @@ struct kvm_s390_psw {
 <<<<<<< HEAD
 #define KVM_S390_INT_EXTERNAL_CALL	0xffff1202u
 =======
+<<<<<<< HEAD
+#define KVM_S390_INT_EXTERNAL_CALL	0xffff1202u
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct kvm_s390_interrupt {
 	__u32 type;
@@ -467,13 +488,19 @@ struct kvm_ppc_pvinfo {
 #define KVMIO 0xAE
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* machine type bits, to be used as argument to KVM_CREATE_VM */
 #define KVM_VM_S390_UCONTROL	1
 
 #define KVM_S390_SIE_PAGE_OFFSET 1
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ioctls for /dev/kvm fds:
  */
@@ -510,8 +537,12 @@ struct kvm_ppc_pvinfo {
 <<<<<<< HEAD
 #define KVM_CAP_NR_VCPUS 9       /* returns recommended max vcpus per vm */
 =======
+<<<<<<< HEAD
+#define KVM_CAP_NR_VCPUS 9       /* returns recommended max vcpus per vm */
+=======
 #define KVM_CAP_NR_VCPUS 9       /* returns max vcpus per vm */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define KVM_CAP_NR_MEMSLOTS 10   /* returns max memory slots per vm */
 #define KVM_CAP_PIT 11
 #define KVM_CAP_NOP_IO_DELAY 12
@@ -599,6 +630,9 @@ struct kvm_ppc_pvinfo {
 #define KVM_CAP_GET_TSC_KHZ 61
 #define KVM_CAP_PPC_BOOKE_SREGS 62
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define KVM_CAP_SPAPR_TCE 63
 #define KVM_CAP_PPC_SMT 64
 #define KVM_CAP_PPC_RMA	65
@@ -612,8 +646,11 @@ struct kvm_ppc_pvinfo {
 #define KVM_CAP_S390_UCONTROL 73
 #define KVM_CAP_SYNC_REGS 74
 #define KVM_CAP_PCI_2_3 75
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef KVM_CAP_IRQ_ROUTING
 
@@ -694,6 +731,9 @@ struct kvm_clock_data {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define KVM_MMU_FSL_BOOKE_NOHV		0
 #define KVM_MMU_FSL_BOOKE_HV		1
 
@@ -740,8 +780,11 @@ struct kvm_one_reg {
 	__u64 addr;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ioctls for VM fds
  */
@@ -761,6 +804,9 @@ struct kvm_one_reg {
 #define KVM_SET_TSS_ADDR          _IO(KVMIO,   0x47)
 #define KVM_SET_IDENTITY_MAP_ADDR _IOW(KVMIO,  0x48, __u64)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* enable ucontrol for s390 */
 struct kvm_s390_ucas_mapping {
@@ -772,8 +818,11 @@ struct kvm_s390_ucas_mapping {
 #define KVM_S390_UCAS_UNMAP      _IOW(KVMIO, 0x51, struct kvm_s390_ucas_mapping)
 #define KVM_S390_VCPU_FAULT	 _IOW(KVMIO, 0x52, unsigned long)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Device model IOC */
 #define KVM_CREATE_IRQCHIP        _IO(KVMIO,   0x60)
 #define KVM_IRQ_LINE              _IOW(KVMIO,  0x61, struct kvm_irq_level)
@@ -821,7 +870,13 @@ struct kvm_s390_ucas_mapping {
 #define KVM_ASSIGN_SET_INTX_MASK  _IOW(KVMIO,  0xa4, \
 				       struct kvm_assigned_pci_dev)
 =======
+<<<<<<< HEAD
+/* Available with KVM_CAP_PCI_2_3 */
+#define KVM_ASSIGN_SET_INTX_MASK  _IOW(KVMIO,  0xa4, \
+				       struct kvm_assigned_pci_dev)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * ioctls for vcpu fds
@@ -886,6 +941,9 @@ struct kvm_s390_ucas_mapping {
 #define KVM_GET_XCRS		  _IOR(KVMIO,  0xa6, struct kvm_xcrs)
 #define KVM_SET_XCRS		  _IOW(KVMIO,  0xa7, struct kvm_xcrs)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define KVM_CREATE_SPAPR_TCE	  _IOW(KVMIO,  0xa8, struct kvm_create_spapr_tce)
 /* Available with KVM_CAP_RMA */
 #define KVM_ALLOCATE_RMA	  _IOR(KVMIO,  0xa9, struct kvm_allocate_rma)
@@ -898,10 +956,13 @@ struct kvm_s390_ucas_mapping {
 #define KVM_DEV_ASSIGN_ENABLE_IOMMU	(1 << 0)
 #define KVM_DEV_ASSIGN_PCI_2_3		(1 << 1)
 #define KVM_DEV_ASSIGN_MASK_INTX	(1 << 2)
+<<<<<<< HEAD
+=======
 =======
 
 #define KVM_DEV_ASSIGN_ENABLE_IOMMU	(1 << 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct kvm_assigned_pci_dev {
 	__u32 assigned_dev_id;
@@ -928,10 +989,15 @@ struct kvm_assigned_pci_dev {
 struct kvm_assigned_irq {
 	__u32 assigned_dev_id;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32 host_irq; /* ignored (legacy field) */
 	__u32 guest_irq;
 	__u32 flags;
 	union {
+<<<<<<< HEAD
+=======
 =======
 	__u32 host_irq;
 	__u32 guest_irq;
@@ -943,14 +1009,18 @@ struct kvm_assigned_irq {
 			__u32 data;
 		} guest_msi;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__u32 reserved[12];
 	};
 };
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvm_assigned_msix_nr {
 	__u32 assigned_dev_id;
 	__u16 entry_nr;

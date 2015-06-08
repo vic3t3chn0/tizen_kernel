@@ -17,8 +17,11 @@
 #include <linux/gpio.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/irq.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
@@ -173,7 +176,11 @@ static void __init mx23evk_init(void)
 <<<<<<< HEAD
 	mx23_add_rtc_stmp3xxx();
 =======
+<<<<<<< HEAD
+	mx23_add_rtc_stmp3xxx();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init mx23evk_timer_init(void)
@@ -194,7 +201,13 @@ MACHINE_START(MX23EVK, "Freescale MX23 EVK")
 	.init_machine	= mx23evk_init,
 	.restart	= mxs_restart,
 =======
+<<<<<<< HEAD
+	.timer		= &mx23evk_timer,
+	.init_machine	= mx23evk_init,
+	.restart	= mxs_restart,
+=======
 	.init_machine	= mx23evk_init,
 	.timer		= &mx23evk_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

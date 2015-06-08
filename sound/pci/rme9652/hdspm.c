@@ -44,8 +44,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/pci.h>
 #include <linux/math64.h>
@@ -68,8 +72,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	  /* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;/* Enable this card */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;/* Enable this card */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;/* Enable this card */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for RME HDSPM interface.");
@@ -533,6 +541,11 @@ MODULE_SUPPORTED_DEVICE("{{RME HDSPM-MADI}}");
 #define HDSPM_AIO_REV		212
 #define HDSPM_MADIFACE_REV	213
 =======
+<<<<<<< HEAD
+#define HDSPM_RAYDAT_REV	211
+#define HDSPM_AIO_REV		212
+#define HDSPM_MADIFACE_REV	213
+=======
 /* revisions >= 230 indicate AES32 card */
 #define HDSPM_MADI_OLD_REV	207
 #define HDSPM_MADI_REV		210
@@ -543,6 +556,7 @@ MODULE_SUPPORTED_DEVICE("{{RME HDSPM-MADI}}");
 #define HDSPM_AES32_REV		234
 #define HDSPM_AES32_OLD_REV	233
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* speed factor modes */
 #define HDSPM_SPEED_SINGLE 0
@@ -965,7 +979,12 @@ struct hdspm {
 	unsigned int serial;
 
 =======
+<<<<<<< HEAD
+	unsigned int serial;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hdspm_peak_rms peak_rms;
 };
 
@@ -1237,6 +1256,9 @@ static int hdspm_external_sample_rate(struct hdspm *hdspm)
 				break;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* QS and DS rates normally can not be detected
 			 * automatically by the card. Only exception is MADI
@@ -1253,8 +1275,11 @@ static int hdspm_external_sample_rate(struct hdspm *hdspm)
 						HDSPM_DoubleSpeed)
 					rate *= 2;
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 	}
@@ -1263,6 +1288,9 @@ static int hdspm_external_sample_rate(struct hdspm *hdspm)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* return latency in samples per period */
 static int hdspm_get_latency(struct hdspm *hdspm)
 {
@@ -1287,12 +1315,15 @@ static int hdspm_get_latency(struct hdspm *hdspm)
 static inline void hdspm_compute_period_size(struct hdspm *hdspm)
 {
 	hdspm->period_bytes = 4 * hdspm_get_latency(hdspm);
+<<<<<<< HEAD
+=======
 =======
 /* Latency function */
 static inline void hdspm_compute_period_size(struct hdspm *hdspm)
 {
 	hdspm->period_bytes = 1 << ((hdspm_decode_latency(hdspm->control_register) + 8));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -1352,6 +1383,9 @@ static int hdspm_set_interrupt_interval(struct hdspm *s, unsigned int frames)
 	spin_lock_irq(&s->lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (32 == frames) {
 		/* Special case for new RME cards like RayDAT/AIO which
 		 * support period sizes of 32 samples. Since latency is
@@ -1373,6 +1407,8 @@ static int hdspm_set_interrupt_interval(struct hdspm *s, unsigned int frames)
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	frames >>= 7;
 	n = 0;
@@ -1381,6 +1417,7 @@ static int hdspm_set_interrupt_interval(struct hdspm *s, unsigned int frames)
 		frames >>= 1;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s->control_register &= ~HDSPM_LatencyMask;
 	s->control_register |= hdspm_encode_latency(n);
 
@@ -1412,12 +1449,18 @@ static u64 hdspm_calc_dds_value(struct hdspm *hdspm, u64 period)
 	case MADIface:
 		freq_const = 131072000000000ULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		snd_BUG();
 		return 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return div_u64(freq_const, period);
@@ -1436,6 +1479,9 @@ static void hdspm_set_dds_value(struct hdspm *hdspm, int rate)
 	switch (hdspm->io_type) {
 	case MADIface:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		n = 131072000000000ULL;  /* 125 MHz */
 		break;
 	case MADI:
@@ -1449,6 +1495,8 @@ static void hdspm_set_dds_value(struct hdspm *hdspm, int rate)
 	default:
 		snd_BUG();
 		return;
+<<<<<<< HEAD
+=======
 =======
 	  n = 131072000000000ULL;  /* 125 MHz */
 	  break;
@@ -1461,6 +1509,7 @@ static void hdspm_set_dds_value(struct hdspm *hdspm, int rate)
 	  n = 104857600000000ULL;  /* 100 MHz */
 	  break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	n = div_u64(n, rate);
@@ -3528,6 +3577,9 @@ static int snd_hdspm_put_qs_wire(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HDSPM_MADI_SPEEDMODE(xname, xindex) \
 {	.iface = SNDRV_CTL_ELEM_IFACE_MIXER, \
 	.name = xname, \
@@ -3613,8 +3665,11 @@ static int snd_hdspm_put_madi_speedmode(struct snd_kcontrol *kcontrol,
 	spin_unlock_irq(&hdspm->lock);
 	return change;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define HDSPM_MIXER(xname, xindex) \
 { .iface = SNDRV_CTL_ELEM_IFACE_HWDEP, \
@@ -4493,8 +4548,13 @@ static struct snd_kcontrol_new snd_hdspm_controls_madi[] = {
 	HDSPM_INPUT_SELECT("Input Select", 0),
 	HDSPM_MADI_SPEEDMODE("MADI Speed Mode", 0)
 =======
+<<<<<<< HEAD
+	HDSPM_INPUT_SELECT("Input Select", 0),
+	HDSPM_MADI_SPEEDMODE("MADI Speed Mode", 0)
+=======
 	HDSPM_INPUT_SELECT("Input Select", 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -4511,8 +4571,13 @@ static struct snd_kcontrol_new snd_hdspm_controls_madiface[] = {
 	HDSPM_SAFE_MODE("Safe Mode", 0),
 	HDSPM_MADI_SPEEDMODE("MADI Speed Mode", 0)
 =======
+<<<<<<< HEAD
+	HDSPM_SAFE_MODE("Safe Mode", 0),
+	HDSPM_MADI_SPEEDMODE("MADI Speed Mode", 0)
+=======
 	HDSPM_SAFE_MODE("Safe Mode", 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct snd_kcontrol_new snd_hdspm_controls_aio[] = {
@@ -4768,8 +4833,12 @@ snd_hdspm_proc_read_madi(struct snd_info_entry * entry,
 <<<<<<< HEAD
 			hdspm->serial);
 =======
+<<<<<<< HEAD
+			hdspm->serial);
+=======
 			(hdspm_read(hdspm, HDSPM_midiStatusIn0)>>8) & 0xFFFFFF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_iprintf(buffer, "IRQ: %d Registers bus: 0x%lx VM: 0x%lx\n",
 			hdspm->irq, hdspm->port, (unsigned long)hdspm->iobase);
@@ -4907,9 +4976,13 @@ snd_hdspm_proc_read_madi(struct snd_info_entry * entry,
 <<<<<<< HEAD
 	x = hdspm_get_latency(hdspm);
 =======
+<<<<<<< HEAD
+	x = hdspm_get_latency(hdspm);
+=======
 	x = 1 << (6 + hdspm_decode_latency(hdspm->control_register &
 							HDSPM_LatencyMask));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_iprintf(buffer,
 		"Size (Latency): %d samples (2 periods of %lu bytes)\n",
@@ -5075,9 +5148,13 @@ snd_hdspm_proc_read_aes32(struct snd_info_entry * entry,
 <<<<<<< HEAD
 	x = hdspm_get_latency(hdspm);
 =======
+<<<<<<< HEAD
+	x = hdspm_get_latency(hdspm);
+=======
 	x = 1 << (6 + hdspm_decode_latency(hdspm->control_register &
 				HDSPM_LatencyMask));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_iprintf(buffer,
 		    "Size (Latency): %d samples (2 periods of %lu bytes)\n",
@@ -5785,6 +5862,8 @@ static int snd_hdspm_prepare(struct snd_pcm_substream *substream)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static unsigned int period_sizes_old[] = {
 	64, 128, 256, 512, 1024, 2048, 4096
 };
@@ -5799,6 +5878,7 @@ static unsigned int raydat_aio_buffer_sizes[] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_pcm_hardware snd_hdspm_playback_subinfo = {
 	.info = (SNDRV_PCM_INFO_MMAP |
 		 SNDRV_PCM_INFO_MMAP_VALID |
@@ -5821,9 +5901,14 @@ static struct snd_pcm_hardware snd_hdspm_playback_subinfo = {
 	.period_bytes_min = (32 * 4),
 	.period_bytes_max = (8192 * 4) * HDSPM_MAX_CHANNELS,
 =======
+<<<<<<< HEAD
+	.period_bytes_min = (32 * 4),
+	.period_bytes_max = (8192 * 4) * HDSPM_MAX_CHANNELS,
+=======
 	.period_bytes_min = (64 * 4),
 	.period_bytes_max = (4096 * 4) * HDSPM_MAX_CHANNELS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.periods_min = 2,
 	.periods_max = 512,
 	.fifo_size = 0
@@ -5851,14 +5936,21 @@ static struct snd_pcm_hardware snd_hdspm_capture_subinfo = {
 	.period_bytes_min = (32 * 4),
 	.period_bytes_max = (8192 * 4) * HDSPM_MAX_CHANNELS,
 =======
+<<<<<<< HEAD
+	.period_bytes_min = (32 * 4),
+	.period_bytes_max = (8192 * 4) * HDSPM_MAX_CHANNELS,
+=======
 	.period_bytes_min = (64 * 4),
 	.period_bytes_max = (4096 * 4) * HDSPM_MAX_CHANNELS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.periods_min = 2,
 	.periods_max = 512,
 	.fifo_size = 0
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct snd_pcm_hw_constraint_list hw_constraints_period_sizes_old = {
@@ -5880,6 +5972,7 @@ static struct snd_pcm_hw_constraint_list hw_constraints_raydat_io_buffer = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_hdspm_hw_rule_in_channels_rate(struct snd_pcm_hw_params *params,
 					   struct snd_pcm_hw_rule *rule)
 {
@@ -6083,12 +6176,19 @@ static int snd_hdspm_playback_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	snd_pcm_hw_constraint_pow2(runtime, 0, SNDRV_PCM_HW_PARAM_PERIOD_SIZE);
 =======
+<<<<<<< HEAD
+	snd_pcm_hw_constraint_pow2(runtime, 0, SNDRV_PCM_HW_PARAM_PERIOD_SIZE);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (hdspm->io_type) {
 	case AIO:
 	case RayDAT:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_pcm_hw_constraint_minmax(runtime,
 					     SNDRV_PCM_HW_PARAM_PERIOD_SIZE,
 					     32, 4096);
@@ -6107,6 +6207,8 @@ static int snd_hdspm_playback_open(struct snd_pcm_substream *substream)
 
 	if (AES32 == hdspm->io_type) {
 		runtime->hw.rates |= SNDRV_PCM_RATE_KNOT;
+<<<<<<< HEAD
+=======
 =======
 		snd_pcm_hw_constraint_list(runtime, 0,
 				SNDRV_PCM_HW_PARAM_PERIOD_SIZE,
@@ -6125,6 +6227,7 @@ static int snd_hdspm_playback_open(struct snd_pcm_substream *substream)
 
 	if (AES32 == hdspm->io_type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_pcm_hw_constraint_list(runtime, 0, SNDRV_PCM_HW_PARAM_RATE,
 				&hdspm_hw_constraints_aes32_sample_rates);
 	} else {
@@ -6178,6 +6281,9 @@ static int snd_hdspm_capture_open(struct snd_pcm_substream *substream)
 
 	snd_pcm_hw_constraint_msbits(runtime, 0, 32, 24);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_pcm_hw_constraint_pow2(runtime, 0, SNDRV_PCM_HW_PARAM_PERIOD_SIZE);
 
 	switch (hdspm->io_type) {
@@ -6200,6 +6306,8 @@ static int snd_hdspm_capture_open(struct snd_pcm_substream *substream)
 
 	if (AES32 == hdspm->io_type) {
 		runtime->hw.rates |= SNDRV_PCM_RATE_KNOT;
+<<<<<<< HEAD
+=======
 =======
 	switch (hdspm->io_type) {
 	case AIO:
@@ -6220,6 +6328,7 @@ static int snd_hdspm_capture_open(struct snd_pcm_substream *substream)
 
 	if (AES32 == hdspm->io_type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_pcm_hw_constraint_list(runtime, 0, SNDRV_PCM_HW_PARAM_RATE,
 				&hdspm_hw_constraints_aes32_sample_rates);
 	} else {
@@ -6268,8 +6377,12 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 <<<<<<< HEAD
 		unsigned int cmd, unsigned long arg)
 =======
+<<<<<<< HEAD
+		unsigned int cmd, unsigned long arg)
+=======
 		unsigned int cmd, unsigned long __user arg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void __user *argp = (void __user *)arg;
 	struct hdspm *hdspm = hw->private_data;
@@ -6397,8 +6510,12 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 <<<<<<< HEAD
 		if (copy_to_user(argp, &info, sizeof(info)))
 =======
+<<<<<<< HEAD
+		if (copy_to_user(argp, &info, sizeof(info)))
+=======
 		if (copy_to_user((void __user *) arg, &info, sizeof(info)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EFAULT;
 		break;
 
@@ -6407,7 +6524,12 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 		memset(&status, 0, sizeof(status));
 
 =======
+<<<<<<< HEAD
+		memset(&status, 0, sizeof(status));
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status.card_type = hdspm->io_type;
 
 		status.autosync_source = hdspm_autosync_ref(hdspm);
@@ -6435,8 +6557,12 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 <<<<<<< HEAD
 				(statusregister & HDSPM_RX_64ch) ? 1 : 0;
 =======
+<<<<<<< HEAD
+				(statusregister & HDSPM_RX_64ch) ? 1 : 0;
+=======
 				(statusregister & HDSPM_TX_64ch) ? 1 : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* TODO: Mac driver sets it when f_s>48kHz */
 			status.card_specific.madi.frame_format = 0;
 
@@ -6447,8 +6573,12 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 <<<<<<< HEAD
 		if (copy_to_user(argp, &status, sizeof(status)))
 =======
+<<<<<<< HEAD
+		if (copy_to_user(argp, &status, sizeof(status)))
+=======
 		if (copy_to_user((void __user *) arg, &status, sizeof(status)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EFAULT;
 
 
@@ -6456,12 +6586,17 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 
 	case SNDRV_HDSPM_IOCTL_GET_VERSION:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memset(&hdspm_version, 0, sizeof(hdspm_version));
 
 		hdspm_version.card_type = hdspm->io_type;
 		strncpy(hdspm_version.cardname, hdspm->card_name,
 				sizeof(hdspm_version.cardname));
 		hdspm_version.serial = hdspm->serial;
+<<<<<<< HEAD
+=======
 =======
 		hdspm_version.card_type = hdspm->io_type;
 		strncpy(hdspm_version.cardname, hdspm->card_name,
@@ -6469,6 +6604,7 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 		hdspm_version.serial = (hdspm_read(hdspm,
 					HDSPM_midiStatusIn0)>>8) & 0xFFFFFF;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hdspm_version.firmware_rev = hdspm->firmware_rev;
 		hdspm_version.addons = 0;
 		if (hdspm->tco)
@@ -6477,8 +6613,12 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 <<<<<<< HEAD
 		if (copy_to_user(argp, &hdspm_version,
 =======
+<<<<<<< HEAD
+		if (copy_to_user(argp, &hdspm_version,
+=======
 		if (copy_to_user((void __user *) arg, &hdspm_version,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					sizeof(hdspm_version)))
 			return -EFAULT;
 		break;
@@ -6487,8 +6627,12 @@ static int snd_hdspm_hwdep_ioctl(struct snd_hwdep *hw, struct file *file,
 <<<<<<< HEAD
 		if (copy_from_user(&mixer, argp, sizeof(mixer)))
 =======
+<<<<<<< HEAD
+		if (copy_from_user(&mixer, argp, sizeof(mixer)))
+=======
 		if (copy_from_user(&mixer, (void __user *)arg, sizeof(mixer)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EFAULT;
 		if (copy_to_user((void __user *)mixer.mixer, hdspm->mixer,
 					sizeof(struct hdspm_mixer)))
@@ -6544,7 +6688,11 @@ static int __devinit snd_hdspm_create_hwdep(struct snd_card *card,
 <<<<<<< HEAD
 	hw->ops.ioctl_compat = snd_hdspm_hwdep_ioctl;
 =======
+<<<<<<< HEAD
+	hw->ops.ioctl_compat = snd_hdspm_hwdep_ioctl;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hw->ops.release = snd_hdspm_hwdep_dummy_op;
 
 	return 0;
@@ -6711,6 +6859,8 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 	switch (hdspm->firmware_rev) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	case HDSPM_MADI_REV:
 	case HDSPM_MADI_OLD_REV:
 		hdspm->io_type = MADI;
@@ -6718,6 +6868,7 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 		hdspm->midiPorts = 3;
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case HDSPM_RAYDAT_REV:
 		hdspm->io_type = RayDAT;
 		hdspm->card_name = "RME RayDAT";
@@ -6734,6 +6885,9 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 		hdspm->midiPorts = 1;
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		if ((hdspm->firmware_rev == 0xf0) ||
 			((hdspm->firmware_rev >= 0xe6) &&
@@ -6753,6 +6907,8 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 				hdspm->firmware_rev);
 			return -ENODEV;
 		}
+<<<<<<< HEAD
+=======
 =======
 	case HDSPM_AES_REV:
 	case HDSPM_AES32_REV:
@@ -6766,6 +6922,7 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 				hdspm->firmware_rev);
 		return -ENODEV;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	err = pci_enable_device(pci);
@@ -6799,8 +6956,12 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 <<<<<<< HEAD
 			IRQF_SHARED, KBUILD_MODNAME, hdspm)) {
 =======
+<<<<<<< HEAD
+			IRQF_SHARED, KBUILD_MODNAME, hdspm)) {
+=======
 				IRQF_SHARED, "hdspm", hdspm)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "HDSPM: unable to use IRQ %d\n", pci->irq);
 		return -EBUSY;
 	}
@@ -7023,6 +7184,9 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 			hdspm_midi_tasklet, (unsigned long) hdspm);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (hdspm->io_type != MADIface) {
 		hdspm->serial = (hdspm_read(hdspm,
@@ -7042,8 +7206,11 @@ static int __devinit snd_hdspm_create(struct snd_card *card,
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_printdd("create alsa devices.\n");
 	err = snd_hdspm_create_alsa_devices(card, hdspm);
 	if (err < 0)
@@ -7131,16 +7298,22 @@ static int __devinit snd_hdspm_probe(struct pci_dev *pci,
 		sprintf(card->shortname, "%s_%x",
 			hdspm->card_name,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			hdspm->serial);
 		sprintf(card->longname, "%s S/N 0x%x at 0x%lx, irq %d",
 			hdspm->card_name,
 			hdspm->serial,
+<<<<<<< HEAD
+=======
 =======
 			(hdspm_read(hdspm, HDSPM_midiStatusIn0)>>8) & 0xFFFFFF);
 		sprintf(card->longname, "%s S/N 0x%x at 0x%lx, irq %d",
 			hdspm->card_name,
 			(hdspm_read(hdspm, HDSPM_midiStatusIn0)>>8) & 0xFFFFFF,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			hdspm->port, hdspm->irq);
 	} else {
 		sprintf(card->shortname, "%s", hdspm->card_name);
@@ -7170,8 +7343,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "RME Hammerfall DSP MADI",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_hdspm_ids,
 	.probe = snd_hdspm_probe,
 	.remove = __devexit_p(snd_hdspm_remove),

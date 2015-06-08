@@ -12,8 +12,14 @@ obj-$(CONFIG_GEF_SBC610)	+= gef_sbc610.o
 obj-$(CONFIG_GEF_SBC310)	+= gef_sbc310.o
 obj-$(CONFIG_GEF_PPC9A)		+= gef_ppc9a.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_GEF_SBC610)	+= gef_sbc610.o
+obj-$(CONFIG_GEF_SBC310)	+= gef_sbc310.o
+obj-$(CONFIG_GEF_PPC9A)		+= gef_ppc9a.o
+=======
 gef-gpio-$(CONFIG_GPIOLIB)	+= gef_gpio.o
 obj-$(CONFIG_GEF_SBC610)	+= gef_sbc610.o gef_pic.o $(gef-gpio-y)
 obj-$(CONFIG_GEF_SBC310)	+= gef_sbc310.o gef_pic.o $(gef-gpio-y)
 obj-$(CONFIG_GEF_PPC9A)		+= gef_ppc9a.o gef_pic.o $(gef-gpio-y)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

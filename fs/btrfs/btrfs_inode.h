@@ -39,7 +39,13 @@ struct btrfs_inode {
 	spinlock_t lock;
 
 =======
+<<<<<<< HEAD
+	/* Lock for counters */
+	spinlock_t lock;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* the extent_tree has caches of all the extent mappings to disk */
 	struct extent_map_tree extent_tree;
 
@@ -59,7 +65,13 @@ struct btrfs_inode {
 	struct mutex delalloc_mutex;
 
 =======
+<<<<<<< HEAD
+	/* held while doing delalloc reservations */
+	struct mutex delalloc_mutex;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* used to order data wrt metadata */
 	struct btrfs_ordered_inode_tree ordered_tree;
 
@@ -114,12 +126,15 @@ struct btrfs_inode {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* total number of bytes that may be used for this inode for
 	 * delalloc
 	 */
 	u64 reserved_bytes;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * the size of the file stored in the metadata on disk.  data=ordered
 	 * means the in-memory i_size might be larger than the size on disk
@@ -129,10 +144,13 @@ struct btrfs_inode {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* flags field from the on disk inode */
 	u32 flags;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * if this is a directory then index_cnt is the counter for the index
 	 * number for new files that are created
@@ -148,6 +166,9 @@ struct btrfs_inode {
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Number of bytes outstanding that are going to need csums.  This is
 	 * used in ENOSPC accounting.
 	 */
@@ -157,8 +178,11 @@ struct btrfs_inode {
 	u32 flags;
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Counters to keep track of the number of extent item's we may use due
 	 * to delalloc and such.  outstanding_extents is the number of extent
 	 * items we think we'll end up using, and reserved_extents is the number
@@ -168,9 +192,14 @@ struct btrfs_inode {
 	unsigned outstanding_extents;
 	unsigned reserved_extents;
 =======
+<<<<<<< HEAD
+	unsigned outstanding_extents;
+	unsigned reserved_extents;
+=======
 	atomic_t outstanding_extents;
 	atomic_t reserved_extents;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * ordered_data_close is set by truncate when a file that used
@@ -180,10 +209,13 @@ struct btrfs_inode {
 	 * new data the application may have written before commit.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 *
 	 * yes, its silly to have a single bitflag, but we might grow more
 	 * of these.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	unsigned ordered_data_close:1;
 	unsigned orphan_meta_reserved:1;
@@ -192,7 +224,11 @@ struct btrfs_inode {
 <<<<<<< HEAD
 	unsigned delalloc_meta_reserved:1;
 =======
+<<<<<<< HEAD
+	unsigned delalloc_meta_reserved:1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * always compress this one file
@@ -216,14 +252,20 @@ static inline u64 btrfs_ino(struct inode *inode)
 	u64 ino = BTRFS_I(inode)->location.objectid;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * !ino: btree_inode
 	 * type == BTRFS_ROOT_ITEM_KEY: subvol dir
 	 */
 	if (!ino || BTRFS_I(inode)->location.type == BTRFS_ROOT_ITEM_KEY)
+<<<<<<< HEAD
+=======
 =======
 	if (ino <= BTRFS_FIRST_FREE_OBJECTID)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ino = inode->i_ino;
 	return ino;
 }
@@ -235,6 +277,9 @@ static inline void btrfs_i_size_write(struct inode *inode, u64 size)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool btrfs_is_free_space_inode(struct btrfs_root *root,
 				       struct inode *inode)
 {
@@ -244,6 +289,9 @@ static inline bool btrfs_is_free_space_inode(struct btrfs_root *root,
 	return false;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

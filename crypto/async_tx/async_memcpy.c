@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/dma-mapping.h>
 #include <linux/async_tx.h>
@@ -83,6 +87,9 @@ async_memcpy(struct page *dest, struct page *src, unsigned int dest_offset,
 		async_tx_quiesce(&submit->depend_tx);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dest_buf = kmap_atomic(dest) + dest_offset;
 		src_buf = kmap_atomic(src) + src_offset;
 
@@ -90,6 +97,8 @@ async_memcpy(struct page *dest, struct page *src, unsigned int dest_offset,
 
 		kunmap_atomic(src_buf);
 		kunmap_atomic(dest_buf);
+<<<<<<< HEAD
+=======
 =======
 		dest_buf = kmap_atomic(dest, KM_USER0) + dest_offset;
 		src_buf = kmap_atomic(src, KM_USER1) + src_offset;
@@ -99,6 +108,7 @@ async_memcpy(struct page *dest, struct page *src, unsigned int dest_offset,
 		kunmap_atomic(src_buf, KM_USER1);
 		kunmap_atomic(dest_buf, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		async_tx_sync_epilog(submit);
 	}

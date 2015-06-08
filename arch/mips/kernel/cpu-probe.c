@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/bugs.h>
 #include <asm/cpu.h>
@@ -30,9 +34,14 @@
 #include <asm/watch.h>
 #include <asm/elf.h>
 =======
+<<<<<<< HEAD
+#include <asm/watch.h>
+#include <asm/elf.h>
+=======
 #include <asm/system.h>
 #include <asm/watch.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/spram.h>
 #include <asm/uaccess.h>
 
@@ -82,8 +91,11 @@ void r4k_wait_irqoff(void)
 		"__pastwait:			\n");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -207,7 +219,12 @@ void __init check_wait(void)
 	case CPU_XLR:
 	case CPU_XLP:
 =======
+<<<<<<< HEAD
+	case CPU_XLR:
+	case CPU_XLP:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpu_wait = r4k_wait;
 		break;
 
@@ -997,13 +1014,19 @@ platform:
 		set_elf_platform(cpu, "octeon");
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PRID_IMP_CAVIUM_CN61XX:
 	case PRID_IMP_CAVIUM_CN63XX:
 	case PRID_IMP_CAVIUM_CN66XX:
 	case PRID_IMP_CAVIUM_CN68XX:
+<<<<<<< HEAD
+=======
 =======
 	case PRID_IMP_CAVIUM_CN63XX:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c->cputype = CPU_CAVIUM_OCTEON2;
 		__cpu_name[cpu] = "Cavium Octeon II";
 		set_elf_platform(cpu, "octeon2");
@@ -1036,6 +1059,9 @@ static inline void cpu_probe_netlogic(struct cpuinfo_mips *c, int cpu)
 	decode_configs(c);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((c->processor_id & 0xff00) == PRID_IMP_NETLOGIC_AU13XX) {
 		c->cputype = CPU_ALCHEMY;
 		__cpu_name[cpu] = "Au1300";
@@ -1043,8 +1069,11 @@ static inline void cpu_probe_netlogic(struct cpuinfo_mips *c, int cpu)
 		return;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	c->options = (MIPS_CPU_TLB       |
 			MIPS_CPU_4KEX    |
 			MIPS_CPU_COUNTER |
@@ -1055,14 +1084,20 @@ static inline void cpu_probe_netlogic(struct cpuinfo_mips *c, int cpu)
 
 	switch (c->processor_id & 0xff00) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PRID_IMP_NETLOGIC_XLP8XX:
 	case PRID_IMP_NETLOGIC_XLP3XX:
 		c->cputype = CPU_XLP;
 		__cpu_name[cpu] = "Netlogic XLP";
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case PRID_IMP_NETLOGIC_XLR732:
 	case PRID_IMP_NETLOGIC_XLR716:
 	case PRID_IMP_NETLOGIC_XLR532:
@@ -1096,14 +1131,21 @@ static inline void cpu_probe_netlogic(struct cpuinfo_mips *c, int cpu)
 <<<<<<< HEAD
 		pr_info("Unknown Netlogic chip id [%02x]!\n",
 =======
+<<<<<<< HEAD
+		pr_info("Unknown Netlogic chip id [%02x]!\n",
+=======
 		printk(KERN_INFO "Unknown Netlogic chip id [%02x]!\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       c->processor_id);
 		c->cputype = CPU_XLR;
 		break;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (c->cputype == CPU_XLP) {
 		c->isa_level = MIPS_CPU_ISA_M64R2;
 		c->options |= (MIPS_CPU_FPU | MIPS_CPU_ULRI | MIPS_CPU_MCHECK);
@@ -1113,10 +1155,13 @@ static inline void cpu_probe_netlogic(struct cpuinfo_mips *c, int cpu)
 		c->isa_level = MIPS_CPU_ISA_M64R1;
 		c->tlbsize = ((read_c0_config1() >> 25) & 0x3f) + 1;
 	}
+<<<<<<< HEAD
+=======
 =======
 	c->isa_level = MIPS_CPU_ISA_M64R1;
 	c->tlbsize = ((read_c0_config1() >> 25) & 0x3f) + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_64BIT

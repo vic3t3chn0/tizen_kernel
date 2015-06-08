@@ -116,9 +116,13 @@ static const unsigned short magic3_data[] = {
 <<<<<<< HEAD
 int migor_lcd_qvga_setup(void *sohandle, struct sh_mobile_lcdc_sys_bus_ops *so)
 =======
+<<<<<<< HEAD
+int migor_lcd_qvga_setup(void *sohandle, struct sh_mobile_lcdc_sys_bus_ops *so)
+=======
 int migor_lcd_qvga_setup(void *board_data, void *sohandle,
 			 struct sh_mobile_lcdc_sys_bus_ops *so)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long xres = 320;
 	unsigned long yres = 240;

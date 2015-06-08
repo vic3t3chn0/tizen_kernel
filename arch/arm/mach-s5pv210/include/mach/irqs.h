@@ -59,8 +59,12 @@
 <<<<<<< HEAD
 #define IRQ_IIC_HDMIPHY		S5P_IRQ_VIC1(20)
 =======
+<<<<<<< HEAD
+#define IRQ_IIC_HDMIPHY		S5P_IRQ_VIC1(20)
+=======
 #define IRQ_IIC3		S5P_IRQ_VIC1(20)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_HSIRX		S5P_IRQ_VIC1(21)
 #define IRQ_HSITX		S5P_IRQ_VIC1(22)
 #define IRQ_UHOST		S5P_IRQ_VIC1(23)
@@ -93,8 +97,12 @@
 <<<<<<< HEAD
 #define IRQ_SDO			S5P_IRQ_VIC2(15)
 =======
+<<<<<<< HEAD
+#define IRQ_SDO			S5P_IRQ_VIC2(15)
+=======
 #define IRQ_TVENC		S5P_IRQ_VIC2(15)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_I2S0		S5P_IRQ_VIC2(16)
 #define IRQ_I2S1		S5P_IRQ_VIC2(17)
 #define IRQ_I2S2		S5P_IRQ_VIC2(18)
@@ -111,9 +119,14 @@
 #define IRQ_SSS_INT		S5P_IRQ_VIC2(27)
 #define IRQ_SSS_HASH		S5P_IRQ_VIC2(28)
 =======
+<<<<<<< HEAD
+#define IRQ_SSS_INT		S5P_IRQ_VIC2(27)
+#define IRQ_SSS_HASH		S5P_IRQ_VIC2(28)
+=======
 #define IRQ_SSS_HASH		S5P_IRQ_VIC2(27)
 #define IRQ_SSS_INT		S5P_IRQ_VIC2(28)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_PCM2		S5P_IRQ_VIC2(29)
 #define IRQ_SDMIRQ		S5P_IRQ_VIC2(30)
 #define IRQ_SDMFIQ		S5P_IRQ_VIC2(31)
@@ -135,7 +148,12 @@
 #define IRQ_TIMER_BASE		(11)
 
 =======
+<<<<<<< HEAD
+#define IRQ_TIMER_BASE		(11)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P_EINT_BASE1		(S5P_IRQ_VIC0(0))
 #define S5P_EINT_BASE2		(IRQ_VIC_END + 1)
 

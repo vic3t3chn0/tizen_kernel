@@ -36,8 +36,11 @@
 #include <asm/kdebug.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/traps.h>
 
 /* Breakpoint currently in use for each BRP. */
@@ -50,8 +53,11 @@ static DEFINE_PER_CPU(struct perf_event *, wp_on_reg[ARM_MAX_WRP]);
 static int core_num_brps;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int core_num_reserved_brps;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int core_num_wrps;
 
 /* Debug architecture version. */
@@ -144,17 +150,23 @@ static u8 get_debug_arch(void)
 
 	/* Do we implement the extended CPUID interface? */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (((read_cpuid_id() >> 16) & 0xf) != 0xf) {
 		pr_warning("CPUID feature registers not supported. "
 			   "Assuming v6 debug is present.\n");
 		return ARM_DEBUG_ARCH_V6;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (WARN_ONCE((((read_cpuid_id() >> 16) & 0xf) != 0xf),
 	    "CPUID feature registers not supported. "
 	    "Assuming v6 debug is present.\n"))
 		return ARM_DEBUG_ARCH_V6;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ARM_DBG_READ(c0, 0, didr);
 	return (didr >> 16) & 0xf;
@@ -169,6 +181,9 @@ static int debug_arch_supported(void)
 {
 	u8 arch = get_debug_arch();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We don't support the memory-mapped interface. */
 	return (arch >= ARM_DEBUG_ARCH_V6 && arch <= ARM_DEBUG_ARCH_V7_ECP14) ||
@@ -184,12 +199,15 @@ static int get_num_wrp_resources(void)
 }
 
 /* Determine number of BRP registers available. */
+<<<<<<< HEAD
+=======
 =======
 	return arch >= ARM_DEBUG_ARCH_V6 && arch <= ARM_DEBUG_ARCH_V7_ECP14;
 }
 
 /* Determine number of BRP register available. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int get_num_brp_resources(void)
 {
 	u32 didr;
@@ -209,15 +227,21 @@ static int get_num_wrps(void)
 {
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * On debug architectures prior to 7.1, when a watchpoint fires, the
 	 * only way to work out which watchpoint it was is by disassembling
 	 * the faulting instruction and working out the address of the memory
 	 * access.
+<<<<<<< HEAD
+=======
 =======
 	 * FIXME: When a watchpoint fires, the only way to work out which
 	 * watchpoint it was is by disassembling the faulting instruction
 	 * and working out the address of the memory access.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *
 	 * Furthermore, we can only do this if the watchpoint was precise
 	 * since imprecise watchpoints prevent us from calculating register
@@ -232,6 +256,9 @@ static int get_num_wrps(void)
 	 * that it is set on some implementations].
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (get_debug_arch() < ARM_DEBUG_ARCH_V7_1)
 		return 1;
 
@@ -257,6 +284,8 @@ static int halting_mode_enabled(void)
 		      "Unable to access hardware resources.\n"))
 		return -EPERM;
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 
 #if 0
@@ -289,6 +318,7 @@ static int get_num_brps(void)
 		brps -= get_num_reserved_brps();
 	return brps;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -303,12 +333,21 @@ static int enable_monitor_mode(void)
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ARM_DBG_READ(c1, 0, dscr);
 
 	/* Ensure that halting mode is disabled. */
+<<<<<<< HEAD
+	ret = halting_mode_enabled();
+	if (ret)
+		goto out;
+=======
 <<<<<<< HEAD
 	ret = halting_mode_enabled();
 	if (ret)
@@ -320,6 +359,7 @@ static int enable_monitor_mode(void)
 		goto out;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If monitor mode is already enabled, just return. */
 	if (dscr & ARM_DSCR_MDBGEN)
@@ -335,7 +375,11 @@ static int enable_monitor_mode(void)
 <<<<<<< HEAD
 	case ARM_DEBUG_ARCH_V7_1:
 =======
+<<<<<<< HEAD
+	case ARM_DEBUG_ARCH_V7_1:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ARM_DBG_WRITE(c2, 2, (dscr | ARM_DSCR_MDBGEN));
 		break;
 	default:
@@ -428,10 +472,15 @@ int arch_install_hw_breakpoint(struct perf_event *bp)
 		slots = (struct perf_event **)__get_cpu_var(bp_on_reg);
 		max_slots = core_num_brps;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* Watchpoint */
 		ctrl_base = ARM_BASE_WCR;
 		val_base = ARM_BASE_WVR;
+<<<<<<< HEAD
+=======
 =======
 		if (info->step_ctrl.enabled) {
 			/* Override the breakpoint data with the step data. */
@@ -452,6 +501,7 @@ int arch_install_hw_breakpoint(struct perf_event *bp)
 			val_base = ARM_BASE_WVR;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		slots = (struct perf_event **)__get_cpu_var(wp_on_reg);
 		max_slots = core_num_wrps;
 	}
@@ -471,6 +521,9 @@ int arch_install_hw_breakpoint(struct perf_event *bp)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Override the breakpoint data with the step data. */
 	if (info->step_ctrl.enabled) {
 		addr = info->trigger & ~0x3;
@@ -482,8 +535,11 @@ int arch_install_hw_breakpoint(struct perf_event *bp)
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Setup the address register. */
 	write_wb_reg(val_base + i, addr);
 
@@ -510,11 +566,15 @@ void arch_uninstall_hw_breakpoint(struct perf_event *bp)
 <<<<<<< HEAD
 		base = ARM_BASE_WCR;
 =======
+<<<<<<< HEAD
+		base = ARM_BASE_WCR;
+=======
 		if (info->step_ctrl.enabled)
 			base = ARM_BASE_BCR + core_num_brps;
 		else
 			base = ARM_BASE_WCR;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		slots = (struct perf_event **)__get_cpu_var(wp_on_reg);
 		max_slots = core_num_wrps;
 	}
@@ -533,6 +593,9 @@ void arch_uninstall_hw_breakpoint(struct perf_event *bp)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Ensure that we disable the mismatch breakpoint. */
 	if (info->ctrl.type != ARM_BREAKPOINT_EXECUTE &&
 	    info->step_ctrl.enabled) {
@@ -540,8 +603,11 @@ void arch_uninstall_hw_breakpoint(struct perf_event *bp)
 		base = ARM_BASE_BCR + core_num_brps;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Reset the control register. */
 	write_wb_reg(base + i, 0);
 }
@@ -753,11 +819,17 @@ int arch_validate_hwbkpt_settings(struct perf_event *bp)
 	    !core_has_mismatch_brps() || !bp->hw.bp_target)) {
 		pr_warning("overflow handler required but none found\n");
 =======
+<<<<<<< HEAD
+	if (!bp->overflow_handler && (arch_check_bp_in_kernelspace(bp) ||
+	    !core_has_mismatch_brps() || !bp->hw.bp_target)) {
+		pr_warning("overflow handler required but none found\n");
+=======
 	if (WARN_ONCE(!bp->overflow_handler &&
 		(arch_check_bp_in_kernelspace(bp) || !core_has_mismatch_brps()
 		 || !bp->hw.bp_target),
 			"overflow handler required but none found\n")) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EINVAL;
 	}
 out:
@@ -789,6 +861,9 @@ static void disable_single_step(struct perf_event *bp)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 			       struct pt_regs *regs)
 {
@@ -800,6 +875,8 @@ static void watchpoint_handler(unsigned long addr, unsigned int fsr,
 
 	slots = (struct perf_event **)__get_cpu_var(wp_on_reg);
 
+<<<<<<< HEAD
+=======
 =======
 static void watchpoint_handler(unsigned long unknown, struct pt_regs *regs)
 {
@@ -813,12 +890,16 @@ static void watchpoint_handler(unsigned long unknown, struct pt_regs *regs)
 	BUG_ON(core_num_wrps > 1);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < core_num_wrps; ++i) {
 		rcu_read_lock();
 
 		wp = slots[i];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (wp == NULL)
 			goto unlock;
 
@@ -859,6 +940,8 @@ static void watchpoint_handler(unsigned long unknown, struct pt_regs *regs)
 			info->trigger = addr;
 		}
 
+<<<<<<< HEAD
+=======
 =======
 		if (wp == NULL) {
 			rcu_read_unlock();
@@ -873,6 +956,7 @@ static void watchpoint_handler(unsigned long unknown, struct pt_regs *regs)
 		info = counter_arch_bp(wp);
 		info->trigger = wp->attr.bp_addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("watchpoint fired: address = 0x%x\n", info->trigger);
 		perf_bp_event(wp, regs);
 
@@ -887,7 +971,11 @@ static void watchpoint_handler(unsigned long unknown, struct pt_regs *regs)
 <<<<<<< HEAD
 unlock:
 =======
+<<<<<<< HEAD
+unlock:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_read_unlock();
 	}
 }
@@ -903,8 +991,12 @@ static void watchpoint_single_step_handler(unsigned long pc)
 <<<<<<< HEAD
 	for (i = 0; i < core_num_wrps; ++i) {
 =======
+<<<<<<< HEAD
+	for (i = 0; i < core_num_wrps; ++i) {
+=======
 	for (i = 0; i < core_num_reserved_brps; ++i) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_read_lock();
 
 		wp = slots[i];
@@ -986,8 +1078,12 @@ unlock:
 <<<<<<< HEAD
  * Prefetch Abort Handler [breakpoint] with interrupts disabled.
 =======
+<<<<<<< HEAD
+ * Prefetch Abort Handler [breakpoint] with interrupts disabled.
+=======
  * Prefetch Abort Handler [breakpoint] with preemption disabled.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int hw_breakpoint_pending(unsigned long addr, unsigned int fsr,
 				 struct pt_regs *regs)
@@ -996,14 +1092,20 @@ static int hw_breakpoint_pending(unsigned long addr, unsigned int fsr,
 	u32 dscr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 
 	if (interrupts_enabled(regs))
 		local_irq_enable();
+<<<<<<< HEAD
+=======
 =======
 	/* We must be called with preemption disabled. */
 	WARN_ON(preemptible());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We only handle watchpoints and hardware breakpoints. */
 	ARM_DBG_READ(c1, 0, dscr);
@@ -1019,8 +1121,12 @@ static int hw_breakpoint_pending(unsigned long addr, unsigned int fsr,
 <<<<<<< HEAD
 		watchpoint_handler(addr, fsr, regs);
 =======
+<<<<<<< HEAD
+		watchpoint_handler(addr, fsr, regs);
+=======
 		watchpoint_handler(addr, regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		ret = 1; /* Unhandled fault. */
@@ -1028,11 +1134,14 @@ static int hw_breakpoint_pending(unsigned long addr, unsigned int fsr,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Re-enable preemption after it was disabled in the
 	 * low-level exception handling code.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_enable();
 
 	return ret;
@@ -1042,6 +1151,9 @@ static int hw_breakpoint_pending(unsigned long addr, unsigned int fsr,
  * One-time initialisation.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static cpumask_t debug_err_mask;
 
 static int debug_reg_trap(struct pt_regs *regs, unsigned int instr)
@@ -1067,6 +1179,8 @@ static void reset_ctrl_regs(void *unused)
 {
 	int i, raw_num_brps, err = 0, cpu = smp_processor_id();
 	u32 dbg_power;
+<<<<<<< HEAD
+=======
 =======
 static void reset_ctrl_regs(void *info)
 {
@@ -1074,6 +1188,7 @@ static void reset_ctrl_regs(void *info)
 	u32 dbg_power;
 	cpumask_t *cpumask = info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * v7 debug contains save and restore registers so that debug state
@@ -1084,21 +1199,30 @@ static void reset_ctrl_regs(void *info)
 	 * later on.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (debug_arch) {
 	case ARM_DEBUG_ARCH_V6:
 	case ARM_DEBUG_ARCH_V6_1:
 		/* ARMv6 cores just need to reset the registers. */
 		goto reset_regs;
 	case ARM_DEBUG_ARCH_V7_ECP14:
+<<<<<<< HEAD
+=======
 =======
 	if (debug_arch >= ARM_DEBUG_ARCH_V7_ECP14) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Ensure sticky power-down is clear (i.e. debug logic is
 		 * powered up).
 		 */
 		asm volatile("mrc p14, 0, %0, c1, c5, 4" : "=r" (dbg_power));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((dbg_power & 0x1) == 0)
 			err = -EPERM;
 		break;
@@ -1139,6 +1263,8 @@ reset_regs:
 	/* We must also reset any reserved registers. */
 	raw_num_brps = get_num_brp_resources();
 	for (i = 0; i < raw_num_brps; ++i) {
+<<<<<<< HEAD
+=======
 =======
 		if ((dbg_power & 0x1) == 0) {
 			pr_warning("CPU %d debug is powered down!\n", cpu);
@@ -1167,6 +1293,7 @@ reset_regs:
 	/* We must also reset any reserved registers. */
 	for (i = 0; i < core_num_brps + core_num_reserved_brps; ++i) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		write_wb_reg(ARM_BASE_BCR + i, 0UL);
 		write_wb_reg(ARM_BASE_BVR + i, 0UL);
 	}
@@ -1178,7 +1305,11 @@ reset_regs:
 <<<<<<< HEAD
 	enable_monitor_mode();
 =======
+<<<<<<< HEAD
+	enable_monitor_mode();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __cpuinit dbg_reset_notify(struct notifier_block *self,
@@ -1189,7 +1320,11 @@ static int __cpuinit dbg_reset_notify(struct notifier_block *self,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NOTIFY_OK;
 }
 
@@ -1202,8 +1337,11 @@ static int __init arch_hw_breakpoint_init(void)
 	u32 dscr;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cpumask_t cpumask = { CPU_BITS_NONE };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	debug_arch = get_debug_arch();
 
@@ -1215,6 +1353,9 @@ static int __init arch_hw_breakpoint_init(void)
 	/* Determine how many BRPs/WRPs are available. */
 	core_num_brps = get_num_brps();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	core_num_wrps = get_num_wrps();
 
 	/*
@@ -1223,6 +1364,8 @@ static int __init arch_hw_breakpoint_init(void)
 	 * determine that.
 	 */
 	register_undef_hook(&debug_reg_hook);
+<<<<<<< HEAD
+=======
 =======
 	core_num_reserved_brps = get_num_reserved_brps();
 	core_num_wrps = get_num_wrps();
@@ -1234,33 +1377,46 @@ static int __init arch_hw_breakpoint_init(void)
 		pr_info("%d breakpoint(s) reserved for watchpoint "
 				"single-step.\n", core_num_reserved_brps);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Reset the breakpoint resources. We assume that a halting
 	 * debugger will leave the world in a nice state for us.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	on_each_cpu(reset_ctrl_regs, NULL, 1);
 	unregister_undef_hook(&debug_reg_hook);
 	if (!cpumask_empty(&debug_err_mask)) {
 		core_num_brps = 0;
+<<<<<<< HEAD
+=======
 =======
 	on_each_cpu(reset_ctrl_regs, &cpumask, 1);
 	if (!cpumask_empty(&cpumask)) {
 		core_num_brps = 0;
 		core_num_reserved_brps = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		core_num_wrps = 0;
 		return 0;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info("found %d " "%s" "breakpoint and %d watchpoint registers.\n",
 		core_num_brps, core_has_mismatch_brps() ? "(+1 reserved) " :
 		"", core_num_wrps);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ARM_DBG_READ(c1, 0, dscr);
 	if (dscr & ARM_DSCR_HDBGEN) {
 		max_watchpoint_len = 4;
@@ -1275,16 +1431,22 @@ static int __init arch_hw_breakpoint_init(void)
 
 	/* Register debug fault handler. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hook_fault_code(FAULT_CODE_DEBUG, hw_breakpoint_pending, SIGTRAP,
 			TRAP_HWBKPT, "watchpoint debug exception");
 	hook_ifault_code(FAULT_CODE_DEBUG, hw_breakpoint_pending, SIGTRAP,
 			TRAP_HWBKPT, "breakpoint debug exception");
+<<<<<<< HEAD
+=======
 =======
 	hook_fault_code(2, hw_breakpoint_pending, SIGTRAP, TRAP_HWBKPT,
 			"watchpoint debug exception");
 	hook_ifault_code(2, hw_breakpoint_pending, SIGTRAP, TRAP_HWBKPT,
 			"breakpoint debug exception");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Register hotplug notifier. */
 	register_cpu_notifier(&dbg_reset_nb);

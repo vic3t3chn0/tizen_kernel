@@ -4,8 +4,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void devm_ioremap_release(struct device *dev, void *res)
 {
@@ -84,6 +88,9 @@ EXPORT_SYMBOL(devm_ioremap_nocache);
 void devm_iounmap(struct device *dev, void __iomem *addr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(devres_destroy(dev, devm_ioremap_release, devm_ioremap_match,
 			       (void *)addr));
 	iounmap(addr);
@@ -172,6 +179,8 @@ void __iomem *devm_request_and_ioremap(struct device *device,
 }
 EXPORT_SYMBOL(devm_request_and_ioremap);
 
+<<<<<<< HEAD
+=======
 =======
 	iounmap(addr);
 	WARN_ON(devres_destroy(dev, devm_ioremap_release, devm_ioremap_match,
@@ -180,6 +189,7 @@ EXPORT_SYMBOL(devm_request_and_ioremap);
 EXPORT_SYMBOL(devm_iounmap);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAS_IOPORT
 /*
  * Generic iomap devres
@@ -351,8 +361,12 @@ EXPORT_SYMBOL(pcim_iounmap);
 <<<<<<< HEAD
 int pcim_iomap_regions(struct pci_dev *pdev, int mask, const char *name)
 =======
+<<<<<<< HEAD
+int pcim_iomap_regions(struct pci_dev *pdev, int mask, const char *name)
+=======
 int pcim_iomap_regions(struct pci_dev *pdev, u16 mask, const char *name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void __iomem * const *iomap;
 	int i, rc;
@@ -408,8 +422,12 @@ EXPORT_SYMBOL(pcim_iomap_regions);
 <<<<<<< HEAD
 int pcim_iomap_regions_request_all(struct pci_dev *pdev, int mask,
 =======
+<<<<<<< HEAD
+int pcim_iomap_regions_request_all(struct pci_dev *pdev, int mask,
+=======
 int pcim_iomap_regions_request_all(struct pci_dev *pdev, u16 mask,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   const char *name)
 {
 	int request_mask = ((1 << 6) - 1) & ~mask;
@@ -436,8 +454,12 @@ EXPORT_SYMBOL(pcim_iomap_regions_request_all);
 <<<<<<< HEAD
 void pcim_iounmap_regions(struct pci_dev *pdev, int mask)
 =======
+<<<<<<< HEAD
+void pcim_iounmap_regions(struct pci_dev *pdev, int mask)
+=======
 void pcim_iounmap_regions(struct pci_dev *pdev, u16 mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void __iomem * const *iomap;
 	int i;
@@ -459,6 +481,11 @@ EXPORT_SYMBOL(pcim_iounmap_regions);
 #endif /* CONFIG_PCI */
 #endif /* CONFIG_HAS_IOPORT */
 =======
+<<<<<<< HEAD
+#endif /* CONFIG_PCI */
+#endif /* CONFIG_HAS_IOPORT */
+=======
 #endif
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

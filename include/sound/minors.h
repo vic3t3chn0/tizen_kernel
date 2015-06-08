@@ -38,8 +38,12 @@
 <<<<<<< HEAD
 #define SNDRV_MINOR_COMPRESS		2	/* 2 - 3 */
 =======
+<<<<<<< HEAD
+#define SNDRV_MINOR_COMPRESS		2	/* 2 - 3 */
+=======
 						/* 2 - 3 (reserved) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SNDRV_MINOR_HWDEP		4	/* 4 - 7 */
 #define SNDRV_MINOR_RAWMIDI		8	/* 8 - 15 */
 #define SNDRV_MINOR_PCM_PLAYBACK	16	/* 16 - 23 */
@@ -56,7 +60,11 @@
 <<<<<<< HEAD
 #define SNDRV_DEVICE_TYPE_COMPRESS	SNDRV_MINOR_COMPRESS
 =======
+<<<<<<< HEAD
+#define SNDRV_DEVICE_TYPE_COMPRESS	SNDRV_MINOR_COMPRESS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* CONFIG_SND_DYNAMIC_MINORS */
 
@@ -71,7 +79,11 @@ enum {
 <<<<<<< HEAD
 	SNDRV_DEVICE_TYPE_COMPRESS,
 =======
+<<<<<<< HEAD
+	SNDRV_DEVICE_TYPE_COMPRESS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* CONFIG_SND_DYNAMIC_MINORS */

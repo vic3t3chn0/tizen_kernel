@@ -19,18 +19,24 @@
 #include <linux/oprofile.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/facility.h>
 #include <asm/cpu_mf.h>
 #include <asm/irq.h>
 
 #include "hwsampler.h"
 #include "op_counter.h"
+<<<<<<< HEAD
+=======
 =======
 #include <asm/lowcore.h>
 #include <asm/irq.h>
 
 #include "hwsampler.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MAX_NUM_SDB 511
 #define MIN_NUM_SDB 1
@@ -40,6 +46,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define EI_IEA      (1 << 31)	/* invalid entry address              */
 #define EI_ISE      (1 << 30)	/* incorrect SDBT entry               */
 #define EI_PRA      (1 << 29)	/* program request alert              */
@@ -47,6 +55,7 @@
 #define EI_LSDA     (1 << 22)	/* loss of sample data alert          */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_PER_CPU(struct hws_cpu_buffer, sampler_cpu_buffer);
 
 struct hws_execute_parms {
@@ -244,6 +253,9 @@ static inline unsigned long *trailer_entry_ptr(unsigned long v)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void hws_ext_handler(struct ext_code ext_code,
 			    unsigned int param32, unsigned long param64)
 {
@@ -258,11 +270,14 @@ static void hws_ext_handler(struct ext_code ext_code,
 	if (hws_wq)
 		queue_work(hws_wq, &cb->worker);
 }
+<<<<<<< HEAD
+=======
 =======
 /* prototypes for external interrupt handler and worker */
 static void hws_ext_handler(unsigned int ext_int_code,
 				unsigned int param32, unsigned long param64);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void worker(struct work_struct *work);
 
@@ -703,6 +718,8 @@ int hwsampler_activate(unsigned int cpu)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void hws_ext_handler(unsigned int ext_int_code,
 			    unsigned int param32, unsigned long param64)
 {
@@ -716,6 +733,7 @@ static void hws_ext_handler(unsigned int ext_int_code,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int check_qsi_on_setup(void)
 {
 	int rc;
@@ -792,6 +810,9 @@ static int worker_check_error(unsigned int cpu, int ext_params)
 		return -EINVAL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ext_params & CPU_MF_INT_SF_PRA)
 		cb->req_alert++;
 
@@ -799,6 +820,8 @@ static int worker_check_error(unsigned int cpu, int ext_params)
 		cb->loss_of_sample_data++;
 
 	if (ext_params & CPU_MF_INT_SF_IAE) {
+<<<<<<< HEAD
+=======
 =======
 	if (ext_params & EI_PRA)
 		cb->req_alert++;
@@ -808,6 +831,7 @@ static int worker_check_error(unsigned int cpu, int ext_params)
 
 	if (ext_params & EI_IEA) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cb->invalid_entry_address++;
 		rc = -EINVAL;
 	}
@@ -815,8 +839,12 @@ static int worker_check_error(unsigned int cpu, int ext_params)
 <<<<<<< HEAD
 	if (ext_params & CPU_MF_INT_SF_ISE) {
 =======
+<<<<<<< HEAD
+	if (ext_params & CPU_MF_INT_SF_ISE) {
+=======
 	if (ext_params & EI_ISE) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cb->incorrect_sdbt_entry++;
 		rc = -EINVAL;
 	}
@@ -824,8 +852,12 @@ static int worker_check_error(unsigned int cpu, int ext_params)
 <<<<<<< HEAD
 	if (ext_params & CPU_MF_INT_SF_SACA) {
 =======
+<<<<<<< HEAD
+	if (ext_params & CPU_MF_INT_SF_SACA) {
+=======
 	if (ext_params & EI_SACA) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cb->sample_auth_change_alert++;
 		rc = -EINVAL;
 	}
@@ -950,7 +982,12 @@ static void add_samples_to_oprofile(unsigned int cpu, unsigned long *sdbt,
 			if (!counter_config.user)
 				goto skip_sample;
 =======
+<<<<<<< HEAD
+			if (!counter_config.user)
+				goto skip_sample;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rcu_read_lock();
 			tsk = pid_task(find_vpid(pid), PIDTYPE_PID);
 			if (tsk)
@@ -962,7 +999,12 @@ static void add_samples_to_oprofile(unsigned int cpu, unsigned long *sdbt,
 			if (!counter_config.kernel)
 				goto skip_sample;
 =======
+<<<<<<< HEAD
+			if (!counter_config.kernel)
+				goto skip_sample;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			regs = task_pt_regs(current);
 		}
 
@@ -973,8 +1015,12 @@ static void add_samples_to_oprofile(unsigned int cpu, unsigned long *sdbt,
 <<<<<<< HEAD
 	skip_sample:
 =======
+<<<<<<< HEAD
+	skip_sample:
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sample_data_ptr++;
 	}
 }
@@ -1061,8 +1107,12 @@ allocate_error:
 <<<<<<< HEAD
 int hwsampler_deallocate(void)
 =======
+<<<<<<< HEAD
+int hwsampler_deallocate(void)
+=======
 int hwsampler_deallocate()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc;
 
@@ -1075,8 +1125,12 @@ int hwsampler_deallocate()
 <<<<<<< HEAD
 	measurement_alert_subclass_unregister();
 =======
+<<<<<<< HEAD
+	measurement_alert_subclass_unregister();
+=======
 	ctl_clear_bit(0, 5); /* set bit 58 CR0 off */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	deallocate_sdbt();
 
 	hws_state = HWS_DEALLOCATED;
@@ -1110,8 +1164,12 @@ unsigned long hwsampler_get_sample_overflow_count(unsigned int cpu)
 <<<<<<< HEAD
 int hwsampler_setup(void)
 =======
+<<<<<<< HEAD
+int hwsampler_setup(void)
+=======
 int hwsampler_setup()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc;
 	int cpu;
@@ -1181,8 +1239,12 @@ setup_exit:
 <<<<<<< HEAD
 int hwsampler_shutdown(void)
 =======
+<<<<<<< HEAD
+int hwsampler_shutdown(void)
+=======
 int hwsampler_shutdown()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc;
 
@@ -1201,8 +1263,12 @@ int hwsampler_shutdown()
 <<<<<<< HEAD
 			measurement_alert_subclass_unregister();
 =======
+<<<<<<< HEAD
+			measurement_alert_subclass_unregister();
+=======
 			ctl_clear_bit(0, 5); /* set bit 58 CR0 off */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			deallocate_sdbt();
 		}
 		if (hws_wq) {
@@ -1280,8 +1346,12 @@ start_all_exit:
 <<<<<<< HEAD
 	measurement_alert_subclass_register();
 =======
+<<<<<<< HEAD
+	measurement_alert_subclass_register();
+=======
 	ctl_set_bit(0, 5); /* set CR0 bit 58 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1294,8 +1364,12 @@ start_all_exit:
 <<<<<<< HEAD
 int hwsampler_stop_all(void)
 =======
+<<<<<<< HEAD
+int hwsampler_stop_all(void)
+=======
 int hwsampler_stop_all()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int tmp_rc, rc, cpu;
 	struct hws_cpu_buffer *cb;

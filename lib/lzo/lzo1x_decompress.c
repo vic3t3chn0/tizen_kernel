@@ -4,10 +4,16 @@
  *
  *  Copyright (C) 1996-2005 Markus F.X.J. Oberhumer <markus@oberhumer.com>
 =======
+<<<<<<< HEAD
+ *  LZO1X Decompressor from MiniLZO
+ *
+ *  Copyright (C) 1996-2005 Markus F.X.J. Oberhumer <markus@oberhumer.com>
+=======
  *  LZO1X Decompressor from LZO
  *
  *  Copyright (C) 1996-2012 Markus F.X.J. Oberhumer <markus@oberhumer.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  The full LZO package can be found at:
  *  http://www.oberhumer.com/opensource/lzo/
@@ -15,8 +21,12 @@
 <<<<<<< HEAD
  *  Changed for kernel use by:
 =======
+<<<<<<< HEAD
+ *  Changed for kernel use by:
+=======
  *  Changed for Linux kernel use by:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Nitin Gupta <nitingupta910@gmail.com>
  *  Richard Purdie <rpurdie@openedhand.com>
  */
@@ -28,12 +38,19 @@
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/unaligned.h>
 #include <linux/lzo.h>
 #include "lzodefs.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HAVE_IP(x, ip_end, ip) ((size_t)(ip_end - ip) < (x))
 #define HAVE_OP(x, op_end, op) ((size_t)(op_end - op) < (x))
 #define HAVE_LB(m_pos, out, op) (m_pos < out || m_pos >= op)
@@ -248,6 +265,8 @@ eof_found:
 	*out_len = op - out;
 	return (ip == ip_end ? LZO_E_OK :
 		(ip < ip_end ? LZO_E_INPUT_NOT_CONSUMED : LZO_E_INPUT_OVERRUN));
+<<<<<<< HEAD
+=======
 =======
 #define HAVE_IP(x)      ((size_t)(ip_end - ip) >= (size_t)(x))
 #define HAVE_OP(x)      ((size_t)(op_end - op) >= (size_t)(x))
@@ -438,6 +457,7 @@ eof_found:
 		ip <  ip_end ? LZO_E_INPUT_NOT_CONSUMED : LZO_E_INPUT_OVERRUN);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 input_overrun:
 	*out_len = op - out;
 	return LZO_E_INPUT_OVERRUN;

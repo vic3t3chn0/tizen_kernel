@@ -20,6 +20,13 @@
 #include <linux/delay.h>
 #include <linux/io.h>
 #include <asm/ist.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/cpu_device_id.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "speedstep-lib.h"
 
@@ -379,6 +386,23 @@ static struct cpufreq_driver speedstep_driver = {
 	.attr		= speedstep_attr,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct x86_cpu_id ss_smi_ids[] = {
+	{ X86_VENDOR_INTEL, 6, 0xb, },
+	{ X86_VENDOR_INTEL, 6, 0x8, },
+	{ X86_VENDOR_INTEL, 15, 2 },
+	{}
+};
+#if 0
+/* Not auto loaded currently */
+MODULE_DEVICE_TABLE(x86cpu, ss_smi_ids);
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * speedstep_init - initializes the SpeedStep CPUFreq driver
  *
@@ -388,6 +412,15 @@ static struct cpufreq_driver speedstep_driver = {
  */
 static int __init speedstep_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!x86_match_cpu(ss_smi_ids))
+		return -ENODEV;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	speedstep_processor = speedstep_detect_processor();
 
 	switch (speedstep_processor) {

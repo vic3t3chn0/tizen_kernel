@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2006-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2006-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2006-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Simon Wunderlich, Marek Lindner
  *
@@ -34,9 +38,14 @@
 int get_bit_status(const unsigned long *seq_bits, uint32_t last_seqno,
 		   uint32_t curr_seqno)
 =======
+<<<<<<< HEAD
+int get_bit_status(const unsigned long *seq_bits, uint32_t last_seqno,
+		   uint32_t curr_seqno)
+=======
 uint8_t get_bit_status(unsigned long *seq_bits, uint32_t last_seqno,
 		       uint32_t curr_seqno)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int32_t diff, word_offset, word_num;
 
@@ -107,12 +116,17 @@ static void bit_shift(unsigned long *seq_bits, int32_t n)
 			 (WORD_BIT_SIZE-word_offset));
 		/* and the upper part of the right half and shift it left to
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * its position */
 		/* for our example that would be: word[0] = 9800 + 0076 =
 		 * 9876 */
 	}
 	/* now for our last word, i==word_num, we only have its "left" half.
 	 * that's the 1000 word in our example.*/
+<<<<<<< HEAD
+=======
 =======
 		 * it's position */
 		/* for our example that would be: word[0] = 9800 + 0076 =
@@ -121,6 +135,7 @@ static void bit_shift(unsigned long *seq_bits, int32_t n)
 	/* now for our last word, i==word_num, we only have the it's "left"
 	 * half. that's the 1000 word in our example.*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	seq_bits[i] = (seq_bits[i - word_num] << word_offset);
 
@@ -146,16 +161,22 @@ static void bit_reset_window(unsigned long *seq_bits)
  *  0 if the window was not moved/shifted.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int bit_get_packet(void *priv, unsigned long *seq_bits,
 		    int32_t seq_num_diff, int set_mark)
 {
 	struct bat_priv *bat_priv = priv;
+<<<<<<< HEAD
+=======
 =======
 char bit_get_packet(void *priv, unsigned long *seq_bits,
 		    int32_t seq_num_diff, int8_t set_mark)
 {
 	struct bat_priv *bat_priv = (struct bat_priv *)priv;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* sequence number is slightly older. We already got a sequence number
 	 * higher than this one, so we just mark it. */
@@ -183,9 +204,14 @@ char bit_get_packet(void *priv, unsigned long *seq_bits,
 	if ((seq_num_diff >= TQ_LOCAL_WINDOW_SIZE) &&
 	    (seq_num_diff < EXPECTED_SEQNO_RANGE)) {
 =======
+<<<<<<< HEAD
+	if ((seq_num_diff >= TQ_LOCAL_WINDOW_SIZE) &&
+	    (seq_num_diff < EXPECTED_SEQNO_RANGE)) {
+=======
 	if ((seq_num_diff >= TQ_LOCAL_WINDOW_SIZE)
 		|| (seq_num_diff < EXPECTED_SEQNO_RANGE)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bat_dbg(DBG_BATMAN, bat_priv,
 			"We missed a lot of packets (%i) !\n",
 			seq_num_diff - 1);
@@ -204,9 +230,14 @@ char bit_get_packet(void *priv, unsigned long *seq_bits,
 	if ((seq_num_diff <= -TQ_LOCAL_WINDOW_SIZE) ||
 	    (seq_num_diff >= EXPECTED_SEQNO_RANGE)) {
 =======
+<<<<<<< HEAD
+	if ((seq_num_diff <= -TQ_LOCAL_WINDOW_SIZE) ||
+	    (seq_num_diff >= EXPECTED_SEQNO_RANGE)) {
+=======
 	if ((seq_num_diff <= -TQ_LOCAL_WINDOW_SIZE)
 		|| (seq_num_diff >= EXPECTED_SEQNO_RANGE)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		bat_dbg(DBG_BATMAN, bat_priv,
 			"Other host probably restarted!\n");
@@ -228,8 +259,12 @@ char bit_get_packet(void *priv, unsigned long *seq_bits,
 <<<<<<< HEAD
 int bit_packet_count(const unsigned long *seq_bits)
 =======
+<<<<<<< HEAD
+int bit_packet_count(const unsigned long *seq_bits)
+=======
 int bit_packet_count(unsigned long *seq_bits)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i, hamming = 0;
 

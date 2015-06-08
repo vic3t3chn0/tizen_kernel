@@ -49,11 +49,25 @@ enum orinoco_alg {
 	ORINOCO_ALG_TKIP
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum fwtype {
+	FIRMWARE_TYPE_AGERE,
+	FIRMWARE_TYPE_INTERSIL,
+	FIRMWARE_TYPE_SYMBOL
+};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef enum {
 	FIRMWARE_TYPE_AGERE,
 	FIRMWARE_TYPE_INTERSIL,
 	FIRMWARE_TYPE_SYMBOL
 } fwtype_t;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct firmware;
 
@@ -88,11 +102,25 @@ struct orinoco_private {
 	struct iw_statistics wstats;
 
 	/* Hardware control variables */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct hermes hw;
+	u16 txfid;
+
+	/* Capabilities of the hardware/firmware */
+	enum fwtype firmware_type;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hermes_t hw;
 	u16 txfid;
 
 	/* Capabilities of the hardware/firmware */
 	fwtype_t firmware_type;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ibss_port;
 	int nicbuf_size;
 	u16 channel_mask;
@@ -122,8 +150,18 @@ struct orinoco_private {
 	struct key_params keys[ORINOCO_MAX_KEYS];
 
 	int bitratemode;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	char nick[IW_ESSID_MAX_SIZE + 1];
+	char desired_essid[IW_ESSID_MAX_SIZE + 1];
+=======
 	char nick[IW_ESSID_MAX_SIZE+1];
 	char desired_essid[IW_ESSID_MAX_SIZE+1];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	char nick[IW_ESSID_MAX_SIZE+1];
+	char desired_essid[IW_ESSID_MAX_SIZE+1];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char desired_bssid[ETH_ALEN];
 	int bssid_fixed;
 	u16 frag_thresh, mwo_robust;
@@ -197,8 +235,18 @@ extern int orinoco_up(struct orinoco_private *priv);
 extern void orinoco_down(struct orinoco_private *priv);
 extern irqreturn_t orinoco_interrupt(int irq, void *dev_id);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern void __orinoco_ev_info(struct net_device *dev, struct hermes *hw);
+extern void __orinoco_ev_rx(struct net_device *dev, struct hermes *hw);
+=======
 extern void __orinoco_ev_info(struct net_device *dev, hermes_t *hw);
 extern void __orinoco_ev_rx(struct net_device *dev, hermes_t *hw);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern void __orinoco_ev_info(struct net_device *dev, hermes_t *hw);
+extern void __orinoco_ev_rx(struct net_device *dev, hermes_t *hw);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int orinoco_process_xmit_skb(struct sk_buff *skb,
 			     struct net_device *dev,

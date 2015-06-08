@@ -36,7 +36,12 @@ struct bfin_serial_port {
 	int tx_irq;
 	int rx_irq;
 =======
+<<<<<<< HEAD
+	int tx_irq;
+	int rx_irq;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int status_irq;
 #ifndef BFIN_UART_BF54X_STYLE
 	unsigned int lsr;
@@ -56,10 +61,13 @@ struct bfin_serial_port {
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SERIAL_BFIN_HARD_CTSRTS
 	int scts;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SERIAL_BFIN_CTSRTS) || \
 	defined(CONFIG_SERIAL_BFIN_HARD_CTSRTS)
 	int cts_pin;

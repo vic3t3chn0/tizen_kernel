@@ -171,7 +171,17 @@ int radeon_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
 		value = rdev->accel_working;
 		break;
 	case RADEON_INFO_TILING_CONFIG:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (rdev->family >= CHIP_TAHITI)
+			value = rdev->config.si.tile_config;
+		else if (rdev->family >= CHIP_CAYMAN)
+=======
 		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			value = rdev->config.cayman.tile_config;
 		else if (rdev->family >= CHIP_CEDAR)
 			value = rdev->config.evergreen.tile_config;
@@ -210,7 +220,18 @@ int radeon_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
 		value = rdev->clock.spll.reference_freq * 10;
 		break;
 	case RADEON_INFO_NUM_BACKENDS:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (rdev->family >= CHIP_TAHITI)
+			value = rdev->config.si.max_backends_per_se *
+				rdev->config.si.max_shader_engines;
+		else if (rdev->family >= CHIP_CAYMAN)
+=======
 		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			value = rdev->config.cayman.max_backends_per_se *
 				rdev->config.cayman.max_shader_engines;
 		else if (rdev->family >= CHIP_CEDAR)
@@ -224,7 +245,17 @@ int radeon_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
 		}
 		break;
 	case RADEON_INFO_NUM_TILE_PIPES:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (rdev->family >= CHIP_TAHITI)
+			value = rdev->config.si.max_tile_pipes;
+		else if (rdev->family >= CHIP_CAYMAN)
+=======
 		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			value = rdev->config.cayman.max_tile_pipes;
 		else if (rdev->family >= CHIP_CEDAR)
 			value = rdev->config.evergreen.max_tile_pipes;
@@ -240,7 +271,17 @@ int radeon_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
 		value = 1;
 		break;
 	case RADEON_INFO_BACKEND_MAP:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (rdev->family >= CHIP_TAHITI)
+			value = rdev->config.si.backend_map;
+		else if (rdev->family >= CHIP_CAYMAN)
+=======
 		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (rdev->family >= CHIP_CAYMAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			value = rdev->config.cayman.backend_map;
 		else if (rdev->family >= CHIP_CEDAR)
 			value = rdev->config.evergreen.backend_map;
@@ -264,6 +305,27 @@ int radeon_info_ioctl(struct drm_device *dev, void *data, struct drm_file *filp)
 			return -EINVAL;
 		value = RADEON_IB_VM_MAX_SIZE;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case RADEON_INFO_MAX_PIPES:
+		if (rdev->family >= CHIP_TAHITI)
+			value = rdev->config.si.max_pipes_per_simd;
+		else if (rdev->family >= CHIP_CAYMAN)
+			value = rdev->config.cayman.max_pipes_per_simd;
+		else if (rdev->family >= CHIP_CEDAR)
+			value = rdev->config.evergreen.max_pipes;
+		else if (rdev->family >= CHIP_RV770)
+			value = rdev->config.rv770.max_pipes;
+		else if (rdev->family >= CHIP_R600)
+			value = rdev->config.r600.max_pipes;
+		else {
+			return -EINVAL;
+		}
+		break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		DRM_DEBUG_KMS("Invalid request %d\n", info->request);
 		return -EINVAL;

@@ -21,9 +21,22 @@
 #include <linux/list.h>
 #include <linux/mm.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/suspend.h>
+#include <linux/syscore_ops.h>
+#include <linux/rtc.h>
+=======
 #include <linux/suspend.h>
 #include <linux/syscore_ops.h>
 #include <linux/ftrace.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/suspend.h>
+#include <linux/syscore_ops.h>
+#include <linux/ftrace.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <trace/events/power.h>
 
 #include "power.h"
@@ -39,6 +52,21 @@ const char *const pm_states[PM_SUSPEND_MAX] = {
 static const struct platform_suspend_ops *suspend_ops;
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * suspend_set_ops - Set the global suspend method table.
+ * @ops: Suspend operations to use.
+ */
+void suspend_set_ops(const struct platform_suspend_ops *ops)
+{
+	lock_system_sleep();
+	suspend_ops = ops;
+	unlock_system_sleep();
+}
+EXPORT_SYMBOL_GPL(suspend_set_ops);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	suspend_set_ops - Set the global suspend method table.
  *	@ops:	Pointer to ops structure.
  */
@@ -48,6 +76,10 @@ void suspend_set_ops(const struct platform_suspend_ops *ops)
 	suspend_ops = ops;
 	mutex_unlock(&pm_mutex);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 bool valid_state(suspend_state_t state)
 {
@@ -59,16 +91,37 @@ bool valid_state(suspend_state_t state)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * suspend_valid_only_mem - Generic memory-only valid callback.
+ *
+ * Platform drivers that implement mem suspend only and only need to check for
+ * that in their .valid() callback can use this instead of rolling their own
+ * .valid() callback.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * suspend_valid_only_mem - generic memory-only valid callback
  *
  * Platform drivers that implement mem suspend only and only need
  * to check for that in their .valid callback can use this instead
  * of rolling their own .valid callback.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int suspend_valid_only_mem(suspend_state_t state)
 {
 	return state == PM_SUSPEND_MEM;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(suspend_valid_only_mem);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int suspend_test(int level)
 {
@@ -83,10 +136,24 @@ static int suspend_test(int level)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * suspend_prepare - Prepare for entering system sleep state.
+ *
+ * Common code run for every system sleep state that can be entered (except for
+ * hibernation).  Run suspend notifiers, allocate the "suspend" console and
+ * freeze processes.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	suspend_prepare - Do prep work before entering low-power state.
  *
  *	This is common code that is called for each state that we're entering.
  *	Run suspend notifiers, allocate a console and stop all processes.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int suspend_prepare(void)
 {
@@ -101,16 +168,35 @@ static int suspend_prepare(void)
 	if (error)
 		goto Finish;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = usermodehelper_disable();
 	if (error)
 		goto Finish;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = suspend_freeze_processes();
 	if (!error)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	suspend_stats.failed_freeze++;
+	dpm_save_failed_step(SUSPEND_FREEZE);
+=======
 	suspend_thaw_processes();
 	usermodehelper_enable();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	suspend_thaw_processes();
+	usermodehelper_enable();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  Finish:
 	pm_notifier_call_chain(PM_POST_SUSPEND);
 	pm_restore_console();
@@ -129,6 +215,15 @@ void __attribute__ ((weak)) arch_suspend_enable_irqs(void)
 	local_irq_enable();
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * suspend_enter - Make the system enter the given sleep state.
+ * @state: System sleep state to enter.
+ * @wakeup: Returns information that the sleep state should not be re-entered.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if !defined(CONFIG_CPU_EXYNOS4210)
 #define CHECK_POINT printk(KERN_DEBUG "%s:%d\n", __func__, __LINE__)
 #else
@@ -139,6 +234,10 @@ void __attribute__ ((weak)) arch_suspend_enable_irqs(void)
  * suspend_enter - enter the desired system sleep state.
  * @state: State to enter
  * @wakeup: Returns information that suspend should not be entered again.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This function should be called after devices have been suspended.
  */
@@ -146,24 +245,50 @@ static int suspend_enter(suspend_state_t state, bool *wakeup)
 {
 	int error;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	CHECK_POINT;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	CHECK_POINT;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (suspend_ops->prepare) {
 		error = suspend_ops->prepare();
 		if (error)
 			goto Platform_finish;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	error = dpm_suspend_end(PMSG_SUSPEND);
+=======
 	CHECK_POINT;
 
 	error = dpm_suspend_noirq(PMSG_SUSPEND);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	CHECK_POINT;
+
+	error = dpm_suspend_noirq(PMSG_SUSPEND);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error) {
 		printk(KERN_ERR "PM: Some devices failed to power down\n");
 		goto Platform_finish;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	CHECK_POINT;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	CHECK_POINT;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (suspend_ops->prepare_late) {
 		error = suspend_ops->prepare_late();
 		if (error)
@@ -177,15 +302,32 @@ static int suspend_enter(suspend_state_t state, bool *wakeup)
 	if (error || suspend_test(TEST_CPUS))
 		goto Enable_cpus;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	CHECK_POINT;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	CHECK_POINT;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	arch_suspend_disable_irqs();
 	BUG_ON(!irqs_disabled());
 
 	error = syscore_suspend();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	CHECK_POINT;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	CHECK_POINT;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!error) {
 		*wakeup = pm_wakeup_pending();
 		if (!(suspend_test(TEST_CORE) || *wakeup)) {
@@ -205,7 +347,15 @@ static int suspend_enter(suspend_state_t state, bool *wakeup)
 	if (suspend_ops->wake)
 		suspend_ops->wake();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dpm_resume_start(PMSG_RESUME);
+=======
 	dpm_resume_noirq(PMSG_RESUME);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dpm_resume_noirq(PMSG_RESUME);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
  Platform_finish:
 	if (suspend_ops->finish)
@@ -215,9 +365,20 @@ static int suspend_enter(suspend_state_t state, bool *wakeup)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * suspend_devices_and_enter - Suspend devices and enter system sleep state.
+ * @state: System sleep state to enter.
+=======
  *	suspend_devices_and_enter - suspend devices and enter the desired system
  *				    sleep state.
  *	@state:		  state to enter
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *	suspend_devices_and_enter - suspend devices and enter the desired system
+ *				    sleep state.
+ *	@state:		  state to enter
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int suspend_devices_and_enter(suspend_state_t state)
 {
@@ -234,7 +395,14 @@ int suspend_devices_and_enter(suspend_state_t state)
 			goto Close;
 	}
 	suspend_console();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ftrace_stop();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ftrace_stop();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	suspend_test_start();
 	error = dpm_suspend_start(PMSG_SUSPEND);
 	if (error) {
@@ -254,7 +422,14 @@ int suspend_devices_and_enter(suspend_state_t state)
 	suspend_test_start();
 	dpm_resume_end(PMSG_RESUME);
 	suspend_test_finish("resume devices");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ftrace_start();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ftrace_start();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	resume_console();
  Close:
 	if (suspend_ops->end)
@@ -269,19 +444,55 @@ int suspend_devices_and_enter(suspend_state_t state)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * suspend_finish - Clean up before finishing the suspend sequence.
+ *
+ * Call platform code to clean up, restart processes, and free the console that
+ * we've allocated. This routine is not called for hibernation.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	suspend_finish - Do final work before exiting suspend sequence.
  *
  *	Call platform code to clean up, restart processes, and free the
  *	console that we've allocated. This is not called for suspend-to-disk.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void suspend_finish(void)
 {
 	suspend_thaw_processes();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	usermodehelper_enable();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	usermodehelper_enable();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_notifier_call_chain(PM_POST_SUSPEND);
 	pm_restore_console();
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * enter_state - Do common work needed to enter system sleep state.
+ * @state: System sleep state to enter.
+ *
+ * Make sure that no one else is trying to put the system into a sleep state.
+ * Fail if that's not the case.  Otherwise, prepare for system suspend, make the
+ * system enter the given sleep state and clean up after wakeup.
+ */
+static int enter_state(suspend_state_t state)
+{
+	int error;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_WATCHDOG_TIMEOUT
 void pm_wd_timeout(unsigned long data)
 {
@@ -331,6 +542,10 @@ int enter_state(suspend_state_t state)
 	int error;
 	struct timer_list timer;
 	struct pm_wd_data data;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!valid_state(state))
 		return -ENODEV;
@@ -356,17 +571,69 @@ int enter_state(suspend_state_t state)
 	pm_restore_gfp_mask();
 
  Finish:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("PM: Finishing wakeup.\n");
+	suspend_finish();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_wd_add_timer(&timer, &data, 15);
 
 	pr_debug("PM: Finishing wakeup.\n");
 	suspend_finish();
 
 	pm_wd_del_timer(&timer);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  Unlock:
 	mutex_unlock(&pm_mutex);
 	return error;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void pm_suspend_marker(char *annotation)
+{
+	struct timespec ts;
+	struct rtc_time tm;
+
+	getnstimeofday(&ts);
+	rtc_time_to_tm(ts.tv_sec, &tm);
+	pr_info("PM: suspend %s %d-%02d-%02d %02d:%02d:%02d.%09lu UTC\n",
+		annotation, tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday,
+		tm.tm_hour, tm.tm_min, tm.tm_sec, ts.tv_nsec);
+}
+
+/**
+ * pm_suspend - Externally visible function for suspending the system.
+ * @state: System sleep state to enter.
+ *
+ * Check if the value of @state represents one of the supported states,
+ * execute enter_state() and update system suspend statistics.
+ */
+int pm_suspend(suspend_state_t state)
+{
+	int error;
+
+	if (state <= PM_SUSPEND_ON || state >= PM_SUSPEND_MAX)
+		return -EINVAL;
+
+	pm_suspend_marker("entry");
+	error = enter_state(state);
+	if (error) {
+		suspend_stats.fail++;
+		dpm_save_failed_errno(error);
+	} else {
+		suspend_stats.success++;
+	}
+	pm_suspend_marker("exit");
+	return error;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  *	pm_suspend - Externally visible function for suspending system.
  *	@state:		Enumerated value of state to enter.
@@ -379,5 +646,9 @@ int pm_suspend(suspend_state_t state)
 	if (state > PM_SUSPEND_ON && state < PM_SUSPEND_MAX)
 		return enter_state(state);
 	return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(pm_suspend);

@@ -44,7 +44,14 @@
 #define HD_IRQ 14
 
 #define REALLY_SLOW_IO
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/uaccess.h>
 
@@ -155,7 +162,15 @@ else \
 
 #if (HD_DELAY > 0)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/i8253.h>
+=======
 #include <asm/i8253.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/i8253.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned long last_req;
 

@@ -121,8 +121,11 @@ Version 0.0.6    2.1.110   07-aug-98   Eduardo Marcelo Serrat
 #include <net/flow.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/ioctls.h>
 #include <linux/capability.h>
 #include <linux/mm.h>
@@ -295,6 +298,9 @@ int dn_sockaddr2username(struct sockaddr_dn *sdn, unsigned char *buf, unsigned c
 	*buf++ = type;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (type) {
 	case 0:
 		*buf++ = sdn->sdn_objnum;
@@ -312,6 +318,8 @@ int dn_sockaddr2username(struct sockaddr_dn *sdn, unsigned char *buf, unsigned c
 		memcpy(buf, sdn->sdn_objname, le16_to_cpu(sdn->sdn_objnamel));
 		len = 7 + le16_to_cpu(sdn->sdn_objnamel);
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(type) {
 		case 0:
@@ -331,6 +339,7 @@ int dn_sockaddr2username(struct sockaddr_dn *sdn, unsigned char *buf, unsigned c
 			len = 7 + le16_to_cpu(sdn->sdn_objnamel);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return len;
@@ -361,6 +370,9 @@ int dn_username2sockaddr(unsigned char *data, int len, struct sockaddr_dn *sdn, 
 	type = *data++;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (*fmt) {
 	case 0:
 		sdn->sdn_objnum = type;
@@ -378,6 +390,8 @@ int dn_username2sockaddr(unsigned char *data, int len, struct sockaddr_dn *sdn, 
 		break;
 	default:
 		return -1;
+<<<<<<< HEAD
+=======
 =======
 	switch(*fmt) {
 		case 0:
@@ -397,6 +411,7 @@ int dn_username2sockaddr(unsigned char *data, int len, struct sockaddr_dn *sdn, 
 		default:
 			return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	len -= 1;
@@ -619,6 +634,9 @@ int dn_destroy_timer(struct sock *sk)
 	scp->persist = dn_nsp_persist(sk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (scp->state) {
 	case DN_DI:
 		dn_nsp_send_disc(sk, NSP_DISCINIT, 0, GFP_ATOMIC);
@@ -639,6 +657,8 @@ int dn_destroy_timer(struct sock *sk)
 					 GFP_ATOMIC);
 			return 0;
 		}
+<<<<<<< HEAD
+=======
 =======
 	switch(scp->state) {
 		case DN_DI:
@@ -660,6 +680,7 @@ int dn_destroy_timer(struct sock *sk)
 				return 0;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	scp->persist = (HZ * decnet_time_wait);
@@ -690,6 +711,9 @@ static void dn_destroy_sock(struct sock *sk)
 	sk->sk_state = TCP_CLOSE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (scp->state) {
 	case DN_DN:
 		dn_nsp_send_disc(sk, NSP_DISCCONF, NSP_REASON_DC,
@@ -726,6 +750,8 @@ disc_reject:
 		sock_put(sk);
 
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(scp->state) {
 		case DN_DN:
@@ -764,6 +790,7 @@ disc_reject:
 
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -789,6 +816,9 @@ static int dn_create(struct net *net, struct socket *sock, int protocol,
 		return -EAFNOSUPPORT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (sock->type) {
 	case SOCK_SEQPACKET:
 		if (protocol != DNPROTO_NSP)
@@ -798,6 +828,8 @@ static int dn_create(struct net *net, struct socket *sock, int protocol,
 		break;
 	default:
 		return -ESOCKTNOSUPPORT;
+<<<<<<< HEAD
+=======
 =======
 	switch(sock->type) {
 		case SOCK_SEQPACKET:
@@ -809,6 +841,7 @@ static int dn_create(struct net *net, struct socket *sock, int protocol,
 		default:
 			return -ESOCKTNOSUPPORT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 
@@ -1105,6 +1138,9 @@ static inline int dn_check_state(struct sock *sk, struct sockaddr_dn *addr, int 
 	struct dn_scp *scp = DN_SK(sk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (scp->state) {
 	case DN_RUN:
 		return 0;
@@ -1115,6 +1151,8 @@ static inline int dn_check_state(struct sock *sk, struct sockaddr_dn *addr, int 
 		return dn_wait_run(sk, timeo);
 	case DN_O:
 		return __dn_connect(sk, addr, addrlen, timeo, flags);
+<<<<<<< HEAD
+=======
 =======
 	switch(scp->state) {
 		case DN_RUN:
@@ -1127,6 +1165,7 @@ static inline int dn_check_state(struct sock *sk, struct sockaddr_dn *addr, int 
 		case DN_O:
 			return __dn_connect(sk, addr, addrlen, timeo, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return -EINVAL;
@@ -1494,6 +1533,9 @@ static int __dn_setsockopt(struct socket *sock, int level,int optname, char __us
 		return -EFAULT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (optname) {
 	case DSO_CONDATA:
 		if (sock->state == SS_CONNECTED)
@@ -1628,6 +1670,8 @@ static int __dn_setsockopt(struct socket *sock, int level,int optname, char __us
 			return -EINVAL;
 		scp->info_loc = u.info;
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(optname) {
 		case DSO_CONDATA:
@@ -1765,6 +1809,7 @@ static int __dn_setsockopt(struct socket *sock, int level,int optname, char __us
 			scp->info_loc = u.info;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -1795,6 +1840,9 @@ static int __dn_getsockopt(struct socket *sock, int level,int optname, char __us
 		return -EFAULT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (optname) {
 	case DSO_CONDATA:
 		if (r_len > sizeof(struct optdata_dn))
@@ -1895,6 +1943,8 @@ static int __dn_getsockopt(struct socket *sock, int level,int optname, char __us
 			r_len = sizeof(unsigned char);
 		r_data = &scp->info_rem;
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(optname) {
 		case DSO_CONDATA:
@@ -1998,6 +2048,7 @@ static int __dn_getsockopt(struct socket *sock, int level,int optname, char __us
 			r_data = &scp->info_rem;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (r_data) {
@@ -2459,6 +2510,9 @@ static int dn_device_event(struct notifier_block *this, unsigned long event,
 		return NOTIFY_DONE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (event) {
 	case NETDEV_UP:
 		dn_dev_up(dev);
@@ -2468,6 +2522,8 @@ static int dn_device_event(struct notifier_block *this, unsigned long event,
 		break;
 	default:
 		break;
+<<<<<<< HEAD
+=======
 =======
 	switch(event) {
 		case NETDEV_UP:
@@ -2479,6 +2535,7 @@ static int dn_device_event(struct notifier_block *this, unsigned long event,
 		default:
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return NOTIFY_DONE;
@@ -2592,6 +2649,9 @@ static void dn_printable_object(struct sockaddr_dn *dn, unsigned char *buf)
 
 	switch (le16_to_cpu(dn->sdn_objnamel)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 0:
 		sprintf(buf, "%d", dn->sdn_objnum);
 		break;
@@ -2602,6 +2662,8 @@ static void dn_printable_object(struct sockaddr_dn *dn, unsigned char *buf)
 				buf[i] = '.';
 		}
 		buf[i] = 0;
+<<<<<<< HEAD
+=======
 =======
 		case 0:
 			sprintf(buf, "%d", dn->sdn_objnum);
@@ -2614,12 +2676,16 @@ static void dn_printable_object(struct sockaddr_dn *dn, unsigned char *buf)
 			}
 			buf[i] = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
 static char *dn_state2asc(unsigned char state)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (state) {
 	case DN_O:
 		return "OPEN";
@@ -2653,6 +2719,8 @@ static char *dn_state2asc(unsigned char state)
 		return "  CL";
 	case DN_CN:
 		return "  CN";
+<<<<<<< HEAD
+=======
 =======
 	switch(state) {
 		case DN_O:
@@ -2688,6 +2756,7 @@ static char *dn_state2asc(unsigned char state)
 		case DN_CN:
 			return "  CN";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return "????";
@@ -2788,9 +2857,12 @@ static const struct proto_ops dn_proto_ops = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void dn_register_sysctl_skeleton(void);
 void dn_unregister_sysctl_skeleton(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dn_register_sysctl(void);
 void dn_unregister_sysctl(void);
 
@@ -2813,8 +2885,11 @@ static int __init decnet_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dn_register_sysctl_skeleton();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dn_neigh_init();
 	dn_dev_init();
 	dn_route_init();
@@ -2856,8 +2931,11 @@ static void __exit decnet_exit(void)
 	proc_net_remove(&init_net, "decnet");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dn_unregister_sysctl_skeleton();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	proto_unregister(&dn_proto);
 

@@ -4,12 +4,18 @@
 <<<<<<< HEAD
 #include <linux/sh_intc.h>
 =======
+<<<<<<< HEAD
+#include <linux/sh_intc.h>
+=======
 #define NR_IRQS         1024
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* GIC */
 #define gic_spi(nr)		((nr) + 32)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* INTCA */
@@ -17,6 +23,7 @@
 #define irq2evt(irq)		(((irq) + 16) << 5)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* INTCS */
 #define INTCS_VECT_BASE		0x2200
 #define INTCS_VECT(n, vect)	INTC_VECT((n), INTCS_VECT_BASE + (vect))

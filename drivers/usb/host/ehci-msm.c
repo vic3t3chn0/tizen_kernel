@@ -1,6 +1,14 @@
 /* ehci-msm.c - HSUSB Host Controller Driver Implementation
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (c) 2008-2013, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2008-2011, Code Aurora Forum. All rights reserved.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (c) 2008-2011, Code Aurora Forum. All rights reserved.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Partly derived from ehci-fsl.c and ehci-hcd.c
  * Copyright (c) 2000-2004 by David Brownell
@@ -28,11 +36,26 @@
 #include <linux/pm_runtime.h>
 
 #include <linux/usb/otg.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/usb/msm_hsusb.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/usb/msm_hsusb_hw.h>
 
 #define MSM_USB_BASE (hcd->regs)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_phy *phy;
+=======
 static struct otg_transceiver *otg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct otg_transceiver *otg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int ehci_msm_reset(struct usb_hcd *hcd)
 {
@@ -40,6 +63,14 @@ static int ehci_msm_reset(struct usb_hcd *hcd)
 	int retval;
 
 	ehci->caps = USB_CAPLENGTH;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hcd->has_tt = 1;
+
+	retval = ehci_setup(hcd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ehci->regs = USB_CAPLENGTH +
 		HC_LENGTH(ehci, ehci_readl(ehci, &ehci->caps->hc_capbase));
 	dbg_hcs_params(ehci, "reset");
@@ -61,15 +92,43 @@ static int ehci_msm_reset(struct usb_hcd *hcd)
 		return retval;
 
 	retval = ehci_reset(ehci);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval)
 		return retval;
 
 	/* bursts of unspecified length. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	writel_relaxed(0, USB_AHBBURST);
+	/* Use the AHB transactor */
+	writel_relaxed(0x08, USB_AHBMODE);
+	/* Disable streaming mode and select host mode */
+	writel_relaxed(0x13, USB_USBMODE);
+
+	if (ehci->transceiver->flags & ENABLE_SECONDARY_PHY) {
+		ehci_dbg(ehci, "using secondary hsphy\n");
+		writel_relaxed(readl_relaxed(USB_PHY_CTRL2) | (1<<16),
+							USB_PHY_CTRL2);
+	}
+
+	/* Disable ULPI_TX_PKT_EN_CLR_FIX which is valid only for HSIC */
+	writel_relaxed(readl_relaxed(USB_GENCONFIG2) & ~(1<<19),
+					USB_GENCONFIG2);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(0, USB_AHBBURST);
 	/* Use the AHB transactor */
 	writel(0, USB_AHBMODE);
 	/* Disable streaming mode and select host mode */
 	writel(0x13, USB_USBMODE);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ehci_port_power(ehci, 1);
 	return 0;
@@ -121,6 +180,13 @@ static struct hc_driver msm_hc_driver = {
 	.bus_resume		= ehci_bus_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u64 msm_ehci_dma_mask = DMA_BIT_MASK(64);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ehci_msm_probe(struct platform_device *pdev)
 {
 	struct usb_hcd *hcd;
@@ -129,12 +195,31 @@ static int ehci_msm_probe(struct platform_device *pdev)
 
 	dev_dbg(&pdev->dev, "ehci_msm proble\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!pdev->dev.dma_mask)
+		pdev->dev.dma_mask = &msm_ehci_dma_mask;
+	if (!pdev->dev.coherent_dma_mask)
+		pdev->dev.coherent_dma_mask = DMA_BIT_MASK(32);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hcd = usb_create_hcd(&msm_hc_driver, &pdev->dev, dev_name(&pdev->dev));
 	if (!hcd) {
 		dev_err(&pdev->dev, "Unable to create HCD\n");
 		return  -ENOMEM;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hcd_to_bus(hcd)->skip_resume = true;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hcd->irq = platform_get_irq(pdev, 0);
 	if (hcd->irq < 0) {
 		dev_err(&pdev->dev, "Unable to get IRQ resource\n");
@@ -163,31 +248,68 @@ static int ehci_msm_probe(struct platform_device *pdev)
 	 * powering up VBUS, mapping of registers address space and power
 	 * management.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	phy = usb_get_transceiver();
+	if (!phy) {
+=======
 	otg = otg_get_transceiver();
 	if (!otg) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	otg = otg_get_transceiver();
+	if (!otg) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(&pdev->dev, "unable to find transceiver\n");
 		ret = -ENODEV;
 		goto unmap;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = otg_set_host(phy->otg, &hcd->self);
+=======
 	ret = otg_set_host(otg, &hcd->self);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = otg_set_host(otg, &hcd->self);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		dev_err(&pdev->dev, "unable to register with transceiver\n");
 		goto put_transceiver;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hcd_to_ehci(hcd)->transceiver = phy;
+	device_init_wakeup(&pdev->dev, 1);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	device_init_wakeup(&pdev->dev, 1);
 	/*
 	 * OTG device parent of HCD takes care of putting
 	 * hardware into low power mode.
 	 */
 	pm_runtime_no_callbacks(&pdev->dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_runtime_enable(&pdev->dev);
 
 	return 0;
 
 put_transceiver:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_put_transceiver(phy);
+=======
 	otg_put_transceiver(otg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	otg_put_transceiver(otg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unmap:
 	iounmap(hcd->regs);
 put_hcd:
@@ -204,15 +326,58 @@ static int __devexit ehci_msm_remove(struct platform_device *pdev)
 	pm_runtime_disable(&pdev->dev);
 	pm_runtime_set_suspended(&pdev->dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hcd_to_ehci(hcd)->transceiver = NULL;
+	otg_set_host(phy->otg, NULL);
+	usb_put_transceiver(phy);
+=======
 	otg_set_host(otg, NULL);
 	otg_put_transceiver(otg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	otg_set_host(otg, NULL);
+	otg_put_transceiver(otg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	usb_put_hcd(hcd);
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_RUNTIME
+static int ehci_msm_runtime_idle(struct device *dev)
+{
+	dev_dbg(dev, "ehci runtime idle\n");
+	return 0;
+}
+
+static int ehci_msm_runtime_suspend(struct device *dev)
+{
+	dev_dbg(dev, "ehci runtime suspend\n");
+	/*
+	 * Notify OTG about suspend.  It takes care of
+	 * putting the hardware in LPM.
+	 */
+	return usb_phy_set_suspend(phy, 1);
+}
+
+static int ehci_msm_runtime_resume(struct device *dev)
+{
+	dev_dbg(dev, "ehci runtime resume\n");
+	return usb_phy_set_suspend(phy, 0);
+}
+#endif
+
+#ifdef CONFIG_PM_SLEEP
+=======
 #ifdef CONFIG_PM
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_PM
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ehci_msm_pm_suspend(struct device *dev)
 {
 	struct usb_hcd *hcd = dev_get_drvdata(dev);
@@ -220,6 +385,15 @@ static int ehci_msm_pm_suspend(struct device *dev)
 
 	dev_dbg(dev, "ehci-msm PM suspend\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!hcd->rh_registered)
+		return 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * EHCI helper function has also the same check before manipulating
 	 * port wakeup flags.  We do check here the same condition before
@@ -233,12 +407,49 @@ static int ehci_msm_pm_suspend(struct device *dev)
 				wakeup);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return usb_phy_set_suspend(phy, 1);
+=======
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ehci_msm_pm_resume(struct device *dev)
 {
 	struct usb_hcd *hcd = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+
+	dev_dbg(dev, "ehci-msm PM resume\n");
+
+	if (!hcd->rh_registered)
+		return 0;
+
+	/* Notify OTG to bring hw out of LPM before restoring wakeup flags */
+	ret = usb_phy_set_suspend(phy, 0);
+	if (ret)
+		return ret;
+
+	ehci_prepare_ports_for_controller_resume(hcd_to_ehci(hcd));
+	/* Resume root-hub to handle USB event if any else initiate LPM again */
+	usb_hcd_resume_root_hub(hcd);
+
+	return ret;
+}
+#endif
+
+static const struct dev_pm_ops ehci_msm_dev_pm_ops = {
+	SET_SYSTEM_SLEEP_PM_OPS(ehci_msm_pm_suspend, ehci_msm_pm_resume)
+	SET_RUNTIME_PM_OPS(ehci_msm_runtime_suspend, ehci_msm_runtime_resume,
+				ehci_msm_runtime_idle)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(dev, "ehci-msm PM resume\n");
 	ehci_prepare_ports_for_controller_resume(hcd_to_ehci(hcd));
@@ -253,6 +464,10 @@ static int ehci_msm_pm_resume(struct device *dev)
 static const struct dev_pm_ops ehci_msm_dev_pm_ops = {
 	.suspend         = ehci_msm_pm_suspend,
 	.resume          = ehci_msm_pm_resume,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_driver ehci_msm_driver = {

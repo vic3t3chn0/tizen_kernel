@@ -17,9 +17,15 @@
 #include <linux/screen_info.h>
 #include <linux/memblock.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/screen_info.h>
+#include <linux/memblock.h>
+=======
 #include <linux/module.h>
 #include <linux/screen_info.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bootmem.h>
 #include <linux/initrd.h>
 #include <linux/root_dev.h>
@@ -38,8 +44,11 @@
 #include <asm/smp-ops.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/prom.h>
 
 struct cpuinfo_mips cpu_data[NR_CPUS] __read_mostly;
@@ -135,7 +144,13 @@ static void __init print_memory_map(void)
 			printk(KERN_CONT "(usable after init)\n");
 			break;
 =======
+<<<<<<< HEAD
+		case BOOT_MEM_INIT_RAM:
+			printk(KERN_CONT "(usable after init)\n");
+			break;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case BOOT_MEM_ROM_DATA:
 			printk(KERN_CONT "(ROM data)\n");
 			break;
@@ -370,8 +385,12 @@ static void __init bootmem_init(void)
 <<<<<<< HEAD
 		memblock_add_node(PFN_PHYS(start), PFN_PHYS(end - start), 0);
 =======
+<<<<<<< HEAD
+		memblock_add_node(PFN_PHYS(start), PFN_PHYS(end - start), 0);
+=======
 		add_active_range(0, start, end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -381,6 +400,9 @@ static void __init bootmem_init(void)
 		unsigned long start, end, size;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		start = PFN_UP(boot_mem_map.map[i].addr);
 		end   = PFN_DOWN(boot_mem_map.map[i].addr
 				    + boot_mem_map.map[i].size);
@@ -399,6 +421,8 @@ static void __init bootmem_init(void)
 			continue;
 		}
 
+<<<<<<< HEAD
+=======
 =======
 		/*
 		 * Reserve usable memory.
@@ -410,6 +434,7 @@ static void __init bootmem_init(void)
 		end   = PFN_DOWN(boot_mem_map.map[i].addr
 				    + boot_mem_map.map[i].size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * We are rounding up the start address of usable memory
 		 * and at the end of the usable range downwards.
@@ -499,13 +524,21 @@ static void __init arch_mem_init(char **cmdline_p)
 	phys_t init_mem, init_end, init_size;
 
 =======
+<<<<<<< HEAD
+	phys_t init_mem, init_end, init_size;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	extern void plat_mem_setup(void);
 
 	/* call board setup routine */
 	plat_mem_setup();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_mem = PFN_UP(__pa_symbol(&__init_begin)) << PAGE_SHIFT;
 	init_end = PFN_DOWN(__pa_symbol(&__init_end)) << PAGE_SHIFT;
 	init_size = init_end - init_mem;
@@ -526,8 +559,11 @@ static void __init arch_mem_init(char **cmdline_p)
 					  BOOT_MEM_INIT_RAM);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info("Determined physical RAM map:\n");
 	print_memory_map();
 
@@ -594,7 +630,11 @@ static void __init resource_init(void)
 <<<<<<< HEAD
 		case BOOT_MEM_INIT_RAM:
 =======
+<<<<<<< HEAD
+		case BOOT_MEM_INIT_RAM:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case BOOT_MEM_ROM_DATA:
 			res->name = "System RAM";
 			break;

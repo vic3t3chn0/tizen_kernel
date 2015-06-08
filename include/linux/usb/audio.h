@@ -178,7 +178,11 @@ struct uac1_ac_header_descriptor_##n {			\
 <<<<<<< HEAD
 DECLARE_UAC_AC_HEADER_DESCRIPTOR(2);
 =======
+<<<<<<< HEAD
+DECLARE_UAC_AC_HEADER_DESCRIPTOR(2);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 4.3.2.1 Input Terminal Descriptor */
 struct uac_input_terminal_descriptor {
 	__u8  bLength;			/* in bytes: 12 */
@@ -391,9 +395,13 @@ static inline __u8 uac_processing_unit_iProcessing(struct uac_processing_unit_de
 <<<<<<< HEAD
 	return desc->baSourceID[desc->bNrInPins + control_size];
 =======
+<<<<<<< HEAD
+	return desc->baSourceID[desc->bNrInPins + control_size];
+=======
 	return *(uac_processing_unit_bmControls(desc, protocol)
 			+ control_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline __u8 *uac_processing_unit_specific(struct uac_processing_unit_descriptor *desc,
@@ -403,9 +411,13 @@ static inline __u8 *uac_processing_unit_specific(struct uac_processing_unit_desc
 <<<<<<< HEAD
 	return &desc->baSourceID[desc->bNrInPins + control_size + 1];
 =======
+<<<<<<< HEAD
+	return &desc->baSourceID[desc->bNrInPins + control_size + 1];
+=======
 	return uac_processing_unit_bmControls(desc, protocol)
 			+ control_size + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* 4.5.2 Class-Specific AS Interface Descriptor */
@@ -471,7 +483,11 @@ struct uac_format_type_i_discrete_descriptor_##n {		\
 <<<<<<< HEAD
 DECLARE_UAC_FORMAT_TYPE_I_DISCRETE_DESC(1);
 =======
+<<<<<<< HEAD
+DECLARE_UAC_FORMAT_TYPE_I_DISCRETE_DESC(1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UAC_FORMAT_TYPE_I_DISCRETE_DESC_SIZE(n)	(8 + (n * 3))
 
 struct uac_format_type_i_ext_descriptor {

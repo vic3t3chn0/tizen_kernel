@@ -37,11 +37,48 @@
 #include <asm/uaccess.h>
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * mdiobus_alloc_size - allocate a mii_bus structure
+ * @size: extra amount of memory to allocate for private storage.
+ * If non-zero, then bus->priv is points to that memory.
+=======
  * mdiobus_alloc - allocate a mii_bus structure
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * mdiobus_alloc - allocate a mii_bus structure
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Description: called by a bus driver to allocate an mii_bus
  * structure to fill in.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct mii_bus *mdiobus_alloc_size(size_t size)
+{
+	struct mii_bus *bus;
+	size_t aligned_size = ALIGN(sizeof(*bus), NETDEV_ALIGN);
+	size_t alloc_size;
+
+	/* If we alloc extra space, it should be aligned */
+	if (size)
+		alloc_size = aligned_size + size;
+	else
+		alloc_size = sizeof(*bus);
+
+	bus = kzalloc(alloc_size, GFP_KERNEL);
+	if (bus) {
+		bus->state = MDIOBUS_ALLOCATED;
+		if (size)
+			bus->priv = (void *)bus + aligned_size;
+	}
+
+	return bus;
+}
+EXPORT_SYMBOL(mdiobus_alloc_size);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mii_bus *mdiobus_alloc(void)
 {
 	struct mii_bus *bus;
@@ -53,6 +90,10 @@ struct mii_bus *mdiobus_alloc(void)
 	return bus;
 }
 EXPORT_SYMBOL(mdiobus_alloc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * mdiobus_release - mii_bus device release callback

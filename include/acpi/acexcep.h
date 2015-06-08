@@ -60,7 +60,11 @@
 <<<<<<< HEAD
 #define ACPI_SKIP(a)                    (a == AE_CTRL_SKIP)
 =======
+<<<<<<< HEAD
+#define ACPI_SKIP(a)                    (a == AE_CTRL_SKIP)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AE_OK                           (acpi_status) 0x0000
 
 /*
@@ -98,9 +102,15 @@
 
 #define AE_CODE_ENV_MAX                 0x001C
 =======
+<<<<<<< HEAD
+#define AE_NOT_CONFIGURED               (acpi_status) (0x001C | AE_CODE_ENVIRONMENTAL)
+
+#define AE_CODE_ENV_MAX                 0x001C
+=======
 
 #define AE_CODE_ENV_MAX                 0x001B
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Programmer exceptions
@@ -227,8 +237,13 @@ char const *acpi_gbl_exception_names_env[] = {
 	"AE_OWNER_ID_LIMIT",
 	"AE_NOT_CONFIGURED"
 =======
+<<<<<<< HEAD
+	"AE_OWNER_ID_LIMIT",
+	"AE_NOT_CONFIGURED"
+=======
 	"AE_OWNER_ID_LIMIT"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 char const *acpi_gbl_exception_names_pgm[] = {

@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu_context.h>
 #include <asm/mmzone.h>
 #include <asm/kexec.h>
@@ -295,7 +299,12 @@ static void __init early_reserve_mem(void)
 	u32 zero_base = (u32)__MEMORY_START + (u32)PHYSICAL_OFFSET;
 	u32 start = zero_base + (u32)CONFIG_ZERO_PAGE_OFFSET;
 =======
+<<<<<<< HEAD
+	u32 zero_base = (u32)__MEMORY_START + (u32)PHYSICAL_OFFSET;
+	u32 start = zero_base + (u32)CONFIG_ZERO_PAGE_OFFSET;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Partially used pages are not usable - thus
@@ -312,10 +321,14 @@ static void __init early_reserve_mem(void)
 <<<<<<< HEAD
 	memblock_reserve(start, (PFN_PHYS(start_pfn) + PAGE_SIZE - 1) - start);
 =======
+<<<<<<< HEAD
+	memblock_reserve(start, (PFN_PHYS(start_pfn) + PAGE_SIZE - 1) - start);
+=======
 	memblock_reserve(__MEMORY_START + CONFIG_ZERO_PAGE_OFFSET,
 		    (PFN_PHYS(start_pfn) + PAGE_SIZE - 1) -
 		    (__MEMORY_START + CONFIG_ZERO_PAGE_OFFSET));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Reserve physical pages below CONFIG_ZERO_PAGE_OFFSET.
@@ -324,8 +337,12 @@ static void __init early_reserve_mem(void)
 <<<<<<< HEAD
 		memblock_reserve(zero_base, CONFIG_ZERO_PAGE_OFFSET);
 =======
+<<<<<<< HEAD
+		memblock_reserve(zero_base, CONFIG_ZERO_PAGE_OFFSET);
+=======
 		memblock_reserve(__MEMORY_START, CONFIG_ZERO_PAGE_OFFSET);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Handle additional early reservations
@@ -342,8 +359,11 @@ void __init paging_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sh_mv.mv_mem_init();
 
 	early_reserve_mem();
@@ -359,8 +379,12 @@ void __init paging_init(void)
 <<<<<<< HEAD
 	memblock_allow_resize();
 =======
+<<<<<<< HEAD
+	memblock_allow_resize();
+=======
 	memblock_analyze();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memblock_dump_all();
 

@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright 2004-2011 Red Hat, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright 2004-2011 Red Hat, Inc.
+=======
  * Copyright (C) 2004-2009 Red Hat, Inc.  All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This copyrighted material is made available to anyone wishing to use,
  * modify, copy, or redistribute it subject to the terms and conditions
@@ -18,13 +22,20 @@
 <<<<<<< HEAD
 #include <linux/delay.h>
 =======
+<<<<<<< HEAD
+#include <linux/delay.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gfs2_ondisk.h>
 
 #include "incore.h"
 #include "glock.h"
 #include "util.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "sys.h"
 #include "trace_gfs2.h"
 
@@ -120,10 +131,13 @@ static inline void gfs2_update_request_times(struct gfs2_glock *gl)
 	preempt_enable();
 }
  
+<<<<<<< HEAD
+=======
 =======
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void gdlm_ast(void *arg)
 {
 	struct gfs2_glock *gl = arg;
@@ -132,7 +146,11 @@ static void gdlm_ast(void *arg)
 <<<<<<< HEAD
 	gfs2_update_reply_times(gl);
 =======
+<<<<<<< HEAD
+	gfs2_update_reply_times(gl);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(gl->gl_lksb.sb_flags & DLM_SBF_DEMOTED);
 
 	if (gl->gl_lksb.sb_flags & DLM_SBF_VALNOTVALID)
@@ -216,17 +234,23 @@ static int make_mode(const unsigned int lmstate)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 make_flags(struct gfs2_glock *gl, const unsigned int gfs_flags,
 		      const int req)
 {
 	u32 lkf = DLM_LKF_VALBLK;
 	u32 lkid = gl->gl_lksb.sb_lkid;
+<<<<<<< HEAD
+=======
 =======
 static u32 make_flags(const u32 lkid, const unsigned int gfs_flags,
 		      const int req)
 {
 	u32 lkf = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (gfs_flags & LM_FLAG_TRY)
 		lkf |= DLM_LKF_NOQUEUE;
@@ -251,6 +275,9 @@ static u32 make_flags(const u32 lkid, const unsigned int gfs_flags,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (lkid != 0) {
 		lkf |= DLM_LKF_CONVERT;
 		if (test_bit(GLF_BLOCKING, &gl->gl_flags))
@@ -266,6 +293,8 @@ static void gfs2_reverse_hex(char *c, u64 value)
 		*c-- = hex_asc[value & 0x0f];
 		value >>= 4;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (lkid != 0) 
 		lkf |= DLM_LKF_CONVERT;
@@ -274,6 +303,7 @@ static void gfs2_reverse_hex(char *c, u64 value)
 
 	return lkf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int gdlm_lock(struct gfs2_glock *gl, unsigned int req_state,
@@ -283,6 +313,9 @@ static int gdlm_lock(struct gfs2_glock *gl, unsigned int req_state,
 	int req;
 	u32 lkf;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char strname[GDLM_STRNAME_BYTES] = "";
 
 	req = make_mode(req_state);
@@ -298,12 +331,15 @@ static int gdlm_lock(struct gfs2_glock *gl, unsigned int req_state,
 		gfs2_reverse_hex(strname + 23, gl->gl_name.ln_number);
 		gl->gl_dstamp = ktime_get_real();
 	}
+<<<<<<< HEAD
+=======
 =======
 
 	req = make_mode(req_state);
 	lkf = make_flags(gl->gl_lksb.sb_lkid, flags, req);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Submit the actual lock request.
 	 */
@@ -311,8 +347,12 @@ static int gdlm_lock(struct gfs2_glock *gl, unsigned int req_state,
 <<<<<<< HEAD
 	return dlm_lock(ls->ls_dlm, req, &gl->gl_lksb, lkf, strname,
 =======
+<<<<<<< HEAD
+	return dlm_lock(ls->ls_dlm, req, &gl->gl_lksb, lkf, strname,
+=======
 	return dlm_lock(ls->ls_dlm, req, &gl->gl_lksb, lkf, gl->gl_strname,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GDLM_STRNAME_BYTES - 1, 0, gdlm_ast, gl, gdlm_bast);
 }
 
@@ -328,12 +368,18 @@ static void gdlm_put_lock(struct gfs2_glock *gl)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_bit(GLF_BLOCKING, &gl->gl_flags);
 	gfs2_glstats_inc(gl, GFS2_LKS_DCOUNT);
 	gfs2_sbstats_inc(gl, GFS2_LKS_DCOUNT);
 	gfs2_update_request_times(gl);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = dlm_unlock(ls->ls_dlm, gl->gl_lksb.sb_lkid, DLM_LKF_VALBLK,
 			   NULL, gl);
 	if (error) {
@@ -351,6 +397,9 @@ static void gdlm_cancel(struct gfs2_glock *gl)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * dlm/gfs2 recovery coordination using dlm_recover callbacks
  *
@@ -528,14 +577,20 @@ static void sync_wait_cb(void *arg)
 }
 
 static int sync_unlock(struct gfs2_sbd *sdp, struct dlm_lksb *lksb, char *name)
+<<<<<<< HEAD
+=======
 =======
 static int gdlm_mount(struct gfs2_sbd *sdp, const char *fsname)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct lm_lockstruct *ls = &sdp->sd_lockstruct;
 	int error;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = dlm_unlock(ls->ls_dlm, lksb->sb_lkid, 0, lksb, ls);
 	if (error) {
 		fs_err(sdp, "%s lkid %x error %d\n",
@@ -1329,6 +1384,8 @@ static void gdlm_first_done(struct gfs2_sbd *sdp)
 		fs_err(sdp, "mount first_done error %d\n", error);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	if (fsname == NULL) {
 		fs_info(sdp, "no fsname found\n");
@@ -1346,11 +1403,15 @@ static void gdlm_first_done(struct gfs2_sbd *sdp)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void gdlm_unmount(struct gfs2_sbd *sdp)
 {
 	struct lm_lockstruct *ls = &sdp->sd_lockstruct;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (test_bit(DFL_NO_DLM_OPS, &ls->ls_recover_flags))
 		goto release;
 
@@ -1363,8 +1424,11 @@ static void gdlm_unmount(struct gfs2_sbd *sdp)
 
 	/* mounted_lock and control_lock will be purged in dlm recovery */
 release:
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ls->ls_dlm) {
 		dlm_release_lockspace(ls->ls_dlm, 2);
 		ls->ls_dlm = NULL;
@@ -1373,7 +1437,12 @@ release:
 
 	free_recover_size(ls);
 =======
+<<<<<<< HEAD
+
+	free_recover_size(ls);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const match_table_t dlm_tokens = {
@@ -1391,7 +1460,12 @@ const struct lm_lockops gfs2_dlm_ops = {
 	.lm_first_done = gdlm_first_done,
 	.lm_recovery_result = gdlm_recovery_result,
 =======
+<<<<<<< HEAD
+	.lm_first_done = gdlm_first_done,
+	.lm_recovery_result = gdlm_recovery_result,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.lm_unmount = gdlm_unmount,
 	.lm_put_lock = gdlm_put_lock,
 	.lm_lock = gdlm_lock,

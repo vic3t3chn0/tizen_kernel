@@ -15,6 +15,9 @@
 #define GPIOF_OUT_INIT_HIGH	(GPIOF_DIR_OUT | GPIOF_INIT_HIGH)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Gpio pin is open drain */
 #define GPIOF_OPEN_DRAIN	(1 << 2)
 
@@ -33,8 +36,11 @@ struct gpio {
 	const char	*label;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_GENERIC_GPIO
 #include <asm/gpio.h>
 
@@ -44,11 +50,16 @@ struct gpio {
 #include <linux/types.h>
 #include <linux/errno.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bug.h>
 
 struct device;
 struct gpio_chip;
 
+<<<<<<< HEAD
+=======
 =======
 
 struct device;
@@ -65,6 +76,7 @@ struct gpio_chip;
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool gpio_is_valid(int number)
 {
 	return false;
@@ -193,6 +205,9 @@ static inline int irq_to_gpio(unsigned irq)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PINCTRL
 
 static inline int
@@ -209,8 +224,11 @@ gpiochip_remove_pin_ranges(struct gpio_chip *chip)
 #endif /* CONFIG_PINCTRL */
 
 #endif /* ! CONFIG_GENERIC_GPIO */
+<<<<<<< HEAD
+=======
 =======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __LINUX_GPIO_H */

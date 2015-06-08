@@ -29,9 +29,20 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <asm/byteorder.h>
+=======
 #include <asm/atomic.h>
 #include <asm/byteorder.h>
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/atomic.h>
+#include <asm/byteorder.h>
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "core.h"
 
@@ -205,19 +216,45 @@ static struct fw_node *build_tree(struct fw_card *card,
 		next_sid = count_ports(sid, &port_count, &child_port_count);
 
 		if (next_sid == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fw_err(card, "inconsistent extended self IDs\n");
+=======
 			fw_error("Inconsistent extended self IDs.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fw_error("Inconsistent extended self IDs.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return NULL;
 		}
 
 		q = *sid;
 		if (phy_id != SELF_ID_PHY_ID(q)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fw_err(card, "PHY ID mismatch in self ID: %d != %d\n",
+			       phy_id, SELF_ID_PHY_ID(q));
+=======
 			fw_error("PHY ID mismatch in self ID: %d != %d.\n",
 				 phy_id, SELF_ID_PHY_ID(q));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fw_error("PHY ID mismatch in self ID: %d != %d.\n",
+				 phy_id, SELF_ID_PHY_ID(q));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return NULL;
 		}
 
 		if (child_port_count > stack_depth) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fw_err(card, "topology stack underflow\n");
+=======
 			fw_error("Topology stack underflow\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fw_error("Topology stack underflow\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return NULL;
 		}
 
@@ -235,7 +272,15 @@ static struct fw_node *build_tree(struct fw_card *card,
 
 		node = fw_node_create(q, port_count, card->color);
 		if (node == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fw_err(card, "out of memory while building topology\n");
+=======
 			fw_error("Out of memory while building topology.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fw_error("Out of memory while building topology.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return NULL;
 		}
 
@@ -284,8 +329,18 @@ static struct fw_node *build_tree(struct fw_card *card,
 		 */
 		if ((next_sid == end && parent_count != 0) ||
 		    (next_sid < end && parent_count != 1)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fw_err(card, "parent port inconsistency for node %d: "
+			       "parent_count=%d\n", phy_id, parent_count);
+=======
 			fw_error("Parent port inconsistency for node %d: "
 				 "parent_count=%d\n", phy_id, parent_count);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fw_error("Parent port inconsistency for node %d: "
+				 "parent_count=%d\n", phy_id, parent_count);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return NULL;
 		}
 
@@ -530,7 +585,14 @@ void fw_core_handle_bus_reset(struct fw_card *card, int node_id, int generation,
 	 */
 	if (!is_next_generation(generation, card->generation) &&
 	    card->local_node != NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		fw_notify("skipped bus generations, destroying all nodes\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fw_notify("skipped bus generations, destroying all nodes\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fw_destroy_nodes(card);
 		card->bm_retries = 0;
 	}
@@ -557,7 +619,15 @@ void fw_core_handle_bus_reset(struct fw_card *card, int node_id, int generation,
 	card->color++;
 
 	if (local_node == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fw_err(card, "topology build failed\n");
+=======
 		fw_error("topology build failed\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fw_error("topology build failed\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* FIXME: We need to issue a bus reset in this case. */
 	} else if (card->local_node == NULL) {
 		card->local_node = local_node;

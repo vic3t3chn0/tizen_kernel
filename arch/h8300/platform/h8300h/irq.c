@@ -14,8 +14,12 @@
 <<<<<<< HEAD
 #include <asm/gpio-internal.h>
 =======
+<<<<<<< HEAD
+#include <asm/gpio-internal.h>
+=======
 #include <asm/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/regs306x.h>
 
 const int __initdata h8300_saved_vectors[] = {

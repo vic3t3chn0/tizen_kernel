@@ -15,6 +15,9 @@
 <<<<<<< HEAD
 #include <linux/types.h>
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+=======
 #include <asm-generic/gpio.h>
 
 /*
@@ -25,6 +28,7 @@
 #define gpio_cansleep   __gpio_cansleep
 #define gpio_to_irq     __gpio_to_irq
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Orion-specific GPIO API extensions.

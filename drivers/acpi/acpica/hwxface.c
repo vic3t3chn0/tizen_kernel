@@ -6,7 +6,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,6 +50,13 @@
  * POSSIBILITY OF SUCH DAMAGES.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <acpi/acpi.h>
 #include "accommon.h"
 #include "acnamesp.h"
@@ -137,11 +152,20 @@ acpi_status acpi_read(u64 *return_value, struct acpi_generic_address *reg)
 		return (status);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	width = reg->bit_width;
 	if (width == 64) {
 		width = 32;	/* Break into two 32-bit transfers */
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Initialize entire 64-bit return value to zero */
 
 	*return_value = 0;
@@ -153,6 +177,22 @@ acpi_status acpi_read(u64 *return_value, struct acpi_generic_address *reg)
 	 */
 	if (reg->space_id == ACPI_ADR_SPACE_SYSTEM_MEMORY) {
 		status = acpi_os_read_memory((acpi_physical_address)
+<<<<<<< HEAD
+<<<<<<< HEAD
+					     address, return_value,
+					     reg->bit_width);
+		if (ACPI_FAILURE(status)) {
+			return (status);
+		}
+	} else {		/* ACPI_ADR_SPACE_SYSTEM_IO, validated earlier */
+
+		width = reg->bit_width;
+		if (width == 64) {
+			width = 32;	/* Break into two 32-bit transfers */
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     address, &value, width);
 		if (ACPI_FAILURE(status)) {
 			return (status);
@@ -171,6 +211,10 @@ acpi_status acpi_read(u64 *return_value, struct acpi_generic_address *reg)
 			*return_value |= ((u64)value << 32);
 		}
 	} else {		/* ACPI_ADR_SPACE_SYSTEM_IO, validated earlier */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		status = acpi_hw_read_port((acpi_io_address)
 					   address, &value, width);
@@ -230,17 +274,41 @@ acpi_status acpi_write(u64 value, struct acpi_generic_address *reg)
 		return (status);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	width = reg->bit_width;
 	if (width == 64) {
 		width = 32;	/* Break into two 32-bit transfers */
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Two address spaces supported: Memory or IO. PCI_Config is
 	 * not supported here because the GAS structure is insufficient
 	 */
 	if (reg->space_id == ACPI_ADR_SPACE_SYSTEM_MEMORY) {
 		status = acpi_os_write_memory((acpi_physical_address)
+<<<<<<< HEAD
+<<<<<<< HEAD
+					      address, value, reg->bit_width);
+		if (ACPI_FAILURE(status)) {
+			return (status);
+		}
+	} else {		/* ACPI_ADR_SPACE_SYSTEM_IO, validated earlier */
+
+		width = reg->bit_width;
+		if (width == 64) {
+			width = 32;	/* Break into two 32-bit transfers */
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					      address, ACPI_LODWORD(value),
 					      width);
 		if (ACPI_FAILURE(status)) {
@@ -256,6 +324,10 @@ acpi_status acpi_write(u64 value, struct acpi_generic_address *reg)
 			}
 		}
 	} else {		/* ACPI_ADR_SPACE_SYSTEM_IO, validated earlier */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		status = acpi_hw_write_port((acpi_io_address)
 					    address, ACPI_LODWORD(value),
@@ -285,6 +357,13 @@ acpi_status acpi_write(u64 value, struct acpi_generic_address *reg)
 
 ACPI_EXPORT_SYMBOL(acpi_write)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if (!ACPI_REDUCED_HARDWARE)
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*******************************************************************************
  *
  * FUNCTION:    acpi_read_bit_register
@@ -355,7 +434,15 @@ ACPI_EXPORT_SYMBOL(acpi_read_bit_register)
  *
  * PARAMETERS:  register_id     - ID of ACPI Bit Register to access
  *              Value           - Value to write to the register, in bit
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *                                position zero. The bit is automatically
+=======
  *                                position zero. The bit is automaticallly
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *                                position zero. The bit is automaticallly
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *                                shifted to the correct position.
  *
  * RETURN:      Status
@@ -452,7 +539,15 @@ unlock_and_exit:
 }
 
 ACPI_EXPORT_SYMBOL(acpi_write_bit_register)
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif				/* !ACPI_REDUCED_HARDWARE */
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*******************************************************************************
  *
  * FUNCTION:    acpi_get_sleep_type_data

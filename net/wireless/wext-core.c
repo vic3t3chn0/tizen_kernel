@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/cfg80211.h>
 #include <net/iw_handler.h>
 #include <net/netlink.h>
@@ -784,14 +788,20 @@ static int ioctl_standard_iw_point(struct iw_point *iwp, unsigned int cmd,
 			struct iw_encode_ext *ee = (void *) extra;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (iwp->length < sizeof(*ee) + ee->key_len) {
 				err = -EFAULT;
 				goto out;
 			}
+<<<<<<< HEAD
+=======
 =======
 			if (iwp->length < sizeof(*ee) + ee->key_len)
 				return -EFAULT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 

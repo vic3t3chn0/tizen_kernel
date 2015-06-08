@@ -35,9 +35,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_USB_MUSB_OMAP2PLUS) || defined (CONFIG_USB_MUSB_AM35X)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct musb_hdrc_config musb_config = {
 	.multipoint	= 1,
 	.dyn_fifo	= 1,
@@ -65,6 +68,8 @@ static struct musb_hdrc_platform_data musb_plat = {
 
 static u64 musb_dmamask = DMA_BIT_MASK(32);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct omap_device_pm_latency omap_musb_latency[] = {
@@ -114,6 +119,7 @@ static void usb_musb_mux_init(struct omap_musb_board_data *board_data)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_musb_board_data musb_default_board_data = {
 	.interface_type		= MUSB_INTERFACE_ULPI,
 	.mode			= MUSB_OTG,
@@ -125,8 +131,11 @@ void __init usb_musb_init(struct omap_musb_board_data *musb_board_data)
 	struct omap_hwmod		*oh;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct omap_device		*od;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct platform_device		*pdev;
 	struct device			*dev;
 	int				bus_id = -1;
@@ -149,12 +158,17 @@ void __init usb_musb_init(struct omap_musb_board_data *musb_board_data)
 	musb_plat.extvbus = board_data->extvbus;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_is_omap3517() || cpu_is_omap3505()) {
 		oh_name = "am35x_otg_hs";
 		name = "musb-am35x";
 	} else if (cpu_is_ti81xx()) {
 		oh_name = "usb_otg_hs";
 		name = "musb-ti81xx";
+<<<<<<< HEAD
+=======
 =======
 	if (cpu_is_omap44xx())
 		omap4430_phy_init(dev);
@@ -163,12 +177,16 @@ void __init usb_musb_init(struct omap_musb_board_data *musb_board_data)
 		oh_name = "am35x_otg_hs";
 		name = "musb-am35x";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		oh_name = "usb_otg_hs";
 		name = "musb-omap2430";
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         oh = omap_hwmod_lookup(oh_name);
         if (WARN(!oh, "%s: could not find omap_hwmod for %s\n",
                  __func__, oh_name))
@@ -177,6 +195,8 @@ void __init usb_musb_init(struct omap_musb_board_data *musb_board_data)
 	pdev = omap_device_build(name, bus_id, oh, &musb_plat,
 			       sizeof(musb_plat), NULL, 0, false);
 	if (IS_ERR(pdev)) {
+<<<<<<< HEAD
+=======
 =======
 	oh = omap_hwmod_lookup(oh_name);
 	if (!oh) {
@@ -189,6 +209,7 @@ void __init usb_musb_init(struct omap_musb_board_data *musb_board_data)
 			       ARRAY_SIZE(omap_musb_latency), false);
 	if (IS_ERR(od)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("Could not build omap_device for %s %s\n",
 						name, oh_name);
 		return;
@@ -196,8 +217,11 @@ void __init usb_musb_init(struct omap_musb_board_data *musb_board_data)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	pdev = &od->pdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev = &pdev->dev;
 	get_device(dev);
 	dev->dma_mask = &musb_dmamask;
@@ -209,6 +233,8 @@ void __init usb_musb_init(struct omap_musb_board_data *musb_board_data)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #else
 void __init usb_musb_init(struct omap_musb_board_data *board_data)
@@ -218,3 +244,4 @@ void __init usb_musb_init(struct omap_musb_board_data *board_data)
 }
 #endif /* CONFIG_USB_MUSB_SOC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

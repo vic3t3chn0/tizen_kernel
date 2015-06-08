@@ -12,8 +12,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/stat.h>
 #include <linux/time.h>
 #include <linux/namei.h>
@@ -95,8 +99,13 @@ static int bad_file_release(struct inode *inode, struct file *filp)
 static int bad_file_fsync(struct file *file, loff_t start, loff_t end,
 			  int datasync)
 =======
+<<<<<<< HEAD
+static int bad_file_fsync(struct file *file, loff_t start, loff_t end,
+			  int datasync)
+=======
 static int bad_file_fsync(struct file *file, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -EIO;
 }
@@ -184,8 +193,12 @@ static int bad_inode_create (struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 		umode_t mode, struct nameidata *nd)
 =======
+<<<<<<< HEAD
+		umode_t mode, struct nameidata *nd)
+=======
 		int mode, struct nameidata *nd)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -EIO;
 }
@@ -217,8 +230,12 @@ static int bad_inode_mkdir(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 			umode_t mode)
 =======
+<<<<<<< HEAD
+			umode_t mode)
+=======
 			int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -EIO;
 }
@@ -232,8 +249,12 @@ static int bad_inode_mknod (struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 			umode_t mode, dev_t rdev)
 =======
+<<<<<<< HEAD
+			umode_t mode, dev_t rdev)
+=======
 			int mode, dev_t rdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -EIO;
 }
@@ -253,8 +274,12 @@ static int bad_inode_readlink(struct dentry *dentry, char __user *buffer,
 <<<<<<< HEAD
 static int bad_inode_permission(struct inode *inode, int mask)
 =======
+<<<<<<< HEAD
+static int bad_inode_permission(struct inode *inode, int mask)
+=======
 static int bad_inode_permission(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -EIO;
 }

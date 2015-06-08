@@ -29,10 +29,15 @@ struct blkio_cgroup blkio_root_cgroup = { .weight = 2*BLKIO_WEIGHT_DEFAULT };
 EXPORT_SYMBOL_GPL(blkio_root_cgroup);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct cgroup_subsys_state *blkiocg_create(struct cgroup *);
 static int blkiocg_can_attach(struct cgroup *, struct cgroup_taskset *);
 static void blkiocg_attach(struct cgroup *, struct cgroup_taskset *);
 static void blkiocg_destroy(struct cgroup *);
+<<<<<<< HEAD
+=======
 =======
 static struct cgroup_subsys_state *blkiocg_create(struct cgroup_subsys *,
 						  struct cgroup *);
@@ -40,6 +45,7 @@ static int blkiocg_can_attach_task(struct cgroup *, struct task_struct *);
 static void blkiocg_attach_task(struct cgroup *, struct task_struct *);
 static void blkiocg_destroy(struct cgroup_subsys *, struct cgroup *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int blkiocg_populate(struct cgroup_subsys *, struct cgroup *);
 
 /* for encoding cft->private value on file */
@@ -55,9 +61,14 @@ struct cgroup_subsys blkio_subsys = {
 	.can_attach = blkiocg_can_attach,
 	.attach = blkiocg_attach,
 =======
+<<<<<<< HEAD
+	.can_attach = blkiocg_can_attach,
+	.attach = blkiocg_attach,
+=======
 	.can_attach_task = blkiocg_can_attach_task,
 	.attach_task = blkiocg_attach_task,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.destroy = blkiocg_destroy,
 	.populate = blkiocg_populate,
 #ifdef CONFIG_BLK_CGROUP
@@ -781,6 +792,9 @@ static uint64_t blkio_get_stat(struct blkio_group *blkg,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int blkio_policy_parse_and_set(char *buf,
 	struct blkio_policy_node *newpn, enum blkio_policy_id plid, int fileid)
 {
@@ -789,6 +803,8 @@ static int blkio_policy_parse_and_set(char *buf,
 	unsigned long major, minor;
 	int i = 0, ret = -EINVAL;
 	int part;
+<<<<<<< HEAD
+=======
 =======
 static int blkio_check_dev_num(dev_t dev)
 {
@@ -810,6 +826,7 @@ static int blkio_policy_parse_and_set(char *buf,
 	unsigned long major, minor;
 	int i = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_t dev;
 	u64 temp;
 
@@ -830,14 +847,21 @@ static int blkio_policy_parse_and_set(char *buf,
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	p = strsep(&s[0], ":");
 	if (p != NULL)
 		major_s = p;
 	else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	minor_s = s[0];
@@ -862,6 +886,8 @@ static int blkio_policy_parse_and_set(char *buf,
 			ret = -ENODEV;
 			goto out;
 		}
+<<<<<<< HEAD
+=======
 =======
 		return -EINVAL;
 
@@ -889,6 +915,7 @@ static int blkio_policy_parse_and_set(char *buf,
 		if (ret)
 			return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	newpn->dev = dev;
@@ -900,8 +927,12 @@ static int blkio_policy_parse_and_set(char *buf,
 <<<<<<< HEAD
 			goto out;
 =======
+<<<<<<< HEAD
+			goto out;
+=======
 			return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		newpn->plid = plid;
 		newpn->fileid = fileid;
@@ -921,8 +952,12 @@ static int blkio_policy_parse_and_set(char *buf,
 <<<<<<< HEAD
 				goto out;
 =======
+<<<<<<< HEAD
+				goto out;
+=======
 				return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			newpn->plid = plid;
 			newpn->fileid = fileid;
@@ -934,14 +969,20 @@ static int blkio_policy_parse_and_set(char *buf,
 		BUG();
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 0;
 out:
 	put_disk(disk);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 unsigned int blkcg_get_weight(struct blkio_cgroup *blkcg,
@@ -949,17 +990,26 @@ unsigned int blkcg_get_weight(struct blkio_cgroup *blkcg,
 {
 	struct blkio_policy_node *pn;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	unsigned int weight;
 
 	spin_lock_irqsave(&blkcg->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pn = blkio_policy_search_node(blkcg, dev, BLKIO_POLICY_PROP,
 				BLKIO_PROP_weight_device);
 	if (pn)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		weight = pn->val.weight;
 	else
 		weight = blkcg->weight;
@@ -967,11 +1017,14 @@ unsigned int blkcg_get_weight(struct blkio_cgroup *blkcg,
 	spin_unlock_irqrestore(&blkcg->lock, flags);
 
 	return weight;
+<<<<<<< HEAD
+=======
 =======
 		return pn->val.weight;
 	else
 		return blkcg->weight;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(blkcg_get_weight);
 
@@ -979,6 +1032,9 @@ uint64_t blkcg_get_read_bps(struct blkio_cgroup *blkcg, dev_t dev)
 {
 	struct blkio_policy_node *pn;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	uint64_t bps = -1;
 
@@ -990,6 +1046,8 @@ uint64_t blkcg_get_read_bps(struct blkio_cgroup *blkcg, dev_t dev)
 	spin_unlock_irqrestore(&blkcg->lock, flags);
 
 	return bps;
+<<<<<<< HEAD
+=======
 =======
 
 	pn = blkio_policy_search_node(blkcg, dev, BLKIO_POLICY_THROTL,
@@ -999,12 +1057,16 @@ uint64_t blkcg_get_read_bps(struct blkio_cgroup *blkcg, dev_t dev)
 	else
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 uint64_t blkcg_get_write_bps(struct blkio_cgroup *blkcg, dev_t dev)
 {
 	struct blkio_policy_node *pn;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	uint64_t bps = -1;
 
@@ -1016,6 +1078,8 @@ uint64_t blkcg_get_write_bps(struct blkio_cgroup *blkcg, dev_t dev)
 	spin_unlock_irqrestore(&blkcg->lock, flags);
 
 	return bps;
+<<<<<<< HEAD
+=======
 =======
 	pn = blkio_policy_search_node(blkcg, dev, BLKIO_POLICY_THROTL,
 				BLKIO_THROTL_write_bps_device);
@@ -1024,12 +1088,16 @@ uint64_t blkcg_get_write_bps(struct blkio_cgroup *blkcg, dev_t dev)
 	else
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 unsigned int blkcg_get_read_iops(struct blkio_cgroup *blkcg, dev_t dev)
 {
 	struct blkio_policy_node *pn;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	unsigned int iops = -1;
 
@@ -1041,6 +1109,8 @@ unsigned int blkcg_get_read_iops(struct blkio_cgroup *blkcg, dev_t dev)
 	spin_unlock_irqrestore(&blkcg->lock, flags);
 
 	return iops;
+<<<<<<< HEAD
+=======
 =======
 
 	pn = blkio_policy_search_node(blkcg, dev, BLKIO_POLICY_THROTL,
@@ -1050,12 +1120,16 @@ unsigned int blkcg_get_read_iops(struct blkio_cgroup *blkcg, dev_t dev)
 	else
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 unsigned int blkcg_get_write_iops(struct blkio_cgroup *blkcg, dev_t dev)
 {
 	struct blkio_policy_node *pn;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	unsigned int iops = -1;
 
@@ -1067,6 +1141,8 @@ unsigned int blkcg_get_write_iops(struct blkio_cgroup *blkcg, dev_t dev)
 	spin_unlock_irqrestore(&blkcg->lock, flags);
 
 	return iops;
+<<<<<<< HEAD
+=======
 =======
 	pn = blkio_policy_search_node(blkcg, dev, BLKIO_POLICY_THROTL,
 				BLKIO_THROTL_write_iops_device);
@@ -1075,6 +1151,7 @@ unsigned int blkcg_get_write_iops(struct blkio_cgroup *blkcg, dev_t dev)
 	else
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Checks whether user asked for deleting a policy rule */
@@ -1230,7 +1307,11 @@ static int blkiocg_file_write(struct cgroup *cgrp, struct cftype *cft,
 <<<<<<< HEAD
 		kfree(pn);
 =======
+<<<<<<< HEAD
+		kfree(pn);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock_irq(&blkcg->lock);
 		goto update_io_group;
 	}
@@ -1678,8 +1759,12 @@ static int blkiocg_populate(struct cgroup_subsys *subsys, struct cgroup *cgroup)
 <<<<<<< HEAD
 static void blkiocg_destroy(struct cgroup *cgroup)
 =======
+<<<<<<< HEAD
+static void blkiocg_destroy(struct cgroup *cgroup)
+=======
 static void blkiocg_destroy(struct cgroup_subsys *subsys, struct cgroup *cgroup)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct blkio_cgroup *blkcg = cgroup_to_blkio_cgroup(cgroup);
 	unsigned long flags;
@@ -1732,9 +1817,13 @@ static void blkiocg_destroy(struct cgroup_subsys *subsys, struct cgroup *cgroup)
 <<<<<<< HEAD
 static struct cgroup_subsys_state *blkiocg_create(struct cgroup *cgroup)
 =======
+<<<<<<< HEAD
+static struct cgroup_subsys_state *blkiocg_create(struct cgroup *cgroup)
+=======
 static struct cgroup_subsys_state *
 blkiocg_create(struct cgroup_subsys *subsys, struct cgroup *cgroup)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct blkio_cgroup *blkcg;
 	struct cgroup *parent = cgroup->parent;
@@ -1768,14 +1857,23 @@ static int blkiocg_can_attach(struct cgroup *cgrp, struct cgroup_taskset *tset)
 {
 	struct task_struct *task;
 =======
+<<<<<<< HEAD
+static int blkiocg_can_attach(struct cgroup *cgrp, struct cgroup_taskset *tset)
+{
+	struct task_struct *task;
+=======
 static int blkiocg_can_attach_task(struct cgroup *cgrp, struct task_struct *tsk)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct io_context *ioc;
 	int ret = 0;
 
 	/* task_lock() is needed to avoid races with exit_io_context() */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cgroup_taskset_for_each(task, cgrp, tset) {
 		task_lock(task);
 		ioc = task->io_context;
@@ -1801,6 +1899,8 @@ static void blkiocg_attach(struct cgroup *cgrp, struct cgroup_taskset *tset)
 			put_io_context(ioc);
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	task_lock(tsk);
 	ioc = tsk->io_context;
@@ -1821,6 +1921,7 @@ static void blkiocg_attach_task(struct cgroup *cgrp, struct task_struct *tsk)
 		ioc->cgroup_changed = 1;
 	task_unlock(tsk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void blkio_policy_register(struct blkio_policy_type *blkiop)
@@ -1852,11 +1953,16 @@ static void __exit exit_cgroup_blkio(void)
 
 module_init(init_cgroup_blkio);
 =======
+<<<<<<< HEAD
+
+module_init(init_cgroup_blkio);
+=======
 #ifdef CONFIG_FAST_RESUME
 beforeresume_initcall(init_cgroup_blkio);
 #else
 module_init(init_cgroup_blkio);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_exit(exit_cgroup_blkio);
 MODULE_LICENSE("GPL");

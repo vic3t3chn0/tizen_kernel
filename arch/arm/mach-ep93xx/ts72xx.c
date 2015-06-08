@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <asm/hardware/vic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/vic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/map.h>
 #include <asm/mach/arch.h>
@@ -34,7 +38,11 @@
 <<<<<<< HEAD
 #include "soc.h"
 =======
+<<<<<<< HEAD
+#include "soc.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct map_desc ts72xx_io_desc[] __initdata = {
 	{
@@ -129,9 +137,15 @@ static struct mtd_partition ts72xx_nand_parts[] = {
 		.size		= TS72XX_REDBOOT_PART_SIZE,
 				/* leave so much for last partition */
 =======
+<<<<<<< HEAD
+		.offset		= MTDPART_OFS_RETAIN,
+		.size		= TS72XX_REDBOOT_PART_SIZE,
+				/* leave so much for last partition */
+=======
 		.offset		= MTDPART_OFS_APPEND,
 		.size		= 0,			/* filled in later */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {
 		.name		= "RedBoot",
 		.offset		= MTDPART_OFS_APPEND,
@@ -140,6 +154,8 @@ static struct mtd_partition ts72xx_nand_parts[] = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void ts72xx_nand_set_parts(uint64_t size,
@@ -158,6 +174,7 @@ static void ts72xx_nand_set_parts(uint64_t size,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_nand_data ts72xx_nand_data = {
 	.chip = {
 		.nr_chips	= 1,
@@ -168,8 +185,13 @@ static struct platform_nand_data ts72xx_nand_data = {
 		.partitions	= ts72xx_nand_parts,
 		.nr_partitions	= ARRAY_SIZE(ts72xx_nand_parts),
 =======
+<<<<<<< HEAD
+		.partitions	= ts72xx_nand_parts,
+		.nr_partitions	= ARRAY_SIZE(ts72xx_nand_parts),
+=======
 		.set_parts	= ts72xx_nand_set_parts,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.ctrl = {
 		.cmd_ctrl	= ts72xx_nand_hwcontrol,
@@ -280,6 +302,9 @@ static void __init ts72xx_init_machine(void)
 MACHINE_START(TS72XX, "Technologic Systems TS-72xx SBC")
 	/* Maintainer: Lennert Buytenhek <buytenh@wantstofly.org> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= ts72xx_map_io,
 	.init_irq	= ep93xx_init_irq,
@@ -287,6 +312,8 @@ MACHINE_START(TS72XX, "Technologic Systems TS-72xx SBC")
 	.timer		= &ep93xx_timer,
 	.init_machine	= ts72xx_init_machine,
 	.restart	= ep93xx_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= EP93XX_SDCE3_PHYS_BASE_SYNC + 0x100,
 	.map_io		= ts72xx_map_io,
@@ -294,4 +321,5 @@ MACHINE_START(TS72XX, "Technologic Systems TS-72xx SBC")
 	.timer		= &ep93xx_timer,
 	.init_machine	= ts72xx_init_machine,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

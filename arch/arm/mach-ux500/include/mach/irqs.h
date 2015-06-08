@@ -46,8 +46,12 @@
 <<<<<<< HEAD
 #ifdef CONFIG_MACH_MOP500
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_MACH_MOP500
+=======
 #ifdef CONFIG_MACH_U8500
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs-board-mop500.h>
 #endif
 

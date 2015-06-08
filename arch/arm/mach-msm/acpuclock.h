@@ -1,9 +1,14 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * MSM architecture CPU clock driver header
  *
  * Copyright (C) 2007 Google, Inc.
  * Copyright (c) 2007-2012, The Linux Foundation. All rights reserved.
+<<<<<<< HEAD
+=======
 =======
 /* arch/arm/mach-msm/acpuclock.h
  *
@@ -12,6 +17,7 @@
  * Copyright (C) 2007 Google, Inc.
  * Copyright (c) 2007 QUALCOMM Incorporated
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: San Mehat <san@android.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -29,6 +35,9 @@
 #define __ARCH_ARM_MACH_MSM_ACPUCLOCK_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * enum setrate_reason - Reasons for use with acpuclk_set_rate()
  */
@@ -101,6 +110,8 @@ unsigned long acpuclk_wait_for_irq(void);
 void acpuclk_register(struct acpuclk_data *data);
 
 #endif /*__ARCH_ARM_MACH_MSM_ACPUCLOCK_H*/
+<<<<<<< HEAD
+=======
 =======
 int acpuclk_set_rate(unsigned long rate, int for_power_collapse);
 unsigned long acpuclk_get_rate(void);
@@ -113,3 +124,4 @@ unsigned long acpuclk_get_wfi_rate(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

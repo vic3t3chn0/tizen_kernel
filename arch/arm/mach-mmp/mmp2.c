@@ -11,8 +11,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -20,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/platform_device.h>
 =======
+<<<<<<< HEAD
+#include <linux/platform_device.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/hardware/cache-tauros2.h>
 
@@ -34,8 +41,11 @@
 #include <mach/mfp.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/devices.h>
 #include <mach/mmp2.h>
 
@@ -46,9 +56,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define APMASK(i)	(GPIO_REGS_VIRT + BANK_OFF(i) + 0x9c)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct mfp_addr_map mmp2_addr_map[] __initdata = {
 
 	MFP_ADDR_X(GPIO0, GPIO58, 0x54),
@@ -104,8 +117,13 @@ void mmp2_clear_pmic_int(void)
 	void __iomem *mfpr_pmic;
 	unsigned long data;
 =======
+<<<<<<< HEAD
+	void __iomem *mfpr_pmic;
+	unsigned long data;
+=======
 	unsigned long mfpr_pmic, data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mfpr_pmic = APB_VIRT_BASE + 0x1e000 + 0x2c4;
 	data = __raw_readl(mfpr_pmic);
@@ -113,6 +131,11 @@ void mmp2_clear_pmic_int(void)
 	__raw_writel(data, mfpr_pmic);
 }
 
+<<<<<<< HEAD
+void __init mmp2_init_irq(void)
+{
+	mmp2_init_icu();
+=======
 <<<<<<< HEAD
 void __init mmp2_init_irq(void)
 {
@@ -137,6 +160,7 @@ void __init mmp2_init_irq(void)
 	mmp2_init_icu();
 	mmp2_init_gpio();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void sdhc_clk_enable(struct clk *clk)
@@ -176,7 +200,11 @@ static APBC_CLK(twsi6, MMP2_TWSI6, 0, 26000000);
 <<<<<<< HEAD
 static APBC_CLK(gpio, MMP2_GPIO, 0, 26000000);
 =======
+<<<<<<< HEAD
+static APBC_CLK(gpio, MMP2_GPIO, 0, 26000000);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static APMU_CLK(nand, NAND, 0xbf, 100000000);
 static APMU_CLK_OPS(sdh0, SDH0, 0x1b, 200000000, &sdhc_clk_ops);
@@ -197,17 +225,23 @@ static struct clk_lookup mmp2_clkregs[] = {
 	INIT_CLKREG(&clk_twsi6, "pxa2xx-i2c.5", NULL),
 	INIT_CLKREG(&clk_nand, "pxa3xx-nand", NULL),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_CLKREG(&clk_gpio, "pxa-gpio", NULL),
 	INIT_CLKREG(&clk_sdh0, "sdhci-pxav3.0", "PXA-SDHCLK"),
 	INIT_CLKREG(&clk_sdh1, "sdhci-pxav3.1", "PXA-SDHCLK"),
 	INIT_CLKREG(&clk_sdh2, "sdhci-pxav3.2", "PXA-SDHCLK"),
 	INIT_CLKREG(&clk_sdh3, "sdhci-pxav3.3", "PXA-SDHCLK"),
+<<<<<<< HEAD
+=======
 =======
 	INIT_CLKREG(&clk_sdh0, "sdhci-pxa.0", "PXA-SDHCLK"),
 	INIT_CLKREG(&clk_sdh1, "sdhci-pxa.1", "PXA-SDHCLK"),
 	INIT_CLKREG(&clk_sdh2, "sdhci-pxa.2", "PXA-SDHCLK"),
 	INIT_CLKREG(&clk_sdh3, "sdhci-pxa.3", "PXA-SDHCLK"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init mmp2_init(void)
@@ -259,6 +293,9 @@ MMP2_DEVICE(twsi5, "pxa2xx-i2c", 4, TWSI5, 0xd4033800, 0x70);
 MMP2_DEVICE(twsi6, "pxa2xx-i2c", 5, TWSI6, 0xd4034000, 0x70);
 MMP2_DEVICE(nand, "pxa3xx-nand", -1, NAND, 0xd4283000, 0x100, 28, 29);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MMP2_DEVICE(sdh0, "sdhci-pxav3", 0, MMC, 0xd4280000, 0x120);
 MMP2_DEVICE(sdh1, "sdhci-pxav3", 1, MMC2, 0xd4280800, 0x120);
 MMP2_DEVICE(sdh2, "sdhci-pxav3", 2, MMC3, 0xd4281000, 0x120);
@@ -286,6 +323,8 @@ struct platform_device mmp2_device_gpio = {
 	.num_resources	= ARRAY_SIZE(mmp2_resource_gpio),
 	.resource	= mmp2_resource_gpio,
 };
+<<<<<<< HEAD
+=======
 =======
 MMP2_DEVICE(sdh0, "sdhci-pxa", 0, MMC, 0xd4280000, 0x120);
 MMP2_DEVICE(sdh1, "sdhci-pxa", 1, MMC2, 0xd4280800, 0x120);
@@ -293,3 +332,4 @@ MMP2_DEVICE(sdh2, "sdhci-pxa", 2, MMC3, 0xd4281000, 0x120);
 MMP2_DEVICE(sdh3, "sdhci-pxa", 3, MMC4, 0xd4281800, 0x120);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

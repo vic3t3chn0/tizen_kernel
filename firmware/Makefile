@@ -12,7 +12,15 @@ fw-external-y := $(subst ",,$(CONFIG_EXTRA_FIRMWARE))
 # There are three cases to care about:
 # 1. Building kernel with CONFIG_FIRMWARE_IN_KERNEL=y -- $(fw-shipped-y) should
 #    include the firmware files to include, according to .config
+<<<<<<< HEAD
+<<<<<<< HEAD
+# 2. 'make modules_install', which will install firmware for modules, and 
+=======
 # 2. 'make modules_install', which will install firmware for modules, and
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+# 2. 'make modules_install', which will install firmware for modules, and
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #    _also_ for the in-kernel drivers when CONFIG_FIRMWARE_IN_KERNEL=n
 # 3. 'make firmware_install', which installs all firmware, unconditionally.
 
@@ -26,6 +34,11 @@ fw-shipped- += acenic/tg1.bin
 else
 acenic-objs := acenic/tg1.bin acenic/tg2.bin
 endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ifdef CONFIG_MACH_T0
 fw-shipped-$(CONFIG_VIDEO_S5C73M3) += SlimISP_ZK.bin \
@@ -44,6 +57,10 @@ endif
 endif
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fw-shipped-$(CONFIG_3C359) += 3com/3C359.bin
 fw-shipped-$(CONFIG_ACENIC) += $(acenic-objs)
 fw-shipped-$(CONFIG_ADAPTEC_STARFIRE) += adaptec/starfire_rx.bin \
@@ -100,7 +117,14 @@ fw-shipped-$(CONFIG_SERIAL_8250_CS) += cis/MT5634ZLX.cis cis/RS-COM-2P.cis \
 fw-shipped-$(CONFIG_PCMCIA_SMC91C92) += ositech/Xilinx7OD.bin
 fw-shipped-$(CONFIG_SCSI_ADVANSYS) += advansys/mcode.bin advansys/38C1600.bin \
 				      advansys/3550.bin advansys/38C0800.bin
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 fw-shipped-$(CONFIG_SCSI_ISCI) += isci/isci_firmware.bin
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+fw-shipped-$(CONFIG_SCSI_ISCI) += isci/isci_firmware.bin
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fw-shipped-$(CONFIG_SCSI_QLOGIC_1280) += qlogic/1040.bin qlogic/1280.bin \
 					 qlogic/12160.bin
 fw-shipped-$(CONFIG_SCSI_QLOGICPTI) += qlogic/isp1000.bin
@@ -159,6 +183,11 @@ fw-shipped-$(CONFIG_USB_SERIAL_XIRCOM) += keyspan_pda/xircom_pgs.fw
 fw-shipped-$(CONFIG_USB_VICAM) += vicam/firmware.fw
 fw-shipped-$(CONFIG_VIDEO_CPIA2) += cpia2/stv0672_vp4.bin
 fw-shipped-$(CONFIG_YAM) += yam/1200.bin yam/9600.bin
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fw-shipped-$(CONFIG_EPEN_WACOM_G5SP) += epen/W8501.bin epen/W8501_P48.bin
 fw-shipped-$(CONFIG_EPEN_WACOM_G9PM) += epen/W9001_B746.bin epen/W9001_B713.bin epen/W9001_B660.bin
 
@@ -212,6 +241,10 @@ $(warning '$(TSPFIRMWARE_DIRECTORY)' directory dose not exist)
 endif
 
 fw-shipped-$(CONFIG_AUDIENCE_ES305) += audience/es305_fw.bin
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 fw-shipped-all := $(fw-shipped-y) $(fw-shipped-m) $(fw-shipped-)
 
@@ -290,7 +323,15 @@ $(obj)/%: $(obj)/%.ihex | $(objtree)/$(obj)/$$(dir %)
 # Don't depend on ihex2fw if we're installing and it already exists.
 # Putting it after | in the dependencies doesn't seem sufficient when
 # we're installing after a cross-compile, because ihex2fw has dependencies
+<<<<<<< HEAD
+<<<<<<< HEAD
+# on stuff like /usr/lib/gcc/ppc64-redhat-linux/4.3.0/include/stddef.h and 
+=======
 # on stuff like /usr/lib/gcc/ppc64-redhat-linux/4.3.0/include/stddef.h and
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+# on stuff like /usr/lib/gcc/ppc64-redhat-linux/4.3.0/include/stddef.h and
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # thus wants to be rebuilt. Which it can't be, if the prebuilt kernel tree
 # is exported read-only for someone to run 'make install'.
 ifeq ($(INSTALL):$(wildcard $(obj)/ihex2fw),install:$(obj)/ihex2fw)

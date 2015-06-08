@@ -1,7 +1,14 @@
 #ifndef PD_COMMON_H
 #define PD_COMMON_H
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/wait.h>
 #include <linux/list.h>
@@ -141,7 +148,15 @@ struct pd_dvb_adapter {
 	u8			reserved[3];
 
 	/* data for power resume*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct dtv_frontend_properties fe_param;
+=======
 	struct dvb_frontend_parameters fe_param;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct dvb_frontend_parameters fe_param;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* for channel scanning */
 	int		prev_freq;

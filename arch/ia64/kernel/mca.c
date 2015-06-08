@@ -94,8 +94,11 @@
 #include <asm/ptrace.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/sal.h>
 #include <asm/mca.h>
 #include <asm/kexec.h>
@@ -1454,7 +1457,12 @@ out:
 	local_irq_disable();
 
 =======
+<<<<<<< HEAD
+	local_irq_disable();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return IRQ_HANDLED;
 }
 
@@ -1525,8 +1533,13 @@ ia64_mca_cmc_poll (unsigned long dummy)
 	platform_send_ipi(cpumask_first(cpu_online_mask), IA64_CMCP_VECTOR,
 							IA64_IPI_DM_INT, 0);
 =======
+<<<<<<< HEAD
+	platform_send_ipi(cpumask_first(cpu_online_mask), IA64_CMCP_VECTOR,
+							IA64_IPI_DM_INT, 0);
+=======
 	platform_send_ipi(first_cpu(cpu_online_map), IA64_CMCP_VECTOR, IA64_IPI_DM_INT, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1606,8 +1619,13 @@ ia64_mca_cpe_poll (unsigned long dummy)
 	platform_send_ipi(cpumask_first(cpu_online_mask), IA64_CPEP_VECTOR,
 							IA64_IPI_DM_INT, 0);
 =======
+<<<<<<< HEAD
+	platform_send_ipi(cpumask_first(cpu_online_mask), IA64_CPEP_VECTOR,
+							IA64_IPI_DM_INT, 0);
+=======
 	platform_send_ipi(first_cpu(cpu_online_map), IA64_CPEP_VECTOR, IA64_IPI_DM_INT, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif /* CONFIG_ACPI */
@@ -2090,6 +2108,9 @@ ia64_mca_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ia64_mca_late_init
  *
@@ -2106,6 +2127,8 @@ ia64_mca_late_init(void)
 	if (!mca_init)
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 
 /*
@@ -2118,6 +2141,7 @@ ia64_mca_late_init(void)
 void __init ia64_mca_irq_init(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 *  Configure the CMCI/P vector and handler. Interrupts for CMC are
 	 *  per-processor, so AP CMC interrupts are setup in smp_callin() (smpboot.c).
@@ -2138,6 +2162,8 @@ void __init ia64_mca_irq_init(void)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 }
 
 /*
@@ -2156,6 +2182,7 @@ ia64_mca_late_init(void)
 	if (!mca_init)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	register_hotcpu_notifier(&mca_cpu_notifier);
 

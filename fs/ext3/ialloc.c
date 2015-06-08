@@ -13,10 +13,15 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/quotaops.h>
 #include <linux/random.h>
 
 #include "ext3.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/time.h>
 #include <linux/fs.h>
@@ -33,6 +38,7 @@
 #include <asm/byteorder.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xattr.h"
 #include "acl.h"
 
@@ -128,7 +134,11 @@ void ext3_free_inode (handle_t *handle, struct inode * inode)
 <<<<<<< HEAD
 	trace_ext3_free_inode(inode);
 =======
+<<<<<<< HEAD
+	trace_ext3_free_inode(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	is_directory = S_ISDIR(inode->i_mode);
 
@@ -189,6 +199,8 @@ error_return:
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * There are two policies for allocating an inode.  If the new inode is
  * a directory, then a forward search is made for a block group with both
  * free space and a low directory-to-inode ratio; if that fails, then of
@@ -226,6 +238,7 @@ static int find_group_dir(struct super_block *sb, struct inode *parent)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Orlov's allocator for directories.
  *
  * We always try to spread first-level directories.
@@ -422,8 +435,12 @@ struct inode *ext3_new_inode(handle_t *handle, struct inode * dir,
 <<<<<<< HEAD
 			     const struct qstr *qstr, umode_t mode)
 =======
+<<<<<<< HEAD
+			     const struct qstr *qstr, umode_t mode)
+=======
 			     const struct qstr *qstr, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb;
 	struct buffer_head *bitmap_bh = NULL;
@@ -447,7 +464,11 @@ struct inode *ext3_new_inode(handle_t *handle, struct inode * dir,
 <<<<<<< HEAD
 	trace_ext3_request_inode(dir, mode);
 =======
+<<<<<<< HEAD
+	trace_ext3_request_inode(dir, mode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode = new_inode(sb);
 	if (!inode)
 		return ERR_PTR(-ENOMEM);
@@ -460,6 +481,11 @@ struct inode *ext3_new_inode(handle_t *handle, struct inode * dir,
 		group = find_group_orlov(sb, dir);
 	else
 =======
+<<<<<<< HEAD
+	if (S_ISDIR(mode))
+		group = find_group_orlov(sb, dir);
+	else
+=======
 	if (S_ISDIR(mode)) {
 		if (test_opt (sb, OLDALLOC))
 			group = find_group_dir(sb, dir);
@@ -467,6 +493,7 @@ struct inode *ext3_new_inode(handle_t *handle, struct inode * dir,
 			group = find_group_orlov(sb, dir);
 	} else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		group = find_group_other(sb, dir);
 
 	err = -ENOSPC;
@@ -636,7 +663,11 @@ got:
 <<<<<<< HEAD
 	trace_ext3_allocate_inode(inode, dir, mode);
 =======
+<<<<<<< HEAD
+	trace_ext3_allocate_inode(inode, dir, mode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	goto really_out;
 fail:
 	ext3_std_error(sb, err);
@@ -656,8 +687,12 @@ fail_drop:
 <<<<<<< HEAD
 	clear_nlink(inode);
 =======
+<<<<<<< HEAD
+	clear_nlink(inode);
+=======
 	inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_new_inode(inode);
 	iput(inode);
 	brelse(bitmap_bh);

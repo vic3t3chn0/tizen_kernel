@@ -96,7 +96,11 @@ struct clk {
 <<<<<<< HEAD
 	u8			domain;
 =======
+<<<<<<< HEAD
+	u8			domain;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			flags;
 	struct clk              *parent;
 	struct list_head	children; 	/* list of children */
@@ -112,16 +116,22 @@ struct clk {
 #define ALWAYS_ENABLED		BIT(1)
 #define CLK_PSC			BIT(2)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CLK_PLL			BIT(3) /* PLL-derived clock */
 #define PRE_PLL			BIT(4) /* source is before PLL mult/div */
 #define PSC_SWRSTDISABLE	BIT(5) /* Disable state is SwRstDisable */
 #define PSC_FORCE		BIT(6) /* Force module state transtition */
+<<<<<<< HEAD
+=======
 =======
 #define PSC_DSP			BIT(3) /* PSC uses DSP domain, not ARM */
 #define CLK_PLL			BIT(4) /* PLL-derived clock */
 #define PRE_PLL			BIT(5) /* source is before PLL mult/div */
 #define PSC_SWRSTDISABLE	BIT(6) /* Disable state is SwRstDisable */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CLK(dev, con, ck) 	\
 	{			\
@@ -138,7 +148,12 @@ int davinci_set_sysclk_rate(struct clk *clk, unsigned long rate);
 int davinci_set_refclk_rate(unsigned long rate);
 int davinci_simple_set_rate(struct clk *clk, unsigned long rate);
 =======
+<<<<<<< HEAD
+int davinci_set_refclk_rate(unsigned long rate);
+int davinci_simple_set_rate(struct clk *clk, unsigned long rate);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct platform_device davinci_wdt_device;
 extern void davinci_watchdog_reset(struct platform_device *);

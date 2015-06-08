@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -75,6 +79,9 @@ in and out of.
 ************************************************************/
 #define HPI6205_SIZEOF_DATA (16*1024)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct message_buffer_6205 {
 	struct hpi_message message;
@@ -92,12 +99,18 @@ union buffer_6205 {
 	u8 b_data[HPI6205_SIZEOF_DATA];
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct bus_master_interface {
 	u32 host_cmd;
 	u32 dsp_ack;
 	u32 transfer_size_in_bytes;
+<<<<<<< HEAD
+	union buffer_6205 u;
+=======
 <<<<<<< HEAD
 	union buffer_6205 u;
 =======
@@ -107,6 +120,7 @@ struct bus_master_interface {
 		u8 b_data[HPI6205_SIZEOF_DATA];
 	} u;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct controlcache_6205 control_cache;
 	struct async_event_buffer_6205 async_buffer;
 	struct hpi_hostbuffer_status

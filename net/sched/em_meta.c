@@ -406,6 +406,8 @@ META_COLLECTOR(int_sk_alloc)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 META_COLLECTOR(int_sk_route_caps)
 {
 	SKIP_NONLOCAL(skb);
@@ -413,6 +415,7 @@ META_COLLECTOR(int_sk_route_caps)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 META_COLLECTOR(int_sk_hash)
 {
 	SKIP_NONLOCAL(skb);
@@ -535,8 +538,11 @@ static struct meta_ops __meta_ops[TCF_META_TYPE_MAX + 1][TCF_META_ID_MAX + 1] = 
 		[META_ID(SK_ALLOCS)]		= META_FUNC(int_sk_alloc),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		[META_ID(SK_ROUTE_CAPS)]	= META_FUNC(int_sk_route_caps),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		[META_ID(SK_HASH)]		= META_FUNC(int_sk_hash),
 		[META_ID(SK_LINGERTIME)]	= META_FUNC(int_sk_lingertime),
 		[META_ID(SK_ACK_BACKLOG)]	= META_FUNC(int_sk_ack_bl),

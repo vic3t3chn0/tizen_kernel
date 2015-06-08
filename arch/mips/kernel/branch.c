@@ -12,7 +12,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/branch.h>
 #include <asm/cpu.h>
 #include <asm/cpu-features.h>
@@ -22,6 +26,9 @@
 #include <asm/uaccess.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * __compute_return_epc_for_insn - Computes the return address and do emulate
  *				    branch simulation, if required.
@@ -38,6 +45,8 @@ int __compute_return_epc_for_insn(struct pt_regs *regs,
 	unsigned int bit, fcr31, dspcontrol;
 	long epc = regs->cp0_epc;
 	int ret = 0;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Compute the return address and do emulate branch simulation, if required.
@@ -62,6 +71,7 @@ int __compute_return_epc(struct pt_regs *regs)
 		return -EFAULT;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (insn.i_format.opcode) {
 	/*
@@ -88,16 +98,22 @@ int __compute_return_epc(struct pt_regs *regs)
 	 	case bltz_op:
 		case bltzl_op:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((long)regs->regs[insn.i_format.rs] < 0) {
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 				if (insn.i_format.rt == bltzl_op)
 					ret = BRANCH_LIKELY_TAKEN;
 			} else
+<<<<<<< HEAD
+=======
 =======
 			if ((long)regs->regs[insn.i_format.rs] < 0)
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 			else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				epc += 8;
 			regs->cp0_epc = epc;
 			break;
@@ -105,16 +121,22 @@ int __compute_return_epc(struct pt_regs *regs)
 		case bgez_op:
 		case bgezl_op:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((long)regs->regs[insn.i_format.rs] >= 0) {
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 				if (insn.i_format.rt == bgezl_op)
 					ret = BRANCH_LIKELY_TAKEN;
 			} else
+<<<<<<< HEAD
+=======
 =======
 			if ((long)regs->regs[insn.i_format.rs] >= 0)
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 			else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				epc += 8;
 			regs->cp0_epc = epc;
 			break;
@@ -123,16 +145,22 @@ int __compute_return_epc(struct pt_regs *regs)
 		case bltzall_op:
 			regs->regs[31] = epc + 8;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((long)regs->regs[insn.i_format.rs] < 0) {
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 				if (insn.i_format.rt == bltzall_op)
 					ret = BRANCH_LIKELY_TAKEN;
 			} else
+<<<<<<< HEAD
+=======
 =======
 			if ((long)regs->regs[insn.i_format.rs] < 0)
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 			else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				epc += 8;
 			regs->cp0_epc = epc;
 			break;
@@ -141,6 +169,9 @@ int __compute_return_epc(struct pt_regs *regs)
 		case bgezall_op:
 			regs->regs[31] = epc + 8;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((long)regs->regs[insn.i_format.rs] >= 0) {
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 				if (insn.i_format.rt == bgezall_op)
@@ -150,6 +181,8 @@ int __compute_return_epc(struct pt_regs *regs)
 			regs->cp0_epc = epc;
 			break;
 
+<<<<<<< HEAD
+=======
 =======
 			if ((long)regs->regs[insn.i_format.rs] >= 0)
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
@@ -158,6 +191,7 @@ int __compute_return_epc(struct pt_regs *regs)
 			regs->cp0_epc = epc;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case bposge32_op:
 			if (!cpu_has_dsp)
 				goto sigill;
@@ -193,16 +227,22 @@ int __compute_return_epc(struct pt_regs *regs)
 	case beql_op:
 		if (regs->regs[insn.i_format.rs] ==
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    regs->regs[insn.i_format.rt]) {
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 			if (insn.i_format.rt == beql_op)
 				ret = BRANCH_LIKELY_TAKEN;
 		} else
+<<<<<<< HEAD
+=======
 =======
 		    regs->regs[insn.i_format.rt])
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 		else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			epc += 8;
 		regs->cp0_epc = epc;
 		break;
@@ -211,16 +251,22 @@ int __compute_return_epc(struct pt_regs *regs)
 	case bnel_op:
 		if (regs->regs[insn.i_format.rs] !=
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    regs->regs[insn.i_format.rt]) {
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 			if (insn.i_format.rt == bnel_op)
 				ret = BRANCH_LIKELY_TAKEN;
 		} else
+<<<<<<< HEAD
+=======
 =======
 		    regs->regs[insn.i_format.rt])
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 		else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			epc += 8;
 		regs->cp0_epc = epc;
 		break;
@@ -229,16 +275,22 @@ int __compute_return_epc(struct pt_regs *regs)
 	case blezl_op:
 		/* rt field assumed to be zero */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((long)regs->regs[insn.i_format.rs] <= 0) {
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 			if (insn.i_format.rt == bnel_op)
 				ret = BRANCH_LIKELY_TAKEN;
 		} else
+<<<<<<< HEAD
+=======
 =======
 		if ((long)regs->regs[insn.i_format.rs] <= 0)
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 		else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			epc += 8;
 		regs->cp0_epc = epc;
 		break;
@@ -247,16 +299,22 @@ int __compute_return_epc(struct pt_regs *regs)
 	case bgtzl_op:
 		/* rt field assumed to be zero */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((long)regs->regs[insn.i_format.rs] > 0) {
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 			if (insn.i_format.rt == bnel_op)
 				ret = BRANCH_LIKELY_TAKEN;
 		} else
+<<<<<<< HEAD
+=======
 =======
 		if ((long)regs->regs[insn.i_format.rs] > 0)
 			epc = epc + 4 + (insn.i_format.simmediate << 2);
 		else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			epc += 8;
 		regs->cp0_epc = epc;
 		break;
@@ -279,16 +337,22 @@ int __compute_return_epc(struct pt_regs *regs)
 		case 0:	/* bc1f */
 		case 2:	/* bc1fl */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (~fcr31 & (1 << bit)) {
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 				if (insn.i_format.rt == 2)
 					ret = BRANCH_LIKELY_TAKEN;
 			} else
+<<<<<<< HEAD
+=======
 =======
 			if (~fcr31 & (1 << bit))
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 			else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				epc += 8;
 			regs->cp0_epc = epc;
 			break;
@@ -296,16 +360,22 @@ int __compute_return_epc(struct pt_regs *regs)
 		case 1:	/* bc1t */
 		case 3:	/* bc1tl */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (fcr31 & (1 << bit)) {
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 				if (insn.i_format.rt == 3)
 					ret = BRANCH_LIKELY_TAKEN;
 			} else
+<<<<<<< HEAD
+=======
 =======
 			if (fcr31 & (1 << bit))
 				epc = epc + 4 + (insn.i_format.simmediate << 2);
 			else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				epc += 8;
 			regs->cp0_epc = epc;
 			break;
@@ -347,6 +417,9 @@ int __compute_return_epc(struct pt_regs *regs)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 
 sigill:
@@ -376,9 +449,12 @@ int __compute_return_epc(struct pt_regs *regs)
 	}
 
 	return __compute_return_epc_for_insn(regs, insn);
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unaligned:
 	printk("%s: unaligned epc - sending SIGBUS.\n", current->comm);
@@ -387,9 +463,12 @@ unaligned:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 sigill:
 	printk("%s: DSP branch but not DSP ASE - sending SIGBUS.\n", current->comm);
 	force_sig(SIGBUS, current);
 	return -EFAULT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

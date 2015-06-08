@@ -34,8 +34,12 @@ static inline bool is_quota_modification(struct inode *inode, struct iattr *ia)
 <<<<<<< HEAD
 extern __printf(3, 4)
 =======
+<<<<<<< HEAD
+extern __printf(3, 4)
+=======
 extern __attribute__((format (printf, 3, 4)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __quota_error(struct super_block *sb, const char *func,
 		   const char *fmt, ...);
 

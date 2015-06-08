@@ -40,7 +40,12 @@
  *	Harout S. Hedeshian		:	procfs flag to toggle automatic
  *						addition of prefix route
 =======
+<<<<<<< HEAD
+ *	Harout S. Hedeshian		:	procfs flag to toggle automatic
+ *						addition of prefix route
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/errno.h>
@@ -95,7 +100,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Set to 3 to get tracing... */
 #define ACONF_DEBUG 2
@@ -208,7 +217,11 @@ static struct ipv6_devconf ipv6_devconf __read_mostly = {
 <<<<<<< HEAD
 	.accept_ra_prefix_route = 1,
 =======
+<<<<<<< HEAD
+	.accept_ra_prefix_route = 1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct ipv6_devconf ipv6_devconf_dflt __read_mostly = {
@@ -246,7 +259,11 @@ static struct ipv6_devconf ipv6_devconf_dflt __read_mostly = {
 <<<<<<< HEAD
 	.accept_ra_prefix_route = 1,
 =======
+<<<<<<< HEAD
+	.accept_ra_prefix_route = 1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* IPv6 Wildcard Address and Loopback Address defined by RFC2553 */
@@ -395,9 +412,14 @@ static struct inet6_dev * ipv6_add_dev(struct net_device *dev)
 		dev_put(dev);
 		kfree(ndev);
 =======
+<<<<<<< HEAD
+		dev_put(dev);
+		kfree(ndev);
+=======
 		ndev->dead = 1;
 		in6_dev_finish_destroy(ndev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 
@@ -459,8 +481,12 @@ static struct inet6_dev * ipv6_add_dev(struct net_device *dev)
 <<<<<<< HEAD
 	if (ndev->cnf.forwarding && (dev->flags & IFF_MULTICAST))
 =======
+<<<<<<< HEAD
+	if (ndev->cnf.forwarding && (dev->flags & IFF_MULTICAST))
+=======
 	if (ndev->cnf.forwarding && dev && (dev->flags & IFF_MULTICAST))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ipv6_dev_mc_inc(dev, &in6addr_linklocal_allrouters);
 
 	return ndev;
@@ -522,8 +548,13 @@ static void addrconf_forward_change(struct net *net, __s32 newf)
 	rcu_read_lock();
 	for_each_netdev_rcu(net, dev) {
 =======
+<<<<<<< HEAD
+	rcu_read_lock();
+	for_each_netdev_rcu(net, dev) {
+=======
 	for_each_netdev(net, dev) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		idev = __in6_dev_get(dev);
 		if (idev) {
 			int changed = (!idev->cnf.forwarding) ^ (!newf);
@@ -533,6 +564,9 @@ static void addrconf_forward_change(struct net *net, __s32 newf)
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 }
 
@@ -561,6 +595,8 @@ static int addrconf_fixup_forwarding(struct ctl_table *table, int *p, int newf)
 	rtnl_unlock();
 
 	if (newf)
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -588,6 +624,7 @@ static int addrconf_fixup_forwarding(struct ctl_table *table, int *p, int old)
 
 	if (*p)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rt6_purge_dflt_routers(net);
 	return 1;
 }
@@ -654,8 +691,12 @@ ipv6_add_addr(struct inet6_dev *idev, const struct in6_addr *addr, int pfxlen,
 <<<<<<< HEAD
 	      int scope, u32 flags,  u32 valid_lft, u32 prefered_lft)
 =======
+<<<<<<< HEAD
+	      int scope, u32 flags,  u32 valid_lft, u32 prefered_lft)
+=======
 	      int scope, u32 flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inet6_ifaddr *ifa = NULL;
 	struct rt6_info *rt;
@@ -700,8 +741,12 @@ ipv6_add_addr(struct inet6_dev *idev, const struct in6_addr *addr, int pfxlen,
 <<<<<<< HEAD
 	rt = addrconf_dst_alloc(idev, addr, false);
 =======
+<<<<<<< HEAD
+	rt = addrconf_dst_alloc(idev, addr, false);
+=======
 	rt = addrconf_dst_alloc(idev, addr, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(rt)) {
 		err = PTR_ERR(rt);
 		goto out;
@@ -710,8 +755,12 @@ ipv6_add_addr(struct inet6_dev *idev, const struct in6_addr *addr, int pfxlen,
 <<<<<<< HEAD
 	ifa->addr = *addr;
 =======
+<<<<<<< HEAD
+	ifa->addr = *addr;
+=======
 	ipv6_addr_copy(&ifa->addr, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_init(&ifa->lock);
 	spin_lock_init(&ifa->state_lock);
@@ -725,11 +774,18 @@ ipv6_add_addr(struct inet6_dev *idev, const struct in6_addr *addr, int pfxlen,
 	ifa->valid_lft = valid_lft;
 	ifa->prefered_lft = prefered_lft;
 =======
+<<<<<<< HEAD
+	ifa->valid_lft = valid_lft;
+	ifa->prefered_lft = prefered_lft;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ifa->cstamp = ifa->tstamp = jiffies;
 
 	ifa->rt = rt;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/*
@@ -743,6 +799,7 @@ ipv6_add_addr(struct inet6_dev *idev, const struct in6_addr *addr, int pfxlen,
 		ifa->flags &= ~IFA_F_OPTIMISTIC;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ifa->idev = idev;
 	in6_dev_hold(idev);
 	/* For caller */
@@ -893,9 +950,13 @@ static void ipv6_del_addr(struct inet6_ifaddr *ifp)
 <<<<<<< HEAD
 				rt6_set_expires(rt, expires);
 =======
+<<<<<<< HEAD
+				rt6_set_expires(rt, expires);
+=======
 				rt->rt6i_expires = expires;
 				rt->rt6i_flags |= RTF_EXPIRES;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 		dst_release(&rt->dst);
@@ -999,6 +1060,9 @@ retry:
 		addr_flags |= IFA_F_OPTIMISTIC;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ift = !max_addresses ||
 	      ipv6_count_addresses(idev) < max_addresses ?
 		ipv6_add_addr(idev, &addr, tmp_plen,
@@ -1006,12 +1070,15 @@ retry:
 			      addr_flags,
 			      tmp_valid_lft, tmp_prefered_lft) : NULL;
 	if (!ift || IS_ERR(ift)) {
+<<<<<<< HEAD
+=======
 =======
 	ift = ipv6_add_addr(idev, &addr, tmp_plen,
 			    ipv6_addr_type(&addr)&IPV6_ADDR_SCOPE_MASK,
 			    addr_flags);
 	if (IS_ERR(ift)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		in6_ifa_put(ifp);
 		in6_dev_put(idev);
 		printk(KERN_INFO
@@ -1025,9 +1092,12 @@ retry:
 	ift->ifpub = ifp;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ift->valid_lft = tmp_valid_lft;
 	ift->prefered_lft = tmp_prefered_lft;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ift->cstamp = now;
 	ift->tstamp = tmp_tstamp;
 	spin_unlock_bh(&ift->lock);
@@ -1329,13 +1399,19 @@ try_nextdev:
 <<<<<<< HEAD
 	*saddr = hiscore->ifa->addr;
 =======
+<<<<<<< HEAD
+	*saddr = hiscore->ifa->addr;
+=======
 	ipv6_addr_copy(saddr, &hiscore->ifa->addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	in6_ifa_put(hiscore->ifa);
 	return 0;
 }
 EXPORT_SYMBOL(ipv6_dev_get_saddr);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 int __ipv6_get_lladdr(struct inet6_dev *idev, struct in6_addr *addr,
@@ -1356,6 +1432,7 @@ int __ipv6_get_lladdr(struct inet6_dev *idev, struct in6_addr *addr,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ipv6_get_lladdr(struct net_device *dev, struct in6_addr *addr,
 		    unsigned char banned_flags)
 {
@@ -1366,6 +1443,9 @@ int ipv6_get_lladdr(struct net_device *dev, struct in6_addr *addr,
 	idev = __in6_dev_get(dev);
 	if (idev) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct inet6_ifaddr *ifp;
 
 		read_lock_bh(&idev->lock);
@@ -1377,10 +1457,13 @@ int ipv6_get_lladdr(struct net_device *dev, struct in6_addr *addr,
 				break;
 			}
 		}
+<<<<<<< HEAD
+=======
 =======
 		read_lock_bh(&idev->lock);
 		err = __ipv6_get_lladdr(idev, addr, banned_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		read_unlock_bh(&idev->lock);
 	}
 	rcu_read_unlock();
@@ -1602,7 +1685,12 @@ static void addrconf_join_anycast(struct inet6_ifaddr *ifp)
 	if (ifp->prefix_len == 127) /* RFC 6164 */
 		return;
 =======
+<<<<<<< HEAD
+	if (ifp->prefix_len == 127) /* RFC 6164 */
+		return;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ipv6_addr_prefix(&addr, &ifp->addr, ifp->prefix_len);
 	if (ipv6_addr_any(&addr))
 		return;
@@ -1616,7 +1704,12 @@ static void addrconf_leave_anycast(struct inet6_ifaddr *ifp)
 	if (ifp->prefix_len == 127) /* RFC 6164 */
 		return;
 =======
+<<<<<<< HEAD
+	if (ifp->prefix_len == 127) /* RFC 6164 */
+		return;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ipv6_addr_prefix(&addr, &ifp->addr, ifp->prefix_len);
 	if (ipv6_addr_any(&addr))
 		return;
@@ -1698,13 +1791,19 @@ static int addrconf_ifid_sit(u8 *eui, struct net_device *dev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int addrconf_ifid_gre(u8 *eui, struct net_device *dev)
 {
 	return __ipv6_isatap_ifid(eui, *(__be32 *)dev->dev_addr);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ipv6_generate_eui64(u8 *eui, struct net_device *dev)
 {
 	switch (dev->type) {
@@ -1722,7 +1821,12 @@ static int ipv6_generate_eui64(u8 *eui, struct net_device *dev)
 	case ARPHRD_IPGRE:
 		return addrconf_ifid_gre(eui, dev);
 =======
+<<<<<<< HEAD
+	case ARPHRD_IPGRE:
+		return addrconf_ifid_gre(eui, dev);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ARPHRD_RAWIP: {
 		struct in6_addr lladdr;
 
@@ -1852,8 +1956,12 @@ addrconf_prefix_route(struct in6_addr *pfx, int plen, struct net_device *dev,
 <<<<<<< HEAD
 	cfg.fc_dst = *pfx;
 =======
+<<<<<<< HEAD
+	cfg.fc_dst = *pfx;
+=======
 	ipv6_addr_copy(&cfg.fc_dst, pfx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Prevent useless cloning on PtP SIT.
 	   This thing is done here expecting that the whole
@@ -1868,6 +1976,9 @@ addrconf_prefix_route(struct in6_addr *pfx, int plen, struct net_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct rt6_info *addrconf_get_prefix_route(const struct in6_addr *pfx,
 						  int plen,
@@ -1902,8 +2013,11 @@ out:
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Create "default" multicast route to the interface */
 
 static void addrconf_add_mroute(struct net_device *dev)
@@ -1965,8 +2079,13 @@ static struct inet6_dev *addrconf_add_dev(struct net_device *dev)
 	if (!(dev->flags & IFF_LOOPBACK))
 		addrconf_add_mroute(dev);
 =======
+<<<<<<< HEAD
+	if (!(dev->flags & IFF_LOOPBACK))
+		addrconf_add_mroute(dev);
+=======
 	addrconf_add_mroute(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Add link local route */
 	addrconf_add_lroute(dev);
@@ -1976,8 +2095,12 @@ static struct inet6_dev *addrconf_add_dev(struct net_device *dev)
 <<<<<<< HEAD
 void addrconf_prefix_rcv(struct net_device *dev, u8 *opt, int len, bool sllao)
 =======
+<<<<<<< HEAD
+void addrconf_prefix_rcv(struct net_device *dev, u8 *opt, int len, bool sllao)
+=======
 void addrconf_prefix_rcv(struct net_device *dev, u8 *opt, int len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct prefix_info *pinfo;
 	__u32 valid_lft;
@@ -2043,6 +2166,9 @@ void addrconf_prefix_rcv(struct net_device *dev, u8 *opt, int len)
 			rt_expires *= HZ;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rt = addrconf_get_prefix_route(&pinfo->prefix,
 					       pinfo->prefix_len,
 					       dev,
@@ -2050,12 +2176,15 @@ void addrconf_prefix_rcv(struct net_device *dev, u8 *opt, int len)
 					       RTF_GATEWAY | RTF_DEFAULT);
 
 		if (rt) {
+<<<<<<< HEAD
+=======
 =======
 		rt = rt6_lookup(net, &pinfo->prefix, NULL,
 				dev->ifindex, 1);
 
 		if (rt && addrconf_is_prefix_route(rt)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Autoconf prefix route */
 			if (valid_lft == 0) {
 				ip6_del_rt(rt);
@@ -2067,12 +2196,18 @@ void addrconf_prefix_rcv(struct net_device *dev, u8 *opt, int len)
 			} else {
 				rt6_clean_expires(rt);
 =======
+<<<<<<< HEAD
+				rt6_set_expires(rt, jiffies + rt_expires);
+			} else {
+				rt6_clean_expires(rt);
+=======
 				rt->rt6i_expires = jiffies + rt_expires;
 				rt->rt6i_flags |= RTF_EXPIRES;
 			} else {
 				rt->rt6i_flags &= ~RTF_EXPIRES;
 				rt->rt6i_expires = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		} else if (valid_lft) {
 			clock_t expires = 0;
@@ -2083,14 +2218,20 @@ void addrconf_prefix_rcv(struct net_device *dev, u8 *opt, int len)
 				expires = jiffies_to_clock_t(rt_expires);
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dev->ip6_ptr->cnf.accept_ra_prefix_route) {
 				addrconf_prefix_route(&pinfo->prefix,
 					pinfo->prefix_len, dev, expires, flags);
 			}
+<<<<<<< HEAD
+=======
 =======
 			addrconf_prefix_route(&pinfo->prefix, pinfo->prefix_len,
 					      dev, expires, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if (rt)
 			dst_release(&rt->dst);
@@ -2131,8 +2272,12 @@ ok:
 <<<<<<< HEAD
 			    !net->ipv6.devconf_all->forwarding && sllao)
 =======
+<<<<<<< HEAD
+			    !net->ipv6.devconf_all->forwarding && sllao)
+=======
 			    !net->ipv6.devconf_all->forwarding)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				addr_flags = IFA_F_OPTIMISTIC;
 #endif
 
@@ -2147,8 +2292,13 @@ ok:
 						    addr_flags, valid_lft,
 						    prefered_lft);
 =======
+<<<<<<< HEAD
+						    addr_flags, valid_lft,
+						    prefered_lft);
+=======
 						    addr_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (!ifp || IS_ERR(ifp)) {
 				in6_dev_put(in6_dev);
@@ -2159,8 +2309,13 @@ ok:
 			update_lft = 0;
 			create = 1;
 =======
+<<<<<<< HEAD
+			update_lft = 0;
+			create = 1;
+=======
 			update_lft = create = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ifp->cstamp = jiffies;
 			addrconf_dad_start(ifp, RTF_ADDRCONF|RTF_PREFIX_RT);
 		}
@@ -2183,8 +2338,12 @@ ok:
 <<<<<<< HEAD
 			if (!update_lft && !create && stored_lft) {
 =======
+<<<<<<< HEAD
+			if (!update_lft && !create && stored_lft) {
+=======
 			if (!update_lft && stored_lft) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (valid_lft > MIN_VALID_LIFETIME ||
 				    valid_lft > stored_lft)
 					update_lft = 1;
@@ -2430,10 +2589,15 @@ static int inet6_addr_add(struct net *net, int ifindex, const struct in6_addr *p
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ifp = ipv6_add_addr(idev, pfx, plen, scope, ifa_flags,
 			    valid_lft, prefered_lft);
 
 	if (!IS_ERR(ifp)) {
+<<<<<<< HEAD
+=======
 =======
 	ifp = ipv6_add_addr(idev, pfx, plen, scope, ifa_flags);
 
@@ -2445,6 +2609,7 @@ static int inet6_addr_add(struct net *net, int ifindex, const struct in6_addr *p
 		spin_unlock_bh(&ifp->lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		addrconf_prefix_route(&ifp->addr, ifp->prefix_len, dev,
 				      expires, flags);
 		/*
@@ -2546,8 +2711,13 @@ static void add_addr(struct inet6_dev *idev, const struct in6_addr *addr,
 	ifp = ipv6_add_addr(idev, addr, plen,
 			    scope, IFA_F_PERMANENT, 0, 0);
 =======
+<<<<<<< HEAD
+	ifp = ipv6_add_addr(idev, addr, plen,
+			    scope, IFA_F_PERMANENT, 0, 0);
+=======
 	ifp = ipv6_add_addr(idev, addr, plen, scope, IFA_F_PERMANENT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!IS_ERR(ifp)) {
 		spin_lock_bh(&ifp->lock);
 		ifp->flags &= ~IFA_F_TENTATIVE;
@@ -2644,8 +2814,12 @@ static void addrconf_add_linklocal(struct inet6_dev *idev, const struct in6_addr
 <<<<<<< HEAD
 	ifp = ipv6_add_addr(idev, addr, 64, IFA_LINK, addr_flags, 0, 0);
 =======
+<<<<<<< HEAD
+	ifp = ipv6_add_addr(idev, addr, 64, IFA_LINK, addr_flags, 0, 0);
+=======
 	ifp = ipv6_add_addr(idev, addr, 64, IFA_LINK, addr_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!IS_ERR(ifp)) {
 		addrconf_prefix_route(&ifp->addr, ifp->prefix_len, idev->dev, 0, 0);
 		addrconf_dad_start(ifp, 0);
@@ -2720,6 +2894,9 @@ static void addrconf_sit_config(struct net_device *dev)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_NET_IPGRE) || defined(CONFIG_NET_IPGRE_MODULE)
 static void addrconf_gre_config(struct net_device *dev)
 {
@@ -2743,8 +2920,11 @@ static void addrconf_gre_config(struct net_device *dev)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int
 ipv6_inherit_linklocal(struct inet6_dev *idev, struct net_device *link_dev)
 {
@@ -2862,13 +3042,19 @@ static int addrconf_notify(struct notifier_block *this, unsigned long event,
 			break;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_NET_IPGRE) || defined(CONFIG_NET_IPGRE_MODULE)
 		case ARPHRD_IPGRE:
 			addrconf_gre_config(dev);
 			break;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case ARPHRD_TUNNEL6:
 			addrconf_ip6_tnl_config(dev);
 			break;
@@ -3000,8 +3186,12 @@ static int addrconf_ifdown(struct net_device *dev, int how)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(dev->ip6_ptr, NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(dev->ip6_ptr, NULL);
+=======
 		rcu_assign_pointer(dev->ip6_ptr, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Step 1.5: remove snmp6 entry */
 		snmp6_unregister_dev(idev);
@@ -3265,12 +3455,17 @@ static void addrconf_dad_completed(struct inet6_ifaddr *ifp)
 	ipv6_ifa_notify(RTM_NEWADDR, ifp);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If added prefix is link local and we are prepared to process
 	   router advertisements, start sending router solicitations.
 	 */
 
 	if (((ifp->idev->cnf.accept_ra == 1 && !ifp->idev->cnf.forwarding) ||
 	     ifp->idev->cnf.accept_ra == 2) &&
+<<<<<<< HEAD
+=======
 =======
 	/* If added prefix is link local and forwarding is off,
 	   start sending router solicitations.
@@ -3279,6 +3474,7 @@ static void addrconf_dad_completed(struct inet6_ifaddr *ifp)
 	if ((ifp->idev->cnf.forwarding == 0 ||
 	     ifp->idev->cnf.forwarding == 2) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    ifp->idev->cnf.rtr_solicits > 0 &&
 	    (dev->flags&IFF_LOOPBACK) == 0 &&
 	    (ipv6_addr_type(&ifp->addr) & IPV6_ADDR_LINKLOCAL)) {
@@ -3317,20 +3513,29 @@ struct if6_iter_state {
 	struct seq_net_private p;
 	int bucket;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int offset;
 };
 
 static struct inet6_ifaddr *if6_get_first(struct seq_file *seq, loff_t pos)
+<<<<<<< HEAD
+=======
 =======
 };
 
 static struct inet6_ifaddr *if6_get_first(struct seq_file *seq)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inet6_ifaddr *ifa = NULL;
 	struct if6_iter_state *state = seq->private;
 	struct net *net = seq_file_net(seq);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int p = 0;
 
 	/* initial bucket if pos is 0 */
@@ -3356,6 +3561,8 @@ static struct inet6_ifaddr *if6_get_first(struct seq_file *seq)
 		/* prepare for next bucket */
 		state->offset = 0;
 		p = 0;
+<<<<<<< HEAD
+=======
 =======
 
 	for (state->bucket = 0; state->bucket < IN6_ADDR_HSIZE; ++state->bucket) {
@@ -3365,6 +3572,7 @@ static struct inet6_ifaddr *if6_get_first(struct seq_file *seq)
 			if (net_eq(dev_net(ifa->idev->dev), net))
 				return ifa;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return NULL;
 }
@@ -3377,6 +3585,9 @@ static struct inet6_ifaddr *if6_get_next(struct seq_file *seq,
 	struct hlist_node *n = &ifa->addr_lst;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_continue_rcu_bh(ifa, n, addr_lst) {
 		state->offset++;
 		if (net_eq(dev_net(ifa->idev->dev), net))
@@ -3388,6 +3599,8 @@ static struct inet6_ifaddr *if6_get_next(struct seq_file *seq,
 		hlist_for_each_entry_rcu_bh(ifa, n,
 				     &inet6_addr_lst[state->bucket], addr_lst) {
 			state->offset++;
+<<<<<<< HEAD
+=======
 =======
 	hlist_for_each_entry_continue_rcu_bh(ifa, n, addr_lst)
 		if (net_eq(dev_net(ifa->idev->dev), net))
@@ -3397,6 +3610,7 @@ static struct inet6_ifaddr *if6_get_next(struct seq_file *seq,
 		hlist_for_each_entry_rcu_bh(ifa, n,
 				     &inet6_addr_lst[state->bucket], addr_lst) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (net_eq(dev_net(ifa->idev->dev), net))
 				return ifa;
 		}
@@ -3405,6 +3619,8 @@ static struct inet6_ifaddr *if6_get_next(struct seq_file *seq,
 	return NULL;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct inet6_ifaddr *if6_get_idx(struct seq_file *seq, loff_t pos)
@@ -3418,6 +3634,7 @@ static struct inet6_ifaddr *if6_get_idx(struct seq_file *seq, loff_t pos)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void *if6_seq_start(struct seq_file *seq, loff_t *pos)
 	__acquires(rcu_bh)
 {
@@ -3425,8 +3642,12 @@ static void *if6_seq_start(struct seq_file *seq, loff_t *pos)
 <<<<<<< HEAD
 	return if6_get_first(seq, *pos);
 =======
+<<<<<<< HEAD
+	return if6_get_first(seq, *pos);
+=======
 	return if6_get_idx(seq, *pos);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void *if6_seq_next(struct seq_file *seq, void *v, loff_t *pos)
@@ -4552,6 +4773,9 @@ int addrconf_sysctl_forward(ctl_table *ctl, int write,
 	int val = *valp;
 	loff_t pos = *ppos;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctl_table lctl;
 	int ret;
 
@@ -4563,11 +4787,14 @@ int addrconf_sysctl_forward(ctl_table *ctl, int write,
 	lctl.data = &val;
 
 	ret = proc_dointvec(&lctl, write, buffer, lenp, ppos);
+<<<<<<< HEAD
+=======
 =======
 	int ret;
 
 	ret = proc_dointvec(ctl, write, buffer, lenp, ppos);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (write)
 		ret = addrconf_fixup_forwarding(ctl, valp, val);
@@ -4606,6 +4833,9 @@ static void addrconf_disable_change(struct net *net, __s32 newf)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int addrconf_disable_ipv6(struct ctl_table *table, int *p, int newf)
 {
 	struct net *net;
@@ -4627,6 +4857,8 @@ static int addrconf_disable_ipv6(struct ctl_table *table, int *p, int newf)
 		net->ipv6.devconf_dflt->disable_ipv6 = newf;
 		addrconf_disable_change(net, newf);
 	} else if ((!newf) ^ (!old))
+<<<<<<< HEAD
+=======
 =======
 static int addrconf_disable_ipv6(struct ctl_table *table, int *p, int old)
 {
@@ -4649,6 +4881,7 @@ static int addrconf_disable_ipv6(struct ctl_table *table, int *p, int old)
 		addrconf_disable_change(net, newf);
 	} else if ((!*p) ^ (!old))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_disable_change((struct inet6_dev *)table->extra1);
 
 	rtnl_unlock();
@@ -4663,6 +4896,9 @@ int addrconf_sysctl_disable(ctl_table *ctl, int write,
 	int val = *valp;
 	loff_t pos = *ppos;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctl_table lctl;
 	int ret;
 
@@ -4674,11 +4910,14 @@ int addrconf_sysctl_disable(ctl_table *ctl, int write,
 	lctl.data = &val;
 
 	ret = proc_dointvec(&lctl, write, buffer, lenp, ppos);
+<<<<<<< HEAD
+=======
 =======
 	int ret;
 
 	ret = proc_dointvec(ctl, write, buffer, lenp, ppos);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (write)
 		ret = addrconf_disable_ipv6(ctl, valp, val);
@@ -4911,6 +5150,9 @@ static struct addrconf_sysctl_table
 		},
 		{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.procname	= "accept_ra_prefix_route",
 			.data		= &ipv6_devconf.accept_ra_prefix_route,
 			.maxlen		= sizeof(int),
@@ -4918,8 +5160,11 @@ static struct addrconf_sysctl_table
 			.proc_handler	= proc_dointvec,
 		},
 		{
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* sentinel */
 		}
 	},
@@ -5013,6 +5258,9 @@ static void addrconf_sysctl_unregister(struct inet6_dev *idev)
 static int __net_init addrconf_init_net(struct net *net)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	struct ipv6_devconf *all, *dflt;
 
@@ -5033,6 +5281,8 @@ static int __net_init addrconf_init_net(struct net *net)
 		dflt->autoconf = ipv6_defaults.autoconf;
 		dflt->disable_ipv6 = ipv6_defaults.disable_ipv6;
 	}
+<<<<<<< HEAD
+=======
 =======
 	int err = -ENOMEM;
 	struct ipv6_devconf *all, *dflt;
@@ -5049,6 +5299,7 @@ static int __net_init addrconf_init_net(struct net *net)
 	dflt->autoconf = ipv6_defaults.autoconf;
 	dflt->disable_ipv6 = ipv6_defaults.disable_ipv6;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	net->ipv6.devconf_all = all;
 	net->ipv6.devconf_dflt = dflt;

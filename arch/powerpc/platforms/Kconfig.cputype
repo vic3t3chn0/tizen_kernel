@@ -3,8 +3,11 @@ config PPC64
 	default n
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	select PPC_HAVE_PMU_SUPPORT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option selects whether a 32-bit or a 64-bit kernel
 	  will be built.
@@ -76,7 +79,12 @@ config PPC_BOOK3S_64
 	select PPC_HAVE_PMU_SUPPORT
 	select SYS_SUPPORTS_HUGETLBFS
 =======
+<<<<<<< HEAD
+	select PPC_HAVE_PMU_SUPPORT
+	select SYS_SUPPORTS_HUGETLBFS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config PPC_BOOK3E_64
 	bool "Embedded processors"
@@ -191,7 +199,11 @@ config PPC_FSL_BOOK3E
 <<<<<<< HEAD
 	select SYS_SUPPORTS_HUGETLBFS if PHYS_64BIT || PPC64
 =======
+<<<<<<< HEAD
+	select SYS_SUPPORTS_HUGETLBFS if PHYS_64BIT || PPC64
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default y if FSL_BOOKE
 
 config PTE_64BIT
@@ -249,8 +261,12 @@ config PPC_ICSWX
 <<<<<<< HEAD
 	depends on POWER4 || PPC_A2
 =======
+<<<<<<< HEAD
+	depends on POWER4 || PPC_A2
+=======
 	depends on POWER4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default n
 	---help---
 
@@ -267,6 +283,9 @@ config PPC_ICSWX
 	  If in doubt, say N here.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config PPC_ICSWX_PID
 	bool "icswx requires direct PID management"
 	depends on PPC_ICSWX && POWER4
@@ -286,8 +305,11 @@ config PPC_ICSWX_USE_SIGILL
 
 	  If in doubt, say N here.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SPE
 	bool "SPE Support"
 	depends on E200 || (E500 && !PPC_E500MC)
@@ -322,6 +344,8 @@ config PPC_MMU_NOHASH
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config PPC_MMU_NOHASH_32
 	def_bool y
 	depends on PPC_MMU_NOHASH && PPC32
@@ -331,6 +355,7 @@ config PPC_MMU_NOHASH_64
 	depends on PPC_MMU_NOHASH && PPC64
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config PPC_BOOK3E_MMU
 	def_bool y
 	depends on FSL_BOOKE || PPC_BOOK3E
@@ -340,8 +365,12 @@ config PPC_MM_SLICES
 <<<<<<< HEAD
 	default y if (!PPC_FSL_BOOK3E && PPC64 && HUGETLB_PAGE) || (PPC_STD_MMU_64 && PPC_64K_PAGES)
 =======
+<<<<<<< HEAD
+	default y if (!PPC_FSL_BOOK3E && PPC64 && HUGETLB_PAGE) || (PPC_STD_MMU_64 && PPC_64K_PAGES)
+=======
 	default y if HUGETLB_PAGE || (PPC_STD_MMU_64 && PPC_64K_PAGES)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default n
 
 config VIRT_CPU_ACCOUNTING

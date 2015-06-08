@@ -2,6 +2,15 @@
 #define _VGATYPES_
 
 #include <linux/ioctl.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/fb.h>	/* for struct fb_var_screeninfo for sis.h */
+#include "../../video/sis/vgatypes.h"
+#include "../../video/sis/sis.h"		/* for LCD_TYPE */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef XGI_VB_CHIP_TYPE
 enum XGI_VB_CHIP_TYPE {
@@ -19,6 +28,18 @@ enum XGI_VB_CHIP_TYPE {
 };
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#define XGI_LCD_TYPE
+/* Since the merge with video/sis the LCD_TYPEs are used from
+ drivers/video/sis/sis.h . Nevertheless we keep this (for the moment) for
+ future reference until the code is merged completely and we are sure
+ nothing of this should be added to the sis.h header */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef XGI_LCD_TYPE
 enum XGI_LCD_TYPE {
 	LCD_INVALID = 0,
@@ -47,18 +68,37 @@ enum XGI_LCD_TYPE {
 };
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_DSReg {
 	unsigned char jIdx;
 	unsigned char jVal;
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct xgi_hw_device_info {
 	unsigned long ulExternalChip; /* NO VB or other video bridge*/
 				      /* if ujVBChipID = VB_CHIP_UNKNOWN, */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	void __iomem *pjVideoMemoryAddress;/* base virtual memory address */
+=======
 	unsigned char *pjVirtualRomBase; /* ROM image */
 
 	unsigned char *pjVideoMemoryAddress;/* base virtual memory address */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned char *pjVirtualRomBase; /* ROM image */
+
+	unsigned char *pjVideoMemoryAddress;/* base virtual memory address */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    /* of Linear VGA memory */
 
 	unsigned long ulVideoMemorySize; /* size, in bytes, of the
@@ -78,10 +118,19 @@ struct xgi_hw_device_info {
 				  /* "XGI_VB_CHIP_TYPE" */
 
 	unsigned long ulCRT2LCDType; /* defined in the data structure type */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned char(*pQueryVGAConfigSpace)(struct xgi_hw_device_info *,
 					    unsigned long, unsigned long,
 					    unsigned long *);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Additional IOCTL for communication xgifb <> X driver        */

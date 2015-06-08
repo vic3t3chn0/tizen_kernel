@@ -22,7 +22,14 @@
  *
  * Authors: Dave Airlie
  *          Alex Deucher
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *          Jerome Glisse
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *          Jerome Glisse
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #include "drmP.h"
 #include "radeon_drm.h"
@@ -64,12 +71,27 @@ static int radeon_process_aux_ch(struct radeon_i2c_chan *chan,
 
 	memset(&args, 0, sizeof(args));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	base = (unsigned char *)(rdev->mode_info.atom_context->scratch + 1);
+
+	memcpy(base, send, send_bytes);
+
+	args.v1.lpAuxRequest = 0 + 4;
+	args.v1.lpDataOut = 16 + 4;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	base = (unsigned char *)rdev->mode_info.atom_context->scratch;
 
 	memcpy(base, send, send_bytes);
 
 	args.v1.lpAuxRequest = 0;
 	args.v1.lpDataOut = 16;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	args.v1.ucDataOutLen = 0;
 	args.v1.ucChannelID = chan->rec.i2c_id;
 	args.v1.ucDelay = delay / 10;
@@ -406,10 +428,25 @@ static void dp_get_adjust_train(u8 link_status[DP_LINK_STATUS_SIZE],
 /* get bpc from the EDID */
 static int convert_bpc_to_bpp(int bpc)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if 0
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bpc == 0)
 		return 24;
 	else
 		return bpc * 3;
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+	return 24;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* get the max pix clock supported by the link rate and lane num */
@@ -635,6 +672,13 @@ static bool radeon_dp_get_link_status(struct radeon_connector *radeon_connector,
 	ret = radeon_dp_aux_native_read(radeon_connector, DP_LANE0_1_STATUS,
 					link_status, DP_LINK_STATUS_SIZE, 100);
 	if (ret <= 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		DRM_ERROR("displayport link status failed\n");
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return false;
 	}
 
@@ -813,10 +857,21 @@ static int radeon_dp_link_train_cr(struct radeon_dp_link_train_info *dp_info)
 		else
 			mdelay(dp_info->rd_interval * 4);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!radeon_dp_get_link_status(dp_info->radeon_connector, dp_info->link_status))
+			break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!radeon_dp_get_link_status(dp_info->radeon_connector, dp_info->link_status)) {
 			DRM_ERROR("displayport link status failed\n");
 			break;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (dp_clock_recovery_ok(dp_info->link_status, dp_info->dp_lane_count)) {
 			clock_recovery = true;
@@ -878,10 +933,21 @@ static int radeon_dp_link_train_ce(struct radeon_dp_link_train_info *dp_info)
 		else
 			mdelay(dp_info->rd_interval * 4);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!radeon_dp_get_link_status(dp_info->radeon_connector, dp_info->link_status))
+			break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!radeon_dp_get_link_status(dp_info->radeon_connector, dp_info->link_status)) {
 			DRM_ERROR("displayport link status failed\n");
 			break;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (dp_channel_eq_ok(dp_info->link_status, dp_info->dp_lane_count)) {
 			channel_eq = true;

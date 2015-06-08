@@ -169,7 +169,15 @@ void rt2x00mac_tx(struct ieee80211_hw *hw, struct sk_buff *skb)
 	rt2x00queue_pause_queue(queue);
 	spin_unlock(&queue->tx_lock);
  exit_free_skb:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ieee80211_free_txskb(hw, skb);
+=======
 	dev_kfree_skb_any(skb);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_kfree_skb_any(skb);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(rt2x00mac_tx);
 
@@ -503,6 +511,13 @@ int rt2x00mac_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 	struct rt2x00lib_crypto crypto;
 	static const u8 bcast_addr[ETH_ALEN] =
 		{ 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, };
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct rt2x00_sta *sta_priv = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!test_bit(DEVICE_STATE_PRESENT, &rt2x00dev->flags))
 		return 0;
@@ -513,6 +528,12 @@ int rt2x00mac_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 
 	memset(&crypto, 0, sizeof(crypto));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	crypto.bssidx = rt2x00lib_get_bssidx(rt2x00dev, vif);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * When in STA mode, bssidx is always 0 otherwise local_address[5]
 	 * contains the bss number, see BSS_ID_MASK comments for details.
@@ -522,15 +543,33 @@ int rt2x00mac_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 	else
 		crypto.bssidx = vif->addr[5] & (rt2x00dev->ops->max_ap_intf - 1);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	crypto.cipher = rt2x00crypto_key_to_cipher(key);
 	if (crypto.cipher == CIPHER_NONE)
 		return -EOPNOTSUPP;
 
 	crypto.cmd = cmd;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (sta) {
+		crypto.address = sta->addr;
+		sta_priv = sta_to_rt2x00_sta(sta);
+		crypto.wcid = sta_priv->wcid;
+	} else
+=======
 	if (sta)
 		crypto.address = sta->addr;
 	else
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (sta)
+		crypto.address = sta->addr;
+	else
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		crypto.address = bcast_addr;
 
 	if (crypto.cipher == CIPHER_TKIP)
@@ -569,6 +608,45 @@ int rt2x00mac_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
 EXPORT_SYMBOL_GPL(rt2x00mac_set_key);
 #endif /* CONFIG_RT2X00_LIB_CRYPTO */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int rt2x00mac_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+		      struct ieee80211_sta *sta)
+{
+	struct rt2x00_dev *rt2x00dev = hw->priv;
+	struct rt2x00_sta *sta_priv = sta_to_rt2x00_sta(sta);
+
+	/*
+	 * If there's no space left in the device table store
+	 * -1 as wcid but tell mac80211 everything went ok.
+	 */
+	if (rt2x00dev->ops->lib->sta_add(rt2x00dev, vif, sta))
+		sta_priv->wcid = -1;
+
+	return 0;
+}
+EXPORT_SYMBOL_GPL(rt2x00mac_sta_add);
+
+int rt2x00mac_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+			 struct ieee80211_sta *sta)
+{
+	struct rt2x00_dev *rt2x00dev = hw->priv;
+	struct rt2x00_sta *sta_priv = sta_to_rt2x00_sta(sta);
+
+	/*
+	 * If we never sent the STA to the device no need to clean it up.
+	 */
+	if (sta_priv->wcid < 0)
+		return 0;
+
+	return rt2x00dev->ops->lib->sta_remove(rt2x00dev, sta_priv->wcid);
+}
+EXPORT_SYMBOL_GPL(rt2x00mac_sta_remove);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void rt2x00mac_sw_scan_start(struct ieee80211_hw *hw)
 {
 	struct rt2x00_dev *rt2x00dev = hw->priv;
@@ -694,7 +772,16 @@ void rt2x00mac_bss_info_changed(struct ieee80211_hw *hw,
 }
 EXPORT_SYMBOL_GPL(rt2x00mac_bss_info_changed);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int rt2x00mac_conf_tx(struct ieee80211_hw *hw,
+		      struct ieee80211_vif *vif, u16 queue_idx,
+=======
 int rt2x00mac_conf_tx(struct ieee80211_hw *hw, u16 queue_idx,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int rt2x00mac_conf_tx(struct ieee80211_hw *hw, u16 queue_idx,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      const struct ieee80211_tx_queue_params *params)
 {
 	struct rt2x00_dev *rt2x00dev = hw->priv;
@@ -828,3 +915,23 @@ void rt2x00mac_get_ringparam(struct ieee80211_hw *hw,
 	*rx_max = rt2x00dev->rx->limit;
 }
 EXPORT_SYMBOL_GPL(rt2x00mac_get_ringparam);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+bool rt2x00mac_tx_frames_pending(struct ieee80211_hw *hw)
+{
+	struct rt2x00_dev *rt2x00dev = hw->priv;
+	struct data_queue *queue;
+
+	tx_queue_for_each(rt2x00dev, queue) {
+		if (!rt2x00queue_empty(queue))
+			return true;
+	}
+
+	return false;
+}
+EXPORT_SYMBOL_GPL(rt2x00mac_tx_frames_pending);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

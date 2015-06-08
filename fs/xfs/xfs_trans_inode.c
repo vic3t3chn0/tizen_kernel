@@ -50,17 +50,26 @@ xfs_trans_inode_broot_debug(
 <<<<<<< HEAD
  * If lock_flags is non-zero the inode will be unlocked on transaction commit.
 =======
+<<<<<<< HEAD
+ * If lock_flags is non-zero the inode will be unlocked on transaction commit.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void
 xfs_trans_ijoin(
 	struct xfs_trans	*tp,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xfs_inode	*ip,
 	uint			lock_flags)
 {
 	xfs_inode_log_item_t	*iip;
 
+<<<<<<< HEAD
+=======
 =======
 	struct xfs_inode	*ip)
 {
@@ -68,6 +77,7 @@ xfs_trans_ijoin(
 
 	ASSERT(ip->i_transp == NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(xfs_isilocked(ip, XFS_ILOCK_EXCL));
 	if (ip->i_itemp == NULL)
 		xfs_inode_item_init(ip, ip->i_mount);
@@ -77,8 +87,14 @@ xfs_trans_ijoin(
 	ASSERT(iip->ili_lock_flags == 0);
 	iip->ili_lock_flags = lock_flags;
 =======
+<<<<<<< HEAD
+
+	ASSERT(iip->ili_lock_flags == 0);
+	iip->ili_lock_flags = lock_flags;
+=======
 	ASSERT(iip->ili_lock_flags == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Get a log_item_desc to point at the new item.
@@ -86,6 +102,8 @@ xfs_trans_ijoin(
 	xfs_trans_add_item(tp, &iip->ili_item);
 
 	xfs_trans_inode_broot_debug(ip);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -114,6 +132,7 @@ xfs_trans_ijoin_ref(
 	IHOLD(ip);
 	ip->i_itemp->ili_lock_flags = lock_flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -134,8 +153,11 @@ xfs_trans_ichgtime(
 	ASSERT(xfs_isilocked(ip, XFS_ILOCK_EXCL));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(ip->i_transp == tp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tv = current_fs_time(inode->i_sb);
 
@@ -146,7 +168,12 @@ xfs_trans_ichgtime(
 		ip->i_d.di_mtime.t_sec = tv.tv_sec;
 		ip->i_d.di_mtime.t_nsec = tv.tv_nsec;
 =======
+<<<<<<< HEAD
+		ip->i_d.di_mtime.t_sec = tv.tv_sec;
+		ip->i_d.di_mtime.t_nsec = tv.tv_nsec;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if ((flags & XFS_ICHGTIME_CHG) &&
 	    !timespec_equal(&inode->i_ctime, &tv)) {
@@ -155,7 +182,12 @@ xfs_trans_ichgtime(
 		ip->i_d.di_ctime.t_sec = tv.tv_sec;
 		ip->i_d.di_ctime.t_nsec = tv.tv_nsec;
 =======
+<<<<<<< HEAD
+		ip->i_d.di_ctime.t_sec = tv.tv_sec;
+		ip->i_d.di_ctime.t_nsec = tv.tv_nsec;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -176,8 +208,11 @@ xfs_trans_log_inode(
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(ip->i_transp == tp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(ip->i_itemp != NULL);
 	ASSERT(xfs_isilocked(ip, XFS_ILOCK_EXCL));
 
@@ -190,8 +225,12 @@ xfs_trans_log_inode(
 <<<<<<< HEAD
 	 * routines in the eventual clearing of the ili_fields bits.
 =======
+<<<<<<< HEAD
+	 * routines in the eventual clearing of the ili_fields bits.
+=======
 	 * routines in the eventual clearing of the ilf_fields bits.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * See the big comment in xfs_iflush() for an explanation of
 	 * this coordination mechanism.
 	 */
@@ -199,8 +238,12 @@ xfs_trans_log_inode(
 <<<<<<< HEAD
 	ip->i_itemp->ili_fields |= flags;
 =======
+<<<<<<< HEAD
+	ip->i_itemp->ili_fields |= flags;
+=======
 	ip->i_itemp->ili_format.ilf_fields |= flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef XFS_TRANS_DEBUG

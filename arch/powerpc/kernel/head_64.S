@@ -34,8 +34,11 @@
 #include <asm/hvcall.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/iseries/lpar_map.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/thread_info.h>
 #include <asm/firmware.h>
 #include <asm/page_64.h>
@@ -45,7 +48,11 @@
 <<<<<<< HEAD
 #include <asm/hw_irq.h>
 =======
+<<<<<<< HEAD
+#include <asm/hw_irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The physical memory is laid out such that the secondary processor
  * spin code sits at 0x0000...0x00ff. On server, the vectors follow
@@ -59,17 +66,23 @@
  *   1. The MMU is off & open firmware is running in real mode.
  *   2. The kernel is entered at __start
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * -or- For OPAL entry:
  *   1. The MMU is off, processor in HV mode, primary CPU enters at 0
  *      with device-tree in gpr3. We also get OPAL base in r8 and
  *	entry in r9 for debugging purposes
  *   2. Secondary processors enter at 0x60 with PIR in gpr3
+<<<<<<< HEAD
+=======
 =======
  *
  *  For iSeries:
  *   1. The MMU is on (as it always is for iSeries)
  *   2. The kernel is entered at system_reset_iSeries
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  For Book3E processors:
  *   1. The MMU is on running in AS0 in a state defined in ePAPR
@@ -105,6 +118,8 @@ __secondary_hold_acknowledge:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ISERIES
 	/*
 	 * At offset 0x20, there is a pointer to iSeries LPAR data.
@@ -115,6 +130,7 @@ __secondary_hold_acknowledge:
 #endif /* CONFIG_PPC_ISERIES */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_RELOCATABLE
 	/* This flag is set to 1 by a loader if the kernel should run
 	 * at the loaded address instead of the linked address.  This
@@ -276,8 +292,12 @@ generic_secondary_common_init:
 <<<<<<< HEAD
 3:	LOAD_REG_ADDR(r3, spinning_secondaries) /* Decrement spinning_secondaries */
 =======
+<<<<<<< HEAD
+3:	LOAD_REG_ADDR(r3, spinning_secondaries) /* Decrement spinning_secondaries */
+=======
 3:	LOAD_REG_ADDR(r3, boot_cpu_count) /* Decrement boot_cpu_count */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lwarx	r4,0,r3
 	subi	r4,r4,1
 	stwcx.	r4,0,r3
@@ -354,13 +374,19 @@ _GLOBAL(__start_initialization_multiplatform)
 	mr	r31,r3
 	mr	r30,r4
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_EARLY_DEBUG_OPAL
 	/* Save OPAL entry */
 	mr	r28,r8
 	mr	r29,r9
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC_BOOK3E
 	bl	.start_initialization_book3e
@@ -458,8 +484,12 @@ _STATIC(__after_prom_start)
 <<<<<<< HEAD
 #ifdef CONFIG_CRASH_DUMP
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_CRASH_DUMP
+=======
 #ifdef CONFIG_RELOCATABLE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Check if the kernel has to be running as relocatable kernel based on the
  * variable __run_at_load, if it is set the kernel is treated as relocatable
@@ -528,8 +558,11 @@ _GLOBAL(copy_and_flush)
 	addi	r6,r6,8
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	isync
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blr
 
 .align 8
@@ -596,8 +629,13 @@ _GLOBAL(pmac_secondary_start)
 	li	r0,PACA_IRQ_HARD_DIS
 	stb	r0,PACAIRQHAPPENED(r13)
 =======
+<<<<<<< HEAD
+	li	r0,PACA_IRQ_HARD_DIS
+	stb	r0,PACAIRQHAPPENED(r13)
+=======
 	stb	r0,PACAHARDIRQEN(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Create a temp kernel stack for use before relocation is on.	*/
 	ld	r1,PACAEMERGSP(r13)
@@ -618,8 +656,12 @@ _GLOBAL(pmac_secondary_start)
 <<<<<<< HEAD
  *   r1	       = stack pointer (real addr of temp stack)
 =======
+<<<<<<< HEAD
+ *   r1	       = stack pointer (real addr of temp stack)
+=======
  *   r1	       = stack pointer.  vaddr for iSeries, raddr (temp stack) for pSeries
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *   r24       = cpu# (in Linux terms)
  *   r13       = paca virtual address
  *   SPRG_PACA = paca virtual address
@@ -635,8 +677,12 @@ __secondary_start:
 <<<<<<< HEAD
 	/* Initialize the kernel stack */
 =======
+<<<<<<< HEAD
+	/* Initialize the kernel stack */
+=======
 	/* Initialize the kernel stack.  Just a repeat for iSeries.	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LOAD_REG_ADDR(r3, current_set)
 	sldi	r28,r24,3		/* get current_set[cpu#]	 */
 	ldx	r14,r3,r28
@@ -657,6 +703,9 @@ __secondary_start:
 	mtlr	r7
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Mark interrupts soft and hard disabled (they might be enabled
 	 * in the PACA when doing hotplug)
 	 */
@@ -667,6 +716,8 @@ __secondary_start:
 	/* enable MMU and jump to start_secondary */
 	LOAD_REG_ADDR(r3, .start_secondary_prolog)
 	LOAD_REG_IMMEDIATE(r4, MSR_KERNEL)
+<<<<<<< HEAD
+=======
 =======
 	/* enable MMU and jump to start_secondary */
 	LOAD_REG_ADDR(r3, .start_secondary_prolog)
@@ -683,6 +734,7 @@ BEGIN_FW_FTR_SECTION
 END_FW_FTR_SECTION_IFCLR(FW_FEATURE_ISERIES)
 	stb	r7,PACASOFTIRQEN(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mtspr	SPRN_SRR0,r3
 	mtspr	SPRN_SRR1,r4
@@ -743,10 +795,16 @@ _GLOBAL(relative_toc)
 	ld	r2,(p_toc - 0b)(r11)
 	add	r2,r2,r11
 =======
+<<<<<<< HEAD
+0:	mflr	r11
+	ld	r2,(p_toc - 0b)(r11)
+	add	r2,r2,r11
+=======
 0:	mflr	r9
 	ld	r2,(p_toc - 0b)(r9)
 	add	r2,r2,r9
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtlr	r0
 	blr
 
@@ -778,14 +836,20 @@ _INIT_STATIC(start_here_multiplatform)
 4:
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_EARLY_DEBUG_OPAL
 	/* Setup OPAL entry */
 	std	r28,0(r11);
 	std	r29,8(r11);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_PPC_BOOK3E
 	mfmsr	r6
 	ori	r6,r6,MSR_RI
@@ -835,6 +899,9 @@ _INIT_GLOBAL(start_here_common)
 	ld	r2,PACATOC(r13)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Do more system initializations in virtual mode */
 	bl	.setup_system
 
@@ -847,6 +914,8 @@ _INIT_GLOBAL(start_here_common)
 	stb	r0,PACAIRQHAPPENED(r13)
 
 	/* Generic kernel entry */
+<<<<<<< HEAD
+=======
 =======
 	bl	.setup_system
 
@@ -865,6 +934,7 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_ISERIES)
 	stb	r5,PACAHARDIRQEN(r13)	/* Hard Disabled on others */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.start_kernel
 
 	/* Not reached */

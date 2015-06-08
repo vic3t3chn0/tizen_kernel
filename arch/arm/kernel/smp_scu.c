@@ -17,9 +17,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/cpu.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCU_CTRL		0x00
 #define SCU_CONFIG		0x04
 #define SCU_CPU_STATUS		0x08
@@ -29,11 +32,15 @@
 <<<<<<< HEAD
 #ifdef CONFIG_SMP
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_SMP
+=======
 #ifdef CONFIG_MACH_PX
 extern void logbuf_force_unlock(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Get the number of CPU cores from the SCU configuration
  */
@@ -66,11 +73,14 @@ void scu_enable(void __iomem *scu_base)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if ((soc_is_exynos4412() && (samsung_rev() >= EXYNOS4412_REV_1_0)) ||
 		soc_is_exynos4210())
 		scu_ctrl |= (1<<3);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	scu_ctrl |= 1;
 	__raw_writel(scu_ctrl, scu_base + SCU_CTRL);
 
@@ -83,12 +93,17 @@ void scu_enable(void __iomem *scu_base)
 }
 #endif
 =======
+<<<<<<< HEAD
+}
+#endif
+=======
 
 #ifdef CONFIG_MACH_PX
 	logbuf_force_unlock();
 #endif
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Set the executing CPUs power mode as defined.  This will be in

@@ -5,7 +5,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +61,15 @@ typedef u32 acpi_mutex_handle;
 
 /* Total number of aml opcodes defined */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define AML_NUM_OPCODES                 0x81
+=======
 #define AML_NUM_OPCODES                 0x7F
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define AML_NUM_OPCODES                 0x7F
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Forward declarations */
 
@@ -249,12 +265,34 @@ struct acpi_create_field_info {
 	struct acpi_namespace_node *field_node;
 	struct acpi_namespace_node *register_node;
 	struct acpi_namespace_node *data_register_node;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct acpi_namespace_node *connection_node;
+	u8 *resource_buffer;
+	u32 bank_value;
+	u32 field_bit_position;
+	u32 field_bit_length;
+	u16 resource_length;
+	u8 field_flags;
+	u8 attribute;
+	u8 field_type;
+	u8 access_length;
+=======
 	u32 bank_value;
 	u32 field_bit_position;
 	u32 field_bit_length;
 	u8 field_flags;
 	u8 attribute;
 	u8 field_type;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 bank_value;
+	u32 field_bit_position;
+	u32 field_bit_length;
+	u8 field_flags;
+	u8 attribute;
+	u8 field_type;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 typedef
@@ -315,7 +353,16 @@ struct acpi_name_info {
 
 /*
  * Used for ACPI_PTYPE1_FIXED, ACPI_PTYPE1_VAR, ACPI_PTYPE2,
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ACPI_PTYPE2_MIN, ACPI_PTYPE2_PKG_COUNT, ACPI_PTYPE2_COUNT,
+ * ACPI_PTYPE2_FIX_VAR
+=======
  * ACPI_PTYPE2_MIN, ACPI_PTYPE2_PKG_COUNT, ACPI_PTYPE2_COUNT
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ACPI_PTYPE2_MIN, ACPI_PTYPE2_PKG_COUNT, ACPI_PTYPE2_COUNT
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct acpi_package_info {
 	u8 type;
@@ -365,6 +412,13 @@ struct acpi_predefined_data {
 /* Defines for Flags field above */
 
 #define ACPI_OBJECT_REPAIRED    1
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ACPI_OBJECT_WRAPPED     2
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Bitmapped return value types
@@ -625,6 +679,21 @@ union acpi_generic_state {
 
 typedef acpi_status(*ACPI_EXECUTE_OP) (struct acpi_walk_state * walk_state);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Address Range info block */
+
+struct acpi_address_range {
+	struct acpi_address_range *next;
+	struct acpi_namespace_node *region_node;
+	acpi_physical_address start_address;
+	acpi_physical_address end_address;
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*****************************************************************************
  *
  * Parser typedefs and structs
@@ -951,7 +1020,15 @@ struct acpi_port_info {
 #define ACPI_RESOURCE_NAME_END_DEPENDENT        0x38
 #define ACPI_RESOURCE_NAME_IO                   0x40
 #define ACPI_RESOURCE_NAME_FIXED_IO             0x48
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ACPI_RESOURCE_NAME_FIXED_DMA            0x50
+=======
 #define ACPI_RESOURCE_NAME_RESERVED_S1          0x50
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define ACPI_RESOURCE_NAME_RESERVED_S1          0x50
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ACPI_RESOURCE_NAME_RESERVED_S2          0x58
 #define ACPI_RESOURCE_NAME_RESERVED_S3          0x60
 #define ACPI_RESOURCE_NAME_RESERVED_S4          0x68
@@ -973,7 +1050,17 @@ struct acpi_port_info {
 #define ACPI_RESOURCE_NAME_EXTENDED_IRQ         0x89
 #define ACPI_RESOURCE_NAME_ADDRESS64            0x8A
 #define ACPI_RESOURCE_NAME_EXTENDED_ADDRESS64   0x8B
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ACPI_RESOURCE_NAME_GPIO                 0x8C
+#define ACPI_RESOURCE_NAME_SERIAL_BUS           0x8E
+#define ACPI_RESOURCE_NAME_LARGE_MAX            0x8E
+=======
 #define ACPI_RESOURCE_NAME_LARGE_MAX            0x8B
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define ACPI_RESOURCE_NAME_LARGE_MAX            0x8B
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*****************************************************************************
  *

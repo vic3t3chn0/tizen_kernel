@@ -404,12 +404,17 @@ static unsigned char asn1_octets_decode(struct asn1_ctx *ctx,
 	if (*octets == NULL)
 		return 0;
 =======
+<<<<<<< HEAD
+	if (*octets == NULL)
+		return 0;
+=======
 	if (*octets == NULL) {
 		if (net_ratelimit())
 			pr_notice("OOM in bsalg (%d)\n", __LINE__);
 		return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ptr = *octets;
 	while (ctx->pointer < eoc) {
@@ -460,12 +465,17 @@ static unsigned char asn1_oid_decode(struct asn1_ctx *ctx,
 	if (*oid == NULL)
 		return 0;
 =======
+<<<<<<< HEAD
+	if (*oid == NULL)
+		return 0;
+=======
 	if (*oid == NULL) {
 		if (net_ratelimit())
 			pr_notice("OOM in bsalg (%d)\n", __LINE__);
 		return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	optr = *oid;
 
@@ -730,6 +740,9 @@ static unsigned char snmp_object_decode(struct asn1_ctx *ctx,
 	l = 0;
 	switch (type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SNMP_INTEGER:
 		len = sizeof(long);
 		if (!asn1_long_decode(ctx, end, &l)) {
@@ -827,6 +840,8 @@ static unsigned char snmp_object_decode(struct asn1_ctx *ctx,
 	default:
 		kfree(id);
 		return 0;
+<<<<<<< HEAD
+=======
 =======
 		case SNMP_INTEGER:
 			len = sizeof(long);
@@ -940,6 +955,7 @@ static unsigned char snmp_object_decode(struct asn1_ctx *ctx,
 			kfree(id);
 			return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	(*obj)->syntax_len = len;
@@ -1425,8 +1441,12 @@ static int __init nf_nat_snmp_basic_init(void)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(nf_nat_snmp_hook, help);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(nf_nat_snmp_hook, help);
+=======
 	rcu_assign_pointer(nf_nat_snmp_hook, help);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = nf_conntrack_helper_register(&snmp_trap_helper);
 	if (ret < 0) {
@@ -1441,8 +1461,12 @@ static void __exit nf_nat_snmp_basic_fini(void)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(nf_nat_snmp_hook, NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(nf_nat_snmp_hook, NULL);
+=======
 	rcu_assign_pointer(nf_nat_snmp_hook, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nf_conntrack_helper_unregister(&snmp_trap_helper);
 }
 

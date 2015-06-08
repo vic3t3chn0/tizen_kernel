@@ -11,11 +11,20 @@
 <<<<<<< HEAD
 #include <linux/dma-mapping.h>
 =======
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/clk.h>
 #include <linux/serial_8250.h>
 #include <linux/platform_device.h>
+<<<<<<< HEAD
+
+#include <asm/mach/map.h>
+
+=======
 <<<<<<< HEAD
 
 #include <asm/mach/map.h>
@@ -27,6 +36,7 @@
 
 #include <mach/dm646x.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cputype.h>
 #include <mach/edma.h>
 #include <mach/irqs.h>
@@ -41,17 +51,26 @@
 
 #include "davinci.h"
 =======
+<<<<<<< HEAD
+#include <mach/gpio-davinci.h>
+
+#include "davinci.h"
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "clock.h"
 #include "mux.h"
 
 #define DAVINCI_VPIF_BASE       (0x01C12000)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define VDD3P3V_PWDN_OFFSET	(0x48)
 #define VSCLKDIS_OFFSET		(0x6C)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define VDD3P3V_VID_MASK	(BIT_MASK(3) | BIT_MASK(2) | BIT_MASK(1) |\
 					BIT_MASK(0))
@@ -62,6 +81,9 @@
  * Device specific clocks
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DM646X_REF_FREQ		27000000
 #define DM646X_AUX_FREQ		24000000
 
@@ -72,10 +94,13 @@
 #define DM646X_EMAC_CNTRL_RAM_OFFSET	0x2000
 #define DM646X_EMAC_CNTRL_RAM_SIZE	0x2000
 
+<<<<<<< HEAD
+=======
 =======
 #define DM646X_AUX_FREQ		24000000
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pll_data pll1_data = {
 	.num       = 1,
 	.phys_base = DAVINCI_PLL1_BASE,
@@ -92,7 +117,12 @@ static struct clk ref_clk = {
 	.rate = DM646X_REF_FREQ,
 	.set_rate = davinci_simple_set_rate,
 =======
+<<<<<<< HEAD
+	.rate = DM646X_REF_FREQ,
+	.set_rate = davinci_simple_set_rate,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk aux_clkin = {
@@ -196,8 +226,11 @@ static struct clk dsp_clk = {
 	.lpsc = DM646X_LPSC_C64X_CPU,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.flags = PSC_DSP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.usecount = 1,			/* REVISIT how to disable? */
 };
 
@@ -594,7 +627,11 @@ static struct edma_soc_info edma_cc0_info = {
 <<<<<<< HEAD
 	.default_queue		= EVENTQ_1,
 =======
+<<<<<<< HEAD
+	.default_queue		= EVENTQ_1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct edma_soc_info *dm646x_edma_info[EDMA_MAX_CC] = {
@@ -896,8 +933,11 @@ static struct davinci_soc_info davinci_soc_info_dm646x = {
 	.sram_len		= SZ_32K,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.reset_device		= &davinci_wdt_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init dm646x_init_mcasp0(struct snd_platform_data *pdata)
@@ -918,6 +958,9 @@ void dm646x_setup_vpif(struct vpif_display_config *display_config,
 {
 	unsigned int value;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	value = __raw_readl(DAVINCI_SYSMOD_VIRT(SYSMOD_VSCLKDIS));
 	value &= ~VSCLKDIS_MASK;
@@ -926,6 +969,8 @@ void dm646x_setup_vpif(struct vpif_display_config *display_config,
 	value = __raw_readl(DAVINCI_SYSMOD_VIRT(SYSMOD_VDD3P3VPWDN));
 	value &= ~VDD3P3V_VID_MASK;
 	__raw_writel(value, DAVINCI_SYSMOD_VIRT(SYSMOD_VDD3P3VPWDN));
+<<<<<<< HEAD
+=======
 =======
 	void __iomem *base = IO_ADDRESS(DAVINCI_SYSTEM_MODULE_BASE);
 
@@ -937,6 +982,7 @@ void dm646x_setup_vpif(struct vpif_display_config *display_config,
 	value &= ~VDD3P3V_VID_MASK;
 	__raw_writel(value, base + VDD3P3V_PWDN_OFFSET);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	davinci_cfg_reg(DM646X_STSOMUX_DISABLE);
 	davinci_cfg_reg(DM646X_STSIMUX_DISABLE);
@@ -963,9 +1009,14 @@ void __init dm646x_init(void)
 	davinci_common_init(&davinci_soc_info_dm646x);
 	davinci_map_sysmod();
 =======
+<<<<<<< HEAD
+	davinci_common_init(&davinci_soc_info_dm646x);
+	davinci_map_sysmod();
+=======
 	dm646x_board_setup_refclk(&ref_clk);
 	davinci_common_init(&davinci_soc_info_dm646x);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init dm646x_init_devices(void)

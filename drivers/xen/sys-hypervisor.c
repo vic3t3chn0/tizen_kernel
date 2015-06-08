@@ -97,7 +97,15 @@ static struct attribute *version_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct attribute_group version_group = {
+=======
 static struct attribute_group version_group = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct attribute_group version_group = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "version",
 	.attrs = version_attrs,
 };
@@ -210,7 +218,15 @@ static struct attribute *xen_compile_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct attribute_group xen_compilation_group = {
+=======
 static struct attribute_group xen_compilation_group = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct attribute_group xen_compilation_group = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "compilation",
 	.attrs = xen_compile_attrs,
 };
@@ -340,7 +356,15 @@ static struct attribute *xen_properties_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct attribute_group xen_properties_group = {
+=======
 static struct attribute_group xen_properties_group = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct attribute_group xen_properties_group = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "properties",
 	.attrs = xen_properties_attrs,
 };

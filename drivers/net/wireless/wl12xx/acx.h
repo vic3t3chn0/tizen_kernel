@@ -101,6 +101,23 @@ struct acx_error_counter {
 	__le32 seq_num_miss;
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum wl12xx_role {
+	WL1271_ROLE_STA = 0,
+	WL1271_ROLE_IBSS,
+	WL1271_ROLE_AP,
+	WL1271_ROLE_DEVICE,
+	WL1271_ROLE_P2P_CL,
+	WL1271_ROLE_P2P_GO,
+
+	WL12XX_INVALID_ROLE_TYPE = 0xff
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum wl1271_psm_mode {
 	/* Active mode */
 	WL1271_PSM_CAM = 0,
@@ -160,6 +177,11 @@ struct acx_rx_msdu_lifetime {
 	__le32 lifetime;
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * RX Config Options Table
  * Bit		Definition
@@ -255,6 +277,10 @@ struct acx_packet_detection {
 } __packed;
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum acx_slot_type {
 	SLOT_TIME_LONG = 0,
 	SLOT_TIME_SHORT = 1,
@@ -267,9 +293,22 @@ enum acx_slot_type {
 struct acx_slot {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 wone_index; /* Reserved */
+	u8 slot_time;
+	u8 reserved[5];
+=======
 	u8 wone_index; /* Reserved */
 	u8 slot_time;
 	u8 reserved[6];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 wone_index; /* Reserved */
+	u8 slot_time;
+	u8 reserved[6];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 
@@ -279,29 +318,73 @@ struct acx_slot {
 struct acx_dot11_grp_addr_tbl {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 enabled;
+	u8 num_groups;
+	u8 pad[1];
+=======
 	u8 enabled;
 	u8 num_groups;
 	u8 pad[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 enabled;
+	u8 num_groups;
+	u8 pad[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 mac_table[ADDRESS_GROUP_MAX_LEN];
 } __packed;
 
 struct acx_rx_timeout {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 reserved;
 	__le16 ps_poll_timeout;
 	__le16 upsd_timeout;
+	u8 padding[2];
+=======
+	__le16 ps_poll_timeout;
+	__le16 upsd_timeout;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	__le16 ps_poll_timeout;
+	__le16 upsd_timeout;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct acx_rts_threshold {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 reserved;
+	__le16 threshold;
+=======
 	__le16 threshold;
 	u8 pad[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	__le16 threshold;
+	u8 pad[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct acx_beacon_filter_option {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 enable;
 	/*
 	 * The number of beacons without the unicast TIM
@@ -311,7 +394,15 @@ struct acx_beacon_filter_option {
 	 * without the unicast TIM bit set are dropped.
 	 */
 	u8 max_num_beacons;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 pad[1];
+=======
 	u8 pad[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 pad[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 /*
@@ -350,14 +441,33 @@ struct acx_beacon_filter_option {
 struct acx_beacon_filter_ie_table {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 num_ie;
+	u8 pad[2];
+=======
 	u8 num_ie;
 	u8 pad[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 num_ie;
+	u8 pad[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 table[BEACON_FILTER_TABLE_MAX_SIZE];
 } __packed;
 
 struct acx_conn_monit_params {
        struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	   u8 role_id;
+	   u8 padding[3];
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        __le32 synch_fail_thold; /* number of beacons missed */
        __le32 bss_lose_timeout; /* number of TU's from synch fail */
 } __packed;
@@ -369,6 +479,15 @@ struct acx_bt_wlan_coex {
 	u8 pad[3];
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct acx_bt_wlan_coex_param {
+	struct acx_header header;
+
+	__le32 params[CONF_SG_PARAMS_MAX];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct acx_sta_bt_wlan_coex_param {
 	struct acx_header header;
 
@@ -381,11 +500,22 @@ struct acx_ap_bt_wlan_coex_param {
 	struct acx_header header;
 
 	__le32 params[CONF_SG_AP_PARAMS_MAX];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 param_idx;
 	u8 padding[3];
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct acx_dco_itrim_params {
 	struct acx_header header;
 
@@ -406,6 +536,21 @@ struct acx_energy_detection {
 struct acx_beacon_broadcast {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	/* Enables receiving of broadcast packets in PS mode */
+	u8 rx_broadcast_in_ps;
+
+	__le16 beacon_rx_timeout;
+	__le16 broadcast_timeout;
+
+	/* Consecutive PS Poll failures before updating the host */
+	u8 ps_poll_threshold;
+	u8 pad[1];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le16 beacon_rx_timeout;
 	__le16 broadcast_timeout;
 
@@ -415,6 +560,10 @@ struct acx_beacon_broadcast {
 	/* Consecutive PS Poll failures before updating the host */
 	u8 ps_poll_threshold;
 	u8 pad[2];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct acx_event_mask {
@@ -424,6 +573,11 @@ struct acx_event_mask {
 	__le32 high_event_mask; /* Unused */
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CFG_RX_FCS		BIT(2)
 #define CFG_RX_ALL_GOOD		BIT(3)
 #define CFG_UNI_FILTER_EN	BIT(4)
@@ -453,6 +607,10 @@ struct acx_event_mask {
 #define CFG_RX_AUTH_EN		BIT(10)
 #define CFG_RX_ASSOC_EN		BIT(11)
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCAN_PASSIVE		BIT(0)
 #define SCAN_5GHZ_BAND		BIT(1)
 #define SCAN_TRIGGERED		BIT(2)
@@ -465,6 +623,14 @@ struct acx_event_mask {
 struct acx_feature_config {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 padding[3];
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le32 options;
 	__le32 data_flow_options;
 } __packed;
@@ -472,16 +638,40 @@ struct acx_feature_config {
 struct acx_current_tx_power {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8  role_id;
+	u8  current_tx_power;
+	u8  padding[2];
+=======
 	u8  current_tx_power;
 	u8  padding[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8  current_tx_power;
+	u8  padding[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct acx_wake_up_condition {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 wake_up_event; /* Only one bit can be set */
+	u8 listen_interval;
+	u8 pad[1];
+=======
 	u8 wake_up_event; /* Only one bit can be set */
 	u8 listen_interval;
 	u8 pad[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 wake_up_event; /* Only one bit can be set */
+	u8 listen_interval;
+	u8 pad[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct acx_aid {
@@ -490,8 +680,19 @@ struct acx_aid {
 	/*
 	 * To be set when associated with an AP.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 reserved;
+	__le16 aid;
+=======
 	__le16 aid;
 	u8 pad[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	__le16 aid;
+	u8 pad[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 enum acx_preamble_type {
@@ -506,8 +707,19 @@ struct acx_preamble {
 	 * When set, the WiLink transmits the frames with a short preamble and
 	 * when cleared, the WiLink transmits the frames with a long preamble.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 preamble;
+	u8 padding[2];
+=======
 	u8 preamble;
 	u8 padding[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 preamble;
+	u8 padding[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 enum acx_ctsprotect_type {
@@ -517,8 +729,19 @@ enum acx_ctsprotect_type {
 
 struct acx_ctsprotect {
 	struct acx_header header;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 ctsprotect;
+	u8 padding[2];
+=======
 	u8 ctsprotect;
 	u8 padding[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 ctsprotect;
+	u8 padding[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct acx_tx_statistics {
@@ -751,6 +974,12 @@ struct acx_rate_class {
 	u8 reserved;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct acx_rate_policy {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ACX_TX_BASIC_RATE      0
 #define ACX_TX_AP_FULL_RATE    1
 #define ACX_TX_RATE_POLICY_CNT 2
@@ -765,6 +994,10 @@ struct acx_sta_rate_policy {
 #define ACX_TX_AP_MODE_MGMT_RATE 4
 #define ACX_TX_AP_MODE_BCST_RATE 5
 struct acx_ap_rate_policy {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct acx_header header;
 
 	__le32 rate_policy_idx;
@@ -773,22 +1006,51 @@ struct acx_ap_rate_policy {
 
 struct acx_ac_cfg {
 	struct acx_header header;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 ac;
+	u8 aifsn;
+	u8 cw_min;
+	__le16 cw_max;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 ac;
 	u8 cw_min;
 	__le16 cw_max;
 	u8 aifsn;
 	u8 reserved;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le16 tx_op_limit;
 } __packed;
 
 struct acx_tid_config {
 	struct acx_header header;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 queue_id;
 	u8 channel_type;
 	u8 tsid;
 	u8 ps_scheme;
 	u8 ack_policy;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 padding[2];
+=======
 	u8 padding[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 padding[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le32 apsd_conf[2];
 } __packed;
 
@@ -804,6 +1066,12 @@ struct acx_tx_config_options {
 	__le16 tx_compl_threshold;   /* number of packets */
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct wl12xx_acx_config_memory {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ACX_TX_DESCRIPTORS    32
 
 struct wl1271_acx_ap_config_memory {
@@ -817,6 +1085,10 @@ struct wl1271_acx_ap_config_memory {
 } __packed;
 
 struct wl1271_acx_sta_config_memory {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct acx_header header;
 
 	u8 rx_mem_block_num;
@@ -828,6 +1100,14 @@ struct wl1271_acx_sta_config_memory {
 	u8 tx_free_req;
 	u8 rx_free_req;
 	u8 tx_min;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 fwlog_blocks;
+	u8 padding[3];
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct wl1271_acx_mem_map {
@@ -888,9 +1168,22 @@ struct wl1271_acx_rx_config_opt {
 struct wl1271_acx_bet_enable {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 enable;
+	u8 max_consecutive;
+	u8 padding[1];
+=======
 	u8 enable;
 	u8 max_consecutive;
 	u8 padding[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 enable;
+	u8 max_consecutive;
+	u8 padding[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 #define ACX_IPV4_VERSION 4
@@ -903,9 +1196,22 @@ struct wl1271_acx_bet_enable {
 
 struct wl1271_acx_arp_filter {
 	struct acx_header header;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 version;         /* ACX_IPV4_VERSION, ACX_IPV6_VERSION */
+	u8 enable;          /* bitmap of enabled ARP filtering features */
+	u8 padding[1];
+=======
 	u8 version;         /* ACX_IPV4_VERSION, ACX_IPV6_VERSION */
 	u8 enable;          /* bitmap of enabled ARP filtering features */
 	u8 padding[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 version;         /* ACX_IPV4_VERSION, ACX_IPV6_VERSION */
+	u8 enable;          /* bitmap of enabled ARP filtering features */
+	u8 padding[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 address[16];     /* The configured device IP address - all ARP
 			       requests directed to this IP address will pass
 			       through. For IPv4, the first four bytes are
@@ -923,8 +1229,19 @@ struct wl1271_acx_pm_config {
 struct wl1271_acx_keep_alive_mode {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 enabled;
+	u8 padding[2];
+=======
 	u8 enabled;
 	u8 padding[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 enabled;
+	u8 padding[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 enum {
@@ -940,11 +1257,25 @@ enum {
 struct wl1271_acx_keep_alive_config {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 index;
+	u8 tpl_validation;
+	u8 trigger;
+	__le32 period;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le32 period;
 	u8 index;
 	u8 tpl_validation;
 	u8 trigger;
 	u8 padding;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 #define HOST_IF_CFG_RX_FIFO_ENABLE     BIT(0)
@@ -988,6 +1319,21 @@ enum {
 struct wl1271_acx_rssi_snr_trigger {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 metric;
+	u8 type;
+	u8 dir;
+	__le16 threshold;
+	__le16 pacing; /* 0 - 60000 ms */
+	u8 hysteresis;
+	u8 index;
+	u8 enable;
+	u8 padding[1];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le16 threshold;
 	__le16 pacing; /* 0 - 60000 ms */
 	u8 metric;
@@ -997,17 +1343,39 @@ struct wl1271_acx_rssi_snr_trigger {
 	u8 index;
 	u8 enable;
 	u8 padding[2];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct wl1271_acx_rssi_snr_avg_weights {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+	u8 padding[3];
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 rssi_beacon;
 	u8 rssi_data;
 	u8 snr_beacon;
 	u8 snr_data;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/* special capability bit (not employed by the 802.11n spec) */
+#define WL12XX_HT_CAP_HT_OPERATION BIT(16)
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ACX_PEER_HT_CAP
  * Configure HT capabilities - declare the capabilities of the peer
@@ -1016,6 +1384,16 @@ struct wl1271_acx_rssi_snr_avg_weights {
 struct wl1271_acx_ht_capabilities {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* bitmask of capability bits supported by the peer */
+	__le32 ht_capabilites;
+
+	/* Indicates to which link these capabilities apply. */
+	u8 hlid;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * bit 0 - Allow HT Operation
 	 * bit 1 - Allow Greenfield format in TX
@@ -1038,6 +1416,10 @@ struct wl1271_acx_ht_capabilities {
 	 * Only valid for IBSS/DLS operation.
 	 */
 	u8 mac_address[ETH_ALEN];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * This the maximum A-MPDU length supported by the AP. The FW may not
@@ -1047,6 +1429,15 @@ struct wl1271_acx_ht_capabilities {
 
 	/* This is the minimal spacing required when sending A-MPDUs to the AP*/
 	u8 ampdu_min_spacing;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	u8 padding;
+} __packed;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 /* HT Capabilites Fw Bit Mask Mapping */
@@ -1058,6 +1449,10 @@ struct wl1271_acx_ht_capabilities {
 #define WL1271_ACX_FW_CAP_RD_INITIATION                BIT(5)
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ACX_HT_BSS_OPERATION
  * Configure HT capabilities - AP rules for behavior in the BSS.
@@ -1065,6 +1460,14 @@ struct wl1271_acx_ht_capabilities {
 struct wl1271_acx_ht_information {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 role_id;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Values: 0 - RIFS not allowed, 1 - RIFS allowed */
 	u8 rifs_mode;
 
@@ -1086,6 +1489,37 @@ struct wl1271_acx_ht_information {
 	 */
 	u8 dual_cts_protection;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 padding[2];
+} __packed;
+
+#define RX_BA_MAX_SESSIONS 2
+
+struct wl1271_acx_ba_initiator_policy {
+	struct acx_header header;
+
+	/* Specifies role Id, Range 0-7, 0xFF means ANY role. */
+	u8 role_id;
+
+	/*
+	 * Per TID setting for allowing TX BA. Set a bit to 1 to allow
+	 * TX BA sessions for the corresponding TID.
+	 */
+	u8 tid_bitmap;
+
+	/* Windows size in number of packets */
+	u8 win_size;
+
+	u8 padding1[1];
+
+	/* As initiator inactivity timeout in time units(TU) of 1024us */
+	u16 inactivity_timeout;
+
+	u8 padding[2];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 padding[3];
 } __packed;
 
@@ -1121,18 +1555,51 @@ struct wl1271_acx_ba_session_policy {
 	u8 ba_direction;
 
 	u8 padding[3];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct wl1271_acx_ba_receiver_setup {
 	struct acx_header header;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Specifies link id, range 0-31 */
+	u8 hlid;
+=======
 	/* Specifies Link Id, Range 0-31, 0xFF means ANY  Link Id */
 	u8 link_id;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Specifies Link Id, Range 0-31, 0xFF means ANY  Link Id */
+	u8 link_id;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u8 tid;
 
 	u8 enable;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Windows size in number of packets */
+	u8 win_size;
+
+	/* BA session starting sequence number.  RANGE 0-FFF */
+	u16 ssn;
+
+	u8 padding[2];
+} __packed;
+
+struct wl12xx_acx_fw_tsf_information {
+	struct acx_header header;
+
+	u8 role_id;
+	u8 padding1[3];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 padding[1];
 
 	/* Windows size in number of packets */
@@ -1145,23 +1612,67 @@ struct wl1271_acx_ba_receiver_setup {
 struct wl1271_acx_fw_tsf_information {
 	struct acx_header header;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__le32 current_tsf_high;
 	__le32 current_tsf_low;
 	__le32 last_bttt_high;
 	__le32 last_tbtt_low;
 	u8 last_dtim_count;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 padding2[3];
+} __packed;
+
+struct wl1271_acx_ps_rx_streaming {
+	struct acx_header header;
+
+	u8 role_id;
+	u8 tid;
+	u8 enable;
+
+	/* interval between triggers (10-100 msec) */
+	u8 period;
+
+	/* timeout before first trigger (0-200 msec) */
+	u8 timeout;
+	u8 padding[3];
+} __packed;
+
+struct wl1271_acx_ap_max_tx_retry {
+	struct acx_header header;
+
+	u8 role_id;
+	u8 padding_1;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 padding[3];
 } __packed;
 
 struct wl1271_acx_max_tx_retry {
 	struct acx_header header;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * the number of frames transmission failures before
 	 * issuing the aging event.
 	 */
 	__le16 max_tx_retry;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u8 padding_1[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 padding_1[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 struct wl1271_acx_config_ps {
@@ -1180,6 +1691,11 @@ struct wl1271_acx_inconnection_sta {
 	u8 padding1[2];
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct acx_ap_beacon_filter {
 	struct acx_header header;
 
@@ -1187,6 +1703,10 @@ struct acx_ap_beacon_filter {
 	u8 pad[3];
 } __packed;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ACX_FM_COEX_CFG
  * set the FM co-existence parameters.
@@ -1246,6 +1766,168 @@ struct wl1271_acx_fm_coex {
 	u8 swallow_clk_diff;
 } __packed;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ACX_RATE_MGMT_ALL_PARAMS 0xff
+struct wl12xx_acx_set_rate_mgmt_params {
+	struct acx_header header;
+
+	u8 index; /* 0xff to configure all params */
+	u8 padding1;
+	__le16 rate_retry_score;
+	__le16 per_add;
+	__le16 per_th1;
+	__le16 per_th2;
+	__le16 max_per;
+	u8 inverse_curiosity_factor;
+	u8 tx_fail_low_th;
+	u8 tx_fail_high_th;
+	u8 per_alpha_shift;
+	u8 per_add_shift;
+	u8 per_beta1_shift;
+	u8 per_beta2_shift;
+	u8 rate_check_up;
+	u8 rate_check_down;
+	u8 rate_retry_policy[ACX_RATE_MGMT_NUM_OF_RATES];
+	u8 padding2[2];
+} __packed;
+
+struct wl12xx_acx_config_hangover {
+	struct acx_header header;
+
+	__le32 recover_time;
+	u8 hangover_period;
+	u8 dynamic_mode;
+	u8 early_termination_mode;
+	u8 max_period;
+	u8 min_period;
+	u8 increase_delta;
+	u8 decrease_delta;
+	u8 quiet_time;
+	u8 increase_time;
+	u8 window_size;
+	u8 padding[2];
+} __packed;
+
+enum {
+	ACX_WAKE_UP_CONDITIONS           = 0x0000,
+	ACX_MEM_CFG                      = 0x0001,
+	ACX_SLOT                         = 0x0002,
+	ACX_AC_CFG                       = 0x0003,
+	ACX_MEM_MAP                      = 0x0004,
+	ACX_AID                          = 0x0005,
+	ACX_MEDIUM_USAGE                 = 0x0006,
+	ACX_STATISTICS                   = 0x0007,
+	ACX_PWR_CONSUMPTION_STATISTICS   = 0x0008,
+	ACX_TID_CFG                      = 0x0009,
+	ACX_PS_RX_STREAMING              = 0x000A,
+	ACX_BEACON_FILTER_OPT            = 0x000B,
+	ACX_NOISE_HIST                   = 0x000C,
+	ACX_HDK_VERSION                  = 0x000D,
+	ACX_PD_THRESHOLD                 = 0x000E,
+	ACX_TX_CONFIG_OPT                = 0x000F,
+	ACX_CCA_THRESHOLD                = 0x0010,
+	ACX_EVENT_MBOX_MASK              = 0x0011,
+	ACX_CONN_MONIT_PARAMS            = 0x0012,
+	ACX_DISABLE_BROADCASTS           = 0x0013,
+	ACX_BCN_DTIM_OPTIONS             = 0x0014,
+	ACX_SG_ENABLE                    = 0x0015,
+	ACX_SG_CFG                       = 0x0016,
+	ACX_FM_COEX_CFG                  = 0x0017,
+	ACX_BEACON_FILTER_TABLE          = 0x0018,
+	ACX_ARP_IP_FILTER                = 0x0019,
+	ACX_ROAMING_STATISTICS_TBL       = 0x001A,
+	ACX_RATE_POLICY                  = 0x001B,
+	ACX_CTS_PROTECTION               = 0x001C,
+	ACX_SLEEP_AUTH                   = 0x001D,
+	ACX_PREAMBLE_TYPE                = 0x001E,
+	ACX_ERROR_CNT                    = 0x001F,
+	ACX_IBSS_FILTER                  = 0x0020,
+	ACX_SERVICE_PERIOD_TIMEOUT       = 0x0021,
+	ACX_TSF_INFO                     = 0x0022,
+	ACX_CONFIG_PS_WMM                = 0x0023,
+	ACX_ENABLE_RX_DATA_FILTER        = 0x0024,
+	ACX_SET_RX_DATA_FILTER           = 0x0025,
+	ACX_GET_DATA_FILTER_STATISTICS   = 0x0026,
+	ACX_RX_CONFIG_OPT                = 0x0027,
+	ACX_FRAG_CFG                     = 0x0028,
+	ACX_BET_ENABLE                   = 0x0029,
+	ACX_RSSI_SNR_TRIGGER             = 0x002A,
+	ACX_RSSI_SNR_WEIGHTS             = 0x002B,
+	ACX_KEEP_ALIVE_MODE              = 0x002C,
+	ACX_SET_KEEP_ALIVE_CONFIG        = 0x002D,
+	ACX_BA_SESSION_INIT_POLICY       = 0x002E,
+	ACX_BA_SESSION_RX_SETUP          = 0x002F,
+	ACX_PEER_HT_CAP                  = 0x0030,
+	ACX_HT_BSS_OPERATION             = 0x0031,
+	ACX_COEX_ACTIVITY                = 0x0032,
+	ACX_BURST_MODE                   = 0x0033,
+	ACX_SET_RATE_MGMT_PARAMS         = 0x0034,
+	ACX_GET_RATE_MGMT_PARAMS         = 0x0035,
+	ACX_SET_RATE_ADAPT_PARAMS        = 0x0036,
+	ACX_SET_DCO_ITRIM_PARAMS         = 0x0037,
+	ACX_GEN_FW_CMD                   = 0x0038,
+	ACX_HOST_IF_CFG_BITMAP           = 0x0039,
+	ACX_MAX_TX_FAILURE               = 0x003A,
+	ACX_UPDATE_INCONNECTION_STA_LIST = 0x003B,
+	DOT11_RX_MSDU_LIFE_TIME          = 0x003C,
+	DOT11_CUR_TX_PWR                 = 0x003D,
+	DOT11_RTS_THRESHOLD              = 0x003E,
+	DOT11_GROUP_ADDRESS_TBL          = 0x003F,
+	ACX_PM_CONFIG                    = 0x0040,
+	ACX_CONFIG_PS                    = 0x0041,
+	ACX_CONFIG_HANGOVER              = 0x0042,
+	ACX_FEATURE_CFG                  = 0x0043,
+	ACX_PROTECTION_CFG               = 0x0044,
+};
+
+
+int wl1271_acx_wake_up_conditions(struct wl1271 *wl,
+				  struct wl12xx_vif *wlvif,
+				  u8 wake_up_event, u8 listen_interval);
+int wl1271_acx_sleep_auth(struct wl1271 *wl, u8 sleep_auth);
+int wl1271_acx_tx_power(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			int power);
+int wl1271_acx_feature_cfg(struct wl1271 *wl, struct wl12xx_vif *wlvif);
+int wl1271_acx_mem_map(struct wl1271 *wl,
+		       struct acx_header *mem_map, size_t len);
+int wl1271_acx_rx_msdu_life_time(struct wl1271 *wl);
+int wl1271_acx_slot(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+		    enum acx_slot_type slot_time);
+int wl1271_acx_group_address_tbl(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+				 bool enable, void *mc_list, u32 mc_list_len);
+int wl1271_acx_service_period_timeout(struct wl1271 *wl,
+				      struct wl12xx_vif *wlvif);
+int wl1271_acx_rts_threshold(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			     u32 rts_threshold);
+int wl1271_acx_dco_itrim_params(struct wl1271 *wl);
+int wl1271_acx_beacon_filter_opt(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+				 bool enable_filter);
+int wl1271_acx_beacon_filter_table(struct wl1271 *wl,
+				   struct wl12xx_vif *wlvif);
+int wl1271_acx_conn_monit_params(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+				 bool enable);
+int wl1271_acx_sg_enable(struct wl1271 *wl, bool enable);
+int wl12xx_acx_sg_cfg(struct wl1271 *wl);
+int wl1271_acx_cca_threshold(struct wl1271 *wl);
+int wl1271_acx_bcn_dtim_options(struct wl1271 *wl, struct wl12xx_vif *wlvif);
+int wl1271_acx_aid(struct wl1271 *wl, struct wl12xx_vif *wlvif, u16 aid);
+int wl1271_acx_event_mbox_mask(struct wl1271 *wl, u32 event_mask);
+int wl1271_acx_set_preamble(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			    enum acx_preamble_type preamble);
+int wl1271_acx_cts_protect(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			   enum acx_ctsprotect_type ctsprotect);
+int wl1271_acx_statistics(struct wl1271 *wl, struct acx_statistics *stats);
+int wl1271_acx_sta_rate_policies(struct wl1271 *wl, struct wl12xx_vif *wlvif);
+int wl1271_acx_ap_rate_policy(struct wl1271 *wl, struct conf_tx_rate_class *c,
+		      u8 idx);
+int wl1271_acx_ac_cfg(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+		      u8 ac, u8 cw_min, u16 cw_max, u8 aifsn, u16 txop);
+int wl1271_acx_tid_cfg(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+		       u8 queue_id, u8 channel_type,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	ACX_WAKE_UP_CONDITIONS      = 0x0002,
 	ACX_MEM_CFG                 = 0x0003,
@@ -1355,16 +2037,67 @@ int wl1271_acx_ap_rate_policy(struct wl1271 *wl, struct conf_tx_rate_class *c,
 int wl1271_acx_ac_cfg(struct wl1271 *wl, u8 ac, u8 cw_min, u16 cw_max,
 		      u8 aifsn, u16 txop);
 int wl1271_acx_tid_cfg(struct wl1271 *wl, u8 queue_id, u8 channel_type,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       u8 tsid, u8 ps_scheme, u8 ack_policy,
 		       u32 apsd_conf0, u32 apsd_conf1);
 int wl1271_acx_frag_threshold(struct wl1271 *wl, u32 frag_threshold);
 int wl1271_acx_tx_config_options(struct wl1271 *wl);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int wl12xx_acx_mem_cfg(struct wl1271 *wl);
+=======
 int wl1271_acx_ap_mem_cfg(struct wl1271 *wl);
 int wl1271_acx_sta_mem_cfg(struct wl1271 *wl);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int wl1271_acx_ap_mem_cfg(struct wl1271 *wl);
+int wl1271_acx_sta_mem_cfg(struct wl1271 *wl);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int wl1271_acx_init_mem_config(struct wl1271 *wl);
 int wl1271_acx_host_if_cfg_bitmap(struct wl1271 *wl, u32 host_cfg_bitmap);
 int wl1271_acx_init_rx_interrupt(struct wl1271 *wl);
 int wl1271_acx_smart_reflex(struct wl1271 *wl);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int wl1271_acx_bet_enable(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			  bool enable);
+int wl1271_acx_arp_ip_filter(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			     u8 enable, __be32 address);
+int wl1271_acx_pm_config(struct wl1271 *wl);
+int wl1271_acx_keep_alive_mode(struct wl1271 *wl, struct wl12xx_vif *vif,
+			       bool enable);
+int wl1271_acx_keep_alive_config(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+				 u8 index, u8 tpl_valid);
+int wl1271_acx_rssi_snr_trigger(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+				bool enable, s16 thold, u8 hyst);
+int wl1271_acx_rssi_snr_avg_weights(struct wl1271 *wl,
+				    struct wl12xx_vif *wlvif);
+int wl1271_acx_set_ht_capabilities(struct wl1271 *wl,
+				    struct ieee80211_sta_ht_cap *ht_cap,
+				    bool allow_ht_operation, u8 hlid);
+int wl1271_acx_set_ht_information(struct wl1271 *wl,
+				   struct wl12xx_vif *wlvif,
+				   u16 ht_operation_mode);
+int wl12xx_acx_set_ba_initiator_policy(struct wl1271 *wl,
+				       struct wl12xx_vif *wlvif);
+int wl12xx_acx_set_ba_receiver_session(struct wl1271 *wl, u8 tid_index,
+				       u16 ssn, bool enable, u8 peer_hlid);
+int wl12xx_acx_tsf_info(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			u64 *mactime);
+int wl1271_acx_ps_rx_streaming(struct wl1271 *wl, struct wl12xx_vif *wlvif,
+			       bool enable);
+int wl1271_acx_ap_max_tx_retry(struct wl1271 *wl, struct wl12xx_vif *wlvif);
+int wl12xx_acx_config_ps(struct wl1271 *wl, struct wl12xx_vif *wlvif);
+int wl1271_acx_set_inconnection_sta(struct wl1271 *wl, u8 *addr);
+int wl1271_acx_fm_coex(struct wl1271 *wl);
+int wl12xx_acx_set_rate_mgmt_params(struct wl1271 *wl);
+int wl12xx_acx_config_hangover(struct wl1271 *wl);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int wl1271_acx_bet_enable(struct wl1271 *wl, bool enable);
 int wl1271_acx_arp_ip_filter(struct wl1271 *wl, u8 enable, __be32 address);
 int wl1271_acx_pm_config(struct wl1271 *wl);
@@ -1389,5 +2122,9 @@ int wl1271_acx_config_ps(struct wl1271 *wl);
 int wl1271_acx_set_inconnection_sta(struct wl1271 *wl, u8 *addr);
 int wl1271_acx_set_ap_beacon_filter(struct wl1271 *wl, bool enable);
 int wl1271_acx_fm_coex(struct wl1271 *wl);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __WL1271_ACX_H__ */

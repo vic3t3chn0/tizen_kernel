@@ -240,6 +240,12 @@ static struct i2c_driver bt866_driver = {
 	.id_table	= bt866_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(bt866_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int init_bt866(void)
 {
 	return i2c_add_driver(&bt866_driver);
@@ -252,3 +258,7 @@ static __exit void exit_bt866(void)
 
 module_init(init_bt866);
 module_exit(exit_bt866);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

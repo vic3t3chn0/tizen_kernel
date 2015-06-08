@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/vmalloc.h>
 #include <linux/time.h>
@@ -91,8 +95,11 @@ static int snd_ctl_open(struct inode *inode, struct file *file)
 	write_unlock_irqrestore(&card->ctl_files_rwlock, flags);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_card_unref(card);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
       __error:
@@ -102,9 +109,12 @@ static int snd_ctl_open(struct inode *inode, struct file *file)
       __error1:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (card)
 		snd_card_unref(card);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
       	return err;
 }
 
@@ -133,9 +143,12 @@ static int snd_ctl_release(struct inode *inode, struct file *file)
 	ctl = file->private_data;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (snd_BUG_ON(!ctl || !ctl->card))
 		return -ENXIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	file->private_data = NULL;
 	card = ctl->card;
 	write_lock_irqsave(&card->ctl_files_rwlock, flags);
@@ -1009,8 +1022,11 @@ struct user_element {
 	void *priv_data;		/* private data (like strings for enumerated type) */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long priv_data_size;	/* size of private data in bytes */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int snd_ctl_elem_user_info(struct snd_kcontrol *kcontrol,
@@ -1023,6 +1039,9 @@ static int snd_ctl_elem_user_info(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_ctl_elem_user_enum_info(struct snd_kcontrol *kcontrol,
 				       struct snd_ctl_elem_info *uinfo)
 {
@@ -1045,8 +1064,11 @@ static int snd_ctl_elem_user_enum_info(struct snd_kcontrol *kcontrol,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_ctl_elem_user_get(struct snd_kcontrol *kcontrol,
 				 struct snd_ctl_elem_value *ucontrol)
 {
@@ -1102,6 +1124,9 @@ static int snd_ctl_elem_user_tlv(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_ctl_elem_init_enum_names(struct user_element *ue)
 {
 	char *names, *p;
@@ -1142,6 +1167,8 @@ static void snd_ctl_elem_user_free(struct snd_kcontrol *kcontrol)
 
 	kfree(ue->tlv_data);
 	kfree(ue->priv_data);
+<<<<<<< HEAD
+=======
 =======
 static void snd_ctl_elem_user_free(struct snd_kcontrol *kcontrol)
 {
@@ -1149,6 +1176,7 @@ static void snd_ctl_elem_user_free(struct snd_kcontrol *kcontrol)
 	if (ue->tlv_data)
 		kfree(ue->tlv_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(ue);
 }
 
@@ -1165,9 +1193,14 @@ static int snd_ctl_elem_add(struct snd_ctl_file *file,
 
 	if (!replace && card->user_ctl_count >= MAX_USER_CONTROLS)
 =======
+<<<<<<< HEAD
+
+	if (!replace && card->user_ctl_count >= MAX_USER_CONTROLS)
+=======
 	
 	if (card->user_ctl_count >= MAX_USER_CONTROLS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	if (info->count < 1)
 		return -EINVAL;
@@ -1196,13 +1229,19 @@ static int snd_ctl_elem_add(struct snd_ctl_file *file,
 	kctl.count = info->owner ? info->owner : 1;
 	access |= SNDRV_CTL_ELEM_ACCESS_USER;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (info->type == SNDRV_CTL_ELEM_TYPE_ENUMERATED)
 		kctl.info = snd_ctl_elem_user_enum_info;
 	else
 		kctl.info = snd_ctl_elem_user_info;
+<<<<<<< HEAD
+=======
 =======
 	kctl.info = snd_ctl_elem_user_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (access & SNDRV_CTL_ELEM_ACCESS_READ)
 		kctl.get = snd_ctl_elem_user_get;
 	if (access & SNDRV_CTL_ELEM_ACCESS_WRITE)
@@ -1224,13 +1263,19 @@ static int snd_ctl_elem_add(struct snd_ctl_file *file,
 			return -EINVAL;
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SNDRV_CTL_ELEM_TYPE_ENUMERATED:
 		private_size = sizeof(unsigned int);
 		if (info->count > 128 || info->value.enumerated.items == 0)
 			return -EINVAL;
 		break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SNDRV_CTL_ELEM_TYPE_BYTES:
 		private_size = sizeof(unsigned char);
 		if (info->count > 512)
@@ -1253,6 +1298,9 @@ static int snd_ctl_elem_add(struct snd_ctl_file *file,
 	ue->elem_data = (char *)ue + sizeof(*ue);
 	ue->elem_data_size = private_size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ue->info.type == SNDRV_CTL_ELEM_TYPE_ENUMERATED) {
 		err = snd_ctl_elem_init_enum_names(ue);
 		if (err < 0) {
@@ -1264,11 +1312,14 @@ static int snd_ctl_elem_add(struct snd_ctl_file *file,
 	_kctl = snd_ctl_new(&kctl, access);
 	if (_kctl == NULL) {
 		kfree(ue->priv_data);
+<<<<<<< HEAD
+=======
 =======
 	kctl.private_free = snd_ctl_elem_user_free;
 	_kctl = snd_ctl_new(&kctl, access);
 	if (_kctl == NULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(ue);
 		return -ENOMEM;
 	}
@@ -1366,8 +1417,12 @@ static int snd_ctl_tlv_ioctl(struct snd_ctl_file *file,
 <<<<<<< HEAD
 		err = kctl->tlv.c(kctl, op_flag, tlv.length, _tlv->tlv);
 =======
+<<<<<<< HEAD
+		err = kctl->tlv.c(kctl, op_flag, tlv.length, _tlv->tlv);
+=======
 		err = kctl->tlv.c(kctl, op_flag, tlv.length, _tlv->tlv); 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err > 0) {
 			up_read(&card->controls_rwsem);
 			snd_ctl_notify(card, SNDRV_CTL_EVENT_MASK_TLV, &kctl->id);
@@ -1489,9 +1544,12 @@ static ssize_t snd_ctl_read(struct file *file, char __user *buffer,
 			remove_wait_queue(&ctl->change_sleep, &wait);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			if (ctl->card->shutdown)
 				return -ENODEV;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (signal_pending(current))
 				return -ERESTARTSYS;
 			spin_lock_irq(&ctl->read_lock);

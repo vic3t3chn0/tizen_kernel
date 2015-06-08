@@ -8,7 +8,11 @@
 <<<<<<< HEAD
  *		 2011, Red Hat Inc, Arnaldo Carvalho de Melo <acme@redhat.com>
 =======
+<<<<<<< HEAD
+ *		 2011, Red Hat Inc, Arnaldo Carvalho de Melo <acme@redhat.com>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Improvements and fixes by:
  *
@@ -43,7 +47,11 @@
 <<<<<<< HEAD
 #include "util/sort.h"
 =======
+<<<<<<< HEAD
+#include "util/sort.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "util/debug.h"
 
@@ -51,7 +59,11 @@
 <<<<<<< HEAD
 #include <elf.h>
 =======
+<<<<<<< HEAD
+#include <elf.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <fcntl.h>
 
 #include <stdio.h>
@@ -72,12 +84,18 @@
 <<<<<<< HEAD
 #include <sys/utsname.h>
 =======
+<<<<<<< HEAD
+#include <sys/utsname.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sys/mman.h>
 
 #include <linux/unistd.h>
 #include <linux/types.h>
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct perf_top top = {
@@ -119,6 +137,7 @@ static int			sym_pcnt_filter			=      5;
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void get_term_dimensions(struct winsize *ws)
 {
 	char *s = getenv("LINES");
@@ -142,6 +161,9 @@ void get_term_dimensions(struct winsize *ws)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_top__update_print_entries(struct perf_top *top)
 {
 	if (top->print_entries > 9)
@@ -164,6 +186,8 @@ static void perf_top__sig_winch(int sig __used, siginfo_t *info __used, void *ar
 }
 
 static int perf_top__parse_source(struct perf_top *top, struct hist_entry *he)
+<<<<<<< HEAD
+=======
 =======
 static void update_print_entries(struct winsize *ws)
 {
@@ -181,6 +205,7 @@ static void sig_winch_handler(int sig __used)
 
 static int parse_source(struct sym_entry *syme)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct symbol *sym;
 	struct annotation *notes;
@@ -188,11 +213,16 @@ static int parse_source(struct sym_entry *syme)
 	int err = -1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!he || !he->ms.sym)
 		return -1;
 
 	sym = he->ms.sym;
 	map = he->ms.map;
+<<<<<<< HEAD
+=======
 =======
 	if (!syme)
 		return -1;
@@ -200,6 +230,7 @@ static int parse_source(struct sym_entry *syme)
 	sym = sym_entry__symbol(syme);
 	map = syme->map;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We can't annotate with just /proc/kallsyms
@@ -222,8 +253,12 @@ static int parse_source(struct sym_entry *syme)
 <<<<<<< HEAD
 	if (symbol__alloc_hist(sym) < 0) {
 =======
+<<<<<<< HEAD
+	if (symbol__alloc_hist(sym) < 0) {
+=======
 	if (symbol__alloc_hist(sym, top.evlist->nr_entries) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pthread_mutex_unlock(&notes->lock);
 		pr_err("Not enough memory for annotating '%s' symbol!\n",
 		       sym->name);
@@ -232,16 +267,22 @@ static int parse_source(struct sym_entry *syme)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = symbol__annotate(sym, map, 0);
 	if (err == 0) {
 out_assign:
 		top->sym_filter_entry = he;
+<<<<<<< HEAD
+=======
 =======
 	err = symbol__annotate(sym, syme->map, 0);
 	if (err == 0) {
 out_assign:
 		top.sym_filter_entry = syme;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	pthread_mutex_unlock(&notes->lock);
@@ -249,6 +290,9 @@ out_assign:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __zero_source_counters(struct hist_entry *he)
 {
 	struct symbol *sym = he->ms.sym;
@@ -296,6 +340,8 @@ static void perf_top__record_precise_ip(struct perf_top *top,
 		return;
 
 	sym = he->ms.sym;
+<<<<<<< HEAD
+=======
 =======
 static void __zero_source_counters(struct sym_entry *syme)
 {
@@ -313,12 +359,16 @@ static void record_precise_ip(struct sym_entry *syme, int counter, u64 ip)
 
 	sym = sym_entry__symbol(syme);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	notes = symbol__annotation(sym);
 
 	if (pthread_mutex_trylock(&notes->lock))
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (notes->src == NULL && symbol__alloc_hist(sym) < 0) {
 		pthread_mutex_unlock(&notes->lock);
 		pr_err("Not enough memory for annotating '%s' symbol!\n",
@@ -339,6 +389,8 @@ static void record_precise_ip(struct sym_entry *syme, int counter, u64 ip)
 static void perf_top__show_details(struct perf_top *top)
 {
 	struct hist_entry *he = top->sym_filter_entry;
+<<<<<<< HEAD
+=======
 =======
 	ip = syme->map->map_ip(syme->map, ip);
 	symbol__inc_addr_samples(sym, syme->map, counter, ip);
@@ -349,21 +401,28 @@ static void perf_top__show_details(struct perf_top *top)
 static void show_details(struct sym_entry *syme)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct annotation *notes;
 	struct symbol *symbol;
 	int more;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!he)
 		return;
 
 	symbol = he->ms.sym;
+<<<<<<< HEAD
+=======
 =======
 	if (!syme)
 		return;
 
 	symbol = sym_entry__symbol(syme);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	notes = symbol__annotation(symbol);
 
 	pthread_mutex_lock(&notes->lock);
@@ -372,6 +431,9 @@ static void show_details(struct sym_entry *syme)
 		goto out_unlock;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printf("Showing %s for %s\n", event_name(top->sym_evsel), symbol->name);
 	printf("  Events  Pcnt (>=%d%%)\n", top->sym_pcnt_filter);
 
@@ -381,6 +443,8 @@ static void show_details(struct sym_entry *syme)
 		symbol__annotate_zero_histogram(symbol, top->sym_evsel->idx);
 	else
 		symbol__annotate_decay_histogram(symbol, top->sym_evsel->idx);
+<<<<<<< HEAD
+=======
 =======
 	printf("Showing %s for %s\n", event_name(top.sym_evsel), symbol->name);
 	printf("  Events  Pcnt (>=%d%%)\n", sym_pcnt_filter);
@@ -392,6 +456,7 @@ static void show_details(struct sym_entry *syme)
 	else
 		symbol__annotate_decay_histogram(symbol, top.sym_evsel->idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (more != 0)
 		printf("%d lines not displayed, maybe increase display entries [e]\n", more);
 out_unlock:
@@ -401,6 +466,9 @@ out_unlock:
 static const char		CONSOLE_CLEAR[] = "[H[2J";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct hist_entry *perf_evsel__add_hist_entry(struct perf_evsel *evsel,
 						     struct addr_location *al,
 						     struct perf_sample *sample)
@@ -455,6 +523,8 @@ static void perf_top__print_sym_table(struct perf_top *top)
 	putchar('\n');
 	hists__fprintf(&top->sym_evsel->hists, NULL, false, false,
 		       top->winsize.ws_row - 4 - printed, win_width, stdout);
+<<<<<<< HEAD
+=======
 =======
 static void __list_insert_active_sym(struct sym_entry *syme)
 {
@@ -545,6 +615,7 @@ static void print_sym_table(struct perf_session *session)
 					syme->map->dso->short_name);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void prompt_integer(int *target, const char *msg)
@@ -583,17 +654,23 @@ static void prompt_percent(int *target, const char *msg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_top__prompt_symbol(struct perf_top *top, const char *msg)
 {
 	char *buf = malloc(0), *p;
 	struct hist_entry *syme = top->sym_filter_entry, *n, *found = NULL;
 	struct rb_node *next;
+<<<<<<< HEAD
+=======
 =======
 static void prompt_symbol(struct sym_entry **target, const char *msg)
 {
 	char *buf = malloc(0), *p;
 	struct sym_entry *syme = *target, *n, *found = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t dummy = 0;
 
 	/* zero counters of active symbol */
@@ -602,8 +679,12 @@ static void prompt_symbol(struct sym_entry **target, const char *msg)
 <<<<<<< HEAD
 		top->sym_filter_entry = NULL;
 =======
+<<<<<<< HEAD
+		top->sym_filter_entry = NULL;
+=======
 		*target = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	fprintf(stdout, "\n%s: ", msg);
@@ -615,6 +696,9 @@ static void prompt_symbol(struct sym_entry **target, const char *msg)
 		*p = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	next = rb_first(&top->sym_evsel->hists.entries);
 	while (next) {
 		n = rb_entry(next, struct hist_entry, rb_node);
@@ -623,6 +707,8 @@ static void prompt_symbol(struct sym_entry **target, const char *msg)
 			break;
 		}
 		next = rb_next(&n->rb_node);
+<<<<<<< HEAD
+=======
 =======
 	pthread_mutex_lock(&top.active_symbols_lock);
 	syme = list_entry(top.active_symbols.next, struct sym_entry, node);
@@ -636,6 +722,7 @@ static void prompt_symbol(struct sym_entry **target, const char *msg)
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!found) {
@@ -645,22 +732,32 @@ static void prompt_symbol(struct sym_entry **target, const char *msg)
 	} else
 		perf_top__parse_source(top, found);
 =======
+<<<<<<< HEAD
+	} else
+		perf_top__parse_source(top, found);
+=======
 		return;
 	} else
 		parse_source(found);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out_free:
 	free(buf);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_top__print_mapped_keys(struct perf_top *top)
 {
 	char *name = NULL;
 
 	if (top->sym_filter_entry) {
 		struct symbol *sym = top->sym_filter_entry->ms.sym;
+<<<<<<< HEAD
+=======
 =======
 static void print_mapped_keys(void)
 {
@@ -669,11 +766,15 @@ static void print_mapped_keys(void)
 	if (top.sym_filter_entry) {
 		struct symbol *sym = sym_entry__symbol(top.sym_filter_entry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		name = sym->name;
 	}
 
 	fprintf(stdout, "\nMapped keys:\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fprintf(stdout, "\t[d]     display refresh delay.             \t(%d)\n", top->delay_secs);
 	fprintf(stdout, "\t[e]     display entries (lines).           \t(%d)\n", top->print_entries);
 
@@ -697,6 +798,8 @@ static void print_mapped_keys(void)
 }
 
 static int perf_top__key_mapped(struct perf_top *top, int c)
+<<<<<<< HEAD
+=======
 =======
 	fprintf(stdout, "\t[d]     display refresh delay.             \t(%d)\n", top.delay_secs);
 	fprintf(stdout, "\t[e]     display entries (lines).           \t(%d)\n", top.print_entries);
@@ -725,6 +828,7 @@ static int perf_top__key_mapped(struct perf_top *top, int c)
 
 static int key_mapped(int c)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (c) {
 		case 'd':
@@ -743,9 +847,13 @@ static int key_mapped(int c)
 <<<<<<< HEAD
 			return top->evlist->nr_entries > 1 ? 1 : 0;
 =======
+<<<<<<< HEAD
+			return top->evlist->nr_entries > 1 ? 1 : 0;
+=======
 		case 'w':
 			return top.evlist->nr_entries > 1 ? 1 : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		default:
 			break;
 	}
@@ -754,6 +862,9 @@ static int key_mapped(int c)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_top__handle_keypress(struct perf_top *top, int c)
 {
 	if (!perf_top__key_mapped(top, c)) {
@@ -761,6 +872,8 @@ static void perf_top__handle_keypress(struct perf_top *top, int c)
 		struct termios tc, save;
 
 		perf_top__print_mapped_keys(top);
+<<<<<<< HEAD
+=======
 =======
 static void handle_keypress(struct perf_session *session, int c)
 {
@@ -770,6 +883,7 @@ static void handle_keypress(struct perf_session *session, int c)
 
 		print_mapped_keys();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(stdout, "\nEnter selection, or unmapped key to continue: ");
 		fflush(stdout);
 
@@ -787,14 +901,21 @@ static void handle_keypress(struct perf_session *session, int c)
 <<<<<<< HEAD
 		if (!perf_top__key_mapped(top, c))
 =======
+<<<<<<< HEAD
+		if (!perf_top__key_mapped(top, c))
+=======
 		if (!key_mapped(c))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 	}
 
 	switch (c) {
 		case 'd':
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			prompt_integer(&top->delay_secs, "Enter display delay");
 			if (top->delay_secs < 1)
 				top->delay_secs = 1;
@@ -815,6 +936,8 @@ static void handle_keypress(struct perf_session *session, int c)
 			break;
 		case 'E':
 			if (top->evlist->nr_entries > 1) {
+<<<<<<< HEAD
+=======
 =======
 			prompt_integer(&top.delay_secs, "Enter display delay");
 			if (top.delay_secs < 1)
@@ -831,12 +954,16 @@ static void handle_keypress(struct perf_session *session, int c)
 		case 'E':
 			if (top.evlist->nr_entries > 1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* Select 0 as the default event: */
 				int counter = 0;
 
 				fprintf(stderr, "\nAvailable events:");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				list_for_each_entry(top->sym_evsel, &top->evlist->entries, node)
 					fprintf(stderr, "\n\t%d %s", top->sym_evsel->idx, event_name(top->sym_evsel));
 
@@ -863,6 +990,8 @@ static void handle_keypress(struct perf_session *session, int c)
 			break;
 		case 'K':
 			top->hide_kernel_symbols = !top->hide_kernel_symbols;
+<<<<<<< HEAD
+=======
 =======
 				list_for_each_entry(top.sym_evsel, &top.evlist->entries, node)
 					fprintf(stderr, "\n\t%d %s", top.sym_evsel->idx, event_name(top.sym_evsel));
@@ -890,11 +1019,15 @@ static void handle_keypress(struct perf_session *session, int c)
 		case 'K':
 			top.hide_kernel_symbols = !top.hide_kernel_symbols;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case 'q':
 		case 'Q':
 			printf("exiting.\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (top->dump_symtab)
 				perf_session__fprintf_dsos(top->session, stderr);
 			exit(0);
@@ -908,6 +1041,8 @@ static void handle_keypress(struct perf_session *session, int c)
 				struct hist_entry *syme = top->sym_filter_entry;
 
 				top->sym_filter_entry = NULL;
+<<<<<<< HEAD
+=======
 =======
 			if (dump_symtab)
 				perf_session__fprintf_dsos(session, stderr);
@@ -923,15 +1058,21 @@ static void handle_keypress(struct perf_session *session, int c)
 
 				top.sym_filter_entry = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				__zero_source_counters(syme);
 			}
 			break;
 		case 'U':
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			top->hide_user_symbols = !top->hide_user_symbols;
 			break;
 		case 'z':
 			top->zero = !top->zero;
+<<<<<<< HEAD
+=======
 =======
 			top.hide_user_symbols = !top.hide_user_symbols;
 			break;
@@ -941,6 +1082,7 @@ static void handle_keypress(struct perf_session *session, int c)
 		case 'z':
 			top.zero = !top.zero;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			break;
@@ -948,6 +1090,9 @@ static void handle_keypress(struct perf_session *session, int c)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_top__sort_new_samples(void *arg)
 {
 	struct perf_top *t = arg;
@@ -983,6 +1128,8 @@ static void *display_thread_tui(void *arg)
 				      perf_top__sort_new_samples,
 				      top, top->delay_secs);
 
+<<<<<<< HEAD
+=======
 =======
 static void *display_thread_tui(void *arg __used)
 {
@@ -998,18 +1145,24 @@ static void *display_thread_tui(void *arg __used)
 	if (!err)
 		perf_top__tui_browser(&top);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	exit_browser(0);
 	exit(0);
 	return NULL;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void *display_thread(void *arg)
 {
 	struct pollfd stdin_poll = { .fd = 0, .events = POLLIN };
 	struct termios tc, save;
 	struct perf_top *top = arg;
 	int delay_msecs, c;
+<<<<<<< HEAD
+=======
 =======
 static void *display_thread(void *arg __used)
 {
@@ -1018,6 +1171,7 @@ static void *display_thread(void *arg __used)
 	int delay_msecs, c;
 	struct perf_session *session = (struct perf_session *) arg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tcgetattr(0, &save);
 	tc = save;
@@ -1030,14 +1184,23 @@ static void *display_thread(void *arg __used)
 repeat:
 	delay_msecs = top->delay_secs * 1000;
 =======
+<<<<<<< HEAD
+	pthread__unblock_sigwinch();
+repeat:
+	delay_msecs = top->delay_secs * 1000;
+=======
 repeat:
 	delay_msecs = top.delay_secs * 1000;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tcsetattr(0, TCSANOW, &tc);
 	/* trash return*/
 	getc(stdin);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (1) {
 		perf_top__print_sym_table(top);
 		/*
@@ -1060,6 +1223,8 @@ process_hotkey:
 	tcsetattr(0, TCSAFLUSH, &save);
 
 	perf_top__handle_keypress(top, c);
+<<<<<<< HEAD
+=======
 =======
 	do {
 		print_sym_table(session);
@@ -1070,6 +1235,7 @@ process_hotkey:
 
 	handle_keypress(session, c);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	goto repeat;
 
 	return NULL;
@@ -1080,7 +1246,11 @@ static const char *skip_symbols[] = {
 <<<<<<< HEAD
 	"intel_idle",
 =======
+<<<<<<< HEAD
+	"intel_idle",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"default_idle",
 	"native_safe_halt",
 	"cpu_idle",
@@ -1098,10 +1268,15 @@ static const char *skip_symbols[] = {
 static int symbol_filter(struct map *map __used, struct symbol *sym)
 {
 =======
+<<<<<<< HEAD
+static int symbol_filter(struct map *map __used, struct symbol *sym)
+{
+=======
 static int symbol_filter(struct map *map, struct symbol *sym)
 {
 	struct sym_entry *syme;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *name = sym->name;
 	int i;
 
@@ -1123,6 +1298,8 @@ static int symbol_filter(struct map *map, struct symbol *sym)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	syme = symbol__priv(sym);
 	syme->map = map;
 	symbol__annotate_init(map, sym);
@@ -1134,6 +1311,7 @@ static int symbol_filter(struct map *map, struct symbol *sym)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; skip_symbols[i]; i++) {
 		if (!strcmp(skip_symbols[i], name)) {
 			sym->ignore = true;
@@ -1145,6 +1323,9 @@ static int symbol_filter(struct map *map, struct symbol *sym)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_event__process_sample(struct perf_tool *tool,
 				       const union perf_event *event,
 				       struct perf_evsel *evsel,
@@ -1166,6 +1347,8 @@ static void perf_event__process_sample(struct perf_tool *tool,
 	if (!machine) {
 		pr_err("%u unprocessable samples recorded.",
 		       top->session->hists.stats.nr_unprocessable_samples++);
+<<<<<<< HEAD
+=======
 =======
 static void perf_event__process_sample(const union perf_event *event,
 				       struct perf_sample *sample,
@@ -1211,6 +1394,7 @@ static void perf_event__process_sample(const union perf_event *event,
 		pr_err("Can't find guest [%d]'s kernel information\n",
 			event->ip.pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -1220,10 +1404,16 @@ static void perf_event__process_sample(const union perf_event *event,
 
 	if (perf_event__preprocess_sample(event, machine, &al, sample,
 =======
+<<<<<<< HEAD
+		top->exact_samples++;
+
+	if (perf_event__preprocess_sample(event, machine, &al, sample,
+=======
 		top.exact_samples++;
 
 	if (perf_event__preprocess_sample(event, session, &al, sample,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  symbol_filter) < 0 ||
 	    al.filtered)
 		return;
@@ -1231,8 +1421,12 @@ static void perf_event__process_sample(const union perf_event *event,
 <<<<<<< HEAD
 	if (!top->kptr_restrict_warned &&
 =======
+<<<<<<< HEAD
+	if (!top->kptr_restrict_warned &&
+=======
 	if (!kptr_restrict_warned &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    symbol_conf.kptr_restrict &&
 	    al.cpumode == PERF_RECORD_MISC_KERNEL) {
 		ui__warning(
@@ -1246,8 +1440,12 @@ static void perf_event__process_sample(const union perf_event *event,
 <<<<<<< HEAD
 		top->kptr_restrict_warned = true;
 =======
+<<<<<<< HEAD
+		top->kptr_restrict_warned = true;
+=======
 		kptr_restrict_warned = true;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (al.sym == NULL) {
@@ -1266,8 +1464,12 @@ static void perf_event__process_sample(const union perf_event *event,
 <<<<<<< HEAD
 		if (!top->kptr_restrict_warned && !top->vmlinux_warned &&
 =======
+<<<<<<< HEAD
+		if (!top->kptr_restrict_warned && !top->vmlinux_warned &&
+=======
 		if (!kptr_restrict_warned && !vmlinux_warned &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    al.map == machine->vmlinux_maps[MAP__FUNCTION] &&
 		    RB_EMPTY_ROOT(&al.map->dso->symbols[MAP__FUNCTION])) {
 			if (symbol_conf.vmlinux_name) {
@@ -1281,6 +1483,9 @@ static void perf_event__process_sample(const union perf_event *event,
 			if (use_browser <= 0)
 				sleep(5);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			top->vmlinux_warned = true;
 		}
 	}
@@ -1328,6 +1533,8 @@ static void perf_top__mmap_read_idx(struct perf_top *top, int idx)
 
 	while ((event = perf_evlist__mmap_read(top->evlist, idx)) != NULL) {
 		ret = perf_session__parse_sample(session, event, &sample);
+<<<<<<< HEAD
+=======
 =======
 			vmlinux_warned = true;
 		}
@@ -1382,12 +1589,16 @@ static void perf_session__mmap_read_idx(struct perf_session *self, int idx)
 	while ((event = perf_evlist__mmap_read(top.evlist, idx)) != NULL) {
 		ret = perf_session__parse_sample(self, event, &sample);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret) {
 			pr_err("Can't parse sample, err = %d\n", ret);
 			continue;
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		evsel = perf_evlist__id2evsel(session->evlist, sample.id);
 		assert(evsel != NULL);
 
@@ -1464,6 +1675,8 @@ static void perf_top__start_counters(struct perf_top *top)
 			attr->sample_type |= PERF_SAMPLE_PERIOD;
 			attr->freq	  = 1;
 			attr->sample_freq = top->freq;
+<<<<<<< HEAD
+=======
 =======
 		if (event->header.type == PERF_RECORD_SAMPLE)
 			perf_event__process_sample(event, &sample, self);
@@ -1494,6 +1707,7 @@ static void start_counters(struct perf_evlist *evlist)
 			attr->freq	  = 1;
 			attr->sample_freq = top.freq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		if (evlist->nr_entries > 1) {
@@ -1502,6 +1716,9 @@ static void start_counters(struct perf_evlist *evlist)
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (symbol_conf.use_callchain)
 			attr->sample_type |= PERF_SAMPLE_CALLCHAIN;
 
@@ -1536,6 +1753,8 @@ try_again:
 					top->sample_id_all_missing = true;
 					goto retry_sample_id;
 				}
+<<<<<<< HEAD
+=======
 =======
 		attr->mmap = 1;
 		attr->inherit = inherit;
@@ -1548,6 +1767,7 @@ try_again:
 				ui__warning_paranoid();
 				goto out_err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			/*
 			 * If it's cycles then fall back to hrtimer
@@ -1570,12 +1790,18 @@ try_again:
 					    event_name(counter));
 				goto out_err;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} else if (err == EMFILE) {
 				ui__warning("Too many events are opened.\n"
 					    "Try again after reducing the number of events\n");
 				goto out_err;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 
 			ui__warning("The sys_perf_event_open() syscall "
@@ -1590,8 +1816,12 @@ try_again:
 <<<<<<< HEAD
 	if (perf_evlist__mmap(evlist, top->mmap_pages, false) < 0) {
 =======
+<<<<<<< HEAD
+	if (perf_evlist__mmap(evlist, top->mmap_pages, false) < 0) {
+=======
 	if (perf_evlist__mmap(evlist, mmap_pages, false) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ui__warning("Failed to mmap with %d (%s)\n",
 			    errno, strerror(errno));
 		goto out_err;
@@ -1605,6 +1835,9 @@ out_err:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int perf_top__setup_sample_type(struct perf_top *top)
 {
 	if (!top->sort_has_symbols) {
@@ -1626,17 +1859,23 @@ static int __cmd_top(struct perf_top *top)
 {
 	pthread_t thread;
 	int ret;
+<<<<<<< HEAD
+=======
 =======
 static int __cmd_top(void)
 {
 	pthread_t thread;
 	int ret __used;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * FIXME: perf_session__new should allow passing a O_MMAP, so that all this
 	 * mmap reading, etc is encapsulated in it. Use O_WRONLY for now.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	top->session = perf_session__new(NULL, O_WRONLY, false, false, NULL);
 	if (top->session == NULL)
 		return -ENOMEM;
@@ -1663,6 +1902,8 @@ static int __cmd_top(void)
 
 	if (pthread_create(&thread, NULL, (use_browser > 0 ? display_thread_tui :
 							    display_thread), top)) {
+<<<<<<< HEAD
+=======
 =======
 	struct perf_session *session = perf_session__new(NULL, O_WRONLY, false, false, NULL);
 	if (session == NULL)
@@ -1686,21 +1927,28 @@ static int __cmd_top(void)
 	if (pthread_create(&thread, NULL, (use_browser > 0 ? display_thread_tui :
 							     display_thread), session)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printf("Could not create display thread.\n");
 		exit(-1);
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (top->realtime_prio) {
 		struct sched_param param;
 
 		param.sched_priority = top->realtime_prio;
+<<<<<<< HEAD
+=======
 =======
 	if (realtime_prio) {
 		struct sched_param param;
 
 		param.sched_priority = realtime_prio;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sched_setscheduler(0, SCHED_FIFO, &param)) {
 			printf("Could not set realtime priority.\n");
 			exit(-1);
@@ -1709,6 +1957,9 @@ static int __cmd_top(void)
 
 	while (1) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u64 hits = top->samples;
 
 		perf_top__mmap_read(top);
@@ -1799,6 +2050,8 @@ setup:
 		fprintf(stderr, "Can't register callchain params\n");
 		return -1;
 	}
+<<<<<<< HEAD
+=======
 =======
 		u64 hits = top.samples;
 
@@ -1809,6 +2062,7 @@ setup:
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1818,6 +2072,9 @@ static const char * const top_usage[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int cmd_top(int argc, const char **argv, const char *prefix __used)
 {
 	struct perf_evsel *pos;
@@ -1842,6 +2099,8 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	OPT_STRING('t', "tid", &top.target_tid, "tid",
 		    "profile events on existing thread id"),
 	OPT_BOOLEAN('a', "all-cpus", &top.system_wide,
+<<<<<<< HEAD
+=======
 =======
 static const struct option options[] = {
 	OPT_CALLBACK('e', "event", &top.evlist, "event",
@@ -1855,6 +2114,7 @@ static const struct option options[] = {
 		    "profile events on existing thread id"),
 	OPT_BOOLEAN('a', "all-cpus", &system_wide,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    "system-wide collection from all CPUs"),
 	OPT_STRING('C', "cpu", &top.cpu_list, "cpu",
 		    "list of cpus to monitor"),
@@ -1863,6 +2123,9 @@ static const struct option options[] = {
 	OPT_BOOLEAN('K', "hide_kernel_symbols", &top.hide_kernel_symbols,
 		    "hide kernel symbols"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_UINTEGER('m', "mmap-pages", &top.mmap_pages, "number of mmap data pages"),
 	OPT_INTEGER('r', "realtime", &top.realtime_prio,
 		    "collect data with this RT SCHED_FIFO priority"),
@@ -1877,6 +2140,8 @@ static const struct option options[] = {
 	OPT_BOOLEAN('i', "inherit", &top.inherit,
 		    "child tasks inherit counters"),
 	OPT_STRING(0, "sym-annotate", &top.sym_filter, "symbol name",
+<<<<<<< HEAD
+=======
 =======
 	OPT_UINTEGER('m', "mmap-pages", &mmap_pages, "number of mmap data pages"),
 	OPT_INTEGER('r', "realtime", &realtime_prio,
@@ -1893,6 +2158,7 @@ static const struct option options[] = {
 		    "child tasks inherit counters"),
 	OPT_STRING('s', "sym-annotate", &sym_filter, "symbol name",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    "symbol to annotate"),
 	OPT_BOOLEAN('z', "zero", &top.zero,
 		    "zero history across updates"),
@@ -1903,6 +2169,9 @@ static const struct option options[] = {
 	OPT_BOOLEAN('U', "hide_user_symbols", &top.hide_user_symbols,
 		    "hide user symbols"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN(0, "tui", &top.use_tui, "Use the TUI interface"),
 	OPT_BOOLEAN(0, "stdio", &top.use_stdio, "Use the stdio interface"),
 	OPT_INCR('v', "verbose", &verbose,
@@ -1932,6 +2201,8 @@ static const struct option options[] = {
 	OPT_STRING('u', "uid", &top.uid_str, "user", "user to profile"),
 	OPT_END()
 	};
+<<<<<<< HEAD
+=======
 =======
 	OPT_BOOLEAN(0, "tui", &use_tui, "Use the TUI interface"),
 	OPT_BOOLEAN(0, "stdio", &use_stdio, "Use the stdio interface"),
@@ -1945,6 +2216,7 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	struct perf_evsel *pos;
 	int status = -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	top.evlist = perf_evlist__new(NULL, NULL);
 	if (top.evlist == NULL)
@@ -1953,14 +2225,21 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 	symbol_conf.exclude_other = false;
 =======
+<<<<<<< HEAD
+	symbol_conf.exclude_other = false;
+=======
 	page_size = sysconf(_SC_PAGE_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	argc = parse_options(argc, argv, options, top_usage, 0);
 	if (argc)
 		usage_with_options(top_usage, options);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sort_order == default_sort_order)
 		sort_order = "dso,symbol";
 
@@ -1969,6 +2248,8 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	if (top.use_stdio)
 		use_browser = 0;
 	else if (top.use_tui)
+<<<<<<< HEAD
+=======
 =======
 	/*
  	 * XXX For now start disabled, only using TUI if explicitely asked for.
@@ -1981,32 +2262,44 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 		use_browser = 0;
 	else if (use_tui)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		use_browser = 1;
 
 	setup_browser(false);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	top.uid = parse_target_uid(top.uid_str, top.target_tid, top.target_pid);
 	if (top.uid_str != NULL && top.uid == UINT_MAX - 1)
 		goto out_delete_evlist;
 
 	/* CPU and PID are mutually exclusive */
 	if (top.target_tid && top.cpu_list) {
+<<<<<<< HEAD
+=======
 =======
 	/* CPU and PID are mutually exclusive */
 	if (top.target_tid > 0 && top.cpu_list) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printf("WARNING: PID switch overriding CPU\n");
 		sleep(1);
 		top.cpu_list = NULL;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (top.target_pid)
 		top.target_tid = top.target_pid;
 
 	if (perf_evlist__create_maps(top.evlist, top.target_pid,
 				     top.target_tid, top.uid, top.cpu_list) < 0)
+<<<<<<< HEAD
+=======
 =======
 	if (top.target_pid != -1)
 		top.target_tid = top.target_pid;
@@ -2014,6 +2307,7 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	if (perf_evlist__create_maps(top.evlist, top.target_pid,
 				     top.target_tid, top.cpu_list) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		usage_with_options(top_usage, options);
 
 	if (!top.evlist->nr_entries &&
@@ -2026,7 +2320,12 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	symbol_conf.nr_events = top.evlist->nr_entries;
 
 =======
+<<<<<<< HEAD
+	symbol_conf.nr_events = top.evlist->nr_entries;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (top.delay_secs < 1)
 		top.delay_secs = 1;
 
@@ -2034,16 +2333,22 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	 * User specified count overrides default frequency.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (top.default_interval)
 		top.freq = 0;
 	else if (top.freq) {
 		top.default_interval = top.freq;
+<<<<<<< HEAD
+=======
 =======
 	if (default_interval)
 		top.freq = 0;
 	else if (top.freq) {
 		default_interval = top.freq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		fprintf(stderr, "frequency and count are zero, aborting\n");
 		exit(EXIT_FAILURE);
@@ -2051,6 +2356,9 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 
 	list_for_each_entry(pos, &top.evlist->entries, node) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Fill in the ones not specifically initialized via -c:
 		 */
@@ -2061,6 +2369,8 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	top.sym_evsel = list_entry(top.evlist->entries.next, struct perf_evsel, node);
 
 	symbol_conf.priv_size = sizeof(struct annotation);
+<<<<<<< HEAD
+=======
 =======
 		if (perf_evsel__alloc_fd(pos, top.evlist->cpus->nr,
 					 top.evlist->threads->nr) < 0)
@@ -2083,12 +2393,16 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	symbol_conf.priv_size = (sizeof(struct sym_entry) + sizeof(struct annotation) +
 				 (top.evlist->nr_entries + 1) * sizeof(unsigned long));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	symbol_conf.try_vmlinux_path = (symbol_conf.vmlinux_name == NULL);
 	if (symbol__init() < 0)
 		return -1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sort_entry__setup_elide(&sort_dso, symbol_conf.dso_list, "dso", stdout);
 	sort_entry__setup_elide(&sort_comm, symbol_conf.comm_list, "comm", stdout);
 	sort_entry__setup_elide(&sort_sym, symbol_conf.sym_list, "symbol", stdout);
@@ -2112,6 +2426,8 @@ int cmd_top(int argc, const char **argv, const char *prefix __used)
 	status = __cmd_top(&top);
 
 out_delete_evlist:
+<<<<<<< HEAD
+=======
 =======
 	get_term_dimensions(&winsize);
 	if (top.print_entries == 0) {
@@ -2122,6 +2438,7 @@ out_delete_evlist:
 	status = __cmd_top();
 out_free_fd:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	perf_evlist__delete(top.evlist);
 
 	return status;

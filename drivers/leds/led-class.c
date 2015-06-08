@@ -15,13 +15,28 @@
 #include <linux/list.h>
 #include <linux/spinlock.h>
 #include <linux/device.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/sysdev.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/sysdev.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/timer.h>
 #include <linux/err.h>
 #include <linux/ctype.h>
 #include <linux/leds.h>
 #include "leds.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define LED_BUFF_SIZE 50
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct class *leds_class;
 
 static void led_update_brightness(struct led_classdev *led_cdev)
@@ -38,7 +53,15 @@ static ssize_t led_brightness_show(struct device *dev,
 	/* no lock needed for this */
 	led_update_brightness(led_cdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return snprintf(buf, LED_BUFF_SIZE, "%u\n", led_cdev->brightness);
+=======
 	return sprintf(buf, "%u\n", led_cdev->brightness);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return sprintf(buf, "%u\n", led_cdev->brightness);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static ssize_t led_brightness_store(struct device *dev,
@@ -64,17 +87,59 @@ static ssize_t led_brightness_store(struct device *dev,
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t led_max_brightness_store(struct device *dev,
+		struct device_attribute *attr, const char *buf, size_t size)
+{
+	struct led_classdev *led_cdev = dev_get_drvdata(dev);
+	ssize_t ret = -EINVAL;
+	unsigned long state = 0;
+
+	ret = strict_strtoul(buf, 10, &state);
+	if (!ret) {
+		ret = size;
+		if (state > LED_FULL)
+			state = LED_FULL;
+		led_cdev->max_brightness = state;
+		led_set_brightness(led_cdev, led_cdev->brightness);
+	}
+
+	return ret;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t led_max_brightness_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
 	struct led_classdev *led_cdev = dev_get_drvdata(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return snprintf(buf, LED_BUFF_SIZE, "%u\n", led_cdev->max_brightness);
+=======
 	return sprintf(buf, "%u\n", led_cdev->max_brightness);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return sprintf(buf, "%u\n", led_cdev->max_brightness);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct device_attribute led_class_attrs[] = {
 	__ATTR(brightness, 0644, led_brightness_show, led_brightness_store),
+<<<<<<< HEAD
+<<<<<<< HEAD
+	__ATTR(max_brightness, 0644, led_max_brightness_show,
+			led_max_brightness_store),
+=======
 	__ATTR(max_brightness, 0444, led_max_brightness_show, NULL),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	__ATTR(max_brightness, 0444, led_max_brightness_show, NULL),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_LEDS_TRIGGERS
 	__ATTR(trigger, 0644, led_trigger_show, led_trigger_store),
 #endif
@@ -111,6 +176,11 @@ static void led_timer_function(unsigned long data)
 	mod_timer(&led_cdev->blink_timer, jiffies + msecs_to_jiffies(delay));
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void led_stop_software_blink(struct led_classdev *led_cdev)
 {
 	/* deactivate previous settings */
@@ -155,6 +225,10 @@ static void led_set_software_blink(struct led_classdev *led_cdev,
 }
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * led_classdev_suspend - suspend an led_classdev.
  * @led_cdev: the led_classdev to suspend.
@@ -263,6 +337,11 @@ void led_classdev_unregister(struct led_classdev *led_cdev)
 }
 EXPORT_SYMBOL_GPL(led_classdev_unregister);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void led_blink_set(struct led_classdev *led_cdev,
 		   unsigned long *delay_on,
 		   unsigned long *delay_off)
@@ -289,6 +368,10 @@ void led_brightness_set(struct led_classdev *led_cdev,
 }
 EXPORT_SYMBOL(led_brightness_set);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init leds_init(void)
 {
 	leds_class = class_create(THIS_MODULE, "leds");

@@ -23,6 +23,13 @@
 #include <linux/swap.h>
 #include <linux/slab.h>
 #include <linux/sysctl.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/bitmap.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/signal.h>
 #include <linux/printk.h>
 #include <linux/proc_fs.h>
@@ -57,6 +64,14 @@
 #include <linux/pipe_fs_i.h>
 #include <linux/oom.h>
 #include <linux/kmod.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/capability.h>
+#include <linux/binfmts.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/uaccess.h>
 #include <asm/processor.h>
@@ -66,6 +81,15 @@
 #include <asm/stacktrace.h>
 #include <asm/io.h>
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_SPARC
+#include <asm/setup.h>
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BSD_PROCESS_ACCT
 #include <linux/acct.h>
 #endif
@@ -96,6 +120,13 @@ extern char core_pattern[];
 extern unsigned int core_pipe_limit;
 extern int pid_max;
 extern int min_free_kbytes;
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern int extra_free_kbytes;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int min_free_order_shift;
 extern int pid_max_min, pid_max_max;
 extern int sysctl_drop_caches;
@@ -135,12 +166,26 @@ static int minolduid;
 static int min_percpu_pagelist_fract = 8;
 
 static int ngroups_max = NGROUPS_MAX;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const int cap_last_cap = CAP_LAST_CAP;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_INOTIFY_USER
 #include <linux/inotify.h>
 #endif
 #ifdef CONFIG_SPARC
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_SPARC64
@@ -152,6 +197,11 @@ extern int pwrsw_enabled;
 extern int unaligned_enabled;
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_S390
 #ifdef CONFIG_MATHEMU
 extern int sysctl_ieee_emulation_warnings;
@@ -160,6 +210,10 @@ extern int sysctl_userprocess_debug;
 extern int spin_retry;
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_IA64
 extern int no_unaligned_warning;
 extern int unaligned_dump_stack;
@@ -199,6 +253,11 @@ static int sysrq_sysctl_handler(ctl_table *table, int write,
 
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct ctl_table root_table[];
 static struct ctl_table_root sysctl_table_root;
 static struct ctl_table_header root_table_header = {
@@ -213,6 +272,10 @@ static struct ctl_table_root sysctl_table_root = {
 	.default_set.list = LIST_HEAD_INIT(root_table_header.ctl_entry),
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct ctl_table kern_table[];
 static struct ctl_table vm_table[];
 static struct ctl_table fs_table[];
@@ -227,6 +290,14 @@ extern struct ctl_table epoll_table[];
 int sysctl_legacy_va_layout;
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* The default sysctl tables: */
+
+static struct ctl_table sysctl_base_table[] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int late_init_android_gadget(int romtype);
 extern int mfc_late_init(void);
 #ifdef CONFIG_CPU_EXYNOS4210
@@ -281,6 +352,10 @@ rom_feature_set_sysctl(struct ctl_table *table, int write,
 /* The default sysctl tables: */
 
 static struct ctl_table root_table[] = {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.procname	= "kernel",
 		.mode		= 0555,
@@ -332,11 +407,25 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= proc_dointvec,
 	},
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.procname	= "sched_wake_to_idle",
+		.data		= &sysctl_sched_wake_to_idle,
+		.maxlen		= sizeof(unsigned int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.procname	= "rom_feature_set",
 		.data		= &rom_feature_set,
 		.maxlen		= sizeof(unsigned int),
 		.mode		= 0644,
 		.proc_handler	= rom_feature_set_sysctl,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 #ifdef CONFIG_SCHED_DEBUG
 	{
@@ -438,6 +527,22 @@ static struct ctl_table kern_table[] = {
 		.extra2		= &one,
 	},
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_CFS_BANDWIDTH
+	{
+		.procname	= "sched_cfs_bandwidth_slice_us",
+		.data		= &sysctl_sched_cfs_bandwidth_slice,
+		.maxlen		= sizeof(unsigned int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec_minmax,
+		.extra1		= &one,
+	},
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PROVE_LOCKING
 	{
 		.procname	= "prove_locking",
@@ -789,6 +894,19 @@ static struct ctl_table kern_table[] = {
 		.mode		= 0444,
 		.proc_handler	= proc_dointvec,
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.procname	= "cap_last_cap",
+		.data		= (void *)&cap_last_cap,
+		.maxlen		= sizeof(int),
+		.mode		= 0444,
+		.proc_handler	= proc_dointvec,
+	},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_LOCKUP_DETECTOR)
 	{
 		.procname       = "watchdog",
@@ -851,6 +969,21 @@ static struct ctl_table kern_table[] = {
 		.mode		= 0644,
 		.proc_handler	= proc_dointvec,
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_DEBUG_STACKOVERFLOW
+	{
+		.procname	= "panic_on_stackoverflow",
+		.data		= &sysctl_panic_on_stackoverflow,
+		.maxlen		= sizeof(int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
+	},
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.procname	= "bootloader_type",
 		.data		= &bootloader_type,
@@ -1043,6 +1176,33 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= proc_dointvec,
 	},
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_ARM
+	{
+		.procname	= "boot_reason",
+		.data		= &boot_reason,
+		.maxlen		= sizeof(int),
+		.mode		= 0444,
+		.proc_handler	= proc_dointvec,
+	},
+
+	{
+		.procname	= "cold_boot",
+		.data		= &cold_boot,
+		.maxlen		= sizeof(int),
+		.mode		= 0444,
+		.proc_handler	= proc_dointvec,
+	},
+#endif
+/*
+ * NOTE: do not add new entries to this table unless you have read
+ * Documentation/sysctl/ctl_unnumbered.txt
+ */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ }
 };
 
@@ -1248,6 +1408,20 @@ static struct ctl_table vm_table[] = {
 		.extra1		= &zero,
 	},
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.procname	= "extra_free_kbytes",
+		.data		= &extra_free_kbytes,
+		.maxlen		= sizeof(extra_free_kbytes),
+		.mode		= 0644,
+		.proc_handler	= min_free_kbytes_sysctl_handler,
+		.extra1		= &zero,
+	},
+	{
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.procname	= "min_free_order_shift",
 		.data		= &min_free_order_shift,
 		.maxlen		= sizeof(min_free_order_shift),
@@ -1605,6 +1779,17 @@ static struct ctl_table dev_table[] = {
 	{ }
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int __init sysctl_init(void)
+{
+	register_sysctl_table(sysctl_base_table);
+	return 0;
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_SPINLOCK(sysctl_lock);
 
 /* called under sysctl_lock */
@@ -2094,6 +2279,10 @@ void sysctl_head_put(struct ctl_table_header *head)
 {
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_SYSCTL */
 
 /*
@@ -2935,9 +3124,19 @@ int proc_do_large_bitmap(struct ctl_table *table, int write,
 				}
 			}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			bitmap_set(tmp_bitmap, val_a, val_b - val_a + 1);
+=======
 			while (val_a <= val_b)
 				set_bit(val_a++, tmp_bitmap);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			while (val_a <= val_b)
+				set_bit(val_a++, tmp_bitmap);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			first = 0;
 			proc_skip_char(&kbuf, &left, '\n');
 		}
@@ -2980,8 +3179,17 @@ int proc_do_large_bitmap(struct ctl_table *table, int write,
 			if (*ppos)
 				bitmap_or(bitmap, bitmap, tmp_bitmap, bitmap_len);
 			else
+<<<<<<< HEAD
+<<<<<<< HEAD
+				bitmap_copy(bitmap, tmp_bitmap, bitmap_len);
+=======
 				memcpy(bitmap, tmp_bitmap,
 					BITS_TO_LONGS(bitmap_len) * sizeof(unsigned long));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				memcpy(bitmap, tmp_bitmap,
+					BITS_TO_LONGS(bitmap_len) * sizeof(unsigned long));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		kfree(tmp_bitmap);
 		*lenp -= left;
@@ -3059,6 +3267,15 @@ EXPORT_SYMBOL(proc_dointvec_ms_jiffies);
 EXPORT_SYMBOL(proc_dostring);
 EXPORT_SYMBOL(proc_doulongvec_minmax);
 EXPORT_SYMBOL(proc_doulongvec_ms_jiffies_minmax);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(register_sysctl_table);
 EXPORT_SYMBOL(register_sysctl_paths);
 EXPORT_SYMBOL(unregister_sysctl_table);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+EXPORT_SYMBOL(register_sysctl_table);
+EXPORT_SYMBOL(register_sysctl_paths);
+EXPORT_SYMBOL(unregister_sysctl_table);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

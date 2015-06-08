@@ -13,7 +13,12 @@
 #define pr_fmt(fmt) fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 
 #include <linux/types.h>
@@ -52,9 +57,13 @@
 <<<<<<< HEAD
 #include <linux/uaccess.h>
 =======
+<<<<<<< HEAD
+#include <linux/uaccess.h>
+=======
 #include <asm/uaccess.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct proto_ops econet_ops;
 static struct hlist_head econet_sklist;
@@ -75,10 +84,14 @@ static struct socket *udpsock;
 <<<<<<< HEAD
 struct aunhdr {
 =======
+<<<<<<< HEAD
+struct aunhdr {
+=======
 
 struct aunhdr
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char code;		/* AUN magic protocol byte */
 	unsigned char port;
 	unsigned char cb;
@@ -98,9 +111,13 @@ static struct timer_list ab_cleanup_timer;
 <<<<<<< HEAD
 struct ec_cb {
 =======
+<<<<<<< HEAD
+struct ec_cb {
+=======
 struct ec_cb
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sockaddr_ec sec;
 	unsigned long cookie;		/* Supplied by user. */
 #ifdef CONFIG_ECONET_AUNUDP
@@ -157,8 +174,12 @@ static int econet_recvmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 	skb = skb_recv_datagram(sk, flags, flags & MSG_DONTWAIT, &err);
 =======
+<<<<<<< HEAD
+	skb = skb_recv_datagram(sk, flags, flags & MSG_DONTWAIT, &err);
+=======
 	skb=skb_recv_datagram(sk,flags,flags&MSG_DONTWAIT,&err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 *	An error occurred so return it. Because skb_recv_datagram()
@@ -169,8 +190,12 @@ static int econet_recvmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 	if (skb == NULL)
 =======
+<<<<<<< HEAD
+	if (skb == NULL)
+=======
 	if(skb==NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	/*
@@ -184,11 +209,17 @@ static int econet_recvmsg(struct kiocb *iocb, struct socket *sock,
 		copied = len;
 		msg->msg_flags |= MSG_TRUNC;
 =======
+<<<<<<< HEAD
+	if (copied > len) {
+		copied = len;
+		msg->msg_flags |= MSG_TRUNC;
+=======
 	if (copied > len)
 	{
 		copied=len;
 		msg->msg_flags|=MSG_TRUNC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* We can't use skb_copy_datagram here */
@@ -221,8 +252,13 @@ out:
 static int econet_bind(struct socket *sock, struct sockaddr *uaddr,
 		       int addr_len)
 =======
+<<<<<<< HEAD
+static int econet_bind(struct socket *sock, struct sockaddr *uaddr,
+		       int addr_len)
+=======
 static int econet_bind(struct socket *sock, struct sockaddr *uaddr, int addr_len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sockaddr_ec *sec = (struct sockaddr_ec *)uaddr;
 	struct sock *sk;
@@ -266,10 +302,15 @@ static void tx_result(struct sock *sk, unsigned long cookie, int result)
 	if (skb == NULL) {
 		pr_debug("econet: memory squeeze, transmit result dropped\n");
 =======
+<<<<<<< HEAD
+	if (skb == NULL) {
+		pr_debug("econet: memory squeeze, transmit result dropped\n");
+=======
 	if (skb == NULL)
 	{
 		printk(KERN_DEBUG "ec: memory squeeze, transmit result dropped.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -309,8 +350,12 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 	struct sockaddr_ec *saddr = (struct sockaddr_ec *)msg->msg_name;
 =======
+<<<<<<< HEAD
+	struct sockaddr_ec *saddr = (struct sockaddr_ec *)msg->msg_name;
+=======
 	struct sockaddr_ec *saddr=(struct sockaddr_ec *)msg->msg_name;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net_device *dev;
 	struct ec_addr addr;
 	int err;
@@ -344,6 +389,9 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 	mutex_lock(&econet_mutex);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (saddr == NULL || msg->msg_namelen < sizeof(struct sockaddr_ec)) {
 		mutex_unlock(&econet_mutex);
 		return -EINVAL;
@@ -352,6 +400,8 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 	addr.net = saddr->addr.net;
 	port = saddr->port;
 	cb = saddr->cb;
+<<<<<<< HEAD
+=======
 =======
         if (saddr == NULL || msg->msg_namelen < sizeof(struct sockaddr_ec)) {
                 mutex_unlock(&econet_mutex);
@@ -362,6 +412,7 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
         port = saddr->port;
         cb = saddr->cb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Look for a device with the right network number. */
 	dev = net2dev_map[addr.net];
@@ -383,7 +434,11 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 		int hlen, tlen;
 =======
+<<<<<<< HEAD
+		int hlen, tlen;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int res;
 
 		if (len + 15 > dev->mtu) {
@@ -394,6 +449,9 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 		dev_hold(dev);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hlen = LL_RESERVED_SPACE(dev);
 		tlen = dev->needed_tailroom;
 		skb = sock_alloc_send_skb(sk, len + hlen + tlen,
@@ -402,6 +460,8 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 			goto out_unlock;
 
 		skb_reserve(skb, hlen);
+<<<<<<< HEAD
+=======
 =======
 		skb = sock_alloc_send_skb(sk, len+LL_ALLOCATED_SPACE(dev),
 					  msg->msg_flags & MSG_DONTWAIT, &err);
@@ -410,6 +470,7 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 
 		skb_reserve(skb, LL_RESERVED_SPACE(dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		skb_reset_network_header(skb);
 
 		eb = (struct ec_cb *)&skb->cb;
@@ -429,8 +490,12 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 			fh = (struct ec_framehdr *)skb->data;
 =======
+<<<<<<< HEAD
+			fh = (struct ec_framehdr *)skb->data;
+=======
 			fh = (struct ec_framehdr *)(skb->data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fh->cb = cb;
 			fh->port = port;
 			if (sock->type != SOCK_DGRAM) {
@@ -443,8 +508,12 @@ static int econet_sendmsg(struct kiocb *iocb, struct socket *sock,
 <<<<<<< HEAD
 		err = memcpy_fromiovec(skb_put(skb, len), msg->msg_iov, len);
 =======
+<<<<<<< HEAD
+		err = memcpy_fromiovec(skb_put(skb, len), msg->msg_iov, len);
+=======
 		err = memcpy_fromiovec(skb_put(skb,len), msg->msg_iov, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		skb->protocol = proto;
 		skb->dev = dev;
 		skb->priority = sk->sk_priority;
@@ -469,10 +538,16 @@ out_free:
 		kfree_skb(skb);
 out_unlock:
 =======
+<<<<<<< HEAD
+out_free:
+		kfree_skb(skb);
+out_unlock:
+=======
 	out_free:
 		kfree_skb(skb);
 	out_unlock:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dev)
 			dev_put(dev);
 #else
@@ -547,10 +622,15 @@ out_unlock:
 	skb = sock_alloc_send_skb(sk, 0, msg->msg_flags & MSG_DONTWAIT, &err);
 	if (skb == NULL)
 =======
+<<<<<<< HEAD
+	skb = sock_alloc_send_skb(sk, 0, msg->msg_flags & MSG_DONTWAIT, &err);
+	if (skb == NULL)
+=======
 	if ((skb = sock_alloc_send_skb(sk, 0,
 				       msg->msg_flags & MSG_DONTWAIT,
 				       &err)) == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_free_buf;
 
 	eb = (struct ec_cb *)&skb->cb;
@@ -559,8 +639,12 @@ out_unlock:
 <<<<<<< HEAD
 	eb->timeout = 5 * HZ;
 =======
+<<<<<<< HEAD
+	eb->timeout = 5 * HZ;
+=======
 	eb->timeout = (5*HZ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eb->start = jiffies;
 	ah.handle = aun_seq;
 	eb->seq = (aun_seq++);
@@ -575,15 +659,21 @@ out_unlock:
 	udpmsg.msg_control = NULL;
 	udpmsg.msg_controllen = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	udpmsg.msg_flags = 0;
 
 	oldfs = get_fs();
 	set_fs(KERNEL_DS);		/* More privs :-) */
+<<<<<<< HEAD
+=======
 =======
 	udpmsg.msg_flags=0;
 
 	oldfs = get_fs(); set_fs(KERNEL_DS);	/* More privs :-) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = sock_sendmsg(udpsock, &udpmsg, size);
 	set_fs(oldfs);
 
@@ -634,8 +724,12 @@ static void econet_destroy_timer(unsigned long data)
 <<<<<<< HEAD
 	struct sock *sk = (struct sock *)data;
 =======
+<<<<<<< HEAD
+	struct sock *sk = (struct sock *)data;
+=======
 	struct sock *sk=(struct sock *)data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!sk_has_allocations(sk)) {
 		sk_free(sk);
@@ -647,8 +741,12 @@ static void econet_destroy_timer(unsigned long data)
 <<<<<<< HEAD
 	pr_debug("econet: socket destroy delayed\n");
 =======
+<<<<<<< HEAD
+	pr_debug("econet: socket destroy delayed\n");
+=======
 	printk(KERN_DEBUG "econet socket destroy delayed\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -764,8 +862,13 @@ static int ec_dev_ioctl(struct socket *sock, unsigned int cmd, void __user *arg)
 	dev = dev_get_by_name(&init_net, ifr.ifr_name);
 	if (dev == NULL)
 =======
+<<<<<<< HEAD
+	dev = dev_get_by_name(&init_net, ifr.ifr_name);
+	if (dev == NULL)
+=======
 	if ((dev = dev_get_by_name(&init_net, ifr.ifr_name)) == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	sec = (struct sockaddr_ec *)&ifr.ifr_addr;
@@ -833,13 +936,21 @@ static int ec_dev_ioctl(struct socket *sock, unsigned int cmd, void __user *arg)
 static int econet_ioctl(struct socket *sock, unsigned int cmd,
 			unsigned long arg)
 =======
+<<<<<<< HEAD
+static int econet_ioctl(struct socket *sock, unsigned int cmd,
+			unsigned long arg)
+=======
 static int econet_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sock *sk = sock->sk;
 	void __user *argp = (void __user *)arg;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (cmd) {
 	case SIOCGSTAMP:
 		return sock_get_timestamp(sk, argp);
@@ -854,6 +965,8 @@ static int econet_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg
 	}
 
 	return -ENOIOCTLCMD;
+<<<<<<< HEAD
+=======
 =======
 	switch(cmd) {
 		case SIOCGSTAMP:
@@ -873,6 +986,7 @@ static int econet_ioctl(struct socket *sock, unsigned int cmd, unsigned long arg
 	/*NOTREACHED*/
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const struct net_proto_family econet_family_ops = {
@@ -975,8 +1089,12 @@ static void aun_send_response(__u32 addr, unsigned long seq, int code, int cb)
 <<<<<<< HEAD
 	udpmsg.msg_flags = 0;
 =======
+<<<<<<< HEAD
+	udpmsg.msg_flags = 0;
+=======
 	udpmsg.msg_flags=0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kernel_sendmsg(udpsock, &udpmsg, &iov, 1, sizeof(ah));
 }
@@ -1000,17 +1118,23 @@ static void aun_incoming(struct sk_buff *skb, struct aunhdr *ah, size_t len)
 		edev = dst->dev->ec_ptr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!edev)
 		goto bad;
 
 	sk = ec_listening_socket(ah->port, stn, edev->net);
 	if (sk == NULL)
+<<<<<<< HEAD
+=======
 =======
 	if (! edev)
 		goto bad;
 
 	if ((sk = ec_listening_socket(ah->port, stn, edev->net)) == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto bad;		/* Nobody wants it */
 
 	newskb = alloc_skb((len - sizeof(struct aunhdr) + 15) & ~15,
@@ -1019,19 +1143,29 @@ static void aun_incoming(struct sk_buff *skb, struct aunhdr *ah, size_t len)
 	if (newskb == NULL) {
 		pr_debug("AUN: memory squeeze, dropping packet\n");
 =======
+<<<<<<< HEAD
+	if (newskb == NULL) {
+		pr_debug("AUN: memory squeeze, dropping packet\n");
+=======
 	if (newskb == NULL)
 	{
 		printk(KERN_DEBUG "AUN: memory squeeze, dropping packet.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Send nack and hope sender tries again */
 		goto bad;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(skb_put(newskb, len - sizeof(struct aunhdr)), (void *)(ah + 1),
 	       len - sizeof(struct aunhdr));
 
 	if (ec_queue_packet(sk, newskb, stn, edev->net, ah->cb, ah->port)) {
+<<<<<<< HEAD
+=======
 =======
 	memcpy(skb_put(newskb, len - sizeof(struct aunhdr)), (void *)(ah+1),
 	       len - sizeof(struct aunhdr));
@@ -1039,6 +1173,7 @@ static void aun_incoming(struct sk_buff *skb, struct aunhdr *ah, size_t len)
 	if (ec_queue_packet(sk, newskb, stn, edev->net, ah->cb, ah->port))
 	{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Socket is bankrupt. */
 		kfree_skb(newskb);
 		goto bad;
@@ -1077,8 +1212,12 @@ static void aun_tx_ack(unsigned long seq, int result)
 <<<<<<< HEAD
 	pr_debug("AUN: unknown sequence %ld\n", seq);
 =======
+<<<<<<< HEAD
+	pr_debug("AUN: unknown sequence %ld\n", seq);
+=======
 	printk(KERN_DEBUG "AUN: unknown sequence %ld\n", seq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 
 foundit:
@@ -1104,16 +1243,22 @@ static void aun_data_available(struct sock *sk, int slen)
 	while ((skb = skb_recv_datagram(sk, 0, 1, &err)) == NULL) {
 		if (err == -EAGAIN) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_err("AUN: no data available?!\n");
 			return;
 		}
 		pr_debug("AUN: recvfrom() error %d\n", -err);
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_ERR "AUN: no data available?!");
 			return;
 		}
 		printk(KERN_DEBUG "AUN: recvfrom() error %d\n", -err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	data = skb_transport_header(skb) + sizeof(struct udphdr);
@@ -1123,9 +1268,13 @@ static void aun_data_available(struct sock *sk, int slen)
 <<<<<<< HEAD
 	switch (ah->code) {
 =======
+<<<<<<< HEAD
+	switch (ah->code) {
+=======
 	switch (ah->code)
 	{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 2:
 		aun_incoming(skb, ah, len);
 		break;
@@ -1139,8 +1288,12 @@ static void aun_data_available(struct sock *sk, int slen)
 <<<<<<< HEAD
 		pr_debug("AUN: unknown packet type: %d\n", data[0]);
 =======
+<<<<<<< HEAD
+		pr_debug("AUN: unknown packet type: %d\n", data[0]);
+=======
 		printk(KERN_DEBUG "unknown AUN packet (type %d)\n", data[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	skb_free_datagram(sk, skb);
@@ -1173,8 +1326,12 @@ static void ab_cleanup(unsigned long h)
 <<<<<<< HEAD
 	mod_timer(&ab_cleanup_timer, jiffies + (HZ * 2));
 =======
+<<<<<<< HEAD
+	mod_timer(&ab_cleanup_timer, jiffies + (HZ * 2));
+=======
 	mod_timer(&ab_cleanup_timer, jiffies + (HZ*2));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init aun_udp_initialise(void)
@@ -1187,8 +1344,12 @@ static int __init aun_udp_initialise(void)
 <<<<<<< HEAD
 	ab_cleanup_timer.expires = jiffies + (HZ * 2);
 =======
+<<<<<<< HEAD
+	ab_cleanup_timer.expires = jiffies + (HZ * 2);
+=======
 	ab_cleanup_timer.expires = jiffies + (HZ*2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	add_timer(&ab_cleanup_timer);
 
 	memset(&sin, 0, sizeof(sin));
@@ -1201,10 +1362,16 @@ static int __init aun_udp_initialise(void)
 	if (error < 0) {
 		pr_err("AUN: socket error %d\n", -error);
 =======
+<<<<<<< HEAD
+	error = sock_create_kern(PF_INET, SOCK_DGRAM, 0, &udpsock);
+	if (error < 0) {
+		pr_err("AUN: socket error %d\n", -error);
+=======
 	if ((error = sock_create_kern(PF_INET, SOCK_DGRAM, 0, &udpsock)) < 0)
 	{
 		printk("AUN: socket error %d\n", -error);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return error;
 	}
 
@@ -1218,11 +1385,17 @@ static int __init aun_udp_initialise(void)
 	if (error < 0) {
 		pr_err("AUN: bind error %d\n", -error);
 =======
+<<<<<<< HEAD
+				   sizeof(sin));
+	if (error < 0) {
+		pr_err("AUN: bind error %d\n", -error);
+=======
 				sizeof(sin));
 	if (error < 0)
 	{
 		printk("AUN: bind error %d\n", -error);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto release;
 	}
 
@@ -1247,8 +1420,13 @@ release:
 static int econet_rcv(struct sk_buff *skb, struct net_device *dev,
 		      struct packet_type *pt, struct net_device *orig_dev)
 =======
+<<<<<<< HEAD
+static int econet_rcv(struct sk_buff *skb, struct net_device *dev,
+		      struct packet_type *pt, struct net_device *orig_dev)
+=======
 static int econet_rcv(struct sk_buff *skb, struct net_device *dev, struct packet_type *pt, struct net_device *orig_dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ec_framehdr *hdr;
 	struct sock *sk = NULL;
@@ -1267,8 +1445,13 @@ static int econet_rcv(struct sk_buff *skb, struct net_device *dev, struct packet
 	skb = skb_share_check(skb, GFP_ATOMIC);
 	if (skb == NULL)
 =======
+<<<<<<< HEAD
+	skb = skb_share_check(skb, GFP_ATOMIC);
+	if (skb == NULL)
+=======
 	if ((skb = skb_share_check(skb, GFP_ATOMIC)) == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NET_RX_DROP;
 
 	if (!pskb_may_pull(skb, sizeof(struct ec_framehdr)))
@@ -1277,8 +1460,12 @@ static int econet_rcv(struct sk_buff *skb, struct net_device *dev, struct packet
 <<<<<<< HEAD
 	hdr = (struct ec_framehdr *)skb->data;
 =======
+<<<<<<< HEAD
+	hdr = (struct ec_framehdr *)skb->data;
+=======
 	hdr = (struct ec_framehdr *) skb->data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* First check for encapsulated IP */
 	if (hdr->port == EC_PORT_IP) {
@@ -1310,9 +1497,14 @@ static struct packet_type econet_packet_type __read_mostly = {
 	.type =	cpu_to_be16(ETH_P_ECONET),
 	.func =	econet_rcv,
 =======
+<<<<<<< HEAD
+	.type =	cpu_to_be16(ETH_P_ECONET),
+	.func =	econet_rcv,
+=======
 	.type =		cpu_to_be16(ETH_P_ECONET),
 	.func =		econet_rcv,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void econet_hw_initialise(void)
@@ -1323,15 +1515,21 @@ static void econet_hw_initialise(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int econet_notifier(struct notifier_block *this, unsigned long msg,
 			   void *data)
 {
 	struct net_device *dev = data;
+<<<<<<< HEAD
+=======
 =======
 static int econet_notifier(struct notifier_block *this, unsigned long msg, void *data)
 {
 	struct net_device *dev = (struct net_device *)data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ec_device *edev;
 
 	if (!net_eq(dev_net(dev), &init_net))
@@ -1344,9 +1542,13 @@ static int econet_notifier(struct notifier_block *this, unsigned long msg, void 
 <<<<<<< HEAD
 		if (edev) {
 =======
+<<<<<<< HEAD
+		if (edev) {
+=======
 		if (edev)
 		{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (net2dev_map[0] == dev)
 				net2dev_map[0] = NULL;
 			net2dev_map[edev->net] = NULL;
@@ -1363,8 +1565,12 @@ static struct notifier_block econet_netdev_notifier = {
 <<<<<<< HEAD
 	.notifier_call = econet_notifier,
 =======
+<<<<<<< HEAD
+	.notifier_call = econet_notifier,
+=======
 	.notifier_call =econet_notifier,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __exit econet_proto_exit(void)

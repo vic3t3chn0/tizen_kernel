@@ -17,17 +17,23 @@
 #include <asm/mach/map.h>
 #include <asm/memory.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/system_info.h>
 #include "tcm.h"
 
 static struct gen_pool *tcm_pool;
 static bool dtcm_present;
 static bool itcm_present;
+<<<<<<< HEAD
+=======
 =======
 #include "tcm.h"
 
 static struct gen_pool *tcm_pool;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* TCM section definitions from the linker */
 extern char __itcm_start, __sitcm_text, __eitcm_text;
@@ -100,6 +106,9 @@ void tcm_free(void *addr, size_t len)
 EXPORT_SYMBOL(tcm_free);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool tcm_dtcm_present(void)
 {
 	return dtcm_present;
@@ -112,8 +121,11 @@ bool tcm_itcm_present(void)
 }
 EXPORT_SYMBOL(tcm_itcm_present);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init setup_tcm_bank(u8 type, u8 bank, u8 banks,
 				  u32 *offset)
 {
@@ -159,12 +171,18 @@ static int __init setup_tcm_bank(u8 type, u8 bank, u8 banks,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Not much fun you can do with a size 0 bank */
 	if (tcm_size == 0)
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Force move the TCM bank to where we want it, enable */
 	tcm_region = *offset | (tcm_region & 0x00000ffeU) | 1;
 
@@ -194,16 +212,22 @@ static int __init setup_tcm_bank(u8 type, u8 bank, u8 banks,
 void __init tcm_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 tcm_status;
 	u8 dtcm_banks;
 	u8 itcm_banks;
 	size_t dtcm_code_sz = &__edtcm_data - &__sdtcm_data;
 	size_t itcm_code_sz = &__eitcm_text - &__sitcm_text;
+<<<<<<< HEAD
+=======
 =======
 	u32 tcm_status = read_cpuid_tcmstatus();
 	u8 dtcm_banks = (tcm_status >> 16) & 0x03;
 	u8 itcm_banks = (tcm_status & 0x03);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *start;
 	char *end;
 	char *ram;
@@ -211,6 +235,9 @@ void __init tcm_init(void)
 	int i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Prior to ARMv5 there is no TCM, and trying to read the status
 	 * register will hang the processor.
@@ -233,8 +260,11 @@ void __init tcm_init(void)
 	if (itcm_banks > 2)
 		itcm_banks = 0;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Setup DTCM if present */
 	if (dtcm_banks > 0) {
 		for (i = 0; i < dtcm_banks; i++) {
@@ -243,6 +273,9 @@ void __init tcm_init(void)
 				return;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* This means you compiled more code than fits into DTCM */
 		if (dtcm_code_sz > (dtcm_end - DTCM_OFFSET)) {
 			pr_info("CPU DTCM: %u bytes of code compiled to "
@@ -250,8 +283,11 @@ void __init tcm_init(void)
 				dtcm_code_sz, (dtcm_end - DTCM_OFFSET));
 			goto no_dtcm;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dtcm_res.end = dtcm_end - 1;
 		request_resource(&iomem_resource, &dtcm_res);
 		dtcm_iomap[0].length = dtcm_end - DTCM_OFFSET;
@@ -261,6 +297,9 @@ void __init tcm_init(void)
 		end   = &__edtcm_data;
 		ram   = &__dtcm_start;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcpy(start, ram, dtcm_code_sz);
 		pr_debug("CPU DTCM: copied data from %p - %p\n",
 			 start, end);
@@ -271,6 +310,8 @@ void __init tcm_init(void)
 	}
 
 no_dtcm:
+<<<<<<< HEAD
+=======
 =======
 		/* This means you compiled more code than fits into DTCM */
 		BUG_ON((end - start) > (dtcm_end - DTCM_OFFSET));
@@ -279,6 +320,7 @@ no_dtcm:
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Setup ITCM if present */
 	if (itcm_banks > 0) {
 		for (i = 0; i < itcm_banks; i++) {
@@ -287,6 +329,9 @@ no_dtcm:
 				return;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* This means you compiled more code than fits into ITCM */
 		if (itcm_code_sz > (itcm_end - ITCM_OFFSET)) {
 			pr_info("CPU ITCM: %u bytes of code compiled to "
@@ -294,8 +339,11 @@ no_dtcm:
 				itcm_code_sz, (itcm_end - ITCM_OFFSET));
 			return;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		itcm_res.end = itcm_end - 1;
 		request_resource(&iomem_resource, &itcm_res);
 		itcm_iomap[0].length = itcm_end - ITCM_OFFSET;
@@ -305,6 +353,9 @@ no_dtcm:
 		end   = &__eitcm_text;
 		ram   = &__itcm_start;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcpy(start, ram, itcm_code_sz);
 		pr_debug("CPU ITCM: copied code from %p - %p\n",
 			 start, end);
@@ -312,12 +363,15 @@ no_dtcm:
 	} else if (itcm_code_sz) {
 		pr_info("CPU ITCM: %u bytes of code compiled to ITCM but no "
 			"ITCM banks present in CPU\n", itcm_code_sz);
+<<<<<<< HEAD
+=======
 =======
 		/* This means you compiled more code than fits into ITCM */
 		BUG_ON((end - start) > (itcm_end - ITCM_OFFSET));
 		memcpy(start, ram, (end-start));
 		pr_debug("CPU ITCM: copied code from %p - %p\n", start, end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -330,8 +384,11 @@ static int __init setup_tcm_pool(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u32 tcm_status = read_cpuid_tcmstatus();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 dtcm_pool_start = (u32) &__edtcm_data;
 	u32 itcm_pool_start = (u32) &__eitcm_text;
 	int ret;
@@ -349,8 +406,12 @@ static int __init setup_tcm_pool(void)
 <<<<<<< HEAD
 	if (dtcm_present) {
 =======
+<<<<<<< HEAD
+	if (dtcm_present) {
+=======
 	if (tcm_status & (0x03 << 16)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dtcm_pool_start < dtcm_end) {
 			ret = gen_pool_add(tcm_pool, dtcm_pool_start,
 					   dtcm_end - dtcm_pool_start, -1);
@@ -370,8 +431,12 @@ static int __init setup_tcm_pool(void)
 <<<<<<< HEAD
 	if (itcm_present) {
 =======
+<<<<<<< HEAD
+	if (itcm_present) {
+=======
 	if (tcm_status & 0x03) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (itcm_pool_start < itcm_end) {
 			ret = gen_pool_add(tcm_pool, itcm_pool_start,
 					   itcm_end - itcm_pool_start, -1);

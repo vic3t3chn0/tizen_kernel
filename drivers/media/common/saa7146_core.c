@@ -18,7 +18,18 @@
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
 #include <media/saa7146.h>
+#include <linux/module.h>
+=======
+#include <media/saa7146.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <media/saa7146.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 LIST_HEAD(saa7146_devices);
 DEFINE_MUTEX(saa7146_devices_lock);
@@ -35,10 +46,22 @@ static void dump_registers(struct saa7146_dev* dev)
 {
 	int i = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info(" @ %li jiffies:\n", jiffies);
+	for (i = 0; i <= 0x148; i += 4)
+		pr_info("0x%03x: 0x%08x\n", i, saa7146_read(dev, i));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INFO((" @ %li jiffies:\n",jiffies));
 	for(i = 0; i <= 0x148; i+=4) {
 		printk("0x%03x: 0x%08x\n",i,saa7146_read(dev,i));
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -72,9 +95,20 @@ static inline int saa7146_wait_for_debi_done_sleep(struct saa7146_dev *dev,
 		if (saa7146_read(dev, MC2) & 2)
 			break;
 		if (err) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("%s: %s timed out while waiting for registers getting programmed\n",
+			       dev->name, __func__);
+=======
 			printk(KERN_ERR "%s: %s timed out while waiting for "
 					"registers getting programmed\n",
 					dev->name, __func__);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_ERR "%s: %s timed out while waiting for "
+					"registers getting programmed\n",
+					dev->name, __func__);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ETIMEDOUT;
 		}
 		msleep(1);
@@ -88,8 +122,18 @@ static inline int saa7146_wait_for_debi_done_sleep(struct saa7146_dev *dev,
 			break;
 		saa7146_read(dev, MC2);
 		if (err) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			DEB_S("%s: %s timed out while waiting for transfer completion\n",
+			      dev->name, __func__);
+=======
 			DEB_S(("%s: %s timed out while waiting for transfer "
 				"completion\n",	dev->name, __func__));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			DEB_S(("%s: %s timed out while waiting for transfer "
+				"completion\n",	dev->name, __func__));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ETIMEDOUT;
 		}
 		msleep(1);
@@ -109,9 +153,20 @@ static inline int saa7146_wait_for_debi_done_busyloop(struct saa7146_dev *dev,
 		if (saa7146_read(dev, MC2) & 2)
 			break;
 		if (!loops--) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("%s: %s timed out while waiting for registers getting programmed\n",
+			       dev->name, __func__);
+=======
 			printk(KERN_ERR "%s: %s timed out while waiting for "
 					"registers getting programmed\n",
 					dev->name, __func__);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_ERR "%s: %s timed out while waiting for "
+					"registers getting programmed\n",
+					dev->name, __func__);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ETIMEDOUT;
 		}
 		udelay(1);
@@ -124,8 +179,18 @@ static inline int saa7146_wait_for_debi_done_busyloop(struct saa7146_dev *dev,
 			break;
 		saa7146_read(dev, MC2);
 		if (!loops--) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			DEB_S("%s: %s timed out while waiting for transfer completion\n",
+			      dev->name, __func__);
+=======
 			DEB_S(("%s: %s timed out while waiting for transfer "
 				"completion\n", dev->name, __func__));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			DEB_S(("%s: %s timed out while waiting for transfer "
+				"completion\n", dev->name, __func__));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ETIMEDOUT;
 		}
 		udelay(5);
@@ -264,7 +329,17 @@ int saa7146_pgtable_build_single(struct pci_dev *pci, struct saa7146_pgtable *pt
 	ptr = pt->cpu;
 	for (i = 0; i < sglen; i++, list++) {
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_debug("i:%d, adr:0x%08x, len:%d, offset:%d\n",
+			 i, sg_dma_address(list), sg_dma_len(list),
+			 list->offset);
+=======
 		printk("i:%d, adr:0x%08x, len:%d, offset:%d\n", i,sg_dma_address(list), sg_dma_len(list), list->offset);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk("i:%d, adr:0x%08x, len:%d, offset:%d\n", i,sg_dma_address(list), sg_dma_len(list), list->offset);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 */
 		for (p = 0; p * 4096 < list->length; p++, ptr++) {
 			*ptr = cpu_to_le32(sg_dma_address(list) + p * 4096);
@@ -281,9 +356,21 @@ int saa7146_pgtable_build_single(struct pci_dev *pci, struct saa7146_pgtable *pt
 
 /*
 	ptr = pt->cpu;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("offset: %d\n", pt->offset);
+	for(i=0;i<5;i++) {
+		pr_debug("ptr1 %d: 0x%08x\n", i, ptr[i]);
+=======
 	printk("offset: %d\n",pt->offset);
 	for(i=0;i<5;i++) {
 		printk("ptr1 %d: 0x%08x\n",i,ptr[i]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("offset: %d\n",pt->offset);
+	for(i=0;i<5;i++) {
+		printk("ptr1 %d: 0x%08x\n",i,ptr[i]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 */
 	return 0;
@@ -314,7 +401,15 @@ static irqreturn_t interrupt_hw(int irq, void *dev_id)
 		}
 	}
 	if (0 != (isr & (MASK_27))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		DEB_INT("irq: RPS0 (0x%08x)\n", isr);
+=======
 		DEB_INT(("irq: RPS0 (0x%08x).\n",isr));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DEB_INT(("irq: RPS0 (0x%08x).\n",isr));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dev->vv_data && dev->vv_callback)
 			dev->vv_callback(dev,isr);
 		isr &= ~MASK_27;
@@ -333,14 +428,35 @@ static irqreturn_t interrupt_hw(int irq, void *dev_id)
 		} else {
 			u32 psr = saa7146_read(dev, PSR);
 			u32 ssr = saa7146_read(dev, SSR);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_warn("%s: unexpected i2c irq: isr %08x psr %08x ssr %08x\n",
+				dev->name, isr, psr, ssr);
+=======
 			printk(KERN_WARNING "%s: unexpected i2c irq: isr %08x psr %08x ssr %08x\n",
 			       dev->name, isr, psr, ssr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING "%s: unexpected i2c irq: isr %08x psr %08x ssr %08x\n",
+			       dev->name, isr, psr, ssr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		isr &= ~(MASK_16|MASK_17);
 	}
 	if( 0 != isr ) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ERR("warning: interrupt enabled, but not handled properly.(0x%08x)\n",
+		    isr);
+		ERR("disabling interrupt source(s)!\n");
+=======
 		ERR(("warning: interrupt enabled, but not handled properly.(0x%08x)\n",isr));
 		ERR(("disabling interrupt source(s)!\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ERR(("warning: interrupt enabled, but not handled properly.(0x%08x)\n",isr));
+		ERR(("disabling interrupt source(s)!\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		SAA7146_IER_DISABLE(dev,isr);
 	}
 	saa7146_write(dev, ISR, ack_isr);
@@ -360,6 +476,20 @@ static int saa7146_init_one(struct pci_dev *pci, const struct pci_device_id *ent
 	/* clear out mem for sure */
 	dev = kzalloc(sizeof(struct saa7146_dev), GFP_KERNEL);
 	if (!dev) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ERR("out of memory\n");
+		goto out;
+	}
+
+	DEB_EE("pci:%p\n", pci);
+
+	err = pci_enable_device(pci);
+	if (err < 0) {
+		ERR("pci_enable_device() failed\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ERR(("out of memory.\n"));
 		goto out;
 	}
@@ -369,6 +499,10 @@ static int saa7146_init_one(struct pci_dev *pci, const struct pci_device_id *ent
 	err = pci_enable_device(pci);
 	if (err < 0) {
 		ERR(("pci_enable_device() failed.\n"));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_free;
 	}
 
@@ -389,7 +523,15 @@ static int saa7146_init_one(struct pci_dev *pci, const struct pci_device_id *ent
 	dev->mem = ioremap(pci_resource_start(pci, 0),
 			   pci_resource_len(pci, 0));
 	if (!dev->mem) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ERR("ioremap() failed\n");
+=======
 		ERR(("ioremap() failed.\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ERR(("ioremap() failed.\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENODEV;
 		goto err_release;
 	}
@@ -414,7 +556,15 @@ static int saa7146_init_one(struct pci_dev *pci, const struct pci_device_id *ent
 	err = request_irq(pci->irq, interrupt_hw, IRQF_SHARED | IRQF_DISABLED,
 			  dev->name, dev);
 	if (err < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ERR("request_irq() failed\n");
+=======
 		ERR(("request_irq() failed.\n"));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ERR(("request_irq() failed.\n"));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_unmap;
 	}
 
@@ -444,7 +594,17 @@ static int saa7146_init_one(struct pci_dev *pci, const struct pci_device_id *ent
 	/* create a nice device name */
 	sprintf(dev->name, "saa7146 (%d)", saa7146_num);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("found saa7146 @ mem %p (revision %d, irq %d) (0x%04x,0x%04x)\n",
+		dev->mem, dev->revision, pci->irq,
+		pci->subsystem_vendor, pci->subsystem_device);
+=======
 	INFO(("found saa7146 @ mem %p (revision %d, irq %d) (0x%04x,0x%04x).\n", dev->mem, dev->revision, pci->irq, pci->subsystem_vendor, pci->subsystem_device));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	INFO(("found saa7146 @ mem %p (revision %d, irq %d) (0x%04x,0x%04x).\n", dev->mem, dev->revision, pci->irq, pci->subsystem_vendor, pci->subsystem_device));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev->ext = ext;
 
 	mutex_init(&dev->v4l2_lock);
@@ -464,12 +624,28 @@ static int saa7146_init_one(struct pci_dev *pci, const struct pci_device_id *ent
 	err = -ENODEV;
 
 	if (ext->probe && ext->probe(dev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		DEB_D("ext->probe() failed for %p. skipping device.\n", dev);
+=======
 		DEB_D(("ext->probe() failed for %p. skipping device.\n",dev));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DEB_D(("ext->probe() failed for %p. skipping device.\n",dev));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_free_i2c;
 	}
 
 	if (ext->attach(dev, pci_ext)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		DEB_D("ext->attach() failed for %p. skipping device.\n", dev);
+=======
 		DEB_D(("ext->attach() failed for %p. skipping device.\n",dev));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DEB_D(("ext->attach() failed for %p. skipping device.\n",dev));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_free_i2c;
 	}
 	/* V4L extensions will set the pci drvdata to the v4l2_device in the
@@ -521,7 +697,15 @@ static void saa7146_remove_one(struct pci_dev *pdev)
 		{ NULL, 0 }
 	}, *p;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	DEB_EE("dev:%p\n", dev);
+=======
 	DEB_EE(("dev:%p\n",dev));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEB_EE(("dev:%p\n",dev));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev->ext->detach(dev);
 	/* Zero the PCI drvdata after use. */
@@ -552,21 +736,47 @@ static void saa7146_remove_one(struct pci_dev *pdev)
 
 int saa7146_register_extension(struct saa7146_extension* ext)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	DEB_EE("ext:%p\n", ext);
+=======
 	DEB_EE(("ext:%p\n",ext));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEB_EE(("ext:%p\n",ext));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ext->driver.name = ext->name;
 	ext->driver.id_table = ext->pci_tbl;
 	ext->driver.probe = saa7146_init_one;
 	ext->driver.remove = saa7146_remove_one;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("register extension '%s'\n", ext->name);
+=======
 	printk("saa7146: register extension '%s'.\n",ext->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("saa7146: register extension '%s'.\n",ext->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return pci_register_driver(&ext->driver);
 }
 
 int saa7146_unregister_extension(struct saa7146_extension* ext)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	DEB_EE("ext:%p\n", ext);
+	pr_info("unregister extension '%s'\n", ext->name);
+=======
 	DEB_EE(("ext:%p\n",ext));
 	printk("saa7146: unregister extension '%s'.\n",ext->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEB_EE(("ext:%p\n",ext));
+	printk("saa7146: unregister extension '%s'.\n",ext->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_unregister_driver(&ext->driver);
 	return 0;
 }

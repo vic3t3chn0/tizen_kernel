@@ -26,6 +26,18 @@
 #include <linux/interrupt.h>
 #include <linux/i2c.h>
 #include <linux/i2c/tsc2007.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/pm.h>
+
+#if defined(CONFIG_HAS_EARLYSUSPEND)
+#include <linux/earlysuspend.h>
+#define TSC2007_SUSPEND_LEVEL 1
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define TSC2007_MEASURE_TEMP0		(0x0 << 4)
 #define TSC2007_MEASURE_AUX		(0x2 << 4)
@@ -75,12 +87,41 @@ struct tsc2007 {
 	u16			max_rt;
 	unsigned long		poll_delay;
 	unsigned long		poll_period;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u16			min_x;
+	u16			max_x;
+	u16			min_y;
+	u16			max_y;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bool			pendown;
 	int			irq;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool			invert_x;
+	bool			invert_y;
+	bool			invert_z1;
+	bool			invert_z2;
+
 	int			(*get_pendown_state)(void);
 	void			(*clear_penirq)(void);
+	int			(*power_shutdown)(bool);
+#if defined(CONFIG_HAS_EARLYSUSPEND)
+	struct early_suspend	early_suspend;
+#endif
+=======
+	int			(*get_pendown_state)(void);
+	void			(*clear_penirq)(void);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int			(*get_pendown_state)(void);
+	void			(*clear_penirq)(void);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline int tsc2007_xfer(struct tsc2007 *tsc, u8 cmd)
@@ -117,6 +158,24 @@ static void tsc2007_read_values(struct tsc2007 *tsc, struct ts_event *tc)
 	tc->z1 = tsc2007_xfer(tsc, READ_Z1);
 	tc->z2 = tsc2007_xfer(tsc, READ_Z2);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (tsc->invert_x == true)
+		tc->x = MAX_12BIT - tc->x;
+
+	if (tsc->invert_y == true)
+		tc->y = MAX_12BIT - tc->y;
+
+	if (tsc->invert_z1 == true)
+		tc->z1 = MAX_12BIT - tc->z1;
+
+	if (tsc->invert_z2 == true)
+		tc->z2 = MAX_12BIT - tc->z2;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Prepare for next touch reading - power down ADC, enable PENIRQ */
 	tsc2007_xfer(tsc, PWRDOWN);
 }
@@ -263,6 +322,78 @@ static void tsc2007_free_irq(struct tsc2007 *ts)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+static int tsc2007_suspend(struct device *dev)
+{
+	int rc;
+	struct tsc2007	*ts = dev_get_drvdata(dev);
+
+	disable_irq(ts->irq);
+
+	if (cancel_delayed_work_sync(&ts->work))
+		enable_irq(ts->irq);
+
+	if (ts->power_shutdown) {
+		rc = ts->power_shutdown(true);
+		if (rc) {
+			pr_err("%s: Power off failed, suspend failed (%d)\n",
+							__func__, rc);
+			return rc;
+		}
+	}
+
+	return 0;
+}
+
+static int tsc2007_resume(struct device *dev)
+{
+	int rc;
+	struct tsc2007	*ts = dev_get_drvdata(dev);
+
+	if (ts->power_shutdown) {
+		rc = ts->power_shutdown(false);
+		if (rc) {
+			pr_err("%s: Power on failed, resume failed (%d)\n",
+							 __func__, rc);
+			return rc;
+		}
+	}
+
+	enable_irq(ts->irq);
+
+	return 0;
+}
+
+#ifdef CONFIG_HAS_EARLYSUSPEND
+static void tsc2007_early_suspend(struct early_suspend *h)
+{
+	struct tsc2007 *ts = container_of(h, struct tsc2007, early_suspend);
+
+	tsc2007_suspend(&ts->client->dev);
+}
+
+static void tsc2007_late_resume(struct early_suspend *h)
+{
+	struct tsc2007 *ts = container_of(h, struct tsc2007, early_suspend);
+
+	tsc2007_resume(&ts->client->dev);
+}
+#endif
+
+static const struct dev_pm_ops tsc2007_pm_ops = {
+#ifndef CONFIG_HAS_EARLYSUSPEND
+	.suspend	= tsc2007_suspend,
+	.resume		= tsc2007_resume,
+#endif
+};
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit tsc2007_probe(struct i2c_client *client,
 				   const struct i2c_device_id *id)
 {
@@ -299,6 +430,21 @@ static int __devinit tsc2007_probe(struct i2c_client *client,
 	ts->poll_period       = pdata->poll_period ? : 1;
 	ts->get_pendown_state = pdata->get_pendown_state;
 	ts->clear_penirq      = pdata->clear_penirq;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ts->invert_x	      = pdata->invert_x;
+	ts->invert_y	      = pdata->invert_y;
+	ts->invert_z1	      = pdata->invert_z1;
+	ts->invert_z2	      = pdata->invert_z2;
+	ts->min_x	      = pdata->min_x ? pdata->min_x : 0;
+	ts->max_x	      = pdata->max_x ? pdata->max_x : MAX_12BIT;
+	ts->min_y	      = pdata->min_y ? pdata->min_y : 0;
+	ts->max_y	      = pdata->max_y ? pdata->max_y : MAX_12BIT;
+	ts->power_shutdown    = pdata->power_shutdown;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snprintf(ts->phys, sizeof(ts->phys),
 		 "%s/input0", dev_name(&client->dev));
@@ -309,16 +455,39 @@ static int __devinit tsc2007_probe(struct i2c_client *client,
 
 	input_dev->evbit[0] = BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
 	input_dev->keybit[BIT_WORD(BTN_TOUCH)] = BIT_MASK(BTN_TOUCH);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	__set_bit(INPUT_PROP_DIRECT, input_dev->propbit);
+
+	input_set_abs_params(input_dev, ABS_X, ts->min_x,
+				ts->max_x, pdata->fuzzx, 0);
+	input_set_abs_params(input_dev, ABS_Y, ts->min_y,
+				ts->max_y, pdata->fuzzy, 0);
+=======
 
 	input_set_abs_params(input_dev, ABS_X, 0, MAX_12BIT, pdata->fuzzx, 0);
 	input_set_abs_params(input_dev, ABS_Y, 0, MAX_12BIT, pdata->fuzzy, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	input_set_abs_params(input_dev, ABS_X, 0, MAX_12BIT, pdata->fuzzx, 0);
+	input_set_abs_params(input_dev, ABS_Y, 0, MAX_12BIT, pdata->fuzzy, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	input_set_abs_params(input_dev, ABS_PRESSURE, 0, MAX_12BIT,
 			pdata->fuzzz, 0);
 
 	if (pdata->init_platform_hw)
 		pdata->init_platform_hw();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = request_irq(ts->irq, tsc2007_irq, pdata->irq_flags,
+=======
 	err = request_irq(ts->irq, tsc2007_irq, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = request_irq(ts->irq, tsc2007_irq, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			client->dev.driver->name, ts);
 	if (err < 0) {
 		dev_err(&client->dev, "irq %d busy?\n", ts->irq);
@@ -334,6 +503,20 @@ static int __devinit tsc2007_probe(struct i2c_client *client,
 	if (err)
 		goto err_free_irq;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HAS_EARLYSUSPEND
+	ts->early_suspend.level = EARLY_SUSPEND_LEVEL_BLANK_SCREEN +
+						TSC2007_SUSPEND_LEVEL;
+	ts->early_suspend.suspend = tsc2007_early_suspend;
+	ts->early_suspend.resume = tsc2007_late_resume;
+	register_early_suspend(&ts->early_suspend);
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2c_set_clientdata(client, ts);
 
 	return 0;
@@ -358,6 +541,15 @@ static int __devexit tsc2007_remove(struct i2c_client *client)
 	if (pdata->exit_platform_hw)
 		pdata->exit_platform_hw();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HAS_EARLYSUSPEND
+	unregister_early_suspend(&ts->early_suspend);
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	input_unregister_device(ts->input);
 	kfree(ts);
 
@@ -374,13 +566,30 @@ MODULE_DEVICE_TABLE(i2c, tsc2007_idtable);
 static struct i2c_driver tsc2007_driver = {
 	.driver = {
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.name	= "tsc2007",
+#ifdef CONFIG_PM
+		.pm = &tsc2007_pm_ops,
+#endif
+=======
 		.name	= "tsc2007"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.name	= "tsc2007"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.id_table	= tsc2007_idtable,
 	.probe		= tsc2007_probe,
 	.remove		= __devexit_p(tsc2007_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(tsc2007_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init tsc2007_init(void)
 {
 	return i2c_add_driver(&tsc2007_driver);
@@ -393,6 +602,10 @@ static void __exit tsc2007_exit(void)
 
 module_init(tsc2007_init);
 module_exit(tsc2007_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Kwangwoo Lee <kwlee@mtekvision.com>");
 MODULE_DESCRIPTION("TSC2007 TouchScreen Driver");

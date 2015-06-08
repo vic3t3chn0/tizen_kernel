@@ -2,9 +2,14 @@
 config NET_DSA
 	tristate "Distributed Switch Architecture support"
 =======
+<<<<<<< HEAD
+config NET_DSA
+	tristate "Distributed Switch Architecture support"
+=======
 menuconfig NET_DSA
 	bool "Distributed Switch Architecture support"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default n
 	depends on EXPERIMENTAL && NETDEVICES && !S390
 	select PHYLIB
@@ -28,6 +33,8 @@ config NET_DSA_TAG_TRAILER
 	bool
 	default n
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -65,4 +72,5 @@ config NET_DSA_MV88E6123_61_65
 	  ethernet switch chips.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif

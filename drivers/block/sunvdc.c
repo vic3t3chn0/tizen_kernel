@@ -461,7 +461,15 @@ static int generic_request(struct vdc_port *port, u8 op, void *buf, int len)
 	int op_len, err;
 	void *req_buf;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!(((u64)1 << ((u64)op - 1)) & port->operations))
+=======
 	if (!(((u64)1 << (u64)op) & port->operations))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!(((u64)1 << (u64)op) & port->operations))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EOPNOTSUPP;
 
 	switch (op) {
@@ -839,10 +847,20 @@ static struct vio_driver vdc_port_driver = {
 	.id_table	= vdc_port_match,
 	.probe		= vdc_port_probe,
 	.remove		= vdc_port_remove,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.name		= "vdc_port",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver		= {
 		.name	= "vdc_port",
 		.owner	= THIS_MODULE,
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init vdc_init(void)

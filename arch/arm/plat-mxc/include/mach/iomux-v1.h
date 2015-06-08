@@ -87,10 +87,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* decode irq number to use with IMR(x), ISR(x) and friends */
 #define IRQ_TO_REG(irq) ((irq - MXC_INTERNAL_IRQS) >> 5)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_GPIOA(x)  (MXC_GPIO_IRQ_START + x)
 #define IRQ_GPIOB(x)  (IRQ_GPIOA(32) + x)
 #define IRQ_GPIOC(x)  (IRQ_GPIOB(32) + x)
@@ -105,9 +108,14 @@ extern int mxc_gpio_setup_multiple_pins(const int *pin_list, unsigned count,
 
 extern int imx_iomuxv1_init(void __iomem *base, int numports);
 =======
+<<<<<<< HEAD
+
+extern int imx_iomuxv1_init(void __iomem *base, int numports);
+=======
 extern void mxc_gpio_release_multiple_pins(const int *pin_list, int count);
 
 extern int __init imx_iomuxv1_init(void __iomem *base, int numports);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __MACH_IOMUX_V1_H__ */

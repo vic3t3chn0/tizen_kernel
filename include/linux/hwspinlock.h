@@ -26,6 +26,9 @@
 #define HWLOCK_IRQ	0x02	/* Disable interrupts, don't save state */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct device;
 struct hwspinlock;
 struct hwspinlock_device;
@@ -64,6 +67,8 @@ struct hwspinlock_pdata {
 int hwspin_lock_register(struct hwspinlock_device *bank, struct device *dev,
 		const struct hwspinlock_ops *ops, int base_id, int num_locks);
 int hwspin_lock_unregister(struct hwspinlock_device *bank);
+<<<<<<< HEAD
+=======
 =======
 struct hwspinlock;
 
@@ -72,6 +77,7 @@ struct hwspinlock;
 int hwspin_lock_register(struct hwspinlock *lock);
 struct hwspinlock *hwspin_lock_unregister(unsigned int id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hwspinlock *hwspin_lock_request(void);
 struct hwspinlock *hwspin_lock_request_specific(unsigned int id);
 int hwspin_lock_free(struct hwspinlock *hwlock);
@@ -129,8 +135,11 @@ void __hwspin_unlock(struct hwspinlock *hwlock, int mode, unsigned long *flags)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int hwspin_lock_get_id(struct hwspinlock *hwlock)
@@ -138,6 +147,8 @@ static inline int hwspin_lock_get_id(struct hwspinlock *hwlock)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static inline int hwspin_lock_register(struct hwspinlock *hwlock)
@@ -151,6 +162,7 @@ static inline struct hwspinlock *hwspin_lock_unregister(unsigned int id)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !CONFIG_HWSPINLOCK */
 
 /**

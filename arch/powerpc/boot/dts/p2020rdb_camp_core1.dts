@@ -18,20 +18,29 @@
 <<<<<<< HEAD
 /include/ "p2020rdb.dts"
 =======
+<<<<<<< HEAD
+/include/ "p2020rdb.dts"
+=======
 /include/ "p2020si.dtsi"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 / {
 	model = "fsl,P2020RDB";
 	compatible = "fsl,P2020RDB", "fsl,MPC85XXRDB-CAMP";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpus {
 		PowerPC,P2020@0 {
 			status = "disabled";
 		};
 	};
 
+<<<<<<< HEAD
+=======
 =======
 	aliases {
 		ethernet0 = &enet0;
@@ -50,6 +59,7 @@
 	};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	localbus@ffe05000 {
 		status = "disabled";
 	};
@@ -83,6 +93,8 @@
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		dma@c300 {
@@ -123,10 +135,13 @@
 		};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gpio: gpio-controller@f000 {
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		L2: l2-cache-controller@20000 {
@@ -138,6 +153,7 @@
 		};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dma@21300 {
 			status = "disabled";
 		};
@@ -160,6 +176,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		enet0: ethernet@24000 {
 			fixed-link = <1 1 1000 0 0>;
 			phy-connection-type = "rgmii-id";
@@ -167,6 +185,7 @@
 		};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		enet1: ethernet@25000 {
 			status = "disabled";
 		};
@@ -194,6 +213,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		msi@41600 {
 			compatible = "fsl,p2020-msi", "fsl,mpic-msi";
 			reg = <0x41600 0x80>;
@@ -211,6 +232,7 @@
 		};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		global-utilities@e0000 {	//global utilities block
 			status = "disabled";
 		};
@@ -224,6 +246,8 @@
 	pci1: pcie@ffe09000 {
 		status = "disabled";
 	};
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -253,4 +277,5 @@
 		};
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

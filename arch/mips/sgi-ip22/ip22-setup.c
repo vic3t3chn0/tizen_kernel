@@ -28,10 +28,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 unsigned long sgi_gfxaddr;
 EXPORT_SYMBOL_GPL(sgi_gfxaddr);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void ip22_be_init(void) __init;
 
 void __init plat_mem_setup(void)
@@ -83,6 +86,8 @@ void __init plat_mem_setup(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #if defined(CONFIG_VT) && defined(CONFIG_SGI_NEWPORT_CONSOLE)
 	{
@@ -102,4 +107,5 @@ void __init plat_mem_setup(void)
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

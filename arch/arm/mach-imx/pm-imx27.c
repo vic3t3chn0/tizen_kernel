@@ -13,9 +13,13 @@
 <<<<<<< HEAD
 #include <mach/hardware.h>
 =======
+<<<<<<< HEAD
+#include <mach/hardware.h>
+=======
 #include <mach/system.h>
 #include <mach/mx27.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int mx27_suspend_enter(suspend_state_t state)
 {
@@ -30,8 +34,12 @@ static int mx27_suspend_enter(suspend_state_t state)
 <<<<<<< HEAD
 		cpu_do_idle();
 =======
+<<<<<<< HEAD
+		cpu_do_idle();
+=======
 		arch_idle();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	default:

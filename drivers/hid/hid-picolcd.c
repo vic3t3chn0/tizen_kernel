@@ -36,6 +36,13 @@
 
 #include <linux/completion.h>
 #include <linux/uaccess.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PICOLCD_NAME "PicoLCD (graphic)"
 
@@ -632,7 +639,15 @@ struct picolcd_fb_cleanup_item {
 	struct picolcd_fb_cleanup_item *next;
 };
 static struct picolcd_fb_cleanup_item *fb_pending;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DEFINE_SPINLOCK(fb_pending_lock);
+=======
 DEFINE_SPINLOCK(fb_pending_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+DEFINE_SPINLOCK(fb_pending_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void picolcd_fb_do_cleanup(struct work_struct *data)
 {
@@ -657,7 +672,15 @@ static void picolcd_fb_do_cleanup(struct work_struct *data)
 	} while (item);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DECLARE_WORK(picolcd_fb_cleanup, picolcd_fb_do_cleanup);
+=======
 DECLARE_WORK(picolcd_fb_cleanup, picolcd_fb_do_cleanup);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+DECLARE_WORK(picolcd_fb_cleanup, picolcd_fb_do_cleanup);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int picolcd_fb_open(struct fb_info *info, int u)
 {
@@ -1524,12 +1547,21 @@ static const struct file_operations picolcd_debug_reset_fops = {
 /*
  * The "eeprom" file
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int picolcd_debug_eeprom_open(struct inode *i, struct file *f)
 {
 	f->private_data = i->i_private;
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t picolcd_debug_eeprom_read(struct file *f, char __user *u,
 		size_t s, loff_t *off)
 {
@@ -1617,7 +1649,15 @@ static ssize_t picolcd_debug_eeprom_write(struct file *f, const char __user *u,
  */
 static const struct file_operations picolcd_debug_eeprom_fops = {
 	.owner    = THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open     = simple_open,
+=======
 	.open     = picolcd_debug_eeprom_open,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open     = picolcd_debug_eeprom_open,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read     = picolcd_debug_eeprom_read,
 	.write    = picolcd_debug_eeprom_write,
 	.llseek   = generic_file_llseek,
@@ -1626,12 +1666,21 @@ static const struct file_operations picolcd_debug_eeprom_fops = {
 /*
  * The "flash" file
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int picolcd_debug_flash_open(struct inode *i, struct file *f)
 {
 	f->private_data = i->i_private;
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* record a flash address to buf (bounds check to be done by caller) */
 static int _picolcd_flash_setaddr(struct picolcd_data *data, u8 *buf, long off)
 {
@@ -1816,7 +1865,15 @@ static ssize_t picolcd_debug_flash_write(struct file *f, const char __user *u,
  */
 static const struct file_operations picolcd_debug_flash_fops = {
 	.owner    = THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open     = simple_open,
+=======
 	.open     = picolcd_debug_flash_open,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open     = picolcd_debug_flash_open,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read     = picolcd_debug_flash_read,
 	.write    = picolcd_debug_flash_write,
 	.llseek   = generic_file_llseek,
@@ -2409,7 +2466,15 @@ static int picolcd_raw_event(struct hid_device *hdev,
 #ifdef CONFIG_PM
 static int picolcd_suspend(struct hid_device *hdev, pm_message_t message)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (PMSG_IS_AUTO(message))
+=======
 	if (message.event & PM_EVENT_AUTO)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (message.event & PM_EVENT_AUTO)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	picolcd_suspend_backlight(hid_get_drvdata(hdev));

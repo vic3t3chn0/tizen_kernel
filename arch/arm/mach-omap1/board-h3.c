@@ -16,8 +16,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/init.h>
 #include <linux/major.h>
@@ -35,10 +39,15 @@
 #include <linux/i2c/tps65010.h>
 #include <linux/smc91x.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/omapfb.h>
 
 #include <asm/setup.h>
 #include <asm/page.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/setup.h>
@@ -47,31 +56,41 @@
 #include <asm/gpio.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/irqs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/mux.h>
 #include <plat/tc.h>
 #include <plat/usb.h>
 #include <plat/keypad.h>
 #include <plat/dma.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/flash.h>
 
 #include <mach/hardware.h>
 #include <mach/irqs.h>
 
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/flash.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "board-h3.h"
 
 /* In OMAP1710 H3 the Ethernet is directly connected to CS1 */
@@ -272,9 +291,12 @@ static struct resource smc91x_resources[] = {
 	[1] = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.start	= OMAP_GPIO_IRQ(40),
 		.end	= OMAP_GPIO_IRQ(40),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_LOWEDGE,
 	},
 };
@@ -366,8 +388,11 @@ static struct spi_board_info h3_spi_board_info[] __initdata = {
 		.chip_select	= 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq		= OMAP_GPIO_IRQ(H3_TS_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.max_speed_hz	= 16000000,
 		/* .platform_data	= &tsc_platform_data, */
 	},
@@ -401,12 +426,17 @@ static struct omap_lcd_config h3_lcd_config __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct i2c_board_info __initdata h3_i2c_board_info[] = {
        {
 		I2C_BOARD_INFO("tps65013", 0x48),
        },
 	{
 		I2C_BOARD_INFO("isp1301_omap", 0x2d),
+<<<<<<< HEAD
+=======
 =======
 static struct omap_board_config_kernel h3_config[] __initdata = {
 	{ OMAP_TAG_LCD,		&h3_lcd_config },
@@ -421,6 +451,7 @@ static struct i2c_board_info __initdata h3_i2c_board_info[] = {
 		I2C_BOARD_INFO("isp1301_omap", 0x2d),
 		.irq		= OMAP_GPIO_IRQ(14),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -463,6 +494,9 @@ static void __init h3_init(void)
 	omap_cfg_reg(N19_1610_KBR5);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	smc91x_resources[1].start = gpio_to_irq(40);
 	smc91x_resources[1].end = gpio_to_irq(40);
 	platform_add_devices(devices, ARRAY_SIZE(devices));
@@ -471,6 +505,8 @@ static void __init h3_init(void)
 				ARRAY_SIZE(h3_spi_board_info));
 	omap_serial_init();
 	h3_i2c_board_info[1].irq = gpio_to_irq(14);
+<<<<<<< HEAD
+=======
 =======
 	platform_add_devices(devices, ARRAY_SIZE(devices));
 	spi_register_board_info(h3_spi_board_info,
@@ -479,10 +515,15 @@ static void __init h3_init(void)
 	omap_board_config_size = ARRAY_SIZE(h3_config);
 	omap_serial_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_register_i2c_bus(1, 100, h3_i2c_board_info,
 			      ARRAY_SIZE(h3_i2c_board_info));
 	omap1_usb_init(&h3_usb_config);
 	h3_mmc_init();
+<<<<<<< HEAD
+
+	omapfb_set_lcd_config(&h3_lcd_config);
+=======
 <<<<<<< HEAD
 
 	omapfb_set_lcd_config(&h3_lcd_config);
@@ -499,11 +540,15 @@ static void __init h3_map_io(void)
 {
 	omap1_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(OMAP_H3, "TI OMAP1710 H3 board")
 	/* Maintainer: Texas Instruments, Inc. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= omap16xx_map_io,
 	.init_early     = omap1_init_early,
@@ -512,6 +557,8 @@ MACHINE_START(OMAP_H3, "TI OMAP1710 H3 board")
 	.init_machine	= h3_init,
 	.timer		= &omap1_timer,
 	.restart	= omap1_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x10000100,
 	.map_io		= h3_map_io,
@@ -520,4 +567,5 @@ MACHINE_START(OMAP_H3, "TI OMAP1710 H3 board")
 	.init_machine	= h3_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

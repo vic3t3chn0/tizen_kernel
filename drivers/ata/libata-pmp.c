@@ -8,6 +8,13 @@
  */
 
 #include <linux/kernel.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/libata.h>
 #include <linux/slab.h>
 #include "libata.h"
@@ -147,8 +154,18 @@ int sata_pmp_scr_read(struct ata_link *link, int reg, u32 *r_val)
 
 	err_mask = sata_pmp_read(link, reg, r_val);
 	if (err_mask) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_link_warn(link, "failed to read SCR %d (Emask=0x%x)\n",
+			      reg, err_mask);
+=======
 		ata_link_printk(link, KERN_WARNING, "failed to read SCR %d "
 				"(Emask=0x%x)\n", reg, err_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_link_printk(link, KERN_WARNING, "failed to read SCR %d "
+				"(Emask=0x%x)\n", reg, err_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 	return 0;
@@ -178,8 +195,18 @@ int sata_pmp_scr_write(struct ata_link *link, int reg, u32 val)
 
 	err_mask = sata_pmp_write(link, reg, val);
 	if (err_mask) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_link_warn(link, "failed to write SCR %d (Emask=0x%x)\n",
+			      reg, err_mask);
+=======
 		ata_link_printk(link, KERN_WARNING, "failed to write SCR %d "
 				"(Emask=0x%x)\n", reg, err_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_link_printk(link, KERN_WARNING, "failed to write SCR %d "
+				"(Emask=0x%x)\n", reg, err_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 	return 0;
@@ -231,8 +258,18 @@ static int sata_pmp_read_gscr(struct ata_device *dev, u32 *gscr)
 
 		err_mask = sata_pmp_read(dev->link, reg, &gscr[reg]);
 		if (err_mask) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_dev_err(dev, "failed to read PMP GSCR[%d] (Emask=0x%x)\n",
+				    reg, err_mask);
+=======
 			ata_dev_printk(dev, KERN_ERR, "failed to read PMP "
 				"GSCR[%d] (Emask=0x%x)\n", reg, err_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_dev_printk(dev, KERN_ERR, "failed to read PMP "
+				"GSCR[%d] (Emask=0x%x)\n", reg, err_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EIO;
 		}
 	}
@@ -288,29 +325,75 @@ static int sata_pmp_configure(struct ata_device *dev, int print_info)
 
 	/* Disable sending Early R_OK.
 	 * With "cached read" HDD testing and multiple ports busy on a SATA
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * host controller, 3726 PMP will very rarely drop a deferred
+	 * R_OK that was intended for the host. Symptom will be all
+	 * 5 drives under test will timeout, get reset, and recover.
+	 */
+	if (vendor == 0x1095 && devid == 0x3726) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * host controller, 3x26 PMP will very rarely drop a deferred
 	 * R_OK that was intended for the host. Symptom will be all
 	 * 5 drives under test will timeout, get reset, and recover.
 	 */
 	if (vendor == 0x1095 && (devid == 0x3726 || devid == 0x3826)) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 reg;
 
 		err_mask = sata_pmp_read(&ap->link, PMP_GSCR_SII_POL, &reg);
 		if (err_mask) {
 			rc = -EIO;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			reason = "failed to read Sil3726 Private Register";
+=======
 			reason = "failed to read Sil3x26 Private Register";
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			reason = "failed to read Sil3x26 Private Register";
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto fail;
 		}
 		reg &= ~0x1;
 		err_mask = sata_pmp_write(&ap->link, PMP_GSCR_SII_POL, reg);
 		if (err_mask) {
 			rc = -EIO;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			reason = "failed to write Sil3726 Private Register";
+=======
 			reason = "failed to write Sil3x26 Private Register";
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			reason = "failed to write Sil3x26 Private Register";
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto fail;
 		}
 	}
 
 	if (print_info) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_info(dev, "Port Multiplier %s, "
+			     "0x%04x:0x%04x r%d, %d ports, feat 0x%x/0x%x\n",
+			     sata_pmp_spec_rev_str(gscr), vendor, devid,
+			     sata_pmp_gscr_rev(gscr),
+			     nr_ports, gscr[SATA_PMP_GSCR_FEAT_EN],
+			     gscr[SATA_PMP_GSCR_FEAT]);
+
+		if (!(dev->flags & ATA_DFLAG_AN))
+			ata_dev_info(dev,
+				"Asynchronous notification not supported, "
+				"hotplug won't work on fan-out ports. Use warm-plug instead.\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ata_dev_printk(dev, KERN_INFO, "Port Multiplier %s, "
 			       "0x%04x:0x%04x r%d, %d ports, feat 0x%x/0x%x\n",
 			       sata_pmp_spec_rev_str(gscr), vendor, devid,
@@ -323,14 +406,30 @@ static int sata_pmp_configure(struct ata_device *dev, int print_info)
 				"Asynchronous notification not supported, "
 				"hotplug won't\n         work on fan-out "
 				"ports. Use warm-plug instead.\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
 
  fail:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ata_dev_err(dev,
+		    "failed to configure Port Multiplier (%s, Emask=0x%x)\n",
+		    reason, err_mask);
+=======
 	ata_dev_printk(dev, KERN_ERR,
 		       "failed to configure Port Multiplier (%s, Emask=0x%x)\n",
 		       reason, err_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ata_dev_printk(dev, KERN_ERR,
+		       "failed to configure Port Multiplier (%s, Emask=0x%x)\n",
+		       reason, err_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -383,18 +482,40 @@ static void sata_pmp_quirks(struct ata_port *ap)
 	u16 devid = sata_pmp_gscr_devid(gscr);
 	struct ata_link *link;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (vendor == 0x1095 && devid == 0x3726) {
+		/* sil3726 quirks */
+=======
 	if (vendor == 0x1095 && (devid == 0x3726 || devid == 0x3826)) {
 		/* sil3x26 quirks */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (vendor == 0x1095 && (devid == 0x3726 || devid == 0x3826)) {
+		/* sil3x26 quirks */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ata_for_each_link(link, ap, EDGE) {
 			/* link reports offline after LPM */
 			link->flags |= ATA_LFLAG_NO_LPM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			/* Class code report is unreliable. */
+			if (link->pmp < 5)
+				link->flags |= ATA_LFLAG_ASSUME_ATA;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Class code report is unreliable and SRST
 			 * times out under certain configurations.
 			 */
 			if (link->pmp < 5)
 				link->flags |= ATA_LFLAG_NO_SRST |
 					       ATA_LFLAG_ASSUME_ATA;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* port 5 is for SEMB device and it doesn't like SRST */
 			if (link->pmp == 5)
@@ -485,20 +606,47 @@ int sata_pmp_attach(struct ata_device *dev)
 
 	/* is it hanging off the right place? */
 	if (!sata_pmp_supported(ap)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_err(dev, "host does not support Port Multiplier\n");
+=======
 		ata_dev_printk(dev, KERN_ERR,
 			       "host does not support Port Multiplier\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_ERR,
+			       "host does not support Port Multiplier\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
 	if (!ata_is_host_link(link)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_err(dev, "Port Multipliers cannot be nested\n");
+=======
 		ata_dev_printk(dev, KERN_ERR,
 			       "Port Multipliers cannot be nested\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_ERR,
+			       "Port Multipliers cannot be nested\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
 	if (dev->devno) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_err(dev, "Port Multiplier must be the first device\n");
+=======
 		ata_dev_printk(dev, KERN_ERR,
 			       "Port Multiplier must be the first device\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_ERR,
+			       "Port Multiplier must be the first device\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -517,8 +665,17 @@ int sata_pmp_attach(struct ata_device *dev)
 
 	rc = sata_pmp_init_links(ap, sata_pmp_gscr_ports(dev->gscr));
 	if (rc) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_info(dev, "failed to initialize PMP links\n");
+=======
 		ata_dev_printk(dev, KERN_INFO,
 			       "failed to initialize PMP links\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_INFO,
+			       "failed to initialize PMP links\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail;
 	}
 
@@ -562,7 +719,15 @@ static void sata_pmp_detach(struct ata_device *dev)
 	struct ata_link *tlink;
 	unsigned long flags;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ata_dev_info(dev, "Port Multiplier detaching\n");
+=======
 	ata_dev_printk(dev, KERN_INFO, "Port Multiplier detaching\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ata_dev_printk(dev, KERN_INFO, "Port Multiplier detaching\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	WARN_ON(!ata_is_host_link(link) || dev->devno ||
 		link->pmp != SATA_PMP_CTRL_PORT);
@@ -609,23 +774,59 @@ static int sata_pmp_same_pmp(struct ata_device *dev, const u32 *new_gscr)
 	new_nr_ports = sata_pmp_gscr_ports(new_gscr);
 
 	if (old_vendor != new_vendor) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_info(dev,
+			     "Port Multiplier vendor mismatch '0x%x' != '0x%x'\n",
+			     old_vendor, new_vendor);
+=======
 		ata_dev_printk(dev, KERN_INFO, "Port Multiplier "
 			       "vendor mismatch '0x%x' != '0x%x'\n",
 			       old_vendor, new_vendor);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_INFO, "Port Multiplier "
+			       "vendor mismatch '0x%x' != '0x%x'\n",
+			       old_vendor, new_vendor);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
 	if (old_devid != new_devid) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_info(dev,
+			     "Port Multiplier device ID mismatch '0x%x' != '0x%x'\n",
+			     old_devid, new_devid);
+=======
 		ata_dev_printk(dev, KERN_INFO, "Port Multiplier "
 			       "device ID mismatch '0x%x' != '0x%x'\n",
 			       old_devid, new_devid);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_INFO, "Port Multiplier "
+			       "device ID mismatch '0x%x' != '0x%x'\n",
+			       old_devid, new_devid);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
 	if (old_nr_ports != new_nr_ports) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_info(dev,
+			     "Port Multiplier nr_ports mismatch '0x%x' != '0x%x'\n",
+			     old_nr_ports, new_nr_ports);
+=======
 		ata_dev_printk(dev, KERN_INFO, "Port Multiplier "
 			       "nr_ports mismatch '0x%x' != '0x%x'\n",
 			       old_nr_ports, new_nr_ports);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_INFO, "Port Multiplier "
+			       "nr_ports mismatch '0x%x' != '0x%x'\n",
+			       old_nr_ports, new_nr_ports);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -691,8 +892,17 @@ static int sata_pmp_revalidate(struct ata_device *dev, unsigned int new_class)
 	return 0;
 
  fail:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ata_dev_err(dev, "PMP revalidation failed (errno=%d)\n", rc);
+=======
 	ata_dev_printk(dev, KERN_ERR,
 		       "PMP revalidation failed (errno=%d)\n", rc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ata_dev_printk(dev, KERN_ERR,
+		       "PMP revalidation failed (errno=%d)\n", rc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DPRINTK("EXIT, rc=%d\n", rc);
 	return rc;
 }
@@ -716,13 +926,32 @@ static int sata_pmp_revalidate_quick(struct ata_device *dev)
 
 	err_mask = sata_pmp_read(dev->link, SATA_PMP_GSCR_PROD_ID, &prod_id);
 	if (err_mask) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_err(dev,
+			    "failed to read PMP product ID (Emask=0x%x)\n",
+			    err_mask);
+=======
 		ata_dev_printk(dev, KERN_ERR, "failed to read PMP product ID "
 			       "(Emask=0x%x)\n", err_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_ERR, "failed to read PMP product ID "
+			       "(Emask=0x%x)\n", err_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
 	if (prod_id != dev->gscr[SATA_PMP_GSCR_PROD_ID]) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_err(dev, "PMP product ID mismatch\n");
+=======
 		ata_dev_printk(dev, KERN_ERR, "PMP product ID mismatch\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(dev, KERN_ERR, "PMP product ID mismatch\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* something weird is going on, request full PMP recovery */
 		return -EIO;
 	}
@@ -777,8 +1006,17 @@ static int sata_pmp_eh_recover_pmp(struct ata_port *ap,
 		rc = ata_eh_reset(link, 0, prereset, softreset, hardreset,
 				  postreset);
 		if (rc) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_link_err(link, "failed to reset PMP, giving up\n");
+=======
 			ata_link_printk(link, KERN_ERR,
 					"failed to reset PMP, giving up\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_link_printk(link, KERN_ERR,
+					"failed to reset PMP, giving up\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto fail;
 		}
 
@@ -819,9 +1057,21 @@ static int sata_pmp_eh_recover_pmp(struct ata_port *ap,
 			ehc->i.action |= ATA_EH_RESET;
 			goto retry;
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_dev_err(dev,
+				    "failed to recover PMP after %d tries, giving up\n",
+				    ATA_EH_PMP_TRIES);
+=======
 			ata_dev_printk(dev, KERN_ERR, "failed to recover PMP "
 				       "after %d tries, giving up\n",
 				       ATA_EH_PMP_TRIES);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_dev_printk(dev, KERN_ERR, "failed to recover PMP "
+				       "after %d tries, giving up\n",
+				       ATA_EH_PMP_TRIES);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto fail;
 		}
 	}
@@ -867,8 +1117,19 @@ static int sata_pmp_eh_handle_disabled_links(struct ata_port *ap)
 		/* unconditionally clear SError.N */
 		rc = sata_scr_write(link, SCR_ERROR, SERR_PHYRDY_CHG);
 		if (rc) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_link_err(link,
+				     "failed to clear SError.N (errno=%d)\n",
+				     rc);
+=======
 			ata_link_printk(link, KERN_ERR, "failed to clear "
 					"SError.N (errno=%d)\n", rc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_link_printk(link, KERN_ERR, "failed to clear "
+					"SError.N (errno=%d)\n", rc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return rc;
 		}
 
@@ -890,7 +1151,15 @@ static int sata_pmp_handle_link_fail(struct ata_link *link, int *link_tries)
 
 	/* disable this link */
 	if (!(link->flags & ATA_LFLAG_DISABLED)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_link_warn(link,
+=======
 		ata_link_printk(link, KERN_WARNING,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_link_printk(link, KERN_WARNING,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"failed to recover link after %d tries, disabling\n",
 			ATA_EH_PMP_LINK_TRIES);
 
@@ -974,7 +1243,15 @@ static int sata_pmp_eh_recover(struct ata_port *ap)
 		err_mask = sata_pmp_write(pmp_link, SATA_PMP_GSCR_FEAT_EN,
 					  gscr[SATA_PMP_GSCR_FEAT_EN]);
 		if (err_mask) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_link_warn(pmp_link,
+=======
 			ata_link_printk(pmp_link, KERN_WARNING,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_link_printk(pmp_link, KERN_WARNING,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"failed to disable NOTIFY (err_mask=0x%x)\n",
 				err_mask);
 			goto pmp_fail;
@@ -1018,8 +1295,19 @@ static int sata_pmp_eh_recover(struct ata_port *ap)
 		err_mask = sata_pmp_write(pmp_link, SATA_PMP_GSCR_FEAT_EN,
 					  gscr[SATA_PMP_GSCR_FEAT_EN]);
 		if (err_mask) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_dev_err(pmp_dev,
+				    "failed to write PMP_FEAT_EN (Emask=0x%x)\n",
+				    err_mask);
+=======
 			ata_dev_printk(pmp_dev, KERN_ERR, "failed to write "
 				       "PMP_FEAT_EN (Emask=0x%x)\n", err_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ata_dev_printk(pmp_dev, KERN_ERR, "failed to write "
+				       "PMP_FEAT_EN (Emask=0x%x)\n", err_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rc = -EIO;
 			goto pmp_fail;
 		}
@@ -1028,8 +1316,19 @@ static int sata_pmp_eh_recover(struct ata_port *ap)
 	/* check GSCR_ERROR */
 	err_mask = sata_pmp_read(pmp_link, SATA_PMP_GSCR_ERROR, &gscr_error);
 	if (err_mask) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_dev_err(pmp_dev,
+			    "failed to read PMP_GSCR_ERROR (Emask=0x%x)\n",
+			    err_mask);
+=======
 		ata_dev_printk(pmp_dev, KERN_ERR, "failed to read "
 			       "PMP_GSCR_ERROR (Emask=0x%x)\n", err_mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_dev_printk(pmp_dev, KERN_ERR, "failed to read "
+			       "PMP_GSCR_ERROR (Emask=0x%x)\n", err_mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EIO;
 		goto pmp_fail;
 	}
@@ -1043,17 +1342,40 @@ static int sata_pmp_eh_recover(struct ata_port *ap)
 			ata_ehi_hotplugged(&link->eh_context.i);
 			cnt++;
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ata_link_warn(link,
+				"PHY status changed but maxed out on retries, giving up\n");
+			ata_link_warn(link,
+				"Manually issue scan to resume this link\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ata_link_printk(link, KERN_WARNING,
 				"PHY status changed but maxed out on retries, "
 				"giving up\n");
 			ata_link_printk(link, KERN_WARNING,
 				"Manully issue scan to resume this link\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
 	if (cnt) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ata_port_info(ap,
+			"PMP SError.N set for some ports, repeating recovery\n");
+=======
 		ata_port_printk(ap, KERN_INFO, "PMP SError.N set for some "
 				"ports, repeating recovery\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ata_port_printk(ap, KERN_INFO, "PMP SError.N set for some "
+				"ports, repeating recovery\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto retry;
 	}
 
@@ -1081,9 +1403,20 @@ static int sata_pmp_eh_recover(struct ata_port *ap)
 		goto retry;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ata_port_err(ap, "failed to recover PMP after %d tries, giving up\n",
+		     ATA_EH_PMP_TRIES);
+=======
 	ata_port_printk(ap, KERN_ERR,
 			"failed to recover PMP after %d tries, giving up\n",
 			ATA_EH_PMP_TRIES);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ata_port_printk(ap, KERN_ERR,
+			"failed to recover PMP after %d tries, giving up\n",
+			ATA_EH_PMP_TRIES);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sata_pmp_detach(pmp_dev);
 	ata_dev_disable(pmp_dev);
 

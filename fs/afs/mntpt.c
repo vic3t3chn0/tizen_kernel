@@ -205,10 +205,16 @@ static struct vfsmount *afs_mntpt_do_automount(struct dentry *mntpt)
 		memcpy(devname, buf, size);
 		kunmap_atomic(buf);
 =======
+<<<<<<< HEAD
+		buf = kmap_atomic(page);
+		memcpy(devname, buf, size);
+		kunmap_atomic(buf);
+=======
 		buf = kmap_atomic(page, KM_USER0);
 		memcpy(devname, buf, size);
 		kunmap_atomic(buf, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		page_cache_release(page);
 		page = NULL;
 	}
@@ -251,8 +257,12 @@ struct vfsmount *afs_d_automount(struct path *path)
 <<<<<<< HEAD
 	_enter("{%s}", path->dentry->d_name.name);
 =======
+<<<<<<< HEAD
+	_enter("{%s}", path->dentry->d_name.name);
+=======
 	_enter("{%s,%s}", path->mnt->mnt_devname, path->dentry->d_name.name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	newmnt = afs_mntpt_do_automount(path->dentry);
 	if (IS_ERR(newmnt))
@@ -265,8 +275,12 @@ struct vfsmount *afs_d_automount(struct path *path)
 <<<<<<< HEAD
 	_leave(" = %p", newmnt);
 =======
+<<<<<<< HEAD
+	_leave(" = %p", newmnt);
+=======
 	_leave(" = %p {%s}", newmnt, newmnt->mnt_devname);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return newmnt;
 }
 

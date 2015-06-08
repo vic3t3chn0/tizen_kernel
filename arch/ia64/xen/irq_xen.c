@@ -61,8 +61,12 @@ xen_free_irq_vector(int vector)
 <<<<<<< HEAD
 		printk(KERN_WARNING "%s: xen_free_irq_vector fail vector=%d\n",
 =======
+<<<<<<< HEAD
+		printk(KERN_WARNING "%s: xen_free_irq_vector fail vector=%d\n",
+=======
 		printk(KERN_WARNING "%s: xen_free_irq_vecotr fail vector=%d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       __func__, vector);
 }
 

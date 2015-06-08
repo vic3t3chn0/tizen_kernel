@@ -13,8 +13,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/types.h>
 #include <linux/interrupt.h>
@@ -36,8 +40,12 @@
 <<<<<<< HEAD
 #include <mach/gpio-ks8695.h>
 =======
+<<<<<<< HEAD
+#include <mach/gpio-ks8695.h>
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -45,8 +53,12 @@
 <<<<<<< HEAD
 static int dsm320_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+static int dsm320_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 static int dsm320_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (slot) {
 	case 0:
@@ -136,8 +148,12 @@ MACHINE_START(DSM320, "D-Link DSM-320 Wireless Media Player")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= KS8695_SDRAM_PA + 0x100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= ks8695_map_io,
 	.init_irq	= ks8695_init_irq,
 	.init_machine	= dsm320_init,
@@ -145,5 +161,9 @@ MACHINE_START(DSM320, "D-Link DSM-320 Wireless Media Player")
 <<<<<<< HEAD
 	.restart	= ks8695_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ks8695_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

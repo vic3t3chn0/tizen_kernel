@@ -410,6 +410,9 @@ static int send_write_chunks(struct svcxprt_rdma *xprt,
 
 		arg_ch = &arg_ary->wc_array[chunk_no].wc_target;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		write_len = min(xfer_len, ntohl(arg_ch->rs_length));
 
 		/* Prepare the response chunk given the length actually
@@ -419,6 +422,8 @@ static int send_write_chunks(struct svcxprt_rdma *xprt,
 						arg_ch->rs_handle,
 						arg_ch->rs_offset,
 						write_len);
+<<<<<<< HEAD
+=======
 =======
 		write_len = min(xfer_len, arg_ch->rs_length);
 
@@ -430,6 +435,7 @@ static int send_write_chunks(struct svcxprt_rdma *xprt,
 					    rs_offset,
 					    write_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chunk_off = 0;
 		while (write_len) {
 			int this_write;
@@ -438,8 +444,12 @@ static int send_write_chunks(struct svcxprt_rdma *xprt,
 <<<<<<< HEAD
 					 ntohl(arg_ch->rs_handle),
 =======
+<<<<<<< HEAD
+					 ntohl(arg_ch->rs_handle),
+=======
 					 arg_ch->rs_handle,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 rs_offset + chunk_off,
 					 xdr_off,
 					 this_write,
@@ -476,7 +486,11 @@ static int send_reply_chunks(struct svcxprt_rdma *xprt,
 <<<<<<< HEAD
 	int nchunks;
 =======
+<<<<<<< HEAD
+	int nchunks;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rpcrdma_segment *ch;
 	struct rpcrdma_write_array *arg_ary;
 	struct rpcrdma_write_array *res_ary;
@@ -497,6 +511,9 @@ static int send_reply_chunks(struct svcxprt_rdma *xprt,
 
 	/* xdr offset starts at RPC message */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nchunks = ntohl(arg_ary->wc_nchunks);
 	for (xdr_off = 0, chunk_no = 0;
 	     xfer_len && chunk_no < nchunks;
@@ -511,6 +528,8 @@ static int send_reply_chunks(struct svcxprt_rdma *xprt,
 		svc_rdma_xdr_encode_array_chunk(res_ary, chunk_no,
 						ch->rs_handle, ch->rs_offset,
 						write_len);
+<<<<<<< HEAD
+=======
 =======
 	for (xdr_off = 0, chunk_no = 0;
 	     xfer_len && chunk_no < arg_ary->wc_nchunks;
@@ -526,6 +545,7 @@ static int send_reply_chunks(struct svcxprt_rdma *xprt,
 					    ch->rs_handle, rs_offset,
 					    write_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chunk_off = 0;
 		while (write_len) {
 			int this_write;
@@ -535,8 +555,12 @@ static int send_reply_chunks(struct svcxprt_rdma *xprt,
 <<<<<<< HEAD
 					 ntohl(ch->rs_handle),
 =======
+<<<<<<< HEAD
+					 ntohl(ch->rs_handle),
+=======
 					 ch->rs_handle,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 rs_offset + chunk_off,
 					 xdr_off,
 					 this_write,

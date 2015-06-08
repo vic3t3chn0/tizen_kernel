@@ -20,7 +20,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/page.h>
 #include <asm/mmu_context.h>
@@ -30,7 +34,11 @@
 <<<<<<< HEAD
 #include <asm/fixmap.h>
 =======
+<<<<<<< HEAD
+#include <asm/fixmap.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Use for MMU and noMMU because of PCI generic code */
 int mem_init_done;
@@ -52,6 +60,9 @@ char *klimit = _end;
 unsigned long memory_start;
 EXPORT_SYMBOL(memory_start);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long memory_size;
 EXPORT_SYMBOL(memory_size);
 unsigned long lowmem_size;
@@ -102,11 +113,14 @@ static unsigned long highmem_setup(void)
 	return reservedpages;
 }
 #endif /* CONFIG_HIGHMEM */
+<<<<<<< HEAD
+=======
 =======
 unsigned long memory_end; /* due to mm/nommu.c */
 unsigned long memory_size;
 EXPORT_SYMBOL(memory_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * paging_init() sets up the page tables - in fact we've already done this.
@@ -115,6 +129,9 @@ static void __init paging_init(void)
 {
 	unsigned long zones_size[MAX_NR_ZONES];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMU
 	int idx;
 
@@ -122,13 +139,19 @@ static void __init paging_init(void)
 	for (idx = 0; idx < __end_of_fixed_addresses; idx++)
 		clear_fixmap(idx);
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Clean every zones */
 	memset(zones_size, 0, sizeof(zones_size));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HIGHMEM
 	highmem_init();
 
@@ -140,6 +163,8 @@ static void __init paging_init(void)
 
 	/* We don't have holes in memory map */
 	free_area_init_nodes(zones_size);
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * old: we can DMA to/from any address.put all page into ZONE_DMA
@@ -149,6 +174,7 @@ static void __init paging_init(void)
 
 	free_area_init(zones_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init setup_memory(void)
@@ -163,6 +189,9 @@ void __init setup_memory(void)
 	for_each_memblock(memory, reg) {
 		memory_start = (u32)reg->base;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		lowmem_size = reg->size;
 		if ((memory_start <= (u32)_text) &&
 			((u32)_text <= (memory_start + lowmem_size - 1))) {
@@ -171,6 +200,8 @@ void __init setup_memory(void)
 			printk(KERN_INFO "%s: Main mem: 0x%x, "
 				"size 0x%08x\n", __func__, (u32) memory_start,
 					(u32) memory_size);
+<<<<<<< HEAD
+=======
 =======
 		memory_end = (u32) reg->base + reg->size;
 		if ((memory_start <= (u32)_text) &&
@@ -181,6 +212,7 @@ void __init setup_memory(void)
 				"size 0x%08x\n", __func__, (u32) memory_start,
 					(u32) memory_end, (u32) memory_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -190,10 +222,16 @@ void __init setup_memory(void)
 		panic("%s: Missing memory setting 0x%08x, size=0x%08x\n",
 			__func__, (u32) memory_start, (u32) memory_size);
 =======
+<<<<<<< HEAD
+	if (!memory_start || !memory_size) {
+		panic("%s: Missing memory setting 0x%08x, size=0x%08x\n",
+			__func__, (u32) memory_start, (u32) memory_size);
+=======
 	if (!memory_start || !memory_end) {
 		panic("%s: Missing memory setting 0x%08x-0x%08x\n",
 			__func__, (u32) memory_start, (u32) memory_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* reservation of region where is the kernel */
@@ -201,10 +239,15 @@ void __init setup_memory(void)
 	/* ALIGN can be remove because _end in vmlinux.lds.S is align */
 	kernel_align_size = PAGE_UP((u32)klimit) - kernel_align_start;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "%s: kernel addr:0x%08x-0x%08x size=0x%08x\n",
 		__func__, kernel_align_start, kernel_align_start
 			+ kernel_align_size, kernel_align_size);
 	memblock_reserve(kernel_align_start, kernel_align_size);
+<<<<<<< HEAD
+=======
 =======
 	memblock_reserve(kernel_align_start, kernel_align_size);
 	printk(KERN_INFO "%s: kernel addr=0x%08x-0x%08x size=0x%08x\n",
@@ -212,6 +255,7 @@ void __init setup_memory(void)
 			+ kernel_align_size, kernel_align_size);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/*
 	 * Kernel:
@@ -232,8 +276,13 @@ void __init setup_memory(void)
 	max_low_pfn = ((u64)memory_start + (u64)lowmem_size) >> PAGE_SHIFT;
 	max_pfn = ((u64)memory_start + (u64)memory_size) >> PAGE_SHIFT;
 =======
+<<<<<<< HEAD
+	max_low_pfn = ((u64)memory_start + (u64)lowmem_size) >> PAGE_SHIFT;
+	max_pfn = ((u64)memory_start + (u64)memory_size) >> PAGE_SHIFT;
+=======
 	max_pfn = max_low_pfn = memory_end >> PAGE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "%s: max_mapnr: %#lx\n", __func__, max_mapnr);
 	printk(KERN_INFO "%s: min_low_pfn: %#lx\n", __func__, min_low_pfn);
@@ -241,7 +290,11 @@ void __init setup_memory(void)
 <<<<<<< HEAD
 	printk(KERN_INFO "%s: max_pfn: %#lx\n", __func__, max_pfn);
 =======
+<<<<<<< HEAD
+	printk(KERN_INFO "%s: max_pfn: %#lx\n", __func__, max_pfn);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Find an area to use for the bootmem bitmap.
@@ -255,6 +308,9 @@ void __init setup_memory(void)
 	memblock_reserve(PFN_UP(TOPHYS((u32)klimit)) << PAGE_SHIFT, map_size);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Add active regions with valid PFNs */
 	for_each_memblock(memory, reg) {
 		unsigned long start_pfn, end_pfn;
@@ -288,6 +344,8 @@ void __init setup_memory(void)
 	/* XXX need to clip this if using highmem? */
 	sparse_memory_present_with_active_regions(0);
 
+<<<<<<< HEAD
+=======
 =======
 	/* free bootmem is whole main memory */
 	free_bootmem(memory_start, memory_size);
@@ -299,6 +357,7 @@ void __init setup_memory(void)
 		reserve_bootmem(reg->base, reg->size, BOOTMEM_DEFAULT);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMU
 	init_bootmem_done = 1;
 #endif
@@ -344,6 +403,9 @@ void free_initmem(void)
 void __init mem_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pg_data_t *pgdat;
 	unsigned long reservedpages = 0, codesize, initsize, datasize, bsssize;
 
@@ -396,6 +458,8 @@ void __init mem_init(void)
 	pr_info("  * 0x%08lx..0x%08lx  : vmalloc & ioremap\n",
 		(unsigned long)VMALLOC_START, VMALLOC_END);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	high_memory = (void *)__va(memory_end);
 	/* this will put all memory onto the freelists */
@@ -405,6 +469,7 @@ void __init mem_init(void)
 	       nr_free_pages() << (PAGE_SHIFT-10),
 	       num_physpages << (PAGE_SHIFT-10));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mem_init_done = 1;
 }
 
@@ -436,8 +501,11 @@ static void mm_cmdline_setup(void)
 			memory_size = maxmem;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			memory_end = memory_start + memory_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			memblock.memory.regions[0].size = memory_size;
 		}
 	}
@@ -482,6 +550,9 @@ asmlinkage void __init mmu_init(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((u32) memblock.memory.regions[0].size < 0x400000) {
 		printk(KERN_EMERG "Memory must be greater than 4MB\n");
 		machine_restart(NULL);
@@ -502,6 +573,8 @@ asmlinkage void __init mmu_init(void)
 		memory_size = lowmem_size;
 #endif
 	}
+<<<<<<< HEAD
+=======
 =======
 	if ((u32) memblock.memory.regions[0].size < 0x1000000) {
 		printk(KERN_EMERG "Memory must be greater than 16MB\n");
@@ -513,6 +586,7 @@ asmlinkage void __init mmu_init(void)
 				(u32) memblock.memory.regions[0].size;
 	memory_size = memory_end - memory_start;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mm_cmdline_setup(); /* FIXME parse args from command line - not used */
 
@@ -540,6 +614,9 @@ asmlinkage void __init mmu_init(void)
 	mapin_ram();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Extend vmalloc and ioremap area as big as possible */
 #ifdef CONFIG_HIGHMEM
 	ioremap_base = ioremap_bot = PKMAP_BASE;
@@ -554,6 +631,8 @@ asmlinkage void __init mmu_init(void)
 	/* This will also cause that unflatten device tree will be allocated
 	 * inside 768MB limit */
 	memblock_set_current_limit(memory_start + lowmem_size - 1);
+<<<<<<< HEAD
+=======
 =======
 #ifdef HIGHMEM_START_BOOL
 	ioremap_base = HIGHMEM_START;
@@ -565,6 +644,7 @@ asmlinkage void __init mmu_init(void)
 	/* Initialize the context management stuff */
 	mmu_context_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* This is only called until mem_init is done. */
@@ -576,11 +656,16 @@ void __init *early_get_page(void)
 	} else {
 		/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Mem start + kernel_tlb -> here is limit
 		 * because of mem mapping from head.S
 		 */
 		p = __va(memblock_alloc_base(PAGE_SIZE, PAGE_SIZE,
 					memory_start + kernel_tlb));
+<<<<<<< HEAD
+=======
 =======
 		 * Mem start + 32MB -> here is limit
 		 * because of mem mapping from head.S
@@ -588,6 +673,7 @@ void __init *early_get_page(void)
 		p = __va(memblock_alloc_base(PAGE_SIZE, PAGE_SIZE,
 					memory_start + 0x2000000));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return p;
 }

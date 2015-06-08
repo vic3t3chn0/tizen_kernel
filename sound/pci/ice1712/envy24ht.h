@@ -69,7 +69,11 @@ enum {
 <<<<<<< HEAD
 #define   VT1724_CFG_ADC_NONE	0x0c	/* no ADCs */
 =======
+<<<<<<< HEAD
+#define   VT1724_CFG_ADC_NONE	0x0c	/* no ADCs */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define   VT1724_CFG_DAC_MASK	0x03	/* one, two, three, four stereo DACs */
 
 #define VT1724_REG_AC97_CFG		0x05	/* byte */

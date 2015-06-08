@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2012, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2008-2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -20,15 +24,21 @@
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/kgsl.h>
 
 #include <linux/dma-mapping.h>
 #include <asm/clkdev.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/clkdev.h>
 #include <linux/dma-mapping.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 #include <mach/msm_iomap.h>
 #include <mach/dma.h>
@@ -39,6 +49,9 @@
 #include <asm/mach/flash.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/mmc.h>
 #include <mach/msm_hsusb.h>
 #include <mach/usbdiag.h>
@@ -75,10 +88,13 @@ static struct resource resources_uart2[] = {
 		.flags	= IORESOURCE_MEM,
 	},
 };
+<<<<<<< HEAD
+=======
 =======
 #include <mach/mmc.h>
 #include "clock-pcom.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource resources_uart3[] = {
 	{
@@ -95,6 +111,9 @@ static struct resource resources_uart3[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_device msm_device_uart1 = {
 	.name	= "msm_serial",
 	.id	= 0,
@@ -109,8 +128,11 @@ struct platform_device msm_device_uart2 = {
 	.resource	= resources_uart2,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_device msm_device_uart3 = {
 	.name	= "msm_serial",
 	.id	= 2,
@@ -119,6 +141,9 @@ struct platform_device msm_device_uart3 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_UART1DM_PHYS      0xA0200000
 #define MSM_UART2DM_PHYS      0xA0900000
 static struct resource msm_uart1_dm_resources[] = {
@@ -235,6 +260,8 @@ static struct resource resources_hsusb_otg[] = {
 	{
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + SZ_1K - 1,
+<<<<<<< HEAD
+=======
 =======
 struct platform_device msm_device_smd = {
 	.name   = "msm_smd",
@@ -246,6 +273,7 @@ static struct resource resources_otg[] = {
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + MSM_HSUSB_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -256,6 +284,9 @@ static struct resource resources_otg[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 dma_mask = 0xffffffffULL;
 struct platform_device msm_device_hsusb_otg = {
 	.name		= "msm_hsusb_otg",
@@ -285,6 +316,8 @@ static struct resource resources_gadget_peripheral[] = {
 	{
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + SZ_1K - 1,
+<<<<<<< HEAD
+=======
 =======
 struct platform_device msm_device_otg = {
 	.name		= "msm_otg",
@@ -301,6 +334,7 @@ static struct resource resources_hsusb[] = {
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + MSM_HSUSB_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -311,6 +345,9 @@ static struct resource resources_hsusb[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_device msm_device_hsusb_peripheral = {
 	.name		= "msm_hsusb_peripheral",
 	.id		= -1,
@@ -364,6 +401,8 @@ static struct resource resources_hsusb_host[] = {
 	{
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + SZ_1K - 1,
+<<<<<<< HEAD
+=======
 =======
 struct platform_device msm_device_hsusb = {
 	.name		= "msm_hsusb",
@@ -381,6 +420,7 @@ static struct resource resources_hsusb_host[] = {
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + MSM_HSUSB_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -393,6 +433,9 @@ static struct resource resources_hsusb_host[] = {
 struct platform_device msm_device_hsusb_host = {
 	.name		= "msm_hsusb_host",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id		= 0,
 	.num_resources	= ARRAY_SIZE(resources_hsusb_host),
 	.resource	= resources_hsusb_host,
@@ -579,6 +622,8 @@ static struct resource resources_sdc1[] = {
 		.end	= DMOV_SDC1_CRCI,
 		.flags	= IORESOURCE_DMA,
 	}
+<<<<<<< HEAD
+=======
 =======
 	.id		= -1,
 	.num_resources	= ARRAY_SIZE(resources_hsusb_host),
@@ -617,11 +662,15 @@ static struct resource resources_sdc1[] = {
 		.flags	= IORESOURCE_DMA,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource resources_sdc2[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name   = "core_mem",
 		.start	= MSM_SDC2_BASE,
 		.end	= MSM_SDC2_BASE + SZ_4K - 1,
@@ -645,6 +694,8 @@ static struct resource resources_sdc2[] = {
 		.end	= DMOV_SDC2_CRCI,
 		.flags	= IORESOURCE_DMA,
 	}
+<<<<<<< HEAD
+=======
 =======
 		.start	= MSM_SDC2_PHYS,
 		.end	= MSM_SDC2_PHYS + MSM_SDC2_SIZE - 1,
@@ -672,11 +723,15 @@ static struct resource resources_sdc2[] = {
 		.flags	= IORESOURCE_DMA,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource resources_sdc3[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name   = "core_mem",
 		.start	= MSM_SDC3_BASE,
 		.end	= MSM_SDC3_BASE + SZ_4K - 1,
@@ -698,6 +753,8 @@ static struct resource resources_sdc3[] = {
 		.name	= "dma_crci",
 		.start	= DMOV_SDC3_CRCI,
 		.end	= DMOV_SDC3_CRCI,
+<<<<<<< HEAD
+=======
 =======
 		.start	= MSM_SDC3_PHYS,
 		.end	= MSM_SDC3_PHYS + MSM_SDC3_SIZE - 1,
@@ -723,6 +780,7 @@ static struct resource resources_sdc3[] = {
 		.start	= 8,
 		.end	= 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_DMA,
 	},
 };
@@ -730,6 +788,9 @@ static struct resource resources_sdc3[] = {
 static struct resource resources_sdc4[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name   = "core_mem",
 		.start	= MSM_SDC4_BASE,
 		.end	= MSM_SDC4_BASE + SZ_4K - 1,
@@ -751,6 +812,8 @@ static struct resource resources_sdc4[] = {
 		.name	= "dma_crci",
 		.start	= DMOV_SDC4_CRCI,
 		.end	= DMOV_SDC4_CRCI,
+<<<<<<< HEAD
+=======
 =======
 		.start	= MSM_SDC4_PHYS,
 		.end	= MSM_SDC4_PHYS + MSM_SDC4_SIZE - 1,
@@ -776,6 +839,7 @@ static struct resource resources_sdc4[] = {
 		.start	= 8,
 		.end	= 8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_DMA,
 	},
 };
@@ -832,6 +896,11 @@ int __init msm_add_sdcc(unsigned int controller, struct mmc_platform_data *plat)
 {
 	struct platform_device	*pdev;
 =======
+<<<<<<< HEAD
+int __init msm_add_sdcc(unsigned int controller, struct mmc_platform_data *plat)
+{
+	struct platform_device	*pdev;
+=======
 int __init msm_add_sdcc(unsigned int controller,
 			struct msm_mmc_platform_data *plat,
 			unsigned int stat_irq, unsigned long stat_irq_flags)
@@ -839,6 +908,7 @@ int __init msm_add_sdcc(unsigned int controller,
 	struct platform_device	*pdev;
 	struct resource *res;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (controller < 1 || controller > 4)
 		return -EINVAL;
@@ -846,6 +916,9 @@ int __init msm_add_sdcc(unsigned int controller,
 	pdev = msm_sdcc_devices[controller-1];
 	pdev->dev.platform_data = plat;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return platform_device_register(pdev);
 }
 
@@ -1154,6 +1227,8 @@ struct platform_device msm_kgsl_3d0 = {
 		.platform_data = &kgsl_3d0_pdata,
 	},
 };
+<<<<<<< HEAD
+=======
 =======
 
 	res = platform_get_resource_byname(pdev, IORESOURCE_IRQ, "status_irq");
@@ -1224,4 +1299,5 @@ struct clk_lookup msm_clocks_8x50[] = {
 
 unsigned msm_num_clocks_8x50 = ARRAY_SIZE(msm_clocks_8x50);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 

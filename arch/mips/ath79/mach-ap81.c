@@ -11,17 +11,23 @@
 
 #include "machtypes.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "dev-wmac.h"
 #include "dev-gpio-buttons.h"
 #include "dev-leds-gpio.h"
 #include "dev-spi.h"
 #include "dev-usb.h"
+<<<<<<< HEAD
+=======
 =======
 #include "dev-ar913x-wmac.h"
 #include "dev-gpio-buttons.h"
 #include "dev-leds-gpio.h"
 #include "dev-spi.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define AP81_GPIO_LED_STATUS	1
 #define AP81_GPIO_LED_AOSS	3
@@ -103,8 +109,13 @@ static void __init ap81_setup(void)
 	ath79_register_wmac(cal_data);
 	ath79_register_usb();
 =======
+<<<<<<< HEAD
+	ath79_register_wmac(cal_data);
+	ath79_register_usb();
+=======
 	ath79_register_ar913x_wmac(cal_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MIPS_MACHINE(ATH79_MACH_AP81, "AP81", "Atheros AP81 reference board",

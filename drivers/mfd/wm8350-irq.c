@@ -473,17 +473,33 @@ int wm8350_irq_init(struct wm8350 *wm8350, int irq,
 {
 	int ret, cur_irq, i;
 	int flags = IRQF_ONESHOT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int irq_base = -1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!irq) {
 		dev_warn(wm8350->dev, "No interrupt support, no core IRQ\n");
 		return 0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!pdata || !pdata->irq_base) {
 		dev_warn(wm8350->dev, "No interrupt support, no IRQ base\n");
 		return 0;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Mask top level interrupts */
 	wm8350_reg_write(wm8350, WM8350_SYSTEM_INTERRUPTS_MASK, 0xFFFF);
 
@@ -500,9 +516,30 @@ int wm8350_irq_init(struct wm8350 *wm8350, int irq,
 
 	mutex_init(&wm8350->irq_lock);
 	wm8350->chip_irq = irq;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (pdata && pdata->irq_base > 0)
+		irq_base = pdata->irq_base;
+
+	wm8350->irq_base = irq_alloc_descs(irq_base, 0, ARRAY_SIZE(wm8350_irqs), 0);
+	if (wm8350->irq_base < 0) {
+		dev_warn(wm8350->dev, "Allocating irqs failed with %d\n",
+			wm8350->irq_base);
+		return 0;
+	}
+
+	if (pdata && pdata->irq_high) {
+=======
 	wm8350->irq_base = pdata->irq_base;
 
 	if (pdata->irq_high) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	wm8350->irq_base = pdata->irq_base;
+
+	if (pdata->irq_high) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flags |= IRQF_TRIGGER_HIGH;
 
 		wm8350_set_bits(wm8350, WM8350_SYSTEM_CONTROL_1,

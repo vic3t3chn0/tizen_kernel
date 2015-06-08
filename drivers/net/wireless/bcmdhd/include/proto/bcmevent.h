@@ -23,7 +23,15 @@
  *
  * Dependencies: proto/bcmeth.h
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * $Id: bcmevent.h 326276 2012-04-06 23:16:42Z $
+=======
  * $Id: bcmevent.h 369617 2012-11-19 16:45:34Z $
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * $Id: bcmevent.h 369617 2012-11-19 16:45:34Z $
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  */
 
@@ -188,6 +196,13 @@ typedef BWL_PRE_PACKED_STRUCT struct bcm_event {
 #define WLC_E_AUTH_REQ		91	
 #define WLC_E_TDLS_PEER_EVENT 	92	
 #define WLC_E_SPEEDY_RECREATE_FAIL	93	
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define WLC_E_LAST			94	
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WLC_E_NATIVE			94	
 #define WLC_E_PKTDELAY_IND		95	
 #define WLC_E_AWDL_AW			96	
@@ -205,6 +220,10 @@ typedef BWL_PRE_PACKED_STRUCT struct bcm_event {
 #define WLC_E_P2PO_DEL_DEVICE	106 
 #define WLC_E_IBSS_COALESCE		107	
 #define WLC_E_LAST              108     
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 typedef struct {
@@ -230,9 +249,18 @@ extern const int		bcmevent_names_size;
 #define WLC_E_STATUS_11HQUIET		11	
 #define WLC_E_STATUS_SUPPRESS		12	
 #define WLC_E_STATUS_NOCHANS		13	
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef BCMCCX
 #define WLC_E_STATUS_CCXFASTRM		14	
 #endif 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef BCMCCX
+#define WLC_E_STATUS_CCXFASTRM		14	
+#endif 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WLC_E_STATUS_CS_ABORT		15	
 #define WLC_E_STATUS_ERROR		16	
 
@@ -265,6 +293,16 @@ extern const int		bcmevent_names_size;
 #define WLC_E_RSN_MISMATCH		8	
 #define WLC_E_PRUNE_NO_COMMON_RATES	9	
 #define WLC_E_PRUNE_BASIC_RATES		10	
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define WLC_E_PRUNE_CIPHER_NA		12	
+#define WLC_E_PRUNE_KNOWN_STA		13	
+#define WLC_E_PRUNE_WDS_PEER		15	
+#define WLC_E_PRUNE_QBSS_LOAD		16	
+#define WLC_E_PRUNE_HOME_AP		17	
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BCMCCX
 #define WLC_E_PRUNE_CCXFAST_PREVAP	11	
 #endif 
@@ -280,6 +318,10 @@ extern const int		bcmevent_names_size;
 #define WLC_E_PRUNE_AP_BLOCKED		18	
 #define WLC_E_PRUNE_NO_DIAG_SUPPORT	19	
 #endif 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 #define WLC_E_SUP_OTHER			0	
@@ -336,7 +378,14 @@ typedef struct wl_event_data_if {
 #define WLC_E_IF_ROLE_BTA_ACCEPTOR	6	
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define WLC_E_IF_FLAGS_BSSCFG_NOIF  0x1     
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define WLC_E_IF_FLAGS_BSSCFG_NOIF  0x1     
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define WLC_E_LINK_BCN_LOSS	1	
 #define WLC_E_LINK_DISASSOC	2	
@@ -353,6 +402,11 @@ typedef struct wl_event_data_if {
 #define WLC_E_TDLS_PEER_DISCONNECTED	2
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef BWL_PRE_PACKED_STRUCT struct wl_event_gas {
 	uint16  channel;                
 	uint8   dialog_token;   
@@ -374,6 +428,10 @@ typedef BWL_PRE_PACKED_STRUCT struct wl_event_sd {
 } BWL_POST_PACKED_STRUCT wl_event_sd_t;
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <packed_section_end.h>
 
 #endif 

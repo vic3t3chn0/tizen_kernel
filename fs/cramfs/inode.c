@@ -22,8 +22,11 @@
 #include <linux/cramfs_fs_sb.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/buffer_head.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/vfs.h>
 #include <linux/mutex.h>
 
@@ -262,16 +265,22 @@ static int cramfs_fill_super(struct super_block *sb, void *data, int silent)
 	/* Do sanity checks on the superblock */
 	if (super.magic != CRAMFS_MAGIC) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* check for wrong endianness */
 		if (super.magic == CRAMFS_MAGIC_WEND) {
 			if (!silent)
 				printk(KERN_ERR "cramfs: wrong endianness\n");
+<<<<<<< HEAD
+=======
 =======
 		/* check for wrong endianess */
 		if (super.magic == CRAMFS_MAGIC_WEND) {
 			if (!silent)
 				printk(KERN_ERR "cramfs: wrong endianess\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out;
 		}
 
@@ -284,8 +293,12 @@ static int cramfs_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 				printk(KERN_ERR "cramfs: wrong endianness\n");
 =======
+<<<<<<< HEAD
+				printk(KERN_ERR "cramfs: wrong endianness\n");
+=======
 				printk(KERN_ERR "cramfs: wrong endianess\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else if (!silent)
 				printk(KERN_ERR "cramfs: wrong magic\n");
 			goto out;
@@ -338,12 +351,18 @@ static int cramfs_fill_super(struct super_block *sb, void *data, int silent)
 	if (!sb->s_root)
 		goto out;
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(root);
+	if (!sb->s_root)
+		goto out;
+=======
 	sb->s_root = d_alloc_root(root);
 	if (!sb->s_root) {
 		iput(root);
 		goto out;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 out:
 	kfree(sbi);
@@ -401,8 +420,12 @@ static int cramfs_readdir(struct file *filp, void *dirent, filldir_t filldir)
 <<<<<<< HEAD
 		umode_t mode;
 =======
+<<<<<<< HEAD
+		umode_t mode;
+=======
 		mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int namelen, error;
 
 		mutex_lock(&read_mutex);

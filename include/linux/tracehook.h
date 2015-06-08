@@ -52,6 +52,9 @@
 struct linux_binprm;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ptrace report for syscall entry and exit looks identical.
  */
@@ -61,6 +64,8 @@ static inline int ptrace_report_syscall(struct pt_regs *regs)
 
 	if (!(ptrace & PT_PTRACED))
 		return 0;
+<<<<<<< HEAD
+=======
 =======
 /**
  * tracehook_expect_breakpoints - guess if task memory might be touched
@@ -87,6 +92,7 @@ static inline void ptrace_report_syscall(struct pt_regs *regs)
 	if (!(ptrace & PT_PTRACED))
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ptrace_notify(SIGTRAP | ((ptrace & PT_TRACESYSGOOD) ? 0x80 : 0));
 
@@ -103,7 +109,12 @@ static inline void ptrace_report_syscall(struct pt_regs *regs)
 
 	return fatal_signal_pending(current);
 =======
+<<<<<<< HEAD
+
+	return fatal_signal_pending(current);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -131,9 +142,13 @@ static inline __must_check int tracehook_report_syscall_entry(
 <<<<<<< HEAD
 	return ptrace_report_syscall(regs);
 =======
+<<<<<<< HEAD
+	return ptrace_report_syscall(regs);
+=======
 	ptrace_report_syscall(regs);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -166,6 +181,8 @@ static inline void tracehook_report_syscall_exit(struct pt_regs *regs, int step)
 }
 
 /**
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * tracehook_unsafe_exec - check for exec declared unsafe due to tracing
@@ -392,6 +409,7 @@ static inline void tracehook_finish_release_task(struct task_struct *task)
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tracehook_signal_handler - signal handler setup is complete
  * @sig:		number of signal being delivered
  * @info:		siginfo_t of signal being delivered
@@ -414,6 +432,8 @@ static inline void tracehook_signal_handler(int sig, siginfo_t *info,
 		ptrace_notify(SIGTRAP);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /**
@@ -562,6 +582,7 @@ static inline void tracehook_report_death(struct task_struct *task,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef TIF_NOTIFY_RESUME
 /**
  * set_notify_resume - cause tracehook_notify_resume() to be called

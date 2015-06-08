@@ -37,8 +37,11 @@
 #include <asm/mipsmtregs.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void unmask_mips_irq(struct irq_data *d)
 {
@@ -107,12 +110,17 @@ void __init mips_cpu_irq_init(void)
 	clear_c0_cause(CAUSEF_IP);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Software interrupts are used for MT/CMT IPI */
 	for (i = irq_base; i < irq_base + 2; i++)
 		irq_set_chip_and_handler(i, cpu_has_mipsmt ?
 					 &mips_mt_cpu_irq_controller :
 					 &mips_cpu_irq_controller,
 					 handle_percpu_irq);
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Only MT is using the software interrupts currently, so we just
@@ -123,6 +131,7 @@ void __init mips_cpu_irq_init(void)
 			irq_set_chip_and_handler(i, &mips_mt_cpu_irq_controller,
 						 handle_percpu_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = irq_base + 2; i < irq_base + 8; i++)
 		irq_set_chip_and_handler(i, &mips_cpu_irq_controller,

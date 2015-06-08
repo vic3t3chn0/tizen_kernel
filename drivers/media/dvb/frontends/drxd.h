@@ -48,8 +48,16 @@ struct drxd_config {
 	u8 disable_i2c_gate_ctrl;
 
 	u32 IF;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int (*pll_set) (void *priv, void *priv_params,
 			u8 pll_addr, u8 demoda_addr, s32 *off);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int (*pll_set) (void *priv, void *priv_params,
+			u8 pll_addr, u8 demoda_addr, s32 *off);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 s16(*osc_deviation) (void *priv, s16 dev, int flag);
 };
 

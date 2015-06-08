@@ -31,6 +31,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/miscdevice.h>
@@ -48,7 +56,14 @@
 
 #define SC1200_MODULE_VER	"build 20020303"
 #define SC1200_MODULE_NAME	"sc1200wdt"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define PFX			SC1200_MODULE_NAME ": "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PFX			SC1200_MODULE_NAME ": "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define	MAX_TIMEOUT	255	/* 255 minutes */
 #define PMIR		(io)	/* Power Management Index Register */
@@ -71,7 +86,14 @@
 #define UART2_IRQ	0x04	/* Serial1 */
 /* 5 -7 are reserved */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static char banner[] __initdata = PFX SC1200_MODULE_VER;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static char banner[] __initdata = PFX SC1200_MODULE_VER;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int timeout = 1;
 static int io = -1;
 static int io_len = 2;		/* for non plug and play */
@@ -93,8 +115,18 @@ MODULE_PARM_DESC(io, "io port");
 module_param(timeout, int, 0);
 MODULE_PARM_DESC(timeout, "range is 0-255 minutes, default is 1");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, bool, 0);
+=======
 static int nowayout = WATCHDOG_NOWAYOUT;
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int nowayout = WATCHDOG_NOWAYOUT;
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout,
 	"Watchdog cannot be stopped once started (default="
 				__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
@@ -176,7 +208,15 @@ static int sc1200wdt_open(struct inode *inode, struct file *file)
 		timeout = MAX_TIMEOUT;
 
 	sc1200wdt_start();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Watchdog enabled, timeout = %d min(s)", timeout);
+=======
 	printk(KERN_INFO PFX "Watchdog enabled, timeout = %d min(s)", timeout);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO PFX "Watchdog enabled, timeout = %d min(s)", timeout);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return nonseekable_open(inode, file);
 }
@@ -254,11 +294,24 @@ static int sc1200wdt_release(struct inode *inode, struct file *file)
 {
 	if (expect_close == 42) {
 		sc1200wdt_stop();
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Watchdog disabled\n");
+	} else {
+		sc1200wdt_write_data(WDTO, timeout);
+		pr_crit("Unexpected close!, timeout = %d min(s)\n", timeout);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO PFX "Watchdog disabled\n");
 	} else {
 		sc1200wdt_write_data(WDTO, timeout);
 		printk(KERN_CRIT PFX
 			"Unexpected close!, timeout = %d min(s)\n", timeout);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	clear_bit(0, &open_flag);
 	expect_close = 0;
@@ -361,12 +414,26 @@ static int scl200wdt_pnp_probe(struct pnp_dev *dev,
 	io_len = pnp_port_len(wdt_dev, 0);
 
 	if (!request_region(io, io_len, SC1200_MODULE_NAME)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Unable to register IO port %#x\n", io);
+		return -EBUSY;
+	}
+
+	pr_info("PnP device found at io port %#x/%d\n", io, io_len);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR PFX "Unable to register IO port %#x\n", io);
 		return -EBUSY;
 	}
 
 	printk(KERN_INFO "scl200wdt: PnP device found at io port %#x/%d\n",
 								io, io_len);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -392,7 +459,15 @@ static int __init sc1200wdt_init(void)
 {
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s\n", SC1200_MODULE_VER);
+=======
 	printk(KERN_INFO "%s\n", banner);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "%s\n", banner);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined CONFIG_PNP
 	if (isapnp) {
@@ -403,7 +478,15 @@ static int __init sc1200wdt_init(void)
 #endif
 
 	if (io == -1) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("io parameter must be specified\n");
+=======
 		printk(KERN_ERR PFX "io parameter must be specified\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "io parameter must be specified\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EINVAL;
 		goto out_pnp;
 	}
@@ -416,7 +499,15 @@ static int __init sc1200wdt_init(void)
 #endif
 
 	if (!request_region(io, io_len, SC1200_MODULE_NAME)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Unable to register IO port %#x\n", io);
+=======
 		printk(KERN_ERR PFX "Unable to register IO port %#x\n", io);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX "Unable to register IO port %#x\n", io);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EBUSY;
 		goto out_pnp;
 	}
@@ -427,16 +518,36 @@ static int __init sc1200wdt_init(void)
 
 	ret = register_reboot_notifier(&sc1200wdt_notifier);
 	if (ret) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Unable to register reboot notifier err = %d\n", ret);
+=======
 		printk(KERN_ERR PFX
 			"Unable to register reboot notifier err = %d\n", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX
+			"Unable to register reboot notifier err = %d\n", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_io;
 	}
 
 	ret = misc_register(&sc1200wdt_miscdev);
 	if (ret) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Unable to register miscdev on minor %d\n",
+		       WATCHDOG_MINOR);
+=======
 		printk(KERN_ERR PFX
 			"Unable to register miscdev on minor %d\n",
 							WATCHDOG_MINOR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR PFX
+			"Unable to register miscdev on minor %d\n",
+							WATCHDOG_MINOR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_rbt;
 	}
 

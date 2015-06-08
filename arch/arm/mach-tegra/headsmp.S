@@ -2,6 +2,9 @@
 #include <linux/init.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cache.h>
 
 #include <mach/iomap.h>
@@ -19,8 +22,11 @@
 	movt	\reg, #:upper16:\val
 	.endm
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         .section ".text.head", "ax"
 	__CPUINIT
 
@@ -68,6 +74,9 @@ ENTRY(v7_invalidate_l1)
 ENDPROC(v7_invalidate_l1)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ENTRY(tegra_secondary_startup)
         bl      v7_invalidate_l1
@@ -214,6 +223,8 @@ __tegra_cpu_reset_handler_data:
 	.align L1_CACHE_SHIFT
 
 ENTRY(__tegra_cpu_reset_handler_end)
+<<<<<<< HEAD
+=======
 =======
 ENTRY(tegra_secondary_startup)
 	msr	cpsr_fsxc, #0xd3
@@ -228,3 +239,4 @@ ENTRY(tegra_secondary_startup)
         b       secondary_startup
 ENDPROC(tegra_secondary_startup)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

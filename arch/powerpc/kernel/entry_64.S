@@ -35,7 +35,11 @@
 <<<<<<< HEAD
 #include <asm/hw_irq.h>
 =======
+<<<<<<< HEAD
+#include <asm/hw_irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * System calls.
@@ -120,6 +124,9 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_SPLPAR)
 #endif /* CONFIG_VIRT_CPU_ACCOUNTING && CONFIG_PPC_SPLPAR */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * A syscall should always be called with interrupts enabled
 	 * so we just unconditionally hard-enable here. When some kind
@@ -137,6 +144,8 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_SPLPAR)
 	wrteei	1
 #else
 	ld	r11,PACAKMSR(r13)
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_TRACE_IRQFLAGS
 	bl	.trace_hardirqs_on
@@ -168,19 +177,26 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_ISERIES)
 #else
 	mfmsr	r11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ori	r11,r11,MSR_EE
 	mtmsrd	r11,1
 #endif /* CONFIG_PPC_BOOK3E */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We do need to set SOFTE in the stack frame or the return
 	 * from interrupt will be painful
 	 */
 	li	r10,1
 	std	r10,SOFTE(r1)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef SHOW_SYSCALLS
 	bl	.do_show_syscall
 	REST_GPR(0,r1)
@@ -235,9 +251,14 @@ syscall_exit:
 	/*
 	 * Disable interrupts so current_thread_info()->flags can't change,
 =======
+<<<<<<< HEAD
+	/*
+	 * Disable interrupts so current_thread_info()->flags can't change,
+=======
 
 	/* Disable interrupts so current_thread_info()->flags can't change,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * and so that we don't get interrupted after loading SRR0/1.
 	 */
 #ifdef CONFIG_PPC_BOOK3E
@@ -246,10 +267,14 @@ syscall_exit:
 <<<<<<< HEAD
 	ld	r10,PACAKMSR(r13)
 =======
+<<<<<<< HEAD
+	ld	r10,PACAKMSR(r13)
+=======
 	mfmsr	r10
 	rldicl	r10,r10,48,1
 	rotldi	r10,r10,16
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtmsrd	r10,1
 #endif /* CONFIG_PPC_BOOK3E */
 
@@ -364,8 +389,12 @@ syscall_exit_work:
 <<<<<<< HEAD
 	ld	r10,PACAKMSR(r13)
 =======
+<<<<<<< HEAD
+	ld	r10,PACAKMSR(r13)
+=======
 	mfmsr	r10
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ori	r10,r10,MSR_EE
 	mtmsrd	r10,1
 #endif /* CONFIG_PPC_BOOK3E */
@@ -428,6 +457,8 @@ _GLOBAL(ret_from_fork)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.section	".toc","aw"
 DSCR_DEFAULT:
 	.tc dscr_default[TC],dscr_default
@@ -435,6 +466,7 @@ DSCR_DEFAULT:
 	.section	".text"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This routine switches between two different tasks.  The process
  * state of one is saved on its kernel stack.  Then the state
@@ -579,7 +611,13 @@ END_MMU_FTR_SECTION_IFSET(MMU_FTR_1T_SEGMENT)
 	mtcrf	0xFF,r6
 
 =======
+<<<<<<< HEAD
+	ld	r6,_CCR(r1)
+	mtcrf	0xFF,r6
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ALTIVEC
 BEGIN_FTR_SECTION
 	ld	r0,THREAD_VRSAVE(r4)
@@ -589,6 +627,9 @@ END_FTR_SECTION_IFSET(CPU_FTR_ALTIVEC)
 #ifdef CONFIG_PPC64
 BEGIN_FTR_SECTION
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r0,THREAD_DSCR(r4)
 	cmpd	r0,r25
 	beq	1f
@@ -597,6 +638,8 @@ BEGIN_FTR_SECTION
 END_FTR_SECTION_IFSET(CPU_FTR_DSCR)
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	lwz	r6,THREAD_DSCR_INHERIT(r4)
 	ld	r7,DSCR_DEFAULT@toc(2)
@@ -615,6 +658,7 @@ END_FTR_SECTION_IFSET(CPU_FTR_DSCR)
 	mtcrf	0xFF,r6
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* r3-r13 are destroyed -- Cort */
 	REST_8GPRS(14, r1)
 	REST_10GPRS(22, r1)
@@ -646,11 +690,16 @@ _GLOBAL(ret_from_except_lite)
 	ld	r10,PACAKMSR(r13) /* Get kernel MSR without EE */
 	mtmsrd	r10,1		  /* Update machine state */
 =======
+<<<<<<< HEAD
+	ld	r10,PACAKMSR(r13) /* Get kernel MSR without EE */
+	mtmsrd	r10,1		  /* Update machine state */
+=======
 	mfmsr	r10		/* Get current interrupt state */
 	rldicl	r9,r10,48,1	/* clear MSR_EE */
 	rotldi	r9,r9,16
 	mtmsrd	r9,1		/* Update machine state */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PPC_BOOK3E */
 
 #ifdef CONFIG_PREEMPT
@@ -674,6 +723,9 @@ _GLOBAL(ret_from_except_lite)
 	andi.	r0,r4,_TIF_USER_WORK_MASK
 	bne	do_work
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !CONFIG_PREEMPT */
 
 	.globl	fast_exc_return_irq
@@ -738,6 +790,8 @@ ALT_FTR_SECTION_END_IFCLR(CPU_FTR_STCX_CHECKS_ADDRESS)
 	.globl	fast_exception_return
 fast_exception_return:
 	ld	r3,_MSR(r1)
+<<<<<<< HEAD
+=======
 =======
 #endif
 
@@ -759,6 +813,7 @@ ALT_FW_FTR_SECTION_END_IFCLR(FW_FEATURE_ISERIES)
 	b	.exception_return_book3e
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r4,_CTR(r1)
 	ld	r0,_LINK(r1)
 	mtctr	r4
@@ -774,6 +829,8 @@ ALT_FW_FTR_SECTION_END_IFCLR(FW_FEATURE_ISERIES)
 	/*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 * Clear the reservation. If we know the CPU tracks the address of
 	 * the reservation then we can potentially save some cycles and use
 	 * a larx. On POWER6 and POWER7 this is significantly faster.
@@ -786,6 +843,7 @@ ALT_FTR_SECTION_END_IFCLR(CPU_FTR_STCX_CHECKS_ADDRESS)
 
 	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Clear RI before restoring r13.  If we are returning to
 	 * userspace and we take an exception after restoring r13,
 	 * we end up corrupting the userspace r13 value.
@@ -794,9 +852,14 @@ ALT_FTR_SECTION_END_IFCLR(CPU_FTR_STCX_CHECKS_ADDRESS)
 	ld	r4,PACAKMSR(r13) /* Get kernel MSR without EE */
 	andc	r4,r4,r0	 /* r0 contains MSR_RI here */
 =======
+<<<<<<< HEAD
+	ld	r4,PACAKMSR(r13) /* Get kernel MSR without EE */
+	andc	r4,r4,r0	 /* r0 contains MSR_RI here */
+=======
 	mfmsr	r4
 	andc	r4,r4,r0	/* r0 contains MSR_RI here */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtmsrd	r4,1
 
 	/*
@@ -805,8 +868,13 @@ ALT_FTR_SECTION_END_IFCLR(CPU_FTR_STCX_CHECKS_ADDRESS)
 	 * userspace the value stored in the stack frame may belong to
 	 * another CPU.
 =======
+<<<<<<< HEAD
+	 * userspace the value stored in the stack frame may belong to
+	 * another CPU.
+=======
 	 * userspace
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	andi.	r0,r3,MSR_PR
 	beq	1f
@@ -832,6 +900,9 @@ ALT_FTR_SECTION_END_IFCLR(CPU_FTR_STCX_CHECKS_ADDRESS)
 #endif /* CONFIG_PPC_BOOK3E */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We are returning to a context with interrupts soft disabled.
 	 *
@@ -903,6 +974,8 @@ restore_check_irq_replay:
 
 
 3:
+<<<<<<< HEAD
+=======
 =======
 .Liseries_check_pending_irqs:
 #ifdef CONFIG_PPC_ISERIES
@@ -929,6 +1002,7 @@ restore_check_irq_replay:
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 do_work:
 #ifdef CONFIG_PREEMPT
 	andi.	r0,r3,MSR_PR	/* Returning to user mode? */
@@ -942,6 +1016,9 @@ do_work:
 	bne	restore
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Here we are preempting the current task. We want to make
 	 * sure we are soft-disabled first
@@ -949,6 +1026,8 @@ do_work:
 	SOFT_DISABLE_INTS(r3,r4)
 1:	bl	.preempt_schedule_irq
 
+<<<<<<< HEAD
+=======
 =======
 	/* Here we are preempting the current task.
 	 *
@@ -977,6 +1056,7 @@ do_work:
 	stb	r0,PACAHARDIRQEN(r13)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Re-test flags and eventually loop */
 	clrrdi	r9,r1,THREAD_SHIFT
 	ld	r4,TI_FLAGS(r9)
@@ -987,6 +1067,11 @@ do_work:
 user_work:
 #endif /* CONFIG_PREEMPT */
 
+<<<<<<< HEAD
+	andi.	r0,r4,_TIF_NEED_RESCHED
+	beq	1f
+	bl	.restore_interrupts
+=======
 <<<<<<< HEAD
 	andi.	r0,r4,_TIF_NEED_RESCHED
 	beq	1f
@@ -1003,6 +1088,7 @@ user_work:
 	andi.	r0,r4,_TIF_NEED_RESCHED
 	beq	1f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.schedule
 	b	.ret_from_except_lite
 
@@ -1012,9 +1098,15 @@ user_work:
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	bl	.do_notify_resume
 =======
+<<<<<<< HEAD
+	bl	.restore_interrupts
+	addi	r3,r1,STACK_FRAME_OVERHEAD
+	bl	.do_notify_resume
+=======
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	bl	.do_signal
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	.ret_from_except
 
 unrecov_restore:

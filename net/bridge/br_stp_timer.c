@@ -100,7 +100,11 @@ static void br_forward_delay_timer_expired(unsigned long arg)
 <<<<<<< HEAD
 	br_ifinfo_notify(RTM_NEWLINK, p);
 =======
+<<<<<<< HEAD
+	br_ifinfo_notify(RTM_NEWLINK, p);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&br->lock);
 }
 

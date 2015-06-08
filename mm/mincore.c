@@ -70,6 +70,9 @@ static unsigned char mincore_page(struct address_space *mapping, pgoff_t pgoff)
 	 * any other file mapping (ie. marked !present and faulted in with
 	 * tmpfs's .fault). So swapped out tmpfs mappings are tested here.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	page = find_get_page(mapping, pgoff);
 #ifdef CONFIG_SWAP
@@ -79,6 +82,8 @@ static unsigned char mincore_page(struct address_space *mapping, pgoff_t pgoff)
 		page = find_get_page(&swapper_space, swap.val);
 	}
 #endif
+<<<<<<< HEAD
+=======
 =======
 	 *
 	 * However when tmpfs moves the page from pagecache and into swapcache,
@@ -87,6 +92,7 @@ static unsigned char mincore_page(struct address_space *mapping, pgoff_t pgoff)
 	 */
 	page = find_get_page(mapping, pgoff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (page) {
 		present = PageUptodate(page);
 		page_cache_release(page);

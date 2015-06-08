@@ -10,6 +10,9 @@
 #include <linux/platform_device.h>
 #include <linux/init.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/sdma.h>
 
 extern struct device mxc_aips_bus;
@@ -31,6 +34,8 @@ static inline struct platform_device *imx_add_platform_device_dmamask(
 	};
 	return platform_device_register_full(&pdevinfo);
 }
+<<<<<<< HEAD
+=======
 =======
 
 struct platform_device *imx_add_platform_device_dmamask(
@@ -38,6 +43,7 @@ struct platform_device *imx_add_platform_device_dmamask(
 		const struct resource *res, unsigned int num_resources,
 		const void *data, size_t size_data, u64 dmamask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct platform_device *imx_add_platform_device(
 		const char *name, int id,
@@ -53,7 +59,11 @@ struct imx_fec_data {
 <<<<<<< HEAD
 	const char *devid;
 =======
+<<<<<<< HEAD
+	const char *devid;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	resource_size_t iobase;
 	resource_size_t irq;
 };
@@ -238,7 +248,12 @@ struct platform_device *__init imx_add_mx2_camera(
 struct platform_device *__init imx_add_mx2_emmaprp(
 		const struct imx_mx2_camera_data *data);
 =======
+<<<<<<< HEAD
+struct platform_device *__init imx_add_mx2_emmaprp(
+		const struct imx_mx2_camera_data *data);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/mxc_ehci.h>
 struct imx_mxc_ehci_data {
@@ -280,6 +295,9 @@ struct platform_device *__init imx_add_mxc_nand(
 		const struct mxc_nand_platform_data *pdata);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct imx_pata_imx_data {
 	resource_size_t iobase;
 	resource_size_t iosize;
@@ -288,8 +306,11 @@ struct imx_pata_imx_data {
 struct platform_device *__init imx_add_pata_imx(
 		const struct imx_pata_imx_data *data);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct imx_mxc_pwm_data {
 	int id;
 	resource_size_t iobase;
@@ -319,7 +340,11 @@ struct imx_sdhci_esdhc_imx_data {
 <<<<<<< HEAD
 	const char *devid;
 =======
+<<<<<<< HEAD
+	const char *devid;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int id;
 	resource_size_t iobase;
 	resource_size_t irq;
@@ -340,6 +365,9 @@ struct platform_device *__init imx_add_spi_imx(
 		const struct imx_spi_imx_data *data,
 		const struct spi_imx_master *pdata);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct platform_device *imx_add_imx_dma(void);
 struct platform_device *imx_add_imx_sdma(char *name,
@@ -354,5 +382,8 @@ struct imx_ahci_imx_data {
 struct platform_device *__init imx_add_ahci_imx(
 		const struct imx_ahci_imx_data *data,
 		const struct ahci_platform_data *pdata);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

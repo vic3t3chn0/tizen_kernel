@@ -38,7 +38,14 @@
 struct ixp2000_flash_info {
 	struct		mtd_info *mtd;
 	struct		map_info map;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct		mtd_partition *partitions;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct		mtd_partition *partitions;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct		resource *res;
 };
 
@@ -125,8 +132,16 @@ static int ixp2000_flash_remove(struct platform_device *dev)
 	if (info->map.map_priv_1)
 		iounmap((void *) info->map.map_priv_1);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(info->partitions);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(info->partitions);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (info->res) {
 		release_resource(info->res);
 		kfree(info->res);
@@ -155,7 +170,15 @@ static int ixp2000_flash_probe(struct platform_device *dev)
 	if (!plat)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	window_size = resource_size(dev->resource);
+=======
 	window_size = dev->resource->end - dev->resource->start + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	window_size = dev->resource->end - dev->resource->start + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_info(&dev->dev, "Probe of IXP2000 flash(%d banks x %dMiB)\n",
 		 ixp_data->nr_banks, ((u32)window_size >> 20));
 
@@ -194,16 +217,37 @@ static int ixp2000_flash_probe(struct platform_device *dev)
 	info->map.copy_to = ixp2000_flash_copy_to;
 
 	info->res = request_mem_region(dev->resource->start,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				       resource_size(dev->resource),
+				       dev_name(&dev->dev));
+=======
 			dev->resource->end - dev->resource->start + 1,
 			dev_name(&dev->dev));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			dev->resource->end - dev->resource->start + 1,
+			dev_name(&dev->dev));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!info->res) {
 		dev_err(&dev->dev, "Could not reserve memory region\n");
 		err = -ENOMEM;
 		goto Error;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	info->map.map_priv_1 =
+		(unsigned long)ioremap(dev->resource->start,
+				       resource_size(dev->resource));
+=======
 	info->map.map_priv_1 = (unsigned long) ioremap(dev->resource->start,
 			    	dev->resource->end - dev->resource->start + 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	info->map.map_priv_1 = (unsigned long) ioremap(dev->resource->start,
+			    	dev->resource->end - dev->resource->start + 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!info->map.map_priv_1) {
 		dev_err(&dev->dev, "Failed to ioremap flash region\n");
 		err = -EIO;
@@ -228,6 +272,12 @@ static int ixp2000_flash_probe(struct platform_device *dev)
 	}
 	info->mtd->owner = THIS_MODULE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_device_parse_register(info->mtd, probes, NULL, NULL, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = parse_mtd_partitions(info->mtd, probes, &info->partitions, 0);
 	if (err > 0) {
 		err = mtd_device_register(info->mtd, info->partitions, err);
@@ -235,6 +285,10 @@ static int ixp2000_flash_probe(struct platform_device *dev)
 			dev_err(&dev->dev, "Could not parse partitions\n");
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto Error;
 
@@ -254,6 +308,13 @@ static struct platform_driver ixp2000_flash_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(ixp2000_flash_driver);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ixp2000_flash_init(void)
 {
 	return platform_driver_register(&ixp2000_flash_driver);
@@ -266,6 +327,10 @@ static void __exit ixp2000_flash_exit(void)
 
 module_init(ixp2000_flash_init);
 module_exit(ixp2000_flash_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Deepak Saxena <dsaxena@plexity.net>");
 MODULE_ALIAS("platform:IXP2000-Flash");

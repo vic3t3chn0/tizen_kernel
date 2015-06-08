@@ -171,8 +171,12 @@ ENTRY(sys_call_table)
 <<<<<<< HEAD
 	.long sys_ni_syscall		/* was nfsservctl */
 =======
+<<<<<<< HEAD
+	.long sys_ni_syscall		/* was nfsservctl */
+=======
 	.long sys_nfsservctl
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.long sys_setresgid		/* 170 */
 	.long sys_getresgid
 	.long sys_prctl

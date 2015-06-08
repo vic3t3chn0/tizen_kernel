@@ -8,7 +8,12 @@ config SUPERH
 	select HAVE_MEMBLOCK_NODE_MAP
 	select ARCH_DISCARD_MEMBLOCK
 =======
+<<<<<<< HEAD
+	select HAVE_MEMBLOCK_NODE_MAP
+	select ARCH_DISCARD_MEMBLOCK
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_OPROFILE
 	select HAVE_GENERIC_DMA_COHERENT
 	select HAVE_ARCH_TRACEHOOK
@@ -19,7 +24,11 @@ config SUPERH
 <<<<<<< HEAD
 	select ARCH_HAVE_NMI_SAFE_CMPXCHG if (GUSA_RB || CPU_SH4A)
 =======
+<<<<<<< HEAD
+	select ARCH_HAVE_NMI_SAFE_CMPXCHG if (GUSA_RB || CPU_SH4A)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PERF_USE_VMALLOC
 	select HAVE_KERNEL_GZIP
 	select HAVE_KERNEL_BZIP2
@@ -32,8 +41,12 @@ config SUPERH
 <<<<<<< HEAD
 	select MAY_HAVE_SPARSE_IRQ
 =======
+<<<<<<< HEAD
+	select MAY_HAVE_SPARSE_IRQ
+=======
 	select HAVE_SPARSE_IRQ
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IRQ_FORCED_THREADING
 	select RTC_LIB
 	select GENERIC_ATOMIC64
@@ -98,10 +111,13 @@ config GENERIC_CALIBRATE_DELAY
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config GENERIC_IOMAP
 	bool
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config GENERIC_CLOCKEVENTS
 	def_bool y
 
@@ -118,11 +134,14 @@ config GENERIC_LOCKBREAK
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config SYS_SUPPORTS_PM
 	bool
 	depends on !SMP
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARCH_SUSPEND_POSSIBLE
 	def_bool n
 
@@ -190,7 +209,13 @@ config SWAP_IO_SPACE
 	bool
 
 =======
+<<<<<<< HEAD
+config SWAP_IO_SPACE
+	bool
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config DMA_COHERENT
 	bool
 
@@ -676,8 +701,12 @@ config CRASH_DUMP
 <<<<<<< HEAD
 	  PHYSICAL_START.
 =======
+<<<<<<< HEAD
+	  PHYSICAL_START.
+=======
 	  MEMORY_START.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	  For more details see Documentation/kdump/kdump.txt
 
@@ -689,6 +718,9 @@ config KEXEC_JUMP
 	  code via KEXEC
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config PHYSICAL_START
 	hex "Physical address where the kernel is loaded" if (EXPERT || CRASH_DUMP)
 	default MEMORY_START
@@ -700,8 +732,11 @@ config PHYSICAL_START
 	  where the fail safe kernel needs to run at a different address
 	  than the panic-ed kernel.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SECCOMP
 	bool "Enable seccomp to safely compute untrusted bytecode"
 	depends on PROC_FS
@@ -899,7 +934,12 @@ config PCI
 	select GENERIC_PCI_IOMAP
 	select NO_GENERIC_PCI_IOPORT_MAP
 =======
+<<<<<<< HEAD
+	select GENERIC_PCI_IOMAP
+	select NO_GENERIC_PCI_IOPORT_MAP
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Find out whether you have a PCI motherboard. PCI is the name of a
 	  bus system, i.e. the way the CPU talks to the other stuff inside
@@ -947,6 +987,8 @@ source "crypto/Kconfig"
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 menuconfig VIRTUALIZATION
 	bool "Virtualization"
 	default n
@@ -964,4 +1006,5 @@ source drivers/virtio/Kconfig
 endif # VIRTUALIZATION
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 source "lib/Kconfig"

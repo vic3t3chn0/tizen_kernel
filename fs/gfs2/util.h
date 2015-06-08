@@ -14,7 +14,12 @@
 #include <linux/mempool.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/mempool.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "incore.h"
 
 #define fs_printk(level, fs, fmt, arg...) \
@@ -158,7 +163,11 @@ extern struct kmem_cache *gfs2_quotad_cachep;
 <<<<<<< HEAD
 extern mempool_t *gfs2_bh_pool;
 =======
+<<<<<<< HEAD
+extern mempool_t *gfs2_bh_pool;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline unsigned int gfs2_tune_get_i(struct gfs2_tune *gt,
 					   unsigned int *p)

@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/irq.h>
 #include <asm/oplib.h>
@@ -891,6 +895,8 @@ int pcibios_assign_resource(struct pci_dev *pdev, int resource)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct device_node *pci_device_to_OF_node(struct pci_dev *pdev)
 {
 	struct pcidev_cookie *pc = pdev->sysdata;
@@ -900,6 +906,7 @@ struct device_node *pci_device_to_OF_node(struct pci_dev *pdev)
 EXPORT_SYMBOL(pci_device_to_OF_node);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This probably belongs here rather than ioport.c because
  * we do not want this crud linked into SBus kernels.

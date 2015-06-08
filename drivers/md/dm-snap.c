@@ -30,6 +30,11 @@ static const char dm_snapshot_merge_target_name[] = "snapshot-merge";
 	((ti)->type->name == dm_snapshot_merge_target_name)
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The percentage increment we will wake up users at
  */
 #define WAKE_UP_PERCENT 5
@@ -40,6 +45,10 @@ static const char dm_snapshot_merge_target_name[] = "snapshot-merge";
 #define SNAPSHOT_COPY_PRIORITY 2
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The size of the mempool used to track chunks in use.
  */
 #define MIN_IOS 256
@@ -180,6 +189,19 @@ struct dm_snap_pending_exception {
 	 * kcopyd.
 	 */
 	int started;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/*
+	 * For writing a complete chunk, bypassing the copy.
+	 */
+	struct bio *full_bio;
+	bio_end_io_t *full_bio_end_io;
+	void *full_bio_private;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -724,16 +746,37 @@ static int calc_max_buckets(void)
  */
 static int init_hash_tables(struct dm_snapshot *s)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sector_t hash_size, cow_dev_size, origin_dev_size, max_buckets;
+=======
 	sector_t hash_size, cow_dev_size, max_buckets;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sector_t hash_size, cow_dev_size, max_buckets;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Calculate based on the size of the original volume or
 	 * the COW volume...
 	 */
 	cow_dev_size = get_dev_size(s->cow->bdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	origin_dev_size = get_dev_size(s->origin->bdev);
+	max_buckets = calc_max_buckets();
+
+	hash_size = min(origin_dev_size, cow_dev_size) >> s->store->chunk_shift;
+=======
 	max_buckets = calc_max_buckets();
 
 	hash_size = cow_dev_size >> s->store->chunk_shift;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	max_buckets = calc_max_buckets();
+
+	hash_size = cow_dev_size >> s->store->chunk_shift;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hash_size = min(hash_size, max_buckets);
 
 	if (hash_size < 64)
@@ -1054,8 +1097,17 @@ static int snapshot_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 
 	s = kmalloc(sizeof(*s), GFP_KERNEL);
 	if (!s) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ti->error = "Cannot allocate private snapshot structure";
+=======
 		ti->error = "Cannot allocate snapshot context private "
 		    "structure";
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ti->error = "Cannot allocate snapshot context private "
+		    "structure";
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		r = -ENOMEM;
 		goto bad;
 	}
@@ -1120,7 +1172,14 @@ static int snapshot_ctr(struct dm_target *ti, unsigned int argc, char **argv)
 	s->pending_pool = mempool_create_slab_pool(MIN_IOS, pending_cache);
 	if (!s->pending_pool) {
 		ti->error = "Could not allocate mempool for pending exceptions";
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		r = -ENOMEM;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		r = -ENOMEM;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto bad_pending_pool;
 	}
 
@@ -1380,6 +1439,13 @@ static void pending_complete(struct dm_snap_pending_exception *pe, int success)
 	struct dm_snapshot *s = pe->snap;
 	struct bio *origin_bios = NULL;
 	struct bio *snapshot_bios = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct bio *full_bio = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = 0;
 
 	if (!success) {
@@ -1415,10 +1481,28 @@ static void pending_complete(struct dm_snap_pending_exception *pe, int success)
 	 */
 	dm_insert_exception(&s->complete, e);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+out:
+	dm_remove_exception(&pe->e);
+	snapshot_bios = bio_list_get(&pe->snapshot_bios);
+	origin_bios = bio_list_get(&pe->origin_bios);
+	full_bio = pe->full_bio;
+	if (full_bio) {
+		full_bio->bi_end_io = pe->full_bio_end_io;
+		full_bio->bi_private = pe->full_bio_private;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  out:
 	dm_remove_exception(&pe->e);
 	snapshot_bios = bio_list_get(&pe->snapshot_bios);
 	origin_bios = bio_list_get(&pe->origin_bios);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_pending_exception(pe);
 
 	increment_pending_exceptions_done_count();
@@ -1426,10 +1510,28 @@ static void pending_complete(struct dm_snap_pending_exception *pe, int success)
 	up_write(&s->lock);
 
 	/* Submit any pending write bios */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (error) {
+		if (full_bio)
+			bio_io_error(full_bio);
+		error_bios(snapshot_bios);
+	} else {
+		if (full_bio)
+			bio_endio(full_bio, 0);
+		flush_bios(snapshot_bios);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		error_bios(snapshot_bios);
 	else
 		flush_bios(snapshot_bios);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	retry_origin_bios(s, origin_bios);
 }
@@ -1480,8 +1582,43 @@ static void start_copy(struct dm_snap_pending_exception *pe)
 	dest.count = src.count;
 
 	/* Hand over to kcopyd */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dm_kcopyd_copy(s->kcopyd_client, &src, 1, &dest, 0, copy_callback, pe);
+}
+
+static void full_bio_end_io(struct bio *bio, int error)
+{
+	void *callback_data = bio->bi_private;
+
+	dm_kcopyd_do_callback(callback_data, 0, error ? 1 : 0);
+}
+
+static void start_full_bio(struct dm_snap_pending_exception *pe,
+			   struct bio *bio)
+{
+	struct dm_snapshot *s = pe->snap;
+	void *callback_data;
+
+	pe->full_bio = bio;
+	pe->full_bio_end_io = bio->bi_end_io;
+	pe->full_bio_private = bio->bi_private;
+
+	callback_data = dm_kcopyd_prepare_callback(s->kcopyd_client,
+						   copy_callback, pe);
+
+	bio->bi_end_io = full_bio_end_io;
+	bio->bi_private = callback_data;
+
+	generic_make_request(bio);
+=======
 	dm_kcopyd_copy(s->kcopyd_client,
 		    &src, 1, &dest, 0, copy_callback, pe);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dm_kcopyd_copy(s->kcopyd_client,
+		    &src, 1, &dest, 0, copy_callback, pe);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct dm_snap_pending_exception *
@@ -1519,6 +1656,13 @@ __find_pending_exception(struct dm_snapshot *s,
 	bio_list_init(&pe->origin_bios);
 	bio_list_init(&pe->snapshot_bios);
 	pe->started = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pe->full_bio = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (s->store->type->prepare_exception(s->store, &pe->e)) {
 		free_pending_exception(pe);
@@ -1612,10 +1756,32 @@ static int snapshot_map(struct dm_target *ti, struct bio *bio,
 		}
 
 		remap_exception(s, &pe->e, bio, chunk);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		r = DM_MAPIO_SUBMITTED;
+
+		if (!pe->started &&
+		    bio->bi_size == (s->store->chunk_size << SECTOR_SHIFT)) {
+			pe->started = 1;
+			up_write(&s->lock);
+			start_full_bio(pe, bio);
+			goto out;
+		}
+
+		bio_list_add(&pe->snapshot_bios, bio);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bio_list_add(&pe->snapshot_bios, bio);
 
 		r = DM_MAPIO_SUBMITTED;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!pe->started) {
 			/* this is protected by snap->lock */
 			pe->started = 1;
@@ -1628,9 +1794,21 @@ static int snapshot_map(struct dm_target *ti, struct bio *bio,
 		map_context->ptr = track_chunk(s, chunk);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+out_unlock:
+	up_write(&s->lock);
+out:
+=======
  out_unlock:
 	up_write(&s->lock);
  out:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ out_unlock:
+	up_write(&s->lock);
+ out:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return r;
 }
 
@@ -1974,7 +2152,15 @@ static int __origin_write(struct list_head *snapshots, sector_t sector,
 			pe_to_start_now = pe;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+next_snapshot:
+=======
  next_snapshot:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ next_snapshot:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		up_write(&snap->lock);
 
 		if (pe_to_start_now) {

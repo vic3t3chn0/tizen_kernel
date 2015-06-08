@@ -62,6 +62,18 @@ struct ehci_stats {
 
 #define	EHCI_MAX_ROOT_PORTS	15		/* see HCS_N_PORTS */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum ehci_rh_state {
+	EHCI_RH_HALTED,
+	EHCI_RH_SUSPENDED,
+	EHCI_RH_RUNNING
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ehci_hcd {			/* one per controller */
 	/* glue to PCI and HCD framework */
 	struct ehci_caps __iomem *caps;
@@ -70,6 +82,13 @@ struct ehci_hcd {			/* one per controller */
 
 	__u32			hcs_params;	/* cached register copy */
 	spinlock_t		lock;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum ehci_rh_state	rh_state;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* async schedule support */
 	struct ehci_qh		*async;
@@ -88,6 +107,14 @@ struct ehci_hcd {			/* one per controller */
 	union ehci_shadow	*pshadow;	/* mirror hw periodic table */
 	int			next_uframe;	/* scan periodic, start here */
 	unsigned		periodic_sched;	/* periodic activity count */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned		uframe_periodic_max; /* max periodic time per uframe */
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* list of itds & sitds completed while clock_frame was still active */
 	struct list_head	cached_itd_list;
@@ -108,6 +135,14 @@ struct ehci_hcd {			/* one per controller */
 			the change-suspend feature turned on */
 	unsigned long		suspended_ports;	/* which ports are
 			suspended */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long		resuming_ports;		/* which ports have
+			started to resume */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* per-HC memory pools (could be per-bus, but ...) */
 	struct dma_pool		*qh_pool;	/* qh per active urb */
@@ -124,6 +159,14 @@ struct ehci_hcd {			/* one per controller */
 	ktime_t			last_periodic_enable;
 	u32			command;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned		log2_irq_thresh;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SILICON QUIRKS */
 	unsigned		no_selective_suspend:1;
 	unsigned		has_fsl_port_bug:1; /* FreeScale */
@@ -138,9 +181,23 @@ struct ehci_hcd {			/* one per controller */
 	unsigned		use_dummy_qh:1;	/* AMD Frame List table quirk*/
 	unsigned		has_synopsys_hc_bug:1; /* Synopsys HC */
 	unsigned		frame_index_bug:1; /* MosChip (AKA NetMos) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned		susp_sof_bug:1; /*Chip Idea HC*/
+	unsigned		resume_sof_bug:1;/*Chip Idea HC*/
+	unsigned		reset_sof_bug:1; /*Chip Idea HC*/
+	bool			disable_cerr;
+	u32			reset_delay;
+=======
 #ifdef CONFIG_MDM_HSIC_PM
 	unsigned		susp_sof_bug; /*Chip Idea HC*/
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_MDM_HSIC_PM
+	unsigned		susp_sof_bug; /*Chip Idea HC*/
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* required for usb32 quirk */
 	#define OHCI_CTRL_HCFS          (3 << 6)
@@ -153,6 +210,13 @@ struct ehci_hcd {			/* one per controller */
 	unsigned		has_hostpc:1;
 	unsigned		has_lpm:1;  /* support link power management */
 	unsigned		has_ppcd:1; /* support per-port change bits */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned		pool_64_bit_align:1; /* for 64 bit alignment */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8			sbrn;		/* packed release number */
 
 	/* irq statistics */
@@ -170,7 +234,15 @@ struct ehci_hcd {			/* one per controller */
 	/*
 	 * OTG controllers and transceivers need software interaction
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_phy	*transceiver;
+=======
 	struct otg_transceiver	*transceiver;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct otg_transceiver	*transceiver;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* convert between an HCD pointer and the corresponding EHCI_HCD */
@@ -594,6 +666,11 @@ ehci_port_speed(struct ehci_hcd *ehci, unsigned int portsc)
 #define	ehci_port_speed(ehci, portsc)	USB_PORT_STAT_HIGH_SPEED
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HOST_COMPLIANT_TEST
 static struct list_head * qh_urb_transaction (
 		struct ehci_hcd *ehci,
@@ -612,6 +689,10 @@ static inline void ehci_qtd_free (
 		struct ehci_qtd *qtd);
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-------------------------------------------------------------------------*/
 
 #ifdef CONFIG_PPC_83xx
@@ -758,6 +839,11 @@ static inline u32 hc32_to_cpup (const struct ehci_hcd *ehci, const __hc32 *x)
 
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Writing to dma coherent memory on ARM may be delayed via L2
  * writing buffer, so introduce the helper which can flush L2 writing
@@ -775,6 +861,10 @@ static inline void ehci_sync_mem(void)
 }
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-------------------------------------------------------------------------*/
 
 #ifdef CONFIG_PCI

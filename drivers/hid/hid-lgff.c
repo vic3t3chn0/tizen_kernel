@@ -58,12 +58,21 @@ static const signed short ff_joystick_ac[] = {
 	-1
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const signed short ff_wheel[] = {
 	FF_CONSTANT,
 	FF_AUTOCENTER,
 	-1
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct dev_type devices[] = {
 	{ 0x046d, 0xc211, ff_rumble },
 	{ 0x046d, 0xc219, ff_rumble },
@@ -71,6 +80,12 @@ static const struct dev_type devices[] = {
 	{ 0x046d, 0xc286, ff_joystick_ac },
 	{ 0x046d, 0xc287, ff_joystick_ac },
 	{ 0x046d, 0xc293, ff_joystick },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x046d, 0xc295, ff_joystick },
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0x046d, 0xc294, ff_wheel },
 	{ 0x046d, 0xc298, ff_wheel },
 	{ 0x046d, 0xc299, ff_wheel },
@@ -79,6 +94,10 @@ static const struct dev_type devices[] = {
 	{ 0x046d, 0xc298, ff_wheel },
 	{ 0x046d, 0xc299, ff_wheel },
 	{ 0x046d, 0xca03, ff_wheel },
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int hid_lgff_play(struct input_dev *dev, void *data, struct ff_effect *effect)

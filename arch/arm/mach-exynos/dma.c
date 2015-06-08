@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* linux/arch/arm/mach-exynos4/dma.c
 =======
+<<<<<<< HEAD
+/* linux/arch/arm/mach-exynos4/dma.c
+=======
 /* linux/arch/arm/mach-exynos/dma.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
@@ -26,6 +30,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 #include <linux/amba/bus.h>
 #include <linux/amba/pl330.h>
@@ -233,6 +240,8 @@ static int __init exynos4_dma_init(void)
 	return 0;
 }
 arch_initcall(exynos4_dma_init);
+<<<<<<< HEAD
+=======
 =======
 #include <linux/platform_device.h>
 #include <linux/dma-mapping.h>
@@ -616,3 +625,4 @@ static int __init exynos_dma_init(void)
 }
 arch_initcall(exynos_dma_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

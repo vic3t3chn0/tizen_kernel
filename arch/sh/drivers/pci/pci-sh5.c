@@ -110,8 +110,12 @@ static int __init sh5pci_init(void)
 <<<<<<< HEAD
                         0, "PCI Error",NULL) < 0) {
 =======
+<<<<<<< HEAD
+                        0, "PCI Error",NULL) < 0) {
+=======
                         IRQF_DISABLED, "PCI Error",NULL) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
                 printk(KERN_ERR "PCISH5: Cannot hook PCI_PERR interrupt\n");
                 return -EINVAL;
         }
@@ -120,8 +124,12 @@ static int __init sh5pci_init(void)
 <<<<<<< HEAD
                         0, "PCI SERR interrupt", NULL) < 0) {
 =======
+<<<<<<< HEAD
+                        0, "PCI SERR interrupt", NULL) < 0) {
+=======
                         IRQF_DISABLED, "PCI SERR interrupt", NULL) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
                 printk(KERN_ERR "PCISH5: Cannot hook PCI_SERR interrupt\n");
                 return -EINVAL;
         }

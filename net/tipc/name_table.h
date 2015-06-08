@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2004-2005, 2010-2011, Wind River Systems
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2004-2005, 2010-2011, Wind River Systems
+=======
  * Copyright (c) 2004-2005, Wind River Systems
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,9 +51,14 @@
 struct tipc_subscription;
 struct tipc_port_list;
 =======
+<<<<<<< HEAD
+struct tipc_subscription;
+struct tipc_port_list;
+=======
 struct subscription;
 struct port_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * TIPC name types reserved for internal TIPC use (both current and planned)
@@ -75,10 +84,16 @@ struct port_list;
  * @cluster_list: adjacent matching name seq publications with >= cluster scope
  * @zone_list: adjacent matching name seq publications with >= zone scope
 =======
+<<<<<<< HEAD
+ * @node_list: adjacent matching name seq publications with >= node scope
+ * @cluster_list: adjacent matching name seq publications with >= cluster scope
+ * @zone_list: adjacent matching name seq publications with >= zone scope
+=======
  * @node_list: next matching name seq publication with >= node scope
  * @cluster_list: next matching name seq publication with >= cluster scope
  * @zone_list: next matching name seq publication with >= zone scope
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note that the node list, cluster list, and zone list are circular lists.
  */
@@ -99,10 +114,16 @@ struct publication {
 	struct list_head cluster_list;
 	struct list_head zone_list;
 =======
+<<<<<<< HEAD
+	struct list_head node_list;
+	struct list_head cluster_list;
+	struct list_head zone_list;
+=======
 	struct publication *node_list_next;
 	struct publication *cluster_list_next;
 	struct publication *zone_list_next;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -114,10 +135,14 @@ int tipc_nametbl_mc_translate(u32 type, u32 lower, u32 upper, u32 limit,
 <<<<<<< HEAD
 			 struct tipc_port_list *dports);
 =======
+<<<<<<< HEAD
+			 struct tipc_port_list *dports);
+=======
 			 struct port_list *dports);
 int tipc_nametbl_publish_rsv(u32 ref, unsigned int scope,
 			struct tipc_name_seq const *seq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct publication *tipc_nametbl_publish(u32 type, u32 lower, u32 upper,
 				    u32 scope, u32 port_ref, u32 key);
 int tipc_nametbl_withdraw(u32 type, u32 lower, u32 ref, u32 key);
@@ -129,9 +154,14 @@ struct publication *tipc_nametbl_remove_publ(u32 type, u32 lower,
 void tipc_nametbl_subscribe(struct tipc_subscription *s);
 void tipc_nametbl_unsubscribe(struct tipc_subscription *s);
 =======
+<<<<<<< HEAD
+void tipc_nametbl_subscribe(struct tipc_subscription *s);
+void tipc_nametbl_unsubscribe(struct tipc_subscription *s);
+=======
 void tipc_nametbl_subscribe(struct subscription *s);
 void tipc_nametbl_unsubscribe(struct subscription *s);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tipc_nametbl_init(void);
 void tipc_nametbl_stop(void);
 

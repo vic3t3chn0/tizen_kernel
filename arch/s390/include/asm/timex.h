@@ -87,6 +87,9 @@ static inline void get_clock_ext(char *clk)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline unsigned long long get_clock_fast(void)
 {
 	unsigned long long clk;
@@ -98,8 +101,11 @@ static inline unsigned long long get_clock_fast(void)
 	return clk;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline unsigned long long get_clock_xt(void)
 {
 	unsigned char clk[16];
@@ -142,6 +148,8 @@ static inline unsigned long long get_clock_monotonic(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * tod_to_ns - convert a TOD format value to nanoseconds
  * @todval: to be converted TOD format value
@@ -171,4 +179,5 @@ static inline unsigned long long tod_to_ns(unsigned long long todval)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

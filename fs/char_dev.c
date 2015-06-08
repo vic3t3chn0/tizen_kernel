@@ -275,8 +275,12 @@ int __register_chrdev(unsigned int major, unsigned int baseminor,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cdev = cdev_alloc();
 	if (!cdev)
 		goto out2;
@@ -287,8 +291,12 @@ int __register_chrdev(unsigned int major, unsigned int baseminor,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 		
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = cdev_add(cdev, MKDEV(cd->major, baseminor), count);
 	if (err)
 		goto out;
@@ -416,8 +424,12 @@ static int chrdev_open(struct inode *inode, struct file *filp)
 <<<<<<< HEAD
 		ret = filp->f_op->open(inode, filp);
 =======
+<<<<<<< HEAD
+		ret = filp->f_op->open(inode, filp);
+=======
 		ret = filp->f_op->open(inode,filp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret)
 			goto out_cdev_put;
 	}

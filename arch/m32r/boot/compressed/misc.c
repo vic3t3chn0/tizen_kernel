@@ -31,8 +31,12 @@ static unsigned long free_mem_end_ptr;
 <<<<<<< HEAD
 static void *memset(void *s, int c, size_t n)
 =======
+<<<<<<< HEAD
+static void *memset(void *s, int c, size_t n)
+=======
 void *memset(void *s, int c, size_t n)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *ss = s;
 
@@ -43,6 +47,8 @@ void *memset(void *s, int c, size_t n)
 #endif
 
 #ifdef CONFIG_KERNEL_GZIP
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void *memcpy(void *dest, const void *src, size_t n)
@@ -56,6 +62,7 @@ void *memcpy(void *dest, const void *src, size_t n)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BOOT_HEAP_SIZE             0x10000
 #include "../../../../lib/decompress_inflate.c"
 #endif

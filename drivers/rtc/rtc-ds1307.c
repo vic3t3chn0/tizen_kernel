@@ -20,7 +20,16 @@
 
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * We can't determine type by probing, but if we expect pre-Linux code
+=======
 /* We can't determine type by probing, but if we expect pre-Linux code
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* We can't determine type by probing, but if we expect pre-Linux code
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * to have set the chip up as a clock (turning on the oscillator and
  * setting the date and time), Linux can ignore the non-clock features.
  * That's a natural job for a factory or repair bench.
@@ -34,8 +43,20 @@ enum ds_type {
 	ds_1388,
 	ds_3231,
 	m41t00,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mcp7941x,
+	rx_8025,
+	last_ds_type /* always last */
+	/* rs5c372 too?  different address... */
+=======
 	rx_8025,
 	// rs5c372 too?  different address...
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rx_8025,
+	// rs5c372 too?  different address...
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -43,6 +64,13 @@ enum ds_type {
 #define DS1307_REG_SECS		0x00	/* 00-59 */
 #	define DS1307_BIT_CH		0x80
 #	define DS1340_BIT_nEOSC		0x80
+<<<<<<< HEAD
+<<<<<<< HEAD
+#	define MCP7941X_BIT_ST		0x80
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DS1307_REG_MIN		0x01	/* 00-59 */
 #define DS1307_REG_HOUR		0x02	/* 00-23, or 1-12{am,pm} */
 #	define DS1307_BIT_12HR		0x40	/* in REG_HOUR */
@@ -50,12 +78,28 @@ enum ds_type {
 #	define DS1340_BIT_CENTURY_EN	0x80	/* in REG_HOUR */
 #	define DS1340_BIT_CENTURY	0x40	/* in REG_HOUR */
 #define DS1307_REG_WDAY		0x03	/* 01-07 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#	define MCP7941X_BIT_VBATEN	0x08
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DS1307_REG_MDAY		0x04	/* 01-31 */
 #define DS1307_REG_MONTH	0x05	/* 01-12 */
 #	define DS1337_BIT_CENTURY	0x80	/* in REG_MONTH */
 #define DS1307_REG_YEAR		0x06	/* 00-99 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Other registers (control, status, alarms, trickle charge, NVRAM, etc)
+=======
 /* Other registers (control, status, alarms, trickle charge, NVRAM, etc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Other registers (control, status, alarms, trickle charge, NVRAM, etc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * start at 7, and they differ a LOT. Only control and status matter for
  * basic RTC date and time functionality; be careful using them.
  */
@@ -99,6 +143,14 @@ enum ds_type {
 struct ds1307 {
 	u8			offset; /* register's offset */
 	u8			regs[11];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u16			nvram_offset;
+	struct bin_attribute	*nvram;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum ds_type		type;
 	unsigned long		flags;
 #define HAS_NVRAM	0		/* bit 0 == sysfs file active */
@@ -113,6 +165,40 @@ struct ds1307 {
 };
 
 struct chip_desc {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned		alarm:1;
+	u16			nvram_offset;
+	u16			nvram_size;
+};
+
+static const struct chip_desc chips[last_ds_type] = {
+	[ds_1307] = {
+		.nvram_offset	= 8,
+		.nvram_size	= 56,
+	},
+	[ds_1337] = {
+		.alarm		= 1,
+	},
+	[ds_1338] = {
+		.nvram_offset	= 8,
+		.nvram_size	= 56,
+	},
+	[ds_1339] = {
+		.alarm		= 1,
+	},
+	[ds_3231] = {
+		.alarm		= 1,
+	},
+	[mcp7941x] = {
+		/* this is battery backed SRAM */
+		.nvram_offset	= 0x20,
+		.nvram_size	= 0x40,
+	},
+};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned		nvram56:1;
 	unsigned		alarm:1;
 };
@@ -139,6 +225,10 @@ static const struct chip_desc chips[] = {
 },
 [rx_8025] = {
 }, };
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct i2c_device_id ds1307_id[] = {
 	{ "ds1307", ds_1307 },
@@ -149,6 +239,13 @@ static const struct i2c_device_id ds1307_id[] = {
 	{ "ds1340", ds_1340 },
 	{ "ds3231", ds_3231 },
 	{ "m41t00", m41t00 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ "mcp7941x", mcp7941x },
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "pt7c4338", ds_1307 },
 	{ "rx8025", rx_8025 },
 	{ }
@@ -365,6 +462,21 @@ static int ds1307_set_time(struct device *dev, struct rtc_time *t)
 		buf[DS1307_REG_HOUR] |= DS1340_BIT_CENTURY_EN
 				| DS1340_BIT_CENTURY;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case mcp7941x:
+		/*
+		 * these bits were cleared when preparing the date/time
+		 * values and need to be set again before writing the
+		 * buffer out to the device.
+		 */
+		buf[DS1307_REG_SECS] |= MCP7941X_BIT_ST;
+		buf[DS1307_REG_WDAY] |= MCP7941X_BIT_VBATEN;
+		break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		break;
 	}
@@ -407,7 +519,16 @@ static int ds1337_read_alarm(struct device *dev, struct rtc_wkalrm *t)
 			ds1307->regs[6], ds1307->regs[7],
 			ds1307->regs[8]);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * report alarm time (ALARM1); assume 24 hour and day-of-month modes,
+=======
 	/* report alarm time (ALARM1); assume 24 hour and day-of-month modes,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* report alarm time (ALARM1); assume 24 hour and day-of-month modes,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * and that all four fields are checked matches
 	 */
 	t->time.tm_sec = bcd2bin(ds1307->regs[0] & 0x7f);
@@ -435,7 +556,15 @@ static int ds1337_read_alarm(struct device *dev, struct rtc_wkalrm *t)
 
 static int ds1337_set_alarm(struct device *dev, struct rtc_wkalrm *t)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct i2c_client	*client = to_i2c_client(dev);
+=======
 	struct i2c_client       *client = to_i2c_client(dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct i2c_client       *client = to_i2c_client(dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ds1307		*ds1307 = i2c_get_clientdata(client);
 	unsigned char		*buf = ds1307->regs;
 	u8			control, status;
@@ -531,8 +660,16 @@ static const struct rtc_class_ops ds13xx_rtc_ops = {
 
 /*----------------------------------------------------------------------*/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define NVRAM_SIZE	56
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define NVRAM_SIZE	56
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t
 ds1307_nvram_read(struct file *filp, struct kobject *kobj,
 		struct bin_attribute *attr,
@@ -545,6 +682,20 @@ ds1307_nvram_read(struct file *filp, struct kobject *kobj,
 	client = kobj_to_i2c_client(kobj);
 	ds1307 = i2c_get_clientdata(client);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (unlikely(off >= ds1307->nvram->size))
+		return 0;
+	if ((off + count) > ds1307->nvram->size)
+		count = ds1307->nvram->size - off;
+	if (unlikely(!count))
+		return count;
+
+	result = ds1307->read_block_data(client, ds1307->nvram_offset + off,
+								count, buf);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(off >= NVRAM_SIZE))
 		return 0;
 	if ((off + count) > NVRAM_SIZE)
@@ -553,6 +704,10 @@ ds1307_nvram_read(struct file *filp, struct kobject *kobj,
 		return count;
 
 	result = ds1307->read_block_data(client, 8 + off, count, buf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result < 0)
 		dev_err(&client->dev, "%s error %d\n", "nvram read", result);
 	return result;
@@ -570,6 +725,20 @@ ds1307_nvram_write(struct file *filp, struct kobject *kobj,
 	client = kobj_to_i2c_client(kobj);
 	ds1307 = i2c_get_clientdata(client);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (unlikely(off >= ds1307->nvram->size))
+		return -EFBIG;
+	if ((off + count) > ds1307->nvram->size)
+		count = ds1307->nvram->size - off;
+	if (unlikely(!count))
+		return count;
+
+	result = ds1307->write_block_data(client, ds1307->nvram_offset + off,
+								count, buf);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(off >= NVRAM_SIZE))
 		return -EFBIG;
 	if ((off + count) > NVRAM_SIZE)
@@ -578,6 +747,10 @@ ds1307_nvram_write(struct file *filp, struct kobject *kobj,
 		return count;
 
 	result = ds1307->write_block_data(client, 8 + off, count, buf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result < 0) {
 		dev_err(&client->dev, "%s error %d\n", "nvram write", result);
 		return result;
@@ -585,6 +758,13 @@ ds1307_nvram_write(struct file *filp, struct kobject *kobj,
 	return count;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*----------------------------------------------------------------------*/
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct bin_attribute nvram = {
 	.attr = {
 		.name	= "nvram",
@@ -600,6 +780,10 @@ static struct bin_attribute nvram = {
 
 static struct i2c_driver ds1307_driver;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit ds1307_probe(struct i2c_client *client,
 				  const struct i2c_device_id *id)
 {
@@ -620,7 +804,16 @@ static int __devinit ds1307_probe(struct i2c_client *client,
 	    && !i2c_check_functionality(adapter, I2C_FUNC_SMBUS_I2C_BLOCK))
 		return -EIO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ds1307 = kzalloc(sizeof(struct ds1307), GFP_KERNEL);
+	if (!ds1307)
+=======
 	if (!(ds1307 = kzalloc(sizeof(struct ds1307), GFP_KERNEL)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!(ds1307 = kzalloc(sizeof(struct ds1307), GFP_KERNEL)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 
 	i2c_set_clientdata(client, ds1307);
@@ -642,11 +835,20 @@ static int __devinit ds1307_probe(struct i2c_client *client,
 	case ds_1337:
 	case ds_1339:
 	case ds_3231:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* has IRQ? */
 		if (ds1307->client->irq > 0 && chip->alarm) {
 			INIT_WORK(&ds1307->work, ds1307_work);
 			want_irq = true;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* get registers that the "rtc" read below won't read... */
 		tmp = ds1307->read_block_data(ds1307->client,
 				DS1337_REG_CONTROL, 2, buf);
@@ -660,6 +862,24 @@ static int __devinit ds1307_probe(struct i2c_client *client,
 		if (ds1307->regs[0] & DS1337_BIT_nEOSC)
 			ds1307->regs[0] &= ~DS1337_BIT_nEOSC;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/*
+		 * Using IRQ?  Disable the square wave and both alarms.
+		 * For some variants, be sure alarms can trigger when we're
+		 * running on Vbackup (BBSQI/BBSQW)
+		 */
+		if (ds1307->client->irq > 0 && chip->alarm) {
+			INIT_WORK(&ds1307->work, ds1307_work);
+
+			ds1307->regs[0] |= DS1337_BIT_INTCN
+					| bbsqi_bitpos[ds1307->type];
+			ds1307->regs[0] &= ~(DS1337_BIT_A2IE | DS1337_BIT_A1IE);
+
+			want_irq = true;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Using IRQ?  Disable the square wave and both alarms.
 		 * For some variants, be sure alarms can trigger when we're
 		 * running on Vbackup (BBSQI/BBSQW)
@@ -668,6 +888,10 @@ static int __devinit ds1307_probe(struct i2c_client *client,
 			ds1307->regs[0] |= DS1337_BIT_INTCN
 					| bbsqi_bitpos[ds1307->type];
 			ds1307->regs[0] &= ~(DS1337_BIT_A2IE | DS1337_BIT_A1IE);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		i2c_smbus_write_byte_data(client, DS1337_REG_CONTROL,
@@ -762,7 +986,16 @@ read_rtc:
 		goto exit_free;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * minimal sanity checking; some chips (like DS1340) don't
+=======
 	/* minimal sanity checking; some chips (like DS1340) don't
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* minimal sanity checking; some chips (like DS1340) don't
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * specify the extra bits as must-be-zero, but there are
 	 * still a few values that are clearly out-of-range.
 	 */
@@ -809,11 +1042,38 @@ read_rtc:
 			dev_warn(&client->dev, "SET TIME!\n");
 		}
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case mcp7941x:
+		/* make sure that the backup battery is enabled */
+		if (!(ds1307->regs[DS1307_REG_WDAY] & MCP7941X_BIT_VBATEN)) {
+			i2c_smbus_write_byte_data(client, DS1307_REG_WDAY,
+					ds1307->regs[DS1307_REG_WDAY]
+					| MCP7941X_BIT_VBATEN);
+		}
+
+		/* clock halted?  turn it on, so clock can tick. */
+		if (!(tmp & MCP7941X_BIT_ST)) {
+			i2c_smbus_write_byte_data(client, DS1307_REG_SECS,
+					MCP7941X_BIT_ST);
+			dev_warn(&client->dev, "SET TIME!\n");
+			goto read_rtc;
+		}
+
+		break;
+	default:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case rx_8025:
 	case ds_1337:
 	case ds_1339:
 	case ds_1388:
 	case ds_3231:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -821,7 +1081,16 @@ read_rtc:
 	switch (ds1307->type) {
 	case ds_1340:
 	case m41t00:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/*
+		 * NOTE: ignores century bits; fix before deploying
+=======
 		/* NOTE: ignores century bits; fix before deploying
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* NOTE: ignores century bits; fix before deploying
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * systems that will run through year 2100.
 		 */
 		break;
@@ -831,7 +1100,16 @@ read_rtc:
 		if (!(tmp & DS1307_BIT_12HR))
 			break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/*
+		 * Be sure we're in 24 hour mode.  Multi-master systems
+=======
 		/* Be sure we're in 24 hour mode.  Multi-master systems
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* Be sure we're in 24 hour mode.  Multi-master systems
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * take note...
 		 */
 		tmp = bcd2bin(tmp & 0x1f);
@@ -867,16 +1145,53 @@ read_rtc:
 		dev_dbg(&client->dev, "got IRQ %d\n", client->irq);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (chip->nvram_size) {
+		ds1307->nvram = kzalloc(sizeof(struct bin_attribute),
+							GFP_KERNEL);
+		if (!ds1307->nvram) {
+			err = -ENOMEM;
+			goto exit_nvram;
+		}
+		ds1307->nvram->attr.name = "nvram";
+		ds1307->nvram->attr.mode = S_IRUGO | S_IWUSR;
+		sysfs_bin_attr_init(ds1307->nvram);
+		ds1307->nvram->read = ds1307_nvram_read,
+		ds1307->nvram->write = ds1307_nvram_write,
+		ds1307->nvram->size = chip->nvram_size;
+		ds1307->nvram_offset = chip->nvram_offset;
+		err = sysfs_create_bin_file(&client->dev.kobj, ds1307->nvram);
+		if (err) {
+			kfree(ds1307->nvram);
+			goto exit_nvram;
+		}
+		set_bit(HAS_NVRAM, &ds1307->flags);
+		dev_info(&client->dev, "%zu bytes nvram\n", ds1307->nvram->size);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chip->nvram56) {
 		err = sysfs_create_bin_file(&client->dev.kobj, &nvram);
 		if (err == 0) {
 			set_bit(HAS_NVRAM, &ds1307->flags);
 			dev_info(&client->dev, "56 bytes nvram\n");
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+exit_nvram:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 exit_irq:
 	rtc_device_unregister(ds1307->rtc);
 exit_free:
@@ -886,15 +1201,35 @@ exit_free:
 
 static int __devexit ds1307_remove(struct i2c_client *client)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ds1307 *ds1307 = i2c_get_clientdata(client);
+=======
 	struct ds1307		*ds1307 = i2c_get_clientdata(client);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ds1307		*ds1307 = i2c_get_clientdata(client);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_and_clear_bit(HAS_ALARM, &ds1307->flags)) {
 		free_irq(client->irq, client);
 		cancel_work_sync(&ds1307->work);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_and_clear_bit(HAS_NVRAM, &ds1307->flags)) {
+		sysfs_remove_bin_file(&client->dev.kobj, ds1307->nvram);
+		kfree(ds1307->nvram);
+	}
+=======
 	if (test_and_clear_bit(HAS_NVRAM, &ds1307->flags))
 		sysfs_remove_bin_file(&client->dev.kobj, &nvram);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (test_and_clear_bit(HAS_NVRAM, &ds1307->flags))
+		sysfs_remove_bin_file(&client->dev.kobj, &nvram);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rtc_device_unregister(ds1307->rtc);
 	kfree(ds1307);
@@ -911,6 +1246,12 @@ static struct i2c_driver ds1307_driver = {
 	.id_table	= ds1307_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(ds1307_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ds1307_init(void)
 {
 	return i2c_add_driver(&ds1307_driver);
@@ -922,6 +1263,10 @@ static void __exit ds1307_exit(void)
 	i2c_del_driver(&ds1307_driver);
 }
 module_exit(ds1307_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("RTC driver for DS1307 and similar chips");
 MODULE_LICENSE("GPL");

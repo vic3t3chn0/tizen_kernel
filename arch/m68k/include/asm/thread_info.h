@@ -6,7 +6,11 @@
 <<<<<<< HEAD
 #include <asm/segment.h>
 =======
+<<<<<<< HEAD
+#include <asm/segment.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * On machines with 4k pages we default to an 8k thread size, though we
@@ -33,7 +37,11 @@ struct thread_info {
 <<<<<<< HEAD
 	mm_segment_t		addr_limit;	/* thread address space */
 =======
+<<<<<<< HEAD
+	mm_segment_t		addr_limit;	/* thread address space */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			preempt_count;	/* 0 => preemptable, <0 => BUG */
 	__u32			cpu;		/* should always be 0 on m68k */
 	unsigned long		tp_value;	/* thread pointer */
@@ -50,7 +58,11 @@ struct thread_info {
 <<<<<<< HEAD
 	.addr_limit	= KERNEL_DS,		\
 =======
+<<<<<<< HEAD
+	.addr_limit	= KERNEL_DS,		\
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.preempt_count	= INIT_PREEMPT_COUNT,	\
 	.restart_block = {			\
 		.fn = do_no_restart_syscall,	\
@@ -59,6 +71,8 @@ struct thread_info {
 
 #define init_stack		(init_thread_union.stack)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_MMU
@@ -90,6 +104,7 @@ struct thread_info {
 #else /* !CONFIG_MMU */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASSEMBLY__
 /* how to get the thread information struct from C */
 static inline struct thread_info *current_thread_info(void)
@@ -109,9 +124,12 @@ static inline struct thread_info *current_thread_info(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* CONFIG_MMU */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* entry.S relies on these definitions!
  * bits 0-7 are tested at every exception exit
  * bits 8-15 are also tested at syscall exit
@@ -123,8 +141,11 @@ static inline struct thread_info *current_thread_info(void)
 #define TIF_MEMDIE		16	/* is terminating due to OOM killer */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TIF_FREEZE		17	/* thread is freezing for suspend */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TIF_RESTORE_SIGMASK	18	/* restore signal mask in do_signal */
 
 #endif	/* _ASM_M68K_THREAD_INFO_H */

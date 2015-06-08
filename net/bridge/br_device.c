@@ -169,6 +169,9 @@ static int br_set_mac_address(struct net_device *dev, void *p)
 
 	if (!is_valid_ether_addr(addr->sa_data))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EADDRNOTAVAIL;
 
 	spin_lock_bh(&br->lock);
@@ -178,6 +181,8 @@ static int br_set_mac_address(struct net_device *dev, void *p)
 		br_fdb_change_mac_address(br, addr->sa_data);
 		br_stp_change_bridge_id(br, addr->sa_data);
 	}
+<<<<<<< HEAD
+=======
 =======
 		return -EINVAL;
 
@@ -185,6 +190,7 @@ static int br_set_mac_address(struct net_device *dev, void *p)
 	memcpy(dev->dev_addr, addr->sa_data, ETH_ALEN);
 	br_stp_change_bridge_id(br, addr->sa_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br->flags |= BR_SET_MAC_ADDR;
 	spin_unlock_bh(&br->lock);
 
@@ -203,8 +209,13 @@ static void br_getinfo(struct net_device *dev, struct ethtool_drvinfo *info)
 static netdev_features_t br_fix_features(struct net_device *dev,
 	netdev_features_t features)
 =======
+<<<<<<< HEAD
+static netdev_features_t br_fix_features(struct net_device *dev,
+	netdev_features_t features)
+=======
 static u32 br_fix_features(struct net_device *dev, u32 features)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_bridge *br = netdev_priv(dev);
 
@@ -322,8 +333,12 @@ static const struct net_device_ops br_netdev_ops = {
 <<<<<<< HEAD
 	.ndo_set_rx_mode	 = br_dev_set_multicast_list,
 =======
+<<<<<<< HEAD
+	.ndo_set_rx_mode	 = br_dev_set_multicast_list,
+=======
 	.ndo_set_multicast_list	 = br_dev_set_multicast_list,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_change_mtu		 = br_change_mtu,
 	.ndo_do_ioctl		 = br_dev_ioctl,
 #ifdef CONFIG_NET_POLL_CONTROLLER
@@ -355,8 +370,12 @@ void br_dev_setup(struct net_device *dev)
 <<<<<<< HEAD
 	eth_hw_addr_random(dev);
 =======
+<<<<<<< HEAD
+	eth_hw_addr_random(dev);
+=======
 	random_ether_addr(dev->dev_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ether_setup(dev);
 
 	dev->netdev_ops = &br_netdev_ops;
@@ -368,16 +387,22 @@ void br_dev_setup(struct net_device *dev)
 
 	dev->features = NETIF_F_SG | NETIF_F_FRAGLIST | NETIF_F_HIGHDMA |
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			NETIF_F_GSO_MASK | NETIF_F_HW_CSUM | NETIF_F_LLTX |
 			NETIF_F_NETNS_LOCAL | NETIF_F_HW_VLAN_TX;
 	dev->hw_features = NETIF_F_SG | NETIF_F_FRAGLIST | NETIF_F_HIGHDMA |
 			   NETIF_F_GSO_MASK | NETIF_F_HW_CSUM |
+<<<<<<< HEAD
+=======
 =======
 			NETIF_F_GSO_MASK | NETIF_F_NO_CSUM | NETIF_F_LLTX |
 			NETIF_F_NETNS_LOCAL | NETIF_F_HW_VLAN_TX;
 	dev->hw_features = NETIF_F_SG | NETIF_F_FRAGLIST | NETIF_F_HIGHDMA |
 			   NETIF_F_GSO_MASK | NETIF_F_NO_CSUM |
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   NETIF_F_HW_VLAN_TX;
 
 	br->dev = dev;
@@ -395,7 +420,12 @@ void br_dev_setup(struct net_device *dev)
 	br->group_fwd_mask = BR_GROUPFWD_DEFAULT;
 
 =======
+<<<<<<< HEAD
+	br->group_fwd_mask = BR_GROUPFWD_DEFAULT;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br->designated_root = br->bridge_id;
 	br->bridge_max_age = br->max_age = 20 * HZ;
 	br->bridge_hello_time = br->hello_time = 2 * HZ;

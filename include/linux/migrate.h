@@ -4,11 +4,16 @@
 #include <linux/mm.h>
 #include <linux/mempolicy.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/migrate_mode.h>
 
 typedef struct page *new_page_t(struct page *, unsigned long private, int **);
 
 #ifdef CONFIG_MIGRATION
+<<<<<<< HEAD
+=======
 =======
 
 typedef struct page *new_page_t(struct page *, unsigned long private, int **);
@@ -29,10 +34,16 @@ enum migrate_mode {
 #ifdef CONFIG_MIGRATION
 #define PAGE_MIGRATION 1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void putback_lru_pages(struct list_head *l);
 extern int migrate_page(struct address_space *,
 			struct page *, struct page *, enum migrate_mode);
+<<<<<<< HEAD
+extern int migrate_pages(struct list_head *l, new_page_t x,
+			unsigned long private, bool offlining,
+			enum migrate_mode mode);
+=======
 <<<<<<< HEAD
 extern int migrate_pages(struct list_head *l, new_page_t x,
 			unsigned long private, bool offlining,
@@ -52,6 +63,7 @@ extern int migrate_replace_cma_page(struct page *oldpage,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int migrate_huge_pages(struct list_head *l, new_page_t x,
 			unsigned long private, bool offlining,
 			enum migrate_mode mode);
@@ -68,6 +80,13 @@ extern void migrate_page_copy(struct page *newpage, struct page *page);
 extern int migrate_huge_page_move_mapping(struct address_space *mapping,
 				  struct page *newpage, struct page *page);
 #else
+<<<<<<< HEAD
+
+static inline void putback_lru_pages(struct list_head *l) {}
+static inline int migrate_pages(struct list_head *l, new_page_t x,
+		unsigned long private, bool offlining,
+		enum migrate_mode mode) { return -ENOSYS; }
+=======
 <<<<<<< HEAD
 
 static inline void putback_lru_pages(struct list_head *l) {}
@@ -92,6 +111,7 @@ static inline int migrate_replace_cma_page(struct page *oldpage,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int migrate_huge_pages(struct list_head *l, new_page_t x,
 		unsigned long private, bool offlining,
 		enum migrate_mode mode) { return -ENOSYS; }

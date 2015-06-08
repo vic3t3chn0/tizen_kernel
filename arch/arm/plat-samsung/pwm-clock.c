@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 #include <plat/pwm-clock.h>
 =======
+<<<<<<< HEAD
+#include <plat/pwm-clock.h>
+=======
 #include <mach/pwm-clock.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Each of the timers 0 through 5 go through the following
  * clock tree, with the inputs depending on the timers.
@@ -275,7 +279,11 @@ static struct pwm_tdiv_clk clk_timer_tdiv[] = {
 <<<<<<< HEAD
 			.devname	= "s3c24xx-pwm.0",
 =======
+<<<<<<< HEAD
+			.devname	= "s3c24xx-pwm.0",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ops	= &clk_tdiv_ops,
 			.parent	= &clk_timer_scaler[0],
 		},
@@ -286,7 +294,11 @@ static struct pwm_tdiv_clk clk_timer_tdiv[] = {
 <<<<<<< HEAD
 			.devname	= "s3c24xx-pwm.1",
 =======
+<<<<<<< HEAD
+			.devname	= "s3c24xx-pwm.1",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ops	= &clk_tdiv_ops,
 			.parent	= &clk_timer_scaler[0],
 		}
@@ -297,7 +309,11 @@ static struct pwm_tdiv_clk clk_timer_tdiv[] = {
 <<<<<<< HEAD
 			.devname	= "s3c24xx-pwm.2",
 =======
+<<<<<<< HEAD
+			.devname	= "s3c24xx-pwm.2",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ops	= &clk_tdiv_ops,
 			.parent	= &clk_timer_scaler[1],
 		},
@@ -308,7 +324,11 @@ static struct pwm_tdiv_clk clk_timer_tdiv[] = {
 <<<<<<< HEAD
 			.devname	= "s3c24xx-pwm.3",
 =======
+<<<<<<< HEAD
+			.devname	= "s3c24xx-pwm.3",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ops	= &clk_tdiv_ops,
 			.parent	= &clk_timer_scaler[1],
 		},
@@ -319,7 +339,11 @@ static struct pwm_tdiv_clk clk_timer_tdiv[] = {
 <<<<<<< HEAD
 			.devname	= "s3c24xx-pwm.4",
 =======
+<<<<<<< HEAD
+			.devname	= "s3c24xx-pwm.4",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ops	= &clk_tdiv_ops,
 			.parent	= &clk_timer_scaler[1],
 		},
@@ -359,6 +383,9 @@ static int clk_pwm_tin_set_parent(struct clk *clk, struct clk *parent)
 	unsigned long shift = S3C2410_TCFG1_SHIFT(id);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long mux_tclk;
 
 	if (soc_is_s3c24xx())
@@ -370,10 +397,13 @@ static int clk_pwm_tin_set_parent(struct clk *clk, struct clk *parent)
 
 	if (parent == s3c24xx_pwmclk_tclk(id))
 		bits = mux_tclk << shift;
+<<<<<<< HEAD
+=======
 =======
 	if (parent == s3c24xx_pwmclk_tclk(id))
 		bits = S3C_TCFG1_MUX_TCLK << shift;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (parent == s3c24xx_pwmclk_tdiv(id))
 		bits = clk_pwm_tdiv_bits(to_tdiv(parent)) << shift;
 	else
@@ -402,7 +432,11 @@ static struct clk clk_tin[] = {
 <<<<<<< HEAD
 		.devname	= "s3c24xx-pwm.0",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c24xx-pwm.0",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.id	= 0,
 		.ops	= &clk_tin_ops,
 	},
@@ -411,7 +445,11 @@ static struct clk clk_tin[] = {
 <<<<<<< HEAD
 		.devname	= "s3c24xx-pwm.1",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c24xx-pwm.1",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.id	= 1,
 		.ops	= &clk_tin_ops,
 	},
@@ -420,7 +458,11 @@ static struct clk clk_tin[] = {
 <<<<<<< HEAD
 		.devname	= "s3c24xx-pwm.2",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c24xx-pwm.2",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.id	= 2,
 		.ops	= &clk_tin_ops,
 	},
@@ -429,7 +471,11 @@ static struct clk clk_tin[] = {
 <<<<<<< HEAD
 		.devname	= "s3c24xx-pwm.3",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c24xx-pwm.3",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.id	= 3,
 		.ops	= &clk_tin_ops,
 	},
@@ -438,7 +484,11 @@ static struct clk clk_tin[] = {
 <<<<<<< HEAD
 		.devname	= "s3c24xx-pwm.4",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c24xx-pwm.4",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.id	= 4,
 		.ops	= &clk_tin_ops,
 	},

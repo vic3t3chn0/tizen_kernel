@@ -55,8 +55,12 @@ static const struct utf8_table utf8_table[] =
 <<<<<<< HEAD
 int utf8_to_utf32(const u8 *s, int inlen, unicode_t *pu)
 =======
+<<<<<<< HEAD
+int utf8_to_utf32(const u8 *s, int inlen, unicode_t *pu)
+=======
 int utf8_to_utf32(const u8 *s, int len, unicode_t *pu)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long l;
 	int c0, c, nc;
@@ -78,8 +82,12 @@ int utf8_to_utf32(const u8 *s, int len, unicode_t *pu)
 <<<<<<< HEAD
 		if (inlen <= nc)
 =======
+<<<<<<< HEAD
+		if (inlen <= nc)
+=======
 		if (len <= nc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 		s++;
 		c = (*s ^ 0x80) & 0xFF;
@@ -94,8 +102,12 @@ EXPORT_SYMBOL(utf8_to_utf32);
 <<<<<<< HEAD
 int utf32_to_utf8(unicode_t u, u8 *s, int maxout)
 =======
+<<<<<<< HEAD
+int utf32_to_utf8(unicode_t u, u8 *s, int maxout)
+=======
 int utf32_to_utf8(unicode_t u, u8 *s, int maxlen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long l;
 	int c, nc;
@@ -112,8 +124,12 @@ int utf32_to_utf8(unicode_t u, u8 *s, int maxlen)
 <<<<<<< HEAD
 	for (t = utf8_table; t->cmask && maxout; t++, maxout--) {
 =======
+<<<<<<< HEAD
+	for (t = utf8_table; t->cmask && maxout; t++, maxout--) {
+=======
 	for (t = utf8_table; t->cmask && maxlen; t++, maxlen--) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nc++;
 		if (l <= t->lmask) {
 			c = t->shift;
@@ -149,9 +165,14 @@ static inline void put_utf16(wchar_t *s, unsigned c, enum utf16_endian endian)
 int utf8s_to_utf16s(const u8 *s, int inlen, enum utf16_endian endian,
 		wchar_t *pwcs, int maxout)
 =======
+<<<<<<< HEAD
+int utf8s_to_utf16s(const u8 *s, int inlen, enum utf16_endian endian,
+		wchar_t *pwcs, int maxout)
+=======
 int utf8s_to_utf16s(const u8 *s, int len, enum utf16_endian endian,
 		wchar_t *pwcs, int maxlen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u16 *op;
 	int size;
@@ -159,6 +180,9 @@ int utf8s_to_utf16s(const u8 *s, int len, enum utf16_endian endian,
 
 	op = pwcs;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (inlen > 0 && maxout > 0 && *s) {
 		if (*s & 0x80) {
 			size = utf8_to_utf32(s, inlen, &u);
@@ -169,6 +193,8 @@ int utf8s_to_utf16s(const u8 *s, int len, enum utf16_endian endian,
 
 			if (u >= PLANE_SIZE) {
 				if (maxout < 2)
+<<<<<<< HEAD
+=======
 =======
 	while (len > 0 && maxlen > 0 && *s) {
 		if (*s & 0x80) {
@@ -181,6 +207,7 @@ int utf8s_to_utf16s(const u8 *s, int len, enum utf16_endian endian,
 			if (u >= PLANE_SIZE) {
 				if (maxlen < 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					break;
 				u -= PLANE_SIZE;
 				put_utf16(op++, SURROGATE_PAIR |
@@ -191,6 +218,9 @@ int utf8s_to_utf16s(const u8 *s, int len, enum utf16_endian endian,
 						(u & SURROGATE_BITS),
 						endian);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				maxout -= 2;
 			} else {
 				put_utf16(op++, u, endian);
@@ -200,6 +230,8 @@ int utf8s_to_utf16s(const u8 *s, int len, enum utf16_endian endian,
 			put_utf16(op++, *s++, endian);
 			inlen--;
 			maxout--;
+<<<<<<< HEAD
+=======
 =======
 				maxlen -= 2;
 			} else {
@@ -211,6 +243,7 @@ int utf8s_to_utf16s(const u8 *s, int len, enum utf16_endian endian,
 			len--;
 			maxlen--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return op - pwcs;
@@ -233,9 +266,14 @@ static inline unsigned long get_utf16(unsigned c, enum utf16_endian endian)
 int utf16s_to_utf8s(const wchar_t *pwcs, int inlen, enum utf16_endian endian,
 		u8 *s, int maxout)
 =======
+<<<<<<< HEAD
+int utf16s_to_utf8s(const wchar_t *pwcs, int inlen, enum utf16_endian endian,
+		u8 *s, int maxout)
+=======
 int utf16s_to_utf8s(const wchar_t *pwcs, int len, enum utf16_endian endian,
 		u8 *s, int maxlen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 *op;
 	int size;
@@ -245,8 +283,12 @@ int utf16s_to_utf8s(const wchar_t *pwcs, int len, enum utf16_endian endian,
 <<<<<<< HEAD
 	while (inlen > 0 && maxout > 0) {
 =======
+<<<<<<< HEAD
+	while (inlen > 0 && maxout > 0) {
+=======
 	while (len > 0 && maxlen > 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u = get_utf16(*pwcs, endian);
 		if (!u)
 			break;
@@ -254,8 +296,12 @@ int utf16s_to_utf8s(const wchar_t *pwcs, int len, enum utf16_endian endian,
 <<<<<<< HEAD
 		inlen--;
 =======
+<<<<<<< HEAD
+		inlen--;
+=======
 		len--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (u > 0x7f) {
 			if ((u & SURROGATE_MASK) == SURROGATE_PAIR) {
 				if (u & SURROGATE_LOW) {
@@ -265,8 +311,12 @@ int utf16s_to_utf8s(const wchar_t *pwcs, int len, enum utf16_endian endian,
 <<<<<<< HEAD
 				if (inlen <= 0)
 =======
+<<<<<<< HEAD
+				if (inlen <= 0)
+=======
 				if (len <= 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					break;
 				v = get_utf16(*pwcs, endian);
 				if ((v & SURROGATE_MASK) != SURROGATE_PAIR ||
@@ -282,20 +332,31 @@ int utf16s_to_utf8s(const wchar_t *pwcs, int len, enum utf16_endian endian,
 			}
 			size = utf32_to_utf8(u, op, maxout);
 =======
+<<<<<<< HEAD
+				inlen--;
+			}
+			size = utf32_to_utf8(u, op, maxout);
+=======
 				len--;
 			}
 			size = utf32_to_utf8(u, op, maxlen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (size == -1) {
 				/* Ignore character and move on */
 			} else {
 				op += size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				maxout -= size;
 			}
 		} else {
 			*op++ = (u8) u;
 			maxout--;
+<<<<<<< HEAD
+=======
 =======
 				maxlen -= size;
 			}
@@ -303,6 +364,7 @@ int utf16s_to_utf8s(const wchar_t *pwcs, int len, enum utf16_endian endian,
 			*op++ = (u8) u;
 			maxlen--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return op - s;

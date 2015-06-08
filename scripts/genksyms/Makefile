@@ -3,6 +3,9 @@ hostprogs-y	:= genksyms
 always		:= $(hostprogs-y)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 genksyms-objs	:= genksyms.o parse.tab.o lex.lex.o
 
 # -I needed for generated C source (shipped source)
@@ -13,6 +16,8 @@ HOSTCFLAGS_lex.lex.o := -I$(src)
 $(obj)/lex.lex.o: $(obj)/keywords.hash.c $(obj)/parse.tab.h
 
 clean-files	:= keywords.hash.c lex.lex.c parse.tab.c parse.tab.h
+<<<<<<< HEAD
+=======
 =======
 genksyms-objs	:= genksyms.o parse.o lex.o
 
@@ -64,3 +69,4 @@ endif
 
 targets += keywords.c lex.c parse.c parse.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

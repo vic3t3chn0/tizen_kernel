@@ -1914,6 +1914,13 @@ static struct usb_driver irda_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(irda_driver);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /************************* MODULE CALLBACKS *************************/
 /*
  * Deal with module insertion/removal
@@ -1949,6 +1956,10 @@ static void __exit usb_irda_cleanup(void)
 module_exit(usb_irda_cleanup);
 
 /*------------------------------------------------------------------*/
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Module parameters
  */

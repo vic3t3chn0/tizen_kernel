@@ -31,6 +31,9 @@ struct address_space;
  * a page, though if it is a pagecache page, rmap structures can tell us
  * who is mapping it.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The objects in struct page are organized in double word blocks in
  * order to allows us to use atomic double word operations on portions
@@ -111,6 +114,8 @@ struct page {
 
 	/* Remainder is not double word aligned */
 	union {
+<<<<<<< HEAD
+=======
 =======
  */
 struct page {
@@ -144,6 +149,7 @@ struct page {
 	union {
 	    struct {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long private;		/* Mapping-private opaque data:
 					 	 * usually used for buffer_heads
 						 * if PagePrivate set; used for
@@ -152,6 +158,9 @@ struct page {
 						 * system if PG_buddy is set.
 						 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if USE_SPLIT_PTLOCKS
 		spinlock_t ptl;
 #endif
@@ -159,6 +168,8 @@ struct page {
 		struct page *first_page;	/* Compound tail pages */
 	};
 
+<<<<<<< HEAD
+=======
 =======
 		struct address_space *mapping;	/* If low bit clear, points to
 						 * inode address_space, or NULL.
@@ -182,6 +193,7 @@ struct page {
 					 * protected by zone->lru_lock !
 					 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * On machines where all RAM is mapped into kernel address space,
 	 * we can simply calculate the virtual address. On machines with
@@ -208,6 +220,9 @@ struct page {
 	void *shadow;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 /*
  * The struct page can be forced to be double word aligned so that atomic ops
@@ -227,8 +242,11 @@ struct page_frag {
 	__u16 offset;
 	__u16 size;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 typedef unsigned long __nocast vm_flags_t;
@@ -315,10 +333,13 @@ struct vm_area_struct {
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ZRAM_FOR_ANDROID
 	int vma_swap_done;
 #endif /* CONFIG_ZRAM_FOR_ANDROID */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct core_thread {
@@ -341,6 +362,11 @@ enum {
 };
 
 =======
+<<<<<<< HEAD
+	NR_MM_COUNTERS
+};
+
+=======
 #ifdef CONFIG_LOWMEM_CHECK
 	MM_FILE_LOWPAGES, /* pages from lower zones in file rss*/
 	MM_ANON_LOWPAGES, /* pages from lower zones in anon rss*/
@@ -354,6 +380,7 @@ enum {
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if USE_SPLIT_PTLOCKS && defined(CONFIG_MMU)
 #define SPLIT_RSS_COUNTING
 /* per-thread cached information, */
@@ -399,6 +426,9 @@ struct mm_struct {
 	unsigned long hiwater_vm;	/* High-water virtual memory usage */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long total_vm;		/* Total pages mapped */
 	unsigned long locked_vm;	/* Pages that have PG_mlocked set */
 	unsigned long pinned_vm;	/* Refcount permanently increased */
@@ -408,10 +438,13 @@ struct mm_struct {
 	unsigned long reserved_vm;	/* VM_RESERVED|VM_IO pages */
 	unsigned long def_flags;
 	unsigned long nr_ptes;		/* Page table pages */
+<<<<<<< HEAD
+=======
 =======
 	unsigned long total_vm, locked_vm, shared_vm, exec_vm;
 	unsigned long stack_vm, reserved_vm, def_flags, nr_ptes;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long start_code, end_code, start_data, end_data;
 	unsigned long start_brk, brk, start_stack;
 	unsigned long arg_start, arg_end, env_start, env_end;
@@ -433,6 +466,8 @@ struct mm_struct {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Swap token stuff */
 	/*
 	 * Last value of global fault stamp as seen by this process.
@@ -448,6 +483,7 @@ struct mm_struct {
 	atomic_t oom_disable_count;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags; /* Must use atomic bitops to access the bits */
 
 	struct core_state *core_state; /* coredumping support */
@@ -483,10 +519,13 @@ struct mm_struct {
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ZRAM_FOR_ANDROID
 	int mm_swap_done;
 #endif /* CONFIG_ZRAM_FOR_ANDROID */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void mm_init_cpumask(struct mm_struct *mm)

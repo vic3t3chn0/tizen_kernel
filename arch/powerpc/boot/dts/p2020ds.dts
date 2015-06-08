@@ -12,13 +12,19 @@
 <<<<<<< HEAD
 /include/ "fsl/p2020si-pre.dtsi"
 =======
+<<<<<<< HEAD
+/include/ "fsl/p2020si-pre.dtsi"
+=======
 /include/ "p2020si.dtsi"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 / {
 	model = "fsl,P2020DS";
 	compatible = "fsl,P2020DS";
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	aliases {
@@ -34,6 +40,7 @@
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memory {
 		device_type = "memory";
 	};
@@ -41,9 +48,13 @@
 <<<<<<< HEAD
 	board_lbc: lbc: localbus@ffe05000 {
 =======
+<<<<<<< HEAD
+	board_lbc: lbc: localbus@ffe05000 {
+=======
 	localbus@ffe05000 {
 		compatible = "fsl,elbc", "simple-bus";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ranges = <0x0 0x0 0x0 0xe8000000 0x08000000
 			  0x1 0x0 0x0 0xe0000000 0x08000000
 			  0x2 0x0 0x0 0xffa00000 0x00040000
@@ -52,6 +63,9 @@
 			  0x5 0x0 0x0 0xffa80000 0x00040000
 			  0x6 0x0 0x0 0xffac0000 0x00040000>;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg = <0 0xffe05000 0 0x1000>;
 	};
 
@@ -64,6 +78,8 @@
 			  0x1000000 0x0 0x00000000 0 0xffc00000 0x0 0x10000>;
 		reg = <0 0xffe08000 0 0x1000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 
 		nor@0,0 {
@@ -258,6 +274,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0x80000000
 				  0x2000000 0x0 0x80000000
 				  0x0 0x20000000
@@ -269,11 +286,16 @@
 	};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	board_pci1: pci1: pcie@ffe09000 {
 		ranges = <0x2000000 0x0 0xa0000000 0 0xa0000000 0x0 0x20000000
 			  0x1000000 0x0 0x00000000 0 0xffc10000 0x0 0x10000>;
 		reg = <0 0xffe09000 0 0x1000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 	pci1: pcie@ffe09000 {
 		ranges = <0x2000000 0x0 0xa0000000 0 0xa0000000 0x0 0x20000000
@@ -331,6 +353,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xa0000000
 				  0x2000000 0x0 0xa0000000
 				  0x0 0x20000000
@@ -339,6 +362,9 @@
 				  0x1000000 0x0 0x0
 				  0x0 0x10000>;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		};
 	};
 
@@ -347,6 +373,8 @@
 			  0x1000000 0x0 0x00000000 0 0xffc20000 0x0 0x10000>;
 		reg = <0 0xffe0a000 0 0x1000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 			uli1575@0 {
 				reg = <0x0 0x0 0x0 0x0 0x0>;
@@ -432,6 +460,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xc0000000
 				  0x2000000 0x0 0xc0000000
 				  0x0 0x20000000
@@ -443,6 +472,9 @@
 	};
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * p2020ds.dtsi must be last to ensure board_pci0 overrides pci0 settings
@@ -451,5 +483,8 @@
 
 /include/ "fsl/p2020si-post.dtsi"
 /include/ "p2020ds.dtsi"
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

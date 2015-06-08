@@ -35,8 +35,12 @@ static void master_clk_init(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops sh7203_master_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops sh7203_master_clk_ops = {
+=======
 static struct clk_ops sh7203_master_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init		= master_clk_init,
 };
 
@@ -49,8 +53,12 @@ static unsigned long module_clk_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops sh7203_module_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops sh7203_module_clk_ops = {
+=======
 static struct clk_ops sh7203_module_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= module_clk_recalc,
 };
 
@@ -61,6 +69,9 @@ static unsigned long bus_clk_recalc(struct clk *clk)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_clk_ops sh7203_bus_clk_ops = {
 	.recalc		= bus_clk_recalc,
 };
@@ -70,6 +81,8 @@ static struct sh_clk_ops sh7203_cpu_clk_ops = {
 };
 
 static struct sh_clk_ops *sh7203_clk_ops[] = {
+<<<<<<< HEAD
+=======
 =======
 static struct clk_ops sh7203_bus_clk_ops = {
 	.recalc		= bus_clk_recalc,
@@ -81,6 +94,7 @@ static struct clk_ops sh7203_cpu_clk_ops = {
 
 static struct clk_ops *sh7203_clk_ops[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&sh7203_master_clk_ops,
 	&sh7203_module_clk_ops,
 	&sh7203_bus_clk_ops,
@@ -90,8 +104,12 @@ static struct clk_ops *sh7203_clk_ops[] = {
 <<<<<<< HEAD
 void __init arch_init_clk_ops(struct sh_clk_ops **ops, int idx)
 =======
+<<<<<<< HEAD
+void __init arch_init_clk_ops(struct sh_clk_ops **ops, int idx)
+=======
 void __init arch_init_clk_ops(struct clk_ops **ops, int idx)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (test_mode_pin(MODE_PIN1))
 		pll2_mult = 4;

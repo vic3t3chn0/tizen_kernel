@@ -8,6 +8,8 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * EP93xx Physical Memory Map:
  *
  * The ASDO pin is sampled at system reset to select a synchronous or
@@ -43,6 +45,7 @@
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * EP93xx linux memory map:
  *
  * virt		phys		size
@@ -65,6 +68,9 @@
 #define EP93XX_APB_PHYS(x)		(EP93XX_APB_PHYS_BASE + (x))
 #define EP93XX_APB_IOMEM(x)		IOMEM(EP93XX_APB_VIRT_BASE + (x))
 
+<<<<<<< HEAD
+/* APB UARTs */
+=======
 <<<<<<< HEAD
 /* APB UARTs */
 =======
@@ -120,6 +126,7 @@
 #define EP93XX_IRDA_BASE		EP93XX_APB_IOMEM(0x000b0000)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EP93XX_UART1_PHYS_BASE		EP93XX_APB_PHYS(0x000c0000)
 #define EP93XX_UART1_BASE		EP93XX_APB_IOMEM(0x000c0000)
 
@@ -129,6 +136,8 @@
 #define EP93XX_UART3_PHYS_BASE		EP93XX_APB_PHYS(0x000e0000)
 #define EP93XX_UART3_BASE		EP93XX_APB_IOMEM(0x000e0000)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define EP93XX_KEY_MATRIX_PHYS_BASE	EP93XX_APB_PHYS(0x000f0000)
@@ -236,4 +245,5 @@
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

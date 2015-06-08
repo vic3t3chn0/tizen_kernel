@@ -30,7 +30,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/errno.h>
@@ -39,8 +43,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/ioport.h>
 #include <linux/clk.h>
@@ -153,8 +161,11 @@ int clk_set_rate(struct clk *clk, unsigned long rate)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	if (IS_ERR(clk))
@@ -175,10 +186,16 @@ int clk_set_rate(struct clk *clk, unsigned long rate)
 	ret = (clk->ops->set_rate)(clk, rate);
 	spin_unlock(&clocks_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&clocks_lock);
+	ret = (clk->ops->set_rate)(clk, rate);
+	spin_unlock(&clocks_lock);
+=======
 	spin_lock_irqsave(&clocks_lock, flags);
 	ret = (clk->ops->set_rate)(clk, rate);
 	spin_unlock_irqrestore(&clocks_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -192,8 +209,11 @@ int clk_set_parent(struct clk *clk, struct clk *parent)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (IS_ERR(clk))
@@ -202,8 +222,12 @@ int clk_set_parent(struct clk *clk, struct clk *parent)
 <<<<<<< HEAD
 	spin_lock(&clocks_lock);
 =======
+<<<<<<< HEAD
+	spin_lock(&clocks_lock);
+=======
 	spin_lock_irqsave(&clocks_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (clk->ops && clk->ops->set_parent)
 		ret = (clk->ops->set_parent)(clk, parent);
@@ -211,8 +235,12 @@ int clk_set_parent(struct clk *clk, struct clk *parent)
 <<<<<<< HEAD
 	spin_unlock(&clocks_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&clocks_lock);
+=======
 	spin_unlock_irqrestore(&clocks_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -241,8 +269,11 @@ struct clk clk_xtal = {
 	.name		= "xtal",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rate		= 0,
 	.parent		= NULL,
 	.ctrlbit	= 0,
@@ -252,24 +283,33 @@ struct clk clk_ext = {
 	.name		= "ext",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct clk clk_epll = {
 	.name		= "epll",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct clk clk_mpll = {
 	.name		= "mpll",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops		= &clk_ops_def_setrate,
 };
 
@@ -277,8 +317,11 @@ struct clk clk_upll = {
 	.name		= "upll",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.parent		= NULL,
 	.ctrlbit	= 0,
 };
@@ -287,8 +330,11 @@ struct clk clk_f = {
 	.name		= "fclk",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rate		= 0,
 	.parent		= &clk_mpll,
 	.ctrlbit	= 0,
@@ -298,8 +344,11 @@ struct clk clk_h = {
 	.name		= "hclk",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rate		= 0,
 	.parent		= NULL,
 	.ctrlbit	= 0,
@@ -310,8 +359,11 @@ struct clk clk_p = {
 	.name		= "pclk",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rate		= 0,
 	.parent		= NULL,
 	.ctrlbit	= 0,
@@ -322,8 +374,11 @@ struct clk clk_usb_bus = {
 	.name		= "usb-bus",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rate		= 0,
 	.parent		= &clk_upll,
 };
@@ -333,8 +388,11 @@ struct clk s3c24xx_uclk = {
 	.name		= "uclk",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* initialise the clock system */
@@ -349,9 +407,12 @@ int s3c24xx_register_clock(struct clk *clk)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long flags;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (clk->enable == NULL)
 		clk->enable = clk_null_enable;
 
@@ -363,11 +424,14 @@ int s3c24xx_register_clock(struct clk *clk)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spin_lock_irqsave(&clocks_lock, flags);
 	list_add_tail(&clk->list, &clocks);
 	spin_unlock_irqrestore(&clocks_lock, flags);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -479,8 +543,12 @@ static int clk_debugfs_register_one(struct clk *c)
 <<<<<<< HEAD
 	p += sprintf(p, "%s", c->devname);
 =======
+<<<<<<< HEAD
+	p += sprintf(p, "%s", c->devname);
+=======
 	p += sprintf(p, "%s", c->devname ?: c->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	d = debugfs_create_dir(s, pa ? pa->dent : clk_debugfs_root);
 	if (!d)

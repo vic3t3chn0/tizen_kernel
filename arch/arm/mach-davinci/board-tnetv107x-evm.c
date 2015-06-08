@@ -147,8 +147,12 @@ static struct davinci_nand_pdata nand_config = {
 <<<<<<< HEAD
 	.bbt_options	= NAND_BBT_USE_FLASH,
 =======
+<<<<<<< HEAD
+	.bbt_options	= NAND_BBT_USE_FLASH,
+=======
 	.options	= NAND_USE_FLASH_BBT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ecc_bits	= 1,
 };
 
@@ -284,8 +288,12 @@ MACHINE_START(TNETV107X, "TNETV107X EVM")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= (TNETV107X_DDR_BASE + 0x100),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= tnetv107x_init,
 	.init_irq	= cp_intc_init,
 	.timer		= &davinci_timer,
@@ -294,5 +302,10 @@ MACHINE_START(TNETV107X, "TNETV107X EVM")
 	.dma_zone_size	= SZ_128M,
 	.restart	= tnetv107x_restart,
 =======
+<<<<<<< HEAD
+	.dma_zone_size	= SZ_128M,
+	.restart	= tnetv107x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

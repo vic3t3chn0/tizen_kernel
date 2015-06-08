@@ -376,8 +376,12 @@ static const struct snd_soc_dapm_widget uda1380_dapm_widgets[] = {
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route uda1380_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route uda1380_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* output mux */
 	{"HeadPhone Driver", NULL, "Output Mux"},
@@ -416,6 +420,8 @@ static const struct snd_soc_dapm_route audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int uda1380_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -428,6 +434,7 @@ static int uda1380_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int uda1380_set_dai_fmt_both(struct snd_soc_dai *codec_dai,
 		unsigned int fmt)
 {
@@ -653,8 +660,12 @@ static int uda1380_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops uda1380_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops uda1380_dai_ops = {
+=======
 static struct snd_soc_dai_ops uda1380_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= uda1380_pcm_hw_params,
 	.shutdown	= uda1380_pcm_shutdown,
 	.trigger	= uda1380_trigger,
@@ -664,8 +675,12 @@ static struct snd_soc_dai_ops uda1380_dai_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops uda1380_dai_ops_playback = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops uda1380_dai_ops_playback = {
+=======
 static struct snd_soc_dai_ops uda1380_dai_ops_playback = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= uda1380_pcm_hw_params,
 	.shutdown	= uda1380_pcm_shutdown,
 	.trigger	= uda1380_trigger,
@@ -675,8 +690,12 @@ static struct snd_soc_dai_ops uda1380_dai_ops_playback = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops uda1380_dai_ops_capture = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops uda1380_dai_ops_capture = {
+=======
 static struct snd_soc_dai_ops uda1380_dai_ops_capture = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= uda1380_pcm_hw_params,
 	.shutdown	= uda1380_pcm_shutdown,
 	.trigger	= uda1380_trigger,
@@ -727,8 +746,12 @@ static struct snd_soc_dai_driver uda1380_dai[] = {
 <<<<<<< HEAD
 static int uda1380_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int uda1380_suspend(struct snd_soc_codec *codec)
+=======
 static int uda1380_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	uda1380_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -756,6 +779,9 @@ static int uda1380_probe(struct snd_soc_codec *codec)
 
 	if (gpio_is_valid(pdata->gpio_reset)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = gpio_request_one(pdata->gpio_reset, GPIOF_OUT_INIT_LOW,
 				       "uda1380 reset");
 		if (ret)
@@ -771,6 +797,8 @@ static int uda1380_probe(struct snd_soc_codec *codec)
 		ret = uda1380_reset(codec);
 		if (ret)
 			goto err_free_gpio;
+<<<<<<< HEAD
+=======
 =======
 		ret = gpio_request(pdata->gpio_reset, "uda1380 reset");
 		if (ret)
@@ -794,6 +822,7 @@ static int uda1380_probe(struct snd_soc_codec *codec)
 			goto err_reset;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	INIT_WORK(&uda1380->work, uda1380_flush_work);
@@ -816,6 +845,11 @@ static int uda1380_probe(struct snd_soc_codec *codec)
 
 err_free_gpio:
 =======
+<<<<<<< HEAD
+	return 0;
+
+err_free_gpio:
+=======
 	snd_soc_add_controls(codec, uda1380_snd_controls,
 				ARRAY_SIZE(uda1380_snd_controls));
 	uda1380_add_widgets(codec);
@@ -830,6 +864,7 @@ err_gpio_power_conf:
 err_gpio_reset_conf:
 err_gpio:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (gpio_is_valid(pdata->gpio_reset))
 		gpio_free(pdata->gpio_reset);
 err_out:
@@ -862,6 +897,9 @@ static struct snd_soc_codec_driver soc_codec_dev_uda1380 = {
 	.reg_cache_default = uda1380_reg,
 	.reg_cache_step = 1,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = uda1380_snd_controls,
 	.num_controls = ARRAY_SIZE(uda1380_snd_controls),
@@ -869,8 +907,11 @@ static struct snd_soc_codec_driver soc_codec_dev_uda1380 = {
 	.num_dapm_widgets = ARRAY_SIZE(uda1380_dapm_widgets),
 	.dapm_routes = uda1380_dapm_routes,
 	.num_dapm_routes = ARRAY_SIZE(uda1380_dapm_routes),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
@@ -884,8 +925,13 @@ static __devinit int uda1380_i2c_probe(struct i2c_client *i2c,
 	uda1380 = devm_kzalloc(&i2c->dev, sizeof(struct uda1380_priv),
 			       GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	uda1380 = devm_kzalloc(&i2c->dev, sizeof(struct uda1380_priv),
+			       GFP_KERNEL);
+=======
 	uda1380 = kzalloc(sizeof(struct uda1380_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (uda1380 == NULL)
 		return -ENOMEM;
 
@@ -896,9 +942,12 @@ static __devinit int uda1380_i2c_probe(struct i2c_client *i2c,
 			&soc_codec_dev_uda1380, uda1380_dai, ARRAY_SIZE(uda1380_dai));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ret < 0)
 		kfree(uda1380);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -907,8 +956,11 @@ static int __devexit uda1380_i2c_remove(struct i2c_client *i2c)
 	snd_soc_unregister_codec(&i2c->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(i2c));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -934,8 +986,12 @@ static int __init uda1380_modinit(void)
 <<<<<<< HEAD
 	int ret = 0;
 =======
+<<<<<<< HEAD
+	int ret = 0;
+=======
 	int ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	ret = i2c_add_driver(&uda1380_i2c_driver);
 	if (ret != 0)
@@ -944,8 +1000,12 @@ static int __init uda1380_modinit(void)
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_init(uda1380_modinit);
 

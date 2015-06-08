@@ -22,6 +22,10 @@
 #include <linux/quotaops.h>
 #include "ext3.h"
 =======
+<<<<<<< HEAD
+#include <linux/quotaops.h>
+#include "ext3.h"
+=======
 #include <linux/time.h>
 #include <linux/fs.h>
 #include <linux/jbd.h>
@@ -29,6 +33,7 @@
 #include <linux/ext3_fs.h>
 #include <linux/ext3_jbd.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xattr.h"
 #include "acl.h"
 
@@ -78,8 +83,11 @@ const struct file_operations ext3_file_operations = {
 const struct inode_operations ext3_file_inode_operations = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.truncate	= ext3_truncate,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.setattr	= ext3_setattr,
 #ifdef CONFIG_EXT3_FS_XATTR
 	.setxattr	= generic_setxattr,
@@ -90,8 +98,12 @@ const struct inode_operations ext3_file_inode_operations = {
 <<<<<<< HEAD
 	.get_acl	= ext3_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl	= ext3_get_acl,
+=======
 	.check_acl	= ext3_check_acl,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fiemap		= ext3_fiemap,
 };
 

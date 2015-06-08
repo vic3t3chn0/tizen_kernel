@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/hwdep.h>
 #include <sound/pcm.h>
@@ -43,8 +47,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* Id for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for "NAME_ALLCAPS".");
@@ -782,6 +790,9 @@ static struct usb_driver snd_us122l_usb_driver = {
 <<<<<<< HEAD
 module_usb_driver(snd_us122l_usb_driver);
 =======
+<<<<<<< HEAD
+module_usb_driver(snd_us122l_usb_driver);
+=======
 
 static int __init snd_us122l_module_init(void)
 {
@@ -796,3 +807,4 @@ static void __exit snd_us122l_module_exit(void)
 module_init(snd_us122l_module_init)
 module_exit(snd_us122l_module_exit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

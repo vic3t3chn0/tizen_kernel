@@ -18,13 +18,30 @@
 
 #include <linux/moduleparam.h>
 #include <linux/errno.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/of.h>
+#include <linux/mmc/sdio_func.h>
+
+=======
 //#include <linux/of.h>
 #include <linux/mmc/sdio_func.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+//#include <linux/of.h>
+#include <linux/mmc/sdio_func.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "core.h"
 #include "cfg80211.h"
 #include "target.h"
 #include "debug.h"
 #include "hif-ops.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "pm.h"
 #include <linux/vmalloc.h>
 
@@ -67,6 +84,10 @@ module_param(reg_domain, ushort, 0644);
 module_param(lrssi, ushort, 0644);
 module_param(en_ani, ushort, 0644);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct ath6kl_hw hw_list[] = {
 	{
@@ -115,7 +136,15 @@ static const struct ath6kl_hw hw_list[] = {
 		},
 
 		.fw_board		= AR6003_HW_2_1_1_BOARD_DATA_FILE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.fw_default_board = AR6003_HW_2_1_1_DEFAULT_BOARD_DATA_FILE,
+=======
 		.fw_default_board	= AR6003_HW_2_1_1_DEFAULT_BOARD_DATA_FILE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.fw_default_board	= AR6003_HW_2_1_1_DEFAULT_BOARD_DATA_FILE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.id				= AR6004_HW_1_0_VERSION,
@@ -184,6 +213,11 @@ static const struct ath6kl_hw hw_list[] = {
 
 
 #define ATH6KL_DATA_OFFSET    64
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef char            A_CHAR;
 extern int android_readwrite_file(const A_CHAR *filename, A_CHAR *rbuf, const A_CHAR *wbuf, size_t length);
@@ -244,6 +278,10 @@ static int ath6kl_set_reg_dmn(struct ath6kl *ar)
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sk_buff *ath6kl_buf_alloc(int size)
 {
 	struct sk_buff *skb;
@@ -452,11 +490,21 @@ static int ath6kl_set_htc_params(struct ath6kl *ar, u32 mbox_isr_yield_val,
 		blk_size |=  ((u32)htc_ctrl_buf) << 16;
 
 	/* set the host interest area for the block size */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = ath6kl_bmi_write_hi32(ar, hi_mbox_io_block_sz, blk_size);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = ath6kl_bmi_write(ar,
 			ath6kl_get_hi_item_addr(ar,
 			HI_ITEM(hi_mbox_io_block_sz)),
 			(u8 *)&blk_size,
 			4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status) {
 		ath6kl_err("bmi_write_memory for IO block size failed\n");
 		goto out;
@@ -468,11 +516,22 @@ static int ath6kl_set_htc_params(struct ath6kl *ar, u32 mbox_isr_yield_val,
 
 	if (mbox_isr_yield_val) {
 		/* set the host interest area for the mbox ISR yield limit */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		status = ath6kl_bmi_write_hi32(ar, hi_mbox_isr_yield_limit,
+					       mbox_isr_yield_val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = ath6kl_bmi_write(ar,
 				ath6kl_get_hi_item_addr(ar,
 				HI_ITEM(hi_mbox_isr_yield_limit)),
 				(u8 *)&mbox_isr_yield_val,
 				4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (status) {
 			ath6kl_err("bmi_write_memory for yield limit failed\n");
 			goto out;
@@ -485,16 +544,80 @@ out:
 
 static int ath6kl_target_config_wlan_params(struct ath6kl *ar, int idx)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int status = 0;
 	int ret;
 #ifdef CONFIG_MACH_PX
 	struct ath6kl_vif *vif = ath6kl_get_vif_by_index(ar, idx);
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Configure the device for rx dot11 header rules. "0,0" are the
 	 * default values. Required if checksum offload is needed. Set
 	 * RxMetaVersion to 2.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = ath6kl_wmi_set_rx_frame_format_cmd(ar->wmi, idx,
+						 ar->rx_meta_ver, 0, 0);
+	if (ret) {
+		ath6kl_err("unable to set the rx frame format: %d\n", ret);
+		return ret;
+	}
+
+	if (ar->conf_flags & ATH6KL_CONF_IGNORE_PS_FAIL_EVT_IN_SCAN) {
+		ret = ath6kl_wmi_pmparams_cmd(ar->wmi, idx, 0, 1, 0, 0, 1,
+					      IGNORE_PS_FAIL_DURING_SCAN);
+		if (ret) {
+			ath6kl_err("unable to set power save fail event policy: %d\n",
+				   ret);
+			return ret;
+		}
+	}
+
+	if (!(ar->conf_flags & ATH6KL_CONF_IGNORE_ERP_BARKER)) {
+		ret = ath6kl_wmi_set_lpreamble_cmd(ar->wmi, idx, 0,
+						   WMI_FOLLOW_BARKER_IN_ERP);
+		if (ret) {
+			ath6kl_err("unable to set barker preamble policy: %d\n",
+				   ret);
+			return ret;
+		}
+	}
+
+	ret = ath6kl_wmi_set_keepalive_cmd(ar->wmi, idx,
+					   WLAN_CONFIG_KEEP_ALIVE_INTERVAL);
+	if (ret) {
+		ath6kl_err("unable to set keep alive interval: %d\n", ret);
+		return ret;
+	}
+
+	ret = ath6kl_wmi_disctimeout_cmd(ar->wmi, idx,
+					 WLAN_CONFIG_DISCONNECT_TIMEOUT);
+	if (ret) {
+		ath6kl_err("unable to set disconnect timeout: %d\n", ret);
+		return ret;
+	}
+
+	if (!(ar->conf_flags & ATH6KL_CONF_ENABLE_TX_BURST)) {
+		ret = ath6kl_wmi_set_wmm_txop(ar->wmi, idx, WMI_TXOP_DISABLED);
+		if (ret) {
+			ath6kl_err("unable to set txop bursting: %d\n", ret);
+			return ret;
+		}
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ath6kl_wmi_set_rx_frame_format_cmd(ar->wmi, idx,
 					       ar->rx_meta_ver, 0, 0)) {
 		ath6kl_err("unable to set the rx frame format\n");
@@ -551,6 +674,10 @@ static int ath6kl_target_config_wlan_params(struct ath6kl *ar, int idx)
 			ath6kl_err("unable to set txop bursting\n");
 			status = -EIO;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ar->p2p && (ar->vif_max == 1 || idx)) {
 		ret = ath6kl_wmi_info_req_cmd(ar->wmi, idx,
@@ -561,7 +688,15 @@ static int ath6kl_target_config_wlan_params(struct ath6kl *ar, int idx)
 			ath6kl_dbg(ATH6KL_DBG_TRC, "failed to request P2P "
 				   "capabilities (%d) - assuming P2P not "
 				   "supported\n", ret);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ar->p2p = false;
+=======
 			ar->p2p = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ar->p2p = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -574,6 +709,12 @@ static int ath6kl_target_config_wlan_params(struct ath6kl *ar, int idx)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MACH_PX
 	if (vif->nw_type == INFRA_NETWORK) {
 		ath6kl_dbg(ATH6KL_DBG_TRC, "AR6K: bg scan interval = %d, active dwell time = %d, passive dwell time = %d\n",
@@ -596,6 +737,10 @@ static int ath6kl_target_config_wlan_params(struct ath6kl *ar, int idx)
 	}
 #endif
 	return status;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int ath6kl_configure_target(struct ath6kl *ar)
@@ -604,9 +749,20 @@ int ath6kl_configure_target(struct ath6kl *ar)
 	u8 fw_iftype, fw_mode = 0, fw_submode = 0;
 	int i, status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	param = !!(ar->conf_flags & ATH6KL_CONF_UART_DEBUG);
+	if (ath6kl_bmi_write_hi32(ar, hi_serial_enable, param)) {
+=======
 	param = uart_debug;
 	if (ath6kl_bmi_write(ar, ath6kl_get_hi_item_addr(ar,
 			     HI_ITEM(hi_serial_enable)), (u8 *)&param, 4)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	param = uart_debug;
+	if (ath6kl_bmi_write(ar, ath6kl_get_hi_item_addr(ar,
+			     HI_ITEM(hi_serial_enable)), (u8 *)&param, 4)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_err("bmi_write_memory for uart debug failed\n");
 		return -EIO;
 	}
@@ -642,11 +798,22 @@ int ath6kl_configure_target(struct ath6kl *ar)
 	if (ar->p2p && ar->vif_max == 1)
 		fw_submode = HI_OPTION_FW_SUBMODE_P2PDEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ath6kl_bmi_write_hi32(ar, hi_app_host_interest,
+				  HTC_PROTOCOL_VERSION) != 0) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param = HTC_PROTOCOL_VERSION;
 	if (ath6kl_bmi_write(ar,
 			     ath6kl_get_hi_item_addr(ar,
 			     HI_ITEM(hi_app_host_interest)),
 			     (u8 *)&param, 4) != 0) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_err("bmi_write_memory for htc version failed\n");
 		return -EIO;
 	}
@@ -654,10 +821,20 @@ int ath6kl_configure_target(struct ath6kl *ar)
 	/* set the firmware mode to STA/IBSS/AP */
 	param = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ath6kl_bmi_read_hi32(ar, hi_option_flag, &param) != 0) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ath6kl_bmi_read(ar,
 			    ath6kl_get_hi_item_addr(ar,
 			    HI_ITEM(hi_option_flag)),
 			    (u8 *)&param, 4) != 0) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_err("bmi_read_memory for setting fwmode failed\n");
 		return -EIO;
 	}
@@ -669,11 +846,21 @@ int ath6kl_configure_target(struct ath6kl *ar)
 	param |= (0 << HI_OPTION_MAC_ADDR_METHOD_SHIFT);
 	param |= (0 << HI_OPTION_FW_BRIDGE_SHIFT);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ath6kl_bmi_write_hi32(ar, hi_option_flag, param) != 0) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ath6kl_bmi_write(ar,
 			     ath6kl_get_hi_item_addr(ar,
 			     HI_ITEM(hi_option_flag)),
 			     (u8 *)&param,
 			     4) != 0) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_err("bmi_write_memory for setting fwmode failed\n");
 		return -EIO;
 	}
@@ -692,16 +879,37 @@ int ath6kl_configure_target(struct ath6kl *ar)
 	param = ar->hw.board_ext_data_addr;
 	ram_reserved_size = ar->hw.reserved_ram_size;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ath6kl_bmi_write_hi32(ar, hi_board_ext_data, param) != 0) {
+=======
 	if (ath6kl_bmi_write(ar, ath6kl_get_hi_item_addr(ar,
 					HI_ITEM(hi_board_ext_data)),
 			     (u8 *)&param, 4) != 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ath6kl_bmi_write(ar, ath6kl_get_hi_item_addr(ar,
+					HI_ITEM(hi_board_ext_data)),
+			     (u8 *)&param, 4) != 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_err("bmi_write_memory for hi_board_ext_data failed\n");
 		return -EIO;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ath6kl_bmi_write_hi32(ar, hi_end_ram_reserve_sz,
+				  ram_reserved_size) != 0) {
+=======
 	if (ath6kl_bmi_write(ar, ath6kl_get_hi_item_addr(ar,
 					HI_ITEM(hi_end_ram_reserve_sz)),
 			     (u8 *)&ram_reserved_size, 4) != 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ath6kl_bmi_write(ar, ath6kl_get_hi_item_addr(ar,
+					HI_ITEM(hi_end_ram_reserve_sz)),
+			     (u8 *)&ram_reserved_size, 4) != 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_err("bmi_write_memory for hi_end_ram_reserve_sz failed\n");
 		return -EIO;
 	}
@@ -712,26 +920,52 @@ int ath6kl_configure_target(struct ath6kl *ar)
 		return -EIO;
 
 	/* Configure GPIO AR600x UART */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = ath6kl_bmi_write_hi32(ar, hi_dbg_uart_txpin,
+				       ar->hw.uarttx_pin);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param = ar->hw.uarttx_pin;
 	status = ath6kl_bmi_write(ar,
 				ath6kl_get_hi_item_addr(ar,
 				HI_ITEM(hi_dbg_uart_txpin)),
 				(u8 *)&param, 4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status)
 		return status;
 
 	/* Configure target refclk_hz */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = ath6kl_bmi_write_hi32(ar, hi_refclk_hz, ar->hw.refclk_hz);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param =  ar->hw.refclk_hz;
 	status = ath6kl_bmi_write(ar,
 				ath6kl_get_hi_item_addr(ar,
 				HI_ITEM(hi_refclk_hz)),
 				(u8 *)&param, 4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status)
 		return status;
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ath6kl_core_free(struct ath6kl *ar)
 {
 	wiphy_free(ar->wiphy);
@@ -763,6 +997,10 @@ void ath6kl_core_cleanup(struct ath6kl *ar)
 	ath6kl_deinit_ieee80211_hw(ar);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* firmware upload */
 static int ath6kl_get_fw(struct ath6kl *ar, const char *filename,
 			 u8 **fw, size_t *fw_len)
@@ -775,19 +1013,42 @@ static int ath6kl_get_fw(struct ath6kl *ar, const char *filename,
 		return ret;
 
 	*fw_len = fw_entry->size;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	*fw = kmemdup(fw_entry->data, fw_entry->size, GFP_KERNEL);
+=======
 	*fw = vmalloc(fw_entry->size);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	*fw = vmalloc(fw_entry->size);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (*fw == NULL)
 		ret = -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	memcpy(*fw, fw_entry->data, fw_entry->size);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	memcpy(*fw, fw_entry->data, fw_entry->size);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	release_firmware(fw_entry);
 
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #if 0
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#if 0
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OF
 /*
  * Check the device tree for a board-id and use it to construct
@@ -830,7 +1091,15 @@ static bool check_device_tree(struct ath6kl *ar)
 	return false;
 }
 #endif /* CONFIG_OF */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ath6kl_fetch_board_file(struct ath6kl *ar)
 {
 	const char *filename;
@@ -850,12 +1119,28 @@ static int ath6kl_fetch_board_file(struct ath6kl *ar)
 		/* managed to get proper board file */
 		return 0;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 #if 0
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#if 0
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (check_device_tree(ar)) {
 		/* got board file from device tree */
 		return 0;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* there was no proper board file, try to use default instead */
 	ath6kl_warn("Failed to get board file %s (%d), trying to find default board file.\n",
 		    filename, ret);
@@ -909,12 +1194,27 @@ static int ath6kl_fetch_testmode_file(struct ath6kl *ar)
 	char filename[100];
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ar->testmode == 0)
+		return 0;
+
+	ath6kl_dbg(ATH6KL_DBG_BOOT, "testmode %d\n", ar->testmode);
+
+	if (ar->testmode == 2) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (testmode == 0)
 		return 0;
 
 	ath6kl_dbg(ATH6KL_DBG_BOOT, "testmode %d\n", testmode);
 
 	if (testmode == 2) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ar->hw.fw.utf == NULL) {
 			ath6kl_warn("testmode 2 not supported\n");
 			return -EOPNOTSUPP;
@@ -937,7 +1237,15 @@ static int ath6kl_fetch_testmode_file(struct ath6kl *ar)
 	ret = ath6kl_get_fw(ar, filename, &ar->fw, &ar->fw_len);
 	if (ret) {
 		ath6kl_err("Failed to get testmode %d firmware file %s: %d\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			   ar->testmode, filename, ret);
+=======
 			   testmode, filename, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			   testmode, filename, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -999,7 +1307,15 @@ static int ath6kl_fetch_testscript_file(struct ath6kl *ar)
 	char filename[100];
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ar->testmode != 2)
+=======
 	if (testmode != 2)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (testmode != 2)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	if (ar->fw_testscript != NULL)
@@ -1009,13 +1325,29 @@ static int ath6kl_fetch_testscript_file(struct ath6kl *ar)
 		return 0;
 
 	snprintf(filename, sizeof(filename), "%s/%s",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 ar->hw.fw.dir, ar->hw.fw.testscript);
+=======
 		ar->hw.fw.dir, ar->hw.fw.testscript);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ar->hw.fw.dir, ar->hw.fw.testscript);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = ath6kl_get_fw(ar, filename, &ar->fw_testscript,
 				&ar->fw_testscript_len);
 	if (ret) {
 		ath6kl_err("Failed to get testscript file %s: %d\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			   filename, ret);
+=======
 			filename, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			filename, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -1099,48 +1431,113 @@ static int ath6kl_fetch_fw_apin(struct ath6kl *ar, const char *name)
 		switch (ie_id) {
 		case ATH6KL_FW_IE_OTP_IMAGE:
 			ath6kl_dbg(ATH6KL_DBG_BOOT, "found otp image ie (%zd B)\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				   ie_len);
+
+			ar->fw_otp = kmemdup(data, ie_len, GFP_KERNEL);
+=======
 				ie_len);
 
 			ar->fw_otp = vmalloc(ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				ie_len);
+
+			ar->fw_otp = vmalloc(ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (ar->fw_otp == NULL) {
 				ret = -ENOMEM;
 				goto out;
 			}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			memcpy(ar->fw_otp, data, ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			memcpy(ar->fw_otp, data, ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ar->fw_otp_len = ie_len;
 			break;
 		case ATH6KL_FW_IE_FW_IMAGE:
 			ath6kl_dbg(ATH6KL_DBG_BOOT, "found fw image ie (%zd B)\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				   ie_len);
+=======
 				ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* in testmode we already might have a fw file */
 			if (ar->fw != NULL)
 				break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ar->fw = kmemdup(data, ie_len, GFP_KERNEL);
+=======
 			ar->fw = vmalloc(ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ar->fw = vmalloc(ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (ar->fw == NULL) {
 				ret = -ENOMEM;
 				goto out;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			}
+
+=======
 
 			}
 			memcpy(ar->fw, data, ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+			}
+			memcpy(ar->fw, data, ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ar->fw_len = ie_len;
 			break;
 		case ATH6KL_FW_IE_PATCH_IMAGE:
 			ath6kl_dbg(ATH6KL_DBG_BOOT, "found patch image ie (%zd B)\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				   ie_len);
+
+			ar->fw_patch = kmemdup(data, ie_len, GFP_KERNEL);
+=======
 				ie_len);
 
 			ar->fw_patch = vmalloc(ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				ie_len);
+
+			ar->fw_patch = vmalloc(ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (ar->fw_patch == NULL) {
 				ret = -ENOMEM;
 				goto out;
 			}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			memcpy(ar->fw_patch, data, ie_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			memcpy(ar->fw_patch, data, ie_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ar->fw_patch_len = ie_len;
 			break;
 		case ATH6KL_FW_IE_RESERVED_RAM_SIZE:
@@ -1224,6 +1621,15 @@ out:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int ath6kl_init_fetch_firmwares(struct ath6kl *ar)
+{
+	int ret;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ath6kl_fetch_firmwares(struct ath6kl *ar)
 {
 	int ret;
@@ -1233,6 +1639,10 @@ static int ath6kl_fetch_firmwares(struct ath6kl *ar)
 		ar->hw.fw_board = AR6003_HW_2_1_1_TCMD_BOARD_DATA_FILE;
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ath6kl_fetch_board_file(ar);
 	if (ret)
 		return ret;
@@ -1281,6 +1691,19 @@ static int ath6kl_upload_board_file(struct ath6kl *ar)
 	 */
 	if (ar->hw.board_addr != 0) {
 		board_address = ar->hw.board_addr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath6kl_bmi_write_hi32(ar, hi_board_data,
+				      board_address);
+	} else {
+		ath6kl_bmi_read_hi32(ar, hi_board_data, &board_address);
+	}
+
+	/* determine where in target ram to write extended board data */
+	ath6kl_bmi_read_hi32(ar, hi_board_ext_data, &board_ext_address);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_bmi_write(ar,
 				ath6kl_get_hi_item_addr(ar,
 				HI_ITEM(hi_board_data)),
@@ -1297,6 +1720,10 @@ static int ath6kl_upload_board_file(struct ath6kl *ar)
 			ath6kl_get_hi_item_addr(ar,
 			HI_ITEM(hi_board_ext_data)),
 			(u8 *) &board_ext_address, 4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ar->target_type == TARGET_TYPE_AR6003 &&
 	    board_ext_address == 0) {
@@ -1341,10 +1768,20 @@ static int ath6kl_upload_board_file(struct ath6kl *ar)
 		/* record that extended board data is initialized */
 		param = (board_ext_data_size << 16) | 1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath6kl_bmi_write_hi32(ar, hi_board_ext_data_config, param);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath6kl_bmi_write(ar,
 				 ath6kl_get_hi_item_addr(ar,
 				 HI_ITEM(hi_board_ext_data_config)),
 				 (unsigned char *) &param, 4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (ar->fw_board_len < board_data_size) {
@@ -1365,11 +1802,21 @@ static int ath6kl_upload_board_file(struct ath6kl *ar)
 	}
 
 	/* record the fact that Board Data IS initialized */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath6kl_bmi_write_hi32(ar, hi_board_data_initialized, 1);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param = 1;
 	ath6kl_bmi_write(ar,
 			 ath6kl_get_hi_item_addr(ar,
 			 HI_ITEM(hi_board_data_initialized)),
 			 (u8 *)&param, 4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -1396,10 +1843,20 @@ static int ath6kl_upload_otp(struct ath6kl *ar)
 	}
 
 	/* read firmware start address */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = ath6kl_bmi_read_hi32(ar, hi_app_start, &address);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ath6kl_bmi_read(ar,
 			      ath6kl_get_hi_item_addr(ar,
 						      HI_ITEM(hi_app_start)),
 			      (u8 *) &address, sizeof(address));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret) {
 		ath6kl_err("Failed to read hi_app_start: %d\n", ret);
@@ -1418,6 +1875,12 @@ static int ath6kl_upload_otp(struct ath6kl *ar)
 	/* execute the OTP code */
 	ath6kl_dbg(ATH6KL_DBG_BOOT, "executing OTP at 0x%x\n",
 		   ar->hw.app_start_override_addr);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	param = 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MACH_PX
 	/* SOFTMAC has higher priority than OTP MAC */
@@ -1426,6 +1889,10 @@ static int ath6kl_upload_otp(struct ath6kl *ar)
 	param = 0;
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ath6kl_bmi_execute(ar, ar->hw.app_start_override_addr, &param);
 
 	return ret;
@@ -1464,7 +1931,15 @@ static int ath6kl_upload_firmware(struct ath6kl *ar)
 
 static int ath6kl_upload_patch(struct ath6kl *ar)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 address;
+=======
 	u32 address, param;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 address, param;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	if (ar->fw_patch == NULL)
@@ -1481,21 +1956,44 @@ static int ath6kl_upload_patch(struct ath6kl *ar)
 		return ret;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath6kl_bmi_write_hi32(ar, hi_dset_list_head, address);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param = address;
 	ath6kl_bmi_write(ar,
 			 ath6kl_get_hi_item_addr(ar,
 			 HI_ITEM(hi_dset_list_head)),
 			 (unsigned char *) &param, 4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 static int ath6kl_upload_testscript(struct ath6kl *ar)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 address;
+	int ret;
+
+	if (ar->testmode != 2)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 address, param;
 	int ret;
 
 	if (testmode != 2)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	if (ar->fw_testscript == NULL)
@@ -1504,7 +2002,15 @@ static int ath6kl_upload_testscript(struct ath6kl *ar)
 	address = ar->hw.testscript_addr;
 
 	ath6kl_dbg(ATH6KL_DBG_BOOT, "writing testscript to 0x%x (%zd B)\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		   address, ar->fw_testscript_len);
+=======
 		address, ar->fw_testscript_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		address, ar->fw_testscript_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = ath6kl_bmi_write(ar, address, ar->fw_testscript,
 		ar->fw_testscript_len);
@@ -1513,6 +2019,14 @@ static int ath6kl_upload_testscript(struct ath6kl *ar)
 		return ret;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath6kl_bmi_write_hi32(ar, hi_ota_testscript, address);
+	ath6kl_bmi_write_hi32(ar, hi_end_ram_reserve_sz, 4096);
+	ath6kl_bmi_write_hi32(ar, hi_test_apps_related, 1);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	param = address;
 	ath6kl_bmi_write(ar,
 			ath6kl_get_hi_item_addr(ar,
@@ -1530,10 +2044,19 @@ static int ath6kl_upload_testscript(struct ath6kl *ar)
 			ath6kl_get_hi_item_addr(ar,
 			HI_ITEM(hi_test_apps_related)),
 			(unsigned char *) &param, 4);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef GLOBALCONFIG_WLAN_COUNTRY_CODE
 #define COUNTRY_MAX 76
 struct channels {
@@ -1729,13 +2252,25 @@ static void ath6kl_update_psminfo(struct ath6kl *ar)
 	} while (0);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ath6kl_init_upload(struct ath6kl *ar)
 {
 	u32 param, options, sleep, address;
 	int status = 0;
 
 	if (ar->target_type != TARGET_TYPE_AR6003 &&
+<<<<<<< HEAD
+<<<<<<< HEAD
+	    ar->target_type != TARGET_TYPE_AR6004)
+=======
 		ar->target_type != TARGET_TYPE_AR6004)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ar->target_type != TARGET_TYPE_AR6004)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	/* temporarily disable system sleep */
@@ -1819,9 +2354,18 @@ static int ath6kl_init_upload(struct ath6kl *ar)
 			return status;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ath6kl_bmi_init(ar);
 	ath6kl_bmi_reg_write(ar, 0x540678, ar6k_clock);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath6kl_bmi_init(ar);
+	ath6kl_bmi_reg_write(ar, 0x540678, ar6k_clock);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* write EEPROM data to Target RAM */
 	status = ath6kl_upload_board_file(ar);
 	if (status)
@@ -1853,12 +2397,22 @@ static int ath6kl_init_upload(struct ath6kl *ar)
 		return status;
 
 	address = MBOX_BASE_ADDRESS + LOCAL_SCRATCH_ADDRESS;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	param = options | 0x20;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (en_ani)
 		param = options & ~0x20;
 	else
 		param = options | 0x20;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = ath6kl_bmi_reg_write(ar, address, param);
 	if (status)
 		return status;
@@ -1866,9 +2420,21 @@ static int ath6kl_init_upload(struct ath6kl *ar)
 	return status;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int ath6kl_init_hw_params(struct ath6kl *ar)
+{
+	const struct ath6kl_hw *uninitialized_var(hw);
+=======
 static int ath6kl_init_hw_params(struct ath6kl *ar)
 {
 	const struct ath6kl_hw *hw;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ath6kl_init_hw_params(struct ath6kl *ar)
+{
+	const struct ath6kl_hw *hw;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	for (i = 0; i < ARRAY_SIZE(hw_list); i++) {
@@ -1932,12 +2498,21 @@ int ath6kl_init_hw_start(struct ath6kl *ar)
 	if (ret)
 		goto err_power_off;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (reg_domain != 0xffff) {
 		ret = ath6kl_set_reg_dmn(ar);
 		if (ret)
 			goto err_power_off;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Do we need to finish the BMI phase */
 	/* FIXME: return error from ath6kl_bmi_done() */
 	if (ath6kl_bmi_done(ar)) {
@@ -2016,9 +2591,18 @@ int ath6kl_init_hw_start(struct ath6kl *ar)
 	}
 
 	ar->state = ATH6KL_STATE_ON;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_MACH_PX
 	wake_up(&ar->event_wq);
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_MACH_PX
+	wake_up(&ar->event_wq);
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -2053,6 +2637,12 @@ int ath6kl_init_hw_stop(struct ath6kl *ar)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* FIXME: move this to cfg80211.c and rename to ath6kl_cfg80211_vif_stop() */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ath6kl_core_init(struct ath6kl *ar)
 {
 	struct ath6kl_bmi_target_info targ_info;
@@ -2244,6 +2834,10 @@ err_wq:
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ath6kl_cleanup_vif(struct ath6kl_vif *vif, bool wmi_ready)
 {
 	static u8 bcast_mac[] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
@@ -2293,7 +2887,15 @@ void ath6kl_stop_txrx(struct ath6kl *ar)
 		spin_unlock_bh(&ar->list_lock);
 		ath6kl_cleanup_vif(vif, test_bit(WMI_READY, &ar->flag));
 		rtnl_lock();
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath6kl_cfg80211_vif_cleanup(vif);
+=======
 		ath6kl_deinit_if_data(vif);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath6kl_deinit_if_data(vif);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rtnl_unlock();
 		spin_lock_bh(&ar->list_lock);
 	}
@@ -2323,8 +2925,25 @@ void ath6kl_stop_txrx(struct ath6kl *ar)
 	 * configure NOT to reset the target during a debug session.
 	 */
 	ath6kl_dbg(ATH6KL_DBG_TRC,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		   "attempting to reset target on instance destroy\n");
+	ath6kl_reset_device(ar, ar->target_type, true, true);
+
+	clear_bit(WLAN_ENABLED, &ar->flag);
+
+	up(&ar->sem);
+}
+EXPORT_SYMBOL(ath6kl_stop_txrx);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"attempting to reset target on instance destroy\n");
 	ath6kl_reset_device(ar, ar->target_type, true, true);
 
 	clear_bit(WLAN_ENABLED, &ar->flag);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

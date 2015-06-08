@@ -82,6 +82,9 @@
 #define P_PPI0_D15	(P_DEFINED | P_IDENT(GPIO_PF15) | P_FUNCT(1))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_BF518_PPI_TMR_PG12
 #define P_PPI0_CLK	(P_DEFINED | P_IDENT(GPIO_PG5) | P_FUNCT(1))
 #define P_PPI0_FS1	(P_DEFINED | P_IDENT(GPIO_PG6) | P_FUNCT(1))
@@ -91,11 +94,14 @@
 #define P_PPI0_FS1	(P_DEFINED | P_IDENT(GPIO_PG13) | P_FUNCT(1))
 #define P_PPI0_FS2	(P_DEFINED | P_IDENT(GPIO_PG14) | P_FUNCT(1))
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define P_PPI0_CLK	(P_DEFINED | P_IDENT(GPIO_PG12) | P_FUNCT(1))
 #define P_PPI0_FS1	(P_DEFINED | P_IDENT(GPIO_PG13) | P_FUNCT(1))
 #define P_PPI0_FS2	(P_DEFINED | P_IDENT(GPIO_PG14) | P_FUNCT(1))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define P_PPI0_FS3	(P_DEFINED | P_IDENT(GPIO_PG15) | P_FUNCT(1))
 
 /* SPI Port Mux */
@@ -152,6 +158,9 @@
 
 /* Timer */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_BF518_PPI_TMR_PG12
 #define P_TMRCLK	(P_DEFINED | P_IDENT(GPIO_PG5) | P_FUNCT(2))
 #define P_TMR0		(P_DEFINED | P_IDENT(GPIO_PG6) | P_FUNCT(2))
@@ -161,11 +170,14 @@
 #define P_TMR0		(P_DEFINED | P_IDENT(GPIO_PG13) | P_FUNCT(2))
 #define P_TMR1		(P_DEFINED | P_IDENT(GPIO_PG14) | P_FUNCT(2))
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define P_TMRCLK	(P_DEFINED | P_IDENT(GPIO_PG5) | P_FUNCT(2))
 #define P_TMR0		(P_DEFINED | P_IDENT(GPIO_PG6) | P_FUNCT(2))
 #define P_TMR1		(P_DEFINED | P_IDENT(GPIO_PG7) | P_FUNCT(2))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define P_TMR2		(P_DEFINED | P_IDENT(GPIO_PF9) | P_FUNCT(2))
 #define P_TMR3		(P_DEFINED | P_IDENT(GPIO_PF10) | P_FUNCT(2))
 #define P_TMR4		(P_DEFINED | P_IDENT(GPIO_PG9) | P_FUNCT(2))
@@ -183,6 +195,9 @@
 
 /* PWM */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_BF518_PWM_PORTF_PORTG
 #define P_PWM_AH		(P_DEFINED | P_IDENT(GPIO_PF1) | P_FUNCT(2))
 #define P_PWM_AL		(P_DEFINED | P_IDENT(GPIO_PF2) | P_FUNCT(2))
@@ -210,6 +225,8 @@
 #else
 #define P_PWM_TRIPB		(P_DEFINED | P_IDENT(GPIO_PG14) | P_FUNCT(2))
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define P_PWM0_AH		(P_DEFINED | P_IDENT(GPIO_PF1) | P_FUNCT(2))
 #define P_PWM0_AL		(P_DEFINED | P_IDENT(GPIO_PF2) | P_FUNCT(2))
@@ -229,6 +246,7 @@
 
 #define P_PWM_TRIPB		(P_DEFINED | P_IDENT(GPIO_PG14) | P_FUNCT(2))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* RSI */
 #define P_RSI_DATA0		(P_DEFINED | P_IDENT(GPIO_PG3) | P_FUNCT(1))

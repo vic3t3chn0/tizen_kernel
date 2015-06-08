@@ -12,8 +12,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgtable.h>
 #include <asm/mmzone.h>
@@ -137,7 +140,12 @@ static int resume_physical_mapping_init(pgd_t *pgd_base)
 	resume_map_numa_kva(pgd_base);
 
 =======
+<<<<<<< HEAD
+	resume_map_numa_kva(pgd_base);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

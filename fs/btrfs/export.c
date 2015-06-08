@@ -70,8 +70,12 @@ static struct dentry *btrfs_get_dentry(struct super_block *sb, u64 objectid,
 <<<<<<< HEAD
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
 =======
+<<<<<<< HEAD
+	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
+=======
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb)->fs_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_root *root;
 	struct inode *inode;
 	struct btrfs_key key;
@@ -200,8 +204,12 @@ static struct dentry *btrfs_get_parent(struct dentry *child)
 <<<<<<< HEAD
 	BUG_ON(ret == 0); /* Key with offset of -1 found */
 =======
+<<<<<<< HEAD
+	BUG_ON(ret == 0); /* Key with offset of -1 found */
+=======
 	BUG_ON(ret == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (path->slots[0] == 0) {
 		ret = -ENOENT;
 		goto fail;

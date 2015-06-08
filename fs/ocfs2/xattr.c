@@ -626,8 +626,12 @@ int ocfs2_calc_xattr_init(struct inode *dir,
 <<<<<<< HEAD
 			  umode_t mode,
 =======
+<<<<<<< HEAD
+			  umode_t mode,
+=======
 			  int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  struct ocfs2_security_xattr_info *si,
 			  int *want_clusters,
 			  int *xattr_credits,
@@ -2382,11 +2386,14 @@ static int ocfs2_remove_value_outside(struct inode*inode,
 		ret = ocfs2_xattr_value_truncate(inode, vb, 0, &ctxt);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (ret < 0) {
 			mlog_errno(ret);
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ocfs2_commit_trans(osb, ctxt.handle);
 		if (ctxt.meta_ac) {
@@ -2394,14 +2401,20 @@ static int ocfs2_remove_value_outside(struct inode*inode,
 			ctxt.meta_ac = NULL;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (ret < 0) {
 			mlog_errno(ret);
 			break;
 		}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (ctxt.meta_ac)
@@ -6515,6 +6528,8 @@ static int ocfs2_reflink_xattr_inline(struct ocfs2_xattr_reflink *args)
 	new_oi = OCFS2_I(args->new_inode);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Adjust extent record count to reserve space for extended attribute.
 	 * Inline data count had been adjusted in ocfs2_duplicate_inline_data().
@@ -6526,6 +6541,7 @@ static int ocfs2_reflink_xattr_inline(struct ocfs2_xattr_reflink *args)
 					sizeof(struct ocfs2_extent_rec)));
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&new_oi->ip_lock);
 	new_oi->ip_dyn_features |= OCFS2_HAS_XATTR_FL | OCFS2_INLINE_XATTR_FL;
 	new_di->i_dyn_features = cpu_to_le16(new_oi->ip_dyn_features);
@@ -7219,6 +7235,11 @@ int ocfs2_init_security_and_acl(struct inode *dir,
 	ret = ocfs2_init_security_get(inode, dir, qstr, NULL);
 	if (!ret) {
 =======
+<<<<<<< HEAD
+
+	ret = ocfs2_init_security_get(inode, dir, qstr, NULL);
+	if (!ret) {
+=======
 	struct ocfs2_security_xattr_info si = {
 		.enable = 1,
 	};
@@ -7234,6 +7255,7 @@ int ocfs2_init_security_and_acl(struct inode *dir,
 		}
 	} else if (ret != -EOPNOTSUPP) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mlog_errno(ret);
 		goto leave;
 	}
@@ -7291,6 +7313,9 @@ static int ocfs2_xattr_security_set(struct dentry *dentry, const char *name,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ocfs2_initxattrs(struct inode *inode, const struct xattr *xattr_array,
 		     void *fs_info)
 {
@@ -7307,8 +7332,11 @@ int ocfs2_initxattrs(struct inode *inode, const struct xattr *xattr_array,
 	return err;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ocfs2_init_security_get(struct inode *inode,
 			    struct inode *dir,
 			    const struct qstr *qstr,
@@ -7318,6 +7346,9 @@ int ocfs2_init_security_get(struct inode *inode,
 	if (!ocfs2_supports_xattr(OCFS2_SB(dir->i_sb)))
 		return -EOPNOTSUPP;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (si)
 		return security_old_inode_init_security(inode, dir, qstr,
 							&si->name, &si->value,
@@ -7325,10 +7356,13 @@ int ocfs2_init_security_get(struct inode *inode,
 
 	return security_inode_init_security(inode, dir, qstr,
 					    &ocfs2_initxattrs, NULL);
+<<<<<<< HEAD
+=======
 =======
 	return security_inode_init_security(inode, dir, qstr, &si->name,
 					    &si->value, &si->value_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int ocfs2_init_security_set(handle_t *handle,

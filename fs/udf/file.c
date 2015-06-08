@@ -42,14 +42,21 @@
 <<<<<<< HEAD
 static int udf_adinicb_readpage(struct file *file, struct page *page)
 =======
+<<<<<<< HEAD
+static int udf_adinicb_readpage(struct file *file, struct page *page)
+=======
 static void __udf_adinicb_readpage(struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode = page->mapping->host;
 	char *kaddr;
 	struct udf_inode_info *iinfo = UDF_I(inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!PageLocked(page));
 
 	kaddr = kmap(page);
@@ -58,6 +65,8 @@ static void __udf_adinicb_readpage(struct page *page)
 	flush_dcache_page(page);
 	SetPageUptodate(page);
 	kunmap(page);
+<<<<<<< HEAD
+=======
 =======
 	kaddr = kmap(page);
 	memcpy(kaddr, iinfo->i_ext.i_data + iinfo->i_lenEAttr, inode->i_size);
@@ -72,6 +81,7 @@ static int udf_adinicb_readpage(struct file *file, struct page *page)
 	BUG_ON(!PageLocked(page));
 	__udf_adinicb_readpage(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_page(page);
 
 	return 0;
@@ -98,6 +108,8 @@ static int udf_adinicb_writepage(struct page *page,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int udf_adinicb_write_begin(struct file *file,
 			struct address_space *mapping, loff_t pos,
 			unsigned len, unsigned flags, struct page **pagep,
@@ -118,6 +130,7 @@ static int udf_adinicb_write_begin(struct file *file,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int udf_adinicb_write_end(struct file *file,
 			struct address_space *mapping,
 			loff_t pos, unsigned len, unsigned copied,
@@ -129,16 +142,22 @@ static int udf_adinicb_write_end(struct file *file,
 	struct udf_inode_info *iinfo = UDF_I(inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kaddr = kmap_atomic(page);
 	memcpy(iinfo->i_ext.i_data + iinfo->i_lenEAttr + offset,
 		kaddr + offset, copied);
 	kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 	kaddr = kmap_atomic(page, KM_USER0);
 	memcpy(iinfo->i_ext.i_data + iinfo->i_lenEAttr + offset,
 		kaddr + offset, copied);
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return simple_write_end(file, mapping, pos, len, copied, page, fsdata);
 }
@@ -150,9 +169,14 @@ const struct address_space_operations udf_adinicb_aops = {
 	.write_begin = simple_write_begin,
 	.write_end = udf_adinicb_write_end,
 =======
+<<<<<<< HEAD
+	.write_begin = simple_write_begin,
+	.write_end = udf_adinicb_write_end,
+=======
 	.write_begin	= udf_adinicb_write_begin,
 	.write_end	= udf_adinicb_write_end,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static ssize_t udf_file_aio_write(struct kiocb *iocb, const struct iovec *iov,
@@ -206,8 +230,12 @@ long udf_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 	if (inode_permission(inode, MAY_READ) != 0) {
 =======
+<<<<<<< HEAD
+	if (inode_permission(inode, MAY_READ) != 0) {
+=======
 	if (file_permission(filp, MAY_READ) != 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		udf_debug("no permission to access inode %lu\n", inode->i_ino);
 		result = -EPERM;
 		goto out;

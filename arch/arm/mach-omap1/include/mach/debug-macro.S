@@ -17,6 +17,10 @@
 #include <plat/serial.h>
 
 =======
+<<<<<<< HEAD
+#include <plat/serial.h>
+
+=======
 #include <asm/memory.h>
 
 #include <plat/serial.h>
@@ -25,6 +29,7 @@
 #define omap_uart_p2v(x)	((x) - PLAT_PHYS_OFFSET + PAGE_OFFSET)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pushsection .data
 omap_uart_phys:	.word	0x0
 omap_uart_virt:	.word	0x0
@@ -37,6 +42,9 @@ omap_uart_virt:	.word	0x0
 		 * the omap_uart_phys and omap_uart_virt above.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.macro	addruart, rp, rv, tmp
 
 		/* Use omap_uart_phys/virt if already configured */
@@ -55,6 +63,8 @@ omap_uart_virt:	.word	0x0
 		and	\rp, pc, #0xff000000
 		ldr	\rv, =OMAP_UART_INFO_OFS
 		ldr	\rp, [\rp, \rv]
+<<<<<<< HEAD
+=======
 =======
 		.macro	addruart, rp, rv
 
@@ -77,6 +87,7 @@ omap_uart_virt:	.word	0x0
 		ldrne	\rp, =omap_uart_p2v(OMAP_UART_INFO)	@ MMU enabled
 		ldr	\rp, [\rp, #0]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Select the UART to use based on the UART1 scratchpad value */
 10:		cmp	\rp, #0			@ no port configured?
@@ -101,6 +112,9 @@ omap_uart_virt:	.word	0x0
 		/* Store both phys and virt address for the uart */
 98:		add	\rp, \rp, #0xff000000	@ phys base
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		str	\rp, [\tmp, #0]		@ omap_uart_phys
 		sub	\rp, \rp, #0xff000000	@ phys base
 		add	\rp, \rp, #0xfe000000	@ virt base
@@ -113,6 +127,8 @@ omap_uart_virt:	.word	0x0
 		.ltorg
 
 100:
+<<<<<<< HEAD
+=======
 =======
 		mrc	p15, 0, \rv, c1, c0
 		tst	\rv, #1			@ MMU enabled?
@@ -126,6 +142,7 @@ omap_uart_virt:	.word	0x0
 		b	9b
 99:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.endm
 
 		.macro	senduart,rd,rx

@@ -16,7 +16,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "compr.h"
 
 static DEFINE_SPINLOCK(jffs2_compressor_list_lock);
@@ -59,6 +64,9 @@ static int jffs2_is_best_compression(struct jffs2_compressor *this,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * jffs2_selected_compress:
  * @compr: Explicit compression type to use (ie, JFFS2_COMPR_ZLIB).
@@ -131,8 +139,11 @@ static int jffs2_selected_compress(u8 compr, unsigned char *data_in,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* jffs2_compress:
  * @data_in: Pointer to uncompressed data
  * @cpage_out: Pointer to returned pointer to buffer for compressed data
@@ -159,14 +170,21 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 <<<<<<< HEAD
 	int mode, compr_ret;
 =======
+<<<<<<< HEAD
+	int mode, compr_ret;
+=======
 	int compr_ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct jffs2_compressor *this, *best=NULL;
 	unsigned char *output_buf = NULL, *tmp_buf;
 	uint32_t orig_slen, orig_dlen;
 	uint32_t best_slen=0, best_dlen=0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (c->mount_opts.override_compr)
 		mode = c->mount_opts.compr;
 	else
@@ -178,6 +196,8 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 	case JFFS2_COMPR_MODE_PRIORITY:
 		ret = jffs2_selected_compress(0, data_in, cpage_out, datalen,
 				cdatalen);
+<<<<<<< HEAD
+=======
 =======
 	switch (jffs2_compression_mode) {
 	case JFFS2_COMPR_MODE_NONE:
@@ -215,6 +235,7 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		if (ret == JFFS2_COMPR_NONE)
 			kfree(output_buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case JFFS2_COMPR_MODE_SIZE:
 	case JFFS2_COMPR_MODE_FAVOURLZO:
@@ -242,8 +263,13 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 					pr_warn("No memory for compressor allocation. (%d bytes)\n",
 						orig_slen);
 =======
+<<<<<<< HEAD
+					pr_warn("No memory for compressor allocation. (%d bytes)\n",
+						orig_slen);
+=======
 					printk(KERN_WARNING "JFFS2: No memory for compressor allocation. (%d bytes)\n", orig_slen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					continue;
 				}
 				else {
@@ -278,6 +304,9 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 			best->stat_compr_new_size  += best_dlen;
 			ret = best->compr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*cpage_out = output_buf;
 		}
 		spin_unlock(&jffs2_compressor_list_lock);
@@ -294,6 +323,8 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		pr_err("unknown compression mode\n");
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		}
 		spin_unlock(&jffs2_compressor_list_lock);
@@ -303,6 +334,7 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 	}
  out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret == JFFS2_COMPR_NONE) {
 		*cpage_out = data_in;
 		*datalen = *cdatalen;
@@ -311,10 +343,13 @@ uint16_t jffs2_compress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	else {
 		*cpage_out = output_buf;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -352,8 +387,13 @@ int jffs2_decompress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 					pr_warn("Decompressor \"%s\" returned %d\n",
 						this->name, ret);
 =======
+<<<<<<< HEAD
+					pr_warn("Decompressor \"%s\" returned %d\n",
+						this->name, ret);
+=======
 					printk(KERN_WARNING "Decompressor \"%s\" returned %d\n", this->name, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				}
 				else {
 					this->stat_decompr_blocks++;
@@ -366,8 +406,12 @@ int jffs2_decompress(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 <<<<<<< HEAD
 		pr_warn("compression type 0x%02x not available\n", comprtype);
 =======
+<<<<<<< HEAD
+		pr_warn("compression type 0x%02x not available\n", comprtype);
+=======
 		printk(KERN_WARNING "JFFS2 compression type 0x%02x not available.\n", comprtype);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&jffs2_compressor_list_lock);
 		return -EIO;
 	}
@@ -382,8 +426,12 @@ int jffs2_register_compressor(struct jffs2_compressor *comp)
 <<<<<<< HEAD
 		pr_warn("NULL compressor name at registering JFFS2 compressor. Failed.\n");
 =======
+<<<<<<< HEAD
+		pr_warn("NULL compressor name at registering JFFS2 compressor. Failed.\n");
+=======
 		printk(KERN_WARNING "NULL compressor name at registering JFFS2 compressor. Failed.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	comp->compr_buf_size=0;
@@ -396,8 +444,12 @@ int jffs2_register_compressor(struct jffs2_compressor *comp)
 <<<<<<< HEAD
 	jffs2_dbg(1, "Registering JFFS2 compressor \"%s\"\n", comp->name);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "Registering JFFS2 compressor \"%s\"\n", comp->name);
+=======
 	D1(printk(KERN_DEBUG "Registering JFFS2 compressor \"%s\"\n", comp->name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&jffs2_compressor_list_lock);
 
@@ -425,10 +477,16 @@ int jffs2_unregister_compressor(struct jffs2_compressor *comp)
 
 	jffs2_dbg(1, "Unregistering JFFS2 compressor \"%s\"\n", comp->name);
 =======
+<<<<<<< HEAD
+	D2(struct jffs2_compressor *this);
+
+	jffs2_dbg(1, "Unregistering JFFS2 compressor \"%s\"\n", comp->name);
+=======
 	D2(struct jffs2_compressor *this;)
 
 	D1(printk(KERN_DEBUG "Unregistering JFFS2 compressor \"%s\"\n", comp->name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&jffs2_compressor_list_lock);
 
@@ -437,8 +495,12 @@ int jffs2_unregister_compressor(struct jffs2_compressor *comp)
 <<<<<<< HEAD
 		pr_warn("Compressor module is in use. Unregister failed.\n");
 =======
+<<<<<<< HEAD
+		pr_warn("Compressor module is in use. Unregister failed.\n");
+=======
 		printk(KERN_WARNING "JFFS2: Compressor modul is in use. Unregister failed.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	list_del(&comp->list);
@@ -476,6 +538,9 @@ int __init jffs2_compressors_init(void)
 #ifdef CONFIG_JFFS2_CMODE_NONE
 	jffs2_compression_mode = JFFS2_COMPR_MODE_NONE;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jffs2_dbg(1, "default compression mode: none\n");
 #else
 #ifdef CONFIG_JFFS2_CMODE_SIZE
@@ -487,6 +552,8 @@ int __init jffs2_compressors_init(void)
 	jffs2_dbg(1, "default compression mode: favourlzo\n");
 #else
 	jffs2_dbg(1, "default compression mode: priority\n");
+<<<<<<< HEAD
+=======
 =======
 	D1(printk(KERN_INFO "JFFS2: default compression mode: none\n");)
 #else
@@ -500,6 +567,7 @@ int __init jffs2_compressors_init(void)
 #else
 	D1(printk(KERN_INFO "JFFS2: default compression mode: priority\n");)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #endif
 #endif

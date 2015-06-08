@@ -44,6 +44,9 @@
 <<<<<<< HEAD
 #define NR_LPPACAS	1
 =======
+<<<<<<< HEAD
+#define NR_LPPACAS	1
+=======
 #ifdef CONFIG_PPC_ISERIES
 #if NR_CPUS < 64
 #define NR_LPPACAS	NR_CPUS
@@ -54,6 +57,7 @@
 #define NR_LPPACAS	1
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* The Hypervisor barfs if the lppaca crosses a page boundary.  A 1k

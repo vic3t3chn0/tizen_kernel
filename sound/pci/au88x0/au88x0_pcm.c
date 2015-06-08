@@ -123,6 +123,9 @@ static struct snd_pcm_hw_constraint_list hw_constraints_au8830_channels = {
 };
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void vortex_notify_pcm_vol_change(struct snd_card *card,
 			struct snd_kcontrol *kctl, int activate)
@@ -135,8 +138,11 @@ static void vortex_notify_pcm_vol_change(struct snd_card *card,
 				SNDRV_CTL_EVENT_MASK_INFO, &(kctl->id));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* open callback */
 static int snd_vortex_pcm_open(struct snd_pcm_substream *substream)
 {
@@ -186,7 +192,11 @@ static int snd_vortex_pcm_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 			VORTEX_IS_QUAD(vortex) &&
 =======
+<<<<<<< HEAD
+			VORTEX_IS_QUAD(vortex) &&
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			VORTEX_PCM_TYPE(substream->pcm) == VORTEX_PCM_ADB) {
 			runtime->hw.channels_max = 4;
 			snd_pcm_hw_constraint_list(runtime, 0,
@@ -252,8 +262,13 @@ snd_vortex_pcm_hw_params(struct snd_pcm_substream *substream,
 					      stream->type,
 					      substream->number);
 =======
+<<<<<<< HEAD
+					      stream->type,
+					      substream->number);
+=======
 					      stream->type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Alloc routes. */
 		dma =
 		    vortex_adb_allocroute(chip, -1,
@@ -262,8 +277,13 @@ snd_vortex_pcm_hw_params(struct snd_pcm_substream *substream,
 					  substream->stream, type,
 					  substream->number);
 =======
+<<<<<<< HEAD
+					  substream->stream, type,
+					  substream->number);
+=======
 					  substream->stream, type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dma < 0) {
 			spin_unlock_irq(&chip->lock);
 			return dma;
@@ -275,13 +295,19 @@ snd_vortex_pcm_hw_params(struct snd_pcm_substream *substream,
 					 params_period_bytes(hw_params),
 					 params_periods(hw_params));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (VORTEX_PCM_TYPE(substream->pcm) == VORTEX_PCM_ADB) {
 			chip->pcm_vol[substream->number].active = 1;
 			vortex_notify_pcm_vol_change(chip->card,
 				chip->pcm_vol[substream->number].kctl, 1);
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #ifndef CHIP_AU8810
 	else {
@@ -312,6 +338,9 @@ static int snd_vortex_pcm_hw_free(struct snd_pcm_substream *substream)
 	// Delete audio routes.
 	if (VORTEX_PCM_TYPE(substream->pcm) != VORTEX_PCM_WT) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (stream != NULL) {
 			if (VORTEX_PCM_TYPE(substream->pcm) == VORTEX_PCM_ADB) {
 				chip->pcm_vol[substream->number].active = 0;
@@ -324,12 +353,15 @@ static int snd_vortex_pcm_hw_free(struct snd_pcm_substream *substream)
 					      stream->type,
 					      substream->number);
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (stream != NULL)
 			vortex_adb_allocroute(chip, stream->dma,
 					      stream->nr_ch, stream->dir,
 					      stream->type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #ifndef CHIP_AU8810
 	else {
@@ -363,9 +395,14 @@ static int snd_vortex_pcm_prepare(struct snd_pcm_substream *substream)
 		vortex_adbdma_setmode(chip, dma, 1, dir, fmt,
 				runtime->channels == 1 ? 0 : 1, 0);
 =======
+<<<<<<< HEAD
+		vortex_adbdma_setmode(chip, dma, 1, dir, fmt,
+				runtime->channels == 1 ? 0 : 1, 0);
+=======
 		vortex_adbdma_setmode(chip, dma, 1, dir, fmt, 0 /*? */ ,
 				      0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		vortex_adbdma_setstartbuffer(chip, dma, 0);
 		if (VORTEX_PCM_TYPE(substream->pcm) != VORTEX_PCM_SPDIF)
 			vortex_adb_setsrc(chip, dma, runtime->rate, dir);
@@ -413,9 +450,13 @@ static int snd_vortex_pcm_trigger(struct snd_pcm_substream *substream, int cmd)
 <<<<<<< HEAD
 			vortex_adbdma_stopfifo(chip, dma);
 =======
+<<<<<<< HEAD
+			vortex_adbdma_stopfifo(chip, dma);
+=======
 			vortex_adbdma_pausefifo(chip, dma);
 		//vortex_adbdma_stopfifo(chip, dma);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CHIP_AU8810
 		else {
 			printk(KERN_INFO "vortex: wt stop %d\n", dma);
@@ -568,6 +609,9 @@ static struct snd_kcontrol_new snd_vortex_mixer_spdif[] __devinitdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* subdevice PCM Volume control */
 
 static int snd_vortex_pcm_vol_info(struct snd_kcontrol *kcontrol,
@@ -645,8 +689,11 @@ static struct snd_kcontrol_new snd_vortex_pcm_vol __devinitdata = {
 	.tlv = { .p = vortex_pcm_vol_db_scale },
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* create a pcm device */
 static int __devinit snd_vortex_new_pcm(vortex_t *chip, int idx, int nr)
 {
@@ -697,6 +744,9 @@ static int __devinit snd_vortex_new_pcm(vortex_t *chip, int idx, int nr)
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (VORTEX_PCM_TYPE(pcm) == VORTEX_PCM_ADB) {
 		for (i = 0; i < NR_PCM; i++) {
 			chip->pcm_vol[i].active = 0;
@@ -712,7 +762,10 @@ static int __devinit snd_vortex_new_pcm(vortex_t *chip, int idx, int nr)
 				return err;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }

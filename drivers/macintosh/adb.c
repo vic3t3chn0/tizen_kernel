@@ -710,7 +710,15 @@ static ssize_t adb_read(struct file *file, char __user *buf,
 	req = NULL;
 	spin_lock_irqsave(&state->lock, flags);
 	add_wait_queue(&state->wait_queue, &wait);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	set_current_state(TASK_INTERRUPTIBLE);
+=======
 	current->state = TASK_INTERRUPTIBLE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	current->state = TASK_INTERRUPTIBLE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (;;) {
 		req = state->completed;
@@ -734,7 +742,15 @@ static ssize_t adb_read(struct file *file, char __user *buf,
 		spin_lock_irqsave(&state->lock, flags);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	set_current_state(TASK_RUNNING);
+=======
 	current->state = TASK_RUNNING;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	current->state = TASK_RUNNING;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	remove_wait_queue(&state->wait_queue, &wait);
 	spin_unlock_irqrestore(&state->lock, flags);
 	

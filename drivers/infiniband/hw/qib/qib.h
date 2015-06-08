@@ -171,7 +171,17 @@ struct qib_ctxtdata {
 	/* how many alloc_pages() chunks in rcvegrbuf_pages */
 	u32 rcvegrbuf_chunks;
 	/* how many egrbufs per chunk */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u16 rcvegrbufs_perchunk;
+	/* ilog2 of above */
+	u16 rcvegrbufs_perchunk_shift;
+=======
 	u32 rcvegrbufs_perchunk;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 rcvegrbufs_perchunk;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* order for rcvegrbuf_pages */
 	size_t rcvegrbuf_size;
 	/* rcvhdrq size (for freeing) */
@@ -221,6 +231,15 @@ struct qib_ctxtdata {
 	/* ctxt rcvhdrq head offset */
 	u32 head;
 	u32 pkt_count;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* lookaside fields */
+	struct qib_qp *lookaside_qp;
+	u32 lookaside_qpn;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* QPs waiting for context processing */
 	struct list_head qp_wait_list;
 };
@@ -422,6 +441,20 @@ struct qib_verbs_txreq {
 /* how often we check for packet activity for "power on hours (in seconds) */
 #define ACTIVITY_TIMER 5
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MAX_NAME_SIZE 64
+struct qib_msix_entry {
+	struct msix_entry msix;
+	void *arg;
+	char name[MAX_NAME_SIZE];
+	cpumask_var_t mask;
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Below is an opaque struct. Each chip (device) can maintain
  * private data needed for its operation, but not germane to the
  * rest of the driver.  For convenience, we define another that
@@ -807,6 +840,16 @@ struct qib_devdata {
 	 * supports, less gives more pio bufs/ctxt, etc.
 	 */
 	u32 cfgctxts;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * number of ctxts available for PSM open
+	 */
+	u32 freectxts;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * hint that we should update pioavailshadow before
@@ -936,7 +979,17 @@ struct qib_devdata {
 	/* chip address space used by 4k pio buffers */
 	u32 align4k;
 	/* size of each rcvegrbuffer */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u16 rcvegrbufsize;
+	/* log2 of above */
+	u16 rcvegrbufsize_shift;
+=======
 	u32 rcvegrbufsize;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 rcvegrbufsize;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* localbus width (1, 2,4,8,16,32) from config space  */
 	u32 lbus_width;
 	/* localbus speed in MHz */
@@ -1012,6 +1065,14 @@ struct qib_devdata {
 	u8 psxmitwait_supported;
 	/* cycle length of PS* counters in HW (in picoseconds) */
 	u16 psxmitwait_check_rate;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* high volume overflow errors defered to tasklet */
+	struct tasklet_struct error_tasklet;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* hol_state values */
@@ -1342,7 +1403,15 @@ int qib_pcie_init(struct pci_dev *, const struct pci_device_id *);
 int qib_pcie_ddinit(struct qib_devdata *, struct pci_dev *,
 		    const struct pci_device_id *);
 void qib_pcie_ddcleanup(struct qib_devdata *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int qib_pcie_params(struct qib_devdata *, u32, u32 *, struct qib_msix_entry *);
+=======
 int qib_pcie_params(struct qib_devdata *, u32, u32 *, struct msix_entry *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int qib_pcie_params(struct qib_devdata *, u32, u32 *, struct msix_entry *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int qib_reinit_intr(struct qib_devdata *);
 void qib_enable_intx(struct pci_dev *);
 void qib_nomsi(struct qib_devdata *);
@@ -1433,6 +1502,13 @@ extern struct mutex qib_mutex;
 struct qib_hwerror_msgs {
 	u64 mask;
 	const char *msg;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t sz;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define QLOGIC_IB_HWE_MSG(a, b) { .mask = a, .msg = b }

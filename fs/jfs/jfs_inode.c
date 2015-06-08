@@ -160,8 +160,12 @@ fail_unlock:
 <<<<<<< HEAD
 	clear_nlink(inode);
 =======
+<<<<<<< HEAD
+	clear_nlink(inode);
+=======
 	inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_new_inode(inode);
 fail_put:
 	iput(inode);

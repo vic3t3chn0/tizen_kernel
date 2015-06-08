@@ -122,6 +122,13 @@ struct ar5416AniState {
 	u8 firstepLevel;
 	u8 ofdmWeakSigDetectOff;
 	u8 cckWeakSigThreshold;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool update_ani;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 listenTime;
 	int32_t rssiThrLow;
 	int32_t rssiThrHigh;
@@ -148,8 +155,17 @@ struct ar5416Stats {
 	u32 ast_ani_ofdmerrs;
 	u32 ast_ani_cckerrs;
 	u32 ast_ani_reset;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 ast_ani_lneg_or_lzero;
+=======
 	u32 ast_ani_lzero;
 	u32 ast_ani_lneg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 ast_ani_lzero;
+	u32 ast_ani_lneg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 avgbrssi;
 	struct ath9k_mib_stats ast_mibstats;
 };
@@ -159,7 +175,15 @@ void ath9k_enable_mib_counters(struct ath_hw *ah);
 void ath9k_hw_disable_mib_counters(struct ath_hw *ah);
 void ath9k_hw_ani_setup(struct ath_hw *ah);
 void ath9k_hw_ani_init(struct ath_hw *ah);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 int ath9k_hw_get_ani_channel_idx(struct ath_hw *ah,
 				 struct ath9k_channel *chan);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int ath9k_hw_get_ani_channel_idx(struct ath_hw *ah,
+				 struct ath9k_channel *chan);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* ANI_H */

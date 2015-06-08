@@ -35,8 +35,11 @@
 #include <linux/timer.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/unaligned.h>
 #include <linux/filter.h>
@@ -44,15 +47,21 @@
 #include <linux/ratelimit.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* No hurry in this branch
  *
  * Exported for the bpf jit load helper.
  */
 void *bpf_internal_load_pointer_neg_helper(const struct sk_buff *skb, int k, unsigned int size)
+<<<<<<< HEAD
+=======
 =======
 /* No hurry in this branch */
 static void *__load_pointer(const struct sk_buff *skb, int k, unsigned int size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 *ptr = NULL;
 
@@ -74,8 +83,12 @@ static inline void *load_pointer(const struct sk_buff *skb, int k,
 <<<<<<< HEAD
 	return bpf_internal_load_pointer_neg_helper(skb, k, size);
 =======
+<<<<<<< HEAD
+	return bpf_internal_load_pointer_neg_helper(skb, k, size);
+=======
 	return __load_pointer(skb, k, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -454,8 +467,12 @@ error:
 <<<<<<< HEAD
 int sk_chk_filter(struct sock_filter *filter, unsigned int flen)
 =======
+<<<<<<< HEAD
+int sk_chk_filter(struct sock_filter *filter, unsigned int flen)
+=======
 int sk_chk_filter(struct sock_filter *filter, int flen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * Valid instructions are initialized to non-0.
@@ -667,8 +684,12 @@ int sk_detach_filter(struct sock *sk)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(sk->sk_filter, NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(sk->sk_filter, NULL);
+=======
 		rcu_assign_pointer(sk->sk_filter, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sk_filter_uncharge(sk, filter);
 		ret = 0;
 	}

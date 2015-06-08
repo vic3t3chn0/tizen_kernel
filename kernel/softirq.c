@@ -10,7 +10,15 @@
  *	Remote softirq infrastructure is by Jens Axboe.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/module.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel_stat.h>
 #include <linux/interrupt.h>
 #include <linux/init.h>
@@ -29,7 +37,14 @@
 #include <trace/events/irq.h>
 
 #include <asm/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <mach/sec_debug.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <mach/sec_debug.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
    - No shared variables, all the data are CPU local.
    - If a softirq needs serialization, let it serialize itself
@@ -236,9 +251,19 @@ restart:
 			kstat_incr_softirqs_this_cpu(vec_nr);
 
 			trace_softirq_entry(vec_nr);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			h->action(h);
+=======
 			sec_debug_softirq_log(9999, h->action, 4);
 			h->action(h);
 			sec_debug_softirq_log(9999, h->action, 5);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			sec_debug_softirq_log(9999, h->action, 4);
+			h->action(h);
+			sec_debug_softirq_log(9999, h->action, 5);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			trace_softirq_exit(vec_nr);
 			if (unlikely(prev_count != preempt_count())) {
 				printk(KERN_ERR "huh, entered softirq %u %s %p"
@@ -300,7 +325,15 @@ void irq_enter(void)
 	int cpu = smp_processor_id();
 
 	rcu_irq_enter();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (is_idle_task(current) && !in_interrupt()) {
+=======
 	if (idle_cpu(cpu) && !in_interrupt()) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (idle_cpu(cpu) && !in_interrupt()) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Prevent raise_softirq from needlessly waking up ksoftirqd
 		 * here, as softirq will be serviced on return from interrupt.
@@ -313,6 +346,20 @@ void irq_enter(void)
 	__irq_enter();
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline void invoke_softirq(void)
+{
+	if (!force_irqthreads) {
+#ifdef __ARCH_IRQ_EXIT_IRQS_DISABLED
+		__do_softirq();
+#else
+		do_softirq();
+#endif
+	} else {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __ARCH_IRQ_EXIT_IRQS_DISABLED
 static inline void invoke_softirq(void)
 {
@@ -331,13 +378,24 @@ static inline void invoke_softirq(void)
 	if (!force_irqthreads)
 		do_softirq();
 	else {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__local_bh_disable((unsigned long)__builtin_return_address(0),
 				SOFTIRQ_OFFSET);
 		wakeup_softirqd();
 		__local_bh_enable(SOFTIRQ_OFFSET);
 	}
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Exit an interrupt context. Process softirqs if needed and possible:
@@ -350,6 +408,18 @@ void irq_exit(void)
 	if (!in_interrupt() && local_softirq_pending())
 		invoke_softirq();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_NO_HZ
+	/* Make sure that timer wheel updates are propagated */
+	if (idle_cpu(smp_processor_id()) && !in_interrupt() && !need_resched())
+		tick_nohz_irq_exit();
+#endif
+	rcu_irq_exit();
+	sched_preempt_enable_no_resched();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_irq_exit();
 #ifdef CONFIG_NO_HZ
 	/* Make sure that timer wheel updates are propagated */
@@ -357,6 +427,10 @@ void irq_exit(void)
 		tick_nohz_stop_sched_tick(0);
 #endif
 	preempt_enable_no_resched();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -388,6 +462,18 @@ void raise_softirq(unsigned int nr)
 	local_irq_restore(flags);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void __raise_softirq_irqoff(unsigned int nr)
+{
+	trace_softirq_raise(nr);
+	or_softirq_pending(1UL << nr);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void open_softirq(int nr, void (*action)(struct softirq_action *))
 {
 	softirq_vec[nr].action = action;
@@ -463,9 +549,19 @@ static void tasklet_action(struct softirq_action *a)
 			if (!atomic_read(&t->count)) {
 				if (!test_and_clear_bit(TASKLET_STATE_SCHED, &t->state))
 					BUG();
+<<<<<<< HEAD
+<<<<<<< HEAD
+				t->func(t->data);
+=======
 				sec_debug_softirq_log(9997, t->func, 4);
 				t->func(t->data);
 				sec_debug_softirq_log(9997, t->func, 5);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				sec_debug_softirq_log(9997, t->func, 4);
+				t->func(t->data);
+				sec_debug_softirq_log(9997, t->func, 5);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				tasklet_unlock(t);
 				continue;
 			}
@@ -500,9 +596,19 @@ static void tasklet_hi_action(struct softirq_action *a)
 			if (!atomic_read(&t->count)) {
 				if (!test_and_clear_bit(TASKLET_STATE_SCHED, &t->state))
 					BUG();
+<<<<<<< HEAD
+<<<<<<< HEAD
+				t->func(t->data);
+=======
 				sec_debug_softirq_log(9998, t->func, 4);
 				t->func(t->data);
 				sec_debug_softirq_log(9998, t->func, 5);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				sec_debug_softirq_log(9998, t->func, 4);
+				t->func(t->data);
+				sec_debug_softirq_log(9998, t->func, 5);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				tasklet_unlock(t);
 				continue;
 			}
@@ -751,9 +857,19 @@ static int run_ksoftirqd(void * __bind_cpu)
 	while (!kthread_should_stop()) {
 		preempt_disable();
 		if (!local_softirq_pending()) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			schedule_preempt_disabled();
+=======
 			preempt_enable_no_resched();
 			schedule();
 			preempt_disable();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			preempt_enable_no_resched();
+			schedule();
+			preempt_disable();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		__set_current_state(TASK_RUNNING);
@@ -768,7 +884,15 @@ static int run_ksoftirqd(void * __bind_cpu)
 			if (local_softirq_pending())
 				__do_softirq();
 			local_irq_enable();
+<<<<<<< HEAD
+<<<<<<< HEAD
+			sched_preempt_enable_no_resched();
+=======
 			preempt_enable_no_resched();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			preempt_enable_no_resched();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cond_resched();
 			preempt_disable();
 			rcu_note_context_switch((long)__bind_cpu);

@@ -19,10 +19,23 @@
 #include <linux/module.h>
 #include <linux/bitops.h>
 #include <linux/mutex.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/compat.h>
+
+#include <asm/io.h>
+#include <asm/uaccess.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/io.h>
 #include <asm/uaccess.h>
 #include <asm/system.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef TTY_DEBUG_WAIT_UNTIL_SENT
 
@@ -617,7 +630,15 @@ static int set_termios(struct tty_struct *tty, void __user *arg, int opt)
 	if (opt & TERMIOS_WAIT) {
 		tty_wait_until_sent(tty, 0);
 		if (signal_pending(current))
+<<<<<<< HEAD
+<<<<<<< HEAD
+			return -EINTR;
+=======
 			return -ERESTARTSYS;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			return -ERESTARTSYS;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	tty_set_termios(tty, &tmp_termios);
@@ -684,7 +705,15 @@ static int set_termiox(struct tty_struct *tty, void __user *arg, int opt)
 	if (opt & TERMIOS_WAIT) {
 		tty_wait_until_sent(tty, 0);
 		if (signal_pending(current))
+<<<<<<< HEAD
+<<<<<<< HEAD
+			return -EINTR;
+=======
 			return -ERESTARTSYS;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			return -ERESTARTSYS;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	mutex_lock(&tty->termios_mutex);
@@ -1179,3 +1208,25 @@ int n_tty_ioctl_helper(struct tty_struct *tty, struct file *file,
 	}
 }
 EXPORT_SYMBOL(n_tty_ioctl_helper);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#ifdef CONFIG_COMPAT
+long n_tty_compat_ioctl_helper(struct tty_struct *tty, struct file *file,
+					unsigned int cmd, unsigned long arg)
+{
+	switch (cmd) {
+	case TIOCGLCKTRMIOS:
+	case TIOCSLCKTRMIOS:
+		return tty_mode_ioctl(tty, file, cmd, (unsigned long) compat_ptr(arg));
+	default:
+		return -ENOIOCTLCMD;
+	}
+}
+EXPORT_SYMBOL(n_tty_compat_ioctl_helper);
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

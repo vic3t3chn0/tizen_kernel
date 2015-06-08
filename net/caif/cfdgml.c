@@ -27,10 +27,15 @@ static int cfdgml_transmit(struct cflayer *layr, struct cfpkt *pkt);
 struct cflayer *cfdgml_create(u8 channel_id, struct dev_info *dev_info)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfsrvl *dgm = kzalloc(sizeof(struct cfsrvl), GFP_ATOMIC);
 	if (!dgm)
 		return NULL;
 	caif_assert(offsetof(struct cfsrvl, layer) == 0);
+<<<<<<< HEAD
+=======
 =======
 	struct cfsrvl *dgm = kmalloc(sizeof(struct cfsrvl), GFP_ATOMIC);
 	if (!dgm) {
@@ -40,6 +45,7 @@ struct cflayer *cfdgml_create(u8 channel_id, struct dev_info *dev_info)
 	caif_assert(offsetof(struct cfsrvl, layer) == 0);
 	memset(dgm, 0, sizeof(struct cfsrvl));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfsrvl_init(dgm, channel_id, dev_info, true);
 	dgm->layer.receive = cfdgml_receive;
 	dgm->layer.transmit = cfdgml_transmit;
@@ -97,6 +103,9 @@ static int cfdgml_transmit(struct cflayer *layr, struct cfpkt *pkt)
 	struct cfsrvl *service = container_obj(layr);
 	int ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!cfsrvl_ready(service, &ret)) {
 		cfpkt_destroy(pkt);
@@ -108,6 +117,8 @@ static int cfdgml_transmit(struct cflayer *layr, struct cfpkt *pkt)
 		cfpkt_destroy(pkt);
 		return -EMSGSIZE;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!cfsrvl_ready(service, &ret))
 		return ret;
@@ -116,6 +127,7 @@ static int cfdgml_transmit(struct cflayer *layr, struct cfpkt *pkt)
 	if (cfpkt_getlen(pkt) > DGM_MTU)
 		return -EMSGSIZE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cfpkt_add_head(pkt, &zero, 3);
 	packet_type = 0x08; /* B9 set - UNCLASSIFIED */

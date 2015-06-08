@@ -26,8 +26,12 @@
 <<<<<<< HEAD
 #include <asm/traps.h>
 =======
+<<<<<<< HEAD
+#include <asm/traps.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/machdep.h>
 #include <asm/io.h>
 #ifdef CONFIG_ATARI
@@ -80,6 +84,9 @@ extern void init_pointer_table(unsigned long ptable);
 extern pmd_t *zero_pgtable;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_MMU) && !defined(CONFIG_COLDFIRE)
 #define VECTORS	&vectors[0]
 #else
@@ -112,8 +119,11 @@ void __init print_memmap(void)
 		MLK_ROUNDUP(_sbss, _ebss));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init mem_init(void)
 {
 	pg_data_t *pgdat;
@@ -124,12 +134,15 @@ void __init mem_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ATARI
 	if (MACH_IS_ATARI)
 		atari_stram_mem_init_hook();
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* this will put all memory onto the freelists */
 	totalram_pages = num_physpages = 0;
 	for_each_online_pgdat(pgdat) {
@@ -156,8 +169,12 @@ void __init mem_init(void)
 <<<<<<< HEAD
 #if !defined(CONFIG_SUN3) && !defined(CONFIG_COLDFIRE)
 =======
+<<<<<<< HEAD
+#if !defined(CONFIG_SUN3) && !defined(CONFIG_COLDFIRE)
+=======
 #ifndef CONFIG_SUN3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* insert pointer tables allocated so far into the tablelist */
 	init_pointer_table((unsigned long)kernel_pg_dir);
 	for (i = 0; i < PTRS_PER_PGD; i++) {
@@ -179,7 +196,11 @@ void __init mem_init(void)
 <<<<<<< HEAD
 	print_memmap();
 =======
+<<<<<<< HEAD
+	print_memmap();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_BLK_DEV_INITRD

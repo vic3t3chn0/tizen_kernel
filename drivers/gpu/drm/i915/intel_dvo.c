@@ -370,7 +370,14 @@ void intel_dvo_init(struct drm_device *dev)
 		const struct intel_dvo_device *dvo = &intel_dvo_devices[i];
 		struct i2c_adapter *i2c;
 		int gpio;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		bool dvoinit;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		bool dvoinit;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Allow the I2C driver info to specify the GPIO to be used in
 		 * special cases, but otherwise default to what's defined
@@ -390,6 +397,12 @@ void intel_dvo_init(struct drm_device *dev)
 		i2c = &dev_priv->gmbus[gpio].adapter;
 
 		intel_dvo->dev = *dvo;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!dvo->dev_ops->init(&intel_dvo->dev, i2c))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* GMBUS NAK handling seems to be unstable, hence let the
 		 * transmitter detection run in bit banging mode for now.
@@ -401,6 +414,10 @@ void intel_dvo_init(struct drm_device *dev)
 		intel_gmbus_force_bit(i2c, false);
 
 		if (!dvoinit)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		intel_encoder->type = INTEL_OUTPUT_DVO;

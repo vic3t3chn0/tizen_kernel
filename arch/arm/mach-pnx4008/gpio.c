@@ -15,8 +15,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
@@ -26,8 +29,12 @@
 <<<<<<< HEAD
 #include <mach/gpio-pnx4008.h>
 =======
+<<<<<<< HEAD
+#include <mach/gpio-pnx4008.h>
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* register definitions */
 #define PIO_VA_BASE	IO_ADDRESS(PNX4008_PIO_BASE)

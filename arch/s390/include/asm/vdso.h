@@ -44,9 +44,14 @@ extern struct vdso_data *vdso_data;
 int vdso_alloc_per_cpu(struct _lowcore *lowcore);
 void vdso_free_per_cpu(struct _lowcore *lowcore);
 =======
+<<<<<<< HEAD
+int vdso_alloc_per_cpu(struct _lowcore *lowcore);
+void vdso_free_per_cpu(struct _lowcore *lowcore);
+=======
 int vdso_alloc_per_cpu(int cpu, struct _lowcore *lowcore);
 void vdso_free_per_cpu(int cpu, struct _lowcore *lowcore);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* __ASSEMBLY__ */

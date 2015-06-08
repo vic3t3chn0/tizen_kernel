@@ -25,8 +25,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/flow.h>
 #include <net/dn.h>
 
@@ -44,12 +48,17 @@ void dn_start_slow_timer(struct sock *sk)
 	setup_timer(&sk->sk_timer, dn_slow_timer, (unsigned long)sk);
 	sk_reset_timer(sk, &sk->sk_timer, jiffies + SLOW_INTERVAL);
 =======
+<<<<<<< HEAD
+	setup_timer(&sk->sk_timer, dn_slow_timer, (unsigned long)sk);
+	sk_reset_timer(sk, &sk->sk_timer, jiffies + SLOW_INTERVAL);
+=======
 	sk->sk_timer.expires	= jiffies + SLOW_INTERVAL;
 	sk->sk_timer.function	= dn_slow_timer;
 	sk->sk_timer.data	= (unsigned long)sk;
 
 	add_timer(&sk->sk_timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void dn_stop_slow_timer(struct sock *sk)
@@ -57,8 +66,12 @@ void dn_stop_slow_timer(struct sock *sk)
 <<<<<<< HEAD
 	sk_stop_timer(sk, &sk->sk_timer);
 =======
+<<<<<<< HEAD
+	sk_stop_timer(sk, &sk->sk_timer);
+=======
 	del_timer(&sk->sk_timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void dn_slow_timer(unsigned long arg)
@@ -67,10 +80,15 @@ static void dn_slow_timer(unsigned long arg)
 	struct dn_scp *scp = DN_SK(sk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bh_lock_sock(sk);
 
 	if (sock_owned_by_user(sk)) {
 		sk_reset_timer(sk, &sk->sk_timer, jiffies + HZ / 10);
+<<<<<<< HEAD
+=======
 =======
 	sock_hold(sk);
 	bh_lock_sock(sk);
@@ -79,6 +97,7 @@ static void dn_slow_timer(unsigned long arg)
 		sk->sk_timer.expires = jiffies + HZ / 10;
 		add_timer(&sk->sk_timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -123,10 +142,14 @@ static void dn_slow_timer(unsigned long arg)
 <<<<<<< HEAD
 	sk_reset_timer(sk, &sk->sk_timer, jiffies + SLOW_INTERVAL);
 =======
+<<<<<<< HEAD
+	sk_reset_timer(sk, &sk->sk_timer, jiffies + SLOW_INTERVAL);
+=======
 	sk->sk_timer.expires = jiffies + SLOW_INTERVAL;
 
 	add_timer(&sk->sk_timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	bh_unlock_sock(sk);
 	sock_put(sk);

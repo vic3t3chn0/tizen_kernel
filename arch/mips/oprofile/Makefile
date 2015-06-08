@@ -11,8 +11,12 @@ DRIVER_OBJS = $(addprefix ../../../drivers/oprofile/, \
 <<<<<<< HEAD
 oprofile-y				:= $(DRIVER_OBJS) common.o backtrace.o
 =======
+<<<<<<< HEAD
+oprofile-y				:= $(DRIVER_OBJS) common.o backtrace.o
+=======
 oprofile-y				:= $(DRIVER_OBJS) common.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 oprofile-$(CONFIG_CPU_MIPS32)		+= op_model_mipsxx.o
 oprofile-$(CONFIG_CPU_MIPS64)		+= op_model_mipsxx.o

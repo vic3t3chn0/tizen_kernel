@@ -2,6 +2,9 @@
 #define __ASM_ARM_DMA_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This is the maximum virtual address which can be DMA'd from.
  */
@@ -12,6 +15,8 @@
 	extern unsigned long arm_dma_zone_size; \
 	arm_dma_zone_size ? \
 		(PAGE_OFFSET + arm_dma_zone_size) : 0xffffffffUL; })
+<<<<<<< HEAD
+=======
 =======
 #include <asm/memory.h>
 
@@ -23,6 +28,7 @@
 #else
 #define MAX_DMA_ADDRESS	(PAGE_OFFSET + ARM_DMA_ZONE_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_ISA_DMA_API
@@ -33,8 +39,11 @@
 #include <linux/spinlock.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/scatterlist.h>
 
 #include <mach/isa-dma.h>
@@ -52,8 +61,12 @@
 <<<<<<< HEAD
 extern raw_spinlock_t  dma_spin_lock;
 =======
+<<<<<<< HEAD
+extern raw_spinlock_t  dma_spin_lock;
+=======
 extern spinlock_t  dma_spin_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline unsigned long claim_dma_lock(void)
 {
@@ -61,8 +74,12 @@ static inline unsigned long claim_dma_lock(void)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&dma_spin_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&dma_spin_lock, flags);
+=======
 	spin_lock_irqsave(&dma_spin_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return flags;
 }
 
@@ -71,8 +88,12 @@ static inline void release_dma_lock(unsigned long flags)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&dma_spin_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&dma_spin_lock, flags);
+=======
 	spin_unlock_irqrestore(&dma_spin_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Clear the 'DMA Pointer Flip Flop'.

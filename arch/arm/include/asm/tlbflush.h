@@ -36,9 +36,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TLB_BTB		(1 << 28)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Unified Inner Shareable TLB operations (ARMv7 MP extensions) */
 #define TLB_V7_UIS_PAGE	(1 << 19)
 #define TLB_V7_UIS_FULL (1 << 20)
@@ -47,10 +50,14 @@
 <<<<<<< HEAD
 #define TLB_BARRIER	(1 << 28)
 =======
+<<<<<<< HEAD
+#define TLB_BARRIER	(1 << 28)
+=======
 /* Inner Shareable BTB operation (ARMv7 MP extensions) */
 #define TLB_V7_IS_BTB	(1 << 22)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TLB_L2CLEAN_FR	(1 << 29)		/* Feroceon */
 #define TLB_DCLEAN	(1 << 30)
 #define TLB_WB		(1 << 31)
@@ -68,8 +75,12 @@
 <<<<<<< HEAD
  *	  fa    - Faraday (v4 with write buffer with UTLB)
 =======
+<<<<<<< HEAD
+ *	  fa    - Faraday (v4 with write buffer with UTLB)
+=======
  *	  fa    - Faraday (v4 with write buffer with UTLB and branch target buffer (BTB))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	  v6wbi - ARMv6 with write buffer with I TLB flush entry instruction
  *	  v7wbi - identical to v6wbi
  */
@@ -113,8 +124,12 @@
 <<<<<<< HEAD
 #define fa_tlb_flags	(TLB_WB | TLB_DCLEAN | TLB_BARRIER | \
 =======
+<<<<<<< HEAD
+#define fa_tlb_flags	(TLB_WB | TLB_DCLEAN | TLB_BARRIER | \
+=======
 #define fa_tlb_flags	(TLB_WB | TLB_BTB | TLB_DCLEAN | \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 TLB_V4_U_FULL | TLB_V4_U_PAGE)
 
 #ifdef CONFIG_CPU_TLB_FA
@@ -184,8 +199,12 @@
 <<<<<<< HEAD
 #define v6wbi_tlb_flags (TLB_WB | TLB_DCLEAN | TLB_BARRIER | \
 =======
+<<<<<<< HEAD
+#define v6wbi_tlb_flags (TLB_WB | TLB_DCLEAN | TLB_BARRIER | \
+=======
 #define v6wbi_tlb_flags (TLB_WB | TLB_DCLEAN | TLB_BTB | \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 TLB_V6_I_FULL | TLB_V6_D_FULL | \
 			 TLB_V6_I_PAGE | TLB_V6_D_PAGE | \
 			 TLB_V6_I_ASID | TLB_V6_D_ASID)
@@ -208,10 +227,16 @@
 			 TLB_V7_UIS_FULL | TLB_V7_UIS_PAGE | TLB_V7_UIS_ASID)
 #define v7wbi_tlb_flags_up	(TLB_WB | TLB_DCLEAN | TLB_BARRIER | \
 =======
+<<<<<<< HEAD
+#define v7wbi_tlb_flags_smp	(TLB_WB | TLB_DCLEAN | TLB_BARRIER | \
+			 TLB_V7_UIS_FULL | TLB_V7_UIS_PAGE | TLB_V7_UIS_ASID)
+#define v7wbi_tlb_flags_up	(TLB_WB | TLB_DCLEAN | TLB_BARRIER | \
+=======
 #define v7wbi_tlb_flags_smp	(TLB_WB | TLB_DCLEAN | TLB_V7_IS_BTB | \
 			 TLB_V7_UIS_FULL | TLB_V7_UIS_PAGE | TLB_V7_UIS_ASID)
 #define v7wbi_tlb_flags_up	(TLB_WB | TLB_DCLEAN | TLB_BTB | \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 TLB_V6_U_FULL | TLB_V6_U_PAGE | TLB_V6_U_ASID)
 
 #ifdef CONFIG_CPU_TLB_V7
@@ -348,6 +373,9 @@ extern struct cpu_tlb_fns cpu_tlb;
 #define tlb_flag(f)	((always_tlb_flags & (f)) || (__tlb_flag & possible_tlb_flags & (f)))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __tlb_op(f, insnarg, arg)					\
 	do {								\
 		if (always_tlb_flags & (f))				\
@@ -363,8 +391,11 @@ extern struct cpu_tlb_fns cpu_tlb;
 #define tlb_op(f, regs, arg)	__tlb_op(f, "p15, 0, %0, " regs, arg)
 #define tlb_l2_op(f, regs, arg)	__tlb_op(f, "p15, 1, %0, " regs, arg)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void local_flush_tlb_all(void)
 {
 	const int zero = 0;
@@ -374,6 +405,9 @@ static inline void local_flush_tlb_all(void)
 		dsb();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tlb_op(TLB_V3_FULL, "c6, c0, 0", zero);
 	tlb_op(TLB_V4_U_FULL | TLB_V6_U_FULL, "c8, c7, 0", zero);
 	tlb_op(TLB_V4_D_FULL | TLB_V6_D_FULL, "c8, c6, 0", zero);
@@ -381,6 +415,8 @@ static inline void local_flush_tlb_all(void)
 	tlb_op(TLB_V7_UIS_FULL, "c8, c3, 0", zero);
 
 	if (tlb_flag(TLB_BARRIER)) {
+<<<<<<< HEAD
+=======
 =======
 	if (tlb_flag(TLB_V3_FULL))
 		asm("mcr p15, 0, %0, c6, c0, 0" : : "r" (zero) : "cc");
@@ -403,6 +439,7 @@ static inline void local_flush_tlb_all(void)
 		/* flush the branch target cache */
 		asm("mcr p15, 0, %0, c7, c1, 6" : : "r" (zero) : "cc");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dsb();
 		isb();
 	}
@@ -418,6 +455,9 @@ static inline void local_flush_tlb_mm(struct mm_struct *mm)
 		dsb();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (possible_tlb_flags & (TLB_V3_FULL|TLB_V4_U_FULL|TLB_V4_D_FULL|TLB_V4_I_FULL)) {
 		if (cpumask_test_cpu(get_cpu(), mm_cpumask(mm))) {
 			tlb_op(TLB_V3_FULL, "c6, c0, 0", zero);
@@ -439,6 +479,8 @@ static inline void local_flush_tlb_mm(struct mm_struct *mm)
 
 	if (tlb_flag(TLB_BARRIER))
 		dsb();
+<<<<<<< HEAD
+=======
 =======
 	if (cpumask_test_cpu(get_cpu(), mm_cpumask(mm))) {
 		if (tlb_flag(TLB_V3_FULL))
@@ -477,6 +519,7 @@ static inline void local_flush_tlb_mm(struct mm_struct *mm)
 		isb();
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -491,12 +534,17 @@ local_flush_tlb_page(struct vm_area_struct *vma, unsigned long uaddr)
 		dsb();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (possible_tlb_flags & (TLB_V3_PAGE|TLB_V4_U_PAGE|TLB_V4_D_PAGE|TLB_V4_I_PAGE|TLB_V4_I_FULL) &&
 	    cpumask_test_cpu(smp_processor_id(), mm_cpumask(vma->vm_mm))) {
 		tlb_op(TLB_V3_PAGE, "c6, c0, 0", uaddr);
 		tlb_op(TLB_V4_U_PAGE, "c8, c7, 1", uaddr);
 		tlb_op(TLB_V4_D_PAGE, "c8, c6, 1", uaddr);
 		tlb_op(TLB_V4_I_PAGE, "c8, c5, 1", uaddr);
+<<<<<<< HEAD
+=======
 =======
 	if (cpumask_test_cpu(smp_processor_id(), mm_cpumask(vma->vm_mm))) {
 		if (tlb_flag(TLB_V3_PAGE))
@@ -508,11 +556,15 @@ local_flush_tlb_page(struct vm_area_struct *vma, unsigned long uaddr)
 		if (tlb_flag(TLB_V4_I_PAGE))
 			asm("mcr p15, 0, %0, c8, c5, 1" : : "r" (uaddr) : "cc");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!tlb_flag(TLB_V4_I_PAGE) && tlb_flag(TLB_V4_I_FULL))
 			asm("mcr p15, 0, %0, c8, c5, 0" : : "r" (zero) : "cc");
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tlb_op(TLB_V6_U_PAGE, "c8, c7, 1", uaddr);
 	tlb_op(TLB_V6_D_PAGE, "c8, c6, 1", uaddr);
 	tlb_op(TLB_V6_I_PAGE, "c8, c5, 1", uaddr);
@@ -524,6 +576,8 @@ local_flush_tlb_page(struct vm_area_struct *vma, unsigned long uaddr)
 
 	if (tlb_flag(TLB_BARRIER))
 		dsb();
+<<<<<<< HEAD
+=======
 =======
 	if (tlb_flag(TLB_V6_U_PAGE))
 		asm("mcr p15, 0, %0, c8, c7, 1" : : "r" (uaddr) : "cc");
@@ -550,6 +604,7 @@ local_flush_tlb_page(struct vm_area_struct *vma, unsigned long uaddr)
 		isb();
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void local_flush_tlb_kernel_page(unsigned long kaddr)
@@ -563,6 +618,9 @@ static inline void local_flush_tlb_kernel_page(unsigned long kaddr)
 		dsb();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tlb_op(TLB_V3_PAGE, "c6, c0, 0", kaddr);
 	tlb_op(TLB_V4_U_PAGE, "c8, c7, 1", kaddr);
 	tlb_op(TLB_V4_D_PAGE, "c8, c6, 1", kaddr);
@@ -580,6 +638,8 @@ static inline void local_flush_tlb_kernel_page(unsigned long kaddr)
 #endif
 
 	if (tlb_flag(TLB_BARRIER)) {
+<<<<<<< HEAD
+=======
 =======
 	if (tlb_flag(TLB_V3_PAGE))
 		asm("mcr p15, 0, %0, c6, c0, 0" : : "r" (kaddr) : "cc");
@@ -611,6 +671,7 @@ static inline void local_flush_tlb_kernel_page(unsigned long kaddr)
 		/* flush the branch target cache */
 		asm("mcr p15, 0, %0, c7, c1, 6" : : "r" (zero) : "cc");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dsb();
 		isb();
 	}
@@ -630,12 +691,17 @@ static inline void local_flush_tlb_kernel_page(unsigned long kaddr)
  *	PMD entries.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void flush_pmd_entry(void *pmd)
 {
 	const unsigned int __tlb_flag = __cpu_tlb_flags;
 
 	tlb_op(TLB_DCLEAN, "c7, c10, 1	@ flush_pmd", pmd);
 	tlb_l2_op(TLB_L2CLEAN_FR, "c15, c9, 1  @ L2 flush_pmd", pmd);
+<<<<<<< HEAD
+=======
 =======
 static inline void flush_pmd_entry(pmd_t *pmd)
 {
@@ -649,12 +715,16 @@ static inline void flush_pmd_entry(pmd_t *pmd)
 		asm("mcr	p15, 1, %0, c15, c9, 1  @ L2 flush_pmd"
 			: : "r" (pmd) : "cc");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (tlb_flag(TLB_WB))
 		dsb();
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void clean_pmd_entry(void *pmd)
 {
 	const unsigned int __tlb_flag = __cpu_tlb_flags;
@@ -664,6 +734,8 @@ static inline void clean_pmd_entry(void *pmd)
 }
 
 #undef tlb_op
+<<<<<<< HEAD
+=======
 =======
 static inline void clean_pmd_entry(pmd_t *pmd)
 {
@@ -679,6 +751,7 @@ static inline void clean_pmd_entry(pmd_t *pmd)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #undef tlb_flag
 #undef always_tlb_flags
 #undef possible_tlb_flags

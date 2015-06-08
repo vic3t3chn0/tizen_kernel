@@ -13,8 +13,12 @@ obj-$(CONFIG_CPU_SUBTYPE_SH7343)	+= setup-sh7343.o
 <<<<<<< HEAD
 obj-$(CONFIG_CPU_SUBTYPE_SH7722)	+= setup-sh7722.o serial-sh7722.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_CPU_SUBTYPE_SH7722)	+= setup-sh7722.o serial-sh7722.o
+=======
 obj-$(CONFIG_CPU_SUBTYPE_SH7722)	+= setup-sh7722.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_CPU_SUBTYPE_SH7723)	+= setup-sh7723.o
 obj-$(CONFIG_CPU_SUBTYPE_SH7724)	+= setup-sh7724.o
 obj-$(CONFIG_CPU_SUBTYPE_SH7366)	+= setup-sh7366.o
@@ -36,10 +40,16 @@ clock-$(CONFIG_CPU_SUBTYPE_SH7722)	:= clock-sh7722.o
 clock-$(CONFIG_CPU_SUBTYPE_SH7723)	:= clock-sh7723.o
 clock-$(CONFIG_CPU_SUBTYPE_SH7724)	:= clock-sh7724.o
 =======
+<<<<<<< HEAD
+clock-$(CONFIG_CPU_SUBTYPE_SH7722)	:= clock-sh7722.o
+clock-$(CONFIG_CPU_SUBTYPE_SH7723)	:= clock-sh7723.o
+clock-$(CONFIG_CPU_SUBTYPE_SH7724)	:= clock-sh7724.o
+=======
 clock-$(CONFIG_CPU_SUBTYPE_SH7722)	:= clock-sh7722.o hwblk-sh7722.o
 clock-$(CONFIG_CPU_SUBTYPE_SH7723)	:= clock-sh7723.o hwblk-sh7723.o
 clock-$(CONFIG_CPU_SUBTYPE_SH7724)	:= clock-sh7724.o hwblk-sh7724.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 clock-$(CONFIG_CPU_SUBTYPE_SH7366)	:= clock-sh7366.o
 clock-$(CONFIG_CPU_SUBTYPE_SHX3)	:= clock-shx3.o
 

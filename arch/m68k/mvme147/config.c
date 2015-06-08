@@ -28,8 +28,11 @@
 #include <asm/bootinfo.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable.h>
 #include <asm/setup.h>
 #include <asm/irq.h>
@@ -87,8 +90,12 @@ void __init mvme147_init_IRQ(void)
 <<<<<<< HEAD
 	m68k_setup_user_interrupt(VEC_USER, 192);
 =======
+<<<<<<< HEAD
+	m68k_setup_user_interrupt(VEC_USER, 192);
+=======
 	m68k_setup_user_interrupt(VEC_USER, 192, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init config_mvme147(void)
@@ -124,9 +131,13 @@ void mvme147_sched_init (irq_handler_t timer_routine)
 <<<<<<< HEAD
 	if (request_irq(PCC_IRQ_TIMER1, mvme147_timer_int, 0, "timer 1", NULL))
 =======
+<<<<<<< HEAD
+	if (request_irq(PCC_IRQ_TIMER1, mvme147_timer_int, 0, "timer 1", NULL))
+=======
 	if (request_irq(PCC_IRQ_TIMER1, mvme147_timer_int, IRQ_FLG_REPLACE,
 			"timer 1", NULL))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("Couldn't register timer interrupt\n");
 
 	/* Init the clock with a value */

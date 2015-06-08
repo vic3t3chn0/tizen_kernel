@@ -1,10 +1,15 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* arch/arm/mach-exynos4/include/mach/regs-audss.h
  *
  * Copyright (c) 2011 Samsung Electronics
  *		http://www.samsung.com
  *
  * Exynos4 Audio SubSystem clock register definitions
+<<<<<<< HEAD
+=======
 =======
 /* arch/arm/mach-exynos/include/mach/regs-audss.h
  *
@@ -12,6 +17,7 @@
  *
  * EXYNOS4 Audio SubSystem clock register definitions
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -21,6 +27,9 @@
 #ifndef __PLAT_REGS_AUDSS_H
 #define __PLAT_REGS_AUDSS_H __FILE__
 
+<<<<<<< HEAD
+#define EXYNOS4_AUDSS_INT_MEM	(0x03000000)
+=======
 <<<<<<< HEAD
 #define EXYNOS4_AUDSS_INT_MEM	(0x03000000)
 =======
@@ -55,5 +64,6 @@
 #define S5P_AUDSS_CLKGATE_UART		(1<<7)
 #define S5P_AUDSS_CLKGATE_TIMER		(1<<8)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _PLAT_REGS_AUDSS_H */

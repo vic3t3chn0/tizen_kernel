@@ -16,10 +16,28 @@
 #include <linux/console.h>
 #include <linux/init.h>
 #include <linux/module.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/persistent_ram.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/proc_fs.h>
 #include <linux/string.h>
 #include <linux/uaccess.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/io.h>
+#include "ram_console.h"
+
+static struct persistent_ram_zone *ram_console_zone;
+static const char *bootinfo;
+static size_t bootinfo_size;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_data/ram_console.h>
 
 #ifdef CONFIG_ANDROID_RAM_CONSOLE_ERROR_CORRECTION
@@ -112,10 +130,21 @@ static void ram_console_update_header(void)
 	ram_console_encode_rs8((uint8_t *)buffer, sizeof(*buffer), par);
 #endif
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void
 ram_console_write(struct console *console, const char *s, unsigned int count)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct persistent_ram_zone *prz = console->data;
+	persistent_ram_write(prz, s, count);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rem;
 	struct ram_console_buffer *buffer = ram_console_buffer;
 
@@ -137,6 +166,10 @@ ram_console_write(struct console *console, const char *s, unsigned int count)
 	if (buffer->size < ram_console_buffer_size)
 		buffer->size += count;
 	ram_console_update_header();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct console ram_console = {
@@ -154,6 +187,40 @@ void ram_console_enable_console(int enabled)
 		ram_console.flags &= ~CON_ENABLED;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit ram_console_probe(struct platform_device *pdev)
+{
+	struct ram_console_platform_data *pdata = pdev->dev.platform_data;
+	struct persistent_ram_zone *prz;
+
+	prz = persistent_ram_init_ringbuffer(&pdev->dev, true);
+	if (IS_ERR(prz))
+		return PTR_ERR(prz);
+
+
+	if (pdata) {
+		bootinfo = kstrdup(pdata->bootinfo, GFP_KERNEL);
+		if (bootinfo)
+			bootinfo_size = strlen(bootinfo);
+	}
+
+	ram_console_zone = prz;
+	ram_console.data = prz;
+
+	register_console(&ram_console);
+
+	return 0;
+}
+
+static struct platform_driver ram_console_driver = {
+	.driver		= {
+		.name	= "ram_console",
+	},
+	.probe = ram_console_probe,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init
 ram_console_save_old(struct ram_console_buffer *buffer, const char *bootinfo,
 	char *dest)
@@ -376,14 +443,32 @@ static struct platform_driver ram_console_driver = {
 	.driver		= {
 		.name	= "ram_console",
 	},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init ram_console_module_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return platform_driver_register(&ram_console_driver);
+}
+
+#ifndef CONFIG_PRINTK
+#define dmesg_restrict	0
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	err = platform_driver_register(&ram_console_driver);
 	return err;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static ssize_t ram_console_read_old(struct file *file, char __user *buf,
@@ -391,6 +476,57 @@ static ssize_t ram_console_read_old(struct file *file, char __user *buf,
 {
 	loff_t pos = *offset;
 	ssize_t count;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct persistent_ram_zone *prz = ram_console_zone;
+	size_t old_log_size = persistent_ram_old_size(prz);
+	const char *old_log = persistent_ram_old(prz);
+	char *str;
+	int ret;
+
+	if (dmesg_restrict && !capable(CAP_SYSLOG))
+		return -EPERM;
+
+	/* Main last_kmsg log */
+	if (pos < old_log_size) {
+		count = min(len, (size_t)(old_log_size - pos));
+		if (copy_to_user(buf, old_log + pos, count))
+			return -EFAULT;
+		goto out;
+	}
+
+	/* ECC correction notice */
+	pos -= old_log_size;
+	count = persistent_ram_ecc_string(prz, NULL, 0);
+	if (pos < count) {
+		str = kmalloc(count, GFP_KERNEL);
+		if (!str)
+			return -ENOMEM;
+		persistent_ram_ecc_string(prz, str, count + 1);
+		count = min(len, (size_t)(count - pos));
+		ret = copy_to_user(buf, str + pos, count);
+		kfree(str);
+		if (ret)
+			return -EFAULT;
+		goto out;
+	}
+
+	/* Boot info passed through pdata */
+	pos -= count;
+	if (pos < bootinfo_size) {
+		count = min(len, (size_t)(bootinfo_size - pos));
+		if (copy_to_user(buf, bootinfo + pos, count))
+			return -EFAULT;
+		goto out;
+	}
+
+	/* EOF */
+	return 0;
+
+out:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (pos >= ram_console_old_log_size)
 		return 0;
@@ -399,6 +535,10 @@ static ssize_t ram_console_read_old(struct file *file, char __user *buf,
 	if (copy_to_user(buf, ram_console_old_log + pos, count))
 		return -EFAULT;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*offset += count;
 	return count;
 }
@@ -411,6 +551,23 @@ static const struct file_operations ram_console_file_ops = {
 static int __init ram_console_late_init(void)
 {
 	struct proc_dir_entry *entry;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct persistent_ram_zone *prz = ram_console_zone;
+
+	if (!prz)
+		return 0;
+
+	if (persistent_ram_old_size(prz) == 0)
+		return 0;
+
+	entry = create_proc_entry("last_kmsg", S_IFREG | S_IRUGO, NULL);
+	if (!entry) {
+		printk(KERN_ERR "ram_console: failed to create proc entry\n");
+		persistent_ram_free_old(prz);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ram_console_old_log == NULL)
 		return 0;
@@ -430,10 +587,28 @@ static int __init ram_console_late_init(void)
 		printk(KERN_ERR "ram_console: failed to create proc entry\n");
 		kfree(ram_console_old_log);
 		ram_console_old_log = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
 	entry->proc_fops = &ram_console_file_ops;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	entry->size = persistent_ram_old_size(prz) +
+		persistent_ram_ecc_string(prz, NULL, 0) +
+		bootinfo_size;
+
+	return 0;
+}
+
+late_initcall(ram_console_late_init);
+postcore_initcall(ram_console_module_init);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry->size = ram_console_old_log_size;
 	return 0;
 }
@@ -445,3 +620,7 @@ postcore_initcall(ram_console_module_init);
 #endif
 late_initcall(ram_console_late_init);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

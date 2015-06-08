@@ -22,7 +22,12 @@
 #include "apparmorfs.h"
 
 =======
+<<<<<<< HEAD
+#include "apparmorfs.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct aa_profile;
 
 /* struct aa_rlimit - rlimit settings for the profile
@@ -41,7 +46,12 @@ struct aa_rlimit {
 extern struct aa_fs_entry aa_fs_entry_rlimit[];
 
 =======
+<<<<<<< HEAD
+extern struct aa_fs_entry aa_fs_entry_rlimit[];
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int aa_map_resource(int resource);
 int aa_task_setrlimit(struct aa_profile *profile, struct task_struct *,
 		      unsigned int resource, struct rlimit *new_rlim);

@@ -73,8 +73,11 @@ PHDRS {
 #ifdef CONFIG_X86_64
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	user PT_LOAD FLAGS(5);          /* R_E */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 	percpu PT_LOAD FLAGS(6);        /* RW_ */
 #endif
@@ -158,6 +161,9 @@ SECTIONS
 #ifdef CONFIG_X86_64
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	. = ALIGN(PAGE_SIZE);
 	__vvar_page = .;
 
@@ -177,6 +183,8 @@ SECTIONS
 	} :data
 
        . = ALIGN(__vvar_page + PAGE_SIZE, PAGE_SIZE);
+<<<<<<< HEAD
+=======
 =======
 #define VSYSCALL_ADDR (-10*1024*1024)
 
@@ -229,6 +237,7 @@ SECTIONS
 #undef VVIRT
 #undef EMIT_VVAR
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* CONFIG_X86_64 */
 

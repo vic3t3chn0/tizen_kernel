@@ -16,8 +16,11 @@
 #include <asm/nmi.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/vsyscall.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cacheflush.h>
 #include <asm/tlbflush.h>
 #include <asm/io.h>
@@ -167,8 +170,12 @@ static const unsigned char * const k7_nops[ASM_NOP_MAX+2] =
 <<<<<<< HEAD
 static const unsigned char  __initconst_or_module p6nops[] =
 =======
+<<<<<<< HEAD
+static const unsigned char  __initconst_or_module p6nops[] =
+=======
 static const unsigned char p6nops[] =
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	P6_NOP1,
 	P6_NOP2,
@@ -230,8 +237,12 @@ void __init arch_init_ideal_nops(void)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 #ifdef CONFIG_X86_64
 		ideal_nops = k8_nops;
@@ -263,8 +274,11 @@ extern struct alt_instr __alt_instructions[], __alt_instructions_end[];
 extern s32 __smp_locks[], __smp_locks_end[];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern char __vsyscall_0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void *text_poke_early(void *addr, const void *opcode, size_t len);
 
 /* Replace instructions with better alternatives for this CPU type.
@@ -280,7 +294,11 @@ void __init_or_module apply_alternatives(struct alt_instr *start,
 <<<<<<< HEAD
 	u8 *instr, *replacement;
 =======
+<<<<<<< HEAD
+	u8 *instr, *replacement;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 insnbuf[MAX_PATCH_LEN];
 
 	DPRINTK("%s: alt table %p -> %p\n", __func__, start, end);
@@ -298,14 +316,22 @@ void __init_or_module apply_alternatives(struct alt_instr *start,
 		instr = (u8 *)&a->instr_offset + a->instr_offset;
 		replacement = (u8 *)&a->repl_offset + a->repl_offset;
 =======
+<<<<<<< HEAD
+		instr = (u8 *)&a->instr_offset + a->instr_offset;
+		replacement = (u8 *)&a->repl_offset + a->repl_offset;
+=======
 		u8 *instr = a->instr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG_ON(a->replacementlen > a->instrlen);
 		BUG_ON(a->instrlen > sizeof(insnbuf));
 		BUG_ON(a->cpuid >= NCAPINTS*32);
 		if (!boot_cpu_has(a->cpuid))
 			continue;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		memcpy(insnbuf, replacement, a->replacementlen);
 
@@ -316,6 +342,8 @@ void __init_or_module apply_alternatives(struct alt_instr *start,
 		add_nops(insnbuf + a->replacementlen,
 			 a->instrlen - a->replacementlen);
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_X86_64
 		/* vsyscall code is not mapped yet. resolve it manually. */
@@ -331,6 +359,7 @@ void __init_or_module apply_alternatives(struct alt_instr *start,
 		add_nops(insnbuf + a->replacementlen,
 			 a->instrlen - a->replacementlen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		text_poke_early(instr, insnbuf, a->instrlen);
 	}
 }
@@ -780,6 +809,10 @@ void __kprobes text_poke_smp_batch(struct text_poke_param *params, int n)
 <<<<<<< HEAD
 	__stop_machine(stop_machine_text_poke, (void *)&tpp, cpu_online_mask);
 =======
+<<<<<<< HEAD
+	__stop_machine(stop_machine_text_poke, (void *)&tpp, cpu_online_mask);
+=======
 	__stop_machine(stop_machine_text_poke, (void *)&tpp, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

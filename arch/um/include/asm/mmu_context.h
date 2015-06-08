@@ -7,12 +7,17 @@
 #define __UM_MMU_CONTEXT_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <asm/mmu.h>
 
 extern void uml_setup_stubs(struct mm_struct *mm);
 extern void arch_exit_mmap(struct mm_struct *mm);
 
+<<<<<<< HEAD
+=======
 =======
 #include "linux/sched.h"
 #include "um_mmu.h"
@@ -24,6 +29,7 @@ extern void arch_exit_mmap(struct mm_struct *mm);
 #define activate_context(tsk) do ; while(0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define deactivate_mm(tsk,mm)	do { } while (0)
 
 extern void force_flush_all(void);
@@ -40,8 +46,14 @@ static inline void activate_mm(struct mm_struct *old, struct mm_struct *new)
 	uml_setup_stubs(new);
 	up_write(&new->mmap_sem);
 =======
+<<<<<<< HEAD
+	down_write(&new->mmap_sem);
+	uml_setup_stubs(new);
+	up_write(&new->mmap_sem);
+=======
 	arch_dup_mmap(old, new);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void switch_mm(struct mm_struct *prev, struct mm_struct *next, 
@@ -58,13 +70,19 @@ static inline void switch_mm(struct mm_struct *prev, struct mm_struct *next,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void arch_dup_mmap(struct mm_struct *oldmm, struct mm_struct *mm)
 {
 	uml_setup_stubs(mm);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void enter_lazy_tlb(struct mm_struct *mm, 
 				  struct task_struct *tsk)
 {

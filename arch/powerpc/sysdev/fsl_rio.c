@@ -13,8 +13,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007, 2008, 2010, 2011 Freescale Semiconductor, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007, 2008, 2010, 2011 Freescale Semiconductor, Inc.
+=======
  * Copyright (C) 2007, 2008, 2010 Freescale Semiconductor, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Zhang Wei <wei.zhang@freescale.com>
  *
  * Copyright 2005 MontaVista Software, Inc.
@@ -33,6 +37,9 @@
 #include <linux/interrupt.h>
 #include <linux/device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/of_platform.h>
 #include <linux/delay.h>
 #include <linux/slab.h>
@@ -45,6 +52,8 @@
 
 #undef DEBUG_PW	/* Port-Write debugging */
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/rio.h>
 #include <linux/rio_drv.h>
@@ -75,11 +84,15 @@
 #define IECSR_CLEAR		0x80000000
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RIO_PORT1_EDCSR		0x0640
 #define RIO_PORT2_EDCSR		0x0680
 #define RIO_PORT1_IECSR		0x10130
 #define RIO_PORT2_IECSR		0x101B0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define RIO_GCCSR		0x13c
 #define RIO_ESCSR		0x158
@@ -91,6 +104,8 @@
 #define IECSR_CLEAR		0x80000000
 #define RIO_ISR_AACR		0x10120
 #define RIO_ISR_AACR_AA		0x1	/* Accept All ID */
+<<<<<<< HEAD
+=======
 =======
 #define RIO_IM0SR		0x13064
 #define RIO_IM1SR		0x13164
@@ -295,6 +310,7 @@ struct rio_priv {
 	spinlock_t pw_fifo_lock;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define __fsl_read_rio_config(x, addr, err, op)		\
 	__asm__ __volatile__(				\
@@ -310,23 +326,34 @@ struct rio_priv {
 			PPC_LONG_ALIGN "\n"		\
 			PPC_LONG "1b,3b\n"		\
 =======
+<<<<<<< HEAD
+			PPC_LONG_ALIGN "\n"		\
+			PPC_LONG "1b,3b\n"		\
+=======
 		"	.align 2\n"			\
 		"	.long 1b,3b\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		".text"					\
 		: "=r" (err), "=r" (x)			\
 		: "b" (addr), "i" (-EFAULT), "0" (err))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __iomem *rio_regs_win;
 void __iomem *rmu_regs_win;
 resource_size_t rio_law_start;
 
 struct fsl_rio_dbell *dbell;
 struct fsl_rio_pw *pw;
+<<<<<<< HEAD
+=======
 =======
 static void __iomem *rio_regs_win;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_E500
 int fsl_rio_mcheck_exception(struct pt_regs *regs)
@@ -358,6 +385,8 @@ EXPORT_SYMBOL_GPL(fsl_rio_mcheck_exception);
 #endif
 
 /**
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * fsl_rio_doorbell_send - Send a MPC85xx doorbell message
@@ -397,6 +426,7 @@ static int fsl_rio_doorbell_send(struct rio_mport *mport,
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * fsl_local_config_read - Generate a MPC85xx local config space read
  * @mport: RapidIO master port info
  * @index: ID of RapdiIO interface
@@ -438,9 +468,14 @@ static int fsl_local_config_write(struct rio_mport *mport,
 		("fsl_local_config_write: index %d offset %8.8x data %8.8x\n",
 		index, offset, data);
 =======
+<<<<<<< HEAD
+		("fsl_local_config_write: index %d offset %8.8x data %8.8x\n",
+		index, offset, data);
+=======
 	    ("fsl_local_config_write: index %d offset %8.8x data %8.8x\n",
 	     index, offset, data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	out_be32(priv->regs_win + offset, data);
 
 	return 0;
@@ -473,9 +508,15 @@ fsl_rio_config_read(struct rio_mport *mport, int index, u16 destid,
 		" index %d destid %d hopcount %d offset %8.8x len %d\n",
 		index, destid, hopcount, offset, len);
 =======
+<<<<<<< HEAD
+		("fsl_rio_config_read:"
+		" index %d destid %d hopcount %d offset %8.8x len %d\n",
+		index, destid, hopcount, offset, len);
+=======
 	    ("fsl_rio_config_read: index %d destid %d hopcount %d offset %8.8x len %d\n",
 	     index, destid, hopcount, offset, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* 16MB maintenance window possible */
 	/* allow only aligned access to maintenance registers */
@@ -487,8 +528,12 @@ fsl_rio_config_read(struct rio_mport *mport, int index, u16 destid,
 <<<<<<< HEAD
 	out_be32(&priv->maint_atmu_regs->rowtear, (destid >> 10));
 =======
+<<<<<<< HEAD
+	out_be32(&priv->maint_atmu_regs->rowtear, (destid >> 10));
+=======
 	out_be32(&priv->maint_atmu_regs->rowtear,  (destid >> 10));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	data = (u8 *) priv->maint_win + (offset & (RIO_MAINT_WIN_SIZE - 1));
 	switch (len) {
@@ -540,9 +585,15 @@ fsl_rio_config_write(struct rio_mport *mport, int index, u16 destid,
 		" index %d destid %d hopcount %d offset %8.8x len %d val %8.8x\n",
 		index, destid, hopcount, offset, len, val);
 =======
+<<<<<<< HEAD
+		("fsl_rio_config_write:"
+		" index %d destid %d hopcount %d offset %8.8x len %d val %8.8x\n",
+		index, destid, hopcount, offset, len, val);
+=======
 	    ("fsl_rio_config_write: index %d destid %d hopcount %d offset %8.8x len %d val %8.8x\n",
 	     index, destid, hopcount, offset, len, val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* 16MB maintenance windows possible */
 	/* allow only aligned access to maintenance registers */
@@ -554,8 +605,12 @@ fsl_rio_config_write(struct rio_mport *mport, int index, u16 destid,
 <<<<<<< HEAD
 	out_be32(&priv->maint_atmu_regs->rowtear, (destid >> 10));
 =======
+<<<<<<< HEAD
+	out_be32(&priv->maint_atmu_regs->rowtear, (destid >> 10));
+=======
 	out_be32(&priv->maint_atmu_regs->rowtear,  (destid >> 10));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	data = (u8 *) priv->maint_win + (offset & (RIO_MAINT_WIN_SIZE - 1));
 	switch (len) {
@@ -575,6 +630,9 @@ fsl_rio_config_write(struct rio_mport *mport, int index, u16 destid,
 	return 0;
 }
 
+<<<<<<< HEAD
+void fsl_rio_port_error_handler(int offset)
+=======
 <<<<<<< HEAD
 void fsl_rio_port_error_handler(int offset)
 =======
@@ -1163,6 +1221,7 @@ static int fsl_rio_doorbell_init(struct rio_mport *mport)
 
 static void port_error_handler(struct rio_mport *port, int offset)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*XXX: Error recovery is not implemented, we just clear errors */
 	out_be32((u32 *)(rio_regs_win + RIO_LTLEDCSR), 0);
@@ -1177,6 +1236,8 @@ static void port_error_handler(struct rio_mport *port, int offset)
 		out_be32((u32 *)(rio_regs_win + RIO_PORT2_ESCSR), ESCSR_CLEAR);
 	}
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -1437,6 +1498,7 @@ err_out:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void fsl_rio_info(struct device *dev, u32 ccsr)
 {
 	const char *str;
@@ -1494,6 +1556,9 @@ int fsl_rio_setup(struct platform_device *dev)
 	struct rio_priv *priv;
 	int rc = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const u32 *dt_range, *cell, *port_index;
 	u32 active_ports = 0;
 	struct resource regs, rmu_regs;
@@ -1509,6 +1574,8 @@ int fsl_rio_setup(struct platform_device *dev)
 	if (!dev->dev.of_node) {
 		dev_err(&dev->dev, "Device OF-Node is NULL");
 		return -ENODEV;
+<<<<<<< HEAD
+=======
 =======
 	const u32 *dt_range, *cell;
 	struct resource regs;
@@ -1521,6 +1588,7 @@ int fsl_rio_setup(struct platform_device *dev)
 		dev_err(&dev->dev, "Device OF-Node is NULL");
 		return -EFAULT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rc = of_address_to_resource(dev->dev.of_node, 0, &regs);
@@ -1530,6 +1598,9 @@ int fsl_rio_setup(struct platform_device *dev)
 		return -EFAULT;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_info(&dev->dev, "Of-device full name %s\n",
 			dev->dev.of_node->full_name);
 	dev_info(&dev->dev, "Regs: %pR\n", &regs);
@@ -1541,6 +1612,8 @@ int fsl_rio_setup(struct platform_device *dev)
 		goto err_rio_regs;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	dev_info(&dev->dev, "Of-device full name %s\n", dev->dev.of_node->full_name);
 	dev_info(&dev->dev, "Regs: %pR\n", &regs);
@@ -1574,6 +1647,7 @@ int fsl_rio_setup(struct platform_device *dev)
 			law_start, law_size);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops = kzalloc(sizeof(struct rio_ops), GFP_KERNEL);
 	if (!ops) {
 		rc = -ENOMEM;
@@ -1594,6 +1668,9 @@ int fsl_rio_setup(struct platform_device *dev)
 	ops->get_inb_message = fsl_get_inb_message;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rmu_node = of_parse_phandle(dev->dev.of_node, "fsl,srio-rmu-handle", 0);
 	if (!rmu_node)
 		goto err_rmu;
@@ -1845,6 +1922,8 @@ err_rmu:
 err_ops:
 	iounmap(rio_regs_win);
 err_rio_regs:
+<<<<<<< HEAD
+=======
 =======
 	port = kzalloc(sizeof(struct rio_mport), GFP_KERNEL);
 	if (!port) {
@@ -1983,6 +2062,7 @@ err_port:
 	kfree(ops);
 err_ops:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -2001,8 +2081,12 @@ static const struct of_device_id fsl_of_rio_rpn_ids[] = {
 <<<<<<< HEAD
 		.compatible = "fsl,srio",
 =======
+<<<<<<< HEAD
+		.compatible = "fsl,srio",
+=======
 		.compatible = "fsl,rapidio-delta",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{},
 };

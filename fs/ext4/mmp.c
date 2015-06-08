@@ -112,8 +112,12 @@ static int kmmpd(void *data)
 <<<<<<< HEAD
 	memcpy(mmp->mmp_nodename, init_utsname()->nodename,
 =======
+<<<<<<< HEAD
+	memcpy(mmp->mmp_nodename, init_utsname()->nodename,
+=======
 	memcpy(mmp->mmp_nodename, init_utsname()->sysname,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       sizeof(mmp->mmp_nodename));
 
 	while (!kthread_should_stop()) {
@@ -134,9 +138,15 @@ static int kmmpd(void *data)
 			if ((failed_writes % 60) == 0)
 				ext4_error(sb, "Error writing to MMP block");
 =======
+<<<<<<< HEAD
+		if (retval) {
+			if ((failed_writes % 60) == 0)
+				ext4_error(sb, "Error writing to MMP block");
+=======
 		if (retval && (failed_writes % 60) == 0) {
 			ext4_error(sb, "Error writing to MMP block");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			failed_writes++;
 		}
 
@@ -270,9 +280,14 @@ int ext4_multi_mount_protect(struct super_block *sb,
 	if (le16_to_cpu(mmp->mmp_check_interval) > mmp_check_interval)
 		mmp_check_interval = le16_to_cpu(mmp->mmp_check_interval);
 =======
+<<<<<<< HEAD
+	if (le16_to_cpu(mmp->mmp_check_interval) > mmp_check_interval)
+		mmp_check_interval = le16_to_cpu(mmp->mmp_check_interval);
+=======
 	if (mmp->mmp_check_interval > mmp_check_interval)
 		mmp_check_interval = mmp->mmp_check_interval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	seq = le32_to_cpu(mmp->mmp_seq);
 	if (seq == EXT4_MMP_SEQ_CLEAN)
@@ -314,8 +329,13 @@ skip:
 	seq = mmp_new_seq();
 	mmp->mmp_seq = cpu_to_le32(seq);
 =======
+<<<<<<< HEAD
+	seq = mmp_new_seq();
+	mmp->mmp_seq = cpu_to_le32(seq);
+=======
 	mmp->mmp_seq = seq = cpu_to_le32(mmp_new_seq());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	retval = write_mmp_block(bh);
 	if (retval)

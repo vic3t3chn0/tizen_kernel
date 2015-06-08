@@ -1,7 +1,15 @@
 /*
  *
  * Intel Management Engine Interface (Intel MEI) Linux driver
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (c) 2003-2012, Intel Corporation.
+=======
  * Copyright (c) 2003-2011, Intel Corporation.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (c) 2003-2011, Intel Corporation.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -125,12 +133,27 @@ int mei_count_empty_write_slots(struct mei_device *dev)
  * @write_buffer: message buffer will be written
  * @write_length: message size will be written
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This function returns -EIO if write has failed
+ */
+int mei_write_message(struct mei_device *dev,
+		      struct mei_msg_hdr *header,
+		      unsigned char *write_buffer,
+		      unsigned long write_length)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * returns 1 if success, 0 - otherwise.
  */
 int mei_write_message(struct mei_device *dev,
 			     struct mei_msg_hdr *header,
 			     unsigned char *write_buffer,
 			     unsigned long write_length)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 temp_msg = 0;
 	unsigned long bytes_written = 0;
@@ -157,7 +180,15 @@ int mei_write_message(struct mei_device *dev,
 	dw_to_write = ((write_length + 3) / 4);
 
 	if (dw_to_write > empty_slots)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EIO;
+=======
 		return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mei_reg_write(dev, H_CB_WW, *((u32 *) header));
 
@@ -177,10 +208,22 @@ int mei_write_message(struct mei_device *dev,
 	mei_hcsr_set(dev);
 	dev->me_hw_state = mei_mecsr_read(dev);
 	if ((dev->me_hw_state & ME_RDY_HRA) != ME_RDY_HRA)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EIO;
+
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	dev->write_hang = 0;
 	return 1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -216,6 +259,22 @@ int mei_count_full_read_slots(struct mei_device *dev)
  * @buffer: message buffer will be written
  * @buffer_length: message size will be read
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void mei_read_slots(struct mei_device *dev, unsigned char *buffer,
+		    unsigned long buffer_length)
+{
+	u32 *reg_buf = (u32 *)buffer;
+
+	for (; buffer_length >= sizeof(u32); buffer_length -= sizeof(u32))
+		*reg_buf++ = mei_mecbrw_read(dev);
+
+	if (buffer_length > 0) {
+		u32 reg = mei_mecbrw_read(dev);
+		memcpy(reg_buf, &reg, buffer_length);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mei_read_slots(struct mei_device *dev,
 		     unsigned char *buffer, unsigned long buffer_length)
 {
@@ -236,6 +295,10 @@ void mei_read_slots(struct mei_device *dev,
 	if (buffer_length > 0) {
 		*((u32 *) &temp_buf) = mei_mecbrw_read(dev);
 		memcpy(&buffer[i * 4], temp_buf, buffer_length);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	dev->host_hw_state |= H_IG;
@@ -256,13 +319,29 @@ int mei_flow_ctrl_creds(struct mei_device *dev, struct mei_cl *cl)
 {
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!dev->me_clients_num)
+=======
 	if (!dev->num_mei_me_clients)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!dev->num_mei_me_clients)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	if (cl->mei_flow_ctrl_creds > 0)
 		return 1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < dev->me_clients_num; i++) {
+=======
 	for (i = 0; i < dev->num_mei_me_clients; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = 0; i < dev->num_mei_me_clients; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mei_me_client  *me_cl = &dev->me_clients[i];
 		if (me_cl->client_id == cl->me_client_id) {
 			if (me_cl->mei_flow_ctrl_creds) {
@@ -285,16 +364,37 @@ int mei_flow_ctrl_creds(struct mei_device *dev, struct mei_cl *cl)
  * @returns
  *	0 on success
  *	-ENOENT when me client is not found
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	-EINVAL when ctrl credits are <= 0
+=======
  *	-EINVAL wehn ctrl credits are <= 0
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *	-EINVAL wehn ctrl credits are <= 0
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int mei_flow_ctrl_reduce(struct mei_device *dev, struct mei_cl *cl)
 {
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!dev->me_clients_num)
+		return -ENOENT;
+
+	for (i = 0; i < dev->me_clients_num; i++) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dev->num_mei_me_clients)
 		return -ENOENT;
 
 	for (i = 0; i < dev->num_mei_me_clients; i++) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mei_me_client  *me_cl = &dev->me_clients[i];
 		if (me_cl->client_id == cl->me_client_id) {
 			if (me_cl->props.single_recv_buf != 0) {
@@ -318,7 +418,15 @@ int mei_flow_ctrl_reduce(struct mei_device *dev, struct mei_cl *cl)
  * @dev: the device structure
  * @cl: private data of the file object
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This function returns -EIO on write failure
+=======
  * returns 1 if success, 0 - otherwise.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * returns 1 if success, 0 - otherwise.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int mei_send_flow_control(struct mei_device *dev, struct mei_cl *cl)
 {
@@ -333,6 +441,23 @@ int mei_send_flow_control(struct mei_device *dev, struct mei_cl *cl)
 	mei_hdr->reserved = 0;
 
 	mei_flow_control = (struct hbm_flow_control *) &dev->wr_msg_buf[1];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memset(mei_flow_control, 0, sizeof(*mei_flow_control));
+	mei_flow_control->host_addr = cl->host_client_id;
+	mei_flow_control->me_addr = cl->me_client_id;
+	mei_flow_control->hbm_cmd = MEI_FLOW_CONTROL_CMD;
+	memset(mei_flow_control->reserved, 0,
+			sizeof(mei_flow_control->reserved));
+	dev_dbg(&dev->pdev->dev, "sending flow control host client = %d, ME client = %d\n",
+		cl->host_client_id, cl->me_client_id);
+
+	return mei_write_message(dev, mei_hdr,
+				(unsigned char *) mei_flow_control,
+				sizeof(struct hbm_flow_control));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(mei_flow_control, 0, sizeof(mei_flow_control));
 	mei_flow_control->host_addr = cl->host_client_id;
 	mei_flow_control->me_addr = cl->me_client_id;
@@ -348,6 +473,10 @@ int mei_send_flow_control(struct mei_device *dev, struct mei_cl *cl)
 
 	return 1;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -381,7 +510,15 @@ int mei_other_client_is_connecting(struct mei_device *dev,
  * @dev: the device structure
  * @cl: private data of the file object
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This function returns -EIO on write failure
+=======
  * returns 1 if success, 0 - otherwise.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * returns 1 if success, 0 - otherwise.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int mei_disconnect(struct mei_device *dev, struct mei_cl *cl)
 {
@@ -397,6 +534,20 @@ int mei_disconnect(struct mei_device *dev, struct mei_cl *cl)
 
 	mei_cli_disconnect =
 	    (struct hbm_client_disconnect_request *) &dev->wr_msg_buf[1];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memset(mei_cli_disconnect, 0, sizeof(*mei_cli_disconnect));
+	mei_cli_disconnect->host_addr = cl->host_client_id;
+	mei_cli_disconnect->me_addr = cl->me_client_id;
+	mei_cli_disconnect->hbm_cmd = CLIENT_DISCONNECT_REQ_CMD;
+	mei_cli_disconnect->reserved[0] = 0;
+
+	return mei_write_message(dev, mei_hdr,
+				(unsigned char *) mei_cli_disconnect,
+				sizeof(struct hbm_client_disconnect_request));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(mei_cli_disconnect, 0, sizeof(mei_cli_disconnect));
 	mei_cli_disconnect->host_addr = cl->host_client_id;
 	mei_cli_disconnect->me_addr = cl->me_client_id;
@@ -409,6 +560,10 @@ int mei_disconnect(struct mei_device *dev, struct mei_cl *cl)
 		return 0;
 
 	return 1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -417,7 +572,15 @@ int mei_disconnect(struct mei_device *dev, struct mei_cl *cl)
  * @dev: the device structure
  * @cl: private data of the file object
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This function returns -EIO on write failure
+=======
  * returns 1 if success, 0 - otherwise.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * returns 1 if success, 0 - otherwise.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int mei_connect(struct mei_device *dev, struct mei_cl *cl)
 {
@@ -435,6 +598,17 @@ int mei_connect(struct mei_device *dev, struct mei_cl *cl)
 	    (struct hbm_client_connect_request *) &dev->wr_msg_buf[1];
 	mei_cli_connect->host_addr = cl->host_client_id;
 	mei_cli_connect->me_addr = cl->me_client_id;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mei_cli_connect->hbm_cmd = CLIENT_CONNECT_REQ_CMD;
+	mei_cli_connect->reserved = 0;
+
+	return mei_write_message(dev, mei_hdr,
+				(unsigned char *) mei_cli_connect,
+				sizeof(struct hbm_client_connect_request));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mei_cli_connect->cmd.cmd = CLIENT_CONNECT_REQ_CMD;
 	mei_cli_connect->reserved = 0;
 
@@ -444,4 +618,8 @@ int mei_connect(struct mei_device *dev, struct mei_cl *cl)
 		return 0;
 
 	return 1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

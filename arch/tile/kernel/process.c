@@ -28,12 +28,17 @@
 #include <linux/tracehook.h>
 #include <linux/signal.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/stack.h>
 #include <asm/switch_to.h>
 #include <asm/homecache.h>
 #include <asm/syscalls.h>
 #include <asm/traps.h>
 #include <asm/setup.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 #include <asm/stack.h>
@@ -41,6 +46,7 @@
 #include <asm/syscalls.h>
 #include <asm/traps.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HARDWALL
 #include <asm/hardwall.h>
 #endif
@@ -49,7 +55,11 @@
 <<<<<<< HEAD
 #include <arch/sim_def.h>
 =======
+<<<<<<< HEAD
+#include <arch/sim_def.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -102,8 +112,13 @@ void cpu_idle(void)
 		tick_nohz_idle_enter();
 		rcu_idle_enter();
 =======
+<<<<<<< HEAD
+		tick_nohz_idle_enter();
+		rcu_idle_enter();
+=======
 		tick_nohz_stop_sched_tick(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (!need_resched()) {
 			if (cpu_is_offline(cpu))
 				BUG();  /* no HOTPLUG_CPU */
@@ -128,11 +143,17 @@ void cpu_idle(void)
 		tick_nohz_idle_exit();
 		schedule_preempt_disabled();
 =======
+<<<<<<< HEAD
+		rcu_idle_exit();
+		tick_nohz_idle_exit();
+		schedule_preempt_disabled();
+=======
 		tick_nohz_restart_sched_tick();
 		preempt_enable_no_resched();
 		schedule();
 		preempt_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -311,8 +332,12 @@ struct task_struct *validate_current(void)
 <<<<<<< HEAD
 		     (high_memory && (void *)tsk > high_memory) ||
 =======
+<<<<<<< HEAD
+		     (high_memory && (void *)tsk > high_memory) ||
+=======
 		     (void *)tsk > high_memory ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     ((unsigned long)tsk & (__alignof__(*tsk) - 1)) != 0)) {
 		pr_err("Corrupt 'current' %p (sp %#lx)\n", tsk, stack_pointer);
 		tsk = &corrupt;
@@ -594,12 +619,18 @@ struct task_struct *__sched _switch_to(struct task_struct *prev,
 int do_work_pending(struct pt_regs *regs, u32 thread_info_flags)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If we enter in kernel mode, do nothing and exit the caller loop. */
 	if (!user_mode(regs))
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (thread_info_flags & _TIF_NEED_RESCHED) {
 		schedule();
 		return 1;
@@ -625,9 +656,13 @@ int do_work_pending(struct pt_regs *regs, u32 thread_info_flags)
 <<<<<<< HEAD
 		single_step_once(regs);
 =======
+<<<<<<< HEAD
+		single_step_once(regs);
+=======
 		if ((regs->ex1 & SPR_EX_CONTEXT_1_1__PL_MASK) == 0)
 			single_step_once(regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 	panic("work_pending: bad flags %#x\n", thread_info_flags);

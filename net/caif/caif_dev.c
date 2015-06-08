@@ -13,8 +13,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/if_arp.h>
 #include <linux/net.h>
@@ -24,7 +27,12 @@
 #include <linux/module.h>
 #include <linux/spinlock.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+#include <linux/spinlock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/netns/generic.h>
 #include <net/net_namespace.h>
 #include <net/pkt_sched.h>
@@ -35,7 +43,11 @@
 <<<<<<< HEAD
 #include <net/caif/cfserl.h>
 =======
+<<<<<<< HEAD
+#include <net/caif/cfserl.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 
@@ -46,12 +58,18 @@ struct caif_device_entry {
 	struct net_device *netdev;
 	int __percpu *pcpu_refcnt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t flow_lock;
 	struct sk_buff *xoff_skb;
 	void (*xoff_skb_dtor)(struct sk_buff *skb);
 	bool xoff;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct caif_device_entry_list {
@@ -69,15 +87,22 @@ static int caif_net_id;
 <<<<<<< HEAD
 static int q_high = 50; /* Percent */
 =======
+<<<<<<< HEAD
+static int q_high = 50; /* Percent */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct cfcnfg *get_cfcnfg(struct net *net)
 {
 	struct caif_net *caifn;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	BUG_ON(!net);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	caifn = net_generic(net, caif_net_id);
 	return caifn->cfg;
 }
@@ -88,8 +113,11 @@ static struct caif_device_entry_list *caif_device_list(struct net *net)
 	struct caif_net *caifn;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	BUG_ON(!net);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	caifn = net_generic(net, caif_net_id);
 	return &caifn->caifdevs;
 }
@@ -99,8 +127,12 @@ static void caifd_put(struct caif_device_entry *e)
 <<<<<<< HEAD
 	this_cpu_dec(*e->pcpu_refcnt);
 =======
+<<<<<<< HEAD
+	this_cpu_dec(*e->pcpu_refcnt);
+=======
 	irqsafe_cpu_dec(*e->pcpu_refcnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void caifd_hold(struct caif_device_entry *e)
@@ -108,8 +140,12 @@ static void caifd_hold(struct caif_device_entry *e)
 <<<<<<< HEAD
 	this_cpu_inc(*e->pcpu_refcnt);
 =======
+<<<<<<< HEAD
+	this_cpu_inc(*e->pcpu_refcnt);
+=======
 	irqsafe_cpu_inc(*e->pcpu_refcnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int caifd_refcnt_read(struct caif_device_entry *e)
@@ -129,6 +165,9 @@ static struct caif_device_entry *caif_device_alloc(struct net_device *dev)
 	caifdevs = caif_device_list(dev_net(dev));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	caifd = kzalloc(sizeof(*caifd), GFP_KERNEL);
 	if (!caifd)
 		return NULL;
@@ -137,12 +176,15 @@ static struct caif_device_entry *caif_device_alloc(struct net_device *dev)
 		kfree(caifd);
 		return NULL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	caifd = kzalloc(sizeof(*caifd), GFP_ATOMIC);
 	if (!caifd)
 		return NULL;
 	caifd->pcpu_refcnt = alloc_percpu(int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	caifd->netdev = dev;
 	dev_hold(dev);
 	return caifd;
@@ -162,6 +204,9 @@ static struct caif_device_entry *caif_get(struct net_device *dev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void caif_flow_cb(struct sk_buff *skb)
 {
 	struct caif_device_entry *caifd;
@@ -262,6 +307,8 @@ static int transmit(struct cflayer *layer, struct cfpkt *pkt)
 					caifd->layer.id);
 noxoff:
 	rcu_read_unlock_bh();
+<<<<<<< HEAD
+=======
 =======
 static int transmit(struct cflayer *layer, struct cfpkt *pkt)
 {
@@ -273,6 +320,7 @@ static int transmit(struct cflayer *layer, struct cfpkt *pkt)
 	skb = cfpkt_tonative(pkt);
 	skb->dev = caifd->netdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = dev_queue_xmit(skb);
 	if (err > 0)
@@ -317,13 +365,19 @@ static int receive(struct sk_buff *skb, struct net_device *dev,
 	/* Release reference to stack upwards */
 	caifd_put(caifd);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (err != 0)
 		err = NET_RX_DROP;
 	return err;
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct packet_type caif_packet_type __read_mostly = {
@@ -355,6 +409,9 @@ static void dev_flowctrl(struct net_device *dev, int on)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 			struct cflayer *link_support, int head_room,
 			struct cflayer **layer, int (**rcv_func)(
@@ -404,8 +461,11 @@ void caif_enroll_dev(struct net_device *dev, struct caif_dev_common *caifdev,
 }
 EXPORT_SYMBOL(caif_enroll_dev);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* notify Caif of device events */
 static int caif_device_notify(struct notifier_block *me, unsigned long what,
 			      void *arg)
@@ -414,6 +474,9 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 	struct caif_device_entry *caifd = NULL;
 	struct caif_dev_common *caifdev;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfcnfg *cfg;
 	struct cflayer *layer, *link_support;
 	int head_room = 0;
@@ -446,6 +509,8 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 		caif_enroll_dev(dev, caifdev, link_support, head_room,
 				&layer, NULL);
 		caifdev->flowctrl = dev_flowctrl;
+<<<<<<< HEAD
+=======
 =======
 	enum cfcnfg_phy_preference pref;
 	enum cfcnfg_phy_type phy_type;
@@ -504,6 +569,7 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 				     caifdev->use_stx);
 		mutex_unlock(&caifdevs->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case NETDEV_UP:
@@ -518,7 +584,11 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 <<<<<<< HEAD
 		caifd->xoff = 0;
 =======
+<<<<<<< HEAD
+		caifd->xoff = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cfcnfg_set_phy_state(cfg, &caifd->layer, true);
 		rcu_read_unlock();
 
@@ -541,6 +611,9 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 					 _CAIF_CTRLCMD_PHYIF_DOWN_IND,
 					 caifd->layer.id);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		spin_lock_bh(&caifd->flow_lock);
 
@@ -559,8 +632,11 @@ static int caif_device_notify(struct notifier_block *me, unsigned long what,
 		caifd->xoff_skb = NULL;
 
 		spin_unlock_bh(&caifd->flow_lock);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		caifd_put(caifd);
 		break;
 
@@ -618,12 +694,19 @@ static int caif_init_net(struct net *net)
 	struct caif_net *caifn = net_generic(net, caif_net_id);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&caifn->caifdevs.list);
 	mutex_init(&caifn->caifdevs.lock);
 
 	caifn->cfg = cfcnfg_create();
+<<<<<<< HEAD
+	if (!caifn->cfg)
+		return -ENOMEM;
+=======
 <<<<<<< HEAD
 	if (!caifn->cfg)
 		return -ENOMEM;
@@ -633,6 +716,7 @@ static int caif_init_net(struct net *net)
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -645,12 +729,18 @@ static void caif_exit_net(struct net *net)
 <<<<<<< HEAD
 	struct cfcnfg *cfg =  get_cfcnfg(net);
 =======
+<<<<<<< HEAD
+	struct cfcnfg *cfg =  get_cfcnfg(net);
+=======
 	struct cfcnfg *cfg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rtnl_lock();
 	mutex_lock(&caifdevs->lock);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	cfg = get_cfcnfg(net);
@@ -660,6 +750,7 @@ static void caif_exit_net(struct net *net)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(caifd, tmp, &caifdevs->list, list) {
 		int i = 0;
 		list_del_rcu(&caifd->list);
@@ -714,10 +805,16 @@ static void __exit caif_device_exit(void)
 	unregister_netdevice_notifier(&caif_device_notifier);
 	dev_remove_pack(&caif_packet_type);
 =======
+<<<<<<< HEAD
+	unregister_pernet_subsys(&caif_net_ops);
+	unregister_netdevice_notifier(&caif_device_notifier);
+	dev_remove_pack(&caif_packet_type);
+=======
 	unregister_netdevice_notifier(&caif_device_notifier);
 	dev_remove_pack(&caif_packet_type);
 	unregister_pernet_subsys(&caif_net_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init(caif_device_init);

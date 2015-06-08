@@ -19,8 +19,11 @@
 #include <linux/platform_device.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_data/exynos_usb3_drd.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct s3c24xx_uart_resources {
 	struct resource		*resources;
@@ -34,12 +37,20 @@ extern struct s3c24xx_uart_resources s5p_uart_resources[];
 extern struct s3c24xx_uart_resources exynos4_uart_resources[];
 extern struct s3c24xx_uart_resources exynos5_uart_resources[];
 =======
+<<<<<<< HEAD
+extern struct s3c24xx_uart_resources exynos4_uart_resources[];
+extern struct s3c24xx_uart_resources exynos5_uart_resources[];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct platform_device *s3c24xx_uart_devs[];
 extern struct platform_device *s3c24xx_uart_src[];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct platform_device s3c64xx_device_ac97;
 extern struct platform_device s3c64xx_device_iis0;
 extern struct platform_device s3c64xx_device_iis1;
@@ -59,6 +70,8 @@ extern struct platform_device s3c_device_hsmmc0;
 extern struct platform_device s3c_device_hsmmc1;
 extern struct platform_device s3c_device_hsmmc2;
 extern struct platform_device s3c_device_hsmmc3;
+<<<<<<< HEAD
+=======
 =======
 extern struct platform_device s3c_device_timer[];
 
@@ -92,6 +105,7 @@ extern struct platform_device s3c_device_ohci;
 extern struct platform_device s3c_device_lcd;
 extern struct platform_device s3c_device_wdt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct platform_device s3c_device_i2c0;
 extern struct platform_device s3c_device_i2c1;
 extern struct platform_device s3c_device_i2c2;
@@ -101,6 +115,9 @@ extern struct platform_device s3c_device_i2c5;
 extern struct platform_device s3c_device_i2c6;
 extern struct platform_device s3c_device_i2c7;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct platform_device s3c_device_iis;
 extern struct platform_device s3c_device_lcd;
 extern struct platform_device s3c_device_nand;
@@ -139,6 +156,8 @@ extern struct platform_device s5p_device_sdo;
 
 extern struct platform_device s5p6440_device_iis;
 extern struct platform_device s5p6440_device_pcm;
+<<<<<<< HEAD
+=======
 =======
 extern struct platform_device s5p_device_i2c_hdmiphy;
 extern struct platform_device s3c_device_rtc;
@@ -236,6 +255,7 @@ extern struct platform_device exynos_device_xhci;
 extern struct platform_device s5p6440_device_pcm;
 extern struct platform_device s5p6440_device_iis;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct platform_device s5p6450_device_iis0;
 extern struct platform_device s5p6450_device_iis1;
@@ -243,6 +263,9 @@ extern struct platform_device s5p6450_device_iis2;
 extern struct platform_device s5p6450_device_pcm0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct platform_device s5pc100_device_ac97;
 extern struct platform_device s5pc100_device_iis0;
@@ -278,6 +301,8 @@ extern struct platform_device exynos4_device_sysmmu;
 extern struct platform_device samsung_asoc_dma;
 extern struct platform_device samsung_asoc_idma;
 extern struct platform_device samsung_device_keypad;
+<<<<<<< HEAD
+=======
 =======
 extern struct platform_device s5pc100_device_ac97;
 extern struct platform_device s5pc100_device_pcm0;
@@ -340,6 +365,7 @@ extern struct platform_device s5p_device_dsim;
 extern struct platform_device exynos4_device_tmu;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* s3c2440 specific devices */
 
@@ -352,6 +378,8 @@ extern struct platform_device s3c_device_ac97;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_VIDEO_TSI)
 extern struct platform_device s3c_device_tsi;
 #endif
@@ -360,6 +388,7 @@ extern void exynos_ss_udc_set_platdata(struct exynos_usb3_drd_pdata *pd);
 extern void exynos_xhci_set_platdata(struct exynos_usb3_drd_pdata *pd);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * s3c_set_platdata() - helper for setting platform data
  * @pd: The default platform data for this device.

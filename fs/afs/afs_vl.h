@@ -52,8 +52,12 @@ enum AFSVL_Errors {
 <<<<<<< HEAD
 	AFSVL_BADSERVERFLAG 	= 363545,	/* Invalid replication site server flag */
 =======
+<<<<<<< HEAD
+	AFSVL_BADSERVERFLAG 	= 363545,	/* Invalid replication site server flag */
+=======
 	AFSVL_BADSERVERFLAG 	= 363545,	/* Invalid replication site server °ag */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	AFSVL_PERM 		= 363546,	/* No permission access */
 	AFSVL_NOMEM 		= 363547,	/* malloc/realloc failed to alloc enough memory */
 };

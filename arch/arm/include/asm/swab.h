@@ -23,15 +23,21 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(__KERNEL__)
 #if __LINUX_ARM_ARCH__ >= 6
 
 static inline __attribute_const__ __u32 __arch_swahb32(__u32 x)
+<<<<<<< HEAD
+=======
 =======
 #if defined(__KERNEL__) && __LINUX_ARM_ARCH__ >= 6
 
 static inline __attribute_const__ __u16 __arch_swab16(__u16 x)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	__asm__ ("rev16 %0, %1" : "=r" (x) : "r" (x));
 	return x;
@@ -40,8 +46,13 @@ static inline __attribute_const__ __u16 __arch_swab16(__u16 x)
 #define __arch_swahb32 __arch_swahb32
 #define __arch_swab16(x) ((__u16)__arch_swahb32(x))
 =======
+<<<<<<< HEAD
+#define __arch_swahb32 __arch_swahb32
+#define __arch_swab16(x) ((__u16)__arch_swahb32(x))
+=======
 #define __arch_swab16 __arch_swab16
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline __attribute_const__ __u32 __arch_swab32(__u32 x)
 {
@@ -51,14 +62,20 @@ static inline __attribute_const__ __u32 __arch_swab32(__u32 x)
 #define __arch_swab32 __arch_swab32
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #endif
 
 #if !defined(__KERNEL__) || __LINUX_ARM_ARCH__ < 6
+<<<<<<< HEAD
+=======
 =======
 #else
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline __attribute_const__ __u32 __arch_swab32(__u32 x)
 {
 	__u32 t;

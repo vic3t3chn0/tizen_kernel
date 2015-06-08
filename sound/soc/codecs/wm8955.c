@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <linux/regmap.h>
 =======
+<<<<<<< HEAD
+#include <linux/regmap.h>
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
 #include <sound/core.h>
@@ -46,8 +50,12 @@ struct wm8955_priv {
 <<<<<<< HEAD
 	struct regmap *regmap;
 =======
+<<<<<<< HEAD
+	struct regmap *regmap;
+=======
 	enum snd_soc_control_type control_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int mclk_rate;
 
@@ -58,6 +66,9 @@ struct wm8955_priv {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct reg_default wm8955_reg_defaults[] = {
 	{ 2,  0x0079 },     /* R2  - LOUT1 volume */
 	{ 3,  0x0079 },     /* R3  - ROUT1 volume */
@@ -137,6 +148,8 @@ static bool wm8955_volatile(struct device *dev, unsigned int reg)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 static const u16 wm8955_reg[WM8955_MAX_REGISTER + 1] = {
 	0x0000,     /* R0 */
@@ -202,6 +215,7 @@ static const u16 wm8955_reg[WM8955_MAX_REGISTER + 1] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8955_reset(struct snd_soc_codec *codec)
 {
 	return snd_soc_write(codec, WM8955_RESET, 0);
@@ -621,8 +635,12 @@ SND_SOC_DAPM_OUTPUT("OUT3"),
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route wm8955_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route wm8955_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route wm8955_intercon[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "DACL", NULL, "SYSCLK" },
 	{ "DACR", NULL, "SYSCLK" },
 
@@ -669,6 +687,8 @@ static const struct snd_soc_dapm_route wm8955_intercon[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int wm8955_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -685,6 +705,7 @@ static int wm8955_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8955_hw_params(struct snd_pcm_substream *substream,
 			    struct snd_pcm_hw_params *params,
 			    struct snd_soc_dai *dai)
@@ -866,9 +887,13 @@ static int wm8955_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 	u16 *reg_cache = codec->reg_cache;
 	int ret, i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (level) {
 	case SND_SOC_BIAS_ON:
@@ -900,6 +925,9 @@ static int wm8955_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 			regcache_sync(wm8955->regmap);
 =======
+<<<<<<< HEAD
+			regcache_sync(wm8955->regmap);
+=======
 			/* Sync back cached values if they're
 			 * different from the hardware default.
 			 */
@@ -913,6 +941,7 @@ static int wm8955_set_bias_level(struct snd_soc_codec *codec,
 				snd_soc_write(codec, i, reg_cache[i]);
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* Enable VREF and VMID */
 			snd_soc_update_bits(codec, WM8955_POWER_MANAGEMENT_1,
@@ -967,8 +996,12 @@ static int wm8955_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8955_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8955_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8955_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk = wm8955_set_sysclk,
 	.set_fmt = wm8955_set_fmt,
 	.hw_params = wm8955_hw_params,
@@ -989,6 +1022,9 @@ static struct snd_soc_dai_driver wm8955_dai = {
 
 #ifdef CONFIG_PM
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8955_suspend(struct snd_soc_codec *codec)
 {
 	struct wm8955_priv *wm8955 = snd_soc_codec_get_drvdata(codec);
@@ -997,12 +1033,15 @@ static int wm8955_suspend(struct snd_soc_codec *codec)
 
 	regcache_mark_dirty(wm8955->regmap);
 
+<<<<<<< HEAD
+=======
 =======
 static int wm8955_suspend(struct snd_soc_codec *codec, pm_message_t state)
 {
 	wm8955_set_bias_level(codec, SND_SOC_BIAS_OFF);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1022,17 +1061,23 @@ static int wm8955_probe(struct snd_soc_codec *codec)
 	struct wm8955_priv *wm8955 = snd_soc_codec_get_drvdata(codec);
 	struct wm8955_pdata *pdata = dev_get_platdata(codec->dev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret, i;
 
 	codec->control_data = wm8955->regmap;
 
 	ret = snd_soc_codec_set_cache_io(codec, 7, 9, SND_SOC_REGMAP);
+<<<<<<< HEAD
+=======
 =======
 	u16 *reg_cache = codec->reg_cache;
 	int ret, i;
 
 	ret = snd_soc_codec_set_cache_io(codec, 7, 9, wm8955->control_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != 0) {
 		dev_err(codec->dev, "Failed to set cache I/O: %d\n", ret);
 		return ret;
@@ -1088,12 +1133,17 @@ static int wm8955_probe(struct snd_soc_codec *codec)
 	if (pdata) {
 		if (pdata->out2_speaker)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			snd_soc_update_bits(codec, WM8955_ADDITIONAL_CONTROL_2,
 					    WM8955_ROUT2INV, WM8955_ROUT2INV);
 
 		if (pdata->monoin_diff)
 			snd_soc_update_bits(codec, WM8955_MONO_OUT_MIX_1,
 					    WM8955_DMEN, WM8955_DMEN);
+<<<<<<< HEAD
+=======
 =======
 			reg_cache[WM8955_ADDITIONAL_CONTROL_2]
 				|= WM8955_ROUT2INV;
@@ -1102,6 +1152,7 @@ static int wm8955_probe(struct snd_soc_codec *codec)
 			reg_cache[WM8955_MONO_OUT_MIX_1]
 				|= WM8955_DMEN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	wm8955_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
@@ -1111,8 +1162,11 @@ static int wm8955_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	wm8955_add_widgets(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_enable:
@@ -1138,6 +1192,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8955 = {
 	.resume =	wm8955_resume,
 	.set_bias_level = wm8955_set_bias_level,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls =	wm8955_snd_controls,
 	.num_controls = ARRAY_SIZE(wm8955_snd_controls),
@@ -1160,6 +1217,8 @@ static const struct regmap_config wm8955_regmap = {
 	.num_reg_defaults = ARRAY_SIZE(wm8955_reg_defaults),
 };
 
+<<<<<<< HEAD
+=======
 =======
 	.reg_cache_size = ARRAY_SIZE(wm8955_reg),
 	.reg_word_size = sizeof(u16),
@@ -1168,6 +1227,7 @@ static const struct regmap_config wm8955_regmap = {
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __devinit int wm8955_i2c_probe(struct i2c_client *i2c,
 				      const struct i2c_device_id *id)
 {
@@ -1175,6 +1235,9 @@ static __devinit int wm8955_i2c_probe(struct i2c_client *i2c,
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8955 = devm_kzalloc(&i2c->dev, sizeof(struct wm8955_priv),
 			      GFP_KERNEL);
 	if (wm8955 == NULL)
@@ -1199,6 +1262,8 @@ static __devinit int wm8955_i2c_probe(struct i2c_client *i2c,
 
 err:
 	regmap_exit(wm8955->regmap);
+<<<<<<< HEAD
+=======
 =======
 	wm8955 = kzalloc(sizeof(struct wm8955_priv), GFP_KERNEL);
 	if (wm8955 == NULL)
@@ -1212,21 +1277,28 @@ err:
 	if (ret < 0)
 		kfree(wm8955);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static __devexit int wm8955_i2c_remove(struct i2c_client *client)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8955_priv *wm8955 = i2c_get_clientdata(client);
 
 	snd_soc_unregister_codec(&client->dev);
 	regmap_exit(wm8955->regmap);
 
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_codec(&client->dev);
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1241,8 +1313,12 @@ static struct i2c_driver wm8955_i2c_driver = {
 <<<<<<< HEAD
 		.name = "wm8955",
 =======
+<<<<<<< HEAD
+		.name = "wm8955",
+=======
 		.name = "wm8955-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 	},
 	.probe =    wm8955_i2c_probe,
@@ -1251,16 +1327,22 @@ static struct i2c_driver wm8955_i2c_driver = {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init wm8955_modinit(void)
 {
 	int ret = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = i2c_add_driver(&wm8955_i2c_driver);
 	if (ret != 0) {
 		printk(KERN_ERR "Failed to register WM8955 I2C driver: %d\n",
@@ -1268,8 +1350,11 @@ static int __init wm8955_modinit(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 module_init(wm8955_modinit);
@@ -1279,10 +1364,14 @@ static void __exit wm8955_exit(void)
 <<<<<<< HEAD
 	i2c_del_driver(&wm8955_i2c_driver);
 =======
+<<<<<<< HEAD
+	i2c_del_driver(&wm8955_i2c_driver);
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	i2c_del_driver(&wm8955_i2c_driver);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(wm8955_exit);
 

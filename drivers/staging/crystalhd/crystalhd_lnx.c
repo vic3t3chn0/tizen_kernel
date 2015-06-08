@@ -15,10 +15,24 @@
   along with this driver.  If not, see <http://www.gnu.org/licenses/>.
 ***************************************************************************/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "crystalhd.h"
+
+#include <linux/mutex.h>
+#include <linux/slab.h>
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 #include <linux/slab.h>
 
 #include "crystalhd_lnx.h"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static DEFINE_MUTEX(chd_dec_mutex);
 static struct class *crystalhd_class;
@@ -298,7 +312,14 @@ static int chd_dec_open(struct inode *in, struct file *fd)
 	enum BC_STATUS sts = BC_STS_SUCCESS;
 	struct crystalhd_user *uc = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	BCMLOG_ENTER;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	BCMLOG_ENTER;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!adp) {
 		BCMLOG_ERR("Invalid adp\n");
 		return -EINVAL;
@@ -327,7 +348,14 @@ static int chd_dec_close(struct inode *in, struct file *fd)
 	struct crystalhd_adp *adp = chd_get_adp();
 	struct crystalhd_user *uc;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	BCMLOG_ENTER;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	BCMLOG_ENTER;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!adp) {
 		BCMLOG_ERR("Invalid adp\n");
 		return -EINVAL;
@@ -513,8 +541,16 @@ static void __devexit chd_dec_pci_remove(struct pci_dev *pdev)
 	struct crystalhd_adp *pinfo;
 	enum BC_STATUS sts = BC_STS_SUCCESS;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	BCMLOG_ENTER;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	BCMLOG_ENTER;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pinfo = pci_get_drvdata(pdev);
 	if (!pinfo) {
 		BCMLOG_ERR("could not get adp\n");

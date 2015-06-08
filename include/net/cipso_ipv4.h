@@ -11,8 +11,12 @@
 <<<<<<< HEAD
  * Author: Paul Moore <paul@paul-moore.com>
 =======
+<<<<<<< HEAD
+ * Author: Paul Moore <paul@paul-moore.com>
+=======
  * Author: Paul Moore <paul.moore@hp.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  */
 
@@ -48,9 +52,13 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 #include <asm/unaligned.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* known doi values */
 #define CIPSO_V4_DOI_UNKNOWN          0x00000000
@@ -297,6 +305,9 @@ static inline int cipso_v4_validate(const struct sk_buff *skb,
 <<<<<<< HEAD
 	return -ENOSYS;
 =======
+<<<<<<< HEAD
+	return -ENOSYS;
+=======
 	unsigned char *opt = *option;
 	unsigned char err_offset = 0;
 	u8 opt_len = opt[1];
@@ -325,6 +336,7 @@ out:
 	return err_offset;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif /* CONFIG_NETLABEL */
 

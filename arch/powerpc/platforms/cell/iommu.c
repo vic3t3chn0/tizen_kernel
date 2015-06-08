@@ -415,9 +415,13 @@ static void cell_iommu_enable_hardware(struct cbe_iommu *iommu)
 <<<<<<< HEAD
 	ret = request_irq(virq, ioc_interrupt, 0, iommu->name, iommu);
 =======
+<<<<<<< HEAD
+	ret = request_irq(virq, ioc_interrupt, 0, iommu->name, iommu);
+=======
 	ret = request_irq(virq, ioc_interrupt, IRQF_DISABLED,
 			iommu->name, iommu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(ret);
 
 	/* set the IOC segment table origin register (and turn on the iommu) */
@@ -573,8 +577,13 @@ static void *dma_fixed_alloc_coherent(struct device *dev, size_t size,
 				      dma_addr_t *dma_handle, gfp_t flag,
 				      struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				      dma_addr_t *dma_handle, gfp_t flag,
+				      struct dma_attrs *attrs)
+=======
 				      dma_addr_t *dma_handle, gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (iommu_fixed_is_weak)
 		return iommu_alloc_coherent(dev, cell_get_iommu_table(dev),
@@ -583,6 +592,9 @@ static void *dma_fixed_alloc_coherent(struct device *dev, size_t size,
 					    dev_to_node(dev));
 	else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return dma_direct_ops.alloc(dev, size, dma_handle, flag,
 					    attrs);
 }
@@ -590,6 +602,8 @@ static void *dma_fixed_alloc_coherent(struct device *dev, size_t size,
 static void dma_fixed_free_coherent(struct device *dev, size_t size,
 				    void *vaddr, dma_addr_t dma_handle,
 				    struct dma_attrs *attrs)
+<<<<<<< HEAD
+=======
 =======
 		return dma_direct_ops.alloc_coherent(dev, size, dma_handle,
 						     flag);
@@ -598,6 +612,7 @@ static void dma_fixed_free_coherent(struct device *dev, size_t size,
 static void dma_fixed_free_coherent(struct device *dev, size_t size,
 				    void *vaddr, dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (iommu_fixed_is_weak)
 		iommu_free_coherent(cell_get_iommu_table(dev), size, vaddr,
@@ -606,8 +621,12 @@ static void dma_fixed_free_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 		dma_direct_ops.free(dev, size, vaddr, dma_handle, attrs);
 =======
+<<<<<<< HEAD
+		dma_direct_ops.free(dev, size, vaddr, dma_handle, attrs);
+=======
 		dma_direct_ops.free_coherent(dev, size, vaddr, dma_handle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static dma_addr_t dma_fixed_map_page(struct device *dev, struct page *page,
@@ -670,9 +689,14 @@ struct dma_map_ops dma_iommu_fixed_ops = {
 	.alloc          = dma_fixed_alloc_coherent,
 	.free           = dma_fixed_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc          = dma_fixed_alloc_coherent,
+	.free           = dma_fixed_free_coherent,
+=======
 	.alloc_coherent = dma_fixed_alloc_coherent,
 	.free_coherent  = dma_fixed_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_sg         = dma_fixed_map_sg,
 	.unmap_sg       = dma_fixed_unmap_sg,
 	.dma_supported  = dma_fixed_dma_supported,
@@ -1070,7 +1094,12 @@ static int __init cell_iommu_fixed_mapping_init(void)
 	of_node_put(np);
 
 =======
+<<<<<<< HEAD
+	of_node_put(np);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!np) {
 		pr_debug("iommu: fixed mapping disabled, no axons found\n");
 		return -1;
@@ -1193,6 +1222,9 @@ static int __init setup_iommu_fixed(char *str)
 __setup("iommu_fixed=", setup_iommu_fixed);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 cell_dma_get_required_mask(struct device *dev)
 {
 	struct dma_map_ops *dma_ops;
@@ -1213,8 +1245,11 @@ static u64 cell_dma_get_required_mask(struct device *dev)
 	return DMA_BIT_MASK(64);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init cell_iommu_init(void)
 {
 	struct device_node *np;
@@ -1234,7 +1269,11 @@ static int __init cell_iommu_init(void)
 <<<<<<< HEAD
 	ppc_md.dma_get_required_mask = cell_dma_get_required_mask;
 =======
+<<<<<<< HEAD
+	ppc_md.dma_get_required_mask = cell_dma_get_required_mask;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ppc_md.tce_build = tce_build_cell;
 	ppc_md.tce_free = tce_free_cell;
 

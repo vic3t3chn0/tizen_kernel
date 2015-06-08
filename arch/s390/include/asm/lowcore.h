@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  *    Copyright IBM Corp. 1999,2012
 =======
+<<<<<<< HEAD
+ *    Copyright IBM Corp. 1999,2012
+=======
  *    Copyright IBM Corp. 1999,2010
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    Author(s): Hartmut Penner <hp@de.ibm.com>,
  *		 Martin Schwidefsky <schwidefsky@de.ibm.com>,
  *		 Denis Joseph Barrow,
@@ -18,6 +22,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void restart_int_handler(void);
 void ext_int_handler(void);
 void system_call(void);
@@ -26,6 +32,7 @@ void mcck_int_handler(void);
 void io_int_handler(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_32BIT
 
 #define LC_ORDER 0
@@ -65,8 +72,12 @@ struct _lowcore {
 <<<<<<< HEAD
 	__u16	ext_cpu_addr;			/* 0x0084 */
 =======
+<<<<<<< HEAD
+	__u16	ext_cpu_addr;			/* 0x0084 */
+=======
 	__u16	cpu_addr;			/* 0x0084 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u16	ext_int_code;			/* 0x0086 */
 	__u16	svc_ilc;			/* 0x0088 */
 	__u16	svc_code;			/* 0x008a */
@@ -108,6 +119,9 @@ struct _lowcore {
 	__u32	cregs_save_area[16];		/* 0x01c0 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Save areas. */
 	__u32	save_area_sync[8];		/* 0x0200 */
 	__u32	save_area_async[8];		/* 0x0220 */
@@ -159,6 +173,8 @@ struct _lowcore {
 	__u32	machine_flags;			/* 0x02f4 */
 	__u32	ftrace_func;			/* 0x02f8 */
 	__u8	pad_0x02fc[0x0300-0x02fc];	/* 0x02fc */
+<<<<<<< HEAD
+=======
 =======
 	/* Return psws. */
 	__u32	save_area[16];			/* 0x0200 */
@@ -202,6 +218,7 @@ struct _lowcore {
 	__u32	ftrace_func;			/* 0x02e4 */
 	__u8	pad_0x02e8[0x0300-0x02e8];	/* 0x02e8 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Interrupt response block */
 	__u8	irb[64];			/* 0x0300 */
@@ -216,13 +233,19 @@ struct _lowcore {
 	__u32	ipib;				/* 0x0e00 */
 	__u32	ipib_checksum;			/* 0x0e04 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32	vmcore_info;			/* 0x0e08 */
 	__u8	pad_0x0e0c[0x0e18-0x0e0c];	/* 0x0e0c */
 	__u32	os_info;			/* 0x0e18 */
 	__u8	pad_0x0e1c[0x0f00-0x0e1c];	/* 0x0e1c */
+<<<<<<< HEAD
+=======
 =======
 	__u8	pad_0x0e08[0x0f00-0x0e08];	/* 0x0e08 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Extended facility list */
 	__u64	stfle_fac_list[32];		/* 0x0f00 */
@@ -257,8 +280,12 @@ struct _lowcore {
 <<<<<<< HEAD
 	__u16	ext_cpu_addr;			/* 0x0084 */
 =======
+<<<<<<< HEAD
+	__u16	ext_cpu_addr;			/* 0x0084 */
+=======
 	__u16	cpu_addr;			/* 0x0084 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u16	ext_int_code;			/* 0x0086 */
 	__u16	svc_ilc;			/* 0x0088 */
 	__u16	svc_code;			/* 0x008a */
@@ -304,6 +331,9 @@ struct _lowcore {
 	psw_t	io_new_psw;			/* 0x01f0 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Save areas. */
 	__u64	save_area_sync[8];		/* 0x0200 */
 	__u64	save_area_async[8];		/* 0x0240 */
@@ -365,6 +395,8 @@ struct _lowcore {
 	__u32	paste[16];			/* 0x0440 */
 
 	__u8	pad_0x0480[0x0e00-0x0480];	/* 0x0480 */
+<<<<<<< HEAD
+=======
 =======
 	/* Entry/exit save area & return psws. */
 	__u64	save_area[16];			/* 0x0200 */
@@ -418,6 +450,7 @@ struct _lowcore {
 
 	__u8	pad_0x0400[0x0e00-0x0400];	/* 0x0400 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * 0xe00 contains the address of the IPL Parameter Information
@@ -427,6 +460,9 @@ struct _lowcore {
 	__u64	ipib;				/* 0x0e00 */
 	__u32	ipib_checksum;			/* 0x0e08 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Because the vmcore_info pointer is not 8 byte aligned it never
 	 * should not be accessed directly. For accessing the pointer, first
@@ -436,9 +472,12 @@ struct _lowcore {
 	__u8	pad_0x0e14[0x0e18-0x0e14];	/* 0x0e14 */
 	__u64	os_info;			/* 0x0e18 */
 	__u8	pad_0x0e20[0x0f00-0x0e20];	/* 0x0e20 */
+<<<<<<< HEAD
+=======
 =======
 	__u8	pad_0x0e0c[0x0f00-0x0e0c];	/* 0x0e0c */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Extended facility list */
 	__u64	stfle_fac_list[32];		/* 0x0f00 */

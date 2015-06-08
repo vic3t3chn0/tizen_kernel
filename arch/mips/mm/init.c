@@ -210,8 +210,12 @@ void copy_user_highpage(struct page *to, struct page *from,
 <<<<<<< HEAD
 	vto = kmap_atomic(to);
 =======
+<<<<<<< HEAD
+	vto = kmap_atomic(to);
+=======
 	vto = kmap_atomic(to, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_has_dc_aliases &&
 	    page_mapped(from) && !Page_dcache_dirty(from)) {
 		vfrom = kmap_coherent(from, vaddr);
@@ -223,10 +227,16 @@ void copy_user_highpage(struct page *to, struct page *from,
 		copy_page(vto, vfrom);
 		kunmap_atomic(vfrom);
 =======
+<<<<<<< HEAD
+		vfrom = kmap_atomic(from);
+		copy_page(vto, vfrom);
+		kunmap_atomic(vfrom);
+=======
 		vfrom = kmap_atomic(from, KM_USER0);
 		copy_page(vto, vfrom);
 		kunmap_atomic(vfrom, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if ((!cpu_has_ic_fills_f_dc) ||
 	    pages_do_alias((unsigned long)vto, vaddr & PAGE_MASK))
@@ -234,8 +244,12 @@ void copy_user_highpage(struct page *to, struct page *from,
 <<<<<<< HEAD
 	kunmap_atomic(vto);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(vto);
+=======
 	kunmap_atomic(vto, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Make sure this page is cleared on other CPU's too before using it */
 	smp_wmb();
 }
@@ -292,11 +306,16 @@ void __init fixrange_init(unsigned long start, unsigned long end,
 	pgd = pgd_base + i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for ( ; (i < PTRS_PER_PGD) && (vaddr < end); pgd++, i++) {
 		pud = (pud_t *)pgd;
 		for ( ; (j < PTRS_PER_PUD) && (vaddr < end); pud++, j++) {
 			pmd = (pmd_t *)pud;
 			for (; (k < PTRS_PER_PMD) && (vaddr < end); pmd++, k++) {
+<<<<<<< HEAD
+=======
 =======
 	for ( ; (i < PTRS_PER_PGD) && (vaddr != end); pgd++, i++) {
 		pud = (pud_t *)pgd;
@@ -304,6 +323,7 @@ void __init fixrange_init(unsigned long start, unsigned long end,
 			pmd = (pmd_t *)pud;
 			for (; (k < PTRS_PER_PMD) && (vaddr != end); pmd++, k++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (pmd_none(*pmd)) {
 					pte = (pte_t *) alloc_bootmem_low_pages(PAGE_SIZE);
 					set_pmd(pmd, __pmd((unsigned long)pte));
@@ -327,6 +347,9 @@ int page_is_ram(unsigned long pagenr)
 		unsigned long addr, end;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (boot_mem_map.map[i].type) {
 		case BOOT_MEM_RAM:
 		case BOOT_MEM_INIT_RAM:
@@ -335,11 +358,14 @@ int page_is_ram(unsigned long pagenr)
 			/* not usable memory */
 			continue;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (boot_mem_map.map[i].type != BOOT_MEM_RAM)
 			/* not usable memory */
 			continue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		addr = PFN_UP(boot_mem_map.map[i].addr);
 		end = PFN_DOWN(boot_mem_map.map[i].addr +
@@ -404,8 +430,12 @@ void __init mem_init(void)
 <<<<<<< HEAD
 	max_mapnr = highend_pfn ? highend_pfn : max_low_pfn;
 =======
+<<<<<<< HEAD
+	max_mapnr = highend_pfn ? highend_pfn : max_low_pfn;
+=======
 	max_mapnr = highend_pfn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	max_mapnr = max_low_pfn;
 #endif
@@ -419,8 +449,12 @@ void __init mem_init(void)
 <<<<<<< HEAD
 		if (page_is_ram(tmp) && pfn_valid(tmp)) {
 =======
+<<<<<<< HEAD
+		if (page_is_ram(tmp) && pfn_valid(tmp)) {
+=======
 		if (page_is_ram(tmp)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ram++;
 			if (PageReserved(pfn_to_page(tmp)))
 				reservedpages++;

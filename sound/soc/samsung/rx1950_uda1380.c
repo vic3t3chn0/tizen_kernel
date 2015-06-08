@@ -22,8 +22,14 @@
 #include <linux/gpio.h>
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+#include <linux/gpio.h>
+#include <linux/module.h>
+=======
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/soc.h>
 #include <sound/jack.h>
@@ -97,6 +103,8 @@ static struct snd_soc_dai_link rx1950_uda1380_dai[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct snd_soc_card rx1950_asoc = {
 	.name = "rx1950",
 	.dai_link = rx1950_uda1380_dai,
@@ -104,6 +112,7 @@ static struct snd_soc_card rx1950_asoc = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* rx1950 machine dapm widgets */
 static const struct snd_soc_dapm_widget uda1380_dapm_widgets[] = {
 	SND_SOC_DAPM_HP("Headphone Jack", NULL),
@@ -126,6 +135,9 @@ static const struct snd_soc_dapm_route audio_map[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_card rx1950_asoc = {
 	.name = "rx1950",
 	.owner = THIS_MODULE,
@@ -138,8 +150,11 @@ static struct snd_soc_card rx1950_asoc = {
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *s3c24xx_snd_device;
 
 static int rx1950_startup(struct snd_pcm_substream *substream)
@@ -245,6 +260,8 @@ static int rx1950_uda1380_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Add rx1950 specific widgets */
 	err = snd_soc_dapm_new_controls(dapm, uda1380_dapm_widgets,
 				  ARRAY_SIZE(uda1380_dapm_widgets));
@@ -260,15 +277,19 @@ static int rx1950_uda1380_init(struct snd_soc_pcm_runtime *rtd)
 		return err;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_dapm_enable_pin(dapm, "Headphone Jack");
 	snd_soc_dapm_enable_pin(dapm, "Speaker");
 	snd_soc_dapm_enable_pin(dapm, "Mic Jack");
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_jack_new(codec, "Headphone Jack", SND_JACK_HEADPHONE,
 		&hp_jack);
 

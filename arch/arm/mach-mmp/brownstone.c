@@ -16,8 +16,11 @@
 #include <linux/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/machine.h>
 #include <linux/regulator/max8649.h>
 #include <linux/regulator/fixed.h>
@@ -35,8 +38,12 @@
 <<<<<<< HEAD
 #define BROWNSTONE_NR_IRQS	(MMP_NR_IRQS + 40)
 =======
+<<<<<<< HEAD
+#define BROWNSTONE_NR_IRQS	(MMP_NR_IRQS + 40)
+=======
 #define BROWNSTONE_NR_IRQS	(IRQ_BOARD_START + 40)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GPIO_5V_ENABLE		(89)
 
@@ -169,8 +176,12 @@ static struct max8925_platform_data brownstone_max8925_info = {
 <<<<<<< HEAD
 	.irq_base		= MMP_NR_IRQS,
 =======
+<<<<<<< HEAD
+	.irq_base		= MMP_NR_IRQS,
+=======
 	.irq_base		= IRQ_BOARD_START,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info brownstone_twsi1_info[] = {
@@ -189,6 +200,9 @@ static struct i2c_board_info brownstone_twsi1_info[] = {
 
 static struct sdhci_pxa_platdata mmp2_sdh_platdata_mmc0 = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.clk_delay_cycles = 0x1f,
 };
 
@@ -206,9 +220,12 @@ static struct sram_platdata mmp2_asram_platdata = {
 static struct sram_platdata mmp2_isram_platdata = {
 	.pool_name	= "isram",
 	.granularity	= SRAM_GRANULARITY,
+<<<<<<< HEAD
+=======
 =======
 	.max_speed	= 25000000,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init brownstone_init(void)
@@ -219,16 +236,22 @@ static void __init brownstone_init(void)
 	mmp2_add_uart(1);
 	mmp2_add_uart(3);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(&mmp2_device_gpio);
 	mmp2_add_twsi(1, NULL, ARRAY_AND_SIZE(brownstone_twsi1_info));
 	mmp2_add_sdhost(0, &mmp2_sdh_platdata_mmc0); /* SD/MMC */
 	mmp2_add_sdhost(2, &mmp2_sdh_platdata_mmc2); /* eMMC */
 	mmp2_add_asram(&mmp2_asram_platdata);
 	mmp2_add_isram(&mmp2_isram_platdata);
+<<<<<<< HEAD
+=======
 =======
 	mmp2_add_twsi(1, NULL, ARRAY_AND_SIZE(brownstone_twsi1_info));
 	mmp2_add_sdhost(0, &mmp2_sdh_platdata_mmc0); /* SD/MMC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* enable 5v regulator */
 	platform_device_register(&brownstone_v_5vp_device);
@@ -244,5 +267,9 @@ MACHINE_START(BROWNSTONE, "Brownstone Development Platform")
 <<<<<<< HEAD
 	.restart	= mmp_restart,
 =======
+<<<<<<< HEAD
+	.restart	= mmp_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

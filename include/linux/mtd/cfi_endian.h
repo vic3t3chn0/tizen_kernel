@@ -20,6 +20,9 @@
 #include <asm/byteorder.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CFI_HOST_ENDIAN 1
 #define CFI_LITTLE_ENDIAN 2
 #define CFI_BIG_ENDIAN 3
@@ -52,6 +55,8 @@
 #define _cfi_to_cpu(w, s, x) (cfi_host(s)?(x):_swap_to_cpu(w, s, x))
 #define _swap_to_cfi(w, s, x) (cfi_be(s)?cpu_to_be##w(x):cpu_to_le##w(x))
 #define _swap_to_cpu(w, s, x) (cfi_be(s)?be##w##_to_cpu(x):le##w##_to_cpu(x))
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_MTD_CFI_ADV_OPTIONS
 
@@ -104,3 +109,4 @@
 #error No CFI endianness defined
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

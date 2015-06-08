@@ -134,8 +134,12 @@ int snd_hda_codec_amp_stereo(struct hda_codec *codec, hda_nid_t nid,
 <<<<<<< HEAD
 #ifdef CONFIG_PM
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+=======
 #ifdef SND_HDA_NEEDS_RESUME
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void snd_hda_codec_resume_amp(struct hda_codec *codec);
 #endif
 
@@ -144,6 +148,9 @@ void snd_hda_set_vmaster_tlv(struct hda_codec *codec, hda_nid_t nid, int dir,
 struct snd_kcontrol *snd_hda_find_mixer_ctl(struct hda_codec *codec,
 					    const char *name);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __snd_hda_add_vmaster(struct hda_codec *codec, char *name,
 			  unsigned int *tlv, const char * const *slaves,
 			  const char *suffix, bool init_slave_vol,
@@ -174,12 +181,15 @@ int snd_hda_add_vmaster_hook(struct hda_codec *codec,
 			     bool expose_enum_ctl);
 void snd_hda_sync_vmaster_hook(struct hda_vmaster_mute_hook *hook);
 
+<<<<<<< HEAD
+=======
 =======
 int snd_hda_add_vmaster(struct hda_codec *codec, char *name,
 			unsigned int *tlv, const char * const *slaves);
 int snd_hda_codec_reset(struct hda_codec *codec);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* amp value bits */
 #define HDA_AMP_MUTE	0x80
 #define HDA_AMP_UNMUTE	0x00
@@ -254,8 +264,14 @@ int snd_hda_create_spdif_out_ctls(struct hda_codec *codec,
 				  hda_nid_t associated_nid,
 				  hda_nid_t cvt_nid);
 =======
+<<<<<<< HEAD
+int snd_hda_create_spdif_out_ctls(struct hda_codec *codec,
+				  hda_nid_t associated_nid,
+				  hda_nid_t cvt_nid);
+=======
 int snd_hda_create_spdif_out_ctls(struct hda_codec *codec, hda_nid_t nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_hda_create_spdif_in_ctls(struct hda_codec *codec, hda_nid_t nid);
 
 /*
@@ -312,7 +328,12 @@ enum { HDA_DIG_NONE, HDA_DIG_EXCLUSIVE, HDA_DIG_ANALOG_DUP }; /* dig_out_used */
 #define HDA_MAX_OUTS	5
 
 =======
+<<<<<<< HEAD
+#define HDA_MAX_OUTS	5
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hda_multi_out {
 	int num_dacs;		/* # of DACs, must be more than 1 */
 	const hda_nid_t *dac_nids;	/* DAC list */
@@ -321,8 +342,13 @@ struct hda_multi_out {
 	hda_nid_t hp_out_nid[HDA_MAX_OUTS];	/* DACs for multiple HPs */
 	hda_nid_t extra_out_nid[HDA_MAX_OUTS];	/* other (e.g. speaker) DACs */
 =======
+<<<<<<< HEAD
+	hda_nid_t hp_out_nid[HDA_MAX_OUTS];	/* DACs for multiple HPs */
+	hda_nid_t extra_out_nid[HDA_MAX_OUTS];	/* other (e.g. speaker) DACs */
+=======
 	hda_nid_t extra_out_nid[3];	/* optional DACs, 0 when not exists */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hda_nid_t dig_out_nid;	/* digital out audio widget */
 	const hda_nid_t *slave_dig_outs;
 	int max_channels;	/* currently supported analog channels */
@@ -386,10 +412,13 @@ static inline int snd_hda_codec_proc_new(struct hda_codec *codec) { return 0; }
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define SND_PRINT_RATES_ADVISED_BUFSIZE	80
 void snd_print_pcm_rates(int pcm, char *buf, int buflen);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SND_PRINT_BITS_ADVISED_BUFSIZE	16
 void snd_print_pcm_bits(int pcm, char *buf, int buflen);
 
@@ -442,8 +471,12 @@ enum {
 <<<<<<< HEAD
 #define AUTO_CFG_MAX_OUTS	HDA_MAX_OUTS
 =======
+<<<<<<< HEAD
+#define AUTO_CFG_MAX_OUTS	HDA_MAX_OUTS
+=======
 #define AUTO_CFG_MAX_OUTS	5
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AUTO_CFG_MAX_INS	8
 
 struct auto_pin_cfg_item {
@@ -453,12 +486,17 @@ struct auto_pin_cfg_item {
 
 struct auto_pin_cfg;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const char *hda_get_autocfg_input_label(struct hda_codec *codec,
 					const struct auto_pin_cfg *cfg,
 					int input);
 int snd_hda_get_pin_label(struct hda_codec *codec, hda_nid_t nid,
 			  const struct auto_pin_cfg *cfg,
 			  char *label, int maxlen, int *indexp);
+<<<<<<< HEAD
+=======
 =======
 const char *hda_get_input_pin_label(struct hda_codec *codec, hda_nid_t pin,
 				    int check_location);
@@ -466,6 +504,7 @@ const char *hda_get_autocfg_input_label(struct hda_codec *codec,
 					const struct auto_pin_cfg *cfg,
 					int input);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_hda_add_imux_item(struct hda_input_mux *imux, const char *label,
 			  int index, int *type_index_ret);
 
@@ -510,6 +549,9 @@ struct auto_pin_cfg {
 #define get_defcfg_device(cfg) \
 	((cfg & AC_DEFCFG_DEVICE) >> AC_DEFCFG_DEVICE_SHIFT)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define get_defcfg_misc(cfg) \
 	((cfg & AC_DEFCFG_MISC) >> AC_DEFCFG_MISC_SHIFT)
 
@@ -525,12 +567,15 @@ int snd_hda_parse_pin_defcfg(struct hda_codec *codec,
 /* older function */
 #define snd_hda_parse_pin_def_config(codec, cfg, ignore) \
 	snd_hda_parse_pin_defcfg(codec, cfg, ignore, 0)
+<<<<<<< HEAD
+=======
 =======
 
 int snd_hda_parse_pin_def_config(struct hda_codec *codec,
 				 struct auto_pin_cfg *cfg,
 				 const hda_nid_t *ignore_nids);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* amp values */
 #define AMP_IN_MUTE(idx)	(0x7080 | ((idx)<<8))
@@ -586,6 +631,10 @@ u32 snd_hda_query_pin_caps(struct hda_codec *codec, hda_nid_t nid);
 int snd_hda_override_pin_caps(struct hda_codec *codec, hda_nid_t nid,
 			      unsigned int caps);
 =======
+<<<<<<< HEAD
+int snd_hda_override_pin_caps(struct hda_codec *codec, hda_nid_t nid,
+			      unsigned int caps);
+=======
 u32 snd_hda_pin_sense(struct hda_codec *codec, hda_nid_t nid);
 int snd_hda_jack_detect(struct hda_codec *codec, hda_nid_t nid);
 
@@ -595,6 +644,7 @@ static inline bool is_jack_detectable(struct hda_codec *codec, hda_nid_t nid)
 		(get_wcaps(codec, nid) & AC_WCAP_UNSOL_CAP);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* flags for hda_nid_item */
 #define HDA_NID_ITEM_AMP	(1<<0)
@@ -662,8 +712,11 @@ int snd_hda_get_bool_hint(struct hda_codec *codec, const char *key)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SND_HDA_POWER_SAVE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void snd_hda_schedule_power_save(struct hda_codec *codec);
 
 struct hda_amp_list {
@@ -682,8 +735,11 @@ int snd_hda_check_amp_list_power(struct hda_codec *codec,
 				 hda_nid_t nid);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif /* CONFIG_SND_HDA_POWER_SAVE */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * AMP control callbacks
@@ -696,8 +752,13 @@ int snd_hda_check_amp_list_power(struct hda_codec *codec,
 #define get_amp_direction_(pv)	(((pv) >> 18) & 0x1)
 #define get_amp_direction(kc)	get_amp_direction_((kc)->private_value)
 =======
+<<<<<<< HEAD
+#define get_amp_direction_(pv)	(((pv) >> 18) & 0x1)
+#define get_amp_direction(kc)	get_amp_direction_((kc)->private_value)
+=======
 #define get_amp_direction(kc)	(((kc)->private_value >> 18) & 0x1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define get_amp_index(kc)	(((kc)->private_value >> 19) & 0xf)
 #define get_amp_offset(kc)	(((kc)->private_value >> 23) & 0x3f)
 #define get_amp_min_mute(kc)	(((kc)->private_value >> 29) & 0x1)
@@ -718,7 +779,11 @@ struct cea_sad {
 <<<<<<< HEAD
 #define ELD_MAX_SIZE    256
 =======
+<<<<<<< HEAD
+#define ELD_MAX_SIZE    256
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ELD_MAX_MNL	16
 #define ELD_MAX_SAD	16
 
@@ -744,12 +809,18 @@ struct hdmi_eld {
 	int	sad_count;
 	struct cea_sad sad[ELD_MAX_SAD];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * all fields above eld_buffer will be cleared before updating ELD
 	 */
 	char    eld_buffer[ELD_MAX_SIZE];
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PROC_FS
 	struct snd_info_entry *proc_entry;
 #endif
@@ -762,9 +833,14 @@ void snd_hdmi_show_eld(struct hdmi_eld *eld);
 void snd_hdmi_eld_update_pcm_info(struct hdmi_eld *eld,
 			      struct hda_pcm_stream *hinfo);
 =======
+<<<<<<< HEAD
+void snd_hdmi_eld_update_pcm_info(struct hdmi_eld *eld,
+			      struct hda_pcm_stream *hinfo);
+=======
 void hdmi_eld_update_pcm_info(struct hdmi_eld *eld, struct hda_pcm_stream *pcm,
 			      struct hda_pcm_stream *codec_pars);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PROC_FS
 int snd_hda_eld_proc_new(struct hda_codec *codec, struct hdmi_eld *eld,
@@ -786,6 +862,8 @@ static inline void snd_hda_eld_proc_free(struct hda_codec *codec,
 #define SND_PRINT_CHANNEL_ALLOCATION_ADVISED_BUFSIZE 80
 void snd_print_channel_allocation(int spk_alloc, char *buf, int buflen);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -813,4 +891,5 @@ static inline void snd_hda_input_jack_free(struct hda_codec *codec)
 #endif /* CONFIG_SND_HDA_INPUT_JACK */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __SOUND_HDA_LOCAL_H */

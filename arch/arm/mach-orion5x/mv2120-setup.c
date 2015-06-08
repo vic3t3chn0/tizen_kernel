@@ -10,8 +10,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
@@ -26,8 +30,11 @@
 #include <asm/mach-types.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 #include <mach/orion5x.h>
 #include "common.h"
@@ -239,8 +246,12 @@ MACHINE_START(MV2120, "HP Media Vault mv2120")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= mv2120_init,
 	.map_io		= orion5x_map_io,
 	.init_early	= orion5x_init_early,
@@ -250,6 +261,11 @@ MACHINE_START(MV2120, "HP Media Vault mv2120")
 	.fixup		= tag_fixup_mem32,
 	.restart	= orion5x_restart,
 =======
+<<<<<<< HEAD
+	.fixup		= tag_fixup_mem32,
+	.restart	= orion5x_restart,
+=======
 	.fixup		= tag_fixup_mem32
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

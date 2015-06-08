@@ -14,8 +14,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mpic.h>
 #include <asm/i8259.h>
 
@@ -38,15 +41,25 @@ void __init mpc86xx_init_irq(void)
 #ifdef CONFIG_PPC_I8259
 	struct device_node *np;
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PPC_I8259
+	struct device_node *np;
+=======
 	struct mpic *mpic;
 	struct device_node *np;
 	struct resource res;
 #ifdef CONFIG_PPC_I8259
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device_node *cascade_node = NULL;
 	int cascade_irq;
 #endif
 
+<<<<<<< HEAD
+	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN |
+			MPIC_SINGLE_DEST_CPU,
+			0, 256, " MPIC     ");
+=======
 <<<<<<< HEAD
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN |
 			MPIC_SINGLE_DEST_CPU,
@@ -65,6 +78,7 @@ void __init mpc86xx_init_irq(void)
 			0, 256, " MPIC     ");
 	of_node_put(np);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(mpic == NULL);
 
 	mpic_init(mpic);

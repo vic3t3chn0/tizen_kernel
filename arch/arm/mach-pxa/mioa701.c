@@ -56,7 +56,11 @@
 <<<<<<< HEAD
 #include <mach/smemc.h>
 =======
+<<<<<<< HEAD
+#include <mach/smemc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/soc_camera.h>
 
 #include <mach/mioa701.h>
@@ -183,6 +187,8 @@ static unsigned long mioa701_pin_config[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define MIO_GPIO_IN(num, _desc) \
 	{ .gpio = (num), .dir = 0, .desc = (_desc) }
 #define MIO_GPIO_OUT(num, _init, _desc) \
@@ -228,6 +234,7 @@ static void mio_gpio_free(struct gpio_ress *gpios, int size)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* LCD Screen and Backlight */
 static struct platform_pwm_backlight_data mioa701_backlight_data = {
 	.pwm_id		= 0,
@@ -358,10 +365,16 @@ static struct gpio gsm_gpios[] = {
 	{ GPIO25_GSM_MOD_ON_STATE, GPIOF_IN, "GSM state" },
 	{ GPIO113_GSM_EVENT, GPIOF_IN, "GSM event" },
 =======
+<<<<<<< HEAD
+static struct gpio gsm_gpios[] = {
+	{ GPIO25_GSM_MOD_ON_STATE, GPIOF_IN, "GSM state" },
+	{ GPIO113_GSM_EVENT, GPIOF_IN, "GSM event" },
+=======
 struct gpio_ress gsm_gpios[] = {
 	MIO_GPIO_IN(GPIO25_GSM_MOD_ON_STATE, "GSM state"),
 	MIO_GPIO_IN(GPIO113_GSM_EVENT, "GSM event"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init gsm_init(void)
@@ -371,8 +384,12 @@ static int __init gsm_init(void)
 <<<<<<< HEAD
 	rc = gpio_request_array(ARRAY_AND_SIZE(gsm_gpios));
 =======
+<<<<<<< HEAD
+	rc = gpio_request_array(ARRAY_AND_SIZE(gsm_gpios));
+=======
 	rc = mio_gpio_request(ARRAY_AND_SIZE(gsm_gpios));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc)
 		goto err_gpio;
 	rc = request_irq(gpio_to_irq(GPIO25_GSM_MOD_ON_STATE), gsm_on_irq,
@@ -389,8 +406,12 @@ err_irq:
 <<<<<<< HEAD
 	gpio_free_array(ARRAY_AND_SIZE(gsm_gpios));
 =======
+<<<<<<< HEAD
+	gpio_free_array(ARRAY_AND_SIZE(gsm_gpios));
+=======
 	mio_gpio_free(ARRAY_AND_SIZE(gsm_gpios));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_gpio:
 	printk(KERN_ERR "Mioa701: gsm not available\n");
 	return rc;
@@ -402,8 +423,12 @@ static void gsm_exit(void)
 <<<<<<< HEAD
 	gpio_free_array(ARRAY_AND_SIZE(gsm_gpios));
 =======
+<<<<<<< HEAD
+	gpio_free_array(ARRAY_AND_SIZE(gsm_gpios));
+=======
 	mio_gpio_free(ARRAY_AND_SIZE(gsm_gpios));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -460,6 +485,9 @@ static struct pxamci_platform_data mioa701_mci_info = {
 
 /* FlashRAM */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource docg3_resource = {
 	.start = PXA_CS0_PHYS,
 	.end   = PXA_CS0_PHYS + SZ_8K - 1,
@@ -473,6 +501,8 @@ static struct platform_device docg3 = {
 	.num_resources = 1,
 	.dev = {
 		.platform_data = NULL,
+<<<<<<< HEAD
+=======
 =======
 static struct resource strataflash_resource = {
 	.start = PXA_CS0_PHYS,
@@ -493,6 +523,7 @@ static struct platform_device strataflash = {
 	.dev = {
 		.platform_data = &strataflash_data,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -630,9 +661,14 @@ static struct resource power_resources[] = {
 		.start	= PXA_GPIO_TO_IRQ(GPIO96_AC_DETECT),
 		.end	= PXA_GPIO_TO_IRQ(GPIO96_AC_DETECT),
 =======
+<<<<<<< HEAD
+		.start	= PXA_GPIO_TO_IRQ(GPIO96_AC_DETECT),
+		.end	= PXA_GPIO_TO_IRQ(GPIO96_AC_DETECT),
+=======
 		.start	= gpio_to_irq(GPIO96_AC_DETECT),
 		.end	= gpio_to_irq(GPIO96_AC_DETECT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE |
 		IORESOURCE_IRQ_LOWEDGE,
 	},
@@ -642,9 +678,14 @@ static struct resource power_resources[] = {
 		.start	= PXA_GPIO_TO_IRQ(GPIO13_nUSB_DETECT),
 		.end	= PXA_GPIO_TO_IRQ(GPIO13_nUSB_DETECT),
 =======
+<<<<<<< HEAD
+		.start	= PXA_GPIO_TO_IRQ(GPIO13_nUSB_DETECT),
+		.end	= PXA_GPIO_TO_IRQ(GPIO13_nUSB_DETECT),
+=======
 		.start	= gpio_to_irq(GPIO13_nUSB_DETECT),
 		.end	= gpio_to_irq(GPIO13_nUSB_DETECT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE |
 		IORESOURCE_IRQ_LOWEDGE,
 	},
@@ -783,8 +824,12 @@ static struct platform_device *devices[] __initdata = {
 <<<<<<< HEAD
 	&docg3,
 =======
+<<<<<<< HEAD
+	&docg3,
+=======
 	&strataflash,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&gpio_vbus,
 	&mioa701_camera,
 	&mioa701_board,
@@ -798,14 +843,21 @@ static void mioa701_poweroff(void)
 <<<<<<< HEAD
 	pxa_restart('s', NULL);
 =======
+<<<<<<< HEAD
+	pxa_restart('s', NULL);
+=======
 	arm_machine_restart('s', NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void mioa701_restart(char c, const char *cmd)
 {
 	mioa701_machine_exit();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pxa_restart('s', cmd);
 }
 
@@ -813,6 +865,8 @@ static struct gpio global_gpios[] = {
 	{ GPIO9_CHARGE_EN, GPIOF_OUT_INIT_HIGH, "Charger enable" },
 	{ GPIO18_POWEROFF, GPIOF_OUT_INIT_LOW, "Power Off" },
 	{ GPIO87_LCD_POWER, GPIOF_OUT_INIT_LOW, "LCD Power" },
+<<<<<<< HEAD
+=======
 =======
 	arm_machine_restart('s', cmd);
 }
@@ -822,6 +876,7 @@ static struct gpio_ress global_gpios[] = {
 	MIO_GPIO_OUT(GPIO18_POWEROFF, 0, "Power Off"),
 	MIO_GPIO_OUT(GPIO87_LCD_POWER, 0, "LCD Power"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init mioa701_machine_init(void)
@@ -830,13 +885,21 @@ static void __init mioa701_machine_init(void)
 	int rc;
 
 =======
+<<<<<<< HEAD
+	int rc;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PSLR  = 0xff100000; /* SYSDEL=125ms, PWRDEL=125ms, PSLR_SL_ROD=1 */
 	PCFR = PCFR_DC_EN | PCFR_GPR_EN | PCFR_OPDE;
 	RTTR = 32768 - 1; /* Reset crazy WinCE value */
 	UP2OCR = UP2OCR_HXOE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set up the flash memory : DiskOnChip G3 on first static memory bank
 	 */
@@ -846,8 +909,11 @@ static void __init mioa701_machine_init(void)
 	__raw_writel(0x0001c391, MCIO0);
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pxa2xx_mfp_config(ARRAY_AND_SIZE(mioa701_pin_config));
 	pxa_set_ffuart_info(NULL);
 	pxa_set_btuart_info(NULL);
@@ -857,8 +923,14 @@ static void __init mioa701_machine_init(void)
 	if (rc)
 		pr_err("MioA701: Failed to request GPIOs: %d", rc);
 =======
+<<<<<<< HEAD
+	rc = gpio_request_array(ARRAY_AND_SIZE(global_gpios));
+	if (rc)
+		pr_err("MioA701: Failed to request GPIOs: %d", rc);
+=======
 	mio_gpio_request(ARRAY_AND_SIZE(global_gpios));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bootstrap_init();
 	pxa_set_fb_info(NULL, &mioa701_pxafb_info);
 	pxa_set_mci_info(&mioa701_mci_info);
@@ -868,8 +940,11 @@ static void __init mioa701_machine_init(void)
 	pm_power_off = mioa701_poweroff;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	arm_pm_restart = mioa701_restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_add_devices(devices, ARRAY_SIZE(devices));
 	gsm_init();
 
@@ -887,6 +962,9 @@ static void mioa701_machine_exit(void)
 
 MACHINE_START(MIOA701, "MIO A701")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.restart_mode	= 's',
 	.map_io		= &pxa27x_map_io,
@@ -896,6 +974,8 @@ MACHINE_START(MIOA701, "MIO A701")
 	.init_machine	= mioa701_machine_init,
 	.timer		= &pxa_timer,
 	.restart	= mioa701_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= &pxa27x_map_io,
@@ -903,4 +983,5 @@ MACHINE_START(MIOA701, "MIO A701")
 	.init_machine	= mioa701_machine_init,
 	.timer		= &pxa_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

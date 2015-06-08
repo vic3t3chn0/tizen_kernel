@@ -13,7 +13,15 @@ config GENERIC_HARDIRQS
 # Options selectable by the architecture code
 
 # Make sparse irq Kconfig switch below available
+<<<<<<< HEAD
+<<<<<<< HEAD
+config MAY_HAVE_SPARSE_IRQ
+=======
 config HAVE_SPARSE_IRQ
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+config HAVE_SPARSE_IRQ
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        bool
 
 # Enable the generic irq autoprobe mechanism
@@ -52,13 +60,42 @@ config IRQ_EDGE_EOI_HANDLER
 config GENERIC_IRQ_CHIP
        bool
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+# Generic irq_domain hw <--> linux irq number translation
+config IRQ_DOMAIN
+	bool
+
+config IRQ_DOMAIN_DEBUG
+	bool "Expose hardware/virtual IRQ mapping via debugfs"
+	depends on IRQ_DOMAIN && DEBUG_FS
+	help
+	  This option will show the mapping relationship between hardware irq
+	  numbers and Linux irq numbers. The mapping is exposed via debugfs
+	  in the file "irq_domain_mapping".
+
+	  If you don't know what this means you don't need it.
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Support forced irq threading
 config IRQ_FORCED_THREADING
        bool
 
 config SPARSE_IRQ
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool "Support sparse irq numbering" if MAY_HAVE_SPARSE_IRQ
+=======
 	bool "Support sparse irq numbering"
 	depends on HAVE_SPARSE_IRQ
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bool "Support sparse irq numbering"
+	depends on HAVE_SPARSE_IRQ
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 
 	  Sparse irq numbering is useful for distro kernels that want

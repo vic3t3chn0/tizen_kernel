@@ -59,10 +59,16 @@ struct inode *v9fs_get_inode(struct super_block *sb, umode_t mode, dev_t);
 int v9fs_init_inode(struct v9fs_session_info *v9ses,
 		    struct inode *inode, umode_t mode, dev_t);
 =======
+<<<<<<< HEAD
+struct inode *v9fs_get_inode(struct super_block *sb, umode_t mode, dev_t);
+int v9fs_init_inode(struct v9fs_session_info *v9ses,
+		    struct inode *inode, umode_t mode, dev_t);
+=======
 struct inode *v9fs_get_inode(struct super_block *sb, int mode, dev_t);
 int v9fs_init_inode(struct v9fs_session_info *v9ses,
 		    struct inode *inode, int mode, dev_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void v9fs_evict_inode(struct inode *inode);
 ino_t v9fs_qid2ino(struct p9_qid *qid);
 void v9fs_stat2inode(struct p9_wstat *, struct inode *, struct super_block *);
@@ -80,8 +86,13 @@ int v9fs_vfs_setattr_dotl(struct dentry *, struct iattr *);
 int v9fs_file_fsync_dotl(struct file *filp, loff_t start, loff_t end,
 			 int datasync);
 =======
+<<<<<<< HEAD
+int v9fs_file_fsync_dotl(struct file *filp, loff_t start, loff_t end,
+			 int datasync);
+=======
 int v9fs_file_fsync_dotl(struct file *filp, int datasync);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ssize_t v9fs_file_write_internal(struct inode *, struct p9_fid *,
 				 const char __user *, size_t, loff_t *, int);
 int v9fs_refresh_inode(struct p9_fid *fid, struct inode *inode);

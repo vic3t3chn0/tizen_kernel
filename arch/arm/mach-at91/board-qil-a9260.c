@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -46,8 +50,11 @@
 #include <mach/board.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/at91sam9_smc.h>
 #include <mach/at91_shdwc.h>
 
@@ -61,8 +68,12 @@ static void __init ek_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(12000000);
 =======
+<<<<<<< HEAD
+	at91_initialize(12000000);
+=======
 	at91sam9260_initialize(12000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* DBGU on ttyS0. (Rx & Tx only) */
 	at91_register_uart(0, 0, 0);
@@ -85,6 +96,8 @@ static void __init ek_init_early(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init ek_init_irq(void)
 {
 	at91sam9260_init_interrupts(NULL);
@@ -92,6 +105,7 @@ static void __init ek_init_irq(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * USB Host port
  */
@@ -101,7 +115,12 @@ static struct at91_usbh_data __initdata ek_usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -112,8 +131,12 @@ static struct at91_udc_data __initdata ek_udc_data = {
 <<<<<<< HEAD
 	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
 =======
+<<<<<<< HEAD
+	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
+=======
 	.pullup_pin	= 0,		/* pull-up driven by UDC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -136,8 +159,12 @@ static struct spi_board_info ek_spi_devices[] = {
 <<<<<<< HEAD
 static struct macb_platform_data __initdata ek_macb_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata ek_macb_data = {
+=======
 static struct at91_eth_data __initdata ek_macb_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PA31,
 	.is_rmii	= 1,
 };
@@ -164,6 +191,9 @@ static struct mtd_partition __initdata ek_nand_partition[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct atmel_nand_data __initdata ek_nand_data = {
 	.ale		= 21,
 	.cle		= 22,
@@ -174,6 +204,8 @@ static struct atmel_nand_data __initdata ek_nand_data = {
 	.on_flash_bbt	= 1,
 	.parts		= ek_nand_partition,
 	.num_parts	= ARRAY_SIZE(ek_nand_partition),
+<<<<<<< HEAD
+=======
 =======
 static struct mtd_partition * __init nand_partitions(int size, int *num_partitions)
 {
@@ -189,6 +221,7 @@ static struct atmel_nand_data __initdata ek_nand_data = {
 	.enable_pin	= AT91_PIN_PC14,
 	.partition_info	= nand_partitions,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sam9_smc_config __initdata ek_nand_smc_config = {
@@ -215,8 +248,12 @@ static void __init ek_add_device_nand(void)
 <<<<<<< HEAD
 	sam9_smc_configure(0, 3, &ek_nand_smc_config);
 =======
+<<<<<<< HEAD
+	sam9_smc_configure(0, 3, &ek_nand_smc_config);
+=======
 	sam9_smc_configure(3, &ek_nand_smc_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	at91_add_device_nand(&ek_nand_data);
 }
@@ -232,10 +269,16 @@ static struct at91_mmc_data __initdata ek_mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.det_pin	= -EINVAL,
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 //	.det_pin	= ... not connected
 //	.wp_pin		= ... not connected
 //	.vcc_pin	= ... not connected
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -315,8 +358,12 @@ static void __init ek_board_init(void)
 <<<<<<< HEAD
 	at91_shdwc_write(AT91_SHDW_MR, AT91_SHDW_CPTWK0_(10) | AT91_SHDW_WKMODE0_LOW
 =======
+<<<<<<< HEAD
+	at91_shdwc_write(AT91_SHDW_MR, AT91_SHDW_CPTWK0_(10) | AT91_SHDW_WKMODE0_LOW
+=======
 	at91_sys_write(AT91_SHDW_MR, AT91_SHDW_CPTWK0_(10) | AT91_SHDW_WKMODE0_LOW
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				| AT91_SHDW_RTTWKEN);
 }
 
@@ -328,9 +375,15 @@ MACHINE_START(QIL_A9260, "CALAO QIL_A9260")
 	.init_early	= ek_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= ek_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9260_map_io,
 	.init_early	= ek_init_early,
 	.init_irq	= ek_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= ek_board_init,
 MACHINE_END

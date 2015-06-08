@@ -43,8 +43,12 @@
 <<<<<<< HEAD
 static struct irq_domain *master_irqhost;
 =======
+<<<<<<< HEAD
+static struct irq_domain *master_irqhost;
+=======
 static struct irq_host *master_irqhost;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define XILINX_INTC_MAXIRQS	(32)
 
@@ -148,8 +152,12 @@ static struct irq_chip xilinx_intc_edge_irqchip = {
 <<<<<<< HEAD
 static int xilinx_intc_xlate(struct irq_domain *h, struct device_node *ct,
 =======
+<<<<<<< HEAD
+static int xilinx_intc_xlate(struct irq_domain *h, struct device_node *ct,
+=======
 static int xilinx_intc_xlate(struct irq_host *h, struct device_node *ct,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const u32 *intspec, unsigned int intsize,
 				irq_hw_number_t *out_hwirq,
 				unsigned int *out_flags)
@@ -172,8 +180,12 @@ static int xilinx_intc_xlate(struct irq_host *h, struct device_node *ct,
 <<<<<<< HEAD
 static int xilinx_intc_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int xilinx_intc_map(struct irq_domain *h, unsigned int virq,
+=======
 static int xilinx_intc_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  irq_hw_number_t irq)
 {
 	irq_set_chip_data(virq, h->host_data);
@@ -192,23 +204,33 @@ static int xilinx_intc_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static struct irq_domain_ops xilinx_intc_ops = {
 =======
+<<<<<<< HEAD
+static struct irq_domain_ops xilinx_intc_ops = {
+=======
 static struct irq_host_ops xilinx_intc_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map = xilinx_intc_map,
 	.xlate = xilinx_intc_xlate,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct irq_domain * __init
 xilinx_intc_init(struct device_node *np)
 {
 	struct irq_domain * irq;
+<<<<<<< HEAD
+=======
 =======
 struct irq_host * __init
 xilinx_intc_init(struct device_node *np)
 {
 	struct irq_host * irq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void * regs;
 
 	/* Find and map the intc registers */
@@ -224,11 +246,16 @@ xilinx_intc_init(struct device_node *np)
 	out_be32(regs + XINTC_MER, 0x3UL); /* Turn on the Master Enable. */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Allocate and initialize an irq_domain structure. */
 	irq = irq_domain_add_linear(np, XILINX_INTC_MAXIRQS, &xilinx_intc_ops,
 				    regs);
 	if (!irq)
 		panic(__FILE__ ": Cannot allocate IRQ host\n");
+<<<<<<< HEAD
+=======
 =======
 	/* Allocate and initialize an irq_host structure. */
 	irq = irq_alloc_host(np, IRQ_HOST_MAP_LINEAR, XILINX_INTC_MAXIRQS,
@@ -237,6 +264,7 @@ xilinx_intc_init(struct device_node *np)
 		panic(__FILE__ ": Cannot allocate IRQ host\n");
 	irq->host_data = regs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return irq;
 }

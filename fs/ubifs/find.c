@@ -685,6 +685,10 @@ int ubifs_find_free_leb_for_idx(struct ubifs_info *c)
 			ubifs_assert(c->freeable_cnt == 0);
 			if (c->lst.empty_lebs - c->lst.taken_empty_lebs > 0) {
 =======
+<<<<<<< HEAD
+			ubifs_assert(c->freeable_cnt == 0);
+			if (c->lst.empty_lebs - c->lst.taken_empty_lebs > 0) {
+=======
 			/*
 			 * The first condition means the following: go scan the
 			 * LPT if there are uncategorized lprops, which means
@@ -696,6 +700,7 @@ int ubifs_find_free_leb_for_idx(struct ubifs_info *c)
 			    c->lst.empty_lebs - c->lst.taken_empty_lebs > 0) {
 				ubifs_assert(c->freeable_cnt == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				lprops = scan_for_leb_for_idx(c);
 				if (IS_ERR(lprops)) {
 					err = PTR_ERR(lprops);

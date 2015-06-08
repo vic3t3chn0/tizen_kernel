@@ -267,8 +267,17 @@ static void atbm8830_release(struct dvb_frontend *fe)
 	kfree(state);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int atbm8830_set_fe(struct dvb_frontend *fe)
+=======
 static int atbm8830_set_fe(struct dvb_frontend *fe,
 			  struct dvb_frontend_parameters *fe_params)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int atbm8830_set_fe(struct dvb_frontend *fe,
+			  struct dvb_frontend_parameters *fe_params)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct atbm_state *priv = fe->demodulator_priv;
 	int i;
@@ -279,7 +288,15 @@ static int atbm8830_set_fe(struct dvb_frontend *fe,
 	if (fe->ops.tuner_ops.set_params) {
 		if (fe->ops.i2c_gate_ctrl)
 			fe->ops.i2c_gate_ctrl(fe, 1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fe->ops.tuner_ops.set_params(fe);
+=======
 		fe->ops.tuner_ops.set_params(fe, fe_params);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fe->ops.tuner_ops.set_params(fe, fe_params);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fe->ops.i2c_gate_ctrl)
 			fe->ops.i2c_gate_ctrl(fe, 0);
 	}
@@ -298,13 +315,48 @@ static int atbm8830_set_fe(struct dvb_frontend *fe,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int atbm8830_get_fe(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
+=======
 static int atbm8830_get_fe(struct dvb_frontend *fe,
 			  struct dvb_frontend_parameters *fe_params)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int atbm8830_get_fe(struct dvb_frontend *fe,
+			  struct dvb_frontend_parameters *fe_params)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk("%s\n", __func__);
 
 	/* TODO: get real readings from device */
 	/* inversion status */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	c->inversion = INVERSION_OFF;
+
+	/* bandwidth */
+	c->bandwidth_hz = 8000000;
+
+	c->code_rate_HP = FEC_AUTO;
+	c->code_rate_LP = FEC_AUTO;
+
+	c->modulation = QAM_AUTO;
+
+	/* transmission mode */
+	c->transmission_mode = TRANSMISSION_MODE_AUTO;
+
+	/* guard interval */
+	c->guard_interval = GUARD_INTERVAL_AUTO;
+
+	/* hierarchy */
+	c->hierarchy = HIERARCHY_NONE;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fe_params->inversion = INVERSION_OFF;
 
 	/* bandwidth */
@@ -323,6 +375,10 @@ static int atbm8830_get_fe(struct dvb_frontend *fe,
 
 	/* hierarchy */
 	fe_params->u.ofdm.hierarchy_information = HIERARCHY_NONE;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -429,9 +485,21 @@ static int atbm8830_i2c_gate_ctrl(struct dvb_frontend *fe, int enable)
 }
 
 static struct dvb_frontend_ops atbm8830_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DMBTH },
+	.info = {
+		.name = "AltoBeam ATBM8830/8831 DMB-TH",
+=======
 	.info = {
 		.name = "AltoBeam ATBM8830/8831 DMB-TH",
 		.type = FE_OFDM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.info = {
+		.name = "AltoBeam ATBM8830/8831 DMB-TH",
+		.type = FE_OFDM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min = 474000000,
 		.frequency_max = 858000000,
 		.frequency_stepsize = 10000,

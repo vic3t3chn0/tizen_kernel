@@ -62,8 +62,11 @@ static struct regulator_consumer_supply supply_ldo_d[] = {
 	{
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.dev = NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.supply = "vana15", /* Powers the SoC (CPU etc) */
 	},
 };
@@ -97,8 +100,11 @@ static struct regulator_consumer_supply supply_ldo_ext[] = {
 	{
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.dev = NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.supply = "vext", /* External power */
 	},
 };
@@ -156,10 +162,13 @@ static struct ab3100_platform_data ab3100_plf_data = {
 				.valid_modes_mask = REGULATOR_MODE_NORMAL,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				.valid_ops_mask =
 				REGULATOR_CHANGE_VOLTAGE |
 				REGULATOR_CHANGE_STATUS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				.always_on = 1,
 				.boot_on = 1,
 			},
@@ -173,10 +182,13 @@ static struct ab3100_platform_data ab3100_plf_data = {
 				.valid_modes_mask = REGULATOR_MODE_NORMAL,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				.valid_ops_mask =
 				REGULATOR_CHANGE_VOLTAGE |
 				REGULATOR_CHANGE_STATUS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				.always_on = 1,
 				.boot_on = 1,
 			},
@@ -247,9 +259,13 @@ static struct ab3100_platform_data ab3100_plf_data = {
 <<<<<<< HEAD
 				REGULATOR_CHANGE_VOLTAGE,
 =======
+<<<<<<< HEAD
+				REGULATOR_CHANGE_VOLTAGE,
+=======
 				REGULATOR_CHANGE_VOLTAGE |
 				REGULATOR_CHANGE_STATUS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				.always_on = 1,
 				.boot_on = 1,
 			},
@@ -272,6 +288,10 @@ static struct ab3100_platform_data ab3100_plf_data = {
 };
 #endif
 
+<<<<<<< HEAD
+static struct i2c_board_info __initdata bus0_i2c_board_info[] = {
+#ifdef CONFIG_AB3100_CORE
+=======
 <<<<<<< HEAD
 static struct i2c_board_info __initdata bus0_i2c_board_info[] = {
 #ifdef CONFIG_AB3100_CORE
@@ -328,6 +348,7 @@ static struct i2c_board_info __initdata bus0_i2c_board_info[] = {
 	},
 #elif defined(CONFIG_AB3100_CORE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.type = "ab3100",
 		.addr = 0x48,

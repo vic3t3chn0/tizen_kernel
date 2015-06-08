@@ -36,8 +36,12 @@ static int create_files(struct sysfs_dirent *dir_sd, struct kobject *kobj,
 <<<<<<< HEAD
 		umode_t mode = 0;
 =======
+<<<<<<< HEAD
+		umode_t mode = 0;
+=======
 		mode_t mode = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* in update mode, we're changing the permissions or
 		 * visibility.  Do this by first removing then
@@ -72,14 +76,20 @@ static int internal_create_group(struct kobject *kobj, int update,
 	if (unlikely(update && !kobj->sd))
 		return -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!grp->attrs) {
 		WARN(1, "sysfs: attrs not set by subsystem for group: %s/%s\n",
 			kobj->name, grp->name ? "" : grp->name);
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (grp->name) {
 		error = sysfs_create_subdir(kobj, grp->name, &sd);
 		if (error)

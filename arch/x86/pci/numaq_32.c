@@ -37,7 +37,11 @@ static int pci_conf1_mq_read(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	WARN_ON(seg);
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!value || (bus >= MAX_MP_BUSSES) || (devfn > 255) || (reg > 255))
 		return -EINVAL;
 
@@ -80,7 +84,11 @@ static int pci_conf1_mq_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	WARN_ON(seg);
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((bus >= MAX_MP_BUSSES) || (devfn > 255) || (reg > 255)) 
 		return -EINVAL;
 
@@ -119,8 +127,12 @@ static int pci_conf1_mq_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 static const struct pci_raw_ops pci_direct_conf1_mq = {
 =======
+<<<<<<< HEAD
+static const struct pci_raw_ops pci_direct_conf1_mq = {
+=======
 static struct pci_raw_ops pci_direct_conf1_mq = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read	= pci_conf1_mq_read,
 	.write	= pci_conf1_mq_write
 };
@@ -165,9 +177,12 @@ int __init pci_numaq_init(void)
 	pci_root_bus = pcibios_scan_root(0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (pci_root_bus)
 		pci_bus_add_devices(pci_root_bus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (num_online_nodes() > 1)
 		for_each_online_node(quad) {
 			if (quad == 0)

@@ -1,4 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* drivers/devfreq/exynos4210_memorybus.c
+=======
 /* drivers/devfreq/exynos4_bus.c
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* drivers/devfreq/exynos4_bus.c
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com/
@@ -24,6 +32,20 @@
 #include <linux/platform_device.h>
 #include <linux/regulator/consumer.h>
 #include <linux/module.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/* Exynos4 ASV has been in the mailing list, but not upstreamed, yet. */
+#ifdef CONFIG_EXYNOS_ASV
+extern unsigned int exynos_result_of_asv;
+#endif
+
+#include <mach/regs-clock.h>
+
+#include <plat/map-s5p.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clk.h>
 #include <linux/devfreq/exynos4_bus.h>
 #include <linux/pm_qos_params.h>
@@ -36,11 +58,40 @@
 
 #include <plat/map-s5p.h>
 #include <plat/cpu.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MAX_SAFEVOLT	1200000 /* 1.2V */
 
 enum exynos4_busf_type {
 	TYPE_BUSF_EXYNOS4210,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	TYPE_BUSF_EXYNOS4x12,
+};
+
+/* Assume that the bus is saturated if the utilization is 40% */
+#define BUS_SATURATION_RATIO	40
+
+enum ppmu_counter {
+	PPMU_PMNCNT0 = 0,
+	PPMU_PMCCNT1,
+	PPMU_PMNCNT2,
+	PPMU_PMNCNT3,
+	PPMU_PMNCNT_MAX,
+};
+struct exynos4_ppmu {
+	void __iomem *hw_base;
+	unsigned int ccnt;
+	unsigned int event;
+	unsigned int count[PPMU_PMNCNT_MAX];
+	bool ccnt_overflow;
+	bool count_overflow[PPMU_PMNCNT_MAX];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TYPE_BUSF_EXYNOS4212,
 	TYPE_BUSF_EXYNOS4412,
 };
@@ -63,6 +114,10 @@ struct exynos4_ppmu_ {
 	unsigned int count[_PPMU_PMNCNT_MAX];
 	bool ccnt_overflow;
 	bool count_overflow[_PPMU_PMNCNT_MAX];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum busclk_level_idx {
@@ -71,6 +126,27 @@ enum busclk_level_idx {
 	LV_2,
 	LV_3,
 	LV_4,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	_LV_END
+};
+#define EX4210_LV_MAX	LV_2
+#define EX4x12_LV_MAX	LV_4
+#define EX4210_LV_NUM	(LV_2 + 1)
+#define EX4x12_LV_NUM	(LV_4 + 1)
+
+/**
+ * struct busfreq_opp_info - opp information for bus
+ * @rate:	Frequency in hertz
+ * @volt:	Voltage in microvolts corresponding to this OPP
+ */
+struct busfreq_opp_info {
+	unsigned long rate;
+	unsigned long volt;
+};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	LV_5,
 	LV_6,
 	_LV_END
@@ -79,6 +155,10 @@ enum busclk_level_idx {
 #define EX4x12_LV_MAX	LV_6
 #define EX4210_LV_NUM	(LV_2 + 1)
 #define EX4x12_LV_NUM	(LV_6 + 1)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct busfreq_data {
 	enum exynos4_busf_type type;
@@ -87,6 +167,15 @@ struct busfreq_data {
 	bool disabled;
 	struct regulator *vdd_int;
 	struct regulator *vdd_mif; /* Exynos4412/4212 only */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct busfreq_opp_info curr_oppinfo;
+	struct exynos4_ppmu dmc[2];
+
+	struct notifier_block pm_notifier;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct opp *curr_opp;
 	struct exynos4_ppmu_ dmc[2];
 
@@ -97,14 +186,27 @@ struct busfreq_data {
 	struct notifier_block cpuf_notifier;
 	struct pm_qos_request_list cpuf_enforce;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mutex lock;
 
 	/* Dividers calculated at boot/probe-time */
 	unsigned int dmc_divtable[_LV_END]; /* DMC0 */
 	unsigned int top_divtable[_LV_END];
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	/* Exynos4x12 uses DMC_PAUSE */
 	unsigned int dmc_pause_ctrl;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	/* Exynos4x12 uses DMC_PAUSE */
+	unsigned int dmc_pause_ctrl;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct bus_opp_table {
@@ -126,6 +228,16 @@ static struct bus_opp_table exynos4210_busclk_table[] = {
  * clock and voltage of both mif/int are controlled.
  */
 static struct bus_opp_table exynos4x12_mifclk_table[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{LV_0, 400000, 1100000},
+	{LV_1, 267000, 1000000},
+	{LV_2, 160000, 950000},
+	{LV_3, 133000, 950000},
+	{LV_4, 100000, 950000},
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{LV_0, 400266, 1100000}, /* MIF : 400MHz INT : 266MHz */
 	{LV_1, 400200, 1100000}, /* MIF : 400MHz INT : 200MHz */
 	{LV_2, 267200, 1000000}, /* MIF : 267MHz INT : 200MHz */
@@ -133,6 +245,10 @@ static struct bus_opp_table exynos4x12_mifclk_table[] = {
 	{LV_4, 160160, 950000},  /* MIF : 160MHz INT : 160MHz */
 	{LV_5, 133133, 950000},  /* MIF : 133MHz INT : 133MHz */
 	{LV_6, 100100, 950000},  /* MIF : 100MHz INT : 100MHz */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0, 0, 0},
 };
 
@@ -141,6 +257,15 @@ static struct bus_opp_table exynos4x12_mifclk_table[] = {
  * the current performance. (MIF does)
  */
 static struct bus_opp_table exynos4x12_intclk_table[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{LV_0, 200000, 1000000},
+	{LV_1, 160000, 950000},
+	{LV_2, 133000, 925000},
+	{LV_3, 100000, 900000},
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{LV_0, 266000, 1100000},
 	{LV_1, 200000, 1000000},
 	{LV_2, 200000, 1000000},
@@ -148,6 +273,10 @@ static struct bus_opp_table exynos4x12_intclk_table[] = {
 	{LV_4, 160000, 950000},
 	{LV_5, 133000, 925000},
 	{LV_6, 100000, 900000},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0, 0, 0},
 };
 
@@ -161,6 +290,35 @@ static unsigned int exynos4210_asv_volt[][EX4210_LV_NUM] = {
 	{1050000, 950000, 950000},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static unsigned int exynos4x12_mif_step_50[][EX4x12_LV_NUM] = {
+	/* 400      267     160     133     100 */
+	{1050000, 950000, 900000, 900000, 900000}, /* ASV0 */
+	{1050000, 950000, 900000, 900000, 900000}, /* ASV1 */
+	{1050000, 950000, 900000, 900000, 900000}, /* ASV2 */
+	{1050000, 900000, 900000, 900000, 900000}, /* ASV3 */
+	{1050000, 900000, 900000, 900000, 850000}, /* ASV4 */
+	{1050000, 900000, 900000, 850000, 850000}, /* ASV5 */
+	{1050000, 900000, 850000, 850000, 850000}, /* ASV6 */
+	{1050000, 900000, 850000, 850000, 850000}, /* ASV7 */
+	{1050000, 900000, 850000, 850000, 850000}, /* ASV8 */
+};
+
+static unsigned int exynos4x12_int_volt[][EX4x12_LV_NUM] = {
+	/* 200    160      133     100 */
+	{1000000, 950000, 925000, 900000}, /* ASV0 */
+	{975000,  925000, 925000, 900000}, /* ASV1 */
+	{950000,  925000, 900000, 875000}, /* ASV2 */
+	{950000,  900000, 900000, 875000}, /* ASV3 */
+	{925000,  875000, 875000, 875000}, /* ASV4 */
+	{900000,  850000, 850000, 850000}, /* ASV5 */
+	{900000,  850000, 850000, 850000}, /* ASV6 */
+	{900000,  850000, 850000, 850000}, /* ASV7 */
+	{900000,  850000, 850000, 850000}, /* ASV8 */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* DVFS Tables of Version 20120210 */
 static unsigned int exynos4212_mif_volt[][_LV_END] = {
 	/* 400      267      160     133     100 */
@@ -238,6 +396,10 @@ static unsigned int exynos4x12_qos_value[][4] = {
 
 static unsigned int exynos4x12_timingrow[] = {
 	0x34498691, 0x24488490, 0x154882D0, 0x154882D0, 0x0D488210,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*** Clock Divider Data for Exynos4210 ***/
@@ -290,6 +452,21 @@ static unsigned int exynos4x12_clkdiv_dmc0[][6] = {
 
 	/* DMC L0: 400MHz */
 	{3, 1, 1, 1, 1, 1},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* DMC L1: 266.7MHz */
+	{4, 1, 1, 2, 1, 1},
+	/* DMC L2: 160MHz */
+	{5, 1, 1, 4, 1, 1},
+	/* DMC L3: 133MHz */
+	{5, 1, 1, 5, 1, 1},
+	/* DMC L4: 100MHz */
+	{7, 1, 1, 7, 1, 1},
+};
+static unsigned int exynos4x12_clkdiv_dmc1[][6] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* DMC L1: 400MHz */
 	{3, 1, 1, 1, 1, 1},
 	/* DMC L2: 266.7MHz */
@@ -304,6 +481,10 @@ static unsigned int exynos4x12_clkdiv_dmc0[][6] = {
 	{7, 1, 1, 7, 1, 1},
 };
 static unsigned int exynos4x12_clkdiv_dmc1[][3] = {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Clock divider value for following
 	 * { G2DACP, DIVC2C, DIVC2C_ACLK }
@@ -311,6 +492,18 @@ static unsigned int exynos4x12_clkdiv_dmc1[][3] = {
 
 	/* DMC L0: 400MHz */
 	{3, 1, 1},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* DMC L1: 266.7MHz */
+	{4, 2, 1},
+	/* DMC L2: 160MHz */
+	{5, 4, 1},
+	/* DMC L3: 133MHz */
+	{5, 5, 1},
+	/* DMC L4: 100MHz */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* DMC L1: 400MHz */
 	{3, 1, 1},
 	/* DMC L2: 266.7MHz */
@@ -322,6 +515,10 @@ static unsigned int exynos4x12_clkdiv_dmc1[][3] = {
 	/* DMC L5: 133MHz */
 	{5, 5, 1},
 	/* DMC L6: 100MHz */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{7, 7, 1},
 };
 static unsigned int exynos4x12_clkdiv_top[][5] = {
@@ -331,6 +528,37 @@ static unsigned int exynos4x12_clkdiv_top[][5] = {
 		DIVACLK133, DIVONENAND }
 	 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* ACLK_GDL/R L0: 200MHz */
+	{2, 7, 4, 5, 1},
+	/* ACLK_GDL/R L1: 200MHz */
+	{2, 7, 4, 5, 1},
+	/* ACLK_GDL/R L2: 160MHz */
+	{4, 7, 5, 7, 1},
+	/* ACLK_GDL/R L3: 133MHz */
+	{4, 7, 5, 7, 1},
+	/* ACLK_GDL/R L4: 100MHz */
+	{7, 7, 7, 7, 1},
+};
+static unsigned int exynos4x12_clkdiv_lr_bus[][2] = {
+	/*
+	 * Clock divider value for following
+	 * { DIVGDL/R, DIVGPL/R }
+	 */
+
+	/* ACLK_GDL/R L0: 200MHz */
+	{3, 1},
+	/* ACLK_GDL/R L1: 200MHz */
+	{3, 1},
+	/* ACLK_GDL/R L2: 160MHz */
+	{4, 1},
+	/* ACLK_GDL/R L3: 133MHz */
+	{5, 1},
+	/* ACLK_GDL/R L4: 100MHz */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* ACLK_GDL/R L0: 266MHz */
 	{2, 7, 4, 5, 1},
 	/* ACLK_GDL/R L1: 200MHz */
@@ -386,6 +614,10 @@ static unsigned int exynos4x12_clkdiv_r_bus[][2] = {
 	/* ACLK_GDR L5: 133MHz */
 	{5, 1},
 	/* ACLK_GDR L6: 100MHz */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{7, 1},
 };
 static unsigned int exynos4x12_clkdiv_sclkip[][3] = {
@@ -398,10 +630,19 @@ static unsigned int exynos4x12_clkdiv_sclkip[][3] = {
 	{3, 3, 4},
 	/* SCLK_MFC: 200MHz */
 	{3, 3, 4},
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SCLK_MFC: 200MHz */
 	{3, 3, 4},
 	/* SCLK_MFC: 160MHz */
 	{4, 4, 5},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SCLK_MFC: 160MHz */
 	{4, 4, 5},
 	/* SCLK_MFC: 133MHz */
@@ -411,13 +652,30 @@ static unsigned int exynos4x12_clkdiv_sclkip[][3] = {
 };
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int exynos4210_set_busclk(struct busfreq_data *data,
+				 struct busfreq_opp_info *oppi)
+=======
 static int exynos4210_set_busclk(struct busfreq_data *data, struct opp *opp)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int exynos4210_set_busclk(struct busfreq_data *data, struct opp *opp)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int index;
 	unsigned int tmp;
 
 	for (index = LV_0; index < EX4210_LV_NUM; index++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (oppi->rate == exynos4210_busclk_table[index].clk)
+=======
 		if (opp_get_freq(opp) == exynos4210_busclk_table[index].clk)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (opp_get_freq(opp) == exynos4210_busclk_table[index].clk)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 	if (index == EX4210_LV_NUM)
@@ -476,13 +734,30 @@ static int exynos4210_set_busclk(struct busfreq_data *data, struct opp *opp)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int exynos4x12_set_busclk(struct busfreq_data *data,
+				 struct busfreq_opp_info *oppi)
+=======
 static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int index;
 	unsigned int tmp;
 
 	for (index = LV_0; index < EX4x12_LV_NUM; index++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (oppi->rate == exynos4x12_mifclk_table[index].clk)
+=======
 		if (opp_get_freq(opp) == exynos4x12_mifclk_table[index].clk)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (opp_get_freq(opp) == exynos4x12_mifclk_table[index].clk)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 	if (index == EX4x12_LV_NUM)
@@ -495,7 +770,15 @@ static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
 
 	do {
 		tmp = __raw_readl(EXYNOS4_CLKDIV_STAT_DMC0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} while (tmp & 0x11111111);
+=======
 	} while (tmp & 0x111111);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} while (tmp & 0x111111);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Change Divider - DMC1 */
 	tmp = __raw_readl(EXYNOS4_CLKDIV_DMC1);
@@ -515,7 +798,15 @@ static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
 
 	do {
 		tmp = __raw_readl(EXYNOS4_CLKDIV_STAT_DMC1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} while (tmp & 0x111111);
+=======
 	} while (tmp & 0x1011);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} while (tmp & 0x1011);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Change Divider - TOP */
 	tmp = __raw_readl(EXYNOS4_CLKDIV_TOP);
@@ -548,9 +839,21 @@ static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
 
 	tmp &= ~(EXYNOS4_CLKDIV_BUS_GDLR_MASK | EXYNOS4_CLKDIV_BUS_GPLR_MASK);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tmp |= ((exynos4x12_clkdiv_lr_bus[index][0] <<
+				EXYNOS4_CLKDIV_BUS_GDLR_SHIFT) |
+		(exynos4x12_clkdiv_lr_bus[index][1] <<
+=======
 	tmp |= ((exynos4x12_clkdiv_l_bus[index][0] <<
 				EXYNOS4_CLKDIV_BUS_GDLR_SHIFT) |
 		(exynos4x12_clkdiv_l_bus[index][1] <<
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tmp |= ((exynos4x12_clkdiv_l_bus[index][0] <<
+				EXYNOS4_CLKDIV_BUS_GDLR_SHIFT) |
+		(exynos4x12_clkdiv_l_bus[index][1] <<
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				EXYNOS4_CLKDIV_BUS_GPLR_SHIFT));
 
 	__raw_writel(tmp, EXYNOS4_CLKDIV_LEFTBUS);
@@ -564,9 +867,21 @@ static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
 
 	tmp &= ~(EXYNOS4_CLKDIV_BUS_GDLR_MASK | EXYNOS4_CLKDIV_BUS_GPLR_MASK);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tmp |= ((exynos4x12_clkdiv_lr_bus[index][0] <<
+				EXYNOS4_CLKDIV_BUS_GDLR_SHIFT) |
+		(exynos4x12_clkdiv_lr_bus[index][1] <<
+=======
 	tmp |= ((exynos4x12_clkdiv_r_bus[index][0] <<
 				EXYNOS4_CLKDIV_BUS_GDLR_SHIFT) |
 		(exynos4x12_clkdiv_r_bus[index][1] <<
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tmp |= ((exynos4x12_clkdiv_r_bus[index][0] <<
+				EXYNOS4_CLKDIV_BUS_GDLR_SHIFT) |
+		(exynos4x12_clkdiv_r_bus[index][1] <<
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				EXYNOS4_CLKDIV_BUS_GPLR_SHIFT));
 
 	__raw_writel(tmp, EXYNOS4_CLKDIV_RIGHTBUS);
@@ -624,6 +939,11 @@ static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
 		tmp = __raw_readl(EXYNOS4_CLKDIV_STAT_CAM1);
 	} while (tmp & 0x1111);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (soc_is_exynos4412() && (exynos_result_of_asv > 3)) {
 		if (index == LV_4) { /* MIF: 100, INT: 100 */
 			exynos4x12_set_abb_member(ABB_INT, ABB_MODE_100V);
@@ -634,6 +954,10 @@ static int exynos4x12_set_busclk(struct busfreq_data *data, struct opp *opp)
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -661,7 +985,15 @@ static void busfreq_mon_reset(struct busfreq_data *data)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void exynos4_read_ppmu(struct busfreq_data *data)
+=======
 static void exynos4210_read_ppmu(struct busfreq_data *data)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void exynos4210_read_ppmu(struct busfreq_data *data)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i, j;
 
@@ -688,6 +1020,19 @@ static void exynos4210_read_ppmu(struct busfreq_data *data)
 	busfreq_mon_reset(data);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int exynos4x12_get_intspec(unsigned long mifclk)
+{
+	int i = 0;
+
+	while (exynos4x12_intclk_table[i].clk) {
+		if (exynos4x12_intclk_table[i].clk <= mifclk)
+			return i;
+		i++;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int exynos4x12_get_dev_status(struct busfreq_data *data,
 				     struct devfreq_dev_status *stat)
 {
@@ -735,16 +1080,35 @@ static int exynos4x12_get_intspec(unsigned long mifclk)
 		return LV_5; /* 133000 */
 	case 100100:
 		return LV_6; /* 100000 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return -EINVAL;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int exynos4_bus_setvolt(struct busfreq_data *data,
+			       struct busfreq_opp_info *oppi,
+			       struct busfreq_opp_info *oldoppi)
+{
+	int err = 0, tmp;
+	unsigned long volt = oppi->volt;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int exynos4_bus_setvolt(struct busfreq_data *data, struct opp *opp,
 			       struct opp *oldopp)
 {
 	int err = 0, tmp;
 	unsigned long volt = opp_get_voltage(opp);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (data->type) {
 	case TYPE_BUSF_EXYNOS4210:
@@ -752,19 +1116,42 @@ static int exynos4_bus_setvolt(struct busfreq_data *data, struct opp *opp,
 		err = regulator_set_voltage(data->vdd_int, volt,
 					    MAX_SAFEVOLT);
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case TYPE_BUSF_EXYNOS4x12:
+=======
 	case TYPE_BUSF_EXYNOS4212:
 	case TYPE_BUSF_EXYNOS4412:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case TYPE_BUSF_EXYNOS4212:
+	case TYPE_BUSF_EXYNOS4412:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* OPP represents MIF clock + MIF voltage */
 		err = regulator_set_voltage(data->vdd_mif, volt,
 					    MAX_SAFEVOLT);
 		if (err)
 			break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tmp = exynos4x12_get_intspec(oppi->rate);
+		if (tmp < 0) {
+			err = tmp;
+			regulator_set_voltage(data->vdd_mif,
+					      oldoppi->volt,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tmp = exynos4x12_get_intspec(opp_get_freq(opp));
 		if (tmp < 0) {
 			err = tmp;
 			regulator_set_voltage(data->vdd_mif,
 					      opp_get_voltage(oldopp),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					      MAX_SAFEVOLT);
 			break;
 		}
@@ -774,7 +1161,15 @@ static int exynos4_bus_setvolt(struct busfreq_data *data, struct opp *opp,
 		/*  Try to recover */
 		if (err)
 			regulator_set_voltage(data->vdd_mif,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					      oldoppi->volt,
+=======
 					      opp_get_voltage(oldopp),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					      opp_get_voltage(oldopp),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					      MAX_SAFEVOLT);
 		break;
 	default:
@@ -784,6 +1179,33 @@ static int exynos4_bus_setvolt(struct busfreq_data *data, struct opp *opp,
 	return err;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int exynos4_bus_target(struct device *dev, unsigned long *_freq,
+			      u32 flags)
+{
+	int err = 0;
+	struct platform_device *pdev = container_of(dev, struct platform_device,
+						    dev);
+	struct busfreq_data *data = platform_get_drvdata(pdev);
+	struct opp *opp;
+	unsigned long freq;
+	unsigned long old_freq = data->curr_oppinfo.rate;
+	struct busfreq_opp_info	new_oppinfo;
+
+	rcu_read_lock();
+	opp = devfreq_recommended_opp(dev, _freq, flags);
+	if (IS_ERR(opp)) {
+		rcu_read_unlock();
+		return PTR_ERR(opp);
+	}
+	new_oppinfo.rate = opp_get_freq(opp);
+	new_oppinfo.volt = opp_get_voltage(opp);
+	rcu_read_unlock();
+	freq = new_oppinfo.rate;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * exynos4x12_set_qos() - Apply QoS registers (GDL/GDR)
@@ -842,11 +1264,23 @@ static int exynos4_bus_target(struct device *dev, unsigned long *_freq,
 
 	if (IS_ERR(opp))
 		return PTR_ERR(opp);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (old_freq == freq)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev, "targetting %lukHz %luuV\n", freq, new_oppinfo.volt);
+=======
 	dev_dbg(dev, "targetting %lukHz %luuV (%luuV)\n", freq, opp_get_voltage(opp), def);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_dbg(dev, "targetting %lukHz %luuV (%luuV)\n", freq, opp_get_voltage(opp), def);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->lock);
 
@@ -854,19 +1288,41 @@ static int exynos4_bus_target(struct device *dev, unsigned long *_freq,
 		goto out;
 
 	if (old_freq < freq)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = exynos4_bus_setvolt(data, &new_oppinfo,
+					  &data->curr_oppinfo);
+=======
 		err = exynos4_bus_setvolt(data, opp, data->curr_opp);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = exynos4_bus_setvolt(data, opp, data->curr_opp);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 
 	if (old_freq != freq) {
 		switch (data->type) {
 		case TYPE_BUSF_EXYNOS4210:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			err = exynos4210_set_busclk(data, &new_oppinfo);
+			break;
+		case TYPE_BUSF_EXYNOS4x12:
+			err = exynos4x12_set_busclk(data, &new_oppinfo);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = exynos4210_set_busclk(data, opp);
 			break;
 		case TYPE_BUSF_EXYNOS4212:
 		case TYPE_BUSF_EXYNOS4412:
 			exynos4x12_set_qos(data, opp);
 			err = exynos4x12_set_busclk(data, opp);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			err = -EINVAL;
@@ -876,11 +1332,26 @@ static int exynos4_bus_target(struct device *dev, unsigned long *_freq,
 		goto out;
 
 	if (old_freq > freq)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = exynos4_bus_setvolt(data, &new_oppinfo,
+					  &data->curr_oppinfo);
+	if (err)
+		goto out;
+
+	data->curr_oppinfo = new_oppinfo;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = exynos4_bus_setvolt(data, opp, data->curr_opp);
 	if (err)
 		goto out;
 
 	data->curr_opp = opp;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	mutex_unlock(&data->lock);
 	return err;
@@ -905,15 +1376,33 @@ static int exynos4_get_busier_dmc(struct busfreq_data *data)
 static int exynos4_bus_get_dev_status(struct device *dev,
 				      struct devfreq_dev_status *stat)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct busfreq_data *data = dev_get_drvdata(dev);
+=======
 	struct platform_device *pdev = container_of(dev, struct platform_device,
 						    dev);
 	struct busfreq_data *data = platform_get_drvdata(pdev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct platform_device *pdev = container_of(dev, struct platform_device,
+						    dev);
+	struct busfreq_data *data = platform_get_drvdata(pdev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int busier_dmc;
 	int cycles_x2 = 2; /* 2 x cycles */
 	void __iomem *addr;
 	u32 timing;
 	u32 memctrl;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	exynos4_read_ppmu(data);
+	busier_dmc = exynos4_get_busier_dmc(data);
+	stat->current_frequency = data->curr_oppinfo.rate;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stat->current_frequency = opp_get_freq(data->curr_opp);
 
 	switch (data->type) {
@@ -928,6 +1417,10 @@ static int exynos4_bus_get_dev_status(struct device *dev,
 		return -EINVAL;
 	}
 	busier_dmc = exynos4_get_busier_dmc(data);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (busier_dmc)
 		addr = S5P_VA_DMC1;
@@ -956,8 +1449,16 @@ static int exynos4_bus_get_dev_status(struct device *dev,
 	stat->busy_time *= 100 / BUS_SATURATION_RATIO;
 	stat->total_time = data->dmc[busier_dmc].ccnt;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	pr_debug("%lu/%lu\n", stat->busy_time, stat->total_time);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pr_debug("%lu/%lu\n", stat->busy_time, stat->total_time);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If the counters have overflown, retry */
 	if (data->dmc[busier_dmc].ccnt_overflow ||
 	    data->dmc[busier_dmc].count_overflow[0])
@@ -968,9 +1469,19 @@ static int exynos4_bus_get_dev_status(struct device *dev,
 
 static void exynos4_bus_exit(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct busfreq_data *data = dev_get_drvdata(dev);
+=======
 	struct platform_device *pdev = container_of(dev, struct platform_device,
 						    dev);
 	struct busfreq_data *data = platform_get_drvdata(pdev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct platform_device *pdev = container_of(dev, struct platform_device,
+						    dev);
+	struct busfreq_data *data = platform_get_drvdata(pdev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	devfreq_unregister_opp_notifier(dev, data->devfreq);
 }
@@ -1042,7 +1553,19 @@ static int exynos4210_init_tables(struct busfreq_data *data)
 		data->top_divtable[i] = tmp;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_EXYNOS_ASV
+	tmp = exynos4_result_of_asv;
+#else
+	tmp = 0; /* Max voltages for the reliability of the unknown */
+#endif
+=======
 	tmp = exynos_result_of_asv;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tmp = exynos_result_of_asv;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("ASV Group of Exynos4 is %d\n", tmp);
 	/* Use merged grouping for voltage */
@@ -1094,7 +1617,15 @@ static int exynos4x12_init_tables(struct busfreq_data *data)
 
 	/* Enable pause function for DREX2 DVFS */
 	tmp = __raw_readl(EXYNOS4_DMC_PAUSE_CTRL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tmp |= EXYNOS4_DMC_PAUSE_ENABLE;
+=======
 	tmp |= DMC_PAUSE_ENABLE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tmp |= DMC_PAUSE_ENABLE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__raw_writel(tmp, EXYNOS4_DMC_PAUSE_CTRL);
 
 	tmp = __raw_readl(EXYNOS4_CLKDIV_DMC0);
@@ -1123,6 +1654,26 @@ static int exynos4x12_init_tables(struct busfreq_data *data)
 		data->dmc_divtable[i] = tmp;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_EXYNOS_ASV
+	tmp = exynos4_result_of_asv;
+#else
+	tmp = 0; /* Max voltages for the reliability of the unknown */
+#endif
+
+	if (tmp > 8)
+		tmp = 0;
+	pr_debug("ASV Group of Exynos4x12 is %d\n", tmp);
+
+	for (i = 0; i < EX4x12_LV_NUM; i++) {
+		exynos4x12_mifclk_table[i].volt =
+			exynos4x12_mif_step_50[tmp][i];
+		exynos4x12_intclk_table[i].volt =
+			exynos4x12_int_volt[tmp][i];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tmp = exynos_result_of_asv;
 
 	if (data->type == TYPE_BUSF_EXYNOS4212) {
@@ -1149,6 +1700,10 @@ static int exynos4x12_init_tables(struct busfreq_data *data)
 			exynos4x12_intclk_table[i].volt =
 				exynos4412_int_volt[tmp][i];
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for (i = 0; i < EX4x12_LV_NUM; i++) {
@@ -1163,17 +1718,36 @@ static int exynos4x12_init_tables(struct busfreq_data *data)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define TIMINGROW_OFFSET	0x34
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TIMINGROW_OFFSET	0x34
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int exynos4_busfreq_pm_notifier_event(struct notifier_block *this,
 		unsigned long event, void *ptr)
 {
 	struct busfreq_data *data = container_of(this, struct busfreq_data,
 						 pm_notifier);
 	struct opp *opp;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct busfreq_opp_info	new_oppinfo;
+	unsigned long maxfreq = ULONG_MAX;
+	int err = 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long maxfreq = ULONG_MAX;
 	int err = 0;
 	unsigned int timing0;
 	unsigned int index;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (event) {
 	case PM_SUSPEND_PREPARE:
@@ -1182,6 +1756,34 @@ static int exynos4_busfreq_pm_notifier_event(struct notifier_block *this,
 
 		data->disabled = true;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rcu_read_lock();
+		opp = opp_find_freq_floor(data->dev, &maxfreq);
+		if (IS_ERR(opp)) {
+			rcu_read_unlock();
+			dev_err(data->dev, "%s: unable to find a min freq\n",
+				__func__);
+			return PTR_ERR(opp);
+		}
+		new_oppinfo.rate = opp_get_freq(opp);
+		new_oppinfo.volt = opp_get_voltage(opp);
+		rcu_read_unlock();
+
+		err = exynos4_bus_setvolt(data, &new_oppinfo,
+					  &data->curr_oppinfo);
+		if (err)
+			goto unlock;
+
+		switch (data->type) {
+		case TYPE_BUSF_EXYNOS4210:
+			err = exynos4210_set_busclk(data, &new_oppinfo);
+			break;
+		case TYPE_BUSF_EXYNOS4x12:
+			err = exynos4x12_set_busclk(data, &new_oppinfo);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		opp = opp_find_freq_floor(data->dev, &maxfreq);
 
 		err = exynos4_bus_setvolt(data, opp, data->curr_opp);
@@ -1214,6 +1816,10 @@ static int exynos4_busfreq_pm_notifier_event(struct notifier_block *this,
 		case TYPE_BUSF_EXYNOS4212:
 		case TYPE_BUSF_EXYNOS4412:
 			err = exynos4x12_set_busclk(data, opp);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			err = -EINVAL;
@@ -1221,7 +1827,15 @@ static int exynos4_busfreq_pm_notifier_event(struct notifier_block *this,
 		if (err)
 			goto unlock;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		data->curr_oppinfo = new_oppinfo;
+=======
 		data->curr_opp = opp;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		data->curr_opp = opp;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unlock:
 		mutex_unlock(&data->lock);
 		if (err)
@@ -1239,6 +1853,11 @@ unlock:
 	return NOTIFY_DONE;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* For Exynos4x12, if CPU >= 1GHz, mem/bus should be >= 160Mhz */
 static int exynos4x12_cpuf_notify(struct notifier_block *this,
 				  unsigned long event, void *ptr)
@@ -1265,34 +1884,69 @@ static int exynos4x12_cpuf_notify(struct notifier_block *this,
 	return NOTIFY_DONE;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __devinit int exynos4_busfreq_probe(struct platform_device *pdev)
 {
 	struct busfreq_data *data;
 	struct opp *opp;
 	struct device *dev = &pdev->dev;
 	int err = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	data = devm_kzalloc(&pdev->dev, sizeof(struct busfreq_data), GFP_KERNEL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk *ppmu_clk;
 	struct exynos4_bus_platdata *pdata = dev_get_platdata(&pdev->dev);
 	struct devfreq_pm_qos_table *qos_list;
 	int i;
 
 	data = kzalloc(sizeof(struct busfreq_data), GFP_KERNEL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (data == NULL) {
 		dev_err(dev, "Cannot allocate memory.\n");
 		return -ENOMEM;
 	}
 
 	data->type = pdev->id_entry->driver_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data->dmc[0].hw_base = S5P_VA_DMC0;
+	data->dmc[1].hw_base = S5P_VA_DMC1;
+	data->pm_notifier.notifier_call = exynos4_busfreq_pm_notifier_event;
+	data->dev = dev;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data->pm_notifier.notifier_call = exynos4_busfreq_pm_notifier_event;
 	data->dev = dev;
 	data->dmc[0].hw_base = S5P_VA_DMC0;
 	data->dmc[1].hw_base = S5P_VA_DMC1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_init(&data->lock);
 
 	switch (data->type) {
 	case TYPE_BUSF_EXYNOS4210:
 		err = exynos4210_init_tables(data);
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case TYPE_BUSF_EXYNOS4x12:
+		err = exynos4x12_init_tables(data);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TYPE_BUSF_EXYNOS4212:
 	case TYPE_BUSF_EXYNOS4412:
 		err = exynos4x12_init_tables(data);
@@ -1324,12 +1978,47 @@ static __devinit int exynos4_busfreq_probe(struct platform_device *pdev)
 		ppmu_init(&exynos_ppmu[PPMU_DMC1], dev);
 		ppmu_init(&exynos_ppmu[PPMU_CPU], dev);
 		ppmu_start(data->dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		dev_err(dev, "Cannot determine the device id %d\n", data->type);
 		err = -EINVAL;
 	}
 	if (err)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return err;
+
+	data->vdd_int = devm_regulator_get(dev, "vdd_int");
+	if (IS_ERR(data->vdd_int)) {
+		dev_err(dev, "Cannot get the regulator \"vdd_int\"\n");
+		return PTR_ERR(data->vdd_int);
+	}
+	if (data->type == TYPE_BUSF_EXYNOS4x12) {
+		data->vdd_mif = devm_regulator_get(dev, "vdd_mif");
+		if (IS_ERR(data->vdd_mif)) {
+			dev_err(dev, "Cannot get the regulator \"vdd_mif\"\n");
+			return PTR_ERR(data->vdd_mif);
+		}
+	}
+
+	rcu_read_lock();
+	opp = opp_find_freq_floor(dev, &exynos4_devfreq_profile.initial_freq);
+	if (IS_ERR(opp)) {
+		rcu_read_unlock();
+		dev_err(dev, "Invalid initial frequency %lu kHz.\n",
+			exynos4_devfreq_profile.initial_freq);
+		return PTR_ERR(opp);
+	}
+	data->curr_oppinfo.rate = opp_get_freq(opp);
+	data->curr_oppinfo.volt = opp_get_voltage(opp);
+	rcu_read_unlock();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_regulator;
 
 	data->vdd_int = regulator_get(dev, "vdd_int");
@@ -1358,11 +2047,24 @@ static __devinit int exynos4_busfreq_probe(struct platform_device *pdev)
 		goto err_opp_add;
 	}
 	data->curr_opp = opp;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_set_drvdata(pdev, data);
 
 	busfreq_mon_reset(data);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data->devfreq = devfreq_add_device(dev, &exynos4_devfreq_profile,
+					   "simple_ondemand", NULL);
+	if (IS_ERR(data->devfreq))
+		return PTR_ERR(data->devfreq);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pdata->polling_ms)
 		exynos4_devfreq_profile.polling_ms = pdata->polling_ms;
 	else
@@ -1414,12 +2116,26 @@ static __devinit int exynos4_busfreq_probe(struct platform_device *pdev)
 		err = PTR_ERR(data->devfreq);
 		goto err_profile_qos_added;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	devfreq_register_opp_notifier(dev, data->devfreq);
 
 	err = register_pm_notifier(&data->pm_notifier);
 	if (err) {
 		dev_err(dev, "Failed to setup pm notifier\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		devfreq_remove_device(data->devfreq);
+		return err;
+	}
+
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_devfreq_add;
 	}
 
@@ -1448,11 +2164,23 @@ err_opp_add:
 err_regulator:
 	kfree(data);
 	return err;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static __devexit int exynos4_busfreq_remove(struct platform_device *pdev)
 {
 	struct busfreq_data *data = platform_get_drvdata(pdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	unregister_pm_notifier(&data->pm_notifier);
+	devfreq_remove_device(data->devfreq);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk *ppmu_clk;
 
 	if (data->type == TYPE_BUSF_EXYNOS4212 ||
@@ -1486,10 +2214,24 @@ static __devexit int exynos4_busfreq_remove(struct platform_device *pdev)
 	if (data->vdd_mif)
 		regulator_put(data->vdd_mif);
 	kfree(data);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int exynos4_busfreq_resume(struct device *dev)
+{
+	struct busfreq_data *data = dev_get_drvdata(dev);
+
+	busfreq_mon_reset(data);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int exynos4_busfreq_suspend(struct device *dev)
 {
 	return 0;
@@ -1507,18 +2249,39 @@ static int exynos4_busfreq_resume(struct device *dev)
 	    data->type == TYPE_BUSF_EXYNOS4412)
 		__raw_writel(data->dmc_pause_ctrl, EXYNOS4_DMC_PAUSE_CTRL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static const struct dev_pm_ops exynos4_busfreq_pm = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.suspend = exynos4_busfreq_suspend,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.suspend = exynos4_busfreq_suspend,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.resume	= exynos4_busfreq_resume,
 };
 
 static const struct platform_device_id exynos4_busfreq_id[] = {
 	{ "exynos4210-busfreq", TYPE_BUSF_EXYNOS4210 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ "exynos4412-busfreq", TYPE_BUSF_EXYNOS4x12 },
+	{ "exynos4212-busfreq", TYPE_BUSF_EXYNOS4x12 },
+=======
 	{ "exynos4412-busfreq", TYPE_BUSF_EXYNOS4412 },
 	{ "exynos4212-busfreq", TYPE_BUSF_EXYNOS4212 },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ "exynos4412-busfreq", TYPE_BUSF_EXYNOS4412 },
+	{ "exynos4212-busfreq", TYPE_BUSF_EXYNOS4212 },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ },
 };
 
@@ -1527,7 +2290,15 @@ static struct platform_driver exynos4_busfreq_driver = {
 	.remove	= __devexit_p(exynos4_busfreq_remove),
 	.id_table = exynos4_busfreq_id,
 	.driver = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.name	= "exynos4-busfreq",
+=======
 		.name	= "exynos-busfreq",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.name	= "exynos-busfreq",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner	= THIS_MODULE,
 		.pm	= &exynos4_busfreq_pm,
 	},
@@ -1548,4 +2319,11 @@ module_exit(exynos4_busfreq_exit);
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("EXYNOS4 busfreq driver with devfreq framework");
 MODULE_AUTHOR("MyungJoo Ham <myungjoo.ham@samsung.com>");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 MODULE_ALIAS("exynos-busfreq");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_ALIAS("exynos-busfreq");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/list.h>
 #include <linux/syscalls.h>
@@ -38,9 +42,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 unsigned long pci_probe_only = 1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* pci_io_base -- the base address from which io bars are offsets.
  * This is the lowest I/O base address (so bar values are always positive),
  * and it *must* be the start of ISA space if an ISA bus exists because
@@ -62,10 +69,15 @@ static int __init pcibios_init(void)
 	ppc_md.phys_mem_access_prot = pci_phys_mem_access_prot;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* On ppc64, we always enable PCI domains and we keep domain 0
 	 * backward compatible in /proc for video cards
 	 */
 	pci_add_flags(PCI_ENABLE_PROC_DOMAINS | PCI_COMPAT_DOMAIN_0);
+<<<<<<< HEAD
+=======
 =======
 	if (pci_probe_only)
 		ppc_pci_flags |= PPC_PCI_PROBE_ONLY;
@@ -75,6 +87,7 @@ static int __init pcibios_init(void)
 	 */
 	ppc_pci_flags |= PPC_PCI_ENABLE_PROC_DOMAINS | PPC_PCI_COMPAT_DOMAIN_0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Scan all of the recorded PCI controllers.  */
 	list_for_each_entry_safe(hose, tmp, &hose_list, list_node) {
@@ -147,13 +160,20 @@ EXPORT_SYMBOL_GPL(pcibios_unmap_io_space);
 <<<<<<< HEAD
 static int __devinit pcibios_map_phb_io_space(struct pci_controller *hose)
 =======
+<<<<<<< HEAD
+static int __devinit pcibios_map_phb_io_space(struct pci_controller *hose)
+=======
 int __devinit pcibios_map_io_space(struct pci_bus *bus)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vm_struct *area;
 	unsigned long phys_page;
 	unsigned long size_page;
 	unsigned long io_virt_offset;
+<<<<<<< HEAD
+
+=======
 <<<<<<< HEAD
 
 =======
@@ -176,6 +196,7 @@ int __devinit pcibios_map_io_space(struct pci_bus *bus)
 	/* Get the host bridge */
 	hose = pci_bus_to_host(bus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phys_page = _ALIGN_DOWN(hose->io_base_phys, PAGE_SIZE);
 	size_page = _ALIGN_UP(hose->pci_io_size, PAGE_SIZE);
 
@@ -214,8 +235,12 @@ int __devinit pcibios_map_io_space(struct pci_bus *bus)
 <<<<<<< HEAD
 	io_virt_offset = pcibios_io_space_offset(hose);
 =======
+<<<<<<< HEAD
+	io_virt_offset = pcibios_io_space_offset(hose);
+=======
 	io_virt_offset = (unsigned long)hose->io_base_virt - _IO_BASE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hose->io_resource.start += io_virt_offset;
 	hose->io_resource.end += io_virt_offset;
 
@@ -224,6 +249,9 @@ int __devinit pcibios_map_io_space(struct pci_bus *bus)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __devinit pcibios_map_io_space(struct pci_bus *bus)
 {
@@ -243,8 +271,11 @@ int __devinit pcibios_map_io_space(struct pci_bus *bus)
 
 	return pcibios_map_phb_io_space(pci_bus_to_host(bus));
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(pcibios_map_io_space);
 
 void __devinit pcibios_setup_phb_io_space(struct pci_controller *hose)
@@ -252,8 +283,12 @@ void __devinit pcibios_setup_phb_io_space(struct pci_controller *hose)
 <<<<<<< HEAD
 	pcibios_map_phb_io_space(hose);
 =======
+<<<<<<< HEAD
+	pcibios_map_phb_io_space(hose);
+=======
 	pcibios_map_io_space(hose->bus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define IOBASE_BRIDGE_NUMBER	0

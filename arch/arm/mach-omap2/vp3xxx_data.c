@@ -22,27 +22,42 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "prm-regbits-34xx.h"
 #include "voltage.h"
 
 #include "vp.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "prm2xxx_3xxx.h"
 
 static const struct omap_vp_ops omap3_vp_ops = {
 	.check_txdone = omap3_prm_vp_check_txdone,
 	.clear_txdone = omap3_prm_vp_clear_txdone,
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * VP data common to 34xx/36xx chips
  * XXX This stuff presumably belongs in the vp3xxx.c or vp.c file.
  */
+<<<<<<< HEAD
+static const struct omap_vp_common omap3_vp_common = {
+	.vpconfig_erroroffset_mask = OMAP3430_ERROROFFSET_MASK,
+	.vpconfig_errorgain_mask = OMAP3430_ERRORGAIN_MASK,
+=======
 <<<<<<< HEAD
 static const struct omap_vp_common omap3_vp_common = {
 	.vpconfig_erroroffset_mask = OMAP3430_ERROROFFSET_MASK,
@@ -54,6 +69,7 @@ static const struct omap_vp_common_data omap3_vp_common = {
 	.vpconfig_errorgain_shift = OMAP3430_ERRORGAIN_SHIFT,
 	.vpconfig_initvoltage_shift = OMAP3430_INITVOLTAGE_SHIFT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.vpconfig_initvoltage_mask = OMAP3430_INITVOLTAGE_MASK,
 	.vpconfig_timeouten = OMAP3430_TIMEOUTEN_MASK,
 	.vpconfig_initvdd = OMAP3430_INITVDD_MASK,
@@ -67,6 +83,9 @@ static const struct omap_vp_common_data omap3_vp_common = {
 	.vlimitto_vddmax_shift = OMAP3430_VDDMAX_SHIFT,
 	.vlimitto_timeout_shift = OMAP3430_TIMEOUT_SHIFT,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.vpvoltage_mask = OMAP3430_VPVOLTAGE_MASK,
 
 	.ops = &omap3_vp_ops,
@@ -75,6 +94,8 @@ static const struct omap_vp_common_data omap3_vp_common = {
 struct omap_vp_instance omap3_vp_mpu = {
 	.id = OMAP3_VP_VDD_MPU_ID,
 	.common = &omap3_vp_common,
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -86,6 +107,7 @@ static const struct omap_vp_prm_irqst_data omap3_vp1_prm_irqst_data = {
 struct omap_vp_instance_data omap3_vp1_data = {
 	.vp_common = &omap3_vp_common,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.vpconfig = OMAP3_PRM_VP1_CONFIG_OFFSET,
 	.vstepmin = OMAP3_PRM_VP1_VSTEPMIN_OFFSET,
 	.vstepmax = OMAP3_PRM_VP1_VSTEPMAX_OFFSET,
@@ -93,11 +115,16 @@ struct omap_vp_instance_data omap3_vp1_data = {
 	.vstatus = OMAP3_PRM_VP1_STATUS_OFFSET,
 	.voltage = OMAP3_PRM_VP1_VOLTAGE_OFFSET,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct omap_vp_instance omap3_vp_core = {
 	.id = OMAP3_VP_VDD_CORE_ID,
 	.common = &omap3_vp_common,
+<<<<<<< HEAD
+=======
 =======
 	.prm_irqst_data = &omap3_vp1_prm_irqst_data,
 };
@@ -110,6 +137,7 @@ static const struct omap_vp_prm_irqst_data omap3_vp2_prm_irqst_data = {
 struct omap_vp_instance_data omap3_vp2_data = {
 	.vp_common = &omap3_vp_common,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.vpconfig = OMAP3_PRM_VP2_CONFIG_OFFSET,
 	.vstepmin = OMAP3_PRM_VP2_VSTEPMIN_OFFSET,
 	.vstepmax = OMAP3_PRM_VP2_VSTEPMAX_OFFSET,
@@ -118,6 +146,9 @@ struct omap_vp_instance_data omap3_vp2_data = {
 	.voltage = OMAP3_PRM_VP2_VOLTAGE_OFFSET,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.prm_irqst_data = &omap3_vp2_prm_irqst_data,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

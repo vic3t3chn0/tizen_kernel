@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/blkdev.h>
 =======
+<<<<<<< HEAD
+#include <linux/blkdev.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -96,8 +100,12 @@ static int do_readahead(journal_t *journal, unsigned int start)
 <<<<<<< HEAD
 			printk(KERN_ERR "JBD2: bad block at offset %u\n",
 =======
+<<<<<<< HEAD
+			printk(KERN_ERR "JBD2: bad block at offset %u\n",
+=======
 			printk (KERN_ERR "JBD: bad block at offset %u\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				next);
 			goto failed;
 		}
@@ -149,8 +157,12 @@ static int jread(struct buffer_head **bhp, journal_t *journal,
 <<<<<<< HEAD
 		printk(KERN_ERR "JBD2: corrupted journal superblock\n");
 =======
+<<<<<<< HEAD
+		printk(KERN_ERR "JBD2: corrupted journal superblock\n");
+=======
 		printk(KERN_ERR "JBD: corrupted journal superblock\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -160,8 +172,12 @@ static int jread(struct buffer_head **bhp, journal_t *journal,
 <<<<<<< HEAD
 		printk(KERN_ERR "JBD2: bad block at offset %u\n",
 =======
+<<<<<<< HEAD
+		printk(KERN_ERR "JBD2: bad block at offset %u\n",
+=======
 		printk (KERN_ERR "JBD: bad block at offset %u\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			offset);
 		return err;
 	}
@@ -182,8 +198,12 @@ static int jread(struct buffer_head **bhp, journal_t *journal,
 <<<<<<< HEAD
 		printk(KERN_ERR "JBD2: Failed to read block at offset %u\n",
 =======
+<<<<<<< HEAD
+		printk(KERN_ERR "JBD2: Failed to read block at offset %u\n",
+=======
 		printk (KERN_ERR "JBD: Failed to read block at offset %u\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			offset);
 		brelse(bh);
 		return -EIO;
@@ -272,16 +292,22 @@ int jbd2_journal_recover(journal_t *journal)
 		err = do_one_pass(journal, &info, PASS_REPLAY);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jbd_debug(1, "JBD2: recovery, exit status %d, "
 		  "recovered transactions %u to %u\n",
 		  err, info.start_transaction, info.end_transaction);
 	jbd_debug(1, "JBD2: Replayed %d and revoked %d/%d blocks\n",
+<<<<<<< HEAD
+=======
 =======
 	jbd_debug(1, "JBD: recovery, exit status %d, "
 		  "recovered transactions %u to %u\n",
 		  err, info.start_transaction, info.end_transaction);
 	jbd_debug(1, "JBD: Replayed %d and revoked %d/%d blocks\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  info.nr_replays, info.nr_revoke_hits, info.nr_revokes);
 
 	/* Restart the log at the next transaction ID, thus invalidating
@@ -297,8 +323,14 @@ int jbd2_journal_recover(journal_t *journal)
 	if (journal->j_flags & JBD2_BARRIER)
 		blkdev_issue_flush(journal->j_fs_dev, GFP_KERNEL, NULL);
 =======
+<<<<<<< HEAD
+	/* Make sure all replayed data is on permanent storage */
+	if (journal->j_flags & JBD2_BARRIER)
+		blkdev_issue_flush(journal->j_fs_dev, GFP_KERNEL, NULL);
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -329,8 +361,12 @@ int jbd2_journal_skip_recovery(journal_t *journal)
 <<<<<<< HEAD
 		printk(KERN_ERR "JBD2: error %d scanning journal\n", err);
 =======
+<<<<<<< HEAD
+		printk(KERN_ERR "JBD2: error %d scanning journal\n", err);
+=======
 		printk(KERN_ERR "JBD: error %d scanning journal\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		++journal->j_transaction_sequence;
 	} else {
 #ifdef CONFIG_JBD2_DEBUG
@@ -340,8 +376,12 @@ int jbd2_journal_skip_recovery(journal_t *journal)
 <<<<<<< HEAD
 			  "JBD2: ignoring %d transaction%s from the journal.\n",
 =======
+<<<<<<< HEAD
+			  "JBD2: ignoring %d transaction%s from the journal.\n",
+=======
 			  "JBD: ignoring %d transaction%s from the journal.\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  dropped, (dropped == 1) ? "" : "s");
 #endif
 		journal->j_transaction_sequence = ++info.end_transaction;
@@ -382,8 +422,12 @@ static int calc_chksums(journal_t *journal, struct buffer_head *bh,
 <<<<<<< HEAD
 			printk(KERN_ERR "JBD2: IO error %d recovering block "
 =======
+<<<<<<< HEAD
+			printk(KERN_ERR "JBD2: IO error %d recovering block "
+=======
 			printk(KERN_ERR "JBD: IO error %d recovering block "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"%lu in log\n", err, io_block);
 			return 1;
 		} else {
@@ -459,8 +503,12 @@ static int do_one_pass(journal_t *journal,
 <<<<<<< HEAD
 		jbd_debug(3, "JBD2: checking block %ld\n", next_log_block);
 =======
+<<<<<<< HEAD
+		jbd_debug(3, "JBD2: checking block %ld\n", next_log_block);
+=======
 		jbd_debug(3, "JBD: checking block %ld\n", next_log_block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = jread(&bh, journal, next_log_block);
 		if (err)
 			goto failed;
@@ -544,9 +592,14 @@ static int do_one_pass(journal_t *journal,
 					printk(KERN_ERR
 						"JBD2: IO error %d recovering "
 =======
+<<<<<<< HEAD
+					printk(KERN_ERR
+						"JBD2: IO error %d recovering "
+=======
 					printk (KERN_ERR
 						"JBD: IO error %d recovering "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						"block %ld in log\n",
 						err, io_block);
 				} else {
@@ -577,8 +630,12 @@ static int do_one_pass(journal_t *journal,
 <<<<<<< HEAD
 						       "JBD2: Out of memory "
 =======
+<<<<<<< HEAD
+						       "JBD2: Out of memory "
+=======
 						       "JBD: Out of memory "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						       "during recovery.\n");
 						err = -ENOMEM;
 						brelse(bh);
@@ -750,8 +807,12 @@ static int do_one_pass(journal_t *journal,
 <<<<<<< HEAD
 			printk(KERN_ERR "JBD2: recovery pass %d ended at "
 =======
+<<<<<<< HEAD
+			printk(KERN_ERR "JBD2: recovery pass %d ended at "
+=======
 			printk (KERN_ERR "JBD: recovery pass %d ended at "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"transaction %u, expected %u\n",
 				pass, next_commit_ID, info->end_transaction);
 			if (!success)

@@ -23,8 +23,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 #include <linux/err.h>
 #include <linux/slab.h>
@@ -523,8 +527,13 @@ static void * ps3_alloc_coherent(struct device *_dev, size_t size,
 				 dma_addr_t *dma_handle, gfp_t flag,
 				 struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				 dma_addr_t *dma_handle, gfp_t flag,
+				 struct dma_attrs *attrs)
+=======
 				      dma_addr_t *dma_handle, gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int result;
 	struct ps3_system_bus_device *dev = ps3_dev_to_system_bus_dev(_dev);
@@ -564,8 +573,12 @@ static void ps3_free_coherent(struct device *_dev, size_t size, void *vaddr,
 <<<<<<< HEAD
 			      dma_addr_t dma_handle, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+			      dma_addr_t dma_handle, struct dma_attrs *attrs)
+=======
 	dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ps3_system_bus_device *dev = ps3_dev_to_system_bus_dev(_dev);
 
@@ -709,6 +722,9 @@ static int ps3_dma_supported(struct device *_dev, u64 mask)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 ps3_dma_get_required_mask(struct device *_dev)
 {
 	return DMA_BIT_MASK(32);
@@ -721,6 +737,8 @@ static struct dma_map_ops ps3_sb_dma_ops = {
 	.unmap_sg = ps3_sb_unmap_sg,
 	.dma_supported = ps3_dma_supported,
 	.get_required_mask = ps3_dma_get_required_mask,
+<<<<<<< HEAD
+=======
 =======
 static struct dma_map_ops ps3_sb_dma_ops = {
 	.alloc_coherent = ps3_alloc_coherent,
@@ -729,18 +747,24 @@ static struct dma_map_ops ps3_sb_dma_ops = {
 	.unmap_sg = ps3_sb_unmap_sg,
 	.dma_supported = ps3_dma_supported,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_page = ps3_sb_map_page,
 	.unmap_page = ps3_unmap_page,
 };
 
 static struct dma_map_ops ps3_ioc0_dma_ops = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.alloc = ps3_alloc_coherent,
 	.free = ps3_free_coherent,
 	.map_sg = ps3_ioc0_map_sg,
 	.unmap_sg = ps3_ioc0_unmap_sg,
 	.dma_supported = ps3_dma_supported,
 	.get_required_mask = ps3_dma_get_required_mask,
+<<<<<<< HEAD
+=======
 =======
 	.alloc_coherent = ps3_alloc_coherent,
 	.free_coherent = ps3_free_coherent,
@@ -748,6 +772,7 @@ static struct dma_map_ops ps3_ioc0_dma_ops = {
 	.unmap_sg = ps3_ioc0_unmap_sg,
 	.dma_supported = ps3_dma_supported,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_page = ps3_ioc0_map_page,
 	.unmap_page = ps3_unmap_page,
 };

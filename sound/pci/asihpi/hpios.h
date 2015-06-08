@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -36,8 +40,11 @@ HPI Operating System Specific macros for Linux Kernel driver
 #include <linux/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ioctl.h>
 #include <linux/kernel.h>
 #include <linux/string.h>
@@ -48,7 +55,11 @@ HPI Operating System Specific macros for Linux Kernel driver
 <<<<<<< HEAD
 #include <linux/mutex.h>
 =======
+<<<<<<< HEAD
+#include <linux/mutex.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define HPI_NO_OS_FILE_OPS
 
@@ -160,6 +171,9 @@ static inline void cond_unlock(struct hpios_spinlock *l)
 #define hpios_alistlock_unlock(obj) spin_unlock(&((obj)->list_lock.lock))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct snd_card;
 
 /** pci drvdata points to an instance of this struct */
@@ -172,6 +186,8 @@ struct hpi_adapter {
 	struct mutex mutex;
 	char *p_buffer;
 	size_t buffer_size;
+<<<<<<< HEAD
+=======
 =======
 struct hpi_adapter {
 	/* mutex prevents contention for one card
@@ -188,6 +204,7 @@ struct hpi_adapter {
 	struct pci_dev *pci;
 	void __iomem *ap_remapped_mem_base[HPI_MAX_ADAPTER_MEM_SPACES];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif

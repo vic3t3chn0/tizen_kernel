@@ -4,14 +4,20 @@ config HAVE_AT91_DATAFLASH_CARD
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HAVE_AT91_DBGU0
 	bool
 
 config HAVE_AT91_DBGU1
 	bool
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HAVE_AT91_USART3
 	bool
 
@@ -22,6 +28,9 @@ config HAVE_AT91_USART5
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config AT91_SAM9_ALT_RESET
 	bool
 	default !ARCH_AT91X40
@@ -30,8 +39,11 @@ config AT91_SAM9G45_RESET
 	bool
 	default !ARCH_AT91X40
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 menu "Atmel AT91 System-on-Chip"
 
 choice
@@ -44,7 +56,11 @@ config ARCH_AT91RM9200
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU0
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_AT91_USART3
 
 config ARCH_AT91SAM9260
@@ -54,7 +70,11 @@ config ARCH_AT91SAM9260
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU0
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_AT91_USART3
 	select HAVE_AT91_USART4
 	select HAVE_AT91_USART5
@@ -68,7 +88,11 @@ config ARCH_AT91SAM9261
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU0
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ARCH_AT91SAM9G10
 	bool "AT91SAM9G10"
@@ -77,7 +101,11 @@ config ARCH_AT91SAM9G10
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU0
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_FB_ATMEL
 
 config ARCH_AT91SAM9263
@@ -89,7 +117,11 @@ config ARCH_AT91SAM9263
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU1
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU1
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ARCH_AT91SAM9RL
 	bool "AT91SAM9RL"
@@ -100,7 +132,11 @@ config ARCH_AT91SAM9RL
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU0
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ARCH_AT91SAM9G20
 	bool "AT91SAM9G20"
@@ -109,7 +145,11 @@ config ARCH_AT91SAM9G20
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU0
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_AT91_USART3
 	select HAVE_AT91_USART4
 	select HAVE_AT91_USART5
@@ -123,15 +163,21 @@ config ARCH_AT91SAM9G45
 	select HAVE_FB_ATMEL
 	select HAVE_NET_MACB
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_AT91_DBGU1
 
 config ARCH_AT91SAM9X5
 	bool "AT91SAM9x5 family"
+<<<<<<< HEAD
+=======
 =======
 
 config ARCH_AT91CAP9
 	bool "AT91CAP9"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CPU_ARM926T
 	select GENERIC_CLOCKEVENTS
 	select HAVE_FB_ATMEL
@@ -139,7 +185,11 @@ config ARCH_AT91CAP9
 <<<<<<< HEAD
 	select HAVE_AT91_DBGU0
 =======
+<<<<<<< HEAD
+	select HAVE_AT91_DBGU0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ARCH_AT91X40
 	bool "AT91x40"
@@ -242,13 +292,19 @@ config MACH_ECO920
 	  Select this if you are using the eco920 board
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MACH_RSI_EWS
 	bool "RSI Embedded Webserver"
 	depends on ARCH_AT91RM9200
 	help
 	  Select this if you are using RSIs EWS board.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif
 
 # ----------------------------------------------------------
@@ -259,6 +315,8 @@ comment "AT91SAM9260 Variants"
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config ARCH_AT91SAM9260_SAM9XE
 	bool "AT91SAM9XE"
 	help
@@ -266,6 +324,7 @@ config ARCH_AT91SAM9260_SAM9XE
 	  They are basically AT91SAM9260s with various sizes of embedded Flash.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "AT91SAM9260 / AT91SAM9XE Board Type"
 
 config MACH_AT91SAM9260EK
@@ -452,6 +511,9 @@ config MACH_GSIA18S
 	  produced by GeoSIG Ltd company. This is an internet accelerograph.
 	  <http://www.geosig.com>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_USB_A9G20
 	bool "CALAO USB-A9G20"
@@ -460,8 +522,11 @@ config MACH_USB_A9G20
 	  Select this if you are using a Calao Systems USB-A9G20.
 	  <http://www.calao-systems.com>
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif
 
 if (ARCH_AT91SAM9260 || ARCH_AT91SAM9G20)
@@ -494,6 +559,8 @@ endif
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 if ARCH_AT91CAP9
 
 comment "AT91CAP9 Board Type"
@@ -510,6 +577,7 @@ endif
 # ----------------------------------------------------------
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 if ARCH_AT91X40
 
 comment "AT91X40 Board Type"
@@ -527,6 +595,9 @@ endif
 # ----------------------------------------------------------
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "Generic Board Type"
 
 config MACH_AT91SAM_DT
@@ -538,8 +609,11 @@ config MACH_AT91SAM_DT
 
 # ----------------------------------------------------------
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "AT91 Board Options"
 
 config MTD_AT91_DATAFLASH_CARD
@@ -591,6 +665,9 @@ choice
 	prompt "Select a UART for early kernel messages"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config AT91_EARLY_DBGU0
 	bool "DBGU on rm9200, 9260/9g20, 9261/9g10 and 9rl"
 	depends on HAVE_AT91_DBGU0
@@ -598,10 +675,13 @@ config AT91_EARLY_DBGU0
 config AT91_EARLY_DBGU1
 	bool "DBGU on 9263 and 9g45"
 	depends on HAVE_AT91_DBGU1
+<<<<<<< HEAD
+=======
 =======
 config AT91_EARLY_DBGU
 	bool "DBGU"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config AT91_EARLY_USART0
 	bool "USART0"

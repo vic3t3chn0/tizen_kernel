@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 Google, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 Google, Inc.
+=======
  * Copyright (C) 2007-2008 Google, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -21,12 +25,17 @@
 #define _LINUX_WAKELOCK_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ktime.h>
 #include <linux/device.h>
 
 /* A wake_lock prevents the system from entering suspend or other low power
  * states when active. If the type is set to WAKE_LOCK_SUSPEND, the wake_lock
  * prevents a full system suspend.
+<<<<<<< HEAD
+=======
 =======
 #include <linux/list.h>
 #include <linux/ktime.h>
@@ -37,19 +46,26 @@
  * states that cause large interrupt latencies or that disable a set of
  * interrupts will not entered from idle until the wake_locks are released.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 enum {
 	WAKE_LOCK_SUSPEND, /* Prevent suspend */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	WAKE_LOCK_IDLE,    /* Prevent low power idle */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WAKE_LOCK_TYPE_COUNT
 };
 
 struct wake_lock {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wakeup_source ws;
 };
 
@@ -83,6 +99,8 @@ static inline int wake_lock_active(struct wake_lock *lock)
 {
 	return lock->ws.active;
 }
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_HAS_WAKELOCK
 	struct list_head    link;
@@ -147,5 +165,6 @@ static inline long has_wake_lock(int type) { return 0; }
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

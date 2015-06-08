@@ -61,8 +61,12 @@ static int ulpi_poll(void __iomem *view, u32 bit)
 <<<<<<< HEAD
 static int ulpi_read(struct usb_phy *otg, u32 reg)
 =======
+<<<<<<< HEAD
+static int ulpi_read(struct usb_phy *otg, u32 reg)
+=======
 static int ulpi_read(struct otg_transceiver *otg, u32 reg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	void __iomem *view = otg->io_priv;
@@ -91,8 +95,12 @@ static int ulpi_read(struct otg_transceiver *otg, u32 reg)
 <<<<<<< HEAD
 static int ulpi_write(struct usb_phy *otg, u32 val, u32 reg)
 =======
+<<<<<<< HEAD
+static int ulpi_write(struct usb_phy *otg, u32 val, u32 reg)
+=======
 static int ulpi_write(struct otg_transceiver *otg, u32 val, u32 reg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	void __iomem *view = otg->io_priv;
@@ -117,8 +125,12 @@ static int ulpi_write(struct otg_transceiver *otg, u32 val, u32 reg)
 <<<<<<< HEAD
 struct usb_phy_io_ops mxc_ulpi_access_ops = {
 =======
+<<<<<<< HEAD
+struct usb_phy_io_ops mxc_ulpi_access_ops = {
+=======
 struct otg_io_access_ops mxc_ulpi_access_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read	= ulpi_read,
 	.write	= ulpi_write,
 };
@@ -127,8 +139,12 @@ EXPORT_SYMBOL_GPL(mxc_ulpi_access_ops);
 <<<<<<< HEAD
 struct usb_phy *imx_otg_ulpi_create(unsigned int flags)
 =======
+<<<<<<< HEAD
+struct usb_phy *imx_otg_ulpi_create(unsigned int flags)
+=======
 struct otg_transceiver *imx_otg_ulpi_create(unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return otg_ulpi_create(&mxc_ulpi_access_ops, flags);
 }

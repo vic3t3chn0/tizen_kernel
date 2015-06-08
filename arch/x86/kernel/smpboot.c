@@ -53,7 +53,11 @@
 <<<<<<< HEAD
 #include <linux/cpuidle.h>
 =======
+<<<<<<< HEAD
+#include <linux/cpuidle.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/acpi.h>
 #include <asm/desc.h>
@@ -212,6 +216,9 @@ static void __cpuinit smp_callin(void)
 	 */
 	setup_vector_irq(smp_processor_id());
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Save our processor parameters. Note: this information
@@ -230,6 +237,8 @@ static void __cpuinit smp_callin(void)
 	pr_debug("Stack at about %p\n", &cpuid);
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Get our bogomips.
@@ -249,6 +258,7 @@ static void __cpuinit smp_callin(void)
 
 	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * This must be done before setting cpu_online_mask
 	 * or calling notify_cpu_starting.
 	 */
@@ -277,7 +287,11 @@ notrace static void __cpuinit start_secondary(void *unused)
 <<<<<<< HEAD
 	x86_cpuinit.early_percpu_clock_init();
 =======
+<<<<<<< HEAD
+	x86_cpuinit.early_percpu_clock_init();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 	smp_callin();
 
@@ -316,6 +330,8 @@ notrace static void __cpuinit start_secondary(void *unused)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Wait until the cpu which brought this one up marked it
 	 * online before enabling interrupts. If we don't do that then
@@ -330,6 +346,7 @@ notrace static void __cpuinit start_secondary(void *unused)
 		cpu_relax();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* enable local interrupts */
 	local_irq_enable();
 
@@ -473,8 +490,12 @@ void __inquire_remote_apic(int apicid)
 <<<<<<< HEAD
 	const char * const names[] = { "ID", "VERSION", "SPIV" };
 =======
+<<<<<<< HEAD
+	const char * const names[] = { "ID", "VERSION", "SPIV" };
+=======
 	char *names[] = { "ID", "VERSION", "SPIV" };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int timeout;
 	u32 status;
 
@@ -772,9 +793,12 @@ do_rest:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	printk(KERN_DEBUG "smpboot cpu %d: start_ip = %lx\n", cpu, start_ip);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_set(&init_deasserted, 0);
 
 	if (get_uv_system_type() != UV_NON_UNIQUE_APIC) {
@@ -825,15 +849,21 @@ do_rest:
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (cpumask_test_cpu(cpu, cpu_callin_mask)) {
 			print_cpu_msr(&cpu_data(cpu));
 			pr_debug("CPU%d: has booted.\n", cpu);
 		} else {
+<<<<<<< HEAD
+=======
 =======
 		if (cpumask_test_cpu(cpu, cpu_callin_mask))
 			pr_debug("CPU%d: has booted.\n", cpu);
 		else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			boot_error = 1;
 			if (*(volatile u32 *)TRAMPOLINE_SYM(trampoline_status)
 			    == 0xA5A5A5A5)
@@ -890,8 +920,13 @@ int __cpuinit native_cpu_up(unsigned int cpu)
 	    !physid_isset(apicid, phys_cpu_present_map) ||
 	    !apic->apic_id_valid(apicid)) {
 =======
+<<<<<<< HEAD
+	    !physid_isset(apicid, phys_cpu_present_map) ||
+	    !apic->apic_id_valid(apicid)) {
+=======
 	    !physid_isset(apicid, phys_cpu_present_map)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "%s: bad cpu %d\n", __func__, cpu);
 		return -EINVAL;
 	}
@@ -1196,7 +1231,11 @@ void __init native_smp_cpus_done(unsigned int max_cpus)
 <<<<<<< HEAD
 	nmi_selftest();
 =======
+<<<<<<< HEAD
+	nmi_selftest();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	impress_friends();
 #ifdef CONFIG_X86_IO_APIC
 	setup_ioapic_dest();
@@ -1473,8 +1512,13 @@ void native_play_dead(void)
 	if (cpuidle_play_dead())
 		hlt_play_dead();
 =======
+<<<<<<< HEAD
+	if (cpuidle_play_dead())
+		hlt_play_dead();
+=======
 	hlt_play_dead();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #else /* ... !CONFIG_HOTPLUG_CPU */

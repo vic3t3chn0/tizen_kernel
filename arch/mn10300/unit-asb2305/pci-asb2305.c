@@ -215,6 +215,8 @@ void __init pcibios_resource_survey(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  *  If we set up a device for bus mastering, we need to check the latency
  *  timer as certain crappy BIOSes forget to set it properly.
@@ -238,6 +240,7 @@ void pcibios_set_master(struct pci_dev *dev)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int pci_mmap_page_range(struct pci_dev *dev, struct vm_area_struct *vma,
 			enum pci_mmap_state mmap_state, int write_combine)
 {

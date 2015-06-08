@@ -9,7 +9,11 @@
 <<<<<<< HEAD
 #include <linux/compiler.h>
 =======
+<<<<<<< HEAD
+#include <linux/compiler.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/errno.h>
 #include <linux/mm.h>
 #include <linux/mman.h>
@@ -17,12 +21,19 @@
 <<<<<<< HEAD
 #include <linux/personality.h>
 =======
+<<<<<<< HEAD
+#include <linux/personality.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/random.h>
 #include <linux/sched.h>
 
 unsigned long shm_align_mask = PAGE_SIZE - 1;	/* Sane caches */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(shm_align_mask);
 
 /* gap between mmap and stack */
@@ -84,6 +95,8 @@ static unsigned long arch_get_unmapped_area_common(struct file *filp,
 
 	if (flags & MAP_FIXED) {
 		/* Even MAP_FIXED mappings must reside within TASK_SIZE */
+<<<<<<< HEAD
+=======
 =======
 
 EXPORT_SYMBOL(shm_align_mask);
@@ -104,6 +117,7 @@ unsigned long arch_get_unmapped_area(struct file *filp, unsigned long addr,
 	if (flags & MAP_FIXED) {
 		/* Even MAP_FIXED mappings must reside within TASK_SIZE.  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (TASK_SIZE - len < addr)
 			return -EINVAL;
 
@@ -124,13 +138,21 @@ unsigned long arch_get_unmapped_area(struct file *filp, unsigned long addr,
 
 	/* requesting a specific address */
 =======
+<<<<<<< HEAD
+
+	/* requesting a specific address */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (addr) {
 		if (do_color_align)
 			addr = COLOUR_ALIGN(addr, pgoff);
 		else
 			addr = PAGE_ALIGN(addr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		vma = find_vma(mm, addr);
 		if (TASK_SIZE - len >= addr &&
@@ -250,6 +272,8 @@ unsigned long arch_get_unmapped_area_topdown(struct file *filp,
 			addr0, len, pgoff, flags, DOWN);
 }
 
+<<<<<<< HEAD
+=======
 =======
 		vmm = find_vma(current->mm, addr);
 		if (TASK_SIZE - len >= addr &&
@@ -275,6 +299,7 @@ unsigned long arch_get_unmapped_area_topdown(struct file *filp,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void arch_pick_mmap_layout(struct mm_struct *mm)
 {
 	unsigned long random_factor = 0UL;
@@ -289,6 +314,9 @@ void arch_pick_mmap_layout(struct mm_struct *mm)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mmap_is_legacy()) {
 		mm->mmap_base = TASK_UNMAPPED_BASE + random_factor;
 		mm->get_unmapped_area = arch_get_unmapped_area;
@@ -298,11 +326,14 @@ void arch_pick_mmap_layout(struct mm_struct *mm)
 		mm->get_unmapped_area = arch_get_unmapped_area_topdown;
 		mm->unmap_area = arch_unmap_area_topdown;
 	}
+<<<<<<< HEAD
+=======
 =======
 	mm->mmap_base = TASK_UNMAPPED_BASE + random_factor;
 	mm->get_unmapped_area = arch_get_unmapped_area;
 	mm->unmap_area = arch_unmap_area;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline unsigned long brk_rnd(void)

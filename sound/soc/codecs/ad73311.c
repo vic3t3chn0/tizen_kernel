@@ -66,6 +66,9 @@ static struct platform_driver ad73311_codec_driver = {
 <<<<<<< HEAD
 module_platform_driver(ad73311_codec_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(ad73311_codec_driver);
+=======
 static int __init ad73311_init(void)
 {
 	return platform_driver_register(&ad73311_codec_driver);
@@ -78,6 +81,7 @@ static void __exit ad73311_exit(void)
 }
 module_exit(ad73311_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("ASoC ad73311 driver");
 MODULE_AUTHOR("Cliff Cai ");

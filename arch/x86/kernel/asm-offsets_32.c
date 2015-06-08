@@ -4,13 +4,19 @@
 #include "../../../drivers/lguest/lg.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __SYSCALL_I386(nr, sym, compat) [nr] = 1,
 static char syscalls[] = {
 #include <asm/syscalls_32.h>
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* workaround for a warning with -Wmissing-prototypes */
 void foo(void);
 
@@ -73,8 +79,11 @@ void foo(void)
 	OFFSET(LGUEST_DATA_irq_pending, lguest_data, irq_pending);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	OFFSET(LGUEST_DATA_pgdir, lguest_data, pgdir);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BLANK();
 	OFFSET(LGUEST_PAGES_host_gdt_desc, lguest_pages, state.host_gdt_desc);
@@ -93,5 +102,11 @@ void foo(void)
 	DEFINE(__NR_syscall_max, sizeof(syscalls) - 1);
 	DEFINE(NR_syscalls, sizeof(syscalls));
 =======
+<<<<<<< HEAD
+	BLANK();
+	DEFINE(__NR_syscall_max, sizeof(syscalls) - 1);
+	DEFINE(NR_syscalls, sizeof(syscalls));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

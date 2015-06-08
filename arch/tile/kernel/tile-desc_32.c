@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* TILEPro opcode information.
  *
  * Copyright 2011 Tilera Corporation. All Rights Reserved.
@@ -19,8 +22,11 @@
  *
  */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* This define is BFD_RELOC_##x for real bfd, or -1 for everyone else. */
 #define BFD_RELOC(x) -1
 
@@ -30,6 +36,9 @@
 #define TREG_ZERO 63
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/stddef.h>
 #include <asm/tile-desc.h>
 
@@ -1222,6 +1231,8 @@ const struct tilepro_opcode tilepro_opcodes[395] =
 };
 #define BITFIELD(start, size) ((start) | (((1 << (size)) - 1) << 6))
 #define CHILD(array_index) (TILEPRO_OPC_NONE + (array_index))
+<<<<<<< HEAD
+=======
 =======
 /* FIXME: Rename this. */
 #include <asm/opcode-tile.h>
@@ -2418,12 +2429,16 @@ const struct tile_opcode tile_opcodes[395] =
 #define BITFIELD(start, size) ((start) | (((1 << (size)) - 1) << 6))
 #define CHILD(array_index) (TILE_OPC_NONE + (array_index))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const unsigned short decode_X0_fsm[1153] =
 {
   BITFIELD(22, 9) /* index 0 */,
   CHILD(513), CHILD(530), CHILD(547), CHILD(564), CHILD(596), CHILD(613),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(630), TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
@@ -2438,6 +2453,8 @@ static const unsigned short decode_X0_fsm[1153] =
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   CHILD(630), TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
@@ -2452,6 +2469,7 @@ static const unsigned short decode_X0_fsm[1153] =
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
   TILE_OPC_NONE, TILE_OPC_NONE, CHILD(813), CHILD(813), CHILD(813),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(813),
   CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(813),
   CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(813),
@@ -2466,8 +2484,13 @@ static const unsigned short decode_X0_fsm[1153] =
   CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(828), CHILD(828),
   CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828),
 =======
+<<<<<<< HEAD
+  CHILD(813), CHILD(813), CHILD(813), CHILD(813), CHILD(828), CHILD(828),
+  CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828),
+=======
   CHILD(813), CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828),
   CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828),
   CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828),
@@ -2480,8 +2503,12 @@ static const unsigned short decode_X0_fsm[1153] =
 <<<<<<< HEAD
   CHILD(828), CHILD(828), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
 =======
+<<<<<<< HEAD
+  CHILD(828), CHILD(828), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
+=======
   CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(828), CHILD(843),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
   CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
   CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
@@ -2493,6 +2520,9 @@ static const unsigned short decode_X0_fsm[1153] =
   CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
   CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(873), CHILD(878), CHILD(883), CHILD(903), CHILD(908),
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
@@ -2598,6 +2628,8 @@ static const unsigned short decode_X0_fsm[1153] =
   TILEPRO_OPC_SLT_U, TILEPRO_OPC_SNEB, TILEPRO_OPC_SNEH, TILEPRO_OPC_SNE,
   TILEPRO_OPC_SRAB, TILEPRO_OPC_SRAH, TILEPRO_OPC_SRA, TILEPRO_OPC_SUBB,
   TILEPRO_OPC_SUBH, TILEPRO_OPC_SUB, TILEPRO_OPC_XOR, TILEPRO_OPC_DWORD_ALIGN,
+<<<<<<< HEAD
+=======
 =======
   CHILD(843), CHILD(843), CHILD(843), CHILD(873), CHILD(878), CHILD(883),
   CHILD(903), CHILD(908), TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
@@ -2690,11 +2722,15 @@ static const unsigned short decode_X0_fsm[1153] =
   TILE_OPC_SRAH, TILE_OPC_SRA, TILE_OPC_SUBB, TILE_OPC_SUBH, TILE_OPC_SUB,
   TILE_OPC_XOR, TILE_OPC_DWORD_ALIGN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   BITFIELD(18, 3) /* index 630 */,
   CHILD(639), CHILD(642), CHILD(645), CHILD(648), CHILD(651), CHILD(654),
   CHILD(657), CHILD(660),
   BITFIELD(21, 1) /* index 639 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_ADDS, TILEPRO_OPC_NONE,
   BITFIELD(21, 1) /* index 642 */,
   TILEPRO_OPC_SUBS, TILEPRO_OPC_NONE,
@@ -2759,6 +2795,8 @@ static const unsigned short decode_X0_fsm[1153] =
   TILEPRO_OPC_SRAH_SN, TILEPRO_OPC_SRA_SN, TILEPRO_OPC_SUBB_SN,
   TILEPRO_OPC_SUBH_SN, TILEPRO_OPC_SUB_SN, TILEPRO_OPC_XOR_SN,
   TILEPRO_OPC_DWORD_ALIGN_SN,
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_ADDS, TILE_OPC_NONE,
   BITFIELD(21, 1) /* index 642 */,
@@ -2817,11 +2855,15 @@ static const unsigned short decode_X0_fsm[1153] =
   TILE_OPC_SRAB_SN, TILE_OPC_SRAH_SN, TILE_OPC_SRA_SN, TILE_OPC_SUBB_SN,
   TILE_OPC_SUBH_SN, TILE_OPC_SUB_SN, TILE_OPC_XOR_SN, TILE_OPC_DWORD_ALIGN_SN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   BITFIELD(18, 3) /* index 780 */,
   CHILD(789), CHILD(792), CHILD(795), CHILD(798), CHILD(801), CHILD(804),
   CHILD(807), CHILD(810),
   BITFIELD(21, 1) /* index 789 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_ADDS_SN, TILEPRO_OPC_NONE,
   BITFIELD(21, 1) /* index 792 */,
   TILEPRO_OPC_SUBS_SN, TILEPRO_OPC_NONE,
@@ -2921,6 +2963,76 @@ static const unsigned short decode_X0_fsm[1153] =
   TILEPRO_OPC_NONE, TILEPRO_OPC_ANDI_SN, TILEPRO_OPC_XORI_SN,
   TILEPRO_OPC_NONE,
   BITFIELD(17, 5) /* index 993 */,
+<<<<<<< HEAD
+  TILEPRO_OPC_NONE, TILEPRO_OPC_RLI, TILEPRO_OPC_SHLIB, TILEPRO_OPC_SHLIH,
+  TILEPRO_OPC_SHLI, TILEPRO_OPC_SHRIB, TILEPRO_OPC_SHRIH, TILEPRO_OPC_SHRI,
+  TILEPRO_OPC_SRAIB, TILEPRO_OPC_SRAIH, TILEPRO_OPC_SRAI, CHILD(1026),
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  BITFIELD(12, 4) /* index 1026 */,
+  TILEPRO_OPC_NONE, CHILD(1043), CHILD(1046), CHILD(1049), CHILD(1052),
+  CHILD(1055), CHILD(1058), CHILD(1061), CHILD(1064), CHILD(1067),
+  CHILD(1070), CHILD(1073), TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1043 */,
+  TILEPRO_OPC_BITX, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1046 */,
+  TILEPRO_OPC_BYTEX, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1049 */,
+  TILEPRO_OPC_CLZ, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1052 */,
+  TILEPRO_OPC_CTZ, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1055 */,
+  TILEPRO_OPC_FNOP, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1058 */,
+  TILEPRO_OPC_NOP, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1061 */,
+  TILEPRO_OPC_PCNT, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1064 */,
+  TILEPRO_OPC_TBLIDXB0, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1067 */,
+  TILEPRO_OPC_TBLIDXB1, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1070 */,
+  TILEPRO_OPC_TBLIDXB2, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1073 */,
+  TILEPRO_OPC_TBLIDXB3, TILEPRO_OPC_NONE,
+  BITFIELD(17, 5) /* index 1076 */,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_RLI_SN, TILEPRO_OPC_SHLIB_SN,
+  TILEPRO_OPC_SHLIH_SN, TILEPRO_OPC_SHLI_SN, TILEPRO_OPC_SHRIB_SN,
+  TILEPRO_OPC_SHRIH_SN, TILEPRO_OPC_SHRI_SN, TILEPRO_OPC_SRAIB_SN,
+  TILEPRO_OPC_SRAIH_SN, TILEPRO_OPC_SRAI_SN, CHILD(1109), TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  BITFIELD(12, 4) /* index 1109 */,
+  TILEPRO_OPC_NONE, CHILD(1126), CHILD(1129), CHILD(1132), CHILD(1135),
+  CHILD(1055), CHILD(1058), CHILD(1138), CHILD(1141), CHILD(1144),
+  CHILD(1147), CHILD(1150), TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1126 */,
+  TILEPRO_OPC_BITX_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1129 */,
+  TILEPRO_OPC_BYTEX_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1132 */,
+  TILEPRO_OPC_CLZ_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1135 */,
+  TILEPRO_OPC_CTZ_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1138 */,
+  TILEPRO_OPC_PCNT_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1141 */,
+  TILEPRO_OPC_TBLIDXB0_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1144 */,
+  TILEPRO_OPC_TBLIDXB1_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1147 */,
+  TILEPRO_OPC_TBLIDXB2_SN, TILEPRO_OPC_NONE,
+  BITFIELD(16, 1) /* index 1150 */,
+  TILEPRO_OPC_TBLIDXB3_SN, TILEPRO_OPC_NONE,
+=======
   TILEPRO_OPC_NONE, TILEPRO_OPC_RLI, TILEPRO_OPC_SHLIB, TILEPRO_OPC_SHLIH,
   TILEPRO_OPC_SHLI, TILEPRO_OPC_SHRIB, TILEPRO_OPC_SHRIH, TILEPRO_OPC_SHRI,
   TILEPRO_OPC_SRAIB, TILEPRO_OPC_SRAIH, TILEPRO_OPC_SRAI, CHILD(1026),
@@ -3146,12 +3258,16 @@ static const unsigned short decode_X0_fsm[1153] =
   BITFIELD(16, 1) /* index 1150 */,
   TILE_OPC_TBLIDXB3_SN, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const unsigned short decode_X1_fsm[1540] =
 {
   BITFIELD(54, 9) /* index 0 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
@@ -3168,6 +3284,8 @@ static const unsigned short decode_X1_fsm[1540] =
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, CHILD(766),
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
@@ -3183,6 +3301,7 @@ static const unsigned short decode_X1_fsm[1540] =
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, CHILD(766),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(766), CHILD(766), CHILD(766), CHILD(766), CHILD(766), CHILD(766),
   CHILD(766), CHILD(766), CHILD(766), CHILD(766), CHILD(766), CHILD(766),
   CHILD(766), CHILD(766), CHILD(766), CHILD(766), CHILD(766), CHILD(766),
@@ -3205,6 +3324,9 @@ static const unsigned short decode_X1_fsm[1540] =
   CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
   CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843), CHILD(843),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(843), CHILD(860), CHILD(899), CHILD(923), CHILD(932),
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
@@ -3573,6 +3695,8 @@ static const unsigned short decode_X1_fsm[1540] =
   TILEPRO_OPC_ILL, TILEPRO_OPC_ILL, TILEPRO_OPC_RAISE, TILEPRO_OPC_ILL,
   BITFIELD(53, 1) /* index 1239 */,
   TILEPRO_OPC_ILL, TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   CHILD(843), CHILD(860), CHILD(899), CHILD(923), CHILD(932), TILE_OPC_NONE,
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
@@ -3904,11 +4028,15 @@ static const unsigned short decode_X1_fsm[1540] =
   BITFIELD(53, 1) /* index 1239 */,
   TILE_OPC_ILL, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   BITFIELD(43, 3) /* index 1242 */,
   CHILD(1251), CHILD(1254), CHILD(1257), CHILD(1275), CHILD(1278),
   CHILD(1281), CHILD(1284), CHILD(1287),
   BITFIELD(53, 1) /* index 1251 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_INV, TILEPRO_OPC_NONE,
   BITFIELD(53, 1) /* index 1254 */,
   TILEPRO_OPC_IRET, TILEPRO_OPC_NONE,
@@ -3930,6 +4058,8 @@ static const unsigned short decode_X1_fsm[1540] =
   TILEPRO_OPC_LW, TILEPRO_OPC_NONE,
   BITFIELD(53, 1) /* index 1287 */,
   TILEPRO_OPC_MF, TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_INV, TILE_OPC_NONE,
   BITFIELD(53, 1) /* index 1254 */,
@@ -3953,11 +4083,15 @@ static const unsigned short decode_X1_fsm[1540] =
   BITFIELD(53, 1) /* index 1287 */,
   TILE_OPC_MF, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   BITFIELD(43, 3) /* index 1290 */,
   CHILD(1299), CHILD(1302), CHILD(1305), CHILD(1308), CHILD(1311),
   CHILD(1314), CHILD(1317), CHILD(1320),
   BITFIELD(53, 1) /* index 1299 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_NAP, TILEPRO_OPC_NONE,
   BITFIELD(53, 1) /* index 1302 */,
   TILEPRO_OPC_NOP, TILEPRO_OPC_NONE,
@@ -4030,6 +4164,8 @@ static const unsigned short decode_X1_fsm[1540] =
   TILEPRO_OPC_SRAIH_SN, TILEPRO_OPC_NONE,
   BITFIELD(53, 1) /* index 1490 */,
   TILEPRO_OPC_SRAI_SN, TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_NAP, TILE_OPC_NONE,
   BITFIELD(53, 1) /* index 1302 */,
@@ -4100,11 +4236,15 @@ static const unsigned short decode_X1_fsm[1540] =
   BITFIELD(53, 1) /* index 1490 */,
   TILE_OPC_SRAI_SN, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   BITFIELD(43, 3) /* index 1493 */,
   CHILD(1251), CHILD(1254), CHILD(1502), CHILD(1505), CHILD(1508),
   CHILD(1511), CHILD(1514), CHILD(1287),
   BITFIELD(53, 1) /* index 1502 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_LB_SN, TILEPRO_OPC_NONE,
   BITFIELD(53, 1) /* index 1505 */,
   TILEPRO_OPC_LB_U_SN, TILEPRO_OPC_NONE,
@@ -4114,6 +4254,8 @@ static const unsigned short decode_X1_fsm[1540] =
   TILEPRO_OPC_LH_U_SN, TILEPRO_OPC_NONE,
   BITFIELD(53, 1) /* index 1514 */,
   TILEPRO_OPC_LW_SN, TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_LB_SN, TILE_OPC_NONE,
   BITFIELD(53, 1) /* index 1505 */,
@@ -4125,11 +4267,15 @@ static const unsigned short decode_X1_fsm[1540] =
   BITFIELD(53, 1) /* index 1514 */,
   TILE_OPC_LW_SN, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   BITFIELD(43, 3) /* index 1517 */,
   CHILD(1299), CHILD(1302), CHILD(1305), CHILD(1308), CHILD(1311),
   CHILD(1314), CHILD(1526), CHILD(1320),
   BITFIELD(53, 1) /* index 1526 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_TNS_SN, TILEPRO_OPC_NONE,
   BITFIELD(43, 2) /* index 1529 */,
   CHILD(1534), TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
@@ -4137,6 +4283,8 @@ static const unsigned short decode_X1_fsm[1540] =
   CHILD(1537), TILEPRO_OPC_NONE,
   BITFIELD(53, 1) /* index 1537 */,
   TILEPRO_OPC_LW_NA_SN, TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_TNS_SN, TILE_OPC_NONE,
   BITFIELD(43, 2) /* index 1529 */,
@@ -4146,12 +4294,16 @@ static const unsigned short decode_X1_fsm[1540] =
   BITFIELD(53, 1) /* index 1537 */,
   TILE_OPC_LW_NA_SN, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const unsigned short decode_Y0_fsm[168] =
 {
   BITFIELD(27, 4) /* index 0 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_NONE, CHILD(17), CHILD(22), CHILD(27), CHILD(47), CHILD(52),
   CHILD(57), CHILD(62), CHILD(67), TILEPRO_OPC_ADDI, CHILD(72), CHILD(102),
   TILEPRO_OPC_SEQI, CHILD(117), TILEPRO_OPC_SLTI, TILEPRO_OPC_SLTI_U,
@@ -4213,6 +4365,8 @@ static const unsigned short decode_Y0_fsm[168] =
   TILEPRO_OPC_TBLIDXB0, TILEPRO_OPC_TBLIDXB1, TILEPRO_OPC_TBLIDXB2,
   TILEPRO_OPC_TBLIDXB3, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_NONE, CHILD(17), CHILD(22), CHILD(27), CHILD(47), CHILD(52),
   CHILD(57), CHILD(62), CHILD(67), TILE_OPC_ADDI, CHILD(72), CHILD(102),
@@ -4273,12 +4427,16 @@ static const unsigned short decode_Y0_fsm[168] =
   TILE_OPC_TBLIDXB0, TILE_OPC_TBLIDXB1, TILE_OPC_TBLIDXB2, TILE_OPC_TBLIDXB3,
   TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const unsigned short decode_Y1_fsm[140] =
 {
   BITFIELD(59, 4) /* index 0 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   TILEPRO_OPC_NONE, CHILD(17), CHILD(22), CHILD(27), CHILD(47), CHILD(52),
   CHILD(57), TILEPRO_OPC_ADDI, CHILD(62), CHILD(92), TILEPRO_OPC_SEQI,
   CHILD(107), TILEPRO_OPC_SLTI, TILEPRO_OPC_SLTI_U, TILEPRO_OPC_NONE,
@@ -4331,6 +4489,8 @@ static const unsigned short decode_Y1_fsm[140] =
   TILEPRO_OPC_ILL, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
   BITFIELD(46, 2) /* index 135 */,
   TILEPRO_OPC_NOP, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE, TILEPRO_OPC_NONE,
+<<<<<<< HEAD
+=======
 =======
   TILE_OPC_NONE, CHILD(17), CHILD(22), CHILD(27), CHILD(47), CHILD(52),
   CHILD(57), TILE_OPC_ADDI, CHILD(62), CHILD(92), TILE_OPC_SEQI, CHILD(107),
@@ -4384,12 +4544,16 @@ static const unsigned short decode_Y1_fsm[140] =
   BITFIELD(46, 2) /* index 135 */,
   TILE_OPC_NOP, TILE_OPC_NONE, TILE_OPC_NONE, TILE_OPC_NONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const unsigned short decode_Y2_fsm[24] =
 {
   BITFIELD(56, 3) /* index 0 */,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   CHILD(9), TILEPRO_OPC_LB_U, TILEPRO_OPC_LH, TILEPRO_OPC_LH_U,
   TILEPRO_OPC_LW, TILEPRO_OPC_SB, TILEPRO_OPC_SH, TILEPRO_OPC_SW,
   BITFIELD(20, 2) /* index 9 */,
@@ -4398,6 +4562,8 @@ static const unsigned short decode_Y2_fsm[24] =
   TILEPRO_OPC_LB, TILEPRO_OPC_LB, TILEPRO_OPC_LB, CHILD(19),
   BITFIELD(24, 2) /* index 19 */,
   TILEPRO_OPC_LB, TILEPRO_OPC_LB, TILEPRO_OPC_LB, TILEPRO_OPC_PREFETCH,
+<<<<<<< HEAD
+=======
 =======
   CHILD(9), TILE_OPC_LB_U, TILE_OPC_LH, TILE_OPC_LH_U, TILE_OPC_LW,
   TILE_OPC_SB, TILE_OPC_SH, TILE_OPC_SW,
@@ -4408,6 +4574,7 @@ static const unsigned short decode_Y2_fsm[24] =
   BITFIELD(24, 2) /* index 19 */,
   TILE_OPC_LB, TILE_OPC_LB, TILE_OPC_LB, TILE_OPC_PREFETCH,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #undef BITFIELD
@@ -4416,8 +4583,12 @@ const unsigned short * const
 <<<<<<< HEAD
 tilepro_bundle_decoder_fsms[TILEPRO_NUM_PIPELINE_ENCODINGS] =
 =======
+<<<<<<< HEAD
+tilepro_bundle_decoder_fsms[TILEPRO_NUM_PIPELINE_ENCODINGS] =
+=======
 tile_bundle_decoder_fsms[TILE_NUM_PIPELINE_ENCODINGS] =
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
   decode_X0_fsm,
   decode_X1_fsm,
@@ -4426,16 +4597,22 @@ tile_bundle_decoder_fsms[TILE_NUM_PIPELINE_ENCODINGS] =
   decode_Y2_fsm
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const struct tilepro_operand tilepro_operands[43] =
 {
   {
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM8_X0),
+<<<<<<< HEAD
+=======
 =======
 const struct tile_operand tile_operands[43] =
 {
   {
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_IMM8_X0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     8, 1, 0, 0, 0, 0,
     create_Imm8_X0, get_Imm8_X0
   },
@@ -4443,8 +4620,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM8_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM8_X1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_IMM8_X1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     8, 1, 0, 0, 0, 0,
     create_Imm8_X1, get_Imm8_X1
   },
@@ -4452,8 +4633,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM8_Y0),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM8_Y0),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_IMM8_Y0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     8, 1, 0, 0, 0, 0,
     create_Imm8_Y0, get_Imm8_Y0
   },
@@ -4461,8 +4646,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM8_Y1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM8_Y1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_IMM8_Y1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     8, 1, 0, 0, 0, 0,
     create_Imm8_Y1, get_Imm8_Y1
   },
@@ -4470,8 +4659,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM16_X0),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM16_X0),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_IMM16_X0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     16, 1, 0, 0, 0, 0,
     create_Imm16_X0, get_Imm16_X0
   },
@@ -4479,19 +4672,28 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM16_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_IMM16_X1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_IMM16_X1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     16, 1, 0, 0, 0, 0,
     create_Imm16_X1, get_Imm16_X1
   },
   {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     TILEPRO_OP_TYPE_ADDRESS, BFD_RELOC(TILEPRO_JOFFLONG_X1),
     29, 1, 0, 0, 1, TILEPRO_LOG2_BUNDLE_ALIGNMENT_IN_BYTES,
     create_JOffLong_X1, get_JOffLong_X1
   },
   {
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+<<<<<<< HEAD
+=======
 =======
     TILE_OP_TYPE_ADDRESS, BFD_RELOC(TILE_JOFFLONG_X1),
     29, 1, 0, 0, 1, TILE_LOG2_BUNDLE_ALIGNMENT_IN_BYTES,
@@ -4500,6 +4702,7 @@ const struct tile_operand tile_operands[43] =
   {
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 0, 1, 0, 0,
     create_Dest_X0, get_Dest_X0
   },
@@ -4507,8 +4710,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcA_X0, get_SrcA_X0
   },
@@ -4516,8 +4723,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 0, 1, 0, 0,
     create_Dest_X1, get_Dest_X1
   },
@@ -4525,8 +4736,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcA_X1, get_SrcA_X1
   },
@@ -4534,8 +4749,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 0, 1, 0, 0,
     create_Dest_Y0, get_Dest_Y0
   },
@@ -4543,8 +4762,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcA_Y0, get_SrcA_Y0
   },
@@ -4552,8 +4775,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 0, 1, 0, 0,
     create_Dest_Y1, get_Dest_Y1
   },
@@ -4561,8 +4788,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcA_Y1, get_SrcA_Y1
   },
@@ -4570,8 +4801,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcA_Y2, get_SrcA_Y2
   },
@@ -4579,8 +4814,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcB_X0, get_SrcB_X0
   },
@@ -4588,8 +4827,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcB_X1, get_SrcB_X1
   },
@@ -4597,8 +4840,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcB_Y0, get_SrcB_Y0
   },
@@ -4606,19 +4853,28 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcB_Y1, get_SrcB_Y1
   },
   {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     TILEPRO_OP_TYPE_ADDRESS, BFD_RELOC(TILEPRO_BROFF_X1),
     17, 1, 0, 0, 1, TILEPRO_LOG2_BUNDLE_ALIGNMENT_IN_BYTES,
     create_BrOff_X1, get_BrOff_X1
   },
   {
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+<<<<<<< HEAD
+=======
 =======
     TILE_OP_TYPE_ADDRESS, BFD_RELOC(TILE_BROFF_X1),
     17, 1, 0, 0, 1, TILE_LOG2_BUNDLE_ALIGNMENT_IN_BYTES,
@@ -4627,17 +4883,23 @@ const struct tile_operand tile_operands[43] =
   {
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 1, 0, 0,
     create_Dest_X0, get_Dest_X0
   },
   {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     TILEPRO_OP_TYPE_ADDRESS, BFD_RELOC(NONE),
     28, 1, 0, 0, 1, TILEPRO_LOG2_BUNDLE_ALIGNMENT_IN_BYTES,
     create_JOff_X1, get_JOff_X1
   },
   {
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+<<<<<<< HEAD
+=======
 =======
     TILE_OP_TYPE_ADDRESS, BFD_RELOC(NONE),
     28, 1, 0, 0, 1, TILE_LOG2_BUNDLE_ALIGNMENT_IN_BYTES,
@@ -4646,6 +4908,7 @@ const struct tile_operand tile_operands[43] =
   {
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 0, 1, 0, 0,
     create_SrcBDest_Y2, get_SrcBDest_Y2
   },
@@ -4653,8 +4916,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 1, 0, 0,
     create_SrcA_X1, get_SrcA_X1
   },
@@ -4662,8 +4929,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_SPR, BFD_RELOC(TILEPRO_MF_IMM15_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_SPR, BFD_RELOC(TILEPRO_MF_IMM15_X1),
+=======
     TILE_OP_TYPE_SPR, BFD_RELOC(TILE_MF_IMM15_X1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     15, 0, 0, 0, 0, 0,
     create_MF_Imm15_X1, get_MF_Imm15_X1
   },
@@ -4671,8 +4942,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMSTART_X0),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMSTART_X0),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_MMSTART_X0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_MMStart_X0, get_MMStart_X0
   },
@@ -4680,8 +4955,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMEND_X0),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMEND_X0),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_MMEND_X0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_MMEnd_X0, get_MMEnd_X0
   },
@@ -4689,8 +4968,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMSTART_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMSTART_X1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_MMSTART_X1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_MMStart_X1, get_MMStart_X1
   },
@@ -4698,8 +4981,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMEND_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_MMEND_X1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_MMEND_X1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_MMEnd_X1, get_MMEnd_X1
   },
@@ -4707,8 +4994,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_SPR, BFD_RELOC(TILEPRO_MT_IMM15_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_SPR, BFD_RELOC(TILEPRO_MT_IMM15_X1),
+=======
     TILE_OP_TYPE_SPR, BFD_RELOC(TILE_MT_IMM15_X1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     15, 0, 0, 0, 0, 0,
     create_MT_Imm15_X1, get_MT_Imm15_X1
   },
@@ -4716,8 +5007,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 1, 0, 0,
     create_Dest_Y0, get_Dest_Y0
   },
@@ -4725,8 +5020,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_X0),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_X0),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_SHAMT_X0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_ShAmt_X0, get_ShAmt_X0
   },
@@ -4734,8 +5033,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_X1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_SHAMT_X1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_ShAmt_X1, get_ShAmt_X1
   },
@@ -4743,8 +5046,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_Y0),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_Y0),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_SHAMT_Y0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_ShAmt_Y0, get_ShAmt_Y0
   },
@@ -4752,8 +5059,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_Y1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_SHAMT_Y1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_SHAMT_Y1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     5, 0, 0, 0, 0, 0,
     create_ShAmt_Y1, get_ShAmt_Y1
   },
@@ -4761,8 +5072,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     6, 0, 1, 0, 0, 0,
     create_SrcBDest_Y2, get_SrcBDest_Y2
   },
@@ -4770,19 +5085,28 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_DEST_IMM8_X1),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(TILEPRO_DEST_IMM8_X1),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     8, 1, 0, 0, 0, 0,
     create_Dest_Imm8_X1, get_Dest_Imm8_X1
   },
   {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     TILEPRO_OP_TYPE_ADDRESS, BFD_RELOC(NONE),
     10, 1, 0, 0, 1, TILEPRO_LOG2_SN_INSTRUCTION_SIZE_IN_BYTES,
     create_BrOff_SN, get_BrOff_SN
   },
   {
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(NONE),
+<<<<<<< HEAD
+=======
 =======
     TILE_OP_TYPE_ADDRESS, BFD_RELOC(TILE_SN_BROFF),
     10, 1, 0, 0, 1, TILE_LOG2_SN_INSTRUCTION_SIZE_IN_BYTES,
@@ -4791,6 +5115,7 @@ const struct tile_operand tile_operands[43] =
   {
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_SN_UIMM8),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     8, 0, 0, 0, 0, 0,
     create_Imm8_SN, get_Imm8_SN
   },
@@ -4798,8 +5123,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_IMMEDIATE, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_IMMEDIATE, BFD_RELOC(TILE_SN_IMM8),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     8, 1, 0, 0, 0, 0,
     create_Imm8_SN, get_Imm8_SN
   },
@@ -4807,8 +5136,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     2, 0, 0, 1, 0, 0,
     create_Dest_SN, get_Dest_SN
   },
@@ -4816,8 +5149,12 @@ const struct tile_operand tile_operands[43] =
 <<<<<<< HEAD
     TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 =======
+<<<<<<< HEAD
+    TILEPRO_OP_TYPE_REGISTER, BFD_RELOC(NONE),
+=======
     TILE_OP_TYPE_REGISTER, BFD_RELOC(NONE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     2, 0, 1, 0, 0, 0,
     create_Src_SN, get_Src_SN
   }
@@ -4830,16 +5167,22 @@ const struct tile_operand tile_operands[43] =
  * instruction the bundle contains in that pipe.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const struct tilepro_opcode *
 find_opcode(tilepro_bundle_bits bits, tilepro_pipeline pipe)
 {
   const unsigned short *table = tilepro_bundle_decoder_fsms[pipe];
+<<<<<<< HEAD
+=======
 =======
 const struct tile_opcode *
 find_opcode(tile_bundle_bits bits, tile_pipeline pipe)
 {
   const unsigned short *table = tile_bundle_decoder_fsms[pipe];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   int index = 0;
 
   while (1)
@@ -4850,38 +5193,53 @@ find_opcode(tile_bundle_bits bits, tile_pipeline pipe)
 
     unsigned short next = table[index + 1 + bitfield];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if (next <= TILEPRO_OPC_NONE)
       return &tilepro_opcodes[next];
 
     index = next - TILEPRO_OPC_NONE;
+<<<<<<< HEAD
+=======
 =======
     if (next <= TILE_OPC_NONE)
       return &tile_opcodes[next];
 
     index = next - TILE_OPC_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   }
 }
 
 
 int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 parse_insn_tilepro(tilepro_bundle_bits bits,
                    unsigned int pc,
                    struct tilepro_decoded_instruction
                    decoded[TILEPRO_MAX_INSTRUCTIONS_PER_BUNDLE])
+<<<<<<< HEAD
+=======
 =======
 parse_insn_tile(tile_bundle_bits bits,
                 unsigned int pc,
                 struct tile_decoded_instruction
                 decoded[TILE_MAX_INSTRUCTIONS_PER_BUNDLE])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
   int num_instructions = 0;
   int pipe;
 
   int min_pipe, max_pipe;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   if ((bits & TILEPRO_BUNDLE_Y_ENCODING_MASK) == 0)
   {
     min_pipe = TILEPRO_PIPELINE_X0;
@@ -4891,6 +5249,8 @@ parse_insn_tile(tile_bundle_bits bits,
   {
     min_pipe = TILEPRO_PIPELINE_Y0;
     max_pipe = TILEPRO_PIPELINE_Y2;
+<<<<<<< HEAD
+=======
 =======
   if ((bits & TILE_BUNDLE_Y_ENCODING_MASK) == 0)
   {
@@ -4902,18 +5262,24 @@ parse_insn_tile(tile_bundle_bits bits,
     min_pipe = TILE_PIPELINE_Y0;
     max_pipe = TILE_PIPELINE_Y2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   }
 
   /* For each pipe, find an instruction that fits. */
   for (pipe = min_pipe; pipe <= max_pipe; pipe++)
   {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     const struct tilepro_opcode *opc;
     struct tilepro_decoded_instruction *d;
     int i;
 
     d = &decoded[num_instructions++];
     opc = find_opcode (bits, (tilepro_pipeline)pipe);
+<<<<<<< HEAD
+=======
 =======
     const struct tile_opcode *opc;
     struct tile_decoded_instruction *d;
@@ -4922,6 +5288,7 @@ parse_insn_tile(tile_bundle_bits bits,
     d = &decoded[num_instructions++];
     opc = find_opcode (bits, (tile_pipeline)pipe);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     d->opcode = opc;
 
     /* Decode each operand, sign extending, etc. as appropriate. */
@@ -4931,9 +5298,14 @@ parse_insn_tile(tile_bundle_bits bits,
       const struct tilepro_operand *op =
         &tilepro_operands[opc->operands[pipe][i]];
 =======
+<<<<<<< HEAD
+      const struct tilepro_operand *op =
+        &tilepro_operands[opc->operands[pipe][i]];
+=======
       const struct tile_operand *op =
         &tile_operands[opc->operands[pipe][i]];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
       int opval = op->extract (bits);
       if (op->is_signed)
       {
@@ -4948,10 +5320,16 @@ parse_insn_tile(tile_bundle_bits bits,
       {
         opval *= TILEPRO_BUNDLE_SIZE_IN_BYTES;
 =======
+<<<<<<< HEAD
+      if (op->type == TILEPRO_OP_TYPE_ADDRESS)
+      {
+        opval *= TILEPRO_BUNDLE_SIZE_IN_BYTES;
+=======
       if (op->type == TILE_OP_TYPE_ADDRESS)
       {
         opval *= TILE_BUNDLE_SIZE_IN_BYTES;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         opval += (int)pc;
       }
 

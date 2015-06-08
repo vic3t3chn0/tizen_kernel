@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  /*
  * Audio Codec driver supporting:
  *  AD1835A, AD1836, AD1837A, AD1838A, AD1839A
@@ -6,6 +9,8 @@
  * Copyright 2009-2011 Analog Devices Inc.
  *
  * Licensed under the GPL-2 or later.
+<<<<<<< HEAD
+=======
 =======
 /*
  * File:         sound/soc/codecs/ad1836.c
@@ -24,6 +29,7 @@
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/init.h>
@@ -41,6 +47,9 @@
 #include "ad1836.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum ad1836_type {
 	AD1835,
 	AD1836,
@@ -50,12 +59,15 @@ enum ad1836_type {
 /* codec private data */
 struct ad1836_priv {
 	enum ad1836_type type;
+<<<<<<< HEAD
+=======
 =======
 /* codec private data */
 struct ad1836_priv {
 	enum snd_soc_control_type control_type;
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -67,6 +79,9 @@ static const struct soc_enum ad1836_deemp_enum =
 	SOC_ENUM_SINGLE(AD1836_DAC_CTRL1, 8, 4, ad1836_deemp);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AD1836_DAC_VOLUME(x) \
 	SOC_DOUBLE_R("DAC" #x " Playback Volume", AD1836_DAC_L_VOL(x), \
 			AD1836_DAC_R_VOL(x), 0, 0x3FF, 0)
@@ -121,6 +136,8 @@ static const struct snd_soc_dapm_route ad183x_adc_routes[] = {
 };
 
 static const struct snd_kcontrol_new ad183x_controls[] = {
+<<<<<<< HEAD
+=======
 =======
 static const struct snd_kcontrol_new ad1836_snd_controls[] = {
 	/* DAC volume control */
@@ -146,6 +163,7 @@ static const struct snd_kcontrol_new ad1836_snd_controls[] = {
 		AD1836_DACR3_MUTE, 1, 1),
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* ADC high-pass filter */
 	SOC_SINGLE("ADC High Pass Filter Switch", AD1836_ADC_CTRL1,
 			AD1836_ADC_HIGHPASS_FILTER, 1, 0),
@@ -157,14 +175,21 @@ static const struct snd_kcontrol_new ad1836_snd_controls[] = {
 <<<<<<< HEAD
 static const struct snd_soc_dapm_widget ad183x_dapm_widgets[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_widget ad183x_dapm_widgets[] = {
+=======
 static const struct snd_soc_dapm_widget ad1836_dapm_widgets[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_SOC_DAPM_DAC("DAC", "Playback", AD1836_DAC_CTRL1,
 				AD1836_DAC_POWERDOWN, 1),
 	SND_SOC_DAPM_ADC("ADC", "Capture", SND_SOC_NOPM, 0, 0),
 	SND_SOC_DAPM_SUPPLY("ADC_PWR", AD1836_ADC_CTRL1,
 				AD1836_ADC_POWERDOWN, 1, NULL, 0),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_soc_dapm_route ad183x_dapm_routes[] = {
@@ -177,6 +202,8 @@ static const DECLARE_TLV_DB_SCALE(ad1836_in_tlv, 0, 300, 0);
 static const struct snd_kcontrol_new ad1836_controls[] = {
 	SOC_DOUBLE_TLV("ADC2 Capture Volume", AD1836_ADC_CTRL1, 3, 0, 4, 0,
 	    ad1836_in_tlv),
+<<<<<<< HEAD
+=======
 =======
 	SND_SOC_DAPM_OUTPUT("DAC1OUT"),
 	SND_SOC_DAPM_OUTPUT("DAC2OUT"),
@@ -194,6 +221,7 @@ static const struct snd_soc_dapm_route audio_paths[] = {
 	{ "ADC", "ADC1 Switch", "ADC1IN" },
 	{ "ADC", "ADC2 Switch", "ADC2IN" },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -264,6 +292,9 @@ static int ad1836_hw_params(struct snd_pcm_substream *substream,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_soc_dai_ops ad1836_dai_ops = {
 	.hw_params = ad1836_hw_params,
 	.set_fmt = ad1836_set_dai_fmt,
@@ -316,6 +347,8 @@ static int ad1836_resume(struct snd_soc_codec *codec)
 #define ad1836_resume  NULL
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_PM
 static int ad1836_soc_suspend(struct snd_soc_codec *codec,
@@ -369,11 +402,15 @@ static struct snd_soc_dai_driver ad1836_dai = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ad1836_probe(struct snd_soc_codec *codec)
 {
 	struct ad1836_priv *ad1836 = snd_soc_codec_get_drvdata(codec);
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int num_dacs, num_adcs;
 	int ret = 0;
 	int i;
@@ -381,11 +418,14 @@ static int ad1836_probe(struct snd_soc_codec *codec)
 	num_dacs = ad183x_dais[ad1836->type].playback.channels_max / 2;
 	num_adcs = ad183x_dais[ad1836->type].capture.channels_max / 2;
 
+<<<<<<< HEAD
+=======
 =======
 	int ret = 0;
 
 	codec->control_data = ad1836->control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_codec_set_cache_io(codec, 4, 12, SND_SOC_SPI);
 	if (ret < 0) {
 		dev_err(codec->dev, "failed to set cache I/O: %d\n",
@@ -403,6 +443,9 @@ static int ad1836_probe(struct snd_soc_codec *codec)
 	/* unmute adc channles, adc aux mode */
 	snd_soc_write(codec, AD1836_ADC_CTRL2, 0x180);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* volume */
 	for (i = 1; i <= num_dacs; ++i) {
 		snd_soc_write(codec, AD1836_DAC_L_VOL(i), 0x3FF);
@@ -443,6 +486,8 @@ static int ad1836_probe(struct snd_soc_codec *codec)
 	ret = snd_soc_dapm_add_routes(dapm, ad183x_adc_routes, num_adcs);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+=======
 =======
 	/* left/right diff:PGA/MUX */
 	snd_soc_write(codec, AD1836_ADC_CTRL3, 0x3A);
@@ -460,6 +505,7 @@ static int ad1836_probe(struct snd_soc_codec *codec)
 				  ARRAY_SIZE(ad1836_dapm_widgets));
 	snd_soc_dapm_add_routes(dapm, audio_paths, ARRAY_SIZE(audio_paths));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -469,6 +515,9 @@ static int ad1836_remove(struct snd_soc_codec *codec)
 {
 	/* reset clock control mode */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return snd_soc_update_bits(codec, AD1836_ADC_CTRL2,
 		AD1836_ADC_SERFMT_MASK, 0);
 }
@@ -487,6 +536,8 @@ static struct snd_soc_codec_driver soc_codec_dev_ad1836 = {
 	.num_dapm_widgets = ARRAY_SIZE(ad183x_dapm_widgets),
 	.dapm_routes = ad183x_dapm_routes,
 	.num_dapm_routes = ARRAY_SIZE(ad183x_dapm_routes),
+<<<<<<< HEAD
+=======
 =======
 	u16 adc_ctrl2 = snd_soc_read(codec, AD1836_ADC_CTRL2);
 	adc_ctrl2 &= ~AD1836_ADC_SERFMT_MASK;
@@ -502,6 +553,7 @@ static struct snd_soc_codec_driver soc_codec_dev_ad1836 = {
 	.reg_cache_size = AD1836_NUM_REGS,
 	.reg_word_size = sizeof(u16),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __devinit ad1836_spi_probe(struct spi_device *spi)
@@ -510,6 +562,9 @@ static int __devinit ad1836_spi_probe(struct spi_device *spi)
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ad1836 = devm_kzalloc(&spi->dev, sizeof(struct ad1836_priv),
 			      GFP_KERNEL);
 	if (ad1836 == NULL)
@@ -521,6 +576,8 @@ static int __devinit ad1836_spi_probe(struct spi_device *spi)
 
 	ret = snd_soc_register_codec(&spi->dev,
 			&soc_codec_dev_ad1836, &ad183x_dais[ad1836->type], 1);
+<<<<<<< HEAD
+=======
 =======
 	ad1836 = kzalloc(sizeof(struct ad1836_priv), GFP_KERNEL);
 	if (ad1836 == NULL)
@@ -535,6 +592,7 @@ static int __devinit ad1836_spi_probe(struct spi_device *spi)
 	if (ret < 0)
 		kfree(ad1836);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -542,6 +600,9 @@ static int __devexit ad1836_spi_remove(struct spi_device *spi)
 {
 	snd_soc_unregister_codec(&spi->dev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -558,6 +619,8 @@ MODULE_DEVICE_TABLE(spi, ad1836_ids);
 static struct spi_driver ad1836_spi_driver = {
 	.driver = {
 		.name	= "ad1836",
+<<<<<<< HEAD
+=======
 =======
 	kfree(spi_get_drvdata(spi));
 	return 0;
@@ -567,6 +630,7 @@ static struct spi_driver ad1836_spi_driver = {
 	.driver = {
 		.name	= "ad1836-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner	= THIS_MODULE,
 	},
 	.probe		= ad1836_spi_probe,
@@ -574,11 +638,18 @@ static struct spi_driver ad1836_spi_driver = {
 <<<<<<< HEAD
 	.id_table	= ad1836_ids,
 =======
+<<<<<<< HEAD
+	.id_table	= ad1836_ids,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init ad1836_init(void)
 {
+<<<<<<< HEAD
+	return spi_register_driver(&ad1836_spi_driver);
+=======
 <<<<<<< HEAD
 	return spi_register_driver(&ad1836_spi_driver);
 =======
@@ -592,6 +663,7 @@ static int __init ad1836_init(void)
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_init(ad1836_init);
 

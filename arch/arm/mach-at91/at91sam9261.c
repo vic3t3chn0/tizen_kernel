@@ -12,12 +12,17 @@
 
 #include <linux/module.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/proc-fns.h>
 #include <asm/irq.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 #include <asm/system_misc.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/pm.h>
 
@@ -25,16 +30,22 @@
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cpu.h>
 #include <mach/at91sam9261.h>
 #include <mach/at91_pmc.h>
 #include <mach/at91_rstc.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "soc.h"
 #include "generic.h"
 #include "clock.h"
 #include "sam9_smc.h"
+<<<<<<< HEAD
+=======
 =======
 #include <mach/at91_shdwc.h>
 
@@ -68,6 +79,7 @@ static struct map_desc at91sam9g10_sram_desc[] __initdata = {
 	},
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* --------------------------------------------------------------------
  *  Clocks
@@ -173,6 +185,9 @@ static struct clk lcdc_clk = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* HClocks */
 static struct clk hck0 = {
 	.name		= "hck0",
@@ -187,8 +202,11 @@ static struct clk hck1 = {
 	.id		= 1,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk *periph_clocks[] __initdata = {
 	&pioA_clk,
 	&pioB_clk,
@@ -218,6 +236,9 @@ static struct clk_lookup periph_clocks_lookups[] = {
 	CLKDEV_CON_DEV_ID("t0_clk", "atmel_tcb.0", &tc0_clk),
 	CLKDEV_CON_DEV_ID("t1_clk", "atmel_tcb.0", &tc1_clk),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_DEV_ID("t2_clk", "atmel_tcb.0", &tc2_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.0", &ssc0_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.1", &ssc1_clk),
@@ -226,12 +247,15 @@ static struct clk_lookup periph_clocks_lookups[] = {
 	CLKDEV_CON_ID("pioA", &pioA_clk),
 	CLKDEV_CON_ID("pioB", &pioB_clk),
 	CLKDEV_CON_ID("pioC", &pioC_clk),
+<<<<<<< HEAD
+=======
 =======
 	CLKDEV_CON_DEV_ID("t2_clk", "atmel_tcb.0", &tc1_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.0", &ssc0_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.1", &ssc1_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.2", &ssc2_clk),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_lookup usart_clocks_lookups[] = {
@@ -272,6 +296,8 @@ static struct clk pck3 = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* HClocks */
 static struct clk hck0 = {
 	.name		= "hck0",
@@ -287,6 +313,7 @@ static struct clk hck1 = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init at91sam9261_register_clocks(void)
 {
 	int i;
@@ -325,6 +352,9 @@ void __init at91sam9261_set_console_clock(int id)
  * -------------------------------------------------------------------- */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct at91_gpio_bank at91sam9261_gpio[] __initdata = {
 	{
 		.id		= AT91SAM9261_ID_PIOA,
@@ -338,6 +368,8 @@ static struct at91_gpio_bank at91sam9261_gpio[] __initdata = {
 	}
 };
 
+<<<<<<< HEAD
+=======
 =======
 static struct at91_gpio_bank at91sam9261_gpio[] = {
 	{
@@ -362,11 +394,15 @@ static void at91sam9261_poweroff(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* --------------------------------------------------------------------
  *  AT91SAM9261 processor initialization
  * -------------------------------------------------------------------- */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init at91sam9261_map_io(void)
 {
 	if (cpu_is_at91sam9g10())
@@ -392,6 +428,8 @@ static void __init at91sam9261_initialize(void)
 	at91_extern_irq = (1 << AT91SAM9261_ID_IRQ0) | (1 << AT91SAM9261_ID_IRQ1)
 			| (1 << AT91SAM9261_ID_IRQ2);
 
+<<<<<<< HEAD
+=======
 =======
 void __init at91sam9261_map_io(void)
 {
@@ -418,6 +456,7 @@ void __init at91sam9261_initialize(unsigned long main_clock)
 	at91sam9261_register_clocks();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Register GPIO subsystem */
 	at91_gpio_init(at91sam9261_gpio, 3);
 }
@@ -465,6 +504,9 @@ static unsigned int at91sam9261_default_irq_priority[NR_AIC_IRQS] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct at91_init_soc __initdata at91sam9261_soc = {
 	.map_io = at91sam9261_map_io,
 	.default_irq_priority = at91sam9261_default_irq_priority,
@@ -472,6 +514,8 @@ struct at91_init_soc __initdata at91sam9261_soc = {
 	.register_clocks = at91sam9261_register_clocks,
 	.init = at91sam9261_initialize,
 };
+<<<<<<< HEAD
+=======
 =======
 void __init at91sam9261_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 {
@@ -485,3 +529,4 @@ void __init at91sam9261_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 	at91_gpio_irq_setup();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

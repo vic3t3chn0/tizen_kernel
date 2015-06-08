@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/ratelimit.h>
 =======
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct dm_dev;
 struct dm_target;
@@ -133,11 +137,14 @@ void dm_put_device(struct dm_target *ti, struct dm_dev *d);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Target features
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct target_type {
 	uint64_t features;
 	const char *name;
@@ -167,6 +174,9 @@ struct target_type {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Target features
  */
@@ -191,8 +201,11 @@ struct target_type {
 #define DM_TARGET_IMMUTABLE		0x00000004
 #define dm_target_is_immutable(type)	((type)->features & DM_TARGET_IMMUTABLE)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct dm_target {
 	struct dm_table *table;
 	struct target_type *type;
@@ -232,13 +245,19 @@ struct dm_target {
 	 */
 	unsigned discards_supported:1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Set if this target does not return zeroes on discarded blocks.
 	 */
 	unsigned discard_zeroes_data_unsupported:1;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Each target can link one of these into the table */
@@ -251,6 +270,9 @@ int dm_register_target(struct target_type *t);
 void dm_unregister_target(struct target_type *t);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Target argument parsing.
  */
@@ -294,8 +316,11 @@ const char *dm_shift_arg(struct dm_arg_set *as);
  */
 void dm_consume_args(struct dm_arg_set *as, unsigned num_args);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-----------------------------------------------------------------
  * Functions for creating and manipulating mapped devices.
  * Drop the reference with dm_put when you finish with the object.
@@ -416,6 +441,9 @@ void *dm_vcalloc(unsigned long nmemb, unsigned long elem_size);
 #define DM_NAME "device-mapper"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PRINTK
 extern struct ratelimit_state dm_ratelimit_state;
 
@@ -424,8 +452,11 @@ extern struct ratelimit_state dm_ratelimit_state;
 #define dm_ratelimit()	0
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DMCRIT(f, arg...) \
 	printk(KERN_CRIT DM_NAME ": " DM_MSG_PREFIX ": " f "\n", ## arg)
 
@@ -436,8 +467,12 @@ extern struct ratelimit_state dm_ratelimit_state;
 <<<<<<< HEAD
 		if (dm_ratelimit())	\
 =======
+<<<<<<< HEAD
+		if (dm_ratelimit())	\
+=======
 		if (printk_ratelimit())	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_ERR DM_NAME ": " DM_MSG_PREFIX ": " \
 			       f "\n", ## arg); \
 	} while (0)
@@ -449,8 +484,12 @@ extern struct ratelimit_state dm_ratelimit_state;
 <<<<<<< HEAD
 		if (dm_ratelimit())	\
 =======
+<<<<<<< HEAD
+		if (dm_ratelimit())	\
+=======
 		if (printk_ratelimit())	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_WARNING DM_NAME ": " DM_MSG_PREFIX ": " \
 			       f "\n", ## arg); \
 	} while (0)
@@ -462,8 +501,12 @@ extern struct ratelimit_state dm_ratelimit_state;
 <<<<<<< HEAD
 		if (dm_ratelimit())	\
 =======
+<<<<<<< HEAD
+		if (dm_ratelimit())	\
+=======
 		if (printk_ratelimit())	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_INFO DM_NAME ": " DM_MSG_PREFIX ": " f \
 			       "\n", ## arg); \
 	} while (0)
@@ -476,8 +519,12 @@ extern struct ratelimit_state dm_ratelimit_state;
 <<<<<<< HEAD
 		if (dm_ratelimit())	\
 =======
+<<<<<<< HEAD
+		if (dm_ratelimit())	\
+=======
 		if (printk_ratelimit())	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_DEBUG DM_NAME ": " DM_MSG_PREFIX ": " f \
 			       "\n", ## arg); \
 	} while (0)

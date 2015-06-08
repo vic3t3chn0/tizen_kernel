@@ -13,15 +13,21 @@
 #define pr_fmt(fmt) "hw perfevents: " fmt
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bitmap.h>
 #include <linux/interrupt.h>
 #include <linux/kernel.h>
 #include <linux/export.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/interrupt.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/perf_event.h>
 #include <linux/platform_device.h>
 #include <linux/spinlock.h>
@@ -30,7 +36,12 @@
 #include <linux/irq.h>
 #include <linux/of.h>
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+#include <linux/of.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/cputype.h>
 #include <asm/irq.h>
@@ -39,10 +50,15 @@
 #include <asm/stacktrace.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/cpu_pm.h>
 
 /*
  * ARMv6 supports a maximum of 3 events, starting from index 0. If we add
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *pmu_device;
 
@@ -55,6 +71,7 @@ static DEFINE_RAW_SPINLOCK(pmu_lock);
 /*
  * ARMv6 supports a maximum of 3 events, starting from index 1. If we add
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * another platform that supports more, we need to increase this to be the
  * largest of all platforms.
  *
@@ -63,6 +80,9 @@ static DEFINE_RAW_SPINLOCK(pmu_lock);
  *  Cortex-A8 has 1+4 counters, Cortex-A9 has 1+6 counters.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ARMPMU_MAX_HWEVENTS		32
 
 static DEFINE_PER_CPU(u32, from_idle);
@@ -76,6 +96,8 @@ static DEFINE_PER_CPU(struct pmu_hw_events, cpu_hw_events);
 static struct arm_pmu *cpu_pmu;
 
 static int per_cpu_irq;
+<<<<<<< HEAD
+=======
 =======
 #define ARMPMU_MAX_HWEVENTS		33
 
@@ -126,6 +148,7 @@ struct arm_pmu {
 /* Set at runtime when we know what CPU type we are. */
 static const struct arm_pmu *armpmu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum arm_perf_pmu_ids
 armpmu_get_pmu_id(void)
@@ -136,15 +159,23 @@ armpmu_get_pmu_id(void)
 	if (cpu_pmu != NULL)
 		id = cpu_pmu->id;
 =======
+<<<<<<< HEAD
+	if (cpu_pmu != NULL)
+		id = cpu_pmu->id;
+=======
 	if (armpmu != NULL)
 		id = armpmu->id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return id;
 }
 EXPORT_SYMBOL_GPL(armpmu_get_pmu_id);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_num_counters(void)
 {
 	int max_events = 0;
@@ -154,6 +185,8 @@ int perf_num_counters(void)
 
 	return max_events;
 }
+<<<<<<< HEAD
+=======
 =======
 int
 armpmu_get_max_events(void)
@@ -172,6 +205,7 @@ int perf_num_counters(void)
 	return armpmu_get_max_events();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(perf_num_counters);
 
 #define HW_OP_UNSUPPORTED		0xFFFF
@@ -183,14 +217,20 @@ EXPORT_SYMBOL_GPL(perf_num_counters);
 
 static int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 armpmu_map_cache_event(unsigned (*cache_map)
 				      [PERF_COUNT_HW_CACHE_MAX]
 				      [PERF_COUNT_HW_CACHE_OP_MAX]
 				      [PERF_COUNT_HW_CACHE_RESULT_MAX],
 		       u64 config)
+<<<<<<< HEAD
+=======
 =======
 armpmu_map_cache_event(u64 config)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int cache_type, cache_op, cache_result, ret;
 
@@ -209,8 +249,12 @@ armpmu_map_cache_event(u64 config)
 <<<<<<< HEAD
 	ret = (int)(*cache_map)[cache_type][cache_op][cache_result];
 =======
+<<<<<<< HEAD
+	ret = (int)(*cache_map)[cache_type][cache_op][cache_result];
+=======
 	ret = (int)(*armpmu->cache_map)[cache_type][cache_op][cache_result];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret == CACHE_OP_UNSUPPORTED)
 		return -ENOENT;
@@ -220,6 +264,9 @@ armpmu_map_cache_event(u64 config)
 
 static int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 armpmu_map_event(const unsigned (*event_map)[PERF_COUNT_HW_MAX], u64 config)
 {
 	int mapping;
@@ -260,6 +307,8 @@ static int map_cpu_event(struct perf_event *event,
 }
 
 int
+<<<<<<< HEAD
+=======
 =======
 armpmu_map_event(u64 config)
 {
@@ -275,6 +324,7 @@ armpmu_map_raw_event(u64 config)
 
 static int
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 armpmu_event_set_period(struct perf_event *event,
 			struct hw_perf_event *hwc,
 			int idx)
@@ -282,7 +332,11 @@ armpmu_event_set_period(struct perf_event *event,
 <<<<<<< HEAD
 	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
 =======
+<<<<<<< HEAD
+	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s64 left = local64_read(&hwc->period_left);
 	s64 period = hwc->sample_period;
 	int ret = 0;
@@ -314,6 +368,9 @@ armpmu_event_set_period(struct perf_event *event,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u64
 armpmu_event_update(struct perf_event *event,
 		    struct hw_perf_event *hwc,
@@ -325,6 +382,8 @@ armpmu_event_update(struct perf_event *event,
 	if (event->state <= PERF_EVENT_STATE_OFF)
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 static u64
 armpmu_event_update(struct perf_event *event,
@@ -334,6 +393,7 @@ armpmu_event_update(struct perf_event *event,
 	u64 delta, prev_raw_count, new_raw_count;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 again:
 	prev_raw_count = local64_read(&hwc->prev_count);
 	new_raw_count = armpmu->read_counter(idx);
@@ -345,6 +405,9 @@ again:
 <<<<<<< HEAD
 	delta = (new_raw_count - prev_raw_count) & armpmu->max_period;
 =======
+<<<<<<< HEAD
+	delta = (new_raw_count - prev_raw_count) & armpmu->max_period;
+=======
 	new_raw_count &= armpmu->max_period;
 	prev_raw_count &= armpmu->max_period;
 
@@ -353,6 +416,7 @@ again:
 	else
 		delta = new_raw_count - prev_raw_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	local64_add(delta, &event->count);
 	local64_sub(delta, &hwc->period_left);
@@ -372,13 +436,22 @@ armpmu_read(struct perf_event *event)
 <<<<<<< HEAD
 	armpmu_event_update(event, hwc, hwc->idx);
 =======
+<<<<<<< HEAD
+	armpmu_event_update(event, hwc, hwc->idx);
+=======
 	armpmu_event_update(event, hwc, hwc->idx, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
 armpmu_stop(struct perf_event *event, int flags)
 {
+<<<<<<< HEAD
+	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
+	struct hw_perf_event *hwc = &event->hw;
+
+=======
 <<<<<<< HEAD
 	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
 	struct hw_perf_event *hwc = &event->hw;
@@ -390,6 +463,7 @@ armpmu_stop(struct perf_event *event, int flags)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * ARM pmu always has to update the counter, so ignore
 	 * PERF_EF_UPDATE, see comments in armpmu_start().
@@ -400,8 +474,12 @@ armpmu_stop(struct perf_event *event, int flags)
 <<<<<<< HEAD
 		armpmu_event_update(event, hwc, hwc->idx);
 =======
+<<<<<<< HEAD
+		armpmu_event_update(event, hwc, hwc->idx);
+=======
 		armpmu_event_update(event, hwc, hwc->idx, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hwc->state |= PERF_HES_STOPPED | PERF_HES_UPTODATE;
 	}
 }
@@ -414,12 +492,18 @@ armpmu_start(struct perf_event *event, int flags)
 	struct hw_perf_event *hwc = &event->hw;
 
 =======
+<<<<<<< HEAD
+	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
+	struct hw_perf_event *hwc = &event->hw;
+
+=======
 	struct hw_perf_event *hwc = &event->hw;
 
 	if (!armpmu)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * ARM pmu always has to reprogram the period, so ignore
 	 * PERF_EF_RELOAD, see the comment below.
@@ -439,8 +523,12 @@ armpmu_start(struct perf_event *event, int flags)
 <<<<<<< HEAD
 	armpmu->enable(hwc, hwc->idx, event->cpu);
 =======
+<<<<<<< HEAD
+	armpmu->enable(hwc, hwc->idx, event->cpu);
+=======
 	armpmu->enable(hwc, hwc->idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -450,14 +538,22 @@ armpmu_del(struct perf_event *event, int flags)
 	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
 	struct pmu_hw_events *hw_events = armpmu->get_hw_events();
 =======
+<<<<<<< HEAD
+	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
+	struct pmu_hw_events *hw_events = armpmu->get_hw_events();
+=======
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hw_perf_event *hwc = &event->hw;
 	int idx = hwc->idx;
 
 	WARN_ON(idx < 0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	armpmu_stop(event, PERF_EF_UPDATE);
 	hw_events->events[idx] = NULL;
 	clear_bit(idx, hw_events->used_mask);
@@ -465,12 +561,15 @@ armpmu_del(struct perf_event *event, int flags)
 	/* Clear event constraints. */
 	if (armpmu->clear_event_constraints)
 		armpmu->clear_event_constraints(event);
+<<<<<<< HEAD
+=======
 =======
 	clear_bit(idx, cpuc->active_mask);
 	armpmu_stop(event, PERF_EF_UPDATE);
 	cpuc->events[idx] = NULL;
 	clear_bit(idx, cpuc->used_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	perf_event_update_userpage(event);
 }
@@ -482,14 +581,22 @@ armpmu_add(struct perf_event *event, int flags)
 	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
 	struct pmu_hw_events *hw_events = armpmu->get_hw_events();
 =======
+<<<<<<< HEAD
+	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
+	struct pmu_hw_events *hw_events = armpmu->get_hw_events();
+=======
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hw_perf_event *hwc = &event->hw;
 	int idx;
 	int err = 0;
 
 	perf_pmu_disable(event->pmu);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Tests if event is constrained. If not sets it so that next
 	 * collision can be detected.
@@ -504,11 +611,14 @@ armpmu_add(struct perf_event *event, int flags)
 
 	/* If we don't have a space for the counter then finish early. */
 	idx = armpmu->get_event_idx(hw_events, hwc);
+<<<<<<< HEAD
+=======
 =======
 
 	/* If we don't have a space for the counter then finish early. */
 	idx = armpmu->get_event_idx(cpuc, hwc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (idx < 0) {
 		err = idx;
 		goto out;
@@ -523,9 +633,13 @@ armpmu_add(struct perf_event *event, int flags)
 <<<<<<< HEAD
 	hw_events->events[idx] = event;
 =======
+<<<<<<< HEAD
+	hw_events->events[idx] = event;
+=======
 	cpuc->events[idx] = event;
 	set_bit(idx, cpuc->active_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hwc->state = PERF_HES_STOPPED | PERF_HES_UPTODATE;
 	if (flags & PERF_EF_START)
@@ -540,6 +654,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 validate_event(struct pmu_hw_events *hw_events,
 	       struct perf_event *event)
@@ -555,6 +672,8 @@ validate_event(struct pmu_hw_events *hw_events,
 		return 1;
 
 	return armpmu->get_event_idx(hw_events, &fake_event) >= 0;
+<<<<<<< HEAD
+=======
 =======
 static struct pmu pmu;
 
@@ -569,6 +688,7 @@ validate_event(struct cpu_hw_events *cpuc,
 
 	return armpmu->get_event_idx(cpuc, &fake_event) >= 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -576,6 +696,9 @@ validate_group(struct perf_event *event)
 {
 	struct perf_event *sibling, *leader = event->group_leader;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pmu_hw_events fake_pmu;
 	DECLARE_BITMAP(fake_used_mask, ARMPMU_MAX_HWEVENTS);
 
@@ -596,6 +719,8 @@ validate_group(struct perf_event *event)
 
 	if (!validate_event(&fake_pmu, event))
 		return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	struct cpu_hw_events fake_pmu;
 
@@ -612,6 +737,7 @@ validate_group(struct perf_event *event)
 	if (!validate_event(&fake_pmu, event))
 		return -ENOSPC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -623,13 +749,22 @@ static irqreturn_t armpmu_platform_irq(int irq, void *dev)
 	struct platform_device *plat_device = armpmu->plat_device;
 	struct arm_pmu_platdata *plat = dev_get_platdata(&plat_device->dev);
 =======
+<<<<<<< HEAD
+	struct arm_pmu *armpmu = (struct arm_pmu *) dev;
+	struct platform_device *plat_device = armpmu->plat_device;
+	struct arm_pmu_platdata *plat = dev_get_platdata(&plat_device->dev);
+=======
 	struct arm_pmu_platdata *plat = dev_get_platdata(&pmu_device->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return plat->handle_irq(irq, dev, armpmu->handle_irq);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PER_CPU(u32, pmu_irq_cookie);
 
 void enable_irq_callback(void *info)
@@ -754,6 +889,8 @@ armpmu_reserve_hardware(struct arm_pmu *armpmu)
 		return err;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 static int
 armpmu_reserve_hardware(void)
@@ -771,6 +908,7 @@ armpmu_reserve_hardware(void)
 	init_pmu(ARM_PMU_DEVICE_CPU);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	plat = dev_get_platdata(&pmu_device->dev);
 	if (plat && plat->handle_irq)
 		handle_irq = armpmu_platform_irq;
@@ -778,6 +916,9 @@ armpmu_reserve_hardware(void)
 		handle_irq = armpmu->handle_irq;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (plat && plat->request_pmu_irq)
 		armpmu->request_pmu_irq = plat->request_pmu_irq;
 	else if (!armpmu->request_pmu_irq)
@@ -790,9 +931,12 @@ armpmu_reserve_hardware(void)
 
 	irqs = min(pmu_device->num_resources, num_possible_cpus());
 	if (irqs < 1) {
+<<<<<<< HEAD
+=======
 =======
 	if (pmu_device->num_resources < 1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("no irqs for PMUs defined\n");
 		return -ENODEV;
 	}
@@ -801,13 +945,21 @@ armpmu_reserve_hardware(void)
 	for (i = 0; i < irqs; ++i) {
 		err = 0;
 =======
+<<<<<<< HEAD
+	for (i = 0; i < irqs; ++i) {
+		err = 0;
+=======
 	for (i = 0; i < pmu_device->num_resources; ++i) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		irq = platform_get_irq(pmu_device, i);
 		if (irq < 0)
 			continue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * If we have a single PMU interrupt that we can't shift,
 		 * assume that we're running on a uniprocessor machine and
@@ -853,6 +1005,8 @@ event_requires_mode_exclusion(struct perf_event_attr *attr)
 {
 	return attr->exclude_idle || attr->exclude_user ||
 	       attr->exclude_kernel || attr->exclude_hv;
+<<<<<<< HEAD
+=======
 =======
 		err = request_irq(irq, handle_irq,
 				  IRQF_DISABLED | IRQF_NOBALANCING,
@@ -904,17 +1058,23 @@ hw_perf_event_destroy(struct perf_event *event)
 		mutex_unlock(&pmu_reserve_mutex);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
 __hw_perf_event_init(struct perf_event *event)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
 	struct hw_perf_event *hwc = &event->hw;
 	int mapping, err;
 
 	mapping = armpmu->map_event(event);
+<<<<<<< HEAD
+=======
 =======
 	struct hw_perf_event *hwc = &event->hw;
 	int mapping, err;
@@ -931,6 +1091,7 @@ __hw_perf_event_init(struct perf_event *event)
 		return -EOPNOTSUPP;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mapping < 0) {
 		pr_debug("event %x:%llx not supported\n", event->attr.type,
@@ -940,6 +1101,9 @@ __hw_perf_event_init(struct perf_event *event)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * We don't assign an index until we actually place the event onto
 	 * hardware. Use -1 to signify that we haven't decided where to put it
 	 * yet. For SMP systems, each core has it's own PMU so we can't do any
@@ -956,6 +1120,8 @@ __hw_perf_event_init(struct perf_event *event)
 	if ((!armpmu->set_event_filter ||
 	     armpmu->set_event_filter(hwc, &event->attr)) &&
 	     event_requires_mode_exclusion(&event->attr)) {
+<<<<<<< HEAD
+=======
 =======
 	 * Check whether we need to exclude the counter from certain modes.
 	 * The ARM performance counters are on all of the time so if someone
@@ -964,12 +1130,16 @@ __hw_perf_event_init(struct perf_event *event)
 	if (event->attr.exclude_kernel || event->attr.exclude_user ||
 	    event->attr.exclude_hv || event->attr.exclude_idle) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("ARM performance counters do not support "
 			 "mode exclusion\n");
 		return -EPERM;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Store the event encoding into the config_base field.
@@ -984,6 +1154,8 @@ __hw_perf_event_init(struct perf_event *event)
 		 * you have some serious IRQ latency issues.
 		 */
 		hwc->sample_period  = armpmu->max_period >> 1;
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * We don't assign an index until we actually place the event onto
@@ -1006,6 +1178,7 @@ __hw_perf_event_init(struct perf_event *event)
 	if (!hwc->sample_period) {
 		hwc->sample_period  = armpmu->max_period;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hwc->last_period    = hwc->sample_period;
 		local64_set(&hwc->period_left, hwc->sample_period);
 	}
@@ -1023,6 +1196,9 @@ __hw_perf_event_init(struct perf_event *event)
 static int armpmu_event_init(struct perf_event *event)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct arm_pmu *armpmu = to_arm_pmu(event->pmu);
 	int err = 0;
 	atomic_t *active_events = &armpmu->active_events;
@@ -1044,6 +1220,8 @@ static int armpmu_event_init(struct perf_event *event)
 		if (!err)
 			atomic_inc(active_events);
 		mutex_unlock(&armpmu->reserve_mutex);
+<<<<<<< HEAD
+=======
 =======
 	int err = 0;
 
@@ -1072,6 +1250,7 @@ static int armpmu_event_init(struct perf_event *event)
 			atomic_inc(&active_events);
 		mutex_unlock(&pmu_reserve_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (err)
@@ -1087,6 +1266,9 @@ static int armpmu_event_init(struct perf_event *event)
 static void armpmu_enable(struct pmu *pmu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct arm_pmu *armpmu = to_arm_pmu(pmu);
 	struct pmu_hw_events *hw_events = armpmu->get_hw_events();
 	int enabled = bitmap_weight(hw_events->used_mask, armpmu->num_events);
@@ -1109,6 +1291,8 @@ static void armpmu_enable(struct pmu *pmu)
 	/* So we don't start the PMU before enabling counters after idle. */
 	barrier();
 
+<<<<<<< HEAD
+=======
 =======
 	/* Enable all of the perf events on hardware. */
 	int idx, enabled = 0;
@@ -1128,6 +1312,7 @@ static void armpmu_enable(struct pmu *pmu)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (enabled)
 		armpmu->start();
 }
@@ -1135,6 +1320,9 @@ static void armpmu_enable(struct pmu *pmu)
 static void armpmu_disable(struct pmu *pmu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct arm_pmu *armpmu = to_arm_pmu(pmu);
 	armpmu->stop();
 }
@@ -1160,6 +1348,8 @@ int armpmu_register(struct arm_pmu *armpmu, char *name, int type)
 	armpmu_init(armpmu);
 	return perf_pmu_register(&armpmu->pmu, name, type);
 }
+<<<<<<< HEAD
+=======
 =======
 	if (armpmu)
 		armpmu->stop();
@@ -1176,6 +1366,7 @@ static struct pmu pmu = {
 	.read		= armpmu_read,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Include the PMU-specific implementations. */
 #include "perf_event_xscale.c"
@@ -1185,7 +1376,12 @@ static struct pmu pmu = {
 #include "perf_event_msm_krait.c"
 #include "perf_event_msm.c"
 =======
+<<<<<<< HEAD
+#include "perf_event_msm_krait.c"
+#include "perf_event_msm.c"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Ensure the PMU has sane values out of reset.
@@ -1193,6 +1389,9 @@ static struct pmu pmu = {
  */
 static int __init
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 cpu_pmu_reset(void)
 {
 	if (cpu_pmu && cpu_pmu->reset)
@@ -1442,6 +1641,8 @@ static inline int get_dt_irq_prop(void) {return 0; }
 /*
  * CPU PMU identification and registration.
  */
+<<<<<<< HEAD
+=======
 =======
 armpmu_reset(void)
 {
@@ -1452,6 +1653,7 @@ armpmu_reset(void)
 arch_initcall(armpmu_reset);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init
 init_hw_perf_events(void)
 {
@@ -1466,6 +1668,9 @@ init_hw_perf_events(void)
 		case 0xB560:	/* ARM1156 */
 		case 0xB760:	/* ARM1176 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cpu_pmu = armv6pmu_init();
 			break;
 		case 0xB020:	/* ARM11mpcore */
@@ -1485,6 +1690,8 @@ init_hw_perf_events(void)
 			break;
 		case 0xC070:	/* Cortex-A7 */
 			cpu_pmu = armv7_a7_pmu_init();
+<<<<<<< HEAD
+=======
 =======
 			armpmu = armv6pmu_init();
 			break;
@@ -1503,6 +1710,7 @@ init_hw_perf_events(void)
 		case 0xC0F0:	/* Cortex-A15 */
 			armpmu = armv7_a15_pmu_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	/* Intel CPUs [xscale]. */
@@ -1511,6 +1719,9 @@ init_hw_perf_events(void)
 		switch (part_number) {
 		case 1:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cpu_pmu = xscale1pmu_init();
 			break;
 		case 2:
@@ -1532,17 +1743,23 @@ init_hw_perf_events(void)
 		case 0x06F0:    /* 8064 */
 //			fabricmon_pmu_init();
 			cpu_pmu = armv7_krait_pmu_init();
+<<<<<<< HEAD
+=======
 =======
 			armpmu = xscale1pmu_init();
 			break;
 		case 2:
 			armpmu = xscale2pmu_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cpu_pmu) {
 		pr_info("enabled with %s PMU driver, %d counters available\n",
@@ -1553,20 +1770,26 @@ init_hw_perf_events(void)
 		cpu_pm_register_notifier(&perf_cpu_pm_notifier_block);
 		per_cpu_irq = get_dt_irq_prop();
 
+<<<<<<< HEAD
+=======
 =======
 	if (armpmu) {
 		pr_info("enabled with %s PMU driver, %d counters available\n",
 			armpmu->name, armpmu->num_events);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		pr_info("no hardware support available\n");
 	}
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	perf_pmu_register(&pmu, "cpu", PERF_TYPE_RAW);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 early_initcall(init_hw_perf_events);
@@ -1625,8 +1848,11 @@ perf_callchain_user(struct perf_callchain_entry *entry, struct pt_regs *regs)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	perf_callchain_store(entry, regs->ARM_pc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tail = (struct frame_tail __user *)regs->ARM_fp - 1;
 
 	while ((entry->nr < PERF_MAX_STACK_DEPTH) &&

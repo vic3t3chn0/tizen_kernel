@@ -15,8 +15,12 @@
 <<<<<<< HEAD
 #include <linux/mutex.h>
 =======
+<<<<<<< HEAD
+#include <linux/mutex.h>
+=======
 #include <linux/semaphore.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UCB_IO_DATA	0x00
 #define UCB_IO_DIR	0x01
@@ -109,6 +113,9 @@
 #define UCB_MODE_AUD_OFF_CAN	(1 << 13)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum ucb1x00_reset {
 	UCB_RST_PROBE,
 	UCB_RST_RESUME,
@@ -130,6 +137,8 @@ struct ucb1x00 {
 	unsigned int		irq;
 	int			irq_base;
 	struct mutex		adc_mutex;
+<<<<<<< HEAD
+=======
 =======
 
 struct ucb1x00_irq {
@@ -143,6 +152,7 @@ struct ucb1x00 {
 	unsigned int		irq;
 	struct semaphore	adc_sem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t		io_lock;
 	u16			id;
 	u16			io_dir;
@@ -154,8 +164,13 @@ struct ucb1x00 {
 	u16			irq_mask;
 	u16			irq_wake;
 =======
+<<<<<<< HEAD
+	u16			irq_mask;
+	u16			irq_wake;
+=======
 	struct ucb1x00_irq	irq_handler[16];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device		dev;
 	struct list_head	node;
 	struct list_head	devs;
@@ -180,8 +195,12 @@ struct ucb1x00_driver {
 <<<<<<< HEAD
 	int	(*suspend)(struct ucb1x00_dev *dev);
 =======
+<<<<<<< HEAD
+	int	(*suspend)(struct ucb1x00_dev *dev);
+=======
 	int	(*suspend)(struct ucb1x00_dev *dev, pm_message_t state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int	(*resume)(struct ucb1x00_dev *dev);
 };
 
@@ -284,6 +303,8 @@ void ucb1x00_adc_disable(struct ucb1x00 *ucb);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Which edges of the IRQ do you want to control today?
  */
@@ -296,4 +317,5 @@ void ucb1x00_disable_irq(struct ucb1x00 *ucb, unsigned int idx, int edges);
 int ucb1x00_free_irq(struct ucb1x00 *ucb, unsigned int idx, void *devid);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

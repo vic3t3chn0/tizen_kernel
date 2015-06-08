@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pci-bridge.h>
 #include <asm/prom.h>
 
@@ -81,7 +85,11 @@ static void of_pci_parse_addrs(struct device_node *node, struct pci_dev *dev)
 <<<<<<< HEAD
 	struct pci_bus_region region;
 =======
+<<<<<<< HEAD
+	struct pci_bus_region region;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct resource *res;
 	const u32 *addrs;
 	u32 i;
@@ -114,17 +122,23 @@ static void of_pci_parse_addrs(struct device_node *node, struct pci_dev *dev)
 			continue;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		res->flags = flags;
 		res->name = pci_name(dev);
 		region.start = base;
 		region.end = base + size - 1;
 		pcibios_bus_to_resource(dev, res, &region);
+<<<<<<< HEAD
+=======
 =======
 		res->start = base;
 		res->end = base + size - 1;
 		res->flags = flags;
 		res->name = pci_name(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -219,6 +233,9 @@ EXPORT_SYMBOL(of_create_pci_dev);
  * devices.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __devinit of_scan_pci_bridge(struct pci_dev *dev)
 {
 	struct device_node *node = dev->dev.of_node;
@@ -226,6 +243,8 @@ void __devinit of_scan_pci_bridge(struct pci_dev *dev)
 	const u32 *busrange, *ranges;
 	int len, i, mode;
 	struct pci_bus_region region;
+<<<<<<< HEAD
+=======
 =======
 void __devinit of_scan_pci_bridge(struct device_node *node,
 				  struct pci_dev *dev)
@@ -234,6 +253,7 @@ void __devinit of_scan_pci_bridge(struct device_node *node,
 	const u32 *busrange, *ranges;
 	int len, i, mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct resource *res;
 	unsigned int flags;
 	u64 size;
@@ -266,8 +286,11 @@ void __devinit of_scan_pci_bridge(struct device_node *node,
 	bus->bridge_ctl = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	bus->dev.of_node = of_node_get(node);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* parse ranges property */
 	/* PCI #address-cells == 3 and #size-cells == 2 always */
@@ -300,15 +323,21 @@ void __devinit of_scan_pci_bridge(struct device_node *node,
 			++i;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		res->flags = flags;
 		region.start = of_read_number(&ranges[1], 2);
 		region.end = region.start + size - 1;
 		pcibios_bus_to_resource(dev, res, &region);
+<<<<<<< HEAD
+=======
 =======
 		res->start = of_read_number(&ranges[1], 2);
 		res->end = res->start + size - 1;
 		res->flags = flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	sprintf(bus->name, "PCI Bus %04x:%02x", pci_domain_nr(bus),
 		bus->number);
@@ -374,10 +403,14 @@ static void __devinit __of_scan_bus(struct device_node *node,
 <<<<<<< HEAD
 			of_scan_pci_bridge(dev);
 =======
+<<<<<<< HEAD
+			of_scan_pci_bridge(dev);
+=======
 			struct device_node *child = pci_device_to_OF_node(dev);
 			if (child)
 				of_scan_pci_bridge(child, dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }

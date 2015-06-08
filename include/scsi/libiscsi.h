@@ -118,8 +118,12 @@ struct iscsi_task {
 <<<<<<< HEAD
 	struct scsi_lun		lun;
 =======
+<<<<<<< HEAD
+	struct scsi_lun		lun;
+=======
 	uint8_t			lun[8];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int			itt;		/* this ITT */
 
@@ -275,8 +279,12 @@ struct iscsi_session {
 <<<<<<< HEAD
 	unsigned short		max_r2t;
 =======
+<<<<<<< HEAD
+	unsigned short		max_r2t;
+=======
 	unsigned		max_r2t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			imm_data_en;
 	unsigned		first_burst;
 	unsigned		max_burst;
@@ -295,7 +303,11 @@ struct iscsi_session {
 <<<<<<< HEAD
 	char			*targetalias;
 =======
+<<<<<<< HEAD
+	char			*targetalias;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char			*ifacename;
 	char			*initiatorname;
 	/* control data */

@@ -28,16 +28,22 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/iseries/hv_lp_config.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/lppaca.h>
 #include <asm/hvcall.h>
 #include <asm/firmware.h>
 #include <asm/rtas.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/prom.h>
 #include <asm/vdso_datapage.h>
@@ -62,10 +68,15 @@ static unsigned long get_purr(void)
 
 	for_each_possible_cpu(cpu) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct cpu_usage *cu;
 
 		cu = &per_cpu(cpu_usage_array, cpu);
 		sum_purr += cu->current_tb;
+<<<<<<< HEAD
+=======
 =======
 		if (firmware_has_feature(FW_FEATURE_ISERIES))
 			sum_purr += lppaca_of(cpu).emulated_time_base;
@@ -76,10 +87,13 @@ static unsigned long get_purr(void)
 			sum_purr += cu->current_tb;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return sum_purr;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_PPC_ISERIES
@@ -145,6 +159,7 @@ static int iseries_lparcfg_data(struct seq_file *m, void *v)
 
 #ifdef CONFIG_PPC_PSERIES
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Methods used to fetch LPAR data when running on a pSeries platform.
  */
@@ -667,9 +682,13 @@ static ssize_t lparcfg_write(struct file *file, const char __user * buf,
 <<<<<<< HEAD
 	if (!firmware_has_feature(FW_FEATURE_SPLPAR))
 =======
+<<<<<<< HEAD
+	if (!firmware_has_feature(FW_FEATURE_SPLPAR))
+=======
 	if (!firmware_has_feature(FW_FEATURE_SPLPAR) ||
 			firmware_has_feature(FW_FEATURE_ISERIES))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	if (count > kbuf_sz)
@@ -731,6 +750,8 @@ static ssize_t lparcfg_write(struct file *file, const char __user * buf,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #else				/* CONFIG_PPC_PSERIES */
 
 static int pseries_lparcfg_data(struct seq_file *m, void *v)
@@ -747,6 +768,7 @@ static ssize_t lparcfg_write(struct file *file, const char __user * buf,
 #endif				/* CONFIG_PPC_PSERIES */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int lparcfg_data(struct seq_file *m, void *v)
 {
 	struct device_node *rootdn;
@@ -762,11 +784,16 @@ static int lparcfg_data(struct seq_file *m, void *v)
 	if (rootdn) {
 		tmp = of_get_property(rootdn, "model", NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (tmp)
 			model = tmp;
 		tmp = of_get_property(rootdn, "system-id", NULL);
 		if (tmp)
 			system_id = tmp;
+<<<<<<< HEAD
+=======
 =======
 		if (tmp) {
 			model = tmp;
@@ -782,6 +809,7 @@ static int lparcfg_data(struct seq_file *m, void *v)
 				system_id += 4;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		lp_index_ptr = of_get_property(rootdn, "ibm,partition-no",
 					NULL);
 		if (lp_index_ptr)
@@ -794,9 +822,12 @@ static int lparcfg_data(struct seq_file *m, void *v)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (firmware_has_feature(FW_FEATURE_ISERIES))
 		return iseries_lparcfg_data(m, v);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return pseries_lparcfg_data(m, v);
 }
 
@@ -818,10 +849,15 @@ static int __init lparcfg_init(void)
 {
 	struct proc_dir_entry *ent;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	umode_t mode = S_IRUSR | S_IRGRP | S_IROTH;
 
 	/* Allow writing if we have FW_FEATURE_SPLPAR */
 	if (firmware_has_feature(FW_FEATURE_SPLPAR))
+<<<<<<< HEAD
+=======
 =======
 	mode_t mode = S_IRUSR | S_IRGRP | S_IROTH;
 
@@ -829,6 +865,7 @@ static int __init lparcfg_init(void)
 	if (firmware_has_feature(FW_FEATURE_SPLPAR) &&
 			!firmware_has_feature(FW_FEATURE_ISERIES))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mode |= S_IWUSR;
 
 	ent = proc_create("powerpc/lparcfg", mode, NULL, &lparcfg_fops);

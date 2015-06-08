@@ -210,6 +210,9 @@ static struct dentry *msdos_lookup(struct inode *dir, struct dentry *dentry,
 
 	lock_super(sb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = msdos_find(dir, dentry->d_name.name, dentry->d_name.len, &sinfo);
 	switch (err) {
 	case -ENOENT:
@@ -224,6 +227,8 @@ static struct dentry *msdos_lookup(struct inode *dir, struct dentry *dentry,
 	}
 	unlock_super(sb);
 	return d_splice_alias(inode, dentry);
+<<<<<<< HEAD
+=======
 =======
 
 	err = msdos_find(dir, dentry->d_name.name, dentry->d_name.len, &sinfo);
@@ -249,6 +254,7 @@ error:
 	unlock_super(sb);
 	return ERR_PTR(err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***** Creates a directory entry (name is already formatted). */
@@ -293,8 +299,12 @@ static int msdos_add_entry(struct inode *dir, const unsigned char *name,
 <<<<<<< HEAD
 static int msdos_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int msdos_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int msdos_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct nameidata *nd)
 {
 	struct super_block *sb = dir->i_sb;
@@ -379,8 +389,12 @@ out:
 <<<<<<< HEAD
 static int msdos_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int msdos_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int msdos_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = dir->i_sb;
 	struct fat_slot_info sinfo;
@@ -424,8 +438,12 @@ static int msdos_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 	set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 2);
+=======
 	inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_mtime = inode->i_atime = inode->i_ctime = ts;
 	/* timestamp is already written, so mark_inode_dirty() is unneeded. */
 

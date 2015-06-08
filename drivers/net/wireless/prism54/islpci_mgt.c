@@ -24,7 +24,14 @@
 #include <linux/slab.h>
 
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/if_arp.h>
 
 #include "prismcompat.h"
@@ -192,11 +199,23 @@ islpci_mgt_transmit(struct net_device *ndev, int operation, unsigned long oid,
 
 	err = -ENOMEM;
 	p = buf.mem = kmalloc(frag_len, GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!buf.mem)
+		goto error;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!buf.mem) {
 		printk(KERN_DEBUG "%s: cannot allocate mgmt frame\n",
 		       ndev->name);
 		goto error;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	buf.size = frag_len;
 
 	/* create the header directly in the fragment data area */

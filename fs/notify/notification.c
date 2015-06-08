@@ -46,8 +46,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/fsnotify_backend.h>
 #include "fsnotify.h"
@@ -454,8 +458,12 @@ struct fsnotify_event *fsnotify_create_event(struct inode *to_tell, __u32 mask, 
 <<<<<<< HEAD
 static __init int fsnotify_notification_init(void)
 =======
+<<<<<<< HEAD
+static __init int fsnotify_notification_init(void)
+=======
 __init int fsnotify_notification_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	fsnotify_event_cachep = KMEM_CACHE(fsnotify_event, SLAB_PANIC);
 	fsnotify_event_holder_cachep = KMEM_CACHE(fsnotify_event_holder, SLAB_PANIC);
@@ -471,5 +479,8 @@ __init int fsnotify_notification_init(void)
 subsys_initcall(fsnotify_notification_init);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

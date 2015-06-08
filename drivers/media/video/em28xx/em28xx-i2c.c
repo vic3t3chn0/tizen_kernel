@@ -41,6 +41,11 @@ static unsigned int i2c_debug;
 module_param(i2c_debug, int, 0644);
 MODULE_PARM_DESC(i2c_debug, "enable debug messages [i2c]");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define dprintk1(lvl, fmt, args...)			\
 do {							\
@@ -49,6 +54,10 @@ do {							\
       }							\
 } while (0)
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dprintk2(lvl, fmt, args...)			\
 do {							\
 	if (i2c_debug >= lvl) {				\
@@ -181,16 +190,45 @@ static int em2800_i2c_recv_bytes(struct em28xx *dev, unsigned char addr,
 
 /*
  * em28xx_i2c_send_bytes()
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  * untested for more than 4 bytes
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * untested for more than 4 bytes
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int em28xx_i2c_send_bytes(void *data, unsigned char addr, char *buf,
 				 short len, int stop)
 {
 	int wrcount = 0;
 	struct em28xx *dev = (struct em28xx *)data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int write_timeout, ret;
 
 	wrcount = dev->em28xx_write_regs_req(dev, stop ? 2 : 3, addr, buf, len);
 
+	/* Seems to be required after a write */
+	for (write_timeout = EM2800_I2C_WRITE_TIMEOUT; write_timeout > 0;
+	     write_timeout -= 5) {
+		ret = dev->em28xx_read_reg(dev, 0x05);
+		if (!ret)
+			break;
+		msleep(5);
+	}
+
+=======
+
+	wrcount = dev->em28xx_write_regs_req(dev, stop ? 2 : 3, addr, buf, len);
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	wrcount = dev->em28xx_write_regs_req(dev, stop ? 2 : 3, addr, buf, len);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return wrcount;
 }
 
@@ -218,9 +256,19 @@ static int em28xx_i2c_recv_bytes(struct em28xx *dev, unsigned char addr,
  */
 static int em28xx_i2c_check_for_device(struct em28xx *dev, unsigned char addr)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+=======
 	char msg;
 	int ret;
 	msg = addr;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	char msg;
+	int ret;
+	msg = addr;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = dev->em28xx_read_reg_req(dev, 2, addr);
 	if (ret < 0) {
@@ -332,7 +380,17 @@ static int em28xx_i2c_eeprom(struct em28xx *dev, unsigned char *eedata, int len)
 	struct em28xx_eeprom *em_eeprom = (void *)eedata;
 	int i, err, size = len, block;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (dev->chip_id == CHIP_ID_EM2874 ||
+	    dev->chip_id == CHIP_ID_EM28174 ||
+	    dev->chip_id == CHIP_ID_EM2884) {
+=======
 	if (dev->chip_id == CHIP_ID_EM2874 || dev->chip_id == CHIP_ID_EM28174) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (dev->chip_id == CHIP_ID_EM2874 || dev->chip_id == CHIP_ID_EM28174) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Empia switched to a 16-bit addressable eeprom in newer
 		   devices.  While we could certainly write a routine to read
 		   the eeprom, there is nothing of use in there that cannot be

@@ -155,7 +155,11 @@
 <<<<<<< HEAD
 #define UART_XR_EFR	9	/* I/O: Extended Features Register (XR17D15x) */
 =======
+<<<<<<< HEAD
+#define UART_XR_EFR	9	/* I/O: Extended Features Register (XR17D15x) */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UART_EFR_CTS		0x80 /* CTS flow control */
 #define UART_EFR_RTS		0x40 /* RTS flow control */
 #define UART_EFR_SCD		0x20 /* Special character detect */

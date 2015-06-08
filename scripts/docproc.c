@@ -208,9 +208,13 @@ static void find_export_symbols(char * filename)
 <<<<<<< HEAD
 		if (fp == NULL)	{
 =======
+<<<<<<< HEAD
+		if (fp == NULL)	{
+=======
 		if (fp == NULL)
 		{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fprintf(stderr, "docproc: ");
 			perror(real_filename);
 			exit(1);
@@ -494,9 +498,13 @@ static void parse_file(FILE *infile)
 <<<<<<< HEAD
 		} else {
 =======
+<<<<<<< HEAD
+		} else {
+=======
 		}
 		else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			defaultline(line);
 		}
 	}
@@ -530,9 +538,13 @@ int main(int argc, char *argv[])
 <<<<<<< HEAD
 	if (strcmp("doc", argv[1]) == 0) {
 =======
+<<<<<<< HEAD
+	if (strcmp("doc", argv[1]) == 0) {
+=======
 	if (strcmp("doc", argv[1]) == 0)
 	{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Need to do this in two passes.
 		 * First pass is used to collect all symbols exported
 		 * in the various files;
@@ -571,10 +583,14 @@ int main(int argc, char *argv[])
 <<<<<<< HEAD
 	} else if (strcmp("depend", argv[1]) == 0) {
 =======
+<<<<<<< HEAD
+	} else if (strcmp("depend", argv[1]) == 0) {
+=======
 	}
 	else if (strcmp("depend", argv[1]) == 0)
 	{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Create first part of dependency chain
 		 * file.tmpl */
 		printf("%s\t", argv[2]);
@@ -590,10 +606,14 @@ int main(int argc, char *argv[])
 <<<<<<< HEAD
 	} else {
 =======
+<<<<<<< HEAD
+	} else {
+=======
 	}
 	else
 	{
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(stderr, "Unknown option: %s\n", argv[1]);
 		exit(1);
 	}

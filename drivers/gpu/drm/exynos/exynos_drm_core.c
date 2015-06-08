@@ -33,6 +33,13 @@
 #include "exynos_drm_fbdev.h"
 
 static LIST_HEAD(exynos_drm_subdrv_list);
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct drm_device *drm_dev;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int exynos_drm_subdrv_probe(struct drm_device *dev,
 					struct exynos_drm_subdrv *subdrv)
@@ -94,7 +101,15 @@ static void exynos_drm_subdrv_remove(struct drm_device *dev,
 	DRM_DEBUG_DRIVER("%s\n", __FILE__);
 
 	if (subdrv->remove)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		subdrv->remove(dev);
+=======
 		subdrv->remove(dev, subdrv->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		subdrv->remove(dev, subdrv->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (subdrv->encoder) {
 		struct drm_encoder *encoder = subdrv->encoder;
@@ -119,6 +134,14 @@ int exynos_drm_device_register(struct drm_device *dev)
 	if (!dev)
 		return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	drm_dev = dev;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(subdrv, n, &exynos_drm_subdrv_list, list) {
 		subdrv->drm_dev = dev;
 		err = exynos_drm_subdrv_probe(dev, subdrv);
@@ -146,6 +169,14 @@ int exynos_drm_device_unregister(struct drm_device *dev)
 	list_for_each_entry(subdrv, &exynos_drm_subdrv_list, list)
 		exynos_drm_subdrv_remove(dev, subdrv);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	drm_dev = NULL;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL_GPL(exynos_drm_device_unregister);

@@ -331,7 +331,15 @@ static int vpx3220_status(struct v4l2_subdev *sd, u32 *pstatus, v4l2_std_id *pst
 	if (pstd)
 		*pstd = std;
 	if (pstatus)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		*pstatus = res;
+=======
 		*pstatus = status;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		*pstatus = status;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -588,6 +596,12 @@ static struct i2c_driver vpx3220_driver = {
 	.id_table	= vpx3220_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(vpx3220_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int init_vpx3220(void)
 {
 	return i2c_add_driver(&vpx3220_driver);
@@ -600,3 +614,7 @@ static __exit void exit_vpx3220(void)
 
 module_init(init_vpx3220);
 module_exit(exit_vpx3220);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

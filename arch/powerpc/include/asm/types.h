@@ -6,15 +6,21 @@
  * and we don't want to impact user mode with our change to ll64
  * in the kernel.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * However, some user programs are fine with this.  They can
  * flag __SANE_USERSPACE_TYPES__ to get int-ll64.h here.
  */
 #if !defined(__SANE_USERSPACE_TYPES__) && defined(__powerpc64__) && !defined(__KERNEL__)
+<<<<<<< HEAD
+=======
 =======
  */
 #if defined(__powerpc64__) && !defined(__KERNEL__)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # include <asm-generic/int-l64.h>
 #else
 # include <asm-generic/int-ll64.h>
@@ -37,6 +43,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef __powerpc64__
 typedef unsigned int umode_t;
 #else
@@ -44,6 +52,7 @@ typedef unsigned short umode_t;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	__u32 u[4];
 } __attribute__((aligned(16))) __vector128;

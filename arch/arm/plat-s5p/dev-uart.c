@@ -33,10 +33,15 @@ static struct resource s5p_uart0_resource[] = {
 	},
 	[1] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= IRQ_UART0,
 		.end	= IRQ_UART0,
 		.flags	= IORESOURCE_IRQ,
 	},
+<<<<<<< HEAD
+=======
 =======
 		.start	= IRQ_S5P_UART_RX0,
 		.end	= IRQ_S5P_UART_RX0,
@@ -53,6 +58,7 @@ static struct resource s5p_uart0_resource[] = {
 		.flags	= IORESOURCE_IRQ,
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource s5p_uart1_resource[] = {
@@ -62,6 +68,10 @@ static struct resource s5p_uart1_resource[] = {
 		.flags	= IORESOURCE_MEM,
 	},
 	[1] = {
+<<<<<<< HEAD
+		.start	= IRQ_UART1,
+		.end	= IRQ_UART1,
+=======
 <<<<<<< HEAD
 		.start	= IRQ_UART1,
 		.end	= IRQ_UART1,
@@ -79,6 +89,7 @@ static struct resource s5p_uart1_resource[] = {
 		.start	= IRQ_S5P_UART_ERR1,
 		.end	= IRQ_S5P_UART_ERR1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 };
@@ -90,6 +101,10 @@ static struct resource s5p_uart2_resource[] = {
 		.flags	= IORESOURCE_MEM,
 	},
 	[1] = {
+<<<<<<< HEAD
+		.start	= IRQ_UART2,
+		.end	= IRQ_UART2,
+=======
 <<<<<<< HEAD
 		.start	= IRQ_UART2,
 		.end	= IRQ_UART2,
@@ -107,6 +122,7 @@ static struct resource s5p_uart2_resource[] = {
 		.start	= IRQ_S5P_UART_ERR2,
 		.end	= IRQ_S5P_UART_ERR2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 };
@@ -119,6 +135,10 @@ static struct resource s5p_uart3_resource[] = {
 		.flags	= IORESOURCE_MEM,
 	},
 	[1] = {
+<<<<<<< HEAD
+		.start	= IRQ_UART3,
+		.end	= IRQ_UART3,
+=======
 <<<<<<< HEAD
 		.start	= IRQ_UART3,
 		.end	= IRQ_UART3,
@@ -136,6 +156,7 @@ static struct resource s5p_uart3_resource[] = {
 		.start	= IRQ_S5P_UART_ERR3,
 		.end	= IRQ_S5P_UART_ERR3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 #endif
@@ -153,6 +174,10 @@ static struct resource s5p_uart4_resource[] = {
 		.start	= IRQ_UART4,
 		.end	= IRQ_UART4,
 =======
+<<<<<<< HEAD
+		.start	= IRQ_UART4,
+		.end	= IRQ_UART4,
+=======
 		.start	= IRQ_S5P_UART_RX4,
 		.end	= IRQ_S5P_UART_RX4,
 		.flags	= IORESOURCE_IRQ,
@@ -166,6 +191,7 @@ static struct resource s5p_uart4_resource[] = {
 		.start	= IRQ_S5P_UART_ERR4,
 		.end	= IRQ_S5P_UART_ERR4,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 #endif
@@ -183,6 +209,10 @@ static struct resource s5p_uart5_resource[] = {
 		.start	= IRQ_UART5,
 		.end	= IRQ_UART5,
 =======
+<<<<<<< HEAD
+		.start	= IRQ_UART5,
+		.end	= IRQ_UART5,
+=======
 		.start	= IRQ_S5P_UART_RX5,
 		.end	= IRQ_S5P_UART_RX5,
 		.flags	= IORESOURCE_IRQ,
@@ -196,6 +226,7 @@ static struct resource s5p_uart5_resource[] = {
 		.start	= IRQ_S5P_UART_ERR5,
 		.end	= IRQ_S5P_UART_ERR5,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 #endif

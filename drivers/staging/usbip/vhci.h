@@ -6,6 +6,16 @@
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+
+#ifndef __USBIP_VHCI_H
+#define __USBIP_VHCI_H
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -17,6 +27,10 @@
  * USA.
  */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/device.h>
 #include <linux/list.h>
 #include <linux/spinlock.h>
@@ -105,7 +119,15 @@ struct vhci_hcd {
 };
 
 extern struct vhci_hcd *the_controller;
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern const struct attribute_group dev_attr_group;
+=======
 extern struct attribute_group dev_attr_group;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern struct attribute_group dev_attr_group;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define hardware (&the_controller->pdev.dev)
 
 /* vhci_hcd.c */
@@ -138,3 +160,11 @@ static inline struct device *vhci_dev(struct vhci_hcd *vhci)
 {
 	return vhci_to_hcd(vhci)->self.controller;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#endif /* __USBIP_VHCI_H */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

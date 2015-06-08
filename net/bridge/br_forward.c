@@ -50,7 +50,11 @@ int br_dev_queue_push_xmit(struct sk_buff *skb)
 <<<<<<< HEAD
 		br_drop_fake_rtable(skb);
 =======
+<<<<<<< HEAD
+		br_drop_fake_rtable(skb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_queue_xmit(skb);
 	}
 
@@ -105,8 +109,12 @@ void br_deliver(const struct net_bridge_port *to, struct sk_buff *skb)
 <<<<<<< HEAD
 	if (to && should_deliver(to, skb)) {
 =======
+<<<<<<< HEAD
+	if (to && should_deliver(to, skb)) {
+=======
 	if (should_deliver(to, skb)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__br_deliver(to, skb);
 		return;
 	}

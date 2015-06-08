@@ -106,8 +106,12 @@ int nandmtd1_write_chunk_tags(struct yaffs_dev *dev,
 <<<<<<< HEAD
 	ops.mode = MTD_OPS_AUTO_OOB;
 =======
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_AUTO_OOB;
+=======
 	ops.mode = MTD_OOB_AUTO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.len = (data) ? chunk_bytes : 0;
 	ops.ooblen = YTAG1_SIZE;
 	ops.datbuf = (u8 *) data;
@@ -116,8 +120,12 @@ int nandmtd1_write_chunk_tags(struct yaffs_dev *dev,
 <<<<<<< HEAD
 	retval = mtd_write_oob(mtd, addr, &ops);
 =======
+<<<<<<< HEAD
+	retval = mtd_write_oob(mtd, addr, &ops);
+=======
 	retval = mtd->write_oob(mtd, addr, &ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval) {
 		yaffs_trace(YAFFS_TRACE_MTD,
 			"write_oob failed, chunk %d, mtd error %d",
@@ -167,8 +175,12 @@ int nandmtd1_read_chunk_tags(struct yaffs_dev *dev,
 <<<<<<< HEAD
 	ops.mode = MTD_OPS_AUTO_OOB;
 =======
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_AUTO_OOB;
+=======
 	ops.mode = MTD_OOB_AUTO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.len = (data) ? chunk_bytes : 0;
 	ops.ooblen = YTAG1_SIZE;
 	ops.datbuf = data;
@@ -180,8 +192,12 @@ int nandmtd1_read_chunk_tags(struct yaffs_dev *dev,
 <<<<<<< HEAD
 	retval = mtd_read_oob(mtd, addr, &ops);
 =======
+<<<<<<< HEAD
+	retval = mtd_read_oob(mtd, addr, &ops);
+=======
 	retval = mtd->read_oob(mtd, addr, &ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval) {
 		yaffs_trace(YAFFS_TRACE_MTD,
 			"read_oob failed, chunk %d, mtd error %d",
@@ -208,8 +224,12 @@ int nandmtd1_read_chunk_tags(struct yaffs_dev *dev,
 <<<<<<< HEAD
 		etags->block_bad = mtd_block_isbad(mtd, addr);
 =======
+<<<<<<< HEAD
+		etags->block_bad = mtd_block_isbad(mtd, addr);
+=======
 		etags->block_bad = (mtd->block_isbad) (mtd, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return YAFFS_FAIL;
 	}
 
@@ -280,8 +300,12 @@ int nandmtd1_mark_block_bad(struct yaffs_dev *dev, int block_no)
 <<<<<<< HEAD
 	retval = mtd_block_markbad(mtd, (loff_t) blocksize * block_no);
 =======
+<<<<<<< HEAD
+	retval = mtd_block_markbad(mtd, (loff_t) blocksize * block_no);
+=======
 	retval = mtd->block_markbad(mtd, (loff_t) blocksize * block_no);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (retval) ? YAFFS_FAIL : YAFFS_OK;
 }
 
@@ -334,8 +358,12 @@ int nandmtd1_query_block(struct yaffs_dev *dev, int block_no,
 <<<<<<< HEAD
 	etags.block_bad = mtd_block_isbad(mtd, addr);
 =======
+<<<<<<< HEAD
+	etags.block_bad = mtd_block_isbad(mtd, addr);
+=======
 	etags.block_bad = (mtd->block_isbad) (mtd, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (etags.block_bad) {
 		yaffs_trace(YAFFS_TRACE_BAD_BLOCKS,
 			"block %d is marked bad", block_no);

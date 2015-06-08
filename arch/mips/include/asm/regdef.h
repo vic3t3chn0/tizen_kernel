@@ -10,7 +10,12 @@
  * Copyright (C) 2011 Wind River Systems,
  *   written by Ralf Baechle <ralf@linux-mips.org>
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2011 Wind River Systems,
+ *   written by Ralf Baechle <ralf@linux-mips.org>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #ifndef _ASM_REGDEF_H
 #define _ASM_REGDEF_H
@@ -36,6 +41,9 @@
 #define t3      $11
 #define t4      $12
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ta0	$12
 #define t5      $13
 #define ta1	$13
@@ -43,11 +51,14 @@
 #define ta2	$14
 #define t7      $15
 #define ta3	$15
+<<<<<<< HEAD
+=======
 =======
 #define t5      $13
 #define t6      $14
 #define t7      $15
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define s0      $16     /* callee saved */
 #define s1      $17
 #define s2      $18

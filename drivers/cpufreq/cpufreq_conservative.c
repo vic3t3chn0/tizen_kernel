@@ -80,6 +80,14 @@ static unsigned int dbs_enable;	/* number of CPUs using this policy */
  */
 static DEFINE_MUTEX(dbs_mutex);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct workqueue_struct *dbs_wq;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct dbs_tuners {
 	unsigned int sampling_rate;
 	unsigned int sampling_down_factor;
@@ -95,6 +103,31 @@ static struct dbs_tuners {
 	.freq_step = 5,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline u64 get_cpu_idle_time_jiffy(unsigned int cpu, u64 *wall)
+{
+	u64 idle_time;
+	u64 cur_wall_time;
+	u64 busy_time;
+
+	cur_wall_time = jiffies64_to_cputime64(get_jiffies_64());
+
+	busy_time  = kcpustat_cpu(cpu).cpustat[CPUTIME_USER];
+	busy_time += kcpustat_cpu(cpu).cpustat[CPUTIME_SYSTEM];
+	busy_time += kcpustat_cpu(cpu).cpustat[CPUTIME_IRQ];
+	busy_time += kcpustat_cpu(cpu).cpustat[CPUTIME_SOFTIRQ];
+	busy_time += kcpustat_cpu(cpu).cpustat[CPUTIME_STEAL];
+	busy_time += kcpustat_cpu(cpu).cpustat[CPUTIME_NICE];
+
+	idle_time = cur_wall_time - busy_time;
+	if (wall)
+		*wall = jiffies_to_usecs(cur_wall_time);
+
+	return jiffies_to_usecs(idle_time);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline cputime64_t get_cpu_idle_time_jiffy(unsigned int cpu,
 							cputime64_t *wall)
 {
@@ -116,14 +149,33 @@ static inline cputime64_t get_cpu_idle_time_jiffy(unsigned int cpu,
 		*wall = (cputime64_t)jiffies_to_usecs(cur_wall_time);
 
 	return (cputime64_t)jiffies_to_usecs(idle_time);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline cputime64_t get_cpu_idle_time(unsigned int cpu, cputime64_t *wall)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u64 idle_time = get_cpu_idle_time_us(cpu, NULL);
+
+	if (idle_time == -1ULL)
+		return get_cpu_idle_time_jiffy(cpu, wall);
+	else
+		idle_time += get_cpu_iowait_time_us(cpu, wall);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 idle_time = get_cpu_idle_time_us(cpu, wall);
 
 	if (idle_time == -1ULL)
 		return get_cpu_idle_time_jiffy(cpu, wall);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return idle_time;
 }
@@ -270,7 +322,15 @@ static ssize_t store_ignore_nice_load(struct kobject *a, struct attribute *b,
 		dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
 						&dbs_info->prev_cpu_wall);
 		if (dbs_tuners_ins.ignore_nice)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dbs_info->prev_cpu_nice = kcpustat_cpu(j).cpustat[CPUTIME_NICE];
+=======
 			dbs_info->prev_cpu_nice = kstat_cpu(j).cpustat.nice;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			dbs_info->prev_cpu_nice = kstat_cpu(j).cpustat.nice;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return count;
 }
@@ -351,6 +411,25 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 
 		cur_idle_time = get_cpu_idle_time(j, &cur_wall_time);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		wall_time = (unsigned int)
+			(cur_wall_time - j_dbs_info->prev_cpu_wall);
+		j_dbs_info->prev_cpu_wall = cur_wall_time;
+
+		idle_time = (unsigned int)
+			(cur_idle_time - j_dbs_info->prev_cpu_idle);
+		j_dbs_info->prev_cpu_idle = cur_idle_time;
+
+		if (dbs_tuners_ins.ignore_nice) {
+			u64 cur_nice;
+			unsigned long cur_nice_jiffies;
+
+			cur_nice = kcpustat_cpu(j).cpustat[CPUTIME_NICE] -
+					 j_dbs_info->prev_cpu_nice;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wall_time = (unsigned int) cputime64_sub(cur_wall_time,
 				j_dbs_info->prev_cpu_wall);
 		j_dbs_info->prev_cpu_wall = cur_wall_time;
@@ -365,6 +444,10 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 
 			cur_nice = cputime64_sub(kstat_cpu(j).cpustat.nice,
 					 j_dbs_info->prev_cpu_nice);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Assumption: nice time between sampling periods will
 			 * be less than 2^32 jiffies for 32 bit sys
@@ -372,7 +455,15 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 			cur_nice_jiffies = (unsigned long)
 					cputime64_to_jiffies64(cur_nice);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			j_dbs_info->prev_cpu_nice = kcpustat_cpu(j).cpustat[CPUTIME_NICE];
+=======
 			j_dbs_info->prev_cpu_nice = kstat_cpu(j).cpustat.nice;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			j_dbs_info->prev_cpu_nice = kstat_cpu(j).cpustat.nice;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			idle_time += jiffies_to_usecs(cur_nice_jiffies);
 		}
 
@@ -454,7 +545,15 @@ static void do_dbs_timer(struct work_struct *work)
 
 	dbs_check_cpu(dbs_info);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	queue_delayed_work_on(cpu, dbs_wq, &dbs_info->work, delay);
+=======
 	schedule_delayed_work_on(cpu, &dbs_info->work, delay);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	schedule_delayed_work_on(cpu, &dbs_info->work, delay);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&dbs_info->timer_mutex);
 }
 
@@ -466,7 +565,15 @@ static inline void dbs_timer_init(struct cpu_dbs_info_s *dbs_info)
 
 	dbs_info->enable = 1;
 	INIT_DELAYED_WORK_DEFERRABLE(&dbs_info->work, do_dbs_timer);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	queue_delayed_work_on(dbs_info->cpu, dbs_wq, &dbs_info->work, delay);
+=======
 	schedule_delayed_work_on(dbs_info->cpu, &dbs_info->work, delay);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	schedule_delayed_work_on(dbs_info->cpu, &dbs_info->work, delay);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void dbs_timer_exit(struct cpu_dbs_info_s *dbs_info)
@@ -499,10 +606,22 @@ static int cpufreq_governor_dbs(struct cpufreq_policy *policy,
 
 			j_dbs_info->prev_cpu_idle = get_cpu_idle_time(j,
 						&j_dbs_info->prev_cpu_wall);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (dbs_tuners_ins.ignore_nice)
+				j_dbs_info->prev_cpu_nice =
+						kcpustat_cpu(j).cpustat[CPUTIME_NICE];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dbs_tuners_ins.ignore_nice) {
 				j_dbs_info->prev_cpu_nice =
 						kstat_cpu(j).cpustat.nice;
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		this_dbs_info->down_skip = 0;
 		this_dbs_info->requested_freq = policy->cur;
@@ -602,12 +721,31 @@ struct cpufreq_governor cpufreq_gov_conservative = {
 
 static int __init cpufreq_gov_dbs_init(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dbs_wq = alloc_workqueue("conservative_dbs_wq", WQ_HIGHPRI, 0);
+	if (!dbs_wq) {
+		printk(KERN_ERR "Failed to create conservative_dbs_wq workqueue\n");
+		return -EFAULT;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return cpufreq_register_governor(&cpufreq_gov_conservative);
 }
 
 static void __exit cpufreq_gov_dbs_exit(void)
 {
 	cpufreq_unregister_governor(&cpufreq_gov_conservative);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	destroy_workqueue(dbs_wq);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 

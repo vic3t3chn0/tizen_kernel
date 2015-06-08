@@ -79,8 +79,11 @@ struct pl08x_channel_data {
  * @buswidth: the width of this bus in bytes: 1, 2 or 4
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @fill_bytes: bytes required to fill to the next bus memory boundary
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct pl08x_bus_data {
 	dma_addr_t addr;
@@ -88,8 +91,11 @@ struct pl08x_bus_data {
 	u8 buswidth;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	size_t fill_bytes;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -111,6 +117,9 @@ struct pl08x_phy_chan {
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct pl08x_sg - structure containing data per sg
  * @src_addr: src address of sg
  * @dst_addr: dst address of sg
@@ -134,15 +143,22 @@ struct pl08x_sg {
  * @llis_va: virtual memory address start for the LLIs
  * @cctl: control reg values for current txd
  * @ccfg: config reg values for current txd
+<<<<<<< HEAD
+=======
 =======
  * struct pl08x_txd - wrapper for struct dma_async_tx_descriptor
  * @llis_bus: DMA memory address (physical) start for the LLIs
  * @llis_va: virtual memory address start for the LLIs
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct pl08x_txd {
 	struct dma_async_tx_descriptor tx;
 	struct list_head node;
+<<<<<<< HEAD
+	struct list_head dsg_list;
+	enum dma_transfer_direction direction;
+=======
 <<<<<<< HEAD
 	struct list_head dsg_list;
 	enum dma_transfer_direction direction;
@@ -152,6 +168,7 @@ struct pl08x_txd {
 	dma_addr_t dst_addr;
 	size_t len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_addr_t llis_bus;
 	struct pl08x_lli *llis_va;
 	/* Default cctl value for LLIs */
@@ -195,8 +212,11 @@ enum pl08x_dma_chan_state {
  * runtime config
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @lc: last completed transaction on this channel
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @pend_list: queued transactions pending on this channel
  * @at: active transaction on this channel
  * @lock: a lock for this channel data
@@ -208,7 +228,13 @@ enum pl08x_dma_chan_state {
  * channels. Fill with 'true' if peripheral should be flow controller. Direction
  * will be selected at Runtime.
 =======
+<<<<<<< HEAD
+ * @device_fc: Flow Controller Settings for ccfg register. Only valid for slave
+ * channels. Fill with 'true' if peripheral should be flow controller. Direction
+ * will be selected at Runtime.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @waiting: a TX descriptor on this channel which is waiting for a physical
  * channel to become available
  */
@@ -219,18 +245,24 @@ struct pl08x_dma_chan {
 	struct tasklet_struct tasklet;
 	char *name;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct pl08x_channel_data *cd;
 	dma_addr_t src_addr;
 	dma_addr_t dst_addr;
 	u32 src_cctl;
 	u32 dst_cctl;
 	enum dma_transfer_direction runtime_direction;
+<<<<<<< HEAD
+=======
 =======
 	struct pl08x_channel_data *cd;
 	dma_addr_t runtime_addr;
 	enum dma_data_direction	runtime_direction;
 	dma_cookie_t lc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head pend_list;
 	struct pl08x_txd *at;
 	spinlock_t lock;
@@ -240,7 +272,11 @@ struct pl08x_dma_chan {
 <<<<<<< HEAD
 	bool device_fc;
 =======
+<<<<<<< HEAD
+	bool device_fc;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pl08x_txd *waiting;
 };
 
@@ -264,8 +300,12 @@ struct pl08x_platform_data {
 <<<<<<< HEAD
 	const struct pl08x_channel_data *slave_channels;
 =======
+<<<<<<< HEAD
+	const struct pl08x_channel_data *slave_channels;
+=======
 	struct pl08x_channel_data *slave_channels;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int num_slave_channels;
 	struct pl08x_channel_data memcpy_channel;
 	int (*get_signal)(struct pl08x_dma_chan *);

@@ -4,11 +4,16 @@
  * Function: v7_early_abort
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Params  : r2 = pt_regs
  *	   : r4 = aborted context pc
  *	   : r5 = aborted context psr
  *
  * Returns : r4 - r11, r13 preserved
+<<<<<<< HEAD
+=======
 =======
  * Params  : r2 = address of aborted instruction
  *         : r3 = saved SPSR
@@ -19,6 +24,7 @@
  *	   : r9 = preserved
  *	   : sp = pointer to registers
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Purpose : obtain information about current aborted instruction.
  */
@@ -46,6 +52,9 @@ ENTRY(v7_early_abort)
 	and	r3, r1, r3
 	cmp	r3, #0x0d
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bne	do_DataAbort
 
 	mcr	p15, 0, r0, c7, c8, 0   	@ Retranslate FAR
@@ -60,6 +69,8 @@ ENTRY(v7_early_abort)
 #endif
 
 	b	do_DataAbort
+<<<<<<< HEAD
+=======
 =======
 	movne	pc, lr
 
@@ -76,4 +87,5 @@ ENTRY(v7_early_abort)
 
 	mov	pc, lr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENDPROC(v7_early_abort)

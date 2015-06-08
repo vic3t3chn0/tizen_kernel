@@ -44,9 +44,13 @@ static pmd_t *get_old_pmd(struct mm_struct *mm, unsigned long addr)
 <<<<<<< HEAD
 	if (pmd_none(*pmd))
 =======
+<<<<<<< HEAD
+	if (pmd_none(*pmd))
+=======
 	split_huge_page_pmd(mm, pmd);
 	if (pmd_none_or_clear_bad(pmd))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 
 	return pmd;
@@ -71,9 +75,12 @@ static pmd_t *alloc_new_pmd(struct mm_struct *mm, struct vm_area_struct *vma,
 	VM_BUG_ON(pmd_trans_huge(*pmd));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (pmd_none(*pmd) && __pte_alloc(mm, vma, pmd, addr))
 		return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return pmd;
 }
@@ -90,12 +97,16 @@ static void move_ptes(struct vm_area_struct *vma, pmd_t *old_pmd,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	unsigned long old_start;
 
 	old_start = old_addr;
 	mmu_notifier_invalidate_range_start(vma->vm_mm,
 					    old_start, old_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (vma->vm_file) {
 		/*
 		 * Subtle point from Rajesh Venkatasubramanian: before
@@ -125,8 +136,12 @@ static void move_ptes(struct vm_area_struct *vma, pmd_t *old_pmd,
 <<<<<<< HEAD
 		pte = ptep_get_and_clear(mm, old_addr, old_pte);
 =======
+<<<<<<< HEAD
+		pte = ptep_get_and_clear(mm, old_addr, old_pte);
+=======
 		pte = ptep_clear_flush(vma, old_addr, old_pte);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pte = move_pte(pte, new_vma->vm_page_prot, old_addr, new_addr);
 		set_pte_at(mm, new_addr, new_pte, pte);
 	}
@@ -140,8 +155,11 @@ static void move_ptes(struct vm_area_struct *vma, pmd_t *old_pmd,
 		mutex_unlock(&mapping->i_mmap_mutex);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mmu_notifier_invalidate_range_end(vma->vm_mm, old_start, old_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define LATENCY_LIMIT	(64 * PAGE_SIZE)
@@ -155,12 +173,19 @@ unsigned long move_page_tables(struct vm_area_struct *vma,
 <<<<<<< HEAD
 	bool need_flush = false;
 =======
+<<<<<<< HEAD
+	bool need_flush = false;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	old_end = old_addr + len;
 	flush_cache_range(vma, old_addr, old_end);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mmu_notifier_invalidate_range_start(vma->vm_mm, old_addr, old_end);
 
 	for (; old_addr < old_end; old_addr += extent, new_addr += extent) {
@@ -170,6 +195,8 @@ unsigned long move_page_tables(struct vm_area_struct *vma,
 		extent = next - old_addr;
 		if (extent > old_end - old_addr)
 			extent = old_end - old_addr;
+<<<<<<< HEAD
+=======
 =======
 	for (; old_addr < old_end; old_addr += extent, new_addr += extent) {
 		cond_resched();
@@ -178,6 +205,7 @@ unsigned long move_page_tables(struct vm_area_struct *vma,
 			next = old_end;
 		extent = next - old_addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		old_pmd = get_old_pmd(vma->vm_mm, old_addr);
 		if (!old_pmd)
 			continue;
@@ -185,6 +213,9 @@ unsigned long move_page_tables(struct vm_area_struct *vma,
 		if (!new_pmd)
 			break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pmd_trans_huge(*old_pmd)) {
 			int err = 0;
 			if (extent == HPAGE_PMD_SIZE)
@@ -202,8 +233,11 @@ unsigned long move_page_tables(struct vm_area_struct *vma,
 		if (pmd_none(*new_pmd) && __pte_alloc(new_vma->vm_mm, new_vma,
 						      new_pmd, new_addr))
 			break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		next = (new_addr + PMD_SIZE) & PMD_MASK;
 		if (extent > next - new_addr)
 			extent = next - new_addr;
@@ -212,15 +246,21 @@ unsigned long move_page_tables(struct vm_area_struct *vma,
 		move_ptes(vma, old_pmd, old_addr, old_addr + extent,
 				new_vma, new_pmd, new_addr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		need_flush = true;
 	}
 	if (likely(need_flush))
 		flush_tlb_range(vma, old_end-len, old_addr);
 
 	mmu_notifier_invalidate_range_end(vma->vm_mm, old_end-len, old_end);
+<<<<<<< HEAD
+=======
 =======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return len + old_addr - old_end;	/* how much done */
 }
@@ -267,6 +307,9 @@ static unsigned long move_vma(struct vm_area_struct *vma,
 	if (moved_len < old_len) {
 		/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Before moving the page tables from the new vma to
 		 * the old vma, we need to be sure the old vma is
 		 * queued after new vma in the same_anon_vma list to
@@ -276,8 +319,11 @@ static unsigned long move_vma(struct vm_area_struct *vma,
 		anon_vma_moveto_tail(vma);
 
 		/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * On error, move entries back from new area to old,
 		 * which will succeed since page tables still there,
 		 * and then proceed to unmap new area instead of old.
@@ -380,8 +426,12 @@ static struct vm_area_struct *vma_to_resize(unsigned long addr,
 <<<<<<< HEAD
 		if (security_vm_enough_memory_mm(mm, charged))
 =======
+<<<<<<< HEAD
+		if (security_vm_enough_memory_mm(mm, charged))
+=======
 		if (security_vm_enough_memory(charged))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto Efault;
 		*p = charged;
 	}

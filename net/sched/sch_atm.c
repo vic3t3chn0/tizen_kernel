@@ -8,7 +8,11 @@
 <<<<<<< HEAD
 #include <linux/interrupt.h>
 =======
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 #include <linux/errno.h>
 #include <linux/skbuff.h>
@@ -611,8 +615,11 @@ static int atm_tc_dump_class(struct Qdisc *sch, unsigned long cl,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(&pvc, 0, sizeof(pvc));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pvc.sap_family = AF_ATMPVC;
 		pvc.sap_addr.itf = flow->vcc->dev ? flow->vcc->dev->number : -1;
 		pvc.sap_addr.vpi = flow->vcc->vpi;

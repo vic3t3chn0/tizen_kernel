@@ -28,7 +28,11 @@ enum android_alarm_type {
 <<<<<<< HEAD
 	ANDROID_ALARM_RTC_POWEROFF_WAKEUP,
 =======
+<<<<<<< HEAD
+	ANDROID_ALARM_RTC_POWEROFF_WAKEUP,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ANDROID_ALARM_SYSTEMTIME,
 
 	ANDROID_ALARM_TYPE_COUNT,
@@ -77,11 +81,18 @@ int alarm_cancel(struct alarm *alarm);
 <<<<<<< HEAD
 void set_power_on_alarm(long secs);
 =======
+<<<<<<< HEAD
+void set_power_on_alarm(long secs);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ktime_t alarm_get_elapsed_realtime(void);
 
 /* set rtc while preserving elapsed realtime */
 int alarm_set_rtc(const struct timespec ts);
+<<<<<<< HEAD
+void alarm_update_timedelta(struct timespec tv, struct timespec ts);
+=======
 <<<<<<< HEAD
 void alarm_update_timedelta(struct timespec tv, struct timespec ts);
 =======
@@ -91,6 +102,7 @@ int alarm_set_alarm_boot(char *alarm_data);
 int alarm_set_alarm_poweroff(char *alarm_data);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 
@@ -104,7 +116,11 @@ enum android_alarm_return_flags {
 <<<<<<< HEAD
 	ANDROID_ALARM_RTC_POWEROFF_WAKEUP_MASK = 1U << ANDROID_ALARM_RTC_POWEROFF_WAKEUP,
 =======
+<<<<<<< HEAD
+	ANDROID_ALARM_RTC_POWEROFF_WAKEUP_MASK = 1U << ANDROID_ALARM_RTC_POWEROFF_WAKEUP,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ANDROID_ALARM_SYSTEMTIME_MASK = 1U << ANDROID_ALARM_SYSTEMTIME,
 	ANDROID_ALARM_TIME_CHANGE_MASK = 1U << 16
 };
@@ -123,6 +139,9 @@ enum android_alarm_return_flags {
 <<<<<<< HEAD
 #define ANDROID_ALARM_SET_RTC               _IOW('a', 5, struct timespec)
 =======
+<<<<<<< HEAD
+#define ANDROID_ALARM_SET_RTC               _IOW('a', 5, struct timespec)
+=======
 #define ANDROID_ALARM_SET_RTC			_IOW('a', 5, struct timespec)
 #if defined(CONFIG_RTC_ALARM_BOOT)
 #define ANDROID_ALARM_SET_ALARM_BOOT		_IOW('a', 7, struct timespec)
@@ -130,6 +149,7 @@ enum android_alarm_return_flags {
 #define ANDROID_ALARM_SET_ALARM_POWEROFF	_IOW('a', 8, struct timespec)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANDROID_ALARM_BASE_CMD(cmd)         (cmd & ~(_IOC(0, 0, 0xf0, 0)))
 #define ANDROID_ALARM_IOCTL_TO_TYPE(cmd)    (_IOC_NR(cmd) >> 4)
 

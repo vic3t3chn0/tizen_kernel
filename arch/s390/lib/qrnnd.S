@@ -4,7 +4,12 @@
 #include <linux/linkage.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/linkage.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # r2 : &__r
 # r3 : upper half of 64 bit word n
 # r4 : lower half of 64 bit word n
@@ -16,9 +21,13 @@
 <<<<<<< HEAD
 ENTRY(__udiv_qrnnd)
 =======
+<<<<<<< HEAD
+ENTRY(__udiv_qrnnd)
+=======
 	.globl __udiv_qrnnd
 __udiv_qrnnd:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	st    %r2,24(%r15)	  # store pointer to reminder for later
 	lr    %r0,%r3		  # reload n
 	lr    %r1,%r4

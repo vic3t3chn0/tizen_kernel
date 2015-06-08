@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/ams-delta-fiq.h>
 
 static struct fiq_handler fh = {
@@ -54,8 +58,12 @@ static irqreturn_t deferred_fiq(int irq, void *dev_id)
 <<<<<<< HEAD
 	irq_desc = irq_to_desc(gpio_to_irq(AMS_DELTA_GPIO_PIN_KEYBRD_CLK));
 =======
+<<<<<<< HEAD
+	irq_desc = irq_to_desc(gpio_to_irq(AMS_DELTA_GPIO_PIN_KEYBRD_CLK));
+=======
 	irq_desc = irq_to_desc(IH_GPIO_BASE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (irq_desc)
 		irq_chip = irq_desc->irq_data.chip;
 

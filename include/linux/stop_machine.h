@@ -7,9 +7,14 @@
 #include <linux/smp.h>
 #include <linux/list.h>
 =======
+<<<<<<< HEAD
+#include <linux/smp.h>
+#include <linux/list.h>
+=======
 #include <linux/list.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * stop_cpu[s]() is simplistic per-cpu maximum priority cpu
@@ -34,9 +39,12 @@ struct cpu_stop_work {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct mutex stop_cpus_mutex;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int stop_one_cpu(unsigned int cpu, cpu_stop_fn_t fn, void *arg);
 void stop_one_cpu_nowait(unsigned int cpu, cpu_stop_fn_t fn, void *arg,
 			 struct cpu_stop_work *work_buf);
@@ -107,8 +115,12 @@ static inline int try_stop_cpus(const struct cpumask *cpumask,
 <<<<<<< HEAD
  * lock is anything which disables preemption.
 =======
+<<<<<<< HEAD
+ * lock is anything which disables preemption.
+=======
  * lock is anything which disables preeempt.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #if defined(CONFIG_STOP_MACHINE) && defined(CONFIG_SMP)
 
@@ -143,24 +155,36 @@ int stop_machine_from_inactive_cpu(int (*fn)(void *), void *data,
 				   const struct cpumask *cpus);
 
 =======
+<<<<<<< HEAD
+int stop_machine_from_inactive_cpu(int (*fn)(void *), void *data,
+				   const struct cpumask *cpus);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else	 /* CONFIG_STOP_MACHINE && CONFIG_SMP */
 
 static inline int __stop_machine(int (*fn)(void *), void *data,
 				 const struct cpumask *cpus)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	int ret;
 	local_irq_save(flags);
 	ret = fn(data);
 	local_irq_restore(flags);
+<<<<<<< HEAD
+=======
 =======
 	int ret;
 	local_irq_disable();
 	ret = fn(data);
 	local_irq_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -171,13 +195,19 @@ static inline int stop_machine(int (*fn)(void *), void *data,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int stop_machine_from_inactive_cpu(int (*fn)(void *), void *data,
 						 const struct cpumask *cpus)
 {
 	return __stop_machine(fn, data, cpus);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* CONFIG_STOP_MACHINE && CONFIG_SMP */
 #endif	/* _LINUX_STOP_MACHINE */

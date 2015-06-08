@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/secure_seq.h>
 #include <net/netfilter/nf_nat.h>
 #include <net/netfilter/nf_nat_core.h>
@@ -32,8 +36,12 @@ bool nf_nat_proto_in_range(const struct nf_conntrack_tuple *tuple,
 <<<<<<< HEAD
 	if (maniptype == NF_NAT_MANIP_SRC)
 =======
+<<<<<<< HEAD
+	if (maniptype == NF_NAT_MANIP_SRC)
+=======
 	if (maniptype == IP_NAT_MANIP_SRC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		port = tuple->src.u.all;
 	else
 		port = tuple->dst.u.all;
@@ -47,8 +55,12 @@ void nf_nat_proto_unique_tuple(struct nf_conntrack_tuple *tuple,
 <<<<<<< HEAD
 			       const struct nf_nat_ipv4_range *range,
 =======
+<<<<<<< HEAD
+			       const struct nf_nat_ipv4_range *range,
+=======
 			       const struct nf_nat_range *range,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       enum nf_nat_manip_type maniptype,
 			       const struct nf_conn *ct,
 			       u_int16_t *rover)
@@ -60,8 +72,12 @@ void nf_nat_proto_unique_tuple(struct nf_conntrack_tuple *tuple,
 <<<<<<< HEAD
 	if (maniptype == NF_NAT_MANIP_SRC)
 =======
+<<<<<<< HEAD
+	if (maniptype == NF_NAT_MANIP_SRC)
+=======
 	if (maniptype == IP_NAT_MANIP_SRC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		portptr = &tuple->src.u.all;
 	else
 		portptr = &tuple->dst.u.all;
@@ -72,10 +88,16 @@ void nf_nat_proto_unique_tuple(struct nf_conntrack_tuple *tuple,
 		/* If it's dst rewrite, can't change port */
 		if (maniptype == NF_NAT_MANIP_DST)
 =======
+<<<<<<< HEAD
+	if (!(range->flags & NF_NAT_RANGE_PROTO_SPECIFIED)) {
+		/* If it's dst rewrite, can't change port */
+		if (maniptype == NF_NAT_MANIP_DST)
+=======
 	if (!(range->flags & IP_NAT_RANGE_PROTO_SPECIFIED)) {
 		/* If it's dst rewrite, can't change port */
 		if (maniptype == IP_NAT_MANIP_DST)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 
 		if (ntohs(*portptr) < 1024) {
@@ -101,10 +123,16 @@ void nf_nat_proto_unique_tuple(struct nf_conntrack_tuple *tuple,
 		off = secure_ipv4_port_ephemeral(tuple->src.u3.ip, tuple->dst.u3.ip,
 						 maniptype == NF_NAT_MANIP_SRC
 =======
+<<<<<<< HEAD
+	if (range->flags & NF_NAT_RANGE_PROTO_RANDOM)
+		off = secure_ipv4_port_ephemeral(tuple->src.u3.ip, tuple->dst.u3.ip,
+						 maniptype == NF_NAT_MANIP_SRC
+=======
 	if (range->flags & IP_NAT_RANGE_PROTO_RANDOM)
 		off = secure_ipv4_port_ephemeral(tuple->src.u3.ip, tuple->dst.u3.ip,
 						 maniptype == IP_NAT_MANIP_SRC
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						 ? tuple->dst.u.all
 						 : tuple->src.u.all);
 	else
@@ -117,8 +145,12 @@ void nf_nat_proto_unique_tuple(struct nf_conntrack_tuple *tuple,
 <<<<<<< HEAD
 		if (!(range->flags & NF_NAT_RANGE_PROTO_RANDOM))
 =======
+<<<<<<< HEAD
+		if (!(range->flags & NF_NAT_RANGE_PROTO_RANDOM))
+=======
 		if (!(range->flags & IP_NAT_RANGE_PROTO_RANDOM))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*rover = off;
 		return;
 	}
@@ -127,6 +159,10 @@ void nf_nat_proto_unique_tuple(struct nf_conntrack_tuple *tuple,
 EXPORT_SYMBOL_GPL(nf_nat_proto_unique_tuple);
 
 #if defined(CONFIG_NF_CT_NETLINK) || defined(CONFIG_NF_CT_NETLINK_MODULE)
+<<<<<<< HEAD
+int nf_nat_proto_nlattr_to_range(struct nlattr *tb[],
+				 struct nf_nat_ipv4_range *range)
+=======
 <<<<<<< HEAD
 int nf_nat_proto_nlattr_to_range(struct nlattr *tb[],
 				 struct nf_nat_ipv4_range *range)
@@ -146,11 +182,15 @@ EXPORT_SYMBOL_GPL(nf_nat_proto_nlattr_to_range);
 int nf_nat_proto_nlattr_to_range(struct nlattr *tb[],
 				 struct nf_nat_range *range)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (tb[CTA_PROTONAT_PORT_MIN]) {
 		range->min.all = nla_get_be16(tb[CTA_PROTONAT_PORT_MIN]);
 		range->max.all = range->min.tcp.port;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		range->flags |= NF_NAT_RANGE_PROTO_SPECIFIED;
 	}
 	if (tb[CTA_PROTONAT_PORT_MAX]) {
@@ -160,6 +200,8 @@ int nf_nat_proto_nlattr_to_range(struct nlattr *tb[],
 	return 0;
 }
 EXPORT_SYMBOL_GPL(nf_nat_proto_nlattr_to_range);
+<<<<<<< HEAD
+=======
 =======
 		range->flags |= IP_NAT_RANGE_PROTO_SPECIFIED;
 	}
@@ -171,4 +213,5 @@ EXPORT_SYMBOL_GPL(nf_nat_proto_nlattr_to_range);
 }
 EXPORT_SYMBOL_GPL(nf_nat_proto_range_to_nlattr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

@@ -26,8 +26,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/uaccess.h>
 #include <asm/utrap.h>
@@ -373,11 +377,16 @@ static unsigned long mmap_rnd(void)
 		unsigned long val = get_random_int();
 		if (test_thread_flag(TIF_32BIT))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rnd = (val % (1UL << (23UL-PAGE_SHIFT)));
 		else
 			rnd = (val % (1UL << (30UL-PAGE_SHIFT)));
 	}
 	return rnd << PAGE_SHIFT;
+<<<<<<< HEAD
+=======
 =======
 			rnd = (val % (1UL << (22UL-PAGE_SHIFT)));
 		else
@@ -385,6 +394,7 @@ static unsigned long mmap_rnd(void)
 	}
 	return (rnd << PAGE_SHIFT) * 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void arch_pick_mmap_layout(struct mm_struct *mm)
@@ -532,12 +542,17 @@ SYSCALL_DEFINE1(sparc64_personality, unsigned long, personality)
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (current->personality == PER_LINUX32 &&
 	    personality == PER_LINUX)
 		personality = PER_LINUX32;
 	ret = sys_personality(personality);
 	if (ret == PER_LINUX32)
 		ret = PER_LINUX;
+<<<<<<< HEAD
+=======
 =======
 	if (personality(current->personality) == PER_LINUX32 &&
 	    personality(personality) == PER_LINUX)
@@ -546,6 +561,7 @@ SYSCALL_DEFINE1(sparc64_personality, unsigned long, personality)
 	if (personality(ret) == PER_LINUX32)
 		ret &= ~PER_LINUX32;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -588,10 +604,15 @@ out:
 SYSCALL_DEFINE2(64_munmap, unsigned long, addr, size_t, len)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (invalid_64bit_range(addr, len))
 		return -EINVAL;
 
 	return vm_munmap(addr, len);
+<<<<<<< HEAD
+=======
 =======
 	long ret;
 
@@ -603,6 +624,7 @@ SYSCALL_DEFINE2(64_munmap, unsigned long, addr, size_t, len)
 	up_write(&current->mm->mmap_sem);
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 extern unsigned long do_mremap(unsigned long addr,

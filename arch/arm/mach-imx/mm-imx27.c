@@ -27,10 +27,16 @@
 #include <asm/pgtable.h>
 #include <asm/mach/map.h>
 =======
+<<<<<<< HEAD
+#include <mach/devices-common.h>
+#include <asm/pgtable.h>
+#include <asm/mach/map.h>
+=======
 #include <asm/pgtable.h>
 #include <asm/mach/map.h>
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 #include <mach/iomux-v1.h>
 
@@ -77,6 +83,9 @@ void __init imx27_init_early(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init mx27_init_irq(void)
 {
 	mxc_init_irq(MX27_IO_ADDRESS(MX27_AVIC_BASE_ADDR));
@@ -100,6 +109,8 @@ void __init imx27_soc_init(void)
 	/* imx27 has the imx21 type audmux */
 	platform_device_register_simple("imx21-audmux", 0, imx27_audmux_res,
 					ARRAY_SIZE(imx27_audmux_res));
+<<<<<<< HEAD
+=======
 =======
 static struct mxc_gpio_port imx27_gpio_ports[] = {
 	DEFINE_IMX_GPIO_PORT_IRQ(MX27, 0, 1, MX27_INT_GPIO),
@@ -115,4 +126,5 @@ void __init mx27_init_irq(void)
 	mxc_init_irq(MX27_IO_ADDRESS(MX27_AVIC_BASE_ADDR));
 	mxc_gpio_init(imx27_gpio_ports,	ARRAY_SIZE(imx27_gpio_ports));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

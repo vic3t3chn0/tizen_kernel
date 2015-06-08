@@ -11,7 +11,12 @@
 #include <byteswap.h>
 #include "asm/bug.h"
 =======
+<<<<<<< HEAD
+#include <byteswap.h>
+#include "asm/bug.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "evsel.h"
 #include "evlist.h"
 #include "util.h"
@@ -22,7 +27,11 @@
 <<<<<<< HEAD
 #define GROUP_FD(group_fd, cpu) (*(int *)xyarray__entry(group_fd, cpu, 0))
 =======
+<<<<<<< HEAD
+#define GROUP_FD(group_fd, cpu) (*(int *)xyarray__entry(group_fd, cpu, 0))
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __perf_evsel__sample_size(u64 sample_type)
 {
@@ -41,6 +50,9 @@ int __perf_evsel__sample_size(u64 sample_type)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void hists__init(struct hists *hists)
 {
 	memset(hists, 0, sizeof(*hists));
@@ -51,8 +63,11 @@ void hists__init(struct hists *hists)
 	pthread_mutex_init(&hists->lock, NULL);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void perf_evsel__init(struct perf_evsel *evsel,
 		      struct perf_event_attr *attr, int idx)
 {
@@ -62,7 +77,11 @@ void perf_evsel__init(struct perf_evsel *evsel,
 <<<<<<< HEAD
 	hists__init(&evsel->hists);
 =======
+<<<<<<< HEAD
+	hists__init(&evsel->hists);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct perf_evsel *perf_evsel__new(struct perf_event_attr *attr, int idx)
@@ -76,6 +95,9 @@ struct perf_evsel *perf_evsel__new(struct perf_event_attr *attr, int idx)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void perf_evsel__config(struct perf_evsel *evsel, struct perf_record_opts *opts,
 			struct perf_evsel *first)
 {
@@ -155,8 +177,11 @@ void perf_evsel__config(struct perf_evsel *evsel, struct perf_record_opts *opts,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_evsel__alloc_fd(struct perf_evsel *evsel, int ncpus, int nthreads)
 {
 	int cpu, thread;
@@ -310,6 +335,9 @@ int __perf_evsel__read(struct perf_evsel *evsel,
 
 static int __perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      struct thread_map *threads, bool group,
 			      struct xyarray *group_fds)
 {
@@ -320,6 +348,8 @@ static int __perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 	if (evsel->fd == NULL &&
 	    perf_evsel__alloc_fd(evsel, cpus->nr, threads->nr) < 0)
 		return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 			      struct thread_map *threads, bool group)
 {
@@ -331,6 +361,7 @@ static int __perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 	    perf_evsel__alloc_fd(evsel, cpus->nr, threads->nr) < 0)
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (evsel->cgrp) {
 		flags = PERF_FLAG_PID_CGROUP;
@@ -341,8 +372,12 @@ static int __perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 <<<<<<< HEAD
 		int group_fd = group_fds ? GROUP_FD(group_fds, cpu) : -1;
 =======
+<<<<<<< HEAD
+		int group_fd = group_fds ? GROUP_FD(group_fds, cpu) : -1;
+=======
 		int group_fd = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		for (thread = 0; thread < threads->nr; thread++) {
 
@@ -354,14 +389,20 @@ static int __perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 								     cpus->map[cpu],
 								     group_fd, flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (FD(evsel, cpu, thread) < 0) {
 				err = -errno;
 				goto out_close;
 			}
+<<<<<<< HEAD
+=======
 =======
 			if (FD(evsel, cpu, thread) < 0)
 				goto out_close;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (group && group_fd == -1)
 				group_fd = FD(evsel, cpu, thread);
@@ -379,6 +420,9 @@ out_close:
 		thread = threads->nr;
 	} while (--cpu >= 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -390,9 +434,12 @@ void perf_evsel__close(struct perf_evsel *evsel, int ncpus, int nthreads)
 	perf_evsel__close_fd(evsel, ncpus, nthreads);
 	perf_evsel__free_fd(evsel);
 	evsel->fd = NULL;
+<<<<<<< HEAD
+=======
 =======
 	return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct {
@@ -416,8 +463,13 @@ int perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 		     struct thread_map *threads, bool group,
 		     struct xyarray *group_fd)
 =======
+<<<<<<< HEAD
+		     struct thread_map *threads, bool group,
+		     struct xyarray *group_fd)
+=======
 		     struct thread_map *threads, bool group)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (cpus == NULL) {
 		/* Work around old compiler warnings about strict aliasing */
@@ -428,6 +480,9 @@ int perf_evsel__open(struct perf_evsel *evsel, struct cpu_map *cpus,
 		threads = &empty_thread_map.map;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return __perf_evsel__open(evsel, cpus, threads, group, group_fd);
 }
 
@@ -445,6 +500,8 @@ int perf_evsel__open_per_thread(struct perf_evsel *evsel,
 {
 	return __perf_evsel__open(evsel, &empty_cpu_map.map, threads, group,
 				  group_fd);
+<<<<<<< HEAD
+=======
 =======
 	return __perf_evsel__open(evsel, cpus, threads, group);
 }
@@ -460,6 +517,7 @@ int perf_evsel__open_per_thread(struct perf_evsel *evsel,
 {
 	return __perf_evsel__open(evsel, &empty_cpu_map.map, threads, group);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int perf_event__parse_id_sample(const union perf_event *event, u64 type,
@@ -514,6 +572,9 @@ static bool sample_overlap(const union perf_event *event,
 int perf_event__parse_sample(const union perf_event *event, u64 type,
 			     int sample_size, bool sample_id_all,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     struct perf_sample *data, bool swapped)
 {
 	const u64 *array;
@@ -528,12 +589,15 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 	} u;
 
 	memset(data, 0, sizeof(*data));
+<<<<<<< HEAD
+=======
 =======
 			     struct perf_sample *data)
 {
 	const u64 *array;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data->cpu = data->pid = data->tid = -1;
 	data->stream_id = data->id = data->time = -1ULL;
 	data->period = 1;
@@ -556,6 +620,9 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 
 	if (type & PERF_SAMPLE_TID) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u.val64 = *array;
 		if (swapped) {
 			/* undo swap of u64, then swap on individual u32s */
@@ -566,11 +633,14 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 
 		data->pid = u.val32[0];
 		data->tid = u.val32[1];
+<<<<<<< HEAD
+=======
 =======
 		u32 *p = (u32 *)array;
 		data->pid = p[0];
 		data->tid = p[1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		array++;
 	}
 
@@ -582,7 +652,11 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 <<<<<<< HEAD
 	data->addr = 0;
 =======
+<<<<<<< HEAD
+	data->addr = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (type & PERF_SAMPLE_ADDR) {
 		data->addr = *array;
 		array++;
@@ -601,6 +675,9 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 
 	if (type & PERF_SAMPLE_CPU) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		u.val64 = *array;
 		if (swapped) {
@@ -610,10 +687,13 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 		}
 
 		data->cpu = u.val32[0];
+<<<<<<< HEAD
+=======
 =======
 		u32 *p = (u32 *)array;
 		data->cpu = *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		array++;
 	}
 
@@ -626,8 +706,12 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 <<<<<<< HEAD
 		fprintf(stderr, "PERF_SAMPLE_READ is unsupported for now\n");
 =======
+<<<<<<< HEAD
+		fprintf(stderr, "PERF_SAMPLE_READ is unsupported for now\n");
+=======
 		fprintf(stderr, "PERF_SAMPLE_READ is unsuported for now\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 
@@ -645,6 +729,9 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 
 	if (type & PERF_SAMPLE_RAW) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const u64 *pdata;
 
 		u.val64 = *array;
@@ -655,14 +742,20 @@ int perf_event__parse_sample(const union perf_event *event, u64 type,
 			u.val32[0] = bswap_32(u.val32[0]);
 			u.val32[1] = bswap_32(u.val32[1]);
 		}
+<<<<<<< HEAD
+=======
 =======
 		u32 *p = (u32 *)array;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (sample_overlap(event, array, sizeof(u32)))
 			return -EFAULT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		data->raw_size = u.val32[0];
 		pdata = (void *) array + sizeof(u32);
 
@@ -761,6 +854,8 @@ int perf_event__synthesize_sample(union perf_event *event, u64 type,
 	if (type & PERF_SAMPLE_PERIOD) {
 		*array = sample->period;
 		array++;
+<<<<<<< HEAD
+=======
 =======
 		data->raw_size = *p;
 		p++;
@@ -770,6 +865,7 @@ int perf_event__synthesize_sample(union perf_event *event, u64 type,
 
 		data->raw_data = p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;

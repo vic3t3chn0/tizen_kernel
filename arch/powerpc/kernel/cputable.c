@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/oprofile_impl.h>
 #include <asm/cputable.h>
@@ -27,7 +31,11 @@
 <<<<<<< HEAD
 #include <asm/setup.h>
 =======
+<<<<<<< HEAD
+#include <asm/setup.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct cpu_spec* cur_cpu_spec = NULL;
 EXPORT_SYMBOL(cur_cpu_spec);
@@ -279,8 +287,12 @@ static struct cpu_spec __initdata cpu_specs[] = {
 <<<<<<< HEAD
 		.mmu_features		= MMU_FTR_HPTE_TABLE,
 =======
+<<<<<<< HEAD
+		.mmu_features		= MMU_FTR_HPTE_TABLE,
+=======
 		.mmu_features		= MMU_FTRS_PPC970,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.icache_bsize		= 128,
 		.dcache_bsize		= 128,
 		.num_pmcs		= 8,
@@ -1518,6 +1530,9 @@ static struct cpu_spec __initdata cpu_specs[] = {
 		.platform		= "ppc405",
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{	/* APM8018X */
 		.pvr_mask		= 0xffff0000,
 		.pvr_value		= 0x7ff11432,
@@ -1531,8 +1546,11 @@ static struct cpu_spec __initdata cpu_specs[] = {
 		.machine_check		= machine_check_4xx,
 		.platform		= "ppc405",
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{	/* default match */
 		.pvr_mask		= 0x00000000,
 		.pvr_value		= 0x00000000,
@@ -1834,8 +1852,12 @@ static struct cpu_spec __initdata cpu_specs[] = {
 <<<<<<< HEAD
 		.pvr_mask		= 0xfffffff0,
 =======
+<<<<<<< HEAD
+		.pvr_mask		= 0xfffffff0,
+=======
 		.pvr_mask		= 0xffffff00,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pvr_value		= 0x12C41C80,
 		.cpu_name		= "APM821XX",
 		.cpu_features		= CPU_FTRS_44X,
@@ -1863,6 +1885,9 @@ static struct cpu_spec __initdata cpu_specs[] = {
 		.platform		= "ppc470",
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ /* 476fpe */
 		.pvr_mask		= 0xffff0000,
 		.pvr_value		= 0x7ff50000,
@@ -1877,8 +1902,11 @@ static struct cpu_spec __initdata cpu_specs[] = {
 		.machine_check		= machine_check_47x,
 		.platform		= "ppc470",
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ /* 476 iss */
 		.pvr_mask		= 0xffff0000,
 		.pvr_value		= 0x00050000,
@@ -2042,6 +2070,9 @@ static struct cpu_spec __initdata cpu_specs[] = {
 		.platform		= "ppce5500",
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{	/* e6500 */
 		.pvr_mask		= 0xffff0000,
 		.pvr_value		= 0x80400000,
@@ -2060,8 +2091,11 @@ static struct cpu_spec __initdata cpu_specs[] = {
 		.machine_check		= machine_check_e500mc,
 		.platform		= "ppce6500",
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC32
 	{	/* default match */
 		.pvr_mask		= 0x00000000,
@@ -2125,8 +2159,13 @@ static struct cpu_spec the_cpu_spec;
 static struct cpu_spec * __init setup_cpu_spec(unsigned long offset,
 					       struct cpu_spec *s)
 =======
+<<<<<<< HEAD
+static struct cpu_spec * __init setup_cpu_spec(unsigned long offset,
+					       struct cpu_spec *s)
+=======
 static void __init setup_cpu_spec(unsigned long offset, struct cpu_spec *s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cpu_spec *t = &the_cpu_spec;
 	struct cpu_spec old;
@@ -2193,7 +2232,12 @@ static void __init setup_cpu_spec(unsigned long offset, struct cpu_spec *s)
 
 	return t;
 =======
+<<<<<<< HEAD
+
+	return t;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct cpu_spec * __init identify_cpu(unsigned long offset, unsigned int pvr)
@@ -2208,11 +2252,16 @@ struct cpu_spec * __init identify_cpu(unsigned long offset, unsigned int pvr)
 		if ((pvr & s->pvr_mask) == s->pvr_value)
 			return setup_cpu_spec(offset, s);
 =======
+<<<<<<< HEAD
+		if ((pvr & s->pvr_mask) == s->pvr_value)
+			return setup_cpu_spec(offset, s);
+=======
 		if ((pvr & s->pvr_mask) == s->pvr_value) {
 			setup_cpu_spec(offset, s);
 			return s;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	BUG();

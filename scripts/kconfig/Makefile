@@ -38,6 +38,11 @@ localyesconfig localmodconfig: $(obj)/streamline_config.pl $(obj)/conf
 	$(Q)mkdir -p include/generated
 	$(Q)perl $< --$@ $(srctree) $(Kconfig) > .tmp.config
 =======
+<<<<<<< HEAD
+localyesconfig localmodconfig: $(obj)/streamline_config.pl $(obj)/conf
+	$(Q)mkdir -p include/generated
+	$(Q)perl $< --$@ $(srctree) $(Kconfig) > .tmp.config
+=======
 # if no path is given, then use src directory to find file
 ifdef LSMOD
 LSMOD_F := $(LSMOD)
@@ -50,6 +55,7 @@ localmodconfig: $(obj)/streamline_config.pl $(obj)/conf
 	$(Q)mkdir -p include/generated
 	$(Q)perl $< $(srctree) $(Kconfig) $(LSMOD_F) > .tmp.config
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(Q)if [ -f .config ]; then 					\
 			cmp -s .tmp.config .config ||			\
 			(mv -f .config .config.old.1;			\
@@ -63,10 +69,15 @@ localmodconfig: $(obj)/streamline_config.pl $(obj)/conf
 	$(Q)rm -f .tmp.config
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Create new linux.pot file
 # Adjust charset to UTF-8 in .po file to accept UTF-8 in Kconfig files
 update-po-config: $(obj)/kxgettext $(obj)/gconf.glade.h
 	$(Q)echo "  GEN     config.pot"
+<<<<<<< HEAD
+=======
 =======
 localyesconfig: $(obj)/streamline_config.pl $(obj)/conf
 	$(Q)mkdir -p include/generated
@@ -90,6 +101,7 @@ localyesconfig: $(obj)/streamline_config.pl $(obj)/conf
 update-po-config: $(obj)/kxgettext $(obj)/gconf.glade.h
 	$(Q)echo "  GEN config"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(Q)xgettext --default-domain=linux                         \
 	    --add-comments --keyword=_ --keyword=N_                 \
 	    --from-code=UTF-8                                       \
@@ -98,6 +110,9 @@ update-po-config: $(obj)/kxgettext $(obj)/gconf.glade.h
 	    --output $(obj)/config.pot
 	$(Q)sed -i s/CHARSET/UTF-8/ $(obj)/config.pot
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(Q)(for i in `ls $(srctree)/arch/*/Kconfig      \
 	    $(srctree)/arch/*/um/Kconfig`;               \
 	    do                                           \
@@ -108,6 +123,8 @@ update-po-config: $(obj)/kxgettext $(obj)/gconf.glade.h
 	$(Q)echo "  GEN     linux.pot"
 	$(Q)msguniq --sort-by-file --to-code=UTF-8 $(obj)/config.pot \
 	    --output $(obj)/linux.pot
+<<<<<<< HEAD
+=======
 =======
 	$(Q)ln -fs Kconfig.x86 arch/um/Kconfig
 	$(Q)(for i in `ls $(srctree)/arch/*/Kconfig`;    \
@@ -120,6 +137,7 @@ update-po-config: $(obj)/kxgettext $(obj)/gconf.glade.h
 	    --output $(obj)/linux.pot
 	$(Q)rm -f $(srctree)/arch/um/Kconfig
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(Q)rm -f $(obj)/config.pot
 
 PHONY += allnoconfig allyesconfig allmodconfig alldefconfig randconfig
@@ -200,9 +218,14 @@ qconf-cxxobjs	:= qconf.o
 qconf-objs	:= zconf.tab.o
 gconf-objs	:= gconf.o zconf.tab.o
 =======
+<<<<<<< HEAD
+qconf-objs	:= zconf.tab.o
+gconf-objs	:= gconf.o zconf.tab.o
+=======
 qconf-objs	:= kconfig_load.o zconf.tab.o
 gconf-objs	:= gconf.o kconfig_load.o zconf.tab.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 hostprogs-y := conf
 
@@ -238,9 +261,14 @@ endif
 clean-files	:= qconf.moc .tmp_qtcheck .tmp_gtkcheck
 clean-files	+= zconf.tab.c zconf.lex.c zconf.hash.c gconf.glade.h
 =======
+<<<<<<< HEAD
+clean-files	:= qconf.moc .tmp_qtcheck .tmp_gtkcheck
+clean-files	+= zconf.tab.c zconf.lex.c zconf.hash.c gconf.glade.h
+=======
 clean-files	:= lkc_defs.h qconf.moc .tmp_qtcheck .tmp_gtkcheck
 clean-files	+= zconf.tab.c lex.zconf.c zconf.hash.c gconf.glade.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 clean-files     += mconf qconf gconf nconf
 clean-files     += config.pot linux.pot
 
@@ -257,6 +285,9 @@ HOST_EXTRACFLAGS += $(shell $(CONFIG_SHELL) $(srctree)/$(src)/check.sh $(HOSTCC)
 
 # generated files seem to need this to find local include files
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 HOSTCFLAGS_zconf.lex.o	:= -I$(src)
 HOSTCFLAGS_zconf.tab.o	:= -I$(src)
 
@@ -269,6 +300,8 @@ HOSTCXXFLAGS_qconf.o	= $(KC_QT_CFLAGS)
 HOSTLOADLIBES_gconf	= `pkg-config --libs gtk+-2.0 gmodule-2.0 libglade-2.0`
 HOSTCFLAGS_gconf.o	= `pkg-config --cflags gtk+-2.0 gmodule-2.0 libglade-2.0` \
                           -Wno-missing-prototypes
+<<<<<<< HEAD
+=======
 =======
 HOSTCFLAGS_lex.zconf.o	:= -I$(src)
 HOSTCFLAGS_zconf.tab.o	:= -I$(src)
@@ -280,6 +313,7 @@ HOSTLOADLIBES_gconf	= `pkg-config --libs gtk+-2.0 gmodule-2.0 libglade-2.0` -ldl
 HOSTCFLAGS_gconf.o	= `pkg-config --cflags gtk+-2.0 gmodule-2.0 libglade-2.0` \
                           -D LKC_DIRECT_LINK
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 HOSTLOADLIBES_mconf   = $(shell $(CONFIG_SHELL) $(check-lxdialog) -ldflags $(HOSTCC))
 
@@ -372,6 +406,11 @@ $(obj)/zconf.tab.o: $(obj)/zconf.lex.c $(obj)/zconf.hash.c
 
 $(obj)/qconf.o: $(obj)/qconf.moc
 =======
+<<<<<<< HEAD
+$(obj)/zconf.tab.o: $(obj)/zconf.lex.c $(obj)/zconf.hash.c
+
+$(obj)/qconf.o: $(obj)/qconf.moc
+=======
 $(obj)/zconf.tab.o: $(obj)/lex.zconf.c $(obj)/zconf.hash.c
 
 $(obj)/kconfig_load.o: $(obj)/lkc_defs.h
@@ -380,21 +419,27 @@ $(obj)/qconf.o: $(obj)/qconf.moc $(obj)/lkc_defs.h
 
 $(obj)/gconf.o: $(obj)/lkc_defs.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 $(obj)/%.moc: $(src)/%.h
 	$(KC_QT_MOC) -i $< -o $@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 $(obj)/lkc_defs.h: $(src)/lkc_proto.h
 	$(Q)sed < $< > $@ 's/P(\([^,]*\),.*/#define \1 (\*\1_p)/'
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Extract gconf menu items for I18N support
 $(obj)/gconf.glade.h: $(obj)/gconf.glade
 	$(Q)intltool-extract --type=gettext/glade --srcdir=$(srctree) \
 	$(obj)/gconf.glade
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 ###
@@ -423,3 +468,4 @@ lex.%.c: %.l
 
 endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

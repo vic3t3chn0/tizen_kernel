@@ -4,8 +4,13 @@
    Copyright (c) 2000-2001, The Linux Foundation. All rights reserved.
    Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+   Copyright (c) 2000-2001, The Linux Foundation. All rights reserved.
+   Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
+=======
    Copyright (c) 2000-2001, 2010, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
    Written 2000,2001 by Maxim Krasnyansky <maxk@qualcomm.com>
 
@@ -50,6 +55,9 @@
 #include <net/bluetooth/bluetooth.h>
 #include <net/bluetooth/hci_core.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/bluetooth/l2cap.h>
 
 struct hci_conn *hci_le_connect(struct hci_dev *hdev, __u16 pkt_type,
@@ -139,6 +147,8 @@ struct hci_conn *hci_le_connect(struct hci_dev *hdev, __u16 pkt_type,
 	return le;
 }
 EXPORT_SYMBOL(hci_le_connect);
+<<<<<<< HEAD
+=======
 =======
 
 static void hci_le_connect(struct hci_conn *conn)
@@ -165,6 +175,7 @@ static void hci_le_connect(struct hci_conn *conn)
 	hci_send_cmd(hdev, HCI_OP_LE_CREATE_CONN, sizeof(cp), &cp);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void hci_le_connect_cancel(struct hci_conn *conn)
 {
@@ -172,6 +183,9 @@ static void hci_le_connect_cancel(struct hci_conn *conn)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void hci_le_cancel_create_connect(struct hci_dev *hdev, bdaddr_t *dst)
 {
 	struct hci_conn *le;
@@ -246,8 +260,11 @@ static inline bool is_role_switch_possible(struct hci_dev *hdev)
 	return true;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void hci_acl_connect(struct hci_conn *conn)
 {
 	struct hci_dev *hdev = conn->hdev;
@@ -287,8 +304,13 @@ void hci_acl_connect(struct hci_conn *conn)
 	if (lmp_rswitch_capable(hdev) && !(hdev->link_mode & HCI_LM_MASTER)
 		&& is_role_switch_possible(hdev))
 =======
+<<<<<<< HEAD
+	if (lmp_rswitch_capable(hdev) && !(hdev->link_mode & HCI_LM_MASTER)
+		&& is_role_switch_possible(hdev))
+=======
 	if (lmp_rswitch_capable(hdev) && !(hdev->link_mode & HCI_LM_MASTER))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cp.role_switch = 0x01;
 	else
 		cp.role_switch = 0x00;
@@ -313,14 +335,20 @@ void hci_acl_disconn(struct hci_conn *conn, __u8 reason)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct hci_cp_disconnect cp;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BT_DBG("%p", conn);
 
 	conn->state = BT_DISCONN;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (conn->hdev->dev_type == HCI_BREDR) {
 		struct hci_cp_disconnect cp;
 		cp.handle = cpu_to_le16(conn->handle);
@@ -333,11 +361,14 @@ void hci_acl_disconn(struct hci_conn *conn, __u8 reason)
 		hci_send_cmd(conn->hdev, HCI_OP_DISCONN_PHYS_LINK,
 				sizeof(cp), &cp);
 	}
+<<<<<<< HEAD
+=======
 =======
 	cp.handle = cpu_to_le16(conn->handle);
 	cp.reason = reason;
 	hci_send_cmd(conn->hdev, HCI_OP_DISCONNECT, sizeof(cp), &cp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void hci_add_sco(struct hci_conn *conn, __u16 handle)
@@ -372,6 +403,9 @@ void hci_setup_sync(struct hci_conn *conn, __u16 handle)
 
 	cp.handle   = cpu_to_le16(handle);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cp.tx_bandwidth   = cpu_to_le32(0x00001f40);
 	cp.rx_bandwidth   = cpu_to_le32(0x00001f40);
@@ -389,6 +423,8 @@ void hci_setup_sync(struct hci_conn *conn, __u16 handle)
 		cp.voice_setting  = cpu_to_le16(hdev->voice_setting);
 		cp.retrans_effort = RE_POWER_CONSUMP;
 	}
+<<<<<<< HEAD
+=======
 =======
 	cp.pkt_type = cpu_to_le16(conn->pkt_type);
 
@@ -398,6 +434,7 @@ void hci_setup_sync(struct hci_conn *conn, __u16 handle)
 	cp.voice_setting  = cpu_to_le16(hdev->voice_setting);
 	cp.retrans_effort = 0xff;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hci_send_cmd(hdev, HCI_OP_SETUP_SYNC_CONN, sizeof(cp), &cp);
 }
@@ -423,6 +460,9 @@ void hci_le_conn_update(struct hci_conn *conn, u16 min, u16 max,
 EXPORT_SYMBOL(hci_le_conn_update);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void hci_read_rssi(struct hci_conn *conn)
 {
 	struct hci_cp_read_rssi cp;
@@ -435,8 +475,11 @@ void hci_read_rssi(struct hci_conn *conn)
 }
 EXPORT_SYMBOL(hci_read_rssi);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void hci_le_start_enc(struct hci_conn *conn, __le16 ediv, __u8 rand[8],
 							__u8 ltk[16])
 {
@@ -453,8 +496,12 @@ void hci_le_start_enc(struct hci_conn *conn, __le16 ediv, __u8 rand[8],
 <<<<<<< HEAD
 	memcpy(cp.rand, rand, sizeof(cp.rand));
 =======
+<<<<<<< HEAD
+	memcpy(cp.rand, rand, sizeof(cp.rand));
+=======
 	memcpy(cp.rand, rand, sizeof(rand));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hci_send_cmd(hdev, HCI_OP_LE_START_ENC, sizeof(cp), &cp);
 }
@@ -473,8 +520,12 @@ void hci_le_ltk_reply(struct hci_conn *conn, u8 ltk[16])
 <<<<<<< HEAD
 	memcpy(cp.ltk, ltk, sizeof(ltk));
 =======
+<<<<<<< HEAD
+	memcpy(cp.ltk, ltk, sizeof(ltk));
+=======
 	memcpy(cp.ltk, ltk, sizeof(cp.ltk));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hci_send_cmd(hdev, HCI_OP_LE_LTK_REPLY, sizeof(cp), &cp);
 }
@@ -525,10 +576,13 @@ static void hci_conn_timeout(unsigned long arg)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (atomic_read(&conn->refcnt))
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hci_dev_lock(hdev);
 
 	switch (conn->state) {
@@ -544,6 +598,9 @@ static void hci_conn_timeout(unsigned long arg)
 	case BT_CONFIG:
 	case BT_CONNECTED:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!atomic_read(&conn->refcnt)) {
 			reason = hci_proto_disconn_ind(conn);
 			hci_acl_disconn(conn, reason);
@@ -552,6 +609,8 @@ static void hci_conn_timeout(unsigned long arg)
 	default:
 		if (!atomic_read(&conn->refcnt))
 			conn->state = BT_CLOSED;
+<<<<<<< HEAD
+=======
 =======
 		reason = hci_proto_disconn_ind(conn);
 		hci_acl_disconn(conn, reason);
@@ -559,6 +618,7 @@ static void hci_conn_timeout(unsigned long arg)
 	default:
 		conn->state = BT_CLOSED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -575,6 +635,9 @@ static void hci_conn_idle(unsigned long arg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void hci_conn_rssi_update(struct work_struct *work)
 {
 	struct delayed_work *delayed =
@@ -603,6 +666,8 @@ static void encryption_disabled_timeout(unsigned long userdata)
 						sizeof(cp), &cp);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 static void hci_conn_auto_accept(unsigned long arg)
 {
@@ -616,6 +681,7 @@ static void hci_conn_auto_accept(unsigned long arg)
 
 	hci_dev_unlock(hdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct hci_conn *hci_conn_add(struct hci_dev *hdev, int type,
@@ -638,17 +704,23 @@ struct hci_conn *hci_conn_add(struct hci_dev *hdev, int type,
 	conn->io_capability = hdev->io_capability;
 	conn->remote_auth = 0xff;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	conn->power_save = 1;
 	conn->disc_timeout = HCI_DISCONN_TIMEOUT;
 	conn->conn_valid = true;
 	spin_lock_init(&conn->lock);
+<<<<<<< HEAD
+=======
 =======
 	conn->key_type = 0xff;
 
 	conn->power_save = 1;
 	conn->disc_timeout = HCI_DISCONN_TIMEOUT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (type) {
 	case ACL_LINK:
@@ -656,7 +728,11 @@ struct hci_conn *hci_conn_add(struct hci_dev *hdev, int type,
 <<<<<<< HEAD
 		conn->link_policy = hdev->link_policy;
 =======
+<<<<<<< HEAD
+		conn->link_policy = hdev->link_policy;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SCO_LINK:
 		if (!pkt_type)
@@ -687,9 +763,15 @@ struct hci_conn *hci_conn_add(struct hci_dev *hdev, int type,
 	setup_timer(&conn->encrypt_pause_timer, encryption_disabled_timeout,
 			(unsigned long)conn);
 =======
+<<<<<<< HEAD
+	INIT_DELAYED_WORK(&conn->rssi_update_work, hci_conn_rssi_update);
+	setup_timer(&conn->encrypt_pause_timer, encryption_disabled_timeout,
+			(unsigned long)conn);
+=======
 	setup_timer(&conn->auto_accept_timer, hci_conn_auto_accept,
 							(unsigned long) conn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	atomic_set(&conn->refcnt, 0);
 
@@ -711,6 +793,9 @@ struct hci_conn *hci_conn_add(struct hci_dev *hdev, int type,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hci_conn *hci_le_conn_add(struct hci_dev *hdev, bdaddr_t *dst,
 							__u8 addr_type)
 {
@@ -723,8 +808,11 @@ struct hci_conn *hci_le_conn_add(struct hci_dev *hdev, bdaddr_t *dst,
 	return conn;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int hci_conn_del(struct hci_conn *conn)
 {
 	struct hci_dev *hdev = conn->hdev;
@@ -732,6 +820,9 @@ int hci_conn_del(struct hci_conn *conn)
 	BT_DBG("%s conn %p handle %d", hdev->name, conn, conn->handle);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_bh(&conn->lock);
 	conn->conn_valid = false; /* conn data is being released */
 	spin_unlock_bh(&conn->lock);
@@ -742,6 +833,8 @@ int hci_conn_del(struct hci_conn *conn)
 	del_timer(&conn->smp_timer);
 	__cancel_delayed_work(&conn->rssi_update_work);
 	del_timer(&conn->encrypt_pause_timer);
+<<<<<<< HEAD
+=======
 =======
 	del_timer(&conn->idle_timer);
 
@@ -749,6 +842,7 @@ int hci_conn_del(struct hci_conn *conn)
 
 	del_timer(&conn->auto_accept_timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (conn->type == ACL_LINK) {
 		struct hci_conn *sco = conn->link;
@@ -780,7 +874,12 @@ int hci_conn_del(struct hci_conn *conn)
 	tasklet_schedule(&hdev->tx_task);
 
 =======
+<<<<<<< HEAD
+	tasklet_schedule(&hdev->tx_task);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tasklet_enable(&hdev->tx_task);
 
 	skb_queue_purge(&conn->data_q);
@@ -788,6 +887,9 @@ int hci_conn_del(struct hci_conn *conn)
 	hci_conn_put_device(conn);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (conn->hidp_session_valid)
 		hci_conn_put_device(conn);
 
@@ -828,17 +930,23 @@ int hci_chan_del(struct hci_chan *chan)
 	hci_dev_put(chan->hdev);
 
 	kfree(chan);
+<<<<<<< HEAD
+=======
 =======
 	hci_dev_put(hdev);
 
 	if (conn->handle == 0)
 		kfree(conn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int hci_chan_put(struct hci_chan *chan)
 {
 	struct hci_cp_disconn_logical_link cp;
@@ -865,8 +973,11 @@ int hci_chan_put(struct hci_chan *chan)
 }
 EXPORT_SYMBOL(hci_chan_put);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hci_dev *hci_get_route(bdaddr_t *dst, bdaddr_t *src)
 {
 	int use_src = bacmp(src, BDADDR_ANY);
@@ -884,7 +995,12 @@ struct hci_dev *hci_get_route(bdaddr_t *dst, bdaddr_t *src)
 		if (d->dev_type != HCI_BREDR)
 			continue;
 =======
+<<<<<<< HEAD
+		if (d->dev_type != HCI_BREDR)
+			continue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!test_bit(HCI_UP, &d->flags) || test_bit(HCI_RAW, &d->flags))
 			continue;
 
@@ -913,6 +1029,9 @@ struct hci_dev *hci_get_route(bdaddr_t *dst, bdaddr_t *src)
 EXPORT_SYMBOL(hci_get_route);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hci_dev *hci_dev_get_type(u8 amp_type)
 {
 	struct hci_dev *hdev = NULL;
@@ -965,8 +1084,11 @@ struct hci_dev *hci_dev_get_amp(bdaddr_t *dst)
 }
 EXPORT_SYMBOL(hci_dev_get_amp);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Create SCO, ACL or LE connection.
  * Device _must_ be locked */
 struct hci_conn *hci_connect(struct hci_dev *hdev, int type,
@@ -976,12 +1098,17 @@ struct hci_conn *hci_connect(struct hci_dev *hdev, int type,
 	struct hci_conn *acl;
 	struct hci_conn *sco;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BT_DBG("%s dst %s", hdev->name, batostr(dst));
 
 	if (type == LE_LINK)
 		return hci_le_connect(hdev, pkt_type, dst, sec_level,
 							auth_type, NULL);
+<<<<<<< HEAD
+=======
 =======
 	struct hci_conn *le;
 	struct inquiry_entry *ie;
@@ -1012,6 +1139,7 @@ struct hci_conn *hci_connect(struct hci_dev *hdev, int type,
 		return le;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	acl = hci_conn_hash_lookup_ba(hdev, ACL_LINK, dst);
 	if (!acl) {
@@ -1033,6 +1161,9 @@ struct hci_conn *hci_connect(struct hci_dev *hdev, int type,
 		return acl;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* type of connection already existing can be ESCO or SCO
 	 * so check for both types before creating new */
 
@@ -1045,9 +1176,12 @@ struct hci_conn *hci_connect(struct hci_dev *hdev, int type,
 		sco = hci_conn_hash_lookup_ba(hdev, ESCO_LINK, dst);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	sco = hci_conn_hash_lookup_ba(hdev, type, dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sco) {
 		sco = hci_conn_add(hdev, type, pkt_type, dst);
 		if (!sco) {
@@ -1067,8 +1201,12 @@ struct hci_conn *hci_connect(struct hci_dev *hdev, int type,
 <<<<<<< HEAD
 		hci_conn_enter_active_mode(acl, 1);
 =======
+<<<<<<< HEAD
+		hci_conn_enter_active_mode(acl, 1);
+=======
 		hci_conn_enter_active_mode(acl, BT_POWER_FORCE_ACTIVE_ON);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (test_bit(HCI_CONN_MODE_CHANGE_PEND, &acl->pend)) {
 			/* defer SCO setup until mode change completed */
@@ -1084,6 +1222,9 @@ struct hci_conn *hci_connect(struct hci_dev *hdev, int type,
 EXPORT_SYMBOL(hci_connect);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void hci_disconnect(struct hci_conn *conn, __u8 reason)
 {
 	BT_DBG("conn %p", conn);
@@ -1114,8 +1255,11 @@ void hci_disconnect_amp(struct hci_conn *conn, __u8 reason)
 	read_unlock_bh(&hci_dev_list_lock);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Check link security requirement */
 int hci_conn_check_link_mode(struct hci_conn *conn)
 {
@@ -1148,9 +1292,14 @@ static int hci_conn_auth(struct hci_conn *conn, __u8 sec_level, __u8 auth_type)
 	conn->auth_type = auth_type;
 	conn->auth_initiator = 1;
 =======
+<<<<<<< HEAD
+	conn->auth_type = auth_type;
+	conn->auth_initiator = 1;
+=======
 
 	conn->auth_type = auth_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!test_and_set_bit(HCI_CONN_AUTH_PEND, &conn->pend)) {
 		struct hci_cp_auth_requested cp;
@@ -1163,15 +1312,21 @@ static int hci_conn_auth(struct hci_conn *conn, __u8 sec_level, __u8 auth_type)
 							sizeof(cp), &cp);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (conn->key_type != 0xff)
 			set_bit(HCI_CONN_REAUTH_PEND, &conn->pend);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Enable security */
 int hci_conn_security(struct hci_conn *conn, __u8 sec_level, __u8 auth_type)
 {
@@ -1180,6 +1335,8 @@ int hci_conn_security(struct hci_conn *conn, __u8 sec_level, __u8 auth_type)
 	if (sec_level == BT_SECURITY_SDP)
 		return 1;
 
+<<<<<<< HEAD
+=======
 =======
 /* Encrypt the the link */
 static void hci_conn_encrypt(struct hci_conn *conn)
@@ -1207,11 +1364,15 @@ int hci_conn_security(struct hci_conn *conn, __u8 sec_level, __u8 auth_type)
 	/* For non 2.1 devices and low security level we don't need the link
 	   key. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sec_level == BT_SECURITY_LOW &&
 				(!conn->ssp_mode || !conn->hdev->ssp_mode))
 		return 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (conn->type == LE_LINK) {
 		if (conn->pending_sec_level > sec_level)
 			sec_level = conn->pending_sec_level;
@@ -1238,6 +1399,8 @@ int hci_conn_security(struct hci_conn *conn, __u8 sec_level, __u8 auth_type)
 							sizeof(cp), &cp);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	/* For other security levels we need the link key. */
 	if (!(conn->link_mode & HCI_LM_AUTH))
@@ -1277,10 +1440,13 @@ encrypt:
 
 	hci_conn_encrypt(conn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL(hci_conn_security);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Check secure link requirement */
@@ -1299,6 +1465,7 @@ int hci_conn_check_secure(struct hci_conn *conn, __u8 sec_level)
 EXPORT_SYMBOL(hci_conn_check_secure);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Change link key */
 int hci_conn_change_link_key(struct hci_conn *conn)
 {
@@ -1336,6 +1503,8 @@ EXPORT_SYMBOL(hci_conn_switch_role);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* BEGIN SS_BLUEZ_BT +kjh 2011.06.23 : */
 /* workaround for a2dp chopping in multi connection. */
 /* Change Policy */
@@ -1365,6 +1534,7 @@ EXPORT_SYMBOL(hci_conn_set_encrypt);
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Enter active mode */
 void hci_conn_enter_active_mode(struct hci_conn *conn, __u8 force_active)
 {
@@ -1380,7 +1550,13 @@ void hci_conn_enter_active_mode(struct hci_conn *conn, __u8 force_active)
 		return;
 
 =======
+<<<<<<< HEAD
+	if (conn->type == LE_LINK)
+		return;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (conn->mode != HCI_CM_SNIFF)
 		goto timer;
 
@@ -1395,6 +1571,9 @@ void hci_conn_enter_active_mode(struct hci_conn *conn, __u8 force_active)
 
 timer:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev->idle_timeout > 0) {
 		spin_lock_bh(&conn->lock);
 		if (conn->conn_valid) {
@@ -1440,11 +1619,14 @@ void hci_conn_unset_rssi_reporter(struct hci_conn *conn)
 		BT_DBG("Deleting the rssi_update_timer");
 		hci_conn_stop_rssi_timer(conn);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (hdev->idle_timeout > 0)
 		mod_timer(&conn->idle_timer,
 			jiffies + msecs_to_jiffies(hdev->idle_timeout));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Enter sniff mode */
@@ -1458,6 +1640,9 @@ void hci_conn_enter_sniff_mode(struct hci_conn *conn)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (conn->type == LE_LINK)
 		return;
 
@@ -1467,12 +1652,15 @@ void hci_conn_enter_sniff_mode(struct hci_conn *conn)
 	if (conn->mode != HCI_CM_ACTIVE ||
 		!(conn->link_policy & HCI_LP_SNIFF) ||
 		(hci_find_link_key(hdev, &conn->dst) == NULL))
+<<<<<<< HEAD
+=======
 =======
 	if (!lmp_sniff_capable(hdev) || !lmp_sniff_capable(conn))
 		return;
 
 	if (conn->mode != HCI_CM_ACTIVE || !(conn->link_policy & HCI_LP_SNIFF))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	if (lmp_sniffsubr_capable(hdev) && lmp_sniffsubr_capable(conn)) {
@@ -1496,6 +1684,9 @@ void hci_conn_enter_sniff_mode(struct hci_conn *conn)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hci_chan *hci_chan_create(struct hci_chan *chan,
 			struct hci_ext_fs *tx_fs, struct hci_ext_fs *rx_fs)
 {
@@ -1556,10 +1747,13 @@ EXPORT_SYMBOL(hci_chan_modify);
 
 /* Drop all connection on the device */
 void hci_conn_hash_flush(struct hci_dev *hdev, u8 is_process)
+<<<<<<< HEAD
+=======
 =======
 /* Drop all connection on the device */
 void hci_conn_hash_flush(struct hci_dev *hdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hci_conn_hash *h = &hdev->conn_hash;
 	struct list_head *p;
@@ -1578,8 +1772,12 @@ void hci_conn_hash_flush(struct hci_dev *hdev)
 <<<<<<< HEAD
 		hci_proto_disconn_cfm(c, 0x16, is_process);
 =======
+<<<<<<< HEAD
+		hci_proto_disconn_cfm(c, 0x16, is_process);
+=======
 		hci_proto_disconn_cfm(c, 0x16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hci_conn_del(c);
 	}
 }
@@ -1609,14 +1807,20 @@ EXPORT_SYMBOL(hci_conn_hold_device);
 void hci_conn_put_device(struct hci_conn *conn)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (atomic_dec_and_test(&conn->devref)) {
 		conn->hidp_session_valid = false;
 		hci_conn_del_sysfs(conn);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (atomic_dec_and_test(&conn->devref))
 		hci_conn_del_sysfs(conn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(hci_conn_put_device);
 
@@ -1717,7 +1921,12 @@ int hci_get_conn_info(struct hci_dev *hdev, void __user *arg)
 		ci.pending_sec_level = conn->pending_sec_level;
 		ci.ssp_mode = conn->ssp_mode;
 =======
+<<<<<<< HEAD
+		ci.pending_sec_level = conn->pending_sec_level;
+		ci.ssp_mode = conn->ssp_mode;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	hci_dev_unlock_bh(hdev);
 
@@ -1747,6 +1956,9 @@ int hci_get_auth_info(struct hci_dev *hdev, void __user *arg)
 	return copy_to_user(arg, &req, sizeof(req)) ? -EFAULT : 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int hci_set_auth_info(struct hci_dev *hdev, void __user *arg)
 {
@@ -1783,5 +1995,8 @@ int hci_set_auth_info(struct hci_dev *hdev, void __user *arg)
 
 	return copy_to_user(arg, &req, sizeof(req)) ? -EFAULT : 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

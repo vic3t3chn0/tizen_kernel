@@ -24,8 +24,11 @@
 #include <linux/module.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/soc.h>
@@ -133,8 +136,11 @@ struct cs4270_private {
 	enum snd_soc_control_type control_type;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int mclk; /* Input frequency of the MCLK pin */
 	unsigned int mode; /* The mode (I2S or left-justified) */
 	unsigned int slave_mode;
@@ -270,8 +276,11 @@ static int cs4270_set_dai_fmt(struct snd_soc_dai *codec_dai,
 	struct cs4270_private *cs4270 = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* set DAI format */
 	switch (format & SND_SOC_DAIFMT_FORMAT_MASK) {
@@ -284,8 +293,12 @@ static int cs4270_set_dai_fmt(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 		return -EINVAL;
 =======
+<<<<<<< HEAD
+		return -EINVAL;
+=======
 		ret = -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* set master/slave audio interface */
@@ -299,17 +312,23 @@ static int cs4270_set_dai_fmt(struct snd_soc_dai *codec_dai,
 	default:
 		/* all other modes are unsupported by the hardware */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(codec->dev, "Unknown master/slave configuration\n");
 		return -EINVAL;
 	}
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 		ret = -EINVAL;
 	}
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -472,8 +491,12 @@ static const struct snd_kcontrol_new cs4270_snd_controls[] = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops cs4270_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops cs4270_dai_ops = {
+=======
 static struct snd_soc_dai_ops cs4270_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= cs4270_hw_params,
 	.set_sysclk	= cs4270_set_dai_sysclk,
 	.set_fmt	= cs4270_set_dai_fmt,
@@ -517,9 +540,12 @@ static int cs4270_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	codec->control_data = cs4270->control_data;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Tell ASoC what kind of I/O to use to read the registers.  ASoC will
 	 * then do the I2C transactions itself.
 	 */
@@ -556,8 +582,12 @@ static int cs4270_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	ret = snd_soc_add_codec_controls(codec, cs4270_snd_controls,
 =======
+<<<<<<< HEAD
+	ret = snd_soc_add_codec_controls(codec, cs4270_snd_controls,
+=======
 	ret = snd_soc_add_controls(codec, cs4270_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ARRAY_SIZE(cs4270_snd_controls));
 	if (ret < 0) {
 		dev_err(codec->dev, "failed to add controls\n");
@@ -617,8 +647,12 @@ static int cs4270_remove(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 static int cs4270_soc_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int cs4270_soc_suspend(struct snd_soc_codec *codec)
+=======
 static int cs4270_soc_suspend(struct snd_soc_codec *codec, pm_message_t mesg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cs4270_private *cs4270 = snd_soc_codec_get_drvdata(codec);
 	int reg, ret;
@@ -642,8 +676,11 @@ static int cs4270_soc_resume(struct snd_soc_codec *codec)
 	struct cs4270_private *cs4270 = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct i2c_client *i2c_client = codec->control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int reg;
 
 	regulator_bulk_enable(ARRAY_SIZE(cs4270->supplies),
@@ -657,6 +694,9 @@ static int cs4270_soc_resume(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_cache_sync(codec);
 =======
+<<<<<<< HEAD
+	snd_soc_cache_sync(codec);
+=======
 	for (reg = CS4270_FIRSTREG; reg <= CS4270_LASTREG; reg++) {
 		u8 val = snd_soc_read(codec, reg);
 
@@ -666,6 +706,7 @@ static int cs4270_soc_resume(struct snd_soc_codec *codec)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* ... then disable the power-down bits */
 	reg = snd_soc_read(codec, CS4270_PWRCTL);
@@ -682,11 +723,15 @@ static int cs4270_soc_resume(struct snd_soc_codec *codec)
 <<<<<<< HEAD
  * ASoC codec driver structure
 =======
+<<<<<<< HEAD
+ * ASoC codec driver structure
+=======
  * ASoC codec device structure
  *
  * Assign this variable to the codec_dev field of the machine driver's
  * snd_soc_device structure.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static const struct snd_soc_codec_driver soc_codec_device_cs4270 = {
 	.probe =		cs4270_probe,
@@ -737,8 +782,13 @@ static int cs4270_i2c_probe(struct i2c_client *i2c_client,
 	cs4270 = devm_kzalloc(&i2c_client->dev, sizeof(struct cs4270_private),
 			      GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	cs4270 = devm_kzalloc(&i2c_client->dev, sizeof(struct cs4270_private),
+			      GFP_KERNEL);
+=======
 	cs4270 = kzalloc(sizeof(struct cs4270_private), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cs4270) {
 		dev_err(&i2c_client->dev, "could not allocate codec\n");
 		return -ENOMEM;
@@ -747,17 +797,23 @@ static int cs4270_i2c_probe(struct i2c_client *i2c_client,
 	i2c_set_clientdata(i2c_client, cs4270);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cs4270->control_data = i2c_client;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cs4270->control_type = SND_SOC_I2C;
 
 	ret = snd_soc_register_codec(&i2c_client->dev,
 			&soc_codec_device_cs4270, &cs4270_dai, 1);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ret < 0)
 		kfree(cs4270);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -772,8 +828,11 @@ static int cs4270_i2c_remove(struct i2c_client *i2c_client)
 	snd_soc_unregister_codec(&i2c_client->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(i2c_client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -797,8 +856,12 @@ static struct i2c_driver cs4270_i2c_driver = {
 <<<<<<< HEAD
 		.name = "cs4270",
 =======
+<<<<<<< HEAD
+		.name = "cs4270",
+=======
 		.name = "cs4270-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 	},
 	.id_table = cs4270_id,

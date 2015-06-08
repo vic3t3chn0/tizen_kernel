@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <plat/mmc.h>
 #include <plat/omap-pm.h>
@@ -134,12 +138,15 @@ static void omap4_hsmmc1_before_set_reg(struct device *dev, int slot,
 	 * 1.8V and 3.0V modes, controlled by the PBIAS register.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 *
 	 * In 8-bit modes, OMAP VMMC1A (for DAT4..7) needs a supply, which
 	 * is most naturally TWL VSIM; those pins also use PBIAS.
 	 *
 	 * FIXME handle VMMC1A as needed ...
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	reg = omap4_ctrl_pad_readl(control_pbias_offset);
 	reg &= ~(OMAP4_MMC1_PBIASLITE_PWRDNZ_MASK |
@@ -147,8 +154,12 @@ static void omap4_hsmmc1_before_set_reg(struct device *dev, int slot,
 <<<<<<< HEAD
 		OMAP4_MMC1_PBIASLITE_VMODE_MASK);
 =======
+<<<<<<< HEAD
+		OMAP4_MMC1_PBIASLITE_VMODE_MASK);
+=======
 		OMAP4_USBC1_ICUSB_PWRDNZ_MASK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap4_ctrl_pad_writel(reg, control_pbias_offset);
 }
 
@@ -169,9 +180,13 @@ static void omap4_hsmmc1_after_set_reg(struct device *dev, int slot,
 <<<<<<< HEAD
 			OMAP4_MMC1_PWRDNZ_MASK);
 =======
+<<<<<<< HEAD
+			OMAP4_MMC1_PWRDNZ_MASK);
+=======
 			OMAP4_MMC1_PWRDNZ_MASK |
 			OMAP4_USBC1_ICUSB_PWRDNZ_MASK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		omap4_ctrl_pad_writel(reg, control_pbias_offset);
 
 		timeout = jiffies + msecs_to_jiffies(5);
@@ -186,6 +201,9 @@ static void omap4_hsmmc1_after_set_reg(struct device *dev, int slot,
 			pr_err("Pbias Voltage is not same as LDO\n");
 			/* Caution : On VMODE_ERROR Power Down MMC IO */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reg &= ~(OMAP4_MMC1_PWRDNZ_MASK);
 			omap4_ctrl_pad_writel(reg, control_pbias_offset);
 		}
@@ -205,6 +223,8 @@ static void hsmmc2_select_input_clk_src(struct omap_mmc_platform_data *mmc)
 }
 
 static void hsmmc2_before_set_reg(struct device *dev, int slot,
+<<<<<<< HEAD
+=======
 =======
 			reg &= ~(OMAP4_MMC1_PWRDNZ_MASK |
 				OMAP4_USBC1_ICUSB_PWRDNZ_MASK);
@@ -222,6 +242,7 @@ static void hsmmc2_before_set_reg(struct device *dev, int slot,
 
 static void hsmmc23_before_set_reg(struct device *dev, int slot,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   int power_on, int vdd)
 {
 	struct omap_mmc_platform_data *mmc = dev->platform_data;
@@ -230,6 +251,9 @@ static void hsmmc23_before_set_reg(struct device *dev, int slot,
 		mmc->slots[0].remux(dev, slot, power_on);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (power_on)
 		hsmmc2_select_input_clk_src(mmc);
 }
@@ -243,6 +267,8 @@ static int am35x_hsmmc2_set_power(struct device *dev, int slot,
 		hsmmc2_select_input_clk_src(mmc);
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	if (power_on) {
 		/* Only MMC2 supports a CLKIN */
@@ -255,6 +281,7 @@ static int am35x_hsmmc2_set_power(struct device *dev, int slot,
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int nop_mmc_set_power(struct device *dev, int slot, int power_on,
@@ -267,11 +294,16 @@ static inline void omap_hsmmc_mux(struct omap_mmc_platform_data *mmc_controller,
 			int controller_nr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (gpio_is_valid(mmc_controller->slots[0].switch_pin) &&
 		(mmc_controller->slots[0].switch_pin < OMAP_MAX_GPIO_LINES))
 		omap_mux_init_gpio(mmc_controller->slots[0].switch_pin,
 					OMAP_PIN_INPUT_PULLUP);
 	if (gpio_is_valid(mmc_controller->slots[0].gpio_wp) &&
+<<<<<<< HEAD
+=======
 =======
 	if ((mmc_controller->slots[0].switch_pin > 0) && \
 		(mmc_controller->slots[0].switch_pin < OMAP_MAX_GPIO_LINES))
@@ -279,6 +311,7 @@ static inline void omap_hsmmc_mux(struct omap_mmc_platform_data *mmc_controller,
 					OMAP_PIN_INPUT_PULLUP);
 	if ((mmc_controller->slots[0].gpio_wp > 0) && \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(mmc_controller->slots[0].gpio_wp < OMAP_MAX_GPIO_LINES))
 		omap_mux_init_gpio(mmc_controller->slots[0].gpio_wp,
 					OMAP_PIN_INPUT_PULLUP);
@@ -373,14 +406,20 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 	mmc->nr_slots = 1;
 	mmc->slots[0].caps = c->caps;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mmc->slots[0].pm_caps = c->pm_caps;
 	mmc->slots[0].internal_clock = !c->ext_clock;
 	mmc->dma_mask = 0xffffffff;
 	mmc->max_freq = c->max_freq;
+<<<<<<< HEAD
+=======
 =======
 	mmc->slots[0].internal_clock = !c->ext_clock;
 	mmc->dma_mask = 0xffffffff;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_is_omap44xx())
 		mmc->reg_offset = OMAP4_MMC_REG_OFFSET;
 	else
@@ -420,6 +459,9 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 	 * temporary HACK: ocr_mask instead of fixed supply
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_is_omap3505() || cpu_is_omap3517())
 		mmc->slots[0].ocr_mask = MMC_VDD_165_195 |
 					 MMC_VDD_26_27 |
@@ -431,6 +473,8 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 		mmc->slots[0].ocr_mask = c->ocr_mask;
 
 	if (!cpu_is_omap3517() && !cpu_is_omap3505())
+<<<<<<< HEAD
+=======
 =======
 	mmc->slots[0].ocr_mask = c->ocr_mask;
 
@@ -438,6 +482,7 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 		mmc->slots[0].set_power = nop_mmc_set_power;
 	else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mmc->slots[0].features |= HSMMC_HAS_PBIAS;
 
 	if (cpu_is_omap44xx() && (omap_rev() > OMAP4430_REV_ES1_0))
@@ -465,7 +510,13 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 			mmc->slots[0].set_power = nop_mmc_set_power;
 
 =======
+<<<<<<< HEAD
+		if (cpu_is_omap3517() || cpu_is_omap3505())
+			mmc->slots[0].set_power = nop_mmc_set_power;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* OMAP3630 HSMMC1 supports only 4-bit */
 		if (cpu_is_omap3630() &&
 				(c->caps & MMC_CAP_8_BIT_DATA)) {
@@ -480,7 +531,13 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 			mmc->slots[0].set_power = am35x_hsmmc2_set_power;
 
 =======
+<<<<<<< HEAD
+		if (cpu_is_omap3517() || cpu_is_omap3505())
+			mmc->slots[0].set_power = am35x_hsmmc2_set_power;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (c->ext_clock)
 			c->transceiver = 1;
 		if (c->transceiver && (c->caps & MMC_CAP_8_BIT_DATA)) {
@@ -488,6 +545,9 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 			c->caps |= MMC_CAP_4_BIT_DATA;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (mmc->slots[0].features & HSMMC_HAS_PBIAS) {
 			/* off-chip level shifting, or none */
 			mmc->slots[0].before_set_reg = hsmmc2_before_set_reg;
@@ -495,6 +555,8 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 		}
 		break;
 	case 3:
+<<<<<<< HEAD
+=======
 =======
 		/* FALLTHROUGH */
 	case 3:
@@ -505,6 +567,7 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 		}
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 4:
 	case 5:
 		mmc->slots[0].before_set_reg = NULL;
@@ -519,6 +582,9 @@ static int __init omap_hsmmc_pdata_init(struct omap2_hsmmc_info *c,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int omap_hsmmc_done;
 
 void omap_hsmmc_late_init(struct omap2_hsmmc_info *c)
@@ -563,6 +629,8 @@ static void __init omap_hsmmc_init_one(struct omap2_hsmmc_info *hsmmcinfo,
 	struct omap_hwmod *ohs[1];
 	struct omap_device *od;
 	struct platform_device *pdev;
+<<<<<<< HEAD
+=======
 =======
 static struct omap_device_pm_latency omap_hsmmc_latency[] = {
 	[0] = {
@@ -584,6 +652,7 @@ void __init omap_init_hsmmc(struct omap2_hsmmc_info *hsmmcinfo, int ctrl_nr)
 	struct omap_device *od;
 	struct omap_device_pm_latency *ohl;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char oh_name[MAX_OMAP_MMC_HWMOD_NAME_LEN];
 	struct omap_mmc_platform_data *mmc_data;
 	struct omap_mmc_dev_attr *mmc_dev_attr;
@@ -591,14 +660,21 @@ void __init omap_init_hsmmc(struct omap2_hsmmc_info *hsmmcinfo, int ctrl_nr)
 <<<<<<< HEAD
 	int res;
 =======
+<<<<<<< HEAD
+	int res;
+=======
 	int l;
 	int ohl_cnt = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mmc_data = kzalloc(sizeof(struct omap_mmc_platform_data), GFP_KERNEL);
 	if (!mmc_data) {
 		pr_err("Cannot allocate memory for mmc device!\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -687,6 +763,8 @@ void __init omap_hsmmc_init(struct omap2_hsmmc_info *controllers)
 
 	omap_hsmmc_done = 1;
 
+<<<<<<< HEAD
+=======
 =======
 		goto done;
 	}
@@ -739,6 +817,7 @@ void __init omap2_hsmmc_init(struct omap2_hsmmc_info *controllers)
 	u32 reg;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cpu_is_omap44xx()) {
 		if (cpu_is_omap2430()) {
 			control_pbias_offset = OMAP243X_CONTROL_PBIAS_LITE;
@@ -759,8 +838,12 @@ void __init omap2_hsmmc_init(struct omap2_hsmmc_info *controllers)
 <<<<<<< HEAD
 		reg |= (OMAP4_SDMMC1_DR0_SPEEDCTRL_MASK |
 =======
+<<<<<<< HEAD
+		reg |= (OMAP4_SDMMC1_DR0_SPEEDCTRL_MASK |
+=======
 		reg |= (OMAP4_USBC1_DR0_SPEEDCTRL_MASK|
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			OMAP4_SDMMC1_DR1_SPEEDCTRL_MASK |
 			OMAP4_SDMMC1_DR2_SPEEDCTRL_MASK);
 		omap4_ctrl_pad_writel(reg, control_mmc1);
@@ -770,8 +853,12 @@ void __init omap2_hsmmc_init(struct omap2_hsmmc_info *controllers)
 <<<<<<< HEAD
 		omap_hsmmc_init_one(controllers, controllers->mmc);
 =======
+<<<<<<< HEAD
+		omap_hsmmc_init_one(controllers, controllers->mmc);
+=======
 		omap_init_hsmmc(controllers, controllers->mmc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 }
 

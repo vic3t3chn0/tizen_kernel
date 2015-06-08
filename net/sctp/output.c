@@ -336,6 +336,8 @@ finish:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void sctp_packet_release_owner(struct sk_buff *skb)
 {
 	sk_free(skb->sk);
@@ -356,6 +358,7 @@ static void sctp_packet_set_owner_w(struct sk_buff *skb, struct sock *sk)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* All packets are sent to the network through this function from
  * sctp_outq_tail().
  *
@@ -400,8 +403,12 @@ int sctp_packet_transmit(struct sctp_packet *packet)
 <<<<<<< HEAD
 	skb_set_owner_w(nskb, sk);
 =======
+<<<<<<< HEAD
+	skb_set_owner_w(nskb, sk);
+=======
 	sctp_packet_set_owner_w(nskb, sk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!sctp_transport_dst_check(tp)) {
 		sctp_transport_route(tp, NULL, sctp_sk(sk));

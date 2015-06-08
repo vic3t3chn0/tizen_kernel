@@ -49,7 +49,11 @@ For 32-bit we have the following conventions - kernel is built with
 <<<<<<< HEAD
 #include "dwarf2.h"
 =======
+<<<<<<< HEAD
+#include "dwarf2.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * 64-bit system call stack frame layout defines and helpers, for
@@ -89,6 +93,9 @@ For 32-bit we have the following conventions - kernel is built with
 #define SWFRAME		ORIG_RAX
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro SAVE_ARGS addskip=0, save_rcx=1, save_r891011=1
 	subq  $9*8+\addskip, %rsp
 	CFI_ADJUST_CFA_OFFSET	9*8+\addskip
@@ -109,6 +116,8 @@ For 32-bit we have the following conventions - kernel is built with
 	movq_cfi r11, 0*8
 	.endif
 
+<<<<<<< HEAD
+=======
 =======
 	.macro SAVE_ARGS addskip=0, norcx=0, nor891011=0
 	subq  $9*8+\addskip, %rsp
@@ -138,11 +147,15 @@ For 32-bit we have the following conventions - kernel is built with
 	CFI_REL_OFFSET	r11, 0*8
 	.endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.endm
 
 #define ARG_SKIP	(9*8)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro RESTORE_ARGS rstor_rax=1, addskip=0, rstor_rcx=1, rstor_r11=1, \
 			    rstor_r8910=1, rstor_rdx=1
 	.if \rstor_r11
@@ -170,6 +183,8 @@ For 32-bit we have the following conventions - kernel is built with
 	movq_cfi_restore 7*8, rsi
 	movq_cfi_restore 8*8, rdi
 
+<<<<<<< HEAD
+=======
 =======
 	.macro RESTORE_ARGS skiprax=0, addskip=0, skiprcx=0, skipr11=0, \
 			    skipr8910=0, skiprdx=0
@@ -207,6 +222,7 @@ For 32-bit we have the following conventions - kernel is built with
 	movq 8*8(%rsp), %rdi
 	CFI_RESTORE rdi
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.if ARG_SKIP+\addskip > 0
 	addq $ARG_SKIP+\addskip, %rsp
 	CFI_ADJUST_CFA_OFFSET	-(ARG_SKIP+\addskip)
@@ -234,6 +250,9 @@ For 32-bit we have the following conventions - kernel is built with
 	subq $REST_SKIP, %rsp
 	CFI_ADJUST_CFA_OFFSET	REST_SKIP
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movq_cfi rbx, 5*8
 	movq_cfi rbp, 4*8
 	movq_cfi r12, 3*8
@@ -249,6 +268,8 @@ For 32-bit we have the following conventions - kernel is built with
 	movq_cfi_restore 3*8, r12
 	movq_cfi_restore 4*8, rbp
 	movq_cfi_restore 5*8, rbx
+<<<<<<< HEAD
+=======
 =======
 	movq %rbx, 5*8(%rsp)
 	CFI_REL_OFFSET	rbx, 5*8
@@ -278,6 +299,7 @@ For 32-bit we have the following conventions - kernel is built with
 	movq 5*8(%rsp),  %rbx
 	CFI_RESTORE rbx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addq $REST_SKIP, %rsp
 	CFI_ADJUST_CFA_OFFSET	-(REST_SKIP)
 	.endm
@@ -292,8 +314,12 @@ For 32-bit we have the following conventions - kernel is built with
 <<<<<<< HEAD
 	RESTORE_ARGS 1, \addskip
 =======
+<<<<<<< HEAD
+	RESTORE_ARGS 1, \addskip
+=======
 	RESTORE_ARGS 0, \addskip
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.endm
 
 	.macro icebp

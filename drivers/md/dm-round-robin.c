@@ -14,6 +14,13 @@
 #include "dm-path-selector.h"
 
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DM_MSG_PREFIX "multipath round-robin"
 
@@ -113,6 +120,13 @@ static int rr_add_path(struct path_selector *ps, struct dm_path *path,
 	struct selector *s = (struct selector *) ps->context;
 	struct path_info *pi;
 	unsigned repeat_count = RR_MIN_IO;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	char dummy;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (argc > 1) {
 		*error = "round-robin ps: incorrect number of arguments";
@@ -120,7 +134,15 @@ static int rr_add_path(struct path_selector *ps, struct dm_path *path,
 	}
 
 	/* First path argument is number of I/Os before switching path */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((argc == 1) && (sscanf(argv[0], "%u%c", &repeat_count, &dummy) != 1)) {
+=======
 	if ((argc == 1) && (sscanf(argv[0], "%u", &repeat_count) != 1)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((argc == 1) && (sscanf(argv[0], "%u", &repeat_count) != 1)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*error = "round-robin ps: invalid repeat count";
 		return -EINVAL;
 	}

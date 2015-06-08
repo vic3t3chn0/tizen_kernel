@@ -5,7 +5,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -242,7 +250,28 @@ acpi_ns_dump_one_object(acpi_handle obj_handle,
 
 		if (!obj_desc) {
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			/* No attached object. Some types should always have an object */
+
+			switch (type) {
+			case ACPI_TYPE_INTEGER:
+			case ACPI_TYPE_PACKAGE:
+			case ACPI_TYPE_BUFFER:
+			case ACPI_TYPE_STRING:
+			case ACPI_TYPE_METHOD:
+				acpi_os_printf("<No attached object>");
+				break;
+
+			default:
+				break;
+			}
+=======
 			/* No attached object, we are done */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			/* No attached object, we are done */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			acpi_os_printf("\n");
 			return (AE_OK);

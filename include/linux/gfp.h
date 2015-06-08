@@ -26,10 +26,14 @@ struct vm_area_struct;
 <<<<<<< HEAD
 #define ___GFP_CMA		0x2000u
 =======
+<<<<<<< HEAD
+#define ___GFP_CMA		0x2000u
+=======
 #ifdef CONFIG_DMA_CMA
 #define ___GFP_CMA		0x2000u
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ___GFP_COMP		0x4000u
 #define ___GFP_ZERO		0x8000u
 #define ___GFP_NOMEMALLOC	0x10000u
@@ -46,7 +50,11 @@ struct vm_area_struct;
 <<<<<<< HEAD
 #define ___GFP_WRITE		0x1000000u
 =======
+<<<<<<< HEAD
+#define ___GFP_WRITE		0x1000000u
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * GFP bitmasks..
@@ -66,6 +74,11 @@ struct vm_area_struct;
 #define GFP_ZONEMASK	(__GFP_DMA|__GFP_HIGHMEM|__GFP_DMA32|__GFP_MOVABLE| \
 			__GFP_CMA)
 =======
+<<<<<<< HEAD
+#define __GFP_CMA	((__force gfp_t)___GFP_CMA)
+#define GFP_ZONEMASK	(__GFP_DMA|__GFP_HIGHMEM|__GFP_DMA32|__GFP_MOVABLE| \
+			__GFP_CMA)
+=======
 #ifndef CONFIG_DMA_CMA
 #define GFP_ZONEMASK	(__GFP_DMA|__GFP_HIGHMEM|__GFP_DMA32|__GFP_MOVABLE)
 #else
@@ -74,6 +87,7 @@ struct vm_area_struct;
 			__GFP_CMA)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Action modifiers - doesn't change the zoning
  *
@@ -111,7 +125,11 @@ struct vm_area_struct;
 <<<<<<< HEAD
 #define __GFP_WRITE	((__force gfp_t)___GFP_WRITE)	/* Allocator intends to dirty page */
 =======
+<<<<<<< HEAD
+#define __GFP_WRITE	((__force gfp_t)___GFP_WRITE)	/* Allocator intends to dirty page */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * This may seem redundant, but it's a way of annotating false positives vs.
@@ -122,8 +140,12 @@ struct vm_area_struct;
 <<<<<<< HEAD
 #define __GFP_BITS_SHIFT 25	/* Room for N __GFP_FOO bits */
 =======
+<<<<<<< HEAD
+#define __GFP_BITS_SHIFT 25	/* Room for N __GFP_FOO bits */
+=======
 #define __GFP_BITS_SHIFT 23	/* Room for 23 __GFP_FOO bits */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __GFP_BITS_MASK ((__force gfp_t)((1 << __GFP_BITS_SHIFT) - 1))
 
 /* This equals 0, but use constants in case they ever change */
@@ -156,12 +178,16 @@ struct vm_area_struct;
 <<<<<<< HEAD
 #define GFP_MOVABLE_MASK (__GFP_RECLAIMABLE|__GFP_MOVABLE|__GFP_CMA)
 =======
+<<<<<<< HEAD
+#define GFP_MOVABLE_MASK (__GFP_RECLAIMABLE|__GFP_MOVABLE|__GFP_CMA)
+=======
 #ifndef CONFIG_DMA_CMA
 #define GFP_MOVABLE_MASK (__GFP_RECLAIMABLE|__GFP_MOVABLE)
 #else
 #define GFP_MOVABLE_MASK (__GFP_RECLAIMABLE|__GFP_MOVABLE|__GFP_CMA)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Control page allocator reclaim behavior */
 #define GFP_RECLAIM_MASK (__GFP_WAIT|__GFP_HIGH|__GFP_IO|__GFP_FS|\
@@ -197,8 +223,12 @@ static inline int allocflags_to_migratetype(gfp_t gfp_flags)
 <<<<<<< HEAD
 #ifndef CONFIG_CMA
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_CMA
+=======
 #ifndef CONFIG_DMA_CMA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (((gfp_flags & __GFP_MOVABLE) != 0) << 1) |
 		((gfp_flags & __GFP_RECLAIMABLE) != 0);
 #else
@@ -340,9 +370,12 @@ static inline void arch_alloc_page(struct page *page, int order) { }
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct rw_semaphore page_alloc_slow_rwsem;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct page *
 __alloc_pages_nodemask(gfp_t gfp_mask, unsigned int order,
 		       struct zonelist *zonelist, nodemask_t *nodemask);
@@ -370,8 +403,12 @@ static inline struct page *alloc_pages_exact_node(int nid, gfp_t gfp_mask,
 <<<<<<< HEAD
 	VM_BUG_ON(nid < 0 || nid >= MAX_NUMNODES || !node_online(nid));
 =======
+<<<<<<< HEAD
+	VM_BUG_ON(nid < 0 || nid >= MAX_NUMNODES || !node_online(nid));
+=======
 	VM_BUG_ON(nid < 0 || nid >= MAX_NUMNODES);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return __alloc_pages(gfp_mask, order, node_zonelist(nid, gfp_mask));
 }
@@ -419,7 +456,11 @@ extern void free_hot_cold_page(struct page *page, int cold);
 <<<<<<< HEAD
 extern void free_hot_cold_page_list(struct list_head *list, int cold);
 =======
+<<<<<<< HEAD
+extern void free_hot_cold_page_list(struct list_head *list, int cold);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define __free_page(page) __free_pages((page), 0)
 #define free_page(addr) free_pages((addr), 0)
@@ -430,6 +471,9 @@ void drain_all_pages(void);
 void drain_local_pages(void *dummy);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * gfp_allowed_mask is set to GFP_BOOT_MASK during early boot to restrict what
  * GFP flags are used before interrupts are enabled. Once interrupts are
@@ -437,14 +481,20 @@ void drain_local_pages(void *dummy);
  * hibernation, it is used by PM to avoid I/O during memory allocation while
  * devices are suspended.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern gfp_t gfp_allowed_mask;
 
 extern void pm_restrict_gfp_mask(void);
 extern void pm_restore_gfp_mask(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_SLEEP
 extern bool pm_suspended_storage(void);
 #else
@@ -464,6 +514,8 @@ extern void free_contig_range(unsigned long pfn, unsigned nr_pages);
 /* CMA stuff */
 extern void init_cma_reserved_pageblock(struct page *page);
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_DMA_CMA
 /* The below functions must be run on a range from a single zone. */
@@ -473,6 +525,7 @@ extern void free_contig_range(unsigned long pfn, unsigned nr_pages);
 /* CMA stuff */
 extern void init_cma_reserved_pageblock(struct page *page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* __LINUX_GFP_H */

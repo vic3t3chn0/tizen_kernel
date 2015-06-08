@@ -20,6 +20,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "sq930x"
 
 #include "gspca.h"
@@ -468,7 +476,15 @@ static void reg_r(struct gspca_dev *gspca_dev,
 			value, 0, gspca_dev->usb_buf, len,
 			500);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_r %04x failed %d\n", value, ret);
+=======
 		err("reg_r %04x failed %d", value, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_r %04x failed %d", value, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -488,7 +504,15 @@ static void reg_w(struct gspca_dev *gspca_dev, u16 value, u16 index)
 			500);
 	msleep(30);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_w %04x %04x failed %d\n", value, index, ret);
+=======
 		err("reg_w %04x %04x failed %d", value, index, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_w %04x %04x failed %d", value, index, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -511,7 +535,15 @@ static void reg_wb(struct gspca_dev *gspca_dev, u16 value, u16 index,
 			1000);
 	msleep(30);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_wb %04x %04x failed %d\n", value, index, ret);
+=======
 		err("reg_wb %04x %04x failed %d", value, index, ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_wb %04x %04x failed %d", value, index, ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -556,7 +588,15 @@ static void i2c_write(struct sd *sd,
 			gspca_dev->usb_buf, buf - gspca_dev->usb_buf,
 			500);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("i2c_write failed %d\n", ret);
+=======
 		err("i2c_write failed %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("i2c_write failed %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -575,7 +615,15 @@ static void ucbus_write(struct gspca_dev *gspca_dev,
 
 #ifdef GSPCA_DEBUG
 	if ((batchsize - 1) * 3 > USB_BUF_SZ) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Bug: usb_buf overflow\n");
+=======
 		err("Bug: usb_buf overflow");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Bug: usb_buf overflow");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = -ENOMEM;
 		return;
 	}
@@ -612,7 +660,15 @@ static void ucbus_write(struct gspca_dev *gspca_dev,
 				gspca_dev->usb_buf, buf - gspca_dev->usb_buf,
 				500);
 		if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("ucbus_write failed %d\n", ret);
+=======
 			err("ucbus_write failed %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("ucbus_write failed %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			gspca_dev->usb_err = ret;
 			return;
 		}
@@ -688,7 +744,15 @@ static void cmos_probe(struct gspca_dev *gspca_dev)
 			break;
 	}
 	if (i >= ARRAY_SIZE(probe_order)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Unknown sensor\n");
+=======
 		err("Unknown sensor");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Unknown sensor");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = -EINVAL;
 		return;
 	}
@@ -696,7 +760,16 @@ static void cmos_probe(struct gspca_dev *gspca_dev)
 	switch (sd->sensor) {
 	case SENSOR_OV7660:
 	case SENSOR_OV9630:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Sensor %s not yet treated\n",
+		       sensor_tb[sd->sensor].name);
+=======
 		err("Sensor %s not yet treated", sensor_tb[sd->sensor].name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Sensor %s not yet treated", sensor_tb[sd->sensor].name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = -EINVAL;
 		break;
 	}
@@ -1091,7 +1164,15 @@ static void sd_dq_callback(struct gspca_dev *gspca_dev)
 	gspca_dev->cam.bulk_nurbs = 1;
 	ret = usb_submit_urb(gspca_dev->urb[0], GFP_ATOMIC);
 	if (ret < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("sd_dq_callback() err %d\n", ret);
+=======
 		err("sd_dq_callback() err %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("sd_dq_callback() err %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* wait a little time, otherwise the webcam crashes */
 	msleep(100);
@@ -1194,6 +1275,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -1206,3 +1293,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

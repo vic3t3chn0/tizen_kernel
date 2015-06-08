@@ -1,5 +1,13 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (c) 2006 - 2011 Intel Corporation.  All rights reserved.
+=======
  * Copyright (c) 2006 - 2009 Intel Corporation.  All rights reserved.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (c) 2006 - 2009 Intel Corporation.  All rights reserved.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is available to you under a choice of one of two
  * licenses.  You may choose to be licensed under the terms of the GNU
@@ -597,7 +605,15 @@ static int nes_query_port(struct ib_device *ibdev, u8 port, struct ib_port_attr 
 	props->pkey_tbl_len = 1;
 	props->qkey_viol_cntr = 0;
 	props->active_width = IB_WIDTH_4X;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	props->active_speed = IB_SPEED_SDR;
+=======
 	props->active_speed = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	props->active_speed = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	props->max_msg_sz = 0x80000000;
 
 	return 0;
@@ -605,6 +621,11 @@ static int nes_query_port(struct ib_device *ibdev, u8 port, struct ib_port_attr 
 
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * nes_modify_port
  */
 static int nes_modify_port(struct ib_device *ibdev, u8 port,
@@ -615,6 +636,10 @@ static int nes_modify_port(struct ib_device *ibdev, u8 port,
 
 
 /**
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * nes_query_pkey
  */
 static int nes_query_pkey(struct ib_device *ibdev, u8 port, u16 index, u16 *pkey)
@@ -1414,9 +1439,18 @@ static struct ib_qp *nes_create_qp(struct ib_pd *ibpd,
 	}
 
 	nesqp->sig_all = (init_attr->sq_sig_type == IB_SIGNAL_ALL_WR);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	init_timer(&nesqp->terminate_timer);
 	nesqp->terminate_timer.function = nes_terminate_timeout;
 	nesqp->terminate_timer.data = (unsigned long)nesqp;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	init_timer(&nesqp->terminate_timer);
+	nesqp->terminate_timer.function = nes_terminate_timeout;
+	nesqp->terminate_timer.data = (unsigned long)nesqp;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* update the QP table */
 	nesdev->nesadapter->qp_table[nesqp->hwqp.qp_id-NES_FIRST_QPN] = nesqp;
@@ -1426,6 +1460,13 @@ static struct ib_qp *nes_create_qp(struct ib_pd *ibpd,
 	return &nesqp->ibqp;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * nes_clean_cq
  */
@@ -1470,7 +1511,15 @@ static int nes_destroy_qp(struct ib_qp *ibqp)
 	struct ib_qp_attr attr;
 	struct iw_cm_id *cm_id;
 	struct iw_cm_event cm_event;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = 0;
+=======
 	int ret;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	atomic_inc(&sw_qps_destroyed);
 	nesqp->destroyed = 1;
@@ -1523,7 +1572,14 @@ static int nes_destroy_qp(struct ib_qp *ibqp)
 		if ((nesqp->nesrcq) && (nesqp->nesrcq != nesqp->nesscq))
 			nes_clean_cq(nesqp, nesqp->nesrcq);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nes_rem_ref(&nesqp->ibqp);
 	return 0;
 }
@@ -2350,8 +2406,20 @@ static struct ib_mr *nes_reg_user_mr(struct ib_pd *pd, u64 start, u64 length,
 
 	skip_pages = ((u32)region->offset) >> 12;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ib_copy_from_udata(&req, udata, sizeof(req))) {
+		ib_umem_release(region);
+		return ERR_PTR(-EFAULT);
+	}
+=======
 	if (ib_copy_from_udata(&req, udata, sizeof(req)))
 		return ERR_PTR(-EFAULT);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ib_copy_from_udata(&req, udata, sizeof(req)))
+		return ERR_PTR(-EFAULT);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nes_debug(NES_DBG_MR, "Memory Registration type = %08X.\n", req.reg_type);
 
 	switch (req.reg_type) {
@@ -2570,11 +2638,20 @@ static struct ib_mr *nes_reg_user_mr(struct ib_pd *pd, u64 start, u64 length,
 			return ibmr;
 		case IWNES_MEMREG_TYPE_QP:
 		case IWNES_MEMREG_TYPE_CQ:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!region->length) {
 				nes_debug(NES_DBG_MR, "Unable to register zero length region for CQ\n");
 				ib_umem_release(region);
 				return ERR_PTR(-EINVAL);
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			nespbl = kzalloc(sizeof(*nespbl), GFP_KERNEL);
 			if (!nespbl) {
 				nes_debug(NES_DBG_MR, "Unable to allocate PBL\n");
@@ -2648,6 +2725,13 @@ static struct ib_mr *nes_reg_user_mr(struct ib_pd *pd, u64 start, u64 length,
 			return &nesmr->ibmr;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ib_umem_release(region);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ERR_PTR(-ENOSYS);
 }
 
@@ -3443,6 +3527,14 @@ static int nes_post_send(struct ib_qp *ibqp, struct ib_send_wr *ib_wr,
 					    NES_IWARP_SQ_FMR_WQE_LENGTH_LOW_IDX,
 					    ib_wr->wr.fast_reg.length);
 			set_wqe_32bit_value(wqe->wqe_words,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					    NES_IWARP_SQ_FMR_WQE_LENGTH_HIGH_IDX, 0);
+			set_wqe_32bit_value(wqe->wqe_words,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    NES_IWARP_SQ_FMR_WQE_MR_STAG_IDX,
 					    ib_wr->wr.fast_reg.rkey);
 			/* Set page size: */
@@ -3739,7 +3831,15 @@ static int nes_poll_cq(struct ib_cq *ibcq, int num_entries, struct ib_wc *entry)
 						entry->opcode = IB_WC_SEND;
 						break;
 					case NES_IWARP_SQ_OP_LOCINV:
+<<<<<<< HEAD
+<<<<<<< HEAD
+						entry->opcode = IB_WC_LOCAL_INV;
+=======
 						entry->opcode = IB_WR_LOCAL_INV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						entry->opcode = IB_WR_LOCAL_INV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						break;
 					case NES_IWARP_SQ_OP_FAST_REG:
 						entry->opcode = IB_WC_FAST_REG_MR;
@@ -3889,7 +3989,14 @@ struct nes_ib_device *nes_init_ofa_device(struct net_device *netdev)
 	nesibdev->ibdev.dev.parent = &nesdev->pcidev->dev;
 	nesibdev->ibdev.query_device = nes_query_device;
 	nesibdev->ibdev.query_port = nes_query_port;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	nesibdev->ibdev.modify_port = nes_modify_port;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	nesibdev->ibdev.modify_port = nes_modify_port;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nesibdev->ibdev.query_pkey = nes_query_pkey;
 	nesibdev->ibdev.query_gid = nes_query_gid;
 	nesibdev->ibdev.alloc_ucontext = nes_alloc_ucontext;

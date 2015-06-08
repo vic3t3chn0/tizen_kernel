@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/linkage.h>
 =======
+<<<<<<< HEAD
+#include <linux/linkage.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/asm-offsets.h>
 #include <asm/thread_info.h>
 #include <asm/page.h>
@@ -336,9 +340,14 @@ iplstart:
 	stidp	__LC_SAVE_AREA_SYNC	# store cpuid
 	tm	__LC_SAVE_AREA_SYNC,0xff# running VM ?
 =======
+<<<<<<< HEAD
+	stidp	__LC_SAVE_AREA_SYNC	# store cpuid
+	tm	__LC_SAVE_AREA_SYNC,0xff# running VM ?
+=======
 	stidp	__LC_SAVE_AREA		# store cpuid
 	tm	__LC_SAVE_AREA,0xff	# running VM ?
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bno	.Lnoreset
 	la	%r2,.Lreset
 	lhi	%r3,26
@@ -395,9 +404,13 @@ iplstart:
 <<<<<<< HEAD
 ENTRY(start)
 =======
+<<<<<<< HEAD
+ENTRY(start)
+=======
 	.globl	start
 start:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stm	%r0,%r15,0x07b0		# store registers
 	basr	%r12,%r0
 .base:
@@ -462,6 +475,9 @@ start:
 #
 	.org	0x10000
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(startup)
 	j	.Lep_startup_normal
 	.org	0x10008
@@ -480,15 +496,21 @@ ENTRY(startup)
 ENTRY(startup_kdump)
 	j	.Lep_startup_kdump
 .Lep_startup_normal:
+<<<<<<< HEAD
+=======
 =======
 	.globl	startup
 startup:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	basr	%r13,0			# get base
 .LPG0:
 	xc	0x200(256),0x200	# partially clear lowcore
 	xc	0x300(256),0x300
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xc	0xe00(256),0xe00
 	stck	__LC_LAST_UPDATE_CLOCK
 	spt	5f-.LPG0(%r13)
@@ -496,6 +518,8 @@ startup:
 	xc	__LC_STFL_FAC_LIST(8),__LC_STFL_FAC_LIST
 #ifndef CONFIG_MARCH_G5
 	# check capabilities against MARCH_{G5,Z900,Z990,Z9_109,Z10}
+<<<<<<< HEAD
+=======
 =======
 	stck	__LC_LAST_UPDATE_CLOCK
 	spt	5f-.LPG0(%r13)
@@ -504,6 +528,7 @@ startup:
 	# check capabilities against MARCH_{G5,Z900,Z990,Z9_109,Z10}
 	xc	__LC_STFL_FAC_LIST(8),__LC_STFL_FAC_LIST
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.insn	s,0xb2b10000,__LC_STFL_FAC_LIST	# store facility list
 	tm	__LC_STFL_FAC_LIST,0x01	# stfle available ?
 	jz	0f
@@ -583,7 +608,12 @@ startup:
 #include "head_kdump.S"
 
 =======
+<<<<<<< HEAD
+#include "head_kdump.S"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # params at 10400 (setup.h)
 #
@@ -595,7 +625,12 @@ startup:
 	.long	0,0			# OLDMEM_BASE
 	.long	0,0			# OLDMEM_SIZE
 =======
+<<<<<<< HEAD
+	.long	0,0			# OLDMEM_BASE
+	.long	0,0			# OLDMEM_SIZE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.org	COMMAND_LINE
 	.byte	"root=/dev/ram0 ro"

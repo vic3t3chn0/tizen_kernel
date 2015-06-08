@@ -81,8 +81,12 @@ static int nothing_to_commit(struct ubifs_info *c)
 <<<<<<< HEAD
 	if (c->zroot.znode && ubifs_zn_dirty(c->zroot.znode))
 =======
+<<<<<<< HEAD
+	if (c->zroot.znode && ubifs_zn_dirty(c->zroot.znode))
+=======
 	if (c->zroot.znode && test_bit(DIRTY_ZNODE, &c->zroot.znode->flags))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	/*
@@ -425,8 +429,12 @@ int ubifs_run_commit(struct ubifs_info *c)
 <<<<<<< HEAD
 		err = -EROFS;
 =======
+<<<<<<< HEAD
+		err = -EROFS;
+=======
 		err = -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -455,8 +463,12 @@ int ubifs_run_commit(struct ubifs_info *c)
 <<<<<<< HEAD
 		err = -EROFS;
 =======
+<<<<<<< HEAD
+		err = -EROFS;
+=======
 		err = -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_cmt_unlock;
 	}
 
@@ -591,8 +603,12 @@ int dbg_check_old_index(struct ubifs_info *c, struct ubifs_zbranch *zroot)
 <<<<<<< HEAD
 	if (!dbg_is_chk_index(c))
 =======
+<<<<<<< HEAD
+	if (!dbg_is_chk_index(c))
+=======
 	if (!(ubifs_chk_flags & UBIFS_CHK_OLD_IDX))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	INIT_LIST_HEAD(&list);

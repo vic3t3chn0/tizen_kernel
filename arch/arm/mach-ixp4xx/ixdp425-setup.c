@@ -255,6 +255,9 @@ MACHINE_START(IXDP425, "Intel IXDP425 Development Platform")
 	/* Maintainer: MontaVista Software, Inc. */
 	.map_io		= ixp4xx_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_early	= ixp4xx_init_early,
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
@@ -264,12 +267,15 @@ MACHINE_START(IXDP425, "Intel IXDP425 Development Platform")
 	.dma_zone_size	= SZ_64M,
 #endif
 	.restart	= ixp4xx_restart,
+<<<<<<< HEAD
+=======
 =======
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
 	.boot_params	= 0x0100,
 	.init_machine	= ixdp425_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -278,6 +284,9 @@ MACHINE_START(IXDP465, "Intel IXDP465 Development Platform")
 	/* Maintainer: MontaVista Software, Inc. */
 	.map_io		= ixp4xx_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_early	= ixp4xx_init_early,
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
@@ -286,12 +295,15 @@ MACHINE_START(IXDP465, "Intel IXDP465 Development Platform")
 #if defined(CONFIG_PCI)
 	.dma_zone_size	= SZ_64M,
 #endif
+<<<<<<< HEAD
+=======
 =======
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
 	.boot_params	= 0x0100,
 	.init_machine	= ixdp425_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -300,6 +312,9 @@ MACHINE_START(IXCDP1100, "Intel IXCDP1100 Development Platform")
 	/* Maintainer: MontaVista Software, Inc. */
 	.map_io		= ixp4xx_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_early	= ixp4xx_init_early,
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
@@ -308,12 +323,15 @@ MACHINE_START(IXCDP1100, "Intel IXCDP1100 Development Platform")
 #if defined(CONFIG_PCI)
 	.dma_zone_size	= SZ_64M,
 #endif
+<<<<<<< HEAD
+=======
 =======
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
 	.boot_params	= 0x0100,
 	.init_machine	= ixdp425_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -322,6 +340,9 @@ MACHINE_START(KIXRP435, "Intel KIXRP435 Reference Platform")
 	/* Maintainer: MontaVista Software, Inc. */
 	.map_io		= ixp4xx_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_early	= ixp4xx_init_early,
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
@@ -330,11 +351,14 @@ MACHINE_START(KIXRP435, "Intel KIXRP435 Reference Platform")
 #if defined(CONFIG_PCI)
 	.dma_zone_size	= SZ_64M,
 #endif
+<<<<<<< HEAD
+=======
 =======
 	.init_irq	= ixp4xx_init_irq,
 	.timer		= &ixp4xx_timer,
 	.boot_params	= 0x0100,
 	.init_machine	= ixdp425_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif

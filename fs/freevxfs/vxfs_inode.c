@@ -188,16 +188,22 @@ vxfs_stiget(struct super_block *sbp, ino_t ino)
  *  VxFS inode structure.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __inline__ umode_t
 vxfs_transmod(struct vxfs_inode_info *vip)
 {
 	umode_t			ret = vip->vii_mode & ~VXFS_TYPE_MASK;
+<<<<<<< HEAD
+=======
 =======
 static __inline__ mode_t
 vxfs_transmod(struct vxfs_inode_info *vip)
 {
 	mode_t			ret = vip->vii_mode & ~VXFS_TYPE_MASK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (VXFS_ISFIFO(vip))
 		ret |= S_IFIFO;
@@ -237,8 +243,12 @@ vxfs_iinit(struct inode *ip, struct vxfs_inode_info *vip)
 <<<<<<< HEAD
 	set_nlink(ip, vip->vii_nlink);
 =======
+<<<<<<< HEAD
+	set_nlink(ip, vip->vii_nlink);
+=======
 	ip->i_nlink = vip->vii_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip->i_size = vip->vii_size;
 
 	ip->i_atime.tv_sec = vip->vii_atime;
@@ -353,8 +363,11 @@ static void vxfs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(vxfs_inode_cachep, inode->i_private);
 }
 

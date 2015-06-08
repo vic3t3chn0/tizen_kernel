@@ -37,10 +37,15 @@
 #include <linux/time.h>
 #include <linux/backing-dev.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <scsi/osd_ore.h>
 
 #include "common.h"
 
+<<<<<<< HEAD
+=======
 =======
 #include "common.h"
 
@@ -50,6 +55,7 @@
 #include "pnfs.h"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXOFS_ERR(fmt, a...) printk(KERN_ERR "exofs: " fmt, ##a)
 
 #ifdef CONFIG_EXOFS_DEBUG
@@ -64,10 +70,15 @@
 #define _LLU(x) (unsigned long long)(x)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct exofs_dev {
 	struct ore_dev ored;
 	unsigned did;
 };
+<<<<<<< HEAD
+=======
 =======
 struct exofs_layout {
 	osd_id		s_pid;			/* partition ID of file system*/
@@ -87,6 +98,7 @@ struct exofs_layout {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * our extension to the in-memory superblock
  */
@@ -94,7 +106,11 @@ struct exofs_sb_info {
 <<<<<<< HEAD
 	struct backing_dev_info bdi;		/* register our bdi with VFS  */
 =======
+<<<<<<< HEAD
+	struct backing_dev_info bdi;		/* register our bdi with VFS  */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct exofs_sb_stats s_ess;		/* Written often, pre-allocate*/
 	int		s_timeout;		/* timeout for OSD operations */
 	uint64_t	s_nextid;		/* highest object ID used     */
@@ -103,10 +119,15 @@ struct exofs_sb_info {
 	u32		s_next_generation;	/* next gen # to use          */
 	atomic_t	s_curr_pending;		/* number of pending commands */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct ore_layout	layout;		/* Default files layout       */
 	struct ore_comp one_comp;		/* id & cred of partition id=0*/
 	struct ore_components oc;		/* comps for the partition    */
+<<<<<<< HEAD
+=======
 =======
 	uint8_t		s_cred[OSD_CAP_LEN];	/* credential for the fscb    */
 	struct 		backing_dev_info bdi;	/* register our bdi with VFS  */
@@ -120,6 +141,7 @@ struct exofs_sb_info {
 						 * array. Keep last */
 	struct osd_dev	*_min_one_dev[1];	/* Place holder for one dev   */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -136,8 +158,13 @@ struct exofs_i_info {
 	struct ore_comp one_comp;	   /* same component for all devices  */
 	struct ore_components oc;	   /* inode view of the device table  */
 =======
+<<<<<<< HEAD
+	struct ore_comp one_comp;	   /* same component for all devices  */
+	struct ore_components oc;	   /* inode view of the device table  */
+=======
 	uint8_t        i_cred[OSD_CAP_LEN];/* all-powerful credential         */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline osd_id exofs_oi_objno(struct exofs_i_info *oi)
@@ -145,6 +172,8 @@ static inline osd_id exofs_oi_objno(struct exofs_i_info *oi)
 	return oi->vfs_inode.i_ino + EXOFS_OBJ_OFF;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 struct exofs_io_state;
@@ -194,6 +223,7 @@ static inline unsigned exofs_io_state_size(unsigned numdevs)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * our inode flags
  */
@@ -240,6 +270,8 @@ static inline struct exofs_i_info *exofs_i(struct inode *inode)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Given a layout, object_number and stripe_index return the associated global
  * dev_index
  */
@@ -247,6 +279,7 @@ unsigned exofs_layout_od_id(struct exofs_layout *layout,
 			    osd_id obj_no, unsigned layout_index);
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Maximum count of links to a file
  */
 #define EXOFS_LINK_MAX           32000
@@ -255,6 +288,10 @@ unsigned exofs_layout_od_id(struct exofs_layout *layout,
  * function declarations *
  *************************/
 
+<<<<<<< HEAD
+/* inode.c               */
+unsigned exofs_max_io_pages(struct ore_layout *layout,
+=======
 <<<<<<< HEAD
 /* inode.c               */
 unsigned exofs_max_io_pages(struct ore_layout *layout,
@@ -298,6 +335,7 @@ static inline int exofs_oi_read(struct exofs_i_info *oi,
 /* inode.c               */
 unsigned exofs_max_io_pages(struct exofs_layout *layout,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    unsigned expected_pages);
 int exofs_setattr(struct dentry *, struct iattr *);
 int exofs_write_begin(struct file *file, struct address_space *mapping,
@@ -307,8 +345,12 @@ extern struct inode *exofs_iget(struct super_block *, unsigned long);
 <<<<<<< HEAD
 struct inode *exofs_new_inode(struct inode *, umode_t);
 =======
+<<<<<<< HEAD
+struct inode *exofs_new_inode(struct inode *, umode_t);
+=======
 struct inode *exofs_new_inode(struct inode *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int exofs_write_inode(struct inode *, struct writeback_control *wbc);
 extern void exofs_evict_inode(struct inode *);
 
@@ -330,7 +372,12 @@ int exofs_set_link(struct inode *, struct exofs_dir_entry *, struct page *,
 void exofs_make_credential(u8 cred_a[OSD_CAP_LEN],
 			   const struct osd_obj_id *obj);
 =======
+<<<<<<< HEAD
+void exofs_make_credential(u8 cred_a[OSD_CAP_LEN],
+			   const struct osd_obj_id *obj);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int exofs_sbi_write_stats(struct exofs_sb_info *sbi);
 
 /*********************
@@ -347,8 +394,11 @@ extern const struct file_operations exofs_file_operations;
 extern const struct address_space_operations exofs_aops;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern const struct osd_attr g_attr_logical_length;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* namei.c           */
 extern const struct inode_operations exofs_dir_inode_operations;
@@ -359,6 +409,9 @@ extern const struct inode_operations exofs_symlink_inode_operations;
 extern const struct inode_operations exofs_fast_symlink_inode_operations;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* exofs_init_comps will initialize an ore_components device array
  * pointing to a single ore_comp struct, and a round-robin view
  * of the device table.
@@ -390,6 +443,9 @@ static inline void exofs_init_comps(struct ore_components *oc,
 	oc->ods = &sbi->oc.ods[first_dev];
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

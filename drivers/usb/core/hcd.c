@@ -337,6 +337,23 @@ static const u8 ss_rh_config_descriptor[] = {
 	0x02, 0x00   /* __le16 ss_wBytesPerInterval; 15 bits for max 15 ports */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* authorized_default behaviour:
+ * -1 is authorized for all devices except wireless (old behaviour)
+ * 0 is unauthorized for all devices
+ * 1 is authorized for all devices
+ */
+static int authorized_default = -1;
+module_param(authorized_default, int, S_IRUGO|S_IWUSR);
+MODULE_PARM_DESC(authorized_default,
+		"Default USB device authorization: 0 is not authorized, 1 is "
+		"authorized, -1 is authorized except for wireless USB (default, "
+		"old behaviour");
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-------------------------------------------------------------------------*/
 
 /**
@@ -431,7 +448,19 @@ static int rh_call_control (struct usb_hcd *hcd, struct urb *urb)
 	struct usb_ctrlrequest *cmd;
  	u16		typeReq, wValue, wIndex, wLength;
 	u8		*ubuf = urb->transfer_buffer;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * tbuf should be as big as the BOS descriptor and
+	 * the USB hub descriptor.
+	 */
+	u8		tbuf[USB_DT_BOS_SIZE + USB_DT_USB_SS_CAP_SIZE]
+=======
 	u8		tbuf [sizeof (struct usb_hub_descriptor)]
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8		tbuf [sizeof (struct usb_hub_descriptor)]
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__attribute__((aligned(4)));
 	const u8	*bufp = tbuf;
 	unsigned	len = 0;
@@ -551,6 +580,14 @@ static int rh_call_control (struct usb_hcd *hcd, struct urb *urb)
 			else /* unsupported IDs --> "protocol stall" */
 				goto error;
 			break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		case USB_DT_BOS << 8:
+			goto nongeneric;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		default:
 			goto error;
 		}
@@ -585,6 +622,13 @@ static int rh_call_control (struct usb_hcd *hcd, struct urb *urb)
 	/* CLASS REQUESTS (and errors) */
 
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+nongeneric:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* non-generic request */
 		switch (typeReq) {
 		case GetHubStatus:
@@ -594,6 +638,15 @@ static int rh_call_control (struct usb_hcd *hcd, struct urb *urb)
 		case GetHubDescriptor:
 			len = sizeof (struct usb_hub_descriptor);
 			break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		case DeviceRequest | USB_REQ_GET_DESCRIPTOR:
+			/* len is returned by hub_control */
+			break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		status = hcd->driver->hub_control (hcd,
 			typeReq, wValue, wIndex,
@@ -604,7 +657,15 @@ error:
 		status = -EPIPE;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (status < 0) {
+=======
 	if (status) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (status) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		len = 0;
 		if (status != -EPIPE) {
 			dev_dbg (hcd->self.controller,
@@ -613,6 +674,16 @@ error:
 				typeReq, wValue, wIndex,
 				wLength, status);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else if (status > 0) {
+		/* hub_control may return the length of data copied. */
+		len = status;
+		status = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (len) {
 		if (urb->transfer_buffer_length < len)
@@ -633,7 +704,15 @@ error:
 				len > offsetof(struct usb_device_descriptor,
 						bDeviceProtocol))
 			((struct usb_device_descriptor *) ubuf)->
+<<<<<<< HEAD
+<<<<<<< HEAD
+				bDeviceProtocol = USB_HUB_PR_HS_SINGLE_TT;
+=======
 					bDeviceProtocol = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					bDeviceProtocol = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* any errors get returned through the urb completion */
@@ -872,6 +951,15 @@ static void usb_bus_init (struct usb_bus *bus)
 	bus->bandwidth_isoc_reqs = 0;
 
 	INIT_LIST_HEAD (&bus->bus_list);
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_USB_OTG
+	INIT_DELAYED_WORK(&bus->hnp_polling, usb_hnp_polling_work);
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*-------------------------------------------------------------------------*/
@@ -901,6 +989,17 @@ static int usb_register_bus(struct usb_bus *bus)
 	/* Add it to the local list of buses */
 	list_add (&bus->bus_list, &usb_bus_list);
 	mutex_unlock(&usb_bus_list_lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_USB_OTG
+	/* Obvioulsy HNP is supported on B-host */
+	if (bus->is_b_host)
+		bus->hnp_support = 1;
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	usb_notify_add_bus(bus);
 
@@ -977,7 +1076,18 @@ static int register_root_hub(struct usb_hcd *hcd)
 	if (retval) {
 		dev_err (parent_dev, "can't register root hub for %s, %d\n",
 				dev_name(&usb_dev->dev), retval);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	}
+	mutex_unlock(&usb_bus_list_lock);
+
+	if (retval == 0) {
+=======
 	} else {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} else {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock_irq (&hcd_root_hub_lock);
 		hcd->rh_registered = 1;
 		spin_unlock_irq (&hcd_root_hub_lock);
@@ -986,7 +1096,14 @@ static int register_root_hub(struct usb_hcd *hcd)
 		if (HCD_DEAD(hcd))
 			usb_hc_died (hcd);	/* This time clean up */
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	mutex_unlock(&usb_bus_list_lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_unlock(&usb_bus_list_lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return retval;
 }
@@ -1141,6 +1258,11 @@ int usb_hcd_check_unlink_urb(struct usb_hcd *hcd, struct urb *urb,
 	if (urb->unlinked)
 		return -EBUSY;
 	urb->unlinked = status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* IRQ setup can easily be broken so that USB controllers
 	 * never get completion IRQs ... maybe even the ones we need to
@@ -1155,6 +1277,10 @@ int usb_hcd_check_unlink_urb(struct usb_hcd *hcd, struct urb *urb,
 			set_bit(HCD_FLAG_SAW_IRQ, &hcd->shared_hcd->flags);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL_GPL(usb_hcd_check_unlink_urb);
@@ -1452,6 +1578,14 @@ int usb_hcd_submit_urb (struct urb *urb, gfp_t mem_flags)
 	atomic_inc(&urb->use_count);
 	atomic_inc(&urb->dev->urbnum);
 	usbmon_urb_submit(&hcd->self, urb);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (hcd->driver->log_urb)
+		hcd->driver->log_urb(urb, "S", urb->status);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* NOTE requirements on root-hub callers (usbfs and the hub
 	 * driver, for now):  URBs' urb->transfer_buffer must be
@@ -1474,6 +1608,14 @@ int usb_hcd_submit_urb (struct urb *urb, gfp_t mem_flags)
 
 	if (unlikely(status)) {
 		usbmon_urb_submit_error(&hcd->self, urb, status);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (hcd->driver->log_urb)
+			hcd->driver->log_urb(urb, "E", status);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		urb->hcpriv = NULL;
 		INIT_LIST_HEAD(&urb->urb_list);
 		atomic_dec(&urb->use_count);
@@ -1576,6 +1718,14 @@ void usb_hcd_giveback_urb(struct usb_hcd *hcd, struct urb *urb, int status)
 
 	unmap_urb_for_dma(hcd, urb);
 	usbmon_urb_complete(&hcd->self, urb, status);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (hcd->driver->log_urb)
+		hcd->driver->log_urb(urb, "C", status);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_unanchor_urb(urb);
 
 	/* pass ownership to the completion handler */
@@ -1947,8 +2097,19 @@ int hcd_bus_suspend(struct usb_device *rhdev, pm_message_t msg)
 	int		status;
 	int		old_state = hcd->state;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(&rhdev->dev, "bus %ssuspend, wakeup %d\n",
+			(PMSG_IS_AUTO(msg) ? "auto-" : ""),
+			rhdev->do_remote_wakeup);
+=======
 	dev_dbg(&rhdev->dev, "bus %s%s\n",
 			(msg.event & PM_EVENT_AUTO ? "auto-" : ""), "suspend");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_dbg(&rhdev->dev, "bus %s%s\n",
+			(msg.event & PM_EVENT_AUTO ? "auto-" : ""), "suspend");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (HCD_DEAD(hcd)) {
 		dev_dbg(&rhdev->dev, "skipped %s of dead bus\n", "suspend");
 		return 0;
@@ -1964,6 +2125,24 @@ int hcd_bus_suspend(struct usb_device *rhdev, pm_message_t msg)
 	if (status == 0) {
 		usb_set_device_state(rhdev, USB_STATE_SUSPENDED);
 		hcd->state = HC_STATE_SUSPENDED;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		/* Did we race with a root-hub wakeup event? */
+		if (rhdev->do_remote_wakeup) {
+			char	buffer[6];
+
+			status = hcd->driver->hub_status_data(hcd, buffer);
+			if (status != 0) {
+				dev_dbg(&rhdev->dev, "suspend raced with wakeup event\n");
+				hcd_bus_resume(rhdev, PMSG_AUTO_RESUME);
+				status = -EBUSY;
+			}
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		spin_lock_irq(&hcd_root_hub_lock);
 		if (!HCD_DEAD(hcd)) {
@@ -1983,8 +2162,18 @@ int hcd_bus_resume(struct usb_device *rhdev, pm_message_t msg)
 	int		status;
 	int		old_state = hcd->state;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(&rhdev->dev, "usb %sresume\n",
+			(PMSG_IS_AUTO(msg) ? "auto-" : ""));
+=======
 	dev_dbg(&rhdev->dev, "usb %s%s\n",
 			(msg.event & PM_EVENT_AUTO ? "auto-" : ""), "resume");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_dbg(&rhdev->dev, "usb %s%s\n",
+			(msg.event & PM_EVENT_AUTO ? "auto-" : ""), "resume");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (HCD_DEAD(hcd)) {
 		dev_dbg(&rhdev->dev, "skipped %s of dead bus\n", "resume");
 		return 0;
@@ -2119,6 +2308,17 @@ irqreturn_t usb_hcd_irq (int irq, void *__hcd)
 	 */
 	local_irq_save(flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (unlikely(HCD_DEAD(hcd) || !HCD_HW_ACCESSIBLE(hcd)))
+		rc = IRQ_NONE;
+	else if (hcd->driver->irq(hcd) == IRQ_NONE)
+		rc = IRQ_NONE;
+	else
+		rc = IRQ_HANDLED;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(HCD_DEAD(hcd) || !HCD_HW_ACCESSIBLE(hcd))) {
 		rc = IRQ_NONE;
 	} else if (hcd->driver->irq(hcd) == IRQ_NONE) {
@@ -2129,6 +2329,10 @@ irqreturn_t usb_hcd_irq (int irq, void *__hcd)
 			set_bit(HCD_FLAG_SAW_IRQ, &hcd->shared_hcd->flags);
 		rc = IRQ_HANDLED;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	local_irq_restore(flags);
 	return rc;
@@ -2342,7 +2546,15 @@ static int usb_hcd_request_irqs(struct usb_hcd *hcd,
 					"io mem" : "io base",
 					(unsigned long long)hcd->rsrc_start);
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		hcd->irq = 0;
+=======
 		hcd->irq = -1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		hcd->irq = -1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (hcd->rsrc_start)
 			dev_info(hcd->self.controller, "%s 0x%08llx\n",
 					(hcd->driver->flags & HCD_MEMORY) ?
@@ -2370,7 +2582,19 @@ int usb_add_hcd(struct usb_hcd *hcd,
 
 	dev_info(hcd->self.controller, "%s\n", hcd->product_desc);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Keep old behaviour if authorized_default is not in [0, 1]. */
+	if (authorized_default < 0 || authorized_default > 1)
+		hcd->authorized_default = hcd->wireless? 0 : 1;
+	else
+		hcd->authorized_default = authorized_default;
+=======
 	hcd->authorized_default = hcd->wireless? 0 : 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hcd->authorized_default = hcd->wireless? 0 : 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
 
 	/* HC is in reset state, but accessible.  Now do the one-time init,
@@ -2411,7 +2635,15 @@ int usb_add_hcd(struct usb_hcd *hcd,
 	 * but drivers can override it in reset() if needed, along with
 	 * recording the overall controller's system wakeup capability.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	device_set_wakeup_capable(&rhdev->dev, 1);
+=======
 	device_init_wakeup(&rhdev->dev, 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	device_init_wakeup(&rhdev->dev, 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* HCD_FLAG_RH_RUNNING doesn't matter until the root hub is
 	 * registered.  But since the controller can die at any time,
@@ -2462,6 +2694,19 @@ int usb_add_hcd(struct usb_hcd *hcd,
 	}
 	if (hcd->uses_new_polling && HCD_POLL_RH(hcd))
 		usb_hcd_poll_rh_status(hcd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/*
+	 * Host controllers don't generate their own wakeup requests;
+	 * they only forward requests from the root hub.  Therefore
+	 * controllers should always be enabled for remote wakeup.
+	 */
+	device_wakeup_enable(hcd->self.controller);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 
 error_create_attr_group:
@@ -2487,7 +2732,15 @@ err_register_root_hub:
 	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
 	del_timer_sync(&hcd->rh_timer);
 err_hcd_driver_start:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (usb_hcd_is_primary_hcd(hcd) && hcd->irq > 0)
+=======
 	if (usb_hcd_is_primary_hcd(hcd) && hcd->irq >= 0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (usb_hcd_is_primary_hcd(hcd) && hcd->irq >= 0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_irq(irqnum, hcd);
 err_request_irq:
 err_hcd_driver_setup:
@@ -2552,7 +2805,15 @@ void usb_remove_hcd(struct usb_hcd *hcd)
 	del_timer_sync(&hcd->rh_timer);
 
 	if (usb_hcd_is_primary_hcd(hcd)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (hcd->irq > 0)
+=======
 		if (hcd->irq >= 0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (hcd->irq >= 0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free_irq(hcd->irq, hcd);
 	}
 

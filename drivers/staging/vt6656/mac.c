@@ -133,10 +133,22 @@ void MACvWriteMultiAddr(PSDevice pDevice, unsigned int uByteIdx, BYTE byData)
  *  Out:
  *      none
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ */
+void MACbShutdown(PSDevice pDevice)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Return Value: TRUE if success; otherwise FALSE
  *
  */
 BOOL MACbShutdown (PSDevice pDevice)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
     CONTROLnsRequestOutAsyn(pDevice,
                         MESSAGE_TYPE_MACSHUTDOWN,
@@ -145,7 +157,14 @@ BOOL MACbShutdown (PSDevice pDevice)
                         0,
                         NULL
                         );
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     return TRUE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    return TRUE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void MACvSetBBType(PSDevice pDevice,BYTE byType)
@@ -262,8 +281,17 @@ BYTE            pbyData[24];
     dwData1 <<= 16;
     dwData1 |= MAKEWORD(*(pbyAddr+4), *(pbyAddr+5));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO"1. wOffset: %d, Data: %lX, KeyCtl:%X\n", wOffset, dwData1, wKeyCtl);
+=======
 	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO"1. wOffset: %d, Data: %X,"\
 		" KeyCtl:%X\n", wOffset, dwData1, wKeyCtl);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO"1. wOffset: %d, Data: %X,"\
+		" KeyCtl:%X\n", wOffset, dwData1, wKeyCtl);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     //VNSvOutPortW(dwIoBase + MAC_REG_MISCFFNDEX, wOffset);
     //VNSvOutPortD(dwIoBase + MAC_REG_MISCFFDATA, dwData);
@@ -280,8 +308,17 @@ BYTE            pbyData[24];
     dwData2 <<= 8;
     dwData2 |= *(pbyAddr+0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO"2. wOffset: %d, Data: %lX\n", wOffset, dwData2);
+=======
 	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO"2. wOffset: %d, Data: %X\n",
 		wOffset, dwData2);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO"2. wOffset: %d, Data: %X\n",
+		wOffset, dwData2);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     //VNSvOutPortW(dwIoBase + MAC_REG_MISCFFNDEX, wOffset);
     //VNSvOutPortD(dwIoBase + MAC_REG_MISCFFDATA, dwData);

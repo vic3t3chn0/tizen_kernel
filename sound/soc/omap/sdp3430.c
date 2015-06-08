@@ -40,8 +40,13 @@
 #include <linux/mfd/twl4030-audio.h>
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/mfd/twl4030-audio.h>
+#include <linux/module.h>
+=======
 #include <linux/mfd/twl4030-codec.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "omap-mcbsp.h"
 #include "omap-pcm.h"
@@ -58,6 +63,10 @@ static int sdp3430_hw_params(struct snd_pcm_substream *substream,
 {
 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
+<<<<<<< HEAD
+	int ret;
+
+=======
 <<<<<<< HEAD
 	int ret;
 
@@ -86,6 +95,7 @@ static int sdp3430_hw_params(struct snd_pcm_substream *substream,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set the codec system clock for DAC and ADC */
 	ret = snd_soc_dai_set_sysclk(codec_dai, 0, 26000000,
 					    SND_SOC_CLOCK_IN);
@@ -101,6 +111,8 @@ static struct snd_soc_ops sdp3430_ops = {
 	.hw_params = sdp3430_hw_params,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int sdp3430_hw_voice_params(struct snd_pcm_substream *substream,
@@ -147,6 +159,7 @@ static struct snd_soc_ops sdp3430_voice_ops = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Headset jack */
 static struct snd_soc_jack hs_jack;
 
@@ -208,6 +221,8 @@ static int sdp3430_twl4030_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Add SDP3430 specific widgets */
 	ret = snd_soc_dapm_new_controls(dapm, sdp3430_twl4030_dapm_widgets,
 				ARRAY_SIZE(sdp3430_twl4030_dapm_widgets));
@@ -218,6 +233,7 @@ static int sdp3430_twl4030_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_add_routes(dapm, audio_map, ARRAY_SIZE(audio_map));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SDP3430 connected pins */
 	snd_soc_dapm_enable_pin(dapm, "Ext Mic");
 	snd_soc_dapm_enable_pin(dapm, "Ext Spk");
@@ -241,11 +257,14 @@ static int sdp3430_twl4030_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ret = snd_soc_dapm_sync(dapm);
 	if (ret)
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Headset jack detection */
 	ret = snd_soc_jack_new(codec, "Headset Jack",
 				SND_JACK_HEADSET, &hs_jack);
@@ -283,18 +302,24 @@ static struct snd_soc_dai_link sdp3430_dai[] = {
 		.name = "TWL4030 I2S",
 		.stream_name = "TWL4030 Audio",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.cpu_dai_name = "omap-mcbsp.2",
 		.codec_dai_name = "twl4030-hifi",
 		.platform_name = "omap-pcm-audio",
 		.codec_name = "twl4030-codec",
 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
 			   SND_SOC_DAIFMT_CBM_CFM,
+<<<<<<< HEAD
+=======
 =======
 		.cpu_dai_name = "omap-mcbsp-dai.1",
 		.codec_dai_name = "twl4030-hifi",
 		.platform_name = "omap-pcm-audio",
 		.codec_name = "twl4030-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.init = sdp3430_twl4030_init,
 		.ops = &sdp3430_ops,
 	},
@@ -302,6 +327,9 @@ static struct snd_soc_dai_link sdp3430_dai[] = {
 		.name = "TWL4030 PCM",
 		.stream_name = "TWL4030 Voice",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.cpu_dai_name = "omap-mcbsp.3",
 		.codec_dai_name = "twl4030-voice",
 		.platform_name = "omap-pcm-audio",
@@ -310,6 +338,8 @@ static struct snd_soc_dai_link sdp3430_dai[] = {
 			   SND_SOC_DAIFMT_CBM_CFM,
 		.init = sdp3430_twl4030_voice_init,
 		.ops = &sdp3430_ops,
+<<<<<<< HEAD
+=======
 =======
 		.cpu_dai_name = "omap-mcbsp-dai.2",
 		.codec_dai_name = "twl4030-voice",
@@ -318,6 +348,7 @@ static struct snd_soc_dai_link sdp3430_dai[] = {
 		.init = sdp3430_twl4030_voice_init,
 		.ops = &sdp3430_voice_ops,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -325,6 +356,9 @@ static struct snd_soc_dai_link sdp3430_dai[] = {
 static struct snd_soc_card snd_soc_sdp3430 = {
 	.name = "SDP3430",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner = THIS_MODULE,
 	.dai_link = sdp3430_dai,
 	.num_links = ARRAY_SIZE(sdp3430_dai),
@@ -333,10 +367,13 @@ static struct snd_soc_card snd_soc_sdp3430 = {
 	.num_dapm_widgets = ARRAY_SIZE(sdp3430_twl4030_dapm_widgets),
 	.dapm_routes = audio_map,
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link = sdp3430_dai,
 	.num_links = ARRAY_SIZE(sdp3430_dai),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *sdp3430_snd_device;

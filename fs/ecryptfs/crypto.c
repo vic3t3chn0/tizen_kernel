@@ -930,8 +930,12 @@ static void ecryptfs_set_default_crypt_stat_vals(
 <<<<<<< HEAD
  * @ecryptfs_inode: The eCryptfs inode
 =======
+<<<<<<< HEAD
+ * @ecryptfs_inode: The eCryptfs inode
+=======
  * @ecryptfs_dentry: The eCryptfs dentry
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * If the crypto context for the file has not yet been established,
  * this is where we do that.  Establishing a new crypto context
@@ -949,6 +953,9 @@ static void ecryptfs_set_default_crypt_stat_vals(
  * Returns zero on success; non-zero otherwise
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ecryptfs_new_file_context(struct inode *ecryptfs_inode)
 {
 	struct ecryptfs_crypt_stat *crypt_stat =
@@ -956,6 +963,8 @@ int ecryptfs_new_file_context(struct inode *ecryptfs_inode)
 	struct ecryptfs_mount_crypt_stat *mount_crypt_stat =
 	    &ecryptfs_superblock_to_private(
 		    ecryptfs_inode->i_sb)->mount_crypt_stat;
+<<<<<<< HEAD
+=======
 =======
 int ecryptfs_new_file_context(struct dentry *ecryptfs_dentry)
 {
@@ -965,6 +974,7 @@ int ecryptfs_new_file_context(struct dentry *ecryptfs_dentry)
 	    &ecryptfs_superblock_to_private(
 		    ecryptfs_dentry->d_sb)->mount_crypt_stat;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int cipher_name_len;
 	int rc = 0;
 
@@ -1276,8 +1286,12 @@ static int
 <<<<<<< HEAD
 ecryptfs_write_metadata_to_contents(struct inode *ecryptfs_inode,
 =======
+<<<<<<< HEAD
+ecryptfs_write_metadata_to_contents(struct inode *ecryptfs_inode,
+=======
 ecryptfs_write_metadata_to_contents(struct dentry *ecryptfs_dentry,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    char *virt, size_t virt_len)
 {
 	int rc;
@@ -1285,8 +1299,12 @@ ecryptfs_write_metadata_to_contents(struct dentry *ecryptfs_dentry,
 <<<<<<< HEAD
 	rc = ecryptfs_write_lower(ecryptfs_inode, virt,
 =======
+<<<<<<< HEAD
+	rc = ecryptfs_write_lower(ecryptfs_inode, virt,
+=======
 	rc = ecryptfs_write_lower(ecryptfs_dentry->d_inode, virt,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  0, virt_len);
 	if (rc < 0)
 		printk(KERN_ERR "%s: Error attempting to write header "
@@ -1324,8 +1342,13 @@ static unsigned long ecryptfs_get_zeroed_pages(gfp_t gfp_mask,
  * @ecryptfs_dentry: The eCryptfs dentry, which should be negative
  * @ecryptfs_inode: The newly created eCryptfs inode
 =======
+<<<<<<< HEAD
+ * @ecryptfs_dentry: The eCryptfs dentry, which should be negative
+ * @ecryptfs_inode: The newly created eCryptfs inode
+=======
  * @ecryptfs_dentry: The eCryptfs dentry
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Write the file headers out.  This will likely involve a userspace
  * callout, in which the session key is encrypted with one or more
@@ -1336,17 +1359,23 @@ static unsigned long ecryptfs_get_zeroed_pages(gfp_t gfp_mask,
  * Returns zero on success; non-zero on error
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ecryptfs_write_metadata(struct dentry *ecryptfs_dentry,
 			    struct inode *ecryptfs_inode)
 {
 	struct ecryptfs_crypt_stat *crypt_stat =
 		&ecryptfs_inode_to_private(ecryptfs_inode)->crypt_stat;
+<<<<<<< HEAD
+=======
 =======
 int ecryptfs_write_metadata(struct dentry *ecryptfs_dentry)
 {
 	struct ecryptfs_crypt_stat *crypt_stat =
 		&ecryptfs_inode_to_private(ecryptfs_dentry->d_inode)->crypt_stat;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int order;
 	char *virt;
 	size_t virt_len;
@@ -1389,8 +1418,12 @@ int ecryptfs_write_metadata(struct dentry *ecryptfs_dentry)
 <<<<<<< HEAD
 		rc = ecryptfs_write_metadata_to_contents(ecryptfs_inode, virt,
 =======
+<<<<<<< HEAD
+		rc = ecryptfs_write_metadata_to_contents(ecryptfs_inode, virt,
+=======
 		rc = ecryptfs_write_metadata_to_contents(ecryptfs_dentry, virt,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							 virt_len);
 	if (rc) {
 		printk(KERN_ERR "%s: Error writing metadata out to lower file; "
@@ -1591,9 +1624,14 @@ int ecryptfs_read_metadata(struct dentry *ecryptfs_dentry)
 	int rc;
 	char *page_virt;
 =======
+<<<<<<< HEAD
+	int rc;
+	char *page_virt;
+=======
 	int rc = 0;
 	char *page_virt = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *ecryptfs_inode = ecryptfs_dentry->d_inode;
 	struct ecryptfs_crypt_stat *crypt_stat =
 	    &ecryptfs_inode_to_private(ecryptfs_inode)->crypt_stat;
@@ -1621,7 +1659,11 @@ int ecryptfs_read_metadata(struct dentry *ecryptfs_dentry)
 <<<<<<< HEAD
 		/* metadata is not in the file header, so try xattrs */
 =======
+<<<<<<< HEAD
+		/* metadata is not in the file header, so try xattrs */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memset(page_virt, 0, PAGE_CACHE_SIZE);
 		rc = ecryptfs_read_xattr_region(page_virt, ecryptfs_inode);
 		if (rc) {
@@ -2036,6 +2078,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static size_t ecryptfs_max_decoded_size(size_t encoded_size)
 {
 	/* Not exact; conservatively long. Every block of 4
@@ -2047,8 +2092,11 @@ static size_t ecryptfs_max_decoded_size(size_t encoded_size)
 	return ((encoded_size + 1) * 3) / 4;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * ecryptfs_decode_from_filename
  * @dst: If NULL, this function only sets @dst_size and returns. If
@@ -2070,6 +2118,9 @@ ecryptfs_decode_from_filename(unsigned char *dst, size_t *dst_size,
 <<<<<<< HEAD
 		(*dst_size) = ecryptfs_max_decoded_size(src_size);
 =======
+<<<<<<< HEAD
+		(*dst_size) = ecryptfs_max_decoded_size(src_size);
+=======
 		/* Not exact; conservatively long. Every block of 4
 		 * encoded characters decodes into a block of 3
 		 * decoded characters. This segment of code provides
@@ -2078,6 +2129,7 @@ ecryptfs_decode_from_filename(unsigned char *dst, size_t *dst_size,
 		 * subsequent call. */
 		(*dst_size) = (((src_size + 1) * 3) / 4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 	while (src_byte_offset < src_size) {
@@ -2303,6 +2355,9 @@ out:
 	return rc;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ENC_NAME_MAX_BLOCKLEN_8_OR_16	143
 
@@ -2352,5 +2407,8 @@ int ecryptfs_set_f_namelen(long *namelen, long lower_namelen,
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

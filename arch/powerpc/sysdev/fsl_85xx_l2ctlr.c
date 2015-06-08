@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/of_platform.h>
 #include <asm/io.h>
 
@@ -209,7 +213,13 @@ static struct of_device_id mpc85xx_l2ctlr_of_match[] = {
 		.compatible = "fsl,mpc8548-l2-cache-controller",
 	},
 =======
+<<<<<<< HEAD
+	{
+		.compatible = "fsl,mpc8548-l2-cache-controller",
+	},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{},
 };
 

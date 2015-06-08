@@ -11,8 +11,21 @@
 #include <linux/blkdev.h>
 #include <linux/slab.h>
 #include <linux/types.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+#include <linux/usb.h>
+#include <linux/usb/hcd.h>
+#include <linux/usb/storage.h>
+#include <linux/usb/uas.h>
+=======
 #include <linux/usb.h>
 #include <linux/usb/storage.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/usb.h>
+#include <linux/usb/storage.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <scsi/scsi.h>
 #include <scsi/scsi_dbg.h>
@@ -21,6 +34,11 @@
 #include <scsi/scsi_host.h>
 #include <scsi/scsi_tcq.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Common header for all IUs */
 struct iu {
 	__u8 iu_id;
@@ -64,6 +82,10 @@ struct sense_iu {
 	__u8 sense[SCSI_SENSE_BUFFERSIZE];
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The r00-r01c specs define this version of the SENSE IU data structure.
  * It's still in use by several different firmware releases.
@@ -78,6 +100,11 @@ struct sense_iu_old {
 	__u8 sense[SCSI_SENSE_BUFFERSIZE];
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	CMD_PIPE_ID		= 1,
 	STATUS_PIPE_ID		= 2,
@@ -90,6 +117,10 @@ enum {
 	UAS_ACA			= 4,
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct uas_dev_info {
 	struct usb_interface *intf;
 	struct usb_device *udev;
@@ -97,6 +128,14 @@ struct uas_dev_info {
 	unsigned cmd_pipe, status_pipe, data_in_pipe, data_out_pipe;
 	unsigned use_streams:1;
 	unsigned uas_sense_old:1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct scsi_cmnd *cmnd;
+	struct urb *status_urb; /* used only if stream support is available */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum {
@@ -108,6 +147,15 @@ enum {
 	SUBMIT_DATA_OUT_URB	= (1 << 5),
 	ALLOC_CMD_URB		= (1 << 6),
 	SUBMIT_CMD_URB		= (1 << 7),
+<<<<<<< HEAD
+<<<<<<< HEAD
+	COMPLETED_DATA_IN	= (1 << 8),
+	COMPLETED_DATA_OUT	= (1 << 9),
+	DATA_COMPLETES_CMD	= (1 << 10),
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Overrides scsi_pointer */
@@ -115,6 +163,13 @@ struct uas_cmd_info {
 	unsigned int state;
 	unsigned int stream;
 	struct urb *cmd_urb;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* status_urb is used only if stream support isn't available */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct urb *status_urb;
 	struct urb *data_in_urb;
 	struct urb *data_out_urb;
@@ -124,19 +179,59 @@ struct uas_cmd_info {
 /* I hate forward declarations, but I actually have a loop */
 static int uas_submit_urbs(struct scsi_cmnd *cmnd,
 				struct uas_dev_info *devinfo, gfp_t gfp);
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void uas_do_work(struct work_struct *work);
 
+static DECLARE_WORK(uas_work, uas_do_work);
+=======
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_SPINLOCK(uas_work_lock);
 static LIST_HEAD(uas_work_list);
 
 static void uas_do_work(struct work_struct *work)
 {
 	struct uas_cmd_info *cmdinfo;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct uas_cmd_info *temp;
 	struct list_head list;
+	int err;
+=======
+	struct list_head list;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct list_head list;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irq(&uas_work_lock);
 	list_replace_init(&uas_work_list, &list);
 	spin_unlock_irq(&uas_work_lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	list_for_each_entry_safe(cmdinfo, temp, &list, list) {
+		struct scsi_pointer *scp = (void *)cmdinfo;
+		struct scsi_cmnd *cmnd = container_of(scp,
+							struct scsi_cmnd, SCp);
+		err = uas_submit_urbs(cmnd, cmnd->device->hostdata, GFP_NOIO);
+		if (err) {
+			list_del(&cmdinfo->list);
+			spin_lock_irq(&uas_work_lock);
+			list_add_tail(&cmdinfo->list, &uas_work_list);
+			spin_unlock_irq(&uas_work_lock);
+			schedule_work(&uas_work);
+		}
+	}
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(cmdinfo, &list, list) {
 		struct scsi_pointer *scp = (void *)cmdinfo;
 		struct scsi_cmnd *cmnd = container_of(scp,
@@ -147,10 +242,21 @@ static void uas_do_work(struct work_struct *work)
 
 static DECLARE_WORK(uas_work, uas_do_work);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void uas_sense(struct urb *urb, struct scsi_cmnd *cmnd)
 {
 	struct sense_iu *sense_iu = urb->transfer_buffer;
 	struct scsi_device *sdev = cmnd->device;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct uas_cmd_info *cmdinfo = (void *)&cmnd->SCp;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (urb->actual_length > 16) {
 		unsigned len = be16_to_cpup(&sense_iu->len);
@@ -168,16 +274,34 @@ static void uas_sense(struct urb *urb, struct scsi_cmnd *cmnd)
 	}
 
 	cmnd->result = sense_iu->status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!(cmdinfo->state & DATA_COMPLETES_CMD))
+		cmnd->scsi_done(cmnd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sdev->current_cmnd)
 		sdev->current_cmnd = NULL;
 	cmnd->scsi_done(cmnd);
 	usb_free_urb(urb);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void uas_sense_old(struct urb *urb, struct scsi_cmnd *cmnd)
 {
 	struct sense_iu_old *sense_iu = urb->transfer_buffer;
 	struct scsi_device *sdev = cmnd->device;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct uas_cmd_info *cmdinfo = (void *)&cmnd->SCp;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (urb->actual_length > 8) {
 		unsigned len = be16_to_cpup(&sense_iu->len) - 2;
@@ -195,10 +319,21 @@ static void uas_sense_old(struct urb *urb, struct scsi_cmnd *cmnd)
 	}
 
 	cmnd->result = sense_iu->status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!(cmdinfo->state & DATA_COMPLETES_CMD))
+		cmnd->scsi_done(cmnd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sdev->current_cmnd)
 		sdev->current_cmnd = NULL;
 	cmnd->scsi_done(cmnd);
 	usb_free_urb(urb);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void uas_xfer_data(struct urb *urb, struct scsi_cmnd *cmnd,
@@ -207,7 +342,15 @@ static void uas_xfer_data(struct urb *urb, struct scsi_cmnd *cmnd,
 	struct uas_cmd_info *cmdinfo = (void *)&cmnd->SCp;
 	int err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cmdinfo->state = direction;
+=======
 	cmdinfo->state = direction | SUBMIT_STATUS_URB;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cmdinfo->state = direction | SUBMIT_STATUS_URB;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = uas_submit_urbs(cmnd, cmnd->device->hostdata, GFP_ATOMIC);
 	if (err) {
 		spin_lock(&uas_work_lock);
@@ -220,6 +363,22 @@ static void uas_xfer_data(struct urb *urb, struct scsi_cmnd *cmnd,
 static void uas_stat_cmplt(struct urb *urb)
 {
 	struct iu *iu = urb->transfer_buffer;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct Scsi_Host *shost = urb->context;
+	struct uas_dev_info *devinfo = (void *)shost->hostdata[0];
+	struct scsi_cmnd *cmnd;
+	struct uas_cmd_info *cmdinfo;
+	u16 tag;
+	int ret;
+
+	if (urb->status) {
+		dev_err(&urb->dev->dev, "URB BAD STATUS %d\n", urb->status);
+		if (devinfo->use_streams)
+			usb_free_urb(urb);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct scsi_device *sdev = urb->context;
 	struct uas_dev_info *devinfo = sdev->hostdata;
 	struct scsi_cmnd *cmnd;
@@ -228,10 +387,59 @@ static void uas_stat_cmplt(struct urb *urb)
 	if (urb->status) {
 		dev_err(&urb->dev->dev, "URB BAD STATUS %d\n", urb->status);
 		usb_free_urb(urb);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
 	tag = be16_to_cpup(&iu->tag) - 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (tag == 0)
+		cmnd = devinfo->cmnd;
+	else
+		cmnd = scsi_host_find_tag(shost, tag - 1);
+	if (!cmnd) {
+		if (devinfo->use_streams) {
+			usb_free_urb(urb);
+			return;
+		}
+		ret = usb_submit_urb(urb, GFP_ATOMIC);
+		if (ret)
+			dev_err(&urb->dev->dev, "failed submit status urb\n");
+		return;
+	}
+	cmdinfo = (void *)&cmnd->SCp;
+
+	switch (iu->iu_id) {
+	case IU_ID_STATUS:
+		if (devinfo->cmnd == cmnd)
+			devinfo->cmnd = NULL;
+
+		if (!(cmdinfo->state & COMPLETED_DATA_IN) &&
+				cmdinfo->data_in_urb) {
+		       if (devinfo->use_streams) {
+			       cmdinfo->state |= DATA_COMPLETES_CMD;
+			       usb_unlink_urb(cmdinfo->data_in_urb);
+		       } else {
+			       usb_free_urb(cmdinfo->data_in_urb);
+		       }
+		}
+		if (!(cmdinfo->state & COMPLETED_DATA_OUT) &&
+				cmdinfo->data_out_urb) {
+			if (devinfo->use_streams) {
+				cmdinfo->state |= DATA_COMPLETES_CMD;
+				usb_unlink_urb(cmdinfo->data_in_urb);
+			} else {
+				usb_free_urb(cmdinfo->data_out_urb);
+			}
+		}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sdev->current_cmnd)
 		cmnd = sdev->current_cmnd;
 	else
@@ -241,6 +449,10 @@ static void uas_stat_cmplt(struct urb *urb)
 
 	switch (iu->iu_id) {
 	case IU_ID_STATUS:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (urb->actual_length < 16)
 			devinfo->uas_sense_old = 1;
 		if (devinfo->uas_sense_old)
@@ -258,6 +470,75 @@ static void uas_stat_cmplt(struct urb *urb)
 		scmd_printk(KERN_ERR, cmnd,
 			"Bogus IU (%d) received on status pipe\n", iu->iu_id);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (devinfo->use_streams) {
+		usb_free_urb(urb);
+		return;
+	}
+
+	ret = usb_submit_urb(urb, GFP_ATOMIC);
+	if (ret)
+		dev_err(&urb->dev->dev, "failed submit status urb\n");
+}
+
+static void uas_data_out_cmplt(struct urb *urb)
+{
+	struct scsi_cmnd *cmnd = urb->context;
+	struct scsi_data_buffer *sdb = scsi_out(cmnd);
+	struct uas_cmd_info *cmdinfo = (void *)&cmnd->SCp;
+
+	cmdinfo->state |= COMPLETED_DATA_OUT;
+
+	sdb->resid = sdb->length - urb->actual_length;
+	usb_free_urb(urb);
+
+	if (cmdinfo->state & DATA_COMPLETES_CMD)
+		cmnd->scsi_done(cmnd);
+}
+
+static void uas_data_in_cmplt(struct urb *urb)
+{
+	struct scsi_cmnd *cmnd = urb->context;
+	struct scsi_data_buffer *sdb = scsi_in(cmnd);
+	struct uas_cmd_info *cmdinfo = (void *)&cmnd->SCp;
+
+	cmdinfo->state |= COMPLETED_DATA_IN;
+
+	sdb->resid = sdb->length - urb->actual_length;
+	usb_free_urb(urb);
+
+	if (cmdinfo->state & DATA_COMPLETES_CMD)
+		cmnd->scsi_done(cmnd);
+}
+
+static struct urb *uas_alloc_data_urb(struct uas_dev_info *devinfo, gfp_t gfp,
+		unsigned int pipe, struct scsi_cmnd *cmnd,
+		enum dma_data_direction dir)
+{
+	struct uas_cmd_info *cmdinfo = (void *)&cmnd->SCp;
+	struct usb_device *udev = devinfo->udev;
+	struct urb *urb = usb_alloc_urb(0, gfp);
+	struct scsi_data_buffer *sdb;
+	usb_complete_t complete_fn;
+	u16 stream_id = cmdinfo->stream;
+
+	if (!urb)
+		goto out;
+	if (dir == DMA_FROM_DEVICE) {
+		sdb = scsi_in(cmnd);
+		complete_fn = uas_data_in_cmplt;
+	} else {
+		sdb = scsi_out(cmnd);
+		complete_fn = uas_data_out_cmplt;
+	}
+	usb_fill_bulk_urb(urb, udev, pipe, NULL, sdb->length,
+			complete_fn, cmnd);
+	urb->stream_id = stream_id;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void uas_data_cmplt(struct urb *urb)
@@ -281,6 +562,10 @@ static struct urb *uas_alloc_data_urb(struct uas_dev_info *devinfo, gfp_t gfp,
 									sdb);
 	if (devinfo->use_streams)
 		urb->stream_id = stream_id;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	urb->num_sgs = udev->bus->sg_tablesize ? sdb->table.nents : 0;
 	urb->sg = sdb->table.sgl;
  out:
@@ -288,7 +573,15 @@ static struct urb *uas_alloc_data_urb(struct uas_dev_info *devinfo, gfp_t gfp,
 }
 
 static struct urb *uas_alloc_sense_urb(struct uas_dev_info *devinfo, gfp_t gfp,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct Scsi_Host *shost, u16 stream_id)
+=======
 					struct scsi_cmnd *cmnd, u16 stream_id)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					struct scsi_cmnd *cmnd, u16 stream_id)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct usb_device *udev = devinfo->udev;
 	struct urb *urb = usb_alloc_urb(0, gfp);
@@ -302,7 +595,15 @@ static struct urb *uas_alloc_sense_urb(struct uas_dev_info *devinfo, gfp_t gfp,
 		goto free;
 
 	usb_fill_bulk_urb(urb, udev, devinfo->status_pipe, iu, sizeof(*iu),
+<<<<<<< HEAD
+<<<<<<< HEAD
+						uas_stat_cmplt, shost);
+=======
 						uas_stat_cmplt, cmnd->device);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						uas_stat_cmplt, cmnd->device);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	urb->stream_id = stream_id;
 	urb->transfer_flags |= URB_FREE_BUFFER;
  out:
@@ -333,7 +634,18 @@ static struct urb *uas_alloc_cmd_urb(struct uas_dev_info *devinfo, gfp_t gfp,
 		goto free;
 
 	iu->iu_id = IU_ID_COMMAND;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (blk_rq_tagged(cmnd->request))
+		iu->tag = cpu_to_be16(cmnd->request->tag + 2);
+	else
+		iu->tag = cpu_to_be16(1);
+=======
 	iu->tag = cpu_to_be16(stream_id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	iu->tag = cpu_to_be16(stream_id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iu->prio_attr = UAS_SIMPLE_TAG;
 	iu->len = len;
 	int_to_scsilun(sdev->lun, &iu->lun);
@@ -361,8 +673,18 @@ static int uas_submit_urbs(struct scsi_cmnd *cmnd,
 	struct uas_cmd_info *cmdinfo = (void *)&cmnd->SCp;
 
 	if (cmdinfo->state & ALLOC_STATUS_URB) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		cmdinfo->status_urb = uas_alloc_sense_urb(devinfo, gfp,
+				cmnd->device->host, cmdinfo->stream);
+=======
 		cmdinfo->status_urb = uas_alloc_sense_urb(devinfo, gfp, cmnd,
 							  cmdinfo->stream);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		cmdinfo->status_urb = uas_alloc_sense_urb(devinfo, gfp, cmnd,
+							  cmdinfo->stream);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!cmdinfo->status_urb)
 			return SCSI_MLQUEUE_DEVICE_BUSY;
 		cmdinfo->state &= ~ALLOC_STATUS_URB;
@@ -379,8 +701,18 @@ static int uas_submit_urbs(struct scsi_cmnd *cmnd,
 
 	if (cmdinfo->state & ALLOC_DATA_IN_URB) {
 		cmdinfo->data_in_urb = uas_alloc_data_urb(devinfo, gfp,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					devinfo->data_in_pipe, cmnd,
+					DMA_FROM_DEVICE);
+=======
 					devinfo->data_in_pipe, cmdinfo->stream,
 					scsi_in(cmnd), DMA_FROM_DEVICE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					devinfo->data_in_pipe, cmdinfo->stream,
+					scsi_in(cmnd), DMA_FROM_DEVICE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!cmdinfo->data_in_urb)
 			return SCSI_MLQUEUE_DEVICE_BUSY;
 		cmdinfo->state &= ~ALLOC_DATA_IN_URB;
@@ -397,8 +729,18 @@ static int uas_submit_urbs(struct scsi_cmnd *cmnd,
 
 	if (cmdinfo->state & ALLOC_DATA_OUT_URB) {
 		cmdinfo->data_out_urb = uas_alloc_data_urb(devinfo, gfp,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					devinfo->data_out_pipe, cmnd,
+					DMA_TO_DEVICE);
+=======
 					devinfo->data_out_pipe, cmdinfo->stream,
 					scsi_out(cmnd), DMA_TO_DEVICE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					devinfo->data_out_pipe, cmdinfo->stream,
+					scsi_out(cmnd), DMA_TO_DEVICE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!cmdinfo->data_out_urb)
 			return SCSI_MLQUEUE_DEVICE_BUSY;
 		cmdinfo->state &= ~ALLOC_DATA_OUT_URB;
@@ -443,6 +785,18 @@ static int uas_queuecommand_lck(struct scsi_cmnd *cmnd,
 
 	BUILD_BUG_ON(sizeof(struct uas_cmd_info) > sizeof(struct scsi_pointer));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (devinfo->cmnd)
+		return SCSI_MLQUEUE_DEVICE_BUSY;
+
+	if (blk_rq_tagged(cmnd->request)) {
+		cmdinfo->stream = cmnd->request->tag + 2;
+	} else {
+		devinfo->cmnd = cmnd;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cmdinfo->status_urb && sdev->current_cmnd)
 		return SCSI_MLQUEUE_DEVICE_BUSY;
 
@@ -450,6 +804,10 @@ static int uas_queuecommand_lck(struct scsi_cmnd *cmnd,
 		cmdinfo->stream = cmnd->request->tag + 1;
 	} else {
 		sdev->current_cmnd = cmnd;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cmdinfo->stream = 1;
 	}
 
@@ -471,7 +829,16 @@ static int uas_queuecommand_lck(struct scsi_cmnd *cmnd,
 	}
 
 	if (!devinfo->use_streams) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		cmdinfo->state &= ~(SUBMIT_DATA_IN_URB | SUBMIT_DATA_OUT_URB |
+				ALLOC_STATUS_URB | SUBMIT_STATUS_URB);
+=======
 		cmdinfo->state &= ~(SUBMIT_DATA_IN_URB | SUBMIT_DATA_OUT_URB);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		cmdinfo->state &= ~(SUBMIT_DATA_IN_URB | SUBMIT_DATA_OUT_URB);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cmdinfo->stream = 0;
 	}
 
@@ -550,7 +917,15 @@ static int uas_slave_configure(struct scsi_device *sdev)
 {
 	struct uas_dev_info *devinfo = sdev->hostdata;
 	scsi_set_tag_type(sdev, MSG_ORDERED_TAG);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	scsi_activate_tcq(sdev, devinfo->qdepth - 2);
+=======
 	scsi_activate_tcq(sdev, devinfo->qdepth - 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	scsi_activate_tcq(sdev, devinfo->qdepth - 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -588,10 +963,45 @@ static int uas_is_interface(struct usb_host_interface *intf)
 		intf->desc.bInterfaceProtocol == USB_PR_UAS);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int uas_isnt_supported(struct usb_device *udev)
+{
+	struct usb_hcd *hcd = bus_to_hcd(udev->bus);
+
+	dev_warn(&udev->dev, "The driver for the USB controller %s does not "
+			"support scatter-gather which is\n",
+			hcd->driver->description);
+	dev_warn(&udev->dev, "required by the UAS driver. Please try an"
+			"alternative USB controller if you wish to use UAS.\n");
+	return -ENODEV;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int uas_switch_interface(struct usb_device *udev,
 						struct usb_interface *intf)
 {
 	int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int sg_supported = udev->bus->sg_tablesize != 0;
+
+	for (i = 0; i < intf->num_altsetting; i++) {
+		struct usb_host_interface *alt = &intf->altsetting[i];
+
+		if (uas_is_interface(alt)) {
+			if (!sg_supported)
+				return uas_isnt_supported(udev);
+			return usb_set_interface(udev,
+						alt->desc.bInterfaceNumber,
+						alt->desc.bAlternateSetting);
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (uas_is_interface(intf->cur_altsetting))
 		return 0;
@@ -604,6 +1014,10 @@ static int uas_switch_interface(struct usb_device *udev,
 			return usb_set_interface(udev,
 						alt->desc.bInterfaceNumber,
 						alt->desc.bAlternateSetting);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return -ENODEV;
@@ -618,6 +1032,13 @@ static void uas_configure_endpoints(struct uas_dev_info *devinfo)
 	unsigned i, n_endpoints = intf->cur_altsetting->desc.bNumEndpoints;
 
 	devinfo->uas_sense_old = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	devinfo->cmnd = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < n_endpoints; i++) {
 		unsigned char *extra = endpoint[i].extra;
@@ -669,6 +1090,46 @@ static void uas_configure_endpoints(struct uas_dev_info *devinfo)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int uas_alloc_status_urb(struct uas_dev_info *devinfo,
+		struct Scsi_Host *shost)
+{
+	if (devinfo->use_streams) {
+		devinfo->status_urb = NULL;
+		return 0;
+	}
+
+	devinfo->status_urb = uas_alloc_sense_urb(devinfo, GFP_KERNEL,
+			shost, 0);
+	if (!devinfo->status_urb)
+		goto err_s_urb;
+
+	if (usb_submit_urb(devinfo->status_urb, GFP_KERNEL))
+		goto err_submit_urb;
+
+	return 0;
+err_submit_urb:
+	usb_free_urb(devinfo->status_urb);
+err_s_urb:
+	return -ENOMEM;
+}
+
+static void uas_free_streams(struct uas_dev_info *devinfo)
+{
+	struct usb_device *udev = devinfo->udev;
+	struct usb_host_endpoint *eps[3];
+
+	eps[0] = usb_pipe_endpoint(udev, devinfo->status_pipe);
+	eps[1] = usb_pipe_endpoint(udev, devinfo->data_in_pipe);
+	eps[2] = usb_pipe_endpoint(udev, devinfo->data_out_pipe);
+	usb_free_streams(devinfo->intf, eps, 3, GFP_KERNEL);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * XXX: What I'd like to do here is register a SCSI host for each USB host in
  * the system.  Follow usb-storage's design of registering a SCSI host for
@@ -698,6 +1159,28 @@ static int uas_probe(struct usb_interface *intf, const struct usb_device_id *id)
 	shost->max_id = 1;
 	shost->sg_tablesize = udev->bus->sg_tablesize;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	devinfo->intf = intf;
+	devinfo->udev = udev;
+	uas_configure_endpoints(devinfo);
+
+	result = scsi_init_shared_tag_map(shost, devinfo->qdepth - 2);
+	if (result)
+		goto free;
+
+	result = scsi_add_host(shost, &intf->dev);
+	if (result)
+		goto deconfig_eps;
+
+	shost->hostdata[0] = (unsigned long)devinfo;
+
+	result = uas_alloc_status_urb(devinfo, shost);
+	if (result)
+		goto err_alloc_status;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	result = scsi_add_host(shost, &intf->dev);
 	if (result)
 		goto free;
@@ -706,10 +1189,26 @@ static int uas_probe(struct usb_interface *intf, const struct usb_device_id *id)
 	devinfo->intf = intf;
 	devinfo->udev = udev;
 	uas_configure_endpoints(devinfo);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	scsi_scan_host(shost);
 	usb_set_intfdata(intf, shost);
 	return result;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+err_alloc_status:
+	scsi_remove_host(shost);
+	shost = NULL;
+deconfig_eps:
+	uas_free_streams(devinfo);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  free:
 	kfree(devinfo);
 	if (shost)
@@ -731,18 +1230,38 @@ static int uas_post_reset(struct usb_interface *intf)
 
 static void uas_disconnect(struct usb_interface *intf)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct usb_device *udev = interface_to_usbdev(intf);
 	struct usb_host_endpoint *eps[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct usb_device *udev = interface_to_usbdev(intf);
+	struct usb_host_endpoint *eps[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct Scsi_Host *shost = usb_get_intfdata(intf);
 	struct uas_dev_info *devinfo = (void *)shost->hostdata[0];
 
 	scsi_remove_host(shost);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_kill_urb(devinfo->status_urb);
+	usb_free_urb(devinfo->status_urb);
+	uas_free_streams(devinfo);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	eps[0] = usb_pipe_endpoint(udev, devinfo->status_pipe);
 	eps[1] = usb_pipe_endpoint(udev, devinfo->data_in_pipe);
 	eps[2] = usb_pipe_endpoint(udev, devinfo->data_out_pipe);
 	usb_free_streams(intf, eps, 3, GFP_KERNEL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(devinfo);
 }
 
@@ -759,6 +1278,12 @@ static struct usb_driver uas_driver = {
 	.id_table = uas_usb_ids,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(uas_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int uas_init(void)
 {
 	return usb_register(&uas_driver);
@@ -771,6 +1296,10 @@ static void uas_exit(void)
 
 module_init(uas_init);
 module_exit(uas_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Matthew Wilcox and Sarah Sharp");

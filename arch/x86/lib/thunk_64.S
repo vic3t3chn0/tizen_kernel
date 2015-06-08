@@ -6,6 +6,9 @@
  * Subject to the GNU public license, v.2. No warranty of any kind.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/linkage.h>
 #include <asm/dwarf2.h>
 #include <asm/calling.h>
@@ -23,6 +26,8 @@
 	movq_cfi_restore 9*8, rdi
 	.endif
 
+<<<<<<< HEAD
+=======
 =======
 
 	#include <linux/linkage.h>
@@ -37,6 +42,7 @@
 	CFI_STARTPROC
 	SAVE_ARGS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	call \func
 	jmp  restore
 	CFI_ENDPROC
@@ -44,6 +50,9 @@
 
 #ifdef CONFIG_TRACE_IRQFLAGS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	THUNK trace_hardirqs_on_thunk,trace_hardirqs_on_caller,1
 	THUNK trace_hardirqs_off_thunk,trace_hardirqs_off_caller,1
 #endif
@@ -52,6 +61,8 @@
 	THUNK lockdep_sys_exit_thunk,lockdep_sys_exit
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	/* put return address in rdi (arg1) */
 	.macro thunk_ra name,func
@@ -76,6 +87,7 @@
 #endif
 	
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SAVE_ARGS below is used only for the .cfi directives it contains. */
 	CFI_STARTPROC
 	SAVE_ARGS
@@ -84,6 +96,10 @@ restore:
 <<<<<<< HEAD
 	ret
 =======
+<<<<<<< HEAD
+	ret
+=======
 	ret	
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CFI_ENDPROC

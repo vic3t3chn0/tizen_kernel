@@ -75,6 +75,9 @@ static struct regulator_consumer_supply ab8500_vtvout_consumers[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply ab8500_vaud_consumers[] = {
 	/* AB8500 audio-codec main supply */
 	REGULATOR_SUPPLY("vaud", "ab8500-codec.0"),
@@ -99,12 +102,15 @@ static struct regulator_consumer_supply ab8500_vintcore_consumers[] = {
 	/* SoC core supply, no device */
 	REGULATOR_SUPPLY("v-intcore", NULL),
 	/* USB Transceiver */
+<<<<<<< HEAD
+=======
 =======
 static struct regulator_consumer_supply ab8500_vintcore_consumers[] = {
 	/* SoC core supply, no device */
 	REGULATOR_SUPPLY("v-intcore", NULL),
 	/* USB Transciever */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	REGULATOR_SUPPLY("vddulpivio18", "ab8500-usb.0"),
 };
 
@@ -300,6 +306,9 @@ struct regulator_init_data ab8500_regulators[AB8500_NUM_REGULATORS] = {
 			.valid_ops_mask = REGULATOR_CHANGE_VOLTAGE |
 					  REGULATOR_CHANGE_STATUS,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.boot_on = 1, /* display is on at boot */
 			/*
 			 * This voltage cannot be disabled right now because
@@ -308,9 +317,12 @@ struct regulator_init_data ab8500_regulators[AB8500_NUM_REGULATORS] = {
 			 * AUX3.
 			 */
 			.always_on = 1,
+<<<<<<< HEAD
+=======
 =======
 			.boot_on = 1, /* must be on for display */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		.num_consumer_supplies = ARRAY_SIZE(ab8500_vaux1_consumers),
 		.consumer_supplies = ab8500_vaux1_consumers,
@@ -358,7 +370,12 @@ struct regulator_init_data ab8500_regulators[AB8500_NUM_REGULATORS] = {
 		.num_consumer_supplies = ARRAY_SIZE(ab8500_vaud_consumers),
 		.consumer_supplies = ab8500_vaud_consumers,
 =======
+<<<<<<< HEAD
+		.num_consumer_supplies = ARRAY_SIZE(ab8500_vaud_consumers),
+		.consumer_supplies = ab8500_vaud_consumers,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	/* supply for v-anamic1 VAMic1-LDO */
 	[AB8500_LDO_ANAMIC1] = {
@@ -370,7 +387,12 @@ struct regulator_init_data ab8500_regulators[AB8500_NUM_REGULATORS] = {
 		.num_consumer_supplies = ARRAY_SIZE(ab8500_vamic1_consumers),
 		.consumer_supplies = ab8500_vamic1_consumers,
 =======
+<<<<<<< HEAD
+		.num_consumer_supplies = ARRAY_SIZE(ab8500_vamic1_consumers),
+		.consumer_supplies = ab8500_vamic1_consumers,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	/* supply for v-amic2, VAMIC2 LDO, reuse constants for AMIC1 */
 	[AB8500_LDO_ANAMIC2] = {
@@ -382,7 +404,12 @@ struct regulator_init_data ab8500_regulators[AB8500_NUM_REGULATORS] = {
 		.num_consumer_supplies = ARRAY_SIZE(ab8500_vamic2_consumers),
 		.consumer_supplies = ab8500_vamic2_consumers,
 =======
+<<<<<<< HEAD
+		.num_consumer_supplies = ARRAY_SIZE(ab8500_vamic2_consumers),
+		.consumer_supplies = ab8500_vamic2_consumers,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	/* supply for v-dmic, VDMIC LDO */
 	[AB8500_LDO_DMIC] = {
@@ -394,7 +421,12 @@ struct regulator_init_data ab8500_regulators[AB8500_NUM_REGULATORS] = {
 		.num_consumer_supplies = ARRAY_SIZE(ab8500_vdmic_consumers),
 		.consumer_supplies = ab8500_vdmic_consumers,
 =======
+<<<<<<< HEAD
+		.num_consumer_supplies = ARRAY_SIZE(ab8500_vdmic_consumers),
+		.consumer_supplies = ab8500_vdmic_consumers,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	/* supply for v-intcore12, VINTCORE12 LDO */
 	[AB8500_LDO_INTCORE] = {

@@ -24,8 +24,12 @@ static struct device_node *cpld_pic_node;
 <<<<<<< HEAD
 static struct irq_domain *cpld_pic_host;
 =======
+<<<<<<< HEAD
+static struct irq_domain *cpld_pic_host;
+=======
 static struct irq_host *cpld_pic_host;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Bits to ignore in the misc_status register
@@ -130,8 +134,12 @@ static int
 <<<<<<< HEAD
 cpld_pic_host_match(struct irq_domain *h, struct device_node *node)
 =======
+<<<<<<< HEAD
+cpld_pic_host_match(struct irq_domain *h, struct device_node *node)
+=======
 cpld_pic_host_match(struct irq_host *h, struct device_node *node)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return cpld_pic_node == node;
 }
@@ -140,8 +148,12 @@ static int
 <<<<<<< HEAD
 cpld_pic_host_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+cpld_pic_host_map(struct irq_domain *h, unsigned int virq,
+=======
 cpld_pic_host_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     irq_hw_number_t hw)
 {
 	irq_set_status_flags(virq, IRQ_LEVEL);
@@ -152,9 +164,13 @@ cpld_pic_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static const struct irq_domain_ops cpld_pic_host_ops = {
 =======
+<<<<<<< HEAD
+static const struct irq_domain_ops cpld_pic_host_ops = {
+=======
 static struct
 irq_host_ops cpld_pic_host_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.match = cpld_pic_host_match,
 	.map = cpld_pic_host_map,
 };
@@ -210,9 +226,13 @@ mpc5121_ads_cpld_pic_init(void)
 <<<<<<< HEAD
 	cpld_pic_host = irq_domain_add_linear(np, 16, &cpld_pic_host_ops, NULL);
 =======
+<<<<<<< HEAD
+	cpld_pic_host = irq_domain_add_linear(np, 16, &cpld_pic_host_ops, NULL);
+=======
 	cpld_pic_host =
 	    irq_alloc_host(np, IRQ_HOST_MAP_LINEAR, 16, &cpld_pic_host_ops, 16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cpld_pic_host) {
 		printk(KERN_ERR "CPLD PIC: failed to allocate irq host!\n");
 		goto end;

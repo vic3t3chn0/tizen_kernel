@@ -14,8 +14,12 @@
 <<<<<<< HEAD
  * Do not include directly; use <linux/atomic.h>.
 =======
+<<<<<<< HEAD
+ * Do not include directly; use <linux/atomic.h>.
+=======
  * Do not include directly; use <asm/atomic.h>.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _ASM_TILE_ATOMIC_64_H
@@ -26,7 +30,11 @@
 <<<<<<< HEAD
 #include <asm/barrier.h>
 =======
+<<<<<<< HEAD
+#include <asm/barrier.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <arch/spr_def.h>
 
 /* First, the 32-bit atomic ops that are "real" on our 64-bit platform. */
@@ -75,8 +83,12 @@ static inline int atomic_add_return(int i, atomic_t *v)
 <<<<<<< HEAD
 static inline int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+static inline int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
 static inline int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int guess, oldval = v->counter;
 	do {
@@ -88,8 +100,12 @@ static inline int atomic_add_unless(atomic_t *v, int a, int u)
 <<<<<<< HEAD
 	return oldval;
 =======
+<<<<<<< HEAD
+	return oldval;
+=======
 	return oldval != u;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Now the true 64-bit operations. */

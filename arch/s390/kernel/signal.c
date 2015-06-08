@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "entry.h"
 
 #define _BLOCKABLE (~(sigmask(SIGKILL) | sigmask(SIGSTOP)))
@@ -62,6 +66,9 @@ typedef struct
 SYSCALL_DEFINE3(sigsuspend, int, history0, int, history1, old_sigset_t, mask)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigset_t blocked;
 
 	current->saved_sigmask = current->blocked;
@@ -71,6 +78,8 @@ SYSCALL_DEFINE3(sigsuspend, int, history0, int, history1, old_sigset_t, mask)
 	set_current_state(TASK_INTERRUPTIBLE);
 	schedule();
 	set_restore_sigmask();
+<<<<<<< HEAD
+=======
 =======
 	mask &= _BLOCKABLE;
 	spin_lock_irq(&current->sighand->siglock);
@@ -84,6 +93,7 @@ SYSCALL_DEFINE3(sigsuspend, int, history0, int, history1, old_sigset_t, mask)
 	set_thread_flag(TIF_RESTORE_SIGMASK);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -ERESTARTNOHAND;
 }
 
@@ -138,8 +148,13 @@ static int save_sigregs(struct pt_regs *regs, _sigregs __user *sregs)
 	user_sregs.regs.psw.mask = psw_user_bits |
 		(regs->psw.mask & PSW_MASK_USER);
 =======
+<<<<<<< HEAD
+	user_sregs.regs.psw.mask = psw_user_bits |
+		(regs->psw.mask & PSW_MASK_USER);
+=======
 	user_sregs.regs.psw.mask = PSW_MASK_MERGE(psw_user_bits, regs->psw.mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	user_sregs.regs.psw.addr = regs->psw.addr;
 	memcpy(&user_sregs.regs.gprs, &regs->gprs, sizeof(sregs->regs.gprs));
 	memcpy(&user_sregs.regs.acrs, current->thread.acrs,
@@ -167,6 +182,9 @@ static int restore_sigregs(struct pt_regs *regs, _sigregs __user *sregs)
 	if (err)
 		return err;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Use regs->psw.mask instead of psw_user_bits to preserve PER bit. */
 	regs->psw.mask = (regs->psw.mask & ~PSW_MASK_USER) |
 		(user_sregs.regs.psw.mask & PSW_MASK_USER);
@@ -174,11 +192,14 @@ static int restore_sigregs(struct pt_regs *regs, _sigregs __user *sregs)
 	if (regs->psw.mask & PSW_MASK_EA)
 		regs->psw.mask |= PSW_MASK_BA;
 	regs->psw.addr = user_sregs.regs.psw.addr;
+<<<<<<< HEAD
+=======
 =======
 	regs->psw.mask = PSW_MASK_MERGE(regs->psw.mask,
 					user_sregs.regs.psw.mask);
 	regs->psw.addr = PSW_ADDR_AMODE | user_sregs.regs.psw.addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&regs->gprs, &user_sregs.regs.gprs, sizeof(sregs->regs.gprs));
 	memcpy(&current->thread.acrs, &user_sregs.regs.acrs,
 	       sizeof(sregs->regs.acrs));
@@ -192,8 +213,12 @@ static int restore_sigregs(struct pt_regs *regs, _sigregs __user *sregs)
 <<<<<<< HEAD
 	clear_thread_flag(TIF_SYSCALL);	/* No longer in a system call */
 =======
+<<<<<<< HEAD
+	clear_thread_flag(TIF_SYSCALL);	/* No longer in a system call */
+=======
 	regs->svcnr = 0;	/* disable syscall checks */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -208,11 +233,16 @@ SYSCALL_DEFINE0(sigreturn)
 	if (__copy_from_user(&set.sig, &frame->sc.oldmask, _SIGMASK_COPY_SIZE))
 		goto badframe;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigdelsetmask(&set, ~_BLOCKABLE);
 	set_current_blocked(&set);
 	if (restore_sigregs(regs, &frame->sregs))
 		goto badframe;
 	return regs->gprs[2];
+<<<<<<< HEAD
+=======
 =======
 
 	sigdelsetmask(&set, ~_BLOCKABLE);
@@ -227,6 +257,7 @@ SYSCALL_DEFINE0(sigreturn)
 	return regs->gprs[2];
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 badframe:
 	force_sig(SIGSEGV, current);
 	return 0;
@@ -243,10 +274,15 @@ SYSCALL_DEFINE0(rt_sigreturn)
 	if (__copy_from_user(&set.sig, &frame->uc.uc_sigmask, sizeof(set)))
 		goto badframe;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigdelsetmask(&set, ~_BLOCKABLE);
 	set_current_blocked(&set);
 	if (restore_sigregs(regs, &frame->uc.uc_mcontext))
 		goto badframe;
+<<<<<<< HEAD
+=======
 =======
 
 	sigdelsetmask(&set, ~_BLOCKABLE);
@@ -259,14 +295,18 @@ SYSCALL_DEFINE0(rt_sigreturn)
 		goto badframe;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (do_sigaltstack(&frame->uc.uc_stack, NULL,
 			   regs->gprs[15]) == -EFAULT)
 		goto badframe;
 	return regs->gprs[2];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 badframe:
 	force_sig(SIGSEGV, current);
 	return 0;
@@ -360,7 +400,11 @@ static int setup_frame(int sig, struct k_sigaction *ka,
 <<<<<<< HEAD
 	regs->psw.mask |= PSW_MASK_EA | PSW_MASK_BA;	/* 64 bit amode */
 =======
+<<<<<<< HEAD
+	regs->psw.mask |= PSW_MASK_EA | PSW_MASK_BA;	/* 64 bit amode */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->psw.addr = (unsigned long) ka->sa.sa_handler | PSW_ADDR_AMODE;
 
 	regs->gprs[2] = map_signal(sig);
@@ -369,6 +413,9 @@ static int setup_frame(int sig, struct k_sigaction *ka,
 	/* We forgot to include these in the sigcontext.
 	   To avoid breaking binary compatibility, they are passed as args. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sig == SIGSEGV || sig == SIGBUS || sig == SIGILL ||
 	    sig == SIGTRAP || sig == SIGFPE) {
 		/* set extra registers only for synchronous signals */
@@ -376,11 +423,14 @@ static int setup_frame(int sig, struct k_sigaction *ka,
 		regs->gprs[5] = regs->int_parm_long;
 		regs->gprs[6] = task_thread_info(current)->last_break;
 	}
+<<<<<<< HEAD
+=======
 =======
 	regs->gprs[4] = current->thread.trap_no;
 	regs->gprs[5] = current->thread.prot_addr;
 	regs->gprs[6] = task_thread_info(current)->last_break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Place signal number on stack to allow backtrace from handler.  */
 	if (__put_user(regs->gprs[2], (int __user *) &frame->signo))
@@ -442,7 +492,11 @@ static int setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 <<<<<<< HEAD
 	regs->psw.mask |= PSW_MASK_EA | PSW_MASK_BA;	/* 64 bit amode */
 =======
+<<<<<<< HEAD
+	regs->psw.mask |= PSW_MASK_EA | PSW_MASK_BA;	/* 64 bit amode */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs->psw.addr = (unsigned long) ka->sa.sa_handler | PSW_ADDR_AMODE;
 
 	regs->gprs[2] = map_signal(sig);
@@ -461,6 +515,11 @@ static int handle_signal(unsigned long sig, struct k_sigaction *ka,
 			 siginfo_t *info, sigset_t *oldset,
 			 struct pt_regs *regs)
 =======
+<<<<<<< HEAD
+static int handle_signal(unsigned long sig, struct k_sigaction *ka,
+			 siginfo_t *info, sigset_t *oldset,
+			 struct pt_regs *regs)
+=======
 /*
  * OK, we're invoking a handler
  */	
@@ -469,6 +528,7 @@ static int
 handle_signal(unsigned long sig, struct k_sigaction *ka,
 	      siginfo_t *info, sigset_t *oldset, struct pt_regs * regs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 
@@ -478,10 +538,15 @@ handle_signal(unsigned long sig, struct k_sigaction *ka,
 	else
 		ret = setup_frame(sig, ka, oldset, regs);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 	block_sigmask(ka, sig);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 
 	if (ret == 0) {
@@ -495,6 +560,7 @@ handle_signal(unsigned long sig, struct k_sigaction *ka,
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -510,8 +576,11 @@ void do_signal(struct pt_regs *regs)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long retval = 0, continue_addr = 0, restart_addr = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	siginfo_t info;
 	int signr;
 	struct k_sigaction ka;
@@ -532,6 +601,9 @@ void do_signal(struct pt_regs *regs)
 		oldset = &current->blocked;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Get signal to deliver. When running under ptrace, at this point
 	 * the debugger may change all our registers, including the system
@@ -571,6 +643,8 @@ void do_signal(struct pt_regs *regs)
 		if ((is_compat_task() ?
 		     handle_signal32(signr, &ka, &info, oldset, regs) :
 		     handle_signal(signr, &ka, &info, oldset, regs)) == 0) {
+<<<<<<< HEAD
+=======
 =======
 	/* Are we from a system call? */
 	if (regs->svcnr) {
@@ -621,6 +695,7 @@ void do_signal(struct pt_regs *regs)
 			ret = handle_signal(signr, &ka, &info, oldset, regs);
 		if (!ret) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * A signal was successfully delivered; the saved
 			 * sigmask will have been stored in the signal frame,
@@ -637,13 +712,20 @@ void do_signal(struct pt_regs *regs)
 <<<<<<< HEAD
 					 test_thread_flag(TIF_SINGLE_STEP));
 =======
+<<<<<<< HEAD
+					 test_thread_flag(TIF_SINGLE_STEP));
+=======
 					test_thread_flag(TIF_SINGLE_STEP));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		return;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* No handlers present - check for system call restart */
 	clear_thread_flag(TIF_SYSCALL);
 	if (current_thread_info()->system_call) {
@@ -663,8 +745,11 @@ void do_signal(struct pt_regs *regs)
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If there's no signal to deliver, we just put the saved sigmask back.
 	 */
@@ -672,6 +757,8 @@ void do_signal(struct pt_regs *regs)
 		clear_thread_flag(TIF_RESTORE_SIGMASK);
 		sigprocmask(SIG_SETMASK, &current->saved_sigmask, NULL);
 	}
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -682,6 +769,7 @@ void do_signal(struct pt_regs *regs)
 		set_thread_flag(TIF_RESTART_SVC);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void do_notify_resume(struct pt_regs *regs)

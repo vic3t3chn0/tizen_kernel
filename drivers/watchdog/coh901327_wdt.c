@@ -8,17 +8,37 @@
  */
 #include <linux/module.h>
 #include <linux/types.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/fs.h>
 #include <linux/miscdevice.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/fs.h>
+#include <linux/miscdevice.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/watchdog.h>
 #include <linux/interrupt.h>
 #include <linux/pm.h>
 #include <linux/platform_device.h>
 #include <linux/io.h>
 #include <linux/bitops.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/clk.h>
+#include <linux/delay.h>
+#include <linux/err.h>
+=======
 #include <linux/uaccess.h>
 #include <linux/clk.h>
 #include <linux/delay.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/uaccess.h>
+#include <linux/clk.h>
+#include <linux/delay.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DRV_NAME "WDOG COH 901 327"
 
@@ -69,15 +89,32 @@
 #define U300_WDOG_IFR_WILL_BARK_IRQ_FORCE_ENABLE			0x0001U
 
 /* Default timeout in seconds = 1 minute */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static unsigned int margin = 60;
+=======
 static int margin = 60;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int margin = 60;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static resource_size_t phybase;
 static resource_size_t physize;
 static int irq;
 static void __iomem *virtbase;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long coh901327_users;
 static unsigned long boot_status;
 static u16 wdogenablestore;
 static u16 irqmaskstore;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct device *parent;
 
 /*
@@ -157,18 +194,55 @@ static void coh901327_disable(void)
 			__func__, val);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int coh901327_start(struct watchdog_device *wdt_dev)
+{
+	coh901327_enable(wdt_dev->timeout * 100);
+	return 0;
+}
+
+static int coh901327_stop(struct watchdog_device *wdt_dev)
+{
+	coh901327_disable();
+	return 0;
+}
+
+static int coh901327_ping(struct watchdog_device *wdd)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void coh901327_start(void)
 {
 	coh901327_enable(margin * 100);
 }
 
 static void coh901327_keepalive(void)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	clk_enable(clk);
 	/* Feed the watchdog */
 	writew(U300_WDOG_FR_FEED_RESTART_TIMER,
 	       virtbase + U300_WDOG_FR);
 	clk_disable(clk);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+}
+
+static int coh901327_settimeout(struct watchdog_device *wdt_dev,
+				unsigned int time)
+{
+	wdt_dev->timeout = time;
+	clk_enable(clk);
+	/* Set new timeout value */
+	writew(time * 100, virtbase + U300_WDOG_TR);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int coh901327_settimeout(int time)
@@ -185,6 +259,10 @@ static int coh901327_settimeout(int time)
 	clk_enable(clk);
 	/* Set new timeout value */
 	writew(margin * 100, virtbase + U300_WDOG_TR);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Feed the dog */
 	writew(U300_WDOG_FR_FEED_RESTART_TIMER,
 	       virtbase + U300_WDOG_FR);
@@ -192,6 +270,29 @@ static int coh901327_settimeout(int time)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static unsigned int coh901327_gettimeleft(struct watchdog_device *wdt_dev)
+{
+	u16 val;
+
+	clk_enable(clk);
+	/* Read repeatedly until the value is stable! */
+	val = readw(virtbase + U300_WDOG_CR);
+	while (val & U300_WDOG_CR_VALID_IND)
+		val = readw(virtbase + U300_WDOG_CR);
+	val &= U300_WDOG_CR_COUNT_VALUE_MASK;
+	clk_disable(clk);
+	if (val != 0)
+		val /= 100;
+
+	return val;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This interrupt occurs 10 ms before the watchdog WILL bark.
  */
@@ -220,6 +321,35 @@ static irqreturn_t coh901327_interrupt(int irq, void *data)
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct watchdog_info coh901327_ident = {
+	.options = WDIOF_CARDRESET | WDIOF_SETTIMEOUT | WDIOF_KEEPALIVEPING,
+	.identity = DRV_NAME,
+};
+
+static struct watchdog_ops coh901327_ops = {
+	.owner = THIS_MODULE,
+	.start = coh901327_start,
+	.stop = coh901327_stop,
+	.ping = coh901327_ping,
+	.set_timeout = coh901327_settimeout,
+	.get_timeleft = coh901327_gettimeleft,
+};
+
+static struct watchdog_device coh901327_wdt = {
+	.info = &coh901327_ident,
+	.ops = &coh901327_ops,
+	/*
+	 * Max timeout is 327 since the 10ms
+	 * timeout register is max
+	 * 0x7FFF = 327670ms ~= 327s.
+	 */
+	.min_timeout = 0,
+	.max_timeout = 327,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Allow only one user (daemon) to open the watchdog
  */
@@ -339,11 +469,23 @@ static struct miscdevice coh901327_miscdev = {
 	.minor		= WATCHDOG_MINOR,
 	.name		= "watchdog",
 	.fops		= &coh901327_fops,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __exit coh901327_remove(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	watchdog_unregister_device(&coh901327_wdt);
+=======
 	misc_deregister(&coh901327_miscdev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	misc_deregister(&coh901327_miscdev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	coh901327_disable();
 	free_irq(irq, pdev);
 	clk_put(clk);
@@ -352,7 +494,14 @@ static int __exit coh901327_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init coh901327_probe(struct platform_device *pdev)
 {
 	int ret;
@@ -395,7 +544,15 @@ static int __init coh901327_probe(struct platform_device *pdev)
 	case U300_WDOG_SR_STATUS_TIMED_OUT:
 		dev_info(&pdev->dev,
 			"watchdog timed out since last chip reset!\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		coh901327_wdt.bootstatus |= WDIOF_CARDRESET;
+=======
 		boot_status = WDIOF_CARDRESET;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		boot_status = WDIOF_CARDRESET;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Status will be cleared below */
 		break;
 	case U300_WDOG_SR_STATUS_NORMAL:
@@ -429,7 +586,15 @@ static int __init coh901327_probe(struct platform_device *pdev)
 	writew(U300_WDOG_SR_RESET_STATUS_RESET, virtbase + U300_WDOG_SR);
 
 	irq = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (request_irq(irq, coh901327_interrupt, 0,
+=======
 	if (request_irq(irq, coh901327_interrupt, IRQF_DISABLED,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (request_irq(irq, coh901327_interrupt, IRQF_DISABLED,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			DRV_NAME " Bark", pdev)) {
 		ret = -EIO;
 		goto out_no_irq;
@@ -437,7 +602,19 @@ static int __init coh901327_probe(struct platform_device *pdev)
 
 	clk_disable(clk);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (margin < 1 || margin > 327)
+		margin = 60;
+	coh901327_wdt.timeout = margin;
+
+	ret = watchdog_register_device(&coh901327_wdt);
+=======
 	ret = misc_register(&coh901327_miscdev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = misc_register(&coh901327_miscdev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret == 0)
 		dev_info(&pdev->dev,
 			 "initialized. timer margin=%d sec\n", margin);
@@ -461,6 +638,16 @@ out:
 }
 
 #ifdef CONFIG_PM
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+static u16 wdogenablestore;
+static u16 irqmaskstore;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int coh901327_suspend(struct platform_device *pdev, pm_message_t state)
 {
 	irqmaskstore = readw(virtbase + U300_WDOG_IMR) & 0x0001U;
@@ -541,8 +728,22 @@ module_exit(coh901327_exit);
 MODULE_AUTHOR("Linus Walleij <linus.walleij@stericsson.com>");
 MODULE_DESCRIPTION("COH 901 327 Watchdog");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_param(margin, uint, 0);
+MODULE_PARM_DESC(margin, "Watchdog margin in seconds (default 60s)");
+
+MODULE_LICENSE("GPL");
+MODULE_ALIAS("platform:coh901327-watchdog");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(margin, int, 0);
 MODULE_PARM_DESC(margin, "Watchdog margin in seconds (default 60s)");
 
 MODULE_LICENSE("GPL");
 MODULE_ALIAS_MISCDEV(WATCHDOG_MINOR);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

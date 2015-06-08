@@ -14,6 +14,13 @@
 #include <linux/spi/spi.h>
 #include <linux/slab.h>
 #include <linux/sysfs.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../iio.h"
 #include "../sysfs.h"
@@ -30,7 +37,14 @@ struct ad9850_config {
 
 struct ad9850_state {
 	struct mutex lock;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct iio_dev *idev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct iio_dev *idev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct spi_device *sdev;
 };
 
@@ -44,7 +58,15 @@ static ssize_t ad9850_set_parameter(struct device *dev,
 	int ret;
 	struct ad9850_config *config = (struct ad9850_config *)buf;
 	struct iio_dev *idev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ad9850_state *st = iio_priv(idev);
+=======
 	struct ad9850_state *st = idev->dev_data;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ad9850_state *st = idev->dev_data;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	xfer.len = len;
 	xfer.tx_buf = config;
@@ -69,7 +91,14 @@ static struct attribute *ad9850_attributes[] = {
 };
 
 static const struct attribute_group ad9850_attribute_group = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.name = DRV_NAME,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.name = DRV_NAME,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.attrs = ad9850_attributes,
 };
 
@@ -81,6 +110,29 @@ static const struct iio_info ad9850_info = {
 static int __devinit ad9850_probe(struct spi_device *spi)
 {
 	struct ad9850_state *st;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct iio_dev *idev;
+	int ret = 0;
+
+	idev = iio_allocate_device(sizeof(*st));
+	if (idev == NULL) {
+		ret = -ENOMEM;
+		goto error_ret;
+	}
+	spi_set_drvdata(spi, idev);
+	st = iio_priv(idev);
+	mutex_init(&st->lock);
+	st->sdev = spi;
+
+	idev->dev.parent = &spi->dev;
+	idev->info = &ad9850_info;
+	idev->modes = INDIO_DIRECT_MODE;
+
+	ret = iio_device_register(idev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	st = kzalloc(sizeof(*st), GFP_KERNEL);
@@ -105,6 +157,10 @@ static int __devinit ad9850_probe(struct spi_device *spi)
 	st->idev->modes = INDIO_DIRECT_MODE;
 
 	ret = iio_device_register(st->idev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto error_free_dev;
 	spi->max_speed_hz = 2000000;
@@ -115,19 +171,40 @@ static int __devinit ad9850_probe(struct spi_device *spi)
 	return 0;
 
 error_free_dev:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_free_device(idev);
+=======
 	iio_free_device(st->idev);
 error_free_st:
 	kfree(st);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	iio_free_device(st->idev);
+error_free_st:
+	kfree(st);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error_ret:
 	return ret;
 }
 
 static int __devexit ad9850_remove(struct spi_device *spi)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_device_unregister(spi_get_drvdata(spi));
+	iio_free_device(spi_get_drvdata(spi));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ad9850_state *st = spi_get_drvdata(spi);
 
 	iio_device_unregister(st->idev);
 	kfree(st);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -140,6 +217,12 @@ static struct spi_driver ad9850_driver = {
 	.probe = ad9850_probe,
 	.remove = __devexit_p(ad9850_remove),
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(ad9850_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __init int ad9850_spi_init(void)
 {
@@ -152,7 +235,18 @@ static __exit void ad9850_spi_exit(void)
 	spi_unregister_driver(&ad9850_driver);
 }
 module_exit(ad9850_spi_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Cliff Cai");
 MODULE_DESCRIPTION("Analog Devices ad9850 driver");
 MODULE_LICENSE("GPL v2");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_ALIAS("spi:" DRV_NAME);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -19,8 +19,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -36,8 +39,11 @@
 struct ak4641_priv {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct snd_soc_codec *codec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int sysclk;
 	int deemph;
 	int playback_fs;
@@ -235,8 +241,12 @@ static const struct snd_soc_dapm_widget ak4641_dapm_widgets[] = {
 <<<<<<< HEAD
 	SND_SOC_DAPM_DAC("Voice DAC", "Voice Playback", AK4641_BTIF, 1, 0),
 =======
+<<<<<<< HEAD
+	SND_SOC_DAPM_DAC("Voice DAC", "Voice Playback", AK4641_BTIF, 1, 0),
+=======
 	SND_SOC_DAPM_ADC("Voice DAC", "Voice Playback", AK4641_BTIF, 1, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	SND_SOC_DAPM_MICBIAS("Mic Int Bias", AK4641_MIC, 3, 0),
 	SND_SOC_DAPM_MICBIAS("Mic Ext Bias", AK4641_MIC, 4, 0),
@@ -354,7 +364,11 @@ static int ak4641_pcm_set_dai_fmt(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* interface format */
 	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
@@ -375,14 +389,20 @@ static int ak4641_pcm_set_dai_fmt(struct snd_soc_dai *codec_dai,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_update_bits(codec, AK4641_BTIF, (0x3 << 5), btif);
 	if (ret < 0)
 		return ret;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return snd_soc_update_bits(codec, AK4641_BTIF, (0x3 << 5), btif);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ak4641_i2s_set_dai_fmt(struct snd_soc_dai *codec_dai,
@@ -468,8 +488,12 @@ static int ak4641_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops ak4641_i2s_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops ak4641_i2s_dai_ops = {
+=======
 static struct snd_soc_dai_ops ak4641_i2s_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params    = ak4641_i2s_hw_params,
 	.set_fmt      = ak4641_i2s_set_dai_fmt,
 	.digital_mute = ak4641_mute,
@@ -479,8 +503,12 @@ static struct snd_soc_dai_ops ak4641_i2s_dai_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops ak4641_pcm_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops ak4641_pcm_dai_ops = {
+=======
 static struct snd_soc_dai_ops ak4641_pcm_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params    = NULL, /* rates are controlled by BT chip */
 	.set_fmt      = ak4641_pcm_set_dai_fmt,
 	.digital_mute = ak4641_mute,
@@ -490,8 +518,12 @@ static struct snd_soc_dai_ops ak4641_pcm_dai_ops = {
 <<<<<<< HEAD
 static struct snd_soc_dai_driver ak4641_dai[] = {
 =======
+<<<<<<< HEAD
+static struct snd_soc_dai_driver ak4641_dai[] = {
+=======
 struct snd_soc_dai_driver ak4641_dai[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	.name = "ak4641-hifi",
 	.id = 1,
@@ -537,8 +569,12 @@ struct snd_soc_dai_driver ak4641_dai[] = {
 <<<<<<< HEAD
 static int ak4641_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int ak4641_suspend(struct snd_soc_codec *codec)
+=======
 static int ak4641_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ak4641_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -646,8 +682,13 @@ static int __devinit ak4641_i2c_probe(struct i2c_client *i2c,
 	ak4641 = devm_kzalloc(&i2c->dev, sizeof(struct ak4641_priv),
 			      GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	ak4641 = devm_kzalloc(&i2c->dev, sizeof(struct ak4641_priv),
+			      GFP_KERNEL);
+=======
 	ak4641 = kzalloc(sizeof(struct ak4641_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ak4641)
 		return -ENOMEM;
 
@@ -657,10 +698,13 @@ static int __devinit ak4641_i2c_probe(struct i2c_client *i2c,
 				ak4641_dai, ARRAY_SIZE(ak4641_dai));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ret < 0)
 		kfree(ak4641);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -669,8 +713,11 @@ static int __devexit ak4641_i2c_remove(struct i2c_client *i2c)
 	snd_soc_unregister_codec(&i2c->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(i2c));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

@@ -41,6 +41,14 @@
 #include <linux/usb/ulpi.h>
 #include <plat/usb.h>
 #include <linux/regulator/consumer.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/pm_runtime.h>
+#include <linux/gpio.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* EHCI Register Set */
 #define EHCI_INSNREG04					(0xA0)
@@ -98,6 +106,24 @@ static void omap_ehci_soft_phy_reset(struct platform_device *pdev, u8 port)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void disable_put_regulator(
+		struct ehci_hcd_omap_platform_data *pdata)
+{
+	int i;
+
+	for (i = 0 ; i < OMAP3_HS_USB_PORTS ; i++) {
+		if (pdata->regulator[i]) {
+			regulator_disable(pdata->regulator[i]);
+			regulator_put(pdata->regulator[i]);
+		}
+	}
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* configure so an HC device and id are always provided */
 /* always called with process context; sleeping is OK */
@@ -178,12 +204,37 @@ static int ehci_hcd_omap_probe(struct platform_device *pdev)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (pdata->phy_reset) {
+		if (gpio_is_valid(pdata->reset_gpio_port[0]))
+			gpio_request_one(pdata->reset_gpio_port[0],
+					 GPIOF_OUT_INIT_LOW, "USB1 PHY reset");
+
+		if (gpio_is_valid(pdata->reset_gpio_port[1]))
+			gpio_request_one(pdata->reset_gpio_port[1],
+					 GPIOF_OUT_INIT_LOW, "USB2 PHY reset");
+
+		/* Hold the PHY in RESET for enough time till DIR is high */
+		udelay(10);
+	}
+
+	pm_runtime_enable(dev);
+	pm_runtime_get_sync(dev);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = omap_usbhs_enable(dev);
 	if (ret) {
 		dev_err(dev, "failed to start usbhs with err %d\n", ret);
 		goto err_enable;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * An undocumented "feature" in the OMAP3 EHCI controller,
 	 * causes suspended ports to be taken out of suspend when
@@ -216,7 +267,17 @@ static int ehci_hcd_omap_probe(struct platform_device *pdev)
 	/* cache this readonly data; minimize chip reads */
 	omap_ehci->hcs_params = readl(&omap_ehci->caps->hcs_params);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ehci_reset(omap_ehci);
+
+	ret = usb_add_hcd(hcd, irq, IRQF_SHARED);
+=======
 	ret = usb_add_hcd(hcd, irq, IRQF_DISABLED | IRQF_SHARED);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = usb_add_hcd(hcd, irq, IRQF_DISABLED | IRQF_SHARED);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		dev_err(dev, "failed to add hcd with err %d\n", ret);
 		goto err_add_hcd;
@@ -225,6 +286,32 @@ static int ehci_hcd_omap_probe(struct platform_device *pdev)
 	/* root ports should always stay powered */
 	ehci_port_power(omap_ehci, 1);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (pdata->phy_reset) {
+		/* Hold the PHY in RESET for enough time till
+		 * PHY is settled and ready
+		 */
+		udelay(10);
+
+		if (gpio_is_valid(pdata->reset_gpio_port[0]))
+			gpio_set_value(pdata->reset_gpio_port[0], 1);
+
+		if (gpio_is_valid(pdata->reset_gpio_port[1]))
+			gpio_set_value(pdata->reset_gpio_port[1], 1);
+	}
+
+	return 0;
+
+err_add_hcd:
+	disable_put_regulator(pdata);
+	pm_runtime_put_sync(dev);
+
+err_io:
+	iounmap(regs);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_add_hcd:
@@ -234,6 +321,10 @@ err_enable:
 	usb_put_hcd(hcd);
 
 err_io:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -248,12 +339,39 @@ err_io:
  */
 static int ehci_hcd_omap_remove(struct platform_device *pdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct device *dev				= &pdev->dev;
+	struct usb_hcd *hcd				= dev_get_drvdata(dev);
+	struct ehci_hcd_omap_platform_data *pdata	= dev->platform_data;
+
+	usb_remove_hcd(hcd);
+	disable_put_regulator(dev->platform_data);
+	iounmap(hcd->regs);
+	usb_put_hcd(hcd);
+	pm_runtime_put_sync(dev);
+	pm_runtime_disable(dev);
+
+	if (pdata->phy_reset) {
+		if (gpio_is_valid(pdata->reset_gpio_port[0]))
+			gpio_free(pdata->reset_gpio_port[0]);
+
+		if (gpio_is_valid(pdata->reset_gpio_port[1]))
+			gpio_free(pdata->reset_gpio_port[1]);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev	= &pdev->dev;
 	struct usb_hcd *hcd	= dev_get_drvdata(dev);
 
 	usb_remove_hcd(hcd);
 	omap_usbhs_disable(dev);
 	usb_put_hcd(hcd);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -321,7 +439,15 @@ static const struct hc_driver ehci_omap_hc_driver = {
 	.clear_tt_buffer_complete = ehci_clear_tt_buffer_complete,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_ALIAS("platform:omap-ehci");
+=======
 MODULE_ALIAS("platform:ehci-omap");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_ALIAS("platform:ehci-omap");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_AUTHOR("Texas Instruments, Inc.");
 MODULE_AUTHOR("Felipe Balbi <felipe.balbi@nokia.com>");
 

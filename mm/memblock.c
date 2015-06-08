@@ -21,6 +21,9 @@
 #include <linux/memblock.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct memblock_region memblock_memory_init_regions[INIT_MEMBLOCK_REGIONS] __initdata_memblock;
 static struct memblock_region memblock_reserved_init_regions[INIT_MEMBLOCK_REGIONS] __initdata_memblock;
 
@@ -38,6 +41,8 @@ struct memblock memblock __initdata_memblock = {
 
 int memblock_debug __initdata_memblock;
 static int memblock_can_resize __initdata_memblock;
+<<<<<<< HEAD
+=======
 =======
 struct memblock memblock __initdata_memblock;
 
@@ -46,6 +51,7 @@ int memblock_can_resize __initdata_memblock;
 static struct memblock_region memblock_memory_init_regions[INIT_MEMBLOCK_REGIONS + 1] __initdata_memblock;
 static struct memblock_region memblock_reserved_init_regions[INIT_MEMBLOCK_REGIONS + 1] __initdata_memblock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* inline so we don't get a warning when pr_debug is compiled out */
 static inline const char *memblock_type_name(struct memblock_type *type)
@@ -59,6 +65,9 @@ static inline const char *memblock_type_name(struct memblock_type *type)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* adjust *@size so that (@base + *@size) doesn't overflow, return new size */
 static inline phys_addr_t memblock_cap_size(phys_addr_t base, phys_addr_t *size)
 {
@@ -68,6 +77,8 @@ static inline phys_addr_t memblock_cap_size(phys_addr_t base, phys_addr_t *size)
 /*
  * Address comparison utilities
  */
+<<<<<<< HEAD
+=======
 =======
 /*
  * Address comparison utilities
@@ -84,6 +95,7 @@ static phys_addr_t __init_memblock memblock_align_up(phys_addr_t addr, phys_addr
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long __init_memblock memblock_addrs_overlap(phys_addr_t base1, phys_addr_t size1,
 				       phys_addr_t base2, phys_addr_t size2)
 {
@@ -94,8 +106,13 @@ static unsigned long __init_memblock memblock_addrs_overlap(phys_addr_t base1, p
 static long __init_memblock memblock_overlaps_region(struct memblock_type *type,
 					phys_addr_t base, phys_addr_t size)
 =======
+<<<<<<< HEAD
+static long __init_memblock memblock_overlaps_region(struct memblock_type *type,
+					phys_addr_t base, phys_addr_t size)
+=======
 long __init_memblock memblock_overlaps_region(struct memblock_type *type, phys_addr_t base, phys_addr_t size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long i;
 
@@ -110,6 +127,9 @@ long __init_memblock memblock_overlaps_region(struct memblock_type *type, phys_a
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * memblock_find_in_range_node - find free area in given range and node
  * @start: start of candidate range
@@ -170,6 +190,8 @@ phys_addr_t __init_memblock memblock_find_in_range(phys_addr_t start,
 {
 	return memblock_find_in_range_node(start, end, size, align,
 					   MAX_NUMNODES);
+<<<<<<< HEAD
+=======
 =======
 /*
  * Find, allocate, deallocate or reserve unreserved regions. All allocations
@@ -249,6 +271,7 @@ u64 __init_memblock memblock_find_in_range(u64 start, u64 end, u64 size, u64 ali
 {
 	return memblock_find_base(size, align, start, end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -282,6 +305,11 @@ static void __init_memblock memblock_remove_region(struct memblock_type *type, u
 	memmove(&type->regions[r], &type->regions[r + 1],
 		(type->cnt - (r + 1)) * sizeof(type->regions[r]));
 =======
+<<<<<<< HEAD
+	type->total_size -= type->regions[r].size;
+	memmove(&type->regions[r], &type->regions[r + 1],
+		(type->cnt - (r + 1)) * sizeof(type->regions[r]));
+=======
 	unsigned long i;
 
 	for (i = r; i < type->cnt - 1; i++) {
@@ -289,11 +317,15 @@ static void __init_memblock memblock_remove_region(struct memblock_type *type, u
 		type->regions[i].size = type->regions[i + 1].size;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	type->cnt--;
 
 	/* Special case for empty arrays */
 	if (type->cnt == 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		WARN_ON(type->total_size != 0);
 		type->cnt = 1;
 		type->regions[0].base = 0;
@@ -302,6 +334,8 @@ static void __init_memblock memblock_remove_region(struct memblock_type *type, u
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 		type->cnt = 1;
 		type->regions[0].base = 0;
@@ -313,6 +347,7 @@ static void __init_memblock memblock_remove_region(struct memblock_type *type, u
 static long memblock_add_region(struct memblock_type *type, phys_addr_t base, phys_addr_t size);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init_memblock memblock_double_array(struct memblock_type *type)
 {
 	struct memblock_region *new_array, *old_array;
@@ -343,16 +378,22 @@ static int __init_memblock memblock_double_array(struct memblock_type *type)
 	if (use_slab) {
 		new_array = kmalloc(new_size, GFP_KERNEL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		addr = new_array ? __pa(new_array) : 0;
 	} else
 		addr = memblock_find_in_range(0, MEMBLOCK_ALLOC_ACCESSIBLE, new_size, sizeof(phys_addr_t));
 	if (!addr) {
+<<<<<<< HEAD
+=======
 =======
 		addr = new_array == NULL ? MEMBLOCK_ERROR : __pa(new_array);
 	} else
 		addr = memblock_find_base(new_size, sizeof(phys_addr_t), 0, MEMBLOCK_ALLOC_ACCESSIBLE);
 	if (addr == MEMBLOCK_ERROR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("memblock: Failed to double %s array from %ld to %ld entries !\n",
 		       memblock_type_name(type), type->max, type->max * 2);
 		return -1;
@@ -380,8 +421,12 @@ static int __init_memblock memblock_double_array(struct memblock_type *type)
 <<<<<<< HEAD
 	BUG_ON(memblock_reserve(addr, new_size));
 =======
+<<<<<<< HEAD
+	BUG_ON(memblock_reserve(addr, new_size));
+=======
 	BUG_ON(memblock_add_region(&memblock.reserved, addr, new_size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If the array wasn't our static init one, then free it. We only do
 	 * that before SLAB is available as later on, we don't know whether
@@ -396,6 +441,9 @@ static int __init_memblock memblock_double_array(struct memblock_type *type)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * memblock_merge_regions - merge neighboring compatible regions
  * @type: memblock type to scan
@@ -641,6 +689,8 @@ static int __init_memblock __memblock_remove(struct memblock_type *type,
 }
 
 int __init_memblock memblock_remove(phys_addr_t base, phys_addr_t size)
+<<<<<<< HEAD
+=======
 =======
 extern int __init_memblock __weak memblock_memory_can_coalesce(phys_addr_t addr1, phys_addr_t size1,
 					  phys_addr_t addr2, phys_addr_t size2)
@@ -837,11 +887,15 @@ static long __init_memblock __memblock_remove(struct memblock_type *type,
 
 long __init_memblock memblock_remove(phys_addr_t base, phys_addr_t size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return __memblock_remove(&memblock.memory, base, size);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init_memblock memblock_free(phys_addr_t base, phys_addr_t size)
 {
 	memblock_dbg("   memblock_free: [%#016llx-%#016llx] %pF\n",
@@ -1081,6 +1135,8 @@ static phys_addr_t __init memblock_alloc_base_nid(phys_addr_t size,
 		return found;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 long __init_memblock memblock_free(phys_addr_t base, phys_addr_t size)
 {
@@ -1196,11 +1252,15 @@ static phys_addr_t __init memblock_alloc_nid_region(struct memblock_region *mp,
 
 	return MEMBLOCK_ERROR;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 phys_addr_t __init memblock_alloc_nid(phys_addr_t size, phys_addr_t align, int nid)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return memblock_alloc_base_nid(size, align, MEMBLOCK_ALLOC_ACCESSIBLE, nid);
 }
 
@@ -1225,6 +1285,8 @@ phys_addr_t __init memblock_alloc_base(phys_addr_t size, phys_addr_t align, phys
 phys_addr_t __init memblock_alloc(phys_addr_t size, phys_addr_t align)
 {
 	return memblock_alloc_base(size, align, MEMBLOCK_ALLOC_ACCESSIBLE);
+<<<<<<< HEAD
+=======
 =======
 	struct memblock_type *mem = &memblock.memory;
 	int i;
@@ -1249,6 +1311,7 @@ phys_addr_t __init memblock_alloc(phys_addr_t size, phys_addr_t align)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 phys_addr_t __init memblock_alloc_try_nid(phys_addr_t size, phys_addr_t align, int nid)
@@ -1260,8 +1323,12 @@ phys_addr_t __init memblock_alloc_try_nid(phys_addr_t size, phys_addr_t align, i
 <<<<<<< HEAD
 	return memblock_alloc_base(size, align, MEMBLOCK_ALLOC_ACCESSIBLE);
 =======
+<<<<<<< HEAD
+	return memblock_alloc_base(size, align, MEMBLOCK_ALLOC_ACCESSIBLE);
+=======
 	return memblock_alloc_base(size, align, MEMBLOCK_ALLOC_ANYWHERE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -1270,6 +1337,9 @@ phys_addr_t __init memblock_alloc_try_nid(phys_addr_t size, phys_addr_t align, i
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 phys_addr_t __init memblock_phys_mem_size(void)
 {
 	return memblock.memory.total_size;
@@ -1279,12 +1349,15 @@ phys_addr_t __init memblock_phys_mem_size(void)
 phys_addr_t __init_memblock memblock_start_of_DRAM(void)
 {
 	return memblock.memory.regions[0].base;
+<<<<<<< HEAD
+=======
 =======
 /* You must call memblock_analyze() before this. */
 phys_addr_t __init memblock_phys_mem_size(void)
 {
 	return memblock.memory_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 phys_addr_t __init_memblock memblock_end_of_DRAM(void)
@@ -1295,6 +1368,9 @@ phys_addr_t __init_memblock memblock_end_of_DRAM(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init memblock_enforce_memory_limit(phys_addr_t limit)
 {
 	unsigned long i;
@@ -1317,6 +1393,8 @@ void __init memblock_enforce_memory_limit(phys_addr_t limit)
 	/* truncate both memory and reserved regions */
 	__memblock_remove(&memblock.memory, max_addr, (phys_addr_t)ULLONG_MAX);
 	__memblock_remove(&memblock.reserved, max_addr, (phys_addr_t)ULLONG_MAX);
+<<<<<<< HEAD
+=======
 =======
 /* You must call memblock_analyze() after this. */
 void __init memblock_enforce_memory_limit(phys_addr_t memory_limit)
@@ -1358,6 +1436,7 @@ void __init memblock_enforce_memory_limit(phys_addr_t memory_limit)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init_memblock memblock_search(struct memblock_type *type, phys_addr_t addr)
@@ -1394,13 +1473,20 @@ int __init_memblock memblock_is_region_memory(phys_addr_t base, phys_addr_t size
 <<<<<<< HEAD
 	phys_addr_t end = base + memblock_cap_size(base, &size);
 =======
+<<<<<<< HEAD
+	phys_addr_t end = base + memblock_cap_size(base, &size);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (idx == -1)
 		return 0;
 	return memblock.memory.regions[idx].base <= base &&
 		(memblock.memory.regions[idx].base +
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 memblock.memory.regions[idx].size) >= end;
 }
 
@@ -1408,9 +1494,12 @@ int __init_memblock memblock_overlaps_memory(phys_addr_t base, phys_addr_t size)
 {
 	memblock_cap_size(base, &size);
 	return memblock_overlaps_region(&memblock.memory, base, size) >= 0;
+<<<<<<< HEAD
+=======
 =======
 		 memblock.memory.regions[idx].size) >= (base + size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int __init_memblock memblock_is_region_reserved(phys_addr_t base, phys_addr_t size)
@@ -1418,7 +1507,11 @@ int __init_memblock memblock_is_region_reserved(phys_addr_t base, phys_addr_t si
 <<<<<<< HEAD
 	memblock_cap_size(base, &size);
 =======
+<<<<<<< HEAD
+	memblock_cap_size(base, &size);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return memblock_overlaps_region(&memblock.reserved, base, size) >= 0;
 }
 
@@ -1431,13 +1524,20 @@ void __init_memblock memblock_set_current_limit(phys_addr_t limit)
 <<<<<<< HEAD
 static void __init_memblock memblock_dump(struct memblock_type *type, char *name)
 =======
+<<<<<<< HEAD
+static void __init_memblock memblock_dump(struct memblock_type *type, char *name)
+=======
 static void __init_memblock memblock_dump(struct memblock_type *region, char *name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long long base, size;
 	int i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info(" %s.cnt  = 0x%lx\n", name, type->cnt);
 
 	for (i = 0; i < type->cnt; i++) {
@@ -1462,6 +1562,8 @@ void __init_memblock __memblock_dump_all(void)
 	pr_info(" memory size = %#llx reserved size = %#llx\n",
 		(unsigned long long)memblock.memory.total_size,
 		(unsigned long long)memblock.reserved.total_size);
+<<<<<<< HEAD
+=======
 =======
 	pr_info(" %s.cnt  = 0x%lx\n", name, region->cnt);
 
@@ -1482,17 +1584,23 @@ void __init_memblock memblock_dump_all(void)
 	pr_info("MEMBLOCK configuration:\n");
 	pr_info(" memory size = 0x%llx\n", (unsigned long long)memblock.memory_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memblock_dump(&memblock.memory, "memory");
 	memblock_dump(&memblock.reserved, "reserved");
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init memblock_allow_resize(void)
 {
 	memblock_can_resize = 1;
 }
 
+<<<<<<< HEAD
+=======
 =======
 void __init memblock_analyze(void)
 {
@@ -1547,6 +1655,7 @@ void __init memblock_init(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init early_memblock(char *p)
 {
 	if (p && strstr(p, "debug"))
@@ -1558,8 +1667,12 @@ early_param("memblock", early_memblock);
 <<<<<<< HEAD
 #if defined(CONFIG_DEBUG_FS) && !defined(CONFIG_ARCH_DISCARD_MEMBLOCK)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_DEBUG_FS) && !defined(CONFIG_ARCH_DISCARD_MEMBLOCK)
+=======
 #if defined(CONFIG_DEBUG_FS) && !defined(ARCH_DISCARD_MEMBLOCK)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int memblock_debug_show(struct seq_file *m, void *private)
 {

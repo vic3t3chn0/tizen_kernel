@@ -27,8 +27,11 @@
 #include <asm/pgtable.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/processor.h>
 #include <asm/mmu.h>
 #include <asm/mmu_context.h>
@@ -37,7 +40,11 @@
 <<<<<<< HEAD
 #include <asm/facility.h>
 =======
+<<<<<<< HEAD
+#include <asm/facility.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_32BIT) || defined(CONFIG_COMPAT)
 extern char vdso32_start, vdso32_end;
@@ -98,6 +105,8 @@ static void vdso_init_data(struct vdso_data *vd)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Setup per cpu vdso data page.
  */
 static void vdso_init_per_cpu_data(int cpu, struct vdso_per_cpu_data *vpcd)
@@ -106,6 +115,7 @@ static void vdso_init_per_cpu_data(int cpu, struct vdso_per_cpu_data *vpcd)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Allocate/free per cpu vdso data.
  */
 #define SEGMENT_ORDER	2
@@ -113,8 +123,12 @@ static void vdso_init_per_cpu_data(int cpu, struct vdso_per_cpu_data *vpcd)
 <<<<<<< HEAD
 int vdso_alloc_per_cpu(struct _lowcore *lowcore)
 =======
+<<<<<<< HEAD
+int vdso_alloc_per_cpu(struct _lowcore *lowcore)
+=======
 int vdso_alloc_per_cpu(int cpu, struct _lowcore *lowcore)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long segment_table, page_table, page_frame;
 	u32 *psal, *aste;
@@ -155,8 +169,11 @@ int vdso_alloc_per_cpu(int cpu, struct _lowcore *lowcore)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	vdso_init_per_cpu_data(cpu, (struct vdso_per_cpu_data *) page_frame);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 out:
@@ -169,8 +186,12 @@ out:
 <<<<<<< HEAD
 void vdso_free_per_cpu(struct _lowcore *lowcore)
 =======
+<<<<<<< HEAD
+void vdso_free_per_cpu(struct _lowcore *lowcore)
+=======
 void vdso_free_per_cpu(int cpu, struct _lowcore *lowcore)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long segment_table, page_table, page_frame;
 	u32 *psal, *aste;
@@ -190,6 +211,9 @@ void vdso_free_per_cpu(int cpu, struct _lowcore *lowcore)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void vdso_init_cr5(void)
 {
 	unsigned long cr5;
@@ -199,6 +223,8 @@ static void vdso_init_cr5(void)
 	cr5 = offsetof(struct _lowcore, paste);
 	__ctl_load(cr5, 5, 5);
 }
+<<<<<<< HEAD
+=======
 =======
 static void __vdso_init_cr5(void *dummy)
 {
@@ -214,6 +240,7 @@ static void vdso_init_cr5(void)
 		on_each_cpu(__vdso_init_cr5, NULL, 1);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_64BIT */
 
 /*
@@ -287,11 +314,16 @@ int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 	 * updates and your nice userland gettimeofday will be totally dead.
 	 * It's fine to use that for setting breakpoints in the vDSO code
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * pages though.
 	 */
 	rc = install_special_mapping(mm, vdso_base, vdso_pages << PAGE_SHIFT,
 				     VM_READ|VM_EXEC|
 				     VM_MAYREAD|VM_MAYWRITE|VM_MAYEXEC,
+<<<<<<< HEAD
+=======
 =======
 	 * pages though
 	 *
@@ -305,6 +337,7 @@ int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 				     VM_MAYREAD|VM_MAYWRITE|VM_MAYEXEC|
 				     VM_ALWAYSDUMP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     vdso_pagelist);
 	if (rc)
 		current->mm->context.vdso_base = 0;
@@ -367,11 +400,16 @@ static int __init vdso_init(void)
 	if (vdso_alloc_per_cpu(&S390_lowcore))
 		BUG();
 =======
+<<<<<<< HEAD
+	if (vdso_alloc_per_cpu(&S390_lowcore))
+		BUG();
+=======
 #ifndef CONFIG_SMP
 	if (vdso_alloc_per_cpu(0, &S390_lowcore))
 		BUG();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vdso_init_cr5();
 #endif /* CONFIG_64BIT */
 
@@ -384,8 +422,12 @@ static int __init vdso_init(void)
 <<<<<<< HEAD
 early_initcall(vdso_init);
 =======
+<<<<<<< HEAD
+early_initcall(vdso_init);
+=======
 arch_initcall(vdso_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int in_gate_area_no_mm(unsigned long addr)
 {

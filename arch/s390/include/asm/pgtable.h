@@ -69,11 +69,14 @@ static inline int is_zero_pfn(unsigned long pfn)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* TODO: s390 cannot support io_remap_pfn_range... */
 #define io_remap_pfn_range(vma, vaddr, pfn, size, prot) 	       \
 	remap_pfn_range(vma, vaddr, pfn, size, prot)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !__ASSEMBLY__ */
 
 /*
@@ -136,11 +139,16 @@ static inline int is_zero_pfn(unsigned long pfn)
  * as system call address.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern unsigned long VMALLOC_START;
 extern unsigned long VMALLOC_END;
 extern struct page *vmemmap;
 
 #define VMEM_MAX_PHYS ((unsigned long) vmemmap)
+<<<<<<< HEAD
+=======
 =======
 
 extern unsigned long VMALLOC_START;
@@ -165,6 +173,7 @@ extern unsigned long VMALLOC_START;
 #define VMEM_MAX_PHYS	((VMEM_MAX_PFN << PAGE_SHIFT) & ~((16 << 20) - 1))
 #define vmemmap		((struct page *) VMALLOC_END)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * A 31 bit pagetable entry of S390 has following format:
@@ -612,22 +621,33 @@ static inline pgste_t pgste_update_all(pte_t *ptep, pgste_t pgste)
 	if (!pte_present(*ptep))
 		return pgste;
 =======
+<<<<<<< HEAD
+	if (!pte_present(*ptep))
+		return pgste;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	address = pte_val(*ptep) & PAGE_MASK;
 	skey = page_get_storage_key(address);
 	bits = skey & (_PAGE_CHANGED | _PAGE_REFERENCED);
 	/* Clear page changed & referenced bit in the storage key */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bits & _PAGE_CHANGED)
 		page_set_storage_key(address, skey ^ bits, 1);
 	else if (bits)
 		page_reset_referenced(address);
+<<<<<<< HEAD
+=======
 =======
 	if (bits) {
 		skey ^= bits;
 		page_set_storage_key(address, skey, 1);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Transfer page changed & referenced bit to guest bits in pgste */
 	pgste_val(pgste) |= bits << 48;		/* RCP_GR_BIT & RCP_GC_BIT */
 	/* Get host changed & referenced bits from pgste */
@@ -656,7 +676,12 @@ static inline pgste_t pgste_update_young(pte_t *ptep, pgste_t pgste)
 	if (!pte_present(*ptep))
 		return pgste;
 =======
+<<<<<<< HEAD
+	if (!pte_present(*ptep))
+		return pgste;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	young = page_reset_referenced(pte_val(*ptep) & PAGE_MASK);
 	/* Transfer page referenced bit to pte software bit (host view) */
 	if (young || (pgste_val(pgste) & RCP_HR_BIT))
@@ -673,8 +698,12 @@ static inline pgste_t pgste_update_young(pte_t *ptep, pgste_t pgste)
 <<<<<<< HEAD
 static inline void pgste_set_pte(pte_t *ptep, pgste_t pgste, pte_t entry)
 =======
+<<<<<<< HEAD
+static inline void pgste_set_pte(pte_t *ptep, pgste_t pgste, pte_t entry)
+=======
 static inline void pgste_set_pte(pte_t *ptep, pgste_t pgste)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_PGSTE
 	unsigned long address;
@@ -685,8 +714,14 @@ static inline void pgste_set_pte(pte_t *ptep, pgste_t pgste)
 		return;
 	address = pte_val(entry) & PAGE_MASK;
 =======
+<<<<<<< HEAD
+	if (!pte_present(entry))
+		return;
+	address = pte_val(entry) & PAGE_MASK;
+=======
 	address = pte_val(*ptep) & PAGE_MASK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	okey = nkey = page_get_storage_key(address);
 	nkey &= ~(_PAGE_ACC_BITS | _PAGE_FP_BIT);
 	/* Set page access key and fetch protection bit from pgste */
@@ -697,6 +732,9 @@ static inline void pgste_set_pte(pte_t *ptep, pgste_t pgste)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct gmap_struct - guest address space
  * @mm: pointer to the parent mm_struct
@@ -743,8 +781,11 @@ unsigned long __gmap_fault(unsigned long address, struct gmap *);
 unsigned long gmap_fault(unsigned long address, struct gmap *);
 void gmap_discard(unsigned long from, unsigned long to, struct gmap *);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Certain architectures need to do special things when PTEs
  * within a page table are directly modified.  Thus, the following
@@ -760,8 +801,12 @@ static inline void set_pte_at(struct mm_struct *mm, unsigned long addr,
 <<<<<<< HEAD
 		pgste_set_pte(ptep, pgste, entry);
 =======
+<<<<<<< HEAD
+		pgste_set_pte(ptep, pgste, entry);
+=======
 		pgste_set_pte(ptep, pgste);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*ptep = entry;
 		pgste_set_unlock(ptep, pgste);
 	} else

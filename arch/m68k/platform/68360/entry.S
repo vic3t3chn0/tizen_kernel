@@ -66,8 +66,12 @@ ENTRY(system_call)
 <<<<<<< HEAD
 	SAVE_ALL_SYS
 =======
+<<<<<<< HEAD
+	SAVE_ALL_SYS
+=======
 	SAVE_ALL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* save top of frame*/
 	pea	%sp@
@@ -132,8 +136,12 @@ inthandler:
 <<<<<<< HEAD
 	SAVE_ALL_INT
 =======
+<<<<<<< HEAD
+	SAVE_ALL_INT
+=======
 	SAVE_ALL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movew	%sp@(PT_OFF_FORMATVEC), %d0
 	and.l	#0x3ff, %d0
 	lsr.l   #0x02,  %d0
@@ -168,8 +176,12 @@ bad_interrupt:
 <<<<<<< HEAD
 	addql	#1,irq_err_count
 =======
+<<<<<<< HEAD
+	addql	#1,irq_err_count
+=======
 	addql	#1,num_spurious
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rte
 
 /*
@@ -177,14 +189,21 @@ bad_interrupt:
 <<<<<<< HEAD
  * in a0, next (the new task) is in a1, so don't change these
 =======
+<<<<<<< HEAD
+ * in a0, next (the new task) is in a1, so don't change these
+=======
  * in a0, next (the new task) is in a1,so don't change these
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * registers until their contents are no longer needed.
  */
 ENTRY(resume)
 	movel	%a0,%d1				/* save prev thread in d1 */
 	movew	%sr,%a0@(TASK_THREAD+THREAD_SR)	/* save sr */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SAVE_SWITCH_STACK
 	movel	%sp,%a0@(TASK_THREAD+THREAD_KSP) /* save kernel stack */
 	movel	%usp,%a3			/* save usp */
@@ -194,6 +213,8 @@ ENTRY(resume)
 	movel	%a3,%usp
 	movel	%a1@(TASK_THREAD+THREAD_KSP),%sp /* restore new thread stack */
 	RESTORE_SWITCH_STACK
+<<<<<<< HEAD
+=======
 =======
 	movel	%usp,%a2			/* save usp */
 	movel	%a2,%a0@(TASK_THREAD+THREAD_USP)
@@ -206,6 +227,7 @@ ENTRY(resume)
 	movel	%a1@(TASK_THREAD+THREAD_USP),%a0 /* restore user stack */
 	movel	%a0,%usp
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movew	%a1@(TASK_THREAD+THREAD_SR),%sr	/* restore thread status reg */
 	rts
 

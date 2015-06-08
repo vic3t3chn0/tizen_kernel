@@ -68,7 +68,12 @@ struct btrfs_worker_thread {
 static int __btrfs_start_workers(struct btrfs_workers *workers);
 
 =======
+<<<<<<< HEAD
+static int __btrfs_start_workers(struct btrfs_workers *workers);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * btrfs_start_workers uses kthread_run, which can block waiting for memory
  * for a very long time.  It will actually throttle on page writeback,
@@ -94,10 +99,15 @@ static void start_new_worker_func(struct btrfs_work *work)
 	struct worker_start *start;
 	start = container_of(work, struct worker_start, work);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__btrfs_start_workers(start->queue);
 	kfree(start);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	btrfs_start_workers(start->queue, 1);
 	kfree(start);
@@ -121,6 +131,7 @@ static int start_new_worker(struct btrfs_workers *queue)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * helper function to move a thread onto the idle list after it
  * has finished some requests.
@@ -168,7 +179,11 @@ static void check_pending_worker_creates(struct btrfs_worker_thread *worker)
 <<<<<<< HEAD
 	struct worker_start *start;
 =======
+<<<<<<< HEAD
+	struct worker_start *start;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 
 	rmb();
@@ -176,6 +191,9 @@ static void check_pending_worker_creates(struct btrfs_worker_thread *worker)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	start = kzalloc(sizeof(*start), GFP_NOFS);
 	if (!start)
 		return;
@@ -183,8 +201,11 @@ static void check_pending_worker_creates(struct btrfs_worker_thread *worker)
 	start->work.func = start_new_worker_func;
 	start->queue = workers;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&workers->lock, flags);
 	if (!workers->atomic_start_pending)
 		goto out;
@@ -197,6 +218,9 @@ static void check_pending_worker_creates(struct btrfs_worker_thread *worker)
 	workers->num_workers_starting += 1;
 	spin_unlock_irqrestore(&workers->lock, flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btrfs_queue_worker(workers->atomic_worker_start, &start->work);
 	return;
 
@@ -210,6 +234,8 @@ static noinline void run_ordered_completions(struct btrfs_workers *workers,
 {
 	if (!workers->ordered)
 		return;
+<<<<<<< HEAD
+=======
 =======
 	start_new_worker(workers);
 	return;
@@ -224,6 +250,7 @@ static noinline int run_ordered_completions(struct btrfs_workers *workers,
 	if (!workers->ordered)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	set_bit(WORK_DONE_BIT, &work->flags);
 
@@ -255,6 +282,9 @@ static noinline int run_ordered_completions(struct btrfs_workers *workers,
 		work->ordered_func(work);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* now take the lock again and call the freeing code */
 		spin_lock(&workers->order_lock);
 		list_del(&work->order_list);
@@ -262,6 +292,8 @@ static noinline int run_ordered_completions(struct btrfs_workers *workers,
 	}
 
 	spin_unlock(&workers->order_lock);
+<<<<<<< HEAD
+=======
 =======
 		/* now take the lock again and drop our item from the list */
 		spin_lock(&workers->order_lock);
@@ -279,6 +311,7 @@ static noinline int run_ordered_completions(struct btrfs_workers *workers,
 	spin_unlock(&workers->order_lock);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void put_worker(struct btrfs_worker_thread *worker)
@@ -393,8 +426,12 @@ again:
 <<<<<<< HEAD
 			cond_resched();
 =======
+<<<<<<< HEAD
+			cond_resched();
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		spin_lock_irq(&worker->lock);
@@ -406,8 +443,12 @@ again:
 <<<<<<< HEAD
 			try_to_freeze();
 =======
+<<<<<<< HEAD
+			try_to_freeze();
+=======
 			refrigerator();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			spin_unlock_irq(&worker->lock);
 			if (!kthread_should_stop()) {
@@ -475,8 +516,12 @@ again:
 <<<<<<< HEAD
 void btrfs_stop_workers(struct btrfs_workers *workers)
 =======
+<<<<<<< HEAD
+void btrfs_stop_workers(struct btrfs_workers *workers)
+=======
 int btrfs_stop_workers(struct btrfs_workers *workers)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct list_head *cur;
 	struct btrfs_worker_thread *worker;
@@ -506,8 +551,11 @@ int btrfs_stop_workers(struct btrfs_workers *workers)
 	spin_unlock_irq(&workers->lock);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -537,6 +585,9 @@ void btrfs_init_workers(struct btrfs_workers *workers, char *name, int max,
  * count in case you need to temporarily go past it.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __btrfs_start_workers(struct btrfs_workers *workers)
 {
 	struct btrfs_worker_thread *worker;
@@ -586,6 +637,8 @@ int btrfs_start_workers(struct btrfs_workers *workers)
 	workers->num_workers_starting++;
 	spin_unlock_irq(&workers->lock);
 	return __btrfs_start_workers(workers);
+<<<<<<< HEAD
+=======
 =======
 static int __btrfs_start_workers(struct btrfs_workers *workers,
 				 int num_workers)
@@ -638,6 +691,7 @@ int btrfs_start_workers(struct btrfs_workers *workers, int num_workers)
 	spin_unlock_irq(&workers->lock);
 	return __btrfs_start_workers(workers, num_workers);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -695,15 +749,21 @@ static struct btrfs_worker_thread *find_worker(struct btrfs_workers *workers)
 	unsigned long flags;
 	struct list_head *fallback;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	spin_lock_irqsave(&workers->lock, flags);
 again:
+<<<<<<< HEAD
+=======
 =======
 
 again:
 	spin_lock_irqsave(&workers->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	worker = next_worker(workers);
 
 	if (!worker) {
@@ -718,13 +778,19 @@ again:
 			spin_unlock_irqrestore(&workers->lock, flags);
 			/* we're below the limit, start another worker */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = __btrfs_start_workers(workers);
 			spin_lock_irqsave(&workers->lock, flags);
 			if (ret)
 				goto fallback;
+<<<<<<< HEAD
+=======
 =======
 			__btrfs_start_workers(workers, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto again;
 		}
 	}
@@ -761,8 +827,12 @@ found:
 <<<<<<< HEAD
 void btrfs_requeue_work(struct btrfs_work *work)
 =======
+<<<<<<< HEAD
+void btrfs_requeue_work(struct btrfs_work *work)
+=======
 int btrfs_requeue_work(struct btrfs_work *work)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct btrfs_worker_thread *worker = work->worker;
 	unsigned long flags;
@@ -772,8 +842,12 @@ int btrfs_requeue_work(struct btrfs_work *work)
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&worker->lock, flags);
 	if (test_bit(WORK_HIGH_PRIO_BIT, &work->flags))
@@ -802,10 +876,13 @@ int btrfs_requeue_work(struct btrfs_work *work)
 	spin_unlock_irqrestore(&worker->lock, flags);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 out:
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void btrfs_set_work_high_prio(struct btrfs_work *work)
@@ -819,8 +896,12 @@ void btrfs_set_work_high_prio(struct btrfs_work *work)
 <<<<<<< HEAD
 void btrfs_queue_worker(struct btrfs_workers *workers, struct btrfs_work *work)
 =======
+<<<<<<< HEAD
+void btrfs_queue_worker(struct btrfs_workers *workers, struct btrfs_work *work)
+=======
 int btrfs_queue_worker(struct btrfs_workers *workers, struct btrfs_work *work)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct btrfs_worker_thread *worker;
 	unsigned long flags;
@@ -831,8 +912,12 @@ int btrfs_queue_worker(struct btrfs_workers *workers, struct btrfs_work *work)
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	worker = find_worker(workers);
 	if (workers->ordered) {
@@ -873,8 +958,11 @@ int btrfs_queue_worker(struct btrfs_workers *workers, struct btrfs_work *work)
 	spin_unlock_irqrestore(&worker->lock, flags);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 out:
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

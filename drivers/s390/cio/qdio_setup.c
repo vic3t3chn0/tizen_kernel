@@ -8,6 +8,13 @@
  */
 #include <linux/kernel.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/qdio.h>
 
 #include "cio.h"
@@ -19,6 +26,25 @@
 #include "qdio_debug.h"
 
 static struct kmem_cache *qdio_q_cache;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct kmem_cache *qdio_aob_cache;
+
+struct qaob *qdio_allocate_aob(void)
+{
+	return kmem_cache_zalloc(qdio_aob_cache, GFP_ATOMIC);
+}
+EXPORT_SYMBOL_GPL(qdio_allocate_aob);
+
+void qdio_release_aob(struct qaob *aob)
+{
+	kmem_cache_free(qdio_aob_cache, aob);
+}
+EXPORT_SYMBOL_GPL(qdio_release_aob);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * qebsm is only available under 64bit but the adapter sets the feature
@@ -154,6 +180,33 @@ static void setup_queues(struct qdio_irq *irq_ptr,
 	struct qdio_q *q;
 	void **input_sbal_array = qdio_init->input_sbal_addr_array;
 	void **output_sbal_array = qdio_init->output_sbal_addr_array;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct qdio_outbuf_state *output_sbal_state_array =
+				  qdio_init->output_sbal_state_array;
+	int i;
+
+	for_each_input_queue(irq_ptr, q, i) {
+		DBF_EVENT("inq:%1d", i);
+		setup_queues_misc(q, irq_ptr, qdio_init->input_handler, i);
+
+		q->is_input_q = 1;
+		q->u.in.queue_start_poll = qdio_init->queue_start_poll_array ?
+				qdio_init->queue_start_poll_array[i] : NULL;
+
+		setup_storage_lists(q, irq_ptr, input_sbal_array, i);
+		input_sbal_array += QDIO_MAX_BUFFERS_PER_Q;
+
+		if (is_thinint_irq(irq_ptr)) {
+			tasklet_init(&q->tasklet, tiqdio_inbound_processing,
+				     (unsigned long) q);
+		} else {
+			tasklet_init(&q->tasklet, qdio_inbound_processing,
+				     (unsigned long) q);
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	for_each_input_queue(irq_ptr, q, i) {
@@ -171,12 +224,25 @@ static void setup_queues(struct qdio_irq *irq_ptr,
 		else
 			tasklet_init(&q->tasklet, qdio_inbound_processing,
 				     (unsigned long) q);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for_each_output_queue(irq_ptr, q, i) {
 		DBF_EVENT("outq:%1d", i);
 		setup_queues_misc(q, irq_ptr, qdio_init->output_handler, i);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		q->u.out.sbal_state = output_sbal_state_array;
+		output_sbal_state_array += QDIO_MAX_BUFFERS_PER_Q;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		q->is_input_q = 0;
 		q->u.out.scan_threshold = qdio_init->scan_threshold;
 		setup_storage_lists(q, irq_ptr, output_sbal_array, i);
@@ -289,7 +355,16 @@ void qdio_setup_ssqd_info(struct qdio_irq *irq_ptr)
 
 	check_and_setup_qebsm(irq_ptr, qdioac, irq_ptr->ssqd_desc.sch_token);
 	process_ac_flags(irq_ptr, qdioac);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	DBF_EVENT("ac 1:%2x 2:%4x", qdioac, irq_ptr->ssqd_desc.qdioac2);
+	DBF_EVENT("3:%4x qib:%4x", irq_ptr->ssqd_desc.qdioac3, irq_ptr->qib.ac);
+=======
 	DBF_EVENT("qdioac:%4x", qdioac);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBF_EVENT("qdioac:%4x", qdioac);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void qdio_release_memory(struct qdio_irq *irq_ptr)
@@ -311,6 +386,25 @@ void qdio_release_memory(struct qdio_irq *irq_ptr)
 	for (i = 0; i < QDIO_MAX_QUEUES_PER_IRQ; i++) {
 		q = irq_ptr->output_qs[i];
 		if (q) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (q->u.out.use_cq) {
+				int n;
+
+				for (n = 0; n < QDIO_MAX_BUFFERS_PER_Q; ++n) {
+					struct qaob *aob = q->u.out.aobs[n];
+					if (aob) {
+						qdio_release_aob(aob);
+						q->u.out.aobs[n] = NULL;
+					}
+				}
+
+				qdio_disable_async_operation(&q->u.out);
+			}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free_page((unsigned long) q->slib);
 			kmem_cache_free(qdio_q_cache, q);
 		}
@@ -345,6 +439,13 @@ static void setup_qdr(struct qdio_irq *irq_ptr,
 	int i;
 
 	irq_ptr->qdr->qfmt = qdio_init->q_format;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	irq_ptr->qdr->ac = qdio_init->qdr_ac;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_ptr->qdr->iqdcnt = qdio_init->no_input_qs;
 	irq_ptr->qdr->oqdcnt = qdio_init->no_output_qs;
 	irq_ptr->qdr->iqdsz = sizeof(struct qdesfmt0) / 4; /* size in words */
@@ -465,23 +566,90 @@ void qdio_print_subchannel_info(struct qdio_irq *irq_ptr,
 	printk(KERN_INFO "%s", s);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int qdio_enable_async_operation(struct qdio_output_q *outq)
+{
+	outq->aobs = kzalloc(sizeof(struct qaob *) * QDIO_MAX_BUFFERS_PER_Q,
+			     GFP_ATOMIC);
+	if (!outq->aobs) {
+		outq->use_cq = 0;
+		return -ENOMEM;
+	}
+	outq->use_cq = 1;
+	return 0;
+}
+
+void qdio_disable_async_operation(struct qdio_output_q *q)
+{
+	kfree(q->aobs);
+	q->aobs = NULL;
+	q->use_cq = 0;
+}
+
 int __init qdio_setup_init(void)
 {
+	int rc;
+
+=======
+int __init qdio_setup_init(void)
+{
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int __init qdio_setup_init(void)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	qdio_q_cache = kmem_cache_create("qdio_q", sizeof(struct qdio_q),
 					 256, 0, NULL);
 	if (!qdio_q_cache)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	qdio_aob_cache = kmem_cache_create("qdio_aob",
+					sizeof(struct qaob),
+					sizeof(struct qaob),
+					0,
+					NULL);
+	if (!qdio_aob_cache) {
+		rc = -ENOMEM;
+		goto free_qdio_q_cache;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Check for OSA/FCP thin interrupts (bit 67). */
 	DBF_EVENT("thinint:%1d",
 		  (css_general_characteristics.aif_osa) ? 1 : 0);
 
 	/* Check for QEBSM support in general (bit 58). */
 	DBF_EVENT("cssQEBSM:%1d", (qebsm_possible()) ? 1 : 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rc = 0;
+out:
+	return rc;
+free_qdio_q_cache:
+	kmem_cache_destroy(qdio_q_cache);
+	goto out;
+=======
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void qdio_setup_exit(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kmem_cache_destroy(qdio_aob_cache);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_destroy(qdio_q_cache);
 }

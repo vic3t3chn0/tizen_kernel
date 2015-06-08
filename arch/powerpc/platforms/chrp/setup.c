@@ -439,9 +439,14 @@ static void __init chrp_find_openpic(void)
 	chrp_mpic = mpic_alloc(np, opaddr, MPIC_NO_RESET,
 			isu_size, 0, " MPIC    ");
 =======
+<<<<<<< HEAD
+	chrp_mpic = mpic_alloc(np, opaddr, MPIC_NO_RESET,
+			isu_size, 0, " MPIC    ");
+=======
 	chrp_mpic = mpic_alloc(np, opaddr, MPIC_PRIMARY,
 			       isu_size, 0, " MPIC    ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chrp_mpic == NULL) {
 		printk(KERN_ERR "Failed to allocate MPIC structure\n");
 		goto bail;

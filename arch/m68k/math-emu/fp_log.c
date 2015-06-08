@@ -107,10 +107,13 @@ fp_fetoxm1(struct fp_ext *dest, struct fp_ext *src)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (IS_ZERO(dest))
 		return dest;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return dest;
 }
 

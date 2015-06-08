@@ -22,7 +22,15 @@
  * software in any way with any other Broadcom software provided under a license
  * other than the GPL, without Broadcom's express prior written consent.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * $Id: aiutils.c 321247 2012-03-14 21:14:33Z $
+=======
  * $Id: aiutils.c 363711 2012-10-19 01:36:13Z $
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * $Id: aiutils.c 363711 2012-10-19 01:36:13Z $
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #include <bcm_cfg.h>
 #include <typedefs.h>
@@ -38,7 +46,14 @@
 
 #define BCM47162_DMP() (0)
 #define BCM5357_DMP() (0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define BCM4707_DMP() (0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define BCM4707_DMP() (0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define remap_coreid(sih, coreid)	(coreid)
 #define remap_corerev(sih, corerev)	(corerev)
 
@@ -208,7 +223,15 @@ ai_scan(si_t *sih, void *regs, uint devid)
 					sii->oob_router = addrl;
 				}
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (cid != GMAC_COMMON_4706_CORE_ID)
+=======
 			if (cid != GMAC_COMMON_4706_CORE_ID && cid != NS_CCB_CORE_ID)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (cid != GMAC_COMMON_4706_CORE_ID && cid != NS_CCB_CORE_ID)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 		}
 
@@ -232,12 +255,30 @@ ai_scan(si_t *sih, void *regs, uint devid)
 		
 		asd = get_asd(sih, &eromptr, 0, 0, AD_ST_SLAVE, &addrl, &addrh, &sizel, &sizeh);
 		if (asd == 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			do {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			do {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			
 			asd = get_asd(sih, &eromptr, 0, 0, AD_ST_BRIDGE, &addrl, &addrh,
 			              &sizel, &sizeh);
 			if (asd != 0)
 				br = TRUE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			else
+				if ((addrh != 0) || (sizeh != 0) || (sizel != SI_CORE_SIZE)) {
+					SI_ERROR(("First Slave ASD for core 0x%04x malformed "
+					          "(0x%08x)\n", cid, asd));
+					goto error;
+				}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else {
 					if (br == TRUE) {
 						break;
@@ -253,6 +294,10 @@ ai_scan(si_t *sih, void *regs, uint devid)
 					}
 				}
 			} while (1);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		sii->coresba[idx] = addrl;
 		sii->coresba_size[idx] = sizel;
@@ -359,7 +404,15 @@ ai_setcoreidx(si_t *sih, uint coreidx)
 			ASSERT(GOODREGS(sii->regs[coreidx]));
 		}
 		sii->curmap = regs = sii->regs[coreidx];
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!sii->wrappers[coreidx]) {
+=======
 		if (!sii->wrappers[coreidx] && (wrap != 0)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!sii->wrappers[coreidx] && (wrap != 0)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sii->wrappers[coreidx] = REG_MAP(wrap, SI_CORE_SIZE);
 			ASSERT(GOODREGS(sii->wrappers[coreidx]));
 		}
@@ -535,11 +588,20 @@ ai_flag(si_t *sih)
 		SI_ERROR(("%s: Attempting to read USB20H DMP registers on 5357b0\n", __FUNCTION__));
 		return sii->curidx;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (BCM4707_DMP()) {
 		SI_ERROR(("%s: Attempting to read CHIPCOMMONB DMP registers on 4707\n",
 			__FUNCTION__));
 		return sii->curidx;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ai = sii->curwrap;
 
 	return (R_REG(sii->osh, &ai->oobselouta30) & 0x1f);
@@ -713,15 +775,35 @@ ai_core_disable(si_t *sih, uint32 bits)
 		
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	W_REG(sii->osh, &ai->ioctrl, bits);
+	dummy = R_REG(sii->osh, &ai->ioctrl);
+	BCM_REFERENCE(dummy);
+	OSL_DELAY(10);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	W_REG(sii->osh, &ai->resetctrl, AIRC_RESET);
 	dummy = R_REG(sii->osh, &ai->resetctrl);
 	BCM_REFERENCE(dummy);
 	OSL_DELAY(1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	W_REG(sii->osh, &ai->ioctrl, bits);
 	dummy = R_REG(sii->osh, &ai->ioctrl);
 	BCM_REFERENCE(dummy);
 	OSL_DELAY(10);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -774,11 +856,20 @@ ai_core_cflags_wo(si_t *sih, uint32 mask, uint32 val)
 		          __FUNCTION__));
 		return;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (BCM4707_DMP()) {
 		SI_ERROR(("%s: Accessing CHIPCOMMONB DMP register (ioctrl) on 4707\n",
 			__FUNCTION__));
 		return;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT(GOODREGS(sii->curwrap));
 	ai = sii->curwrap;
@@ -809,11 +900,20 @@ ai_core_cflags(si_t *sih, uint32 mask, uint32 val)
 		          __FUNCTION__));
 		return 0;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (BCM4707_DMP()) {
 		SI_ERROR(("%s: Accessing CHIPCOMMONB DMP register (ioctrl) on 4707\n",
 			__FUNCTION__));
 		return 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT(GOODREGS(sii->curwrap));
 	ai = sii->curwrap;
@@ -846,11 +946,20 @@ ai_core_sflags(si_t *sih, uint32 mask, uint32 val)
 		          __FUNCTION__));
 		return 0;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (BCM4707_DMP()) {
 		SI_ERROR(("%s: Accessing CHIPCOMMONB DMP register (ioctrl) on 4707\n",
 			__FUNCTION__));
 		return 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT(GOODREGS(sii->curwrap));
 	ai = sii->curwrap;

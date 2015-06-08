@@ -282,6 +282,29 @@ static int jdvbt90502_set_property(struct dvb_frontend *fe,
 	return r;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int jdvbt90502_get_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+	p->inversion = INVERSION_AUTO;
+	p->bandwidth_hz = 6000000;
+	p->code_rate_HP = FEC_AUTO;
+	p->code_rate_LP = FEC_AUTO;
+	p->modulation = QAM_64;
+	p->transmission_mode = TRANSMISSION_MODE_AUTO;
+	p->guard_interval = GUARD_INTERVAL_AUTO;
+	p->hierarchy = HIERARCHY_AUTO;
+	return 0;
+}
+
+static int jdvbt90502_set_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int jdvbt90502_get_frontend(struct dvb_frontend *fe,
 				   struct dvb_frontend_parameters *p)
 {
@@ -299,6 +322,10 @@ static int jdvbt90502_get_frontend(struct dvb_frontend *fe,
 static int jdvbt90502_set_frontend(struct dvb_frontend *fe,
 				   struct dvb_frontend_parameters *p)
 {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/**
 	 * NOTE: ignore all the parameters except frequency.
 	 *       others should be fixed to the proper value for ISDB-T,
@@ -438,6 +465,17 @@ error:
 }
 
 static struct dvb_frontend_ops jdvbt90502_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_ISDBT },
+	.info = {
+		.name			= "Comtech JDVBT90502 ISDB-T",
+		.frequency_min		= 473000000, /* UHF 13ch, center */
+		.frequency_max		= 767142857, /* UHF 62ch, center */
+		.frequency_stepsize	= JDVBT90502_PLL_CLK / JDVBT90502_PLL_DIVIDER,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.info = {
 		.name			= "Comtech JDVBT90502 ISDB-T",
@@ -446,6 +484,10 @@ static struct dvb_frontend_ops jdvbt90502_ops = {
 		.frequency_max		= 767142857, /* UHF 62ch, center */
 		.frequency_stepsize	= JDVBT90502_PLL_CLK /
 							JDVBT90502_PLL_DIVIDER,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_tolerance	= 0,
 
 		/* NOTE: this driver ignores all parameters but frequency. */

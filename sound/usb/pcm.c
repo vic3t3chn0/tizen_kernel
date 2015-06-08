@@ -31,14 +31,21 @@
 <<<<<<< HEAD
 #include "endpoint.h"
 =======
+<<<<<<< HEAD
+#include "endpoint.h"
+=======
 #include "urb.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "helper.h"
 #include "pcm.h"
 #include "clock.h"
 #include "power.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* return the estimated delay based on USB frame counters */
 snd_pcm_uframes_t snd_usb_pcm_delay(struct snd_usb_substream *subs,
 				    unsigned int rate)
@@ -63,8 +70,11 @@ snd_pcm_uframes_t snd_usb_pcm_delay(struct snd_usb_substream *subs,
 	return est_delay;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * return the current pcm pointer.  just based on the hwptr_done value.
  */
@@ -75,16 +85,22 @@ static snd_pcm_uframes_t snd_usb_pcm_pointer(struct snd_pcm_substream *substream
 
 	subs = (struct snd_usb_substream *)substream->runtime->private_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&subs->lock);
 	hwptr_done = subs->hwptr_done;
 	substream->runtime->delay = snd_usb_pcm_delay(subs,
 						substream->runtime->rate);
+<<<<<<< HEAD
+=======
 =======
 	if (subs->stream->chip->shutdown)
 		return SNDRV_PCM_POS_XRUN;
 	spin_lock(&subs->lock);
 	hwptr_done = subs->hwptr_done;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&subs->lock);
 	return hwptr_done / (substream->runtime->frame_bits >> 3);
 }
@@ -169,8 +185,12 @@ static int init_pitch_v1(struct snd_usb_audio *chip, int iface,
 <<<<<<< HEAD
 				   data, sizeof(data))) < 0) {
 =======
+<<<<<<< HEAD
+				   data, sizeof(data))) < 0) {
+=======
 				   data, sizeof(data), 1000)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "%d:%d:%d: cannot set enable PITCH\n",
 			   dev->devnum, iface, ep);
 		return err;
@@ -197,8 +217,12 @@ static int init_pitch_v2(struct snd_usb_audio *chip, int iface,
 <<<<<<< HEAD
 				   data, sizeof(data))) < 0) {
 =======
+<<<<<<< HEAD
+				   data, sizeof(data))) < 0) {
+=======
 				   data, sizeof(data), 1000)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "%d:%d:%d: cannot set enable PITCH (v2)\n",
 			   dev->devnum, iface, fmt->altsetting);
 		return err;
@@ -399,6 +423,10 @@ static int snd_usb_hw_params(struct snd_pcm_substream *substream,
 	if ((ret = set_format(subs, fmt)) < 0)
 		return ret;
 =======
+<<<<<<< HEAD
+	if ((ret = set_format(subs, fmt)) < 0)
+		return ret;
+=======
 
 	down_read(&subs->stream->chip->shutdown_rwsem);
 	if (subs->stream->chip->shutdown) {
@@ -408,6 +436,7 @@ static int snd_usb_hw_params(struct snd_pcm_substream *substream,
 	if ((ret = set_format(subs, fmt)) < 0)
 		goto unlock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (subs->cur_rate != rate) {
 		struct usb_host_interface *alts;
@@ -419,8 +448,12 @@ static int snd_usb_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 			return ret;
 =======
+<<<<<<< HEAD
+			return ret;
+=======
 			goto unlock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		subs->cur_rate = rate;
 	}
 
@@ -428,7 +461,11 @@ static int snd_usb_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		mutex_lock(&subs->stream->chip->shutdown_mutex);
 =======
+<<<<<<< HEAD
+		mutex_lock(&subs->stream->chip->shutdown_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* format changed */
 		snd_usb_release_substream_urbs(subs, 0);
 		/* influenced: period_bytes, channels, rate, format, */
@@ -441,11 +478,17 @@ static int snd_usb_hw_params(struct snd_pcm_substream *substream,
 	}
 
 =======
+<<<<<<< HEAD
+		mutex_unlock(&subs->stream->chip->shutdown_mutex);
+	}
+
+=======
 	}
 
 unlock:
 	up_read(&subs->stream->chip->shutdown_rwsem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -466,10 +509,16 @@ static int snd_usb_hw_free(struct snd_pcm_substream *substream)
 	snd_usb_release_substream_urbs(subs, 0);
 	mutex_unlock(&subs->stream->chip->shutdown_mutex);
 =======
+<<<<<<< HEAD
+	mutex_lock(&subs->stream->chip->shutdown_mutex);
+	snd_usb_release_substream_urbs(subs, 0);
+	mutex_unlock(&subs->stream->chip->shutdown_mutex);
+=======
 	down_read(&subs->stream->chip->shutdown_rwsem);
 	snd_usb_release_substream_urbs(subs, 0);
 	up_read(&subs->stream->chip->shutdown_rwsem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return snd_pcm_lib_free_vmalloc_buffer(substream);
 }
 
@@ -484,8 +533,11 @@ static int snd_usb_pcm_prepare(struct snd_pcm_substream *substream)
 	struct snd_usb_substream *subs = runtime->private_data;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (! subs->cur_audiofmt) {
 		snd_printk(KERN_ERR "usbaudio: no format is specified!\n");
@@ -494,12 +546,15 @@ static int snd_usb_pcm_prepare(struct snd_pcm_substream *substream)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	down_read(&subs->stream->chip->shutdown_rwsem);
 	if (subs->stream->chip->shutdown) {
 		ret = -ENODEV;
 		goto unlock;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* some unit conversions in runtime */
 	subs->maxframesize = bytes_to_frames(runtime, subs->maxpacksize);
 	subs->curframesize = bytes_to_frames(runtime, subs->curpacksize);
@@ -509,11 +564,16 @@ static int snd_usb_pcm_prepare(struct snd_pcm_substream *substream)
 	subs->transfer_done = 0;
 	subs->phase = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	subs->last_delay = 0;
 	subs->last_frame_number = 0;
 	runtime->delay = 0;
 
 	return snd_usb_substream_prepare(subs, runtime);
+<<<<<<< HEAD
+=======
 =======
 	runtime->delay = 0;
 
@@ -522,6 +582,7 @@ static int snd_usb_pcm_prepare(struct snd_pcm_substream *substream)
 	up_read(&subs->stream->chip->shutdown_rwsem);
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct snd_pcm_hardware snd_usb_hardware =
@@ -577,8 +638,12 @@ static int hw_check_valid_format(struct snd_usb_substream *subs,
 <<<<<<< HEAD
 	if (snd_usb_get_speed(subs->dev) != USB_SPEED_FULL) {
 =======
+<<<<<<< HEAD
+	if (snd_usb_get_speed(subs->dev) != USB_SPEED_FULL) {
+=======
 	if (subs->speed != USB_SPEED_FULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ptime = 125 * (1 << fp->datainterval);
 		if (ptime > pt->max || (ptime == pt->max && pt->openmax)) {
 			hwc_debug("   > check: ptime %u > max %u\n", ptime, pt->max);
@@ -774,10 +839,15 @@ static int snd_usb_pcm_check_knot(struct snd_pcm_runtime *runtime,
 {
 	struct audioformat *fp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int *rate_list;
 	int count = 0, needs_knot = 0;
 	int err;
 
+<<<<<<< HEAD
+=======
 =======
 	int count = 0, needs_knot = 0;
 	int err;
@@ -786,6 +856,7 @@ static int snd_usb_pcm_check_knot(struct snd_pcm_runtime *runtime,
 	subs->rate_list.list = NULL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(fp, &subs->fmt_list, list) {
 		if (fp->rates & SNDRV_PCM_RATE_CONTINUOUS)
 			return 0;
@@ -800,8 +871,13 @@ static int snd_usb_pcm_check_knot(struct snd_pcm_runtime *runtime,
 	subs->rate_list.list = rate_list =
 		kmalloc(sizeof(int) * count, GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	subs->rate_list.list = rate_list =
+		kmalloc(sizeof(int) * count, GFP_KERNEL);
+=======
 	subs->rate_list.list = kmalloc(sizeof(int) * count, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!subs->rate_list.list)
 		return -ENOMEM;
 	subs->rate_list.count = count;
@@ -813,8 +889,12 @@ static int snd_usb_pcm_check_knot(struct snd_pcm_runtime *runtime,
 <<<<<<< HEAD
 			rate_list[count++] = fp->rate_table[i];
 =======
+<<<<<<< HEAD
+			rate_list[count++] = fp->rate_table[i];
+=======
 			subs->rate_list.list[count++] = fp->rate_table[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	err = snd_pcm_hw_constraint_list(runtime, 0, SNDRV_PCM_HW_PARAM_RATE,
 					 &subs->rate_list);
@@ -873,8 +953,12 @@ static int setup_hw_info(struct snd_pcm_runtime *runtime, struct snd_usb_substre
 <<<<<<< HEAD
 	if (snd_usb_get_speed(subs->dev) == USB_SPEED_FULL)
 =======
+<<<<<<< HEAD
+	if (snd_usb_get_speed(subs->dev) == USB_SPEED_FULL)
+=======
 	if (subs->speed == USB_SPEED_FULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* full speed devices have fixed data packet interval */
 		ptmin = 1000;
 	if (ptmin == 1000)

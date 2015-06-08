@@ -16,6 +16,13 @@
 #include <linux/slab.h>
 #include <linux/mm.h>
 #include <linux/mman.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ioport.h>
 #include <linux/timer.h>
 #include <linux/wait.h>
@@ -132,6 +139,20 @@ extern const char *tei_revision;
 
 /* include l3dss1 & ni1 specific process structures, but no other defines */
 #ifdef CONFIG_HISAX_EURO
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define l3dss1_process
+#include "l3dss1.h"
+#undef  l3dss1_process
+#endif /* CONFIG_HISAX_EURO */
+
+#ifdef CONFIG_HISAX_NI1
+#define l3ni1_process
+#include "l3ni1.h"
+#undef  l3ni1_process
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   #define l3dss1_process
   #include "l3dss1.h" 
   #undef  l3dss1_process
@@ -141,6 +162,10 @@ extern const char *tei_revision;
   #define l3ni1_process
   #include "l3ni1.h" 
   #undef  l3ni1_process
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_HISAX_NI1 */
 
 #define MAX_DFRAME_LEN	260
@@ -148,7 +173,15 @@ extern const char *tei_revision;
 #define HSCX_BUFMAX	4096
 #define MAX_DATA_SIZE	(HSCX_BUFMAX - 4)
 #define MAX_DATA_MEM	(HSCX_BUFMAX + 64)
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define RAW_BUFMAX	(((HSCX_BUFMAX * 6) / 5) + 5)
+=======
 #define RAW_BUFMAX	(((HSCX_BUFMAX*6)/5) + 5)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define RAW_BUFMAX	(((HSCX_BUFMAX*6)/5) + 5)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAX_HEADER_LEN	4
 #define MAX_WINDOW	8
 #define MAX_MON_FRAME	32
@@ -164,7 +197,15 @@ extern const char *tei_revision;
 
 struct FsmInst;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+typedef void (*FSMFNPTR)(struct FsmInst *, int, void *);
+=======
 typedef void (* FSMFNPTR)(struct FsmInst *, int, void *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+typedef void (* FSMFNPTR)(struct FsmInst *, int, void *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct Fsm {
 	FSMFNPTR *jumpmatrix;
@@ -271,10 +312,23 @@ struct Layer2 {
 
 struct Layer3 {
 	void (*l3l4) (struct PStack *, int, void *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	void (*l3ml3) (struct PStack *, int, void *);
+	void (*l3l2) (struct PStack *, int, void *);
+	struct FsmInst l3m;
+	struct FsmTimer l3m_timer;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         void (*l3ml3) (struct PStack *, int, void *);
 	void (*l3l2) (struct PStack *, int, void *);
 	struct FsmInst l3m;
         struct FsmTimer l3m_timer;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff_head squeue;
 	struct l3_process *proc;
 	struct l3_process *global;
@@ -285,7 +339,15 @@ struct Layer3 {
 
 struct LLInterface {
 	void (*l4l3) (struct PStack *, int, void *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int  (*l4l3_proto) (struct PStack *, isdn_ctrl *);
+=======
         int  (*l4l3_proto) (struct PStack *, isdn_ctrl *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        int  (*l4l3_proto) (struct PStack *, isdn_ctrl *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *userdata;
 	u_long flag;
 };
@@ -324,6 +386,21 @@ struct PStack {
 	struct Management ma;
 	int protocol;		/* EDSS1, 1TR6 or NI1 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* protocol specific data fields */
+	union
+	{ u_char uuuu; /* only as dummy */
+#ifdef CONFIG_HISAX_EURO
+		dss1_stk_priv dss1; /* private dss1 data */
+#endif /* CONFIG_HISAX_EURO */
+#ifdef CONFIG_HISAX_NI1
+		ni1_stk_priv ni1; /* private ni1 data */
+#endif /* CONFIG_HISAX_NI1 */
+	} prot;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         /* protocol specific data fields */
         union
 	 { u_char uuuu; /* only as dummy */
@@ -334,6 +411,10 @@ struct PStack {
            ni1_stk_priv ni1; /* private ni1 data */
 #endif /* CONFIG_HISAX_NI1 */             
 	 } prot;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct l3_process {
@@ -346,6 +427,23 @@ struct l3_process {
 	struct Channel *chan;
 	struct PStack *st;
 	struct l3_process *next;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ulong redir_result;
+
+	/* protocol specific data fields */
+	union
+	{ u_char uuuu; /* only when euro not defined, avoiding empty union */
+#ifdef CONFIG_HISAX_EURO
+		dss1_proc_priv dss1; /* private dss1 data */
+#endif /* CONFIG_HISAX_EURO */
+#ifdef CONFIG_HISAX_NI1
+		ni1_proc_priv ni1; /* private ni1 data */
+#endif /* CONFIG_HISAX_NI1 */
+	} prot;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         ulong redir_result;
 
         /* protocol specific data fields */
@@ -358,6 +456,10 @@ struct l3_process {
            ni1_proc_priv ni1; /* private ni1 data */
 #endif /* CONFIG_HISAX_NI1 */             
 	 } prot;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct hscx_hw {
@@ -641,7 +743,15 @@ struct hfc_hw {
 	unsigned char cip;
 	u_char isac_spcr;
 	struct timer_list timer;
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+=======
 };	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+};	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct sedl_hw {
 	unsigned int cfg_reg;
@@ -692,6 +802,25 @@ struct hfcPCI_hw {
 	unsigned char int_m2;
 	unsigned char int_s1;
 	unsigned char sctrl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char sctrl_r;
+	unsigned char sctrl_e;
+	unsigned char trm;
+	unsigned char stat;
+	unsigned char fifo;
+	unsigned char fifo_en;
+	unsigned char bswapped;
+	unsigned char nt_mode;
+	int nt_timer;
+	struct pci_dev *dev;
+	unsigned char *pci_io; /* start of PCI IO memory */
+	dma_addr_t dma; /* dma handle for Fifos */
+	void *fifos; /* FIFO memory */
+	int last_bfifo_cnt[2]; /* marker saving last b-fifo frame count */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         unsigned char sctrl_r;
         unsigned char sctrl_e;
         unsigned char trm;
@@ -706,11 +835,23 @@ struct hfcPCI_hw {
 	dma_addr_t dma; /* dma handle for Fifos */
         void *fifos; /* FIFO memory */ 
         int last_bfifo_cnt[2]; /* marker saving last b-fifo frame count */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timer_list timer;
 };
 
 struct hfcSX_hw {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long base;
+=======
         unsigned long base;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        unsigned long base;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char cirm;
 	unsigned char ctmt;
 	unsigned char conn;
@@ -719,6 +860,23 @@ struct hfcSX_hw {
 	unsigned char int_m2;
 	unsigned char int_s1;
 	unsigned char sctrl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char sctrl_r;
+	unsigned char sctrl_e;
+	unsigned char trm;
+	unsigned char stat;
+	unsigned char fifo;
+	unsigned char bswapped;
+	unsigned char nt_mode;
+	unsigned char chip;
+	int b_fifo_size;
+	unsigned char last_fifo;
+	void *extra;
+	int nt_timer;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         unsigned char sctrl_r;
         unsigned char sctrl_e;
         unsigned char trm;
@@ -731,6 +889,10 @@ struct hfcSX_hw {
         unsigned char last_fifo;
         void *extra;
         int nt_timer;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timer_list timer;
 };
 
@@ -783,13 +945,29 @@ struct bkm_hw {
 	/* Scitel Quadro stuff */
 	unsigned long plx_adr;
 	unsigned long data_adr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+=======
 };	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+};	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct gazel_hw {
 	struct pci_dev *dev;
 	unsigned int cfg_reg;
 	unsigned int pciaddr[2];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	signed   int ipac;
+=======
         signed   int ipac;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        signed   int ipac;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	signed   int isac;
 	signed   int hscx[2];
 	signed   int isacfifo;
@@ -876,8 +1054,18 @@ struct icc_chip {
 #define HW_ARCOFI		3
 #define FLG_TWO_DCHAN		4
 #define FLG_L1_DBUSY		5
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define FLG_DBUSY_TIMER		6
+#define FLG_LOCK_ATOMIC		7
+=======
 #define FLG_DBUSY_TIMER 	6
 #define FLG_LOCK_ATOMIC 	7
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define FLG_DBUSY_TIMER 	6
+#define FLG_LOCK_ATOMIC 	7
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FLG_ARCOFI_TIMER	8
 #define FLG_ARCOFI_ERROR	9
 #define FLG_HW_L1_UINT		10
@@ -891,8 +1079,18 @@ struct IsdnCardState {
 	u_long		irq_flags;
 	u_long		HW_Flags;
 	int		*busy_flag;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int		chanlimit; /* limited number of B-chans to use */
+	int		logecho; /* log echo if supported by card */
+=======
         int		chanlimit; /* limited number of B-chans to use */
         int		logecho; /* log echo if supported by card */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        int		chanlimit; /* limited number of B-chans to use */
+        int		logecho; /* log echo if supported by card */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	union {
 		struct elsa_hw elsa;
 		struct teles0_hw teles0;
@@ -936,8 +1134,18 @@ struct IsdnCardState {
 	void		(*DC_Close) (struct IsdnCardState *);
 	irq_handler_t	irq_func;
 	int		(*auxcmd) (struct IsdnCardState *, isdn_ctrl *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct Channel	channel[2 + MAX_WAITING_CALLS];
+	struct BCState	bcs[2 + MAX_WAITING_CALLS];
+=======
 	struct Channel	channel[2+MAX_WAITING_CALLS];
 	struct BCState	bcs[2+MAX_WAITING_CALLS];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct Channel	channel[2+MAX_WAITING_CALLS];
+	struct BCState	bcs[2+MAX_WAITING_CALLS];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct PStack	*stlist;
 	struct sk_buff_head rq, sq; /* D-channel queues */
 	int		cardnr;
@@ -968,7 +1176,15 @@ struct IsdnCardState {
 };
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define schedule_event(s, ev)	do { test_and_set_bit(ev, &s->event); schedule_work(&s->tqueue); } while (0)
+=======
 #define  schedule_event(s, ev)	do {test_and_set_bit(ev, &s->event);schedule_work(&s->tqueue); } while(0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define  schedule_event(s, ev)	do {test_and_set_bit(ev, &s->event);schedule_work(&s->tqueue); } while(0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define  MON0_RX	1
 #define  MON1_RX	2
@@ -1052,7 +1268,15 @@ struct IsdnCardState {
 #define CARD_IX1MICROR2 0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_DIEHLDIVA
+=======
 #ifdef  CONFIG_HISAX_DIEHLDIVA
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_DIEHLDIVA
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_DIEHLDIVA 1
 #ifndef ISDN_CHIP_ISAC
 #define ISDN_CHIP_ISAC 1
@@ -1061,7 +1285,15 @@ struct IsdnCardState {
 #define CARD_DIEHLDIVA 0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_ASUSCOM
+=======
 #ifdef  CONFIG_HISAX_ASUSCOM
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_ASUSCOM
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_ASUSCOM 1
 #ifndef ISDN_CHIP_ISAC
 #define ISDN_CHIP_ISAC 1
@@ -1070,7 +1302,15 @@ struct IsdnCardState {
 #define CARD_ASUSCOM 0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_TELEINT
+=======
 #ifdef  CONFIG_HISAX_TELEINT
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_TELEINT
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_TELEINT 1
 #ifndef ISDN_CHIP_ISAC
 #define ISDN_CHIP_ISAC 1
@@ -1079,7 +1319,15 @@ struct IsdnCardState {
 #define CARD_TELEINT 0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_SEDLBAUER
+=======
 #ifdef  CONFIG_HISAX_SEDLBAUER
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_SEDLBAUER
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_SEDLBAUER 1
 #ifndef ISDN_CHIP_ISAC
 #define ISDN_CHIP_ISAC 1
@@ -1088,7 +1336,15 @@ struct IsdnCardState {
 #define CARD_SEDLBAUER 0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_SPORTSTER
+=======
 #ifdef  CONFIG_HISAX_SPORTSTER
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_SPORTSTER
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_SPORTSTER 1
 #ifndef ISDN_CHIP_ISAC
 #define ISDN_CHIP_ISAC 1
@@ -1097,7 +1353,15 @@ struct IsdnCardState {
 #define CARD_SPORTSTER 0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_MIC
+=======
 #ifdef  CONFIG_HISAX_MIC
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_MIC
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_MIC 1
 #ifndef ISDN_CHIP_ISAC
 #define ISDN_CHIP_ISAC 1
@@ -1106,7 +1370,15 @@ struct IsdnCardState {
 #define CARD_MIC 0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_NETJET
+=======
 #ifdef  CONFIG_HISAX_NETJET
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_NETJET
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_NETJET_S 1
 #ifndef ISDN_CHIP_ISAC
 #define ISDN_CHIP_ISAC 1
@@ -1205,7 +1477,15 @@ struct IsdnCardState {
 #define	CARD_W6692	0
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_HISAX_NETJET_U
+=======
 #ifdef  CONFIG_HISAX_NETJET_U
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef  CONFIG_HISAX_NETJET_U
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CARD_NETJET_U 1
 #ifndef ISDN_CHIP_ICC
 #define ISDN_CHIP_ICC 1
@@ -1268,8 +1548,18 @@ void setstack_l3dc(struct PStack *st, struct Channel *chanp);
 void setstack_l3bc(struct PStack *st, struct Channel *chanp);
 void releasestack_isdnl3(struct PStack *st);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+u_char *findie(u_char *p, int size, u_char ie, int wanted_set);
+int getcallref(u_char *p);
+=======
 u_char *findie(u_char * p, int size, u_char ie, int wanted_set);
 int getcallref(u_char * p);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u_char *findie(u_char * p, int size, u_char ie, int wanted_set);
+int getcallref(u_char * p);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int newcallref(void);
 
 int FsmNew(struct Fsm *fsm, struct FsmNode *fnlist, int fncount);
@@ -1278,6 +1568,28 @@ int FsmEvent(struct FsmInst *fi, int event, void *arg);
 void FsmChangeState(struct FsmInst *fi, int newstate);
 void FsmInitTimer(struct FsmInst *fi, struct FsmTimer *ft);
 int FsmAddTimer(struct FsmTimer *ft, int millisec, int event,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		void *arg, int where);
+void FsmRestartTimer(struct FsmTimer *ft, int millisec, int event,
+		     void *arg, int where);
+void FsmDelTimer(struct FsmTimer *ft, int where);
+int jiftime(char *s, long mark);
+
+int HiSax_command(isdn_ctrl *ic);
+int HiSax_writebuf_skb(int id, int chan, int ack, struct sk_buff *skb);
+__printf(3, 4)
+void HiSax_putstatus(struct IsdnCardState *cs, char *head, char *fmt, ...);
+__printf(3, 0)
+void VHiSax_putstatus(struct IsdnCardState *cs, char *head, char *fmt, va_list args);
+void HiSax_reportcard(int cardnr, int sel);
+int QuickHex(char *txt, u_char *p, int cnt);
+void LogFrame(struct IsdnCardState *cs, u_char *p, int size);
+void dlogframe(struct IsdnCardState *cs, struct sk_buff *skb, int dir);
+void iecpy(u_char *dest, u_char *iestart, int ieoffset);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *arg, int where);
 void FsmRestartTimer(struct FsmTimer *ft, int millisec, int event,
 	void *arg, int where);
@@ -1295,11 +1607,28 @@ int QuickHex(char *txt, u_char * p, int cnt);
 void LogFrame(struct IsdnCardState *cs, u_char * p, int size);
 void dlogframe(struct IsdnCardState *cs, struct sk_buff *skb, int dir);
 void iecpy(u_char * dest, u_char * iestart, int ieoffset);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __KERNEL__ */
 
 /*
  * Busywait delay for `jiffs' jiffies
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define HZDELAY(jiffs) do {				\
+		int tout = jiffs;			\
+							\
+		while (tout--) {			\
+			int loops = USEC_PER_SEC / HZ;	\
+			while (loops--)			\
+				udelay(1);		\
+		}					\
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HZDELAY(jiffs) do {					\
 		int tout = jiffs;				\
 								\
@@ -1308,6 +1637,10 @@ void iecpy(u_char * dest, u_char * iestart, int ieoffset);
 			while (loops--)				\
 				udelay(1);			\
 		}						\
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (0)
 
 int ll_run(struct IsdnCardState *cs, int addfeatures);

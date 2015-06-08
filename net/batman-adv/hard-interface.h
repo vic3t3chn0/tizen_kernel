@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -27,6 +31,9 @@
 #define _NET_BATMAN_ADV_HARD_INTERFACE_H_
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum hard_if_state {
 	IF_NOT_IN_USE,
 	IF_TO_BE_REMOVED,
@@ -42,6 +49,8 @@ struct hard_iface*
 hardif_get_by_netdev(const struct net_device *net_dev);
 int hardif_enable_interface(struct hard_iface *hard_iface,
 			    const char *iface_name);
+<<<<<<< HEAD
+=======
 =======
 #define IF_NOT_IN_USE 0
 #define IF_TO_BE_REMOVED 1
@@ -55,6 +64,7 @@ extern struct notifier_block hard_if_notifier;
 struct hard_iface *hardif_get_by_netdev(struct net_device *net_dev);
 int hardif_enable_interface(struct hard_iface *hard_iface, char *iface_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void hardif_disable_interface(struct hard_iface *hard_iface);
 void hardif_remove_interfaces(void);
 int hardif_min_mtu(struct net_device *soft_iface);
@@ -63,7 +73,11 @@ void hardif_free_rcu(struct rcu_head *rcu);
 <<<<<<< HEAD
 bool is_wifi_iface(int ifindex);
 =======
+<<<<<<< HEAD
+bool is_wifi_iface(int ifindex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void hardif_free_ref(struct hard_iface *hard_iface)
 {

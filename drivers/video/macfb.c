@@ -592,12 +592,27 @@ static int __init macfb_init(void)
 	if (!fb_info.screen_base)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("macfb: framebuffer at 0x%08lx, mapped to 0x%p, size %dk\n",
+	        macfb_fix.smem_start, fb_info.screen_base,
+	        macfb_fix.smem_len / 1024);
+	pr_info("macfb: mode is %dx%dx%d, linelength=%d\n",
+	        macfb_defined.xres, macfb_defined.yres,
+	        macfb_defined.bits_per_pixel, macfb_fix.line_length);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk("macfb: framebuffer at 0x%08lx, mapped to 0x%p, size %dk\n",
 	       macfb_fix.smem_start, fb_info.screen_base,
 	       macfb_fix.smem_len / 1024);
 	printk("macfb: mode is %dx%dx%d, linelength=%d\n",
 	       macfb_defined.xres, macfb_defined.yres,
 	       macfb_defined.bits_per_pixel, macfb_fix.line_length);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Fill in the available video resolution */
 	macfb_defined.xres_virtual = macfb_defined.xres;
@@ -613,6 +628,15 @@ static int __init macfb_init(void)
 
 	switch (macfb_defined.bits_per_pixel) {
 	case 1:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		macfb_defined.red.length = macfb_defined.bits_per_pixel;
+		macfb_defined.green.length = macfb_defined.bits_per_pixel;
+		macfb_defined.blue.length = macfb_defined.bits_per_pixel;
+		video_cmap_len = 2;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * XXX: I think this will catch any program that tries
 		 * to do FBIO_PUTCMAP when the visual is monochrome.
@@ -621,6 +645,10 @@ static int __init macfb_init(void)
 		macfb_defined.green.length = macfb_defined.bits_per_pixel;
 		macfb_defined.blue.length = macfb_defined.bits_per_pixel;
 		video_cmap_len = 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		macfb_fix.visual = FB_VISUAL_MONO01;
 		break;
 	case 2:
@@ -660,11 +688,24 @@ static int __init macfb_init(void)
 		macfb_fix.visual = FB_VISUAL_TRUECOLOR;
 		break;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("macfb: unknown or unsupported bit depth: %d\n",
+		       macfb_defined.bits_per_pixel);
+		err = -EINVAL;
+		goto fail_unmap;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		video_cmap_len = 0;
 		macfb_fix.visual = FB_VISUAL_MONO01;
 		printk("macfb: unknown or unsupported bit depth: %d\n",
 		       macfb_defined.bits_per_pixel);
 		break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	
 	/*
@@ -734,8 +775,18 @@ static int __init macfb_init(void)
 		case MAC_MODEL_Q950:
 			strcpy(macfb_fix.id, "DAFB");
 			macfb_setpalette = dafb_setpalette;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dafb_cmap_regs = ioremap(DAFB_BASE, 0x1000);
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+=======
 			macfb_defined.activate = FB_ACTIVATE_NOW;
 			dafb_cmap_regs = ioremap(DAFB_BASE, 0x1000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+			dafb_cmap_regs = ioremap(DAFB_BASE, 0x1000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/*
@@ -744,8 +795,18 @@ static int __init macfb_init(void)
 		case MAC_MODEL_LCII:
 			strcpy(macfb_fix.id, "V8");
 			macfb_setpalette = v8_brazil_setpalette;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+=======
 			macfb_defined.activate = FB_ACTIVATE_NOW;
 			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/*
@@ -758,8 +819,18 @@ static int __init macfb_init(void)
 		case MAC_MODEL_P600:
 			strcpy(macfb_fix.id, "Brazil");
 			macfb_setpalette = v8_brazil_setpalette;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+=======
 			macfb_defined.activate = FB_ACTIVATE_NOW;
 			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/*
@@ -773,10 +844,23 @@ static int __init macfb_init(void)
 		case MAC_MODEL_P520:
 		case MAC_MODEL_P550:
 		case MAC_MODEL_P460:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			strcpy(macfb_fix.id, "Sonora");
+			macfb_setpalette = v8_brazil_setpalette;
+			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			macfb_setpalette = v8_brazil_setpalette;
 			macfb_defined.activate = FB_ACTIVATE_NOW;
 			strcpy(macfb_fix.id, "Sonora");
 			v8_brazil_cmap_regs = ioremap(DAC_BASE, 0x1000);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/*
@@ -786,10 +870,23 @@ static int __init macfb_init(void)
 		 */
 		case MAC_MODEL_IICI:
 		case MAC_MODEL_IISI:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			strcpy(macfb_fix.id, "RBV");
+			macfb_setpalette = rbv_setpalette;
+			rbv_cmap_regs = ioremap(DAC_BASE, 0x1000);
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			macfb_setpalette = rbv_setpalette;
 			macfb_defined.activate = FB_ACTIVATE_NOW;
 			strcpy(macfb_fix.id, "RBV");
 			rbv_cmap_regs = ioremap(DAC_BASE, 0x1000);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/*
@@ -797,10 +894,23 @@ static int __init macfb_init(void)
 		 */
 		case MAC_MODEL_Q840:
 		case MAC_MODEL_C660:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			strcpy(macfb_fix.id, "Civic");
+			macfb_setpalette = civic_setpalette;
+			civic_cmap_regs = ioremap(CIVIC_BASE, 0x1000);
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			macfb_setpalette = civic_setpalette;
 			macfb_defined.activate = FB_ACTIVATE_NOW;
 			strcpy(macfb_fix.id, "Civic");
 			civic_cmap_regs = ioremap(CIVIC_BASE, 0x1000);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		
@@ -809,6 +919,18 @@ static int __init macfb_init(void)
 		 * We think this may be like the LC II
 		 */
 		case MAC_MODEL_LC:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			strcpy(macfb_fix.id, "LC");
+			if (vidtest) {
+				macfb_setpalette = v8_brazil_setpalette;
+				v8_brazil_cmap_regs =
+					ioremap(DAC_BASE, 0x1000);
+				macfb_defined.activate = FB_ACTIVATE_NOW;
+			}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (vidtest) {
 				macfb_setpalette = v8_brazil_setpalette;
 				macfb_defined.activate = FB_ACTIVATE_NOW;
@@ -816,12 +938,28 @@ static int __init macfb_init(void)
 					ioremap(DAC_BASE, 0x1000);
 			}
 			strcpy(macfb_fix.id, "LC");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/*
 		 * We think this may be like the LC II
 		 */
 		case MAC_MODEL_CCL:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			strcpy(macfb_fix.id, "Color Classic");
+			if (vidtest) {
+				macfb_setpalette = v8_brazil_setpalette;
+				v8_brazil_cmap_regs =
+					ioremap(DAC_BASE, 0x1000);
+				macfb_defined.activate = FB_ACTIVATE_NOW;
+			}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (vidtest) {
 				macfb_setpalette = v8_brazil_setpalette;
 				macfb_defined.activate = FB_ACTIVATE_NOW;
@@ -829,6 +967,10 @@ static int __init macfb_init(void)
 					ioremap(DAC_BASE, 0x1000);
 			}
 			strcpy(macfb_fix.id, "Color Classic");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/*
@@ -893,10 +1035,23 @@ static int __init macfb_init(void)
 		case MAC_MODEL_PB270C:
 		case MAC_MODEL_PB280:
 		case MAC_MODEL_PB280C:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			strcpy(macfb_fix.id, "CSC");
+			macfb_setpalette = csc_setpalette;
+			csc_cmap_regs = ioremap(CSC_BASE, 0x1000);
+			macfb_defined.activate = FB_ACTIVATE_NOW;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			macfb_setpalette = csc_setpalette;
 			macfb_defined.activate = FB_ACTIVATE_NOW;
 			strcpy(macfb_fix.id, "CSC");
 			csc_cmap_regs = ioremap(CSC_BASE, 0x1000);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		default:
@@ -918,8 +1073,19 @@ static int __init macfb_init(void)
 	if (err)
 		goto fail_dealloc;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("fb%d: %s frame buffer device\n",
+	        fb_info.node, fb_info.fix.id);
+
+=======
 	printk("fb%d: %s frame buffer device\n",
 	       fb_info.node, fb_info.fix.id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("fb%d: %s frame buffer device\n",
+	       fb_info.node, fb_info.fix.id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 fail_dealloc:

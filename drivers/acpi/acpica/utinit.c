@@ -5,7 +5,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,27 +61,71 @@ ACPI_MODULE_NAME("utinit")
 /* Local prototypes */
 static void acpi_ut_terminate(void);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if (!ACPI_REDUCED_HARDWARE)
+
+static void acpi_ut_free_gpe_lists(void);
+
+#else
+
+#define acpi_ut_free_gpe_lists()
+#endif				/* !ACPI_REDUCED_HARDWARE */
+
+#if (!ACPI_REDUCED_HARDWARE)
+/******************************************************************************
+ *
+ * FUNCTION:    acpi_ut_free_gpe_lists
+=======
 /******************************************************************************
  *
  * FUNCTION:    acpi_ut_terminate
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/******************************************************************************
+ *
+ * FUNCTION:    acpi_ut_terminate
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * PARAMETERS:  none
  *
  * RETURN:      none
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * DESCRIPTION: Free global GPE lists
+ *
+ ******************************************************************************/
+
+static void acpi_ut_free_gpe_lists(void)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * DESCRIPTION: Free global memory
  *
  ******************************************************************************/
 
 static void acpi_ut_terminate(void)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct acpi_gpe_block_info *gpe_block;
 	struct acpi_gpe_block_info *next_gpe_block;
 	struct acpi_gpe_xrupt_info *gpe_xrupt_info;
 	struct acpi_gpe_xrupt_info *next_gpe_xrupt_info;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ACPI_FUNCTION_TRACE(ut_terminate);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ACPI_FUNCTION_TRACE(ut_terminate);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Free global GPE blocks and related info structures */
 
 	gpe_xrupt_info = acpi_gbl_gpe_xrupt_list_head;
@@ -91,7 +143,35 @@ static void acpi_ut_terminate(void)
 		ACPI_FREE(gpe_xrupt_info);
 		gpe_xrupt_info = next_gpe_xrupt_info;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+#endif				/* !ACPI_REDUCED_HARDWARE */
 
+/******************************************************************************
+ *
+ * FUNCTION:    acpi_ut_terminate
+ *
+ * PARAMETERS:  none
+ *
+ * RETURN:      none
+ *
+ * DESCRIPTION: Free global memory
+ *
+ ******************************************************************************/
+
+static void acpi_ut_terminate(void)
+{
+	ACPI_FUNCTION_TRACE(ut_terminate);
+
+	acpi_ut_free_gpe_lists();
+	acpi_ut_delete_address_lists();
+=======
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return_VOID;
 }
 

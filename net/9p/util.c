@@ -109,8 +109,12 @@ retry:
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_MUX, " id %d pool %p\n", i, p);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_MUX, " id %d pool %p\n", i, p);
+=======
 	P9_DPRINTK(P9_DEBUG_MUX, " id %d pool %p\n", i, p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return i;
 }
 EXPORT_SYMBOL(p9_idpool_get);
@@ -131,8 +135,12 @@ void p9_idpool_put(int id, struct p9_idpool *p)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_MUX, " id %d pool %p\n", id, p);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_MUX, " id %d pool %p\n", id, p);
+=======
 	P9_DPRINTK(P9_DEBUG_MUX, " id %d pool %p\n", id, p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&p->lock, flags);
 	idr_remove(&p->pool, id);

@@ -22,23 +22,31 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/i2c.h>
 #include <linux/i2c/twl.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gpio.h>
 #include <linux/spi/spi.h>
 #include <linux/spi/ads7846.h>
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/i2c.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/mcspi.h>
 #include <plat/nand.h>
 
 #include "common-board-devices.h"
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct i2c_board_info __initdata pmic_i2c_board_info = {
@@ -59,14 +67,18 @@ void __init omap_pmic_init(int bus, u32 clkrate,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_TOUCHSCREEN_ADS7846) || \
 	defined(CONFIG_TOUCHSCREEN_ADS7846_MODULE)
 static struct omap2_mcspi_device_config ads7846_mcspi_config = {
 	.turbo_mode	= 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.single_channel	= 1,	/* 0: slave, 1: master */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct ads7846_platform_data ads7846_config = {
@@ -110,6 +122,9 @@ void __init omap_ads7846_init(int bus_num, int gpio_pendown, int gpio_debounce,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_bi->bus_num	= bus_num;
 	spi_bi->irq	= gpio_to_irq(gpio_pendown);
 
@@ -119,6 +134,8 @@ void __init omap_ads7846_init(int bus_num, int gpio_pendown, int gpio_debounce,
 	} else {
 		ads7846_config.gpio_pendown = gpio_pendown;
 	}
+<<<<<<< HEAD
+=======
 =======
 	ads7846_config.gpio_pendown = gpio_pendown;
 
@@ -128,6 +145,7 @@ void __init omap_ads7846_init(int bus_num, int gpio_pendown, int gpio_debounce,
 	if (board_pdata)
 		spi_bi->platform_data = board_pdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spi_register_board_info(&ads7846_spi_board_info, 1);
 }
@@ -142,10 +160,14 @@ void __init omap_ads7846_init(int bus_num, int gpio_pendown, int gpio_debounce,
 <<<<<<< HEAD
 static struct omap_nand_platform_data nand_data;
 =======
+<<<<<<< HEAD
+static struct omap_nand_platform_data nand_data;
+=======
 static struct omap_nand_platform_data nand_data = {
 	.dma_channel	= -1,		/* disable DMA in OMAP NAND driver */
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init omap_nand_flash_init(int options, struct mtd_partition *parts,
 				 int nr_parts)
@@ -179,8 +201,12 @@ void __init omap_nand_flash_init(int options, struct mtd_partition *parts,
 <<<<<<< HEAD
 		nand_data.devsize = options;
 =======
+<<<<<<< HEAD
+		nand_data.devsize = options;
+=======
 		nand_data.options = options;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		printk(KERN_INFO "Registering NAND on CS%d\n", nandcs);
 		if (gpmc_nand_init(&nand_data) < 0)

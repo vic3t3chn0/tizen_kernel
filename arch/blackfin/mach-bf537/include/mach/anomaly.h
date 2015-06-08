@@ -14,8 +14,12 @@
 <<<<<<< HEAD
  *  - Revision F, 05/23/2011; ADSP-BF534/ADSP-BF536/ADSP-BF537 Blackfin Processor Anomaly List
 =======
+<<<<<<< HEAD
+ *  - Revision F, 05/23/2011; ADSP-BF534/ADSP-BF536/ADSP-BF537 Blackfin Processor Anomaly List
+=======
  *  - Revision E, 05/25/2010; ADSP-BF534/ADSP-BF536/ADSP-BF537 Blackfin Processor Anomaly List
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _MACH_ANOMALY_H_
@@ -52,6 +56,10 @@
 /* PPI_DELAY Not Functional in PPI Modes with 0 Frame Syncs */
 #define ANOMALY_05000180 (1)
 =======
+<<<<<<< HEAD
+/* PPI_DELAY Not Functional in PPI Modes with 0 Frame Syncs */
+#define ANOMALY_05000180 (1)
+=======
 /* Killed 32-Bit MMR Write Leads to Next System MMR Access Thinking It Should Be 32-Bit */
 #define ANOMALY_05000157 (__SILICON_REVISION__ < 2)
 /* PPI_DELAY Not Functional in PPI Modes with 0 Frame Syncs */
@@ -59,15 +67,19 @@
 /* Instruction Cache Is Not Functional */
 #define ANOMALY_05000237 (__SILICON_REVISION__ < 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* If I-Cache Is On, CSYNC/SSYNC/IDLE Around Change of Control Causes Failures */
 #define ANOMALY_05000244 (__SILICON_REVISION__ < 3)
 /* False Hardware Error from an Access in the Shadow of a Conditional Branch */
 #define ANOMALY_05000245 (1)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Buffered CLKIN Output Is Disabled by Default */
 #define ANOMALY_05000247 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Incorrect Bit Shift of Data Word in Multichannel (TDM) Mode in Certain Conditions */
 #define ANOMALY_05000250 (__SILICON_REVISION__ < 3)
 /* EMAC TX DMA Error After an Early Frame Abort */
@@ -113,8 +125,12 @@
 <<<<<<< HEAD
 /* False Hardware Error when ISR Context Is Not Restored */
 =======
+<<<<<<< HEAD
+/* False Hardware Error when ISR Context Is Not Restored */
+=======
 /* False Hardware Error Exception when ISR Context Is Not Restored */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000281 (__SILICON_REVISION__ < 3)
 /* Memory DMA Corruption with 32-Bit Data and Traffic Control */
 #define ANOMALY_05000282 (__SILICON_REVISION__ < 3)
@@ -183,10 +199,16 @@
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition when Modifying PLL from External Memory */
 =======
+<<<<<<< HEAD
+/* Interrupted SPORT Receive Data Register Read Results In Underflow when SLEN > 15 */
+#define ANOMALY_05000473 (1)
+/* Possible Lockup Condition when Modifying PLL from External Memory */
+=======
 /* Interrupted 32-Bit SPORT Data Register Access Results In Underflow */
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition whem Modifying PLL from External Memory */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000475 (1)
 /* TESTSET Instruction Cannot Be Interrupted */
 #define ANOMALY_05000477 (1)
@@ -195,6 +217,9 @@
 /* Reads of ITEST_COMMAND and ITEST_DATA Registers Cause Cache Corruption */
 #define ANOMALY_05000481 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLL May Latch Incorrect Values Coming Out of Reset */
 #define ANOMALY_05000489 (1)
 /* Instruction Memory Stalls Can Cause IFLUSH to Fail */
@@ -215,10 +240,13 @@
 #define ANOMALY_05000237 (__SILICON_REVISION__ < 2)
 /* Buffered CLKIN Output Is Disabled by Default */
 #define ANOMALY_05000247 (__SILICON_REVISION__ < 2)
+<<<<<<< HEAD
+=======
 =======
 /* IFLUSH sucks at life */
 #define ANOMALY_05000491 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Anomalies that don't exist on this proc */
 #define ANOMALY_05000099 (0)

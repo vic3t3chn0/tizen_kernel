@@ -28,6 +28,9 @@ static inline unsigned int icp_hv_get_xirr(unsigned char cppr)
 	unsigned long retbuf[PLPAR_HCALL_BUFSIZE];
 	long rc;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int ret = XICS_IRQ_SPURIOUS;
 
 	rc = plpar_hcall(H_XIRR, retbuf, cppr);
@@ -61,6 +64,8 @@ static inline void icp_hv_set_xirr(unsigned int value)
 		WARN_ON_ONCE(1);
 		icp_hv_set_cppr(value >> 24);
 	}
+<<<<<<< HEAD
+=======
 =======
 
 	rc = plpar_hcall(H_XIRR, retbuf, cppr);
@@ -82,11 +87,15 @@ static inline void icp_hv_set_cppr(u8 value)
 	if (rc != H_SUCCESS)
 		panic("bad return code cppr - rc = %lx\n", rc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void icp_hv_set_qirr(int n_cpu , u8 value)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int hw_cpu = get_hard_smp_processor_id(n_cpu);
 	long rc = plpar_hcall_norets(H_IPI, hw_cpu, value);
 	if (rc != H_SUCCESS) {
@@ -94,12 +103,15 @@ static inline void icp_hv_set_qirr(int n_cpu , u8 value)
 			"returned %ld\n", __func__, n_cpu, hw_cpu, value, rc);
 		WARN_ON_ONCE(1);
 	}
+<<<<<<< HEAD
+=======
 =======
 	long rc = plpar_hcall_norets(H_IPI, get_hard_smp_processor_id(n_cpu),
 				     value);
 	if (rc != H_SUCCESS)
 		panic("bad return code qirr - rc = %lx\n", rc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void icp_hv_eoi(struct irq_data *d)

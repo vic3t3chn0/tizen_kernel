@@ -696,9 +696,13 @@ static int can_set_system_xattr(struct inode *inode, const char *name,
 <<<<<<< HEAD
 			rc = posix_acl_equiv_mode(acl, &inode->i_mode);
 =======
+<<<<<<< HEAD
+			rc = posix_acl_equiv_mode(acl, &inode->i_mode);
+=======
 			mode_t mode = inode->i_mode;
 			rc = posix_acl_equiv_mode(acl, &mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			posix_acl_release(acl);
 			if (rc < 0) {
 				printk(KERN_ERR
@@ -708,8 +712,11 @@ static int can_set_system_xattr(struct inode *inode, const char *name,
 			}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			inode->i_mode = mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mark_inode_dirty(inode);
 		}
 		/*
@@ -1099,6 +1106,9 @@ int jfs_removexattr(struct dentry *dentry, const char *name)
 
 #ifdef CONFIG_JFS_SECURITY
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int jfs_initxattrs(struct inode *inode, const struct xattr *xattr_array,
 		   void *fs_info)
 {
@@ -1131,6 +1141,8 @@ int jfs_init_security(tid_t tid, struct inode *inode, struct inode *dir,
 {
 	return security_inode_init_security(inode, dir, qstr,
 					    &jfs_initxattrs, &tid);
+<<<<<<< HEAD
+=======
 =======
 int jfs_init_security(tid_t tid, struct inode *inode, struct inode *dir,
 		      const struct qstr *qstr)
@@ -1166,5 +1178,6 @@ kmalloc_failed:
 
 	return rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif

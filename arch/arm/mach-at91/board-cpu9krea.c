@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -49,10 +53,16 @@
 #include <mach/at91sam9260_matrix.h>
 #include <mach/at91_matrix.h>
 =======
+<<<<<<< HEAD
+#include <mach/at91sam9_smc.h>
+#include <mach/at91sam9260_matrix.h>
+#include <mach/at91_matrix.h>
+=======
 #include <mach/gpio.h>
 #include <mach/at91sam9_smc.h>
 #include <mach/at91sam9260_matrix.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "sam9_smc.h"
 #include "generic.h"
@@ -63,8 +73,12 @@ static void __init cpu9krea_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91sam9260_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* DGBU on ttyS0. (Rx & Tx only) */
 	at91_register_uart(0, 0, 0);
@@ -97,12 +111,15 @@ static void __init cpu9krea_init_early(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init cpu9krea_init_irq(void)
 {
 	at91sam9260_init_interrupts(NULL);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * USB Host port
  */
@@ -112,7 +129,12 @@ static struct at91_usbh_data __initdata cpu9krea_usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -123,8 +145,12 @@ static struct at91_udc_data __initdata cpu9krea_udc_data = {
 <<<<<<< HEAD
 	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
 =======
+<<<<<<< HEAD
+	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
+=======
 	.pullup_pin	= 0,		/* pull-up driven by UDC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -134,8 +160,13 @@ static struct at91_udc_data __initdata cpu9krea_udc_data = {
 static struct macb_platform_data __initdata cpu9krea_macb_data = {
 	.phy_irq_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata cpu9krea_macb_data = {
+	.phy_irq_pin	= -EINVAL,
+=======
 static struct at91_eth_data __initdata cpu9krea_macb_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.is_rmii	= 1,
 };
 
@@ -152,7 +183,12 @@ static struct atmel_nand_data __initdata cpu9krea_nand_data = {
 	.det_pin	= -EINVAL,
 	.ecc_mode	= NAND_ECC_SOFT,
 =======
+<<<<<<< HEAD
+	.det_pin	= -EINVAL,
+	.ecc_mode	= NAND_ECC_SOFT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef CONFIG_MACH_CPU9260
@@ -200,8 +236,12 @@ static void __init cpu9krea_add_device_nand(void)
 <<<<<<< HEAD
 	sam9_smc_configure(0, 3, &cpu9krea_nand_smc_config);
 =======
+<<<<<<< HEAD
+	sam9_smc_configure(0, 3, &cpu9krea_nand_smc_config);
+=======
 	sam9_smc_configure(3, &cpu9krea_nand_smc_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_add_device_nand(&cpu9krea_nand_data);
 }
 
@@ -280,11 +320,16 @@ static __init void cpu9krea_add_device_nor(void)
 	unsigned long csa;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	csa = at91_matrix_read(AT91_MATRIX_EBICSA);
 	at91_matrix_write(AT91_MATRIX_EBICSA, csa | AT91_MATRIX_VDDIOMSEL_3_3V);
 
 	/* configure chip-select 0 (NOR) */
 	sam9_smc_configure(0, 0, &cpu9krea_nor_smc_config);
+<<<<<<< HEAD
+=======
 =======
 	csa = at91_sys_read(AT91_MATRIX_EBICSA);
 	at91_sys_write(AT91_MATRIX_EBICSA, csa | AT91_MATRIX_VDDIOMSEL_3_3V);
@@ -292,6 +337,7 @@ static __init void cpu9krea_add_device_nor(void)
 	/* configure chip-select 0 (NOR) */
 	sam9_smc_configure(0, &cpu9krea_nor_smc_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_device_register(&cpu9krea_nor_flash);
 }
@@ -394,7 +440,12 @@ static struct at91_mmc_data __initdata cpu9krea_mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init cpu9krea_board_init(void)
@@ -434,9 +485,15 @@ MACHINE_START(CPUAT9G20, "Eukrea CPU9G20")
 	.init_early	= cpu9krea_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= cpu9krea_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9260_map_io,
 	.init_early	= cpu9krea_init_early,
 	.init_irq	= cpu9krea_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= cpu9krea_board_init,
 MACHINE_END

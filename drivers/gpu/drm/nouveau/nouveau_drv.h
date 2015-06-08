@@ -26,6 +26,20 @@
 #define __NOUVEAU_DRV_H__
 
 #define DRIVER_AUTHOR		"Stephane Marchesin"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DRIVER_EMAIL		"nouveau@lists.freedesktop.org"
+
+#define DRIVER_NAME		"nouveau"
+#define DRIVER_DESC		"nVidia Riva/TNT/GeForce"
+#define DRIVER_DATE		"20120316"
+
+#define DRIVER_MAJOR		1
+#define DRIVER_MINOR		0
+#define DRIVER_PATCHLEVEL	0
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DRIVER_EMAIL		"dri-devel@lists.sourceforge.net"
 
 #define DRIVER_NAME		"nouveau"
@@ -35,6 +49,10 @@
 #define DRIVER_MAJOR		0
 #define DRIVER_MINOR		0
 #define DRIVER_PATCHLEVEL	16
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define NOUVEAU_FAMILY   0x0000FFFF
 #define NOUVEAU_FLAGS    0xFFFF0000
@@ -113,8 +131,16 @@ struct nouveau_bo {
 	int pbbo_index;
 	bool validate_mapped;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct nouveau_channel *channel;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct nouveau_channel *channel;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head vma_list;
 	unsigned page_shift;
 
@@ -296,7 +322,15 @@ struct nouveau_channel {
 
 	uint32_t sw_subchannel[8];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct nouveau_vma dispc_vma[4];
+=======
 	struct nouveau_vma dispc_vma[2];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct nouveau_vma dispc_vma[2];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct {
 		struct nouveau_gpuobj *vblsem;
 		uint32_t vblsem_head;
@@ -703,6 +737,13 @@ enum nouveau_card_type {
 	NV_50      = 0x50,
 	NV_C0      = 0xc0,
 	NV_D0      = 0xd0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	NV_E0      = 0xe0,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct drm_nouveau_private {
@@ -1091,8 +1132,17 @@ nouveau_debugfs_channel_fini(struct nouveau_channel *chan)
 #endif
 
 /* nouveau_dma.c */
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern void nouveau_dma_init(struct nouveau_channel *);
+=======
 extern void nouveau_dma_pre_init(struct nouveau_channel *);
 extern int  nouveau_dma_init(struct nouveau_channel *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern void nouveau_dma_pre_init(struct nouveau_channel *);
+extern int  nouveau_dma_init(struct nouveau_channel *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int  nouveau_dma_wait(struct nouveau_channel *, int slots, int size);
 
 /* nouveau_acpi.c */
@@ -1765,6 +1815,32 @@ nv44_graph_class(struct drm_device *dev)
 #define NV_MEM_TYPE_VM 0x7f
 #define NV_MEM_COMP_VM 0x03
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* FIFO methods */
+#define NV01_SUBCHAN_OBJECT                                          0x00000000
+#define NV84_SUBCHAN_SEMAPHORE_ADDRESS_HIGH                          0x00000010
+#define NV84_SUBCHAN_SEMAPHORE_ADDRESS_LOW                           0x00000014
+#define NV84_SUBCHAN_SEMAPHORE_SEQUENCE                              0x00000018
+#define NV84_SUBCHAN_SEMAPHORE_TRIGGER                               0x0000001c
+#define NV84_SUBCHAN_SEMAPHORE_TRIGGER_ACQUIRE_EQUAL                 0x00000001
+#define NV84_SUBCHAN_SEMAPHORE_TRIGGER_WRITE_LONG                    0x00000002
+#define NV84_SUBCHAN_SEMAPHORE_TRIGGER_ACQUIRE_GEQUAL                0x00000004
+#define NV84_SUBCHAN_NOTIFY_INTR                                     0x00000020
+#define NV84_SUBCHAN_WRCACHE_FLUSH                                   0x00000024
+#define NV10_SUBCHAN_REF_CNT                                         0x00000050
+#define NVSW_SUBCHAN_PAGE_FLIP                                       0x00000054
+#define NV11_SUBCHAN_DMA_SEMAPHORE                                   0x00000060
+#define NV11_SUBCHAN_SEMAPHORE_OFFSET                                0x00000064
+#define NV11_SUBCHAN_SEMAPHORE_ACQUIRE                               0x00000068
+#define NV11_SUBCHAN_SEMAPHORE_RELEASE                               0x0000006c
+#define NV40_SUBCHAN_YIELD                                           0x00000080
+
+/* NV_SW object class */
+#define NV_SW                                                        0x0000506e
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* NV_SW object class */
 #define NV_SW                                                        0x0000506e
 #define NV_SW_DMA_SEMAPHORE                                          0x00000060
@@ -1772,6 +1848,10 @@ nv44_graph_class(struct drm_device *dev)
 #define NV_SW_SEMAPHORE_ACQUIRE                                      0x00000068
 #define NV_SW_SEMAPHORE_RELEASE                                      0x0000006c
 #define NV_SW_YIELD                                                  0x00000080
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NV_SW_DMA_VBLSEM                                             0x0000018c
 #define NV_SW_VBLSEM_OFFSET                                          0x00000400
 #define NV_SW_VBLSEM_RELEASE_VALUE                                   0x00000404

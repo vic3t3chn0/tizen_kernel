@@ -10,11 +10,17 @@
 #include <linux/interrupt.h>
 #include <linux/stacktrace.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/interrupt.h>
+#include <linux/stacktrace.h>
+=======
 #include <linux/module.h>
 #include <linux/interrupt.h>
 #include <linux/stacktrace.h>
 #include <linux/kallsyms.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fault-inject.h>
 
 /*
@@ -24,8 +30,12 @@
 <<<<<<< HEAD
 int setup_fault_attr(struct fault_attr *attr, char *str)
 =======
+<<<<<<< HEAD
+int setup_fault_attr(struct fault_attr *attr, char *str)
+=======
 int __init setup_fault_attr(struct fault_attr *attr, char *str)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long probability;
 	unsigned long interval;
@@ -50,7 +60,11 @@ int __init setup_fault_attr(struct fault_attr *attr, char *str)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(setup_fault_attr);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(setup_fault_attr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void fail_dump(struct fault_attr *attr)
 {
@@ -148,7 +162,11 @@ bool should_fail(struct fault_attr *attr, ssize_t size)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(should_fail);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(should_fail);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_FAULT_INJECTION_DEBUG_FS
 
@@ -158,6 +176,8 @@ static int debugfs_ul_set(void *data, u64 val)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_FAULT_INJECTION_STACKTRACE_FILTER
@@ -171,6 +191,7 @@ static int debugfs_ul_set_MAX_STACK_TRACE_DEPTH(void *data, u64 val)
 #endif /* CONFIG_FAULT_INJECTION_STACKTRACE_FILTER */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int debugfs_ul_get(void *data, u64 *val)
 {
 	*val = *(unsigned long *)data;
@@ -182,8 +203,12 @@ DEFINE_SIMPLE_ATTRIBUTE(fops_ul, debugfs_ul_get, debugfs_ul_set, "%llu\n");
 <<<<<<< HEAD
 static struct dentry *debugfs_create_ul(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static struct dentry *debugfs_create_ul(const char *name, umode_t mode,
+=======
 static struct dentry *debugfs_create_ul(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct dentry *parent, unsigned long *value)
 {
 	return debugfs_create_file(name, mode, parent, value, &fops_ul);
@@ -191,6 +216,9 @@ static struct dentry *debugfs_create_ul(const char *name, mode_t mode,
 
 #ifdef CONFIG_FAULT_INJECTION_STACKTRACE_FILTER
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int debugfs_stacktrace_depth_set(void *data, u64 val)
 {
@@ -211,6 +239,8 @@ static struct dentry *debugfs_create_stacktrace_depth(
 				   &fops_stacktrace_depth);
 }
 
+<<<<<<< HEAD
+=======
 =======
 DEFINE_SIMPLE_ATTRIBUTE(fops_ul_MAX_STACK_TRACE_DEPTH, debugfs_ul_get,
 			debugfs_ul_set_MAX_STACK_TRACE_DEPTH, "%llu\n");
@@ -223,6 +253,7 @@ static struct dentry *debugfs_create_ul_MAX_STACK_TRACE_DEPTH(
 				   &fops_ul_MAX_STACK_TRACE_DEPTH);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_FAULT_INJECTION_STACKTRACE_FILTER */
 
 static int debugfs_atomic_t_set(void *data, u64 val)
@@ -243,14 +274,21 @@ DEFINE_SIMPLE_ATTRIBUTE(fops_atomic_t, debugfs_atomic_t_get,
 <<<<<<< HEAD
 static struct dentry *debugfs_create_atomic_t(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+static struct dentry *debugfs_create_atomic_t(const char *name, umode_t mode,
+=======
 static struct dentry *debugfs_create_atomic_t(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct dentry *parent, atomic_t *value)
 {
 	return debugfs_create_file(name, mode, parent, value, &fops_atomic_t);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct dentry *fault_create_debugfs_attr(const char *name,
 			struct dentry *parent, struct fault_attr *attr)
 {
@@ -272,6 +310,8 @@ struct dentry *fault_create_debugfs_attr(const char *name,
 	if (!debugfs_create_ul("verbose", mode, dir, &attr->verbose))
 		goto fail;
 	if (!debugfs_create_bool("task-filter", mode, dir, &attr->task_filter))
+<<<<<<< HEAD
+=======
 =======
 void cleanup_fault_attr_dentries(struct fault_attr *attr)
 {
@@ -353,11 +393,15 @@ int init_fault_attr_dentries(struct fault_attr *attr, const char *name)
 	    !attr->dentries.times_file || !attr->dentries.space_file ||
 	    !attr->dentries.verbose_file || !attr->dentries.task_filter_file)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail;
 
 #ifdef CONFIG_FAULT_INJECTION_STACKTRACE_FILTER
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!debugfs_create_stacktrace_depth("stacktrace-depth", mode, dir,
 				&attr->stacktrace_depth))
 		goto fail;
@@ -369,6 +413,8 @@ int init_fault_attr_dentries(struct fault_attr *attr, const char *name)
 	if (!debugfs_create_ul("reject-start", mode, dir, &attr->reject_start))
 		goto fail;
 	if (!debugfs_create_ul("reject-end", mode, dir, &attr->reject_end))
+<<<<<<< HEAD
+=======
 =======
 	attr->dentries.stacktrace_depth_file =
 		debugfs_create_ul_MAX_STACK_TRACE_DEPTH(
@@ -392,11 +438,15 @@ int init_fault_attr_dentries(struct fault_attr *attr, const char *name)
 	    !attr->dentries.reject_start_file ||
 	    !attr->dentries.reject_end_file)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail;
 
 #endif /* CONFIG_FAULT_INJECTION_STACKTRACE_FILTER */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return dir;
 fail:
 	debugfs_remove_recursive(dir);
@@ -404,6 +454,8 @@ fail:
 	return ERR_PTR(-ENOMEM);
 }
 EXPORT_SYMBOL_GPL(fault_create_debugfs_attr);
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 fail:
@@ -411,5 +463,6 @@ fail:
 	return -ENOMEM;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* CONFIG_FAULT_INJECTION_DEBUG_FS */

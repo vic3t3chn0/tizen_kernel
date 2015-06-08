@@ -15,16 +15,22 @@
 <<<<<<< HEAD
 enum cam_bus_type {
 =======
+<<<<<<< HEAD
+enum cam_bus_type {
+=======
 #define FLITE_MAX_NUM		2
 
 enum fimc_cam_bus_type {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FIMC_ITU_601 = 1,
 	FIMC_ITU_656,
 	FIMC_MIPI_CSI2,
 	FIMC_LCD_WB, /* FIFO link from LCD mixer */
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 enum flite_index {
@@ -38,6 +44,7 @@ enum flite_index {
 #define FIMC_CLK_INV_HSYNC	(1 << 3)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct i2c_board_info;
 
 /**
@@ -54,9 +61,14 @@ struct i2c_board_info;
  * @clk_id: index of the SoC peripheral clock for sensors
  * @flags: the parallel bus flags defining signals polarity (V4L2_MBUS_*)
 =======
+<<<<<<< HEAD
+ * @clk_id: index of the SoC peripheral clock for sensors
+ * @flags: the parallel bus flags defining signals polarity (V4L2_MBUS_*)
+=======
  * @flags: flags defining bus signals polarity inversion (High by default)
  * @use_cam: a means of used by FIMC
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct s5p_fimc_isp_info {
 	struct i2c_board_info *board_info;
@@ -64,12 +76,21 @@ struct s5p_fimc_isp_info {
 <<<<<<< HEAD
 	enum cam_bus_type bus_type;
 =======
+<<<<<<< HEAD
+	enum cam_bus_type bus_type;
+=======
 	enum fimc_cam_bus_type bus_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 csi_data_align;
 	u16 i2c_bus_num;
 	u16 mux_id;
 	u16 flags;
+<<<<<<< HEAD
+	u8 clk_id;
+};
+
+=======
 <<<<<<< HEAD
 	u8 clk_id;
 };
@@ -85,11 +106,15 @@ struct s5p_fimc_isp_info {
 #define FIMC_MAX_CSIS_NUM	2
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct s5p_platform_fimc - camera host interface platform data
  *
  * @isp_info: properties of camera sensor required for host interface setup
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @num_clients: the number of attached image sensors
  */
 struct s5p_platform_fimc {
@@ -105,6 +130,8 @@ struct s5p_platform_fimc {
  */
 #define S5P_FIMC_TX_END_NOTIFY _IO('e', 0)
 
+<<<<<<< HEAD
+=======
 =======
  */
 struct s5p_platform_fimc {
@@ -116,4 +143,5 @@ extern struct s5p_platform_fimc s3c_fimc1_default_data;
 extern struct s5p_platform_fimc s3c_fimc2_default_data;
 extern struct s5p_platform_fimc s3c_fimc3_default_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* S5P_FIMC_H_ */

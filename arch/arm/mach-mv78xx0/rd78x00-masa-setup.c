@@ -81,8 +81,12 @@ MACHINE_START(RD78X00_MASA, "Marvell RD-78x00-MASA Development Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= rd78x00_masa_init,
 	.map_io		= mv78xx0_map_io,
 	.init_early	= mv78xx0_init_early,
@@ -91,5 +95,9 @@ MACHINE_START(RD78X00_MASA, "Marvell RD-78x00-MASA Development Board")
 <<<<<<< HEAD
 	.restart	= mv78xx0_restart,
 =======
+<<<<<<< HEAD
+	.restart	= mv78xx0_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

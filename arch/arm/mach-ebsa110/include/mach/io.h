@@ -15,9 +15,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IO_SPACE_LIMIT 0xffff
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u8 __inb8(unsigned int port);
 void __outb8(u8  val, unsigned int port);
 
@@ -69,6 +72,8 @@ void __writel(u32 val, void __iomem *addr);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline void __iomem *__arch_ioremap(unsigned long cookie, size_t size,
 					   unsigned int flags)
 {
@@ -79,6 +84,7 @@ static inline void __iomem *__arch_ioremap(unsigned long cookie, size_t size,
 #define __arch_iounmap(cookie)	do { } while (0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void insb(unsigned int port, void *buf, int sz);
 extern void insw(unsigned int port, void *buf, int sz);
 extern void insl(unsigned int port, void *buf, int sz);

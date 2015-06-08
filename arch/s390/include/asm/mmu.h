@@ -5,7 +5,12 @@
 #include <linux/errno.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/errno.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	atomic_t attach_count;
 	unsigned int flush_mm;
@@ -14,7 +19,11 @@ typedef struct {
 <<<<<<< HEAD
 	struct list_head gmap_list;
 =======
+<<<<<<< HEAD
+	struct list_head gmap_list;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long asce_bits;
 	unsigned long asce_limit;
 	unsigned long vdso_base;
@@ -27,6 +36,9 @@ typedef struct {
 #define INIT_MM_CONTEXT(name)						      \
 	.context.list_lock    = __SPIN_LOCK_UNLOCKED(name.context.list_lock), \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.context.pgtable_list = LIST_HEAD_INIT(name.context.pgtable_list),    \
 	.context.gmap_list = LIST_HEAD_INIT(name.context.gmap_list),
 
@@ -43,8 +55,11 @@ static inline int tprot(unsigned long addr)
 		: "+d" (rc) : "a" (addr) : "cc");
 	return rc;
 }
+<<<<<<< HEAD
+=======
 =======
 	.context.pgtable_list = LIST_HEAD_INIT(name.context.pgtable_list),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

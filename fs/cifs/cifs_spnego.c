@@ -114,16 +114,22 @@ cifs_get_spnego_key(struct cifs_ses *sesInfo)
 		   UID_KEY_LEN + (sizeof(uid_t) * 2) +
 		   CREDUID_KEY_LEN + (sizeof(uid_t) * 2) +
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		   PID_KEY_LEN + (sizeof(pid_t) * 2) + 1;
 
 	if (sesInfo->user_name)
 		desc_len += USER_KEY_LEN + strlen(sesInfo->user_name);
 
+<<<<<<< HEAD
+=======
 =======
 		   USER_KEY_LEN + strlen(sesInfo->user_name) +
 		   PID_KEY_LEN + (sizeof(pid_t) * 2) + 1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spnego_key = ERR_PTR(-ENOMEM);
 	description = kzalloc(desc_len, GFP_KERNEL);
 	if (description == NULL)
@@ -161,14 +167,20 @@ cifs_get_spnego_key(struct cifs_ses *sesInfo)
 	sprintf(dp, ";creduid=0x%x", sesInfo->cred_uid);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sesInfo->user_name) {
 		dp = description + strlen(description);
 		sprintf(dp, ";user=%s", sesInfo->user_name);
 	}
+<<<<<<< HEAD
+=======
 =======
 	dp = description + strlen(description);
 	sprintf(dp, ";user=%s", sesInfo->user_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dp = description + strlen(description);
 	sprintf(dp, ";pid=0x%x", current->pid);

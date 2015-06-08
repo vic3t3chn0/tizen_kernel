@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -28,6 +32,9 @@
 #include <linux/input.h>
 #include <linux/leds.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/atmel-mci.h>
 #include <linux/delay.h>
 
@@ -35,6 +42,8 @@
 #include <video/atmel_lcdc.h>
 #include <media/soc_camera.h>
 #include <media/atmel-isi.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/clk.h>
 #include <linux/atmel-mci.h>
@@ -42,6 +51,7 @@
 #include <mach/hardware.h>
 #include <video/atmel_lcdc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/setup.h>
 #include <asm/mach-types.h>
@@ -54,8 +64,11 @@
 #include <mach/board.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/at91sam9_smc.h>
 #include <mach/at91_shdwc.h>
 #include <mach/system_rev.h>
@@ -70,8 +83,12 @@ static void __init ek_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(12000000);
 =======
+<<<<<<< HEAD
+	at91_initialize(12000000);
+=======
 	at91sam9g45_initialize(12000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* DGBU on ttyS0. (Rx & Tx only) */
 	at91_register_uart(0, 0, 0);
@@ -86,6 +103,8 @@ static void __init ek_init_early(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init ek_init_irq(void)
 {
 	at91sam9g45_init_interrupts(NULL);
@@ -93,6 +112,7 @@ static void __init ek_init_irq(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * USB HS Host port (common to OHCI & EHCI)
  */
@@ -103,7 +123,12 @@ static struct at91_usbh_data __initdata ek_usbh_hs_data = {
 	.vbus_pin_active_low = {1, 1},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin_active_low = {1, 1},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -138,7 +163,11 @@ static struct mci_platform_data __initdata mci0_data = {
 <<<<<<< HEAD
 		.wp_pin		= -EINVAL,
 =======
+<<<<<<< HEAD
+		.wp_pin		= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -157,8 +186,12 @@ static struct mci_platform_data __initdata mci1_data = {
 <<<<<<< HEAD
 static struct macb_platform_data __initdata ek_macb_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata ek_macb_data = {
+=======
 static struct at91_eth_data __initdata ek_macb_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PD5,
 	.is_rmii	= 1,
 };
@@ -182,6 +215,8 @@ static struct mtd_partition __initdata ek_nand_partition[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct mtd_partition * __init nand_partitions(int size, int *num_partitions)
 {
 	*num_partitions = ARRAY_SIZE(ek_nand_partition);
@@ -189,6 +224,7 @@ static struct mtd_partition * __init nand_partitions(int size, int *num_partitio
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* det_pin is not connected */
 static struct atmel_nand_data __initdata ek_nand_data = {
 	.ale		= 21,
@@ -196,14 +232,20 @@ static struct atmel_nand_data __initdata ek_nand_data = {
 	.rdy_pin	= AT91_PIN_PC8,
 	.enable_pin	= AT91_PIN_PC14,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.det_pin	= -EINVAL,
 	.ecc_mode	= NAND_ECC_SOFT,
 	.on_flash_bbt	= 1,
 	.parts		= ek_nand_partition,
 	.num_parts	= ARRAY_SIZE(ek_nand_partition),
+<<<<<<< HEAD
+=======
 =======
 	.partition_info	= nand_partitions,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sam9_smc_config __initdata ek_nand_smc_config = {
@@ -237,8 +279,12 @@ static void __init ek_add_device_nand(void)
 <<<<<<< HEAD
 	sam9_smc_configure(0, 3, &ek_nand_smc_config);
 =======
+<<<<<<< HEAD
+	sam9_smc_configure(0, 3, &ek_nand_smc_config);
+=======
 	sam9_smc_configure(3, &ek_nand_smc_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	at91_add_device_nand(&ek_nand_data);
 }
@@ -246,6 +292,9 @@ static void __init ek_add_device_nand(void)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ISI
  */
 static struct isi_platform_data __initdata isi_data = {
@@ -311,8 +360,11 @@ static struct platform_device isi_ov2640 = {
 
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * LCD Controller
  */
 #if defined(CONFIG_FB_ATMEL) || defined(CONFIG_FB_ATMEL_MODULE)
@@ -464,7 +516,11 @@ static struct ac97c_platform_data ek_ac97_data = {
 <<<<<<< HEAD
 	.reset_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.reset_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -509,15 +565,21 @@ static struct gpio_led ek_pwm_led[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *devices[] __initdata = {
 #if defined(CONFIG_SOC_CAMERA_OV2640) || \
 	defined(CONFIG_SOC_CAMERA_OV2640_MODULE)
 	&isi_ov2640,
 #endif
 };
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __init ek_board_init(void)
 {
@@ -543,7 +605,12 @@ static void __init ek_board_init(void)
 	/* ISI, using programmable clock as ISI_MCK */
 	at91_add_device_isi(&isi_data, true);
 =======
+<<<<<<< HEAD
+	/* ISI, using programmable clock as ISI_MCK */
+	at91_add_device_isi(&isi_data, true);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* LCD Controller */
 	at91_add_device_lcdc(&ek_lcdc_data);
 	/* Touch Screen */
@@ -559,7 +626,12 @@ static void __init ek_board_init(void)
 	/* Other platform devices */
 	platform_add_devices(devices, ARRAY_SIZE(devices));
 =======
+<<<<<<< HEAD
+	/* Other platform devices */
+	platform_add_devices(devices, ARRAY_SIZE(devices));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(AT91SAM9M10G45EK, "Atmel AT91SAM9M10G45-EK")
@@ -570,9 +642,15 @@ MACHINE_START(AT91SAM9M10G45EK, "Atmel AT91SAM9M10G45-EK")
 	.init_early	= ek_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= ek_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9g45_map_io,
 	.init_early	= ek_init_early,
 	.init_irq	= ek_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= ek_board_init,
 MACHINE_END

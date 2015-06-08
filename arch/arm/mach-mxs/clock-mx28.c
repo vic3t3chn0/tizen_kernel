@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/spinlock.h>
 =======
+<<<<<<< HEAD
+#include <linux/spinlock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/clkdev.h>
 #include <asm/div64.h>
@@ -36,7 +40,11 @@
 <<<<<<< HEAD
 #include <mach/digctl.h>
 =======
+<<<<<<< HEAD
+#include <mach/digctl.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "regs-clkctrl-mx28.h"
 
@@ -52,6 +60,9 @@ static struct clk saif0_clk;
 static struct clk saif1_clk;
 static struct clk clk32k_clk;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_SPINLOCK(clkmux_lock);
 
 /*
@@ -79,8 +90,11 @@ int mxs_saif_clkmux_select(unsigned int clkmux)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int _raw_clk_enable(struct clk *clk)
 {
@@ -333,8 +347,11 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 	unsigned long diff, parent_rate, calc_rate;			\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int i;								\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 									\
 	div_max = BM_CLKCTRL_##dr##_DIV >> BP_CLKCTRL_##dr##_DIV;	\
 	bm_busy = BM_CLKCTRL_##dr##_BUSY;				\
@@ -393,8 +410,12 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 <<<<<<< HEAD
 		reg |= frac << BP_CLKCTRL_##fr##_##fs##FRAC;		\
 =======
+<<<<<<< HEAD
+		reg |= frac << BP_CLKCTRL_##fr##_##fs##FRAC;		\
+=======
 		reg |= frac;						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_##fr);	\
 	}								\
 									\
@@ -415,6 +436,9 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 <<<<<<< HEAD
 	return mxs_clkctrl_timeout(HW_CLKCTRL_##dr, bm_busy);		\
 =======
+<<<<<<< HEAD
+	return mxs_clkctrl_timeout(HW_CLKCTRL_##dr, bm_busy);		\
+=======
 	for (i = 10000; i; i--)						\
 		if (!(__raw_readl(CLKCTRL_BASE_ADDR +			\
 			HW_CLKCTRL_##dr) & bm_busy))			\
@@ -426,6 +450,7 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 									\
 	return 0;							\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 _CLK_SET_RATE(cpu_clk, CPU, FRAC0, CPU)
@@ -443,8 +468,11 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 	unsigned long parent_rate;					\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int i;								\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 									\
 	parent_rate = clk_get_rate(clk->parent);			\
 	div_max = BM_CLKCTRL_##dr##_DIV >> BP_CLKCTRL_##dr##_DIV;	\
@@ -465,6 +493,9 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 <<<<<<< HEAD
 	return mxs_clkctrl_timeout(HW_CLKCTRL_##dr, BM_CLKCTRL_##dr##_BUSY);\
 =======
+<<<<<<< HEAD
+	return mxs_clkctrl_timeout(HW_CLKCTRL_##dr, BM_CLKCTRL_##dr##_BUSY);\
+=======
 	for (i = 10000; i; i--)						\
 		if (!(__raw_readl(CLKCTRL_BASE_ADDR +			\
 			HW_CLKCTRL_##dr) & BM_CLKCTRL_##dr##_BUSY))	\
@@ -476,6 +507,7 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 									\
 	return 0;							\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 _CLK_SET_RATE1(xbus_clk, XBUS)
@@ -490,8 +522,11 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 	unsigned long parent_rate;					\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int i;								\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 									\
 	parent_rate = clk_get_rate(clk->parent);			\
 	if (rate > parent_rate)						\
@@ -508,6 +543,9 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 	reg &= ~BM_CLKCTRL_##rs##_DIV;					\
 	reg |= div << BP_CLKCTRL_##rs##_DIV;				\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (reg & (1 << clk->enable_shift)) {				\
 		pr_err("%s: clock is gated\n", __func__);		\
 		return -EINVAL;						\
@@ -515,6 +553,8 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 	__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_##rs);		\
 									\
 	return mxs_clkctrl_timeout(HW_CLKCTRL_##rs, BM_CLKCTRL_##rs##_BUSY);\
+<<<<<<< HEAD
+=======
 =======
 	__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_##rs);		\
 									\
@@ -529,6 +569,7 @@ static int name##_set_rate(struct clk *clk, unsigned long rate)		\
 									\
 	return 0;							\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 _CLK_SET_RATE_SAIF(saif0_clk, SAIF0)
@@ -686,7 +727,11 @@ static struct clk_lookup lookups[] = {
 <<<<<<< HEAD
 	_REGISTER_CLOCK("imx28-gpmi-nand", NULL, gpmi_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("imx28-gpmi-nand", NULL, gpmi_clk)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("mxs-auart.0", NULL, uart_clk)
 	_REGISTER_CLOCK("mxs-auart.1", NULL, uart_clk)
 	_REGISTER_CLOCK("mxs-auart.2", NULL, uart_clk)
@@ -702,7 +747,12 @@ static struct clk_lookup lookups[] = {
 	_REGISTER_CLOCK("mxs-mmc.2", NULL, ssp2_clk)
 	_REGISTER_CLOCK("mxs-mmc.3", NULL, ssp3_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("mxs-mmc.2", NULL, ssp2_clk)
+	_REGISTER_CLOCK("mxs-mmc.3", NULL, ssp3_clk)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("flexcan.0", NULL, can0_clk)
 	_REGISTER_CLOCK("flexcan.1", NULL, can1_clk)
 	_REGISTER_CLOCK(NULL, "usb0", usb0_clk)
@@ -722,7 +772,12 @@ static struct clk_lookup lookups[] = {
 	_REGISTER_CLOCK("mxs-saif.0", NULL, saif0_clk)
 	_REGISTER_CLOCK("mxs-saif.1", NULL, saif1_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("mxs-saif.0", NULL, saif0_clk)
+	_REGISTER_CLOCK("mxs-saif.1", NULL, saif1_clk)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int clk_misc_init(void)
@@ -731,8 +786,12 @@ static int clk_misc_init(void)
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Fix up parent per register setting */
 	reg = __raw_readl(CLKCTRL_BASE_ADDR + HW_CLKCTRL_CLKSEQ);
@@ -796,11 +855,16 @@ static int clk_misc_init(void)
 	/* SAIF has to use frac div for functional operation */
 	reg = __raw_readl(CLKCTRL_BASE_ADDR + HW_CLKCTRL_SAIF0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg |= BM_CLKCTRL_SAIF0_DIV_FRAC_EN;
 	__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_SAIF0);
 
 	reg = __raw_readl(CLKCTRL_BASE_ADDR + HW_CLKCTRL_SAIF1);
 	reg |= BM_CLKCTRL_SAIF1_DIV_FRAC_EN;
+<<<<<<< HEAD
+=======
 =======
 	reg &= ~BM_CLKCTRL_SAIF0_DIV_FRAC_EN;
 	__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_SAIF0);
@@ -808,6 +872,7 @@ static int clk_misc_init(void)
 	reg = __raw_readl(CLKCTRL_BASE_ADDR + HW_CLKCTRL_SAIF1);
 	reg &= ~BM_CLKCTRL_SAIF1_DIV_FRAC_EN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_SAIF1);
 
 	/*
@@ -823,6 +888,9 @@ static int clk_misc_init(void)
 <<<<<<< HEAD
 	ret = mxs_clkctrl_timeout(HW_CLKCTRL_HBUS, BM_CLKCTRL_HBUS_ASM_BUSY);
 =======
+<<<<<<< HEAD
+	ret = mxs_clkctrl_timeout(HW_CLKCTRL_HBUS, BM_CLKCTRL_HBUS_ASM_BUSY);
+=======
 	for (i = 10000; i; i--)
 		if (!(__raw_readl(CLKCTRL_BASE_ADDR +
 			HW_CLKCTRL_HBUS) & BM_CLKCTRL_HBUS_ASM_BUSY))
@@ -832,12 +900,16 @@ static int clk_misc_init(void)
 		return -ETIMEDOUT;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Gate off cpu clock in WFI for power saving */
 	__raw_writel(BM_CLKCTRL_CPU_INTERRUPT_WAIT,
 			CLKCTRL_BASE_ADDR + HW_CLKCTRL_CPU_SET);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Extra fec clock setting
 	 * The DENX M28 uses an external clock source
@@ -849,6 +921,8 @@ static int clk_misc_init(void)
 		reg |= BM_CLKCTRL_ENET_CLK_OUT_EN;
 		__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_ENET);
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* Extra fec clock setting */
 	reg = __raw_readl(CLKCTRL_BASE_ADDR + HW_CLKCTRL_ENET);
@@ -856,6 +930,7 @@ static int clk_misc_init(void)
 	reg |= BM_CLKCTRL_ENET_CLK_OUT_EN;
 	__raw_writel(reg, CLKCTRL_BASE_ADDR + HW_CLKCTRL_ENET);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * 480 MHz seems too high to be ssp clock source directly,
@@ -869,8 +944,12 @@ static int clk_misc_init(void)
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int __init mx28_clocks_init(void)
@@ -884,6 +963,9 @@ int __init mx28_clocks_init(void)
 	clk_set_parent(&ssp0_clk, &ref_io0_clk);
 	clk_set_parent(&ssp1_clk, &ref_io0_clk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clk_set_parent(&ssp2_clk, &ref_io1_clk);
 	clk_set_parent(&ssp3_clk, &ref_io1_clk);
 
@@ -905,6 +987,8 @@ int __init mx28_clocks_init(void)
 	 */
 	clk_set_rate(&saif0_clk, 24000000);
 	clk_set_rate(&saif1_clk, 24000000);
+<<<<<<< HEAD
+=======
 =======
 
 	clk_enable(&cpu_clk);
@@ -915,6 +999,7 @@ int __init mx28_clocks_init(void)
 
 	clk_set_parent(&lcdif_clk, &ref_pix_clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clkdev_add_table(lookups, ARRAY_SIZE(lookups));
 

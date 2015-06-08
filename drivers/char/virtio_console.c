@@ -19,8 +19,20 @@
  */
 #include <linux/cdev.h>
 #include <linux/debugfs.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/completion.h>
 #include <linux/device.h>
 #include <linux/err.h>
+#include <linux/freezer.h>
+=======
+#include <linux/device.h>
+#include <linux/err.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/device.h>
+#include <linux/err.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/init.h>
 #include <linux/list.h>
@@ -32,6 +44,13 @@
 #include <linux/virtio_console.h>
 #include <linux/wait.h>
 #include <linux/workqueue.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "../tty/hvc/hvc_console.h"
 
 /*
@@ -73,6 +92,13 @@ struct ports_driver_data {
 static struct ports_driver_data pdrvdata;
 
 DEFINE_SPINLOCK(pdrvdata_lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+DECLARE_COMPLETION(early_console_added);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* This struct holds information that's relevant only for console ports */
 struct console {
@@ -151,6 +177,16 @@ struct ports_device {
 	int chr_major;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct port_stats {
+	unsigned long bytes_sent, bytes_received, bytes_discarded;
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* This struct holds the per-port data */
 struct port {
 	/* Next port in the list, head is in the ports_device */
@@ -179,6 +215,19 @@ struct port {
 	struct dentry *debugfs_file;
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * Keep count of the bytes sent, received and discarded for
+	 * this port for accounting and debugging purposes.  These
+	 * counts are not reset across port open / close events.
+	 */
+	struct port_stats stats;
+
+	/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * The entries in this struct will be valid if this port is
 	 * hooked up to an hvc console
 	 */
@@ -347,6 +396,24 @@ fail:
 }
 
 /* Callers should take appropriate locks */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct port_buffer *get_inbuf(struct port *port)
+{
+	struct port_buffer *buf;
+	unsigned int len;
+
+	if (port->inbuf)
+		return port->inbuf;
+
+	buf = virtqueue_get_buf(port->in_vq, &len);
+	if (buf) {
+		buf->len = len;
+		buf->offset = 0;
+		port->stats.bytes_received += len;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void *get_inbuf(struct port *port)
 {
 	struct port_buffer *buf;
@@ -358,6 +425,10 @@ static void *get_inbuf(struct port *port)
 	if (buf) {
 		buf->len = len;
 		buf->offset = 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return buf;
 }
@@ -375,7 +446,15 @@ static int add_inbuf(struct virtqueue *vq, struct port_buffer *buf)
 
 	sg_init_one(sg, buf->buf, buf->size);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = virtqueue_add_buf(vq, sg, 0, 1, buf, GFP_ATOMIC);
+=======
 	ret = virtqueue_add_buf(vq, sg, 0, 1, buf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = virtqueue_add_buf(vq, sg, 0, 1, buf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	virtqueue_kick(vq);
 	return ret;
 }
@@ -384,14 +463,44 @@ static int add_inbuf(struct virtqueue *vq, struct port_buffer *buf)
 static void discard_port_data(struct port *port)
 {
 	struct port_buffer *buf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int err;
+=======
 	struct virtqueue *vq;
 	unsigned int len;
 	int ret;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct virtqueue *vq;
+	unsigned int len;
+	int ret;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!port->portdev) {
 		/* Device has been unplugged.  vqs are already gone. */
 		return;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	buf = get_inbuf(port);
+
+	err = 0;
+	while (buf) {
+		port->stats.bytes_discarded += buf->len - buf->offset;
+		if (add_inbuf(port->in_vq, buf) < 0) {
+			err++;
+			free_buf(buf);
+		}
+		port->inbuf = NULL;
+		buf = get_inbuf(port);
+	}
+	if (err)
+		dev_warn(port->dev, "Errors adding %d buffers back to vq\n",
+			 err);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vq = port->in_vq;
 	if (port->inbuf)
 		buf = port->inbuf;
@@ -410,6 +519,10 @@ static void discard_port_data(struct port *port)
 	if (ret)
 		dev_warn(port->dev, "Errors adding %d buffers back to vq\n",
 			 ret);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static bool port_has_data(struct port *port)
@@ -417,6 +530,17 @@ static bool port_has_data(struct port *port)
 	unsigned long flags;
 	bool ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = false;
+	spin_lock_irqsave(&port->inbuf_lock, flags);
+	port->inbuf = get_inbuf(port);
+	if (port->inbuf)
+		ret = true;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&port->inbuf_lock, flags);
 	if (port->inbuf) {
 		ret = true;
@@ -429,6 +553,10 @@ static bool port_has_data(struct port *port)
 	}
 	ret = false;
 out:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&port->inbuf_lock, flags);
 	return ret;
 }
@@ -451,7 +579,15 @@ static ssize_t __send_control_msg(struct ports_device *portdev, u32 port_id,
 	vq = portdev->c_ovq;
 
 	sg_init_one(sg, &cpkt, sizeof(cpkt));
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (virtqueue_add_buf(vq, sg, 1, 0, &cpkt, GFP_ATOMIC) >= 0) {
+=======
 	if (virtqueue_add_buf(vq, sg, 1, 0, &cpkt) >= 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (virtqueue_add_buf(vq, sg, 1, 0, &cpkt) >= 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		virtqueue_kick(vq);
 		while (!virtqueue_get_buf(vq, &len))
 			cpu_relax();
@@ -500,7 +636,15 @@ static ssize_t send_buf(struct port *port, void *in_buf, size_t in_count,
 	reclaim_consumed_buffers(port);
 
 	sg_init_one(sg, in_buf, in_count);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = virtqueue_add_buf(out_vq, sg, 1, 0, in_buf, GFP_ATOMIC);
+=======
 	ret = virtqueue_add_buf(out_vq, sg, 1, 0, in_buf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = virtqueue_add_buf(out_vq, sg, 1, 0, in_buf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Tell Host to go! */
 	virtqueue_kick(out_vq);
@@ -529,6 +673,14 @@ static ssize_t send_buf(struct port *port, void *in_buf, size_t in_count,
 		cpu_relax();
 done:
 	spin_unlock_irqrestore(&port->outvq_lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	port->stats.bytes_sent += in_count;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We're expected to return the amount of data we wrote -- all
 	 * of it
@@ -633,8 +785,18 @@ static ssize_t port_fops_read(struct file *filp, char __user *ubuf,
 		if (filp->f_flags & O_NONBLOCK)
 			return -EAGAIN;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = wait_event_freezable(port->waitqueue,
+					   !will_read_block(port));
+=======
 		ret = wait_event_interruptible(port->waitqueue,
 					       !will_read_block(port));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ret = wait_event_interruptible(port->waitqueue,
+					       !will_read_block(port));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0)
 			return ret;
 	}
@@ -677,8 +839,18 @@ static ssize_t port_fops_write(struct file *filp, const char __user *ubuf,
 		if (nonblock)
 			return -EAGAIN;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = wait_event_freezable(port->waitqueue,
+					   !will_write_block(port));
+=======
 		ret = wait_event_interruptible(port->waitqueue,
 					       !will_write_block(port));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ret = wait_event_interruptible(port->waitqueue,
+					       !will_write_block(port));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0)
 			return ret;
 	}
@@ -1030,12 +1202,21 @@ static struct attribute_group port_attribute_group = {
 	.attrs = port_sysfs_entries,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int debugfs_open(struct inode *inode, struct file *filp)
 {
 	filp->private_data = inode->i_private;
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t debugfs_read(struct file *filp, char __user *ubuf,
 			    size_t count, loff_t *offp)
 {
@@ -1059,6 +1240,20 @@ static ssize_t debugfs_read(struct file *filp, char __user *ubuf,
 	out_offset += snprintf(buf + out_offset, out_count - out_offset,
 			       "outvq_full: %d\n", port->outvq_full);
 	out_offset += snprintf(buf + out_offset, out_count - out_offset,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			       "bytes_sent: %lu\n", port->stats.bytes_sent);
+	out_offset += snprintf(buf + out_offset, out_count - out_offset,
+			       "bytes_received: %lu\n",
+			       port->stats.bytes_received);
+	out_offset += snprintf(buf + out_offset, out_count - out_offset,
+			       "bytes_discarded: %lu\n",
+			       port->stats.bytes_discarded);
+	out_offset += snprintf(buf + out_offset, out_count - out_offset,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       "is_console: %s\n",
 			       is_console_port(port) ? "yes" : "no");
 	out_offset += snprintf(buf + out_offset, out_count - out_offset,
@@ -1071,7 +1266,15 @@ static ssize_t debugfs_read(struct file *filp, char __user *ubuf,
 
 static const struct file_operations port_debugfs_ops = {
 	.owner = THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open  = simple_open,
+=======
 	.open  = debugfs_open,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open  = debugfs_open,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read  = debugfs_read,
 };
 
@@ -1143,6 +1346,13 @@ static int add_port(struct ports_device *portdev, u32 id)
 	port->cons.ws.ws_row = port->cons.ws.ws_col = 0;
 
 	port->host_connected = port->guest_connected = false;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	port->stats = (struct port_stats) { 0 };
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	port->outvq_full = false;
 
@@ -1254,6 +1464,26 @@ static void remove_port(struct kref *kref)
 	kfree(port);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void remove_port_data(struct port *port)
+{
+	struct port_buffer *buf;
+
+	/* Remove unused data this port might have received. */
+	discard_port_data(port);
+
+	reclaim_consumed_buffers(port);
+
+	/* Remove buffers we queued up for the Host to send us data in. */
+	while ((buf = virtqueue_detach_unused_buf(port->in_vq)))
+		free_buf(buf);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Port got unplugged.  Remove port from portdev's list and drop the
  * kref reference.  If no userspace has this port opened, it will
@@ -1261,8 +1491,16 @@ static void remove_port(struct kref *kref)
  */
 static void unplug_port(struct port *port)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct port_buffer *buf;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct port_buffer *buf;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irq(&port->portdev->ports_lock);
 	list_del(&port->list);
 	spin_unlock_irq(&port->portdev->ports_lock);
@@ -1283,6 +1521,12 @@ static void unplug_port(struct port *port)
 		hvc_remove(port->cons.hvc);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	remove_port_data(port);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Remove unused data this port might have received. */
 	discard_port_data(port);
 
@@ -1291,6 +1535,10 @@ static void unplug_port(struct port *port)
 	/* Remove buffers we queued up for the Host to send us data in. */
 	while ((buf = virtqueue_detach_unused_buf(port->in_vq)))
 		free_buf(buf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We should just assume the device itself has gone off --
@@ -1352,6 +1600,13 @@ static void handle_control_message(struct ports_device *portdev,
 			break;
 
 		init_port_console(port);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		complete(&early_console_added);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Could remove the port here in case init fails - but
 		 * have to notify the host first.
@@ -1394,6 +1649,19 @@ static void handle_control_message(struct ports_device *portdev,
 		break;
 	case VIRTIO_CONSOLE_PORT_NAME:
 		/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 * If we woke up after hibernation, we can get this
+		 * again.  Skip it in that case.
+		 */
+		if (port->name)
+			break;
+
+		/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Skip the size of the header and the cpkt to get the size
 		 * of the name that was sent
 		 */
@@ -1481,8 +1749,17 @@ static void in_intr(struct virtqueue *vq)
 		return;
 
 	spin_lock_irqsave(&port->inbuf_lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	port->inbuf = get_inbuf(port);
+=======
 	if (!port->inbuf)
 		port->inbuf = get_inbuf(port);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!port->inbuf)
+		port->inbuf = get_inbuf(port);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Don't queue up data when port is closed.  This condition
@@ -1563,7 +1840,15 @@ static int init_vqs(struct ports_device *portdev)
 	portdev->out_vqs = kmalloc(nr_ports * sizeof(struct virtqueue *),
 				   GFP_KERNEL);
 	if (!vqs || !io_callbacks || !io_names || !portdev->in_vqs ||
+<<<<<<< HEAD
+<<<<<<< HEAD
+	    !portdev->out_vqs) {
+=======
 			!portdev->out_vqs) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			!portdev->out_vqs) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENOMEM;
 		goto free;
 	}
@@ -1635,6 +1920,34 @@ static const struct file_operations portdev_fops = {
 	.owner = THIS_MODULE,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void remove_vqs(struct ports_device *portdev)
+{
+	portdev->vdev->config->del_vqs(portdev->vdev);
+	kfree(portdev->in_vqs);
+	kfree(portdev->out_vqs);
+}
+
+static void remove_controlq_data(struct ports_device *portdev)
+{
+	struct port_buffer *buf;
+	unsigned int len;
+
+	if (!use_multiport(portdev))
+		return;
+
+	while ((buf = virtqueue_get_buf(portdev->c_ivq, &len)))
+		free_buf(buf);
+
+	while ((buf = virtqueue_detach_unused_buf(portdev->c_ivq)))
+		free_buf(buf);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Once we're further in boot, we get probed like any other virtio
  * device.
@@ -1648,6 +1961,16 @@ static int __devinit virtcons_probe(struct virtio_device *vdev)
 	struct ports_device *portdev;
 	int err;
 	bool multiport;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool early = early_put_chars != NULL;
+
+	/* Ensure to read early_put_chars now */
+	barrier();
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	portdev = kmalloc(sizeof(*portdev), GFP_KERNEL);
 	if (!portdev) {
@@ -1675,6 +1998,16 @@ static int __devinit virtcons_probe(struct virtio_device *vdev)
 
 	multiport = false;
 	portdev->config.max_nr_ports = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (virtio_config_val(vdev, VIRTIO_CONSOLE_F_MULTIPORT,
+			      offsetof(struct virtio_console_config,
+				       max_nr_ports),
+			      &portdev->config.max_nr_ports) == 0)
+		multiport = true;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (virtio_has_feature(vdev, VIRTIO_CONSOLE_F_MULTIPORT)) {
 		multiport = true;
 		vdev->config->get(vdev, offsetof(struct virtio_console_config,
@@ -1682,6 +2015,10 @@ static int __devinit virtcons_probe(struct virtio_device *vdev)
 				  &portdev->config.max_nr_ports,
 				  sizeof(portdev->config.max_nr_ports));
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = init_vqs(portdev);
 	if (err < 0) {
@@ -1719,15 +2056,44 @@ static int __devinit virtcons_probe(struct virtio_device *vdev)
 
 	__send_control_msg(portdev, VIRTIO_CONSOLE_BAD_ID,
 			   VIRTIO_CONSOLE_DEVICE_READY, 1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/*
+	 * If there was an early virtio console, assume that there are no
+	 * other consoles. We need to wait until the hvc_alloc matches the
+	 * hvc_instantiate, otherwise tty_open will complain, resulting in
+	 * a "Warning: unable to open an initial console" boot failure.
+	 * Without multiport this is done in add_port above. With multiport
+	 * this might take some host<->guest communication - thus we have to
+	 * wait.
+	 */
+	if (multiport && early)
+		wait_for_completion(&early_console_added);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 free_vqs:
 	/* The host might want to notify mgmt sw about device add failure */
 	__send_control_msg(portdev, VIRTIO_CONSOLE_BAD_ID,
 			   VIRTIO_CONSOLE_DEVICE_READY, 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	remove_vqs(portdev);
+=======
 	vdev->config->del_vqs(vdev);
 	kfree(portdev->in_vqs);
 	kfree(portdev->out_vqs);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	vdev->config->del_vqs(vdev);
+	kfree(portdev->in_vqs);
+	kfree(portdev->out_vqs);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 free_chrdev:
 	unregister_chrdev(portdev->chr_major, "virtio-portsdev");
 free:
@@ -1750,8 +2116,17 @@ static void virtcons_remove(struct virtio_device *vdev)
 	/* Disable interrupts for vqs */
 	vdev->config->reset(vdev);
 	/* Finish up work that's lined up */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cancel_work_sync(&portdev->control_work);
+=======
 	if (use_multiport(portdev))
 		cancel_work_sync(&portdev->control_work);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (use_multiport(portdev))
+		cancel_work_sync(&portdev->control_work);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_for_each_entry_safe(port, port2, &portdev->ports, list)
 		unplug_port(port);
@@ -1766,6 +2141,13 @@ static void virtcons_remove(struct virtio_device *vdev)
 	 * have to just stop using the port, as the vqs are going
 	 * away.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	remove_controlq_data(portdev);
+	remove_vqs(portdev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (use_multiport(portdev)) {
 		struct port_buffer *buf;
 		unsigned int len;
@@ -1781,6 +2163,10 @@ static void virtcons_remove(struct virtio_device *vdev)
 	kfree(portdev->in_vqs);
 	kfree(portdev->out_vqs);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(portdev);
 }
 
@@ -1794,6 +2180,81 @@ static unsigned int features[] = {
 	VIRTIO_CONSOLE_F_MULTIPORT,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+static int virtcons_freeze(struct virtio_device *vdev)
+{
+	struct ports_device *portdev;
+	struct port *port;
+
+	portdev = vdev->priv;
+
+	vdev->config->reset(vdev);
+
+	virtqueue_disable_cb(portdev->c_ivq);
+	cancel_work_sync(&portdev->control_work);
+	/*
+	 * Once more: if control_work_handler() was running, it would
+	 * enable the cb as the last step.
+	 */
+	virtqueue_disable_cb(portdev->c_ivq);
+	remove_controlq_data(portdev);
+
+	list_for_each_entry(port, &portdev->ports, list) {
+		virtqueue_disable_cb(port->in_vq);
+		virtqueue_disable_cb(port->out_vq);
+		/*
+		 * We'll ask the host later if the new invocation has
+		 * the port opened or closed.
+		 */
+		port->host_connected = false;
+		remove_port_data(port);
+	}
+	remove_vqs(portdev);
+
+	return 0;
+}
+
+static int virtcons_restore(struct virtio_device *vdev)
+{
+	struct ports_device *portdev;
+	struct port *port;
+	int ret;
+
+	portdev = vdev->priv;
+
+	ret = init_vqs(portdev);
+	if (ret)
+		return ret;
+
+	if (use_multiport(portdev))
+		fill_queue(portdev->c_ivq, &portdev->cvq_lock);
+
+	list_for_each_entry(port, &portdev->ports, list) {
+		port->in_vq = portdev->in_vqs[port->id];
+		port->out_vq = portdev->out_vqs[port->id];
+
+		fill_queue(port->in_vq, &port->inbuf_lock);
+
+		/* Get port open/close status on the host */
+		send_control_msg(port, VIRTIO_CONSOLE_PORT_READY, 1);
+
+		/*
+		 * If a port was open at the time of suspending, we
+		 * have to let the host know that it's still open.
+		 */
+		if (port->guest_connected)
+			send_control_msg(port, VIRTIO_CONSOLE_PORT_OPEN, 1);
+	}
+	return 0;
+}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct virtio_driver virtio_console = {
 	.feature_table = features,
 	.feature_table_size = ARRAY_SIZE(features),
@@ -1803,6 +2264,16 @@ static struct virtio_driver virtio_console = {
 	.probe =	virtcons_probe,
 	.remove =	virtcons_remove,
 	.config_changed = config_intr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+	.freeze =	virtcons_freeze,
+	.restore =	virtcons_restore,
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init init(void)

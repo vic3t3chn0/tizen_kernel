@@ -110,7 +110,12 @@ void o2net_unregister_handler_list(struct list_head *list);
 void o2net_fill_node_map(unsigned long *map, unsigned bytes);
 
 =======
+<<<<<<< HEAD
+void o2net_fill_node_map(unsigned long *map, unsigned bytes);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct o2nm_node;
 int o2net_register_hb_callbacks(void);
 void o2net_unregister_hb_callbacks(void);

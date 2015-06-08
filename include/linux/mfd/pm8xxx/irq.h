@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2011, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2011, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -31,7 +35,11 @@ struct pm8xxx_irq_core_data {
 <<<<<<< HEAD
 	unsigned int	base_addr;
 =======
+<<<<<<< HEAD
+	unsigned int	base_addr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct pm8xxx_irq_platform_data {
@@ -42,7 +50,11 @@ struct pm8xxx_irq_platform_data {
 <<<<<<< HEAD
 	int				dev_id;
 =======
+<<<<<<< HEAD
+	int				dev_id;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct pm_irq_chip;
@@ -54,10 +66,16 @@ struct pm_irq_chip *pm8xxx_irq_init(struct device *dev,
 				const struct pm8xxx_irq_platform_data *pdata);
 int pm8xxx_irq_exit(struct pm_irq_chip *chip);
 =======
+<<<<<<< HEAD
+struct pm_irq_chip *pm8xxx_irq_init(struct device *dev,
+				const struct pm8xxx_irq_platform_data *pdata);
+int pm8xxx_irq_exit(struct pm_irq_chip *chip);
+=======
 struct pm_irq_chip * __devinit pm8xxx_irq_init(struct device *dev,
 				const struct pm8xxx_irq_platform_data *pdata);
 int __devexit pm8xxx_irq_exit(struct pm_irq_chip *chip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 static inline int pm8xxx_get_irq_stat(struct pm_irq_chip *chip, int irq)
 {
@@ -66,9 +84,13 @@ static inline int pm8xxx_get_irq_stat(struct pm_irq_chip *chip, int irq)
 <<<<<<< HEAD
 static inline struct pm_irq_chip *pm8xxx_irq_init(const struct device *dev,
 =======
+<<<<<<< HEAD
+static inline struct pm_irq_chip *pm8xxx_irq_init(const struct device *dev,
+=======
 static inline struct pm_irq_chip * __devinit pm8xxx_irq_init(
 				const struct device *dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const struct pm8xxx_irq_platform_data *pdata)
 {
 	return ERR_PTR(-ENXIO);
@@ -76,8 +98,12 @@ static inline struct pm_irq_chip * __devinit pm8xxx_irq_init(
 <<<<<<< HEAD
 static inline int pm8xxx_irq_exit(struct pm_irq_chip *chip)
 =======
+<<<<<<< HEAD
+static inline int pm8xxx_irq_exit(struct pm_irq_chip *chip)
+=======
 static inline int __devexit pm8xxx_irq_exit(struct pm_irq_chip *chip)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -ENXIO;
 }

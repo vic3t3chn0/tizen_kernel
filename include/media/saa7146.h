@@ -3,8 +3,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>	/* for module-version */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>	/* for delay-stuff */
 #include <linux/slab.h>		/* for kmalloc/kfree */
 #include <linux/pci.h>		/* for pci-config-stuff, vendor ids etc. */
@@ -30,14 +33,20 @@ extern unsigned int saa7146_debug;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 //#define DEBUG_PROLOG printk("(0x%08x)(0x%08x) %s: %s(): ",(dev==0?-1:(dev->mem==0?-1:saa7146_read(dev,RPS_ADDR0))),(dev==0?-1:(dev->mem==0?-1:saa7146_read(dev,IER))),KBUILD_MODNAME,__func__)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef DEBUG_VARIABLE
 	#define DEBUG_VARIABLE saa7146_debug
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ERR(fmt, ...)	pr_err("%s: " fmt, __func__, ##__VA_ARGS__)
 
 #define _DBG(mask, fmt, ...)						\
@@ -60,6 +69,8 @@ do {									\
 #define DEB_INT(fmt, ...)	_DBG(0x20, fmt, ##__VA_ARGS__)
 /* capture debug messages */
 #define DEB_CAP(fmt, ...)	_DBG(0x40, fmt, ##__VA_ARGS__)
+<<<<<<< HEAD
+=======
 =======
 #define DEBUG_PROLOG printk("%s: %s(): ",KBUILD_MODNAME, __func__)
 #define INFO(x) { printk("%s: ",KBUILD_MODNAME); printk x; }
@@ -74,6 +85,7 @@ do {									\
 #define DEB_INT(x)  if (0!=(DEBUG_VARIABLE&0x20)) { DEBUG_PROLOG; printk x; } /* interrupt debug messages */
 #define DEB_CAP(x)  if (0!=(DEBUG_VARIABLE&0x40)) { DEBUG_PROLOG; printk x; } /* capture debug messages */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SAA7146_ISR_CLEAR(x,y) \
 	saa7146_write(x, ISR, (y));
@@ -82,7 +94,12 @@ do {									\
 struct module;
 
 =======
+<<<<<<< HEAD
+struct module;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct saa7146_dev;
 struct saa7146_extension;
 struct saa7146_vv;

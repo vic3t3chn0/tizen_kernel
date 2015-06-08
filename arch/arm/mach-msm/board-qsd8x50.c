@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2008-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2008-2013, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2009-2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -15,11 +19,14 @@
  *
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301, USA.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -27,6 +34,9 @@
 #include <linux/gpio.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/android_pmem.h>
 #include <linux/bootmem.h>
 #include <linux/i2c.h>
@@ -35,12 +45,15 @@
 #include <linux/bma150.h>
 #include <linux/power_supply.h>
 #include <linux/clk.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/delay.h>
 #include <linux/usb/msm_hsusb.h>
 #include <linux/err.h>
 #include <linux/clkdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
@@ -48,6 +61,9 @@
 #include <asm/setup.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/mmc.h>
 #include <mach/vreg.h>
 #include <mach/mpp.h>
@@ -2100,6 +2116,8 @@ static void msm_sdcc_setup_gpio(int dev_id, unsigned int enable)
 		msm_gpios_disable_free(curr->cfg_data, curr->size);
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 #include <mach/board.h>
 #include <mach/irqs.h>
@@ -2183,6 +2201,7 @@ static struct msm_mmc_gpio sdc1_gpio_cfg[] = {
 static struct vreg *vreg_mmc;
 static unsigned long vreg_sts;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static uint32_t msm_sdcc_setup_power(struct device *dv, unsigned int vdd)
 {
@@ -2193,7 +2212,11 @@ static uint32_t msm_sdcc_setup_power(struct device *dv, unsigned int vdd)
 <<<<<<< HEAD
 	msm_sdcc_setup_gpio(pdev->id, !!vdd);
 =======
+<<<<<<< HEAD
+	msm_sdcc_setup_gpio(pdev->id, !!vdd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (vdd == 0) {
 		if (!vreg_sts)
@@ -2208,21 +2231,31 @@ static uint32_t msm_sdcc_setup_power(struct device *dv, unsigned int vdd)
 				printk(KERN_ERR "%s: return val: %d \n",
 					__func__, rc);
 =======
+<<<<<<< HEAD
+				printk(KERN_ERR "%s: return val: %d \n",
+					__func__, rc);
+=======
 				pr_err("vreg_mmc disable failed for slot "
 						"%d: %d\n", pdev->id, rc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		return 0;
 	}
 
 	if (!vreg_sts) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = vreg_set_level(vreg_mmc, PMIC_VREG_GP6_LEVEL);
 		if (!rc)
 			rc = vreg_enable(vreg_mmc);
 		if (rc)
 			printk(KERN_ERR "%s: return val: %d \n",
 					__func__, rc);
+<<<<<<< HEAD
+=======
 =======
 		rc = vreg_set_level(vreg_mmc, 2900);
 		if (rc)
@@ -2233,12 +2266,16 @@ static uint32_t msm_sdcc_setup_power(struct device *dv, unsigned int vdd)
 			pr_err("vreg_mmc enable failed for slot %d: %d\n",
 					pdev->id, rc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	set_bit(pdev->id, &vreg_sts);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #if (defined(CONFIG_MMC_MSM_SDC1_SUPPORT)\
 	|| defined(CONFIG_MMC_MSM_SDC2_SUPPORT)\
@@ -2649,6 +2686,8 @@ static void __init qsd8x50_map_io(void)
 
 MACHINE_START(QSD8X50_SURF, "QCT QSD8X50 SURF")
 	.atag_offset = 0x100,
+<<<<<<< HEAD
+=======
 =======
 static struct msm_mmc_gpio_data sdc1_gpio = {
 	.gpio = sdc1_gpio_cfg,
@@ -2698,6 +2737,7 @@ static void __init qsd8x50_init(void)
 MACHINE_START(QSD8X50_SURF, "QCT QSD8X50 SURF")
 	.boot_params = PLAT_PHYS_OFFSET + 0x100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io = qsd8x50_map_io,
 	.init_irq = qsd8x50_init_irq,
 	.init_machine = qsd8x50_init,
@@ -2708,9 +2748,14 @@ MACHINE_END
 MACHINE_START(QSD8X50_FFA, "QCT QSD8X50 FFA")
 	.atag_offset = 0x100,
 =======
+<<<<<<< HEAD
+MACHINE_START(QSD8X50_FFA, "QCT QSD8X50 FFA")
+	.atag_offset = 0x100,
+=======
 MACHINE_START(QSD8X50A_ST1_5, "QCT QSD8X50A ST1.5")
 	.boot_params = PLAT_PHYS_OFFSET + 0x100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io = qsd8x50_map_io,
 	.init_irq = qsd8x50_init_irq,
 	.init_machine = qsd8x50_init,

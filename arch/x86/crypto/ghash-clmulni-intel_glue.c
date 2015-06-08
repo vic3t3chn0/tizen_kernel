@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <asm/cpu_device_id.h>
 =======
+<<<<<<< HEAD
+#include <asm/cpu_device_id.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GHASH_BLOCK_SIZE	16
 #define GHASH_DIGEST_SIZE	16
@@ -252,8 +256,12 @@ static int ghash_async_setkey(struct crypto_ahash *tfm, const u8 *key,
 <<<<<<< HEAD
 	return err;
 =======
+<<<<<<< HEAD
+	return err;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ghash_async_init_tfm(struct crypto_tfm *tfm)
@@ -303,18 +311,28 @@ static struct ahash_alg ghash_async_alg = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct x86_cpu_id pcmul_cpu_id[] = {
 	X86_FEATURE_MATCH(X86_FEATURE_PCLMULQDQ), /* Pickle-Mickle-Duck */
 	{}
 };
 MODULE_DEVICE_TABLE(x86cpu, pcmul_cpu_id);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ghash_pclmulqdqni_mod_init(void)
 {
 	int err;
 
+<<<<<<< HEAD
+	if (!x86_match_cpu(pcmul_cpu_id))
+		return -ENODEV;
+=======
 <<<<<<< HEAD
 	if (!x86_match_cpu(pcmul_cpu_id))
 		return -ENODEV;
@@ -325,6 +343,7 @@ static int __init ghash_pclmulqdqni_mod_init(void)
 		return -ENODEV;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = crypto_register_shash(&ghash_alg);
 	if (err)

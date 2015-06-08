@@ -21,6 +21,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if 0	/* old code... */
 
 /* Unsigned only, because we don't need signs to multiply and divide. */
@@ -262,6 +264,7 @@ static inline void lsr64(int count, unsigned long long *dest)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void fp_denormalize(struct fp_ext *reg, unsigned int cnt)
 {
 	reg->exp += cnt;
@@ -486,6 +489,8 @@ static inline void fp_dividemant(union fp_mant128 *dest, struct fp_ext *src,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if 0
 static inline unsigned int fp_fls128(union fp_mant128 *src)
 {
@@ -598,6 +603,7 @@ static inline void fp_shiftmant128(union fp_mant128 *src, int shift)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void fp_putmant128(struct fp_ext *dest, union fp_mant128 *src,
 				 int shift)
 {
@@ -643,6 +649,8 @@ static inline void fp_putmant128(struct fp_ext *dest, union fp_mant128 *src,
 	}
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #if 0 /* old code... */
@@ -825,4 +833,5 @@ inline void div128(int128 a, int128 b, int128 c)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* MULTI_ARITH_H */

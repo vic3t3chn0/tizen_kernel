@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <net/cfg80211-wext.h>
 =======
+<<<<<<< HEAD
+#include <net/cfg80211-wext.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/iw_handler.h>
 #include "core.h"
 #include "nl80211.h"
@@ -138,8 +142,11 @@ int __cfg80211_stop_sched_scan(struct cfg80211_registered_device *rdev,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net_device *dev;
 
 	lockdep_assert_held(&rdev->sched_scan_mtx);
@@ -148,8 +155,12 @@ int __cfg80211_stop_sched_scan(struct cfg80211_registered_device *rdev,
 <<<<<<< HEAD
 		return -ENOENT;
 =======
+<<<<<<< HEAD
+		return -ENOENT;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev = rdev->sched_scan_req->dev;
 
@@ -157,8 +168,12 @@ int __cfg80211_stop_sched_scan(struct cfg80211_registered_device *rdev,
 <<<<<<< HEAD
 		int err = rdev->ops->sched_scan_stop(&rdev->wiphy, dev);
 =======
+<<<<<<< HEAD
+		int err = rdev->ops->sched_scan_stop(&rdev->wiphy, dev);
+=======
 		err = rdev->ops->sched_scan_stop(&rdev->wiphy, dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 	}
@@ -171,8 +186,12 @@ int __cfg80211_stop_sched_scan(struct cfg80211_registered_device *rdev,
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void bss_release(struct kref *ref)
@@ -248,6 +267,9 @@ const u8 *cfg80211_find_ie(u8 eid, const u8 *ies, int len)
 EXPORT_SYMBOL(cfg80211_find_ie);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const u8 *cfg80211_find_vendor_ie(unsigned int oui, u8 oui_type,
 				  const u8 *ies, int len)
 {
@@ -275,13 +297,19 @@ const u8 *cfg80211_find_vendor_ie(unsigned int oui, u8 oui_type,
 }
 EXPORT_SYMBOL(cfg80211_find_vendor_ie);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cmp_ies(u8 num, u8 *ies1, size_t len1, u8 *ies2, size_t len2)
 {
 	const u8 *ie1 = cfg80211_find_ie(num, ies1, len1);
 	const u8 *ie2 = cfg80211_find_ie(num, ies2, len2);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* equal if both missing */
 	if (!ie1 && !ie2)
@@ -296,6 +324,8 @@ static int cmp_ies(u8 num, u8 *ies1, size_t len1, u8 *ies2, size_t len2)
 	if (ie1[1] != ie2[1])
 		return ie2[1] - ie1[1];
 	return memcmp(ie1 + 2, ie2 + 2, ie1[1]);
+<<<<<<< HEAD
+=======
 =======
 	int r;
 
@@ -309,6 +339,7 @@ static int cmp_ies(u8 num, u8 *ies1, size_t len1, u8 *ies2, size_t len2)
 		return ie2[1] - ie1[1];
 	return r;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static bool is_bss(struct cfg80211_bss *a,
@@ -395,9 +426,14 @@ static bool is_mesh(struct cfg80211_bss *a,
 static int cmp_bss_core(struct cfg80211_bss *a,
 			struct cfg80211_bss *b)
 =======
+<<<<<<< HEAD
+static int cmp_bss_core(struct cfg80211_bss *a,
+			struct cfg80211_bss *b)
+=======
 static int cmp_bss(struct cfg80211_bss *a,
 		   struct cfg80211_bss *b)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int r;
 
@@ -420,6 +456,9 @@ static int cmp_bss(struct cfg80211_bss *a,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return memcmp(a->bssid, b->bssid, ETH_ALEN);
 }
 
@@ -429,9 +468,12 @@ static int cmp_bss(struct cfg80211_bss *a,
 	int r;
 
 	r = cmp_bss_core(a, b);
+<<<<<<< HEAD
+=======
 =======
 	r = memcmp(a->bssid, b->bssid, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (r)
 		return r;
 
@@ -443,6 +485,9 @@ static int cmp_bss(struct cfg80211_bss *a,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cmp_hidden_bss(struct cfg80211_bss *a,
 		   struct cfg80211_bss *b)
 {
@@ -489,8 +534,11 @@ static int cmp_hidden_bss(struct cfg80211_bss *a,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cfg80211_bss *cfg80211_get_bss(struct wiphy *wiphy,
 				      struct ieee80211_channel *channel,
 				      const u8 *bssid,
@@ -503,10 +551,13 @@ struct cfg80211_bss *cfg80211_get_bss(struct wiphy *wiphy,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if ((bssid == NULL) || (ssid == NULL))
 		return NULL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_bh(&dev->bss_lock);
 
 	list_for_each_entry(bss, &dev->bss_list, list) {
@@ -614,6 +665,9 @@ rb_find_bss(struct cfg80211_registered_device *dev,
 
 static struct cfg80211_internal_bss *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 rb_find_hidden_bss(struct cfg80211_registered_device *dev,
 	    struct cfg80211_internal_bss *res)
 {
@@ -656,8 +710,11 @@ copy_hidden_ies(struct cfg80211_internal_bss *res,
 }
 
 static struct cfg80211_internal_bss *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 cfg80211_bss_update(struct cfg80211_registered_device *dev,
 		    struct cfg80211_internal_bss *res)
 {
@@ -761,6 +818,9 @@ cfg80211_bss_update(struct cfg80211_registered_device *dev,
 		kref_put(&res->ref, bss_release);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct cfg80211_internal_bss *hidden;
 
 		/* First check if the beacon is a probe response from
@@ -776,8 +836,11 @@ cfg80211_bss_update(struct cfg80211_registered_device *dev,
 		if (hidden)
 			copy_hidden_ies(res, hidden);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* this "consumes" the reference */
 		list_add_tail(&res->list, &dev->bss_list);
 		rb_insert_bss(dev, res);
@@ -798,10 +861,15 @@ cfg80211_inform_bss(struct wiphy *wiphy,
 		    const u8 *bssid, u64 tsf, u16 capability,
 		    u16 beacon_interval, const u8 *ie, size_t ielen,
 =======
+<<<<<<< HEAD
+		    const u8 *bssid, u64 tsf, u16 capability,
+		    u16 beacon_interval, const u8 *ie, size_t ielen,
+=======
 		    const u8 *bssid,
 		    u64 timestamp, u16 capability, u16 beacon_interval,
 		    const u8 *ie, size_t ielen,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    s32 signal, gfp_t gfp)
 {
 	struct cfg80211_internal_bss *res;
@@ -826,8 +894,12 @@ cfg80211_inform_bss(struct wiphy *wiphy,
 <<<<<<< HEAD
 	res->pub.tsf = tsf;
 =======
+<<<<<<< HEAD
+	res->pub.tsf = tsf;
+=======
 	res->pub.tsf = timestamp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	res->pub.beacon_interval = beacon_interval;
 	res->pub.capability = capability;
 	/*
@@ -931,6 +1003,9 @@ cfg80211_inform_bss_frame(struct wiphy *wiphy,
 EXPORT_SYMBOL(cfg80211_inform_bss_frame);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void cfg80211_ref_bss(struct cfg80211_bss *pub)
 {
 	struct cfg80211_internal_bss *bss;
@@ -943,8 +1018,11 @@ void cfg80211_ref_bss(struct cfg80211_bss *pub)
 }
 EXPORT_SYMBOL(cfg80211_ref_bss);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void cfg80211_put_bss(struct cfg80211_bss *pub)
 {
 	struct cfg80211_internal_bss *bss;
@@ -1089,12 +1167,18 @@ int cfg80211_wext_siwscan(struct net_device *dev,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < IEEE80211_NUM_BANDS; i++)
 		if (wiphy->bands[i])
 			creq->rates[i] = (1 << wiphy->bands[i]->n_bitrates) - 1;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rdev->scan_req = creq;
 	err = rdev->ops->scan(wiphy, dev, creq);
 	if (err) {

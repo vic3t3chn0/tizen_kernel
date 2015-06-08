@@ -15,6 +15,13 @@
 #include <linux/types.h>
 #include <linux/platform_device.h>
 #include <linux/mutex.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/power/bq27x00_battery.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../w1.h"
 #include "../w1_int.h"
@@ -25,6 +32,28 @@
 
 static int F_ID;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int w1_bq27000_read(struct device *dev, unsigned int reg)
+{
+	u8 val;
+	struct w1_slave *sl = container_of(dev->parent, struct w1_slave, dev);
+
+	mutex_lock(&sl->master->mutex);
+	w1_write_8(sl->master, HDQ_CMD_READ | reg);
+	val = w1_read_8(sl->master);
+	mutex_unlock(&sl->master->mutex);
+
+	return val;
+}
+
+static struct bq27000_platform_data bq27000_battery_info = {
+	.read   = w1_bq27000_read,
+	.name   = "bq27000-battery",
+};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void w1_bq27000_write(struct device *dev, u8 buf, u8 reg)
 {
 	struct w1_slave *sl = container_of(dev, struct w1_slave, dev);
@@ -53,18 +82,43 @@ int w1_bq27000_read(struct device *dev, u8 reg)
 	return val;
 }
 EXPORT_SYMBOL(w1_bq27000_read);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int w1_bq27000_add_slave(struct w1_slave *sl)
 {
 	int ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct platform_device *pdev;
+
+	pdev = platform_device_alloc("bq27000-battery", -1);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int id = 1;
 	struct platform_device *pdev;
 
 	pdev = platform_device_alloc("bq27000-battery", id);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!pdev) {
 		ret = -ENOMEM;
 		return ret;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = platform_device_add_data(pdev,
+				       &bq27000_battery_info,
+				       sizeof(bq27000_battery_info));
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdev->dev.parent = &sl->dev;
 
 	ret = platform_device_add(pdev);

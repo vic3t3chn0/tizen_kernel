@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/random.h>
 =======
+<<<<<<< HEAD
+#include <linux/random.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "fat.h"
 
 /*
@@ -90,11 +94,16 @@ static int vfat_revalidate_ci(struct dentry *dentry, struct nameidata *nd)
 	if (nd->flags & (LOOKUP_CREATE | LOOKUP_RENAME_TARGET))
 		return 0;
 =======
+<<<<<<< HEAD
+	if (nd->flags & (LOOKUP_CREATE | LOOKUP_RENAME_TARGET))
+		return 0;
+=======
 	if (!(nd->flags & (LOOKUP_CONTINUE | LOOKUP_PARENT))) {
 		if (nd->flags & (LOOKUP_CREATE | LOOKUP_RENAME_TARGET))
 			return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return vfat_revalidate_shortname(dentry);
 }
@@ -340,6 +349,9 @@ static int vfat_create_shortname(struct inode *dir, struct nls_table *nls,
 	int is_shortname;
 	struct shortname_info base_info, ext_info;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned opts_shortname = opts->shortname;
 
 #ifdef CONFIG_VFAT_FS_NO_DUALNAMES
@@ -351,8 +363,11 @@ static int vfat_create_shortname(struct inode *dir, struct nls_table *nls,
 	 */
 	opts_shortname = VFAT_SFN_CREATE_WINNT;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	is_shortname = 1;
 	INIT_SHORTNAME_INFO(&base_info);
@@ -470,10 +485,16 @@ static int vfat_create_shortname(struct inode *dir, struct nls_table *nls,
 			return (base_info.upper && ext_info.upper);
 		} else if (opts_shortname & VFAT_SFN_CREATE_WINNT) {
 =======
+<<<<<<< HEAD
+		if (opts_shortname & VFAT_SFN_CREATE_WIN95) {
+			return (base_info.upper && ext_info.upper);
+		} else if (opts_shortname & VFAT_SFN_CREATE_WINNT) {
+=======
 		if (opts->shortname & VFAT_SFN_CREATE_WIN95) {
 			return (base_info.upper && ext_info.upper);
 		} else if (opts->shortname & VFAT_SFN_CREATE_WINNT) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((base_info.upper || base_info.lower) &&
 			    (ext_info.upper || ext_info.lower)) {
 				if (!base_info.upper && base_info.lower)
@@ -553,6 +574,9 @@ xlate_to_uni(const unsigned char *name, int len, unsigned char *outname,
 		op = &outname[*outlen * sizeof(wchar_t)];
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (i = 0, ip = name, op = outname, *outlen = 0;
 			 i < len && *outlen < FAT_LFN_LEN;
 			 *outlen += 1) {
@@ -593,6 +617,8 @@ xlate_to_uni(const unsigned char *name, int len, unsigned char *outname,
 		}
 		if (i < len)
 			return -ENAMETOOLONG;
+<<<<<<< HEAD
+=======
 =======
 		if (nls) {
 			for (i = 0, ip = name, op = outname, *outlen = 0;
@@ -646,6 +672,7 @@ xlate_to_uni(const unsigned char *name, int len, unsigned char *outname,
 				return -ENAMETOOLONG;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	*longlen = *outlen;
@@ -667,6 +694,9 @@ xlate_to_uni(const unsigned char *name, int len, unsigned char *outname,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_VFAT_FS_NO_DUALNAMES
 /*
  * This function creates a dummy 8.3 entry which is as compatible as
@@ -727,8 +757,11 @@ static void vfat_build_dummy_83_buffer(struct inode *dir, char *msdos_name,
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int vfat_build_slots(struct inode *dir, const unsigned char *name,
 			    int len, int is_dir, int cluster,
 			    struct timespec *ts,
@@ -772,6 +805,9 @@ static int vfat_build_slots(struct inode *dir, const unsigned char *name,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_VFAT_FS_NO_DUALNAMES
 	printk_once(KERN_INFO
 		    "VFAT: not creating 8.3 short filenames for long names\n");
@@ -779,8 +815,11 @@ static int vfat_build_slots(struct inode *dir, const unsigned char *name,
 	lcase = FAT_NO_83NAME;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* build the entry of long file name */
 	cksum = fat_checksum(msdos_name);
 
@@ -932,8 +971,12 @@ error:
 <<<<<<< HEAD
 static int vfat_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int vfat_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int vfat_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       struct nameidata *nd)
 {
 	struct super_block *sb = dir->i_sb;
@@ -1025,8 +1068,12 @@ out:
 <<<<<<< HEAD
 static int vfat_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int vfat_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int vfat_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = dir->i_sb;
 	struct inode *inode;
@@ -1059,8 +1106,12 @@ static int vfat_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 	set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 2);
+=======
 	inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_mtime = inode->i_atime = inode->i_ctime = ts;
 	/* timestamp is already written, so mark_inode_dirty() is unneeded. */
 

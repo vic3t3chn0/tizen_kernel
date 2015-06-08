@@ -42,13 +42,19 @@ static LIST_HEAD(lib80211_crypto_algs);
 static DEFINE_SPINLOCK(lib80211_crypto_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void lib80211_crypt_deinit_entries(struct lib80211_crypt_info *info,
 					  int force);
 static void lib80211_crypt_quiescing(struct lib80211_crypt_info *info);
 static void lib80211_crypt_deinit_handler(unsigned long data);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const char *print_ssid(char *buf, const char *ssid, u8 ssid_len)
 {
 	const char *s = ssid;
@@ -123,8 +129,13 @@ EXPORT_SYMBOL(lib80211_crypt_info_free);
 static void lib80211_crypt_deinit_entries(struct lib80211_crypt_info *info,
 					  int force)
 =======
+<<<<<<< HEAD
+static void lib80211_crypt_deinit_entries(struct lib80211_crypt_info *info,
+					  int force)
+=======
 void lib80211_crypt_deinit_entries(struct lib80211_crypt_info *info, int force)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct lib80211_crypt_data *entry, *next;
 	unsigned long flags;
@@ -149,11 +160,17 @@ void lib80211_crypt_deinit_entries(struct lib80211_crypt_info *info, int force)
 /* After this, crypt_deinit_list won't accept new members */
 static void lib80211_crypt_quiescing(struct lib80211_crypt_info *info)
 =======
+<<<<<<< HEAD
+
+/* After this, crypt_deinit_list won't accept new members */
+static void lib80211_crypt_quiescing(struct lib80211_crypt_info *info)
+=======
 EXPORT_SYMBOL(lib80211_crypt_deinit_entries);
 
 /* After this, crypt_deinit_list won't accept new members */
 void lib80211_crypt_quiescing(struct lib80211_crypt_info *info)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 
@@ -165,10 +182,15 @@ void lib80211_crypt_quiescing(struct lib80211_crypt_info *info)
 
 static void lib80211_crypt_deinit_handler(unsigned long data)
 =======
+<<<<<<< HEAD
+
+static void lib80211_crypt_deinit_handler(unsigned long data)
+=======
 EXPORT_SYMBOL(lib80211_crypt_quiescing);
 
 void lib80211_crypt_deinit_handler(unsigned long data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct lib80211_crypt_info *info = (struct lib80211_crypt_info *)data;
 	unsigned long flags;
@@ -186,8 +208,11 @@ void lib80211_crypt_deinit_handler(unsigned long data)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(lib80211_crypt_deinit_handler);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void lib80211_crypt_delayed_deinit(struct lib80211_crypt_info *info,
 				    struct lib80211_crypt_data **crypt)

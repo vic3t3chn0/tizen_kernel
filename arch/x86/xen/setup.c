@@ -13,7 +13,12 @@
 #include <linux/cpuidle.h>
 #include <linux/cpufreq.h>
 =======
+<<<<<<< HEAD
+#include <linux/cpuidle.h>
+#include <linux/cpufreq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/elf.h>
 #include <asm/vdso.h>
@@ -22,8 +27,11 @@
 #include <asm/acpi.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/numa.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/xen/hypervisor.h>
 #include <asm/xen/hypercall.h>
 
@@ -46,13 +54,19 @@ extern void xen_syscall32_target(void);
 
 /* Amount of extra memory space we add to the e820 ranges */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct xen_memory_region xen_extra_mem[XEN_EXTRA_MEM_MAX_REGIONS] __initdata;
 
 /* Number of pages released from the initial allocation. */
 unsigned long xen_released_pages;
+<<<<<<< HEAD
+=======
 =======
 phys_addr_t xen_extra_mem_start, xen_extra_mem_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* 
  * The maximum amount of extra memory compared to the base size.  The
@@ -67,6 +81,9 @@ phys_addr_t xen_extra_mem_start, xen_extra_mem_size;
 #define EXTRA_MEM_RATIO		(10)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init xen_add_extra_mem(u64 start, u64 size)
 {
 	unsigned long pfn;
@@ -98,6 +115,8 @@ static void __init xen_add_extra_mem(u64 start, u64 size)
 
 static unsigned long __init xen_release_chunk(unsigned long start,
 					      unsigned long end)
+<<<<<<< HEAD
+=======
 =======
 static void __init xen_add_extra_mem(unsigned long pages)
 {
@@ -125,6 +144,7 @@ static void __init xen_add_extra_mem(unsigned long pages)
 static unsigned long __init xen_release_chunk(phys_addr_t start_addr,
 					      phys_addr_t end_addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct xen_memory_reservation reservation = {
 		.address_bits = 0,
@@ -133,12 +153,17 @@ static unsigned long __init xen_release_chunk(phys_addr_t start_addr,
 	};
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long start, end;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long len = 0;
 	unsigned long pfn;
 	int ret;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	start = PFN_UP(start_addr);
@@ -150,6 +175,7 @@ static unsigned long __init xen_release_chunk(phys_addr_t start_addr,
 	printk(KERN_INFO "xen_release_chunk: looking at area pfn %lx-%lx: ",
 	       start, end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for(pfn = start; pfn < end; pfn++) {
 		unsigned long mfn = pfn_to_mfn(pfn);
 
@@ -165,9 +191,13 @@ static unsigned long __init xen_release_chunk(phys_addr_t start_addr,
 <<<<<<< HEAD
 		WARN(ret != 1, "Failed to release pfn %lx err=%d\n", pfn, ret);
 =======
+<<<<<<< HEAD
+		WARN(ret != 1, "Failed to release pfn %lx err=%d\n", pfn, ret);
+=======
 		WARN(ret != 1, "Failed to release memory %lx-%lx err=%d\n",
 		     start, end, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret == 1) {
 			__set_phys_to_machine(pfn, INVALID_P2M_ENTRY);
 			len++;
@@ -177,13 +207,21 @@ static unsigned long __init xen_release_chunk(phys_addr_t start_addr,
 	printk(KERN_INFO "Freeing  %lx-%lx pfn range: %lu pages freed\n",
 	       start, end, len);
 =======
+<<<<<<< HEAD
+	printk(KERN_INFO "Freeing  %lx-%lx pfn range: %lu pages freed\n",
+	       start, end, len);
+=======
 	printk(KERN_CONT "%ld pages freed\n", len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return len;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long __init xen_set_identity_and_release(
 	const struct e820entry *list, size_t map_size, unsigned long nr_pages)
 {
@@ -230,6 +268,8 @@ static unsigned long __init xen_set_identity_and_release(
 	printk(KERN_INFO "Set %ld page(s) to 1-1 mapping\n", identity);
 
 	return released;
+<<<<<<< HEAD
+=======
 =======
 static unsigned long __init xen_return_unused_memory(unsigned long max_pfn,
 						     const struct e820map *e820)
@@ -298,6 +338,7 @@ static unsigned long __init xen_set_identity(const struct e820entry *list,
 					PFN_UP(start_pci), PFN_DOWN(last));
 	return identity;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static unsigned long __init xen_get_max_pages(void)
@@ -325,6 +366,9 @@ static unsigned long __init xen_get_max_pages(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xen_align_and_add_e820_region(u64 start, u64 size, int type)
 {
 	u64 end = start + size;
@@ -338,8 +382,11 @@ static void xen_align_and_add_e820_region(u64 start, u64 size, int type)
 	e820_add_region(start, end - start, type);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * machine_specific_memory_setup - Hook for machine specific memory setup.
  **/
@@ -348,8 +395,11 @@ char * __init xen_memory_setup(void)
 	static struct e820entry map[E820MAX] __initdata;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	static struct e820entry map_raw[E820MAX] __initdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned long max_pfn = xen_start_info->nr_pages;
 	unsigned long long mem_end;
@@ -359,10 +409,15 @@ char * __init xen_memory_setup(void)
 	unsigned long max_pages;
 	unsigned long extra_pages = 0;
 =======
+<<<<<<< HEAD
+	unsigned long max_pages;
+	unsigned long extra_pages = 0;
+=======
 	unsigned long extra_pages = 0;
 	unsigned long extra_limit;
 	unsigned long identity_pages = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 	int op;
 
@@ -389,6 +444,9 @@ char * __init xen_memory_setup(void)
 	BUG_ON(rc);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Make sure the Xen-supplied memory map is well-ordered. */
 	sanitize_e820_map(map, memmap.nr_entries, &memmap.nr_entries);
 
@@ -443,6 +501,8 @@ char * __init xen_memory_setup(void)
 		if (map[i].size == 0)
 			i++;
 	}
+<<<<<<< HEAD
+=======
 =======
 	memcpy(map_raw, map, sizeof(map));
 	e820.nr_map = 0;
@@ -488,6 +548,7 @@ char * __init xen_memory_setup(void)
 	if (xen_initial_domain() && (xen_extra_mem_start < (1ULL<<32)))
 		xen_extra_mem_start = (1ULL<<32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * In domU, the ISA region is normal, usable memory, but we
@@ -495,11 +556,14 @@ char * __init xen_memory_setup(void)
 	 * about in there.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 *
 	 * In Dom0, the host E820 information can leave gaps in the
 	 * ISA range, which would cause us to release those pages.  To
 	 * avoid this, we unconditionally reserve them here.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	e820_add_region(ISA_START_ADDRESS, ISA_END_ADDRESS - ISA_START_ADDRESS,
 			E820_RESERVED);
@@ -511,11 +575,16 @@ char * __init xen_memory_setup(void)
 	 * See comment above "struct start_info" in <xen/interface/xen.h>
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memblock_reserve(__pa(xen_start_info->mfn_list),
 			 xen_start_info->pt_base - xen_start_info->mfn_list);
 
 	sanitize_e820_map(e820.map, ARRAY_SIZE(e820.map), &e820.nr_map);
 
+<<<<<<< HEAD
+=======
 =======
 	memblock_x86_reserve_range(__pa(xen_start_info->mfn_list),
 		      __pa(xen_start_info->pt_base),
@@ -562,6 +631,7 @@ char * __init xen_memory_setup(void)
 	identity_pages = xen_set_identity(map_raw, memmap.nr_entries);
 	printk(KERN_INFO "Set %ld page(s) to 1-1 mapping.\n", identity_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return "Xen";
 }
 
@@ -666,10 +736,15 @@ void __init xen_arch_setup(void)
 	boot_cpu_data.hlt_works_ok = 1;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	disable_cpuidle();
 	disable_cpufreq();
 	WARN_ON(set_pm_idle_to_default());
 	fiddle_vdso();
+<<<<<<< HEAD
+=======
 =======
 	pm_idle = default_idle;
 	boot_option_idle_override = IDLE_HALT;
@@ -679,4 +754,5 @@ void __init xen_arch_setup(void)
 	numa_off = 1;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

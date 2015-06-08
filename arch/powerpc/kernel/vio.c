@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/stat.h>
 =======
+<<<<<<< HEAD
+#include <linux/stat.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/device.h>
 #include <linux/init.h>
 #include <linux/slab.h>
@@ -26,8 +30,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/dma-mapping.h>
 #include <linux/kobject.h>
@@ -43,12 +51,15 @@
 #include <asm/hvcall.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/iseries/vio.h>
 #include <asm/iseries/hv_types.h>
 #include <asm/iseries/hv_lp_config.h>
 #include <asm/iseries/hv_call_xm.h>
 #include <asm/iseries/iommu.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct bus_type vio_bus_type;
 
@@ -501,8 +512,13 @@ static void *vio_dma_iommu_alloc_coherent(struct device *dev, size_t size,
 					  dma_addr_t *dma_handle, gfp_t flag,
 					  struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+					  dma_addr_t *dma_handle, gfp_t flag,
+					  struct dma_attrs *attrs)
+=======
                                           dma_addr_t *dma_handle, gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vio_dev *viodev = to_vio_dev(dev);
 	void *ret;
@@ -515,8 +531,12 @@ static void *vio_dma_iommu_alloc_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 	ret = dma_iommu_ops.alloc(dev, size, dma_handle, flag, attrs);
 =======
+<<<<<<< HEAD
+	ret = dma_iommu_ops.alloc(dev, size, dma_handle, flag, attrs);
+=======
 	ret = dma_iommu_ops.alloc_coherent(dev, size, dma_handle, flag);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(ret == NULL)) {
 		vio_cmo_dealloc(viodev, roundup(size, PAGE_SIZE));
 		atomic_inc(&viodev->cmo.allocs_failed);
@@ -527,12 +547,17 @@ static void *vio_dma_iommu_alloc_coherent(struct device *dev, size_t size,
 
 static void vio_dma_iommu_free_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					void *vaddr, dma_addr_t dma_handle,
 					struct dma_attrs *attrs)
 {
 	struct vio_dev *viodev = to_vio_dev(dev);
 
 	dma_iommu_ops.free(dev, size, vaddr, dma_handle, attrs);
+<<<<<<< HEAD
+=======
 =======
                                         void *vaddr, dma_addr_t dma_handle)
 {
@@ -540,6 +565,7 @@ static void vio_dma_iommu_free_coherent(struct device *dev, size_t size,
 
 	dma_iommu_ops.free_coherent(dev, size, vaddr, dma_handle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	vio_cmo_dealloc(viodev, roundup(size, PAGE_SIZE));
 }
@@ -635,6 +661,9 @@ static int vio_dma_iommu_dma_supported(struct device *dev, u64 mask)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 vio_dma_get_required_mask(struct device *dev)
 {
         return dma_iommu_ops.get_required_mask(dev);
@@ -649,6 +678,8 @@ struct dma_map_ops vio_dma_mapping_ops = {
 	.unmap_page        = vio_dma_iommu_unmap_page,
 	.dma_supported     = vio_dma_iommu_dma_supported,
 	.get_required_mask = vio_dma_get_required_mask,
+<<<<<<< HEAD
+=======
 =======
 struct dma_map_ops vio_dma_mapping_ops = {
 	.alloc_coherent = vio_dma_iommu_alloc_coherent,
@@ -660,6 +691,7 @@ struct dma_map_ops vio_dma_mapping_ops = {
 	.dma_supported  = vio_dma_iommu_dma_supported,
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -1084,8 +1116,11 @@ static void vio_cmo_sysfs_init(void)
 #else /* CONFIG_PPC_SMLPAR */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Dummy functions for iSeries platform */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int vio_cmo_entitlement_update(size_t new_entitlement) { return 0; }
 void vio_cmo_set_dev_desired(struct vio_dev *viodev, size_t desired) {}
 static int vio_cmo_bus_probe(struct vio_dev *viodev) { return 0; }
@@ -1105,10 +1140,13 @@ static struct iommu_table *vio_build_iommu_table(struct vio_dev *dev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (firmware_has_feature(FW_FEATURE_ISERIES))
 		return vio_build_iommu_table_iseries(dev);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_window = of_get_property(dev->dev.of_node,
 				  "ibm,my-dma-window", NULL);
 	if (!dma_window)
@@ -1215,6 +1253,9 @@ static int vio_bus_remove(struct device *dev)
  * @drv:	The vio_driver structure to be registered.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __vio_register_driver(struct vio_driver *viodrv, struct module *owner,
 			  const char *mod_name)
 {
@@ -1230,6 +1271,8 @@ int __vio_register_driver(struct vio_driver *viodrv, struct module *owner,
 	return driver_register(&viodrv->driver);
 }
 EXPORT_SYMBOL(__vio_register_driver);
+<<<<<<< HEAD
+=======
 =======
 int vio_register_driver(struct vio_driver *viodrv)
 {
@@ -1243,6 +1286,7 @@ int vio_register_driver(struct vio_driver *viodrv)
 }
 EXPORT_SYMBOL(vio_register_driver);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * vio_unregister_driver - Remove registration of vio driver.
@@ -1262,9 +1306,13 @@ static void __devinit vio_dev_release(struct device *dev)
 <<<<<<< HEAD
 	if (tbl)
 =======
+<<<<<<< HEAD
+	if (tbl)
+=======
 	/* iSeries uses a common table for all vio devices */
 	if (!firmware_has_feature(FW_FEATURE_ISERIES) && tbl)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iommu_free_table(tbl, dev->of_node ?
 			dev->of_node->full_name : dev_name(dev));
 	of_node_put(dev->of_node);
@@ -1314,6 +1362,8 @@ struct vio_dev *vio_register_device_node(struct device_node *of_node)
 	viodev->unit_address = *unit_address;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (firmware_has_feature(FW_FEATURE_ISERIES)) {
 		unit_address = of_get_property(of_node,
 				"linux,unit_address", NULL);
@@ -1321,6 +1371,7 @@ struct vio_dev *vio_register_device_node(struct device_node *of_node)
 			viodev->unit_address = *unit_address;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	viodev->dev.of_node = of_node_get(of_node);
 
 	if (firmware_has_feature(FW_FEATURE_CMO))
@@ -1423,11 +1474,16 @@ static ssize_t modalias_show(struct device *dev, struct device_attribute *attr,
 
 	dn = dev->of_node;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dn)
 		return -ENODEV;
 	cp = of_get_property(dn, "compatible", NULL);
 	if (!cp)
 		return -ENODEV;
+<<<<<<< HEAD
+=======
 =======
 	if (!dn) {
 		strcat(buf, "\n");
@@ -1439,6 +1495,7 @@ static ssize_t modalias_show(struct device *dev, struct device_attribute *attr,
 		return strlen(buf);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return sprintf(buf, "vio:T%sS%s\n", vio_dev->type, cp);
 }
@@ -1491,8 +1548,11 @@ static struct bus_type vio_bus_type = {
 	.remove = vio_bus_remove,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.pm = GENERIC_SUBSYS_PM_OPS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**

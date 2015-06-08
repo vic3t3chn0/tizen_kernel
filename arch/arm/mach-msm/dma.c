@@ -4,7 +4,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2010, 2012 The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2010, 2012 The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -22,6 +26,9 @@
 #include <linux/io.h>
 #include <linux/interrupt.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/platform_device.h>
 #include <linux/spinlock.h>
@@ -214,12 +221,15 @@ static struct msm_dmov_conf dmov_conf[] = {
 #else
 #define DMOV_IRQ_TO_ADM(irq) 0
 #endif
+<<<<<<< HEAD
+=======
 =======
 #include <linux/completion.h>
 #include <mach/dma.h>
 
 #define MSM_DMOV_CHANNEL_COUNT 16
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	MSM_DMOV_PRINT_ERRORS = 1,
@@ -229,12 +239,15 @@ enum {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static DEFINE_SPINLOCK(msm_dmov_lock);
 static struct clk *msm_dmov_clk;
 static unsigned int channel_active;
 static struct list_head ready_commands[MSM_DMOV_CHANNEL_COUNT];
 static struct list_head active_commands[MSM_DMOV_CHANNEL_COUNT];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned int msm_dmov_print_mask = MSM_DMOV_PRINT_ERRORS;
 
 #define MSM_DMOV_DPRINTF(mask, format, args...) \
@@ -250,6 +263,9 @@ unsigned int msm_dmov_print_mask = MSM_DMOV_PRINT_ERRORS;
 	MSM_DMOV_DPRINTF(MSM_DMOV_PRINT_FLOW, format, args);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int msm_dmov_clk_on(int adm)
 {
 	int ret;
@@ -432,6 +448,8 @@ void msm_dmov_flush(unsigned int id, int graceful)
 	spin_unlock_irqrestore(&dmov_conf[adm].list_lock, irq_flags);
 }
 EXPORT_SYMBOL(msm_dmov_flush);
+<<<<<<< HEAD
+=======
 =======
 void msm_dmov_stop_cmd(unsigned id, struct msm_dmov_cmd *cmd, int graceful)
 {
@@ -476,6 +494,7 @@ void msm_dmov_enqueue_cmd(unsigned id, struct msm_dmov_cmd *cmd)
 	spin_unlock_irqrestore(&msm_dmov_lock, irq_flags);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct msm_dmov_exec_cmdptr_cmd {
 	struct msm_dmov_cmd dmov_cmd;
@@ -507,6 +526,9 @@ int msm_dmov_exec_cmd(unsigned id, unsigned int cmdptr)
 	cmd.dmov_cmd.cmdptr = cmdptr;
 	cmd.dmov_cmd.complete_func = dmov_exec_cmdptr_complete_func;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cmd.dmov_cmd.exec_func = NULL;
 	cmd.id = id;
 	cmd.result = 0;
@@ -515,6 +537,8 @@ int msm_dmov_exec_cmd(unsigned id, unsigned int cmdptr)
 
 	__msm_dmov_enqueue_cmd_ext(id, &cmd.dmov_cmd);
 	wait_for_completion_io(&cmd.complete);
+<<<<<<< HEAD
+=======
 =======
 	cmd.dmov_cmd.execute_func = NULL;
 	cmd.id = id;
@@ -523,6 +547,7 @@ int msm_dmov_exec_cmd(unsigned id, unsigned int cmdptr)
 	msm_dmov_enqueue_cmd(id, &cmd.dmov_cmd);
 	wait_for_completion(&cmd.complete);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cmd.result != 0x80000002) {
 		PRINT_ERROR("dmov_exec_cmdptr(%d): ERROR, result: %x\n", id, cmd.result);
@@ -534,6 +559,9 @@ int msm_dmov_exec_cmd(unsigned id, unsigned int cmdptr)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(msm_dmov_exec_cmd);
 
 static void fill_errdata(struct msm_dmov_errdata *errdata, int ch, int adm)
@@ -581,6 +609,8 @@ static irqreturn_t msm_dmov_isr(int irq, void *dev_id)
 			valid = 1;
 			ch_result = readl_relaxed(DMOV_REG(DMOV_RSLT(ch), adm));
 			if (list_empty(&dmov_conf[adm].active_commands[ch])) {
+<<<<<<< HEAD
+=======
 =======
 
 
@@ -611,20 +641,27 @@ static irqreturn_t msm_datamover_irq_handler(int irq, void *dev_id)
 			ch_result = readl(DMOV_RSLT(id));
 			if (list_empty(&active_commands[id])) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				PRINT_ERROR("msm_datamover_irq_handler id %d, got result "
 					"with no active command, status %x, result %x\n",
 					id, ch_status, ch_result);
 				cmd = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} else {
 				cmd = list_entry(dmov_conf[adm].
 					active_commands[ch].next, typeof(*cmd),
 					list);
 			}
+<<<<<<< HEAD
+=======
 =======
 			} else
 				cmd = list_entry(active_commands[id].next, typeof(*cmd), list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			PRINT_FLOW("msm_datamover_irq_handler id %d, status %x, result %x\n", id, ch_status, ch_result);
 			if (ch_result & DMOV_RSLT_DONE) {
 				PRINT_FLOW("msm_datamover_irq_handler id %d, status %x\n",
@@ -635,8 +672,11 @@ static irqreturn_t msm_datamover_irq_handler(int irq, void *dev_id)
 					list_del(&cmd->list);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 					dsb();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					cmd->complete_func(cmd, ch_result, NULL);
 				}
 			}
@@ -646,27 +686,6 @@ static irqreturn_t msm_datamover_irq_handler(int irq, void *dev_id)
 <<<<<<< HEAD
 				fill_errdata(&errdata, ch, adm);
 =======
-				errdata.flush[0] = readl(DMOV_FLUSH0(id));
-				errdata.flush[1] = readl(DMOV_FLUSH1(id));
-				errdata.flush[2] = readl(DMOV_FLUSH2(id));
-				errdata.flush[3] = readl(DMOV_FLUSH3(id));
-				errdata.flush[4] = readl(DMOV_FLUSH4(id));
-				errdata.flush[5] = readl(DMOV_FLUSH5(id));
->>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
-				PRINT_FLOW("msm_datamover_irq_handler id %d, status %x\n", id, ch_status);
-				PRINT_FLOW("msm_datamover_irq_handler id %d, flush, result %x, flush0 %x\n", id, ch_result, errdata.flush[0]);
-				if (cmd) {
-					list_del(&cmd->list);
-<<<<<<< HEAD
-=======
-					dsb();
->>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
-					cmd->complete_func(cmd, ch_result, &errdata);
-				}
-			}
-			if (ch_result & DMOV_RSLT_ERROR) {
-				struct msm_dmov_errdata errdata;
-
 <<<<<<< HEAD
 				fill_errdata(&errdata, ch, adm);
 =======
@@ -677,6 +696,38 @@ static irqreturn_t msm_datamover_irq_handler(int irq, void *dev_id)
 				errdata.flush[4] = readl(DMOV_FLUSH4(id));
 				errdata.flush[5] = readl(DMOV_FLUSH5(id));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
+				PRINT_FLOW("msm_datamover_irq_handler id %d, status %x\n", id, ch_status);
+				PRINT_FLOW("msm_datamover_irq_handler id %d, flush, result %x, flush0 %x\n", id, ch_result, errdata.flush[0]);
+				if (cmd) {
+					list_del(&cmd->list);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+					dsb();
+>>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
+					cmd->complete_func(cmd, ch_result, &errdata);
+				}
+			}
+			if (ch_result & DMOV_RSLT_ERROR) {
+				struct msm_dmov_errdata errdata;
+
+<<<<<<< HEAD
+				fill_errdata(&errdata, ch, adm);
+=======
+<<<<<<< HEAD
+				fill_errdata(&errdata, ch, adm);
+=======
+				errdata.flush[0] = readl(DMOV_FLUSH0(id));
+				errdata.flush[1] = readl(DMOV_FLUSH1(id));
+				errdata.flush[2] = readl(DMOV_FLUSH2(id));
+				errdata.flush[3] = readl(DMOV_FLUSH3(id));
+				errdata.flush[4] = readl(DMOV_FLUSH4(id));
+				errdata.flush[5] = readl(DMOV_FLUSH5(id));
+>>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				PRINT_ERROR("msm_datamover_irq_handler id %d, status %x\n", id, ch_status);
 				PRINT_ERROR("msm_datamover_irq_handler id %d, error, result %x, flush0 %x\n", id, ch_result, errdata.flush[0]);
@@ -684,13 +735,19 @@ static irqreturn_t msm_datamover_irq_handler(int irq, void *dev_id)
 					list_del(&cmd->list);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 					dsb();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					cmd->complete_func(cmd, ch_result, &errdata);
 				}
 				/* this does not seem to work, once we get an error */
 				/* the datamover will no longer accept commands */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				writel_relaxed(0, DMOV_REG(DMOV_FLUSH0(ch),
 					       adm));
 			}
@@ -910,6 +967,8 @@ static int __init msm_init_datamover(void)
 	return 0;
 }
 arch_initcall(msm_init_datamover);
+<<<<<<< HEAD
+=======
 =======
 				writel(0, DMOV_FLUSH0(id));
 			}
@@ -964,3 +1023,4 @@ static int __init msm_init_datamover(void)
 arch_initcall(msm_init_datamover);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

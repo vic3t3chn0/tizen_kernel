@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <linux/videodev2.h>
 =======
+<<<<<<< HEAD
+#include <linux/videodev2.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/input.h>
 #include <linux/input/sh_keysc.h>
 #include <linux/mmc/host.h>
@@ -44,7 +48,11 @@
 <<<<<<< HEAD
 #include <linux/videodev2.h>
 =======
+<<<<<<< HEAD
+#include <linux/videodev2.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <video/sh_mobile_lcdc.h>
 #include <video/sh_mipi_dsi.h>
 #include <sound/sh_fsi.h>
@@ -52,16 +60,23 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/sh73a0.h>
 #include <mach/common.h>
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/mach/map.h>
 #include <asm/mach/time.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardware/gic.h>
 #include <asm/hardware/cache-l2x0.h>
 #include <asm/traps.h>
@@ -76,8 +91,12 @@ static struct resource smsc9220_resources[] = {
 <<<<<<< HEAD
 		.start		= SH73A0_PINT0_IRQ(2), /* PINTA2 */
 =======
+<<<<<<< HEAD
+		.start		= SH73A0_PINT0_IRQ(2), /* PINTA2 */
+=======
 		.start		= gic_spi(33), /* PINT1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags		= IORESOURCE_IRQ,
 	},
 };
@@ -179,6 +198,8 @@ static struct resource sh_mmcif_resources[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct sh_mmcif_dma sh_mmcif_dma = {
 	.chan_priv_rx	= {
 		.slave_id	= SHDMA_SLAVE_MMCIF_RX,
@@ -188,6 +209,7 @@ static struct sh_mmcif_dma sh_mmcif_dma = {
 	},
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_mmcif_plat_data sh_mmcif_platdata = {
 	.sup_pclk	= 0,
 	.ocr		= MMC_VDD_165_195,
@@ -196,8 +218,13 @@ static struct sh_mmcif_plat_data sh_mmcif_platdata = {
 	.slave_id_tx	= SHDMA_SLAVE_MMCIF_TX,
 	.slave_id_rx	= SHDMA_SLAVE_MMCIF_RX,
 =======
+<<<<<<< HEAD
+	.slave_id_tx	= SHDMA_SLAVE_MMCIF_TX,
+	.slave_id_rx	= SHDMA_SLAVE_MMCIF_RX,
+=======
 	.dma		= &sh_mmcif_dma,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device mmc_device = {
@@ -264,6 +291,8 @@ static void lcd_backlight_reset(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void lcd_on(void *board_data, struct fb_info *info)
 {
 	lcd_backlight_on();
@@ -275,6 +304,7 @@ static void lcd_off(void *board_data)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* LCDC0 */
 static const struct fb_videomode lcdc0_modes[] = {
 	{
@@ -299,6 +329,9 @@ static struct sh_mobile_lcdc_info lcdc0_info = {
 		.clock_divider = 1,
 		.flags = LCDC_FLAGS_DWPOL,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.fourcc = V4L2_PIX_FMT_RGB565,
 		.lcd_modes = lcdc0_modes,
 		.num_modes = ARRAY_SIZE(lcdc0_modes),
@@ -307,6 +340,8 @@ static struct sh_mobile_lcdc_info lcdc0_info = {
 			.height = 79,
 			.display_on = lcd_backlight_on,
 			.display_off = lcd_backlight_reset,
+<<<<<<< HEAD
+=======
 =======
 		.lcd_size_cfg.width = 44,
 		.lcd_size_cfg.height = 79,
@@ -317,6 +352,7 @@ static struct sh_mobile_lcdc_info lcdc0_info = {
 			.display_on = lcd_on,
 			.display_off = lcd_off,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	}
 };
@@ -362,6 +398,9 @@ static struct resource mipidsi0_resources[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sh_mipi_set_dot_clock(struct platform_device *pdev,
 				 void __iomem *base,
 				 int enable)
@@ -410,6 +449,8 @@ static struct sh_mipi_dsi_info mipidsi0_info = {
 			  SH_MIPI_DSI_SYNC_PULSES_MODE	|
 			  SH_MIPI_DSI_HSbyteCLK,
 	.set_dot_clock	= sh_mipi_set_dot_clock,
+<<<<<<< HEAD
+=======
 =======
 static struct sh_mipi_dsi_info mipidsi0_info = {
 	.data_format	= MIPI_RGB888,
@@ -418,6 +459,7 @@ static struct sh_mipi_dsi_info mipidsi0_info = {
 	.clksrc		= 1,
 	.flags		= SH_MIPI_DSI_HSABM,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device mipidsi0_device = {
@@ -431,6 +473,9 @@ static struct platform_device mipidsi0_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* SDHI0 */
 static struct sh_mobile_sdhi_info sdhi0_info = {
 	.dma_slave_tx	= SHDMA_SLAVE_SDHI0_TX,
@@ -439,6 +484,8 @@ static struct sh_mobile_sdhi_info sdhi0_info = {
 	.tmio_caps	= MMC_CAP_SD_HIGHSPEED,
 	.tmio_ocr_mask	= MMC_VDD_27_28 | MMC_VDD_28_29,
 	.cd_gpio	= GPIO_PORT251,
+<<<<<<< HEAD
+=======
 =======
 static struct sh_mobile_sdhi_info sdhi0_info = {
 	.dma_slave_tx	= SHDMA_SLAVE_SDHI0_TX,
@@ -446,6 +493,7 @@ static struct sh_mobile_sdhi_info sdhi0_info = {
 	.tmio_caps	= MMC_CAP_SD_HIGHSPEED,
 	.tmio_ocr_mask	= MMC_VDD_27_28 | MMC_VDD_28_29,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource sdhi0_resources[] = {
@@ -459,7 +507,11 @@ static struct resource sdhi0_resources[] = {
 <<<<<<< HEAD
 		.name	= SH_MOBILE_SDHI_IRQ_CARD_DETECT,
 =======
+<<<<<<< HEAD
+		.name	= SH_MOBILE_SDHI_IRQ_CARD_DETECT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= gic_spi(83),
 		.flags	= IORESOURCE_IRQ,
 	},
@@ -467,7 +519,11 @@ static struct resource sdhi0_resources[] = {
 <<<<<<< HEAD
 		.name	= SH_MOBILE_SDHI_IRQ_SDCARD,
 =======
+<<<<<<< HEAD
+		.name	= SH_MOBILE_SDHI_IRQ_SDCARD,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= gic_spi(84),
 		.flags	= IORESOURCE_IRQ,
 	},
@@ -475,7 +531,11 @@ static struct resource sdhi0_resources[] = {
 <<<<<<< HEAD
 		.name	= SH_MOBILE_SDHI_IRQ_SDIO,
 =======
+<<<<<<< HEAD
+		.name	= SH_MOBILE_SDHI_IRQ_SDIO,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= gic_spi(85),
 		.flags	= IORESOURCE_IRQ,
 	},
@@ -500,8 +560,12 @@ static struct sh_mobile_sdhi_info sh_sdhi1_info = {
 <<<<<<< HEAD
 	.tmio_flags	= TMIO_MMC_WRPROTECT_DISABLE | TMIO_MMC_HAS_IDLE_WAIT,
 =======
+<<<<<<< HEAD
+	.tmio_flags	= TMIO_MMC_WRPROTECT_DISABLE | TMIO_MMC_HAS_IDLE_WAIT,
+=======
 	.tmio_flags	= TMIO_MMC_WRPROTECT_DISABLE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.tmio_caps	= MMC_CAP_NONREMOVABLE | MMC_CAP_SDIO_IRQ,
 	.tmio_ocr_mask	= MMC_VDD_32_33 | MMC_VDD_33_34,
 	.set_pwr	= ag5evm_sdhi1_set_pwr,
@@ -518,7 +582,11 @@ static struct resource sdhi1_resources[] = {
 <<<<<<< HEAD
 		.name	= SH_MOBILE_SDHI_IRQ_CARD_DETECT,
 =======
+<<<<<<< HEAD
+		.name	= SH_MOBILE_SDHI_IRQ_CARD_DETECT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= gic_spi(87),
 		.flags	= IORESOURCE_IRQ,
 	},
@@ -526,7 +594,11 @@ static struct resource sdhi1_resources[] = {
 <<<<<<< HEAD
 		.name	= SH_MOBILE_SDHI_IRQ_SDCARD,
 =======
+<<<<<<< HEAD
+		.name	= SH_MOBILE_SDHI_IRQ_SDCARD,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= gic_spi(88),
 		.flags	= IORESOURCE_IRQ,
 	},
@@ -534,7 +606,11 @@ static struct resource sdhi1_resources[] = {
 <<<<<<< HEAD
 		.name	= SH_MOBILE_SDHI_IRQ_SDIO,
 =======
+<<<<<<< HEAD
+		.name	= SH_MOBILE_SDHI_IRQ_SDIO,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= gic_spi(89),
 		.flags	= IORESOURCE_IRQ,
 	},
@@ -562,6 +638,8 @@ static struct platform_device *ag5evm_devices[] __initdata = {
 	&sdhi1_device,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct map_desc ag5evm_io_desc[] __initdata = {
@@ -601,6 +679,7 @@ void __init ag5evm_init_irq(void)
 #define DSI0PHYCR	0xe615006c
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init ag5evm_init(void)
 {
 	sh73a0_pinmux_init();
@@ -641,6 +720,9 @@ static void __init ag5evm_init(void)
 	gpio_request(GPIO_FN_MMCCLK0, NULL);
 	gpio_request(GPIO_FN_MMCCMD0_PU, NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gpio_request(GPIO_FN_MMCD0_0_PU, NULL);
 	gpio_request(GPIO_FN_MMCD0_1_PU, NULL);
 	gpio_request(GPIO_FN_MMCD0_2_PU, NULL);
@@ -649,6 +731,8 @@ static void __init ag5evm_init(void)
 	gpio_request(GPIO_FN_MMCD0_5_PU, NULL);
 	gpio_request(GPIO_FN_MMCD0_6_PU, NULL);
 	gpio_request(GPIO_FN_MMCD0_7_PU, NULL);
+<<<<<<< HEAD
+=======
 =======
 	gpio_request(GPIO_FN_MMCD0_0, NULL);
 	gpio_request(GPIO_FN_MMCD0_1, NULL);
@@ -659,6 +743,7 @@ static void __init ag5evm_init(void)
 	gpio_request(GPIO_FN_MMCD0_6, NULL);
 	gpio_request(GPIO_FN_MMCD0_7, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gpio_request(GPIO_PORT208, NULL); /* Reset */
 	gpio_direction_output(GPIO_PORT208, 1);
 
@@ -695,12 +780,16 @@ static void __init ag5evm_init(void)
 <<<<<<< HEAD
 	/* enable SDHI0 on CN15 [SD I/F] */
 =======
+<<<<<<< HEAD
+	/* enable SDHI0 on CN15 [SD I/F] */
+=======
 	/* MIPI-DSI clock setup */
 	__raw_writel(0x2a809010, DSI0PHYCR);
 
 	/* enable SDHI0 on CN15 [SD I/F] */
 	gpio_request(GPIO_FN_SDHICD0, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gpio_request(GPIO_FN_SDHIWP0, NULL);
 	gpio_request(GPIO_FN_SDHICMD0, NULL);
 	gpio_request(GPIO_FN_SDHICLK0, NULL);
@@ -724,14 +813,21 @@ static void __init ag5evm_init(void)
 <<<<<<< HEAD
 	l2x0_init(IOMEM(0xf0100000), 0x00460000, 0xc2000fff);
 =======
+<<<<<<< HEAD
+	l2x0_init(IOMEM(0xf0100000), 0x00460000, 0xc2000fff);
+=======
 	l2x0_init(__io(0xf0100000), 0x00460000, 0xc2000fff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	sh73a0_add_standard_devices();
 	platform_add_devices(ag5evm_devices, ARRAY_SIZE(ag5evm_devices));
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_START(AG5EVM, "ag5evm")
 	.map_io		= sh73a0_map_io,
 	.init_early	= sh73a0_add_early_devices,
@@ -740,6 +836,8 @@ MACHINE_START(AG5EVM, "ag5evm")
 	.handle_irq	= gic_handle_irq,
 	.init_machine	= ag5evm_init,
 	.timer		= &shmobile_timer,
+<<<<<<< HEAD
+=======
 =======
 static void __init ag5evm_timer_init(void)
 {
@@ -759,4 +857,5 @@ MACHINE_START(AG5EVM, "ag5evm")
 	.init_machine	= ag5evm_init,
 	.timer		= &ag5evm_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -17,14 +17,20 @@ struct ssb_bus;
 struct ssb_driver;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ssb_sprom_core_pwr_info {
 	u8 itssi_2g, itssi_5g;
 	u8 maxpwr_2g, maxpwr_5gl, maxpwr_5g, maxpwr_5gh;
 	u16 pa_2g[4], pa_5gl[4], pa_5g[4], pa_5gh[4];
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ssb_sprom {
 	u8 revision;
 	u8 il0mac[6];		/* MAC address for 802.11b/g */
@@ -35,6 +41,9 @@ struct ssb_sprom {
 	u8 et0mdcport;		/* MDIO for enet0 */
 	u8 et1mdcport;		/* MDIO for enet1 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 board_rev;		/* Board revision number from SPROM. */
 	u16 board_num;		/* Board number from SPROM. */
 	u16 board_type;		/* Board type from SPROM. */
@@ -42,10 +51,13 @@ struct ssb_sprom {
 	char alpha2[2];		/* Country Code as two chars like EU or US */
 	u8 leddc_on_time;	/* LED Powersave Duty Cycle On Count */
 	u8 leddc_off_time;	/* LED Powersave Duty Cycle Off Count */
+<<<<<<< HEAD
+=======
 =======
 	u8 board_rev;		/* Board revision number from SPROM. */
 	u8 country_code;	/* Country Code */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 ant_available_a;	/* 2GHz antenna available bits (up to 4) */
 	u8 ant_available_bg;	/* 5GHz antenna available bits (up to 4) */
 	u16 pa0b0;
@@ -65,16 +77,22 @@ struct ssb_sprom {
 	u8 gpio2;		/* GPIO pin 2 */
 	u8 gpio3;		/* GPIO pin 3 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 maxpwr_bg;		/* 2.4GHz Amplifier Max Power (in dBm Q5.2) */
 	u8 maxpwr_al;		/* 5.2GHz Amplifier Max Power (in dBm Q5.2) */
 	u8 maxpwr_a;		/* 5.3GHz Amplifier Max Power (in dBm Q5.2) */
 	u8 maxpwr_ah;		/* 5.8GHz Amplifier Max Power (in dBm Q5.2) */
+<<<<<<< HEAD
+=======
 =======
 	u16 maxpwr_bg;		/* 2.4GHz Amplifier Max Power (in dBm Q5.2) */
 	u16 maxpwr_al;		/* 5.2GHz Amplifier Max Power (in dBm Q5.2) */
 	u16 maxpwr_a;		/* 5.3GHz Amplifier Max Power (in dBm Q5.2) */
 	u16 maxpwr_ah;		/* 5.8GHz Amplifier Max Power (in dBm Q5.2) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 itssi_a;		/* Idle TSSI Target for A-PHY */
 	u8 itssi_bg;		/* Idle TSSI Target for B/G-PHY */
 	u8 tri2g;		/* 2.4GHz TX isolation */
@@ -89,9 +107,14 @@ struct ssb_sprom {
 	s8 rxpo2g;		/* 2GHz RX power offset */
 	s8 rxpo5g;		/* 5GHz RX power offset */
 =======
+<<<<<<< HEAD
+	s8 rxpo2g;		/* 2GHz RX power offset */
+	s8 rxpo5g;		/* 5GHz RX power offset */
+=======
 	u8 rxpo2g;		/* 2GHz RX power offset */
 	u8 rxpo5g;		/* 5GHz RX power offset */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 rssisav2g;		/* 2GHz RSSI params */
 	u8 rssismc2g;
 	u8 rssismf2g;
@@ -115,12 +138,20 @@ struct ssb_sprom {
 	struct ssb_sprom_core_pwr_info core_pwr_info[4];
 
 =======
+<<<<<<< HEAD
+	struct ssb_sprom_core_pwr_info core_pwr_info[4];
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Antenna gain values for up to 4 antennas
 	 * on each band. Values in dBm/4 (Q5.2). Negative gain means the
 	 * loss in the connectors is bigger than the gain. */
 	struct {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		s8 a0, a1, a2, a3;
 	} antenna_gain;
 
@@ -206,6 +237,8 @@ struct ssb_sprom {
 	u16 legofdm40duppo;
 	u8 sar2g;
 	u8 sar5g;
+<<<<<<< HEAD
+=======
 =======
 		struct {
 			s8 a0, a1, a2, a3;
@@ -217,6 +250,7 @@ struct ssb_sprom {
 
 	/* TODO - add any parameters needed from rev 2, 3, 4, 5 or 8 SPROMs */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Information about the PCB the circuitry is soldered on. */
@@ -226,8 +260,12 @@ struct ssb_boardinfo {
 <<<<<<< HEAD
 	u8  rev;
 =======
+<<<<<<< HEAD
+	u8  rev;
+=======
 	u16 rev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -362,11 +400,17 @@ extern int __ssb_driver_register(struct ssb_driver *drv, struct module *owner);
 	__ssb_driver_register(drv, THIS_MODULE)
 
 =======
+<<<<<<< HEAD
+#define ssb_driver_register(drv) \
+	__ssb_driver_register(drv, THIS_MODULE)
+
+=======
 static inline int ssb_driver_register(struct ssb_driver *drv)
 {
 	return __ssb_driver_register(drv, THIS_MODULE);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void ssb_driver_unregister(struct ssb_driver *drv);
 
 

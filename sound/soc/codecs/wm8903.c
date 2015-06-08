@@ -28,9 +28,15 @@
 #include <linux/slab.h>
 #include <linux/irq.h>
 =======
+<<<<<<< HEAD
+#include <linux/regmap.h>
+#include <linux/slab.h>
+#include <linux/irq.h>
+=======
 #include <linux/platform_device.h>
 #include <linux/slab.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/jack.h>
 #include <sound/pcm.h>
@@ -45,6 +51,9 @@
 
 /* Register defaults at reset */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct reg_default wm8903_reg_defaults[] = {
 	{ 4,  0x0018 },     /* R4   - Bias Control 0 */
 	{ 5,  0x0000 },     /* R5   - VMID Control 0 */
@@ -124,6 +133,8 @@ struct wm8903_priv {
 	struct wm8903_platform_data *pdata;
 	struct snd_soc_codec *codec;
 	struct regmap *regmap;
+<<<<<<< HEAD
+=======
 =======
 static u16 wm8903_reg_defaults[] = {
 	0x8903,     /* R0   - SW Reset and ID */
@@ -304,6 +315,7 @@ static u16 wm8903_reg_defaults[] = {
 struct wm8903_priv {
 	struct snd_soc_codec *codec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int sysclk;
 	int irq;
@@ -329,6 +341,9 @@ struct wm8903_priv {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool wm8903_readable_register(struct device *dev, unsigned int reg)
 {
 	switch (reg) {
@@ -416,9 +431,12 @@ static bool wm8903_readable_register(struct device *dev, unsigned int reg)
 }
 
 static bool wm8903_volatile_register(struct device *dev, unsigned int reg)
+<<<<<<< HEAD
+=======
 =======
 static int wm8903_volatile_register(struct snd_soc_codec *codec, unsigned int reg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (reg) {
 	case WM8903_SW_RESET_AND_ID:
@@ -438,6 +456,8 @@ static int wm8903_volatile_register(struct snd_soc_codec *codec, unsigned int re
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void wm8903_reset(struct snd_soc_codec *codec)
 {
 	snd_soc_write(codec, WM8903_SW_RESET_AND_ID, 0);
@@ -446,6 +466,7 @@ static void wm8903_reset(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8903_cp_event(struct snd_soc_dapm_widget *w,
 			   struct snd_kcontrol *kcontrol, int event)
 {
@@ -1023,8 +1044,12 @@ SND_SOC_DAPM_OUTPUT("RON"),
 <<<<<<< HEAD
 SND_SOC_DAPM_SUPPLY("MICBIAS", WM8903_MIC_BIAS_CONTROL_0, 0, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+SND_SOC_DAPM_SUPPLY("MICBIAS", WM8903_MIC_BIAS_CONTROL_0, 0, 0, NULL, 0),
+=======
 SND_SOC_DAPM_MICBIAS("Mic Bias", WM8903_MIC_BIAS_CONTROL_0, 0, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_MUX("Left Input Mux", SND_SOC_NOPM, 0, 0, &linput_mux),
 SND_SOC_DAPM_MUX("Left Input Inverting Mux", SND_SOC_NOPM, 0, 0,
@@ -1136,8 +1161,12 @@ static const struct snd_soc_dapm_route wm8903_intercon[] = {
 <<<<<<< HEAD
 	{ "MICBIAS", NULL, "CLK_SYS" },
 =======
+<<<<<<< HEAD
+	{ "MICBIAS", NULL, "CLK_SYS" },
+=======
 	{ "Mic Bias", NULL, "CLK_SYS" },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "HPL_DCS", NULL, "CLK_SYS" },
 	{ "HPR_DCS", NULL, "CLK_SYS" },
 	{ "LINEOUTL_DCS", NULL, "CLK_SYS" },
@@ -1292,9 +1321,12 @@ static const struct snd_soc_dapm_route wm8903_intercon[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{ "Charge Pump", NULL, "CLK_DSP" },
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "Left Headphone Output PGA", NULL, "Charge Pump" },
 	{ "Right Headphone Output PGA", NULL, "Charge Pump" },
 	{ "Left Line Output PGA", NULL, "Charge Pump" },
@@ -1929,8 +1961,12 @@ static irqreturn_t wm8903_irq(int irq, void *data)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8903_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8903_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8903_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= wm8903_hw_params,
 	.digital_mute	= wm8903_digital_mute,
 	.set_fmt	= wm8903_set_dai_fmt,
@@ -1960,8 +1996,12 @@ static struct snd_soc_dai_driver wm8903_dai = {
 <<<<<<< HEAD
 static int wm8903_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8903_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8903_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8903_set_bias_level(codec, SND_SOC_BIAS_OFF);
 
@@ -1971,12 +2011,17 @@ static int wm8903_suspend(struct snd_soc_codec *codec, pm_message_t state)
 static int wm8903_resume(struct snd_soc_codec *codec)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8903_priv *wm8903 = snd_soc_codec_get_drvdata(codec);
 
 	regcache_sync(wm8903->regmap);
 
 	wm8903_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
+<<<<<<< HEAD
+=======
 =======
 	int i;
 	u16 *reg_cache = codec->reg_cache;
@@ -1997,6 +2042,7 @@ static int wm8903_resume(struct snd_soc_codec *codec)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2022,23 +2068,33 @@ static int wm8903_gpio_direction_in(struct gpio_chip *chip, unsigned offset)
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mask = WM8903_GP1_FN_MASK | WM8903_GP1_DIR_MASK;
 	val = (WM8903_GPn_FN_GPIO_INPUT << WM8903_GP1_FN_SHIFT) |
 		WM8903_GP1_DIR;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_update_bits(codec, WM8903_GPIO_CONTROL_1 + offset,
 				  mask, val);
 	if (ret < 0)
 		return ret;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return snd_soc_update_bits(codec, WM8903_GPIO_CONTROL_1 + offset,
 				   mask, val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int wm8903_gpio_get(struct gpio_chip *chip, unsigned offset)
@@ -2061,23 +2117,33 @@ static int wm8903_gpio_direction_out(struct gpio_chip *chip,
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mask = WM8903_GP1_FN_MASK | WM8903_GP1_DIR_MASK | WM8903_GP1_LVL_MASK;
 	val = (WM8903_GPn_FN_GPIO_OUTPUT << WM8903_GP1_FN_SHIFT) |
 		(value << WM8903_GP2_LVL_SHIFT);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_update_bits(codec, WM8903_GPIO_CONTROL_1 + offset,
 				  mask, val);
 	if (ret < 0)
 		return ret;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	return snd_soc_update_bits(codec, WM8903_GPIO_CONTROL_1 + offset,
 				   mask, val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void wm8903_gpio_set(struct gpio_chip *chip, unsigned offset, int value)
@@ -2107,8 +2173,12 @@ static void wm8903_init_gpio(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	struct wm8903_platform_data *pdata = wm8903->pdata;
 =======
+<<<<<<< HEAD
+	struct wm8903_platform_data *pdata = wm8903->pdata;
+=======
 	struct wm8903_platform_data *pdata = dev_get_platdata(codec->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	wm8903->gpio_chip = wm8903_template_chip;
@@ -2118,8 +2188,12 @@ static void wm8903_init_gpio(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	if (pdata->gpio_base)
 =======
+<<<<<<< HEAD
+	if (pdata->gpio_base)
+=======
 	if (pdata && pdata->gpio_base)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wm8903->gpio_chip.base = pdata->gpio_base;
 	else
 		wm8903->gpio_chip.base = -1;
@@ -2151,6 +2225,9 @@ static void wm8903_free_gpio(struct snd_soc_codec *codec)
 static int wm8903_probe(struct snd_soc_codec *codec)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8903_priv *wm8903 = snd_soc_codec_get_drvdata(codec);
 	struct wm8903_platform_data *pdata = wm8903->pdata;
 	int ret, i;
@@ -2162,6 +2239,8 @@ static int wm8903_probe(struct snd_soc_codec *codec)
 	codec->control_data = wm8903->regmap;
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 16, SND_SOC_REGMAP);
+<<<<<<< HEAD
+=======
 =======
 	struct wm8903_platform_data *pdata = dev_get_platdata(codec->dev);
 	struct wm8903_priv *wm8903 = snd_soc_codec_get_drvdata(codec);
@@ -2173,12 +2252,16 @@ static int wm8903_probe(struct snd_soc_codec *codec)
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 16, SND_SOC_I2C);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != 0) {
 		dev_err(codec->dev, "Failed to set cache I/O: %d\n", ret);
 		return ret;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set up GPIOs, detect if any are MIC detect outputs */
 	for (i = 0; i < ARRAY_SIZE(pdata->gpio_cfg); i++) {
 		if ((!pdata->gpio_cfg[i]) ||
@@ -2222,6 +2305,8 @@ static int wm8903_probe(struct snd_soc_codec *codec)
 
 	if (wm8903->irq) {
 		if (pdata->irq_active_low) {
+<<<<<<< HEAD
+=======
 =======
 	val = snd_soc_read(codec, WM8903_SW_RESET_AND_ID);
 	if (val != wm8903_reg_defaults[WM8903_SW_RESET_AND_ID]) {
@@ -2282,6 +2367,7 @@ static int wm8903_probe(struct snd_soc_codec *codec)
 	if (wm8903->irq) {
 		if (pdata && pdata->irq_active_low) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			trigger = IRQF_TRIGGER_LOW;
 			irq_pol = WM8903_IRQ_POL;
 		} else {
@@ -2342,10 +2428,13 @@ static int wm8903_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_add_controls(codec, wm8903_snd_controls,
 				ARRAY_SIZE(wm8903_snd_controls));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8903_init_gpio(codec);
 
 	return ret;
@@ -2355,6 +2444,9 @@ static int wm8903_probe(struct snd_soc_codec *codec)
 static int wm8903_remove(struct snd_soc_codec *codec)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8903_priv *wm8903 = snd_soc_codec_get_drvdata(codec);
 
 	wm8903_free_gpio(codec);
@@ -2362,10 +2454,13 @@ static int wm8903_remove(struct snd_soc_codec *codec)
 	if (wm8903->irq)
 		free_irq(wm8903->irq, codec);
 
+<<<<<<< HEAD
+=======
 =======
 	wm8903_free_gpio(codec);
 	wm8903_set_bias_level(codec, SND_SOC_BIAS_OFF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2380,12 +2475,18 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8903 = {
 	.controls = wm8903_snd_controls,
 	.num_controls = ARRAY_SIZE(wm8903_snd_controls),
 =======
+<<<<<<< HEAD
+	.seq_notifier = wm8903_seq_notifier,
+	.controls = wm8903_snd_controls,
+	.num_controls = ARRAY_SIZE(wm8903_snd_controls),
+=======
 	.reg_cache_size = ARRAY_SIZE(wm8903_reg_defaults),
 	.reg_word_size = sizeof(u16),
 	.reg_cache_default = wm8903_reg_defaults,
 	.volatile_register = wm8903_volatile_register,
 	.seq_notifier = wm8903_seq_notifier,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dapm_widgets = wm8903_dapm_widgets,
 	.num_dapm_widgets = ARRAY_SIZE(wm8903_dapm_widgets),
 	.dapm_routes = wm8903_intercon,
@@ -2393,6 +2494,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8903 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct regmap_config wm8903_regmap = {
 	.reg_bits = 8,
 	.val_bits = 16,
@@ -2557,6 +2661,8 @@ static __devinit int wm8903_i2c_probe(struct i2c_client *i2c,
 	return 0;
 err:
 	regmap_exit(wm8903->regmap);
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 static __devinit int wm8903_i2c_probe(struct i2c_client *i2c,
@@ -2577,12 +2683,16 @@ static __devinit int wm8903_i2c_probe(struct i2c_client *i2c,
 	if (ret < 0)
 		kfree(wm8903);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static __devexit int wm8903_i2c_remove(struct i2c_client *client)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8903_priv *wm8903 = i2c_get_clientdata(client);
 
 	regmap_exit(wm8903->regmap);
@@ -2597,6 +2707,8 @@ static const struct of_device_id wm8903_of_match[] = {
 };
 MODULE_DEVICE_TABLE(of, wm8903_of_match);
 
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_codec(&client->dev);
 	kfree(i2c_get_clientdata(client));
@@ -2604,6 +2716,7 @@ MODULE_DEVICE_TABLE(of, wm8903_of_match);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct i2c_device_id wm8903_i2c_id[] = {
 	{ "wm8903", 0 },
 	{ }
@@ -2617,7 +2730,11 @@ static struct i2c_driver wm8903_i2c_driver = {
 <<<<<<< HEAD
 		.of_match_table = wm8903_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = wm8903_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe =    wm8903_i2c_probe,
 	.remove =   __devexit_p(wm8903_i2c_remove),
@@ -2625,16 +2742,22 @@ static struct i2c_driver wm8903_i2c_driver = {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init wm8903_modinit(void)
 {
 	int ret = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = i2c_add_driver(&wm8903_i2c_driver);
 	if (ret != 0) {
 		printk(KERN_ERR "Failed to register wm8903 I2C driver: %d\n",
@@ -2642,8 +2765,11 @@ static int __init wm8903_modinit(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 module_init(wm8903_modinit);
@@ -2653,10 +2779,14 @@ static void __exit wm8903_exit(void)
 <<<<<<< HEAD
 	i2c_del_driver(&wm8903_i2c_driver);
 =======
+<<<<<<< HEAD
+	i2c_del_driver(&wm8903_i2c_driver);
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	i2c_del_driver(&wm8903_i2c_driver);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(wm8903_exit);
 

@@ -1,9 +1,14 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * max8997.h - Driver for the Maxim 8997/8966
  *
  *  Copyright (C) 2009-2010 Samsung Electrnoics
  *  MyungJoo Ham <myungjoo.ham@samsung.com>
+<<<<<<< HEAD
+=======
 =======
  * max8997.h - Voltage regulator driver for the Maxim 8997
  *
@@ -11,6 +16,7 @@
  *
  *  based on max8998.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,6 +32,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This driver is based on max8998.h
  *
@@ -44,6 +53,8 @@
 /* MAX8997/8966 regulator IDs */
 enum max8998_regulators {
 	MAX8997_LDO1 = 0,
+<<<<<<< HEAD
+=======
 =======
  */
 
@@ -59,6 +70,7 @@ enum max8998_regulators {
 enum {
 	MAX8997_LDO1 = 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MAX8997_LDO2,
 	MAX8997_LDO3,
 	MAX8997_LDO4,
@@ -94,17 +106,26 @@ enum {
 	MAX8997_CHARGER, /* charger current, MBCCTRL4 */
 	MAX8997_CHARGER_TOPOFF, /* MBCCTRL5 */
 =======
+<<<<<<< HEAD
+	MAX8997_CHARGER_CV, /* control MBCCV of MBCCTRL3 */
+	MAX8997_CHARGER, /* charger current, MBCCTRL4 */
+	MAX8997_CHARGER_TOPOFF, /* MBCCTRL5 */
+=======
 	MAX8997_FLASH_CUR,
 	MAX8997_MOVIE_CUR,
 #ifdef MAX8997_SUPPORT_TORCH
 	MAX8997_FLASH_TORCH,
 #endif /* MAX8997_SUPPORT_TORCH */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	MAX8997_REG_MAX,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct max8997_regulator_data {
 	int id;
 	struct regulator_init_data *initdata;
@@ -283,6 +304,8 @@ struct max8997_platform_data {
 };
 
 #endif /* __LINUX_MFD_MAX8998_H */
+<<<<<<< HEAD
+=======
 =======
 /**
  * max8997_regulator_data - regulator data
@@ -462,3 +485,4 @@ struct max8997_platform_data {
 
 #endif /*  __LINUX_MFD_MAX8997_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

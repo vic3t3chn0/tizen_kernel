@@ -1,15 +1,21 @@
 /***********************************************************************/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
 
     AudioScience HPI driver
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+<<<<<<< HEAD
+=======
 =======
 /*!
 
     AudioScience HPI driver
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -30,6 +36,11 @@ Functions for reading DSP code using
 hotplug firmware loader from individual dsp code files
 */
 =======
+<<<<<<< HEAD
+Functions for reading DSP code using
+hotplug firmware loader from individual dsp code files
+*/
+=======
 Functions for reading DSP code to load into DSP
 
 (Linux only:) If DSPCODE_FIRMWARE_LOADER is defined, code is read using
@@ -43,11 +54,15 @@ and the appropriate hzz?????.c or hex?????.c linked in
 
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /***********************************************************************/
 #define SOURCEFILE_NAME "hpidspcd.c"
 #include "hpidspcd.h"
 #include "hpidebug.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "hpi_version.h"
 
 struct dsp_code_private {
@@ -65,6 +80,8 @@ short hpi_dsp_code_open(u32 adapter, void *os_data, struct dsp_code *dsp_code,
 	struct code_header header;
 	char fw_name[20];
 	short err_ret = HPI_ERROR_DSP_FILE_NOT_FOUND;
+<<<<<<< HEAD
+=======
 =======
 
 /**
@@ -101,15 +118,21 @@ short hpi_dsp_code_open(u32 adapter, struct dsp_code *ps_dsp_code,
 	struct code_header header;
 	char fw_name[20];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	sprintf(fw_name, "asihpi/dsp%04x.bin", adapter);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = request_firmware(&firmware, fw_name, &dev->dev);
 
 	if (err || !firmware) {
 		dev_printk(KERN_ERR, &dev->dev,
+<<<<<<< HEAD
+=======
 =======
 	err = request_firmware(&ps_firmware, fw_name,
 		&ps_dsp_code->ps_dev->dev);
@@ -117,11 +140,15 @@ short hpi_dsp_code_open(u32 adapter, struct dsp_code *ps_dsp_code,
 	if (err != 0) {
 		dev_printk(KERN_ERR, &ps_dsp_code->ps_dev->dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"%d, request_firmware failed for  %s\n", err,
 			fw_name);
 		goto error1;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (firmware->size < sizeof(header)) {
 		dev_printk(KERN_ERR, &dev->dev, "Header size too small %s\n",
 			fw_name);
@@ -198,6 +225,8 @@ short hpi_dsp_code_read_word(struct dsp_code *dsp_code, u32 *pword)
 	*pword = ((u32 *)(dsp_code->pvt->firmware->data))[dsp_code->
 		word_count];
 	dsp_code->word_count++;
+<<<<<<< HEAD
+=======
 =======
 	if (ps_firmware->size < sizeof(header)) {
 		dev_printk(KERN_ERR, &ps_dsp_code->ps_dev->dev,
@@ -275,12 +304,16 @@ short hpi_dsp_code_read_word(struct dsp_code *ps_dsp_code, u32 *pword)
 		word_count];
 	ps_dsp_code->word_count++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 /*-------------------------------------------------------------------*/
 short hpi_dsp_code_read_block(size_t words_requested,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dsp_code *dsp_code, u32 **ppblock)
 {
 	if (dsp_code->word_count + words_requested > dsp_code->block_length)
@@ -290,6 +323,8 @@ short hpi_dsp_code_read_block(size_t words_requested,
 		((u32 *)(dsp_code->pvt->firmware->data)) +
 		dsp_code->word_count;
 	dsp_code->word_count += words_requested;
+<<<<<<< HEAD
+=======
 =======
 	struct dsp_code *ps_dsp_code, u32 **ppblock)
 {
@@ -302,5 +337,6 @@ short hpi_dsp_code_read_block(size_t words_requested,
 		ps_dsp_code->word_count;
 	ps_dsp_code->word_count += words_requested;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }

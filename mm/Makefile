@@ -6,6 +6,9 @@ mmu-y			:= nommu.o
 mmu-$(CONFIG_MMU)	:= fremap.o highmem.o madvise.o memory.o mincore.o \
 			   mlock.o mmap.o mprotect.o mremap.o msync.o rmap.o \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   vmalloc.o pagewalk.o pgtable-generic.o \
 			   process_vm_access.o
 
@@ -15,6 +18,8 @@ obj-y			:= filemap.o mempool.o oom_kill.o fadvise.o \
 			   prio_tree.o util.o mmzone.o vmstat.o backing-dev.o \
 			   page_isolation.o mm_init.o mmu_context.o percpu.o \
 			   compaction.o $(mmu-y)
+<<<<<<< HEAD
+=======
 =======
 			   vmalloc.o pagewalk.o pgtable-generic.o
 
@@ -36,6 +41,7 @@ endif
 endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-y += init-mm.o
 
 ifdef CONFIG_NO_BOOTMEM
@@ -50,13 +56,20 @@ obj-$(CONFIG_BOUNCE)	+= bounce.o
 <<<<<<< HEAD
 obj-$(CONFIG_SWAP)	+= page_io.o swap_state.o swapfile.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_SWAP)	+= page_io.o swap_state.o swapfile.o
+=======
 obj-$(CONFIG_SWAP)	+= page_io.o swap_state.o swapfile.o thrash.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_HAS_DMA)	+= dmapool.o
 obj-$(CONFIG_HUGETLBFS)	+= hugetlb.o
 obj-$(CONFIG_NUMA) 	+= mempolicy.o
 obj-$(CONFIG_SPARSEMEM)	+= sparse.o
 obj-$(CONFIG_SPARSEMEM_VMEMMAP) += sparse-vmemmap.o
+<<<<<<< HEAD
+obj-$(CONFIG_SLOB) += slob.o
+=======
 <<<<<<< HEAD
 obj-$(CONFIG_SLOB) += slob.o
 =======
@@ -72,6 +85,7 @@ obj-$(CONFIG_COMPACTION) += compaction.o
 endif
 endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_MMU_NOTIFIER) += mmu_notifier.o
 obj-$(CONFIG_KSM) += ksm.o
 obj-$(CONFIG_PAGE_POISONING) += debug-pagealloc.o
@@ -79,6 +93,11 @@ obj-$(CONFIG_SLAB) += slab.o
 obj-$(CONFIG_SLUB) += slub.o
 obj-$(CONFIG_KMEMCHECK) += kmemcheck.o
 obj-$(CONFIG_FAILSLAB) += failslab.o
+<<<<<<< HEAD
+obj-$(CONFIG_MEMORY_HOTPLUG) += memory_hotplug.o
+obj-$(CONFIG_FS_XIP) += filemap_xip.o
+obj-$(CONFIG_MIGRATION) += migrate.o
+=======
 <<<<<<< HEAD
 obj-$(CONFIG_MEMORY_HOTPLUG) += memory_hotplug.o
 obj-$(CONFIG_FS_XIP) += filemap_xip.o
@@ -96,6 +115,7 @@ else
 obj-$(CONFIG_MIGRATION) += migrate.o
 endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_QUICKLIST) += quicklist.o
 obj-$(CONFIG_TRANSPARENT_HUGEPAGE) += huge_memory.o
 obj-$(CONFIG_CGROUP_MEM_RES_CTLR) += memcontrol.o page_cgroup.o
@@ -106,6 +126,9 @@ obj-$(CONFIG_DEBUG_KMEMLEAK_TEST) += kmemleak-test.o
 obj-$(CONFIG_CLEANCACHE) += cleancache.o
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 obj-$(CONFIG_CMA) += cma.o
 obj-$(CONFIG_CMA_BEST_FIT) += cma-best-fit.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

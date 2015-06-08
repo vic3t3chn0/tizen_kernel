@@ -63,6 +63,9 @@
 #include <asm/stackprotector.h>
 #include <asm/hypervisor.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mwait.h>
 #include <asm/pci_x86.h>
 
@@ -74,10 +77,13 @@
 #include <xen/interface/platform.h>
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/pci_x86.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xen-ops.h"
 #include "mmu.h"
 #include "multicalls.h"
@@ -145,6 +151,8 @@ static void xen_vcpu_setup(int cpu)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * This path is called twice on PVHVM - first during bootup via
 	 * smp_init -> xen_hvm_cpu_notify, and then if the VCPU is being
@@ -161,6 +169,7 @@ static void xen_vcpu_setup(int cpu)
 			return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu < MAX_VIRT_CPUS)
 		per_cpu(xen_vcpu,cpu) = &HYPERVISOR_shared_info->vcpu_info[cpu];
 
@@ -231,6 +240,9 @@ static void __init xen_banner(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __read_mostly unsigned int cpuid_leaf1_edx_mask = ~0;
 static __read_mostly unsigned int cpuid_leaf1_ecx_mask = ~0;
 
@@ -238,6 +250,8 @@ static __read_mostly unsigned int cpuid_leaf1_ecx_set_mask;
 static __read_mostly unsigned int cpuid_leaf5_ecx_val;
 static __read_mostly unsigned int cpuid_leaf5_edx_val;
 
+<<<<<<< HEAD
+=======
 =======
 #define CPUID_THERM_POWER_LEAF 6
 #define APERFMPERF_PRESENT 0
@@ -246,6 +260,7 @@ static __read_mostly unsigned int cpuid_leaf1_edx_mask = ~0;
 static __read_mostly unsigned int cpuid_leaf1_ecx_mask = ~0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void xen_cpuid(unsigned int *ax, unsigned int *bx,
 		      unsigned int *cx, unsigned int *dx)
 {
@@ -255,8 +270,12 @@ static void xen_cpuid(unsigned int *ax, unsigned int *bx,
 <<<<<<< HEAD
 	unsigned setecx = 0;
 =======
+<<<<<<< HEAD
+	unsigned setecx = 0;
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Mask out inconvenient features, to try and disable as many
 	 * unsupported kernel subsystems as possible.
@@ -265,6 +284,9 @@ static void xen_cpuid(unsigned int *ax, unsigned int *bx,
 	case 1:
 		maskecx = cpuid_leaf1_ecx_mask;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		setecx = cpuid_leaf1_ecx_set_mask;
 		maskedx = cpuid_leaf1_edx_mask;
 		break;
@@ -276,6 +298,8 @@ static void xen_cpuid(unsigned int *ax, unsigned int *bx,
 		*cx = cpuid_leaf5_ecx_val;
 		*dx = cpuid_leaf5_edx_val;
 		return;
+<<<<<<< HEAD
+=======
 =======
 		maskedx = cpuid_leaf1_edx_mask;
 		break;
@@ -285,6 +309,7 @@ static void xen_cpuid(unsigned int *ax, unsigned int *bx,
 		maskecx = ~(1 << APERFMPERF_PRESENT);
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	case 0xb:
 		/* Suppress extended topology stuff */
@@ -302,6 +327,9 @@ static void xen_cpuid(unsigned int *ax, unsigned int *bx,
 	*bx &= maskebx;
 	*cx &= maskecx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*cx |= setecx;
 	*dx &= maskedx;
 
@@ -372,11 +400,14 @@ static bool __init xen_check_mwait(void)
 	return false;
 #endif
 }
+<<<<<<< HEAD
+=======
 =======
 	*dx &= maskedx;
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init xen_init_cpuid_mask(void)
 {
 	unsigned int ax, bx, cx, dx;
@@ -396,7 +427,11 @@ static void __init xen_init_cpuid_mask(void)
 <<<<<<< HEAD
 	cx = 0;
 =======
+<<<<<<< HEAD
+	cx = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xen_cpuid(&ax, &bx, &cx, &dx);
 
 	xsave_mask =
@@ -410,7 +445,12 @@ static void __init xen_init_cpuid_mask(void)
 	if (xen_check_mwait())
 		cpuid_leaf1_ecx_set_mask = (1 << (X86_FEATURE_MWAIT % 32));
 =======
+<<<<<<< HEAD
+	if (xen_check_mwait())
+		cpuid_leaf1_ecx_set_mask = (1 << (X86_FEATURE_MWAIT % 32));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xen_set_debugreg(int reg, unsigned long val)
@@ -496,7 +536,12 @@ static void xen_set_ldt(const void *addr, unsigned entries)
 	trace_xen_cpu_set_ldt(addr, entries);
 
 =======
+<<<<<<< HEAD
+	trace_xen_cpu_set_ldt(addr, entries);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	op = mcs.args;
 	op->cmd = MMUEXT_SET_LDT;
 	op->arg1.linear_addr = (unsigned long)addr;
@@ -656,7 +701,12 @@ static void xen_write_ldt_entry(struct desc_struct *dt, int entrynum,
 	trace_xen_cpu_write_ldt_entry(dt, entrynum, entry);
 
 =======
+<<<<<<< HEAD
+	trace_xen_cpu_write_ldt_entry(dt, entrynum, entry);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 
 	xen_mc_flush();
@@ -730,7 +780,12 @@ static void xen_write_idt_entry(gate_desc *dt, int entrynum, const gate_desc *g)
 	trace_xen_cpu_write_idt_entry(dt, entrynum, g);
 
 =======
+<<<<<<< HEAD
+	trace_xen_cpu_write_idt_entry(dt, entrynum, g);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 
 	start = __this_cpu_read(idt_desc.address);
@@ -789,7 +844,12 @@ static void xen_load_idt(const struct desc_ptr *desc)
 	trace_xen_cpu_load_idt(desc);
 
 =======
+<<<<<<< HEAD
+	trace_xen_cpu_load_idt(desc);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&lock);
 
 	__get_cpu_var(idt_desc) = *desc;
@@ -812,7 +872,12 @@ static void xen_write_gdt_entry(struct desc_struct *dt, int entry,
 	trace_xen_cpu_write_gdt_entry(dt, entry, desc, type);
 
 =======
+<<<<<<< HEAD
+	trace_xen_cpu_write_gdt_entry(dt, entry, desc, type);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 
 	switch (type) {
@@ -845,7 +910,12 @@ static void __init xen_write_gdt_entry_boot(struct desc_struct *dt, int entry,
 	trace_xen_cpu_write_gdt_entry(dt, entry, desc, type);
 
 =======
+<<<<<<< HEAD
+	trace_xen_cpu_write_gdt_entry(dt, entry, desc, type);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (type) {
 	case DESC_LDT:
 	case DESC_TSS:
@@ -870,8 +940,14 @@ static void xen_load_sp0(struct tss_struct *tss,
 
 	mcs = xen_mc_entry(0);
 =======
+<<<<<<< HEAD
+	struct multicall_space mcs;
+
+	mcs = xen_mc_entry(0);
+=======
 	struct multicall_space mcs = xen_mc_entry(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MULTI_stack_switch(mcs.mc, __KERNEL_DS, thread->sp0);
 	xen_mc_issue(PARAVIRT_LAZY_CPU);
 }
@@ -891,6 +967,9 @@ static void xen_io_delay(void)
 
 #ifdef CONFIG_X86_LOCAL_APIC
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long xen_set_apic_id(unsigned int x)
 {
 	WARN_ON(1);
@@ -925,11 +1004,14 @@ static u32 xen_apic_read(u32 reg)
 		return 0;
 
 	return op.u.pcpu_info.apic_id << 24;
+<<<<<<< HEAD
+=======
 =======
 static u32 xen_apic_read(u32 reg)
 {
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xen_apic_write(u32 reg, u32 val)
@@ -971,7 +1053,12 @@ static void set_xen_basic_apic_ops(void)
 	apic->set_apic_id = xen_set_apic_id;
 	apic->get_apic_id = xen_get_apic_id;
 =======
+<<<<<<< HEAD
+	apic->set_apic_id = xen_set_apic_id;
+	apic->get_apic_id = xen_get_apic_id;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif
@@ -992,11 +1079,16 @@ static DEFINE_PER_CPU(unsigned long, xen_cr0_value);
 static unsigned long xen_read_cr0(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long cr0 = this_cpu_read(xen_cr0_value);
 
 	if (unlikely(cr0 == 0)) {
 		cr0 = native_read_cr0();
 		this_cpu_write(xen_cr0_value, cr0);
+<<<<<<< HEAD
+=======
 =======
 	unsigned long cr0 = percpu_read(xen_cr0_value);
 
@@ -1004,6 +1096,7 @@ static unsigned long xen_read_cr0(void)
 		cr0 = native_read_cr0();
 		percpu_write(xen_cr0_value, cr0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return cr0;
@@ -1016,8 +1109,12 @@ static void xen_write_cr0(unsigned long cr0)
 <<<<<<< HEAD
 	this_cpu_write(xen_cr0_value, cr0);
 =======
+<<<<<<< HEAD
+	this_cpu_write(xen_cr0_value, cr0);
+=======
 	percpu_write(xen_cr0_value, cr0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Only pay attention to cr0.TS; everything else is
 	   ignored. */
@@ -1038,6 +1135,9 @@ static void xen_write_cr4(unsigned long cr4)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 #ifdef CONFIG_X86_64
 static inline unsigned long xen_read_cr8(void)
 {
@@ -1049,6 +1149,7 @@ static inline void xen_write_cr8(unsigned long val)
 }
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int xen_write_msr_safe(unsigned int msr, unsigned low, unsigned high)
 {
 	int ret;
@@ -1118,8 +1219,12 @@ void xen_setup_shared_info(void)
 <<<<<<< HEAD
 /* This is called once we have the cpu_possible_mask */
 =======
+<<<<<<< HEAD
+/* This is called once we have the cpu_possible_mask */
+=======
 /* This is called once we have the cpu_possible_map */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void xen_setup_vcpu_info_placement(void)
 {
 	int cpu;
@@ -1196,12 +1301,18 @@ static const struct pv_info xen_info __initconst = {
 	.shared_kernel_pmd = 0,
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_64
 	.extra_user_64bit_cs = FLAT_USER_CS64,
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "Xen",
 };
 
@@ -1226,12 +1337,15 @@ static const struct pv_cpu_ops xen_cpu_ops __initconst = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_X86_64
 	.read_cr8 = xen_read_cr8,
 	.write_cr8 = xen_write_cr8,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.wbinvd = native_wbinvd,
 
 	.read_msr = native_read_msr_safe,
@@ -1241,9 +1355,12 @@ static const struct pv_cpu_ops xen_cpu_ops __initconst = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.read_tscp = native_read_tscp,
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.iret = xen_iret,
 	.irq_enable_sysexit = xen_sysexit,
 #ifdef CONFIG_X86_64
@@ -1405,8 +1522,14 @@ asmlinkage void __init xen_start_kernel(void)
 	if (!xen_initial_domain())
 #endif
 =======
+<<<<<<< HEAD
+#if 0
+	if (!xen_initial_domain())
+#endif
+=======
 	if (!xen_initial_domain())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__supported_pte_mask &= ~(_PAGE_PWT | _PAGE_PCD);
 
 	__supported_pte_mask |= _PAGE_IOMAP;
@@ -1471,11 +1594,14 @@ asmlinkage void __init xen_start_kernel(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!xen_initial_domain())
 		__supported_pte_mask &= ~(_PAGE_PWT | _PAGE_PCD);
 
 	__supported_pte_mask |= _PAGE_IOMAP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Don't do the full vcpu_info placement stuff until we have a
 	   possible map and a non-dummy shared_info. */
 	per_cpu(xen_vcpu, 0) = &HYPERVISOR_shared_info->vcpu_info[0];
@@ -1485,9 +1611,12 @@ asmlinkage void __init xen_start_kernel(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_init();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xen_raw_console_write("mapping kernel into physical memory\n");
 	pgd = xen_setup_kernel_pagetable(pgd, xen_start_info->nr_pages);
 	xen_ident_map_ISA();
@@ -1634,12 +1763,17 @@ static int __cpuinit xen_hvm_cpu_notify(struct notifier_block *self,
 		if (xen_have_vector_callback)
 			xen_init_lock_cpu(cpu);
 =======
+<<<<<<< HEAD
+		if (xen_have_vector_callback)
+			xen_init_lock_cpu(cpu);
+=======
 		if (xen_have_vector_callback) {
 			xen_init_lock_cpu(cpu);
 			if (xen_feature(XENFEAT_hvm_safe_pvclock))
 				xen_setup_timer(cpu);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		break;

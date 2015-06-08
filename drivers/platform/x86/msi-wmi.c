@@ -28,6 +28,13 @@
 #include <linux/acpi.h>
 #include <linux/backlight.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Thomas Renninger <trenn@suse.de>");
 MODULE_DESCRIPTION("MSI laptop WMI hotkeys driver");
@@ -272,6 +279,13 @@ static int __init msi_wmi_init(void)
 err_free_backlight:
 	backlight_device_unregister(backlight);
 err_free_input:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sparse_keymap_free(msi_wmi_input_dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	input_unregister_device(msi_wmi_input_dev);
 err_uninstall_notifier:
 	wmi_remove_notify_handler(MSIWMI_EVENT_GUID);

@@ -4,10 +4,16 @@
  *
  *  Copyright (C) 2008-2011 Gabor Juhos <juhosg@openwrt.org>
 =======
+<<<<<<< HEAD
+ *  Atheros AR7XXX/AR9XXX SoC early printk support
+ *
+ *  Copyright (C) 2008-2011 Gabor Juhos <juhosg@openwrt.org>
+=======
  *  Atheros AR71XX/AR724X/AR913X SoC early printk support
  *
  *  Copyright (C) 2008-2010 Gabor Juhos <juhosg@openwrt.org>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Copyright (C) 2008 Imre Kaloz <kaloz@openwrt.org>
  *
  *  This program is free software; you can redistribute it and/or modify it
@@ -17,6 +23,9 @@
 
 #include <linux/io.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/errno.h>
 #include <linux/serial_reg.h>
 #include <asm/addrspace.h>
@@ -34,6 +43,8 @@ static inline void prom_putchar_wait(void __iomem *reg, u32 mask, u32 val)
 	do {
 		t = __raw_readl(reg);
 		if ((t & mask) == val)
+<<<<<<< HEAD
+=======
 =======
 #include <linux/serial_reg.h>
 #include <asm/addrspace.h>
@@ -48,11 +59,15 @@ static inline void prom_wait_thre(void __iomem *base)
 		lsr = __raw_readl(base + UART_LSR * 4);
 		if (lsr & UART_LSR_THRE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 	} while (1);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void prom_putchar_ar71xx(unsigned char ch)
 {
 	void __iomem *base = (void __iomem *)(KSEG1ADDR(AR71XX_UART_BASE));
@@ -113,6 +128,8 @@ void prom_putchar(unsigned char ch)
 		prom_putchar_init();
 
 	_prom_putchar(ch);
+<<<<<<< HEAD
+=======
 =======
 void prom_putchar(unsigned char ch)
 {
@@ -122,4 +139,5 @@ void prom_putchar(unsigned char ch)
 	__raw_writel(ch, base + UART_TX * 4);
 	prom_wait_thre(base);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

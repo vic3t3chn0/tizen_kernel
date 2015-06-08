@@ -5,20 +5,31 @@
  * Copyright (C) 2010,2011 Google, Inc.
  * Copyright (C) 2011-2012 NVIDIA CORPORATION. All Rights Reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010,2011 Google, Inc.
+ * Copyright (C) 2011-2012 NVIDIA CORPORATION. All Rights Reserved.
+=======
  * Copyright (C) 2010 Google, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author:
  *	Colin Cross <ccross@google.com>
  *	Erik Gilling <konkers@google.com>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Doug Anderson <dianders@chromium.org>
  *	Stephen Warren <swarren@nvidia.com>
  *
  * Portions based on mach-omap2's debug-macro.S
  * Copyright (C) 1994-1999 Russell King
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -32,6 +43,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/serial_reg.h>
 
 #include <mach/iomap.h>
@@ -106,6 +120,8 @@
 1002:
 #endif
 		.endm
+<<<<<<< HEAD
+=======
 =======
 #include <mach/io.h>
 #include <mach/iomap.h>
@@ -123,3 +139,4 @@
 #include <asm/hardware/debug-8250.S>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -10,7 +10,12 @@
 #include <video/sa1100fb.h>
 
 =======
+<<<<<<< HEAD
+#include <video/sa1100fb.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/setup.h>
 #include <asm/mach-types.h>
@@ -23,7 +28,11 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -36,6 +45,9 @@ static struct mcp_plat_data lart_mcp_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef LART_GREY_LCD
 static struct sa1100fb_mach_info lart_grey_info = {
 	.pixclock	= 150000,	.bpp		= 4,
@@ -116,10 +128,13 @@ static void __init lart_init(void)
 		sa11x0_register_lcd(inf);
 
 	sa11x0_ppc_configure_mcp();
+<<<<<<< HEAD
+=======
 =======
 static void __init lart_init(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sa11x0_register_mcp(&lart_mcp_data);
 }
 
@@ -154,6 +169,9 @@ static void __init lart_map_io(void)
 
 MACHINE_START(LART, "LART")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= lart_map_io,
 	.nr_irqs	= SA1100_NR_IRQS,
@@ -161,6 +179,8 @@ MACHINE_START(LART, "LART")
 	.init_machine	= lart_init,
 	.timer		= &sa1100_timer,
 	.restart	= sa11x0_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xc0000100,
 	.map_io		= lart_map_io,
@@ -168,4 +188,5 @@ MACHINE_START(LART, "LART")
 	.init_machine	= lart_init,
 	.timer		= &sa1100_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

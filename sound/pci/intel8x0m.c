@@ -32,8 +32,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/ac97_codec.h>
@@ -75,8 +79,12 @@ MODULE_PARM_DESC(ac97_clock, "AC'97 codec clock (0 = auto-detect).");
 <<<<<<< HEAD
 static bool enable;
 =======
+<<<<<<< HEAD
+static bool enable;
+=======
 static int enable;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(enable, bool, 0444);
 
 /*
@@ -1058,8 +1066,12 @@ static int intel8x0m_resume(struct pci_dev *pci)
 <<<<<<< HEAD
 			IRQF_SHARED, KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			IRQF_SHARED, KBUILD_MODNAME, chip)) {
+=======
 			IRQF_SHARED, card->shortname, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "intel8x0m: unable to grab IRQ %d, "
 		       "disabling device\n", pci->irq);
 		snd_card_disconnect(card);
@@ -1189,8 +1201,12 @@ static int __devinit snd_intel8x0m_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, chip)) {
+=======
 			card->shortname, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_intel8x0m_free(chip);
 		return -EBUSY;
@@ -1344,8 +1360,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "Intel ICH Modem",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_intel8x0m_ids,
 	.probe = snd_intel8x0m_probe,
 	.remove = __devexit_p(snd_intel8x0m_remove),

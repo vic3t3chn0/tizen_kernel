@@ -177,9 +177,12 @@ static void nilfs_i_callback(struct rcu_head *head)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mdi) {
 		kfree(mdi->mi_bgl); /* kfree(NULL) is safe */
 		kfree(mdi);
@@ -654,11 +657,16 @@ static int nilfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int nilfs_show_options(struct seq_file *seq, struct dentry *dentry)
 {
 	struct super_block *sb = dentry->d_sb;
 	struct the_nilfs *nilfs = sb->s_fs_info;
 	struct nilfs_root *root = NILFS_I(dentry->d_inode)->i_root;
+<<<<<<< HEAD
+=======
 =======
 static int nilfs_show_options(struct seq_file *seq, struct vfsmount *vfs)
 {
@@ -666,6 +674,7 @@ static int nilfs_show_options(struct seq_file *seq, struct vfsmount *vfs)
 	struct the_nilfs *nilfs = sb->s_fs_info;
 	struct nilfs_root *root = NILFS_I(vfs->mnt_root->d_inode)->i_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!nilfs_test_opt(nilfs, BARRIER))
 		seq_puts(seq, ",nobarrier");
@@ -934,10 +943,15 @@ static int nilfs_get_root_dentry(struct super_block *sb,
 			dentry = d_make_root(inode);
 			if (!dentry) {
 =======
+<<<<<<< HEAD
+			dentry = d_make_root(inode);
+			if (!dentry) {
+=======
 			dentry = d_alloc_root(inode);
 			if (!dentry) {
 				iput(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ret = -ENOMEM;
 				goto failed_dentry;
 			}
@@ -969,9 +983,12 @@ static int nilfs_attach_snapshot(struct super_block *s, __u64 cno,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_lock(&nilfs->ns_snapshot_mount_mutex);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	down_read(&nilfs->ns_segctor_sem);
 	ret = nilfs_cpfile_is_snapshot(nilfs->ns_cpfile, cno);
 	up_read(&nilfs->ns_segctor_sem);
@@ -998,8 +1015,11 @@ static int nilfs_attach_snapshot(struct super_block *s, __u64 cno,
  out:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&nilfs->ns_snapshot_mount_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1089,7 +1109,11 @@ nilfs_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 	sb->s_max_links = NILFS_LINK_MAX;
 =======
+<<<<<<< HEAD
+	sb->s_max_links = NILFS_LINK_MAX;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bdi = sb->s_bdev->bd_inode->i_mapping->backing_dev_info;
 	sb->s_bdi = bdi ? : &default_backing_dev_info;

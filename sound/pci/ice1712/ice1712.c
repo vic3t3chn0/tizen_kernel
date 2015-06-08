@@ -57,8 +57,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 
 #include <sound/core.h>
@@ -89,16 +93,22 @@ MODULE_SUPPORTED_DEVICE("{"
 static int index[SNDRV_CARDS] = SNDRV_DEFAULT_IDX;	/* Index 0-MAX */
 static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;/* Enable this card */
 static char *model[SNDRV_CARDS];
 static bool omni[SNDRV_CARDS];				/* Delta44 & 66 Omni I/O support */
 static int cs8427_timeout[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS-1)] = 500}; /* CS8427 S/PDIF transceiver reset timeout value in msec */
+<<<<<<< HEAD
+=======
 =======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;/* Enable this card */
 static char *model[SNDRV_CARDS];
 static int omni[SNDRV_CARDS];				/* Delta44 & 66 Omni I/O support */
 static int cs8427_timeout[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS-1)] = 500}; /* CS8427 S/PDIF transciever reset timeout value in msec */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dxr_enable[SNDRV_CARDS];			/* DXR enable for DMX6FIRE */
 
 module_param_array(index, int, NULL, 0444);
@@ -2608,9 +2618,12 @@ static int __devinit snd_ice1712_create(struct snd_card *card,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	card->private_data = ice;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = pci_request_regions(pci, "ICE1712");
 	if (err < 0) {
 		kfree(ice);
@@ -2626,8 +2639,12 @@ static int __devinit snd_ice1712_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, ice)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, ice)) {
+=======
 			"ICE1712", ice)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_ice1712_free(ice);
 		return -EIO;
@@ -2773,9 +2790,15 @@ static int __devinit snd_ice1712_probe(struct pci_dev *pci,
 			MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
 			-1, &ice->rmidi[0]);
 =======
+<<<<<<< HEAD
+			c->mpu401_1_info_flags |
+			MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
+			-1, &ice->rmidi[0]);
+=======
 			(c->mpu401_1_info_flags | MPU401_INFO_INTEGRATED),
 			ice->irq, 0, &ice->rmidi[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0) {
 			snd_card_free(card);
 			return err;
@@ -2795,9 +2818,15 @@ static int __devinit snd_ice1712_probe(struct pci_dev *pci,
 				MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
 				-1, &ice->rmidi[1]);
 =======
+<<<<<<< HEAD
+				c->mpu401_2_info_flags |
+				MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
+				-1, &ice->rmidi[1]);
+=======
 				(c->mpu401_2_info_flags | MPU401_INFO_INTEGRATED),
 				ice->irq, 0, &ice->rmidi[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (err < 0) {
 				snd_card_free(card);
@@ -2837,8 +2866,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "ICE1712",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_ice1712_ids,
 	.probe = snd_ice1712_probe,
 	.remove = __devexit_p(snd_ice1712_remove),

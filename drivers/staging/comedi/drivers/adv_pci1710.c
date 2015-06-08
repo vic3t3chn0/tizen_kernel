@@ -1382,16 +1382,35 @@ static int pci1710_attach(struct comedi_device *dev,
 	int i;
 	int board_index;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_info(dev->hw_dev, "comedi%d: adv_pci1710:\n", dev->minor);
+=======
 	printk("comedi%d: adv_pci1710: ", dev->minor);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi%d: adv_pci1710: ", dev->minor);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	opt_bus = it->options[0];
 	opt_slot = it->options[1];
 
 	ret = alloc_private(dev, sizeof(struct pci1710_private));
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ret < 0)
+		return -ENOMEM;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		printk(" - Allocation failed!\n");
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Look for matching PCI device */
 	errstr = "not found!";
@@ -1436,10 +1455,23 @@ static int pci1710_attach(struct comedi_device *dev,
 
 	if (!pcidev) {
 		if (opt_bus || opt_slot) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_err(dev->hw_dev, "- Card at b:s %d:%d %s\n",
+				opt_bus, opt_slot, errstr);
+		} else {
+			dev_err(dev->hw_dev, "- Card %s\n", errstr);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(" - Card at b:s %d:%d %s\n",
 			       opt_bus, opt_slot, errstr);
 		} else {
 			printk(" - Card %s\n", errstr);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		return -EIO;
 	}
@@ -1450,8 +1482,18 @@ static int pci1710_attach(struct comedi_device *dev,
 	irq = pcidev->irq;
 	iobase = pci_resource_start(pcidev, 2);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "b:s:f=%d:%d:%d, io=0x%4lx\n", pci_bus, pci_slot,
+		pci_func, iobase);
+=======
 	printk(", b:s:f=%d:%d:%d, io=0x%4lx", pci_bus, pci_slot, pci_func,
 	       iobase);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(", b:s:f=%d:%d:%d, io=0x%4lx", pci_bus, pci_slot, pci_func,
+	       iobase);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev->iobase = iobase;
 
@@ -1471,10 +1513,21 @@ static int pci1710_attach(struct comedi_device *dev,
 		n_subdevices++;
 
 	ret = alloc_subdevices(dev, n_subdevices);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ret < 0)
+		return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		printk(" - Allocation failed!\n");
 		return ret;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pci1710_reset(dev);
 
@@ -1483,6 +1536,19 @@ static int pci1710_attach(struct comedi_device *dev,
 			if (request_irq(irq, interrupt_service_pci1710,
 					IRQF_SHARED, "Advantech PCI-1710",
 					dev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				dev_dbg(dev->hw_dev, "unable to allocate IRQ %d, DISABLING IT",
+					irq);
+				irq = 0;	/* Can't use IRQ */
+			} else {
+				dev_dbg(dev->hw_dev, "irq=%u", irq);
+			}
+		} else {
+			dev_dbg(dev->hw_dev, "IRQ disabled");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk
 				    (", unable to allocate IRQ %d, DISABLING IT",
 				     irq);
@@ -1492,15 +1558,28 @@ static int pci1710_attach(struct comedi_device *dev,
 			}
 		} else {
 			printk(", IRQ disabled");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else {
 		irq = 0;
 	}
 
 	dev->irq = irq;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	printk(".\n");
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	printk(".\n");
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	subdev = 0;
 
 	if (this_board->n_aichan) {

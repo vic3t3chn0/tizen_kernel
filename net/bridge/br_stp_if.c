@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/kmod.h>
 =======
+<<<<<<< HEAD
+#include <linux/kmod.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/etherdevice.h>
 #include <linux/rtnetlink.h>
 
@@ -95,7 +99,11 @@ void br_stp_enable_port(struct net_bridge_port *p)
 <<<<<<< HEAD
 	br_ifinfo_notify(RTM_NEWLINK, p);
 =======
+<<<<<<< HEAD
+	br_ifinfo_notify(RTM_NEWLINK, p);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* called under bridge lock */
@@ -106,9 +114,12 @@ void br_stp_disable_port(struct net_bridge_port *p)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	br_log_state(p);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wasroot = br_is_root_bridge(br);
 	br_become_designated_port(p);
 	p->state = BR_STATE_DISABLED;
@@ -120,7 +131,13 @@ void br_stp_disable_port(struct net_bridge_port *p)
 	br_ifinfo_notify(RTM_NEWLINK, p);
 
 =======
+<<<<<<< HEAD
+	br_log_state(p);
+	br_ifinfo_notify(RTM_NEWLINK, p);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	del_timer(&p->message_age_timer);
 	del_timer(&p->forward_delay_timer);
 	del_timer(&p->hold_timer);
@@ -145,6 +162,8 @@ static void br_stp_start(struct net_bridge *br)
 	r = call_usermodehelper(BR_STP_PROG, argv, envp, UMH_WAIT_PROC);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	spin_lock_bh(&br->lock);
 
@@ -154,6 +173,7 @@ static void br_stp_start(struct net_bridge *br)
 		__br_set_forward_delay(br, BR_MAX_FORWARD_DELAY);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (r == 0) {
 		br->stp_enabled = BR_USER_STP;
 		br_debug(br, "userspace STP started\n");
@@ -163,16 +183,22 @@ static void br_stp_start(struct net_bridge *br)
 
 		/* To start timers on any ports left in blocking */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock_bh(&br->lock);
 		br_port_state_selection(br);
 		spin_unlock_bh(&br->lock);
 	}
+<<<<<<< HEAD
+=======
 =======
 		br_port_state_selection(br);
 	}
 
 	spin_unlock_bh(&br->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void br_stp_stop(struct net_bridge *br)

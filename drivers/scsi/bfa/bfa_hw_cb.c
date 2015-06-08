@@ -17,14 +17,30 @@
 
 #include "bfad_drv.h"
 #include "bfa_modules.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "bfi_reg.h"
+=======
 #include "bfi_cbreg.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "bfi_cbreg.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void
 bfa_hwcb_reginit(struct bfa_s *bfa)
 {
 	struct bfa_iocfc_regs_s	*bfa_regs = &bfa->iocfc.bfa_regs;
 	void __iomem *kva = bfa_ioc_bar0(&bfa->ioc);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int	fn = bfa_ioc_pcifn(&bfa->ioc);
+=======
 	int			i, q, fn = bfa_ioc_pcifn(&bfa->ioc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int			i, q, fn = bfa_ioc_pcifn(&bfa->ioc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (fn == 0) {
 		bfa_regs->intr_status = (kva + HOSTFN0_INT_STATUS);
@@ -33,6 +49,11 @@ bfa_hwcb_reginit(struct bfa_s *bfa)
 		bfa_regs->intr_status = (kva + HOSTFN1_INT_STATUS);
 		bfa_regs->intr_mask   = (kva + HOSTFN1_INT_MSK);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < BFI_IOC_MAX_CQS; i++) {
 		/*
@@ -56,6 +77,10 @@ bfa_hwcb_reginit(struct bfa_s *bfa)
 void
 bfa_hwcb_reqq_ack(struct bfa_s *bfa, int reqq)
 {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -65,6 +90,41 @@ bfa_hwcb_reqq_ack_msix(struct bfa_s *bfa, int reqq)
 			bfa->iocfc.bfa_regs.intr_status);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Actions to respond RME Interrupt for Crossbow ASIC:
+ * - Write 1 to Interrupt Status register
+ *              INTX - done in bfa_intx()
+ *              MSIX - done in bfa_hwcb_rspq_ack_msix()
+ * - Update CI (only if new CI)
+ */
+static void
+bfa_hwcb_rspq_ack_msix(struct bfa_s *bfa, int rspq, u32 ci)
+{
+	writel(__HFN_INT_RME_Q0 << RME_Q_NUM(bfa_ioc_pcifn(&bfa->ioc), rspq),
+		bfa->iocfc.bfa_regs.intr_status);
+
+	if (bfa_rspq_ci(bfa, rspq) == ci)
+		return;
+
+	bfa_rspq_ci(bfa, rspq) = ci;
+	writel(ci, bfa->iocfc.bfa_regs.rme_q_ci[rspq]);
+	mmiowb();
+}
+
+void
+bfa_hwcb_rspq_ack(struct bfa_s *bfa, int rspq, u32 ci)
+{
+	if (bfa_rspq_ci(bfa, rspq) == ci)
+		return;
+
+	bfa_rspq_ci(bfa, rspq) = ci;
+	writel(ci, bfa->iocfc.bfa_regs.rme_q_ci[rspq]);
+	mmiowb();
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 bfa_hwcb_rspq_ack(struct bfa_s *bfa, int rspq)
 {
@@ -75,6 +135,10 @@ bfa_hwcb_rspq_ack_msix(struct bfa_s *bfa, int rspq)
 {
 	writel(__HFN_INT_RME_Q0 << RME_Q_NUM(bfa_ioc_pcifn(&bfa->ioc), rspq),
 			bfa->iocfc.bfa_regs.intr_status);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void
@@ -104,11 +168,46 @@ bfa_hwcb_msix_getvecs(struct bfa_s *bfa, u32 *msix_vecs_bmap,
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Dummy interrupt handler for handling spurious interrupts.
+ */
+static void
+bfa_hwcb_msix_dummy(struct bfa_s *bfa, int vec)
+{
+}
+
+/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * No special setup required for crossbow -- vector assignments are implicit.
  */
 void
 bfa_hwcb_msix_init(struct bfa_s *bfa, int nvecs)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	WARN_ON((nvecs != 1) && (nvecs != __HFN_NUMINTS));
+
+	bfa->msix.nvecs = nvecs;
+	bfa_hwcb_msix_uninstall(bfa);
+}
+
+void
+bfa_hwcb_msix_ctrl_install(struct bfa_s *bfa)
+{
+	int i;
+
+	if (bfa->msix.nvecs == 0)
+		return;
+
+	if (bfa->msix.nvecs == 1) {
+		for (i = BFI_MSIX_CPE_QMIN_CB; i < BFI_MSIX_CB_MAX; i++)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	WARN_ON((nvecs != 1) && (nvecs != __HFN_NUMINTS));
@@ -116,10 +215,42 @@ bfa_hwcb_msix_init(struct bfa_s *bfa, int nvecs)
 	bfa->msix.nvecs = nvecs;
 	if (nvecs == 1) {
 		for (i = 0; i < BFA_MSIX_CB_MAX; i++)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			bfa->msix.handler[i] = bfa_msix_all;
 		return;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = BFI_MSIX_RME_QMAX_CB+1; i < BFI_MSIX_CB_MAX; i++)
+		bfa->msix.handler[i] = bfa_msix_lpu_err;
+}
+
+void
+bfa_hwcb_msix_queue_install(struct bfa_s *bfa)
+{
+	int i;
+
+	if (bfa->msix.nvecs == 0)
+		return;
+
+	if (bfa->msix.nvecs == 1) {
+		for (i = BFI_MSIX_CPE_QMIN_CB; i <= BFI_MSIX_RME_QMAX_CB; i++)
+			bfa->msix.handler[i] = bfa_msix_all;
+		return;
+	}
+
+	for (i = BFI_MSIX_CPE_QMIN_CB; i <= BFI_MSIX_CPE_QMAX_CB; i++)
+		bfa->msix.handler[i] = bfa_msix_reqq;
+
+	for (i = BFI_MSIX_RME_QMIN_CB; i <= BFI_MSIX_RME_QMAX_CB; i++)
+		bfa->msix.handler[i] = bfa_msix_rspq;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = BFA_MSIX_CPE_Q0; i <= BFA_MSIX_CPE_Q7; i++)
 		bfa->msix.handler[i] = bfa_msix_reqq;
 
@@ -136,11 +267,25 @@ bfa_hwcb_msix_init(struct bfa_s *bfa, int nvecs)
 void
 bfa_hwcb_msix_install(struct bfa_s *bfa)
 {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void
 bfa_hwcb_msix_uninstall(struct bfa_s *bfa)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int i;
+
+	for (i = 0; i < BFI_MSIX_CB_MAX; i++)
+		bfa->msix.handler[i] = bfa_hwcb_msix_dummy;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -149,13 +294,38 @@ bfa_hwcb_msix_uninstall(struct bfa_s *bfa)
 void
 bfa_hwcb_isr_mode_set(struct bfa_s *bfa, bfa_boolean_t msix)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (msix) {
+		bfa->iocfc.hwif.hw_reqq_ack = bfa_hwcb_reqq_ack_msix;
+		bfa->iocfc.hwif.hw_rspq_ack = bfa_hwcb_rspq_ack_msix;
+	} else {
+		bfa->iocfc.hwif.hw_reqq_ack = NULL;
+		bfa->iocfc.hwif.hw_rspq_ack = bfa_hwcb_rspq_ack;
+	}
+=======
 	bfa->iocfc.hwif.hw_reqq_ack = bfa_hwcb_reqq_ack_msix;
 	bfa->iocfc.hwif.hw_rspq_ack = bfa_hwcb_rspq_ack_msix;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bfa->iocfc.hwif.hw_reqq_ack = bfa_hwcb_reqq_ack_msix;
+	bfa->iocfc.hwif.hw_rspq_ack = bfa_hwcb_rspq_ack_msix;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void
 bfa_hwcb_msix_get_rme_range(struct bfa_s *bfa, u32 *start, u32 *end)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	*start = BFI_MSIX_RME_QMIN_CB;
+	*end = BFI_MSIX_RME_QMAX_CB;
+=======
 	*start = BFA_MSIX_RME_Q0;
 	*end = BFA_MSIX_RME_Q7;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	*start = BFA_MSIX_RME_Q0;
+	*end = BFA_MSIX_RME_Q7;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

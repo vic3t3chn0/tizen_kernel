@@ -36,8 +36,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/adb.h>
 #include <linux/pmu.h>
 #include <linux/delay.h>
@@ -371,6 +375,9 @@ static void kw_i2c_timeout(unsigned long data)
 
 	spin_lock_irqsave(&host->lock, flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If the timer is pending, that means we raced with the
@@ -379,8 +386,11 @@ static void kw_i2c_timeout(unsigned long data)
 	if (timer_pending(&host->timeout_timer))
 		goto skip;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kw_i2c_handle_interrupt(host, kw_read_reg(reg_isr));
 	if (host->state != state_idle) {
 		host->timeout_timer.expires = jiffies + KW_POLL_TIMEOUT;
@@ -389,7 +399,11 @@ static void kw_i2c_timeout(unsigned long data)
 <<<<<<< HEAD
  skip:
 =======
+<<<<<<< HEAD
+ skip:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&host->lock, flags);
 }
 

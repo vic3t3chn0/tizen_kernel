@@ -12,6 +12,9 @@ comment "Alternative Multiplexing Scheme"
 
 choice
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prompt "PWM Channel Pins"
 	default BF518_PWM_ALL_PORTF
 	help
@@ -81,6 +84,8 @@ config BF518_PPI_TMR_PG12
 	help
 	  PG{12,13,14} <-> {PPICLK/TMRCLK,TMR0/PPIFS1,TMR1/PPIFS2}
 
+<<<<<<< HEAD
+=======
 =======
 	prompt "SPORT0"
 	default BF518_SPORT0_PORTG
@@ -132,6 +137,7 @@ config BF518_UART1_PORTG
 	help
 	  PORT G
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endchoice
 
 comment "Hysteresis/Schmitt Trigger Control"

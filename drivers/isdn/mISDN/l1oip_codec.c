@@ -27,6 +27,27 @@
 
 /*
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  How the codec works:
+  --------------------
+
+  The volume is increased to increase the dynamic range of the audio signal.
+  Each sample is converted to a-LAW with only 16 steps of level resolution.
+  A pair of two samples are stored in one byte.
+
+  The first byte is stored in the upper bits, the second byte is stored in the
+  lower bits.
+
+  To speed up compression and decompression, two lookup tables are formed:
+
+  - 16 bits index for two samples (law encoded) with 8 bit compressed result.
+  - 8 bits index for one compressed data with 16 bits decompressed result.
+
+  NOTE: The bytes are handled as they are law-encoded.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 How the codec works:
 --------------------
 
@@ -43,6 +64,10 @@ To speed up compression and decompression, two lookup tables are formed:
 - 8 bits index for one compressed data with 16 bits decompressed result.
 
 NOTE: The bytes are handled as they are law-encoded.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 */
 
@@ -232,7 +257,15 @@ l1oip_law_to_4bit(u8 *data, int len, u8 *result, u32 *state)
 
 	/* send saved byte and first input byte */
 	if (*state) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		*result++ = table_com[(((*state) << 8) & 0xff00) | (*data++)];
+=======
 		*result++ = table_com[(((*state)<<8)&0xff00) | (*data++)];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		*result++ = table_com[(((*state)<<8)&0xff00) | (*data++)];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		len--;
 		o++;
 	}
@@ -267,7 +300,15 @@ l1oip_4bit_to_law(u8 *data, int len, u8 *result)
 
 	while (i < len) {
 		r = table_dec[*data++];
+<<<<<<< HEAD
+<<<<<<< HEAD
+		*result++ = r >> 8;
+=======
 		*result++ = r>>8;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		*result++ = r>>8;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*result++ = r;
 		i++;
 	}
@@ -330,14 +371,32 @@ l1oip_4bit_alloc(int ulaw)
 		return 0;
 
 	/* alloc conversion tables */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	table_com = vzalloc(65536);
+	table_dec = vzalloc(512);
+=======
 	table_com = vmalloc(65536);
 	table_dec = vmalloc(512);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	table_com = vmalloc(65536);
+	table_dec = vmalloc(512);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!table_com || !table_dec) {
 		l1oip_4bit_free();
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	memset(table_com, 0, 65536);
 	memset(table_dec, 0, 512);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	memset(table_com, 0, 65536);
+	memset(table_dec, 0, 512);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* generate compression table */
 	i1 = 0;
 	while (i1 < 256) {
@@ -347,8 +406,18 @@ l1oip_4bit_alloc(int ulaw)
 			c = alaw_to_4bit[i1];
 		i2 = 0;
 		while (i2 < 256) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			table_com[(i1 << 8) | i2] |= (c << 4);
+			table_com[(i2 << 8) | i1] |= c;
+=======
 			table_com[(i1<<8) | i2] |= (c<<4);
 			table_com[(i2<<8) | i1] |= c;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			table_com[(i1<<8) | i2] |= (c<<4);
+			table_com[(i2<<8) | i1] |= c;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			i2++;
 		}
 		i1++;
@@ -363,8 +432,18 @@ l1oip_4bit_alloc(int ulaw)
 			sample = _4bit_to_alaw[i1];
 		i2 = 0;
 		while (i2 < 16) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			table_dec[(i1 << 4) | i2] |= (sample << 8);
+			table_dec[(i2 << 4) | i1] |= sample;
+=======
 			table_dec[(i1<<4) | i2] |= (sample<<8);
 			table_dec[(i2<<4) | i1] |= sample;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			table_dec[(i1<<4) | i2] |= (sample<<8);
+			table_dec[(i2<<4) | i1] |= sample;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			i2++;
 		}
 		i1++;
@@ -372,5 +451,13 @@ l1oip_4bit_alloc(int ulaw)
 
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

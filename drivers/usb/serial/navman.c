@@ -21,7 +21,15 @@
 #include <linux/usb.h>
 #include <linux/usb/serial.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct usb_device_id id_table[] = {
 	{ USB_DEVICE(0x0a99, 0x0001) },	/* Talon Technology device */
@@ -35,7 +43,14 @@ static struct usb_driver navman_driver = {
 	.probe =	usb_serial_probe,
 	.disconnect =	usb_serial_disconnect,
 	.id_table =	id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void navman_read_int_callback(struct urb *urb)
@@ -122,7 +137,14 @@ static struct usb_serial_driver navman_device = {
 		.name =		"navman",
 	},
 	.id_table =		id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver =		&navman_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver =		&navman_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_ports =		1,
 	.open =			navman_open,
 	.close = 		navman_close,
@@ -130,6 +152,17 @@ static struct usb_serial_driver navman_device = {
 	.read_int_callback =	navman_read_int_callback,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&navman_device, NULL
+};
+
+module_usb_serial_driver(navman_driver, serial_drivers);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init navman_init(void)
 {
 	int retval;
@@ -151,6 +184,10 @@ static void __exit navman_exit(void)
 
 module_init(navman_init);
 module_exit(navman_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 
 module_param(debug, bool, S_IRUGO | S_IWUSR);

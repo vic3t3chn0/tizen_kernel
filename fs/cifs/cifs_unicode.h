@@ -75,6 +75,9 @@ extern const struct UniCaseRange CifsUniLowerRange[];
 
 #ifdef __KERNEL__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int cifs_from_utf16(char *to, const __le16 *from, int tolen, int fromlen,
 		    const struct nls_table *codepage, bool mapchar);
 int cifs_utf16_bytes(const __le16 *from, int maxbytes,
@@ -85,6 +88,8 @@ char *cifs_strndup_from_utf16(const char *src, const int maxlen,
 			      const struct nls_table *codepage);
 extern int cifsConvertToUTF16(__le16 *target, const char *source, int maxlen,
 			      const struct nls_table *cp, int mapChars);
+<<<<<<< HEAD
+=======
 =======
 int cifs_from_ucs2(char *to, const __le16 *from, int tolen, int fromlen,
 		   const struct nls_table *codepage, bool mapchar);
@@ -97,6 +102,7 @@ char *cifs_strndup_from_ucs(const char *src, const int maxlen,
 extern int cifsConvertToUCS(__le16 *target, const char *source, int maxlen,
 			const struct nls_table *cp, int mapChars);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

@@ -21,7 +21,12 @@
 #define EXTENT_NEED_WAIT (1 << 13)
 #define EXTENT_DAMAGED (1 << 14)
 =======
+<<<<<<< HEAD
+#define EXTENT_NEED_WAIT (1 << 13)
+#define EXTENT_DAMAGED (1 << 14)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXTENT_IOBITS (EXTENT_LOCKED | EXTENT_WRITEBACK)
 #define EXTENT_CTLBITS (EXTENT_DO_ACCOUNTING | EXTENT_FIRST_DELALLOC)
 
@@ -38,13 +43,19 @@
 #define EXTENT_BUFFER_DIRTY 2
 #define EXTENT_BUFFER_CORRUPT 3
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXTENT_BUFFER_READAHEAD 4	/* this got triggered by readahead */
 #define EXTENT_BUFFER_TREE_REF 5
 #define EXTENT_BUFFER_STALE 6
 #define EXTENT_BUFFER_WRITEBACK 7
 #define EXTENT_BUFFER_IOERR 8
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* these are flags for extent_clear_unlock_delalloc */
 #define EXTENT_CLEAR_UNLOCK_PAGE 0x1
@@ -67,7 +78,11 @@ struct extent_state;
 <<<<<<< HEAD
 struct btrfs_root;
 =======
+<<<<<<< HEAD
+struct btrfs_root;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef	int (extent_submit_bio_hook_t)(struct inode *inode, int rw,
 				       struct bio *bio, int mirror_num,
@@ -86,15 +101,22 @@ struct extent_io_ops {
 <<<<<<< HEAD
 	int (*readpage_io_failed_hook)(struct page *page, int failed_mirror);
 =======
+<<<<<<< HEAD
+	int (*readpage_io_failed_hook)(struct page *page, int failed_mirror);
+=======
 	int (*readpage_io_failed_hook)(struct bio *bio, struct page *page,
 				       u64 start, u64 end,
 				       struct extent_state *state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*writepage_io_failed_hook)(struct bio *bio, struct page *page,
 					u64 start, u64 end,
 				       struct extent_state *state);
 	int (*readpage_end_io_hook)(struct page *page, u64 start, u64 end,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    struct extent_state *state, int mirror);
 	int (*writepage_end_io_hook)(struct page *page, u64 start, u64 end,
 				      struct extent_state *state, int uptodate);
@@ -109,6 +131,8 @@ struct extent_io_ops {
 				  struct extent_state *orig, u64 split);
 	int (*write_cache_pages_lock_hook)(struct page *page, void *data,
 					   void (*flush_fn)(void *));
+<<<<<<< HEAD
+=======
 =======
 				    struct extent_state *state);
 	int (*writepage_end_io_hook)(struct page *page, u64 start, u64 end,
@@ -124,6 +148,7 @@ struct extent_io_ops {
 				 struct extent_state *orig, u64 split);
 	int (*write_cache_pages_lock_hook)(struct page *page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct extent_io_tree {
@@ -134,7 +159,11 @@ struct extent_io_tree {
 <<<<<<< HEAD
 	int track_uptodate;
 =======
+<<<<<<< HEAD
+	int track_uptodate;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t lock;
 	spinlock_t buffer_lock;
 	struct extent_io_ops *ops;
@@ -152,9 +181,12 @@ struct extent_state {
 	unsigned long state;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u64 split_start;
 	u64 split_end;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* for use by the FS */
 	u64 private;
@@ -163,6 +195,9 @@ struct extent_state {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INLINE_EXTENT_BUFFER_PAGES 16
 #define MAX_INLINE_EXTENT_BUFFER_SIZE (INLINE_EXTENT_BUFFER_PAGES * PAGE_CACHE_SIZE)
 struct extent_buffer {
@@ -204,6 +239,8 @@ struct extent_buffer {
 	wait_queue_head_t lock_wq;
 	struct page *inline_pages[INLINE_EXTENT_BUFFER_PAGES];
 	struct page **pages;
+<<<<<<< HEAD
+=======
 =======
 struct extent_buffer {
 	u64 start;
@@ -227,6 +264,7 @@ struct extent_buffer {
 	 */
 	wait_queue_head_t lock_wq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void extent_set_compress_type(unsigned long *bio_flags,
@@ -254,6 +292,9 @@ int try_release_extent_mapping(struct extent_map_tree *map,
 			       struct extent_io_tree *tree, struct page *page,
 			       gfp_t mask);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int try_release_extent_buffer(struct page *page, gfp_t mask);
 int try_release_extent_state(struct extent_map_tree *map,
 			     struct extent_io_tree *tree, struct page *page,
@@ -267,6 +308,8 @@ int unlock_extent_cached(struct extent_io_tree *tree, u64 start, u64 end,
 int try_lock_extent(struct extent_io_tree *tree, u64 start, u64 end);
 int extent_read_full_page(struct extent_io_tree *tree, struct page *page,
 			  get_extent_t *get_extent, int mirror_num);
+<<<<<<< HEAD
+=======
 =======
 int try_release_extent_buffer(struct extent_io_tree *tree, struct page *page);
 int try_release_extent_state(struct extent_map_tree *map,
@@ -283,6 +326,7 @@ int try_lock_extent(struct extent_io_tree *tree, u64 start, u64 end,
 int extent_read_full_page(struct extent_io_tree *tree, struct page *page,
 			  get_extent_t *get_extent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init extent_io_init(void);
 void extent_io_exit(void);
 
@@ -304,8 +348,12 @@ int set_extent_bit(struct extent_io_tree *tree, u64 start, u64 end,
 <<<<<<< HEAD
 		   int bits, u64 *failed_start,
 =======
+<<<<<<< HEAD
+		   int bits, u64 *failed_start,
+=======
 		   int bits, int exclusive_bits, u64 *failed_start,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		   struct extent_state **cached_state, gfp_t mask);
 int set_extent_uptodate(struct extent_io_tree *tree, u64 start, u64 end,
 			struct extent_state **cached_state, gfp_t mask);
@@ -319,7 +367,12 @@ int clear_extent_dirty(struct extent_io_tree *tree, u64 start, u64 end,
 int convert_extent_bit(struct extent_io_tree *tree, u64 start, u64 end,
 		       int bits, int clear_bits, gfp_t mask);
 =======
+<<<<<<< HEAD
+int convert_extent_bit(struct extent_io_tree *tree, u64 start, u64 end,
+		       int bits, int clear_bits, gfp_t mask);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int set_extent_delalloc(struct extent_io_tree *tree, u64 start, u64 end,
 			struct extent_state **cached_state, gfp_t mask);
 int find_first_extent_bit(struct extent_io_tree *tree, u64 start,
@@ -342,7 +395,12 @@ int extent_writepages(struct extent_io_tree *tree,
 int btree_write_cache_pages(struct address_space *mapping,
 			    struct writeback_control *wbc);
 =======
+<<<<<<< HEAD
+int btree_write_cache_pages(struct address_space *mapping,
+			    struct writeback_control *wbc);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int extent_readpages(struct extent_io_tree *tree,
 		     struct address_space *mapping,
 		     struct list_head *pages, unsigned nr_pages,
@@ -355,6 +413,9 @@ void set_page_extent_mapped(struct page *page);
 
 struct extent_buffer *alloc_extent_buffer(struct extent_io_tree *tree,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  u64 start, unsigned long len);
 struct extent_buffer *find_extent_buffer(struct extent_io_tree *tree,
 					 u64 start, unsigned long len);
@@ -368,6 +429,8 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 			     get_extent_t *get_extent, int mirror_num);
 unsigned long num_extent_pages(u64 start, u64 len);
 struct page *extent_buffer_page(struct extent_buffer *eb, unsigned long i);
+<<<<<<< HEAD
+=======
 =======
 					  u64 start, unsigned long len,
 					  struct page *page0);
@@ -378,6 +441,7 @@ int read_extent_buffer_pages(struct extent_io_tree *tree,
 			     struct extent_buffer *eb, u64 start, int wait,
 			     get_extent_t *get_extent, int mirror_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void extent_buffer_get(struct extent_buffer *eb)
 {
@@ -402,6 +466,9 @@ void memmove_extent_buffer(struct extent_buffer *dst, unsigned long dst_offset,
 void memset_extent_buffer(struct extent_buffer *eb, char c,
 			  unsigned long start, unsigned long len);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void wait_extent_bit(struct extent_io_tree *tree, u64 start, u64 end, int bits);
 void clear_extent_buffer_dirty(struct extent_buffer *eb);
 int set_extent_buffer_dirty(struct extent_buffer *eb);
@@ -412,6 +479,8 @@ int map_private_extent_buffer(struct extent_buffer *eb, unsigned long offset,
 		      unsigned long min_len, char **map,
 		      unsigned long *map_start,
 		      unsigned long *map_len);
+<<<<<<< HEAD
+=======
 =======
 int wait_extent_bit(struct extent_io_tree *tree, u64 start, u64 end, int bits);
 int clear_extent_buffer_dirty(struct extent_io_tree *tree,
@@ -436,6 +505,7 @@ int map_private_extent_buffer(struct extent_buffer *eb, unsigned long offset,
 		      unsigned long *map_len, int km);
 void unmap_extent_buffer(struct extent_buffer *eb, char *token, int km);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int extent_range_uptodate(struct extent_io_tree *tree,
 			  u64 start, u64 end);
 int extent_clear_unlock_delalloc(struct inode *inode,
@@ -446,6 +516,9 @@ struct bio *
 btrfs_bio_alloc(struct block_device *bdev, u64 first_sector, int nr_vecs,
 		gfp_t gfp_flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct btrfs_mapping_tree;
 
@@ -455,6 +528,9 @@ int repair_io_failure(struct btrfs_mapping_tree *map_tree, u64 start,
 int end_extent_writepage(struct page *page, int err, u64 start, u64 end);
 int repair_eb_io_failure(struct btrfs_root *root, struct extent_buffer *eb,
 			 int mirror_num);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <asm/desc.h>
 =======
+<<<<<<< HEAD
+#include <asm/desc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgtable.h>
 #include <asm/tlbflush.h>
@@ -47,6 +51,11 @@ static unsigned long efi_rt_eflags;
 void efi_call_phys_prelog(void)
 {
 =======
+<<<<<<< HEAD
+
+void efi_call_phys_prelog(void)
+{
+=======
 static pgd_t efi_bak_pg_dir_pointer[2];
 
 void efi_call_phys_prelog(void)
@@ -54,10 +63,14 @@ void efi_call_phys_prelog(void)
 	unsigned long cr4;
 	unsigned long temp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct desc_ptr gdt_descr;
 
 	local_irq_save(efi_rt_eflags);
 
+<<<<<<< HEAD
+	load_cr3(initial_page_table);
+=======
 <<<<<<< HEAD
 	load_cr3(initial_page_table);
 =======
@@ -89,6 +102,7 @@ void efi_call_phys_prelog(void)
 	 * After the lock is released, the original page table is restored.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__flush_tlb_all();
 
 	gdt_descr.address = __pa(get_cpu_gdt_table(0));
@@ -100,14 +114,20 @@ void efi_call_phys_epilog(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long cr4;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct desc_ptr gdt_descr;
 
 	gdt_descr.address = (unsigned long)get_cpu_gdt_table(0);
 	gdt_descr.size = GDT_SIZE - 1;
 	load_gdt(&gdt_descr);
 
+<<<<<<< HEAD
+	load_cr3(swapper_pg_dir);
+=======
 <<<<<<< HEAD
 	load_cr3(swapper_pg_dir);
 =======
@@ -127,6 +147,7 @@ void efi_call_phys_epilog(void)
 	 * After the lock is released, the original page table is restored.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__flush_tlb_all();
 
 	local_irq_restore(efi_rt_eflags);

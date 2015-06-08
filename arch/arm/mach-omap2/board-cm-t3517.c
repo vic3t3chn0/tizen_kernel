@@ -42,8 +42,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/usb.h>
 #include <plat/nand.h>
 #include <plat/gpmc.h>
@@ -56,7 +60,11 @@
 <<<<<<< HEAD
 #include "am35xx-emac.h"
 =======
+<<<<<<< HEAD
+#include "am35xx-emac.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_LEDS_GPIO) || defined(CONFIG_LEDS_GPIO_MODULE)
 static struct gpio_led cm_t3517_leds[] = {
@@ -246,8 +254,11 @@ static struct omap_nand_platform_data cm_t3517_nand_data = {
 	.nr_parts		= ARRAY_SIZE(cm_t3517_nand_partitions),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.dma_channel		= -1,	/* disable DMA in OMAP NAND driver */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.cs			= 0,
 };
 
@@ -265,6 +276,8 @@ static struct omap_board_config_kernel cm_t3517_config[] __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init cm_t3517_init_early(void)
 {
 	omap2_init_common_infrastructure();
@@ -272,6 +285,7 @@ static void __init cm_t3517_init_early(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OMAP_MUX
 static struct omap_board_mux board_mux[] __initdata = {
 	/* GPIO186 - Green LED */
@@ -307,7 +321,11 @@ static void __init cm_t3517_init(void)
 <<<<<<< HEAD
 	omap_sdrc_init(NULL, NULL);
 =======
+<<<<<<< HEAD
+	omap_sdrc_init(NULL, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_board_config = cm_t3517_config;
 	omap_board_config_size = ARRAY_SIZE(cm_t3517_config);
 	cm_t3517_init_leds();
@@ -316,6 +334,9 @@ static void __init cm_t3517_init(void)
 	cm_t3517_init_usbh();
 	cm_t3517_init_hecc();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	am35xx_emac_init(AM35XX_DEFAULT_MDIO_FREQUENCY, 1);
 }
 
@@ -329,6 +350,8 @@ MACHINE_START(CM_T3517, "Compulab CM-T3517")
 	.init_machine	= cm_t3517_init,
 	.timer		= &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -341,4 +364,5 @@ MACHINE_START(CM_T3517, "Compulab CM-T3517")
 	.init_machine	= cm_t3517_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

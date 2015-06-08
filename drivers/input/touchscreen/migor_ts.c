@@ -36,7 +36,14 @@
 struct migor_ts_priv {
 	struct i2c_client *client;
 	struct input_dev *input;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct delayed_work work;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct delayed_work work;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int irq;
 };
 
@@ -44,15 +51,44 @@ static const u_int8_t migor_ts_ena_seq[17] = { 0x33, 0x22, 0x11,
 					       0x01, 0x06, 0x07, };
 static const u_int8_t migor_ts_dis_seq[17] = { };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static irqreturn_t migor_ts_isr(int irq, void *dev_id)
+{
+	struct migor_ts_priv *priv = dev_id;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void migor_ts_poscheck(struct work_struct *work)
 {
 	struct migor_ts_priv *priv = container_of(work,
 						  struct migor_ts_priv,
 						  work.work);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short xpos, ypos;
 	unsigned char event;
 	u_int8_t buf[16];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * The touch screen controller chip is hooked up to the CPU
+	 * using I2C and a single interrupt line. The interrupt line
+	 * is pulled low whenever someone taps the screen. To deassert
+	 * the interrupt line we need to acknowledge the interrupt by
+	 * communicating with the controller over the slow i2c bus.
+	 *
+	 * Since I2C bus controller may sleep we are using threaded
+	 * IRQ here.
+	 */
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(buf, 0, sizeof(buf));
 
 	/* Set Index 0 */
@@ -72,11 +108,38 @@ static void migor_ts_poscheck(struct work_struct *work)
 	xpos = ((buf[11] & 0x03) << 8 | buf[10]);
 	event = buf[12];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (event) {
+	case EVENT_PENDOWN:
+	case EVENT_REPEAT:
+=======
 	if (event == EVENT_PENDOWN || event == EVENT_REPEAT) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (event == EVENT_PENDOWN || event == EVENT_REPEAT) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		input_report_key(priv->input, BTN_TOUCH, 1);
 		input_report_abs(priv->input, ABS_X, ypos); /*X-Y swap*/
 		input_report_abs(priv->input, ABS_Y, xpos);
 		input_sync(priv->input);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		break;
+
+	case EVENT_PENUP:
+		input_report_key(priv->input, BTN_TOUCH, 0);
+		input_sync(priv->input);
+		break;
+	}
+
+ out:
+	return IRQ_HANDLED;
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (event == EVENT_PENUP) {
 		input_report_key(priv->input, BTN_TOUCH, 0);
 		input_sync(priv->input);
@@ -107,6 +170,10 @@ static irqreturn_t migor_ts_isr(int irq, void *dev_id)
 }
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int migor_ts_open(struct input_dev *dev)
 {
 	struct migor_ts_priv *priv = input_get_drvdata(dev);
@@ -131,6 +198,11 @@ static void migor_ts_close(struct input_dev *dev)
 
 	disable_irq(priv->irq);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* cancel pending work and wait for migor_ts_poscheck() to finish */
 	if (cancel_delayed_work_sync(&priv->work)) {
 		/*
@@ -140,6 +212,10 @@ static void migor_ts_close(struct input_dev *dev)
 		enable_irq(priv->irq);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* disable controller */
 	i2c_master_send(client, migor_ts_dis_seq, sizeof(migor_ts_dis_seq));
 
@@ -154,6 +230,25 @@ static int migor_ts_probe(struct i2c_client *client,
 	int error;
 
 	priv = kzalloc(sizeof(*priv), GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	input = input_allocate_device();
+	if (!priv || !input) {
+		dev_err(&client->dev, "failed to allocate memory\n");
+		error = -ENOMEM;
+		goto err_free_mem;
+	}
+
+	priv->client = client;
+	priv->input = input;
+	priv->irq = client->irq;
+
+	input->evbit[0] = BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
+
+	__set_bit(BTN_TOUCH, input->keybit);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!priv) {
 		dev_err(&client->dev, "failed to allocate driver data\n");
 		error = -ENOMEM;
@@ -171,6 +266,10 @@ static int migor_ts_probe(struct i2c_client *client,
 
 	input->evbit[0] = BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
 	input->keybit[BIT_WORD(BTN_TOUCH)] = BIT_MASK(BTN_TOUCH);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	input_set_abs_params(input, ABS_X, 95, 955, 0, 0);
 	input_set_abs_params(input, ABS_Y, 85, 935, 0, 0);
@@ -184,6 +283,33 @@ static int migor_ts_probe(struct i2c_client *client,
 
 	input_set_drvdata(input, priv);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	error = request_threaded_irq(priv->irq, NULL, migor_ts_isr,
+                                     IRQF_TRIGGER_LOW | IRQF_ONESHOT,
+                                     client->name, priv);
+	if (error) {
+		dev_err(&client->dev, "Unable to request touchscreen IRQ.\n");
+		goto err_free_mem;
+	}
+
+	error = input_register_device(input);
+	if (error)
+		goto err_free_irq;
+
+	i2c_set_clientdata(client, priv);
+	device_init_wakeup(&client->dev, 1);
+
+	return 0;
+
+ err_free_irq:
+	free_irq(priv->irq, priv);
+ err_free_mem:
+	input_free_device(input);
+	kfree(priv);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	priv->client = client;
 	priv->input = input;
 	INIT_DELAYED_WORK(&priv->work, migor_ts_poscheck);
@@ -211,12 +337,24 @@ static int migor_ts_probe(struct i2c_client *client,
 	kfree(priv);
  err0:
 	dev_set_drvdata(&client->dev, NULL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
 static int migor_ts_remove(struct i2c_client *client)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct migor_ts_priv *priv = i2c_get_clientdata(client);
+=======
 	struct migor_ts_priv *priv = dev_get_drvdata(&client->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct migor_ts_priv *priv = dev_get_drvdata(&client->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	free_irq(priv->irq, priv);
 	input_unregister_device(priv->input);
@@ -230,7 +368,15 @@ static int migor_ts_remove(struct i2c_client *client)
 static int migor_ts_suspend(struct device *dev)
 {
 	struct i2c_client *client = to_i2c_client(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct migor_ts_priv *priv = i2c_get_clientdata(client);
+=======
 	struct migor_ts_priv *priv = dev_get_drvdata(&client->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct migor_ts_priv *priv = dev_get_drvdata(&client->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (device_may_wakeup(&client->dev))
 		enable_irq_wake(priv->irq);
@@ -241,7 +387,15 @@ static int migor_ts_suspend(struct device *dev)
 static int migor_ts_resume(struct device *dev)
 {
 	struct i2c_client *client = to_i2c_client(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct migor_ts_priv *priv = i2c_get_clientdata(client);
+=======
 	struct migor_ts_priv *priv = dev_get_drvdata(&client->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct migor_ts_priv *priv = dev_get_drvdata(&client->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (device_may_wakeup(&client->dev))
 		disable_irq_wake(priv->irq);
@@ -267,6 +421,12 @@ static struct i2c_driver migor_ts_driver = {
 	.id_table = migor_ts_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(migor_ts_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init migor_ts_init(void)
 {
 	return i2c_add_driver(&migor_ts_driver);
@@ -276,10 +436,23 @@ static void __exit migor_ts_exit(void)
 {
 	i2c_del_driver(&migor_ts_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("MigoR Touchscreen driver");
 MODULE_AUTHOR("Magnus Damm <damm@opensource.se>");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(migor_ts_init);
 module_exit(migor_ts_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(migor_ts_init);
+module_exit(migor_ts_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

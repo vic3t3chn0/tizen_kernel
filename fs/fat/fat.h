@@ -113,7 +113,11 @@ struct msdos_inode_info {
 <<<<<<< HEAD
 	struct rw_semaphore truncate_lock; /* protect bmap against truncate */
 =======
+<<<<<<< HEAD
+	struct rw_semaphore truncate_lock; /* protect bmap against truncate */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode vfs_inode;
 };
 
@@ -148,8 +152,12 @@ static inline int fat_mode_can_hold_ro(struct inode *inode)
 <<<<<<< HEAD
 	umode_t mask;
 =======
+<<<<<<< HEAD
+	umode_t mask;
+=======
 	mode_t mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (S_ISDIR(inode->i_mode)) {
 		if (!sbi->options.rodir)
@@ -168,9 +176,14 @@ static inline int fat_mode_can_hold_ro(struct inode *inode)
 static inline umode_t fat_make_mode(struct msdos_sb_info *sbi,
 				   u8 attrs, umode_t mode)
 =======
+<<<<<<< HEAD
+static inline umode_t fat_make_mode(struct msdos_sb_info *sbi,
+				   u8 attrs, umode_t mode)
+=======
 static inline mode_t fat_make_mode(struct msdos_sb_info *sbi,
 				   u8 attrs, mode_t mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (attrs & ATTR_RO && !((attrs & ATTR_DIR) && !sbi->options.rodir))
 		mode &= ~S_IWUGO;
@@ -327,8 +340,13 @@ extern int fat_getattr(struct vfsmount *mnt, struct dentry *dentry,
 extern int fat_file_fsync(struct file *file, loff_t start, loff_t end,
 			  int datasync);
 =======
+<<<<<<< HEAD
+extern int fat_file_fsync(struct file *file, loff_t start, loff_t end,
+			  int datasync);
+=======
 extern int fat_file_fsync(struct file *file, int datasync);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* fat/inode.c */
 extern void fat_attach(struct inode *inode, loff_t i_pos);
@@ -347,10 +365,15 @@ extern int fat_flush_inodes(struct super_block *sb, struct inode *i1,
 extern __printf(3, 4) __cold
 void __fat_fs_error(struct super_block *sb, int report, const char *fmt, ...);
 =======
+<<<<<<< HEAD
+extern __printf(3, 4) __cold
+void __fat_fs_error(struct super_block *sb, int report, const char *fmt, ...);
+=======
 extern void
 __fat_fs_error(struct super_block *sb, int report, const char *fmt, ...)
 	__attribute__ ((format (printf, 3, 4))) __cold;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define fat_fs_error(sb, fmt, args...)		\
 	__fat_fs_error(sb, 1, fmt , ## args)
 #define fat_fs_error_ratelimit(sb, fmt, args...) \
@@ -359,9 +382,14 @@ __fat_fs_error(struct super_block *sb, int report, const char *fmt, ...)
 __printf(3, 4) __cold
 void fat_msg(struct super_block *sb, const char *level, const char *fmt, ...);
 =======
+<<<<<<< HEAD
+__printf(3, 4) __cold
+void fat_msg(struct super_block *sb, const char *level, const char *fmt, ...);
+=======
 void fat_msg(struct super_block *sb, const char *level, const char *fmt, ...)
 	__attribute__ ((format (printf, 3, 4))) __cold;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int fat_clusters_flush(struct super_block *sb);
 extern int fat_chain_add(struct inode *inode, int new_dclus, int nr_cluster);
 extern void fat_time_fat2unix(struct msdos_sb_info *sbi, struct timespec *ts,

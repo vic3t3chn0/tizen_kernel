@@ -344,6 +344,18 @@ typedef struct urb_priv {
  * a subset of what the full implementation needs. (Linus)
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum ohci_rh_state {
+	OHCI_RH_HALTED,
+	OHCI_RH_SUSPENDED,
+	OHCI_RH_RUNNING
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ohci_hcd {
 	spinlock_t		lock;
 
@@ -370,7 +382,15 @@ struct ohci_hcd {
 	 * OTG controllers and transceivers need software interaction;
 	 * other external transceivers should be software-transparent
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_phy	*transceiver;
+=======
 	struct otg_transceiver	*transceiver;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct otg_transceiver	*transceiver;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void (*start_hnp)(struct ohci_hcd *ohci);
 
 	/*
@@ -384,6 +404,13 @@ struct ohci_hcd {
 	/*
 	 * driver state
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum ohci_rh_state	rh_state;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			num_ports;
 	int			load [NUM_INTS];
 	u32			hc_control;	/* copy of hc control reg */
@@ -679,11 +706,20 @@ static inline u16 ohci_hwPSW(const struct ohci_hcd *ohci,
 
 /*-------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void disable (struct ohci_hcd *ohci)
 {
 	ohci_to_hcd(ohci)->state = HC_STATE_HALT;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	FI			0x2edf		/* 12000 bits per frame (-1) */
 #define	FSMP(fi)		(0x7fff & ((6 * ((fi) - 210)) / 7))
 #define	FIT			(1 << 31)
@@ -707,7 +743,15 @@ static inline void periodic_reinit (struct ohci_hcd *ohci)
 #define read_roothub(hc, register, mask) ({ \
 	u32 temp = ohci_readl (hc, &hc->regs->roothub.register); \
 	if (temp == -1) \
+<<<<<<< HEAD
+<<<<<<< HEAD
+		hc->rh_state = OHCI_RH_HALTED; \
+=======
 		disable (hc); \
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		disable (hc); \
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (hc->flags & OHCI_QUIRK_AMD756) \
 		while (temp & mask) \
 			temp = ohci_readl (hc, &hc->regs->roothub.register); \

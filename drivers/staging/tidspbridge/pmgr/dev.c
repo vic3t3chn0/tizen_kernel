@@ -24,9 +24,18 @@
 /*  ----------------------------------- DSP/BIOS Bridge */
 #include <dspbridge/dbdefs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Trace & Debug */
 #include <dspbridge/dbc.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Trace & Debug */
+#include <dspbridge/dbc.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- Platform Manager */
 #include <dspbridge/cod.h>
 #include <dspbridge/drv.h>
@@ -84,9 +93,18 @@ struct drv_ext {
 	char sz_string[MAXREGPATHLENGTH];
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Globals */
 static u32 refs;		/* Module reference count */
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Globals */
+static u32 refs;		/* Module reference count */
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- Function Prototypes */
 static int fxn_not_implemented(int arg, ...);
 static int init_cod_mgr(struct dev_object *dev_obj);
@@ -106,11 +124,22 @@ u32 dev_brd_write_fxn(void *arb, u32 dsp_add, void *host_buf,
 	u32 ul_written = 0;
 	int status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (dev_obj) {
+		/* Require of BrdWrite() */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(host_buf != NULL);	/* Required of BrdWrite(). */
 	if (dev_obj) {
 		/* Require of BrdWrite() */
 		DBC_ASSERT(dev_obj->bridge_context != NULL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = (*dev_obj->bridge_interface.brd_write) (
 					dev_obj->bridge_context, host_buf,
 					dsp_add, ul_num_bytes, mem_space);
@@ -143,9 +172,18 @@ int dev_create_device(struct dev_object **device_obj,
 	struct drv_object *hdrv_obj = NULL;
 	struct drv_data *drv_datap = dev_get_drvdata(bridge);
 	int status = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(device_obj != NULL);
 	DBC_REQUIRE(driver_file_name != NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(device_obj != NULL);
+	DBC_REQUIRE(driver_file_name != NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	status = drv_request_bridge_res_dsp((void *)&host_res);
 
@@ -169,7 +207,14 @@ int dev_create_device(struct dev_object **device_obj,
 	/* Create the device object, and pass a handle to the Bridge driver for
 	 * storage. */
 	if (!status) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		DBC_ASSERT(drv_fxns);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DBC_ASSERT(drv_fxns);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_obj = kzalloc(sizeof(struct dev_object), GFP_KERNEL);
 		if (dev_obj) {
 			/* Fill out the rest of the Dev Object structure: */
@@ -191,9 +236,18 @@ int dev_create_device(struct dev_object **device_obj,
 			status = (dev_obj->bridge_interface.dev_create)
 			    (&dev_obj->bridge_context, dev_obj,
 			     host_res);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			/* Assert bridge_dev_create()'s ensure clause: */
 			DBC_ASSERT(status
 				   || (dev_obj->bridge_context != NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			/* Assert bridge_dev_create()'s ensure clause: */
+			DBC_ASSERT(status
+				   || (dev_obj->bridge_context != NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			status = -ENOMEM;
 		}
@@ -271,7 +325,14 @@ leave:
 		*device_obj = NULL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE((!status && *device_obj) || (status && !*device_obj));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE((!status && *device_obj) || (status && !*device_obj));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -287,17 +348,35 @@ int dev_create2(struct dev_object *hdev_obj)
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* There can be only one Node Manager per DEV object */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(hdev_obj);
 
 	/* There can be only one Node Manager per DEV object */
 	DBC_ASSERT(!dev_obj->node_mgr);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = node_create_mgr(&dev_obj->node_mgr, hdev_obj);
 	if (status)
 		dev_obj->node_mgr = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE((!status && dev_obj->node_mgr != NULL)
 		   || (status && dev_obj->node_mgr == NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE((!status && dev_obj->node_mgr != NULL)
+		   || (status && dev_obj->node_mgr == NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -311,9 +390,18 @@ int dev_destroy2(struct dev_object *hdev_obj)
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(hdev_obj);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(hdev_obj);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev_obj->node_mgr) {
 		if (node_delete_mgr(dev_obj->node_mgr))
 			status = -EPERM;
@@ -322,7 +410,14 @@ int dev_destroy2(struct dev_object *hdev_obj)
 
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE((!status && dev_obj->node_mgr == NULL) || status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE((!status && dev_obj->node_mgr == NULL) || status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -337,8 +432,16 @@ int dev_destroy_device(struct dev_object *hdev_obj)
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		if (dev_obj->cod_mgr) {
 			cod_delete(dev_obj->cod_mgr);
@@ -415,9 +518,18 @@ int dev_get_chnl_mgr(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(mgr != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(mgr != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*mgr = dev_obj->chnl_mgr;
 	} else {
@@ -425,7 +537,14 @@ int dev_get_chnl_mgr(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || (mgr != NULL && *mgr == NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || (mgr != NULL && *mgr == NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -441,9 +560,18 @@ int dev_get_cmm_mgr(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(mgr != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(mgr != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*mgr = dev_obj->cmm_mgr;
 	} else {
@@ -451,7 +579,14 @@ int dev_get_cmm_mgr(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || (mgr != NULL && *mgr == NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || (mgr != NULL && *mgr == NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -467,9 +602,18 @@ int dev_get_dmm_mgr(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(mgr != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(mgr != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*mgr = dev_obj->dmm_mgr;
 	} else {
@@ -477,7 +621,14 @@ int dev_get_dmm_mgr(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || (mgr != NULL && *mgr == NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || (mgr != NULL && *mgr == NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -492,9 +643,18 @@ int dev_get_cod_mgr(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(cod_mgr != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(cod_mgr != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*cod_mgr = dev_obj->cod_mgr;
 	} else {
@@ -502,7 +662,14 @@ int dev_get_cod_mgr(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || (cod_mgr != NULL && *cod_mgr == NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || (cod_mgr != NULL && *cod_mgr == NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -514,9 +681,18 @@ int dev_get_deh_mgr(struct dev_object *hdev_obj,
 {
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(deh_manager != NULL);
 	DBC_REQUIRE(hdev_obj);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(deh_manager != NULL);
+	DBC_REQUIRE(hdev_obj);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*deh_manager = hdev_obj->deh_mgr;
 	} else {
@@ -537,9 +713,18 @@ int dev_get_dev_node(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(dev_nde != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(dev_nde != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*dev_nde = dev_obj->dev_node_obj;
 	} else {
@@ -547,7 +732,14 @@ int dev_get_dev_node(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || (dev_nde != NULL && *dev_nde == NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || (dev_nde != NULL && *dev_nde == NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -578,9 +770,18 @@ int dev_get_intf_fxns(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(if_fxns != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(if_fxns != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*if_fxns = &dev_obj->bridge_interface;
 	} else {
@@ -588,7 +789,14 @@ int dev_get_intf_fxns(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || ((if_fxns != NULL) && (*if_fxns == NULL)));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || ((if_fxns != NULL) && (*if_fxns == NULL)));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -600,10 +808,19 @@ int dev_get_io_mgr(struct dev_object *hdev_obj,
 {
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(io_man != NULL);
 	DBC_REQUIRE(hdev_obj);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*io_man = hdev_obj->iomgr;
 	} else {
@@ -638,10 +855,19 @@ struct dev_object *dev_get_next(struct dev_object *hdev_obj)
  */
 void dev_get_msg_mgr(struct dev_object *hdev_obj, struct msg_mgr **msg_man)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(msg_man != NULL);
 	DBC_REQUIRE(hdev_obj);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*msg_man = hdev_obj->msg_mgr;
 }
 
@@ -656,9 +882,18 @@ int dev_get_node_manager(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(node_man != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(node_man != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*node_man = dev_obj->node_mgr;
 	} else {
@@ -666,7 +901,14 @@ int dev_get_node_manager(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || (node_man != NULL && *node_man == NULL));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || (node_man != NULL && *node_man == NULL));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -679,9 +921,18 @@ int dev_get_symbol(struct dev_object *hdev_obj,
 	int status = 0;
 	struct cod_manager *cod_mgr;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(str_sym != NULL && pul_value != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(str_sym != NULL && pul_value != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		status = dev_get_cod_mgr(hdev_obj, &cod_mgr);
 		if (cod_mgr)
@@ -706,9 +957,18 @@ int dev_get_bridge_context(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(phbridge_context != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(phbridge_context != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj) {
 		*phbridge_context = dev_obj->bridge_context;
 	} else {
@@ -716,12 +976,25 @@ int dev_get_bridge_context(struct dev_object *hdev_obj,
 		status = -EFAULT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(!status || ((phbridge_context != NULL) &&
 					     (*phbridge_context == NULL)));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(!status || ((phbridge_context != NULL) &&
+					     (*phbridge_context == NULL)));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dev_exit ========
  *  Purpose:
  *      Decrement reference count, and free resources when reference count is
@@ -777,6 +1050,10 @@ bool dev_init(void)
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dev_notify_clients ========
  *  Purpose:
  *      Notify all clients of this device of a change in device status.
@@ -841,14 +1118,29 @@ int dev_set_chnl_mgr(struct dev_object *hdev_obj,
 	int status = 0;
 	struct dev_object *dev_obj = hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hdev_obj)
 		dev_obj->chnl_mgr = hmgr;
 	else
 		status = -EFAULT;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(status || (dev_obj->chnl_mgr == hmgr));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(status || (dev_obj->chnl_mgr == hmgr));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -859,9 +1151,18 @@ int dev_set_chnl_mgr(struct dev_object *hdev_obj,
  */
 void dev_set_msg_mgr(struct dev_object *hdev_obj, struct msg_mgr *hmgr)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(hdev_obj);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(hdev_obj);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdev_obj->msg_mgr = hmgr;
 }
 
@@ -879,8 +1180,16 @@ int dev_start_device(struct cfg_devnode *dev_node_obj)
 	struct mgr_object *hmgr_obj = NULL;
 	struct drv_data *drv_datap = dev_get_drvdata(bridge);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Given all resources, create a device object. */
 	status = dev_create_device(&hdev_obj, bridge_file_name,
 				   dev_node_obj);
@@ -944,9 +1253,18 @@ static int init_cod_mgr(struct dev_object *dev_obj)
 	int status = 0;
 	char *sz_dummy_file = "dummy";
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(!dev_obj || (dev_obj->cod_mgr == NULL));
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(!dev_obj || (dev_obj->cod_mgr == NULL));
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = cod_create(&dev_obj->cod_mgr, sz_dummy_file);
 
 	return status;
@@ -976,10 +1294,19 @@ int dev_insert_proc_object(struct dev_object *hdev_obj,
 {
 	struct dev_object *dev_obj = (struct dev_object *)hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(dev_obj);
 	DBC_REQUIRE(proc_obj != 0);
 	DBC_REQUIRE(already_attached != NULL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!list_empty(&dev_obj->proc_list))
 		*already_attached = true;
 
@@ -1017,10 +1344,19 @@ int dev_remove_proc_object(struct dev_object *hdev_obj, u32 proc_obj)
 	struct list_head *cur_elem;
 	struct dev_object *dev_obj = (struct dev_object *)hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(dev_obj);
 	DBC_REQUIRE(proc_obj != 0);
 	DBC_REQUIRE(!list_empty(&dev_obj->proc_list));
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Search list for dev_obj: */
 	list_for_each(cur_elem, &dev_obj->proc_list) {
 		if ((u32) cur_elem == proc_obj) {
@@ -1069,10 +1405,19 @@ static void store_interface_fxns(struct bridge_drv_interface *drv_fxns,
     (intf_fxns->pfn = ((drv_fxns->pfn != NULL) ? drv_fxns->pfn : \
     (cast)fxn_not_implemented))
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(intf_fxns != NULL);
 	DBC_REQUIRE(drv_fxns != NULL);
 	DBC_REQUIRE(MAKEVERSION(drv_fxns->brd_api_major_version,
 			drv_fxns->brd_api_minor_version) <= BRD_API_VERSION);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bridge_version = MAKEVERSION(drv_fxns->brd_api_major_version,
 				     drv_fxns->brd_api_minor_version);
 	intf_fxns->brd_api_major_version = drv_fxns->brd_api_major_version;
@@ -1119,6 +1464,11 @@ static void store_interface_fxns(struct bridge_drv_interface *drv_fxns,
 		STORE_FXN(fxn_msg_setqueueid, msg_set_queue_id);
 	}
 	/* Add code for any additional functions in newerBridge versions here */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Ensure postcondition: */
 	DBC_ENSURE(intf_fxns->dev_create != NULL);
 	DBC_ENSURE(intf_fxns->dev_destroy != NULL);
@@ -1147,5 +1497,9 @@ static void store_interface_fxns(struct bridge_drv_interface *drv_fxns,
 	DBC_ENSURE(intf_fxns->io_get_proc_load != NULL);
 	DBC_ENSURE(intf_fxns->msg_set_queue_id != NULL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #undef  STORE_FXN
 }

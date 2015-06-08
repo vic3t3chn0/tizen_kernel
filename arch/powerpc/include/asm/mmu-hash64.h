@@ -91,6 +91,9 @@ extern char initial_stab[];
 #define HPTE_R_PP0		ASM_CONST(0x8000000000000000)
 #define HPTE_R_TS		ASM_CONST(0x4000000000000000)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HPTE_R_KEY_HI		ASM_CONST(0x3000000000000000)
 #define HPTE_R_RPN_SHIFT	12
 #define HPTE_R_RPN		ASM_CONST(0x0ffffffffffff000)
@@ -104,6 +107,8 @@ extern char initial_stab[];
 #define HPTE_R_C		ASM_CONST(0x0000000000000080)
 #define HPTE_R_R		ASM_CONST(0x0000000000000100)
 #define HPTE_R_KEY_LO		ASM_CONST(0x0000000000000e00)
+<<<<<<< HEAD
+=======
 =======
 #define HPTE_R_RPN_SHIFT	12
 #define HPTE_R_RPN		ASM_CONST(0x3ffffffffffff000)
@@ -113,6 +118,7 @@ extern char initial_stab[];
 #define HPTE_R_C		ASM_CONST(0x0000000000000080)
 #define HPTE_R_R		ASM_CONST(0x0000000000000100)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define HPTE_V_1TB_SEG		ASM_CONST(0x4000000000000000)
 #define HPTE_V_VRMA_MASK	ASM_CONST(0x4001ffffff000000)
@@ -120,8 +126,11 @@ extern char initial_stab[];
 /* Values for PP (assumes Ks=0, Kp=1) */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* pp0 will always be 0 for linux     */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PP_RWXX	0	/* Supervisor read/write, User none */
 #define PP_RWRX 1	/* Supervisor read/write, User read */
 #define PP_RWRW 2	/* Supervisor read/write, User read/write */
@@ -129,7 +138,11 @@ extern char initial_stab[];
 <<<<<<< HEAD
 #define PP_RXXX	(HPTE_R_PP0 | 2)	/* Supervisor read, user none */
 =======
+<<<<<<< HEAD
+#define PP_RXXX	(HPTE_R_PP0 | 2)	/* Supervisor read, user none */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __ASSEMBLY__
 
@@ -282,17 +295,24 @@ extern int htab_bolt_mapping(unsigned long vstart, unsigned long vend,
 <<<<<<< HEAD
 extern void add_gpage(u64 addr, u64 page_size, unsigned long number_of_pages);
 =======
+<<<<<<< HEAD
+extern void add_gpage(u64 addr, u64 page_size, unsigned long number_of_pages);
+=======
 extern void add_gpage(unsigned long addr, unsigned long page_size,
 			  unsigned long number_of_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void demote_segment_4k(struct mm_struct *mm, unsigned long addr);
 
 extern void hpte_init_native(void);
 extern void hpte_init_lpar(void);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void hpte_init_iSeries(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void hpte_init_beat(void);
 extern void hpte_init_beat_v3(void);
 
@@ -342,11 +362,17 @@ extern void slb_set_size(u16 size);
  * context for user addresses.  i.e. 16T (44 bits) of address space for
  * up to half a million contexts.
 =======
+<<<<<<< HEAD
+ *	- We allow for 16 significant bits of ESID and 19 bits of
+ * context for user addresses.  i.e. 16T (44 bits) of address space for
+ * up to half a million contexts.
+=======
  * 	- We allow for 15 significant bits of ESID and 20 bits of
  * context for user addresses.  i.e. 8T (43 bits) of address space for
  * up to 1M contexts (although the page table structure and context
  * allocation will need changes to take advantage of this).
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * 	- The scramble function gives robust scattering in the hash
  * table (at least based on some initial results).  The previous
@@ -359,10 +385,13 @@ extern void slb_set_size(u16 size);
  * (head.S) and ASM_VSID_SCRAMBLE (below) are changed accordingly.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *
  * You'll also need to change the precomputed VSID values in head.S
  * which are used by the iSeries firmware.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #define VSID_MULTIPLIER_256M	ASM_CONST(200730139)	/* 28-bit prime */
@@ -521,6 +550,8 @@ static inline unsigned long get_vsid(unsigned long context, unsigned long ea,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * This is only used on legacy iSeries in lparmap.c,
  * hence the 256MB segment assumption.
@@ -530,6 +561,7 @@ static inline unsigned long get_vsid(unsigned long context, unsigned long ea,
 #define KERNEL_VSID(ea)		VSID_SCRAMBLE(GET_ESID(ea))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASSEMBLY__ */
 
 #endif /* _ASM_POWERPC_MMU_HASH64_H_ */

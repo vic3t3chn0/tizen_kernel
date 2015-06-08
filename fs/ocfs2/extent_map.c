@@ -785,7 +785,11 @@ int ocfs2_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
 <<<<<<< HEAD
 	mapping_end -= cpos;
 =======
+<<<<<<< HEAD
+	mapping_end -= cpos;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	is_last = 0;
 	while (cpos < mapping_end && !is_last) {
 		u32 fe_flags;
@@ -797,8 +801,12 @@ int ocfs2_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
 <<<<<<< HEAD
 			goto out;
 =======
+<<<<<<< HEAD
+			goto out;
+=======
 			goto out_unlock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		if (rec.e_blkno == 0ULL) {
@@ -840,6 +848,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ocfs2_seek_data_hole_offset(struct file *file, loff_t *offset, int origin)
 {
 	struct inode *inode = file->f_mapping->host;
@@ -936,8 +947,11 @@ out:
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ocfs2_read_virt_blocks(struct inode *inode, u64 v_block, int nr,
 			   struct buffer_head *bhs[], int flags,
 			   int (*validate)(struct super_block *sb,

@@ -4,6 +4,9 @@
  */
 #include <linux/clockchips.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/i8253.h>
 #include <linux/export.h>
 #include <linux/smp.h>
@@ -14,6 +17,8 @@
 static irqreturn_t timer_interrupt(int irq, void *dev_id)
 {
 	i8253_clockevent.event_handler(&i8253_clockevent);
+<<<<<<< HEAD
+=======
 =======
 #include <linux/init.h>
 #include <linux/interrupt.h>
@@ -106,6 +111,7 @@ static irqreturn_t timer_interrupt(int irq, void *dev_id)
 {
 	pit_clockevent.event_handler(&pit_clockevent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return IRQ_HANDLED;
 }
@@ -113,6 +119,9 @@ static irqreturn_t timer_interrupt(int irq, void *dev_id)
 static struct irqaction irq0  = {
 	.handler = timer_interrupt,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags = IRQF_NOBALANCING | IRQF_TIMER,
 	.name = "timer"
 };
@@ -120,6 +129,8 @@ static struct irqaction irq0  = {
 void __init setup_pit_timer(void)
 {
 	clockevent_i8253_init(true);
+<<<<<<< HEAD
+=======
 =======
 	.flags = IRQF_DISABLED | IRQF_NOBALANCING | IRQF_TIMER,
 	.name = "timer"
@@ -145,6 +156,7 @@ void __init setup_pit_timer(void)
 	clockevents_register_device(cd);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	setup_irq(0, &irq0);
 }
 

@@ -34,9 +34,12 @@
 static void __iomem *jz_intc_base;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static uint32_t jz_intc_wakeup;
 static uint32_t jz_intc_saved;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define JZ_REG_INTC_STATUS	0x00
 #define JZ_REG_INTC_MASK	0x04
@@ -45,6 +48,9 @@ static uint32_t jz_intc_saved;
 #define JZ_REG_INTC_PENDING	0x10
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t jz4740_cascade(int irq, void *data)
 {
 	uint32_t irq_reg;
@@ -75,6 +81,8 @@ void jz4740_irq_resume(struct irq_data *data)
 {
 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(data);
 	jz4740_irq_set_mask(gc, gc->mask_cache);
+<<<<<<< HEAD
+=======
 =======
 #define IRQ_BIT(x) BIT((x) - JZ4740_IRQ_BASE)
 
@@ -122,6 +130,7 @@ static irqreturn_t jz4740_cascade(int irq, void *data)
 
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct irqaction jz4740_cascade_action = {
@@ -136,8 +145,14 @@ void __init arch_init_irq(void)
 	struct irq_chip_type *ct;
 
 =======
+<<<<<<< HEAD
+	struct irq_chip_generic *gc;
+	struct irq_chip_type *ct;
+
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mips_cpu_irq_init();
 
 	jz_intc_base = ioremap(JZ4740_INTC_BASE_ADDR, 0x14);
@@ -146,6 +161,9 @@ void __init arch_init_irq(void)
 	writel(0xffffffff, jz_intc_base + JZ_REG_INTC_SET_MASK);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gc = irq_alloc_generic_chip("INTC", 1, JZ4740_IRQ_BASE, jz_intc_base,
 		handle_level_irq);
 
@@ -162,12 +180,15 @@ void __init arch_init_irq(void)
 	ct->chip.irq_resume = jz4740_irq_resume;
 
 	irq_setup_generic_chip(gc, IRQ_MSK(32), 0, 0, IRQ_NOPROBE | IRQ_LEVEL);
+<<<<<<< HEAD
+=======
 =======
 	for (i = JZ4740_IRQ_BASE; i < JZ4740_IRQ_BASE + 32; i++) {
 		irq_set_chip_data(i, (void *)IRQ_BIT(i));
 		irq_set_chip_and_handler(i, &intc_irq_type, handle_level_irq);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setup_irq(2, &jz4740_cascade_action);
 }
@@ -185,6 +206,8 @@ asmlinkage void plat_irq_dispatch(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void jz4740_intc_suspend(void)
 {
 	jz_intc_saved = readl(jz_intc_base + JZ_REG_INTC_MASK);
@@ -199,6 +222,7 @@ void jz4740_intc_resume(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_FS
 
 static inline void intc_seq_reg(struct seq_file *s, const char *name,

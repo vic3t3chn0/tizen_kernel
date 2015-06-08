@@ -44,7 +44,12 @@
 #include "common.h"
 
 =======
+<<<<<<< HEAD
+#include "common.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UCON S3C2410_UCON_DEFAULT
 #define ULCON (S3C2410_LCON_CS8 | S3C2410_LCON_PNONE)
 #define UFCON (S3C2410_UFCON_RXTRIG8 | S3C2410_UFCON_FIFOMODE)
@@ -194,7 +199,12 @@ static struct s3c_hwmon_pdata smartq_hwmon_pdata __initdata = {
 static struct s3c_hsotg_plat smartq_hsotg_pdata;
 
 =======
+<<<<<<< HEAD
+static struct s3c_hsotg_plat smartq_hsotg_pdata;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init smartq_lcd_setup_gpio(void)
 {
 	int ret;
@@ -394,7 +404,11 @@ void __init smartq_machine_init(void)
 <<<<<<< HEAD
 	s3c_hsotg_set_platdata(&smartq_hsotg_pdata);
 =======
+<<<<<<< HEAD
+	s3c_hsotg_set_platdata(&smartq_hsotg_pdata);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s3c_hwmon_set_platdata(&smartq_hwmon_pdata);
 	s3c_sdhci1_set_platdata(&smartq_internal_hsmmc_pdata);
 	s3c_sdhci2_set_platdata(&smartq_internal_hsmmc_pdata);

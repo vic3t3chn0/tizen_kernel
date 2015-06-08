@@ -27,8 +27,12 @@
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/ipv6.h>
 #include <net/mld.h>
 #include <net/addrconf.h>
@@ -43,8 +47,12 @@
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int ipv6_is_transient_multicast(const struct in6_addr *addr)
 {
 	if (ipv6_addr_is_multicast(addr) && IPV6_ADDR_MC_FLAG_TRANSIENT(addr))
@@ -63,8 +71,12 @@ static inline int br_ip_equal(const struct br_ip *a, const struct br_ip *b)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case htons(ETH_P_IPV6):
 		return ipv6_addr_equal(&a->u.ip6, &b->u.ip6);
 #endif
@@ -80,8 +92,12 @@ static inline int __br_ip4_hash(struct net_bridge_mdb_htable *mdb, __be32 ip)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __br_ip6_hash(struct net_bridge_mdb_htable *mdb,
 				const struct in6_addr *ip)
 {
@@ -98,8 +114,12 @@ static inline int br_ip_hash(struct net_bridge_mdb_htable *mdb,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case htons(ETH_P_IPV6):
 		return __br_ip6_hash(mdb, &ip->u.ip6);
 #endif
@@ -144,8 +164,12 @@ static struct net_bridge_mdb_entry *br_mdb_ip4_get(
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct net_bridge_mdb_entry *br_mdb_ip6_get(
 	struct net_bridge_mdb_htable *mdb, const struct in6_addr *dst)
 {
@@ -154,8 +178,12 @@ static struct net_bridge_mdb_entry *br_mdb_ip6_get(
 <<<<<<< HEAD
 	br_dst.u.ip6 = *dst;
 =======
+<<<<<<< HEAD
+	br_dst.u.ip6 = *dst;
+=======
 	ipv6_addr_copy(&br_dst.u.ip6, dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_dst.proto = htons(ETH_P_IPV6);
 
 	return br_mdb_ip_get(mdb, &br_dst);
@@ -185,10 +213,16 @@ struct net_bridge_mdb_entry *br_mdb_get(struct net_bridge *br,
 	case htons(ETH_P_IPV6):
 		ip.u.ip6 = ipv6_hdr(skb)->daddr;
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+	case htons(ETH_P_IPV6):
+		ip.u.ip6 = ipv6_hdr(skb)->daddr;
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 	case htons(ETH_P_IPV6):
 		ipv6_addr_copy(&ip.u.ip6, &ipv6_hdr(skb)->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 #endif
 	default:
@@ -446,8 +480,12 @@ out:
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sk_buff *br_ip6_multicast_alloc_query(struct net_bridge *br,
 						    const struct in6_addr *group)
 {
@@ -509,10 +547,15 @@ static struct sk_buff *br_ip6_multicast_alloc_query(struct net_bridge *br,
 	interval = ipv6_addr_any(group) ? br->multicast_last_member_interval :
 					  br->multicast_query_response_interval;
 =======
+<<<<<<< HEAD
+	interval = ipv6_addr_any(group) ? br->multicast_last_member_interval :
+					  br->multicast_query_response_interval;
+=======
 	interval = ipv6_addr_any(group) ?
 			br->multicast_query_response_interval :
 			br->multicast_last_member_interval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mldq->mld_type = ICMPV6_MGM_QUERY;
 	mldq->mld_code = 0;
@@ -522,8 +565,12 @@ static struct sk_buff *br_ip6_multicast_alloc_query(struct net_bridge *br,
 <<<<<<< HEAD
 	mldq->mld_mca = *group;
 =======
+<<<<<<< HEAD
+	mldq->mld_mca = *group;
+=======
 	ipv6_addr_copy(&mldq->mld_mca, group);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* checksum */
 	mldq->mld_cksum = csum_ipv6_magic(&ip6h->saddr, &ip6h->daddr,
@@ -548,8 +595,12 @@ static struct sk_buff *br_multicast_alloc_query(struct net_bridge *br,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case htons(ETH_P_IPV6):
 		return br_ip6_multicast_alloc_query(br, &addr->u.ip6);
 #endif
@@ -757,8 +808,12 @@ static int br_ip4_multicast_add_group(struct net_bridge *br,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int br_ip6_multicast_add_group(struct net_bridge *br,
 				      struct net_bridge_port *port,
 				      const struct in6_addr *group)
@@ -771,8 +826,12 @@ static int br_ip6_multicast_add_group(struct net_bridge *br,
 <<<<<<< HEAD
 	br_group.u.ip6 = *group;
 =======
+<<<<<<< HEAD
+	br_group.u.ip6 = *group;
+=======
 	ipv6_addr_copy(&br_group.u.ip6, group);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_group.proto = htons(ETH_P_IPV6);
 
 	return br_multicast_add_group(br, port, &br_group);
@@ -837,8 +896,12 @@ static void br_multicast_send_query(struct net_bridge *br,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_group.proto = htons(ETH_P_IPV6);
 	__br_multicast_send_query(br, port, &br_group);
 #endif
@@ -985,8 +1048,12 @@ static int br_ip4_multicast_igmp3_report(struct net_bridge *br,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int br_ip6_multicast_mld2_report(struct net_bridge *br,
 					struct net_bridge_port *port,
 					struct sk_buff *skb)
@@ -1185,8 +1252,12 @@ out:
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int br_ip6_multicast_query(struct net_bridge *br,
 				  struct net_bridge_port *port,
 				  struct sk_buff *skb)
@@ -1229,9 +1300,13 @@ static int br_ip6_multicast_query(struct net_bridge *br,
 <<<<<<< HEAD
 		max_delay = mld2q->mld2q_mrc ? MLDV2_MRC(mld2q->mld2q_mrc) : 1;
 =======
+<<<<<<< HEAD
+		max_delay = mld2q->mld2q_mrc ? MLDV2_MRC(mld2q->mld2q_mrc) : 1;
+=======
 
 		max_delay = max(msecs_to_jiffies(MLDV2_MRC(ntohs(mld2q->mld2q_mrc))), 1UL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!group)
@@ -1337,8 +1412,12 @@ static void br_ip4_multicast_leave_group(struct net_bridge *br,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void br_ip6_multicast_leave_group(struct net_bridge *br,
 					 struct net_bridge_port *port,
 					 const struct in6_addr *group)
@@ -1351,8 +1430,12 @@ static void br_ip6_multicast_leave_group(struct net_bridge *br,
 <<<<<<< HEAD
 	br_group.u.ip6 = *group;
 =======
+<<<<<<< HEAD
+	br_group.u.ip6 = *group;
+=======
 	ipv6_addr_copy(&br_group.u.ip6, group);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	br_group.proto = htons(ETH_P_IPV6);
 
 	br_multicast_leave_group(br, port, &br_group);
@@ -1460,8 +1543,12 @@ err_out:
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int br_multicast_ipv6_rcv(struct net_bridge *br,
 				 struct net_bridge_port *port,
 				 struct sk_buff *skb)
@@ -1473,7 +1560,11 @@ static int br_multicast_ipv6_rcv(struct net_bridge *br,
 <<<<<<< HEAD
 	__be16 frag_off;
 =======
+<<<<<<< HEAD
+	__be16 frag_off;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned len;
 	int offset;
 	int err;
@@ -1502,8 +1593,12 @@ static int br_multicast_ipv6_rcv(struct net_bridge *br,
 <<<<<<< HEAD
 	offset = ipv6_skip_exthdr(skb, sizeof(*ip6h), &nexthdr, &frag_off);
 =======
+<<<<<<< HEAD
+	offset = ipv6_skip_exthdr(skb, sizeof(*ip6h), &nexthdr, &frag_off);
+=======
 	offset = ipv6_skip_exthdr(skb, sizeof(*ip6h), &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (offset < 0 || nexthdr != IPPROTO_ICMPV6)
 		return 0;
@@ -1525,7 +1620,12 @@ static int br_multicast_ipv6_rcv(struct net_bridge *br,
 	skb_postpull_rcsum(skb2, skb_network_header(skb2),
 			   skb_network_header_len(skb2));
 =======
+<<<<<<< HEAD
+	skb_postpull_rcsum(skb2, skb_network_header(skb2),
+			   skb_network_header_len(skb2));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	icmp6_type = icmp6_hdr(skb2)->icmp6_type;
 
@@ -1621,8 +1721,12 @@ int br_multicast_rcv(struct net_bridge *br, struct net_bridge_port *port,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case htons(ETH_P_IPV6):
 		return br_multicast_ipv6_rcv(br, port, skb);
 #endif
@@ -1801,8 +1905,12 @@ int br_multicast_toggle(struct net_bridge *br, unsigned long val)
 <<<<<<< HEAD
 	spin_lock_bh(&br->multicast_lock);
 =======
+<<<<<<< HEAD
+	spin_lock_bh(&br->multicast_lock);
+=======
 	spin_lock(&br->multicast_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (br->multicast_disabled == !val)
 		goto unlock;
 
@@ -1841,8 +1949,12 @@ unlock:
 <<<<<<< HEAD
 	spin_unlock_bh(&br->multicast_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock_bh(&br->multicast_lock);
+=======
 	spin_unlock(&br->multicast_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }

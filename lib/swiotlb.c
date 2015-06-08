@@ -23,8 +23,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spinlock.h>
 #include <linux/string.h>
 #include <linux/swiotlb.h>
@@ -115,11 +119,16 @@ __setup("swiotlb=", setup_io_tlb_npages);
 /* make io_tlb_overflow tunable too? */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long swiotlb_nr_tbl(void)
 {
 	return io_tlb_nslabs;
 }
 EXPORT_SYMBOL_GPL(swiotlb_nr_tbl);
+<<<<<<< HEAD
+=======
 =======
 unsigned long swioltb_nr_tbl(void)
 {
@@ -127,6 +136,7 @@ unsigned long swioltb_nr_tbl(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Note that this doesn't work with highmem page */
 static dma_addr_t swiotlb_virt_to_bus(struct device *hwdev,
 				      volatile void *address)
@@ -336,7 +346,11 @@ void __init swiotlb_free(void)
 <<<<<<< HEAD
 	io_tlb_nslabs = 0;
 =======
+<<<<<<< HEAD
+	io_tlb_nslabs = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int is_swiotlb_buffer(phys_addr_t paddr)
@@ -367,9 +381,13 @@ void swiotlb_bounce(phys_addr_t phys, char *dma_addr, size_t size,
 <<<<<<< HEAD
 			buffer = kmap_atomic(pfn_to_page(pfn));
 =======
+<<<<<<< HEAD
+			buffer = kmap_atomic(pfn_to_page(pfn));
+=======
 			buffer = kmap_atomic(pfn_to_page(pfn),
 					     KM_BOUNCE_READ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dir == DMA_TO_DEVICE)
 				memcpy(dma_addr, buffer + offset, sz);
 			else
@@ -377,8 +395,12 @@ void swiotlb_bounce(phys_addr_t phys, char *dma_addr, size_t size,
 <<<<<<< HEAD
 			kunmap_atomic(buffer);
 =======
+<<<<<<< HEAD
+			kunmap_atomic(buffer);
+=======
 			kunmap_atomic(buffer, KM_BOUNCE_READ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			local_irq_restore(flags);
 
 			size -= sz;

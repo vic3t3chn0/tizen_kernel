@@ -34,7 +34,11 @@
 <<<<<<< HEAD
 #include <linux/rtc.h>
 =======
+<<<<<<< HEAD
+#include <linux/rtc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/setup.h>
 #include <asm/irq.h>
@@ -43,7 +47,11 @@
 <<<<<<< HEAD
 #include <asm/sections.h>
 =======
+<<<<<<< HEAD
+#include <asm/sections.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned long memory_start;
 unsigned long memory_end;
@@ -59,9 +67,15 @@ void (*mach_sched_init)(irq_handler_t handler) __initdata = NULL;
 int (*mach_set_clock_mmss)(unsigned long);
 int (*mach_hwclk) (int, struct rtc_time*);
 =======
+<<<<<<< HEAD
+void (*mach_sched_init)(irq_handler_t handler) __initdata = NULL;
+int (*mach_set_clock_mmss)(unsigned long);
+int (*mach_hwclk) (int, struct rtc_time*);
+=======
 void (*mach_gettod)(int*, int*, int*, int*, int*, int*);
 int (*mach_set_clock_mmss)(unsigned long);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* machine dependent reboot functions */
 void (*mach_reset)(void);
@@ -96,10 +110,13 @@ void (*mach_power_off)(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int _stext, _etext, _sdata, _edata, _sbss, _ebss, _end;
 extern int _ramstart, _ramend;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_UBOOT)
 /*
  * parse_uboot_commandline

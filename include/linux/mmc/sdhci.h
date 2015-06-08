@@ -12,9 +12,14 @@
 #ifndef LINUX_MMC_SDHCI_H
 #define LINUX_MMC_SDHCI_H
 =======
+<<<<<<< HEAD
+#ifndef LINUX_MMC_SDHCI_H
+#define LINUX_MMC_SDHCI_H
+=======
 #ifndef __SDHCI_H
 #define __SDHCI_H
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/scatterlist.h>
 #include <linux/compiler.h>
@@ -22,6 +27,9 @@
 #include <linux/io.h>
 #include <linux/mmc/host.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pm_qos.h>
 
 struct sdhci_next {
@@ -33,8 +41,11 @@ enum sdhci_power_policy {
 	SDHCI_PERFORMANCE_MODE,
 	SDHCI_POWER_SAVE_MODE,
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct sdhci_host {
 	/* Data set by hardware interface driver */
@@ -108,6 +119,9 @@ struct sdhci_host {
 #define SDHCI_QUIRK_UNSTABLE_RO_DETECT			(1<<31)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int quirks2;	/* More deviations from spec. */
 
 #define SDHCI_QUIRK2_HOST_OFF_CARD_ON			(1<<0)
@@ -169,8 +183,11 @@ struct sdhci_host {
  */
 #define SDHCI_QUIRK2_DIVIDE_TOUT_BY_4 (1 << 9)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int irq;		/* Device IRQ */
 	void __iomem *ioaddr;	/* Mapped address */
 
@@ -179,8 +196,11 @@ struct sdhci_host {
 	struct regulator *vmmc;	/* Power regulator */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	char *vmmc_name;	/* Power regulator's name */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Internal data */
 	struct mmc_host *mmc;	/* MMC structure */
@@ -203,12 +223,18 @@ struct sdhci_host {
 #define SDHCI_AUTO_CMD12	(1<<6)	/* Auto CMD12 support */
 #define SDHCI_AUTO_CMD23	(1<<7)	/* Auto CMD23 support */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SDHCI_PV_ENABLED	(1<<8)	/* Preset value enabled */
 #define SDHCI_SDIO_IRQ_ENABLED	(1<<9)	/* SDIO irq enabled */
 #define SDHCI_HS200_NEEDS_TUNING (1<<10)	/* HS200 needs tuning */
 #define SDHCI_HS400_NEEDS_TUNING (1<<11)	/* HS400 needs tuning */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int version;	/* SDHCI spec. version */
 
@@ -223,7 +249,12 @@ struct sdhci_host {
 	bool runtime_suspended;	/* Host is runtime suspended */
 
 =======
+<<<<<<< HEAD
+	bool runtime_suspended;	/* Host is runtime suspended */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mmc_request *mrq;	/* Current request */
 	struct mmc_command *cmd;	/* Current command */
 	struct mmc_data *data;	/* Current data request */
@@ -238,12 +269,18 @@ struct sdhci_host {
 	u8 *align_buffer;	/* Bounce buffer */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int adma_desc_sz; /* ADMA descriptor table size */
 	unsigned int align_buf_sz; /* Bounce buffer size */
 	unsigned int adma_max_desc; /* Max ADMA descriptos (max sg segments) */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_addr_t adma_addr;	/* Mapped ADMA descr. table */
 	dma_addr_t align_addr;	/* Mapped bounce buffer */
 
@@ -267,6 +304,9 @@ struct sdhci_host {
 	struct timer_list	tuning_timer;	/* Timer for tuning */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int cpu_dma_latency_us;
 	struct pm_qos_request pm_qos_req_dma;
 	unsigned int pm_qos_timeout_us;         /* timeout for PM QoS request */
@@ -281,8 +321,11 @@ struct sdhci_host {
 	unsigned long private[0] ____cacheline_aligned;
 };
 #endif /* LINUX_MMC_SDHCI_H */
+<<<<<<< HEAD
+=======
 =======
 	unsigned long private[0] ____cacheline_aligned;
 };
 #endif /* __SDHCI_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

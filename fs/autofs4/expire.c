@@ -62,6 +62,9 @@ static int autofs4_mount_busy(struct vfsmount *mnt, struct dentry *dentry)
 		if (autofs_type_indirect(sbi->type))
 			goto done;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Otherwise it's an offset mount and we need to check
@@ -71,8 +74,11 @@ static int autofs4_mount_busy(struct vfsmount *mnt, struct dentry *dentry)
 			status = 0;
 			goto done;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Update the expiry counter if fs is busy */
@@ -130,7 +136,11 @@ start:
 <<<<<<< HEAD
 		lock_set_subclass(&q->d_lock.dep_map, 0, _RET_IP_);
 =======
+<<<<<<< HEAD
+		lock_set_subclass(&q->d_lock.dep_map, 0, _RET_IP_);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p = q;
 		goto again;
 	}
@@ -196,7 +206,11 @@ again:
 <<<<<<< HEAD
 		lock_set_subclass(&ret->d_lock.dep_map, 0, _RET_IP_);
 =======
+<<<<<<< HEAD
+		lock_set_subclass(&ret->d_lock.dep_map, 0, _RET_IP_);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p = ret;
 		goto again;
 	}

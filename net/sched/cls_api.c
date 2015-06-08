@@ -45,10 +45,16 @@ static const struct tcf_proto_ops *tcf_proto_lookup_ops(struct nlattr *kind)
 {
 	const struct tcf_proto_ops *t = NULL;
 =======
+<<<<<<< HEAD
+static const struct tcf_proto_ops *tcf_proto_lookup_ops(struct nlattr *kind)
+{
+	const struct tcf_proto_ops *t = NULL;
+=======
 static struct tcf_proto_ops *tcf_proto_lookup_ops(struct nlattr *kind)
 {
 	struct tcf_proto_ops *t = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (kind) {
 		read_lock(&cls_mod_lock);
@@ -141,8 +147,12 @@ static int tc_ctl_tfilter(struct sk_buff *skb, struct nlmsghdr *n, void *arg)
 <<<<<<< HEAD
 	const struct tcf_proto_ops *tp_ops;
 =======
+<<<<<<< HEAD
+	const struct tcf_proto_ops *tp_ops;
+=======
 	struct tcf_proto_ops *tp_ops;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct Qdisc_class_ops *cops;
 	unsigned long cl;
 	unsigned long fh;

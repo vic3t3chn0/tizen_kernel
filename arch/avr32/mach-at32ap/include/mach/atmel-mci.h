@@ -16,6 +16,8 @@ struct mci_dma_data {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define	setup_dma_addr(s, t, r)	do {		\
 	if (s) {				\
 		(s)->sdata.tx_reg = (t);	\
@@ -24,4 +26,5 @@ struct mci_dma_data {
 } while (0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __MACH_ATMEL_MCI_H */

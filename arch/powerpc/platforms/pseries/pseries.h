@@ -51,8 +51,13 @@ extern unsigned long rtas_poweron_auto;
 /* Provided by HVC VIO */
 extern void hvc_vio_init_early(void);
 =======
+<<<<<<< HEAD
+/* Provided by HVC VIO */
+extern void hvc_vio_init_early(void);
+=======
 extern void find_udbg_vterm(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Dynamic logical Partitioning/Mobility */
 extern void dlpar_free_cc_nodes(struct device_node *);
@@ -66,5 +71,11 @@ extern int dlpar_detach_node(struct device_node *);
 DECLARE_PER_CPU(long, smt_snooze_delay);
 
 =======
+<<<<<<< HEAD
+/* Snooze Delay, pseries_idle */
+DECLARE_PER_CPU(long, smt_snooze_delay);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _PSERIES_PSERIES_H */

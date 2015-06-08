@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2007-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2007-2013, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2007 QUALCOMM Incorporated
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -21,6 +25,9 @@
 #define _ARCH_ARM_MACH_MSM_MSM_SMD_PRIVATE_H_
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/spinlock.h>
 #include <linux/errno.h>
@@ -29,6 +36,8 @@
 #include <linux/interrupt.h>
 #include <mach/msm_smsm.h>
 #include <mach/msm_smd.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/platform_device.h>
 #include <linux/spinlock.h>
@@ -58,20 +67,27 @@ struct smem_proc_comm {
 	unsigned data2;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PC_APPS  0
 #define PC_MODEM 1
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define VERSION_SMD       0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VERSION_QDSP6     4
 #define VERSION_APPS_SBL  6
 #define VERSION_MODEM_SBL 7
 #define VERSION_APPS      8
 #define VERSION_MODEM     9
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VERSION_DSPS      10
 
 #if defined(CONFIG_MSM_SMD_PKG4)
@@ -94,6 +110,8 @@ struct smsm_interrupt_info {
 /* Don't trigger the error */
 #else
 #error No SMD Package Specified; aborting
+<<<<<<< HEAD
+=======
 =======
 
 struct smem_shared {
@@ -128,6 +146,7 @@ struct msm_dem_slave_data {
 	uint32_t reserved2;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #define SZ_DIAG_ERR_MSG 0xC8
@@ -137,6 +156,9 @@ struct msm_dem_slave_data {
 #define ID_CH_ALLOC_TBL SMEM_CHANNEL_ALLOC_TBL
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SMD_SS_CLOSED            0x00000000
 #define SMD_SS_OPENING           0x00000001
 #define SMD_SS_OPENED            0x00000002
@@ -165,6 +187,8 @@ struct smd_alloc_elm {
 #define SMD_CHANNEL_TYPE(x) ((x) & 0x000000FF)
 #define SMD_XFER_TYPE(x)    (((x) & 0x00000F00) >> 8)
 
+<<<<<<< HEAD
+=======
 =======
 #define SMSM_INIT		0x00000001
 #define SMSM_SMDINIT		0x00000008
@@ -328,6 +352,7 @@ struct smd_alloc_elm {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct smd_half_channel {
 	unsigned state;
 	unsigned char fDSR;
@@ -338,6 +363,9 @@ struct smd_half_channel {
 	unsigned char fTAIL;
 	unsigned char fSTATE;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char fBLOCKREADINTR;
 	unsigned tail;
 	unsigned head;
@@ -509,6 +537,8 @@ extern void smd_set_edge_subsys_name(uint32_t edge, const char *subsys_name);
 extern void smd_set_edge_initialized(uint32_t edge);
 extern void smd_cfg_smd_intr(uint32_t proc, uint32_t mask, void *ptr);
 extern void smd_cfg_smsm_intr(uint32_t proc, uint32_t mask, void *ptr);
+<<<<<<< HEAD
+=======
 =======
 	unsigned char fUNUSED;
 	unsigned tail;
@@ -648,4 +678,5 @@ static inline void msm_a2m_int(uint32_t irq)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

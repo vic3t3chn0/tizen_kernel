@@ -10,7 +10,13 @@
 #define _LINUX_CUDA_H
 
 =======
+<<<<<<< HEAD
+#ifndef _LINUX_CUDA_H
+#define _LINUX_CUDA_H
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* CUDA commands (2nd byte) */
 #define CUDA_WARM_START		0
 #define CUDA_AUTOPOLL		1
@@ -44,4 +50,9 @@ extern void cuda_poll(void);
 
 #endif /* _LINUX_CUDA_H */
 =======
+<<<<<<< HEAD
+
+#endif /* _LINUX_CUDA_H */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

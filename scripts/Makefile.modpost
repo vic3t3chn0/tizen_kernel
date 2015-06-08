@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #   Version magic (see include/linux/vermagic.h for full details)
 =======
+<<<<<<< HEAD
+#   Version magic (see include/linux/vermagic.h for full details)
+=======
 #   Version magic (see include/vermagic.h for full details)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #     - Kernel release
 #     - SMP is CONFIG_SMP
 #     - PREEMPT is CONFIG_PREEMPT
@@ -87,7 +91,11 @@ modpost = scripts/mod/modpost                    \
 <<<<<<< HEAD
  $(if $(CONFIG_NO_ERROR_ON_MISMATCH),,-E)	 \
 =======
+<<<<<<< HEAD
+ $(if $(CONFIG_NO_ERROR_ON_MISMATCH),,-E)	 \
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  $(if $(KBUILD_EXTMOD)$(KBUILD_MODPOST_WARN),-w) \
  $(if $(cross_build),-c)
 

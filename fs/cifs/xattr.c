@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/xattr.h>
 =======
+<<<<<<< HEAD
+#include <linux/xattr.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cifsfs.h"
 #include "cifspdu.h"
 #include "cifsglob.h"
@@ -35,6 +39,11 @@
 #define MAX_EA_VALUE_SIZE 65535
 #define CIFS_XATTR_DOS_ATTRIB "user.DosAttrib"
 #define CIFS_XATTR_CIFS_ACL "system.cifs_acl"
+<<<<<<< HEAD
+
+/* BB need to add server (Samba e.g) support for security and trusted prefix */
+
+=======
 <<<<<<< HEAD
 
 /* BB need to add server (Samba e.g) support for security and trusted prefix */
@@ -52,6 +61,7 @@
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int cifs_removexattr(struct dentry *direntry, const char *ea_name)
 {
 	int rc = -EOPNOTSUPP;
@@ -90,9 +100,14 @@ int cifs_removexattr(struct dentry *direntry, const char *ea_name)
 	} else if (strncmp(ea_name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN)
 		&& (strncmp(ea_name, XATTR_OS2_PREFIX, XATTR_OS2_PREFIX_LEN))) {
 =======
+<<<<<<< HEAD
+	} else if (strncmp(ea_name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN)
+		&& (strncmp(ea_name, XATTR_OS2_PREFIX, XATTR_OS2_PREFIX_LEN))) {
+=======
 	} else if (strncmp(ea_name, CIFS_XATTR_USER_PREFIX, 5)
 		&& (strncmp(ea_name, CIFS_XATTR_OS2_PREFIX, 4))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cFYI(1,
 		     "illegal xattr request %s (only user namespace supported)",
 		     ea_name);
@@ -106,8 +121,12 @@ int cifs_removexattr(struct dentry *direntry, const char *ea_name)
 <<<<<<< HEAD
 		ea_name += XATTR_USER_PREFIX_LEN; /* skip past user. prefix */
 =======
+<<<<<<< HEAD
+		ea_name += XATTR_USER_PREFIX_LEN; /* skip past user. prefix */
+=======
 		ea_name += 5; /* skip past user. prefix */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = CIFSSMBSetEA(xid, pTcon, full_path, ea_name, NULL,
 			(__u16)0, cifs_sb->local_nls,
 			cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MAP_SPECIAL_CHR);
@@ -133,8 +152,11 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 	char *full_path;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct cifs_ntsd *pacl;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (direntry == NULL)
 		return -EIO;
@@ -175,14 +197,22 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 	} else if (strncmp(ea_name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN)
 		   == 0) {
 =======
+<<<<<<< HEAD
+	} else if (strncmp(ea_name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN)
+		   == 0) {
+=======
 	} else if (strncmp(ea_name, CIFS_XATTR_USER_PREFIX, 5) == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_NO_XATTR)
 			goto set_ea_exit;
 		if (strncmp(ea_name, CIFS_XATTR_DOS_ATTRIB, 14) == 0)
 			cFYI(1, "attempt to set cifs inode metadata");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ea_name += XATTR_USER_PREFIX_LEN; /* skip past user. prefix */
 		rc = CIFSSMBSetEA(xid, pTcon, full_path, ea_name, ea_value,
 			(__u16)value_size, cifs_sb->local_nls,
@@ -193,6 +223,8 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 			goto set_ea_exit;
 
 		ea_name += XATTR_OS2_PREFIX_LEN; /* skip past os2. prefix */
+<<<<<<< HEAD
+=======
 =======
 		ea_name += 5; /* skip past user. prefix */
 		rc = CIFSSMBSetEA(xid, pTcon, full_path, ea_name, ea_value,
@@ -204,6 +236,7 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 
 		ea_name += 4; /* skip past os2. prefix */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = CIFSSMBSetEA(xid, pTcon, full_path, ea_name, ea_value,
 			(__u16)value_size, cifs_sb->local_nls,
 			cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MAP_SPECIAL_CHR);
@@ -213,7 +246,12 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 #ifdef CONFIG_CIFS_ACL
 		struct cifs_ntsd *pacl;
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_CIFS_ACL
+		struct cifs_ntsd *pacl;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pacl = kmalloc(value_size, GFP_KERNEL);
 		if (!pacl) {
 			cFYI(1, "%s: Can't allocate memory for ACL",
@@ -221,6 +259,9 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 			rc = -ENOMEM;
 		} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			memcpy(pacl, ea_value, value_size);
 			rc = set_cifs_acl(pacl, value_size,
 				direntry->d_inode, full_path, CIFS_ACL_DACL);
@@ -231,6 +272,8 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 #else
 			cFYI(1, "Set CIFS ACL not supported yet");
 #endif /* CONFIG_CIFS_ACL */
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CIFS_ACL
 			memcpy(pacl, ea_value, value_size);
@@ -244,6 +287,7 @@ int cifs_setxattr(struct dentry *direntry, const char *ea_name,
 #endif /* CONFIG_CIFS_ACL */
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		int temp;
 		temp = strncmp(ea_name, POSIX_ACL_XATTR_ACCESS,
@@ -331,8 +375,13 @@ ssize_t cifs_getxattr(struct dentry *direntry, const char *ea_name,
 	} else if (strncmp(ea_name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN)
 		   == 0) {
 =======
+<<<<<<< HEAD
+	} else if (strncmp(ea_name, XATTR_USER_PREFIX, XATTR_USER_PREFIX_LEN)
+		   == 0) {
+=======
 	} else if (strncmp(ea_name, CIFS_XATTR_USER_PREFIX, 5) == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_NO_XATTR)
 			goto get_ea_exit;
 
@@ -341,6 +390,9 @@ ssize_t cifs_getxattr(struct dentry *direntry, const char *ea_name,
 			/* revalidate/getattr then populate from inode */
 		} /* BB add else when above is implemented */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ea_name += XATTR_USER_PREFIX_LEN; /* skip past user. prefix */
 		rc = CIFSSMBQAllEAs(xid, pTcon, full_path, ea_name, ea_value,
 			buf_size, cifs_sb->local_nls,
@@ -350,6 +402,8 @@ ssize_t cifs_getxattr(struct dentry *direntry, const char *ea_name,
 			goto get_ea_exit;
 
 		ea_name += XATTR_OS2_PREFIX_LEN; /* skip past os2. prefix */
+<<<<<<< HEAD
+=======
 =======
 		ea_name += 5; /* skip past user. prefix */
 		rc = CIFSSMBQAllEAs(xid, pTcon, full_path, ea_name, ea_value,
@@ -361,6 +415,7 @@ ssize_t cifs_getxattr(struct dentry *direntry, const char *ea_name,
 
 		ea_name += 4; /* skip past os2. prefix */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = CIFSSMBQAllEAs(xid, pTcon, full_path, ea_name, ea_value,
 			buf_size, cifs_sb->local_nls,
 			cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MAP_SPECIAL_CHR);
@@ -415,16 +470,22 @@ ssize_t cifs_getxattr(struct dentry *direntry, const char *ea_name,
 #endif /* CONFIG_CIFS_ACL */
 	} else if (strncmp(ea_name,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  XATTR_TRUSTED_PREFIX, XATTR_TRUSTED_PREFIX_LEN) == 0) {
 		cFYI(1, "Trusted xattr namespace not supported yet");
 	} else if (strncmp(ea_name,
 		  XATTR_SECURITY_PREFIX, XATTR_SECURITY_PREFIX_LEN) == 0) {
+<<<<<<< HEAD
+=======
 =======
 		  CIFS_XATTR_TRUSTED_PREFIX, XATTR_TRUSTED_PREFIX_LEN) == 0) {
 		cFYI(1, "Trusted xattr namespace not supported yet");
 	} else if (strncmp(ea_name,
 		  CIFS_XATTR_SECURITY_PREFIX, XATTR_SECURITY_PREFIX_LEN) == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cFYI(1, "Security xattr namespace not supported yet");
 	} else
 		cFYI(1,

@@ -21,11 +21,16 @@
 #include <linux/atomic.h>
 #include <asm/ptrace.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <asm/ptrace.h>
+=======
 #include <asm/atomic.h>
 #include <asm/ptrace.h>
 #include <asm/system.h>
 #include <trace/events/irq.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These correspond to the IORESOURCE_IRQ_* defines in
@@ -106,7 +111,11 @@ typedef irqreturn_t (*irq_handler_t)(int, void *);
 <<<<<<< HEAD
  * @percpu_dev_id:	cookie to identify the device
 =======
+<<<<<<< HEAD
+ * @percpu_dev_id:	cookie to identify the device
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @next:	pointer to the next irqaction for shared interrupts
  * @irq:	interrupt number
  * @dir:	pointer to the proc/irq/NN/name entry
@@ -117,6 +126,9 @@ typedef irqreturn_t (*irq_handler_t)(int, void *);
  */
 struct irqaction {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_handler_t		handler;
 	unsigned long		flags;
 	void			*dev_id;
@@ -129,6 +141,8 @@ struct irqaction {
 	unsigned long		thread_mask;
 	const char		*name;
 	struct proc_dir_entry	*dir;
+<<<<<<< HEAD
+=======
 =======
 	irq_handler_t handler;
 	unsigned long flags;
@@ -142,6 +156,7 @@ struct irqaction {
 	const char *name;
 	struct proc_dir_entry *dir;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } ____cacheline_internodealigned_in_smp;
 
 extern irqreturn_t no_action(int cpl, void *dev_id);
@@ -164,12 +179,18 @@ request_any_context_irq(unsigned int irq, irq_handler_t handler,
 			unsigned long flags, const char *name, void *dev_id);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int __must_check
 request_percpu_irq(unsigned int irq, irq_handler_t handler,
 		   const char *devname, void __percpu *percpu_dev_id);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void exit_irq_thread(void);
 #else
 
@@ -199,6 +220,9 @@ request_any_context_irq(unsigned int irq, irq_handler_t handler,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __must_check
 request_percpu_irq(unsigned int irq, irq_handler_t handler,
 		   const char *devname, void __percpu *percpu_dev_id)
@@ -206,8 +230,11 @@ request_percpu_irq(unsigned int irq, irq_handler_t handler,
 	return request_irq(irq, handler, 0, devname, percpu_dev_id);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void exit_irq_thread(void) { }
 #endif
 
@@ -215,7 +242,11 @@ extern void free_irq(unsigned int, void *);
 <<<<<<< HEAD
 extern void free_percpu_irq(unsigned int, void __percpu *);
 =======
+<<<<<<< HEAD
+extern void free_percpu_irq(unsigned int, void __percpu *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct device;
 
@@ -260,8 +291,14 @@ extern void disable_percpu_irq(unsigned int irq);
 extern void enable_irq(unsigned int irq);
 extern void enable_percpu_irq(unsigned int irq, unsigned int type);
 =======
+<<<<<<< HEAD
+extern void disable_percpu_irq(unsigned int irq);
+extern void enable_irq(unsigned int irq);
+extern void enable_percpu_irq(unsigned int irq, unsigned int type);
+=======
 extern void enable_irq(unsigned int irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The following three functions are for the core kernel use only. */
 #ifdef CONFIG_GENERIC_HARDIRQS
@@ -394,7 +431,11 @@ extern int irq_set_irq_wake(unsigned int irq, unsigned int on);
 <<<<<<< HEAD
 extern int irq_read_line(unsigned int irq);
 =======
+<<<<<<< HEAD
+extern int irq_read_line(unsigned int irq);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int enable_irq_wake(unsigned int irq)
 {
@@ -498,12 +539,16 @@ extern void softirq_init(void);
 <<<<<<< HEAD
 extern void __raise_softirq_irqoff(unsigned int nr);
 =======
+<<<<<<< HEAD
+extern void __raise_softirq_irqoff(unsigned int nr);
+=======
 static inline void __raise_softirq_irqoff(unsigned int nr)
 {
 	trace_softirq_raise(nr);
 	or_softirq_pending(1UL << nr);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void raise_softirq_irqoff(unsigned int nr);
 extern void raise_softirq(unsigned int nr);
@@ -751,6 +796,10 @@ extern int arch_early_irq_init(void);
 <<<<<<< HEAD
 extern void irq_set_pending(unsigned int irq);
 =======
+<<<<<<< HEAD
+extern void irq_set_pending(unsigned int irq);
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

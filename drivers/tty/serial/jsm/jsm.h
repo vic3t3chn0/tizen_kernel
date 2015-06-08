@@ -88,7 +88,14 @@ enum {
 
 /* 4 extra for alignment play space */
 #define WRITEBUFLEN	((4096) + 4)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define MYFLIPLEN	N_TTY_BUF_SIZE
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MYFLIPLEN	N_TTY_BUF_SIZE
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define JSM_VERSION	"jsm: 1.2-1-INKERNEL"
 #define JSM_PARTNUM	"40002438_A-INKERNEL"
@@ -150,7 +157,14 @@ struct jsm_board
 	u32		bd_uart_offset;	/* Space between each UART */
 
 	struct jsm_channel *channels[MAXPORTS]; /* array of pointers to our channels. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	char		*flipbuf;	/* Our flip buffer, alloced if board is found */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	char		*flipbuf;	/* Our flip buffer, alloced if board is found */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u32		bd_dividend;	/* Board/UARTs specific dividend */
 
@@ -177,7 +191,14 @@ struct jsm_board
 #define CH_TX_FIFO_LWM	0x0800		/* TX Fifo is below Low Water	*/
 #define CH_BREAK_SENDING 0x1000		/* Break is being sent		*/
 #define CH_LOOPBACK 0x2000		/* Channel is in lookback mode	*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define CH_FLIPBUF_IN_USE 0x4000	/* Channel's flipbuf is in use	*/
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define CH_FLIPBUF_IN_USE 0x4000	/* Channel's flipbuf is in use	*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CH_BAUD0	0x08000		/* Used for checking B0 transitions */
 
 /* Our Read/Error/Write queue sizes */

@@ -74,7 +74,15 @@ static inline struct ioat2_dma_chan *to_ioat2_chan(struct dma_chan *c)
 	return container_of(chan, struct ioat2_dma_chan, base);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline u32 ioat2_ring_size(struct ioat2_dma_chan *ioat)
+=======
 static inline u16 ioat2_ring_size(struct ioat2_dma_chan *ioat)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static inline u16 ioat2_ring_size(struct ioat2_dma_chan *ioat)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 1 << ioat->alloc_order;
 }
@@ -91,7 +99,15 @@ static inline u16 ioat2_ring_pending(struct ioat2_dma_chan *ioat)
 	return CIRC_CNT(ioat->head, ioat->issued, ioat2_ring_size(ioat));
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline u32 ioat2_ring_space(struct ioat2_dma_chan *ioat)
+=======
 static inline u16 ioat2_ring_space(struct ioat2_dma_chan *ioat)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static inline u16 ioat2_ring_space(struct ioat2_dma_chan *ioat)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return ioat2_ring_size(ioat) - ioat2_ring_active(ioat);
 }

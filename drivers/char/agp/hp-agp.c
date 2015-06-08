@@ -336,7 +336,16 @@ hp_zx1_insert_memory (struct agp_memory *mem, off_t pg_start, int type)
 	off_t j, io_pg_start;
 	int io_pg_count;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (type != mem->type ||
+		agp_bridge->driver->agp_type_to_mask_type(agp_bridge, type)) {
+=======
 	if (type != 0 || mem->type != 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (type != 0 || mem->type != 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -380,7 +389,16 @@ hp_zx1_remove_memory (struct agp_memory *mem, off_t pg_start, int type)
 	struct _hp_private *hp = &hp_private;
 	int i, io_pg_start, io_pg_count;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (type != mem->type ||
+		agp_bridge->driver->agp_type_to_mask_type(agp_bridge, type)) {
+=======
 	if (type != 0 || mem->type != 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (type != 0 || mem->type != 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 

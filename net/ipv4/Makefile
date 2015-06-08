@@ -38,7 +38,11 @@ obj-$(CONFIG_INET_TCP_DIAG) += tcp_diag.o
 <<<<<<< HEAD
 obj-$(CONFIG_INET_UDP_DIAG) += udp_diag.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_INET_UDP_DIAG) += udp_diag.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_NET_TCPPROBE) += tcp_probe.o
 obj-$(CONFIG_TCP_CONG_BIC) += tcp_bic.o
 obj-$(CONFIG_TCP_CONG_CUBIC) += tcp_cubic.o
@@ -55,7 +59,11 @@ obj-$(CONFIG_TCP_CONG_ILLINOIS) += tcp_illinois.o
 <<<<<<< HEAD
 obj-$(CONFIG_CGROUP_MEM_RES_CTLR_KMEM) += tcp_memcontrol.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_CGROUP_MEM_RES_CTLR_KMEM) += tcp_memcontrol.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_NETLABEL) += cipso_ipv4.o
 
 obj-$(CONFIG_XFRM) += xfrm4_policy.o xfrm4_state.o xfrm4_input.o \

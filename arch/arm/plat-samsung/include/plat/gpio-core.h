@@ -26,6 +26,9 @@
 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct samsung_gpio_chip;
 
 /**
@@ -42,6 +45,8 @@ struct samsung_gpio_cfg;
 
 /**
  * struct samsung_gpio_chip - wrapper for specific implementation of gpio
+<<<<<<< HEAD
+=======
 =======
 struct s3c_gpio_chip;
 
@@ -60,6 +65,7 @@ struct s3c_gpio_cfg;
 /**
  * struct s3c_gpio_chip - wrapper for specific implementation of gpio
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @chip: The chip structure to be exported via gpiolib.
  * @base: The base pointer to the gpio configuration registers.
  * @group: The group register number for gpio interrupt support.
@@ -80,6 +86,9 @@ struct s3c_gpio_cfg;
  * bank of GPIO has its own register space and configuration registers.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct samsung_gpio_chip {
 	struct gpio_chip	chip;
 	struct samsung_gpio_cfg	*config;
@@ -88,6 +97,8 @@ struct samsung_gpio_chip {
 	int			irq_base;
 	int			group;
 	spinlock_t		 lock;
+<<<<<<< HEAD
+=======
 =======
 struct s3c_gpio_chip {
 	struct gpio_chip	chip;
@@ -99,17 +110,23 @@ struct s3c_gpio_chip {
 	unsigned int		eint_offset;
 	spinlock_t		lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 	u32			pm_save[4];
 #endif
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct samsung_gpio_chip *to_samsung_gpio(struct gpio_chip *gpc)
 {
 	return container_of(gpc, struct samsung_gpio_chip, chip);
 }
 
+<<<<<<< HEAD
+=======
 =======
 static inline struct s3c_gpio_chip *to_s3c_gpio(struct gpio_chip *gpc)
 {
@@ -166,6 +183,7 @@ extern void samsung_gpiolib_add_4bit2(struct s3c_gpio_chip *chip);
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * samsung_gpiolib_to_irq - convert gpio pin to irq number
  * @chip: The gpio chip that the pin belongs to.
@@ -178,6 +196,9 @@ extern int samsung_gpiolib_to_irq(struct gpio_chip *chip, unsigned int offset);
 
 /* exported for core SoC support to change */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct samsung_gpio_cfg s3c24xx_gpiocfg_default;
 
 #ifdef CONFIG_S3C_GPIO_TRACK
@@ -204,6 +225,8 @@ extern struct samsung_gpio_pm samsung_gpio_pm_4bit;
 #define samsung_gpio_pm_1bit NULL
 #define samsung_gpio_pm_2bit NULL
 #define samsung_gpio_pm_4bit NULL
+<<<<<<< HEAD
+=======
 =======
 extern struct s3c_gpio_cfg s3c24xx_gpiocfg_default;
 
@@ -232,6 +255,7 @@ extern struct s3c_gpio_pm s3c_gpio_pm_4bit;
 #define s3c_gpio_pm_2bit NULL
 #define s3c_gpio_pm_4bit NULL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __gpio_pm(x) NULL
 
 #endif /* CONFIG_PM */
@@ -241,6 +265,11 @@ extern struct s3c_gpio_pm s3c_gpio_pm_4bit;
 #define samsung_gpio_lock(_oc, _fl) spin_lock_irqsave(&(_oc)->lock, _fl)
 #define samsung_gpio_unlock(_oc, _fl) spin_unlock_irqrestore(&(_oc)->lock, _fl)
 =======
+<<<<<<< HEAD
+#define samsung_gpio_lock(_oc, _fl) spin_lock_irqsave(&(_oc)->lock, _fl)
+#define samsung_gpio_unlock(_oc, _fl) spin_unlock_irqrestore(&(_oc)->lock, _fl)
+=======
 #define s3c_gpio_lock(_oc, _fl) spin_lock_irqsave(&(_oc)->lock, _fl)
 #define s3c_gpio_unlock(_oc, _fl) spin_unlock_irqrestore(&(_oc)->lock, _fl)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

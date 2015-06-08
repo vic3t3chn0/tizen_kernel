@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <asm/irqflags.h>
 =======
+<<<<<<< HEAD
+#include <asm/irqflags.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef DEBUG
 
@@ -34,6 +38,9 @@ END_FTR_SECTION_IFCLR(CPU_FTR_CAN_NAP)
 	beqlr
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Hard disable interrupts */
 	mfmsr	r7
 	rldicl	r0,r7,48,1
@@ -59,6 +66,8 @@ END_FTR_SECTION_IFCLR(CPU_FTR_CAN_NAP)
 
 	li	r0,1
 	stb	r0,PACASOFTIRQEN(r13)	/* we'll hard-enable shortly */
+<<<<<<< HEAD
+=======
 =======
 	/* Go to NAP now */
 	mfmsr	r7
@@ -69,6 +78,7 @@ END_FTR_SECTION_IFCLR(CPU_FTR_CAN_NAP)
 	stb	r0,PACASOFTIRQEN(r13)	/* we'll hard-enable shortly */
 	stb	r0,PACAHARDIRQEN(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 BEGIN_FTR_SECTION
 	DSSALL
 	sync

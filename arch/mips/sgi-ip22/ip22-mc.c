@@ -140,11 +140,16 @@ void __init sgimc_init(void)
 	 */
 	/* don't touch parity settings for IP28 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tmp = sgimc->cpuctrl0;
 #ifndef CONFIG_SGI_IP28
 	tmp |= SGIMC_CCTRL0_EPERRGIO | SGIMC_CCTRL0_EPERRMEM;
 #endif
 	tmp |= SGIMC_CCTRL0_R4KNOCHKPARR;
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_SGI_IP28
 	tmp = sgimc->cpuctrl0;
@@ -152,6 +157,7 @@ void __init sgimc_init(void)
 		SGIMC_CCTRL0_R4KNOCHKPARR);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sgimc->cpuctrl0 = tmp;
 
 	/* Step 3: Setup the MC write buffer depth, this is controlled
@@ -190,8 +196,13 @@ void __init sgimc_init(void)
 	tmp = sgimc->giopar & SGIMC_GIOPAR_GFX64; /* keep gfx 64bit settings */
 	tmp |= SGIMC_GIOPAR_HPC64;	/* All 1st HPC's interface at 64bits */
 =======
+<<<<<<< HEAD
+	tmp = sgimc->giopar & SGIMC_GIOPAR_GFX64; /* keep gfx 64bit settings */
+	tmp |= SGIMC_GIOPAR_HPC64;	/* All 1st HPC's interface at 64bits */
+=======
 	tmp = SGIMC_GIOPAR_HPC64;	/* All 1st HPC's interface at 64bits */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tmp |= SGIMC_GIOPAR_ONEBUS;	/* Only one physical GIO bus exists */
 
 	if (ip22_is_fullhouse()) {
@@ -208,8 +219,11 @@ void __init sgimc_init(void)
 			tmp |= SGIMC_GIOPAR_MASTEREISA;	/* EISA masters */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			tmp |= SGIMC_GIOPAR_GFX64;	/* GFX at 64 bits */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else {
 		/* Guiness specific settings. */

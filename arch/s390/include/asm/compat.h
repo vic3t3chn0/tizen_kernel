@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #define PSW32_MASK_BASE		0x00080000UL	/* Always one */
 =======
+<<<<<<< HEAD
+#define PSW32_MASK_BASE		0x00080000UL	/* Always one */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PSW32_MASK_MCHECK	0x00040000UL
 #define PSW32_MASK_WAIT		0x00020000UL
 #define PSW32_MASK_PSTATE	0x00010000UL
@@ -24,18 +28,24 @@
 #define PSW32_MASK_PM		0x00000f00UL
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PSW32_MASK_USER		0x00003F00UL
 
 #define PSW32_ADDR_AMODE	0x80000000UL
 #define PSW32_ADDR_INSN		0x7FFFFFFFUL
 
 #define PSW32_DEFAULT_KEY	(((u32) PAGE_DEFAULT_ACC) << 20)
+<<<<<<< HEAD
+=======
 =======
 #define PSW32_ADDR_AMODE31	0x80000000UL
 #define PSW32_ADDR_INSN		0x7FFFFFFFUL
 
 #define PSW32_BASE_BITS		0x00080000UL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PSW32_ASC_PRIMARY	0x00000000UL
 #define PSW32_ASC_ACCREG	0x00004000UL
@@ -45,12 +55,16 @@
 <<<<<<< HEAD
 extern u32 psw32_user_bits;
 =======
+<<<<<<< HEAD
+extern u32 psw32_user_bits;
+=======
 #define PSW32_MASK_MERGE(CURRENT,NEW) \
 	(((CURRENT) & ~(PSW32_MASK_CC|PSW32_MASK_PM)) | \
 	 ((NEW) & (PSW32_MASK_CC|PSW32_MASK_PM)))
 
 extern long psw32_user_bits;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define COMPAT_USER_HZ		100
 #define COMPAT_UTS_MACHINE	"s390\0\0\0\0"
@@ -152,8 +166,13 @@ struct compat_statfs {
 	s32		f_flags;
 	s32		f_spare[5];
 =======
+<<<<<<< HEAD
+	s32		f_flags;
+	s32		f_spare[5];
+=======
 	s32		f_spare[6];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define COMPAT_RLIM_OLD_INFINITY	0x7fffffff

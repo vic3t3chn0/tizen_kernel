@@ -303,8 +303,11 @@ static int afs_fill_super(struct super_block *sb,
 	struct afs_fid fid;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct dentry *root = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode = NULL;
 	int ret;
 
@@ -331,11 +334,16 @@ static int afs_fill_super(struct super_block *sb,
 
 	ret = -ENOMEM;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sb->s_root = d_make_root(inode);
 	if (!sb->s_root)
 		goto error;
 
 	sb->s_d_op = &afs_fs_dentry_operations;
+<<<<<<< HEAD
+=======
 =======
 	root = d_alloc_root(inode);
 	if (!root)
@@ -344,6 +352,7 @@ static int afs_fill_super(struct super_block *sb,
 	sb->s_d_op = &afs_fs_dentry_operations;
 	sb->s_root = root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	_leave(" = 0");
 	return 0;
@@ -351,8 +360,11 @@ static int afs_fill_super(struct super_block *sb,
 error:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	iput(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_leave(" = %d", ret);
 	return ret;
 }
@@ -511,8 +523,11 @@ static void afs_i_callback(struct rcu_head *head)
 	struct afs_vnode *vnode = AFS_FS_I(inode);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(afs_inode_cachep, vnode);
 }
 

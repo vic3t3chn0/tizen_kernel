@@ -49,14 +49,23 @@ void btrfs_set_token_##name(struct extent_buffer *eb, type *s, u##bits val, stru
 u##bits btrfs_token_##name(struct extent_buffer *eb,				\
 			   type *s, struct btrfs_map_token *token)	\
 =======
+<<<<<<< HEAD
+void btrfs_set_token_##name(struct extent_buffer *eb, type *s, u##bits val, struct btrfs_map_token *token);	\
+u##bits btrfs_token_##name(struct extent_buffer *eb,				\
+			   type *s, struct btrfs_map_token *token)	\
+=======
 u##bits btrfs_##name(struct extent_buffer *eb,				\
 				   type *s)				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {									\
 	unsigned long part_offset = (unsigned long)s;			\
 	unsigned long offset = part_offset + offsetof(type, member);	\
 	type *p;							\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;						\
 	char *kaddr;						\
 	unsigned long map_start;				\
@@ -90,6 +99,8 @@ u##bits btrfs_##name(struct extent_buffer *eb,				\
 }									\
 void btrfs_set_token_##name(struct extent_buffer *eb,				\
 			    type *s, u##bits val, struct btrfs_map_token *token)		\
+<<<<<<< HEAD
+=======
 =======
 	/* ugly, but we want the fast path here */			\
 	if (eb->map_token && offset >= eb->map_start &&			\
@@ -125,11 +136,15 @@ void btrfs_set_token_##name(struct extent_buffer *eb,				\
 void btrfs_set_##name(struct extent_buffer *eb,				\
 				    type *s, u##bits val)		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {									\
 	unsigned long part_offset = (unsigned long)s;			\
 	unsigned long offset = part_offset + offsetof(type, member);	\
 	type *p;							\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;						\
 	char *kaddr;						\
 	unsigned long map_start;				\
@@ -170,6 +185,8 @@ u##bits btrfs_##name(struct extent_buffer *eb,			\
 {								\
 	return btrfs_token_##name(eb, s, NULL);			\
 }								\
+<<<<<<< HEAD
+=======
 =======
 	/* ugly, but we want the fast path here */			\
 	if (eb->map_token && offset >= eb->map_start &&			\
@@ -203,6 +220,7 @@ u##bits btrfs_##name(struct extent_buffer *eb,			\
 	}								\
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "ctree.h"
 
@@ -210,6 +228,8 @@ void btrfs_node_key(struct extent_buffer *eb,
 		    struct btrfs_disk_key *disk_key, int nr)
 {
 	unsigned long ptr = btrfs_node_key_ptr_offset(nr);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (eb->map_token && ptr >= eb->map_start &&
@@ -222,6 +242,7 @@ void btrfs_node_key(struct extent_buffer *eb,
 		eb->map_token = NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_eb_member(eb, (struct btrfs_key_ptr *)ptr,
 		       struct btrfs_key_ptr, key, disk_key);
 }

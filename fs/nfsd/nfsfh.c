@@ -60,6 +60,9 @@ static int nfsd_acceptable(void *expv, struct dentry *dentry)
  */
 static inline __be32
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 nfsd_mode_check(struct svc_rqst *rqstp, umode_t mode, umode_t requested)
 {
 	mode &= S_IFMT;
@@ -79,6 +82,8 @@ nfsd_mode_check(struct svc_rqst *rqstp, umode_t mode, umode_t requested)
 	if (mode == S_IFDIR)
 		return nfserr_isdir;
 	return nfserr_inval;
+<<<<<<< HEAD
+=======
 =======
 nfsd_mode_check(struct svc_rqst *rqstp, umode_t mode, int type)
 {
@@ -103,6 +108,7 @@ nfsd_mode_check(struct svc_rqst *rqstp, umode_t mode, int type)
 	}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static __be32 nfsd_setuser_and_check_port(struct svc_rqst *rqstp,
@@ -321,8 +327,12 @@ __be32
 <<<<<<< HEAD
 fh_verify(struct svc_rqst *rqstp, struct svc_fh *fhp, umode_t type, int access)
 =======
+<<<<<<< HEAD
+fh_verify(struct svc_rqst *rqstp, struct svc_fh *fhp, umode_t type, int access)
+=======
 fh_verify(struct svc_rqst *rqstp, struct svc_fh *fhp, int type, int access)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct svc_export *exp;
 	struct dentry	*dentry;

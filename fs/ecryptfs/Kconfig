@@ -3,8 +3,12 @@ config ECRYPT_FS
 <<<<<<< HEAD
 	depends on EXPERIMENTAL && KEYS && CRYPTO && (ENCRYPTED_KEYS || ENCRYPTED_KEYS=n)
 =======
+<<<<<<< HEAD
+	depends on EXPERIMENTAL && KEYS && CRYPTO && (ENCRYPTED_KEYS || ENCRYPTED_KEYS=n)
+=======
 	depends on EXPERIMENTAL && KEYS && CRYPTO
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select CRYPTO_ECB
 	select CRYPTO_CBC
 	select CRYPTO_MD5
@@ -18,6 +22,8 @@ config ECRYPT_FS
 	  module will be called ecryptfs.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 config WTL_ENCRYPTION_FILTER
 	bool "Enables filtering for some files not to encrypt on eCryptfs"
@@ -26,3 +32,4 @@ config WTL_ENCRYPTION_FILTER
        help
          Modification of encrypted filesystem for SD card encryption
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

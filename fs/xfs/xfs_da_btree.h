@@ -147,6 +147,8 @@ typedef struct xfs_dabuf {
 	void		*data;		/* pointer for buffers' data */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef XFS_DABUF_DEBUG
 	inst_t		*ra;		/* return address of caller to make */
 	struct xfs_dabuf *next;		/* next in global chain */
@@ -155,6 +157,7 @@ typedef struct xfs_dabuf {
 	xfs_daddr_t	blkno;		/* daddr first in bps[0] */
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xfs_buf	*bps[1];	/* actually nbuf of these */
 } xfs_dabuf_t;
 #define	XFS_DA_BUF_SIZE(n)	\
@@ -162,11 +165,14 @@ typedef struct xfs_dabuf {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef XFS_DABUF_DEBUG
 extern xfs_dabuf_t	*xfs_dabuf_global_list;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Storage for holding state during Btree searches and split/join ops.
  *
@@ -258,7 +264,12 @@ int	xfs_da_grow_inode(xfs_da_args_t *args, xfs_dablk_t *new_blkno);
 int	xfs_da_grow_inode_int(struct xfs_da_args *args, xfs_fileoff_t *bno,
 			      int count);
 =======
+<<<<<<< HEAD
+int	xfs_da_grow_inode_int(struct xfs_da_args *args, xfs_fileoff_t *bno,
+			      int count);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int	xfs_da_get_buf(struct xfs_trans *trans, struct xfs_inode *dp,
 			      xfs_dablk_t bno, xfs_daddr_t mappedbno,
 			      xfs_dabuf_t **bp, int whichfork);

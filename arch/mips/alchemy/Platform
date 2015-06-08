@@ -10,6 +10,11 @@ platform-$(CONFIG_MIPS_ALCHEMY)	+= alchemy/common/
 #
 platform-$(CONFIG_MIPS_PB1100)	+= alchemy/devboards/
 =======
+<<<<<<< HEAD
+# AMD Alchemy Pb1100 eval board
+#
+platform-$(CONFIG_MIPS_PB1100)	+= alchemy/devboards/
+=======
 # AMD Alchemy Pb1000 eval board
 #
 platform-$(CONFIG_MIPS_PB1000)	+= alchemy/devboards/
@@ -22,6 +27,7 @@ load-$(CONFIG_MIPS_PB1000)	+= 0xffffffff80100000
 platform-$(CONFIG_MIPS_PB1100)	+= alchemy/devboards/
 cflags-$(CONFIG_MIPS_PB1100)	+= -I$(srctree)/arch/mips/include/asm/mach-pb1x00
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 load-$(CONFIG_MIPS_PB1100)	+= 0xffffffff80100000
 
 #
@@ -30,8 +36,11 @@ load-$(CONFIG_MIPS_PB1100)	+= 0xffffffff80100000
 platform-$(CONFIG_MIPS_PB1500)	+= alchemy/devboards/
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 cflags-$(CONFIG_MIPS_PB1500)	+= -I$(srctree)/arch/mips/include/asm/mach-pb1x00
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 load-$(CONFIG_MIPS_PB1500)	+= 0xffffffff80100000
 
 #
@@ -39,10 +48,15 @@ load-$(CONFIG_MIPS_PB1500)	+= 0xffffffff80100000
 #
 platform-$(CONFIG_MIPS_PB1550)	+= alchemy/devboards/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 load-$(CONFIG_MIPS_PB1550)	+= 0xffffffff80100000
 
 #
 # AMD Alchemy Db1000/Db1500/Db1100 eval boards
+<<<<<<< HEAD
+=======
 =======
 cflags-$(CONFIG_MIPS_PB1550)	+= -I$(srctree)/arch/mips/include/asm/mach-pb1x00
 load-$(CONFIG_MIPS_PB1550)	+= 0xffffffff80100000
@@ -57,12 +71,15 @@ load-$(CONFIG_MIPS_PB1200)	+= 0xffffffff80100000
 #
 # AMD Alchemy Db1000 eval board
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 platform-$(CONFIG_MIPS_DB1000)	+= alchemy/devboards/
 cflags-$(CONFIG_MIPS_DB1000)	+= -I$(srctree)/arch/mips/include/asm/mach-db1x00
 load-$(CONFIG_MIPS_DB1000)	+= 0xffffffff80100000
 
 #
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 # AMD Alchemy Db1100 eval board
@@ -80,6 +97,7 @@ load-$(CONFIG_MIPS_DB1500)	+= 0xffffffff80100000
 
 #
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # AMD Alchemy Db1550 eval board
 #
 platform-$(CONFIG_MIPS_DB1550)	+= alchemy/devboards/
@@ -90,8 +108,12 @@ load-$(CONFIG_MIPS_DB1550)	+= 0xffffffff80100000
 <<<<<<< HEAD
 # AMD Alchemy Db1200/Pb1200 eval boards
 =======
+<<<<<<< HEAD
+# AMD Alchemy Db1200/Pb1200 eval boards
+=======
 # AMD Alchemy Db1200 eval board
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 platform-$(CONFIG_MIPS_DB1200)	+= alchemy/devboards/
 cflags-$(CONFIG_MIPS_DB1200)	+= -I$(srctree)/arch/mips/include/asm/mach-db1x00
@@ -99,6 +121,9 @@ load-$(CONFIG_MIPS_DB1200)	+= 0xffffffff80100000
 
 #
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # NetLogic DBAu1300 development platform
 #
 platform-$(CONFIG_MIPS_DB1300)	+= alchemy/devboards/
@@ -109,6 +134,8 @@ load-$(CONFIG_MIPS_DB1300)	+= 0xffffffff80100000
 # 4G-Systems MTX-1 "MeshCube" wireless router
 #
 platform-$(CONFIG_MIPS_MTX1)	+= alchemy/
+<<<<<<< HEAD
+=======
 =======
 # AMD Alchemy Bosporus eval board
 #
@@ -128,6 +155,7 @@ load-$(CONFIG_MIPS_MIRAGE)	+= 0xffffffff80100000
 #
 platform-$(CONFIG_MIPS_MTX1)	+= alchemy/mtx-1/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 load-$(CONFIG_MIPS_MTX1)	+= 0xffffffff80100000
 
 #
@@ -136,8 +164,12 @@ load-$(CONFIG_MIPS_MTX1)	+= 0xffffffff80100000
 <<<<<<< HEAD
 platform-$(CONFIG_MIPS_XXS1500)	+= alchemy/
 =======
+<<<<<<< HEAD
+platform-$(CONFIG_MIPS_XXS1500)	+= alchemy/
+=======
 platform-$(CONFIG_MIPS_XXS1500)	+= alchemy/xxs1500/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 load-$(CONFIG_MIPS_XXS1500)	+= 0xffffffff80100000
 
 #
@@ -146,8 +178,12 @@ load-$(CONFIG_MIPS_XXS1500)	+= 0xffffffff80100000
 <<<<<<< HEAD
 platform-$(CONFIG_MIPS_GPR)	+= alchemy/
 =======
+<<<<<<< HEAD
+platform-$(CONFIG_MIPS_GPR)	+= alchemy/
+=======
 platform-$(CONFIG_MIPS_GPR)	+= alchemy/gpr/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 load-$(CONFIG_MIPS_GPR)		+= 0xffffffff80100000
 
 # boards can specify their own <gpio.h> in one of their include dirs.

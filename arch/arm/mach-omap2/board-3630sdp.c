@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/board.h>
 #include <plat/gpmc-smc91x.h>
 #include <plat/usb.h>
@@ -76,6 +80,8 @@ static struct omap_board_config_kernel sdp_config[] __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init omap_sdp_init_early(void)
 {
 	omap2_init_common_infrastructure();
@@ -84,6 +90,7 @@ static void __init omap_sdp_init_early(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OMAP_MUX
 static struct omap_board_mux board_mux[] __initdata = {
 	{ .reg_offset = OMAP_MUX_TERMINATOR },
@@ -218,7 +225,12 @@ static void __init omap_sdp_init(void)
 	omap_sdrc_init(h8mbx00u0mer0em_sdrc_params,
 				  h8mbx00u0mer0em_sdrc_params);
 =======
+<<<<<<< HEAD
+	omap_sdrc_init(h8mbx00u0mer0em_sdrc_params,
+				  h8mbx00u0mer0em_sdrc_params);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	zoom_display_init();
 	board_smc91x_init();
 	board_flash_init(sdp_flash_partitions, chip_sel_sdp, NAND_BUSWIDTH_16);
@@ -228,6 +240,9 @@ static void __init omap_sdp_init(void)
 
 MACHINE_START(OMAP_3630SDP, "OMAP 3630SDP board")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= omap_reserve,
 	.map_io		= omap3_map_io,
@@ -237,6 +252,8 @@ MACHINE_START(OMAP_3630SDP, "OMAP 3630SDP board")
 	.init_machine	= omap_sdp_init,
 	.timer		= &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= omap_reserve,
@@ -246,4 +263,5 @@ MACHINE_START(OMAP_3630SDP, "OMAP 3630SDP board")
 	.init_machine	= omap_sdp_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

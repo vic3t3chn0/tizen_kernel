@@ -34,8 +34,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -55,8 +59,12 @@ static int pcm_channels = 32;
 <<<<<<< HEAD
 static bool spdif;
 =======
+<<<<<<< HEAD
+static bool spdif;
+=======
 static int spdif;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param(index, int, 0444);
 MODULE_PARM_DESC(index, "Index value for ALI M5451 PCI Audio.");
@@ -71,8 +79,12 @@ MODULE_PARM_DESC(spdif, "Support SPDIF I/O");
 <<<<<<< HEAD
 static bool enable;
 =======
+<<<<<<< HEAD
+static bool enable;
+=======
 static int enable;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(enable, bool, 0444);
 
 
@@ -1450,8 +1462,12 @@ static snd_pcm_uframes_t snd_ali_pointer(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 		spin_unlock_irq(&codec->reg_lock);
 =======
+<<<<<<< HEAD
+		spin_unlock_irq(&codec->reg_lock);
+=======
 		spin_unlock(&codec->reg_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 	outb(pvoice->number, ALI_REG(codec, ALI_GC_CIR));
@@ -2109,8 +2125,12 @@ static int __devinit snd_ali_resources(struct snd_ali *codec)
 <<<<<<< HEAD
 			IRQF_SHARED, KBUILD_MODNAME, codec)) {
 =======
+<<<<<<< HEAD
+			IRQF_SHARED, KBUILD_MODNAME, codec)) {
+=======
 			IRQF_SHARED, "ALI 5451", codec)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "Unable to request irq.\n");
 		return -EBUSY;
 	}
@@ -2318,8 +2338,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "ALI 5451",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_ali_ids,
 	.probe = snd_ali_probe,
 	.remove = __devexit_p(snd_ali_remove),

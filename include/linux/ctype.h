@@ -53,6 +53,9 @@ static inline unsigned char __toupper(unsigned char c)
 #define toupper(c) __toupper(c)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Fast implementation of tolower() for internal usage. Do not use in your
  * code.
@@ -62,6 +65,9 @@ static inline char _tolower(const char c)
 	return c | 0x20;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

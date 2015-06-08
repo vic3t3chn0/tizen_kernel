@@ -14,15 +14,21 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/atomic.h>
 #include <linux/init.h>
 #include <linux/crypto.h>
 #include <linux/module.h>	/* for module_name() */
+<<<<<<< HEAD
+=======
 =======
 #include <asm/atomic.h>
 #include <linux/init.h>
 #include <linux/crypto.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/rwsem.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
@@ -36,8 +42,13 @@ static struct ctl_table crypto_sysctl_table[] = {
 		.procname       = "fips_enabled",
 		.data           = &fips_enabled,
 =======
+<<<<<<< HEAD
+		.procname       = "fips_enabled",
+		.data           = &fips_enabled,
+=======
 		.procname       = "fips_status",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.maxlen         = sizeof(int),
 		.mode           = 0444,
 		.proc_handler   = proc_dointvec
@@ -154,6 +165,8 @@ static const struct file_operations proc_crypto_ops = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_FIPS
 void __init crypto_init_proc(int *fips_error)
 {
@@ -163,6 +176,7 @@ void __init crypto_init_proc(int *fips_error)
 }
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init crypto_init_proc(void)
 {
 	proc_create("crypto", 0, NULL, &proc_crypto_ops);
@@ -170,8 +184,11 @@ void __init crypto_init_proc(void)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __exit crypto_exit_proc(void)
 {

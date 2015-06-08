@@ -25,6 +25,13 @@
 #include <linux/slab.h>
 #include <linux/ioport.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/if.h>
 #include <linux/hdlc.h>
 #include <asm/io.h>
@@ -1664,10 +1671,22 @@ check_started_ok(struct fst_card_info *card)
 	 * existing firmware etc so we just report it for the moment.
 	 */
 	if (FST_RDL(card, numberOfPorts) != card->nports) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("Port count mismatch on card %d.  Firmware thinks %d we say %d\n",
+			card->card_no,
+			FST_RDL(card, numberOfPorts), card->nports);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_warning("Port count mismatch on card %d. "
 			   "Firmware thinks %d we say %d\n",
 			   card->card_no,
 			   FST_RDL(card, numberOfPorts), card->nports);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -2483,6 +2502,13 @@ fst_add_one(struct pci_dev *pdev, const struct pci_device_id *ent)
 		pr_err("Control memory remap failed\n");
 		pci_release_regions(pdev);
 		pci_disable_device(pdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		iounmap(card->mem);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(card);
 		return -ENODEV;
 	}

@@ -16,6 +16,9 @@
 #include <linux/kernel.h>
 #include <linux/math64.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/types.h>
 #include <asm/uaccess.h>
@@ -54,6 +57,8 @@ unsigned int _parse_integer(const char *s, unsigned int base, unsigned long long
 	res = 0;
 	rv = 0;
 	overflow = 0;
+<<<<<<< HEAD
+=======
 =======
 #include <linux/module.h>
 #include <linux/types.h>
@@ -84,6 +89,7 @@ static int _kstrtoull(const char *s, unsigned int base, unsigned long long *res)
 	acc = 0;
 	ok = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (*s) {
 		unsigned int val;
 
@@ -92,6 +98,9 @@ static int _kstrtoull(const char *s, unsigned int base, unsigned long long *res)
 		else if ('a' <= _tolower(*s) && _tolower(*s) <= 'f')
 			val = _tolower(*s) - 'a' + 10;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			break;
 
@@ -133,6 +142,8 @@ static int _kstrtoull(const char *s, unsigned int base, unsigned long long *res)
 	if (*s)
 		return -EINVAL;
 	*res = _res;
+<<<<<<< HEAD
+=======
 =======
 		else if (*s == '\n' && *(s + 1) == '\0')
 			break;
@@ -152,6 +163,7 @@ static int _kstrtoull(const char *s, unsigned int base, unsigned long long *res)
 		return -EINVAL;
 	*res = acc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

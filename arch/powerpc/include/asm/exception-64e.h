@@ -49,6 +49,9 @@
 #define EX_R15		(5 * 8)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The TLB miss exception uses different slots.
  *
@@ -65,6 +68,8 @@
 #define EX_TLB_CR	( 5 * 8)
 #define EX_TLB_R12	( 6 * 8)
 #define EX_TLB_R13	( 7 * 8)
+<<<<<<< HEAD
+=======
 =======
 /* The TLB miss exception uses different slots */
 
@@ -77,11 +82,15 @@
 #define EX_TLB_R16	( 6 * 8)
 #define EX_TLB_CR	( 7 * 8)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EX_TLB_DEAR	( 8 * 8) /* Level 0 and 2 only */
 #define EX_TLB_ESR	( 9 * 8) /* Level 0 and 2 only */
 #define EX_TLB_SRR0	(10 * 8)
 #define EX_TLB_SRR1	(11 * 8)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BOOK3E_MMU_TLB_STATS
 #define EX_TLB_R8	(12 * 8)
 #define EX_TLB_R9	(13 * 8)
@@ -89,6 +98,8 @@
 #define EX_TLB_SIZE	(15 * 8)
 #else
 #define EX_TLB_SIZE	(12 * 8)
+<<<<<<< HEAD
+=======
 =======
 #define EX_TLB_MMUCR0	(12 * 8) /* Level 0 */
 #define EX_TLB_MAS1	(12 * 8) /* Level 0 */
@@ -101,6 +112,7 @@
 #else
 #define EX_TLB_SIZE	(14 * 8)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #define	START_EXCEPTION(label)						\
@@ -198,6 +210,9 @@ exc_##label##_book3e:
 	ld	r8,EX_TLB_R8(r12);					    \
 	mtlr	r16;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TLB_MISS_PROLOG_STATS_BOLTED						    \
 	mflr	r10;							    \
 	std	r8,PACA_EXTLB+EX_TLB_R8(r13);				    \
@@ -208,8 +223,11 @@ exc_##label##_book3e:
 	ld	r9,PACA_EXTLB+EX_TLB_R9(r13);				    \
 	ld	r8,PACA_EXTLB+EX_TLB_R8(r13);				    \
 	mtlr	r16;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TLB_MISS_STATS_D(name)						    \
 	addi	r9,r13,MMSTAT_DSTATS+name;				    \
 	bl	.tlb_stat_inc;
@@ -226,6 +244,9 @@ exc_##label##_book3e:
 62:	bl	.tlb_stat_inc;
 #define TLB_MISS_STATS_SAVE_INFO					    \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	std	r14,EX_TLB_ESR(r12);	/* save ESR */
 #define TLB_MISS_STATS_SAVE_INFO_BOLTED					    \
 	std	r14,PACA_EXTLB+EX_TLB_ESR(r13);	/* save ESR */
@@ -234,6 +255,8 @@ exc_##label##_book3e:
 #define TLB_MISS_RESTORE_STATS
 #define TLB_MISS_PROLOG_STATS_BOLTED
 #define TLB_MISS_RESTORE_STATS_BOLTED
+<<<<<<< HEAD
+=======
 =======
 	std	r14,EX_TLB_ESR(r12);	/* save ESR */			    \
 
@@ -242,6 +265,7 @@ exc_##label##_book3e:
 #define TLB_MISS_PROLOG_STATS
 #define TLB_MISS_RESTORE_STATS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TLB_MISS_STATS_D(name)
 #define TLB_MISS_STATS_I(name)
 #define TLB_MISS_STATS_X(name)
@@ -250,7 +274,11 @@ exc_##label##_book3e:
 <<<<<<< HEAD
 #define TLB_MISS_STATS_SAVE_INFO_BOLTED
 =======
+<<<<<<< HEAD
+#define TLB_MISS_STATS_SAVE_INFO_BOLTED
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #define SET_IVOR(vector_number, vector_offset)	\

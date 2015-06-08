@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <asm/cacheflush.h>
 =======
+<<<<<<< HEAD
+#include <asm/cacheflush.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "sfp-util_64.h"
 #include <math-emu/soft-fp.h>
@@ -191,8 +195,12 @@ int do_mathemu(struct pt_regs *regs, struct fpustate *f)
 <<<<<<< HEAD
 	perf_sw_event(PERF_COUNT_SW_EMULATION_FAULTS, 1, regs, 0);
 =======
+<<<<<<< HEAD
+	perf_sw_event(PERF_COUNT_SW_EMULATION_FAULTS, 1, regs, 0);
+=======
 	perf_sw_event(PERF_COUNT_SW_EMULATION_FAULTS, 1, 0, regs, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (test_thread_flag(TIF_32BIT))
 		pc = (u32)pc;
 	if (get_user(insn, (u32 __user *) pc) != -EFAULT) {

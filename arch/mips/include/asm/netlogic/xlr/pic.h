@@ -194,6 +194,9 @@
 
 #ifndef __ASSEMBLY__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PIC_IRQ_IS_EDGE_TRIGGERED(irq)	(((irq) >= PIC_TIMER_0_IRQ) && \
 					((irq) <= PIC_TIMER_7_IRQ))
@@ -262,6 +265,8 @@ nlm_pic_init_irt(uint64_t base, int irt, int irq, int hwt)
 
 extern uint64_t nlm_pic_base;
 #endif
+<<<<<<< HEAD
+=======
 =======
 static inline void pic_send_ipi(u32 ipi)
 {
@@ -299,4 +304,5 @@ static inline void pic_update_control(u32 control)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_NLM_XLR_PIC_H */

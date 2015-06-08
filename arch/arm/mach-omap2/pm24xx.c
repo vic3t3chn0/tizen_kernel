@@ -31,12 +31,18 @@
 #include <linux/time.h>
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+#include <linux/time.h>
+#include <linux/gpio.h>
+=======
 #include <linux/io.h>
 #include <linux/irq.h>
 #include <linux/time.h>
 #include <linux/gpio.h>
 #include <linux/console.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/time.h>
 #include <asm/mach/irq.h>
@@ -45,9 +51,14 @@
 #include <asm/system_misc.h>
 
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+
+=======
 
 #include <mach/irqs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/clock.h>
 #include <plat/sram.h>
 #include <plat/dma.h>
@@ -58,7 +69,13 @@
 
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+
+#include "common.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "prm2xxx_3xxx.h"
 #include "prm-regbits-24xx.h"
 #include "cm2xxx_3xxx.h"
@@ -66,6 +83,11 @@
 #include "sdrc.h"
 #include "pm.h"
 #include "control.h"
+<<<<<<< HEAD
+#include "powerdomain.h"
+#include "clockdomain.h"
+
+=======
 <<<<<<< HEAD
 #include "powerdomain.h"
 #include "clockdomain.h"
@@ -89,6 +111,7 @@ static inline bool is_suspending(void)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void (*omap2_sram_idle)(void);
 static void (*omap2_sram_suspend)(u32 dllctrl, void __iomem *sdrc_dlla_ctrl,
 				  void __iomem *sdrc_power);
@@ -106,12 +129,17 @@ static int omap2_fclks_active(void)
 	f2 = omap2_cm_read_mod_reg(CORE_MOD, OMAP24XX_CM_FCLKEN2);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (f1 | f2) ? 1 : 0;
 }
 
 static int omap2_enter_full_retention(void)
 {
 	u32 l;
+<<<<<<< HEAD
+=======
 =======
 	/* Ignore UART clocks.  These are handled by UART core (serial.c) */
 	f1 &= ~(OMAP24XX_EN_UART1_MASK | OMAP24XX_EN_UART2_MASK);
@@ -127,6 +155,7 @@ static void omap2_enter_full_retention(void)
 	u32 l;
 	struct timespec ts_preidle, ts_postidle, ts_idle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* There is 1 reference hold for all children of the oscillator
 	 * clock, the following will remove it. If no one else uses the
@@ -156,17 +185,22 @@ static void omap2_enter_full_retention(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (omap2_pm_debug) {
 		omap2_pm_dump(0, 0, 0);
 		getnstimeofday(&ts_preidle);
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* One last check for pending IRQs to avoid extra latency due
 	 * to sleeping unnecessarily. */
 	if (omap_irq_pending())
 		goto no_sleep;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Block console output in case it is on one of the OMAP UARTs */
@@ -179,11 +213,15 @@ static void omap2_enter_full_retention(void)
 	omap_uart_prepare_idle(2);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Jump to SRAM suspend code */
 	omap2_sram_suspend(sdrc_read_reg(SDRC_DLLA_CTRL),
 			   OMAP_SDRC_REGADDR(SDRC_DLLA_CTRL),
 			   OMAP_SDRC_REGADDR(SDRC_POWER));
 
+<<<<<<< HEAD
+no_sleep:
+=======
 <<<<<<< HEAD
 no_sleep:
 =======
@@ -204,6 +242,7 @@ no_sleep:
 		omap2_pm_dump(0, 1, tmp);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap2_gpio_resume_after_idle();
 
 	clk_enable(osc_ck);
@@ -230,7 +269,12 @@ no_sleep:
 
 	return 0;
 =======
+<<<<<<< HEAD
+
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int omap2_i2c_active(void)
@@ -268,8 +312,11 @@ static void omap2_enter_mpu_retention(void)
 	int only_idle = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct timespec ts_preidle, ts_postidle, ts_idle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Putting MPU into the WFI state while a transfer is active
 	 * seems to cause the I2C block to timeout. Why? Good question. */
@@ -299,6 +346,9 @@ static void omap2_enter_mpu_retention(void)
 <<<<<<< HEAD
 	omap2_sram_idle();
 =======
+<<<<<<< HEAD
+	omap2_sram_idle();
+=======
 	if (omap2_pm_debug) {
 		omap2_pm_dump(only_idle ? 2 : 1, 0, 0);
 		getnstimeofday(&ts_preidle);
@@ -315,6 +365,7 @@ static void omap2_enter_mpu_retention(void)
 		omap2_pm_dump(only_idle ? 2 : 1, 1, tmp);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int omap2_can_sleep(void)
@@ -323,9 +374,12 @@ static int omap2_can_sleep(void)
 		return 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!omap_uart_can_sleep())
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (osc_ck->usecount > 1)
 		return 0;
 	if (omap_dma_running())
@@ -338,8 +392,11 @@ static void omap2_pm_idle(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	local_irq_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_fiq_disable();
 
 	if (!omap2_can_sleep()) {
@@ -356,6 +413,8 @@ static void omap2_pm_idle(void)
 
 out:
 	local_fiq_enable();
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	local_irq_enable();
@@ -432,6 +491,7 @@ static int __init clkdms_setup(struct clockdomain *clkdm, void *unused)
 		clkdm_sleep(clkdm);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init prcm_setup_regs(void)
@@ -476,6 +536,9 @@ static void __init prcm_setup_regs(void)
 
 	/* Enable hardware-supervised idle for all clkdms */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clkdm_for_each(omap_pm_clkdms_setup, NULL);
 	clkdm_add_wkdep(mpu_clkdm, wkup_clkdm);
 
@@ -483,11 +546,14 @@ static void __init prcm_setup_regs(void)
 	omap_pm_suspend = omap2_enter_full_retention;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	clkdm_for_each(clkdms_setup, NULL);
 	clkdm_add_wkdep(mpu_clkdm, wkup_clkdm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* REVISIT: Configure number of 32 kHz clock cycles for sys_clk
 	 * stabilisation */
 	omap2_prm_write_mod_reg(15 << OMAP_SETUP_TIME_SHIFT, OMAP24XX_GR_MOD,
@@ -591,9 +657,13 @@ static int __init omap2_pm_init(void)
 <<<<<<< HEAD
 	arm_pm_idle = omap2_pm_idle;
 =======
+<<<<<<< HEAD
+	arm_pm_idle = omap2_pm_idle;
+=======
 	suspend_set_ops(&omap_pm_ops);
 	pm_idle = omap2_pm_idle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

@@ -22,6 +22,9 @@ static inline int access_ok(int type, const void __user *addr,
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Not all varients of the 68k family support the notion of address spaces.
  * The traditional 680x0 parts do, and they use the sfc/dfc registers and
  * the "moves" instruction to access user space from kernel space. Other
@@ -38,8 +41,11 @@ static inline int access_ok(int type, const void __user *addr,
 #endif
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The exception table consists of pairs of addresses: the first is the
  * address of an instruction that is allowed to fault, and the second is
  * the address at which the program should continue.  No registers are
@@ -65,8 +71,12 @@ asm volatile ("\n"					\
 <<<<<<< HEAD
 	"1:	"MOVES"."#bwl"	%2,%1\n"		\
 =======
+<<<<<<< HEAD
+	"1:	"MOVES"."#bwl"	%2,%1\n"		\
+=======
 	"1:	moves."#bwl"	%2,%1\n"		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"2:\n"						\
 	"	.section .fixup,\"ax\"\n"		\
 	"	.even\n"				\
@@ -110,9 +120,14 @@ asm volatile ("\n"					\
 			"1:	"MOVES".l	%2,(%1)+\n"		\
 			"2:	"MOVES".l	%R2,(%1)\n"		\
 =======
+<<<<<<< HEAD
+			"1:	"MOVES".l	%2,(%1)+\n"		\
+			"2:	"MOVES".l	%R2,(%1)\n"		\
+=======
 			"1:	moves.l	%2,(%1)+\n"			\
 			"2:	moves.l	%R2,(%1)\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"3:\n"						\
 			"	.section .fixup,\"ax\"\n"		\
 			"	.even\n"				\
@@ -146,8 +161,12 @@ asm volatile ("\n"					\
 <<<<<<< HEAD
 		"1:	"MOVES"."#bwl"	%2,%1\n"		\
 =======
+<<<<<<< HEAD
+		"1:	"MOVES"."#bwl"	%2,%1\n"		\
+=======
 		"1:	moves."#bwl"	%2,%1\n"		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"2:\n"						\
 		"	.section .fixup,\"ax\"\n"		\
 		"	.even\n"				\
@@ -155,8 +174,12 @@ asm volatile ("\n"					\
 <<<<<<< HEAD
 		"	sub.l	%1,%1\n"			\
 =======
+<<<<<<< HEAD
+		"	sub.l	%1,%1\n"			\
+=======
 		"	sub."#bwl"	%1,%1\n"		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"	jra	2b\n"				\
 		"	.previous\n"				\
 		"\n"						\
@@ -192,9 +215,14 @@ asm volatile ("\n"					\
 			"1:	"MOVES".l	(%2)+,%1\n"		\
 			"2:	"MOVES".l	(%2),%R1\n"		\
 =======
+<<<<<<< HEAD
+			"1:	"MOVES".l	(%2)+,%1\n"		\
+			"2:	"MOVES".l	(%2),%R1\n"		\
+=======
 			"1:	moves.l	(%2)+,%1\n"			\
 			"2:	moves.l	(%2),%R1\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"3:\n"						\
 			"	.section .fixup,\"ax\"\n"		\
 			"	.even\n"				\
@@ -230,12 +258,17 @@ unsigned long __generic_copy_to_user(void __user *to, const void *from, unsigned
 #define __constant_copy_from_user_asm(res, to, from, tmp, n, s1, s2, s3)\
 	asm volatile ("\n"						\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"1:	"MOVES"."#s1"	(%2)+,%3\n"			\
 		"	move."#s1"	%3,(%1)+\n"			\
 		"2:	"MOVES"."#s2"	(%2)+,%3\n"			\
 		"	move."#s2"	%3,(%1)+\n"			\
 		"	.ifnc	\""#s3"\",\"\"\n"			\
 		"3:	"MOVES"."#s3"	(%2)+,%3\n"			\
+<<<<<<< HEAD
+=======
 =======
 		"1:	moves."#s1"	(%2)+,%3\n"			\
 		"	move."#s1"	%3,(%1)+\n"			\
@@ -244,6 +277,7 @@ unsigned long __generic_copy_to_user(void __user *to, const void *from, unsigned
 		"	.ifnc	\""#s3"\",\"\"\n"			\
 		"3:	moves."#s3"	(%2)+,%3\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"	move."#s3"	%3,(%1)+\n"			\
 		"	.endif\n"					\
 		"4:\n"							\
@@ -320,6 +354,9 @@ __constant_copy_from_user(void *to, const void __user *from, unsigned long n)
 	asm volatile ("\n"						\
 		"	move."#s1"	(%2)+,%3\n"			\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"11:	"MOVES"."#s1"	%3,(%1)+\n"			\
 		"12:	move."#s2"	(%2)+,%3\n"			\
 		"21:	"MOVES"."#s2"	%3,(%1)+\n"			\
@@ -327,6 +364,8 @@ __constant_copy_from_user(void *to, const void __user *from, unsigned long n)
 		"	.ifnc	\""#s3"\",\"\"\n"			\
 		"	move."#s3"	(%2)+,%3\n"			\
 		"31:	"MOVES"."#s3"	%3,(%1)+\n"			\
+<<<<<<< HEAD
+=======
 =======
 		"11:	moves."#s1"	%3,(%1)+\n"			\
 		"12:	move."#s2"	(%2)+,%3\n"			\
@@ -336,6 +375,7 @@ __constant_copy_from_user(void *to, const void __user *from, unsigned long n)
 		"	move."#s3"	(%2)+,%3\n"			\
 		"31:	moves."#s3"	%3,(%1)+\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"32:\n"							\
 		"	.endif\n"					\
 		"4:\n"							\

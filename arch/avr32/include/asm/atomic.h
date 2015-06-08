@@ -18,8 +18,12 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ATOMIC_INIT(i)  { (i) }
 
@@ -83,6 +87,9 @@ static inline int atomic_add_return(int i, atomic_t *v)
  * atomic_sub_unless - sub unless the number is a given value
  * @v: pointer of type atomic_t
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @a: the amount to subtract from v...
  * @u: ...unless v is equal to u.
  *
@@ -92,6 +99,8 @@ static inline int atomic_add_return(int i, atomic_t *v)
 static inline void atomic_sub_unless(atomic_t *v, int a, int u)
 {
 	int tmp;
+<<<<<<< HEAD
+=======
 =======
  * @a: the amount to add to v...
  * @u: ...unless v is equal to u.
@@ -104,11 +113,15 @@ static inline int atomic_sub_unless(atomic_t *v, int a, int u)
 {
 	int tmp, result = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	asm volatile(
 		"/* atomic_sub_unless */\n"
 		"1:	ssrf	5\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"	ld.w	%0, %2\n"
 		"	cp.w	%0, %4\n"
 		"	breq	1f\n"
@@ -123,6 +136,8 @@ static inline int atomic_sub_unless(atomic_t *v, int a, int u)
 
 /*
  * __atomic_add_unless - add unless the number is a given value
+<<<<<<< HEAD
+=======
 =======
 		"	ld.w	%0, %3\n"
 		"	cp.w	%0, %5\n"
@@ -142,11 +157,15 @@ static inline int atomic_sub_unless(atomic_t *v, int a, int u)
 /*
  * atomic_add_unless - add unless the number is a given value
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @v: pointer of type atomic_t
  * @a: the amount to add to v...
  * @u: ...unless v is equal to u.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Atomically adds @a to @v, so long as it was not @u.
  * Returns the old value of @v.
 */
@@ -173,6 +192,8 @@ static inline int __atomic_add_unless(atomic_t *v, int a, int u)
 	}
 
 	return old;
+<<<<<<< HEAD
+=======
 =======
  * If the atomic value v is not equal to u, this function adds a to v,
  * and returns non zero. If v is equal to u then it returns zero. This
@@ -204,6 +225,7 @@ static inline int atomic_add_unless(atomic_t *v, int a, int u)
 
 	return result;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -252,8 +274,11 @@ static inline int atomic_sub_if_positive(int i, atomic_t *v)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define atomic_inc_not_zero(v)	atomic_add_unless(v, 1, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define atomic_dec_if_positive(v) atomic_sub_if_positive(1, v)
 
 #define smp_mb__before_atomic_dec()	barrier()
@@ -263,7 +288,10 @@ static inline int atomic_sub_if_positive(int i, atomic_t *v)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/atomic-long.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /*  __ASM_AVR32_ATOMIC_H */

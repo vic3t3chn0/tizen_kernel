@@ -47,7 +47,13 @@ static unsigned int __blk_recalc_rq_segments(struct request_queue *q,
 				    (bvprv->bv_page + 1) != bv->bv_page)
 					goto new_segment;
 =======
+<<<<<<< HEAD
+				if ((bvprv->bv_page != bv->bv_page) &&
+				    (bvprv->bv_page + 1) != bv->bv_page)
+					goto new_segment;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 				seg_size += bv->bv_len;
 				bvprv = bv;
@@ -152,7 +158,13 @@ int blk_rq_map_sg(struct request_queue *q, struct request *rq,
 			    ((bvprv->bv_page + 1) != bvec->bv_page))
 				goto new_segment;
 =======
+<<<<<<< HEAD
+			if ((bvprv->bv_page != bvec->bv_page) &&
+			    ((bvprv->bv_page + 1) != bvec->bv_page))
+				goto new_segment;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			sg->length += nbytes;
 		} else {
@@ -396,14 +408,20 @@ static int attempt_merge(struct request_queue *q, struct request *req,
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Don't merge file system requests and sanitize requests
 	 */
 	if ((req->cmd_flags & REQ_SANITIZE) != (next->cmd_flags & REQ_SANITIZE))
 		return 0;
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * not contiguous
 	 */
 	if (blk_rq_pos(req) + blk_rq_sectors(req) != blk_rq_pos(next))
@@ -493,6 +511,9 @@ int blk_attempt_req_merge(struct request_queue *q, struct request *rq,
 	return attempt_merge(q, rq, next);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 bool blk_rq_merge_ok(struct request *rq, struct bio *bio)
 {
@@ -530,5 +551,8 @@ int blk_try_merge(struct request *rq, struct bio *bio)
 		return ELEVATOR_FRONT_MERGE;
 	return ELEVATOR_NO_MERGE;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

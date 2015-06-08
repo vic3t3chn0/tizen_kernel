@@ -140,7 +140,13 @@
 #define PRID_IMP_CAVIUM_CN66XX 0x9200
 #define PRID_IMP_CAVIUM_CN61XX 0x9300
 =======
+<<<<<<< HEAD
+#define PRID_IMP_CAVIUM_CN68XX 0x9100
+#define PRID_IMP_CAVIUM_CN66XX 0x9200
+#define PRID_IMP_CAVIUM_CN61XX 0x9300
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These are the PRID's for when 23:16 == PRID_COMP_INGENIC
@@ -173,12 +179,18 @@
 #define PRID_IMP_NETLOGIC_XLS408B	0x4e00
 #define PRID_IMP_NETLOGIC_XLS404B	0x4f00
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PRID_IMP_NETLOGIC_AU13XX	0x8000
 
 #define PRID_IMP_NETLOGIC_XLP8XX	0x1000
 #define PRID_IMP_NETLOGIC_XLP3XX	0x1100
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Definitions for 7:0 on legacy processors
@@ -276,8 +288,12 @@ enum cpu_type_enum {
 <<<<<<< HEAD
 	CPU_XLR, CPU_XLP,
 =======
+<<<<<<< HEAD
+	CPU_XLR, CPU_XLP,
+=======
 	CPU_XLR,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	CPU_LAST
 };

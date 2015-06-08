@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -41,8 +45,11 @@
 #include <mach/board.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -53,8 +60,12 @@ static void __init carmeva_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(20000000);
 =======
+<<<<<<< HEAD
+	at91_initialize(20000000);
+=======
 	at91rm9200_initialize(20000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* DBGU on ttyS0. (Rx & Tx only) */
 	at91_register_uart(0, 0, 0);
@@ -71,6 +82,9 @@ static void __init carmeva_init_early(void)
 <<<<<<< HEAD
 static struct macb_platform_data __initdata carmeva_eth_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata carmeva_eth_data = {
+=======
 static void __init carmeva_init_irq(void)
 {
 	at91rm9200_init_interrupts(NULL);
@@ -78,6 +92,7 @@ static void __init carmeva_init_irq(void)
 
 static struct at91_eth_data __initdata carmeva_eth_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PC4,
 	.is_rmii	= 1,
 };
@@ -88,7 +103,12 @@ static struct at91_usbh_data __initdata carmeva_usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_udc_data __initdata carmeva_udc_data = {
@@ -104,9 +124,14 @@ static struct at91_udc_data __initdata carmeva_udc_data = {
 	// .irq_pin	= -EINVAL,
 	// .vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	// .irq_pin	= -EINVAL,
+	// .vcc_pin	= -EINVAL,
+=======
 	// .irq_pin	= ... not connected
 	// .vcc_pin	= ... always powered
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 // };
 
 static struct at91_mmc_data __initdata carmeva_mmc_data = {
@@ -117,7 +142,11 @@ static struct at91_mmc_data __initdata carmeva_mmc_data = {
 <<<<<<< HEAD
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct spi_board_info carmeva_spi_devices[] = {
@@ -197,9 +226,15 @@ MACHINE_START(CARMEVA, "Carmeva")
 	.init_early	= carmeva_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= carmeva_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91rm9200_map_io,
 	.init_early	= carmeva_init_early,
 	.init_irq	= carmeva_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= carmeva_board_init,
 MACHINE_END

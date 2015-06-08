@@ -20,9 +20,14 @@
 #include <asm/unified.h>
 #include <asm/compiler.h>
 =======
+<<<<<<< HEAD
+#include <asm/unified.h>
+#include <asm/compiler.h>
+=======
 #include <asm/system.h>
 #include <asm/unified.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define VERIFY_READ 0
 #define VERIFY_WRITE 1
@@ -107,6 +112,9 @@ extern int __get_user_2(void *);
 extern int __get_user_4(void *);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __GUP_CLOBBER_1	"lr", "cc"
 #ifdef CONFIG_CPU_USE_DOMAINS
 #define __GUP_CLOBBER_2	"ip", "lr", "cc"
@@ -140,6 +148,8 @@ extern int __get_user_4(void *);
 			break;						\
 		case 4:							\
 			__get_user_x(__r2, __p, __e, __l, 4);		\
+<<<<<<< HEAD
+=======
 =======
 #define __get_user_x(__r2,__p,__e,__s,__i...)				\
 	   __asm__ __volatile__ (					\
@@ -164,6 +174,7 @@ extern int __get_user_4(void *);
 		case 4:							\
 	       		__get_user_x(__r2, __p, __e, 4, "lr");		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;						\
 		default: __e = __get_user_bad(); break;			\
 		}							\
@@ -177,6 +188,9 @@ extern int __put_user_4(void *, unsigned int);
 extern int __put_user_8(void *, unsigned long long);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __put_user_x(__r2,__p,__e,__l,__s)				\
 	   __asm__ __volatile__ (					\
 		__asmeq("%0", "r0") __asmeq("%2", "r2")			\
@@ -184,6 +198,8 @@ extern int __put_user_8(void *, unsigned long long);
 		"bl	__put_user_" #__s				\
 		: "=&r" (__e)						\
 		: "0" (__p), "r" (__r2), "r" (__l)			\
+<<<<<<< HEAD
+=======
 =======
 #define __put_user_x(__r2,__p,__e,__s)					\
 	   __asm__ __volatile__ (					\
@@ -192,11 +208,15 @@ extern int __put_user_8(void *, unsigned long long);
 		: "=&r" (__e)						\
 		: "0" (__p), "r" (__r2)					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		: "ip", "lr", "cc")
 
 #define put_user(x,p)							\
 	({								\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long __limit = current_thread_info()->addr_limit - 1; \
 		register const typeof(*(p)) __r2 asm("r2") = (x);	\
 		register const typeof(*(p)) __user *__p asm("r0") = (p);\
@@ -214,6 +234,8 @@ extern int __put_user_8(void *, unsigned long long);
 			break;						\
 		case 8:							\
 			__put_user_x(__r2, __p, __e, __l, 8);		\
+<<<<<<< HEAD
+=======
 =======
 		register const typeof(*(p)) __r2 asm("r2") = (x);	\
 		register const typeof(*(p)) __user *__p asm("r0") = (p);\
@@ -231,6 +253,7 @@ extern int __put_user_8(void *, unsigned long long);
 		case 8:							\
 			__put_user_x(__r2, __p, __e, 8);		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;						\
 		default: __e = __put_user_bad(); break;			\
 		}							\
@@ -301,8 +324,12 @@ do {									\
 <<<<<<< HEAD
 	"1:	" TUSER(ldrb) "	%1,[%2],#0\n"			\
 =======
+<<<<<<< HEAD
+	"1:	" TUSER(ldrb) "	%1,[%2],#0\n"			\
+=======
 	"1:	" T(ldrb) "	%1,[%2],#0\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"2:\n"							\
 	"	.pushsection .fixup,\"ax\"\n"			\
 	"	.align	2\n"					\
@@ -341,8 +368,12 @@ do {									\
 <<<<<<< HEAD
 	"1:	" TUSER(ldr) "	%1,[%2],#0\n"			\
 =======
+<<<<<<< HEAD
+	"1:	" TUSER(ldr) "	%1,[%2],#0\n"			\
+=======
 	"1:	" T(ldr) "	%1,[%2],#0\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"2:\n"							\
 	"	.pushsection .fixup,\"ax\"\n"			\
 	"	.align	2\n"					\
@@ -390,8 +421,12 @@ do {									\
 <<<<<<< HEAD
 	"1:	" TUSER(strb) "	%1,[%2],#0\n"			\
 =======
+<<<<<<< HEAD
+	"1:	" TUSER(strb) "	%1,[%2],#0\n"			\
+=======
 	"1:	" T(strb) "	%1,[%2],#0\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"2:\n"							\
 	"	.pushsection .fixup,\"ax\"\n"			\
 	"	.align	2\n"					\
@@ -427,8 +462,12 @@ do {									\
 <<<<<<< HEAD
 	"1:	" TUSER(str) "	%1,[%2],#0\n"			\
 =======
+<<<<<<< HEAD
+	"1:	" TUSER(str) "	%1,[%2],#0\n"			\
+=======
 	"1:	" T(str) "	%1,[%2],#0\n"			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"2:\n"							\
 	"	.pushsection .fixup,\"ax\"\n"			\
 	"	.align	2\n"					\
@@ -454,16 +493,22 @@ do {									\
 #define __put_user_asm_dword(x,__pu_addr,err)			\
 	__asm__ __volatile__(					\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  ARM(	"1:	" TUSER(str) "	" __reg_oper1 ", [%1], #4\n"	) \
  ARM(	"2:	" TUSER(str) "	" __reg_oper0 ", [%1]\n"	) \
  THUMB(	"1:	" TUSER(str) "	" __reg_oper1 ", [%1]\n"	) \
  THUMB(	"2:	" TUSER(str) "	" __reg_oper0 ", [%1, #4]\n"	) \
+<<<<<<< HEAD
+=======
 =======
  ARM(	"1:	" T(str) "	" __reg_oper1 ", [%1], #4\n"	)	\
  ARM(	"2:	" T(str) "	" __reg_oper0 ", [%1]\n"	)	\
  THUMB(	"1:	" T(str) "	" __reg_oper1 ", [%1]\n"	)	\
  THUMB(	"2:	" T(str) "	" __reg_oper0 ", [%1, #4]\n"	)	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"3:\n"							\
 	"	.pushsection .fixup,\"ax\"\n"			\
 	"	.align	2\n"					\

@@ -97,7 +97,12 @@ static int __init early_get_pnodeid(void)
 	if (node_id.s.part_number == UV2_HUB_PART_NUMBER_X)
 		uv_min_hub_revision_id += UV2_HUB_REVISION_BASE - 1;
 =======
+<<<<<<< HEAD
+	if (node_id.s.part_number == UV2_HUB_PART_NUMBER_X)
+		uv_min_hub_revision_id += UV2_HUB_REVISION_BASE - 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	uv_hub_info->hub_revision = uv_min_hub_revision_id;
 	pnode = (node_id.s.node_id >> 1) & ((1 << m_n_config.s.n_skt) - 1);
@@ -270,13 +275,19 @@ static void uv_send_IPI_all(int vector)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int uv_apic_id_valid(int apicid)
 {
 	return 1;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int uv_apic_id_registered(void)
 {
 	return 1;
@@ -365,7 +376,11 @@ static struct apic __refdata apic_x2apic_uv_x = {
 <<<<<<< HEAD
 	.apic_id_valid			= uv_apic_id_valid,
 =======
+<<<<<<< HEAD
+	.apic_id_valid			= uv_apic_id_valid,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.apic_id_registered		= uv_apic_id_registered,
 
 	.irq_delivery_mode		= dest_Fixed,
@@ -692,12 +707,18 @@ void __cpuinit uv_cpu_init(void)
 <<<<<<< HEAD
 int uv_handle_nmi(unsigned int reason, struct pt_regs *regs)
 =======
+<<<<<<< HEAD
+int uv_handle_nmi(unsigned int reason, struct pt_regs *regs)
+=======
 int uv_handle_nmi(struct notifier_block *self, unsigned long reason, void *data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long real_uv_nmi;
 	int bid;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (reason != DIE_NMIUNKNOWN)
@@ -708,6 +729,7 @@ int uv_handle_nmi(struct notifier_block *self, unsigned long reason, void *data)
 		return NOTIFY_OK;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Each blade has an MMR that indicates when an NMI has been sent
 	 * to cpus on the blade. If an NMI is detected, atomically
@@ -731,8 +753,12 @@ int uv_handle_nmi(struct notifier_block *self, unsigned long reason, void *data)
 <<<<<<< HEAD
 		return NMI_DONE;
 =======
+<<<<<<< HEAD
+		return NMI_DONE;
+=======
 		return NOTIFY_DONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__get_cpu_var(cpu_last_nmi_count) = uv_blade_info[bid].nmi_count;
 
@@ -746,12 +772,17 @@ int uv_handle_nmi(struct notifier_block *self, unsigned long reason, void *data)
 	spin_unlock(&uv_nmi_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NMI_HANDLED;
 }
 
 void uv_register_nmi_notifier(void)
 {
 	if (register_nmi_handler(NMI_UNKNOWN, uv_handle_nmi, 0, "uv"))
+<<<<<<< HEAD
+=======
 =======
 	return NOTIFY_STOP;
 }
@@ -765,6 +796,7 @@ void uv_register_nmi_notifier(void)
 {
 	if (register_die_notifier(&uv_dump_stack_nmi_nb))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_WARNING "UV NMI handler failed to register\n");
 }
 

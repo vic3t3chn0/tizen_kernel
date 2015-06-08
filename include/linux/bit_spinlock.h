@@ -7,8 +7,13 @@
 #include <linux/atomic.h>
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <linux/bug.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *  bit-based spin_lock()
@@ -96,8 +101,12 @@ static inline int bit_spin_is_locked(int bitnum, unsigned long *addr)
 <<<<<<< HEAD
 #elif defined CONFIG_PREEMPT_COUNT
 =======
+<<<<<<< HEAD
+#elif defined CONFIG_PREEMPT_COUNT
+=======
 #elif defined CONFIG_PREEMPT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return preempt_count();
 #else
 	return 1;

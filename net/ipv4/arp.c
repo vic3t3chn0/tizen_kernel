@@ -99,8 +99,11 @@
 #include <linux/rcupdate.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/jhash.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #ifdef CONFIG_SYSCTL
 #include <linux/sysctl.h>
@@ -119,6 +122,9 @@
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 #if defined(CONFIG_ATM_CLIP) || defined(CONFIG_ATM_CLIP_MODULE)
 #include <net/atmclip.h>
 struct neigh_table *clip_tbl_hook;
@@ -127,6 +133,7 @@ EXPORT_SYMBOL(clip_tbl_hook);
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/uaccess.h>
 
 #include <linux/netfilter_arp.h>
@@ -137,8 +144,12 @@ EXPORT_SYMBOL(clip_tbl_hook);
 <<<<<<< HEAD
 static u32 arp_hash(const void *pkey, const struct net_device *dev, __u32 *hash_rnd);
 =======
+<<<<<<< HEAD
+static u32 arp_hash(const void *pkey, const struct net_device *dev, __u32 *hash_rnd);
+=======
 static u32 arp_hash(const void *pkey, const struct net_device *dev, __u32 rnd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int arp_constructor(struct neighbour *neigh);
 static void arp_solicit(struct neighbour *neigh, struct sk_buff *skb);
 static void arp_error_report(struct neighbour *neigh, struct sk_buff *skb);
@@ -152,9 +163,12 @@ static const struct neigh_ops arp_generic_ops = {
 	.connected_output =	neigh_connected_output,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.hh_output =		dev_queue_xmit,
 	.queue_xmit =		dev_queue_xmit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct neigh_ops arp_hh_ops = {
@@ -165,13 +179,20 @@ static const struct neigh_ops arp_hh_ops = {
 	.connected_output =	neigh_resolve_output,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.hh_output =		dev_queue_xmit,
 	.queue_xmit =		dev_queue_xmit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct neigh_ops arp_direct_ops = {
 	.family =		AF_INET,
+<<<<<<< HEAD
+	.output =		neigh_direct_output,
+	.connected_output =	neigh_direct_output,
+=======
 <<<<<<< HEAD
 	.output =		neigh_direct_output,
 	.connected_output =	neigh_direct_output,
@@ -181,6 +202,7 @@ static const struct neigh_ops arp_direct_ops = {
 	.hh_output =		dev_queue_xmit,
 	.queue_xmit =		dev_queue_xmit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct neigh_ops arp_broken_ops = {
@@ -191,17 +213,23 @@ static const struct neigh_ops arp_broken_ops = {
 	.connected_output =	neigh_compat_output,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.hh_output =		dev_queue_xmit,
 	.queue_xmit =		dev_queue_xmit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct neigh_table arp_tbl = {
 	.family		= AF_INET,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.entry_size	= sizeof(struct neighbour) + 4,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.key_len	= 4,
 	.hash		= arp_hash,
 	.constructor	= arp_constructor,
@@ -217,8 +245,12 @@ struct neigh_table arp_tbl = {
 <<<<<<< HEAD
 		.queue_len_bytes	= 64*1024,
 =======
+<<<<<<< HEAD
+		.queue_len_bytes	= 64*1024,
+=======
 		.queue_len		= 3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ucast_probes		= 3,
 		.mcast_probes		= 3,
 		.anycast_delay		= 1 * HZ,
@@ -267,10 +299,16 @@ static u32 arp_hash(const void *pkey,
 {
 	return arp_hashfn(*(u32 *)pkey, dev, *hash_rnd);
 =======
+<<<<<<< HEAD
+		    __u32 *hash_rnd)
+{
+	return arp_hashfn(*(u32 *)pkey, dev, *hash_rnd);
+=======
 		    __u32 hash_rnd)
 {
 	return jhash_2words(*(u32 *)pkey, dev->ifindex, hash_rnd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int arp_constructor(struct neighbour *neigh)
@@ -300,8 +338,12 @@ static int arp_constructor(struct neighbour *neigh)
 <<<<<<< HEAD
 		neigh->output = neigh_direct_output;
 =======
+<<<<<<< HEAD
+		neigh->output = neigh_direct_output;
+=======
 		neigh->output = neigh->ops->queue_xmit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* Good devices (checked by reading texts, but only Ethernet is
 		   tested)
@@ -339,10 +381,16 @@ static int arp_constructor(struct neighbour *neigh)
 		case ARPHRD_AX25:
 #if IS_ENABLED(CONFIG_NETROM)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_AX25)
+		case ARPHRD_AX25:
+#if IS_ENABLED(CONFIG_NETROM)
+=======
 #if defined(CONFIG_AX25) || defined(CONFIG_AX25_MODULE)
 		case ARPHRD_AX25:
 #if defined(CONFIG_NETROM) || defined(CONFIG_NETROM_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case ARPHRD_NETROM:
 #endif
 			neigh->ops = &arp_broken_ops;
@@ -568,6 +616,8 @@ EXPORT_SYMBOL(arp_find);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct neighbour *__arp_bind_neighbour(struct dst_entry *dst, __be32 nexthop)
 {
 	struct net_device *dev = dst->dev;
@@ -599,6 +649,7 @@ int arp_bind_neighbour(struct dst_entry *dst)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Check if we can use proxy ARP for this path
  */
@@ -686,18 +737,28 @@ struct sk_buff *arp_create(int type, int ptype, __be32 dest_ip,
 	int hlen = LL_RESERVED_SPACE(dev);
 	int tlen = dev->needed_tailroom;
 =======
+<<<<<<< HEAD
+	int hlen = LL_RESERVED_SPACE(dev);
+	int tlen = dev->needed_tailroom;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 *	Allocate a buffer
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb = alloc_skb(arp_hdr_len(dev) + hlen + tlen, GFP_ATOMIC);
 	if (skb == NULL)
 		return NULL;
 
 	skb_reserve(skb, hlen);
+<<<<<<< HEAD
+=======
 =======
 	skb = alloc_skb(arp_hdr_len(dev) + LL_ALLOCATED_SPACE(dev), GFP_ATOMIC);
 	if (skb == NULL)
@@ -705,6 +766,7 @@ struct sk_buff *arp_create(int type, int ptype, __be32 dest_ip,
 
 	skb_reserve(skb, LL_RESERVED_SPACE(dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_reset_network_header(skb);
 	arp = (struct arphdr *) skb_put(skb, arp_hdr_len(dev));
 	skb->dev = dev;
@@ -739,8 +801,12 @@ struct sk_buff *arp_create(int type, int ptype, __be32 dest_ip,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_AX25)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_AX25)
+=======
 #if defined(CONFIG_AX25) || defined(CONFIG_AX25_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ARPHRD_AX25:
 		arp->ar_hrd = htons(ARPHRD_AX25);
 		arp->ar_pro = htons(AX25_P_IP);
@@ -749,8 +815,12 @@ struct sk_buff *arp_create(int type, int ptype, __be32 dest_ip,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_NETROM)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_NETROM)
+=======
 #if defined(CONFIG_NETROM) || defined(CONFIG_NETROM_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ARPHRD_NETROM:
 		arp->ar_hrd = htons(ARPHRD_NETROM);
 		arp->ar_pro = htons(AX25_P_IP);
@@ -761,8 +831,12 @@ struct sk_buff *arp_create(int type, int ptype, __be32 dest_ip,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_FDDI)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_FDDI)
+=======
 #if defined(CONFIG_FDDI) || defined(CONFIG_FDDI_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ARPHRD_FDDI:
 		arp->ar_hrd = htons(ARPHRD_ETHER);
 		arp->ar_pro = htons(ETH_P_IP);
@@ -771,8 +845,12 @@ struct sk_buff *arp_create(int type, int ptype, __be32 dest_ip,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_TR)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_TR)
+=======
 #if defined(CONFIG_TR) || defined(CONFIG_TR_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ARPHRD_IEEE802_TR:
 		arp->ar_hrd = htons(ARPHRD_IEEE802);
 		arp->ar_pro = htons(ETH_P_IP);
@@ -1015,8 +1093,12 @@ static int arp_process(struct sk_buff *skb)
 <<<<<<< HEAD
 	if (IN_DEV_ARP_ACCEPT(in_dev)) {
 =======
+<<<<<<< HEAD
+	if (IN_DEV_ARP_ACCEPT(in_dev)) {
+=======
 	if (IPV4_DEVCONF_ALL(dev_net(dev), ARP_ACCEPT)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Unsolicited ARP is not accepted by default.
 		   It is possible, that this option should be enabled for some
 		   devices (strip is candidate)
@@ -1167,8 +1249,12 @@ static int arp_req_set(struct net *net, struct arpreq *r,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_FDDI)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_FDDI)
+=======
 #if defined(CONFIG_FDDI) || defined(CONFIG_FDDI_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ARPHRD_FDDI:
 		/*
 		 * According to RFC 1390, FDDI devices should accept ARP
@@ -1417,8 +1503,12 @@ void __init arp_init(void)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_AX25)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_AX25)
+=======
 #if defined(CONFIG_AX25) || defined(CONFIG_AX25_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ------------------------------------------------------------------------ */
 /*
@@ -1469,8 +1559,12 @@ static void arp_format_neigh_entry(struct seq_file *seq,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_AX25)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_AX25)
+=======
 #if defined(CONFIG_AX25) || defined(CONFIG_AX25_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hatype == ARPHRD_AX25 || hatype == ARPHRD_NETROM)
 		ax2asc2((ax25_address *)n->ha, hbuffer);
 	else {
@@ -1486,8 +1580,12 @@ static void arp_format_neigh_entry(struct seq_file *seq,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_AX25)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_AX25)
+=======
 #if defined(CONFIG_AX25) || defined(CONFIG_AX25_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #endif
 	sprintf(tbuf, "%pI4", n->primary_key);

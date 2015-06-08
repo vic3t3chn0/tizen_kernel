@@ -4,7 +4,15 @@
  *
  * Author       Roland Klabunde
  * Copyright    by Roland Klabunde   <R.Klabunde@Berkom.de>
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+=======
  * 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
  *
@@ -39,7 +47,15 @@ readreg(unsigned int ale, unsigned long adr, u_char off)
 
 
 static inline void
+<<<<<<< HEAD
+<<<<<<< HEAD
+readfifo(unsigned int ale, unsigned long adr, u_char off, u_char *data, int size)
+=======
 readfifo(unsigned int ale, unsigned long adr, u_char off, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+readfifo(unsigned int ale, unsigned long adr, u_char off, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 	for (i = 0; i < size; i++)
@@ -59,7 +75,15 @@ writereg(unsigned int ale, unsigned long adr, u_char off, u_char data)
 
 
 static inline void
+<<<<<<< HEAD
+<<<<<<< HEAD
+writefifo(unsigned int ale, unsigned long adr, u_char off, u_char *data, int size)
+=======
 writefifo(unsigned int ale, unsigned long adr, u_char off, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+writefifo(unsigned int ale, unsigned long adr, u_char off, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -83,13 +107,29 @@ WriteISAC(struct IsdnCardState *cs, u_char offset, u_char value)
 }
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+ReadISACfifo(struct IsdnCardState *cs, u_char *data, int size)
+=======
 ReadISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ReadISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	readfifo(cs->hw.ax.isac_ale, cs->hw.ax.isac_adr, 0, data, size);
 }
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+WriteISACfifo(struct IsdnCardState *cs, u_char *data, int size)
+=======
 WriteISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+WriteISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	writefifo(cs->hw.ax.isac_ale, cs->hw.ax.isac_adr, 0, data, size);
 }
@@ -110,6 +150,20 @@ WriteJADE(struct IsdnCardState *cs, int jade, u_char offset, u_char value)
  * fast interrupt JADE stuff goes here
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define READJADE(cs, nr, reg) readreg(cs->hw.ax.jade_ale,		\
+				      cs->hw.ax.jade_adr, reg + (nr == -1 ? 0 : (nr ? 0xC0 : 0x80)))
+#define WRITEJADE(cs, nr, reg, data) writereg(cs->hw.ax.jade_ale,	\
+					      cs->hw.ax.jade_adr, reg + (nr == -1 ? 0 : (nr ? 0xC0 : 0x80)), data)
+
+#define READJADEFIFO(cs, nr, ptr, cnt) readfifo(cs->hw.ax.jade_ale,	\
+						cs->hw.ax.jade_adr, (nr == -1 ? 0 : (nr ? 0xC0 : 0x80)), ptr, cnt)
+#define WRITEJADEFIFO(cs, nr, ptr, cnt) writefifo(cs->hw.ax.jade_ale,	\
+						  cs->hw.ax.jade_adr, (nr == -1 ? 0 : (nr ? 0xC0 : 0x80)), ptr, cnt)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define READJADE(cs, nr, reg) readreg(cs->hw.ax.jade_ale,\
  		cs->hw.ax.jade_adr, reg + (nr == -1 ? 0 : (nr ? 0xC0 : 0x80)))
 #define WRITEJADE(cs, nr, reg, data) writereg(cs->hw.ax.jade_ale,\
@@ -119,6 +173,10 @@ WriteJADE(struct IsdnCardState *cs, int jade, u_char offset, u_char value)
 		cs->hw.ax.jade_adr, (nr == -1 ? 0 : (nr ? 0xC0 : 0x80)), ptr, cnt)
 #define WRITEJADEFIFO(cs, nr, ptr, cnt) writefifo( cs->hw.ax.jade_ale,\
 		cs->hw.ax.jade_adr, (nr == -1 ? 0 : (nr ? 0xC0 : 0x80)), ptr, cnt)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "jade_irq.c"
 
@@ -201,11 +259,25 @@ reset_bkm(struct IsdnCardState *cs)
 		pI20_Regs->i20SysControl = sysRESET | sysCFG;
 		/* Issue ISDN reset     */
 		pI20_Regs->i20GuestControl = guestWAIT_CFG |
+<<<<<<< HEAD
+<<<<<<< HEAD
+			g_A4T_JADE_RES |
+			g_A4T_ISAR_RES |
+			g_A4T_ISAC_RES |
+			g_A4T_JADE_BOOTR |
+			g_A4T_ISAR_BOOTR;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    g_A4T_JADE_RES |
 		    g_A4T_ISAR_RES |
 		    g_A4T_ISAC_RES |
 		    g_A4T_JADE_BOOTR |
 		    g_A4T_ISAR_BOOTR;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mdelay(10);
 
 		/* Remove RESET state from ISDN */
@@ -222,6 +294,38 @@ BKM_card_msg(struct IsdnCardState *cs, int mt, void *arg)
 	u_long flags;
 
 	switch (mt) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case CARD_RESET:
+		/* Disable ints */
+		spin_lock_irqsave(&cs->lock, flags);
+		enable_bkm_int(cs, 0);
+		reset_bkm(cs);
+		spin_unlock_irqrestore(&cs->lock, flags);
+		return (0);
+	case CARD_RELEASE:
+		/* Sanity */
+		spin_lock_irqsave(&cs->lock, flags);
+		enable_bkm_int(cs, 0);
+		reset_bkm(cs);
+		spin_unlock_irqrestore(&cs->lock, flags);
+		release_io_bkm(cs);
+		return (0);
+	case CARD_INIT:
+		spin_lock_irqsave(&cs->lock, flags);
+		clear_pending_isac_ints(cs);
+		clear_pending_jade_ints(cs);
+		initisac(cs);
+		initjade(cs);
+		/* Enable ints */
+		enable_bkm_int(cs, 1);
+		spin_unlock_irqrestore(&cs->lock, flags);
+		return (0);
+	case CARD_TEST:
+		return (0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case CARD_RESET:
 			/* Disable ints */
 			spin_lock_irqsave(&cs->lock, flags);
@@ -249,6 +353,10 @@ BKM_card_msg(struct IsdnCardState *cs, int mt, void *arg)
 			return (0);
 		case CARD_TEST:
 			return (0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return (0);
 }
@@ -341,7 +449,15 @@ setup_bkm_a4t(struct IsdnCard *card)
 		return (0);
 
 	while ((dev_a4t = hisax_find_pci_device(PCI_VENDOR_ID_ZORAN,
+<<<<<<< HEAD
+<<<<<<< HEAD
+						PCI_DEVICE_ID_ZORAN_36120, dev_a4t))) {
+=======
 		PCI_DEVICE_ID_ZORAN_36120, dev_a4t))) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		PCI_DEVICE_ID_ZORAN_36120, dev_a4t))) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = a4t_pci_probe(dev_a4t, cs, &found, &pci_memaddr);
 		if (!ret)
 			return (0);

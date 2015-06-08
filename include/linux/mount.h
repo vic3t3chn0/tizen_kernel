@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct super_block;
 struct vfsmount;
@@ -52,10 +56,15 @@ struct mnt_namespace;
 #define MNT_INTERNAL	0x4000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct vfsmount {
 	struct dentry *mnt_root;	/* root of the mounted tree */
 	struct super_block *mnt_sb;	/* pointer to superblock */
 	int mnt_flags;
+<<<<<<< HEAD
+=======
 =======
 struct mnt_pcp {
 	int mnt_count;
@@ -97,6 +106,7 @@ struct vfsmount {
 	int mnt_pinned;
 	int mnt_ghosts;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct file; /* forward dec */
@@ -108,7 +118,11 @@ extern void mnt_drop_write(struct vfsmount *mnt);
 <<<<<<< HEAD
 extern void mnt_drop_write_file(struct file *file);
 =======
+<<<<<<< HEAD
+extern void mnt_drop_write_file(struct file *file);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void mntput(struct vfsmount *mnt);
 extern struct vfsmount *mntget(struct vfsmount *mnt);
 extern void mnt_pin(struct vfsmount *mnt);
@@ -117,10 +131,13 @@ extern int __mnt_is_readonly(struct vfsmount *mnt);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct vfsmount *do_kern_mount(const char *fstype, int flags,
 				      const char *name, void *data);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct file_system_type;
 extern struct vfsmount *vfs_kern_mount(struct file_system_type *type,
 				      int flags, const char *name,

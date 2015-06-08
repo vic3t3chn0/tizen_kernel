@@ -17,6 +17,13 @@
  */
 
 #include <linux/pci.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/acpi.h>
 #include <linux/slab.h>
 #include <acpi/acpi_bus.h>
@@ -26,7 +33,15 @@ struct ioapic {
 	u32		gsi_base;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit ioapic_probe(struct pci_dev *dev, const struct pci_device_id *ent)
+=======
 static int ioapic_probe(struct pci_dev *dev, const struct pci_device_id *ent)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ioapic_probe(struct pci_dev *dev, const struct pci_device_id *ent)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	acpi_handle handle;
 	acpi_status status;
@@ -87,7 +102,15 @@ exit_free:
 	return -ENODEV;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __devexit ioapic_remove(struct pci_dev *dev)
+=======
 static void ioapic_remove(struct pci_dev *dev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ioapic_remove(struct pci_dev *dev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ioapic *ioapic = pci_get_drvdata(dev);
 
@@ -98,6 +121,17 @@ static void ioapic_remove(struct pci_dev *dev)
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DEFINE_PCI_DEVICE_TABLE(ioapic_devices) = {
+	{ PCI_DEVICE_CLASS(PCI_CLASS_SYSTEM_PIC_IOAPIC, ~0) },
+	{ PCI_DEVICE_CLASS(PCI_CLASS_SYSTEM_PIC_IOXAPIC, ~0) },
+	{ }
+};
+MODULE_DEVICE_TABLE(pci, ioapic_devices);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pci_device_id ioapic_devices[] = {
 	{ PCI_ANY_ID, PCI_ANY_ID, PCI_ANY_ID, PCI_ANY_ID,
 	  PCI_CLASS_SYSTEM_PIC_IOAPIC << 8, 0xffff00, },
@@ -105,6 +139,10 @@ static struct pci_device_id ioapic_devices[] = {
 	  PCI_CLASS_SYSTEM_PIC_IOXAPIC << 8, 0xffff00, },
 	{ }
 };
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct pci_driver ioapic_driver = {
 	.name		= "ioapic",

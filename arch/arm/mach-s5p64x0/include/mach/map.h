@@ -51,7 +51,12 @@
 #define S5P64X0_PA_FB		0xEE000000
 
 =======
+<<<<<<< HEAD
+#define S5P64X0_PA_FB		0xEE000000
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P64X0_PA_I2S		0xF2000000
 #define S5P6450_PA_I2S1		0xF2800000
 #define S5P6450_PA_I2S2		0xF2900000
@@ -74,7 +79,13 @@
 #define S3C_PA_SPI0		S5P64X0_PA_SPI0
 #define S3C_PA_SPI1		S5P64X0_PA_SPI1
 =======
+<<<<<<< HEAD
+#define S3C_PA_FB		S5P64X0_PA_FB
+#define S3C_PA_SPI0		S5P64X0_PA_SPI0
+#define S3C_PA_SPI1		S5P64X0_PA_SPI1
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define S5P_PA_CHIPID		S5P64X0_PA_CHIPID
 #define S5P_PA_SROMC		S5P64X0_PA_SROMC
@@ -99,6 +110,10 @@
 <<<<<<< HEAD
 #define S3C_VA_UARTx(x)		(S3C_VA_UART + ((x) * S3C_UART_OFFSET))
 =======
+<<<<<<< HEAD
+#define S3C_VA_UARTx(x)		(S3C_VA_UART + ((x) * S3C_UART_OFFSET))
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_MAP_H */

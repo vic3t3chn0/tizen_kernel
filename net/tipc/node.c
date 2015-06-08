@@ -43,7 +43,12 @@
 #define NODE_HTABLE_SIZE 512
 
 =======
+<<<<<<< HEAD
+#define NODE_HTABLE_SIZE 512
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void node_lost_contact(struct tipc_node *n_ptr);
 static void node_established_contact(struct tipc_node *n_ptr);
 
@@ -55,6 +60,9 @@ static u32 tipc_num_nodes;
 
 static atomic_t tipc_num_links = ATOMIC_INIT(0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * A trivial power-of-two bitmask technique is used for speed, since this
@@ -68,11 +76,14 @@ static inline unsigned int tipc_hashfn(u32 addr)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 u32 tipc_own_tag;
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tipc_node_find - locate specified node object, if it exists
  */
 
@@ -137,7 +148,12 @@ struct tipc_node *tipc_node_create(u32 addr)
 	n_ptr->block_setup = WAIT_PEER_DOWN;
 	n_ptr->signature = INVALID_NODE_SIG;
 =======
+<<<<<<< HEAD
+	n_ptr->block_setup = WAIT_PEER_DOWN;
+	n_ptr->signature = INVALID_NODE_SIG;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tipc_num_nodes++;
 
@@ -166,10 +182,16 @@ void tipc_node_link_up(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
 {
 	struct tipc_link **active = &n_ptr->active_links[0];
 =======
+<<<<<<< HEAD
+void tipc_node_link_up(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
+{
+	struct tipc_link **active = &n_ptr->active_links[0];
+=======
 void tipc_node_link_up(struct tipc_node *n_ptr, struct link *l_ptr)
 {
 	struct link **active = &n_ptr->active_links[0];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	n_ptr->working_links++;
 
@@ -205,8 +227,12 @@ static void node_select_active_links(struct tipc_node *n_ptr)
 <<<<<<< HEAD
 	struct tipc_link **active = &n_ptr->active_links[0];
 =======
+<<<<<<< HEAD
+	struct tipc_link **active = &n_ptr->active_links[0];
+=======
 	struct link **active = &n_ptr->active_links[0];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 i;
 	u32 highest_prio = 0;
 
@@ -216,8 +242,12 @@ static void node_select_active_links(struct tipc_node *n_ptr)
 <<<<<<< HEAD
 		struct tipc_link *l_ptr = n_ptr->links[i];
 =======
+<<<<<<< HEAD
+		struct tipc_link *l_ptr = n_ptr->links[i];
+=======
 		struct link *l_ptr = n_ptr->links[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!l_ptr || !tipc_link_is_up(l_ptr) ||
 		    (l_ptr->priority < highest_prio))
@@ -241,10 +271,16 @@ void tipc_node_link_down(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
 {
 	struct tipc_link **active;
 =======
+<<<<<<< HEAD
+void tipc_node_link_down(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
+{
+	struct tipc_link **active;
+=======
 void tipc_node_link_down(struct tipc_node *n_ptr, struct link *l_ptr)
 {
 	struct link **active;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	n_ptr->working_links--;
 
@@ -287,8 +323,12 @@ int tipc_node_is_up(struct tipc_node *n_ptr)
 <<<<<<< HEAD
 void tipc_node_attach_link(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+void tipc_node_attach_link(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
+=======
 void tipc_node_attach_link(struct tipc_node *n_ptr, struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	n_ptr->links[l_ptr->b_ptr->identity] = l_ptr;
 	atomic_inc(&tipc_num_links);
@@ -298,14 +338,20 @@ void tipc_node_attach_link(struct tipc_node *n_ptr, struct link *l_ptr)
 <<<<<<< HEAD
 void tipc_node_detach_link(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+void tipc_node_detach_link(struct tipc_node *n_ptr, struct tipc_link *l_ptr)
+=======
 void tipc_node_detach_link(struct tipc_node *n_ptr, struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	n_ptr->links[l_ptr->b_ptr->identity] = NULL;
 	atomic_dec(&tipc_num_links);
 	n_ptr->link_cnt--;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -355,11 +401,15 @@ void tipc_node_detach_link(struct tipc_node *n_ptr, struct link *l_ptr)
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void node_established_contact(struct tipc_node *n_ptr)
 {
 	tipc_k_signal((Handler)tipc_named_node_up, n_ptr->addr);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (n_ptr->bclink.supportable) {
 		n_ptr->bclink.acked = tipc_bclink_get_last_sent();
 		tipc_bclink_add_node(n_ptr->addr);
@@ -368,6 +418,8 @@ static void node_established_contact(struct tipc_node *n_ptr)
 }
 
 static void node_name_purge_complete(unsigned long node_addr)
+<<<<<<< HEAD
+=======
 =======
 	/* Syncronize broadcast acks */
 	n_ptr->bclink.acked = tipc_bclink_get_last_sent();
@@ -381,6 +433,7 @@ static void node_name_purge_complete(unsigned long node_addr)
 
 static void node_cleanup_finished(unsigned long node_addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tipc_node *n_ptr;
 
@@ -391,8 +444,12 @@ static void node_cleanup_finished(unsigned long node_addr)
 <<<<<<< HEAD
 		n_ptr->block_setup &= ~WAIT_NAMES_GONE;
 =======
+<<<<<<< HEAD
+		n_ptr->block_setup &= ~WAIT_NAMES_GONE;
+=======
 		n_ptr->cleanup_required = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tipc_node_unlock(n_ptr);
 	}
 	read_unlock_bh(&tipc_net_lock);
@@ -404,6 +461,9 @@ static void node_lost_contact(struct tipc_node *n_ptr)
 	u32 i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info("Lost contact with %s\n",
 	     tipc_addr_string_fill(addr_string, n_ptr->addr));
 
@@ -431,6 +491,8 @@ static void node_lost_contact(struct tipc_node *n_ptr)
 	/* Abort link changeover */
 	for (i = 0; i < MAX_BEARERS; i++) {
 		struct tipc_link *l_ptr = n_ptr->links[i];
+<<<<<<< HEAD
+=======
 =======
 	/* Clean up broadcast reception remains */
 	n_ptr->bclink.gap_after = n_ptr->bclink.gap_to = 0;
@@ -459,6 +521,7 @@ static void node_lost_contact(struct tipc_node *n_ptr)
 	for (i = 0; i < MAX_BEARERS; i++) {
 		struct link *l_ptr = n_ptr->links[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!l_ptr)
 			continue;
 		l_ptr->reset_checkpoint = l_ptr->next_in_no;
@@ -470,16 +533,22 @@ static void node_lost_contact(struct tipc_node *n_ptr)
 	tipc_nodesub_notify(n_ptr);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Prevent re-contact with node until cleanup is done */
 
 	n_ptr->block_setup = WAIT_PEER_DOWN | WAIT_NAMES_GONE;
 	tipc_k_signal((Handler)node_name_purge_complete, n_ptr->addr);
+<<<<<<< HEAD
+=======
 =======
 	/* Prevent re-contact with node until all cleanup is done */
 
 	n_ptr->cleanup_required = 1;
 	tipc_k_signal((Handler)node_cleanup_finished, n_ptr->addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct sk_buff *tipc_node_get_nodes(const void *req_tlv_area, int req_tlv_space)
@@ -552,8 +621,12 @@ struct sk_buff *tipc_node_get_links(const void *req_tlv_area, int req_tlv_space)
 <<<<<<< HEAD
 	if (!tipc_own_addr)
 =======
+<<<<<<< HEAD
+	if (!tipc_own_addr)
+=======
 	if (tipc_mode != TIPC_NET_MODE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return tipc_cfg_reply_none();
 
 	read_lock_bh(&tipc_net_lock);
@@ -561,8 +634,12 @@ struct sk_buff *tipc_node_get_links(const void *req_tlv_area, int req_tlv_space)
 <<<<<<< HEAD
 	/* Get space for all unicast links + broadcast link */
 =======
+<<<<<<< HEAD
+	/* Get space for all unicast links + broadcast link */
+=======
 	/* Get space for all unicast links + multicast link */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	payload_size = TLV_SPACE(sizeof(link_info)) *
 		(atomic_read(&tipc_num_links) + 1);

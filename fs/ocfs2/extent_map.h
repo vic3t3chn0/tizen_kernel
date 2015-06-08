@@ -57,7 +57,12 @@ int ocfs2_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
 int ocfs2_seek_data_hole_offset(struct file *file, loff_t *offset, int origin);
 
 =======
+<<<<<<< HEAD
+int ocfs2_seek_data_hole_offset(struct file *file, loff_t *offset, int origin);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ocfs2_xattr_get_clusters(struct inode *inode, u32 v_cluster,
 			     u32 *p_cluster, u32 *num_clusters,
 			     struct ocfs2_extent_list *el,

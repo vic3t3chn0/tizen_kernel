@@ -1,15 +1,21 @@
 /* arch/arm/mach-s5pv210/include/mach/regs-audss.h
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (c) 2011 Samsung Electronics
  *		http://www.samsung.com
  *
  * S5PV210 Audio SubSystem clock register definitions
+<<<<<<< HEAD
+=======
 =======
  * Copyright 2011 Samsung Electronics
  *
  * S5PV2XX Audio SubSystem clock register definitions
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -17,12 +23,17 @@
 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __PLAT_REGS_AUDSS_H
 #define __PLAT_REGS_AUDSS_H __FILE__
 
 #define S5PV210_AUDSS_INT_MEM	(0xC0000000)
 
 #endif /* _PLAT_REGS_AUDSS_H */
+<<<<<<< HEAD
+=======
 =======
 #ifndef __MACH_REGS_AUDSS_H
 #define __MACH_REGS_AUDSS_H __FILE__
@@ -58,3 +69,4 @@
 
 #endif /* _MACH_REGS_AUDSS_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

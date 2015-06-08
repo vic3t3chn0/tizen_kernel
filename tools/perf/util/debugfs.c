@@ -3,16 +3,22 @@
 #include "cache.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <sys/mount.h>
 
 static int debugfs_premounted;
 char debugfs_mountpoint[PATH_MAX + 1] = "/sys/kernel/debug";
 char tracing_events_path[PATH_MAX + 1] = "/sys/kernel/debug/tracing/events";
+<<<<<<< HEAD
+=======
 =======
 static int debugfs_premounted;
 static char debugfs_mountpoint[MAX_PATH+1];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const char *debugfs_known_mountpoints[] = {
 	"/sys/kernel/debug/",
@@ -20,6 +26,8 @@ static const char *debugfs_known_mountpoints[] = {
 	0,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* use this to force a umount */
@@ -49,6 +57,7 @@ int debugfs_make_path(const char *element, char *buffer, int size)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int debugfs_found;
 
 /* find the path to the mounted debugfs */
@@ -79,12 +88,18 @@ const char *debugfs_find_mountpoint(void)
 
 	while (fscanf(fp, "%*s %" STR(PATH_MAX) "s %99s %*s %*d %*d\n",
 =======
+<<<<<<< HEAD
+		return NULL;
+
+	while (fscanf(fp, "%*s %" STR(PATH_MAX) "s %99s %*s %*d %*d\n",
+=======
 		die("Can't open /proc/mounts for read");
 
 	while (fscanf(fp, "%*s %"
 		      STR(MAX_PATH)
 		      "s %99s %*s %*d %*d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      debugfs_mountpoint, type) == 2) {
 		if (strcmp(type, "debugfs") == 0)
 			break;
@@ -114,10 +129,15 @@ int debugfs_valid_mountpoint(const char *debugfs)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void debugfs_set_tracing_events_path(const char *mountpoint)
 {
 	snprintf(tracing_events_path, sizeof(tracing_events_path), "%s/%s",
 		 mountpoint, "tracing/events");
+<<<<<<< HEAD
+=======
 =======
 
 int debugfs_valid_entry(const char *path)
@@ -129,6 +149,7 @@ int debugfs_valid_entry(const char *path)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* mount the debugfs somewhere if it's not mounted */
@@ -141,8 +162,12 @@ char *debugfs_mount(const char *mountpoint)
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return debugfs_mountpoint;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if not mounted and no argument */
@@ -159,6 +184,9 @@ char *debugfs_mount(const char *mountpoint)
 
 	/* save the mountpoint */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	debugfs_found = 1;
 	strncpy(debugfs_mountpoint, mountpoint, sizeof(debugfs_mountpoint));
 out:
@@ -170,6 +198,8 @@ void debugfs_set_path(const char *mountpoint)
 {
 	snprintf(debugfs_mountpoint, sizeof(debugfs_mountpoint), "%s", mountpoint);
 	debugfs_set_tracing_events_path(mountpoint);
+<<<<<<< HEAD
+=======
 =======
 	strncpy(debugfs_mountpoint, mountpoint, sizeof(debugfs_mountpoint));
 	debugfs_found = 1;
@@ -280,4 +310,5 @@ int debugfs_read(const char *entry, char *buffer, size_t size)
 	/* return the number of chars read */
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

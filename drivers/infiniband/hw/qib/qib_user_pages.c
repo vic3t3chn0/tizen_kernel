@@ -74,7 +74,15 @@ static int __qib_get_user_pages(unsigned long start_page, size_t num_pages,
 			goto bail_release;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	current->mm->pinned_vm += num_pages;
+=======
 	current->mm->locked_vm += num_pages;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	current->mm->locked_vm += num_pages;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = 0;
 	goto bail;
@@ -151,7 +159,15 @@ void qib_release_user_pages(struct page **p, size_t num_pages)
 	__qib_release_user_pages(p, num_pages, 1);
 
 	if (current->mm) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		current->mm->pinned_vm -= num_pages;
+=======
 		current->mm->locked_vm -= num_pages;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		current->mm->locked_vm -= num_pages;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		up_write(&current->mm->mmap_sem);
 	}
 }

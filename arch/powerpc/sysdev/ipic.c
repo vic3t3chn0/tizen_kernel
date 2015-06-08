@@ -675,8 +675,12 @@ static struct irq_chip ipic_edge_irq_chip = {
 <<<<<<< HEAD
 static int ipic_host_match(struct irq_domain *h, struct device_node *node)
 =======
+<<<<<<< HEAD
+static int ipic_host_match(struct irq_domain *h, struct device_node *node)
+=======
 static int ipic_host_match(struct irq_host *h, struct device_node *node)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Exact match, unless ipic node is NULL */
 	return h->of_node == NULL || h->of_node == node;
@@ -685,8 +689,12 @@ static int ipic_host_match(struct irq_host *h, struct device_node *node)
 <<<<<<< HEAD
 static int ipic_host_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int ipic_host_map(struct irq_domain *h, unsigned int virq,
+=======
 static int ipic_host_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 irq_hw_number_t hw)
 {
 	struct ipic *ipic = h->host_data;
@@ -701,10 +709,15 @@ static int ipic_host_map(struct irq_host *h, unsigned int virq,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct irq_domain_ops ipic_host_ops = {
 	.match	= ipic_host_match,
 	.map	= ipic_host_map,
 	.xlate	= irq_domain_xlate_onetwocell,
+<<<<<<< HEAD
+=======
 =======
 static int ipic_host_xlate(struct irq_host *h, struct device_node *ct,
 			   const u32 *intspec, unsigned int intsize,
@@ -727,6 +740,7 @@ static struct irq_host_ops ipic_host_ops = {
 	.map	= ipic_host_map,
 	.xlate	= ipic_host_xlate,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct ipic * __init ipic_init(struct device_node *node, unsigned int flags)
@@ -747,10 +761,15 @@ struct ipic * __init ipic_init(struct device_node *node, unsigned int flags)
 	ipic->irqhost = irq_domain_add_linear(node, NR_IPIC_INTS,
 					      &ipic_host_ops, ipic);
 =======
+<<<<<<< HEAD
+	ipic->irqhost = irq_domain_add_linear(node, NR_IPIC_INTS,
+					      &ipic_host_ops, ipic);
+=======
 	ipic->irqhost = irq_alloc_host(node, IRQ_HOST_MAP_LINEAR,
 				       NR_IPIC_INTS,
 				       &ipic_host_ops, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ipic->irqhost == NULL) {
 		kfree(ipic);
 		return NULL;
@@ -759,10 +778,14 @@ struct ipic * __init ipic_init(struct device_node *node, unsigned int flags)
 <<<<<<< HEAD
 	ipic->regs = ioremap(res.start, resource_size(&res));
 =======
+<<<<<<< HEAD
+	ipic->regs = ioremap(res.start, resource_size(&res));
+=======
 	ipic->regs = ioremap(res.start, res.end - res.start + 1);
 
 	ipic->irqhost->host_data = ipic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* init hw */
 	ipic_write(ipic->regs, IPIC_SICNR, 0x0);

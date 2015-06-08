@@ -108,11 +108,16 @@ static inline struct timespec timespec_sub(struct timespec lhs,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Returns true if the timespec is norm, false if denorm:
  */
 #define timespec_valid(ts) \
 	(((ts)->tv_sec >= 0) && (((unsigned long) (ts)->tv_nsec) < NSEC_PER_SEC))
+<<<<<<< HEAD
+=======
 =======
 #define KTIME_MAX			((s64)~((u64)1 << 63))
 #if (BITS_PER_LONG == 64)
@@ -145,14 +150,18 @@ static inline bool timespec_valid_strict(const struct timespec *ts)
 	return true;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void read_persistent_clock(struct timespec *ts);
 extern void read_boot_clock(struct timespec *ts);
 extern int update_persistent_clock(struct timespec now);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int no_sync_cmos_clock __read_mostly;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void timekeeping_init(void);
 extern int timekeeping_suspended;
 
@@ -295,7 +304,11 @@ static __always_inline void timespec_add_ns(struct timespec *a, u64 ns)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 
 #define NFDBITS			__NFDBITS

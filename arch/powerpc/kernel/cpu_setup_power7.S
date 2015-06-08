@@ -48,8 +48,12 @@ __init_hvmode_206:
 <<<<<<< HEAD
 	/* Disable CPU_FTR_HVMODE and exit if MSR:HV is not set */
 =======
+<<<<<<< HEAD
+	/* Disable CPU_FTR_HVMODE and exit if MSR:HV is not set */
+=======
 	/* Disable CPU_FTR_HVMODE_206 and exit if MSR:HV is not set */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mfmsr	r3
 	rldicl.	r0,r3,4,63
 	bnelr
@@ -57,8 +61,12 @@ __init_hvmode_206:
 <<<<<<< HEAD
 	LOAD_REG_IMMEDIATE(r6,CPU_FTR_HVMODE)
 =======
+<<<<<<< HEAD
+	LOAD_REG_IMMEDIATE(r6,CPU_FTR_HVMODE)
+=======
 	LOAD_REG_IMMEDIATE(r6,CPU_FTR_HVMODE_206)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xor	r5,r5,r6
 	std	r5,CPU_SPEC_FEATURES(r4)
 	blr
@@ -74,12 +82,21 @@ __init_LPCR:
 	 *   VC = 0b100 (VPM0=1, VPM1=0, ISL=0)
 	 *   VRMASD = 0b10000 (L=1, LP=00)
 =======
+<<<<<<< HEAD
+	 *   HDICE = 0
+	 *   VC = 0b100 (VPM0=1, VPM1=0, ISL=0)
+	 *   VRMASD = 0b10000 (L=1, LP=00)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *
 	 * Other bits untouched for now
 	 */
 	mfspr	r3,SPRN_LPCR
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	li	r5,1
 	rldimi	r3,r5, LPCR_LPES_SH, 64-LPCR_LPES_SH-2
 	ori	r3,r3,(LPCR_PECE0|LPCR_PECE1|LPCR_PECE2)
@@ -90,6 +107,8 @@ __init_LPCR:
 	rldimi	r3,r5, LPCR_VC_SH, 0
 	li	r5,0x10
 	rldimi	r3,r5, LPCR_VRMASD_SH, 64-LPCR_VRMASD_SH-5
+<<<<<<< HEAD
+=======
 =======
 	ori	r3,r3,(LPCR_LPES0|LPCR_LPES1)
 	xori	r3,r3, LPCR_LPES0
@@ -101,6 +120,7 @@ __init_LPCR:
 	sldi	r5,r5,LPCR_DPFD_SH
 	or	r3,r3,r5
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtspr	SPRN_LPCR,r3
 	isync
 	blr

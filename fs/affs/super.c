@@ -100,8 +100,11 @@ static void affs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(affs_inode_cachep, AFFS_I(inode));
 }
 
@@ -480,8 +483,12 @@ got_root:
 <<<<<<< HEAD
 		goto out_error;
 =======
+<<<<<<< HEAD
+		goto out_error;
+=======
 		goto out_error_noinode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (AFFS_SB(sb)->s_flags & SF_INTL)
@@ -492,8 +499,12 @@ got_root:
 <<<<<<< HEAD
 	sb->s_root = d_make_root(root_inode);
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(root_inode);
+=======
 	sb->s_root = d_alloc_root(root_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sb->s_root) {
 		printk(KERN_ERR "AFFS: Get root inode failed\n");
 		goto out_error;
@@ -508,10 +519,13 @@ got_root:
 out_error:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (root_inode)
 		iput(root_inode);
 out_error_noinode:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(sbi->s_bitmap);
 	affs_brelse(root_bh);
 	kfree(sbi->s_prefix);

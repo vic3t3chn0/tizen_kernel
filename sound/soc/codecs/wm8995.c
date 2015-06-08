@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/regmap.h>
 =======
+<<<<<<< HEAD
+#include <linux/regmap.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spi/spi.h>
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
@@ -48,6 +52,9 @@ static const char *wm8995_supply_names[WM8995_NUM_SUPPLIES] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct reg_default wm8995_reg_defaults[] = {
 	{ 0, 0x8995 },
 	{ 5, 0x0100 },
@@ -373,6 +380,8 @@ static struct reg_default wm8995_reg_defaults[] = {
 	{ 12690, 0x000f },
 	{ 12692, 0x0001 },
 	{ 12695, 0x0100 },
+<<<<<<< HEAD
+=======
 =======
 static const u16 wm8995_reg_defs[WM8995_MAX_REGISTER + 1] = {
 	[0]     = 0x8995, [5]     = 0x0100, [16]    = 0x000b, [17]    = 0x000b,
@@ -457,6 +466,7 @@ static const u16 wm8995_reg_defs[WM8995_MAX_REGISTER + 1] = {
 	[12680] = 0x0050, [12682] = 0x0300, [12684] = 0x0001, [12686] = 0x0304,
 	[12688] = 0x0040, [12690] = 0x000f, [12692] = 0x0001, [12695] = 0x0100
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct fll_config {
@@ -469,8 +479,12 @@ struct wm8995_priv {
 <<<<<<< HEAD
 	struct regmap *regmap;
 =======
+<<<<<<< HEAD
+	struct regmap *regmap;
+=======
 	enum snd_soc_control_type control_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int sysclk[2];
 	int mclk[2];
 	int aifclk[2];
@@ -495,8 +509,12 @@ static int wm8995_regulator_event_##n(struct notifier_block *nb, \
 <<<<<<< HEAD
 		regcache_mark_dirty(wm8995->regmap);	\
 =======
+<<<<<<< HEAD
+		regcache_mark_dirty(wm8995->regmap);	\
+=======
 		wm8995->codec->cache_sync = 1; \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} \
 	return 0; \
 }
@@ -828,8 +846,12 @@ static int configure_clock(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	int change, new;
 =======
+<<<<<<< HEAD
+	int change, new;
+=======
 	int old, new;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wm8995 = snd_soc_codec_get_drvdata(codec);
 
@@ -854,11 +876,16 @@ static int configure_clock(struct snd_soc_codec *codec)
 		new = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	change = snd_soc_update_bits(codec, WM8995_CLOCKING_1,
 				     WM8995_SYSCLK_SRC_MASK, new);
 	if (!change)
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 	old = snd_soc_read(codec, WM8995_CLOCKING_1) & WM8995_SYSCLK_SRC;
 
@@ -870,6 +897,7 @@ static int configure_clock(struct snd_soc_codec *codec)
 			    WM8995_SYSCLK_SRC_MASK, new);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_dapm_sync(&codec->dapm);
 
 	return 0;
@@ -1045,14 +1073,20 @@ static const struct snd_soc_dapm_widget wm8995_dapm_widgets[] = {
 		&in1r_pga, 1),
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_SOC_DAPM_SUPPLY("MICBIAS1", WM8995_POWER_MANAGEMENT_1, 8, 0,
 			    NULL, 0),
 	SND_SOC_DAPM_SUPPLY("MICBIAS2", WM8995_POWER_MANAGEMENT_1, 9, 0,
 			    NULL, 0),
+<<<<<<< HEAD
+=======
 =======
 	SND_SOC_DAPM_MICBIAS("MICBIAS1", WM8995_POWER_MANAGEMENT_1, 8, 0),
 	SND_SOC_DAPM_MICBIAS("MICBIAS2", WM8995_POWER_MANAGEMENT_1, 9, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	SND_SOC_DAPM_SUPPLY("AIF1CLK", WM8995_AIF1_CLOCKING_1, 0, 0, NULL, 0),
 	SND_SOC_DAPM_SUPPLY("AIF2CLK", WM8995_AIF2_CLOCKING_1, 0, 0, NULL, 0),
@@ -1311,6 +1345,9 @@ static const struct snd_soc_dapm_route wm8995_intercon[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool wm8995_readable(struct device *dev, unsigned int reg)
 {
 	switch (reg) {
@@ -1540,6 +1577,8 @@ static bool wm8995_volatile(struct device *dev, unsigned int reg)
 	case WM8995_INTERRUPT_STATUS_1:
 	case WM8995_INTERRUPT_STATUS_2:
 	case WM8995_INTERRUPT_CONTROL:
+<<<<<<< HEAD
+=======
 =======
 static int wm8995_volatile(struct snd_soc_codec *codec, unsigned int reg)
 {
@@ -1559,22 +1598,29 @@ static int wm8995_volatile(struct snd_soc_codec *codec, unsigned int reg)
 	case WM8995_INTERRUPT_STATUS_2_MASK:
 	case WM8995_INTERRUPT_CONTROL:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case WM8995_ACCESSORY_DETECT_MODE1:
 	case WM8995_ACCESSORY_DETECT_MODE2:
 	case WM8995_HEADPHONE_DETECT1:
 	case WM8995_HEADPHONE_DETECT2:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case WM8995_RATE_STATUS:
 		return true;
 	default:
 		return false;
 	}
+<<<<<<< HEAD
+=======
 =======
 		return 1;
 	}
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int wm8995_aif_mute(struct snd_soc_dai *dai, int mute)
@@ -2132,8 +2178,12 @@ static int wm8995_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 			ret = regcache_sync(wm8995->regmap);
 =======
+<<<<<<< HEAD
+			ret = regcache_sync(wm8995->regmap);
+=======
 			ret = snd_soc_cache_sync(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret) {
 				dev_err(codec->dev,
 					"Failed to sync cache: %d\n", ret);
@@ -2160,8 +2210,12 @@ static int wm8995_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static int wm8995_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8995_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8995_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8995_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -2181,6 +2235,9 @@ static int wm8995_remove(struct snd_soc_codec *codec)
 {
 	struct wm8995_priv *wm8995;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	wm8995 = snd_soc_codec_get_drvdata(codec);
@@ -2191,6 +2248,8 @@ static int wm8995_remove(struct snd_soc_codec *codec)
 					      &wm8995->disable_nb[i]);
 
 	regulator_bulk_free(ARRAY_SIZE(wm8995->supplies), wm8995->supplies);
+<<<<<<< HEAD
+=======
 =======
 	struct i2c_client *i2c;
 
@@ -2198,6 +2257,7 @@ static int wm8995_remove(struct snd_soc_codec *codec)
 	wm8995 = snd_soc_codec_get_drvdata(codec);
 	wm8995_set_bias_level(codec, SND_SOC_BIAS_OFF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2208,11 +2268,16 @@ static int wm8995_probe(struct snd_soc_codec *codec)
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8995 = snd_soc_codec_get_drvdata(codec);
 	wm8995->codec = codec;
 
 	codec->control_data = wm8995->regmap;
 	ret = snd_soc_codec_set_cache_io(codec, 16, 16, SND_SOC_REGMAP);
+<<<<<<< HEAD
+=======
 =======
 	codec->dapm.idle_bias_off = 1;
 	wm8995 = snd_soc_codec_get_drvdata(codec);
@@ -2220,6 +2285,7 @@ static int wm8995_probe(struct snd_soc_codec *codec)
 
 	ret = snd_soc_codec_set_cache_io(codec, 16, 16, wm8995->control_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		dev_err(codec->dev, "Failed to set cache i/o: %d\n", ret);
 		return ret;
@@ -2273,7 +2339,11 @@ static int wm8995_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 		ret = -EINVAL;
 =======
+<<<<<<< HEAD
+		ret = -EINVAL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_reg_enable;
 	}
 
@@ -2310,8 +2380,12 @@ static int wm8995_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, wm8995_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, wm8995_snd_controls,
+=======
 	snd_soc_add_controls(codec, wm8995_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(wm8995_snd_controls));
 	snd_soc_dapm_new_controls(&codec->dapm, wm8995_dapm_widgets,
 				  ARRAY_SIZE(wm8995_dapm_widgets));
@@ -2333,8 +2407,12 @@ err_reg_get:
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8995_aif1_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8995_aif1_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8995_aif1_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk = wm8995_set_dai_sysclk,
 	.set_fmt = wm8995_set_dai_fmt,
 	.hw_params = wm8995_hw_params,
@@ -2346,8 +2424,12 @@ static struct snd_soc_dai_ops wm8995_aif1_dai_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8995_aif2_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8995_aif2_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8995_aif2_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_sysclk = wm8995_set_dai_sysclk,
 	.set_fmt = wm8995_set_dai_fmt,
 	.hw_params = wm8995_hw_params,
@@ -2359,8 +2441,12 @@ static struct snd_soc_dai_ops wm8995_aif2_dai_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8995_aif3_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8995_aif3_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8995_aif3_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_tristate = wm8995_set_tristate,
 };
 
@@ -2428,6 +2514,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8995 = {
 	.resume = wm8995_resume,
 	.set_bias_level = wm8995_set_bias_level,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.idle_bias_off = true,
 };
 
@@ -2441,6 +2530,8 @@ static struct regmap_config wm8995_regmap = {
 	.volatile_reg = wm8995_volatile,
 	.readable_reg = wm8995_readable,
 	.cache_type = REGCACHE_RBTREE,
+<<<<<<< HEAD
+=======
 =======
 	.reg_cache_size = ARRAY_SIZE(wm8995_reg_defs),
 	.reg_word_size = sizeof(u16),
@@ -2448,6 +2539,7 @@ static struct regmap_config wm8995_regmap = {
 	.volatile_register = wm8995_volatile,
 	.compress_type = SND_SOC_RBTREE_COMPRESSION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_SPI_MASTER)
@@ -2461,6 +2553,9 @@ static int __devinit wm8995_spi_probe(struct spi_device *spi)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_set_drvdata(spi, wm8995);
 
 	wm8995->regmap = regmap_init_spi(spi, &wm8995_regmap);
@@ -2470,16 +2565,22 @@ static int __devinit wm8995_spi_probe(struct spi_device *spi)
 		goto err_alloc;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	wm8995->control_type = SND_SOC_SPI;
 	spi_set_drvdata(spi, wm8995);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_register_codec(&spi->dev,
 				     &soc_codec_dev_wm8995, wm8995_dai,
 				     ARRAY_SIZE(wm8995_dai));
 	if (ret < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_regmap;
 
 	return ret;
@@ -2489,23 +2590,32 @@ err_regmap:
 err_alloc:
 	kfree(wm8995);
 
+<<<<<<< HEAD
+=======
 =======
 		kfree(wm8995);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static int __devexit wm8995_spi_remove(struct spi_device *spi)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8995_priv *wm8995 = spi_get_drvdata(spi);
 	snd_soc_unregister_codec(&spi->dev);
 	regmap_exit(wm8995->regmap);
 	kfree(wm8995);
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_codec(&spi->dev);
 	kfree(spi_get_drvdata(spi));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2531,6 +2641,9 @@ static __devinit int wm8995_i2c_probe(struct i2c_client *i2c,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2c_set_clientdata(i2c, wm8995);
 
 	wm8995->regmap = regmap_init_i2c(i2c, &wm8995_regmap);
@@ -2555,6 +2668,8 @@ err_regmap:
 err_alloc:
 	kfree(wm8995);
 
+<<<<<<< HEAD
+=======
 =======
 	wm8995->control_type = SND_SOC_I2C;
 	i2c_set_clientdata(i2c, wm8995);
@@ -2565,21 +2680,28 @@ err_alloc:
 	if (ret < 0)
 		kfree(wm8995);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static __devexit int wm8995_i2c_remove(struct i2c_client *client)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm8995_priv *wm8995 = i2c_get_clientdata(client);
 
 	snd_soc_unregister_codec(&client->dev);
 	regmap_exit(wm8995->regmap);
 	kfree(wm8995);
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_unregister_codec(&client->dev);
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

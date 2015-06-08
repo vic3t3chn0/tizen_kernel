@@ -31,12 +31,18 @@ config HAVE_OPROFILE
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config OPROFILE_NMI_TIMER
 	def_bool y
 	depends on PERF_EVENTS && HAVE_PERF_EVENTS_NMI
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config KPROBES
 	bool "Kprobes"
 	depends on MODULES
@@ -51,6 +57,9 @@ config KPROBES
 
 config JUMP_LABEL
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        bool "Optimize very unlikely/likely branches"
        depends on HAVE_ARCH_JUMP_LABEL
        help
@@ -74,6 +83,8 @@ config JUMP_LABEL
 
 	 ( On 32-bit x86, the necessary options added to the compiler
 	   flags may increase the size of the kernel slightly. )
+<<<<<<< HEAD
+=======
 =======
        bool "Optimize trace point call sites"
        depends on HAVE_ARCH_JUMP_LABEL
@@ -88,6 +99,7 @@ config JUMP_LABEL
 	 On i386, options added to the compiler flags may increase
 	 the size of the kernel slightly.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config OPTPROBES
 	def_bool y
@@ -143,7 +155,13 @@ config HAVE_OPTPROBES
 config HAVE_NMI_WATCHDOG
 	bool
 =======
+<<<<<<< HEAD
+
+config HAVE_NMI_WATCHDOG
+	bool
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # An arch should select this if it provides all these things:
 #
@@ -164,12 +182,17 @@ config HAVE_DMA_ATTRS
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HAVE_DMA_CONTIGUOUS
 	bool
 
 config USE_GENERIC_SMP_HELPERS
 	bool
 
+<<<<<<< HEAD
+=======
 =======
 config USE_GENERIC_SMP_HELPERS
 	bool
@@ -181,6 +204,7 @@ config GENERIC_SMP_IDLE_THREAD
        bool
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HAVE_REGS_AND_STACK_ACCESS_API
 	bool
 	help
@@ -233,6 +257,9 @@ config HAVE_RCU_TABLE_FREE
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARCH_HAVE_NMI_SAFE_CMPXCHG
 	bool
 
@@ -253,6 +280,9 @@ config HAVE_CMPXCHG_DOUBLE
 config ARCH_WANT_OLD_COMPAT_IPC
 	bool
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 source "kernel/gcov/Kconfig"

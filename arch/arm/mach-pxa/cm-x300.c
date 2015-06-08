@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #define pr_fmt(fmt) "%s: " fmt, __func__
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) "%s: " fmt, __func__
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -50,7 +54,11 @@
 <<<<<<< HEAD
 #include <asm/system_info.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_info.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/pxa300.h>
 #include <mach/pxa27x-udc.h>
@@ -74,8 +82,12 @@
 <<<<<<< HEAD
 #define	CM_X300_MMC_IRQ		PXA_GPIO_TO_IRQ(GPIO82_MMC_IRQ)
 =======
+<<<<<<< HEAD
+#define	CM_X300_MMC_IRQ		PXA_GPIO_TO_IRQ(GPIO82_MMC_IRQ)
+=======
 #define	CM_X300_MMC_IRQ		IRQ_GPIO(GPIO82_MMC_IRQ)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GPIO95_RTC_CS		(95)
 #define GPIO96_RTC_WR		(96)
@@ -244,9 +256,14 @@ static struct resource dm9000_resources[] = {
 		.start	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO99)),
 		.end	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO99)),
 =======
+<<<<<<< HEAD
+		.start	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO99)),
+		.end	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO99)),
+=======
 		.start	= IRQ_GPIO(mfp_to_gpio(MFP_PIN_GPIO99)),
 		.end	= IRQ_GPIO(mfp_to_gpio(MFP_PIN_GPIO99)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	}
 };
@@ -445,9 +462,15 @@ static struct pxa3xx_nand_platform_data cm_x300_nand_info = {
 	.parts[0]	= cm_x300_nand_partitions,
 	.nr_parts[0]	= ARRAY_SIZE(cm_x300_nand_partitions),
 =======
+<<<<<<< HEAD
+	.num_cs		= 1,
+	.parts[0]	= cm_x300_nand_partitions,
+	.nr_parts[0]	= ARRAY_SIZE(cm_x300_nand_partitions),
+=======
 	.parts		= cm_x300_nand_partitions,
 	.nr_parts	= ARRAY_SIZE(cm_x300_nand_partitions),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init cm_x300_init_nand(void)
@@ -508,6 +531,9 @@ static int cm_x300_ulpi_phy_reset(void)
 
 	/* reset the PHY */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = gpio_request_one(GPIO_ULPI_PHY_RST, GPIOF_OUT_INIT_LOW,
 			       "ulpi reset");
 	if (err) {
@@ -515,6 +541,8 @@ static int cm_x300_ulpi_phy_reset(void)
 		return err;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	err = gpio_request(GPIO_ULPI_PHY_RST, "ulpi reset");
 	if (err) {
@@ -525,6 +553,7 @@ static int cm_x300_ulpi_phy_reset(void)
 
 	gpio_direction_output(GPIO_ULPI_PHY_RST, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msleep(10);
 	gpio_set_value(GPIO_ULPI_PHY_RST, 1);
 	msleep(10);
@@ -546,9 +575,13 @@ static inline int cm_x300_u2d_init(struct device *dev)
 <<<<<<< HEAD
 			pr_err("failed to get CLK_POUT: %d\n", err);
 =======
+<<<<<<< HEAD
+			pr_err("failed to get CLK_POUT: %d\n", err);
+=======
 			pr_err("%s: failed to get CLK_POUT: %d\n",
 			       __func__, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return err;
 		}
 		clk_enable(pout_clk);
@@ -752,8 +785,11 @@ static struct regulator_consumer_supply buck2_consumers[] = {
 	{
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.dev = NULL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.supply = "vcc_core",
 	},
 };
@@ -809,6 +845,9 @@ static void __init cm_x300_init_da9030(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* wi2wi gpio setting for system_rev >= 130 */
 static struct gpio cm_x300_wi2wi_gpios[] __initdata = {
 	{ 71, GPIOF_OUT_INIT_HIGH, "wlan en" },
@@ -837,6 +876,8 @@ static void __init cm_x300_init_wi2wi(void)
 	gpio_set_value(cm_x300_wi2wi_gpios[1].gpio, 1);
 
 	gpio_free_array(ARRAY_AND_SIZE(cm_x300_wi2wi_gpios));
+<<<<<<< HEAD
+=======
 =======
 static void __init cm_x300_init_wi2wi(void)
 {
@@ -872,6 +913,7 @@ static void __init cm_x300_init_wi2wi(void)
 		gpio_free(bt_reset);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* MFP */
@@ -918,9 +960,14 @@ static void __init cm_x300_init(void)
 static void __init cm_x300_fixup(struct tag *tags, char **cmdline,
 				 struct meminfo *mi)
 =======
+<<<<<<< HEAD
+static void __init cm_x300_fixup(struct tag *tags, char **cmdline,
+				 struct meminfo *mi)
+=======
 static void __init cm_x300_fixup(struct machine_desc *mdesc, struct tag *tags,
 				 char **cmdline, struct meminfo *mi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Make sure that mi->bank[0].start = PHYS_ADDR */
 	for (; tags->hdr.size; tags = tag_next(tags))
@@ -933,6 +980,9 @@ static void __init cm_x300_fixup(struct machine_desc *mdesc, struct tag *tags,
 
 MACHINE_START(CM_X300, "CM-X300 module")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= pxa3xx_map_io,
 	.nr_irqs	= PXA_NR_IRQS,
@@ -942,6 +992,8 @@ MACHINE_START(CM_X300, "CM-X300 module")
 	.init_machine	= cm_x300_init,
 	.fixup		= cm_x300_fixup,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= pxa3xx_map_io,
@@ -950,4 +1002,5 @@ MACHINE_START(CM_X300, "CM-X300 module")
 	.init_machine	= cm_x300_init,
 	.fixup		= cm_x300_fixup,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -33,8 +33,12 @@
 <<<<<<< HEAD
 #ifdef CONFIG_CRYPTO_MANAGER_DISABLE_TESTS
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_CRYPTO_MANAGER_DISABLE_TESTS
+=======
 #ifndef CONFIG_CRYPTO_MANAGER_TESTS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* a perfect nop */
 int alg_test(const char *driver, const char *alg, u32 type, u32 mask)
@@ -42,6 +46,8 @@ int alg_test(const char *driver, const char *alg, u32 type, u32 mask)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_CRYPTO_FIPS
@@ -53,6 +59,7 @@ EXPORT_SYMBOL_GPL(in_fips_err);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 
 #include "testmgr.h"
@@ -82,6 +89,8 @@ EXPORT_SYMBOL_GPL(in_fips_err);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_FIPS
 #define FIPS_ERR 1
 #define FIPS_NO_ERR 0
@@ -89,6 +98,7 @@ static int IN_FIPS_ERROR = FIPS_NO_ERR;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tcrypt_result {
 	struct completion completion;
 	int err;
@@ -152,6 +162,8 @@ static unsigned int IDX[8] = { IDX1, IDX2, IDX3, IDX4, IDX5, IDX6, IDX7, IDX8 };
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_FIPS
 bool in_fips_err()
 {
@@ -166,6 +178,7 @@ void set_in_fips_err()
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void hexdump(unsigned char *buf, unsigned int len)
 {
 	print_hex_dump(KERN_CONT, "", DUMP_PREFIX_OFFSET,
@@ -1575,6 +1588,9 @@ static int alg_test_null(const struct alg_test_desc *desc,
 static const struct alg_test_desc alg_test_descs[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "__cbc-serpent-sse2",
 		.test = alg_test_null,
 		.suite = {
@@ -1590,8 +1606,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "__driver-cbc-aes-aesni",
 		.test = alg_test_null,
 		.suite = {
@@ -1608,6 +1627,9 @@ static const struct alg_test_desc alg_test_descs[] = {
 		}
 	}, {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "__driver-cbc-serpent-sse2",
 		.test = alg_test_null,
 		.suite = {
@@ -1623,8 +1645,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "__driver-ecb-aes-aesni",
 		.test = alg_test_null,
 		.suite = {
@@ -1641,6 +1666,9 @@ static const struct alg_test_desc alg_test_descs[] = {
 		}
 	}, {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "__driver-ecb-serpent-sse2",
 		.test = alg_test_null,
 		.suite = {
@@ -1656,8 +1684,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "__ghash-pclmulqdqni",
 		.test = alg_test_null,
 		.suite = {
@@ -1770,6 +1801,9 @@ static const struct alg_test_desc alg_test_descs[] = {
 		}
 	}, {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "cbc(serpent)",
 		.test = alg_test_skcipher,
 		.suite = {
@@ -1785,8 +1819,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "cbc(twofish)",
 		.test = alg_test_skcipher,
 		.suite = {
@@ -1807,10 +1844,14 @@ static const struct alg_test_desc alg_test_descs[] = {
 <<<<<<< HEAD
 		.fips_allowed = 1,
 =======
+<<<<<<< HEAD
+		.fips_allowed = 1,
+=======
 #ifdef CONFIG_CRYPTO_CCM
 		.fips_allowed = 1,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.suite = {
 			.aead = {
 				.enc = {
@@ -1850,6 +1891,9 @@ static const struct alg_test_desc alg_test_descs[] = {
 		}
 	}, {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "cryptd(__driver-ecb-serpent-sse2)",
 		.test = alg_test_null,
 		.suite = {
@@ -1865,8 +1909,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "cryptd(__ghash-pclmulqdqni)",
 		.test = alg_test_null,
 		.suite = {
@@ -1893,6 +1940,9 @@ static const struct alg_test_desc alg_test_descs[] = {
 		}
 	}, {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "ctr(blowfish)",
 		.test = alg_test_skcipher,
 		.suite = {
@@ -1953,8 +2003,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "cts(cbc(aes))",
 		.test = alg_test_skcipher,
 		.suite = {
@@ -2263,10 +2316,14 @@ static const struct alg_test_desc alg_test_descs[] = {
 <<<<<<< HEAD
 		.fips_allowed = 1,
 =======
+<<<<<<< HEAD
+		.fips_allowed = 1,
+=======
 #ifdef CONFIG_CRYPTO_GCM
 		.fips_allowed = 1,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.suite = {
 			.aead = {
 				.enc = {
@@ -2285,7 +2342,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 <<<<<<< HEAD
 		.fips_allowed = 1,
 =======
+<<<<<<< HEAD
+		.fips_allowed = 1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.suite = {
 			.hash = {
 				.vecs = ghash_tv_template,
@@ -2386,6 +2447,9 @@ static const struct alg_test_desc alg_test_descs[] = {
 		}
 	}, {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "lrw(camellia)",
 		.test = alg_test_skcipher,
 		.suite = {
@@ -2431,8 +2495,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "lzo",
 		.test = alg_test_comp,
 		.suite = {
@@ -2526,10 +2593,13 @@ static const struct alg_test_desc alg_test_descs[] = {
 		.test = alg_test_aead,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_GCM
 		.fips_allowed = 1,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.suite = {
 			.aead = {
 				.enc = {
@@ -2550,10 +2620,14 @@ static const struct alg_test_desc alg_test_descs[] = {
 <<<<<<< HEAD
 		.fips_allowed = 1,
 =======
+<<<<<<< HEAD
+		.fips_allowed = 1,
+=======
 #ifdef CONFIG_CRYPTO_CCM
 		.fips_allowed = 1,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.suite = {
 			.aead = {
 				.enc = {
@@ -2753,6 +2827,9 @@ static const struct alg_test_desc alg_test_descs[] = {
 		}
 	}, {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "xts(camellia)",
 		.test = alg_test_skcipher,
 		.suite = {
@@ -2798,8 +2875,11 @@ static const struct alg_test_desc alg_test_descs[] = {
 			}
 		}
 	}, {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.alg = "zlib",
 		.test = alg_test_pcomp,
 		.suite = {
@@ -2849,11 +2929,15 @@ int alg_test(const char *driver, const char *alg, u32 type, u32 mask)
 <<<<<<< HEAD
 	int rc;
 =======
+<<<<<<< HEAD
+	int rc;
+=======
 	int rc = 0;
 #ifdef CONFIG_CRYPTO_FIPS
 	fips_enabled = 1;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((type & CRYPTO_ALG_TYPE_MASK) == CRYPTO_ALG_TYPE_CIPHER) {
 		char nalg[CRYPTO_MAX_ALG_NAME];
@@ -2879,13 +2963,19 @@ int alg_test(const char *driver, const char *alg, u32 type, u32 mask)
 		goto notest;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fips_enabled && ((i >= 0 && !alg_test_descs[i].fips_allowed) ||
 			     (j >= 0 && !alg_test_descs[j].fips_allowed)))
 		goto non_fips_alg;
 
 	rc = 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (i >= 0)
 		rc |= alg_test_descs[i].test(alg_test_descs + i, driver,
 					     type, mask);
@@ -2894,6 +2984,9 @@ int alg_test(const char *driver, const char *alg, u32 type, u32 mask)
 					     type, mask);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 test_done:
 	if (fips_enabled && rc)
 		panic("%s: %s alg self test failed in fips mode!\n", driver, alg);
@@ -2901,6 +2994,8 @@ test_done:
 	if (fips_enabled && !rc)
 		printk(KERN_INFO "alg: self-tests for %s (%s) passed\n",
 		       driver, alg);
+<<<<<<< HEAD
+=======
 =======
 	if (fips_enabled && ((i >= 0 && !alg_test_descs[i].fips_allowed) ||
 			     (j >= 0 && !alg_test_descs[j].fips_allowed)))
@@ -2921,11 +3016,15 @@ test_done:
 		printk(KERN_INFO "FIPS: self-tests for %s (%s) passed\n",
 			driver, alg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return rc;
 
 notest:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "alg: No test for %s (%s)\n", alg, driver);
 	return 0;
 non_fips_alg:
@@ -2933,6 +3032,8 @@ non_fips_alg:
 }
 
 #endif /* CONFIG_CRYPTO_MANAGER_DISABLE_TESTS */
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_INFO "FIPS: No test for %s (%s)\n", alg, driver);
 	return 0;
@@ -2960,5 +3061,6 @@ int testmgr_crypto_proc_init(void)
 
 #endif /* CONFIG_CRYPTO_MANAGER_TESTS */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 EXPORT_SYMBOL_GPL(alg_test);

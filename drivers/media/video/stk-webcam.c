@@ -38,11 +38,25 @@
 #include "stk-webcam.h"
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool hflip = 1;
+module_param(hflip, bool, 0444);
+MODULE_PARM_DESC(hflip, "Horizontal image flip (mirror). Defaults to 1");
+
+static bool vflip = 1;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hflip = 1;
 module_param(hflip, bool, 0444);
 MODULE_PARM_DESC(hflip, "Horizontal image flip (mirror). Defaults to 1");
 
 static int vflip = 1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(vflip, bool, 0444);
 MODULE_PARM_DESC(vflip, "Vertical image flip. Defaults to 1");
 
@@ -55,6 +69,14 @@ MODULE_AUTHOR("Jaime Velasco Juan <jsagarribay@gmail.com> and Nicolas VIVIEN");
 MODULE_DESCRIPTION("Syntek DC1125 webcam driver");
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* bool for webcam LED management */
+int first_init = 1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Some cameras have audio interfaces, we aren't interested in those */
 static struct usb_device_id stkwebcam_table[] = {
@@ -375,8 +397,18 @@ static int stk_prepare_iso(struct stk_camera *dev)
 	if (dev->isobufs)
 		STK_ERROR("isobufs already allocated. Bad\n");
 	else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev->isobufs = kcalloc(MAX_ISO_BUFS, sizeof(*dev->isobufs),
+				       GFP_KERNEL);
+=======
 		dev->isobufs = kzalloc(MAX_ISO_BUFS * sizeof(*dev->isobufs),
 					GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev->isobufs = kzalloc(MAX_ISO_BUFS * sizeof(*dev->isobufs),
+					GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev->isobufs == NULL) {
 		STK_ERROR("Unable to allocate iso buffers\n");
 		return -ENOMEM;
@@ -518,7 +550,15 @@ static int stk_prepare_sio_buffers(struct stk_camera *dev, unsigned n_sbufs)
 			return -ENOMEM;
 		for (i = 0; i < n_sbufs; i++) {
 			if (stk_setup_siobuf(dev, i))
+<<<<<<< HEAD
+<<<<<<< HEAD
+				return (dev->n_sbufs > 1 ? 0 : -ENOMEM);
+=======
 				return (dev->n_sbufs > 1)? 0 : -ENOMEM;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				return (dev->n_sbufs > 1)? 0 : -ENOMEM;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev->n_sbufs = i+1;
 		}
 	}
@@ -558,9 +598,26 @@ static int v4l_stk_open(struct file *fp)
 	vdev = video_devdata(fp);
 	dev = vdev_to_camera(vdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (dev == NULL || !is_present(dev))
+		return -ENXIO;
+
+	if (!first_init)
+		stk_camera_write_reg(dev, 0x0, 0x24);
+	else
+		first_init = 0;
+
+=======
 	if (dev == NULL || !is_present(dev)) {
 		return -ENXIO;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (dev == NULL || !is_present(dev)) {
+		return -ENXIO;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fp->private_data = dev;
 	usb_autopm_get_interface(dev->interface);
 
@@ -574,10 +631,25 @@ static int v4l_stk_release(struct file *fp)
 	if (dev->owner == fp) {
 		stk_stop_stream(dev);
 		stk_free_buffers(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		stk_camera_write_reg(dev, 0x0, 0x49); /* turn off the LED */
+		unset_initialised(dev);
+		dev->owner = NULL;
+	}
+
+	if (is_present(dev))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev->owner = NULL;
 	}
 
 	if(is_present(dev))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		usb_autopm_put_interface(dev->interface);
 
 	return 0;
@@ -654,7 +726,15 @@ static unsigned int v4l_stk_poll(struct file *fp, poll_table *wait)
 		return POLLERR;
 
 	if (!list_empty(&dev->sio_full))
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return POLLIN | POLLRDNORM;
+=======
 		return (POLLIN | POLLRDNORM);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return (POLLIN | POLLRDNORM);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -891,9 +971,21 @@ static int stk_vidioc_g_fmt_vid_cap(struct file *filp,
 	struct stk_camera *dev = priv;
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < ARRAY_SIZE(stk_sizes) &&
+			stk_sizes[i].m != dev->vsettings.mode; i++)
+		;
+=======
 	for (i = 0; i < ARRAY_SIZE(stk_sizes)
 			&& stk_sizes[i].m != dev->vsettings.mode;
 		i++);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = 0; i < ARRAY_SIZE(stk_sizes)
+			&& stk_sizes[i].m != dev->vsettings.mode;
+		i++);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (i == ARRAY_SIZE(stk_sizes)) {
 		STK_ERROR("ERROR: mode invalid\n");
 		return -EINVAL;
@@ -1305,9 +1397,20 @@ static int stk_camera_probe(struct usb_interface *interface,
 	usb_set_intfdata(interface, dev);
 
 	err = stk_register_video_device(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err)
+		goto error;
+=======
 	if (err) {
 		goto error;
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (err) {
+		goto error;
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -1350,6 +1453,13 @@ static int stk_camera_resume(struct usb_interface *intf)
 		return 0;
 	unset_initialised(dev);
 	stk_initialise(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	stk_camera_write_reg(dev, 0x0, 0x49);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stk_setup_format(dev);
 	if (is_streaming(dev))
 		stk_start_stream(dev);
@@ -1368,6 +1478,12 @@ static struct usb_driver stk_camera_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(stk_camera_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init stk_camera_init(void)
 {
@@ -1390,3 +1506,7 @@ module_init(stk_camera_init);
 module_exit(stk_camera_exit);
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

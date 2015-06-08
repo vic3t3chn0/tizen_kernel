@@ -24,7 +24,15 @@
  * software in any way with any other Broadcom software provided under a license
  * other than the GPL, without Broadcom's express prior written consent.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * $Id: wlioctl.h 328096 2012-04-17 23:07:20Z $
+=======
  * $Id: wlioctl.h 384900 2013-02-13 14:23:02Z $
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * $Id: wlioctl.h 384900 2013-02-13 14:23:02Z $
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _wlioctl_h_
@@ -43,10 +51,19 @@
 #include <bcmcdc.h>
 #endif /* LINUX_POSTMOGRIFY_REMOVAL */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CUSTOMER_HW4
 #include <dhd_sec_feature.h>
 #endif /* CUSTOMER_HW4 */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  LINUX_POSTMOGRIFY_REMOVAL: undefined during compile phase, so its
  *  a no-op for most cases. For hybrid and other open source releases,
  *  its defined during a second pass and mogrified out for distribution.
@@ -213,8 +230,18 @@ typedef struct wl_bss_info {
 	uint32		nbss_cap;		/* 802.11N+AC BSS Capabilities */
 	uint8		ctl_ch;			/* 802.11N BSS control channel number */
 	uint8		padding1[3];		/* explicit struct alignment padding */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint16		vht_rxmcsmap;		/* VHT rx mcs map */
+	uint16		vht_txmcsmap;		/* VHT tx mcs map */
+=======
 	uint16		vht_rxmcsmap;		/* VHT rx mcs map (802.11ac VHT_CAP_MCS_MAP_*) */
 	uint16		vht_txmcsmap;		/* VHT tx mcs map (802.11ac VHT_CAP_MCS_MAP_*) */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint16		vht_rxmcsmap;		/* VHT rx mcs map (802.11ac VHT_CAP_MCS_MAP_*) */
+	uint16		vht_txmcsmap;		/* VHT tx mcs map (802.11ac VHT_CAP_MCS_MAP_*) */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8		flags;			/* flags */
 	uint8		vht_cap;		/* BSS is vht capable */
 	uint8		reserved[2];		/* Reserved for expansion of BSS properties */
@@ -308,7 +335,15 @@ typedef struct wl_clm_dload_info wl_clm_dload_info_t;
 
 typedef struct wlc_ssid {
 	uint32		SSID_len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uchar		SSID[32];
+=======
 	uchar		SSID[DOT11_MAX_SSID_LEN];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uchar		SSID[DOT11_MAX_SSID_LEN];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wlc_ssid_t;
 
 #ifndef LINUX_POSTMOGRIFY_REMOVAL
@@ -362,7 +397,14 @@ typedef struct wl_extdscan_params {
 #define WL_SCANFLAGS_PASSIVE	0x01	/* force passive scan */
 #define WL_SCANFLAGS_RESERVED	0x02	/* Reserved */
 #define WL_SCANFLAGS_PROHIBITED	0x04	/* allow scanning prohibited channels */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define WL_SCANFLAGS_OFFCHAN	0x08	/* allow scanning/reporting off-channel APs */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define WL_SCANFLAGS_OFFCHAN	0x08	/* allow scanning/reporting off-channel APs */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define WL_SCAN_PARAMS_SSID_MAX 	10
 
@@ -508,7 +550,14 @@ typedef struct wl_rateset_args {
 	uint32	count;			/* # rates in this set */
 	uint8	rates[WL_MAXRATES_IN_SET];	/* rates in 500kbps units w/hi bit set if basic */
 	uint8   mcs[MCSSET_LEN];        /* supported mcs index bit map */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	uint16 vht_mcs[VHT_CAP_MCS_MAP_NSS_MAX]; /* supported mcs index bit map per nss */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint16 vht_mcs[VHT_CAP_MCS_MAP_NSS_MAX]; /* supported mcs index bit map per nss */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wl_rateset_args_t;
 
 /* uint32 list */
@@ -522,10 +571,19 @@ typedef struct wl_uint32_list {
 /* used for association with a specific BSSID and chanspec list */
 typedef struct wl_assoc_params {
 	struct ether_addr bssid;	/* 00:00:00:00:00:00: broadcast scan */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint16 bssid_cnt;		/* 0: use chanspec_num, and the single bssid,
 					 * otherwise count of chanspecs in chanspec_list
 					 * AND paired bssids following chanspec_list
 					 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int32 chanspec_num;		/* 0: all available channels,
 					 * otherwise count of chanspecs in chanspec_list
 					 */
@@ -614,7 +672,14 @@ typedef struct wl_extjoin_params {
 #define WL_RSPEC_BW_MASK        0x00070000      /* bandwidth mask */
 #define WL_RSPEC_BW_SHIFT       16              /* bandwidth shift */
 #define WL_RSPEC_STBC           0x00100000      /* STBC encoding, Nsts = 2 x Nss */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define WL_RSPEC_TXBF           0x00200000      /* bit indicates TXBF mode */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define WL_RSPEC_TXBF           0x00200000      /* bit indicates TXBF mode */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_RSPEC_LDPC           0x00400000      /* bit indicates adv coding in use */
 #define WL_RSPEC_SGI            0x00800000      /* Short GI mode */
 #define WL_RSPEC_ENCODING_MASK  0x03000000      /* Encoding of Rate/MCS field */
@@ -833,6 +898,11 @@ typedef struct wl_rm_rep {
 } wl_rm_rep_t;
 #define WL_RM_REP_FIXED_LEN	8
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BCMCCX
 
 #define LEAP_USER_MAX		32
@@ -856,6 +926,10 @@ typedef struct wl_leap_list {
 	wl_leap_info_t leap_info[1];
 } wl_leap_list_t;
 #endif	/* BCMCCX */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef enum sup_auth_status {
 	/* Basic supplicant authentication states */
@@ -890,6 +964,12 @@ typedef enum sup_auth_status {
 #define CRYPTO_ALGO_AES_CCM		4
 #define CRYPTO_ALGO_AES_OCB_MSDU	5
 #define CRYPTO_ALGO_AES_OCB_MPDU	6
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define CRYPTO_ALGO_NALG		7
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if !defined(BCMCCX) && !defined(BCMEXTCCX)
 #define CRYPTO_ALGO_NALG		7
 #else
@@ -898,11 +978,22 @@ typedef enum sup_auth_status {
 #define CRYPTO_ALGO_WEP_MMH		9
 #define CRYPTO_ALGO_NALG		10
 #endif /* !BCMCCX && !BCMEXTCCX */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BCMWAPI_WPI
 #define CRYPTO_ALGO_SMS4		11
 #endif /* BCMWAPI_WPI */
 #define CRYPTO_ALGO_PMK			12	/* for 802.1x supp to set PMK before 4-way */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define CRYPTO_ALGO_BIP			13  /* 802.11w BIP (aes cmac) */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define CRYPTO_ALGO_BIP			13  /* 802.11w BIP (aes cmac) */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define WSEC_GEN_MIC_ERROR	0x0001
 #define WSEC_GEN_REPLAY		0x0002
@@ -913,6 +1004,13 @@ typedef enum sup_auth_status {
 
 #define WL_SOFT_KEY	(1 << 0)	/* Indicates this key is using soft encrypt */
 #define WL_PRIMARY_KEY	(1 << 1)	/* Indicates this key is the primary (ie tx) key */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define WL_KF_RES_4	(1 << 4)	/* Reserved for backward compat */
+#define WL_KF_RES_5	(1 << 5)	/* Reserved for backward compat */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(BCMCCX) || defined(BCMEXTCCX)
 #define WL_CKIP_KP	(1 << 4)	/* CMIC */
 #define WL_CKIP_MMH	(1 << 5)	/* CKIP */
@@ -920,6 +1018,10 @@ typedef enum sup_auth_status {
 #define WL_KF_RES_4	(1 << 4)	/* Reserved for backward compat */
 #define WL_KF_RES_5	(1 << 5)	/* Reserved for backward compat */
 #endif /* BCMCCX || BCMEXTCCX */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_IBSS_PEER_GROUP_KEY	(1 << 6)	/* Indicates a group key for a IBSS PEER */
 
 typedef struct wl_wsec_key {
@@ -960,10 +1062,19 @@ typedef struct {
 #define TKIP_ENABLED		0x0002
 #define AES_ENABLED		0x0004
 #define WSEC_SWFLAG		0x0008
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BCMCCX
 #define CKIP_KP_ENABLED		0x0010
 #define CKIP_MIC_ENABLED	0x0020
 #endif /* BCMCCX */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SES_OW_ENABLED		0x0040	/* to go into transition mode without setting wep */
 #ifdef BCMWAPI_WPI
 #define SMS4_ENABLED		0x0100
@@ -974,6 +1085,11 @@ typedef struct {
 #define WSEC_TKIP_ENABLED(wsec)	((wsec) & TKIP_ENABLED)
 #define WSEC_AES_ENABLED(wsec)	((wsec) & AES_ENABLED)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BCMCCX
 #define WSEC_CKIP_KP_ENABLED(wsec)	((wsec) & CKIP_KP_ENABLED)
 #define WSEC_CKIP_MIC_ENABLED(wsec)	((wsec) & CKIP_MIC_ENABLED)
@@ -989,30 +1105,64 @@ typedef struct {
 		 (WEP_ENABLED | TKIP_ENABLED | AES_ENABLED | CKIP_KP_ENABLED | CKIP_MIC_ENABLED))
 #endif /* BCMWAPI_WPI */
 #else /* defined BCMCCX */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BCMWAPI_WPI
 #define WSEC_ENABLED(wsec)	((wsec) & (WEP_ENABLED | TKIP_ENABLED | AES_ENABLED | SMS4_ENABLED))
 #else /* BCMWAPI_WPI */
 #define WSEC_ENABLED(wsec)	((wsec) & (WEP_ENABLED | TKIP_ENABLED | AES_ENABLED))
 #endif /* BCMWAPI_WPI */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif /* BCMCCX */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif /* BCMCCX */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WSEC_SES_OW_ENABLED(wsec)	((wsec) & SES_OW_ENABLED)
 #ifdef BCMWAPI_WAI
 #define WSEC_SMS4_ENABLED(wsec)	((wsec) & SMS4_ENABLED)
 #endif /* BCMWAPI_WAI */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef MFP
 #define MFP_CAPABLE		0x0200
 #define MFP_REQUIRED	0x0400
 #define MFP_SHA256		0x0800 /* a special configuration for STA for WIFI test tool */
+#endif /* MFP */
+=======
+#define MFP_CAPABLE		0x0200
+#define MFP_REQUIRED	0x0400
+#define MFP_SHA256		0x0800 /* a special configuration for STA for WIFI test tool */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MFP_CAPABLE		0x0200
+#define MFP_REQUIRED	0x0400
+#define MFP_SHA256		0x0800 /* a special configuration for STA for WIFI test tool */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* WPA authentication mode bitvec */
 #define WPA_AUTH_DISABLED	0x0000	/* Legacy (i.e., non-WPA) */
 #define WPA_AUTH_NONE		0x0001	/* none (IBSS) */
 #define WPA_AUTH_UNSPECIFIED	0x0002	/* over 802.1x */
 #define WPA_AUTH_PSK		0x0004	/* Pre-shared key */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(BCMCCX) || defined(BCMEXTCCX)
 #define WPA_AUTH_CCKM		0x0008	/* CCKM */
 #define WPA2_AUTH_CCKM		0x0010	/* CCKM2 */
 #endif	/* BCMCCX || BCMEXTCCX */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* #define WPA_AUTH_8021X 0x0020 */	/* 802.1x, reserved */
 #define WPA2_AUTH_UNSPECIFIED	0x0040	/* over 802.1x */
 #define WPA2_AUTH_PSK		0x0080	/* Pre-shared key */
@@ -1030,7 +1180,14 @@ typedef struct {
 #define WPA_AUTH_PFN_ANY	0xffffffff	/* for PFN, match only ssid */
 
 /* pmkid */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /* Due to pmkid_info driver IOVar/dhd implementation, leave this as 16 for now. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Due to pmkid_info driver IOVar/dhd implementation, leave this as 16 for now. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	MAXPMKID		16
 
 typedef struct _pmkid {
@@ -1128,6 +1285,11 @@ typedef struct wme_tx_params_s wme_tx_params_t;
 
 #define WL_WME_TX_PARAMS_IO_BYTES (sizeof(wme_tx_params_t) * AC_COUNT)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct wl_plc_nodelist {
 	uint count;			/* Number of nodes */
 	struct _node {
@@ -1154,6 +1316,10 @@ typedef struct wl_plc_params {
 #define NODE_TYPE_PLC_ONLY	2	/* Pure PLC only node */
 #define NODE_TYPE_WIFI_PLC	3	/* WiFi PLC capable node */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* defines used by poweridx iovar - it controls power in a-band */
 /* current gain setting is maintained */
 #define WL_PWRIDX_PCL_OFF	-2	/* turn off PCL.  */
@@ -1299,7 +1465,15 @@ typedef struct {
 
 /* Get MAC rate histogram response */
 typedef struct {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint32	rate[WLC_MAXRATE + 1];	/* Rates */
+=======
 	uint32	rate[DOT11_RATE_MAX + 1];	/* Rates */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint32	rate[DOT11_RATE_MAX + 1];	/* Rates */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32	mcs[WL_RATESET_SZ_HT_MCS * WL_TX_CHAINS_MAX];	/* MCS counts */
 	uint32	vht[WL_RATESET_SZ_VHT_MCS][WL_TX_CHAINS_MAX];	/* VHT counts */
 	uint32	tsf_timer[2][2];	/* Start and End time for 8bytes value */
@@ -1357,7 +1531,14 @@ typedef struct wlc_rev_info {
 	uint		phyrev;		/* phy revision */
 	uint		anarev;		/* anacore rev */
 	uint		chippkg;	/* chip package info */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	uint		nvramrev;	/* nvram revision number */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint		nvramrev;	/* nvram revision number */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wlc_rev_info_t;
 
 #define WL_REV_INFO_LEGACY_LENGTH	48
@@ -1691,9 +1872,19 @@ typedef struct wlc_iov_trx_s {
 #define WLC_NVRAM_SET				265
 #define WLC_NVRAM_DUMP				266
 #define WLC_REBOOT				267
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define WLC_SET_WSEC_PMK			268
+=======
 #endif /* LINUX_POSTMOGRIFY_REMOVAL */
 #define WLC_SET_WSEC_PMK			268
 #ifndef LINUX_POSTMOGRIFY_REMOVAL
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif /* LINUX_POSTMOGRIFY_REMOVAL */
+#define WLC_SET_WSEC_PMK			268
+#ifndef LINUX_POSTMOGRIFY_REMOVAL
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WLC_GET_AUTH_MODE			269
 #define WLC_SET_AUTH_MODE			270
 #define WLC_GET_WAKEENTRY			271
@@ -1814,12 +2005,22 @@ typedef struct {
 /* WLC_GET_AUTH, WLC_SET_AUTH values */
 #define WL_AUTH_OPEN_SYSTEM		0	/* d11 open authentication */
 #define WL_AUTH_SHARED_KEY		1	/* d11 shared authentication */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define WL_AUTH_OPEN_SHARED     	2   /* try open, then shared if open failed w/rc 13 */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_BCM4334
 #define WL_AUTH_OPEN_SHARED		2	/* try open, then shared if open failed w/rc 13 */
 #else
 #define WL_AUTH_OPEN_SHARED		3	/* BCM4334(Phoenix branch) value changed to 3 */
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* LINUX_POSTMOGRIFY_REMOVAL */
 
 /* Bit masks for radio disabled status - returned by WL_GET_RADIO */
@@ -1840,6 +2041,11 @@ typedef struct {
 #define WL_PHY_PAVARS_LEN	32	/* Phy type, Band range, chain, a1[0], b0[0], b1[0] ... */
 
 #define WL_PHY_PAVAR_VER	1	/* pavars version */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_PHY_PAVARS2_NUM	3	/* a1, b0, b1 */
 typedef struct wl_pavars2 {
 	uint16 ver;		/* version of this struct */
@@ -1850,6 +2056,10 @@ typedef struct wl_pavars2 {
 	uint16 chain;
 	uint16 inpa[WL_PHY_PAVARS2_NUM];	/* phy pavars for one band range */
 } wl_pavars2_t;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef struct wl_po {
 	uint16	phy_type;	/* Phy type */
@@ -1901,12 +2111,21 @@ typedef struct wl_po {
 #define WL_CHAN_FREQ_RANGE_5GM     2
 #define WL_CHAN_FREQ_RANGE_5GH     3
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_CHAN_FREQ_RANGE_5GLL_5BAND    4
 #define WL_CHAN_FREQ_RANGE_5GLH_5BAND    5
 #define WL_CHAN_FREQ_RANGE_5GML_5BAND    6
 #define WL_CHAN_FREQ_RANGE_5GMH_5BAND    7
 #define WL_CHAN_FREQ_RANGE_5GH_5BAND     8
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_CHAN_FREQ_RANGE_5G_BAND0     1
 #define WL_CHAN_FREQ_RANGE_5G_BAND1     2
 #define WL_CHAN_FREQ_RANGE_5G_BAND2     3
@@ -2043,12 +2262,21 @@ typedef struct wl_po {
 #define	WLAN_AUTO_W_NOISE	4	/* ACI: auto - detect and non 802.11 interference */
 #define AUTO_ACTIVE	(1 << 7) /* Auto is currently active */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* AP environment */
 #define AP_ENV_DETECT_NOT_USED		0 /* We aren't using AP environment detection */
 #define AP_ENV_DENSE			1 /* "Corporate" or other AP dense environment */
 #define AP_ENV_SPARSE			2 /* "Home" or other sparse environment */
 #define AP_ENV_INDETERMINATE		3 /* AP environment hasn't been identified */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct wl_aci_args {
 	int enter_aci_thresh; /* Trigger level to start detecting ACI */
 	int exit_aci_thresh; /* Trigger level to exit ACI mode */
@@ -2107,8 +2335,16 @@ typedef struct wl_samplecollect_args {
 	uint8 module_sel1;
 	uint8 module_sel2;
 	uint16 nsamps;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int bitStart;
 	uint32 gpioCapMask;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int bitStart;
+	uint32 gpioCapMask;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wl_samplecollect_args_t;
 
 #define	WL_SAMPLEDATA_HEADER_TYPE	1
@@ -2128,6 +2364,11 @@ typedef struct wl_sampledata {
 	uint32 flag;	/* bit def */
 } wl_sampledata_t;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* WL_OTA START */
 
 #define WL_OTA_ARG_PARSE_BLK_SIZE	1200
@@ -2239,6 +2480,10 @@ typedef struct wl_ota_test_status {
 
 /* WL_OTA END */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* wl_radar_args_t */
 typedef struct {
 	int npulses; 	/* required number of pulses at n * t_int */
@@ -2418,6 +2663,173 @@ typedef struct {
 
 typedef struct txppr {
 	/* start of 20MHz tx power limits */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint8 b20_1x1dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b20_1x1ofdm[WL_NUM_RATES_OFDM];		/* Legacy OFDM transmission */
+	uint8 b20_1x1mcs0[WL_NUM_RATES_MCS_1STREAM];		/* SISO MCS 0-7 */
+
+	uint8 b20_1x2dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b20_1x2cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b20_1x2cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* CDD MCS 0-7 */
+	uint8 b20_2x2stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b20_2x2sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* MCS 8-15 */
+
+	uint8 b20_1x3dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b20_1x3cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b20_1x3cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* 1 Nsts to 3 Tx Chain */
+	uint8 b20_2x3stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b20_2x3sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* 2 Nsts to 3 Tx Chain */
+	uint8 b20_3x3sdm_mcs16[WL_NUM_RATES_MCS_1STREAM];	/* 3 Nsts to 3 Tx Chain */
+
+	uint8 b20_1x1vht[WL_NUM_RATES_EXTRA_VHT];		/* VHT8_9SS1 */
+	uint8 b20_1x2cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD1 */
+	uint8 b20_2x2stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC */
+	uint8 b20_2x2sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2 */
+	uint8 b20_1x3cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD2 */
+	uint8 b20_2x3stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC_SPEXP1 */
+	uint8 b20_2x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2_SPEXP1 */
+	uint8 b20_3x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS3 */
+
+	/* start of 40MHz tx power limits */
+	uint8 b40_dummy1x1dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b40_1x1ofdm[WL_NUM_RATES_OFDM];		/* Legacy OFDM transmission */
+	uint8 b40_1x1mcs0[WL_NUM_RATES_MCS_1STREAM];		/* SISO MCS 0-7 */
+
+	uint8 b40_dummy1x2dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b40_1x2cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b40_1x2cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* CDD MCS 0-7 */
+	uint8 b40_2x2stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b40_2x2sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* MCS 8-15 */
+
+	uint8 b40_dummy1x3dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b40_1x3cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b40_1x3cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* 1 Nsts to 3 Tx Chain */
+	uint8 b40_2x3stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b40_2x3sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* 2 Nsts to 3 Tx Chain */
+	uint8 b40_3x3sdm_mcs16[WL_NUM_RATES_MCS_1STREAM];	/* 3 Nsts to 3 Tx Chain */
+
+	uint8 b40_1x1vht[WL_NUM_RATES_EXTRA_VHT];		/* VHT8_9SS1 */
+	uint8 b40_1x2cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD1 */
+	uint8 b40_2x2stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC */
+	uint8 b40_2x2sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2 */
+	uint8 b40_1x3cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD2 */
+	uint8 b40_2x3stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC_SPEXP1 */
+	uint8 b40_2x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2_SPEXP1 */
+	uint8 b40_3x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS3 */
+
+	/* start of 20in40MHz tx power limits */
+	uint8 b20in40_1x1dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b20in40_1x1ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM transmission */
+	uint8 b20in40_1x1mcs0[WL_NUM_RATES_MCS_1STREAM];	/* SISO MCS 0-7 */
+
+	uint8 b20in40_1x2dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b20in40_1x2cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b20in40_1x2cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* CDD MCS 0-7 */
+	uint8 b20in40_2x2stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b20in40_2x2sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* MCS 8-15 */
+
+	uint8 b20in40_1x3dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b20in40_1x3cdd_ofdm[WL_NUM_RATES_OFDM];	/* 20 in 40 MHz Legacy OFDM CDD */
+	uint8 b20in40_1x3cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* 1 Nsts to 3 Tx Chain */
+	uint8 b20in40_2x3stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b20in40_2x3sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* 2 Nsts to 3 Tx Chain */
+	uint8 b20in40_3x3sdm_mcs16[WL_NUM_RATES_MCS_1STREAM];	/* 3 Nsts to 3 Tx Chain */
+
+	uint8 b20in40_1x1vht[WL_NUM_RATES_EXTRA_VHT];		/* VHT8_9SS1 */
+	uint8 b20in40_1x2cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD1 */
+	uint8 b20in40_2x2stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC */
+	uint8 b20in40_2x2sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2 */
+	uint8 b20in40_1x3cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD2 */
+	uint8 b20in40_2x3stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC_SPEXP1 */
+	uint8 b20in40_2x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2_SPEXP1 */
+	uint8 b20in40_3x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS3 */
+
+	/* start of 80MHz tx power limits */
+	uint8 b80_dummy1x1dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b80_1x1ofdm[WL_NUM_RATES_OFDM];			/* Legacy OFDM transmission */
+	uint8 b80_1x1mcs0[WL_NUM_RATES_MCS_1STREAM];	/* SISO MCS 0-7 */
+
+	uint8 b80_dummy1x2dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b80_1x2cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b80_1x2cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* CDD MCS 0-7 */
+	uint8 b80_2x2stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b80_2x2sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* MCS 8-15 */
+
+	uint8 b80_dummy1x3dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b80_1x3cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b80_1x3cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* 1 Nsts to 3 Tx Chain */
+	uint8 b80_2x3stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b80_2x3sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* 2 Nsts to 3 Tx Chain */
+	uint8 b80_3x3sdm_mcs16[WL_NUM_RATES_MCS_1STREAM];	/* 3 Nsts to 3 Tx Chain */
+
+	uint8 b80_1x1vht[WL_NUM_RATES_EXTRA_VHT];		/* VHT8_9SS1 */
+	uint8 b80_1x2cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD1 */
+	uint8 b80_2x2stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC */
+	uint8 b80_2x2sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2 */
+	uint8 b80_1x3cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD2 */
+	uint8 b80_2x3stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC_SPEXP1 */
+	uint8 b80_2x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2_SPEXP1 */
+	uint8 b80_3x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS3 */
+
+	/* start of 20in80MHz tx power limits */
+	uint8 b20in80_1x1dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b20in80_1x1ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM transmission */
+	uint8 b20in80_1x1mcs0[WL_NUM_RATES_MCS_1STREAM];	/* SISO MCS 0-7 */
+
+	uint8 b20in80_1x2dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b20in80_1x2cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b20in80_1x2cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* CDD MCS 0-7 */
+	uint8 b20in80_2x2stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b20in80_2x2sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* MCS 8-15 */
+
+	uint8 b20in80_1x3dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
+	uint8 b20in80_1x3cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b20in80_1x3cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* 1 Nsts to 3 Tx Chain */
+	uint8 b20in80_2x3stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b20in80_2x3sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* 2 Nsts to 3 Tx Chain */
+	uint8 b20in80_3x3sdm_mcs16[WL_NUM_RATES_MCS_1STREAM];	/* 3 Nsts to 3 Tx Chain */
+
+	uint8 b20in80_1x1vht[WL_NUM_RATES_EXTRA_VHT];		/* VHT8_9SS1 */
+	uint8 b20in80_1x2cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD1 */
+	uint8 b20in80_2x2stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC */
+	uint8 b20in80_2x2sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2 */
+	uint8 b20in80_1x3cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD2 */
+	uint8 b20in80_2x3stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC_SPEXP1 */
+	uint8 b20in80_2x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2_SPEXP1 */
+	uint8 b20in80_3x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS3 */
+
+	/* start of 40in80MHz tx power limits */
+	uint8 b40in80_dummy1x1dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b40in80_1x1ofdm[WL_NUM_RATES_OFDM];		/* Legacy OFDM transmission */
+	uint8 b40in80_1x1mcs0[WL_NUM_RATES_MCS_1STREAM];	/* SISO MCS 0-7 */
+
+	uint8 b40in80_dummy1x2dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b40in80_1x2cdd_ofdm[WL_NUM_RATES_OFDM];	/* Legacy OFDM CDD transmission */
+	uint8 b40in80_1x2cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* CDD MCS 0-7 */
+	uint8 b40in80_2x2stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b40in80_2x2sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* MCS 8-15 */
+
+	uint8 b40in80_dummy1x3dsss[WL_NUM_RATES_CCK];	/* Legacy CCK/DSSS */
+	uint8 b40in80_1x3cdd_ofdm[WL_NUM_RATES_OFDM];	/* MHz Legacy OFDM CDD */
+	uint8 b40in80_1x3cdd_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* 1 Nsts to 3 Tx Chain */
+	uint8 b40in80_2x3stbc_mcs0[WL_NUM_RATES_MCS_1STREAM];	/* STBC MCS 0-7 */
+	uint8 b40in80_2x3sdm_mcs8[WL_NUM_RATES_MCS_1STREAM];	/* 2 Nsts to 3 Tx Chain */
+	uint8 b40in80_3x3sdm_mcs16[WL_NUM_RATES_MCS_1STREAM];	/* 3 Nsts to 3 Tx Chain */
+
+	uint8 b40in80_1x1vht[WL_NUM_RATES_EXTRA_VHT];		/* VHT8_9SS1 */
+	uint8 b40in80_1x2cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD1 */
+	uint8 b40in80_2x2stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC */
+	uint8 b40in80_2x2sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2 */
+	uint8 b40in80_1x3cdd_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_CDD2 */
+	uint8 b40in80_2x3stbc_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS1_STBC_SPEXP1 */
+	uint8 b40in80_2x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS2_SPEXP1 */
+	uint8 b40in80_3x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS3 */
+
+	uint8 mcs32; /* C_CHECK - THIS NEEDS TO BE REMOVED THROUGHOUT THE CODE */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int8 b20_1x1dsss[WL_NUM_RATES_CCK];		/* Legacy CCK/DSSS */
 	int8 b20_1x1ofdm[WL_NUM_RATES_OFDM];		/* Legacy OFDM transmission */
 	int8 b20_1x1mcs0[WL_NUM_RATES_MCS_1STREAM];		/* SISO MCS 0-7 */
@@ -2580,6 +2992,10 @@ typedef struct txppr {
 	int8 b40in80_3x3sdm_vht[WL_NUM_RATES_EXTRA_VHT];	/* VHT8_9SS3 */
 
 	int8 mcs32; /* C_CHECK - THIS NEEDS TO BE REMOVED THROUGHOUT THE CODE */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } txppr_t;
 
 /* 20MHz */
@@ -2761,35 +3177,92 @@ typedef struct txppr {
 #define WL_TX_POWER_MCS20_SISO_FIRST_SSN	WL_TX_POWER_MCS20_SISO_FIRST
 #define WL_TX_POWER_MCS40_SISO_FIRST_SSN	WL_TX_POWER_MCS40_SISO_FIRST
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* tx_power_t.flags bits */
+#define WL_TX_POWER_F_ENABLED	1
+#define WL_TX_POWER_F_HW	2
+#define WL_TX_POWER_F_MIMO	4
+#define WL_TX_POWER_F_SISO	8
+#define WL_TX_POWER_F_HT	0x10
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	uint16 ver;				/* version of this struct */
 	uint16 len;				/* length in bytes of this structure */
 	uint32 flags;
 	chanspec_t chanspec;			/* txpwr report for this channel */
 	chanspec_t local_chanspec;		/* channel on which we are associated */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint8 ppr[WL_TX_POWER_RATES];		/* Latest target power */
+=======
 	uint32 buflen;				/* ppr buffer length */
 	uint8 pprbuf[1];			/* Latest target power buffer buffer */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint32 buflen;				/* ppr buffer length */
+	uint8 pprbuf[1];			/* Latest target power buffer buffer */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wl_txppr_t;
 
 #define WL_TXPPR_VERSION	0
 #define WL_TXPPR_LENGTH	(sizeof(wl_txppr_t))
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TX_POWER_T_VERSION	43
+=======
 #define TX_POWER_T_VERSION	44
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TX_POWER_T_VERSION	44
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Defines used with channel_bandwidth for curpower */
 #define WL_BW_20MHZ 		0
 #define WL_BW_40MHZ 		1
 #define WL_BW_80MHZ 		2
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/* tx_power_t.flags bits */
+#ifdef PPR_API
+#define WL_TX_POWER2_F_ENABLED	1
+#define WL_TX_POWER2_F_HW		2
+#define WL_TX_POWER2_F_MIMO		4
+#define WL_TX_POWER2_F_SISO		8
+#define WL_TX_POWER2_F_HT		0x10
+#else
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_BW_160MHZ		3
 
 /* tx_power_t.flags bits */
 /* use for defined PPR_API */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_TX_POWER_F_ENABLED	1
 #define WL_TX_POWER_F_HW		2
 #define WL_TX_POWER_F_MIMO		4
 #define WL_TX_POWER_F_SISO		8
 #define WL_TX_POWER_F_HT		0x10
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+=======
 #define WL_TX_POWER_F_VHT		0x20
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define WL_TX_POWER_F_VHT		0x20
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	uint32 flags;
 	chanspec_t chanspec;			/* txpwr report for this channel */
@@ -2799,7 +3272,17 @@ typedef struct {
 	int8  antgain[2];			/* Ant gain for each band - from SROM */
 	uint8 rf_cores;				/* count of RF Cores being reported */
 	uint8 est_Pout[4];			/* Latest tx power out estimate per RF chain */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint8 est_Pout_act[4];		/* Latest tx power out estimate per RF chain
+	* without adjustment
+	*/
+=======
 	uint8 est_Pout_act[4]; /* Latest tx power out estimate per RF chain w/o adjustment */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint8 est_Pout_act[4]; /* Latest tx power out estimate per RF chain w/o adjustment */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8 est_Pout_cck;			/* Latest CCK tx power out estimate */
 	uint8 tx_power_max[4];		/* Maximum target power among all rates */
 	uint tx_power_max_rate_ind[4];		/* Index of the rate with the max target power */
@@ -2813,10 +3296,24 @@ typedef struct {
 	int8 channel_bandwidth;		/* 20, 40 or 80 MHz bandwidth? */
 	uint8 version;				/* Version of the data format wlu <--> driver */
 	uint8 display_core;			/* Displayed curpower core */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef PPR_API
+} tx_power_new_t;
+#else
+} tx_power_t;
+#endif
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int8 target_offsets[4];		/* Target power offsets for current rate per core */
 	uint32 last_tx_ratespec;	/* Ratespec for last transmition */
 	int8 SARLIMIT[MAX_STREAMS_SUPPORTED];
 } tx_power_t;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef struct tx_inst_power {
 	uint8 txpwr_est_Pout[2];			/* Latest estimate for 2.4 and 5 Ghz */
@@ -2960,11 +3457,20 @@ typedef struct wl_txchain_pwr_offsets {
 #define WL_TBTT_VAL		0x00010000
 #define WL_NIC_VAL		0x00020000
 #define WL_PWRSEL_VAL	0x00040000
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_TRF_MGMT_VAL	0x00080000
 #define WL_L2FILTER_VAL	0x00100000
 #define WL_TSO_VAL		0x00200000
 #define WL_MQ_VAL		0x00400000
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* use top-bit for WL_TIME_STAMP_VAL because this is a modifier
  * rather than a message-type of its own
  */
@@ -2997,9 +3503,19 @@ typedef struct wl_txchain_pwr_offsets {
 #define WL_LED_ASSOC_WITH_SEC 	20		/* when connected with security */
 						/* keep on for 300 sec */
 #define WL_LED_START_OFF 	21		/* off upon boot, could be turned on later */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define	WL_LED_NUMBEHAVIOR	22
+=======
 #define WL_LED_W6		22		/* off upon boot, could be turned on later */
 #define WL_LED_WI7		23		/* off upon boot, could be turned on later */
 #define	WL_LED_NUMBEHAVIOR	24
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define WL_LED_W6		22		/* off upon boot, could be turned on later */
+#define WL_LED_WI7		23		/* off upon boot, could be turned on later */
+#define	WL_LED_NUMBEHAVIOR	24
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* led behavior numeric value format */
 #define	WL_LED_BEH_MASK		0x7f		/* behavior mask */
@@ -3057,7 +3573,15 @@ typedef struct wl_txchain_pwr_offsets {
  *
  * 4. BAND RSSI - 2 octets
  * offset 0: band types
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * offset 1: +ve RSSI boost balue in dB
+=======
  * offset 1: +ve RSSI boost value in dB
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * offset 1: +ve RSSI boost value in dB
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /* join preference types */
@@ -3321,12 +3845,21 @@ typedef struct {
 	uint32  pstatxbcmc;	/* count of bcmc frames transmitted on all psta */
 
 	uint32  cso_passthrough; /* hw cso required but passthrough */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32	chained;	/* number of frames chained */
 	uint32	chainedsz1;	/* number of chain size 1 frames */
 	uint32	unchained;	/* number of frames not chained */
 	uint32	maxchainsz;	/* max chain size so far */
 	uint32	currchainsz;	/* current chain size */
 	uint32	cso_normal;	/* hw cso hdr for normal process */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wl_cnt_t;
 
 #ifndef LINUX_POSTMOGRIFY_REMOVAL
@@ -3767,14 +4300,33 @@ struct tslist {
 
 #ifdef WLTDLS
 /* different ops for manual end point */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TDLS_MANUAL_EP_CREATE	1	/* create manual dpt endpoint */
+#define TDLS_MANUAL_EP_MODIFY	2	/* modify manual dpt endpoint */
+#define TDLS_MANUAL_EP_DELETE	3	/* delete manual dpt endpoint */
+=======
 #define TDLS_MANUAL_EP_CREATE		1	/* create manual dpt endpoint */
 #define TDLS_MANUAL_EP_MODIFY		2	/* modify manual dpt endpoint */
 #define TDLS_MANUAL_EP_DELETE		3	/* delete manual dpt endpoint */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TDLS_MANUAL_EP_CREATE		1	/* create manual dpt endpoint */
+#define TDLS_MANUAL_EP_MODIFY		2	/* modify manual dpt endpoint */
+#define TDLS_MANUAL_EP_DELETE		3	/* delete manual dpt endpoint */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TDLS_MANUAL_EP_PM		4	/*  put dpt endpoint in PM mode */
 #define TDLS_MANUAL_EP_WAKE		5	/* wake up dpt endpoint from PM */
 #define TDLS_MANUAL_EP_DISCOVERY	6	/* discover if endpoint is TDLS capable */
 #define TDLS_MANUAL_EP_CHSW		7	/* channel switch */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define TDLS_MANUAL_EP_WFD_TPQ	8	/* WiFi-Display Tunneled Probe reQuest */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define TDLS_MANUAL_EP_WFD_TPQ	8	/* WiFi-Display Tunneled Probe reQuest */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* structure for tdls iovars */
 typedef struct tdls_iovar {
@@ -3785,16 +4337,36 @@ typedef struct tdls_iovar {
 } tdls_iovar_t;
 
 /* modes */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TDLS_WFD_IE_TX 0
+#define TDLS_WFD_IE_RX 1
+#define TDLS_WFD_IE_SIZE 255
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TDLS_WFD_IE_TX			0
 #define TDLS_WFD_IE_RX			1
 #define TDLS_WFD_PROBE_IE_TX	2
 #define TDLS_WFD_PROBE_IE_RX	3
 #define TDLS_WFD_IE_SIZE		512
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* structure for tdls wfd ie */
 typedef struct tdls_wfd_ie_iovar {
 	struct ether_addr ea;		/* Station address */
 	uint8 mode;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint8 length;
+=======
 	uint16 length;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint16 length;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8 data[TDLS_WFD_IE_SIZE];
 } tdls_wfd_ie_iovar_t;
 #endif /* WLTDLS */
@@ -3854,6 +4426,19 @@ typedef	struct wme_max_bandwidth {
 #define TSPEC_UNKNOWN		3	/* TSPEC unknown */
 #define TSPEC_STATUS_MASK	7	/* TSPEC status mask */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/* Software feature flag defines used by wlfeatureflag */
+#ifdef WLAFTERBURNER
+#define WL_SWFL_ABBFL       0x0001 /* Allow Afterburner on systems w/o hardware BFL */
+#define WL_SWFL_ABENCORE    0x0002 /* Allow AB on non-4318E chips */
+#endif /* WLAFTERBURNER */
+#define WL_SWFL_NOHWRADIO	0x0004
+#define WL_SWFL_FLOWCONTROL     0x0008 /* Enable backpressure to OS stack */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BCMCCX
 /* "wlan_reason" iovar interface */
 #define WL_WLAN_ASSOC_REASON_NORMAL_NETWORK	0 /* normal WLAN network setup */
@@ -3869,6 +4454,10 @@ typedef	struct wme_max_bandwidth {
 #endif /* WLAFTERBURNER */
 #define WL_SWFL_NOHWRADIO	0x0004
 #define WL_SWFL_FLOWCONTROL	0x0008 /* Enable backpressure to OS stack */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_SWFL_WLBSSSORT	0x0010 /* Per-port supports sorting of BSS */
 
 #define WL_LIFETIME_MAX 0xFFFF /* Max value in ms */
@@ -3936,8 +4525,18 @@ enum {
 #define ENABLE_NET_OFFLOAD_BIT		10
 
 #define SORT_CRITERIA_MASK		0x0001
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define AUTO_NET_SWITCH_MASK	0x0002
+#define ENABLE_BKGRD_SCAN_MASK	0x0004
+=======
 #define AUTO_NET_SWITCH_MASK		0x0002
 #define ENABLE_BKGRD_SCAN_MASK		0x0004
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define AUTO_NET_SWITCH_MASK		0x0002
+#define ENABLE_BKGRD_SCAN_MASK		0x0004
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IMMEDIATE_SCAN_MASK		0x0008
 #define	AUTO_CONNECT_MASK		0x0010
 
@@ -3947,7 +4546,15 @@ enum {
 #define SUPPRESS_SSID_MASK	0x0200
 #define ENABLE_NET_OFFLOAD_MASK	0x0400
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PFN_VERSION				2
+=======
 #define PFN_VERSION		2
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define PFN_VERSION		2
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PFN_SCANRESULT_VERSION	1
 #define MAX_PFN_LIST_COUNT	16
 
@@ -3957,7 +4564,15 @@ enum {
 #define DEFAULT_BESTN			2
 #define DEFAULT_MSCAN			0
 #define DEFAULT_REPEAT			10
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DEFAULT_EXP				2
+=======
 #define DEFAULT_EXP			2
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define DEFAULT_EXP			2
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* PFN network info structure */
 typedef struct wl_pfn_subnet_info {
@@ -3985,6 +4600,59 @@ typedef struct wl_pfn_param {
 	int32 version;			/* PNO parameters version */
 	int32 scan_freq;		/* Scan frequency */
 	int32 lost_network_timeout;	/* Timeout in sec. to declare
+<<<<<<< HEAD
+<<<<<<< HEAD
+					 * discovered network as lost
+					 */
+	int16 flags;			/* Bit field to control features
+					 * of PFN such as sort criteria auto
+					 * enable switch and background scan
+					 */
+	int16 rssi_margin;		/* Margin to avoid jitter for choosing a
+					 * PFN based on RSSI sort criteria
+					 */
+	uint8 bestn; /* number of best networks in each scan */
+	uint8 mscan; /* number of scans recorded */
+	uint8 repeat; /* Minimum number of scan intervals
+				     *before scan frequency changes in adaptive scan
+				     */
+	uint8 exp; /* Exponent of 2 for maximum scan interval */
+	int32 slow_freq; /* slow scan period */
+} wl_pfn_param_t;
+
+typedef struct wl_pfn_bssid {
+	struct ether_addr 	macaddr;
+	/* Bit4: suppress_lost, Bit3: suppress_found */
+	uint16				flags;
+} wl_pfn_bssid_t;
+#define WL_PFN_SUPPRESSFOUND_MASK	0x08
+#define WL_PFN_SUPPRESSLOST_MASK	0x10
+
+typedef struct wl_pfn_cfg {
+	uint32				reporttype;
+	int32				channel_num;
+	uint16				channel_list[WL_NUMCHANNELS];
+} wl_pfn_cfg_t;
+#define WL_PFN_REPORT_ALLNET 	0
+#define WL_PFN_REPORT_SSIDNET 	1
+#define WL_PFN_REPORT_BSSIDNET 	2
+
+typedef struct wl_pfn {
+	wlc_ssid_t		ssid;			/* ssid name and its length */
+	int32			flags;			/* bit2: hidden */
+	int32			infra;			/* BSS Vs IBSS */
+	int32			auth;			/* Open Vs Closed */
+	int32			wpa_auth;		/* WPA type */
+	int32			wsec;			/* wsec value */
+} wl_pfn_t;
+#define WL_PFN_HIDDEN_BIT		2
+#define PNO_SCAN_MAX_FW		508*1000	/* max time scan time in msec */
+#define PNO_SCAN_MAX_FW_SEC	PNO_SCAN_MAX_FW/1000 /* max time scan time in SEC */
+#define PNO_SCAN_MIN_FW_SEC	10			/* min time scan time in SEC */
+#define WL_PFN_HIDDEN_MASK		0x4
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					* discovered network as lost
 					*/
 	int16 flags;			/* Bit field to control features
@@ -4035,6 +4703,10 @@ typedef struct wl_pfn {
 #define PNO_SCAN_MAX_FW_SEC	PNO_SCAN_MAX_FW/1000 /* max time scan time in SEC */
 #define PNO_SCAN_MIN_FW_SEC	10		/* min time scan time in SEC */
 #define WL_PFN_HIDDEN_MASK	0x4
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* LINUX_POSTMOGRIFY_REMOVAL */
 
@@ -4090,7 +4762,15 @@ struct toe_ol_stats_t {
 #define ARP_ERRTEST_REPLY_HOST	0x2
 
 #define ARP_MULTIHOMING_MAX	8	/* Maximum local host IP addresses */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ND_MULTIHOMING_MAX 8	/* Maximum local host IP addresses */
+=======
 #define ND_MULTIHOMING_MAX	10	/* Maximum local host IP addresses */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define ND_MULTIHOMING_MAX	10	/* Maximum local host IP addresses */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Arp offload statistic counts */
 struct arp_ol_stats_t {
@@ -4230,8 +4910,16 @@ typedef struct wl_seq_cmd_ioctl {
 
 #define WL_PKTENG_SYNCHRONOUS			0x100	/* synchronous flag */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define WL_PKTENG_MAXPKTSZ			16384	/* max pktsz limit for pkteng */
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define WL_PKTENG_MAXPKTSZ			16384	/* max pktsz limit for pkteng */
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct wl_pkteng {
 	uint32 flags;
 	uint32 delay;			/* Inter-packet delay */
@@ -4274,14 +4962,34 @@ typedef struct wl_pkteng_stats {
 #define MAGIC_PKT_MINLEN 102    /* Magic pkt min length is 6 * 0xFF + 16 * ETHER_ADDR_LEN */
 
 #define WOWL_PATTEN_TYPE_ARP	(1 << 0)	/* ARP offload Pattern */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define WOWL_PATTEN_TYPE_NA		(1 << 1)	/* NA offload Pattern */
+=======
 #define WOWL_PATTEN_TYPE_NA	(1 << 1)	/* NA offload Pattern */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define WOWL_PATTEN_TYPE_NA	(1 << 1)	/* NA offload Pattern */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef struct {
 	uint32 masksize;		/* Size of the mask in #of bytes */
 	uint32 offset;			/* Offset to start looking for the packet in # of bytes */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint32 patternoffset;	/* Offset of start of pattern in the structure */
+	uint32 patternsize;		/* Size of the pattern itself in #of bytes */
+	uint32 id;				/* id */
+=======
 	uint32 patternoffset;		/* Offset of start of pattern in the structure */
 	uint32 patternsize;		/* Size of the pattern itself in #of bytes */
 	uint32 id;			/* id */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint32 patternoffset;		/* Offset of start of pattern in the structure */
+	uint32 patternsize;		/* Size of the pattern itself in #of bytes */
+	uint32 id;			/* id */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32 reasonsize;		/* Size of the wakeup reason code */
 	uint32 flags;			/* Flags to tell the pattern type and other properties */
 	/* Mask follows the structure above */
@@ -4415,6 +5123,11 @@ typedef struct {
 	uint32 queue_capacity; /* the maximum capacity of the queue */
 } pktq_log_counters_v01_t;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	uint32 requested;      /* packets requested to be stored */
 	uint32 stored;         /* packets stored */
@@ -4446,6 +5159,10 @@ typedef struct {
 	uint32 acked;          /* count of packets sent (acked) successfully */
 } pktq_log_counters_v02_t;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define sacrified sacrificed
 
 typedef struct {
@@ -4454,6 +5171,11 @@ typedef struct {
 	char                 headings[1];
 } pktq_log_format_v01_t;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	uint8                num_prec[WL_IOV_MAC_PARAM_LEN];
 	pktq_log_counters_v02_t  counters[WL_IOV_MAC_PARAM_LEN][WL_IOV_PKTQ_LOG_PRECS];
@@ -4462,13 +5184,24 @@ typedef struct {
 	char                 headings[1];
 } pktq_log_format_v02_t;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef struct {
 	uint32               version;
 	wl_iov_mac_params_t  params;
 	union {
 		pktq_log_format_v01_t v01;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		pktq_log_format_v02_t v02;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		pktq_log_format_v02_t v02;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} pktq_log;
 } wl_iov_pktq_log_t;
 
@@ -4626,6 +5359,11 @@ typedef struct {
 #define VNDR_IE_IWAPID_FLAG	0x40 /* vendor IE in IW advertisement protocol ID field */
 #define VNDR_IE_CUSTOM_FLAG	0x100 /* allow custom IE id */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(WLP2P)
 /* P2P Action Frames flags (spec ordered) */
 #define VNDR_IE_GONREQ_FLAG     0x001000
@@ -4641,6 +5379,10 @@ typedef struct {
 #define VNDR_IE_P2PAF_SHIFT	12
 #endif /* WLP2P */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VNDR_IE_INFO_HDR_LEN	(sizeof(uint32))
 
 typedef BWL_PRE_PACKED_STRUCT struct {
@@ -4715,6 +5457,11 @@ typedef BWL_PRE_PACKED_STRUCT struct {
 } BWL_POST_PACKED_STRUCT txfailinfo_t;
 #endif /* WLMEDIA_TXFAILEVENT */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef BWL_PRE_PACKED_STRUCT struct {
 	uint32 flags;
 	chanspec_t chanspec;			/* txpwr report for this channel */
@@ -4744,6 +5491,10 @@ typedef BWL_PRE_PACKED_STRUCT struct {
 	uint8  pprdata[1];		/* ppr serialization buffer */
 } BWL_POST_PACKED_STRUCT tx_pwr_rpt_t;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* LINUX_POSTMOGRIFY_REMOVAL */
 
 /* no strict structure packing */
@@ -4796,12 +5547,25 @@ struct wapi_sta_msg_t
 
 /* define for apcs reason code */
 #define APCS_INIT		0
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define APCS_IOCTL 		1
+#define APCS_CHANIM 	2
+#define APCS_CSTIMER	3
+#define APCS_BTA		4
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define APCS_IOCTL		1
 #define APCS_CHANIM		2
 #define APCS_CSTIMER	3
 #define APCS_BTA		4
 #define APCS_TXDLY		5
 #define APCS_NONACSD	6
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* number of ACS record entries */
 #define CHANIM_ACS_RECORD			10
@@ -5073,9 +5837,19 @@ typedef struct wl_nic_cnx {
 	uint8 SSID_len;
 	uint8 SSID[32];
 	struct ether_addr abssid;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint8 join_period;
+=======
 	uint16 beacon_interval;
 	uint16 sync_threshold;
 	uint16 beacon_wait_time;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint16 beacon_interval;
+	uint16 sync_threshold;
+	uint16 beacon_wait_time;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wl_nic_cnx_t;
 
 /* opcode */
@@ -5089,6 +5863,21 @@ typedef struct wl_nic_cnx {
 typedef struct wl_nic_cfg {
 	uint8 version;
 	uint8 beacon_mode;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint16 beacon_interval;
+	uint8 diluted_beacon_period;
+	uint8 repeat_EQC;
+	uint8 scan_length;
+	uint8 scan_interval;
+	uint8 scan_probability;
+	uint8 awake_window_length;
+	int8 TSF_correction;
+	uint8 ASID;
+	uint8 channel_usage_mode;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8 diluted_beacon_period;
 	uint8 beacon_probability;
 	uint8 num_awake_window_params;
@@ -5106,6 +5895,10 @@ typedef struct wl_nic_cfg {
 	uint8 NIC_priority;
 	uint8 NIC_data_ind;
 	uint8 allowed_wakeup_delay;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } wl_nic_cfg_t;
 
 /* version */
@@ -5127,6 +5920,13 @@ typedef struct wl_nic_frm {
 } wl_nic_frm_t;
 
 /* type */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define WL_NIC_FRM_MYNET	1
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WL_NIC_FRM_ACTION	2
 
 /* i/f query */
@@ -5139,6 +5939,13 @@ typedef struct wl_nic_ifq {
 /* nic_dm iovar */
 typedef struct wl_nic_dm {
 	uint8 enab;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	chanspec_t chspec;
+} wl_nic_dm_t;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8 rsvd;
 	/* the following fields are valid when enabling... */
 	chanspec_t chspec;
@@ -5150,6 +5957,10 @@ typedef struct wl_nic_dm {
 typedef struct wl_nic_isq {
 	uint8 scan_length;
 } wl_nic_isq_t;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* WLNIC */
 
 /* RFAWARE def */
@@ -5294,6 +6105,11 @@ enum {
 	SPATIAL_MODE_MAX_IDX
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WLC_TXCORE_MAX	4	/* max number of txcore supports */
 #define WLC_SUBBAND_MAX	4	/* max number of sub-band supports */
 typedef struct {
@@ -5301,6 +6117,10 @@ typedef struct {
 	uint8	band5g[WLC_SUBBAND_MAX][WLC_TXCORE_MAX];
 } sar_limit_t;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* IOVAR "mempool" parameter. Used to retrieve a list of memory pool statistics. */
 typedef struct wl_mempool_stats {
 	int	num;		/* Number of memory pools */
@@ -5336,6 +6156,20 @@ typedef struct {
 #define TRF_MGMT_MAX_PRIORITIES                 3
 
 #define TRF_MGMT_FLAG_ADD_DSCP                  0x0001  /* Add DSCP to IP TOS field */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define TRF_MGMT_FLAG_DISABLE_SHAPING           0x0002  /* Only support traffic clasification */
+#define TRF_MGMT_FLAG_DISABLE_PRIORITY_TAGGING  0x0004  /* Don't override packet's priority */
+
+/* Traffic management priority classes */
+typedef enum trf_mgmt_priority_class {
+	trf_mgmt_priority_low           = 0,            /* Maps to 802.1p BO */
+	trf_mgmt_priority_medium        = 1,            /* Maps to 802.1p BE */
+	trf_mgmt_priority_high          = 2,            /* Maps to 802.1p VI */
+	trf_mgmt_priority_invalid       = (trf_mgmt_priority_high + 1)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TRF_MGMT_FLAG_DISABLE_SHAPING           0x0002  /* Don't shape traffic */
 #define TRF_MGMT_FLAG_MANAGE_LOCAL_TRAFFIC      0x0008  /* Manage traffic over our local subnet */
 #define TRF_MGMT_FLAG_FILTER_ON_MACADDR         0x0010  /* filter on MAC address */
@@ -5353,6 +6187,10 @@ typedef enum trf_mgmt_priority_class {
 	trf_mgmt_priority_high          = 2,        /* Maps to 802.1p VI */
 	trf_mgmt_priority_nochange	= 3,	    /* do not update the priority */
 	trf_mgmt_priority_invalid       = (trf_mgmt_priority_nochange + 1)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } trf_mgmt_priority_class_t;
 
 /* Traffic management configuration parameters */
@@ -5434,6 +6272,12 @@ typedef struct powersel_params {
 	uint8		pwr_sel_exp_time; /* Time lapse for expiry of database */
 } powersel_params_t;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif /* LINUX_POSTMOGRIFY_REMOVAL */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* tx pkt delay statistics */
 #define	SCB_RETRY_SHORT_DEF	7	/* Default Short retry Limit */
 #define WLPKTDLY_HIST_NBINS	16	/* number of bins used in the Delay histogram */
@@ -5521,4 +6365,8 @@ typedef struct wlc_event_log_tag_s {
 } wlc_event_log_tag_t;
 #endif /* EVENT_LOG_COMPILE */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _wlioctl_h_ */

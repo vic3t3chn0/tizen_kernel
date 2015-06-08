@@ -43,7 +43,11 @@
 <<<<<<< HEAD
 #include <linux/hardirq.h>
 =======
+<<<<<<< HEAD
+#include <linux/hardirq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/list.h>
 #include <linux/list_nulls.h>
@@ -51,8 +55,11 @@
 #include <linux/cache.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/lockdep.h>
 #include <linux/netdevice.h>
 #include <linux/skbuff.h>	/* struct sk_buff */
@@ -61,13 +68,19 @@
 #include <linux/slab.h>
 #include <linux/uaccess.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/memcontrol.h>
 #include <linux/res_counter.h>
 #include <linux/static_key.h>
 #include <linux/aio.h>
 #include <linux/sched.h>
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/filter.h>
 #include <linux/rculist_nulls.h>
@@ -78,6 +91,9 @@
 #include <net/checksum.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cgroup;
 struct cgroup_subsys;
 #ifdef CONFIG_NET
@@ -94,8 +110,11 @@ void mem_cgroup_sockets_destroy(struct cgroup *cgrp)
 {
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This structure really needs to be cleaned up.
  * Most of it is for TCP, and not used by any of
@@ -113,9 +132,14 @@ void mem_cgroup_sockets_destroy(struct cgroup *cgrp)
 static inline __printf(2, 3)
 void SOCK_DEBUG(struct sock *sk, const char *msg, ...)
 =======
+<<<<<<< HEAD
+static inline __printf(2, 3)
+void SOCK_DEBUG(struct sock *sk, const char *msg, ...)
+=======
 static inline void __attribute__ ((format (printf, 2, 3)))
 SOCK_DEBUG(struct sock *sk, const char *msg, ...)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 #endif
@@ -183,7 +207,11 @@ struct sock_common {
 <<<<<<< HEAD
 	int			padding[2];
 =======
+<<<<<<< HEAD
+	int			padding[2];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	union {
 		struct hlist_node	skc_bind_node;
 		struct hlist_nulls_node skc_portaddr_node;
@@ -213,7 +241,11 @@ struct sock_common {
 <<<<<<< HEAD
 struct cg_proto;
 =======
+<<<<<<< HEAD
+struct cg_proto;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
   *	struct sock - network layer representation of sockets
   *	@__sk_common: shared layout with inet_timewait_sock
@@ -243,8 +275,11 @@ struct cg_proto;
   *	@sk_gso_max_size: Maximum GSO segment size to build
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   *	@sk_gso_max_segs: Maximum number of GSO segments
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   *	@sk_lingertime: %SO_LINGER l_linger setting
   *	@sk_backlog: always used with the per-socket spinlock held
   *	@sk_callback_lock: used with the callbacks in the end of this struct
@@ -261,7 +296,11 @@ struct cg_proto;
 <<<<<<< HEAD
   *	@sk_cgrp_prioidx: socket group's priority map index
 =======
+<<<<<<< HEAD
+  *	@sk_cgrp_prioidx: socket group's priority map index
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   *	@sk_type: socket type (%SOCK_STREAM, etc)
   *	@sk_protocol: which protocol this socket belongs in this network family
   *	@sk_peer_pid: &struct pid for this socket's peer
@@ -281,7 +320,11 @@ struct cg_proto;
 <<<<<<< HEAD
   *	@sk_peek_off: current peek_offset value
 =======
+<<<<<<< HEAD
+  *	@sk_peek_off: current peek_offset value
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   *	@sk_send_head: front of stuff to transmit
   *	@sk_security: used by security modules
   *	@sk_mark: generic packet mark
@@ -289,7 +332,11 @@ struct cg_proto;
 <<<<<<< HEAD
   *	@sk_cgrp: this socket's cgroup-specific proto data
 =======
+<<<<<<< HEAD
+  *	@sk_cgrp: this socket's cgroup-specific proto data
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   *	@sk_write_pending: a write to stream socket waits to start
   *	@sk_state_change: callback to indicate change in the state of the sock
   *	@sk_data_ready: callback to indicate there is data to be processed
@@ -370,10 +417,15 @@ struct sock {
 	int			sk_wmem_queued;
 	gfp_t			sk_allocation;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netdev_features_t	sk_route_caps;
 	netdev_features_t	sk_route_nocaps;
 	int			sk_gso_type;
 	unsigned int		sk_gso_max_size;
+<<<<<<< HEAD
+=======
 =======
 	int			sk_route_caps;
 	int			sk_route_nocaps;
@@ -381,6 +433,7 @@ struct sock {
 	unsigned int		sk_gso_max_size;
 	u16			sk_gso_max_segs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			sk_rcvlowat;
 	unsigned long	        sk_lingertime;
 	struct sk_buff_head	sk_error_queue;
@@ -396,7 +449,13 @@ struct sock {
 	__u32			sk_cgrp_prioidx;
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_CGROUPS
+	__u32			sk_cgrp_prioidx;
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pid		*sk_peer_pid;
 	const struct cred	*sk_peer_cred;
 	long			sk_rcvtimeo;
@@ -412,7 +471,11 @@ struct sock {
 <<<<<<< HEAD
 	__s32			sk_peek_off;
 =======
+<<<<<<< HEAD
+	__s32			sk_peek_off;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			sk_write_pending;
 #ifdef CONFIG_SECURITY
 	void			*sk_security;
@@ -422,7 +485,11 @@ struct sock {
 <<<<<<< HEAD
 	struct cg_proto		*sk_cgrp;
 =======
+<<<<<<< HEAD
+	struct cg_proto		*sk_cgrp;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void			(*sk_state_change)(struct sock *sk);
 	void			(*sk_data_ready)(struct sock *sk, int bytes);
 	void			(*sk_write_space)(struct sock *sk);
@@ -433,6 +500,9 @@ struct sock {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int sk_peek_offset(struct sock *sk, int flags)
 {
 	if ((flags & MSG_PEEK) && (sk->sk_peek_off >= 0))
@@ -457,8 +527,11 @@ static inline void sk_peek_offset_fwd(struct sock *sk, int val)
 		sk->sk_peek_off += val;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Hashed lists helper routines
  */
@@ -675,14 +748,20 @@ enum sock_flags {
 	SOCK_FASYNC, /* fasync() active */
 	SOCK_RXQ_OVFL,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SOCK_ZEROCOPY, /* buffers from userspace */
 	SOCK_WIFI_STATUS, /* push wifi status to userspace */
 	SOCK_NOFCS, /* Tell NIC not to do the Ethernet FCS.
 		     * Will use last 4 bytes of packet sent from
 		     * user-space instead.
 		     */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void sock_copy_flags(struct sock *nsk, struct sock *osk)
@@ -761,7 +840,12 @@ static inline void __sk_add_backlog(struct sock *sk, struct sk_buff *skb)
  * Do not take into account this skb truesize,
  * to allow even a single big packet to come.
 =======
+<<<<<<< HEAD
+ * Do not take into account this skb truesize,
+ * to allow even a single big packet to come.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline bool sk_rcvqueues_full(const struct sock *sk, const struct sk_buff *skb)
 {
@@ -770,8 +854,12 @@ static inline bool sk_rcvqueues_full(const struct sock *sk, const struct sk_buff
 <<<<<<< HEAD
 	return qsize > sk->sk_rcvbuf;
 =======
+<<<<<<< HEAD
+	return qsize > sk->sk_rcvbuf;
+=======
 	return qsize + skb->truesize > sk->sk_rcvbuf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* The per-socket spinlock must be held here. */
@@ -815,6 +903,9 @@ static inline void sock_rps_reset_flow(const struct sock *sk)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void sock_rps_save_rxhash(struct sock *sk,
 					const struct sk_buff *skb)
 {
@@ -822,6 +913,8 @@ static inline void sock_rps_save_rxhash(struct sock *sk,
 	if (unlikely(sk->sk_rxhash != skb->rxhash)) {
 		sock_rps_reset_flow(sk);
 		sk->sk_rxhash = skb->rxhash;
+<<<<<<< HEAD
+=======
 =======
 static inline void sock_rps_save_rxhash(struct sock *sk, u32 rxhash)
 {
@@ -830,11 +923,15 @@ static inline void sock_rps_save_rxhash(struct sock *sk, u32 rxhash)
 		sock_rps_reset_flow(sk);
 		sk->sk_rxhash = rxhash;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #endif
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void sock_rps_reset_rxhash(struct sock *sk)
 {
 #ifdef CONFIG_RPS
@@ -843,8 +940,11 @@ static inline void sock_rps_reset_rxhash(struct sock *sk)
 #endif
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define sk_wait_event(__sk, __timeo, __condition)			\
 	({	int __rc;						\
 		release_sock(__sk);					\
@@ -872,7 +972,11 @@ struct raw_hashinfo;
 <<<<<<< HEAD
 struct module;
 =======
+<<<<<<< HEAD
+struct module;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Networking protocol blocks we attach to sockets.
  * socket layer -> transport layer interface
@@ -978,6 +1082,9 @@ struct proto {
 	atomic_t		socks;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CGROUP_MEM_RES_CTLR_KMEM
 	/*
 	 * cgroup specific init/deinit functions. Called once for all
@@ -1008,8 +1115,11 @@ struct cg_proto {
 	 * for everybody, instead of just for memcg users.
 	 */
 	struct mem_cgroup	*memcg;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern int proto_register(struct proto *prot, int alloc_slab);
@@ -1031,8 +1141,12 @@ static inline void sk_refcnt_debug_dec(struct sock *sk)
 <<<<<<< HEAD
 inline void sk_refcnt_debug_release(const struct sock *sk)
 =======
+<<<<<<< HEAD
+inline void sk_refcnt_debug_release(const struct sock *sk)
+=======
 static inline void sk_refcnt_debug_release(const struct sock *sk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (atomic_read(&sk->sk_refcnt) != 1)
 		printk(KERN_DEBUG "Destruction of the %s socket %p delayed, refcnt=%d\n",
@@ -1045,6 +1159,9 @@ static inline void sk_refcnt_debug_release(const struct sock *sk)
 #endif /* SOCK_REFCNT_DEBUG */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_CGROUP_MEM_RES_CTLR_KMEM) && defined(CONFIG_NET)
 extern struct static_key memcg_socket_limit_enabled;
 static inline struct cg_proto *parent_cg_proto(struct proto *proto,
@@ -1245,8 +1362,11 @@ proto_memory_pressure(struct proto *prot)
 	return !!*prot->memory_pressure;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PROC_FS
 /* Called with local bh disabled */
@@ -1477,9 +1597,14 @@ extern void			sk_release_kernel(struct sock *sk);
 extern struct sock		*sk_clone_lock(const struct sock *sk,
 					       const gfp_t priority);
 =======
+<<<<<<< HEAD
+extern struct sock		*sk_clone_lock(const struct sock *sk,
+					       const gfp_t priority);
+=======
 extern struct sock		*sk_clone(const struct sock *sk,
 					  const gfp_t priority);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct sk_buff		*sock_wmalloc(struct sock *sk,
 					      unsigned long size, int force,
@@ -1704,9 +1829,13 @@ __sk_dst_get(struct sock *sk)
 <<<<<<< HEAD
 	return rcu_dereference_check(sk->sk_dst_cache, sock_owned_by_user(sk) ||
 =======
+<<<<<<< HEAD
+	return rcu_dereference_check(sk->sk_dst_cache, sock_owned_by_user(sk) ||
+=======
 	return rcu_dereference_check(sk->sk_dst_cache, rcu_read_lock_held() ||
 						       sock_owned_by_user(sk) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						       lockdep_is_held(&sk->sk_lock.slock));
 }
 
@@ -1790,8 +1919,12 @@ extern void sk_setup_caps(struct sock *sk, struct dst_entry *dst);
 <<<<<<< HEAD
 static inline void sk_nocaps_add(struct sock *sk, netdev_features_t flags)
 =======
+<<<<<<< HEAD
+static inline void sk_nocaps_add(struct sock *sk, netdev_features_t flags)
+=======
 static inline void sk_nocaps_add(struct sock *sk, int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	sk->sk_route_nocaps |= flags;
 	sk->sk_route_caps &= ~flags;
@@ -1965,8 +2098,12 @@ static inline void sock_poll_wait(struct file *filp,
 <<<<<<< HEAD
 	if (!poll_does_not_wait(p) && wait_address) {
 =======
+<<<<<<< HEAD
+	if (!poll_does_not_wait(p) && wait_address) {
+=======
 	if (p && wait_address) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		poll_wait(filp, wait_address, p);
 		/*
 		 * We need to be sure we are in sync with the
@@ -2075,8 +2212,12 @@ static inline struct page *sk_stream_alloc_page(struct sock *sk)
 <<<<<<< HEAD
 		sk_enter_memory_pressure(sk);
 =======
+<<<<<<< HEAD
+		sk_enter_memory_pressure(sk);
+=======
 		sk->sk_prot->enter_memory_pressure(sk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sk_stream_moderate_sndbuf(sk);
 	}
 	return page;
@@ -2124,7 +2265,12 @@ extern void __sock_recv_timestamp(struct msghdr *msg, struct sock *sk,
 extern void __sock_recv_wifi_status(struct msghdr *msg, struct sock *sk,
 	struct sk_buff *skb);
 =======
+<<<<<<< HEAD
+extern void __sock_recv_wifi_status(struct msghdr *msg, struct sock *sk,
+	struct sk_buff *skb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __inline__ void
 sock_recv_timestamp(struct msghdr *msg, struct sock *sk, struct sk_buff *skb)
@@ -2157,7 +2303,13 @@ sock_recv_timestamp(struct msghdr *msg, struct sock *sk, struct sk_buff *skb)
 	if (sock_flag(sk, SOCK_WIFI_STATUS) && skb->wifi_acked_valid)
 		__sock_recv_wifi_status(msg, sk, skb);
 =======
+<<<<<<< HEAD
+
+	if (sock_flag(sk, SOCK_WIFI_STATUS) && skb->wifi_acked_valid)
+		__sock_recv_wifi_status(msg, sk, skb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 extern void __sock_recv_ts_and_drops(struct msghdr *msg, struct sock *sk,

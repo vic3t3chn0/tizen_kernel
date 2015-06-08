@@ -2,11 +2,16 @@
 /*
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/*
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+=======
 /* arch/arm/mach-msm/clock.h
  *
  * Copyright (C) 2007 Google, Inc.
  * Copyright (c) 2007-2010, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -23,6 +28,9 @@
 #define __ARCH_ARM_MACH_MSM_CLOCK_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clkdev.h>
 
 /**
@@ -78,6 +86,8 @@ static inline int clock_debug_register(struct clk_lookup *t, size_t s)
 	return 0;
 }
 static inline void clock_debug_print_enabled(void) { return; }
+<<<<<<< HEAD
+=======
 =======
 #include <linux/init.h>
 #include <linux/list.h>
@@ -130,6 +140,7 @@ int __init clock_debug_add(struct clk *clock);
 static inline int __init clock_debug_init(void) { return 0; }
 static inline int __init clock_debug_add(struct clk *clock) { return 0; }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif

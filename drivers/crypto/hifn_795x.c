@@ -1731,9 +1731,21 @@ static int ablkcipher_get(void *saddr, unsigned int *srestp, unsigned int offset
 	while (size) {
 		copy = min3(srest, dst->length, size);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		daddr = kmap_atomic(sg_page(dst));
+		memcpy(daddr + dst->offset + offset, saddr, copy);
+		kunmap_atomic(daddr);
+=======
 		daddr = kmap_atomic(sg_page(dst), KM_IRQ0);
 		memcpy(daddr + dst->offset + offset, saddr, copy);
 		kunmap_atomic(daddr, KM_IRQ0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		daddr = kmap_atomic(sg_page(dst), KM_IRQ0);
+		memcpy(daddr + dst->offset + offset, saddr, copy);
+		kunmap_atomic(daddr, KM_IRQ0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		nbytes -= copy;
 		size -= copy;
@@ -1793,17 +1805,41 @@ static void hifn_process_ready(struct ablkcipher_request *req, int error)
 				continue;
 			}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			saddr = kmap_atomic(sg_page(t));
+=======
 			saddr = kmap_atomic(sg_page(t), KM_SOFTIRQ0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			saddr = kmap_atomic(sg_page(t), KM_SOFTIRQ0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			err = ablkcipher_get(saddr, &t->length, t->offset,
 					dst, nbytes, &nbytes);
 			if (err < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				kunmap_atomic(saddr);
+=======
 				kunmap_atomic(saddr, KM_SOFTIRQ0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				kunmap_atomic(saddr, KM_SOFTIRQ0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 
 			idx += err;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			kunmap_atomic(saddr);
+=======
 			kunmap_atomic(saddr, KM_SOFTIRQ0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			kunmap_atomic(saddr, KM_SOFTIRQ0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		hifn_cipher_walk_exit(&rctx->walk);
@@ -2494,7 +2530,16 @@ static int hifn_alg_alloc(struct hifn_device *dev, struct hifn_alg_template *t)
 		 t->drv_name, dev->name);
 
 	alg->alg.cra_priority = 300;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	alg->alg.cra_flags = CRYPTO_ALG_TYPE_ABLKCIPHER |
+				CRYPTO_ALG_KERN_DRIVER_ONLY | CRYPTO_ALG_ASYNC;
+=======
 	alg->alg.cra_flags = CRYPTO_ALG_TYPE_ABLKCIPHER | CRYPTO_ALG_ASYNC;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	alg->alg.cra_flags = CRYPTO_ALG_TYPE_ABLKCIPHER | CRYPTO_ALG_ASYNC;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	alg->alg.cra_blocksize = t->bsize;
 	alg->alg.cra_ctxsize = sizeof(struct hifn_context);
 	alg->alg.cra_alignmask = 0;
@@ -2744,10 +2789,21 @@ static int __init hifn_init(void)
 	unsigned int freq;
 	int err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* HIFN supports only 32-bit addresses */
+	BUILD_BUG_ON(sizeof(dma_addr_t) != 4);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sizeof(dma_addr_t) > 4) {
 		printk(KERN_INFO "HIFN supports only 32-bit addresses.\n");
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (strncmp(hifn_pll_ref, "ext", 3) &&
 	    strncmp(hifn_pll_ref, "pci", 3)) {

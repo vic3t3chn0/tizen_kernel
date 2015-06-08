@@ -87,7 +87,12 @@ struct snd_ctl_elem_info32 {
 			u64 names_ptr;
 			u32 names_length;
 =======
+<<<<<<< HEAD
+			u64 names_ptr;
+			u32 names_length;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} enumerated;
 		unsigned char reserved[128];
 	} value;
@@ -381,7 +386,12 @@ static int snd_ctl_elem_add_compat(struct snd_ctl_file *file,
 		data->value.enumerated.names_ptr =
 			(uintptr_t)compat_ptr(data->value.enumerated.names_ptr);
 =======
+<<<<<<< HEAD
+		data->value.enumerated.names_ptr =
+			(uintptr_t)compat_ptr(data->value.enumerated.names_ptr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		break;

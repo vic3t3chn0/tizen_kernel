@@ -40,6 +40,9 @@
 #define TRACE_DISABLE_INTS	TRACE_WITH_FRAME_BUFFER(.trace_hardirqs_off)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This is used by assembly code to soft-disable interrupts
  */
@@ -65,6 +68,8 @@
 	ori	__rA,__rA,PACA_IRQ_HARD_DIS;	\
 	stb	__rB,PACASOFTIRQEN(r13);	\
 	stb	__rA,PACAIRQHAPPENED(r13)
+<<<<<<< HEAD
+=======
 =======
 #define TRACE_AND_RESTORE_IRQ_PARTIAL(en,skip)		\
 	cmpdi	en,0;					\
@@ -85,6 +90,7 @@
 #define TRACE_AND_RESTORE_IRQ(en)		\
 	stb	en,PACASOFTIRQEN(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #endif
 

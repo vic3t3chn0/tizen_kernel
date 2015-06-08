@@ -173,11 +173,16 @@ static int __devinit tegra_das_probe(struct platform_device *pdev)
 		return -ENODEV;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	das = devm_kzalloc(&pdev->dev, sizeof(struct tegra_das), GFP_KERNEL);
 	if (!das) {
 		dev_err(&pdev->dev, "Can't allocate tegra_das\n");
 		ret = -ENOMEM;
 		goto err;
+<<<<<<< HEAD
+=======
 =======
 	das = kzalloc(sizeof(struct tegra_das), GFP_KERNEL);
 	if (!das) {
@@ -185,6 +190,7 @@ static int __devinit tegra_das_probe(struct platform_device *pdev)
 		ret = -ENOMEM;
 		goto exit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	das->dev = &pdev->dev;
 
@@ -193,6 +199,9 @@ static int __devinit tegra_das_probe(struct platform_device *pdev)
 		dev_err(&pdev->dev, "No memory resource\n");
 		ret = -ENODEV;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err;
 	}
 
@@ -222,6 +231,8 @@ static int __devinit tegra_das_probe(struct platform_device *pdev)
 	if (ret) {
 		dev_err(&pdev->dev, "Can't set up DAS DAC connection\n");
 		goto err;
+<<<<<<< HEAD
+=======
 =======
 		goto err_free;
 	}
@@ -240,6 +251,7 @@ static int __devinit tegra_das_probe(struct platform_device *pdev)
 		ret = -ENOMEM;
 		goto err_release;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	tegra_das_debug_add(das);
@@ -252,6 +264,10 @@ static int __devinit tegra_das_probe(struct platform_device *pdev)
 err:
 	das = NULL;
 =======
+<<<<<<< HEAD
+err:
+	das = NULL;
+=======
 err_release:
 	release_mem_region(res->start, resource_size(res));
 err_free:
@@ -259,18 +275,24 @@ err_free:
 	das = 0;
 exit:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static int __devexit tegra_das_remove(struct platform_device *pdev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!das)
 		return -ENODEV;
 
 	tegra_das_debug_remove(das);
 
 	das = NULL;
+<<<<<<< HEAD
+=======
 =======
 	struct resource *res;
 
@@ -289,29 +311,41 @@ static int __devexit tegra_das_remove(struct platform_device *pdev)
 	kfree(das);
 	das = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct of_device_id tegra_das_of_match[] __devinitconst = {
 	{ .compatible = "nvidia,tegra20-das", },
 	{},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver tegra_das_driver = {
 	.probe = tegra_das_probe,
 	.remove = __devexit_p(tegra_das_remove),
 	.driver = {
 		.name = DRV_NAME,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 		.of_match_table = tegra_das_of_match,
 	},
 };
 module_platform_driver(tegra_das_driver);
+<<<<<<< HEAD
+=======
 =======
 	},
 };
@@ -328,6 +362,7 @@ static void __exit tegra_das_modexit(void)
 }
 module_exit(tegra_das_modexit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Stephen Warren <swarren@nvidia.com>");
 MODULE_DESCRIPTION("Tegra DAS driver");
@@ -336,4 +371,8 @@ MODULE_ALIAS("platform:" DRV_NAME);
 <<<<<<< HEAD
 MODULE_DEVICE_TABLE(of, tegra_das_of_match);
 =======
+<<<<<<< HEAD
+MODULE_DEVICE_TABLE(of, tegra_das_of_match);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

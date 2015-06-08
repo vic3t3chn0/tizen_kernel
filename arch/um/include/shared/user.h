@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <generated/asm-offsets.h>
 =======
+<<<<<<< HEAD
+#include <generated/asm-offsets.h>
+=======
 #include "kern_constants.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The usual definition - copied here because the kernel provides its own,
@@ -41,6 +45,9 @@ static inline int printk(const char *fmt, ...)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int in_aton(char *str);
 extern size_t strlcpy(char *, const char *, size_t);
 extern size_t strlcat(char *, const char *, size_t);
@@ -48,6 +55,8 @@ extern size_t strlcat(char *, const char *, size_t);
 /* Copied from linux/compiler-gcc.h since we can't include it directly */
 #define barrier() __asm__ __volatile__("": : :"memory")
 
+<<<<<<< HEAD
+=======
 =======
 extern void schedule(void);
 extern int in_aton(char *str);
@@ -56,4 +65,5 @@ extern size_t strlcpy(char *, const char *, size_t);
 extern size_t strlcat(char *, const char *, size_t);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

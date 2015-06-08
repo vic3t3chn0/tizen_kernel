@@ -45,7 +45,15 @@
 
 MODULE_AUTHOR("VMware, Inc.");
 MODULE_DESCRIPTION("VMware Memory Control (Balloon) Driver");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_VERSION("1.2.1.3-k");
+=======
 MODULE_VERSION("1.2.1.2-k");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_VERSION("1.2.1.2-k");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_ALIAS("dmi:*:svnVMware*:*");
 MODULE_ALIAS("vmware_vmmemctl");
 MODULE_LICENSE("GPL");
@@ -151,7 +159,15 @@ MODULE_LICENSE("GPL");
 struct vmballoon_stats {
 	unsigned int timer;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* allocation statistics */
+=======
 	/* allocation statustics */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* allocation statustics */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int alloc;
 	unsigned int alloc_fail;
 	unsigned int sleep_alloc;
@@ -215,7 +231,14 @@ struct vmballoon {
 };
 
 static struct vmballoon balloon;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static struct workqueue_struct *vmballoon_wq;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct workqueue_struct *vmballoon_wq;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Send "start" command to the host, communicating supported version
@@ -315,7 +338,15 @@ static bool vmballoon_send_get_target(struct vmballoon *b, u32 *new_target)
  * fear that guest will need it. Host may reject some pages, we need to
  * check the return value and maybe submit a different page.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int vmballoon_send_lock_page(struct vmballoon *b, unsigned long pfn,
+=======
 static bool vmballoon_send_lock_page(struct vmballoon *b, unsigned long pfn,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static bool vmballoon_send_lock_page(struct vmballoon *b, unsigned long pfn,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     unsigned int *hv_status)
 {
 	unsigned long status, dummy;
@@ -323,17 +354,39 @@ static bool vmballoon_send_lock_page(struct vmballoon *b, unsigned long pfn,
 
 	pfn32 = (u32)pfn;
 	if (pfn32 != pfn)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -1;
+=======
 		return false;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return false;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	STATS_INC(b->stats.lock);
 
 	*hv_status = status = VMWARE_BALLOON_CMD(LOCK, pfn, dummy);
 	if (vmballoon_check_status(b, status))
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return 0;
+
+	pr_debug("%s - ppn %lx, hv returns %ld\n", __func__, pfn, status);
+	STATS_INC(b->stats.lock_fail);
+	return 1;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 
 	pr_debug("%s - ppn %lx, hv returns %ld\n", __func__, pfn, status);
 	STATS_INC(b->stats.lock_fail);
 	return false;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -412,7 +465,16 @@ static int vmballoon_reserve_page(struct vmballoon *b, bool can_sleep)
 	struct page *page;
 	gfp_t flags;
 	unsigned int hv_status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int locked;
+	flags = can_sleep ? VMW_PAGE_ALLOC_CANSLEEP : VMW_PAGE_ALLOC_NOSLEEP;
+=======
 	bool locked = false;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bool locked = false;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	do {
 		if (!can_sleep)
@@ -420,7 +482,14 @@ static int vmballoon_reserve_page(struct vmballoon *b, bool can_sleep)
 		else
 			STATS_INC(b->stats.sleep_alloc);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		flags = can_sleep ? VMW_PAGE_ALLOC_CANSLEEP : VMW_PAGE_ALLOC_NOSLEEP;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		flags = can_sleep ? VMW_PAGE_ALLOC_CANSLEEP : VMW_PAGE_ALLOC_NOSLEEP;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		page = alloc_page(flags);
 		if (!page) {
 			if (!can_sleep)
@@ -432,7 +501,15 @@ static int vmballoon_reserve_page(struct vmballoon *b, bool can_sleep)
 
 		/* inform monitor */
 		locked = vmballoon_send_lock_page(b, page_to_pfn(page), &hv_status);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (locked > 0) {
+=======
 		if (!locked) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!locked) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			STATS_INC(b->stats.refused_alloc);
 
 			if (hv_status == VMW_BALLOON_ERROR_RESET ||
@@ -450,7 +527,15 @@ static int vmballoon_reserve_page(struct vmballoon *b, bool can_sleep)
 			if (++b->n_refused_pages >= VMW_BALLOON_MAX_REFUSED)
 				return -EIO;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} while (locked != 0);
+=======
 	} while (!locked);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} while (!locked);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* track allocated page */
 	list_add(&page->lru, &b->pages);
@@ -674,7 +759,20 @@ static void vmballoon_work(struct work_struct *work)
 			vmballoon_deflate(b);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * We are using a freezable workqueue so that balloon operations are
+	 * stopped while the system transitions to/from sleep/hibernation.
+	 */
+	queue_delayed_work(system_freezable_wq,
+			   dwork, round_jiffies_relative(HZ));
+=======
 	queue_delayed_work(vmballoon_wq, dwork, round_jiffies_relative(HZ));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	queue_delayed_work(vmballoon_wq, dwork, round_jiffies_relative(HZ));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -785,12 +883,21 @@ static int __init vmballoon_init(void)
 	if (x86_hyper != &x86_hyper_vmware)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vmballoon_wq = create_freezable_workqueue("vmmemctl");
 	if (!vmballoon_wq) {
 		pr_err("failed to create workqueue\n");
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&balloon.pages);
 	INIT_LIST_HEAD(&balloon.refused_pages);
 
@@ -805,18 +912,46 @@ static int __init vmballoon_init(void)
 	 */
 	if (!vmballoon_send_start(&balloon)) {
 		pr_err("failed to send start command to the host\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EIO;
+=======
 		error = -EIO;
 		goto fail;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		error = -EIO;
+		goto fail;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!vmballoon_send_guest_id(&balloon)) {
 		pr_err("failed to send guest ID to the host\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EIO;
+=======
 		error = -EIO;
 		goto fail;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		error = -EIO;
+		goto fail;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	error = vmballoon_debugfs_init(&balloon);
 	if (error)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return error;
+
+	queue_delayed_work(system_freezable_wq, &balloon.dwork, 0);
+
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail;
 
 	queue_delayed_work(vmballoon_wq, &balloon.dwork, 0);
@@ -826,13 +961,24 @@ static int __init vmballoon_init(void)
 fail:
 	destroy_workqueue(vmballoon_wq);
 	return error;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_init(vmballoon_init);
 
 static void __exit vmballoon_exit(void)
 {
 	cancel_delayed_work_sync(&balloon.dwork);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	destroy_workqueue(vmballoon_wq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	destroy_workqueue(vmballoon_wq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	vmballoon_debugfs_exit(&balloon);
 

@@ -193,9 +193,12 @@ void nilfs_remove_all_gcinodes(struct the_nilfs *nilfs)
 		list_del_init(&ii->i_dirty);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		truncate_inode_pages(&ii->vfs_inode.i_data, 0);
 		nilfs_btnode_cache_clear(&ii->i_btnode_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iput(&ii->vfs_inode);
 	}
 }

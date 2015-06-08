@@ -20,7 +20,11 @@
 <<<<<<< HEAD
 #include <asm/fixmap.h>			/* VSYSCALL_START		*/
 =======
+<<<<<<< HEAD
+#include <asm/fixmap.h>			/* VSYSCALL_START		*/
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Page fault error code bits:
@@ -112,8 +116,12 @@ check_prefetch_opcode(struct pt_regs *regs, unsigned char *instr,
 <<<<<<< HEAD
 		return (!user_mode(regs) || user_64bit_mode(regs));
 =======
+<<<<<<< HEAD
+		return (!user_mode(regs) || user_64bit_mode(regs));
+=======
 		return (!user_mode(regs)) || (regs->cs == __USER_CS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	case 0x60:
 		/* 0x64 thru 0x67 are valid prefixes in all modes. */
@@ -385,10 +393,15 @@ static noinline __kprobes int vmalloc_fault(unsigned long address)
 		return -1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pgd_none(*pgd))
 		set_pgd(pgd, *pgd_ref);
 	else
 		BUG_ON(pgd_page_vaddr(*pgd) != pgd_page_vaddr(*pgd_ref));
+<<<<<<< HEAD
+=======
 =======
 	if (pgd_none(*pgd)) {
 		set_pgd(pgd, *pgd_ref);
@@ -397,6 +410,7 @@ static noinline __kprobes int vmalloc_fault(unsigned long address)
 		BUG_ON(pgd_page_vaddr(*pgd) != pgd_page_vaddr(*pgd_ref));
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Below here mismatches are bugs because these lower tables
@@ -439,7 +453,11 @@ static noinline __kprobes int vmalloc_fault(unsigned long address)
 <<<<<<< HEAD
 #ifdef CONFIG_CPU_SUP_AMD
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_CPU_SUP_AMD
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char errata93_warning[] =
 KERN_ERR 
 "******* Your BIOS seems to not contain a fix for K8 errata #93\n"
@@ -449,7 +467,11 @@ KERN_ERR
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * No vm86 mode in 64-bit mode:
@@ -530,14 +552,20 @@ bad:
 static int is_errata93(struct pt_regs *regs, unsigned long address)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_X86_64) && defined(CONFIG_CPU_SUP_AMD)
 	if (boot_cpu_data.x86_vendor != X86_VENDOR_AMD
 	    || boot_cpu_data.x86 != 0xf)
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_X86_64
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (address != regs->ip)
 		return 0;
 
@@ -644,8 +672,12 @@ pgtable_bad(struct pt_regs *regs, unsigned long error_code,
 <<<<<<< HEAD
 	tsk->thread.trap_nr	= X86_TRAP_PF;
 =======
+<<<<<<< HEAD
+	tsk->thread.trap_nr	= X86_TRAP_PF;
+=======
 	tsk->thread.trap_no	= 14;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tsk->thread.error_code	= error_code;
 
 	if (__die("Bad pagetable", regs, error_code))
@@ -659,8 +691,12 @@ no_context(struct pt_regs *regs, unsigned long error_code,
 <<<<<<< HEAD
 	   unsigned long address, int signal, int si_code)
 =======
+<<<<<<< HEAD
+	   unsigned long address, int signal, int si_code)
+=======
 	   unsigned long address)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct task_struct *tsk = current;
 	unsigned long *stackend;
@@ -669,6 +705,9 @@ no_context(struct pt_regs *regs, unsigned long error_code,
 
 	/* Are we prepared to handle this kernel fault? */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fixup_exception(regs)) {
 		if (current_thread_info()->sig_on_uaccess_error && signal) {
 			tsk->thread.trap_nr = X86_TRAP_PF;
@@ -680,10 +719,13 @@ no_context(struct pt_regs *regs, unsigned long error_code,
 		}
 		return;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (fixup_exception(regs))
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * 32-bit:
@@ -713,16 +755,22 @@ no_context(struct pt_regs *regs, unsigned long error_code,
 	stackend = end_of_stack(tsk);
 	if (tsk != &init_task && *stackend != STACK_END_MAGIC)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_EMERG "Thread overran stack, or stack corrupted\n");
 
 	tsk->thread.cr2		= address;
 	tsk->thread.trap_nr	= X86_TRAP_PF;
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_ALERT "Thread overran stack, or stack corrupted\n");
 
 	tsk->thread.cr2		= address;
 	tsk->thread.trap_no	= 14;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tsk->thread.error_code	= error_code;
 
 	sig = SIGKILL;
@@ -733,8 +781,12 @@ no_context(struct pt_regs *regs, unsigned long error_code,
 <<<<<<< HEAD
 	printk(KERN_DEFAULT "CR2: %016lx\n", address);
 =======
+<<<<<<< HEAD
+	printk(KERN_DEFAULT "CR2: %016lx\n", address);
+=======
 	printk(KERN_EMERG "CR2: %016lx\n", address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	oops_end(flags, regs, sig);
 }
@@ -787,6 +839,9 @@ __bad_area_nosemaphore(struct pt_regs *regs, unsigned long error_code,
 			return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_64
 		/*
 		 * Instruction fetch faults in the vsyscall page might need
@@ -806,6 +861,8 @@ __bad_area_nosemaphore(struct pt_regs *regs, unsigned long error_code,
 		tsk->thread.cr2		= address;
 		tsk->thread.error_code	= error_code | (address >= TASK_SIZE);
 		tsk->thread.trap_nr	= X86_TRAP_PF;
+<<<<<<< HEAD
+=======
 =======
 		/* Kernel addresses are always protection faults: */
 		if (address >= TASK_SIZE)
@@ -818,6 +875,7 @@ __bad_area_nosemaphore(struct pt_regs *regs, unsigned long error_code,
 		tsk->thread.error_code	= error_code;
 		tsk->thread.trap_no	= 14;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		force_sig_info_fault(SIGSEGV, si_code, address, tsk, 0);
 
@@ -830,8 +888,12 @@ __bad_area_nosemaphore(struct pt_regs *regs, unsigned long error_code,
 <<<<<<< HEAD
 	no_context(regs, error_code, address, SIGSEGV, si_code);
 =======
+<<<<<<< HEAD
+	no_context(regs, error_code, address, SIGSEGV, si_code);
+=======
 	no_context(regs, error_code, address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static noinline void
@@ -898,8 +960,12 @@ do_sigbus(struct pt_regs *regs, unsigned long error_code, unsigned long address,
 <<<<<<< HEAD
 		no_context(regs, error_code, address, SIGBUS, BUS_ADRERR);
 =======
+<<<<<<< HEAD
+		no_context(regs, error_code, address, SIGBUS, BUS_ADRERR);
+=======
 		no_context(regs, error_code, address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -912,8 +978,12 @@ do_sigbus(struct pt_regs *regs, unsigned long error_code, unsigned long address,
 <<<<<<< HEAD
 	tsk->thread.trap_nr	= X86_TRAP_PF;
 =======
+<<<<<<< HEAD
+	tsk->thread.trap_nr	= X86_TRAP_PF;
+=======
 	tsk->thread.trap_no	= 14;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MEMORY_FAILURE
 	if (fault & (VM_FAULT_HWPOISON|VM_FAULT_HWPOISON_LARGE)) {
@@ -941,8 +1011,12 @@ mm_fault_error(struct pt_regs *regs, unsigned long error_code,
 <<<<<<< HEAD
 			no_context(regs, error_code, address, 0, 0);
 =======
+<<<<<<< HEAD
+			no_context(regs, error_code, address, 0, 0);
+=======
 			no_context(regs, error_code, address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 	}
 	if (!(fault & VM_FAULT_ERROR))
@@ -956,8 +1030,13 @@ mm_fault_error(struct pt_regs *regs, unsigned long error_code,
 			no_context(regs, error_code, address,
 				   SIGSEGV, SEGV_MAPERR);
 =======
+<<<<<<< HEAD
+			no_context(regs, error_code, address,
+				   SIGSEGV, SEGV_MAPERR);
+=======
 			no_context(regs, error_code, address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 1;
 		}
 
@@ -1174,8 +1253,12 @@ do_page_fault(struct pt_regs *regs, unsigned long error_code)
 <<<<<<< HEAD
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
 =======
+<<<<<<< HEAD
+	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
+=======
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, 0, regs, address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we're in an interrupt, have no user context or are running
@@ -1278,11 +1361,16 @@ good_area:
 		if (fault & VM_FAULT_MAJOR) {
 			tsk->maj_flt++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ, 1,
 				      regs, address);
 		} else {
 			tsk->min_flt++;
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN, 1,
+<<<<<<< HEAD
+=======
 =======
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ, 1, 0,
 				      regs, address);
@@ -1290,6 +1378,7 @@ good_area:
 			tsk->min_flt++;
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN, 1, 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      regs, address);
 		}
 		if (fault & VM_FAULT_RETRY) {

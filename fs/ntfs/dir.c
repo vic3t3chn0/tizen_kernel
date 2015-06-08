@@ -1531,8 +1531,13 @@ static int ntfs_dir_open(struct inode *vi, struct file *filp)
 static int ntfs_dir_fsync(struct file *filp, loff_t start, loff_t end,
 			  int datasync)
 =======
+<<<<<<< HEAD
+static int ntfs_dir_fsync(struct file *filp, loff_t start, loff_t end,
+			  int datasync)
+=======
 static int ntfs_dir_fsync(struct file *filp, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *bmp_vi, *vi = filp->f_mapping->host;
 	int err, ret;
@@ -1540,14 +1545,20 @@ static int ntfs_dir_fsync(struct file *filp, int datasync)
 
 	ntfs_debug("Entering for inode 0x%lx.", vi->i_ino);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = filemap_write_and_wait_range(vi->i_mapping, start, end);
 	if (err)
 		return err;
 	mutex_lock(&vi->i_mutex);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!S_ISDIR(vi->i_mode));
 	/* If the bitmap attribute inode is in memory sync it, too. */
 	na.mft_no = vi->i_ino;
@@ -1572,7 +1583,11 @@ static int ntfs_dir_fsync(struct file *filp, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&vi->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&vi->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

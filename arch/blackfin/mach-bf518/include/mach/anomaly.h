@@ -16,11 +16,17 @@
  */
 
 =======
+<<<<<<< HEAD
+ *  - Revision F, 05/23/2011; ADSP-BF512/BF514/BF516/BF518 Blackfin Processor Anomaly List
+ */
+
+=======
  *  - Revision E, 01/26/2010; ADSP-BF512/BF514/BF516/BF518 Blackfin Processor Anomaly List
  */
 
 /* We plan on not supporting 0.0 silicon, but 0.1 isn't out yet - sorry */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if __SILICON_REVISION__ < 0
 # error will not work on BF518 silicon version
 #endif
@@ -88,12 +94,18 @@
 /* Incorrect Default MSEL Value in PLL_CTL */
 #define ANOMALY_05000472 (__SILICON_REVISION__ < 2)
 =======
+<<<<<<< HEAD
+#define ANOMALY_05000462 (__SILICON_REVISION__ < 2)
+/* Incorrect Default MSEL Value in PLL_CTL */
+#define ANOMALY_05000472 (__SILICON_REVISION__ < 2)
+=======
 #define ANOMALY_05000462 (1)
 /* PLL Latches Incorrect Settings During Reset */
 #define ANOMALY_05000469 (1)
 /* Incorrect Default MSEL Value in PLL_CTL */
 #define ANOMALY_05000472 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Interrupted SPORT Receive Data Register Read Results In Underflow when SLEN > 15 */
 #define ANOMALY_05000473 (1)
 /* TESTSET Instruction Cannot Be Interrupted */
@@ -101,6 +113,9 @@
 /* Reads of ITEST_COMMAND and ITEST_DATA Registers Cause Cache Corruption */
 #define ANOMALY_05000481 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLL Latches Incorrect Settings During Reset */
 #define ANOMALY_05000482 (__SILICON_REVISION__ < 2)
 /* PLL_CTL Change Using bfrom_SysControl() Can Result in Processor Overclocking */
@@ -115,10 +130,13 @@
 #define ANOMALY_05000498 (1)
 /* RXS Bit in SPI_STAT May Become Stuck In RX DMA Modes */
 #define ANOMALY_05000501 (1)
+<<<<<<< HEAD
+=======
 =======
 /* IFLUSH sucks at life */
 #define ANOMALY_05000491 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Anomalies that don't exist on this proc */
 #define ANOMALY_05000099 (0)
@@ -188,7 +206,10 @@
 #define ANOMALY_05000480 (0)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define ANOMALY_05000485 (0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

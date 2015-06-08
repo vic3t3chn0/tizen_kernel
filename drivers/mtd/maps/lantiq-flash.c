@@ -45,6 +45,13 @@ struct ltq_mtd {
 };
 
 static char ltq_map_name[] = "ltq_nor";
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char *ltq_probe_types[] __devinitconst = { "cmdlinepart", NULL };
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static map_word
 ltq_read16(struct map_info *map, unsigned long adr)
@@ -107,16 +114,34 @@ ltq_copy_to(struct map_info *map, unsigned long to,
 	spin_unlock_irqrestore(&ebu_lock, flags);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static const char const *part_probe_types[] = { "cmdlinepart", NULL };
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const char const *part_probe_types[] = { "cmdlinepart", NULL };
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init
 ltq_mtd_probe(struct platform_device *pdev)
 {
 	struct physmap_flash_data *ltq_mtd_data = dev_get_platdata(&pdev->dev);
 	struct ltq_mtd *ltq_mtd;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct resource *res;
+=======
 	struct mtd_partition *parts;
 	struct resource *res;
 	int nr_parts = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct mtd_partition *parts;
+	struct resource *res;
+	int nr_parts = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cfi_private *cfi;
 	int err;
 
@@ -163,7 +188,15 @@ ltq_mtd_probe(struct platform_device *pdev)
 	if (!ltq_mtd->mtd) {
 		dev_err(&pdev->dev, "probing failed\n");
 		err = -ENXIO;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto err_free;
+=======
 		goto err_unmap;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		goto err_unmap;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ltq_mtd->mtd->owner = THIS_MODULE;
@@ -172,6 +205,14 @@ ltq_mtd_probe(struct platform_device *pdev)
 	cfi->addr_unlock1 ^= 1;
 	cfi->addr_unlock2 ^= 1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_device_parse_register(ltq_mtd->mtd, ltq_probe_types, NULL,
+					ltq_mtd_data->parts,
+					ltq_mtd_data->nr_parts);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nr_parts = parse_mtd_partitions(ltq_mtd->mtd,
 				part_probe_types, &parts, 0);
 	if (nr_parts > 0) {
@@ -183,6 +224,10 @@ ltq_mtd_probe(struct platform_device *pdev)
 	}
 
 	err = add_mtd_partitions(ltq_mtd->mtd, parts, nr_parts);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		dev_err(&pdev->dev, "failed to add partitions\n");
 		goto err_destroy;
@@ -192,8 +237,16 @@ ltq_mtd_probe(struct platform_device *pdev)
 
 err_destroy:
 	map_destroy(ltq_mtd->mtd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 err_unmap:
 	iounmap(ltq_mtd->map->virt);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+err_unmap:
+	iounmap(ltq_mtd->map->virt);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_free:
 	kfree(ltq_mtd->map);
 err_out:
@@ -208,11 +261,23 @@ ltq_mtd_remove(struct platform_device *pdev)
 
 	if (ltq_mtd) {
 		if (ltq_mtd->mtd) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			mtd_device_unregister(ltq_mtd->mtd);
+			map_destroy(ltq_mtd->mtd);
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			del_mtd_partitions(ltq_mtd->mtd);
 			map_destroy(ltq_mtd->mtd);
 		}
 		if (ltq_mtd->map->virt)
 			iounmap(ltq_mtd->map->virt);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(ltq_mtd->map);
 		kfree(ltq_mtd);
 	}

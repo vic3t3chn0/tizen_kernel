@@ -28,7 +28,14 @@
 #include <linux/interrupt.h>
 
 #include <plat/dma.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <plat/hwa742.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <plat/hwa742.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "omapfb.h"
 
 #define HWA742_REV_CODE_REG       0x0
@@ -942,7 +949,14 @@ static int hwa742_init(struct omapfb_device *fbdev, int ext_mode,
 	unsigned long sys_clk, pix_clk;
 	int extif_mem_div;
 	struct omapfb_platform_data *omapfb_conf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct hwa742_platform_data *ctrl_conf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct hwa742_platform_data *ctrl_conf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(!fbdev->ext_if || !fbdev->int_ctrl);
 
@@ -951,6 +965,11 @@ static int hwa742_init(struct omapfb_device *fbdev, int ext_mode,
 	hwa742.int_ctrl = fbdev->int_ctrl;
 
 	omapfb_conf = fbdev->dev->platform_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctrl_conf = omapfb_conf->ctrl_platform_data;
 
 	if (ctrl_conf == NULL) {
@@ -958,6 +977,10 @@ static int hwa742_init(struct omapfb_device *fbdev, int ext_mode,
 		r = -ENOENT;
 		goto err1;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hwa742.sys_ck = clk_get(NULL, "hwa_sys_ck");
 
@@ -995,6 +1018,17 @@ static int hwa742_init(struct omapfb_device *fbdev, int ext_mode,
 		goto err4;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((r = setup_tearsync(pix_clk, extif_mem_div)) < 0) {
+		dev_err(hwa742.fbdev->dev,
+			"HWA742: can't setup tearing synchronization\n");
+		goto err4;
+	}
+	hwa742.te_connected = 1;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ctrl_conf->te_connected) {
 		if ((r = setup_tearsync(pix_clk, extif_mem_div)) < 0) {
 			dev_err(hwa742.fbdev->dev,
@@ -1003,6 +1037,10 @@ static int hwa742_init(struct omapfb_device *fbdev, int ext_mode,
 		}
 		hwa742.te_connected = 1;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hwa742.max_transmit_size = hwa742.extif->max_transmit_size;
 

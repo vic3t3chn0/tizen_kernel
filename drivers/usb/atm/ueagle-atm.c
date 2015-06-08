@@ -116,14 +116,30 @@ struct uea_cmvs_v1 {
 	u32 address;
 	u16 offset;
 	u32 data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct uea_cmvs_v2 {
 	u32 group;
 	u32 address;
 	u32 offset;
 	u32 data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* information about currently processed cmv */
 struct cmv_dsc_e1 {
@@ -352,7 +368,15 @@ struct block_index {
 	__le32 PageAddress;
 	__le16 dummy1;
 	__le16 PageNumber;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define E4_IS_BOOT_PAGE(PageSize) ((le32_to_cpu(PageSize)) & 0x80000000)
 #define E4_PAGE_BYTES(PageSize) ((le32_to_cpu(PageSize) & 0x7fffffff) * 4)
@@ -367,7 +391,15 @@ struct l1_code {
 	u8 page_number_to_block_index[E4_MAX_PAGE_NUMBER];
 	struct block_index page_header[E4_NO_SWAPPAGE_HEADERS];
 	u8 code[0];
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* structures describing a block within a DSP page */
 struct block_info_e1 {
@@ -377,7 +409,15 @@ struct block_info_e1 {
 	__le16 wOvlOffset;
 	__le16 wOvl;		/* overlay */
 	__le16 wLast;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define E1_BLOCK_INFO_SIZE 12
 
 struct block_info_e4 {
@@ -387,7 +427,15 @@ struct block_info_e4 {
 	__be32 dwSize;
 	__be32 dwAddress;
 	__be16 wReserved;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define E4_BLOCK_INFO_SIZE 14
 
 #define UEA_BIHDR 0xabcd
@@ -467,7 +515,15 @@ struct cmv_e1 {
 	__le32 dwSymbolicAddress;
 	__le16 wOffsetAddress;
 	__le32 dwData;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct cmv_e4 {
 	__be16 wGroup;
@@ -475,17 +531,39 @@ struct cmv_e4 {
 	__be16 wOffset;
 	__be16 wAddress;
 	__be32 dwData[6];
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* structures representing swap information */
 struct swap_info_e1 {
 	__u8 bSwapPageNo;
 	__u8 bOvl;		/* overlay */
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+
+struct swap_info_e4 {
+	__u8 bSwapPageNo;
+} __packed;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __attribute__ ((packed));
 
 struct swap_info_e4 {
 	__u8 bSwapPageNo;
 } __attribute__ ((packed));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* structures representing interrupt data */
 #define e1_bSwapPageNo	u.e1.s1.swapinfo.bSwapPageNo
@@ -499,23 +577,53 @@ union intr_data_e1 {
 	struct {
 		struct swap_info_e1 swapinfo;
 		__le16 wDataSize;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} __packed s1;
+	struct {
+		struct cmv_e1 cmv;
+		__le16 wDataSize;
+	} __packed s2;
+} __packed;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} __attribute__ ((packed)) s1;
 	struct {
 		struct cmv_e1 cmv;
 		__le16 wDataSize;
 	} __attribute__ ((packed)) s2;
 } __attribute__ ((packed));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 union intr_data_e4 {
 	struct {
 		struct swap_info_e4 swapinfo;
 		__le16 wDataSize;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} __packed s1;
+	struct {
+		struct cmv_e4 cmv;
+		__le16 wDataSize;
+	} __packed s2;
+} __packed;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} __attribute__ ((packed)) s1;
 	struct {
 		struct cmv_e4 cmv;
 		__le16 wDataSize;
 	} __attribute__ ((packed)) s2;
 } __attribute__ ((packed));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct intr_pkt {
 	__u8 bType;
@@ -528,21 +636,47 @@ struct intr_pkt {
 		union intr_data_e1 e1;
 		union intr_data_e4 e4;
 	} u;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} __attribute__ ((packed));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define E1_INTR_PKT_SIZE 28
 #define E4_INTR_PKT_SIZE 64
 
 static struct usb_driver uea_driver;
 static DEFINE_MUTEX(uea_mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char * const chip_name[] = {
+	"ADI930", "Eagle I", "Eagle II", "Eagle III", "Eagle IV"};
+=======
 static const char *chip_name[] = {"ADI930", "Eagle I", "Eagle II", "Eagle III",
 								"Eagle IV"};
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const char *chip_name[] = {"ADI930", "Eagle I", "Eagle II", "Eagle III",
+								"Eagle IV"};
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int modem_index;
 static unsigned int debug;
 static unsigned int altsetting[NB_MODEM] = {
 				[0 ... (NB_MODEM - 1)] = FASTEST_ISO_INTF};
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool sync_wait[NB_MODEM];
+=======
 static int sync_wait[NB_MODEM];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sync_wait[NB_MODEM];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static char *cmv_file[NB_MODEM];
 static int annex[NB_MODEM];
 
@@ -2753,6 +2887,12 @@ static struct usb_driver uea_driver = {
 
 MODULE_DEVICE_TABLE(usb, uea_ids);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(uea_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * uea_init - Initialize the module.
  *      Register to USB subsystem
@@ -2783,6 +2923,10 @@ static void __exit uea_exit(void)
 }
 
 module_exit(uea_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Damien Bergamini/Matthieu Castet/Stanislaw W. Gruszka");
 MODULE_DESCRIPTION("ADI 930/Eagle USB ADSL Modem driver");

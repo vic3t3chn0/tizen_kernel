@@ -241,7 +241,15 @@ int wl1251_cmd_data_path(struct wl1251 *wl, u8 channel, bool enable)
 	if (ret < 0) {
 		wl1251_error("tx %s cmd for channel %d failed",
 			     enable ? "start" : "stop", channel);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto out;
+=======
 		return ret;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return ret;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	wl1251_debug(DEBUG_BOOT, "tx %s cmd channel %d",

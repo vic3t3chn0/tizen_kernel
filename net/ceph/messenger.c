@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/dns_resolver.h>
 =======
+<<<<<<< HEAD
+#include <linux/dns_resolver.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/tcp.h>
 
 #include <linux/ceph/libceph.h>
@@ -24,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Ceph uses the messenger to exchange ceph_msg messages with other
@@ -45,13 +53,19 @@ static struct lock_class_key socket_class;
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * When skipping (ignoring) a block of input we read it into a "skip
  * buffer," which is this many bytes in size.
  */
 #define SKIP_BUF_SIZE	1024
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void queue_con(struct ceph_connection *con);
 static void con_work(struct work_struct *);
@@ -59,6 +73,9 @@ static void ceph_fault(struct ceph_connection *con);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Nicely render a sockaddr as a string.  An array of formatted
  * strings is used, to approximate reentrancy.
  */
@@ -71,6 +88,8 @@ static char addr_str[ADDR_STR_COUNT][MAX_ADDR_STR_LEN];
 static atomic_t addr_str_seq = ATOMIC_INIT(0);
 
 static struct page *zero_page;		/* used in certain error cases */
+<<<<<<< HEAD
+=======
 =======
  * nicely render a sockaddr as a string.
  */
@@ -80,16 +99,22 @@ static char addr_str[MAX_ADDR_STR][MAX_ADDR_STR_LEN];
 static DEFINE_SPINLOCK(addr_str_lock);
 static int last_addr_str;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 const char *ceph_pr_addr(const struct sockaddr_storage *ss)
 {
 	int i;
 	char *s;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sockaddr_in *in4 = (struct sockaddr_in *) ss;
 	struct sockaddr_in6 *in6 = (struct sockaddr_in6 *) ss;
 
 	i = atomic_inc_return(&addr_str_seq) & ADDR_STR_COUNT_MASK;
+<<<<<<< HEAD
+=======
 =======
 	struct sockaddr_in *in4 = (void *)ss;
 	struct sockaddr_in6 *in6 = (void *)ss;
@@ -100,11 +125,15 @@ const char *ceph_pr_addr(const struct sockaddr_storage *ss)
 		last_addr_str = 0;
 	spin_unlock(&addr_str_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s = addr_str[i];
 
 	switch (ss->ss_family) {
 	case AF_INET:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snprintf(s, MAX_ADDR_STR_LEN, "%pI4:%hu", &in4->sin_addr,
 			 ntohs(in4->sin_port));
 		break;
@@ -117,6 +146,8 @@ const char *ceph_pr_addr(const struct sockaddr_storage *ss)
 	default:
 		snprintf(s, MAX_ADDR_STR_LEN, "(unknown sockaddr family %hu)",
 			 ss->ss_family);
+<<<<<<< HEAD
+=======
 =======
 		snprintf(s, MAX_ADDR_STR_LEN, "%pI4:%u", &in4->sin_addr,
 			 (unsigned int)ntohs(in4->sin_port));
@@ -131,6 +162,7 @@ const char *ceph_pr_addr(const struct sockaddr_storage *ss)
 		snprintf(s, MAX_ADDR_STR_LEN, "(unknown sockaddr family %d)",
 			 (int)ss->ss_family);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return s;
@@ -147,6 +179,9 @@ static void encode_my_addr(struct ceph_messenger *msgr)
  * work queue for all reading and writing to/from the socket.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct workqueue_struct *ceph_msgr_wq;
 
 void _ceph_msgr_exit(void)
@@ -176,6 +211,8 @@ int ceph_msgr_init(void)
 	_ceph_msgr_exit();
 
 	return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 struct workqueue_struct *ceph_msgr_wq;
 
@@ -188,6 +225,7 @@ int ceph_msgr_init(void)
 	}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(ceph_msgr_init);
 
@@ -198,8 +236,14 @@ void ceph_msgr_exit(void)
 
 	_ceph_msgr_exit();
 =======
+<<<<<<< HEAD
+	BUG_ON(ceph_msgr_wq == NULL);
+
+	_ceph_msgr_exit();
+=======
 	destroy_workqueue(ceph_msgr_wq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(ceph_msgr_exit);
 
@@ -221,9 +265,14 @@ static void ceph_data_ready(struct sock *sk, int count_unused)
 	struct ceph_connection *con = sk->sk_user_data;
 
 =======
+<<<<<<< HEAD
+	struct ceph_connection *con = sk->sk_user_data;
+
+=======
 	struct ceph_connection *con =
 		(struct ceph_connection *)sk->sk_user_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sk->sk_state != TCP_CLOSE_WAIT) {
 		dout("ceph_data_ready on %p state = %lu, queueing work\n",
 		     con, con->state);
@@ -235,6 +284,9 @@ static void ceph_data_ready(struct sock *sk, int count_unused)
 static void ceph_write_space(struct sock *sk)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ceph_connection *con = sk->sk_user_data;
 
 	/* only queue to workqueue if there is data we want to write,
@@ -253,6 +305,8 @@ static void ceph_write_space(struct sock *sk)
 	} else {
 		dout("ceph_write_space %p nothing to write\n", con);
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct ceph_connection *con =
 		(struct ceph_connection *)sk->sk_user_data;
@@ -268,6 +322,7 @@ static void ceph_write_space(struct sock *sk)
 	/* since we have our own write_space, clear the SOCK_NOSPACE flag */
 	clear_bit(SOCK_NOSPACE, &sk->sk_socket->flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* socket's state has changed */
@@ -276,9 +331,13 @@ static void ceph_state_change(struct sock *sk)
 <<<<<<< HEAD
 	struct ceph_connection *con = sk->sk_user_data;
 =======
+<<<<<<< HEAD
+	struct ceph_connection *con = sk->sk_user_data;
+=======
 	struct ceph_connection *con =
 		(struct ceph_connection *)sk->sk_user_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dout("ceph_state_change %p state = %lu sk_state = %u\n",
 	     con, con->state, sk->sk_state);
@@ -307,7 +366,12 @@ static void ceph_state_change(struct sock *sk)
 	default:	/* Everything else is uninteresting */
 		break;
 =======
+<<<<<<< HEAD
+	default:	/* Everything else is uninteresting */
+		break;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -321,8 +385,12 @@ static void set_sock_callbacks(struct socket *sock,
 <<<<<<< HEAD
 	sk->sk_user_data = con;
 =======
+<<<<<<< HEAD
+	sk->sk_user_data = con;
+=======
 	sk->sk_user_data = (void *)con;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sk->sk_data_ready = ceph_data_ready;
 	sk->sk_write_space = ceph_write_space;
 	sk->sk_state_change = ceph_state_change;
@@ -339,8 +407,12 @@ static void set_sock_callbacks(struct socket *sock,
 <<<<<<< HEAD
 static int ceph_tcp_connect(struct ceph_connection *con)
 =======
+<<<<<<< HEAD
+static int ceph_tcp_connect(struct ceph_connection *con)
+=======
 static struct socket *ceph_tcp_connect(struct ceph_connection *con)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sockaddr_storage *paddr = &con->peer_addr.in_addr;
 	struct socket *sock;
@@ -353,9 +425,13 @@ static struct socket *ceph_tcp_connect(struct ceph_connection *con)
 <<<<<<< HEAD
 		return ret;
 =======
+<<<<<<< HEAD
+		return ret;
+=======
 		return ERR_PTR(ret);
 	con->sock = sock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sock->sk->sk_allocation = GFP_NOFS;
 
 #ifdef CONFIG_LOCKDEP
@@ -373,6 +449,9 @@ static struct socket *ceph_tcp_connect(struct ceph_connection *con)
 		     ceph_pr_addr(&con->peer_addr.in_addr),
 		     sock->sk->sk_state);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (ret < 0) {
 		pr_err("connect %s error %d\n",
 		       ceph_pr_addr(&con->peer_addr.in_addr), ret);
@@ -384,6 +463,8 @@ static struct socket *ceph_tcp_connect(struct ceph_connection *con)
 	con->sock = sock;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 		ret = 0;
 	}
@@ -399,6 +480,7 @@ static struct socket *ceph_tcp_connect(struct ceph_connection *con)
 		return ERR_PTR(ret);
 	return sock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ceph_tcp_recvmsg(struct socket *sock, void *buf, size_t len)
@@ -435,6 +517,9 @@ static int ceph_tcp_sendmsg(struct socket *sock, struct kvec *iov,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ceph_tcp_sendpage(struct socket *sock, struct page *page,
 		     int offset, size_t size, int more)
 {
@@ -448,8 +533,11 @@ static int ceph_tcp_sendpage(struct socket *sock, struct page *page,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Shutdown/close the socket for the given connection.
@@ -558,11 +646,16 @@ bool ceph_con_opened(struct ceph_connection *con)
 struct ceph_connection *ceph_con_get(struct ceph_connection *con)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int nref = __atomic_add_unless(&con->nref, 1, 0);
 
 	dout("con_get %p nref = %d -> %d\n", con, nref, nref + 1);
 
 	return nref ? con : NULL;
+<<<<<<< HEAD
+=======
 =======
 	dout("con_get %p nref = %d -> %d\n", con,
 	     atomic_read(&con->nref), atomic_read(&con->nref) + 1);
@@ -570,11 +663,15 @@ struct ceph_connection *ceph_con_get(struct ceph_connection *con)
 		return con;
 	return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ceph_con_put(struct ceph_connection *con)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int nref = atomic_dec_return(&con->nref);
 
 	BUG_ON(nref < 0);
@@ -583,6 +680,8 @@ void ceph_con_put(struct ceph_connection *con)
 		kfree(con);
 	}
 	dout("con_put %p nref = %d -> %d\n", con, nref + 1, nref);
+<<<<<<< HEAD
+=======
 =======
 	dout("con_put %p nref = %d -> %d\n", con,
 	     atomic_read(&con->nref), atomic_read(&con->nref) - 1);
@@ -592,6 +691,7 @@ void ceph_con_put(struct ceph_connection *con)
 		kfree(con);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -628,6 +728,9 @@ static u32 get_global_seq(struct ceph_messenger *msgr, u32 gt)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ceph_con_out_kvec_reset(struct ceph_connection *con)
 {
 	con->out_kvec_left = 0;
@@ -648,23 +751,32 @@ static void ceph_con_out_kvec_add(struct ceph_connection *con,
 	con->out_kvec_left++;
 	con->out_kvec_bytes += size;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Prepare footer for currently outgoing message, and finish things
  * off.  Assumes out_kvec* are already valid.. we just add on to the end.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void prepare_write_message_footer(struct ceph_connection *con)
 {
 	struct ceph_msg *m = con->out_msg;
 	int v = con->out_kvec_left;
+<<<<<<< HEAD
+=======
 =======
 static void prepare_write_message_footer(struct ceph_connection *con, int v)
 {
 	struct ceph_msg *m = con->out_msg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dout("prepare_write_message_footer %p\n", con);
 	con->out_kvec_is_msg = true;
@@ -687,10 +799,16 @@ static void prepare_write_message(struct ceph_connection *con)
 
 	ceph_con_out_kvec_reset(con);
 =======
+<<<<<<< HEAD
+	u32 crc;
+
+	ceph_con_out_kvec_reset(con);
+=======
 	int v = 0;
 
 	con->out_kvec_bytes = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	con->out_kvec_is_msg = true;
 	con->out_msg_done = false;
 
@@ -699,6 +817,9 @@ static void prepare_write_message(struct ceph_connection *con)
 	if (con->in_seq > con->in_seq_acked) {
 		con->in_seq_acked = con->in_seq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ceph_con_out_kvec_add(con, sizeof (tag_ack), &tag_ack);
 		con->out_temp_ack = cpu_to_le64(con->in_seq_acked);
 		ceph_con_out_kvec_add(con, sizeof (con->out_temp_ack),
@@ -711,6 +832,8 @@ static void prepare_write_message(struct ceph_connection *con)
 	/* put message on sent list */
 	ceph_msg_get(m);
 	list_move_tail(&m->list_head, &con->out_sent);
+<<<<<<< HEAD
+=======
 =======
 		con->out_kvec[v].iov_base = &tag_ack;
 		con->out_kvec[v++].iov_len = 1;
@@ -731,6 +854,7 @@ static void prepare_write_message(struct ceph_connection *con)
 		list_move_tail(&m->list_head, &con->out_sent);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * only assign outgoing seq # if we haven't sent this message
@@ -750,6 +874,9 @@ static void prepare_write_message(struct ceph_connection *con)
 
 	/* tag + hdr + front + middle */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ceph_con_out_kvec_add(con, sizeof (tag_msg), &tag_msg);
 	ceph_con_out_kvec_add(con, sizeof (m->hdr), &m->hdr);
 	ceph_con_out_kvec_add(con, m->front.iov_len, m->front.iov_base);
@@ -770,6 +897,8 @@ static void prepare_write_message(struct ceph_connection *con)
 				m->middle->vec.iov_len);
 		con->out_msg->footer.middle_crc = cpu_to_le32(crc);
 	} else
+<<<<<<< HEAD
+=======
 =======
 	con->out_kvec[v].iov_base = &tag_msg;
 	con->out_kvec[v++].iov_len = 1;
@@ -796,6 +925,7 @@ static void prepare_write_message(struct ceph_connection *con)
 					   m->middle->vec.iov_len));
 	else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		con->out_msg->footer.middle_crc = 0;
 	con->out_msg->footer.data_crc = 0;
 	dout("prepare_write_message front_crc %u data_crc %u\n",
@@ -812,11 +942,16 @@ static void prepare_write_message(struct ceph_connection *con)
 			con->out_msg_pos.page_pos = 0;
 		con->out_msg_pos.data_pos = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		con->out_msg_pos.did_page_crc = false;
 		con->out_more = 1;  /* data + footer will follow */
 	} else {
 		/* no, queue up footer too and be done */
 		prepare_write_message_footer(con);
+<<<<<<< HEAD
+=======
 =======
 		con->out_msg_pos.did_page_crc = 0;
 		con->out_more = 1;  /* data + footer will follow */
@@ -824,6 +959,7 @@ static void prepare_write_message(struct ceph_connection *con)
 		/* no, queue up footer too and be done */
 		prepare_write_message_footer(con, v);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	set_bit(WRITE_PENDING, &con->state);
@@ -839,6 +975,9 @@ static void prepare_write_ack(struct ceph_connection *con)
 	con->in_seq_acked = con->in_seq;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ceph_con_out_kvec_reset(con);
 
 	ceph_con_out_kvec_add(con, sizeof (tag_ack), &tag_ack);
@@ -847,6 +986,8 @@ static void prepare_write_ack(struct ceph_connection *con)
 	ceph_con_out_kvec_add(con, sizeof (con->out_temp_ack),
 				&con->out_temp_ack);
 
+<<<<<<< HEAD
+=======
 =======
 	con->out_kvec[0].iov_base = &tag_ack;
 	con->out_kvec[0].iov_len = 1;
@@ -857,6 +998,7 @@ static void prepare_write_ack(struct ceph_connection *con)
 	con->out_kvec_bytes = 1 + sizeof(con->out_temp_ack);
 	con->out_kvec_cur = con->out_kvec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	con->out_more = 1;  /* more will follow.. eventually.. */
 	set_bit(WRITE_PENDING, &con->state);
 }
@@ -871,12 +1013,17 @@ static void prepare_write_keepalive(struct ceph_connection *con)
 	ceph_con_out_kvec_reset(con);
 	ceph_con_out_kvec_add(con, sizeof (tag_keepalive), &tag_keepalive);
 =======
+<<<<<<< HEAD
+	ceph_con_out_kvec_reset(con);
+	ceph_con_out_kvec_add(con, sizeof (tag_keepalive), &tag_keepalive);
+=======
 	con->out_kvec[0].iov_base = &tag_keepalive;
 	con->out_kvec[0].iov_len = 1;
 	con->out_kvec_left = 1;
 	con->out_kvec_bytes = 1;
 	con->out_kvec_cur = con->out_kvec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(WRITE_PENDING, &con->state);
 }
 
@@ -910,6 +1057,11 @@ static int prepare_connect_authorizer(struct ceph_connection *con)
 		ceph_con_out_kvec_add(con, auth_len, auth_buf);
 
 =======
+<<<<<<< HEAD
+	if (auth_len)
+		ceph_con_out_kvec_add(con, auth_len, auth_buf);
+
+=======
 	if (auth_len) {
 		con->out_kvec[con->out_kvec_left].iov_base = auth_buf;
 		con->out_kvec[con->out_kvec_left].iov_len = auth_len;
@@ -917,6 +1069,7 @@ static int prepare_connect_authorizer(struct ceph_connection *con)
 		con->out_kvec_bytes += auth_len;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -927,11 +1080,16 @@ static void prepare_write_banner(struct ceph_messenger *msgr,
 				 struct ceph_connection *con)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ceph_con_out_kvec_reset(con);
 	ceph_con_out_kvec_add(con, strlen(CEPH_BANNER), CEPH_BANNER);
 	ceph_con_out_kvec_add(con, sizeof (msgr->my_enc_addr),
 					&msgr->my_enc_addr);
 
+<<<<<<< HEAD
+=======
 =======
 	int len = strlen(CEPH_BANNER);
 
@@ -943,6 +1101,7 @@ static void prepare_write_banner(struct ceph_messenger *msgr,
 	con->out_kvec_bytes = len + sizeof(msgr->my_enc_addr);
 	con->out_kvec_cur = con->out_kvec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	con->out_more = 0;
 	set_bit(WRITE_PENDING, &con->state);
 }
@@ -952,8 +1111,12 @@ static int prepare_write_connect(struct ceph_messenger *msgr,
 <<<<<<< HEAD
 				 int include_banner)
 =======
+<<<<<<< HEAD
+				 int include_banner)
+=======
 				 int after_banner)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned global_seq = get_global_seq(con->msgr, 0);
 	int proto;
@@ -983,12 +1146,17 @@ static int prepare_write_connect(struct ceph_messenger *msgr,
 	con->out_connect.flags = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (include_banner)
 		prepare_write_banner(msgr, con);
 	else
 		ceph_con_out_kvec_reset(con);
 	ceph_con_out_kvec_add(con, sizeof (con->out_connect), &con->out_connect);
 
+<<<<<<< HEAD
+=======
 =======
 	if (!after_banner) {
 		con->out_kvec_left = 0;
@@ -1000,6 +1168,7 @@ static int prepare_write_connect(struct ceph_messenger *msgr,
 	con->out_kvec_bytes += sizeof(con->out_connect);
 	con->out_kvec_cur = con->out_kvec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	con->out_more = 0;
 	set_bit(WRITE_PENDING, &con->state);
 
@@ -1008,8 +1177,11 @@ static int prepare_write_connect(struct ceph_messenger *msgr,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * write as much of pending kvecs to the socket as we can.
  *  1 -> done
@@ -1031,6 +1203,9 @@ static int write_partial_kvec(struct ceph_connection *con)
 		if (con->out_kvec_bytes == 0)
 			break;            /* done */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* account for full iov entries consumed */
 		while (ret >= con->out_kvec_cur->iov_len) {
@@ -1043,6 +1218,8 @@ static int write_partial_kvec(struct ceph_connection *con)
 		if (ret) {
 			con->out_kvec_cur->iov_len -= ret;
 			con->out_kvec_cur->iov_base += ret;
+<<<<<<< HEAD
+=======
 =======
 		while (ret > 0) {
 			if (ret >= con->out_kvec_cur->iov_len) {
@@ -1056,6 +1233,7 @@ static int write_partial_kvec(struct ceph_connection *con)
 				break;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	con->out_kvec_left = 0;
@@ -1107,8 +1285,12 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 <<<<<<< HEAD
 	bool do_datacrc = !con->msgr->nocrc;
 =======
+<<<<<<< HEAD
+	bool do_datacrc = !con->msgr->nocrc;
+=======
 	int crc = con->msgr->nocrc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	int total_max_write;
 	int in_trail = 0;
@@ -1129,10 +1311,15 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 		int max_write = PAGE_SIZE;
 		int bio_offset = 0;
 =======
+<<<<<<< HEAD
+		int max_write = PAGE_SIZE;
+		int bio_offset = 0;
+=======
 		void *kaddr = NULL;
 		int max_write = PAGE_SIZE;
 		int page_shift = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		total_max_write = data_len - trail_len -
 			con->out_msg_pos.data_pos;
@@ -1159,6 +1346,14 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 			page = list_first_entry(&msg->pagelist->head,
 						struct page, lru);
 =======
+<<<<<<< HEAD
+			max_write = PAGE_SIZE;
+		} else if (msg->pages) {
+			page = msg->pages[con->out_msg_pos.page];
+		} else if (msg->pagelist) {
+			page = list_first_entry(&msg->pagelist->head,
+						struct page, lru);
+=======
 			if (crc)
 				kaddr = kmap(page);
 			max_write = PAGE_SIZE;
@@ -1172,6 +1367,7 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 			if (crc)
 				kaddr = kmap(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BLOCK
 		} else if (msg->bio) {
 			struct bio_vec *bv;
@@ -1179,11 +1375,16 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 			bv = bio_iovec_idx(msg->bio_iter, msg->bio_seg);
 			page = bv->bv_page;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			bio_offset = bv->bv_offset;
 			max_write = bv->bv_len;
 #endif
 		} else {
 			page = zero_page;
+<<<<<<< HEAD
+=======
 =======
 			page_shift = bv->bv_offset;
 			if (crc)
@@ -1195,11 +1396,15 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 			if (crc)
 				kaddr = page_address(con->msgr->zero_page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		len = min_t(int, max_write - con->out_msg_pos.page_pos,
 			    total_max_write);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (do_datacrc && !con->out_msg_pos.did_page_crc) {
 			void *base;
 			u32 crc;
@@ -1220,6 +1425,8 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 		if (do_datacrc)
 			kunmap(page);
 
+<<<<<<< HEAD
+=======
 =======
 		if (crc && !con->out_msg_pos.did_page_crc) {
 			void *base = kaddr + con->out_msg_pos.page_pos;
@@ -1243,6 +1450,7 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 		if (ret == -EAGAIN)
 			ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret <= 0)
 			goto out;
 
@@ -1254,8 +1462,12 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 <<<<<<< HEAD
 			con->out_msg_pos.did_page_crc = false;
 =======
+<<<<<<< HEAD
+			con->out_msg_pos.did_page_crc = false;
+=======
 			con->out_msg_pos.did_page_crc = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (in_trail)
 				list_move_tail(&page->lru,
 					       &msg->trail->head);
@@ -1273,10 +1485,15 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 
 	/* prepare and queue up footer, too */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!do_datacrc)
 		con->out_msg->footer.flags |= CEPH_MSG_FOOTER_NOCRC;
 	ceph_con_out_kvec_reset(con);
 	prepare_write_message_footer(con);
+<<<<<<< HEAD
+=======
 =======
 	if (!crc)
 		con->out_msg->footer.flags |= CEPH_MSG_FOOTER_NOCRC;
@@ -1285,6 +1502,7 @@ static int write_partial_msg_pages(struct ceph_connection *con)
 	con->out_kvec_cur = con->out_kvec;
 	prepare_write_message_footer(con, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = 1;
 out:
 	return ret;
@@ -1303,6 +1521,11 @@ static int write_partial_skip(struct ceph_connection *con)
 
 		ret = ceph_tcp_sendpage(con->sock, zero_page, 0, size, 1);
 =======
+<<<<<<< HEAD
+		size_t size = min(con->out_skip, (int) PAGE_CACHE_SIZE);
+
+		ret = ceph_tcp_sendpage(con->sock, zero_page, 0, size, 1);
+=======
 		struct kvec iov = {
 			.iov_base = page_address(con->msgr->zero_page),
 			.iov_len = min(con->out_skip, (int)PAGE_CACHE_SIZE)
@@ -1310,6 +1533,7 @@ static int write_partial_skip(struct ceph_connection *con)
 
 		ret = ceph_tcp_sendmsg(con->sock, &iov, 1, iov.iov_len, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret <= 0)
 			goto out;
 		con->out_skip -= ret;
@@ -1478,6 +1702,9 @@ static void addr_set_port(struct sockaddr_storage *ss, int p)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Unlike other *_pton function semantics, zero indicates success.
  */
 static int ceph_pton(const char *str, size_t len, struct sockaddr_storage *ss,
@@ -1573,8 +1800,11 @@ static int ceph_parse_server_name(const char *name, size_t namelen,
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Parse an ip[:port] list into an addr array.  Use the default
  * monitor port if a port isn't specified.
  */
@@ -1585,8 +1815,12 @@ int ceph_parse_ips(const char *c, const char *end,
 <<<<<<< HEAD
 	int i, ret = -EINVAL;
 =======
+<<<<<<< HEAD
+	int i, ret = -EINVAL;
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *p = c;
 
 	dout("parse_ips on '%.*s'\n", (int)(end-c), c);
@@ -1595,9 +1829,12 @@ int ceph_parse_ips(const char *c, const char *end,
 		struct sockaddr_storage *ss = &addr[i].in_addr;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct sockaddr_in *in4 = (void *)ss;
 		struct sockaddr_in6 *in6 = (void *)ss;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int port;
 		char delim = ',';
 
@@ -1607,11 +1844,16 @@ int ceph_parse_ips(const char *c, const char *end,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = ceph_parse_server_name(p, end - p, ss, delim, &ipend);
 		if (ret)
 			goto bad;
 		ret = -EINVAL;
 
+<<<<<<< HEAD
+=======
 =======
 		memset(ss, 0, sizeof(*ss));
 		if (in4_pton(p, end - p, (u8 *)&in4->sin_addr.s_addr,
@@ -1623,6 +1865,7 @@ int ceph_parse_ips(const char *c, const char *end,
 		else
 			goto bad;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p = ipend;
 
 		if (delim == ']') {
@@ -1670,8 +1913,12 @@ bad:
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(ceph_parse_ips);
 
@@ -1915,7 +2162,11 @@ static void process_ack(struct ceph_connection *con)
 <<<<<<< HEAD
 		m->ack_stamp = jiffies;
 =======
+<<<<<<< HEAD
+		m->ack_stamp = jiffies;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ceph_msg_remove(m);
 	}
 	prepare_read_tag(con);
@@ -1945,11 +2196,17 @@ static int read_partial_message_section(struct ceph_connection *con,
 	if (section->iov_len == sec_len)
 		*crc = crc32c(0, section->iov_base, section->iov_len);
 =======
+<<<<<<< HEAD
+	}
+	if (section->iov_len == sec_len)
+		*crc = crc32c(0, section->iov_base, section->iov_len);
+=======
 		if (section->iov_len == sec_len)
 			*crc = crc32c(0, section->iov_base,
 				      section->iov_len);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
@@ -1964,8 +2221,12 @@ static int read_partial_message_pages(struct ceph_connection *con,
 <<<<<<< HEAD
 				      unsigned data_len, bool do_datacrc)
 =======
+<<<<<<< HEAD
+				      unsigned data_len, bool do_datacrc)
+=======
 				      unsigned data_len, int datacrc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void *p;
 	int ret;
@@ -1981,8 +2242,12 @@ static int read_partial_message_pages(struct ceph_connection *con,
 <<<<<<< HEAD
 	if (ret > 0 && do_datacrc)
 =======
+<<<<<<< HEAD
+	if (ret > 0 && do_datacrc)
+=======
 	if (ret > 0 && datacrc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		con->in_data_crc =
 			crc32c(con->in_data_crc,
 				  p + con->in_msg_pos.page_pos, ret);
@@ -2005,8 +2270,12 @@ static int read_partial_message_bio(struct ceph_connection *con,
 <<<<<<< HEAD
 				    unsigned data_len, bool do_datacrc)
 =======
+<<<<<<< HEAD
+				    unsigned data_len, bool do_datacrc)
+=======
 				    unsigned data_len, int datacrc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bio_vec *bv = bio_iovec_idx(*bio_iter, *bio_seg);
 	void *p;
@@ -2025,8 +2294,12 @@ static int read_partial_message_bio(struct ceph_connection *con,
 <<<<<<< HEAD
 	if (ret > 0 && do_datacrc)
 =======
+<<<<<<< HEAD
+	if (ret > 0 && do_datacrc)
+=======
 	if (ret > 0 && datacrc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		con->in_data_crc =
 			crc32c(con->in_data_crc,
 				  p + con->in_msg_pos.page_pos, ret);
@@ -2054,15 +2327,21 @@ static int read_partial_message(struct ceph_connection *con)
 	int to, left;
 	unsigned front_len, middle_len, data_len;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool do_datacrc = !con->msgr->nocrc;
 	int skip;
 	u64 seq;
 	u32 crc;
+<<<<<<< HEAD
+=======
 =======
 	int datacrc = con->msgr->nocrc;
 	int skip;
 	u64 seq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dout("read_partial_message con %p msg %p\n", con, m);
 
@@ -2076,6 +2355,9 @@ static int read_partial_message(struct ceph_connection *con)
 			return ret;
 		con->in_base_pos += ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	crc = crc32c(0, &con->in_hdr, offsetof(struct ceph_msg_header, crc));
@@ -2086,6 +2368,8 @@ static int read_partial_message(struct ceph_connection *con)
 		return -EBADMSG;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		if (con->in_base_pos == sizeof(con->in_hdr)) {
 			u32 crc = crc32c(0, (void *)&con->in_hdr,
@@ -2099,6 +2383,7 @@ static int read_partial_message(struct ceph_connection *con)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	front_len = le32_to_cpu(con->in_hdr.front_len);
 	if (front_len > CEPH_MSG_MAX_FRONT_LEN)
 		return -EIO;
@@ -2187,8 +2472,12 @@ static int read_partial_message(struct ceph_connection *con)
 <<<<<<< HEAD
 						 data_len, do_datacrc);
 =======
+<<<<<<< HEAD
+						 data_len, do_datacrc);
+=======
 						 data_len, datacrc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret <= 0)
 				return ret;
 #ifdef CONFIG_BLOCK
@@ -2199,8 +2488,12 @@ static int read_partial_message(struct ceph_connection *con)
 <<<<<<< HEAD
 						 data_len, do_datacrc);
 =======
+<<<<<<< HEAD
+						 data_len, do_datacrc);
+=======
 						 data_len, datacrc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret <= 0)
 				return ret;
 #endif
@@ -2238,8 +2531,12 @@ static int read_partial_message(struct ceph_connection *con)
 <<<<<<< HEAD
 	if (do_datacrc &&
 =======
+<<<<<<< HEAD
+	if (do_datacrc &&
+=======
 	if (datacrc &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (m->footer.flags & CEPH_MSG_FOOTER_NOCRC) == 0 &&
 	    con->in_data_crc != le32_to_cpu(m->footer.data_crc)) {
 		pr_err("read_partial_message %p data crc %u != exp. %u\n", m,
@@ -2303,8 +2600,11 @@ more:
 	if (con->sock == NULL) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		prepare_write_banner(msgr, con);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prepare_write_connect(msgr, con, 1);
 		prepare_read_banner(con);
 		set_bit(CONNECTING, &con->state);
@@ -2319,12 +2619,18 @@ more:
 		if (ret < 0) {
 			con->error_msg = "connect error";
 =======
+<<<<<<< HEAD
+		ret = ceph_tcp_connect(con);
+		if (ret < 0) {
+			con->error_msg = "connect error";
+=======
 		con->sock = ceph_tcp_connect(con);
 		if (IS_ERR(con->sock)) {
 			con->sock = NULL;
 			con->error_msg = "connect error";
 			ret = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out;
 		}
 	}
@@ -2449,9 +2755,15 @@ more:
 		int skip = min((int) sizeof (buf), -con->in_base_pos);
 
 =======
+<<<<<<< HEAD
+		static char buf[SKIP_BUF_SIZE];
+		int skip = min((int) sizeof (buf), -con->in_base_pos);
+
+=======
 		static char buf[1024];
 		int skip = min(1024, -con->in_base_pos);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dout("skipping %d / %d bytes\n", skip, -con->in_base_pos);
 		ret = ceph_tcp_recvmsg(con->sock, buf, skip);
 		if (ret <= 0)
@@ -2715,6 +3027,8 @@ struct ceph_messenger *ceph_messenger_create(struct ceph_entity_addr *myaddr,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* the zero page is needed if a request is "canceled" while the message
 	 * is being written over the socket */
 	msgr->zero_page = __page_cache_alloc(GFP_KERNEL | __GFP_ZERO);
@@ -2725,6 +3039,7 @@ struct ceph_messenger *ceph_messenger_create(struct ceph_entity_addr *myaddr,
 	kmap(msgr->zero_page);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (myaddr)
 		msgr->inst.addr = *myaddr;
 
@@ -2743,9 +3058,12 @@ void ceph_messenger_destroy(struct ceph_messenger *msgr)
 	dout("destroy %p\n", msgr);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kunmap(msgr->zero_page);
 	__free_page(msgr->zero_page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(msgr);
 	dout("destroyed messenger %p\n", msgr);
 }
@@ -2879,8 +3197,13 @@ EXPORT_SYMBOL(ceph_con_keepalive);
 struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags,
 			      bool can_fail)
 =======
+<<<<<<< HEAD
+struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags,
+			      bool can_fail)
+=======
 struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ceph_msg *m;
 
@@ -2909,7 +3232,11 @@ struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags)
 <<<<<<< HEAD
 	m->ack_stamp = 0;
 =======
+<<<<<<< HEAD
+	m->ack_stamp = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	m->pool = NULL;
 
 	/* middle */
@@ -2938,8 +3265,12 @@ struct ceph_msg *ceph_msg_new(int type, int front_len, gfp_t flags)
 <<<<<<< HEAD
 			dout("ceph_msg_new can't allocate %d bytes\n",
 =======
+<<<<<<< HEAD
+			dout("ceph_msg_new can't allocate %d bytes\n",
+=======
 			pr_err("msg_new can't allocate %d bytes\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     front_len);
 			goto out2;
 		}
@@ -2955,6 +3286,9 @@ out2:
 	ceph_msg_put(m);
 out:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!can_fail) {
 		pr_err("msg_new can't create type %d front %d\n", type,
 		       front_len);
@@ -2963,9 +3297,12 @@ out:
 		dout("msg_new can't create type %d front %d\n", type,
 		     front_len);
 	}
+<<<<<<< HEAD
+=======
 =======
 	pr_err("msg_new can't create type %d front %d\n", type, front_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 EXPORT_SYMBOL(ceph_msg_new);
@@ -3018,8 +3355,12 @@ static struct ceph_msg *ceph_alloc_msg(struct ceph_connection *con,
 <<<<<<< HEAD
 		msg = ceph_msg_new(type, front_len, GFP_NOFS, false);
 =======
+<<<<<<< HEAD
+		msg = ceph_msg_new(type, front_len, GFP_NOFS, false);
+=======
 		msg = ceph_msg_new(type, front_len, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!msg) {
 			pr_err("unable to allocate msg type %d len %d\n",
 			       type, front_len);

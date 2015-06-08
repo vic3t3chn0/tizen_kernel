@@ -15,17 +15,23 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/device.h>
 #include <linux/cpu.h>
 #include <linux/slab.h>
 #include <linux/smp.h>
 #include <linux/stat.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/sysdev.h>
 #include <linux/cpu.h>
 #include <linux/slab.h>
 #include <linux/smp.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <hv/hypervisor.h>
 
 /* Return a string queried from the hypervisor, truncated to page size. */
@@ -43,64 +49,92 @@ static ssize_t get_hv_confstr(char *page, int query)
 static ssize_t chip_width_show(struct device *dev,
 			       struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t chip_width_show(struct device *dev,
+			       struct device_attribute *attr,
+=======
 static ssize_t chip_width_show(struct sysdev_class *dev,
 			       struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       char *page)
 {
 	return sprintf(page, "%u\n", smp_width);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(chip_width, 0444, chip_width_show, NULL);
 
 static ssize_t chip_height_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(chip_width, 0444, chip_width_show, NULL);
 
 static ssize_t chip_height_show(struct sysdev_class *dev,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *page)
 {
 	return sprintf(page, "%u\n", smp_height);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(chip_height, 0444, chip_height_show, NULL);
 
 static ssize_t chip_serial_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(chip_height, 0444, chip_height_show, NULL);
 
 static ssize_t chip_serial_show(struct sysdev_class *dev,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *page)
 {
 	return get_hv_confstr(page, HV_CONFSTR_CHIP_SERIAL_NUM);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(chip_serial, 0444, chip_serial_show, NULL);
 
 static ssize_t chip_revision_show(struct device *dev,
 				  struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(chip_serial, 0444, chip_serial_show, NULL);
 
 static ssize_t chip_revision_show(struct sysdev_class *dev,
 				  struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  char *page)
 {
 	return get_hv_confstr(page, HV_CONFSTR_CHIP_REV);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(chip_revision, 0444, chip_revision_show, NULL);
 
 
 static ssize_t type_show(struct device *dev,
 			    struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(chip_revision, 0444, chip_revision_show, NULL);
 
@@ -108,16 +142,22 @@ static SYSDEV_CLASS_ATTR(chip_revision, 0444, chip_revision_show, NULL);
 static ssize_t type_show(struct sysdev_class *dev,
 			    struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    char *page)
 {
 	return sprintf(page, "tilera\n");
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(type, 0444, type_show, NULL);
 
 #define HV_CONF_ATTR(name, conf)					\
 	static ssize_t name ## _show(struct device *dev,		\
 				     struct device_attribute *attr, \
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(type, 0444, type_show, NULL);
 
@@ -125,6 +165,7 @@ static SYSDEV_CLASS_ATTR(type, 0444, type_show, NULL);
 	static ssize_t name ## _show(struct sysdev_class *dev,		\
 				     struct sysdev_class_attribute *attr, \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     char *page)			\
 	{								\
 		return get_hv_confstr(page, conf);			\
@@ -132,8 +173,12 @@ static SYSDEV_CLASS_ATTR(type, 0444, type_show, NULL);
 <<<<<<< HEAD
 	static DEVICE_ATTR(name, 0444, name ## _show, NULL);
 =======
+<<<<<<< HEAD
+	static DEVICE_ATTR(name, 0444, name ## _show, NULL);
+=======
 	static SYSDEV_CLASS_ATTR(name, 0444, name ## _show, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 HV_CONF_ATTR(version,		HV_CONFSTR_HV_SW_VER)
 HV_CONF_ATTR(config_version,	HV_CONFSTR_HV_CONFIG_VER)
@@ -150,6 +195,9 @@ HV_CONF_ATTR(switch_control,	HV_CONFSTR_SWITCH_CONTROL)
 
 static struct attribute *board_attrs[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&dev_attr_board_part.attr,
 	&dev_attr_board_serial.attr,
 	&dev_attr_board_revision.attr,
@@ -159,6 +207,8 @@ static struct attribute *board_attrs[] = {
 	&dev_attr_mezz_revision.attr,
 	&dev_attr_mezz_description.attr,
 	&dev_attr_switch_control.attr,
+<<<<<<< HEAD
+=======
 =======
 	&attr_board_part.attr,
 	&attr_board_serial.attr,
@@ -170,6 +220,7 @@ static struct attribute *board_attrs[] = {
 	&attr_mezz_description.attr,
 	&attr_switch_control.attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
@@ -218,8 +269,11 @@ static int __init create_sysfs_entries(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct sysdev_class *cls = &cpu_sysdev_class;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0;
 
 #define create_cpu_attr(name)						\
@@ -227,8 +281,12 @@ static int __init create_sysfs_entries(void)
 <<<<<<< HEAD
 		err = device_create_file(cpu_subsys.dev_root, &dev_attr_##name);
 =======
+<<<<<<< HEAD
+		err = device_create_file(cpu_subsys.dev_root, &dev_attr_##name);
+=======
 		err = sysfs_create_file(&cls->kset.kobj, &attr_##name.attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	create_cpu_attr(chip_width);
 	create_cpu_attr(chip_height);
 	create_cpu_attr(chip_serial);
@@ -239,8 +297,12 @@ static int __init create_sysfs_entries(void)
 <<<<<<< HEAD
 		err = sysfs_create_file(hypervisor_kobj, &dev_attr_##name.attr);
 =======
+<<<<<<< HEAD
+		err = sysfs_create_file(hypervisor_kobj, &dev_attr_##name.attr);
+=======
 		err = sysfs_create_file(hypervisor_kobj, &attr_##name.attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	create_hv_attr(type);
 	create_hv_attr(version);
 	create_hv_attr(config_version);

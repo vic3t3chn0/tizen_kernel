@@ -11,8 +11,12 @@ int snd_usb_ctl_msg(struct usb_device *dev, unsigned int pipe,
 <<<<<<< HEAD
 		    void *data, __u16 size);
 =======
+<<<<<<< HEAD
+		    void *data, __u16 size);
+=======
 		    void *data, __u16 size, int timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned char snd_usb_parse_datainterval(struct snd_usb_audio *chip,
 					 struct usb_host_interface *alts);

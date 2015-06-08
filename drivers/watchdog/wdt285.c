@@ -16,6 +16,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/types.h>
@@ -32,6 +40,13 @@
 #include <mach/hardware.h>
 
 #include <asm/mach-types.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/system_info.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardware/dec21285.h>
 
 /*
@@ -49,7 +64,15 @@ static unsigned long timer_alive;
  */
 static void watchdog_fire(int irq, void *dev_id)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_crit("Would Reboot\n");
+=======
 	printk(KERN_CRIT "Watchdog: Would Reboot.\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_CRIT "Watchdog: Would Reboot.\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*CSR_TIMER4_CNTL = 0;
 	*CSR_TIMER4_CLR = 0;
 }
@@ -205,6 +228,16 @@ static int __init footbridge_watchdog_init(void)
 	if (retval < 0)
 		return retval;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Footbridge Watchdog Timer: 0.01, timer margin: %d sec\n",
+		soft_margin);
+
+	if (machine_is_cats())
+		pr_warn("Warning: Watchdog reset may not work on this machine\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO
 		"Footbridge Watchdog Timer: 0.01, timer margin: %d sec\n",
 								soft_margin);
@@ -212,6 +245,10 @@ static int __init footbridge_watchdog_init(void)
 	if (machine_is_cats())
 		printk(KERN_WARNING
 		  "Warning: Watchdog reset may not work on this machine.\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

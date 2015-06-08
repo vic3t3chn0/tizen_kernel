@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2009, 2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2009, 2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2007-2009 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2008-2010 Nokia Corporation
  * Paul Walmsley
  *
@@ -308,6 +312,9 @@ extern int omap2_prm_assert_hardreset(s16 prm_mod, u8 shift);
 extern int omap2_prm_deassert_hardreset(s16 prm_mod, u8 rst_shift, u8 st_shift);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* OMAP3-specific VP functions */
 u32 omap3_prm_vp_check_txdone(u8 vp_id);
 void omap3_prm_vp_clear_txdone(u8 vp_id);
@@ -328,9 +335,12 @@ extern void omap3xxx_prm_restore_irqen(u32 *saved_mask);
 
 #endif	/* CONFIG_ARCH_OMAP4 */
 
+<<<<<<< HEAD
+=======
 =======
 #endif	/* CONFIG_ARCH_OMAP4 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*

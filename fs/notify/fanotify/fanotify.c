@@ -23,6 +23,11 @@ static bool should_merge(struct fsnotify_event *old, struct fsnotify_event *new)
 			    (old->path.dentry == new->path.dentry))
 				return true;
 =======
+<<<<<<< HEAD
+			if ((old->path.mnt == new->path.mnt) &&
+			    (old->path.dentry == new->path.dentry))
+				return true;
+=======
 #ifdef CONFIG_FANOTIFY_ACCESS_PERMISSIONS
 			/* dont merge two permission events */
 			if ((old->mask & FAN_ALL_PERM_EVENTS) &&
@@ -34,6 +39,7 @@ static bool should_merge(struct fsnotify_event *old, struct fsnotify_event *new)
 				return true;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case (FSNOTIFY_EVENT_NONE):
 			return true;
 		default:

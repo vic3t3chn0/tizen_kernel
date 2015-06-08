@@ -210,6 +210,60 @@ static int get_key_msi_tvanywhere_plus(struct IR_i2c *ir, u32 *ir_key,
 	return 1;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* copied and modified from get_key_msi_tvanywhere_plus() */
+static int get_key_kworld_pc150u(struct IR_i2c *ir, u32 *ir_key,
+					u32 *ir_raw)
+{
+	unsigned char b;
+	unsigned int gpio;
+
+	/* <dev> is needed to access GPIO. Used by the saa_readl macro. */
+	struct saa7134_dev *dev = ir->c->adapter->algo_data;
+	if (dev == NULL) {
+		i2cdprintk("get_key_kworld_pc150u: "
+			   "ir->c->adapter->algo_data is NULL!\n");
+		return -EIO;
+	}
+
+	/* rising SAA7134_GPIO_GPRESCAN reads the status */
+
+	saa_clearb(SAA7134_GPIO_GPMODE3, SAA7134_GPIO_GPRESCAN);
+	saa_setb(SAA7134_GPIO_GPMODE3, SAA7134_GPIO_GPRESCAN);
+
+	gpio = saa_readl(SAA7134_GPIO_GPSTATUS0 >> 2);
+
+	/* GPIO&0x100 is pulsed low when a button is pressed. Don't do
+	   I2C receive if gpio&0x100 is not low. */
+
+	if (gpio & 0x100)
+		return 0;       /* No button press */
+
+	/* GPIO says there is a button press. Get it. */
+
+	if (1 != i2c_master_recv(ir->c, &b, 1)) {
+		i2cdprintk("read error\n");
+		return -EIO;
+	}
+
+	/* No button press */
+
+	if (b == 0xff)
+		return 0;
+
+	/* Button pressed */
+
+	dprintk("get_key_kworld_pc150u: Key = 0x%02X\n", b);
+	*ir_key = b;
+	*ir_raw = b;
+	return 1;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int get_key_purpletv(struct IR_i2c *ir, u32 *ir_key, u32 *ir_raw)
 {
 	unsigned char b;
@@ -235,12 +289,38 @@ static int get_key_purpletv(struct IR_i2c *ir, u32 *ir_key, u32 *ir_raw)
 
 static int get_key_hvr1110(struct IR_i2c *ir, u32 *ir_key, u32 *ir_raw)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char buf[5];
+=======
 	unsigned char buf[5], cod4, code3, code4;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned char buf[5], cod4, code3, code4;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* poll IR chip */
 	if (5 != i2c_master_recv(ir->c, buf, 5))
 		return -EIO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Check if some key were pressed */
+	if (!(buf[0] & 0x80))
+		return 0;
+
+	/*
+	 * buf[3] & 0x80 is always high.
+	 * buf[3] & 0x40 is a parity bit. A repeat event is marked
+	 * by preserving it into two separate readings
+	 * buf[4] bits 0 and 1, and buf[1] and buf[2] are always
+	 * zero.
+	 */
+	*ir_key = 0x1fff & ((buf[3] << 8) | (buf[4] >> 2));
+	*ir_raw = *ir_key;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cod4	= buf[4];
 	code4	= (cod4 >> 2);
 	code3	= buf[3];
@@ -251,6 +331,10 @@ static int get_key_hvr1110(struct IR_i2c *ir, u32 *ir_key, u32 *ir_raw)
 	/* return key */
 	*ir_key = code4;
 	*ir_raw = code4;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -752,7 +836,15 @@ int saa7134_input_init1(struct saa7134_dev *dev)
 		polling      = 50; /* ms */
 		break;
 	case SAA7134_BOARD_VIDEOMATE_M1F:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ir_codes     = RC_MAP_VIDEOMATE_K100;
+=======
 		ir_codes     = RC_MAP_VIDEOMATE_M1F;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ir_codes     = RC_MAP_VIDEOMATE_M1F;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask_keycode = 0x0ff00;
 		mask_keyup   = 0x040000;
 		break;
@@ -898,6 +990,27 @@ void saa7134_probe_i2c_ir(struct saa7134_dev *dev)
 			msg_msi.addr, dev->i2c_adap.name,
 			(1 == rc) ? "yes" : "no");
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case SAA7134_BOARD_KWORLD_PC150U:
+		/* copied and modified from MSI TV@nywhere Plus */
+		dev->init_data.name = "Kworld PC150-U";
+		dev->init_data.get_key = get_key_kworld_pc150u;
+		dev->init_data.ir_codes = RC_MAP_KWORLD_PC150U;
+		info.addr = 0x30;
+		/* MSI TV@nywhere Plus controller doesn't seem to
+		   respond to probes unless we read something from
+		   an existing device. Weird...
+		   REVISIT: might no longer be needed */
+		rc = i2c_transfer(&dev->i2c_adap, &msg_msi, 1);
+		dprintk("probe 0x%02x @ %s: %s\n",
+			msg_msi.addr, dev->i2c_adap.name,
+			(1 == rc) ? "yes" : "no");
+		break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SAA7134_BOARD_HAUPPAUGE_HVR1110:
 		dev->init_data.name = "HVR 1110";
 		dev->init_data.get_key = get_key_hvr1110;

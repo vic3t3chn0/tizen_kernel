@@ -7,8 +7,13 @@
 #ifdef CONFIG_IRQ_REMAP
 static void irq_remap_modify_chip_defaults(struct irq_chip *chip);
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_IRQ_REMAP
+static void irq_remap_modify_chip_defaults(struct irq_chip *chip);
+=======
 #ifdef CONFIG_INTR_REMAP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void prepare_irte(struct irte *irte, int vector,
 			        unsigned int dest)
 {
@@ -46,7 +51,13 @@ static inline void irq_remap_modify_chip_defaults(struct irq_chip *chip)
 {
 }
 =======
+<<<<<<< HEAD
+static inline void irq_remap_modify_chip_defaults(struct irq_chip *chip)
+{
+}
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif	/* _ASM_X86_IRQ_REMAPPING_H */

@@ -63,7 +63,11 @@ obj-$(CONFIG_CRASH_DUMP)	+= crash_dump.o
 <<<<<<< HEAD
 obj-$(CONFIG_FA_DUMP)		+= fadump.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_FA_DUMP)		+= fadump.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ifeq ($(CONFIG_PPC32),y)
 obj-$(CONFIG_E500)		+= idle_e500.o
 endif
@@ -83,7 +87,11 @@ obj-$(CONFIG_PPC_BOOK3E_64)	+= dbell.o
 <<<<<<< HEAD
 obj-$(CONFIG_JUMP_LABEL)	+= jump_label.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_JUMP_LABEL)	+= jump_label.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extra-y				:= head_$(CONFIG_WORD_SIZE).o
 extra-$(CONFIG_40x)		:= head_40x.o
@@ -96,7 +104,12 @@ extra-y				+= vmlinux.lds
 obj-$(CONFIG_RELOCATABLE_PPC32)	+= reloc_32.o
 
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_RELOCATABLE_PPC32)	+= reloc_32.o
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_PPC32)		+= entry_32.o setup_32.o
 obj-$(CONFIG_PPC64)		+= dma-iommu.o iommu.o
 obj-$(CONFIG_KGDB)		+= kgdb.o
@@ -125,6 +138,8 @@ obj-$(CONFIG_FUNCTION_GRAPH_TRACER)	+= ftrace.o
 obj-$(CONFIG_FTRACE_SYSCALLS)	+= ftrace.o
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 obj-$(CONFIG_PERF_EVENTS)	+= perf_callchain.o
 
 obj-$(CONFIG_PPC_PERF_CTRS)	+= perf_event.o
@@ -135,6 +150,7 @@ obj32-$(CONFIG_PPC_PERF_CTRS)	+= mpc7450-pmu.o
 obj-$(CONFIG_FSL_EMB_PERF_EVENT) += perf_event_fsl_emb.o
 obj-$(CONFIG_FSL_EMB_PERF_EVENT_E500) += e500-pmu.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-$(CONFIG_8XX_MINIMAL_FPEMU) += softemu8xx.o
 

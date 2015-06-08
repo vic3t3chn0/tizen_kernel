@@ -13,12 +13,17 @@
 
 #include <linux/device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gpio.h>
 #include <linux/string.h>
 #include <linux/slab.h>
 #include <linux/platform_device.h>
 #include <linux/export.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/string.h>
 #include <linux/slab.h>
@@ -26,6 +31,7 @@
 #include <linux/io.h>
 #include <asm/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardware/scoop.h>
 
 /* PCMCIA to Scoop linkage
@@ -205,8 +211,12 @@ static int __devinit scoop_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	devptr->base = ioremap(mem->start, resource_size(mem));
 =======
+<<<<<<< HEAD
+	devptr->base = ioremap(mem->start, resource_size(mem));
+=======
 	devptr->base = ioremap(mem->start, mem->end - mem->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!devptr->base) {
 		ret = -ENOMEM;

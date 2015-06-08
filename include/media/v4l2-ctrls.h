@@ -24,13 +24,19 @@
 #include <linux/list.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/videodev2.h>
 
 /* forward references */
 struct v4l2_ctrl_handler;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct v4l2_ctrl_helper;
 struct v4l2_ctrl;
 struct video_device;
@@ -39,11 +45,14 @@ struct v4l2_subscribed_event;
 struct v4l2_fh;
 struct poll_table_struct;
 struct file;
+<<<<<<< HEAD
+=======
 =======
 struct v4l2_ctrl;
 struct video_device;
 struct v4l2_subdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /** struct v4l2_ctrl_ops - The control operations that the driver has to provide.
   * @g_volatile_ctrl: Get a new value for this control. Generally only relevant
@@ -68,7 +77,11 @@ struct v4l2_ctrl_ops {
 <<<<<<< HEAD
   * @ev_subs:	The list of control event subscriptions.
 =======
+<<<<<<< HEAD
+  * @ev_subs:	The list of control event subscriptions.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   * @handler:	The handler that owns the control.
   * @cluster:	Point to start of cluster array.
   * @ncontrols:	Number of controls in cluster array.
@@ -80,6 +93,9 @@ struct v4l2_ctrl_ops {
   *		will not be added to any other handlers. Drivers can set
   *		this flag.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   * @is_auto:   If set, then this control selects whether the other cluster
   *		members are in 'automatic' mode or 'manual' mode. This is
   *		used for autogain/gain type clusters. Drivers should never
@@ -91,12 +107,15 @@ struct v4l2_ctrl_ops {
   *		manual mode. So if the value of the auto control equals this
   *		value, then the whole cluster is in manual mode. Drivers should
   *		never set this flag directly.
+<<<<<<< HEAD
+=======
 =======
   * @is_volatile: If set, then this control is volatile. This means that the
   *		control's current value cannot be cached and needs to be
   *		retrieved through the g_volatile_ctrl op. Drivers can set
   *		this flag.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   * @ops:	The control ops.
   * @id:	The control ID.
   * @name:	The control name.
@@ -132,7 +151,11 @@ struct v4l2_ctrl {
 <<<<<<< HEAD
 	struct list_head ev_subs;
 =======
+<<<<<<< HEAD
+	struct list_head ev_subs;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct v4l2_ctrl_handler *handler;
 	struct v4l2_ctrl **cluster;
 	unsigned ncontrols;
@@ -145,8 +168,14 @@ struct v4l2_ctrl {
 	unsigned int has_volatiles:1;
 	unsigned int manual_mode_value:8;
 =======
+<<<<<<< HEAD
+	unsigned int is_auto:1;
+	unsigned int has_volatiles:1;
+	unsigned int manual_mode_value:8;
+=======
 	unsigned int is_volatile:1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	const struct v4l2_ctrl_ops *ops;
 	u32 id;
@@ -179,7 +208,11 @@ struct v4l2_ctrl {
 <<<<<<< HEAD
   * @helper:	Pointer to helper struct. Used internally in prepare_ext_ctrls().
 =======
+<<<<<<< HEAD
+  * @helper:	Pointer to helper struct. Used internally in prepare_ext_ctrls().
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   *
   * Each control handler has a list of these refs. The list_head is used to
   * keep a sorted-by-control-ID list of all controls, while the next pointer
@@ -192,7 +225,11 @@ struct v4l2_ctrl_ref {
 <<<<<<< HEAD
 	struct v4l2_ctrl_helper *helper;
 =======
+<<<<<<< HEAD
+	struct v4l2_ctrl_helper *helper;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /** struct v4l2_ctrl_handler - The control handler keeps track of all the
@@ -242,10 +279,13 @@ struct v4l2_ctrl_handler {
   *		will not be added to any other handlers.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   * @is_volatile: If set, then this control is volatile. This means that the
   *		control's current value cannot be cached and needs to be
   *		retrieved through the g_volatile_ctrl op.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   */
 struct v4l2_ctrl_config {
 	const struct v4l2_ctrl_ops *ops;
@@ -262,8 +302,11 @@ struct v4l2_ctrl_config {
 	unsigned int is_private:1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int is_volatile:1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /** v4l2_ctrl_fill() - Fill in the control fields based on the control ID.
@@ -420,6 +463,9 @@ void v4l2_ctrl_cluster(unsigned ncontrols, struct v4l2_ctrl **controls);
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** v4l2_ctrl_auto_cluster() - Mark all controls in the cluster as belonging to
   * that cluster and set it up for autofoo/foo-type handling.
   * @ncontrols:	The number of controls in this cluster.
@@ -453,8 +499,11 @@ void v4l2_ctrl_auto_cluster(unsigned ncontrols, struct v4l2_ctrl **controls,
 			u8 manual_val, bool set_volatile);
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** v4l2_ctrl_find() - Find a control with the given ID.
   * @hdl:	The control handler.
   * @id:	The control ID to find.
@@ -476,10 +525,16 @@ struct v4l2_ctrl *v4l2_ctrl_find(struct v4l2_ctrl_handler *hdl, u32 id);
   *
   * This function assumes that the control handler is locked.
 =======
+<<<<<<< HEAD
+  * The V4L2_EVENT_CTRL event will be generated afterwards.
+  *
+  * This function assumes that the control handler is locked.
+=======
   *
   * This function can be called regardless of whether the control handler
   * is locked or not.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   */
 void v4l2_ctrl_activate(struct v4l2_ctrl *ctrl, bool active);
 
@@ -490,12 +545,17 @@ void v4l2_ctrl_activate(struct v4l2_ctrl *ctrl, bool active);
   * This sets or clears the V4L2_CTRL_FLAG_GRABBED flag atomically.
   * Does nothing if @ctrl == NULL.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   * The V4L2_EVENT_CTRL event will be generated afterwards.
   * This will usually be called when starting or stopping streaming in the
   * driver.
   *
   * This function assumes that the control handler is not locked and will
   * take the lock itself.
+<<<<<<< HEAD
+=======
 =======
   * This will usually be called when starting or stopping streaming in the
   * driver.
@@ -503,6 +563,7 @@ void v4l2_ctrl_activate(struct v4l2_ctrl *ctrl, bool active);
   * This function can be called regardless of whether the control handler
   * is locked or not.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   */
 void v4l2_ctrl_grab(struct v4l2_ctrl *ctrl, bool grabbed);
 
@@ -548,6 +609,9 @@ s32 v4l2_ctrl_g_ctrl(struct v4l2_ctrl *ctrl);
 int v4l2_ctrl_s_ctrl(struct v4l2_ctrl *ctrl, s32 val);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Internal helper functions that deal with control events. */
 void v4l2_ctrl_add_event(struct v4l2_ctrl *ctrl,
 		struct v4l2_subscribed_event *sev);
@@ -565,26 +629,35 @@ int v4l2_ctrl_subscribe_event(struct v4l2_fh *fh,
 
 /* Can be used as a poll function that just polls for control events. */
 unsigned int v4l2_ctrl_poll(struct file *file, struct poll_table_struct *wait);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Helpers for ioctl_ops. If hdl == NULL then they will all return -EINVAL. */
 int v4l2_queryctrl(struct v4l2_ctrl_handler *hdl, struct v4l2_queryctrl *qc);
 int v4l2_querymenu(struct v4l2_ctrl_handler *hdl, struct v4l2_querymenu *qm);
 int v4l2_g_ctrl(struct v4l2_ctrl_handler *hdl, struct v4l2_control *ctrl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int v4l2_s_ctrl(struct v4l2_fh *fh, struct v4l2_ctrl_handler *hdl,
 						struct v4l2_control *ctrl);
 int v4l2_g_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c);
 int v4l2_try_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c);
 int v4l2_s_ext_ctrls(struct v4l2_fh *fh, struct v4l2_ctrl_handler *hdl,
 						struct v4l2_ext_controls *c);
+<<<<<<< HEAD
+=======
 =======
 int v4l2_s_ctrl(struct v4l2_ctrl_handler *hdl, struct v4l2_control *ctrl);
 int v4l2_g_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c);
 int v4l2_try_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c);
 int v4l2_s_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Helpers for subdevices. If the associated ctrl_handler == NULL then they
    will all return -EINVAL. */

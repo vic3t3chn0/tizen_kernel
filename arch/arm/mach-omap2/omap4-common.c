@@ -16,6 +16,9 @@
 #include <linux/io.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/memblock.h>
 
 #include <asm/hardware/gic.h>
@@ -94,6 +97,8 @@ void __init gic_init_irq(void)
 {
 	void __iomem *omap_irq_base;
 	void __iomem *gic_dist_base_addr;
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/hardware/gic.h>
@@ -113,6 +118,7 @@ void __init gic_init_irq(void)
 {
 	void __iomem *gic_cpu_base;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Static mapping, never released */
 	gic_dist_base_addr = ioremap(OMAP44XX_GIC_DIST_BASE, SZ_4K);
@@ -120,30 +126,42 @@ void __init gic_init_irq(void)
 
 	/* Static mapping, never released */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_irq_base = ioremap(OMAP44XX_GIC_CPU_BASE, SZ_512);
 	BUG_ON(!omap_irq_base);
 
 	omap_wakeupgen_init();
 
 	gic_init(0, 29, gic_dist_base_addr, omap_irq_base);
+<<<<<<< HEAD
+=======
 =======
 	gic_cpu_base = ioremap(OMAP44XX_GIC_CPU_BASE, SZ_512);
 	BUG_ON(!gic_cpu_base);
 
 	gic_init(0, 29, gic_dist_base_addr, gic_cpu_base);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_CACHE_L2X0
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __iomem *omap4_get_l2cache_base(void)
 {
 	return l2cache_base;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void omap4_l2x0_disable(void)
 {
 	/* Disable PL310 L2 Cache controller */
@@ -173,8 +191,13 @@ static int __init omap_l2_cache_init(void)
 	if (WARN_ON(!l2cache_base))
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+	if (WARN_ON(!l2cache_base))
+		return -ENOMEM;
+=======
 	BUG_ON(!l2cache_base);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * 16-way associativity, parity disabled
@@ -215,6 +238,9 @@ static int __init omap_l2_cache_init(void)
 early_initcall(omap_l2_cache_init);
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __iomem *omap4_get_sar_ram_base(void)
 {
@@ -242,5 +268,8 @@ static int __init omap4_sar_ram_init(void)
 	return 0;
 }
 early_initcall(omap4_sar_ram_init);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

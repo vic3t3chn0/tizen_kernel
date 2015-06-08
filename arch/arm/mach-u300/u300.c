@@ -22,11 +22,17 @@
 <<<<<<< HEAD
 #include <asm/hardware/vic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/vic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/memory.h>
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void __init u300_reserve(void)
@@ -45,6 +51,7 @@ static void __init u300_reserve(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init u300_init_machine(void)
 {
 	u300_init_devices();
@@ -69,6 +76,9 @@ static void __init u300_init_machine(void)
 MACHINE_START(U300, MACH_U300_STRING)
 	/* Maintainer: Linus Walleij <linus.walleij@stericsson.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= u300_map_io,
 	.init_irq	= u300_init_irq,
@@ -76,6 +86,8 @@ MACHINE_START(U300, MACH_U300_STRING)
 	.timer		= &u300_timer,
 	.init_machine	= u300_init_machine,
 	.restart	= u300_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= BOOT_PARAMS_OFFSET,
 	.map_io		= u300_map_io,
@@ -84,4 +96,5 @@ MACHINE_START(U300, MACH_U300_STRING)
 	.timer		= &u300_timer,
 	.init_machine	= u300_init_machine,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -38,8 +38,12 @@ void __init stamp9g20_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91sam9260_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* DGBU on ttyS0. (Rx & Tx only) */
 	at91_register_uart(0, 0, 0);
@@ -82,6 +86,8 @@ static void __init portuxg20_init_early(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init init_irq(void)
 {
 	at91sam9260_init_interrupts(NULL);
@@ -89,6 +95,7 @@ static void __init init_irq(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * NAND flash
  */
@@ -102,7 +109,12 @@ static struct atmel_nand_data __initdata nand_data = {
 	.det_pin	= -EINVAL,
 	.ecc_mode	= NAND_ECC_SOFT,
 =======
+<<<<<<< HEAD
+	.det_pin	= -EINVAL,
+	.ecc_mode	= NAND_ECC_SOFT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sam9_smc_config __initdata nand_smc_config = {
@@ -129,8 +141,12 @@ static void __init add_device_nand(void)
 <<<<<<< HEAD
 	sam9_smc_configure(0, 3, &nand_smc_config);
 =======
+<<<<<<< HEAD
+	sam9_smc_configure(0, 3, &nand_smc_config);
+=======
 	sam9_smc_configure(3, &nand_smc_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	at91_add_device_nand(&nand_data);
 }
@@ -148,7 +164,12 @@ static struct mci_platform_data __initdata mmc_data = {
 		.detect_pin	= -1,
 		.wp_pin		= -1,
 =======
+<<<<<<< HEAD
+		.detect_pin	= -1,
+		.wp_pin		= -1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 #else
@@ -160,7 +181,13 @@ static struct at91_mmc_data __initdata mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.det_pin	= -EINVAL,
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -174,7 +201,12 @@ static struct at91_usbh_data __initdata usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -186,8 +218,12 @@ static struct at91_udc_data __initdata portuxg20_udc_data = {
 <<<<<<< HEAD
 	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
 =======
+<<<<<<< HEAD
+	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
+=======
 	.pullup_pin	= 0,		/* pull-up driven by UDC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_udc_data __initdata stamp9g20evb_udc_data = {
@@ -195,8 +231,12 @@ static struct at91_udc_data __initdata stamp9g20evb_udc_data = {
 <<<<<<< HEAD
 	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
 =======
+<<<<<<< HEAD
+	.pullup_pin	= -EINVAL,		/* pull-up driven by UDC */
+=======
 	.pullup_pin	= 0,		/* pull-up driven by UDC */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -206,8 +246,12 @@ static struct at91_udc_data __initdata stamp9g20evb_udc_data = {
 <<<<<<< HEAD
 static struct macb_platform_data __initdata macb_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata macb_data = {
+=======
 static struct at91_eth_data __initdata macb_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PA28,
 	.is_rmii	= 1,
 };
@@ -348,10 +392,16 @@ MACHINE_START(PORTUXG20, "taskit PortuxG20")
 	.init_early	= portuxg20_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= portuxg20_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9260_map_io,
 	.init_early	= portuxg20_init_early,
 	.init_irq	= init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= portuxg20_board_init,
 MACHINE_END
 
@@ -363,9 +413,15 @@ MACHINE_START(STAMP9G20, "taskit Stamp9G20")
 	.init_early	= stamp9g20evb_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= stamp9g20evb_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91sam9260_map_io,
 	.init_early	= stamp9g20evb_init_early,
 	.init_irq	= init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= stamp9g20evb_board_init,
 MACHINE_END

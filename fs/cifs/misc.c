@@ -214,6 +214,9 @@ cifs_small_buf_release(void *buf_to_free)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Find a free multiplex id (SMB mid). Otherwise there could be
  * mid collisions which might cause problems, demultiplexing the
  * wrong response to this request. Multiplex ids could collide if
@@ -258,6 +261,8 @@ __u64 GetNextMid(struct TCP_Server_Info *server)
 	 * did not time out).
 	 */
 	while (cur_mid != last_mid) {
+<<<<<<< HEAD
+=======
 =======
 	Find a free multiplex id (SMB mid). Otherwise there could be
 	mid collisions which might cause problems, demultiplexing the
@@ -297,6 +302,7 @@ __u16 GetNextMid(struct TCP_Server_Info *server)
 	 did not time out) */
 	while (server->CurrentMid != last_mid) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mid_q_entry *mid_entry;
 		unsigned int num_mids;
 
@@ -305,9 +311,14 @@ __u16 GetNextMid(struct TCP_Server_Info *server)
 		if (cur_mid == 0)
 			cur_mid++;
 =======
+<<<<<<< HEAD
+		if (cur_mid == 0)
+			cur_mid++;
+=======
 		if (server->CurrentMid == 0)
 			server->CurrentMid++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		num_mids = 0;
 		list_for_each_entry(mid_entry, &server->pending_mid_q, qhead) {
@@ -316,9 +327,14 @@ __u16 GetNextMid(struct TCP_Server_Info *server)
 			if (mid_entry->mid == cur_mid &&
 			    mid_entry->mid_state == MID_REQUEST_SUBMITTED) {
 =======
+<<<<<<< HEAD
+			if (mid_entry->mid == cur_mid &&
+			    mid_entry->mid_state == MID_REQUEST_SUBMITTED) {
+=======
 			if (mid_entry->mid == server->CurrentMid &&
 			    mid_entry->midState == MID_REQUEST_SUBMITTED) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* This mid is in use, try a different one */
 				collision = true;
 				break;
@@ -340,17 +356,23 @@ __u16 GetNextMid(struct TCP_Server_Info *server)
 
 		if (!collision) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mid = (__u64)cur_mid;
 			server->CurrentMid = mid;
 			break;
 		}
 		cur_mid++;
+<<<<<<< HEAD
+=======
 =======
 			mid = server->CurrentMid;
 			break;
 		}
 		server->CurrentMid++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_unlock(&GlobalMid_Lock);
 	return mid;
@@ -486,6 +508,9 @@ check_smb_hdr(struct smb_hdr *smb, __u16 mid)
 
 int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 checkSMB(char *buf, unsigned int total_read)
 {
 	struct smb_hdr *smb = (struct smb_hdr *)buf;
@@ -504,6 +529,8 @@ checkSMB(char *buf, unsigned int total_read)
 			/* some error cases do not return wct and bcc */
 			return 0;
 		} else if ((total_read == sizeof(struct smb_hdr) + 1) &&
+<<<<<<< HEAD
+=======
 =======
 checkSMB(struct smb_hdr *smb, __u16 mid, unsigned int length)
 {
@@ -519,6 +546,7 @@ checkSMB(struct smb_hdr *smb, __u16 mid, unsigned int length)
 			return 0;
 		} else if ((length == sizeof(struct smb_hdr) + 1) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				(smb->WordCount == 0)) {
 			char *tmp = (char *)smb;
 			/* Need to work around a bug in two servers here */
@@ -539,6 +567,9 @@ checkSMB(struct smb_hdr *smb, __u16 mid, unsigned int length)
 			cERROR(1, "Length less than smb header size");
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -568,6 +599,8 @@ checkSMB(struct smb_hdr *smb, __u16 mid, unsigned int length)
 					rfclen, smb->Mid);
 			return -EIO;
 		} else if (rfclen > clc_len + 512) {
+<<<<<<< HEAD
+=======
 =======
 		return 1;
 	}
@@ -603,6 +636,7 @@ checkSMB(struct smb_hdr *smb, __u16 mid, unsigned int length)
 			return 1;
 		} else if (len > clc_len + 512) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Some servers (Windows XP in particular) send more
 			 * data than the lengths in the SMB packet would
@@ -617,9 +651,14 @@ checkSMB(struct smb_hdr *smb, __u16 mid, unsigned int length)
 				  "than SMB for mid=%u", rfclen, smb->Mid);
 			return -EIO;
 =======
+<<<<<<< HEAD
+				  "than SMB for mid=%u", rfclen, smb->Mid);
+			return -EIO;
+=======
 				  "than SMB for mid=%u", len, smb->Mid);
 			return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return 0;
@@ -631,9 +670,15 @@ is_valid_oplock_break(char *buffer, struct TCP_Server_Info *srv)
 {
 	struct smb_hdr *buf = (struct smb_hdr *)buffer;
 =======
+<<<<<<< HEAD
+is_valid_oplock_break(char *buffer, struct TCP_Server_Info *srv)
+{
+	struct smb_hdr *buf = (struct smb_hdr *)buffer;
+=======
 is_valid_oplock_break(struct smb_hdr *buf, struct TCP_Server_Info *srv)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct smb_com_lock_req *pSMB = (struct smb_com_lock_req *)buf;
 	struct list_head *tmp, *tmp1, *tmp2;
 	struct cifs_ses *ses;
@@ -718,6 +763,10 @@ is_valid_oplock_break(struct smb_hdr *buf, struct TCP_Server_Info *srv)
 				queue_work(cifsiod_wq,
 					   &netfile->oplock_break);
 =======
+<<<<<<< HEAD
+				queue_work(cifsiod_wq,
+					   &netfile->oplock_break);
+=======
 				/*
 				 * cifs_oplock_break_put() can't be called
 				 * from here.  Get reference after queueing
@@ -728,6 +777,7 @@ is_valid_oplock_break(struct smb_hdr *buf, struct TCP_Server_Info *srv)
 					       &netfile->oplock_break))
 					cifs_oplock_break_get(netfile);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				netfile->oplock_break_cancelled = false;
 
 				spin_unlock(&cifs_file_list_lock);
@@ -747,11 +797,16 @@ is_valid_oplock_break(struct smb_hdr *buf, struct TCP_Server_Info *srv)
 
 void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 dump_smb(void *buf, int smb_buf_length)
 {
 	int i, j;
 	char debug_line[17];
 	unsigned char *buffer = buf;
+<<<<<<< HEAD
+=======
 =======
 dump_smb(struct smb_hdr *smb_buf, int smb_buf_length)
 {
@@ -759,14 +814,18 @@ dump_smb(struct smb_hdr *smb_buf, int smb_buf_length)
 	char debug_line[17];
 	unsigned char *buffer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (traceSMB == 0)
 		return;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	buffer = (unsigned char *) smb_buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0, j = 0; i < smb_buf_length; i++, j++) {
 		if (i % 8 == 0) {
 			/* have reached the beginning of line */
@@ -829,6 +888,9 @@ void cifs_set_oplock_level(struct cifsInodeInfo *cinode, __u32 oplock)
 	}
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 bool
 backup_cred(struct cifs_sb_info *cifs_sb)
@@ -863,5 +925,8 @@ cifs_set_credits(struct TCP_Server_Info *server, const int val)
 	server->oplocks = val > 1 ? enable_oplocks : false;
 	spin_unlock(&server->req_lock);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

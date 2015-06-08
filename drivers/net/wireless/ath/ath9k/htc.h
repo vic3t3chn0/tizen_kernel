@@ -400,9 +400,33 @@ struct ath_btcoex {
 	u32 btscan_no_stomp;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
+void ath9k_htc_init_btcoex(struct ath9k_htc_priv *priv, char *product);
+void ath9k_htc_start_btcoex(struct ath9k_htc_priv *priv);
+void ath9k_htc_stop_btcoex(struct ath9k_htc_priv *priv);
+#else
+static inline void ath9k_htc_init_btcoex(struct ath9k_htc_priv *priv, char *product)
+{
+}
+static inline void ath9k_htc_start_btcoex(struct ath9k_htc_priv *priv)
+{
+}
+static inline void ath9k_htc_stop_btcoex(struct ath9k_htc_priv *priv)
+{
+}
+#endif /* CONFIG_ATH9K_BTCOEX_SUPPORT */
+=======
 void ath_htc_init_btcoex_work(struct ath9k_htc_priv *priv);
 void ath_htc_resume_btcoex_work(struct ath9k_htc_priv *priv);
 void ath_htc_cancel_btcoex_work(struct ath9k_htc_priv *priv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath_htc_init_btcoex_work(struct ath9k_htc_priv *priv);
+void ath_htc_resume_btcoex_work(struct ath9k_htc_priv *priv);
+void ath_htc_cancel_btcoex_work(struct ath9k_htc_priv *priv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define OP_INVALID		   BIT(0)
 #define OP_SCANNING		   BIT(1)
@@ -483,7 +507,18 @@ struct ath9k_htc_priv {
 	int cabq;
 	int hwq_map[WME_NUM_AC];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
 	struct ath_btcoex btcoex;
+#endif
+
+=======
+	struct ath_btcoex btcoex;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath_btcoex btcoex;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct delayed_work coex_period_work;
 	struct delayed_work duty_cycle_work;
 #ifdef CONFIG_ATH9K_HTC_DEBUGFS
@@ -521,8 +556,16 @@ void ath9k_htc_beaconep(void *drv_priv, struct sk_buff *skb,
 
 int ath9k_htc_update_cap_target(struct ath9k_htc_priv *priv,
 				u8 enable_coex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 void ath9k_htc_station_work(struct work_struct *work);
 void ath9k_htc_aggr_work(struct work_struct *work);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath9k_htc_station_work(struct work_struct *work);
+void ath9k_htc_aggr_work(struct work_struct *work);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ath9k_htc_ani_work(struct work_struct *work);
 void ath9k_htc_start_ani(struct ath9k_htc_priv *priv);
 void ath9k_htc_stop_ani(struct ath9k_htc_priv *priv);
@@ -542,7 +585,14 @@ int ath9k_htc_tx_get_slot(struct ath9k_htc_priv *priv);
 void ath9k_htc_tx_clear_slot(struct ath9k_htc_priv *priv, int slot);
 void ath9k_htc_tx_drain(struct ath9k_htc_priv *priv);
 void ath9k_htc_txstatus(struct ath9k_htc_priv *priv, void *wmi_event);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 void ath9k_htc_tx_failed(struct ath9k_htc_priv *priv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath9k_htc_tx_failed(struct ath9k_htc_priv *priv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ath9k_tx_failed_tasklet(unsigned long data);
 void ath9k_htc_tx_cleanup_timer(unsigned long data);
 

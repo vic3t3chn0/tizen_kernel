@@ -57,8 +57,12 @@ enum armv6_counters {
 <<<<<<< HEAD
 	ARMV6_CYCLE_COUNTER = 0,
 =======
+<<<<<<< HEAD
+	ARMV6_CYCLE_COUNTER = 0,
+=======
 	ARMV6_CYCLE_COUNTER = 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ARMV6_COUNTER0,
 	ARMV6_COUNTER1,
 };
@@ -70,6 +74,9 @@ enum armv6_counters {
  */
 static const unsigned armv6_perf_map[PERF_COUNT_HW_MAX] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[PERF_COUNT_HW_CPU_CYCLES]		= ARMV6_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]		= ARMV6_PERFCTR_INSTR_EXEC,
 	[PERF_COUNT_HW_CACHE_REFERENCES]	= HW_OP_UNSUPPORTED,
@@ -82,6 +89,8 @@ static const unsigned armv6_perf_map[PERF_COUNT_HW_MAX] = {
 };
 
 static unsigned armv6_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
+<<<<<<< HEAD
+=======
 =======
 	[PERF_COUNT_HW_CPU_CYCLES]	    = ARMV6_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]	    = ARMV6_PERFCTR_INSTR_EXEC,
@@ -94,6 +103,7 @@ static unsigned armv6_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 static const unsigned armv6_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  [PERF_COUNT_HW_CACHE_OP_MAX]
 					  [PERF_COUNT_HW_CACHE_RESULT_MAX] = {
 	[C(L1D)] = {
@@ -193,6 +203,9 @@ static const unsigned armv6_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[C(NODE)] = {
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -207,8 +220,11 @@ static const unsigned armv6_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]	= CACHE_OP_UNSUPPORTED,
 		},
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum armv6mpcore_perf_types {
@@ -241,6 +257,9 @@ enum armv6mpcore_perf_types {
  */
 static const unsigned armv6mpcore_perf_map[PERF_COUNT_HW_MAX] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[PERF_COUNT_HW_CPU_CYCLES]		= ARMV6MPCORE_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]		= ARMV6MPCORE_PERFCTR_INSTR_EXEC,
 	[PERF_COUNT_HW_CACHE_REFERENCES]	= HW_OP_UNSUPPORTED,
@@ -253,6 +272,8 @@ static const unsigned armv6mpcore_perf_map[PERF_COUNT_HW_MAX] = {
 };
 
 static unsigned armv6mpcore_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
+<<<<<<< HEAD
+=======
 =======
 	[PERF_COUNT_HW_CPU_CYCLES]	    = ARMV6MPCORE_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]	    = ARMV6MPCORE_PERFCTR_INSTR_EXEC,
@@ -265,6 +286,7 @@ static unsigned armv6mpcore_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 static const unsigned armv6mpcore_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					[PERF_COUNT_HW_CACHE_OP_MAX]
 					[PERF_COUNT_HW_CACHE_RESULT_MAX] = {
 	[C(L1D)] = {
@@ -362,6 +384,9 @@ static const unsigned armv6mpcore_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[C(NODE)] = {
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]  = CACHE_OP_UNSUPPORTED,
@@ -376,8 +401,11 @@ static const unsigned armv6mpcore_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]    = CACHE_OP_UNSUPPORTED,
 		},
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline unsigned long
@@ -476,7 +504,11 @@ armv6pmu_enable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 =======
+<<<<<<< HEAD
+	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ARMV6_CYCLE_COUNTER == idx) {
 		mask	= 0;
@@ -501,8 +533,12 @@ armv6pmu_enable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&events->pmu_lock, flags);
+=======
 	raw_spin_lock_irqsave(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	val = armv6_pmcr_read();
 	val &= ~mask;
 	val |= evt;
@@ -510,8 +546,12 @@ armv6pmu_enable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
+=======
 	raw_spin_unlock_irqrestore(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static irqreturn_t
@@ -523,8 +563,12 @@ armv6pmu_handle_irq(int irq_num,
 <<<<<<< HEAD
 	struct pmu_hw_events *cpuc;
 =======
+<<<<<<< HEAD
+	struct pmu_hw_events *cpuc;
+=======
 	struct cpu_hw_events *cpuc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pt_regs *regs;
 	int idx;
 
@@ -544,12 +588,17 @@ armv6pmu_handle_irq(int irq_num,
 
 	cpuc = &__get_cpu_var(cpu_hw_events);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (idx = 0; idx < cpu_pmu->num_events; ++idx) {
 		struct perf_event *event = cpuc->events[idx];
 		struct hw_perf_event *hwc;
 
 		/* Ignore if we don't have an event. */
 		if (!event)
+<<<<<<< HEAD
+=======
 =======
 	for (idx = 0; idx <= armpmu->num_events; ++idx) {
 		struct perf_event *event = cpuc->events[idx];
@@ -557,6 +606,7 @@ armv6pmu_handle_irq(int irq_num,
 
 		if (!test_bit(idx, cpuc->active_mask))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		/*
@@ -570,8 +620,12 @@ armv6pmu_handle_irq(int irq_num,
 <<<<<<< HEAD
 		armpmu_event_update(event, hwc, idx);
 =======
+<<<<<<< HEAD
+		armpmu_event_update(event, hwc, idx);
+=======
 		armpmu_event_update(event, hwc, idx, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		data.period = event->hw.last_period;
 		if (!armpmu_event_set_period(event, hwc, idx))
 			continue;
@@ -580,9 +634,14 @@ armv6pmu_handle_irq(int irq_num,
 		if (perf_event_overflow(event, &data, regs))
 			cpu_pmu->disable(hwc, idx);
 =======
+<<<<<<< HEAD
+		if (perf_event_overflow(event, &data, regs))
+			cpu_pmu->disable(hwc, idx);
+=======
 		if (perf_event_overflow(event, 0, &data, regs))
 			armpmu->disable(hwc, idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -602,6 +661,9 @@ armv6pmu_start(void)
 {
 	unsigned long flags, val;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
@@ -609,6 +671,8 @@ armv6pmu_start(void)
 	val |= ARMV6_PMCR_ENABLE;
 	armv6_pmcr_write(val);
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 
 	raw_spin_lock_irqsave(&pmu_lock, flags);
@@ -617,6 +681,7 @@ armv6pmu_start(void)
 	armv6_pmcr_write(val);
 	raw_spin_unlock_irqrestore(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -624,6 +689,9 @@ armv6pmu_stop(void)
 {
 	unsigned long flags, val;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
@@ -635,6 +703,8 @@ armv6pmu_stop(void)
 
 static int
 armv6pmu_get_event_idx(struct pmu_hw_events *cpuc,
+<<<<<<< HEAD
+=======
 =======
 
 	raw_spin_lock_irqsave(&pmu_lock, flags);
@@ -647,6 +717,7 @@ armv6pmu_get_event_idx(struct pmu_hw_events *cpuc,
 static int
 armv6pmu_get_event_idx(struct cpu_hw_events *cpuc,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       struct hw_perf_event *event)
 {
 	/* Always place a cycle counter into the cycle counter. */
@@ -679,7 +750,11 @@ armv6pmu_disable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 =======
+<<<<<<< HEAD
+	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ARMV6_CYCLE_COUNTER == idx) {
 		mask	= ARMV6_PMCR_CCOUNT_IEN;
@@ -703,8 +778,12 @@ armv6pmu_disable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&events->pmu_lock, flags);
+=======
 	raw_spin_lock_irqsave(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	val = armv6_pmcr_read();
 	val &= ~mask;
 	val |= evt;
@@ -712,8 +791,12 @@ armv6pmu_disable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
+=======
 	raw_spin_unlock_irqrestore(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
@@ -724,7 +807,11 @@ armv6mpcore_pmu_disable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 =======
+<<<<<<< HEAD
+	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ARMV6_CYCLE_COUNTER == idx) {
 		mask	= ARMV6_PMCR_CCOUNT_IEN;
@@ -744,13 +831,20 @@ armv6mpcore_pmu_disable_event(struct hw_perf_event *hwc,
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&events->pmu_lock, flags);
+=======
 	raw_spin_lock_irqsave(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	val = armv6_pmcr_read();
 	val &= ~mask;
 	val |= evt;
 	armv6_pmcr_write(val);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 }
 
@@ -766,6 +860,8 @@ static struct arm_pmu armv6pmu = {
 	.handle_irq		= armv6pmu_handle_irq,
 	.request_pmu_irq	= armpmu_generic_request_irq,
 	.free_pmu_irq		= armpmu_generic_free_irq,
+<<<<<<< HEAD
+=======
 =======
 	raw_spin_unlock_irqrestore(&pmu_lock, flags);
 }
@@ -775,6 +871,7 @@ static const struct arm_pmu armv6pmu = {
 	.name			= "v6",
 	.handle_irq		= armv6pmu_handle_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.enable			= armv6pmu_enable_event,
 	.disable		= armv6pmu_disable_event,
 	.read_counter		= armv6pmu_read_counter,
@@ -785,10 +882,14 @@ static const struct arm_pmu armv6pmu = {
 <<<<<<< HEAD
 	.map_event		= armv6_map_event,
 =======
+<<<<<<< HEAD
+	.map_event		= armv6_map_event,
+=======
 	.cache_map		= &armv6_perf_cache_map,
 	.event_map		= &armv6_perf_map,
 	.raw_event_mask		= 0xFF,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_events		= 3,
 	.max_period		= (1LLU << 32) - 1,
 };
@@ -796,8 +897,12 @@ static const struct arm_pmu armv6pmu = {
 <<<<<<< HEAD
 static struct arm_pmu *__init armv6pmu_init(void)
 =======
+<<<<<<< HEAD
+static struct arm_pmu *__init armv6pmu_init(void)
+=======
 static const struct arm_pmu *__init armv6pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return &armv6pmu;
 }
@@ -810,6 +915,9 @@ static const struct arm_pmu *__init armv6pmu_init(void)
  * reset the period and enable the interrupt reporting.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int armv6mpcore_map_event(struct perf_event *event)
 {
@@ -823,12 +931,15 @@ static struct arm_pmu armv6mpcore_pmu = {
 	.handle_irq		= armv6pmu_handle_irq,
 	.request_pmu_irq	= armpmu_generic_request_irq,
 	.free_pmu_irq		= armpmu_generic_free_irq,
+<<<<<<< HEAD
+=======
 =======
 static const struct arm_pmu armv6mpcore_pmu = {
 	.id			= ARM_PERF_PMU_ID_V6MP,
 	.name			= "v6mpcore",
 	.handle_irq		= armv6pmu_handle_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.enable			= armv6pmu_enable_event,
 	.disable		= armv6mpcore_pmu_disable_event,
 	.read_counter		= armv6pmu_read_counter,
@@ -839,10 +950,14 @@ static const struct arm_pmu armv6mpcore_pmu = {
 <<<<<<< HEAD
 	.map_event		= armv6mpcore_map_event,
 =======
+<<<<<<< HEAD
+	.map_event		= armv6mpcore_map_event,
+=======
 	.cache_map		= &armv6mpcore_perf_cache_map,
 	.event_map		= &armv6mpcore_perf_map,
 	.raw_event_mask		= 0xFF,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_events		= 3,
 	.max_period		= (1LLU << 32) - 1,
 };
@@ -850,8 +965,12 @@ static const struct arm_pmu armv6mpcore_pmu = {
 <<<<<<< HEAD
 static struct arm_pmu *__init armv6mpcore_pmu_init(void)
 =======
+<<<<<<< HEAD
+static struct arm_pmu *__init armv6mpcore_pmu_init(void)
+=======
 static const struct arm_pmu *__init armv6mpcore_pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return &armv6mpcore_pmu;
 }
@@ -859,8 +978,12 @@ static const struct arm_pmu *__init armv6mpcore_pmu_init(void)
 <<<<<<< HEAD
 static struct arm_pmu *__init armv6pmu_init(void)
 =======
+<<<<<<< HEAD
+static struct arm_pmu *__init armv6pmu_init(void)
+=======
 static const struct arm_pmu *__init armv6pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return NULL;
 }
@@ -868,8 +991,12 @@ static const struct arm_pmu *__init armv6pmu_init(void)
 <<<<<<< HEAD
 static struct arm_pmu *__init armv6mpcore_pmu_init(void)
 =======
+<<<<<<< HEAD
+static struct arm_pmu *__init armv6mpcore_pmu_init(void)
+=======
 static const struct arm_pmu *__init armv6mpcore_pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return NULL;
 }

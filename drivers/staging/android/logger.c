@@ -28,7 +28,18 @@
 #include "logger.h"
 
 #include <asm/ioctls.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#ifndef CONFIG_LOGCAT_SIZE
+#define CONFIG_LOGCAT_SIZE 256
+#endif
+=======
 #include <mach/sec_debug.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <mach/sec_debug.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * struct logger_log - represents a specific log, such as 'main' or 'radio'
@@ -38,7 +49,15 @@
  * mutex 'mutex'.
  */
 struct logger_log {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char		*buffer;/* the ring buffer itself */
+=======
 	unsigned char 		*buffer;/* the ring buffer itself */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned char 		*buffer;/* the ring buffer itself */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct miscdevice	misc;	/* misc device representing the log */
 	wait_queue_head_t	wq;	/* wait queue for readers */
 	struct list_head	readers; /* this log's readers */
@@ -63,16 +82,40 @@ struct logger_reader {
 };
 
 /* logger_offset - returns index 'n' into the log via (optimized) modulus */
+<<<<<<< HEAD
+<<<<<<< HEAD
+size_t logger_offset(struct logger_log *log, size_t n)
+{
+	return n & (log->size-1);
+}
+
+=======
 #define logger_offset(n)	((n) & (log->size - 1))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define logger_offset(n)	((n) & (log->size - 1))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * file_get_log - Given a file structure, return the associated log
  *
  * This isn't aesthetic. We have several goals:
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	1) Need to quickly obtain the associated log during an I/O operation
+ *	2) Readers need to maintain state (logger_reader)
+ *	3) Writers need to be very fast (open() should be a near no-op)
+=======
  * 	1) Need to quickly obtain the associated log during an I/O operation
  * 	2) Readers need to maintain state (logger_reader)
  * 	3) Writers need to be very fast (open() should be a near no-op)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * 	1) Need to quickly obtain the associated log during an I/O operation
+ * 	2) Readers need to maintain state (logger_reader)
+ * 	3) Writers need to be very fast (open() should be a near no-op)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * In the reader case, we can trivially go file->logger_reader->logger_log.
  * For a writer, we don't want to maintain a logger_reader, so we just go
@@ -113,6 +156,16 @@ static struct logger_entry *get_entry_header(struct logger_log *log,
  * get_entry_msg_len - Grabs the length of the message of the entry
  * starting from from 'off'.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * An entry length is 2 bytes (16 bits) in host endian order.
+ * In the log, the length does not include the size of the log entry structure.
+ * This function returns the size including the log entry structure.
+ *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Caller needs to hold log->mutex.
  */
 static __u32 get_entry_msg_len(struct logger_log *log, size_t off)
@@ -182,7 +235,16 @@ static ssize_t do_read_log_to_user(struct logger_log *log,
 
 	count -= get_user_hdr_len(reader->r_ver);
 	buf += get_user_hdr_len(reader->r_ver);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	msg_start = logger_offset(log,
+		reader->r_off + sizeof(struct logger_entry));
+=======
 	msg_start = logger_offset(reader->r_off + sizeof(struct logger_entry));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	msg_start = logger_offset(reader->r_off + sizeof(struct logger_entry));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We read from the msg in two disjoint operations. First, we read from
@@ -201,7 +263,15 @@ static ssize_t do_read_log_to_user(struct logger_log *log,
 		if (copy_to_user(buf + len, log->buffer, count - len))
 			return -EFAULT;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	reader->r_off = logger_offset(log, reader->r_off +
+=======
 	reader->r_off = logger_offset(reader->r_off +
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	reader->r_off = logger_offset(reader->r_off +
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sizeof(struct logger_entry) + count);
 
 	return count + get_user_hdr_len(reader->r_ver);
@@ -225,7 +295,15 @@ static size_t get_next_entry_by_uid(struct logger_log *log,
 			return off;
 
 		next_len = sizeof(struct logger_entry) + entry->len;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		off = logger_offset(log, off + next_len);
+=======
 		off = logger_offset(off + next_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		off = logger_offset(off + next_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return off;
@@ -236,9 +314,21 @@ static size_t get_next_entry_by_uid(struct logger_log *log,
  *
  * Behavior:
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	- O_NONBLOCK works
+ *	- If there are no log entries to read, blocks until log is written to
+ *	- Atomically reads exactly one log entry
+=======
  * 	- O_NONBLOCK works
  * 	- If there are no log entries to read, blocks until log is written to
  * 	- Atomically reads exactly one log entry
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * 	- O_NONBLOCK works
+ * 	- If there are no log entries to read, blocks until log is written to
+ * 	- Atomically reads exactly one log entry
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Will set errno to EINVAL if read
  * buffer is insufficient to hold next entry.
@@ -253,9 +343,22 @@ static ssize_t logger_read(struct file *file, char __user *buf,
 
 start:
 	while (1) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mutex_lock(&log->mutex);
+
+		prepare_to_wait(&log->wq, &wait, TASK_INTERRUPTIBLE);
+
+=======
 		prepare_to_wait(&log->wq, &wait, TASK_INTERRUPTIBLE);
 
 		mutex_lock(&log->mutex);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		prepare_to_wait(&log->wq, &wait, TASK_INTERRUPTIBLE);
+
+		mutex_lock(&log->mutex);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = (log->w_off == reader->r_off);
 		mutex_unlock(&log->mutex);
 		if (!ret)
@@ -320,7 +423,15 @@ static size_t get_next_entry(struct logger_log *log, size_t off, size_t len)
 	do {
 		size_t nr = sizeof(struct logger_entry) +
 			get_entry_msg_len(log, off);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		off = logger_offset(log, off + nr);
+=======
 		off = logger_offset(off + nr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		off = logger_offset(off + nr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		count += nr;
 	} while (count < len);
 
@@ -328,6 +439,33 @@ static size_t get_next_entry(struct logger_log *log, size_t off, size_t len)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * is_between - is a < c < b, accounting for wrapping of a, b, and c
+ *    positions in the buffer
+ *
+ * That is, if a<b, check for c between a and b
+ * and if a>b, check for c outside (not between) a and b
+ *
+ * |------- a xxxxxxxx b --------|
+ *               c^
+ *
+ * |xxxxx b --------- a xxxxxxxxx|
+ *    c^
+ *  or                    c^
+ */
+static inline int is_between(size_t a, size_t b, size_t c)
+{
+	if (a < b) {
+		/* is c between a and b? */
+		if (a < c && c <= b)
+			return 1;
+	} else {
+		/* is c outside of b through a? */
+		if (c <= b || a < c)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * clock_interval - is a < c < b in mod-space? Put another way, does the line
  * from a to b cross c?
  */
@@ -338,6 +476,10 @@ static inline int clock_interval(size_t a, size_t b, size_t c)
 			return 1;
 	} else {
 		if (a < c && b >= c)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 1;
 	}
 
@@ -355,6 +497,19 @@ static inline int clock_interval(size_t a, size_t b, size_t c)
 static void fix_up_readers(struct logger_log *log, size_t len)
 {
 	size_t old = log->w_off;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	size_t new = logger_offset(log, old + len);
+	struct logger_reader *reader;
+
+	if (is_between(old, new, log->head))
+		log->head = get_next_entry(log, log->head, len);
+
+	list_for_each_entry(reader, &log->readers, list)
+		if (is_between(old, new, reader->r_off))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t new = logger_offset(old + len);
 	struct logger_reader *reader;
 
@@ -363,6 +518,10 @@ static void fix_up_readers(struct logger_log *log, size_t len)
 
 	list_for_each_entry(reader, &log->readers, list)
 		if (clock_interval(old, new, reader->r_off))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reader->r_off = get_next_entry(log, reader->r_off, len);
 }
 
@@ -381,7 +540,15 @@ static void do_write_log(struct logger_log *log, const void *buf, size_t count)
 	if (count != len)
 		memcpy(log->buffer, buf + len, count - len);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	log->w_off = logger_offset(log, log->w_off + count);
+=======
 	log->w_off = logger_offset(log->w_off + count);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	log->w_off = logger_offset(log->w_off + count);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 }
 
@@ -404,6 +571,20 @@ static ssize_t do_write_log_from_user(struct logger_log *log,
 
 	if (count != len)
 		if (copy_from_user(log->buffer, buf + len, count - len))
+<<<<<<< HEAD
+<<<<<<< HEAD
+			/*
+			 * Note that by not updating w_off, this abandons the
+			 * portion of the new entry that *was* successfully
+			 * copied, just above.  This is intentional to avoid
+			 * message corruption from missing fragments.
+			 */
+			return -EFAULT;
+
+	log->w_off = logger_offset(log, log->w_off + count);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EFAULT;
 
 	/* print as kernel log if the log string starts with "!@" */
@@ -421,6 +602,10 @@ static ssize_t do_write_log_from_user(struct logger_log *log,
 	}
 
 	log->w_off = logger_offset(log->w_off + count);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return count;
 }
@@ -543,6 +728,22 @@ static int logger_open(struct inode *inode, struct file *file)
  *
  * Note this is a total no-op in the write-only case. Keep it that way!
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int logger_release(struct inode *ignored, struct file *file)
+{
+	if (file->f_mode & FMODE_READ) {
+		struct logger_reader *reader = file->private_data;
+		struct logger_log *log = reader->log;
+
+		mutex_lock(&log->mutex);
+		list_del(&reader->list);
+		mutex_unlock(&log->mutex);
+
+		kfree(reader);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int logger_release(struct inode *inode, struct file *file)
 {
 	if (file->f_mode & FMODE_READ) {
@@ -556,6 +757,10 @@ static int logger_release(struct inode *inode, struct file *file)
 		kfree(reader);
 		pr_info("%s: took %d msec\n", __func__,
 			jiffies_to_msecs(jiffies - start));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -717,11 +922,24 @@ static struct logger_log VAR = { \
 	.size = SIZE, \
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+DEFINE_LOGGER_DEVICE(log_main, LOGGER_LOG_MAIN, CONFIG_LOGCAT_SIZE*1024)
+DEFINE_LOGGER_DEVICE(log_events, LOGGER_LOG_EVENTS, CONFIG_LOGCAT_SIZE*1024)
+DEFINE_LOGGER_DEVICE(log_radio, LOGGER_LOG_RADIO, CONFIG_LOGCAT_SIZE*1024)
+DEFINE_LOGGER_DEVICE(log_system, LOGGER_LOG_SYSTEM, CONFIG_LOGCAT_SIZE*1024)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DEFINE_LOGGER_DEVICE(log_main, LOGGER_LOG_MAIN, 2048*1024)
 DEFINE_LOGGER_DEVICE(log_events, LOGGER_LOG_EVENTS, 256*1024)
 DEFINE_LOGGER_DEVICE(log_radio, LOGGER_LOG_RADIO, 1024*1024)
 DEFINE_LOGGER_DEVICE(log_system, LOGGER_LOG_SYSTEM, 256*1024)
 DEFINE_LOGGER_DEVICE(log_sf, LOGGER_LOG_SF, 256*1024)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct logger_log *get_log_from_minor(int minor)
 {
@@ -733,8 +951,16 @@ static struct logger_log *get_log_from_minor(int minor)
 		return &log_radio;
 	if (log_system.misc.minor == minor)
 		return &log_system;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (log_sf.misc.minor == minor)
 		return &log_sf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (log_sf.misc.minor == minor)
+		return &log_sf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -775,12 +1001,21 @@ static int __init logger_init(void)
 	if (unlikely(ret))
 		goto out;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = init_log(&log_sf);
 	if (unlikely(ret))
 		goto out;
 
 	sec_getlog_supply_loggerinfo(_buf_log_main, _buf_log_radio,
 				     _buf_log_events, _buf_log_system);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return ret;
 }

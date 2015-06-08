@@ -24,10 +24,15 @@
 #include "mm.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define minicache_pgprot __pgprot(L_PTE_PRESENT | L_PTE_YOUNG | \
 				  L_PTE_MT_MINICACHE)
 
 static DEFINE_RAW_SPINLOCK(minicache_lock);
+<<<<<<< HEAD
+=======
 =======
 /*
  * 0xffff8000 to 0xffffffff is reserved for any ARM architecture
@@ -38,6 +43,7 @@ static DEFINE_RAW_SPINLOCK(minicache_lock);
 
 static DEFINE_SPINLOCK(minicache_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * ARMv4 mini-dcache optimised copy_user_highpage
@@ -81,13 +87,20 @@ void v4_mc_copy_user_highpage(struct page *to, struct page *from,
 <<<<<<< HEAD
 	void *kto = kmap_atomic(to);
 =======
+<<<<<<< HEAD
+	void *kto = kmap_atomic(to);
+=======
 	void *kto = kmap_atomic(to, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!test_and_set_bit(PG_dcache_clean, &from->flags))
 		__flush_dcache_page(page_mapping(from), from);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spin_lock(&minicache_lock);
 
 	set_top_pte(COPYPAGE_MINICACHE, mk_pte(from, minicache_pgprot));
@@ -97,6 +110,8 @@ void v4_mc_copy_user_highpage(struct page *to, struct page *from,
 	raw_spin_unlock(&minicache_lock);
 
 	kunmap_atomic(kto);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&minicache_lock);
 
@@ -109,6 +124,7 @@ void v4_mc_copy_user_highpage(struct page *to, struct page *from,
 
 	kunmap_atomic(kto, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -119,8 +135,12 @@ void v4_mc_clear_user_highpage(struct page *page, unsigned long vaddr)
 <<<<<<< HEAD
 	void *ptr, *kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	void *ptr, *kaddr = kmap_atomic(page);
+=======
 	void *ptr, *kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asm volatile("\
 	mov	r1, %2				@ 1\n\
 	mov	r2, #0				@ 1\n\
@@ -141,8 +161,12 @@ void v4_mc_clear_user_highpage(struct page *page, unsigned long vaddr)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct cpu_user_fns v4_mc_user_fns __initdata = {

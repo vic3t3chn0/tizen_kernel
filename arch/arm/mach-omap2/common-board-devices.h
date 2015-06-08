@@ -2,11 +2,16 @@
 #define __OMAP_COMMON_BOARD_DEVICES__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "twl-common.h"
 
 #define NAND_BLOCK_SIZE	SZ_128K
 
 struct mtd_partition;
+<<<<<<< HEAD
+=======
 =======
 #define NAND_BLOCK_SIZE	SZ_128K
 
@@ -36,6 +41,7 @@ static inline void omap4_pmic_init(const char *pmic_type,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ads7846_platform_data;
 
 void omap_ads7846_init(int bus_num, int gpio_pendown, int gpio_debounce,

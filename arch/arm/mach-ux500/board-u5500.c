@@ -9,6 +9,9 @@
 #include <linux/platform_device.h>
 #include <linux/amba/bus.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq.h>
 #include <linux/i2c.h>
 #include <linux/mfd/abx500/ab5500.h>
@@ -21,6 +24,8 @@
 #include <plat/i2c.h>
 #include <plat/gpio-nomadik.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/gpio.h>
 #include <linux/irq.h>
@@ -29,11 +34,15 @@
 #include <asm/mach-types.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <mach/devices.h>
 #include <mach/setup.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "pins-db5500.h"
 #include "devices-db5500.h"
 #include <linux/led-lm3530.h>
@@ -141,6 +150,8 @@ static void __init u5500_uart_init(struct device *parent)
 	db5500_add_uart0(parent, NULL);
 	db5500_add_uart1(parent, NULL);
 	db5500_add_uart2(parent, NULL);
+<<<<<<< HEAD
+=======
 =======
 #include "devices-db5500.h"
 
@@ -150,11 +161,15 @@ static void __init u5500_uart_init(void)
 	db5500_add_uart1(NULL);
 	db5500_add_uart2(NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init u5500_init_machine(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *parent = NULL;
 	int i;
 
@@ -178,6 +193,8 @@ MACHINE_START(U5500, "ST-Ericsson U5500 Platform")
 	.init_irq	= ux500_init_irq,
 	.timer		= &ux500_timer,
 	.handle_irq	= gic_handle_irq,
+<<<<<<< HEAD
+=======
 =======
 	u5500_init_devices();
 
@@ -191,5 +208,6 @@ MACHINE_START(U5500, "ST-Ericsson U5500 Platform")
 	.init_irq	= ux500_init_irq,
 	.timer		= &ux500_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= u5500_init_machine,
 MACHINE_END

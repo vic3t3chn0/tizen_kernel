@@ -5,9 +5,14 @@
  * Copyright (C) 2008-2011 Texas Instruments, Inc.
  * Copyright (C) 2008-2011 Nokia Corporation
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2008-2011 Texas Instruments, Inc.
+ * Copyright (C) 2008-2011 Nokia Corporation
+=======
  * Copyright (C) 2008-2010 Texas Instruments, Inc.
  * Copyright (C) 2008-2010 Nokia Corporation
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Written by Paul Walmsley and Jouni Högander
  * Added OMAP4 specific support by Abhijit Pagare <abhijitpagare@ti.com>
@@ -25,7 +30,11 @@
 <<<<<<< HEAD
 #include <linux/string.h>
 =======
+<<<<<<< HEAD
+#include <linux/string.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/clk.h>
 #include <linux/limits.h>
@@ -84,10 +93,13 @@ static int _clkdm_register(struct clockdomain *clkdm)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!omap_chip_is(clkdm->omap_chip))
 		return -EINVAL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pwrdm = pwrdm_lookup(clkdm->pwrdm.name);
 	if (!pwrdm) {
 		pr_err("clockdomain: %s: powerdomain %s does not exist\n",
@@ -108,7 +120,12 @@ static int _clkdm_register(struct clockdomain *clkdm)
 	spin_lock_init(&clkdm->lock);
 
 =======
+<<<<<<< HEAD
+	spin_lock_init(&clkdm->lock);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_debug("clockdomain: registered %s\n", clkdm->name);
 
 	return 0;
@@ -121,10 +138,15 @@ static struct clkdm_dep *_clkdm_deps_lookup(struct clockdomain *clkdm,
 	struct clkdm_dep *cd;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clkdm || !deps)
 		return ERR_PTR(-EINVAL);
 
 	for (cd = deps; cd->clkdm_name; cd++) {
+<<<<<<< HEAD
+=======
 =======
 	if (!clkdm || !deps || !omap_chip_is(clkdm->omap_chip))
 		return ERR_PTR(-EINVAL);
@@ -134,6 +156,7 @@ static struct clkdm_dep *_clkdm_deps_lookup(struct clockdomain *clkdm,
 			continue;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!cd->clkdm && cd->clkdm_name)
 			cd->clkdm = _clkdm_lookup(cd->clkdm_name);
 
@@ -172,10 +195,13 @@ static void _autodep_lookup(struct clkdm_autodep *autodep)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!omap_chip_is(autodep->omap_chip))
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clkdm = clkdm_lookup(autodep->clkdm.name);
 	if (!clkdm) {
 		pr_err("clockdomain: autodeps: clockdomain %s does not exist\n",
@@ -209,10 +235,13 @@ void _clkdm_add_autodeps(struct clockdomain *clkdm)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (!omap_chip_is(autodep->omap_chip))
 			continue;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("clockdomain: adding %s sleepdep/wkdep for "
 			 "clkdm %s\n", autodep->clkdm.ptr->name,
 			 clkdm->name);
@@ -246,10 +275,13 @@ void _clkdm_del_autodeps(struct clockdomain *clkdm)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (!omap_chip_is(autodep->omap_chip))
 			continue;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("clockdomain: removing %s sleepdep/wkdep for "
 			 "clkdm %s\n", autodep->clkdm.ptr->name,
 			 clkdm->name);
@@ -276,9 +308,12 @@ static void _resolve_clkdm_deps(struct clockdomain *clkdm,
 	for (cd = clkdm_deps; cd && cd->clkdm_name; cd++) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (!omap_chip_is(cd->omap_chip))
 			continue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (cd->clkdm)
 			continue;
 		cd->clkdm = _clkdm_lookup(cd->clkdm_name);
@@ -292,6 +327,9 @@ static void _resolve_clkdm_deps(struct clockdomain *clkdm,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * clkdm_register_platform_funcs - register clockdomain implementation fns
  * @co: func pointers for arch specific implementations
  *
@@ -399,6 +437,8 @@ int clkdm_complete_init(void)
 	if (list_empty(&clkdm_list))
 		return -EACCES;
 
+<<<<<<< HEAD
+=======
 =======
  * clkdm_init - set up the clockdomain layer
  * @clkdms: optional pointer to an array of clockdomains to register
@@ -438,6 +478,7 @@ void clkdm_init(struct clockdomain **clkdms,
 	 * should later enable hardware-supervised mode as appropriate
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(clkdm, &clkdm_list, node) {
 		if (clkdm->flags & CLKDM_CAN_FORCE_WAKEUP)
 			clkdm_wakeup(clkdm);
@@ -454,7 +495,12 @@ void clkdm_init(struct clockdomain **clkdms,
 
 	return 0;
 =======
+<<<<<<< HEAD
+
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -846,7 +892,13 @@ int clkdm_sleep(struct clockdomain *clkdm)
 	unsigned long flags;
 
 =======
+<<<<<<< HEAD
+	int ret;
+	unsigned long flags;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clkdm)
 		return -EINVAL;
 
@@ -862,14 +914,20 @@ int clkdm_sleep(struct clockdomain *clkdm)
 	pr_debug("clockdomain: forcing sleep on %s\n", clkdm->name);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&clkdm->lock, flags);
 	clkdm->_flags &= ~_CLKDM_FLAG_HWSUP_ENABLED;
 	ret = arch_clkdm->clkdm_sleep(clkdm);
 	spin_unlock_irqrestore(&clkdm->lock, flags);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	return arch_clkdm->clkdm_sleep(clkdm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -888,7 +946,13 @@ int clkdm_wakeup(struct clockdomain *clkdm)
 	unsigned long flags;
 
 =======
+<<<<<<< HEAD
+	int ret;
+	unsigned long flags;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clkdm)
 		return -EINVAL;
 
@@ -904,15 +968,21 @@ int clkdm_wakeup(struct clockdomain *clkdm)
 	pr_debug("clockdomain: forcing wakeup on %s\n", clkdm->name);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&clkdm->lock, flags);
 	clkdm->_flags &= ~_CLKDM_FLAG_HWSUP_ENABLED;
 	ret = arch_clkdm->clkdm_wakeup(clkdm);
 	ret |= pwrdm_state_switch(clkdm->pwrdm.ptr);
 	spin_unlock_irqrestore(&clkdm->lock, flags);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	return arch_clkdm->clkdm_wakeup(clkdm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -931,7 +1001,12 @@ void clkdm_allow_idle(struct clockdomain *clkdm)
 	unsigned long flags;
 
 =======
+<<<<<<< HEAD
+	unsigned long flags;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clkdm)
 		return;
 
@@ -948,15 +1023,21 @@ void clkdm_allow_idle(struct clockdomain *clkdm)
 		 clkdm->name);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&clkdm->lock, flags);
 	clkdm->_flags |= _CLKDM_FLAG_HWSUP_ENABLED;
 	arch_clkdm->clkdm_allow_idle(clkdm);
 	pwrdm_clkdm_state_switch(clkdm);
 	spin_unlock_irqrestore(&clkdm->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	arch_clkdm->clkdm_allow_idle(clkdm);
 	pwrdm_clkdm_state_switch(clkdm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -974,7 +1055,12 @@ void clkdm_deny_idle(struct clockdomain *clkdm)
 	unsigned long flags;
 
 =======
+<<<<<<< HEAD
+	unsigned long flags;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clkdm)
 		return;
 
@@ -991,6 +1077,9 @@ void clkdm_deny_idle(struct clockdomain *clkdm)
 		 clkdm->name);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&clkdm->lock, flags);
 	clkdm->_flags &= ~_CLKDM_FLAG_HWSUP_ENABLED;
 	arch_clkdm->clkdm_deny_idle(clkdm);
@@ -1076,6 +1165,8 @@ static int _clkdm_clk_hwmod_disable(struct clockdomain *clkdm)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 	arch_clkdm->clkdm_deny_idle(clkdm);
 }
@@ -1083,6 +1174,7 @@ static int _clkdm_clk_hwmod_disable(struct clockdomain *clkdm)
 
 /* Clockdomain-to-clock framework interface code */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * clkdm_clk_enable - add an enabled downstream clock to this clkdm
@@ -1106,10 +1198,15 @@ int clkdm_clk_enable(struct clockdomain *clkdm, struct clk *clk)
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clk)
 		return -EINVAL;
 
 	return _clkdm_clk_hwmod_enable(clkdm);
+<<<<<<< HEAD
+=======
 =======
 	if (!clkdm || !clk)
 		return -EINVAL;
@@ -1131,6 +1228,7 @@ int clkdm_clk_enable(struct clockdomain *clkdm, struct clk *clk)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1147,10 +1245,15 @@ int clkdm_clk_enable(struct clockdomain *clkdm, struct clk *clk)
  * pointers; -ERANGE if the @clkdm usecount underflows; or returns 0
  * upon success or if the clockdomain is in hwsup idle mode.
 =======
+<<<<<<< HEAD
+ * pointers; -ERANGE if the @clkdm usecount underflows; or returns 0
+ * upon success or if the clockdomain is in hwsup idle mode.
+=======
  * pointers; -ERANGE if the @clkdm usecount underflows and debugging
  * is enabled; or returns 0 upon success or if the clockdomain is in
  * hwsup idle mode.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int clkdm_clk_disable(struct clockdomain *clkdm, struct clk *clk)
 {
@@ -1160,6 +1263,9 @@ int clkdm_clk_disable(struct clockdomain *clkdm, struct clk *clk)
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clk)
 		return -EINVAL;
 
@@ -1227,6 +1333,8 @@ int clkdm_hwmod_disable(struct clockdomain *clkdm, struct omap_hwmod *oh)
 		return -EINVAL;
 
 	return _clkdm_clk_hwmod_disable(clkdm);
+<<<<<<< HEAD
+=======
 =======
 	if (!clkdm || !clk)
 		return -EINVAL;
@@ -1254,5 +1362,6 @@ int clkdm_hwmod_disable(struct clockdomain *clkdm, struct omap_hwmod *oh)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

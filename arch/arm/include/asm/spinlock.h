@@ -11,7 +11,12 @@
 extern int msm_krait_need_wfe_fixup;
 
 =======
+<<<<<<< HEAD
+extern int msm_krait_need_wfe_fixup;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * sev and wfe are ARMv6K extensions.  Uniprocessor ARMv6 may not have the K
  * extensions, so when running on UP, we have to patch these instructions away.
@@ -27,12 +32,17 @@ extern int msm_krait_need_wfe_fixup;
 #define SEV		ALT_SMP("sev.w", "nop.w")
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Both instructions given to the ALT_SMP macro need to be the same size, to
  * allow the SMP_ON_UP fixups to function correctly. Hence the explicit encoding
  * specifications.
  */
 #define WFE()		ALT_SMP(		\
 	"wfe.w",				\
+<<<<<<< HEAD
+=======
 =======
  * For Thumb-2, special care is needed to ensure that the conditional WFE
  * instruction really does assemble to exactly 4 bytes (as required by
@@ -49,11 +59,15 @@ extern int msm_krait_need_wfe_fixup;
 	"wfe" cond ".n",			\
 						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"nop.w"					\
 )
 #else
 #define SEV		ALT_SMP("sev", "nop")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WFE()		ALT_SMP("wfe", "nop")
 #endif
 
@@ -82,9 +96,12 @@ extern int msm_krait_need_wfe_fixup;
 "10:	msr	cpsr_cf, " tmp "\n"
 #else
 #define WFE_SAFE(fixup, tmp)	"	wfe\n"
+<<<<<<< HEAD
+=======
 =======
 #define WFE(cond)	ALT_SMP("wfe" cond, "nop")
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static inline void dsb_sev(void)
@@ -106,7 +123,11 @@ static inline void dsb_sev(void)
 <<<<<<< HEAD
 #ifndef CONFIG_ARM_TICKET_LOCKS
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_ARM_TICKET_LOCKS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ARMv6 Spin-locking.
  *
@@ -128,6 +149,9 @@ static inline void dsb_sev(void)
 static inline void arch_spin_lock(arch_spinlock_t *lock)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long tmp, fixup = msm_krait_need_wfe_fixup;
 
 	__asm__ __volatile__(
@@ -141,6 +165,8 @@ static inline void arch_spin_lock(arch_spinlock_t *lock)
 "	bne	1b"
 	: [tmp] "=&r" (tmp), [fixup] "+r" (fixup)
 	: [lock] "r" (&lock->lock), [bit0] "r" (1)
+<<<<<<< HEAD
+=======
 =======
 	unsigned long tmp;
 
@@ -154,6 +180,7 @@ static inline void arch_spin_lock(arch_spinlock_t *lock)
 	: "=&r" (tmp)
 	: "r" (&lock->lock), "r" (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	: "cc");
 
 	smp_mb();
@@ -192,6 +219,9 @@ static inline void arch_spin_unlock(arch_spinlock_t *lock)
 	dsb_sev();
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 /*
  * ARM Ticket spin-locking
@@ -325,8 +355,11 @@ static inline int arch_spin_is_contended(arch_spinlock_t *lock)
 	return ((tmp - (tmp >> TICKET_SHIFT)) & TICKET_MASK) > 1;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * RWLOCKS
@@ -339,6 +372,9 @@ static inline int arch_spin_is_contended(arch_spinlock_t *lock)
 static inline void arch_write_lock(arch_rwlock_t *rw)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long tmp, fixup = msm_krait_need_wfe_fixup;
 
 	__asm__ __volatile__(
@@ -352,6 +388,8 @@ static inline void arch_write_lock(arch_rwlock_t *rw)
 "	bne	1b"
 	: [tmp] "=&r" (tmp), [fixup] "+r" (fixup)
 	: [lock] "r" (&rw->lock), [bit31] "r" (0x80000000)
+<<<<<<< HEAD
+=======
 =======
 	unsigned long tmp;
 
@@ -365,6 +403,7 @@ static inline void arch_write_lock(arch_rwlock_t *rw)
 	: "=&r" (tmp)
 	: "r" (&rw->lock), "r" (0x80000000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	: "cc");
 
 	smp_mb();
@@ -421,6 +460,9 @@ static inline void arch_write_unlock(arch_rwlock_t *rw)
 static inline void arch_read_lock(arch_rwlock_t *rw)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long tmp, tmp2, fixup = msm_krait_need_wfe_fixup;
 
 	__asm__ __volatile__(
@@ -434,6 +476,8 @@ static inline void arch_read_lock(arch_rwlock_t *rw)
 "	bmi	1b"
 	: [tmp] "=&r" (tmp), [tmp2] "=&r" (tmp2), [fixup] "+r" (fixup)
 	: [lock] "r" (&rw->lock)
+<<<<<<< HEAD
+=======
 =======
 	unsigned long tmp, tmp2;
 
@@ -447,6 +491,7 @@ static inline void arch_read_lock(arch_rwlock_t *rw)
 	: "=&r" (tmp), "=&r" (tmp2)
 	: "r" (&rw->lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	: "cc");
 
 	smp_mb();

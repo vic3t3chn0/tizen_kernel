@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/cpu.h>
 
 #include "prm-regbits-34xx.h"
@@ -36,6 +40,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* OMAP3-common voltagedomain data */
 
 static struct voltagedomain omap3_voltdm_wkup = {
@@ -108,6 +115,8 @@ void __init omap3xxx_voltagedomains_init(void)
 	struct voltagedomain *voltdm;
 	struct voltagedomain **voltdms;
 	int i;
+<<<<<<< HEAD
+=======
 =======
 static const struct omap_vfsm_instance_data omap3_vdd1_vfsm_data = {
 	.voltsetup_reg = OMAP3_PRM_VOLTSETUP1_OFFSET,
@@ -154,12 +163,16 @@ static int __init omap3xxx_voltage_early_init(void)
 	if (!cpu_is_omap34xx())
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * XXX Will depend on the process, validation, and binning
 	 * for the currently-running IC
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_OPP
 	if (cpu_is_omap3630()) {
 		omap3_voltdm_mpu.volt_data = omap36xx_vddmpu_volt_data;
@@ -180,6 +193,8 @@ static int __init omap3xxx_voltage_early_init(void)
 
 	voltdm_init(voltdms);
 };
+<<<<<<< HEAD
+=======
 =======
 	if (cpu_is_omap3630()) {
 		omap3_vdd1_info.volt_data = omap36xx_vddmpu_volt_data;
@@ -195,3 +210,4 @@ static int __init omap3xxx_voltage_early_init(void)
 };
 core_initcall(omap3xxx_voltage_early_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

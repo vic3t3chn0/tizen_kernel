@@ -9,6 +9,13 @@
 #include <linux/stop_machine.h>
 #include <linux/freezer.h>
 #include <linux/syscore_ops.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <xen/xen.h>
 #include <xen/xenbus.h>
@@ -128,9 +135,22 @@ static void do_suspend(void)
 	printk(KERN_DEBUG "suspending xenstore...\n");
 	xs_suspend();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = dpm_suspend_end(PMSG_FREEZE);
+	if (err) {
+		printk(KERN_ERR "dpm_suspend_end failed: %d\n", err);
+		si.cancelled = 0;
+=======
 	err = dpm_suspend_noirq(PMSG_FREEZE);
 	if (err) {
 		printk(KERN_ERR "dpm_suspend_noirq failed: %d\n", err);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = dpm_suspend_noirq(PMSG_FREEZE);
+	if (err) {
+		printk(KERN_ERR "dpm_suspend_noirq failed: %d\n", err);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_resume;
 	}
 
@@ -148,7 +168,15 @@ static void do_suspend(void)
 
 	err = stop_machine(xen_suspend, &si, cpumask_of(0));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dpm_resume_start(si.cancelled ? PMSG_THAW : PMSG_RESTORE);
+=======
 	dpm_resume_noirq(si.cancelled ? PMSG_THAW : PMSG_RESTORE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dpm_resume_noirq(si.cancelled ? PMSG_THAW : PMSG_RESTORE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (err) {
 		printk(KERN_ERR "failed to start xen_suspend: %d\n", err);

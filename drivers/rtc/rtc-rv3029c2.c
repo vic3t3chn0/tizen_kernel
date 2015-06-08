@@ -310,7 +310,15 @@ static int rv3029c2_rtc_i2c_set_alarm(struct i2c_client *client,
 		dev_dbg(&client->dev, "alarm IRQ armed\n");
 	} else {
 		/* disable AIE irq */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = rv3029c2_rtc_i2c_alarm_set_irq(client, 1);
+=======
 		ret = rv3029c2_rtc_i2c_alarm_set_irq(client, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ret = rv3029c2_rtc_i2c_alarm_set_irq(client, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret)
 			return ret;
 
@@ -436,6 +444,12 @@ static struct i2c_driver rv3029c2_driver = {
 	.id_table = rv3029c2_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(rv3029c2_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init rv3029c2_init(void)
 {
 	return i2c_add_driver(&rv3029c2_driver);
@@ -448,6 +462,10 @@ static void __exit rv3029c2_exit(void)
 
 module_init(rv3029c2_init);
 module_exit(rv3029c2_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Gregory Hermant <gregory.hermant@calao-systems.com>");
 MODULE_DESCRIPTION("Micro Crystal RV3029C2 RTC driver");

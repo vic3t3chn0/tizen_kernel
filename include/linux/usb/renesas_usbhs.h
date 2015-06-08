@@ -68,6 +68,9 @@ struct renesas_usbhs_platform_callback {
 	 * option:
 	 *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * for board specific clock control
 	 */
 	void (*power_ctrl)(struct platform_device *pdev,
@@ -76,8 +79,11 @@ struct renesas_usbhs_platform_callback {
 	/*
 	 * option:
 	 *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Phy reset for platform
 	 */
 	void (*phy_reset)(struct platform_device *pdev);
@@ -94,6 +100,9 @@ struct renesas_usbhs_platform_callback {
 	 */
 	int (*get_vbus)(struct platform_device *pdev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * option:
@@ -101,8 +110,11 @@ struct renesas_usbhs_platform_callback {
 	 * VBUS control is needed for Host
 	 */
 	int (*set_vbus)(struct platform_device *pdev, int enable);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -126,7 +138,12 @@ struct renesas_usbhs_driver_param {
 	 * see
 	 *	renesas_usbhs/common.c :: usbhsc_set_buswait()
 =======
+<<<<<<< HEAD
+	 * see
+	 *	renesas_usbhs/common.c :: usbhsc_set_buswait()
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * */
 	int buswait_bwait;
 
@@ -136,6 +153,9 @@ struct renesas_usbhs_driver_param {
 	 * delay time from notify_hotplug callback
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int detection_delay; /* msec */
 
 	/*
@@ -160,9 +180,12 @@ struct renesas_usbhs_driver_param {
 	 */
 	u32 has_otg:1; /* for controlling PWEN/EXTLP */
 	u32 has_sudmac:1; /* for SUDMAC */
+<<<<<<< HEAD
+=======
 =======
 	int detection_delay;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*

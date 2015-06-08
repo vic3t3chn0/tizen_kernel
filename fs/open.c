@@ -397,16 +397,22 @@ SYSCALL_DEFINE1(fchdir, unsigned int, fd)
 	struct file *file;
 	struct inode *inode;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	error = -EBADF;
 	file = fget(fd);
+<<<<<<< HEAD
+=======
 =======
 	int error, fput_needed;
 
 	error = -EBADF;
 	file = fget_raw_light(fd, &fput_needed);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!file)
 		goto out;
 
@@ -423,8 +429,12 @@ out_putf:
 <<<<<<< HEAD
 	fput(file);
 =======
+<<<<<<< HEAD
+	fput(file);
+=======
 	fput_light(file, fput_needed);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return error;
 }
@@ -458,6 +468,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int chmod_common(struct path *path, umode_t mode)
 {
 	struct inode *inode = path->dentry->d_inode;
@@ -508,6 +521,8 @@ SYSCALL_DEFINE3(fchmodat, int, dfd, const char __user *, filename, umode_t, mode
 }
 
 SYSCALL_DEFINE2(chmod, const char __user *, filename, umode_t, mode)
+<<<<<<< HEAD
+=======
 =======
 SYSCALL_DEFINE2(fchmod, unsigned int, fd, mode_t, mode)
 {
@@ -582,6 +597,7 @@ out:
 
 SYSCALL_DEFINE2(chmod, const char __user *, filename, mode_t, mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return sys_fchmodat(AT_FDCWD, filename, mode);
 }
@@ -697,8 +713,12 @@ SYSCALL_DEFINE3(fchown, unsigned int, fd, uid_t, user, gid_t, group)
 <<<<<<< HEAD
 	mnt_drop_write_file(file);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(file);
+=======
 	mnt_drop_write(file->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_fput:
 	fput(file);
 out:
@@ -776,12 +796,18 @@ static struct file *__dentry_open(struct dentry *dentry, struct vfsmount *mnt,
 		goto cleanup_all;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = break_lease(inode, f->f_flags);
 	if (error)
 		goto cleanup_all;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!open && f->f_op)
 		open = f->f_op->open;
 	if (open) {
@@ -871,8 +897,12 @@ out_err:
 <<<<<<< HEAD
 	nd->intent.open.file = ERR_CAST(dentry);
 =======
+<<<<<<< HEAD
+	nd->intent.open.file = ERR_CAST(dentry);
+=======
 	nd->intent.open.file = (struct file *)dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	goto out;
 }
 EXPORT_SYMBOL_GPL(lookup_instantiate_filp);
@@ -977,12 +1007,21 @@ EXPORT_SYMBOL(fd_install);
 <<<<<<< HEAD
 static inline int build_open_flags(int flags, umode_t mode, struct open_flags *op)
 =======
+<<<<<<< HEAD
+static inline int build_open_flags(int flags, umode_t mode, struct open_flags *op)
+=======
 static inline int build_open_flags(int flags, int mode, struct open_flags *op)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int lookup_flags = 0;
 	int acc_mode;
 
+<<<<<<< HEAD
+	if (!(flags & O_CREAT))
+		mode = 0;
+	op->mode = mode;
+=======
 <<<<<<< HEAD
 	if (!(flags & O_CREAT))
 		mode = 0;
@@ -993,6 +1032,7 @@ static inline int build_open_flags(int flags, int mode, struct open_flags *op)
 	else
 		op->mode = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Must never be set by userspace */
 	flags &= ~FMODE_NONOTIFY;
@@ -1059,8 +1099,12 @@ static inline int build_open_flags(int flags, int mode, struct open_flags *op)
 <<<<<<< HEAD
 struct file *filp_open(const char *filename, int flags, umode_t mode)
 =======
+<<<<<<< HEAD
+struct file *filp_open(const char *filename, int flags, umode_t mode)
+=======
 struct file *filp_open(const char *filename, int flags, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct open_flags op;
 	int lookup = build_open_flags(flags, mode, &op);
@@ -1085,8 +1129,12 @@ EXPORT_SYMBOL(file_open_root);
 <<<<<<< HEAD
 long do_sys_open(int dfd, const char __user *filename, int flags, umode_t mode)
 =======
+<<<<<<< HEAD
+long do_sys_open(int dfd, const char __user *filename, int flags, umode_t mode)
+=======
 long do_sys_open(int dfd, const char __user *filename, int flags, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct open_flags op;
 	int lookup = build_open_flags(flags, mode, &op);
@@ -1113,8 +1161,12 @@ long do_sys_open(int dfd, const char __user *filename, int flags, int mode)
 <<<<<<< HEAD
 SYSCALL_DEFINE3(open, const char __user *, filename, int, flags, umode_t, mode)
 =======
+<<<<<<< HEAD
+SYSCALL_DEFINE3(open, const char __user *, filename, int, flags, umode_t, mode)
+=======
 SYSCALL_DEFINE3(open, const char __user *, filename, int, flags, int, mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	long ret;
 
@@ -1131,8 +1183,12 @@ SYSCALL_DEFINE4(openat, int, dfd, const char __user *, filename, int, flags,
 <<<<<<< HEAD
 		umode_t, mode)
 =======
+<<<<<<< HEAD
+		umode_t, mode)
+=======
 		int, mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	long ret;
 
@@ -1154,8 +1210,12 @@ SYSCALL_DEFINE4(openat, int, dfd, const char __user *, filename, int, flags,
 <<<<<<< HEAD
 SYSCALL_DEFINE2(creat, const char __user *, pathname, umode_t, mode)
 =======
+<<<<<<< HEAD
+SYSCALL_DEFINE2(creat, const char __user *, pathname, umode_t, mode)
+=======
 SYSCALL_DEFINE2(creat, const char __user *, pathname, int, mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return sys_open(pathname, O_CREAT | O_WRONLY | O_TRUNC, mode);
 }

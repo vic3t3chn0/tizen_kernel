@@ -125,7 +125,15 @@ static ssize_t adcxx_set_max(struct device *dev,
 	struct adcxx *adc = spi_get_drvdata(spi);
 	unsigned long value;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &value))
+=======
 	if (strict_strtoul(buf, 10, &value))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &value))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	if (mutex_lock_interruptible(&adc->lock))
@@ -248,6 +256,12 @@ static struct spi_driver adcxx_driver = {
 	.remove	= __devexit_p(adcxx_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(adcxx_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init init_adcxx(void)
 {
 	return spi_register_driver(&adcxx_driver);
@@ -260,6 +274,10 @@ static void __exit exit_adcxx(void)
 
 module_init(init_adcxx);
 module_exit(exit_adcxx);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Marc Pignat");
 MODULE_DESCRIPTION("National Semiconductor adcxx8sxxx Linux driver");

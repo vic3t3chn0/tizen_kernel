@@ -1,13 +1,19 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/spinlock.h>
 #include <linux/list.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/spinlock.h>
 #include <linux/list.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 
 #include "vmregion.h"
@@ -47,8 +53,12 @@ arm_vmregion_alloc(struct arm_vmregion_head *head, size_t align,
 <<<<<<< HEAD
 		   size_t size, gfp_t gfp, const void *caller)
 =======
+<<<<<<< HEAD
+		   size_t size, gfp_t gfp, const void *caller)
+=======
 		   size_t size, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long start = head->vm_start, addr = head->vm_end;
 	unsigned long flags;
@@ -59,9 +69,14 @@ arm_vmregion_alloc(struct arm_vmregion_head *head, size_t align,
 		printk(KERN_WARNING "%s: allocation too big (requested %#x, end:%lx, start:%lx)\n",
 			__func__, size, head->vm_end, head->vm_start);
 =======
+<<<<<<< HEAD
+		printk(KERN_WARNING "%s: allocation too big (requested %#x, end:%lx, start:%lx)\n",
+			__func__, size, head->vm_end, head->vm_start);
+=======
 		printk(KERN_WARNING "%s: allocation too big (requested %#x)\n",
 			__func__, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -73,7 +88,12 @@ arm_vmregion_alloc(struct arm_vmregion_head *head, size_t align,
 	new->caller = caller;
 
 =======
+<<<<<<< HEAD
+	new->caller = caller;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&head->vm_lock, flags);
 
 	addr = rounddown(addr - size, align);
@@ -152,6 +172,9 @@ void arm_vmregion_free(struct arm_vmregion_head *head, struct arm_vmregion *c)
 	kfree(c);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PROC_FS
 static int arm_vmregion_show(struct seq_file *m, void *p)
@@ -221,5 +244,8 @@ int arm_vmregion_create_proc(const char *path, struct arm_vmregion_head *h)
 	return 0;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

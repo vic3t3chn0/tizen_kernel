@@ -12,18 +12,27 @@
 <<<<<<< HEAD
 /include/ "fsl/mpc8568si-pre.dtsi"
 =======
+<<<<<<< HEAD
+/include/ "fsl/mpc8568si-pre.dtsi"
+=======
 /dts-v1/;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 / {
 	model = "MPC8568EMDS";
 	compatible = "MPC8568EMDS", "MPC85xxMDS";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	aliases {
 		pci0 = &pci0;
 		pci1 = &pci1;
 		rapidio0 = &rio;
+<<<<<<< HEAD
+=======
 =======
 	#address-cells = <1>;
 	#size-cells = <1>;
@@ -59,16 +68,22 @@
 			next-level-cache = <&L2>;
 		};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	memory {
 		device_type = "memory";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg = <0x0 0x0 0x0 0x0>;
 	};
 
 	lbc: localbus@e0005000 {
 		reg = <0x0 0xe0005000 0x0 0x1000>;
+<<<<<<< HEAD
+=======
 =======
 		reg = <0x0 0x10000000>;
 	};
@@ -81,6 +96,7 @@
 		reg = <0xe0005000 0x1000>;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ranges = <0x0 0x0 0xfe000000 0x02000000
 			  0x1 0x0 0xf8000000 0x00008000
 			  0x2 0x0 0xf0000000 0x04000000
@@ -123,6 +139,9 @@
 	};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	soc: soc8568@e0000000 {
 		ranges = <0x0 0x0 0xe0000000 0x100000>;
 
@@ -165,6 +184,8 @@
 			tbi0: tbi-phy@11 {
 				reg = <0x11>;
 				device_type = "tbi-phy";
+<<<<<<< HEAD
+=======
 =======
 	soc8568@e0000000 {
 		#address-cells = <1>;
@@ -334,11 +355,15 @@
 					device_type = "tbi-phy";
 				};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			};
 		};
 
 		enet1: ethernet@25000 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tbi-handle = <&tbi1>;
 			phy-handle = <&phy3>;
 			sleep = <&pmc 0x00000040>;
@@ -352,6 +377,8 @@
 		};
 
 		par_io@e0100 {
+<<<<<<< HEAD
+=======
 =======
 			#address-cells = <1>;
 			#size-cells = <1>;
@@ -465,6 +492,7 @@
 			reg = <0xe0100 0x100>;
 			device_type = "par_io";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			num-ports = <7>;
 
 			pio1: ucc_pin@01 {
@@ -528,11 +556,16 @@
 	};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	qe: qe@e0080000 {
 		ranges = <0x0 0x0 0xe0080000 0x40000>;
 		reg = <0x0 0xe0080000 0x0 0x480>;
 
 		spi@4c0 {
+<<<<<<< HEAD
+=======
 =======
 	qe@e0080000 {
 		#address-cells = <1>;
@@ -567,10 +600,13 @@
 			interrupts = <2>;
 			interrupt-parent = <&qeic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mode = "cpu";
 		};
 
 		spi@500 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 			cell-index = <1>;
@@ -579,6 +615,7 @@
 			interrupts = <1>;
 			interrupt-parent = <&qeic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mode = "cpu";
 		};
 
@@ -587,11 +624,14 @@
 			compatible = "ucc_geth";
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			cell-index = <1>;
 			reg = <0x2000 0x200>;
 			interrupts = <32>;
 			interrupt-parent = <&qeic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			local-mac-address = [ 00 00 00 00 00 00 ];
 			rx-clock-name = "none";
 			tx-clock-name = "clk16";
@@ -605,11 +645,14 @@
 			compatible = "ucc_geth";
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			cell-index = <2>;
 			reg = <0x3000 0x200>;
 			interrupts = <33>;
 			interrupt-parent = <&qeic>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			local-mac-address = [ 00 00 00 00 00 00 ];
 			rx-clock-name = "none";
 			tx-clock-name = "clk16";
@@ -631,8 +674,12 @@
 <<<<<<< HEAD
 				interrupts = <1 1 0 0>;
 =======
+<<<<<<< HEAD
+				interrupts = <1 1 0 0>;
+=======
 				interrupts = <1 1>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				reg = <0x7>;
 				device_type = "ethernet-phy";
 			};
@@ -641,8 +688,12 @@
 <<<<<<< HEAD
 				interrupts = <2 1 0 0>;
 =======
+<<<<<<< HEAD
+				interrupts = <2 1 0 0>;
+=======
 				interrupts = <2 1>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				reg = <0x1>;
 				device_type = "ethernet-phy";
 			};
@@ -651,8 +702,12 @@
 <<<<<<< HEAD
 				interrupts = <1 1 0 0>;
 =======
+<<<<<<< HEAD
+				interrupts = <1 1 0 0>;
+=======
 				interrupts = <1 1>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				reg = <0x2>;
 				device_type = "ethernet-phy";
 			};
@@ -661,13 +716,20 @@
 <<<<<<< HEAD
 				interrupts = <2 1 0 0>;
 =======
+<<<<<<< HEAD
+				interrupts = <2 1 0 0>;
+=======
 				interrupts = <2 1>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				reg = <0x3>;
 				device_type = "ethernet-phy";
 			};
 		};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	pci0: pci@e0008000 {
@@ -688,6 +750,8 @@
 			0x9800 0x0 0x0 0x2 &mpic 0x7 0x1 0 0
 			0x9800 0x0 0x0 0x3 &mpic 0x4 0x1 0 0
 			0x9800 0x0 0x0 0x4 &mpic 0x5 0x1 0 0>;
+<<<<<<< HEAD
+=======
 =======
 
 		qeic: interrupt-controller@80 {
@@ -732,15 +796,21 @@
 		compatible = "fsl,mpc8540-pci";
 		device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	/* PCI Express */
 	pci1: pcie@e000a000 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ranges = <0x2000000 0x0 0xa0000000 0x0 0xa0000000 0x0 0x10000000
 			  0x1000000 0x0 0x00000000 0x0 0xe2800000 0x0 0x800000>;
 		reg = <0x0 0xe000a000 0x0 0x1000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 		interrupt-map-mask = <0xf800 0x0 0x0 0x7>;
 		interrupt-map = <
@@ -770,6 +840,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x2000000 0x0 0xa0000000
 				  0x2000000 0x0 0xa0000000
 				  0x0 0x10000000
@@ -781,11 +852,16 @@
 	};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rio: rapidio@e00c00000 {
 		reg = <0x0 0xe00c0000 0x0 0x20000>;
 		port1 {
 			ranges = <0x0 0x0 0x0 0xc0000000 0x0 0x20000000>;
 		};
+<<<<<<< HEAD
+=======
 =======
 	rio0: rapidio@e00c00000 {
 		#address-cells = <2>;
@@ -804,6 +880,7 @@
 		sleep = <&pmc 0x00080000   /* controller */
 			 &pmc 0x00040000>; /* message unit */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	leds {
@@ -826,4 +903,9 @@
 
 /include/ "fsl/mpc8568si-post.dtsi"
 =======
+<<<<<<< HEAD
+
+/include/ "fsl/mpc8568si-post.dtsi"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

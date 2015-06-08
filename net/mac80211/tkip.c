@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/unaligned.h>
 
 #include <net/mac80211.h>
@@ -108,7 +112,11 @@ static void tkip_mixing_phase1(const u8 *tk, struct tkip_ctx *ctx,
 <<<<<<< HEAD
 	ctx->p1k_iv32 = tsc_IV32;
 =======
+<<<<<<< HEAD
+	ctx->p1k_iv32 = tsc_IV32;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void tkip_mixing_phase2(const u8 *tk, struct tkip_ctx *ctx,
@@ -149,22 +157,31 @@ static void tkip_mixing_phase2(const u8 *tk, struct tkip_ctx *ctx,
  * of the IV. Returns pointer to the octet following IVs (i.e., beginning of
  * the packet payload). */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u8 *ieee80211_tkip_add_iv(u8 *pos, struct ieee80211_key *key)
 {
 	lockdep_assert_held(&key->u.tkip.txlock);
 
 	pos = write_tkip_iv(pos, key->u.tkip.tx.iv16);
+<<<<<<< HEAD
+=======
 =======
 u8 *ieee80211_tkip_add_iv(u8 *pos, struct ieee80211_key *key, u16 iv16)
 {
 	pos = write_tkip_iv(pos, iv16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*pos++ = (key->conf.keyidx << 6) | (1 << 5) /* Ext IV */;
 	put_unaligned_le32(key->u.tkip.tx.iv32, pos);
 	return pos + 4;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ieee80211_compute_tkip_p1k(struct ieee80211_key *key, u32 iv32)
 {
 	struct ieee80211_sub_if_data *sdata = key->sdata;
@@ -229,6 +246,8 @@ void ieee80211_get_tkip_p2k(struct ieee80211_key_conf *keyconf,
 	spin_unlock_irqrestore(&key->u.tkip.txlock, flags);
 }
 EXPORT_SYMBOL(ieee80211_get_tkip_p2k);
+<<<<<<< HEAD
+=======
 =======
 void ieee80211_get_tkip_key(struct ieee80211_key_conf *keyconf,
 			struct sk_buff *skb, enum ieee80211_tkip_key_type type,
@@ -277,6 +296,7 @@ void ieee80211_get_tkip_key(struct ieee80211_key_conf *keyconf,
 }
 EXPORT_SYMBOL(ieee80211_get_tkip_key);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Encrypt packet payload with TKIP using @key. @pos is a pointer to the
@@ -288,6 +308,9 @@ EXPORT_SYMBOL(ieee80211_get_tkip_key);
 int ieee80211_tkip_encrypt_data(struct crypto_cipher *tfm,
 				struct ieee80211_key *key,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct sk_buff *skb,
 				u8 *payload, size_t payload_len)
 {
@@ -297,6 +320,8 @@ int ieee80211_tkip_encrypt_data(struct crypto_cipher *tfm,
 
 	return ieee80211_wep_encrypt_data(tfm, rc4key, 16,
 					  payload, payload_len);
+<<<<<<< HEAD
+=======
 =======
 				u8 *pos, size_t payload_len, u8 *ta)
 {
@@ -312,6 +337,7 @@ int ieee80211_tkip_encrypt_data(struct crypto_cipher *tfm,
 
 	return ieee80211_wep_encrypt_data(tfm, rc4key, 16, pos, payload_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Decrypt packet payload with TKIP using @key. @pos is a pointer to the

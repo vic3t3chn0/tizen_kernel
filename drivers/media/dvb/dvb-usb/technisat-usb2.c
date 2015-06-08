@@ -292,7 +292,15 @@ static void technisat_usb2_green_led_control(struct work_struct *work)
 {
 	struct technisat_usb2_state *state =
 		container_of(work, struct technisat_usb2_state, green_led_work.work);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct dvb_frontend *fe = state->dev->adapter[0].fe_adap[0].fe;
+=======
 	struct dvb_frontend *fe = state->dev->adapter[0].fe;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct dvb_frontend *fe = state->dev->adapter[0].fe;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (state->power_state == 0)
 		goto schedule;
@@ -505,6 +513,19 @@ static int technisat_usb2_frontend_attach(struct dvb_usb_adapter *a)
 	struct usb_device *udev = a->dev->udev;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	a->fe_adap[0].fe = dvb_attach(stv090x_attach, &technisat_usb2_stv090x_config,
+			&a->dev->i2c_adap, STV090x_DEMODULATOR_0);
+
+	if (a->fe_adap[0].fe) {
+		struct stv6110x_devctl *ctl;
+
+		ctl = dvb_attach(stv6110x_attach,
+				a->fe_adap[0].fe,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	a->fe = dvb_attach(stv090x_attach, &technisat_usb2_stv090x_config,
 			&a->dev->i2c_adap, STV090x_DEMODULATOR_0);
 
@@ -513,6 +534,10 @@ static int technisat_usb2_frontend_attach(struct dvb_usb_adapter *a)
 
 		ctl = dvb_attach(stv6110x_attach,
 				a->fe,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				&technisat_usb2_stv6110x_config,
 				&a->dev->i2c_adap);
 
@@ -532,8 +557,18 @@ static int technisat_usb2_frontend_attach(struct dvb_usb_adapter *a)
 			/* call the init function once to initialize
 			   tuner's clock output divider and demod's
 			   master clock */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (a->fe_adap[0].fe->ops.init)
+				a->fe_adap[0].fe->ops.init(a->fe_adap[0].fe);
+=======
 			if (a->fe->ops.init)
 				a->fe->ops.init(a->fe);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (a->fe->ops.init)
+				a->fe->ops.init(a->fe);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (mutex_lock_interruptible(&a->dev->i2c_mutex) < 0)
 				return -EAGAIN;
@@ -548,6 +583,19 @@ static int technisat_usb2_frontend_attach(struct dvb_usb_adapter *a)
 			if (ret != 0)
 				err("could not set IF_CLK to external");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			a->fe_adap[0].fe->ops.set_voltage = technisat_usb2_set_voltage;
+
+			/* if everything was successful assign a nice name to the frontend */
+			strlcpy(a->fe_adap[0].fe->ops.info.name, a->dev->desc->name,
+					sizeof(a->fe_adap[0].fe->ops.info.name));
+		} else {
+			dvb_frontend_detach(a->fe_adap[0].fe);
+			a->fe_adap[0].fe = NULL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			a->fe->ops.set_voltage = technisat_usb2_set_voltage;
 
 			/* if everything was successful assign a nice name to the frontend */
@@ -556,12 +604,24 @@ static int technisat_usb2_frontend_attach(struct dvb_usb_adapter *a)
 		} else {
 			dvb_frontend_detach(a->fe);
 			a->fe = NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
 	technisat_usb2_set_led_timer(a->dev, 1, 1);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return a->fe_adap[0].fe == NULL ? -ENODEV : 0;
+=======
 	return a->fe == NULL ? -ENODEV : 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return a->fe == NULL ? -ENODEV : 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Remote control */
@@ -697,6 +757,14 @@ static struct dvb_usb_device_properties technisat_usb2_devices = {
 	.num_adapters = 1,
 	.adapter = {
 		{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.num_frontends = 1,
+		.fe = {{
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.frontend_attach  = technisat_usb2_frontend_attach,
 
 			.stream = {
@@ -711,7 +779,15 @@ static struct dvb_usb_device_properties technisat_usb2_devices = {
 					}
 				}
 			},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		}},
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.size_of_priv = 0,
 		},
 	},
@@ -765,10 +841,21 @@ static void technisat_usb2_disconnect(struct usb_interface *intf)
 	/* work and stuff was only created when the device is is hot-state */
 	if (dev != NULL) {
 		struct technisat_usb2_state *state = dev->priv;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (state != NULL)
+			cancel_delayed_work_sync(&state->green_led_work);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (state != NULL) {
 			cancel_delayed_work_sync(&state->green_led_work);
 			flush_scheduled_work();
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	dvb_usb_device_exit(intf);
@@ -781,6 +868,12 @@ static struct usb_driver technisat_usb2_driver = {
 	.id_table   = technisat_usb2_id_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(technisat_usb2_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* module stuff */
 static int __init technisat_usb2_module_init(void)
 {
@@ -800,6 +893,10 @@ static void __exit technisat_usb2_module_exit(void)
 
 module_init(technisat_usb2_module_init);
 module_exit(technisat_usb2_module_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Patrick Boettcher <pboettcher@kernellabs.com>");
 MODULE_DESCRIPTION("Driver for Technisat DVB-S/S2 USB 2.0 device");

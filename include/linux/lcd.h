@@ -42,6 +42,8 @@ struct lcd_ops {
 	int (*get_power)(struct lcd_device *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Enable or disable power to the LCD(0: on; 4: off, see FB_BLANK_XXX)
 	 * and this callback would be called proir to fb driver's callback.
@@ -53,6 +55,7 @@ struct lcd_ops {
 	/* revert the effects of the early blank event. */
 	int (*r_early_set_power)(struct lcd_device *, int power);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Enable or disable power to the LCD (0: on; 4: off, see FB_BLANK_XXX) */
 	int (*set_power)(struct lcd_device *, int power);
 	/* Get the current contrast setting (0-max_contrast) */
@@ -91,10 +94,13 @@ struct lcd_platform_data {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int (*gpio_cfg_earlysuspend)(struct lcd_device *ld);
 	int (*gpio_cfg_lateresume)(struct lcd_device *ld);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* it indicates whether lcd panel was enabled
 	   from bootloader or not. */
 	int lcd_enabled;
@@ -108,9 +114,12 @@ struct lcd_platform_data {
 	unsigned int power_off_delay;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*stable time needing to become sleep in mode after sleep out mode. */
 	unsigned int sleep_in_delay;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* it could be used for any purpose. */
 	void *pdata;

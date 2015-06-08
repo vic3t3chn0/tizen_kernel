@@ -2,10 +2,14 @@
 <<<<<<< HEAD
  * Copyright (c) 2011-2012 Samsung Electronics Co., Ltd.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2011-2012 Samsung Electronics Co., Ltd.
+=======
  * linux/arch/arm/mach-exynos/clock-exynos4212.c
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *		http://www.samsung.com
  *
  * EXYNOS4212 - Clock support
@@ -29,14 +33,20 @@
 #include <plat/clock-clksrc.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/exynos4.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/pm.h>
 
 #include <mach/hardware.h>
 #include <mach/map.h>
 #include <mach/regs-clock.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "common.h"
 #include "clock-exynos4.h"
@@ -51,6 +61,8 @@ static struct sleep_save exynos4212_clock_save[] = {
 #endif
 
 static struct clk *clk_src_mpll_user_list[] = {
+<<<<<<< HEAD
+=======
 =======
 #include <mach/dev-sysmmu.h>
 #include <mach/exynos-clock.h>
@@ -171,11 +183,15 @@ static int exynos4212_clk_ip_isp1_ctrl(struct clk *clk, int enable)
 
 static struct clk *exynos4212_clk_src_mpll_user_list[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[0] = &clk_fin_mpll,
 	[1] = &exynos4_clk_mout_mpll.clk,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clksrc_sources clk_src_mpll_user = {
 	.sources	= clk_src_mpll_user_list,
 	.nr_sources	= ARRAY_SIZE(clk_src_mpll_user_list),
@@ -205,6 +221,8 @@ static struct clk init_clocks_off[] = {
 static int exynos4212_clock_suspend(void)
 {
 	s3c_pm_do_save(exynos4212_clock_save, ARRAY_SIZE(exynos4212_clock_save));
+<<<<<<< HEAD
+=======
 =======
 static struct clksrc_sources exynos4212_clk_src_mpll_user = {
 	.sources	= exynos4212_clk_src_mpll_user_list,
@@ -1100,12 +1118,18 @@ static int exynos4212_clock_suspend(void)
 	s3c_pm_do_save(exynos4212_vpll_save, ARRAY_SIZE(exynos4212_vpll_save));
 	s3c_pm_do_save(exynos4212_epll_save, ARRAY_SIZE(exynos4212_epll_save));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 static void exynos4212_clock_resume(void)
 {
+<<<<<<< HEAD
+	s3c_pm_do_restore_core(exynos4212_clock_save, ARRAY_SIZE(exynos4212_clock_save));
+}
+
+=======
 <<<<<<< HEAD
 	s3c_pm_do_restore_core(exynos4212_clock_save, ARRAY_SIZE(exynos4212_clock_save));
 }
@@ -1128,6 +1152,7 @@ static void exynos4212_clock_resume(void)
 	s3c_pm_do_restore_core(exynos4212_clock_save, ARRAY_SIZE(exynos4212_clock_save));
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define exynos4212_clock_suspend NULL
 #define exynos4212_clock_resume NULL
@@ -1136,8 +1161,12 @@ static void exynos4212_clock_resume(void)
 <<<<<<< HEAD
 static struct syscore_ops exynos4212_clock_syscore_ops = {
 =======
+<<<<<<< HEAD
+static struct syscore_ops exynos4212_clock_syscore_ops = {
+=======
 struct syscore_ops exynos4212_clock_syscore_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.suspend	= exynos4212_clock_suspend,
 	.resume		= exynos4212_clock_resume,
 };
@@ -1146,6 +1175,9 @@ void __init exynos4212_register_clocks(void)
 {
 	int ptr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* usbphy1 is removed */
 	exynos4_clkset_group_list[4] = NULL;
@@ -1153,6 +1185,8 @@ void __init exynos4212_register_clocks(void)
 	/* mout_mpll_user is used */
 	exynos4_clkset_group_list[6] = &clk_mout_mpll_user.clk;
 	exynos4_clkset_aclk_top_list[0] = &clk_mout_mpll_user.clk;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int tmp;
 
@@ -1164,12 +1198,16 @@ void __init exynos4212_register_clocks(void)
 	exynos4_clkset_aclk_top_list[0] = &exynos4212_clk_mout_mpll_user.clk;
 	exynos4_clkset_mout_mfc0_list[0] = &exynos4212_clk_mout_mpll_user.clk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	exynos4_clk_mout_mpll.reg_src.reg = EXYNOS4_CLKSRC_DMC;
 	exynos4_clk_mout_mpll.reg_src.shift = 12;
 	exynos4_clk_mout_mpll.reg_src.size = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (ptr = 0; ptr < ARRAY_SIZE(sysclks); ptr++)
 		s3c_register_clksrc(sysclks[ptr], 1);
 
@@ -1177,6 +1215,8 @@ void __init exynos4212_register_clocks(void)
 
 	s3c_register_clocks(init_clocks_off, ARRAY_SIZE(init_clocks_off));
 	s3c_disable_clocks(init_clocks_off, ARRAY_SIZE(init_clocks_off));
+<<<<<<< HEAD
+=======
 =======
 	exynos4_clk_aclk_200.sources = &exynos4212_clkset_aclk_200;
 	exynos4_clk_aclk_200.reg_src.reg = EXYNOS4_CLKSRC_TOP1;
@@ -1233,6 +1273,7 @@ void __init exynos4212_register_clocks(void)
 		__raw_writel(tmp, exynos4x12_cmu_config[ptr].reg);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	register_syscore_ops(&exynos4212_clock_syscore_ops);
 }

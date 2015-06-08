@@ -3,6 +3,9 @@
 #ifdef __KERNEL__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mnt_namespace;
 struct fs_struct;
 
@@ -13,6 +16,8 @@ extern void put_mnt_ns(struct mnt_namespace *ns);
 extern const struct file_operations proc_mounts_operations;
 extern const struct file_operations proc_mountinfo_operations;
 extern const struct file_operations proc_mountstats_operations;
+<<<<<<< HEAD
+=======
 =======
 #include <linux/path.h>
 #include <linux/seq_file.h>
@@ -49,6 +54,7 @@ extern const struct seq_operations mountinfo_op;
 extern const struct seq_operations mountstats_op;
 extern int mnt_had_events(struct proc_mounts *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 #endif

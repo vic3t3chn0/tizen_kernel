@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright 2008, 2011 Freescale Semiconductor, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright 2008, 2011 Freescale Semiconductor, Inc.
+=======
  * Copyright 2008 Freescale Semiconductor, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute  it and/or modify it
  * under  the terms of  the GNU General  Public License as published by the
@@ -16,12 +20,18 @@
 <<<<<<< HEAD
 /include/ "fsl/mpc8536si-pre.dtsi"
 =======
+<<<<<<< HEAD
+/include/ "fsl/mpc8536si-pre.dtsi"
+=======
 /dts-v1/;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 / {
 	model = "fsl,mpc8536ds";
 	compatible = "fsl,mpc8536ds";
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	#address-cells = <2>;
@@ -38,6 +48,7 @@
 		pci3 = &pci3;
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cpus {
 		#cpus = <1>;
@@ -57,6 +68,9 @@
 	};
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lbc: localbus@ffe05000 {
 		reg = <0 0xffe05000 0 0x1000>;
 
@@ -74,6 +88,8 @@
 		ranges = <0x02000000 0 0x80000000 0 0x80000000 0 0x10000000
 			  0x01000000 0 0x00000000 0 0xffc00000 0 0x00010000>;
 		clock-frequency = <66666666>;
+<<<<<<< HEAD
+=======
 =======
 	soc@ffe00000 {
 		#address-cells = <1>;
@@ -426,11 +442,15 @@
 		compatible = "fsl,mpc8540-pci";
 		device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		interrupt-map-mask = <0xf800 0x0 0x0 0x7>;
 		interrupt-map = <
 
 			/* IDSEL 0x11 J17 Slot 1 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			0x8800 0 0 1 &mpic 1 1 0 0
 			0x8800 0 0 2 &mpic 2 1 0 0
 			0x8800 0 0 3 &mpic 3 1 0 0
@@ -442,6 +462,8 @@
 		ranges = <0x02000000 0 0x98000000 0 0x98000000 0 0x08000000
 			  0x01000000 0 0x00000000 0 0xffc20000 0 0x00010000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 			0x8800 0 0 1 &mpic 1 1
 			0x8800 0 0 2 &mpic 2 1
@@ -487,6 +509,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x02000000 0 0x98000000
 				  0x02000000 0 0x98000000
 				  0 0x08000000
@@ -498,6 +521,12 @@
 	};
 
 	pci2: pcie@ffe0a000 {
+<<<<<<< HEAD
+		reg = <0 0xffe0a000 0 0x1000>;
+		ranges = <0x02000000 0 0x90000000 0 0x90000000 0 0x08000000
+			  0x01000000 0 0x00000000 0 0xffc10000 0 0x00010000>;
+		pcie@0 {
+=======
 <<<<<<< HEAD
 		reg = <0 0xffe0a000 0 0x1000>;
 		ranges = <0x02000000 0 0x90000000 0 0x90000000 0 0x08000000
@@ -530,6 +559,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x02000000 0 0x90000000
 				  0x02000000 0 0x90000000
 				  0 0x08000000
@@ -541,6 +571,12 @@
 	};
 
 	pci3: pcie@ffe0b000 {
+<<<<<<< HEAD
+		reg = <0 0xffe0b000 0 0x1000>;
+		ranges = <0x02000000 0 0xa0000000 0 0xa0000000 0 0x20000000
+			  0x01000000 0 0x00000000 0 0xffc30000 0 0x00010000>;
+		pcie@0 {
+=======
 <<<<<<< HEAD
 		reg = <0 0xffe0b000 0 0x1000>;
 		ranges = <0x02000000 0 0xa0000000 0 0xa0000000 0 0x20000000
@@ -574,6 +610,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x02000000 0 0xa0000000
 				  0x02000000 0 0xa0000000
 				  0 0x20000000
@@ -589,4 +626,10 @@
 /include/ "fsl/mpc8536si-post.dtsi"
 /include/ "mpc8536ds.dtsi"
 =======
+<<<<<<< HEAD
+
+/include/ "fsl/mpc8536si-post.dtsi"
+/include/ "mpc8536ds.dtsi"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

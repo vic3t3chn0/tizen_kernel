@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "rate.h"
 #include "ieee80211_i.h"
 #include "debugfs.h"
@@ -151,8 +155,12 @@ static const struct file_operations rcname_ops = {
 <<<<<<< HEAD
 	.open = simple_open,
 =======
+<<<<<<< HEAD
+	.open = simple_open,
+=======
 	.open = mac80211_open_file_generic,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = default_llseek,
 };
 #endif
@@ -168,8 +176,11 @@ static struct rate_control_ref *rate_control_alloc(const char *name,
 		goto fail_ref;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kref_init(&ref->kref);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ref->local = local;
 	ref->ops = ieee80211_rate_control_ops_get(name);
 	if (!ref->ops)
@@ -198,12 +209,17 @@ fail_ref:
 static void rate_control_free(struct rate_control_ref *ctrl_ref)
 {
 =======
+<<<<<<< HEAD
+static void rate_control_free(struct rate_control_ref *ctrl_ref)
+{
+=======
 static void rate_control_release(struct kref *kref)
 {
 	struct rate_control_ref *ctrl_ref;
 
 	ctrl_ref = container_of(kref, struct rate_control_ref, kref);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctrl_ref->ops->free(ctrl_ref->priv);
 
 #ifdef CONFIG_MAC80211_DEBUGFS
@@ -218,8 +234,12 @@ static void rate_control_release(struct kref *kref)
 <<<<<<< HEAD
 static bool rc_no_data_or_no_ack_use_min(struct ieee80211_tx_rate_control *txrc)
 =======
+<<<<<<< HEAD
+static bool rc_no_data_or_no_ack_use_min(struct ieee80211_tx_rate_control *txrc)
+=======
 static bool rc_no_data_or_no_ack(struct ieee80211_tx_rate_control *txrc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *skb = txrc->skb;
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
@@ -233,8 +253,14 @@ static bool rc_no_data_or_no_ack(struct ieee80211_tx_rate_control *txrc)
 			       IEEE80211_TX_CTL_USE_MINRATE)) ||
 		!ieee80211_is_data(fc);
 =======
+<<<<<<< HEAD
+	return (info->flags & (IEEE80211_TX_CTL_NO_ACK |
+			       IEEE80211_TX_CTL_USE_MINRATE)) ||
+		!ieee80211_is_data(fc);
+=======
 	return (info->flags & IEEE80211_TX_CTL_NO_ACK) || !ieee80211_is_data(fc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void rc_send_low_broadcast(s8 *idx, u32 basic_rates,
@@ -260,6 +286,9 @@ static void rc_send_low_broadcast(s8 *idx, u32 basic_rates,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline s8
 rate_lowest_non_cck_index(struct ieee80211_supported_band *sband,
 			  struct ieee80211_sta *sta)
@@ -281,8 +310,11 @@ rate_lowest_non_cck_index(struct ieee80211_supported_band *sband,
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool rate_control_send_low(struct ieee80211_sta *sta,
 			   void *priv_sta,
 			   struct ieee80211_tx_rate_control *txrc)
@@ -292,6 +324,9 @@ bool rate_control_send_low(struct ieee80211_sta *sta,
 	int mcast_rate;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sta || !priv_sta || rc_no_data_or_no_ack_use_min(txrc)) {
 		if ((sband->band != IEEE80211_BAND_2GHZ) ||
 		    !(info->flags & IEEE80211_TX_CTL_NO_CCK_RATE))
@@ -300,10 +335,13 @@ bool rate_control_send_low(struct ieee80211_sta *sta,
 		else
 			info->control.rates[0].idx =
 				rate_lowest_non_cck_index(txrc->sband, sta);
+<<<<<<< HEAD
+=======
 =======
 	if (!sta || !priv_sta || rc_no_data_or_no_ack(txrc)) {
 		info->control.rates[0].idx = rate_lowest_index(txrc->sband, sta);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info->control.rates[0].count =
 			(info->flags & IEEE80211_TX_CTL_NO_ACK) ?
 			1 : txrc->hw->max_rate_tries;
@@ -328,9 +366,14 @@ EXPORT_SYMBOL(rate_control_send_low);
 static bool rate_idx_match_legacy_mask(struct ieee80211_tx_rate *rate,
 				       int n_bitrates, u32 mask)
 =======
+<<<<<<< HEAD
+static bool rate_idx_match_legacy_mask(struct ieee80211_tx_rate *rate,
+				       int n_bitrates, u32 mask)
+=======
 static void rate_idx_match_mask(struct ieee80211_tx_rate *rate,
 				int n_bitrates, u32 mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int j;
 
@@ -342,8 +385,12 @@ static void rate_idx_match_mask(struct ieee80211_tx_rate *rate,
 <<<<<<< HEAD
 			return true;
 =======
+<<<<<<< HEAD
+			return true;
+=======
 			return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -353,6 +400,9 @@ static void rate_idx_match_mask(struct ieee80211_tx_rate *rate,
 			/* Okay, found a suitable rate. Use it. */
 			rate->idx = j;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return true;
 		}
 	}
@@ -459,8 +509,11 @@ static void rate_idx_match_mask(struct ieee80211_tx_rate *rate,
 
 		if (rate_idx_match_mcs_mask(&alt_rate, mcs_mask)) {
 			*rate = alt_rate;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		}
 	}
@@ -489,9 +542,15 @@ void rate_control_get_rate(struct ieee80211_sub_if_data *sdata,
 
 	if (sta && test_sta_flag(sta, WLAN_STA_RATE_CONTROL)) {
 =======
+<<<<<<< HEAD
+	u8 mcs_mask[IEEE80211_HT_MCS_MASK_LEN];
+
+	if (sta && test_sta_flag(sta, WLAN_STA_RATE_CONTROL)) {
+=======
 
 	if (sta) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ista = &sta->sta;
 		priv_sta = sta->rate_ctrl_priv;
 	}
@@ -517,7 +576,12 @@ void rate_control_get_rate(struct ieee80211_sub_if_data *sdata,
 	memcpy(mcs_mask, sdata->rc_rateidx_mcs_mask[info->band],
 	       sizeof(mcs_mask));
 =======
+<<<<<<< HEAD
+	memcpy(mcs_mask, sdata->rc_rateidx_mcs_mask[info->band],
+	       sizeof(mcs_mask));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mask != (1 << txrc->sband->n_bitrates) - 1) {
 		if (sta) {
 			/* Filter out rates that the STA does not support */
@@ -526,7 +590,12 @@ void rate_control_get_rate(struct ieee80211_sub_if_data *sdata,
 			for (i = 0; i < sizeof(mcs_mask); i++)
 				mcs_mask[i] &= sta->sta.ht_cap.mcs.rx_mask[i];
 =======
+<<<<<<< HEAD
+			for (i = 0; i < sizeof(mcs_mask); i++)
+				mcs_mask[i] &= sta->sta.ht_cap.mcs.rx_mask[i];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		/*
 		 * Make sure the rate index selected for each TX rate is
@@ -541,12 +610,17 @@ void rate_control_get_rate(struct ieee80211_sub_if_data *sdata,
 			rate_idx_match_mask(&info->control.rates[i], txrc,
 					    mask, mcs_mask);
 =======
+<<<<<<< HEAD
+			rate_idx_match_mask(&info->control.rates[i], txrc,
+					    mask, mcs_mask);
+=======
 			/* Rate masking supports only legacy rates for now */
 			if (info->control.rates[i].flags & IEEE80211_TX_RC_MCS)
 				continue;
 			rate_idx_match_mask(&info->control.rates[i],
 					    txrc->sband->n_bitrates, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -554,10 +628,15 @@ void rate_control_get_rate(struct ieee80211_sub_if_data *sdata,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ieee80211_init_rate_ctrl_alg(struct ieee80211_local *local,
 				 const char *name)
 {
 	struct rate_control_ref *ref;
+<<<<<<< HEAD
+=======
 =======
 struct rate_control_ref *rate_control_get(struct rate_control_ref *ref)
 {
@@ -575,6 +654,7 @@ int ieee80211_init_rate_ctrl_alg(struct ieee80211_local *local,
 {
 	struct rate_control_ref *ref, *old;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT_RTNL();
 
@@ -598,6 +678,10 @@ int ieee80211_init_rate_ctrl_alg(struct ieee80211_local *local,
 	WARN_ON(local->rate_ctrl);
 	local->rate_ctrl = ref;
 =======
+<<<<<<< HEAD
+	WARN_ON(local->rate_ctrl);
+	local->rate_ctrl = ref;
+=======
 	old = local->rate_ctrl;
 	local->rate_ctrl = ref;
 	if (old) {
@@ -605,6 +689,7 @@ int ieee80211_init_rate_ctrl_alg(struct ieee80211_local *local,
 		sta_info_flush(local, NULL);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wiphy_debug(local->hw.wiphy, "Selected rate control algorithm '%s'\n",
 		    ref->ops->name);
@@ -625,7 +710,11 @@ void rate_control_deinitialize(struct ieee80211_local *local)
 <<<<<<< HEAD
 	rate_control_free(ref);
 =======
+<<<<<<< HEAD
+	rate_control_free(ref);
+=======
 	rate_control_put(ref);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

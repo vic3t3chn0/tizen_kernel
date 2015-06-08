@@ -54,9 +54,21 @@ typedef struct IsdnCardState	IsdnCardState_t;
 typedef struct IsdnCard		IsdnCard_t;
 
 struct IsdnCard {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int typ;
+	int protocol;	/* EDSS1, 1TR6 or NI1 */
+	unsigned long para[4];
+=======
 	int		typ;
 	int 		protocol;	/* EDSS1, 1TR6 or NI1 */
 	unsigned long	para[4];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int		typ;
+	int 		protocol;	/* EDSS1, 1TR6 or NI1 */
+	unsigned long	para[4];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IsdnCardState_t	*cs;
 };
 

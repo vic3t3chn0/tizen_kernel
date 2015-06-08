@@ -8,7 +8,11 @@
 <<<<<<< HEAD
 #include <asm/fiq.h>
 =======
+<<<<<<< HEAD
+#include <asm/fiq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void iomd_ack_irq_a(struct irq_data *d)
 {
@@ -120,7 +124,12 @@ static struct irq_chip iomd_fiq_chip = {
 extern unsigned char rpc_default_fiq_start, rpc_default_fiq_end;
 
 =======
+<<<<<<< HEAD
+extern unsigned char rpc_default_fiq_start, rpc_default_fiq_end;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init rpc_init_irq(void)
 {
 	unsigned int irq, flags;
@@ -135,7 +144,13 @@ void __init rpc_init_irq(void)
 		&rpc_default_fiq_end - &rpc_default_fiq_start);
 
 =======
+<<<<<<< HEAD
+	set_fiq_handler(&rpc_default_fiq_start,
+		&rpc_default_fiq_end - &rpc_default_fiq_start);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (irq = 0; irq < NR_IRQS; irq++) {
 		flags = IRQF_VALID;
 
@@ -175,7 +190,11 @@ void __init rpc_init_irq(void)
 <<<<<<< HEAD
 	init_FIQ(FIQ_START);
 =======
+<<<<<<< HEAD
+	init_FIQ(FIQ_START);
+=======
 	init_FIQ();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

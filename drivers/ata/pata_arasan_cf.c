@@ -922,6 +922,18 @@ static int __devexit arasan_cf_remove(struct platform_device *pdev)
 #ifdef CONFIG_PM
 static int arasan_cf_suspend(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ata_host *host = dev_get_drvdata(dev);
+	struct arasan_cf_dev *acdev = host->ports[0]->private_data;
+
+	if (acdev->dma_chan)
+		acdev->dma_chan->device->device_control(acdev->dma_chan,
+				DMA_TERMINATE_ALL, 0);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct platform_device *pdev = to_platform_device(dev);
 	struct ata_host *host = dev_get_drvdata(&pdev->dev);
 	struct arasan_cf_dev *acdev = host->ports[0]->private_data;
@@ -931,14 +943,27 @@ static int arasan_cf_suspend(struct device *dev)
 				DMA_TERMINATE_ALL, 0);
 		dma_release_channel(acdev->dma_chan);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cf_exit(acdev);
 	return ata_host_suspend(host, PMSG_SUSPEND);
 }
 
 static int arasan_cf_resume(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ata_host *host = dev_get_drvdata(dev);
+=======
 	struct platform_device *pdev = to_platform_device(dev);
 	struct ata_host *host = dev_get_drvdata(&pdev->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct platform_device *pdev = to_platform_device(dev);
+	struct ata_host *host = dev_get_drvdata(&pdev->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct arasan_cf_dev *acdev = host->ports[0]->private_data;
 
 	cf_init(acdev);
@@ -946,12 +971,24 @@ static int arasan_cf_resume(struct device *dev)
 
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+
+static SIMPLE_DEV_PM_OPS(arasan_cf_pm_ops, arasan_cf_suspend, arasan_cf_resume);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct dev_pm_ops arasan_cf_pm_ops = {
 	.suspend	= arasan_cf_suspend,
 	.resume		= arasan_cf_resume,
 };
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct platform_driver arasan_cf_driver = {
 	.probe		= arasan_cf_probe,
@@ -959,6 +996,16 @@ static struct platform_driver arasan_cf_driver = {
 	.driver		= {
 		.name	= DRIVER_NAME,
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.pm	= &arasan_cf_pm_ops,
+	},
+};
+
+module_platform_driver(arasan_cf_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 		.pm		= &arasan_cf_pm_ops,
 #endif
@@ -976,6 +1023,10 @@ static void __exit arasan_cf_exit(void)
 	platform_driver_unregister(&arasan_cf_driver);
 }
 module_exit(arasan_cf_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Viresh Kumar <viresh.kumar@st.com>");
 MODULE_DESCRIPTION("Arasan ATA Compact Flash driver");

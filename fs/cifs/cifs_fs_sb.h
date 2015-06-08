@@ -47,7 +47,12 @@
 #define CIFS_MOUNT_CIFS_BACKUPUID 0x200000 /* backup intent bit for a user */
 #define CIFS_MOUNT_CIFS_BACKUPGID 0x400000 /* backup intent bit for a group */
 =======
+<<<<<<< HEAD
+#define CIFS_MOUNT_CIFS_BACKUPUID 0x200000 /* backup intent bit for a user */
+#define CIFS_MOUNT_CIFS_BACKUPGID 0x400000 /* backup intent bit for a group */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct cifs_sb_info {
 	struct rb_root tlink_tree;
@@ -61,14 +66,20 @@ struct cifs_sb_info {
 	uid_t	mnt_uid;
 	gid_t	mnt_gid;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uid_t	mnt_backupuid;
 	gid_t	mnt_backupgid;
 	umode_t	mnt_file_mode;
 	umode_t	mnt_dir_mode;
+<<<<<<< HEAD
+=======
 =======
 	mode_t	mnt_file_mode;
 	mode_t	mnt_dir_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int mnt_cifs_flags;
 	char   *mountdata; /* options received at mount time or via DFS refs */
 	struct backing_dev_info bdi;

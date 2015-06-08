@@ -12,10 +12,16 @@
 #include <plat/pincfg.h>
 #include <plat/gpio-nomadik.h>
 =======
+<<<<<<< HEAD
+
+#include <plat/pincfg.h>
+#include <plat/gpio-nomadik.h>
+=======
 #include <linux/gpio.h>
 
 #include <plat/pincfg.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/db5500-regs.h>
 #include <plat/ste_dma40.h>
 
@@ -73,11 +79,16 @@ static struct mmci_platform_data u5500_sdi0_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init u5500_sdi_init(struct device *parent)
 {
 	nmk_config_pins(u5500_sdi_pins, ARRAY_SIZE(u5500_sdi_pins));
 
 	db5500_add_sdi0(parent, &u5500_sdi0_data);
+<<<<<<< HEAD
+=======
 =======
 void __init u5500_sdi_init(void)
 {
@@ -85,4 +96,5 @@ void __init u5500_sdi_init(void)
 
 	db5500_add_sdi0(&u5500_sdi0_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

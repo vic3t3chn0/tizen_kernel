@@ -140,9 +140,21 @@ static struct zl10353_config au6610_zl10353_config = {
 
 static int au6610_zl10353_frontend_attach(struct dvb_usb_adapter *adap)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	adap->fe_adap[0].fe = dvb_attach(zl10353_attach, &au6610_zl10353_config,
+		&adap->dev->i2c_adap);
+	if (adap->fe_adap[0].fe == NULL)
+=======
 	adap->fe = dvb_attach(zl10353_attach, &au6610_zl10353_config,
 		&adap->dev->i2c_adap);
 	if (adap->fe == NULL)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	adap->fe = dvb_attach(zl10353_attach, &au6610_zl10353_config,
+		&adap->dev->i2c_adap);
+	if (adap->fe == NULL)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	return 0;
@@ -155,7 +167,15 @@ static struct qt1010_config au6610_qt1010_config = {
 static int au6610_qt1010_tuner_attach(struct dvb_usb_adapter *adap)
 {
 	return dvb_attach(qt1010_attach,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			  adap->fe_adap[0].fe, &adap->dev->i2c_adap,
+=======
 			  adap->fe, &adap->dev->i2c_adap,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			  adap->fe, &adap->dev->i2c_adap,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  &au6610_qt1010_config) == NULL ? -ENODEV : 0;
 }
 
@@ -204,6 +224,14 @@ static struct dvb_usb_device_properties au6610_properties = {
 	.num_adapters = 1,
 	.adapter = {
 		{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.num_frontends = 1,
+		.fe = {{
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.frontend_attach  = au6610_zl10353_frontend_attach,
 			.tuner_attach     = au6610_qt1010_tuner_attach,
 
@@ -219,6 +247,13 @@ static struct dvb_usb_device_properties au6610_properties = {
 					}
 				}
 			},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	},
 
@@ -241,6 +276,12 @@ static struct usb_driver au6610_driver = {
 	.id_table   = au6610_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(au6610_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* module stuff */
 static int __init au6610_module_init(void)
 {
@@ -261,6 +302,10 @@ static void __exit au6610_module_exit(void)
 
 module_init(au6610_module_init);
 module_exit(au6610_module_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("Driver for Alcor Micro AU6610 DVB-T USB2.0");

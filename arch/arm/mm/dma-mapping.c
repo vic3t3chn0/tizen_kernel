@@ -18,6 +18,9 @@
 #include <linux/device.h>
 #include <linux/dma-mapping.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-contiguous.h>
 #include <linux/highmem.h>
 #include <linux/memblock.h>
@@ -25,9 +28,12 @@
 #include <linux/iommu.h>
 #include <linux/io.h>
 #include <linux/vmalloc.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/highmem.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/memory.h>
 #include <asm/highmem.h>
@@ -35,6 +41,9 @@
 #include <asm/tlbflush.h>
 #include <asm/sizes.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 #include <asm/system_info.h>
@@ -145,12 +154,15 @@ EXPORT_SYMBOL(arm_dma_ops);
 static u64 get_coherent_dma_mask(struct device *dev)
 {
 	u64 mask = (u64)arm_dma_limit;
+<<<<<<< HEAD
+=======
 =======
 
 static u64 get_coherent_dma_mask(struct device *dev)
 {
 	u64 mask = ISA_DMA_THRESHOLD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dev) {
 		mask = dev->coherent_dma_mask;
@@ -165,16 +177,22 @@ static u64 get_coherent_dma_mask(struct device *dev)
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((~mask) & (u64)arm_dma_limit) {
 			dev_warn(dev, "coherent DMA mask %#llx is smaller "
 				 "than system GFP_DMA mask %#llx\n",
 				 mask, (u64)arm_dma_limit);
+<<<<<<< HEAD
+=======
 =======
 		if ((~mask) & ISA_DMA_THRESHOLD) {
 			dev_warn(dev, "coherent DMA mask %#llx is smaller "
 				 "than system GFP_DMA mask %#llx\n",
 				 mask, (unsigned long long)ISA_DMA_THRESHOLD);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 0;
 		}
 	}
@@ -183,6 +201,9 @@ static u64 get_coherent_dma_mask(struct device *dev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __dma_clear_buffer(struct page *page, size_t size)
 {
 	/*
@@ -211,8 +232,11 @@ static void __dma_clear_buffer(struct page *page, size_t size)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Allocate a DMA buffer for 'dev' of size 'size' using the
  * specified gfp mask.  Note that 'size' must be page aligned.
@@ -221,6 +245,8 @@ static struct page *__dma_alloc_buffer(struct device *dev, size_t size, gfp_t gf
 {
 	unsigned long order = get_order(size);
 	struct page *page, *p, *e;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	void *ptr;
@@ -241,6 +267,7 @@ static struct page *__dma_alloc_buffer(struct device *dev, size_t size, gfp_t gf
 	if (mask < 0xffffffffULL)
 		gfp |= GFP_DMA;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	page = alloc_pages(gfp, order);
 	if (!page)
@@ -256,6 +283,9 @@ static struct page *__dma_alloc_buffer(struct device *dev, size_t size, gfp_t gf
 <<<<<<< HEAD
 	__dma_clear_buffer(page, size);
 =======
+<<<<<<< HEAD
+	__dma_clear_buffer(page, size);
+=======
 	/*
 	 * Ensure that the allocated pages are zeroed, and that any data
 	 * lurking in the kernel direct-mapped region is invalidated.
@@ -265,6 +295,7 @@ static struct page *__dma_alloc_buffer(struct device *dev, size_t size, gfp_t gf
 	dmac_flush_range(ptr, ptr + size);
 	outer_flush_range(__pa(ptr), __pa(ptr) + size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return page;
 }
@@ -284,6 +315,9 @@ static void __dma_free_buffer(struct page *page, size_t size)
 
 #ifdef CONFIG_MMU
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HUGETLB_PAGE
 #error ARM Coherent DMA allocator does not (yet) support huge TLB
 #endif
@@ -511,6 +545,8 @@ static void *__alloc_from_pool(size_t size, struct page **ret_page)
 
 	if (!pool->vaddr) {
 		WARN(1, "coherent pool not initialised!\n");
+<<<<<<< HEAD
+=======
 =======
 /* Sanity check size */
 #if (CONSISTENT_DMA_SIZE % SZ_2M)
@@ -597,11 +633,15 @@ __dma_alloc_remap(struct page *page, size_t size, gfp_t gfp, pgprot_t prot)
 		printk(KERN_ERR "%s: not initialised\n", __func__);
 		dump_stack();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Align the region allocation - allocations from pool are rather
 	 * small, so align them to their order in pages, minimum is a page
 	 * size. This helps reduce fragmentation of the DMA space.
@@ -786,6 +826,8 @@ static void *__dma_alloc(struct device *dev, size_t size, dma_addr_t *handle,
 
 	if (addr)
 		*handle = pfn_to_dma(dev, page_to_pfn(page));
+<<<<<<< HEAD
+=======
 =======
 	 * Align the virtual region allocation - maximum alignment is
 	 * a section size, minimum is a page size.  This helps reduce
@@ -909,6 +951,7 @@ __dma_alloc(struct device *dev, size_t size, dma_addr_t *handle, gfp_t gfp,
 	else
 		__dma_free_buffer(page, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return addr;
 }
@@ -918,6 +961,9 @@ __dma_alloc(struct device *dev, size_t size, dma_addr_t *handle, gfp_t gfp,
  * virtual and bus address for that space.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void *arm_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle,
 		    gfp_t gfp, struct dma_attrs *attrs)
 {
@@ -925,17 +971,23 @@ void *arm_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle,
 	void *memory;
 	bool no_kernel_mapping = dma_get_attr(DMA_ATTR_NO_KERNEL_MAPPING,
 					attrs);
+<<<<<<< HEAD
+=======
 =======
 void *
 dma_alloc_coherent(struct device *dev, size_t size, dma_addr_t *handle, gfp_t gfp)
 {
 	void *memory;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dma_alloc_from_coherent(dev, size, handle, &memory))
 		return memory;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return __dma_alloc(dev, size, handle, gfp, prot,
 			   __builtin_return_address(0), no_kernel_mapping);
 }
@@ -959,6 +1011,8 @@ int arm_dma_mmap(struct device *dev, struct vm_area_struct *vma,
 			      pfn + vma->vm_pgoff,
 			      vma->vm_end - vma->vm_start,
 			      vma->vm_page_prot);
+<<<<<<< HEAD
+=======
 =======
 	return __dma_alloc(dev, size, handle, gfp,
 			   pgprot_dmacoherent(pgprot_kernel));
@@ -1002,12 +1056,16 @@ static int dma_mmap(struct device *dev, struct vm_area_struct *vma,
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* CONFIG_MMU */
 
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Free a buffer as defined by the above mapping.
  */
@@ -1015,6 +1073,8 @@ void arm_dma_free(struct device *dev, size_t size, void *cpu_addr,
 		  dma_addr_t handle, struct dma_attrs *attrs)
 {
 	struct page *page = pfn_to_page(dma_to_pfn(dev, handle));
+<<<<<<< HEAD
+=======
 =======
 int dma_mmap_coherent(struct device *dev, struct vm_area_struct *vma,
 		      void *cpu_addr, dma_addr_t dma_addr, size_t size)
@@ -1040,6 +1100,7 @@ void dma_free_coherent(struct device *dev, size_t size, void *cpu_addr, dma_addr
 {
 	WARN_ON(irqs_disabled());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dma_release_from_coherent(dev, get_order(size), cpu_addr))
 		return;
@@ -1047,6 +1108,9 @@ void dma_free_coherent(struct device *dev, size_t size, void *cpu_addr, dma_addr
 	size = PAGE_ALIGN(size);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (arch_is_coherent() || nommu()) {
 		__dma_free_buffer(page, size);
 	} else if (__free_from_pool(cpu_addr, size)) {
@@ -1069,6 +1133,8 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 {
 	unsigned long pfn;
 	size_t left = size;
+<<<<<<< HEAD
+=======
 =======
 	if (!arch_is_coherent())
 		__dma_free_remap(cpu_addr, size);
@@ -1125,6 +1191,7 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 	unsigned long pfn;
 	size_t left = size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pfn = page_to_pfn(page) + offset / PAGE_SIZE;
 	offset %= PAGE_SIZE;
@@ -1145,6 +1212,9 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 			if (len + offset > PAGE_SIZE)
 				len = PAGE_SIZE - offset;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (cache_is_vipt_nonaliasing()) {
 				vaddr = kmap_atomic(page);
@@ -1156,6 +1226,8 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 					op(vaddr + offset, len, dir);
 					kunmap_high(page);
 				}
+<<<<<<< HEAD
+=======
 =======
 			vaddr = kmap_high_get(page);
 			if (vaddr) {
@@ -1168,6 +1240,7 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 				op(vaddr + offset, len, dir);
 				kunmap_atomic(vaddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		} else {
 			vaddr = page_address(page) + offset;
@@ -1180,6 +1253,9 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Make an area consistent for devices.
  * Note: Drivers should NOT use this function directly, as it will break
@@ -1187,9 +1263,12 @@ static void dma_cache_maint_page(struct page *page, unsigned long offset,
  * Use the driver DMA support - see dma-mapping.h (dma_sync_*)
  */
 static void __dma_page_cpu_to_dev(struct page *page, unsigned long off,
+<<<<<<< HEAD
+=======
 =======
 void ___dma_page_cpu_to_dev(struct page *page, unsigned long off,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t size, enum dma_data_direction dir)
 {
 	unsigned long paddr;
@@ -1208,10 +1287,15 @@ void ___dma_page_cpu_to_dev(struct page *page, unsigned long off,
 
 static void __dma_page_dev_to_cpu(struct page *page, unsigned long off,
 =======
+<<<<<<< HEAD
+
+static void __dma_page_dev_to_cpu(struct page *page, unsigned long off,
+=======
 EXPORT_SYMBOL(___dma_page_cpu_to_dev);
 
 void ___dma_page_dev_to_cpu(struct page *page, unsigned long off,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t size, enum dma_data_direction dir)
 {
 	unsigned long paddr = page_to_phys(page) + off;
@@ -1234,11 +1318,17 @@ void ___dma_page_dev_to_cpu(struct page *page, unsigned long off,
 /**
  * arm_dma_map_sg - map a set of SG buffers for streaming mode DMA
 =======
+<<<<<<< HEAD
+
+/**
+ * arm_dma_map_sg - map a set of SG buffers for streaming mode DMA
+=======
 EXPORT_SYMBOL(___dma_page_dev_to_cpu);
 
 /**
  * dma_map_sg - map a set of SG buffers for streaming mode DMA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: valid struct device pointer, or NULL for ISA and EISA-like devices
  * @sg: list of buffers
  * @nents: number of buffers to map
@@ -1254,6 +1344,9 @@ EXPORT_SYMBOL(___dma_page_dev_to_cpu);
  * here.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int arm_dma_map_sg(struct device *dev, struct scatterlist *sg, int nents,
 		enum dma_data_direction dir, struct dma_attrs *attrs)
 {
@@ -1270,6 +1363,8 @@ int arm_dma_map_sg(struct device *dev, struct scatterlist *sg, int nents,
 		if (dma_mapping_error(dev, s->dma_address))
 			goto bad_mapping;
 	}
+<<<<<<< HEAD
+=======
 =======
 int dma_map_sg(struct device *dev, struct scatterlist *sg, int nents,
 		enum dma_data_direction dir)
@@ -1287,17 +1382,23 @@ int dma_map_sg(struct device *dev, struct scatterlist *sg, int nents,
 	}
 	debug_dma_map_sg(dev, sg, nents, nents, dir);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return nents;
 
  bad_mapping:
 	for_each_sg(sg, s, i, j)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ops->unmap_page(dev, sg_dma_address(s), sg_dma_len(s), dir, attrs);
 	return 0;
 }
 
 /**
  * arm_dma_unmap_sg - unmap a set of SG buffers mapped by dma_map_sg
+<<<<<<< HEAD
+=======
 =======
 		__dma_unmap_page(dev, sg_dma_address(s), sg_dma_len(s), dir);
 	return 0;
@@ -1307,6 +1408,7 @@ EXPORT_SYMBOL(dma_map_sg);
 /**
  * dma_unmap_sg - unmap a set of SG buffers mapped by dma_map_sg
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: valid struct device pointer, or NULL for ISA and EISA-like devices
  * @sg: list of buffers
  * @nents: number of buffers to unmap (same as was passed to dma_map_sg)
@@ -1316,6 +1418,9 @@ EXPORT_SYMBOL(dma_map_sg);
  * rules concerning calls here are the same as for dma_unmap_single().
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void arm_dma_unmap_sg(struct device *dev, struct scatterlist *sg, int nents,
 		enum dma_data_direction dir, struct dma_attrs *attrs)
 {
@@ -1330,6 +1435,8 @@ void arm_dma_unmap_sg(struct device *dev, struct scatterlist *sg, int nents,
 
 /**
  * arm_dma_sync_sg_for_cpu
+<<<<<<< HEAD
+=======
 =======
 void dma_unmap_sg(struct device *dev, struct scatterlist *sg, int nents,
 		enum dma_data_direction dir)
@@ -1347,12 +1454,16 @@ EXPORT_SYMBOL(dma_unmap_sg);
 /**
  * dma_sync_sg_for_cpu
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: valid struct device pointer, or NULL for ISA and EISA-like devices
  * @sg: list of buffers
  * @nents: number of buffers to map (returned from dma_map_sg)
  * @dir: DMA transfer direction (same as was passed to dma_map_sg)
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void arm_dma_sync_sg_for_cpu(struct device *dev, struct scatterlist *sg,
 			int nents, enum dma_data_direction dir)
 {
@@ -1367,6 +1478,8 @@ void arm_dma_sync_sg_for_cpu(struct device *dev, struct scatterlist *sg,
 
 /**
  * arm_dma_sync_sg_for_device
+<<<<<<< HEAD
+=======
 =======
 void dma_sync_sg_for_cpu(struct device *dev, struct scatterlist *sg,
 			int nents, enum dma_data_direction dir)
@@ -1390,12 +1503,16 @@ EXPORT_SYMBOL(dma_sync_sg_for_cpu);
 /**
  * dma_sync_sg_for_device
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev: valid struct device pointer, or NULL for ISA and EISA-like devices
  * @sg: list of buffers
  * @nents: number of buffers to map (returned from dma_map_sg)
  * @dir: DMA transfer direction (same as was passed to dma_map_sg)
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void arm_dma_sync_sg_for_device(struct device *dev, struct scatterlist *sg,
 			int nents, enum dma_data_direction dir)
 {
@@ -1431,6 +1548,8 @@ static int arm_dma_set_mask(struct device *dev, u64 dma_mask)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 void dma_sync_sg_for_device(struct device *dev, struct scatterlist *sg,
 			int nents, enum dma_data_direction dir)
@@ -1451,6 +1570,7 @@ void dma_sync_sg_for_device(struct device *dev, struct scatterlist *sg,
 }
 EXPORT_SYMBOL(dma_sync_sg_for_device);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PREALLOC_DMA_DEBUG_ENTRIES	4096
 
@@ -1461,6 +1581,9 @@ static int __init dma_debug_do_init(void)
 }
 fs_initcall(dma_debug_do_init);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_ARM_DMA_USE_IOMMU
 
@@ -2116,5 +2239,8 @@ int arm_iommu_attach_device(struct device *dev,
 }
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -51,8 +51,12 @@ static int
 <<<<<<< HEAD
 v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, umode_t omode,
 =======
+<<<<<<< HEAD
+v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, umode_t omode,
+=======
 v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    dev_t rdev);
 
 /**
@@ -260,8 +264,12 @@ static int
 <<<<<<< HEAD
 v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, umode_t omode,
 =======
+<<<<<<< HEAD
+v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, umode_t omode,
+=======
 v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct nameidata *nd)
 {
 	int err = 0;
@@ -270,8 +278,12 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *name = NULL;
 	struct file *filp;
 	struct p9_qid qid;
@@ -287,9 +299,14 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 	if (nd)
 		flags = nd->intent.open.flags;
 =======
+<<<<<<< HEAD
+	if (nd)
+		flags = nd->intent.open.flags;
+=======
 	if (nd && nd->flags & LOOKUP_OPEN)
 		flags = nd->intent.open.flags - 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else {
 		/*
 		 * create call without LOOKUP_OPEN is due
@@ -304,9 +321,14 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 	p9_debug(P9_DEBUG_VFS, "name:%s flags:0x%x mode:0x%hx\n",
 		 name, flags, omode);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "name:%s flags:0x%x mode:0x%hx\n",
+		 name, flags, omode);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "v9fs_vfs_create_dotl: name:%s flags:0x%x "
 			"mode:0x%x\n", name, flags, omode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dfid = v9fs_fid_lookup(dentry->d_parent);
 	if (IS_ERR(dfid)) {
@@ -314,8 +336,12 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 
@@ -326,8 +352,12 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "p9_client_walk failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 
@@ -341,9 +371,14 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 		p9_debug(P9_DEBUG_VFS, "Failed to get acl values in creat %d\n",
 			 err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "Failed to get acl values in creat %d\n",
+			 err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS,
 			   "Failed to get acl values in creat %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 	err = p9_client_create_dotl(ofid, name, v9fs_open_to_dotl_flags(flags),
@@ -353,10 +388,15 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 		p9_debug(P9_DEBUG_VFS, "p9_client_open_dotl failed in creat %d\n",
 			 err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "p9_client_open_dotl failed in creat %d\n",
+			 err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS,
 				"p9_client_open_dotl failed in creat %d\n",
 				err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 	v9fs_invalidate_inode_attr(dir);
@@ -368,8 +408,12 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "p9_client_walk failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fid = NULL;
 		goto error;
 	}
@@ -379,8 +423,12 @@ v9fs_vfs_create_dotl(struct inode *dir, struct dentry *dentry, int omode,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "inode creation failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 	err = v9fs_fid_add(dentry, fid);
@@ -446,8 +494,12 @@ static int v9fs_vfs_mkdir_dotl(struct inode *dir,
 <<<<<<< HEAD
 			       struct dentry *dentry, umode_t omode)
 =======
+<<<<<<< HEAD
+			       struct dentry *dentry, umode_t omode)
+=======
 			       struct dentry *dentry, int omode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	struct v9fs_session_info *v9ses;
@@ -457,8 +509,12 @@ static int v9fs_vfs_mkdir_dotl(struct inode *dir,
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode;
 	struct p9_qid qid;
 	struct dentry *dir_dentry;
@@ -467,8 +523,12 @@ static int v9fs_vfs_mkdir_dotl(struct inode *dir,
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "name %s\n", dentry->d_name.name);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "name %s\n", dentry->d_name.name);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "name %s\n", dentry->d_name.name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = 0;
 	v9ses = v9fs_inode2v9ses(dir);
 
@@ -483,8 +543,12 @@ static int v9fs_vfs_mkdir_dotl(struct inode *dir,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dfid = NULL;
 		goto error;
 	}
@@ -498,9 +562,14 @@ static int v9fs_vfs_mkdir_dotl(struct inode *dir,
 		p9_debug(P9_DEBUG_VFS, "Failed to get acl values in mkdir %d\n",
 			 err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "Failed to get acl values in mkdir %d\n",
+			 err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS,
 			   "Failed to get acl values in mkdir %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 	name = (char *) dentry->d_name.name;
@@ -517,9 +586,14 @@ static int v9fs_vfs_mkdir_dotl(struct inode *dir,
 			p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
 				 err);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
+				 err);
+=======
 			P9_DPRINTK(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
 				err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fid = NULL;
 			goto error;
 		}
@@ -531,9 +605,14 @@ static int v9fs_vfs_mkdir_dotl(struct inode *dir,
 			p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n",
 				 err);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n",
+				 err);
+=======
 			P9_DPRINTK(P9_DEBUG_VFS, "inode creation failed %d\n",
 				err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto error;
 		}
 		err = v9fs_fid_add(dentry, fid);
@@ -577,8 +656,12 @@ v9fs_vfs_getattr_dotl(struct vfsmount *mnt, struct dentry *dentry,
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "dentry: %p\n", dentry);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "dentry: %p\n", dentry);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "dentry: %p\n", dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = -EPERM;
 	v9ses = v9fs_dentry2v9ses(dentry);
 	if (v9ses->cache == CACHE_LOOSE || v9ses->cache == CACHE_FSCACHE) {
@@ -607,6 +690,9 @@ v9fs_vfs_getattr_dotl(struct vfsmount *mnt, struct dentry *dentry,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Attribute flags.
  */
@@ -647,8 +733,11 @@ static int v9fs_mapped_iattr_valid(int iattr_valid)
 	return p9_iattr_valid;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * v9fs_vfs_setattr_dotl - set file metadata
  * @dentry: file whose metadata to set
@@ -666,8 +755,12 @@ int v9fs_vfs_setattr_dotl(struct dentry *dentry, struct iattr *iattr)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "\n");
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "\n");
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	retval = inode_change_ok(dentry->d_inode, iattr);
 	if (retval)
@@ -676,8 +769,12 @@ int v9fs_vfs_setattr_dotl(struct dentry *dentry, struct iattr *iattr)
 <<<<<<< HEAD
 	p9attr.valid = v9fs_mapped_iattr_valid(iattr->ia_valid);
 =======
+<<<<<<< HEAD
+	p9attr.valid = v9fs_mapped_iattr_valid(iattr->ia_valid);
+=======
 	p9attr.valid = iattr->ia_valid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p9attr.mode = iattr->ia_mode;
 	p9attr.uid = iattr->ia_uid;
 	p9attr.gid = iattr->ia_gid;
@@ -731,8 +828,12 @@ v9fs_stat2inode_dotl(struct p9_stat_dotl *stat, struct inode *inode)
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct v9fs_inode *v9inode = V9FS_I(inode);
 
 	if ((stat->st_result_mask & P9_STATS_BASIC) == P9_STATS_BASIC) {
@@ -747,8 +848,12 @@ v9fs_stat2inode_dotl(struct p9_stat_dotl *stat, struct inode *inode)
 <<<<<<< HEAD
 		set_nlink(inode, stat->st_nlink);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, stat->st_nlink);
+=======
 		inode->i_nlink = stat->st_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		mode = stat->st_mode & S_IALLUGO;
 		mode |= inode->i_mode & ~S_IALLUGO;
@@ -777,8 +882,12 @@ v9fs_stat2inode_dotl(struct p9_stat_dotl *stat, struct inode *inode)
 <<<<<<< HEAD
 			set_nlink(inode, stat->st_nlink);
 =======
+<<<<<<< HEAD
+			set_nlink(inode, stat->st_nlink);
+=======
 			inode->i_nlink = stat->st_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (stat->st_result_mask & P9_STATS_MODE) {
 			inode->i_mode = stat->st_mode;
 			if ((S_ISBLK(inode->i_mode)) ||
@@ -819,9 +928,13 @@ v9fs_vfs_symlink_dotl(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "%lu,%s,%s\n", dir->i_ino, name, symname);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "%lu,%s,%s\n", dir->i_ino, name, symname);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "v9fs_vfs_symlink_dotl : %lu,%s,%s\n",
 			dir->i_ino, name, symname);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	v9ses = v9fs_inode2v9ses(dir);
 
 	dfid = v9fs_fid_lookup(dentry->d_parent);
@@ -830,8 +943,12 @@ v9fs_vfs_symlink_dotl(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 
@@ -844,8 +961,12 @@ v9fs_vfs_symlink_dotl(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "p9_client_symlink failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "p9_client_symlink failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "p9_client_symlink failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 
@@ -859,9 +980,14 @@ v9fs_vfs_symlink_dotl(struct inode *dir, struct dentry *dentry,
 			p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
 				 err);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
+				 err);
+=======
 			P9_DPRINTK(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
 					err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fid = NULL;
 			goto error;
 		}
@@ -874,9 +1000,14 @@ v9fs_vfs_symlink_dotl(struct inode *dir, struct dentry *dentry,
 			p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n",
 				 err);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n",
+				 err);
+=======
 			P9_DPRINTK(P9_DEBUG_VFS, "inode creation failed %d\n",
 					err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto error;
 		}
 		err = v9fs_fid_add(dentry, fid);
@@ -923,10 +1054,15 @@ v9fs_vfs_link_dotl(struct dentry *old_dentry, struct inode *dir,
 	p9_debug(P9_DEBUG_VFS, "dir ino: %lu, old_name: %s, new_name: %s\n",
 		 dir->i_ino, old_dentry->d_name.name, dentry->d_name.name);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "dir ino: %lu, old_name: %s, new_name: %s\n",
+		 dir->i_ino, old_dentry->d_name.name, dentry->d_name.name);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "dir ino: %lu, old_name: %s, new_name: %s\n",
 			dir->i_ino, old_dentry->d_name.name,
 			dentry->d_name.name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	v9ses = v9fs_inode2v9ses(dir);
 	dir_dentry = v9fs_dentry_from_dir_inode(dir);
@@ -946,8 +1082,12 @@ v9fs_vfs_link_dotl(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "p9_client_link failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "p9_client_link failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "p9_client_link failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 
@@ -979,8 +1119,12 @@ static int
 <<<<<<< HEAD
 v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, umode_t omode,
 =======
+<<<<<<< HEAD
+v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, umode_t omode,
+=======
 v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_t rdev)
 {
 	int err;
@@ -989,8 +1133,12 @@ v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct v9fs_session_info *v9ses;
 	struct p9_fid *fid = NULL, *dfid = NULL;
 	struct inode *inode;
@@ -1003,10 +1151,16 @@ v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 		 dir->i_ino, dentry->d_name.name, omode,
 		 MAJOR(rdev), MINOR(rdev));
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, " %lu,%s mode: %hx MAJOR: %u MINOR: %u\n",
+		 dir->i_ino, dentry->d_name.name, omode,
+		 MAJOR(rdev), MINOR(rdev));
+=======
 	P9_DPRINTK(P9_DEBUG_VFS,
 		" %lu,%s mode: %x MAJOR: %u MINOR: %u\n", dir->i_ino,
 		dentry->d_name.name, omode, MAJOR(rdev), MINOR(rdev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!new_valid_dev(rdev))
 		return -EINVAL;
@@ -1019,8 +1173,12 @@ v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS, "fid lookup failed %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dfid = NULL;
 		goto error;
 	}
@@ -1034,9 +1192,14 @@ v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 		p9_debug(P9_DEBUG_VFS, "Failed to get acl values in mknod %d\n",
 			 err);
 =======
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_VFS, "Failed to get acl values in mknod %d\n",
+			 err);
+=======
 		P9_DPRINTK(P9_DEBUG_VFS,
 			   "Failed to get acl values in mknod %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 	name = (char *) dentry->d_name.name;
@@ -1055,9 +1218,14 @@ v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 			p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
 				 err);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
+				 err);
+=======
 			P9_DPRINTK(P9_DEBUG_VFS, "p9_client_walk failed %d\n",
 				err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fid = NULL;
 			goto error;
 		}
@@ -1069,9 +1237,14 @@ v9fs_vfs_mknod_dotl(struct inode *dir, struct dentry *dentry, int omode,
 			p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n",
 				 err);
 =======
+<<<<<<< HEAD
+			p9_debug(P9_DEBUG_VFS, "inode creation failed %d\n",
+				 err);
+=======
 			P9_DPRINTK(P9_DEBUG_VFS, "inode creation failed %d\n",
 				err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto error;
 		}
 		err = v9fs_fid_add(dentry, fid);
@@ -1118,8 +1291,12 @@ v9fs_vfs_follow_link_dotl(struct dentry *dentry, struct nameidata *nd)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_VFS, "%s\n", dentry->d_name.name);
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_VFS, "%s\n", dentry->d_name.name);
+=======
 	P9_DPRINTK(P9_DEBUG_VFS, "%s\n", dentry->d_name.name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!link) {
 		link = ERR_PTR(-ENOMEM);
@@ -1194,8 +1371,12 @@ const struct inode_operations v9fs_dir_inode_operations_dotl = {
 <<<<<<< HEAD
 	.get_acl = v9fs_iop_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = v9fs_iop_get_acl,
+=======
 	.check_acl = v9fs_check_acl,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const struct inode_operations v9fs_file_inode_operations_dotl = {
@@ -1208,8 +1389,12 @@ const struct inode_operations v9fs_file_inode_operations_dotl = {
 <<<<<<< HEAD
 	.get_acl = v9fs_iop_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl = v9fs_iop_get_acl,
+=======
 	.check_acl = v9fs_check_acl,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const struct inode_operations v9fs_symlink_inode_operations_dotl = {

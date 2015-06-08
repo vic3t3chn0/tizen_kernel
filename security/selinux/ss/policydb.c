@@ -16,8 +16,12 @@
 <<<<<<< HEAD
  * Updated: Hewlett-Packard <paul@paul-moore.com>
 =======
+<<<<<<< HEAD
+ * Updated: Hewlett-Packard <paul@paul-moore.com>
+=======
  * Updated: Hewlett-Packard <paul.moore@hp.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *      Added support for the policy capability bitmap
  *
@@ -1749,9 +1753,12 @@ static int policydb_bounds_sanity_check(struct policydb *p)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int ss_initialized;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u16 string_to_security_class(struct policydb *p, const char *name)
 {
 	struct class_datum *cladatum;

@@ -6,6 +6,13 @@
  *
  * Copyright 2008 Freescale Semiconductor, Inc. All Rights Reserved.
  * Copyright 2008 Embedded Alley Solutions, Inc All Rights Reserved.
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright 2011 Wolfram Sang, Pengutronix e.K.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /*
@@ -18,12 +25,52 @@
  */
 #include <linux/kernel.h>
 #include <linux/module.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/platform_device.h>
 #include <linux/interrupt.h>
 #include <linux/rtc.h>
 #include <linux/slab.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <mach/common.h>
+
+#define STMP3XXX_RTC_CTRL			0x0
+#define STMP3XXX_RTC_CTRL_SET			0x4
+#define STMP3XXX_RTC_CTRL_CLR			0x8
+#define STMP3XXX_RTC_CTRL_ALARM_IRQ_EN		0x00000001
+#define STMP3XXX_RTC_CTRL_ONEMSEC_IRQ_EN	0x00000002
+#define STMP3XXX_RTC_CTRL_ALARM_IRQ		0x00000004
+
+#define STMP3XXX_RTC_STAT			0x10
+#define STMP3XXX_RTC_STAT_STALE_SHIFT		16
+#define STMP3XXX_RTC_STAT_RTC_PRESENT		0x80000000
+
+#define STMP3XXX_RTC_SECONDS			0x30
+
+#define STMP3XXX_RTC_ALARM			0x40
+
+#define STMP3XXX_RTC_PERSISTENT0		0x60
+#define STMP3XXX_RTC_PERSISTENT0_SET		0x64
+#define STMP3XXX_RTC_PERSISTENT0_CLR		0x68
+#define STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE_EN	0x00000002
+#define STMP3XXX_RTC_PERSISTENT0_ALARM_EN	0x00000004
+#define STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE	0x00000080
+
+struct stmp3xxx_rtc_data {
+	struct rtc_device *rtc;
+	void __iomem *io;
+	int irq_alarm;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/platform.h>
 #include <mach/stmp3xxx.h>
 #include <mach/regs-rtc.h>
@@ -33,6 +80,10 @@ struct stmp3xxx_rtc_data {
 	unsigned irq_count;
 	void __iomem *io;
 	int irq_alarm, irq_1msec;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void stmp3xxx_wait_time(struct stmp3xxx_rtc_data *rtc_data)
@@ -42,8 +93,18 @@ static void stmp3xxx_wait_time(struct stmp3xxx_rtc_data *rtc_data)
 	 * NEW_REGS/STALE_REGS bitfields go. In fact it's 0x1=P0,
 	 * 0x2=P1, .., 0x20=P5, 0x40=ALARM, 0x80=SECONDS
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	while (readl(rtc_data->io + STMP3XXX_RTC_STAT) &
+			(0x80 << STMP3XXX_RTC_STAT_STALE_SHIFT))
+=======
 	while (__raw_readl(rtc_data->io + HW_RTC_STAT) &
 			BF(0x80, RTC_STAT_STALE_REGS))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	while (__raw_readl(rtc_data->io + HW_RTC_STAT) &
+			BF(0x80, RTC_STAT_STALE_REGS))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpu_relax();
 }
 
@@ -53,7 +114,15 @@ static int stmp3xxx_rtc_gettime(struct device *dev, struct rtc_time *rtc_tm)
 	struct stmp3xxx_rtc_data *rtc_data = dev_get_drvdata(dev);
 
 	stmp3xxx_wait_time(rtc_data);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rtc_time_to_tm(readl(rtc_data->io + STMP3XXX_RTC_SECONDS), rtc_tm);
+=======
 	rtc_time_to_tm(__raw_readl(rtc_data->io + HW_RTC_SECONDS), rtc_tm);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rtc_time_to_tm(__raw_readl(rtc_data->io + HW_RTC_SECONDS), rtc_tm);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -61,7 +130,15 @@ static int stmp3xxx_rtc_set_mmss(struct device *dev, unsigned long t)
 {
 	struct stmp3xxx_rtc_data *rtc_data = dev_get_drvdata(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	writel(t, rtc_data->io + STMP3XXX_RTC_SECONDS);
+=======
 	__raw_writel(t, rtc_data->io + HW_RTC_SECONDS);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	__raw_writel(t, rtc_data->io + HW_RTC_SECONDS);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stmp3xxx_wait_time(rtc_data);
 	return 0;
 }
@@ -70,6 +147,21 @@ static int stmp3xxx_rtc_set_mmss(struct device *dev, unsigned long t)
 static irqreturn_t stmp3xxx_rtc_interrupt(int irq, void *dev_id)
 {
 	struct stmp3xxx_rtc_data *rtc_data = dev_get_drvdata(dev_id);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 status = readl(rtc_data->io + STMP3XXX_RTC_CTRL);
+
+	if (status & STMP3XXX_RTC_CTRL_ALARM_IRQ) {
+		writel(STMP3XXX_RTC_CTRL_ALARM_IRQ,
+				rtc_data->io + STMP3XXX_RTC_CTRL_CLR);
+		rtc_update_irq(rtc_data->rtc, 1, RTC_AF | RTC_IRQF);
+		return IRQ_HANDLED;
+	}
+
+	return IRQ_NONE;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 status;
 	u32 events = 0;
 
@@ -95,11 +187,33 @@ static irqreturn_t stmp3xxx_rtc_interrupt(int irq, void *dev_id)
 		rtc_update_irq(rtc_data->rtc, 1, events);
 
 	return IRQ_HANDLED;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int stmp3xxx_alarm_irq_enable(struct device *dev, unsigned int enabled)
 {
 	struct stmp3xxx_rtc_data *rtc_data = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (enabled) {
+		writel(STMP3XXX_RTC_PERSISTENT0_ALARM_EN |
+				STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE_EN,
+				rtc_data->io + STMP3XXX_RTC_PERSISTENT0_SET);
+		writel(STMP3XXX_RTC_CTRL_ALARM_IRQ_EN,
+				rtc_data->io + STMP3XXX_RTC_CTRL_SET);
+	} else {
+		writel(STMP3XXX_RTC_PERSISTENT0_ALARM_EN |
+				STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE_EN,
+				rtc_data->io + STMP3XXX_RTC_PERSISTENT0_CLR);
+		writel(STMP3XXX_RTC_CTRL_ALARM_IRQ_EN,
+				rtc_data->io + STMP3XXX_RTC_CTRL_CLR);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem *p = rtc_data->io + HW_RTC_PERSISTENT0,
 		     *ctl = rtc_data->io + HW_RTC_CTRL;
 
@@ -111,6 +225,10 @@ static int stmp3xxx_alarm_irq_enable(struct device *dev, unsigned int enabled)
 		stmp3xxx_clearl(BM_RTC_PERSISTENT0_ALARM_EN |
 			      BM_RTC_PERSISTENT0_ALARM_WAKE_EN, p);
 		stmp3xxx_clearl(BM_RTC_CTRL_ALARM_IRQ_EN, ctl);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -119,7 +237,15 @@ static int stmp3xxx_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
 {
 	struct stmp3xxx_rtc_data *rtc_data = dev_get_drvdata(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rtc_time_to_tm(readl(rtc_data->io + STMP3XXX_RTC_ALARM), &alm->time);
+=======
 	rtc_time_to_tm(__raw_readl(rtc_data->io + HW_RTC_ALARM), &alm->time);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rtc_time_to_tm(__raw_readl(rtc_data->io + HW_RTC_ALARM), &alm->time);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -129,7 +255,18 @@ static int stmp3xxx_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
 	struct stmp3xxx_rtc_data *rtc_data = dev_get_drvdata(dev);
 
 	rtc_tm_to_time(&alm->time, &t);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	writel(t, rtc_data->io + STMP3XXX_RTC_ALARM);
+
+	stmp3xxx_alarm_irq_enable(dev, alm->enabled);
+
+=======
 	__raw_writel(t, rtc_data->io + HW_RTC_ALARM);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	__raw_writel(t, rtc_data->io + HW_RTC_ALARM);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -149,11 +286,25 @@ static int stmp3xxx_rtc_remove(struct platform_device *pdev)
 	if (!rtc_data)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	writel(STMP3XXX_RTC_CTRL_ALARM_IRQ_EN,
+			rtc_data->io + STMP3XXX_RTC_CTRL_CLR);
+	free_irq(rtc_data->irq_alarm, &pdev->dev);
+	rtc_device_unregister(rtc_data->rtc);
+	platform_set_drvdata(pdev, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stmp3xxx_clearl(BM_RTC_CTRL_ONEMSEC_IRQ_EN | BM_RTC_CTRL_ALARM_IRQ_EN,
 			rtc_data->io + HW_RTC_CTRL);
 	free_irq(rtc_data->irq_alarm, &pdev->dev);
 	free_irq(rtc_data->irq_1msec, &pdev->dev);
 	rtc_device_unregister(rtc_data->rtc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iounmap(rtc_data->io);
 	kfree(rtc_data);
 
@@ -185,20 +336,53 @@ static int stmp3xxx_rtc_probe(struct platform_device *pdev)
 	}
 
 	rtc_data->irq_alarm = platform_get_irq(pdev, 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (!(readl(STMP3XXX_RTC_STAT + rtc_data->io) &
+			STMP3XXX_RTC_STAT_RTC_PRESENT)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rtc_data->irq_1msec = platform_get_irq(pdev, 1);
 
 	if (!(__raw_readl(HW_RTC_STAT + rtc_data->io) &
 			BM_RTC_STAT_RTC_PRESENT)) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(&pdev->dev, "no device onboard\n");
 		err = -ENODEV;
 		goto out_remap;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	platform_set_drvdata(pdev, rtc_data);
+
+	mxs_reset_block(rtc_data->io);
+	writel(STMP3XXX_RTC_PERSISTENT0_ALARM_EN |
+			STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE_EN |
+			STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE,
+			rtc_data->io + STMP3XXX_RTC_PERSISTENT0_CLR);
+
+	writel(STMP3XXX_RTC_CTRL_ONEMSEC_IRQ_EN |
+			STMP3XXX_RTC_CTRL_ALARM_IRQ_EN,
+			rtc_data->io + STMP3XXX_RTC_CTRL_CLR);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stmp3xxx_reset_block(rtc_data->io, true);
 	stmp3xxx_clearl(BM_RTC_PERSISTENT0_ALARM_EN |
 			BM_RTC_PERSISTENT0_ALARM_WAKE_EN |
 			BM_RTC_PERSISTENT0_ALARM_WAKE,
 			rtc_data->io + HW_RTC_PERSISTENT0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rtc_data->rtc = rtc_device_register(pdev->name, &pdev->dev,
 				&stmp3xxx_rtc_ops, THIS_MODULE);
 	if (IS_ERR(rtc_data->rtc)) {
@@ -206,14 +390,37 @@ static int stmp3xxx_rtc_probe(struct platform_device *pdev)
 		goto out_remap;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = request_irq(rtc_data->irq_alarm, stmp3xxx_rtc_interrupt, 0,
+			"RTC alarm", &pdev->dev);
+=======
 	rtc_data->irq_count = 0;
 	err = request_irq(rtc_data->irq_alarm, stmp3xxx_rtc_interrupt,
 			IRQF_DISABLED, "RTC alarm", &pdev->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rtc_data->irq_count = 0;
+	err = request_irq(rtc_data->irq_alarm, stmp3xxx_rtc_interrupt,
+			IRQF_DISABLED, "RTC alarm", &pdev->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		dev_err(&pdev->dev, "Cannot claim IRQ%d\n",
 			rtc_data->irq_alarm);
 		goto out_irq_alarm;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	return 0;
+
+out_irq_alarm:
+	rtc_device_unregister(rtc_data->rtc);
+out_remap:
+	platform_set_drvdata(pdev, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = request_irq(rtc_data->irq_1msec, stmp3xxx_rtc_interrupt,
 			IRQF_DISABLED, "RTC tick", &pdev->dev);
 	if (err) {
@@ -233,6 +440,10 @@ out_irq_alarm:
 			rtc_data->io + HW_RTC_CTRL);
 	rtc_device_unregister(rtc_data->rtc);
 out_remap:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iounmap(rtc_data->io);
 out_free:
 	kfree(rtc_data);
@@ -249,11 +460,25 @@ static int stmp3xxx_rtc_resume(struct platform_device *dev)
 {
 	struct stmp3xxx_rtc_data *rtc_data = platform_get_drvdata(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mxs_reset_block(rtc_data->io);
+	writel(STMP3XXX_RTC_PERSISTENT0_ALARM_EN |
+			STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE_EN |
+			STMP3XXX_RTC_PERSISTENT0_ALARM_WAKE,
+			rtc_data->io + STMP3XXX_RTC_PERSISTENT0_CLR);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stmp3xxx_reset_block(rtc_data->io, true);
 	stmp3xxx_clearl(BM_RTC_PERSISTENT0_ALARM_EN |
 			BM_RTC_PERSISTENT0_ALARM_WAKE_EN |
 			BM_RTC_PERSISTENT0_ALARM_WAKE,
 			rtc_data->io + HW_RTC_PERSISTENT0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 #else
@@ -272,6 +497,16 @@ static struct platform_driver stmp3xxx_rtcdrv = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(stmp3xxx_rtcdrv);
+
+MODULE_DESCRIPTION("STMP3xxx RTC Driver");
+MODULE_AUTHOR("dmitry pervushin <dpervushin@embeddedalley.com> and "
+		"Wolfram Sang <w.sang@pengutronix.de>");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init stmp3xxx_rtc_init(void)
 {
 	return platform_driver_register(&stmp3xxx_rtcdrv);
@@ -287,4 +522,8 @@ module_exit(stmp3xxx_rtc_exit);
 
 MODULE_DESCRIPTION("STMP3xxx RTC Driver");
 MODULE_AUTHOR("dmitry pervushin <dpervushin@embeddedalley.com>");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");

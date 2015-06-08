@@ -705,9 +705,14 @@ int ubifs_create_dflt_lpt(struct ubifs_info *c, int *main_lebs, int lpt_first,
 			err = ubifs_leb_change(c, lnum++, buf, alen,
 					       UBI_SHORTTERM);
 =======
+<<<<<<< HEAD
+			err = ubifs_leb_change(c, lnum++, buf, alen,
+					       UBI_SHORTTERM);
+=======
 			err = ubi_leb_change(c->ubi, lnum++, buf, alen,
 					     UBI_SHORTTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (err)
 				goto out;
 			p = buf;
@@ -741,9 +746,14 @@ int ubifs_create_dflt_lpt(struct ubifs_info *c, int *main_lebs, int lpt_first,
 				err = ubifs_leb_change(c, lnum++, buf, alen,
 						       UBI_SHORTTERM);
 =======
+<<<<<<< HEAD
+				err = ubifs_leb_change(c, lnum++, buf, alen,
+						       UBI_SHORTTERM);
+=======
 				err = ubi_leb_change(c->ubi, lnum++, buf, alen,
 						     UBI_SHORTTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (err)
 					goto out;
 				p = buf;
@@ -794,9 +804,14 @@ int ubifs_create_dflt_lpt(struct ubifs_info *c, int *main_lebs, int lpt_first,
 			err = ubifs_leb_change(c, lnum++, buf, alen,
 					       UBI_SHORTTERM);
 =======
+<<<<<<< HEAD
+			err = ubifs_leb_change(c, lnum++, buf, alen,
+					       UBI_SHORTTERM);
+=======
 			err = ubi_leb_change(c->ubi, lnum++, buf, alen,
 					     UBI_SHORTTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (err)
 				goto out;
 			p = buf;
@@ -824,8 +839,12 @@ int ubifs_create_dflt_lpt(struct ubifs_info *c, int *main_lebs, int lpt_first,
 <<<<<<< HEAD
 		err = ubifs_leb_change(c, lnum++, buf, alen, UBI_SHORTTERM);
 =======
+<<<<<<< HEAD
+		err = ubifs_leb_change(c, lnum++, buf, alen, UBI_SHORTTERM);
+=======
 		err = ubi_leb_change(c->ubi, lnum++, buf, alen, UBI_SHORTTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			goto out;
 		p = buf;
@@ -848,8 +867,12 @@ int ubifs_create_dflt_lpt(struct ubifs_info *c, int *main_lebs, int lpt_first,
 <<<<<<< HEAD
 	err = ubifs_leb_change(c, lnum, buf, alen, UBI_SHORTTERM);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_change(c, lnum, buf, alen, UBI_SHORTTERM);
+=======
 	err = ubi_leb_change(c->ubi, lnum, buf, alen, UBI_SHORTTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 
@@ -1248,8 +1271,12 @@ int ubifs_read_nnode(struct ubifs_info *c, struct ubifs_nnode *parent, int iip)
 <<<<<<< HEAD
 		err = ubifs_leb_read(c, lnum, buf, offs, c->nnode_sz, 1);
 =======
+<<<<<<< HEAD
+		err = ubifs_leb_read(c, lnum, buf, offs, c->nnode_sz, 1);
+=======
 		err = ubi_read(c->ubi, lnum, buf, offs, c->nnode_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			goto out;
 		err = ubifs_unpack_nnode(c, buf, nnode);
@@ -1277,7 +1304,11 @@ out:
 <<<<<<< HEAD
 	dbg_dump_stack();
 =======
+<<<<<<< HEAD
+	dbg_dump_stack();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(nnode);
 	return err;
 }
@@ -1324,8 +1355,12 @@ static int read_pnode(struct ubifs_info *c, struct ubifs_nnode *parent, int iip)
 <<<<<<< HEAD
 		err = ubifs_leb_read(c, lnum, buf, offs, c->pnode_sz, 1);
 =======
+<<<<<<< HEAD
+		err = ubifs_leb_read(c, lnum, buf, offs, c->pnode_sz, 1);
+=======
 		err = ubi_read(c->ubi, lnum, buf, offs, c->pnode_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			goto out;
 		err = unpack_pnode(c, buf, pnode);
@@ -1350,7 +1385,11 @@ out:
 <<<<<<< HEAD
 	dbg_dump_stack();
 =======
+<<<<<<< HEAD
+	dbg_dump_stack();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dbg_msg("calc num: %d", calc_pnode_num_from_parent(c, parent, iip));
 	kfree(pnode);
 	return err;
@@ -1373,8 +1412,12 @@ static int read_ltab(struct ubifs_info *c)
 <<<<<<< HEAD
 	err = ubifs_leb_read(c, c->ltab_lnum, buf, c->ltab_offs, c->ltab_sz, 1);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_read(c, c->ltab_lnum, buf, c->ltab_offs, c->ltab_sz, 1);
+=======
 	err = ubi_read(c->ubi, c->ltab_lnum, buf, c->ltab_offs, c->ltab_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 	err = unpack_ltab(c, buf);
@@ -1401,8 +1444,13 @@ static int read_lsave(struct ubifs_info *c)
 	err = ubifs_leb_read(c, c->lsave_lnum, buf, c->lsave_offs,
 			     c->lsave_sz, 1);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_read(c, c->lsave_lnum, buf, c->lsave_offs,
+			     c->lsave_sz, 1);
+=======
 	err = ubi_read(c->ubi, c->lsave_lnum, buf, c->lsave_offs, c->lsave_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 	err = unpack_lsave(c, buf);
@@ -1866,9 +1914,14 @@ static struct ubifs_nnode *scan_get_nnode(struct ubifs_info *c,
 		err = ubifs_leb_read(c, branch->lnum, buf, branch->offs,
 				     c->nnode_sz, 1);
 =======
+<<<<<<< HEAD
+		err = ubifs_leb_read(c, branch->lnum, buf, branch->offs,
+				     c->nnode_sz, 1);
+=======
 		err = ubi_read(c->ubi, branch->lnum, buf, branch->offs,
 			       c->nnode_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return ERR_PTR(err);
 		err = ubifs_unpack_nnode(c, buf, nnode);
@@ -1940,9 +1993,14 @@ static struct ubifs_pnode *scan_get_pnode(struct ubifs_info *c,
 		err = ubifs_leb_read(c, branch->lnum, buf, branch->offs,
 				     c->pnode_sz, 1);
 =======
+<<<<<<< HEAD
+		err = ubifs_leb_read(c, branch->lnum, buf, branch->offs,
+				     c->pnode_sz, 1);
+=======
 		err = ubi_read(c->ubi, branch->lnum, buf, branch->offs,
 			       c->pnode_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return ERR_PTR(err);
 		err = unpack_pnode(c, buf, pnode);
@@ -2044,16 +2102,23 @@ again:
 <<<<<<< HEAD
 				nnode = kmemdup(&path[h].nnode, sz, GFP_NOFS);
 =======
+<<<<<<< HEAD
+				nnode = kmemdup(&path[h].nnode, sz, GFP_NOFS);
+=======
 				nnode = kmalloc(sz, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (!nnode) {
 					err = -ENOMEM;
 					goto out;
 				}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				memcpy(nnode, &path[h].nnode, sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				parent = nnode->parent;
 				parent->nbranch[nnode->iip].nnode = nnode;
 				path[h].ptr.nnode = nnode;
@@ -2069,16 +2134,23 @@ again:
 <<<<<<< HEAD
 				pnode = kmemdup(&path[h].pnode, sz, GFP_NOFS);
 =======
+<<<<<<< HEAD
+				pnode = kmemdup(&path[h].pnode, sz, GFP_NOFS);
+=======
 				pnode = kmalloc(sz, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (!pnode) {
 					err = -ENOMEM;
 					goto out;
 				}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				memcpy(pnode, &path[h].pnode, sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				parent = pnode->parent;
 				parent->nbranch[pnode->iip].pnode = pnode;
 				path[h].ptr.pnode = pnode;
@@ -2299,8 +2371,12 @@ int dbg_check_lpt_nodes(struct ubifs_info *c, struct ubifs_cnode *cnode,
 <<<<<<< HEAD
 	if (!dbg_is_chk_lprops(c))
 =======
+<<<<<<< HEAD
+	if (!dbg_is_chk_lprops(c))
+=======
 	if (!(ubifs_chk_flags & UBIFS_CHK_LPROPS))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	while (cnode) {

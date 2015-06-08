@@ -21,8 +21,11 @@
 #include <linux/spinlock.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ethtool.h>
 #include <linux/mii.h>
 #include <linux/timer.h>
@@ -32,8 +35,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PHY_BASIC_FEATURES	(SUPPORTED_10baseT_Half | \
 				 SUPPORTED_10baseT_Full | \
@@ -63,7 +70,11 @@ typedef enum {
 <<<<<<< HEAD
 	PHY_INTERFACE_MODE_NA,
 =======
+<<<<<<< HEAD
+	PHY_INTERFACE_MODE_NA,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PHY_INTERFACE_MODE_MII,
 	PHY_INTERFACE_MODE_GMII,
 	PHY_INTERFACE_MODE_SGMII,
@@ -77,8 +88,13 @@ typedef enum {
 	PHY_INTERFACE_MODE_RTBI,
 	PHY_INTERFACE_MODE_SMII,
 =======
+<<<<<<< HEAD
+	PHY_INTERFACE_MODE_RTBI,
+	PHY_INTERFACE_MODE_SMII,
+=======
 	PHY_INTERFACE_MODE_RTBI
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } phy_interface_t;
 
 
@@ -107,7 +123,13 @@ struct device;
 struct sk_buff;
 
 =======
+<<<<<<< HEAD
+struct device;
+struct sk_buff;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The Bus class for PHYs.  Devices which provide access to
  * PHYs should register using this structure
@@ -150,15 +172,21 @@ struct mii_bus {
 #define to_mii_bus(d) container_of(d, struct mii_bus, dev)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mii_bus *mdiobus_alloc_size(size_t);
 static inline struct mii_bus *mdiobus_alloc(void)
 {
 	return mdiobus_alloc_size(0);
 }
 
+<<<<<<< HEAD
+=======
 =======
 struct mii_bus *mdiobus_alloc(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int mdiobus_register(struct mii_bus *bus);
 void mdiobus_unregister(struct mii_bus *bus);
 void mdiobus_free(struct mii_bus *bus);
@@ -267,8 +295,11 @@ enum phy_state {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct sk_buff;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* phy_device: An instance of a PHY
  *

@@ -38,7 +38,12 @@
 #include <linux/module.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "core.h"
 #include "ref.h"
 #include "name_table.h"
@@ -58,8 +63,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int tipc_mode = TIPC_NOT_RUNNING;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tipc_random;
 
 const char tipc_alphabet[] =
@@ -109,9 +117,14 @@ static void tipc_core_stop_net(void)
 	tipc_net_stop();
 	tipc_eth_media_stop();
 =======
+<<<<<<< HEAD
+	tipc_net_stop();
+	tipc_eth_media_stop();
+=======
 	tipc_eth_media_stop();
 	tipc_net_stop();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -138,12 +151,15 @@ static void tipc_core_stop(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (tipc_mode != TIPC_NODE_MODE)
 		return;
 
 	tipc_mode = TIPC_NOT_RUNNING;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tipc_netlink_stop();
 	tipc_handler_stop();
 	tipc_cfg_stop();
@@ -165,12 +181,16 @@ static int tipc_core_start(void)
 <<<<<<< HEAD
 	get_random_bytes(&tipc_random, sizeof(tipc_random));
 =======
+<<<<<<< HEAD
+	get_random_bytes(&tipc_random, sizeof(tipc_random));
+=======
 	if (tipc_mode != TIPC_NOT_RUNNING)
 		return -ENOPROTOOPT;
 
 	get_random_bytes(&tipc_random, sizeof(tipc_random));
 	tipc_mode = TIPC_NODE_MODE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	res = tipc_handler_start();
 	if (!res)

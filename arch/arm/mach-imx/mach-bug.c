@@ -46,7 +46,12 @@ static void __init bug_board_init(void)
 	imx31_soc_init();
 
 =======
+<<<<<<< HEAD
+	imx31_soc_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_iomux_setup_multiple_pins(bug_pins,
 				      ARRAY_SIZE(bug_pins), "uart-4");
 	imx31_add_imx_uart4(&uart_pdata);
@@ -66,12 +71,18 @@ MACHINE_START(BUG, "BugLabs BUGBase")
 	.init_early = imx31_init_early,
 	.init_irq = mx31_init_irq,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handle_irq = imx31_handle_irq,
 	.timer = &bug_timer,
 	.init_machine = bug_board_init,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 	.timer = &bug_timer,
 	.init_machine = bug_board_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

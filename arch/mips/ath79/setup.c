@@ -104,8 +104,12 @@ static void __init ath79_detect_sys_type(void)
 <<<<<<< HEAD
 		rev = id & AR724X_REV_ID_REVISION_MASK;
 =======
+<<<<<<< HEAD
+		rev = id & AR724X_REV_ID_REVISION_MASK;
+=======
 		rev = (id & AR724X_REV_ID_REVISION_MASK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case REV_ID_MAJOR_AR7241:
@@ -114,14 +118,21 @@ static void __init ath79_detect_sys_type(void)
 <<<<<<< HEAD
 		rev = id & AR724X_REV_ID_REVISION_MASK;
 =======
+<<<<<<< HEAD
+		rev = id & AR724X_REV_ID_REVISION_MASK;
+=======
 		rev = (id & AR724X_REV_ID_REVISION_MASK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case REV_ID_MAJOR_AR7242:
 		ath79_soc = ATH79_SOC_AR7242;
 		chip = "7242";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rev = id & AR724X_REV_ID_REVISION_MASK;
 		break;
 
@@ -135,9 +146,12 @@ static void __init ath79_detect_sys_type(void)
 		ath79_soc = ATH79_SOC_AR9331;
 		chip = "9331";
 		rev = id & AR933X_REV_ID_REVISION_MASK;
+<<<<<<< HEAD
+=======
 =======
 		rev = (id & AR724X_REV_ID_REVISION_MASK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case REV_ID_MAJOR_AR913X:
@@ -159,16 +173,22 @@ static void __init ath79_detect_sys_type(void)
 
 	default:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		panic("ath79: unknown SoC, id:0x%08x", id);
 	}
 
 	ath79_soc_rev = rev;
 
+<<<<<<< HEAD
+=======
 =======
 		panic("ath79: unknown SoC, id:0x%08x\n", id);
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sprintf(ath79_sys_type, "Atheros AR%s rev %u", chip, rev);
 	pr_info("SoC: %s\n", ath79_sys_type);
 }

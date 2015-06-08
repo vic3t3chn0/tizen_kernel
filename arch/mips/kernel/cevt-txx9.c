@@ -149,8 +149,12 @@ static struct irqaction txx9tmr_irq = {
 <<<<<<< HEAD
 	.flags		= IRQF_PERCPU | IRQF_TIMER,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_PERCPU | IRQF_TIMER,
+=======
 	.flags		= IRQF_DISABLED | IRQF_PERCPU | IRQF_TIMER,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "txx9tmr",
 	.dev_id		= &txx9_clock_event_device,
 };

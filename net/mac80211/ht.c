@@ -17,12 +17,19 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/mac80211.h>
 #include "ieee80211_i.h"
 #include "rate.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool ieee80111_cfg_override_disables_ht40(struct ieee80211_sub_if_data *sdata)
 {
 	const __le16 flg = cpu_to_le16(IEEE80211_HT_CAP_SUP_WIDTH_20_40);
@@ -101,9 +108,12 @@ void ieee80211_apply_htcap_overrides(struct ieee80211_sub_if_data *sdata,
 
 void ieee80211_ht_cap_ie_to_sta_ht_cap(struct ieee80211_sub_if_data *sdata,
 				       struct ieee80211_supported_band *sband,
+<<<<<<< HEAD
+=======
 =======
 void ieee80211_ht_cap_ie_to_sta_ht_cap(struct ieee80211_supported_band *sband,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       struct ieee80211_ht_cap *ht_cap_ie,
 				       struct ieee80211_sta_ht_cap *ht_cap)
 {
@@ -188,14 +198,20 @@ void ieee80211_ht_cap_ie_to_sta_ht_cap(struct ieee80211_supported_band *sband,
 	if (sband->ht_cap.mcs.rx_mask[32/8] & ht_cap_ie->mcs.rx_mask[32/8] & 1)
 		ht_cap->mcs.rx_mask[32/8] |= 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If user has specified capability over-rides, take care
 	 * of that here.
 	 */
 	ieee80211_apply_htcap_overrides(sdata, ht_cap);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ieee80211_sta_tear_down_BA_sessions(struct sta_info *sta, bool tx)
@@ -227,8 +243,12 @@ void ieee80211_ba_session_work(struct work_struct *work)
 <<<<<<< HEAD
 	if (test_sta_flag(sta, WLAN_STA_BLOCK_BA))
 =======
+<<<<<<< HEAD
+	if (test_sta_flag(sta, WLAN_STA_BLOCK_BA))
+=======
 	if (test_sta_flags(sta, WLAN_STA_BLOCK_BA))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	mutex_lock(&sta->ampdu_mlme.mtx);
@@ -239,14 +259,20 @@ void ieee80211_ba_session_work(struct work_struct *work)
 				WLAN_REASON_QSTA_TIMEOUT, true);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (test_and_clear_bit(tid,
 				       sta->ampdu_mlme.tid_rx_stop_requested))
 			___ieee80211_stop_rx_ba_session(
 				sta, tid, WLAN_BACK_RECIPIENT,
 				WLAN_REASON_UNSPECIFIED, true);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tid_tx = sta->ampdu_mlme.tid_start_tx[tid];
 		if (tid_tx) {
 			/*
@@ -291,6 +317,10 @@ void ieee80211_send_delba(struct ieee80211_sub_if_data *sdata,
 	if (!skb)
 		return;
 =======
+<<<<<<< HEAD
+	if (!skb)
+		return;
+=======
 
 	if (!skb) {
 		printk(KERN_ERR "%s: failed to allocate buffer "
@@ -298,6 +328,7 @@ void ieee80211_send_delba(struct ieee80211_sub_if_data *sdata,
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb_reserve(skb, local->hw.extra_tx_headroom);
 	mgmt = (struct ieee80211_mgmt *) skb_put(skb, 24);
@@ -306,6 +337,9 @@ void ieee80211_send_delba(struct ieee80211_sub_if_data *sdata,
 	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
 	if (sdata->vif.type == NL80211_IFTYPE_AP ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    sdata->vif.type == NL80211_IFTYPE_AP_VLAN ||
 	    sdata->vif.type == NL80211_IFTYPE_MESH_POINT)
 		memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
@@ -313,12 +347,15 @@ void ieee80211_send_delba(struct ieee80211_sub_if_data *sdata,
 		memcpy(mgmt->bssid, sdata->u.mgd.bssid, ETH_ALEN);
 	else if (sdata->vif.type == NL80211_IFTYPE_ADHOC)
 		memcpy(mgmt->bssid, sdata->u.ibss.bssid, ETH_ALEN);
+<<<<<<< HEAD
+=======
 =======
 	    sdata->vif.type == NL80211_IFTYPE_AP_VLAN)
 		memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
 	else if (sdata->vif.type == NL80211_IFTYPE_STATION)
 		memcpy(mgmt->bssid, sdata->u.mgd.bssid, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mgmt->frame_control = cpu_to_le16(IEEE80211_FTYPE_MGMT |
 					  IEEE80211_STYPE_ACTION);
@@ -336,8 +373,12 @@ void ieee80211_send_delba(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
 	ieee80211_tx_skb_tid(sdata, skb, tid);
 =======
+<<<<<<< HEAD
+	ieee80211_tx_skb_tid(sdata, skb, tid);
+=======
 	ieee80211_tx_skb(sdata, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ieee80211_process_delba(struct ieee80211_sub_if_data *sdata,

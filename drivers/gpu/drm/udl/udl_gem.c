@@ -71,6 +71,26 @@ int udl_dumb_destroy(struct drm_file *file, struct drm_device *dev,
 	return drm_gem_handle_delete(file, handle);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int udl_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+{
+	int ret;
+
+	ret = drm_gem_mmap(filp, vma);
+	if (ret)
+		return ret;
+
+	vma->vm_flags &= ~VM_PFNMAP;
+	vma->vm_flags |= VM_MIXEDMAP;
+
+	return ret;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int udl_gem_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
 {
 	struct udl_gem_object *obj = to_udl_bo(vma->vm_private_data);

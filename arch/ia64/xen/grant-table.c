@@ -33,6 +33,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct vm_struct *xen_alloc_vm_area(unsigned long size)
 {
 	int order;
@@ -96,6 +98,7 @@ EXPORT_SYMBOL_GPL(xen_free_vm_area);
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /****************************************************************************
  * grant table hack
  * cmd: GNTTABOP_xxx

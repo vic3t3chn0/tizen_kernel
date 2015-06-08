@@ -16,7 +16,12 @@
 #elif defined(CONFIG_COLDFIRE) && defined(CONFIG_MMU)
 #define FPSTATESIZE (16)
 =======
+<<<<<<< HEAD
+#elif defined(CONFIG_COLDFIRE) && defined(CONFIG_MMU)
+#define FPSTATESIZE (16)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_M68060)
 #define FPSTATESIZE (12)
 #else

@@ -83,6 +83,9 @@
 #define AT91SAM9G45_BASE_TC4		0xfffd4040
 #define AT91SAM9G45_BASE_TC5		0xfffd4080
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * System Peripherals
@@ -106,6 +109,8 @@
 #define AT91SAM9G45_BASE_WDT	0xfffffd40
 #define AT91SAM9G45_BASE_RTC	0xfffffdb0
 #define AT91SAM9G45_BASE_GPBR	0xfffffd60
+<<<<<<< HEAD
+=======
 =======
 #define AT91_BASE_SYS			0xffffe200
 
@@ -134,6 +139,7 @@
 #define AT91_GPBR	(0xfffffd60 - AT91_BASE_SYS)
 #define AT91_RTC	(0xfffffdb0 - AT91_BASE_SYS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define AT91_USART0	AT91SAM9G45_BASE_US0
 #define AT91_USART1	AT91SAM9G45_BASE_US1
@@ -157,9 +163,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define CONSISTENT_DMA_SIZE	SZ_4M
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * DMA peripheral identifiers
  * for hardware handshaking interface

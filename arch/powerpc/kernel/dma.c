@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/bug.h>
 #include <asm/abs_addr.h>
 #include <asm/machdep.h>
@@ -33,8 +37,13 @@ void *dma_direct_alloc_coherent(struct device *dev, size_t size,
 				dma_addr_t *dma_handle, gfp_t flag,
 				struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				dma_addr_t *dma_handle, gfp_t flag,
+				struct dma_attrs *attrs)
+=======
 				dma_addr_t *dma_handle, gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void *ret;
 #ifdef CONFIG_NOT_COHERENT_CACHE
@@ -66,8 +75,13 @@ void dma_direct_free_coherent(struct device *dev, size_t size,
 			      void *vaddr, dma_addr_t dma_handle,
 			      struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+			      void *vaddr, dma_addr_t dma_handle,
+			      struct dma_attrs *attrs)
+=======
 			      void *vaddr, dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_NOT_COHERENT_CACHE
 	__dma_free_coherent(size, vaddr);
@@ -111,6 +125,9 @@ static int dma_direct_dma_supported(struct device *dev, u64 mask)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 dma_direct_get_required_mask(struct device *dev)
 {
 	u64 end, mask;
@@ -123,8 +140,11 @@ static u64 dma_direct_get_required_mask(struct device *dev)
 	return mask;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline dma_addr_t dma_direct_map_page(struct device *dev,
 					     struct page *page,
 					     unsigned long offset,
@@ -167,6 +187,9 @@ static inline void dma_direct_sync_single(struct device *dev,
 
 struct dma_map_ops dma_direct_ops = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.alloc				= dma_direct_alloc_coherent,
 	.free				= dma_direct_free_coherent,
 	.map_sg				= dma_direct_map_sg,
@@ -175,6 +198,8 @@ struct dma_map_ops dma_direct_ops = {
 	.map_page			= dma_direct_map_page,
 	.unmap_page			= dma_direct_unmap_page,
 	.get_required_mask		= dma_direct_get_required_mask,
+<<<<<<< HEAD
+=======
 =======
 	.alloc_coherent	= dma_direct_alloc_coherent,
 	.free_coherent	= dma_direct_free_coherent,
@@ -184,6 +209,7 @@ struct dma_map_ops dma_direct_ops = {
 	.map_page	= dma_direct_map_page,
 	.unmap_page	= dma_direct_unmap_page,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NOT_COHERENT_CACHE
 	.sync_single_for_cpu 		= dma_direct_sync_single,
 	.sync_single_for_device 	= dma_direct_sync_single,
@@ -204,10 +230,14 @@ int dma_set_mask(struct device *dev, u64 dma_mask)
 <<<<<<< HEAD
 	if ((dma_ops != NULL) && (dma_ops->set_dma_mask != NULL))
 =======
+<<<<<<< HEAD
+	if ((dma_ops != NULL) && (dma_ops->set_dma_mask != NULL))
+=======
 	if (unlikely(dma_ops == NULL))
 		return -EIO;
 	if (dma_ops->set_dma_mask != NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return dma_ops->set_dma_mask(dev, dma_mask);
 	if (!dev->dma_mask || !dma_supported(dev, dma_mask))
 		return -EIO;
@@ -217,6 +247,9 @@ int dma_set_mask(struct device *dev, u64 dma_mask)
 EXPORT_SYMBOL(dma_set_mask);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u64 dma_get_required_mask(struct device *dev)
 {
 	struct dma_map_ops *dma_ops = get_dma_ops(dev);
@@ -234,8 +267,11 @@ u64 dma_get_required_mask(struct device *dev)
 }
 EXPORT_SYMBOL_GPL(dma_get_required_mask);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init dma_init(void)
 {
        dma_debug_init(PREALLOC_DMA_DEBUG_ENTRIES);

@@ -24,6 +24,9 @@
 #include <linux/kernel.h>
 #include <linux/gpio.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 #include <mach/sh7372.h>
 
@@ -34,6 +37,8 @@
 	PORT_10(fn, pfx##14, sfx),	PORT_10(fn, pfx##15, sfx), \
 	PORT_10(fn, pfx##16, sfx),	PORT_10(fn, pfx##17, sfx), \
 	PORT_10(fn, pfx##18, sfx),	PORT_1(fn, pfx##190, sfx)
+<<<<<<< HEAD
+=======
 =======
 #include <mach/sh7372.h>
 
@@ -59,6 +64,7 @@
 #define _PORT(pfx, sfx) pfx##_##sfx
 #define PORT_ALL(str) _190(_PORT, PORT, str)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	PINMUX_RESERVED = 0,
@@ -395,6 +401,9 @@ enum {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static pinmux_enum_t pinmux_data[] = {
 
 	/* specify valid pin states for each pin in GPIO mode */
@@ -513,6 +522,8 @@ static pinmux_enum_t pinmux_data[] = {
 	PORT_DATA_IO_PU_PD(188),	PORT_DATA_IO_PU_PD(189),
 
 	PORT_DATA_IO_PU_PD(190),
+<<<<<<< HEAD
+=======
 =======
 /* PORT_DATA_I_PD(nr) */
 #define _I___D(nr)			     \
@@ -617,6 +628,7 @@ static pinmux_enum_t pinmux_data[] = {
 
 	_IO_UD(190),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* IRQ */
 	PINMUX_DATA(IRQ0_6_MARK,	PORT6_FN0, 	MSEL1CR_0_0),
@@ -1062,11 +1074,14 @@ static pinmux_enum_t pinmux_data[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _GPIO_PORT(pfx, sfx) PINMUX_GPIO(GPIO_PORT##pfx, PORT##pfx##_DATA)
 #define GPIO_PORT_ALL() _190(_GPIO_PORT, , unused)
 #define GPIO_FN(str) PINMUX_GPIO(GPIO_FN_##str, str##_MARK)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pinmux_gpio pinmux_gpios[] = {
 
 	/* PORT */
@@ -1340,6 +1355,8 @@ static struct pinmux_gpio pinmux_gpios[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* helper for top 4 bits in PORTnCR */
 #define PCRH(in, in_pd, in_pu, out)		\
 	0, (out), (in), 0,			\
@@ -1357,6 +1374,7 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pinmux_cfg_reg pinmux_config_regs[] = {
 	PORTCR(0,	0xE6051000), /* PORT0CR */
 	PORTCR(1,	0xE6051001), /* PORT1CR */
@@ -1753,6 +1771,9 @@ static struct pinmux_data_reg pinmux_data_regs[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXT_IRQ16L(n) evt2irq(0x200 + ((n) << 5))
 #define EXT_IRQ16H(n) evt2irq(0x3200 + (((n) - 16) << 5))
 static struct pinmux_irq pinmux_irqs[] = {
@@ -1790,8 +1811,11 @@ static struct pinmux_irq pinmux_irqs[] = {
 	PINMUX_IRQ(EXT_IRQ16H(31), PORT138_FN0, PORT184_FN0),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pinmux_info sh7372_pinmux_info = {
 	.name = "sh7372_pfc",
 	.reserved_id = PINMUX_RESERVED,
@@ -1817,7 +1841,13 @@ static struct pinmux_info sh7372_pinmux_info = {
 	.gpio_irq = pinmux_irqs,
 	.gpio_irq_size = ARRAY_SIZE(pinmux_irqs),
 =======
+<<<<<<< HEAD
+
+	.gpio_irq = pinmux_irqs,
+	.gpio_irq_size = ARRAY_SIZE(pinmux_irqs),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void sh7372_pinmux_init(void)

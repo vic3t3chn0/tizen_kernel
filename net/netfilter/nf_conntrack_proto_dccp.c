@@ -426,8 +426,12 @@ static bool dccp_new(struct nf_conn *ct, const struct sk_buff *skb,
 <<<<<<< HEAD
 		     unsigned int dataoff, unsigned int *timeouts)
 =======
+<<<<<<< HEAD
+		     unsigned int dataoff, unsigned int *timeouts)
+=======
 		     unsigned int dataoff)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net *net = nf_ct_net(ct);
 	struct dccp_net *dn;
@@ -477,6 +481,9 @@ static u64 dccp_ack_seq(const struct dccp_hdr *dh)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int *dccp_get_timeouts(struct net *net)
 {
 	return dccp_pernet(net)->dccp_timeout;
@@ -488,6 +495,8 @@ static int dccp_packet(struct nf_conn *ct, const struct sk_buff *skb,
 		       unsigned int *timeouts)
 {
 	struct net *net = nf_ct_net(ct);
+<<<<<<< HEAD
+=======
 =======
 static int dccp_packet(struct nf_conn *ct, const struct sk_buff *skb,
 		       unsigned int dataoff, enum ip_conntrack_info ctinfo,
@@ -496,6 +505,7 @@ static int dccp_packet(struct nf_conn *ct, const struct sk_buff *skb,
 	struct net *net = nf_ct_net(ct);
 	struct dccp_net *dn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum ip_conntrack_dir dir = CTINFO2DIR(ctinfo);
 	struct dccp_hdr _dh, *dh;
 	u_int8_t type, old_state, new_state;
@@ -580,9 +590,13 @@ static int dccp_packet(struct nf_conn *ct, const struct sk_buff *skb,
 <<<<<<< HEAD
 	nf_ct_refresh_acct(ct, ctinfo, skb, timeouts[new_state]);
 =======
+<<<<<<< HEAD
+	nf_ct_refresh_acct(ct, ctinfo, skb, timeouts[new_state]);
+=======
 	dn = dccp_pernet(net);
 	nf_ct_refresh_acct(ct, ctinfo, skb, dn->dccp_timeout[new_state]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return NF_ACCEPT;
 }
@@ -654,8 +668,12 @@ static int dccp_print_conntrack(struct seq_file *s, struct nf_conn *ct)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_NF_CT_NETLINK)
+=======
 #if defined(CONFIG_NF_CT_NETLINK) || defined(CONFIG_NF_CT_NETLINK_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dccp_to_nlattr(struct sk_buff *skb, struct nlattr *nla,
 			  struct nf_conn *ct)
 {
@@ -729,6 +747,9 @@ static int dccp_nlattr_size(void)
 		+ nla_policy_len(dccp_nla_policy, CTA_PROTOINFO_DCCP_MAX + 1);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 
@@ -783,10 +804,13 @@ dccp_timeout_nla_policy[CTA_TIMEOUT_DCCP_MAX+1] = {
 };
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
 
+<<<<<<< HEAD
+=======
 =======
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 /* template, data assigned later */
 static struct ctl_table dccp_sysctl_table[] = {
@@ -851,17 +875,23 @@ static struct nf_conntrack_l4proto dccp_proto4 __read_mostly = {
 	.new			= dccp_new,
 	.packet			= dccp_packet,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_timeouts		= dccp_get_timeouts,
 	.error			= dccp_error,
 	.print_tuple		= dccp_print_tuple,
 	.print_conntrack	= dccp_print_conntrack,
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK)
+<<<<<<< HEAD
+=======
 =======
 	.error			= dccp_error,
 	.print_tuple		= dccp_print_tuple,
 	.print_conntrack	= dccp_print_conntrack,
 #if defined(CONFIG_NF_CT_NETLINK) || defined(CONFIG_NF_CT_NETLINK_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.to_nlattr		= dccp_to_nlattr,
 	.nlattr_size		= dccp_nlattr_size,
 	.from_nlattr		= nlattr_to_dccp,
@@ -871,6 +901,9 @@ static struct nf_conntrack_l4proto dccp_proto4 __read_mostly = {
 	.nla_policy		= nf_ct_port_nla_policy,
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 	.ctnl_timeout		= {
 		.nlattr_to_obj	= dccp_timeout_nlattr_to_obj,
@@ -880,8 +913,11 @@ static struct nf_conntrack_l4proto dccp_proto4 __read_mostly = {
 		.nla_policy	= dccp_timeout_nla_policy,
 	},
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct nf_conntrack_l4proto dccp_proto6 __read_mostly = {
@@ -893,17 +929,23 @@ static struct nf_conntrack_l4proto dccp_proto6 __read_mostly = {
 	.new			= dccp_new,
 	.packet			= dccp_packet,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_timeouts		= dccp_get_timeouts,
 	.error			= dccp_error,
 	.print_tuple		= dccp_print_tuple,
 	.print_conntrack	= dccp_print_conntrack,
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK)
+<<<<<<< HEAD
+=======
 =======
 	.error			= dccp_error,
 	.print_tuple		= dccp_print_tuple,
 	.print_conntrack	= dccp_print_conntrack,
 #if defined(CONFIG_NF_CT_NETLINK) || defined(CONFIG_NF_CT_NETLINK_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.to_nlattr		= dccp_to_nlattr,
 	.nlattr_size		= dccp_nlattr_size,
 	.from_nlattr		= nlattr_to_dccp,
@@ -913,6 +955,9 @@ static struct nf_conntrack_l4proto dccp_proto6 __read_mostly = {
 	.nla_policy		= nf_ct_port_nla_policy,
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 	.ctnl_timeout		= {
 		.nlattr_to_obj	= dccp_timeout_nlattr_to_obj,
@@ -922,8 +967,11 @@ static struct nf_conntrack_l4proto dccp_proto6 __read_mostly = {
 		.nla_policy	= dccp_timeout_nla_policy,
 	},
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __net_init int dccp_net_init(struct net *net)

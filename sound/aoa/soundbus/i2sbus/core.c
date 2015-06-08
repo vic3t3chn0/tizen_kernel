@@ -265,9 +265,13 @@ static int i2sbus_add_dev(struct macio_dev *macio,
 <<<<<<< HEAD
 					   resource_size(&dev->resources[i]),
 =======
+<<<<<<< HEAD
+					   resource_size(&dev->resources[i]),
+=======
 					   dev->resources[i].end -
 					   dev->resources[i].start + 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   dev->rnames[i]);
 		if (!dev->allocated_resource[i]) {
 			printk(KERN_ERR "i2sbus: failed to claim resource %d!\n", i);
@@ -279,8 +283,12 @@ static int i2sbus_add_dev(struct macio_dev *macio,
 <<<<<<< HEAD
 	rlen = resource_size(r);
 =======
+<<<<<<< HEAD
+	rlen = resource_size(r);
+=======
 	rlen = r->end - r->start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rlen < sizeof(struct i2s_interface_regs))
 		goto err;
 	dev->intfregs = ioremap(r->start, rlen);
@@ -289,8 +297,12 @@ static int i2sbus_add_dev(struct macio_dev *macio,
 <<<<<<< HEAD
 	rlen = resource_size(r);
 =======
+<<<<<<< HEAD
+	rlen = resource_size(r);
+=======
 	rlen = r->end - r->start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rlen < sizeof(struct dbdma_regs))
 		goto err;
 	dev->out.dbdma = ioremap(r->start, rlen);
@@ -299,8 +311,12 @@ static int i2sbus_add_dev(struct macio_dev *macio,
 <<<<<<< HEAD
 	rlen = resource_size(r);
 =======
+<<<<<<< HEAD
+	rlen = resource_size(r);
+=======
 	rlen = r->end - r->start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rlen < sizeof(struct dbdma_regs))
 		goto err;
 	dev->in.dbdma = ioremap(r->start, rlen);

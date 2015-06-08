@@ -102,7 +102,15 @@
  *	You can find the original tools for this direct from Multitech
  *		ftp://ftp.multitech.com/ISI-Cards/
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *	Having installed the cards the module options (/etc/modprobe.d/)
+=======
  *	Having installed the cards the module options (/etc/modprobe.conf)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *	Having installed the cards the module options (/etc/modprobe.conf)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *	options isicom   io=card1,card2,card3,card4 irq=card1,card2,card3,card4
  *
@@ -133,7 +141,14 @@
 
 #include <linux/uaccess.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/pci.h>
 
@@ -849,8 +864,16 @@ static struct tty_port *isicom_find_port(struct tty_struct *tty)
 	unsigned int board;
 	int line = tty->index;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (line < 0 || line > PORT_COUNT-1)
 		return NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (line < 0 || line > PORT_COUNT-1)
+		return NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	board = BOARD(line);
 	card = &isi_card[board];
 
@@ -1598,7 +1621,15 @@ static int __devinit isicom_probe(struct pci_dev *pdev,
 	}
 
 	retval = request_irq(board->irq, isicom_interrupt,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			IRQF_SHARED, ISICOM_NAME, board);
+=======
 			IRQF_SHARED | IRQF_DISABLED, ISICOM_NAME, board);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			IRQF_SHARED | IRQF_DISABLED, ISICOM_NAME, board);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval < 0) {
 		dev_err(&pdev->dev, "Could not install handler at Irq %d. "
 			"Card%d will be disabled.\n", board->irq, index + 1);
@@ -1678,7 +1709,14 @@ static int __init isicom_init(void)
 		goto error;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	isicom_normal->owner			= THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	isicom_normal->owner			= THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	isicom_normal->name 			= "ttyM";
 	isicom_normal->major			= ISICOM_NMAJOR;
 	isicom_normal->minor_start		= 0;

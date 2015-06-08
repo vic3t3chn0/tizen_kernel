@@ -31,7 +31,14 @@
 #include <linux/kthread.h>
 #include <linux/delay.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The apm_bios device is one of the misc char devices.
@@ -40,10 +47,20 @@
 #define APM_MINOR_DEV	134
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * One option can be changed at boot time as follows:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * See Documentation/Config.help for the configuration options.
  *
  * Various options can be changed at boot time as follows:
  * (We allow underscores for compatibility with the modules code)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	apm=on/off			enable/disable APM
  */
 
@@ -300,6 +317,18 @@ apm_ioctl(struct file *filp, u_int cmd, u_long arg)
 			/*
 			 * Wait for the suspend/resume to complete.  If there
 			 * are pending acknowledges, we wait here for them.
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 * wait_event_freezable() is interruptible and pending
+			 * signal can cause busy looping.  We aren't doing
+			 * anything critical, chill a bit on each iteration.
+			 */
+			while (wait_event_freezable(apm_suspend_waitqueue,
+					as->suspend_state != SUSPEND_ACKED))
+				msleep(10);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 */
 			freezer_do_not_count();
 
@@ -311,6 +340,10 @@ apm_ioctl(struct file *filp, u_int cmd, u_long arg)
 			 * try_to_freeze() in freezer_count() will not trigger
 			 */
 			freezer_count();
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case SUSPEND_ACKTO:
 			as->suspend_result = -ETIMEDOUT;
@@ -606,7 +639,15 @@ static int apm_suspend_notifier(struct notifier_block *nb,
 			return NOTIFY_OK;
 
 		/* interrupted by signal */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return notifier_from_errno(err);
+=======
 		return NOTIFY_BAD;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return NOTIFY_BAD;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	case PM_POST_SUSPEND:
 		/*

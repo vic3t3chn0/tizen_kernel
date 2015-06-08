@@ -288,8 +288,12 @@ static int afs_check_permit(struct afs_vnode *vnode, struct key *key,
 <<<<<<< HEAD
 int afs_permission(struct inode *inode, int mask)
 =======
+<<<<<<< HEAD
+int afs_permission(struct inode *inode, int mask)
+=======
 int afs_permission(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct afs_vnode *vnode = AFS_FS_I(inode);
 	afs_access_t uninitialized_var(access);
@@ -299,8 +303,12 @@ int afs_permission(struct inode *inode, int mask, unsigned int flags)
 <<<<<<< HEAD
 	if (mask & MAY_NOT_BLOCK)
 =======
+<<<<<<< HEAD
+	if (mask & MAY_NOT_BLOCK)
+=======
 	if (flags & IPERM_FLAG_RCU)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ECHILD;
 
 	_enter("{{%x:%u},%lx},%x,",
@@ -361,8 +369,12 @@ int afs_permission(struct inode *inode, int mask, unsigned int flags)
 <<<<<<< HEAD
 	ret = generic_permission(inode, mask);
 =======
+<<<<<<< HEAD
+	ret = generic_permission(inode, mask);
+=======
 	ret = generic_permission(inode, mask, flags, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_leave(" = %d", ret);
 	return ret;
 

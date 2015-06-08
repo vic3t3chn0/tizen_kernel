@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/stat.h>
 #include <linux/slab.h>
 
@@ -197,6 +201,9 @@ static int kobject_add_internal(struct kobject *kobj)
 		/* be noisy on error issues */
 		if (error == -EEXIST)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			WARN(1, "%s failed for %s with "
 			     "-EEXIST, don't try to register things with "
 			     "the same name in the same directory.\n",
@@ -205,6 +212,8 @@ static int kobject_add_internal(struct kobject *kobj)
 			WARN(1, "%s failed for %s (error: %d parent: %s)\n",
 			     __func__, kobject_name(kobj), error,
 			     parent ? kobject_name(parent) : "'none'");
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_ERR "%s failed for %s with "
 			       "-EEXIST, don't try to register things with "
@@ -215,6 +224,7 @@ static int kobject_add_internal(struct kobject *kobj)
 			       __func__, kobject_name(kobj), error);
 		dump_stack();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		kobj->state_in_sysfs = 1;
 
@@ -763,6 +773,8 @@ struct kobject *kset_find_obj(struct kset *kset, const char *name)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return kset_find_obj_hinted(kset, name, NULL);
 }
 
@@ -781,11 +793,14 @@ struct kobject *kset_find_obj_hinted(struct kset *kset, const char *name,
 				     struct kobject *hint)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kobject *k;
 	struct kobject *ret = NULL;
 
 	spin_lock(&kset->list_lock);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (!hint)
@@ -804,6 +819,7 @@ struct kobject *kset_find_obj_hinted(struct kset *kset, const char *name,
 
 slow_search:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(k, &kset->list, entry) {
 		if (kobject_name(k) && !strcmp(kobject_name(k), name)) {
 			ret = kobject_get(k);
@@ -814,6 +830,9 @@ slow_search:
 <<<<<<< HEAD
 	spin_unlock(&kset->list_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&kset->list_lock);
+=======
 unlock_exit:
 	spin_unlock(&kset->list_lock);
 
@@ -821,6 +840,7 @@ unlock_exit:
 		kobject_put(hint);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

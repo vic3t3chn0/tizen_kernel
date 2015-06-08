@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  *    Copyright IBM Corp. 2005,2012
 =======
+<<<<<<< HEAD
+ *    Copyright IBM Corp. 2005,2012
+=======
  *    Copyright IBM Corp. 2005,2007
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    Author(s): Michael Holzheu <holzheu@de.ibm.com>
  *		 Heiko Carstens <heiko.carstens@de.ibm.com>
  *		 Volker Sameske <sameske@de.ibm.com>
@@ -24,7 +28,12 @@
 #include <linux/crash_dump.h>
 #include <linux/debug_locks.h>
 =======
+<<<<<<< HEAD
+#include <linux/crash_dump.h>
+#include <linux/debug_locks.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/ipl.h>
 #include <asm/smp.h>
 #include <asm/setup.h>
@@ -34,14 +43,20 @@
 #include <asm/reset.h>
 #include <asm/sclp.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/checksum.h>
 #include <asm/debug.h>
 #include <asm/os_info.h>
 #include "entry.h"
+<<<<<<< HEAD
+=======
 =======
 #include <asm/sigp.h>
 #include <asm/checksum.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define IPL_PARM_BLOCK_VERSION 0
 
@@ -64,7 +79,11 @@
 <<<<<<< HEAD
  * - restart
 =======
+<<<<<<< HEAD
+ * - restart
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #define ON_PANIC_STR		"on_panic"
 #define ON_HALT_STR		"on_halt"
@@ -73,7 +92,11 @@
 <<<<<<< HEAD
 #define ON_RESTART_STR		"on_restart"
 =======
+<<<<<<< HEAD
+#define ON_RESTART_STR		"on_restart"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct shutdown_action;
 struct shutdown_trigger {
@@ -301,9 +324,14 @@ static struct kobj_attribute sys_ipl_type_attr = __ATTR_RO(ipl_type);
 static size_t reipl_get_ascii_vmparm(char *dest, size_t size,
 				     const struct ipl_parameter_block *ipb)
 =======
+<<<<<<< HEAD
+static size_t reipl_get_ascii_vmparm(char *dest, size_t size,
+				     const struct ipl_parameter_block *ipb)
+=======
 size_t reipl_get_ascii_vmparm(char *dest, size_t size,
 				   const struct ipl_parameter_block *ipb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 	size_t len;
@@ -369,9 +397,14 @@ static size_t scpdata_length(const char* buf, size_t count)
 static size_t reipl_append_ascii_scpdata(char *dest, size_t size,
 					 const struct ipl_parameter_block *ipb)
 =======
+<<<<<<< HEAD
+static size_t reipl_append_ascii_scpdata(char *dest, size_t size,
+					 const struct ipl_parameter_block *ipb)
+=======
 size_t reipl_append_ascii_scpdata(char *dest, size_t size,
 				  const struct ipl_parameter_block *ipb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	size_t count;
 	size_t i;
@@ -604,8 +637,12 @@ static void ipl_run(struct shutdown_trigger *trigger)
 <<<<<<< HEAD
 	smp_call_ipl_cpu(__ipl_run, NULL);
 =======
+<<<<<<< HEAD
+	smp_call_ipl_cpu(__ipl_run, NULL);
+=======
 	smp_switch_to_ipl_cpu(__ipl_run, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init ipl_init(void)
@@ -985,6 +1022,9 @@ static struct attribute_group reipl_nss_attr_group = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void set_reipl_block_actual(struct ipl_parameter_block *reipl_block)
 {
 	reipl_block_actual = reipl_block;
@@ -992,8 +1032,11 @@ static void set_reipl_block_actual(struct ipl_parameter_block *reipl_block)
 			  reipl_block->hdr.len);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* reipl type */
 
 static int reipl_set_type(enum ipl_type type)
@@ -1012,8 +1055,12 @@ static int reipl_set_type(enum ipl_type type)
 <<<<<<< HEAD
 		set_reipl_block_actual(reipl_block_ccw);
 =======
+<<<<<<< HEAD
+		set_reipl_block_actual(reipl_block_ccw);
+=======
 		reipl_block_actual = reipl_block_ccw;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case IPL_TYPE_FCP:
 		if (diag308_set_works)
@@ -1025,8 +1072,12 @@ static int reipl_set_type(enum ipl_type type)
 <<<<<<< HEAD
 		set_reipl_block_actual(reipl_block_fcp);
 =======
+<<<<<<< HEAD
+		set_reipl_block_actual(reipl_block_fcp);
+=======
 		reipl_block_actual = reipl_block_fcp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case IPL_TYPE_FCP_DUMP:
 		reipl_method = REIPL_METHOD_FCP_DUMP;
@@ -1039,8 +1090,12 @@ static int reipl_set_type(enum ipl_type type)
 <<<<<<< HEAD
 		set_reipl_block_actual(reipl_block_nss);
 =======
+<<<<<<< HEAD
+		set_reipl_block_actual(reipl_block_nss);
+=======
 		reipl_block_actual = reipl_block_nss;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case IPL_TYPE_UNKNOWN:
 		reipl_method = REIPL_METHOD_DEFAULT;
@@ -1160,8 +1215,12 @@ static void reipl_run(struct shutdown_trigger *trigger)
 <<<<<<< HEAD
 	smp_call_ipl_cpu(__reipl_run, NULL);
 =======
+<<<<<<< HEAD
+	smp_call_ipl_cpu(__reipl_run, NULL);
+=======
 	smp_switch_to_ipl_cpu(__reipl_run, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void reipl_block_ccw_init(struct ipl_parameter_block *ipb)
@@ -1285,8 +1344,12 @@ static int __init reipl_fcp_init(void)
 <<<<<<< HEAD
 	if (!reipl_fcp_kset) {
 =======
+<<<<<<< HEAD
+	if (!reipl_fcp_kset) {
+=======
 	if (!reipl_kset) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_page((unsigned long) reipl_block_fcp);
 		return -ENOMEM;
 	}
@@ -1321,6 +1384,9 @@ static int __init reipl_fcp_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init reipl_type_init(void)
 {
 	enum ipl_type reipl_type = ipl_info.type;
@@ -1344,8 +1410,11 @@ out:
 	return reipl_set_type(reipl_type);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init reipl_init(void)
 {
 	int rc;
@@ -1370,11 +1439,15 @@ static int __init reipl_init(void)
 <<<<<<< HEAD
 	return reipl_type_init();
 =======
+<<<<<<< HEAD
+	return reipl_type_init();
+=======
 	rc = reipl_set_type(ipl_info.type);
 	if (rc)
 		return rc;
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct shutdown_action __refdata reipl_action = {
@@ -1518,8 +1591,12 @@ static void dump_run(struct shutdown_trigger *trigger)
 <<<<<<< HEAD
 	smp_call_ipl_cpu(__dump_run, NULL);
 =======
+<<<<<<< HEAD
+	smp_call_ipl_cpu(__dump_run, NULL);
+=======
 	smp_switch_to_ipl_cpu(__dump_run, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init dump_ccw_init(void)
@@ -1598,12 +1675,17 @@ static struct shutdown_action __refdata dump_action = {
 static void dump_reipl_run(struct shutdown_trigger *trigger)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 csum;
 
 	csum = csum_partial(reipl_block_actual, reipl_block_actual->hdr.len, 0);
 	copy_to_absolute_zero(&S390_lowcore.ipib_checksum, &csum, sizeof(csum));
 	copy_to_absolute_zero(&S390_lowcore.ipib, &reipl_block_actual,
 			      sizeof(reipl_block_actual));
+<<<<<<< HEAD
+=======
 =======
 	preempt_disable();
 	/*
@@ -1630,6 +1712,7 @@ static void dump_reipl_run(struct shutdown_trigger *trigger)
 		"a" (&lowcore_ptr[smp_processor_id()]->ipib_checksum));
 	preempt_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dump_run(trigger);
 }
 
@@ -1658,7 +1741,11 @@ static char vmcmd_on_poff[128];
 <<<<<<< HEAD
 static char vmcmd_on_restart[128];
 =======
+<<<<<<< HEAD
+static char vmcmd_on_restart[128];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 DEFINE_IPL_ATTR_STR_RW(vmcmd, on_reboot, "%s\n", "%s\n", vmcmd_on_reboot);
 DEFINE_IPL_ATTR_STR_RW(vmcmd, on_panic, "%s\n", "%s\n", vmcmd_on_panic);
@@ -1667,7 +1754,11 @@ DEFINE_IPL_ATTR_STR_RW(vmcmd, on_poff, "%s\n", "%s\n", vmcmd_on_poff);
 <<<<<<< HEAD
 DEFINE_IPL_ATTR_STR_RW(vmcmd, on_restart, "%s\n", "%s\n", vmcmd_on_restart);
 =======
+<<<<<<< HEAD
+DEFINE_IPL_ATTR_STR_RW(vmcmd, on_restart, "%s\n", "%s\n", vmcmd_on_restart);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct attribute *vmcmd_attrs[] = {
 	&sys_vmcmd_on_reboot_attr.attr,
@@ -1677,7 +1768,11 @@ static struct attribute *vmcmd_attrs[] = {
 <<<<<<< HEAD
 	&sys_vmcmd_on_restart_attr.attr,
 =======
+<<<<<<< HEAD
+	&sys_vmcmd_on_restart_attr.attr,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL,
 };
 
@@ -1703,7 +1798,12 @@ static void vmcmd_run(struct shutdown_trigger *trigger)
 	else if (strcmp(trigger->name, ON_RESTART_STR) == 0)
 		cmd = vmcmd_on_restart;
 =======
+<<<<<<< HEAD
+	else if (strcmp(trigger->name, ON_RESTART_STR) == 0)
+		cmd = vmcmd_on_restart;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		return;
 
@@ -1740,10 +1840,15 @@ static struct shutdown_action vmcmd_action = {SHUTDOWN_ACTION_VMCMD_STR,
 static void stop_run(struct shutdown_trigger *trigger)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (strcmp(trigger->name, ON_PANIC_STR) == 0 ||
 	    strcmp(trigger->name, ON_RESTART_STR) == 0)
 		disabled_wait((unsigned long) __builtin_return_address(0));
 	smp_stop_cpu();
+<<<<<<< HEAD
+=======
 =======
 	if (strcmp(trigger->name, ON_PANIC_STR) == 0)
 		disabled_wait((unsigned long) __builtin_return_address(0));
@@ -1751,6 +1856,7 @@ static void stop_run(struct shutdown_trigger *trigger)
 		cpu_relax();
 	for (;;);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct shutdown_action stop_action = {SHUTDOWN_ACTION_STOP_STR,
@@ -1841,12 +1947,19 @@ static void do_panic(void)
 <<<<<<< HEAD
 	lgr_info_log();
 =======
+<<<<<<< HEAD
+	lgr_info_log();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	on_panic_trigger.action->fn(&on_panic_trigger);
 	stop_run(&on_panic_trigger);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* on restart */
 
 static struct shutdown_trigger on_restart_trigger = {ON_RESTART_STR,
@@ -1886,8 +1999,11 @@ void do_restart(void)
 	smp_call_online_cpu(__do_restart, NULL);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* on halt */
 
 static struct shutdown_trigger on_halt_trigger = {ON_HALT_STR, &stop_action};
@@ -1969,8 +2085,14 @@ static void __init shutdown_triggers_init(void)
 			      &on_restart_attr.attr))
 		goto fail;
 =======
+<<<<<<< HEAD
+	if (sysfs_create_file(&shutdown_actions_kset->kobj,
+			      &on_restart_attr.attr))
+		goto fail;
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 fail:
 	panic("shutdown_triggers_init failed\n");
@@ -2147,14 +2269,20 @@ static void do_reset_calls(void)
 	struct reset_call *reset;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_64BIT
 	if (diag308_set_works) {
 		diag308_reset();
 		return;
 	}
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry(reset, &rcall, list)
 		reset->fn();
 }
@@ -2164,8 +2292,12 @@ u32 dump_prefix_page;
 <<<<<<< HEAD
 void s390_reset_system(void (*func)(void *), void *data)
 =======
+<<<<<<< HEAD
+void s390_reset_system(void (*func)(void *), void *data)
+=======
 void s390_reset_system(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct _lowcore *lc;
 
@@ -2187,13 +2319,20 @@ void s390_reset_system(void)
 <<<<<<< HEAD
 	S390_lowcore.mcck_new_psw.mask = psw_kernel_bits | PSW_MASK_DAT;
 =======
+<<<<<<< HEAD
+	S390_lowcore.mcck_new_psw.mask = psw_kernel_bits | PSW_MASK_DAT;
+=======
 	S390_lowcore.mcck_new_psw.mask = psw_kernel_bits & ~PSW_MASK_MCHECK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	S390_lowcore.mcck_new_psw.addr =
 		PSW_ADDR_AMODE | (unsigned long) s390_base_mcck_handler;
 
 	/* Set new program check handler */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	S390_lowcore.program_new_psw.mask = psw_kernel_bits | PSW_MASK_DAT;
 	S390_lowcore.program_new_psw.addr =
 		PSW_ADDR_AMODE | (unsigned long) s390_base_pgm_handler;
@@ -2205,6 +2344,8 @@ void s390_reset_system(void)
 	if (func)
 		func(data);
 }
+<<<<<<< HEAD
+=======
 =======
 	S390_lowcore.program_new_psw.mask = psw_kernel_bits & ~PSW_MASK_MCHECK;
 	S390_lowcore.program_new_psw.addr =
@@ -2214,3 +2355,4 @@ void s390_reset_system(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

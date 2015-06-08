@@ -9,10 +9,15 @@
  */
 #include <unistd.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <errno.h>
 #include <string.h>
 #include <arpa/inet.h>
 #include <endian.h>
+<<<<<<< HEAD
+=======
 =======
 #include <byteswap.h>
 #include <errno.h>
@@ -20,6 +25,7 @@
 #include <arpa/inet.h>
 #include <asm/types.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cow.h"
 #include "cow_sys.h"
 
@@ -194,14 +200,20 @@ static int absolutize(char *to, int size, char *from)
 		strcat(to, from);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chdir(save_cwd)) {
 		cow_printf("absolutize : Can't cd to '%s' - "
 			   "errno = %d\n", save_cwd, errno);
 		return -1;
 	}
+<<<<<<< HEAD
+=======
 =======
 	chdir(save_cwd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -229,9 +241,14 @@ int write_cow_header(char *cow_file, int fd, char *backing_file,
 	header->magic = htobe32(COW_MAGIC);
 	header->version = htobe32(COW_VERSION);
 =======
+<<<<<<< HEAD
+	header->magic = htobe32(COW_MAGIC);
+	header->version = htobe32(COW_VERSION);
+=======
 	header->magic = htonl(COW_MAGIC);
 	header->version = htonl(COW_VERSION);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -EINVAL;
 	if (strlen(backing_file) > sizeof(header->backing_file) - 1) {
@@ -263,16 +280,22 @@ int write_cow_header(char *cow_file, int fd, char *backing_file,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	header->mtime = htobe32(modtime);
 	header->size = htobe64(*size);
 	header->sectorsize = htobe32(sectorsize);
 	header->alignment = htobe32(alignment);
+<<<<<<< HEAD
+=======
 =======
 	header->mtime = htonl(modtime);
 	header->size = htonll(*size);
 	header->sectorsize = htonl(sectorsize);
 	header->alignment = htonl(alignment);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	header->cow_format = COW_BITMAP;
 
 	err = cow_write_file(fd, header, sizeof(*header));
@@ -328,9 +351,14 @@ int read_cow_header(int (*reader)(__u64, char *, int, void *), void *arg,
 	else if (magic == be32toh(COW_MAGIC))
 		version = be32toh(header->v1.version);
 =======
+<<<<<<< HEAD
+	else if (magic == be32toh(COW_MAGIC))
+		version = be32toh(header->v1.version);
+=======
 	else if (magic == ntohl(COW_MAGIC))
 		version = ntohl(header->v1.version);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* No error printed because the non-COW case comes through here */
 	else goto out;
 
@@ -360,10 +388,16 @@ int read_cow_header(int (*reader)(__u64, char *, int, void *), void *arg,
 		*size_out = be64toh(header->v2.size);
 		*sectorsize_out = be32toh(header->v2.sectorsize);
 =======
+<<<<<<< HEAD
+		*mtime_out = be32toh(header->v2.mtime);
+		*size_out = be64toh(header->v2.size);
+		*sectorsize_out = be32toh(header->v2.sectorsize);
+=======
 		*mtime_out = ntohl(header->v2.mtime);
 		*size_out = ntohll(header->v2.size);
 		*sectorsize_out = ntohl(header->v2.sectorsize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*bitmap_offset_out = sizeof(header->v2);
 		*align_out = *sectorsize_out;
 		file = header->v2.backing_file;
@@ -376,16 +410,22 @@ int read_cow_header(int (*reader)(__u64, char *, int, void *), void *arg,
 			goto out;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*mtime_out = be32toh(header->v3.mtime);
 		*size_out = be64toh(header->v3.size);
 		*sectorsize_out = be32toh(header->v3.sectorsize);
 		*align_out = be32toh(header->v3.alignment);
+<<<<<<< HEAD
+=======
 =======
 		*mtime_out = ntohl(header->v3.mtime);
 		*size_out = ntohll(header->v3.size);
 		*sectorsize_out = ntohl(header->v3.sectorsize);
 		*align_out = ntohl(header->v3.alignment);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (*align_out == 0) {
 			cow_printf("read_cow_header - invalid COW header, "
 				   "align == 0\n");
@@ -410,18 +450,27 @@ int read_cow_header(int (*reader)(__u64, char *, int, void *), void *arg,
 <<<<<<< HEAD
 		 * Additionally, we must use be32toh() instead of be64toh(), since
 =======
+<<<<<<< HEAD
+		 * Additionally, we must use be32toh() instead of be64toh(), since
+=======
 		 * Additionally, we must use ntohl() instead of ntohll(), since
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * the program used to use the former (tested - I got mtime
 		 * mismatch "0 vs whatever").
 		 *
 		 * Ever heard about bug-to-bug-compatibility ? ;-) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*mtime_out = (time32_t) be32toh(header->v3_b.mtime);
 
 		*size_out = be64toh(header->v3_b.size);
 		*sectorsize_out = be32toh(header->v3_b.sectorsize);
 		*align_out = be32toh(header->v3_b.alignment);
+<<<<<<< HEAD
+=======
 =======
 		*mtime_out = (time32_t) ntohl(header->v3_b.mtime);
 
@@ -429,6 +478,7 @@ int read_cow_header(int (*reader)(__u64, char *, int, void *), void *arg,
 		*sectorsize_out = ntohl(header->v3_b.sectorsize);
 		*align_out = ntohl(header->v3_b.alignment);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (*align_out == 0) {
 			cow_printf("read_cow_header - invalid COW header, "
 				   "align == 0\n");

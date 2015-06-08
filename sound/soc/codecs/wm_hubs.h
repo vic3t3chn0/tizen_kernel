@@ -18,9 +18,12 @@
 #include <linux/interrupt.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/list.h>
 #include <sound/control.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct snd_soc_codec;
 
@@ -40,10 +43,16 @@ struct wm_hubs_data {
 	bool class_w;
 	u16 class_w_dcs;
 =======
+<<<<<<< HEAD
+	bool no_cache_class_w;
+	bool class_w;
+	u16 class_w_dcs;
+=======
 	bool no_cache_dac_hp_direct;
 	struct list_head dcs_cache;
 	bool (*check_class_w_digital)(struct snd_soc_codec *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bool lineout1_se;
 	bool lineout1n_ena;
@@ -71,10 +80,13 @@ extern void wm_hubs_set_bias_level(struct snd_soc_codec *codec,
 				   enum snd_soc_bias_level level);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void wm_hubs_update_class_w(struct snd_soc_codec *codec);
 
 extern const struct snd_kcontrol_new wm_hubs_hpl_mux;
 extern const struct snd_kcontrol_new wm_hubs_hpr_mux;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

@@ -20,8 +20,11 @@ struct nf_conntrack_ecache {
 	u32 pid;		/* netlink pid of destroyer */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct timer_list timeout;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct nf_conntrack_ecache *
@@ -75,10 +78,15 @@ struct nf_ct_event_notifier {
 extern int nf_conntrack_register_notifier(struct net *net, struct nf_ct_event_notifier *nb);
 extern void nf_conntrack_unregister_notifier(struct net *net, struct nf_ct_event_notifier *nb);
 =======
+<<<<<<< HEAD
+extern int nf_conntrack_register_notifier(struct net *net, struct nf_ct_event_notifier *nb);
+extern void nf_conntrack_unregister_notifier(struct net *net, struct nf_ct_event_notifier *nb);
+=======
 extern struct nf_ct_event_notifier __rcu *nf_conntrack_event_cb;
 extern int nf_conntrack_register_notifier(struct nf_ct_event_notifier *nb);
 extern void nf_conntrack_unregister_notifier(struct nf_ct_event_notifier *nb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void nf_ct_deliver_cached_events(struct nf_conn *ct);
 
@@ -86,15 +94,21 @@ static inline void
 nf_conntrack_event_cache(enum ip_conntrack_events event, struct nf_conn *ct)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net *net = nf_ct_net(ct);
 	struct nf_conntrack_ecache *e;
 
 	if (net->ct.nf_conntrack_event_cb == NULL)
+<<<<<<< HEAD
+=======
 =======
 	struct nf_conntrack_ecache *e;
 
 	if (nf_conntrack_event_cb == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	e = nf_ct_ecache_find(ct);
@@ -114,7 +128,11 @@ nf_conntrack_eventmask_report(unsigned int eventmask,
 <<<<<<< HEAD
 	struct net *net = nf_ct_net(ct);
 =======
+<<<<<<< HEAD
+	struct net *net = nf_ct_net(ct);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nf_ct_event_notifier *notify;
 	struct nf_conntrack_ecache *e;
 
@@ -122,8 +140,12 @@ nf_conntrack_eventmask_report(unsigned int eventmask,
 <<<<<<< HEAD
 	notify = rcu_dereference(net->ct.nf_conntrack_event_cb);
 =======
+<<<<<<< HEAD
+	notify = rcu_dereference(net->ct.nf_conntrack_event_cb);
+=======
 	notify = rcu_dereference(nf_conntrack_event_cb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (notify == NULL)
 		goto out_unlock;
 
@@ -192,10 +214,15 @@ struct nf_exp_event_notifier {
 extern int nf_ct_expect_register_notifier(struct net *net, struct nf_exp_event_notifier *nb);
 extern void nf_ct_expect_unregister_notifier(struct net *net, struct nf_exp_event_notifier *nb);
 =======
+<<<<<<< HEAD
+extern int nf_ct_expect_register_notifier(struct net *net, struct nf_exp_event_notifier *nb);
+extern void nf_ct_expect_unregister_notifier(struct net *net, struct nf_exp_event_notifier *nb);
+=======
 extern struct nf_exp_event_notifier __rcu *nf_expect_event_cb;
 extern int nf_ct_expect_register_notifier(struct nf_exp_event_notifier *nb);
 extern void nf_ct_expect_unregister_notifier(struct nf_exp_event_notifier *nb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void
 nf_ct_expect_event_report(enum ip_conntrack_expect_events event,
@@ -206,7 +233,11 @@ nf_ct_expect_event_report(enum ip_conntrack_expect_events event,
 <<<<<<< HEAD
 	struct net *net = nf_ct_exp_net(exp);
 =======
+<<<<<<< HEAD
+	struct net *net = nf_ct_exp_net(exp);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nf_exp_event_notifier *notify;
 	struct nf_conntrack_ecache *e;
 
@@ -214,8 +245,12 @@ nf_ct_expect_event_report(enum ip_conntrack_expect_events event,
 <<<<<<< HEAD
 	notify = rcu_dereference(net->ct.nf_expect_event_cb);
 =======
+<<<<<<< HEAD
+	notify = rcu_dereference(net->ct.nf_expect_event_cb);
+=======
 	notify = rcu_dereference(nf_expect_event_cb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (notify == NULL)
 		goto out_unlock;
 

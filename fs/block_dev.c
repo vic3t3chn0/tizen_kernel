@@ -21,8 +21,14 @@
 #include <linux/buffer_head.h>
 #include <linux/swap.h>
 =======
+<<<<<<< HEAD
+#include <linux/magic.h>
+#include <linux/buffer_head.h>
+#include <linux/swap.h>
+=======
 #include <linux/buffer_head.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pagevec.h>
 #include <linux/writeback.h>
 #include <linux/mpage.h>
@@ -33,8 +39,12 @@
 <<<<<<< HEAD
 #include <linux/cleancache.h>
 =======
+<<<<<<< HEAD
+#include <linux/cleancache.h>
+=======
 #include <linux/kmemleak.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include "internal.h"
 
@@ -55,12 +65,17 @@ inline struct block_device *I_BDEV(struct inode *inode)
 	return &BDEV_I(inode)->bdev;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(I_BDEV);
 
 /*
  * Move the inode from its current bdi to a new bdi. If the inode is dirty we
  * need to move it onto the dirty list of @dst so that the inode is always on
  * the right list.
+<<<<<<< HEAD
+=======
 =======
 
 EXPORT_SYMBOL(I_BDEV);
@@ -70,11 +85,15 @@ EXPORT_SYMBOL(I_BDEV);
  * we need to move it onto the dirty list of @dst so that the inode is always
  * on the right list.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void bdev_inode_switch_bdi(struct inode *inode,
 			struct backing_dev_info *dst)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct backing_dev_info *old = inode->i_data.backing_dev_info;
 
 	if (unlikely(dst == old))		/* deadlock avoidance */
@@ -87,6 +106,8 @@ static void bdev_inode_switch_bdi(struct inode *inode,
 	spin_unlock(&inode->i_lock);
 	spin_unlock(&old->wb.list_lock);
 	spin_unlock(&dst->wb.list_lock);
+<<<<<<< HEAD
+=======
 =======
 	bool wakeup_bdi = false;
 
@@ -104,6 +125,7 @@ static void bdev_inode_switch_bdi(struct inode *inode,
 	if (wakeup_bdi)
 		bdi_wakeup_thread_delayed(dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 sector_t blkdev_max_block(struct block_device *bdev)
@@ -121,6 +143,9 @@ sector_t blkdev_max_block(struct block_device *bdev)
 
 /* Kill _all_ buffers and pagecache , dirty or not.. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void kill_bdev(struct block_device *bdev)
 {
 	struct address_space *mapping = bdev->bd_inode->i_mapping;
@@ -150,6 +175,8 @@ void invalidate_bdev(struct block_device *bdev)
 	cleancache_invalidate_inode(mapping);
 }
 EXPORT_SYMBOL(invalidate_bdev);
+<<<<<<< HEAD
+=======
 =======
 static void kill_bdev(struct block_device *bdev)
 {
@@ -159,6 +186,7 @@ static void kill_bdev(struct block_device *bdev)
 	truncate_inode_pages(bdev->bd_inode->i_mapping, 0);
 }	
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int set_blocksize(struct block_device *bdev, int size)
 {
@@ -430,6 +458,9 @@ static loff_t block_llseek(struct file *file, loff_t offset, int origin)
 	size = i_size_read(bd_inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	retval = -EINVAL;
 	switch (origin) {
 		case SEEK_END:
@@ -442,6 +473,8 @@ static loff_t block_llseek(struct file *file, loff_t offset, int origin)
 		default:
 			goto out;
 	}
+<<<<<<< HEAD
+=======
 =======
 	switch (origin) {
 		case 2:
@@ -452,6 +485,7 @@ static loff_t block_llseek(struct file *file, loff_t offset, int origin)
 	}
 	retval = -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (offset >= 0 && offset <= size) {
 		if (offset != file->f_pos) {
 			file->f_pos = offset;
@@ -461,7 +495,11 @@ static loff_t block_llseek(struct file *file, loff_t offset, int origin)
 <<<<<<< HEAD
 out:
 =======
+<<<<<<< HEAD
+out:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&bd_inode->i_mutex);
 	return retval;
 }
@@ -469,19 +507,29 @@ out:
 <<<<<<< HEAD
 int blkdev_fsync(struct file *filp, loff_t start, loff_t end, int datasync)
 =======
+<<<<<<< HEAD
+int blkdev_fsync(struct file *filp, loff_t start, loff_t end, int datasync)
+=======
 int blkdev_fsync(struct file *filp, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *bd_inode = filp->f_mapping->host;
 	struct block_device *bdev = I_BDEV(bd_inode);
 	int error;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	
 	error = filemap_write_and_wait_range(filp->f_mapping, start, end);
 	if (error)
 		return error;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * There is no need to serialise calls to blkdev_issue_flush with
@@ -490,18 +538,24 @@ int blkdev_fsync(struct file *filp, int datasync)
 	 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_unlock(&bd_inode->i_mutex);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = blkdev_issue_flush(bdev, GFP_KERNEL, NULL);
 	if (error == -EOPNOTSUPP)
 		error = 0;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_lock(&bd_inode->i_mutex);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 EXPORT_SYMBOL(blkdev_fsync);
@@ -528,8 +582,11 @@ static void bdev_i_callback(struct rcu_head *head)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(bdev_cachep, bdi);
 }
 
@@ -591,8 +648,12 @@ static struct dentry *bd_mount(struct file_system_type *fs_type,
 <<<<<<< HEAD
 	return mount_pseudo(fs_type, "bdev:", &bdev_sops, NULL, BDEVFS_MAGIC);
 =======
+<<<<<<< HEAD
+	return mount_pseudo(fs_type, "bdev:", &bdev_sops, NULL, BDEVFS_MAGIC);
+=======
 	return mount_pseudo(fs_type, "bdev:", &bdev_sops, NULL, 0x62646576);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct file_system_type bd_type = {
@@ -604,8 +665,12 @@ static struct file_system_type bd_type = {
 <<<<<<< HEAD
 static struct super_block *blockdev_superblock __read_mostly;
 =======
+<<<<<<< HEAD
+static struct super_block *blockdev_superblock __read_mostly;
+=======
 struct super_block *blockdev_superblock __read_mostly;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init bdev_cache_init(void)
 {
@@ -613,8 +678,12 @@ void __init bdev_cache_init(void)
 <<<<<<< HEAD
 	static struct vfsmount *bd_mnt;
 =======
+<<<<<<< HEAD
+	static struct vfsmount *bd_mnt;
+=======
 	struct vfsmount *bd_mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bdev_cachep = kmem_cache_create("bdev_cache", sizeof(struct bdev_inode),
 			0, (SLAB_HWCACHE_ALIGN|SLAB_RECLAIM_ACCOUNT|
@@ -629,6 +698,9 @@ void __init bdev_cache_init(void)
 <<<<<<< HEAD
 	blockdev_superblock = bd_mnt->mnt_sb;   /* For writeback */
 =======
+<<<<<<< HEAD
+	blockdev_superblock = bd_mnt->mnt_sb;   /* For writeback */
+=======
 	/*
 	 * This vfsmount structure is only used to obtain the
 	 * blockdev_superblock, so tell kmemleak not to report it.
@@ -636,6 +708,7 @@ void __init bdev_cache_init(void)
 	kmemleak_not_leak(bd_mnt);
 	blockdev_superblock = bd_mnt->mnt_sb;	/* For writeback */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -679,7 +752,11 @@ struct block_device *bdget(dev_t dev)
 <<<<<<< HEAD
 		bdev->bd_super = NULL;
 =======
+<<<<<<< HEAD
+		bdev->bd_super = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bdev->bd_inode = inode;
 		bdev->bd_block_size = (1 << inode->i_blkbits);
 		bdev->bd_part_count = 0;
@@ -711,8 +788,11 @@ struct block_device *bdgrab(struct block_device *bdev)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(bdgrab);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 long nr_blockdev_pages(void)
 {
@@ -767,13 +847,19 @@ static struct block_device *bd_acquire(struct inode *inode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int sb_is_blkdev_sb(struct super_block *sb)
 {
 	return sb == blockdev_superblock;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Call when you free inode */
 
 void bd_forget(struct inode *inode)
@@ -1109,8 +1195,12 @@ static void flush_disk(struct block_device *bdev, bool kill_dirty)
 <<<<<<< HEAD
 	if (disk_part_scan_enabled(bdev->bd_disk))
 =======
+<<<<<<< HEAD
+	if (disk_part_scan_enabled(bdev->bd_disk))
+=======
 	if (disk_partitionable(bdev->bd_disk))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bdev->bd_invalidated = 1;
 }
 
@@ -1204,10 +1294,14 @@ void bd_set_size(struct block_device *bdev, loff_t size)
 <<<<<<< HEAD
 	bdev->bd_inode->i_size = size;
 =======
+<<<<<<< HEAD
+	bdev->bd_inode->i_size = size;
+=======
 	mutex_lock(&bdev->bd_inode->i_mutex);
 	i_size_write(bdev->bd_inode, size);
 	mutex_unlock(&bdev->bd_inode->i_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (bsize < PAGE_CACHE_SIZE) {
 		if (size & bsize)
 			break;
@@ -1265,7 +1359,11 @@ static int __blkdev_get(struct block_device *bdev, fmode_t mode, int for_part)
 <<<<<<< HEAD
 		bdev->bd_queue = disk->queue;
 =======
+<<<<<<< HEAD
+		bdev->bd_queue = disk->queue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bdev->bd_contains = bdev;
 		if (!partno) {
 			struct backing_dev_info *bdi;
@@ -1289,7 +1387,11 @@ static int __blkdev_get(struct block_device *bdev, fmode_t mode, int for_part)
 <<<<<<< HEAD
 					bdev->bd_queue = NULL;
 =======
+<<<<<<< HEAD
+					bdev->bd_queue = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					mutex_unlock(&bdev->bd_mutex);
 					disk_unblock_events(disk);
 					put_disk(disk);
@@ -1374,7 +1476,11 @@ static int __blkdev_get(struct block_device *bdev, fmode_t mode, int for_part)
 <<<<<<< HEAD
 	bdev->bd_queue = NULL;
 =======
+<<<<<<< HEAD
+	bdev->bd_queue = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bdev_inode_switch_bdi(bdev->bd_inode, &default_backing_dev_info);
 	if (bdev != bdev->bd_contains)
 		__blkdev_put(bdev->bd_contains, mode, 1);
@@ -1632,7 +1738,12 @@ int blkdev_put(struct block_device *bdev, fmode_t mode)
 	mutex_lock(&bdev->bd_mutex);
 
 =======
+<<<<<<< HEAD
+	mutex_lock(&bdev->bd_mutex);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mode & FMODE_EXCL) {
 		bool bdev_free;
 
@@ -1643,8 +1754,11 @@ int blkdev_put(struct block_device *bdev, fmode_t mode)
 		 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		mutex_lock(&bdev->bd_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&bdev_lock);
 
 		WARN_ON_ONCE(--bdev->bd_holders < 0);
@@ -1663,6 +1777,9 @@ int blkdev_put(struct block_device *bdev, fmode_t mode)
 		 * unblock evpoll if it was a write holder.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (bdev_free && bdev->bd_write_holder) {
 			disk_unblock_events(bdev->bd_disk);
 			bdev->bd_write_holder = false;
@@ -1677,6 +1794,8 @@ int blkdev_put(struct block_device *bdev, fmode_t mode)
 	disk_flush_events(bdev->bd_disk, DISK_EVENT_MEDIA_CHANGE);
 
 	mutex_unlock(&bdev->bd_mutex);
+<<<<<<< HEAD
+=======
 =======
 		if (bdev_free) {
 			if (bdev->bd_write_holder) {
@@ -1689,6 +1808,7 @@ int blkdev_put(struct block_device *bdev, fmode_t mode)
 		mutex_unlock(&bdev->bd_mutex);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return __blkdev_put(bdev, mode, 0);
 }

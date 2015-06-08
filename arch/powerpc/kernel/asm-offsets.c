@@ -45,15 +45,21 @@
 #include <asm/mmu.h>
 #include <asm/hvcall.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/xics.h>
 #endif
 #ifdef CONFIG_PPC_POWERNV
 #include <asm/opal.h>
+<<<<<<< HEAD
+=======
 =======
 #endif
 #ifdef CONFIG_PPC_ISERIES
 #include <asm/iseries/alpaca.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #if defined(CONFIG_KVM) || defined(CONFIG_KVM_GUEST)
 #include <linux/kvm_host.h>
@@ -84,8 +90,11 @@ int main(void)
 	DEFINE(THREAD_DSCR, offsetof(struct thread_struct, dscr));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	DEFINE(THREAD_DSCR_INHERIT, offsetof(struct thread_struct, dscr_inherit));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	DEFINE(THREAD_INFO, offsetof(struct task_struct, stack));
 #endif /* CONFIG_PPC64 */
@@ -98,7 +107,13 @@ int main(void)
 	DEFINE(THREAD_NORMSAVES, offsetof(struct thread_struct, normsave[0]));
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_BOOKE
+	DEFINE(THREAD_NORMSAVES, offsetof(struct thread_struct, normsave[0]));
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(THREAD_FPEXC_MODE, offsetof(struct thread_struct, fpexc_mode));
 	DEFINE(THREAD_FPR0, offsetof(struct thread_struct, fpr[0]));
 	DEFINE(THREAD_FPSCR, offsetof(struct thread_struct, fpscr));
@@ -148,7 +163,11 @@ int main(void)
 <<<<<<< HEAD
 	DEFINE(PACA_LOCK_TOKEN, offsetof(struct paca_struct, lock_token));
 =======
+<<<<<<< HEAD
+	DEFINE(PACA_LOCK_TOKEN, offsetof(struct paca_struct, lock_token));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(PACAPACAINDEX, offsetof(struct paca_struct, paca_index));
 	DEFINE(PACAPROCSTART, offsetof(struct paca_struct, cpu_start));
 	DEFINE(PACAKSAVE, offsetof(struct paca_struct, kstack));
@@ -163,8 +182,12 @@ int main(void)
 <<<<<<< HEAD
 	DEFINE(PACAIRQHAPPENED, offsetof(struct paca_struct, irq_happened));
 =======
+<<<<<<< HEAD
+	DEFINE(PACAIRQHAPPENED, offsetof(struct paca_struct, irq_happened));
+=======
 	DEFINE(PACAHARDIRQEN, offsetof(struct paca_struct, hard_enabled));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(PACACONTEXTID, offsetof(struct paca_struct, context.id));
 #ifdef CONFIG_PPC_MM_SLICES
 	DEFINE(PACALOWSLICESPSIZE, offsetof(struct paca_struct,
@@ -217,8 +240,14 @@ int main(void)
 	DEFINE(LPPACA_DTLIDX, offsetof(struct lppaca, dtl_idx));
 	DEFINE(LPPACA_YIELDCOUNT, offsetof(struct lppaca, yield_count));
 =======
+<<<<<<< HEAD
+	DEFINE(LPPACA_PMCINUSE, offsetof(struct lppaca, pmcregs_in_use));
+	DEFINE(LPPACA_DTLIDX, offsetof(struct lppaca, dtl_idx));
+	DEFINE(LPPACA_YIELDCOUNT, offsetof(struct lppaca, yield_count));
+=======
 	DEFINE(LPPACA_DTLIDX, offsetof(struct lppaca, dtl_idx));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(PACA_DTL_RIDX, offsetof(struct paca_struct, dtl_ridx));
 #endif /* CONFIG_PPC_STD_MMU_64 */
 	DEFINE(PACAEMERGSP, offsetof(struct paca_struct, emergency_sp));
@@ -232,12 +261,16 @@ int main(void)
 <<<<<<< HEAD
 	DEFINE(PACA_NAPSTATELOST, offsetof(struct paca_struct, nap_state_lost));
 =======
+<<<<<<< HEAD
+	DEFINE(PACA_NAPSTATELOST, offsetof(struct paca_struct, nap_state_lost));
+=======
 #ifdef CONFIG_KVM_BOOK3S_64_HANDLER
 	DEFINE(PACA_KVM_SVCPU, offsetof(struct paca_struct, shadow_vcpu));
 	DEFINE(SVCPU_SLB, offsetof(struct kvmppc_book3s_shadow_vcpu, slb));
 	DEFINE(SVCPU_SLB_MAX, offsetof(struct kvmppc_book3s_shadow_vcpu, slb_max));
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PPC64 */
 
 	/* RTAS */
@@ -415,6 +448,8 @@ int main(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ISERIES
 	/* the assembler miscalculates the VSID values */
 	DEFINE(PAGE_OFFSET_ESID, GET_ESID(PAGE_OFFSET));
@@ -427,6 +462,7 @@ int main(void)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(PGD_TABLE_SIZE, PGD_TABLE_SIZE);
 	DEFINE(PTE_SIZE, sizeof(pte_t));
 
@@ -436,6 +472,9 @@ int main(void)
 	DEFINE(VCPU_GPRS, offsetof(struct kvm_vcpu, arch.gpr));
 	DEFINE(VCPU_VRSAVE, offsetof(struct kvm_vcpu, arch.vrsave));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(VCPU_FPRS, offsetof(struct kvm_vcpu, arch.fpr));
 	DEFINE(VCPU_FPSCR, offsetof(struct kvm_vcpu, arch.fpscr));
 #ifdef CONFIG_ALTIVEC
@@ -598,6 +637,8 @@ int main(void)
 #endif /* CONFIG_KVM_BOOK3S_64_HV */
 
 #else /* CONFIG_PPC_BOOK3S */
+<<<<<<< HEAD
+=======
 =======
 	DEFINE(VCPU_SPRG4, offsetof(struct kvm_vcpu, arch.sprg4));
 	DEFINE(VCPU_SPRG5, offsetof(struct kvm_vcpu, arch.sprg5));
@@ -661,6 +702,7 @@ int main(void)
 #endif
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(VCPU_CR, offsetof(struct kvm_vcpu, arch.cr));
 	DEFINE(VCPU_XER, offsetof(struct kvm_vcpu, arch.xer));
 	DEFINE(VCPU_LR, offsetof(struct kvm_vcpu, arch.lr));
@@ -673,8 +715,12 @@ int main(void)
 <<<<<<< HEAD
 #endif /* CONFIG_KVM */
 =======
+<<<<<<< HEAD
+#endif /* CONFIG_KVM */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_KVM_GUEST
 	DEFINE(KVM_MAGIC_SCRATCH1, offsetof(struct kvm_vcpu_arch_shared,
@@ -705,6 +751,9 @@ int main(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_KVM) && defined(CONFIG_SPE)
 	DEFINE(VCPU_EVR, offsetof(struct kvm_vcpu, arch.evr[0]));
 	DEFINE(VCPU_ACC, offsetof(struct kvm_vcpu, arch.acc));
@@ -712,8 +761,11 @@ int main(void)
 	DEFINE(VCPU_HOST_SPEFSCR, offsetof(struct kvm_vcpu, arch.host_spefscr));
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KVM_EXIT_TIMING
 	DEFINE(VCPU_TIMING_EXIT_TBU, offsetof(struct kvm_vcpu,
 						arch.timing_exit.tv32.tbu));
@@ -726,6 +778,9 @@ int main(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_POWERNV
 	DEFINE(OPAL_MC_GPR3, offsetof(struct opal_machine_check_event, gpr3));
 	DEFINE(OPAL_MC_SRR0, offsetof(struct opal_machine_check_event, srr0));
@@ -733,7 +788,10 @@ int main(void)
 	DEFINE(PACA_OPAL_MC_EVT, offsetof(struct paca_struct, opal_mc_evt));
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }

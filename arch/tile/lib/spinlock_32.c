@@ -147,8 +147,12 @@ void arch_read_unlock(arch_rwlock_t *rwlock)
 <<<<<<< HEAD
 		if (likely((val & 1) == 0)) {
 =======
+<<<<<<< HEAD
+		if (likely((val & 1) == 0)) {
+=======
 		if (likely(val & 1) == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rwlock->lock = val - (1 << _RD_COUNT_SHIFT);
 			__insn_mtspr(SPR_INTERRUPT_CRITICAL_SECTION, 0);
 			break;

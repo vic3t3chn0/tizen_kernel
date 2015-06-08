@@ -161,8 +161,12 @@ xfs_uuid_mount(
 <<<<<<< HEAD
 	xfs_warn(mp, "Filesystem has duplicate UUID %pU - can't mount", uuid);
 =======
+<<<<<<< HEAD
+	xfs_warn(mp, "Filesystem has duplicate UUID %pU - can't mount", uuid);
+=======
 	xfs_warn(mp, "Filesystem has duplicate UUID - can't mount");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return XFS_ERROR(EINVAL);
 }
 
@@ -352,8 +356,12 @@ xfs_mount_validate_sb(
 <<<<<<< HEAD
 	 * More sanity checking.  Most of these were stolen directly from
 =======
+<<<<<<< HEAD
+	 * More sanity checking.  Most of these were stolen directly from
+=======
 	 * More sanity checking. These were stolen directly from
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * xfs_repair.
 	 */
 	if (unlikely(
@@ -377,6 +385,9 @@ xfs_mount_validate_sb(
 	    (sbp->sb_rextsize * sbp->sb_blocksize > XFS_MAX_RTEXTSIZE)	||
 	    (sbp->sb_rextsize * sbp->sb_blocksize < XFS_MIN_RTEXTSIZE)	||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (sbp->sb_imax_pct > 100 /* zero sb_imax_pct is valid */)	||
 	    sbp->sb_dblocks == 0					||
 	    sbp->sb_dblocks > XFS_MAX_DBLOCKS(sbp)			||
@@ -384,6 +395,8 @@ xfs_mount_validate_sb(
 		if (loud)
 			XFS_CORRUPTION_ERROR("SB sanity check failed",
 				XFS_ERRLEVEL_LOW, mp, sbp);
+<<<<<<< HEAD
+=======
 =======
 	    (sbp->sb_imax_pct > 100 /* zero sb_imax_pct is valid */))) {
 		if (loud)
@@ -403,6 +416,7 @@ xfs_mount_validate_sb(
 		if (loud)
 			xfs_warn(mp, "SB sanity check 2 failed");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return XFS_ERROR(EFSCORRUPTED);
 	}
 
@@ -582,16 +596,22 @@ out_unwind:
 void
 xfs_sb_from_disk(
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xfs_mount	*mp,
 	xfs_dsb_t	*from)
 {
 	struct xfs_sb *to = &mp->m_sb;
 
+<<<<<<< HEAD
+=======
 =======
 	xfs_sb_t	*to,
 	xfs_dsb_t	*from)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	to->sb_magicnum = be32_to_cpu(from->sb_magicnum);
 	to->sb_blocksize = be32_to_cpu(from->sb_blocksize);
 	to->sb_dblocks = be64_to_cpu(from->sb_dblocks);
@@ -732,8 +752,12 @@ reread:
 <<<<<<< HEAD
 	xfs_sb_from_disk(mp, XFS_BUF_TO_SBP(bp));
 =======
+<<<<<<< HEAD
+	xfs_sb_from_disk(mp, XFS_BUF_TO_SBP(bp));
+=======
 	xfs_sb_from_disk(&mp->m_sb, XFS_BUF_TO_SBP(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = xfs_mount_validate_sb(mp, &(mp->m_sb), flags);
 	if (error) {
 		if (loud)
@@ -895,8 +919,13 @@ xfs_update_alignment(xfs_mount_t *mp)
 				xfs_warn(mp, "alignment check failed: "
 					 "(sunit/swidth vs. blocksize)");
 =======
+<<<<<<< HEAD
+				xfs_warn(mp, "alignment check failed: "
+					 "(sunit/swidth vs. blocksize)");
+=======
 				xfs_warn(mp, "alignment check 1 failed");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return XFS_ERROR(EINVAL);
 			}
 			mp->m_dalign = mp->m_swidth = 0;
@@ -911,7 +940,12 @@ xfs_update_alignment(xfs_mount_t *mp)
 					xfs_warn(mp, "alignment check failed: "
 						 "(sunit/swidth vs. ag size)");
 =======
+<<<<<<< HEAD
+					xfs_warn(mp, "alignment check failed: "
+						 "(sunit/swidth vs. ag size)");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					return XFS_ERROR(EINVAL);
 				}
 				xfs_warn(mp,
@@ -930,9 +964,14 @@ xfs_update_alignment(xfs_mount_t *mp)
 					xfs_warn(mp, "alignment check failed: "
 						"sunit(%d) less than bsize(%d)",
 =======
+<<<<<<< HEAD
+					xfs_warn(mp, "alignment check failed: "
+						"sunit(%d) less than bsize(%d)",
+=======
 					xfs_warn(mp,
 		"stripe alignment turned off: sunit(%d) less than bsize(%d)",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						mp->m_dalign,
 						mp->m_blockmask +1);
 					return XFS_ERROR(EINVAL);
@@ -1140,11 +1179,14 @@ xfs_mount_reset_sbqflags(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef QUOTADEBUG
 	xfs_notice(mp, "Writing superblock quota changes");
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tp = xfs_trans_alloc(mp, XFS_TRANS_QM_SBCHANGE);
 	error = xfs_trans_reserve(tp, 0, mp->m_sb.sb_sectsize + 128, 0, 0,
 				      XFS_DEFAULT_LOG_COUNT);
@@ -1390,8 +1432,12 @@ xfs_mountfs(
 <<<<<<< HEAD
 	if (unlikely(!S_ISDIR(rip->i_d.di_mode))) {
 =======
+<<<<<<< HEAD
+	if (unlikely(!S_ISDIR(rip->i_d.di_mode))) {
+=======
 	if (unlikely((rip->i_d.di_mode & S_IFMT) != S_IFDIR)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_warn(mp, "corrupted root inode %llu: not a directory",
 			(unsigned long long)rip->i_ino);
 		xfs_iunlock(rip, XFS_ILOCK_EXCL);
@@ -1547,8 +1593,12 @@ xfs_unmountfs(
 <<<<<<< HEAD
 	xfs_flush_buftarg(mp->m_ddev_targp, 1);
 =======
+<<<<<<< HEAD
+	xfs_flush_buftarg(mp->m_ddev_targp, 1);
+=======
 	XFS_bflush(mp->m_ddev_targp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_reclaim_inodes(mp, SYNC_WAIT);
 
 	xfs_qm_unmount(mp);
@@ -1583,8 +1633,12 @@ xfs_unmountfs(
 <<<<<<< HEAD
 	error = xfs_log_sbcount(mp);
 =======
+<<<<<<< HEAD
+	error = xfs_log_sbcount(mp);
+=======
 	error = xfs_log_sbcount(mp, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		xfs_warn(mp, "Unable to update superblock counters. "
 				"Freespace may not be correct on next mount.");
@@ -1620,6 +1674,9 @@ xfs_fs_writable(xfs_mount_t *mp)
  * xfs_log_sbcount
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Sync the superblock counters to disk.
  *
  * Note this code can be called during the process of freezing, so
@@ -1628,6 +1685,8 @@ xfs_fs_writable(xfs_mount_t *mp)
  */
 int
 xfs_log_sbcount(xfs_mount_t *mp)
+<<<<<<< HEAD
+=======
 =======
  * Called either periodically to keep the on disk superblock values
  * roughly up to date or from unmount to make sure the values are
@@ -1642,6 +1701,7 @@ xfs_log_sbcount(
 	xfs_mount_t	*mp,
 	uint		sync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	xfs_trans_t	*tp;
 	int		error;
@@ -1670,9 +1730,13 @@ xfs_log_sbcount(
 <<<<<<< HEAD
 	xfs_trans_set_sync(tp);
 =======
+<<<<<<< HEAD
+	xfs_trans_set_sync(tp);
+=======
 	if (sync)
 		xfs_trans_set_sync(tp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = xfs_trans_commit(tp, 0);
 	return error;
 }
@@ -1695,6 +1759,9 @@ xfs_unmountfs_writesb(xfs_mount_t *mp)
 		XFS_BUF_UNDONE(sbp);
 		XFS_BUF_UNREAD(sbp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_buf_delwri_dequeue(sbp);
 		XFS_BUF_WRITE(sbp);
 		XFS_BUF_UNASYNC(sbp);
@@ -1703,6 +1770,8 @@ xfs_unmountfs_writesb(xfs_mount_t *mp)
 		error = xfs_buf_iowait(sbp);
 		if (error)
 			xfs_buf_ioerror_alert(sbp, __func__);
+<<<<<<< HEAD
+=======
 =======
 		XFS_BUF_UNDELAYWRITE(sbp);
 		XFS_BUF_WRITE(sbp);
@@ -1714,6 +1783,7 @@ xfs_unmountfs_writesb(xfs_mount_t *mp)
 			xfs_ioerror_alert("xfs_unmountfs_writesb",
 					  mp, sbp, XFS_BUF_ADDR(sbp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_buf_relse(sbp);
 	}
 	return error;
@@ -2019,6 +2089,9 @@ unwind:
  * If it can't then we'll return NULL.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct xfs_buf *
 xfs_getsb(
 	struct xfs_mount	*mp,
@@ -2033,6 +2106,8 @@ xfs_getsb(
 	}
 
 	xfs_buf_hold(bp);
+<<<<<<< HEAD
+=======
 =======
 xfs_buf_t *
 xfs_getsb(
@@ -2052,6 +2127,7 @@ xfs_getsb(
 	}
 	XFS_BUF_HOLD(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(XFS_BUF_ISDONE(bp));
 	return bp;
 }

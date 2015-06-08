@@ -53,7 +53,14 @@
 #include <net/iw_handler.h>
 
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/byteorder.h>
 #include <asm/uaccess.h>
 
@@ -273,7 +280,15 @@ static const struct net_device_ops ray_netdev_ops = {
 	.ndo_start_xmit		= ray_dev_start_xmit,
 	.ndo_set_config		= ray_dev_config,
 	.ndo_get_stats		= ray_get_stats,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= set_multicast_list,
+=======
 	.ndo_set_multicast_list = set_multicast_list,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.ndo_set_multicast_list = set_multicast_list,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_change_mtu		= eth_change_mtu,
 	.ndo_set_mac_address 	= eth_mac_addr,
 	.ndo_validate_addr	= eth_validate_addr,
@@ -2426,7 +2441,15 @@ static void rx_authenticate(ray_dev_t *local, struct rcs __iomem *prcs,
 			    unsigned int pkt_addr, int rx_len)
 {
 	UCHAR buff[256];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ray_rx_msg *msg = (struct ray_rx_msg *) buff;
+=======
 	struct rx_msg *msg = (struct rx_msg *)buff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct rx_msg *msg = (struct rx_msg *)buff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	del_timer(&local->timer);
 
@@ -2513,7 +2536,15 @@ static void rx_deauthenticate(ray_dev_t *local, struct rcs __iomem *prcs,
 			      unsigned int pkt_addr, int rx_len)
 {
 /*  UCHAR buff[256];
+<<<<<<< HEAD
+<<<<<<< HEAD
+    struct ray_rx_msg *msg = (struct ray_rx_msg *) buff;
+=======
     struct rx_msg *msg = (struct rx_msg *)buff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    struct rx_msg *msg = (struct rx_msg *)buff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 */
 	pr_debug("Deauthentication frame received\n");
 	local->authentication_state = UNAUTHENTICATED;

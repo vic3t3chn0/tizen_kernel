@@ -26,6 +26,13 @@
 #include <linux/slab.h>
 #include <linux/dma-buf.h>
 #include <linux/anon_inodes.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int is_dma_buf_file(struct file *);
 
@@ -43,8 +50,36 @@ static int dma_buf_release(struct inode *inode, struct file *file)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int dma_buf_mmap_internal(struct file *file, struct vm_area_struct *vma)
+{
+	struct dma_buf *dmabuf;
+
+	if (!is_dma_buf_file(file))
+		return -EINVAL;
+
+	dmabuf = file->private_data;
+
+	/* check for overflowing the buffer's size */
+	if (vma->vm_pgoff + ((vma->vm_end - vma->vm_start) >> PAGE_SHIFT) >
+	    dmabuf->size >> PAGE_SHIFT)
+		return -EINVAL;
+
+	return dmabuf->ops->mmap(dmabuf, vma);
+}
+
 static const struct file_operations dma_buf_fops = {
 	.release	= dma_buf_release,
+	.mmap		= dma_buf_mmap_internal,
+=======
+static const struct file_operations dma_buf_fops = {
+	.release	= dma_buf_release,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct file_operations dma_buf_fops = {
+	.release	= dma_buf_release,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -81,7 +116,16 @@ struct dma_buf *dma_buf_export(void *priv, const struct dma_buf_ops *ops,
 			  || !ops->unmap_dma_buf
 			  || !ops->release
 			  || !ops->kmap_atomic
+<<<<<<< HEAD
+<<<<<<< HEAD
+			  || !ops->kmap
+			  || !ops->mmap)) {
+=======
 			  || !ops->kmap)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			  || !ops->kmap)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ERR_PTR(-EINVAL);
 	}
 
@@ -405,3 +449,52 @@ void dma_buf_kunmap(struct dma_buf *dmabuf, unsigned long page_num,
 		dmabuf->ops->kunmap(dmabuf, page_num, vaddr);
 }
 EXPORT_SYMBOL_GPL(dma_buf_kunmap);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+
+/**
+ * dma_buf_mmap - Setup up a userspace mmap with the given vma
+ * @dma_buf:	[in]	buffer that should back the vma
+ * @vma:	[in]	vma for the mmap
+ * @pgoff:	[in]	offset in pages where this mmap should start within the
+ * 			dma-buf buffer.
+ *
+ * This function adjusts the passed in vma so that it points at the file of the
+ * dma_buf operation. It alsog adjusts the starting pgoff and does bounds
+ * checking on the size of the vma. Then it calls the exporters mmap function to
+ * set up the mapping.
+ *
+ * Can return negative error values, returns 0 on success.
+ */
+int dma_buf_mmap(struct dma_buf *dmabuf, struct vm_area_struct *vma,
+		 unsigned long pgoff)
+{
+	if (WARN_ON(!dmabuf || !vma))
+		return -EINVAL;
+
+	/* check for offset overflow */
+	if (pgoff + ((vma->vm_end - vma->vm_start) >> PAGE_SHIFT) < pgoff)
+		return -EOVERFLOW;
+
+	/* check for overflowing the buffer's size */
+	if (pgoff + ((vma->vm_end - vma->vm_start) >> PAGE_SHIFT) >
+	    dmabuf->size >> PAGE_SHIFT)
+		return -EINVAL;
+
+	/* readjust the vma */
+	if (vma->vm_file)
+		fput(vma->vm_file);
+
+	vma->vm_file = dmabuf->file;
+	get_file(vma->vm_file);
+
+	vma->vm_pgoff = pgoff;
+
+	return dmabuf->ops->mmap(dmabuf, vma);
+}
+EXPORT_SYMBOL_GPL(dma_buf_mmap);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

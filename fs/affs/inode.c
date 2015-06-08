@@ -57,8 +57,12 @@ struct inode *affs_iget(struct super_block *sb, unsigned long ino)
 <<<<<<< HEAD
 	set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 1);
+=======
 	inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_mode = 0;
 	AFFS_I(inode)->i_extcnt = 1;
 	AFFS_I(inode)->i_ext_last = ~1;
@@ -144,8 +148,12 @@ struct inode *affs_iget(struct super_block *sb, unsigned long ino)
 <<<<<<< HEAD
 			set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+			set_nlink(inode, 2);
+=======
 			inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_mapping->a_ops = (sbi->s_flags & SF_OFS) ? &affs_aops_ofs : &affs_aops;
 		inode->i_op = &affs_file_inode_operations;
 		inode->i_fop = &affs_file_operations;
@@ -315,8 +323,12 @@ affs_new_inode(struct inode *dir)
 <<<<<<< HEAD
 	set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 1);
+=======
 	inode->i_nlink   = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_mtime   = inode->i_atime = inode->i_ctime = CURRENT_TIME_SEC;
 	atomic_set(&AFFS_I(inode)->i_opencnt, 0);
 	AFFS_I(inode)->i_blkcnt = 0;
@@ -402,8 +414,12 @@ affs_add_entry(struct inode *dir, struct inode *inode, struct dentry *dentry, s3
 <<<<<<< HEAD
 		set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, 2);
+=======
 		inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ihold(inode);
 	}
 	affs_fix_checksum(sb, bh);

@@ -26,6 +26,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct kvmppc_slb {
 	u64 esid;
 	u64 vsid;
@@ -41,6 +43,7 @@ struct kvmppc_slb {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvmppc_bat {
 	u64 raw;
 	u32 bepi;
@@ -71,6 +74,9 @@ struct kvmppc_sid_map {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct hpte_cache {
 	struct hlist_node list_pte;
 	struct hlist_node list_pte_long;
@@ -83,16 +89,22 @@ struct hpte_cache {
 	struct kvmppc_pte pte;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvmppc_vcpu_book3s {
 	struct kvm_vcpu vcpu;
 	struct kvmppc_book3s_shadow_vcpu *shadow_vcpu;
 	struct kvmppc_sid_map sid_map[SID_MAP_NUM];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct kvmppc_slb slb[64];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct {
 		u64 esid;
 		u64 vsid;
@@ -103,6 +115,9 @@ struct kvmppc_vcpu_book3s {
 	u64 hid[6];
 	u64 gqr[8];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 sdr1;
 	u64 hior;
 	u64 msr_mask;
@@ -124,6 +139,8 @@ struct kvmppc_vcpu_book3s {
 	struct hlist_head hpte_hash_vpte_long[HPTEG_HASH_NUM_VPTE_LONG];
 	int hpte_cache_count;
 	spinlock_t mmu_lock;
+<<<<<<< HEAD
+=======
 =======
 	int slb_nr;
 	u64 sdr1;
@@ -139,6 +156,7 @@ struct kvmppc_vcpu_book3s {
 	int context_id[SID_CONTEXTS];
 	ulong prog_flags; /* flags to inject when giving a 700 trap */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define CONTEXT_HOST		0
@@ -156,6 +174,9 @@ extern void kvmppc_mmu_pte_vflush(struct kvm_vcpu *vcpu, u64 vp, u64 vp_mask);
 extern void kvmppc_mmu_pte_pflush(struct kvm_vcpu *vcpu, ulong pa_start, ulong pa_end);
 extern void kvmppc_set_msr(struct kvm_vcpu *vcpu, u64 new_msr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void kvmppc_set_pvr(struct kvm_vcpu *vcpu, u32 pvr);
 extern void kvmppc_mmu_book3s_64_init(struct kvm_vcpu *vcpu);
 extern void kvmppc_mmu_book3s_32_init(struct kvm_vcpu *vcpu);
@@ -168,6 +189,8 @@ extern int kvmppc_book3s_hv_page_fault(struct kvm_run *run,
 			unsigned long status);
 extern long kvmppc_hv_find_lock_hpte(struct kvm *kvm, gva_t eaddr,
 			unsigned long slb_v, unsigned long valid);
+<<<<<<< HEAD
+=======
 =======
 extern void kvmppc_mmu_book3s_64_init(struct kvm_vcpu *vcpu);
 extern void kvmppc_mmu_book3s_32_init(struct kvm_vcpu *vcpu);
@@ -175,6 +198,7 @@ extern int kvmppc_mmu_map_page(struct kvm_vcpu *vcpu, struct kvmppc_pte *pte);
 extern int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr);
 extern void kvmppc_mmu_flush_segments(struct kvm_vcpu *vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void kvmppc_mmu_hpte_cache_map(struct kvm_vcpu *vcpu, struct hpte_cache *pte);
 extern struct hpte_cache *kvmppc_mmu_hpte_cache_next(struct kvm_vcpu *vcpu);
@@ -186,7 +210,11 @@ extern void kvmppc_mmu_hpte_sysexit(void);
 <<<<<<< HEAD
 extern int kvmppc_mmu_hv_init(void);
 =======
+<<<<<<< HEAD
+extern int kvmppc_mmu_hv_init(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int kvmppc_ld(struct kvm_vcpu *vcpu, ulong *eaddr, int size, void *ptr, bool data);
 extern int kvmppc_st(struct kvm_vcpu *vcpu, ulong *eaddr, int size, void *ptr, bool data);
@@ -194,13 +222,20 @@ extern void kvmppc_book3s_queue_irqprio(struct kvm_vcpu *vcpu, unsigned int vec)
 <<<<<<< HEAD
 extern void kvmppc_inject_interrupt(struct kvm_vcpu *vcpu, int vec, u64 flags);
 =======
+<<<<<<< HEAD
+extern void kvmppc_inject_interrupt(struct kvm_vcpu *vcpu, int vec, u64 flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void kvmppc_set_bat(struct kvm_vcpu *vcpu, struct kvmppc_bat *bat,
 			   bool upper, u32 val);
 extern void kvmppc_giveup_ext(struct kvm_vcpu *vcpu, ulong msr);
 extern int kvmppc_emulate_paired_single(struct kvm_run *run, struct kvm_vcpu *vcpu);
 extern pfn_t kvmppc_gfn_to_pfn(struct kvm_vcpu *vcpu, gfn_t gfn);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void kvmppc_add_revmap_chain(struct kvm *kvm, struct revmap_entry *rev,
 			unsigned long *rmap, long pte_index, int realmode);
 extern void kvmppc_invalidate_hpte(struct kvm *kvm, unsigned long *hptep,
@@ -219,12 +254,15 @@ extern long kvmppc_hv_get_dirty_log(struct kvm *kvm,
 
 extern void kvmppc_entry_trampoline(void);
 extern void kvmppc_hv_entry_trampoline(void);
+<<<<<<< HEAD
+=======
 =======
 
 extern ulong kvmppc_trampoline_lowmem;
 extern ulong kvmppc_trampoline_enter;
 extern void kvmppc_rmcall(ulong srr0, ulong srr1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void kvmppc_load_up_fpu(void);
 extern void kvmppc_load_up_altivec(void);
 extern void kvmppc_load_up_vsx(void);
@@ -233,7 +271,11 @@ extern ulong kvmppc_alignment_dar(struct kvm_vcpu *vcpu, unsigned int inst);
 <<<<<<< HEAD
 extern int kvmppc_h_pr(struct kvm_vcpu *vcpu, unsigned long cmd);
 =======
+<<<<<<< HEAD
+extern int kvmppc_h_pr(struct kvm_vcpu *vcpu, unsigned long cmd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct kvmppc_vcpu_book3s *to_book3s(struct kvm_vcpu *vcpu)
 {
@@ -241,6 +283,9 @@ static inline struct kvmppc_vcpu_book3s *to_book3s(struct kvm_vcpu *vcpu)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void kvm_return_point(void);
 
 /* Also add subarch specific defines */
@@ -267,6 +312,8 @@ static inline void kvmppc_update_int_pending(struct kvm_vcpu *vcpu,
 	else if (old_pending)
 		vcpu->arch.shared->int_pending = 0;
 }
+<<<<<<< HEAD
+=======
 =======
 static inline ulong dsisr(void)
 {
@@ -278,6 +325,7 @@ static inline ulong dsisr(void)
 extern void kvm_return_point(void);
 static inline struct kvmppc_book3s_shadow_vcpu *to_svcpu(struct kvm_vcpu *vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void kvmppc_set_gpr(struct kvm_vcpu *vcpu, int num, ulong val)
 {
@@ -287,8 +335,14 @@ static inline void kvmppc_set_gpr(struct kvm_vcpu *vcpu, int num, ulong val)
 		svcpu->gpr[num] = val;
 		svcpu_put(svcpu);
 =======
+<<<<<<< HEAD
+		struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+		svcpu->gpr[num] = val;
+		svcpu_put(svcpu);
+=======
 		to_svcpu(vcpu)->gpr[num] = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		to_book3s(vcpu)->shadow_vcpu->gpr[num] = val;
 	} else
 		vcpu->arch.gpr[num] = val;
@@ -297,17 +351,23 @@ static inline void kvmppc_set_gpr(struct kvm_vcpu *vcpu, int num, ulong val)
 static inline ulong kvmppc_get_gpr(struct kvm_vcpu *vcpu, int num)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ( num < 14 ) {
 		struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 		ulong r = svcpu->gpr[num];
 		svcpu_put(svcpu);
 		return r;
 	} else
+<<<<<<< HEAD
+=======
 =======
 	if ( num < 14 )
 		return to_svcpu(vcpu)->gpr[num];
 	else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return vcpu->arch.gpr[num];
 }
 
@@ -318,48 +378,72 @@ static inline void kvmppc_set_cr(struct kvm_vcpu *vcpu, u32 val)
 	svcpu->cr = val;
 	svcpu_put(svcpu);
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+	svcpu->cr = val;
+	svcpu_put(svcpu);
+=======
 	to_svcpu(vcpu)->cr = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	to_book3s(vcpu)->shadow_vcpu->cr = val;
 }
 
 static inline u32 kvmppc_get_cr(struct kvm_vcpu *vcpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	u32 r;
 	r = svcpu->cr;
 	svcpu_put(svcpu);
 	return r;
+<<<<<<< HEAD
+=======
 =======
 	return to_svcpu(vcpu)->cr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void kvmppc_set_xer(struct kvm_vcpu *vcpu, u32 val)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	svcpu->xer = val;
 	to_book3s(vcpu)->shadow_vcpu->xer = val;
 	svcpu_put(svcpu);
+<<<<<<< HEAD
+=======
 =======
 	to_svcpu(vcpu)->xer = val;
 	to_book3s(vcpu)->shadow_vcpu->xer = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline u32 kvmppc_get_xer(struct kvm_vcpu *vcpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	u32 r;
 	r = svcpu->xer;
 	svcpu_put(svcpu);
 	return r;
+<<<<<<< HEAD
+=======
 =======
 	return to_svcpu(vcpu)->xer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void kvmppc_set_ctr(struct kvm_vcpu *vcpu, ulong val)
@@ -369,21 +453,33 @@ static inline void kvmppc_set_ctr(struct kvm_vcpu *vcpu, ulong val)
 	svcpu->ctr = val;
 	svcpu_put(svcpu);
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+	svcpu->ctr = val;
+	svcpu_put(svcpu);
+=======
 	to_svcpu(vcpu)->ctr = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline ulong kvmppc_get_ctr(struct kvm_vcpu *vcpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	ulong r;
 	r = svcpu->ctr;
 	svcpu_put(svcpu);
 	return r;
+<<<<<<< HEAD
+=======
 =======
 	return to_svcpu(vcpu)->ctr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void kvmppc_set_lr(struct kvm_vcpu *vcpu, ulong val)
@@ -393,21 +489,33 @@ static inline void kvmppc_set_lr(struct kvm_vcpu *vcpu, ulong val)
 	svcpu->lr = val;
 	svcpu_put(svcpu);
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+	svcpu->lr = val;
+	svcpu_put(svcpu);
+=======
 	to_svcpu(vcpu)->lr = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline ulong kvmppc_get_lr(struct kvm_vcpu *vcpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	ulong r;
 	r = svcpu->lr;
 	svcpu_put(svcpu);
 	return r;
+<<<<<<< HEAD
+=======
 =======
 	return to_svcpu(vcpu)->lr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void kvmppc_set_pc(struct kvm_vcpu *vcpu, ulong val)
@@ -417,21 +525,33 @@ static inline void kvmppc_set_pc(struct kvm_vcpu *vcpu, ulong val)
 	svcpu->pc = val;
 	svcpu_put(svcpu);
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+	svcpu->pc = val;
+	svcpu_put(svcpu);
+=======
 	to_svcpu(vcpu)->pc = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline ulong kvmppc_get_pc(struct kvm_vcpu *vcpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	ulong r;
 	r = svcpu->pc;
 	svcpu_put(svcpu);
 	return r;
+<<<<<<< HEAD
+=======
 =======
 	return to_svcpu(vcpu)->pc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline u32 kvmppc_get_last_inst(struct kvm_vcpu *vcpu)
@@ -441,8 +561,13 @@ static inline u32 kvmppc_get_last_inst(struct kvm_vcpu *vcpu)
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	u32 r;
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+	u32 r;
+=======
 	struct kvmppc_book3s_shadow_vcpu *svcpu = to_svcpu(vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Load the instruction manually if it failed to do so in the
 	 * exit path */
@@ -450,6 +575,9 @@ static inline u32 kvmppc_get_last_inst(struct kvm_vcpu *vcpu)
 		kvmppc_ld(vcpu, &pc, sizeof(u32), &svcpu->last_inst, false);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = svcpu->last_inst;
 	svcpu_put(svcpu);
 	return r;
@@ -565,14 +693,20 @@ static inline u32 kvmppc_get_last_inst(struct kvm_vcpu *vcpu)
 		kvmppc_ld(vcpu, &pc, sizeof(u32), &vcpu->arch.last_inst, false);
 
 	return vcpu->arch.last_inst;
+<<<<<<< HEAD
+=======
 =======
 	return svcpu->last_inst;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline ulong kvmppc_get_fault_dar(struct kvm_vcpu *vcpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return vcpu->arch.fault_dar;
 }
 
@@ -582,11 +716,14 @@ static inline bool kvmppc_critical_section(struct kvm_vcpu *vcpu)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	return to_svcpu(vcpu)->fault_dar;
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Magic register values loaded into r3 and r4 before the 'sc' assembly
  * instruction for the OSI hypercalls */
 #define OSI_SC_MAGIC_R3			0x113724FA
@@ -594,6 +731,8 @@ static inline bool kvmppc_critical_section(struct kvm_vcpu *vcpu)
 
 #define INS_DCBZ			0x7c0007ec
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Also add subarch specific defines */
@@ -605,4 +744,5 @@ static inline bool kvmppc_critical_section(struct kvm_vcpu *vcpu)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_KVM_BOOK3S_H__ */

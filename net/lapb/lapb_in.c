@@ -32,8 +32,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fcntl.h>
 #include <linux/mm.h>
 #include <linux/interrupt.h>
@@ -48,6 +51,9 @@ static void lapb_state0_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 {
 	switch (frame->type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case LAPB_SABM:
 #if LAPB_DEBUG > 1
 		printk(KERN_DEBUG "lapb: (%p) S0 RX SABM(%d)\n",
@@ -128,6 +134,8 @@ static void lapb_state0_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 
 	default:
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case LAPB_SABM:
 #if LAPB_DEBUG > 1
@@ -213,6 +221,7 @@ static void lapb_state0_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 		default:
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	kfree_skb(skb);
@@ -227,6 +236,9 @@ static void lapb_state1_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 {
 	switch (frame->type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case LAPB_SABM:
 #if LAPB_DEBUG > 1
 		printk(KERN_DEBUG "lapb: (%p) S1 RX SABM(%d)\n",
@@ -263,6 +275,8 @@ static void lapb_state1_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 					  LAPB_RESPONSE);
 		} else {
 #if LAPB_DEBUG > 1
+<<<<<<< HEAD
+=======
 =======
 		case LAPB_SABM:
 #if LAPB_DEBUG > 1
@@ -313,12 +327,16 @@ static void lapb_state1_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 			printk(KERN_DEBUG "lapb: (%p) S1 RX DISC(%d)\n",
 			       lapb->dev, frame->pf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_DEBUG "lapb: (%p) S1 TX DM(%d)\n",
 			       lapb->dev, frame->pf);
 #endif
 			lapb_send_control(lapb, LAPB_DM, frame->pf,
 					  LAPB_RESPONSE);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
@@ -369,6 +387,8 @@ static void lapb_state1_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 			lapb_disconnect_indication(lapb, LAPB_REFUSED);
 		}
 		break;
+<<<<<<< HEAD
+=======
 =======
 			break;
 
@@ -412,6 +432,7 @@ static void lapb_state1_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 			}
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	kfree_skb(skb);
@@ -426,6 +447,9 @@ static void lapb_state2_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 {
 	switch (frame->type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case LAPB_SABM:
 	case LAPB_SABME:
 #if LAPB_DEBUG > 1
@@ -493,6 +517,8 @@ static void lapb_state2_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 			lapb_send_control(lapb, LAPB_DM, frame->pf,
 					  LAPB_RESPONSE);
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case LAPB_SABM:
 		case LAPB_SABME:
@@ -567,6 +593,7 @@ static void lapb_state2_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 						  LAPB_RESPONSE);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	kfree_skb(skb);
@@ -585,6 +612,9 @@ static void lapb_state3_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 
 	switch (frame->type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case LAPB_SABM:
 #if LAPB_DEBUG > 1
 		printk(KERN_DEBUG "lapb: (%p) S3 RX SABM(%d)\n",
@@ -846,6 +876,8 @@ static void lapb_state3_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 		lapb->state   = LAPB_STATE_4;
 		lapb->n2count = 0;
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case LAPB_SABM:
 #if LAPB_DEBUG > 1
@@ -1119,6 +1151,7 @@ static void lapb_state3_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 			lapb->n2count = 0;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!queued)
@@ -1134,6 +1167,9 @@ static void lapb_state4_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 {
 	switch (frame->type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case LAPB_SABM:
 #if LAPB_DEBUG > 1
 		printk(KERN_DEBUG "lapb: (%p) S4 RX SABM(%d)\n",
@@ -1201,6 +1237,8 @@ static void lapb_state4_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 					  LAPB_RESPONSE);
 		}
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case LAPB_SABM:
 #if LAPB_DEBUG > 1
@@ -1272,6 +1310,7 @@ static void lapb_state4_machine(struct lapb_cb *lapb, struct sk_buff *skb,
 			}
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	kfree_skb(skb);

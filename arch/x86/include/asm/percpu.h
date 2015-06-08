@@ -393,6 +393,11 @@ do {									\
 #define __this_cpu_xchg_2(pcp, val)	percpu_xchg_op(pcp, val)
 #define __this_cpu_xchg_4(pcp, val)	percpu_xchg_op(pcp, val)
 =======
+<<<<<<< HEAD
+#define __this_cpu_xchg_1(pcp, val)	percpu_xchg_op(pcp, val)
+#define __this_cpu_xchg_2(pcp, val)	percpu_xchg_op(pcp, val)
+#define __this_cpu_xchg_4(pcp, val)	percpu_xchg_op(pcp, val)
+=======
 /*
  * Generic fallback operations for __this_cpu_xchg_[1-4] are okay and much
  * faster than an xchg with forced lock semantics.
@@ -400,6 +405,7 @@ do {									\
 #define __this_cpu_xchg_8(pcp, nval)	percpu_xchg_op(pcp, nval)
 #define __this_cpu_cmpxchg_8(pcp, oval, nval)	percpu_cmpxchg_op(pcp, oval, nval)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define this_cpu_read_1(pcp)		percpu_from_op("mov", (pcp), "m"(pcp))
 #define this_cpu_read_2(pcp)		percpu_from_op("mov", (pcp), "m"(pcp))
@@ -425,6 +431,8 @@ do {									\
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define irqsafe_cpu_add_1(pcp, val)	percpu_add_op((pcp), val)
 #define irqsafe_cpu_add_2(pcp, val)	percpu_add_op((pcp), val)
 #define irqsafe_cpu_add_4(pcp, val)	percpu_add_op((pcp), val)
@@ -442,6 +450,7 @@ do {									\
 #define irqsafe_cpu_xchg_4(pcp, nval)	percpu_xchg_op(pcp, nval)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_M386
 #define __this_cpu_add_return_1(pcp, val) percpu_add_return_op(pcp, val)
 #define __this_cpu_add_return_2(pcp, val) percpu_add_return_op(pcp, val)
@@ -458,6 +467,9 @@ do {									\
 #define this_cpu_cmpxchg_4(pcp, oval, nval)	percpu_cmpxchg_op(pcp, oval, nval)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !CONFIG_M386 */
 
 #ifdef CONFIG_X86_CMPXCHG64
@@ -474,6 +486,8 @@ do {									\
 
 #define __this_cpu_cmpxchg_double_4	percpu_cmpxchg8b_double
 #define this_cpu_cmpxchg_double_4	percpu_cmpxchg8b_double
+<<<<<<< HEAD
+=======
 =======
 #define irqsafe_cpu_cmpxchg_1(pcp, oval, nval)	percpu_cmpxchg_op(pcp, oval, nval)
 #define irqsafe_cpu_cmpxchg_2(pcp, oval, nval)	percpu_cmpxchg_op(pcp, oval, nval)
@@ -499,6 +513,7 @@ do {									\
 #define this_cpu_cmpxchg_double_4(pcp1, pcp2, o1, o2, n1, n2)		percpu_cmpxchg8b_double(pcp1, o1, o2, n1, n2)
 #define irqsafe_cpu_cmpxchg_double_4(pcp1, pcp2, o1, o2, n1, n2)	percpu_cmpxchg8b_double(pcp1, o1, o2, n1, n2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_X86_CMPXCHG64 */
 
 /*
@@ -517,7 +532,12 @@ do {									\
 #define __this_cpu_xchg_8(pcp, nval)	percpu_xchg_op(pcp, nval)
 #define __this_cpu_cmpxchg_8(pcp, oval, nval)	percpu_cmpxchg_op(pcp, oval, nval)
 =======
+<<<<<<< HEAD
+#define __this_cpu_xchg_8(pcp, nval)	percpu_xchg_op(pcp, nval)
+#define __this_cpu_cmpxchg_8(pcp, oval, nval)	percpu_cmpxchg_op(pcp, oval, nval)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define this_cpu_read_8(pcp)		percpu_from_op("mov", (pcp), "m"(pcp))
 #define this_cpu_write_8(pcp, val)	percpu_to_op("mov", (pcp), val)
@@ -531,6 +551,8 @@ do {									\
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define irqsafe_cpu_add_8(pcp, val)	percpu_add_op((pcp), val)
 #define irqsafe_cpu_and_8(pcp, val)	percpu_to_op("and", (pcp), val)
 #define irqsafe_cpu_or_8(pcp, val)	percpu_to_op("or", (pcp), val)
@@ -539,6 +561,7 @@ do {									\
 #define irqsafe_cpu_cmpxchg_8(pcp, oval, nval)	percpu_cmpxchg_op(pcp, oval, nval)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Pretty complex macro to generate cmpxchg16 instruction.  The instruction
  * is not supported on early AMD64 processors so we must be able to emulate
@@ -546,6 +569,9 @@ do {									\
  * aligned to a 16 byte boundary.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define percpu_cmpxchg16b_double(pcp1, pcp2, o1, o2, n1, n2)		\
 ({									\
 	bool __ret;							\
@@ -562,6 +588,8 @@ do {									\
 
 #define __this_cpu_cmpxchg_double_8	percpu_cmpxchg16b_double
 #define this_cpu_cmpxchg_double_8	percpu_cmpxchg16b_double
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SMP
 #define CMPXCHG16B_EMU_CALL "call this_cpu_cmpxchg16b_emu\n\t" ASM_NOP3
@@ -589,6 +617,7 @@ do {									\
 #define this_cpu_cmpxchg_double_8(pcp1, pcp2, o1, o2, n1, n2)		percpu_cmpxchg16b_double(pcp1, o1, o2, n1, n2)
 #define irqsafe_cpu_cmpxchg_double_8(pcp1, pcp2, o1, o2, n1, n2)	percpu_cmpxchg16b_double(pcp1, o1, o2, n1, n2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

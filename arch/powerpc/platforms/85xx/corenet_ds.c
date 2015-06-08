@@ -6,8 +6,12 @@
 <<<<<<< HEAD
  * Copyright 2009-2011 Freescale Semiconductor Inc.
 =======
+<<<<<<< HEAD
+ * Copyright 2009-2011 Freescale Semiconductor Inc.
+=======
  * Copyright 2009 Freescale Semiconductor Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute  it and/or modify it
  * under  the terms of  the GNU General  Public License as published by the
@@ -23,16 +27,22 @@
 #include <linux/memblock.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
 #include <asm/ppc-pci.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mm/mmu_decl.h>
 #include <asm/prom.h>
 #include <asm/udbg.h>
@@ -44,11 +54,19 @@
 <<<<<<< HEAD
 #include "smp.h"
 =======
+<<<<<<< HEAD
+#include "smp.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init corenet_ds_pic_init(void)
 {
 	struct mpic *mpic;
+<<<<<<< HEAD
+	unsigned int flags = MPIC_BIG_ENDIAN | MPIC_SINGLE_DEST_CPU |
+		MPIC_NO_RESET;
+=======
 <<<<<<< HEAD
 	unsigned int flags = MPIC_BIG_ENDIAN | MPIC_SINGLE_DEST_CPU |
 		MPIC_NO_RESET;
@@ -71,6 +89,7 @@ void __init corenet_ds_pic_init(void)
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ppc_md.get_irq == mpic_get_coreint_irq)
 		flags |= MPIC_ENABLE_COREINT;
@@ -78,13 +97,22 @@ void __init corenet_ds_pic_init(void)
 <<<<<<< HEAD
 	mpic = mpic_alloc(NULL, 0, flags, 0, 256, " OpenPIC  ");
 =======
+<<<<<<< HEAD
+	mpic = mpic_alloc(NULL, 0, flags, 0, 256, " OpenPIC  ");
+=======
 	mpic = mpic_alloc(np, r.start, flags, 0, 256, " OpenPIC  ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(mpic == NULL);
 
 	mpic_init(mpic);
 }
 
+<<<<<<< HEAD
+/*
+ * Setup the architecture
+ */
+=======
 <<<<<<< HEAD
 /*
  * Setup the architecture
@@ -102,6 +130,7 @@ void __init mpc85xx_smp_init(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init corenet_ds_setup_arch(void)
 {
 #ifdef CONFIG_PCI
@@ -111,6 +140,9 @@ void __init corenet_ds_setup_arch(void)
 	dma_addr_t max = 0xffffffff;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpc85xx_smp_init();
 
 #ifdef CONFIG_PCI
@@ -127,6 +159,8 @@ void __init corenet_ds_setup_arch(void)
 #ifdef CONFIG_PPC64
 	pci_devs_phb_init();
 #endif
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SMP
 	mpc85xx_smp_init();
@@ -146,6 +180,7 @@ void __init corenet_ds_setup_arch(void)
 				hose->dma_window_size);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_SWIOTLB
@@ -164,6 +199,9 @@ static const struct of_device_id of_device_ids[] __devinitconst = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.compatible	= "fsl,srio",
 	},
 	{
@@ -178,9 +216,12 @@ static const struct of_device_id of_device_ids[] __devinitconst = {
 	},
 	{
 		.name		= "handles",
+<<<<<<< HEAD
+=======
 =======
 		.compatible	= "fsl,rapidio-delta",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{}
 };

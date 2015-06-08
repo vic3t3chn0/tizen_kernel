@@ -20,6 +20,18 @@
 
 struct timed_gpio {
 	const char *name;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned	gpio;
+	int		max_timeout;
+	u8		active_low;
+};
+
+struct timed_gpio_platform_data {
+	int		num_gpios;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned 	gpio;
 	int		max_timeout;
 	u8 		active_low;
@@ -27,6 +39,10 @@ struct timed_gpio {
 
 struct timed_gpio_platform_data {
 	int 		num_gpios;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timed_gpio *gpios;
 };
 

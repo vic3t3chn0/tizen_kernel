@@ -28,8 +28,12 @@ struct iotlb_entry {
 <<<<<<< HEAD
 struct omap_iommu {
 =======
+<<<<<<< HEAD
+struct omap_iommu {
+=======
 struct iommu {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char	*name;
 	struct module	*owner;
 	struct clk	*clk;
@@ -37,15 +41,21 @@ struct iommu {
 	struct device	*dev;
 	void		*isr_priv;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iommu_domain *domain;
 
 	unsigned int	refcount;
 	spinlock_t	iommu_lock;	/* global for this whole object */
+<<<<<<< HEAD
+=======
 =======
 
 	unsigned int	refcount;
 	struct mutex	iommu_lock;	/* global for this whole object */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We don't change iopgd for a situation like pgd for a task,
@@ -61,9 +71,12 @@ struct iommu {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int (*isr)(struct iommu *obj, u32 da, u32 iommu_errs, void *priv);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *ctx; /* iommu context: registres saved area */
 	u32 da_start;
 	u32 da_end;
@@ -96,6 +109,9 @@ struct iommu_functions {
 	unsigned long	version;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*enable)(struct omap_iommu *obj);
 	void (*disable)(struct omap_iommu *obj);
 	void (*set_twl)(struct omap_iommu *obj, bool on);
@@ -117,6 +133,8 @@ struct iommu_functions {
 	void (*save_ctx)(struct omap_iommu *obj);
 	void (*restore_ctx)(struct omap_iommu *obj);
 	ssize_t (*dump_ctx)(struct omap_iommu *obj, char *buf, ssize_t len);
+<<<<<<< HEAD
+=======
 =======
 	int (*enable)(struct iommu *obj);
 	void (*disable)(struct iommu *obj);
@@ -138,6 +156,7 @@ struct iommu_functions {
 	void (*restore_ctx)(struct iommu *obj);
 	ssize_t (*dump_ctx)(struct iommu *obj, char *buf, ssize_t len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct iommu_platform_data {
@@ -149,6 +168,9 @@ struct iommu_platform_data {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct iommu_arch_data - omap iommu private data
  * @name: name of the iommu device
@@ -175,8 +197,11 @@ static inline struct omap_iommu *dev_to_omap_iommu(struct device *dev)
 	return arch_data->iommu_dev;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* IOMMU errors */
 #define OMAP_IOMMU_ERR_TLB_MISS		(1 << 0)
 #define OMAP_IOMMU_ERR_TRANS_FAULT	(1 << 1)
@@ -218,6 +243,9 @@ static inline struct omap_iommu *dev_to_omap_iommu(struct device *dev)
  * global functions
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern u32 omap_iommu_arch_version(void);
 
 extern void omap_iotlb_cr_to_e(struct cr_regs *cr, struct iotlb_entry *e);
@@ -243,6 +271,8 @@ extern ssize_t
 omap_iommu_dump_ctx(struct omap_iommu *obj, char *buf, ssize_t len);
 extern size_t
 omap_dump_tlb_entries(struct omap_iommu *obj, char *buf, ssize_t len);
+<<<<<<< HEAD
+=======
 =======
 extern u32 iommu_arch_version(void);
 
@@ -280,5 +310,6 @@ extern int foreach_iommu_device(void *data,
 extern ssize_t iommu_dump_ctx(struct iommu *obj, char *buf, ssize_t len);
 extern size_t dump_tlb_entries(struct iommu *obj, char *buf, ssize_t len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __MACH_IOMMU_H */

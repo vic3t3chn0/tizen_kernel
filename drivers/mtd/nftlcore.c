@@ -56,6 +56,17 @@ static void nftl_add_mtd(struct mtd_blktrans_ops *tr, struct mtd_info *mtd)
 	if (memcmp(mtd->name, "DiskOnChip", 10))
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("NFTL: add_mtd for %s\n", mtd->name);
+
+	nftl = kzalloc(sizeof(struct NFTLrecord), GFP_KERNEL);
+
+	if (!nftl)
+		return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!mtd->block_isbad) {
 		printk(KERN_ERR
 "NFTL no longer supports the old DiskOnChip drivers loaded via docprobe.\n"
@@ -71,6 +82,10 @@ static void nftl_add_mtd(struct mtd_blktrans_ops *tr, struct mtd_info *mtd)
 		printk(KERN_WARNING "NFTL: out of memory for data structures\n");
 		return;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nftl->mbd.mtd = mtd;
 	nftl->mbd.devnum = -1;
@@ -132,7 +147,15 @@ static void nftl_remove_dev(struct mtd_blktrans_dev *dev)
 {
 	struct NFTLrecord *nftl = (void *)dev;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("NFTL: remove_dev (i=%d)\n", dev->devnum);
+=======
 	DEBUG(MTD_DEBUG_LEVEL1, "NFTL: remove_dev (i=%d)\n", dev->devnum);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL1, "NFTL: remove_dev (i=%d)\n", dev->devnum);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	del_mtd_blktrans_dev(dev);
 	kfree(nftl->ReplUnitTable);
@@ -149,13 +172,29 @@ int nftl_read_oob(struct mtd_info *mtd, loff_t offs, size_t len,
 	struct mtd_oob_ops ops;
 	int res;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_PLACE_OOB;
+=======
 	ops.mode = MTD_OOB_PLACE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ops.mode = MTD_OOB_PLACE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.ooboffs = offs & mask;
 	ops.ooblen = len;
 	ops.oobbuf = buf;
 	ops.datbuf = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = mtd_read_oob(mtd, offs & ~mask, &ops);
+=======
 	res = mtd->read_oob(mtd, offs & ~mask, &ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	res = mtd->read_oob(mtd, offs & ~mask, &ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = ops.oobretlen;
 	return res;
 }
@@ -170,13 +209,29 @@ int nftl_write_oob(struct mtd_info *mtd, loff_t offs, size_t len,
 	struct mtd_oob_ops ops;
 	int res;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_PLACE_OOB;
+=======
 	ops.mode = MTD_OOB_PLACE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ops.mode = MTD_OOB_PLACE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.ooboffs = offs & mask;
 	ops.ooblen = len;
 	ops.oobbuf = buf;
 	ops.datbuf = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = mtd_write_oob(mtd, offs & ~mask, &ops);
+=======
 	res = mtd->write_oob(mtd, offs & ~mask, &ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	res = mtd->write_oob(mtd, offs & ~mask, &ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = ops.oobretlen;
 	return res;
 }
@@ -193,14 +248,30 @@ static int nftl_write(struct mtd_info *mtd, loff_t offs, size_t len,
 	struct mtd_oob_ops ops;
 	int res;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_PLACE_OOB;
+=======
 	ops.mode = MTD_OOB_PLACE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ops.mode = MTD_OOB_PLACE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.ooboffs = offs & mask;
 	ops.ooblen = mtd->oobsize;
 	ops.oobbuf = oob;
 	ops.datbuf = buf;
 	ops.len = len;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = mtd_write_oob(mtd, offs & ~mask, &ops);
+=======
 	res = mtd->write_oob(mtd, offs & ~mask, &ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	res = mtd->write_oob(mtd, offs & ~mask, &ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = ops.retlen;
 	return res;
 }
@@ -220,7 +291,15 @@ static u16 NFTL_findfreeblock(struct NFTLrecord *nftl, int desperate )
 
 	/* Normally, we force a fold to happen before we run out of free blocks completely */
 	if (!desperate && nftl->numfreeEUNs < 2) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_debug("NFTL_findfreeblock: there are too few free EUNs\n");
+=======
 		DEBUG(MTD_DEBUG_LEVEL1, "NFTL_findfreeblock: there are too few free EUNs\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DEBUG(MTD_DEBUG_LEVEL1, "NFTL_findfreeblock: there are too few free EUNs\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return BLOCK_NIL;
 	}
 
@@ -291,8 +370,17 @@ static u16 NFTL_foldchain (struct NFTLrecord *nftl, unsigned thisVUC, unsigned p
 			if (block == 2) {
 				foldmark = oob.u.c.FoldMark | oob.u.c.FoldMark1;
 				if (foldmark == FOLD_MARK_IN_PROGRESS) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+					pr_debug("Write Inhibited on EUN %d\n", thisEUN);
+=======
 					DEBUG(MTD_DEBUG_LEVEL1,
 					      "Write Inhibited on EUN %d\n", thisEUN);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					DEBUG(MTD_DEBUG_LEVEL1,
+					      "Write Inhibited on EUN %d\n", thisEUN);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					inplace = 0;
 				} else {
 					/* There's no other reason not to do inplace,
@@ -357,7 +445,15 @@ static u16 NFTL_foldchain (struct NFTLrecord *nftl, unsigned thisVUC, unsigned p
 			if (BlockLastState[block] != SECTOR_FREE &&
 			    BlockMap[block] != BLOCK_NIL &&
 			    BlockMap[block] != targetEUN) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				pr_debug("Setting inplace to 0. VUC %d, "
+=======
 				DEBUG(MTD_DEBUG_LEVEL1, "Setting inplace to 0. VUC %d, "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				DEBUG(MTD_DEBUG_LEVEL1, "Setting inplace to 0. VUC %d, "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      "block %d was %x lastEUN, "
 				      "and is in EUN %d (%s) %d\n",
 				      thisVUC, block, BlockLastState[block],
@@ -373,14 +469,30 @@ static u16 NFTL_foldchain (struct NFTLrecord *nftl, unsigned thisVUC, unsigned p
 		    pendingblock < ((thisVUC + 1)* (nftl->EraseSize / 512)) &&
 		    BlockLastState[pendingblock - (thisVUC * (nftl->EraseSize / 512))] !=
 		    SECTOR_FREE) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_debug("Pending write not free in EUN %d. "
+=======
 			DEBUG(MTD_DEBUG_LEVEL1, "Pending write not free in EUN %d. "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			DEBUG(MTD_DEBUG_LEVEL1, "Pending write not free in EUN %d. "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      "Folding out of place.\n", targetEUN);
 			inplace = 0;
 		}
 	}
 
 	if (!inplace) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_debug("Cannot fold Virtual Unit Chain %d in place. "
+=======
 		DEBUG(MTD_DEBUG_LEVEL1, "Cannot fold Virtual Unit Chain %d in place. "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DEBUG(MTD_DEBUG_LEVEL1, "Cannot fold Virtual Unit Chain %d in place. "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      "Trying out-of-place\n", thisVUC);
 		/* We need to find a targetEUN to fold into. */
 		targetEUN = NFTL_findfreeblock(nftl, 1);
@@ -410,7 +522,15 @@ static u16 NFTL_foldchain (struct NFTLrecord *nftl, unsigned thisVUC, unsigned p
 	   and the Erase Unit into which we are supposed to be copying.
 	   Go for it.
 	*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("Folding chain %d into unit %d\n", thisVUC, targetEUN);
+=======
 	DEBUG(MTD_DEBUG_LEVEL1,"Folding chain %d into unit %d\n", thisVUC, targetEUN);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL1,"Folding chain %d into unit %d\n", thisVUC, targetEUN);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (block = 0; block < nftl->EraseSize / 512 ; block++) {
 		unsigned char movebuf[512];
 		int ret;
@@ -426,12 +546,32 @@ static u16 NFTL_foldchain (struct NFTLrecord *nftl, unsigned thisVUC, unsigned p
 		if (BlockMap[block] == BLOCK_NIL)
 			continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = mtd_read(mtd,
+			       (nftl->EraseSize * BlockMap[block]) + (block * 512),
+			       512,
+			       &retlen,
+			       movebuf);
+		if (ret < 0 && !mtd_is_bitflip(ret)) {
+			ret = mtd_read(mtd,
+				       (nftl->EraseSize * BlockMap[block]) + (block * 512),
+				       512,
+				       &retlen,
+				       movebuf);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = mtd->read(mtd, (nftl->EraseSize * BlockMap[block]) + (block * 512),
 				512, &retlen, movebuf);
 		if (ret < 0 && ret != -EUCLEAN) {
 			ret = mtd->read(mtd, (nftl->EraseSize * BlockMap[block])
 					+ (block * 512), 512, &retlen,
 					movebuf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret != -EIO)
 				printk("Error went away on retry.\n");
 		}
@@ -457,7 +597,15 @@ static u16 NFTL_foldchain (struct NFTLrecord *nftl, unsigned thisVUC, unsigned p
 	   has duplicate chains, we need to free one of the chains because it's not necessary any more.
 	*/
 	thisEUN = nftl->EUNtable[thisVUC];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("Want to erase\n");
+=======
 	DEBUG(MTD_DEBUG_LEVEL1,"Want to erase\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL1,"Want to erase\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* For each block in the old chain (except the targetEUN of course),
 	   free it and make it available for future use */
@@ -570,7 +718,15 @@ static inline u16 NFTL_findwriteunit(struct NFTLrecord *nftl, unsigned block)
 				      (writeEUN * nftl->EraseSize) + blockofs,
 				      8, &retlen, (char *)&bci);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_debug("Status of block %d in EUN %d is %x\n",
+=======
 			DEBUG(MTD_DEBUG_LEVEL2, "Status of block %d in EUN %d is %x\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			DEBUG(MTD_DEBUG_LEVEL2, "Status of block %d in EUN %d is %x\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      block , writeEUN, le16_to_cpu(bci.Status));
 
 			status = bci.Status | bci.Status1;
@@ -623,7 +779,15 @@ static inline u16 NFTL_findwriteunit(struct NFTLrecord *nftl, unsigned block)
 				   but they are reserved for when we're
 				   desperate. Well, now we're desperate.
 				*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+				pr_debug("Using desperate==1 to find free EUN to accommodate write to VUC %d\n", thisVUC);
+=======
 				DEBUG(MTD_DEBUG_LEVEL1, "Using desperate==1 to find free EUN to accommodate write to VUC %d\n", thisVUC);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				DEBUG(MTD_DEBUG_LEVEL1, "Using desperate==1 to find free EUN to accommodate write to VUC %d\n", thisVUC);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				writeEUN = NFTL_findfreeblock(nftl, 1);
 			}
 			if (writeEUN == BLOCK_NIL) {
@@ -774,9 +938,21 @@ static int nftl_readblock(struct mtd_blktrans_dev *mbd, unsigned long block,
 	} else {
 		loff_t ptr = (lastgoodEUN * nftl->EraseSize) + blockofs;
 		size_t retlen;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		int res = mtd_read(mtd, ptr, 512, &retlen, buffer);
+
+		if (res < 0 && !mtd_is_bitflip(res))
+=======
 		int res = mtd->read(mtd, ptr, 512, &retlen, buffer);
 
 		if (res < 0 && res != -EUCLEAN)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		int res = mtd->read(mtd, ptr, 512, &retlen, buffer);
+
+		if (res < 0 && res != -EUCLEAN)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EIO;
 	}
 	return 0;

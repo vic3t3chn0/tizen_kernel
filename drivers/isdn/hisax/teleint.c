@@ -4,7 +4,15 @@
  *
  * Author       Karsten Keil
  * Copyright    by Karsten Keil      <keil@isdn4linux.de>
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+=======
  * 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
  *
@@ -18,7 +26,15 @@
 
 static const char *TeleInt_revision = "$Revision: 1.16.2.5 $";
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define byteout(addr, val) outb(val, addr)
+=======
 #define byteout(addr,val) outb(val,addr)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define byteout(addr,val) outb(val,addr)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define bytein(addr) inb(addr)
 
 static inline u_char
@@ -40,14 +56,34 @@ readreg(unsigned int ale, unsigned int adr, u_char off)
 }
 
 static inline void
+<<<<<<< HEAD
+<<<<<<< HEAD
+readfifo(unsigned int ale, unsigned int adr, u_char off, u_char *data, int size)
+=======
 readfifo(unsigned int ale, unsigned int adr, u_char off, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+readfifo(unsigned int ale, unsigned int adr, u_char off, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	register u_char ret;
 	register int max_delay = 20000;
 	register int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	byteout(ale, off);
+	for (i = 0; i < size; i++) {
+=======
 	
 	byteout(ale, off);
 	for (i = 0; i<size; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+	byteout(ale, off);
+	for (i = 0; i<size; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = HFC_BUSY & bytein(ale);
 		while (ret && --max_delay)
 			ret = HFC_BUSY & bytein(ale);
@@ -78,14 +114,34 @@ writereg(unsigned int ale, unsigned int adr, u_char off, u_char data)
 }
 
 static inline void
+<<<<<<< HEAD
+<<<<<<< HEAD
+writefifo(unsigned int ale, unsigned int adr, u_char off, u_char *data, int size)
+=======
 writefifo(unsigned int ale, unsigned int adr, u_char off, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+writefifo(unsigned int ale, unsigned int adr, u_char off, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	register u_char ret;
 	register int max_delay = 20000;
 	register int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	byteout(ale, off);
+	for (i = 0; i < size; i++) {
+=======
 	
 	byteout(ale, off);
 	for (i = 0; i<size; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+	byteout(ale, off);
+	for (i = 0; i<size; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = HFC_BUSY & bytein(ale);
 		while (ret && --max_delay)
 			ret = HFC_BUSY & bytein(ale);
@@ -114,14 +170,30 @@ WriteISAC(struct IsdnCardState *cs, u_char offset, u_char value)
 }
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+ReadISACfifo(struct IsdnCardState *cs, u_char *data, int size)
+=======
 ReadISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ReadISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	cs->hw.hfc.cip = 0;
 	readfifo(cs->hw.hfc.addr | 1, cs->hw.hfc.addr, 0, data, size);
 }
 
 static void
+<<<<<<< HEAD
+<<<<<<< HEAD
+WriteISACfifo(struct IsdnCardState *cs, u_char *data, int size)
+=======
 WriteISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+WriteISACfifo(struct IsdnCardState *cs, u_char * data, int size)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	cs->hw.hfc.cip = 0;
 	writefifo(cs->hw.hfc.addr | 1, cs->hw.hfc.addr, 0, data, size);
@@ -163,7 +235,15 @@ TeleInt_interrupt(int intno, void *dev_id)
 
 	spin_lock_irqsave(&cs->lock, flags);
 	val = readreg(cs->hw.hfc.addr | 1, cs->hw.hfc.addr, ISAC_ISTA);
+<<<<<<< HEAD
+<<<<<<< HEAD
+Start_ISAC:
+=======
       Start_ISAC:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+      Start_ISAC:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (val)
 		isac_interrupt(cs, val);
 	val = readreg(cs->hw.hfc.addr | 1, cs->hw.hfc.addr, ISAC_ISTA);
@@ -183,7 +263,15 @@ TeleInt_Timer(struct IsdnCardState *cs)
 {
 	int stat = 0;
 	u_long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&cs->lock, flags);
 	if (cs->bcs[0].mode) {
 		stat |= 1;
@@ -194,7 +282,15 @@ TeleInt_Timer(struct IsdnCardState *cs)
 		main_irq_hfc(&cs->bcs[1]);
 	}
 	spin_unlock_irqrestore(&cs->lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	stat = HZ / 100;
+=======
 	stat = HZ/100;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	stat = HZ/100;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!stat)
 		stat = 1;
 	cs->hw.hfc.timer.expires = jiffies + stat;
@@ -229,6 +325,39 @@ TeleInt_card_msg(struct IsdnCardState *cs, int mt, void *arg)
 	int delay;
 
 	switch (mt) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case CARD_RESET:
+		spin_lock_irqsave(&cs->lock, flags);
+		reset_TeleInt(cs);
+		spin_unlock_irqrestore(&cs->lock, flags);
+		return (0);
+	case CARD_RELEASE:
+		release_io_TeleInt(cs);
+		return (0);
+	case CARD_INIT:
+		spin_lock_irqsave(&cs->lock, flags);
+		reset_TeleInt(cs);
+		inithfc(cs);
+		clear_pending_isac_ints(cs);
+		initisac(cs);
+		/* Reenable all IRQ */
+		cs->writeisac(cs, ISAC_MASK, 0);
+		cs->writeisac(cs, ISAC_CMDR, 0x41);
+		spin_unlock_irqrestore(&cs->lock, flags);
+		delay = HZ / 100;
+		if (!delay)
+			delay = 1;
+		cs->hw.hfc.timer.expires = jiffies + delay;
+		add_timer(&cs->hw.hfc.timer);
+		return (0);
+	case CARD_TEST:
+		return (0);
+	}
+	return (0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case CARD_RESET:
 			spin_lock_irqsave(&cs->lock, flags);
 			reset_TeleInt(cs);
@@ -257,6 +386,10 @@ TeleInt_card_msg(struct IsdnCardState *cs, int mt, void *arg)
 			return(0);
 	}
 	return(0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int __devinit
@@ -293,6 +426,33 @@ setup_TeleInt(struct IsdnCard *card)
 	byteout(cs->hw.hfc.addr, cs->hw.hfc.addr & 0xff);
 	byteout(cs->hw.hfc.addr | 1, ((cs->hw.hfc.addr & 0x300) >> 8) | 0x54);
 	switch (cs->irq) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 3:
+		cs->hw.hfc.cirm |= HFC_INTA;
+		break;
+	case 4:
+		cs->hw.hfc.cirm |= HFC_INTB;
+		break;
+	case 5:
+		cs->hw.hfc.cirm |= HFC_INTC;
+		break;
+	case 7:
+		cs->hw.hfc.cirm |= HFC_INTD;
+		break;
+	case 10:
+		cs->hw.hfc.cirm |= HFC_INTE;
+		break;
+	case 11:
+		cs->hw.hfc.cirm |= HFC_INTF;
+		break;
+	default:
+		printk(KERN_WARNING "TeleInt: wrong IRQ\n");
+		release_io_TeleInt(cs);
+		return (0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case 3:
 			cs->hw.hfc.cirm |= HFC_INTA;
 			break;
@@ -315,12 +475,24 @@ setup_TeleInt(struct IsdnCard *card)
 			printk(KERN_WARNING "TeleInt: wrong IRQ\n");
 			release_io_TeleInt(cs);
 			return (0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	byteout(cs->hw.hfc.addr | 1, cs->hw.hfc.cirm);
 	byteout(cs->hw.hfc.addr | 1, cs->hw.hfc.ctmt);
 
 	printk(KERN_INFO "TeleInt: defined at 0x%x IRQ %d\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	       cs->hw.hfc.addr, cs->irq);
+=======
 		cs->hw.hfc.addr, cs->irq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		cs->hw.hfc.addr, cs->irq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setup_isac(cs);
 	cs->readisac = &ReadISAC;

@@ -20,6 +20,9 @@
 #define __BTRFS_LOCKING_
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BTRFS_WRITE_LOCK 1
 #define BTRFS_READ_LOCK 2
 #define BTRFS_WRITE_LOCK_BLOCKING 3
@@ -59,6 +62,8 @@ static inline void btrfs_clear_lock_blocking(struct extent_buffer *eb)
 {
 	btrfs_clear_lock_blocking_rw(eb, BTRFS_WRITE_LOCK_BLOCKING);
 }
+<<<<<<< HEAD
+=======
 =======
 int btrfs_tree_lock(struct extent_buffer *eb);
 int btrfs_tree_unlock(struct extent_buffer *eb);
@@ -68,4 +73,5 @@ void btrfs_set_lock_blocking(struct extent_buffer *eb);
 void btrfs_clear_lock_blocking(struct extent_buffer *eb);
 void btrfs_assert_tree_locked(struct extent_buffer *eb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

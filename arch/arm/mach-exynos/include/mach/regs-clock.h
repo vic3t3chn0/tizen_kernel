@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* linux/arch/arm/mach-exynos4/include/mach/regs-clock.h
 =======
+<<<<<<< HEAD
+/* linux/arch/arm/mach-exynos4/include/mach/regs-clock.h
+=======
 /* linux/arch/arm/mach-exynos/include/mach/regs-clock.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2010-2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
@@ -10,8 +14,12 @@
 <<<<<<< HEAD
  * EXYNOS4 - Clock register definitions
 =======
+<<<<<<< HEAD
+ * EXYNOS4 - Clock register definitions
+=======
  * EXYNOS - Clock register definitions
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -22,6 +30,9 @@
 #define __ASM_ARCH_REGS_CLOCK_H __FILE__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/cpu.h>
 #include <mach/map.h>
 
@@ -329,6 +340,8 @@
 #define EXYNOS5_EPLL_LOCK			EXYNOS_CLKREG(0x10030)
 
 #define EXYNOS5_EPLLCON0_LOCKED_SHIFT		(29)
+<<<<<<< HEAD
+=======
 =======
 #include <mach/map.h>
 
@@ -1003,11 +1016,15 @@
 #define EXYNOS5_VPLLCON0_LOCKED_SHIFT		(29)
 #define EXYNOS5_GPLLCON0_LOCKED_SHIFT		(29)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Compatibility defines and inclusion */
 
 #include <mach/regs-pmu.h>
 
+<<<<<<< HEAD
+#define S5P_EPLL_CON				EXYNOS4_EPLL_CON0
+=======
 <<<<<<< HEAD
 #define S5P_EPLL_CON				EXYNOS4_EPLL_CON0
 =======
@@ -1019,5 +1036,6 @@
 #error "ARCH_EXYNOS* is not defined"
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_REGS_CLOCK_H */

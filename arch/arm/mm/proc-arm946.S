@@ -58,7 +58,11 @@ ENTRY(cpu_arm946_proc_fin)
 <<<<<<< HEAD
 	.pushsection	.idmap.text, "ax"
 =======
+<<<<<<< HEAD
+	.pushsection	.idmap.text, "ax"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(cpu_arm946_reset)
 	mov	ip, #0
 	mcr	p15, 0, ip, c7, c5, 0		@ flush I cache
@@ -73,7 +77,12 @@ ENTRY(cpu_arm946_reset)
 ENDPROC(cpu_arm946_reset)
 	.popsection
 =======
+<<<<<<< HEAD
+ENDPROC(cpu_arm946_reset)
+	.popsection
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * cpu_arm946_do_idle()
@@ -320,7 +329,13 @@ ENDPROC(arm946_dma_unmap_area)
 	.equ	arm946_flush_kern_cache_louis, arm946_flush_kern_cache_all
 
 =======
+<<<<<<< HEAD
+	.globl	arm946_flush_kern_cache_louis
+	.equ	arm946_flush_kern_cache_louis, arm946_flush_kern_cache_all
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@ define struct cpu_cache_fns (see <asm/cacheflush.h> and proc-macros.S)
 	define_cache_functions arm946
 
@@ -428,7 +443,11 @@ __arm946_proc_info:
 <<<<<<< HEAD
 	.long	0
 =======
+<<<<<<< HEAD
+	.long	0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	__arm946_setup
 	.long	cpu_arch_name
 	.long	cpu_elf_name
@@ -440,7 +459,11 @@ __arm946_proc_info:
 <<<<<<< HEAD
 	.long	arm946_cache_fns
 =======
+<<<<<<< HEAD
+	.long	arm946_cache_fns
+=======
 	.long	arm940_cache_fns
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.size	__arm946_proc_info, . - __arm946_proc_info
 

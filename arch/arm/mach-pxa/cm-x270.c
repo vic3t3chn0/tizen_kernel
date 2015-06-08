@@ -36,8 +36,12 @@
 <<<<<<< HEAD
 #define CMX270_MMC_IRQ		PXA_GPIO_TO_IRQ(GPIO83_MMC_IRQ)
 =======
+<<<<<<< HEAD
+#define CMX270_MMC_IRQ		PXA_GPIO_TO_IRQ(GPIO83_MMC_IRQ)
+=======
 #define CMX270_MMC_IRQ		IRQ_GPIO(GPIO83_MMC_IRQ)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* MMC power enable */
 #define GPIO105_MMC_POWER	(105)
@@ -387,8 +391,12 @@ static struct spi_board_info cm_x270_spi_devices[] __initdata = {
 <<<<<<< HEAD
 		.irq			= PXA_GPIO_TO_IRQ(95),
 =======
+<<<<<<< HEAD
+		.irq			= PXA_GPIO_TO_IRQ(95),
+=======
 		.irq			= gpio_to_irq(95),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.chip_select		= 0,
 		.controller_data	= &cm_x270_libertas_chip,
 		.platform_data		= &cm_x270_libertas_pdata,

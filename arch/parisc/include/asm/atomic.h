@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Atomic operations that C can't guarantee us.  Useful for
@@ -53,6 +57,8 @@ extern arch_spinlock_t __atomic_hash[ATOMIC_HASH_SIZE] __lock_aligned;
 #  define _atomic_spin_unlock_irqrestore(l,f) do { local_irq_restore(f); } while (0)
 #endif
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* This should get optimized out since it's never called.
@@ -162,6 +168,7 @@ static inline unsigned long __cmpxchg_local(volatile void *ptr,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Note that we need not lock read accesses - aligned word writes/reads
  * are atomic, so a reader never sees inconsistent values.
@@ -207,8 +214,12 @@ static __inline__ int atomic_read(const atomic_t *v)
 <<<<<<< HEAD
  * __atomic_add_unless - add unless the number is a given value
 =======
+<<<<<<< HEAD
+ * __atomic_add_unless - add unless the number is a given value
+=======
  * atomic_add_unless - add unless the number is a given value
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @v: pointer of type atomic_t
  * @a: the amount to add to v...
  * @u: ...unless v is equal to u.
@@ -219,10 +230,16 @@ static __inline__ int atomic_read(const atomic_t *v)
  */
 static __inline__ int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+ * Returns the old value of @v.
+ */
+static __inline__ int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
  * Returns non-zero if @v was not @u, and zero otherwise.
  */
 static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int c, old;
 	c = atomic_read(v);
@@ -239,11 +256,17 @@ static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 }
 
 =======
+<<<<<<< HEAD
+	return c;
+}
+
+=======
 	return c != (u);
 }
 
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define atomic_add(i,v)	((void)(__atomic_add_return( (i),(v))))
 #define atomic_sub(i,v)	((void)(__atomic_add_return(-(i),(v))))
@@ -274,8 +297,12 @@ static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 <<<<<<< HEAD
 #define ATOMIC_INIT(i)	((atomic_t) { (i) })
 =======
+<<<<<<< HEAD
+#define ATOMIC_INIT(i)	((atomic_t) { (i) })
+=======
 #define ATOMIC_INIT(i)	{ (i) }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define smp_mb__before_atomic_dec()	smp_mb()
 #define smp_mb__after_atomic_dec()	smp_mb()
@@ -287,8 +314,12 @@ static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 <<<<<<< HEAD
 #define ATOMIC64_INIT(i) ((atomic64_t) { (i) })
 =======
+<<<<<<< HEAD
+#define ATOMIC64_INIT(i) ((atomic64_t) { (i) })
+=======
 #define ATOMIC64_INIT(i) { (i) }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __inline__ s64
 __atomic64_add_return(s64 i, atomic64_t *v)
@@ -351,8 +382,12 @@ atomic64_read(const atomic64_t *v)
 <<<<<<< HEAD
  * Returns the old value of @v.
 =======
+<<<<<<< HEAD
+ * Returns the old value of @v.
+=======
  * Returns non-zero if @v was not @u, and zero otherwise.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static __inline__ int atomic64_add_unless(atomic64_t *v, long a, long u)
 {
@@ -375,6 +410,10 @@ static __inline__ int atomic64_add_unless(atomic64_t *v, long a, long u)
 #endif /* !CONFIG_64BIT */
 
 =======
+<<<<<<< HEAD
+#endif /* !CONFIG_64BIT */
+
+=======
 #else /* CONFIG_64BIT */
 
 #include <asm-generic/atomic64.h>
@@ -383,5 +422,6 @@ static __inline__ int atomic64_add_unless(atomic64_t *v, long a, long u)
 
 #include <asm-generic/atomic-long.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _ASM_PARISC_ATOMIC_H_ */

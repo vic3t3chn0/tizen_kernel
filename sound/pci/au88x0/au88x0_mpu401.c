@@ -87,8 +87,12 @@ static int __devinit snd_vortex_midi(vortex_t * vortex)
 <<<<<<< HEAD
 				 MPU401_INFO_IRQ_HOOK, -1, &rmidi)) != 0) {
 =======
+<<<<<<< HEAD
+				 MPU401_INFO_IRQ_HOOK, -1, &rmidi)) != 0) {
+=======
 				 0, 0, 0, &rmidi)) != 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hwwrite(vortex->mmio, VORTEX_CTRL,
 			(hwread(vortex->mmio, VORTEX_CTRL) &
 			 ~CTRL_MIDI_PORT) & ~CTRL_MIDI_EN);
@@ -102,9 +106,14 @@ static int __devinit snd_vortex_midi(vortex_t * vortex)
 				 MPU401_INFO_INTEGRATED | MPU401_INFO_MMIO |
 				 MPU401_INFO_IRQ_HOOK, -1, &rmidi)) != 0) {
 =======
+<<<<<<< HEAD
+				 MPU401_INFO_INTEGRATED | MPU401_INFO_MMIO |
+				 MPU401_INFO_IRQ_HOOK, -1, &rmidi)) != 0) {
+=======
 				 MPU401_INFO_INTEGRATED | MPU401_INFO_MMIO,
 				 0, 0, &rmidi)) != 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hwwrite(vortex->mmio, VORTEX_CTRL,
 			(hwread(vortex->mmio, VORTEX_CTRL) &
 			 ~CTRL_MIDI_PORT) & ~CTRL_MIDI_EN);

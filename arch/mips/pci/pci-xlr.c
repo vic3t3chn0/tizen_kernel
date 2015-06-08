@@ -37,13 +37,19 @@
 #include <linux/kernel.h>
 #include <linux/init.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/msi.h>
 #include <linux/mm.h>
 #include <linux/irq.h>
 #include <linux/irqdesc.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/mm.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/console.h>
 
 #include <asm/io.h>
@@ -54,7 +60,13 @@
 
 #include <asm/netlogic/xlr/msidef.h>
 =======
+<<<<<<< HEAD
+#include <asm/netlogic/haldefs.h>
+
+#include <asm/netlogic/xlr/msidef.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/netlogic/xlr/iomap.h>
 #include <asm/netlogic/xlr/pic.h>
 #include <asm/netlogic/xlr/xlr.h>
@@ -166,8 +178,12 @@ struct pci_controller nlm_pci_controller = {
 <<<<<<< HEAD
 static int get_irq_vector(const struct pci_dev *dev)
 =======
+<<<<<<< HEAD
+static int get_irq_vector(const struct pci_dev *dev)
+=======
 int __init pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!nlm_chip_is_xls())
 		return	PIC_PCIX_IRQ;	/* for XLR just one IRQ*/
@@ -200,6 +216,9 @@ int __init pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PCI_MSI
 void destroy_irq(unsigned int irq)
 {
@@ -295,8 +314,11 @@ int __init pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 	return get_irq_vector(dev);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Do platform specific device initialization at pci_enable_device() time */
 int pcibios_plat_dev_init(struct pci_dev *dev)
 {
@@ -309,8 +331,12 @@ static int __init pcibios_init(void)
 <<<<<<< HEAD
 	pci_set_flags(PCI_PROBE_ONLY);
 =======
+<<<<<<< HEAD
+	pci_set_flags(PCI_PROBE_ONLY);
+=======
 	pci_probe_only = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_config_base = ioremap(DEFAULT_PCI_CONFIG_BASE, 16 << 20);
 
 	/* Extend IO port for memory mapped io */
@@ -324,6 +350,9 @@ static int __init pcibios_init(void)
 	register_pci_controller(&nlm_pci_controller);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * For PCI interrupts, we need to ack the PCI controller too, overload
 	 * irq handler data to do this
@@ -349,8 +378,11 @@ static int __init pcibios_init(void)
 		irq_set_handler_data(PIC_PCIE_XLSB0_LINK3_IRQ, xlr_pci_ack);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

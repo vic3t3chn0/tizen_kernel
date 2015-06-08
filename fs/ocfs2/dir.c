@@ -1187,9 +1187,13 @@ static int __ocfs2_delete_entry(handle_t *handle, struct inode *dir,
 <<<<<<< HEAD
 			de->inode = 0;
 =======
+<<<<<<< HEAD
+			de->inode = 0;
+=======
 			else
 				de->inode = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dir->i_version++;
 			ocfs2_journal_dirty(handle, bh);
 			goto bail;
@@ -2299,8 +2303,12 @@ static int ocfs2_fill_new_dir_id(struct ocfs2_super *osb,
 <<<<<<< HEAD
 	set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 2);
+=======
 	inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_blocks = ocfs2_inode_sector_count(inode);
 
 	ret = ocfs2_mark_inode_dirty(handle, inode, di_bh);
@@ -2365,8 +2373,12 @@ static int ocfs2_fill_new_dir_el(struct ocfs2_super *osb,
 <<<<<<< HEAD
 	set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 2);
+=======
 	inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_blocks = ocfs2_inode_sector_count(inode);
 	status = ocfs2_mark_inode_dirty(handle, inode, fe_bh);
 	if (status < 0) {

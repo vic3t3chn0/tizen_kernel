@@ -47,8 +47,12 @@ static inline void set_bios_x(void)
 <<<<<<< HEAD
 		printk(KERN_INFO "PCI : PCI BIOS area is rw and x. Use pci=nobios if you want it NX.\n");
 =======
+<<<<<<< HEAD
+		printk(KERN_INFO "PCI : PCI BIOS area is rw and x. Use pci=nobios if you want it NX.\n");
+=======
 		printk(KERN_INFO "PCI : PCI BIOS aera is rw and x. Use pci=nobios if you want it NX.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -188,7 +192,11 @@ static int pci_bios_read(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	WARN_ON(seg);
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!value || (bus > 255) || (devfn > 255) || (reg > 255))
 		return -EINVAL;
 
@@ -258,7 +266,11 @@ static int pci_bios_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 	WARN_ON(seg);
 =======
+<<<<<<< HEAD
+	WARN_ON(seg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((bus > 255) || (devfn > 255) || (reg > 255)) 
 		return -EINVAL;
 
@@ -316,8 +328,12 @@ static int pci_bios_write(unsigned int seg, unsigned int bus,
 <<<<<<< HEAD
 static const struct pci_raw_ops pci_bios_access = {
 =======
+<<<<<<< HEAD
+static const struct pci_raw_ops pci_bios_access = {
+=======
 static struct pci_raw_ops pci_bios_access = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read =		pci_bios_read,
 	.write =	pci_bios_write
 };
@@ -329,8 +345,12 @@ static struct pci_raw_ops pci_bios_access = {
 <<<<<<< HEAD
 static const struct pci_raw_ops * __devinit pci_find_bios(void)
 =======
+<<<<<<< HEAD
+static const struct pci_raw_ops * __devinit pci_find_bios(void)
+=======
 static struct pci_raw_ops * __devinit pci_find_bios(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	union bios32 *check;
 	unsigned char sum;

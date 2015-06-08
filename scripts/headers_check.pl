@@ -22,7 +22,11 @@ use strict;
 <<<<<<< HEAD
 use File::Basename;
 =======
+<<<<<<< HEAD
+use File::Basename;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 my ($dir, $arch, @files) = @ARGV;
 
@@ -104,6 +108,9 @@ sub check_asm_types
 
 my $linux_types;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my %import_stack = ();
 sub check_include_typesh
 {
@@ -137,8 +144,11 @@ sub check_include_typesh
 	delete $import_stack{$import_path};
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub check_sizetypes
 {
 	if ($filename =~ /types.h|int-l64.h|int-ll64.h/o) {
@@ -158,7 +168,13 @@ sub check_sizetypes
 		check_include_typesh($included);
 	}
 =======
+<<<<<<< HEAD
+	if (my $included = ($line =~ /^\s*#\s*include\s+[<"](\S+)[>"]/)[0]) {
+		check_include_typesh($included);
+	}
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ($line =~ m/__[us](8|16|32|64)\b/) {
 		printf STDERR "$filename:$lineno: " .
 		              "found __[us]{8,16,32,64} type " .
@@ -170,5 +186,8 @@ sub check_sizetypes
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

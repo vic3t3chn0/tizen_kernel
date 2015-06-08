@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <asm-generic/pci_iomap.h>
 =======
+<<<<<<< HEAD
+#include <asm-generic/pci_iomap.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Structure of a PCI controller (host bridge)
@@ -55,11 +59,17 @@ int __init tile_pci_init(void);
 int __init pcibios_init(void);
 
 =======
+<<<<<<< HEAD
+int __init tile_pci_init(void);
+int __init pcibios_init(void);
+
+=======
 int __devinit tile_pci_init(void);
 int __devinit pcibios_init(void);
 
 void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long max);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void pci_iounmap(struct pci_dev *dev, void __iomem *addr) {}
 
 void __devinit pcibios_fixup_bus(struct pci_bus *bus);
@@ -88,6 +98,8 @@ static inline int pcibios_assign_all_busses(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * No special bus mastering setup handling.
  */
@@ -96,6 +108,7 @@ static inline void pcibios_set_master(struct pci_dev *dev)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PCIBIOS_MIN_MEM		0
 #define PCIBIOS_MIN_IO		0
 

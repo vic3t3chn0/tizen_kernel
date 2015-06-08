@@ -39,13 +39,19 @@ static int __interrupt_is_deliverable(struct kvm_vcpu *vcpu,
 {
 	switch (inti->type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case KVM_S390_INT_EXTERNAL_CALL:
 		if (psw_extint_disabled(vcpu))
 			return 0;
 		if (vcpu->arch.sie_block->gcr[0] & 0x2000ul)
 			return 1;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case KVM_S390_INT_EMERGENCY:
 		if (psw_extint_disabled(vcpu))
 			return 0;
@@ -109,7 +115,11 @@ static void __set_intercept_indicator(struct kvm_vcpu *vcpu,
 <<<<<<< HEAD
 	case KVM_S390_INT_EXTERNAL_CALL:
 =======
+<<<<<<< HEAD
+	case KVM_S390_INT_EXTERNAL_CALL:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case KVM_S390_INT_EMERGENCY:
 	case KVM_S390_INT_SERVICE:
 	case KVM_S390_INT_VIRTIO:
@@ -141,6 +151,9 @@ static void __do_deliver_interrupt(struct kvm_vcpu *vcpu,
 			exception = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = put_guest_u16(vcpu, __LC_EXT_CPU_ADDR, inti->emerg.code);
 		if (rc == -EFAULT)
 			exception = 1;
@@ -167,8 +180,11 @@ static void __do_deliver_interrupt(struct kvm_vcpu *vcpu,
 		if (rc == -EFAULT)
 			exception = 1;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = copy_to_guest(vcpu, __LC_EXT_OLD_PSW,
 			 &vcpu->arch.sie_block->gpsw, sizeof(psw_t));
 		if (rc == -EFAULT)
@@ -214,8 +230,12 @@ static void __do_deliver_interrupt(struct kvm_vcpu *vcpu,
 <<<<<<< HEAD
 		rc = put_guest_u16(vcpu, __LC_EXT_CPU_ADDR, 0x0d00);
 =======
+<<<<<<< HEAD
+		rc = put_guest_u16(vcpu, __LC_EXT_CPU_ADDR, 0x0d00);
+=======
 		rc = put_guest_u16(vcpu, __LC_CPU_ADDRESS, 0x0d00);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc == -EFAULT)
 			exception = 1;
 
@@ -252,9 +272,13 @@ static void __do_deliver_interrupt(struct kvm_vcpu *vcpu,
 <<<<<<< HEAD
 		kvm_s390_set_prefix(vcpu, inti->prefix.address);
 =======
+<<<<<<< HEAD
+		kvm_s390_set_prefix(vcpu, inti->prefix.address);
+=======
 		vcpu->arch.sie_block->prefix = inti->prefix.address;
 		vcpu->arch.sie_block->ihcpu = 0xffff;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case KVM_S390_RESTART:
@@ -272,7 +296,11 @@ static void __do_deliver_interrupt(struct kvm_vcpu *vcpu,
 <<<<<<< HEAD
 		atomic_clear_mask(CPUSTAT_STOPPED, &vcpu->arch.sie_block->cpuflags);
 =======
+<<<<<<< HEAD
+		atomic_clear_mask(CPUSTAT_STOPPED, &vcpu->arch.sie_block->cpuflags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case KVM_S390_PROGRAM_INT:
@@ -414,8 +442,12 @@ int kvm_s390_handle_wait(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 	sltime = ((vcpu->arch.sie_block->ckc - now)*125)>>9;
 =======
+<<<<<<< HEAD
+	sltime = ((vcpu->arch.sie_block->ckc - now)*125)>>9;
+=======
 	sltime = tod_to_ns(vcpu->arch.sie_block->ckc - now);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hrtimer_start(&vcpu->arch.ckc_timer, ktime_set (0, sltime) , HRTIMER_MODE_REL);
 	VCPU_EVENT(vcpu, 5, "enabled wait via clock comparator: %llx ns", sltime);
@@ -578,7 +610,11 @@ int kvm_s390_inject_vm(struct kvm *kvm,
 <<<<<<< HEAD
 	case KVM_S390_INT_EXTERNAL_CALL:
 =======
+<<<<<<< HEAD
+	case KVM_S390_INT_EXTERNAL_CALL:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case KVM_S390_INT_EMERGENCY:
 	default:
 		kfree(inti);
@@ -641,7 +677,11 @@ int kvm_s390_inject_vcpu(struct kvm_vcpu *vcpu,
 <<<<<<< HEAD
 	case KVM_S390_INT_EXTERNAL_CALL:
 =======
+<<<<<<< HEAD
+	case KVM_S390_INT_EXTERNAL_CALL:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case KVM_S390_INT_EMERGENCY:
 		VCPU_EVENT(vcpu, 3, "inject: type %x", s390int->type);
 		inti->type = s390int->type;

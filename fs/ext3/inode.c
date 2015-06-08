@@ -23,12 +23,17 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/highuid.h>
 #include <linux/quotaops.h>
 #include <linux/writeback.h>
 #include <linux/mpage.h>
 #include <linux/namei.h>
 #include "ext3.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/module.h>
 #include <linux/fs.h>
@@ -47,6 +52,7 @@
 #include <linux/fiemap.h>
 #include <linux/namei.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xattr.h"
 #include "acl.h"
 
@@ -54,7 +60,11 @@ static int ext3_writepage_trans_blocks(struct inode *inode);
 <<<<<<< HEAD
 static int ext3_block_truncate_page(struct inode *inode, loff_t from);
 =======
+<<<<<<< HEAD
+static int ext3_block_truncate_page(struct inode *inode, loff_t from);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Test whether an inode is a fast symlink.
@@ -86,7 +96,11 @@ int ext3_forget(handle_t *handle, int is_metadata, struct inode *inode,
 <<<<<<< HEAD
 	trace_ext3_forget(inode, is_metadata, blocknr);
 =======
+<<<<<<< HEAD
+	trace_ext3_forget(inode, is_metadata, blocknr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUFFER_TRACE(bh, "enter");
 
 	jbd_debug(4, "forgetting bh %p: is_metadata = %d, mode %o, "
@@ -214,7 +228,11 @@ void ext3_evict_inode (struct inode *inode)
 <<<<<<< HEAD
 	struct ext3_inode_info *ei = EXT3_I(inode);
 =======
+<<<<<<< HEAD
+	struct ext3_inode_info *ei = EXT3_I(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ext3_block_alloc_info *rsv;
 	handle_t *handle;
 	int want_delete = 0;
@@ -222,13 +240,20 @@ void ext3_evict_inode (struct inode *inode)
 <<<<<<< HEAD
 	trace_ext3_evict_inode(inode);
 =======
+<<<<<<< HEAD
+	trace_ext3_evict_inode(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!inode->i_nlink && !is_bad_inode(inode)) {
 		dquot_initialize(inode);
 		want_delete = 1;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * When journalling data dirty buffers are tracked only in the journal.
 	 * So although mm thinks everything is clean and ready for reaping the
@@ -263,6 +288,8 @@ void ext3_evict_inode (struct inode *inode)
 	ext3_discard_reservation(inode);
 	rsv = ei->i_block_alloc_info;
 	ei->i_block_alloc_info = NULL;
+<<<<<<< HEAD
+=======
 =======
 	truncate_inode_pages(&inode->i_data, 0);
 
@@ -270,6 +297,7 @@ void ext3_evict_inode (struct inode *inode)
 	rsv = EXT3_I(inode)->i_block_alloc_info;
 	EXT3_I(inode)->i_block_alloc_info = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(rsv))
 		kfree(rsv);
 
@@ -294,6 +322,9 @@ void ext3_evict_inode (struct inode *inode)
 		ext3_truncate(inode);
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Kill off the orphan record created when the inode lost the last
 	 * link.  Note that ext3_orphan_del() has to be able to cope with the
 	 * deletion of a non-existent orphan - ext3_truncate() could
@@ -301,6 +332,8 @@ void ext3_evict_inode (struct inode *inode)
 	 */
 	ext3_orphan_del(handle, inode);
 	ei->i_dtime = get_seconds();
+<<<<<<< HEAD
+=======
 =======
 	 * Kill off the orphan record which ext3_truncate created.
 	 * AKPM: I think this can be inside the above `if'.
@@ -312,6 +345,7 @@ void ext3_evict_inode (struct inode *inode)
 	ext3_orphan_del(handle, inode);
 	EXT3_I(inode)->i_dtime	= get_seconds();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * One subtle ordering requirement: if anything has gone wrong
@@ -800,7 +834,11 @@ static int ext3_splice_branch(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
 	struct timespec now;
 =======
+<<<<<<< HEAD
+	struct timespec now;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	block_i = ei->i_block_alloc_info;
 	/*
@@ -841,16 +879,22 @@ static int ext3_splice_branch(handle_t *handle, struct inode *inode,
 
 	/* We are done with atomic stuff, now do the rest of housekeeping */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	now = CURRENT_TIME_SEC;
 	if (!timespec_equal(&inode->i_ctime, &now) || !where->bh) {
 		inode->i_ctime = now;
 		ext3_mark_inode_dirty(handle, inode);
 	}
+<<<<<<< HEAD
+=======
 =======
 
 	inode->i_ctime = CURRENT_TIME_SEC;
 	ext3_mark_inode_dirty(handle, inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* ext3_mark_inode_dirty already updated i_sync_tid */
 	atomic_set(&ei->i_datasync_tid, handle->h_transaction->t_tid);
 
@@ -929,7 +973,11 @@ int ext3_get_blocks_handle(handle_t *handle, struct inode *inode,
 <<<<<<< HEAD
 	trace_ext3_get_blocks_enter(inode, iblock, maxblocks, create);
 =======
+<<<<<<< HEAD
+	trace_ext3_get_blocks_enter(inode, iblock, maxblocks, create);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	J_ASSERT(handle != NULL || create == 0);
 	depth = ext3_block_to_path(inode,iblock,offsets,&blocks_to_boundary);
 
@@ -979,7 +1027,13 @@ int ext3_get_blocks_handle(handle_t *handle, struct inode *inode,
 	 * Block out ext3_truncate while we alter the tree
 	 */
 =======
+<<<<<<< HEAD
+	/*
+	 * Block out ext3_truncate while we alter the tree
+	 */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&ei->truncate_mutex);
 
 	/*
@@ -1030,10 +1084,13 @@ int ext3_get_blocks_handle(handle_t *handle, struct inode *inode,
 					maxblocks, blocks_to_boundary);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Block out ext3_truncate while we alter the tree
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ext3_alloc_branch(handle, inode, indirect_blks, &count, goal,
 				offsets + (partial - chain), partial);
 
@@ -1072,7 +1129,13 @@ out:
 				   depth ? le32_to_cpu(chain[depth-1].key) : 0,
 				   count, err);
 =======
+<<<<<<< HEAD
+	trace_ext3_get_blocks_exit(inode, iblock,
+				   depth ? le32_to_cpu(chain[depth-1].key) : 0,
+				   count, err);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -1204,16 +1267,22 @@ struct buffer_head *ext3_bread(handle_t *handle, struct inode *inode,
 	if (!bh)
 		return bh;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bh_uptodate_or_lock(bh))
 		return bh;
 	get_bh(bh);
 	bh->b_end_io = end_buffer_read_sync;
 	submit_bh(READ | REQ_META | REQ_PRIO, bh);
+<<<<<<< HEAD
+=======
 =======
 	if (buffer_uptodate(bh))
 		return bh;
 	ll_rw_block(READ_META, 1, &bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wait_on_buffer(bh);
 	if (buffer_uptodate(bh))
 		return bh;
@@ -1314,6 +1383,9 @@ static void ext3_truncate_failed_write(struct inode *inode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Truncate blocks that were not used by direct IO write. We have to zero out
  * the last file block as well because direct IO might have written to it.
@@ -1324,8 +1396,11 @@ static void ext3_truncate_failed_direct_write(struct inode *inode)
 	ext3_truncate(inode);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ext3_write_begin(struct file *file, struct address_space *mapping,
 				loff_t pos, unsigned len, unsigned flags,
 				struct page **pagep, void **fsdata)
@@ -1345,7 +1420,12 @@ static int ext3_write_begin(struct file *file, struct address_space *mapping,
 	trace_ext3_write_begin(inode, pos, len, flags);
 
 =======
+<<<<<<< HEAD
+	trace_ext3_write_begin(inode, pos, len, flags);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	index = pos >> PAGE_CACHE_SHIFT;
 	from = pos & (PAGE_CACHE_SIZE - 1);
 	to = from + len;
@@ -1464,7 +1544,11 @@ static int ext3_ordered_write_end(struct file *file,
 <<<<<<< HEAD
 	trace_ext3_ordered_write_end(inode, pos, len, copied);
 =======
+<<<<<<< HEAD
+	trace_ext3_ordered_write_end(inode, pos, len, copied);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	copied = block_write_end(file, mapping, pos, len, copied, page, fsdata);
 
 	from = pos & (PAGE_CACHE_SIZE - 1);
@@ -1503,7 +1587,11 @@ static int ext3_writeback_write_end(struct file *file,
 <<<<<<< HEAD
 	trace_ext3_writeback_write_end(inode, pos, len, copied);
 =======
+<<<<<<< HEAD
+	trace_ext3_writeback_write_end(inode, pos, len, copied);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	copied = block_write_end(file, mapping, pos, len, copied, page, fsdata);
 	update_file_sizes(inode, pos, copied);
 	/*
@@ -1531,7 +1619,11 @@ static int ext3_journalled_write_end(struct file *file,
 <<<<<<< HEAD
 	struct ext3_inode_info *ei = EXT3_I(inode);
 =======
+<<<<<<< HEAD
+	struct ext3_inode_info *ei = EXT3_I(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0, ret2;
 	int partial = 0;
 	unsigned from, to;
@@ -1539,7 +1631,11 @@ static int ext3_journalled_write_end(struct file *file,
 <<<<<<< HEAD
 	trace_ext3_journalled_write_end(inode, pos, len, copied);
 =======
+<<<<<<< HEAD
+	trace_ext3_journalled_write_end(inode, pos, len, copied);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	from = pos & (PAGE_CACHE_SIZE - 1);
 	to = from + len;
 
@@ -1569,9 +1665,15 @@ static int ext3_journalled_write_end(struct file *file,
 	if (inode->i_size > ei->i_disksize) {
 		ei->i_disksize = inode->i_size;
 =======
+<<<<<<< HEAD
+	atomic_set(&ei->i_datasync_tid, handle->h_transaction->t_tid);
+	if (inode->i_size > ei->i_disksize) {
+		ei->i_disksize = inode->i_size;
+=======
 	if (inode->i_size > EXT3_I(inode)->i_disksize) {
 		EXT3_I(inode)->i_disksize = inode->i_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret2 = ext3_mark_inode_dirty(handle, inode);
 		if (!ret)
 			ret = ret2;
@@ -1737,7 +1839,11 @@ static int ext3_ordered_writepage(struct page *page,
 <<<<<<< HEAD
 	trace_ext3_ordered_writepage(page);
 =======
+<<<<<<< HEAD
+	trace_ext3_ordered_writepage(page);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!page_has_buffers(page)) {
 		create_empty_buffers(page, inode->i_sb->s_blocksize,
 				(1 << BH_Dirty)|(1 << BH_Uptodate));
@@ -1817,7 +1923,11 @@ static int ext3_writeback_writepage(struct page *page,
 <<<<<<< HEAD
 	trace_ext3_writeback_writepage(page);
 =======
+<<<<<<< HEAD
+	trace_ext3_writeback_writepage(page);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (page_has_buffers(page)) {
 		if (!walk_page_buffers(NULL, page_buffers(page), 0,
 				      PAGE_CACHE_SIZE, NULL, buffer_unmapped)) {
@@ -1869,7 +1979,11 @@ static int ext3_journalled_writepage(struct page *page,
 <<<<<<< HEAD
 	trace_ext3_journalled_writepage(page);
 =======
+<<<<<<< HEAD
+	trace_ext3_journalled_writepage(page);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	handle = ext3_journal_start(inode, ext3_writepage_trans_blocks(inode));
 	if (IS_ERR(handle)) {
 		ret = PTR_ERR(handle);
@@ -1900,7 +2014,12 @@ static int ext3_journalled_writepage(struct page *page,
 		atomic_set(&EXT3_I(inode)->i_datasync_tid,
 			   handle->h_transaction->t_tid);
 =======
+<<<<<<< HEAD
+		atomic_set(&EXT3_I(inode)->i_datasync_tid,
+			   handle->h_transaction->t_tid);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unlock_page(page);
 	} else {
 		/*
@@ -1928,7 +2047,11 @@ static int ext3_readpage(struct file *file, struct page *page)
 <<<<<<< HEAD
 	trace_ext3_readpage(page);
 =======
+<<<<<<< HEAD
+	trace_ext3_readpage(page);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mpage_readpage(page, ext3_get_block);
 }
 
@@ -1947,7 +2070,12 @@ static void ext3_invalidatepage(struct page *page, unsigned long offset)
 	trace_ext3_invalidatepage(page, offset);
 
 =======
+<<<<<<< HEAD
+	trace_ext3_invalidatepage(page, offset);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If it's a full truncate we just forget about the pending dirtying
 	 */
@@ -1964,7 +2092,11 @@ static int ext3_releasepage(struct page *page, gfp_t wait)
 <<<<<<< HEAD
 	trace_ext3_releasepage(page);
 =======
+<<<<<<< HEAD
+	trace_ext3_releasepage(page);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(PageChecked(page));
 	if (!page_has_buffers(page))
 		return 0;
@@ -1997,7 +2129,12 @@ static ssize_t ext3_direct_IO(int rw, struct kiocb *iocb,
 	trace_ext3_direct_IO_enter(inode, offset, iov_length(iov, nr_segs), rw);
 
 =======
+<<<<<<< HEAD
+	trace_ext3_direct_IO_enter(inode, offset, iov_length(iov, nr_segs), rw);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rw == WRITE) {
 		loff_t final_size = offset + count;
 
@@ -2024,10 +2161,15 @@ retry:
 	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
 				 ext3_get_block);
 =======
+<<<<<<< HEAD
+	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
+				 ext3_get_block);
+=======
 	ret = blockdev_direct_IO(rw, iocb, inode, inode->i_sb->s_bdev, iov,
 				 offset, nr_segs,
 				 ext3_get_block, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * In case of error extending write may have instantiated a few
 	 * blocks outside i_size. Trim these off again.
@@ -2040,8 +2182,12 @@ retry:
 <<<<<<< HEAD
 			ext3_truncate_failed_direct_write(inode);
 =======
+<<<<<<< HEAD
+			ext3_truncate_failed_direct_write(inode);
+=======
 			vmtruncate(inode, isize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (ret == -ENOSPC && ext3_should_retry_alloc(inode->i_sb, &retries))
 		goto retry;
@@ -2058,8 +2204,12 @@ retry:
 <<<<<<< HEAD
 			ext3_truncate_failed_direct_write(inode);
 =======
+<<<<<<< HEAD
+			ext3_truncate_failed_direct_write(inode);
+=======
 			ext3_truncate(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = PTR_ERR(handle);
 			goto out;
 		}
@@ -2089,7 +2239,12 @@ out:
 	trace_ext3_direct_IO_exit(inode, offset,
 				iov_length(iov, nr_segs), rw, ret);
 =======
+<<<<<<< HEAD
+	trace_ext3_direct_IO_exit(inode, offset,
+				iov_length(iov, nr_segs), rw, ret);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -2173,6 +2328,9 @@ void ext3_set_aops(struct inode *inode)
  * of that block so it doesn't yield old data if the file is later grown.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ext3_block_truncate_page(struct inode *inode, loff_t from)
 {
 	ext3_fsblk_t index = from >> PAGE_CACHE_SHIFT;
@@ -2191,6 +2349,8 @@ static int ext3_block_truncate_page(struct inode *inode, loff_t from)
 	page = grab_cache_page(inode->i_mapping, index);
 	if (!page)
 		return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 static int ext3_block_truncate_page(handle_t *handle, struct page *page,
 		struct address_space *mapping, loff_t from)
@@ -2204,6 +2364,7 @@ static int ext3_block_truncate_page(handle_t *handle, struct page *page,
 
 	blocksize = inode->i_sb->s_blocksize;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	length = blocksize - (offset & (blocksize - 1));
 	iblock = index << (PAGE_CACHE_SHIFT - inode->i_sb->s_blocksize_bits);
 
@@ -2240,6 +2401,9 @@ static int ext3_block_truncate_page(handle_t *handle, struct page *page,
 		set_buffer_uptodate(bh);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!bh_uptodate_or_lock(bh)) {
 		err = bh_submit_read(bh);
 		/* Uhhuh. Read error. Complain and punt. */
@@ -2259,6 +2423,8 @@ static int ext3_block_truncate_page(handle_t *handle, struct page *page,
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	if (!buffer_uptodate(bh)) {
 		err = -EIO;
@@ -2270,6 +2436,7 @@ static int ext3_block_truncate_page(handle_t *handle, struct page *page,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ext3_should_journal_data(inode)) {
 		BUFFER_TRACE(bh, "get write access");
 		err = ext3_journal_get_write_access(handle, bh);
@@ -2277,8 +2444,12 @@ static int ext3_block_truncate_page(handle_t *handle, struct page *page,
 <<<<<<< HEAD
 			goto stop;
 =======
+<<<<<<< HEAD
+			goto stop;
+=======
 			goto unlock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	zero_user(page, offset, length);
@@ -2297,7 +2468,13 @@ stop:
 	if (handle)
 		ext3_journal_stop(handle);
 =======
+<<<<<<< HEAD
+stop:
+	if (handle)
+		ext3_journal_stop(handle);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unlock:
 	unlock_page(page);
@@ -2668,9 +2845,12 @@ int ext3_can_truncate(struct inode *inode)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (IS_APPEND(inode) || IS_IMMUTABLE(inode))
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (S_ISREG(inode->i_mode))
 		return 1;
 	if (S_ISDIR(inode->i_mode))
@@ -2690,8 +2870,12 @@ int ext3_can_truncate(struct inode *inode)
 <<<<<<< HEAD
  * As we work through the truncate and commit bits of it to the journal there
 =======
+<<<<<<< HEAD
+ * As we work through the truncate and commit bits of it to the journal there
+=======
  * As we work through the truncate and commmit bits of it to the journal there
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * is one core, guiding principle: the file's tree must always be consistent on
  * disk.  We must be able to restart the truncate after a crash.
  *
@@ -2720,8 +2904,11 @@ void ext3_truncate(struct inode *inode)
 	int addr_per_block = EXT3_ADDR_PER_BLOCK(inode->i_sb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct address_space *mapping = inode->i_mapping;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int offsets[4];
 	Indirect chain[4];
 	Indirect *partial;
@@ -2733,8 +2920,13 @@ void ext3_truncate(struct inode *inode)
 
 	trace_ext3_truncate_enter(inode);
 =======
+<<<<<<< HEAD
+
+	trace_ext3_truncate_enter(inode);
+=======
 	struct page *page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!ext3_can_truncate(inode))
 		goto out_notrans;
@@ -2743,12 +2935,17 @@ void ext3_truncate(struct inode *inode)
 		ext3_set_inode_state(inode, EXT3_STATE_FLUSH_ON_CLOSE);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	handle = start_transaction(inode);
 	if (IS_ERR(handle))
 		goto out_notrans;
 
 	last_block = (inode->i_size + blocksize-1)
 					>> EXT3_BLOCK_SIZE_BITS(inode->i_sb);
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * We have to lock the EOF page here, because lock_page() nests
@@ -2782,6 +2979,7 @@ void ext3_truncate(struct inode *inode)
 		ext3_block_truncate_page(handle, page, mapping, inode->i_size);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n = ext3_block_to_path(inode, last_block, offsets, NULL);
 	if (n == 0)
 		goto out_stop;	/* error */
@@ -2899,7 +3097,11 @@ out_stop:
 <<<<<<< HEAD
 	trace_ext3_truncate_exit(inode);
 =======
+<<<<<<< HEAD
+	trace_ext3_truncate_exit(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 out_notrans:
 	/*
@@ -2911,7 +3113,11 @@ out_notrans:
 <<<<<<< HEAD
 	trace_ext3_truncate_exit(inode);
 =======
+<<<<<<< HEAD
+	trace_ext3_truncate_exit(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static ext3_fsblk_t ext3_get_inode_block(struct super_block *sb,
@@ -3054,15 +3260,21 @@ make_io:
 		 * Read the block from disk.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_ext3_load_inode(inode);
 		get_bh(bh);
 		bh->b_end_io = end_buffer_read_sync;
 		submit_bh(READ | REQ_META | REQ_PRIO, bh);
+<<<<<<< HEAD
+=======
 =======
 		get_bh(bh);
 		bh->b_end_io = end_buffer_read_sync;
 		submit_bh(READ_META, bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wait_on_buffer(bh);
 		if (!buffer_uptodate(bh)) {
 			ext3_error(inode->i_sb, "ext3_get_inode_loc",
@@ -3157,8 +3369,12 @@ struct inode *ext3_iget(struct super_block *sb, unsigned long ino)
 <<<<<<< HEAD
 	set_nlink(inode, le16_to_cpu(raw_inode->i_links_count));
 =======
+<<<<<<< HEAD
+	set_nlink(inode, le16_to_cpu(raw_inode->i_links_count));
+=======
 	inode->i_nlink = le16_to_cpu(raw_inode->i_links_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_size = le32_to_cpu(raw_inode->i_size);
 	inode->i_atime.tv_sec = (signed)le32_to_cpu(raw_inode->i_atime);
 	inode->i_ctime.tv_sec = (signed)le32_to_cpu(raw_inode->i_ctime);
@@ -3315,9 +3531,12 @@ static int ext3_do_update_inode(handle_t *handle,
 	int err = 0, rc, block;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int need_datasync = 0;
 	__le32 disksize;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 again:
 	/* we can't allow multiple procs in here at once, its a bit racey */
@@ -3358,12 +3577,16 @@ again:
 <<<<<<< HEAD
 	raw_inode->i_size = cpu_to_le32(ei->i_disksize);
 =======
+<<<<<<< HEAD
+	raw_inode->i_size = cpu_to_le32(ei->i_disksize);
+=======
 	disksize = cpu_to_le32(ei->i_disksize);
 	if (disksize != raw_inode->i_size) {
 		need_datasync = 1;
 		raw_inode->i_size = disksize;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_inode->i_atime = cpu_to_le32(inode->i_atime.tv_sec);
 	raw_inode->i_ctime = cpu_to_le32(inode->i_ctime.tv_sec);
 	raw_inode->i_mtime = cpu_to_le32(inode->i_mtime.tv_sec);
@@ -3383,12 +3606,17 @@ again:
 		raw_inode->i_size_high =
 			cpu_to_le32(ei->i_disksize >> 32);
 =======
+<<<<<<< HEAD
+		raw_inode->i_size_high =
+			cpu_to_le32(ei->i_disksize >> 32);
+=======
 		disksize = cpu_to_le32(ei->i_disksize >> 32);
 		if (disksize != raw_inode->i_size_high) {
 			raw_inode->i_size_high = disksize;
 			need_datasync = 1;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ei->i_disksize > 0x7fffffffULL) {
 			struct super_block *sb = inode->i_sb;
 			if (!EXT3_HAS_RO_COMPAT_FEATURE(sb,
@@ -3443,9 +3671,12 @@ again:
 	atomic_set(&ei->i_sync_tid, handle->h_transaction->t_tid);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (need_datasync)
 		atomic_set(&ei->i_datasync_tid, handle->h_transaction->t_tid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_brelse:
 	brelse (bh);
 	ext3_std_error(inode->i_sb, err);
@@ -3565,7 +3796,13 @@ int ext3_setattr(struct dentry *dentry, struct iattr *attr)
 		inode_dio_wait(inode);
 
 =======
+<<<<<<< HEAD
+	if (attr->ia_valid & ATTR_SIZE)
+		inode_dio_wait(inode);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (S_ISREG(inode->i_mode) &&
 	    attr->ia_valid & ATTR_SIZE && attr->ia_size < inode->i_size) {
 		handle_t *handle;
@@ -3578,6 +3815,9 @@ int ext3_setattr(struct dentry *dentry, struct iattr *attr)
 
 		error = ext3_orphan_add(handle, inode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error) {
 			ext3_journal_stop(handle);
 			goto err_out;
@@ -3602,6 +3842,8 @@ int ext3_setattr(struct dentry *dentry, struct iattr *attr)
 			ext3_journal_stop(handle);
 			goto err_out;
 		}
+<<<<<<< HEAD
+=======
 =======
 		EXT3_I(inode)->i_disksize = attr->ia_size;
 		rc = ext3_mark_inode_dirty(handle, inode);
@@ -3609,6 +3851,7 @@ int ext3_setattr(struct dentry *dentry, struct iattr *attr)
 			error = rc;
 		ext3_journal_stop(handle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if ((attr->ia_valid & ATTR_SIZE) &&
@@ -3617,10 +3860,15 @@ int ext3_setattr(struct dentry *dentry, struct iattr *attr)
 		truncate_setsize(inode, attr->ia_size);
 		ext3_truncate(inode);
 =======
+<<<<<<< HEAD
+		truncate_setsize(inode, attr->ia_size);
+		ext3_truncate(inode);
+=======
 		rc = vmtruncate(inode, attr->ia_size);
 		if (rc)
 			goto err_out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	setattr_copy(inode, attr);
@@ -3757,7 +4005,11 @@ int ext3_mark_inode_dirty(handle_t *handle, struct inode *inode)
 <<<<<<< HEAD
 	trace_ext3_mark_inode_dirty(inode, _RET_IP_);
 =======
+<<<<<<< HEAD
+	trace_ext3_mark_inode_dirty(inode, _RET_IP_);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ext3_reserve_inode_write(handle, inode, &iloc);
 	if (!err)
 		err = ext3_mark_iloc_dirty(handle, inode, &iloc);

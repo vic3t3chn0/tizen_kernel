@@ -31,10 +31,15 @@
 struct unix_domain {
 	struct auth_domain	h;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* other stuff later */
 };
 
 extern struct auth_ops svcauth_null;
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_NFSD_DEPRECATED
 	int	addr_changes;
@@ -43,6 +48,7 @@ extern struct auth_ops svcauth_null;
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct auth_ops svcauth_unix;
 
 static void svcauth_unix_domain_release(struct auth_domain *dom)
@@ -83,10 +89,13 @@ struct auth_domain *unix_domain_find(char *name)
 		new->h.flavour = &svcauth_unix;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 		new->addr_changes = 0;
 #endif /* CONFIG_NFSD_DEPRECATED */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rv = auth_domain_lookup(name, &new->h);
 	}
 }
@@ -107,10 +116,13 @@ struct ip_map {
 	struct unix_domain	*m_client;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 	int			m_add_change;
 #endif /* CONFIG_NFSD_DEPRECATED */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void ip_map_put(struct kref *kref)
@@ -158,8 +170,12 @@ static void ip_map_init(struct cache_head *cnew, struct cache_head *citem)
 <<<<<<< HEAD
 	new->m_addr = item->m_addr;
 =======
+<<<<<<< HEAD
+	new->m_addr = item->m_addr;
+=======
 	ipv6_addr_copy(&new->m_addr, &item->m_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 static void update(struct cache_head *cnew, struct cache_head *citem)
 {
@@ -170,10 +186,13 @@ static void update(struct cache_head *cnew, struct cache_head *citem)
 	new->m_client = item->m_client;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 	new->m_add_change = item->m_add_change;
 #endif /* CONFIG_NFSD_DEPRECATED */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 static struct cache_head *ip_map_alloc(void)
 {
@@ -245,8 +264,12 @@ static int ip_map_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 	if (rpc_pton(cd->net, buf, len, &address.sa, sizeof(address)) == 0)
 =======
+<<<<<<< HEAD
+	if (rpc_pton(cd->net, buf, len, &address.sa, sizeof(address)) == 0)
+=======
 	if (rpc_pton(buf, len, &address.sa, sizeof(address)) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	switch (address.sa.sa_family) {
 	case AF_INET:
@@ -258,8 +281,12 @@ static int ip_map_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case AF_INET6:
 		memcpy(&sin6, &address.s6, sizeof(sin6));
 		break;
@@ -316,8 +343,12 @@ static int ip_map_show(struct seq_file *m,
 <<<<<<< HEAD
 	addr = im->m_addr;
 =======
+<<<<<<< HEAD
+	addr = im->m_addr;
+=======
 	ipv6_addr_copy(&addr, &im->m_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(CACHE_VALID, &h->flags) &&
 	    !test_bit(CACHE_NEGATIVE, &h->flags))
@@ -343,8 +374,12 @@ static struct ip_map *__ip_map_lookup(struct cache_detail *cd, char *class,
 <<<<<<< HEAD
 	ip.m_addr = *addr;
 =======
+<<<<<<< HEAD
+	ip.m_addr = *addr;
+=======
 	ipv6_addr_copy(&ip.m_addr, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ch = sunrpc_cache_lookup(cd, &ip.h,
 				 hash_str(class, IP_HASHBITS) ^
 				 hash_ip6(*addr));
@@ -376,6 +411,8 @@ static int __ip_map_update(struct cache_detail *cd, struct ip_map *ipm,
 		set_bit(CACHE_NEGATIVE, &ip.h.flags);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 	else {
 		ip.m_add_change = udom->addr_changes;
@@ -387,6 +424,7 @@ static int __ip_map_update(struct cache_detail *cd, struct ip_map *ipm,
 	}
 #endif /* CONFIG_NFSD_DEPRECATED */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip.h.expiry_time = expiry;
 	ch = sunrpc_cache_update(cd, &ip.h, &ipm->h,
 				 hash_str(ipm->m_class, IP_HASHBITS) ^
@@ -406,6 +444,8 @@ static inline int ip_map_update(struct net *net, struct ip_map *ipm,
 	return __ip_map_update(sn->ip_map_cache, ipm, udom, expiry);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_NFSD_DEPRECATED
@@ -465,6 +505,7 @@ struct auth_domain *auth_unix_lookup(struct net *net, struct in6_addr *addr)
 EXPORT_SYMBOL_GPL(auth_unix_lookup);
 #endif /* CONFIG_NFSD_DEPRECATED */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void svcauth_unix_purge(void)
 {
@@ -557,8 +598,11 @@ struct unix_gid {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct cache_head	*gid_table[GID_HASHMAX];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void unix_gid_put(struct kref *kref)
 {
@@ -619,9 +663,13 @@ static int unix_gid_upcall(struct cache_detail *cd, struct cache_head *h)
 <<<<<<< HEAD
 static struct unix_gid *unix_gid_lookup(struct cache_detail *cd, uid_t uid);
 =======
+<<<<<<< HEAD
+static struct unix_gid *unix_gid_lookup(struct cache_detail *cd, uid_t uid);
+=======
 static struct unix_gid *unix_gid_lookup(uid_t uid);
 extern struct cache_detail unix_gid_cache;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int unix_gid_parse(struct cache_detail *cd,
 			char *mesg, int mlen)
@@ -638,8 +686,12 @@ static int unix_gid_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 	if (mesg[mlen - 1] != '\n')
 =======
+<<<<<<< HEAD
+	if (mesg[mlen - 1] != '\n')
+=======
 	if (mlen <= 0 || mesg[mlen-1] != '\n')
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	mesg[mlen-1] = 0;
 
@@ -672,8 +724,12 @@ static int unix_gid_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 	ugp = unix_gid_lookup(cd, uid);
 =======
+<<<<<<< HEAD
+	ugp = unix_gid_lookup(cd, uid);
+=======
 	ugp = unix_gid_lookup(uid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ugp) {
 		struct cache_head *ch;
 		ug.h.flags = 0;
@@ -681,8 +737,12 @@ static int unix_gid_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 		ch = sunrpc_cache_update(cd,
 =======
+<<<<<<< HEAD
+		ch = sunrpc_cache_update(cd,
+=======
 		ch = sunrpc_cache_update(&unix_gid_cache,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 &ug.h, &ugp->h,
 					 hash_long(uid, GID_HASHBITS));
 		if (!ch)
@@ -692,8 +752,12 @@ static int unix_gid_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 			cache_put(ch, cd);
 =======
+<<<<<<< HEAD
+			cache_put(ch, cd);
+=======
 			cache_put(ch, &unix_gid_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else
 		err = -ENOMEM;
@@ -734,11 +798,17 @@ static struct cache_detail unix_gid_cache_template = {
 	.owner		= THIS_MODULE,
 	.hash_size	= GID_HASHMAX,
 =======
+<<<<<<< HEAD
+static struct cache_detail unix_gid_cache_template = {
+	.owner		= THIS_MODULE,
+	.hash_size	= GID_HASHMAX,
+=======
 struct cache_detail unix_gid_cache = {
 	.owner		= THIS_MODULE,
 	.hash_size	= GID_HASHMAX,
 	.hash_table	= gid_table,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "auth.unix.gid",
 	.cache_put	= unix_gid_put,
 	.cache_upcall	= unix_gid_upcall,
@@ -751,6 +821,9 @@ struct cache_detail unix_gid_cache = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int unix_gid_cache_create(struct net *net)
 {
 	struct sunrpc_net *sn = net_generic(net, sunrpc_net_id);
@@ -781,9 +854,12 @@ void unix_gid_cache_destroy(struct net *net)
 }
 
 static struct unix_gid *unix_gid_lookup(struct cache_detail *cd, uid_t uid)
+<<<<<<< HEAD
+=======
 =======
 static struct unix_gid *unix_gid_lookup(uid_t uid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct unix_gid ug;
 	struct cache_head *ch;
@@ -792,9 +868,13 @@ static struct unix_gid *unix_gid_lookup(uid_t uid)
 <<<<<<< HEAD
 	ch = sunrpc_cache_lookup(cd, &ug.h, hash_long(uid, GID_HASHBITS));
 =======
+<<<<<<< HEAD
+	ch = sunrpc_cache_lookup(cd, &ug.h, hash_long(uid, GID_HASHBITS));
+=======
 	ch = sunrpc_cache_lookup(&unix_gid_cache, &ug.h,
 				 hash_long(uid, GID_HASHBITS));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ch)
 		return container_of(ch, struct unix_gid, h);
 	else
@@ -807,6 +887,9 @@ static struct group_info *unix_gid_find(uid_t uid, struct svc_rqst *rqstp)
 	struct group_info *gi;
 	int ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sunrpc_net *sn = net_generic(rqstp->rq_xprt->xpt_net,
 					    sunrpc_net_id);
 
@@ -814,6 +897,8 @@ static struct group_info *unix_gid_find(uid_t uid, struct svc_rqst *rqstp)
 	if (!ug)
 		return ERR_PTR(-EAGAIN);
 	ret = cache_check(sn->unix_gid_cache, &ug->h, &rqstp->rq_chandle);
+<<<<<<< HEAD
+=======
 =======
 
 	ug = unix_gid_lookup(uid);
@@ -821,6 +906,7 @@ static struct group_info *unix_gid_find(uid_t uid, struct svc_rqst *rqstp)
 		return ERR_PTR(-EAGAIN);
 	ret = cache_check(&unix_gid_cache, &ug->h, &rqstp->rq_chandle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (ret) {
 	case -ENOENT:
 		return ERR_PTR(-ENOENT);
@@ -831,8 +917,12 @@ static struct group_info *unix_gid_find(uid_t uid, struct svc_rqst *rqstp)
 <<<<<<< HEAD
 		cache_put(&ug->h, sn->unix_gid_cache);
 =======
+<<<<<<< HEAD
+		cache_put(&ug->h, sn->unix_gid_cache);
+=======
 		cache_put(&ug->h, &unix_gid_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return gi;
 	default:
 		return ERR_PTR(-EAGAIN);
@@ -1049,6 +1139,9 @@ struct auth_ops svcauth_unix = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct cache_detail ip_map_cache_template = {
 	.owner		= THIS_MODULE,
 	.hash_size	= IP_HASHMAX,
@@ -1079,6 +1172,8 @@ int ip_map_cache_create(struct net *net)
 	}
 	sn->ip_map_cache = cd;
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 int ip_map_cache_create(struct net *net)
 {
@@ -1122,11 +1217,15 @@ err_tbl:
 err_cd:
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ip_map_cache_destroy(struct net *net)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sunrpc_net *sn = net_generic(net, sunrpc_net_id);
 	struct cache_detail *cd = sn->ip_map_cache;
 
@@ -1134,6 +1233,8 @@ void ip_map_cache_destroy(struct net *net)
 	cache_purge(cd);
 	cache_unregister_net(cd, net);
 	cache_destroy_net(cd, net);
+<<<<<<< HEAD
+=======
 =======
 	struct sunrpc_net *sn;
 
@@ -1143,4 +1244,5 @@ void ip_map_cache_destroy(struct net *net)
 	kfree(sn->ip_map_cache->hash_table);
 	kfree(sn->ip_map_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

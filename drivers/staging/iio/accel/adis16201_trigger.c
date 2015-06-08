@@ -1,4 +1,14 @@
 #include <linux/interrupt.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/kernel.h>
+#include <linux/spi/spi.h>
+#include <linux/export.h>
+
+#include "../iio.h"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq.h>
 #include <linux/mutex.h>
 #include <linux/device.h>
@@ -8,6 +18,10 @@
 
 #include "../iio.h"
 #include "../sysfs.h"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "../trigger.h"
 #include "adis16201.h"
 
@@ -17,6 +31,26 @@
 static int adis16201_data_rdy_trigger_set_state(struct iio_trigger *trig,
 						bool state)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct iio_dev *indio_dev = trig->private_data;
+
+	dev_dbg(&indio_dev->dev, "%s (%d)\n", __func__, state);
+	return adis16201_set_irq(indio_dev, state);
+}
+
+static const struct iio_trigger_ops adis16201_trigger_ops = {
+	.owner = THIS_MODULE,
+	.set_trigger_state = &adis16201_data_rdy_trigger_set_state,
+};
+
+int adis16201_probe_trigger(struct iio_dev *indio_dev)
+{
+	int ret;
+	struct adis16201_state *st = iio_priv(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct adis16201_state *st = trig->private_data;
 	struct iio_dev *indio_dev = st->indio_dev;
 
@@ -28,6 +62,10 @@ int adis16201_probe_trigger(struct iio_dev *indio_dev)
 {
 	int ret;
 	struct adis16201_state *st = indio_dev->dev_data;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	st->trig = iio_allocate_trigger("adis16201-dev%d", indio_dev->id);
 	if (st->trig == NULL) {
@@ -42,9 +80,20 @@ int adis16201_probe_trigger(struct iio_dev *indio_dev)
 	if (ret)
 		goto error_free_trig;
 	st->trig->dev.parent = &st->us->dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	st->trig->ops = &adis16201_trigger_ops;
+	st->trig->private_data = indio_dev;
+=======
 	st->trig->owner = THIS_MODULE;
 	st->trig->private_data = st;
 	st->trig->set_trigger_state = &adis16201_data_rdy_trigger_set_state;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	st->trig->owner = THIS_MODULE;
+	st->trig->private_data = st;
+	st->trig->set_trigger_state = &adis16201_data_rdy_trigger_set_state;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = iio_trigger_register(st->trig);
 
 	/* select default trigger */
@@ -64,7 +113,15 @@ error_ret:
 
 void adis16201_remove_trigger(struct iio_dev *indio_dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct adis16201_state *state = iio_priv(indio_dev);
+=======
 	struct adis16201_state *state = indio_dev->dev_data;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct adis16201_state *state = indio_dev->dev_data;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iio_trigger_unregister(state->trig);
 	free_irq(state->us->irq, state->trig);

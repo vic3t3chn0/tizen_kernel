@@ -21,8 +21,11 @@
 #include <linux/kernel.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/init.h>
 #include <asm/uaccess.h>
@@ -44,11 +47,17 @@
 #include <asm/cpu.h>
 #include <asm/processor.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <asm/cpu.h>
+#include <asm/processor.h>
+=======
 #include <asm/atomic.h>
 #include <asm/cpu.h>
 #include <asm/processor.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/vpe.h>
 #include <asm/rtlx.h>
 
@@ -485,8 +494,11 @@ static struct irqaction rtlx_irq = {
 	.handler	= rtlx_interrupt,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "RTLX",
 };
 

@@ -78,6 +78,13 @@
 #include <linux/kobject.h>
 #include <linux/device.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/pstore.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/uaccess.h>
 
@@ -89,6 +96,14 @@ MODULE_DESCRIPTION("sysfs interface to EFI Variables");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(EFIVARS_VERSION);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DUMP_NAME_LEN 52
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The maximum size of VariableName + Data = 1024
  * Therefore, it's reasonable to save that much
@@ -119,8 +134,20 @@ struct efivar_attribute {
 	ssize_t (*store)(struct efivar_entry *entry, const char *buf, size_t count);
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PSTORE_EFI_ATTRIBUTES \
+	(EFI_VARIABLE_NON_VOLATILE | \
+	 EFI_VARIABLE_BOOTSERVICE_ACCESS | \
+	 EFI_VARIABLE_RUNTIME_ACCESS)
+=======
 static struct efivars __efivars;
 static struct efivar_operations ops;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct efivars __efivars;
+static struct efivar_operations ops;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define EFIVAR_ATTR(_name, _mode, _show, _store) \
 struct efivar_attribute efivar_attr_##_name = { \
@@ -168,6 +195,30 @@ utf16_strsize(efi_char16_t *data, unsigned long maxlength)
 	return utf16_strnlen(data, maxlength/sizeof(efi_char16_t)) * sizeof(efi_char16_t);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline int
+utf16_strncmp(const efi_char16_t *a, const efi_char16_t *b, size_t len)
+{
+	while (1) {
+		if (len == 0)
+			return 0;
+		if (*a < *b)
+			return -1;
+		if (*a > *b)
+			return 1;
+		if (*a == 0) /* implies *b == 0 */
+			return 0;
+		a++;
+		b++;
+		len--;
+	}
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool
 validate_device_path(struct efi_variable *var, int match, u8 *buffer,
 		     unsigned long len)
@@ -353,18 +404,50 @@ validate_var(struct efi_variable *var, u8 *data, unsigned long len)
 }
 
 static efi_status_t
+<<<<<<< HEAD
+<<<<<<< HEAD
+get_var_data_locked(struct efivars *efivars, struct efi_variable *var)
+{
+	efi_status_t status;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 get_var_data(struct efivars *efivars, struct efi_variable *var)
 {
 	efi_status_t status;
 
 	spin_lock(&efivars->lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	var->DataSize = 1024;
 	status = efivars->ops->get_variable(var->VariableName,
 					    &var->VendorGuid,
 					    &var->Attributes,
 					    &var->DataSize,
 					    var->Data);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return status;
+}
+
+static efi_status_t
+get_var_data(struct efivars *efivars, struct efi_variable *var)
+{
+	efi_status_t status;
+
+	spin_lock(&efivars->lock);
+	status = get_var_data_locked(efivars, var);
 	spin_unlock(&efivars->lock);
+
+=======
+	spin_unlock(&efivars->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock(&efivars->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status != EFI_SUCCESS) {
 		printk(KERN_WARNING "efivars: get_variable() failed 0x%lx!\n",
 			status);
@@ -402,6 +485,17 @@ efivar_attr_read(struct efivar_entry *entry, char *buf)
 	if (status != EFI_SUCCESS)
 		return -EIO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (var->Attributes & 0x1)
+		str += sprintf(str, "EFI_VARIABLE_NON_VOLATILE\n");
+	if (var->Attributes & 0x2)
+		str += sprintf(str, "EFI_VARIABLE_BOOTSERVICE_ACCESS\n");
+	if (var->Attributes & 0x4)
+		str += sprintf(str, "EFI_VARIABLE_RUNTIME_ACCESS\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (var->Attributes & EFI_VARIABLE_NON_VOLATILE)
 		str += sprintf(str, "EFI_VARIABLE_NON_VOLATILE\n");
 	if (var->Attributes & EFI_VARIABLE_BOOTSERVICE_ACCESS)
@@ -419,6 +513,10 @@ efivar_attr_read(struct efivar_entry *entry, char *buf)
 			"EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS\n");
 	if (var->Attributes & EFI_VARIABLE_APPEND_WRITE)
 		str += sprintf(str, "EFI_VARIABLE_APPEND_WRITE\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return str - buf;
 }
 
@@ -596,12 +694,201 @@ static struct kobj_type efivar_ktype = {
 	.default_attrs = def_attrs,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct pstore_info efi_pstore_info;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void
 efivar_unregister(struct efivar_entry *var)
 {
 	kobject_put(&var->kobj);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PSTORE
+
+static int efi_pstore_open(struct pstore_info *psi)
+{
+	struct efivars *efivars = psi->data;
+
+	spin_lock(&efivars->lock);
+	efivars->walk_entry = list_first_entry(&efivars->list,
+					       struct efivar_entry, list);
+	return 0;
+}
+
+static int efi_pstore_close(struct pstore_info *psi)
+{
+	struct efivars *efivars = psi->data;
+
+	spin_unlock(&efivars->lock);
+	return 0;
+}
+
+static ssize_t efi_pstore_read(u64 *id, enum pstore_type_id *type,
+			       struct timespec *timespec,
+			       char **buf, struct pstore_info *psi)
+{
+	efi_guid_t vendor = LINUX_EFI_CRASH_GUID;
+	struct efivars *efivars = psi->data;
+	char name[DUMP_NAME_LEN];
+	int i;
+	unsigned int part, size;
+	unsigned long time;
+
+	while (&efivars->walk_entry->list != &efivars->list) {
+		if (!efi_guidcmp(efivars->walk_entry->var.VendorGuid,
+				 vendor)) {
+			for (i = 0; i < DUMP_NAME_LEN; i++) {
+				name[i] = efivars->walk_entry->var.VariableName[i];
+			}
+			if (sscanf(name, "dump-type%u-%u-%lu", type, &part, &time) == 3) {
+				*id = part;
+				timespec->tv_sec = time;
+				timespec->tv_nsec = 0;
+				get_var_data_locked(efivars, &efivars->walk_entry->var);
+				size = efivars->walk_entry->var.DataSize;
+				*buf = kmalloc(size, GFP_KERNEL);
+				if (*buf == NULL)
+					return -ENOMEM;
+				memcpy(*buf, efivars->walk_entry->var.Data,
+				       size);
+				efivars->walk_entry = list_entry(efivars->walk_entry->list.next,
+					           struct efivar_entry, list);
+				return size;
+			}
+		}
+		efivars->walk_entry = list_entry(efivars->walk_entry->list.next,
+						 struct efivar_entry, list);
+	}
+	return 0;
+}
+
+static int efi_pstore_write(enum pstore_type_id type,
+		enum kmsg_dump_reason reason, u64 *id,
+		unsigned int part, size_t size, struct pstore_info *psi)
+{
+	char name[DUMP_NAME_LEN];
+	char stub_name[DUMP_NAME_LEN];
+	efi_char16_t efi_name[DUMP_NAME_LEN];
+	efi_guid_t vendor = LINUX_EFI_CRASH_GUID;
+	struct efivars *efivars = psi->data;
+	struct efivar_entry *entry, *found = NULL;
+	int i, ret = 0;
+
+	sprintf(stub_name, "dump-type%u-%u-", type, part);
+	sprintf(name, "%s%lu", stub_name, get_seconds());
+
+	spin_lock(&efivars->lock);
+
+	for (i = 0; i < DUMP_NAME_LEN; i++)
+		efi_name[i] = stub_name[i];
+
+	/*
+	 * Clean up any entries with the same name
+	 */
+
+	list_for_each_entry(entry, &efivars->list, list) {
+		get_var_data_locked(efivars, &entry->var);
+
+		if (efi_guidcmp(entry->var.VendorGuid, vendor))
+			continue;
+		if (utf16_strncmp(entry->var.VariableName, efi_name,
+				  utf16_strlen(efi_name)))
+			continue;
+		/* Needs to be a prefix */
+		if (entry->var.VariableName[utf16_strlen(efi_name)] == 0)
+			continue;
+
+		/* found */
+		found = entry;
+		efivars->ops->set_variable(entry->var.VariableName,
+					   &entry->var.VendorGuid,
+					   PSTORE_EFI_ATTRIBUTES,
+					   0, NULL);
+	}
+
+	if (found)
+		list_del(&found->list);
+
+	for (i = 0; i < DUMP_NAME_LEN; i++)
+		efi_name[i] = name[i];
+
+	efivars->ops->set_variable(efi_name, &vendor, PSTORE_EFI_ATTRIBUTES,
+				   size, psi->buf);
+
+	spin_unlock(&efivars->lock);
+
+	if (found)
+		efivar_unregister(found);
+
+	if (size)
+		ret = efivar_create_sysfs_entry(efivars,
+					  utf16_strsize(efi_name,
+							DUMP_NAME_LEN * 2),
+					  efi_name, &vendor);
+
+	*id = part;
+	return ret;
+};
+
+static int efi_pstore_erase(enum pstore_type_id type, u64 id,
+			    struct pstore_info *psi)
+{
+	efi_pstore_write(type, 0, &id, (unsigned int)id, 0, psi);
+
+	return 0;
+}
+#else
+static int efi_pstore_open(struct pstore_info *psi)
+{
+	return 0;
+}
+
+static int efi_pstore_close(struct pstore_info *psi)
+{
+	return 0;
+}
+
+static ssize_t efi_pstore_read(u64 *id, enum pstore_type_id *type,
+			       struct timespec *timespec,
+			       char **buf, struct pstore_info *psi)
+{
+	return -1;
+}
+
+static int efi_pstore_write(enum pstore_type_id type,
+		enum kmsg_dump_reason reason, u64 *id,
+		unsigned int part, size_t size, struct pstore_info *psi)
+{
+	return 0;
+}
+
+static int efi_pstore_erase(enum pstore_type_id type, u64 id,
+			    struct pstore_info *psi)
+{
+	return 0;
+}
+#endif
+
+static struct pstore_info efi_pstore_info = {
+	.owner		= THIS_MODULE,
+	.name		= "efi",
+	.open		= efi_pstore_open,
+	.close		= efi_pstore_close,
+	.read		= efi_pstore_read,
+	.write		= efi_pstore_write,
+	.erase		= efi_pstore_erase,
+};
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static ssize_t efivar_create(struct file *filp, struct kobject *kobj,
 			     struct bin_attribute *bin_attr,
@@ -732,6 +1019,11 @@ static ssize_t efivar_delete(struct file *filp, struct kobject *kobj,
 	return count;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool variable_is_present(efi_char16_t *variable_name, efi_guid_t *vendor)
 {
 	struct efivar_entry *entry, *n;
@@ -779,6 +1071,10 @@ static unsigned long var_name_strnsize(efi_char16_t *variable_name,
 	return min(len, variable_name_size);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Let's not leave out systab information that snuck into
  * the efivars driver
@@ -966,6 +1262,11 @@ void unregister_efivars(struct efivars *efivars)
 }
 EXPORT_SYMBOL_GPL(unregister_efivars);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Print a warning when duplicate EFI variables are encountered and
  * disable the sysfs workqueue since the firmware is buggy.
@@ -988,6 +1289,10 @@ static void dup_variable_bug(efi_char16_t *s16, efi_guid_t *vendor_guid,
 	kfree(s8);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int register_efivars(struct efivars *efivars,
 		     const struct efivar_operations *ops,
 		     struct kobject *parent_kobj)
@@ -1028,6 +1333,11 @@ int register_efivars(struct efivars *efivars,
 						&vendor_guid);
 		switch (status) {
 		case EFI_SUCCESS:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			variable_name_size = var_name_strnsize(variable_name,
 							       variable_name_size);
 
@@ -1046,6 +1356,10 @@ int register_efivars(struct efivars *efivars,
 				break;
 			}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			efivar_create_sysfs_entry(efivars,
 						  variable_name_size,
 						  variable_name,
@@ -1065,6 +1379,22 @@ int register_efivars(struct efivars *efivars,
 	if (error)
 		unregister_efivars(efivars);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	efivars->efi_pstore_info = efi_pstore_info;
+
+	efivars->efi_pstore_info.buf = kmalloc(4096, GFP_KERNEL);
+	if (efivars->efi_pstore_info.buf) {
+		efivars->efi_pstore_info.bufsize = 1024;
+		efivars->efi_pstore_info.data = efivars;
+		spin_lock_init(&efivars->efi_pstore_info.buf_lock);
+		pstore_register(&efivars->efi_pstore_info);
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	kfree(variable_name);
 
@@ -1072,6 +1402,15 @@ out:
 }
 EXPORT_SYMBOL_GPL(register_efivars);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct efivars __efivars;
+static struct efivar_operations ops;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * For now we register the efi subsystem with the firmware subsystem
  * and the vars subsystem with the efi subsystem.  In the future, it

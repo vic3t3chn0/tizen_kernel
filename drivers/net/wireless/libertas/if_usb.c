@@ -5,7 +5,15 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 #include <linux/delay.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/moduleparam.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/firmware.h>
 #include <linux/netdevice.h>
 #include <linux/slab.h>
@@ -261,10 +269,21 @@ static int if_usb_probe(struct usb_interface *intf,
 	udev = interface_to_usbdev(intf);
 
 	cardp = kzalloc(sizeof(struct if_usb_card), GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!cardp)
+		goto error;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cardp) {
 		pr_err("Out of memory allocating private data\n");
 		goto error;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setup_timer(&cardp->fw_timeout, if_usb_fw_timeo, (unsigned long)cardp);
 	init_waitqueue_head(&cardp->fw_wq);
@@ -324,7 +343,15 @@ static int if_usb_probe(struct usb_interface *intf,
 	}
 	kparam_unblock_sysfs_write(fw_name);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!(priv = lbs_add_card(cardp, &intf->dev)))
+=======
 	if (!(priv = lbs_add_card(cardp, &udev->dev)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!(priv = lbs_add_card(cardp, &udev->dev)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_prog_firmware;
 
 	cardp->priv = priv;
@@ -956,7 +983,15 @@ static int if_usb_prog_firmware(struct if_usb_card *cardp,
 	priv->dnld_sent = DNLD_RES_RECEIVED;
 	spin_unlock_irqrestore(&priv->driver_lock, flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	wake_up(&priv->waitq);
+=======
 	wake_up_interruptible(&priv->waitq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	wake_up_interruptible(&priv->waitq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -973,6 +1008,29 @@ static const struct {
 	{ MODEL_8682, "libertas/usb8682.bin" }
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_OLPC
+
+static int try_olpc_fw(struct if_usb_card *cardp)
+{
+	int retval = -ENOENT;
+
+	/* try the OLPC firmware first; fall back to fw_table list */
+	if (machine_is_olpc() && cardp->model == MODEL_8388)
+		retval = request_firmware(&cardp->fw,
+				"libertas/usb8388_olpc.bin", &cardp->udev->dev);
+	return retval;
+}
+
+#else
+static int try_olpc_fw(struct if_usb_card *cardp) { return -ENOENT; }
+#endif /* !CONFIG_OLPC */
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int get_fw(struct if_usb_card *cardp, const char *fwname)
 {
 	int i;
@@ -981,6 +1039,16 @@ static int get_fw(struct if_usb_card *cardp, const char *fwname)
 	if (fwname)
 		return request_firmware(&cardp->fw, fwname, &cardp->udev->dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Handle OLPC firmware */
+	if (try_olpc_fw(cardp) == 0)
+		return 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Otherwise search for firmware to use */
 	for (i = 0; i < ARRAY_SIZE(fw_table); i++) {
 		if (fw_table[i].model != cardp->model)
@@ -1112,6 +1180,21 @@ static int if_usb_suspend(struct usb_interface *intf, pm_message_t message)
 	if (priv->psstate != PS_STATE_FULL_POWER)
 		return -1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_OLPC
+	if (machine_is_olpc()) {
+		if (priv->wol_criteria == EHS_REMOVE_WAKEUP)
+			olpc_ec_wakeup_clear(EC_SCI_SRC_WLAN);
+		else
+			olpc_ec_wakeup_set(EC_SCI_SRC_WLAN);
+	}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = lbs_suspend(priv);
 	if (ret)
 		goto out;
@@ -1154,6 +1237,12 @@ static struct usb_driver if_usb_driver = {
 	.reset_resume = if_usb_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(if_usb_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init if_usb_init_module(void)
 {
 	int ret = 0;
@@ -1177,6 +1266,10 @@ static void __exit if_usb_exit_module(void)
 
 module_init(if_usb_init_module);
 module_exit(if_usb_exit_module);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("8388 USB WLAN Driver");
 MODULE_AUTHOR("Marvell International Ltd. and Red Hat, Inc.");

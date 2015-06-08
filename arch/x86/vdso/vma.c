@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <asm/page.h>
 =======
+<<<<<<< HEAD
+#include <asm/page.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned int __read_mostly vdso_enabled = 1;
 
@@ -25,6 +29,9 @@ extern char vdso_start[], vdso_end[];
 extern unsigned short vdso_sync_cpuid;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct page *vdso_pages[];
 static unsigned vdso_size;
 
@@ -97,17 +104,23 @@ found:
 }
 
 static int __init init_vdso(void)
+<<<<<<< HEAD
+=======
 =======
 static struct page **vdso_pages;
 static unsigned vdso_size;
 
 static int __init init_vdso_vars(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int npages = (vdso_end - vdso_start + PAGE_SIZE - 1) / PAGE_SIZE;
 	int i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	patch_vdso64(vdso_start, vdso_end - vdso_start);
 
 	vdso_size = npages << PAGE_SHIFT;
@@ -125,6 +138,8 @@ static int __init init_vdso_vars(void)
 	return 0;
 }
 subsys_initcall(init_vdso);
+<<<<<<< HEAD
+=======
 =======
 	vdso_size = npages << PAGE_SHIFT;
 	vdso_pages = kmalloc(sizeof(struct page *) * npages, GFP_KERNEL);
@@ -148,6 +163,7 @@ subsys_initcall(init_vdso);
 }
 subsys_initcall(init_vdso_vars);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct linux_binprm;
 
@@ -169,6 +185,9 @@ static unsigned long vdso_addr(unsigned long start, unsigned len)
 	if (addr >= end)
 		addr = end;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * page-align it here so that get_unmapped_area doesn't
@@ -178,21 +197,30 @@ static unsigned long vdso_addr(unsigned long start, unsigned len)
 	addr = PAGE_ALIGN(addr);
 	addr = align_addr(addr, NULL, ALIGN_VDSO);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return addr;
 }
 
 /* Setup a VMA at program startup for the vsyscall page.
    Not called for compat tasks */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int setup_additional_pages(struct linux_binprm *bprm,
 				  int uses_interp,
 				  struct page **pages,
 				  unsigned size)
+<<<<<<< HEAD
+=======
 =======
 int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mm_struct *mm = current->mm;
 	unsigned long addr;
@@ -206,9 +234,14 @@ int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 	addr = vdso_addr(mm->start_stack, size);
 	addr = get_unmapped_area(NULL, addr, size, 0, 0);
 =======
+<<<<<<< HEAD
+	addr = vdso_addr(mm->start_stack, size);
+	addr = get_unmapped_area(NULL, addr, size, 0, 0);
+=======
 	addr = vdso_addr(mm->start_stack, vdso_size);
 	addr = get_unmapped_area(NULL, addr, vdso_size, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR_VALUE(addr)) {
 		ret = addr;
 		goto up_fail;
@@ -217,10 +250,15 @@ int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 	current->mm->context.vdso = (void *)addr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = install_special_mapping(mm, addr, size,
 				      VM_READ|VM_EXEC|
 				      VM_MAYREAD|VM_MAYWRITE|VM_MAYEXEC,
 				      pages);
+<<<<<<< HEAD
+=======
 =======
 	ret = install_special_mapping(mm, addr, vdso_size,
 				      VM_READ|VM_EXEC|
@@ -228,6 +266,7 @@ int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 				      VM_ALWAYSDUMP,
 				      vdso_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		current->mm->context.vdso = NULL;
 		goto up_fail;
@@ -239,6 +278,9 @@ up_fail:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 {
 	return setup_additional_pages(bprm, uses_interp, vdso_pages,
@@ -253,8 +295,11 @@ int x32_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int vdso_setup(char *s)
 {
 	vdso_enabled = simple_strtoul(s, NULL, 0);

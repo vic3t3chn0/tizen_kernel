@@ -1,9 +1,12 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *	eeh_event.h
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -26,6 +29,9 @@
 #ifdef __KERNEL__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * structure holding pci controller data that describes a
  * change in the isolation status of a PCI slot.  A pointer
@@ -39,6 +45,8 @@ struct eeh_event {
 
 int eeh_send_failure_event(struct eeh_dev *edev);
 struct eeh_dev *handle_eeh_events(struct eeh_event *);
+<<<<<<< HEAD
+=======
 =======
 /** EEH event -- structure holding pci controller data that describes
  *  a change in the isolation status of a PCI slot.  A pointer
@@ -67,6 +75,7 @@ int eeh_send_failure_event (struct device_node *dn,
 /* Main recovery function */
 struct pci_dn * handle_eeh_events (struct eeh_event *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __KERNEL__ */
 #endif /* ASM_POWERPC_EEH_EVENT_H */

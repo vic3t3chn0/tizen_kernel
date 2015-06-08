@@ -37,12 +37,23 @@
 #include "exynos_drm_fbdev.h"
 #include "exynos_drm_fb.h"
 #include "exynos_drm_gem.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "exynos_drm_plane.h"
+#include "exynos_drm_vidi.h"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "exynos_drm_g2d.h"
 #include "exynos_drm_ipp.h"
 #include "exynos_drm_plane.h"
 #include "exynos_drm_vidi.h"
 #include "exynos_drm_dmabuf.h"
 #include "exynos_drm_iommu.h"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DRIVER_NAME	"exynos"
 #define DRIVER_DESC	"Samsung SoC DRM"
@@ -52,6 +63,14 @@
 
 #define VBLANK_OFF_DELAY	50000
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int exynos_drm_load(struct drm_device *dev, unsigned long flags)
+{
+	struct exynos_drm_private *private;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct exynos_drm_gem_info_data {
 	struct drm_file *filp;
 	struct seq_file *m;
@@ -111,6 +130,10 @@ static int exynos_drm_load(struct drm_device *dev, unsigned long flags)
 {
 	struct exynos_drm_private *private;
 	struct drm_minor *minor;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	int nr;
 
@@ -122,6 +145,11 @@ static int exynos_drm_load(struct drm_device *dev, unsigned long flags)
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* maximum size of userptr is limited to 16MB as default. */
 	private->userptr_limit = SZ_16M;
 
@@ -133,6 +161,10 @@ static int exynos_drm_load(struct drm_device *dev, unsigned long flags)
 		return PTR_ERR(private->vmm);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&private->pageflip_event_list);
 	dev->dev_private = (void *)private;
 
@@ -154,11 +186,22 @@ static int exynos_drm_load(struct drm_device *dev, unsigned long flags)
 	}
 
 	for (nr = 0; nr < MAX_PLANE; nr++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = exynos_plane_init(dev, nr);
+		if (ret)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct drm_plane *plane;
 		unsigned int possible_crtcs = (1 << MAX_CRTC) - 1;
 
 		plane = exynos_plane_init(dev, possible_crtcs, false);
 		if (!plane)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto err_crtc;
 	}
 
@@ -190,6 +233,11 @@ static int exynos_drm_load(struct drm_device *dev, unsigned long flags)
 
 	drm_vblank_offdelay = VBLANK_OFF_DELAY;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	minor = dev->primary;
 	ret = drm_debugfs_create_files(exynos_drm_debugfs_list,
 						EXYNOS_DRM_DEBUGFS_ENTRIES,
@@ -197,6 +245,10 @@ static int exynos_drm_load(struct drm_device *dev, unsigned long flags)
 	if (ret)
 		DRM_DEBUG_DRIVER("failed to create exynos-drm debugfs.\n");
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_drm_device:
@@ -212,6 +264,13 @@ err_crtc:
 
 static int exynos_drm_unload(struct drm_device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	DRM_DEBUG_DRIVER("%s\n", __FILE__);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct exynos_drm_private *private;
 
 	private = dev->dev_private;
@@ -221,6 +280,10 @@ static int exynos_drm_unload(struct drm_device *dev)
 	/* release vmm object and device address space for iommu. */
 	exynos_drm_iommu_cleanup(private->vmm);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	exynos_drm_fbdev_fini(dev);
 	exynos_drm_device_unregister(dev);
 	drm_vblank_cleanup(dev);
@@ -230,14 +293,30 @@ static int exynos_drm_unload(struct drm_device *dev)
 
 	dev->dev_private = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	drm_debugfs_remove_files(exynos_drm_debugfs_list,
 				EXYNOS_DRM_DEBUGFS_ENTRIES, dev->primary);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	drm_debugfs_remove_files(exynos_drm_debugfs_list,
+				EXYNOS_DRM_DEBUGFS_ENTRIES, dev->primary);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int exynos_drm_open(struct drm_device *dev, struct drm_file *file)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	DRM_DEBUG_DRIVER("%s\n", __FILE__);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct drm_exynos_file_private *file_priv;
 
 	DRM_DEBUG_DRIVER("%s\n", __FILE__);
@@ -251,6 +330,10 @@ static int exynos_drm_open(struct drm_device *dev, struct drm_file *file)
 	drm_prime_init_file_private(&file->prime);
 	file->driver_priv = file_priv;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return exynos_drm_subdrv_open(dev, file);
 }
 
@@ -272,7 +355,14 @@ static void exynos_drm_preclose(struct drm_device *dev,
 			e->base.destroy(&e->base);
 		}
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	drm_prime_destroy_file_private(&file->prime);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	drm_prime_destroy_file_private(&file->prime);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&dev->event_lock, flags);
 
 	exynos_drm_subdrv_close(dev, file);
@@ -304,6 +394,21 @@ static struct vm_operations_struct exynos_drm_gem_vm_ops = {
 
 static struct drm_ioctl_desc exynos_ioctls[] = {
 	DRM_IOCTL_DEF_DRV(EXYNOS_GEM_CREATE, exynos_drm_gem_create_ioctl,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			DRM_UNLOCKED | DRM_AUTH),
+	DRM_IOCTL_DEF_DRV(EXYNOS_GEM_MAP_OFFSET,
+			exynos_drm_gem_map_offset_ioctl, DRM_UNLOCKED |
+			DRM_AUTH),
+	DRM_IOCTL_DEF_DRV(EXYNOS_GEM_MMAP,
+			exynos_drm_gem_mmap_ioctl, DRM_UNLOCKED | DRM_AUTH),
+	DRM_IOCTL_DEF_DRV(EXYNOS_PLANE_SET_ZPOS, exynos_plane_set_zpos_ioctl,
+			DRM_UNLOCKED | DRM_AUTH),
+	DRM_IOCTL_DEF_DRV(EXYNOS_VIDI_CONNECTION,
+			vidi_connection_ioctl, DRM_UNLOCKED | DRM_AUTH),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			DRM_UNLOCKED),
 	DRM_IOCTL_DEF_DRV(EXYNOS_GEM_MAP_OFFSET,
 			exynos_drm_gem_map_offset_ioctl, DRM_UNLOCKED),
@@ -343,6 +448,10 @@ static struct drm_ioctl_desc exynos_ioctls[] = {
 			exynos_drm_ipp_buf, DRM_UNLOCKED | DRM_AUTH),
 	DRM_IOCTL_DEF_DRV(EXYNOS_IPP_CTRL,
 			exynos_drm_ipp_ctrl, DRM_UNLOCKED | DRM_AUTH),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct file_operations exynos_drm_driver_fops = {
@@ -356,8 +465,18 @@ static const struct file_operations exynos_drm_driver_fops = {
 };
 
 static struct drm_driver exynos_drm_driver = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.driver_features	= DRIVER_HAVE_IRQ | DRIVER_BUS_PLATFORM |
+				  DRIVER_MODESET | DRIVER_GEM,
+=======
 	.driver_features	= DRIVER_HAVE_IRQ | DRIVER_MODESET |
 					DRIVER_GEM | DRIVER_PRIME,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.driver_features	= DRIVER_HAVE_IRQ | DRIVER_MODESET |
+					DRIVER_GEM | DRIVER_PRIME,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.load			= exynos_drm_load,
 	.unload			= exynos_drm_unload,
 	.open			= exynos_drm_open,
@@ -370,6 +489,14 @@ static struct drm_driver exynos_drm_driver = {
 	.gem_init_object	= exynos_drm_gem_init_object,
 	.gem_free_object	= exynos_drm_gem_free_object,
 	.gem_vm_ops		= &exynos_drm_gem_vm_ops,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.dumb_create		= exynos_drm_gem_dumb_create,
+	.dumb_map_offset	= exynos_drm_gem_dumb_map_offset,
+	.dumb_destroy		= exynos_drm_gem_dumb_destroy,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.gem_close_object	= &exynos_drm_gem_close_object,
 	.dumb_create		= exynos_drm_gem_dumb_create,
 	.dumb_map_offset	= exynos_drm_gem_dumb_map_offset,
@@ -378,6 +505,10 @@ static struct drm_driver exynos_drm_driver = {
 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
 	.gem_prime_export	= exynos_dmabuf_prime_export,
 	.gem_prime_import	= exynos_dmabuf_prime_import,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ioctls			= exynos_ioctls,
 	.fops			= &exynos_drm_driver_fops,
 	.name	= DRIVER_NAME,
@@ -444,6 +575,11 @@ static int __init exynos_drm_init(void)
 		goto out_vidi;
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DRM_EXYNOS_G2D
 	ret = platform_driver_register(&g2d_driver);
 	if (ret < 0)
@@ -474,6 +610,10 @@ static int __init exynos_drm_init(void)
 		goto out_ipp;
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = platform_driver_register(&exynos_drm_platform_driver);
 	if (ret < 0)
 		goto out;
@@ -481,6 +621,14 @@ static int __init exynos_drm_init(void)
 	return 0;
 
 out:
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_DRM_EXYNOS_VIDI
+out_vidi:
+	platform_driver_unregister(&vidi_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DRM_EXYNOS_IPP
 	platform_driver_unregister(&ipp_driver);
 out_ipp:
@@ -509,6 +657,10 @@ out_g2d:
 #ifdef CONFIG_DRM_EXYNOS_VIDI
 	platform_driver_unregister(&vidi_driver);
 out_vidi:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_DRM_EXYNOS_HDMI
@@ -533,6 +685,15 @@ static void __exit exynos_drm_exit(void)
 
 	platform_driver_unregister(&exynos_drm_platform_driver);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_DRM_EXYNOS_HDMI
+	platform_driver_unregister(&exynos_drm_common_hdmi_driver);
+	platform_driver_unregister(&mixer_driver);
+	platform_driver_unregister(&hdmi_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DRM_EXYNOS_IPP
 	platform_driver_unregister(&ipp_driver);
 #endif
@@ -551,18 +712,31 @@ static void __exit exynos_drm_exit(void)
 
 #ifdef CONFIG_DRM_EXYNOS_G2D
 	platform_driver_unregister(&g2d_driver);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_DRM_EXYNOS_VIDI
 	platform_driver_unregister(&vidi_driver);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DRM_EXYNOS_HDMI
 	platform_driver_unregister(&exynos_drm_common_hdmi_driver);
 	platform_driver_unregister(&mixer_driver);
 	platform_driver_unregister(&hdmi_driver);
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DRM_EXYNOS_FIMD
 	platform_driver_unregister(&fimd_driver);
 #endif

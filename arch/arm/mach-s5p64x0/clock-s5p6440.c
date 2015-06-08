@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 
 #include <mach/hardware.h>
@@ -39,8 +43,13 @@
 
 #include "common.h"
 =======
+<<<<<<< HEAD
+
+#include "common.h"
+=======
 #include <plat/s5p6440.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static u32 epll_div[][5] = {
 	{ 36000000,	0,	48, 1, 4 },
@@ -106,8 +115,11 @@ static struct clksrc_clk clk_hclk = {
 		.name		= "clk_hclk",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_armclk.clk,
 	},
 	.reg_div	= { .reg = S5P64X0_CLK_DIV0, .shift = 8, .size = 4 },
@@ -118,8 +130,11 @@ static struct clksrc_clk clk_pclk = {
 		.name		= "clk_pclk",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk.clk,
 	},
 	.reg_div	= { .reg = S5P64X0_CLK_DIV0, .shift = 12, .size = 4 },
@@ -129,8 +144,11 @@ static struct clksrc_clk clk_hclk_low = {
 		.name		= "clk_hclk_low",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.sources	= &clkset_hclk_low,
 	.reg_src	= { .reg = S5P64X0_SYS_OTHERS, .shift = 6, .size = 1 },
@@ -142,8 +160,11 @@ static struct clksrc_clk clk_pclk_low = {
 		.name		= "clk_pclk_low",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 	},
 	.reg_div	= { .reg = S5P64X0_CLK_DIV3, .shift = 12, .size = 4 },
@@ -159,8 +180,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "nand",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk.clk,
 		.enable		= s5p64x0_mem_ctrl,
 		.ctrlbit	= (1 << 2),
@@ -168,8 +192,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "post",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 5)
@@ -177,8 +204,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "2d",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 8),
@@ -187,9 +217,14 @@ static struct clk init_clocks_off[] = {
 		.name		= "dma",
 		.devname	= "dma-pl330",
 =======
+<<<<<<< HEAD
+		.name		= "dma",
+		.devname	= "dma-pl330",
+=======
 		.name		= "pdma",
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 12),
@@ -198,8 +233,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "s3c-sdhci.0",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c-sdhci.0",
+=======
 		.id		= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 17),
@@ -208,8 +247,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "s3c-sdhci.1",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c-sdhci.1",
+=======
 		.id		= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 18),
@@ -218,8 +261,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "s3c-sdhci.2",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c-sdhci.2",
+=======
 		.id		= 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 19),
@@ -227,8 +274,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "otg",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 20)
@@ -236,8 +286,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "irom",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 25),
@@ -245,8 +298,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "lcd",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk1_ctrl,
 		.ctrlbit	= (1 << 1),
@@ -254,8 +310,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "hclk_fimgvg",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk.clk,
 		.enable		= s5p64x0_hclk1_ctrl,
 		.ctrlbit	= (1 << 2),
@@ -263,8 +322,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "tsi",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk_low.clk,
 		.enable		= s5p64x0_hclk1_ctrl,
 		.ctrlbit	= (1 << 0),
@@ -272,8 +334,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "watchdog",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 5),
@@ -281,8 +346,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "rtc",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 6),
@@ -290,8 +358,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "timers",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 7),
@@ -299,8 +370,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "pcm",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 8),
@@ -308,8 +382,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "adc",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 12),
@@ -317,8 +394,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "i2c",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 17),
@@ -327,8 +407,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "s3c64xx-spi.0",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c64xx-spi.0",
+=======
 		.id		= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 21),
@@ -337,8 +421,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "s3c64xx-spi.1",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c64xx-spi.1",
+=======
 		.id		= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 22),
@@ -346,8 +434,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "gps",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 25),
@@ -356,8 +447,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "samsung-i2s.0",
 =======
+<<<<<<< HEAD
+		.devname	= "samsung-i2s.0",
+=======
 		.id		= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 26),
@@ -365,8 +460,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "dsim",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 28),
@@ -374,8 +472,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "etm",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 29),
@@ -383,8 +484,11 @@ static struct clk init_clocks_off[] = {
 		.name		= "dmc0",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 30),
@@ -392,12 +496,19 @@ static struct clk init_clocks_off[] = {
 		.name		= "pclk_fimgvg",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 31),
 	}, {
+<<<<<<< HEAD
+		.name		= "mmc_48m",
+		.devname	= "s3c-sdhci.0",
+=======
 <<<<<<< HEAD
 		.name		= "mmc_48m",
 		.devname	= "s3c-sdhci.0",
@@ -417,6 +528,7 @@ static struct clk init_clocks_off[] = {
 		.name		= "mmc_48m",
 		.id		= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_48m,
 		.enable		= s5p64x0_sclk_ctrl,
 		.ctrlbit	= (1 << 27),
@@ -425,8 +537,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "s3c-sdhci.1",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c-sdhci.1",
+=======
 		.id		= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_48m,
 		.enable		= s5p64x0_sclk_ctrl,
 		.ctrlbit	= (1 << 28),
@@ -435,8 +551,12 @@ static struct clk init_clocks_off[] = {
 <<<<<<< HEAD
 		.devname	= "s3c-sdhci.2",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c-sdhci.2",
+=======
 		.id		= 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_48m,
 		.enable		= s5p64x0_sclk_ctrl,
 		.ctrlbit	= (1 << 29),
@@ -451,8 +571,11 @@ static struct clk init_clocks[] = {
 		.name		= "intc",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 1),
@@ -460,8 +583,11 @@ static struct clk init_clocks[] = {
 		.name		= "mem",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_hclk.clk,
 		.enable		= s5p64x0_hclk0_ctrl,
 		.ctrlbit	= (1 << 21),
@@ -470,8 +596,12 @@ static struct clk init_clocks[] = {
 <<<<<<< HEAD
 		.devname	= "s3c6400-uart.0",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c6400-uart.0",
+=======
 		.id		= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 1),
@@ -480,8 +610,12 @@ static struct clk init_clocks[] = {
 <<<<<<< HEAD
 		.devname	= "s3c6400-uart.1",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c6400-uart.1",
+=======
 		.id		= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 2),
@@ -490,8 +624,12 @@ static struct clk init_clocks[] = {
 <<<<<<< HEAD
 		.devname	= "s3c6400-uart.2",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c6400-uart.2",
+=======
 		.id		= 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 3),
@@ -500,8 +638,12 @@ static struct clk init_clocks[] = {
 <<<<<<< HEAD
 		.devname	= "s3c6400-uart.3",
 =======
+<<<<<<< HEAD
+		.devname	= "s3c6400-uart.3",
+=======
 		.id		= 3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 4),
@@ -509,8 +651,11 @@ static struct clk init_clocks[] = {
 		.name		= "gpio",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.parent		= &clk_pclk_low.clk,
 		.enable		= s5p64x0_pclk_ctrl,
 		.ctrlbit	= (1 << 18),
@@ -521,16 +666,22 @@ static struct clk clk_iis_cd_v40 = {
 	.name		= "iis_cdclk_v40",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk clk_pcm_cd = {
 	.name		= "pcm_cdclk",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk *clkset_group1_list[] = {
@@ -570,6 +721,9 @@ static struct clksrc_sources clkset_audio = {
 static struct clksrc_clk clksrcs[] = {
 	{
 		.clk	= {
+<<<<<<< HEAD
+			.name		= "sclk_post",
+=======
 <<<<<<< HEAD
 			.name		= "sclk_post",
 =======
@@ -636,6 +790,7 @@ static struct clksrc_clk clksrcs[] = {
 			.name		= "sclk_post",
 			.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ctrlbit	= (1 << 10),
 			.enable		= s5p64x0_sclk_ctrl,
 		},
@@ -647,8 +802,11 @@ static struct clksrc_clk clksrcs[] = {
 			.name		= "sclk_dispcon",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ctrlbit	= (1 << 1),
 			.enable		= s5p64x0_sclk1_ctrl,
 		},
@@ -660,8 +818,11 @@ static struct clksrc_clk clksrcs[] = {
 			.name		= "sclk_fimgvg",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ctrlbit	= (1 << 2),
 			.enable		= s5p64x0_sclk1_ctrl,
 		},
@@ -673,8 +834,11 @@ static struct clksrc_clk clksrcs[] = {
 			.name		= "sclk_audio2",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			.id		= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.ctrlbit	= (1 << 11),
 			.enable		= s5p64x0_sclk_ctrl,
 		},
@@ -685,6 +849,9 @@ static struct clksrc_clk clksrcs[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clksrc_clk clk_sclk_mmc0 = {
 	.clk	= {
 		.name		= "sclk_mmc",
@@ -756,8 +923,11 @@ static struct clksrc_clk clk_sclk_spi1 = {
 	.reg_div = { .reg = S5P64X0_CLK_DIV2, .shift = 4, .size = 4 },
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Clock initialization code */
 static struct clksrc_clk *sysclks[] = {
 	&clk_mout_apll,
@@ -772,6 +942,9 @@ static struct clksrc_clk *sysclks[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk dummy_apb_pclk = {
 	.name		= "apb_pclk",
 	.id		= -1,
@@ -797,8 +970,11 @@ static struct clk_lookup s5p6440_clk_lookup[] = {
 	CLKDEV_INIT("s3c-sdhci.2", "mmc_busclk.2", &clk_sclk_mmc2.clk),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init_or_cpufreq s5p6440_setup_clocks(void)
 {
 	struct clk *xtal_clk;
@@ -878,6 +1054,9 @@ void __init s5p6440_register_clocks(void)
 	s3c_register_clksrc(clksrcs, ARRAY_SIZE(clksrcs));
 	s3c_register_clocks(init_clocks, ARRAY_SIZE(init_clocks));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (ptr = 0; ptr < ARRAY_SIZE(clksrc_cdev); ptr++)
 		s3c_register_clksrc(clksrc_cdev[ptr], 1);
 
@@ -886,11 +1065,14 @@ void __init s5p6440_register_clocks(void)
 	clkdev_add_table(s5p6440_clk_lookup, ARRAY_SIZE(s5p6440_clk_lookup));
 
 	s3c24xx_register_clock(&dummy_apb_pclk);
+<<<<<<< HEAD
+=======
 =======
 
 	s3c_register_clocks(init_clocks_off, ARRAY_SIZE(init_clocks_off));
 	s3c_disable_clocks(init_clocks_off, ARRAY_SIZE(init_clocks_off));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	s3c_pwmclk_init();
 }

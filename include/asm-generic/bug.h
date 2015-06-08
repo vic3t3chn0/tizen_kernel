@@ -62,12 +62,17 @@ struct bug_entry {
 #ifndef __WARN_TAINT
 #ifndef __ASSEMBLY__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __printf(3, 4)
 void warn_slowpath_fmt(const char *file, const int line,
 		       const char *fmt, ...);
 extern __printf(4, 5)
 void warn_slowpath_fmt_taint(const char *file, const int line, unsigned taint,
 			     const char *fmt, ...);
+<<<<<<< HEAD
+=======
 =======
 extern void warn_slowpath_fmt(const char *file, const int line,
 		const char *fmt, ...) __attribute__((format(printf, 3, 4)));
@@ -75,6 +80,7 @@ extern void warn_slowpath_fmt_taint(const char *file, const int line,
 				    unsigned taint, const char *fmt, ...)
 	__attribute__((format(printf, 4, 5)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void warn_slowpath_null(const char *file, const int line);
 #define WANT_WARN_ON_SLOWPATH
 #endif
@@ -145,8 +151,12 @@ extern void warn_slowpath_null(const char *file, const int line);
 <<<<<<< HEAD
 	static bool __section(.data.unlikely) __warned;		\
 =======
+<<<<<<< HEAD
+	static bool __section(.data.unlikely) __warned;		\
+=======
 	static bool __warned;					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int __ret_warn_once = !!(condition);			\
 								\
 	if (unlikely(__ret_warn_once))				\
@@ -159,8 +169,12 @@ extern void warn_slowpath_null(const char *file, const int line);
 <<<<<<< HEAD
 	static bool __section(.data.unlikely) __warned;		\
 =======
+<<<<<<< HEAD
+	static bool __section(.data.unlikely) __warned;		\
+=======
 	static bool __warned;					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int __ret_warn_once = !!(condition);			\
 								\
 	if (unlikely(__ret_warn_once))				\
@@ -173,8 +187,12 @@ extern void warn_slowpath_null(const char *file, const int line);
 <<<<<<< HEAD
 	static bool __section(.data.unlikely) __warned;		\
 =======
+<<<<<<< HEAD
+	static bool __section(.data.unlikely) __warned;		\
+=======
 	static bool __warned;					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int __ret_warn_once = !!(condition);			\
 								\
 	if (unlikely(__ret_warn_once))				\

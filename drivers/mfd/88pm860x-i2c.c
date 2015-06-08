@@ -12,6 +12,25 @@
 #include <linux/module.h>
 #include <linux/platform_device.h>
 #include <linux/i2c.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/err.h>
+#include <linux/regmap.h>
+#include <linux/mfd/88pm860x.h>
+#include <linux/slab.h>
+
+int pm860x_reg_read(struct i2c_client *i2c, int reg)
+{
+	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+	struct regmap *map = (i2c == chip->client) ? chip->regmap
+				: chip->regmap_companion;
+	unsigned int data;
+	int ret;
+
+	ret = regmap_read(map, reg, &data);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mfd/88pm860x.h>
 #include <linux/slab.h>
 
@@ -57,6 +76,10 @@ int pm860x_reg_read(struct i2c_client *i2c, int reg)
 	ret = pm860x_read_device(i2c, reg, 1, &data);
 	mutex_unlock(&chip->io_lock);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		return ret;
 	else
@@ -68,12 +91,26 @@ int pm860x_reg_write(struct i2c_client *i2c, int reg,
 		     unsigned char data)
 {
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct regmap *map = (i2c == chip->client) ? chip->regmap
+				: chip->regmap_companion;
+	int ret;
+
+	ret = regmap_write(map, reg, data);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	mutex_lock(&chip->io_lock);
 	ret = pm860x_write_device(i2c, reg, 1, &data);
 	mutex_unlock(&chip->io_lock);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_reg_write);
@@ -82,12 +119,26 @@ int pm860x_bulk_read(struct i2c_client *i2c, int reg,
 		     int count, unsigned char *buf)
 {
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct regmap *map = (i2c == chip->client) ? chip->regmap
+				: chip->regmap_companion;
+	int ret;
+
+	ret = regmap_raw_read(map, reg, buf, count);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	mutex_lock(&chip->io_lock);
 	ret = pm860x_read_device(i2c, reg, count, buf);
 	mutex_unlock(&chip->io_lock);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_bulk_read);
@@ -96,12 +147,26 @@ int pm860x_bulk_write(struct i2c_client *i2c, int reg,
 		      int count, unsigned char *buf)
 {
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct regmap *map = (i2c == chip->client) ? chip->regmap
+				: chip->regmap_companion;
+	int ret;
+
+	ret = regmap_raw_write(map, reg, buf, count);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	mutex_lock(&chip->io_lock);
 	ret = pm860x_write_device(i2c, reg, count, buf);
 	mutex_unlock(&chip->io_lock);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_bulk_write);
@@ -110,6 +175,16 @@ int pm860x_set_bits(struct i2c_client *i2c, int reg,
 		    unsigned char mask, unsigned char data)
 {
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct regmap *map = (i2c == chip->client) ? chip->regmap
+				: chip->regmap_companion;
+	int ret;
+
+	ret = regmap_update_bits(map, reg, mask, data);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char value;
 	int ret;
 
@@ -122,17 +197,94 @@ int pm860x_set_bits(struct i2c_client *i2c, int reg,
 	ret = pm860x_write_device(i2c, reg, 1, &value);
 out:
 	mutex_unlock(&chip->io_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_set_bits);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int read_device(struct i2c_client *i2c, int reg,
+		       int bytes, void *dest)
+{
+	unsigned char msgbuf0[I2C_SMBUS_BLOCK_MAX + 3];
+	unsigned char msgbuf1[I2C_SMBUS_BLOCK_MAX + 2];
+	struct i2c_adapter *adap = i2c->adapter;
+	struct i2c_msg msg[2] = {{i2c->addr, 0, 1, msgbuf0},
+				 {i2c->addr, I2C_M_RD, 0, msgbuf1},
+				};
+	int num = 1, ret = 0;
+
+	if (dest == NULL)
+		return -EINVAL;
+	msgbuf0[0] = (unsigned char)reg;	/* command */
+	msg[1].len = bytes;
+
+	/* if data needs to read back, num should be 2 */
+	if (bytes > 0)
+		num = 2;
+	ret = adap->algo->master_xfer(adap, msg, num);
+	memcpy(dest, msgbuf1, bytes);
+	if (ret < 0)
+		return ret;
+	return 0;
+}
+
+static int write_device(struct i2c_client *i2c, int reg,
+			int bytes, void *src)
+{
+	unsigned char buf[bytes + 1];
+	struct i2c_adapter *adap = i2c->adapter;
+	struct i2c_msg msg;
+	int ret;
+
+	buf[0] = (unsigned char)reg;
+	memcpy(&buf[1], src, bytes);
+	msg.addr = i2c->addr;
+	msg.flags = 0;
+	msg.len = bytes + 1;
+	msg.buf = buf;
+
+	ret = adap->algo->master_xfer(adap, &msg, 1);
+	if (ret < 0)
+		return ret;
+	return 0;
+}
+
+int pm860x_page_reg_read(struct i2c_client *i2c, int reg)
+{
+=======
 int pm860x_page_reg_read(struct i2c_client *i2c, int reg)
 {
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int pm860x_page_reg_read(struct i2c_client *i2c, int reg)
+{
+	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char zero = 0;
 	unsigned char data;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_lock_adapter(i2c->adapter);
+	read_device(i2c, 0xFA, 0, &zero);
+	read_device(i2c, 0xFB, 0, &zero);
+	read_device(i2c, 0xFF, 0, &zero);
+	ret = read_device(i2c, reg, 1, &data);
+	if (ret >= 0)
+		ret = (int)data;
+	read_device(i2c, 0xFE, 0, &zero);
+	read_device(i2c, 0xFC, 0, &zero);
+	i2c_unlock_adapter(i2c->adapter);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&chip->io_lock);
 	pm860x_write_device(i2c, 0xFA, 0, &zero);
 	pm860x_write_device(i2c, 0xFB, 0, &zero);
@@ -143,6 +295,10 @@ int pm860x_page_reg_read(struct i2c_client *i2c, int reg)
 	pm860x_write_device(i2c, 0xFE, 0, &zero);
 	pm860x_write_device(i2c, 0xFC, 0, &zero);
 	mutex_unlock(&chip->io_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_page_reg_read);
@@ -150,6 +306,22 @@ EXPORT_SYMBOL(pm860x_page_reg_read);
 int pm860x_page_reg_write(struct i2c_client *i2c, int reg,
 			  unsigned char data)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char zero;
+	int ret;
+
+	i2c_lock_adapter(i2c->adapter);
+	read_device(i2c, 0xFA, 0, &zero);
+	read_device(i2c, 0xFB, 0, &zero);
+	read_device(i2c, 0xFF, 0, &zero);
+	ret = write_device(i2c, reg, 1, &data);
+	read_device(i2c, 0xFE, 0, &zero);
+	read_device(i2c, 0xFC, 0, &zero);
+	i2c_unlock_adapter(i2c->adapter);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
 	unsigned char zero;
 	int ret;
@@ -162,6 +334,10 @@ int pm860x_page_reg_write(struct i2c_client *i2c, int reg,
 	pm860x_write_device(i2c, 0xFE, 0, &zero);
 	pm860x_write_device(i2c, 0xFC, 0, &zero);
 	mutex_unlock(&chip->io_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_page_reg_write);
@@ -169,6 +345,22 @@ EXPORT_SYMBOL(pm860x_page_reg_write);
 int pm860x_page_bulk_read(struct i2c_client *i2c, int reg,
 			  int count, unsigned char *buf)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char zero = 0;
+	int ret;
+
+	i2c_lock_adapter(i2c->adapter);
+	read_device(i2c, 0xfa, 0, &zero);
+	read_device(i2c, 0xfb, 0, &zero);
+	read_device(i2c, 0xff, 0, &zero);
+	ret = read_device(i2c, reg, count, buf);
+	read_device(i2c, 0xFE, 0, &zero);
+	read_device(i2c, 0xFC, 0, &zero);
+	i2c_unlock_adapter(i2c->adapter);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
 	unsigned char zero = 0;
 	int ret;
@@ -181,6 +373,10 @@ int pm860x_page_bulk_read(struct i2c_client *i2c, int reg,
 	pm860x_write_device(i2c, 0xFE, 0, &zero);
 	pm860x_write_device(i2c, 0xFC, 0, &zero);
 	mutex_unlock(&chip->io_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_page_bulk_read);
@@ -188,6 +384,23 @@ EXPORT_SYMBOL(pm860x_page_bulk_read);
 int pm860x_page_bulk_write(struct i2c_client *i2c, int reg,
 			   int count, unsigned char *buf)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned char zero = 0;
+	int ret;
+
+	i2c_lock_adapter(i2c->adapter);
+	read_device(i2c, 0xFA, 0, &zero);
+	read_device(i2c, 0xFB, 0, &zero);
+	read_device(i2c, 0xFF, 0, &zero);
+	ret = write_device(i2c, reg, count, buf);
+	read_device(i2c, 0xFE, 0, &zero);
+	read_device(i2c, 0xFC, 0, &zero);
+	i2c_unlock_adapter(i2c->adapter);
+	i2c_unlock_adapter(i2c->adapter);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
 	unsigned char zero = 0;
 	int ret;
@@ -200,6 +413,10 @@ int pm860x_page_bulk_write(struct i2c_client *i2c, int reg,
 	pm860x_write_device(i2c, 0xFE, 0, &zero);
 	pm860x_write_device(i2c, 0xFC, 0, &zero);
 	mutex_unlock(&chip->io_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_page_bulk_write);
@@ -207,25 +424,60 @@ EXPORT_SYMBOL(pm860x_page_bulk_write);
 int pm860x_page_set_bits(struct i2c_client *i2c, int reg,
 			 unsigned char mask, unsigned char data)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct pm860x_chip *chip = i2c_get_clientdata(i2c);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char zero;
 	unsigned char value;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_lock_adapter(i2c->adapter);
+	read_device(i2c, 0xFA, 0, &zero);
+	read_device(i2c, 0xFB, 0, &zero);
+	read_device(i2c, 0xFF, 0, &zero);
+	ret = read_device(i2c, reg, 1, &value);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&chip->io_lock);
 	pm860x_write_device(i2c, 0xFA, 0, &zero);
 	pm860x_write_device(i2c, 0xFB, 0, &zero);
 	pm860x_write_device(i2c, 0xFF, 0, &zero);
 	ret = pm860x_read_device(i2c, reg, 1, &value);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		goto out;
 	value &= ~mask;
 	value |= data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = write_device(i2c, reg, 1, &value);
+out:
+	read_device(i2c, 0xFE, 0, &zero);
+	read_device(i2c, 0xFC, 0, &zero);
+	i2c_unlock_adapter(i2c->adapter);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = pm860x_write_device(i2c, reg, 1, &value);
 out:
 	pm860x_write_device(i2c, 0xFE, 0, &zero);
 	pm860x_write_device(i2c, 0xFC, 0, &zero);
 	mutex_unlock(&chip->io_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL(pm860x_page_set_bits);
@@ -257,11 +509,29 @@ static int verify_addr(struct i2c_client *i2c)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct regmap_config pm860x_regmap_config = {
+	.reg_bits = 8,
+	.val_bits = 8,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit pm860x_probe(struct i2c_client *client,
 				  const struct i2c_device_id *id)
 {
 	struct pm860x_platform_data *pdata = client->dev.platform_data;
 	struct pm860x_chip *chip;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pdata) {
 		pr_info("No platform data in %s!\n", __func__);
@@ -273,10 +543,30 @@ static int __devinit pm860x_probe(struct i2c_client *client,
 		return -ENOMEM;
 
 	chip->id = verify_addr(client);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	chip->regmap = regmap_init_i2c(client, &pm860x_regmap_config);
+	if (IS_ERR(chip->regmap)) {
+		ret = PTR_ERR(chip->regmap);
+		dev_err(&client->dev, "Failed to allocate register map: %d\n",
+				ret);
+		kfree(chip);
+		return ret;
+	}
+	chip->client = client;
+	i2c_set_clientdata(client, chip);
+	chip->dev = &client->dev;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chip->client = client;
 	i2c_set_clientdata(client, chip);
 	chip->dev = &client->dev;
 	mutex_init(&chip->io_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_set_drvdata(chip->dev, chip);
 
 	/*
@@ -290,6 +580,20 @@ static int __devinit pm860x_probe(struct i2c_client *client,
 		chip->companion_addr = pdata->companion_addr;
 		chip->companion = i2c_new_dummy(chip->client->adapter,
 						chip->companion_addr);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		chip->regmap_companion = regmap_init_i2c(chip->companion,
+							&pm860x_regmap_config);
+		if (IS_ERR(chip->regmap_companion)) {
+			ret = PTR_ERR(chip->regmap_companion);
+			dev_err(&chip->companion->dev,
+				"Failed to allocate register map: %d\n", ret);
+			return ret;
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		i2c_set_clientdata(chip->companion, chip);
 	}
 
@@ -302,15 +606,64 @@ static int __devexit pm860x_remove(struct i2c_client *client)
 	struct pm860x_chip *chip = i2c_get_clientdata(client);
 
 	pm860x_device_exit(chip);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (chip->companion) {
+		regmap_exit(chip->regmap_companion);
+		i2c_unregister_device(chip->companion);
+	}
+	regmap_exit(chip->regmap);
+=======
 	i2c_unregister_device(chip->companion);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_unregister_device(chip->companion);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(chip);
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+static int pm860x_suspend(struct device *dev)
+{
+	struct i2c_client *client = container_of(dev, struct i2c_client, dev);
+	struct pm860x_chip *chip = i2c_get_clientdata(client);
+
+	if (device_may_wakeup(dev) && chip->wakeup_flag)
+		enable_irq_wake(chip->core_irq);
+	return 0;
+}
+
+static int pm860x_resume(struct device *dev)
+{
+	struct i2c_client *client = container_of(dev, struct i2c_client, dev);
+	struct pm860x_chip *chip = i2c_get_clientdata(client);
+
+	if (device_may_wakeup(dev) && chip->wakeup_flag)
+		disable_irq_wake(chip->core_irq);
+	return 0;
+}
+#endif
+
+static SIMPLE_DEV_PM_OPS(pm860x_pm_ops, pm860x_suspend, pm860x_resume);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct i2c_driver pm860x_driver = {
 	.driver	= {
 		.name	= "88PM860x",
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.pm     = &pm860x_pm_ops,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe		= pm860x_probe,
 	.remove		= __devexit_p(pm860x_remove),

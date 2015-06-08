@@ -20,12 +20,18 @@
 #include <asm/signal.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef COMPAT_USE_64BIT_TIME
 #define COMPAT_USE_64BIT_TIME 0
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define compat_jiffies_to_clock_t(x)	\
 		(((unsigned long)(x) * COMPAT_USER_HZ) / HZ)
 
@@ -95,12 +101,21 @@ typedef struct {
  * These functions operate strictly on struct compat_time*
  */
 =======
+<<<<<<< HEAD
+/*
+ * These functions operate strictly on struct compat_time*
+ */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int get_compat_timespec(struct timespec *,
 			       const struct compat_timespec __user *);
 extern int put_compat_timespec(const struct timespec *,
 			       struct compat_timespec __user *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int get_compat_timeval(struct timeval *,
 			      const struct compat_timeval __user *);
 extern int put_compat_timeval(const struct timeval *,
@@ -114,8 +129,11 @@ extern int compat_get_timespec(struct timespec *, const void __user *);
 extern int compat_put_timespec(const struct timespec *, void __user *);
 extern int compat_get_timeval(struct timeval *, const void __user *);
 extern int compat_put_timeval(const struct timeval *, void __user *);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct compat_iovec {
 	compat_uptr_t	iov_base;
@@ -256,7 +274,11 @@ struct compat_mq_attr;
 <<<<<<< HEAD
 struct compat_msgbuf;
 =======
+<<<<<<< HEAD
+struct compat_msgbuf;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void compat_exit_robust_list(struct task_struct *curr);
 
@@ -270,12 +292,19 @@ compat_sys_get_robust_list(int pid, compat_uptr_t __user *head_ptr,
 <<<<<<< HEAD
 #ifdef CONFIG_ARCH_WANT_OLD_COMPAT_IPC
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_ARCH_WANT_OLD_COMPAT_IPC
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long compat_sys_semctl(int first, int second, int third, void __user *uptr);
 long compat_sys_msgsnd(int first, int second, int third, void __user *uptr);
 long compat_sys_msgrcv(int first, int second, int msgtyp, int third,
 		int version, void __user *uptr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long compat_sys_shmat(int first, int second, compat_uptr_t third, int version,
 		void __user *uptr);
 #else
@@ -287,11 +316,14 @@ long compat_sys_msgrcv(int msqid, struct compat_msgbuf __user *msgp,
 long compat_sys_shmat(int shmid, compat_uptr_t shmaddr, int shmflg);
 #endif
 long compat_sys_msgctl(int first, int second, void __user *uptr);
+<<<<<<< HEAD
+=======
 =======
 long compat_sys_msgctl(int first, int second, void __user *uptr);
 long compat_sys_shmat(int first, int second, compat_uptr_t third, int version,
 		void __user *uptr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long compat_sys_shmctl(int first, int second, void __user *uptr);
 long compat_sys_semtimedop(int semid, struct sembuf __user *tsems,
 		unsigned nsems, const struct compat_timespec __user *timeout);
@@ -478,10 +510,16 @@ asmlinkage long compat_sys_open(const char __user *filename, int flags,
 asmlinkage long compat_sys_openat(unsigned int dfd, const char __user *filename,
 				  int flags, umode_t mode);
 =======
+<<<<<<< HEAD
+				umode_t mode);
+asmlinkage long compat_sys_openat(unsigned int dfd, const char __user *filename,
+				  int flags, umode_t mode);
+=======
 				int mode);
 asmlinkage long compat_sys_openat(unsigned int dfd, const char __user *filename,
 				  int flags, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long compat_sys_open_by_handle_at(int mountdirfd,
 					     struct file_handle __user *handle,
 					     int flags);
@@ -497,6 +535,8 @@ asmlinkage long compat_sys_ppoll(struct pollfd __user *ufds,
 				 compat_size_t sigsetsize);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if (defined(CONFIG_NFSD) || defined(CONFIG_NFSD_MODULE)) && \
 	!defined(CONFIG_NFSD_DEPRECATED)
 union compat_nfsctl_res;
@@ -508,6 +548,7 @@ asmlinkage long compat_sys_nfsservctl(int cmd,
 asmlinkage long compat_sys_nfsservctl(int cmd, void *notused, void *notused2);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long compat_sys_signalfd4(int ufd,
 				     const compat_sigset_t __user *sigmask,
 				     compat_size_t sigsetsize, int flags);
@@ -618,6 +659,9 @@ extern ssize_t compat_rw_copy_check_uvector(int type,
 		unsigned long nr_segs,
 		unsigned long fast_segs, struct iovec *fast_pointer,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct iovec **ret_pointer,
 		int check_access);
 
@@ -632,12 +676,15 @@ asmlinkage ssize_t compat_sys_process_vm_writev(compat_pid_t pid,
 		unsigned long liovcnt, const struct compat_iovec __user *rvec,
 		unsigned long riovcnt, unsigned long flags);
 
+<<<<<<< HEAD
+=======
 =======
 		struct iovec **ret_pointer);
 
 extern void __user *compat_alloc_user_space(unsigned long len);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 
 #define is_compat_task() (0)

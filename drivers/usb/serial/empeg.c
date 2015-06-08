@@ -28,7 +28,15 @@
 #include <linux/usb.h>
 #include <linux/usb/serial.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Version Information
@@ -56,7 +64,14 @@ static struct usb_driver empeg_driver = {
 	.probe =	usb_serial_probe,
 	.disconnect =	usb_serial_disconnect,
 	.id_table =	id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id =	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id =	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct usb_serial_driver empeg_device = {
@@ -65,7 +80,14 @@ static struct usb_serial_driver empeg_device = {
 		.name =		"empeg",
 	},
 	.id_table =		id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver =		&empeg_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver =		&empeg_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_ports =		1,
 	.bulk_out_size =	256,
 	.throttle =		usb_serial_generic_throttle,
@@ -74,6 +96,16 @@ static struct usb_serial_driver empeg_device = {
 	.init_termios =		empeg_init_termios,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&empeg_device, NULL
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int empeg_startup(struct usb_serial *serial)
 {
 	int r;
@@ -136,6 +168,12 @@ static void empeg_init_termios(struct tty_struct *tty)
 	tty_encode_baud_rate(tty, 115200, 115200);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_serial_driver(empeg_driver, serial_drivers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init empeg_init(void)
 {
 	int retval;
@@ -163,6 +201,10 @@ static void __exit empeg_exit(void)
 
 module_init(empeg_init);
 module_exit(empeg_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

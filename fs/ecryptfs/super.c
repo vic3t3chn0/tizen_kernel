@@ -34,7 +34,12 @@
 #include <linux/statfs.h>
 #include <linux/magic.h>
 =======
+<<<<<<< HEAD
+#include <linux/statfs.h>
+#include <linux/magic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ecryptfs_kernel.h"
 
 struct kmem_cache *ecryptfs_inode_info_cache;
@@ -76,8 +81,11 @@ static void ecryptfs_i_callback(struct rcu_head *head)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(ecryptfs_inode_info_cache, inode_info);
 }
 
@@ -112,6 +120,9 @@ static int ecryptfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 {
 	struct dentry *lower_dentry = ecryptfs_dentry_to_lower(dentry);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc;
 
 	if (!lower_dentry->d_sb->s_op->statfs)
@@ -126,12 +137,15 @@ static int ecryptfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 	       &ecryptfs_superblock_to_private(dentry->d_sb)->mount_crypt_stat);
 
 	return rc;
+<<<<<<< HEAD
+=======
 =======
 
 	if (!lower_dentry->d_sb->s_op->statfs)
 		return -ENOSYS;
 	return lower_dentry->d_sb->s_op->statfs(lower_dentry, buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -162,10 +176,16 @@ static int ecryptfs_show_options(struct seq_file *m, struct dentry *root)
 {
 	struct super_block *sb = root->d_sb;
 =======
+<<<<<<< HEAD
+static int ecryptfs_show_options(struct seq_file *m, struct dentry *root)
+{
+	struct super_block *sb = root->d_sb;
+=======
 static int ecryptfs_show_options(struct seq_file *m, struct vfsmount *mnt)
 {
 	struct super_block *sb = mnt->mnt_sb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ecryptfs_mount_crypt_stat *mount_crypt_stat =
 		&ecryptfs_superblock_to_private(sb)->mount_crypt_stat;
 	struct ecryptfs_global_auth_tok *walker;
@@ -189,11 +209,14 @@ static int ecryptfs_show_options(struct seq_file *m, struct vfsmount *mnt)
 			   mount_crypt_stat->global_default_cipher_key_size);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_WTL_ENCRYPTION_FILTER
 	if (mount_crypt_stat->flags & ECRYPTFS_ENABLE_FILTERING)
 		seq_printf(m, ",ecryptfs_enable_filtering");
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mount_crypt_stat->flags & ECRYPTFS_PLAINTEXT_PASSTHROUGH_ENABLED)
 		seq_printf(m, ",ecryptfs_passthrough");
 	if (mount_crypt_stat->flags & ECRYPTFS_XATTR_METADATA_ENABLED)
@@ -213,8 +236,11 @@ const struct super_operations ecryptfs_sops = {
 	.destroy_inode = ecryptfs_destroy_inode,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.drop_inode = generic_drop_inode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.statfs = ecryptfs_statfs,
 	.remount_fs = NULL,
 	.evict_inode = ecryptfs_evict_inode,

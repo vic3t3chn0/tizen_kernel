@@ -20,6 +20,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "spca561"
 
 #include <linux/input.h>
@@ -315,7 +323,15 @@ static void reg_w_val(struct usb_device *dev, __u16 index, __u8 value)
 			      value, index, NULL, 0, 500);
 	PDEBUG(D_USBO, "reg write: 0x%02x:0x%02x", index, value);
 	if (ret < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg write: error %d\n", ret);
+=======
 		err("reg write: error %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg write: error %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void write_vector(struct gspca_dev *gspca_dev,
@@ -449,7 +465,15 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	}
 
 	cam = &gspca_dev->cam;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cam->needs_full_bandwidth = 1;
+=======
 	gspca_dev->nbalt = 7 + 1;	/* choose alternate 7 first */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	gspca_dev->nbalt = 7 + 1;	/* choose alternate 7 first */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sd->chip_revision = id->driver_info;
 	if (sd->chip_revision == Rev012A) {
@@ -1104,6 +1128,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -1116,3 +1146,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -17,6 +17,9 @@
 #include <asm/irq.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAX_GPIO_BANKS		5
 #define NR_BUILTIN_GPIO		(MAX_GPIO_BANKS * 32)
 
@@ -186,6 +189,8 @@
 #define	AT91_PIN_PE29	(0x80 + 29)
 #define	AT91_PIN_PE30	(0x80 + 30)
 #define	AT91_PIN_PE31	(0x80 + 31)
+<<<<<<< HEAD
+=======
 =======
 #define PIN_BASE		NR_AIC_IRQS
 
@@ -359,6 +364,7 @@
 #define	AT91_PIN_PE30	(PIN_BASE + 0x80 + 30)
 #define	AT91_PIN_PE31	(PIN_BASE + 0x80 + 31)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __ASSEMBLY__
 /* setup setup routines, called from board init or driver probe() */
@@ -366,6 +372,9 @@ extern int __init_or_module at91_set_GPIO_periph(unsigned pin, int use_pullup);
 extern int __init_or_module at91_set_A_periph(unsigned pin, int use_pullup);
 extern int __init_or_module at91_set_B_periph(unsigned pin, int use_pullup);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int __init_or_module at91_set_C_periph(unsigned pin, int use_pullup);
 extern int __init_or_module at91_set_D_periph(unsigned pin, int use_pullup);
 extern int __init_or_module at91_set_gpio_input(unsigned pin, int use_pullup);
@@ -375,12 +384,15 @@ extern int __init_or_module at91_set_debounce(unsigned pin, int is_on, int div);
 extern int __init_or_module at91_set_multi_drive(unsigned pin, int is_on);
 extern int __init_or_module at91_set_pulldown(unsigned pin, int is_on);
 extern int __init_or_module at91_disable_schmitt_trig(unsigned pin);
+<<<<<<< HEAD
+=======
 =======
 extern int __init_or_module at91_set_gpio_input(unsigned pin, int use_pullup);
 extern int __init_or_module at91_set_gpio_output(unsigned pin, int value);
 extern int __init_or_module at91_set_deglitch(unsigned pin, int is_on);
 extern int __init_or_module at91_set_multi_drive(unsigned pin, int is_on);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* callable at any time */
 extern int at91_set_gpio_value(unsigned pin, int value);
@@ -390,6 +402,8 @@ extern int at91_get_gpio_value(unsigned pin);
 extern void at91_gpio_suspend(void);
 extern void at91_gpio_resume(void);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*-------------------------------------------------------------------------*/
@@ -410,6 +424,7 @@ extern void at91_gpio_resume(void);
 #define irq_to_gpio(irq)  (irq)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __ASSEMBLY__ */
 
 #endif

@@ -49,6 +49,13 @@
 #define EVERGREEN_PM4_UCODE_SIZE 1376
 #define EVERGREEN_RLC_UCODE_SIZE 768
 #define CAYMAN_RLC_UCODE_SIZE 1024
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ARUBA_RLC_UCODE_SIZE 1536
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Firmware Names */
 MODULE_FIRMWARE("radeon/R600_pfp.bin");
@@ -1134,7 +1141,15 @@ static void r600_vram_gtt_location(struct radeon_device *rdev, struct radeon_mc 
 	}
 	if (rdev->flags & RADEON_IS_AGP) {
 		size_bf = mc->gtt_start;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		size_af = 0xFFFFFFFF - mc->gtt_end;
+=======
 		size_af = 0xFFFFFFFF - mc->gtt_end + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		size_af = 0xFFFFFFFF - mc->gtt_end + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (size_bf > size_af) {
 			if (mc->mc_vram_size > size_bf) {
 				dev_warn(rdev->dev, "limiting VRAM\n");
@@ -1148,7 +1163,15 @@ static void r600_vram_gtt_location(struct radeon_device *rdev, struct radeon_mc 
 				mc->real_vram_size = size_af;
 				mc->mc_vram_size = size_af;
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+			mc->vram_start = mc->gtt_end + 1;
+=======
 			mc->vram_start = mc->gtt_end;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			mc->vram_start = mc->gtt_end;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		mc->vram_end = mc->vram_start + mc->mc_vram_size - 1;
 		dev_info(rdev->dev, "VRAM: %lluM 0x%08llX - 0x%08llX (%lluM used)\n",
@@ -2778,7 +2801,15 @@ void r600_ih_ring_init(struct radeon_device *rdev, unsigned ring_size)
 	rdev->ih.rptr = 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int r600_ih_ring_alloc(struct radeon_device *rdev)
+=======
 static int r600_ih_ring_alloc(struct radeon_device *rdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int r600_ih_ring_alloc(struct radeon_device *rdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int r;
 
@@ -2814,7 +2845,15 @@ static int r600_ih_ring_alloc(struct radeon_device *rdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void r600_ih_ring_fini(struct radeon_device *rdev)
+=======
 static void r600_ih_ring_fini(struct radeon_device *rdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void r600_ih_ring_fini(struct radeon_device *rdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int r;
 	if (rdev->ih.ring_obj) {
@@ -2838,7 +2877,15 @@ void r600_rlc_stop(struct radeon_device *rdev)
 		/* r7xx asics need to soft reset RLC before halting */
 		WREG32(SRBM_SOFT_RESET, SOFT_RESET_RLC);
 		RREG32(SRBM_SOFT_RESET);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mdelay(15);
+=======
 		udelay(15000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		udelay(15000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		WREG32(SRBM_SOFT_RESET, 0);
 		RREG32(SRBM_SOFT_RESET);
 	}
@@ -2861,10 +2908,30 @@ static int r600_rlc_init(struct radeon_device *rdev)
 
 	r600_rlc_stop(rdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	WREG32(RLC_HB_CNTL, 0);
+
+	if (rdev->family == CHIP_ARUBA) {
+		WREG32(TN_RLC_SAVE_AND_RESTORE_BASE, rdev->rlc.save_restore_gpu_addr >> 8);
+		WREG32(TN_RLC_CLEAR_STATE_RESTORE_BASE, rdev->rlc.clear_state_gpu_addr >> 8);
+	}
+	if (rdev->family <= CHIP_CAYMAN) {
+		WREG32(RLC_HB_BASE, 0);
+		WREG32(RLC_HB_RPTR, 0);
+		WREG32(RLC_HB_WPTR, 0);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WREG32(RLC_HB_BASE, 0);
 	WREG32(RLC_HB_CNTL, 0);
 	WREG32(RLC_HB_RPTR, 0);
 	WREG32(RLC_HB_WPTR, 0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rdev->family <= CHIP_CAICOS) {
 		WREG32(RLC_HB_WPTR_LSB_ADDR, 0);
 		WREG32(RLC_HB_WPTR_MSB_ADDR, 0);
@@ -2873,7 +2940,20 @@ static int r600_rlc_init(struct radeon_device *rdev)
 	WREG32(RLC_UCODE_CNTL, 0);
 
 	fw_data = (const __be32 *)rdev->rlc_fw->data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (rdev->family >= CHIP_ARUBA) {
+		for (i = 0; i < ARUBA_RLC_UCODE_SIZE; i++) {
+			WREG32(RLC_UCODE_ADDR, i);
+			WREG32(RLC_UCODE_DATA, be32_to_cpup(fw_data++));
+		}
+	} else if (rdev->family >= CHIP_CAYMAN) {
+=======
 	if (rdev->family >= CHIP_CAYMAN) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (rdev->family >= CHIP_CAYMAN) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (i = 0; i < CAYMAN_RLC_UCODE_SIZE; i++) {
 			WREG32(RLC_UCODE_ADDR, i);
 			WREG32(RLC_UCODE_DATA, be32_to_cpup(fw_data++));

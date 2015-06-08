@@ -15,19 +15,25 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/memory.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/serial.h>
 
 #define UART_OFFSET(addr)	((addr) & 0x00ffffff)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define omap_uart_v2p(x)	((x) - PAGE_OFFSET + PLAT_PHYS_OFFSET)
 #define omap_uart_p2v(x)	((x) - PLAT_PHYS_OFFSET + PAGE_OFFSET)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pushsection .data
 omap_uart_phys:	.word	0
 omap_uart_virt:	.word	0
@@ -41,6 +47,9 @@ omap_uart_lsr:	.word	0
 		 * the omap_uart_phys and omap_uart_virt above.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.macro	addruart, rp, rv, tmp
 
 		/* Use omap_uart_phys/virt if already configured */
@@ -60,6 +69,8 @@ omap_uart_lsr:	.word	0
 		ldr	\rv, =OMAP_UART_INFO_OFS
 		and	\rp, \rp, #0xff000000
 		ldr	\rp, [\rp, \rv]
+<<<<<<< HEAD
+=======
 =======
 		.macro	addruart, rp, rv
 
@@ -82,6 +93,7 @@ omap_uart_lsr:	.word	0
 		ldrne	\rp, =omap_uart_p2v(OMAP_UART_INFO)	@ MMU enabled
 		ldr	\rp, [\rp, #0]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Select the UART to use based on the UART1 scratchpad value */
 		cmp	\rp, #0			@ no port configured?
@@ -101,11 +113,16 @@ omap_uart_lsr:	.word	0
 		cmp	\rp, #OMAP4UART4	@ only on 44xx
 		beq	44f			@ configure OMAP4UART4
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cmp	\rp, #TI81XXUART1	@ ti81Xx UART offsets different
 		beq	81f			@ configure UART1
 		cmp	\rp, #TI81XXUART2	@ ti81Xx UART offsets different
 		beq	82f			@ configure UART2
 		cmp	\rp, #TI81XXUART3	@ ti81Xx UART offsets different
+<<<<<<< HEAD
+=======
 =======
 		cmp	\rp, #TI816XUART1	@ ti816x UART offsets different
 		beq	81f			@ configure UART1
@@ -113,6 +130,7 @@ omap_uart_lsr:	.word	0
 		beq	82f			@ configure UART2
 		cmp	\rp, #TI816XUART3	@ ti816x UART offsets different
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		beq	83f			@ configure UART3
 		cmp	\rp, #ZOOM_UART		@ only on zoom2/3
 		beq	95f			@ configure ZOOM_UART
@@ -137,6 +155,9 @@ omap_uart_lsr:	.word	0
 44:		mov	\rp, #UART_OFFSET(OMAP4_UART4_BASE)
 		b	98f
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 81:		mov	\rp, #UART_OFFSET(TI81XX_UART1_BASE)
 		b	98f
 82:		mov	\rp, #UART_OFFSET(TI81XX_UART2_BASE)
@@ -150,6 +171,8 @@ omap_uart_lsr:	.word	0
 		str	\rp, [\tmp, #4]		@ omap_uart_virt
 		mov	\rp, #(UART_LSR << ZOOM_PORT_SHIFT)
 		str	\rp, [\tmp, #8]		@ omap_uart_lsr
+<<<<<<< HEAD
+=======
 =======
 81:		mov	\rp, #UART_OFFSET(TI816X_UART1_BASE)
 		b	98f
@@ -170,11 +193,15 @@ omap_uart_lsr:	.word	0
 		add	\rv, \rv, #4		@ omap_uart_lsr
 		str	\rp, [\rv, #0]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		b	10b
 
 		/* Store both phys and virt address for the uart */
 98:		add	\rp, \rp, #0x48000000	@ phys base
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		str	\rp, [\tmp, #0]		@ omap_uart_phys
 		sub	\rp, \rp, #0x48000000	@ phys base
 		add	\rp, \rp, #0xfa000000	@ virt base
@@ -205,6 +232,8 @@ omap_uart_lsr:	.word	0
 
 		.macro	busyuart,rd,rx
 1001:		ldrb	\rd, [\rx]		@ rx contains UART_LSR address
+<<<<<<< HEAD
+=======
 =======
 		mrc	p15, 0, \rv, c1, c0
 		tst	\rv, #1			@ MMU enabled?
@@ -235,6 +264,7 @@ omap_uart_lsr:	.word	0
 		ldr	\rd, [\rd, #0]
 		ldrb	\rd, [\rx, \rd]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		and	\rd, \rd, #(UART_LSR_TEMT | UART_LSR_THRE)
 		teq	\rd, #(UART_LSR_TEMT | UART_LSR_THRE)
 		bne	1001b

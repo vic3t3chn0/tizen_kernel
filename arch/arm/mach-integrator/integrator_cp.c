@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/amba/bus.h>
 #include <linux/amba/kmi.h>
 #include <linux/amba/clcd.h>
@@ -32,8 +36,11 @@
 #include <mach/platform.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/irq.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/setup.h>
 #include <asm/mach-types.h>
 #include <asm/hardware/arm_timer.h>
@@ -44,7 +51,11 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/arch.h>
 #include <asm/mach/irq.h>
@@ -359,6 +370,9 @@ static struct mmci_platform_data mmc_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INTEGRATOR_CP_MMC_IRQS	{ IRQ_CP_MMCIINT0, IRQ_CP_MMCIINT1 }
 #define INTEGRATOR_CP_AACI_IRQS	{ IRQ_CP_AACIINT }
 
@@ -367,6 +381,8 @@ static AMBA_APB_DEVICE(mmc, "mb:1c", 0, INTEGRATOR_CP_MMC_BASE,
 
 static AMBA_APB_DEVICE(aaci, "mb:1d", 0, INTEGRATOR_CP_AACI_BASE,
 	INTEGRATOR_CP_AACI_IRQS, NULL);
+<<<<<<< HEAD
+=======
 =======
 static struct amba_device mmc_device = {
 	.dev		= {
@@ -395,6 +411,7 @@ static struct amba_device aaci_device = {
 	.periphid	= 0,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -451,6 +468,10 @@ static struct clcd_board clcd_data = {
 static AMBA_AHB_DEVICE(clcd, "mb:c0", 0, INTCP_PA_CLCD_BASE,
 	{ IRQ_CP_CLCDCINT }, &clcd_data);
 =======
+<<<<<<< HEAD
+static AMBA_AHB_DEVICE(clcd, "mb:c0", 0, INTCP_PA_CLCD_BASE,
+	{ IRQ_CP_CLCDCINT }, &clcd_data);
+=======
 static struct amba_device clcd_device = {
 	.dev		= {
 		.init_name = "mb:c0",
@@ -467,6 +488,7 @@ static struct amba_device clcd_device = {
 	.periphid	= 0,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct amba_device *amba_devs[] __initdata = {
 	&mmc_device,
@@ -520,15 +542,21 @@ static struct sys_timer cp_timer = {
 MACHINE_START(CINTEGRATOR, "ARM-IntegratorCP")
 	/* Maintainer: ARM Ltd/Deep Blue Solutions Ltd */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= integrator_reserve,
 	.map_io		= intcp_map_io,
 	.nr_irqs	= NR_IRQS_INTEGRATOR_CP,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x00000100,
 	.reserve	= integrator_reserve,
 	.map_io		= intcp_map_io,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_early	= intcp_init_early,
 	.init_irq	= intcp_init_irq,
 	.timer		= &cp_timer,
@@ -536,5 +564,9 @@ MACHINE_START(CINTEGRATOR, "ARM-IntegratorCP")
 <<<<<<< HEAD
 	.restart	= integrator_restart,
 =======
+<<<<<<< HEAD
+	.restart	= integrator_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

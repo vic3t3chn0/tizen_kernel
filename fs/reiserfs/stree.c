@@ -54,8 +54,12 @@
 <<<<<<< HEAD
 #include "reiserfs.h"
 =======
+<<<<<<< HEAD
+#include "reiserfs.h"
+=======
 #include <linux/reiserfs_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/buffer_head.h>
 #include <linux/quotaops.h>
 
@@ -1291,8 +1295,12 @@ int reiserfs_delete_item(struct reiserfs_transaction_handle *th,
 <<<<<<< HEAD
 		data = kmap_atomic(un_bh->b_page);
 =======
+<<<<<<< HEAD
+		data = kmap_atomic(un_bh->b_page);
+=======
 		data = kmap_atomic(un_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		off = ((le_ih_k_offset(&s_ih) - 1) & (PAGE_CACHE_SIZE - 1));
 		memcpy(data + off,
 		       B_I_PITEM(PATH_PLAST_BUFFER(path), &s_ih),
@@ -1300,8 +1308,12 @@ int reiserfs_delete_item(struct reiserfs_transaction_handle *th,
 <<<<<<< HEAD
 		kunmap_atomic(data);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(data);
+=======
 		kunmap_atomic(data, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/* Perform balancing after all resources have been collected at once. */
 	do_balance(&s_del_balance, NULL, NULL, M_DELETE);
@@ -1983,10 +1995,14 @@ int reiserfs_paste_into_item(struct reiserfs_transaction_handle *th, struct tree
 <<<<<<< HEAD
 	retval = dquot_alloc_space_nodirty(inode, pasted_size);
 =======
+<<<<<<< HEAD
+	retval = dquot_alloc_space_nodirty(inode, pasted_size);
+=======
 	reiserfs_write_unlock(inode->i_sb);
 	retval = dquot_alloc_space_nodirty(inode, pasted_size);
 	reiserfs_write_lock(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval) {
 		pathrelse(search_path);
 		return retval;
@@ -2084,12 +2100,18 @@ int reiserfs_insert_item(struct reiserfs_transaction_handle *th,
 		 * appropriate stat item isn't inserted yet... */
 		retval = dquot_alloc_space_nodirty(inode, quota_bytes);
 =======
+<<<<<<< HEAD
+		/* We can't dirty inode here. It would be immediately written but
+		 * appropriate stat item isn't inserted yet... */
+		retval = dquot_alloc_space_nodirty(inode, quota_bytes);
+=======
 		reiserfs_write_unlock(inode->i_sb);
 		/* We can't dirty inode here. It would be immediately written but
 		 * appropriate stat item isn't inserted yet... */
 		retval = dquot_alloc_space_nodirty(inode, quota_bytes);
 		reiserfs_write_lock(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (retval) {
 			pathrelse(path);
 			return retval;

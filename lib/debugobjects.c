@@ -269,6 +269,9 @@ static void debug_print_object(struct debug_obj *obj, char *msg)
  * debug output.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 debug_object_fixup(int (*fixup)(void *addr, enum debug_obj_state state),
 		   void * addr, enum debug_obj_state state)
@@ -279,6 +282,8 @@ debug_object_fixup(int (*fixup)(void *addr, enum debug_obj_state state),
 		fixed = fixup(addr, state);
 	debug_objects_fixups += fixed;
 	return fixed;
+<<<<<<< HEAD
+=======
 =======
 static void
 debug_object_fixup(int (*fixup)(void *addr, enum debug_obj_state state),
@@ -287,6 +292,7 @@ debug_object_fixup(int (*fixup)(void *addr, enum debug_obj_state state),
 	if (fixup)
 		debug_objects_fixups += fixup(addr, state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void debug_object_is_on_stack(void *addr, int onstack)
@@ -404,7 +410,13 @@ void debug_object_activate(void *addr, struct debug_obj_descr *descr)
 			       .state = ODEBUG_STATE_NOTAVAILABLE,
 			       .descr = descr };
 =======
+<<<<<<< HEAD
+	struct debug_obj o = { .object = addr,
+			       .state = ODEBUG_STATE_NOTAVAILABLE,
+			       .descr = descr };
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!debug_objects_enabled)
 		return;
@@ -449,9 +461,15 @@ void debug_object_activate(void *addr, struct debug_obj_descr *descr)
 			   ODEBUG_STATE_NOTAVAILABLE))
 		debug_print_object(&o, "activate");
 =======
+<<<<<<< HEAD
+	if (debug_object_fixup(descr->fixup_activate, addr,
+			   ODEBUG_STATE_NOTAVAILABLE))
+		debug_print_object(&o, "activate");
+=======
 	debug_object_fixup(descr->fixup_activate, addr,
 			   ODEBUG_STATE_NOTAVAILABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -589,6 +607,9 @@ out_unlock:
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * debug_object_assert_init - debug checks when object should be init-ed
  * @addr:	address of the object
  * @descr:	pointer to an object specific debug description structure
@@ -627,8 +648,11 @@ void debug_object_assert_init(void *addr, struct debug_obj_descr *descr)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * debug_object_active_state - debug checks object usage state machine
  * @addr:	address of the object
  * @descr:	pointer to an object specific debug description structure
@@ -843,6 +867,11 @@ static int __init fixup_activate(void *addr, enum debug_obj_state state)
 		}
 		return 1;
 =======
+<<<<<<< HEAD
+			return 0;
+		}
+		return 1;
+=======
 			/*
 			 * Real code should return 0 here ! This is
 			 * not a fixup of some bad behaviour. We
@@ -855,6 +884,7 @@ static int __init fixup_activate(void *addr, enum debug_obj_state state)
 		}
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	case ODEBUG_STATE_ACTIVE:
 		debug_object_deactivate(obj, &descr_type_test);
@@ -996,8 +1026,12 @@ static void __init debug_objects_selftest(void)
 <<<<<<< HEAD
 	if (check_results(&obj, ODEBUG_STATE_ACTIVE, fixups, warnings))
 =======
+<<<<<<< HEAD
+	if (check_results(&obj, ODEBUG_STATE_ACTIVE, fixups, warnings))
+=======
 	if (check_results(&obj, ODEBUG_STATE_ACTIVE, ++fixups, warnings))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	debug_object_init(&obj, &descr_type_test);
 	if (check_results(&obj, ODEBUG_STATE_INIT, ++fixups, ++warnings))

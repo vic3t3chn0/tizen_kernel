@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include "util/evsel.h"
 =======
+<<<<<<< HEAD
+#include "util/evsel.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/rbtree.h>
 #include "util/symbol.h"
 #include "util/callchain.h"
@@ -38,7 +42,11 @@
 <<<<<<< HEAD
 #include "util/tool.h"
 =======
+<<<<<<< HEAD
+#include "util/tool.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SUPPORT_OLD_POWER_EVENTS 1
 #define PWR_EVENT_EXIT -1
@@ -48,9 +56,14 @@
 static const char	*input_name;
 static const char	*output_name = "output.svg";
 =======
+<<<<<<< HEAD
+static const char	*input_name;
+static const char	*output_name = "output.svg";
+=======
 static char		const *input_name = "perf.data";
 static char		const *output_name = "output.svg";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static unsigned int	numcpus;
 static u64		min_freq;	/* Lowest CPU frequency seen */
@@ -287,45 +300,63 @@ static u64 cpus_pstate_start_times[MAX_CPUS];
 static u64 cpus_pstate_state[MAX_CPUS];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int process_comm_event(struct perf_tool *tool __used,
 			      union perf_event *event,
 			      struct perf_sample *sample __used,
 			      struct machine *machine __used)
+<<<<<<< HEAD
+=======
 =======
 static int process_comm_event(union perf_event *event,
 			      struct perf_sample *sample __used,
 			      struct perf_session *session __used)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pid_set_comm(event->comm.tid, event->comm.comm);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int process_fork_event(struct perf_tool *tool __used,
 			      union perf_event *event,
 			      struct perf_sample *sample __used,
 			      struct machine *machine __used)
+<<<<<<< HEAD
+=======
 =======
 static int process_fork_event(union perf_event *event,
 			      struct perf_sample *sample __used,
 			      struct perf_session *session __used)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pid_fork(event->fork.pid, event->fork.ppid, event->fork.time);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int process_exit_event(struct perf_tool *tool __used,
 			      union perf_event *event,
 			      struct perf_sample *sample __used,
 			      struct machine *machine __used)
+<<<<<<< HEAD
+=======
 =======
 static int process_exit_event(union perf_event *event,
 			      struct perf_sample *sample __used,
 			      struct perf_session *session __used)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pid_exit(event->fork.pid, event->fork.time);
 	return 0;
@@ -521,6 +552,9 @@ static void sched_switch(int cpu, u64 timestamp, struct trace_entry *te)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int process_sample_event(struct perf_tool *tool __used,
 				union perf_event *event __used,
 				struct perf_sample *sample,
@@ -530,6 +564,8 @@ static int process_sample_event(struct perf_tool *tool __used,
 	struct trace_entry *te;
 
 	if (evsel->attr.sample_type & PERF_SAMPLE_TIME) {
+<<<<<<< HEAD
+=======
 =======
 static int process_sample_event(union perf_event *event __used,
 				struct perf_sample *sample,
@@ -540,6 +576,7 @@ static int process_sample_event(union perf_event *event __used,
 
 	if (session->sample_type & PERF_SAMPLE_TIME) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!first_time || first_time > sample->time)
 			first_time = sample->time;
 		if (last_time < sample->time)
@@ -550,8 +587,12 @@ static int process_sample_event(union perf_event *event __used,
 <<<<<<< HEAD
 	if ((evsel->attr.sample_type & PERF_SAMPLE_RAW) && sample->raw_size > 0) {
 =======
+<<<<<<< HEAD
+	if ((evsel->attr.sample_type & PERF_SAMPLE_RAW) && sample->raw_size > 0) {
+=======
 	if (session->sample_type & PERF_SAMPLE_RAW && sample->raw_size > 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		char *event_str;
 #ifdef SUPPORT_OLD_POWER_EVENTS
 		struct power_entry_old *peo;
@@ -1027,8 +1068,12 @@ static void write_svg_file(const char *filename)
 <<<<<<< HEAD
 static struct perf_tool perf_timechart = {
 =======
+<<<<<<< HEAD
+static struct perf_tool perf_timechart = {
+=======
 static struct perf_event_ops event_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.comm			= process_comm_event,
 	.fork			= process_fork_event,
 	.exit			= process_exit_event,
@@ -1042,8 +1087,12 @@ static int __cmd_timechart(void)
 <<<<<<< HEAD
 							 0, false, &perf_timechart);
 =======
+<<<<<<< HEAD
+							 0, false, &perf_timechart);
+=======
 							 0, false, &event_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = -EINVAL;
 
 	if (session == NULL)
@@ -1055,8 +1104,12 @@ static int __cmd_timechart(void)
 <<<<<<< HEAD
 	ret = perf_session__process_events(session, &perf_timechart);
 =======
+<<<<<<< HEAD
+	ret = perf_session__process_events(session, &perf_timechart);
+=======
 	ret = perf_session__process_events(session, &event_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto out_delete;
 

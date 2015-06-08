@@ -8,13 +8,20 @@
 <<<<<<< HEAD
 obj-y				:=
 =======
+<<<<<<< HEAD
+obj-y				:=
+=======
 obj-y				:= reserve_mem-s5pv210.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-m				:=
 obj-n				:=
 obj-				:=
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Core
 
 obj-y				+= common.o clock.o
@@ -22,6 +29,8 @@ obj-y				+= common.o clock.o
 obj-$(CONFIG_PM)		+= pm.o
 
 obj-y				+= dma.o
+<<<<<<< HEAD
+=======
 =======
 # Core support for S5PV210 system
 
@@ -30,6 +39,7 @@ obj-$(CONFIG_CPU_S5PV210)	+= setup-i2c0.o
 obj-$(CONFIG_S5PV210_PM)	+= pm.o sleep.o
 obj-$(CONFIG_CPU_FREQ)		+= cpufreq.o dev-cpufreq.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # machine support
 
@@ -39,16 +49,25 @@ obj-$(CONFIG_MACH_GONI)		+= mach-goni.o
 obj-$(CONFIG_MACH_SMDKC110)	+= mach-smdkc110.o
 obj-$(CONFIG_MACH_SMDKV210)	+= mach-smdkv210.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_MACH_GONI)		+= mach-goni.o
+obj-$(CONFIG_MACH_SMDKC110)	+= mach-smdkc110.o
+obj-$(CONFIG_MACH_SMDKV210)	+= mach-smdkv210.o
+=======
 obj-$(CONFIG_MACH_SMDKV210)	+= mach-smdkv210.o
 obj-$(CONFIG_MACH_SMDKC110)	+= mach-smdkc110.o
 obj-$(CONFIG_MACH_GONI)		+= mach-goni.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_MACH_TORBRECK)	+= mach-torbreck.o
 
 # device support
 
 obj-y				+= dev-audio.o
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-y					+= setup-i2c0.o
 obj-$(CONFIG_S5PV210_SETUP_FB_24BPP)	+= setup-fb-24bpp.o
@@ -60,6 +79,8 @@ obj-$(CONFIG_S5PV210_SETUP_KEYPAD)	+= setup-keypad.o
 obj-$(CONFIG_S5PV210_SETUP_SDHCI_GPIO)	+= setup-sdhci-gpio.o
 obj-$(CONFIG_S5PV210_SETUP_SPI)		+= setup-spi.o
 obj-$(CONFIG_S5PV210_SETUP_USB_PHY) += setup-usb-phy.o
+<<<<<<< HEAD
+=======
 =======
 obj-$(CONFIG_S3C64XX_DEV_SPI)	+= dev-spi.o
 
@@ -72,3 +93,4 @@ obj-$(CONFIG_S5PV210_SETUP_KEYPAD)	+= setup-keypad.o
 obj-$(CONFIG_S5PV210_SETUP_SDHCI)       += setup-sdhci.o
 obj-$(CONFIG_S5PV210_SETUP_SDHCI_GPIO)	+= setup-sdhci-gpio.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

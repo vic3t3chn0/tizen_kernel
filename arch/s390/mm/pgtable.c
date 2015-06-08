@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  *    Copyright IBM Corp. 2007,2011
 =======
+<<<<<<< HEAD
+ *    Copyright IBM Corp. 2007,2011
+=======
  *    Copyright IBM Corp. 2007,2009
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    Author(s): Martin Schwidefsky <schwidefsky@de.ibm.com>
  */
 
@@ -24,9 +28,14 @@
 #include <linux/slab.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/slab.h>
+
+=======
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable.h>
 #include <asm/pgalloc.h>
 #include <asm/tlb.h>
@@ -43,6 +52,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 unsigned long VMALLOC_START = VMALLOC_END - VMALLOC_SIZE;
 EXPORT_SYMBOL(VMALLOC_START);
 
@@ -55,6 +66,7 @@ static int __init parse_vmalloc(char *arg)
 }
 early_param("vmalloc", parse_vmalloc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned long *crst_table_alloc(struct mm_struct *mm)
 {
@@ -146,6 +158,9 @@ void crst_table_downgrade(struct mm_struct *mm, unsigned long limit)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PGSTE
 
 /**
@@ -569,6 +584,8 @@ static inline unsigned long *page_table_alloc_pgste(struct mm_struct *mm,
 	struct page *page;
 	unsigned long *table;
 	struct gmap_pgtable *mp;
+<<<<<<< HEAD
+=======
 =======
 static inline unsigned int atomic_xor_bits(atomic_t *v, unsigned int bits)
 {
@@ -590,11 +607,15 @@ static inline unsigned long *page_table_alloc_pgste(struct mm_struct *mm)
 	struct page *page;
 	unsigned long *table;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	page = alloc_page(GFP_KERNEL|__GFP_REPEAT);
 	if (!page)
 		return NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mp = kmalloc(sizeof(*mp), GFP_KERNEL|__GFP_REPEAT);
 	if (!mp) {
 		__free_page(page);
@@ -604,9 +625,12 @@ static inline unsigned long *page_table_alloc_pgste(struct mm_struct *mm)
 	mp->vmaddr = vmaddr & PMD_MASK;
 	INIT_LIST_HEAD(&mp->mapper);
 	page->index = (unsigned long) mp;
+<<<<<<< HEAD
+=======
 =======
 	pgtable_page_ctor(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_set(&page->_mapcount, 3);
 	table = (unsigned long *) page_to_phys(page);
 	clear_table(table, _PAGE_TYPE_EMPTY, PAGE_SIZE/2);
@@ -618,6 +642,9 @@ static inline void page_table_free_pgste(unsigned long *table)
 {
 	struct page *page;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gmap_pgtable *mp;
 
 	page = pfn_to_page(__pa(table) >> PAGE_SHIFT);
@@ -663,6 +690,8 @@ static inline unsigned int atomic_xor_bits(atomic_t *v, unsigned int bits)
  * page table entry allocation/free routines.
  */
 unsigned long *page_table_alloc(struct mm_struct *mm, unsigned long vmaddr)
+<<<<<<< HEAD
+=======
 =======
 
 	page = pfn_to_page(__pa(table) >> PAGE_SHIFT);
@@ -674,6 +703,7 @@ unsigned long *page_table_alloc(struct mm_struct *mm, unsigned long vmaddr)
 
 unsigned long *page_table_alloc(struct mm_struct *mm)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct page *page;
 	unsigned long *table;
@@ -683,11 +713,16 @@ unsigned long *page_table_alloc(struct mm_struct *mm)
 	if (mm_has_pgste(mm))
 		return page_table_alloc_pgste(mm, vmaddr);
 =======
+<<<<<<< HEAD
+	if (mm_has_pgste(mm))
+		return page_table_alloc_pgste(mm, vmaddr);
+=======
 #ifdef CONFIG_PGSTE
 	if (mm_has_pgste(mm))
 		return page_table_alloc_pgste(mm);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Allocate fragments of a 4K page as 1K/2K page table */
 	spin_lock_bh(&mm->context.list_lock);
 	mask = FRAG_MASK;
@@ -726,16 +761,22 @@ void page_table_free(struct mm_struct *mm, unsigned long *table)
 	unsigned int bit, mask;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mm_has_pgste(mm)) {
 		gmap_unmap_notifier(mm, table);
 		return page_table_free_pgste(table);
 	}
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_PGSTE
 	if (mm_has_pgste(mm))
 		return page_table_free_pgste(table);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Free 1K/2K page table fragment of a 4K page */
 	page = pfn_to_page(__pa(table) >> PAGE_SHIFT);
 	bit = 1 << ((__pa(table) & ~PAGE_MASK)/(PTRS_PER_PTE*sizeof(pte_t)));
@@ -761,11 +802,16 @@ static void __page_table_free_rcu(void *table, unsigned bit)
 	if (bit == FRAG_MASK)
 		return page_table_free_pgste(table);
 =======
+<<<<<<< HEAD
+	if (bit == FRAG_MASK)
+		return page_table_free_pgste(table);
+=======
 #ifdef CONFIG_PGSTE
 	if (bit == FRAG_MASK)
 		return page_table_free_pgste(table);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Free 1K/2K page table fragment of a 4K page */
 	page = pfn_to_page(__pa(table) >> PAGE_SHIFT);
 	if (atomic_xor_bits(&page->_mapcount, bit) == 0) {
@@ -786,17 +832,25 @@ void page_table_free_rcu(struct mmu_gather *tlb, unsigned long *table)
 	if (mm_has_pgste(mm)) {
 		gmap_unmap_notifier(mm, table);
 =======
+<<<<<<< HEAD
+	if (mm_has_pgste(mm)) {
+		gmap_unmap_notifier(mm, table);
+=======
 #ifdef CONFIG_PGSTE
 	if (mm_has_pgste(mm)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		table = (unsigned long *) (__pa(table) | FRAG_MASK);
 		tlb_remove_table(tlb, table);
 		return;
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bit = 1 << ((__pa(table) & ~PAGE_MASK) / (PTRS_PER_PTE*sizeof(pte_t)));
 	page = pfn_to_page(__pa(table) >> PAGE_SHIFT);
 	spin_lock_bh(&mm->context.list_lock);

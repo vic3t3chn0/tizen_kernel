@@ -25,13 +25,18 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IO_SPACE_LIMIT 0xffff
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Translation of various region addresses to virtual addresses
  */
 #define __io(a)			((void __iomem *)(PCIO_BASE + (a)))
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #if 1
@@ -48,5 +53,6 @@ static inline void __iomem *___mem_pci(void __iomem *p)
 #define __mem_pci(a)		___mem_pci(a)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

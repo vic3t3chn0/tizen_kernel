@@ -32,8 +32,12 @@
 <<<<<<< HEAD
 #include <linux/regmap.h>
 =======
+<<<<<<< HEAD
+#include <linux/regmap.h>
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/debugfs.h>
 #include <linux/slab.h>
 #include <sound/core.h>
@@ -59,7 +63,11 @@ struct wm2000_priv {
 <<<<<<< HEAD
 	struct regmap *regmap;
 =======
+<<<<<<< HEAD
+	struct regmap *regmap;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	enum wm2000_anc_mode anc_mode;
 
@@ -75,11 +83,16 @@ struct wm2000_priv {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm2000_write(struct i2c_client *i2c, unsigned int reg,
 			unsigned int value)
 {
 	struct wm2000_priv *wm2000 = i2c_get_clientdata(i2c);
 	return regmap_write(wm2000->regmap, reg, value);
+<<<<<<< HEAD
+=======
 =======
 static struct i2c_client *wm2000_i2c;
 
@@ -103,11 +116,15 @@ static int wm2000_write(struct i2c_client *i2c, unsigned int reg,
 	else
 		return -EIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static unsigned int wm2000_read(struct i2c_client *i2c, unsigned int r)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct wm2000_priv *wm2000 = i2c_get_clientdata(i2c);
 	unsigned int val;
 	int ret;
@@ -117,6 +134,8 @@ static unsigned int wm2000_read(struct i2c_client *i2c, unsigned int r)
 		return -1;
 
 	return val;
+<<<<<<< HEAD
+=======
 =======
 	struct i2c_msg xfer[2];
 	u8 reg[2];
@@ -147,6 +166,7 @@ static unsigned int wm2000_read(struct i2c_client *i2c, unsigned int r)
 
 	return data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void wm2000_reset(struct wm2000_priv *wm2000)
@@ -257,10 +277,16 @@ static int wm2000_power_up(struct i2c_client *i2c, int analogue)
 	else
 		ret |= WM2000_SPEECH_CLARITY;
 =======
+<<<<<<< HEAD
+		ret &= ~WM2000_SPEECH_CLARITY;
+	else
+		ret |= WM2000_SPEECH_CLARITY;
+=======
 		ret |= WM2000_SPEECH_CLARITY;
 	else
 		ret &= ~WM2000_SPEECH_CLARITY;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm2000_write(i2c, WM2000_REG_SPEECH_CLARITY, ret);
 
 	wm2000_write(i2c, WM2000_REG_SYS_START0, 0x33);
@@ -650,8 +676,13 @@ static int wm2000_anc_mode_get(struct snd_kcontrol *kcontrol,
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
 =======
+<<<<<<< HEAD
+	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
+=======
 	struct wm2000_priv *wm2000 = dev_get_drvdata(&wm2000_i2c->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ucontrol->value.enumerated.item[0] = wm2000->anc_active;
 
@@ -665,8 +696,13 @@ static int wm2000_anc_mode_put(struct snd_kcontrol *kcontrol,
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
 =======
+<<<<<<< HEAD
+	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
+=======
 	struct wm2000_priv *wm2000 = dev_get_drvdata(&wm2000_i2c->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int anc_active = ucontrol->value.enumerated.item[0];
 
 	if (anc_active > 1)
@@ -684,8 +720,13 @@ static int wm2000_speaker_get(struct snd_kcontrol *kcontrol,
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
 =======
+<<<<<<< HEAD
+	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
+=======
 	struct wm2000_priv *wm2000 = dev_get_drvdata(&wm2000_i2c->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ucontrol->value.enumerated.item[0] = wm2000->spk_ena;
 
@@ -699,8 +740,13 @@ static int wm2000_speaker_put(struct snd_kcontrol *kcontrol,
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
 =======
+<<<<<<< HEAD
+	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
+=======
 	struct wm2000_priv *wm2000 = dev_get_drvdata(&wm2000_i2c->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int val = ucontrol->value.enumerated.item[0];
 
 	if (val > 1)
@@ -727,8 +773,13 @@ static int wm2000_anc_power_event(struct snd_soc_dapm_widget *w,
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
 =======
+<<<<<<< HEAD
+	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
+	struct wm2000_priv *wm2000 = dev_get_drvdata(codec->dev);
+=======
 	struct wm2000_priv *wm2000 = dev_get_drvdata(&wm2000_i2c->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (SND_SOC_DAPM_EVENT_ON(event))
 		wm2000->anc_eng_ena = 1;
@@ -742,11 +793,16 @@ static int wm2000_anc_power_event(struct snd_soc_dapm_widget *w,
 static const struct snd_soc_dapm_widget wm2000_dapm_widgets[] = {
 /* Externally visible pins */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SND_SOC_DAPM_OUTPUT("SPKN"),
 SND_SOC_DAPM_OUTPUT("SPKP"),
 
 SND_SOC_DAPM_INPUT("LINN"),
 SND_SOC_DAPM_INPUT("LINP"),
+<<<<<<< HEAD
+=======
 =======
 SND_SOC_DAPM_OUTPUT("WM2000 SPKN"),
 SND_SOC_DAPM_OUTPUT("WM2000 SPKP"),
@@ -754,6 +810,7 @@ SND_SOC_DAPM_OUTPUT("WM2000 SPKP"),
 SND_SOC_DAPM_INPUT("WM2000 LINN"),
 SND_SOC_DAPM_INPUT("WM2000 LINP"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_PGA_E("ANC Engine", SND_SOC_NOPM, 0, 0, NULL, 0,
 		   wm2000_anc_power_event,
@@ -762,6 +819,9 @@ SND_SOC_DAPM_PGA_E("ANC Engine", SND_SOC_NOPM, 0, 0, NULL, 0,
 
 /* Target, Path, Source */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_soc_dapm_route wm2000_audio_map[] = {
 	{ "SPKN", NULL, "ANC Engine" },
 	{ "SPKP", NULL, "ANC Engine" },
@@ -823,6 +883,8 @@ static struct snd_soc_codec_driver soc_codec_dev_wm2000 = {
 	.controls = wm2000_controls,
 	.num_controls = ARRAY_SIZE(wm2000_controls),
 };
+<<<<<<< HEAD
+=======
 =======
 static const struct snd_soc_dapm_route audio_map[] = {
 	{ "WM2000 SPKN", NULL, "ANC Engine" },
@@ -856,6 +918,7 @@ int wm2000_add_controls(struct snd_soc_codec *codec)
 }
 EXPORT_SYMBOL_GPL(wm2000_add_controls);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 				      const struct i2c_device_id *i2c_id)
@@ -864,6 +927,9 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 	struct wm2000_platform_data *pdata;
 	const char *filename;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct firmware *fw = NULL;
 	int ret;
 	int reg;
@@ -871,6 +937,8 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 
 	wm2000 = devm_kzalloc(&i2c->dev, sizeof(struct wm2000_priv),
 			      GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	const struct firmware *fw;
 	int reg, ret;
@@ -883,12 +951,16 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 
 	wm2000 = kzalloc(sizeof(struct wm2000_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wm2000 == NULL) {
 		dev_err(&i2c->dev, "Unable to allocate private data\n");
 		return -ENOMEM;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_set_drvdata(&i2c->dev, wm2000);
 
 	wm2000->regmap = regmap_init_i2c(i2c, &wm2000_regmap);
@@ -899,8 +971,11 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 		goto out;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Verify that this is a WM2000 */
 	reg = wm2000_read(i2c, WM2000_REG_ID1);
 	id = reg << 8;
@@ -913,8 +988,12 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 <<<<<<< HEAD
 		goto out_regmap_exit;
 =======
+<<<<<<< HEAD
+		goto out_regmap_exit;
+=======
 		goto err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	reg = wm2000_read(i2c, WM2000_REG_REVISON);
@@ -936,13 +1015,20 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 <<<<<<< HEAD
 		goto out_regmap_exit;
 =======
+<<<<<<< HEAD
+		goto out_regmap_exit;
+=======
 		goto err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Pre-cook the concatenation of the register address onto the image */
 	wm2000->anc_download_size = fw->size + 2;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm2000->anc_download = devm_kzalloc(&i2c->dev,
 					    wm2000->anc_download_size,
 					    GFP_KERNEL);
@@ -950,6 +1036,8 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 		dev_err(&i2c->dev, "Out of memory\n");
 		ret = -ENOMEM;
 		goto out_regmap_exit;
+<<<<<<< HEAD
+=======
 =======
 	wm2000->anc_download = kmalloc(wm2000->anc_download_size, GFP_KERNEL);
 	if (wm2000->anc_download == NULL) {
@@ -957,6 +1045,7 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 		ret = -ENOMEM;
 		goto err_fw;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	wm2000->anc_download[0] = 0x80;
@@ -965,10 +1054,13 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	release_firmware(fw);
 
 	dev_set_drvdata(&i2c->dev, wm2000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm2000->anc_eng_ena = 1;
 	wm2000->anc_active = 1;
 	wm2000->spk_ena = 1;
@@ -977,6 +1069,9 @@ static int __devinit wm2000_i2c_probe(struct i2c_client *i2c,
 	wm2000_reset(wm2000);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_register_codec(&i2c->dev, &soc_codec_dev_wm2000, NULL, 0);
 	if (!ret)
 		goto out;
@@ -985,6 +1080,8 @@ out_regmap_exit:
 	regmap_exit(wm2000->regmap);
 out:
 	release_firmware(fw);
+<<<<<<< HEAD
+=======
 =======
 	/* This will trigger a transition to standby mode by default */
 	wm2000_anc_set_mode(wm2000);	
@@ -998,6 +1095,7 @@ err_fw:
 err:
 	kfree(wm2000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1009,16 +1107,23 @@ static __devexit int wm2000_i2c_remove(struct i2c_client *i2c)
 	snd_soc_unregister_codec(&i2c->dev);
 	regmap_exit(wm2000->regmap);
 =======
+<<<<<<< HEAD
+	snd_soc_unregister_codec(&i2c->dev);
+	regmap_exit(wm2000->regmap);
+=======
 	wm2000_anc_transition(wm2000, ANC_OFF);
 
 	wm2000_i2c = NULL;
 	kfree(wm2000->anc_download);
 	kfree(wm2000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void wm2000_i2c_shutdown(struct i2c_client *i2c)
@@ -1049,6 +1154,7 @@ static int wm2000_i2c_resume(struct device *dev)
 static SIMPLE_DEV_PM_OPS(wm2000_pm, wm2000_i2c_suspend, wm2000_i2c_resume);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct i2c_device_id wm2000_i2c_id[] = {
 	{ "wm2000", 0 },
 	{ }
@@ -1064,12 +1170,18 @@ static struct i2c_driver wm2000_i2c_driver = {
 	.probe = wm2000_i2c_probe,
 	.remove = __devexit_p(wm2000_i2c_remove),
 =======
+<<<<<<< HEAD
+	},
+	.probe = wm2000_i2c_probe,
+	.remove = __devexit_p(wm2000_i2c_remove),
+=======
 		.pm = &wm2000_pm,
 	},
 	.probe = wm2000_i2c_probe,
 	.remove = __devexit_p(wm2000_i2c_remove),
 	.shutdown = wm2000_i2c_shutdown,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = wm2000_i2c_id,
 };
 

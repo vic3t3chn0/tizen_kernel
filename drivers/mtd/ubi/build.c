@@ -664,7 +664,15 @@ static int io_init(struct ubi_device *ubi)
 	ubi->peb_count  = mtd_div_by_eb(ubi->mtd->size, ubi->mtd);
 	ubi->flash_size = ubi->mtd->size;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (mtd_can_have_bb(ubi->mtd))
+=======
 	if (ubi->mtd->block_isbad && ubi->mtd->block_markbad)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ubi->mtd->block_isbad && ubi->mtd->block_markbad)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ubi->bad_allowed = 1;
 
 	if (ubi->mtd->type == MTD_NORFLASH) {
@@ -816,11 +824,20 @@ static int autoresize(struct ubi_device *ubi, int vol_id)
 	struct ubi_volume *vol = ubi->volumes[vol_id];
 	int err, old_reserved_pebs = vol->reserved_pebs;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ubi->ro_mode) {
 		ubi_warn("skip auto-resize because of R/O mode");
 		return 0;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Clear the auto-resize flag in the volume in-memory copy of the
 	 * volume table, and 'ubi_resize_volume()' will propagate this change
@@ -950,18 +967,41 @@ int ubi_attach_mtd_dev(struct mtd_info *mtd, int ubi_num, int vid_hdr_offset)
 		goto out_free;
 
 	err = -ENOMEM;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ubi->peb_buf = vmalloc(ubi->peb_size);
+	if (!ubi->peb_buf)
+		goto out_free;
+
+	err = ubi_debugging_init_dev(ubi);
+	if (err)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ubi->peb_buf1 = vmalloc(ubi->peb_size);
 	if (!ubi->peb_buf1)
 		goto out_free;
 
 	ubi->peb_buf2 = vmalloc(ubi->peb_size);
 	if (!ubi->peb_buf2)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_free;
 
 	err = attach_by_scanning(ubi);
 	if (err) {
 		dbg_err("failed to attach by scanning, error %d", err);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto out_debugging;
+=======
 		goto out_free;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		goto out_free;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (ubi->autoresize_vol_id != -1) {
@@ -974,12 +1014,30 @@ int ubi_attach_mtd_dev(struct mtd_info *mtd, int ubi_num, int vid_hdr_offset)
 	if (err)
 		goto out_detach;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = ubi_debugfs_init_dev(ubi);
+	if (err)
+		goto out_uif;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ubi->bgt_thread = kthread_create(ubi_thread, ubi, ubi->bgt_name);
 	if (IS_ERR(ubi->bgt_thread)) {
 		err = PTR_ERR(ubi->bgt_thread);
 		ubi_err("cannot spawn \"%s\", error %d", ubi->bgt_name,
 			err);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		goto out_debugfs;
+=======
 		goto out_uif;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		goto out_uif;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ubi_msg("attached mtd%d to ubi%d", mtd->index, ubi_num);
@@ -1013,15 +1071,40 @@ int ubi_attach_mtd_dev(struct mtd_info *mtd, int ubi_num, int vid_hdr_offset)
 	ubi_notify_all(ubi, UBI_VOLUME_ADDED, NULL);
 	return ubi_num;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+out_debugfs:
+	ubi_debugfs_exit_dev(ubi);
 out_uif:
+	get_device(&ubi->dev);
+	ubi_assert(ref);
+=======
+out_uif:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+out_uif:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uif_close(ubi);
 out_detach:
 	ubi_wl_close(ubi);
 	free_internal_volumes(ubi);
 	vfree(ubi->vtbl);
+<<<<<<< HEAD
+<<<<<<< HEAD
+out_debugging:
+	ubi_debugging_exit_dev(ubi);
+out_free:
+	vfree(ubi->peb_buf);
+=======
 out_free:
 	vfree(ubi->peb_buf1);
 	vfree(ubi->peb_buf2);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+out_free:
+	vfree(ubi->peb_buf1);
+	vfree(ubi->peb_buf2);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ref)
 		put_device(&ubi->dev);
 	else
@@ -1085,13 +1168,30 @@ int ubi_detach_mtd_dev(int ubi_num, int anyway)
 	 */
 	get_device(&ubi->dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ubi_debugfs_exit_dev(ubi);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uif_close(ubi);
 	ubi_wl_close(ubi);
 	free_internal_volumes(ubi);
 	vfree(ubi->vtbl);
 	put_mtd_device(ubi->mtd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ubi_debugging_exit_dev(ubi);
+	vfree(ubi->peb_buf);
+=======
 	vfree(ubi->peb_buf1);
 	vfree(ubi->peb_buf2);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	vfree(ubi->peb_buf1);
+	vfree(ubi->peb_buf2);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ubi_msg("mtd%d is detached from ubi%d", ubi->mtd->index, ubi->ubi_num);
 	put_device(&ubi->dev);
 	return 0;
@@ -1204,6 +1304,17 @@ static int __init ubi_init(void)
 	if (!ubi_wl_entry_slab)
 		goto out_dev_unreg;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = ubi_debugfs_init();
+	if (err)
+		goto out_slab;
+
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Attach MTD devices */
 	for (i = 0; i < mtd_devs; i++) {
 		struct mtd_dev_param *p = &mtd_dev_param[i];
@@ -1252,6 +1363,14 @@ out_detach:
 			ubi_detach_mtd_dev(ubi_devices[k]->ubi_num, 1);
 			mutex_unlock(&ubi_devices_mutex);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ubi_debugfs_exit();
+out_slab:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_destroy(ubi_wl_entry_slab);
 out_dev_unreg:
 	misc_deregister(&ubi_ctrl_cdev);
@@ -1275,6 +1394,13 @@ static void __exit ubi_exit(void)
 			ubi_detach_mtd_dev(ubi_devices[i]->ubi_num, 1);
 			mutex_unlock(&ubi_devices_mutex);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ubi_debugfs_exit();
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_destroy(ubi_wl_entry_slab);
 	misc_deregister(&ubi_ctrl_cdev);
 	class_remove_file(ubi_class, &ubi_version);

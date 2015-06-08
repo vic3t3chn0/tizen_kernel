@@ -7,6 +7,10 @@
 #include <linux/security.h>
 #include "ext3.h"
 =======
+<<<<<<< HEAD
+#include <linux/security.h>
+#include "ext3.h"
+=======
 #include <linux/module.h>
 #include <linux/slab.h>
 #include <linux/string.h>
@@ -15,6 +19,7 @@
 #include <linux/ext3_fs.h>
 #include <linux/security.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xattr.h"
 
 static size_t
@@ -54,6 +59,9 @@ ext3_xattr_security_set(struct dentry *dentry, const char *name,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ext3_initxattrs(struct inode *inode, const struct xattr *xattr_array,
 		    void *fs_info)
 {
@@ -72,12 +80,19 @@ int ext3_initxattrs(struct inode *inode, const struct xattr *xattr_array,
 	return err;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 ext3_init_security(handle_t *handle, struct inode *inode, struct inode *dir,
 		   const struct qstr *qstr)
 {
+<<<<<<< HEAD
+	return security_inode_init_security(inode, dir, qstr,
+					    &ext3_initxattrs, handle);
+=======
 <<<<<<< HEAD
 	return security_inode_init_security(inode, dir, qstr,
 					    &ext3_initxattrs, handle);
@@ -99,6 +114,7 @@ ext3_init_security(handle_t *handle, struct inode *inode, struct inode *dir,
 	kfree(value);
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 const struct xattr_handler ext3_xattr_security_handler = {

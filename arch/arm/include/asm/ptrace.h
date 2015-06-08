@@ -74,9 +74,15 @@
  */
 #define APSR_MASK	0xf80f0000	/* N, Z, C, V, Q and GE flags */
 =======
+<<<<<<< HEAD
+ * ARMv7 groups of PSR bits
+ */
+#define APSR_MASK	0xf80f0000	/* N, Z, C, V, Q and GE flags */
+=======
  * ARMv7 groups of APSR bits
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PSR_ISET_MASK	0x01000010	/* ISA state (J, T) mask */
 #define PSR_IT_MASK	0x0600fc00	/* If-Then execution state mask */
 #define PSR_ENDIAN_MASK	0x00000200	/* Endianness state mask */
@@ -195,13 +201,19 @@ static inline int valid_user_regs(struct pt_regs *regs)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline long regs_return_value(struct pt_regs *regs)
 {
 	return regs->ARM_r0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define instruction_pointer(regs)	(regs)->ARM_pc
 
 #ifdef CONFIG_SMP
@@ -215,6 +227,9 @@ extern unsigned long profile_pc(struct pt_regs *regs);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * True if instr is a 32-bit thumb instruction. This works if instr
  * is the first or only half-word of a thumb instruction. It also works
  * when instr holds all 32-bits of a wide thumb instruction if stored
@@ -223,8 +238,11 @@ extern unsigned long profile_pc(struct pt_regs *regs);
 #define is_wide_instruction(instr)	((unsigned)(instr) >= 0xe800)
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * kprobe-based event tracer support
  */
 #include <linux/stddef.h>

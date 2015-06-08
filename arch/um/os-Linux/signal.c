@@ -15,6 +15,9 @@
 <<<<<<< HEAD
 #include "sysdep/mcontext.h"
 =======
+<<<<<<< HEAD
+#include "sysdep/mcontext.h"
+=======
 #include "process.h"
 #include "sysdep/barrier.h"
 #include "sysdep/sigcontext.h"
@@ -23,6 +26,7 @@
 /* Copied from linux/compiler-gcc.h since we can't include it directly */
 #define barrier() __asm__ __volatile__("": : :"memory")
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void (*sig_info[NSIG])(int, struct uml_pt_regs *) = {
 	[SIGTRAP]	= relay_signal,
@@ -37,8 +41,12 @@ void (*sig_info[NSIG])(int, struct uml_pt_regs *) = {
 <<<<<<< HEAD
 static void sig_handler_common(int sig, mcontext_t *mc)
 =======
+<<<<<<< HEAD
+static void sig_handler_common(int sig, mcontext_t *mc)
+=======
 static void sig_handler_common(int sig, struct sigcontext *sc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct uml_pt_regs r;
 	int save_errno = errno;
@@ -50,9 +58,14 @@ static void sig_handler_common(int sig, struct sigcontext *sc)
 		get_regs_from_mc(&r, mc);
 		GET_FAULTINFO_FROM_MC(r.faultinfo, mc);
 =======
+<<<<<<< HEAD
+		get_regs_from_mc(&r, mc);
+		GET_FAULTINFO_FROM_MC(r.faultinfo, mc);
+=======
 		copy_sc(&r, sc);
 		GET_FAULTINFO_FROM_SC(r.faultinfo, sc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* enable signals if sig isn't IRQ signal */
@@ -82,8 +95,12 @@ static unsigned int signals_pending;
 <<<<<<< HEAD
 void sig_handler(int sig, mcontext_t *mc)
 =======
+<<<<<<< HEAD
+void sig_handler(int sig, mcontext_t *mc)
+=======
 void sig_handler(int sig, struct sigcontext *sc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int enabled;
 
@@ -98,19 +115,28 @@ void sig_handler(int sig, struct sigcontext *sc)
 <<<<<<< HEAD
 	sig_handler_common(sig, mc);
 =======
+<<<<<<< HEAD
+	sig_handler_common(sig, mc);
+=======
 	sig_handler_common(sig, sc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	set_signals(enabled);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void real_alarm_handler(mcontext_t *mc)
 {
 	struct uml_pt_regs regs;
 
 	if (mc != NULL)
 		get_regs_from_mc(&regs, mc);
+<<<<<<< HEAD
+=======
 =======
 static void real_alarm_handler(struct sigcontext *sc)
 {
@@ -119,6 +145,7 @@ static void real_alarm_handler(struct sigcontext *sc)
 	if (sc != NULL)
 		copy_sc(&regs, sc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs.is_user = 0;
 	unblock_signals();
 	timer_handler(SIGVTALRM, &regs);
@@ -127,8 +154,12 @@ static void real_alarm_handler(struct sigcontext *sc)
 <<<<<<< HEAD
 void alarm_handler(int sig, mcontext_t *mc)
 =======
+<<<<<<< HEAD
+void alarm_handler(int sig, mcontext_t *mc)
+=======
 void alarm_handler(int sig, struct sigcontext *sc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int enabled;
 
@@ -143,8 +174,12 @@ void alarm_handler(int sig, struct sigcontext *sc)
 <<<<<<< HEAD
 	real_alarm_handler(mc);
 =======
+<<<<<<< HEAD
+	real_alarm_handler(mc);
+=======
 	real_alarm_handler(sc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_signals(enabled);
 }
 
@@ -153,9 +188,13 @@ void timer_init(void)
 <<<<<<< HEAD
 	set_handler(SIGVTALRM);
 =======
+<<<<<<< HEAD
+	set_handler(SIGVTALRM);
+=======
 	set_handler(SIGVTALRM, (__sighandler_t) alarm_handler,
 		    SA_ONSTACK | SA_RESTART, SIGUSR1, SIGIO, SIGWINCH, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void set_sigstack(void *sig_stack, int size)
@@ -169,6 +208,9 @@ void set_sigstack(void *sig_stack, int size)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void (*handlers[_NSIG])(int sig, mcontext_t *mc) = {
 	[SIGSEGV] = sig_handler,
 	[SIGBUS] = sig_handler,
@@ -186,12 +228,15 @@ static void hard_handler(int sig, siginfo_t *info, void *p)
 {
 	struct ucontext *uc = p;
 	mcontext_t *mc = &uc->uc_mcontext;
+<<<<<<< HEAD
+=======
 =======
 static void (*handlers[_NSIG])(int sig, struct sigcontext *sc);
 
 void handle_signal(int sig, struct sigcontext *sc)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long pending = 1UL << sig;
 
 	do {
@@ -220,8 +265,12 @@ void handle_signal(int sig, struct sigcontext *sc)
 <<<<<<< HEAD
 			(*handlers[sig])(sig, mc);
 =======
+<<<<<<< HEAD
+			(*handlers[sig])(sig, mc);
+=======
 			(*handlers[sig])(sig, sc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		/*
@@ -236,6 +285,9 @@ void handle_signal(int sig, struct sigcontext *sc)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void set_handler(int sig)
 {
 	struct sigaction action;
@@ -249,6 +301,8 @@ void set_handler(int sig)
 	sigaddset(&action.sa_mask, SIGVTALRM);
 	sigaddset(&action.sa_mask, SIGIO);
 	sigaddset(&action.sa_mask, SIGWINCH);
+<<<<<<< HEAD
+=======
 =======
 extern void hard_handler(int sig);
 
@@ -269,6 +323,7 @@ void set_handler(int sig, void (*handler)(int), int flags, ...)
 		sigaddset(&action.sa_mask, mask);
 	va_end(ap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sig == SIGSEGV)
 		flags |= SA_NODEFER;
@@ -278,7 +333,13 @@ void set_handler(int sig, void (*handler)(int), int flags, ...)
 		flags |= SA_RESTART; /* if it's an irq signal */
 
 =======
+<<<<<<< HEAD
+	if (sigismember(&action.sa_mask, sig))
+		flags |= SA_RESTART; /* if it's an irq signal */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	action.sa_flags = flags;
 	action.sa_restorer = NULL;
 	if (sigaction(sig, &action, NULL) < 0)

@@ -19,8 +19,11 @@
 #include "ext4_jbd2.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "ext4_extents.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ext4.h"
 
 /**
@@ -1215,6 +1218,9 @@ ext4_move_extents(struct file *o_filp, struct file *d_filp,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	/* TODO: This is non obvious task to swap blocks for inodes with full
 	   jornaling enabled */
 	if (ext4_should_journal_data(orig_inode) ||
@@ -1222,6 +1228,7 @@ ext4_move_extents(struct file *o_filp, struct file *d_filp,
 		return -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Protect orig and donor inodes against a truncate */
 	ret1 = mext_inode_double_lock(orig_inode, donor_inode);
 	if (ret1 < 0)

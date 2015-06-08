@@ -60,9 +60,13 @@ static void __init
 <<<<<<< HEAD
 fortunet_fixup(struct tag *tags, char **cmdline, struct meminfo *mi)
 =======
+<<<<<<< HEAD
+fortunet_fixup(struct tag *tags, char **cmdline, struct meminfo *mi)
+=======
 fortunet_fixup(struct machine_desc *desc, struct tag *tags,
 		 char **cmdline, struct meminfo *mi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	IMAGE_PARAMS *ip = phys_to_virt(IMAGE_PARAMS_PHYS);
 	*cmdline = phys_to_virt(ip->command_line);
@@ -81,8 +85,11 @@ MACHINE_START(FORTUNET, "ARM-FortuNet")
 	/* Maintainer: FortuNet Inc. */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.boot_params	= 0x00000000,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fixup		= fortunet_fixup,
 	.map_io		= clps711x_map_io,
 	.init_irq	= clps711x_init_irq,
@@ -90,5 +97,9 @@ MACHINE_START(FORTUNET, "ARM-FortuNet")
 <<<<<<< HEAD
 	.restart	= clps711x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= clps711x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

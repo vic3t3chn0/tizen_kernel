@@ -40,7 +40,11 @@ struct string_list {
 <<<<<<< HEAD
 	int in_source_file;
 =======
+<<<<<<< HEAD
+	int in_source_file;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *string;
 };
 
@@ -65,8 +69,13 @@ extern int cur_line;
 extern char *cur_filename, *source_file;
 extern int in_source_file;
 =======
+<<<<<<< HEAD
+extern char *cur_filename, *source_file;
+extern int in_source_file;
+=======
 extern char *cur_filename;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct symbol *find_symbol(const char *name, enum symbol_type ns, int exact);
 struct symbol *add_symbol(const char *name, enum symbol_type type,

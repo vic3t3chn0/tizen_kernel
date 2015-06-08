@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* FILE TO BE DELETED. DO NOT ADD STUFF HERE! */
 #include <asm/barrier.h>
 #include <asm/compiler.h>
@@ -7,6 +10,8 @@
 #include <asm/switch_to.h>
 #include <asm/system_info.h>
 #include <asm/system_misc.h>
+<<<<<<< HEAD
+=======
 =======
 #ifndef __ASM_ARM_SYSTEM_H
 #define __ASM_ARM_SYSTEM_H
@@ -551,3 +556,4 @@ static inline unsigned long long __cmpxchg64_mb(volatile void *ptr,
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

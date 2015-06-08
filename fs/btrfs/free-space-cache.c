@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/ratelimit.h>
 =======
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "ctree.h"
 #include "free-space-cache.h"
 #include "transaction.h"
@@ -91,7 +95,11 @@ struct inode *lookup_free_space_inode(struct btrfs_root *root,
 <<<<<<< HEAD
 	u32 flags = BTRFS_INODE_NODATASUM | BTRFS_INODE_NODATACOW;
 =======
+<<<<<<< HEAD
+	u32 flags = BTRFS_INODE_NODATASUM | BTRFS_INODE_NODATACOW;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&block_group->lock);
 	if (block_group->inode)
@@ -107,6 +115,9 @@ struct inode *lookup_free_space_inode(struct btrfs_root *root,
 
 	spin_lock(&block_group->lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!((BTRFS_I(inode)->flags & flags) == flags)) {
 		printk(KERN_INFO "Old style space inode found, converting.\n");
 		BTRFS_I(inode)->flags |= BTRFS_INODE_NODATASUM |
@@ -115,9 +126,12 @@ struct inode *lookup_free_space_inode(struct btrfs_root *root,
 	}
 
 	if (!block_group->iref) {
+<<<<<<< HEAD
+=======
 =======
 	if (!btrfs_fs_closing(root->fs_info)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		block_group->inode = igrab(inode);
 		block_group->iref = 1;
 	}
@@ -138,7 +152,11 @@ int __create_free_space_inode(struct btrfs_root *root,
 <<<<<<< HEAD
 	u64 flags = BTRFS_INODE_NOCOMPRESS | BTRFS_INODE_PREALLOC;
 =======
+<<<<<<< HEAD
+	u64 flags = BTRFS_INODE_NOCOMPRESS | BTRFS_INODE_PREALLOC;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	ret = btrfs_insert_empty_inode(trans, root, path, ino);
@@ -146,12 +164,18 @@ int __create_free_space_inode(struct btrfs_root *root,
 		return ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We inline crc's for the free disk space cache */
 	if (ino != BTRFS_FREE_INO_OBJECTID)
 		flags |= BTRFS_INODE_NODATASUM | BTRFS_INODE_NODATACOW;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	leaf = path->nodes[0];
 	inode_item = btrfs_item_ptr(leaf, path->slots[0],
 				    struct btrfs_inode_item);
@@ -167,9 +191,13 @@ int __create_free_space_inode(struct btrfs_root *root,
 <<<<<<< HEAD
 	btrfs_set_inode_flags(leaf, inode_item, flags);
 =======
+<<<<<<< HEAD
+	btrfs_set_inode_flags(leaf, inode_item, flags);
+=======
 	btrfs_set_inode_flags(leaf, inode_item, BTRFS_INODE_NOCOMPRESS |
 			      BTRFS_INODE_PREALLOC | BTRFS_INODE_NODATASUM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btrfs_set_inode_nlink(leaf, inode_item, 1);
 	btrfs_set_inode_transid(leaf, inode_item, trans->transid);
 	btrfs_set_inode_block_group(leaf, inode_item, offset);
@@ -219,6 +247,9 @@ int btrfs_truncate_free_space_cache(struct btrfs_root *root,
 				    struct inode *inode)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_block_rsv *rsv;
 	u64 needed_bytes;
 	loff_t oldsize;
@@ -238,6 +269,8 @@ int btrfs_truncate_free_space_cache(struct btrfs_root *root,
 		return -ENOSPC;
 	}
 	spin_unlock(&trans->block_rsv->lock);
+<<<<<<< HEAD
+=======
 =======
 	loff_t oldsize;
 	int ret = 0;
@@ -249,6 +282,7 @@ int btrfs_truncate_free_space_cache(struct btrfs_root *root,
 	if (ret)
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	oldsize = i_size_read(inode);
 	btrfs_i_size_write(inode, 0);
@@ -261,25 +295,37 @@ int btrfs_truncate_free_space_cache(struct btrfs_root *root,
 	ret = btrfs_truncate_inode_items(trans, root, inode,
 					 0, BTRFS_EXTENT_DATA_KEY);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret) {
 		trans->block_rsv = rsv;
 		btrfs_abort_transaction(trans, root, ret);
+<<<<<<< HEAD
+=======
 =======
 	if (ret) {
 		WARN_ON(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
 	ret = btrfs_update_inode(trans, root, inode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		btrfs_abort_transaction(trans, root, ret);
 	trans->block_rsv = rsv;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -303,6 +349,9 @@ static int readahead_cache(struct inode *inode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct io_ctl {
 	void *cur, *orig;
 	struct page *page;
@@ -626,8 +675,11 @@ static int io_ctl_read_bitmap(struct io_ctl *io_ctl,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 			    struct btrfs_free_space_ctl *ctl,
 			    struct btrfs_path *path, u64 offset)
@@ -639,15 +691,24 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 	struct btrfs_key key;
 	struct btrfs_free_space *e, *n;
 =======
+<<<<<<< HEAD
+	struct io_ctl io_ctl;
+	struct btrfs_key key;
+	struct btrfs_free_space *e, *n;
+=======
 	struct page *page;
 	u32 *checksums = NULL, *crc;
 	char *disk_crcs = NULL;
 	struct btrfs_key key;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head bitmaps;
 	u64 num_entries;
 	u64 num_bitmaps;
 	u64 generation;
+<<<<<<< HEAD
+	u8 type;
+=======
 <<<<<<< HEAD
 	u8 type;
 =======
@@ -656,6 +717,7 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 	unsigned long first_page_offset;
 	int num_checksums;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	INIT_LIST_HEAD(&bitmaps);
@@ -665,8 +727,12 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 <<<<<<< HEAD
 		return 0;
 =======
+<<<<<<< HEAD
+		return 0;
+=======
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	key.objectid = BTRFS_FREE_SPACE_OBJECTID;
 	key.offset = offset;
@@ -675,10 +741,15 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 	ret = btrfs_search_slot(NULL, root, &key, path, 0, 0);
 	if (ret < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	else if (ret > 0) {
 		btrfs_release_path(path);
 		return 0;
+<<<<<<< HEAD
+=======
 =======
 		goto out;
 	else if (ret > 0) {
@@ -686,6 +757,7 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 		ret = 0;
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ret = -1;
@@ -704,6 +776,9 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 		       (unsigned long long)BTRFS_I(inode)->generation,
 		       (unsigned long long)generation);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -713,6 +788,8 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 	ret = io_ctl_init(&io_ctl, inode, root);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+=======
 =======
 		goto out;
 	}
@@ -730,12 +807,16 @@ int __load_free_space_cache(struct btrfs_root *root, struct inode *inode,
 	if (!disk_crcs)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = readahead_cache(inode);
 	if (ret)
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = io_ctl_prepare_pages(&io_ctl, inode, 1);
 	if (ret)
 		goto out;
@@ -821,6 +902,8 @@ out:
 	return ret;
 free_cache:
 	io_ctl_drop_pages(&io_ctl);
+<<<<<<< HEAD
+=======
 =======
 	while (1) {
 		struct btrfs_free_space_entry *entry;
@@ -991,6 +1074,7 @@ out:
 	return ret;
 free_cache:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__btrfs_remove_free_space_cache(ctl);
 	goto out;
 }
@@ -1005,12 +1089,18 @@ int load_free_space_cache(struct btrfs_fs_info *fs_info,
 <<<<<<< HEAD
 	int ret = 0;
 =======
+<<<<<<< HEAD
+	int ret = 0;
+=======
 	int ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool matched;
 	u64 used = btrfs_block_group_used(&block_group->item);
 
 	/*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	 * If we're unmounting then just return, since this does a search on the
@@ -1021,6 +1111,7 @@ int load_free_space_cache(struct btrfs_fs_info *fs_info,
 
 	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * If this block group has been marked to be cleared for one reason or
 	 * another then we can't trust the on disk cache, so just return.
 	 */
@@ -1038,7 +1129,12 @@ int load_free_space_cache(struct btrfs_fs_info *fs_info,
 	path->search_commit_root = 1;
 	path->skip_locking = 1;
 =======
+<<<<<<< HEAD
+	path->search_commit_root = 1;
+	path->skip_locking = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inode = lookup_free_space_inode(root, block_group, path);
 	if (IS_ERR(inode)) {
@@ -1047,6 +1143,9 @@ int load_free_space_cache(struct btrfs_fs_info *fs_info,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We may have converted the inode and made the cache invalid. */
 	spin_lock(&block_group->lock);
 	if (block_group->disk_cache_state != BTRFS_DC_WRITTEN) {
@@ -1056,8 +1155,11 @@ int load_free_space_cache(struct btrfs_fs_info *fs_info,
 	}
 	spin_unlock(&block_group->lock);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = __load_free_space_cache(fs_info->tree_root, inode, ctl,
 				      path, block_group->key.objectid);
 	btrfs_free_path(path);
@@ -1092,6 +1194,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * __btrfs_write_out_cache - write out cached info to an inode
  * @root - the root the inode belongs to
@@ -1105,8 +1210,11 @@ out:
  * on mount.  This will return 0 if it was successfull in writing the cache out,
  * and -1 if it was not.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 			    struct btrfs_free_space_ctl *ctl,
 			    struct btrfs_block_group_cache *block_group,
@@ -1118,6 +1226,9 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 	struct rb_node *node;
 	struct list_head *pos, *n;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct extent_state *cached_state = NULL;
 	struct btrfs_free_cluster *cluster = NULL;
 	struct extent_io_tree *unpin = NULL;
@@ -1139,6 +1250,8 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 	if (ret)
 		return -1;
 
+<<<<<<< HEAD
+=======
 =======
 	struct page **pages;
 	struct page *page;
@@ -1200,6 +1313,7 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Get the cluster for this block_group if it exists */
 	if (block_group && !list_empty(&block_group->cluster_list))
 		cluster = list_entry(block_group->cluster_list.next,
@@ -1207,6 +1321,9 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 				     block_group_list);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Lock all pages first so we can lock the extent safely. */
 	io_ctl_prepare_pages(&io_ctl, inode, 0);
 
@@ -1320,6 +1437,8 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 	ret = filemap_write_and_wait(inode->i_mapping);
 	if (ret)
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * We shouldn't have switched the pinned extents yet so this is the
@@ -1536,18 +1655,24 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 
 	filemap_write_and_wait(inode->i_mapping);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	key.objectid = BTRFS_FREE_SPACE_OBJECTID;
 	key.offset = offset;
 	key.type = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = btrfs_search_slot(trans, root, &key, path, 0, 1);
 	if (ret < 0) {
 		clear_extent_bit(&BTRFS_I(inode)->io_tree, 0, inode->i_size - 1,
 				 EXTENT_DIRTY | EXTENT_DELALLOC, 0, 0, NULL,
 				 GFP_NOFS);
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	ret = btrfs_search_slot(trans, root, &key, path, 1, 1);
 	if (ret < 0) {
@@ -1557,6 +1682,7 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 				 EXTENT_DO_ACCOUNTING, 0, 0, NULL, GFP_NOFS);
 		goto out_free;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	leaf = path->nodes[0];
 	if (ret > 0) {
@@ -1567,6 +1693,9 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 		if (found_key.objectid != BTRFS_FREE_SPACE_OBJECTID ||
 		    found_key.offset != offset) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			clear_extent_bit(&BTRFS_I(inode)->io_tree, 0,
 					 inode->i_size - 1,
 					 EXTENT_DIRTY | EXTENT_DELALLOC, 0, 0,
@@ -1577,6 +1706,8 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 	}
 
 	BTRFS_I(inode)->generation = trans->transid;
+<<<<<<< HEAD
+=======
 =======
 			ret = -1;
 			clear_extent_bit(&BTRFS_I(inode)->io_tree, 0, bytes - 1,
@@ -1588,6 +1719,7 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	header = btrfs_item_ptr(leaf, path->slots[0],
 				struct btrfs_free_space_header);
 	btrfs_set_free_space_entries(leaf, header, entries);
@@ -1597,6 +1729,9 @@ int __btrfs_write_out_cache(struct btrfs_root *root, struct inode *inode,
 	btrfs_release_path(path);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = 0;
 out:
 	io_ctl_free(&io_ctl);
@@ -1617,6 +1752,8 @@ out_nospc:
 	unlock_extent_cached(&BTRFS_I(inode)->io_tree, 0,
 			     i_size_read(inode) - 1, &cached_state, GFP_NOFS);
 	goto out;
+<<<<<<< HEAD
+=======
 =======
 	ret = 1;
 
@@ -1632,6 +1769,7 @@ out_update:
 	btrfs_update_inode(trans, root, inode);
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int btrfs_write_out_cache(struct btrfs_root *root,
@@ -1661,22 +1799,32 @@ int btrfs_write_out_cache(struct btrfs_root *root,
 <<<<<<< HEAD
 	if (ret) {
 =======
+<<<<<<< HEAD
+	if (ret) {
+=======
 	if (ret < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&block_group->lock);
 		block_group->disk_cache_state = BTRFS_DC_ERROR;
 		spin_unlock(&block_group->lock);
 		ret = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 		printk(KERN_ERR "btrfs: failed to write free space cache "
 		       "for block group %llu\n", block_group->key.objectid);
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 		printk(KERN_ERR "btrfs: failed to write free space cace "
 		       "for block group %llu\n", block_group->key.objectid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	iput(inode);
@@ -1977,10 +2125,16 @@ static inline void __bitmap_clear_bits(struct btrfs_free_space_ctl *ctl,
 				       struct btrfs_free_space *info,
 				       u64 offset, u64 bytes)
 =======
+<<<<<<< HEAD
+static inline void __bitmap_clear_bits(struct btrfs_free_space_ctl *ctl,
+				       struct btrfs_free_space *info,
+				       u64 offset, u64 bytes)
+=======
 static void bitmap_clear_bits(struct btrfs_free_space_ctl *ctl,
 			      struct btrfs_free_space *info, u64 offset,
 			      u64 bytes)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long start, count;
 
@@ -1992,6 +2146,9 @@ static void bitmap_clear_bits(struct btrfs_free_space_ctl *ctl,
 
 	info->bytes -= bytes;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void bitmap_clear_bits(struct btrfs_free_space_ctl *ctl,
@@ -1999,8 +2156,11 @@ static void bitmap_clear_bits(struct btrfs_free_space_ctl *ctl,
 			      u64 bytes)
 {
 	__bitmap_clear_bits(ctl, info, offset, bytes);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctl->free_space -= bytes;
 }
 
@@ -2095,7 +2255,11 @@ static void add_new_bitmap(struct btrfs_free_space_ctl *ctl,
 <<<<<<< HEAD
 	INIT_LIST_HEAD(&info->list);
 =======
+<<<<<<< HEAD
+	INIT_LIST_HEAD(&info->list);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	link_free_space(ctl, info);
 	ctl->total_bitmaps++;
 
@@ -2476,6 +2640,9 @@ again:
 					  1, 0);
 		if (!info) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* the tree logging code might be calling us before we
 			 * have fully loaded the free space rbtree for this
 			 * block group.  So it is possible the entry won't
@@ -2483,9 +2650,12 @@ again:
 			 * will make sure not to put it in the rbtree if
 			 * the logging code has pinned it.
 			 */
+<<<<<<< HEAD
+=======
 =======
 			WARN_ON(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out_lock;
 		}
 	}
@@ -2527,7 +2697,11 @@ again:
 <<<<<<< HEAD
 		ret = 0;
 =======
+<<<<<<< HEAD
+		ret = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_lock;
 	}
 
@@ -2539,8 +2713,13 @@ again:
 		ret = link_free_space(ctl, info);
 		WARN_ON(ret);
 =======
+<<<<<<< HEAD
+		ret = link_free_space(ctl, info);
+		WARN_ON(ret);
+=======
 		link_free_space(ctl, info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_lock;
 	}
 
@@ -2580,8 +2759,12 @@ again:
 <<<<<<< HEAD
 		WARN_ON(ret); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+		WARN_ON(ret); /* -ENOMEM */
+=======
 		WARN_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -2591,8 +2774,12 @@ again:
 <<<<<<< HEAD
 	BUG_ON(ret); /* logic error */
 =======
+<<<<<<< HEAD
+	BUG_ON(ret); /* logic error */
+=======
 	BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_lock:
 	spin_unlock(&ctl->tree_lock);
 out:
@@ -2838,8 +3025,12 @@ static u64 btrfs_alloc_from_bitmap(struct btrfs_block_group_cache *block_group,
 <<<<<<< HEAD
 	__bitmap_clear_bits(ctl, entry, ret, bytes);
 =======
+<<<<<<< HEAD
+	__bitmap_clear_bits(ctl, entry, ret, bytes);
+=======
 	bitmap_clear_bits(ctl, entry, ret, bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -2887,8 +3078,12 @@ u64 btrfs_alloc_from_cluster(struct btrfs_block_group_cache *block_group,
 <<<<<<< HEAD
 						      cluster->window_start);
 =======
+<<<<<<< HEAD
+						      cluster->window_start);
+=======
 						      min_start);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret == 0) {
 				node = rb_next(&entry->offset_index);
 				if (!node)
@@ -2901,9 +3096,14 @@ u64 btrfs_alloc_from_cluster(struct btrfs_block_group_cache *block_group,
 			cluster->window_start += bytes;
 		} else {
 =======
+<<<<<<< HEAD
+			cluster->window_start += bytes;
+		} else {
+=======
 		} else {
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = entry->offset;
 
 			entry->offset += bytes;
@@ -2945,8 +3145,13 @@ static int btrfs_bitmap_cluster(struct btrfs_block_group_cache *block_group,
 				u64 offset, u64 bytes,
 				u64 cont1_bytes, u64 min_bytes)
 =======
+<<<<<<< HEAD
+				u64 offset, u64 bytes,
+				u64 cont1_bytes, u64 min_bytes)
+=======
 				u64 offset, u64 bytes, u64 min_bytes)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct btrfs_free_space_ctl *ctl = block_group->free_space_ctl;
 	unsigned long next_zero;
@@ -2955,19 +3160,29 @@ static int btrfs_bitmap_cluster(struct btrfs_block_group_cache *block_group,
 	unsigned long want_bits;
 	unsigned long min_bits;
 =======
+<<<<<<< HEAD
+	unsigned long want_bits;
+	unsigned long min_bits;
+=======
 	unsigned long search_bits;
 	unsigned long total_bits;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long found_bits;
 	unsigned long start = 0;
 	unsigned long total_found = 0;
 	int ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	i = offset_to_bit(entry->offset, block_group->sectorsize,
 			  max_t(u64, offset, entry->offset));
 	want_bits = bytes_to_bits(bytes, block_group->sectorsize);
 	min_bits = bytes_to_bits(min_bytes, block_group->sectorsize);
+<<<<<<< HEAD
+=======
 =======
 	bool found = false;
 
@@ -2976,6 +3191,7 @@ static int btrfs_bitmap_cluster(struct btrfs_block_group_cache *block_group,
 	search_bits = bytes_to_bits(bytes, block_group->sectorsize);
 	total_bits = bytes_to_bits(min_bytes, block_group->sectorsize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 again:
 	found_bits = 0;
@@ -2987,8 +3203,12 @@ again:
 <<<<<<< HEAD
 		if (next_zero - i >= min_bits) {
 =======
+<<<<<<< HEAD
+		if (next_zero - i >= min_bits) {
+=======
 		if (next_zero - i >= search_bits) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			found_bits = next_zero - i;
 			break;
 		}
@@ -3003,10 +3223,16 @@ again:
 		start = i;
 		cluster->max_size = 0;
 =======
+<<<<<<< HEAD
+	if (!total_found) {
+		start = i;
+		cluster->max_size = 0;
+=======
 	if (!found) {
 		start = i;
 		found = true;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	total_found += found_bits;
@@ -3014,6 +3240,10 @@ again:
 	if (cluster->max_size < found_bits * block_group->sectorsize)
 		cluster->max_size = found_bits * block_group->sectorsize;
 
+<<<<<<< HEAD
+	if (total_found < want_bits || cluster->max_size < cont1_bytes) {
+		i = next_zero + 1;
+=======
 <<<<<<< HEAD
 	if (total_found < want_bits || cluster->max_size < cont1_bytes) {
 		i = next_zero + 1;
@@ -3026,6 +3256,7 @@ again:
 			found = false;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto again;
 	}
 
@@ -3035,14 +3266,20 @@ again:
 	ret = tree_insert_offset(&cluster->root, entry->offset,
 				 &entry->offset_index, 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(ret); /* -EEXIST; Logic error */
 
 	trace_btrfs_setup_cluster(block_group, cluster,
 				  total_found * block_group->sectorsize, 1);
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(ret);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -3052,7 +3289,12 @@ again:
  * Try to find a cluster with at least bytes total bytes, at least one
  * extent of cont1_bytes, and other clusters of at least min_bytes.
 =======
+<<<<<<< HEAD
+ * Try to find a cluster with at least bytes total bytes, at least one
+ * extent of cont1_bytes, and other clusters of at least min_bytes.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static noinline int
 setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
@@ -3061,16 +3303,23 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 <<<<<<< HEAD
 			u64 cont1_bytes, u64 min_bytes)
 =======
+<<<<<<< HEAD
+			u64 cont1_bytes, u64 min_bytes)
+=======
 			u64 min_bytes)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct btrfs_free_space_ctl *ctl = block_group->free_space_ctl;
 	struct btrfs_free_space *first = NULL;
 	struct btrfs_free_space *entry = NULL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct btrfs_free_space *prev = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_free_space *last;
 	struct rb_node *node;
 	u64 window_start;
@@ -3079,8 +3328,12 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 <<<<<<< HEAD
 	u64 total_size = 0;
 =======
+<<<<<<< HEAD
+	u64 total_size = 0;
+=======
 	u64 max_gap = 128 * 1024;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	entry = tree_search_offset(ctl, offset, 0, 1);
 	if (!entry)
@@ -3094,9 +3347,14 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 	while (entry->bitmap || entry->bytes < min_bytes) {
 		if (entry->bitmap && list_empty(&entry->list))
 =======
+<<<<<<< HEAD
+	while (entry->bitmap || entry->bytes < min_bytes) {
+		if (entry->bitmap && list_empty(&entry->list))
+=======
 	while (entry->bitmap) {
 		if (list_empty(&entry->list))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_add_tail(&entry->list, bitmaps);
 		node = rb_next(&entry->offset_index);
 		if (!node)
@@ -3114,6 +3372,11 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 	for (node = rb_next(&entry->offset_index); node;
 	     node = rb_next(&entry->offset_index)) {
 =======
+<<<<<<< HEAD
+
+	for (node = rb_next(&entry->offset_index); node;
+	     node = rb_next(&entry->offset_index)) {
+=======
 	prev = entry;
 
 	while (window_free <= min_bytes) {
@@ -3121,6 +3384,7 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 		if (!node)
 			return -ENOSPC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		entry = rb_entry(node, struct btrfs_free_space, offset_index);
 
 		if (entry->bitmap) {
@@ -3130,6 +3394,9 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (entry->bytes < min_bytes)
 			continue;
 
@@ -3142,6 +3409,8 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 	if (window_free < bytes || max_extent < cont1_bytes)
 		return -ENOSPC;
 
+<<<<<<< HEAD
+=======
 =======
 		/*
 		 * we haven't filled the empty size and the window is
@@ -3164,6 +3433,7 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cluster->window_start = first->offset;
 
 	node = &first->offset_index;
@@ -3180,20 +3450,29 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 <<<<<<< HEAD
 		if (entry->bitmap || entry->bytes < min_bytes)
 =======
+<<<<<<< HEAD
+		if (entry->bitmap || entry->bytes < min_bytes)
+=======
 		if (entry->bitmap)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		rb_erase(&entry->offset_index, &ctl->free_space_offset);
 		ret = tree_insert_offset(&cluster->root, entry->offset,
 					 &entry->offset_index, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		total_size += entry->bytes;
 		BUG_ON(ret); /* -EEXIST; Logic error */
 	} while (node && entry != last);
 
 	cluster->max_size = max_extent;
 	trace_btrfs_setup_cluster(block_group, cluster, total_size, 0);
+<<<<<<< HEAD
+=======
 =======
 		BUG_ON(ret);
 	} while (node && entry != last);
@@ -3201,6 +3480,7 @@ setup_cluster_no_bitmap(struct btrfs_block_group_cache *block_group,
 	cluster->max_size = max_extent;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -3213,12 +3493,17 @@ setup_cluster_bitmap(struct btrfs_block_group_cache *block_group,
 		     struct btrfs_free_cluster *cluster,
 		     struct list_head *bitmaps, u64 offset, u64 bytes,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     u64 cont1_bytes, u64 min_bytes)
 {
 	struct btrfs_free_space_ctl *ctl = block_group->free_space_ctl;
 	struct btrfs_free_space *entry;
 	int ret = -ENOSPC;
 	u64 bitmap_offset = offset_to_bitmap(ctl, offset);
+<<<<<<< HEAD
+=======
 =======
 		     u64 min_bytes)
 {
@@ -3227,12 +3512,16 @@ setup_cluster_bitmap(struct btrfs_block_group_cache *block_group,
 	struct rb_node *node;
 	int ret = -ENOSPC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ctl->total_bitmaps == 0)
 		return -ENOSPC;
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * The bitmap that covers offset won't be in the list unless offset
 	 * is just its start offset.
 	 */
@@ -3248,6 +3537,8 @@ setup_cluster_bitmap(struct btrfs_block_group_cache *block_group,
 			continue;
 		ret = btrfs_bitmap_cluster(block_group, entry, cluster, offset,
 					   bytes, cont1_bytes, min_bytes);
+<<<<<<< HEAD
+=======
 =======
 	 * First check our cached list of bitmaps and see if there is an entry
 	 * here that will work.
@@ -3258,16 +3549,22 @@ setup_cluster_bitmap(struct btrfs_block_group_cache *block_group,
 		ret = btrfs_bitmap_cluster(block_group, entry, cluster, offset,
 					   bytes, min_bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!ret)
 			return 0;
 	}
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * The bitmaps list has all the bitmaps that record free space
 	 * starting after offset, so no more search is required.
 	 */
 	return -ENOSPC;
+<<<<<<< HEAD
+=======
 =======
 	 * If we do have entries on our list and we are here then we didn't find
 	 * anything, so go ahead and get the next entry after the last entry in
@@ -3302,6 +3599,7 @@ search:
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -3309,8 +3607,12 @@ search:
 <<<<<<< HEAD
  * is to find at least bytes+empty_size.
 =======
+<<<<<<< HEAD
+ * is to find at least bytes+empty_size.
+=======
  * is to find at least bytes free and up to empty_size + bytes free.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * We might not find them all in one contiguous area.
  *
  * returns zero and sets up cluster if things worked out, otherwise
@@ -3324,6 +3626,9 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 {
 	struct btrfs_free_space_ctl *ctl = block_group->free_space_ctl;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_free_space *entry, *tmp;
 	LIST_HEAD(bitmaps);
 	u64 min_bytes;
@@ -3345,6 +3650,8 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 		cont1_bytes = max(bytes, (bytes + empty_size) >> 2);
 		min_bytes = block_group->sectorsize;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct list_head bitmaps;
 	struct btrfs_free_space *entry, *tmp;
@@ -3367,6 +3674,7 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 	} else
 		min_bytes = max(bytes, (bytes + empty_size) >> 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&ctl->tree_lock);
 
@@ -3377,8 +3685,12 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 <<<<<<< HEAD
 	if (ctl->free_space < bytes) {
 =======
+<<<<<<< HEAD
+	if (ctl->free_space < bytes) {
+=======
 	if (ctl->free_space < min_bytes) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&ctl->tree_lock);
 		return -ENOSPC;
 	}
@@ -3392,6 +3704,9 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_btrfs_find_cluster(block_group, offset, bytes, empty_size,
 				 min_bytes);
 
@@ -3403,6 +3718,8 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 		ret = setup_cluster_bitmap(block_group, cluster, &bitmaps,
 					   offset, bytes + empty_size,
 					   cont1_bytes, min_bytes);
+<<<<<<< HEAD
+=======
 =======
 	INIT_LIST_HEAD(&bitmaps);
 	ret = setup_cluster_no_bitmap(block_group, cluster, &bitmaps, offset,
@@ -3411,6 +3728,7 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 		ret = setup_cluster_bitmap(block_group, cluster, &bitmaps,
 					   offset, bytes, min_bytes);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Clear our temporary list */
 	list_for_each_entry_safe(entry, tmp, &bitmaps, list)
@@ -3425,7 +3743,12 @@ int btrfs_find_space_cluster(struct btrfs_trans_handle *trans,
 	} else {
 		trace_btrfs_failed_cluster_setup(block_group);
 =======
+<<<<<<< HEAD
+	} else {
+		trace_btrfs_failed_cluster_setup(block_group);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 out:
 	spin_unlock(&cluster->lock);
@@ -3448,6 +3771,9 @@ void btrfs_init_free_cluster(struct btrfs_free_cluster *cluster)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int do_trimming(struct btrfs_block_group_cache *block_group,
 		       u64 *total_trimmed, u64 start, u64 bytes,
 		       u64 reserved_start, u64 reserved_bytes)
@@ -3499,6 +3825,8 @@ static int trim_no_bitmap(struct btrfs_block_group_cache *block_group,
 	u64 extent_start;
 	u64 extent_bytes;
 	u64 bytes;
+<<<<<<< HEAD
+=======
 =======
 int btrfs_trim_block_group(struct btrfs_block_group_cache *block_group,
 			   u64 *trimmed, u64 start, u64 end, u64 minlen)
@@ -3512,6 +3840,7 @@ int btrfs_trim_block_group(struct btrfs_block_group_cache *block_group,
 
 	*trimmed = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (start < end) {
 		spin_lock(&ctl->tree_lock);
@@ -3525,6 +3854,9 @@ int btrfs_trim_block_group(struct btrfs_block_group_cache *block_group,
 <<<<<<< HEAD
 		if (!entry) {
 =======
+<<<<<<< HEAD
+		if (!entry) {
+=======
 		if (!entry)
 			entry = tree_search_offset(ctl,
 						   offset_to_bitmap(ctl, start),
@@ -3532,11 +3864,15 @@ int btrfs_trim_block_group(struct btrfs_block_group_cache *block_group,
 
 		if (!entry || entry->offset >= end) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&ctl->tree_lock);
 			break;
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* skip bitmaps */
 		while (entry->bitmap) {
 			node = rb_next(&entry->offset_index);
@@ -3644,6 +3980,8 @@ next:
 			if (start >= offset + BITS_PER_BITMAP * ctl->unit)
 				offset += BITS_PER_BITMAP * ctl->unit;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (entry->bitmap) {
 			ret = search_bitmap(ctl, entry, &start, &bytes);
@@ -3694,6 +4032,7 @@ next:
 		start += bytes;
 		bytes = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (fatal_signal_pending(current)) {
 			ret = -ERESTARTSYS;
@@ -3707,6 +4046,9 @@ next:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int btrfs_trim_block_group(struct btrfs_block_group_cache *block_group,
 			   u64 *trimmed, u64 start, u64 end, u64 minlen)
 {
@@ -3723,8 +4065,11 @@ int btrfs_trim_block_group(struct btrfs_block_group_cache *block_group,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Find the left-most item in the cache tree, and then return the
  * smallest inode number in the item.
@@ -3765,7 +4110,11 @@ u64 btrfs_find_ino_for_alloc(struct btrfs_root *fs_root)
 <<<<<<< HEAD
 		/* Logic error; Should be empty if it can't find anything */
 =======
+<<<<<<< HEAD
+		/* Logic error; Should be empty if it can't find anything */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG_ON(ret);
 
 		ino = offset;
@@ -3869,6 +4218,9 @@ int btrfs_write_out_ino_cache(struct btrfs_root *root,
 
 	ret = __btrfs_write_out_cache(root, inode, ctl, NULL, trans, path, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		btrfs_delalloc_release_metadata(inode, inode->i_size);
 #ifdef DEBUG
@@ -3876,11 +4228,14 @@ int btrfs_write_out_ino_cache(struct btrfs_root *root,
 		       "for root %llu\n", root->root_key.objectid);
 #endif
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (ret < 0)
 		printk(KERN_ERR "btrfs: failed to write free ino cache "
 		       "for root %llu\n", root->root_key.objectid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iput(inode);
 	return ret;

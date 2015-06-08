@@ -11,6 +11,13 @@
 
 #include <linux/usb/input.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DRIVER_DESC    "ATI/Philips USB RF remote driver"
 #define DRIVER_VERSION "0.3"
@@ -41,13 +48,29 @@ static int ati_remote2_set_mask(const char *val,
 				const struct kernel_param *kp,
 				unsigned int max)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int mask;
+=======
 	unsigned long mask;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long mask;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	if (!val)
 		return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = kstrtouint(val, 0, &mask);
+=======
 	ret = strict_strtoul(val, 0, &mask);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = strict_strtoul(val, 0, &mask);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -719,11 +742,26 @@ static ssize_t ati_remote2_store_channel_mask(struct device *dev,
 	struct usb_device *udev = to_usb_device(dev);
 	struct usb_interface *intf = usb_ifnum_to_if(udev, 0);
 	struct ati_remote2 *ar2 = usb_get_intfdata(intf);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int mask;
+	int r;
+
+	r = kstrtouint(buf, 0, &mask);
+	if (r)
+		return r;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long mask;
 	int r;
 
 	if (strict_strtoul(buf, 0, &mask))
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mask & ~ATI_REMOTE2_MAX_CHANNEL_MASK)
 		return -EINVAL;
@@ -768,10 +806,25 @@ static ssize_t ati_remote2_store_mode_mask(struct device *dev,
 	struct usb_device *udev = to_usb_device(dev);
 	struct usb_interface *intf = usb_ifnum_to_if(udev, 0);
 	struct ati_remote2 *ar2 = usb_get_intfdata(intf);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int mask;
+	int err;
+
+	err = kstrtouint(buf, 0, &mask);
+	if (err)
+		return err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long mask;
 
 	if (strict_strtoul(buf, 0, &mask))
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mask & ~ATI_REMOTE2_MAX_MODE_MASK)
 		return -EINVAL;
@@ -1009,6 +1062,12 @@ static int ati_remote2_post_reset(struct usb_interface *interface)
 	return r;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(ati_remote2_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ati_remote2_init(void)
 {
 	int r;
@@ -1029,3 +1088,7 @@ static void __exit ati_remote2_exit(void)
 
 module_init(ati_remote2_init);
 module_exit(ati_remote2_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

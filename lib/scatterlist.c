@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/scatterlist.h>
 #include <linux/highmem.h>
@@ -233,21 +237,30 @@ int __sg_alloc_table(struct sg_table *table, unsigned int nents,
 	unsigned int left;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(table, 0, sizeof(*table));
 
 	if (nents == 0)
 		return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef ARCH_HAS_SG_CHAIN
 	BUG_ON(nents > max_ents);
 #endif
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(table, 0, sizeof(*table));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	left = nents;
 	prv = NULL;
 	do {
@@ -407,8 +420,12 @@ bool sg_miter_next(struct sg_mapping_iter *miter)
 <<<<<<< HEAD
 		miter->addr = kmap_atomic(miter->page) + off;
 =======
+<<<<<<< HEAD
+		miter->addr = kmap_atomic(miter->page) + off;
+=======
 		miter->addr = kmap_atomic(miter->page, KM_BIO_SRC_IRQ) + off;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		miter->addr = kmap(miter->page) + off;
 
@@ -445,8 +462,12 @@ void sg_miter_stop(struct sg_mapping_iter *miter)
 <<<<<<< HEAD
 			kunmap_atomic(miter->addr);
 =======
+<<<<<<< HEAD
+			kunmap_atomic(miter->addr);
+=======
 			kunmap_atomic(miter->addr, KM_BIO_SRC_IRQ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else
 			kunmap(miter->page);
 

@@ -62,8 +62,12 @@ static void __cpuinit cpu_bringup(void)
 <<<<<<< HEAD
 	int cpu;
 =======
+<<<<<<< HEAD
+	int cpu;
+=======
 	int cpu = smp_processor_id();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cpu_init();
 	touch_softlockup_watchdog();
@@ -80,6 +84,9 @@ static void __cpuinit cpu_bringup(void)
 	xen_setup_cpu_clockevents();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	notify_cpu_starting(cpu);
 
 	ipi_call_lock();
@@ -88,10 +95,13 @@ static void __cpuinit cpu_bringup(void)
 
 	this_cpu_write(cpu_state, CPU_ONLINE);
 
+<<<<<<< HEAD
+=======
 =======
 	set_cpu_online(cpu, true);
 	percpu_write(cpu_state, CPU_ONLINE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wmb();
 
 	/* We can take interrupts now: we're officially "up". */
@@ -440,6 +450,9 @@ static void __cpuinit xen_play_dead(void) /* used only with HOTPLUG_CPU */
 	HYPERVISOR_vcpu_op(VCPUOP_down, smp_processor_id(), NULL);
 	cpu_bringup();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Balance out the preempt calls - as we are running in cpu_idle
 	 * loop which has been called at bootup from cpu_bringup_and_idle.
@@ -447,8 +460,11 @@ static void __cpuinit xen_play_dead(void) /* used only with HOTPLUG_CPU */
 	 * preempt_disable() So this preempt_enable will balance it out.
 	 */
 	preempt_enable();
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #else /* !CONFIG_HOTPLUG_CPU */
@@ -574,8 +590,11 @@ static void __init xen_hvm_smp_prepare_cpus(unsigned int max_cpus)
 	xen_init_lock_cpu(0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	xen_init_spinlocks();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __cpuinit xen_hvm_cpu_up(unsigned int cpu)

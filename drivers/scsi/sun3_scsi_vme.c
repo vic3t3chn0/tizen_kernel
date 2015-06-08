@@ -25,7 +25,14 @@
 #include <linux/blkdev.h>
 
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/sun3ints.h>
 #include <asm/dvma.h>
@@ -39,6 +46,18 @@
 /* dma on! */
 #define REAL_DMA
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define NDEBUG 0
+
+#define NDEBUG_ABORT		0x00100000
+#define NDEBUG_TAGS		0x00200000
+#define NDEBUG_MERGING		0x00400000
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "scsi.h"
 #include "initio.h"
 #include <scsi/scsi_host.h>
@@ -50,8 +69,16 @@ extern int sun3_map_test(unsigned long, char *);
 /*#define RESET_BOOT */
 #define DRIVER_SETUP
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define NDEBUG 0
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define NDEBUG 0
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * BUG can be used to trigger a strange code-size related hang on 2.1 kernels
  */
@@ -137,7 +164,15 @@ static struct Scsi_Host *default_instance;
  *
  */
  
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __init sun3scsi_detect(struct scsi_host_template * tpnt)
+=======
 static int sun3scsi_detect(struct scsi_host_template * tpnt)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int sun3scsi_detect(struct scsi_host_template * tpnt)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long ioaddr, irq = 0;
 	static int called = 0;
@@ -283,6 +318,13 @@ int sun3scsi_release (struct Scsi_Host *shpnt)
 
 	iounmap((void *)sun3_scsi_regp);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	NCR5380_exit(shpnt);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

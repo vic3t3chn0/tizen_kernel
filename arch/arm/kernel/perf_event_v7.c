@@ -22,7 +22,13 @@
 static struct arm_pmu armv7pmu;
 
 =======
+<<<<<<< HEAD
+
+static struct arm_pmu armv7pmu;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Common ARMv7 event types
  *
@@ -32,6 +38,9 @@ static struct arm_pmu armv7pmu;
  */
 enum armv7_perf_types {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ARMV7_PERFCTR_PMNC_SW_INCR			= 0x00,
 	ARMV7_PERFCTR_L1_ICACHE_REFILL			= 0x01,
 	ARMV7_PERFCTR_ITLB_REFILL			= 0x02,
@@ -74,6 +83,8 @@ enum armv7_perf_types {
 	ARMV7_PERFCTR_BUS_CYCLES			= 0x1D,
 
 	ARMV7_PERFCTR_CPU_CYCLES			= 0xFF
+<<<<<<< HEAD
+=======
 =======
 	ARMV7_PERFCTR_PMNC_SW_INCR		= 0x00,
 	ARMV7_PERFCTR_IFETCH_MISS		= 0x01,
@@ -116,15 +127,21 @@ enum armv7_perf_types {
 
 	ARMV7_PERFCTR_CPU_CYCLES		= 0xFF
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ARMv7 Cortex-A8 specific event types */
 enum armv7_a8_perf_types {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ARMV7_A8_PERFCTR_L2_CACHE_ACCESS		= 0x43,
 	ARMV7_A8_PERFCTR_L2_CACHE_REFILL		= 0x44,
 	ARMV7_A8_PERFCTR_L1_ICACHE_ACCESS		= 0x50,
 	ARMV7_A8_PERFCTR_STALL_ISIDE			= 0x56,
+<<<<<<< HEAD
+=======
 =======
 	ARMV7_PERFCTR_WRITE_BUFFER_FULL		= 0x40,
 	ARMV7_PERFCTR_L2_STORE_MERGED		= 0x41,
@@ -158,10 +175,16 @@ enum armv7_a8_perf_types {
 	ARMV7_PERFCTR_PMU1_EVENTS		= 0x71,
 	ARMV7_PERFCTR_PMU_EVENTS		= 0x72,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ARMv7 Cortex-A9 specific event types */
 enum armv7_a9_perf_types {
+<<<<<<< HEAD
+	ARMV7_A9_PERFCTR_INSTR_CORE_RENAME		= 0x68,
+	ARMV7_A9_PERFCTR_STALL_ICACHE			= 0x60,
+	ARMV7_A9_PERFCTR_STALL_DISPATCH			= 0x66,
+=======
 <<<<<<< HEAD
 	ARMV7_A9_PERFCTR_INSTR_CORE_RENAME		= 0x68,
 	ARMV7_A9_PERFCTR_STALL_ICACHE			= 0x60,
@@ -215,10 +238,15 @@ enum armv7_a9_perf_types {
 	ARMV7_PERFCTR_PLE_FIFO_OVERFLOW		= 0xA4,
 	ARMV7_PERFCTR_PLE_RQST_PROG		= 0xA5
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ARMv7 Cortex-A5 specific event types */
 enum armv7_a5_perf_types {
+<<<<<<< HEAD
+	ARMV7_A5_PERFCTR_PREFETCH_LINEFILL		= 0xc2,
+	ARMV7_A5_PERFCTR_PREFETCH_LINEFILL_DROP		= 0xc3,
+=======
 <<<<<<< HEAD
 	ARMV7_A5_PERFCTR_PREFETCH_LINEFILL		= 0xc2,
 	ARMV7_A5_PERFCTR_PREFETCH_LINEFILL_DROP		= 0xc3,
@@ -235,11 +263,15 @@ enum armv7_a5_perf_types {
 
 	ARMV7_PERFCTR_STALL_SB_FULL		= 0xc9,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ARMv7 Cortex-A15 specific event types */
 enum armv7_a15_perf_types {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ARMV7_A15_PERFCTR_L1_DCACHE_ACCESS_READ		= 0x40,
 	ARMV7_A15_PERFCTR_L1_DCACHE_ACCESS_WRITE	= 0x41,
 	ARMV7_A15_PERFCTR_L1_DCACHE_REFILL_READ		= 0x42,
@@ -254,6 +286,8 @@ enum armv7_a15_perf_types {
 	ARMV7_A15_PERFCTR_L2_CACHE_REFILL_WRITE		= 0x53,
 
 	ARMV7_A15_PERFCTR_PC_WRITE_SPEC			= 0x76,
+<<<<<<< HEAD
+=======
 =======
 	ARMV7_PERFCTR_L1_DCACHE_READ_ACCESS	= 0x40,
 	ARMV7_PERFCTR_L1_DCACHE_WRITE_ACCESS	= 0x41,
@@ -270,6 +304,7 @@ enum armv7_a15_perf_types {
 
 	ARMV7_PERFCTR_SPEC_PC_WRITE		= 0x76,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -281,6 +316,9 @@ enum armv7_a15_perf_types {
  */
 static const unsigned armv7_a8_perf_map[PERF_COUNT_HW_MAX] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[PERF_COUNT_HW_CPU_CYCLES]		= ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]		= ARMV7_PERFCTR_INSTR_EXECUTED,
 	[PERF_COUNT_HW_CACHE_REFERENCES]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
@@ -293,6 +331,8 @@ static const unsigned armv7_a8_perf_map[PERF_COUNT_HW_MAX] = {
 };
 
 static unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
+<<<<<<< HEAD
+=======
 =======
 	[PERF_COUNT_HW_CPU_CYCLES]	    = ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]	    = ARMV7_PERFCTR_INSTR_EXECUTED,
@@ -305,6 +345,7 @@ static unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  [PERF_COUNT_HW_CACHE_OP_MAX]
 					  [PERF_COUNT_HW_CACHE_RESULT_MAX] = {
 	[C(L1D)] = {
@@ -316,12 +357,17 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		 */
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_DCACHE_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_DCACHE_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_DCACHE_REFILL,
@@ -330,6 +376,7 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_DCACHE_REFILL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -339,12 +386,17 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 	[C(L1I)] = {
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_A8_PERFCTR_L1_ICACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_A8_PERFCTR_L1_ICACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_INST,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_INST_MISS,
@@ -353,6 +405,7 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_INST,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_INST_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -362,12 +415,17 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 	[C(LL)] = {
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_A8_PERFCTR_L2_CACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_A8_PERFCTR_L2_CACHE_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_A8_PERFCTR_L2_CACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_A8_PERFCTR_L2_CACHE_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L2_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L2_CACH_MISS,
@@ -376,6 +434,7 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L2_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L2_CACH_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -400,11 +459,16 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 		},
@@ -412,6 +476,7 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -421,6 +486,9 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 	[C(BPU)] = {
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_PC_BRANCH_PRED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 		},
@@ -441,6 +509,8 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= CACHE_OP_UNSUPPORTED,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_PC_WRITE,
 			[C(RESULT_MISS)]
@@ -451,6 +521,7 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -464,6 +535,9 @@ static const unsigned armv7_a8_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
  */
 static const unsigned armv7_a9_perf_map[PERF_COUNT_HW_MAX] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[PERF_COUNT_HW_CPU_CYCLES]		= ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]		= ARMV7_A9_PERFCTR_INSTR_CORE_RENAME,
 	[PERF_COUNT_HW_CACHE_REFERENCES]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
@@ -476,6 +550,8 @@ static const unsigned armv7_a9_perf_map[PERF_COUNT_HW_MAX] = {
 };
 
 static unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
+<<<<<<< HEAD
+=======
 =======
 	[PERF_COUNT_HW_CPU_CYCLES]	    = ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]	    =
@@ -489,6 +565,7 @@ static unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  [PERF_COUNT_HW_CACHE_OP_MAX]
 					  [PERF_COUNT_HW_CACHE_RESULT_MAX] = {
 	[C(L1D)] = {
@@ -500,12 +577,17 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		 */
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_DCACHE_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_DCACHE_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_DCACHE_REFILL,
@@ -514,6 +596,7 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_DCACHE_REFILL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -524,11 +607,16 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_IFETCH_MISS,
 		},
@@ -536,6 +624,7 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_IFETCH_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -574,11 +663,16 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 		},
@@ -586,6 +680,7 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -595,6 +690,9 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 	[C(BPU)] = {
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_PC_BRANCH_PRED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 		},
@@ -615,6 +713,8 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= CACHE_OP_UNSUPPORTED,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_PC_WRITE,
 			[C(RESULT_MISS)]
@@ -625,6 +725,7 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -638,6 +739,9 @@ static const unsigned armv7_a9_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
  */
 static const unsigned armv7_a5_perf_map[PERF_COUNT_HW_MAX] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[PERF_COUNT_HW_CPU_CYCLES]		= ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]		= ARMV7_PERFCTR_INSTR_EXECUTED,
 	[PERF_COUNT_HW_CACHE_REFERENCES]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
@@ -650,6 +754,8 @@ static const unsigned armv7_a5_perf_map[PERF_COUNT_HW_MAX] = {
 };
 
 static unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
+<<<<<<< HEAD
+=======
 =======
 	[PERF_COUNT_HW_CPU_CYCLES]	    = ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]	    = ARMV7_PERFCTR_INSTR_EXECUTED,
@@ -662,11 +768,15 @@ static unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					[PERF_COUNT_HW_CACHE_OP_MAX]
 					[PERF_COUNT_HW_CACHE_RESULT_MAX] = {
 	[C(L1D)] = {
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_DCACHE_REFILL,
 		},
@@ -677,6 +787,8 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_A5_PERFCTR_PREFETCH_LINEFILL,
 			[C(RESULT_MISS)]	= ARMV7_A5_PERFCTR_PREFETCH_LINEFILL_DROP,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]
 					= ARMV7_PERFCTR_DCACHE_ACCESS,
@@ -695,17 +807,23 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PREFETCH_LINEFILL_DROP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	},
 	[C(L1I)] = {
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_ICACHE_ACCESS,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_ICACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_IFETCH_MISS,
 		},
@@ -713,6 +831,7 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_ICACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_IFETCH_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		/*
 		 * The prefetch counters don't differentiate between the I
@@ -723,11 +842,16 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= ARMV7_A5_PERFCTR_PREFETCH_LINEFILL,
 			[C(RESULT_MISS)]	= ARMV7_A5_PERFCTR_PREFETCH_LINEFILL_DROP,
 =======
+<<<<<<< HEAD
+			[C(RESULT_ACCESS)]	= ARMV7_A5_PERFCTR_PREFETCH_LINEFILL,
+			[C(RESULT_MISS)]	= ARMV7_A5_PERFCTR_PREFETCH_LINEFILL_DROP,
+=======
 			[C(RESULT_ACCESS)]
 					= ARMV7_PERFCTR_PREFETCH_LINEFILL,
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PREFETCH_LINEFILL_DROP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	},
 	[C(LL)] = {
@@ -762,11 +886,16 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 		},
@@ -774,6 +903,7 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -784,6 +914,9 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_PC_BRANCH_PRED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 		},
 		[C(OP_WRITE)] = {
@@ -803,6 +936,8 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= CACHE_OP_UNSUPPORTED,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
@@ -812,6 +947,7 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -825,6 +961,9 @@ static const unsigned armv7_a5_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
  */
 static const unsigned armv7_a15_perf_map[PERF_COUNT_HW_MAX] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[PERF_COUNT_HW_CPU_CYCLES]		= ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]		= ARMV7_PERFCTR_INSTR_EXECUTED,
 	[PERF_COUNT_HW_CACHE_REFERENCES]	= ARMV7_PERFCTR_L1_DCACHE_ACCESS,
@@ -837,6 +976,8 @@ static const unsigned armv7_a15_perf_map[PERF_COUNT_HW_MAX] = {
 };
 
 static unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
+<<<<<<< HEAD
+=======
 =======
 	[PERF_COUNT_HW_CPU_CYCLES]	    = ARMV7_PERFCTR_CPU_CYCLES,
 	[PERF_COUNT_HW_INSTRUCTIONS]	    = ARMV7_PERFCTR_INSTR_EXECUTED,
@@ -849,17 +990,23 @@ static unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					[PERF_COUNT_HW_CACHE_OP_MAX]
 					[PERF_COUNT_HW_CACHE_RESULT_MAX] = {
 	[C(L1D)] = {
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_A15_PERFCTR_L1_DCACHE_ACCESS_READ,
 			[C(RESULT_MISS)]	= ARMV7_A15_PERFCTR_L1_DCACHE_REFILL_READ,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_A15_PERFCTR_L1_DCACHE_ACCESS_WRITE,
 			[C(RESULT_MISS)]	= ARMV7_A15_PERFCTR_L1_DCACHE_REFILL_WRITE,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]
 					= ARMV7_PERFCTR_L1_DCACHE_READ_ACCESS,
@@ -872,6 +1019,7 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_L1_DCACHE_WRITE_REFILL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -888,11 +1036,16 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_ICACHE_ACCESS,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_ICACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_L1_ICACHE_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_IFETCH_MISS,
 		},
@@ -900,6 +1053,7 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_L1_ICACHE_ACCESS,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_IFETCH_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -909,12 +1063,17 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 	[C(LL)] = {
 		[C(OP_READ)] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_ACCESS)]	= ARMV7_A15_PERFCTR_L2_CACHE_ACCESS_READ,
 			[C(RESULT_MISS)]	= ARMV7_A15_PERFCTR_L2_CACHE_REFILL_READ,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_A15_PERFCTR_L2_CACHE_ACCESS_WRITE,
 			[C(RESULT_MISS)]	= ARMV7_A15_PERFCTR_L2_CACHE_REFILL_WRITE,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_ACCESS)]
 					= ARMV7_PERFCTR_L2_DCACHE_READ_ACCESS,
@@ -927,6 +1086,7 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_L2_DCACHE_WRITE_REFILL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -937,11 +1097,16 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_A15_PERFCTR_DTLB_REFILL_L1_READ,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_A15_PERFCTR_DTLB_REFILL_L1_WRITE,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_L1_DTLB_READ_REFILL,
@@ -951,6 +1116,7 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_L1_DTLB_WRITE_REFILL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -961,11 +1127,16 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
 		},
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_REFILL,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 		},
@@ -973,6 +1144,7 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_ITLB_MISS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -983,6 +1155,9 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_READ)] = {
 			[C(RESULT_ACCESS)]	= ARMV7_PERFCTR_PC_BRANCH_PRED,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			[C(RESULT_MISS)]	= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 		},
 		[C(OP_WRITE)] = {
@@ -1002,6 +1177,8 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 		[C(OP_WRITE)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
 			[C(RESULT_MISS)]	= CACHE_OP_UNSUPPORTED,
+<<<<<<< HEAD
+=======
 =======
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
@@ -1011,6 +1188,7 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 			[C(RESULT_MISS)]
 					= ARMV7_PERFCTR_PC_BRANCH_MIS_PRED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		[C(OP_PREFETCH)] = {
 			[C(RESULT_ACCESS)]	= CACHE_OP_UNSUPPORTED,
@@ -1021,6 +1199,9 @@ static const unsigned armv7_a15_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Cortex-A7 HW events mapping
  */
 static const unsigned armv7_a7_perf_map[PERF_COUNT_HW_MAX] = {
@@ -1153,6 +1334,8 @@ static unsigned armv7_a7_perf_cache_map[PERF_COUNT_HW_CACHE_MAX]
 
 #define	ARMV7_MAX_COUNTERS	32
 #define	ARMV7_COUNTER_MASK	(ARMV7_MAX_COUNTERS - 1)
+<<<<<<< HEAD
+=======
 =======
  * Perf Events counters
  */
@@ -1168,6 +1351,7 @@ enum armv7_counters {
  */
 #define	ARMV7_COUNTER_LAST	(ARMV7_COUNTER0 + armpmu->num_events - 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * ARMv7 low level PMNC access
@@ -1175,14 +1359,20 @@ enum armv7_counters {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Perf Event to low level counters mapping
  */
 #define	ARMV7_IDX_TO_COUNTER(x)	\
 	(((x) - ARMV7_IDX_COUNTER0) & ARMV7_COUNTER_MASK)
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Per-CPU PMNC: config reg
  */
 #define ARMV7_PMNC_E		(1 << 0) /* Enable all counters */
@@ -1197,6 +1387,9 @@ enum armv7_counters {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * FLAG: counters overflow flag status reg
  */
 #define	ARMV7_FLAG_MASK		0xffffffff	/* Mask for writable bits */
@@ -1216,6 +1409,8 @@ enum armv7_counters {
 #define	ARMV7_INCLUDE_HYP	(1 << 27)
 
 static inline u32 armv7_pmnc_read(void)
+<<<<<<< HEAD
+=======
 =======
  * Available counters
  */
@@ -1269,6 +1464,7 @@ static inline u32 armv7_pmnc_read(void)
 
 static inline unsigned long armv7_pmnc_read(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 val;
 	asm volatile("mrc p15, 0, %0, c9, c12, 0" : "=r"(val));
@@ -1278,8 +1474,12 @@ static inline unsigned long armv7_pmnc_read(void)
 <<<<<<< HEAD
 static inline void armv7_pmnc_write(u32 val)
 =======
+<<<<<<< HEAD
+static inline void armv7_pmnc_write(u32 val)
+=======
 static inline void armv7_pmnc_write(unsigned long val)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	val &= ARMV7_PMNC_MASK;
 	isb();
@@ -1289,13 +1489,20 @@ static inline void armv7_pmnc_write(unsigned long val)
 <<<<<<< HEAD
 static inline int armv7_pmnc_has_overflowed(u32 pmnc)
 =======
+<<<<<<< HEAD
+static inline int armv7_pmnc_has_overflowed(u32 pmnc)
+=======
 static inline int armv7_pmnc_has_overflowed(unsigned long pmnc)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return pmnc & ARMV7_OVERFLOWED_MASK;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int armv7_pmnc_counter_valid(int idx)
 {
 	return idx >= ARMV7_IDX_CYCLE_COUNTER && idx <= ARMV7_IDX_COUNTER_LAST;
@@ -1313,6 +1520,8 @@ static inline int armv7_pmnc_counter_has_overflowed(u32 pmnc, int idx)
 		counter = ARMV7_IDX_TO_COUNTER(idx);
 		ret = pmnc & BIT(counter);
 	}
+<<<<<<< HEAD
+=======
 =======
 static inline int armv7_pmnc_counter_has_overflowed(unsigned long pmnc,
 					enum armv7_counters counter)
@@ -1327,11 +1536,15 @@ static inline int armv7_pmnc_counter_has_overflowed(unsigned long pmnc,
 		pr_err("CPU%u checking wrong counter %d overflow status\n",
 			smp_processor_id(), counter);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int armv7_pmnc_select_counter(int idx)
 {
 	u32 counter;
@@ -1344,6 +1557,8 @@ static inline int armv7_pmnc_select_counter(int idx)
 
 	counter = ARMV7_IDX_TO_COUNTER(idx);
 	asm volatile("mcr p15, 0, %0, c9, c12, 5" : : "r" (counter));
+<<<<<<< HEAD
+=======
 =======
 static inline int armv7_pmnc_select_counter(unsigned int idx)
 {
@@ -1358,6 +1573,7 @@ static inline int armv7_pmnc_select_counter(unsigned int idx)
 	val = (idx - ARMV7_EVENT_CNT_TO_CNTx) & ARMV7_SELECT_MASK;
 	asm volatile("mcr p15, 0, %0, c9, c12, 5" : : "r" (val));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	isb();
 
 	return idx;
@@ -1366,6 +1582,9 @@ static inline int armv7_pmnc_select_counter(unsigned int idx)
 static inline u32 armv7pmu_read_counter(int idx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 value = 0;
 
 	if (!armv7_pmnc_counter_valid(idx))
@@ -1375,6 +1594,8 @@ static inline u32 armv7pmu_read_counter(int idx)
 		asm volatile("mrc p15, 0, %0, c9, c13, 0" : "=r" (value));
 	else if (armv7_pmnc_select_counter(idx) == idx)
 		asm volatile("mrc p15, 0, %0, c9, c13, 2" : "=r" (value));
+<<<<<<< HEAD
+=======
 =======
 	unsigned long value = 0;
 
@@ -1388,6 +1609,7 @@ static inline u32 armv7pmu_read_counter(int idx)
 		pr_err("CPU%u reading wrong counter %d\n",
 			smp_processor_id(), idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return value;
 }
@@ -1395,6 +1617,9 @@ static inline u32 armv7pmu_read_counter(int idx)
 static inline void armv7pmu_write_counter(int idx, u32 value)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!armv7_pmnc_counter_valid(idx))
 		pr_err("CPU%u writing wrong counter %d\n",
 			smp_processor_id(), idx);
@@ -1408,6 +1633,8 @@ static inline void armv7_pmnc_write_evtsel(int idx, u32 val)
 {
 	if (armv7_pmnc_select_counter(idx) == idx) {
 		val &= ARMV7_EVTYPE_MASK;
+<<<<<<< HEAD
+=======
 =======
 	if (idx == ARMV7_CYCLE_COUNTER)
 		asm volatile("mcr p15, 0, %0, c9, c13, 0" : : "r" (value));
@@ -1425,11 +1652,15 @@ static inline void armv7_pmnc_write_evtsel(unsigned int idx, u32 val)
 	if (armv7_pmnc_select_counter(idx) == idx) {
 		val &= ARMV7_EVTSEL_MASK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		asm volatile("mcr p15, 0, %0, c9, c13, 1" : : "r" (val));
 	}
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int armv7_pmnc_enable_counter(int idx)
 {
 	u32 counter;
@@ -1491,6 +1722,8 @@ static inline int armv7_pmnc_disable_intens(int idx)
 	/* Clear the overflow flag in case an interrupt is pending. */
 	asm volatile("mcr p15, 0, %0, c9, c12, 3" : : "r" (BIT(counter)));
 	isb();
+<<<<<<< HEAD
+=======
 =======
 static inline u32 armv7_pmnc_enable_counter(unsigned int idx)
 {
@@ -1574,6 +1807,7 @@ static inline u32 armv7_pmnc_disable_intens(unsigned int idx)
 
 	asm volatile("mcr p15, 0, %0, c9, c14, 2" : : "r" (val));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return idx;
 }
@@ -1619,6 +1853,9 @@ static void armv7_pmnc_dump_regs(void)
 	printk(KERN_INFO "CCNT  =0x%08x\n", val);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (cnt = ARMV7_IDX_COUNTER0; cnt <= ARMV7_IDX_COUNTER_LAST; cnt++) {
 		armv7_pmnc_select_counter(cnt);
 		asm volatile("mrc p15, 0, %0, c9, c13, 2" : "=r" (val));
@@ -1627,6 +1864,8 @@ static void armv7_pmnc_dump_regs(void)
 		asm volatile("mrc p15, 0, %0, c9, c13, 1" : "=r" (val));
 		printk(KERN_INFO "CNT[%d] evtsel=0x%08x\n",
 			ARMV7_IDX_TO_COUNTER(cnt), val);
+<<<<<<< HEAD
+=======
 =======
 	for (cnt = ARMV7_COUNTER0; cnt < ARMV7_COUNTER_LAST; cnt++) {
 		armv7_pmnc_select_counter(cnt);
@@ -1637,21 +1876,28 @@ static void armv7_pmnc_dump_regs(void)
 		printk(KERN_INFO "CNT[%d] evtsel=0x%08x\n",
 			cnt-ARMV7_EVENT_CNT_TO_CNTx, val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void armv7pmu_enable_event(struct hw_perf_event *hwc, int idx, int cpu)
 {
 	unsigned long flags;
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 	unsigned long long prev_count = local64_read(&hwc->prev_count);
+<<<<<<< HEAD
+=======
 =======
 static void armv7pmu_enable_event(struct hw_perf_event *hwc, int idx)
 {
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Enable counter and interrupt, and set the counter to count
@@ -1660,8 +1906,12 @@ static void armv7pmu_enable_event(struct hw_perf_event *hwc, int idx)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&events->pmu_lock, flags);
+=======
 	raw_spin_lock_irqsave(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Disable counter
@@ -1671,15 +1921,21 @@ static void armv7pmu_enable_event(struct hw_perf_event *hwc, int idx)
 	/*
 	 * Set event (if destined for PMNx counters)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * We only need to set the event for the cycle counter if we
 	 * have the ability to perform event filtering.
 	 */
 	if (armv7pmu.set_event_filter || idx != ARMV7_IDX_CYCLE_COUNTER)
+<<<<<<< HEAD
+=======
 =======
 	 * We don't need to set the event if it's a cycle count
 	 */
 	if (idx != ARMV7_CYCLE_COUNTER)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		armv7_pmnc_write_evtsel(idx, hwc->config_base);
 
 	/*
@@ -1692,7 +1948,13 @@ static void armv7pmu_enable_event(struct hw_perf_event *hwc, int idx)
 	armv7pmu_write_counter(idx, prev_count & 0xffffffff);
 
 =======
+<<<<<<< HEAD
+	/* Restore prev val */
+	armv7pmu_write_counter(idx, prev_count & 0xffffffff);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Enable counter
 	 */
@@ -1701,8 +1963,12 @@ static void armv7pmu_enable_event(struct hw_perf_event *hwc, int idx)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
+=======
 	raw_spin_unlock_irqrestore(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void armv7pmu_disable_event(struct hw_perf_event *hwc, int idx)
@@ -1711,7 +1977,11 @@ static void armv7pmu_disable_event(struct hw_perf_event *hwc, int idx)
 <<<<<<< HEAD
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 =======
+<<<<<<< HEAD
+	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Disable counter and interrupt
@@ -1719,8 +1989,12 @@ static void armv7pmu_disable_event(struct hw_perf_event *hwc, int idx)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&events->pmu_lock, flags);
+=======
 	raw_spin_lock_irqsave(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Disable counter
@@ -1735,8 +2009,12 @@ static void armv7pmu_disable_event(struct hw_perf_event *hwc, int idx)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
+=======
 	raw_spin_unlock_irqrestore(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static irqreturn_t armv7pmu_handle_irq(int irq_num, void *dev)
@@ -1746,10 +2024,16 @@ static irqreturn_t armv7pmu_handle_irq(int irq_num, void *dev)
 	struct perf_sample_data data;
 	struct pmu_hw_events *cpuc;
 =======
+<<<<<<< HEAD
+	u32 pmnc;
+	struct perf_sample_data data;
+	struct pmu_hw_events *cpuc;
+=======
 	unsigned long pmnc;
 	struct perf_sample_data data;
 	struct cpu_hw_events *cpuc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pt_regs *regs;
 	int idx;
 
@@ -1773,12 +2057,17 @@ static irqreturn_t armv7pmu_handle_irq(int irq_num, void *dev)
 
 	cpuc = &__get_cpu_var(cpu_hw_events);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (idx = 0; idx < cpu_pmu->num_events; ++idx) {
 		struct perf_event *event = cpuc->events[idx];
 		struct hw_perf_event *hwc;
 
 		/* Ignore if we don't have an event. */
 		if (!event)
+<<<<<<< HEAD
+=======
 =======
 	for (idx = 0; idx <= armpmu->num_events; ++idx) {
 		struct perf_event *event = cpuc->events[idx];
@@ -1786,6 +2075,7 @@ static irqreturn_t armv7pmu_handle_irq(int irq_num, void *dev)
 
 		if (!test_bit(idx, cpuc->active_mask))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		/*
@@ -1799,8 +2089,12 @@ static irqreturn_t armv7pmu_handle_irq(int irq_num, void *dev)
 <<<<<<< HEAD
 		armpmu_event_update(event, hwc, idx);
 =======
+<<<<<<< HEAD
+		armpmu_event_update(event, hwc, idx);
+=======
 		armpmu_event_update(event, hwc, idx, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		data.period = event->hw.last_period;
 		if (!armpmu_event_set_period(event, hwc, idx))
 			continue;
@@ -1809,9 +2103,14 @@ static irqreturn_t armv7pmu_handle_irq(int irq_num, void *dev)
 		if (perf_event_overflow(event, &data, regs))
 			cpu_pmu->disable(hwc, idx);
 =======
+<<<<<<< HEAD
+		if (perf_event_overflow(event, &data, regs))
+			cpu_pmu->disable(hwc, idx);
+=======
 		if (perf_event_overflow(event, 0, &data, regs))
 			armpmu->disable(hwc, idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1830,12 +2129,17 @@ static void armv7pmu_start(void)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
 	/* Enable all counters */
 	armv7_pmnc_write(armv7_pmnc_read() | ARMV7_PMNC_E);
 	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 
 	raw_spin_lock_irqsave(&pmu_lock, flags);
@@ -1843,12 +2147,16 @@ static void armv7pmu_start(void)
 	armv7_pmnc_write(armv7_pmnc_read() | ARMV7_PMNC_E);
 	raw_spin_unlock_irqrestore(&pmu_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void armv7pmu_stop(void)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pmu_hw_events *events = cpu_pmu->get_hw_events();
 
 	raw_spin_lock_irqsave(&events->pmu_lock, flags);
@@ -1908,6 +2216,8 @@ static int armv7pmu_set_event_filter(struct hw_perf_event *event,
 	event->config_base = config_base;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 
 	raw_spin_lock_irqsave(&pmu_lock, flags);
@@ -1941,21 +2251,28 @@ static int armv7pmu_get_event_idx(struct cpu_hw_events *cpuc,
 		return -EAGAIN;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void armv7pmu_reset(void *info)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 idx, nb_cnt = cpu_pmu->num_events;
 
 	/* The counter and interrupt enable registers are unknown at reset. */
 	for (idx = ARMV7_IDX_CYCLE_COUNTER; idx < nb_cnt; ++idx)
+<<<<<<< HEAD
+=======
 =======
 	u32 idx, nb_cnt = armpmu->num_events;
 
 	/* The counter and interrupt enable registers are unknown at reset. */
 	for (idx = 1; idx < nb_cnt; ++idx)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		armv7pmu_disable_event(NULL, idx);
 
 	/* Initialize & Reset PMNC: C and P bits */
@@ -1963,6 +2280,9 @@ static void armv7pmu_reset(void *info)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int armv7_a8_map_event(struct perf_event *event)
 {
 	return map_cpu_event(event, &armv7_a8_perf_map,
@@ -2016,8 +2336,11 @@ static void armv7pmu_restore_pm_registers(void *hcpu)
 		asm volatile("mcr p15, 0, %0, c9, c14, 0" : : "r" (val));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct arm_pmu armv7pmu = {
 	.handle_irq		= armv7pmu_handle_irq,
 	.enable			= armv7pmu_enable_event,
@@ -2033,9 +2356,15 @@ static struct arm_pmu armv7pmu = {
 	.save_pm_registers	= armv7pmu_save_pm_registers,
 	.restore_pm_registers	= armv7pmu_restore_pm_registers,
 =======
+<<<<<<< HEAD
+	.max_period		= (1LLU << 32) - 1,
+	.save_pm_registers	= armv7pmu_save_pm_registers,
+	.restore_pm_registers	= armv7pmu_restore_pm_registers,
+=======
 	.raw_event_mask		= 0xFF,
 	.max_period		= (1LLU << 32) - 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static u32 __init armv7_read_num_pmnc_events(void)
@@ -2050,11 +2379,16 @@ static u32 __init armv7_read_num_pmnc_events(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct arm_pmu *__init armv7_a8_pmu_init(void)
 {
 	armv7pmu.id		= ARM_PERF_PMU_ID_CA8;
 	armv7pmu.name		= "ARMv7 Cortex-A8";
 	armv7pmu.map_event	= armv7_a8_map_event;
+<<<<<<< HEAD
+=======
 =======
 static const struct arm_pmu *__init armv7_a8_pmu_init(void)
 {
@@ -2063,16 +2397,22 @@ static const struct arm_pmu *__init armv7_a8_pmu_init(void)
 	armv7pmu.cache_map	= &armv7_a8_perf_cache_map;
 	armv7pmu.event_map	= &armv7_a8_perf_map;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	armv7pmu.num_events	= armv7_read_num_pmnc_events();
 	return &armv7pmu;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct arm_pmu *__init armv7_a9_pmu_init(void)
 {
 	armv7pmu.id		= ARM_PERF_PMU_ID_CA9;
 	armv7pmu.name		= "ARMv7 Cortex-A9";
 	armv7pmu.map_event	= armv7_a9_map_event;
+<<<<<<< HEAD
+=======
 =======
 static const struct arm_pmu *__init armv7_a9_pmu_init(void)
 {
@@ -2081,16 +2421,22 @@ static const struct arm_pmu *__init armv7_a9_pmu_init(void)
 	armv7pmu.cache_map	= &armv7_a9_perf_cache_map;
 	armv7pmu.event_map	= &armv7_a9_perf_map;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	armv7pmu.num_events	= armv7_read_num_pmnc_events();
 	return &armv7pmu;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct arm_pmu *__init armv7_a5_pmu_init(void)
 {
 	armv7pmu.id		= ARM_PERF_PMU_ID_CA5;
 	armv7pmu.name		= "ARMv7 Cortex-A5";
 	armv7pmu.map_event	= armv7_a5_map_event;
+<<<<<<< HEAD
+=======
 =======
 static const struct arm_pmu *__init armv7_a5_pmu_init(void)
 {
@@ -2099,11 +2445,15 @@ static const struct arm_pmu *__init armv7_a5_pmu_init(void)
 	armv7pmu.cache_map	= &armv7_a5_perf_cache_map;
 	armv7pmu.event_map	= &armv7_a5_perf_map;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	armv7pmu.num_events	= armv7_read_num_pmnc_events();
 	return &armv7pmu;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct arm_pmu *__init armv7_a15_pmu_init(void)
 {
 	armv7pmu.id		= ARM_PERF_PMU_ID_CA15;
@@ -2130,6 +2480,8 @@ static struct arm_pmu *__init armv7_a8_pmu_init(void)
 }
 
 static struct arm_pmu *__init armv7_a9_pmu_init(void)
+<<<<<<< HEAD
+=======
 =======
 static const struct arm_pmu *__init armv7_a15_pmu_init(void)
 {
@@ -2143,6 +2495,7 @@ static const struct arm_pmu *__init armv7_a15_pmu_init(void)
 #else
 static const struct arm_pmu *__init armv7_a8_pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return NULL;
 }
@@ -2150,8 +2503,12 @@ static const struct arm_pmu *__init armv7_a8_pmu_init(void)
 <<<<<<< HEAD
 static struct arm_pmu *__init armv7_a5_pmu_init(void)
 =======
+<<<<<<< HEAD
+static struct arm_pmu *__init armv7_a5_pmu_init(void)
+=======
 static const struct arm_pmu *__init armv7_a9_pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return NULL;
 }
@@ -2159,8 +2516,12 @@ static const struct arm_pmu *__init armv7_a9_pmu_init(void)
 <<<<<<< HEAD
 static struct arm_pmu *__init armv7_a15_pmu_init(void)
 =======
+<<<<<<< HEAD
+static struct arm_pmu *__init armv7_a15_pmu_init(void)
+=======
 static const struct arm_pmu *__init armv7_a5_pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return NULL;
 }
@@ -2168,8 +2529,12 @@ static const struct arm_pmu *__init armv7_a5_pmu_init(void)
 <<<<<<< HEAD
 static struct arm_pmu *__init armv7_a7_pmu_init(void)
 =======
+<<<<<<< HEAD
+static struct arm_pmu *__init armv7_a7_pmu_init(void)
+=======
 static const struct arm_pmu *__init armv7_a15_pmu_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return NULL;
 }

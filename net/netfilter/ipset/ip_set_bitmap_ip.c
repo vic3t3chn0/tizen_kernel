@@ -57,8 +57,12 @@ static int
 <<<<<<< HEAD
 bitmap_ip_test(struct ip_set *set, void *value, u32 timeout, u32 flags)
 =======
+<<<<<<< HEAD
+bitmap_ip_test(struct ip_set *set, void *value, u32 timeout, u32 flags)
+=======
 bitmap_ip_test(struct ip_set *set, void *value, u32 timeout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct bitmap_ip *map = set->data;
 	u16 id = *(u16 *)value;
@@ -70,8 +74,12 @@ static int
 <<<<<<< HEAD
 bitmap_ip_add(struct ip_set *set, void *value, u32 timeout, u32 flags)
 =======
+<<<<<<< HEAD
+bitmap_ip_add(struct ip_set *set, void *value, u32 timeout, u32 flags)
+=======
 bitmap_ip_add(struct ip_set *set, void *value, u32 timeout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bitmap_ip *map = set->data;
 	u16 id = *(u16 *)value;
@@ -86,8 +94,12 @@ static int
 <<<<<<< HEAD
 bitmap_ip_del(struct ip_set *set, void *value, u32 timeout, u32 flags)
 =======
+<<<<<<< HEAD
+bitmap_ip_del(struct ip_set *set, void *value, u32 timeout, u32 flags)
+=======
 bitmap_ip_del(struct ip_set *set, void *value, u32 timeout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bitmap_ip *map = set->data;
 	u16 id = *(u16 *)value;
@@ -146,8 +158,12 @@ static int
 <<<<<<< HEAD
 bitmap_ip_ttest(struct ip_set *set, void *value, u32 timeout, u32 flags)
 =======
+<<<<<<< HEAD
+bitmap_ip_ttest(struct ip_set *set, void *value, u32 timeout, u32 flags)
+=======
 bitmap_ip_ttest(struct ip_set *set, void *value, u32 timeout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct bitmap_ip *map = set->data;
 	const unsigned long *members = map->members;
@@ -160,8 +176,12 @@ static int
 <<<<<<< HEAD
 bitmap_ip_tadd(struct ip_set *set, void *value, u32 timeout, u32 flags)
 =======
+<<<<<<< HEAD
+bitmap_ip_tadd(struct ip_set *set, void *value, u32 timeout, u32 flags)
+=======
 bitmap_ip_tadd(struct ip_set *set, void *value, u32 timeout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bitmap_ip *map = set->data;
 	unsigned long *members = map->members;
@@ -170,8 +190,12 @@ bitmap_ip_tadd(struct ip_set *set, void *value, u32 timeout)
 <<<<<<< HEAD
 	if (ip_set_timeout_test(members[id]) && !(flags & IPSET_FLAG_EXIST))
 =======
+<<<<<<< HEAD
+	if (ip_set_timeout_test(members[id]) && !(flags & IPSET_FLAG_EXIST))
+=======
 	if (ip_set_timeout_test(members[id]))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -IPSET_ERR_EXIST;
 
 	members[id] = ip_set_timeout_set(timeout);
@@ -183,8 +207,12 @@ static int
 <<<<<<< HEAD
 bitmap_ip_tdel(struct ip_set *set, void *value, u32 timeout, u32 flags)
 =======
+<<<<<<< HEAD
+bitmap_ip_tdel(struct ip_set *set, void *value, u32 timeout, u32 flags)
+=======
 bitmap_ip_tdel(struct ip_set *set, void *value, u32 timeout)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bitmap_ip *map = set->data;
 	unsigned long *members = map->members;
@@ -251,8 +279,13 @@ bitmap_ip_kadt(struct ip_set *set, const struct sk_buff *skb,
 	       const struct xt_action_param *par,
 	       enum ipset_adt adt, const struct ip_set_adt_opt *opt)
 =======
+<<<<<<< HEAD
+	       const struct xt_action_param *par,
+	       enum ipset_adt adt, const struct ip_set_adt_opt *opt)
+=======
 	       enum ipset_adt adt, u8 pf, u8 dim, u8 flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bitmap_ip *map = set->data;
 	ipset_adtfn adtfn = set->variant->adt[adt];
@@ -261,8 +294,12 @@ bitmap_ip_kadt(struct ip_set *set, const struct sk_buff *skb,
 <<<<<<< HEAD
 	ip = ntohl(ip4addr(skb, opt->flags & IPSET_DIM_ONE_SRC));
 =======
+<<<<<<< HEAD
+	ip = ntohl(ip4addr(skb, opt->flags & IPSET_DIM_ONE_SRC));
+=======
 	ip = ntohl(ip4addr(skb, flags & IPSET_DIM_ONE_SRC));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ip < map->first_ip || ip > map->last_ip)
 		return -IPSET_ERR_BITMAP_RANGE;
 
@@ -271,8 +308,12 @@ bitmap_ip_kadt(struct ip_set *set, const struct sk_buff *skb,
 <<<<<<< HEAD
 	return adtfn(set, &ip, opt_timeout(opt, map), opt->cmdflags);
 =======
+<<<<<<< HEAD
+	return adtfn(set, &ip, opt_timeout(opt, map), opt->cmdflags);
+=======
 	return adtfn(set, &ip, map->timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -280,8 +321,12 @@ bitmap_ip_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 	       enum ipset_adt adt, u32 *lineno, u32 flags, bool retried)
 =======
+<<<<<<< HEAD
+	       enum ipset_adt adt, u32 *lineno, u32 flags, bool retried)
+=======
 	       enum ipset_adt adt, u32 *lineno, u32 flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bitmap_ip *map = set->data;
 	ipset_adtfn adtfn = set->variant->adt[adt];
@@ -314,8 +359,12 @@ bitmap_ip_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		return adtfn(set, &id, timeout, flags);
 =======
+<<<<<<< HEAD
+		return adtfn(set, &id, timeout, flags);
+=======
 		return adtfn(set, &id, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (tb[IPSET_ATTR_IP_TO]) {
@@ -335,9 +384,13 @@ bitmap_ip_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		ip_set_mask_from_to(ip, ip_to, cidr);
 =======
+<<<<<<< HEAD
+		ip_set_mask_from_to(ip, ip_to, cidr);
+=======
 		ip &= ip_set_hostmask(cidr);
 		ip_to = ip | ~ip_set_hostmask(cidr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		ip_to = ip;
 
@@ -349,8 +402,12 @@ bitmap_ip_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		ret = adtfn(set, &id, timeout, flags);
 =======
+<<<<<<< HEAD
+		ret = adtfn(set, &id, timeout, flags);
+=======
 		ret = adtfn(set, &id, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (ret && !ip_set_eexist(ret, flags))
 			return ret;
@@ -502,8 +559,12 @@ init_map_ip(struct ip_set *set, struct bitmap_ip *map,
 <<<<<<< HEAD
 	set->family = NFPROTO_IPV4;
 =======
+<<<<<<< HEAD
+	set->family = NFPROTO_IPV4;
+=======
 	set->family = AF_INET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return true;
 }
@@ -542,8 +603,12 @@ bitmap_ip_create(struct ip_set *set, struct nlattr *tb[], u32 flags)
 <<<<<<< HEAD
 		ip_set_mask_from_to(first_ip, last_ip, cidr);
 =======
+<<<<<<< HEAD
+		ip_set_mask_from_to(first_ip, last_ip, cidr);
+=======
 		last_ip = first_ip | ~ip_set_hostmask(cidr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		return -IPSET_ERR_PROTOCOL;
 
@@ -620,9 +685,15 @@ static struct ip_set_type bitmap_ip_type __read_mostly = {
 	.revision_min	= 0,
 	.revision_max	= 0,
 =======
+<<<<<<< HEAD
+	.family		= NFPROTO_IPV4,
+	.revision_min	= 0,
+	.revision_max	= 0,
+=======
 	.family		= AF_INET,
 	.revision	= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.create		= bitmap_ip_create,
 	.create_policy	= {
 		[IPSET_ATTR_IP]		= { .type = NLA_NESTED },

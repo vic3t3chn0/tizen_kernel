@@ -28,8 +28,12 @@ int fixup_exception(struct pt_regs *regs)
 <<<<<<< HEAD
 			current_thread_info()->uaccess_err = 1;
 =======
+<<<<<<< HEAD
+			current_thread_info()->uaccess_err = 1;
+=======
 			current_thread_info()->uaccess_err = -EFAULT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			regs->ip += fixup->fixup;
 			return 1;
 		}

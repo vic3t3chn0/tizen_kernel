@@ -1,5 +1,13 @@
 /*
  *	Sonix sn9c201 sn9c202 library
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ * Copyright (C) 2012 Jean-Francois Moine <http://moinejf.free.fr>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Copyright (C) 2008-2009 microdia project <microdia@googlegroups.com>
  *	Copyright (C) 2009 Brian Johnson <brijohn@gmail.com>
  *
@@ -18,6 +26,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/input.h>
 
 #include "gspca.h"
@@ -31,8 +47,16 @@ MODULE_AUTHOR("Brian Johnson <brijohn@gmail.com>, "
 MODULE_DESCRIPTION("GSPCA/SN9C20X USB Camera Driver");
 MODULE_LICENSE("GPL");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define MODULE_NAME "sn9c20x"
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MODULE_NAME "sn9c20x"
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Pixel format private data
  */
@@ -64,10 +88,49 @@ MODULE_LICENSE("GPL");
 #define LED_REVERSE	0x2 /* some cameras unset gpio to turn on leds */
 #define FLIP_DETECT	0x4
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum e_ctrl {
+	BRIGHTNESS,
+	CONTRAST,
+	SATURATION,
+	HUE,
+	GAMMA,
+	BLUE,
+	RED,
+	VFLIP,
+	HFLIP,
+	EXPOSURE,
+	GAIN,
+	AUTOGAIN,
+	QUALITY,
+	NCTRLS		/* number of controls */
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* specific webcam descriptor */
 struct sd {
 	struct gspca_dev gspca_dev;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct gspca_ctrl ctrls[NCTRLS];
+
+	struct work_struct work;
+	struct workqueue_struct *work_thread;
+
+	u32 pktsz;			/* (used by pkt_scan) */
+	u16 npkt;
+	s8 nchg;
+	u8 fmt;				/* (used for JPEG QTAB update */
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MIN_AVG_LUM 80
 #define MAX_AVG_LUM 130
 	atomic_t avg_lum;
@@ -75,6 +138,11 @@ struct sd {
 	u8 older_step;
 	u8 exposure_step;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 brightness;
 	u8 contrast;
 	u8 saturation;
@@ -89,17 +157,36 @@ struct sd {
 	u16 exposure;
 	u8 auto_exposure;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 i2c_addr;
 	u8 sensor;
 	u8 hstart;
 	u8 vstart;
 
 	u8 jpeg_hdr[JPEG_HDR_SZ];
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u8 quality;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 quality;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u8 flags;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void qual_upd(struct work_struct *work);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct i2c_reg_u8 {
 	u8 reg;
 	u8 val;
@@ -110,6 +197,11 @@ struct i2c_reg_u16 {
 	u16 val;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sd_setbrightness(struct gspca_dev *gspca_dev, s32 val);
 static int sd_getbrightness(struct gspca_dev *gspca_dev, s32 *val);
 static int sd_setcontrast(struct gspca_dev *gspca_dev, s32 val);
@@ -135,6 +227,10 @@ static int sd_getexposure(struct gspca_dev *gspca_dev, s32 *val);
 static int sd_setautoexposure(struct gspca_dev *gspca_dev, s32 val);
 static int sd_getautoexposure(struct gspca_dev *gspca_dev, s32 *val);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct dmi_system_id flip_dmi_table[] = {
 	{
 		.ident = "MSI MS-1034",
@@ -175,9 +271,28 @@ static const struct dmi_system_id flip_dmi_table[] = {
 	{}
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void set_cmatrix(struct gspca_dev *gspca_dev);
+static void set_gamma(struct gspca_dev *gspca_dev);
+static void set_redblue(struct gspca_dev *gspca_dev);
+static void set_hvflip(struct gspca_dev *gspca_dev);
+static void set_exposure(struct gspca_dev *gspca_dev);
+static void set_gain(struct gspca_dev *gspca_dev);
+static void set_quality(struct gspca_dev *gspca_dev);
+
+static const struct ctrl sd_ctrls[NCTRLS] = {
+[BRIGHTNESS] = {
+=======
 static const struct ctrl sd_ctrls[] = {
 	{
 #define BRIGHTNESS_IDX 0
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct ctrl sd_ctrls[] = {
+	{
+#define BRIGHTNESS_IDX 0
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_BRIGHTNESS,
 		.type    = V4L2_CTRL_TYPE_INTEGER,
@@ -185,6 +300,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 0xff,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0x7f
+	    },
+	    .set_control = set_cmatrix
+	},
+[CONTRAST] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BRIGHTNESS_DEFAULT 0x7f
 		.default_value = BRIGHTNESS_DEFAULT,
 	    },
@@ -193,6 +318,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define CONTRAST_IDX 1
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_CONTRAST,
 		.type    = V4L2_CTRL_TYPE_INTEGER,
@@ -200,6 +329,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 0xff,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0x7f
+	    },
+	    .set_control = set_cmatrix
+	},
+[SATURATION] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CONTRAST_DEFAULT 0x7f
 		.default_value = CONTRAST_DEFAULT,
 	    },
@@ -208,6 +347,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define SATURATION_IDX 2
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_SATURATION,
 		.type    = V4L2_CTRL_TYPE_INTEGER,
@@ -215,6 +358,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 0xff,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0x7f
+	    },
+	    .set_control = set_cmatrix
+	},
+[HUE] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SATURATION_DEFAULT 0x7f
 		.default_value = SATURATION_DEFAULT,
 	    },
@@ -223,6 +376,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define HUE_IDX 3
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_HUE,
 		.type    = V4L2_CTRL_TYPE_INTEGER,
@@ -230,6 +387,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = -180,
 		.maximum = 180,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0
+	    },
+	    .set_control = set_cmatrix
+	},
+[GAMMA] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HUE_DEFAULT 0
 		.default_value = HUE_DEFAULT,
 	    },
@@ -238,6 +405,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define GAMMA_IDX 4
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_GAMMA,
 		.type    = V4L2_CTRL_TYPE_INTEGER,
@@ -245,6 +416,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 0xff,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0x10
+	    },
+	    .set_control = set_gamma
+	},
+[BLUE] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GAMMA_DEFAULT 0x10
 		.default_value = GAMMA_DEFAULT,
 	    },
@@ -253,6 +434,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define BLUE_IDX 5
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id	 = V4L2_CID_BLUE_BALANCE,
 		.type	 = V4L2_CTRL_TYPE_INTEGER,
@@ -260,6 +445,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 0x7f,
 		.step	 = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0x28
+	    },
+	    .set_control = set_redblue
+	},
+[RED] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BLUE_DEFAULT 0x28
 		.default_value = BLUE_DEFAULT,
 	    },
@@ -268,6 +463,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define RED_IDX 6
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id	 = V4L2_CID_RED_BALANCE,
 		.type	 = V4L2_CTRL_TYPE_INTEGER,
@@ -275,6 +474,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 0x7f,
 		.step	 = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0x28
+	    },
+	    .set_control = set_redblue
+	},
+[HFLIP] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RED_DEFAULT 0x28
 		.default_value = RED_DEFAULT,
 	    },
@@ -283,6 +492,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define HFLIP_IDX 7
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_HFLIP,
 		.type    = V4L2_CTRL_TYPE_BOOLEAN,
@@ -290,6 +503,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 1,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0,
+	    },
+	    .set_control = set_hvflip
+	},
+[VFLIP] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HFLIP_DEFAULT 0
 		.default_value = HFLIP_DEFAULT,
 	    },
@@ -298,6 +521,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define VFLIP_IDX 8
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_VFLIP,
 		.type    = V4L2_CTRL_TYPE_BOOLEAN,
@@ -305,6 +532,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 1,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0,
+	    },
+	    .set_control = set_hvflip
+	},
+[EXPOSURE] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VFLIP_DEFAULT 0
 		.default_value = VFLIP_DEFAULT,
 	    },
@@ -313,6 +550,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define EXPOSURE_IDX 9
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_EXPOSURE,
 		.type    = V4L2_CTRL_TYPE_INTEGER,
@@ -320,6 +561,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 0x1780,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0x33,
+	    },
+	    .set_control = set_exposure
+	},
+[GAIN] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXPOSURE_DEFAULT 0x33
 		.default_value = EXPOSURE_DEFAULT,
 	    },
@@ -328,6 +579,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define GAIN_IDX 10
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_GAIN,
 		.type    = V4L2_CTRL_TYPE_INTEGER,
@@ -335,6 +590,16 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 28,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 0,
+	    },
+	    .set_control = set_gain
+	},
+[AUTOGAIN] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GAIN_DEFAULT 0x00
 		.default_value = GAIN_DEFAULT,
 	    },
@@ -343,6 +608,10 @@ static const struct ctrl sd_ctrls[] = {
 	},
 	{
 #define AUTOGAIN_IDX 11
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    {
 		.id      = V4L2_CID_AUTOGAIN,
 		.type    = V4L2_CTRL_TYPE_BOOLEAN,
@@ -350,11 +619,37 @@ static const struct ctrl sd_ctrls[] = {
 		.minimum = 0,
 		.maximum = 1,
 		.step    = 1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.default_value = 1,
+	    },
+	},
+[QUALITY] = {
+	    {
+		.id      = V4L2_CID_JPEG_COMPRESSION_QUALITY,
+		.type    = V4L2_CTRL_TYPE_INTEGER,
+		.name    = "Compression Quality",
+#define QUALITY_MIN 50
+#define QUALITY_MAX 90
+#define QUALITY_DEF 80
+		.minimum = QUALITY_MIN,
+		.maximum = QUALITY_MAX,
+		.step    = 1,
+		.default_value = QUALITY_DEF,
+	    },
+	    .set_control = set_quality
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AUTO_EXPOSURE_DEFAULT 1
 		.default_value = AUTO_EXPOSURE_DEFAULT,
 	    },
 	    .set = sd_setautoexposure,
 	    .get = sd_getautoexposure,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -874,7 +1169,15 @@ static u8 hv7131r_gain[] = {
 };
 
 static struct i2c_reg_u8 soi968_init[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{0x0c, 0x00}, {0x0f, 0x1f},
+=======
 	{0x12, 0x80}, {0x0c, 0x00}, {0x0f, 0x1f},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{0x12, 0x80}, {0x0c, 0x00}, {0x0f, 0x1f},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0x11, 0x80}, {0x38, 0x52}, {0x1e, 0x00},
 	{0x33, 0x08}, {0x35, 0x8c}, {0x36, 0x0c},
 	{0x37, 0x04}, {0x45, 0x04}, {0x47, 0xff},
@@ -900,7 +1203,15 @@ static struct i2c_reg_u8 ov7660_init[] = {
 };
 
 static struct i2c_reg_u8 ov7670_init[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{0x11, 0x80}, {0x3a, 0x04}, {0x12, 0x01},
+=======
 	{0x12, 0x80}, {0x11, 0x80}, {0x3a, 0x04}, {0x12, 0x01},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{0x12, 0x80}, {0x11, 0x80}, {0x3a, 0x04}, {0x12, 0x01},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0x32, 0xb6}, {0x03, 0x0a}, {0x0c, 0x00}, {0x3e, 0x00},
 	{0x70, 0x3a}, {0x71, 0x35}, {0x72, 0x11}, {0x73, 0xf0},
 	{0xa2, 0x02}, {0x13, 0xe0}, {0x00, 0x00}, {0x10, 0x00},
@@ -957,7 +1268,15 @@ static struct i2c_reg_u8 ov7670_init[] = {
 };
 
 static struct i2c_reg_u8 ov9650_init[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{0x00, 0x00}, {0x01, 0x78},
+=======
 	{0x12, 0x80}, {0x00, 0x00}, {0x01, 0x78},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{0x12, 0x80}, {0x00, 0x00}, {0x01, 0x78},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0x02, 0x78}, {0x03, 0x36}, {0x04, 0x03},
 	{0x05, 0x00}, {0x06, 0x00}, {0x08, 0x00},
 	{0x09, 0x01}, {0x0c, 0x00}, {0x0d, 0x00},
@@ -987,7 +1306,15 @@ static struct i2c_reg_u8 ov9650_init[] = {
 };
 
 static struct i2c_reg_u8 ov9655_init[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{0x0e, 0x61}, {0x11, 0x80}, {0x13, 0xba},
+=======
 	{0x12, 0x80}, {0x0e, 0x61}, {0x11, 0x80}, {0x13, 0xba},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{0x12, 0x80}, {0x0e, 0x61}, {0x11, 0x80}, {0x13, 0xba},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0x14, 0x2e}, {0x16, 0x24}, {0x1e, 0x04}, {0x27, 0x08},
 	{0x28, 0x08}, {0x29, 0x15}, {0x2c, 0x08}, {0x34, 0x3d},
 	{0x35, 0x00}, {0x38, 0x12}, {0x0f, 0x42}, {0x39, 0x57},
@@ -1110,10 +1437,26 @@ static struct i2c_reg_u8 hv7131r_init[] = {
 	{0x23, 0x09}, {0x01, 0x08},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void reg_r(struct gspca_dev *gspca_dev, u16 reg, u16 length)
+{
+	struct usb_device *dev = gspca_dev->dev;
+	int result;
+
+	if (gspca_dev->usb_err < 0)
+		return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int reg_r(struct gspca_dev *gspca_dev, u16 reg, u16 length)
 {
 	struct usb_device *dev = gspca_dev->dev;
 	int result;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	result = usb_control_msg(dev, usb_rcvctrlpipe(dev, 0),
 			0x00,
 			USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_INTERFACE,
@@ -1123,6 +1466,17 @@ static int reg_r(struct gspca_dev *gspca_dev, u16 reg, u16 length)
 			length,
 			500);
 	if (unlikely(result < 0 || result != length)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Read register %02x failed %d\n", reg, result);
+		gspca_dev->usb_err = result;
+	}
+}
+
+static void reg_w(struct gspca_dev *gspca_dev, u16 reg,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err("Read register failed 0x%02X", reg);
 		return -EIO;
 	}
@@ -1130,10 +1484,23 @@ static int reg_r(struct gspca_dev *gspca_dev, u16 reg, u16 length)
 }
 
 static int reg_w(struct gspca_dev *gspca_dev, u16 reg,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 const u8 *buffer, int length)
 {
 	struct usb_device *dev = gspca_dev->dev;
 	int result;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (gspca_dev->usb_err < 0)
+		return;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(gspca_dev->usb_buf, buffer, length);
 	result = usb_control_msg(dev, usb_sndctrlpipe(dev, 0),
 			0x08,
@@ -1144,6 +1511,46 @@ static int reg_w(struct gspca_dev *gspca_dev, u16 reg,
 			length,
 			500);
 	if (unlikely(result < 0 || result != length)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Write register %02x failed %d\n", reg, result);
+		gspca_dev->usb_err = result;
+	}
+}
+
+static void reg_w1(struct gspca_dev *gspca_dev, u16 reg, const u8 value)
+{
+	reg_w(gspca_dev, reg, &value, 1);
+}
+
+static void i2c_w(struct gspca_dev *gspca_dev, const u8 *buffer)
+{
+	int i;
+
+	reg_w(gspca_dev, 0x10c0, buffer, 8);
+	for (i = 0; i < 5; i++) {
+		reg_r(gspca_dev, 0x10c0, 1);
+		if (gspca_dev->usb_err < 0)
+			return;
+		if (gspca_dev->usb_buf[0] & 0x04) {
+			if (gspca_dev->usb_buf[0] & 0x08) {
+				pr_err("i2c_w error\n");
+				gspca_dev->usb_err = -EIO;
+			}
+			return;
+		}
+		msleep(10);
+	}
+	pr_err("i2c_w reg %02x no response\n", buffer[2]);
+/*	gspca_dev->usb_err = -EIO;	fixme: may occur */
+}
+
+static void i2c_w1(struct gspca_dev *gspca_dev, u8 reg, u8 val)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err("Write register failed index 0x%02X", reg);
 		return -EIO;
 	}
@@ -1176,6 +1583,10 @@ static int i2c_w1(struct gspca_dev *gspca_dev, u8 reg, u8 val)
 {
 	struct sd *sd = (struct sd *) gspca_dev;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 row[8];
 
 	/*
@@ -1191,10 +1602,32 @@ static int i2c_w1(struct gspca_dev *gspca_dev, u8 reg, u8 val)
 	row[6] = 0x00;
 	row[7] = 0x10;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_w(gspca_dev, row);
+}
+
+static void i2c_w1_buf(struct gspca_dev *gspca_dev,
+			struct i2c_reg_u8 *buf, int sz)
+{
+	while (--sz >= 0) {
+		i2c_w1(gspca_dev, buf->reg, buf->val);
+		buf++;
+	}
+}
+
+static void i2c_w2(struct gspca_dev *gspca_dev, u8 reg, u16 val)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return i2c_w(gspca_dev, row);
 }
 
 static int i2c_w2(struct gspca_dev *gspca_dev, u8 reg, u16 val)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sd *sd = (struct sd *) gspca_dev;
 	u8 row[8];
@@ -1206,16 +1639,48 @@ static int i2c_w2(struct gspca_dev *gspca_dev, u8 reg, u16 val)
 	row[0] = 0x81 | (3 << 4);
 	row[1] = sd->i2c_addr;
 	row[2] = reg;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	row[3] = val >> 8;
+	row[4] = val;
+=======
 	row[3] = (val >> 8) & 0xff;
 	row[4] = val & 0xff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	row[3] = (val >> 8) & 0xff;
+	row[4] = val & 0xff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	row[5] = 0x00;
 	row[6] = 0x00;
 	row[7] = 0x10;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_w(gspca_dev, row);
+}
+
+static void i2c_w2_buf(struct gspca_dev *gspca_dev,
+			struct i2c_reg_u16 *buf, int sz)
+{
+	while (--sz >= 0) {
+		i2c_w2(gspca_dev, buf->reg, buf->val);
+		buf++;
+	}
+}
+
+static void i2c_r1(struct gspca_dev *gspca_dev, u8 reg, u8 *val)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return i2c_w(gspca_dev, row);
 }
 
 static int i2c_r1(struct gspca_dev *gspca_dev, u8 reg, u8 *val)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sd *sd = (struct sd *) gspca_dev;
 	u8 row[8];
@@ -1228,6 +1693,20 @@ static int i2c_r1(struct gspca_dev *gspca_dev, u8 reg, u8 *val)
 	row[5] = 0;
 	row[6] = 0;
 	row[7] = 0x10;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_w(gspca_dev, row);
+	row[0] = 0x81 | (1 << 4) | 0x02;
+	row[2] = 0;
+	i2c_w(gspca_dev, row);
+	reg_r(gspca_dev, 0x10c2, 5);
+	*val = gspca_dev->usb_buf[4];
+}
+
+static void i2c_r2(struct gspca_dev *gspca_dev, u8 reg, u16 *val)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (i2c_w(gspca_dev, row) < 0)
 		return -EIO;
 	row[0] = 0x81 | (1 << 4) | 0x02;
@@ -1241,6 +1720,10 @@ static int i2c_r1(struct gspca_dev *gspca_dev, u8 reg, u8 *val)
 }
 
 static int i2c_r2(struct gspca_dev *gspca_dev, u8 reg, u16 *val)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sd *sd = (struct sd *) gspca_dev;
 	u8 row[8];
@@ -1253,6 +1736,118 @@ static int i2c_r2(struct gspca_dev *gspca_dev, u8 reg, u16 *val)
 	row[5] = 0;
 	row[6] = 0;
 	row[7] = 0x10;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_w(gspca_dev, row);
+	row[0] = 0x81 | (2 << 4) | 0x02;
+	row[2] = 0;
+	i2c_w(gspca_dev, row);
+	reg_r(gspca_dev, 0x10c2, 5);
+	*val = (gspca_dev->usb_buf[3] << 8) | gspca_dev->usb_buf[4];
+}
+
+static void ov9650_init_sensor(struct gspca_dev *gspca_dev)
+{
+	u16 id;
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_r2(gspca_dev, 0x1c, &id);
+	if (gspca_dev->usb_err < 0)
+		return;
+
+	if (id != 0x7fa2) {
+		pr_err("sensor id for ov9650 doesn't match (0x%04x)\n", id);
+		gspca_dev->usb_err = -ENODEV;
+		return;
+	}
+
+	i2c_w1(gspca_dev, 0x12, 0x80);		/* sensor reset */
+	msleep(200);
+	i2c_w1_buf(gspca_dev, ov9650_init, ARRAY_SIZE(ov9650_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("OV9650 sensor initialization failed\n");
+	sd->hstart = 1;
+	sd->vstart = 7;
+}
+
+static void ov9655_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_w1(gspca_dev, 0x12, 0x80);		/* sensor reset */
+	msleep(200);
+	i2c_w1_buf(gspca_dev, ov9655_init, ARRAY_SIZE(ov9655_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("OV9655 sensor initialization failed\n");
+
+	/* disable hflip and vflip */
+	gspca_dev->ctrl_dis = (1 << HFLIP) | (1 << VFLIP);
+	sd->hstart = 1;
+	sd->vstart = 2;
+}
+
+static void soi968_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_w1(gspca_dev, 0x12, 0x80);		/* sensor reset */
+	msleep(200);
+	i2c_w1_buf(gspca_dev, soi968_init, ARRAY_SIZE(soi968_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("SOI968 sensor initialization failed\n");
+
+	/* disable hflip and vflip */
+	gspca_dev->ctrl_dis = (1 << HFLIP) | (1 << VFLIP)
+				| (1 << EXPOSURE);
+	sd->hstart = 60;
+	sd->vstart = 11;
+}
+
+static void ov7660_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_w1(gspca_dev, 0x12, 0x80);		/* sensor reset */
+	msleep(200);
+	i2c_w1_buf(gspca_dev, ov7660_init, ARRAY_SIZE(ov7660_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("OV7660 sensor initialization failed\n");
+	sd->hstart = 3;
+	sd->vstart = 3;
+}
+
+static void ov7670_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_w1(gspca_dev, 0x12, 0x80);		/* sensor reset */
+	msleep(200);
+	i2c_w1_buf(gspca_dev, ov7670_init, ARRAY_SIZE(ov7670_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("OV7670 sensor initialization failed\n");
+
+	/* disable hflip and vflip */
+	gspca_dev->ctrl_dis = (1 << HFLIP) | (1 << VFLIP);
+	sd->hstart = 0;
+	sd->vstart = 1;
+}
+
+static void mt9v_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+	u16 value;
+
+	sd->i2c_addr = 0x5d;
+	i2c_r2(gspca_dev, 0xff, &value);
+	if (gspca_dev->usb_err >= 0
+	 && value == 0x8243) {
+		i2c_w2_buf(gspca_dev, mt9v011_init, ARRAY_SIZE(mt9v011_init));
+		if (gspca_dev->usb_err < 0) {
+			pr_err("MT9V011 sensor initialization failed\n");
+			return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (i2c_w(gspca_dev, row) < 0)
 		return -EIO;
 	row[0] = 0x81 | (2 << 4) | 0x02;
@@ -1382,10 +1977,59 @@ static int mt9v_init_sensor(struct gspca_dev *gspca_dev)
 				err("MT9V011 sensor initialization failed");
 				return -ENODEV;
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		sd->hstart = 2;
 		sd->vstart = 2;
 		sd->sensor = SENSOR_MT9V011;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("MT9V011 sensor detected\n");
+		return;
+	}
+
+	gspca_dev->usb_err = 0;
+	sd->i2c_addr = 0x5c;
+	i2c_w2(gspca_dev, 0x01, 0x0004);
+	i2c_r2(gspca_dev, 0xff, &value);
+	if (gspca_dev->usb_err >= 0
+	 && value == 0x823a) {
+		i2c_w2_buf(gspca_dev, mt9v111_init, ARRAY_SIZE(mt9v111_init));
+		if (gspca_dev->usb_err < 0) {
+			pr_err("MT9V111 sensor initialization failed\n");
+			return;
+		}
+		gspca_dev->ctrl_dis = (1 << EXPOSURE)
+					| (1 << AUTOGAIN)
+					| (1 << GAIN);
+		sd->hstart = 2;
+		sd->vstart = 2;
+		sd->sensor = SENSOR_MT9V111;
+		pr_info("MT9V111 sensor detected\n");
+		return;
+	}
+
+	gspca_dev->usb_err = 0;
+	sd->i2c_addr = 0x5d;
+	i2c_w2(gspca_dev, 0xf0, 0x0000);
+	if (gspca_dev->usb_err < 0) {
+		gspca_dev->usb_err = 0;
+		sd->i2c_addr = 0x48;
+		i2c_w2(gspca_dev, 0xf0, 0x0000);
+	}
+	i2c_r2(gspca_dev, 0x00, &value);
+	if (gspca_dev->usb_err >= 0
+	 && value == 0x1229) {
+		i2c_w2_buf(gspca_dev, mt9v112_init, ARRAY_SIZE(mt9v112_init));
+		if (gspca_dev->usb_err < 0) {
+			pr_err("MT9V112 sensor initialization failed\n");
+			return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info("MT9V011 sensor detected");
 		return 0;
 	}
@@ -1425,10 +2069,62 @@ static int mt9v_init_sensor(struct gspca_dev *gspca_dev)
 				err("MT9V112 sensor initialization failed");
 				return -ENODEV;
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		sd->hstart = 6;
 		sd->vstart = 2;
 		sd->sensor = SENSOR_MT9V112;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("MT9V112 sensor detected\n");
+		return;
+	}
+
+	gspca_dev->usb_err = -ENODEV;
+}
+
+static void mt9m112_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_w2_buf(gspca_dev, mt9m112_init, ARRAY_SIZE(mt9m112_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("MT9M112 sensor initialization failed\n");
+
+	gspca_dev->ctrl_dis = (1 << EXPOSURE) | (1 << AUTOGAIN)
+				| (1 << GAIN);
+	sd->hstart = 0;
+	sd->vstart = 2;
+}
+
+static void mt9m111_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_w2_buf(gspca_dev, mt9m111_init, ARRAY_SIZE(mt9m111_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("MT9M111 sensor initialization failed\n");
+
+	gspca_dev->ctrl_dis = (1 << EXPOSURE) | (1 << AUTOGAIN)
+				| (1 << GAIN);
+	sd->hstart = 0;
+	sd->vstart = 2;
+}
+
+static void mt9m001_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+	u16 id;
+
+	i2c_r2(gspca_dev, 0x00, &id);
+	if (gspca_dev->usb_err < 0)
+		return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info("MT9V112 sensor detected");
 		return 0;
 	}
@@ -1480,11 +2176,99 @@ static int mt9m001_init_sensor(struct gspca_dev *gspca_dev)
 
 	if (i2c_r2(gspca_dev, 0x00, &id) < 0)
 		return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* must be 0x8411 or 0x8421 for colour sensor and 8431 for bw */
 	switch (id) {
 	case 0x8411:
 	case 0x8421:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("MT9M001 color sensor detected\n");
+		break;
+	case 0x8431:
+		pr_info("MT9M001 mono sensor detected\n");
+		break;
+	default:
+		pr_err("No MT9M001 chip detected, ID = %x\n\n", id);
+		gspca_dev->usb_err = -ENODEV;
+		return;
+	}
+
+	i2c_w2_buf(gspca_dev, mt9m001_init, ARRAY_SIZE(mt9m001_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("MT9M001 sensor initialization failed\n");
+
+	/* disable hflip and vflip */
+	gspca_dev->ctrl_dis = (1 << HFLIP) | (1 << VFLIP);
+	sd->hstart = 1;
+	sd->vstart = 1;
+}
+
+static void hv7131r_init_sensor(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	i2c_w1_buf(gspca_dev, hv7131r_init, ARRAY_SIZE(hv7131r_init));
+	if (gspca_dev->usb_err < 0)
+		pr_err("HV7131R Sensor initialization failed\n");
+
+	sd->hstart = 0;
+	sd->vstart = 1;
+}
+
+static void set_cmatrix(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+	int satur;
+	s32 hue_coord, hue_index = 180 + sd->ctrls[HUE].val;
+	u8 cmatrix[21];
+
+	memset(cmatrix, 0, sizeof cmatrix);
+	cmatrix[2] = (sd->ctrls[CONTRAST].val * 0x25 / 0x100) + 0x26;
+	cmatrix[0] = 0x13 + (cmatrix[2] - 0x26) * 0x13 / 0x25;
+	cmatrix[4] = 0x07 + (cmatrix[2] - 0x26) * 0x07 / 0x25;
+	cmatrix[18] = sd->ctrls[BRIGHTNESS].val - 0x80;
+
+	satur = sd->ctrls[SATURATION].val;
+	hue_coord = (hsv_red_x[hue_index] * satur) >> 8;
+	cmatrix[6] = hue_coord;
+	cmatrix[7] = (hue_coord >> 8) & 0x0f;
+
+	hue_coord = (hsv_red_y[hue_index] * satur) >> 8;
+	cmatrix[8] = hue_coord;
+	cmatrix[9] = (hue_coord >> 8) & 0x0f;
+
+	hue_coord = (hsv_green_x[hue_index] * satur) >> 8;
+	cmatrix[10] = hue_coord;
+	cmatrix[11] = (hue_coord >> 8) & 0x0f;
+
+	hue_coord = (hsv_green_y[hue_index] * satur) >> 8;
+	cmatrix[12] = hue_coord;
+	cmatrix[13] = (hue_coord >> 8) & 0x0f;
+
+	hue_coord = (hsv_blue_x[hue_index] * satur) >> 8;
+	cmatrix[14] = hue_coord;
+	cmatrix[15] = (hue_coord >> 8) & 0x0f;
+
+	hue_coord = (hsv_blue_y[hue_index] * satur) >> 8;
+	cmatrix[16] = hue_coord;
+	cmatrix[17] = (hue_coord >> 8) & 0x0f;
+
+	reg_w(gspca_dev, 0x10e1, cmatrix, 21);
+}
+
+static void set_gamma(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+	u8 gamma[17];
+	u8 gval = sd->ctrls[GAMMA].val * 0xb8 / 0x100;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info("MT9M001 color sensor detected");
 		break;
 	case 0x8431:
@@ -1571,6 +2355,10 @@ static int set_gamma(struct gspca_dev *gspca_dev)
 	u8 gamma[17];
 	u8 gval = sd->gamma * 0xb8 / 0x100;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	gamma[0] = 0x0a;
 	gamma[1] = 0x13 + (gval * (0xcb - 0x13) / 0xb8);
@@ -1590,6 +2378,23 @@ static int set_gamma(struct gspca_dev *gspca_dev)
 	gamma[15] = 0xea + (gval * (0xf9 - 0xea) / 0xb8);
 	gamma[16] = 0xf5;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	reg_w(gspca_dev, 0x1190, gamma, 17);
+}
+
+static void set_redblue(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	reg_w1(gspca_dev, 0x118c, sd->ctrls[RED].val);
+	reg_w1(gspca_dev, 0x118f, sd->ctrls[BLUE].val);
+}
+
+static void set_hvflip(struct gspca_dev *gspca_dev)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return reg_w(gspca_dev, 0x1190, gamma, 17);
 }
 
@@ -1602,17 +2407,35 @@ static int set_redblue(struct gspca_dev *gspca_dev)
 }
 
 static int set_hvflip(struct gspca_dev *gspca_dev)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 value, tslb, hflip, vflip;
 	u16 value2;
 	struct sd *sd = (struct sd *) gspca_dev;
 
 	if ((sd->flags & FLIP_DETECT) && dmi_check_system(flip_dmi_table)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		hflip = !sd->ctrls[HFLIP].val;
+		vflip = !sd->ctrls[VFLIP].val;
+	} else {
+		hflip = sd->ctrls[HFLIP].val;
+		vflip = sd->ctrls[VFLIP].val;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hflip = !sd->hflip;
 		vflip = !sd->vflip;
 	} else {
 		hflip = sd->hflip;
 		vflip = sd->vflip;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	switch (sd->sensor) {
@@ -1623,8 +2446,19 @@ static int set_hvflip(struct gspca_dev *gspca_dev)
 		if (vflip) {
 			value |= 0x10;
 			sd->vstart = 2;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		} else {
+			sd->vstart = 3;
+		}
+=======
 		} else
 			sd->vstart = 3;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		} else
+			sd->vstart = 3;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg_w1(gspca_dev, 0x1182, sd->vstart);
 		i2c_w1(gspca_dev, 0x1e, value);
 		break;
@@ -1672,6 +2506,20 @@ static int set_hvflip(struct gspca_dev *gspca_dev)
 		i2c_w1(gspca_dev, 0x01, value);
 		break;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+
+static void set_exposure(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+	u8 exp[8] = {0x81, sd->i2c_addr, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e};
+	int expo;
+
+	expo = sd->ctrls[EXPOSURE].val;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1679,6 +2527,10 @@ static int set_exposure(struct gspca_dev *gspca_dev)
 {
 	struct sd *sd = (struct sd *) gspca_dev;
 	u8 exp[8] = {0x81, sd->i2c_addr, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1e};
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (sd->sensor) {
 	case SENSOR_OV7660:
 	case SENSOR_OV7670:
@@ -1686,20 +2538,62 @@ static int set_exposure(struct gspca_dev *gspca_dev)
 	case SENSOR_OV9650:
 		exp[0] |= (3 << 4);
 		exp[2] = 0x2d;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		exp[3] = expo;
+		exp[4] = expo >> 8;
+=======
 		exp[3] = sd->exposure & 0xff;
 		exp[4] = sd->exposure >> 8;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		exp[3] = sd->exposure & 0xff;
+		exp[4] = sd->exposure >> 8;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SENSOR_MT9M001:
 	case SENSOR_MT9V112:
 	case SENSOR_MT9V011:
 		exp[0] |= (3 << 4);
 		exp[2] = 0x09;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		exp[3] = expo >> 8;
+		exp[4] = expo;
+=======
 		exp[3] = sd->exposure >> 8;
 		exp[4] = sd->exposure & 0xff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		exp[3] = sd->exposure >> 8;
+		exp[4] = sd->exposure & 0xff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SENSOR_HV7131R:
 		exp[0] |= (4 << 4);
 		exp[2] = 0x25;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		exp[3] = expo >> 5;
+		exp[4] = expo << 3;
+		exp[5] = 0;
+		break;
+	default:
+		return;
+	}
+	i2c_w(gspca_dev, exp);
+}
+
+static void set_gain(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+	u8 gain[8] = {0x81, sd->i2c_addr, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1d};
+	int g;
+
+	g = sd->ctrls[GAIN].val;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		exp[3] = (sd->exposure >> 5) & 0xff;
 		exp[4] = (sd->exposure << 3) & 0xff;
 		exp[5] = 0;
@@ -1715,6 +2609,10 @@ static int set_gain(struct gspca_dev *gspca_dev)
 {
 	struct sd *sd = (struct sd *) gspca_dev;
 	u8 gain[8] = {0x81, sd->i2c_addr, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1d};
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (sd->sensor) {
 	case SENSOR_OV7660:
 	case SENSOR_OV7670:
@@ -1722,29 +2620,93 @@ static int set_gain(struct gspca_dev *gspca_dev)
 	case SENSOR_OV9655:
 	case SENSOR_OV9650:
 		gain[0] |= (2 << 4);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		gain[3] = ov_gain[g];
+=======
 		gain[3] = ov_gain[sd->gain];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		gain[3] = ov_gain[sd->gain];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SENSOR_MT9V011:
 		gain[0] |= (3 << 4);
 		gain[2] = 0x35;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		gain[3] = micron1_gain[g] >> 8;
+		gain[4] = micron1_gain[g];
+=======
 		gain[3] = micron1_gain[sd->gain] >> 8;
 		gain[4] = micron1_gain[sd->gain] & 0xff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		gain[3] = micron1_gain[sd->gain] >> 8;
+		gain[4] = micron1_gain[sd->gain] & 0xff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SENSOR_MT9V112:
 		gain[0] |= (3 << 4);
 		gain[2] = 0x2f;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		gain[3] = micron1_gain[g] >> 8;
+		gain[4] = micron1_gain[g];
+=======
 		gain[3] = micron1_gain[sd->gain] >> 8;
 		gain[4] = micron1_gain[sd->gain] & 0xff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		gain[3] = micron1_gain[sd->gain] >> 8;
+		gain[4] = micron1_gain[sd->gain] & 0xff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SENSOR_MT9M001:
 		gain[0] |= (3 << 4);
 		gain[2] = 0x2f;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		gain[3] = micron2_gain[g] >> 8;
+		gain[4] = micron2_gain[g];
+=======
 		gain[3] = micron2_gain[sd->gain] >> 8;
 		gain[4] = micron2_gain[sd->gain] & 0xff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		gain[3] = micron2_gain[sd->gain] >> 8;
+		gain[4] = micron2_gain[sd->gain] & 0xff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SENSOR_HV7131R:
 		gain[0] |= (2 << 4);
 		gain[2] = 0x30;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		gain[3] = hv7131r_gain[g];
+		break;
+	default:
+		return;
+	}
+	i2c_w(gspca_dev, gain);
+}
+
+static void set_quality(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	jpeg_set_qual(sd->jpeg_hdr, sd->ctrls[QUALITY].val);
+	reg_w1(gspca_dev, 0x1061, 0x01);	/* stop transfer */
+	reg_w1(gspca_dev, 0x10e0, sd->fmt | 0x20); /* write QTAB */
+	reg_w(gspca_dev, 0x1100, &sd->jpeg_hdr[JPEG_QT0_OFFSET], 64);
+	reg_w(gspca_dev, 0x1140, &sd->jpeg_hdr[JPEG_QT1_OFFSET], 64);
+	reg_w1(gspca_dev, 0x1061, 0x03);	/* restart transfer */
+	reg_w1(gspca_dev, 0x10e0, sd->fmt);
+	sd->fmt ^= 0x0c;			/* invert QTAB use + write */
+	reg_w1(gspca_dev, 0x10e0, sd->fmt);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gain[3] = hv7131r_gain[sd->gain];
 		break;
 	default:
@@ -1954,6 +2916,10 @@ static int sd_getautoexposure(struct gspca_dev *gspca_dev, s32 *val)
 	struct sd *sd = (struct sd *) gspca_dev;
 	*val = sd->auto_exposure;
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_VIDEO_ADV_DEBUG
@@ -1961,21 +2927,50 @@ static int sd_dbg_g_register(struct gspca_dev *gspca_dev,
 			struct v4l2_dbg_register *reg)
 {
 	struct sd *sd = (struct sd *) gspca_dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (reg->match.type) {
 	case V4L2_CHIP_MATCH_HOST:
 		if (reg->match.addr != 0)
 			return -EINVAL;
 		if (reg->reg < 0x1000 || reg->reg > 0x11ff)
 			return -EINVAL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		reg_r(gspca_dev, reg->reg, 1);
+		reg->val = gspca_dev->usb_buf[0];
+		return gspca_dev->usb_err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (reg_r(gspca_dev, reg->reg, 1) < 0)
 			return -EINVAL;
 		reg->val = gspca_dev->usb_buf[0];
 		return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case V4L2_CHIP_MATCH_I2C_ADDR:
 		if (reg->match.addr != sd->i2c_addr)
 			return -EINVAL;
 		if (sd->sensor >= SENSOR_MT9V011 &&
 		    sd->sensor <= SENSOR_MT9M112) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			i2c_r2(gspca_dev, reg->reg, (u16 *) &reg->val);
+		} else {
+			i2c_r1(gspca_dev, reg->reg, (u8 *) &reg->val);
+		}
+		return gspca_dev->usb_err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (i2c_r2(gspca_dev, reg->reg, (u16 *)&reg->val) < 0)
 				return -EINVAL;
 		} else {
@@ -1983,6 +2978,10 @@ static int sd_dbg_g_register(struct gspca_dev *gspca_dev,
 				return -EINVAL;
 		}
 		return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return -EINVAL;
 }
@@ -1991,20 +2990,48 @@ static int sd_dbg_s_register(struct gspca_dev *gspca_dev,
 			struct v4l2_dbg_register *reg)
 {
 	struct sd *sd = (struct sd *) gspca_dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (reg->match.type) {
 	case V4L2_CHIP_MATCH_HOST:
 		if (reg->match.addr != 0)
 			return -EINVAL;
 		if (reg->reg < 0x1000 || reg->reg > 0x11ff)
 			return -EINVAL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		reg_w1(gspca_dev, reg->reg, reg->val);
+		return gspca_dev->usb_err;
+=======
 		if (reg_w1(gspca_dev, reg->reg, reg->val) < 0)
 			return -EINVAL;
 		return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (reg_w1(gspca_dev, reg->reg, reg->val) < 0)
+			return -EINVAL;
+		return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case V4L2_CHIP_MATCH_I2C_ADDR:
 		if (reg->match.addr != sd->i2c_addr)
 			return -EINVAL;
 		if (sd->sensor >= SENSOR_MT9V011 &&
 		    sd->sensor <= SENSOR_MT9M112) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			i2c_w2(gspca_dev, reg->reg, reg->val);
+		} else {
+			i2c_w1(gspca_dev, reg->reg, reg->val);
+		}
+		return gspca_dev->usb_err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (i2c_w2(gspca_dev, reg->reg, reg->val) < 0)
 				return -EINVAL;
 		} else {
@@ -2012,6 +3039,10 @@ static int sd_dbg_s_register(struct gspca_dev *gspca_dev,
 				return -EINVAL;
 		}
 		return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return -EINVAL;
 }
@@ -2046,10 +3077,24 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	struct cam *cam;
 
 	cam = &gspca_dev->cam;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cam->needs_full_bandwidth = 1;
+
+	sd->sensor = id->driver_info >> 8;
+	sd->i2c_addr = id->driver_info;
+	sd->flags = id->driver_info >> 16;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sd->sensor = (id->driver_info >> 8) & 0xff;
 	sd->i2c_addr = id->driver_info & 0xff;
 	sd->flags = (id->driver_info >> 16) & 0xff;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (sd->sensor) {
 	case SENSOR_MT9M112:
@@ -2073,6 +3118,14 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	sd->older_step = 0;
 	sd->exposure_step = 16;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	gspca_dev->cam.ctrls = sd->ctrls;
+
+	INIT_WORK(&sd->work, qual_upd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sd->brightness = BRIGHTNESS_DEFAULT;
 	sd->contrast = CONTRAST_DEFAULT;
 	sd->saturation = SATURATION_DEFAULT;
@@ -2088,6 +3141,10 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	sd->auto_exposure = AUTO_EXPOSURE_DEFAULT;
 
 	sd->quality = 95;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -2102,9 +3159,22 @@ static int sd_init(struct gspca_dev *gspca_dev)
 
 	for (i = 0; i < ARRAY_SIZE(bridge_init); i++) {
 		value = bridge_init[i][1];
+<<<<<<< HEAD
+<<<<<<< HEAD
+		reg_w(gspca_dev, bridge_init[i][0], &value, 1);
+		if (gspca_dev->usb_err < 0) {
+			pr_err("Device initialization failed\n");
+			return gspca_dev->usb_err;
+=======
 		if (reg_w(gspca_dev, bridge_init[i][0], &value, 1) < 0) {
 			err("Device initialization failed");
 			return -ENODEV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (reg_w(gspca_dev, bridge_init[i][0], &value, 1) < 0) {
+			err("Device initialization failed");
+			return -ENODEV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -2113,13 +3183,95 @@ static int sd_init(struct gspca_dev *gspca_dev)
 	else
 		reg_w1(gspca_dev, 0x1006, 0x20);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	reg_w(gspca_dev, 0x10c0, i2c_init, 9);
+	if (gspca_dev->usb_err < 0) {
+		pr_err("Device initialization failed\n");
+		return gspca_dev->usb_err;
+=======
 	if (reg_w(gspca_dev, 0x10c0, i2c_init, 9) < 0) {
 		err("Device initialization failed");
 		return -ENODEV;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (reg_w(gspca_dev, 0x10c0, i2c_init, 9) < 0) {
+		err("Device initialization failed");
+		return -ENODEV;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	switch (sd->sensor) {
 	case SENSOR_OV9650:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ov9650_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("OV9650 sensor detected\n");
+		break;
+	case SENSOR_OV9655:
+		ov9655_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("OV9655 sensor detected\n");
+		break;
+	case SENSOR_SOI968:
+		soi968_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("SOI968 sensor detected\n");
+		break;
+	case SENSOR_OV7660:
+		ov7660_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("OV7660 sensor detected\n");
+		break;
+	case SENSOR_OV7670:
+		ov7670_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("OV7670 sensor detected\n");
+		break;
+	case SENSOR_MT9VPRB:
+		mt9v_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("MT9VPRB sensor detected\n");
+		break;
+	case SENSOR_MT9M111:
+		mt9m111_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("MT9M111 sensor detected\n");
+		break;
+	case SENSOR_MT9M112:
+		mt9m112_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("MT9M112 sensor detected\n");
+		break;
+	case SENSOR_MT9M001:
+		mt9m001_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		break;
+	case SENSOR_HV7131R:
+		hv7131r_init_sensor(gspca_dev);
+		if (gspca_dev->usb_err < 0)
+			break;
+		pr_info("HV7131R sensor detected\n");
+		break;
+	default:
+		pr_err("Unsupported sensor\n");
+		gspca_dev->usb_err = -ENODEV;
+	}
+
+	return gspca_dev->usb_err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ov9650_init_sensor(gspca_dev) < 0)
 			return -ENODEV;
 		info("OV9650 sensor detected");
@@ -2173,12 +3325,23 @@ static int sd_init(struct gspca_dev *gspca_dev)
 	}
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void configure_sensor_output(struct gspca_dev *gspca_dev, int mode)
 {
 	struct sd *sd = (struct sd *) gspca_dev;
 	u8 value;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (sd->sensor) {
 	case SENSOR_SOI968:
 		if (mode & MODE_SXGA) {
@@ -2231,6 +3394,49 @@ static void configure_sensor_output(struct gspca_dev *gspca_dev, int mode)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sd_isoc_init(struct gspca_dev *gspca_dev)
+{
+	struct usb_interface *intf;
+	u32 flags = gspca_dev->cam.cam_mode[(int)gspca_dev->curr_mode].priv;
+
+	/*
+	 * When using the SN9C20X_I420 fmt the sn9c20x needs more bandwidth
+	 * than our regular bandwidth calculations reserve, so we force the
+	 * use of a specific altsetting when using the SN9C20X_I420 fmt.
+	 */
+	if (!(flags & (MODE_RAW | MODE_JPEG))) {
+		intf = usb_ifnum_to_if(gspca_dev->dev, gspca_dev->iface);
+
+		if (intf->num_altsetting != 9) {
+			pr_warn("sn9c20x camera with unknown number of alt "
+			        "settings (%d), please report!\n",
+			        intf->num_altsetting);
+			gspca_dev->alt = intf->num_altsetting;
+			return 0;
+		}
+
+		switch (gspca_dev->width) {
+		case 160: /* 160x120 */
+			gspca_dev->alt = 2;
+			break;
+		case 320: /* 320x240 */
+			gspca_dev->alt = 6;
+			break;
+		default:  /* >= 640x480 */
+			gspca_dev->alt = 9;
+			break;
+		}
+	}
+
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HW_WIN(mode, hstart, vstart) \
 ((const u8 []){hstart, 0, vstart, 0, \
 (mode & MODE_SXGA ? 1280 >> 4 : 640 >> 4), \
@@ -2251,18 +3457,57 @@ static int sd_start(struct gspca_dev *gspca_dev)
 
 	jpeg_define(sd->jpeg_hdr, height, width,
 			0x21);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	jpeg_set_qual(sd->jpeg_hdr, sd->ctrls[QUALITY].val);
+=======
 	jpeg_set_qual(sd->jpeg_hdr, sd->quality);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	jpeg_set_qual(sd->jpeg_hdr, sd->quality);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mode & MODE_RAW)
 		fmt = 0x2d;
 	else if (mode & MODE_JPEG)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fmt = 0x24;
+	else
+		fmt = 0x2f;	/* YUV 420 */
+	sd->fmt = fmt;
+=======
 		fmt = 0x2c;
 	else
 		fmt = 0x2f;	/* YUV 420 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fmt = 0x2c;
+	else
+		fmt = 0x2f;	/* YUV 420 */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (mode & SCALE_MASK) {
 	case SCALE_1280x1024:
 		scale = 0xc0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Set 1280x1024\n");
+		break;
+	case SCALE_640x480:
+		scale = 0x80;
+		pr_info("Set 640x480\n");
+		break;
+	case SCALE_320x240:
+		scale = 0x90;
+		pr_info("Set 320x240\n");
+		break;
+	case SCALE_160x120:
+		scale = 0xa0;
+		pr_info("Set 160x120\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info("Set 1280x1024");
 		break;
 	case SCALE_640x480:
@@ -2276,6 +3521,10 @@ static int sd_start(struct gspca_dev *gspca_dev)
 	case SCALE_160x120:
 		scale = 0xa0;
 		info("Set 160x120");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -2295,18 +3544,62 @@ static int sd_start(struct gspca_dev *gspca_dev)
 	set_hvflip(gspca_dev);
 
 	reg_w1(gspca_dev, 0x1007, 0x20);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	reg_w1(gspca_dev, 0x1061, 0x03);
+
+	/* if JPEG, prepare the compression quality update */
+	if (mode & MODE_JPEG) {
+		sd->pktsz = sd->npkt = 0;
+		sd->nchg = 0;
+		sd->work_thread =
+			create_singlethread_workqueue(KBUILD_MODNAME);
+	}
+
+	return gspca_dev->usb_err;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	reg_r(gspca_dev, 0x1061, 1);
 	reg_w1(gspca_dev, 0x1061, gspca_dev->usb_buf[0] | 0x02);
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void sd_stopN(struct gspca_dev *gspca_dev)
 {
 	reg_w1(gspca_dev, 0x1007, 0x00);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	reg_w1(gspca_dev, 0x1061, 0x01);
+}
+
+/* called on streamoff with alt==0 and on disconnect */
+/* the usb_lock is held at entry - restore on exit */
+static void sd_stop0(struct gspca_dev *gspca_dev)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+
+	if (sd->work_thread != NULL) {
+		mutex_unlock(&gspca_dev->usb_lock);
+		destroy_workqueue(sd->work_thread);
+		mutex_lock(&gspca_dev->usb_lock);
+		sd->work_thread = NULL;
+	}
+=======
 
 	reg_r(gspca_dev, 0x1061, 1);
 	reg_w1(gspca_dev, 0x1061, gspca_dev->usb_buf[0] & ~0x02);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	reg_r(gspca_dev, 0x1061, 1);
+	reg_w1(gspca_dev, 0x1061, gspca_dev->usb_buf[0] & ~0x02);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void do_autoexposure(struct gspca_dev *gspca_dev, u16 avg_lum)
@@ -2320,15 +3613,36 @@ static void do_autoexposure(struct gspca_dev *gspca_dev, u16 avg_lum)
 	 * and exposure steps
 	 */
 	if (avg_lum < MIN_AVG_LUM) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (sd->ctrls[EXPOSURE].val > 0x1770)
+			return;
+
+		new_exp = sd->ctrls[EXPOSURE].val + sd->exposure_step;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sd->exposure > 0x1770)
 			return;
 
 		new_exp = sd->exposure + sd->exposure_step;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (new_exp > 0x1770)
 			new_exp = 0x1770;
 		if (new_exp < 0x10)
 			new_exp = 0x10;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sd->ctrls[EXPOSURE].val = new_exp;
+=======
 		sd->exposure = new_exp;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sd->exposure = new_exp;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_exposure(gspca_dev);
 
 		sd->older_step = sd->old_step;
@@ -2340,14 +3654,34 @@ static void do_autoexposure(struct gspca_dev *gspca_dev, u16 avg_lum)
 			sd->exposure_step += 2;
 	}
 	if (avg_lum > MAX_AVG_LUM) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (sd->ctrls[EXPOSURE].val < 0x10)
+			return;
+		new_exp = sd->ctrls[EXPOSURE].val - sd->exposure_step;
+=======
 		if (sd->exposure < 0x10)
 			return;
 		new_exp = sd->exposure - sd->exposure_step;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (sd->exposure < 0x10)
+			return;
+		new_exp = sd->exposure - sd->exposure_step;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (new_exp > 0x1700)
 			new_exp = 0x1770;
 		if (new_exp < 0x10)
 			new_exp = 0x10;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sd->ctrls[EXPOSURE].val = new_exp;
+=======
 		sd->exposure = new_exp;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sd->exposure = new_exp;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_exposure(gspca_dev);
 		sd->older_step = sd->old_step;
 		sd->old_step = 0;
@@ -2364,14 +3698,34 @@ static void do_autogain(struct gspca_dev *gspca_dev, u16 avg_lum)
 	struct sd *sd = (struct sd *) gspca_dev;
 
 	if (avg_lum < MIN_AVG_LUM) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (sd->ctrls[GAIN].val + 1 <= 28) {
+			sd->ctrls[GAIN].val++;
+=======
 		if (sd->gain + 1 <= 28) {
 			sd->gain++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (sd->gain + 1 <= 28) {
+			sd->gain++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_gain(gspca_dev);
 		}
 	}
 	if (avg_lum > MAX_AVG_LUM) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (sd->ctrls[GAIN].val > 0) {
+			sd->ctrls[GAIN].val--;
+=======
 		if (sd->gain > 0) {
 			sd->gain--;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (sd->gain > 0) {
+			sd->gain--;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_gain(gspca_dev);
 		}
 	}
@@ -2382,7 +3736,15 @@ static void sd_dqcallback(struct gspca_dev *gspca_dev)
 	struct sd *sd = (struct sd *) gspca_dev;
 	int avg_lum;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!sd->ctrls[AUTOGAIN].val)
+=======
 	if (!sd->auto_exposure)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!sd->auto_exposure)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	avg_lum = atomic_read(&sd->avg_lum);
@@ -2392,12 +3754,92 @@ static void sd_dqcallback(struct gspca_dev *gspca_dev)
 		do_autoexposure(gspca_dev, avg_lum);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* JPEG quality update */
+/* This function is executed from a work queue. */
+static void qual_upd(struct work_struct *work)
+{
+	struct sd *sd = container_of(work, struct sd, work);
+	struct gspca_dev *gspca_dev = &sd->gspca_dev;
+
+	mutex_lock(&gspca_dev->usb_lock);
+	PDEBUG(D_STREAM, "qual_upd %d%%", sd->ctrls[QUALITY].val);
+	set_quality(gspca_dev);
+	mutex_unlock(&gspca_dev->usb_lock);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_INPUT) || defined(CONFIG_INPUT_MODULE)
 static int sd_int_pkt_scan(struct gspca_dev *gspca_dev,
 			u8 *data,		/* interrupt packet */
 			int len)		/* interrupt packet length */
 {
 	struct sd *sd = (struct sd *) gspca_dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (!(sd->flags & HAS_NO_BUTTON) && len == 1) {
+		input_report_key(gspca_dev->input_dev, KEY_CAMERA, 1);
+		input_sync(gspca_dev->input_dev);
+		input_report_key(gspca_dev->input_dev, KEY_CAMERA, 0);
+		input_sync(gspca_dev->input_dev);
+		return 0;
+	}
+	return -EINVAL;
+}
+#endif
+
+/* check the JPEG compression */
+static void transfer_check(struct gspca_dev *gspca_dev,
+			u8 *data)
+{
+	struct sd *sd = (struct sd *) gspca_dev;
+	int new_qual, r;
+
+	new_qual = 0;
+
+	/* if USB error, discard the frame and decrease the quality */
+	if (data[6] & 0x08) {				/* USB FIFO full */
+		gspca_dev->last_packet_type = DISCARD_PACKET;
+		new_qual = -5;
+	} else {
+
+		/* else, compute the filling rate and a new JPEG quality */
+		r = (sd->pktsz * 100) /
+			(sd->npkt *
+				gspca_dev->urb[0]->iso_frame_desc[0].length);
+		if (r >= 85)
+			new_qual = -3;
+		else if (r < 75)
+			new_qual = 2;
+	}
+	if (new_qual != 0) {
+		sd->nchg += new_qual;
+		if (sd->nchg < -6 || sd->nchg >= 12) {
+			sd->nchg = 0;
+			new_qual += sd->ctrls[QUALITY].val;
+			if (new_qual < QUALITY_MIN)
+				new_qual = QUALITY_MIN;
+			else if (new_qual > QUALITY_MAX)
+				new_qual = QUALITY_MAX;
+			if (new_qual != sd->ctrls[QUALITY].val) {
+				sd->ctrls[QUALITY].val = new_qual;
+				queue_work(sd->work_thread, &sd->work);
+			}
+		}
+	} else {
+		sd->nchg = 0;
+	}
+	sd->pktsz = sd->npkt = 0;
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = -EINVAL;
 	if (!(sd->flags & HAS_NO_BUTTON) && len == 1) {
 			input_report_key(gspca_dev->input_dev, KEY_CAMERA, 1);
@@ -2410,15 +3852,34 @@ static int sd_int_pkt_scan(struct gspca_dev *gspca_dev,
 }
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void sd_pkt_scan(struct gspca_dev *gspca_dev,
 			u8 *data,			/* isoc packet */
 			int len)			/* iso packet length */
 {
 	struct sd *sd = (struct sd *) gspca_dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int avg_lum, is_jpeg;
+	static u8 frame_header[] =
+		{0xff, 0xff, 0x00, 0xc4, 0xc4, 0x96};
+
+	is_jpeg = (sd->fmt & 0x03) == 0;
+	if (len >= 64 && memcmp(data, frame_header, 6) == 0) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int avg_lum;
 	static u8 frame_header[] =
 		{0xff, 0xff, 0x00, 0xc4, 0xc4, 0x96};
 	if (len == 64 && memcmp(data, frame_header, 6) == 0) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		avg_lum = ((data[35] >> 2) & 3) |
 			   (data[20] << 2) |
 			   (data[19] << 10);
@@ -2445,12 +3906,33 @@ static void sd_pkt_scan(struct gspca_dev *gspca_dev,
 			    (data[33] << 10);
 		avg_lum >>= 9;
 		atomic_set(&sd->avg_lum, avg_lum);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		if (is_jpeg)
+			transfer_check(gspca_dev, data);
+
+		gspca_frame_add(gspca_dev, LAST_PACKET, NULL, 0);
+		len -= 64;
+		if (len == 0)
+			return;
+		data += 64;
+	}
+	if (gspca_dev->last_packet_type == LAST_PACKET) {
+		if (is_jpeg) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_frame_add(gspca_dev, LAST_PACKET, NULL, 0);
 		return;
 	}
 	if (gspca_dev->last_packet_type == LAST_PACKET) {
 		if (gspca_dev->cam.cam_mode[(int) gspca_dev->curr_mode].priv
 				& MODE_JPEG) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			gspca_frame_add(gspca_dev, FIRST_PACKET,
 				sd->jpeg_hdr, JPEG_HDR_SZ);
 			gspca_frame_add(gspca_dev, INTER_PACKET,
@@ -2460,19 +3942,50 @@ static void sd_pkt_scan(struct gspca_dev *gspca_dev,
 				data, len);
 		}
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* if JPEG, count the packets and their size */
+		if (is_jpeg) {
+			sd->npkt++;
+			sd->pktsz += len;
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_frame_add(gspca_dev, INTER_PACKET, data, len);
 	}
 }
 
 /* sub-driver description */
 static const struct sd_desc sd_desc = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = MODULE_NAME,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.name = MODULE_NAME,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ctrls = sd_ctrls,
 	.nctrls = ARRAY_SIZE(sd_ctrls),
 	.config = sd_config,
 	.init = sd_init,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.isoc_init = sd_isoc_init,
 	.start = sd_start,
 	.stopN = sd_stopN,
+	.stop0 = sd_stop0,
+=======
+	.start = sd_start,
+	.stopN = sd_stopN,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.start = sd_start,
+	.stopN = sd_stopN,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pkt_scan = sd_pkt_scan,
 #if defined(CONFIG_INPUT) || defined(CONFIG_INPUT_MODULE)
 	.int_pkt_scan = sd_int_pkt_scan,
@@ -2513,7 +4026,15 @@ static const struct usb_device_id device_table[] = {
 	{USB_DEVICE(0x0c45, 0x628f), SN9C20X(OV9650, 0x30, 0)},
 	{USB_DEVICE(0x0c45, 0x62a0), SN9C20X(OV7670, 0x21, 0)},
 	{USB_DEVICE(0x0c45, 0x62b0), SN9C20X(MT9VPRB, 0x00, 0)},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{USB_DEVICE(0x0c45, 0x62b3), SN9C20X(OV9655, 0x30, LED_REVERSE)},
+=======
 	{USB_DEVICE(0x0c45, 0x62b3), SN9C20X(OV9655, 0x30, 0)},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{USB_DEVICE(0x0c45, 0x62b3), SN9C20X(OV9655, 0x30, 0)},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{USB_DEVICE(0x0c45, 0x62bb), SN9C20X(OV7660, 0x21, LED_REVERSE)},
 	{USB_DEVICE(0x0c45, 0x62bc), SN9C20X(HV7131R, 0x11, 0)},
 	{USB_DEVICE(0x045e, 0x00f4), SN9C20X(OV9650, 0x30, 0)},
@@ -2541,7 +4062,15 @@ static int sd_probe(struct usb_interface *intf,
 }
 
 static struct usb_driver sd_driver = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = MODULE_NAME,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.name = MODULE_NAME,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = device_table,
 	.probe = sd_probe,
 	.disconnect = gspca_disconnect,
@@ -2552,6 +4081,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -2564,3 +4099,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -158,7 +158,15 @@ static int als_set_default_config(struct i2c_client *client)
 		dev_err(&client->dev, "default write failed.");
 		return retval;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
 	return 0;;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return 0;;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int  isl29020_probe(struct i2c_client *client,
@@ -230,6 +238,12 @@ static struct i2c_driver isl29020_driver = {
 	.id_table = isl29020_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(isl29020_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sensor_isl29020_init(void)
 {
 	return i2c_add_driver(&isl29020_driver);
@@ -242,6 +256,10 @@ static void  __exit sensor_isl29020_exit(void)
 
 module_init(sensor_isl29020_init);
 module_exit(sensor_isl29020_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Kalhan Trisal <kalhan.trisal@intel.com>");
 MODULE_DESCRIPTION("Intersil isl29020 ALS Driver");

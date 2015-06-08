@@ -15,6 +15,9 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 
 #ifndef __ASSEMBLY__
 
@@ -122,6 +125,7 @@ static inline unsigned long __cmpxchg(volatile unsigned long *m,
 
 #endif /* !__ASSEMBLY__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef CONFIG_SMP
 #include <asm-generic/atomic.h>
@@ -267,25 +271,35 @@ static inline void atomic_dec(atomic_t *v)
 <<<<<<< HEAD
 #define __atomic_add_unless(v, a, u)				\
 =======
+<<<<<<< HEAD
+#define __atomic_add_unless(v, a, u)				\
+=======
 #define atomic_add_unless(v, a, u)				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ({								\
 	int c, old;						\
 	c = atomic_read(v);					\
 	while (c != (u) && (old = atomic_cmpxchg((v), c, c + (a))) != c) \
 		c = old;					\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	c;							\
 })
 
 #define atomic_xchg(ptr, v)		(xchg(&(ptr)->counter, (v)))
 #define atomic_cmpxchg(v, old, new)	(cmpxchg(&((v)->counter), (old), (new)))
+<<<<<<< HEAD
+=======
 =======
 	c != (u);						\
 })
 
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * atomic_clear_mask - Atomically clear bits in memory
@@ -362,9 +376,12 @@ static inline void atomic_set_mask(unsigned long mask, unsigned long *addr)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/atomic-long.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 #endif /* CONFIG_SMP */
 #endif /* _ASM_ATOMIC_H */

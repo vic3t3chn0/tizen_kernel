@@ -30,8 +30,11 @@
 #include <asm/head.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgalloc.h>
 #include <asm/pgtable.h>
@@ -796,8 +799,12 @@ static int find_node(unsigned long addr)
 <<<<<<< HEAD
 static u64 memblock_nid_range(u64 start, u64 end, int *nid)
 =======
+<<<<<<< HEAD
+static u64 memblock_nid_range(u64 start, u64 end, int *nid)
+=======
 u64 memblock_nid_range(u64 start, u64 end, int *nid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	*nid = find_node(start);
 	start += PAGE_SIZE;
@@ -818,8 +825,12 @@ u64 memblock_nid_range(u64 start, u64 end, int *nid)
 <<<<<<< HEAD
 static u64 memblock_nid_range(u64 start, u64 end, int *nid)
 =======
+<<<<<<< HEAD
+static u64 memblock_nid_range(u64 start, u64 end, int *nid)
+=======
 u64 memblock_nid_range(u64 start, u64 end, int *nid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	*nid = 0;
 	return end;
@@ -830,8 +841,12 @@ u64 memblock_nid_range(u64 start, u64 end, int *nid)
 <<<<<<< HEAD
  * memblock_set_node() calls for 'nid'.  We need to be able to get
 =======
+<<<<<<< HEAD
+ * memblock_set_node() calls for 'nid'.  We need to be able to get
+=======
  * add_active_range() calls for 'nid'.  We need to be able to get
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * correct data from get_pfn_range_for_nid().
  */
 static void __init allocate_node_data(int nid)
@@ -1003,11 +1018,16 @@ static void __init add_node_ranges(void)
 			this_end = memblock_nid_range(start, end, &nid);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			numadbg("Setting memblock NUMA node nid[%d] "
 				"start[%lx] end[%lx]\n",
 				nid, start, this_end);
 
 			memblock_set_node(start, this_end - start, nid);
+<<<<<<< HEAD
+=======
 =======
 			numadbg("Adding active range nid[%d] "
 				"start[%lx] end[%lx]\n",
@@ -1018,6 +1038,7 @@ static void __init add_node_ranges(void)
 					 this_end >> PAGE_SHIFT);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			start = this_end;
 		}
 	}
@@ -1097,6 +1118,9 @@ static int __init grab_mblocks(struct mdesc_handle *md)
 <<<<<<< HEAD
 		m->offset = *val;
 =======
+<<<<<<< HEAD
+		m->offset = *val;
+=======
 
 		/* The address-congruence-offset property is optional.
 		 * Explicity zero it be identifty this.
@@ -1106,6 +1130,7 @@ static int __init grab_mblocks(struct mdesc_handle *md)
 		else
 			m->offset = 0UL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		numadbg("MBLOCK[%d]: base[%llx] size[%llx] offset[%llx]\n",
 			count - 1, m->base, m->size, m->offset);
@@ -1318,8 +1343,11 @@ static void __init bootmem_init_nonnuma(void)
 	unsigned long total_ram = memblock_phys_mem_size();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct memblock_region *reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	numadbg("bootmem_init_nonnuma()\n");
 
@@ -1329,6 +1357,10 @@ static void __init bootmem_init_nonnuma(void)
 	       (top_of_ram - total_ram) >> 20);
 
 	init_node_masks_nonnuma();
+<<<<<<< HEAD
+	memblock_set_node(0, (phys_addr_t)ULLONG_MAX, 0);
+	allocate_node_data(0);
+=======
 <<<<<<< HEAD
 	memblock_set_node(0, (phys_addr_t)ULLONG_MAX, 0);
 	allocate_node_data(0);
@@ -1348,6 +1380,7 @@ static void __init bootmem_init_nonnuma(void)
 	allocate_node_data(0);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	node_set_online(0);
 }
 
@@ -1813,9 +1846,12 @@ void __init paging_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_init();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Find available physical memory...
 	 *
 	 * Read it twice in order to work around a bug in openfirmware.
@@ -1844,8 +1880,12 @@ void __init paging_init(void)
 <<<<<<< HEAD
 	memblock_allow_resize();
 =======
+<<<<<<< HEAD
+	memblock_allow_resize();
+=======
 	memblock_analyze();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memblock_dump_all();
 
 	set_bit(0, mmu_context_bmap);
@@ -2169,10 +2209,13 @@ unsigned long vmemmap_table[VMEMMAP_SIZE];
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static long __meminitdata addr_start, addr_end;
 static int __meminitdata node_start;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __meminit vmemmap_populate(struct page *start, unsigned long nr, int node)
 {
 	unsigned long vstart = (unsigned long) start;
@@ -2204,11 +2247,16 @@ int __meminit vmemmap_populate(struct page *start, unsigned long nr, int node)
 			*vmem_pp = pte_base | __pa(block);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_INFO "[%p-%p] page_structs=%lu "
 			       "node=%d entry=%lu/%lu\n", start, block, nr,
 			       node,
 			       addr >> VMEMMAP_CHUNK_SHIFT,
 			       VMEMMAP_SIZE);
+<<<<<<< HEAD
+=======
 =======
 			/* check to see if we have contiguous blocks */
 			if (addr_end != addr || node_start != node) {
@@ -2220,10 +2268,13 @@ int __meminit vmemmap_populate(struct page *start, unsigned long nr, int node)
 			}
 			addr_end = addr + VMEMMAP_CHUNK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return 0;
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -2238,6 +2289,7 @@ void __meminit vmemmap_populate_print_last(void)
 	}
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_SPARSEMEM_VMEMMAP */
 
 static void prot_init_common(unsigned long page_none,

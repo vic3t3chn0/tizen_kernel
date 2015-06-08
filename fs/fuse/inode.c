@@ -4,7 +4,11 @@
 <<<<<<< HEAD
   Copyright (C) 2013 Sony Mobile Communications AB.
 =======
+<<<<<<< HEAD
+  Copyright (C) 2013 Sony Mobile Communications AB.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
   This program can be distributed under the terms of the GNU GPL.
   See the file COPYING.
@@ -78,8 +82,12 @@ struct fuse_mount_data {
 <<<<<<< HEAD
 struct fuse_forget_link *fuse_alloc_forget(void)
 =======
+<<<<<<< HEAD
+struct fuse_forget_link *fuse_alloc_forget(void)
+=======
 struct fuse_forget_link *fuse_alloc_forget()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return kzalloc(sizeof(struct fuse_forget_link), GFP_KERNEL);
 }
@@ -101,8 +109,11 @@ static struct inode *fuse_alloc_inode(struct super_block *sb)
 	fi->writectr = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	fi->orig_ino = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&fi->write_files);
 	INIT_LIST_HEAD(&fi->queued_writes);
 	INIT_LIST_HEAD(&fi->writepages);
@@ -121,8 +132,11 @@ static void fuse_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(fuse_inode_cachep, inode);
 }
 
@@ -157,6 +171,8 @@ static int fuse_remount_fs(struct super_block *sb, int *flags, char *data)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * ino_t is 32-bits on 32-bit arch. We have to squash the 64-bit value down
  * so that it will fit.
@@ -170,6 +186,7 @@ static ino_t fuse_squash_ino(u64 ino64)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void fuse_change_attributes_common(struct inode *inode, struct fuse_attr *attr,
 				   u64 attr_valid)
 {
@@ -184,10 +201,16 @@ void fuse_change_attributes_common(struct inode *inode, struct fuse_attr *attr,
 	inode->i_mode    = (inode->i_mode & S_IFMT) | (attr->mode & 07777);
 	set_nlink(inode, attr->nlink);
 =======
+<<<<<<< HEAD
+	inode->i_ino     = attr->ino;
+	inode->i_mode    = (inode->i_mode & S_IFMT) | (attr->mode & 07777);
+	set_nlink(inode, attr->nlink);
+=======
 	inode->i_ino     = fuse_squash_ino(attr->ino);
 	inode->i_mode    = (inode->i_mode & S_IFMT) | (attr->mode & 07777);
 	inode->i_nlink   = attr->nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_uid     = attr->uid;
 	inode->i_gid     = attr->gid;
 	inode->i_blocks  = attr->blocks;
@@ -213,9 +236,12 @@ void fuse_change_attributes_common(struct inode *inode, struct fuse_attr *attr,
 		inode->i_mode &= ~S_ISVTX;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	fi->orig_ino = attr->ino;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void fuse_change_attributes(struct inode *inode, struct fuse_attr *attr,
@@ -373,9 +399,13 @@ void fuse_conn_kill(struct fuse_conn *fc)
 <<<<<<< HEAD
 	wake_up_all(&fc->waitq);
 =======
+<<<<<<< HEAD
+	wake_up_all(&fc->waitq);
+=======
 	wake_up_all(&fc->waitq[0]);
 	wake_up_all(&fc->waitq[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wake_up_all(&fc->blocked_waitq);
 	wake_up_all(&fc->reserved_req_waitq);
 	mutex_lock(&fuse_mutex);
@@ -454,10 +484,16 @@ enum {
 	OPT_MAX_READ,
 	OPT_BLKSIZE,
 =======
+<<<<<<< HEAD
+	OPT_ALLOW_UTIME_GRP,
+	OPT_MAX_READ,
+	OPT_BLKSIZE,
+=======
 	OPT_MAX_READ,
 	OPT_BLKSIZE,
 	OPT_HANDLE_RT_CLASS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_ERR
 };
 
@@ -473,10 +509,16 @@ static const match_table_t tokens = {
 	{OPT_MAX_READ,			"max_read=%u"},
 	{OPT_BLKSIZE,			"blksize=%u"},
 =======
+<<<<<<< HEAD
+	{OPT_ALLOW_UTIME_GRP,		"allow_utime_grp"},
+	{OPT_MAX_READ,			"max_read=%u"},
+	{OPT_BLKSIZE,			"blksize=%u"},
+=======
 	{OPT_MAX_READ,			"max_read=%u"},
 	{OPT_BLKSIZE,			"blksize=%u"},
 	{OPT_HANDLE_RT_CLASS,		"handle_rt_class"},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{OPT_ERR,			NULL}
 };
 
@@ -514,11 +556,14 @@ static int parse_fuse_opt(char *opt, struct fuse_mount_data *d, int is_bdev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		case OPT_HANDLE_RT_CLASS:
 			d->flags |= FUSE_HANDLE_RT_CLASS;
 			break;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case OPT_USER_ID:
 			if (match_int(&args[0], &value))
 				return 0;
@@ -542,12 +587,18 @@ static int parse_fuse_opt(char *opt, struct fuse_mount_data *d, int is_bdev)
 			break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case OPT_ALLOW_UTIME_GRP:
 			d->flags |= FUSE_ALLOW_UTIME_GRP;
 			break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case OPT_MAX_READ:
 			if (match_int(&args[0], &value))
 				return 0;
@@ -573,15 +624,21 @@ static int parse_fuse_opt(char *opt, struct fuse_mount_data *d, int is_bdev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int fuse_show_options(struct seq_file *m, struct dentry *root)
 {
 	struct super_block *sb = root->d_sb;
 	struct fuse_conn *fc = get_fuse_conn_super(sb);
+<<<<<<< HEAD
+=======
 =======
 static int fuse_show_options(struct seq_file *m, struct vfsmount *mnt)
 {
 	struct fuse_conn *fc = get_fuse_conn_super(mnt->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	seq_printf(m, ",user_id=%u", fc->user_id);
 	seq_printf(m, ",group_id=%u", fc->group_id);
@@ -590,12 +647,17 @@ static int fuse_show_options(struct seq_file *m, struct vfsmount *mnt)
 	if (fc->flags & FUSE_ALLOW_OTHER)
 		seq_puts(m, ",allow_other");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fc->flags & FUSE_ALLOW_UTIME_GRP)
 		seq_puts(m, ",allow_utime_grp");
 	if (fc->max_read != ~0)
 		seq_printf(m, ",max_read=%u", fc->max_read);
 	if (sb->s_bdev && sb->s_blocksize != FUSE_DEFAULT_BLKSIZE)
 		seq_printf(m, ",blksize=%lu", sb->s_blocksize);
+<<<<<<< HEAD
+=======
 =======
 	if (fc->max_read != ~0)
 		seq_printf(m, ",max_read=%u", fc->max_read);
@@ -603,6 +665,7 @@ static int fuse_show_options(struct seq_file *m, struct vfsmount *mnt)
 	    mnt->mnt_sb->s_blocksize != FUSE_DEFAULT_BLKSIZE)
 		seq_printf(m, ",blksize=%lu", mnt->mnt_sb->s_blocksize);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -614,6 +677,9 @@ void fuse_conn_init(struct fuse_conn *fc)
 	init_rwsem(&fc->killsb);
 	atomic_set(&fc->count, 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_waitqueue_head(&fc->waitq);
 	init_waitqueue_head(&fc->blocked_waitq);
 	init_waitqueue_head(&fc->reserved_req_waitq);
@@ -621,6 +687,8 @@ void fuse_conn_init(struct fuse_conn *fc)
 	INIT_LIST_HEAD(&fc->processing);
 	INIT_LIST_HEAD(&fc->io);
 	INIT_LIST_HEAD(&fc->interrupts);
+<<<<<<< HEAD
+=======
 =======
 	init_waitqueue_head(&fc->waitq[0]);
 	init_waitqueue_head(&fc->waitq[1]);
@@ -633,6 +701,7 @@ void fuse_conn_init(struct fuse_conn *fc)
 	INIT_LIST_HEAD(&fc->interrupts[0]);
 	INIT_LIST_HEAD(&fc->interrupts[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&fc->bg_queue);
 	INIT_LIST_HEAD(&fc->entry);
 	fc->forget_list_tail = &fc->forget_list_head;
@@ -913,6 +982,9 @@ static void process_init_reply(struct fuse_conn *fc, struct fuse_req *req)
 			if (!(arg->flags & FUSE_POSIX_LOCKS))
 				fc->no_lock = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (arg->minor >= 17) {
 				if (!(arg->flags & FUSE_FLOCK_LOCKS))
 					fc->no_flock = 1;
@@ -920,8 +992,11 @@ static void process_init_reply(struct fuse_conn *fc, struct fuse_req *req)
 				if (!(arg->flags & FUSE_POSIX_LOCKS))
 					fc->no_flock = 1;
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (arg->flags & FUSE_ATOMIC_O_TRUNC)
 				fc->atomic_o_trunc = 1;
 			if (arg->minor >= 9) {
@@ -939,7 +1014,11 @@ static void process_init_reply(struct fuse_conn *fc, struct fuse_req *req)
 <<<<<<< HEAD
 			fc->no_flock = 1;
 =======
+<<<<<<< HEAD
+			fc->no_flock = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		fc->bdi.ra_pages = min(fc->bdi.ra_pages, ra_pages);
@@ -964,8 +1043,13 @@ static void fuse_send_init(struct fuse_conn *fc, struct fuse_req *req)
 		FUSE_EXPORT_SUPPORT | FUSE_BIG_WRITES | FUSE_DONT_MASK |
 		FUSE_FLOCK_LOCKS;
 =======
+<<<<<<< HEAD
+		FUSE_EXPORT_SUPPORT | FUSE_BIG_WRITES | FUSE_DONT_MASK |
+		FUSE_FLOCK_LOCKS;
+=======
 		FUSE_EXPORT_SUPPORT | FUSE_BIG_WRITES | FUSE_DONT_MASK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	req->in.h.opcode = FUSE_INIT;
 	req->in.numargs = 1;
 	req->in.args[0].size = sizeof(*arg);
@@ -1064,7 +1148,11 @@ static int fuse_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 	sb->s_time_gran = 1;
 =======
+<<<<<<< HEAD
+	sb->s_time_gran = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sb->s_export_op = &fuse_export_operations;
 
 	file = fget(d.fd);
@@ -1111,6 +1199,11 @@ static int fuse_fill_super(struct super_block *sb, void *data, int silent)
 	if (!root_dentry)
 		goto err_put_conn;
 =======
+<<<<<<< HEAD
+	root_dentry = d_make_root(root);
+	if (!root_dentry)
+		goto err_put_conn;
+=======
 	if (!root)
 		goto err_put_conn;
 
@@ -1120,6 +1213,7 @@ static int fuse_fill_super(struct super_block *sb, void *data, int silent)
 		goto err_put_conn;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* only now - we want root dentry with NULL ->d_op */
 	sb->s_d_op = &fuse_dentry_operations;
 
@@ -1263,6 +1357,8 @@ static int __init fuse_fs_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	err = register_filesystem(&fuse_fs_type);
 	if (err)
 		goto out;
@@ -1272,6 +1368,7 @@ static int __init fuse_fs_init(void)
 		goto out_unreg;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fuse_inode_cachep = kmem_cache_create("fuse_inode",
 					      sizeof(struct fuse_inode),
 					      0, SLAB_HWCACHE_ALIGN,
@@ -1279,6 +1376,9 @@ static int __init fuse_fs_init(void)
 	err = -ENOMEM;
 	if (!fuse_inode_cachep)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	err = register_fuseblk();
@@ -1295,6 +1395,8 @@ static int __init fuse_fs_init(void)
 	unregister_fuseblk();
  out2:
 	kmem_cache_destroy(fuse_inode_cachep);
+<<<<<<< HEAD
+=======
 =======
 		goto out_unreg2;
 
@@ -1305,6 +1407,7 @@ static int __init fuse_fs_init(void)
  out_unreg:
 	unregister_filesystem(&fuse_fs_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  out:
 	return err;
 }

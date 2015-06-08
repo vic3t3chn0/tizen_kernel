@@ -37,6 +37,15 @@
 #include "exynos_drm_drv.h"
 #include "exynos_drm_hdmi.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MIXER_WIN_NR		3
+#define MIXER_DEFAULT_WIN	0
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define get_mixer_context(dev)	platform_get_drvdata(to_platform_device(dev))
 
 struct hdmi_win_data {
@@ -54,14 +63,29 @@ struct hdmi_win_data {
 	unsigned int		fb_y;
 	unsigned int		fb_width;
 	unsigned int		fb_height;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned int		src_width;
 	unsigned int		src_height;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned int		src_width;
+	unsigned int		src_height;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int		mode_width;
 	unsigned int		mode_height;
 	unsigned int		scan_flags;
 };
 
 struct mixer_resources {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct device		*dev;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			irq;
 	void __iomem		*mixer_regs;
 	void __iomem		*vp_regs;
@@ -74,6 +98,15 @@ struct mixer_resources {
 };
 
 struct mixer_context {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int		irq;
+	int			pipe;
+	bool			interlace;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device		*dev;
 	int			pipe;
 	bool			interlace;
@@ -81,6 +114,10 @@ struct mixer_context {
 	u32			int_en;
 
 	struct mutex		mixer_mutex;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mixer_resources	mixer_res;
 	struct hdmi_win_data	win_data[MIXER_WIN_NR];
 };
@@ -353,7 +390,18 @@ static void vp_video_buffer(struct mixer_context *ctx, int win)
 	struct mixer_resources *res = &ctx->mixer_res;
 	unsigned long flags;
 	struct hdmi_win_data *win_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int full_width, full_height, width, height;
 	unsigned int x_ratio, y_ratio;
+	unsigned int src_x_offset, src_y_offset, dst_x_offset, dst_y_offset;
+	unsigned int mode_width, mode_height;
+=======
+	unsigned int x_ratio, y_ratio;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned int x_ratio, y_ratio;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int buf_num;
 	dma_addr_t luma_addr[2], chroma_addr[2];
 	bool tiled_mode = false;
@@ -380,9 +428,33 @@ static void vp_video_buffer(struct mixer_context *ctx, int win)
 		return;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	full_width = win_data->fb_width;
+	full_height = win_data->fb_height;
+	width = win_data->crtc_width;
+	height = win_data->crtc_height;
+	mode_width = win_data->mode_width;
+	mode_height = win_data->mode_height;
+
+	/* scaling feature: (src << 16) / dst */
+	x_ratio = (width << 16) / width;
+	y_ratio = (height << 16) / height;
+
+	src_x_offset = win_data->fb_x;
+	src_y_offset = win_data->fb_y;
+	dst_x_offset = win_data->crtc_x;
+	dst_y_offset = win_data->crtc_y;
+=======
 	/* scaling feature: (src << 16) / dst */
 	x_ratio = (win_data->src_width << 16) / win_data->crtc_width;
 	y_ratio = (win_data->src_height << 16) / win_data->crtc_height;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* scaling feature: (src << 16) / dst */
+	x_ratio = (win_data->src_width << 16) / win_data->crtc_width;
+	y_ratio = (win_data->src_height << 16) / win_data->crtc_height;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (buf_num == 2) {
 		luma_addr[0] = win_data->dma_addr;
@@ -390,7 +462,15 @@ static void vp_video_buffer(struct mixer_context *ctx, int win)
 	} else {
 		luma_addr[0] = win_data->dma_addr;
 		chroma_addr[0] = win_data->dma_addr
+<<<<<<< HEAD
+<<<<<<< HEAD
+			+ (full_width * full_height);
+=======
 			+ (win_data->fb_width * win_data->fb_height);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			+ (win_data->fb_width * win_data->fb_height);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (win_data->scan_flags & DRM_MODE_FLAG_INTERLACE) {
@@ -399,8 +479,18 @@ static void vp_video_buffer(struct mixer_context *ctx, int win)
 			luma_addr[1] = luma_addr[0] + 0x40;
 			chroma_addr[1] = chroma_addr[0] + 0x40;
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			luma_addr[1] = luma_addr[0] + full_width;
+			chroma_addr[1] = chroma_addr[0] + full_width;
+=======
 			luma_addr[1] = luma_addr[0] + win_data->fb_width;
 			chroma_addr[1] = chroma_addr[0] + win_data->fb_width;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			luma_addr[1] = luma_addr[0] + win_data->fb_width;
+			chroma_addr[1] = chroma_addr[0] + win_data->fb_width;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else {
 		ctx->interlace = false;
@@ -421,6 +511,31 @@ static void vp_video_buffer(struct mixer_context *ctx, int win)
 	vp_reg_writemask(res, VP_MODE, val, VP_MODE_FMT_MASK);
 
 	/* setting size of input image */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	vp_reg_write(res, VP_IMG_SIZE_Y, VP_IMG_HSIZE(full_width) |
+		VP_IMG_VSIZE(full_height));
+	/* chroma height has to reduced by 2 to avoid chroma distorions */
+	vp_reg_write(res, VP_IMG_SIZE_C, VP_IMG_HSIZE(full_width) |
+		VP_IMG_VSIZE(full_height / 2));
+
+	vp_reg_write(res, VP_SRC_WIDTH, width);
+	vp_reg_write(res, VP_SRC_HEIGHT, height);
+	vp_reg_write(res, VP_SRC_H_POSITION,
+			VP_SRC_H_POSITION_VAL(src_x_offset));
+	vp_reg_write(res, VP_SRC_V_POSITION, src_y_offset);
+
+	vp_reg_write(res, VP_DST_WIDTH, width);
+	vp_reg_write(res, VP_DST_H_POSITION, dst_x_offset);
+	if (ctx->interlace) {
+		vp_reg_write(res, VP_DST_HEIGHT, height / 2);
+		vp_reg_write(res, VP_DST_V_POSITION, dst_y_offset / 2);
+	} else {
+		vp_reg_write(res, VP_DST_HEIGHT, height);
+		vp_reg_write(res, VP_DST_V_POSITION, dst_y_offset);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vp_reg_write(res, VP_IMG_SIZE_Y, VP_IMG_HSIZE(win_data->fb_width) |
 		VP_IMG_VSIZE(win_data->fb_height));
 	/* chroma height has to reduced by 2 to avoid chroma distorions */
@@ -441,6 +556,10 @@ static void vp_video_buffer(struct mixer_context *ctx, int win)
 	} else {
 		vp_reg_write(res, VP_DST_HEIGHT, win_data->crtc_height);
 		vp_reg_write(res, VP_DST_V_POSITION, win_data->crtc_y);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	vp_reg_write(res, VP_H_RATIO, x_ratio);
@@ -454,8 +573,18 @@ static void vp_video_buffer(struct mixer_context *ctx, int win)
 	vp_reg_write(res, VP_TOP_C_PTR, chroma_addr[0]);
 	vp_reg_write(res, VP_BOT_C_PTR, chroma_addr[1]);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mixer_cfg_scan(ctx, mode_height);
+	mixer_cfg_rgb_fmt(ctx, mode_height);
+=======
 	mixer_cfg_scan(ctx, win_data->mode_height);
 	mixer_cfg_rgb_fmt(ctx, win_data->mode_height);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mixer_cfg_scan(ctx, win_data->mode_height);
+	mixer_cfg_rgb_fmt(ctx, win_data->mode_height);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mixer_cfg_layer(ctx, win, true);
 	mixer_run(ctx);
 
@@ -470,8 +599,20 @@ static void mixer_graph_buffer(struct mixer_context *ctx, int win)
 	struct mixer_resources *res = &ctx->mixer_res;
 	unsigned long flags;
 	struct hdmi_win_data *win_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int full_width, width, height;
 	unsigned int x_ratio, y_ratio;
 	unsigned int src_x_offset, src_y_offset, dst_x_offset, dst_y_offset;
+	unsigned int mode_width, mode_height;
+=======
+	unsigned int x_ratio, y_ratio;
+	unsigned int src_x_offset, src_y_offset, dst_x_offset, dst_y_offset;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned int x_ratio, y_ratio;
+	unsigned int src_x_offset, src_y_offset, dst_x_offset, dst_y_offset;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_addr_t dma_addr;
 	unsigned int fmt;
 	u32 val;
@@ -494,17 +635,50 @@ static void mixer_graph_buffer(struct mixer_context *ctx, int win)
 		fmt = ARGB8888;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_addr = win_data->dma_addr;
+	full_width = win_data->fb_width;
+	width = win_data->crtc_width;
+	height = win_data->crtc_height;
+	mode_width = win_data->mode_width;
+	mode_height = win_data->mode_height;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* 2x scaling feature */
 	x_ratio = 0;
 	y_ratio = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	src_x_offset = win_data->fb_x;
+	src_y_offset = win_data->fb_y;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dst_x_offset = win_data->crtc_x;
 	dst_y_offset = win_data->crtc_y;
 
 	/* converting dma address base and source offset */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_addr = dma_addr
+		+ (src_x_offset * win_data->bpp >> 3)
+		+ (src_y_offset * full_width * win_data->bpp >> 3);
+=======
 	dma_addr = win_data->dma_addr
 		+ (win_data->fb_x * win_data->bpp >> 3)
 		+ (win_data->fb_y * win_data->fb_width * win_data->bpp >> 3);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dma_addr = win_data->dma_addr
+		+ (win_data->fb_x * win_data->bpp >> 3)
+		+ (win_data->fb_y * win_data->fb_width * win_data->bpp >> 3);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	src_x_offset = 0;
 	src_y_offset = 0;
 
@@ -521,10 +695,23 @@ static void mixer_graph_buffer(struct mixer_context *ctx, int win)
 		MXR_GRP_CFG_FORMAT_VAL(fmt), MXR_GRP_CFG_FORMAT_MASK);
 
 	/* setup geometry */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mixer_reg_write(res, MXR_GRAPHIC_SPAN(win), full_width);
+
+	val  = MXR_GRP_WH_WIDTH(width);
+	val |= MXR_GRP_WH_HEIGHT(height);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mixer_reg_write(res, MXR_GRAPHIC_SPAN(win), win_data->fb_width);
 
 	val  = MXR_GRP_WH_WIDTH(win_data->crtc_width);
 	val |= MXR_GRP_WH_HEIGHT(win_data->crtc_height);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	val |= MXR_GRP_WH_H_SCALE(x_ratio);
 	val |= MXR_GRP_WH_V_SCALE(y_ratio);
 	mixer_reg_write(res, MXR_GRAPHIC_WH(win), val);
@@ -542,8 +729,18 @@ static void mixer_graph_buffer(struct mixer_context *ctx, int win)
 	/* set buffer address to mixer */
 	mixer_reg_write(res, MXR_GRAPHIC_BASE(win), dma_addr);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mixer_cfg_scan(ctx, mode_height);
+	mixer_cfg_rgb_fmt(ctx, mode_height);
+=======
 	mixer_cfg_scan(ctx, win_data->mode_height);
 	mixer_cfg_rgb_fmt(ctx, win_data->mode_height);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mixer_cfg_scan(ctx, win_data->mode_height);
+	mixer_cfg_rgb_fmt(ctx, win_data->mode_height);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mixer_cfg_layer(ctx, win, true);
 	mixer_run(ctx);
 
@@ -566,6 +763,11 @@ static void vp_win_reset(struct mixer_context *ctx)
 	WARN(tries == 0, "failed to reset Video Processor\n");
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mixer_win_reset(struct mixer_context *ctx)
 {
 	struct mixer_resources *res = &ctx->mixer_res;
@@ -678,6 +880,10 @@ out:
 	mutex_unlock(&ctx->mixer_mutex);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mixer_enable_vblank(void *ctx, int pipe)
 {
 	struct mixer_context *mixer_ctx = ctx;
@@ -705,6 +911,11 @@ static void mixer_disable_vblank(void *ctx)
 	mixer_reg_writemask(res, MXR_INT_EN, 0, MXR_INT_EN_VSYNC);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mixer_dpms(void *ctx, int mode)
 {
 	struct mixer_context *mixer_ctx = ctx;
@@ -726,6 +937,10 @@ static void mixer_dpms(void *ctx, int mode)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mixer_win_mode_set(void *ctx,
 			      struct exynos_drm_overlay *overlay)
 {
@@ -751,7 +966,15 @@ static void mixer_win_mode_set(void *ctx,
 		win = MIXER_DEFAULT_WIN;
 
 	if (win < 0 || win > MIXER_WIN_NR) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		DRM_ERROR("overlay plane[%d] is wrong\n", win);
+=======
 		DRM_ERROR("mixer window[%d] is wrong\n", win);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DRM_ERROR("mixer window[%d] is wrong\n", win);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -773,8 +996,16 @@ static void mixer_win_mode_set(void *ctx,
 	win_data->fb_y = overlay->fb_y;
 	win_data->fb_width = overlay->fb_width;
 	win_data->fb_height = overlay->fb_height;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	win_data->src_width = overlay->src_width;
 	win_data->src_height = overlay->src_height;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	win_data->src_width = overlay->src_width;
+	win_data->src_height = overlay->src_height;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	win_data->mode_width = overlay->mode_width;
 	win_data->mode_height = overlay->mode_height;
@@ -782,26 +1013,79 @@ static void mixer_win_mode_set(void *ctx,
 	win_data->scan_flags = overlay->scan_flag;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void mixer_win_commit(void *ctx, int zpos)
+{
+	struct mixer_context *mixer_ctx = ctx;
+	int win = zpos;
+
+	DRM_DEBUG_KMS("[%d] %s, win: %d\n", __LINE__, __func__, win);
+
+	if (win == DEFAULT_ZPOS)
+		win = MIXER_DEFAULT_WIN;
+
+	if (win < 0 || win > MIXER_WIN_NR) {
+		DRM_ERROR("overlay plane[%d] is wrong\n", win);
+		return;
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mixer_win_commit(void *ctx, int win)
 {
 	struct mixer_context *mixer_ctx = ctx;
 
 	DRM_DEBUG_KMS("[%d] %s, win: %d\n", __LINE__, __func__, win);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (win > 1)
 		vp_video_buffer(mixer_ctx, win);
 	else
 		mixer_graph_buffer(mixer_ctx, win);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void mixer_win_disable(void *ctx, int zpos)
+=======
 static void mixer_win_disable(void *ctx, int win)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void mixer_win_disable(void *ctx, int win)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mixer_context *mixer_ctx = ctx;
 	struct mixer_resources *res = &mixer_ctx->mixer_res;
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int win = zpos;
 
 	DRM_DEBUG_KMS("[%d] %s, win: %d\n", __LINE__, __func__, win);
 
+	if (win == DEFAULT_ZPOS)
+		win = MIXER_DEFAULT_WIN;
+
+	if (win < 0 || win > MIXER_WIN_NR) {
+		DRM_ERROR("overlay plane[%d] is wrong\n", win);
+		return;
+	}
+
+=======
+
+	DRM_DEBUG_KMS("[%d] %s, win: %d\n", __LINE__, __func__, win);
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	DRM_DEBUG_KMS("[%d] %s, win: %d\n", __LINE__, __func__, win);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&res->reg_slock, flags);
 	mixer_vsync_set_update(mixer_ctx, false);
 
@@ -815,7 +1099,14 @@ static struct exynos_mixer_ops mixer_ops = {
 	/* manager */
 	.enable_vblank		= mixer_enable_vblank,
 	.disable_vblank		= mixer_disable_vblank,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.dpms			= mixer_dpms,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.dpms			= mixer_dpms,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* overlay */
 	.win_mode_set		= mixer_win_mode_set,
@@ -866,7 +1157,15 @@ static irqreturn_t mixer_irq_handler(int irq, void *arg)
 	struct exynos_drm_hdmi_context *drm_hdmi_ctx = arg;
 	struct mixer_context *ctx = drm_hdmi_ctx->ctx;
 	struct mixer_resources *res = &ctx->mixer_res;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 val, val_base;
+=======
 	u32 val, base, shadow;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 val, base, shadow;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&res->reg_slock);
 
@@ -877,6 +1176,17 @@ static irqreturn_t mixer_irq_handler(int irq, void *arg)
 	if (val & MXR_INT_STATUS_VSYNC) {
 		/* interlace scan need to check shadow register */
 		if (ctx->interlace) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			val_base = mixer_reg_read(res, MXR_GRAPHIC_BASE_S(0));
+			if (ctx->win_data[0].dma_addr != val_base)
+				goto out;
+
+			val_base = mixer_reg_read(res, MXR_GRAPHIC_BASE_S(1));
+			if (ctx->win_data[1].dma_addr != val_base)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			base = mixer_reg_read(res, MXR_GRAPHIC_BASE(0));
 			shadow = mixer_reg_read(res, MXR_GRAPHIC_BASE_S(0));
 			if (base != shadow)
@@ -885,6 +1195,10 @@ static irqreturn_t mixer_irq_handler(int irq, void *arg)
 			base = mixer_reg_read(res, MXR_GRAPHIC_BASE(1));
 			shadow = mixer_reg_read(res, MXR_GRAPHIC_BASE_S(1));
 			if (base != shadow)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto out;
 		}
 
@@ -906,6 +1220,123 @@ out:
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void mixer_win_reset(struct mixer_context *ctx)
+{
+	struct mixer_resources *res = &ctx->mixer_res;
+	unsigned long flags;
+	u32 val; /* value stored to register */
+
+	spin_lock_irqsave(&res->reg_slock, flags);
+	mixer_vsync_set_update(ctx, false);
+
+	mixer_reg_writemask(res, MXR_CFG, MXR_CFG_DST_HDMI, MXR_CFG_DST_MASK);
+
+	/* set output in RGB888 mode */
+	mixer_reg_writemask(res, MXR_CFG, MXR_CFG_OUT_RGB888, MXR_CFG_OUT_MASK);
+
+	/* 16 beat burst in DMA */
+	mixer_reg_writemask(res, MXR_STATUS, MXR_STATUS_16_BURST,
+		MXR_STATUS_BURST_MASK);
+
+	/* setting default layer priority: layer1 > layer0 > video
+	 * because typical usage scenario would be
+	 * layer1 - OSD
+	 * layer0 - framebuffer
+	 * video - video overlay
+	 */
+	val = MXR_LAYER_CFG_GRP1_VAL(3);
+	val |= MXR_LAYER_CFG_GRP0_VAL(2);
+	val |= MXR_LAYER_CFG_VP_VAL(1);
+	mixer_reg_write(res, MXR_LAYER_CFG, val);
+
+	/* setting background color */
+	mixer_reg_write(res, MXR_BG_COLOR0, 0x008080);
+	mixer_reg_write(res, MXR_BG_COLOR1, 0x008080);
+	mixer_reg_write(res, MXR_BG_COLOR2, 0x008080);
+
+	/* setting graphical layers */
+
+	val  = MXR_GRP_CFG_COLOR_KEY_DISABLE; /* no blank key */
+	val |= MXR_GRP_CFG_WIN_BLEND_EN;
+	val |= MXR_GRP_CFG_ALPHA_VAL(0xff); /* non-transparent alpha */
+
+	/* the same configuration for both layers */
+	mixer_reg_write(res, MXR_GRAPHIC_CFG(0), val);
+
+	val |= MXR_GRP_CFG_BLEND_PRE_MUL;
+	val |= MXR_GRP_CFG_PIXEL_BLEND_EN;
+	mixer_reg_write(res, MXR_GRAPHIC_CFG(1), val);
+
+	/* configuration of Video Processor Registers */
+	vp_win_reset(ctx);
+	vp_default_filter(res);
+
+	/* disable all layers */
+	mixer_reg_writemask(res, MXR_CFG, 0, MXR_CFG_GRP0_ENABLE);
+	mixer_reg_writemask(res, MXR_CFG, 0, MXR_CFG_GRP1_ENABLE);
+	mixer_reg_writemask(res, MXR_CFG, 0, MXR_CFG_VP_ENABLE);
+
+	mixer_vsync_set_update(ctx, true);
+	spin_unlock_irqrestore(&res->reg_slock, flags);
+}
+
+static void mixer_resource_poweron(struct mixer_context *ctx)
+{
+	struct mixer_resources *res = &ctx->mixer_res;
+
+	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
+
+	clk_enable(res->mixer);
+	clk_enable(res->vp);
+	clk_enable(res->sclk_mixer);
+
+	mixer_win_reset(ctx);
+}
+
+static void mixer_resource_poweroff(struct mixer_context *ctx)
+{
+	struct mixer_resources *res = &ctx->mixer_res;
+
+	DRM_DEBUG_KMS("[%d] %s\n", __LINE__, __func__);
+
+	clk_disable(res->mixer);
+	clk_disable(res->vp);
+	clk_disable(res->sclk_mixer);
+}
+
+static int mixer_runtime_resume(struct device *dev)
+{
+	struct exynos_drm_hdmi_context *ctx = get_mixer_context(dev);
+
+	DRM_DEBUG_KMS("resume - start\n");
+
+	mixer_resource_poweron(ctx->ctx);
+
+	return 0;
+}
+
+static int mixer_runtime_suspend(struct device *dev)
+{
+	struct exynos_drm_hdmi_context *ctx = get_mixer_context(dev);
+
+	DRM_DEBUG_KMS("suspend - start\n");
+
+	mixer_resource_poweroff(ctx->ctx);
+
+	return 0;
+}
+
+static const struct dev_pm_ops mixer_pm_ops = {
+	.runtime_suspend = mixer_runtime_suspend,
+	.runtime_resume	 = mixer_runtime_resume,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit mixer_resources_init(struct exynos_drm_hdmi_context *ctx,
 				 struct platform_device *pdev)
 {
@@ -915,6 +1346,13 @@ static int __devinit mixer_resources_init(struct exynos_drm_hdmi_context *ctx,
 	struct resource *res;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mixer_res->dev = dev;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&mixer_res->reg_slock);
 
 	mixer_res->mixer = clk_get(dev, "mixer");
@@ -1010,6 +1448,13 @@ fail:
 		clk_put(mixer_res->vp);
 	if (!IS_ERR_OR_NULL(mixer_res->mixer))
 		clk_put(mixer_res->mixer);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mixer_res->dev = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1017,6 +1462,13 @@ static void mixer_resources_cleanup(struct mixer_context *ctx)
 {
 	struct mixer_resources *res = &ctx->mixer_res;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	disable_irq(res->irq);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_irq(res->irq, ctx);
 
 	iounmap(res->vp_regs);
@@ -1045,9 +1497,18 @@ static int __devinit mixer_probe(struct platform_device *pdev)
 		return -ENOMEM;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	mutex_init(&ctx->mixer_mutex);
 
 	ctx->dev = &pdev->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_init(&ctx->mixer_mutex);
+
+	ctx->dev = &pdev->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	drm_hdmi_ctx->ctx = (void *)ctx;
 
 	platform_set_drvdata(pdev, drm_hdmi_ctx);
@@ -1060,7 +1521,15 @@ static int __devinit mixer_probe(struct platform_device *pdev)
 	/* register specific callback point to common hdmi. */
 	exynos_mixer_ops_register(&mixer_ops);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mixer_resource_poweron(ctx);
+=======
 	pm_runtime_enable(dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pm_runtime_enable(dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -1079,13 +1548,27 @@ static int mixer_remove(struct platform_device *pdev)
 
 	dev_info(dev, "remove successful\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mixer_resource_poweroff(ctx);
+=======
 	pm_runtime_disable(&pdev->dev);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pm_runtime_disable(&pdev->dev);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mixer_resources_cleanup(ctx);
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_SLEEP
 static int mixer_suspend(struct device *dev)
 {
@@ -1100,6 +1583,10 @@ static int mixer_suspend(struct device *dev)
 
 static SIMPLE_DEV_PM_OPS(mixer_pm_ops, mixer_suspend, NULL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_driver mixer_driver = {
 	.driver = {
 		.name = "s5p-mixer",

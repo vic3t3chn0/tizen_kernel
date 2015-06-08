@@ -32,8 +32,12 @@
 <<<<<<< HEAD
 static bool ccid2_debug;
 =======
+<<<<<<< HEAD
+static bool ccid2_debug;
+=======
 static int ccid2_debug;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ccid2_pr_debug(format, a...)	DCCP_PR_DEBUG(ccid2_debug, format, ##a)
 #else
 #define ccid2_pr_debug(format, a...)
@@ -91,8 +95,11 @@ static void ccid2_change_l_ack_ratio(struct sock *sk, u32 val)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct dccp_sock *dp = dccp_sk(sk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 max_ratio = DIV_ROUND_UP(ccid2_hc_tx_sk(sk)->tx_cwnd, 2);
 
 	/*
@@ -106,6 +113,9 @@ static void ccid2_change_l_ack_ratio(struct sock *sk, u32 val)
 		val = max_ratio;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dccp_feat_signal_nn_change(sk, DCCPF_ACK_RATIO,
 				   min_t(u32, val, DCCPF_ACK_RATIO_MAX));
 }
@@ -133,6 +143,8 @@ static void ccid2_change_l_seq_window(struct sock *sk, u64 val)
 	dccp_feat_signal_nn_change(sk, DCCPF_SEQUENCE_WINDOW,
 				   clamp_val(val, DCCPF_SEQ_WMIN,
 						  DCCPF_SEQ_WMAX));
+<<<<<<< HEAD
+=======
 =======
 	if (val > DCCPF_ACK_RATIO_MAX)
 		val = DCCPF_ACK_RATIO_MAX;
@@ -143,6 +155,7 @@ static void ccid2_change_l_seq_window(struct sock *sk, u64 val)
 	ccid2_pr_debug("changing local ack ratio to %u\n", val);
 	dp->dccps_l_ack_ratio = val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void ccid2_hc_tx_rto_expire(unsigned long data)
@@ -191,6 +204,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	Congestion window validation (RFC 2861).
  */
@@ -249,13 +265,19 @@ static void ccid2_cwnd_restart(struct sock *sk, const u32 now)
 	ccid2_check_l_ack_ratio(sk);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ccid2_hc_tx_packet_sent(struct sock *sk, unsigned int len)
 {
 	struct dccp_sock *dp = dccp_sk(sk);
 	struct ccid2_hc_tx_sock *hc = ccid2_hc_tx_sk(sk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const u32 now = ccid2_time_stamp;
 	struct ccid2_seq *next;
 
@@ -285,6 +307,8 @@ static void ccid2_hc_tx_packet_sent(struct sock *sk, unsigned int len)
 	hc->tx_seqh->ccid2s_seq   = dp->dccps_gss;
 	hc->tx_seqh->ccid2s_acked = 0;
 	hc->tx_seqh->ccid2s_sent  = now;
+<<<<<<< HEAD
+=======
 =======
 	struct ccid2_seq *next;
 
@@ -294,6 +318,7 @@ static void ccid2_hc_tx_packet_sent(struct sock *sk, unsigned int len)
 	hc->tx_seqh->ccid2s_acked = 0;
 	hc->tx_seqh->ccid2s_sent  = ccid2_time_stamp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	next = hc->tx_seqh->ccid2s_next;
 	/* check if we need to alloc more space */
@@ -460,6 +485,9 @@ static void ccid2_new_ack(struct sock *sk, struct ccid2_seq *seqp,
 {
 	struct ccid2_hc_tx_sock *hc = ccid2_hc_tx_sk(sk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dccp_sock *dp = dccp_sk(sk);
 	int r_seq_used = hc->tx_cwnd / dp->dccps_l_ack_ratio;
 
@@ -491,6 +519,8 @@ static void ccid2_new_ack(struct sock *sk, struct ccid2_seq *seqp,
 	else if (hc->tx_cwnd * CCID2_WIN_CHANGE_FACTOR < dp->dccps_l_seq_win/2)
 		ccid2_change_l_seq_window(sk, dp->dccps_l_seq_win / 2);
 
+<<<<<<< HEAD
+=======
 =======
 
 	if (hc->tx_cwnd < hc->tx_ssthresh) {
@@ -504,6 +534,7 @@ static void ccid2_new_ack(struct sock *sk, struct ccid2_seq *seqp,
 			hc->tx_packets_acked = 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * FIXME: RTT is sampled several times per acknowledgment (for each
 	 * entry in the Ack Vector), instead of once per Ack (as in TCP SACK).
@@ -532,10 +563,14 @@ static void ccid2_congestion_event(struct sock *sk, struct ccid2_seq *seqp)
 <<<<<<< HEAD
 	ccid2_check_l_ack_ratio(sk);
 =======
+<<<<<<< HEAD
+	ccid2_check_l_ack_ratio(sk);
+=======
 	/* Avoid spurious timeouts resulting from Ack Ratio > cwnd */
 	if (dccp_sk(sk)->dccps_l_ack_ratio > hc->tx_cwnd)
 		ccid2_change_l_ack_ratio(sk, hc->tx_cwnd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ccid2_hc_tx_parse_options(struct sock *sk, u8 packet_type,
@@ -587,6 +622,9 @@ static void ccid2_hc_tx_packet_recv(struct sock *sk, struct sk_buff *skb)
 				hc->tx_rpdupack = -1; /* XXX lame */
 				hc->tx_rpseq    = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __CCID2_COPES_GRACEFULLY_WITH_ACK_CONGESTION_CONTROL__
 				/*
 				 * FIXME: Ack Congestion Control is broken; in
@@ -597,10 +635,13 @@ static void ccid2_hc_tx_packet_recv(struct sock *sk, struct sk_buff *skb)
 				 */
 				ccid2_change_l_ack_ratio(sk, 2 * dp->dccps_l_ack_ratio);
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 				ccid2_change_l_ack_ratio(sk, 2 * dp->dccps_l_ack_ratio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 	}
@@ -766,6 +807,8 @@ done:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Convert RFC 3390 larger initial window into an equivalent number of packets.
  * This is based on the numbers specified in RFC 5681, 3.1.
@@ -776,6 +819,7 @@ static inline u32 rfc3390_bytes_to_packets(const u32 smss)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ccid2_hc_tx_init(struct ccid *ccid, struct sock *sk)
 {
 	struct ccid2_hc_tx_sock *hc = ccid_priv(ccid);
@@ -790,7 +834,11 @@ static int ccid2_hc_tx_init(struct ccid *ccid, struct sock *sk)
 <<<<<<< HEAD
 	hc->tx_expected_wnd = hc->tx_cwnd;
 =======
+<<<<<<< HEAD
+	hc->tx_expected_wnd = hc->tx_cwnd;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Make sure that Ack Ratio is enabled and within bounds. */
 	max_ratio = DIV_ROUND_UP(hc->tx_cwnd, 2);
@@ -807,8 +855,13 @@ static int ccid2_hc_tx_init(struct ccid *ccid, struct sock *sk)
 	hc->tx_last_cong = hc->tx_lsndtime = hc->tx_cwnd_stamp = ccid2_time_stamp;
 	hc->tx_cwnd_used = 0;
 =======
+<<<<<<< HEAD
+	hc->tx_last_cong = hc->tx_lsndtime = hc->tx_cwnd_stamp = ccid2_time_stamp;
+	hc->tx_cwnd_used = 0;
+=======
 	hc->tx_last_cong = ccid2_time_stamp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	setup_timer(&hc->tx_rtotimer, ccid2_hc_tx_rto_expire,
 			(unsigned long)sk);
 	INIT_LIST_HEAD(&hc->tx_av_chunks);
@@ -830,6 +883,9 @@ static void ccid2_hc_tx_exit(struct sock *sk)
 static void ccid2_hc_rx_packet_recv(struct sock *sk, struct sk_buff *skb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ccid2_hc_rx_sock *hc = ccid2_hc_rx_sk(sk);
 
 	if (!dccp_data_packet(skb))
@@ -838,6 +894,8 @@ static void ccid2_hc_rx_packet_recv(struct sock *sk, struct sk_buff *skb)
 	if (++hc->rx_num_data_pkts >= dccp_sk(sk)->dccps_r_ack_ratio) {
 		dccp_send_ack(sk);
 		hc->rx_num_data_pkts = 0;
+<<<<<<< HEAD
+=======
 =======
 	const struct dccp_sock *dp = dccp_sk(sk);
 	struct ccid2_hc_rx_sock *hc = ccid2_hc_rx_sk(sk);
@@ -852,6 +910,7 @@ static void ccid2_hc_rx_packet_recv(struct sock *sk, struct sk_buff *skb)
 		}
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

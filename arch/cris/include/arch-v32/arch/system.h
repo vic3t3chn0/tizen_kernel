@@ -36,6 +36,8 @@ static inline unsigned long rdsp(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define nop() __asm__ __volatile__ ("nop");
 
 #define xchg(ptr,x) \
@@ -47,4 +49,5 @@ struct __xchg_dummy { unsigned long a[100]; };
 #define __xg(x) ((struct __xchg_dummy *)(x))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_CRIS_ARCH_SYSTEM_H */

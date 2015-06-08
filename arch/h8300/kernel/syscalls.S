@@ -186,8 +186,12 @@ SYMBOL_NAME_LABEL(sys_call_table)
 <<<<<<< HEAD
 	.long SYMBOL_NAME(sys_ni_syscall)	/* old nfsservctl */
 =======
+<<<<<<< HEAD
+	.long SYMBOL_NAME(sys_ni_syscall)	/* old nfsservctl */
+=======
 	.long SYMBOL_NAME(sys_nfsservctl)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.long SYMBOL_NAME(sys_setresgid16)	/* 170 */
 	.long SYMBOL_NAME(sys_getresgid16)
 	.long SYMBOL_NAME(sys_prctl)

@@ -11,8 +11,12 @@
 <<<<<<< HEAD
 	.global bootlogo_bits
 =======
+<<<<<<< HEAD
+	.global bootlogo_bits
+=======
 	.global splash_bits
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	.data
@@ -35,12 +39,15 @@ _ramend:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_INIT_LCD
 splash_bits:
 #include "bootlogo.rh"
 #endif
 	
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.text
 _start:
 _stext:	movew	#0x2700,%sr
@@ -48,8 +55,12 @@ _stext:	movew	#0x2700,%sr
 <<<<<<< HEAD
 	movel	#bootlogo_bits, 0xfffffA00 /* LSSA */
 =======
+<<<<<<< HEAD
+	movel	#bootlogo_bits, 0xfffffA00 /* LSSA */
+=======
 	movel	#splash_bits, 0xfffffA00 /* LSSA */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	moveb	#0x28,   0xfffffA05	/* LVPW */
 	movew	#0x280,  0xFFFFFa08	/* LXMAX */
 	movew	#0x1df,  0xFFFFFa0a	/* LYMAX */

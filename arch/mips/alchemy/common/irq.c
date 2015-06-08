@@ -30,15 +30,25 @@
 #include <linux/init.h>
 #include <linux/interrupt.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/init.h>
+#include <linux/interrupt.h>
+=======
 #include <linux/bitops.h>
 #include <linux/init.h>
 #include <linux/interrupt.h>
 #include <linux/irq.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/syscore_ops.h>
 
 #include <asm/irq_cpu.h>
+<<<<<<< HEAD
+#include <asm/mach-au1x00/au1000.h>
+#include <asm/mach-au1x00/gpio-au1300.h>
+=======
 <<<<<<< HEAD
 #include <asm/mach-au1x00/au1000.h>
 #include <asm/mach-au1x00/gpio-au1300.h>
@@ -49,6 +59,7 @@
 #include <asm/mach-pb1x00/pb1000.h>
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Interrupt Controller register offsets */
 #define IC_CFG0RD	0x40
@@ -81,6 +92,9 @@
 #define IC_TESTBIT	0x80
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* per-processor fixed function irqs */
 struct alchemy_irqmap {
 	int irq;	/* linux IRQ number */
@@ -92,9 +106,12 @@ struct alchemy_irqmap {
 static int au1x_ic_settype(struct irq_data *d, unsigned int type);
 static int au1300_gpic_settype(struct irq_data *d, unsigned int type);
 
+<<<<<<< HEAD
+=======
 =======
 static int au1x_ic_settype(struct irq_data *d, unsigned int flow_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* NOTE on interrupt priorities: The original writers of this code said:
  *
@@ -103,6 +120,9 @@ static int au1x_ic_settype(struct irq_data *d, unsigned int flow_type);
  * needs the highest priority.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct alchemy_irqmap au1000_irqmap[] __initdata = {
 	{ AU1000_UART0_INT,	  IRQ_TYPE_LEVEL_HIGH,  1, 0 },
 	{ AU1000_UART1_INT,	  IRQ_TYPE_LEVEL_HIGH,  1, 0 },
@@ -304,6 +324,8 @@ static struct alchemy_irqmap au1300_irqmap[] __initdata = {
 };
 
 /******************************************************************************/
+<<<<<<< HEAD
+=======
 =======
 
 /* per-processor fixed function irqs */
@@ -476,6 +498,7 @@ struct au1xxx_irqmap au1200_irqmap[] __initdata = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void au1x_ic0_unmask(struct irq_data *d)
 {
@@ -496,6 +519,8 @@ static void au1x_ic1_unmask(struct irq_data *d)
 	__raw_writel(1 << bit, base + IC_WAKESET);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 /* very hacky. does the pb1000 cpld auto-disable this int?
  * nowhere in the current kernel sources is it disabled.	--mlau
@@ -505,6 +530,7 @@ static void au1x_ic1_unmask(struct irq_data *d)
 		__raw_writel(0x4000, (void __iomem *)PB1000_MDR); /* enable int */
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wmb();
 }
 
@@ -703,6 +729,9 @@ static int au1x_ic_settype(struct irq_data *d, unsigned int flow_type)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /******************************************************************************/
 
 /*
@@ -916,6 +945,8 @@ static int au1300_gpic_settype(struct irq_data *d, unsigned int type)
 }
 
 /******************************************************************************/
+<<<<<<< HEAD
+=======
 =======
 asmlinkage void plat_irq_dispatch(void)
 {
@@ -952,6 +983,7 @@ handle:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void ic_init(void __iomem *base)
 {
@@ -970,6 +1002,9 @@ static inline void ic_init(void __iomem *base)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long alchemy_gpic_pmdata[ALCHEMY_GPIC_INT_NUM + 6];
 
 static inline void alchemy_ic_suspend_one(void __iomem *base, unsigned long *d)
@@ -1116,9 +1151,12 @@ static void alchemy_gpic_dispatch(unsigned int irq, struct irq_desc *d)
 /******************************************************************************/
 
 static void __init au1000_init_irq(struct alchemy_irqmap *map)
+<<<<<<< HEAD
+=======
 =======
 static void __init au1000_init_irq(struct au1xxx_irqmap *map)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int bit, irq_nr;
 	void __iomem *base;
@@ -1128,7 +1166,11 @@ static void __init au1000_init_irq(struct au1xxx_irqmap *map)
 <<<<<<< HEAD
 	register_syscore_ops(&alchemy_ic_pmops);
 =======
+<<<<<<< HEAD
+	register_syscore_ops(&alchemy_ic_pmops);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mips_cpu_irq_init();
 
 	/* register all 64 possible IC0+IC1 irq sources as type "none".
@@ -1149,9 +1191,14 @@ static void __init au1000_init_irq(struct au1xxx_irqmap *map)
 	while (map->irq != -1) {
 		irq_nr = map->irq;
 =======
+<<<<<<< HEAD
+	while (map->irq != -1) {
+		irq_nr = map->irq;
+=======
 	while (map->im_irq != -1) {
 		irq_nr = map->im_irq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (irq_nr >= AU1000_INTC1_INT_BASE) {
 			bit = irq_nr - AU1000_INTC1_INT_BASE;
@@ -1161,6 +1208,9 @@ static void __init au1000_init_irq(struct au1xxx_irqmap *map)
 			base = (void __iomem *)KSEG1ADDR(AU1000_IC0_PHYS_ADDR);
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (map->prio == 0)
 			__raw_writel(1 << bit, base + IC_ASSIGNSET);
 
@@ -1216,6 +1266,8 @@ static void __init alchemy_gpic_init_irq(const struct alchemy_irqmap *dints)
 
 /******************************************************************************/
 
+<<<<<<< HEAD
+=======
 =======
 		if (map->im_request)
 			__raw_writel(1 << bit, base + IC_ASSIGNSET);
@@ -1228,6 +1280,7 @@ static void __init alchemy_gpic_init_irq(const struct alchemy_irqmap *dints)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init arch_init_irq(void)
 {
 	switch (alchemy_get_cputype()) {
@@ -1247,6 +1300,9 @@ void __init arch_init_irq(void)
 		au1000_init_irq(au1200_irqmap);
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ALCHEMY_CPU_AU1300:
 		alchemy_gpic_init_irq(au1300_irqmap);
 		break;
@@ -1261,6 +1317,8 @@ asmlinkage void plat_irq_dispatch(void)
 	unsigned long r = (read_c0_status() & read_c0_cause()) >> 8;
 	do_IRQ(MIPS_CPU_IRQ_BASE + __ffs(r & 0xff));
 }
+<<<<<<< HEAD
+=======
 =======
 	}
 }
@@ -1325,3 +1383,4 @@ static int __init alchemy_ic_pm_init(void)
 }
 device_initcall(alchemy_ic_pm_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

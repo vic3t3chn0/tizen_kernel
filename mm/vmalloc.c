@@ -29,8 +29,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/tlbflush.h>
 #include <asm/shmparam.h>
@@ -277,6 +281,9 @@ static unsigned long cached_align;
 static unsigned long vmap_area_pcpu_hole;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ENABLE_VMALLOC_SAVING
 #define POSSIBLE_VMALLOC_START	PAGE_OFFSET
 
@@ -318,8 +325,11 @@ EXPORT_SYMBOL(is_vmalloc_addr);
 
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct vmap_area *__find_vmap_area(unsigned long addr)
 {
 	struct rb_node *n = vmap_area_root.rb_node;
@@ -502,6 +512,8 @@ overflow:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void rcu_free_va(struct rcu_head *head)
 {
 	struct vmap_area *va = container_of(head, struct vmap_area, rcu_head);
@@ -510,6 +522,7 @@ static void rcu_free_va(struct rcu_head *head)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __free_vmap_area(struct vmap_area *va)
 {
 	BUG_ON(RB_EMPTY_NODE(&va->rb_node));
@@ -545,8 +558,12 @@ static void __free_vmap_area(struct vmap_area *va)
 <<<<<<< HEAD
 	kfree_rcu(va, rcu_head);
 =======
+<<<<<<< HEAD
+	kfree_rcu(va, rcu_head);
+=======
 	call_rcu(&va->rcu_head, rcu_free_va);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -895,6 +912,8 @@ static struct vmap_block *new_vmap_block(gfp_t gfp_mask)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void rcu_free_vb(struct rcu_head *head)
 {
 	struct vmap_block *vb = container_of(head, struct vmap_block, rcu_head);
@@ -903,6 +922,7 @@ static void rcu_free_vb(struct rcu_head *head)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void free_vmap_block(struct vmap_block *vb)
 {
 	struct vmap_block *tmp;
@@ -918,8 +938,12 @@ static void free_vmap_block(struct vmap_block *vb)
 <<<<<<< HEAD
 	kfree_rcu(vb, rcu_head);
 =======
+<<<<<<< HEAD
+	kfree_rcu(vb, rcu_head);
+=======
 	call_rcu(&vb->rcu_head, rcu_free_vb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void purge_fragmented_blocks(int cpu)
@@ -1193,6 +1217,9 @@ void *vm_map_ram(struct page **pages, unsigned int count, int node, pgprot_t pro
 }
 EXPORT_SYMBOL(vm_map_ram);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * vm_area_check_early - check if vmap area is already mapped
  * @vm: vm_struct to be checked
@@ -1243,8 +1270,11 @@ void __init vm_area_add_early(struct vm_struct *vm)
 	vm->next = *p;
 	*p = vm;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * vm_area_register_early - register vmap area early during boot
@@ -1271,9 +1301,13 @@ void __init vm_area_register_early(struct vm_struct *vm, size_t align)
 <<<<<<< HEAD
 	vm_area_add_early(vm);
 =======
+<<<<<<< HEAD
+	vm_area_add_early(vm);
+=======
 	vm->next = vmlist;
 	vmlist = vm;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init vmalloc_init(void)
@@ -1391,8 +1425,12 @@ static void setup_vmalloc_vm(struct vm_struct *vm, struct vmap_area *va,
 <<<<<<< HEAD
 			      unsigned long flags, const void *caller)
 =======
+<<<<<<< HEAD
+			      unsigned long flags, const void *caller)
+=======
 			      unsigned long flags, void *caller)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	vm->flags = flags;
 	vm->addr = (void *)va->va_start;
@@ -1400,11 +1438,14 @@ static void setup_vmalloc_vm(struct vm_struct *vm, struct vmap_area *va,
 	vm->caller = caller;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DEBUG_VMALLOC
 	vm->pid = current->pid;
 	vm->task_name = current->comm;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	va->vm = vm;
 	va->flags |= VM_VM_AREA;
 }
@@ -1428,8 +1469,12 @@ static void insert_vmalloc_vm(struct vm_struct *vm, struct vmap_area *va,
 <<<<<<< HEAD
 			      unsigned long flags, const void *caller)
 =======
+<<<<<<< HEAD
+			      unsigned long flags, const void *caller)
+=======
 			      unsigned long flags, void *caller)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	setup_vmalloc_vm(vm, va, flags, caller);
 	insert_vmalloc_vmlist(vm);
@@ -1442,10 +1487,16 @@ static struct vm_struct *__get_vm_area_node(unsigned long size,
 {
 	struct vmap_area *va;
 =======
+<<<<<<< HEAD
+		unsigned long end, int node, gfp_t gfp_mask, const void *caller)
+{
+	struct vmap_area *va;
+=======
 		unsigned long end, int node, gfp_t gfp_mask, void *caller)
 {
 	static struct vmap_area *va;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct vm_struct *area;
 
 	BUG_ON(in_interrupt());
@@ -1507,8 +1558,12 @@ struct vm_struct *__get_vm_area_caller(unsigned long size, unsigned long flags,
 <<<<<<< HEAD
 				       const void *caller)
 =======
+<<<<<<< HEAD
+				       const void *caller)
+=======
 				       void *caller)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return __get_vm_area_node(size, 1, flags, start, end, -1, GFP_KERNEL,
 				  caller);
@@ -1526,6 +1581,9 @@ struct vm_struct *__get_vm_area_caller(unsigned long size, unsigned long flags,
 struct vm_struct *get_vm_area(unsigned long size, unsigned long flags)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ENABLE_VMALLOC_SAVING
 	return __get_vm_area_node(size, 1, flags, PAGE_OFFSET, VMALLOC_END,
 				-1, GFP_KERNEL, __builtin_return_address(0));
@@ -1557,6 +1615,8 @@ struct vm_struct *get_vm_area_caller(unsigned long size, unsigned long flags,
  *	pointer valid.
  */
 struct vm_struct *find_vm_area(const void *addr)
+<<<<<<< HEAD
+=======
 =======
 	return __get_vm_area_node(size, 1, flags, VMALLOC_START, VMALLOC_END,
 				-1, GFP_KERNEL, __builtin_return_address(0));
@@ -1571,6 +1631,7 @@ struct vm_struct *get_vm_area_caller(unsigned long size, unsigned long flags,
 
 static struct vm_struct *find_vm_area(const void *addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vmap_area *va;
 
@@ -1740,10 +1801,16 @@ static void *__vmalloc_node(unsigned long size, unsigned long align,
 static void *__vmalloc_area_node(struct vm_struct *area, gfp_t gfp_mask,
 				 pgprot_t prot, int node, const void *caller)
 =======
+<<<<<<< HEAD
+			    int node, const void *caller);
+static void *__vmalloc_area_node(struct vm_struct *area, gfp_t gfp_mask,
+				 pgprot_t prot, int node, const void *caller)
+=======
 			    int node, void *caller);
 static void *__vmalloc_area_node(struct vm_struct *area, gfp_t gfp_mask,
 				 pgprot_t prot, int node, void *caller)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const int order = 0;
 	struct page **pages;
@@ -1766,11 +1833,14 @@ static void *__vmalloc_area_node(struct vm_struct *area, gfp_t gfp_mask,
 	area->caller = caller;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_DEBUG_VMALLOC
 	area->pid = current->pid;
 	area->task_name = current->comm;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!area->pages) {
 		remove_vm_area(area->addr);
 		kfree(area);
@@ -1803,9 +1873,14 @@ fail:
 	warn_alloc_failed(gfp_mask, order,
 			  "vmalloc: allocation failure, allocated %ld of %ld bytes\n",
 =======
+<<<<<<< HEAD
+	warn_alloc_failed(gfp_mask, order,
+			  "vmalloc: allocation failure, allocated %ld of %ld bytes\n",
+=======
 	warn_alloc_failed(gfp_mask, order, "vmalloc: allocation failure, "
 			  "allocated %ld of %ld bytes\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  (area->nr_pages*PAGE_SIZE), area->size);
 	vfree(area->addr);
 	return NULL;
@@ -1831,13 +1906,20 @@ void *__vmalloc_node_range(unsigned long size, unsigned long align,
 <<<<<<< HEAD
 			pgprot_t prot, int node, const void *caller)
 =======
+<<<<<<< HEAD
+			pgprot_t prot, int node, const void *caller)
+=======
 			pgprot_t prot, int node, void *caller)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vm_struct *area;
 	void *addr;
 	unsigned long real_size = size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_FIX_MOVABLE_ZONE
 	unsigned long total_pages = total_unmovable_pages;
 #else
@@ -1852,6 +1934,8 @@ void *__vmalloc_node_range(unsigned long size, unsigned long align,
 				  start, end, node, gfp_mask, caller);
 	if (!area)
 		goto fail;
+<<<<<<< HEAD
+=======
 =======
 
 	size = PAGE_ALIGN(size);
@@ -1864,6 +1948,7 @@ void *__vmalloc_node_range(unsigned long size, unsigned long align,
 	if (!area)
 		return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	addr = __vmalloc_area_node(area, gfp_mask, prot, node, caller);
 	if (!addr)
@@ -1884,14 +1969,20 @@ void *__vmalloc_node_range(unsigned long size, unsigned long align,
 
 	return addr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 fail:
 	warn_alloc_failed(gfp_mask, 0,
 			  "vmalloc: allocation failure: %lu bytes\n",
 			  real_size);
 	return NULL;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1912,8 +2003,12 @@ static void *__vmalloc_node(unsigned long size, unsigned long align,
 <<<<<<< HEAD
 			    int node, const void *caller)
 =======
+<<<<<<< HEAD
+			    int node, const void *caller)
+=======
 			    int node, void *caller)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return __vmalloc_node_range(size, align, VMALLOC_START, VMALLOC_END,
 				gfp_mask, prot, node, caller);
@@ -2126,10 +2221,16 @@ static int aligned_vread(char *buf, char *addr, unsigned long count)
 			memcpy(buf, map + offset, length);
 			kunmap_atomic(map);
 =======
+<<<<<<< HEAD
+			void *map = kmap_atomic(p);
+			memcpy(buf, map + offset, length);
+			kunmap_atomic(map);
+=======
 			void *map = kmap_atomic(p, KM_USER0);
 			memcpy(buf, map + offset, length);
 			kunmap_atomic(map, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else
 			memset(buf, 0, length);
 
@@ -2171,10 +2272,16 @@ static int aligned_vwrite(char *buf, char *addr, unsigned long count)
 			memcpy(map + offset, buf, length);
 			kunmap_atomic(map);
 =======
+<<<<<<< HEAD
+			void *map = kmap_atomic(p);
+			memcpy(map + offset, buf, length);
+			kunmap_atomic(map);
+=======
 			void *map = kmap_atomic(p, KM_USER0);
 			memcpy(map + offset, buf, length);
 			kunmap_atomic(map, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		addr += length;
 		buf += length;
@@ -2396,15 +2503,21 @@ void  __attribute__((weak)) vmalloc_sync_all(void)
 static int f(pte_t *pte, pgtable_t table, unsigned long addr, void *data)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pte_t ***p = data;
 
 	if (p) {
 		*(*p) = pte;
 		(*p)++;
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* apply_to_page_range() does all the hard work. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2414,19 +2527,28 @@ static int f(pte_t *pte, pgtable_t table, unsigned long addr, void *data)
 <<<<<<< HEAD
  *	@ptes:		returns the PTEs for the address space
 =======
+<<<<<<< HEAD
+ *	@ptes:		returns the PTEs for the address space
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *	Returns:	NULL on failure, vm_struct on success
  *
  *	This function reserves a range of kernel address space, and
  *	allocates pagetables to map that range.  No actual mappings
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	are created.
  *
  *	If @ptes is non-NULL, pointers to the PTEs (in init_mm)
  *	allocated for the VM area are returned.
  */
 struct vm_struct *alloc_vm_area(size_t size, pte_t **ptes)
+<<<<<<< HEAD
+=======
 =======
  *	are created.  If the kernel address space is not shared
  *	between processes, it syncs the pagetable across all
@@ -2434,6 +2556,7 @@ struct vm_struct *alloc_vm_area(size_t size, pte_t **ptes)
  */
 struct vm_struct *alloc_vm_area(size_t size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vm_struct *area;
 
@@ -2450,8 +2573,12 @@ struct vm_struct *alloc_vm_area(size_t size)
 <<<<<<< HEAD
 				size, f, ptes ? &ptes : NULL)) {
 =======
+<<<<<<< HEAD
+				size, f, ptes ? &ptes : NULL)) {
+=======
 				area->size, f, NULL)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_vm_area(area);
 		return NULL;
 	}
@@ -2635,8 +2762,12 @@ struct vm_struct **pcpu_get_vm_areas(const unsigned long *offsets,
 <<<<<<< HEAD
 		goto err_free2;
 =======
+<<<<<<< HEAD
+		goto err_free2;
+=======
 		goto err_free;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (area = 0; area < nr_vms; area++) {
 		vas[area] = kzalloc(sizeof(struct vmap_area), GFP_KERNEL);
@@ -2735,10 +2866,15 @@ found:
 err_free:
 	for (area = 0; area < nr_vms; area++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(vas[area]);
 		kfree(vms[area]);
 	}
 err_free2:
+<<<<<<< HEAD
+=======
 =======
 		if (vas)
 			kfree(vas[area]);
@@ -2746,6 +2882,7 @@ err_free2:
 			kfree(vms[area]);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(vas);
 	kfree(vms);
 	return NULL;
@@ -2856,6 +2993,10 @@ static int s_show(struct seq_file *m, void *p)
 	if (v->flags & VM_LOWMEM)
 		seq_printf(m, " lowmem");
 =======
+<<<<<<< HEAD
+	if (v->flags & VM_LOWMEM)
+		seq_printf(m, " lowmem");
+=======
 #ifdef CONFIG_DEBUG_VMALLOC
 	if (v->pid)
 		seq_printf(m, " pid=%d", v->pid);
@@ -2864,6 +3005,7 @@ static int s_show(struct seq_file *m, void *p)
 		seq_printf(m, " task name=%s", v->task_name);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	show_numa_info(m, v);
 	seq_putc(m, '\n');

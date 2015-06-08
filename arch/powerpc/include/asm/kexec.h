@@ -5,8 +5,12 @@
 <<<<<<< HEAD
 #if defined(CONFIG_FSL_BOOKE) || defined(CONFIG_44x)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_FSL_BOOKE) || defined(CONFIG_44x)
+=======
 #ifdef CONFIG_FSL_BOOKE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * On FSL-BookE we setup a 1:1 mapping which covers the first 2GiB of memory
@@ -55,8 +59,11 @@
 #ifndef __ASSEMBLY__
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/cpumask.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/reg.h>
 
 typedef void (*crash_shutdown_t)(void);
@@ -82,12 +89,15 @@ extern int crashing_cpu;
 extern void crash_send_ipi(void (*crash_ipi_callback)(struct pt_regs *));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern cpumask_t cpus_in_sr;
 static inline int kexec_sr_activated(int cpu)
 {
 	return cpumask_test_cpu(cpu, &cpus_in_sr);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct kimage;
 struct pt_regs;
@@ -106,8 +116,11 @@ extern void machine_kexec_mask_interrupts(void);
 #else /* !CONFIG_KEXEC */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int kexec_sr_activated(int cpu) { return 0; }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void crash_kexec_secondary(struct pt_regs *regs) { }
 
 static inline int overlaps_crashkernel(unsigned long start, unsigned long size)

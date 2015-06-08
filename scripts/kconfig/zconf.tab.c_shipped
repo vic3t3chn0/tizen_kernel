@@ -1,10 +1,15 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* A Bison parser, made by GNU Bison 2.4.3.  */
 
 /* Skeleton implementation for Bison's Yacc-like parsers in C
    
       Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
    2009, 2010 Free Software Foundation, Inc.
+<<<<<<< HEAD
+=======
 =======
 
 /* A Bison parser, made by GNU Bison 2.4.1.  */
@@ -14,6 +19,7 @@
       Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
    Free Software Foundation, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -58,8 +64,12 @@
 <<<<<<< HEAD
 #define YYBISON_VERSION "2.4.3"
 =======
+<<<<<<< HEAD
+#define YYBISON_VERSION "2.4.3"
+=======
 #define YYBISON_VERSION "2.4.1"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -103,8 +113,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define LKC_DIRECT_LINK
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "lkc.h"
 
 #define printd(mask, fmt...) if (cdebug & (mask)) printf(fmt)
@@ -121,8 +134,12 @@ static void zconferror(const char *err);
 <<<<<<< HEAD
 static bool zconf_endtoken(const struct kconf_id *id, int starttoken, int endtoken);
 =======
+<<<<<<< HEAD
+static bool zconf_endtoken(const struct kconf_id *id, int starttoken, int endtoken);
+=======
 static bool zconf_endtoken(struct kconf_id *id, int starttoken, int endtoken);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct symbol *symbol_hash[SYMBOL_HASHSIZE];
 
@@ -130,11 +147,14 @@ static struct menu *current_menu, *current_entry;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define YYDEBUG 0
 #if YYDEBUG
 #define YYERROR_VERBOSE
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 
@@ -143,8 +163,12 @@ static struct menu *current_menu, *current_entry;
 <<<<<<< HEAD
 # define YYDEBUG 1
 =======
+<<<<<<< HEAD
+# define YYDEBUG 1
+=======
 # define YYDEBUG 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /* Enabling verbose error messages.  */
@@ -218,8 +242,12 @@ typedef union YYSTYPE
 <<<<<<< HEAD
 	const struct kconf_id *id;
 =======
+<<<<<<< HEAD
+	const struct kconf_id *id;
+=======
 	struct kconf_id *id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 
@@ -289,8 +317,12 @@ typedef short int yytype_int16;
 <<<<<<< HEAD
 # if defined YYENABLE_NLS && YYENABLE_NLS
 =======
+<<<<<<< HEAD
+# if defined YYENABLE_NLS && YYENABLE_NLS
+=======
 # if YYENABLE_NLS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #  if ENABLE_NLS
 #   include <libintl.h> /* INFRINGES ON USER NAME SPACE */
 #   define YY_(msgid) dgettext ("bison-runtime", msgid)
@@ -571,6 +603,9 @@ static const yytype_int8 yyrhs[] =
 static const yytype_uint16 yyrline[] =
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        0,   104,   104,   104,   106,   106,   108,   110,   111,   112,
      113,   114,   115,   119,   123,   123,   123,   123,   123,   123,
      123,   123,   127,   128,   129,   130,   131,   132,   136,   137,
@@ -583,6 +618,8 @@ static const yytype_uint16 yyrline[] =
      420,   421,   424,   432,   434,   435,   438,   445,   447,   452,
      453,   456,   457,   458,   462,   463,   466,   467,   470,   471,
      472,   473,   474,   475,   476,   479,   480,   483,   484
+<<<<<<< HEAD
+=======
 =======
        0,   108,   108,   108,   110,   110,   112,   114,   115,   116,
      117,   118,   119,   123,   127,   127,   127,   127,   127,   127,
@@ -597,6 +634,7 @@ static const yytype_uint16 yyrline[] =
      457,   460,   461,   462,   466,   467,   470,   471,   474,   475,
      476,   477,   478,   479,   480,   483,   484,   487,   488
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -857,6 +895,9 @@ static const yytype_uint8 yystos[] =
 /* Like YYERROR except do call yyerror.  This remains here temporarily
    to ease the transition to the new meaning of YYERROR, for GCC.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    Once GCC version 2 has supplanted version 1, this can go.  However,
    YYFAIL appears to be in use.  Nevertheless, it is formally deprecated
    in Bison 2.4.2's NEWS entry, where a plan to phase it out is
@@ -869,11 +910,14 @@ static const yytype_uint8 yystos[] =
      some users do, and we want to make it easy for users to remove
      YYFAIL uses, which will produce warnings from Bison 2.5.  */
 #endif
+<<<<<<< HEAD
+=======
 =======
    Once GCC version 2 has supplanted version 1, this can go.  */
 
 #define YYFAIL		goto yyerrlab
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
@@ -933,8 +977,12 @@ while (YYID (0))
 <<<<<<< HEAD
 # if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
 =======
+<<<<<<< HEAD
+# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+=======
 # if YYLTYPE_IS_TRIVIAL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #  define YY_LOCATION_PRINT(File, Loc)			\
      fprintf (File, "%d.%d-%d.%d",			\
 	      (Loc).first_line, (Loc).first_column,	\
@@ -1825,8 +1873,12 @@ yyreduce:
 <<<<<<< HEAD
 	const struct kconf_id *id = kconf_id_lookup((yyvsp[(2) - (3)].string), strlen((yyvsp[(2) - (3)].string)));
 =======
+<<<<<<< HEAD
+	const struct kconf_id *id = kconf_id_lookup((yyvsp[(2) - (3)].string), strlen((yyvsp[(2) - (3)].string)));
+=======
 	struct kconf_id *id = kconf_id_lookup((yyvsp[(2) - (3)].string), strlen((yyvsp[(2) - (3)].string)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (id && id->flags & TF_OPTION)
 		menu_add_option(id->token, (yyvsp[(3) - (3)].string));
 	else
@@ -2335,11 +2387,16 @@ void conf_parse(const char *name)
 	if (getenv("ZCONF_DEBUG"))
 		zconfdebug = 1;
 =======
+<<<<<<< HEAD
+	if (getenv("ZCONF_DEBUG"))
+		zconfdebug = 1;
+=======
 #if YYDEBUG
 	if (getenv("ZCONF_DEBUG"))
 		zconfdebug = 1;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	zconfparse();
 	if (zconfnerrs)
 		exit(1);
@@ -2381,8 +2438,12 @@ static const char *zconf_tokenname(int token)
 <<<<<<< HEAD
 static bool zconf_endtoken(const struct kconf_id *id, int starttoken, int endtoken)
 =======
+<<<<<<< HEAD
+static bool zconf_endtoken(const struct kconf_id *id, int starttoken, int endtoken)
+=======
 static bool zconf_endtoken(struct kconf_id *id, int starttoken, int endtoken)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (id->token != endtoken) {
 		zconf_error("unexpected '%s' within %s block",
@@ -2430,10 +2491,14 @@ static void zconferror(const char *err)
 <<<<<<< HEAD
 	fprintf(stderr, "%s:%d: %s\n", zconf_curname(), zconf_lineno() + 1, err);
 =======
+<<<<<<< HEAD
+	fprintf(stderr, "%s:%d: %s\n", zconf_curname(), zconf_lineno() + 1, err);
+=======
 #if YYDEBUG
 	fprintf(stderr, "%s:%d: %s\n", zconf_curname(), zconf_lineno() + 1, err);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_quoted_string(FILE *out, const char *str)
@@ -2585,8 +2650,12 @@ void zconfdump(FILE *out)
 <<<<<<< HEAD
 #include "zconf.lex.c"
 =======
+<<<<<<< HEAD
+#include "zconf.lex.c"
+=======
 #include "lex.zconf.c"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "util.c"
 #include "confdata.c"
 #include "expr.c"

@@ -11,6 +11,13 @@
 #include <linux/module.h>
 #include <linux/kernel.h> /* printk() */
 #include <linux/fs.h> /* everything... */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/scatterlist.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h> /* kmalloc() */
 #include <linux/dmaengine.h>
 #include <linux/platform_device.h>
@@ -23,6 +30,13 @@
 #include <mach/coh901318.h>
 
 #include "coh901318_lli.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "dmaengine.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define COHC_2_DEV(cohc) (&cohc->chan.dev->device)
 
@@ -38,8 +52,20 @@ struct coh901318_desc {
 	struct scatterlist *sg;
 	unsigned int sg_len;
 	struct coh901318_lli *lli;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum dma_transfer_direction dir;
+	unsigned long flags;
+	u32 head_config;
+	u32 head_ctrl;
+=======
 	enum dma_data_direction dir;
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	enum dma_data_direction dir;
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct coh901318_base {
@@ -56,7 +82,14 @@ struct coh901318_base {
 struct coh901318_chan {
 	spinlock_t lock;
 	int allocated;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int completed;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int completed;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int id;
 	int stopped;
 
@@ -101,6 +134,11 @@ static void coh901318_list_print(struct coh901318_chan *cohc,
 static struct coh901318_base *debugfs_dma_base;
 static struct dentry *dma_dentry;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int coh901318_debugfs_open(struct inode *inode, struct file *file)
 {
 
@@ -108,6 +146,10 @@ static int coh901318_debugfs_open(struct inode *inode, struct file *file)
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int coh901318_debugfs_read(struct file *file, char __user *buf,
 				  size_t count, loff_t *f_pos)
 {
@@ -155,7 +197,15 @@ static int coh901318_debugfs_read(struct file *file, char __user *buf,
 
 static const struct file_operations coh901318_debugfs_status_operations = {
 	.owner		= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open		= simple_open,
+=======
 	.open		= coh901318_debugfs_open,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open		= coh901318_debugfs_open,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read		= coh901318_debugfs_read,
 	.llseek		= default_llseek,
 };
@@ -315,6 +365,11 @@ static int coh901318_prep_linked_list(struct coh901318_chan *cohc,
 
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static dma_cookie_t
 coh901318_assign_cookie(struct coh901318_chan *cohc,
 			struct coh901318_desc *cohd)
@@ -329,6 +384,10 @@ coh901318_assign_cookie(struct coh901318_chan *cohc,
 
 	return cookie;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct coh901318_desc *
 coh901318_desc_get(struct coh901318_chan *cohc)
@@ -660,6 +719,15 @@ static struct coh901318_desc *coh901318_queue_start(struct coh901318_chan *cohc)
 
 		coh901318_desc_submit(cohc, cohd);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* Program the transaction head */
+		coh901318_set_conf(cohc, cohd->head_config);
+		coh901318_set_ctrl(cohc, cohd->head_ctrl);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		coh901318_prep_linked_list(cohc, cohd->lli);
 
 		/* start dma job on this channel */
@@ -699,7 +767,15 @@ static void dma_tasklet(unsigned long data)
 	callback_param = cohd_fin->desc.callback_param;
 
 	/* sign this job as completed on the channel */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_cookie_complete(&cohd_fin->desc);
+=======
 	cohc->completed = cohd_fin->desc.cookie;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cohc->completed = cohd_fin->desc.cookie;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* release the lli allocation and remove the descriptor */
 	coh901318_lli_free(&cohc->base->pool, &cohd_fin->lli);
@@ -923,7 +999,15 @@ static int coh901318_alloc_chan_resources(struct dma_chan *chan)
 	coh901318_config(cohc, NULL);
 
 	cohc->allocated = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_cookie_init(chan);
+=======
 	cohc->completed = chan->cookie = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cohc->completed = chan->cookie = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&cohc->lock, flags);
 
@@ -960,16 +1044,37 @@ coh901318_tx_submit(struct dma_async_tx_descriptor *tx)
 						   desc);
 	struct coh901318_chan *cohc = to_coh901318_chan(tx->chan);
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_cookie_t cookie;
+
+	spin_lock_irqsave(&cohc->lock, flags);
+	cookie = dma_cookie_assign(tx);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&cohc->lock, flags);
 
 	tx->cookie = coh901318_assign_cookie(cohc, cohd);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	coh901318_desc_queue(cohc, cohd);
 
 	spin_unlock_irqrestore(&cohc->lock, flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return cookie;
+=======
 	return tx->cookie;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return tx->cookie;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct dma_async_tx_descriptor *
@@ -1028,8 +1133,18 @@ coh901318_prep_memcpy(struct dma_chan *chan, dma_addr_t dest, dma_addr_t src,
 
 static struct dma_async_tx_descriptor *
 coh901318_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			unsigned int sg_len, enum dma_transfer_direction direction,
+			unsigned long flags, void *context)
+=======
 			unsigned int sg_len, enum dma_data_direction direction,
 			unsigned long flags)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			unsigned int sg_len, enum dma_data_direction direction,
+			unsigned long flags)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct coh901318_chan *cohc = to_coh901318_chan(chan);
 	struct coh901318_lli *lli;
@@ -1071,7 +1186,15 @@ coh901318_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 	ctrl_last |= cohc->runtime_ctrl;
 	ctrl |= cohc->runtime_ctrl;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (direction == DMA_MEM_TO_DEV) {
+=======
 	if (direction == DMA_TO_DEVICE) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (direction == DMA_TO_DEVICE) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 tx_flags = COH901318_CX_CTRL_PRDD_SOURCE |
 			COH901318_CX_CTRL_SRC_ADDR_INC_ENABLE;
 
@@ -1079,7 +1202,15 @@ coh901318_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 		ctrl_chained |= tx_flags;
 		ctrl_last |= tx_flags;
 		ctrl |= tx_flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else if (direction == DMA_DEV_TO_MEM) {
+=======
 	} else if (direction == DMA_FROM_DEVICE) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	} else if (direction == DMA_FROM_DEVICE) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 rx_flags = COH901318_CX_CTRL_PRDD_DEST |
 			COH901318_CX_CTRL_DST_ADDR_INC_ENABLE;
 
@@ -1090,8 +1221,16 @@ coh901318_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 	} else
 		goto err_direction;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	coh901318_set_conf(cohc, config);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	coh901318_set_conf(cohc, config);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* The dma only supports transmitting packages up to
 	 * MAX_DMA_PACKET_SIZE. Calculate to total number of
 	 * dma elemts required to send the entire sg list
@@ -1128,16 +1267,38 @@ coh901318_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 	if (ret)
 		goto err_lli_fill;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set the default ctrl for the channel to the one from the lli,
 	 * things may have changed due to odd buffer alignment etc.
 	 */
 	coh901318_set_ctrl(cohc, lli->control);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	COH_DBG(coh901318_list_print(cohc, lli));
 
 	/* Pick a descriptor to handle this transfer */
 	cohd = coh901318_desc_get(cohc);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cohd->head_config = config;
+	/*
+	 * Set the default head ctrl for the channel to the one from the
+	 * lli, things may have changed due to odd buffer alignment
+	 * etc.
+	 */
+	cohd->head_ctrl = lli->control;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cohd->dir = direction;
 	cohd->flags = flags;
 	cohd->desc.tx_submit = coh901318_tx_submit;
@@ -1159,6 +1320,17 @@ coh901318_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
 		 struct dma_tx_state *txstate)
 {
 	struct coh901318_chan *cohc = to_coh901318_chan(chan);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum dma_status ret;
+
+	ret = dma_cookie_status(chan, cookie, txstate);
+	/* FIXME: should be conditional on ret != DMA_SUCCESS? */
+	dma_set_residue(txstate, coh901318_get_bytes_left(chan));
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_cookie_t last_used;
 	dma_cookie_t last_complete;
 	int ret;
@@ -1170,6 +1342,10 @@ coh901318_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
 
 	dma_set_tx_state(txstate, last_complete, last_used,
 			 coh901318_get_bytes_left(chan));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret == DMA_IN_PROGRESS && cohc->stopped)
 		ret = DMA_PAUSED;
 
@@ -1268,11 +1444,25 @@ static void coh901318_dma_set_runtimeconfig(struct dma_chan *chan,
 	int i = 0;
 
 	/* We only support mem to per or per to mem transfers */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (config->direction == DMA_DEV_TO_MEM) {
+		addr = config->src_addr;
+		addr_width = config->src_addr_width;
+		maxburst = config->src_maxburst;
+	} else if (config->direction == DMA_MEM_TO_DEV) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (config->direction == DMA_FROM_DEVICE) {
 		addr = config->src_addr;
 		addr_width = config->src_addr_width;
 		maxburst = config->src_maxburst;
 	} else if (config->direction == DMA_TO_DEVICE) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		addr = config->dst_addr;
 		addr_width = config->dst_addr_width;
 		maxburst = config->dst_maxburst;

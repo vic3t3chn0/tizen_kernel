@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs_struct.h>
 #include <linux/swap.h>
 
@@ -257,8 +261,12 @@ static void nfsd_shutdown(void)
 <<<<<<< HEAD
 static void nfsd_last_thread(struct svc_serv *serv, struct net *net)
 =======
+<<<<<<< HEAD
+static void nfsd_last_thread(struct svc_serv *serv, struct net *net)
+=======
 static void nfsd_last_thread(struct svc_serv *serv)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* When last nfsd thread exits we need to do some clean-up */
 	nfsd_serv = NULL;
@@ -268,7 +276,12 @@ static void nfsd_last_thread(struct svc_serv *serv)
 	svc_rpcb_cleanup(serv, net);
 
 =======
+<<<<<<< HEAD
+	svc_rpcb_cleanup(serv, net);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_WARNING "nfsd: last server has exited, flushing export "
 			    "cache\n");
 	nfsd_export_flush();
@@ -318,6 +331,9 @@ static void set_max_drc(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int nfsd_get_default_max_blksize(void)
 {
 	struct sysinfo i;
@@ -341,17 +357,25 @@ static int nfsd_get_default_max_blksize(void)
 
 int nfsd_create_serv(void)
 {
+<<<<<<< HEAD
+=======
 =======
 int nfsd_create_serv(void)
 {
 	int err = 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(!mutex_is_locked(&nfsd_mutex));
 	if (nfsd_serv) {
 		svc_get(nfsd_serv);
 		return 0;
 	}
+<<<<<<< HEAD
+	if (nfsd_max_blksize == 0)
+		nfsd_max_blksize = nfsd_get_default_max_blksize();
+	nfsd_reset_versions();
+=======
 <<<<<<< HEAD
 	if (nfsd_max_blksize == 0)
 		nfsd_max_blksize = nfsd_get_default_max_blksize();
@@ -376,6 +400,7 @@ int nfsd_create_serv(void)
 	nfsd_reset_versions();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nfsd_serv = svc_create_pooled(&nfsd_program, nfsd_max_blksize,
 				      nfsd_last_thread, nfsd, THIS_MODULE);
 	if (nfsd_serv == NULL)
@@ -386,8 +411,12 @@ int nfsd_create_serv(void)
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int nfsd_nrpools(void)
@@ -582,6 +611,11 @@ nfsd(void *vrqstp)
 		svc_process(rqstp);
 		validate_process_creds();
 =======
+<<<<<<< HEAD
+		validate_process_creds();
+		svc_process(rqstp);
+		validate_process_creds();
+=======
 
 		/* Lock the export hash tables for reading. */
 		exp_readlock();
@@ -593,6 +627,7 @@ nfsd(void *vrqstp)
 		/* Unlock export hash tables */
 		exp_readunlock();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Clear signals before calling svc_exit_thread() */
@@ -633,6 +668,9 @@ nfsd_dispatch(struct svc_rqst *rqstp, __be32 *statp)
 	proc = rqstp->rq_procinfo;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Give the xdr decoder a chance to change this if it wants
 	 * (necessary in the NFSv4.0 compound case)
@@ -649,10 +687,13 @@ nfsd_dispatch(struct svc_rqst *rqstp, __be32 *statp)
 
 	/* Check whether we have this call in the cache. */
 	switch (nfsd_cache_lookup(rqstp)) {
+<<<<<<< HEAD
+=======
 =======
 	/* Check whether we have this call in the cache. */
 	switch (nfsd_cache_lookup(rqstp, proc->pc_cachetype)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case RC_INTR:
 	case RC_DROPIT:
 		return 0;
@@ -662,6 +703,8 @@ nfsd_dispatch(struct svc_rqst *rqstp, __be32 *statp)
 		/* do it */
 	}
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Decode arguments */
@@ -675,6 +718,7 @@ nfsd_dispatch(struct svc_rqst *rqstp, __be32 *statp)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* need to grab the location to store the status, as
 	 * nfsv4 does some encoding while processing 
 	 */

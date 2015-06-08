@@ -14,12 +14,26 @@
  */
 
 #include <linux/compat.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+#include <linux/videodev2.h>
+#include <media/v4l2-dev.h>
+#include <media/v4l2-ioctl.h>
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/videodev2.h>
 #include <linux/module.h>
 #include <media/v4l2-ioctl.h>
 
 #ifdef CONFIG_COMPAT
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static long native_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 {
 	long ret = -ENOIOCTLCMD;
@@ -159,11 +173,39 @@ struct v4l2_format32 {
 	} fmt;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * struct v4l2_create_buffers32 - VIDIOC_CREATE_BUFS32 argument
+ * @index:	on return, index of the first created buffer
+ * @count:	entry: number of requested buffers,
+ *		return: number of created buffers
+ * @memory:	buffer memory type
+ * @format:	frame format, for which buffers are requested
+ * @reserved:	future extensions
+ */
+struct v4l2_create_buffers32 {
+	__u32			index;
+	__u32			count;
+	enum v4l2_memory        memory;
+	struct v4l2_format32	format;
+	__u32			reserved[8];
+};
+
+static int __get_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user *up)
+{
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int get_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user *up)
 {
 	if (!access_ok(VERIFY_READ, up, sizeof(struct v4l2_format32)) ||
 			get_user(kp->type, &up->type))
 			return -EFAULT;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (kp->type) {
 	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
 	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
@@ -192,11 +234,38 @@ static int get_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int get_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user *up)
+{
+	if (!access_ok(VERIFY_READ, up, sizeof(struct v4l2_format32)) ||
+			get_user(kp->type, &up->type))
+			return -EFAULT;
+	return __get_v4l2_format32(kp, up);
+}
+
+static int get_v4l2_create32(struct v4l2_create_buffers *kp, struct v4l2_create_buffers32 __user *up)
+{
+	if (!access_ok(VERIFY_READ, up, sizeof(struct v4l2_create_buffers32)) ||
+	    copy_from_user(kp, up, offsetof(struct v4l2_create_buffers32, format.fmt)))
+			return -EFAULT;
+	return __get_v4l2_format32(&kp->format, &up->format);
+}
+
+static int __put_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user *up)
+{
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int put_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user *up)
 {
 	if (!access_ok(VERIFY_WRITE, up, sizeof(struct v4l2_format32)) ||
 		put_user(kp->type, &up->type))
 		return -EFAULT;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (kp->type) {
 	case V4L2_BUF_TYPE_VIDEO_CAPTURE:
 	case V4L2_BUF_TYPE_VIDEO_OUTPUT:
@@ -225,6 +294,28 @@ static int put_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int put_v4l2_format32(struct v4l2_format *kp, struct v4l2_format32 __user *up)
+{
+	if (!access_ok(VERIFY_WRITE, up, sizeof(struct v4l2_format32)) ||
+		put_user(kp->type, &up->type))
+		return -EFAULT;
+	return __put_v4l2_format32(kp, up);
+}
+
+static int put_v4l2_create32(struct v4l2_create_buffers *kp, struct v4l2_create_buffers32 __user *up)
+{
+	if (!access_ok(VERIFY_WRITE, up, sizeof(struct v4l2_create_buffers32)) ||
+	    copy_to_user(up, kp, offsetof(struct v4l2_create_buffers32, format.fmt)))
+			return -EFAULT;
+	return __put_v4l2_format32(&kp->format, &up->format);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct v4l2_standard32 {
 	__u32		     index;
 	__u32		     id[2]; /* __u64 would get the alignment wrong */
@@ -662,6 +753,38 @@ static int put_v4l2_ext_controls32(struct v4l2_ext_controls *kp, struct v4l2_ext
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct v4l2_event32 {
+	__u32				type;
+	union {
+		__u8			data[64];
+	} u;
+	__u32				pending;
+	__u32				sequence;
+	struct compat_timespec		timestamp;
+	__u32				id;
+	__u32				reserved[8];
+};
+
+static int put_v4l2_event32(struct v4l2_event *kp, struct v4l2_event32 __user *up)
+{
+	if (!access_ok(VERIFY_WRITE, up, sizeof(struct v4l2_event32)) ||
+		put_user(kp->type, &up->type) ||
+		copy_to_user(&up->u, &kp->u, sizeof(kp->u)) ||
+		put_user(kp->pending, &up->pending) ||
+		put_user(kp->sequence, &up->sequence) ||
+		put_compat_timespec(&kp->timestamp, &up->timestamp) ||
+		put_user(kp->id, &up->id) ||
+		copy_to_user(up->reserved, kp->reserved, 8 * sizeof(__u32)))
+			return -EFAULT;
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDIOC_G_FMT32		_IOWR('V',  4, struct v4l2_format32)
 #define VIDIOC_S_FMT32		_IOWR('V',  5, struct v4l2_format32)
 #define VIDIOC_QUERYBUF32	_IOWR('V',  9, struct v4l2_buffer32)
@@ -675,6 +798,15 @@ static int put_v4l2_ext_controls32(struct v4l2_ext_controls *kp, struct v4l2_ext
 #define VIDIOC_G_EXT_CTRLS32    _IOWR('V', 71, struct v4l2_ext_controls32)
 #define VIDIOC_S_EXT_CTRLS32    _IOWR('V', 72, struct v4l2_ext_controls32)
 #define VIDIOC_TRY_EXT_CTRLS32  _IOWR('V', 73, struct v4l2_ext_controls32)
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define	VIDIOC_DQEVENT32	_IOR ('V', 89, struct v4l2_event32)
+#define VIDIOC_CREATE_BUFS32	_IOWR('V', 92, struct v4l2_create_buffers32)
+#define VIDIOC_PREPARE_BUF32	_IOWR('V', 93, struct v4l2_buffer32)
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define VIDIOC_OVERLAY32	_IOW ('V', 14, s32)
 #define VIDIOC_STREAMON32	_IOW ('V', 18, s32)
@@ -693,6 +825,14 @@ static long do_video_ioctl(struct file *file, unsigned int cmd, unsigned long ar
 		struct v4l2_input v2i;
 		struct v4l2_standard v2s;
 		struct v4l2_ext_controls v2ecs;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct v4l2_event v2ev;
+		struct v4l2_create_buffers v2crt;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long vx;
 		int vi;
 	} karg;
@@ -715,6 +855,13 @@ static long do_video_ioctl(struct file *file, unsigned int cmd, unsigned long ar
 	case VIDIOC_G_EXT_CTRLS32: cmd = VIDIOC_G_EXT_CTRLS; break;
 	case VIDIOC_S_EXT_CTRLS32: cmd = VIDIOC_S_EXT_CTRLS; break;
 	case VIDIOC_TRY_EXT_CTRLS32: cmd = VIDIOC_TRY_EXT_CTRLS; break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_DQEVENT32: cmd = VIDIOC_DQEVENT; break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_OVERLAY32: cmd = VIDIOC_OVERLAY; break;
 	case VIDIOC_STREAMON32: cmd = VIDIOC_STREAMON; break;
 	case VIDIOC_STREAMOFF32: cmd = VIDIOC_STREAMOFF; break;
@@ -722,6 +869,14 @@ static long do_video_ioctl(struct file *file, unsigned int cmd, unsigned long ar
 	case VIDIOC_S_INPUT32: cmd = VIDIOC_S_INPUT; break;
 	case VIDIOC_G_OUTPUT32: cmd = VIDIOC_G_OUTPUT; break;
 	case VIDIOC_S_OUTPUT32: cmd = VIDIOC_S_OUTPUT; break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_CREATE_BUFS32: cmd = VIDIOC_CREATE_BUFS; break;
+	case VIDIOC_PREPARE_BUF32: cmd = VIDIOC_PREPARE_BUF; break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	switch (cmd) {
@@ -746,6 +901,18 @@ static long do_video_ioctl(struct file *file, unsigned int cmd, unsigned long ar
 		compatible_arg = 0;
 		break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_CREATE_BUFS:
+		err = get_v4l2_create32(&karg.v2crt, up);
+		compatible_arg = 0;
+		break;
+
+	case VIDIOC_PREPARE_BUF:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_QUERYBUF:
 	case VIDIOC_QBUF:
 	case VIDIOC_DQBUF:
@@ -778,6 +945,15 @@ static long do_video_ioctl(struct file *file, unsigned int cmd, unsigned long ar
 		err = get_v4l2_ext_controls32(&karg.v2ecs, up);
 		compatible_arg = 0;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_DQEVENT:
+		compatible_arg = 0;
+		break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (err)
 		return err;
@@ -818,12 +994,32 @@ static long do_video_ioctl(struct file *file, unsigned int cmd, unsigned long ar
 		err = put_v4l2_framebuffer32(&karg.v2fb, up);
 		break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_DQEVENT:
+		err = put_v4l2_event32(&karg.v2ev, up);
+		break;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_G_FMT:
 	case VIDIOC_S_FMT:
 	case VIDIOC_TRY_FMT:
 		err = put_v4l2_format32(&karg.v2f, up);
 		break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_CREATE_BUFS:
+		err = put_v4l2_create32(&karg.v2crt, up);
+		break;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_QUERYBUF:
 	case VIDIOC_QBUF:
 	case VIDIOC_DQBUF:
@@ -843,6 +1039,13 @@ static long do_video_ioctl(struct file *file, unsigned int cmd, unsigned long ar
 
 long v4l2_compat_ioctl32(struct file *file, unsigned int cmd, unsigned long arg)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct video_device *vdev = video_devdata(file);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	long ret = -ENOIOCTLCMD;
 
 	if (!file->f_op->unlocked_ioctl)
@@ -891,6 +1094,14 @@ long v4l2_compat_ioctl32(struct file *file, unsigned int cmd, unsigned long arg)
 	case VIDIOC_CROPCAP:
 	case VIDIOC_G_CROP:
 	case VIDIOC_S_CROP:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_G_SELECTION:
+	case VIDIOC_S_SELECTION:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_G_JPEGCOMP:
 	case VIDIOC_S_JPEGCOMP:
 	case VIDIOC_QUERYSTD:
@@ -909,6 +1120,14 @@ long v4l2_compat_ioctl32(struct file *file, unsigned int cmd, unsigned long arg)
 	case VIDIOC_G_ENC_INDEX:
 	case VIDIOC_ENCODER_CMD:
 	case VIDIOC_TRY_ENCODER_CMD:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_DECODER_CMD:
+	case VIDIOC_TRY_DECODER_CMD:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case VIDIOC_DBG_S_REGISTER:
 	case VIDIOC_DBG_G_REGISTER:
 	case VIDIOC_DBG_G_CHIP_IDENT:
@@ -920,20 +1139,59 @@ long v4l2_compat_ioctl32(struct file *file, unsigned int cmd, unsigned long arg)
 	case VIDIOC_S_DV_TIMINGS:
 	case VIDIOC_G_DV_TIMINGS:
 	case VIDIOC_DQEVENT:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case VIDIOC_DQEVENT32:
 	case VIDIOC_SUBSCRIBE_EVENT:
 	case VIDIOC_UNSUBSCRIBE_EVENT:
+	case VIDIOC_CREATE_BUFS32:
+	case VIDIOC_PREPARE_BUF32:
+=======
+	case VIDIOC_SUBSCRIBE_EVENT:
+	case VIDIOC_UNSUBSCRIBE_EVENT:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case VIDIOC_SUBSCRIBE_EVENT:
+	case VIDIOC_UNSUBSCRIBE_EVENT:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = do_video_ioctl(file, cmd, arg);
 		break;
 
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (vdev->fops->compat_ioctl32)
+			ret = vdev->fops->compat_ioctl32(file, cmd, arg);
+
+		if (ret == -ENOIOCTLCMD)
+			printk(KERN_WARNING "compat_ioctl32: "
+				"unknown ioctl '%c', dir=%d, #%d (0x%08x)\n",
+				_IOC_TYPE(cmd), _IOC_DIR(cmd), _IOC_NR(cmd),
+				cmd);
+=======
 		printk(KERN_WARNING "compat_ioctl32: "
 			"unknown ioctl '%c', dir=%d, #%d (0x%08x)\n",
 			_IOC_TYPE(cmd), _IOC_DIR(cmd), _IOC_NR(cmd), cmd);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "compat_ioctl32: "
+			"unknown ioctl '%c', dir=%d, #%d (0x%08x)\n",
+			_IOC_TYPE(cmd), _IOC_DIR(cmd), _IOC_NR(cmd), cmd);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	return ret;
 }
 EXPORT_SYMBOL_GPL(v4l2_compat_ioctl32);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
 
 MODULE_LICENSE("GPL");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+
+MODULE_LICENSE("GPL");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

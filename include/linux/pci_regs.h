@@ -394,7 +394,11 @@
 <<<<<<< HEAD
 #define  PCI_EXP_TYPE_PCIE_BRIDGE 0x8	/* PCI/PCI-X to PCIE Bridge */
 =======
+<<<<<<< HEAD
+#define  PCI_EXP_TYPE_PCIE_BRIDGE 0x8	/* PCI/PCI-X to PCIE Bridge */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define  PCI_EXP_TYPE_RC_END	0x9	/* Root Complex Integrated Endpoint */
 #define  PCI_EXP_TYPE_RC_EC	0xa	/* Root Complex Event Collector */
 #define PCI_EXP_FLAGS_SLOT	0x0100	/* Slot implemented */
@@ -546,8 +550,14 @@
 #define PCI_EXT_CAP_ID_LTR	24
 #define PCI_EXT_CAP_ID_PASID	27
 =======
+<<<<<<< HEAD
+#define PCI_EXT_CAP_ID_PRI	19
+#define PCI_EXT_CAP_ID_LTR	24
+#define PCI_EXT_CAP_ID_PASID	27
+=======
 #define PCI_EXT_CAP_ID_LTR	24
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Advanced Error Reporting */
 #define PCI_ERR_UNCOR_STATUS	4	/* Uncorrectable Error Status */
@@ -674,6 +684,9 @@
 #define  PCI_ATS_MIN_STU	12	/* shift of minimum STU block */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Page Request Interface */
 #define PCI_PRI_CTRL		0x04	/* PRI control register */
 #define  PCI_PRI_CTRL_ENABLE	0x01	/* Enable */
@@ -694,8 +707,11 @@
 #define  PCI_PASID_CTRL_EXEC	0x02	/* Exec permissions Enable */
 #define  PCI_PASID_CTRL_PRIV	0x04	/* Priviledge Mode Enable */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Single Root I/O Virtualization */
 #define PCI_SRIOV_CAP		0x04	/* SR-IOV Capabilities */
 #define  PCI_SRIOV_CAP_VFM	0x01	/* VF Migration Capable */

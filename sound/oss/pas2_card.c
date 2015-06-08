@@ -42,6 +42,9 @@ static int      pas_sb_base;
 DEFINE_SPINLOCK(pas_lock);
 #ifndef CONFIG_PAS_JOYSTICK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool	joystick;
 #else
 static bool 	joystick = 1;
@@ -55,6 +58,8 @@ static bool 	symphony;
 static bool	broken_bus_clock = 1;
 #else
 static bool	broken_bus_clock;
+<<<<<<< HEAD
+=======
 =======
 static int	joystick;
 #else
@@ -70,6 +75,7 @@ static int	broken_bus_clock = 1;
 #else
 static int	broken_bus_clock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static struct address_info cfg;

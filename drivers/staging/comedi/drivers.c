@@ -42,7 +42,14 @@
 #include <linux/cdev.h>
 #include <linux/dma-mapping.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "comedidev.h"
 #include "internal.h"
@@ -502,7 +509,19 @@ int comedi_buf_alloc(struct comedi_device *dev, struct comedi_subdevice *s,
 		}
 		if (i == n_pages) {
 			async->prealloc_buf =
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef PAGE_KERNEL_NOCACHE
 			    vmap(pages, n_pages, VM_MAP, PAGE_KERNEL_NOCACHE);
+#else
+			    vmap(pages, n_pages, VM_MAP, PAGE_KERNEL);
+#endif
+=======
+			    vmap(pages, n_pages, VM_MAP, PAGE_KERNEL_NOCACHE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			    vmap(pages, n_pages, VM_MAP, PAGE_KERNEL_NOCACHE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		vfree(pages);
 
@@ -819,14 +838,43 @@ static int comedi_auto_config(struct device *hardware_device,
 	int minor;
 	struct comedi_device_file_info *dev_file_info;
 	int retval;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned *private_data = NULL;
+
+	if (!comedi_autoconfig) {
+		dev_set_drvdata(hardware_device, NULL);
+		return 0;
+	}
+=======
 
 	if (!comedi_autoconfig)
 		return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	if (!comedi_autoconfig)
+		return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	minor = comedi_alloc_board_minor(hardware_device);
 	if (minor < 0)
 		return minor;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	private_data = kmalloc(sizeof(unsigned), GFP_KERNEL);
+	if (private_data == NULL) {
+		retval = -ENOMEM;
+		goto cleanup;
+	}
+	*private_data = minor;
+	dev_set_drvdata(hardware_device, private_data);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_file_info = comedi_get_device_file_info(minor);
 
 	memset(&it, 0, sizeof(it));
@@ -839,13 +887,40 @@ static int comedi_auto_config(struct device *hardware_device,
 	retval = comedi_device_attach(dev_file_info->device, &it);
 	mutex_unlock(&dev_file_info->device->mutex);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+cleanup:
+	if (retval < 0) {
+		kfree(private_data);
+		comedi_free_board_minor(minor);
+	}
+=======
 	if (retval < 0)
 		comedi_free_board_minor(minor);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (retval < 0)
+		comedi_free_board_minor(minor);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
 static void comedi_auto_unconfig(struct device *hardware_device)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned *minor = (unsigned *)dev_get_drvdata(hardware_device);
+	if (minor == NULL)
+		return;
+
+	BUG_ON(*minor >= COMEDI_NUM_BOARD_MINORS);
+
+	comedi_free_board_minor(*minor);
+	dev_set_drvdata(hardware_device, NULL);
+	kfree(minor);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int minor;
 
 	if (hardware_device == NULL)
@@ -855,6 +930,10 @@ static void comedi_auto_unconfig(struct device *hardware_device)
 		return;
 	BUG_ON(minor >= COMEDI_NUM_BOARD_MINORS);
 	comedi_free_board_minor(minor);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int comedi_pci_auto_config(struct pci_dev *pcidev, const char *board_name)

@@ -459,8 +459,12 @@ struct mfp_addr_map {
 <<<<<<< HEAD
 void __init mfp_init_base(void __iomem *mfpr_base);
 =======
+<<<<<<< HEAD
+void __init mfp_init_base(void __iomem *mfpr_base);
+=======
 void __init mfp_init_base(unsigned long mfpr_base);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init mfp_init_addr(struct mfp_addr_map *map);
 
 /*

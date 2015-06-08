@@ -20,8 +20,11 @@
 #include <asm/setup.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable.h>
 #include <asm/machdep.h>
 #include <asm/m68360.h>
@@ -108,12 +111,15 @@ void hw_timer_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void BSP_gettod (int *yearp, int *monp, int *dayp,
 		   int *hourp, int *minp, int *secp)
 {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int BSP_set_clock_mmss(unsigned long nowtime)
 {
 #if 0
@@ -190,7 +196,11 @@ void config_BSP(char *command, int len)
 <<<<<<< HEAD
   mach_reset = BSP_reset;
 =======
+<<<<<<< HEAD
+  mach_reset = BSP_reset;
+=======
   mach_gettod          = BSP_gettod;
   mach_reset           = BSP_reset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

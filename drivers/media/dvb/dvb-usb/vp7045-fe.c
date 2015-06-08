@@ -103,9 +103,21 @@ static int vp7045_fe_get_tune_settings(struct dvb_frontend* fe, struct dvb_front
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int vp7045_fe_set_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *fep = &fe->dtv_property_cache;
+=======
 static int vp7045_fe_set_frontend(struct dvb_frontend* fe,
 				  struct dvb_frontend_parameters *fep)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int vp7045_fe_set_frontend(struct dvb_frontend* fe,
+				  struct dvb_frontend_parameters *fep)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct vp7045_fe_state *state = fe->demodulator_priv;
 	u8 buf[5];
 	u32 freq = fep->frequency / 1000;
@@ -115,6 +127,23 @@ static int vp7045_fe_set_frontend(struct dvb_frontend* fe,
 	buf[2] =  freq        & 0xff;
 	buf[3] = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (fep->bandwidth_hz) {
+	case 8000000:
+		buf[4] = 8;
+		break;
+	case 7000000:
+		buf[4] = 7;
+		break;
+	case 6000000:
+		buf[4] = 6;
+		break;
+	default:
+		return -EINVAL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (fep->u.ofdm.bandwidth) {
 		case BANDWIDTH_8_MHZ: buf[4] = 8; break;
 		case BANDWIDTH_7_MHZ: buf[4] = 7; break;
@@ -122,18 +151,31 @@ static int vp7045_fe_set_frontend(struct dvb_frontend* fe,
 		case BANDWIDTH_AUTO: return -EOPNOTSUPP;
 		default:
 			return -EINVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	vp7045_usb_op(state->d,LOCK_TUNER_COMMAND,buf,5,NULL,0,200);
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int vp7045_fe_get_frontend(struct dvb_frontend* fe,
 				  struct dvb_frontend_parameters *fep)
 {
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void vp7045_fe_release(struct dvb_frontend* fe)
 {
 	struct vp7045_fe_state *state = fe->demodulator_priv;
@@ -159,9 +201,21 @@ error:
 
 
 static struct dvb_frontend_ops vp7045_fe_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBT },
+	.info = {
+		.name			= "Twinhan VP7045/46 USB DVB-T",
+=======
 	.info = {
 		.name			= "Twinhan VP7045/46 USB DVB-T",
 		.type			= FE_OFDM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.info = {
+		.name			= "Twinhan VP7045/46 USB DVB-T",
+		.type			= FE_OFDM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min		= 44250000,
 		.frequency_max		= 867250000,
 		.frequency_stepsize	= 1000,
@@ -181,7 +235,14 @@ static struct dvb_frontend_ops vp7045_fe_ops = {
 	.sleep = vp7045_fe_sleep,
 
 	.set_frontend = vp7045_fe_set_frontend,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.get_frontend = vp7045_fe_get_frontend,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.get_frontend = vp7045_fe_get_frontend,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_tune_settings = vp7045_fe_get_tune_settings,
 
 	.read_status = vp7045_fe_read_status,

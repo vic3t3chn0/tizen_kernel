@@ -895,7 +895,15 @@ static int __init pvr2fb_dc_init(void)
 
 #ifdef CONFIG_PVR2_DMA
 	if (request_dma(pvr2dma, "pvr2") != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		free_irq(HW_EVENT_VSYNC, fb_info);
+=======
 		free_irq(HW_EVENT_VSYNC, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		free_irq(HW_EVENT_VSYNC, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EBUSY;
 	}
 #endif
@@ -914,7 +922,15 @@ static void __exit pvr2fb_dc_exit(void)
 		currentpar->mmio_base = 0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	free_irq(HW_EVENT_VSYNC, fb_info);
+=======
 	free_irq(HW_EVENT_VSYNC, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	free_irq(HW_EVENT_VSYNC, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PVR2_DMA
 	free_dma(pvr2dma);
 #endif
@@ -1061,7 +1077,15 @@ static struct pvr2_board {
 	int (*init)(void);
 	void (*exit)(void);
 	char name[16];
+<<<<<<< HEAD
+<<<<<<< HEAD
+} board_driver[] __refdata = {
+=======
 } board_driver[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} board_driver[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SH_DREAMCAST
 	{ pvr2fb_dc_init, pvr2fb_dc_exit, "Sega DC PVR2" },
 #endif

@@ -17,8 +17,11 @@
 #define CLIP_VCC(vcc) ((struct clip_vcc *) ((vcc)->user_back))
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define NEIGH2ENTRY(neigh) ((struct atmarp_entry *) (neigh)->primary_key)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct sk_buff;
 
@@ -41,8 +44,11 @@ struct clip_vcc {
 struct atmarp_entry {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	__be32		ip;		/* IP address */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clip_vcc	*vccs;		/* active VCCs; NULL if resolution is
 					   pending */
 	unsigned long	expires;	/* entry expiration time */
@@ -53,11 +59,16 @@ struct atmarp_entry {
 #define PRIV(dev) ((struct clip_priv *) netdev_priv(dev))
 
 =======
+<<<<<<< HEAD
+#define PRIV(dev) ((struct clip_priv *) netdev_priv(dev))
+
+=======
 
 #define PRIV(dev) ((struct clip_priv *) netdev_priv(dev))
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct clip_priv {
 	int number;			/* for convenience ... */
 	spinlock_t xoff_lock;		/* ensures that pop is atomic (SMP) */
@@ -66,8 +77,11 @@ struct clip_priv {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 extern struct neigh_table *clip_tbl_hook;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

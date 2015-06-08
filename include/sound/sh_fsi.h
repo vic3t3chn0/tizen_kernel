@@ -73,6 +73,9 @@
 #define SH_FSI_BPFMD_16		(6 << 4)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sh_fsi_port_info {
 	unsigned long flags;
 	int tx_id;
@@ -95,12 +98,15 @@ struct fsi_ak4642_info {
 	const char *codec;
 	const char *platform;
 	int id;
+<<<<<<< HEAD
+=======
 =======
 struct sh_fsi_platform_info {
 	unsigned long porta_flags;
 	unsigned long portb_flags;
 	int (*set_rate)(struct device *dev, int is_porta, int rate, int enable);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __SOUND_FSI_H */

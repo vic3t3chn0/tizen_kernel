@@ -8,9 +8,14 @@
 obj-y 			:= time.o clock.o serial.o psc.o \
 			   dma.o usb.o common.o sram.o aemif.o
 =======
+<<<<<<< HEAD
+obj-y 			:= time.o clock.o serial.o psc.o \
+			   dma.o usb.o common.o sram.o aemif.o
+=======
 obj-y 			:= time.o clock.o serial.o io.o psc.o \
 			   gpio.o dma.o usb.o common.o sram.o aemif.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-$(CONFIG_DAVINCI_MUX)		+= mux.o
 
@@ -24,8 +29,11 @@ obj-$(CONFIG_ARCH_DAVINCI_DA850)        += da850.o devices-da8xx.o
 obj-$(CONFIG_ARCH_DAVINCI_TNETV107X)    += tnetv107x.o devices-tnetv107x.o
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 obj-$(CONFIG_ARCH_DAVINCI_TNETV107X)    += gpio-tnetv107x.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-$(CONFIG_AINTC)			+= irq.o
 obj-$(CONFIG_CP_INTC)			+= cp_intc.o

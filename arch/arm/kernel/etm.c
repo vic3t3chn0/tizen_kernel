@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardware/coresight.h>
 #include <asm/sections.h>
 
@@ -49,7 +53,11 @@ struct tracectx {
 <<<<<<< HEAD
 	int		etm_contextid_size;
 =======
+<<<<<<< HEAD
+	int		etm_contextid_size;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32		etb_fc;
 	unsigned long	range_start;
 	unsigned long	range_end;
@@ -119,12 +127,19 @@ static int trace_start_etm(struct tracectx *t, int id)
 <<<<<<< HEAD
 	v |= ETMCTRL_CONTEXTIDSIZE(t->etm_contextid_size);
 =======
+<<<<<<< HEAD
+	v |= ETMCTRL_CONTEXTIDSIZE(t->etm_contextid_size);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (t->flags & TRACER_CYCLE_ACC)
 		v |= ETMCTRL_CYCLEACCURATE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (t->flags & TRACER_BRANCHOUTPUT)
 		v |= ETMCTRL_BRANCH_OUTPUT;
 
@@ -137,11 +152,14 @@ static int trace_start_etm(struct tracectx *t, int id)
 	if (t->flags & TRACER_RETURN_STACK)
 		v |= ETMCTRL_RETURN_STACK_EN;
 
+<<<<<<< HEAD
+=======
 =======
 	if (t->flags & TRACER_TRACE_DATA)
 		v |= ETMCTRL_DATA_DO_ADDR;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	etm_unlock(t, id);
 
 	etm_writel(t, id, v, ETMR_CTRL);
@@ -227,6 +245,9 @@ static int trace_stop_etm(struct tracectx *t, int id)
 	etm_unlock(t, id);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	etm_writel(t, id, 0x440, ETMR_CTRL);
 	while (!(etm_readl(t, id, ETMR_CTRL) & ETMCTRL_PROGRAM) && --timeout)
 		;
@@ -251,6 +272,8 @@ static int trace_power_down_etm(struct tracectx *t, int id)
 	if (!timeout) {
 		dev_err(t->dev, "etm%d: Waiting for status progbit to assert timed out\n",
 			id);
+<<<<<<< HEAD
+=======
 =======
 	etm_writel(t, id, 0x441, ETMR_CTRL);
 	while (!(etm_readl(t, id, ETMR_CTRL) & ETMCTRL_PROGRAM) && --timeout)
@@ -258,6 +281,7 @@ static int trace_power_down_etm(struct tracectx *t, int id)
 	if (!timeout) {
 		dev_dbg(t->dev, "Waiting for progbit to assert timed out\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		etm_lock(t, id);
 		return -EFAULT;
 	}
@@ -266,7 +290,12 @@ static int trace_power_down_etm(struct tracectx *t, int id)
 	etm_writel(t, id, 0x441, ETMR_CTRL);
 
 =======
+<<<<<<< HEAD
+	etm_writel(t, id, 0x441, ETMR_CTRL);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	etm_lock(t, id);
 	return 0;
 }
@@ -275,6 +304,9 @@ static int trace_stop(struct tracectx *t)
 {
 	int id;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long timeout = TRACER_TIMEOUT;
 	u32 etb_fc = t->etb_fc;
 
@@ -283,6 +315,8 @@ static int trace_stop(struct tracectx *t)
 
 	for (id = 0; id < t->etm_regs_count; id++)
 		trace_power_down_etm(t, id);
+<<<<<<< HEAD
+=======
 =======
 	int ret;
 	unsigned long timeout = TRACER_TIMEOUT;
@@ -294,6 +328,7 @@ static int trace_stop(struct tracectx *t)
 			return ret;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	etb_unlock(t);
 	if (etb_fc) {
@@ -697,6 +732,9 @@ static struct kobj_attribute trace_mode_attr =
 	__ATTR(trace_mode, 0644, trace_mode_show, trace_mode_store);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t trace_contextid_size_show(struct kobject *kobj,
 					 struct kobj_attribute *attr,
 					 char *buf)
@@ -824,8 +862,11 @@ static struct kobj_attribute trace_timestamp_attr =
 	__ATTR(trace_timestamp, 0644,
 		trace_timestamp_show, trace_timestamp_store);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t trace_range_show(struct kobject *kobj,
 				  struct kobj_attribute *attr,
 				  char *buf)
@@ -904,12 +945,18 @@ static int __devinit etm_probe(struct amba_device *dev, const struct amba_id *id
 	void __iomem **new_regs;
 	int new_count;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 etmccr;
 	u32 etmidr;
 	u32 etmccer = 0;
 	u8 etm_version = 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&t->mutex);
 	new_count = t->etm_regs_count + 1;
@@ -941,9 +988,15 @@ static int __devinit etm_probe(struct amba_device *dev, const struct amba_id *id
 	t->etm_portsz = 1;
 	t->etm_contextid_size = 3;
 =======
+<<<<<<< HEAD
+	t->flags = TRACER_CYCLE_ACC | TRACER_TRACE_DATA | TRACER_BRANCHOUTPUT;
+	t->etm_portsz = 1;
+	t->etm_contextid_size = 3;
+=======
 	t->flags = TRACER_CYCLE_ACC | TRACER_TRACE_DATA;
 	t->etm_portsz = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	etm_unlock(t, t->etm_regs_count);
 	(void)etm_readl(t, t->etm_regs_count, ETMMR_PDSR);
@@ -951,6 +1004,9 @@ static int __devinit etm_probe(struct amba_device *dev, const struct amba_id *id
 	(void)etm_readl(&tracer, t->etm_regs_count, ETMMR_OSSRR);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	etmccr = etm_readl(t, t->etm_regs_count, ETMR_CONFCODE);
 	t->ncmppairs = etmccr & 0xf;
 	if (etmccr & ETMCCR_ETMIDR_PRESENT) {
@@ -959,9 +1015,12 @@ static int __devinit etm_probe(struct amba_device *dev, const struct amba_id *id
 		if (etm_version >= ETMIDR_VERSION_3_1)
 			etmccer = etm_readl(t, t->etm_regs_count, ETMR_CCE);
 	}
+<<<<<<< HEAD
+=======
 =======
 	t->ncmppairs = etm_readl(t, t->etm_regs_count, ETMR_CONFCODE) & 0xf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	etm_writel(t, t->etm_regs_count, 0x441, ETMR_CTRL);
 	etm_writel(t, t->etm_regs_count, new_count, ETMR_TRACEIDR);
 	etm_lock(t, t->etm_regs_count);
@@ -981,6 +1040,9 @@ static int __devinit etm_probe(struct amba_device *dev, const struct amba_id *id
 		dev_dbg(&dev->dev, "Failed to create trace_mode in sysfs\n");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = sysfs_create_file(&dev->dev.kobj,
 				&trace_contextid_size_attr.attr);
 	if (ret)
@@ -1009,13 +1071,19 @@ static int __devinit etm_probe(struct amba_device *dev, const struct amba_id *id
 				"Failed to create trace_timestamp in sysfs\n");
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = sysfs_create_file(&dev->dev.kobj, &trace_range_attr.attr);
 	if (ret)
 		dev_dbg(&dev->dev, "Failed to create trace_range in sysfs\n");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (etm_version < ETMIDR_VERSION_PFT_1_0) {
 		ret = sysfs_create_file(&dev->dev.kobj,
 					&trace_data_range_attr.attr);
@@ -1025,12 +1093,15 @@ static int __devinit etm_probe(struct amba_device *dev, const struct amba_id *id
 	} else {
 		tracer.flags &= ~TRACER_TRACE_DATA;
 	}
+<<<<<<< HEAD
+=======
 =======
 	ret = sysfs_create_file(&dev->dev.kobj, &trace_data_range_attr.attr);
 	if (ret)
 		dev_dbg(&dev->dev,
 			"Failed to create trace_data_range in sysfs\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(&dev->dev, "ETM AMBA driver initialized.\n");
 

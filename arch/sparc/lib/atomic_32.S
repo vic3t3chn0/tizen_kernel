@@ -42,6 +42,8 @@ ___xchg32_sun4md:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Read asm-sparc/atomic.h carefully to understand how this works for SMP.
 	 * Really, some things here for SMP are overly clever, go read the header.
 	 */
@@ -98,5 +100,6 @@ ___atomic24_sub:
 	 mov	%g4, %o7		! Restore %o7
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl  __atomic_end
 __atomic_end:

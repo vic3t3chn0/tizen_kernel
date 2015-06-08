@@ -24,6 +24,9 @@
 #include <linux/clk.h>
 #include <linux/dma-mapping.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gpio_keys.h>
 #include <linux/pda_power.h>
 #include <linux/io.h>
@@ -33,11 +36,14 @@
 #include <linux/rfkill-gpio.h>
 
 #include <asm/hardware/gic.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/pda_power.h>
 #include <linux/io.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/time.h>
@@ -56,6 +62,9 @@
 static struct plat_serial8250_port debug_uart_platform_data[] = {
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* serial port on JP1 */
 		.membase	= IO_ADDRESS(TEGRA_UARTA_BASE),
 		.mapbase	= TEGRA_UARTA_BASE,
@@ -72,12 +81,15 @@ static struct plat_serial8250_port debug_uart_platform_data[] = {
 		.irq		= INT_UARTC,
 		.flags		= UPF_BOOT_AUTOCONF | UPF_FIXED_TYPE,
 		.type		= PORT_TEGRA,
+<<<<<<< HEAD
+=======
 =======
 		.membase	= IO_ADDRESS(TEGRA_UARTD_BASE),
 		.mapbase	= TEGRA_UARTD_BASE,
 		.irq		= INT_UARTD,
 		.flags		= UPF_BOOT_AUTOCONF,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.iotype		= UPIO_MEM,
 		.regshift	= 2,
 		.uartclk	= 216000000,
@@ -95,6 +107,9 @@ static struct platform_device debug_uart = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct rfkill_gpio_platform_data wifi_rfkill_platform_data = {
 	.name		= "wifi_rfkill",
 	.reset_gpio	= TEGRA_WIFI_RST,
@@ -179,6 +194,8 @@ static void paz00_usb_init(void)
 
 static void __init tegra_paz00_fixup(struct tag *tags, char **cmdline,
 	struct meminfo *mi)
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *paz00_devices[] __initdata = {
 	&debug_uart,
@@ -190,6 +207,7 @@ static struct platform_device *paz00_devices[] __initdata = {
 static void __init tegra_paz00_fixup(struct machine_desc *desc,
 	struct tag *tags, char **cmdline, struct meminfo *mi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mi->nr_banks = 1;
 	mi->bank[0].start = PHYS_OFFSET;
@@ -199,6 +217,9 @@ static void __init tegra_paz00_fixup(struct machine_desc *desc,
 static __initdata struct tegra_clk_init_table paz00_clk_init_table[] = {
 	/* name		parent		rate		enabled */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "uarta",	"pll_p",	216000000,	true },
 	{ "uartc",	"pll_p",	216000000,	true },
 
@@ -210,6 +231,8 @@ static __initdata struct tegra_clk_init_table paz00_clk_init_table[] = {
 	{ NULL,		NULL,		0,		0},
 };
 
+<<<<<<< HEAD
+=======
 =======
 	{ "uartd",	"pll_p",	216000000,	true },
 	{ NULL,		NULL,		0,		0},
@@ -217,6 +240,7 @@ static __initdata struct tegra_clk_init_table paz00_clk_init_table[] = {
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct tegra_sdhci_platform_data sdhci_pdata1 = {
 	.cd_gpio	= TEGRA_GPIO_SD1_CD,
 	.wp_gpio	= TEGRA_GPIO_SD1_WP,
@@ -224,10 +248,15 @@ static struct tegra_sdhci_platform_data sdhci_pdata1 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct tegra_sdhci_platform_data sdhci_pdata4 = {
 	.cd_gpio	= -1,
 	.wp_gpio	= -1,
 	.power_gpio	= -1,
+<<<<<<< HEAD
+=======
 =======
 static struct tegra_sdhci_platform_data sdhci_pdata2 = {
 	.cd_gpio	= -1,
@@ -240,6 +269,7 @@ static struct tegra_sdhci_platform_data sdhci_pdata4 = {
 	.wp_gpio	= TEGRA_GPIO_SD4_WP,
 	.power_gpio	= TEGRA_GPIO_SD4_POWER,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.is_8bit	= 1,
 };
 
@@ -251,6 +281,9 @@ static void __init tegra_paz00_init(void)
 
 	tegra_sdhci_device1.dev.platform_data = &sdhci_pdata1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tegra_sdhci_device4.dev.platform_data = &sdhci_pdata4;
 
 	platform_add_devices(paz00_devices, ARRAY_SIZE(paz00_devices));
@@ -269,6 +302,8 @@ MACHINE_START(PAZ00, "Toshiba AC100 / Dynabook AZ")
 	.timer          = &tegra_timer,
 	.init_machine   = tegra_paz00_init,
 	.restart	= tegra_assert_system_reset,
+<<<<<<< HEAD
+=======
 =======
 	tegra_sdhci_device2.dev.platform_data = &sdhci_pdata2;
 	tegra_sdhci_device4.dev.platform_data = &sdhci_pdata4;
@@ -285,4 +320,5 @@ MACHINE_START(PAZ00, "paz00")
 	.timer          = &tegra_timer,
 	.init_machine   = tegra_paz00_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -5,6 +5,9 @@ config NETFILTER_NETLINK
 	tristate
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NETFILTER_NETLINK_ACCT
 tristate "Netfilter NFACCT over NFNETLINK interface"
 	depends on NETFILTER_ADVANCED
@@ -13,8 +16,11 @@ tristate "Netfilter NFACCT over NFNETLINK interface"
 	  If this option is enabled, the kernel will include support
 	  for extended accounting via NFNETLINK.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NETFILTER_NETLINK_QUEUE
 	tristate "Netfilter NFQUEUE over NFNETLINK interface"
 	depends on NETFILTER_ADVANCED
@@ -87,6 +93,9 @@ config NF_CONNTRACK_ZONES
 	  If unsure, say `N'.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NF_CONNTRACK_PROCFS
 	bool "Supply CT list in procfs (OBSOLETE)"
 	default y
@@ -97,8 +106,11 @@ config NF_CONNTRACK_PROCFS
 	is considered obsolete in favor of using the conntrack(8)
 	tool which uses Netlink.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NF_CONNTRACK_EVENTS
 	bool "Connection tracking events"
 	depends on NETFILTER_ADVANCED
@@ -110,6 +122,9 @@ config NF_CONNTRACK_EVENTS
 	  If unsure, say `N'.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NF_CONNTRACK_TIMEOUT
 	bool  'Connection tracking timeout'
 	depends on NETFILTER_ADVANCED
@@ -120,8 +135,11 @@ config NF_CONNTRACK_TIMEOUT
 
 	  If unsure, say `N'.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NF_CONNTRACK_TIMESTAMP
 	bool  'Connection tracking timestamping'
 	depends on NETFILTER_ADVANCED
@@ -240,8 +258,11 @@ config NF_CONNTRACK_NETBIOS_NS
 	tristate "NetBIOS name service protocol support"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	depends on NETFILTER_ADVANCED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select NF_CONNTRACK_BROADCAST
 	help
 	  NetBIOS name service requests are sent as broadcast messages from an
@@ -338,6 +359,9 @@ config NF_CT_NETLINK
 	  This option enables support for a netlink-based userspace interface
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NF_CT_NETLINK_TIMEOUT
 	tristate  'Connection tracking timeout tuning via Netlink'
 	select NETFILTER_NETLINK
@@ -349,8 +373,11 @@ config NF_CT_NETLINK_TIMEOUT
 
 	  If unsure, say `N'.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif # NF_CONNTRACK
 
 # transparent proxy support
@@ -560,6 +587,9 @@ config NETFILTER_XT_TARGET_LED
 
 	  For more information on the LEDs available on your system, see
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  Documentation/leds/leds-class.txt
 
 config NETFILTER_XT_TARGET_LOG
@@ -570,9 +600,12 @@ config NETFILTER_XT_TARGET_LOG
 	  any iptables table which records the packet header to the syslog.
 
 	  To compile it as a module, choose M here.  If unsure, say N.
+<<<<<<< HEAD
+=======
 =======
 	  Documentation/leds-class.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config NETFILTER_XT_TARGET_MARK
 	tristate '"MARK" target support'
@@ -611,8 +644,11 @@ config NETFILTER_XT_TARGET_NOTRACK
 	depends on NF_CONNTRACK
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	depends on NETFILTER_ADVANCED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  The NOTRACK target allows a select rule to specify
 	  which packets *not* to enter the conntrack/NAT
@@ -843,6 +879,9 @@ config NETFILTER_XT_MATCH_DSCP
 	  To compile it as a module, choose M here.  If unsure, say N.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NETFILTER_XT_MATCH_ECN
 	tristate '"ecn" match support'
 	depends on NETFILTER_ADVANCED
@@ -852,8 +891,11 @@ config NETFILTER_XT_MATCH_ECN
 
 	To compile it as a module, choose M here. If unsure, say N.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NETFILTER_XT_MATCH_ESP
 	tristate '"esp" match support'
 	depends on NETFILTER_ADVANCED
@@ -964,6 +1006,9 @@ config NETFILTER_XT_MATCH_MULTIPORT
 	  To compile it as a module, choose M here.  If unsure, say N.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NETFILTER_XT_MATCH_NFACCT
 	tristate '"nfacct" match support'
 	depends on NETFILTER_ADVANCED
@@ -974,8 +1019,11 @@ config NETFILTER_XT_MATCH_NFACCT
 
 	  To compile it as a module, choose M here.  If unsure, say N.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NETFILTER_XT_MATCH_OSF
 	tristate '"osf" Passive OS fingerprint match'
 	depends on NETFILTER_ADVANCED && NETFILTER_NETLINK

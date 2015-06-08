@@ -25,16 +25,22 @@
 #include <asm/mach-types.h>
 #include <mach/hardware.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardware/iomd.h>
 #include <asm/page.h>
 #include <asm/domain.h>
 #include <asm/setup.h>
 #include <asm/system_misc.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/page.h>
 #include <asm/domain.h>
 #include <asm/setup.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/map.h>
 #include <asm/mach/arch.h>
@@ -85,8 +91,12 @@ static struct map_desc rpc_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual	= (unsigned long)EASI_BASE,
 =======
+<<<<<<< HEAD
+		.virtual	= (unsigned long)EASI_BASE,
+=======
 		.virtual	= EASI_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn		= __phys_to_pfn(EASI_START),
 		.length		= EASI_SIZE,
 		.type		= MT_DEVICE
@@ -114,6 +124,11 @@ static struct resource acornfb_resources[] = {
 	DEFINE_RES_MEM(0x03400000, 0x00200000),
 	DEFINE_RES_IRQ(IRQ_VSYNCPULSE),
 =======
+<<<<<<< HEAD
+	/* VIDC */
+	DEFINE_RES_MEM(0x03400000, 0x00200000),
+	DEFINE_RES_IRQ(IRQ_VSYNCPULSE),
+=======
 	{	/* VIDC */
 		.start		= 0x03400000,
 		.end		= 0x035fffff,
@@ -124,6 +139,7 @@ static struct resource acornfb_resources[] = {
 		.flags		= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device acornfb_device = {
@@ -140,12 +156,16 @@ static struct resource iomd_resources[] = {
 <<<<<<< HEAD
 	DEFINE_RES_MEM(0x03200000, 0x10000),
 =======
+<<<<<<< HEAD
+	DEFINE_RES_MEM(0x03200000, 0x10000),
+=======
 	{
 		.start		= 0x03200000,
 		.end		= 0x0320ffff,
 		.flags		= IORESOURCE_MEM,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device iomd_device = {
@@ -156,13 +176,19 @@ static struct platform_device iomd_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource iomd_kart_resources[] = {
 	DEFINE_RES_IRQ(IRQ_KEYBOARDRX),
 	DEFINE_RES_IRQ(IRQ_KEYBOARDTX),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device kbd_device = {
 	.name			= "kart",
 	.id			= -1,
@@ -173,7 +199,12 @@ static struct platform_device kbd_device = {
 	.num_resources		= ARRAY_SIZE(iomd_kart_resources),
 	.resource		= iomd_kart_resources,
 =======
+<<<<<<< HEAD
+	.num_resources		= ARRAY_SIZE(iomd_kart_resources),
+	.resource		= iomd_kart_resources,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct plat_serial8250_port serial_platform_data[] = {
@@ -182,8 +213,12 @@ static struct plat_serial8250_port serial_platform_data[] = {
 <<<<<<< HEAD
 		.irq		= IRQ_SERIALPORT,
 =======
+<<<<<<< HEAD
+		.irq		= IRQ_SERIALPORT,
+=======
 		.irq		= 10,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.uartclk	= 1843200,
 		.regshift	= 2,
 		.iotype		= UPIO_MEM,
@@ -210,6 +245,11 @@ static struct resource pata_resources[] = {
 	DEFINE_RES_MEM(0x03010fd8, 0x04),
 	DEFINE_RES_IRQ(IRQ_HARDDISK),
 =======
+<<<<<<< HEAD
+	DEFINE_RES_MEM(0x030107c0, 0x20),
+	DEFINE_RES_MEM(0x03010fd8, 0x04),
+	DEFINE_RES_IRQ(IRQ_HARDDISK),
+=======
 	[0] = {
 		.start		= 0x030107c0,
 		.end		= 0x030107df,
@@ -226,6 +266,7 @@ static struct resource pata_resources[] = {
 		.flags		= IORESOURCE_IRQ,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device pata_device = {
@@ -260,6 +301,9 @@ static int __init rpc_init(void)
 arch_initcall(rpc_init);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void rpc_restart(char mode, const char *cmd)
 {
 	iomd_writeb(0, IOMD_ROMCR0);
@@ -270,8 +314,11 @@ static void rpc_restart(char mode, const char *cmd)
 	soft_restart(0);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct sys_timer ioc_timer;
 
 MACHINE_START(RISCPC, "Acorn-RiscPC")
@@ -279,8 +326,12 @@ MACHINE_START(RISCPC, "Acorn-RiscPC")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x10000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.reserve_lp0	= 1,
 	.reserve_lp1	= 1,
 	.map_io		= rpc_map_io,
@@ -289,5 +340,9 @@ MACHINE_START(RISCPC, "Acorn-RiscPC")
 <<<<<<< HEAD
 	.restart	= rpc_restart,
 =======
+<<<<<<< HEAD
+	.restart	= rpc_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

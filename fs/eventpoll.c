@@ -34,11 +34,16 @@
 #include <linux/mutex.h>
 #include <linux/anon_inodes.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/freezer.h>
 #include <asm/uaccess.h>
 #include <asm/io.h>
 #include <asm/mman.h>
 #include <linux/atomic.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/uaccess.h>
 #include <asm/system.h>
@@ -46,6 +51,7 @@
 #include <asm/mman.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * LOCKING:
@@ -436,6 +442,9 @@ out_unlock:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * As described in commit 0ccf831cb lockdep: annotate epoll
  * the use of wait queues used by epoll is done in a very controlled
@@ -461,8 +470,11 @@ out_unlock:
  * When CONFIG_DEBUG_LOCK_ALLOC is enabled, make sure lockdep can handle
  * this special case of epoll.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_LOCK_ALLOC
 static inline void ep_wake_up_nested(wait_queue_head_t *wqueue,
 				     unsigned long events, int subclass)
@@ -736,17 +748,23 @@ static int ep_read_events_proc(struct eventpoll *ep, struct list_head *head,
 {
 	struct epitem *epi, *tmp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	poll_table pt;
 
 	init_poll_funcptr(&pt, NULL);
 	list_for_each_entry_safe(epi, tmp, head, rdllink) {
 		pt._key = epi->event.events;
 		if (epi->ffd.file->f_op->poll(epi->ffd.file, &pt) &
+<<<<<<< HEAD
+=======
 =======
 
 	list_for_each_entry_safe(epi, tmp, head, rdllink) {
 		if (epi->ffd.file->f_op->poll(epi->ffd.file, NULL) &
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    epi->event.events)
 			return POLLIN | POLLRDNORM;
 		else {
@@ -1096,8 +1114,11 @@ static int reverse_path_check(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int length = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = 0;
 	struct file *current_file;
 
@@ -1105,8 +1126,11 @@ static int reverse_path_check(void)
 	list_for_each_entry(current_file, &tfile_check_list, f_tfile_llink) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		length++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		path_count_init();
 		error = ep_call_nested(&poll_loop_ncalls, EP_MAX_NESTS,
 					reverse_path_check_proc, current_file,
@@ -1151,7 +1175,11 @@ static int ep_insert(struct eventpoll *ep, struct epoll_event *event,
 <<<<<<< HEAD
 	epq.pt._key = event->events;
 =======
+<<<<<<< HEAD
+	epq.pt._key = event->events;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Attach the item to the poll hooks and get current event bits.
@@ -1251,7 +1279,13 @@ static int ep_modify(struct eventpoll *ep, struct epitem *epi, struct epoll_even
 
 	init_poll_funcptr(&pt, NULL);
 =======
+<<<<<<< HEAD
+	poll_table pt;
+
+	init_poll_funcptr(&pt, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Set the new event interest mask before calling f_op->poll();
@@ -1259,6 +1293,9 @@ static int ep_modify(struct eventpoll *ep, struct epitem *epi, struct epoll_even
 	 * f_op->poll() call and the new event set registering.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	epi->event.events = event->events;
 	pt._key = event->events;
 	epi->event.data = event->data; /* protected by mtx */
@@ -1268,6 +1305,8 @@ static int ep_modify(struct eventpoll *ep, struct epitem *epi, struct epoll_even
 	 * its usage count has been increased by the caller of this function.
 	 */
 	revents = epi->ffd.file->f_op->poll(epi->ffd.file, &pt);
+<<<<<<< HEAD
+=======
 =======
 	epi->event.events = event->events; /* need barrier below */
 	epi->event.data = event->data; /* protected by mtx */
@@ -1298,6 +1337,7 @@ static int ep_modify(struct eventpoll *ep, struct epitem *epi, struct epoll_even
 	 */
 	revents = epi->ffd.file->f_op->poll(epi->ffd.file, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If the item is "hot" and it is not registered inside the ready
@@ -1337,7 +1377,13 @@ static int ep_send_events_proc(struct eventpoll *ep, struct list_head *head,
 
 	init_poll_funcptr(&pt, NULL);
 =======
+<<<<<<< HEAD
+	poll_table pt;
+
+	init_poll_funcptr(&pt, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We can loop without lock because we are passed a task private list.
@@ -1354,8 +1400,13 @@ static int ep_send_events_proc(struct eventpoll *ep, struct list_head *head,
 		pt._key = epi->event.events;
 		revents = epi->ffd.file->f_op->poll(epi->ffd.file, &pt) &
 =======
+<<<<<<< HEAD
+		pt._key = epi->event.events;
+		revents = epi->ffd.file->f_op->poll(epi->ffd.file, &pt) &
+=======
 		revents = epi->ffd.file->f_op->poll(epi->ffd.file, NULL) &
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			epi->event.events;
 
 		/*
@@ -1489,8 +1540,13 @@ fetch_events:
 			if (!freezable_schedule_hrtimeout_range(to, slack,
 								HRTIMER_MODE_ABS))
 =======
+<<<<<<< HEAD
+			if (!freezable_schedule_hrtimeout_range(to, slack,
+								HRTIMER_MODE_ABS))
+=======
 			if (!schedule_hrtimeout_range(to, slack, HRTIMER_MODE_ABS))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				timed_out = 1;
 
 			spin_lock_irqsave(&ep->lock, flags);
@@ -1739,14 +1795,20 @@ SYSCALL_DEFINE4(epoll_ctl, int, epfd, int, op, int, fd,
 		if (is_file_epoll(tfile)) {
 			error = -ELOOP;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ep_loop_check(ep, tfile) != 0) {
 				clear_tfile_check_list();
 				goto error_tgt_fput;
 			}
+<<<<<<< HEAD
+=======
 =======
 			if (ep_loop_check(ep, tfile) != 0)
 				goto error_tgt_fput;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else
 			list_add(&tfile->f_tfile_llink, &tfile_check_list);
 	}

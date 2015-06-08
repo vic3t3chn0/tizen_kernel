@@ -4,6 +4,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config CPU_S3C2410
 	bool
 	depends on ARCH_S3C2410
@@ -48,6 +50,7 @@ config MACH_BAST_IDE
 	  interface
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # cpu frequency scaling support
 
 config S3C2410_CPUFREQ
@@ -64,6 +67,8 @@ config S3C2410_PLLTABLE
 	help
 	  Select the PLL table for the S3C2410
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 menu "S3C2410 Machines"
@@ -185,3 +190,4 @@ config MACH_QT2410
 
 endmenu
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

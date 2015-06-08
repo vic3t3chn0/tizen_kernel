@@ -77,8 +77,12 @@ static int ipv4_get_l4proto(const struct sk_buff *skb, unsigned int nhoff,
 <<<<<<< HEAD
 		return -NF_ACCEPT;
 =======
+<<<<<<< HEAD
+		return -NF_ACCEPT;
+=======
 		return -NF_DROP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Conntrack defragments packets, we might still see fragments
 	 * inside ICMP packets though. */
@@ -86,8 +90,12 @@ static int ipv4_get_l4proto(const struct sk_buff *skb, unsigned int nhoff,
 <<<<<<< HEAD
 		return -NF_ACCEPT;
 =======
+<<<<<<< HEAD
+		return -NF_ACCEPT;
+=======
 		return -NF_DROP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*dataoff = nhoff + (iph->ihl << 2);
 	*protonum = iph->protocol;

@@ -33,6 +33,28 @@
 #include "rt2x00lib.h"
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Utility functions.
+ */
+u32 rt2x00lib_get_bssidx(struct rt2x00_dev *rt2x00dev,
+			 struct ieee80211_vif *vif)
+{
+	/*
+	 * When in STA mode, bssidx is always 0 otherwise local_address[5]
+	 * contains the bss number, see BSS_ID_MASK comments for details.
+	 */
+	if (rt2x00dev->intf_sta_count)
+		return 0;
+	return vif->addr[5] & (rt2x00dev->ops->max_ap_intf - 1);
+}
+EXPORT_SYMBOL_GPL(rt2x00lib_get_bssidx);
+
+/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Radio control handlers.
  */
 int rt2x00lib_enable_radio(struct rt2x00_dev *rt2x00dev)
@@ -72,6 +94,14 @@ int rt2x00lib_enable_radio(struct rt2x00_dev *rt2x00dev)
 	rt2x00queue_start_queues(rt2x00dev);
 	rt2x00link_start_tuner(rt2x00dev);
 	rt2x00link_start_agc(rt2x00dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_bit(CAPABILITY_VCO_RECALIBRATION, &rt2x00dev->cap_flags))
+		rt2x00link_start_vcocal(rt2x00dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Start watchdog monitoring.
@@ -95,6 +125,14 @@ void rt2x00lib_disable_radio(struct rt2x00_dev *rt2x00dev)
 	 * Stop all queues
 	 */
 	rt2x00link_stop_agc(rt2x00dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_bit(CAPABILITY_VCO_RECALIBRATION, &rt2x00dev->cap_flags))
+		rt2x00link_stop_vcocal(rt2x00dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rt2x00link_stop_tuner(rt2x00dev);
 	rt2x00queue_stop_queues(rt2x00dev);
 	rt2x00queue_flush_queues(rt2x00dev, true);
@@ -603,6 +641,24 @@ void rt2x00lib_rxdone(struct queue_entry *entry)
 	rt2x00dev->ops->lib->fill_rxdone(entry, &rxdesc);
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * Check for valid size in case we get corrupted descriptor from
+	 * hardware.
+	 */
+	if (unlikely(rxdesc.size == 0 ||
+		     rxdesc.size > entry->queue->data_size)) {
+		WARNING(rt2x00dev, "Wrong frame size %d max %d.\n",
+			rxdesc.size, entry->queue->data_size);
+		dev_kfree_skb(entry->skb);
+		goto renew_skb;
+	}
+
+	/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * The data behind the ieee80211 header must be
 	 * aligned on a 4 byte boundary.
 	 */
@@ -662,6 +718,13 @@ void rt2x00lib_rxdone(struct queue_entry *entry)
 
 	ieee80211_rx_ni(rt2x00dev->hw, entry->skb);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+renew_skb:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Replace the skb with the freshly allocated one.
 	 */
@@ -806,11 +869,25 @@ static int rt2x00lib_probe_hw_modes(struct rt2x00_dev *rt2x00dev,
 	if (spec->supported_rates & SUPPORT_RATE_OFDM)
 		num_rates += 8;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	channels = kcalloc(spec->num_channels, sizeof(*channels), GFP_KERNEL);
+	if (!channels)
+		return -ENOMEM;
+
+	rates = kcalloc(num_rates, sizeof(*rates), GFP_KERNEL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	channels = kzalloc(sizeof(*channels) * spec->num_channels, GFP_KERNEL);
 	if (!channels)
 		return -ENOMEM;
 
 	rates = kzalloc(sizeof(*rates) * num_rates, GFP_KERNEL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rates)
 		goto exit_free_channels;
 
@@ -922,6 +999,17 @@ static int rt2x00lib_probe_hw(struct rt2x00_dev *rt2x00dev)
 		rt2x00dev->hw->extra_tx_headroom += RT2X00_ALIGN_SIZE;
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * Tell mac80211 about the size of our private STA structure.
+	 */
+	rt2x00dev->hw->sta_data_size = sizeof(struct rt2x00_sta);
+
+	/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Allocate tx status FIFO for driver use.
 	 */
 	if (test_bit(REQUIRE_TXSTATUS_FIFO, &rt2x00dev->cap_flags)) {
@@ -953,7 +1041,14 @@ static int rt2x00lib_probe_hw(struct rt2x00_dev *rt2x00dev)
 		tasklet_init(&rt2x00dev->taskletname, \
 			     rt2x00dev->ops->lib->taskletname, \
 			     (unsigned long)rt2x00dev); \
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		tasklet_disable(&rt2x00dev->taskletname); \
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		tasklet_disable(&rt2x00dev->taskletname); \
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	RT2X00_TASKLET_INIT(txstatus_tasklet);
@@ -1025,11 +1120,20 @@ static int rt2x00lib_initialize(struct rt2x00_dev *rt2x00dev)
 
 	set_bit(DEVICE_STATE_INITIALIZED, &rt2x00dev->flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Register the extra components.
 	 */
 	rt2x00rfkill_register(rt2x00dev);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1092,6 +1196,24 @@ int rt2x00lib_probe_dev(struct rt2x00_dev *rt2x00dev)
 {
 	int retval = -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * Allocate the driver data memory, if necessary.
+	 */
+	if (rt2x00dev->ops->drv_data_size > 0) {
+		rt2x00dev->drv_data = kzalloc(rt2x00dev->ops->drv_data_size,
+			                      GFP_KERNEL);
+		if (!rt2x00dev->drv_data) {
+			retval = -ENOMEM;
+			goto exit;
+		}
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&rt2x00dev->irqmask_lock);
 	mutex_init(&rt2x00dev->csr_mutex);
 
@@ -1161,6 +1283,13 @@ int rt2x00lib_probe_dev(struct rt2x00_dev *rt2x00dev)
 	rt2x00link_register(rt2x00dev);
 	rt2x00leds_register(rt2x00dev);
 	rt2x00debug_register(rt2x00dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rt2x00rfkill_register(rt2x00dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -1187,11 +1316,26 @@ void rt2x00lib_remove_dev(struct rt2x00_dev *rt2x00dev)
 	cancel_delayed_work_sync(&rt2x00dev->autowakeup_work);
 	cancel_work_sync(&rt2x00dev->sleep_work);
 	if (rt2x00_is_usb(rt2x00dev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		hrtimer_cancel(&rt2x00dev->txstatus_timer);
+		cancel_work_sync(&rt2x00dev->rxdone_work);
+		cancel_work_sync(&rt2x00dev->txdone_work);
+	}
+	if (rt2x00dev->workqueue)
+		destroy_workqueue(rt2x00dev->workqueue);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		del_timer_sync(&rt2x00dev->txstatus_timer);
 		cancel_work_sync(&rt2x00dev->rxdone_work);
 		cancel_work_sync(&rt2x00dev->txdone_work);
 	}
 	destroy_workqueue(rt2x00dev->workqueue);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Free the tx status fifo.
@@ -1232,6 +1376,18 @@ void rt2x00lib_remove_dev(struct rt2x00_dev *rt2x00dev)
 	 * Free queue structures.
 	 */
 	rt2x00queue_free(rt2x00dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/*
+	 * Free the driver data.
+	 */
+	if (rt2x00dev->drv_data)
+		kfree(rt2x00dev->drv_data);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(rt2x00lib_remove_dev);
 

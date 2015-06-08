@@ -89,13 +89,19 @@ static int icmpv6_print_tuple(struct seq_file *s,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int *icmpv6_get_timeouts(struct net *net)
 {
 	return &nf_ct_icmpv6_timeout;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Returns verdict for packet, or -1 for invalid. */
 static int icmpv6_packet(struct nf_conn *ct,
 		       const struct sk_buff *skb,
@@ -106,8 +112,13 @@ static int icmpv6_packet(struct nf_conn *ct,
 		       unsigned int hooknum,
 		       unsigned int *timeout)
 =======
+<<<<<<< HEAD
+		       unsigned int hooknum,
+		       unsigned int *timeout)
+=======
 		       unsigned int hooknum)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Do not immediately delete the connection after the first
 	   successful reply to avoid excessive conntrackd traffic
@@ -115,8 +126,12 @@ static int icmpv6_packet(struct nf_conn *ct,
 <<<<<<< HEAD
 	nf_ct_refresh_acct(ct, ctinfo, skb, *timeout);
 =======
+<<<<<<< HEAD
+	nf_ct_refresh_acct(ct, ctinfo, skb, *timeout);
+=======
 	nf_ct_refresh_acct(ct, ctinfo, skb, nf_ct_icmpv6_timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return NF_ACCEPT;
 }
@@ -126,8 +141,12 @@ static bool icmpv6_new(struct nf_conn *ct, const struct sk_buff *skb,
 <<<<<<< HEAD
 		       unsigned int dataoff, unsigned int *timeouts)
 =======
+<<<<<<< HEAD
+		       unsigned int dataoff, unsigned int *timeouts)
+=======
 		       unsigned int dataoff)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	static const u_int8_t valid_new[] = {
 		[ICMPV6_ECHO_REQUEST - 128] = 1,
@@ -292,6 +311,9 @@ static int icmpv6_nlattr_tuple_size(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 
 #include <linux/netfilter/nfnetlink.h>
@@ -330,8 +352,11 @@ icmpv6_timeout_nla_policy[CTA_TIMEOUT_ICMPV6_MAX+1] = {
 };
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 static struct ctl_table_header *icmpv6_sysctl_header;
 static struct ctl_table icmpv6_sysctl_table[] = {
@@ -358,7 +383,11 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_icmpv6 __read_mostly =
 <<<<<<< HEAD
 	.get_timeouts		= icmpv6_get_timeouts,
 =======
+<<<<<<< HEAD
+	.get_timeouts		= icmpv6_get_timeouts,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.new			= icmpv6_new,
 	.error			= icmpv6_error,
 #if defined(CONFIG_NF_CT_NETLINK) || defined(CONFIG_NF_CT_NETLINK_MODULE)
@@ -368,6 +397,9 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_icmpv6 __read_mostly =
 	.nla_policy		= icmpv6_nla_policy,
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 	.ctnl_timeout		= {
 		.nlattr_to_obj	= icmpv6_timeout_nlattr_to_obj,
@@ -377,8 +409,11 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_icmpv6 __read_mostly =
 		.nla_policy	= icmpv6_timeout_nla_policy,
 	},
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 	.ctl_table_header	= &icmpv6_sysctl_header,
 	.ctl_table		= icmpv6_sysctl_table,

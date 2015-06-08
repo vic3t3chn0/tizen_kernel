@@ -170,7 +170,11 @@ mtrr_ioctl(struct file *file, unsigned int cmd, unsigned long __arg)
 <<<<<<< HEAD
 	unsigned long base;
 =======
+<<<<<<< HEAD
+	unsigned long base;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long size;
 	struct mtrr_sentry sentry;
 	struct mtrr_gentry gentry;
@@ -272,6 +276,9 @@ mtrr_ioctl(struct file *file, unsigned int cmd, unsigned long __arg)
 		if (gentry.regnum >= num_var_ranges)
 			return -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mtrr_if->get(gentry.regnum, &base, &size, &type);
 
 		/* Hide entries that go above 4GB */
@@ -280,6 +287,8 @@ mtrr_ioctl(struct file *file, unsigned int cmd, unsigned long __arg)
 			gentry.base = gentry.size = gentry.type = 0;
 		else {
 			gentry.base = base << PAGE_SHIFT;
+<<<<<<< HEAD
+=======
 =======
 		mtrr_if->get(gentry.regnum, &gentry.base, &size, &type);
 
@@ -290,6 +299,7 @@ mtrr_ioctl(struct file *file, unsigned int cmd, unsigned long __arg)
 		else {
 			gentry.base <<= PAGE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			gentry.size = size << PAGE_SHIFT;
 			gentry.type = type;
 		}
@@ -339,8 +349,12 @@ mtrr_ioctl(struct file *file, unsigned int cmd, unsigned long __arg)
 <<<<<<< HEAD
 		mtrr_if->get(gentry.regnum, &base, &size, &type);
 =======
+<<<<<<< HEAD
+		mtrr_if->get(gentry.regnum, &base, &size, &type);
+=======
 		mtrr_if->get(gentry.regnum, &gentry.base, &size, &type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Hide entries that would overflow */
 		if (size != (__typeof__(gentry.size))size)
 			gentry.base = gentry.size = gentry.type = 0;
@@ -348,7 +362,11 @@ mtrr_ioctl(struct file *file, unsigned int cmd, unsigned long __arg)
 <<<<<<< HEAD
 			gentry.base = base;
 =======
+<<<<<<< HEAD
+			gentry.base = base;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			gentry.size = size;
 			gentry.type = type;
 		}

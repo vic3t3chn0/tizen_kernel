@@ -11,7 +11,11 @@ int		sort__has_parent = 0;
 <<<<<<< HEAD
 int		sort__branch_mode = -1; /* -1 = means not set */
 =======
+<<<<<<< HEAD
+int		sort__branch_mode = -1; /* -1 = means not set */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum sort_type	sort__first_dimension;
 
@@ -19,6 +23,8 @@ char * field_sep;
 
 LIST_HEAD(hist_entry__sort_list);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int hist_entry__thread_snprintf(struct hist_entry *self, char *bf,
@@ -111,6 +117,7 @@ sort__thread_cmp(struct hist_entry *left, struct hist_entry *right)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int repsep_snprintf(char *bf, size_t size, const char *fmt, ...)
 {
 	int n;
@@ -136,6 +143,9 @@ static int repsep_snprintf(char *bf, size_t size, const char *fmt, ...)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int64_t cmp_null(void *l, void *r)
 {
 	if (!l && !r)
@@ -154,8 +164,11 @@ sort__thread_cmp(struct hist_entry *left, struct hist_entry *right)
 	return right->thread->pid - left->thread->pid;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hist_entry__thread_snprintf(struct hist_entry *self, char *bf,
 				       size_t size, unsigned int width)
 {
@@ -164,6 +177,9 @@ static int hist_entry__thread_snprintf(struct hist_entry *self, char *bf,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sort_entry sort_thread = {
 	.se_header	= "Command:  Pid",
 	.se_cmp		= sort__thread_cmp,
@@ -191,8 +207,11 @@ sort__comm_collapse(struct hist_entry *left, struct hist_entry *right)
 	return strcmp(comm_l, comm_r);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hist_entry__comm_snprintf(struct hist_entry *self, char *bf,
 				     size_t size, unsigned int width)
 {
@@ -200,10 +219,15 @@ static int hist_entry__comm_snprintf(struct hist_entry *self, char *bf,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int64_t _sort__dso_cmp(struct map *map_l, struct map *map_r)
 {
 	struct dso *dso_l = map_l ? map_l->dso : NULL;
 	struct dso *dso_r = map_r ? map_r->dso : NULL;
+<<<<<<< HEAD
+=======
 =======
 /* --sort dso */
 
@@ -213,6 +237,7 @@ sort__dso_cmp(struct hist_entry *left, struct hist_entry *right)
 	struct dso *dso_l = left->ms.map ? left->ms.map->dso : NULL;
 	struct dso *dso_r = right->ms.map ? right->ms.map->dso : NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *dso_name_l, *dso_name_r;
 
 	if (!dso_l || !dso_r)
@@ -230,6 +255,9 @@ sort__dso_cmp(struct hist_entry *left, struct hist_entry *right)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sort_entry sort_comm = {
 	.se_header	= "Command",
 	.se_cmp		= sort__comm_cmp,
@@ -260,6 +288,8 @@ static int64_t _sort__sym_cmp(struct symbol *sym_l, struct symbol *sym_r,
 		ip_l = sym_l->start;
 	if (sym_r)
 		ip_r = sym_r->start;
+<<<<<<< HEAD
+=======
 =======
 static int hist_entry__dso_snprintf(struct hist_entry *self, char *bf,
 				    size_t size, unsigned int width)
@@ -286,11 +316,15 @@ sort__sym_cmp(struct hist_entry *left, struct hist_entry *right)
 	ip_l = left->ms.sym ? left->ms.sym->start : left->ip;
 	ip_r = right->ms.sym ? right->ms.sym->start : right->ip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return (int64_t)(ip_r - ip_l);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int _hist_entry__dso_snprintf(struct map *map, char *bf,
 				     size_t size, unsigned int width)
 {
@@ -312,15 +346,21 @@ static int hist_entry__dso_snprintf(struct hist_entry *self, char *bf,
 static int _hist_entry__sym_snprintf(struct map *map, struct symbol *sym,
 				     u64 ip, char level, char *bf, size_t size,
 				     unsigned int width __used)
+<<<<<<< HEAD
+=======
 =======
 static int hist_entry__sym_snprintf(struct hist_entry *self, char *bf,
 				    size_t size, unsigned int width __used)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	size_t ret = 0;
 
 	if (verbose) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		char o = map ? dso__symtab_origin(map->dso) : '!';
 		ret += repsep_snprintf(bf, size, "%-#*llx %c ",
 				       BITS_PER_LONG / 4, ip, o);
@@ -338,6 +378,8 @@ static int hist_entry__sym_snprintf(struct hist_entry *self, char *bf,
 		ret += repsep_snprintf(bf + ret, size - ret, "%-*s",
 				       width - ret, "");
 	}
+<<<<<<< HEAD
+=======
 =======
 		char o = self->ms.map ? dso__symtab_origin(self->ms.map->dso) : '!';
 		ret += repsep_snprintf(bf, size, "%-#*llx %c ",
@@ -352,11 +394,15 @@ static int hist_entry__sym_snprintf(struct hist_entry *self, char *bf,
 		ret += repsep_snprintf(bf + ret, size - ret, "%-#*llx",
 				       BITS_PER_LONG / 4, self->ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct sort_entry sort_dso = {
 	.se_header	= "Shared Object",
@@ -403,6 +449,8 @@ struct sort_entry sort_sym = {
 /* --sort parent */
 
 static int64_t
+<<<<<<< HEAD
+=======
 =======
 /* --sort comm */
 
@@ -428,6 +476,7 @@ sort__comm_collapse(struct hist_entry *left, struct hist_entry *right)
 
 int64_t
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sort__parent_cmp(struct hist_entry *left, struct hist_entry *right)
 {
 	struct symbol *sym_l = left->parent;
@@ -447,6 +496,9 @@ static int hist_entry__parent_snprintf(struct hist_entry *self, char *bf,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sort_entry sort_parent = {
 	.se_header	= "Parent symbol",
 	.se_cmp		= sort__parent_cmp,
@@ -457,11 +509,14 @@ struct sort_entry sort_parent = {
 /* --sort cpu */
 
 static int64_t
+<<<<<<< HEAD
+=======
 =======
 /* --sort cpu */
 
 int64_t
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sort__cpu_cmp(struct hist_entry *left, struct hist_entry *right)
 {
 	return right->cpu - left->cpu;
@@ -474,6 +529,9 @@ static int hist_entry__cpu_snprintf(struct hist_entry *self, char *bf,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sort_entry sort_cpu = {
 	.se_header      = "CPU",
 	.se_cmp	        = sort__cpu_cmp,
@@ -632,8 +690,11 @@ static struct sort_dimension sort_dimensions[] = {
 	DIM(SORT_MISPREDICT, "mispredict", sort_mispredict),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int sort_dimension__add(const char *tok)
 {
 	unsigned int i;
@@ -641,6 +702,10 @@ int sort_dimension__add(const char *tok)
 	for (i = 0; i < ARRAY_SIZE(sort_dimensions); i++) {
 		struct sort_dimension *sd = &sort_dimensions[i];
 
+<<<<<<< HEAD
+		if (strncasecmp(tok, sd->name, strlen(tok)))
+			continue;
+=======
 <<<<<<< HEAD
 		if (strncasecmp(tok, sd->name, strlen(tok)))
 			continue;
@@ -655,6 +720,7 @@ int sort_dimension__add(const char *tok)
 			sort__need_collapse = 1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sd->entry == &sort_parent) {
 			int ret = regcomp(&parent_regex, parent_pattern, REG_EXTENDED);
 			if (ret) {
@@ -668,14 +734,20 @@ int sort_dimension__add(const char *tok)
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sd->taken)
 			return 0;
 
 		if (sd->entry->se_collapse)
 			sort__need_collapse = 1;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (list_empty(&hist_entry__sort_list)) {
 			if (!strcmp(sd->name, "pid"))
 				sort__first_dimension = SORT_PID;
@@ -690,6 +762,9 @@ int sort_dimension__add(const char *tok)
 			else if (!strcmp(sd->name, "cpu"))
 				sort__first_dimension = SORT_CPU;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else if (!strcmp(sd->name, "symbol_from"))
 				sort__first_dimension = SORT_SYM_FROM;
 			else if (!strcmp(sd->name, "symbol_to"))
@@ -700,8 +775,11 @@ int sort_dimension__add(const char *tok)
 				sort__first_dimension = SORT_DSO_TO;
 			else if (!strcmp(sd->name, "mispredict"))
 				sort__first_dimension = SORT_MISPREDICT;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		list_add_tail(&sd->entry->list, &hist_entry__sort_list);
@@ -711,8 +789,11 @@ int sort_dimension__add(const char *tok)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -ESRCH;
 }
 

@@ -11,10 +11,16 @@
 // Copyright: (C) 2010-2012 Julia Lawall, INRIA/LIP6.  GPLv2.
 // Copyright: (C) 2010-2012 Gilles Muller, INRIA/LiP6.  GPLv2.
 =======
+<<<<<<< HEAD
+// Copyright: (C) 2010-2012 Nicolas Palix.  GPLv2.
+// Copyright: (C) 2010-2012 Julia Lawall, INRIA/LIP6.  GPLv2.
+// Copyright: (C) 2010-2012 Gilles Muller, INRIA/LiP6.  GPLv2.
+=======
 // Copyright: (C) 2010 Nicolas Palix, DIKU.  GPLv2.
 // Copyright: (C) 2010 Julia Lawall, DIKU.  GPLv2.
 // Copyright: (C) 2010 Gilles Muller, INRIA/LiP6.  GPLv2.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 // URL: http://coccinelle.lip6.fr/
 // Comments:
 // Options: -no_includes -include_headers
@@ -22,7 +28,11 @@
 <<<<<<< HEAD
 virtual context
 =======
+<<<<<<< HEAD
+virtual context
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 virtual org
 virtual report
 
@@ -70,8 +80,12 @@ for(...;...;...) { <+... return@r ...; ...+> }
 <<<<<<< HEAD
 @err exists@
 =======
+<<<<<<< HEAD
+@err exists@
+=======
 @err@
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 expression E1;
 position prelocked.p;
 position up != prelocked.p1;
@@ -80,6 +94,9 @@ identifier lock,unlock;
 @@
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 *lock(E1@p,...);
 <+... when != E1
 if (...) {
@@ -88,6 +105,8 @@ if (...) {
 }
 ...+>
 *unlock@up(E1,...);
+<<<<<<< HEAD
+=======
 =======
 lock(E1@p,...);
 <+... when != E1
@@ -98,6 +117,7 @@ if (...) {
 ...+>
 unlock@up(E1,...);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 @script:python depends on org@
 p << prelocked.p1;

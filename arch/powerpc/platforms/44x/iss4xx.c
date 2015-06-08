@@ -74,9 +74,13 @@ static void __init iss4xx_init_irq(void)
 <<<<<<< HEAD
 		struct mpic *mpic = mpic_alloc(np, 0, MPIC_NO_RESET, 0, 0, " MPIC     ");
 =======
+<<<<<<< HEAD
+		struct mpic *mpic = mpic_alloc(np, 0, MPIC_NO_RESET, 0, 0, " MPIC     ");
+=======
 		struct mpic *mpic = mpic_alloc(np, 0, MPIC_PRIMARY, 0, 0,
 					       " MPIC     ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG_ON(mpic == NULL);
 		mpic_init(mpic);
 		ppc_md.get_irq = mpic_get_irq;

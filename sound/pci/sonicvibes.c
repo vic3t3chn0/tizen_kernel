@@ -31,8 +31,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 
 #include <sound/core.h>
@@ -61,10 +65,16 @@ static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card 
 static bool reverb[SNDRV_CARDS];
 static bool mge[SNDRV_CARDS];
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
+static bool reverb[SNDRV_CARDS];
+static bool mge[SNDRV_CARDS];
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 static int reverb[SNDRV_CARDS];
 static int mge[SNDRV_CARDS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int dmaio = 0x7a00;	/* DDMA i/o address */
 
 module_param_array(index, int, NULL, 0444);
@@ -1307,8 +1317,12 @@ static int __devinit snd_sonicvibes_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, sonic)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, sonic)) {
+=======
 			"S3 SonicVibes", sonic)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_sonicvibes_free(sonic);
 		return -EBUSY;
@@ -1508,15 +1522,21 @@ static int __devinit snd_sonic_probe(struct pci_dev *pci,
 	}
 	if ((err = snd_mpu401_uart_new(card, 0, MPU401_HW_SONICVIBES,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       sonic->midi_port,
 				       MPU401_INFO_INTEGRATED |
 				       MPU401_INFO_IRQ_HOOK,
 				       -1, &midi_uart)) < 0) {
+<<<<<<< HEAD
+=======
 =======
 				       sonic->midi_port, MPU401_INFO_INTEGRATED,
 				       sonic->irq, 0,
 				       &midi_uart)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_card_free(card);
 		return err;
 	}
@@ -1554,8 +1574,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "S3 SonicVibes",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_sonic_ids,
 	.probe = snd_sonic_probe,
 	.remove = __devexit_p(snd_sonic_remove),

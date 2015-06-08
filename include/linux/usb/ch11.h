@@ -28,8 +28,11 @@
 #define HUB_STOP_TT		11
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define HUB_SET_DEPTH		12
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Hub class additional requests defined by USB 3.0 spec
@@ -81,11 +84,16 @@
 #define USB_PORT_FEAT_FORCE_LINKPM_ACCEPT	30
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* USB 3.0 hub remote wake mask bits, see table 10-14 */
 #define USB_PORT_FEAT_REMOTE_WAKE_CONNECT	(1 << 8)
 #define USB_PORT_FEAT_REMOTE_WAKE_DISCONNECT	(1 << 9)
 #define USB_PORT_FEAT_REMOTE_WAKE_OVER_CURRENT	(1 << 10)
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_HOST_COMPLIANT_TEST
 /*
@@ -126,6 +134,7 @@
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Hub Status and Hub Change results
  * See USB 2.0 spec Table 11-19 and Table 11-20
@@ -209,6 +218,9 @@ struct usb_port_status {
  * See USB 2.0 spec Table 11-13, offset 3
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HUB_CHAR_LPSM		0x0003 /* Logical Power Switching Mode mask */
 #define HUB_CHAR_COMMON_LPSM	0x0000 /* All ports power control at once */
 #define HUB_CHAR_INDV_PORT_LPSM	0x0001 /* per-port power control */
@@ -223,6 +235,8 @@ struct usb_port_status {
 
 #define HUB_CHAR_TTTT		0x0060 /* TT Think Time mask */
 #define HUB_CHAR_PORTIND	0x0080 /* per-port indicators (LEDs) */
+<<<<<<< HEAD
+=======
 =======
 #define HUB_CHAR_LPSM		0x0003 /* D1 .. D0 */
 #define HUB_CHAR_COMPOUND	0x0004 /* D2       */
@@ -230,6 +244,7 @@ struct usb_port_status {
 #define HUB_CHAR_TTTT           0x0060 /* D6 .. D5 */
 #define HUB_CHAR_PORTIND        0x0080 /* D7       */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct usb_hub_status {
 	__le16 wHubStatus;
@@ -259,6 +274,9 @@ struct usb_hub_status {
 #define USB_DT_SS_HUB_SIZE              12
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Hub Device descriptor
  * USB Hub class device protocols
@@ -270,8 +288,11 @@ struct usb_hub_status {
 #define USB_HUB_PR_HS_MULTI_TT	2 /* Hi-speed hub with multiple TT */
 #define USB_HUB_PR_SS		3 /* Super speed hub */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct usb_hub_descriptor {
 	__u8  bDescLength;
 	__u8  bDescriptorType;

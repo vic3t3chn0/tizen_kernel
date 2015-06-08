@@ -48,14 +48,20 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 #include <mach/hardware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/leds.h>
 #include <asm/irq.h>
 #include <asm/mach/irq.h>
 #include <asm/mach/time.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/dmtimer.h>
 
@@ -63,11 +69,14 @@
 
 #include "common.h"
 
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/dmtimer.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ---------------------------------------------------------------------------
  * 32KHz OS timer
@@ -198,11 +207,14 @@ bool __init omap_32k_timer_init(void)
 	omap_init_clocksource_32k();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #ifdef CONFIG_OMAP_DM_TIMER
 	omap_dm_timer_init();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_init_32k_timer();
 
 	return true;

@@ -15,6 +15,13 @@
 
 #include "gigaset.h"
 #include <linux/isdnif.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SBUFSIZE	4096	/* sk_buff payload size */
 #define TRANSBUFSIZE	768	/* bytes per skb for transparent receive */
@@ -242,7 +249,15 @@ static int command_from_LL(isdn_ctrl *cntrl)
 		dev_kfree_skb(bcs->rx_skb);
 		gigaset_new_rx_skb(bcs);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		commands = kzalloc(AT_NUM * (sizeof *commands), GFP_ATOMIC);
+=======
 		commands = kzalloc(AT_NUM*(sizeof *commands), GFP_ATOMIC);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		commands = kzalloc(AT_NUM*(sizeof *commands), GFP_ATOMIC);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!commands) {
 			gigaset_free_channel(bcs);
 			dev_err(cs->dev, "ISDN_CMD_DIAL: out of memory\n");
@@ -260,7 +275,15 @@ static int command_from_LL(isdn_ctrl *cntrl)
 			if (!commands[AT_TYPE])
 				goto oom;
 			snprintf(commands[AT_DIAL], l,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 "D%s\r", cntrl->parm.setup.phone + 2);
+=======
 				 "D%s\r", cntrl->parm.setup.phone+2);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				 "D%s\r", cntrl->parm.setup.phone+2);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			commands[AT_TYPE] = kstrdup("^SCTP=1\r", GFP_ATOMIC);
 			if (!commands[AT_TYPE])
@@ -481,7 +504,15 @@ int gigaset_isdn_icall(struct at_state_t *at_state)
 		response.parm.setup.si2 = 2;
 	} else {
 		dev_warn(cs->dev, "RING ignored - unsupported BC %s\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 at_state->str_var[STR_ZBC]);
+=======
 		     at_state->str_var[STR_ZBC]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		     at_state->str_var[STR_ZBC]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ICALL_IGNORE;
 	}
 	if (at_state->str_var[STR_NMBR]) {
@@ -517,7 +548,15 @@ int gigaset_isdn_icall(struct at_state_t *at_state)
 		return ICALL_REJECT;
 	case 3:	/* incomplete */
 		dev_warn(cs->dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 "LL requested unsupported feature: Incomplete Number\n");
+=======
 		       "LL requested unsupported feature: Incomplete Number\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		       "LL requested unsupported feature: Incomplete Number\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ICALL_IGNORE;
 	case 4:	/* proceeding */
 		/* Gigaset will send ALERTING anyway.
@@ -623,8 +662,16 @@ int gigaset_isdn_regdev(struct cardstate *cs, const char *isdnid)
 {
 	isdn_if *iif;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	pr_info("ISDN4Linux interface\n");
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pr_info("ISDN4Linux interface\n");
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iif = kmalloc(sizeof *iif, GFP_KERNEL);
 	if (!iif) {
 		pr_err("out of memory\n");
@@ -683,6 +730,13 @@ void gigaset_isdn_unregdev(struct cardstate *cs)
  */
 void gigaset_isdn_regdrv(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("ISDN4Linux interface\n");
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* nothing to do */
 }
 

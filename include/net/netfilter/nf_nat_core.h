@@ -23,8 +23,12 @@ static inline int nf_nat_initialized(struct nf_conn *ct,
 <<<<<<< HEAD
 	if (manip == NF_NAT_MANIP_SRC)
 =======
+<<<<<<< HEAD
+	if (manip == NF_NAT_MANIP_SRC)
+=======
 	if (manip == IP_NAT_MANIP_SRC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ct->status & IPS_SRC_NAT_DONE;
 	else
 		return ct->status & IPS_DST_NAT_DONE;

@@ -11,10 +11,23 @@
 
 #include <linux/kernel.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/cpu.h>
+#include <linux/sysfs.h>
+#include <linux/cpufreq.h>
+#include <linux/module.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sysdev.h>
 #include <linux/cpu.h>
 #include <linux/sysfs.h>
 #include <linux/cpufreq.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/jiffies.h>
 #include <linux/percpu.h>
 #include <linux/kobject.h>
@@ -30,6 +43,11 @@ static struct freq_attr _attr_##_name = {\
 	.show = _show,\
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CPU_FREQ_LEVEL_NUMBER	34
 
 static cputime64_t cpu0_time_in_state[CPU_FREQ_LEVEL_NUMBER] = {0};
@@ -43,6 +61,10 @@ static cputime64_t cpu3_time_in_state[CPU_FREQ_LEVEL_NUMBER] = {0};
 static unsigned int cpu3_total_trans = 0;
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cpufreq_stats {
 	unsigned int cpu;
 	unsigned int total_trans;
@@ -72,6 +94,14 @@ static int cpufreq_stats_update(unsigned int cpu)
 	cur_time = get_jiffies_64();
 	spin_lock(&cpufreq_stats_lock);
 	stat = per_cpu(cpufreq_stats_table, cpu);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (stat->time_in_state)
+		stat->time_in_state[stat->last_index] +=
+			cur_time - stat->last_time;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!stat) {
 		spin_unlock(&cpufreq_stats_lock);
 		return 0;
@@ -100,6 +130,10 @@ static int cpufreq_stats_update(unsigned int cpu)
 			cputime64_add(cpu3_time_in_state[stat->last_index],
 			cputime_sub(cur_time, stat->last_time));
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stat->last_time = cur_time;
 	spin_unlock(&cpufreq_stats_lock);
 	return 0;
@@ -114,6 +148,11 @@ static ssize_t show_total_trans(struct cpufreq_policy *policy, char *buf)
 			per_cpu(cpufreq_stats_table, stat->cpu)->total_trans);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t show_overall_total_trans(struct kobject *kobj,
 						struct attribute *attr, char *buf)
 {
@@ -128,6 +167,10 @@ static ssize_t show_overall_total_trans(struct kobject *kobj,
 #endif
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t show_time_in_state(struct cpufreq_policy *policy, char *buf)
 {
 	ssize_t len = 0;
@@ -144,6 +187,11 @@ static ssize_t show_time_in_state(struct cpufreq_policy *policy, char *buf)
 	return len;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t show_overall_time_in_state(struct kobject *kobj,
 						struct attribute *attr, char *buf)
 {
@@ -180,6 +228,10 @@ static ssize_t show_overall_time_in_state(struct kobject *kobj,
 }
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CPU_FREQ_STAT_DETAILS
 static ssize_t show_trans_table(struct cpufreq_policy *policy, char *buf)
 {
@@ -230,10 +282,19 @@ CPUFREQ_STATDEVICE_ATTR(trans_table, 0444, show_trans_table);
 CPUFREQ_STATDEVICE_ATTR(total_trans, 0444, show_total_trans);
 CPUFREQ_STATDEVICE_ATTR(time_in_state, 0444, show_time_in_state);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef ssize_t (*show)(struct cpufreq_policy *, char *);
 CPUFREQ_STATDEVICE_ATTR(overall_time_in_state, 0444, (show)show_overall_time_in_state);
 CPUFREQ_STATDEVICE_ATTR(overall_total_trans, 0444, (show)show_overall_total_trans);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct attribute *default_attrs[] = {
 	&_attr_total_trans.attr,
 	&_attr_time_in_state.attr,
@@ -242,6 +303,11 @@ static struct attribute *default_attrs[] = {
 #endif
 	NULL
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct attribute *overall_attrs[] = {
 	&_attr_overall_time_in_state.attr,
@@ -249,16 +315,29 @@ static struct attribute *overall_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct attribute_group stats_attr_group = {
 	.attrs = default_attrs,
 	.name = "stats"
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct attribute_group overall_stats_attr_group = {
         .attrs = overall_attrs,
         .name = "overall_stats"
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int freq_table_get_index(struct cpufreq_stats *stat, unsigned int freq)
 {
 	int index;
@@ -273,6 +352,17 @@ static int freq_table_get_index(struct cpufreq_stats *stat, unsigned int freq)
  */
 static void cpufreq_stats_free_table(unsigned int cpu)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct cpufreq_stats *stat = per_cpu(cpufreq_stats_table, cpu);
+	if (stat) {
+		kfree(stat->time_in_state);
+		kfree(stat);
+	}
+	per_cpu(cpufreq_stats_table, cpu) = NULL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cpufreq_stats *stat;
 
 	spin_lock(&cpufreq_stats_lock);
@@ -285,6 +375,10 @@ static void cpufreq_stats_free_table(unsigned int cpu)
 		kfree(stat->time_in_state);
 		kfree(stat);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* must be called early in the CPU removal sequence (before
@@ -307,10 +401,21 @@ static int cpufreq_stats_create_table(struct cpufreq_policy *policy,
 	struct cpufreq_policy *data;
 	unsigned int alloc_size;
 	unsigned int cpu = policy->cpu;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (per_cpu(cpufreq_stats_table, cpu))
+		return -EBUSY;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (per_cpu(cpufreq_stats_table, cpu))
 		return 0;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stat = kzalloc(sizeof(struct cpufreq_stats), GFP_KERNEL);
 	if ((stat) == NULL)
 		return -ENOMEM;
@@ -402,6 +507,14 @@ static int cpufreq_stat_notifier_trans(struct notifier_block *nb,
 	if (val != CPUFREQ_POSTCHANGE)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	stat = per_cpu(cpufreq_stats_table, freq->cpu);
+	if (!stat)
+		return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpufreq_stats_update(freq->cpu);
 
 	spin_lock(&cpufreq_stats_lock);
@@ -410,6 +523,10 @@ static int cpufreq_stat_notifier_trans(struct notifier_block *nb,
 		spin_unlock(&cpufreq_stats_lock);
 		return 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	old_index = stat->last_index;
 	new_index = freq_table_get_index(stat, freq->new);
@@ -418,16 +535,36 @@ static int cpufreq_stat_notifier_trans(struct notifier_block *nb,
 	if (old_index == -1 || new_index == -1)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cpufreq_stats_update(freq->cpu);
+
+	if (old_index == new_index)
+		return 0;
+
+	spin_lock(&cpufreq_stats_lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (old_index == new_index) {
 		spin_unlock(&cpufreq_stats_lock);
 		return 0;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stat->last_index = new_index;
 #ifdef CONFIG_CPU_FREQ_STAT_DETAILS
 	stat->trans_table[old_index * stat->max_state + new_index]++;
 #endif
 	stat->total_trans++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (freq->cpu == 0)
 		cpu0_total_trans++;
@@ -439,6 +576,10 @@ static int cpufreq_stat_notifier_trans(struct notifier_block *nb,
 	else if (freq->cpu == 3)
 		cpu3_total_trans++;
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&cpufreq_stats_lock);
 	return 0;
 }
@@ -528,9 +669,18 @@ static int __init cpufreq_stats_init(void)
 	for_each_online_cpu(cpu) {
 		cpufreq_update_policy(cpu);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	ret = sysfs_create_group(cpufreq_global_kobject, &overall_stats_attr_group);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	ret = sysfs_create_group(cpufreq_global_kobject, &overall_stats_attr_group);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 static void __exit cpufreq_stats_exit(void)

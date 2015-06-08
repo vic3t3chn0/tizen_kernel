@@ -18,11 +18,16 @@
 #include <linux/etherdevice.h>
 #include <linux/rtnetlink.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bug.h>
 
 #define VLAN_HLEN	4		/* The additional bytes required by VLAN
 					 * (in addition to the Ethernet header)
 					 */
+<<<<<<< HEAD
+=======
 =======
 
 #define VLAN_HLEN	4		/* The additional bytes (on top of the Ethernet header)
@@ -30,6 +35,7 @@
 					 */
 #define VLAN_ETH_ALEN	6		/* Octets in one ethernet addr	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VLAN_ETH_HLEN	18		/* Total octets in header.	 */
 #define VLAN_ETH_ZLEN	64		/* Min. octets in frame sans FCS */
 
@@ -85,6 +91,9 @@ extern void vlan_ioctl_set(int (*hook)(struct net *, void __user *));
 <<<<<<< HEAD
 struct vlan_info;
 =======
+<<<<<<< HEAD
+struct vlan_info;
+=======
 /* if this changes, algorithm will have to be reworked because this
  * depends on completely exhausting the VLAN identifier space.  Thus
  * it gives constant time look-up, but in many cases it wastes memory.
@@ -121,6 +130,7 @@ static inline void vlan_group_set_device(struct vlan_group *vg,
 	array[vlan_id % VLAN_GROUP_ARRAY_PART_LEN] = dev;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int is_vlan_dev(struct net_device *dev)
 {
@@ -132,6 +142,9 @@ static inline int is_vlan_dev(struct net_device *dev)
 
 #if defined(CONFIG_VLAN_8021Q) || defined(CONFIG_VLAN_8021Q_MODULE)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct net_device *__vlan_find_dev_deep(struct net_device *real_dev,
 					       u16 vlan_id);
@@ -151,6 +164,8 @@ extern void vlan_vids_del_by_dev(struct net_device *dev,
 #else
 static inline struct net_device *
 __vlan_find_dev_deep(struct net_device *real_dev, u16 vlan_id)
+<<<<<<< HEAD
+=======
 =======
 /* Must be invoked with rcu_read_lock or with RTNL. */
 static inline struct net_device *vlan_find_dev(struct net_device *real_dev,
@@ -182,6 +197,7 @@ vlan_gro_frags(struct napi_struct *napi, struct vlan_group *grp,
 static inline struct net_device *vlan_find_dev(struct net_device *real_dev,
 					       u16 vlan_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return NULL;
 }
@@ -203,6 +219,11 @@ static inline bool vlan_do_receive(struct sk_buff **skb, bool last_handler)
 {
 	if (((*skb)->vlan_tci & VLAN_VID_MASK) && last_handler)
 =======
+<<<<<<< HEAD
+static inline bool vlan_do_receive(struct sk_buff **skb, bool last_handler)
+{
+	if (((*skb)->vlan_tci & VLAN_VID_MASK) && last_handler)
+=======
 static inline int __vlan_hwaccel_rx(struct sk_buff *skb, struct vlan_group *grp,
 				    u16 vlan_tci, int polling)
 {
@@ -214,6 +235,7 @@ static inline bool vlan_do_receive(struct sk_buff **skb)
 {
 	if ((*skb)->vlan_tci & VLAN_VID_MASK)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(*skb)->pkt_type = PACKET_OTHERHOST;
 	return false;
 }
@@ -224,6 +246,9 @@ static inline struct sk_buff *vlan_untag(struct sk_buff *skb)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int vlan_vid_add(struct net_device *dev, unsigned short vid)
 {
 	return 0;
@@ -244,6 +269,8 @@ static inline void vlan_vids_del_by_dev(struct net_device *dev,
 {
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 static inline gro_result_t
 vlan_gro_receive(struct napi_struct *napi, struct vlan_group *grp,
@@ -286,6 +313,7 @@ static inline int vlan_hwaccel_receive_skb(struct sk_buff *skb,
 	return __vlan_hwaccel_rx(skb, grp, vlan_tci, 1);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * vlan_insert_tag - regular VLAN tag inserting
@@ -314,8 +342,12 @@ static inline struct sk_buff *vlan_insert_tag(struct sk_buff *skb, u16 vlan_tci)
 <<<<<<< HEAD
 	memmove(skb->data, skb->data + VLAN_HLEN, 2 * ETH_ALEN);
 =======
+<<<<<<< HEAD
+	memmove(skb->data, skb->data + VLAN_HLEN, 2 * ETH_ALEN);
+=======
 	memmove(skb->data, skb->data + VLAN_HLEN, 2 * VLAN_ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb->mac_header -= VLAN_HLEN;
 
 	/* first, the ethernet type */
@@ -461,6 +493,9 @@ static inline __be16 vlan_get_protocol(const struct sk_buff *skb)
 	return protocol;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void vlan_set_encap_proto(struct sk_buff *skb,
 					struct vlan_hdr *vhdr)
@@ -495,8 +530,11 @@ static inline void vlan_set_encap_proto(struct sk_buff *skb,
 		 */
 		skb->protocol = htons(ETH_P_802_2);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 
 /* VLAN IOCTLs are found in sockios.h */
@@ -542,8 +580,12 @@ struct vlan_ioctl_args {
 <<<<<<< HEAD
 		unsigned int flag; /* Matches vlan_dev_priv flags */
 =======
+<<<<<<< HEAD
+		unsigned int flag; /* Matches vlan_dev_priv flags */
+=======
 		unsigned int flag; /* Matches vlan_dev_info flags */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         } u;
 
 	short vlan_qos;   

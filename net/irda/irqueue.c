@@ -783,8 +783,12 @@ void* hashbin_lock_find( hashbin_t* hashbin, long hashv, const char* name )
 <<<<<<< HEAD
 	entry = hashbin_find(hashbin, hashv, name);
 =======
+<<<<<<< HEAD
+	entry = hashbin_find(hashbin, hashv, name);
+=======
 	entry = (irda_queue_t* ) hashbin_find( hashbin, hashv, name );
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Release lock */
 	spin_unlock_irqrestore(&hashbin->hb_spinlock, flags);
@@ -820,8 +824,12 @@ void* hashbin_find_next( hashbin_t* hashbin, long hashv, const char* name,
 <<<<<<< HEAD
 	entry = hashbin_find(hashbin, hashv, name);
 =======
+<<<<<<< HEAD
+	entry = hashbin_find(hashbin, hashv, name);
+=======
 	entry = (irda_queue_t* ) hashbin_find( hashbin, hashv, name );
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Trick hashbin_get_next() to return what we want

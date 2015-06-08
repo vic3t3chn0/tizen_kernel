@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include "dev-usb.h"
 =======
+<<<<<<< HEAD
+#include "dev-usb.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PB44_GPIO_I2C_SCL	0
 #define PB44_GPIO_I2C_SDA	1
@@ -119,7 +123,11 @@ static void __init pb44_init(void)
 <<<<<<< HEAD
 	ath79_register_usb();
 =======
+<<<<<<< HEAD
+	ath79_register_usb();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MIPS_MACHINE(ATH79_MACH_PB44, "PB44", "Atheros PB44 reference board",

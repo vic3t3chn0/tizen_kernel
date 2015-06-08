@@ -80,6 +80,14 @@
  * - misc crapectomy.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/sched.h>
 #include <linux/types.h>
@@ -91,7 +99,14 @@
 #include <linux/mm.h>
 #include <linux/slab.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cache.h>
 #include <asm/byteorder.h>
 #include <asm/uaccess.h>
@@ -99,6 +114,13 @@
 #include <asm/irq.h>
 
 #include <linux/init.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 
 #include <linux/if_arp.h>
@@ -552,7 +574,15 @@ static int dscc4_wait_ack_cec(struct dscc4_dev_priv *dpriv,
 		schedule_timeout_uninterruptible(10);
 		rmb();
 	} while (++i > 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	netdev_err(dev, "%s timeout\n", msg);
+=======
 	printk(KERN_ERR "%s: %s timeout\n", dev->name, msg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_ERR "%s: %s timeout\n", dev->name, msg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 done:
 	return (i >= 0) ? i : -EAGAIN;
 }
@@ -568,18 +598,40 @@ static int dscc4_do_action(struct net_device *dev, char *msg)
 		u32 state = readl(ioaddr);
 
 		if (state & ArAck) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_dbg(dev, "%s ack\n", msg);
+			writel(ArAck, ioaddr);
+			goto done;
+		} else if (state & Arf) {
+			netdev_err(dev, "%s failed\n", msg);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_DEBUG "%s: %s ack\n", dev->name, msg);
 			writel(ArAck, ioaddr);
 			goto done;
 		} else if (state & Arf) {
 			printk(KERN_ERR "%s: %s failed\n", dev->name, msg);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			writel(Arf, ioaddr);
 			i = -1;
 			goto done;
 	}
 		rmb();
 	} while (++i > 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	netdev_err(dev, "%s timeout\n", msg);
+=======
 	printk(KERN_ERR "%s: %s timeout\n", dev->name, msg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_ERR "%s: %s timeout\n", dev->name, msg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 done:
 	return i;
 }
@@ -635,7 +687,15 @@ static void dscc4_tx_reset(struct dscc4_dev_priv *dpriv, struct net_device *dev)
 
 	writel(MTFi|Rdt, dpriv->base_addr + dpriv->dev_id*0x0c + CH0CFG);
 	if (dscc4_do_action(dev, "Rdt") < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		netdev_err(dev, "Tx reset failed\n");
+=======
 		printk(KERN_ERR "%s: Tx reset failed\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "%s: Tx reset failed\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -721,22 +781,52 @@ static int __devinit dscc4_init_one(struct pci_dev *pdev,
 
 	rc = pci_request_region(pdev, 0, "registers");
 	if (rc < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("can't reserve MMIO region (regs)\n");
+=======
 	        printk(KERN_ERR "%s: can't reserve MMIO region (regs)\n",
 			DRV_NAME);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	        printk(KERN_ERR "%s: can't reserve MMIO region (regs)\n",
+			DRV_NAME);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	        goto err_disable_0;
 	}
 	rc = pci_request_region(pdev, 1, "LBI interface");
 	if (rc < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("can't reserve MMIO region (lbi)\n");
+=======
 	        printk(KERN_ERR "%s: can't reserve MMIO region (lbi)\n",
 			DRV_NAME);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	        printk(KERN_ERR "%s: can't reserve MMIO region (lbi)\n",
+			DRV_NAME);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	        goto err_free_mmio_region_1;
 	}
 
 	ioaddr = pci_ioremap_bar(pdev, 0);
 	if (!ioaddr) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("cannot remap MMIO region %llx @ %llx\n",
+		       (unsigned long long)pci_resource_len(pdev, 0),
+		       (unsigned long long)pci_resource_start(pdev, 0));
+=======
 		printk(KERN_ERR "%s: cannot remap MMIO region %llx @ %llx\n",
 			DRV_NAME, (unsigned long long)pci_resource_len(pdev, 0),
 			(unsigned long long)pci_resource_start(pdev, 0));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "%s: cannot remap MMIO region %llx @ %llx\n",
+			DRV_NAME, (unsigned long long)pci_resource_len(pdev, 0),
+			(unsigned long long)pci_resource_start(pdev, 0));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EIO;
 		goto err_free_mmio_regions_2;
 	}
@@ -756,7 +846,15 @@ static int __devinit dscc4_init_one(struct pci_dev *pdev,
 
 	rc = request_irq(pdev->irq, dscc4_irq, IRQF_SHARED, DRV_NAME, priv->root);
 	if (rc < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("IRQ %d busy\n", pdev->irq);
+=======
 		printk(KERN_WARNING "%s: IRQ %d busy\n", DRV_NAME, pdev->irq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "%s: IRQ %d busy\n", DRV_NAME, pdev->irq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_release_4;
 	}
 
@@ -902,10 +1000,21 @@ static int dscc4_found1(struct pci_dev *pdev, void __iomem *ioaddr)
 	int i, ret = -ENOMEM;
 
 	root = kcalloc(dev_per_card, sizeof(*root), GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!root)
+		goto err_out;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!root) {
 		printk(KERN_ERR "%s: can't allocate data\n", DRV_NAME);
 		goto err_out;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < dev_per_card; i++) {
 		root[i].dev = alloc_hdlcdev(root + i);
@@ -914,10 +1023,21 @@ static int dscc4_found1(struct pci_dev *pdev, void __iomem *ioaddr)
 	}
 
 	ppriv = kzalloc(sizeof(*ppriv), GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!ppriv)
+		goto err_free_dev;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ppriv) {
 		printk(KERN_ERR "%s: can't allocate private data\n", DRV_NAME);
 		goto err_free_dev;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ppriv->root = root;
 	spin_lock_init(&ppriv->lock);
@@ -951,7 +1071,15 @@ static int dscc4_found1(struct pci_dev *pdev, void __iomem *ioaddr)
 
 		ret = register_hdlc_device(d);
 		if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("unable to register\n");
+=======
 			printk(KERN_ERR "%s: unable to register\n", DRV_NAME);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_ERR "%s: unable to register\n", DRV_NAME);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dscc4_release_ring(dpriv);
 			goto err_unregister;
 	        }
@@ -1004,7 +1132,15 @@ static int dscc4_loopback_check(struct dscc4_dev_priv *dpriv)
 	if (settings->loopback && (settings->clock_type != CLOCK_INT)) {
 		struct net_device *dev = dscc4_to_dev(dpriv);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		netdev_info(dev, "loopback requires clock\n");
+=======
 		printk(KERN_INFO "%s: loopback requires clock\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "%s: loopback requires clock\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	return 0;
@@ -1077,7 +1213,15 @@ static int dscc4_open(struct net_device *dev)
 		scc_patchl(0, PowerUp, dpriv, dev, CCR0);
 		scc_patchl(0, 0x00050000, dpriv, dev, CCR2);
 		scc_writel(EventsMask, dpriv, dev, IMR);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		netdev_info(dev, "up again\n");
+=======
 		printk(KERN_INFO "%s: up again.\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "%s: up again.\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto done;
 	}
 
@@ -1094,11 +1238,25 @@ static int dscc4_open(struct net_device *dev)
 	 * situations.
 	 */
 	if (scc_readl_star(dpriv, dev) & SccBusy) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		netdev_err(dev, "busy - try later\n");
+		ret = -EAGAIN;
+		goto err_out;
+	} else
+		netdev_info(dev, "available - good\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "%s busy. Try later\n", dev->name);
 		ret = -EAGAIN;
 		goto err_out;
 	} else
 		printk(KERN_INFO "%s: available. Good\n", dev->name);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	scc_writel(EventsMask, dpriv, dev, IMR);
 
@@ -1116,7 +1274,15 @@ static int dscc4_open(struct net_device *dev)
 	 * reset is needed. Suggestions anyone ?
 	 */
 	if ((ret = dscc4_xpr_ack(dpriv)) < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("XPR timeout\n");
+=======
 		printk(KERN_ERR "%s: %s timeout\n", DRV_NAME, "XPR");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "%s: %s timeout\n", DRV_NAME, "XPR");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_disable_scc_events;
 	}
 	
@@ -1341,8 +1507,17 @@ static int dscc4_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd)
 			return -EPERM;
 
 		if (dpriv->flags & FakeReset) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_info(dev, "please reset the device before this command\n");
+=======
 			printk(KERN_INFO "%s: please reset the device"
 			       " before this command\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "%s: please reset the device"
+			       " before this command\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EPERM;
 		}
 		if (copy_from_user(&dpriv->settings, line, size))
@@ -1505,8 +1680,17 @@ static irqreturn_t dscc4_irq(int irq, void *token)
 	writel(state, ioaddr + GSTAR);
 
 	if (state & Arf) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		netdev_err(dev, "failure (Arf). Harass the maintainer\n");
+=======
 		printk(KERN_ERR "%s: failure (Arf). Harass the maintener\n",
 		       dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "%s: failure (Arf). Harass the maintener\n",
+		       dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 	state &= ~ArAck;
@@ -1514,7 +1698,15 @@ static irqreturn_t dscc4_irq(int irq, void *token)
 		if (debug > 0)
 			printk(KERN_DEBUG "%s: CfgIV\n", DRV_NAME);
 		if (priv->iqcfg[priv->cfg_cur++%IRQ_RING_SIZE] & cpu_to_le32(Arf))
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_err(dev, "CFG failed\n");
+=======
 			printk(KERN_ERR "%s: %s failed\n", dev->name, "CFG");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_ERR "%s: %s failed\n", dev->name, "CFG");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!(state &= ~Cfg))
 			goto out;
 	}
@@ -1595,8 +1787,18 @@ try:
 				++dpriv->tx_dirty;
 			} else {
 				if (debug > 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+					netdev_err(dev, "Tx: NULL skb %d\n",
+						   cur);
+=======
 					printk(KERN_ERR "%s Tx: NULL skb %d\n",
 						dev->name, cur);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					printk(KERN_ERR "%s Tx: NULL skb %d\n",
+						dev->name, cur);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			/*
 			 * If the driver ends sending crap on the wire, it
@@ -1615,7 +1817,15 @@ try:
 		 * Transmit Data Underrun
 		 */
 		if (state & Xdu) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_err(dev, "Tx Data Underrun. Ask maintainer\n");
+=======
 			printk(KERN_ERR "%s: XDU. Ask maintainer\n", DRV_NAME);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_ERR "%s: XDU. Ask maintainer\n", DRV_NAME);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dpriv->flags = NeedIDT;
 			/* Tx reset */
 			writel(MTFi | Rdt,
@@ -1624,13 +1834,29 @@ try:
 			return;
 		}
 		if (state & Cts) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_info(dev, "CTS transition\n");
+=======
 			printk(KERN_INFO "%s: CTS transition\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "%s: CTS transition\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(state &= ~Cts)) /* DEBUG */
 				goto try;
 		}
 		if (state & Xmr) {
 			/* Frame needs to be sent again - FIXME */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_err(dev, "Tx ReTx. Ask maintainer\n");
+=======
 			printk(KERN_ERR "%s: Xmr. Ask maintainer\n", DRV_NAME);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_ERR "%s: Xmr. Ask maintainer\n", DRV_NAME);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(state &= ~Xmr)) /* DEBUG */
 				goto try;
 		}
@@ -1648,7 +1874,15 @@ try:
 					break;
 			}
 			if (!i)
+<<<<<<< HEAD
+<<<<<<< HEAD
+				netdev_info(dev, "busy in irq\n");
+=======
 				printk(KERN_INFO "%s busy in irq\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				printk(KERN_INFO "%s busy in irq\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			scc_addr = dpriv->base_addr + 0x0c*dpriv->dev_id;
 			/* Keep this order: IDT before IDR */
@@ -1685,7 +1919,15 @@ try:
 		}
 		if (state & Cd) {
 			if (debug > 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+				netdev_info(dev, "CD transition\n");
+=======
 				printk(KERN_INFO "%s: CD transition\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				printk(KERN_INFO "%s: CD transition\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(state &= ~Cd)) /* DEBUG */
 				goto try;
 		}
@@ -1694,11 +1936,25 @@ try:
 #ifdef DSCC4_POLLING
 			while (!dscc4_tx_poll(dpriv, dev));
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_info(dev, "Tx Hi\n");
+			state &= ~Hi;
+		}
+		if (state & Err) {
+			netdev_info(dev, "Tx ERR\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_INFO "%s: Tx Hi\n", dev->name);
 			state &= ~Hi;
 		}
 		if (state & Err) {
 			printk(KERN_INFO "%s: Tx ERR\n", dev->name);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev->stats.tx_errors++;
 			state &= ~Err;
 		}
@@ -1768,7 +2024,15 @@ try:
 			goto try;
 		}
 		if (state & Hi ) { /* HI bit */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_info(dev, "Rx Hi\n");
+=======
 			printk(KERN_INFO "%s: Rx Hi\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "%s: Rx Hi\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			state &= ~Hi;
 			goto try;
 		}
@@ -1799,7 +2063,15 @@ try:
 				goto try;
 		}
 		if (state & Cts) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_info(dev, "CTS transition\n");
+=======
 			printk(KERN_INFO "%s: CTS transition\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "%s: CTS transition\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(state &= ~Cts)) /* DEBUG */
 				goto try;
 		}
@@ -1858,14 +2130,32 @@ try:
 			       sizeof(struct RxFD), scc_addr + CH0BRDA);
 			writel(MTFi|Rdr|Idr, scc_addr + CH0CFG);
 			if (dscc4_do_action(dev, "RDR") < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				netdev_err(dev, "RDO recovery failed(RDR)\n");
+=======
 				printk(KERN_ERR "%s: RDO recovery failed(%s)\n",
 				       dev->name, "RDR");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				printk(KERN_ERR "%s: RDO recovery failed(%s)\n",
+				       dev->name, "RDR");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto rdo_end;
 			}
 			writel(MTFi|Idr, scc_addr + CH0CFG);
 			if (dscc4_do_action(dev, "IDR") < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				netdev_err(dev, "RDO recovery failed(IDR)\n");
+=======
 				printk(KERN_ERR "%s: RDO recovery failed(%s)\n",
 				       dev->name, "IDR");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				printk(KERN_ERR "%s: RDO recovery failed(%s)\n",
+				       dev->name, "IDR");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto rdo_end;
 			}
 		rdo_end:
@@ -1874,7 +2164,15 @@ try:
 			goto try;
 		}
 		if (state & Cd) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			netdev_info(dev, "CD transition\n");
+=======
 			printk(KERN_INFO "%s: CD transition\n", dev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_INFO "%s: CD transition\n", dev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(state &= ~Cd)) /* DEBUG */
 				goto try;
 		}

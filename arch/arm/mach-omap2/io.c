@@ -18,8 +18,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -29,17 +32,25 @@
 
 #include <asm/tlb.h>
 =======
+<<<<<<< HEAD
+
+#include <asm/tlb.h>
+=======
 #include <linux/omapfb.h>
 
 #include <asm/tlb.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/map.h>
 
 #include <plat/sram.h>
 #include <plat/sdrc.h>
 #include <plat/serial.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/omap-pm.h>
 #include <plat/omap_hwmod.h>
 #include <plat/multi.h>
@@ -52,6 +63,8 @@
 #include "clock2xxx.h"
 #include "clock3xxx.h"
 #include "clock44xx.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "clock2xxx.h"
@@ -66,6 +79,7 @@
 #include <plat/omap_hwmod.h>
 #include <plat/multi.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The machine specific code may provide the extra mapping besides the
@@ -75,8 +89,12 @@
 <<<<<<< HEAD
 #if defined(CONFIG_SOC_OMAP2420) || defined(CONFIG_SOC_OMAP2430)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SOC_OMAP2420) || defined(CONFIG_SOC_OMAP2430)
+=======
 #ifdef CONFIG_ARCH_OMAP2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct map_desc omap24xx_io_desc[] __initdata = {
 	{
 		.virtual	= L3_24XX_VIRT,
@@ -203,6 +221,9 @@ static struct map_desc omap34xx_io_desc[] __initdata = {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SOC_OMAPTI81XX
 static struct map_desc omapti81xx_io_desc[] __initdata = {
 	{
@@ -216,10 +237,13 @@ static struct map_desc omapti81xx_io_desc[] __initdata = {
 
 #ifdef CONFIG_SOC_OMAPAM33XX
 static struct map_desc omapam33xx_io_desc[] __initdata = {
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SOC_OMAPTI816X
 static struct map_desc omapti816x_io_desc[] __initdata = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.virtual	= L4_34XX_VIRT,
 		.pfn		= __phys_to_pfn(L4_34XX_PHYS),
@@ -227,14 +251,20 @@ static struct map_desc omapti816x_io_desc[] __initdata = {
 		.type		= MT_DEVICE
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.virtual	= L4_WK_AM33XX_VIRT,
 		.pfn		= __phys_to_pfn(L4_WK_AM33XX_PHYS),
 		.length		= L4_WK_AM33XX_SIZE,
 		.type		= MT_DEVICE
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -289,6 +319,9 @@ static struct map_desc omap44xx_io_desc[] __initdata = {
 		.type		= MT_DEVICE,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OMAP4_ERRATA_I688
 	{
 		.virtual	= OMAP4_SRAM_VA,
@@ -301,6 +334,8 @@ static struct map_desc omap44xx_io_desc[] __initdata = {
 };
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 };
 #endif
@@ -319,6 +354,7 @@ static void __init _omap2_map_common_io(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SOC_OMAP2420
 void __init omap242x_map_common_io(void)
 {
@@ -326,8 +362,11 @@ void __init omap242x_map_common_io(void)
 	iotable_init(omap242x_io_desc, ARRAY_SIZE(omap242x_io_desc));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	_omap2_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -338,8 +377,11 @@ void __init omap243x_map_common_io(void)
 	iotable_init(omap243x_io_desc, ARRAY_SIZE(omap243x_io_desc));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	_omap2_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -348,6 +390,9 @@ void __init omap34xx_map_common_io(void)
 {
 	iotable_init(omap34xx_io_desc, ARRAY_SIZE(omap34xx_io_desc));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -362,6 +407,8 @@ void __init omapti81xx_map_common_io(void)
 void __init omapam33xx_map_common_io(void)
 {
 	iotable_init(omapam33xx_io_desc, ARRAY_SIZE(omapam33xx_io_desc));
+<<<<<<< HEAD
+=======
 =======
 	_omap2_map_common_io();
 }
@@ -373,6 +420,7 @@ void __init omapti816x_map_common_io(void)
 	iotable_init(omapti816x_io_desc, ARRAY_SIZE(omapti816x_io_desc));
 	_omap2_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -383,8 +431,12 @@ void __init omap44xx_map_common_io(void)
 <<<<<<< HEAD
 	omap_barriers_init();
 =======
+<<<<<<< HEAD
+	omap_barriers_init();
+=======
 	_omap2_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -428,6 +480,9 @@ static int _set_hwmod_postsetup_state(struct omap_hwmod *oh, void *data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap_common_init_early(void)
 {
 	omap_init_consistent_dma_size();
@@ -437,6 +492,8 @@ static void __init omap_hwmod_init_postsetup(void)
 {
 	u8 postsetup_state;
 
+<<<<<<< HEAD
+=======
 =======
 void __iomem *omap_irq_base;
 
@@ -480,6 +537,7 @@ void __init omap2_init_common_infrastructure(void)
         }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set the default postsetup state for all hwmods */
 #ifdef CONFIG_PM_RUNTIME
 	postsetup_state = _HWMOD_STATE_IDLE;
@@ -499,8 +557,12 @@ void __init omap2_init_common_infrastructure(void)
 <<<<<<< HEAD
 	 * omap2_init_common_infra() and omap_sdrc_init().
 =======
+<<<<<<< HEAD
+	 * omap2_init_common_infra() and omap_sdrc_init().
+=======
 	 * omap2_init_common_infra() and omap2_init_common_devices().
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *
 	 * XXX ideally we could detect whether the MPU WDT was currently
 	 * enabled here and make this conditional
@@ -512,6 +574,9 @@ void __init omap2_init_common_infrastructure(void)
 
 	omap_pm_if_early_init();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_SOC_OMAP2420
@@ -624,6 +689,8 @@ void __init omap_sdrc_init(struct omap_sdrc_params *sdrc_cs0,
 		_omap2_init_reprogram_sdrc();
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 
 	if (cpu_is_omap2420())
@@ -689,3 +756,4 @@ void omap_writel(u32 v, u32 pa)
 }
 EXPORT_SYMBOL(omap_writel);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -3,6 +3,9 @@ if ARCH_PXA
 menu "Intel PXA2xx/PXA3xx Implementations"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARCH_PXA_V7
 	bool "ARMv7 (PXA95x) based systems"
 
@@ -24,8 +27,11 @@ config PXA_V7_MACH_AUTO
 	select MACH_TAVOREVB3
 
 if !ARCH_PXA_V7
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "Intel/Marvell Dev Platforms (sorted by hardware release time)"
 
 config ARCH_LUBBOCK
@@ -67,11 +73,14 @@ config MACH_TAVOREVB
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config MACH_TAVOREVB3
 	bool "PXA95x Development Platform (aka TavorEVB III)"
 	select CPU_PXA950
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MACH_SAAR
 	bool "PXA930 Handheld Platform (aka SAAR)"
 	select PXA3xx
@@ -79,11 +88,14 @@ config MACH_SAAR
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config MACH_SAARB
 	bool "PXA955 Handheld Platform (aka SAARB)"
 	select CPU_PXA955
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "Third Party Dev Platforms (sorted by vendor name)"
 
 config ARCH_PXA_IDP
@@ -128,7 +140,11 @@ config MACH_ARMCORE
 <<<<<<< HEAD
 	select ARCH_HAS_DMA_SET_COHERENT_MASK if PCI
 =======
+<<<<<<< HEAD
+	select ARCH_HAS_DMA_SET_COHERENT_MASK if PCI
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PXA27x
 	select IWMMXT
 	select PXA25x
@@ -136,7 +152,11 @@ config MACH_ARMCORE
 <<<<<<< HEAD
 	select NEED_MACH_IO_H if PCI
 =======
+<<<<<<< HEAD
+	select NEED_MACH_IO_H if PCI
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MACH_EM_X270
 	bool "CompuLab EM-x270 platform"
@@ -455,7 +475,11 @@ config MACH_CENTRO
 <<<<<<< HEAD
 	select MACH_PALM27X
 =======
+<<<<<<< HEAD
+	select MACH_PALM27X
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PXA27x
 	select IWMMXT
 	select PALM_TREO
@@ -470,7 +494,11 @@ config MACH_TREO680
 <<<<<<< HEAD
 	select MACH_PALM27X
 =======
+<<<<<<< HEAD
+	select MACH_PALM27X
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PXA27x
 	select IWMMXT
 	select PALM_TREO
@@ -485,7 +513,11 @@ config MACH_RAUMFELD_RC
 <<<<<<< HEAD
 	select POWER_SUPPLY
 =======
+<<<<<<< HEAD
+	select POWER_SUPPLY
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_PWM
 
 config MACH_RAUMFELD_CONNECTOR
@@ -493,7 +525,11 @@ config MACH_RAUMFELD_CONNECTOR
 <<<<<<< HEAD
 	select POWER_SUPPLY
 =======
+<<<<<<< HEAD
+	select POWER_SUPPLY
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PXA3xx
 	select CPU_PXA300
 
@@ -502,7 +538,11 @@ config MACH_RAUMFELD_SPEAKER
 <<<<<<< HEAD
 	select POWER_SUPPLY
 =======
+<<<<<<< HEAD
+	select POWER_SUPPLY
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PXA3xx
 	select CPU_PXA300
 
@@ -659,8 +699,12 @@ config MACH_ZIPIT2
 <<<<<<< HEAD
 endif
 =======
+<<<<<<< HEAD
+endif
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endmenu
 
 config PXA25x
@@ -754,7 +798,12 @@ config SHARPSL_PM_MAX1111
 	select SPI
 	select SPI_MASTER
 =======
+<<<<<<< HEAD
+	select SPI
+	select SPI_MASTER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select SENSORS_MAX1111
 
 config PXA_HAVE_ISA_IRQS

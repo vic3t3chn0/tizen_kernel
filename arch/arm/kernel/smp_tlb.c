@@ -15,6 +15,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void on_each_cpu_mask(void (*func)(void *), void *info, int wait,
 	const struct cpumask *mask)
 {
@@ -28,6 +30,7 @@ static void on_each_cpu_mask(void (*func)(void *), void *info, int wait,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**********************************************************************/
 
 /*
@@ -93,8 +96,12 @@ void flush_tlb_mm(struct mm_struct *mm)
 <<<<<<< HEAD
 		on_each_cpu_mask(mm_cpumask(mm), ipi_flush_tlb_mm, mm, 1);
 =======
+<<<<<<< HEAD
+		on_each_cpu_mask(mm_cpumask(mm), ipi_flush_tlb_mm, mm, 1);
+=======
 		on_each_cpu_mask(ipi_flush_tlb_mm, mm, 1, mm_cpumask(mm));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		local_flush_tlb_mm(mm);
 }
@@ -109,8 +116,13 @@ void flush_tlb_page(struct vm_area_struct *vma, unsigned long uaddr)
 		on_each_cpu_mask(mm_cpumask(vma->vm_mm), ipi_flush_tlb_page,
 					&ta, 1);
 =======
+<<<<<<< HEAD
+		on_each_cpu_mask(mm_cpumask(vma->vm_mm), ipi_flush_tlb_page,
+					&ta, 1);
+=======
 		on_each_cpu_mask(ipi_flush_tlb_page, &ta, 1, mm_cpumask(vma->vm_mm));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		local_flush_tlb_page(vma, uaddr);
 }
@@ -137,8 +149,13 @@ void flush_tlb_range(struct vm_area_struct *vma,
 		on_each_cpu_mask(mm_cpumask(vma->vm_mm), ipi_flush_tlb_range,
 					&ta, 1);
 =======
+<<<<<<< HEAD
+		on_each_cpu_mask(mm_cpumask(vma->vm_mm), ipi_flush_tlb_range,
+					&ta, 1);
+=======
 		on_each_cpu_mask(ipi_flush_tlb_range, &ta, 1, mm_cpumask(vma->vm_mm));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		local_flush_tlb_range(vma, start, end);
 }

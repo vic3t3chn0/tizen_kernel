@@ -64,8 +64,12 @@ static size_t thread__fprintf(struct thread *self, FILE *fp)
 <<<<<<< HEAD
 struct thread *machine__findnew_thread(struct machine *self, pid_t pid)
 =======
+<<<<<<< HEAD
+struct thread *machine__findnew_thread(struct machine *self, pid_t pid)
+=======
 struct thread *perf_session__findnew(struct perf_session *self, pid_t pid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rb_node **p = &self->threads.rb_node;
 	struct rb_node *parent = NULL;
@@ -132,8 +136,12 @@ int thread__fork(struct thread *self, struct thread *parent)
 <<<<<<< HEAD
 size_t machine__fprintf(struct machine *machine, FILE *fp)
 =======
+<<<<<<< HEAD
+size_t machine__fprintf(struct machine *machine, FILE *fp)
+=======
 size_t perf_session__fprintf(struct perf_session *self, FILE *fp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	size_t ret = 0;
 	struct rb_node *nd;
@@ -141,8 +149,12 @@ size_t perf_session__fprintf(struct perf_session *self, FILE *fp)
 <<<<<<< HEAD
 	for (nd = rb_first(&machine->threads); nd; nd = rb_next(nd)) {
 =======
+<<<<<<< HEAD
+	for (nd = rb_first(&machine->threads); nd; nd = rb_next(nd)) {
+=======
 	for (nd = rb_first(&self->threads); nd; nd = rb_next(nd)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct thread *pos = rb_entry(nd, struct thread, rb_node);
 
 		ret += thread__fprintf(pos, fp);

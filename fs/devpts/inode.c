@@ -37,6 +37,9 @@
 #define PTMX_MINOR	2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * sysctl support for setting limits on the number of Unix98 ptys allocated.
  * Otherwise one can eat up all kernel memory by opening /dev/ptmx repeatedly.
@@ -92,9 +95,12 @@ static struct ctl_table pty_root_table[] = {
 	{}
 };
 
+<<<<<<< HEAD
+=======
 =======
 extern int pty_limit;			/* Config limit on Unix98 ptys */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_MUTEX(allocated_ptys_lock);
 
 static struct vfsmount *devpts_mnt;
@@ -108,17 +114,23 @@ struct pts_mount_opts {
 	umode_t ptmxmode;
 	int newinstance;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int max;
 };
 
 enum {
 	Opt_uid, Opt_gid, Opt_mode, Opt_ptmxmode, Opt_newinstance,  Opt_max,
+<<<<<<< HEAD
+=======
 =======
 };
 
 enum {
 	Opt_uid, Opt_gid, Opt_mode, Opt_ptmxmode, Opt_newinstance,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	Opt_err
 };
 
@@ -132,7 +144,11 @@ static const match_table_t tokens = {
 <<<<<<< HEAD
 	{Opt_max, "max=%d"},
 =======
+<<<<<<< HEAD
+	{Opt_max, "max=%d"},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	{Opt_err, NULL}
 };
@@ -182,7 +198,11 @@ static int parse_mount_options(char *data, int op, struct pts_mount_opts *opts)
 <<<<<<< HEAD
 	opts->max     = NR_UNIX98_PTY_MAX;
 =======
+<<<<<<< HEAD
+	opts->max     = NR_UNIX98_PTY_MAX;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* newinstance makes sense only on initial mount */
 	if (op == PARSE_MOUNT)
@@ -227,14 +247,20 @@ static int parse_mount_options(char *data, int op, struct pts_mount_opts *opts)
 				opts->newinstance = 1;
 			break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case Opt_max:
 			if (match_int(&args[0], &option) ||
 			    option < 0 || option > NR_UNIX98_PTY_MAX)
 				return -EINVAL;
 			opts->max = option;
 			break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 		default:
 			printk(KERN_ERR "devpts: called with bogus options\n");
@@ -334,10 +360,16 @@ static int devpts_show_options(struct seq_file *seq, struct dentry *root)
 {
 	struct pts_fs_info *fsi = DEVPTS_SB(root->d_sb);
 =======
+<<<<<<< HEAD
+static int devpts_show_options(struct seq_file *seq, struct dentry *root)
+{
+	struct pts_fs_info *fsi = DEVPTS_SB(root->d_sb);
+=======
 static int devpts_show_options(struct seq_file *seq, struct vfsmount *vfs)
 {
 	struct pts_fs_info *fsi = DEVPTS_SB(vfs->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pts_mount_opts *opts = &fsi->mount_opts;
 
 	if (opts->setuid)
@@ -351,7 +383,12 @@ static int devpts_show_options(struct seq_file *seq, struct vfsmount *vfs)
 	if (opts->max < NR_UNIX98_PTY_MAX)
 		seq_printf(seq, ",max=%d", opts->max);
 =======
+<<<<<<< HEAD
+	if (opts->max < NR_UNIX98_PTY_MAX)
+		seq_printf(seq, ",max=%d", opts->max);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	return 0;
@@ -398,8 +435,12 @@ devpts_fill_super(struct super_block *s, void *data, int silent)
 <<<<<<< HEAD
 		goto fail;
 =======
+<<<<<<< HEAD
+		goto fail;
+=======
 		goto free_fsi;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_ino = 1;
 	inode->i_mtime = inode->i_atime = inode->i_ctime = CURRENT_TIME;
 	inode->i_mode = S_IFDIR | S_IRUGO | S_IXUGO | S_IWUSR;
@@ -410,14 +451,23 @@ devpts_fill_super(struct super_block *s, void *data, int silent)
 
 	s->s_root = d_make_root(inode);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 2);
+
+	s->s_root = d_make_root(inode);
+=======
 	inode->i_nlink = 2;
 
 	s->s_root = d_alloc_root(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (s->s_root)
 		return 0;
 
 	printk(KERN_ERR "devpts: get root dentry failed\n");
+<<<<<<< HEAD
+
+=======
 <<<<<<< HEAD
 
 =======
@@ -426,6 +476,7 @@ devpts_fill_super(struct super_block *s, void *data, int silent)
 free_fsi:
 	kfree(s->s_fs_info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail:
 	return -ENOMEM;
 }
@@ -549,14 +600,20 @@ retry:
 
 	mutex_lock(&allocated_ptys_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pty_count >= pty_limit -
 			(fsi->mount_opts.newinstance ? pty_reserve : 0)) {
 		mutex_unlock(&allocated_ptys_lock);
 		return -ENOSPC;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ida_ret = ida_get_new(&fsi->allocated_ptys, &index);
 	if (ida_ret < 0) {
 		mutex_unlock(&allocated_ptys_lock);
@@ -566,12 +623,17 @@ retry:
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (index >= fsi->mount_opts.max) {
 		ida_remove(&fsi->allocated_ptys, index);
 		mutex_unlock(&allocated_ptys_lock);
 		return -ENOSPC;
 	}
 	pty_count++;
+<<<<<<< HEAD
+=======
 =======
 	if (index >= pty_limit) {
 		ida_remove(&fsi->allocated_ptys, index);
@@ -579,6 +641,7 @@ retry:
 		return -EIO;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&allocated_ptys_lock);
 	return index;
 }
@@ -593,7 +656,11 @@ void devpts_kill_index(struct inode *ptmx_inode, int idx)
 <<<<<<< HEAD
 	pty_count--;
 =======
+<<<<<<< HEAD
+	pty_count--;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&allocated_ptys_lock);
 }
 
@@ -682,8 +749,12 @@ void devpts_pty_kill(struct tty_struct *tty)
 <<<<<<< HEAD
 	drop_nlink(inode);
 =======
+<<<<<<< HEAD
+	drop_nlink(inode);
+=======
 	inode->i_nlink--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	d_delete(dentry);
 	dput(dentry);	/* d_alloc_name() in devpts_pty_new() */
 	dput(dentry);		/* d_find_alias above */
@@ -695,13 +766,19 @@ static int __init init_devpts_fs(void)
 {
 	int err = register_filesystem(&devpts_fs_type);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ctl_table_header *table;
 
 	if (!err) {
 		table = register_sysctl_table(pty_root_table);
+<<<<<<< HEAD
+=======
 =======
 	if (!err) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		devpts_mnt = kern_mount(&devpts_fs_type);
 		if (IS_ERR(devpts_mnt)) {
 			err = PTR_ERR(devpts_mnt);
@@ -709,7 +786,11 @@ static int __init init_devpts_fs(void)
 <<<<<<< HEAD
 			unregister_sysctl_table(table);
 =======
+<<<<<<< HEAD
+			unregister_sysctl_table(table);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return err;

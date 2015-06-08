@@ -236,6 +236,8 @@
 #define U300_SYSCON_ECCR_EMIF_SDRCLK_RET_EN_N_DISABLE		(0x0001)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* PAD MUX Control register 1 (LOW) 16bit (R/W) */
 #define U300_SYSCON_PMC1LR					(0x007C)
 #define U300_SYSCON_PMC1LR_MASK					(0xFFFF)
@@ -322,6 +324,7 @@
 #define U300_SYSCON_PMC1HR_APP_UART0_1_UART0			(0x0001)
 #define U300_SYSCON_PMC1HR_APP_UART0_1_AAIF			(0x0003)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Step one for killing the applications system 16bit (-/W) */
 #define U300_SYSCON_KA1R					(0x0080)
 #define U300_SYSCON_KA1R_MASK					(0xFFFF)
@@ -360,6 +363,8 @@
 #define U300_SYSCON_PUCR_EMIF_1_16BIT_PU_ENABLE			(0x0080)
 #define U300_SYSCON_PUCR_EMIF_1_8BIT_PU_ENABLE			(0x0040)
 #define U300_SYSCON_PUCR_KEY_IN_PU_EN_MASK			(0x003F)
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Padmux 2 control */
@@ -414,6 +419,7 @@
 #define U300_SYSCON_PMC4R_APP_MISC_16_APP_UART1_CTS		(0x0100)
 #define U300_SYSCON_PMC4R_APP_MISC_16_EMIF_1_STATIC_CS5_N	(0x0200)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* SYS_0_CLK_CONTROL first clock control 16bit (R/W) */
 #define U300_SYSCON_S0CCR					(0x120)
 #define U300_SYSCON_S0CCR_FIELD_MASK				(0x43FF)

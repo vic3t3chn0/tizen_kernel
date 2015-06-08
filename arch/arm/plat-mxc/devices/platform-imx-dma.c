@@ -7,6 +7,9 @@
  * Free Software Foundation.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/devices-common.h>
 
 struct platform_device __init __maybe_unused *imx_add_imx_dma(void)
@@ -26,6 +29,8 @@ struct platform_device __init __maybe_unused *imx_add_imx_sdma(char *name,
 		}, {
 			.start = irq,
 			.end = irq,
+<<<<<<< HEAD
+=======
 =======
 #include <linux/compiler.h>
 #include <linux/err.h>
@@ -84,10 +89,16 @@ static struct platform_device __init __maybe_unused *imx_add_imx_sdma(
 			.start = data->irq,
 			.end = data->irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.flags = IORESOURCE_IRQ,
 		},
 	};
 
+<<<<<<< HEAD
+	return platform_device_register_resndata(&mxc_ahb_bus, name,
+			-1, res, ARRAY_SIZE(res), pdata, sizeof(*pdata));
+}
+=======
 <<<<<<< HEAD
 	return platform_device_register_resndata(&mxc_ahb_bus, name,
 			-1, res, ARRAY_SIZE(res), pdata, sizeof(*pdata));
@@ -238,3 +249,4 @@ static int __init imxXX_add_imx_dma(void)
 }
 arch_initcall(imxXX_add_imx_dma);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -65,7 +65,12 @@
 #define CNTR_NOT_SUPPORTED	"<not supported>"
 #define CNTR_NOT_COUNTED	"<not counted>"
 =======
+<<<<<<< HEAD
+#define CNTR_NOT_SUPPORTED	"<not supported>"
+#define CNTR_NOT_COUNTED	"<not counted>"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct perf_event_attr default_attrs[] = {
 
@@ -189,9 +194,14 @@ static bool			no_aggr				= false;
 static const char		*target_pid;
 static const char		*target_tid;
 =======
+<<<<<<< HEAD
+static const char		*target_pid;
+static const char		*target_tid;
+=======
 static pid_t			target_pid			= -1;
 static pid_t			target_tid			= -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static pid_t			child_pid			= -1;
 static bool			null_run			=  false;
 static int			detailed_run			=  0;
@@ -202,12 +212,18 @@ static const char		*cpu_list;
 static const char		*csv_sep			= NULL;
 static bool			csv_output			= false;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool			group				= false;
 static const char		*output_name			= NULL;
 static FILE			*output				= NULL;
 static int			output_fd;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static volatile int done = 0;
 
@@ -266,6 +282,9 @@ static double avg_stats(struct stats *stats)
 static double stddev_stats(struct stats *stats)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	double variance, variance_mean;
 
 	if (!stats->n)
@@ -273,10 +292,13 @@ static double stddev_stats(struct stats *stats)
 
 	variance = stats->M2 / (stats->n - 1);
 	variance_mean = variance / stats->n;
+<<<<<<< HEAD
+=======
 =======
 	double variance = stats->M2 / (stats->n - 1);
 	double variance_mean = variance / stats->n;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return sqrt(variance_mean);
 }
@@ -295,6 +317,9 @@ struct stats			runtime_dtlb_cache_stats[MAX_NR_CPUS];
 struct stats			walltime_nsecs_stats;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int create_perf_stat_counter(struct perf_evsel *evsel,
 				    struct perf_evsel *first)
 {
@@ -305,11 +330,14 @@ static int create_perf_stat_counter(struct perf_evsel *evsel,
 
 	if (group && evsel != first)
 		group_fd = first->fd;
+<<<<<<< HEAD
+=======
 =======
 static int create_perf_stat_counter(struct perf_evsel *evsel)
 {
 	struct perf_event_attr *attr = &evsel->attr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (scale)
 		attr->read_format = PERF_FORMAT_TOTAL_TIME_ENABLED |
@@ -318,6 +346,9 @@ static int create_perf_stat_counter(struct perf_evsel *evsel)
 	attr->inherit = !no_inherit;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 retry:
 	if (exclude_guest_missing)
 		evsel->attr.exclude_guest = evsel->attr.exclude_host = 0;
@@ -331,17 +362,23 @@ retry:
 	}
 
 	if (!target_pid && !target_tid && (!group || evsel == first)) {
+<<<<<<< HEAD
+=======
 =======
 	if (system_wide)
 		return perf_evsel__open_per_cpu(evsel, evsel_list->cpus, false);
 
 	if (target_pid == -1 && target_tid == -1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		attr->disabled = 1;
 		attr->enable_on_exec = 1;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = perf_evsel__open_per_thread(evsel, evsel_list->threads,
 					  group, group_fd);
 	if (!ret)
@@ -358,9 +395,12 @@ check_ret:
 		}
 	}
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	return perf_evsel__open_per_thread(evsel, evsel_list->threads, false);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -427,8 +467,12 @@ static int read_counter_aggr(struct perf_evsel *counter)
 <<<<<<< HEAD
 		fprintf(output, "%s: %" PRIu64 " %" PRIu64 " %" PRIu64 "\n",
 =======
+<<<<<<< HEAD
+		fprintf(output, "%s: %" PRIu64 " %" PRIu64 " %" PRIu64 "\n",
+=======
 		fprintf(stderr, "%s: %" PRIu64 " %" PRIu64 " %" PRIu64 "\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			event_name(counter), count[0], count[1], count[2]);
 	}
 
@@ -467,8 +511,12 @@ static int run_perf_stat(int argc __used, const char **argv)
 <<<<<<< HEAD
 	struct perf_evsel *counter, *first;
 =======
+<<<<<<< HEAD
+	struct perf_evsel *counter, *first;
+=======
 	struct perf_evsel *counter;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int status = 0;
 	int child_ready_pipe[2], go_pipe[2];
 	const bool forks = (argc > 0);
@@ -515,8 +563,12 @@ static int run_perf_stat(int argc __used, const char **argv)
 <<<<<<< HEAD
 		if (!target_tid && !target_pid && !system_wide)
 =======
+<<<<<<< HEAD
+		if (!target_tid && !target_pid && !system_wide)
+=======
 		if (target_tid == -1 && target_pid == -1 && !system_wide)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			evsel_list->threads->map[0] = child_pid;
 
 		/*
@@ -530,6 +582,9 @@ static int run_perf_stat(int argc __used, const char **argv)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	first = list_entry(evsel_list->entries.next, struct perf_evsel, node);
 
 	list_for_each_entry(counter, &evsel_list->entries, node) {
@@ -545,6 +600,8 @@ static int run_perf_stat(int argc __used, const char **argv)
 					ui__warning("%s event is not supported by the kernel.\n",
 						    event_name(counter));
 				counter->supported = false;
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_entry(counter, &evsel_list->entries, node) {
 		if (create_perf_stat_counter(counter) < 0) {
@@ -553,6 +610,7 @@ static int run_perf_stat(int argc __used, const char **argv)
 					ui__warning("%s event is not supported by the kernel.\n",
 						    event_name(counter));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			}
 
@@ -574,7 +632,11 @@ static int run_perf_stat(int argc __used, const char **argv)
 <<<<<<< HEAD
 		counter->supported = true;
 =======
+<<<<<<< HEAD
+		counter->supported = true;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (perf_evlist__set_filters(evsel_list)) {
@@ -595,7 +657,12 @@ static int run_perf_stat(int argc __used, const char **argv)
 		if (WIFSIGNALED(status))
 			psignal(WTERMSIG(status), argv[0]);
 =======
+<<<<<<< HEAD
+		if (WIFSIGNALED(status))
+			psignal(WTERMSIG(status), argv[0]);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		while(!done) sleep(1);
 	}
@@ -628,13 +695,19 @@ static void print_noise_pct(double total, double avg)
 		pct = 100.0*total/avg;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (csv_output)
 		fprintf(output, "%s%.2f%%", csv_sep, pct);
 	else if (pct)
 		fprintf(output, "  ( +-%6.2f%% )", pct);
+<<<<<<< HEAD
+=======
 =======
 	fprintf(stderr, "  ( +-%6.2f%% )", pct);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_noise(struct perf_evsel *evsel, double avg)
@@ -660,22 +733,31 @@ static void nsec_printout(int cpu, struct perf_evsel *evsel, double avg)
 			evsel_list->cpus->map[cpu], csv_sep);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fprintf(output, fmt, cpustr, msecs, csv_sep, event_name(evsel));
 
 	if (evsel->cgrp)
 		fprintf(output, "%s%s", csv_sep, evsel->cgrp->name);
+<<<<<<< HEAD
+=======
 =======
 	fprintf(stderr, fmt, cpustr, msecs, csv_sep, event_name(evsel));
 
 	if (evsel->cgrp)
 		fprintf(stderr, "%s%s", csv_sep, evsel->cgrp->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (csv_output)
 		return;
 
 	if (perf_evsel__match(evsel, SOFTWARE, SW_TASK_CLOCK))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(output, " # %8.3f CPUs utilized          ",
 			avg / avg_stats(&walltime_nsecs_stats));
 	else
@@ -707,9 +789,12 @@ static const char *get_ratio_color(enum grc_type type, double ratio)
 		color = PERF_COLOR_YELLOW;
 
 	return color;
+<<<<<<< HEAD
+=======
 =======
 		fprintf(stderr, " # %8.3f CPUs utilized          ", avg / avg_stats(&walltime_nsecs_stats));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_stalled_cycles_frontend(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -723,11 +808,16 @@ static void print_stalled_cycles_frontend(int cpu, struct perf_evsel *evsel __us
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_STALLED_CYCLES_FE, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " frontend cycles idle   ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 50.0)
@@ -741,6 +831,7 @@ static void print_stalled_cycles_frontend(int cpu, struct perf_evsel *evsel __us
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " frontend cycles idle   ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_stalled_cycles_backend(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -754,11 +845,16 @@ static void print_stalled_cycles_backend(int cpu, struct perf_evsel *evsel __use
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_STALLED_CYCLES_BE, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " backend  cycles idle   ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 75.0)
@@ -772,6 +868,7 @@ static void print_stalled_cycles_backend(int cpu, struct perf_evsel *evsel __use
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " backend  cycles idle   ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_branch_misses(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -785,11 +882,16 @@ static void print_branch_misses(int cpu, struct perf_evsel *evsel __used, double
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_CACHE_MISSES, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " of all branches        ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 20.0)
@@ -803,6 +905,7 @@ static void print_branch_misses(int cpu, struct perf_evsel *evsel __used, double
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " of all branches        ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_l1_dcache_misses(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -816,11 +919,16 @@ static void print_l1_dcache_misses(int cpu, struct perf_evsel *evsel __used, dou
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_CACHE_MISSES, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " of all L1-dcache hits  ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 20.0)
@@ -834,6 +942,7 @@ static void print_l1_dcache_misses(int cpu, struct perf_evsel *evsel __used, dou
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " of all L1-dcache hits  ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_l1_icache_misses(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -847,11 +956,16 @@ static void print_l1_icache_misses(int cpu, struct perf_evsel *evsel __used, dou
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_CACHE_MISSES, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " of all L1-icache hits  ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 20.0)
@@ -865,6 +979,7 @@ static void print_l1_icache_misses(int cpu, struct perf_evsel *evsel __used, dou
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " of all L1-icache hits  ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_dtlb_cache_misses(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -878,11 +993,16 @@ static void print_dtlb_cache_misses(int cpu, struct perf_evsel *evsel __used, do
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_CACHE_MISSES, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " of all dTLB cache hits ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 20.0)
@@ -896,6 +1016,7 @@ static void print_dtlb_cache_misses(int cpu, struct perf_evsel *evsel __used, do
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " of all dTLB cache hits ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_itlb_cache_misses(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -909,11 +1030,16 @@ static void print_itlb_cache_misses(int cpu, struct perf_evsel *evsel __used, do
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_CACHE_MISSES, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " of all iTLB cache hits ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 20.0)
@@ -927,6 +1053,7 @@ static void print_itlb_cache_misses(int cpu, struct perf_evsel *evsel __used, do
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " of all iTLB cache hits ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_ll_cache_misses(int cpu, struct perf_evsel *evsel __used, double avg)
@@ -940,11 +1067,16 @@ static void print_ll_cache_misses(int cpu, struct perf_evsel *evsel __used, doub
 		ratio = avg / total * 100.0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	color = get_ratio_color(GRC_CACHE_MISSES, ratio);
 
 	fprintf(output, " #  ");
 	color_fprintf(output, color, "%6.2f%%", ratio);
 	fprintf(output, " of all LL-cache hits   ");
+<<<<<<< HEAD
+=======
 =======
 	color = PERF_COLOR_NORMAL;
 	if (ratio > 20.0)
@@ -958,6 +1090,7 @@ static void print_ll_cache_misses(int cpu, struct perf_evsel *evsel __used, doub
 	color_fprintf(stderr, color, "%6.2f%%", ratio);
 	fprintf(stderr, " of all LL-cache hits   ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void abs_printout(int cpu, struct perf_evsel *evsel, double avg)
@@ -981,16 +1114,22 @@ static void abs_printout(int cpu, struct perf_evsel *evsel, double avg)
 		cpu = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fprintf(output, fmt, cpustr, avg, csv_sep, event_name(evsel));
 
 	if (evsel->cgrp)
 		fprintf(output, "%s%s", csv_sep, evsel->cgrp->name);
+<<<<<<< HEAD
+=======
 =======
 	fprintf(stderr, fmt, cpustr, avg, csv_sep, event_name(evsel));
 
 	if (evsel->cgrp)
 		fprintf(stderr, "%s%s", csv_sep, evsel->cgrp->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (csv_output)
 		return;
@@ -1004,8 +1143,12 @@ static void abs_printout(int cpu, struct perf_evsel *evsel, double avg)
 <<<<<<< HEAD
 		fprintf(output, " #   %5.2f  insns per cycle        ", ratio);
 =======
+<<<<<<< HEAD
+		fprintf(output, " #   %5.2f  insns per cycle        ", ratio);
+=======
 		fprintf(stderr, " #   %5.2f  insns per cycle        ", ratio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		total = avg_stats(&runtime_stalled_cycles_front_stats[cpu]);
 		total = max(total, avg_stats(&runtime_stalled_cycles_back_stats[cpu]));
@@ -1015,8 +1158,12 @@ static void abs_printout(int cpu, struct perf_evsel *evsel, double avg)
 <<<<<<< HEAD
 			fprintf(output, "\n                                             #   %5.2f  stalled cycles per insn", ratio);
 =======
+<<<<<<< HEAD
+			fprintf(output, "\n                                             #   %5.2f  stalled cycles per insn", ratio);
+=======
 			fprintf(stderr, "\n                                             #   %5.2f  stalled cycles per insn", ratio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 	} else if (perf_evsel__match(evsel, HARDWARE, HW_BRANCH_MISSES) &&
@@ -1067,8 +1214,12 @@ static void abs_printout(int cpu, struct perf_evsel *evsel, double avg)
 <<<<<<< HEAD
 		fprintf(output, " # %8.3f %% of all cache refs    ", ratio);
 =======
+<<<<<<< HEAD
+		fprintf(output, " # %8.3f %% of all cache refs    ", ratio);
+=======
 		fprintf(stderr, " # %8.3f %% of all cache refs    ", ratio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	} else if (perf_evsel__match(evsel, HARDWARE, HW_STALLED_CYCLES_FRONTEND)) {
 		print_stalled_cycles_frontend(cpu, evsel, avg);
@@ -1081,19 +1232,28 @@ static void abs_printout(int cpu, struct perf_evsel *evsel, double avg)
 			ratio = 1.0 * avg / total;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(output, " # %8.3f GHz                    ", ratio);
 	} else if (runtime_nsecs_stats[cpu].n != 0) {
 		char unit = 'M';
 
+<<<<<<< HEAD
+=======
 =======
 		fprintf(stderr, " # %8.3f GHz                    ", ratio);
 	} else if (runtime_nsecs_stats[cpu].n != 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		total = avg_stats(&runtime_nsecs_stats[cpu]);
 
 		if (total)
 			ratio = 1000.0 * avg / total;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ratio < 0.001) {
 			ratio *= 1000;
 			unit = 'K';
@@ -1102,12 +1262,15 @@ static void abs_printout(int cpu, struct perf_evsel *evsel, double avg)
 		fprintf(output, " # %8.3f %c/sec                  ", ratio, unit);
 	} else {
 		fprintf(output, "                                   ");
+<<<<<<< HEAD
+=======
 =======
 
 		fprintf(stderr, " # %8.3f M/sec                  ", ratio);
 	} else {
 		fprintf(stderr, "                                   ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1127,10 +1290,16 @@ static void print_counter_aggr(struct perf_evsel *counter)
 			csv_output ? 0 : 18,
 			counter->supported ? CNTR_NOT_COUNTED : CNTR_NOT_SUPPORTED,
 =======
+<<<<<<< HEAD
+		fprintf(output, "%*s%s%*s",
+			csv_output ? 0 : 18,
+			counter->supported ? CNTR_NOT_COUNTED : CNTR_NOT_SUPPORTED,
+=======
 		fprintf(stderr, "%*s%s%*s",
 			csv_output ? 0 : 18,
 			"<not counted>",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			csv_sep,
 			csv_output ? 0 : -24,
 			event_name(counter));
@@ -1141,10 +1310,16 @@ static void print_counter_aggr(struct perf_evsel *counter)
 
 		fputc('\n', output);
 =======
+<<<<<<< HEAD
+			fprintf(output, "%s%s", csv_sep, counter->cgrp->name);
+
+		fputc('\n', output);
+=======
 			fprintf(stderr, "%s%s", csv_sep, counter->cgrp->name);
 
 		fputc('\n', stderr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -1154,6 +1329,9 @@ static void print_counter_aggr(struct perf_evsel *counter)
 		abs_printout(-1, counter, avg);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	print_noise(counter, avg);
 
 	if (csv_output) {
@@ -1161,6 +1339,8 @@ static void print_counter_aggr(struct perf_evsel *counter)
 		return;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	if (csv_output) {
 		fputc('\n', stderr);
@@ -1170,6 +1350,7 @@ static void print_counter_aggr(struct perf_evsel *counter)
 	print_noise(counter, avg);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (scaled) {
 		double avg_enabled, avg_running;
 
@@ -1181,10 +1362,16 @@ static void print_counter_aggr(struct perf_evsel *counter)
 	}
 	fprintf(output, "\n");
 =======
+<<<<<<< HEAD
+		fprintf(output, " [%5.2f%%]", 100 * avg_running / avg_enabled);
+	}
+	fprintf(output, "\n");
+=======
 		fprintf(stderr, " [%5.2f%%]", 100 * avg_running / avg_enabled);
 	}
 	fprintf(stderr, "\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1202,12 +1389,17 @@ static void print_counter(struct perf_evsel *counter)
 		run = counter->counts->cpu[cpu].run;
 		if (run == 0 || ena == 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fprintf(output, "CPU%*d%s%*s%s%*s",
 				csv_output ? 0 : -4,
 				evsel_list->cpus->map[cpu], csv_sep,
 				csv_output ? 0 : 18,
 				counter->supported ? CNTR_NOT_COUNTED : CNTR_NOT_SUPPORTED,
 				csv_sep,
+<<<<<<< HEAD
+=======
 =======
 			fprintf(stderr, "CPU%*d%s%*s%s%*s",
 				csv_output ? 0 : -4,
@@ -1215,20 +1407,27 @@ static void print_counter(struct perf_evsel *counter)
 				csv_output ? 0 : 18,
 				"<not counted>", csv_sep,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				csv_output ? 0 : -24,
 				event_name(counter));
 
 			if (counter->cgrp)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				fprintf(output, "%s%s",
 					csv_sep, counter->cgrp->name);
 
 			fputc('\n', output);
+<<<<<<< HEAD
+=======
 =======
 				fprintf(stderr, "%s%s", csv_sep, counter->cgrp->name);
 
 			fputc('\n', stderr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		}
 
@@ -1242,15 +1441,21 @@ static void print_counter(struct perf_evsel *counter)
 
 			if (run != ena)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				fprintf(output, "  (%.2f%%)",
 					100.0 * run / ena);
 		}
 		fputc('\n', output);
+<<<<<<< HEAD
+=======
 =======
 				fprintf(stderr, "  (%.2f%%)", 100.0 * run / ena);
 		}
 		fputc('\n', stderr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1263,6 +1468,9 @@ static void print_stat(int argc, const char **argv)
 
 	if (!csv_output) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(output, "\n");
 		fprintf(output, " Performance counter stats for ");
 		if (!target_pid && !target_tid) {
@@ -1278,6 +1486,8 @@ static void print_stat(int argc, const char **argv)
 		if (run_count > 1)
 			fprintf(output, " (%d runs)", run_count);
 		fprintf(output, ":\n\n");
+<<<<<<< HEAD
+=======
 =======
 		fprintf(stderr, "\n");
 		fprintf(stderr, " Performance counter stats for ");
@@ -1295,6 +1505,7 @@ static void print_stat(int argc, const char **argv)
 			fprintf(stderr, " (%d runs)", run_count);
 		fprintf(stderr, ":\n\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (no_aggr) {
@@ -1308,6 +1519,9 @@ static void print_stat(int argc, const char **argv)
 	if (!csv_output) {
 		if (!null_run)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fprintf(output, "\n");
 		fprintf(output, " %17.9f seconds time elapsed",
 				avg_stats(&walltime_nsecs_stats)/1e9);
@@ -1317,6 +1531,8 @@ static void print_stat(int argc, const char **argv)
 					avg_stats(&walltime_nsecs_stats));
 		}
 		fprintf(output, "\n\n");
+<<<<<<< HEAD
+=======
 =======
 			fprintf(stderr, "\n");
 		fprintf(stderr, " %17.9f seconds time elapsed",
@@ -1328,6 +1544,7 @@ static void print_stat(int argc, const char **argv)
 		}
 		fprintf(stderr, "\n\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1366,23 +1583,32 @@ static int stat__set_big_num(const struct option *opt __used,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool append_file;
 
 static const struct option options[] = {
 	OPT_CALLBACK('e', "event", &evsel_list, "event",
 		     "event selector. use 'perf list' to list available events",
 		     parse_events_option),
+<<<<<<< HEAD
+=======
 =======
 static const struct option options[] = {
 	OPT_CALLBACK('e', "event", &evsel_list, "event",
 		     "event selector. use 'perf list' to list available events",
 		     parse_events),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_CALLBACK(0, "filter", &evsel_list, "filter",
 		     "event filter", parse_filter),
 	OPT_BOOLEAN('i', "no-inherit", &no_inherit,
 		    "child tasks do not inherit counters"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_STRING('p', "pid", &target_pid, "pid",
 		   "stat events on existing process id"),
 	OPT_STRING('t', "tid", &target_tid, "tid",
@@ -1391,6 +1617,8 @@ static const struct option options[] = {
 		    "system-wide collection from all CPUs"),
 	OPT_BOOLEAN('g', "group", &group,
 		    "put the counters into a counter group"),
+<<<<<<< HEAD
+=======
 =======
 	OPT_INTEGER('p', "pid", &target_pid,
 		    "stat events on existing process id"),
@@ -1399,6 +1627,7 @@ static const struct option options[] = {
 	OPT_BOOLEAN('a', "all-cpus", &system_wide,
 		    "system-wide collection from all CPUs"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN('c', "scale", &scale,
 		    "scale/normalize counters"),
 	OPT_INCR('v', "verbose", &verbose,
@@ -1424,13 +1653,19 @@ static const struct option options[] = {
 		     "monitor event in cgroup name only",
 		     parse_cgroups),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_STRING('o', "output", &output_name, "file",
 		    "output file name"),
 	OPT_BOOLEAN(0, "append", &append_file, "append to the output file"),
 	OPT_INTEGER(0, "log-fd", &output_fd,
 		    "log output to fd, instead of stderr"),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_END()
 };
 
@@ -1442,16 +1677,23 @@ static int add_default_attributes(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct perf_evsel *pos;
 	size_t attr_nr = 0;
 	size_t c;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set attrs if no event is selected and !null_run: */
 	if (null_run)
 		return 0;
 
 	if (!evsel_list->nr_entries) {
+<<<<<<< HEAD
+		if (perf_evlist__add_attrs_array(evsel_list, default_attrs) < 0)
+			return -1;
+=======
 <<<<<<< HEAD
 		if (perf_evlist__add_attrs_array(evsel_list, default_attrs) < 0)
 			return -1;
@@ -1464,6 +1706,7 @@ static int add_default_attributes(void)
 		}
 		attr_nr += c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Detailed events get appended to the event list: */
@@ -1476,6 +1719,10 @@ static int add_default_attributes(void)
 	if (perf_evlist__add_attrs_array(evsel_list, detailed_attrs) < 0)
 		return -1;
 =======
+<<<<<<< HEAD
+	if (perf_evlist__add_attrs_array(evsel_list, detailed_attrs) < 0)
+		return -1;
+=======
 	for (c = 0; c < ARRAY_SIZE(detailed_attrs); c++) {
 		pos = perf_evsel__new(detailed_attrs + c, c + attr_nr);
 		if (pos == NULL)
@@ -1484,11 +1731,16 @@ static int add_default_attributes(void)
 	}
 	attr_nr += c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (detailed_run < 2)
 		return 0;
 
 	/* Append very detailed run extra attributes: */
+<<<<<<< HEAD
+	if (perf_evlist__add_attrs_array(evsel_list, very_detailed_attrs) < 0)
+		return -1;
+=======
 <<<<<<< HEAD
 	if (perf_evlist__add_attrs_array(evsel_list, very_detailed_attrs) < 0)
 		return -1;
@@ -1500,11 +1752,15 @@ static int add_default_attributes(void)
 		perf_evlist__add(evsel_list, pos);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (detailed_run < 3)
 		return 0;
 
 	/* Append very, very detailed run extra attributes: */
+<<<<<<< HEAD
+	return perf_evlist__add_attrs_array(evsel_list, very_very_detailed_attrs);
+=======
 <<<<<<< HEAD
 	return perf_evlist__add_attrs_array(evsel_list, very_very_detailed_attrs);
 =======
@@ -1518,6 +1774,7 @@ static int add_default_attributes(void)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int cmd_stat(int argc, const char **argv, const char *prefix __used)
@@ -1527,7 +1784,11 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 	const char *mode;
 =======
+<<<<<<< HEAD
+	const char *mode;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setlocale(LC_ALL, "");
 
@@ -1539,6 +1800,9 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 		PARSE_OPT_STOP_AT_NON_OPTION);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	output = stderr;
 	if (output_name && strcmp(output_name, "-"))
 		output = NULL;
@@ -1572,11 +1836,14 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 		if (!strcmp(csv_sep, "\\t"))
 			csv_sep = "\t";
 	} else
+<<<<<<< HEAD
+=======
 =======
 	if (csv_sep)
 		csv_output = true;
 	else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		csv_sep = DEFAULT_SEPARATOR;
 
 	/*
@@ -1586,8 +1853,12 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 		/* User explicitly passed -B? */
 =======
+<<<<<<< HEAD
+		/* User explicitly passed -B? */
+=======
 		/* User explicitely passed -B? */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (big_num_opt == 1) {
 			fprintf(stderr, "-B option not supported with -x\n");
 			usage_with_options(stat_usage, options);
@@ -1599,8 +1870,12 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 	if (!argc && !target_pid && !target_tid)
 =======
+<<<<<<< HEAD
+	if (!argc && !target_pid && !target_tid)
+=======
 	if (!argc && target_pid == -1 && target_tid == -1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		usage_with_options(stat_usage, options);
 	if (run_count <= 0)
 		usage_with_options(stat_usage, options);
@@ -1617,17 +1892,23 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (target_pid)
 		target_tid = target_pid;
 
 	evsel_list->threads = thread_map__new_str(target_pid,
 						  target_tid, UINT_MAX);
+<<<<<<< HEAD
+=======
 =======
 	if (target_pid != -1)
 		target_tid = target_pid;
 
 	evsel_list->threads = thread_map__new(target_pid, target_tid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (evsel_list->threads == NULL) {
 		pr_err("Problems finding threads of monitor\n");
 		usage_with_options(stat_usage, options);
@@ -1649,9 +1930,13 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 		    perf_evsel__alloc_counts(pos, evsel_list->cpus->nr) < 0)
 =======
+<<<<<<< HEAD
+		    perf_evsel__alloc_counts(pos, evsel_list->cpus->nr) < 0)
+=======
 		    perf_evsel__alloc_counts(pos, evsel_list->cpus->nr) < 0 ||
 		    perf_evsel__alloc_fd(pos, evsel_list->cpus->nr, evsel_list->threads->nr) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out_free_fd;
 	}
 
@@ -1673,8 +1958,13 @@ int cmd_stat(int argc, const char **argv, const char *prefix __used)
 			fprintf(output, "[ perf stat: executing run #%d ... ]\n",
 				run_idx + 1);
 =======
+<<<<<<< HEAD
+			fprintf(output, "[ perf stat: executing run #%d ... ]\n",
+				run_idx + 1);
+=======
 			fprintf(stderr, "[ perf stat: executing run #%d ... ]\n", run_idx + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (sync_run)
 			sync();

@@ -62,7 +62,15 @@ MODULE_LICENSE("GPL");
 
 /* Module parameters */
 static DEFINE_MUTEX(iowarrior_mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug = 0;
+=======
 static int debug = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(debug, bool, 0644);
 MODULE_PARM_DESC(debug, "debug=1 enables debugging messages");
 
@@ -734,7 +742,15 @@ static const struct file_operations iowarrior_fops = {
 	.llseek = noop_llseek,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static char *iowarrior_devnode(struct device *dev, umode_t *mode)
+=======
 static char *iowarrior_devnode(struct device *dev, mode_t *mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static char *iowarrior_devnode(struct device *dev, mode_t *mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return kasprintf(GFP_KERNEL, "usb/%s", dev_name(dev));
 }
@@ -803,7 +819,15 @@ static int iowarrior_probe(struct usb_interface *interface,
 			dev->int_out_endpoint = endpoint;
 	}
 	/* we have to check the report_size often, so remember it in the endianess suitable for our machine */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->report_size = usb_endpoint_maxp(dev->int_in_endpoint);
+=======
 	dev->report_size = le16_to_cpu(dev->int_in_endpoint->wMaxPacketSize);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev->report_size = le16_to_cpu(dev->int_in_endpoint->wMaxPacketSize);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((dev->interface->cur_altsetting->desc.bInterfaceNumber == 0) &&
 	    (dev->product_id == USB_DEVICE_ID_CODEMERCS_IOW56))
 		/* IOWarrior56 has wMaxPacketSize different from report size */
@@ -927,6 +951,12 @@ static struct usb_driver iowarrior_driver = {
 	.id_table = iowarrior_ids,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(iowarrior_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init iowarrior_init(void)
 {
 	return usb_register(&iowarrior_driver);
@@ -939,3 +969,7 @@ static void __exit iowarrior_exit(void)
 
 module_init(iowarrior_init);
 module_exit(iowarrior_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

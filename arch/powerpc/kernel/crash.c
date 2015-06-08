@@ -12,20 +12,28 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #undef DEBUG
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/smp.h>
 #include <linux/reboot.h>
 #include <linux/kexec.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/crash_dump.h>
 #include <linux/delay.h>
 #include <linux/init.h>
 #include <linux/irq.h>
 #include <linux/types.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/bootmem.h>
 #include <linux/crash_dump.h>
@@ -37,6 +45,7 @@
 #include <linux/types.h>
 #include <linux/memblock.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/processor.h>
 #include <asm/machdep.h>
@@ -44,6 +53,9 @@
 #include <asm/kdump.h>
 #include <asm/prom.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/smp.h>
 #include <asm/setjmp.h>
 #include <asm/debug.h>
@@ -65,6 +77,8 @@
 /* This keeps a track of which one is the crashing cpu. */
 int crashing_cpu = -1;
 static int time_to_dump;
+<<<<<<< HEAD
+=======
 =======
 #include <asm/firmware.h>
 #include <asm/smp.h>
@@ -83,6 +97,7 @@ int crashing_cpu = -1;
 static cpumask_t cpus_in_crash = CPU_MASK_NONE;
 cpumask_t cpus_in_sr = CPU_MASK_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CRASH_HANDLER_MAX 3
 /* NULL terminated list of shutdown handles */
@@ -90,6 +105,9 @@ static crash_shutdown_t crash_shutdown_handles[CRASH_HANDLER_MAX+1];
 static DEFINE_SPINLOCK(crash_handlers_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long crash_shutdown_buf[JMP_BUF_LEN];
 static int crash_shutdown_cpu = -1;
 
@@ -107,6 +125,8 @@ void crash_ipi_callback(struct pt_regs *regs)
 {
 	static cpumask_t cpus_state_saved = CPU_MASK_NONE;
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SMP
 static atomic_t enter_on_soft_reset = ATOMIC_INIT(0);
@@ -114,6 +134,7 @@ static atomic_t enter_on_soft_reset = ATOMIC_INIT(0);
 void crash_ipi_callback(struct pt_regs *regs)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int cpu = smp_processor_id();
 
 	if (!cpu_online(cpu))
@@ -121,6 +142,9 @@ void crash_ipi_callback(struct pt_regs *regs)
 
 	hard_irq_disable();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cpumask_test_cpu(cpu, &cpus_state_saved)) {
 		crash_save_cpu(regs, cpu);
 		cpumask_set_cpu(cpu, &cpus_state_saved);
@@ -128,6 +152,8 @@ void crash_ipi_callback(struct pt_regs *regs)
 
 	atomic_inc(&cpus_in_crash);
 	smp_mb__after_atomic_inc();
+<<<<<<< HEAD
+=======
 =======
 	if (!cpumask_test_cpu(cpu, &cpus_in_crash))
 		crash_save_cpu(regs, cpu);
@@ -147,6 +173,7 @@ void crash_ipi_callback(struct pt_regs *regs)
 		atomic_inc(&enter_on_soft_reset);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Starting the kdump boot.
@@ -155,10 +182,15 @@ void crash_ipi_callback(struct pt_regs *regs)
 	 */
 	while (!time_to_dump)
 =======
+<<<<<<< HEAD
+	 */
+	while (!time_to_dump)
+=======
 	 * If not, soft-reset will be invoked to bring other CPUs.
 	 */
 	while (!cpumask_test_cpu(crashing_cpu, &cpus_in_crash))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpu_relax();
 
 	if (ppc_md.kexec_cpu_down)
@@ -174,6 +206,9 @@ void crash_ipi_callback(struct pt_regs *regs)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void crash_kexec_prepare_cpus(int cpu)
 {
 	unsigned int msecs;
@@ -182,6 +217,8 @@ static void crash_kexec_prepare_cpus(int cpu)
 	int (*old_handler)(struct pt_regs *regs);
 
 	printk(KERN_EMERG "Sending IPI to other CPUs\n");
+<<<<<<< HEAD
+=======
 =======
 /*
  * Wait until all CPUs are entered via soft-reset.
@@ -202,6 +239,7 @@ static void crash_kexec_prepare_cpus(int cpu)
 
 	unsigned int ncpus = num_online_cpus() - 1;/* Excluding the panic cpu */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	crash_send_ipi(crash_ipi_callback);
 	smp_wmb();
@@ -209,12 +247,19 @@ static void crash_kexec_prepare_cpus(int cpu)
 <<<<<<< HEAD
 again:
 =======
+<<<<<<< HEAD
+again:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * FIXME: Until we will have the way to stop other CPUs reliably,
 	 * the crash CPU will send an IPI and wait for other CPUs to
 	 * respond.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	msecs = IPI_TIMEOUT;
 	while ((atomic_read(&cpus_in_crash) < ncpus) && (--msecs > 0))
@@ -291,6 +336,8 @@ void crash_kexec_secondary(struct pt_regs *regs)
 		mdelay(1);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	 * Delay of at least 10 seconds.
 	 */
@@ -367,6 +414,7 @@ void crash_kexec_secondary(struct pt_regs *regs)
 		/* NOTREACHED */
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	crash_ipi_callback(regs);
 }
 
@@ -378,8 +426,12 @@ static void crash_kexec_prepare_cpus(int cpu)
 <<<<<<< HEAD
 	 * move the secondaries to us so that we can copy
 =======
+<<<<<<< HEAD
+	 * move the secondaries to us so that we can copy
+=======
 	 * move the secondarys to us so that we can copy
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * the new kernel 0-0x100 safely
 	 *
 	 * do this if kexec in setup.c ?
@@ -395,8 +447,11 @@ void crash_kexec_secondary(struct pt_regs *regs)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cpumask_clear(&cpus_in_sr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif	/* CONFIG_SMP */
 
@@ -410,8 +465,12 @@ static void crash_kexec_wait_realmode(int cpu)
 <<<<<<< HEAD
 	msecs = REAL_MODE_TIMEOUT;
 =======
+<<<<<<< HEAD
+	msecs = REAL_MODE_TIMEOUT;
+=======
 	msecs = 10000;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i=0; i < nr_cpu_ids && msecs > 0; i++) {
 		if (i == cpu)
 			continue;
@@ -485,6 +544,8 @@ EXPORT_SYMBOL(crash_shutdown_unregister);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static unsigned long crash_shutdown_buf[JMP_BUF_LEN];
 static int crash_shutdown_cpu = -1;
 
@@ -496,6 +557,7 @@ static int handle_fault(struct pt_regs *regs)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void default_machine_crash_shutdown(struct pt_regs *regs)
 {
 	unsigned int i;
@@ -503,8 +565,11 @@ void default_machine_crash_shutdown(struct pt_regs *regs)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * This function is only called after the system
 	 * has panicked or is otherwise in a critical state.
@@ -523,6 +588,9 @@ void default_machine_crash_shutdown(struct pt_regs *regs)
 	 */
 	crashing_cpu = smp_processor_id();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we came in via system reset, wait a while for the secondary
@@ -537,11 +605,14 @@ void default_machine_crash_shutdown(struct pt_regs *regs)
 
 	time_to_dump = 1;
 
+<<<<<<< HEAD
+=======
 =======
 	crash_save_cpu(regs, crashing_cpu);
 	crash_kexec_prepare_cpus(crashing_cpu);
 	cpumask_set_cpu(crashing_cpu, &cpus_in_crash);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	crash_kexec_wait_realmode(crashing_cpu);
 
 	machine_kexec_mask_interrupts();
@@ -550,8 +621,12 @@ void default_machine_crash_shutdown(struct pt_regs *regs)
 <<<<<<< HEAD
 	 * Call registered shutdown routines safely.  Swap out
 =======
+<<<<<<< HEAD
+	 * Call registered shutdown routines safely.  Swap out
+=======
 	 * Call registered shutdown routines savely.  Swap out
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * __debugger_fault_handler, and replace on exit.
 	 */
 	old_handler = __debugger_fault_handler;

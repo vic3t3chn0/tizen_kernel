@@ -32,7 +32,15 @@
 #include <linux/sht15.h>
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Commands */
 #define SHT15_MEASURE_TEMP		0x03
@@ -671,7 +679,15 @@ static ssize_t sht15_show_status(struct device *dev,
  * @buf:	sysfs buffer to read the new heater state from.
  * @count:	length of the data.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Will be called on write access to heater_enable sysfs attribute.
+=======
  * Will be called on read access to heater_enable sysfs attribute.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Will be called on read access to heater_enable sysfs attribute.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Returns number of bytes actually decoded, negative errno on error.
  */
 static ssize_t sht15_store_heater(struct device *dev,
@@ -683,7 +699,15 @@ static ssize_t sht15_store_heater(struct device *dev,
 	long value;
 	u8 status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtol(buf, 10, &value))
+=======
 	if (strict_strtol(buf, 10, &value))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtol(buf, 10, &value))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	mutex_lock(&data->read_lock);
@@ -806,7 +830,15 @@ static void sht15_bh_read_data(struct work_struct *work_s)
 		 */
 		atomic_set(&data->interrupt_handled, 0);
 		enable_irq(gpio_to_irq(data->pdata->gpio_data));
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* If still not occurred or another handler was scheduled */
+=======
 		/* If still not occurred or another handler has been scheduled */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* If still not occurred or another handler has been scheduled */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (gpio_get_value(data->pdata->gpio_data)
 		    || atomic_read(&data->interrupt_handled))
 			return;
@@ -926,6 +958,12 @@ static int __devinit sht15_probe(struct platform_device *pdev)
 		if (voltage)
 			data->supply_uV = voltage;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		regulator_enable(data->reg);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = regulator_enable(data->reg);
 		if (ret != 0) {
 			dev_err(&pdev->dev,
@@ -933,6 +971,10 @@ static int __devinit sht15_probe(struct platform_device *pdev)
 			goto err_free_data;
 		}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Setup a notifier block to update this if another device
 		 * causes the voltage to change

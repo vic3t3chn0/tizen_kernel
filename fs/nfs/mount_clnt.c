@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #ifdef NFS_DEBUG
 =======
+<<<<<<< HEAD
+#ifdef NFS_DEBUG
+=======
 #ifdef RPC_DEBUG
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # define NFSDBG_FACILITY	NFSDBG_MOUNT
 #endif
 
@@ -74,8 +78,12 @@ enum {
 <<<<<<< HEAD
 static const struct rpc_program mnt_program;
 =======
+<<<<<<< HEAD
+static const struct rpc_program mnt_program;
+=======
 static struct rpc_program	mnt_program;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Defined by OpenGroup XNFS Version 3W, chapter 8
@@ -164,8 +172,12 @@ int nfs_mount(struct nfs_mount_request *info)
 <<<<<<< HEAD
 		.net		= info->net,
 =======
+<<<<<<< HEAD
+		.net		= info->net,
+=======
 		.net		= &init_net,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.protocol	= info->protocol,
 		.address	= info->sap,
 		.addrsize	= info->salen,
@@ -196,8 +208,12 @@ int nfs_mount(struct nfs_mount_request *info)
 <<<<<<< HEAD
 	status = rpc_call_sync(mnt_clnt, &msg, 0);
 =======
+<<<<<<< HEAD
+	status = rpc_call_sync(mnt_clnt, &msg, 0);
+=======
 	status = rpc_call_sync(mnt_clnt, &msg, RPC_TASK_SOFT|RPC_TASK_TIMEOUT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rpc_shutdown_client(mnt_clnt);
 
 	if (status < 0)
@@ -244,8 +260,12 @@ void nfs_umount(const struct nfs_mount_request *info)
 <<<<<<< HEAD
 		.net		= info->net,
 =======
+<<<<<<< HEAD
+		.net		= info->net,
+=======
 		.net		= &init_net,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.protocol	= IPPROTO_UDP,
 		.address	= info->sap,
 		.addrsize	= info->salen,
@@ -511,8 +531,12 @@ static struct rpc_procinfo mnt3_procedures[] = {
 <<<<<<< HEAD
 static const struct rpc_version mnt_version1 = {
 =======
+<<<<<<< HEAD
+static const struct rpc_version mnt_version1 = {
+=======
 static struct rpc_version mnt_version1 = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.number		= 1,
 	.nrprocs	= ARRAY_SIZE(mnt_procedures),
 	.procs		= mnt_procedures,
@@ -521,8 +545,12 @@ static struct rpc_version mnt_version1 = {
 <<<<<<< HEAD
 static const struct rpc_version mnt_version3 = {
 =======
+<<<<<<< HEAD
+static const struct rpc_version mnt_version3 = {
+=======
 static struct rpc_version mnt_version3 = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.number		= 3,
 	.nrprocs	= ARRAY_SIZE(mnt3_procedures),
 	.procs		= mnt3_procedures,
@@ -531,8 +559,12 @@ static struct rpc_version mnt_version3 = {
 <<<<<<< HEAD
 static const struct rpc_version *mnt_version[] = {
 =======
+<<<<<<< HEAD
+static const struct rpc_version *mnt_version[] = {
+=======
 static struct rpc_version *mnt_version[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL,
 	&mnt_version1,
 	NULL,
@@ -544,8 +576,12 @@ static struct rpc_stat mnt_stats;
 <<<<<<< HEAD
 static const struct rpc_program mnt_program = {
 =======
+<<<<<<< HEAD
+static const struct rpc_program mnt_program = {
+=======
 static struct rpc_program mnt_program = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "mount",
 	.number		= NFS_MNT_PROGRAM,
 	.nrvers		= ARRAY_SIZE(mnt_version),

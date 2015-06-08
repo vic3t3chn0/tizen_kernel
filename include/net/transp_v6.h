@@ -12,10 +12,15 @@ extern struct proto udpv6_prot;
 extern struct proto udplitev6_prot;
 extern struct proto tcpv6_prot;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct proto pingv6_prot;
 
 struct flowi6;
 
+<<<<<<< HEAD
+=======
 =======
 
 struct flowi6;
@@ -23,6 +28,7 @@ struct flowi6;
 extern void initialize_hashidentrnd(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* extension headers */
 extern int				ipv6_exthdrs_init(void);
 extern void				ipv6_exthdrs_exit(void);
@@ -34,7 +40,12 @@ extern void				ipv6_frag_exit(void);
 extern int				pingv6_init(void);
 extern void				pingv6_exit(void);
 =======
+<<<<<<< HEAD
+extern int				pingv6_init(void);
+extern void				pingv6_exit(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int				rawv6_init(void);
 extern void				rawv6_exit(void);
 extern int				udpv6_init(void);
@@ -56,7 +67,11 @@ extern int			datagram_send_ctl(struct net *net,
 <<<<<<< HEAD
 						  struct sock *sk,
 =======
+<<<<<<< HEAD
+						  struct sock *sk,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						  struct msghdr *msg,
 						  struct flowi6 *fl6,
 						  struct ipv6_txoptions *opt,

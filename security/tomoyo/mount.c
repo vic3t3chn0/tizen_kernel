@@ -4,14 +4,21 @@
 <<<<<<< HEAD
  * Copyright (C) 2005-2011  NTT DATA CORPORATION
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2005-2011  NTT DATA CORPORATION
+=======
  * Copyright (C) 2005-2010  NTT DATA CORPORATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/slab.h>
 #include "common.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* String table for special mount operations. */
 static const char * const tomoyo_mounts[TOMOYO_MAX_SPECIAL_MOUNT] = {
 	[TOMOYO_MOUNT_BIND]            = "--bind",
@@ -22,6 +29,8 @@ static const char * const tomoyo_mounts[TOMOYO_MAX_SPECIAL_MOUNT] = {
 	[TOMOYO_MOUNT_MAKE_SLAVE]      = "--make-slave",
 	[TOMOYO_MOUNT_MAKE_SHARED]     = "--make-shared",
 };
+<<<<<<< HEAD
+=======
 =======
 /* Keywords for mount restrictions. */
 
@@ -40,6 +49,7 @@ static const char * const tomoyo_mounts[TOMOYO_MAX_SPECIAL_MOUNT] = {
 /* Allow to call 'mount --make-shared /dir'           */
 #define TOMOYO_MOUNT_MAKE_SHARED_KEYWORD                 "--make-shared"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * tomoyo_audit_mount_log - Audit mount log.
@@ -51,6 +61,9 @@ static const char * const tomoyo_mounts[TOMOYO_MAX_SPECIAL_MOUNT] = {
 static int tomoyo_audit_mount_log(struct tomoyo_request_info *r)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_supervisor(r, "file mount %s %s %s 0x%lX\n",
 				 r->param.mount.dev->name,
 				 r->param.mount.dir->name,
@@ -66,6 +79,8 @@ static int tomoyo_audit_mount_log(struct tomoyo_request_info *r)
  *
  * Returns true if granted, false otherwise.
  */
+<<<<<<< HEAD
+=======
 =======
 	const char *dev = r->param.mount.dev->name;
 	const char *dir = r->param.mount.dir->name;
@@ -95,12 +110,16 @@ static int tomoyo_audit_mount_log(struct tomoyo_request_info *r)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool tomoyo_check_mount_acl(struct tomoyo_request_info *r,
 				   const struct tomoyo_acl_info *ptr)
 {
 	const struct tomoyo_mount_acl *acl =
 		container_of(ptr, typeof(*acl), head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tomoyo_compare_number_union(r->param.mount.flags,
 					   &acl->flags) &&
 		tomoyo_compare_name_union(r->param.mount.type,
@@ -110,6 +129,8 @@ static bool tomoyo_check_mount_acl(struct tomoyo_request_info *r,
 		(!r->param.mount.need_dev ||
 		 tomoyo_compare_name_union(r->param.mount.dev,
 					   &acl->dev_name));
+<<<<<<< HEAD
+=======
 =======
 	return tomoyo_compare_number_union(r->param.mount.flags, &acl->flags) &&
 		tomoyo_compare_name_union(r->param.mount.type, &acl->fs_type) &&
@@ -117,6 +138,7 @@ static bool tomoyo_check_mount_acl(struct tomoyo_request_info *r,
 		(!r->param.mount.need_dev ||
 		 tomoyo_compare_name_union(r->param.mount.dev, &acl->dev_name));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -126,8 +148,12 @@ static bool tomoyo_check_mount_acl(struct tomoyo_request_info *r,
 <<<<<<< HEAD
  * @dev_name: Name of device file. Maybe NULL.
 =======
+<<<<<<< HEAD
+ * @dev_name: Name of device file. Maybe NULL.
+=======
  * @dev_name: Name of device file.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dir:      Pointer to "struct path".
  * @type:     Name of filesystem type.
  * @flags:    Mount options.
@@ -138,14 +164,20 @@ static bool tomoyo_check_mount_acl(struct tomoyo_request_info *r,
  */
 static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    struct path *dir, const char *type,
 			    unsigned long flags)
 {
 	struct tomoyo_obj_info obj = { };
+<<<<<<< HEAD
+=======
 =======
 			    struct path *dir, char *type, unsigned long flags)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct path path;
 	struct file_system_type *fstype = NULL;
 	const char *requested_type = NULL;
@@ -159,7 +191,11 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 <<<<<<< HEAD
 	r->obj = &obj;
 =======
+<<<<<<< HEAD
+	r->obj = &obj;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Get fstype. */
 	requested_type = tomoyo_encode(type);
@@ -172,7 +208,11 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 <<<<<<< HEAD
 	obj.path2 = *dir;
 =======
+<<<<<<< HEAD
+	obj.path2 = *dir;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	requested_dir_name = tomoyo_realpath_from_path(dir);
 	if (!requested_dir_name) {
 		error = -ENOMEM;
@@ -183,6 +223,9 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 
 	/* Compare fs name. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (type == tomoyo_mounts[TOMOYO_MOUNT_REMOUNT]) {
 		/* dev_name is ignored. */
 	} else if (type == tomoyo_mounts[TOMOYO_MOUNT_MAKE_UNBINDABLE] ||
@@ -192,6 +235,8 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 		/* dev_name is ignored. */
 	} else if (type == tomoyo_mounts[TOMOYO_MOUNT_BIND] ||
 		   type == tomoyo_mounts[TOMOYO_MOUNT_MOVE]) {
+<<<<<<< HEAD
+=======
 =======
 	if (!strcmp(type, TOMOYO_MOUNT_REMOUNT_KEYWORD)) {
 		/* dev_name is ignored. */
@@ -203,6 +248,7 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 	} else if (!strcmp(type, TOMOYO_MOUNT_BIND_KEYWORD) ||
 		   !strcmp(type, TOMOYO_MOUNT_MOVE_KEYWORD)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		need_dev = -1; /* dev_name is a directory */
 	} else {
 		fstype = get_fs_type(type);
@@ -224,9 +270,14 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 		obj.path1 = path;
 		requested_dev_name = tomoyo_realpath_from_path(&path);
 =======
+<<<<<<< HEAD
+		obj.path1 = path;
+		requested_dev_name = tomoyo_realpath_from_path(&path);
+=======
 		requested_dev_name = tomoyo_realpath_from_path(&path);
 		path_put(&path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!requested_dev_name) {
 			error = -ENOENT;
 			goto out;
@@ -264,7 +315,13 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 	if (obj.path1.dentry)
 		path_put(&obj.path1);
 =======
+<<<<<<< HEAD
+	/* Drop refcount obtained by kern_path(). */
+	if (obj.path1.dentry)
+		path_put(&obj.path1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -272,6 +329,9 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
  * tomoyo_mount_permission - Check permission for mount() operation.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dev_name:  Name of device file. Maybe NULL.
  * @path:      Pointer to "struct path".
  * @type:      Name of filesystem type. Maybe NULL.
@@ -283,6 +343,8 @@ static int tomoyo_mount_acl(struct tomoyo_request_info *r, char *dev_name,
 int tomoyo_mount_permission(char *dev_name, struct path *path,
 			    const char *type, unsigned long flags,
 			    void *data_page)
+<<<<<<< HEAD
+=======
 =======
  * @dev_name:  Name of device file.
  * @path:      Pointer to "struct path".
@@ -295,6 +357,7 @@ int tomoyo_mount_permission(char *dev_name, struct path *path,
 int tomoyo_mount_permission(char *dev_name, struct path *path, char *type,
 			    unsigned long flags, void *data_page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tomoyo_request_info r;
 	int error;
@@ -307,16 +370,22 @@ int tomoyo_mount_permission(char *dev_name, struct path *path, char *type,
 		flags &= ~MS_MGC_MSK;
 	if (flags & MS_REMOUNT) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		type = tomoyo_mounts[TOMOYO_MOUNT_REMOUNT];
 		flags &= ~MS_REMOUNT;
 	} else if (flags & MS_BIND) {
 		type = tomoyo_mounts[TOMOYO_MOUNT_BIND];
+<<<<<<< HEAD
+=======
 =======
 		type = TOMOYO_MOUNT_REMOUNT_KEYWORD;
 		flags &= ~MS_REMOUNT;
 	} else if (flags & MS_BIND) {
 		type = TOMOYO_MOUNT_BIND_KEYWORD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flags &= ~MS_BIND;
 	} else if (flags & MS_SHARED) {
 		if (flags & (MS_PRIVATE | MS_SLAVE | MS_UNBINDABLE))
@@ -324,8 +393,12 @@ int tomoyo_mount_permission(char *dev_name, struct path *path, char *type,
 <<<<<<< HEAD
 		type = tomoyo_mounts[TOMOYO_MOUNT_MAKE_SHARED];
 =======
+<<<<<<< HEAD
+		type = tomoyo_mounts[TOMOYO_MOUNT_MAKE_SHARED];
+=======
 		type = TOMOYO_MOUNT_MAKE_SHARED_KEYWORD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flags &= ~MS_SHARED;
 	} else if (flags & MS_PRIVATE) {
 		if (flags & (MS_SHARED | MS_SLAVE | MS_UNBINDABLE))
@@ -333,8 +406,12 @@ int tomoyo_mount_permission(char *dev_name, struct path *path, char *type,
 <<<<<<< HEAD
 		type = tomoyo_mounts[TOMOYO_MOUNT_MAKE_PRIVATE];
 =======
+<<<<<<< HEAD
+		type = tomoyo_mounts[TOMOYO_MOUNT_MAKE_PRIVATE];
+=======
 		type = TOMOYO_MOUNT_MAKE_PRIVATE_KEYWORD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flags &= ~MS_PRIVATE;
 	} else if (flags & MS_SLAVE) {
 		if (flags & (MS_SHARED | MS_PRIVATE | MS_UNBINDABLE))
@@ -342,23 +419,33 @@ int tomoyo_mount_permission(char *dev_name, struct path *path, char *type,
 <<<<<<< HEAD
 		type = tomoyo_mounts[TOMOYO_MOUNT_MAKE_SLAVE];
 =======
+<<<<<<< HEAD
+		type = tomoyo_mounts[TOMOYO_MOUNT_MAKE_SLAVE];
+=======
 		type = TOMOYO_MOUNT_MAKE_SLAVE_KEYWORD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flags &= ~MS_SLAVE;
 	} else if (flags & MS_UNBINDABLE) {
 		if (flags & (MS_SHARED | MS_PRIVATE | MS_SLAVE))
 			return -EINVAL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		type = tomoyo_mounts[TOMOYO_MOUNT_MAKE_UNBINDABLE];
 		flags &= ~MS_UNBINDABLE;
 	} else if (flags & MS_MOVE) {
 		type = tomoyo_mounts[TOMOYO_MOUNT_MOVE];
+<<<<<<< HEAD
+=======
 =======
 		type = TOMOYO_MOUNT_MAKE_UNBINDABLE_KEYWORD;
 		flags &= ~MS_UNBINDABLE;
 	} else if (flags & MS_MOVE) {
 		type = TOMOYO_MOUNT_MOVE_KEYWORD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flags &= ~MS_MOVE;
 	}
 	if (!type)
@@ -368,6 +455,8 @@ int tomoyo_mount_permission(char *dev_name, struct path *path, char *type,
 	tomoyo_read_unlock(idx);
 	return error;
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -417,3 +506,4 @@ int tomoyo_write_mount(char *data, struct tomoyo_domain_info *domain,
 	return error;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

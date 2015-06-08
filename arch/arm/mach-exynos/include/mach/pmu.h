@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* linux/arch/arm/mach-exynos4/include/mach/pmu.h
 =======
+<<<<<<< HEAD
+/* linux/arch/arm/mach-exynos4/include/mach/pmu.h
+=======
 /* linux/arch/arm/mach-exynos/include/mach/pmu.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com/
@@ -10,8 +14,12 @@
 <<<<<<< HEAD
  * EXYNOS4210 - PMU(Power Management Unit) support
 =======
+<<<<<<< HEAD
+ * EXYNOS4210 - PMU(Power Management Unit) support
+=======
  * EXYNOS4210 - PMU support
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -21,6 +29,9 @@
 #ifndef __ASM_ARCH_PMU_H
 #define __ASM_ARCH_PMU_H __FILE__
 
+<<<<<<< HEAD
+#define PMU_TABLE_END	NULL
+=======
 <<<<<<< HEAD
 #define PMU_TABLE_END	NULL
 =======
@@ -54,6 +65,7 @@ static inline int exynos4_is_c2c_use(void)
 	return ret;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum sys_powerdown {
 	SYS_AFTR,
@@ -63,6 +75,9 @@ enum sys_powerdown {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern unsigned long l2x0_regs_phys;
 struct exynos4_pmu_conf {
 	void __iomem *reg;
@@ -71,6 +86,8 @@ struct exynos4_pmu_conf {
 
 extern void exynos4_sys_powerdown_conf(enum sys_powerdown mode);
 extern void s3c_cpu_resume(void);
+<<<<<<< HEAD
+=======
 =======
 struct exynos4_pmu_conf {
 	void __iomem *reg;
@@ -136,5 +153,6 @@ extern void exynos5_idle_resume(void);
 extern void exynos5_sys_powerdown_xxti_control(unsigned int enable);
 extern void exynos5_pmu_xclkout_set(unsigned int enable, enum xclkout_select source);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_PMU_H */

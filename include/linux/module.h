@@ -23,9 +23,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <trace/events/module.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Not Yet Implemented */
 #define MODULE_SUPPORTED_DEVICE(name)
 
@@ -40,6 +43,9 @@ struct modversion_info
 struct module;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct module_kobject {
 	struct kobject kobj;
 	struct module *mod;
@@ -52,12 +58,15 @@ struct module_attribute {
 	ssize_t (*show)(struct module_attribute *, struct module_kobject *,
 			char *);
 	ssize_t (*store)(struct module_attribute *, struct module_kobject *,
+<<<<<<< HEAD
+=======
 =======
 struct module_attribute {
         struct attribute attr;
         ssize_t (*show)(struct module_attribute *, struct module *, char *);
         ssize_t (*store)(struct module_attribute *, struct module *,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 const char *, size_t count);
 	void (*setup)(struct module *, const char *);
 	int (*test)(struct module *);
@@ -76,6 +85,11 @@ extern ssize_t __modver_version_show(struct module_attribute *,
 
 extern struct module_attribute module_uevent;
 =======
+<<<<<<< HEAD
+				     struct module_kobject *, char *);
+
+extern struct module_attribute module_uevent;
+=======
 				     struct module *, char *);
 
 struct module_kobject
@@ -86,6 +100,7 @@ struct module_kobject
 	struct module_param_attrs *mp;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* These are either module local, or the kernel's dummy ones. */
 extern int init_module(void);
@@ -159,12 +174,15 @@ extern const struct gtype##_id __mod_##gtype##_table		\
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* One for each parameter, describing how to use it.  Some files do
    multiple of these per line, so can't just use MODULE_INFO. */
 #define MODULE_PARM_DESC(_parm, desc) \
 	__MODULE_INFO(parm, _parm, #_parm ":" desc)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_DEVICE_TABLE(type,name)		\
   MODULE_GENERIC_TABLE(type##_device,name)
 
@@ -236,6 +254,9 @@ enum module_state
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct module_ref - per cpu module reference counts
  * @incs: number of module get on this cpu
@@ -250,8 +271,11 @@ struct module_ref {
 	unsigned long decs;
 } __attribute((aligned(2 * sizeof(unsigned long))));
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct module
 {
 	enum module_state state;
@@ -397,11 +421,15 @@ struct module
 <<<<<<< HEAD
 	struct module_ref __percpu *refptr;
 =======
+<<<<<<< HEAD
+	struct module_ref __percpu *refptr;
+=======
 	struct module_ref {
 		unsigned int incs;
 		unsigned int decs;
 	} __percpu *refptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_CONSTRUCTORS
@@ -488,8 +516,12 @@ extern void __module_put_and_exit(struct module *mod, long code)
 <<<<<<< HEAD
 unsigned long module_refcount(struct module *mod);
 =======
+<<<<<<< HEAD
+unsigned long module_refcount(struct module *mod);
+=======
 unsigned int module_refcount(struct module *mod);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __symbol_put(const char *symbol);
 #define symbol_put(x) __symbol_put(MODULE_SYMBOL_PREFIX #x)
 void symbol_put_addr(void *addr);
@@ -497,11 +529,16 @@ void symbol_put_addr(void *addr);
 /* Sometimes we know we already have a refcount, and it's easier not
    to handle the error case (which only happens with rmmod --wait). */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __module_get(struct module *module);
 
 /* This is the Right Way to get a module: if it fails, it's being removed,
  * so pretend it's not there. */
 extern bool try_module_get(struct module *module);
+<<<<<<< HEAD
+=======
 =======
 static inline void __module_get(struct module *module)
 {
@@ -531,6 +568,7 @@ static inline int try_module_get(struct module *module)
 	return ret;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void module_put(struct module *module);
 
@@ -579,10 +617,13 @@ extern void print_modules(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void module_update_tracepoints(void);
 extern int module_get_iter_tracepoints(struct tracepoint_iter *iter);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else /* !CONFIG_MODULES... */
 
 /* Given an address, look for it in the exception tables. */
@@ -695,6 +736,8 @@ static inline void print_modules(void)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 static inline void module_update_tracepoints(void)
 {
@@ -705,6 +748,7 @@ static inline int module_get_iter_tracepoints(struct tracepoint_iter *iter)
 	return 0;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_MODULES */
 
 #ifdef CONFIG_SYSFS

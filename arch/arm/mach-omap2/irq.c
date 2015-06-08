@@ -12,6 +12,9 @@
  */
 #include <linux/kernel.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/interrupt.h>
@@ -26,6 +29,8 @@
 #include <mach/hardware.h>
 
 #include "iomap.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/init.h>
 #include <linux/interrupt.h>
@@ -34,6 +39,7 @@
 #include <asm/mach/irq.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* selected INTC register offsets */
 
@@ -53,13 +59,19 @@
 #define IRQ_BITS_PER_REG	32
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP2_IRQ_BASE		OMAP2_L4_IO_ADDRESS(OMAP24XX_IC_BASE)
 #define OMAP3_IRQ_BASE		OMAP2_L4_IO_ADDRESS(OMAP34XX_IC_BASE)
 #define INTCPS_SIR_IRQ_OFFSET	0x0040	/* omap2/3 active interrupt offset */
 #define ACTIVEIRQ_MASK		0x7f	/* omap2/3 active interrupt bits */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * OMAP2 has a number of different interrupt controllers, each interrupt
  * controller is identified as its own "bank". Register definitions are
@@ -80,7 +92,12 @@ static struct omap_irq_bank {
 static struct irq_domain *domain;
 
 =======
+<<<<<<< HEAD
+static struct irq_domain *domain;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Structure to save interrupt controller context */
 struct omap3_intc_regs {
 	u32 sysconfig;
@@ -172,6 +189,9 @@ omap_alloc_gc(void __iomem *base, unsigned int irq_start, unsigned int num)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap_init_irq(u32 base, int nr_irqs,
 				 struct device_node *node)
 {
@@ -197,6 +217,8 @@ static void __init omap_init_irq(u32 base, int nr_irqs,
 		struct omap_irq_bank *bank = irq_banks + i;
 
 		bank->nr_irqs = nr_irqs;
+<<<<<<< HEAD
+=======
 =======
 void __init omap_init_irq(void)
 {
@@ -218,6 +240,7 @@ void __init omap_init_irq(void)
 		if (cpu_is_ti816x())
 			bank->nr_irqs = 128;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Static mapping, never released */
 		bank->base_reg = ioremap(base, SZ_4K);
@@ -225,8 +248,12 @@ void __init omap_init_irq(void)
 <<<<<<< HEAD
 			pr_err("Could not ioremap irq bank%i\n", i);
 =======
+<<<<<<< HEAD
+			pr_err("Could not ioremap irq bank%i\n", i);
+=======
 			printk(KERN_ERR "Could not ioremap irq bank%i\n", i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		}
 
@@ -236,15 +263,23 @@ void __init omap_init_irq(void)
 		for (j = 0; j < bank->nr_irqs; j += 32)
 			omap_alloc_gc(bank->base_reg + j, j + irq_base, 32);
 =======
+<<<<<<< HEAD
+		for (j = 0; j < bank->nr_irqs; j += 32)
+			omap_alloc_gc(bank->base_reg + j, j + irq_base, 32);
+=======
 		for (i = 0, j = 0; i < bank->nr_irqs; i += 32, j += 0x20)
 			omap_alloc_gc(bank->base_reg + j, i, 32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		nr_of_irqs += bank->nr_irqs;
 		nr_banks++;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info("Total of %ld interrupts on %d active controller%s\n",
 		nr_of_irqs, nr_banks, nr_banks > 1 ? "s" : "");
 }
@@ -324,10 +359,13 @@ int __init omap_intc_of_init(struct device_node *node,
 	omap_init_irq(res.start, nr_irqs, of_node_get(node));
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_INFO "Total of %ld interrupts on %d active controller%s\n",
 	       nr_of_irqs, nr_banks, nr_banks > 1 ? "s" : "");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_ARCH_OMAP3
@@ -403,12 +441,18 @@ void omap3_intc_resume_idle(void)
 	intc_bank_write_reg(1, &irq_banks[0], INTC_SYSCONFIG);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 asmlinkage void __exception_irq_entry omap3_intc_handle_irq(struct pt_regs *regs)
 {
 	void __iomem *base_addr = OMAP3_IRQ_BASE;
 	omap_intc_handle_irq(base_addr, regs);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_ARCH_OMAP3 */

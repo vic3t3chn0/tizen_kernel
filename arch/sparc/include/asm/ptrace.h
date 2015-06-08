@@ -102,7 +102,12 @@ struct sparc_trapf {
 #include <linux/types.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pt_regs {
 	unsigned long psr;
 	unsigned long pc;
@@ -171,8 +176,12 @@ struct sparc_stackf {
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int pt_regs_trap_type(struct pt_regs *regs)
 {
@@ -217,6 +226,9 @@ do {	current_thread_info()->syscall_noerror = 1; \
 #define instruction_pointer_set(regs, val) ((regs)->tpc = (val))
 #define user_stack_pointer(regs) ((regs)->u_regs[UREG_FP])
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int is_syscall_success(struct pt_regs *regs)
 {
 	return !(regs->tstate & (TSTATE_XCARRY | TSTATE_ICARRY));
@@ -226,9 +238,12 @@ static inline long regs_return_value(struct pt_regs *regs)
 {
 	return regs->u_regs[UREG_I0];
 }
+<<<<<<< HEAD
+=======
 =======
 #define regs_return_value(regs) ((regs)->u_regs[UREG_I0])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 extern unsigned long profile_pc(struct pt_regs *);
 #else
@@ -236,8 +251,11 @@ extern unsigned long profile_pc(struct pt_regs *);
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void show_regs(struct pt_regs *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* (__KERNEL__) */
 
 #else /* __ASSEMBLY__ */
@@ -259,9 +277,13 @@ extern void show_regs(struct pt_regs *);
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline bool pt_regs_is_syscall(struct pt_regs *regs)
 {
@@ -287,8 +309,11 @@ static inline bool pt_regs_clear_syscall(struct pt_regs *regs)
 unsigned long profile_pc(struct pt_regs *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void show_regs(struct pt_regs *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* (__KERNEL__) */
 
 #else /* (!__ASSEMBLY__) */

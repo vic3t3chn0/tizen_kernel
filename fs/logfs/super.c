@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mtd/mtd.h>
 #include <linux/statfs.h>
 #include <linux/buffer_head.h>
@@ -97,6 +101,8 @@ void logfs_crash_dump(struct super_block *sb)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * TODO: move to lib/string.c
  */
 /**
@@ -120,6 +126,7 @@ void *memchr_inv(const void *s, int c, size_t n)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * FIXME: There should be a reserve for root, similar to ext2.
  */
 int logfs_statfs(struct dentry *dentry, struct kstatfs *stats)
@@ -348,12 +355,18 @@ static int logfs_get_sb_final(struct super_block *sb)
 	if (!sb->s_root)
 		goto fail;
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(rootdir);
+	if (!sb->s_root)
+		goto fail;
+=======
 	sb->s_root = d_alloc_root(rootdir);
 	if (!sb->s_root) {
 		iput(rootdir);
 		goto fail;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* at that point we know that ->put_super() will be called */
 	super->s_erase_page = alloc_pages(GFP_KERNEL, 0);
@@ -523,7 +536,11 @@ static void logfs_kill_sb(struct super_block *sb)
 <<<<<<< HEAD
 	free_areas(sb);
 =======
+<<<<<<< HEAD
+	free_areas(sb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * From this point on alias entries are simply dropped - and any
@@ -534,10 +551,16 @@ static void logfs_kill_sb(struct super_block *sb)
 	generic_shutdown_super(sb);
 	super->s_flags |= LOGFS_SB_FLAG_SHUTDOWN;
 =======
+<<<<<<< HEAD
+	log_super("LogFS: Now in shutdown\n");
+	generic_shutdown_super(sb);
+	super->s_flags |= LOGFS_SB_FLAG_SHUTDOWN;
+=======
 	super->s_flags |= LOGFS_SB_FLAG_SHUTDOWN;
 	log_super("LogFS: Now in shutdown\n");
 	generic_shutdown_super(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(super->s_dirty_used_bytes || super->s_dirty_free_bytes);
 
@@ -588,7 +611,11 @@ static struct dentry *logfs_get_sb_device(struct logfs_super *super,
 <<<<<<< HEAD
 	sb->s_max_links = LOGFS_LINK_MAX;
 =======
+<<<<<<< HEAD
+	sb->s_max_links = LOGFS_LINK_MAX;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sb->s_op	= &logfs_super_operations;
 	sb->s_flags	= flags | MS_NOATIME;
 
@@ -675,13 +702,19 @@ static int __init logfs_init(void)
 		goto out2;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = register_filesystem(&logfs_fs_type);
 	if (!ret)
 		return 0;
 	logfs_destroy_inode_cache();
+<<<<<<< HEAD
+=======
 =======
 	return register_filesystem(&logfs_fs_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out2:
 	logfs_compr_exit();
 out1:

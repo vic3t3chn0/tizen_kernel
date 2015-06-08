@@ -19,7 +19,14 @@
 #include "debug.h"
 
 #include <net/netlink.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include "wmiconfig.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "wmiconfig.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum ath6kl_tm_attr {
 	__ATH6KL_TM_ATTR_INVALID	= 0,
@@ -34,7 +41,14 @@ enum ath6kl_tm_attr {
 enum ath6kl_tm_cmd {
 	ATH6KL_TM_CMD_TCMD		= 0,
 	ATH6KL_TM_CMD_RX_REPORT		= 1,	/* not used anymore */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ATH6KL_TM_CMD_WMI_CMD		= 0xF000,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ATH6KL_TM_CMD_WMI_CMD		= 0xF000,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define ATH6KL_TM_DATA_MAX_LEN		5000
@@ -45,7 +59,14 @@ static const struct nla_policy ath6kl_tm_policy[ATH6KL_TM_ATTR_MAX + 1] = {
 					    .len = ATH6KL_TM_DATA_MAX_LEN },
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ath6kl_tm_rx_event(struct ath6kl *ar, void *buf, size_t buf_len)
 {
 	struct sk_buff *skb;
@@ -74,8 +95,16 @@ int ath6kl_tm_cmd(struct wiphy *wiphy, void *data, int len)
 	struct nlattr *tb[ATH6KL_TM_ATTR_MAX + 1];
 	int err, buf_len;
 	void *buf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u32 wmi_cmd;
 	struct sk_buff *skb;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 wmi_cmd;
+	struct sk_buff *skb;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = nla_parse(tb, ATH6KL_TM_ATTR_MAX, data, len,
 			ath6kl_tm_policy);
@@ -86,6 +115,11 @@ int ath6kl_tm_cmd(struct wiphy *wiphy, void *data, int len)
 		return -EINVAL;
 
 	switch (nla_get_u32(tb[ATH6KL_TM_ATTR_CMD])) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ATH6KL_TM_CMD_WMI_CMD:
 		if (!tb[ATH6KL_TM_ATTR_DATA])
 			return -EINVAL;
@@ -105,6 +139,10 @@ int ath6kl_tm_cmd(struct wiphy *wiphy, void *data, int len)
 		return 0;
 
 		break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case ATH6KL_TM_CMD_TCMD:
 		if (!tb[ATH6KL_TM_ATTR_DATA])
 			return -EINVAL;

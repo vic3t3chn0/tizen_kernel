@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include "hda_codec.h"
 #include "hda_local.h"
@@ -650,8 +654,12 @@ static void parse_codec_mode(char *buf, struct hda_bus *bus,
 <<<<<<< HEAD
 	int vendorid, subid, caddr;
 =======
+<<<<<<< HEAD
+	int vendorid, subid, caddr;
+=======
 	unsigned int vendorid, subid, caddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hda_codec *codec;
 
 	*codecp = NULL;
@@ -661,9 +669,14 @@ static void parse_codec_mode(char *buf, struct hda_bus *bus,
 			if ((vendorid <= 0 || codec->vendor_id == vendorid) &&
 			    (subid <= 0 || codec->subsystem_id == subid) &&
 =======
+<<<<<<< HEAD
+			if ((vendorid <= 0 || codec->vendor_id == vendorid) &&
+			    (subid <= 0 || codec->subsystem_id == subid) &&
+=======
 			if (codec->vendor_id == vendorid &&
 			    codec->subsystem_id == subid &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    codec->addr == caddr) {
 				*codecp = codec;
 				break;
@@ -771,9 +784,12 @@ static int get_line_from_fw(char *buf, int size, struct firmware *fw)
 		return 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (size < fw->size)
 		size = fw->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (len = 0; len < fw->size; len++) {
 		if (!*p)

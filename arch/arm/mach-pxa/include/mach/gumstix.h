@@ -27,8 +27,12 @@ has detected a cable insertion; driven low otherwise. */
 <<<<<<< HEAD
 #define GUMSTIX_USB_INTR_IRQ		PXA_GPIO_TO_IRQ(GPIO_GUMSTIX_USB_GPIOn)
 =======
+<<<<<<< HEAD
+#define GUMSTIX_USB_INTR_IRQ		PXA_GPIO_TO_IRQ(GPIO_GUMSTIX_USB_GPIOn)
+=======
 #define GUMSTIX_USB_INTR_IRQ		IRQ_GPIO(GPIO_GUMSTIX_USB_GPIOn)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GPIO_GUMSTIX_USB_GPIOn_MD	(GPIO_GUMSTIX_USB_GPIOn | GPIO_IN)
 #define GPIO_GUMSTIX_USB_GPIOx_CON_MD	(GPIO_GUMSTIX_USB_GPIOx | GPIO_OUT)
@@ -42,8 +46,12 @@ has detected a cable insertion; driven low otherwise. */
 <<<<<<< HEAD
 #define GUMSTIX_IRQ_GPIO_nSD_DETECT	PXA_GPIO_TO_IRQ(GUMSTIX_GPIO_nSD_DETECT)
 =======
+<<<<<<< HEAD
+#define GUMSTIX_IRQ_GPIO_nSD_DETECT	PXA_GPIO_TO_IRQ(GUMSTIX_GPIO_nSD_DETECT)
+=======
 #define GUMSTIX_IRQ_GPIO_nSD_DETECT	IRQ_GPIO(GUMSTIX_GPIO_nSD_DETECT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * SMC Ethernet definitions
@@ -58,16 +66,22 @@ has detected a cable insertion; driven low otherwise. */
 #define GPIO_GUMSTIX_ETH0		36
 #define GPIO_GUMSTIX_ETH0_MD		(GPIO_GUMSTIX_ETH0 | GPIO_IN)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GUMSTIX_ETH0_IRQ		PXA_GPIO_TO_IRQ(GPIO_GUMSTIX_ETH0)
 #define GPIO_GUMSTIX_ETH1		27
 #define GPIO_GUMSTIX_ETH1_MD		(GPIO_GUMSTIX_ETH1 | GPIO_IN)
 #define GUMSTIX_ETH1_IRQ		PXA_GPIO_TO_IRQ(GPIO_GUMSTIX_ETH1)
+<<<<<<< HEAD
+=======
 =======
 #define GUMSTIX_ETH0_IRQ		IRQ_GPIO(GPIO_GUMSTIX_ETH0)
 #define GPIO_GUMSTIX_ETH1		27
 #define GPIO_GUMSTIX_ETH1_MD		(GPIO_GUMSTIX_ETH1 | GPIO_IN)
 #define GUMSTIX_ETH1_IRQ		IRQ_GPIO(GPIO_GUMSTIX_ETH1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* CF reset line */
@@ -83,10 +97,16 @@ has detected a cable insertion; driven low otherwise. */
 #define GUMSTIX_S0_nCD_IRQ		PXA_GPIO_TO_IRQ(GPIO11_nCD)
 #define GUMSTIX_S0_PRDY_nBSY_IRQ	PXA_GPIO_TO_IRQ(GPIO26_PRDY_nBSY)
 =======
+<<<<<<< HEAD
+#define GUMSTIX_S0_nSTSCHG_IRQ		PXA_GPIO_TO_IRQ(GPIO4_nSTSCHG)
+#define GUMSTIX_S0_nCD_IRQ		PXA_GPIO_TO_IRQ(GPIO11_nCD)
+#define GUMSTIX_S0_PRDY_nBSY_IRQ	PXA_GPIO_TO_IRQ(GPIO26_PRDY_nBSY)
+=======
 #define GUMSTIX_S0_nSTSCHG_IRQ		IRQ_GPIO(GPIO4_nSTSCHG)
 #define GUMSTIX_S0_nCD_IRQ		IRQ_GPIO(GPIO11_nCD)
 #define GUMSTIX_S0_PRDY_nBSY_IRQ	IRQ_GPIO(GPIO26_PRDY_nBSY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* CF slot 1 */
 #define GPIO18_nBVD1			18
@@ -98,10 +118,16 @@ has detected a cable insertion; driven low otherwise. */
 #define GUMSTIX_S1_nCD_IRQ		PXA_GPIO_TO_IRQ(GPIO36_nCD)
 #define GUMSTIX_S1_PRDY_nBSY_IRQ	PXA_GPIO_TO_IRQ(GPIO27_PRDY_nBSY)
 =======
+<<<<<<< HEAD
+#define GUMSTIX_S1_nSTSCHG_IRQ		PXA_GPIO_TO_IRQ(GPIO18_nSTSCHG)
+#define GUMSTIX_S1_nCD_IRQ		PXA_GPIO_TO_IRQ(GPIO36_nCD)
+#define GUMSTIX_S1_PRDY_nBSY_IRQ	PXA_GPIO_TO_IRQ(GPIO27_PRDY_nBSY)
+=======
 #define GUMSTIX_S1_nSTSCHG_IRQ		IRQ_GPIO(GPIO18_nSTSCHG)
 #define GUMSTIX_S1_nCD_IRQ		IRQ_GPIO(GPIO36_nCD)
 #define GUMSTIX_S1_PRDY_nBSY_IRQ	IRQ_GPIO(GPIO27_PRDY_nBSY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* CF GPIO line modes */
 #define GPIO4_nSTSCHG_MD		(GPIO4_nSTSCHG | GPIO_IN)

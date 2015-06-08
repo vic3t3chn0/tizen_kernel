@@ -15,8 +15,11 @@
 #define S5PV210_USB_PHY1_EN	(1 << 1)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 /* compatibility defines for s3c-hsotg driver */
 #define S3C64XX_OTHERS		S5PV210_USB_PHY_CON
 #define S3C64XX_OTHERS_USBMASK	S5PV210_USB_PHY0_EN
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

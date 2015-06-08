@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/processor.h>
 #include <asm/mmu.h>
 #include <asm/page.h>
@@ -47,7 +51,11 @@
 <<<<<<< HEAD
 #include <asm/firmware.h>
 =======
+<<<<<<< HEAD
+#include <asm/firmware.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "plpar_wrappers.h"
 #include "pseries.h"
@@ -60,6 +68,8 @@ EXPORT_SYMBOL(plpar_hcall_norets);
 
 extern void pSeries_find_serial_port(void);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -254,6 +264,7 @@ out:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void vpa_init(int cpu)
 {
 	int hwcpu = get_hard_smp_processor_id(cpu);
@@ -273,10 +284,15 @@ void vpa_init(int cpu)
 		pr_err("WARNING: VPA registration for cpu %d (hw %d) of area "
 		       "%lx failed with %ld\n", cpu, hwcpu, addr, ret);
 =======
+<<<<<<< HEAD
+		pr_err("WARNING: VPA registration for cpu %d (hw %d) of area "
+		       "%lx failed with %ld\n", cpu, hwcpu, addr, ret);
+=======
 		printk(KERN_ERR "WARNING: vpa_init: VPA registration for "
 				"cpu %d (hw %d) of area %lx returns %ld\n",
 				cpu, hwcpu, addr, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	/*
@@ -292,11 +308,17 @@ void vpa_init(int cpu)
 			       "cpu %d (hw %d) of area %lx failed with %ld\n",
 			       cpu, hwcpu, addr, ret);
 =======
+<<<<<<< HEAD
+			pr_err("WARNING: SLB shadow buffer registration for "
+			       "cpu %d (hw %d) of area %lx failed with %ld\n",
+			       cpu, hwcpu, addr, ret);
+=======
 			printk(KERN_ERR
 			       "WARNING: vpa_init: SLB shadow buffer "
 			       "registration for cpu %d (hw %d) of area %lx "
 			       "returns %ld\n", cpu, hwcpu, addr, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -318,9 +340,15 @@ void vpa_init(int cpu)
 			       "failed with %ld\n", smp_processor_id(),
 			       hwcpu, ret);
 =======
+<<<<<<< HEAD
+			pr_err("WARNING: DTL registration of cpu %d (hw %d) "
+			       "failed with %ld\n", smp_processor_id(),
+			       hwcpu, ret);
+=======
 			pr_warn("DTL registration failed for cpu %d (%ld)\n",
 				cpu, ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		lppaca_of(cpu).dtl_enable_mask = 2;
 	}
 }
@@ -408,6 +436,9 @@ static long pSeries_lpar_hpte_remove(unsigned long hpte_group)
 <<<<<<< HEAD
 		BUG_ON(lpar_rc != H_NOT_FOUND);
 =======
+<<<<<<< HEAD
+		BUG_ON(lpar_rc != H_NOT_FOUND);
+=======
 
 		/*
 		 * The test for adjunct partition is performed before the
@@ -416,6 +447,7 @@ static long pSeries_lpar_hpte_remove(unsigned long hpte_group)
 		 */
 		BUG_ON(lpar_rc != H_NOT_FOUND && lpar_rc != H_RESOURCE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		slot_offset++;
 		slot_offset &= 0x7;
@@ -776,6 +808,9 @@ void __trace_hcall_entry(unsigned long opcode, unsigned long *args)
 	unsigned int *depth;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We cannot call tracepoints inside RCU idle regions which
 	 * means we must not trace H_CEDE.
@@ -783,8 +818,11 @@ void __trace_hcall_entry(unsigned long opcode, unsigned long *args)
 	if (opcode == H_CEDE)
 		return;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_irq_save(flags);
 
 	depth = &__get_cpu_var(hcall_trace_depth);
@@ -812,7 +850,13 @@ void __trace_hcall_exit(long opcode, unsigned long retval,
 		return;
 
 =======
+<<<<<<< HEAD
+	if (opcode == H_CEDE)
+		return;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_irq_save(flags);
 
 	depth = &__get_cpu_var(hcall_trace_depth);

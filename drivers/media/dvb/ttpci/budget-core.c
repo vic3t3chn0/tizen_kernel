@@ -110,6 +110,13 @@ static int start_ts_capture(struct budget *budget)
 		break;
 	case BUDGET_CIN1200C_MK3:
 	case BUDGET_KNC1C_MK3:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case BUDGET_KNC1C_TDA10024:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BUDGET_KNC1CP_MK3:
 		if (budget->video_port == BUDGET_VIDEO_PORTA) {
 			saa7146_write(dev, DD1_INIT, 0x06000200);
@@ -434,6 +441,13 @@ int ttpci_budget_init(struct budget *budget, struct saa7146_dev *dev,
 	case BUDGET_KNC1CP:
 	case BUDGET_CIN1200C:
 	case BUDGET_KNC1C_MK3:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case BUDGET_KNC1C_TDA10024:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BUDGET_KNC1CP_MK3:
 	case BUDGET_CIN1200C_MK3:
 		budget->buffer_width = TS_WIDTH_DVBC;

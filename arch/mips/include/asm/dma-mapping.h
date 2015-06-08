@@ -58,15 +58,21 @@ extern void dma_cache_sync(struct device *dev, void *vaddr, size_t size,
 	       enum dma_data_direction direction);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dma_alloc_coherent(d,s,h,f)	dma_alloc_attrs(d,s,h,f,NULL)
 
 static inline void *dma_alloc_attrs(struct device *dev, size_t size,
 				    dma_addr_t *dma_handle, gfp_t gfp,
 				    struct dma_attrs *attrs)
+<<<<<<< HEAD
+=======
 =======
 static inline void *dma_alloc_coherent(struct device *dev, size_t size,
 				       dma_addr_t *dma_handle, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void *ret;
 	struct dma_map_ops *ops = get_dma_ops(dev);
@@ -74,8 +80,12 @@ static inline void *dma_alloc_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 	ret = ops->alloc(dev, size, dma_handle, gfp, attrs);
 =======
+<<<<<<< HEAD
+	ret = ops->alloc(dev, size, dma_handle, gfp, attrs);
+=======
 	ret = ops->alloc_coherent(dev, size, dma_handle, gfp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	debug_dma_alloc_coherent(dev, size, *dma_handle, ret);
 
@@ -83,6 +93,9 @@ static inline void *dma_alloc_coherent(struct device *dev, size_t size,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dma_free_coherent(d,s,c,h) dma_free_attrs(d,s,c,h,NULL)
 
 static inline void dma_free_attrs(struct device *dev, size_t size,
@@ -92,6 +105,8 @@ static inline void dma_free_attrs(struct device *dev, size_t size,
 	struct dma_map_ops *ops = get_dma_ops(dev);
 
 	ops->free(dev, size, vaddr, dma_handle, attrs);
+<<<<<<< HEAD
+=======
 =======
 static inline void dma_free_coherent(struct device *dev, size_t size,
 				     void *vaddr, dma_addr_t dma_handle)
@@ -100,6 +115,7 @@ static inline void dma_free_coherent(struct device *dev, size_t size,
 
 	ops->free_coherent(dev, size, vaddr, dma_handle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	debug_dma_free_coherent(dev, size, vaddr, dma_handle);
 }

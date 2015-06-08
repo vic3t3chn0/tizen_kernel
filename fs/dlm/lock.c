@@ -59,7 +59,11 @@
 <<<<<<< HEAD
 #include <linux/rbtree.h>
 =======
+<<<<<<< HEAD
+#include <linux/rbtree.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include "dlm_internal.h"
 #include <linux/dlm_device.h>
@@ -312,8 +316,12 @@ static void queue_cast(struct dlm_rsb *r, struct dlm_lkb *lkb, int rv)
 <<<<<<< HEAD
 	dlm_add_cb(lkb, DLM_CB_CAST, lkb->lkb_grmode, rv, lkb->lkb_sbflags);
 =======
+<<<<<<< HEAD
+	dlm_add_cb(lkb, DLM_CB_CAST, lkb->lkb_grmode, rv, lkb->lkb_sbflags);
+=======
 	dlm_add_ast(lkb, DLM_CB_CAST, lkb->lkb_grmode, rv, lkb->lkb_sbflags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void queue_cast_overlap(struct dlm_rsb *r, struct dlm_lkb *lkb)
@@ -330,8 +338,12 @@ static void queue_bast(struct dlm_rsb *r, struct dlm_lkb *lkb, int rqmode)
 <<<<<<< HEAD
 		dlm_add_cb(lkb, DLM_CB_BAST, rqmode, 0, 0);
 =======
+<<<<<<< HEAD
+		dlm_add_cb(lkb, DLM_CB_BAST, rqmode, 0, 0);
+=======
 		dlm_add_ast(lkb, DLM_CB_BAST, rqmode, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -340,6 +352,9 @@ static void queue_bast(struct dlm_rsb *r, struct dlm_lkb *lkb, int rqmode)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pre_rsb_struct(struct dlm_ls *ls)
 {
 	struct dlm_rsb *r1, *r2;
@@ -397,6 +412,8 @@ static int get_rsb_struct(struct dlm_ls *ls, char *name, int len,
 	memset(&r->res_hashnode, 0, sizeof(struct rb_node));
 	ls->ls_new_rsb_count--;
 	spin_unlock(&ls->ls_new_rsb_spin);
+<<<<<<< HEAD
+=======
 =======
 static struct dlm_rsb *create_rsb(struct dlm_ls *ls, char *name, int len)
 {
@@ -406,6 +423,7 @@ static struct dlm_rsb *create_rsb(struct dlm_ls *ls, char *name, int len)
 	if (!r)
 		return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	r->res_ls = ls;
 	r->res_length = len;
@@ -420,6 +438,9 @@ static struct dlm_rsb *create_rsb(struct dlm_ls *ls, char *name, int len)
 	INIT_LIST_HEAD(&r->res_recover_list);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*r_ret = r;
 	return 0;
 }
@@ -449,6 +470,8 @@ int dlm_search_rsb_tree(struct rb_root *tree, char *name, int len,
 		else if (rc > 0)
 			node = node->rb_right;
 		else
+<<<<<<< HEAD
+=======
 =======
 	return r;
 }
@@ -462,6 +485,7 @@ static int search_rsb_list(struct list_head *head, char *name, int len,
 	list_for_each_entry(r, head, res_hashchain) {
 		if (len == r->res_length && !memcmp(name, r->res_name, len))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto found;
 	}
 	*r_ret = NULL;
@@ -475,6 +499,9 @@ static int search_rsb_list(struct list_head *head, char *name, int len,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int rsb_insert(struct dlm_rsb *rsb, struct rb_root *tree)
 {
 	struct rb_node **newn = &tree->rb_node;
@@ -504,8 +531,11 @@ static int rsb_insert(struct dlm_rsb *rsb, struct rb_root *tree)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int _search_rsb(struct dlm_ls *ls, char *name, int len, int b,
 		       unsigned int flags, struct dlm_rsb **r_ret)
 {
@@ -515,13 +545,20 @@ static int _search_rsb(struct dlm_ls *ls, char *name, int len, int b,
 <<<<<<< HEAD
 	error = dlm_search_rsb_tree(&ls->ls_rsbtbl[b].keep, name, len, flags, &r);
 =======
+<<<<<<< HEAD
+	error = dlm_search_rsb_tree(&ls->ls_rsbtbl[b].keep, name, len, flags, &r);
+=======
 	error = search_rsb_list(&ls->ls_rsbtbl[b].list, name, len, flags, &r);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!error) {
 		kref_get(&r->res_ref);
 		goto out;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = dlm_search_rsb_tree(&ls->ls_rsbtbl[b].toss, name, len, flags, &r);
 	if (error)
 		goto out;
@@ -530,6 +567,8 @@ static int _search_rsb(struct dlm_ls *ls, char *name, int len, int b,
 	error = rsb_insert(r, &ls->ls_rsbtbl[b].keep);
 	if (error)
 		return error;
+<<<<<<< HEAD
+=======
 =======
 	error = search_rsb_list(&ls->ls_rsbtbl[b].toss, name, len, flags, &r);
 	if (error)
@@ -537,6 +576,7 @@ static int _search_rsb(struct dlm_ls *ls, char *name, int len, int b,
 
 	list_move(&r->res_hashchain, &ls->ls_rsbtbl[b].list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dlm_no_directory(ls))
 		goto out;
@@ -558,6 +598,8 @@ static int _search_rsb(struct dlm_ls *ls, char *name, int len, int b,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int search_rsb(struct dlm_ls *ls, char *name, int len, int b,
 		      unsigned int flags, struct dlm_rsb **r_ret)
 {
@@ -569,6 +611,7 @@ static int search_rsb(struct dlm_ls *ls, char *name, int len, int b,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Find rsb in rsbtbl and potentially create/add one
  *
@@ -587,6 +630,9 @@ static int find_rsb(struct dlm_ls *ls, char *name, int namelen,
 		    unsigned int flags, struct dlm_rsb **r_ret)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dlm_rsb *r = NULL;
 	uint32_t hash, bucket;
 	int error;
@@ -595,6 +641,8 @@ static int find_rsb(struct dlm_ls *ls, char *name, int namelen,
 		error = -EINVAL;
 		goto out;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct dlm_rsb *r = NULL, *tmp;
 	uint32_t hash, bucket;
@@ -603,11 +651,15 @@ static int find_rsb(struct dlm_ls *ls, char *name, int namelen,
 	if (namelen > DLM_RESNAME_MAXLEN)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dlm_no_directory(ls))
 		flags |= R_CREATE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hash = jhash(name, namelen, 0);
 	bucket = hash & (ls->ls_rsbtbl_size - 1);
 
@@ -638,6 +690,8 @@ static int find_rsb(struct dlm_ls *ls, char *name, int namelen,
 	}
 	if (error)
 		goto out_unlock;
+<<<<<<< HEAD
+=======
 =======
 	error = 0;
 	hash = jhash(name, namelen, 0);
@@ -659,6 +713,7 @@ static int find_rsb(struct dlm_ls *ls, char *name, int namelen,
 	if (!r)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	r->res_hash = hash;
 	r->res_bucket = bucket;
@@ -677,6 +732,11 @@ static int find_rsb(struct dlm_ls *ls, char *name, int namelen,
  out_unlock:
 	spin_unlock(&ls->ls_rsbtbl[bucket].lock);
 =======
+<<<<<<< HEAD
+	error = rsb_insert(r, &ls->ls_rsbtbl[bucket].keep);
+ out_unlock:
+	spin_unlock(&ls->ls_rsbtbl[bucket].lock);
+=======
 
 	spin_lock(&ls->ls_rsbtbl[bucket].lock);
 	error = _search_rsb(ls, name, namelen, bucket, 0, &tmp);
@@ -690,6 +750,7 @@ static int find_rsb(struct dlm_ls *ls, char *name, int namelen,
 	spin_unlock(&ls->ls_rsbtbl[bucket].lock);
 	error = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  out:
 	*r_ret = r;
 	return error;
@@ -719,8 +780,13 @@ static void toss_rsb(struct kref *kref)
 	rb_erase(&r->res_hashnode, &ls->ls_rsbtbl[r->res_bucket].keep);
 	rsb_insert(r, &ls->ls_rsbtbl[r->res_bucket].toss);
 =======
+<<<<<<< HEAD
+	rb_erase(&r->res_hashnode, &ls->ls_rsbtbl[r->res_bucket].keep);
+	rsb_insert(r, &ls->ls_rsbtbl[r->res_bucket].toss);
+=======
 	list_move(&r->res_hashchain, &ls->ls_rsbtbl[r->res_bucket].toss);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r->res_toss_time = jiffies;
 	if (r->res_lvbptr) {
 		dlm_free_lvb(r->res_lvbptr);
@@ -793,10 +859,15 @@ static int create_lkb(struct dlm_ls *ls, struct dlm_lkb **lkb_ret)
 	struct dlm_lkb *lkb;
 	int rv, id;
 =======
+<<<<<<< HEAD
+	struct dlm_lkb *lkb;
+	int rv, id;
+=======
 	struct dlm_lkb *lkb, *tmp;
 	uint32_t lkid = 0;
 	uint16_t bucket;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lkb = dlm_allocate_lkb(ls);
 	if (!lkb)
@@ -809,6 +880,9 @@ static int create_lkb(struct dlm_ls *ls, struct dlm_lkb **lkb_ret)
 	INIT_LIST_HEAD(&lkb->lkb_rsb_lookup);
 	INIT_LIST_HEAD(&lkb->lkb_time_list);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&lkb->lkb_cb_list);
 	mutex_init(&lkb->lkb_cb_mutex);
 	INIT_WORK(&lkb->lkb_cb_work, dlm_callback_work);
@@ -832,6 +906,8 @@ static int create_lkb(struct dlm_ls *ls, struct dlm_lkb **lkb_ret)
 		return rv;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	INIT_LIST_HEAD(&lkb->lkb_astqueue);
 
@@ -859,11 +935,15 @@ static int create_lkb(struct dlm_ls *ls, struct dlm_lkb **lkb_ret)
 	write_unlock(&ls->ls_lkbtbl[bucket].lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*lkb_ret = lkb;
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int find_lkb(struct dlm_ls *ls, uint32_t lkid, struct dlm_lkb **lkb_ret)
 {
 	struct dlm_lkb *lkb;
@@ -873,6 +953,8 @@ static int find_lkb(struct dlm_ls *ls, uint32_t lkid, struct dlm_lkb **lkb_ret)
 	if (lkb)
 		kref_get(&lkb->lkb_ref);
 	spin_unlock(&ls->ls_lkbidr_spin);
+<<<<<<< HEAD
+=======
 =======
 static struct dlm_lkb *__find_lkb(struct dlm_ls *ls, uint32_t lkid)
 {
@@ -900,6 +982,7 @@ static int find_lkb(struct dlm_ls *ls, uint32_t lkid, struct dlm_lkb **lkb_ret)
 		kref_get(&lkb->lkb_ref);
 	read_unlock(&ls->ls_lkbtbl[bucket].lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*lkb_ret = lkb;
 	return lkb ? 0 : -ENOENT;
@@ -921,12 +1004,17 @@ static void kill_lkb(struct kref *kref)
 static int __put_lkb(struct dlm_ls *ls, struct dlm_lkb *lkb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32_t lkid = lkb->lkb_id;
 
 	spin_lock(&ls->ls_lkbidr_spin);
 	if (kref_put(&lkb->lkb_ref, kill_lkb)) {
 		idr_remove(&ls->ls_lkbidr, lkid);
 		spin_unlock(&ls->ls_lkbidr_spin);
+<<<<<<< HEAD
+=======
 =======
 	uint16_t bucket = (lkb->lkb_id >> 16);
 
@@ -935,6 +1023,7 @@ static int __put_lkb(struct dlm_ls *ls, struct dlm_lkb *lkb)
 		list_del(&lkb->lkb_idtbl_list);
 		write_unlock(&ls->ls_lkbtbl[bucket].lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		detach_lkb(lkb);
 
@@ -947,8 +1036,12 @@ static int __put_lkb(struct dlm_ls *ls, struct dlm_lkb *lkb)
 <<<<<<< HEAD
 		spin_unlock(&ls->ls_lkbidr_spin);
 =======
+<<<<<<< HEAD
+		spin_unlock(&ls->ls_lkbidr_spin);
+=======
 		write_unlock(&ls->ls_lkbtbl[bucket].lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 }
@@ -1117,10 +1210,14 @@ void dlm_scan_waiters(struct dlm_ls *ls)
 <<<<<<< HEAD
 			warned = kzalloc(num_nodes * sizeof(int), GFP_KERNEL);
 =======
+<<<<<<< HEAD
+			warned = kzalloc(num_nodes * sizeof(int), GFP_KERNEL);
+=======
 			warned = kmalloc(GFP_KERNEL, num_nodes * sizeof(int));
 			if (warned)
 				memset(warned, 0, num_nodes * sizeof(int));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if (!warned)
 			continue;
@@ -1135,10 +1232,14 @@ void dlm_scan_waiters(struct dlm_ls *ls)
 <<<<<<< HEAD
 	kfree(warned);
 =======
+<<<<<<< HEAD
+	kfree(warned);
+=======
 
 	if (warned)
 		kfree(warned);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (debug_expired)
 		log_debug(ls, "scan_waiters %u warn %u over %d us max %lld us",
@@ -1334,11 +1435,16 @@ static void dir_remove(struct dlm_rsb *r)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* FIXME: make this more efficient */
 
 static int shrink_bucket(struct dlm_ls *ls, int b)
 {
 	struct rb_node *n;
+<<<<<<< HEAD
+=======
 =======
 /* FIXME: shouldn't this be able to exit as soon as one non-due rsb is
    found since they are in order of newest to oldest? */
@@ -1346,6 +1452,7 @@ static int shrink_bucket(struct dlm_ls *ls, int b)
 static int shrink_bucket(struct dlm_ls *ls, int b)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dlm_rsb *r;
 	int count = 0, found;
 
@@ -1356,9 +1463,14 @@ static int shrink_bucket(struct dlm_ls *ls, int b)
 		for (n = rb_first(&ls->ls_rsbtbl[b].toss); n; n = rb_next(n)) {
 			r = rb_entry(n, struct dlm_rsb, res_hashnode);
 =======
+<<<<<<< HEAD
+		for (n = rb_first(&ls->ls_rsbtbl[b].toss); n; n = rb_next(n)) {
+			r = rb_entry(n, struct dlm_rsb, res_hashnode);
+=======
 		list_for_each_entry_reverse(r, &ls->ls_rsbtbl[b].toss,
 					    res_hashchain) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!time_after_eq(jiffies, r->res_toss_time +
 					   dlm_config.ci_toss_secs * HZ))
 				continue;
@@ -1375,8 +1487,12 @@ static int shrink_bucket(struct dlm_ls *ls, int b)
 <<<<<<< HEAD
 			rb_erase(&r->res_hashnode, &ls->ls_rsbtbl[b].toss);
 =======
+<<<<<<< HEAD
+			rb_erase(&r->res_hashnode, &ls->ls_rsbtbl[b].toss);
+=======
 			list_del(&r->res_hashchain);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&ls->ls_rsbtbl[b].lock);
 
 			if (is_master(r))
@@ -1955,6 +2071,9 @@ static int _can_be_granted(struct dlm_rsb *r, struct dlm_lkb *lkb, int now)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Even if the convert is compat with all granted locks,
 	 * QUECVT forces it behind other locks on the convert queue.
 	 */
@@ -1967,8 +2086,11 @@ static int _can_be_granted(struct dlm_rsb *r, struct dlm_lkb *lkb, int now)
 	}
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * The NOORDER flag is set to avoid the standard vms rules on grant
 	 * order.
 	 */
@@ -2708,10 +2830,13 @@ static int do_convert(struct dlm_rsb *r, struct dlm_lkb *lkb)
 		/* it's left on the granted queue */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		log_debug(r->res_ls, "deadlock %x node %d sts%d g%d r%d %s",
 			  lkb->lkb_id, lkb->lkb_nodeid, lkb->lkb_status,
 			  lkb->lkb_grmode, lkb->lkb_rqmode, r->res_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		revert_lock(r, lkb);
 		queue_cast(r, lkb, -EDEADLK);
 		error = -EDEADLK;
@@ -4303,9 +4428,12 @@ static void _receive_message(struct dlm_ls *ls, struct dlm_message *ms)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	dlm_astd_wake();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* If the lockspace is in recovery mode (locking stopped), then normal
@@ -4447,8 +4575,12 @@ void dlm_recover_waiters_pre(struct dlm_ls *ls)
 <<<<<<< HEAD
 	ms_stub = kmalloc(sizeof(struct dlm_message), GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	ms_stub = kmalloc(sizeof(struct dlm_message), GFP_KERNEL);
+=======
 	ms_stub = kmalloc(GFP_KERNEL, sizeof(struct dlm_message));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ms_stub) {
 		log_error(ls, "dlm_recover_waiters_pre no mem");
 		return;
@@ -4740,18 +4872,24 @@ int dlm_purge_locks(struct dlm_ls *ls)
 static struct dlm_rsb *find_purged_rsb(struct dlm_ls *ls, int bucket)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rb_node *n;
 	struct dlm_rsb *r, *r_ret = NULL;
 
 	spin_lock(&ls->ls_rsbtbl[bucket].lock);
 	for (n = rb_first(&ls->ls_rsbtbl[bucket].keep); n; n = rb_next(n)) {
 		r = rb_entry(n, struct dlm_rsb, res_hashnode);
+<<<<<<< HEAD
+=======
 =======
 	struct dlm_rsb *r, *r_ret = NULL;
 
 	spin_lock(&ls->ls_rsbtbl[bucket].lock);
 	list_for_each_entry(r, &ls->ls_rsbtbl[bucket].list, res_hashchain) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rsb_flag(r, RSB_LOCKS_PURGED))
 			continue;
 		hold_rsb(r);
@@ -5136,8 +5274,12 @@ int dlm_user_unlock(struct dlm_ls *ls, struct dlm_user_args *ua_tmp,
 <<<<<<< HEAD
 	/* dlm_user_add_cb() may have already taken lkb off the proc list */
 =======
+<<<<<<< HEAD
+	/* dlm_user_add_cb() may have already taken lkb off the proc list */
+=======
 	/* dlm_user_add_ast() may have already taken lkb off the proc list */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!list_empty(&lkb->lkb_ownqueue))
 		list_move(&lkb->lkb_ownqueue, &ua->proc->unlocking);
 	spin_unlock(&ua->proc->locks_spin);
@@ -5277,8 +5419,12 @@ static int unlock_proc_lock(struct dlm_ls *ls, struct dlm_lkb *lkb)
 <<<<<<< HEAD
    lock_rsb followed by dlm_user_add_cb() */
 =======
+<<<<<<< HEAD
+   lock_rsb followed by dlm_user_add_cb() */
+=======
    lock_rsb followed by dlm_user_add_ast() */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct dlm_lkb *del_proc_lock(struct dlm_ls *ls,
 				     struct dlm_user_proc *proc)
@@ -5304,8 +5450,12 @@ static struct dlm_lkb *del_proc_lock(struct dlm_ls *ls,
 <<<<<<< HEAD
 /* The ls_clear_proc_locks mutex protects against dlm_user_add_cb() which
 =======
+<<<<<<< HEAD
+/* The ls_clear_proc_locks mutex protects against dlm_user_add_cb() which
+=======
 /* The ls_clear_proc_locks mutex protects against dlm_user_add_asts() which
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    1) references lkb->ua which we free here and 2) adds lkbs to proc->asts,
    which we clear here. */
 
@@ -5348,16 +5498,22 @@ void dlm_clear_proc_locks(struct dlm_ls *ls, struct dlm_user_proc *proc)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(lkb, safe, &proc->asts, lkb_cb_list) {
 		memset(&lkb->lkb_callbacks, 0,
 		       sizeof(struct dlm_callback) * DLM_CALLBACKS_SIZE);
 		list_del_init(&lkb->lkb_cb_list);
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_entry_safe(lkb, safe, &proc->asts, lkb_astqueue) {
 		memset(&lkb->lkb_callbacks, 0,
 		       sizeof(struct dlm_callback) * DLM_CALLBACKS_SIZE);
 		list_del_init(&lkb->lkb_astqueue);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dlm_put_lkb(lkb);
 	}
 
@@ -5397,16 +5553,22 @@ static void purge_proc_locks(struct dlm_ls *ls, struct dlm_user_proc *proc)
 
 	spin_lock(&proc->asts_spin);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(lkb, safe, &proc->asts, lkb_cb_list) {
 		memset(&lkb->lkb_callbacks, 0,
 		       sizeof(struct dlm_callback) * DLM_CALLBACKS_SIZE);
 		list_del_init(&lkb->lkb_cb_list);
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_entry_safe(lkb, safe, &proc->asts, lkb_astqueue) {
 		memset(&lkb->lkb_callbacks, 0,
 		       sizeof(struct dlm_callback) * DLM_CALLBACKS_SIZE);
 		list_del_init(&lkb->lkb_astqueue);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dlm_put_lkb(lkb);
 	}
 	spin_unlock(&proc->asts_spin);

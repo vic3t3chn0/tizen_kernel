@@ -32,6 +32,9 @@
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Architectures where both 32- and 64-bit binaries can be executed
  * on 64-bit kernels need this.  This keeps the structure format
  * uniform, and makes sure the wait_queue_token isn't too big to be
@@ -51,6 +54,8 @@
 typedef unsigned int autofs_wqt_t;
 #else
 typedef unsigned long autofs_wqt_t;
+<<<<<<< HEAD
+=======
 =======
  * The wait_queue_token (autofs_wqt_t) is part of a structure which is passed
  * back to the kernel via ioctl from userspace. On architectures where 32- and
@@ -63,6 +68,7 @@ typedef unsigned long autofs_wqt_t;
 #else
 typedef unsigned int autofs_wqt_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /* Packet types */

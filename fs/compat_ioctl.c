@@ -37,8 +37,12 @@
 <<<<<<< HEAD
 #include <linux/ppp-ioctl.h>
 =======
+<<<<<<< HEAD
+#include <linux/ppp-ioctl.h>
+=======
 #include <linux/if_ppp.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/if_pppox.h>
 #include <linux/mtio.h>
 #include <linux/auto_fs.h>
@@ -55,8 +59,11 @@
 #include <linux/pci.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/serial.h>
 #include <linux/if_tun.h>
 #include <linux/ctype.h>
@@ -115,7 +122,11 @@
 <<<<<<< HEAD
 #define __DVB_CORE__
 =======
+<<<<<<< HEAD
+#define __DVB_CORE__
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dvb/audio.h>
 #include <linux/dvb/dmx.h>
 #include <linux/dvb/frontend.h>
@@ -223,9 +234,12 @@ static int do_video_set_spu_palette(unsigned int fd, unsigned int cmd,
 	err |= get_user(length, &up->length);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (err)
 		return -EFAULT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	up_native = compat_alloc_user_space(sizeof(struct video_spu_palette));
 	err  = put_user(compat_ptr(palp), &up_native->palette);
@@ -1022,7 +1036,11 @@ COMPATIBLE_IOCTL(PPPIOCGCHAN)
 <<<<<<< HEAD
 COMPATIBLE_IOCTL(PPPIOCGL2TPSTATS)
 =======
+<<<<<<< HEAD
+COMPATIBLE_IOCTL(PPPIOCGL2TPSTATS)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PPPOX */
 COMPATIBLE_IOCTL(PPPOEIOCSFWD)
 COMPATIBLE_IOCTL(PPPOEIOCDFWD)
@@ -1236,7 +1254,11 @@ COMPATIBLE_IOCTL(HCIGETAUTHINFO)
 <<<<<<< HEAD
 COMPATIBLE_IOCTL(HCISETAUTHINFO)
 =======
+<<<<<<< HEAD
+COMPATIBLE_IOCTL(HCISETAUTHINFO)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 COMPATIBLE_IOCTL(HCISETRAW)
 COMPATIBLE_IOCTL(HCISETSCAN)
 COMPATIBLE_IOCTL(HCISETAUTH)
@@ -1531,6 +1553,8 @@ static long do_ioctl_trans(int fd, unsigned int cmd,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void compat_ioctl_error(struct file *filp, unsigned int fd,
 		unsigned int cmd, unsigned long arg)
 {
@@ -1561,6 +1585,7 @@ static void compat_ioctl_error(struct file *filp, unsigned int fd,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int compat_ioctl_check_table(unsigned int xcmd)
 {
 	int i;
@@ -1651,6 +1676,10 @@ asmlinkage long compat_sys_ioctl(unsigned int fd, unsigned int cmd,
 	if (error == -ENOIOCTLCMD)
 		error = -ENOTTY;
 =======
+<<<<<<< HEAD
+	if (error == -ENOIOCTLCMD)
+		error = -ENOTTY;
+=======
 	if (error == -ENOIOCTLCMD) {
 		static int count;
 
@@ -1659,6 +1688,7 @@ asmlinkage long compat_sys_ioctl(unsigned int fd, unsigned int cmd,
 		error = -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	goto out_fput;
 

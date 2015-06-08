@@ -56,8 +56,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
@@ -87,8 +91,12 @@ static long mpu_port;
 <<<<<<< HEAD
 static bool joystick;
 =======
+<<<<<<< HEAD
+static bool joystick;
+=======
 static int joystick;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 static int ac97_clock = 48000;
 static char *ac97_quirk;
@@ -121,8 +129,12 @@ MODULE_PARM_DESC(nodelay, "Disable 500ms init delay");
 <<<<<<< HEAD
 static bool enable;
 =======
+<<<<<<< HEAD
+static bool enable;
+=======
 static int enable;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(enable, bool, 0444);
 
 
@@ -1190,7 +1202,11 @@ static int snd_via82xx_pcm_open(struct via82xx *chip, struct viadev *viadev,
 <<<<<<< HEAD
 	bool use_src = false;
 =======
+<<<<<<< HEAD
+	bool use_src = false;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	runtime->hw = snd_via82xx_hw;
 	
@@ -1215,7 +1231,11 @@ static int snd_via82xx_pcm_open(struct via82xx *chip, struct viadev *viadev,
 <<<<<<< HEAD
 		use_src = true;
 =======
+<<<<<<< HEAD
+		use_src = true;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (! ratep->rate) {
 		int idx = viadev->direction ? AC97_RATES_ADC : AC97_RATES_FRONT_DAC;
 		runtime->hw.rates = chip->ac97->rates[idx];
@@ -1233,14 +1253,20 @@ static int snd_via82xx_pcm_open(struct via82xx *chip, struct viadev *viadev,
 		return err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (use_src) {
 		err = snd_pcm_hw_rule_noresample(runtime, 48000);
 		if (err < 0)
 			return err;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	runtime->private_data = viadev;
 	viadev->substream = substream;
 
@@ -2102,9 +2128,15 @@ static int __devinit snd_via686_init_misc(struct via82xx *chip)
 					MPU401_INFO_IRQ_HOOK, -1,
 					&chip->rmidi) < 0) {
 =======
+<<<<<<< HEAD
+					mpu_port, MPU401_INFO_INTEGRATED |
+					MPU401_INFO_IRQ_HOOK, -1,
+					&chip->rmidi) < 0) {
+=======
 					mpu_port, MPU401_INFO_INTEGRATED,
 					chip->irq, 0, &chip->rmidi) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_WARNING "unable to initialize MPU-401"
 			       " at 0x%lx, skipping\n", mpu_port);
 			legacy &= ~VIA_FUNC_ENABLE_MIDI;
@@ -2415,8 +2447,12 @@ static int __devinit snd_via82xx_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, chip)) {
+=======
 			card->driver, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_via82xx_free(chip);
 		return -EBUSY;
@@ -2653,8 +2689,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "VIA 82xx Audio",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_via82xx_ids,
 	.probe = snd_via82xx_probe,
 	.remove = __devexit_p(snd_via82xx_remove),

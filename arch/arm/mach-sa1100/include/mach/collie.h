@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * This file contains the hardware specific definitions for Collie
 =======
+<<<<<<< HEAD
+ * This file contains the hardware specific definitions for Collie
+=======
  * This file contains the hardware specific definitions for Assabet
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Only include this file from SA1100-specific files.
  *
  * ChangeLog:
@@ -20,7 +24,11 @@
 <<<<<<< HEAD
 extern void locomolcd_power(int on);
 =======
+<<<<<<< HEAD
+extern void locomolcd_power(int on);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define COLLIE_SCOOP_GPIO_BASE	(GPIO_MAX + 1)
 #define COLLIE_GPIO_CHARGE_ON	(COLLIE_SCOOP_GPIO_BASE + 0)

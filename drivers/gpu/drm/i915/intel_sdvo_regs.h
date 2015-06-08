@@ -61,11 +61,20 @@ struct intel_sdvo_caps {
 	u16 output_flags;
 } __attribute__((packed));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Note: SDVO detailed timing flags match EDID misc flags. */
 #define DTD_FLAG_HSYNC_POSITIVE (1 << 1)
 #define DTD_FLAG_VSYNC_POSITIVE (1 << 2)
 #define DTD_FLAG_INTERLACE	(1 << 7)
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** This matches the EDID DTD structure, more or less */
 struct intel_sdvo_dtd {
 	struct {
@@ -708,8 +717,16 @@ struct intel_sdvo_enhancements_arg {
 #define SDVO_CMD_SET_AUDIO_STAT		0x91
 #define SDVO_CMD_GET_AUDIO_STAT		0x92
 #define SDVO_CMD_SET_HBUF_INDEX		0x93
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
   #define SDVO_HBUF_INDEX_ELD		0
   #define SDVO_HBUF_INDEX_AVI_IF	1
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+  #define SDVO_HBUF_INDEX_ELD		0
+  #define SDVO_HBUF_INDEX_AVI_IF	1
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SDVO_CMD_GET_HBUF_INDEX		0x94
 #define SDVO_CMD_GET_HBUF_INFO		0x95
 #define SDVO_CMD_SET_HBUF_AV_SPLIT	0x96

@@ -77,9 +77,12 @@ static struct clocksource itimer_clocksource = {
 	.mask		= CLOCKSOURCE_MASK(64),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.mult		= 1000,
 	.shift		= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags		= CLOCK_SOURCE_IS_CONTINUOUS,
 };
 
@@ -90,8 +93,12 @@ static void __init setup_itimer(void)
 <<<<<<< HEAD
 	err = request_irq(TIMER_IRQ, um_timer, 0, "timer", NULL);
 =======
+<<<<<<< HEAD
+	err = request_irq(TIMER_IRQ, um_timer, 0, "timer", NULL);
+=======
 	err = request_irq(TIMER_IRQ, um_timer, IRQF_DISABLED, "timer", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err != 0)
 		printk(KERN_ERR "register_timer : request_irq failed - "
 		       "errno = %d\n", -err);
@@ -106,10 +113,16 @@ static void __init setup_itimer(void)
 	if (err) {
 		printk(KERN_ERR "clocksource_register_hz returned %d\n", err);
 =======
+<<<<<<< HEAD
+	err = clocksource_register_hz(&itimer_clocksource, USEC_PER_SEC);
+	if (err) {
+		printk(KERN_ERR "clocksource_register_hz returned %d\n", err);
+=======
 	err = clocksource_register(&itimer_clocksource);
 	if (err) {
 		printk(KERN_ERR "clocksource_register returned %d\n", err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	clockevents_register_device(&itimer_clockevent);

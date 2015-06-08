@@ -23,15 +23,21 @@
 <<<<<<< HEAD
 #include "chan.h"
 =======
+<<<<<<< HEAD
+#include "chan.h"
+=======
 #include "line.h"
 #include "chan_kern.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "irq_user.h"
 #include "mconsole_kern.h"
 #include "init.h"
 
 #define MAX_TTYS (16)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Referenced only by tty_driver below - presumably it's locked correctly
@@ -41,6 +47,7 @@
 static struct tty_driver *console_driver;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void stdio_announce(char *dev_name, int dev)
 {
 	printk(KERN_INFO "Virtual console %d assigned device '%s'\n", dev,
@@ -89,10 +96,16 @@ static char *vt_conf[MAX_TTYS];
 static char *def_conf;
 static struct line vts[MAX_TTYS];
 =======
+<<<<<<< HEAD
+static char *vt_conf[MAX_TTYS];
+static char *def_conf;
+static struct line vts[MAX_TTYS];
+=======
 static struct line vts[MAX_TTYS] = { LINE_INIT(CONFIG_CON_ZERO_CHAN, &driver),
 				     [ 1 ... MAX_TTYS - 1 ] =
 				     LINE_INIT(CONFIG_CON_CHAN, &driver) };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int con_config(char *str, char **error_out)
 {
@@ -147,8 +160,12 @@ static void uml_console_write(struct console *console, const char *string,
 <<<<<<< HEAD
 	console_write_chan(line->chan_out, string, len);
 =======
+<<<<<<< HEAD
+	console_write_chan(line->chan_out, string, len);
+=======
 	console_write_chan(&line->chan_list, string, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&line->lock, flags);
 }
 
@@ -158,8 +175,12 @@ static struct tty_driver *uml_console_device(struct console *c, int *index)
 <<<<<<< HEAD
 	return driver.driver;
 =======
+<<<<<<< HEAD
+	return driver.driver;
+=======
 	return console_driver;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int uml_console_setup(struct console *co, char *options)
@@ -183,6 +204,9 @@ static int stdio_init(void)
 {
 	char *new_title;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	int i;
 
@@ -191,6 +215,8 @@ static int stdio_init(void)
 	if (err)
 		return err;
 
+<<<<<<< HEAD
+=======
 =======
 
 	console_driver = register_lines(&driver, &console_ops, vts,
@@ -198,6 +224,7 @@ static int stdio_init(void)
 	if (console_driver == NULL)
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "Initialized stdio console driver\n");
 
 	new_title = add_xterm_umid(opts.xterm_title);
@@ -205,6 +232,9 @@ static int stdio_init(void)
 		opts.xterm_title = new_title;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < MAX_TTYS; i++) {
 		char *error;
 		char *s = vt_conf[i];
@@ -216,9 +246,12 @@ static int stdio_init(void)
 			printk(KERN_ERR "setup_one_line failed for "
 			       "device %d : %s\n", i, error);
 	}
+<<<<<<< HEAD
+=======
 =======
 	lines_init(vts, ARRAY_SIZE(vts), &opts);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	con_init_done = 1;
 	register_console(&stdiocons);
@@ -239,6 +272,9 @@ static int console_chan_setup(char *str)
 <<<<<<< HEAD
 	line_setup(vt_conf, MAX_TTYS, &def_conf, str, "console");
 =======
+<<<<<<< HEAD
+	line_setup(vt_conf, MAX_TTYS, &def_conf, str, "console");
+=======
 	char *error;
 	int ret;
 
@@ -248,6 +284,7 @@ static int console_chan_setup(char *str)
 		       "configuration string \"%s\" : %s\n", str, error);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 __setup("con", console_chan_setup);

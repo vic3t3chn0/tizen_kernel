@@ -35,8 +35,11 @@
 #include "xfs_btree.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_btree_trace.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_itable.h"
 #include "xfs_bmap.h"
 #include "xfs_error.h"
@@ -429,16 +432,22 @@ xfs_bmbt_to_bmdr(
 	__be64			*tpp;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(rblock->bb_magic == cpu_to_be32(XFS_BMAP_MAGIC));
 	ASSERT(rblock->bb_u.l.bb_leftsib == cpu_to_be64(NULLDFSBNO));
 	ASSERT(rblock->bb_u.l.bb_rightsib == cpu_to_be64(NULLDFSBNO));
 	ASSERT(rblock->bb_level != 0);
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(be32_to_cpu(rblock->bb_magic) == XFS_BMAP_MAGIC);
 	ASSERT(be64_to_cpu(rblock->bb_u.l.bb_leftsib) == NULLDFSBNO);
 	ASSERT(be64_to_cpu(rblock->bb_u.l.bb_rightsib) == NULLDFSBNO);
 	ASSERT(be16_to_cpu(rblock->bb_level) > 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dblock->bb_level = rblock->bb_level;
 	dblock->bb_numrecs = rblock->bb_numrecs;
 	dmxr = xfs_bmdr_maxrecs(mp, dblocklen, 0);
@@ -744,6 +753,8 @@ xfs_bmbt_recs_inorder(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef XFS_BTREE_TRACE
 ktrace_t	*xfs_bmbt_trace_buf;
 
@@ -834,6 +845,7 @@ xfs_bmbt_trace_record(
 #endif /* XFS_BTREE_TRACE */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct xfs_btree_ops xfs_bmbt_ops = {
 	.rec_len		= sizeof(xfs_bmbt_rec_t),
 	.key_len		= sizeof(xfs_bmbt_key_t),
@@ -852,12 +864,17 @@ static const struct xfs_btree_ops xfs_bmbt_ops = {
 	.key_diff		= xfs_bmbt_key_diff,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 	.keys_inorder		= xfs_bmbt_keys_inorder,
 	.recs_inorder		= xfs_bmbt_recs_inorder,
 #endif
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -868,6 +885,7 @@ static const struct xfs_btree_ops xfs_bmbt_ops = {
 	.trace_record		= xfs_bmbt_trace_record,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*

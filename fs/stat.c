@@ -7,8 +7,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/errno.h>
 #include <linux/file.h>
@@ -32,12 +36,17 @@ void generic_fillattr(struct inode *inode, struct kstat *stat)
 	stat->gid = inode->i_gid;
 	stat->rdev = inode->i_rdev;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stat->size = i_size_read(inode);
 	stat->atime = inode->i_atime;
 	stat->mtime = inode->i_mtime;
 	stat->ctime = inode->i_ctime;
 	stat->blksize = (1 << inode->i_blkbits);
 	stat->blocks = inode->i_blocks;
+<<<<<<< HEAD
+=======
 =======
 	stat->atime = inode->i_atime;
 	stat->mtime = inode->i_mtime;
@@ -46,6 +55,7 @@ void generic_fillattr(struct inode *inode, struct kstat *stat)
 	stat->blocks = inode->i_blocks;
 	stat->blksize = (1 << inode->i_blkbits);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 EXPORT_SYMBOL(generic_fillattr);
@@ -73,8 +83,12 @@ int vfs_fstat(unsigned int fd, struct kstat *stat)
 <<<<<<< HEAD
 	struct file *f = fget(fd);
 =======
+<<<<<<< HEAD
+	struct file *f = fget(fd);
+=======
 	struct file *f = fget_raw(fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = -EBADF;
 
 	if (f) {
@@ -100,9 +114,12 @@ int vfs_fstatat(int dfd, const char __user *filename, struct kstat *stat,
 		lookup_flags |= LOOKUP_FOLLOW;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (flag & AT_NO_AUTOMOUNT)
 		lookup_flags |= LOOKUP_NO_AUTOMOUNT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (flag & AT_EMPTY_PATH)
 		lookup_flags |= LOOKUP_EMPTY;
 
@@ -332,8 +349,12 @@ SYSCALL_DEFINE4(readlinkat, int, dfd, const char __user *, pathname,
 <<<<<<< HEAD
 				touch_atime(&path);
 =======
+<<<<<<< HEAD
+				touch_atime(&path);
+=======
 				touch_atime(path.mnt, path.dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				error = inode->i_op->readlink(path.dentry,
 							      buf, bufsiz);
 			}

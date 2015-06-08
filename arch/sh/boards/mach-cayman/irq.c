@@ -48,8 +48,11 @@ static struct irqaction cayman_action_smsc = {
 	.handler	= cayman_interrupt_smsc,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct irqaction cayman_action_pci2 = {
@@ -57,8 +60,11 @@ static struct irqaction cayman_action_pci2 = {
 	.handler	= cayman_interrupt_pci2,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void enable_cayman_irq(struct irq_data *data)

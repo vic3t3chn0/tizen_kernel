@@ -71,7 +71,14 @@
 #include <linux/slab.h>
 #include <linux/hil.h>
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Machine-specific abstraction */
 
@@ -105,7 +112,15 @@ EXPORT_SYMBOL(__hp_sdc_enqueue_transaction);
 EXPORT_SYMBOL(hp_sdc_enqueue_transaction);
 EXPORT_SYMBOL(hp_sdc_dequeue_transaction);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool hp_sdc_disabled;
+=======
 static unsigned int hp_sdc_disabled;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static unsigned int hp_sdc_disabled;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_named(no_hpsdc, hp_sdc_disabled, bool, 0);
 MODULE_PARM_DESC(no_hpsdc, "Do not enable HP SDC driver.");
 
@@ -795,7 +810,15 @@ int hp_sdc_release_cooked_irq(hp_sdc_irqhook *callback)
 
 /************************* Keepalive timer task *********************/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void hp_sdc_kicker(unsigned long data)
+=======
 void hp_sdc_kicker (unsigned long data)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void hp_sdc_kicker (unsigned long data)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	tasklet_schedule(&hp_sdc.task);
 	/* Re-insert the periodic task. */

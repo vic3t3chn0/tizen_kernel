@@ -224,7 +224,15 @@ static ssize_t set_pwm(struct device *dev, struct device_attribute *attr,
 	int speed_index;
 	int ret = count;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &pwm) || pwm > 255)
+=======
 	if (strict_strtoul(buf, 10, &pwm) || pwm > 255)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &pwm) || pwm > 255)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	mutex_lock(&fan_data->lock);
@@ -257,7 +265,15 @@ static ssize_t set_pwm_enable(struct device *dev, struct device_attribute *attr,
 	struct gpio_fan_data *fan_data = dev_get_drvdata(dev);
 	unsigned long val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &val) || val > 1)
+=======
 	if (strict_strtoul(buf, 10, &val) || val > 1)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &val) || val > 1)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	if (fan_data->pwm_enable == val)
@@ -314,7 +330,15 @@ static ssize_t set_rpm(struct device *dev, struct device_attribute *attr,
 	unsigned long rpm;
 	int ret = count;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &rpm))
+=======
 	if (strict_strtoul(buf, 10, &rpm))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &rpm))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	mutex_lock(&fan_data->lock);
@@ -539,6 +563,12 @@ static struct platform_driver gpio_fan_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(gpio_fan_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init gpio_fan_init(void)
 {
 	return platform_driver_register(&gpio_fan_driver);
@@ -551,6 +581,10 @@ static void __exit gpio_fan_exit(void)
 
 module_init(gpio_fan_init);
 module_exit(gpio_fan_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Simon Guinot <sguinot@lacie.com>");
 MODULE_DESCRIPTION("GPIO FAN driver");

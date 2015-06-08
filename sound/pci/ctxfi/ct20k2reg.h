@@ -58,7 +58,11 @@
 <<<<<<< HEAD
 #define GPIO_EXT_DATA       0x1B70A0
 =======
+<<<<<<< HEAD
+#define GPIO_EXT_DATA       0x1B70A0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Virtual memory registers */
 #define VMEM_PTPAL          0x1C6300 /* 0x1C6300 + (16 * Chn) */

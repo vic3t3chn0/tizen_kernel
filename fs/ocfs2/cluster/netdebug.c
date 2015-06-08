@@ -50,7 +50,11 @@
 <<<<<<< HEAD
 #define NODES_DEBUG_NAME	"connected_nodes"
 =======
+<<<<<<< HEAD
+#define NODES_DEBUG_NAME	"connected_nodes"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SHOW_SOCK_CONTAINERS	0
 #define SHOW_SOCK_STATS		1
@@ -62,7 +66,11 @@ static struct dentry *stats_dentry;
 <<<<<<< HEAD
 static struct dentry *nodes_dentry;
 =======
+<<<<<<< HEAD
+static struct dentry *nodes_dentry;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static DEFINE_SPINLOCK(o2net_debug_lock);
 
@@ -500,6 +508,9 @@ static const struct file_operations sc_seq_fops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int o2net_fill_bitmap(char *buf, int len)
 {
 	unsigned long map[BITS_TO_LONGS(O2NM_MAX_NODES)];
@@ -552,6 +563,8 @@ static const struct file_operations nodes_fops = {
 void o2net_debugfs_exit(void)
 {
 	debugfs_remove(nodes_dentry);
+<<<<<<< HEAD
+=======
 =======
 int o2net_debugfs_init(void)
 {
@@ -597,6 +610,7 @@ bail:
 void o2net_debugfs_exit(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	debugfs_remove(stats_dentry);
 	debugfs_remove(sc_dentry);
 	debugfs_remove(nst_dentry);
@@ -604,6 +618,9 @@ void o2net_debugfs_exit(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int o2net_debugfs_init(void)
 {
 	umode_t mode = S_IFREG|S_IRUSR;
@@ -629,6 +646,9 @@ int o2net_debugfs_init(void)
 	return -ENOMEM;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* CONFIG_DEBUG_FS */

@@ -447,8 +447,12 @@ extern void bfin_gpio_irq_prepare(unsigned gpio);
 <<<<<<< HEAD
 #if !BFIN_GPIO_PINT
 =======
+<<<<<<< HEAD
+#if !BFIN_GPIO_PINT
+=======
 #if !defined(CONFIG_BF54x)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void bfin_gpio_ack_irq(struct irq_data *d)
 {
@@ -640,8 +644,12 @@ void bfin_demux_gpio_irq(unsigned int inta_irq,
 <<<<<<< HEAD
 #else
 =======
+<<<<<<< HEAD
+#else
+=======
 #else				/* CONFIG_BF54x */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define NR_PINT_SYS_IRQS	4
 #define NR_PINT_BITS		32
@@ -656,11 +664,16 @@ static unsigned char irq2pint_lut[NR_PINTS];
 static unsigned char pint2irq_lut[NR_PINT_SYS_IRQS * NR_PINT_BITS];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct bfin_pint_regs * const pint[NR_PINT_SYS_IRQS] = {
 	(struct bfin_pint_regs *)PINT0_MASK_SET,
 	(struct bfin_pint_regs *)PINT1_MASK_SET,
 	(struct bfin_pint_regs *)PINT2_MASK_SET,
 	(struct bfin_pint_regs *)PINT3_MASK_SET,
+<<<<<<< HEAD
+=======
 =======
 struct pin_int_t {
 	unsigned int mask_set;
@@ -681,6 +694,7 @@ static struct pin_int_t *pint[NR_PINT_SYS_IRQS] = {
 	(struct pin_int_t *)PINT2_MASK_SET,
 	(struct pin_int_t *)PINT3_MASK_SET,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 inline unsigned int get_irq_base(u32 bank, u8 bmap)
@@ -1000,8 +1014,12 @@ int __init init_arch_irq(void)
 <<<<<<< HEAD
 #if BFIN_GPIO_PINT
 =======
+<<<<<<< HEAD
+#if BFIN_GPIO_PINT
+=======
 #ifdef CONFIG_BF54x
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # ifdef CONFIG_PINTx_REASSIGN
 	pint[0]->assign = CONFIG_PINT0_ASSIGN;
 	pint[1]->assign = CONFIG_PINT1_ASSIGN;
@@ -1020,19 +1038,27 @@ int __init init_arch_irq(void)
 
 		switch (irq) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if BFIN_GPIO_PINT
 		case IRQ_PINT0:
 		case IRQ_PINT1:
 		case IRQ_PINT2:
 		case IRQ_PINT3:
 #elif defined(BF537_FAMILY)
+<<<<<<< HEAD
+=======
 =======
 #if defined(BF537_FAMILY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case IRQ_PH_INTA_MAC_RX:
 		case IRQ_PF_INTA_PG_INTA:
 #elif defined(BF533_FAMILY)
 		case IRQ_PROG_INTA:
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #elif defined(CONFIG_BF54x)
@@ -1041,6 +1067,7 @@ int __init init_arch_irq(void)
 		case IRQ_PINT2:
 		case IRQ_PINT3:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_BF52x) || defined(CONFIG_BF51x)
 		case IRQ_PORTF_INTA:
 		case IRQ_PORTG_INTA:

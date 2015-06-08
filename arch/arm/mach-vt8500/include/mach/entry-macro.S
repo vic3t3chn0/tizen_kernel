@@ -10,10 +10,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.macro	disable_fiq
 	.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro  get_irqnr_preamble, base, tmp
 	@ physical 0xd8140000 is virtual 0xf8140000
 	mov	\base, #0xf8000000
@@ -22,10 +25,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.macro  arch_ret_to_user, tmp1, tmp2
 	.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro	get_irqnr_and_base, irqnr, irqstat, base, tmp
 	ldr	\irqnr, [\base]
 	cmp	\irqnr, #63 @ may be false positive, check interrupt status

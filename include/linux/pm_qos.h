@@ -17,6 +17,9 @@ enum {
 <<<<<<< HEAD
 	PM_QOS_NETWORK_THROUGHPUT,
 =======
+<<<<<<< HEAD
+	PM_QOS_NETWORK_THROUGHPUT,
+=======
 	PM_QOS_MEMORY_THROUGHPUT,
 	PM_QOS_DEVICE_THROUGHPUT,
 	PM_QOS_BUS_THROUGHPUT,
@@ -24,6 +27,7 @@ enum {
 	PM_QOS_CPU_FREQ_MIN,
 	PM_QOS_CPU_FREQ_MAX,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* insert new class ID */
 	PM_QOS_NUM_CLASSES,
@@ -37,6 +41,10 @@ enum {
 #define PM_QOS_NETWORK_THROUGHPUT_DEFAULT_VALUE	0
 #define PM_QOS_DEV_LAT_DEFAULT_VALUE		0
 =======
+<<<<<<< HEAD
+#define PM_QOS_NETWORK_THROUGHPUT_DEFAULT_VALUE	0
+#define PM_QOS_DEV_LAT_DEFAULT_VALUE		0
+=======
 #define PM_QOS_MEMORY_THROUGHPUT_DEFAULT_VALUE	0
 #define PM_QOS_DEVICE_THROUGHPUT_DEFAULT_VALUE	0
 #define PM_QOS_BUS_THROUGHPUT_DEFAULT_VALUE	0
@@ -45,6 +53,7 @@ enum {
 #define PM_QOS_CPU_FREQ_MIN_DEFAULT_VALUE	0
 #define PM_QOS_CPU_FREQ_MAX_DEFAULT_VALUE	PM_QOS_DEFAULT_VALUE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct pm_qos_request {
 	struct plist_node node;
@@ -63,10 +72,14 @@ enum pm_qos_type {
 <<<<<<< HEAD
 	PM_QOS_MIN		/* return the smallest value */
 =======
+<<<<<<< HEAD
+	PM_QOS_MIN		/* return the smallest value */
+=======
 	PM_QOS_MIN,		/* return the smallest value */
 	PM_QOS_SUM,		/* return sum of values greater than zero */
 	PM_QOS_FORCE_MAX,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*

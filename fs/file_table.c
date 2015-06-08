@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "internal.h"
 
@@ -211,8 +215,12 @@ EXPORT_SYMBOL(alloc_file);
 <<<<<<< HEAD
 static void drop_file_write_access(struct file *file)
 =======
+<<<<<<< HEAD
+static void drop_file_write_access(struct file *file)
+=======
 void drop_file_write_access(struct file *file)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct vfsmount *mnt = file->f_path.mnt;
 	struct dentry *dentry = file->f_path.dentry;
@@ -229,8 +237,11 @@ void drop_file_write_access(struct file *file)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL_GPL(drop_file_write_access);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* the real guts of fput() - releasing the last reference to file
  */
@@ -487,6 +498,8 @@ void file_sb_list_del(struct file *file)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int fs_may_remount_ro(struct super_block *sb)
 {
 	struct file *file;
@@ -511,6 +524,7 @@ too_bad:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  *	mark_files_ro - mark all files read-only
  *	@sb: superblock in question

@@ -40,6 +40,9 @@
 #include <linux/init.h>
 #include <linux/interrupt.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq.h>
 #include <linux/seq_file.h>
 
@@ -54,6 +57,8 @@
 		(unsigned)&vector_fiq_offset;		\
 	})
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/seq_file.h>
 
@@ -64,6 +69,7 @@
 #include <asm/traps.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long no_fiq_insn;
 
 /* Default reacquire function
@@ -97,6 +103,9 @@ int show_fiq_list(struct seq_file *p, int prec)
 void set_fiq_handler(void *start, unsigned int length)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *base = vectors_page;
 	unsigned offset = FIQ_OFFSET;
 
@@ -105,6 +114,8 @@ void set_fiq_handler(void *start, unsigned int length)
 		flush_icache_range((unsigned long)base + offset, offset +
 				   length);
 	flush_icache_range(0xffff0000 + offset, 0xffff0000 + offset + length);
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_CPU_USE_DOMAINS)
 	memcpy((void *)0xffff001c, start, length);
@@ -115,6 +126,7 @@ void set_fiq_handler(void *start, unsigned int length)
 	if (!vectors_high())
 		flush_icache_range(0x1c, 0x1c + length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int claim_fiq(struct fiq_handler *f)
@@ -151,30 +163,42 @@ void release_fiq(struct fiq_handler *f)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int fiq_start;
 
 void enable_fiq(int fiq)
 {
 	enable_irq(fiq + fiq_start);
+<<<<<<< HEAD
+=======
 =======
 void enable_fiq(int fiq)
 {
 	enable_irq(fiq + FIQ_START);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void disable_fiq(int fiq)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	disable_irq(fiq + fiq_start);
 }
 
 void fiq_set_type(int fiq, unsigned int type)
 {
 	irq_set_irq_type(fiq + FIQ_START, type);
+<<<<<<< HEAD
+=======
 =======
 	disable_irq(fiq + FIQ_START);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 EXPORT_SYMBOL(set_fiq_handler);
@@ -185,6 +209,9 @@ EXPORT_SYMBOL(release_fiq);
 EXPORT_SYMBOL(enable_fiq);
 EXPORT_SYMBOL(disable_fiq);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(fiq_set_type);
 
 void __init init_FIQ(int start)
@@ -192,10 +219,13 @@ void __init init_FIQ(int start)
 	unsigned offset = FIQ_OFFSET;
 	no_fiq_insn = *(unsigned long *)(0xffff0000 + offset);
 	fiq_start = start;
+<<<<<<< HEAD
+=======
 =======
 
 void __init init_FIQ(void)
 {
 	no_fiq_insn = *(unsigned long *)0xffff001c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

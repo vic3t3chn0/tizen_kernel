@@ -13,6 +13,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __meminit init_page_cgroup(struct page_cgroup *pc, unsigned long id)
 {
 	pc->flags = 0;
@@ -21,6 +23,7 @@ static void __meminit init_page_cgroup(struct page_cgroup *pc, unsigned long id)
 	INIT_LIST_HEAD(&pc->lru);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long total_usage;
 
 #if !defined(CONFIG_SPARSEMEM)
@@ -39,6 +42,9 @@ struct page_cgroup *lookup_page_cgroup(struct page *page)
 
 	base = NODE_DATA(page_to_nid(page))->node_page_cgroup;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_VM
 	/*
 	 * The sanity checks the page allocator does upon freeing a
@@ -49,16 +55,22 @@ struct page_cgroup *lookup_page_cgroup(struct page *page)
 	if (unlikely(!base))
 		return NULL;
 #endif
+<<<<<<< HEAD
+=======
 =======
 	if (unlikely(!base))
 		return NULL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	offset = pfn - NODE_DATA(page_to_nid(page))->node_start_pfn;
 	return base + offset;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init alloc_node_page_cgroup(int nid)
 {
 	struct page_cgroup *base;
@@ -66,6 +78,8 @@ static int __init alloc_node_page_cgroup(int nid)
 	unsigned long nr_pages;
 
 	nr_pages = NODE_DATA(nid)->node_spanned_pages;
+<<<<<<< HEAD
+=======
 =======
 struct page *lookup_cgroup_page(struct page_cgroup *pc)
 {
@@ -90,6 +104,7 @@ static int __init alloc_node_page_cgroup(int nid)
 	nr_pages = NODE_DATA(nid)->node_spanned_pages;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!nr_pages)
 		return 0;
 
@@ -101,11 +116,14 @@ static int __init alloc_node_page_cgroup(int nid)
 		return -ENOMEM;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	for (index = 0; index < nr_pages; index++) {
 		pc = base + index;
 		init_page_cgroup(pc, nid);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NODE_DATA(nid)->node_page_cgroup = base;
 	total_usage += table_size;
 	return 0;
@@ -141,6 +159,9 @@ struct page_cgroup *lookup_page_cgroup(struct page *page)
 	unsigned long pfn = page_to_pfn(page);
 	struct mem_section *section = __pfn_to_section(pfn);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_VM
 	/*
 	 * The sanity checks the page allocator does upon freeing a
@@ -169,6 +190,8 @@ static void *__meminit alloc_page_cgroup(size_t size, int nid)
 		addr = vzalloc_node(size, nid);
 	else
 		addr = vzalloc(size);
+<<<<<<< HEAD
+=======
 =======
 
 	if (!section->page_cgroup)
@@ -202,11 +225,15 @@ static void *__meminit alloc_page_cgroup(size_t size, int nid)
 	else
 		addr = vmalloc(size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return addr;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __meminit init_section_page_cgroup(unsigned long pfn, int nid)
 {
 	struct mem_section *section;
@@ -214,6 +241,8 @@ static int __meminit init_section_page_cgroup(unsigned long pfn, int nid)
 	unsigned long table_size;
 
 	section = __pfn_to_section(pfn);
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_MEMORY_HOTPLUG
 static void free_page_cgroup(void *addr)
@@ -242,6 +271,7 @@ static int __meminit init_section_page_cgroup(unsigned long pfn, int nid)
 	nr = pfn_to_section_nr(pfn);
 	section = __nr_to_section(nr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (section->page_cgroup)
 		return 0;
@@ -263,11 +293,14 @@ static int __meminit init_section_page_cgroup(unsigned long pfn, int nid)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	for (index = 0; index < PAGES_PER_SECTION; index++) {
 		pc = base + index;
 		init_page_cgroup(pc, nr);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The passed "pfn" may not be aligned to SECTION.  For the calculation
 	 * we need to apply a mask.
@@ -279,6 +312,9 @@ static int __meminit init_section_page_cgroup(unsigned long pfn, int nid)
 }
 #ifdef CONFIG_MEMORY_HOTPLUG
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void free_page_cgroup(void *addr)
 {
 	if (is_vmalloc_addr(addr)) {
@@ -293,8 +329,11 @@ static void free_page_cgroup(void *addr)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __free_page_cgroup(unsigned long pfn)
 {
 	struct mem_section *ms;
@@ -319,9 +358,14 @@ int __meminit online_page_cgroup(unsigned long start_pfn,
 	start = SECTION_ALIGN_DOWN(start_pfn);
 	end = SECTION_ALIGN_UP(start_pfn + nr_pages);
 =======
+<<<<<<< HEAD
+	start = SECTION_ALIGN_DOWN(start_pfn);
+	end = SECTION_ALIGN_UP(start_pfn + nr_pages);
+=======
 	start = start_pfn & ~(PAGES_PER_SECTION - 1);
 	end = ALIGN(start_pfn + nr_pages, PAGES_PER_SECTION);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (nid == -1) {
 		/*
@@ -357,9 +401,14 @@ int __meminit offline_page_cgroup(unsigned long start_pfn,
 	start = SECTION_ALIGN_DOWN(start_pfn);
 	end = SECTION_ALIGN_UP(start_pfn + nr_pages);
 =======
+<<<<<<< HEAD
+	start = SECTION_ALIGN_DOWN(start_pfn);
+	end = SECTION_ALIGN_UP(start_pfn + nr_pages);
+=======
 	start = start_pfn & ~(PAGES_PER_SECTION - 1);
 	end = ALIGN(start_pfn + nr_pages, PAGES_PER_SECTION);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (pfn = start; pfn < end; pfn += PAGES_PER_SECTION)
 		__free_page_cgroup(pfn);
@@ -460,8 +509,12 @@ struct swap_cgroup_ctrl {
 <<<<<<< HEAD
 static struct swap_cgroup_ctrl swap_cgroup_ctrl[MAX_SWAPFILES];
 =======
+<<<<<<< HEAD
+static struct swap_cgroup_ctrl swap_cgroup_ctrl[MAX_SWAPFILES];
+=======
 struct swap_cgroup_ctrl swap_cgroup_ctrl[MAX_SWAPFILES];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct swap_cgroup {
 	unsigned short		id;
@@ -469,8 +522,11 @@ struct swap_cgroup {
 #define SC_PER_PAGE	(PAGE_SIZE/sizeof(struct swap_cgroup))
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define SC_POS_MASK	(SC_PER_PAGE - 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * SwapCgroup implements "lookup" and "exchange" operations.
@@ -513,6 +569,9 @@ not_enough_page:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct swap_cgroup *lookup_swap_cgroup(swp_entry_t ent,
 					struct swap_cgroup_ctrl **ctrlp)
 {
@@ -530,8 +589,11 @@ static struct swap_cgroup *lookup_swap_cgroup(swp_entry_t ent,
 	return sc + offset % SC_PER_PAGE;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * swap_cgroup_cmpxchg - cmpxchg mem_cgroup's id for this swp_entry.
  * @end: swap entry to be cmpxchged
@@ -547,6 +609,9 @@ unsigned short swap_cgroup_cmpxchg(swp_entry_t ent,
 <<<<<<< HEAD
 	struct swap_cgroup_ctrl *ctrl;
 =======
+<<<<<<< HEAD
+	struct swap_cgroup_ctrl *ctrl;
+=======
 	int type = swp_type(ent);
 	unsigned long offset = swp_offset(ent);
 	unsigned long idx = offset / SC_PER_PAGE;
@@ -554,10 +619,15 @@ unsigned short swap_cgroup_cmpxchg(swp_entry_t ent,
 	struct swap_cgroup_ctrl *ctrl;
 	struct page *mappage;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct swap_cgroup *sc;
 	unsigned long flags;
 	unsigned short retval;
 
+<<<<<<< HEAD
+	sc = lookup_swap_cgroup(ent, &ctrl);
+
+=======
 <<<<<<< HEAD
 	sc = lookup_swap_cgroup(ent, &ctrl);
 
@@ -568,6 +638,7 @@ unsigned short swap_cgroup_cmpxchg(swp_entry_t ent,
 	sc = page_address(mappage);
 	sc += pos;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&ctrl->lock, flags);
 	retval = sc->id;
 	if (retval == old)
@@ -591,6 +662,9 @@ unsigned short swap_cgroup_record(swp_entry_t ent, unsigned short id)
 <<<<<<< HEAD
 	struct swap_cgroup_ctrl *ctrl;
 =======
+<<<<<<< HEAD
+	struct swap_cgroup_ctrl *ctrl;
+=======
 	int type = swp_type(ent);
 	unsigned long offset = swp_offset(ent);
 	unsigned long idx = offset / SC_PER_PAGE;
@@ -598,10 +672,15 @@ unsigned short swap_cgroup_record(swp_entry_t ent, unsigned short id)
 	struct swap_cgroup_ctrl *ctrl;
 	struct page *mappage;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct swap_cgroup *sc;
 	unsigned short old;
 	unsigned long flags;
 
+<<<<<<< HEAD
+	sc = lookup_swap_cgroup(ent, &ctrl);
+
+=======
 <<<<<<< HEAD
 	sc = lookup_swap_cgroup(ent, &ctrl);
 
@@ -612,6 +691,7 @@ unsigned short swap_cgroup_record(swp_entry_t ent, unsigned short id)
 	sc = page_address(mappage);
 	sc += pos;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&ctrl->lock, flags);
 	old = sc->id;
 	sc->id = id;
@@ -624,12 +704,21 @@ unsigned short swap_cgroup_record(swp_entry_t ent, unsigned short id)
 <<<<<<< HEAD
  * lookup_swap_cgroup_id - lookup mem_cgroup id tied to swap entry
 =======
+<<<<<<< HEAD
+ * lookup_swap_cgroup_id - lookup mem_cgroup id tied to swap entry
+=======
  * lookup_swap_cgroup - lookup mem_cgroup tied to swap entry
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ent: swap entry to be looked up.
  *
  * Returns CSS ID of mem_cgroup at success. 0 at failure. (0 is invalid ID)
  */
+<<<<<<< HEAD
+unsigned short lookup_swap_cgroup_id(swp_entry_t ent)
+{
+	return lookup_swap_cgroup(ent, NULL)->id;
+=======
 <<<<<<< HEAD
 unsigned short lookup_swap_cgroup_id(swp_entry_t ent)
 {
@@ -653,6 +742,7 @@ unsigned short lookup_swap_cgroup(swp_entry_t ent)
 	ret = sc->id;
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int swap_cgroup_swapon(int type, unsigned long max_pages)
@@ -669,10 +759,15 @@ int swap_cgroup_swapon(int type, unsigned long max_pages)
 	array_size = length * sizeof(void *);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	array = vzalloc(array_size);
 	if (!array)
 		goto nomem;
 
+<<<<<<< HEAD
+=======
 =======
 	array = vmalloc(array_size);
 	if (!array)
@@ -680,6 +775,7 @@ int swap_cgroup_swapon(int type, unsigned long max_pages)
 
 	memset(array, 0, array_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctrl = &swap_cgroup_ctrl[type];
 	mutex_lock(&swap_cgroup_mutex);
 	ctrl->length = length;
@@ -702,8 +798,12 @@ nomem:
 <<<<<<< HEAD
 		"swap_cgroup can be disabled by swapaccount=0 boot option\n");
 =======
+<<<<<<< HEAD
+		"swap_cgroup can be disabled by swapaccount=0 boot option\n");
+=======
 		"swap_cgroup can be disabled by noswapaccount boot option\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -ENOMEM;
 }
 

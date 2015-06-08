@@ -62,8 +62,12 @@ EXPORT_SYMBOL(batostr);
 <<<<<<< HEAD
 int bt_err(__u16 code)
 =======
+<<<<<<< HEAD
+int bt_err(__u16 code)
+=======
 int bt_to_errno(__u16 code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (code) {
 	case 0:
@@ -156,6 +160,9 @@ int bt_to_errno(__u16 code)
 <<<<<<< HEAD
 EXPORT_SYMBOL(bt_err);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(bt_err);
+=======
 EXPORT_SYMBOL(bt_to_errno);
 
 int bt_printk(const char *level, const char *format, ...)
@@ -177,3 +184,4 @@ int bt_printk(const char *level, const char *format, ...)
 }
 EXPORT_SYMBOL(bt_printk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -27,6 +27,13 @@
 #include <linux/kernel.h>
 #include <linux/semaphore.h>
 #include <linux/iscsi_boot_sysfs.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <scsi/libiscsi.h>
 #include <scsi/scsi_transport_iscsi.h>
@@ -215,12 +222,38 @@ unlock:
 static ssize_t beiscsi_show_boot_tgt_info(void *data, int type, char *buf)
 {
 	struct beiscsi_hba *phba = data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mgmt_session_info *boot_sess = &phba->boot_sess;
+	struct mgmt_conn_info *boot_conn = &boot_sess->conn_list[0];
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *str = buf;
 	int rc;
 
 	switch (type) {
 	case ISCSI_BOOT_TGT_NAME:
 		rc = sprintf(buf, "%.*s\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			    (int)strlen(boot_sess->target_name),
+			    (char *)&boot_sess->target_name);
+		break;
+	case ISCSI_BOOT_TGT_IP_ADDR:
+		if (boot_conn->dest_ipaddr.ip_type == 0x1)
+			rc = sprintf(buf, "%pI4\n",
+				(char *)&boot_conn->dest_ipaddr.ip_address);
+		else
+			rc = sprintf(str, "%pI6\n",
+				(char *)&boot_conn->dest_ipaddr.ip_address);
+		break;
+	case ISCSI_BOOT_TGT_PORT:
+		rc = sprintf(str, "%d\n", boot_conn->dest_port);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				(int)strlen(phba->boot_sess.target_name),
 				(char *)&phba->boot_sess.target_name);
 		break;
@@ -237,10 +270,50 @@ static ssize_t beiscsi_show_boot_tgt_info(void *data, int type, char *buf)
 	case ISCSI_BOOT_TGT_PORT:
 		rc = sprintf(str, "%d\n", phba->boot_sess.conn_list[0].
 				  dest_port);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case ISCSI_BOOT_TGT_CHAP_NAME:
 		rc = sprintf(str,  "%.*s\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			     boot_conn->negotiated_login_options.auth_data.chap.
+			     target_chap_name_length,
+			     (char *)&boot_conn->negotiated_login_options.
+			     auth_data.chap.target_chap_name);
+		break;
+	case ISCSI_BOOT_TGT_CHAP_SECRET:
+		rc = sprintf(str,  "%.*s\n",
+			     boot_conn->negotiated_login_options.auth_data.chap.
+			     target_secret_length,
+			     (char *)&boot_conn->negotiated_login_options.
+			     auth_data.chap.target_secret);
+		break;
+	case ISCSI_BOOT_TGT_REV_CHAP_NAME:
+		rc = sprintf(str,  "%.*s\n",
+			     boot_conn->negotiated_login_options.auth_data.chap.
+			     intr_chap_name_length,
+			     (char *)&boot_conn->negotiated_login_options.
+			     auth_data.chap.intr_chap_name);
+		break;
+	case ISCSI_BOOT_TGT_REV_CHAP_SECRET:
+		rc = sprintf(str,  "%.*s\n",
+			     boot_conn->negotiated_login_options.auth_data.chap.
+			     intr_secret_length,
+			     (char *)&boot_conn->negotiated_login_options.
+			     auth_data.chap.intr_secret);
+		break;
+	case ISCSI_BOOT_TGT_FLAGS:
+		rc = sprintf(str, "2\n");
+		break;
+	case ISCSI_BOOT_TGT_NIC_ASSOC:
+		rc = sprintf(str, "0\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      phba->boot_sess.conn_list[0].
 				      negotiated_login_options.auth_data.chap.
 				      target_chap_name_length,
@@ -282,6 +355,10 @@ static ssize_t beiscsi_show_boot_tgt_info(void *data, int type, char *buf)
 		break;
 	case ISCSI_BOOT_TGT_NIC_ASSOC:
 			rc = sprintf(str, "0\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		rc = -ENOSYS;
@@ -315,10 +392,23 @@ static ssize_t beiscsi_show_boot_eth_info(void *data, int type, char *buf)
 
 	switch (type) {
 	case ISCSI_BOOT_ETH_FLAGS:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rc = sprintf(str, "2\n");
+		break;
+	case ISCSI_BOOT_ETH_INDEX:
+		rc = sprintf(str, "0\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rc = sprintf(str, "2\n");
 		break;
 	case ISCSI_BOOT_ETH_INDEX:
 			rc = sprintf(str, "0\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case ISCSI_BOOT_ETH_MAC:
 		rc  = beiscsi_get_macaddr(buf, phba);
@@ -335,9 +425,21 @@ static ssize_t beiscsi_show_boot_eth_info(void *data, int type, char *buf)
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t beiscsi_tgt_get_attr_visibility(void *data, int type)
+{
+	umode_t rc;
+=======
 static mode_t beiscsi_tgt_get_attr_visibility(void *data, int type)
 {
 	int rc;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t beiscsi_tgt_get_attr_visibility(void *data, int type)
+{
+	int rc;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (type) {
 	case ISCSI_BOOT_TGT_NAME:
@@ -358,9 +460,21 @@ static mode_t beiscsi_tgt_get_attr_visibility(void *data, int type)
 	return rc;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t beiscsi_ini_get_attr_visibility(void *data, int type)
+{
+	umode_t rc;
+=======
 static mode_t beiscsi_ini_get_attr_visibility(void *data, int type)
 {
 	int rc;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t beiscsi_ini_get_attr_visibility(void *data, int type)
+{
+	int rc;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (type) {
 	case ISCSI_BOOT_INI_INITIATOR_NAME:
@@ -374,9 +488,21 @@ static mode_t beiscsi_ini_get_attr_visibility(void *data, int type)
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t beiscsi_eth_get_attr_visibility(void *data, int type)
+{
+	umode_t rc;
+=======
 static mode_t beiscsi_eth_get_attr_visibility(void *data, int type)
 {
 	int rc;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t beiscsi_eth_get_attr_visibility(void *data, int type)
+{
+	int rc;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (type) {
 	case ISCSI_BOOT_ETH_FLAGS:
@@ -391,6 +517,11 @@ static mode_t beiscsi_eth_get_attr_visibility(void *data, int type)
 	return rc;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int beiscsi_setup_boot_info(struct beiscsi_hba *phba)
 {
 	struct iscsi_boot_kobj *boot_kobj;
@@ -425,6 +556,10 @@ free_kset:
 	return -ENOMEM;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*------------------- PCI Driver operations and data ----------------- */
 static DEFINE_PCI_DEVICE_TABLE(beiscsi_pci_id_table) = {
 	{ PCI_DEVICE(BE_VENDOR_ID, BE_DEVICE_ID1) },
@@ -483,6 +618,11 @@ static struct beiscsi_hba *beiscsi_hba_alloc(struct pci_dev *pcidev)
 	if (iscsi_host_add(shost, &phba->pcidev->dev))
 		goto free_devices;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (beiscsi_setup_boot_info(phba))
 		/*
 		 * log error but continue, because we may not be using
@@ -491,6 +631,10 @@ static struct beiscsi_hba *beiscsi_hba_alloc(struct pci_dev *pcidev)
 		shost_printk(KERN_ERR, phba->shost, "Could not set up "
 		"iSCSI boot info.");
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return phba;
 
 free_devices:
@@ -875,21 +1019,67 @@ static int beiscsi_init_irqs(struct beiscsi_hba *phba)
 	struct hwi_controller *phwi_ctrlr;
 	struct hwi_context_memory *phwi_context;
 	int ret, msix_vec, i, j;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	char desc[32];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	char desc[32];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	phwi_ctrlr = phba->phwi_ctrlr;
 	phwi_context = phwi_ctrlr->phwi_ctxt;
 
 	if (phba->msix_enabled) {
 		for (i = 0; i < phba->num_cpus; i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			phba->msi_name[i] = kzalloc(BEISCSI_MSI_NAME,
+						    GFP_KERNEL);
+			if (!phba->msi_name[i]) {
+				ret = -ENOMEM;
+				goto free_msix_irqs;
+			}
+
+			sprintf(phba->msi_name[i], "beiscsi_%02x_%02x",
+				phba->shost->host_no, i);
+			msix_vec = phba->msix_entries[i].vector;
+			ret = request_irq(msix_vec, be_isr_msix, 0,
+					  phba->msi_name[i],
+=======
 			sprintf(desc, "beiscsi_msix_%04x", i);
 			msix_vec = phba->msix_entries[i].vector;
 			ret = request_irq(msix_vec, be_isr_msix, 0, desc,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			sprintf(desc, "beiscsi_msix_%04x", i);
+			msix_vec = phba->msix_entries[i].vector;
+			ret = request_irq(msix_vec, be_isr_msix, 0, desc,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  &phwi_context->be_eq[i]);
 			if (ret) {
 				shost_printk(KERN_ERR, phba->shost,
 					     "beiscsi_init_irqs-Failed to"
 					     "register msix for i = %d\n", i);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				kfree(phba->msi_name[i]);
+				goto free_msix_irqs;
+			}
+		}
+		phba->msi_name[i] = kzalloc(BEISCSI_MSI_NAME, GFP_KERNEL);
+		if (!phba->msi_name[i]) {
+			ret = -ENOMEM;
+			goto free_msix_irqs;
+		}
+		sprintf(phba->msi_name[i], "beiscsi_mcc_%02x",
+			phba->shost->host_no);
+		msix_vec = phba->msix_entries[i].vector;
+		ret = request_irq(msix_vec, be_isr_mcc, 0, phba->msi_name[i],
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (!i)
 					return ret;
 				goto free_msix_irqs;
@@ -897,11 +1087,23 @@ static int beiscsi_init_irqs(struct beiscsi_hba *phba)
 		}
 		msix_vec = phba->msix_entries[i].vector;
 		ret = request_irq(msix_vec, be_isr_mcc, 0, "beiscsi_msix_mcc",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  &phwi_context->be_eq[i]);
 		if (ret) {
 			shost_printk(KERN_ERR, phba->shost, "beiscsi_init_irqs-"
 				     "Failed to register beiscsi_msix_mcc\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+			kfree(phba->msi_name[i]);
+=======
 			i++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			i++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto free_msix_irqs;
 		}
 
@@ -916,8 +1118,21 @@ static int beiscsi_init_irqs(struct beiscsi_hba *phba)
 	}
 	return 0;
 free_msix_irqs:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (j = i - 1; j >= 0; j--) {
+		kfree(phba->msi_name[j]);
+		msix_vec = phba->msix_entries[j].vector;
+		free_irq(msix_vec, &phwi_context->be_eq[j]);
+	}
+=======
 	for (j = i - 1; j == 0; j++)
 		free_irq(msix_vec, &phwi_context->be_eq[j]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (j = i - 1; j == 0; j++)
+		free_irq(msix_vec, &phwi_context->be_eq[j]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1140,7 +1355,14 @@ be_complete_io(struct beiscsi_conn *beiscsi_conn,
 	struct be_status_bhs *sts_bhs =
 				(struct be_status_bhs *)io_task->cmd_bhs;
 	struct iscsi_conn *conn = beiscsi_conn->conn;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned int sense_len;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned int sense_len;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char *sense;
 	u32 resid = 0, exp_cmdsn, max_cmdsn;
 	u8 rsp, status, flags;
@@ -1159,7 +1381,20 @@ be_complete_io(struct beiscsi_conn *beiscsi_conn,
 						& SOL_STS_MASK) >> 8);
 	flags = ((psol->dw[offsetof(struct amap_sol_cqe, i_flags) / 32]
 					& SOL_FLAGS_MASK) >> 24) | 0x80;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!task->sc) {
+		if (io_task->scsi_cmnd)
+			scsi_dma_unmap(io_task->scsi_cmnd);
 
+		return;
+	}
+=======
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	task->sc->result = (DID_OK << 16) | status;
 	if (rsp != ISCSI_STATUS_CMD_COMPLETED) {
 		task->sc->result = DID_ERROR << 16;
@@ -1183,9 +1418,23 @@ be_complete_io(struct beiscsi_conn *beiscsi_conn,
 	}
 
 	if (status == SAM_STAT_CHECK_CONDITION) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		u16 sense_len;
+		unsigned short *slen = (unsigned short *)sts_bhs->sense_info;
+
+		sense = sts_bhs->sense_info + sizeof(unsigned short);
+		sense_len = be16_to_cpu(*slen);
+=======
 		unsigned short *slen = (unsigned short *)sts_bhs->sense_info;
 		sense = sts_bhs->sense_info + sizeof(unsigned short);
 		sense_len =  cpu_to_be16(*slen);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		unsigned short *slen = (unsigned short *)sts_bhs->sense_info;
+		sense = sts_bhs->sense_info + sizeof(unsigned short);
+		sense_len =  cpu_to_be16(*slen);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcpy(task->sc->sense_buffer, sense,
 		       min_t(u16, sense_len, SCSI_SENSE_BUFFERSIZE));
 	}
@@ -3511,6 +3760,13 @@ static int beiscsi_get_boot_info(struct beiscsi_hba *phba)
 	unsigned int tag, wrb_num;
 	unsigned short status, extd_status;
 	struct be_queue_info *mccq = &phba->ctrl.mcc_obj.q;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = -ENOMEM;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tag = beiscsi_get_boot_target(phba);
 	if (!tag) {
@@ -3535,8 +3791,17 @@ static int beiscsi_get_boot_info(struct beiscsi_hba *phba)
 	boot_resp = embedded_payload(wrb);
 
 	if (boot_resp->boot_session_handle < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		shost_printk(KERN_INFO, phba->shost, "No Boot Session.\n");
+=======
 		printk(KERN_ERR "No Boot Session for this pci_func,"
 			"session Hndl = %d\n", boot_resp->boot_session_handle);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "No Boot Session for this pci_func,"
+			"session Hndl = %d\n", boot_resp->boot_session_handle);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENXIO;
 	}
 
@@ -3574,6 +3839,75 @@ static int beiscsi_get_boot_info(struct beiscsi_hba *phba)
 	wrb = queue_get_wrb(mccq, wrb_num);
 	free_mcc_tag(&phba->ctrl, tag);
 	session_resp = nonemb_cmd.va ;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	memcpy(&phba->boot_sess, &session_resp->session_info,
+	       sizeof(struct mgmt_session_info));
+	ret = 0;
+
+boot_freemem:
+	pci_free_consistent(phba->ctrl.pdev, nonemb_cmd.size,
+		    nonemb_cmd.va, nonemb_cmd.dma);
+	return ret;
+}
+
+static void beiscsi_boot_release(void *data)
+{
+	struct beiscsi_hba *phba = data;
+
+	scsi_host_put(phba->shost);
+}
+
+static int beiscsi_setup_boot_info(struct beiscsi_hba *phba)
+{
+	struct iscsi_boot_kobj *boot_kobj;
+
+	/* get boot info using mgmt cmd */
+	if (beiscsi_get_boot_info(phba))
+		/* Try to see if we can carry on without this */
+		return 0;
+
+	phba->boot_kset = iscsi_boot_create_host_kset(phba->shost->host_no);
+	if (!phba->boot_kset)
+		return -ENOMEM;
+
+	/* get a ref because the show function will ref the phba */
+	if (!scsi_host_get(phba->shost))
+		goto free_kset;
+	boot_kobj = iscsi_boot_create_target(phba->boot_kset, 0, phba,
+					     beiscsi_show_boot_tgt_info,
+					     beiscsi_tgt_get_attr_visibility,
+					     beiscsi_boot_release);
+	if (!boot_kobj)
+		goto put_shost;
+
+	if (!scsi_host_get(phba->shost))
+		goto free_kset;
+	boot_kobj = iscsi_boot_create_initiator(phba->boot_kset, 0, phba,
+						beiscsi_show_boot_ini_info,
+						beiscsi_ini_get_attr_visibility,
+						beiscsi_boot_release);
+	if (!boot_kobj)
+		goto put_shost;
+
+	if (!scsi_host_get(phba->shost))
+		goto free_kset;
+	boot_kobj = iscsi_boot_create_ethernet(phba->boot_kset, 0, phba,
+					       beiscsi_show_boot_eth_info,
+					       beiscsi_eth_get_attr_visibility,
+					       beiscsi_boot_release);
+	if (!boot_kobj)
+		goto put_shost;
+	return 0;
+
+put_shost:
+	scsi_host_put(phba->shost);
+free_kset:
+	iscsi_boot_destroy_kset(phba->boot_kset);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&phba->boot_sess, &session_resp->session_info,
 	       sizeof(struct mgmt_session_info));
 	pci_free_consistent(phba->ctrl.pdev, nonemb_cmd.size,
@@ -3582,6 +3916,10 @@ static int beiscsi_get_boot_info(struct beiscsi_hba *phba)
 boot_freemem:
 	pci_free_consistent(phba->ctrl.pdev, nonemb_cmd.size,
 		    nonemb_cmd.va, nonemb_cmd.dma);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -ENOMEM;
 }
 
@@ -3963,11 +4301,24 @@ static int beiscsi_iotask(struct iscsi_task *task, struct scatterlist *sg,
 	}
 	memcpy(&io_task->cmd_bhs->iscsi_data_pdu.
 	       dw[offsetof(struct amap_pdu_data_out, lun) / 32],
+<<<<<<< HEAD
+<<<<<<< HEAD
+	       &io_task->cmd_bhs->iscsi_hdr.lun, sizeof(struct scsi_lun));
+
+	AMAP_SET_BITS(struct amap_iscsi_wrb, lun, pwrb,
+		      cpu_to_be16(*(unsigned short *)&io_task->cmd_bhs->iscsi_hdr.lun));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       io_task->cmd_bhs->iscsi_hdr.lun, sizeof(struct scsi_lun));
 
 	AMAP_SET_BITS(struct amap_iscsi_wrb, lun, pwrb,
 		      cpu_to_be16((unsigned short)io_task->cmd_bhs->iscsi_hdr.
 				  lun[0]));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	AMAP_SET_BITS(struct amap_iscsi_wrb, r2t_exp_dtl, pwrb, xferlen);
 	AMAP_SET_BITS(struct amap_iscsi_wrb, wrb_idx, pwrb,
 		      io_task->pwrb_handle->wrb_index);
@@ -4025,11 +4376,25 @@ static int beiscsi_mtask(struct iscsi_task *task)
 				      TGT_DM_CMD);
 			AMAP_SET_BITS(struct amap_iscsi_wrb, cmdsn_itt,
 				      pwrb, 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			AMAP_SET_BITS(struct amap_iscsi_wrb, dmsg, pwrb, 1);
+		} else {
+			AMAP_SET_BITS(struct amap_iscsi_wrb, type, pwrb,
+				      INI_RD_CMD);
+			AMAP_SET_BITS(struct amap_iscsi_wrb, dmsg, pwrb, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			AMAP_SET_BITS(struct amap_iscsi_wrb, dmsg, pwrb, 0);
 		} else {
 			AMAP_SET_BITS(struct amap_iscsi_wrb, type, pwrb,
 				      INI_RD_CMD);
 			AMAP_SET_BITS(struct amap_iscsi_wrb, dmsg, pwrb, 1);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		hwi_write_buffer(pwrb, task);
 		break;
@@ -4100,9 +4465,20 @@ static int beiscsi_task_xmit(struct iscsi_task *task)
 	return beiscsi_iotask(task, sg, num_sg, xferlen, writedir);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void beiscsi_quiesce(struct beiscsi_hba *phba)
+{
+=======
 static void beiscsi_remove(struct pci_dev *pcidev)
 {
 	struct beiscsi_hba *phba = NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void beiscsi_remove(struct pci_dev *pcidev)
+{
+	struct beiscsi_hba *phba = NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hwi_controller *phwi_ctrlr;
 	struct hwi_context_memory *phwi_context;
 	struct be_eq_obj *pbe_eq;
@@ -4110,12 +4486,21 @@ static void beiscsi_remove(struct pci_dev *pcidev)
 	u8 *real_offset = 0;
 	u32 value = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phba = (struct beiscsi_hba *)pci_get_drvdata(pcidev);
 	if (!phba) {
 		dev_err(&pcidev->dev, "beiscsi_remove called with no phba\n");
 		return;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phwi_ctrlr = phba->phwi_ctrlr;
 	phwi_context = phwi_ctrlr->phwi_ctxt;
 	hwi_disable_intr(phba);
@@ -4123,6 +4508,13 @@ static void beiscsi_remove(struct pci_dev *pcidev)
 		for (i = 0; i <= phba->num_cpus; i++) {
 			msix_vec = phba->msix_entries[i].vector;
 			free_irq(msix_vec, &phwi_context->be_eq[i]);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			kfree(phba->msi_name[i]);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else
 		if (phba->pcidev->irq)
@@ -4150,11 +4542,54 @@ static void beiscsi_remove(struct pci_dev *pcidev)
 			    phba->ctrl.mbox_mem_alloced.size,
 			    phba->ctrl.mbox_mem_alloced.va,
 			    phba->ctrl.mbox_mem_alloced.dma);
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+
+static void beiscsi_remove(struct pci_dev *pcidev)
+{
+
+	struct beiscsi_hba *phba = NULL;
+
+	phba = pci_get_drvdata(pcidev);
+	if (!phba) {
+		dev_err(&pcidev->dev, "beiscsi_remove called with no phba\n");
+		return;
+	}
+
+	beiscsi_quiesce(phba);
+	iscsi_boot_destroy_kset(phba->boot_kset);
+	iscsi_host_remove(phba->shost);
+	pci_dev_put(phba->pcidev);
+	iscsi_host_free(phba->shost);
+	pci_disable_device(pcidev);
+}
+
+static void beiscsi_shutdown(struct pci_dev *pcidev)
+{
+
+	struct beiscsi_hba *phba = NULL;
+
+	phba = (struct beiscsi_hba *)pci_get_drvdata(pcidev);
+	if (!phba) {
+		dev_err(&pcidev->dev, "beiscsi_shutdown called with no phba\n");
+		return;
+	}
+
+	beiscsi_quiesce(phba);
+	pci_disable_device(pcidev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (phba->boot_kset)
 		iscsi_boot_destroy_kset(phba->boot_kset);
 	iscsi_host_remove(phba->shost);
 	pci_dev_put(phba->pcidev);
 	iscsi_host_free(phba->shost);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void beiscsi_msix_enable(struct beiscsi_hba *phba)
@@ -4234,7 +4669,15 @@ static int __devinit beiscsi_dev_probe(struct pci_dev *pcidev,
 			gcrashmode++;
 			shost_printk(KERN_ERR, phba->shost,
 				"Loading Driver in crashdump mode\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ret = beiscsi_cmd_reset_function(phba);
+=======
 			ret = beiscsi_pci_soft_reset(phba);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ret = beiscsi_pci_soft_reset(phba);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret) {
 				shost_printk(KERN_ERR, phba->shost,
 					"Reset Failed. Aborting Crashdump\n");
@@ -4310,11 +4753,29 @@ static int __devinit beiscsi_dev_probe(struct pci_dev *pcidev,
 		goto free_blkenbld;
 	}
 	hwi_enable_intr(phba);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (beiscsi_setup_boot_info(phba))
+		/*
+		 * log error but continue, because we may not be using
+		 * iscsi boot.
+		 */
+		shost_printk(KERN_ERR, phba->shost, "Could not set up "
+			     "iSCSI boot info.");
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = beiscsi_get_boot_info(phba);
 	if (ret < 0) {
 		shost_printk(KERN_ERR, phba->shost, "beiscsi_dev_probe-"
 			     "No Boot Devices !!!!!\n");
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SE_DEBUG(DBG_LVL_8, "\n\n\n SUCCESS - DRIVER LOADED\n\n\n");
 	return 0;
 
@@ -4359,6 +4820,11 @@ struct iscsi_transport beiscsi_iscsi_transport = {
 	.name = DRV_NAME,
 	.caps = CAP_RECOVERY_L0 | CAP_HDRDGST | CAP_TEXT_NEGO |
 		CAP_MULTI_R2T | CAP_DATADGST | CAP_DATA_PATH_OFFLOAD,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.param_mask = ISCSI_MAX_RECV_DLENGTH |
 		ISCSI_MAX_XMIT_DLENGTH |
 		ISCSI_HDRDGST_EN |
@@ -4385,11 +4851,22 @@ struct iscsi_transport beiscsi_iscsi_transport = {
 		ISCSI_IFACE_NAME | ISCSI_INITIATOR_NAME,
 	.host_param_mask = ISCSI_HOST_HWADDRESS | ISCSI_HOST_IPADDRESS |
 				ISCSI_HOST_INITIATOR_NAME,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.create_session = beiscsi_session_create,
 	.destroy_session = beiscsi_session_destroy,
 	.create_conn = beiscsi_conn_create,
 	.bind_conn = beiscsi_conn_bind,
 	.destroy_conn = iscsi_conn_teardown,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.attr_is_visible = be2iscsi_attr_is_visible,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_param = beiscsi_set_param,
 	.get_conn_param = iscsi_conn_get_param,
 	.get_session_param = iscsi_session_get_param,
@@ -4413,6 +4890,13 @@ static struct pci_driver beiscsi_pci_driver = {
 	.name = DRV_NAME,
 	.probe = beiscsi_dev_probe,
 	.remove = beiscsi_remove,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.shutdown = beiscsi_shutdown,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = beiscsi_pci_id_table
 };
 

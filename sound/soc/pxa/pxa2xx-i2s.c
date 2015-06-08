@@ -20,7 +20,11 @@
 <<<<<<< HEAD
 #include <linux/io.h>
 =======
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/initval.h>
@@ -338,8 +342,12 @@ static int  pxa2xx_i2s_remove(struct snd_soc_dai *dai)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops pxa_i2s_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops pxa_i2s_dai_ops = {
+=======
 static struct snd_soc_dai_ops pxa_i2s_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= pxa2xx_i2s_startup,
 	.shutdown	= pxa2xx_i2s_shutdown,
 	.trigger	= pxa2xx_i2s_trigger,

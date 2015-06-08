@@ -20,7 +20,14 @@
 #include <asm/immap_cpm2.h>
 
 static struct mtd_info *sbcmtd[3];
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static struct mtd_partition *sbcmtd_parts[3];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct mtd_partition *sbcmtd_parts[3];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct map_info sbc82xx_flash_map[3] = {
 	{.name = "Boot flash"},
@@ -101,6 +108,13 @@ static int __init init_sbc82xx_flash(void)
 	for (i=0; i<3; i++) {
 		int8_t flashcs[3] = { 0, 6, 1 };
 		int nr_parts;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct mtd_partition *defparts;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		printk(KERN_NOTICE "PowerQUICC II %s (%ld MiB on CS%d",
 		       sbc82xx_flash_map[i].name,
@@ -113,7 +127,16 @@ static int __init init_sbc82xx_flash(void)
 		}
 		printk(" at %08lx)\n",  sbc82xx_flash_map[i].phys);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sbc82xx_flash_map[i].virt = ioremap(sbc82xx_flash_map[i].phys,
+						    sbc82xx_flash_map[i].size);
+=======
 		sbc82xx_flash_map[i].virt = ioremap(sbc82xx_flash_map[i].phys, sbc82xx_flash_map[i].size);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sbc82xx_flash_map[i].virt = ioremap(sbc82xx_flash_map[i].phys, sbc82xx_flash_map[i].size);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!sbc82xx_flash_map[i].virt) {
 			printk("Failed to ioremap\n");
@@ -129,6 +152,25 @@ static int __init init_sbc82xx_flash(void)
 
 		sbcmtd[i]->owner = THIS_MODULE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* No partitioning detected. Use default */
+		if (i == 2) {
+			defparts = NULL;
+			nr_parts = 0;
+		} else if (i == bigflash) {
+			defparts = bigflash_parts;
+			nr_parts = ARRAY_SIZE(bigflash_parts);
+		} else {
+			defparts = smallflash_parts;
+			nr_parts = ARRAY_SIZE(smallflash_parts);
+		}
+
+		mtd_device_parse_register(sbcmtd[i], part_probes, NULL,
+					  defparts, nr_parts);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nr_parts = parse_mtd_partitions(sbcmtd[i], part_probes,
 						&sbcmtd_parts[i], 0);
 		if (nr_parts > 0) {
@@ -147,6 +189,10 @@ static int __init init_sbc82xx_flash(void)
 			mtd_device_register(sbcmtd[i], smallflash_parts,
 					    ARRAY_SIZE(smallflash_parts));
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -159,12 +205,23 @@ static void __exit cleanup_sbc82xx_flash(void)
 		if (!sbcmtd[i])
 			continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mtd_device_unregister(sbcmtd[i]);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (i<2 || sbcmtd_parts[i])
 			mtd_device_unregister(sbcmtd[i]);
 		else
 			mtd_device_unregister(sbcmtd[i]);
 
 		kfree(sbcmtd_parts[i]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		map_destroy(sbcmtd[i]);
 
 		iounmap((void *)sbc82xx_flash_map[i].virt);

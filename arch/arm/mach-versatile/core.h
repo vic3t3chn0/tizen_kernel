@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/of_platform.h>
 =======
+<<<<<<< HEAD
+#include <linux/of_platform.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void __init versatile_init(void);
 extern void __init versatile_init_early(void);
@@ -34,6 +38,9 @@ extern void __init versatile_init_irq(void);
 extern void __init versatile_map_io(void);
 extern struct sys_timer versatile_timer;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void versatile_restart(char, const char *);
 extern unsigned int mmc_status(struct device *dev);
 #ifdef CONFIG_OF
@@ -45,6 +52,8 @@ static AMBA_APB_DEVICE(name, busid, 0, VERSATILE_##base##_BASE, base##_IRQ, plat
 
 #define AHB_DEVICE(name, busid, base, plat)	\
 static AMBA_AHB_DEVICE(name, busid, 0, VERSATILE_##base##_BASE, base##_IRQ, plat)
+<<<<<<< HEAD
+=======
 =======
 extern unsigned int mmc_status(struct device *dev);
 
@@ -64,5 +73,6 @@ static struct amba_device name##_device = {			\
 	.irq		= base##_IRQ,				\
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

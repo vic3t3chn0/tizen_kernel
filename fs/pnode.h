@@ -10,6 +10,9 @@
 
 #include <linux/list.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "mount.h"
 
 #define IS_MNT_SHARED(m) ((m)->mnt.mnt_flags & MNT_SHARED)
@@ -17,6 +20,8 @@
 #define IS_MNT_NEW(m)  (!(m)->mnt_ns)
 #define CLEAR_MNT_SHARED(m) ((m)->mnt.mnt_flags &= ~MNT_SHARED)
 #define IS_MNT_UNBINDABLE(m) ((m)->mnt.mnt_flags & MNT_UNBINDABLE)
+<<<<<<< HEAD
+=======
 =======
 #include <linux/mount.h>
 
@@ -26,6 +31,7 @@
 #define CLEAR_MNT_SHARED(mnt) (mnt->mnt_flags &= ~MNT_SHARED)
 #define IS_MNT_UNBINDABLE(mnt) (mnt->mnt_flags & MNT_UNBINDABLE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CL_EXPIRE    		0x01
 #define CL_SLAVE     		0x02
@@ -34,6 +40,9 @@
 #define CL_PRIVATE 		0x10
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void set_mnt_shared(struct mount *mnt)
 {
 	mnt->mnt.mnt_flags &= ~MNT_SHARED_MASK;
@@ -55,6 +64,8 @@ void umount_tree(struct mount *, int, struct list_head *);
 struct mount *copy_tree(struct mount *, struct dentry *, int);
 bool is_path_reachable(struct mount *, struct dentry *,
 			 const struct path *root);
+<<<<<<< HEAD
+=======
 =======
 static inline void set_mnt_shared(struct vfsmount *mnt)
 {
@@ -70,4 +81,5 @@ int propagate_mount_busy(struct vfsmount *, int);
 void mnt_release_group_id(struct vfsmount *);
 int get_dominating_id(struct vfsmount *mnt, const struct path *root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _LINUX_PNODE_H */

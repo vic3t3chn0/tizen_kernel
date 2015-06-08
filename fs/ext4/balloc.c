@@ -27,7 +27,12 @@
 static unsigned ext4_num_base_meta_clusters(struct super_block *sb,
 					    ext4_group_t block_group);
 =======
+<<<<<<< HEAD
+static unsigned ext4_num_base_meta_clusters(struct super_block *sb,
+					    ext4_group_t block_group);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * balloc.c contains the blocks allocation and deallocation routines
  */
@@ -37,8 +42,13 @@ static unsigned ext4_num_base_meta_clusters(struct super_block *sb,
  * Calculate the block group number and offset into the block/cluster
  * allocation bitmap, given a block number
 =======
+<<<<<<< HEAD
+ * Calculate the block group number and offset into the block/cluster
+ * allocation bitmap, given a block number
+=======
  * Calculate the block group number and offset, given a block number
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void ext4_get_group_no_and_offset(struct super_block *sb, ext4_fsblk_t blocknr,
 		ext4_group_t *blockgrpp, ext4_grpblk_t *offsetp)
@@ -51,8 +61,13 @@ void ext4_get_group_no_and_offset(struct super_block *sb, ext4_fsblk_t blocknr,
 	offset = do_div(blocknr, EXT4_BLOCKS_PER_GROUP(sb)) >>
 		EXT4_SB(sb)->s_cluster_bits;
 =======
+<<<<<<< HEAD
+	offset = do_div(blocknr, EXT4_BLOCKS_PER_GROUP(sb)) >>
+		EXT4_SB(sb)->s_cluster_bits;
+=======
 	offset = do_div(blocknr, EXT4_BLOCKS_PER_GROUP(sb));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (offsetp)
 		*offsetp = offset;
 	if (blockgrpp)
@@ -71,6 +86,9 @@ static int ext4_block_in_group(struct super_block *sb, ext4_fsblk_t block,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Return the number of clusters used for file system metadata; this
  * represents the overhead needed by the file system.
  */
@@ -234,6 +252,8 @@ unsigned ext4_free_clusters_after_init(struct super_block *sb,
 	return num_clusters_in_group(sb, block_group) - 
 		ext4_num_overhead_clusters(sb, block_group, gdp);
 }
+<<<<<<< HEAD
+=======
 =======
 static int ext4_group_used_meta_blocks(struct super_block *sb,
 				       ext4_group_t block_group,
@@ -360,6 +380,7 @@ unsigned ext4_init_block_bitmap(struct super_block *sb, struct buffer_head *bh,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The free blocks are managed by bitmaps.  A file system contains several
@@ -475,16 +496,22 @@ err_out:
  */
 struct buffer_head *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ext4_read_block_bitmap_nowait(struct super_block *sb, ext4_group_t block_group)
 {
 	struct ext4_group_desc *desc;
 	struct buffer_head *bh;
+<<<<<<< HEAD
+=======
 =======
 ext4_read_block_bitmap(struct super_block *sb, ext4_group_t block_group)
 {
 	struct ext4_group_desc *desc;
 	struct buffer_head *bh = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext4_fsblk_t bitmap_blk;
 
 	desc = ext4_get_group_desc(sb, block_group, NULL);
@@ -498,10 +525,16 @@ ext4_read_block_bitmap(struct super_block *sb, ext4_group_t block_group)
 			   "block_group = %u, block_bitmap = %llu",
 			   block_group, bitmap_blk);
 =======
+<<<<<<< HEAD
+		ext4_error(sb, "Cannot get buffer for block bitmap - "
+			   "block_group = %u, block_bitmap = %llu",
+			   block_group, bitmap_blk);
+=======
 		ext4_error(sb, "Cannot read block bitmap - "
 			    "block_group = %u, block_bitmap = %llu",
 			    block_group, bitmap_blk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 
@@ -534,6 +567,9 @@ ext4_read_block_bitmap(struct super_block *sb, ext4_group_t block_group)
 	}
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * submit the buffer_head for reading
 	 */
 	set_buffer_new(bh);
@@ -578,6 +614,8 @@ ext4_read_block_bitmap(struct super_block *sb, ext4_group_t block_group)
 		put_bh(bh);
 		return NULL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	 * submit the buffer_head for read. We can
 	 * safely mark the bitmap as uptodate now.
@@ -599,11 +637,15 @@ ext4_read_block_bitmap(struct super_block *sb, ext4_group_t block_group)
 	 * continue with corrupt bitmap
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return bh;
 }
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ext4_has_free_clusters()
  * @sbi:	in-core super block structure.
  * @nclusters:	number of needed blocks
@@ -635,6 +677,8 @@ static int ext4_has_free_clusters(struct ext4_sb_info *sbi,
 		return 1;
 
 	/* Hm, nope.  Are (enough) root reserved clusters available? */
+<<<<<<< HEAD
+=======
 =======
  * ext4_has_free_blocks()
  * @sbi:	in-core super block structure.
@@ -667,6 +711,7 @@ static int ext4_has_free_blocks(struct ext4_sb_info *sbi,
 
 	/* Hm, nope.  Are (enough) root reserved blocks available? */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sbi->s_resuid == current_fsuid() ||
 	    ((sbi->s_resgid != 0) && in_group_p(sbi->s_resgid)) ||
 	    capable(CAP_SYS_RESOURCE) ||
@@ -675,8 +720,12 @@ static int ext4_has_free_blocks(struct ext4_sb_info *sbi,
 <<<<<<< HEAD
 		if (free_clusters >= (nclusters + dirty_clusters))
 =======
+<<<<<<< HEAD
+		if (free_clusters >= (nclusters + dirty_clusters))
+=======
 		if (free_blocks >= (nblocks + dirty_blocks))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 1;
 	}
 
@@ -684,11 +733,16 @@ static int ext4_has_free_blocks(struct ext4_sb_info *sbi,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ext4_claim_free_clusters(struct ext4_sb_info *sbi,
 			     s64 nclusters, unsigned int flags)
 {
 	if (ext4_has_free_clusters(sbi, nclusters, flags)) {
 		percpu_counter_add(&sbi->s_dirtyclusters_counter, nclusters);
+<<<<<<< HEAD
+=======
 =======
 int ext4_claim_free_blocks(struct ext4_sb_info *sbi,
 			   s64 nblocks, unsigned int flags)
@@ -696,6 +750,7 @@ int ext4_claim_free_blocks(struct ext4_sb_info *sbi,
 	if (ext4_has_free_blocks(sbi, nblocks, flags)) {
 		percpu_counter_add(&sbi->s_dirtyblocks_counter, nblocks);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	} else
 		return -ENOSPC;
@@ -718,8 +773,12 @@ int ext4_should_retry_alloc(struct super_block *sb, int *retries)
 <<<<<<< HEAD
 	if (!ext4_has_free_clusters(EXT4_SB(sb), 1, 0) ||
 =======
+<<<<<<< HEAD
+	if (!ext4_has_free_clusters(EXT4_SB(sb), 1, 0) ||
+=======
 	if (!ext4_has_free_blocks(EXT4_SB(sb), 1, 0) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (*retries)++ > 3 ||
 	    !EXT4_SB(sb)->s_journal)
 		return 0;
@@ -738,8 +797,12 @@ int ext4_should_retry_alloc(struct super_block *sb, int *retries)
 <<<<<<< HEAD
  * @count:		pointer to total number of clusters needed
 =======
+<<<<<<< HEAD
+ * @count:		pointer to total number of clusters needed
+=======
  * @count:		pointer to total number of blocks needed
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @errp:               error code
  *
  * Return 1st allocated block number on success, *count stores total account
@@ -775,20 +838,30 @@ ext4_fsblk_t ext4_new_meta_blocks(handle_t *handle, struct inode *inode,
 		dquot_alloc_block_nofail(inode,
 				EXT4_C2B(EXT4_SB(inode->i_sb), ar.len));
 =======
+<<<<<<< HEAD
+		dquot_alloc_block_nofail(inode,
+				EXT4_C2B(EXT4_SB(inode->i_sb), ar.len));
+=======
 		dquot_alloc_block_nofail(inode, ar.len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return ret;
 }
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ext4_count_free_clusters() -- count filesystem free clusters
  * @sb:		superblock
  *
  * Adds up the number of free clusters from each block group.
  */
 ext4_fsblk_t ext4_count_free_clusters(struct super_block *sb)
+<<<<<<< HEAD
+=======
 =======
  * ext4_count_free_blocks() -- count filesystem free blocks
  * @sb:		superblock
@@ -797,6 +870,7 @@ ext4_fsblk_t ext4_count_free_clusters(struct super_block *sb)
  */
 ext4_fsblk_t ext4_count_free_blocks(struct super_block *sb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ext4_fsblk_t desc_count;
 	struct ext4_group_desc *gdp;
@@ -820,14 +894,21 @@ ext4_fsblk_t ext4_count_free_blocks(struct super_block *sb)
 <<<<<<< HEAD
 		desc_count += ext4_free_group_clusters(sb, gdp);
 =======
+<<<<<<< HEAD
+		desc_count += ext4_free_group_clusters(sb, gdp);
+=======
 		desc_count += ext4_free_blks_count(sb, gdp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		brelse(bitmap_bh);
 		bitmap_bh = ext4_read_block_bitmap(sb, i);
 		if (bitmap_bh == NULL)
 			continue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		x = ext4_count_free(bitmap_bh, sb->s_blocksize);
 		printk(KERN_DEBUG "group %u: stored = %d, counted = %u\n",
 			i, ext4_free_group_clusters(sb, gdp), x);
@@ -837,6 +918,8 @@ ext4_fsblk_t ext4_count_free_blocks(struct super_block *sb)
 	printk(KERN_DEBUG "ext4_count_free_clusters: stored = %llu"
 	       ", computed = %llu, %llu\n",
 	       EXT4_B2C(EXT4_SB(sb), ext4_free_blocks_count(es)),
+<<<<<<< HEAD
+=======
 =======
 		x = ext4_count_free(bitmap_bh->b_data,
 				    EXT4_BLOCKS_PER_GROUP(sb) / 8);
@@ -848,6 +931,7 @@ ext4_fsblk_t ext4_count_free_blocks(struct super_block *sb)
 	printk(KERN_DEBUG "ext4_count_free_blocks: stored = %llu"
 		", computed = %llu, %llu\n", ext4_free_blocks_count(es),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       desc_count, bitmap_count);
 	return bitmap_count;
 #else
@@ -859,8 +943,12 @@ ext4_fsblk_t ext4_count_free_blocks(struct super_block *sb)
 <<<<<<< HEAD
 		desc_count += ext4_free_group_clusters(sb, gdp);
 =======
+<<<<<<< HEAD
+		desc_count += ext4_free_group_clusters(sb, gdp);
+=======
 		desc_count += ext4_free_blks_count(sb, gdp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return desc_count;
@@ -951,6 +1039,9 @@ unsigned long ext4_bg_num_gdb(struct super_block *sb, ext4_group_t group)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This function returns the number of file system metadata clusters at
  * the beginning of a block group, including the reserved gdt blocks.
@@ -1024,5 +1115,8 @@ ext4_fsblk_t ext4_inode_to_goal_block(struct inode *inode)
 	return bg_start + colour;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

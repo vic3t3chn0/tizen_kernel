@@ -73,9 +73,12 @@ struct trace_iterator {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cpumask_var_t		started;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* The below is zeroed out in pipe_read */
 	struct trace_seq	seq;
 	struct trace_entry	*ent;
@@ -84,7 +87,11 @@ struct trace_iterator {
 <<<<<<< HEAD
 	int			ent_size;
 =======
+<<<<<<< HEAD
+	int			ent_size;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			cpu;
 	u64			ts;
 
@@ -94,8 +101,12 @@ struct trace_iterator {
 <<<<<<< HEAD
 	cpumask_var_t		started;
 =======
+<<<<<<< HEAD
+	cpumask_var_t		started;
+=======
 	/* All new field here will be zeroed out in pipe_read */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -143,12 +154,18 @@ void trace_nowake_buffer_unlock_commit(struct ring_buffer *buffer,
 				       struct ring_buffer_event *event,
 					unsigned long flags, int pc);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void trace_nowake_buffer_unlock_commit_regs(struct ring_buffer *buffer,
 					    struct ring_buffer_event *event,
 					    unsigned long flags, int pc,
 					    struct pt_regs *regs);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void trace_current_buffer_discard_commit(struct ring_buffer *buffer,
 					 struct ring_buffer_event *event);
 
@@ -163,12 +180,18 @@ enum trace_reg {
 	TRACE_REG_PERF_REGISTER,
 	TRACE_REG_PERF_UNREGISTER,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TRACE_REG_PERF_OPEN,
 	TRACE_REG_PERF_CLOSE,
 	TRACE_REG_PERF_ADD,
 	TRACE_REG_PERF_DEL,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 };
 
@@ -184,8 +207,12 @@ struct ftrace_event_class {
 <<<<<<< HEAD
 				       enum trace_reg type, void *data);
 =======
+<<<<<<< HEAD
+				       enum trace_reg type, void *data);
+=======
 				       enum trace_reg type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			(*define_fields)(struct ftrace_event_call *);
 	struct list_head	*(*get_fields)(struct ftrace_event_call *);
 	struct list_head	fields;
@@ -196,8 +223,12 @@ extern int ftrace_event_reg(struct ftrace_event_call *event,
 <<<<<<< HEAD
 			    enum trace_reg type, void *data);
 =======
+<<<<<<< HEAD
+			    enum trace_reg type, void *data);
+=======
 			    enum trace_reg type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	TRACE_EVENT_FL_ENABLED_BIT,
@@ -208,7 +239,12 @@ enum {
 	TRACE_EVENT_FL_NO_SET_FILTER_BIT,
 	TRACE_EVENT_FL_IGNORE_ENABLE_BIT,
 =======
+<<<<<<< HEAD
+	TRACE_EVENT_FL_NO_SET_FILTER_BIT,
+	TRACE_EVENT_FL_IGNORE_ENABLE_BIT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum {
@@ -220,7 +256,12 @@ enum {
 	TRACE_EVENT_FL_NO_SET_FILTER	= (1 << TRACE_EVENT_FL_NO_SET_FILTER_BIT),
 	TRACE_EVENT_FL_IGNORE_ENABLE	= (1 << TRACE_EVENT_FL_IGNORE_ENABLE_BIT),
 =======
+<<<<<<< HEAD
+	TRACE_EVENT_FL_NO_SET_FILTER	= (1 << TRACE_EVENT_FL_NO_SET_FILTER_BIT),
+	TRACE_EVENT_FL_IGNORE_ENABLE	= (1 << TRACE_EVENT_FL_IGNORE_ENABLE_BIT),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct ftrace_event_call {
@@ -284,7 +325,11 @@ enum {
 <<<<<<< HEAD
 	FILTER_TRACE_FN,
 =======
+<<<<<<< HEAD
+	FILTER_TRACE_FN,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define EVENT_STORAGE_SIZE 128

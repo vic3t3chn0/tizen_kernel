@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/mac80211.h>
 #include "ieee80211_i.h"
 #include "driver-ops.h"
@@ -62,7 +66,12 @@
  * Note that the sta can get destroyed before the BA tear down is
  * complete.
 =======
+<<<<<<< HEAD
+ * Note that the sta can get destroyed before the BA tear down is
+ * complete.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
@@ -82,12 +91,18 @@ static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
 		return;
 
 =======
+<<<<<<< HEAD
+	if (!skb)
+		return;
+
+=======
 	if (!skb) {
 		printk(KERN_ERR "%s: failed to allocate buffer "
 				"for addba request frame\n", sdata->name);
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_reserve(skb, local->hw.extra_tx_headroom);
 	mgmt = (struct ieee80211_mgmt *) skb_put(skb, 24);
 	memset(mgmt, 0, 24);
@@ -95,6 +110,9 @@ static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
 	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
 	if (sdata->vif.type == NL80211_IFTYPE_AP ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    sdata->vif.type == NL80211_IFTYPE_AP_VLAN ||
 	    sdata->vif.type == NL80211_IFTYPE_MESH_POINT)
 		memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
@@ -102,12 +120,15 @@ static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
 		memcpy(mgmt->bssid, sdata->u.mgd.bssid, ETH_ALEN);
 	else if (sdata->vif.type == NL80211_IFTYPE_ADHOC)
 		memcpy(mgmt->bssid, sdata->u.ibss.bssid, ETH_ALEN);
+<<<<<<< HEAD
+=======
 =======
 	    sdata->vif.type == NL80211_IFTYPE_AP_VLAN)
 		memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
 	else if (sdata->vif.type == NL80211_IFTYPE_STATION)
 		memcpy(mgmt->bssid, sdata->u.mgd.bssid, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mgmt->frame_control = cpu_to_le16(IEEE80211_FTYPE_MGMT |
 					  IEEE80211_STYPE_ACTION);
@@ -129,12 +150,17 @@ static void ieee80211_send_addba_request(struct ieee80211_sub_if_data *sdata,
 					cpu_to_le16(start_seq_num << 4);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ieee80211_tx_skb_tid(sdata, skb, tid);
 }
 
 void ieee80211_send_bar(struct ieee80211_vif *vif, u8 *ra, u16 tid, u16 ssn)
 {
 	struct ieee80211_sub_if_data *sdata = vif_to_sdata(vif);
+<<<<<<< HEAD
+=======
 =======
 	ieee80211_tx_skb(sdata, skb);
 }
@@ -142,6 +168,7 @@ void ieee80211_send_bar(struct ieee80211_vif *vif, u8 *ra, u16 tid, u16 ssn)
 void ieee80211_send_bar(struct ieee80211_sub_if_data *sdata, u8 *ra, u16 tid, u16 ssn)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ieee80211_local *local = sdata->local;
 	struct sk_buff *skb;
 	struct ieee80211_bar *bar;
@@ -153,12 +180,18 @@ void ieee80211_send_bar(struct ieee80211_sub_if_data *sdata, u8 *ra, u16 tid, u1
 		return;
 
 =======
+<<<<<<< HEAD
+	if (!skb)
+		return;
+
+=======
 	if (!skb) {
 		printk(KERN_ERR "%s: failed to allocate buffer for "
 			"bar frame\n", sdata->name);
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_reserve(skb, local->hw.extra_tx_headroom);
 	bar = (struct ieee80211_bar *)skb_put(skb, sizeof(*bar));
 	memset(bar, 0, sizeof(*bar));
@@ -171,8 +204,12 @@ void ieee80211_send_bar(struct ieee80211_sub_if_data *sdata, u8 *ra, u16 tid, u1
 <<<<<<< HEAD
 	bar_control |= (u16)(tid << IEEE80211_BAR_CTRL_TID_INFO_SHIFT);
 =======
+<<<<<<< HEAD
+	bar_control |= (u16)(tid << IEEE80211_BAR_CTRL_TID_INFO_SHIFT);
+=======
 	bar_control |= (u16)(tid << 12);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bar->control = cpu_to_le16(bar_control);
 	bar->start_seq_num = cpu_to_le16(ssn);
 
@@ -182,9 +219,15 @@ void ieee80211_send_bar(struct ieee80211_sub_if_data *sdata, u8 *ra, u16 tid, u1
 }
 EXPORT_SYMBOL(ieee80211_send_bar);
 =======
+<<<<<<< HEAD
+	ieee80211_tx_skb_tid(sdata, skb, tid);
+}
+EXPORT_SYMBOL(ieee80211_send_bar);
+=======
 	ieee80211_tx_skb(sdata, skb);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void ieee80211_assign_tid_tx(struct sta_info *sta, int tid,
 			     struct tid_ampdu_tx *tid_tx)
@@ -239,7 +282,11 @@ int ___ieee80211_stop_tx_ba_session(struct sta_info *sta, u16 tid,
 <<<<<<< HEAD
 	del_timer_sync(&tid_tx->session_timer);
 =======
+<<<<<<< HEAD
+	del_timer_sync(&tid_tx->session_timer);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * After this packets are no longer handed right through
@@ -444,7 +491,11 @@ void ieee80211_tx_ba_session_handle_start(struct sta_info *sta, int tid)
 <<<<<<< HEAD
 	sta->ampdu_mlme.last_addba_req_time[tid] = jiffies;
 =======
+<<<<<<< HEAD
+	sta->ampdu_mlme.last_addba_req_time[tid] = jiffies;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sta->ampdu_mlme.addba_req_num[tid]++;
 	spin_unlock_bh(&sta->lock);
 
@@ -456,6 +507,9 @@ void ieee80211_tx_ba_session_handle_start(struct sta_info *sta, int tid)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * After accepting the AddBA Response we activated a timer,
  * resetting it after each frame that we send.
@@ -478,8 +532,11 @@ static void sta_tx_agg_session_timer_expired(unsigned long data)
 	ieee80211_stop_tx_ba_session(&sta->sta, *ptid);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 				  u16 timeout)
 {
@@ -499,8 +556,13 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 	    !(local->hw.flags & IEEE80211_HW_AMPDU_AGGREGATION) ||
 	    (local->hw.flags & IEEE80211_HW_TX_AMPDU_SETUP_IN_HW))
 =======
+<<<<<<< HEAD
+	    !(local->hw.flags & IEEE80211_HW_AMPDU_AGGREGATION) ||
+	    (local->hw.flags & IEEE80211_HW_TX_AMPDU_SETUP_IN_HW))
+=======
 	    !(local->hw.flags & IEEE80211_HW_AMPDU_AGGREGATION))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 #ifdef CONFIG_MAC80211_HT_DEBUG
@@ -509,6 +571,9 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 #endif /* CONFIG_MAC80211_HT_DEBUG */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sdata->vif.type != NL80211_IFTYPE_STATION &&
 	    sdata->vif.type != NL80211_IFTYPE_MESH_POINT &&
 	    sdata->vif.type != NL80211_IFTYPE_AP_VLAN &&
@@ -517,6 +582,8 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 		return -EINVAL;
 
 	if (test_sta_flag(sta, WLAN_STA_BLOCK_BA)) {
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * The aggregation code is not prepared to handle
@@ -531,6 +598,7 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 
 	if (test_sta_flags(sta, WLAN_STA_BLOCK_BA)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MAC80211_HT_DEBUG
 		printk(KERN_DEBUG "BA sessions blocked. "
 		       "Denying BA session request\n");
@@ -539,6 +607,9 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * 802.11n-2009 11.5.1.1: If the initiating STA is an HT STA, is a
 	 * member of an IBSS, and has no other existing Block Ack agreement
@@ -560,8 +631,11 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_bh(&sta->lock);
 
 	/* we have tried too many times, receiver does not want A-MPDU */
@@ -571,6 +645,9 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * if we have tried more than HT_AGG_BURST_RETRIES times we
 	 * will spread our requests in time to avoid stalling connection
@@ -589,8 +666,11 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 		goto err_unlock_sta;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tid_tx = rcu_dereference_protected_tid_tx(sta, tid);
 	/* check if the TID is not in aggregation flow already */
 	if (tid_tx || sta->ampdu_mlme.tid_start_tx[tid]) {
@@ -607,12 +687,15 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 	if (!tid_tx) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_MAC80211_HT_DEBUG
 		if (net_ratelimit())
 			printk(KERN_ERR "allocate tx mlme to tid %d failed\n",
 					tid);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -ENOMEM;
 		goto err_unlock_sta;
 	}
@@ -625,20 +708,30 @@ int ieee80211_start_tx_ba_session(struct ieee80211_sta *pubsta, u16 tid,
 <<<<<<< HEAD
 	/* response timer */
 =======
+<<<<<<< HEAD
+	/* response timer */
+=======
 	/* Tx timer */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tid_tx->addba_resp_timer.function = sta_addba_resp_timer_expired;
 	tid_tx->addba_resp_timer.data = (unsigned long)&sta->timer_to_tid[tid];
 	init_timer(&tid_tx->addba_resp_timer);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* tx timer */
 	tid_tx->session_timer.function = sta_tx_agg_session_timer_expired;
 	tid_tx->session_timer.data = (unsigned long)&sta->timer_to_tid[tid];
 	init_timer(&tid_tx->session_timer);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* assign a dialog token */
 	sta->ampdu_mlme.dialog_token_allocator++;
 	tid_tx->dialog_token = sta->ampdu_mlme.dialog_token_allocator;
@@ -714,8 +807,12 @@ void ieee80211_start_tx_ba_cb(struct ieee80211_vif *vif, u8 *ra, u16 tid)
 <<<<<<< HEAD
 	sta = sta_info_get_bss(sdata, ra);
 =======
+<<<<<<< HEAD
+	sta = sta_info_get_bss(sdata, ra);
+=======
 	sta = sta_info_get(sdata, ra);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sta) {
 		mutex_unlock(&local->sta_mtx);
 #ifdef CONFIG_MAC80211_HT_DEBUG
@@ -758,6 +855,11 @@ void ieee80211_start_tx_ba_cb_irqsafe(struct ieee80211_vif *vif,
 		return;
 
 =======
+<<<<<<< HEAD
+	if (unlikely(!skb))
+		return;
+
+=======
 	if (unlikely(!skb)) {
 #ifdef CONFIG_MAC80211_HT_DEBUG
 		if (net_ratelimit())
@@ -767,6 +869,7 @@ void ieee80211_start_tx_ba_cb_irqsafe(struct ieee80211_vif *vif,
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ra_tid = (struct ieee80211_ra_tid *) &skb->cb;
 	memcpy(&ra_tid->ra, ra, ETH_ALEN);
 	ra_tid->tid = tid;
@@ -858,8 +961,12 @@ void ieee80211_stop_tx_ba_cb(struct ieee80211_vif *vif, u8 *ra, u8 tid)
 <<<<<<< HEAD
 	sta = sta_info_get_bss(sdata, ra);
 =======
+<<<<<<< HEAD
+	sta = sta_info_get_bss(sdata, ra);
+=======
 	sta = sta_info_get(sdata, ra);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sta) {
 #ifdef CONFIG_MAC80211_HT_DEBUG
 		printk(KERN_DEBUG "Could not find station: %pM\n", ra);
@@ -921,6 +1028,11 @@ void ieee80211_stop_tx_ba_cb_irqsafe(struct ieee80211_vif *vif,
 		return;
 
 =======
+<<<<<<< HEAD
+	if (unlikely(!skb))
+		return;
+
+=======
 	if (unlikely(!skb)) {
 #ifdef CONFIG_MAC80211_HT_DEBUG
 		if (net_ratelimit())
@@ -930,6 +1042,7 @@ void ieee80211_stop_tx_ba_cb_irqsafe(struct ieee80211_vif *vif,
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ra_tid = (struct ieee80211_ra_tid *) &skb->cb;
 	memcpy(&ra_tid->ra, ra, ETH_ALEN);
 	ra_tid->tid = tid;
@@ -989,6 +1102,9 @@ void ieee80211_process_addba_resp(struct ieee80211_local *local,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * IEEE 802.11-2007 7.3.1.14:
 	 * In an ADDBA Response frame, when the Status Code field
@@ -997,6 +1113,8 @@ void ieee80211_process_addba_resp(struct ieee80211_local *local,
 	 */
 	if (le16_to_cpu(mgmt->u.action.u.addba_resp.status)
 			== WLAN_STATUS_SUCCESS && buf_size) {
+<<<<<<< HEAD
+=======
 =======
 	if (le16_to_cpu(mgmt->u.action.u.addba_resp.status)
 			== WLAN_STATUS_SUCCESS) {
@@ -1010,6 +1128,7 @@ void ieee80211_process_addba_resp(struct ieee80211_local *local,
 			goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (test_and_set_bit(HT_AGG_STATE_RESPONSE_RECEIVED,
 				     &tid_tx->state)) {
 			/* ignore duplicate response */
@@ -1023,13 +1142,19 @@ void ieee80211_process_addba_resp(struct ieee80211_local *local,
 
 		sta->ampdu_mlme.addba_req_num[tid] = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (tid_tx->timeout)
 			mod_timer(&tid_tx->session_timer,
 				  TU_TO_EXP_TIME(tid_tx->timeout));
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		___ieee80211_stop_tx_ba_session(sta, tid, WLAN_BACK_INITIATOR,
 						true);

@@ -18,7 +18,12 @@
 #include <video/sa1100fb.h>
 
 =======
+<<<<<<< HEAD
+#include <video/sa1100fb.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/irda.h>
@@ -27,7 +32,11 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -66,6 +75,9 @@ err1:	return;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct sa1100fb_rgb h3600_rgb_16 = {
 	.red	= { .offset = 12, .length = 4, },
 	.green	= { .offset = 7,  .length = 4, },
@@ -95,6 +107,8 @@ static struct sa1100fb_mach_info h3600_lcd_info = {
 static void __init h3600_map_io(void)
 {
 	h3xxx_map_io();
+<<<<<<< HEAD
+=======
 =======
 static void __init h3600_map_io(void)
 {
@@ -102,6 +116,7 @@ static void __init h3600_map_io(void)
 
 	sa1100fb_lcd_power = h3600_lcd_power;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -166,12 +181,20 @@ static void __init h3600_mach_init(void)
 
 	sa11x0_register_lcd(&h3600_lcd_info);
 =======
+<<<<<<< HEAD
+
+	sa11x0_register_lcd(&h3600_lcd_info);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sa11x0_register_irda(&h3600_irda_data);
 }
 
 MACHINE_START(H3600, "Compaq iPAQ H3600")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= h3600_map_io,
 	.nr_irqs	= SA1100_NR_IRQS,
@@ -179,6 +202,8 @@ MACHINE_START(H3600, "Compaq iPAQ H3600")
 	.timer		= &sa1100_timer,
 	.init_machine	= h3600_mach_init,
 	.restart	= sa11x0_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xc0000100,
 	.map_io		= h3600_map_io,
@@ -186,5 +211,6 @@ MACHINE_START(H3600, "Compaq iPAQ H3600")
 	.timer		= &sa1100_timer,
 	.init_machine	= h3600_mach_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 

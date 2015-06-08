@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/dma.h>
 #include <plat/gpmc.h>
 #include <plat/usb.h>
@@ -85,6 +89,8 @@ static struct cpuidle_params rx51_cpuidle_params[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct omap_lcd_config rx51_lcd_config = {
 	.ctrl_name	= "internal",
 };
@@ -118,6 +124,7 @@ static void __init rx51_init_early(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __init rx51_peripherals_init(void);
 
 #ifdef CONFIG_OMAP_MUX
@@ -135,6 +142,9 @@ static struct omap_musb_board_data musb_board_data = {
 static void __init rx51_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_sdrc_params *sdrc_params;
 
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CBB);
@@ -144,6 +154,8 @@ static void __init rx51_init(void)
 	sdrc_params = nokia_get_sdram_timings();
 	omap_sdrc_init(sdrc_params, sdrc_params);
 
+<<<<<<< HEAD
+=======
 =======
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CBB);
 	omap_board_config = rx51_config;
@@ -151,6 +163,7 @@ static void __init rx51_init(void)
 	omap3_pm_init_cpuidle(rx51_cpuidle_params);
 	omap_serial_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_musb_init(&musb_board_data);
 	rx51_peripherals_init();
 
@@ -163,6 +176,8 @@ static void __init rx51_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init rx51_map_io(void)
 {
 	omap2_set_globals_3xxx();
@@ -170,6 +185,7 @@ static void __init rx51_map_io(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init rx51_reserve(void)
 {
 	rx51_video_mem_init();
@@ -179,6 +195,9 @@ static void __init rx51_reserve(void)
 MACHINE_START(NOKIA_RX51, "Nokia RX-51 board")
 	/* Maintainer: Lauri Leukkunen <lauri.leukkunen@nokia.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= rx51_reserve,
 	.map_io		= omap3_map_io,
@@ -188,6 +207,8 @@ MACHINE_START(NOKIA_RX51, "Nokia RX-51 board")
 	.init_machine	= rx51_init,
 	.timer		= &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= rx51_reserve,
@@ -197,4 +218,5 @@ MACHINE_START(NOKIA_RX51, "Nokia RX-51 board")
 	.init_machine	= rx51_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

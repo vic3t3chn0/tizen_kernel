@@ -81,8 +81,13 @@
 #define pr_fmt(fmt) "UDP: " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) "UDP: " fmt
+
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/ioctls.h>
 #include <linux/bootmem.h>
@@ -113,7 +118,11 @@
 <<<<<<< HEAD
 #include <trace/events/udp.h>
 =======
+<<<<<<< HEAD
+#include <trace/events/udp.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "udp_impl.h"
 
 struct udp_table udp_table __read_mostly;
@@ -456,8 +465,12 @@ exact_match:
 <<<<<<< HEAD
 struct sock *__udp4_lib_lookup(struct net *net, __be32 saddr,
 =======
+<<<<<<< HEAD
+struct sock *__udp4_lib_lookup(struct net *net, __be32 saddr,
+=======
 static struct sock *__udp4_lib_lookup(struct net *net, __be32 saddr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__be16 sport, __be32 daddr, __be16 dport,
 		int dif, struct udp_table *udptable)
 {
@@ -527,7 +540,11 @@ begin:
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(__udp4_lib_lookup);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(__udp4_lib_lookup);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct sock *__udp4_lib_lookup_skb(struct sk_buff *skb,
 						 __be16 sport, __be16 dport,
@@ -785,8 +802,12 @@ send:
 <<<<<<< HEAD
 static int udp_push_pending_frames(struct sock *sk)
 =======
+<<<<<<< HEAD
+static int udp_push_pending_frames(struct sock *sk)
+=======
 int udp_push_pending_frames(struct sock *sk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct udp_sock  *up = udp_sk(sk);
 	struct inet_sock *inet = inet_sk(sk);
@@ -807,8 +828,11 @@ out:
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(udp_push_pending_frames);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int udp_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 		size_t len)
@@ -944,8 +968,13 @@ int udp_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	} else if (!ipc.oif)
 		ipc.oif = inet->uc_index;
 =======
+<<<<<<< HEAD
+	} else if (!ipc.oif)
+		ipc.oif = inet->uc_index;
+=======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (connected)
 		rt = (struct rtable *)sk_dst_check(sk, 0);
@@ -1005,8 +1034,12 @@ back_from_confirm:
 <<<<<<< HEAD
 		LIMIT_NETDEBUG(KERN_DEBUG pr_fmt("cork app bug 2\n"));
 =======
+<<<<<<< HEAD
+		LIMIT_NETDEBUG(KERN_DEBUG pr_fmt("cork app bug 2\n"));
+=======
 		LIMIT_NETDEBUG(KERN_DEBUG "udp cork app bug 2\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -EINVAL;
 		goto out;
 	}
@@ -1088,8 +1121,12 @@ int udp_sendpage(struct sock *sk, struct page *page, int offset,
 <<<<<<< HEAD
 		LIMIT_NETDEBUG(KERN_DEBUG pr_fmt("udp cork app bug 3\n"));
 =======
+<<<<<<< HEAD
+		LIMIT_NETDEBUG(KERN_DEBUG pr_fmt("udp cork app bug 3\n"));
+=======
 		LIMIT_NETDEBUG(KERN_DEBUG "udp cork app bug 3\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -1205,9 +1242,14 @@ int udp_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	unsigned int ulen, copied;
 	int peeked, off = 0;
 =======
+<<<<<<< HEAD
+	unsigned int ulen, copied;
+	int peeked, off = 0;
+=======
 	unsigned int ulen;
 	int peeked;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	int is_udplite = IS_UDPLITE(sk);
 	bool slow;
@@ -1226,22 +1268,32 @@ try_again:
 <<<<<<< HEAD
 				  &peeked, &off, &err);
 =======
+<<<<<<< HEAD
+				  &peeked, &off, &err);
+=======
 				  &peeked, &err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!skb)
 		goto out;
 
 	ulen = skb->len - sizeof(struct udphdr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	copied = len;
 	if (copied > ulen)
 		copied = ulen;
 	else if (copied < ulen)
+<<<<<<< HEAD
+=======
 =======
 	if (len > ulen)
 		len = ulen;
 	else if (len < ulen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		msg->msg_flags |= MSG_TRUNC;
 
 	/*
@@ -1253,8 +1305,12 @@ try_again:
 <<<<<<< HEAD
 	if (copied < ulen || UDP_SKB_CB(skb)->partial_cov) {
 =======
+<<<<<<< HEAD
+	if (copied < ulen || UDP_SKB_CB(skb)->partial_cov) {
+=======
 	if (len < ulen || UDP_SKB_CB(skb)->partial_cov) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (udp_lib_checksum_complete(skb))
 			goto csum_copy_err;
 	}
@@ -1264,8 +1320,12 @@ try_again:
 <<<<<<< HEAD
 					      msg->msg_iov, copied);
 =======
+<<<<<<< HEAD
+					      msg->msg_iov, copied);
+=======
 					      msg->msg_iov, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else {
 		err = skb_copy_and_csum_datagram_iovec(skb,
 						       sizeof(struct udphdr),
@@ -1297,8 +1357,12 @@ try_again:
 <<<<<<< HEAD
 	err = copied;
 =======
+<<<<<<< HEAD
+	err = copied;
+=======
 	err = len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (flags & MSG_TRUNC)
 		err = ulen;
 
@@ -1335,8 +1399,12 @@ int udp_disconnect(struct sock *sk, int flags)
 <<<<<<< HEAD
 	sock_rps_reset_rxhash(sk);
 =======
+<<<<<<< HEAD
+	sock_rps_reset_rxhash(sk);
+=======
 	sock_rps_save_rxhash(sk, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sk->sk_bound_dev_if = 0;
 	if (!(sk->sk_userlocks & SOCK_BINDADDR_LOCK))
 		inet_reset_saddr(sk);
@@ -1429,10 +1497,16 @@ static int __udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 
 	rc = sock_queue_rcv_skb(sk, skb);
 =======
+<<<<<<< HEAD
+		sock_rps_save_rxhash(sk, skb);
+
+	rc = sock_queue_rcv_skb(sk, skb);
+=======
 		sock_rps_save_rxhash(sk, skb->rxhash);
 
 	rc = ip_queue_rcv_skb(sk, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc < 0) {
 		int is_udplite = IS_UDPLITE(sk);
 
@@ -1445,7 +1519,11 @@ static int __udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 <<<<<<< HEAD
 		trace_udp_fail_queue_rcv_skb(rc, sk);
 =======
+<<<<<<< HEAD
+		trace_udp_fail_queue_rcv_skb(rc, sk);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 
@@ -1479,7 +1557,12 @@ int udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 		int (*encap_rcv)(struct sock *sk, struct sk_buff *skb);
 
 =======
+<<<<<<< HEAD
+		int (*encap_rcv)(struct sock *sk, struct sk_buff *skb);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * This is an encapsulation socket so pass the skb to
 		 * the socket's udp_encap_rcv() hook. Otherwise, just
@@ -1493,11 +1576,16 @@ int udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 
 		/* if we're overly short, let UDP handle it */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		encap_rcv = ACCESS_ONCE(up->encap_rcv);
 		if (skb->len > sizeof(struct udphdr) && encap_rcv != NULL) {
 			int ret;
 
 			ret = encap_rcv(sk, skb);
+<<<<<<< HEAD
+=======
 =======
 		if (skb->len > sizeof(struct udphdr) &&
 		    up->encap_rcv != NULL) {
@@ -1505,6 +1593,7 @@ int udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 
 			ret = (*up->encap_rcv)(sk, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret <= 0) {
 				UDP_INC_STATS_BH(sock_net(sk),
 						 UDP_MIB_INDATAGRAMS,
@@ -1537,10 +1626,15 @@ int udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 			LIMIT_NETDEBUG(KERN_WARNING "UDPLite: partial coverage %d while full coverage %d requested\n",
 				       UDP_SKB_CB(skb)->cscov, skb->len);
 =======
+<<<<<<< HEAD
+			LIMIT_NETDEBUG(KERN_WARNING "UDPLite: partial coverage %d while full coverage %d requested\n",
+				       UDP_SKB_CB(skb)->cscov, skb->len);
+=======
 			LIMIT_NETDEBUG(KERN_WARNING "UDPLITE: partial coverage "
 				"%d while full coverage %d requested\n",
 				UDP_SKB_CB(skb)->cscov, skb->len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto drop;
 		}
 		/* The next case involves violating the min. coverage requested
@@ -1554,14 +1648,24 @@ int udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 			LIMIT_NETDEBUG(KERN_WARNING "UDPLite: coverage %d too small, need min %d\n",
 				       UDP_SKB_CB(skb)->cscov, up->pcrlen);
 =======
+<<<<<<< HEAD
+			LIMIT_NETDEBUG(KERN_WARNING "UDPLite: coverage %d too small, need min %d\n",
+				       UDP_SKB_CB(skb)->cscov, up->pcrlen);
+=======
 			LIMIT_NETDEBUG(KERN_WARNING
 				"UDPLITE: coverage %d too small, need min %d\n",
 				UDP_SKB_CB(skb)->cscov, up->pcrlen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto drop;
 		}
 	}
 
+<<<<<<< HEAD
+	if (rcu_access_pointer(sk->sk_filter) &&
+	    udp_lib_checksum_complete(skb))
+		goto drop;
+=======
 <<<<<<< HEAD
 	if (rcu_access_pointer(sk->sk_filter) &&
 	    udp_lib_checksum_complete(skb))
@@ -1572,6 +1676,7 @@ int udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 			goto drop;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 	if (sk_rcvqueues_full(sk, skb))
@@ -1582,7 +1687,11 @@ int udp_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 <<<<<<< HEAD
 	ipv4_pktinfo_prepare(skb);
 =======
+<<<<<<< HEAD
+	ipv4_pktinfo_prepare(skb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bh_lock_sock(sk);
 	if (!sock_owned_by_user(sk))
 		rc = __udp_queue_rcv_skb(sk, skb);
@@ -1796,10 +1905,15 @@ int __udp4_lib_rcv(struct sk_buff *skb, struct udp_table *udptable,
 short_packet:
 	LIMIT_NETDEBUG(KERN_DEBUG "UDP%s: short packet: From %pI4:%u %d/%d to %pI4:%u\n",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       proto == IPPROTO_UDPLITE ? "Lite" : "",
 		       &saddr, ntohs(uh->source),
 		       ulen, skb->len,
 		       &daddr, ntohs(uh->dest));
+<<<<<<< HEAD
+=======
 =======
 		       proto == IPPROTO_UDPLITE ? "-Lite" : "",
 		       &saddr,
@@ -1809,6 +1923,7 @@ short_packet:
 		       &daddr,
 		       ntohs(uh->dest));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	goto drop;
 
 csum_error:
@@ -1821,12 +1936,17 @@ csum_error:
 		       proto == IPPROTO_UDPLITE ? "Lite" : "",
 		       &saddr, ntohs(uh->source), &daddr, ntohs(uh->dest),
 =======
+<<<<<<< HEAD
+		       proto == IPPROTO_UDPLITE ? "Lite" : "",
+		       &saddr, ntohs(uh->source), &daddr, ntohs(uh->dest),
+=======
 		       proto == IPPROTO_UDPLITE ? "-Lite" : "",
 		       &saddr,
 		       ntohs(uh->source),
 		       &daddr,
 		       ntohs(uh->dest),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       ulen);
 drop:
 	UDP_INC_STATS_BH(net, UDP_MIB_INERRORS, proto == IPPROTO_UDPLITE);
@@ -2164,8 +2284,12 @@ static void udp_seq_stop(struct seq_file *seq, void *v)
 <<<<<<< HEAD
 int udp_seq_open(struct inode *inode, struct file *file)
 =======
+<<<<<<< HEAD
+int udp_seq_open(struct inode *inode, struct file *file)
+=======
 static int udp_seq_open(struct inode *inode, struct file *file)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct udp_seq_afinfo *afinfo = PDE(inode)->data;
 	struct udp_iter_state *s;
@@ -2184,7 +2308,11 @@ static int udp_seq_open(struct inode *inode, struct file *file)
 <<<<<<< HEAD
 EXPORT_SYMBOL(udp_seq_open);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(udp_seq_open);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ------------------------------------------------------------------------ */
 int udp_proc_register(struct net *net, struct udp_seq_afinfo *afinfo)
@@ -2194,12 +2322,15 @@ int udp_proc_register(struct net *net, struct udp_seq_afinfo *afinfo)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	afinfo->seq_fops.open		= udp_seq_open;
 	afinfo->seq_fops.read		= seq_read;
 	afinfo->seq_fops.llseek		= seq_lseek;
 	afinfo->seq_fops.release	= seq_release_net;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	afinfo->seq_ops.start		= udp_seq_start;
 	afinfo->seq_ops.next		= udp_seq_next;
 	afinfo->seq_ops.stop		= udp_seq_stop;
@@ -2208,8 +2339,12 @@ int udp_proc_register(struct net *net, struct udp_seq_afinfo *afinfo)
 <<<<<<< HEAD
 			     afinfo->seq_fops, afinfo);
 =======
+<<<<<<< HEAD
+			     afinfo->seq_fops, afinfo);
+=======
 			     &afinfo->seq_fops, afinfo);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!p)
 		rc = -ENOMEM;
 	return rc;
@@ -2260,6 +2395,9 @@ int udp4_seq_show(struct seq_file *seq, void *v)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct file_operations udp_afinfo_seq_fops = {
 	.owner    = THIS_MODULE,
 	.open     = udp_seq_open,
@@ -2268,8 +2406,11 @@ static const struct file_operations udp_afinfo_seq_fops = {
 	.release  = seq_release_net
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ------------------------------------------------------------------------ */
 static struct udp_seq_afinfo udp4_seq_afinfo = {
 	.name		= "udp",
@@ -2278,10 +2419,14 @@ static struct udp_seq_afinfo udp4_seq_afinfo = {
 <<<<<<< HEAD
 	.seq_fops	= &udp_afinfo_seq_fops,
 =======
+<<<<<<< HEAD
+	.seq_fops	= &udp_afinfo_seq_fops,
+=======
 	.seq_fops	= {
 		.owner	=	THIS_MODULE,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.seq_ops	= {
 		.show		= udp4_seq_show,
 	},
@@ -2400,8 +2545,13 @@ int udp4_ufo_send_check(struct sk_buff *skb)
 struct sk_buff *udp4_ufo_fragment(struct sk_buff *skb,
 	netdev_features_t features)
 =======
+<<<<<<< HEAD
+struct sk_buff *udp4_ufo_fragment(struct sk_buff *skb,
+	netdev_features_t features)
+=======
 struct sk_buff *udp4_ufo_fragment(struct sk_buff *skb, u32 features)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *segs = ERR_PTR(-EINVAL);
 	unsigned int mss;

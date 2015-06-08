@@ -26,6 +26,9 @@
 <<<<<<< HEAD
 struct tpa6130a2_platform_data {
 =======
+<<<<<<< HEAD
+struct tpa6130a2_platform_data {
+=======
 enum tpa_model {
 	TPA6130A2,
 	TPA6140A2,
@@ -34,6 +37,7 @@ enum tpa_model {
 struct tpa6130a2_platform_data {
 	enum tpa_model id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int power_gpio;
 };
 

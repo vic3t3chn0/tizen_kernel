@@ -471,8 +471,12 @@ C_ENTRY(sys_fork_wrapper):
 <<<<<<< HEAD
 	add	r8, r0, r0			/* Arg 3: (unused) */
 =======
+<<<<<<< HEAD
+	add	r8, r0, r0			/* Arg 3: (unused) */
+=======
 	add	r8. r0, r0			/* Arg 3: (unused) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	add	r9, r0, r0;			/* Arg 4: (unused) */
 	brid	do_fork		/* Do real work (tail-call) */
 	add	r10, r0, r0;			/* Arg 5: (unused) */

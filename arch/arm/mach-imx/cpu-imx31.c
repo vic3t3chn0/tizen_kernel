@@ -18,15 +18,24 @@
 
 static int mx31_cpu_rev = -1;
 =======
+<<<<<<< HEAD
+#include <mach/common.h>
+
+static int mx31_cpu_rev = -1;
+=======
 
 unsigned int mx31_cpu_rev;
 EXPORT_SYMBOL(mx31_cpu_rev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct {
 	u8 srev;
 	const char *name;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int rev;
 } mx31_cpu_type[] = {
 	{ .srev = 0x00, .name = "i.MX31(L)", .rev = IMX_CHIP_REVISION_1_0 },
@@ -41,6 +50,8 @@ static struct {
 };
 
 static int mx31_read_cpu_rev(void)
+<<<<<<< HEAD
+=======
 =======
 	const char *v;
 	unsigned int rev;
@@ -58,12 +69,16 @@ static int mx31_read_cpu_rev(void)
 
 void __init mx31_read_cpu_rev(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 i, srev;
 
 	/* read SREV register from IIM module */
 	srev = __raw_readl(MX31_IO_ADDRESS(MX31_IIM_BASE_ADDR + MXC_IIMSREV));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	srev &= 0xff;
 
 	for (i = 0; i < ARRAY_SIZE(mx31_cpu_type); i++)
@@ -85,6 +100,8 @@ int mx31_revision(void)
 	return mx31_cpu_rev;
 }
 EXPORT_SYMBOL(mx31_revision);
+<<<<<<< HEAD
+=======
 =======
 
 	for (i = 0; i < ARRAY_SIZE(mx31_cpu_type); i++)
@@ -102,3 +119,4 @@ EXPORT_SYMBOL(mx31_revision);
 	printk(KERN_WARNING "Unknown CPU identifier. srev = %02x\n", srev);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

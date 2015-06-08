@@ -7,10 +7,15 @@
 #include <linux/pci.h>
 #include <linux/mm.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <asm/io.h>
 #include <asm/pci-bridge.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/io.h>
 #include <asm/pci-bridge.h>
@@ -35,6 +40,7 @@ void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long max)
 EXPORT_SYMBOL(pci_iomap);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pci_iounmap(struct pci_dev *dev, void __iomem *addr)
 {
 	if (isa_vaddr_is_ioport(addr))

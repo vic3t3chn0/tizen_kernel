@@ -45,6 +45,13 @@
 #include "drm_mm.h"
 #include <linux/slab.h>
 #include <linux/seq_file.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MM_UNUSED_TARGET 4
 
@@ -679,6 +686,24 @@ void drm_mm_debug_table(struct drm_mm *mm, const char *prefix)
 EXPORT_SYMBOL(drm_mm_debug_table);
 
 #if defined(CONFIG_DEBUG_FS)
+<<<<<<< HEAD
+<<<<<<< HEAD
+int drm_mm_dump_table(struct seq_file *m, struct drm_mm *mm)
+{
+	struct drm_mm_node *entry;
+	unsigned long total_used = 0, total_free = 0, total = 0;
+	unsigned long hole_start, hole_end, hole_size;
+
+	hole_start = drm_mm_hole_node_start(&mm->head_node);
+	hole_end = drm_mm_hole_node_end(&mm->head_node);
+	hole_size = hole_end - hole_start;
+	if (hole_size)
+		seq_printf(m, "0x%08lx-0x%08lx: 0x%08lx: free\n",
+				hole_start, hole_end, hole_size);
+	total_free += hole_size;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long drm_mm_dump_hole(struct seq_file *m, struct drm_mm_node *entry)
 {
 	unsigned long hole_start, hole_end, hole_size;
@@ -701,13 +726,32 @@ int drm_mm_dump_table(struct seq_file *m, struct drm_mm *mm)
 	unsigned long total_used = 0, total_free = 0, total = 0;
 
 	total_free += drm_mm_dump_hole(m, &mm->head_node);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	drm_mm_for_each_node(entry, mm) {
 		seq_printf(m, "0x%08lx-0x%08lx: 0x%08lx: used\n",
 				entry->start, entry->start + entry->size,
 				entry->size);
 		total_used += entry->size;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (entry->hole_follows) {
+			hole_start = drm_mm_hole_node_start(entry);
+			hole_end = drm_mm_hole_node_end(entry);
+			hole_size = hole_end - hole_start;
+			seq_printf(m, "0x%08lx-0x%08lx: 0x%08lx: free\n",
+					hole_start, hole_end, hole_size);
+			total_free += hole_size;
+		}
+=======
 		total_free += drm_mm_dump_hole(m, entry);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		total_free += drm_mm_dump_hole(m, entry);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	total = total_free + total_used;
 

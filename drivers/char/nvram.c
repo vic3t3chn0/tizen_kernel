@@ -94,7 +94,15 @@
 /* Note that *all* calls to CMOS_READ and CMOS_WRITE must be done with
  * rtc_lock held. Due to the index-port/data-port design of the RTC, we
  * don't want two different things trying to get to it at once. (e.g. the
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * periodic 11 min sync from kernel/time/ntp.c vs. this driver.)
+=======
  * periodic 11 min sync from time.c vs. this driver.)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * periodic 11 min sync from time.c vs. this driver.)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/types.h>
@@ -111,7 +119,14 @@
 #include <linux/uaccess.h>
 #include <linux/mutex.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static DEFINE_MUTEX(nvram_mutex);
 static DEFINE_SPINLOCK(nvram_state_lock);
@@ -224,6 +239,14 @@ static loff_t nvram_llseek(struct file *file, loff_t offset, int origin)
 	case 2:
 		offset += NVRAM_BYTES;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	default:
+		return -EINVAL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return (offset >= 0) ? (file->f_pos = offset) : -EINVAL;

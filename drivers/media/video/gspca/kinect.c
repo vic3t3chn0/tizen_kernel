@@ -24,6 +24,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "kinect"
 
 #include "gspca.h"
@@ -34,11 +42,20 @@ MODULE_AUTHOR("Antonio Ospite <ospite@studenti.unina.it>");
 MODULE_DESCRIPTION("GSPCA/Kinect Sensor Device USB Camera Driver");
 MODULE_LICENSE("GPL");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef GSPCA_DEBUG
 int gspca_debug = D_ERR | D_PROBE | D_CONF | D_STREAM | D_FRAM | D_PACK |
 	D_USBI | D_USBO | D_V4L2;
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pkt_hdr {
 	uint8_t magic[2];
 	uint8_t pad;
@@ -141,7 +158,15 @@ static int send_cmd(struct gspca_dev *gspca_dev, uint16_t cmd, void *cmdbuf,
 	struct cam_hdr *rhdr = (void *)ibuf;
 
 	if (cmd_len & 1 || cmd_len > (0x400 - sizeof(*chdr))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("send_cmd: Invalid command length (0x%x)\n", cmd_len);
+=======
 		err("send_cmd: Invalid command length (0x%x)", cmd_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("send_cmd: Invalid command length (0x%x)", cmd_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 
@@ -157,7 +182,15 @@ static int send_cmd(struct gspca_dev *gspca_dev, uint16_t cmd, void *cmdbuf,
 	PDEBUG(D_USBO, "Control cmd=%04x tag=%04x len=%04x: %d", cmd,
 		sd->cam_tag, cmd_len, res);
 	if (res < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("send_cmd: Output control transfer failed (%d)\n", res);
+=======
 		err("send_cmd: Output control transfer failed (%d)", res);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("send_cmd: Output control transfer failed (%d)", res);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return res;
 	}
 
@@ -166,12 +199,42 @@ static int send_cmd(struct gspca_dev *gspca_dev, uint16_t cmd, void *cmdbuf,
 	} while (actual_len == 0);
 	PDEBUG(D_USBO, "Control reply: %d", res);
 	if (actual_len < sizeof(*rhdr)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("send_cmd: Input control transfer failed (%d)\n", res);
+=======
 		err("send_cmd: Input control transfer failed (%d)", res);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("send_cmd: Input control transfer failed (%d)", res);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return res;
 	}
 	actual_len -= sizeof(*rhdr);
 
 	if (rhdr->magic[0] != 0x52 || rhdr->magic[1] != 0x42) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("send_cmd: Bad magic %02x %02x\n",
+		       rhdr->magic[0], rhdr->magic[1]);
+		return -1;
+	}
+	if (rhdr->cmd != chdr->cmd) {
+		pr_err("send_cmd: Bad cmd %02x != %02x\n",
+		       rhdr->cmd, chdr->cmd);
+		return -1;
+	}
+	if (rhdr->tag != chdr->tag) {
+		pr_err("send_cmd: Bad tag %04x != %04x\n",
+		       rhdr->tag, chdr->tag);
+		return -1;
+	}
+	if (cpu_to_le16(rhdr->len) != (actual_len/2)) {
+		pr_err("send_cmd: Bad len %04x != %04x\n",
+		       cpu_to_le16(rhdr->len), (int)(actual_len/2));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err("send_cmd: Bad magic %02x %02x", rhdr->magic[0],
 			rhdr->magic[1]);
 		return -1;
@@ -187,12 +250,26 @@ static int send_cmd(struct gspca_dev *gspca_dev, uint16_t cmd, void *cmdbuf,
 	if (cpu_to_le16(rhdr->len) != (actual_len/2)) {
 		err("send_cmd: Bad len %04x != %04x",
 				cpu_to_le16(rhdr->len), (int)(actual_len/2));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 
 	if (actual_len > reply_len) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("send_cmd: Data buffer is %d bytes long, but got %d bytes\n",
+			reply_len, actual_len);
+=======
 		warn("send_cmd: Data buffer is %d bytes long, but got %d bytes",
 				reply_len, actual_len);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		warn("send_cmd: Data buffer is %d bytes long, but got %d bytes",
+				reply_len, actual_len);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcpy(replybuf, ibuf+sizeof(*rhdr), reply_len);
 	} else {
 		memcpy(replybuf, ibuf+sizeof(*rhdr), actual_len);
@@ -218,8 +295,18 @@ static int write_register(struct gspca_dev *gspca_dev, uint16_t reg,
 	if (res < 0)
 		return res;
 	if (res != 2) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("send_cmd returned %d [%04x %04x], 0000 expected\n",
+			res, reply[0], reply[1]);
+=======
 		warn("send_cmd returned %d [%04x %04x], 0000 expected",
 				res, reply[0], reply[1]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		warn("send_cmd returned %d [%04x %04x], 0000 expected",
+				res, reply[0], reply[1]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -353,8 +440,18 @@ static void sd_pkt_scan(struct gspca_dev *gspca_dev, u8 *__data, int len)
 		return;
 
 	if (hdr->magic[0] != 'R' || hdr->magic[1] != 'B') {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("[Stream %02x] Invalid magic %02x%02x\n",
+			sd->stream_flag, hdr->magic[0], hdr->magic[1]);
+=======
 		warn("[Stream %02x] Invalid magic %02x%02x", sd->stream_flag,
 				hdr->magic[0], hdr->magic[1]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		warn("[Stream %02x] Invalid magic %02x%02x", sd->stream_flag,
+				hdr->magic[0], hdr->magic[1]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -368,7 +465,15 @@ static void sd_pkt_scan(struct gspca_dev *gspca_dev, u8 *__data, int len)
 		gspca_frame_add(gspca_dev, LAST_PACKET, data, datalen);
 
 	else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("Packet type not recognized...\n");
+=======
 		warn("Packet type not recognized...");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		warn("Packet type not recognized...");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* sub-driver description */
@@ -414,6 +519,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -427,3 +538,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -25,9 +25,14 @@
 #include <linux/sched.h>	/* for idle_task_exit */
 #include <linux/cpu.h>
 =======
+<<<<<<< HEAD
+#include <linux/sched.h>	/* for idle_task_exit */
+#include <linux/cpu.h>
+=======
 #include <linux/cpu.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/prom.h>
 #include <asm/rtas.h>
 #include <asm/firmware.h>
@@ -143,8 +148,12 @@ static void pseries_mach_cpu_die(void)
 <<<<<<< HEAD
 			unregister_slb_shadow(hwcpu);
 =======
+<<<<<<< HEAD
+			unregister_slb_shadow(hwcpu);
+=======
 			unregister_slb_shadow(hwcpu, __pa(get_slb_shadow()));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/*
 			 * Call to start_secondary_resume() will not return.
@@ -162,8 +171,12 @@ static void pseries_mach_cpu_die(void)
 <<<<<<< HEAD
 	unregister_slb_shadow(hwcpu);
 =======
+<<<<<<< HEAD
+	unregister_slb_shadow(hwcpu);
+=======
 	unregister_slb_shadow(hwcpu, __pa(get_slb_shadow()));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rtas_stop_self();
 
 	/* Should never get here... */
@@ -344,11 +357,16 @@ static int pseries_smp_notifier(struct notifier_block *nb,
 				unsigned long action, void *node)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0;
 
 	switch (action) {
 	case PSERIES_RECONFIG_ADD:
 		err = pseries_add_processor(node);
+<<<<<<< HEAD
+=======
 =======
 	int err = NOTIFY_OK;
 
@@ -357,10 +375,15 @@ static int pseries_smp_notifier(struct notifier_block *nb,
 		if (pseries_add_processor(node))
 			err = NOTIFY_BAD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case PSERIES_RECONFIG_REMOVE:
 		pseries_remove_processor(node);
 		break;
+<<<<<<< HEAD
+	}
+	return notifier_from_errno(err);
+=======
 <<<<<<< HEAD
 	}
 	return notifier_from_errno(err);
@@ -371,6 +394,7 @@ static int pseries_smp_notifier(struct notifier_block *nb,
 	}
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct notifier_block pseries_smp_nb = {

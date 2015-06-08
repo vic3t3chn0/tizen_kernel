@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2009-2011 Red Hat, Inc. All Rights Reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2009-2011 Red Hat, Inc. All Rights Reserved.
+=======
  * Copyright (C) 2009 Red Hat, Inc. All Rights Reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Written by David Howells (dhowells@redhat.com)
  *
  * This program is free software; you can redistribute it and/or
@@ -18,7 +22,12 @@
 #include <linux/slab.h>
 #include <linux/security.h>
 =======
+<<<<<<< HEAD
+#include <linux/slab.h>
+#include <linux/security.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <keys/keyring-type.h>
 #include "internal.h"
 
@@ -29,6 +38,9 @@ unsigned key_gc_delay = 5 * 60;
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Reaper for unused keys.
  */
 static void key_garbage_collector(struct work_struct *work);
@@ -56,6 +68,8 @@ static unsigned long key_gc_flags;
 struct key_type key_type_dead = {
 	.name = "dead",
 };
+<<<<<<< HEAD
+=======
 =======
  * Reaper
  */
@@ -69,6 +83,7 @@ static unsigned long key_gc_executing;
 static time_t key_gc_next_run = LONG_MAX;
 static time_t key_gc_new_timer;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Schedule a garbage collection run.
@@ -82,17 +97,23 @@ void key_schedule_gc(time_t gc_at)
 	kenter("%ld", gc_at - now);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (gc_at <= now || test_bit(KEY_GC_REAP_KEYTYPE, &key_gc_flags)) {
 		kdebug("IMMEDIATE");
 		queue_work(system_nrt_wq, &key_gc_work);
 	} else if (gc_at < key_gc_next_run) {
 		kdebug("DEFERRED");
 		key_gc_next_run = gc_at;
+<<<<<<< HEAD
+=======
 =======
 	if (gc_at <= now) {
 		schedule_work(&key_gc_work);
 	} else if (gc_at < key_gc_next_run) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		expires = jiffies + (gc_at - now) * HZ;
 		mod_timer(&key_gc_timer, expires);
 	}
@@ -103,14 +124,22 @@ void key_schedule_gc(time_t gc_at)
  * Some key's cleanup time was met after it expired, so we need to get the
  * reaper to go through a cycle finding expired keys.
 =======
+<<<<<<< HEAD
+ * Some key's cleanup time was met after it expired, so we need to get the
+ * reaper to go through a cycle finding expired keys.
+=======
  * The garbage collector timer kicked off
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void key_gc_timer_func(unsigned long data)
 {
 	kenter("");
 	key_gc_next_run = LONG_MAX;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(KEY_GC_KEY_EXPIRED, &key_gc_flags);
 	queue_work(system_nrt_wq, &key_gc_work);
 }
@@ -152,25 +181,34 @@ void key_gc_keytype(struct key_type *ktype)
 
 	key_gc_dead_keytype = NULL;
 	kleave("");
+<<<<<<< HEAD
+=======
 =======
 	schedule_work(&key_gc_work);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
  * Garbage collect pointers from a keyring.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Not called with any locks held.  The keyring's key struct will not be
  * deallocated under us as only our caller may deallocate it.
  */
 static void key_gc_keyring(struct key *keyring, time_t limit)
+<<<<<<< HEAD
+=======
 =======
  * Return true if we altered the keyring.
  */
 static bool key_gc_keyring(struct key *keyring, time_t limit)
 	__releases(key_serial_lock)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct keyring_list *klist;
 	struct key *key;
@@ -192,8 +230,14 @@ static bool key_gc_keyring(struct key *keyring, time_t limit)
 	smp_rmb();
 	for (loop--; loop >= 0; loop--) {
 =======
+<<<<<<< HEAD
+	loop = klist->nkeys;
+	smp_rmb();
+	for (loop--; loop >= 0; loop--) {
+=======
 	for (loop = klist->nkeys - 1; loop >= 0; loop--) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		key = klist->keys[loop];
 		if (test_bit(KEY_FLAG_DEAD, &key->flags) ||
 		    (key->expiry > 0 && key->expiry <= limit))
@@ -204,6 +248,9 @@ unlock_dont_gc:
 	rcu_read_unlock();
 dont_gc:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kleave(" [no gc]");
 	return;
 
@@ -274,6 +321,8 @@ static void key_garbage_collector(struct work_struct *work)
 	kenter("[%lx,%x]", key_gc_flags, gc_state);
 
 	limit = current_kernel_time().tv_sec;
+<<<<<<< HEAD
+=======
 =======
 	kleave(" = false");
 	return false;
@@ -311,12 +360,16 @@ static void key_garbage_collector(struct work_struct *work)
 
 	limit = now;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (limit > key_gc_delay)
 		limit -= key_gc_delay;
 	else
 		limit = key_gc_delay;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Work out what we're going to be doing in this pass */
 	gc_state &= KEY_GC_REAPING_DEAD_1 | KEY_GC_REAPING_DEAD_2;
 	gc_state <<= 1;
@@ -472,6 +525,8 @@ destroy_dead_key:
 	memset(&key->payload, KEY_DESTROY, sizeof(key->payload));
 	up_write(&key->sem);
 	goto maybe_resched;
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&key_serial_lock);
 
@@ -560,4 +615,5 @@ reached_the_end:
 	}
 	kleave(" [end]");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

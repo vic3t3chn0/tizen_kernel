@@ -115,8 +115,11 @@ struct thread_info {
 #define TIF_DB_DISABLED		19	/* debug trap disabled for fsyscall */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TIF_FREEZE		20	/* is freezing for suspend */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TIF_RESTORE_RSE		21	/* user RBS is newer than kernel RBS */
 
 #define _TIF_SYSCALL_TRACE	(1 << TIF_SYSCALL_TRACE)
@@ -131,8 +134,11 @@ struct thread_info {
 #define _TIF_DB_DISABLED	(1 << TIF_DB_DISABLED)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _TIF_FREEZE		(1 << TIF_FREEZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define _TIF_RESTORE_RSE	(1 << TIF_RESTORE_RSE)
 
 /* "work to do on user-return" bits */

@@ -46,6 +46,13 @@ F02 Oct/28/02: Add SB device ID for 3147 and 3177.
 #include <linux/ioport.h>
 #include <linux/delay.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/rtnetlink.h>
 #include <linux/pci.h>
 #include <linux/dma-mapping.h>
@@ -941,14 +948,30 @@ static int via_ircc_dma_xmit_complete(struct via_ircc_cb *self)
 	iobase = self->io.fir_base;
 	/* Disable DMA */
 //      DisableDmaChannel(self->io.dma);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Check for underrun! */
+=======
 	/* Check for underrrun! */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Check for underrrun! */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Clear bit, by writing 1 into it */
 	Tx_status = GetTXStatus(iobase);
 	if (Tx_status & 0x08) {
 		self->netdev->stats.tx_errors++;
 		self->netdev->stats.tx_fifo_errors++;
 		hwreset(self);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* how to clear underrun? */
+=======
 // how to clear underrrun ?
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+// how to clear underrrun ?
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		self->netdev->stats.tx_packets++;
 		ResetChip(iobase, 3);
@@ -1494,14 +1517,30 @@ static int via_ircc_net_open(struct net_device *dev)
 	if (request_dma(self->io.dma, dev->name)) {
 		IRDA_WARNING("%s, unable to allocate dma=%d\n", driver_name,
 			     self->io.dma);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		free_irq(self->io.irq, dev);
+=======
 		free_irq(self->io.irq, self);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		free_irq(self->io.irq, self);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EAGAIN;
 	}
 	if (self->io.dma2 != self->io.dma) {
 		if (request_dma(self->io.dma2, dev->name)) {
 			IRDA_WARNING("%s, unable to allocate dma2=%d\n",
 				     driver_name, self->io.dma2);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			free_irq(self->io.irq, dev);
+=======
 			free_irq(self->io.irq, self);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			free_irq(self->io.irq, self);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			free_dma(self->io.dma);
 			return -EAGAIN;
 		}

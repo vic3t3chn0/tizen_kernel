@@ -31,7 +31,11 @@
 <<<<<<< HEAD
 #include <linux/irq.h>
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/bootinfo.h>
 #include <asm/macintosh.h>
@@ -67,6 +71,9 @@ static int gIER,gIFR,gBufA,gBufB;
 #define MAC_CLOCK_HIGH		(MAC_CLOCK_TICK>>8)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * On Macs with a genuine VIA chip there is no way to mask an individual slot
@@ -111,6 +118,8 @@ static int gIER,gIFR,gBufA,gBufB;
 static u8 nubus_disabled;
 
 void via_debug_dump(void);
+<<<<<<< HEAD
+=======
 =======
 /* To disable a NuBus slot on Quadras we make that slot IRQ line an output set
  * high. On RBV we just use the slot interrupt enable register. On Macs with
@@ -134,6 +143,7 @@ void via_irq_enable(int irq);
 void via_irq_disable(int irq);
 void via_irq_clear(int irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Initialize the VIAs
@@ -156,8 +166,12 @@ void __init via_init(void)
 <<<<<<< HEAD
 		case MAC_VIA_IICI:
 =======
+<<<<<<< HEAD
+		case MAC_VIA_IICI:
+=======
 		case MAC_VIA_IIci:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			via1 = (void *) VIA1_BASE;
 			if (macintosh_config->ident == MAC_MODEL_IIFX) {
 				via2 = NULL;
@@ -255,6 +269,9 @@ void __init via_init(void)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((macintosh_config->via_type == MAC_VIA_QUADRA) &&
 	    (macintosh_config->adb_type != MAC_ADB_PB1) &&
 	    (macintosh_config->adb_type != MAC_ADB_PB2) &&
@@ -266,6 +283,8 @@ void __init via_init(void)
 	} else {
 		via_alt_mapping = 0;
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* Some machines support an alternate IRQ mapping that spreads  */
 	/* Ethernet and Sound out to their own autolevel IRQs and moves */
@@ -300,6 +319,7 @@ void __init via_init(void)
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Now initialize VIA2. For RBV we just kill all interrupts;
@@ -320,6 +340,9 @@ void __init via_init(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Everything below this point is VIA2 only... */
 
 	if (rbv_present)
@@ -342,6 +365,8 @@ void __init via_init(void)
 	} else {
 		/* CA2 (SCSI DRQ), CB2 (SCSI IRQ): indep. input, neg. edge */
 		via2[vPCR] = 0x22;
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Set vPCR for control line interrupts (but not on RBV)
@@ -360,6 +385,7 @@ void __init via_init(void)
 			via2[vPCR] = 0x22;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -378,12 +404,18 @@ void __init via_init_clock(irq_handler_t func)
 <<<<<<< HEAD
 	if (request_irq(IRQ_MAC_TIMER_1, func, 0, "timer", func))
 =======
+<<<<<<< HEAD
+	if (request_irq(IRQ_MAC_TIMER_1, func, 0, "timer", func))
+=======
 	if (request_irq(IRQ_MAC_TIMER_1, func, IRQ_FLG_LOCK, "timer", func))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err("Couldn't register %s interrupt\n", "timer");
 }
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * Register the interrupt dispatchers for VIA or RBV machines only.
@@ -416,6 +448,7 @@ void __init via_register_interrupts(void)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Debugging dump, used in various places to see what's going on.
  */
 
@@ -511,6 +544,9 @@ void __init via_nubus_init(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Disable the slot interrupts. On some hardware that's not possible.
 	 * On some hardware it's unclear what all of these I/O lines do.
@@ -560,6 +596,8 @@ void via_nubus_irq_shutdown(int irq)
 		break;
 	case MAC_VIA_IICI:
 		via_irq_disable(irq);
+<<<<<<< HEAD
+=======
 =======
 	/* Disable all the slot interrupts (where possible). */
 
@@ -590,6 +628,7 @@ void via_nubus_irq_shutdown(int irq)
 			via2[vDirA] |= 0x7F;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 }
@@ -602,8 +641,12 @@ void via_nubus_irq_shutdown(int irq)
 <<<<<<< HEAD
 void via1_irq(unsigned int irq, struct irq_desc *desc)
 =======
+<<<<<<< HEAD
+void via1_irq(unsigned int irq, struct irq_desc *desc)
+=======
 irqreturn_t via1_irq(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq_num;
 	unsigned char irq_bit, events;
@@ -613,8 +656,12 @@ irqreturn_t via1_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return IRQ_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irq_num = VIA1_SOURCE_BASE;
 	irq_bit = 1;
@@ -624,12 +671,21 @@ irqreturn_t via1_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 			generic_handle_irq(irq_num);
 =======
+<<<<<<< HEAD
+			generic_handle_irq(irq_num);
+=======
 			m68k_handle_int(irq_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		++irq_num;
 		irq_bit <<= 1;
 	} while (events >= irq_bit);
+<<<<<<< HEAD
+}
+
+static void via2_irq(unsigned int irq, struct irq_desc *desc)
+=======
 <<<<<<< HEAD
 }
 
@@ -640,6 +696,7 @@ static void via2_irq(unsigned int irq, struct irq_desc *desc)
 
 irqreturn_t via2_irq(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq_num;
 	unsigned char irq_bit, events;
@@ -649,8 +706,12 @@ irqreturn_t via2_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return IRQ_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irq_num = VIA2_SOURCE_BASE;
 	irq_bit = 1;
@@ -660,16 +721,23 @@ irqreturn_t via2_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 			generic_handle_irq(irq_num);
 =======
+<<<<<<< HEAD
+			generic_handle_irq(irq_num);
+=======
 			m68k_handle_int(irq_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		++irq_num;
 		irq_bit <<= 1;
 	} while (events >= irq_bit);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -680,8 +748,12 @@ irqreturn_t via2_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 void via_nubus_irq(unsigned int irq, struct irq_desc *desc)
 =======
+<<<<<<< HEAD
+void via_nubus_irq(unsigned int irq, struct irq_desc *desc)
+=======
 irqreturn_t via_nubus_irq(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int slot_irq;
 	unsigned char slot_bit, events;
@@ -695,8 +767,12 @@ irqreturn_t via_nubus_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return IRQ_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	do {
 		slot_irq = IRQ_NUBUS_F;
@@ -707,8 +783,12 @@ irqreturn_t via_nubus_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 				generic_handle_irq(slot_irq);
 =======
+<<<<<<< HEAD
+				generic_handle_irq(slot_irq);
+=======
 				m68k_handle_int(slot_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			--slot_irq;
 			slot_bit >>= 1;
@@ -723,6 +803,9 @@ irqreturn_t via_nubus_irq(int irq, void *dev_id)
 			events &= ~via2[vDirA];
 	} while (events);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -741,9 +824,12 @@ void __init via_register_interrupts(void)
 	}
 	irq_set_chained_handler(IRQ_AUTO_2, via2_irq);
 	irq_set_chained_handler(IRQ_MAC_NUBUS, via_nubus_irq);
+<<<<<<< HEAD
+=======
 =======
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void via_irq_enable(int irq) {
@@ -765,7 +851,11 @@ void via_irq_enable(int irq) {
 <<<<<<< HEAD
 		case MAC_VIA_QUADRA:
 =======
+<<<<<<< HEAD
+		case MAC_VIA_QUADRA:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			nubus_disabled &= ~(1 << irq_idx);
 			/* Enable the CA1 interrupt when no slot is disabled. */
 			if (!nubus_disabled)
@@ -774,13 +864,19 @@ void via_irq_enable(int irq) {
 <<<<<<< HEAD
 		case MAC_VIA_IICI:
 =======
+<<<<<<< HEAD
+		case MAC_VIA_IICI:
+=======
 		case MAC_VIA_IIci:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* On RBV, enable the slot interrupt.
 			 * SIER works like IER.
 			 */
 			via2[rSIER] = IER_SET_BIT(irq_idx);
 			break;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		case MAC_VIA_QUADRA:
@@ -792,6 +888,7 @@ void via_irq_enable(int irq) {
 				via2[vDirA] &= ~(1 << irq_idx);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -814,11 +911,20 @@ void via_irq_disable(int irq) {
 <<<<<<< HEAD
 		case MAC_VIA_QUADRA:
 =======
+<<<<<<< HEAD
+		case MAC_VIA_QUADRA:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			nubus_disabled |= 1 << irq_idx;
 			if (nubus_disabled)
 				via2[gIER] = IER_CLR_BIT(1);
 			break;
+<<<<<<< HEAD
+		case MAC_VIA_IICI:
+			via2[rSIER] = IER_CLR_BIT(irq_idx);
+			break;
+=======
 <<<<<<< HEAD
 		case MAC_VIA_IICI:
 			via2[rSIER] = IER_CLR_BIT(irq_idx);
@@ -833,10 +939,13 @@ void via_irq_disable(int irq) {
 				via2[vDirA] |= 1 << irq_idx;
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void via_irq_clear(int irq) {
@@ -878,6 +987,7 @@ int via_irq_pending(int irq)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void via1_set_head(int head)
 {
 	if (head == 0)
@@ -887,11 +997,17 @@ void via1_set_head(int head)
 }
 EXPORT_SYMBOL(via1_set_head);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int via2_scsi_drq_pending(void)
 {
 	return via2[gIFR] & (1 << IRQ_IDX(IRQ_MAC_SCSIDRQ));
 }
 EXPORT_SYMBOL(via2_scsi_drq_pending);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

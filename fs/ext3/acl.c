@@ -7,6 +7,9 @@
 <<<<<<< HEAD
 #include "ext3.h"
 =======
+<<<<<<< HEAD
+#include "ext3.h"
+=======
 #include <linux/init.h>
 #include <linux/sched.h>
 #include <linux/slab.h>
@@ -15,6 +18,7 @@
 #include <linux/ext3_jbd.h>
 #include <linux/ext3_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xattr.h"
 #include "acl.h"
 
@@ -138,8 +142,12 @@ fail:
 <<<<<<< HEAD
 struct posix_acl *
 =======
+<<<<<<< HEAD
+struct posix_acl *
+=======
 static struct posix_acl *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ext3_get_acl(struct inode *inode, int type)
 {
 	int name_index;
@@ -208,10 +216,15 @@ ext3_set_acl(handle_t *handle, struct inode *inode, int type,
 			name_index = EXT3_XATTR_INDEX_POSIX_ACL_ACCESS;
 			if (acl) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				error = posix_acl_equiv_mode(acl, &inode->i_mode);
 				if (error < 0)
 					return error;
 				else {
+<<<<<<< HEAD
+=======
 =======
 				mode_t mode = inode->i_mode;
 				error = posix_acl_equiv_mode(acl, &mode);
@@ -220,6 +233,7 @@ ext3_set_acl(handle_t *handle, struct inode *inode, int type,
 				else {
 					inode->i_mode = mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					inode->i_ctime = CURRENT_TIME_SEC;
 					ext3_mark_inode_dirty(handle, inode);
 					if (error == 0)
@@ -256,6 +270,8 @@ ext3_set_acl(handle_t *handle, struct inode *inode, int type,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int
 ext3_check_acl(struct inode *inode, int mask, unsigned int flags)
 {
@@ -280,6 +296,7 @@ ext3_check_acl(struct inode *inode, int mask, unsigned int flags)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Initialize the ACLs of a new inode. Called from ext3_new_inode.
  *
@@ -304,10 +321,13 @@ ext3_init_acl(handle_t *handle, struct inode *inode, struct inode *dir)
 	if (test_opt(inode->i_sb, POSIX_ACL) && acl) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct posix_acl *clone;
 		mode_t mode;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (S_ISDIR(inode->i_mode)) {
 			error = ext3_set_acl(handle, inode,
 					     ACL_TYPE_DEFAULT, acl);
@@ -315,6 +335,9 @@ ext3_init_acl(handle_t *handle, struct inode *inode, struct inode *dir)
 				goto cleanup;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = posix_acl_create(&acl, GFP_NOFS, &inode->i_mode);
 		if (error < 0)
 			return error;
@@ -323,6 +346,8 @@ ext3_init_acl(handle_t *handle, struct inode *inode, struct inode *dir)
 			/* This is an extended ACL */
 			error = ext3_set_acl(handle, inode, ACL_TYPE_ACCESS, acl);
 		}
+<<<<<<< HEAD
+=======
 =======
 		clone = posix_acl_clone(acl, GFP_NOFS);
 		error = -ENOMEM;
@@ -341,6 +366,7 @@ ext3_init_acl(handle_t *handle, struct inode *inode, struct inode *dir)
 		}
 		posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 cleanup:
 	posix_acl_release(acl);
@@ -369,8 +395,14 @@ ext3_acl_chmod(struct inode *inode)
 	handle_t *handle;
 	int retries = 0;
 =======
+<<<<<<< HEAD
+	struct posix_acl *acl;
+	handle_t *handle;
+	int retries = 0;
+=======
 	struct posix_acl *acl, *clone;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         int error;
 
 	if (S_ISLNK(inode->i_mode))
@@ -381,6 +413,9 @@ ext3_acl_chmod(struct inode *inode)
 	if (IS_ERR(acl) || !acl)
 		return PTR_ERR(acl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = posix_acl_chmod(&acl, GFP_KERNEL, inode->i_mode);
 	if (error)
 		return error;
@@ -399,6 +434,8 @@ retry:
 		goto retry;
 out:
 	posix_acl_release(acl);
+<<<<<<< HEAD
+=======
 =======
 	clone = posix_acl_clone(acl, GFP_KERNEL);
 	posix_acl_release(acl);
@@ -426,6 +463,7 @@ out:
 out:
 	posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 

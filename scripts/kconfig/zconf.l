@@ -2,9 +2,14 @@
 %option nostdinit noyywrap never-interactive full ecs
 %option 8bit nodefault perf-report perf-report
 =======
+<<<<<<< HEAD
+%option nostdinit noyywrap never-interactive full ecs
+%option 8bit nodefault perf-report perf-report
+=======
 %option backup nostdinit noyywrap never-interactive full ecs
 %option 8bit backup nodefault perf-report perf-report
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 %option noinput
 %x COMMAND HELP STRING PARAM
 %{
@@ -21,8 +26,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define LKC_DIRECT_LINK
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "lkc.h"
 
 #define START_STRSIZE	16
@@ -107,8 +115,12 @@ n	[A-Za-z0-9_]
 <<<<<<< HEAD
 		const struct kconf_id *id = kconf_id_lookup(yytext, yyleng);
 =======
+<<<<<<< HEAD
+		const struct kconf_id *id = kconf_id_lookup(yytext, yyleng);
+=======
 		struct kconf_id *id = kconf_id_lookup(yytext, yyleng);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BEGIN(PARAM);
 		current_pos.file = current_file;
 		current_pos.lineno = current_file->lineno;
@@ -147,8 +159,12 @@ n	[A-Za-z0-9_]
 <<<<<<< HEAD
 		const struct kconf_id *id = kconf_id_lookup(yytext, yyleng);
 =======
+<<<<<<< HEAD
+		const struct kconf_id *id = kconf_id_lookup(yytext, yyleng);
+=======
 		struct kconf_id *id = kconf_id_lookup(yytext, yyleng);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (id && id->flags & TF_PARAM) {
 			zconflval.id = id;
 			return id->token;

@@ -3,6 +3,9 @@
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Function: v7_pabort
  *
  * Params  : r2 = pt_regs
@@ -10,6 +13,8 @@
  *	   : r5 = psr for parent context
  *
  * Returns : r4 - r11, r13 preserved
+<<<<<<< HEAD
+=======
 =======
  * Function: v6_pabort
  *
@@ -18,6 +23,7 @@
  * Returns : r0 = address of abort
  *	   : r1 = IFSR
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Purpose : obtain information about current prefetch abort.
  */
@@ -29,6 +35,10 @@ ENTRY(v7_pabort)
 <<<<<<< HEAD
 	b	do_PrefetchAbort
 =======
+<<<<<<< HEAD
+	b	do_PrefetchAbort
+=======
 	mov	pc, lr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENDPROC(v7_pabort)

@@ -27,8 +27,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/cpu.h>
@@ -40,16 +44,22 @@
 
 #define define_one_ro(name) 						\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(name, 0444, show_##name, NULL)
 
 #define define_one_rw(name) 						\
 static DEVICE_ATTR(name, 0644, show_##name, store_##name)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(name, 0444, show_##name, NULL)
 
 #define define_one_rw(name) 						\
 static SYSDEV_ATTR(name, 0644, show_##name, store_##name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static u64 call_start[NR_CPUS];
 static u64 phys_addr[NR_CPUS];
@@ -69,8 +79,12 @@ static ssize_t 								\
 <<<<<<< HEAD
 show_##name(struct device *dev, struct device_attribute *attr,	\
 =======
+<<<<<<< HEAD
+show_##name(struct device *dev, struct device_attribute *attr,	\
+=======
 show_##name(struct sys_device *dev, struct sysdev_attribute *attr,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		char *buf)						\
 {									\
 	u32 cpu=dev->id;						\
@@ -82,8 +96,12 @@ static ssize_t 								\
 <<<<<<< HEAD
 store_##name(struct device *dev, struct device_attribute *attr,	\
 =======
+<<<<<<< HEAD
+store_##name(struct device *dev, struct device_attribute *attr,	\
+=======
 store_##name(struct sys_device *dev, struct sysdev_attribute *attr,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					const char *buf, size_t size)	\
 {									\
 	unsigned int cpu=dev->id;					\
@@ -100,8 +118,12 @@ static ssize_t
 <<<<<<< HEAD
 store_call_start(struct device *dev, struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+store_call_start(struct device *dev, struct device_attribute *attr,
+=======
 store_call_start(struct sys_device *dev, struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const char *buf, size_t size)
 {
 	unsigned int cpu=dev->id;
@@ -153,8 +175,12 @@ static ssize_t
 <<<<<<< HEAD
 show_virtual_to_phys(struct device *dev, struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+show_virtual_to_phys(struct device *dev, struct device_attribute *attr,
+=======
 show_virtual_to_phys(struct sys_device *dev, struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			char *buf)
 {
 	unsigned int cpu=dev->id;
@@ -165,8 +191,12 @@ static ssize_t
 <<<<<<< HEAD
 store_virtual_to_phys(struct device *dev, struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+store_virtual_to_phys(struct device *dev, struct device_attribute *attr,
+=======
 store_virtual_to_phys(struct sys_device *dev, struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			const char *buf, size_t size)
 {
 	unsigned int cpu=dev->id;
@@ -194,9 +224,14 @@ static ssize_t
 show_err_data_buffer(struct device *dev,
 			struct device_attribute *attr, char *buf)
 =======
+<<<<<<< HEAD
+show_err_data_buffer(struct device *dev,
+			struct device_attribute *attr, char *buf)
+=======
 show_err_data_buffer(struct sys_device *dev,
 			struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int cpu=dev->id;
 
@@ -211,9 +246,14 @@ static ssize_t
 store_err_data_buffer(struct device *dev,
 			struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+store_err_data_buffer(struct device *dev,
+			struct device_attribute *attr,
+=======
 store_err_data_buffer(struct sys_device *dev,
 			struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			const char *buf, size_t size)
 {
 	unsigned int cpu=dev->id;
@@ -251,6 +291,9 @@ define_one_ro(resources);
 
 static struct attribute *default_attrs[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&dev_attr_call_start.attr,
 	&dev_attr_virtual_to_phys.attr,
 	&dev_attr_err_type_info.attr,
@@ -259,6 +302,8 @@ static struct attribute *default_attrs[] = {
 	&dev_attr_status.attr,
 	&dev_attr_capabilities.attr,
 	&dev_attr_resources.attr,
+<<<<<<< HEAD
+=======
 =======
 	&attr_call_start.attr,
 	&attr_virtual_to_phys.attr,
@@ -269,6 +314,7 @@ static struct attribute *default_attrs[] = {
 	&attr_capabilities.attr,
 	&attr_resources.attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
@@ -280,8 +326,12 @@ static struct attribute_group err_inject_attr_group = {
 <<<<<<< HEAD
 static int __cpuinit err_inject_add_dev(struct device * sys_dev)
 =======
+<<<<<<< HEAD
+static int __cpuinit err_inject_add_dev(struct device * sys_dev)
+=======
 static int __cpuinit err_inject_add_dev(struct sys_device * sys_dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return sysfs_create_group(&sys_dev->kobj, &err_inject_attr_group);
 }
@@ -289,8 +339,12 @@ static int __cpuinit err_inject_add_dev(struct sys_device * sys_dev)
 <<<<<<< HEAD
 static int __cpuinit err_inject_remove_dev(struct device * sys_dev)
 =======
+<<<<<<< HEAD
+static int __cpuinit err_inject_remove_dev(struct device * sys_dev)
+=======
 static int __cpuinit err_inject_remove_dev(struct sys_device * sys_dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	sysfs_remove_group(&sys_dev->kobj, &err_inject_attr_group);
 	return 0;
@@ -304,10 +358,16 @@ static int __cpuinit err_inject_cpu_callback(struct notifier_block *nfb,
 
 	sys_dev = get_cpu_device(cpu);
 =======
+<<<<<<< HEAD
+	struct device *sys_dev;
+
+	sys_dev = get_cpu_device(cpu);
+=======
 	struct sys_device *sys_dev;
 
 	sys_dev = get_cpu_sysdev(cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (action) {
 	case CPU_ONLINE:
 	case CPU_ONLINE_FROZEN:
@@ -352,8 +412,12 @@ err_inject_exit(void)
 <<<<<<< HEAD
 	struct device *sys_dev;
 =======
+<<<<<<< HEAD
+	struct device *sys_dev;
+=======
 	struct sys_device *sys_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef ERR_INJ_DEBUG
 	printk(KERN_INFO "Exit error injection driver.\n");
@@ -362,8 +426,12 @@ err_inject_exit(void)
 <<<<<<< HEAD
 		sys_dev = get_cpu_device(i);
 =======
+<<<<<<< HEAD
+		sys_dev = get_cpu_device(i);
+=======
 		sys_dev = get_cpu_sysdev(i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sysfs_remove_group(&sys_dev->kobj, &err_inject_attr_group);
 	}
 	unregister_hotcpu_notifier(&err_inject_cpu_notifier);

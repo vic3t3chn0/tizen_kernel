@@ -249,11 +249,16 @@ static void setup_quasi_va_is_pa(void)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void machine_kexec(struct kimage *image)
 {
 	void *reboot_code_buffer;
 	void (*rnk)(unsigned long, void *, unsigned long)
 		__noreturn;
+<<<<<<< HEAD
+=======
 =======
 NORET_TYPE void machine_kexec(struct kimage *image)
 {
@@ -261,6 +266,7 @@ NORET_TYPE void machine_kexec(struct kimage *image)
 	NORET_TYPE void (*rnk)(unsigned long, void *, unsigned long)
 		ATTRIB_NORET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Mask all interrupts before starting to reboot. */
 	interrupt_mask_set_mask(~0ULL);

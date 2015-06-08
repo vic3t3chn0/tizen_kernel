@@ -42,7 +42,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int sysctl_aarp_expiry_time = AARP_EXPIRY_TIME;
 int sysctl_aarp_tick_time = AARP_TICK_TIME;
@@ -784,6 +788,9 @@ static int aarp_rcv(struct sk_buff *skb, struct net_device *dev,
 
 	switch (function) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case AARP_REPLY:
 		if (!unresolved_count)	/* Speed up */
 			break;
@@ -865,6 +872,8 @@ static int aarp_rcv(struct sk_buff *skb, struct net_device *dev,
 		 */
 		aarp_send_reply(dev, ma, &sa, ea->hw_src);
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case AARP_REPLY:
 			if (!unresolved_count)	/* Speed up */
@@ -948,6 +957,7 @@ static int aarp_rcv(struct sk_buff *skb, struct net_device *dev,
 			aarp_send_reply(dev, ma, &sa, ea->hw_src);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 unlock:

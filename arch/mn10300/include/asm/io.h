@@ -231,8 +231,11 @@ static inline void outsl(unsigned long addr, const void *buffer, int count)
 struct pci_dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long max);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void pci_iounmap(struct pci_dev *dev, void __iomem *p)
 {
 }
@@ -255,6 +258,9 @@ static inline void *phys_to_virt(unsigned long address)
  * Change "struct page" to physical address.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void __iomem *__ioremap(unsigned long offset, unsigned long size,
 				      unsigned long flags)
 {
@@ -264,6 +270,8 @@ static inline void __iomem *__ioremap(unsigned long offset, unsigned long size,
 static inline void __iomem *ioremap(unsigned long offset, unsigned long size)
 {
 	return (void __iomem *) offset;
+<<<<<<< HEAD
+=======
 =======
 static inline void *__ioremap(unsigned long offset, unsigned long size,
 			      unsigned long flags)
@@ -275,6 +283,7 @@ static inline void *ioremap(unsigned long offset, unsigned long size)
 {
 	return (void *) offset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -287,10 +296,16 @@ static inline void __iomem *ioremap_nocache(unsigned long offset, unsigned long 
 {
 	return (void __iomem *) (offset | 0x20000000);
 =======
+<<<<<<< HEAD
+static inline void __iomem *ioremap_nocache(unsigned long offset, unsigned long size)
+{
+	return (void __iomem *) (offset | 0x20000000);
+=======
 static inline void *ioremap_nocache(unsigned long offset, unsigned long size)
 {
 	return (void *) (offset | 0x20000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define ioremap_wc ioremap_nocache
@@ -298,8 +313,12 @@ static inline void *ioremap_nocache(unsigned long offset, unsigned long size)
 <<<<<<< HEAD
 static inline void iounmap(void __iomem *addr)
 =======
+<<<<<<< HEAD
+static inline void iounmap(void __iomem *addr)
+=======
 static inline void iounmap(void *addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 

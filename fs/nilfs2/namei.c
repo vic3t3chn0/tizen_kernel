@@ -75,6 +75,9 @@ nilfs_lookup(struct inode *dir, struct dentry *dentry, struct nameidata *nd)
 <<<<<<< HEAD
 	inode = ino ? nilfs_iget(dir->i_sb, NILFS_I(dir)->i_root, ino) : NULL;
 =======
+<<<<<<< HEAD
+	inode = ino ? nilfs_iget(dir->i_sb, NILFS_I(dir)->i_root, ino) : NULL;
+=======
 	inode = NULL;
 	if (ino) {
 		inode = nilfs_iget(dir->i_sb, NILFS_I(dir)->i_root, ino);
@@ -82,6 +85,7 @@ nilfs_lookup(struct inode *dir, struct dentry *dentry, struct nameidata *nd)
 			return ERR_CAST(inode);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return d_splice_alias(inode, dentry);
 }
 
@@ -96,8 +100,12 @@ nilfs_lookup(struct inode *dir, struct dentry *dentry, struct nameidata *nd)
 <<<<<<< HEAD
 static int nilfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int nilfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int nilfs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct nameidata *nd)
 {
 	struct inode *inode;
@@ -128,8 +136,12 @@ static int
 <<<<<<< HEAD
 nilfs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode, dev_t rdev)
 =======
+<<<<<<< HEAD
+nilfs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode, dev_t rdev)
+=======
 nilfs_mknod(struct inode *dir, struct dentry *dentry, int mode, dev_t rdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	struct nilfs_transaction_info ti;
@@ -212,10 +224,13 @@ static int nilfs_link(struct dentry *old_dentry, struct inode *dir,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (inode->i_nlink >= NILFS_LINK_MAX)
 		return -EMLINK;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = nilfs_transaction_begin(dir->i_sb, &ti, 1);
 	if (err)
 		return err;
@@ -236,8 +251,12 @@ static int nilfs_link(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 static int nilfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int nilfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int nilfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	struct nilfs_transaction_info ti;
@@ -245,10 +264,13 @@ static int nilfs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (dir->i_nlink >= NILFS_LINK_MAX)
 		return -EMLINK;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = nilfs_transaction_begin(dir->i_sb, &ti, 1);
 	if (err)
 		return err;
@@ -319,8 +341,12 @@ static int nilfs_do_unlink(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 		set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, 1);
+=======
 		inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	err = nilfs_delete_entry(de, page);
 	if (err)
@@ -433,12 +459,15 @@ static int nilfs_rename(struct inode *old_dir, struct dentry *old_dentry,
 	} else {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (dir_de) {
 			err = -EMLINK;
 			if (new_dir->i_nlink >= NILFS_LINK_MAX)
 				goto out_dir;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = nilfs_add_link(new_dentry, old_inode);
 		if (err)
 			goto out_dir;

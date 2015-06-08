@@ -16,9 +16,14 @@ ENTRY(_sleep_mode)
 	[--SP] = (R7:4, P5:3);
 	[--SP] = RETS;
 =======
+<<<<<<< HEAD
+	[--SP] = (R7:4, P5:3);
+	[--SP] = RETS;
+=======
 	[--SP] = ( R7:0, P5:0 );
 	[--SP] =  RETS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	call _set_sic_iwr;
 
@@ -52,6 +57,9 @@ ENTRY(_sleep_mode)
 
 	RETS = [SP++];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	(R7:4, P5:3) = [SP++];
 	RTS;
 ENDPROC(_sleep_mode)
@@ -71,6 +79,8 @@ ENTRY(_hibernate_mode)
 	P3.L = lo(VR_CTL);
 
 	/* Disable all wakeup sources */
+<<<<<<< HEAD
+=======
 =======
 	( R7:0, P5:0 ) = [SP++];
 	RTS;
@@ -82,6 +92,7 @@ ENTRY(_hibernate_mode)
 
 	R3 = R0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	R0 = IWR_DISABLE_ALL;
 	R1 = IWR_DISABLE_ALL;
 	R2 = IWR_DISABLE_ALL;
@@ -93,11 +104,16 @@ ENTRY(_hibernate_mode)
 	/* Finally, we climb into our cave to hibernate */
 	W[P3] = R4.L;
 =======
+<<<<<<< HEAD
+	/* Finally, we climb into our cave to hibernate */
+	W[P3] = R4.L;
+=======
 	P0.H = hi(VR_CTL);
 	P0.L = lo(VR_CTL);
 
 	W[P0] = R3.L;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLI R2;
 	IDLE;
 .Lforever:
@@ -109,9 +125,14 @@ ENTRY(_sleep_deeper)
 	[--SP] = (R7:4, P5:3);
 	[--SP] = RETS;
 =======
+<<<<<<< HEAD
+	[--SP] = (R7:4, P5:3);
+	[--SP] = RETS;
+=======
 	[--SP] = ( R7:0, P5:0 );
 	[--SP] =  RETS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	CLI R4;
 
@@ -207,8 +228,12 @@ ENTRY(_sleep_deeper)
 <<<<<<< HEAD
 	(R7:4, P5:3) = [SP++];
 =======
+<<<<<<< HEAD
+	(R7:4, P5:3) = [SP++];
+=======
 	( R7:0, P5:0 ) = [SP++];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RTS;
 ENDPROC(_sleep_deeper)
 
@@ -234,7 +259,13 @@ ENTRY(_set_dram_srfs)
 	P1.H = hi(EBIU_SDSTAT);
 
 =======
+<<<<<<< HEAD
+	P1.L = lo(EBIU_SDSTAT);
+	P1.H = hi(EBIU_SDSTAT);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	R2 = [P0];
 	BITSET(R2, 24); /* SRFS enter self-refresh mode */
 	[P0] = R2;
@@ -244,20 +275,28 @@ ENTRY(_set_dram_srfs)
 1:
 	R2 = w[P1];
 =======
+<<<<<<< HEAD
+1:
+	R2 = w[P1];
+=======
 	P0.L = lo(EBIU_SDSTAT);
 	P0.H = hi(EBIU_SDSTAT);
 1:
 	R2 = w[P0];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SSYNC;
 	cc = BITTST(R2, 1); /* SDSRA poll self-refresh status */
 	if !cc jump 1b;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	P0.L = lo(EBIU_SDGCTL);
 	P0.H = hi(EBIU_SDGCTL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	R2 = [P0];
 	BITCLR(R2, 0); /* SCTLE disable CLKOUT */
 	[P0] = R2;
@@ -270,7 +309,11 @@ ENTRY(_unset_dram_srfs)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(EBIU_RSTCTL)	/* DDR */
 	P0.H = hi(EBIU_RSTCTL);
 	P0.L = lo(EBIU_RSTCTL);
@@ -279,15 +322,21 @@ ENTRY(_unset_dram_srfs)
 	[P0] = R2;
 #elif defined(EBIU_SDGCTL)	/* SDRAM */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* release CLKOUT from self-refresh */
 	P0.L = lo(EBIU_SDGCTL);
 	P0.H = hi(EBIU_SDGCTL);
 
+<<<<<<< HEAD
+=======
 =======
 
 	P0.L = lo(EBIU_SDGCTL); /* release CLKOUT from self-refresh */
 	P0.H = hi(EBIU_SDGCTL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	R2 = [P0];
 	BITSET(R2, 0); /* SCTLE enable CLKOUT */
 	[P0] = R2
@@ -296,9 +345,13 @@ ENTRY(_unset_dram_srfs)
 <<<<<<< HEAD
 	/* release SDRAM from self-refresh */
 =======
+<<<<<<< HEAD
+	/* release SDRAM from self-refresh */
+=======
 	P0.L = lo(EBIU_SDGCTL); /* release SDRAM from self-refresh */
 	P0.H = hi(EBIU_SDGCTL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	R2 = [P0];
 	BITCLR(R2, 24); /* clear SRFS bit */
 	[P0] = R2
@@ -306,13 +359,20 @@ ENTRY(_unset_dram_srfs)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SSYNC;
 	RTS;
 ENDPROC(_unset_dram_srfs)
 
 ENTRY(_set_sic_iwr)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef SIC_IWR0
 	P0.H = hi(SYSMMR_BASE);
 	P0.L = lo(SYSMMR_BASE);
@@ -326,6 +386,8 @@ ENTRY(_set_sic_iwr)
 	P0.L = lo(SIC_IWR);
 	[P0] = R0;
 #endif
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_BF54x) || defined(CONFIG_BF52x) || defined(CONFIG_BF561) || \
 	defined(CONFIG_BF538) || defined(CONFIG_BF539) || defined(CONFIG_BF51x)
@@ -345,6 +407,7 @@ ENTRY(_set_sic_iwr)
 #endif
 	[P0] = R0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	SSYNC;
 	RTS;
@@ -363,6 +426,9 @@ ENDPROC(_test_pll_locked)
 .section .text
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PM_REG0  R7
 #define PM_REG1  R6
 #define PM_REG2  R5
@@ -412,6 +478,8 @@ ENTRY(_do_hibernate)
 	 * saving/restoring MMR states
 	 */
 	[--sp] = (R7:0, P5:0);
+<<<<<<< HEAD
+=======
 =======
 ENTRY(_do_hibernate)
 	[--SP] = ( R7:0, P5:0 );
@@ -614,6 +682,7 @@ ENTRY(_do_hibernate)
 	[--sp] = SYSCFG;
 	[--sp] = ( R7:0, P5:0 );
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[--sp] = fp;
 	[--sp] = usp;
 
@@ -649,6 +718,9 @@ ENTRY(_do_hibernate)
 	[--sp] = LB1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We can't push RETI directly as that'll change IPEND[4] */
 	r7 = RETI;
 	[--sp] = RETS;
@@ -1140,6 +1212,8 @@ ENTRY(_do_hibernate)
 	CYCLES = [sp++];
 	ASTAT = [sp++];
 	RETS = [sp++];
+<<<<<<< HEAD
+=======
 =======
 	[--sp] = ASTAT;
 	[--sp] = CYCLES;
@@ -1183,6 +1257,7 @@ ENTRY(_do_hibernate)
 	CYCLES = [sp++];
 	ASTAT = [sp++];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	LB1 = [sp++];
 	LB0 = [sp++];
@@ -1217,6 +1292,9 @@ ENTRY(_do_hibernate)
 
 	usp = [sp++];
 	fp = [sp++];
+<<<<<<< HEAD
+	(R7:0, P5:0) = [sp++];
+=======
 <<<<<<< HEAD
 	(R7:0, P5:0) = [sp++];
 =======
@@ -1414,14 +1492,18 @@ ENTRY(_do_hibernate)
 	PM_SYS_POP(SIC_IMASK0)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	[--sp] = RETI;	/* Clear Global Interrupt Disable */
 	SP += 4;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	RETS = [SP++];
 	( R7:0, P5:0 ) = [SP++];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RTS;
 ENDPROC(_do_hibernate)

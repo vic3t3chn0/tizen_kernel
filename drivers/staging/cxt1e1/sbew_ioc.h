@@ -1,7 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * $Id: sbew_ioc.h,v 1.0 2005/09/28 00:10:10 rickd PMCC4_3_1B $
  */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _INC_SBEWIOC_H_
 #define _INC_SBEWIOC_H_
 
@@ -24,6 +33,14 @@
  * SBE, Inc.  San Ramon, California  U.S.A.
  *
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+
+#include <linux/ioctl.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * RCS info:
  * RCS revision: $Revision: 1.0 $
  * Last changed on $Date: 2005/09/28 00:10:10 $
@@ -73,6 +90,10 @@
 extern      "C"
 {
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SBE_LOCKFILE   "/tmp/.sbewan.LCK"
 
@@ -128,9 +149,18 @@ extern      "C"
 
 #define SBE_IOC_MAXVEC    1
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef __cplusplus
 }
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif                          /*** _INC_SBEWIOC_H_ ***/

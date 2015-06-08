@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/poll.h>
 #include <linux/personality.h> /* for STICKY_TIMEOUTS */
@@ -33,7 +37,11 @@
 <<<<<<< HEAD
 #include <linux/freezer.h>
 =======
+<<<<<<< HEAD
+#include <linux/freezer.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/uaccess.h>
 
@@ -80,7 +88,11 @@ long select_estimate_accuracy(struct timespec *tv)
 <<<<<<< HEAD
 	unsigned long ret;
 =======
+<<<<<<< HEAD
+	unsigned long ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timespec now;
 
 	/*
@@ -93,14 +105,20 @@ long select_estimate_accuracy(struct timespec *tv)
 	ktime_get_ts(&now);
 	now = timespec_sub(*tv, now);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = __estimate_accuracy(&now);
 	if (ret < current->timer_slack_ns)
 		return current->timer_slack_ns;
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	return min_t(long, __estimate_accuracy(&now),
 			task_get_effective_timer_slack(current));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -242,8 +260,12 @@ static void __pollwait(struct file *filp, wait_queue_head_t *wait_address,
 <<<<<<< HEAD
 	entry->key = p->_key;
 =======
+<<<<<<< HEAD
+	entry->key = p->_key;
+=======
 	entry->key = p->key;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_waitqueue_func_entry(&entry->wait, pollwake);
 	entry->wait.private = pwq;
 	add_wait_queue(wait_address, &entry->wait);
@@ -260,8 +282,13 @@ int poll_schedule_timeout(struct poll_wqueues *pwq, int state,
 		rc = freezable_schedule_hrtimeout_range(expires, slack,
 							HRTIMER_MODE_ABS);
 =======
+<<<<<<< HEAD
+		rc = freezable_schedule_hrtimeout_range(expires, slack,
+							HRTIMER_MODE_ABS);
+=======
 		rc = schedule_hrtimeout_range(expires, slack, HRTIMER_MODE_ABS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__set_current_state(TASK_RUNNING);
 
 	/*
@@ -376,8 +403,12 @@ static int max_select_fd(unsigned long n, fd_set_bits *fds)
 <<<<<<< HEAD
 	open_fds = fdt->open_fds + n;
 =======
+<<<<<<< HEAD
+	open_fds = fdt->open_fds + n;
+=======
 	open_fds = fdt->open_fds->fds_bits+n;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	max = 0;
 	if (set) {
 		set &= BITS(fds, n);
@@ -416,11 +447,16 @@ static inline void wait_key_set(poll_table *wait, unsigned long in,
 				unsigned long out, unsigned long bit)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wait->_key = POLLEX_SET;
 	if (in & bit)
 		wait->_key |= POLLIN_SET;
 	if (out & bit)
 		wait->_key |= POLLOUT_SET;
+<<<<<<< HEAD
+=======
 =======
 	if (wait) {
 		wait->key = POLLEX_SET;
@@ -430,6 +466,7 @@ static inline void wait_key_set(poll_table *wait, unsigned long in,
 			wait->key |= POLLOUT_SET;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int do_select(int n, fd_set_bits *fds, struct timespec *end_time)
@@ -454,8 +491,12 @@ int do_select(int n, fd_set_bits *fds, struct timespec *end_time)
 <<<<<<< HEAD
 		wait->_qproc = NULL;
 =======
+<<<<<<< HEAD
+		wait->_qproc = NULL;
+=======
 		wait = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		timed_out = 1;
 	}
 
@@ -503,8 +544,12 @@ int do_select(int n, fd_set_bits *fds, struct timespec *end_time)
 <<<<<<< HEAD
 						wait->_qproc = NULL;
 =======
+<<<<<<< HEAD
+						wait->_qproc = NULL;
+=======
 						wait = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					}
 					if ((mask & POLLOUT_SET) && (out & bit)) {
 						res_out |= bit;
@@ -512,8 +557,12 @@ int do_select(int n, fd_set_bits *fds, struct timespec *end_time)
 <<<<<<< HEAD
 						wait->_qproc = NULL;
 =======
+<<<<<<< HEAD
+						wait->_qproc = NULL;
+=======
 						wait = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					}
 					if ((mask & POLLEX_SET) && (ex & bit)) {
 						res_ex |= bit;
@@ -521,8 +570,12 @@ int do_select(int n, fd_set_bits *fds, struct timespec *end_time)
 <<<<<<< HEAD
 						wait->_qproc = NULL;
 =======
+<<<<<<< HEAD
+						wait->_qproc = NULL;
+=======
 						wait = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					}
 				}
 			}
@@ -537,8 +590,12 @@ int do_select(int n, fd_set_bits *fds, struct timespec *end_time)
 <<<<<<< HEAD
 		wait->_qproc = NULL;
 =======
+<<<<<<< HEAD
+		wait->_qproc = NULL;
+=======
 		wait = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (retval || timed_out || signal_pending(current))
 			break;
 		if (table.error) {
@@ -780,8 +837,12 @@ struct poll_list {
 <<<<<<< HEAD
  * if pwait->_qproc is non-NULL.
 =======
+<<<<<<< HEAD
+ * if pwait->_qproc is non-NULL.
+=======
  * if non-NULL.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline unsigned int do_pollfd(struct pollfd *pollfd, poll_table *pwait)
 {
@@ -802,10 +863,14 @@ static inline unsigned int do_pollfd(struct pollfd *pollfd, poll_table *pwait)
 <<<<<<< HEAD
 				pwait->_key = pollfd->events|POLLERR|POLLHUP;
 =======
+<<<<<<< HEAD
+				pwait->_key = pollfd->events|POLLERR|POLLHUP;
+=======
 				if (pwait)
 					pwait->key = pollfd->events |
 							POLLERR | POLLHUP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				mask = file->f_op->poll(file, pwait);
 			}
 			/* Mask out unneeded events. */
@@ -831,8 +896,12 @@ static int do_poll(unsigned int nfds,  struct poll_list *list,
 <<<<<<< HEAD
 		pt->_qproc = NULL;
 =======
+<<<<<<< HEAD
+		pt->_qproc = NULL;
+=======
 		pt = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		timed_out = 1;
 	}
 
@@ -853,8 +922,12 @@ static int do_poll(unsigned int nfds,  struct poll_list *list,
 <<<<<<< HEAD
 				 * and kill poll_table->_qproc, so we don't
 =======
+<<<<<<< HEAD
+				 * and kill poll_table->_qproc, so we don't
+=======
 				 * and kill the poll_table, so we don't
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 * needlessly register any other waiters after
 				 * this. They'll get immediately deregistered
 				 * when we break out and return.
@@ -864,8 +937,12 @@ static int do_poll(unsigned int nfds,  struct poll_list *list,
 <<<<<<< HEAD
 					pt->_qproc = NULL;
 =======
+<<<<<<< HEAD
+					pt->_qproc = NULL;
+=======
 					pt = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				}
 			}
 		}
@@ -876,10 +953,16 @@ static int do_poll(unsigned int nfds,  struct poll_list *list,
 		 */
 		pt->_qproc = NULL;
 =======
+<<<<<<< HEAD
+		 * a poll_table->_qproc to them on the next loop iteration.
+		 */
+		pt->_qproc = NULL;
+=======
 		 * a poll_table to them on the next loop iteration.
 		 */
 		pt = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!count) {
 			count = wait->error;
 			if (signal_pending(current))
@@ -998,8 +1081,12 @@ SYSCALL_DEFINE3(poll, struct pollfd __user *, ufds, unsigned int, nfds,
 <<<<<<< HEAD
 		int, timeout_msecs)
 =======
+<<<<<<< HEAD
+		int, timeout_msecs)
+=======
 		long, timeout_msecs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct timespec end_time, *to = NULL;
 	int ret;

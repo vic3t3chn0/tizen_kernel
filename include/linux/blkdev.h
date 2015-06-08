@@ -2,15 +2,21 @@
 #define _LINUX_BLKDEV_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 
 #ifdef CONFIG_BLOCK
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_BLOCK
 
 #include <linux/sched.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/major.h>
 #include <linux/genhd.h>
 #include <linux/list.h>
@@ -23,8 +29,11 @@
 #include <linux/bio.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/stringify.h>
 #include <linux/gfp.h>
 #include <linux/bsg.h>
@@ -35,7 +44,11 @@
 <<<<<<< HEAD
 struct module;
 =======
+<<<<<<< HEAD
+struct module;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct scsi_ioctl_command;
 
 struct request_queue;
@@ -47,7 +60,11 @@ struct sg_io_hdr;
 <<<<<<< HEAD
 struct bsg_job;
 =======
+<<<<<<< HEAD
+struct bsg_job;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define BLKDEV_MIN_RQ	4
 #define BLKDEV_MAX_RQ	128	/* Default maximum */
@@ -94,8 +111,12 @@ enum rq_cmd_type_bits {
 <<<<<<< HEAD
  * if you modify this structure, be sure to check block/blk-core.c:blk_rq_init()
 =======
+<<<<<<< HEAD
+ * if you modify this structure, be sure to check block/blk-core.c:blk_rq_init()
+=======
  * if you modify this structure, be sure to check block/blk-core.c:rq_init()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * as well!
  */
 struct request {
@@ -133,6 +154,9 @@ struct request {
 	 * more they have to dynamically allocate it.  Flush requests are
 	 * never put on the IO scheduler. So let the flush fields share
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * space with the elevator data.
 	 */
 	union {
@@ -145,6 +169,8 @@ struct request {
 			unsigned int		seq;
 			struct list_head	list;
 			rq_end_io_fn		*saved_end_io;
+<<<<<<< HEAD
+=======
 =======
 	 * space with the three elevator_private pointers.
 	 */
@@ -154,6 +180,7 @@ struct request {
 			unsigned int		seq;
 			struct list_head	list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} flush;
 	};
 
@@ -233,8 +260,12 @@ typedef void (request_fn_proc) (struct request_queue *q);
 <<<<<<< HEAD
 typedef void (make_request_fn) (struct request_queue *q, struct bio *bio);
 =======
+<<<<<<< HEAD
+typedef void (make_request_fn) (struct request_queue *q, struct bio *bio);
+=======
 typedef int (make_request_fn) (struct request_queue *q, struct bio *bio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef int (prep_rq_fn) (struct request_queue *, struct request *);
 typedef void (unprep_rq_fn) (struct request_queue *, struct request *);
 
@@ -253,7 +284,11 @@ typedef int (lld_busy_fn) (struct request_queue *q);
 <<<<<<< HEAD
 typedef int (bsg_job_fn) (struct bsg_job *);
 =======
+<<<<<<< HEAD
+typedef int (bsg_job_fn) (struct bsg_job *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum blk_eh_timer_return {
 	BLK_EH_NOT_HANDLED,
@@ -308,9 +343,13 @@ struct queue_limits {
 <<<<<<< HEAD
 struct request_queue {
 =======
+<<<<<<< HEAD
+struct request_queue {
+=======
 struct request_queue
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Together with queue_head for cacheline sharing
 	 */
@@ -327,7 +366,11 @@ struct request_queue
 <<<<<<< HEAD
 	request_fn_proc		*urgent_request_fn;
 =======
+<<<<<<< HEAD
+	request_fn_proc		*urgent_request_fn;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	make_request_fn		*make_request_fn;
 	prep_rq_fn		*prep_rq_fn;
 	unprep_rq_fn		*unprep_rq_fn;
@@ -358,6 +401,9 @@ struct request_queue
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * various queue flags, see QUEUE_* below
 	 */
 	unsigned long		queue_flags;
@@ -372,6 +418,8 @@ struct request_queue
 	 * queue needs bounce pages for pages above this limit
 	 */
 	gfp_t			bounce_gfp;
+<<<<<<< HEAD
+=======
 =======
 	 * queue needs bounce pages for pages above this limit
 	 */
@@ -382,6 +430,7 @@ struct request_queue
 	 */
 	unsigned long		queue_flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * protects queue structures from reentrancy. ->__queue_lock should
@@ -397,14 +446,20 @@ struct request_queue
 	struct kobject kobj;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_RUNTIME
 	struct device		*dev;
 	int			rpm_status;
 	unsigned int		nr_pending;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * queue settings
 	 */
@@ -417,9 +472,14 @@ struct request_queue
 	unsigned int		dma_drain_size;
 	void			*dma_drain_buffer;
 =======
+<<<<<<< HEAD
+	unsigned int		dma_drain_size;
+	void			*dma_drain_buffer;
+=======
 	void			*dma_drain_buffer;
 	unsigned int		dma_drain_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int		dma_pad_mask;
 	unsigned int		dma_alignment;
 
@@ -434,14 +494,20 @@ struct request_queue
 	struct list_head	timeout_list;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	icq_list;
 
 	struct queue_limits	limits;
 	bool			notified_urgent;
 	bool			dispatched_urgent;
+<<<<<<< HEAD
+=======
 =======
 	struct queue_limits	limits;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * sg stuff
@@ -472,7 +538,12 @@ struct request_queue
 	bsg_job_fn		*bsg_job_fn;
 	int			bsg_job_size;
 =======
+<<<<<<< HEAD
+	bsg_job_fn		*bsg_job_fn;
+	int			bsg_job_size;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bsg_class_device bsg_dev;
 #endif
 
@@ -493,8 +564,12 @@ struct request_queue
 <<<<<<< HEAD
 #define QUEUE_FLAG_SAME_COMP	9	/* complete on same CPU-group */
 =======
+<<<<<<< HEAD
+#define QUEUE_FLAG_SAME_COMP	9	/* complete on same CPU-group */
+=======
 #define QUEUE_FLAG_SAME_COMP	9	/* force complete on same CPU */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define QUEUE_FLAG_FAIL_IO     10	/* fake timeout */
 #define QUEUE_FLAG_STACKABLE   11	/* supports request stacking */
 #define QUEUE_FLAG_NONROT      12	/* non-rotational device (SSD) */
@@ -508,7 +583,12 @@ struct request_queue
 #define QUEUE_FLAG_SAME_FORCE  18	/* force complete on same CPU */
 #define QUEUE_FLAG_SANITIZE    19	/* supports SANITIZE */
 =======
+<<<<<<< HEAD
+#define QUEUE_FLAG_SAME_FORCE  18	/* force complete on same CPU */
+#define QUEUE_FLAG_SANITIZE    19	/* supports SANITIZE */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define QUEUE_FLAG_DEFAULT	((1 << QUEUE_FLAG_IO_STAT) |		\
 				 (1 << QUEUE_FLAG_STACKABLE)	|	\
@@ -516,10 +596,15 @@ struct request_queue
 				 (1 << QUEUE_FLAG_ADD_RANDOM))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void queue_lockdep_assert_held(struct request_queue *q)
 {
 	if (q->queue_lock)
 		lockdep_assert_held(q->queue_lock);
+<<<<<<< HEAD
+=======
 =======
 static inline int queue_is_locked(struct request_queue *q)
 {
@@ -530,6 +615,7 @@ static inline int queue_is_locked(struct request_queue *q)
 	return 1;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void queue_flag_set_unlocked(unsigned int flag,
@@ -544,8 +630,12 @@ static inline int queue_flag_test_and_clear(unsigned int flag,
 <<<<<<< HEAD
 	queue_lockdep_assert_held(q);
 =======
+<<<<<<< HEAD
+	queue_lockdep_assert_held(q);
+=======
 	WARN_ON_ONCE(!queue_is_locked(q));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(flag, &q->queue_flags)) {
 		__clear_bit(flag, &q->queue_flags);
@@ -561,8 +651,12 @@ static inline int queue_flag_test_and_set(unsigned int flag,
 <<<<<<< HEAD
 	queue_lockdep_assert_held(q);
 =======
+<<<<<<< HEAD
+	queue_lockdep_assert_held(q);
+=======
 	WARN_ON_ONCE(!queue_is_locked(q));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!test_bit(flag, &q->queue_flags)) {
 		__set_bit(flag, &q->queue_flags);
@@ -577,8 +671,12 @@ static inline void queue_flag_set(unsigned int flag, struct request_queue *q)
 <<<<<<< HEAD
 	queue_lockdep_assert_held(q);
 =======
+<<<<<<< HEAD
+	queue_lockdep_assert_held(q);
+=======
 	WARN_ON_ONCE(!queue_is_locked(q));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__set_bit(flag, &q->queue_flags);
 }
 
@@ -598,8 +696,12 @@ static inline void queue_flag_clear(unsigned int flag, struct request_queue *q)
 <<<<<<< HEAD
 	queue_lockdep_assert_held(q);
 =======
+<<<<<<< HEAD
+	queue_lockdep_assert_held(q);
+=======
 	WARN_ON_ONCE(!queue_is_locked(q));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__clear_bit(flag, &q->queue_flags);
 }
 
@@ -608,7 +710,11 @@ static inline void queue_flag_clear(unsigned int flag, struct request_queue *q)
 <<<<<<< HEAD
 #define blk_queue_dead(q)	test_bit(QUEUE_FLAG_DEAD, &(q)->queue_flags)
 =======
+<<<<<<< HEAD
+#define blk_queue_dead(q)	test_bit(QUEUE_FLAG_DEAD, &(q)->queue_flags)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define blk_queue_nomerges(q)	test_bit(QUEUE_FLAG_NOMERGES, &(q)->queue_flags)
 #define blk_queue_noxmerges(q)	\
 	test_bit(QUEUE_FLAG_NOXMERGES, &(q)->queue_flags)
@@ -621,7 +727,11 @@ static inline void queue_flag_clear(unsigned int flag, struct request_queue *q)
 <<<<<<< HEAD
 #define blk_queue_sanitize(q)	test_bit(QUEUE_FLAG_SANITIZE, &(q)->queue_flags)
 =======
+<<<<<<< HEAD
+#define blk_queue_sanitize(q)	test_bit(QUEUE_FLAG_SANITIZE, &(q)->queue_flags)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define blk_queue_secdiscard(q)	(blk_queue_discard(q) && \
 	test_bit(QUEUE_FLAG_SECDISCARD, &(q)->queue_flags))
 
@@ -797,9 +907,15 @@ extern void blk_requeue_request(struct request_queue *, struct request *);
 extern int blk_reinsert_request(struct request_queue *q, struct request *rq);
 extern bool blk_reinsert_req_sup(struct request_queue *q);
 =======
+<<<<<<< HEAD
+extern void blk_requeue_request(struct request_queue *, struct request *);
+extern int blk_reinsert_request(struct request_queue *q, struct request *rq);
+extern bool blk_reinsert_req_sup(struct request_queue *q);
+=======
 extern void blk_insert_request(struct request_queue *, struct request *, int, void *);
 extern void blk_requeue_request(struct request_queue *, struct request *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void blk_add_request_payload(struct request *rq, struct page *page,
 		unsigned int len);
 extern int blk_rq_check_limits(struct request_queue *q, struct request *rq);
@@ -825,7 +941,12 @@ extern int sg_scsi_ioctl(struct request_queue *, struct gendisk *, fmode_t,
 extern void blk_queue_bio(struct request_queue *q, struct bio *bio);
 
 =======
+<<<<<<< HEAD
+extern void blk_queue_bio(struct request_queue *q, struct bio *bio);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * A queue has just exitted congestion.  Note this in the global counter of
  * congested queues, and wake up anyone who was waiting for requests to be
@@ -955,7 +1076,11 @@ extern struct request_queue *blk_init_allocated_queue(struct request_queue *,
 <<<<<<< HEAD
 extern void blk_urgent_request(struct request_queue *q, request_fn_proc *fn);
 =======
+<<<<<<< HEAD
+extern void blk_urgent_request(struct request_queue *q, request_fn_proc *fn);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void blk_cleanup_queue(struct request_queue *);
 extern void blk_queue_make_request(struct request_queue *, make_request_fn *);
 extern void blk_queue_bounce_limit(struct request_queue *, u64);
@@ -977,7 +1102,11 @@ extern void blk_set_default_limits(struct queue_limits *lim);
 <<<<<<< HEAD
 extern void blk_set_stacking_limits(struct queue_limits *lim);
 =======
+<<<<<<< HEAD
+extern void blk_set_stacking_limits(struct queue_limits *lim);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int blk_stack_limits(struct queue_limits *t, struct queue_limits *b,
 			    sector_t offset);
 extern int bdev_stack_limits(struct queue_limits *t, struct block_device *bdev,
@@ -1011,13 +1140,20 @@ extern long nr_blockdev_pages(void);
 <<<<<<< HEAD
 bool __must_check blk_get_queue(struct request_queue *);
 =======
+<<<<<<< HEAD
+bool __must_check blk_get_queue(struct request_queue *);
+=======
 int blk_get_queue(struct request_queue *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct request_queue *blk_alloc_queue(gfp_t);
 struct request_queue *blk_alloc_queue_node(gfp_t, int);
 extern void blk_put_queue(struct request_queue *);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * block layer runtime pm functions
  */
@@ -1059,6 +1195,8 @@ struct blk_plug {
 };
 #define BLK_MAX_REQUEST_COUNT 16
 
+<<<<<<< HEAD
+=======
 =======
 struct blk_plug {
 	unsigned long magic;
@@ -1067,6 +1205,7 @@ struct blk_plug {
 	unsigned int should_sort;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct blk_plug_cb {
 	struct list_head list;
 	void (*callback)(struct blk_plug_cb *);
@@ -1129,7 +1268,11 @@ extern int blkdev_issue_discard(struct block_device *bdev, sector_t sector,
 <<<<<<< HEAD
 extern int blkdev_issue_sanitize(struct block_device *bdev, gfp_t gfp_mask);
 =======
+<<<<<<< HEAD
+extern int blkdev_issue_sanitize(struct block_device *bdev, gfp_t gfp_mask);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int blkdev_issue_zeroout(struct block_device *bdev, sector_t sector,
 			sector_t nr_sects, gfp_t gfp_mask);
 static inline int sb_issue_discard(struct super_block *sb, sector_t block,
@@ -1345,7 +1488,12 @@ int kblockd_schedule_work(struct request_queue *q, struct work_struct *work);
 int kblockd_schedule_delayed_work(struct request_queue *q,
 			struct delayed_work *dwork, unsigned long delay);
 =======
+<<<<<<< HEAD
+int kblockd_schedule_delayed_work(struct request_queue *q,
+			struct delayed_work *dwork, unsigned long delay);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_BLK_CGROUP
 /*
@@ -1391,6 +1539,8 @@ static inline uint64_t rq_io_start_time_ns(struct request *req)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_BLK_DEV_THROTTLING
 extern int blk_throtl_init(struct request_queue *q);
 extern void blk_throtl_exit(struct request_queue *q);
@@ -1406,6 +1556,7 @@ static inline int blk_throtl_exit(struct request_queue *q) { return 0; }
 #endif /* CONFIG_BLK_DEV_THROTTLING */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_ALIAS_BLOCKDEV(major,minor) \
 	MODULE_ALIAS("block-major-" __stringify(major) "-" __stringify(minor))
 #define MODULE_ALIAS_BLOCKDEV_MAJOR(major) \
@@ -1492,6 +1643,9 @@ queue_max_integrity_segments(struct request_queue *q)
 #else /* CONFIG_BLK_DEV_INTEGRITY */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct bio;
 struct block_device;
 struct gendisk;
@@ -1556,6 +1710,8 @@ static inline bool blk_integrity_is_initialized(struct gendisk *g)
 {
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 #define blk_integrity_rq(rq)			(0)
 #define blk_rq_count_integrity_sg(a, b)		(0)
@@ -1571,6 +1727,7 @@ static inline bool blk_integrity_is_initialized(struct gendisk *g)
 #define blk_integrity_merge_bio(a, b, c)	(0)
 #define blk_integrity_is_initialized(a)		(0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* CONFIG_BLK_DEV_INTEGRITY */
 

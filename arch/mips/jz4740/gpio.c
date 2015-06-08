@@ -19,9 +19,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/spinlock.h>
 #include <linux/syscore_ops.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/gpio.h>
 #include <linux/delay.h>
@@ -37,7 +40,12 @@
 #include "irq.h"
 
 =======
+<<<<<<< HEAD
+#include "irq.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define JZ4740_GPIO_BASE_A (32*0)
 #define JZ4740_GPIO_BASE_B (32*1)
 #define JZ4740_GPIO_BASE_C (32*2)
@@ -87,18 +95,24 @@ struct jz_gpio_chip {
 	unsigned int irq_base;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	uint32_t wakeup;
 	uint32_t suspend_mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32_t edge_trigger_both;
 
 	void __iomem *base;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spinlock_t lock;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gpio_chip gpio_chip;
 };
 
@@ -120,8 +134,13 @@ static inline struct jz_gpio_chip *irq_to_jz_gpio_chip(struct irq_data *data)
 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(data);
 	return gc->private;
 =======
+<<<<<<< HEAD
+	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(data);
+	return gc->private;
+=======
 	return irq_data_get_irq_chip_data(data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void jz_gpio_write_bit(unsigned int gpio, unsigned int reg)
@@ -324,6 +343,9 @@ static void jz_gpio_irq_demux_handler(unsigned int irq, struct irq_desc *desc)
 	uint32_t flag;
 	unsigned int gpio_irq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct jz_gpio_chip *chip = irq_desc_get_handler_data(desc);
 
 	flag = readl(chip->base + JZ_REG_GPIO_FLAG);
@@ -333,6 +355,8 @@ static void jz_gpio_irq_demux_handler(unsigned int irq, struct irq_desc *desc)
 	gpio_irq = chip->irq_base + __fls(flag);
 
 	jz_gpio_check_trigger_both(chip, gpio_irq);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int gpio_bank;
 	struct jz_gpio_chip *chip = irq_desc_get_handler_data(desc);
@@ -350,6 +374,7 @@ static void jz_gpio_irq_demux_handler(unsigned int irq, struct irq_desc *desc)
 
 	gpio_irq += (gpio_bank << 5) + JZ4740_IRQ_GPIO(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	generic_handle_irq(gpio_irq);
 };
@@ -362,12 +387,15 @@ static inline void jz_gpio_set_irq_bit(struct irq_data *data, unsigned int reg)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void jz_gpio_irq_mask(struct irq_data *data)
 {
 	jz_gpio_set_irq_bit(data, JZ_REG_GPIO_MASK_SET);
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void jz_gpio_irq_unmask(struct irq_data *data)
 {
 	struct jz_gpio_chip *chip = irq_to_jz_gpio_chip(data);
@@ -376,9 +404,13 @@ static void jz_gpio_irq_unmask(struct irq_data *data)
 <<<<<<< HEAD
 	irq_gc_unmask_enable_reg(data);
 =======
+<<<<<<< HEAD
+	irq_gc_unmask_enable_reg(data);
+=======
 
 	jz_gpio_set_irq_bit(data, JZ_REG_GPIO_MASK_CLEAR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* TODO: Check if function is gpio */
@@ -394,8 +426,12 @@ static void jz_gpio_irq_shutdown(struct irq_data *data)
 <<<<<<< HEAD
 	irq_gc_mask_disable_reg(data);
 =======
+<<<<<<< HEAD
+	irq_gc_mask_disable_reg(data);
+=======
 	jz_gpio_irq_mask(data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Set direction to input */
 	jz_gpio_set_irq_bit(data, JZ_REG_GPIO_DIRECTION_CLEAR);
@@ -404,12 +440,15 @@ static void jz_gpio_irq_shutdown(struct irq_data *data)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void jz_gpio_irq_ack(struct irq_data *data)
 {
 	jz_gpio_set_irq_bit(data, JZ_REG_GPIO_FLAG_CLEAR);
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int jz_gpio_irq_set_type(struct irq_data *data, unsigned int flow_type)
 {
 	struct jz_gpio_chip *chip = irq_to_jz_gpio_chip(data);
@@ -454,6 +493,9 @@ static int jz_gpio_irq_set_wake(struct irq_data *data, unsigned int on)
 {
 	struct jz_gpio_chip *chip = irq_to_jz_gpio_chip(data);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irq_gc_set_wake(data, on);
 	irq_set_irq_wake(chip->irq, on);
@@ -461,6 +503,8 @@ static int jz_gpio_irq_set_wake(struct irq_data *data, unsigned int on)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&chip->lock);
 	if (on)
@@ -492,6 +536,7 @@ static struct irq_chip jz_gpio_irq_chip = {
 static struct lock_class_key gpio_lock_class;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define JZ4740_GPIO_CHIP(_bank) { \
 	.irq_base = JZ4740_IRQ_GPIO_BASE_ ## _bank, \
 	.gpio_chip = { \
@@ -514,6 +559,9 @@ static struct jz_gpio_chip jz4740_gpio_chips[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void jz4740_gpio_chip_init(struct jz_gpio_chip *chip, unsigned int id)
 {
 	struct irq_chip_generic *gc;
@@ -552,6 +600,8 @@ static void jz4740_gpio_chip_init(struct jz_gpio_chip *chip, unsigned int id)
 		IRQ_GC_INIT_NESTED_LOCK, 0, IRQ_NOPROBE | IRQ_LEVEL);
 
 	gpiochip_add(&chip->gpio_chip);
+<<<<<<< HEAD
+=======
 =======
 static void jz4740_gpio_suspend_chip(struct jz_gpio_chip *chip)
 {
@@ -612,6 +662,7 @@ static void jz4740_gpio_chip_init(struct jz_gpio_chip *chip, unsigned int id)
 					 handle_level_irq);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init jz4740_gpio_init(void)
@@ -623,9 +674,12 @@ static int __init jz4740_gpio_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	register_syscore_ops(&jz4740_gpio_syscore_ops);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "JZ4740 GPIO initialized\n");
 
 	return 0;

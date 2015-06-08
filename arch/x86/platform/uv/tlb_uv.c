@@ -161,8 +161,13 @@ static int __init uvhub_to_first_apicid(int uvhub)
 static void reply_to_message(struct msg_desc *mdp, struct bau_control *bcp,
 						int do_acknowledge)
 =======
+<<<<<<< HEAD
+static void reply_to_message(struct msg_desc *mdp, struct bau_control *bcp,
+						int do_acknowledge)
+=======
 static void reply_to_message(struct msg_desc *mdp, struct bau_control *bcp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long dw;
 	struct bau_pq_entry *msg;
@@ -171,8 +176,12 @@ static void reply_to_message(struct msg_desc *mdp, struct bau_control *bcp)
 <<<<<<< HEAD
 	if (!msg->canceled && do_acknowledge) {
 =======
+<<<<<<< HEAD
+	if (!msg->canceled && do_acknowledge) {
+=======
 	if (!msg->canceled) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dw = (msg->swack_vec << UV_SW_ACK_NPENDING) | msg->swack_vec;
 		write_mmr_sw_ack(dw);
 	}
@@ -225,9 +234,14 @@ static void bau_process_retry_msg(struct msg_desc *mdp,
 				 * Is the resource timed out?
 				 * Make everyone ignore the cancelled message.
 =======
+<<<<<<< HEAD
+				 * Is the resource timed out?
+				 * Make everyone ignore the cancelled message.
+=======
 				 * is the resource timed out?
 				 * make everyone ignore the cancelled message.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 */
 				msg2->canceled = 1;
 				stat->d_canceled++;
@@ -249,9 +263,14 @@ static void bau_process_retry_msg(struct msg_desc *mdp,
 static void bau_process_message(struct msg_desc *mdp, struct bau_control *bcp,
 						int do_acknowledge)
 =======
+<<<<<<< HEAD
+static void bau_process_message(struct msg_desc *mdp, struct bau_control *bcp,
+						int do_acknowledge)
+=======
 static void bau_process_message(struct msg_desc *mdp,
 					struct bau_control *bcp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	short socket_ack_count = 0;
 	short *sp;
@@ -308,9 +327,15 @@ static void bau_process_message(struct msg_desc *mdp,
 			 */
 			reply_to_message(mdp, bcp, do_acknowledge);
 =======
+<<<<<<< HEAD
+			 * (unless we are in the UV2 workaround)
+			 */
+			reply_to_message(mdp, bcp, do_acknowledge);
+=======
 			 */
 			reply_to_message(mdp, bcp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -319,6 +344,9 @@ static void bau_process_message(struct msg_desc *mdp,
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Determine the first cpu on a pnode.
  */
 static int pnode_to_first_cpu(int pnode, struct bau_control *smaster)
@@ -331,6 +359,8 @@ static int pnode_to_first_cpu(int pnode, struct bau_control *smaster)
 		if (pnode == hpp->pnode)
 			return cpu;
 	}
+<<<<<<< HEAD
+=======
 =======
  * Determine the first cpu on a uvhub.
  */
@@ -341,6 +371,7 @@ static int uvhub_to_first_cpu(int uvhub)
 		if (uvhub == uv_cpu_to_blade_id(cpu))
 			return cpu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -1;
 }
 
@@ -404,6 +435,9 @@ static void do_reset(void *ptr)
  * a given sending cpu number.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void reset_with_ipi(struct pnmask *distribution, struct bau_control *bcp)
 {
 	int pnode;
@@ -430,6 +464,8 @@ static void reset_with_ipi(struct pnmask *distribution, struct bau_control *bcp)
 
 	/* IPI all cpus; preemption is already disabled */
 	smp_call_function_many(mask, do_reset, (void *)&reset_args, 1);
+<<<<<<< HEAD
+=======
 =======
 static void reset_with_ipi(struct bau_targ_hubmask *distribution, int sender)
 {
@@ -454,6 +490,7 @@ static void reset_with_ipi(struct bau_targ_hubmask *distribution, int sender)
 	/* IPI all cpus; preemption is already disabled */
 	smp_call_function_many(&mask, do_reset, (void *)&reset_args, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 }
 
@@ -555,8 +592,12 @@ static int uv1_wait_completion(struct bau_desc *bau_desc,
 <<<<<<< HEAD
 static unsigned long uv2_read_status(unsigned long offset, int rshft, int desc)
 =======
+<<<<<<< HEAD
+static unsigned long uv2_read_status(unsigned long offset, int rshft, int desc)
+=======
 static unsigned long uv2_read_status(unsigned long offset, int rshft, int cpu)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long descriptor_status;
 	unsigned long descriptor_status2;
@@ -565,13 +606,20 @@ static unsigned long uv2_read_status(unsigned long offset, int rshft, int cpu)
 <<<<<<< HEAD
 	descriptor_status2 = (read_mmr_uv2_status() >> desc) & 0x1UL;
 =======
+<<<<<<< HEAD
+	descriptor_status2 = (read_mmr_uv2_status() >> desc) & 0x1UL;
+=======
 	descriptor_status2 = (read_mmr_uv2_status() >> cpu) & 0x1UL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	descriptor_status = (descriptor_status << 1) | descriptor_status2;
 	return descriptor_status;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Return whether the status of the descriptor that is normally used for this
  * cpu (the one indexed by its hub-relative cpu number) is busy.
@@ -682,8 +730,11 @@ int handle_uv2_busy(struct bau_control *bcp)
 	return FLUSH_RETRY_BUSYBUG;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int uv2_wait_completion(struct bau_desc *bau_desc,
 				unsigned long mmr_offset, int right_shift,
 				struct bau_control *bcp, long try)
@@ -691,17 +742,23 @@ static int uv2_wait_completion(struct bau_desc *bau_desc,
 	unsigned long descriptor_stat;
 	cycles_t ttm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int desc = bcp->using_desc;
 	long busy_reps = 0;
 	struct ptc_stats *stat = bcp->statp;
 
 	descriptor_stat = uv2_read_status(mmr_offset, right_shift, desc);
+<<<<<<< HEAD
+=======
 =======
 	int cpu = bcp->uvhub_cpu;
 	struct ptc_stats *stat = bcp->statp;
 
 	descriptor_stat = uv2_read_status(mmr_offset, right_shift, cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* spin on the status MMR, waiting for it to go idle */
 	while (descriptor_stat != UV2H_DESC_IDLE) {
@@ -713,6 +770,9 @@ static int uv2_wait_completion(struct bau_desc *bau_desc,
 		 */
 		if ((descriptor_stat == UV2H_DESC_SOURCE_TIMEOUT) ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    (descriptor_stat == UV2H_DESC_DEST_PUT_ERR)) {
 			stat->s_stimeout++;
 			return FLUSH_GIVEUP;
@@ -735,6 +795,8 @@ static int uv2_wait_completion(struct bau_desc *bau_desc,
 					return handle_uv2_busy(bcp);
 				}
 			}
+<<<<<<< HEAD
+=======
 =======
 		    (descriptor_stat == UV2H_DESC_DEST_STRONG_NACK) ||
 		    (descriptor_stat == UV2H_DESC_DEST_PUT_ERR)) {
@@ -757,6 +819,7 @@ static int uv2_wait_completion(struct bau_desc *bau_desc,
 			return FLUSH_RETRY_TIMEOUT;
 		} else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * descriptor_stat is still BUSY
 			 */
@@ -766,8 +829,13 @@ static int uv2_wait_completion(struct bau_desc *bau_desc,
 		descriptor_stat = uv2_read_status(mmr_offset, right_shift,
 									desc);
 =======
+<<<<<<< HEAD
+		descriptor_stat = uv2_read_status(mmr_offset, right_shift,
+									desc);
+=======
 		descriptor_stat = uv2_read_status(mmr_offset, right_shift, cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	bcp->conseccompletes++;
 	return FLUSH_COMPLETE;
@@ -784,6 +852,9 @@ static int wait_completion(struct bau_desc *bau_desc,
 	int right_shift;
 	unsigned long mmr_offset;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int desc = bcp->using_desc;
 
 	if (desc < UV_CPUS_PER_AS) {
@@ -795,6 +866,8 @@ static int wait_completion(struct bau_desc *bau_desc,
 	}
 
 	if (bcp->uvhub_version == 1)
+<<<<<<< HEAD
+=======
 =======
 	int cpu = bcp->uvhub_cpu;
 
@@ -808,6 +881,7 @@ static int wait_completion(struct bau_desc *bau_desc,
 
 	if (is_uv1_hub())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return uv1_wait_completion(bau_desc, mmr_offset, right_shift,
 								bcp, try);
 	else
@@ -846,8 +920,12 @@ static void destination_plugged(struct bau_desc *bau_desc,
 <<<<<<< HEAD
 		reset_with_ipi(&bau_desc->distribution, bcp);
 =======
+<<<<<<< HEAD
+		reset_with_ipi(&bau_desc->distribution, bcp);
+=======
 		reset_with_ipi(&bau_desc->distribution, bcp->cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&hmaster->queue_lock);
 
 		end_uvhub_quiesce(hmaster);
@@ -872,8 +950,12 @@ static void destination_timeout(struct bau_desc *bau_desc,
 <<<<<<< HEAD
 		reset_with_ipi(&bau_desc->distribution, bcp);
 =======
+<<<<<<< HEAD
+		reset_with_ipi(&bau_desc->distribution, bcp);
+=======
 		reset_with_ipi(&bau_desc->distribution, bcp->cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&hmaster->queue_lock);
 
 		end_uvhub_quiesce(hmaster);
@@ -995,11 +1077,16 @@ static void handle_cmplt(int completion_status, struct bau_desc *bau_desc,
  * returned to the kernel.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int uv_flush_send_and_wait(struct cpumask *flush_mask, struct bau_control *bcp)
 {
 	int seq_number = 0;
 	int completion_stat = 0;
 	int uv1 = 0;
+<<<<<<< HEAD
+=======
 =======
 int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 			struct cpumask *flush_mask, struct bau_control *bcp)
@@ -1007,6 +1094,7 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 	int seq_number = 0;
 	int completion_stat = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	long try = 0;
 	unsigned long index;
 	cycles_t time1;
@@ -1014,15 +1102,21 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 	struct ptc_stats *stat = bcp->statp;
 	struct bau_control *hmaster = bcp->uvhub_master;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct uv1_bau_msg_header *uv1_hdr = NULL;
 	struct uv2_bau_msg_header *uv2_hdr = NULL;
 	struct bau_desc *bau_desc;
 
 	if (bcp->uvhub_version == 1)
+<<<<<<< HEAD
+=======
 =======
 
 	if (is_uv1_hub())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uv1_throttle(hmaster, stat);
 
 	while (hmaster->uvhub_quiesce)
@@ -1031,6 +1125,9 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 	time1 = get_cycles();
 	do {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bau_desc = bcp->descriptor_base;
 		bau_desc += (ITEMS_PER_DESC * bcp->using_desc);
 		if (bcp->uvhub_version == 1) {
@@ -1057,6 +1154,8 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 		else
 			uv2_hdr->sequence = seq_number;
 		index = (1UL << AS_PUSH_SHIFT) | bcp->using_desc;
+<<<<<<< HEAD
+=======
 =======
 		if (try == 0) {
 			bau_desc->header.msg_type = MSG_REGULAR;
@@ -1069,6 +1168,7 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 		bau_desc->header.sequence = seq_number;
 		index = (1UL << AS_PUSH_SHIFT) | bcp->uvhub_cpu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bcp->send_message = get_cycles();
 
 		write_mmr_activation(index);
@@ -1078,7 +1178,11 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 <<<<<<< HEAD
 		/* UV2: wait_completion() may change the bcp->using_desc */
 =======
+<<<<<<< HEAD
+		/* UV2: wait_completion() may change the bcp->using_desc */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		handle_cmplt(completion_stat, bau_desc, bcp, hmaster, stat);
 
@@ -1092,7 +1196,11 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 <<<<<<< HEAD
 		 (completion_stat == FLUSH_RETRY_BUSYBUG) ||
 =======
+<<<<<<< HEAD
+		 (completion_stat == FLUSH_RETRY_BUSYBUG) ||
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 (completion_stat == FLUSH_RETRY_TIMEOUT));
 
 	time2 = get_cycles();
@@ -1110,7 +1218,11 @@ int uv_flush_send_and_wait(struct bau_desc *bau_desc,
 <<<<<<< HEAD
 		/* FLUSH_GIVEUP will fall back to using IPI's for tlb flush */
 =======
+<<<<<<< HEAD
+		/* FLUSH_GIVEUP will fall back to using IPI's for tlb flush */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 	return 0;
 }
@@ -1269,8 +1381,12 @@ const struct cpumask *uv_flush_tlb_others(const struct cpumask *cpumask,
 <<<<<<< HEAD
 	bau_desc += (ITEMS_PER_DESC * bcp->using_desc);
 =======
+<<<<<<< HEAD
+	bau_desc += (ITEMS_PER_DESC * bcp->using_desc);
+=======
 	bau_desc += ITEMS_PER_DESC * bcp->uvhub_cpu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bau_uvhubs_clear(&bau_desc->distribution, UV_DISTRIBUTION_SIZE);
 	if (set_distrib_bits(flush_mask, bcp, bau_desc, &locals, &remotes))
 		return NULL;
@@ -1286,8 +1402,12 @@ const struct cpumask *uv_flush_tlb_others(const struct cpumask *cpumask,
 <<<<<<< HEAD
 	if (!uv_flush_send_and_wait(flush_mask, bcp))
 =======
+<<<<<<< HEAD
+	if (!uv_flush_send_and_wait(flush_mask, bcp))
+=======
 	if (!uv_flush_send_and_wait(bau_desc, flush_mask, bcp))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	else
 		return cpumask;
@@ -1295,6 +1415,9 @@ const struct cpumask *uv_flush_tlb_others(const struct cpumask *cpumask,
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Search the message queue for any 'other' message with the same software
  * acknowledge resource bit vector.
  */
@@ -1368,8 +1491,11 @@ void process_uv2_message(struct msg_desc *mdp, struct bau_control *bcp)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The BAU message interrupt comes here. (registered by set_intr_gate)
  * See entry_64.S
  *
@@ -1395,7 +1521,11 @@ void uv_bau_message_interrupt(struct pt_regs *regs)
 <<<<<<< HEAD
 	ack_APIC_irq();
 =======
+<<<<<<< HEAD
+	ack_APIC_irq();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	time_start = get_cycles();
 
 	bcp = &per_cpu(bau_control, smp_processor_id());
@@ -1410,16 +1540,22 @@ void uv_bau_message_interrupt(struct pt_regs *regs)
 
 		msgdesc.msg_slot = msg - msgdesc.queue_first;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		msgdesc.msg = msg;
 		if (bcp->uvhub_version == 2)
 			process_uv2_message(&msgdesc, bcp);
 		else
 			bau_process_message(&msgdesc, bcp, 1);
+<<<<<<< HEAD
+=======
 =======
 		msgdesc.swack_slot = ffs(msg->swack_vec) - 1;
 		msgdesc.msg = msg;
 		bau_process_message(&msgdesc, bcp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		msg++;
 		if (msg > msgdesc.queue_last)
@@ -1433,9 +1569,12 @@ void uv_bau_message_interrupt(struct pt_regs *regs)
 		stat->d_multmsg++;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	ack_APIC_irq();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1484,8 +1623,12 @@ static void __init enable_timeouts(void)
 <<<<<<< HEAD
 			mmr_image &= ~(1L << UV2_LEG_SHFT);
 =======
+<<<<<<< HEAD
+			mmr_image &= ~(1L << UV2_LEG_SHFT);
+=======
 			mmr_image |= (1L << UV2_LEG_SHFT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mmr_image |= (1L << UV2_EXT_SHFT);
 		}
 		write_mmr_misc_control(pnode, mmr_image);
@@ -1541,8 +1684,12 @@ static int ptc_seq_show(struct seq_file *file, void *data)
 <<<<<<< HEAD
 		    "numuvhubs4 numuvhubs2 numuvhubs1 dto snacks retries rok ");
 =======
+<<<<<<< HEAD
+		    "numuvhubs4 numuvhubs2 numuvhubs1 dto snacks retries rok ");
+=======
 			"numuvhubs4 numuvhubs2 numuvhubs1 dto retries rok ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(file,
 			"resetp resett giveup sto bz throt swack recv rtime ");
 		seq_printf(file,
@@ -1551,8 +1698,12 @@ static int ptc_seq_show(struct seq_file *file, void *data)
 <<<<<<< HEAD
 			"disable enable wars warshw warwaits\n");
 =======
+<<<<<<< HEAD
+			"disable enable wars warshw warwaits\n");
+=======
 			"disable enable\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (cpu < num_possible_cpus() && cpu_online(cpu)) {
 		stat = &per_cpu(ptcstats, cpu);
@@ -1565,16 +1716,22 @@ static int ptc_seq_show(struct seq_file *file, void *data)
 			   stat->s_ntarglocaluvhub, stat->s_ntargremoteuvhub,
 			   stat->s_ntarguvhub, stat->s_ntarguvhub16);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(file, "%ld %ld %ld %ld %ld %ld ",
 			   stat->s_ntarguvhub8, stat->s_ntarguvhub4,
 			   stat->s_ntarguvhub2, stat->s_ntarguvhub1,
 			   stat->s_dtimeout, stat->s_strongnacks);
+<<<<<<< HEAD
+=======
 =======
 		seq_printf(file, "%ld %ld %ld %ld %ld ",
 			   stat->s_ntarguvhub8, stat->s_ntarguvhub4,
 			   stat->s_ntarguvhub2, stat->s_ntarguvhub1,
 			   stat->s_dtimeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(file, "%ld %ld %ld %ld %ld %ld %ld %ld ",
 			   stat->s_retry_messages, stat->s_retriesok,
 			   stat->s_resets_plug, stat->s_resets_timeout,
@@ -1591,14 +1748,20 @@ static int ptc_seq_show(struct seq_file *file, void *data)
 			   stat->d_nocanceled, stat->d_resets,
 			   stat->d_rcanceled);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(file, "%ld %ld %ld %ld %ld\n",
 			stat->s_bau_disabled, stat->s_bau_reenabled,
 			stat->s_uv2_wars, stat->s_uv2_wars_hw,
 			stat->s_uv2_war_waits);
+<<<<<<< HEAD
+=======
 =======
 		seq_printf(file, "%ld %ld\n",
 			stat->s_bau_disabled, stat->s_bau_reenabled);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -1764,15 +1927,21 @@ static ssize_t tunables_write(struct file *file, const char __user *user,
 	instr[count] = '\0';
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpu = get_cpu();
 	bcp = &per_cpu(bau_control, cpu);
 	ret = parse_tunables_write(bcp, instr, count);
 	put_cpu();
+<<<<<<< HEAD
+=======
 =======
 	bcp = &per_cpu(bau_control, smp_processor_id());
 
 	ret = parse_tunables_write(bcp, instr, count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -1865,7 +2034,11 @@ static void activation_descriptor_init(int node, int pnode, int base_pnode)
 <<<<<<< HEAD
 	int uv1 = 0;
 =======
+<<<<<<< HEAD
+	int uv1 = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long gpa;
 	unsigned long m;
 	unsigned long n;
@@ -1876,7 +2049,12 @@ static void activation_descriptor_init(int node, int pnode, int base_pnode)
 	struct uv1_bau_msg_header *uv1_hdr;
 	struct uv2_bau_msg_header *uv2_hdr;
 =======
+<<<<<<< HEAD
+	struct uv1_bau_msg_header *uv1_hdr;
+	struct uv2_bau_msg_header *uv2_hdr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bau_control *bcp;
 
 	/*
@@ -1894,7 +2072,12 @@ static void activation_descriptor_init(int node, int pnode, int base_pnode)
 	if (is_uv1_hub())
 		uv1 = 1;
 =======
+<<<<<<< HEAD
+	if (is_uv1_hub())
+		uv1 = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* the 14-bit pnode */
 	write_mmr_descriptor_base(pnode, (n << UV_DESC_PSHIFT | m));
@@ -1906,6 +2089,9 @@ static void activation_descriptor_init(int node, int pnode, int base_pnode)
 	for (i = 0, bd2 = bau_desc; i < (ADP_SZ * ITEMS_PER_DESC); i++, bd2++) {
 		memset(bd2, 0, sizeof(struct bau_desc));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (uv1) {
 			uv1_hdr = &bd2->header.uv1_hdr;
 			uv1_hdr->swack_flag =	1;
@@ -1933,6 +2119,8 @@ static void activation_descriptor_init(int node, int pnode, int base_pnode)
 			uv2_hdr->dest_subnodeid =	UV_LB_SUBNODEID;
 			uv2_hdr->command =		UV_NET_ENDPOINT_INTD;
 		}
+<<<<<<< HEAD
+=======
 =======
 		bd2->header.swack_flag =	1;
 		/*
@@ -1950,6 +2138,7 @@ static void activation_descriptor_init(int node, int pnode, int base_pnode)
 		 *   fairness chaining multilevel count replied_to
 		 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	for_each_present_cpu(cpu) {
 		if (pnode != uv_blade_to_pnode(uv_cpu_to_blade_id(cpu)))
@@ -2008,7 +2197,11 @@ static void pq_init(int node, int pnode)
 <<<<<<< HEAD
 	write_gmmr_sw_ack(pnode, 0xffffUL);
 =======
+<<<<<<< HEAD
+	write_gmmr_sw_ack(pnode, 0xffffUL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* in effect, all msg_type's are set to MSG_NOOP */
 	memset(pqp, 0, sizeof(struct bau_pq_entry) * DEST_Q_SIZE);
@@ -2101,7 +2294,13 @@ static void __init init_per_cpu_tunables(void)
 		spin_lock_init(&bcp->queue_lock);
 		spin_lock_init(&bcp->uvhub_lock);
 =======
+<<<<<<< HEAD
+		bcp->clocks_per_100_usec =	usec_2_cycles(100);
+		spin_lock_init(&bcp->queue_lock);
+		spin_lock_init(&bcp->uvhub_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -2178,6 +2377,9 @@ static void make_per_cpu_thp(struct bau_control *smaster)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Each uvhub is to get a local cpumask.
  */
 static void make_per_hub_cpumask(struct bau_control *hmaster)
@@ -2188,8 +2390,11 @@ static void make_per_hub_cpumask(struct bau_control *hmaster)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Initialize all the per_cpu information for the cpu's on a given socket,
  * given what has been gathered into the socket_desc struct.
  * And reports the chosen hub and socket masters back to the caller.
@@ -2216,6 +2421,9 @@ static int scan_sock(struct socket_desc *sdp, struct uvhub_desc *bdp,
 		bcp->socket_master = *smasterp;
 		bcp->uvhub = bdp->uvhub;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (is_uv1_hub())
 			bcp->uvhub_version = 1;
 		else if (is_uv2_hub())
@@ -2227,10 +2435,13 @@ static int scan_sock(struct socket_desc *sdp, struct uvhub_desc *bdp,
 		bcp->uvhub_master = *hmasterp;
 		bcp->uvhub_cpu = uv_cpu_hub_info(cpu)->blade_processor_id;
 		bcp->using_desc = bcp->uvhub_cpu;
+<<<<<<< HEAD
+=======
 =======
 		bcp->uvhub_master = *hmasterp;
 		bcp->uvhub_cpu = uv_cpu_hub_info(cpu)->blade_processor_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (bcp->uvhub_cpu >= MAX_CPUS_PER_UVHUB) {
 			printk(KERN_EMERG "%d cpus per uvhub invalid\n",
 				bcp->uvhub_cpu);
@@ -2269,12 +2480,17 @@ static int __init summarize_uvhub_sockets(int nuvhubs,
 				if (scan_sock(sdp, bdp, &smaster, &hmaster))
 					return 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				make_per_cpu_thp(smaster);
 			}
 			socket++;
 			socket_mask = (socket_mask >> 1);
 		}
 		make_per_hub_cpumask(hmaster);
+<<<<<<< HEAD
+=======
 =======
 			}
 			socket++;
@@ -2282,6 +2498,7 @@ static int __init summarize_uvhub_sockets(int nuvhubs,
 			make_per_cpu_thp(smaster);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -2304,29 +2521,41 @@ static int __init init_per_cpu(int nuvhubs, int base_part_pnode)
 
 	if (get_cpu_topology(base_part_pnode, uvhub_descs, uvhub_mask))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail;
 
 	if (summarize_uvhub_sockets(nuvhubs, uvhub_descs, uvhub_mask))
 		goto fail;
+<<<<<<< HEAD
+=======
 =======
 		return 1;
 
 	if (summarize_uvhub_sockets(nuvhubs, uvhub_descs, uvhub_mask))
 		return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kfree(uvhub_descs);
 	kfree(uvhub_mask);
 	init_per_cpu_tunables();
 	return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 fail:
 	kfree(uvhub_descs);
 	kfree(uvhub_mask);
 	return 1;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2391,8 +2620,13 @@ static int __init uv_bau_init(void)
 			if (!is_uv1_hub())
 				write_mmr_data_broadcast(pnode, mmr);
 =======
+<<<<<<< HEAD
+			if (!is_uv1_hub())
+				write_mmr_data_broadcast(pnode, mmr);
+=======
 			write_mmr_data_broadcast(pnode, mmr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 

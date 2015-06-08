@@ -1,6 +1,15 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /* RCSid: $Header: /home/rickd/projects/pmcc4/include/pmcc4_ioctls.h,v 2.0 2005/09/28 00:10:09 rickd PMCC4_3_1B $
  */
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* RCSid: $Header: /home/rickd/projects/pmcc4/include/pmcc4_ioctls.h,v 2.0 2005/09/28 00:10:09 rickd PMCC4_3_1B $
+ */
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _INC_PMCC4_IOCTLS_H_
 #define _INC_PMCC4_IOCTLS_H_
 
@@ -22,6 +31,11 @@
  * For further information, contact via email: support@sbei.com
  * SBE, Inc.  San Ramon, California  U.S.A.
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * RCS info:
  * RCS revision: $Revision: 2.0 $
  * Last changed on $Date: 2005/09/28 00:10:09 $
@@ -35,6 +49,10 @@
  * Add RCS tracking heading.
  *
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include "sbew_ioc.h"

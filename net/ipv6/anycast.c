@@ -78,8 +78,12 @@ int ipv6_sock_ac_join(struct sock *sk, int ifindex, const struct in6_addr *addr)
 <<<<<<< HEAD
 	pac->acl_addr = *addr;
 =======
+<<<<<<< HEAD
+	pac->acl_addr = *addr;
+=======
 	ipv6_addr_copy(&pac->acl_addr, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_read_lock();
 	if (ifindex == 0) {
@@ -90,8 +94,12 @@ int ipv6_sock_ac_join(struct sock *sk, int ifindex, const struct in6_addr *addr)
 <<<<<<< HEAD
 			dev = rt->dst.dev;
 =======
+<<<<<<< HEAD
+			dev = rt->dst.dev;
+=======
 			dev = rt->rt6i_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dst_release(&rt->dst);
 		} else if (ishost) {
 			err = -EADDRNOTAVAIL;
@@ -221,6 +229,8 @@ void ipv6_sock_ac_close(struct sock *sk)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if 0
 /* The function is not used, which is funny. Apparently, author
  * supposed to use it to filter out datagrams inside udp/raw but forgot.
@@ -251,6 +261,7 @@ int inet6_ac_check(struct sock *sk, struct in6_addr *addr, int ifindex)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void aca_put(struct ifacaddr6 *ac)
 {
 	if (atomic_dec_and_test(&ac->aca_refcnt)) {
@@ -303,8 +314,12 @@ int ipv6_dev_ac_inc(struct net_device *dev, const struct in6_addr *addr)
 <<<<<<< HEAD
 	rt = addrconf_dst_alloc(idev, addr, true);
 =======
+<<<<<<< HEAD
+	rt = addrconf_dst_alloc(idev, addr, true);
+=======
 	rt = addrconf_dst_alloc(idev, addr, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(rt)) {
 		kfree(aca);
 		err = PTR_ERR(rt);
@@ -314,8 +329,12 @@ int ipv6_dev_ac_inc(struct net_device *dev, const struct in6_addr *addr)
 <<<<<<< HEAD
 	aca->aca_addr = *addr;
 =======
+<<<<<<< HEAD
+	aca->aca_addr = *addr;
+=======
 	ipv6_addr_copy(&aca->aca_addr, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	aca->aca_idev = idev;
 	aca->aca_rt = rt;
 	aca->aca_users = 1;

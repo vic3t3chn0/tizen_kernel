@@ -10,7 +10,12 @@
 #include "util.h"
 #include "debugfs.h"
 =======
+<<<<<<< HEAD
+#include "util.h"
+#include "debugfs.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <poll.h>
 #include "cpumap.h"
 #include "thread_map.h"
@@ -21,8 +26,14 @@
 
 #include "parse-events.h"
 =======
+<<<<<<< HEAD
+#include <unistd.h>
+
+#include "parse-events.h"
+=======
 #include "util.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sys/mman.h>
 
@@ -44,7 +55,11 @@ void perf_evlist__init(struct perf_evlist *evlist, struct cpu_map *cpus,
 <<<<<<< HEAD
 	evlist->workload.pid = -1;
 =======
+<<<<<<< HEAD
+	evlist->workload.pid = -1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct perf_evlist *perf_evlist__new(struct cpu_map *cpus,
@@ -59,6 +74,9 @@ struct perf_evlist *perf_evlist__new(struct cpu_map *cpus,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void perf_evlist__config_attrs(struct perf_evlist *evlist,
 			       struct perf_record_opts *opts)
 {
@@ -77,8 +95,11 @@ void perf_evlist__config_attrs(struct perf_evlist *evlist,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_evlist__purge(struct perf_evlist *evlist)
 {
 	struct perf_evsel *pos, *n;
@@ -113,6 +134,9 @@ void perf_evlist__add(struct perf_evlist *evlist, struct perf_evsel *entry)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void perf_evlist__splice_list_tail(struct perf_evlist *evlist,
 				   struct list_head *list,
 				   int nr_entries)
@@ -121,8 +145,11 @@ void perf_evlist__splice_list_tail(struct perf_evlist *evlist,
 	evlist->nr_entries += nr_entries;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_evlist__add_default(struct perf_evlist *evlist)
 {
 	struct perf_event_attr attr = {
@@ -130,6 +157,9 @@ int perf_evlist__add_default(struct perf_evlist *evlist)
 		.config = PERF_COUNT_HW_CPU_CYCLES,
 	};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct perf_evsel *evsel;
 
 	event_attr_init(&attr);
@@ -298,6 +328,8 @@ void perf_evlist__enable(struct perf_evlist *evlist)
 }
 
 static int perf_evlist__alloc_pollfd(struct perf_evlist *evlist)
+<<<<<<< HEAD
+=======
 =======
 	struct perf_evsel *evsel = perf_evsel__new(&attr, 0);
 
@@ -310,6 +342,7 @@ static int perf_evlist__alloc_pollfd(struct perf_evlist *evlist)
 
 int perf_evlist__alloc_pollfd(struct perf_evlist *evlist)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int nfds = evlist->cpus->nr * evlist->threads->nr * evlist->nr_entries;
 	evlist->pollfd = malloc(sizeof(struct pollfd) * nfds);
@@ -381,12 +414,18 @@ struct perf_evsel *perf_evlist__id2evsel(struct perf_evlist *evlist, u64 id)
 		if (sid->id == id)
 			return sid->evsel;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!perf_evlist__sample_id_all(evlist))
 		return list_entry(evlist->entries.next, struct perf_evsel, node);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -475,8 +514,12 @@ void perf_evlist__munmap(struct perf_evlist *evlist)
 <<<<<<< HEAD
 static int perf_evlist__alloc_mmap(struct perf_evlist *evlist)
 =======
+<<<<<<< HEAD
+static int perf_evlist__alloc_mmap(struct perf_evlist *evlist)
+=======
 int perf_evlist__alloc_mmap(struct perf_evlist *evlist)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	evlist->nr_mmaps = evlist->cpus->nr;
 	if (evlist->cpus->map[0] == -1)
@@ -493,14 +536,20 @@ static int __perf_evlist__mmap(struct perf_evlist *evlist,
 	evlist->mmap[idx].base = mmap(NULL, evlist->mmap_len, prot,
 				      MAP_SHARED, fd, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (evlist->mmap[idx].base == MAP_FAILED) {
 		evlist->mmap[idx].base = NULL;
 		return -1;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (evlist->mmap[idx].base == MAP_FAILED)
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	perf_evlist__add_pollfd(evlist, fd);
 	return 0;
@@ -602,6 +651,9 @@ out_unmap:
  * Using perf_evlist__read_on_cpu does this automatically.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_evlist__mmap(struct perf_evlist *evlist, unsigned int pages,
 		      bool overwrite)
 {
@@ -618,6 +670,8 @@ int perf_evlist__mmap(struct perf_evlist *evlist, unsigned int pages,
 		return -EINVAL;
 
 	mask = pages * page_size - 1;
+<<<<<<< HEAD
+=======
 =======
 int perf_evlist__mmap(struct perf_evlist *evlist, int pages, bool overwrite)
 {
@@ -628,6 +682,7 @@ int perf_evlist__mmap(struct perf_evlist *evlist, int pages, bool overwrite)
 	const struct thread_map *threads = evlist->threads;
 	int prot = PROT_READ | (overwrite ? 0 : PROT_WRITE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (evlist->mmap == NULL && perf_evlist__alloc_mmap(evlist) < 0)
 		return -ENOMEM;
@@ -652,16 +707,22 @@ int perf_evlist__mmap(struct perf_evlist *evlist, int pages, bool overwrite)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int perf_evlist__create_maps(struct perf_evlist *evlist, const char *target_pid,
 			     const char *target_tid, uid_t uid, const char *cpu_list)
 {
 	evlist->threads = thread_map__new_str(target_pid, target_tid, uid);
+<<<<<<< HEAD
+=======
 =======
 int perf_evlist__create_maps(struct perf_evlist *evlist, pid_t target_pid,
 			     pid_t target_tid, const char *cpu_list)
 {
 	evlist->threads = thread_map__new(target_pid, target_tid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (evlist->threads == NULL)
 		return -1;
@@ -669,8 +730,12 @@ int perf_evlist__create_maps(struct perf_evlist *evlist, pid_t target_pid,
 <<<<<<< HEAD
 	if (uid != UINT_MAX || (cpu_list == NULL && target_tid))
 =======
+<<<<<<< HEAD
+	if (uid != UINT_MAX || (cpu_list == NULL && target_tid))
+=======
 	if (cpu_list == NULL && target_tid != -1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		evlist->cpus = cpu_map__dummy_new();
 	else
 		evlist->cpus = cpu_map__new(cpu_list);
@@ -744,6 +809,9 @@ u64 perf_evlist__sample_type(const struct perf_evlist *evlist)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u16 perf_evlist__id_hdr_size(const struct perf_evlist *evlist)
 {
 	struct perf_evsel *first;
@@ -776,8 +844,11 @@ out:
 	return size;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool perf_evlist__valid_sample_id_all(const struct perf_evlist *evlist)
 {
 	struct perf_evsel *pos, *first;
@@ -800,6 +871,9 @@ bool perf_evlist__sample_id_all(const struct perf_evlist *evlist)
 	return first->attr.sample_id_all;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void perf_evlist__set_selected(struct perf_evlist *evlist,
 			       struct perf_evsel *evsel)
@@ -931,5 +1005,8 @@ int perf_evlist__start_workload(struct perf_evlist *evlist)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

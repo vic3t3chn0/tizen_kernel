@@ -25,6 +25,9 @@ enum dcbevent_notif_type {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DCB
 extern int register_dcbevent_notifier(struct notifier_block *nb);
 extern int unregister_dcbevent_notifier(struct notifier_block *nb);
@@ -46,10 +49,13 @@ static inline int call_dcbevent_notifiers(unsigned long val, void *v)
 	return 0;
 }
 #endif /* CONFIG_DCB */
+<<<<<<< HEAD
+=======
 =======
 extern int register_dcbevent_notifier(struct notifier_block *nb);
 extern int unregister_dcbevent_notifier(struct notifier_block *nb);
 extern int call_dcbevent_notifiers(unsigned long val, void *v);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

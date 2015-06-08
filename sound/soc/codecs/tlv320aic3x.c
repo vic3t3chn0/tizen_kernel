@@ -42,8 +42,11 @@
 #include <linux/regulator/consumer.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -81,8 +84,11 @@ struct aic3x_priv {
 	struct aic3x_setup_data *setup;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int sysclk;
 	struct list_head list;
 	int master;
@@ -131,6 +137,8 @@ static const u8 aic3x_reg[AIC3X_CACHEREGNUM] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * read from the aic3x register space. Only use for this function is if
  * wanting to read volatile bits from those registers that has both read-only
@@ -153,6 +161,7 @@ static int aic3x_read(struct snd_soc_codec *codec, unsigned int reg,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SOC_DAPM_SINGLE_AIC3X(xname, reg, shift, mask, invert) \
 {	.iface = SNDRV_CTL_ELEM_IFACE_MIXER, .name = xname, \
 	.info = snd_soc_info_volsw, \
@@ -208,12 +217,18 @@ static int snd_soc_dapm_put_volsw_aic3x(struct snd_kcontrol *kcontrol,
 				/* old connection must be powered down */
 				path->connect = invert ? 1 : 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			dapm_mark_dirty(path->source, "tlv320aic3x source");
 			dapm_mark_dirty(path->sink, "tlv320aic3x sink");
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 
@@ -243,6 +258,9 @@ static const char *aic3x_adc_hpf[] =
 #define LHPCOM_ENUM	2
 #define RHPCOM_ENUM	3
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define LINE1L_2_L_ENUM	4
 #define LINE1L_2_R_ENUM	5
 #define LINE1R_2_L_ENUM	6
@@ -250,6 +268,8 @@ static const char *aic3x_adc_hpf[] =
 #define LINE2L_ENUM	8
 #define LINE2R_ENUM	9
 #define ADC_HPF_ENUM	10
+<<<<<<< HEAD
+=======
 =======
 #define LINE1L_ENUM	4
 #define LINE1R_ENUM	5
@@ -257,6 +277,7 @@ static const char *aic3x_adc_hpf[] =
 #define LINE2R_ENUM	7
 #define ADC_HPF_ENUM	8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct soc_enum aic3x_enum[] = {
 	SOC_ENUM_SINGLE(DAC_LINE_MUX, 6, 3, aic3x_left_dac_mux),
@@ -268,7 +289,12 @@ static const struct soc_enum aic3x_enum[] = {
 	SOC_ENUM_SINGLE(LINE1L_2_RADC_CTRL, 7, 2, aic3x_linein_mode_mux),
 	SOC_ENUM_SINGLE(LINE1R_2_LADC_CTRL, 7, 2, aic3x_linein_mode_mux),
 =======
+<<<<<<< HEAD
+	SOC_ENUM_SINGLE(LINE1L_2_RADC_CTRL, 7, 2, aic3x_linein_mode_mux),
+	SOC_ENUM_SINGLE(LINE1R_2_LADC_CTRL, 7, 2, aic3x_linein_mode_mux),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SOC_ENUM_SINGLE(LINE1R_2_RADC_CTRL, 7, 2, aic3x_linein_mode_mux),
 	SOC_ENUM_SINGLE(LINE2L_2_LADC_CTRL, 7, 2, aic3x_linein_mode_mux),
 	SOC_ENUM_SINGLE(LINE2R_2_RADC_CTRL, 7, 2, aic3x_linein_mode_mux),
@@ -522,6 +548,9 @@ static const struct snd_kcontrol_new aic3x_right_pga_mixer_controls[] = {
 
 /* Left Line1 Mux */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_kcontrol_new aic3x_left_line1l_mux_controls =
 SOC_DAPM_ENUM("Route", aic3x_enum[LINE1L_2_L_ENUM]);
 static const struct snd_kcontrol_new aic3x_right_line1l_mux_controls =
@@ -532,6 +561,8 @@ static const struct snd_kcontrol_new aic3x_right_line1r_mux_controls =
 SOC_DAPM_ENUM("Route", aic3x_enum[LINE1R_2_R_ENUM]);
 static const struct snd_kcontrol_new aic3x_left_line1r_mux_controls =
 SOC_DAPM_ENUM("Route", aic3x_enum[LINE1R_2_L_ENUM]);
+<<<<<<< HEAD
+=======
 =======
 static const struct snd_kcontrol_new aic3x_left_line1_mux_controls =
 SOC_DAPM_ENUM("Route", aic3x_enum[LINE1L_ENUM]);
@@ -540,6 +571,7 @@ SOC_DAPM_ENUM("Route", aic3x_enum[LINE1L_ENUM]);
 static const struct snd_kcontrol_new aic3x_right_line1_mux_controls =
 SOC_DAPM_ENUM("Route", aic3x_enum[LINE1R_ENUM]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Left Line2 Mux */
 static const struct snd_kcontrol_new aic3x_left_line2_mux_controls =
@@ -584,10 +616,16 @@ static const struct snd_soc_dapm_widget aic3x_dapm_widgets[] = {
 	SND_SOC_DAPM_MUX("Left Line1R Mux", SND_SOC_NOPM, 0, 0,
 			 &aic3x_left_line1r_mux_controls),
 =======
+<<<<<<< HEAD
+			 &aic3x_left_line1l_mux_controls),
+	SND_SOC_DAPM_MUX("Left Line1R Mux", SND_SOC_NOPM, 0, 0,
+			 &aic3x_left_line1r_mux_controls),
+=======
 			 &aic3x_left_line1_mux_controls),
 	SND_SOC_DAPM_MUX("Left Line1R Mux", SND_SOC_NOPM, 0, 0,
 			 &aic3x_left_line1_mux_controls),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_SOC_DAPM_MUX("Left Line2L Mux", SND_SOC_NOPM, 0, 0,
 			 &aic3x_left_line2_mux_controls),
 
@@ -603,10 +641,16 @@ static const struct snd_soc_dapm_widget aic3x_dapm_widgets[] = {
 	SND_SOC_DAPM_MUX("Right Line1R Mux", SND_SOC_NOPM, 0, 0,
 			 &aic3x_right_line1r_mux_controls),
 =======
+<<<<<<< HEAD
+			 &aic3x_right_line1l_mux_controls),
+	SND_SOC_DAPM_MUX("Right Line1R Mux", SND_SOC_NOPM, 0, 0,
+			 &aic3x_right_line1r_mux_controls),
+=======
 			 &aic3x_right_line1_mux_controls),
 	SND_SOC_DAPM_MUX("Right Line1R Mux", SND_SOC_NOPM, 0, 0,
 			 &aic3x_right_line1_mux_controls),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_SOC_DAPM_MUX("Right Line2R Mux", SND_SOC_NOPM, 0, 0,
 			 &aic3x_right_line2_mux_controls),
 
@@ -877,8 +921,11 @@ static int aic3x_hw_params(struct snd_pcm_substream *substream,
 	u16 d, pll_d = 1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u8 reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int clk;
 
 	/* select data word length */
@@ -917,9 +964,13 @@ static int aic3x_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 		snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG, PLL_ENABLE, 0);
 =======
+<<<<<<< HEAD
+		snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG, PLL_ENABLE, 0);
+=======
 		reg = snd_soc_read(codec, AIC3X_PLL_PROGA_REG);
 		snd_soc_write(codec, AIC3X_PLL_PROGA_REG, reg & ~PLL_ENABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	} else {
 		snd_soc_write(codec, AIC3X_GPIOB_REG, CODEC_CLKIN_PLLDIV);
@@ -928,9 +979,14 @@ static int aic3x_hw_params(struct snd_pcm_substream *substream,
 		snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG,
 				    PLL_ENABLE, PLL_ENABLE);
 =======
+<<<<<<< HEAD
+		snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG,
+				    PLL_ENABLE, PLL_ENABLE);
+=======
 		reg = snd_soc_read(codec, AIC3X_PLL_PROGA_REG);
 		snd_soc_write(codec, AIC3X_PLL_PROGA_REG, reg | PLL_ENABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Route Left DAC to left channel input and
@@ -1022,8 +1078,14 @@ found:
 	snd_soc_write(codec, AIC3X_PLL_PROGA_REG,
 		      data | (pll_p << PLLP_SHIFT));
 =======
+<<<<<<< HEAD
+	data = snd_soc_read(codec, AIC3X_PLL_PROGA_REG);
+	snd_soc_write(codec, AIC3X_PLL_PROGA_REG,
+		      data | (pll_p << PLLP_SHIFT));
+=======
 	snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG, PLLP_MASK, pll_p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_write(codec, AIC3X_OVRF_STATUS_AND_PLLR_REG,
 		      pll_r << PLLR_SHIFT);
 	snd_soc_write(codec, AIC3X_PLL_PROGB_REG, pll_j << PLLJ_SHIFT);
@@ -1084,7 +1146,11 @@ static int aic3x_set_dai_fmt(struct snd_soc_dai *codec_dai,
 <<<<<<< HEAD
 		iface_areg &= ~(BIT_CLK_MASTER | WORD_CLK_MASTER);
 =======
+<<<<<<< HEAD
+		iface_areg &= ~(BIT_CLK_MASTER | WORD_CLK_MASTER);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		return -EINVAL;
@@ -1219,8 +1285,11 @@ static int aic3x_set_bias_level(struct snd_soc_codec *codec,
 	struct aic3x_priv *aic3x = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u8 reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (level) {
 	case SND_SOC_BIAS_ON:
@@ -1233,10 +1302,15 @@ static int aic3x_set_bias_level(struct snd_soc_codec *codec,
 			snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG,
 					    PLL_ENABLE, PLL_ENABLE);
 =======
+<<<<<<< HEAD
+			snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG,
+					    PLL_ENABLE, PLL_ENABLE);
+=======
 			reg = snd_soc_read(codec, AIC3X_PLL_PROGA_REG);
 			snd_soc_write(codec, AIC3X_PLL_PROGA_REG,
 				      reg | PLL_ENABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 	case SND_SOC_BIAS_STANDBY:
@@ -1249,10 +1323,15 @@ static int aic3x_set_bias_level(struct snd_soc_codec *codec,
 			snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG,
 					    PLL_ENABLE, 0);
 =======
+<<<<<<< HEAD
+			snd_soc_update_bits(codec, AIC3X_PLL_PROGA_REG,
+					    PLL_ENABLE, 0);
+=======
 			reg = snd_soc_read(codec, AIC3X_PLL_PROGA_REG);
 			snd_soc_write(codec, AIC3X_PLL_PROGA_REG,
 				      reg & ~PLL_ENABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 	case SND_SOC_BIAS_OFF:
@@ -1265,6 +1344,8 @@ static int aic3x_set_bias_level(struct snd_soc_codec *codec,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void aic3x_set_gpio(struct snd_soc_codec *codec, int gpio, int state)
@@ -1287,6 +1368,7 @@ int aic3x_get_gpio(struct snd_soc_codec *codec, int gpio)
 EXPORT_SYMBOL_GPL(aic3x_get_gpio);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void aic3x_set_headset_detection(struct snd_soc_codec *codec, int detect,
 				 int headset_debounce, int button_debounce)
 {
@@ -1304,6 +1386,8 @@ void aic3x_set_headset_detection(struct snd_soc_codec *codec, int detect,
 
 	snd_soc_write(codec, AIC3X_HEADSET_DETECT_CTRL_A, val);
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 EXPORT_SYMBOL_GPL(aic3x_set_headset_detection);
@@ -1324,6 +1408,7 @@ int aic3x_button_pressed(struct snd_soc_codec *codec)
 }
 EXPORT_SYMBOL_GPL(aic3x_button_pressed);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define AIC3X_RATES	SNDRV_PCM_RATE_8000_96000
 #define AIC3X_FORMATS	(SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S20_3LE | \
@@ -1332,8 +1417,12 @@ EXPORT_SYMBOL_GPL(aic3x_button_pressed);
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops aic3x_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops aic3x_dai_ops = {
+=======
 static struct snd_soc_dai_ops aic3x_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= aic3x_hw_params,
 	.digital_mute	= aic3x_mute,
 	.set_sysclk	= aic3x_set_dai_sysclk,
@@ -1361,8 +1450,12 @@ static struct snd_soc_dai_driver aic3x_dai = {
 <<<<<<< HEAD
 static int aic3x_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int aic3x_suspend(struct snd_soc_codec *codec)
+=======
 static int aic3x_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	aic3x_set_bias_level(codec, SND_SOC_BIAS_OFF);
 
@@ -1385,8 +1478,11 @@ static int aic3x_init(struct snd_soc_codec *codec)
 	struct aic3x_priv *aic3x = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_write(codec, AIC3X_PAGE_SELECT, PAGE0_SELECT);
 	snd_soc_write(codec, AIC3X_RESET, SOFT_RESET);
@@ -1409,6 +1505,9 @@ static int aic3x_init(struct snd_soc_codec *codec)
 
 	/* unmute all outputs */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_update_bits(codec, LLOPM_CTRL, UNMUTE, UNMUTE);
 	snd_soc_update_bits(codec, RLOPM_CTRL, UNMUTE, UNMUTE);
 	snd_soc_update_bits(codec, MONOLOPM_CTRL, UNMUTE, UNMUTE);
@@ -1416,6 +1515,8 @@ static int aic3x_init(struct snd_soc_codec *codec)
 	snd_soc_update_bits(codec, HPROUT_CTRL, UNMUTE, UNMUTE);
 	snd_soc_update_bits(codec, HPLCOM_CTRL, UNMUTE, UNMUTE);
 	snd_soc_update_bits(codec, HPRCOM_CTRL, UNMUTE, UNMUTE);
+<<<<<<< HEAD
+=======
 =======
 	reg = snd_soc_read(codec, LLOPM_CTRL);
 	snd_soc_write(codec, LLOPM_CTRL, reg | UNMUTE);
@@ -1432,6 +1533,7 @@ static int aic3x_init(struct snd_soc_codec *codec)
 	reg = snd_soc_read(codec, HPRCOM_CTRL);
 	snd_soc_write(codec, HPRCOM_CTRL, reg | UNMUTE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* ADC default volume and unmute */
 	snd_soc_write(codec, LADC_VOL, DEFAULT_GAIN);
@@ -1494,10 +1596,14 @@ static int aic3x_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	aic3x->codec = codec;
 =======
+<<<<<<< HEAD
+	aic3x->codec = codec;
+=======
 	codec->control_data = aic3x->control_data;
 	aic3x->codec = codec;
 	codec->dapm.idle_bias_off = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 8, aic3x->control_type);
 	if (ret != 0) {
@@ -1547,16 +1653,22 @@ static int aic3x_probe(struct snd_soc_codec *codec)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_add_codec_controls(codec, aic3x_snd_controls,
 			     ARRAY_SIZE(aic3x_snd_controls));
 	if (aic3x->model == AIC3X_MODEL_3007)
 		snd_soc_add_codec_controls(codec, &aic3x_classd_amp_gain_ctrl, 1);
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_add_controls(codec, aic3x_snd_controls,
 			     ARRAY_SIZE(aic3x_snd_controls));
 	if (aic3x->model == AIC3X_MODEL_3007)
 		snd_soc_add_controls(codec, &aic3x_classd_amp_gain_ctrl, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	aic3x_add_widgets(codec);
 	list_add(&aic3x->list, &reset_list);
@@ -1601,7 +1713,11 @@ static struct snd_soc_codec_driver soc_codec_dev_aic3x = {
 <<<<<<< HEAD
 	.idle_bias_off = true,
 =======
+<<<<<<< HEAD
+	.idle_bias_off = true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.reg_cache_size = ARRAY_SIZE(aic3x_reg),
 	.reg_word_size = sizeof(u8),
 	.reg_cache_default = aic3x_reg,
@@ -1613,8 +1729,11 @@ static struct snd_soc_codec_driver soc_codec_dev_aic3x = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * AIC3X 2 wire address can be up to 4 devices with device addresses
  * 0x18, 0x19, 0x1A, 0x1B
@@ -1626,10 +1745,16 @@ static const struct i2c_device_id aic3x_i2c_id[] = {
 	{ "tlv320aic33", AIC3X_MODEL_33 },
 	{ "tlv320aic3007", AIC3X_MODEL_3007 },
 =======
+<<<<<<< HEAD
+	{ "tlv320aic3x", AIC3X_MODEL_3X },
+	{ "tlv320aic33", AIC3X_MODEL_33 },
+	{ "tlv320aic3007", AIC3X_MODEL_3007 },
+=======
 	[AIC3X_MODEL_3X] = { "tlv320aic3x", 0 },
 	[AIC3X_MODEL_33] = { "tlv320aic33", 0 },
 	[AIC3X_MODEL_3007] = { "tlv320aic3007", 0 },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ }
 };
 MODULE_DEVICE_TABLE(i2c, aic3x_i2c_id);
@@ -1648,10 +1773,15 @@ static int aic3x_i2c_probe(struct i2c_client *i2c,
 
 	aic3x = devm_kzalloc(&i2c->dev, sizeof(struct aic3x_priv), GFP_KERNEL);
 =======
+<<<<<<< HEAD
+
+	aic3x = devm_kzalloc(&i2c->dev, sizeof(struct aic3x_priv), GFP_KERNEL);
+=======
 	const struct i2c_device_id *tbl;
 
 	aic3x = kzalloc(sizeof(struct aic3x_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (aic3x == NULL) {
 		dev_err(&i2c->dev, "failed to create private data\n");
 		return -ENOMEM;
@@ -1659,8 +1789,11 @@ static int aic3x_i2c_probe(struct i2c_client *i2c,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	aic3x->control_data = i2c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	aic3x->control_type = SND_SOC_I2C;
 
 	i2c_set_clientdata(i2c, aic3x);
@@ -1672,10 +1805,15 @@ static int aic3x_i2c_probe(struct i2c_client *i2c,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	aic3x->model = id->driver_data;
 
 	ret = snd_soc_register_codec(&i2c->dev,
 			&soc_codec_dev_aic3x, &aic3x_dai, 1);
+<<<<<<< HEAD
+=======
 =======
 	for (tbl = aic3x_i2c_id; tbl->name[0]; tbl++) {
 		if (!strcmp(tbl->name, id->name))
@@ -1688,6 +1826,7 @@ static int aic3x_i2c_probe(struct i2c_client *i2c,
 	if (ret < 0)
 		kfree(aic3x);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1696,8 +1835,11 @@ static int aic3x_i2c_remove(struct i2c_client *client)
 	snd_soc_unregister_codec(&client->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1713,16 +1855,22 @@ static struct i2c_driver aic3x_i2c_driver = {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init aic3x_modinit(void)
 {
 	int ret = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = i2c_add_driver(&aic3x_i2c_driver);
 	if (ret != 0) {
 		printk(KERN_ERR "Failed to register TLV320AIC3x I2C driver: %d\n",
@@ -1730,8 +1878,11 @@ static int __init aic3x_modinit(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 module_init(aic3x_modinit);
@@ -1741,10 +1892,14 @@ static void __exit aic3x_exit(void)
 <<<<<<< HEAD
 	i2c_del_driver(&aic3x_i2c_driver);
 =======
+<<<<<<< HEAD
+	i2c_del_driver(&aic3x_i2c_driver);
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	i2c_del_driver(&aic3x_i2c_driver);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(aic3x_exit);
 

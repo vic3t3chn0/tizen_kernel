@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #include <linux/pid_namespace.h>
 =======
+<<<<<<< HEAD
+#include <linux/pid_namespace.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/string.h>
 #include <linux/stat.h>
@@ -22,15 +26,21 @@
 #include <linux/module.h>
 #include <linux/sysctl.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/seq_file.h>
 #include <linux/slab.h>
 #include <linux/mount.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/slab.h>
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 
 #include "internal.h"
@@ -90,8 +100,11 @@ static void proc_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(proc_inode_cachep, PROC_I(inode));
 }
 
@@ -117,6 +130,9 @@ void __init proc_init_inodecache(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int proc_show_options(struct seq_file *seq, struct dentry *root)
 {
 	struct super_block *sb = root->d_sb;
@@ -130,8 +146,11 @@ static int proc_show_options(struct seq_file *seq, struct dentry *root)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct super_operations proc_sops = {
 	.alloc_inode	= proc_alloc_inode,
 	.destroy_inode	= proc_destroy_inode,
@@ -142,7 +161,12 @@ static const struct super_operations proc_sops = {
 	.remount_fs	= proc_remount,
 	.show_options	= proc_show_options,
 =======
+<<<<<<< HEAD
+	.remount_fs	= proc_remount,
+	.show_options	= proc_show_options,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __pde_users_dec(struct proc_dir_entry *pde)
@@ -357,8 +381,12 @@ static int proc_reg_open(struct inode *inode, struct file *file)
 <<<<<<< HEAD
 		return -ENOENT;
 =======
+<<<<<<< HEAD
+		return -ENOENT;
+=======
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	pde->pde_users++;
 	open = pde->proc_fops->open;
@@ -487,8 +515,12 @@ struct inode *proc_get_inode(struct super_block *sb, struct proc_dir_entry *de)
 <<<<<<< HEAD
 			set_nlink(inode, de->nlink);
 =======
+<<<<<<< HEAD
+			set_nlink(inode, de->nlink);
+=======
 			inode->i_nlink = de->nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (de->proc_iops)
 			inode->i_op = de->proc_iops;
 		if (de->proc_fops) {
@@ -514,9 +546,12 @@ int proc_fill_super(struct super_block *s)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct inode * root_inode;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s->s_flags |= MS_NODIRATIME | MS_NOSUID | MS_NOEXEC;
 	s->s_blocksize = 1024;
 	s->s_blocksize_bits = 10;
@@ -526,11 +561,16 @@ int proc_fill_super(struct super_block *s)
 	
 	pde_get(&proc_root);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s->s_root = d_make_root(proc_get_inode(s, &proc_root));
 	if (s->s_root)
 		return 0;
 
 	printk("proc_read_super: get root inode failed\n");
+<<<<<<< HEAD
+=======
 =======
 	root_inode = proc_get_inode(s, &proc_root);
 	if (!root_inode)
@@ -546,6 +586,7 @@ out_no_root:
 	printk("proc_read_super: get root inode failed\n");
 	iput(root_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pde_put(&proc_root);
 	return -ENOMEM;
 }

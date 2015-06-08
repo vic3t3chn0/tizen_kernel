@@ -37,7 +37,11 @@
 <<<<<<< HEAD
 #include "stream.h"
 =======
+<<<<<<< HEAD
+#include "stream.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * handle the quirks for the contained interfaces
@@ -113,8 +117,12 @@ static int create_standard_audio_quirk(struct snd_usb_audio *chip,
 <<<<<<< HEAD
 	err = snd_usb_parse_audio_interface(chip, altsd->bInterfaceNumber);
 =======
+<<<<<<< HEAD
+	err = snd_usb_parse_audio_interface(chip, altsd->bInterfaceNumber);
+=======
 	err = snd_usb_parse_audio_endpoints(chip, altsd->bInterfaceNumber);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		snd_printk(KERN_ERR "cannot setup if %d: error %d\n",
 			   altsd->bInterfaceNumber, err);
@@ -140,6 +148,9 @@ static int create_fixed_stream_quirk(struct snd_usb_audio *chip,
 
 	fp = kmemdup(quirk->data, sizeof(*fp), GFP_KERNEL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!fp) {
 		snd_printk(KERN_ERR "cannot memdup\n");
 		return -ENOMEM;
@@ -151,6 +162,8 @@ static int create_fixed_stream_quirk(struct snd_usb_audio *chip,
 	if (fp->nr_rates > 0) {
 		rate_table = kmemdup(fp->rate_table,
 				     sizeof(int) * fp->nr_rates, GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	if (! fp) {
 		snd_printk(KERN_ERR "cannot memdup\n");
@@ -159,14 +172,18 @@ static int create_fixed_stream_quirk(struct snd_usb_audio *chip,
 	if (fp->nr_rates > 0) {
 		rate_table = kmalloc(sizeof(int) * fp->nr_rates, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rate_table) {
 			kfree(fp);
 			return -ENOMEM;
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memcpy(rate_table, fp->rate_table, sizeof(int) * fp->nr_rates);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fp->rate_table = rate_table;
 	}
 
@@ -175,8 +192,12 @@ static int create_fixed_stream_quirk(struct snd_usb_audio *chip,
 <<<<<<< HEAD
 	err = snd_usb_add_audio_stream(chip, stream, fp);
 =======
+<<<<<<< HEAD
+	err = snd_usb_add_audio_stream(chip, stream, fp);
+=======
 	err = snd_usb_add_audio_endpoint(chip, stream, fp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		kfree(fp);
 		kfree(rate_table);
@@ -257,11 +278,17 @@ static int create_uaxx_quirk(struct snd_usb_audio *chip,
 	if (!fp)
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+	fp = kmemdup(&ua_format, sizeof(*fp), GFP_KERNEL);
+	if (!fp)
+		return -ENOMEM;
+=======
 	fp = kmalloc(sizeof(*fp), GFP_KERNEL);
 	if (!fp)
 		return -ENOMEM;
 	memcpy(fp, &ua_format, sizeof(*fp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	fp->iface = altsd->bInterfaceNumber;
 	fp->endpoint = get_endpoint(alts, 0)->bEndpointAddress;
@@ -292,8 +319,12 @@ static int create_uaxx_quirk(struct snd_usb_audio *chip,
 <<<<<<< HEAD
 	err = snd_usb_add_audio_stream(chip, stream, fp);
 =======
+<<<<<<< HEAD
+	err = snd_usb_add_audio_stream(chip, stream, fp);
+=======
 	err = snd_usb_add_audio_endpoint(chip, stream, fp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		kfree(fp);
 		return err;
@@ -348,7 +379,11 @@ int snd_usb_create_quirk(struct snd_usb_audio *chip,
 <<<<<<< HEAD
 		[QUIRK_MIDI_FTDI] = create_any_midi_quirk,
 =======
+<<<<<<< HEAD
+		[QUIRK_MIDI_FTDI] = create_any_midi_quirk,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		[QUIRK_AUDIO_STANDARD_INTERFACE] = create_standard_audio_quirk,
 		[QUIRK_AUDIO_FIXED_ENDPOINT] = create_fixed_stream_quirk,
 		[QUIRK_AUDIO_EDIROL_UAXX] = create_uaxx_quirk,
@@ -384,8 +419,12 @@ static int snd_usb_extigy_boot_quirk(struct usb_device *dev, struct usb_interfac
 <<<<<<< HEAD
 				      0x10, 0x43, 0x0001, 0x000a, NULL, 0);
 =======
+<<<<<<< HEAD
+				      0x10, 0x43, 0x0001, 0x000a, NULL, 0);
+=======
 				      0x10, 0x43, 0x0001, 0x000a, NULL, 0, 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0) snd_printdd("error sending boot message: %d\n", err);
 		err = usb_get_descriptor(dev, USB_DT_DEVICE, 0,
 				&dev->descriptor, sizeof(dev->descriptor));
@@ -407,11 +446,16 @@ static int snd_usb_audigy2nx_boot_quirk(struct usb_device *dev)
 	snd_usb_ctl_msg(dev, usb_rcvctrlpipe(dev, 0), 0x2a,
 			USB_DIR_IN | USB_TYPE_VENDOR | USB_RECIP_OTHER,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			0, 0, &buf, 1);
 	if (buf == 0) {
 		snd_usb_ctl_msg(dev, usb_sndctrlpipe(dev, 0), 0x29,
 				USB_DIR_OUT | USB_TYPE_VENDOR | USB_RECIP_OTHER,
 				1, 2000, NULL, 0);
+<<<<<<< HEAD
+=======
 =======
 			0, 0, &buf, 1, 1000);
 	if (buf == 0) {
@@ -419,12 +463,16 @@ static int snd_usb_audigy2nx_boot_quirk(struct usb_device *dev)
 				USB_DIR_OUT | USB_TYPE_VENDOR | USB_RECIP_OTHER,
 				1, 2000, NULL, 0, 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_usb_fasttrackpro_boot_quirk(struct usb_device *dev)
 {
 	int err;
@@ -449,8 +497,11 @@ static int snd_usb_fasttrackpro_boot_quirk(struct usb_device *dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * C-Media CM106/CM106+ have four 16-bit internal registers that are nicely
  * documented in the device's data sheet.
@@ -467,8 +518,12 @@ static int snd_usb_cm106_write_int_reg(struct usb_device *dev, int reg, u16 valu
 <<<<<<< HEAD
 			       0, 0, &buf, 4);
 =======
+<<<<<<< HEAD
+			       0, 0, &buf, 4);
+=======
 			       0, 0, &buf, 4, 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int snd_usb_cm106_boot_quirk(struct usb_device *dev)
@@ -491,8 +546,12 @@ static int snd_usb_cm6206_boot_quirk(struct usb_device *dev)
 <<<<<<< HEAD
 	int err  = 0, reg;
 =======
+<<<<<<< HEAD
+	int err  = 0, reg;
+=======
 	int err, reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int val[] = {0x2004, 0x3000, 0xf800, 0x143f, 0x0000, 0x3000};
 
 	for (reg = 0; reg < ARRAY_SIZE(val); reg++) {
@@ -548,8 +607,12 @@ static int snd_usb_nativeinstruments_boot_quirk(struct usb_device *dev)
 <<<<<<< HEAD
 				  cpu_to_le16(1), 0, NULL, 0, 1000);
 =======
+<<<<<<< HEAD
+				  cpu_to_le16(1), 0, NULL, 0, 1000);
+=======
 				  1, 0, NULL, 0, 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret < 0)
 		return ret;
@@ -566,6 +629,9 @@ static int snd_usb_nativeinstruments_boot_quirk(struct usb_device *dev)
  * Setup quirks
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAUDIO_SET		0x01 /* parse device_setup */
 #define MAUDIO_SET_COMPATIBLE	0x80 /* use only "win-compatible" interfaces */
 #define MAUDIO_SET_DTS		0x02 /* enable DTS Digital Output */
@@ -609,6 +675,8 @@ static int quattro_skip_setting_quirk(struct snd_usb_audio *chip,
 		    altno, iface, chip->setup);
 	return 0; /* keep this altsetting */
 }
+<<<<<<< HEAD
+=======
 =======
 #define AUDIOPHILE_SET			0x01 /* if set, parse device_setup */
 #define AUDIOPHILE_SET_DTS              0x02 /* if set, enable DTS Digital Output */
@@ -621,6 +689,7 @@ static int quattro_skip_setting_quirk(struct snd_usb_audio *chip,
 #define AUDIOPHILE_SET_16B_48K_DI	0x11 /* value for 16bits+48KHz+Digital Input */
 #define AUDIOPHILE_SET_16B_48K_NOTDI	0x01 /* value for 16bits+48KHz+No Digital Input */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int audiophile_skip_setting_quirk(struct snd_usb_audio *chip,
 					 int iface,
@@ -632,6 +701,9 @@ static int audiophile_skip_setting_quirk(struct snd_usb_audio *chip,
 	usb_set_interface(chip->dev, iface, 0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chip->setup & MAUDIO_SET) {
 		unsigned int mask;
 		if ((chip->setup & MAUDIO_SET_DTS) && altno != 6)
@@ -646,6 +718,8 @@ static int audiophile_skip_setting_quirk(struct snd_usb_audio *chip,
 		if (mask == MAUDIO_SET_16B_48K_DI && altno != 4)
 			return 1; /* skip this altsetting */
 		if (mask == MAUDIO_SET_16B_48K_NOTDI && altno != 5)
+<<<<<<< HEAD
+=======
 =======
 	if (chip->setup & AUDIOPHILE_SET) {
 		if ((chip->setup & AUDIOPHILE_SET_DTS)
@@ -666,6 +740,7 @@ static int audiophile_skip_setting_quirk(struct snd_usb_audio *chip,
 		if ((chip->setup & AUDIOPHILE_SET_MASK) ==
 		    AUDIOPHILE_SET_16B_48K_NOTDI && altno != 5)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 1; /* skip this altsetting */
 	}
 
@@ -673,6 +748,9 @@ static int audiophile_skip_setting_quirk(struct snd_usb_audio *chip,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int fasttrackpro_skip_setting_quirk(struct snd_usb_audio *chip,
 					   int iface, int altno)
@@ -712,8 +790,11 @@ static int fasttrackpro_skip_setting_quirk(struct snd_usb_audio *chip,
 	return 0; /* keep this altsetting */
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_usb_apply_interface_quirk(struct snd_usb_audio *chip,
 				  int iface,
 				  int altno)
@@ -722,14 +803,20 @@ int snd_usb_apply_interface_quirk(struct snd_usb_audio *chip,
 	if (chip->usb_id == USB_ID(0x0763, 0x2003))
 		return audiophile_skip_setting_quirk(chip, iface, altno);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* quattro usb: skip altsets incompatible with device_setup */
 	if (chip->usb_id == USB_ID(0x0763, 0x2001))
 		return quattro_skip_setting_quirk(chip, iface, altno);
 	/* fasttrackpro usb: skip altsets incompatible with device_setup */
 	if (chip->usb_id == USB_ID(0x0763, 0x2012))
 		return fasttrackpro_skip_setting_quirk(chip, iface, altno);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -772,7 +859,12 @@ int snd_usb_apply_boot_quirk(struct usb_device *dev,
 	case USB_ID(0x0763, 0x2012):  /* M-Audio Fast Track Pro USB */
 		return snd_usb_fasttrackpro_boot_quirk(dev);
 =======
+<<<<<<< HEAD
+	case USB_ID(0x0763, 0x2012):  /* M-Audio Fast Track Pro USB */
+		return snd_usb_fasttrackpro_boot_quirk(dev);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -784,21 +876,30 @@ int snd_usb_apply_boot_quirk(struct usb_device *dev,
 int snd_usb_is_big_endian_format(struct snd_usb_audio *chip, struct audioformat *fp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* it depends on altsetting wether the device is big-endian or not */
 	switch (chip->usb_id) {
 	case USB_ID(0x0763, 0x2001): /* M-Audio Quattro: captured data only */
 		if (fp->altsetting == 2 || fp->altsetting == 3 ||
 			fp->altsetting == 5 || fp->altsetting == 6)
+<<<<<<< HEAD
+=======
 =======
 	switch (chip->usb_id) {
 	case USB_ID(0x0763, 0x2001): /* M-Audio Quattro: captured data only */
 		if (fp->endpoint & USB_DIR_IN)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 1;
 		break;
 	case USB_ID(0x0763, 0x2003): /* M-Audio Audiophile USB */
 		if (chip->setup == 0x00 ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fp->altsetting == 1 || fp->altsetting == 2 ||
 			fp->altsetting == 3)
 			return 1;
@@ -808,10 +909,13 @@ int snd_usb_is_big_endian_format(struct snd_usb_audio *chip, struct audioformat 
 			fp->altsetting == 5 || fp->altsetting == 6)
 			return 1;
 		break;
+<<<<<<< HEAD
+=======
 =======
 		    fp->altsetting==1 || fp->altsetting==2 || fp->altsetting==3)
 			return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }

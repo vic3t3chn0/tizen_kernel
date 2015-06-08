@@ -16,14 +16,20 @@
 
 #include <linux/kernel.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/clk.h>
 #include <linux/cpufreq.h>
 #include <linux/delay.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/clk.h>
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>  /* for machine_is_* */
 
@@ -31,16 +37,22 @@
 #include <plat/cpu.h>
 #include <plat/clkdev_omap.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/sram.h>	/* for omap_sram_reprogram_clock() */
 #include <plat/usb.h>   /* for OTG_BASE */
 
 #include <mach/hardware.h>
 
 #include "iomap.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/usb.h>   /* for OTG_BASE */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "clock.h"
 
 /* Some ARM_IDLECT1 bit shifts - used in struct arm_idlect1_clk */
@@ -784,6 +796,9 @@ static struct clk_functions omap1_clk_functions = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap1_show_rates(void)
 {
 	pr_notice("Clocking rate (xtal/DPLL1/MPU): "
@@ -795,8 +810,11 @@ static void __init omap1_show_rates(void)
 
 u32 cpu_mask;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init omap1_clk_init(void)
 {
 	struct omap_clk *c;
@@ -805,8 +823,12 @@ int __init omap1_clk_init(void)
 <<<<<<< HEAD
 	u32 reg;
 =======
+<<<<<<< HEAD
+	u32 reg;
+=======
 	u32 reg, cpu_mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_DEBUG_LL
 	/*
@@ -835,7 +857,12 @@ int __init omap1_clk_init(void)
 	if (cpu_is_omap1710())
 		cpu_mask |= CK_1710;
 =======
+<<<<<<< HEAD
+	if (cpu_is_omap1710())
+		cpu_mask |= CK_1710;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_is_omap16xx())
 		cpu_mask |= CK_16XX;
 	if (cpu_is_omap1510())
@@ -875,17 +902,23 @@ int __init omap1_clk_init(void)
 	omap_writew(0x1000, ARM_SYSST);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Initially use the values set by bootloader. Determine PLL rate and
 	 * recalculate dependent clocks as if kernel had changed PLL or
 	 * divisors. See also omap1_clk_late_init() that can reprogram dpll1
 	 * after the SRAM is initialized.
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_OMAP_CLOCKS_SET_BY_BOOTLOADER
 	/* Use values set by bootloader. Determine PLL rate and recalculate
 	 * dependent clocks as if kernel had changed PLL or divisors.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	{
 		unsigned pll_ctl_val = omap_readw(DPLL_CTL);
@@ -911,10 +944,15 @@ int __init omap1_clk_init(void)
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	propagate_rate(&ck_dpll1);
 	/* Cache rates for clocks connected to ck_ref (not dpll1) */
 	propagate_rate(&ck_ref);
 	omap1_show_rates();
+<<<<<<< HEAD
+=======
 =======
 #else
 	/* Find the highest supported frequency and enable it */
@@ -936,6 +974,7 @@ int __init omap1_clk_init(void)
 	       arm_ck.rate / 1000000, (arm_ck.rate / 100000) % 10);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (machine_is_omap_perseus2() || machine_is_omap_fsample()) {
 		/* Select slicer output as OMAP input clock */
 		omap_writew(omap_readw(OMAP7XX_PCC_UPLD_CTRL) & ~0x1,
@@ -981,6 +1020,9 @@ int __init omap1_clk_init(void)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define OMAP1_DPLL1_SANE_VALUE	60000000
 
@@ -1001,5 +1043,8 @@ void __init omap1_clk_late_init(void)
 	omap1_show_rates();
 	loops_per_jiffy = cpufreq_scale(loops_per_jiffy, rate, ck_dpll1.rate);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

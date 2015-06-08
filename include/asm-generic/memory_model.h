@@ -42,8 +42,12 @@
 <<<<<<< HEAD
 ({	const struct page *__pg = (pg);					\
 =======
+<<<<<<< HEAD
+({	const struct page *__pg = (pg);					\
+=======
 ({	struct page *__pg = (pg);					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pglist_data *__pgdat = NODE_DATA(page_to_nid(__pg));	\
 	(unsigned long)(__pg - __pgdat->node_mem_map) +			\
 	 __pgdat->node_start_pfn;					\
@@ -64,8 +68,12 @@
 <<<<<<< HEAD
 ({	const struct page *__pg = (pg);				\
 =======
+<<<<<<< HEAD
+({	const struct page *__pg = (pg);				\
+=======
 ({	struct page *__pg = (pg);				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int __sec = page_to_section(__pg);			\
 	(unsigned long)(__pg - __section_mem_map_addr(__nr_to_section(__sec)));	\
 })

@@ -35,6 +35,13 @@
 #include <linux/acpi.h>
 
 #include <asm/msr.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/cpu_device_id.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <acpi/processor.h>
 
 #include "longhaul.h"
@@ -951,12 +958,31 @@ static struct cpufreq_driver longhaul_driver = {
 	.attr	= longhaul_attr,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct x86_cpu_id longhaul_id[] = {
+	{ X86_VENDOR_CENTAUR, 6 },
+	{}
+};
+MODULE_DEVICE_TABLE(x86cpu, longhaul_id);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init longhaul_init(void)
 {
 	struct cpuinfo_x86 *c = &cpu_data(0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!x86_match_cpu(longhaul_id))
+=======
 	if (c->x86_vendor != X86_VENDOR_CENTAUR || c->x86 != 6)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (c->x86_vendor != X86_VENDOR_CENTAUR || c->x86 != 6)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 #ifdef CONFIG_SMP

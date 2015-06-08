@@ -680,8 +680,12 @@ mem2hex(char *buf, unsigned char *mem, int count)
 <<<<<<< HEAD
 			buf = hex_byte_pack(buf, ch);
 =======
+<<<<<<< HEAD
+			buf = hex_byte_pack(buf, ch);
+=======
 			buf = pack_hex_byte(buf, ch);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
         }
         /* Terminate properly. */
@@ -702,8 +706,12 @@ mem2hex_nbo(char *buf, unsigned char *mem, int count)
 <<<<<<< HEAD
 		buf = hex_byte_pack(buf, ch);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch);
+=======
 		buf = pack_hex_byte(buf, ch);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         }
 
         /* Terminate properly. */
@@ -891,8 +899,12 @@ stub_is_stopped(int sigval)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, sigval);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, sigval);
+=======
 	ptr = pack_hex_byte(ptr, sigval);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (((reg.exs & 0xff00) >> 8) == 0xc) {
 
@@ -1003,8 +1015,12 @@ stub_is_stopped(int sigval)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, PC);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, PC);
+=======
 	ptr = pack_hex_byte(ptr, PC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(ptr, (unsigned char *)&reg_cont, register_size[PC]);
 	*ptr++ = ';';
@@ -1013,8 +1029,12 @@ stub_is_stopped(int sigval)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, R8);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, R8);
+=======
 	ptr = pack_hex_byte(ptr, R8);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(ptr, (unsigned char *)&reg_cont, register_size[R8]);
 	*ptr++ = ';';
@@ -1023,8 +1043,12 @@ stub_is_stopped(int sigval)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, SP);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, SP);
+=======
 	ptr = pack_hex_byte(ptr, SP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(ptr, (unsigned char *)&reg_cont, register_size[SP]);
 	*ptr++ = ';';
@@ -1034,8 +1058,12 @@ stub_is_stopped(int sigval)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, ERP);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, ERP);
+=======
 	ptr = pack_hex_byte(ptr, ERP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         *ptr++ = ':';
         ptr = mem2hex(ptr, (unsigned char *)&reg_cont, register_size[ERP]);
         *ptr++ = ';';

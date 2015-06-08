@@ -309,7 +309,15 @@ static irqreturn_t mc13xxx_rtc_reset_handler(int irq, void *dev)
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __init mc13xxx_rtc_probe(struct platform_device *pdev)
+=======
 static int __devinit mc13xxx_rtc_probe(struct platform_device *pdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __devinit mc13xxx_rtc_probe(struct platform_device *pdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	struct mc13xxx_rtc *priv;
@@ -378,7 +386,15 @@ err_reset_irq_request:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __exit mc13xxx_rtc_remove(struct platform_device *pdev)
+=======
 static int __devexit mc13xxx_rtc_remove(struct platform_device *pdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __devexit mc13xxx_rtc_remove(struct platform_device *pdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mc13xxx_rtc *priv = platform_get_drvdata(pdev);
 
@@ -399,7 +415,15 @@ static int __devexit mc13xxx_rtc_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct platform_device_id mc13xxx_rtc_idtable[] = {
+=======
 const struct platform_device_id mc13xxx_rtc_idtable[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+const struct platform_device_id mc13xxx_rtc_idtable[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.name = "mc13783-rtc",
 	}, {
@@ -410,7 +434,15 @@ const struct platform_device_id mc13xxx_rtc_idtable[] = {
 
 static struct platform_driver mc13xxx_rtc_driver = {
 	.id_table = mc13xxx_rtc_idtable,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.remove = __exit_p(mc13xxx_rtc_remove),
+=======
 	.remove = __devexit_p(mc13xxx_rtc_remove),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.remove = __devexit_p(mc13xxx_rtc_remove),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver = {
 		.name = DRIVER_NAME,
 		.owner = THIS_MODULE,

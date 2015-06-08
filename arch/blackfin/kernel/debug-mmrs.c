@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 #define _d(name, bits, addr, perms) debugfs_create_x##bits(name, perms, parent, (u##bits *)(addr))
 =======
+<<<<<<< HEAD
+#define _d(name, bits, addr, perms) debugfs_create_x##bits(name, perms, parent, (u##bits *)(addr))
+=======
 #define _d(name, bits, addr, perms) debugfs_create_x##bits(name, perms, parent, (u##bits *)addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define d(name, bits, addr)         _d(name, bits, addr, S_IRUSR|S_IWUSR)
 #define d_RO(name, bits, addr)      _d(name, bits, addr, S_IRUSR)
 #define d_WO(name, bits, addr)      _d(name, bits, addr, S_IWUSR)
@@ -231,8 +235,13 @@ bfin_debug_mmrs_dma(struct dentry *parent, unsigned long base, int num, char mdm
 	if (strcmp(pfx, "IMDMA") != 0)
 		__DMA(PERIPHERAL_MAP, peripheral_map);
 =======
+<<<<<<< HEAD
+	if (strcmp(pfx, "IMDMA") != 0)
+		__DMA(PERIPHERAL_MAP, peripheral_map);
+=======
 	__DMA(PERIPHERAL_MAP, peripheral_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__DMA(CURR_X_COUNT, curr_x_count);
 	__DMA(CURR_Y_COUNT, curr_y_count);
 }
@@ -287,6 +296,9 @@ bfin_debug_mmrs_gptimer(struct dentry *parent, unsigned long base, int num)
 #define GPTIMER(num) bfin_debug_mmrs_gptimer(parent, TIMER##num##_CONFIG, num)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPTIMER_GROUP_OFF(mmr) REGS_OFF(gptimer_group, mmr)
 #define __GPTIMER_GROUP(uname, lname) __REGS(gptimer_group, #uname, lname)
 static void __init __maybe_unused
@@ -313,8 +325,11 @@ bfin_debug_mmrs_gptimer_group(struct dentry *parent, unsigned long base, int num
 }
 #define GPTIMER_GROUP(mmr, num) bfin_debug_mmrs_gptimer_group(parent, mmr, num)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Handshake MDMA
  */
@@ -335,6 +350,9 @@ bfin_debug_mmrs_hmdma(struct dentry *parent, unsigned long base, int num)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Peripheral Interrupts (PINT/GPIO)
  */
 #ifdef PINT0_MASK_SET
@@ -358,8 +376,11 @@ bfin_debug_mmrs_pint(struct dentry *parent, unsigned long base, int num)
 #endif
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Port/GPIO
  */
 #define bfin_gpio_regs gpio_port_t
@@ -814,8 +835,12 @@ static int __init bfin_debug_mmrs_init(void)
 <<<<<<< HEAD
 #ifdef DMAC_TC_CNT
 =======
+<<<<<<< HEAD
+#ifdef DMAC_TC_CNT
+=======
 #ifdef DMA_TC_CNT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	D16(DMAC_TC_CNT);
 	D16(DMAC_TC_PER);
 #endif
@@ -1074,6 +1099,9 @@ static int __init bfin_debug_mmrs_init(void)
 
 	parent = debugfs_create_dir("gptimer", top);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef TIMER_ENABLE
 	GPTIMER_GROUP(TIMER_ENABLE, -1);
 #endif
@@ -1087,6 +1115,8 @@ static int __init bfin_debug_mmrs_init(void)
 #ifdef TMRS4_DISABLE
 	GPTIMER_GROUP(TMRS4_ENABLE, 0);
 	GPTIMER_GROUP(TMRS8_ENABLE, 1);
+<<<<<<< HEAD
+=======
 =======
 #ifdef TIMER_DISABLE
 	D16(TIMER_DISABLE);
@@ -1112,6 +1142,7 @@ static int __init bfin_debug_mmrs_init(void)
 	D16(TMRS8_ENABLE);
 	D32(TMRS8_STATUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	GPTIMER(0);
 	GPTIMER(1);
@@ -1338,6 +1369,9 @@ static int __init bfin_debug_mmrs_init(void)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef PINT0_MASK_SET
 	parent = debugfs_create_dir("pint", top);
 	PINT(0);
@@ -1346,8 +1380,11 @@ static int __init bfin_debug_mmrs_init(void)
 	PINT(3);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef PIXC_CTL
 	parent = debugfs_create_dir("pixc", top);
 	D16(PIXC_CTL);
@@ -1913,8 +1950,11 @@ static int __init bfin_debug_mmrs_init(void)
 		unsigned long base;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		char *_buf, buf[32];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		base = PORTA_FER;
 		for (num = 0; num < 10; ++num) {
@@ -1922,6 +1962,8 @@ static int __init bfin_debug_mmrs_init(void)
 			base += sizeof(struct bfin_gpio_regs);
 		}
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define __PINT(uname, lname) __REGS(pint, #uname, lname)
@@ -1943,6 +1985,7 @@ static int __init bfin_debug_mmrs_init(void)
 		}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #endif	/* BF54x */
 

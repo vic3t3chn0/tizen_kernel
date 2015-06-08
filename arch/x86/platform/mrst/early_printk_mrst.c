@@ -246,6 +246,9 @@ struct console early_mrst_console = {
  * Speed UART) device.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HSU_PORT_BASE		0xffa28080
 
 static void __iomem *phsu;
@@ -264,6 +267,8 @@ void hsu_early_console_init(const char *s)
 
 	paddr = HSU_PORT_BASE + port * 0x80;
 	phsu = (void *)set_fixmap_offset_nocache(FIX_EARLYCON_MEM_BASE, paddr);
+<<<<<<< HEAD
+=======
 =======
 #define HSU_PORT2_PADDR		0xffa28180
 
@@ -276,6 +281,7 @@ void hsu_early_console_init(void)
 	phsu = (void *)set_fixmap_offset_nocache(FIX_EARLYCON_MEM_BASE,
 							HSU_PORT2_PADDR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Disable FIFO */
 	writeb(0x0, phsu + UART_FCR);

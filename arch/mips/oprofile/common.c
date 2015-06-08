@@ -118,7 +118,11 @@ int __init oprofile_arch_init(struct oprofile_operations *ops)
 <<<<<<< HEAD
 	ops->backtrace		= op_mips_backtrace;
 =======
+<<<<<<< HEAD
+	ops->backtrace		= op_mips_backtrace;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "oprofile: using %s performance monitoring.\n",
 	       lmodel->cpu_type);

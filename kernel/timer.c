@@ -20,7 +20,15 @@
  */
 
 #include <linux/kernel_stat.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/module.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/percpu.h>
 #include <linux/init.h>
@@ -63,7 +71,14 @@ EXPORT_SYMBOL(jiffies_64);
 #define TVR_SIZE (1 << TVR_BITS)
 #define TVN_MASK (TVN_SIZE - 1)
 #define TVR_MASK (TVR_SIZE - 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define MAX_TVAL ((unsigned long)((1ULL << (TVR_BITS + 4*TVN_BITS)) - 1))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MAX_TVAL ((unsigned long)((1ULL << (TVR_BITS + 4*TVN_BITS)) - 1))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct tvec {
 	struct list_head vec[TVN_SIZE];
@@ -145,11 +160,23 @@ static unsigned long round_jiffies_common(unsigned long j, int cpu,
 	/* now that we have rounded, subtract the extra skew again */
 	j -= cpu * 3;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (j <= jiffies) /* rounding ate our timeout entirely; */
+		return original;
+	return j;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Make sure j is still in the future. Otherwise return the
 	 * unmodified value.
 	 */
 	return time_is_after_jiffies(j) ? j : original;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -359,12 +386,26 @@ static void internal_add_timer(struct tvec_base *base, struct timer_list *timer)
 		vec = base->tv1.vec + (base->timer_jiffies & TVR_MASK);
 	} else {
 		int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* If the timeout is larger than 0xffffffff on 64-bit
+		 * architectures then we use the maximum timeout:
+		 */
+		if (idx > 0xffffffffUL) {
+			idx = 0xffffffffUL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* If the timeout is larger than MAX_TVAL (on 64-bit
 		 * architectures or with CONFIG_BASE_SMALL=1) then we
 		 * use the maximum timeout.
 		 */
 		if (idx > MAX_TVAL) {
 			idx = MAX_TVAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			expires = idx + base->timer_jiffies;
 		}
 		i = (expires >> (TVR_BITS + 3 * TVN_BITS)) & TVN_MASK;
@@ -431,6 +472,18 @@ static int timer_fixup_init(void *addr, enum debug_obj_state state)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Stub timer callback for improperly used timers. */
+static void stub_timer(unsigned long data)
+{
+	WARN_ON(1);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * fixup_activate is called when:
  * - an active object is activated
@@ -454,7 +507,16 @@ static int timer_fixup_activate(void *addr, enum debug_obj_state state)
 			debug_object_activate(timer, &timer_debug_descr);
 			return 0;
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			setup_timer(timer, stub_timer, 0);
+			return 1;
+=======
 			WARN_ON_ONCE(1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			WARN_ON_ONCE(1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		return 0;
 
@@ -484,12 +546,55 @@ static int timer_fixup_free(void *addr, enum debug_obj_state state)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * fixup_assert_init is called when:
+ * - an untracked/uninit-ed object is found
+ */
+static int timer_fixup_assert_init(void *addr, enum debug_obj_state state)
+{
+	struct timer_list *timer = addr;
+
+	switch (state) {
+	case ODEBUG_STATE_NOTAVAILABLE:
+		if (timer->entry.prev == TIMER_ENTRY_STATIC) {
+			/*
+			 * This is not really a fixup. The timer was
+			 * statically initialized. We just make sure that it
+			 * is tracked in the object tracker.
+			 */
+			debug_object_init(timer, &timer_debug_descr);
+			return 0;
+		} else {
+			setup_timer(timer, stub_timer, 0);
+			return 1;
+		}
+	default:
+		return 0;
+	}
+}
+
+static struct debug_obj_descr timer_debug_descr = {
+	.name			= "timer_list",
+	.debug_hint		= timer_debug_hint,
+	.fixup_init		= timer_fixup_init,
+	.fixup_activate		= timer_fixup_activate,
+	.fixup_free		= timer_fixup_free,
+	.fixup_assert_init	= timer_fixup_assert_init,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct debug_obj_descr timer_debug_descr = {
 	.name		= "timer_list",
 	.debug_hint	= timer_debug_hint,
 	.fixup_init	= timer_fixup_init,
 	.fixup_activate	= timer_fixup_activate,
 	.fixup_free	= timer_fixup_free,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void debug_timer_init(struct timer_list *timer)
@@ -512,6 +617,17 @@ static inline void debug_timer_free(struct timer_list *timer)
 	debug_object_free(timer, &timer_debug_descr);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline void debug_timer_assert_init(struct timer_list *timer)
+{
+	debug_object_assert_init(timer, &timer_debug_descr);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init_timer(struct timer_list *timer,
 			 const char *name,
 			 struct lock_class_key *key);
@@ -535,6 +651,13 @@ EXPORT_SYMBOL_GPL(destroy_timer_on_stack);
 static inline void debug_timer_init(struct timer_list *timer) { }
 static inline void debug_timer_activate(struct timer_list *timer) { }
 static inline void debug_timer_deactivate(struct timer_list *timer) { }
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline void debug_timer_assert_init(struct timer_list *timer) { }
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static inline void debug_init(struct timer_list *timer)
@@ -547,7 +670,16 @@ static inline void
 debug_activate(struct timer_list *timer, unsigned long expires)
 {
 	debug_timer_activate(timer);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	trace_timer_start(timer, expires,
+			 tbase_get_deferrable(timer->base) > 0 ? 'y' : 'n');
+=======
 	trace_timer_start(timer, expires);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	trace_timer_start(timer, expires);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void debug_deactivate(struct timer_list *timer)
@@ -556,6 +688,17 @@ static inline void debug_deactivate(struct timer_list *timer)
 	trace_timer_cancel(timer);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline void debug_assert_init(struct timer_list *timer)
+{
+	debug_timer_assert_init(timer);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init_timer(struct timer_list *timer,
 			 const char *name,
 			 struct lock_class_key *key)
@@ -906,6 +1049,14 @@ int del_timer(struct timer_list *timer)
 	unsigned long flags;
 	int ret = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	debug_assert_init(timer);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	timer_stats_timer_clear_start_info(timer);
 	if (timer_pending(timer)) {
 		base = lock_timer_base(timer, &flags);
@@ -936,6 +1087,14 @@ int try_to_del_timer_sync(struct timer_list *timer)
 	unsigned long flags;
 	int ret = -1;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	debug_assert_init(timer);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	base = lock_timer_base(timer, &flags);
 
 	if (base->running_timer == timer)
@@ -1372,7 +1531,15 @@ SYSCALL_DEFINE0(getppid)
 	int pid;
 
 	rcu_read_lock();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pid = task_tgid_vnr(rcu_dereference(current->real_parent));
+=======
 	pid = task_tgid_vnr(current->real_parent);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pid = task_tgid_vnr(current->real_parent);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 
 	return pid;

@@ -41,9 +41,21 @@
 #include "vme_user.h"
 
 static DEFINE_MUTEX(vme_user_mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char driver_name[] = "vme_user";
+
+static int bus[VME_USER_BUS_MAX];
+=======
 static char driver_name[] = "vme_user";
 
 static int bus[USER_BUS_MAX];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static char driver_name[] = "vme_user";
+
+static int bus[USER_BUS_MAX];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int bus_num;
 
 /* Currently Documentation/devices.txt defines the following for VME:
@@ -91,7 +103,15 @@ static unsigned int bus_num;
 /*
  * Structure to handle image related parameters.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct image_desc {
+=======
 typedef struct {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+typedef struct {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *kern_buf;	/* Buffer address in kernel space */
 	dma_addr_t pci_buf;	/* Buffer address in PCI address space */
 	unsigned long long size_buf;	/* Buffer size */
@@ -99,10 +119,23 @@ typedef struct {
 	struct device *device;	/* Sysfs device */
 	struct vme_resource *resource;	/* VME resource */
 	int users;		/* Number of current users */
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+static struct image_desc image[VME_DEVS];
+
+struct driver_stats {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } image_desc_t;
 static image_desc_t image[VME_DEVS];
 
 typedef struct {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long reads;
 	unsigned long writes;
 	unsigned long ioctls;
@@ -111,12 +144,27 @@ typedef struct {
 	unsigned long dmaErrors;
 	unsigned long timeouts;
 	unsigned long external;
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+static struct driver_stats statistics;
+
+static struct cdev *vme_user_cdev;		/* Character device */
+static struct class *vme_user_sysfs_class;	/* Sysfs class */
+static struct vme_dev *vme_user_bridge;		/* Pointer to user device */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } driver_stats_t;
 static driver_stats_t statistics;
 
 static struct cdev *vme_user_cdev;		/* Character device */
 static struct class *vme_user_sysfs_class;	/* Sysfs class */
 static struct device *vme_user_bridge;		/* Pointer to bridge device */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 static const int type[VME_DEVS] = {	MASTER_MINOR,	MASTER_MINOR,
@@ -135,10 +183,24 @@ static ssize_t vme_user_write(struct file *, const char __user *, size_t,
 static loff_t vme_user_llseek(struct file *, loff_t, int);
 static long vme_user_unlocked_ioctl(struct file *, unsigned int, unsigned long);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int vme_user_match(struct vme_dev *);
+static int __devinit vme_user_probe(struct vme_dev *);
+static int __devexit vme_user_remove(struct vme_dev *);
+
+static const struct file_operations vme_user_fops = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit vme_user_probe(struct device *, int, int);
 static int __devexit vme_user_remove(struct device *, int, int);
 
 static struct file_operations vme_user_fops = {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.open = vme_user_open,
 	.release = vme_user_release,
 	.read = vme_user_read,
@@ -168,8 +230,18 @@ static int vme_user_open(struct inode *inode, struct file *file)
 	unsigned int minor = MINOR(inode->i_rdev);
 
 	down(&image[minor].sem);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Allow device to be opened if a resource is needed and allocated. */
+	if (minor < CONTROL_MINOR && image[minor].resource == NULL) {
+=======
 	/* Only allow device to be opened if a resource is allocated */
 	if (image[minor].resource == NULL) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Only allow device to be opened if a resource is allocated */
+	if (image[minor].resource == NULL) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "No resources allocated for device\n");
 		err = -EINVAL;
 		goto err_res;
@@ -321,6 +393,15 @@ static ssize_t vme_user_read(struct file *file, char __user *buf, size_t count,
 	size_t image_size;
 	size_t okcount;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (minor == CONTROL_MINOR)
+		return 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	down(&image[minor].sem);
 
 	/* XXX Do we *really* want this helper - we can use vme_*_get ? */
@@ -365,6 +446,15 @@ static ssize_t vme_user_write(struct file *file, const char __user *buf,
 	size_t image_size;
 	size_t okcount;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (minor == CONTROL_MINOR)
+		return 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	down(&image[minor].sem);
 
 	image_size = vme_get_size(image[minor].resource);
@@ -406,6 +496,15 @@ static loff_t vme_user_llseek(struct file *file, loff_t off, int whence)
 	unsigned int minor = MINOR(file->f_dentry->d_inode->i_rdev);
 	size_t image_size;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (minor == CONTROL_MINOR)
+		return -EINVAL;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	down(&image[minor].sem);
 	image_size = vme_get_size(image[minor].resource);
 
@@ -452,6 +551,13 @@ static int vme_user_ioctl(struct inode *inode, struct file *file,
 {
 	struct vme_master master;
 	struct vme_slave slave;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct vme_irq_id irq_req;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long copied;
 	unsigned int minor = MINOR(inode->i_rdev);
 	int retval;
@@ -462,6 +568,27 @@ static int vme_user_ioctl(struct inode *inode, struct file *file,
 
 	switch (type[minor]) {
 	case CONTROL_MINOR:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		switch (cmd) {
+		case VME_IRQ_GEN:
+			copied = copy_from_user(&irq_req, (char *)arg,
+						sizeof(struct vme_irq_id));
+			if (copied != 0) {
+				printk(KERN_WARNING "Partial copy from userspace\n");
+				return -EFAULT;
+			}
+
+			retval = vme_irq_generate(vme_user_bridge,
+						  irq_req.level,
+						  irq_req.statid);
+
+			return retval;
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case MASTER_MINOR:
 		switch (cmd) {
@@ -595,6 +722,13 @@ static void buf_unalloc(int num)
 
 static struct vme_driver vme_user_driver = {
 	.name = driver_name,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.match = vme_user_match,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.probe = vme_user_probe,
 	.remove = __devexit_p(vme_user_remove),
 };
@@ -603,8 +737,16 @@ static struct vme_driver vme_user_driver = {
 static int __init vme_user_init(void)
 {
 	int retval = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int i;
 	struct vme_device_id *ids;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int i;
+	struct vme_device_id *ids;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "VME User Space Access Driver\n");
 
@@ -618,6 +760,24 @@ static int __init vme_user_init(void)
 	/* Let's start by supporting one bus, we can support more than one
 	 * in future revisions if that ever becomes necessary.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (bus_num > VME_USER_BUS_MAX) {
+		printk(KERN_ERR "%s: Driver only able to handle %d buses\n",
+			driver_name, VME_USER_BUS_MAX);
+		bus_num = VME_USER_BUS_MAX;
+	}
+
+	/*
+	 * Here we just register the maximum number of devices we can and
+	 * leave vme_user_match() to allow only 1 to go through to probe().
+	 * This way, if we later want to allow multiple user access devices,
+	 * we just change the code in vme_user_match().
+	 */
+	retval = vme_register_driver(&vme_user_driver, VME_MAX_SLOTS);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bus_num > USER_BUS_MAX) {
 		printk(KERN_ERR "%s: Driver only able to handle %d buses\n",
 			driver_name, USER_BUS_MAX);
@@ -649,25 +809,59 @@ static int __init vme_user_init(void)
 	vme_user_driver.bind_table = ids;
 
 	retval = vme_register_driver(&vme_user_driver);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval != 0)
 		goto err_reg;
 
 	return retval;
 
 err_reg:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(ids);
 err_id:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(ids);
+err_id:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_nocard:
 	return retval;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int vme_user_match(struct vme_dev *vdev)
+{
+	if (vdev->num >= VME_USER_BUS_MAX)
+		return 0;
+	return 1;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * In this simple access driver, the old behaviour is being preserved as much
  * as practical. We will therefore reserve the buffers and request the images
  * here so that we don't have to do it later.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit vme_user_probe(struct vme_dev *vdev)
+=======
 static int __devinit vme_user_probe(struct device *dev, int cur_bus,
 	int cur_slot)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __devinit vme_user_probe(struct device *dev, int cur_bus,
+	int cur_slot)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i, err;
 	char name[12];
@@ -679,7 +873,15 @@ static int __devinit vme_user_probe(struct device *dev, int cur_bus,
 		err = -EINVAL;
 		goto err_dev;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	vme_user_bridge = vdev;
+=======
 	vme_user_bridge = dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	vme_user_bridge = dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Initialise descriptors */
 	for (i = 0; i < VME_DEVS; i++) {
@@ -773,6 +975,13 @@ static int __devinit vme_user_probe(struct device *dev, int cur_bus,
 
 	/* Add sysfs Entries */
 	for (i = 0; i < VME_DEVS; i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		int num;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (type[i]) {
 		case MASTER_MINOR:
 			sprintf(name, "bus/vme/m%%d");
@@ -789,10 +998,22 @@ static int __devinit vme_user_probe(struct device *dev, int cur_bus,
 			break;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		num = (type[i] == SLAVE_MINOR) ? i - (MASTER_MAX + 1) : i;
+		image[i].device = device_create(vme_user_sysfs_class, NULL,
+					MKDEV(VME_MAJOR, i), NULL, name, num);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		image[i].device =
 			device_create(vme_user_sysfs_class, NULL,
 				MKDEV(VME_MAJOR, i), NULL, name,
 				(type[i] == SLAVE_MINOR) ? i - (MASTER_MAX + 1) : i);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_ERR(image[i].device)) {
 			printk(KERN_INFO "%s: Error creating sysfs device\n",
 				driver_name);
@@ -842,8 +1063,17 @@ err_dev:
 	return err;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devexit vme_user_remove(struct vme_dev *dev)
+=======
 static int __devexit vme_user_remove(struct device *dev, int cur_bus,
 	int cur_slot)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int __devexit vme_user_remove(struct device *dev, int cur_bus,
+	int cur_slot)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -875,8 +1105,16 @@ static int __devexit vme_user_remove(struct device *dev, int cur_bus,
 static void __exit vme_user_exit(void)
 {
 	vme_unregister_driver(&vme_user_driver);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	kfree(vme_user_driver.bind_table);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	kfree(vme_user_driver.bind_table);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 

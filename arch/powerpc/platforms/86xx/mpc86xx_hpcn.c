@@ -23,8 +23,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -167,8 +170,12 @@ static __initdata struct of_device_id of_bus_ids[] = {
 <<<<<<< HEAD
 	{ .compatible = "fsl,srio", },
 =======
+<<<<<<< HEAD
+	{ .compatible = "fsl,srio", },
+=======
 	{ .compatible = "fsl,rapidio-delta", },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ .compatible = "gianfar", },
 	{},
 };

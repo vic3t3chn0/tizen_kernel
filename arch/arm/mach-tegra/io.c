@@ -29,10 +29,16 @@
 #include <asm/mach/map.h>
 #include <mach/iomap.h>
 =======
+<<<<<<< HEAD
+#include <asm/page.h>
+#include <asm/mach/map.h>
+#include <mach/iomap.h>
+=======
 #include <mach/hardware.h>
 #include <asm/page.h>
 #include <asm/mach/map.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "board.h"
 
@@ -41,8 +47,12 @@ static struct map_desc tegra_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)IO_PPSB_VIRT,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)IO_PPSB_VIRT,
+=======
 		.virtual = IO_PPSB_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn = __phys_to_pfn(IO_PPSB_PHYS),
 		.length = IO_PPSB_SIZE,
 		.type = MT_DEVICE,
@@ -51,8 +61,12 @@ static struct map_desc tegra_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)IO_APB_VIRT,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)IO_APB_VIRT,
+=======
 		.virtual = IO_APB_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn = __phys_to_pfn(IO_APB_PHYS),
 		.length = IO_APB_SIZE,
 		.type = MT_DEVICE,
@@ -61,8 +75,12 @@ static struct map_desc tegra_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)IO_CPU_VIRT,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)IO_CPU_VIRT,
+=======
 		.virtual = IO_CPU_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn = __phys_to_pfn(IO_CPU_PHYS),
 		.length = IO_CPU_SIZE,
 		.type = MT_DEVICE,
@@ -71,8 +89,12 @@ static struct map_desc tegra_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)IO_IRAM_VIRT,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)IO_IRAM_VIRT,
+=======
 		.virtual = IO_IRAM_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn = __phys_to_pfn(IO_IRAM_PHYS),
 		.length = IO_IRAM_SIZE,
 		.type = MT_DEVICE,
@@ -83,6 +105,8 @@ void __init tegra_map_common_io(void)
 {
 	iotable_init(tegra_io_desc, ARRAY_SIZE(tegra_io_desc));
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -107,3 +131,4 @@ void tegra_iounmap(volatile void __iomem *addr)
 }
 EXPORT_SYMBOL(tegra_iounmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

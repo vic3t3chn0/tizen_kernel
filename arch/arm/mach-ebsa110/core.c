@@ -25,8 +25,12 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/arch.h>
 #include <asm/mach/irq.h>
@@ -37,11 +41,15 @@
 <<<<<<< HEAD
 #include "core.h"
 =======
+<<<<<<< HEAD
+#include "core.h"
+=======
 #define IRQ_MASK		0xfe000000	/* read */
 #define IRQ_MSET		0xfe000000	/* write */
 #define IRQ_STAT		0xff000000	/* read */
 #define IRQ_MCLR		0xff000000	/* write */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void ebsa110_mask_irq(struct irq_data *d)
 {
@@ -90,8 +98,12 @@ static struct map_desc ebsa110_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.length		= TRICK4_SIZE,
 =======
+<<<<<<< HEAD
+		.length		= TRICK4_SIZE,
+=======
 		.length		= PGDIR_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.type		= MT_DEVICE
 	}, {	/* IRQ_MASK/IRQ_MSET */
 		.virtual	= IRQ_MASK,
@@ -99,8 +111,12 @@ static struct map_desc ebsa110_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.length		= TRICK3_SIZE,
 =======
+<<<<<<< HEAD
+		.length		= TRICK3_SIZE,
+=======
 		.length		= PGDIR_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.type		= MT_DEVICE
 	}, {	/* SOFT_BASE */
 		.virtual	= SOFT_BASE,
@@ -108,8 +124,12 @@ static struct map_desc ebsa110_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.length		= TRICK1_SIZE,
 =======
+<<<<<<< HEAD
+		.length		= TRICK1_SIZE,
+=======
 		.length		= PGDIR_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.type		= MT_DEVICE
 	}, {	/* PIT_BASE */
 		.virtual	= PIT_BASE,
@@ -117,8 +137,12 @@ static struct map_desc ebsa110_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.length		= TRICK0_SIZE,
 =======
+<<<<<<< HEAD
+		.length		= TRICK0_SIZE,
+=======
 		.length		= PGDIR_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.type		= MT_DEVICE
 	},
 
@@ -144,6 +168,9 @@ static void __init ebsa110_map_io(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *ebsa110_ioremap_caller(unsigned long cookie, size_t size,
 					    unsigned int flags, void *caller)
 {
@@ -158,8 +185,11 @@ static void __init ebsa110_init_early(void)
 	arch_ioremap_caller = ebsa110_ioremap_caller;
 	arch_iounmap = ebsa110_iounmap;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PIT_CTRL		(PIT_BASE + 0x0d)
 #define PIT_T2			(PIT_BASE + 0x09)
@@ -313,6 +343,9 @@ static struct platform_device *ebsa110_devices[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * EBSA110 idling methodology:
  *
@@ -340,16 +373,22 @@ static void ebsa110_idle(void)
 static int __init ebsa110_init(void)
 {
 	arm_pm_idle = ebsa110_idle;
+<<<<<<< HEAD
+=======
 =======
 static int __init ebsa110_init(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return platform_add_devices(ebsa110_devices, ARRAY_SIZE(ebsa110_devices));
 }
 
 arch_initcall(ebsa110_init);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ebsa110_restart(char mode, const char *cmd)
 {
 	soft_restart(0x80000000);
@@ -366,6 +405,8 @@ MACHINE_START(EBSA110, "EBSA110")
 	.init_irq	= ebsa110_init_irq,
 	.timer		= &ebsa110_timer,
 	.restart	= ebsa110_restart,
+<<<<<<< HEAD
+=======
 =======
 MACHINE_START(EBSA110, "EBSA110")
 	/* Maintainer: Russell King */
@@ -377,4 +418,5 @@ MACHINE_START(EBSA110, "EBSA110")
 	.init_irq	= ebsa110_init_irq,
 	.timer		= &ebsa110_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

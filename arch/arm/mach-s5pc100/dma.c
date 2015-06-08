@@ -1,12 +1,18 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* linux/arch/arm/mach-s5pc100/dma.c
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
  *
+<<<<<<< HEAD
+=======
 =======
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2010 Samsung Electronics Co. Ltd.
  *	Jaswinder Singh <jassi.brar@samsung.com>
  *
@@ -26,6 +32,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 #include <linux/amba/bus.h>
 #include <linux/amba/pl330.h>
@@ -131,6 +140,8 @@ static int __init s5pc100_dma_init(void)
 	dma_cap_set(DMA_SLAVE, s5pc100_pdma1_pdata.cap_mask);
 	dma_cap_set(DMA_CYCLIC, s5pc100_pdma1_pdata.cap_mask);
 	amba_device_register(&s5pc100_pdma1_device, &iomem_resource);
+<<<<<<< HEAD
+=======
 =======
 #include <linux/platform_device.h>
 #include <linux/dma-mapping.h>
@@ -277,6 +288,7 @@ static int __init s5pc100_dma_init(void)
 {
 	platform_add_devices(s5pc100_dmacs, ARRAY_SIZE(s5pc100_dmacs));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

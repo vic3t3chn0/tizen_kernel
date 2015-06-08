@@ -10,11 +10,16 @@ obj-n				:=
 obj-				:=
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Core
 
 obj-y				+= common.o clock.o
 
 obj-y				+= dma.o
+<<<<<<< HEAD
+=======
 =======
 # Core support for S5PC100 system
 
@@ -35,6 +40,7 @@ obj-$(CONFIG_S5PC100_SETUP_SDHCI_GPIO)	+= setup-sdhci-gpio.o
 obj-y				+= dev-audio.o
 obj-$(CONFIG_S3C64XX_DEV_SPI)	+= dev-spi.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # machine support
 
@@ -42,6 +48,9 @@ obj-$(CONFIG_MACH_SMDKC100)	+= mach-smdkc100.o
 
 # device support
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-y				+= dev-audio.o
 
@@ -52,6 +61,9 @@ obj-$(CONFIG_S5PC100_SETUP_IDE)		+= setup-ide.o
 obj-$(CONFIG_S5PC100_SETUP_KEYPAD)	+= setup-keypad.o
 obj-$(CONFIG_S5PC100_SETUP_SDHCI_GPIO)	+= setup-sdhci-gpio.o
 obj-$(CONFIG_S5PC100_SETUP_SPI)		+= setup-spi.o
+<<<<<<< HEAD
+=======
 =======
 obj-y				+= dev-audio.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

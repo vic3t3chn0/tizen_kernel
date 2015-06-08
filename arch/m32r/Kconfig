@@ -13,7 +13,11 @@ config M32R
 <<<<<<< HEAD
 	select GENERIC_ATOMIC64
 =======
+<<<<<<< HEAD
+	select GENERIC_ATOMIC64
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config SBUS
 	bool
@@ -275,6 +279,9 @@ config SCHED_OMIT_FRAME_POINTER
 <<<<<<< HEAD
 source "kernel/Kconfig.preempt"
 =======
+<<<<<<< HEAD
+source "kernel/Kconfig.preempt"
+=======
 config PREEMPT
 	bool "Preemptible Kernel"
 	help
@@ -287,6 +294,7 @@ config PREEMPT
 	  Say Y here if you are building a kernel for a desktop, embedded
 	  or real-time system.  Say N if you are unsure.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config SMP
 	bool "Symmetric multi-processing support"
@@ -342,6 +350,8 @@ config NODES_SHIFT
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # turning this on wastes a bunch of space.
 # Summit needs it only when NUMA is on
 config BOOT_IOREMAP
@@ -350,6 +360,7 @@ config BOOT_IOREMAP
 	default n
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endmenu
 
 

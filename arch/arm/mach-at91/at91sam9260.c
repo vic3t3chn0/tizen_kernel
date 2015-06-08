@@ -12,6 +12,9 @@
 
 #include <linux/module.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/proc-fns.h>
 #include <asm/irq.h>
@@ -28,6 +31,8 @@
 #include "generic.h"
 #include "clock.h"
 #include "sam9_smc.h"
+<<<<<<< HEAD
+=======
 =======
 #include <linux/pm.h>
 
@@ -87,6 +92,7 @@ static struct map_desc at91sam9xe_sram_desc[] __initdata = {
 	}
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* --------------------------------------------------------------------
  *  Clocks
@@ -184,8 +190,12 @@ static struct clk macb_clk = {
 <<<<<<< HEAD
 	.name		= "pclk",
 =======
+<<<<<<< HEAD
+	.name		= "pclk",
+=======
 	.name		= "macb_clk",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pmc_mask	= 1 << AT91SAM9260_ID_EMAC,
 	.type		= CLK_TYPE_PERIPHERAL,
 };
@@ -259,7 +269,12 @@ static struct clk_lookup periph_clocks_lookups[] = {
 	/* One additional fake clock for macb_hclk */
 	CLKDEV_CON_ID("hclk", &macb_clk),
 =======
+<<<<<<< HEAD
+	/* One additional fake clock for macb_hclk */
+	CLKDEV_CON_ID("hclk", &macb_clk),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_DEV_ID("spi_clk", "atmel_spi.0", &spi0_clk),
 	CLKDEV_CON_DEV_ID("spi_clk", "atmel_spi.1", &spi1_clk),
 	CLKDEV_CON_DEV_ID("t0_clk", "atmel_tcb.0", &tc0_clk),
@@ -270,6 +285,9 @@ static struct clk_lookup periph_clocks_lookups[] = {
 	CLKDEV_CON_DEV_ID("t2_clk", "atmel_tcb.1", &tc5_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.0", &ssc_clk),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* more usart lookup table for DT entries */
 	CLKDEV_CON_DEV_ID("usart", "fffff200.serial", &mck),
 	CLKDEV_CON_DEV_ID("usart", "fffb0000.serial", &usart0_clk),
@@ -291,8 +309,11 @@ static struct clk_lookup periph_clocks_lookups[] = {
 	CLKDEV_CON_ID("pioA", &pioA_clk),
 	CLKDEV_CON_ID("pioB", &pioB_clk),
 	CLKDEV_CON_ID("pioC", &pioC_clk),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_lookup usart_clocks_lookups[] = {
@@ -355,6 +376,9 @@ void __init at91sam9260_set_console_clock(int id)
  * -------------------------------------------------------------------- */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct at91_gpio_bank at91sam9260_gpio[] __initdata = {
 	{
 		.id		= AT91SAM9260_ID_PIOA,
@@ -368,6 +392,8 @@ static struct at91_gpio_bank at91sam9260_gpio[] __initdata = {
 	}
 };
 
+<<<<<<< HEAD
+=======
 =======
 static struct at91_gpio_bank at91sam9260_gpio[] = {
 	{
@@ -392,6 +418,7 @@ static void at91sam9260_poweroff(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* --------------------------------------------------------------------
  *  AT91SAM9260 processor initialization
  * -------------------------------------------------------------------- */
@@ -403,12 +430,18 @@ static void __init at91sam9xe_map_io(void)
 
 	switch (at91_soc_initdata.cidr & AT91_CIDR_SRAMSIZ) {
 =======
+<<<<<<< HEAD
+	unsigned long sram_size;
+
+	switch (at91_soc_initdata.cidr & AT91_CIDR_SRAMSIZ) {
+=======
 	unsigned long cidr, sram_size;
 
 	cidr = at91_sys_read(AT91_DBGU_CIDR);
 
 	switch (cidr & AT91_CIDR_SRAMSIZ) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case AT91_CIDR_SRAMSIZ_32K:
 			sram_size = 2 * SZ_16K;
 			break;
@@ -418,6 +451,9 @@ static void __init at91sam9xe_map_io(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_init_sram(0, AT91SAM9XE_SRAM_BASE, sram_size);
 }
 
@@ -448,6 +484,8 @@ static void __init at91sam9260_initialize(void)
 	at91_extern_irq = (1 << AT91SAM9260_ID_IRQ0) | (1 << AT91SAM9260_ID_IRQ1)
 			| (1 << AT91SAM9260_ID_IRQ2);
 
+<<<<<<< HEAD
+=======
 =======
 	at91sam9xe_sram_desc->virtual = AT91_IO_VIRT_BASE - sram_size;
 	at91sam9xe_sram_desc->length = sram_size;
@@ -482,6 +520,7 @@ void __init at91sam9260_initialize(unsigned long main_clock)
 	at91sam9260_register_clocks();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Register GPIO subsystem */
 	at91_gpio_init(at91sam9260_gpio, 3);
 }
@@ -529,6 +568,9 @@ static unsigned int at91sam9260_default_irq_priority[NR_AIC_IRQS] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct at91_init_soc __initdata at91sam9260_soc = {
 	.map_io = at91sam9260_map_io,
 	.default_irq_priority = at91sam9260_default_irq_priority,
@@ -536,6 +578,8 @@ struct at91_init_soc __initdata at91sam9260_soc = {
 	.register_clocks = at91sam9260_register_clocks,
 	.init = at91sam9260_initialize,
 };
+<<<<<<< HEAD
+=======
 =======
 void __init at91sam9260_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 {
@@ -549,3 +593,4 @@ void __init at91sam9260_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 	at91_gpio_irq_setup();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

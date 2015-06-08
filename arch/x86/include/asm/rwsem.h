@@ -207,6 +207,9 @@ static inline long rwsem_atomic_update(long delta, struct rw_semaphore *sem)
 <<<<<<< HEAD
 	return delta + xadd(&sem->count, delta);
 =======
+<<<<<<< HEAD
+	return delta + xadd(&sem->count, delta);
+=======
 	long tmp = delta;
 
 	asm volatile(LOCK_PREFIX "xadd %0,%1"
@@ -215,6 +218,7 @@ static inline long rwsem_atomic_update(long delta, struct rw_semaphore *sem)
 
 	return tmp + delta;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif /* __KERNEL__ */

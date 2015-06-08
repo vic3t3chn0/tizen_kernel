@@ -19,7 +19,17 @@
 
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/hardirq.h>
+#include <linux/interrupt.h>
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/moduleparam.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/firmware.h>
 #include <linux/jiffies.h>
 #include <linux/list.h>
@@ -529,10 +539,19 @@ static int if_spi_prog_helper_firmware(struct if_spi_card *card,
 		goto out;
 	err = spu_write_u16(card, IF_SPI_CARD_INT_CAUSE_REG,
 				IF_SPI_CIC_CMD_DOWNLOAD_OVER);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	lbs_deb_spi("waiting for helper to boot...\n");
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	if (err)
 		pr_err("failed to load helper firmware (err=%d)\n", err);
@@ -1033,7 +1052,14 @@ static irqreturn_t if_spi_host_interrupt(int irq, void *dev_id)
 static int if_spi_init_card(struct if_spi_card *card)
 {
 	struct lbs_private *priv = card->priv;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct spi_device *spi = card->spi;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct spi_device *spi = card->spi;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err, i;
 	u32 scratch;
 	const struct firmware *helper = NULL;
@@ -1081,8 +1107,19 @@ static int if_spi_init_card(struct if_spi_card *card)
 				"attached to SPI bus_num %d, chip_select %d. "
 				"spi->max_speed_hz=%d\n",
 				card->card_id, card->card_rev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				card->spi->master->bus_num,
+				card->spi->chip_select,
+				card->spi->max_speed_hz);
+=======
 				spi->master->bus_num, spi->chip_select,
 				spi->max_speed_hz);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				spi->master->bus_num, spi->chip_select,
+				spi->max_speed_hz);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = if_spi_prog_helper_firmware(card, helper);
 		if (err)
 			goto out;
@@ -1293,7 +1330,14 @@ static struct spi_driver libertas_spi_driver = {
 	.remove = __devexit_p(libertas_spi_remove),
 	.driver = {
 		.name	= "libertas_spi",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		.bus	= &spi_bus_type,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.bus	= &spi_bus_type,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner	= THIS_MODULE,
 		.pm	= &if_spi_pm_ops,
 	},

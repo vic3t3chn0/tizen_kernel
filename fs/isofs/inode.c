@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/mpage.h>
 =======
+<<<<<<< HEAD
+#include <linux/mpage.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "isofs.h"
 #include "zisofs.h"
@@ -90,8 +94,11 @@ static void isofs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(isofs_inode_cachep, ISOFS_I(inode));
 }
 
@@ -130,9 +137,14 @@ static int isofs_remount(struct super_block *sb, int *flags, char *data)
 	/* we probably want a lot more here */
 	*flags |= MS_RDONLY;
 =======
+<<<<<<< HEAD
+	/* we probably want a lot more here */
+	*flags |= MS_RDONLY;
+=======
 	if (!(*flags & MS_RDONLY))
 		return -EROFS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -185,9 +197,14 @@ struct iso9660_options{
 	umode_t fmode;
 	umode_t dmode;
 =======
+<<<<<<< HEAD
+	umode_t fmode;
+	umode_t dmode;
+=======
 	mode_t fmode;
 	mode_t dmode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gid_t gid;
 	uid_t uid;
 	char *iocharset;
@@ -787,6 +804,9 @@ root_found:
 	s->s_maxbytes = 0x80000000000LL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The CDROM is read-only, has no nodes (devices) on it, and since
 	 * all of the files appear to be owned by root, we really do not want
@@ -796,8 +816,11 @@ root_found:
 
 	s->s_flags |= MS_RDONLY /* | MS_NODEV | MS_NOSUID */;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set this for reference. Its not currently used except on write
 	   which we don't have .. */
 
@@ -885,8 +908,11 @@ root_found:
 	sbi->s_overriderockperm = opt.overriderockperm;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_init(&sbi->s_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * It would be incredibly stupid to allow people to mark every file
 	 * on the disk as suid, so we merely allow them to set the default
@@ -972,16 +998,22 @@ root_found:
 
 	/* get the root dentry */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s->s_root = d_make_root(inode);
 	if (!(s->s_root)) {
 		error = -ENOMEM;
 		goto out_no_inode;
 	}
+<<<<<<< HEAD
+=======
 =======
 	s->s_root = d_alloc_root(inode);
 	if (!(s->s_root))
 		goto out_no_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kfree(opt.iocharset);
 
@@ -1181,6 +1213,9 @@ struct buffer_head *isofs_bread(struct inode *inode, sector_t block)
 static int isofs_readpage(struct file *file, struct page *page)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mpage_readpage(page, isofs_get_block);
 }
 
@@ -1188,9 +1223,12 @@ static int isofs_readpages(struct file *file, struct address_space *mapping,
 			struct list_head *pages, unsigned nr_pages)
 {
 	return mpage_readpages(mapping, pages, nr_pages, isofs_get_block);
+<<<<<<< HEAD
+=======
 =======
 	return block_read_full_page(page,isofs_get_block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static sector_t _isofs_bmap(struct address_space *mapping, sector_t block)
@@ -1203,7 +1241,11 @@ static const struct address_space_operations isofs_aops = {
 <<<<<<< HEAD
 	.readpages = isofs_readpages,
 =======
+<<<<<<< HEAD
+	.readpages = isofs_readpages,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.bmap = _isofs_bmap
 };
 
@@ -1368,8 +1410,12 @@ static int isofs_read_inode(struct inode *inode)
 <<<<<<< HEAD
 		set_nlink(inode, 1);	/*
 =======
+<<<<<<< HEAD
+		set_nlink(inode, 1);	/*
+=======
 		inode->i_nlink = 1;	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 * Set to 1.  We know there are 2, but
 					 * the find utility tries to optimize
 					 * if it is 2, and it screws up.  It is
@@ -1390,8 +1436,12 @@ static int isofs_read_inode(struct inode *inode)
 <<<<<<< HEAD
 		set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, 1);
+=======
 		inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	inode->i_uid = sbi->s_uid;
 	inode->i_gid = sbi->s_gid;
@@ -1583,10 +1633,13 @@ static struct dentry *isofs_mount(struct file_system_type *fs_type,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* We don't support read-write mounts */
 	if (!(flags & MS_RDONLY))
 		return ERR_PTR(-EACCES);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return mount_bdev(fs_type, flags, dev_name, data, isofs_fill_super);
 }
 

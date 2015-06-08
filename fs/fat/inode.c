@@ -215,9 +215,14 @@ static ssize_t fat_direct_IO(int rw, struct kiocb *iocb,
 	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
 				 fat_get_block);
 =======
+<<<<<<< HEAD
+	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
+				 fat_get_block);
+=======
 	ret = blockdev_direct_IO(rw, iocb, inode, inode->i_sb->s_bdev,
 				 iov, offset, nr_segs, fat_get_block, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0 && (rw & WRITE))
 		fat_write_failed(mapping, offset + iov_length(iov, nr_segs));
 
@@ -234,10 +239,16 @@ static sector_t _fat_bmap(struct address_space *mapping, sector_t block)
 	blocknr = generic_block_bmap(mapping, block, fat_get_block);
 	up_read(&MSDOS_I(mapping->host)->truncate_lock);
 =======
+<<<<<<< HEAD
+	down_read(&MSDOS_I(mapping->host)->truncate_lock);
+	blocknr = generic_block_bmap(mapping, block, fat_get_block);
+	up_read(&MSDOS_I(mapping->host)->truncate_lock);
+=======
 	down_read(&mapping->host->i_alloc_sem);
 	blocknr = generic_block_bmap(mapping, block, fat_get_block);
 	up_read(&mapping->host->i_alloc_sem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return blocknr;
 }
@@ -253,6 +264,8 @@ static const struct address_space_operations fat_aops = {
 	.bmap		= _fat_bmap
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 int _fat_fallocate(struct inode *inode, loff_t len)
@@ -321,6 +334,7 @@ int _fat_fallocate(struct inode *inode, loff_t len)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * New FAT inode stuff. We do the following:
  *	a) i_ino is constant and has nothing with on-disk location.
@@ -461,8 +475,12 @@ static int fat_fill_inode(struct inode *inode, struct msdos_dir_entry *de)
 <<<<<<< HEAD
 		set_nlink(inode, fat_subdirs(inode));
 =======
+<<<<<<< HEAD
+		set_nlink(inode, fat_subdirs(inode));
+=======
 		inode->i_nlink = fat_subdirs(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else { /* not a directory */
 		inode->i_generation |= 1;
 		inode->i_mode = fat_make_mode(sbi, de->attr,
@@ -597,7 +615,12 @@ static struct inode *fat_alloc_inode(struct super_block *sb)
 
 	init_rwsem(&ei->truncate_lock);
 =======
+<<<<<<< HEAD
+
+	init_rwsem(&ei->truncate_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return &ei->vfs_inode;
 }
 
@@ -606,8 +629,11 @@ static void fat_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(fat_inode_cachep, MSDOS_I(inode));
 }
 
@@ -764,8 +790,12 @@ EXPORT_SYMBOL_GPL(fat_sync_inode);
 <<<<<<< HEAD
 static int fat_show_options(struct seq_file *m, struct dentry *root);
 =======
+<<<<<<< HEAD
+static int fat_show_options(struct seq_file *m, struct dentry *root);
+=======
 static int fat_show_options(struct seq_file *m, struct vfsmount *mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct super_operations fat_sops = {
 	.alloc_inode	= fat_alloc_inode,
 	.destroy_inode	= fat_destroy_inode,
@@ -909,10 +939,16 @@ static int fat_show_options(struct seq_file *m, struct dentry *root)
 {
 	struct msdos_sb_info *sbi = MSDOS_SB(root->d_sb);
 =======
+<<<<<<< HEAD
+static int fat_show_options(struct seq_file *m, struct dentry *root)
+{
+	struct msdos_sb_info *sbi = MSDOS_SB(root->d_sb);
+=======
 static int fat_show_options(struct seq_file *m, struct vfsmount *mnt)
 {
 	struct msdos_sb_info *sbi = MSDOS_SB(mnt->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct fat_mount_options *opts = &sbi->options;
 	int isvfat = opts->isvfat;
 
@@ -1000,8 +1036,12 @@ enum {
 <<<<<<< HEAD
 	Opt_obsolete, Opt_flush, Opt_tz_utc, Opt_rodir, Opt_err_cont,
 =======
+<<<<<<< HEAD
+	Opt_obsolete, Opt_flush, Opt_tz_utc, Opt_rodir, Opt_err_cont,
+=======
 	Opt_obsolate, Opt_flush, Opt_tz_utc, Opt_rodir, Opt_err_cont,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	Opt_err_panic, Opt_err_ro, Opt_discard, Opt_err,
 };
 
@@ -1032,6 +1072,9 @@ static const match_table_t fat_tokens = {
 	{Opt_err_ro, "errors=remount-ro"},
 	{Opt_discard, "discard"},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{Opt_obsolete, "conv=binary"},
 	{Opt_obsolete, "conv=text"},
 	{Opt_obsolete, "conv=auto"},
@@ -1043,6 +1086,8 @@ static const match_table_t fat_tokens = {
 	{Opt_obsolete, "cvf_format=%20s"},
 	{Opt_obsolete, "cvf_options=%100s"},
 	{Opt_obsolete, "posix"},
+<<<<<<< HEAD
+=======
 =======
 	{Opt_obsolate, "conv=binary"},
 	{Opt_obsolate, "conv=text"},
@@ -1056,6 +1101,7 @@ static const match_table_t fat_tokens = {
 	{Opt_obsolate, "cvf_options=%100s"},
 	{Opt_obsolate, "posix"},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{Opt_err, NULL},
 };
 static const match_table_t msdos_tokens = {
@@ -1290,8 +1336,12 @@ static int parse_options(struct super_block *sb, char *options, int is_vfat,
 <<<<<<< HEAD
 		case Opt_obsolete:
 =======
+<<<<<<< HEAD
+		case Opt_obsolete:
+=======
 		case Opt_obsolate:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fat_msg(sb, KERN_INFO, "\"%s\" option is obsolete, "
 			       "not supported now", p);
 			break;
@@ -1314,10 +1364,16 @@ out:
 		       " for FAT filesystems, filesystem will be "
 		       "case sensitive!");
 =======
+<<<<<<< HEAD
+		fat_msg(sb, KERN_WARNING, "utf8 is not a recommended IO charset"
+		       " for FAT filesystems, filesystem will be "
+		       "case sensitive!");
+=======
 		fat_msg(sb, KERN_ERR, "utf8 is not a recommended IO charset"
 		       " for FAT filesystems, filesystem will be "
 		       "case sensitive!\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* If user doesn't specify allow_utime, it's initialized from dmask. */
@@ -1363,12 +1419,18 @@ static int fat_read_root(struct inode *inode)
 <<<<<<< HEAD
 	set_nlink(inode, fat_subdirs(inode)+2);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, fat_subdirs(inode)+2);
+=======
 	inode->i_nlink = fat_subdirs(inode)+2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static unsigned long calc_fat_clusters(struct super_block *sb)
@@ -1385,6 +1447,7 @@ static unsigned long calc_fat_clusters(struct super_block *sb)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Read the super block of an MS-DOS FS.
  */
@@ -1518,7 +1581,11 @@ int fat_fill_super(struct super_block *sb, void *data, int silent, int isvfat,
 <<<<<<< HEAD
 	sb->s_maxbytes = 0xffffffff;
 =======
+<<<<<<< HEAD
+	sb->s_maxbytes = 0xffffffff;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!sbi->fat_length && b->fat32_length) {
 		struct fat_boot_fsinfo *fsinfo;
@@ -1531,9 +1598,12 @@ int fat_fill_super(struct super_block *sb, void *data, int silent, int isvfat,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		sb->s_maxbytes = 0xffffffff;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* MC - if info_sector is 0, don't multiply by 0 */
 		sbi->fsinfo_sector = le16_to_cpu(b->info_sector);
 		if (sbi->fsinfo_sector == 0)
@@ -1601,8 +1671,12 @@ int fat_fill_super(struct super_block *sb, void *data, int silent, int isvfat,
 <<<<<<< HEAD
 	fat_clusters = sbi->fat_length * sb->s_blocksize * 8 / sbi->fat_bits;
 =======
+<<<<<<< HEAD
+	fat_clusters = sbi->fat_length * sb->s_blocksize * 8 / sbi->fat_bits;
+=======
 	fat_clusters = calc_fat_clusters(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	total_clusters = min(total_clusters, fat_clusters - FAT_START_ENT);
 	if (total_clusters > MAX_FAT(sb)) {
 		if (!silent)
@@ -1666,6 +1740,9 @@ int fat_fill_super(struct super_block *sb, void *data, int silent, int isvfat,
 	root_inode->i_version = 1;
 	error = fat_read_root(root_inode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error < 0) {
 		iput(root_inode);
 		goto out_fail;
@@ -1673,6 +1750,8 @@ int fat_fill_super(struct super_block *sb, void *data, int silent, int isvfat,
 	error = -ENOMEM;
 	insert_inode_hash(root_inode);
 	sb->s_root = d_make_root(root_inode);
+<<<<<<< HEAD
+=======
 =======
 	if (error < 0)
 		goto out_fail;
@@ -1680,6 +1759,7 @@ int fat_fill_super(struct super_block *sb, void *data, int silent, int isvfat,
 	insert_inode_hash(root_inode);
 	sb->s_root = d_alloc_root(root_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sb->s_root) {
 		fat_msg(sb, KERN_ERR, "get root inode failed");
 		goto out_fail;
@@ -1697,9 +1777,12 @@ out_fail:
 		iput(fat_inode);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (root_inode)
 		iput(root_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unload_nls(sbi->nls_io);
 	unload_nls(sbi->nls_disk);
 	if (sbi->options.iocharset != fat_default_iocharset)

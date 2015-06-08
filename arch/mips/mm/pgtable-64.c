@@ -79,6 +79,10 @@ void __init pagetable_init(void)
 <<<<<<< HEAD
 	fixrange_init(vaddr, vaddr + FIXADDR_SIZE, pgd_base);
 =======
+<<<<<<< HEAD
+	fixrange_init(vaddr, vaddr + FIXADDR_SIZE, pgd_base);
+=======
 	fixrange_init(vaddr, 0, pgd_base);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -81,8 +81,12 @@ static int xt_rateest_mt_checkentry(const struct xt_mtchk_param *par)
 <<<<<<< HEAD
 	int ret = -EINVAL;
 =======
+<<<<<<< HEAD
+	int ret = -EINVAL;
+=======
 	int ret = false;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (hweight32(info->flags & (XT_RATEEST_MATCH_ABS |
 				     XT_RATEEST_MATCH_REL)) != 1)
@@ -108,7 +112,11 @@ static int xt_rateest_mt_checkentry(const struct xt_mtchk_param *par)
 <<<<<<< HEAD
 	est2 = NULL;
 =======
+<<<<<<< HEAD
+	est2 = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (info->flags & XT_RATEEST_MATCH_REL) {
 		est2 = xt_rateest_lookup(info->name2);
 		if (!est2)
@@ -116,10 +124,14 @@ static int xt_rateest_mt_checkentry(const struct xt_mtchk_param *par)
 <<<<<<< HEAD
 	}
 =======
+<<<<<<< HEAD
+	}
+=======
 	} else
 		est2 = NULL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info->est1 = est1;
 	info->est2 = est2;
@@ -131,8 +143,12 @@ err1:
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void xt_rateest_mt_destroy(const struct xt_mtdtor_param *par)

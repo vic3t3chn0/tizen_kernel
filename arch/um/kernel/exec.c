@@ -4,6 +4,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/stddef.h>
 #include <linux/module.h>
 #include <linux/fs.h>
@@ -13,6 +16,8 @@
 #include <asm/current.h>
 #include <asm/processor.h>
 #include <asm/uaccess.h>
+<<<<<<< HEAD
+=======
 =======
 #include "linux/stddef.h"
 #include "linux/fs.h"
@@ -23,6 +28,7 @@
 #include "asm/processor.h"
 #include "asm/uaccess.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "as-layout.h"
 #include "mem_user.h"
 #include "skas.h"
@@ -51,16 +57,22 @@ void flush_thread(void)
 void start_thread(struct pt_regs *regs, unsigned long eip, unsigned long esp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PT_REGS_IP(regs) = eip;
 	PT_REGS_SP(regs) = esp;
 }
 EXPORT_SYMBOL(start_thread);
+<<<<<<< HEAD
+=======
 =======
 	set_fs(USER_DS);
 	PT_REGS_IP(regs) = eip;
 	PT_REGS_SP(regs) = esp;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static long execve1(const char *file,
 		    const char __user *const __user *argv,

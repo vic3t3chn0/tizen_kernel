@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include "util/tool.h"
 =======
+<<<<<<< HEAD
+#include "util/tool.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "util/parse-options.h"
 #include "util/parse-events.h"
@@ -38,6 +42,9 @@
 #include "util/hist.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bitmap.h>
 
 struct perf_report {
@@ -138,6 +145,8 @@ static int perf_evsel__add_hist_entry(struct perf_evsel *evsel,
 				      struct addr_location *al,
 				      struct perf_sample *sample,
 				      struct machine *machine)
+<<<<<<< HEAD
+=======
 =======
 static char		const *input_name = "perf.data";
 
@@ -159,6 +168,7 @@ static int perf_session__add_hist_entry(struct perf_session *session,
 					struct perf_sample *sample,
 					struct perf_evsel *evsel)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct symbol *parent = NULL;
 	int err = 0;
@@ -169,9 +179,14 @@ static int perf_session__add_hist_entry(struct perf_session *session,
 		err = machine__resolve_callchain(machine, evsel, al->thread,
 						 sample->callchain, &parent);
 =======
+<<<<<<< HEAD
+		err = machine__resolve_callchain(machine, evsel, al->thread,
+						 sample->callchain, &parent);
+=======
 		err = perf_session__resolve_callchain(session, al->thread,
 						      sample->callchain, &parent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 	}
@@ -185,8 +200,13 @@ static int perf_session__add_hist_entry(struct perf_session *session,
 		err = callchain_append(he->callchain,
 				       &evsel->hists.callchain_cursor,
 =======
+<<<<<<< HEAD
+		err = callchain_append(he->callchain,
+				       &evsel->hists.callchain_cursor,
+=======
 		err = callchain_append(he->callchain, &session->callchain_cursor,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       sample->period);
 		if (err)
 			return err;
@@ -205,9 +225,13 @@ static int perf_session__add_hist_entry(struct perf_session *session,
 <<<<<<< HEAD
 		if (notes->src == NULL && symbol__alloc_hist(he->ms.sym) < 0)
 =======
+<<<<<<< HEAD
+		if (notes->src == NULL && symbol__alloc_hist(he->ms.sym) < 0)
+=======
 		if (notes->src == NULL &&
 		    symbol__alloc_hist(he->ms.sym, session->evlist->nr_entries) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out;
 
 		err = hist_entry__inc_addr_samples(he, evsel->idx, al->addr);
@@ -221,6 +245,9 @@ out:
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int process_sample_event(struct perf_tool *tool,
 				union perf_event *event,
 				struct perf_sample *sample,
@@ -232,6 +259,8 @@ static int process_sample_event(struct perf_tool *tool,
 
 	if (perf_event__preprocess_sample(event, machine, &al, sample,
 					  rep->annotate_init) < 0) {
+<<<<<<< HEAD
+=======
 =======
 static int process_sample_event(union perf_event *event,
 				struct perf_sample *sample,
@@ -243,12 +272,16 @@ static int process_sample_event(union perf_event *event,
 	if (perf_event__preprocess_sample(event, session, &al, sample,
 					  annotate_init) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(stderr, "problem processing %d event, skipping it.\n",
 			event->header.type);
 		return -1;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (al.filtered || (rep->hide_unresolved && al.sym == NULL))
 		return 0;
 
@@ -284,6 +317,8 @@ static int process_read_event(struct perf_tool *tool,
 	if (rep->show_threads) {
 		const char *name = evsel ? event_name(evsel) : "unknown";
 		perf_read_values_add_value(&rep->show_threads_values,
+<<<<<<< HEAD
+=======
 =======
 	if (al.filtered || (hide_unresolved && al.sym == NULL))
 		return 0;
@@ -309,6 +344,7 @@ static int process_read_event(union perf_event *event,
 		const char *name = evsel ? event_name(evsel) : "unknown";
 		perf_read_values_add_value(&show_threads_values,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   event->read.pid, event->read.tid,
 					   event->read.id,
 					   name,
@@ -323,6 +359,9 @@ static int process_read_event(union perf_event *event,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int perf_report__setup_sample_type(struct perf_report *rep)
 {
 	struct perf_session *self = rep->session;
@@ -346,6 +385,8 @@ static int perf_report__setup_sample_type(struct perf_report *rep)
 			if (callchain_register_param(&callchain_param) < 0) {
 				ui__warning("Can't register callchain "
 					    "params.\n");
+<<<<<<< HEAD
+=======
 =======
 static int perf_session__setup_sample_type(struct perf_session *self)
 {
@@ -369,11 +410,15 @@ static int perf_session__setup_sample_type(struct perf_session *self)
 				fprintf(stderr, "Can't register callchain"
 						" params\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return -EINVAL;
 			}
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sort__branch_mode == 1) {
 		if (!(self->sample_type & PERF_SAMPLE_BRANCH_STACK)) {
 			fprintf(stderr, "selected -b but no branch data."
@@ -386,6 +431,8 @@ static int perf_session__setup_sample_type(struct perf_session *self)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 }
@@ -407,6 +454,7 @@ static struct perf_event_ops event_ops = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern volatile int session_done;
 
 static void sig_handler(int sig __used)
@@ -432,7 +480,11 @@ static int perf_evlist__tty_browse_hists(struct perf_evlist *evlist,
 <<<<<<< HEAD
 					 struct perf_report *rep,
 =======
+<<<<<<< HEAD
+					 struct perf_report *rep,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 const char *help)
 {
 	struct perf_evsel *pos;
@@ -440,10 +492,15 @@ static int perf_evlist__tty_browse_hists(struct perf_evlist *evlist,
 	list_for_each_entry(pos, &evlist->entries, node) {
 		struct hists *hists = &pos->hists;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const char *evname = event_name(pos);
 
 		hists__fprintf_nr_sample_events(hists, evname, stdout);
 		hists__fprintf(hists, NULL, false, true, 0, 0, stdout);
+<<<<<<< HEAD
+=======
 =======
 		const char *evname = NULL;
 
@@ -453,6 +510,7 @@ static int perf_evlist__tty_browse_hists(struct perf_evlist *evlist,
 		hists__fprintf_nr_sample_events(hists, evname, stdout);
 		hists__fprintf(hists, NULL, false, stdout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(stdout, "\n\n");
 	}
 
@@ -461,11 +519,16 @@ static int perf_evlist__tty_browse_hists(struct perf_evlist *evlist,
 		fprintf(stdout, "#\n# (%s)\n#\n", help);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rep->show_threads) {
 			bool style = !strcmp(rep->pretty_printing_style, "raw");
 			perf_read_values_display(stdout, &rep->show_threads_values,
 						 style);
 			perf_read_values_destroy(&rep->show_threads_values);
+<<<<<<< HEAD
+=======
 =======
 		if (show_threads) {
 			bool style = !strcmp(pretty_printing_style, "raw");
@@ -473,6 +536,7 @@ static int perf_evlist__tty_browse_hists(struct perf_evlist *evlist,
 						 style);
 			perf_read_values_destroy(&show_threads_values);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -480,11 +544,16 @@ static int perf_evlist__tty_browse_hists(struct perf_evlist *evlist,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __cmd_report(struct perf_report *rep)
 {
 	int ret = -EINVAL;
 	u64 nr_samples;
 	struct perf_session *session = rep->session;
+<<<<<<< HEAD
+=======
 =======
 static int __cmd_report(void)
 {
@@ -492,6 +561,7 @@ static int __cmd_report(void)
 	u64 nr_samples;
 	struct perf_session *session;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct perf_evsel *pos;
 	struct map *kernel_map;
 	struct kmap *kernel_kmap;
@@ -500,6 +570,9 @@ static int __cmd_report(void)
 	signal(SIGINT, sig_handler);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rep->cpu_list) {
 		ret = perf_session__cpu_bitmap(session, rep->cpu_list,
 					       rep->cpu_bitmap);
@@ -518,6 +591,8 @@ static int __cmd_report(void)
 		goto out_delete;
 
 	ret = perf_session__process_events(session, &rep->tool);
+<<<<<<< HEAD
+=======
 =======
 	session = perf_session__new(input_name, O_RDONLY, force, false, &event_ops);
 	if (session == NULL)
@@ -532,6 +607,7 @@ static int __cmd_report(void)
 
 	ret = perf_session__process_events(session, &event_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto out_delete;
 
@@ -542,6 +618,9 @@ static int __cmd_report(void)
 	     (kernel_kmap->ref_reloc_sym == NULL ||
 	      kernel_kmap->ref_reloc_sym->addr == 0))) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const char *desc =
 		    "As no suitable kallsyms nor vmlinux was found, kernel samples\n"
 		    "can't be resolved.";
@@ -553,9 +632,12 @@ static int __cmd_report(void)
 				       "kexec) symbols may be misresolved.";
 			}
 		}
+<<<<<<< HEAD
+=======
 =======
 		const struct dso *kdso = kernel_map->dso;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ui__warning(
 "Kernel address maps (/proc/{kallsyms,modules}) were restricted.\n\n"
@@ -564,11 +646,15 @@ static int __cmd_report(void)
 <<<<<<< HEAD
 		desc);
 =======
+<<<<<<< HEAD
+		desc);
+=======
 			    RB_EMPTY_ROOT(&kdso->symbols[MAP__FUNCTION]) ?
 "As no suitable kallsyms nor vmlinux was found, kernel samples\n"
 "can't be resolved." :
 "If some relocation was applied (e.g. kexec) symbols may be misresolved.");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (dump_trace) {
@@ -591,7 +677,13 @@ static int __cmd_report(void)
 			hists->symbol_filter_str = rep->symbol_filter_str;
 
 =======
+<<<<<<< HEAD
+		if (pos->idx == 0)
+			hists->symbol_filter_str = rep->symbol_filter_str;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hists__collapse_resort(hists);
 		hists__output_resort(hists);
 		nr_samples += hists->stats.nr_events[PERF_RECORD_SAMPLE];
@@ -599,6 +691,9 @@ static int __cmd_report(void)
 
 	if (nr_samples == 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ui__warning("The %s file has no samples!\n", session->filename);
 		goto out_delete;
 	}
@@ -613,6 +708,8 @@ static int __cmd_report(void)
 		}
 	} else
 		perf_evlist__tty_browse_hists(session->evlist, rep, help);
+<<<<<<< HEAD
+=======
 =======
 		ui__warning("The %s file has no samples!\n", input_name);
 		goto out_delete;
@@ -623,6 +720,7 @@ static int __cmd_report(void)
 	else
 		perf_evlist__tty_browse_hists(session->evlist, help);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out_delete:
 	/*
@@ -646,10 +744,16 @@ parse_callchain_opt(const struct option *opt, const char *arg, int unset)
 {
 	struct perf_report *rep = (struct perf_report *)opt->value;
 =======
+<<<<<<< HEAD
+parse_callchain_opt(const struct option *opt, const char *arg, int unset)
+{
+	struct perf_report *rep = (struct perf_report *)opt->value;
+=======
 parse_callchain_opt(const struct option *opt __used, const char *arg,
 		    int unset)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *tok, *tok2;
 	char *endptr;
 
@@ -660,8 +764,12 @@ parse_callchain_opt(const struct option *opt __used, const char *arg,
 <<<<<<< HEAD
 		rep->dont_use_callchains = true;
 =======
+<<<<<<< HEAD
+		rep->dont_use_callchains = true;
+=======
 		dont_use_callchains = true;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -701,13 +809,19 @@ parse_callchain_opt(const struct option *opt __used, const char *arg,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	tok2 = strtok(NULL, ",");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	callchain_param.min_percent = strtod(tok, &endptr);
 	if (tok == endptr)
 		return -1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* get the print limit */
 	tok2 = strtok(NULL, ",");
 	if (!tok2)
@@ -727,10 +841,13 @@ parse_callchain_opt(const struct option *opt __used, const char *arg,
 		callchain_param.order = ORDER_CALLEE;
 	else
 		return -1;
+<<<<<<< HEAD
+=======
 =======
 	if (tok2)
 		callchain_param.print_limit = strtod(tok2, &endptr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 setup:
 	if (callchain_register_param(&callchain_param) < 0) {
 		fprintf(stderr, "Can't register callchain params\n");
@@ -740,6 +857,9 @@ setup:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 parse_branch_mode(const struct option *opt __used, const char *str __used, int unset)
 {
@@ -778,6 +898,8 @@ int cmd_report(int argc, const char **argv, const char *prefix __used)
 	};
 	const struct option options[] = {
 	OPT_STRING('i', "input", &report.input_name, "file",
+<<<<<<< HEAD
+=======
 =======
 static const char * const report_usage[] = {
 	"perf report [<options>] <command>",
@@ -787,6 +909,7 @@ static const char * const report_usage[] = {
 static const struct option options[] = {
 	OPT_STRING('i', "input", &input_name, "file",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    "input file name"),
 	OPT_INCR('v', "verbose", &verbose,
 		    "be more verbose (show symbol address, etc)"),
@@ -799,13 +922,20 @@ static const struct option options[] = {
 <<<<<<< HEAD
 	OPT_BOOLEAN('f', "force", &report.force, "don't complain, do it"),
 =======
+<<<<<<< HEAD
+	OPT_BOOLEAN('f', "force", &report.force, "don't complain, do it"),
+=======
 	OPT_BOOLEAN('f', "force", &force, "don't complain, do it"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN('m', "modules", &symbol_conf.use_modules,
 		    "load module symbols - WARNING: use only with -k and LIVE kernel"),
 	OPT_BOOLEAN('n', "show-nr-samples", &symbol_conf.show_nr_samples,
 		    "Show a column with the number of samples"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN('T', "threads", &report.show_threads,
 		    "Show per-thread event counters"),
 	OPT_STRING(0, "pretty", &report.pretty_printing_style, "key",
@@ -817,6 +947,8 @@ static const struct option options[] = {
 	OPT_STRING('s', "sort", &sort_order, "key[,key2...]",
 		   "sort by key(s): pid, comm, dso, symbol, parent, dso_to,"
 		   " dso_from, symbol_to, symbol_from, mispredict"),
+<<<<<<< HEAD
+=======
 =======
 	OPT_BOOLEAN('T', "threads", &show_threads,
 		    "Show per-thread event counters"),
@@ -827,6 +959,7 @@ static const struct option options[] = {
 	OPT_STRING('s', "sort", &sort_order, "key[,key2...]",
 		   "sort by key(s): pid, comm, dso, symbol, parent"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN(0, "showcpuutilization", &symbol_conf.show_cpu_utilization,
 		    "Show sample percentage for different cpu modes"),
 	OPT_STRING('p', "parent", &parent_pattern, "regex",
@@ -834,6 +967,9 @@ static const struct option options[] = {
 	OPT_BOOLEAN('x', "exclude-other", &symbol_conf.exclude_other,
 		    "Only display entries with parent-match"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_CALLBACK_DEFAULT('g', "call-graph", &report, "output_type,min_percent[,print_limit],call_order",
 		     "Display callchains using output_type (graph, flat, fractal, or none) , min percent threshold, optional print limit and callchain order. "
 		     "Default: fractal,0.5,callee", &parse_callchain_opt, callchain_default_opt),
@@ -847,6 +983,8 @@ static const struct option options[] = {
 		   "only consider these symbols"),
 	OPT_STRING(0, "symbol-filter", &report.symbol_filter_str, "filter",
 		   "only show symbols that (partially) match with this filter"),
+<<<<<<< HEAD
+=======
 =======
 	OPT_CALLBACK_DEFAULT('g', "call-graph", NULL, "output_type,min_percent",
 		     "Display callchains using output_type (graph, flat, fractal, or none) and min percent threshold. "
@@ -858,6 +996,7 @@ static const struct option options[] = {
 	OPT_STRING('S', "symbols", &symbol_conf.sym_list_str, "symbol[,symbol...]",
 		   "only consider these symbols"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_STRING('w', "column-widths", &symbol_conf.col_width_list_str,
 		   "width[,width...]",
 		   "don't try to adjust column width, use these fixed values"),
@@ -865,6 +1004,9 @@ static const struct option options[] = {
 		   "separator for columns, no spaces will be added between "
 		   "columns '.' is reserved."),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN('U', "hide-unresolved", &report.hide_unresolved,
 		    "Only display entries resolved to a symbol"),
 	OPT_STRING(0, "symfs", &symbol_conf.symfs, "directory",
@@ -938,6 +1080,8 @@ static const struct option options[] = {
 		use_browser = 0;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	OPT_BOOLEAN('U', "hide-unresolved", &hide_unresolved,
 		    "Only display entries resolved to a symbol"),
@@ -960,6 +1104,7 @@ int cmd_report(int argc, const char **argv, const char *prefix __used)
 	else
 		use_browser = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Only in the newt browser we are doing integrated annotation,
 	 * so don't allocate extra space that won't be used in the stdio
@@ -970,8 +1115,12 @@ int cmd_report(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 		report.annotate_init  = symbol__annotate_init;
 =======
+<<<<<<< HEAD
+		report.annotate_init  = symbol__annotate_init;
+=======
 		annotate_init	      = symbol__annotate_init;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
  		 * For searching by name on the "Browse map details".
  		 * providing it only in verbose mode not to bloat too
@@ -993,14 +1142,21 @@ int cmd_report(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 		goto error;
 =======
+<<<<<<< HEAD
+		goto error;
+=======
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	setup_sorting(report_usage, options);
 
 	if (parent_pattern != default_parent_pattern) {
 		if (sort_dimension__add("parent") < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto error;
 
 		/*
@@ -1040,6 +1196,8 @@ int cmd_report(int argc, const char **argv, const char *prefix __used)
 error:
 	perf_session__delete(session);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 			return -1;
 		sort_parent.elide = 1;
@@ -1058,4 +1216,5 @@ error:
 
 	return __cmd_report();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

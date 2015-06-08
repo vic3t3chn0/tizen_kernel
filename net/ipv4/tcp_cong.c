@@ -10,7 +10,12 @@
 #define pr_fmt(fmt) "TCP: " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) "TCP: " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/mm.h>
 #include <linux/types.h>
@@ -49,20 +54,29 @@ int tcp_register_congestion_control(struct tcp_congestion_ops *ca)
 <<<<<<< HEAD
 		pr_err("%s does not implement required ops\n", ca->name);
 =======
+<<<<<<< HEAD
+		pr_err("%s does not implement required ops\n", ca->name);
+=======
 		printk(KERN_ERR "TCP %s does not implement required ops\n",
 		       ca->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
 	spin_lock(&tcp_cong_list_lock);
 	if (tcp_ca_find(ca->name)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_notice("%s already registered\n", ca->name);
 		ret = -EEXIST;
 	} else {
 		list_add_tail_rcu(&ca->list, &tcp_cong_list);
 		pr_info("%s registered\n", ca->name);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_NOTICE "TCP %s already registered\n", ca->name);
 		ret = -EEXIST;
@@ -70,6 +84,7 @@ int tcp_register_congestion_control(struct tcp_congestion_ops *ca)
 		list_add_tail_rcu(&ca->list, &tcp_cong_list);
 		printk(KERN_INFO "TCP %s registered\n", ca->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_unlock(&tcp_cong_list_lock);
 
@@ -312,11 +327,17 @@ int tcp_is_cwnd_limited(const struct sock *sk, u32 in_flight)
 		return 1;
 	return left <= tcp_max_tso_deferred_mss(tp);
 =======
+<<<<<<< HEAD
+	    left * tp->mss_cache < sk->sk_gso_max_size)
+		return 1;
+	return left <= tcp_max_tso_deferred_mss(tp);
+=======
 	    left * tp->mss_cache < sk->sk_gso_max_size &&
 	    left < sk->sk_gso_max_segs)
 		return 1;
 	return left <= tcp_max_burst(tp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(tcp_is_cwnd_limited);
 

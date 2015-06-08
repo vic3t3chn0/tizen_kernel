@@ -115,6 +115,11 @@ extern int rmm_create(struct rmm_target_obj **target_obj,
 extern void rmm_delete(struct rmm_target_obj *target);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== rmm_exit ========
  *  Exit the RMM module
  *
@@ -127,6 +132,10 @@ extern void rmm_delete(struct rmm_target_obj *target);
 extern void rmm_exit(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== rmm_free ========
  *  Free or unreserve memory allocated through rmm_alloc().
  *
@@ -148,6 +157,11 @@ extern bool rmm_free(struct rmm_target_obj *target, u32 segid, u32 dsp_addr,
 		     u32 size, bool reserved);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== rmm_init ========
  *  Initialize the RMM module
  *
@@ -161,6 +175,10 @@ extern bool rmm_free(struct rmm_target_obj *target, u32 segid, u32 dsp_addr,
 extern bool rmm_init(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== rmm_stat ========
  *  Obtain  memory segment status
  *

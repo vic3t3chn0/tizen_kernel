@@ -184,10 +184,15 @@ static int mergable_maps(struct extent_map *prev, struct extent_map *next)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void try_merge_map(struct extent_map_tree *tree, struct extent_map *em)
 {
 	struct extent_map *merge = NULL;
 	struct rb_node *rb;
+<<<<<<< HEAD
+=======
 =======
 int unpin_extent_cache(struct extent_map_tree *tree, u64 start, u64 len)
 {
@@ -206,6 +211,7 @@ int unpin_extent_cache(struct extent_map_tree *tree, u64 start, u64 len)
 
 	clear_bit(EXTENT_FLAG_PINNED, &em->flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (em->start != 0) {
 		rb = rb_prev(&em->rb_node);
@@ -233,6 +239,9 @@ int unpin_extent_cache(struct extent_map_tree *tree, u64 start, u64 len)
 		free_extent_map(merge);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int unpin_extent_cache(struct extent_map_tree *tree, u64 start, u64 len)
@@ -251,8 +260,11 @@ int unpin_extent_cache(struct extent_map_tree *tree, u64 start, u64 len)
 	clear_bit(EXTENT_FLAG_PINNED, &em->flags);
 
 	try_merge_map(tree, em);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	free_extent_map(em);
 out:
@@ -277,8 +289,11 @@ int add_extent_mapping(struct extent_map_tree *tree,
 	int ret = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct extent_map *merge = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rb_node *rb;
 	struct extent_map *exist;
 
@@ -294,6 +309,10 @@ int add_extent_mapping(struct extent_map_tree *tree,
 		goto out;
 	}
 	atomic_inc(&em->refs);
+<<<<<<< HEAD
+
+	try_merge_map(tree, em);
+=======
 <<<<<<< HEAD
 
 	try_merge_map(tree, em);
@@ -323,6 +342,7 @@ int add_extent_mapping(struct extent_map_tree *tree,
 		free_extent_map(merge);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return ret;
 }
@@ -335,6 +355,10 @@ static u64 range_end(u64 start, u64 len)
 	return start + len;
 }
 
+<<<<<<< HEAD
+struct extent_map *__lookup_extent_mapping(struct extent_map_tree *tree,
+					   u64 start, u64 len, int strict)
+=======
 <<<<<<< HEAD
 struct extent_map *__lookup_extent_mapping(struct extent_map_tree *tree,
 					   u64 start, u64 len, int strict)
@@ -353,6 +377,7 @@ struct extent_map *__lookup_extent_mapping(struct extent_map_tree *tree,
 struct extent_map *lookup_extent_mapping(struct extent_map_tree *tree,
 					 u64 start, u64 len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct extent_map *em;
 	struct rb_node *rb_node;
@@ -362,6 +387,9 @@ struct extent_map *lookup_extent_mapping(struct extent_map_tree *tree,
 
 	rb_node = __tree_search(&tree->map, start, &prev, &next);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rb_node) {
 		if (prev)
 			rb_node = prev;
@@ -377,6 +405,8 @@ struct extent_map *lookup_extent_mapping(struct extent_map_tree *tree,
 		return NULL;
 
 	atomic_inc(&em->refs);
+<<<<<<< HEAD
+=======
 =======
 	if (!rb_node && prev) {
 		em = rb_entry(prev, struct extent_map, rb_node);
@@ -407,11 +437,15 @@ found:
 	atomic_inc(&em->refs);
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return em;
 }
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * lookup_extent_mapping - lookup extent_map
  * @tree:	tree to lookup in
  * @start:	byte offset to start the search
@@ -429,8 +463,11 @@ struct extent_map *lookup_extent_mapping(struct extent_map_tree *tree,
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * search_extent_mapping - find a nearby extent map
  * @tree:	tree to lookup in
  * @start:	byte offset to start the search
@@ -444,6 +481,9 @@ struct extent_map *lookup_extent_mapping(struct extent_map_tree *tree,
 struct extent_map *search_extent_mapping(struct extent_map_tree *tree,
 					 u64 start, u64 len)
 {
+<<<<<<< HEAD
+	return __lookup_extent_mapping(tree, start, len, 0);
+=======
 <<<<<<< HEAD
 	return __lookup_extent_mapping(tree, start, len, 0);
 =======
@@ -480,6 +520,7 @@ found:
 out:
 	return em;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**

@@ -130,8 +130,12 @@ ip_vs_update_conntrack(struct sk_buff *skb, struct ip_vs_conn *cp, int outin)
 <<<<<<< HEAD
 int ip_vs_confirm_conntrack(struct sk_buff *skb)
 =======
+<<<<<<< HEAD
+int ip_vs_confirm_conntrack(struct sk_buff *skb)
+=======
 int ip_vs_confirm_conntrack(struct sk_buff *skb, struct ip_vs_conn *cp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return nf_conntrack_confirm(skb);
 }

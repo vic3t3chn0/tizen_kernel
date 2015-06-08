@@ -21,7 +21,15 @@
  * software in any way with any other Broadcom software provided under a license
  * other than the GPL, without Broadcom's express prior written consent.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * $Id: bcmutils.h 328848 2012-04-21 00:43:57Z $
+=======
  * $Id: bcmutils.h 365744 2012-10-30 22:01:29Z $
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * $Id: bcmutils.h 365744 2012-10-30 22:01:29Z $
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef	_bcmutils_h_
@@ -121,8 +129,16 @@ typedef struct {
 	uint32 max_avail;    
 	uint32 max_used;     
 	uint32 queue_capacity; 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	uint32 rtsfail;        
 	uint32 acked;          
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	uint32 rtsfail;        
+	uint32 acked;          
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } pktq_counters_t;
 #endif 
 
@@ -139,9 +155,19 @@ struct pktq {
 	
 	struct pktq_prec q[PKTQ_MAX_PREC];
 #ifdef PKTQ_LOG
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pktq_counters_t	_prec_cnt[PKTQ_MAX_PREC];		
+=======
 	pktq_counters_t	_prec_cnt[PKTQ_MAX_PREC];     
 	pktq_counters_t _prec_bytes[PKTQ_MAX_PREC];   
 	uint32 _logtime;                   
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pktq_counters_t	_prec_cnt[PKTQ_MAX_PREC];     
+	pktq_counters_t _prec_bytes[PKTQ_MAX_PREC];   
+	uint32 _logtime;                   
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 };
 
@@ -293,7 +319,14 @@ extern void *pktq_penq(struct pktq *pq, int prec, void *p);
 extern void *pktq_penq_head(struct pktq *pq, int prec, void *p);
 extern void *pktq_pdeq(struct pktq *pq, int prec);
 extern void *pktq_pdeq_prev(struct pktq *pq, int prec, void *prev_p);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 extern void *pktq_pdeq_with_fn(struct pktq *pq, int prec, ifpkt_cb_t fn, int arg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern void *pktq_pdeq_with_fn(struct pktq *pq, int prec, ifpkt_cb_t fn, int arg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void *pktq_pdeq_tail(struct pktq *pq, int prec);
 
 extern void pktq_pflush(osl_t *osh, struct pktq *pq, int prec, bool dir,
@@ -340,8 +373,17 @@ extern uint pkttotlen(osl_t *osh, void *p);
 extern void *pktlast(osl_t *osh, void *p);
 extern uint pktsegcnt(osl_t *osh, void *p);
 extern uint pktsegcnt_war(osl_t *osh, void *p);
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern uint8 *pktoffset(osl_t *osh, void *p,  uint offset);
+=======
 extern uint8 *pktdataoffset(osl_t *osh, void *p,  uint offset);
 extern void *pktoffset(osl_t *osh, void *p,  uint offset);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern uint8 *pktdataoffset(osl_t *osh, void *p,  uint offset);
+extern void *pktoffset(osl_t *osh, void *p,  uint offset);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 #define	PKTPRIO_VDSCP	0x100		
@@ -574,6 +616,11 @@ extern int bcm_format_ssid(char* buf, const uchar ssid[], uint ssid_len);
 #define	MAX(a, b)		(((a) > (b)) ? (a) : (b))
 #endif 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef LIMIT_TO_RANGE
 #define LIMIT_TO_RANGE(x, min, max) \
@@ -592,6 +639,10 @@ extern int bcm_format_ssid(char* buf, const uchar ssid[], uint ssid_len);
 	(((x) < (min) ? (min) : (x)))
 #endif 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CEIL(x, y)		(((x) + ((y) - 1)) / (y))
 #define	ROUNDUP(x, y)		((((x) + ((y) - 1)) / (y)) * (y))
 #define	ISALIGNED(a, x)		(((uintptr)(a) & ((x) - 1)) == 0)
@@ -622,7 +673,15 @@ extern void *_bcmutils_dummy_fn;
 
 
 #ifndef setbit
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifndef NBBY		      
+=======
 #ifndef NBBY		  
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifndef NBBY		  
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	NBBY	8	
 #endif 
 #define	setbit(a, i)	(((uint8 *)a)[(i) / NBBY] |= 1 << ((i) % NBBY))
@@ -631,8 +690,16 @@ extern void *_bcmutils_dummy_fn;
 #define	isclr(a, i)	((((const uint8 *)a)[(i) / NBBY] & (1 << ((i) % NBBY))) == 0)
 #endif 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #define	isbitset(a, i)	(((a) & (1 << (i))) != 0)
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	isbitset(a, i)	(((a) & (1 << (i))) != 0)
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	NBITS(type)	(sizeof(type) * 8)
 #define NBITVAL(nbits)	(1 << (nbits))
 #define MAXBITVAL(nbits)	((1 << (nbits)) - 1)
@@ -683,6 +750,11 @@ extern void *_bcmutils_dummy_fn;
 							(ea).octet[3], \
 							(ea).octet[4], \
 							(ea).octet[5]
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if !defined(SIMPLE_MAC_PRINT)
 #define MACDBG "%02x:%02x:%02x:%02x:%02x:%02x"
 #define MAC2STRDBG(ea) (ea)[0], (ea)[1], (ea)[2], (ea)[3], (ea)[4], (ea)[5]
@@ -690,6 +762,10 @@ extern void *_bcmutils_dummy_fn;
 #define MACDBG				"%02x:%02x:%02x"
 #define MAC2STRDBG(ea) (ea)[0], (ea)[4], (ea)[5]
 #endif 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 typedef struct bcm_bit_desc {
@@ -698,6 +774,11 @@ typedef struct bcm_bit_desc {
 } bcm_bit_desc_t;
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct bcm_bit_desc_ex {
 	uint32 mask;
 	const bcm_bit_desc_t *bitfield;
@@ -705,6 +786,10 @@ typedef struct bcm_bit_desc_ex {
 
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct bcm_tlv {
 	uint8	id;
 	uint8	len;
@@ -750,9 +835,18 @@ extern uint32 hndcrc32(uint8 *p, uint nbytes, uint32 crc);
 
 #if defined(DHD_DEBUG) || defined(WLMSG_PRHDRS) || defined(WLMSG_PRPKT) || \
 	defined(WLMSG_ASSOC)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 extern int bcm_format_field(const bcm_bit_desc_ex_t *bd, uint32 field, char* buf, int len);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+extern int bcm_format_field(const bcm_bit_desc_ex_t *bd, uint32 field, char* buf, int len);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int bcm_format_flags(const bcm_bit_desc_t *bd, uint32 flags, char* buf, int len);
 #endif
 
@@ -774,7 +868,15 @@ extern bcm_tlv_t *bcm_parse_ordered_tlvs(void *buf, int buflen, uint key);
 
 
 extern const char *bcmerrorstr(int bcmerror);
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern bcm_tlv_t *bcm_parse_tlvs(void *buf, int buflen, uint key);
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 typedef uint32 mbool;

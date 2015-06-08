@@ -92,9 +92,12 @@ static int e750_ac97_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -124,12 +127,19 @@ static struct snd_soc_card e750 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = e750_dai,
 	.num_links = ARRAY_SIZE(e750_dai),
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct gpio e750_audio_gpios[] = {
 	{ GPIO_E750_HP_AMP_OFF, GPIOF_OUT_INIT_HIGH, "Headphone amp" },
 	{ GPIO_E750_SPK_AMP_OFF, GPIOF_OUT_INIT_HIGH, "Speaker amp" },
@@ -175,6 +185,8 @@ static struct platform_driver e750_driver = {
 };
 
 module_platform_driver(e750_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *e750_snd_device;
 
@@ -233,6 +245,7 @@ static void __exit e750_exit(void)
 module_init(e750_init);
 module_exit(e750_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR("Ian Molton <spyro@f2s.com>");
@@ -241,4 +254,8 @@ MODULE_LICENSE("GPL v2");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:e750-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:e750-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

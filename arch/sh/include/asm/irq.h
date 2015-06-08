@@ -23,6 +23,8 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Convert back and forth between INTEVT and IRQ values.
  */
 #ifdef CONFIG_CPU_HAS_INTEVT
@@ -35,6 +37,7 @@
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Simple Mask Register Support
  */
 extern void make_maskreg_irq(unsigned int irq);

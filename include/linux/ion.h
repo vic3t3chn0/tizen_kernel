@@ -5,7 +5,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -22,17 +26,23 @@
 #define _LINUX_ION_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ioctl.h>
 #include <linux/types.h>
 
 struct ion_handle;
 typedef struct ion_handle *ion_user_handle_t;
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/types.h>
 
 struct ion_handle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * enum ion_heap_types - list of all possible types of heaps
  * @ION_HEAP_TYPE_SYSTEM:	 memory allocated via vmalloc
@@ -43,13 +53,22 @@ struct ion_handle;
 <<<<<<< HEAD
  * @ION_HEAP_END:		helper for iterating over heaps
 =======
+<<<<<<< HEAD
+ * @ION_HEAP_END:		helper for iterating over heaps
+=======
  * @ION_HEAP_END:		 helper for iterating over heaps
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 enum ion_heap_type {
 	ION_HEAP_TYPE_SYSTEM,
 	ION_HEAP_TYPE_SYSTEM_CONTIG,
 	ION_HEAP_TYPE_CARVEOUT,
+<<<<<<< HEAD
+	ION_HEAP_TYPE_CHUNK,
+	ION_HEAP_TYPE_CUSTOM, /* must be last so device specific heaps always
+				 are at the end of this enum */
+=======
 <<<<<<< HEAD
 	ION_HEAP_TYPE_CHUNK,
 	ION_HEAP_TYPE_CUSTOM, /* must be last so device specific heaps always
@@ -63,6 +82,7 @@ enum ion_heap_type {
 	ION_HEAP_TYPE_EXYNOS_USER,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ION_NUM_HEAPS,
 };
 
@@ -71,6 +91,9 @@ enum ion_heap_type {
 #define ION_HEAP_CARVEOUT_MASK		(1 << ION_HEAP_TYPE_CARVEOUT)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ION_NUM_HEAP_IDS		sizeof(unsigned int) * 8
 
 /**
@@ -96,6 +119,8 @@ enum ion_heap_type {
 #ifdef __KERNEL__
 #include <linux/err.h>
 #include <mach/ion.h>
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_ION_EXYNOS
 #define ION_HEAP_EXYNOS_MASK		(1 << ION_HEAP_TYPE_EXYNOS)
@@ -107,6 +132,7 @@ enum ion_heap_type {
 
 #ifdef __KERNEL__
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ion_device;
 struct ion_heap;
 struct ion_mapper;
@@ -123,6 +149,9 @@ struct ion_buffer;
  * struct ion_platform_heap - defines a heap in the given platform
  * @type:	type of the heap from ion_heap_type enum
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @id:		unique identifier for heap.  When allocating higher numbers
  * 		will be allocated from first.  At allocation these are passed
  *		as a bit mask and therefore can not exceed ION_NUM_HEAP_IDS.
@@ -135,6 +164,8 @@ struct ion_buffer;
  * @priv:	heap private data
  * @align:	required alignment in physical memory if applicable
  * @priv:	private info passed from the board file
+<<<<<<< HEAD
+=======
 =======
  * @id:		unique identifier for heap.  When allocating (lower numbers 
  * 		will be allocated from first)
@@ -142,6 +173,7 @@ struct ion_buffer;
  * @base:	base address of heap in physical memory if applicable
  * @size:	size of the heap in bytes if applicable
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Provided by the board file.
  */
@@ -152,13 +184,19 @@ struct ion_platform_heap {
 	ion_phys_addr_t base;
 	size_t size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum ion_memory_types memory_type;
 	unsigned int has_outer_cache;
 	void *extra_data;
 	ion_phys_addr_t align;
 	void *priv;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -168,14 +206,23 @@ struct ion_platform_heap {
  * @nr:    number of structures in the array
  * @heaps: array of platform_heap structions
 =======
+<<<<<<< HEAD
+ * @has_outer_cache:    set to 1 if outer cache is used, 0 otherwise.
+ * @nr:    number of structures in the array
+ * @heaps: array of platform_heap structions
+=======
  * @nr:		number of structures in the array
  * @heaps:	array of platform_heap structions
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Provided by the board file in the form of platform data to a platform device.
  */
 struct ion_platform_data {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int has_outer_cache;
 	int nr;
 	struct ion_platform_heap *heaps;
@@ -202,6 +249,8 @@ void ion_reserve(struct ion_platform_data *data);
  */
 struct ion_client *ion_client_create(struct ion_device *dev,
 				     const char *name);
+<<<<<<< HEAD
+=======
 =======
 	int nr;
 	struct ion_platform_heap heaps[];
@@ -216,6 +265,7 @@ struct ion_client *ion_client_create(struct ion_device *dev,
 struct ion_client *ion_client_create(struct ion_device *dev,
 				     unsigned int heap_mask, const char *name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * ion_client_destroy() -  free's a client and all it's handles
@@ -228,6 +278,9 @@ void ion_client_destroy(struct ion_client *client);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ion_alloc - allocate ion memory
  * @client:		the client
  * @len:		size of the allocation
@@ -239,6 +292,8 @@ void ion_client_destroy(struct ion_client *client);
  * @flags:		heap flags, the low 16 bits are consumed by ion, the
  *			high 16 bits are passed on to the respective heap and
  *			can be heap custom
+<<<<<<< HEAD
+=======
 =======
  * ion_get_client() - obtain a user client from file descriptor from user
  * @fd:		the user client created by the request from user. This is
@@ -269,6 +324,7 @@ void ion_put_user_client(struct ion_client *user_client);
  * @flags:	mask of heaps to allocate from, if multiple bits are set
  *		heaps will be tried in order from lowest to highest order bit
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Allocate memory in one of the heaps provided in heap mask and return
  * an opaque handle to it.
@@ -278,8 +334,13 @@ struct ion_handle *ion_alloc(struct ion_client *client, size_t len,
 			     size_t align, unsigned int heap_id_mask,
 			     unsigned int flags);
 =======
+<<<<<<< HEAD
+			     size_t align, unsigned int heap_id_mask,
+			     unsigned int flags);
+=======
 			     size_t align, unsigned int flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * ion_free - free a handle
@@ -303,8 +364,12 @@ void ion_free(struct ion_client *client, struct ion_handle *handle);
 <<<<<<< HEAD
  * this api should not be implemented -- ion_sg_table should be used
 =======
+<<<<<<< HEAD
+ * this api should not be implemented -- ion_sg_table should be used
+=======
  * this api should not be implemented -- ion_map_dma should be used
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * instead.  Returns -EINVAL if the handle is invalid.  This has
  * no implications on the reference counting of the handle --
  * the returned value may not be valid if the caller is not
@@ -315,6 +380,9 @@ int ion_phys(struct ion_client *client, struct ion_handle *handle,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ion_map_dma - return an sg_table describing a handle
  * @client:	the client
  * @handle:	the handle
@@ -326,8 +394,11 @@ struct sg_table *ion_sg_table(struct ion_client *client,
 			      struct ion_handle *handle);
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ion_map_kernel - create mapping for the given handle
  * @client:	the client
  * @handle:	handle to map
@@ -346,6 +417,9 @@ void ion_unmap_kernel(struct ion_client *client, struct ion_handle *handle);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ion_share_dma_buf() - share buffer as dma-buf
  * @client:	the client
  * @handle:	the handle
@@ -435,6 +509,8 @@ static inline int ion_handle_get_flags(struct ion_client *client,
 }
 
 #endif /* CONFIG_ION */
+<<<<<<< HEAD
+=======
 =======
  * ion_map_dma - create a dma mapping for a given handle
  * @client:	the client
@@ -535,6 +611,7 @@ static inline struct ion_handle *ion_exynos_get_user_pages(
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 
 /**
@@ -548,12 +625,17 @@ static inline struct ion_handle *ion_exynos_get_user_pages(
 /**
  * struct ion_allocation_data - metadata passed from userspace for allocations
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @len:		size of the allocation
  * @align:		required alignment of the allocation
  * @heap_id_mask:	mask of heap ids to allocate from
  * @flags:		flags passed to heap
  * @handle:		pointer that will be populated with a cookie to use to 
  *			refer to this allocation
+<<<<<<< HEAD
+=======
 =======
  * @len:	size of the allocation
  * @align:	required alignment of the allocation
@@ -561,6 +643,7 @@ static inline struct ion_handle *ion_exynos_get_user_pages(
  * @handle:	pointer that will be populated with a cookie to use to refer
  *		to this allocation
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Provided by userspace as an argument to the ioctl
  */
@@ -572,9 +655,15 @@ struct ion_allocation_data {
 	unsigned int flags;
 	ion_user_handle_t handle;
 =======
+<<<<<<< HEAD
+	unsigned int heap_mask;
+	unsigned int flags;
+	ion_user_handle_t handle;
+=======
 	unsigned int flags;
 	struct ion_handle *handle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -591,8 +680,12 @@ struct ion_fd_data {
 <<<<<<< HEAD
 	ion_user_handle_t handle;
 =======
+<<<<<<< HEAD
+	ion_user_handle_t handle;
+=======
 	struct ion_handle *handle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int fd;
 };
 
@@ -604,8 +697,12 @@ struct ion_handle_data {
 <<<<<<< HEAD
 	ion_user_handle_t handle;
 =======
+<<<<<<< HEAD
+	ion_user_handle_t handle;
+=======
 	struct ion_handle *handle;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -622,8 +719,11 @@ struct ion_custom_data {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ION_IOC_MAGIC		'I'
 
 /**
@@ -671,6 +771,9 @@ struct ion_custom_data {
  * filed set to the corresponding opaque handle.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ION_IOC_IMPORT		_IOWR(ION_IOC_MAGIC, 5, struct ion_fd_data)
 
 /**
@@ -682,9 +785,12 @@ struct ion_custom_data {
  * this will make the buffer in memory coherent.
  */
 #define ION_IOC_SYNC		_IOWR(ION_IOC_MAGIC, 7, struct ion_fd_data)
+<<<<<<< HEAD
+=======
 =======
 #define ION_IOC_IMPORT		_IOWR(ION_IOC_MAGIC, 5, int)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * DOC: ION_IOC_CUSTOM - call architecture specific ion ioctl
@@ -697,5 +803,9 @@ struct ion_custom_data {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _LINUX_ION_H */

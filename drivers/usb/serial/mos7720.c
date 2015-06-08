@@ -44,7 +44,15 @@
 #define DRIVER_DESC "Moschip USB Serial Driver"
 
 /* default urb timeout */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MOS_WDR_TIMEOUT	(HZ * 5)
+=======
 #define MOS_WDR_TIMEOUT	5000
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define MOS_WDR_TIMEOUT	5000
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MOS_MAX_PORT	0x02
 #define MOS_WRITE	0x0E
@@ -71,7 +79,15 @@ struct moschip_port {
 	struct urb		*write_urb_pool[NUM_URBS];
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct usb_serial_driver moschip7720_2port_driver;
 
@@ -97,7 +113,14 @@ struct urbtracker {
 	struct list_head        urblist_entry;
 	struct kref             ref_count;
 	struct urb              *urb;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct usb_ctrlrequest	*setup;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct usb_ctrlrequest	*setup;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum mos7715_pp_modes {
@@ -235,6 +258,16 @@ static int read_mos_reg(struct usb_serial *serial, unsigned int serial_portnum,
 	__u8 requesttype = (__u8)0xc0;
 	__u16 index = get_reg_index(reg);
 	__u16 value = get_reg_value(reg, serial_portnum);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int status = usb_control_msg(usbdev, pipe, request, requesttype, value,
+				     index, data, 1, MOS_WDR_TIMEOUT);
+	if (status < 0)
+		dev_err(&usbdev->dev,
+			"mos7720: usb_control_msg() failed: %d", status);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 *buf;
 	int status;
 
@@ -251,6 +284,10 @@ static int read_mos_reg(struct usb_serial *serial, unsigned int serial_portnum,
 			"mos7720: usb_control_msg() failed: %d", status);
 	kfree(buf);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -280,7 +317,14 @@ static void destroy_urbtracker(struct kref *kref)
 	struct mos7715_parport *mos_parport = urbtrack->mos_parport;
 	dbg("%s called", __func__);
 	usb_free_urb(urbtrack->urb);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(urbtrack->setup);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(urbtrack->setup);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(urbtrack);
 	kref_put(&mos_parport->ref_count, destroy_mos_parport);
 }
@@ -365,6 +409,13 @@ static int write_parport_reg_nonblock(struct mos7715_parport *mos_parport,
 	struct urbtracker *urbtrack;
 	int ret_val;
 	unsigned long flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_ctrlrequest setup;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct usb_serial *serial = mos_parport->serial;
 	struct usb_device *usbdev = serial->dev;
 	dbg("%s called", __func__);
@@ -383,6 +434,19 @@ static int write_parport_reg_nonblock(struct mos7715_parport *mos_parport,
 		kfree(urbtrack);
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	setup.bRequestType = (__u8)0x40;
+	setup.bRequest = (__u8)0x0e;
+	setup.wValue = get_reg_value(reg, dummy);
+	setup.wIndex = get_reg_index(reg);
+	setup.wLength = 0;
+	usb_fill_control_urb(urbtrack->urb, usbdev,
+			     usb_sndctrlpipe(usbdev, 0),
+			     (unsigned char *)&setup,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	urbtrack->setup = kmalloc(sizeof(*urbtrack->setup), GFP_ATOMIC);
 	if (!urbtrack->setup) {
 		usb_free_urb(urbtrack->urb);
@@ -397,6 +461,10 @@ static int write_parport_reg_nonblock(struct mos7715_parport *mos_parport,
 	usb_fill_control_urb(urbtrack->urb, usbdev,
 			     usb_sndctrlpipe(usbdev, 0),
 			     (unsigned char *)urbtrack->setup,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     NULL, 0, async_complete, urbtrack);
 	kref_init(&urbtrack->ref_count);
 	INIT_LIST_HEAD(&urbtrack->urblist_entry);
@@ -957,6 +1025,12 @@ static void mos7720_bulk_in_callback(struct urb *urb)
 	}
 	tty_kref_put(tty);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (port->read_urb->status != -EINPROGRESS) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!port->read_urb) {
 		dbg("URB KILLED !!!");
 		return;
@@ -965,6 +1039,10 @@ static void mos7720_bulk_in_callback(struct urb *urb)
 	if (port->read_urb->status != -EINPROGRESS) {
 		port->read_urb->dev = port->serial->dev;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retval = usb_submit_urb(port->read_urb, GFP_ATOMIC);
 		if (retval)
 			dbg("usb_submit_urb(read bulk) failed, retval = %d",
@@ -1032,7 +1110,14 @@ static int mos77xx_calc_num_ports(struct usb_serial *serial)
 static int mos7720_open(struct tty_struct *tty, struct usb_serial_port *port)
 {
 	struct usb_serial *serial;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct usb_serial_port *port0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct usb_serial_port *port0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct urb *urb;
 	struct moschip_port *mos7720_port;
 	int response;
@@ -1047,8 +1132,16 @@ static int mos7720_open(struct tty_struct *tty, struct usb_serial_port *port)
 	if (mos7720_port == NULL)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	port0 = serial->port[0];
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	port0 = serial->port[0];
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_clear_halt(serial->dev, port->write_urb->pipe);
 	usb_clear_halt(serial->dev, port->read_urb->pipe);
 
@@ -1322,7 +1415,15 @@ static int mos7720_write(struct tty_struct *tty, struct usb_serial_port *port,
 		urb->transfer_buffer = kmalloc(URB_TRANSFER_BUFFER_SIZE,
 					       GFP_KERNEL);
 		if (urb->transfer_buffer == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_err_console(port, "%s no more kernel memory...\n",
+=======
 			dev_err(&port->dev, "%s no more kernel memory...\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			dev_err(&port->dev, "%s no more kernel memory...\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				__func__);
 			goto exit;
 		}
@@ -1343,7 +1444,15 @@ static int mos7720_write(struct tty_struct *tty, struct usb_serial_port *port,
 	/* send it down the pipe */
 	status = usb_submit_urb(urb, GFP_ATOMIC);
 	if (status) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err_console(port, "%s - usb_submit_urb(write bulk) failed "
+=======
 		dev_err(&port->dev, "%s - usb_submit_urb(write bulk) failed "
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_err(&port->dev, "%s - usb_submit_urb(write bulk) failed "
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"with status = %d\n", __func__, status);
 		bytes_sent = status;
 		goto exit;
@@ -1718,7 +1827,15 @@ static void change_port_settings(struct tty_struct *tty,
 		mos7720_port->shadowMCR |= (UART_MCR_XONANY);
 		/* To set hardware flow control to the specified *
 		 * serial port, in SP1/2_CONTROL_REG             */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (port->number)
+=======
 		if (port_number)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (port_number)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			write_mos_reg(serial, dummy, SP_CONTROL_REG, 0x01);
 		else
 			write_mos_reg(serial, dummy, SP_CONTROL_REG, 0x02);
@@ -1753,8 +1870,16 @@ static void change_port_settings(struct tty_struct *tty,
 	write_mos_reg(serial, port_number, IER, 0x0c);
 
 	if (port->read_urb->status != -EINPROGRESS) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		port->read_urb->dev = serial->dev;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		port->read_urb->dev = serial->dev;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = usb_submit_urb(port->read_urb, GFP_ATOMIC);
 		if (status)
 			dbg("usb_submit_urb(read bulk) failed, status = %d",
@@ -1804,6 +1929,12 @@ static void mos7720_set_termios(struct tty_struct *tty,
 	/* change the port settings to the new ones specified */
 	change_port_settings(tty, mos7720_port, old_termios);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (port->read_urb->status != -EINPROGRESS) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!port->read_urb) {
 		dbg("%s", "URB KILLED !!!!!");
 		return;
@@ -1811,6 +1942,10 @@ static void mos7720_set_termios(struct tty_struct *tty,
 
 	if (port->read_urb->status != -EINPROGRESS) {
 		port->read_urb->dev = serial->dev;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = usb_submit_urb(port->read_urb, GFP_ATOMIC);
 		if (status)
 			dbg("usb_submit_urb(read bulk) failed, status = %d",
@@ -2024,7 +2159,14 @@ static int mos7720_ioctl(struct tty_struct *tty,
 		dbg("%s (%d) TIOCSERGETLSR", __func__,  port->number);
 		return get_lsr_info(tty, mos7720_port,
 					(unsigned int __user *)arg);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* FIXME: These should be using the mode methods */
 	case TIOCMBIS:
@@ -2131,7 +2273,15 @@ static int mos7720_startup(struct usb_serial *serial)
 
 	/* setting configuration feature to one */
 	usb_control_msg(serial->dev, usb_sndctrlpipe(serial->dev, 0),
+<<<<<<< HEAD
+<<<<<<< HEAD
+			(__u8)0x03, 0x00, 0x01, 0x00, NULL, 0x00, 5*HZ);
+=======
 			(__u8)0x03, 0x00, 0x01, 0x00, NULL, 0x00, 5000);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			(__u8)0x03, 0x00, 0x01, 0x00, NULL, 0x00, 5000);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* start the interrupt urb */
 	ret_val = usb_submit_urb(serial->port[0]->interrupt_in_urb, GFP_KERNEL);
@@ -2176,7 +2326,15 @@ static void mos7720_release(struct usb_serial *serial)
 		/* wait for synchronous usb calls to return */
 		if (mos_parport->msg_pending)
 			wait_for_completion_timeout(&mos_parport->syncmsg_compl,
+<<<<<<< HEAD
+<<<<<<< HEAD
+						    MOS_WDR_TIMEOUT);
+=======
 					    msecs_to_jiffies(MOS_WDR_TIMEOUT));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					    msecs_to_jiffies(MOS_WDR_TIMEOUT));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		parport_remove_port(mos_parport->pp);
 		usb_set_serial_data(serial, NULL);
@@ -2206,7 +2364,14 @@ static struct usb_driver usb_driver = {
 	.probe =	usb_serial_probe,
 	.disconnect =	usb_serial_disconnect,
 	.id_table =	moschip_port_id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id =	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id =	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct usb_serial_driver moschip7720_2port_driver = {
@@ -2215,7 +2380,14 @@ static struct usb_serial_driver moschip7720_2port_driver = {
 		.name =		"moschip7720",
 	},
 	.description		= "Moschip 2 port adapter",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver		= &usb_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver		= &usb_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table		= moschip_port_id_table,
 	.calc_num_ports		= mos77xx_calc_num_ports,
 	.open			= mos7720_open,
@@ -2238,6 +2410,17 @@ static struct usb_serial_driver moschip7720_2port_driver = {
 	.read_int_callback	= NULL  /* dynamically assigned in probe() */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&moschip7720_2port_driver, NULL
+};
+
+module_usb_serial_driver(usb_driver, serial_drivers);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init moschip7720_init(void)
 {
 	int retval;
@@ -2276,6 +2459,10 @@ module_init(moschip7720_init);
 module_exit(moschip7720_exit);
 
 /* Module information */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);
 MODULE_LICENSE("GPL");

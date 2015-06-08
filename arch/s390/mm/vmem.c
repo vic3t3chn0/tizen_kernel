@@ -64,8 +64,12 @@ static inline pmd_t *vmem_pmd_alloc(void)
 <<<<<<< HEAD
 static pte_t __ref *vmem_pte_alloc(unsigned long address)
 =======
+<<<<<<< HEAD
+static pte_t __ref *vmem_pte_alloc(unsigned long address)
+=======
 static pte_t __ref *vmem_pte_alloc(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pte_t *pte;
 
@@ -73,8 +77,12 @@ static pte_t __ref *vmem_pte_alloc(void)
 <<<<<<< HEAD
 		pte = (pte_t *) page_table_alloc(&init_mm, address);
 =======
+<<<<<<< HEAD
+		pte = (pte_t *) page_table_alloc(&init_mm, address);
+=======
 		pte = (pte_t *) page_table_alloc(&init_mm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		pte = alloc_bootmem(PTRS_PER_PTE * sizeof(pte_t));
 	if (!pte)
@@ -131,8 +139,12 @@ static int vmem_add_mem(unsigned long start, unsigned long size, int ro)
 <<<<<<< HEAD
 			pt_dir = vmem_pte_alloc(address);
 =======
+<<<<<<< HEAD
+			pt_dir = vmem_pte_alloc(address);
+=======
 			pt_dir = vmem_pte_alloc();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!pt_dir)
 				goto out;
 			pmd_populate(&init_mm, pm_dir, pt_dir);
@@ -220,8 +232,12 @@ int __meminit vmemmap_populate(struct page *start, unsigned long nr, int node)
 <<<<<<< HEAD
 			pt_dir = vmem_pte_alloc(address);
 =======
+<<<<<<< HEAD
+			pt_dir = vmem_pte_alloc(address);
+=======
 			pt_dir = vmem_pte_alloc();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!pt_dir)
 				goto out;
 			pmd_populate(&init_mm, pm_dir, pt_dir);
@@ -356,7 +372,13 @@ void __init vmem_map_init(void)
 		    memory_chunk[i].type == CHUNK_OLDMEM)
 			continue;
 =======
+<<<<<<< HEAD
+		if (memory_chunk[i].type == CHUNK_CRASHK ||
+		    memory_chunk[i].type == CHUNK_OLDMEM)
+			continue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		start = memory_chunk[i].addr;
 		end = memory_chunk[i].addr + memory_chunk[i].size;
 		if (start >= ro_end || end <= ro_start)
@@ -395,7 +417,13 @@ static int __init vmem_convert_memory_chunk(void)
 		    memory_chunk[i].type == CHUNK_OLDMEM)
 			continue;
 =======
+<<<<<<< HEAD
+		if (memory_chunk[i].type == CHUNK_CRASHK ||
+		    memory_chunk[i].type == CHUNK_OLDMEM)
+			continue;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seg = kzalloc(sizeof(*seg), GFP_KERNEL);
 		if (!seg)
 			panic("Out of memory...\n");

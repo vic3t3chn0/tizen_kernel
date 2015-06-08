@@ -7,8 +7,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/swap.h>
 #include <linux/gfp.h>
 #include <linux/bio.h>
@@ -21,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/bootmem.h>
 =======
+<<<<<<< HEAD
+#include <linux/bootmem.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/tlbflush.h>
 
 #include <trace/events/block.h>
@@ -35,10 +43,15 @@ static mempool_t *page_pool, *isa_page_pool;
 static __init int init_emergency_pool(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_MEMORY_HOTPLUG
 	if (max_pfn <= max_low_pfn)
 		return 0;
 #endif
+<<<<<<< HEAD
+=======
 =======
 	struct sysinfo i;
 	si_meminfo(&i);
@@ -47,6 +60,7 @@ static __init int init_emergency_pool(void)
 	if (!i.totalhigh)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	page_pool = mempool_create_page_pool(POOL_SIZE, 0);
 	BUG_ON(!page_pool);
@@ -71,10 +85,16 @@ static void bounce_copy_vec(struct bio_vec *to, unsigned char *vfrom)
 	memcpy(vto + to->bv_offset, vfrom, to->bv_len);
 	kunmap_atomic(vto);
 =======
+<<<<<<< HEAD
+	vto = kmap_atomic(to->bv_page);
+	memcpy(vto + to->bv_offset, vfrom, to->bv_len);
+	kunmap_atomic(vto);
+=======
 	vto = kmap_atomic(to->bv_page, KM_BOUNCE_READ);
 	memcpy(vto + to->bv_offset, vfrom, to->bv_len);
 	kunmap_atomic(vto, KM_BOUNCE_READ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_irq_restore(flags);
 }
 

@@ -35,17 +35,39 @@ MODULE_PARM_DESC(sample_tolerance,
 
 struct mc13783_ts_priv {
 	struct input_dev *idev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mc13xxx *mc13xxx;
+	struct delayed_work work;
+	struct workqueue_struct *workq;
+	unsigned int sample[4];
+	struct mc13xxx_ts_platform_data *touch;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mc13783 *mc13783;
 	struct delayed_work work;
 	struct workqueue_struct *workq;
 	unsigned int sample[4];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static irqreturn_t mc13783_ts_handler(int irq, void *data)
 {
 	struct mc13783_ts_priv *priv = data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mc13xxx_irq_ack(priv->mc13xxx, irq);
+=======
 	mc13783_irq_ack(priv->mc13783, irq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mc13783_irq_ack(priv->mc13783, irq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Kick off reading coordinates. Note that if work happens already
@@ -121,11 +143,27 @@ static void mc13783_ts_work(struct work_struct *work)
 {
 	struct mc13783_ts_priv *priv =
 		container_of(work, struct mc13783_ts_priv, work.work);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int mode = MC13XXX_ADC_MODE_TS;
+	unsigned int channel = 12;
+
+	if (mc13xxx_adc_do_conversion(priv->mc13xxx,
+				mode, channel,
+				priv->touch->ato, priv->touch->atox,
+				priv->sample) == 0)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int mode = MC13783_ADC_MODE_TS;
 	unsigned int channel = 12;
 
 	if (mc13783_adc_do_conversion(priv->mc13783,
 				mode, channel, priv->sample) == 0)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mc13783_ts_report_sample(priv);
 }
 
@@ -134,21 +172,50 @@ static int mc13783_ts_open(struct input_dev *dev)
 	struct mc13783_ts_priv *priv = input_get_drvdata(dev);
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mc13xxx_lock(priv->mc13xxx);
+
+	mc13xxx_irq_ack(priv->mc13xxx, MC13XXX_IRQ_TS);
+
+	ret = mc13xxx_irq_request(priv->mc13xxx, MC13XXX_IRQ_TS,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mc13783_lock(priv->mc13783);
 
 	mc13783_irq_ack(priv->mc13783, MC13783_IRQ_TS);
 
 	ret = mc13783_irq_request(priv->mc13783, MC13783_IRQ_TS,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mc13783_ts_handler, MC13783_TS_NAME, priv);
 	if (ret)
 		goto out;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = mc13xxx_reg_rmw(priv->mc13xxx, MC13XXX_ADC0,
+			MC13XXX_ADC0_TSMOD_MASK, MC13XXX_ADC0_TSMOD0);
+	if (ret)
+		mc13xxx_irq_free(priv->mc13xxx, MC13XXX_IRQ_TS, priv);
+out:
+	mc13xxx_unlock(priv->mc13xxx);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = mc13783_reg_rmw(priv->mc13783, MC13783_ADC0,
 			MC13783_ADC0_TSMOD_MASK, MC13783_ADC0_TSMOD0);
 	if (ret)
 		mc13783_irq_free(priv->mc13783, MC13783_IRQ_TS, priv);
 out:
 	mc13783_unlock(priv->mc13783);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -156,11 +223,25 @@ static void mc13783_ts_close(struct input_dev *dev)
 {
 	struct mc13783_ts_priv *priv = input_get_drvdata(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mc13xxx_lock(priv->mc13xxx);
+	mc13xxx_reg_rmw(priv->mc13xxx, MC13XXX_ADC0,
+			MC13XXX_ADC0_TSMOD_MASK, 0);
+	mc13xxx_irq_free(priv->mc13xxx, MC13XXX_IRQ_TS, priv);
+	mc13xxx_unlock(priv->mc13xxx);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mc13783_lock(priv->mc13783);
 	mc13783_reg_rmw(priv->mc13783, MC13783_ADC0,
 			MC13783_ADC0_TSMOD_MASK, 0);
 	mc13783_irq_free(priv->mc13783, MC13783_IRQ_TS, priv);
 	mc13783_unlock(priv->mc13783);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cancel_delayed_work_sync(&priv->work);
 }
@@ -177,8 +258,24 @@ static int __init mc13783_ts_probe(struct platform_device *pdev)
 		goto err_free_mem;
 
 	INIT_DELAYED_WORK(&priv->work, mc13783_ts_work);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	priv->mc13xxx = dev_get_drvdata(pdev->dev.parent);
+	priv->idev = idev;
+	priv->touch = dev_get_platdata(&pdev->dev);
+	if (!priv->touch) {
+		dev_err(&pdev->dev, "missing platform data\n");
+		ret = -ENODEV;
+		goto err_free_mem;
+	}
+=======
 	priv->mc13783 = dev_get_drvdata(pdev->dev.parent);
 	priv->idev = idev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	priv->mc13783 = dev_get_drvdata(pdev->dev.parent);
+	priv->idev = idev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We need separate workqueue because mc13783_adc_do_conversion

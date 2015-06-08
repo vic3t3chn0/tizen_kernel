@@ -155,6 +155,9 @@ static void print_amp_vals(struct snd_info_buffer *buffer,
 static void print_pcm_rates(struct snd_info_buffer *buffer, unsigned int pcm)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static unsigned int rates[] = {
 		8000, 11025, 16000, 22050, 32000, 44100, 48000, 88200,
 		96000, 176400, 192000, 384000
@@ -167,6 +170,8 @@ static void print_pcm_rates(struct snd_info_buffer *buffer, unsigned int pcm)
 		if (pcm & (1 << i))
 			snd_iprintf(buffer,  " %d", rates[i]);
 	snd_iprintf(buffer, "\n");
+<<<<<<< HEAD
+=======
 =======
 	char buf[SND_PRINT_RATES_ADVISED_BUFSIZE];
 
@@ -175,6 +180,7 @@ static void print_pcm_rates(struct snd_info_buffer *buffer, unsigned int pcm)
 	snd_print_pcm_rates(pcm, buf, sizeof(buf));
 	snd_iprintf(buffer, "%s\n", buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void print_pcm_bits(struct snd_info_buffer *buffer, unsigned int pcm)
@@ -424,8 +430,12 @@ static void print_digital_conv(struct snd_info_buffer *buffer,
 <<<<<<< HEAD
 		snd_iprintf(buffer, " Copyright");
 =======
+<<<<<<< HEAD
+		snd_iprintf(buffer, " Copyright");
+=======
 		snd_iprintf(buffer, " Non-Copyright");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (digi1 & AC_DIG1_NONAUDIO)
 		snd_iprintf(buffer, " Non-Audio");
 	if (digi1 & AC_DIG1_PROFESSIONAL)
@@ -660,8 +670,12 @@ static void print_codec_info(struct snd_info_entry *entry,
 <<<<<<< HEAD
 			conn_len = snd_hda_get_raw_connections(codec, nid, conn,
 =======
+<<<<<<< HEAD
+			conn_len = snd_hda_get_raw_connections(codec, nid, conn,
+=======
 			conn_len = snd_hda_get_connections(codec, nid, conn,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							   HDA_MAX_CONNECTIONS);
 
 		if (wid_caps & AC_WCAP_IN_AMP) {
@@ -669,6 +683,9 @@ static void print_codec_info(struct snd_info_entry *entry,
 			print_amp_caps(buffer, codec, nid, HDA_INPUT);
 			snd_iprintf(buffer, "  Amp-In vals: ");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (wid_type == AC_WID_PIN ||
 			    (codec->single_adc_amp &&
 			     wid_type == AC_WID_AUD_IN))
@@ -679,11 +696,14 @@ static void print_codec_info(struct snd_info_entry *entry,
 				print_amp_vals(buffer, codec, nid, HDA_INPUT,
 					       wid_caps & AC_WCAP_STEREO,
 					       conn_len);
+<<<<<<< HEAD
+=======
 =======
 			print_amp_vals(buffer, codec, nid, HDA_INPUT,
 				       wid_caps & AC_WCAP_STEREO,
 				       wid_type == AC_WID_PIN ? 1 : conn_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if (wid_caps & AC_WCAP_OUT_AMP) {
 			snd_iprintf(buffer, "  Amp-Out caps: ");

@@ -60,7 +60,11 @@
 <<<<<<< HEAD
 #define APBC_PXA910_RTC		APBC_REG(0x028)
 =======
+<<<<<<< HEAD
+#define APBC_PXA910_RTC		APBC_REG(0x028)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define APBC_PXA910_TWSI0	APBC_REG(0x02c)
 #define APBC_PXA910_KPC		APBC_REG(0x030)
 #define APBC_PXA910_TIMERS	APBC_REG(0x034)

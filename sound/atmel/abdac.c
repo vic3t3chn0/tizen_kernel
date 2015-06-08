@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/types.h>
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 
 #include <sound/core.h>
@@ -140,8 +144,12 @@ static int atmel_abdac_prepare_dma(struct atmel_abdac *dac,
 <<<<<<< HEAD
 			period_len, DMA_MEM_TO_DEV);
 =======
+<<<<<<< HEAD
+			period_len, DMA_MEM_TO_DEV);
+=======
 			period_len, DMA_TO_DEVICE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(cdesc)) {
 		dev_dbg(&dac->pdev->dev, "could not prepare cyclic DMA\n");
 		return PTR_ERR(cdesc);
@@ -459,8 +467,12 @@ static int __devinit atmel_abdac_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	dac->regs = ioremap(regs->start, resource_size(regs));
 =======
+<<<<<<< HEAD
+	dac->regs = ioremap(regs->start, resource_size(regs));
+=======
 	dac->regs = ioremap(regs->start, regs->end - regs->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dac->regs) {
 		dev_dbg(&pdev->dev, "could not remap register memory\n");
 		goto out_free_card;
@@ -480,6 +492,9 @@ static int __devinit atmel_abdac_probe(struct platform_device *pdev)
 
 	if (pdata->dws.dma_dev) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dma_cap_mask_t mask;
 
 		dma_cap_zero(mask);
@@ -498,6 +513,8 @@ static int __devinit atmel_abdac_probe(struct platform_device *pdev)
 
 			dmaengine_slave_config(dac->dma.chan, &dma_conf);
 		}
+<<<<<<< HEAD
+=======
 =======
 		struct dw_dma_slave *dws = &pdata->dws;
 		dma_cap_mask_t mask;
@@ -509,6 +526,7 @@ static int __devinit atmel_abdac_probe(struct platform_device *pdev)
 
 		dac->dma.chan = dma_request_channel(mask, filter, dws);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (!pdata->dws.dma_dev || !dac->dma.chan) {
 		dev_dbg(&pdev->dev, "DMA not available\n");

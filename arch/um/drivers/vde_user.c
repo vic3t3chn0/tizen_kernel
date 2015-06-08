@@ -10,11 +10,16 @@
 #include "net_user.h"
 #include "um_malloc.h"
 =======
+<<<<<<< HEAD
+#include "net_user.h"
+#include "um_malloc.h"
+=======
 #include "kern_constants.h"
 #include "net_user.h"
 #include "um_malloc.h"
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "vde.h"
 
 static int vde_user_init(void *data, void *dev)

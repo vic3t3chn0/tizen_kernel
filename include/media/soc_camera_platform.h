@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <media/v4l2-mediabus.h>
 =======
+<<<<<<< HEAD
+#include <media/v4l2-mediabus.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct device;
 
@@ -29,9 +33,15 @@ struct soc_camera_platform_info {
 	enum v4l2_mbus_type mbus_type;
 	struct soc_camera_device *icd;
 =======
+<<<<<<< HEAD
+	unsigned long mbus_param;
+	enum v4l2_mbus_type mbus_type;
+	struct soc_camera_device *icd;
+=======
 	unsigned long bus_param;
 	struct device *dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*set_capture)(struct soc_camera_platform_info *info, int enable);
 };
 
@@ -43,9 +53,13 @@ static inline void soc_camera_platform_release(struct platform_device **pdev)
 <<<<<<< HEAD
 static inline int soc_camera_platform_add(struct soc_camera_device *icd,
 =======
+<<<<<<< HEAD
+static inline int soc_camera_platform_add(struct soc_camera_device *icd,
+=======
 static inline int soc_camera_platform_add(const struct soc_camera_link *icl,
 					  struct device *dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  struct platform_device **pdev,
 					  struct soc_camera_link *plink,
 					  void (*release)(struct device *dev),
@@ -57,8 +71,12 @@ static inline int soc_camera_platform_add(const struct soc_camera_link *icl,
 <<<<<<< HEAD
 	if (icd->link != plink)
 =======
+<<<<<<< HEAD
+	if (icd->link != plink)
+=======
 	if (icl != plink)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	if (*pdev)
@@ -71,8 +89,12 @@ static inline int soc_camera_platform_add(const struct soc_camera_link *icl,
 <<<<<<< HEAD
 	info->icd = icd;
 =======
+<<<<<<< HEAD
+	info->icd = icd;
+=======
 	info->dev = dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	(*pdev)->dev.platform_data = info;
 	(*pdev)->dev.release = release;
@@ -84,19 +106,28 @@ static inline int soc_camera_platform_add(const struct soc_camera_link *icl,
 <<<<<<< HEAD
 		info->icd = NULL;
 =======
+<<<<<<< HEAD
+		info->icd = NULL;
+=======
 		info->dev = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void soc_camera_platform_del(const struct soc_camera_device *icd,
 					   struct platform_device *pdev,
 					   const struct soc_camera_link *plink)
 {
 	if (icd->link != plink || !pdev)
+<<<<<<< HEAD
+=======
 =======
 static inline void soc_camera_platform_del(const struct soc_camera_link *icl,
 					   struct platform_device *pdev,
@@ -104,6 +135,7 @@ static inline void soc_camera_platform_del(const struct soc_camera_link *icl,
 {
 	if (icl != plink || !pdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	platform_device_unregister(pdev);

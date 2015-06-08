@@ -576,7 +576,15 @@ xpnet_init(void)
 	 * report an error if the data is not retrievable and the
 	 * packet will be dropped.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	xpnet_device->features = NETIF_F_HW_CSUM;
+=======
 	xpnet_device->features = NETIF_F_NO_CSUM;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	xpnet_device->features = NETIF_F_NO_CSUM;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	result = register_netdev(xpnet_device);
 	if (result != 0) {

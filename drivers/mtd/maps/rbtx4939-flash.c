@@ -25,8 +25,16 @@
 struct rbtx4939_flash_info {
 	struct mtd_info *mtd;
 	struct map_info map;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int nr_parts;
 	struct mtd_partition *parts;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int nr_parts;
+	struct mtd_partition *parts;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int rbtx4939_flash_remove(struct platform_device *dev)
@@ -41,8 +49,16 @@ static int rbtx4939_flash_remove(struct platform_device *dev)
 	if (info->mtd) {
 		struct rbtx4939_flash_data *pdata = dev->dev.platform_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		if (info->nr_parts)
 			kfree(info->parts);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (info->nr_parts)
+			kfree(info->parts);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mtd_device_unregister(info->mtd);
 		map_destroy(info->mtd);
 	}
@@ -50,7 +66,14 @@ static int rbtx4939_flash_remove(struct platform_device *dev)
 }
 
 static const char *rom_probe_types[] = { "cfi_probe", "jedec_probe", NULL };
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static const char *part_probe_types[] = { "cmdlinepart", NULL };
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const char *part_probe_types[] = { "cmdlinepart", NULL };
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int rbtx4939_flash_probe(struct platform_device *dev)
 {
@@ -107,6 +130,16 @@ static int rbtx4939_flash_probe(struct platform_device *dev)
 	info->mtd->owner = THIS_MODULE;
 	if (err)
 		goto err_out;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_device_parse_register(info->mtd, NULL, NULL, pdata->parts,
+					pdata->nr_parts);
+
+	if (err)
+		goto err_out;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = parse_mtd_partitions(info->mtd, part_probe_types,
 				&info->parts, 0);
@@ -123,6 +156,10 @@ static int rbtx4939_flash_probe(struct platform_device *dev)
 	}
 
 	mtd_device_register(info->mtd, NULL, 0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_out:
@@ -135,9 +172,20 @@ static void rbtx4939_flash_shutdown(struct platform_device *dev)
 {
 	struct rbtx4939_flash_info *info = platform_get_drvdata(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (mtd_suspend(info->mtd) == 0)
+		mtd_resume(info->mtd);
+=======
 	if (info->mtd->suspend && info->mtd->resume)
 		if (info->mtd->suspend(info->mtd) == 0)
 			info->mtd->resume(info->mtd);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (info->mtd->suspend && info->mtd->resume)
+		if (info->mtd->suspend(info->mtd) == 0)
+			info->mtd->resume(info->mtd);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else
 #define rbtx4939_flash_shutdown NULL
@@ -153,6 +201,12 @@ static struct platform_driver rbtx4939_flash_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(rbtx4939_flash_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init rbtx4939_flash_init(void)
 {
 	return platform_driver_register(&rbtx4939_flash_driver);
@@ -165,6 +219,10 @@ static void __exit rbtx4939_flash_exit(void)
 
 module_init(rbtx4939_flash_init);
 module_exit(rbtx4939_flash_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("RBTX4939 MTD map driver");

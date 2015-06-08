@@ -73,8 +73,13 @@
 #include <linux/atomic.h>
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <linux/module.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Rudolf Koenig, Brent Baccala and Martin Habets");
 MODULE_DESCRIPTION("Sun DBRI");
@@ -87,8 +92,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for Sun DBRI soundcard.");
@@ -2708,6 +2717,9 @@ static struct platform_driver dbri_sbus_driver = {
 <<<<<<< HEAD
 module_platform_driver(dbri_sbus_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(dbri_sbus_driver);
+=======
 /* Probe for the dbri chip and then attach the driver. */
 static int __init dbri_init(void)
 {
@@ -2722,3 +2734,4 @@ static void __exit dbri_exit(void)
 module_init(dbri_init);
 module_exit(dbri_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

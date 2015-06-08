@@ -33,8 +33,12 @@ struct sh_desc {
 <<<<<<< HEAD
 	enum dma_transfer_direction direction;
 =======
+<<<<<<< HEAD
+	enum dma_transfer_direction direction;
+=======
 	enum dma_data_direction direction;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_cookie_t cookie;
 	size_t partial;
 	int chunks;
@@ -55,7 +59,11 @@ struct sh_dmae_channel {
 <<<<<<< HEAD
 	unsigned int	chclr_offset;
 =======
+<<<<<<< HEAD
+	unsigned int	chclr_offset;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct sh_dmae_pdata {
@@ -71,6 +79,9 @@ struct sh_dmae_pdata {
 	int ts_shift_num;
 	u16 dmaor_init;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int chcr_offset;
 	u32 chcr_ie_bit;
 
@@ -79,8 +90,11 @@ struct sh_dmae_pdata {
 	unsigned int no_dmars:1;
 	unsigned int chclr_present:1;
 	unsigned int slave_only:1;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* DMA register */
@@ -94,7 +108,12 @@ struct sh_dmae_pdata {
 #define TEND	0x18 /* USB-DMAC */
 
 =======
+<<<<<<< HEAD
+#define TEND	0x18 /* USB-DMAC */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* DMAOR definitions */
 #define DMAOR_AE	0x00000004
 #define DMAOR_NMIF	0x00000002

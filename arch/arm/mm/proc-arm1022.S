@@ -87,7 +87,11 @@ ENTRY(cpu_arm1022_proc_fin)
 <<<<<<< HEAD
 	.pushsection	.idmap.text, "ax"
 =======
+<<<<<<< HEAD
+	.pushsection	.idmap.text, "ax"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(cpu_arm1022_reset)
 	mov	ip, #0
 	mcr	p15, 0, ip, c7, c7, 0		@ invalidate I,D caches
@@ -104,7 +108,12 @@ ENTRY(cpu_arm1022_reset)
 ENDPROC(cpu_arm1022_reset)
 	.popsection
 =======
+<<<<<<< HEAD
+ENDPROC(cpu_arm1022_reset)
+	.popsection
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * cpu_arm1022_do_idle()
@@ -353,7 +362,13 @@ ENDPROC(arm1022_dma_unmap_area)
 	.equ	arm1022_flush_kern_cache_louis, arm1022_flush_kern_cache_all
 
 =======
+<<<<<<< HEAD
+	.globl	arm1022_flush_kern_cache_louis
+	.equ	arm1022_flush_kern_cache_louis, arm1022_flush_kern_cache_all
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@ define struct cpu_cache_fns (see <asm/cacheflush.h> and proc-macros.S)
 	define_cache_functions arm1022
 

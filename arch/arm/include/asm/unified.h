@@ -41,9 +41,14 @@
 #define BSYM(sym)	sym + 1
 #endif
 =======
+<<<<<<< HEAD
+#define BSYM(sym)	sym + 1
+#endif
+=======
 #endif
 #define BSYM(sym)	sym + 1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else	/* !CONFIG_THUMB2_KERNEL */
 
@@ -58,9 +63,14 @@
 #define BSYM(sym)	sym
 #endif
 =======
+<<<<<<< HEAD
+#define BSYM(sym)	sym
+#endif
+=======
 #endif
 #define BSYM(sym)	sym
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif	/* CONFIG_THUMB2_KERNEL */
 

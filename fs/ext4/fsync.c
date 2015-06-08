@@ -78,8 +78,12 @@ static void dump_completed_IO(struct inode * inode)
 <<<<<<< HEAD
 int ext4_flush_completed_IO(struct inode *inode)
 =======
+<<<<<<< HEAD
+int ext4_flush_completed_IO(struct inode *inode)
+=======
 extern int ext4_flush_completed_IO(struct inode *inode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ext4_io_end_t *io;
 	struct ext4_inode_info *ei = EXT4_I(inode);
@@ -89,10 +93,13 @@ extern int ext4_flush_completed_IO(struct inode *inode)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (list_empty(&ei->i_completed_io_list))
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dump_completed_IO(inode);
 	spin_lock_irqsave(&ei->i_completed_io_lock, flags);
 	while (!list_empty(&ei->i_completed_io_list)){
@@ -102,7 +109,12 @@ extern int ext4_flush_completed_IO(struct inode *inode)
 		list_del_init(&io->list);
 		io->flag |= EXT4_IO_END_IN_FSYNC;
 =======
+<<<<<<< HEAD
+		list_del_init(&io->list);
+		io->flag |= EXT4_IO_END_IN_FSYNC;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Calling ext4_end_io_nolock() to convert completed
 		 * IO to written.
@@ -120,10 +132,15 @@ extern int ext4_flush_completed_IO(struct inode *inode)
 		spin_unlock_irqrestore(&ei->i_completed_io_lock, flags);
 		ret = ext4_end_io_nolock(io);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0)
 			ret2 = ret;
 		spin_lock_irqsave(&ei->i_completed_io_lock, flags);
 		io->flag &= ~EXT4_IO_END_IN_FSYNC;
+<<<<<<< HEAD
+=======
 =======
 		spin_lock_irqsave(&ei->i_completed_io_lock, flags);
 		if (ret < 0)
@@ -131,6 +148,7 @@ extern int ext4_flush_completed_IO(struct inode *inode)
 		else
 			list_del_init(&io->list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_unlock_irqrestore(&ei->i_completed_io_lock, flags);
 	return (ret2 < 0) ? ret2 : 0;
@@ -149,6 +167,9 @@ static int ext4_sync_parent(struct inode *inode)
 	struct writeback_control wbc;
 	struct dentry *dentry = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *next;
 	int ret = 0;
 
@@ -173,6 +194,8 @@ static int ext4_sync_parent(struct inode *inode)
 			break;
 		iput(inode);
 		inode = next;
+<<<<<<< HEAD
+=======
 =======
 	int ret = 0;
 
@@ -184,6 +207,7 @@ static int ext4_sync_parent(struct inode *inode)
 			break;
 		inode = dentry->d_parent->d_inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = sync_mapping_buffers(inode->i_mapping);
 		if (ret)
 			break;
@@ -195,6 +219,9 @@ static int ext4_sync_parent(struct inode *inode)
 			break;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iput(inode);
 	return ret;
 }
@@ -222,8 +249,11 @@ static int __sync_inode(struct inode *inode, int datasync)
 	err = sync_inode_metadata(inode, 1);
 	if (ret == 0)
 		ret = err;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -244,8 +274,12 @@ static int __sync_inode(struct inode *inode, int datasync)
 <<<<<<< HEAD
 int ext4_sync_file(struct file *file, loff_t start, loff_t end, int datasync)
 =======
+<<<<<<< HEAD
+int ext4_sync_file(struct file *file, loff_t start, loff_t end, int datasync)
+=======
 int ext4_sync_file(struct file *file, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode = file->f_mapping->host;
 	struct ext4_inode_info *ei = EXT4_I(inode);
@@ -259,6 +293,9 @@ int ext4_sync_file(struct file *file, int datasync)
 	trace_ext4_sync_file_enter(file, datasync);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = filemap_write_and_wait_range(inode->i_mapping, start, end);
 	if (ret)
 		return ret;
@@ -266,10 +303,13 @@ int ext4_sync_file(struct file *file, int datasync)
 
 	if (inode->i_sb->s_flags & MS_RDONLY)
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	if (inode->i_sb->s_flags & MS_RDONLY)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = ext4_flush_completed_IO(inode);
 	if (ret < 0)
@@ -279,8 +319,12 @@ int ext4_sync_file(struct file *file, int datasync)
 <<<<<<< HEAD
 		ret = __sync_inode(inode, datasync);
 =======
+<<<<<<< HEAD
+		ret = __sync_inode(inode, datasync);
+=======
 		ret = generic_file_fsync(file, datasync);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!ret && !list_empty(&inode->i_dentry))
 			ret = ext4_sync_parent(inode);
 		goto out;
@@ -317,7 +361,11 @@ int ext4_sync_file(struct file *file, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&inode->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_ext4_sync_file_exit(inode, ret);
 	return ret;
 }

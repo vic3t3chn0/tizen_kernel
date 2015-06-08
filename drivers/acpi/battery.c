@@ -34,7 +34,14 @@
 #include <linux/dmi.h>
 #include <linux/slab.h>
 #include <linux/suspend.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/unaligned.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/unaligned.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_ACPI_PROCFS_POWER
 #include <linux/proc_fs.h>
@@ -56,6 +63,15 @@
 #define ACPI_BATTERY_NOTIFY_INFO	0x81
 #define ACPI_BATTERY_NOTIFY_THRESHOLD   0x82
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Battery power unit: 0 means mW, 1 means mA */
+#define ACPI_BATTERY_POWER_UNIT_MA	1
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define _COMPONENT		ACPI_BATTERY_COMPONENT
 
 ACPI_MODULE_NAME("battery");
@@ -92,6 +108,12 @@ MODULE_DEVICE_TABLE(acpi, battery_device_ids);
 enum {
 	ACPI_BATTERY_ALARM_PRESENT,
 	ACPI_BATTERY_XINFO_PRESENT,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ACPI_BATTERY_QUIRK_PERCENTAGE_CAPACITY,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* For buggy DSDTs that report negative 16-bit values for either
 	 * charging or discharging current and/or report 0 as 65536
 	 * due to bad math.
@@ -110,15 +132,33 @@ enum {
 	   post-1.29 BIOS), but as of Nov. 2012, no such update is
 	   available for the 2010 models.  */
 	ACPI_BATTERY_QUIRK_THINKPAD_MAH,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct acpi_battery {
 	struct mutex lock;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mutex sysfs_lock;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct power_supply bat;
 	struct acpi_device *device;
 	struct notifier_block pm_nb;
 	unsigned long update_time;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int revision;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int revision;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rate_now;
 	int capacity_now;
 	int voltage_now;
@@ -146,7 +186,15 @@ struct acpi_battery {
 	unsigned long flags;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define to_acpi_battery(x) container_of(x, struct acpi_battery, bat)
+=======
 #define to_acpi_battery(x) container_of(x, struct acpi_battery, bat);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define to_acpi_battery(x) container_of(x, struct acpi_battery, bat);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 inline int acpi_battery_present(struct acpi_battery *battery)
 {
@@ -315,7 +363,16 @@ static enum power_supply_property energy_battery_props[] = {
 #ifdef CONFIG_ACPI_PROCFS_POWER
 inline char *acpi_battery_units(struct acpi_battery *battery)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return (battery->power_unit == ACPI_BATTERY_POWER_UNIT_MA) ?
+		"mA" : "mW";
+=======
 	return (battery->power_unit)?"mA":"mW";
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return (battery->power_unit)?"mA":"mW";
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -351,7 +408,14 @@ static struct acpi_offsets info_offsets[] = {
 };
 
 static struct acpi_offsets extended_info_offsets[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	{offsetof(struct acpi_battery, revision), 0},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{offsetof(struct acpi_battery, revision), 0},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{offsetof(struct acpi_battery, power_unit), 0},
 	{offsetof(struct acpi_battery, design_capacity), 0},
 	{offsetof(struct acpi_battery, full_charge_capacity), 0},
@@ -444,6 +508,11 @@ static int acpi_battery_get_info(struct acpi_battery *battery)
 	kfree(buffer.pointer);
 	if (test_bit(ACPI_BATTERY_QUIRK_PERCENTAGE_CAPACITY, &battery->flags))
 		battery->full_charge_capacity = battery->design_capacity;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (test_bit(ACPI_BATTERY_QUIRK_THINKPAD_MAH, &battery->flags) &&
 	    battery->power_unit && battery->design_voltage) {
 		battery->design_capacity = battery->design_capacity *
@@ -459,6 +528,10 @@ static int acpi_battery_get_info(struct acpi_battery *battery)
 		   it's impossible to tell if they would need an adjustment
 		   or not if their values were higher.  */
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }
 
@@ -491,19 +564,48 @@ static int acpi_battery_get_state(struct acpi_battery *battery)
 	battery->update_time = jiffies;
 	kfree(buffer.pointer);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* For buggy DSDTs that report negative 16-bit values for either
+	 * charging or discharging current and/or report 0 as 65536
+	 * due to bad math.
+	 */
+	if (battery->power_unit == ACPI_BATTERY_POWER_UNIT_MA &&
+		battery->rate_now != ACPI_BATTERY_VALUE_UNKNOWN &&
+		(s16)(battery->rate_now) < 0) {
+		battery->rate_now = abs((s16)battery->rate_now);
+		printk_once(KERN_WARNING FW_BUG "battery: (dis)charge rate"
+			" invalid.\n");
+	}
+=======
 	if (test_bit(ACPI_BATTERY_QUIRK_SIGNED16_CURRENT, &battery->flags) &&
 	    battery->rate_now != -1)
 		battery->rate_now = abs((s16)battery->rate_now);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (test_bit(ACPI_BATTERY_QUIRK_SIGNED16_CURRENT, &battery->flags) &&
+	    battery->rate_now != -1)
+		battery->rate_now = abs((s16)battery->rate_now);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(ACPI_BATTERY_QUIRK_PERCENTAGE_CAPACITY, &battery->flags)
 	    && battery->capacity_now >= 0 && battery->capacity_now <= 100)
 		battery->capacity_now = (battery->capacity_now *
 				battery->full_charge_capacity) / 100;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (test_bit(ACPI_BATTERY_QUIRK_THINKPAD_MAH, &battery->flags) &&
 	    battery->power_unit && battery->design_voltage) {
 		battery->capacity_now = battery->capacity_now *
 		    10000 / battery->design_voltage;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }
 
@@ -579,7 +681,15 @@ static int sysfs_add_battery(struct acpi_battery *battery)
 {
 	int result;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (battery->power_unit == ACPI_BATTERY_POWER_UNIT_MA) {
+=======
 	if (battery->power_unit) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (battery->power_unit) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		battery->bat.properties = charge_battery_props;
 		battery->bat.num_properties =
 			ARRAY_SIZE(charge_battery_props);
@@ -601,6 +711,21 @@ static int sysfs_add_battery(struct acpi_battery *battery)
 
 static void sysfs_remove_battery(struct acpi_battery *battery)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&battery->sysfs_lock);
+	if (!battery->bat.dev) {
+		mutex_unlock(&battery->sysfs_lock);
+		return;
+	}
+
+	device_remove_file(battery->bat.dev, &alarm_attr);
+	power_supply_unregister(&battery->bat);
+	battery->bat.dev = NULL;
+	mutex_unlock(&battery->sysfs_lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!battery->bat.dev)
 		return;
 	device_remove_file(battery->bat.dev, &alarm_attr);
@@ -631,6 +756,10 @@ static void find_battery(const struct dmi_header *dm, void *private)
 			set_bit(ACPI_BATTERY_QUIRK_THINKPAD_MAH,
 				&battery->flags);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -645,7 +774,15 @@ static void find_battery(const struct dmi_header *dm, void *private)
  *
  * Handle this correctly so that they won't break userspace.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void acpi_battery_quirks(struct acpi_battery *battery)
+=======
 static void acpi_battery_quirks2(struct acpi_battery *battery)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void acpi_battery_quirks2(struct acpi_battery *battery)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (test_bit(ACPI_BATTERY_QUIRK_PERCENTAGE_CAPACITY, &battery->flags))
 		return ;
@@ -658,6 +795,11 @@ static void acpi_battery_quirks2(struct acpi_battery *battery)
 		battery->capacity_now = (battery->capacity_now *
 				battery->full_charge_capacity) / 100;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(ACPI_BATTERY_QUIRK_THINKPAD_MAH, &battery->flags))
 		return ;
@@ -684,6 +826,10 @@ static void acpi_battery_quirks2(struct acpi_battery *battery)
 			}
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int acpi_battery_update(struct acpi_battery *battery)
@@ -702,6 +848,20 @@ static int acpi_battery_update(struct acpi_battery *battery)
 		result = acpi_battery_get_info(battery);
 		if (result)
 			return result;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		acpi_battery_init_alarm(battery);
+	}
+	if (!battery->bat.dev) {
+		result = sysfs_add_battery(battery);
+		if (result)
+			return result;
+	}
+	result = acpi_battery_get_state(battery);
+	acpi_battery_quirks(battery);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		acpi_battery_quirks(battery);
 		acpi_battery_init_alarm(battery);
 	}
@@ -709,11 +869,25 @@ static int acpi_battery_update(struct acpi_battery *battery)
 		sysfs_add_battery(battery);
 	result = acpi_battery_get_state(battery);
 	acpi_battery_quirks2(battery);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }
 
 static void acpi_battery_refresh(struct acpi_battery *battery)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!battery->bat.dev)
+		return;
+
+	acpi_battery_get_info(battery);
+	/* The battery may have changed its reporting units. */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int power_unit;
 
 	if (!battery->bat.dev)
@@ -727,6 +901,10 @@ static void acpi_battery_refresh(struct acpi_battery *battery)
 		return;
 
 	/* The battery has changed its reporting units. */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sysfs_remove_battery(battery);
 	sysfs_add_battery(battery);
 }
@@ -950,9 +1128,21 @@ DECLARE_FILE_FUNCTIONS(alarm);
 		}, \
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct battery_file {
+	struct file_operations ops;
+	umode_t mode;
+=======
 static struct battery_file {
 	struct file_operations ops;
 	mode_t mode;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct battery_file {
+	struct file_operations ops;
+	mode_t mode;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *name;
 } acpi_battery_file[] = {
 	FILE_DESCRIPTION_RO(info),
@@ -1035,9 +1225,24 @@ static int battery_notify(struct notifier_block *nb,
 	struct acpi_battery *battery = container_of(nb, struct acpi_battery,
 						    pm_nb);
 	switch (mode) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case PM_POST_HIBERNATION:
+	case PM_POST_SUSPEND:
+		if (battery->bat.dev) {
+			sysfs_remove_battery(battery);
+			sysfs_add_battery(battery);
+		}
+=======
 	case PM_POST_SUSPEND:
 		sysfs_remove_battery(battery);
 		sysfs_add_battery(battery);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case PM_POST_SUSPEND:
+		sysfs_remove_battery(battery);
+		sysfs_add_battery(battery);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -1059,6 +1264,32 @@ static int acpi_battery_add(struct acpi_device *device)
 	strcpy(acpi_device_class(device), ACPI_BATTERY_CLASS);
 	device->driver_data = battery;
 	mutex_init(&battery->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_init(&battery->sysfs_lock);
+	if (ACPI_SUCCESS(acpi_get_handle(battery->device->handle,
+			"_BIX", &handle)))
+		set_bit(ACPI_BATTERY_XINFO_PRESENT, &battery->flags);
+	result = acpi_battery_update(battery);
+	if (result)
+		goto fail;
+#ifdef CONFIG_ACPI_PROCFS_POWER
+	result = acpi_battery_add_fs(device);
+#endif
+	if (result) {
+#ifdef CONFIG_ACPI_PROCFS_POWER
+		acpi_battery_remove_fs(device);
+#endif
+		goto fail;
+	}
+
+	printk(KERN_INFO PREFIX "%s Slot [%s] (battery %s)\n",
+		ACPI_BATTERY_DEVICE_NAME, acpi_device_bid(device),
+		device->status.battery_present ? "present" : "absent");
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ACPI_SUCCESS(acpi_get_handle(battery->device->handle,
 			"_BIX", &handle)))
 		set_bit(ACPI_BATTERY_XINFO_PRESENT, &battery->flags);
@@ -1077,10 +1308,27 @@ static int acpi_battery_add(struct acpi_device *device)
 		kfree(battery);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	battery->pm_nb.notifier_call = battery_notify;
 	register_pm_notifier(&battery->pm_nb);
 
 	return result;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+fail:
+	sysfs_remove_battery(battery);
+	mutex_destroy(&battery->lock);
+	mutex_destroy(&battery->sysfs_lock);
+	kfree(battery);
+	return result;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int acpi_battery_remove(struct acpi_device *device, int type)
@@ -1096,6 +1344,13 @@ static int acpi_battery_remove(struct acpi_device *device, int type)
 #endif
 	sysfs_remove_battery(battery);
 	mutex_destroy(&battery->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_destroy(&battery->sysfs_lock);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(battery);
 	return 0;
 }

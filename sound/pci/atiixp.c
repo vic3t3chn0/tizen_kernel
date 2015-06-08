@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -50,8 +54,12 @@ static char *ac97_quirk;
 <<<<<<< HEAD
 static bool spdif_aclink = 1;
 =======
+<<<<<<< HEAD
+static bool spdif_aclink = 1;
+=======
 static int spdif_aclink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ac97_codec = -1;
 
 module_param(index, int, 0444);
@@ -71,8 +79,12 @@ MODULE_PARM_DESC(spdif_aclink, "S/PDIF over AC-link.");
 <<<<<<< HEAD
 static bool enable;
 =======
+<<<<<<< HEAD
+static bool enable;
+=======
 static int enable;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(enable, bool, 0444);
 
 
@@ -1639,8 +1651,12 @@ static int __devinit snd_atiixp_create(struct snd_card *card,
 <<<<<<< HEAD
 			KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, chip)) {
+=======
 			card->shortname, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_atiixp_free(chip);
 		return -EBUSY;
@@ -1720,8 +1736,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "ATI IXP AC97 controller",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_atiixp_ids,
 	.probe = snd_atiixp_probe,
 	.remove = __devexit_p(snd_atiixp_remove),

@@ -15,6 +15,14 @@
 #include <linux/platform_device.h>
 #include <linux/slab.h>
 #include <linux/scatterlist.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#include "dmaengine.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "txx9dmac.h"
 
 static struct txx9dmac_chan *to_txx9dmac_chan(struct dma_chan *chan)
@@ -279,6 +287,11 @@ static void txx9dmac_desc_put(struct txx9dmac_chan *dc,
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Called with dc->lock held and bh disabled */
 static dma_cookie_t
 txx9dmac_assign_cookie(struct txx9dmac_chan *dc, struct txx9dmac_desc *desc)
@@ -294,6 +307,10 @@ txx9dmac_assign_cookie(struct txx9dmac_chan *dc, struct txx9dmac_desc *desc)
 	return cookie;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*----------------------------------------------------------------------*/
 
 static void txx9dmac_dump_regs(struct txx9dmac_chan *dc)
@@ -424,7 +441,15 @@ txx9dmac_descriptor_complete(struct txx9dmac_chan *dc,
 	dev_vdbg(chan2dev(&dc->chan), "descriptor %u %p complete\n",
 		 txd->cookie, desc);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_cookie_complete(txd);
+=======
 	dc->completed = txd->cookie;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dc->completed = txd->cookie;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	callback = txd->callback;
 	param = txd->callback_param;
 
@@ -738,7 +763,15 @@ static dma_cookie_t txx9dmac_tx_submit(struct dma_async_tx_descriptor *tx)
 	dma_cookie_t cookie;
 
 	spin_lock_bh(&dc->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cookie = dma_cookie_assign(tx);
+=======
 	cookie = txx9dmac_assign_cookie(dc, desc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cookie = txx9dmac_assign_cookie(dc, desc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_vdbg(chan2dev(tx->chan), "tx_submit: queued %u %p\n",
 		 desc->txd.cookie, desc);
@@ -845,8 +878,18 @@ txx9dmac_prep_dma_memcpy(struct dma_chan *chan, dma_addr_t dest, dma_addr_t src,
 
 static struct dma_async_tx_descriptor *
 txx9dmac_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		unsigned int sg_len, enum dma_transfer_direction direction,
+		unsigned long flags, void *context)
+=======
 		unsigned int sg_len, enum dma_data_direction direction,
 		unsigned long flags)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		unsigned int sg_len, enum dma_data_direction direction,
+		unsigned long flags)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct txx9dmac_chan *dc = to_txx9dmac_chan(chan);
 	struct txx9dmac_dev *ddev = dc->ddev;
@@ -860,9 +903,21 @@ txx9dmac_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 
 	BUG_ON(!ds || !ds->reg_width);
 	if (ds->tx_reg)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		BUG_ON(direction != DMA_MEM_TO_DEV);
+	else
+		BUG_ON(direction != DMA_DEV_TO_MEM);
+=======
 		BUG_ON(direction != DMA_TO_DEVICE);
 	else
 		BUG_ON(direction != DMA_FROM_DEVICE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		BUG_ON(direction != DMA_TO_DEVICE);
+	else
+		BUG_ON(direction != DMA_FROM_DEVICE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!sg_len))
 		return NULL;
 
@@ -882,7 +937,15 @@ txx9dmac_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 		mem = sg_dma_address(sg);
 
 		if (__is_dmac64(ddev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (direction == DMA_MEM_TO_DEV) {
+=======
 			if (direction == DMA_TO_DEVICE) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (direction == DMA_TO_DEVICE) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				desc->hwdesc.SAR = mem;
 				desc->hwdesc.DAR = ds->tx_reg;
 			} else {
@@ -891,7 +954,15 @@ txx9dmac_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 			}
 			desc->hwdesc.CNTR = sg_dma_len(sg);
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (direction == DMA_MEM_TO_DEV) {
+=======
 			if (direction == DMA_TO_DEVICE) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (direction == DMA_TO_DEVICE) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				desc->hwdesc32.SAR = mem;
 				desc->hwdesc32.DAR = ds->tx_reg;
 			} else {
@@ -900,7 +971,15 @@ txx9dmac_prep_slave_sg(struct dma_chan *chan, struct scatterlist *sgl,
 			}
 			desc->hwdesc32.CNTR = sg_dma_len(sg);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (direction == DMA_MEM_TO_DEV) {
+=======
 		if (direction == DMA_TO_DEVICE) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (direction == DMA_TO_DEVICE) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sai = ds->reg_width;
 			dai = 0;
 		} else {
@@ -972,6 +1051,14 @@ txx9dmac_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
 		   struct dma_tx_state *txstate)
 {
 	struct txx9dmac_chan *dc = to_txx9dmac_chan(chan);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum dma_status ret;
+
+	ret = dma_cookie_status(chan, cookie, txstate);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_cookie_t last_used;
 	dma_cookie_t last_complete;
 	int ret;
@@ -980,11 +1067,23 @@ txx9dmac_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
 	last_used = chan->cookie;
 
 	ret = dma_async_is_complete(cookie, last_complete, last_used);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != DMA_SUCCESS) {
 		spin_lock_bh(&dc->lock);
 		txx9dmac_scan_descriptors(dc);
 		spin_unlock_bh(&dc->lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = dma_cookie_status(chan, cookie, txstate);
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		last_complete = dc->completed;
 		last_used = chan->cookie;
 
@@ -993,6 +1092,10 @@ txx9dmac_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
 
 	dma_set_tx_state(txstate, last_complete, last_used, 0);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1057,7 +1160,15 @@ static int txx9dmac_alloc_chan_resources(struct dma_chan *chan)
 		return -EIO;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_cookie_init(chan);
+=======
 	dc->completed = chan->cookie = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dc->completed = chan->cookie = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dc->ccr = TXX9_DMA_CCR_IMMCHN | TXX9_DMA_CCR_INTENE | CCR_LE;
 	txx9dmac_chan_set_SMPCHN(dc);
@@ -1186,7 +1297,15 @@ static int __init txx9dmac_chan_probe(struct platform_device *pdev)
 	dc->ddev->chan[ch] = dc;
 	dc->chan.device = &dc->dma;
 	list_add_tail(&dc->chan.device_node, &dc->chan.device->channels);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_cookie_init(&dc->chan);
+=======
 	dc->chan.cookie = dc->completed = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dc->chan.cookie = dc->completed = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (is_dmac64(dc))
 		dc->ch_regs = &__txx9dmac_regs(dc->ddev)->CHAN[ch];

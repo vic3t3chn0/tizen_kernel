@@ -27,6 +27,10 @@ struct timb_radio_platform_data {
 	struct i2c_board_info *tuner;
 	struct i2c_board_info *dsp;
 =======
+<<<<<<< HEAD
+	struct i2c_board_info *tuner;
+	struct i2c_board_info *dsp;
+=======
 	struct {
 		struct i2c_board_info *info;
 	} tuner;
@@ -35,6 +39,7 @@ struct timb_radio_platform_data {
 		struct i2c_board_info *info;
 	} dsp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif

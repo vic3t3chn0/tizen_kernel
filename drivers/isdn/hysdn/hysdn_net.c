@@ -23,7 +23,15 @@
 
 #include "hysdn_defs.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+unsigned int hynet_enable = 0xffffffff;
+=======
 unsigned int hynet_enable = 0xffffffff; 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+unsigned int hynet_enable = 0xffffffff; 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(hynet_enable, uint, 0);
 
 #define MAX_SKB_BUFFERS 20	/* number of buffers for keeping TX-data */
@@ -155,7 +163,15 @@ net_send_packet(struct sk_buff *skb, struct net_device *dev)
 /* completion                                                          */
 /***********************************************************************/
 void
+<<<<<<< HEAD
+<<<<<<< HEAD
+hysdn_tx_netack(hysdn_card *card)
+=======
 hysdn_tx_netack(hysdn_card * card)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hysdn_tx_netack(hysdn_card * card)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_local *lp = card->netif;
 
@@ -181,7 +197,15 @@ hysdn_tx_netack(hysdn_card * card)
 /* we got a packet from the network, go and queue it */
 /*****************************************************/
 void
+<<<<<<< HEAD
+<<<<<<< HEAD
+hysdn_rx_netpkt(hysdn_card *card, unsigned char *buf, unsigned short len)
+=======
 hysdn_rx_netpkt(hysdn_card * card, unsigned char *buf, unsigned short len)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hysdn_rx_netpkt(hysdn_card * card, unsigned char *buf, unsigned short len)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_local *lp = card->netif;
 	struct net_device *dev;
@@ -215,7 +239,15 @@ hysdn_rx_netpkt(hysdn_card * card, unsigned char *buf, unsigned short len)
 /* return the pointer to a network packet to be send */
 /*****************************************************/
 struct sk_buff *
+<<<<<<< HEAD
+<<<<<<< HEAD
+hysdn_tx_netget(hysdn_card *card)
+=======
 hysdn_tx_netget(hysdn_card * card)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hysdn_tx_netget(hysdn_card * card)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_local *lp = card->netif;
 
@@ -229,11 +261,25 @@ hysdn_tx_netget(hysdn_card * card)
 }				/* hysdn_tx_netget */
 
 static const struct net_device_ops hysdn_netdev_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.ndo_open		= net_open,
+	.ndo_stop		= net_close,
+	.ndo_start_xmit		= net_send_packet,
+	.ndo_change_mtu		= eth_change_mtu,
+	.ndo_set_mac_address	= eth_mac_addr,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_open 		= net_open,
 	.ndo_stop		= net_close,
 	.ndo_start_xmit		= net_send_packet,
 	.ndo_change_mtu		= eth_change_mtu,
 	.ndo_set_mac_address 	= eth_mac_addr,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_validate_addr	= eth_validate_addr,
 };
 
@@ -244,13 +290,29 @@ static const struct net_device_ops hysdn_netdev_ops = {
 /* 0 announces success, else a negative error code will be returned.         */
 /*****************************************************************************/
 int
+<<<<<<< HEAD
+<<<<<<< HEAD
+hysdn_net_create(hysdn_card *card)
+=======
 hysdn_net_create(hysdn_card * card)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hysdn_net_create(hysdn_card * card)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_device *dev;
 	int i;
 	struct net_local *lp;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!card) {
+=======
 	if(!card) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if(!card) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_WARNING "No card-pt in hysdn_net_create!\n");
 		return (-ENOMEM);
 	}
@@ -291,7 +353,15 @@ hysdn_net_create(hysdn_card * card)
 /* value 0 announces success, else a negative error code will be returned. */
 /***************************************************************************/
 int
+<<<<<<< HEAD
+<<<<<<< HEAD
+hysdn_net_release(hysdn_card *card)
+=======
 hysdn_net_release(hysdn_card * card)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hysdn_net_release(hysdn_card * card)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_device *dev = card->netif;
 
@@ -316,7 +386,15 @@ hysdn_net_release(hysdn_card * card)
 /* if the interface is not existing, a "-" is returned.                      */
 /*****************************************************************************/
 char *
+<<<<<<< HEAD
+<<<<<<< HEAD
+hysdn_net_getname(hysdn_card *card)
+=======
 hysdn_net_getname(hysdn_card * card)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+hysdn_net_getname(hysdn_card * card)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net_device *dev = card->netif;
 

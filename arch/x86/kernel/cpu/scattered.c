@@ -34,8 +34,12 @@ void __cpuinit init_scattered_cpuid_features(struct cpuinfo_x86 *c)
 <<<<<<< HEAD
 		{ X86_FEATURE_DTS,		CR_EAX, 0, 0x00000006, 0 },
 =======
+<<<<<<< HEAD
+		{ X86_FEATURE_DTS,		CR_EAX, 0, 0x00000006, 0 },
+=======
 		{ X86_FEATURE_DTHERM,		CR_EAX, 0, 0x00000006, 0 },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{ X86_FEATURE_IDA,		CR_EAX, 1, 0x00000006, 0 },
 		{ X86_FEATURE_ARAT,		CR_EAX, 2, 0x00000006, 0 },
 		{ X86_FEATURE_PLN,		CR_EAX, 4, 0x00000006, 0 },
@@ -47,7 +51,11 @@ void __cpuinit init_scattered_cpuid_features(struct cpuinfo_x86 *c)
 <<<<<<< HEAD
 		{ X86_FEATURE_HW_PSTATE,	CR_EDX, 7, 0x80000007, 0 },
 =======
+<<<<<<< HEAD
+		{ X86_FEATURE_HW_PSTATE,	CR_EDX, 7, 0x80000007, 0 },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{ X86_FEATURE_NPT,		CR_EDX, 0, 0x8000000a, 0 },
 		{ X86_FEATURE_LBRV,		CR_EDX, 1, 0x8000000a, 0 },
 		{ X86_FEATURE_SVML,		CR_EDX, 2, 0x8000000a, 0 },

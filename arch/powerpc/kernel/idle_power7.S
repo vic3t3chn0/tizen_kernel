@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  *  This file contains the power_save function for Power7 CPUs.
 =======
+<<<<<<< HEAD
+ *  This file contains the power_save function for Power7 CPUs.
+=======
  *  This file contains the power_save function for 970-family CPUs.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -22,7 +26,11 @@
 <<<<<<< HEAD
 #include <asm/hw_irq.h>
 =======
+<<<<<<< HEAD
+#include <asm/hw_irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef DEBUG
 
@@ -60,6 +68,9 @@ _GLOBAL(power7_idle)
 	rotldi	r9,r9,16
 	mtmsrd	r9,1			/* hard-disable interrupts */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Check if something happened while soft-disabled */
 	lbz	r0,PACAIRQHAPPENED(r13)
@@ -80,11 +91,14 @@ _GLOBAL(power7_idle)
 	/* We haven't lost state ... yet */
 	li	r0,0
 	stb	r0,PACA_NAPSTATELOST(r13)
+<<<<<<< HEAD
+=======
 =======
 	li	r0,0
 	stb	r0,PACASOFTIRQEN(r13)	/* we'll hard-enable shortly */
 	stb	r0,PACAHARDIRQEN(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Continue saving state */
 	SAVE_GPR(2, r1)
@@ -106,8 +120,11 @@ _GLOBAL(power7_idle)
 _GLOBAL(power7_wakeup_loss)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	GET_PACA(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r1,PACAR1(r13)
 	REST_NVGPRS(r1)
 	REST_GPR(2, r1)
@@ -126,8 +143,14 @@ _GLOBAL(power7_wakeup_noloss)
 	cmpwi	r0,0
 	bne	.power7_wakeup_loss
 =======
+<<<<<<< HEAD
+	lbz	r0,PACA_NAPSTATELOST(r13)
+	cmpwi	r0,0
+	bne	.power7_wakeup_loss
+=======
 	GET_PACA(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r1,PACAR1(r13)
 	ld	r4,_MSR(r1)
 	ld	r5,_NIP(r1)

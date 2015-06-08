@@ -21,8 +21,16 @@ struct plat_nand_data {
 	struct nand_chip	chip;
 	struct mtd_info		mtd;
 	void __iomem		*io_base;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int			nr_parts;
 	struct mtd_partition	*parts;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int			nr_parts;
+	struct mtd_partition	*parts;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -79,6 +87,13 @@ static int __devinit plat_nand_probe(struct platform_device *pdev)
 	data->chip.read_buf = pdata->ctrl.read_buf;
 	data->chip.chip_delay = pdata->chip.chip_delay;
 	data->chip.options |= pdata->chip.options;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data->chip.bbt_options |= pdata->chip.bbt_options;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	data->chip.ecc.hwctl = pdata->ctrl.hwcontrol;
 	data->chip.ecc.layout = pdata->chip.ecclayout;
@@ -99,6 +114,15 @@ static int __devinit plat_nand_probe(struct platform_device *pdev)
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = mtd_device_parse_register(&data->mtd,
+					pdata->chip.part_probe_types, NULL,
+					pdata->chip.partitions,
+					pdata->chip.nr_partitions);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pdata->chip.part_probe_types) {
 		err = parse_mtd_partitions(&data->mtd,
 					pdata->chip.part_probe_types,
@@ -116,6 +140,10 @@ static int __devinit plat_nand_probe(struct platform_device *pdev)
 			pdata->chip.nr_partitions);
 	} else
 		err = mtd_device_register(&data->mtd, NULL, 0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!err)
 		return err;
@@ -145,8 +173,16 @@ static int __devexit plat_nand_remove(struct platform_device *pdev)
 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 
 	nand_release(&data->mtd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (data->parts && data->parts != pdata->chip.partitions)
 		kfree(data->parts);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (data->parts && data->parts != pdata->chip.partitions)
+		kfree(data->parts);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pdata->ctrl.remove)
 		pdata->ctrl.remove(pdev);
 	iounmap(data->io_base);
@@ -165,6 +201,12 @@ static struct platform_driver plat_nand_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(plat_nand_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init plat_nand_init(void)
 {
 	return platform_driver_register(&plat_nand_driver);
@@ -177,6 +219,10 @@ static void __exit plat_nand_exit(void)
 
 module_init(plat_nand_init);
 module_exit(plat_nand_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Vitaly Wool");

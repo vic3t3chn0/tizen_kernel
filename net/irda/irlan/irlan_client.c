@@ -39,8 +39,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/byteorder.h>
 
 #include <net/irda/irda.h>
@@ -204,8 +207,12 @@ static int irlan_client_ctrl_data_indication(void *instance, void *sap,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct irlan_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return -1;);
 	IRDA_ASSERT(self->magic == IRLAN_MAGIC, return -1;);
@@ -237,9 +244,14 @@ static void irlan_client_ctrl_disconnect_indication(void *instance, void *sap,
 	self = instance;
 	tsap = sap;
 =======
+<<<<<<< HEAD
+	self = instance;
+	tsap = sap;
+=======
 	self = (struct irlan_cb *) instance;
 	tsap = (struct tsap_cb *) sap;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == IRLAN_MAGIC, return;);
@@ -313,8 +325,12 @@ static void irlan_client_ctrl_connect_confirm(void *instance, void *sap,
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct irlan_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == IRLAN_MAGIC, return;);
@@ -561,8 +577,12 @@ void irlan_client_get_value_confirm(int result, __u16 obj_id,
 <<<<<<< HEAD
 	self = priv;
 =======
+<<<<<<< HEAD
+	self = priv;
+=======
 	self = (struct irlan_cb *) priv;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IRDA_ASSERT(self->magic == IRLAN_MAGIC, return;);
 
 	/* We probably don't need to make any more queries */

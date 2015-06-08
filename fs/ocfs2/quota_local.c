@@ -409,8 +409,14 @@ struct ocfs2_quota_recovery *ocfs2_begin_quota_recovery(
 	       "slot %u\n", osb->dev_str, slot_num);
 
 =======
+<<<<<<< HEAD
+	printk(KERN_NOTICE "ocfs2: Beginning quota recovery on device (%s) for "
+	       "slot %u\n", osb->dev_str, slot_num);
+
+=======
 	mlog(ML_NOTICE, "Beginning quota recovery in slot %u\n", slot_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rec = ocfs2_alloc_quota_recovery();
 	if (!rec)
 		return ERR_PTR(-ENOMEM);
@@ -559,9 +565,14 @@ static int ocfs2_recover_local_quota_file(struct inode *lqinode,
 			WARN_ON(!ocfs2_test_bit_unaligned(bit, dchunk->dqc_bitmap));
 			ocfs2_clear_bit_unaligned(bit, dchunk->dqc_bitmap);
 =======
+<<<<<<< HEAD
+			WARN_ON(!ocfs2_test_bit_unaligned(bit, dchunk->dqc_bitmap));
+			ocfs2_clear_bit_unaligned(bit, dchunk->dqc_bitmap);
+=======
 			WARN_ON(!ocfs2_test_bit(bit, dchunk->dqc_bitmap));
 			ocfs2_clear_bit(bit, dchunk->dqc_bitmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			le32_add_cpu(&dchunk->dqc_free, 1);
 			unlock_buffer(qbh);
 			ocfs2_journal_dirty(handle, qbh);
@@ -612,8 +623,14 @@ int ocfs2_finish_quota_recovery(struct ocfs2_super *osb,
 	       "slot %u\n", osb->dev_str, slot_num);
 
 =======
+<<<<<<< HEAD
+	printk(KERN_NOTICE "ocfs2: Finishing quota recovery on device (%s) for "
+	       "slot %u\n", osb->dev_str, slot_num);
+
+=======
 	mlog(ML_NOTICE, "Finishing quota recovery in slot %u\n", slot_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&sb_dqopt(sb)->dqonoff_mutex);
 	for (type = 0; type < MAXQUOTAS; type++) {
 		if (list_empty(&(rec->r_list[type])))
@@ -634,9 +651,15 @@ int ocfs2_finish_quota_recovery(struct ocfs2_super *osb,
 			       "device (%s) for slot %d because quota file is "
 			       "locked.\n", osb->dev_str, slot_num);
 =======
+<<<<<<< HEAD
+			printk(KERN_NOTICE "ocfs2: Skipping quota recovery on "
+			       "device (%s) for slot %d because quota file is "
+			       "locked.\n", osb->dev_str, slot_num);
+=======
 			mlog(ML_NOTICE, "skipping quota recovery for slot %d "
 			     "because quota file is locked.\n", slot_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			status = 0;
 			goto out_put;
 		} else if (status < 0) {
@@ -970,8 +993,12 @@ static struct ocfs2_quota_chunk *ocfs2_find_free_entry(struct super_block *sb,
 <<<<<<< HEAD
 	found = ocfs2_find_next_zero_bit_unaligned(dchunk->dqc_bitmap, len, 0);
 =======
+<<<<<<< HEAD
+	found = ocfs2_find_next_zero_bit_unaligned(dchunk->dqc_bitmap, len, 0);
+=======
 	found = ocfs2_find_next_zero_bit(dchunk->dqc_bitmap, len, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We failed? */
 	if (found == len) {
 		mlog(ML_ERROR, "Did not find empty entry in chunk %d with %u"
@@ -1238,8 +1265,12 @@ static void olq_alloc_dquot(struct buffer_head *bh, void *private)
 <<<<<<< HEAD
 	ocfs2_set_bit_unaligned(*offset, dchunk->dqc_bitmap);
 =======
+<<<<<<< HEAD
+	ocfs2_set_bit_unaligned(*offset, dchunk->dqc_bitmap);
+=======
 	ocfs2_set_bit(*offset, dchunk->dqc_bitmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	le32_add_cpu(&dchunk->dqc_free, -1);
 }
 
@@ -1323,8 +1354,12 @@ int ocfs2_local_release_dquot(handle_t *handle, struct dquot *dquot)
 <<<<<<< HEAD
 	ocfs2_clear_bit_unaligned(offset, dchunk->dqc_bitmap);
 =======
+<<<<<<< HEAD
+	ocfs2_clear_bit_unaligned(offset, dchunk->dqc_bitmap);
+=======
 	ocfs2_clear_bit(offset, dchunk->dqc_bitmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	le32_add_cpu(&dchunk->dqc_free, 1);
 	unlock_buffer(od->dq_chunk->qc_headerbh);
 	ocfs2_journal_dirty(handle, od->dq_chunk->qc_headerbh);

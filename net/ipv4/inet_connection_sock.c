@@ -124,6 +124,9 @@ again:
 						smallest_rover = rover;
 						if (atomic_read(&hashinfo->bsockets) > (high - low) + 1) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 							snum = smallest_rover;
 							goto tb_found;
 						}
@@ -132,6 +135,8 @@ again:
 						snum = rover;
 						goto tb_found;
 					}
+<<<<<<< HEAD
+=======
 =======
 							spin_unlock(&head->lock);
 							snum = smallest_rover;
@@ -139,6 +144,7 @@ again:
 						}
 					}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					goto next;
 				}
 			break;
@@ -432,8 +438,12 @@ static inline u32 inet_synq_hash(const __be32 raddr, const __be16 rport,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AF_INET_FAMILY(fam) ((fam) == AF_INET)
 #else
 #define AF_INET_FAMILY(fam) 1
@@ -604,6 +614,9 @@ void inet_csk_reqsk_queue_prune(struct sock *parent,
 EXPORT_SYMBOL_GPL(inet_csk_reqsk_queue_prune);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  *	inet_csk_clone_lock - clone an inet socket, and lock its clone
  *	@sk: the socket to clone
@@ -617,12 +630,15 @@ struct sock *inet_csk_clone_lock(const struct sock *sk,
 				 const gfp_t priority)
 {
 	struct sock *newsk = sk_clone_lock(sk, priority);
+<<<<<<< HEAD
+=======
 =======
 struct sock *inet_csk_clone(struct sock *sk, const struct request_sock *req,
 			    const gfp_t priority)
 {
 	struct sock *newsk = sk_clone(sk, priority);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (newsk != NULL) {
 		struct inet_connection_sock *newicsk = inet_csk(newsk);
@@ -649,8 +665,12 @@ struct sock *inet_csk_clone(struct sock *sk, const struct request_sock *req,
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(inet_csk_clone_lock);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(inet_csk_clone_lock);
+=======
 EXPORT_SYMBOL_GPL(inet_csk_clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * At this point, there should be no process reference to this

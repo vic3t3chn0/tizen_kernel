@@ -7,8 +7,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <ctype.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../perf.h"
 #include "../util/util.h"
@@ -30,7 +33,11 @@ static const char	*routine	= "default";
 <<<<<<< HEAD
 static int		iterations	= 1;
 =======
+<<<<<<< HEAD
+static int		iterations	= 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool		use_clock;
 static int		clock_fd;
 static bool		only_prefault;
@@ -46,7 +53,12 @@ static const struct option options[] = {
 	OPT_INTEGER('i', "iterations", &iterations,
 		    "repeat memcpy() invocation this number of times"),
 =======
+<<<<<<< HEAD
+	OPT_INTEGER('i', "iterations", &iterations,
+		    "repeat memcpy() invocation this number of times"),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN('c', "clock", &use_clock,
 		    "Use CPU clock for measuring"),
 	OPT_BOOLEAN('o', "only-prefault", &only_prefault,
@@ -136,7 +148,11 @@ static u64 do_memcpy_clock(memcpy_t fn, size_t len, bool prefault)
 <<<<<<< HEAD
 	int i;
 =======
+<<<<<<< HEAD
+	int i;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	alloc_mem(&src, &dst, len);
 
@@ -148,8 +164,13 @@ static u64 do_memcpy_clock(memcpy_t fn, size_t len, bool prefault)
 	for (i = 0; i < iterations; ++i)
 		fn(dst, src, len);
 =======
+<<<<<<< HEAD
+	for (i = 0; i < iterations; ++i)
+		fn(dst, src, len);
+=======
 	fn(dst, src, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clock_end = get_clock();
 
 	free(src);
@@ -164,7 +185,11 @@ static double do_memcpy_gettimeofday(memcpy_t fn, size_t len, bool prefault)
 <<<<<<< HEAD
 	int i;
 =======
+<<<<<<< HEAD
+	int i;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	alloc_mem(&src, &dst, len);
 
@@ -176,8 +201,13 @@ static double do_memcpy_gettimeofday(memcpy_t fn, size_t len, bool prefault)
 	for (i = 0; i < iterations; ++i)
 		fn(dst, src, len);
 =======
+<<<<<<< HEAD
+	for (i = 0; i < iterations; ++i)
+		fn(dst, src, len);
+=======
 	fn(dst, src, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(gettimeofday(&tv_end, NULL));
 
 	timersub(&tv_end, &tv_start, &tv_diff);

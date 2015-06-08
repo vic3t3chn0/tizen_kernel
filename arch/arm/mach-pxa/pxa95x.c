@@ -11,8 +11,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -26,8 +29,11 @@
 #include <mach/hardware.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/pxa3xx-regs.h>
 #include <mach/pxa930.h>
 #include <mach/reset.h>
@@ -35,8 +41,11 @@
 #include <mach/dma.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/regs-intc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 #include "devices.h"
@@ -226,7 +235,11 @@ static DEFINE_PXA3_CKEN(pxa95x_pwm1, PWM1, 13000000, 0);
 <<<<<<< HEAD
 static DEFINE_PXA3_CKEN(pxa95x_gpio, GPIO, 13000000, 0);
 =======
+<<<<<<< HEAD
+static DEFINE_PXA3_CKEN(pxa95x_gpio, GPIO, 13000000, 0);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct clk_lookup pxa95x_clkregs[] = {
 	INIT_CLKREG(&clk_pxa95x_pout, NULL, "CLK_POUT"),
@@ -249,7 +262,12 @@ static struct clk_lookup pxa95x_clkregs[] = {
 	INIT_CLKREG(&clk_pxa95x_gpio, "pxa-gpio", NULL),
 	INIT_CLKREG(&clk_dummy, "sa1100-rtc", NULL),
 =======
+<<<<<<< HEAD
+	INIT_CLKREG(&clk_pxa95x_gpio, "pxa-gpio", NULL),
+	INIT_CLKREG(&clk_dummy, "sa1100-rtc", NULL),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init pxa95x_init_irq(void)
@@ -257,8 +275,11 @@ void __init pxa95x_init_irq(void)
 	pxa_init_irq(96, NULL);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	pxa_init_gpio(IRQ_GPIO_2_x, 2, 127, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -274,7 +295,11 @@ static struct platform_device *devices[] __initdata = {
 <<<<<<< HEAD
 	&pxa_device_gpio,
 =======
+<<<<<<< HEAD
+	&pxa_device_gpio,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&sa1100_device_rtc,
 	&pxa_device_rtc,
 	&pxa27x_device_ssp1,
@@ -311,8 +336,11 @@ static int __init pxa95x_init(void)
 		register_syscore_ops(&pxa_irq_syscore_ops);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		register_syscore_ops(&pxa_gpio_syscore_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		register_syscore_ops(&pxa3xx_clock_syscore_ops);
 
 		ret = platform_add_devices(devices, ARRAY_SIZE(devices));

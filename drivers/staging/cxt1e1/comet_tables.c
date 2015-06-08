@@ -1,7 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * $Id: comet_tables.c,v 1.2 2005/10/17 23:55:27 rickd PMCC4_3_1B $
  */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-----------------------------------------------------------------------------
  * comet_tables.c - waveform tables for the PM4351 'COMET'
  *
@@ -20,6 +29,13 @@
  * For further information, contact via email: support@sbei.com
  * SBE, Inc.  San Ramon, California  U.S.A.
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * RCS info:
  * RCS revision: $Revision: 1.2 $
  * Last changed on $Date: 2005/10/17 23:55:27 $
@@ -42,6 +58,10 @@ char SBEid_pmcc4_comet_tblc[] =
   "@(#)comet_tables.c - $Revision: 1.2 $      (c) Copyright 2004-2005 SBE, Inc.";
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 
 /*****************************************************************************

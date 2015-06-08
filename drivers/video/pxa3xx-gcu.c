@@ -31,8 +31,16 @@
  */
 
 #include <linux/module.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/dma-mapping.h>
 #include <linux/miscdevice.h>
@@ -678,7 +686,15 @@ pxa3xx_gcu_probe(struct platform_device *dev)
 	}
 
 	ret = request_irq(irq, pxa3xx_gcu_handle_irq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			  0, DRV_NAME, priv);
+=======
 			  IRQF_DISABLED, DRV_NAME, priv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			  IRQF_DISABLED, DRV_NAME, priv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		dev_err(&dev->dev, "request_irq failed\n");
 		ret = -EBUSY;
@@ -749,6 +765,12 @@ static struct platform_driver pxa3xx_gcu_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(pxa3xx_gcu_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init
 pxa3xx_gcu_init(void)
 {
@@ -763,6 +785,10 @@ pxa3xx_gcu_exit(void)
 
 module_init(pxa3xx_gcu_init);
 module_exit(pxa3xx_gcu_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("PXA3xx graphics controller unit driver");
 MODULE_LICENSE("GPL");

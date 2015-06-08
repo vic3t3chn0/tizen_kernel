@@ -123,7 +123,11 @@ MGR_ATTR static noinline int dcplb_miss(unsigned int cpu)
 <<<<<<< HEAD
 #if defined(CONFIG_ROMFS_ON_MTD) && defined(CONFIG_MTD_ROM)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_ROMFS_ON_MTD) && defined(CONFIG_MTD_ROM)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mask = current_rwx_mask[cpu];
 			if (mask) {
 				int page = (addr - (ASYNC_BANK0_BASE - _ramend)) >> PAGE_SHIFT;
@@ -136,7 +140,11 @@ MGR_ATTR static noinline int dcplb_miss(unsigned int cpu)
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (addr >= BOOT_ROM_START && addr < BOOT_ROM_START + BOOT_ROM_LENGTH
 		    && (status & (FAULT_RW | FAULT_USERSUPV)) == FAULT_USERSUPV) {
 			addr &= ~(1 * 1024 * 1024 - 1);

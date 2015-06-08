@@ -31,6 +31,9 @@ unsigned char ledbank = 0xff;
 /***************************************************************************/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init m5272_uarts_init(void)
 {
 	u32 v;
@@ -43,6 +46,8 @@ static void __init m5272_uarts_init(void)
 	v = readl(MCF_MBAR + MCFSIM_PDCNT);
 	v = (v & ~0x000003fc) | 0x000002a8;
 	writel(v, MCF_MBAR + MCFSIM_PDCNT);
+<<<<<<< HEAD
+=======
 =======
 static struct mcf_platform_uart m5272_uart_platform[] = {
 	{
@@ -123,6 +128,7 @@ static void __init m5272_uarts_init(void)
 	for (line = 0; (line < nrlines); line++)
 		m5272_uart_init_line(line, m5272_uart_platform[line].irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/
@@ -164,7 +170,11 @@ void __init config_BSP(char *commandp, int size)
 <<<<<<< HEAD
 	mach_sched_init = hw_timer_init;
 =======
+<<<<<<< HEAD
+	mach_sched_init = hw_timer_init;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/
@@ -188,8 +198,11 @@ static int __init init_BSP(void)
 	fixed_phy_add(PHY_POLL, 0, &nettel_fixed_phy_status);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	platform_add_devices(m5272_devices, ARRAY_SIZE(m5272_devices));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

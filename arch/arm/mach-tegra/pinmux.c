@@ -24,7 +24,12 @@
 #include <linux/platform_device.h>
 #include <linux/of_device.h>
 =======
+<<<<<<< HEAD
+#include <linux/platform_device.h>
+#include <linux/of_device.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/iomap.h>
 #include <mach/pinmux.h>
@@ -38,14 +43,20 @@
 #define SLWF(reg)	(((reg) >> 30) & 0x3)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct tegra_pingroup_desc *pingroups;
 static const struct tegra_drive_pingroup_desc *drive_pingroups;
 static int pingroup_max;
 static int drive_max;
+<<<<<<< HEAD
+=======
 =======
 static const struct tegra_pingroup_desc *const pingroups = tegra_soc_pingroups;
 static const struct tegra_drive_pingroup_desc *const drive_pingroups = tegra_soc_drive_pingroups;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static char *tegra_mux_names[TEGRA_MAX_MUX] = {
 	[TEGRA_MUX_AHB_CLK] = "AHB_CLK",
@@ -109,6 +120,9 @@ static char *tegra_mux_names[TEGRA_MAX_MUX] = {
 	[TEGRA_MUX_VI_SENSOR_CLK] = "VI_SENSOR_CLK",
 	[TEGRA_MUX_XIO] = "XIO",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[TEGRA_MUX_BLINK] = "BLINK",
 	[TEGRA_MUX_CEC] = "CEC",
 	[TEGRA_MUX_CLK12] = "CLK12",
@@ -152,8 +166,11 @@ static char *tegra_mux_names[TEGRA_MAX_MUX] = {
 	[TEGRA_MUX_VGP4] = "VGP4",
 	[TEGRA_MUX_VGP5] = "VGP5",
 	[TEGRA_MUX_VGP6] = "VGP6",
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[TEGRA_MUX_SAFE] = "<safe>",
 };
 
@@ -178,10 +195,16 @@ static const char *pingroup_name(int pg)
 {
 	if (pg < 0 || pg >=  pingroup_max)
 =======
+<<<<<<< HEAD
+static const char *pingroup_name(int pg)
+{
+	if (pg < 0 || pg >=  pingroup_max)
+=======
 static const char *pingroup_name(enum tegra_pingroup pg)
 {
 	if (pg < 0 || pg >=  TEGRA_MAX_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return "<UNKNOWN>";
 
 	return pingroups[pg].name;
@@ -234,6 +257,9 @@ static const char *pupd_name(unsigned long val)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int nbanks;
 static void __iomem **regs;
 
@@ -245,6 +271,8 @@ static inline u32 pg_readl(u32 bank, u32 reg)
 static inline void pg_writel(u32 val, u32 bank, u32 reg)
 {
 	writel(val, regs[bank] + reg);
+<<<<<<< HEAD
+=======
 =======
 
 static inline unsigned long pg_readl(unsigned long offset)
@@ -256,6 +284,7 @@ static inline void pg_writel(unsigned long value, unsigned long offset)
 {
 	writel(value, IO_TO_VIRT(TEGRA_APB_MISC_BASE + offset));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int tegra_pinmux_set_func(const struct tegra_pingroup_config *config)
@@ -265,16 +294,22 @@ static int tegra_pinmux_set_func(const struct tegra_pingroup_config *config)
 	unsigned long reg;
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int pg = config->pingroup;
 	enum tegra_mux_func func = config->func;
 
 	if (pg < 0 || pg >=  pingroup_max)
+<<<<<<< HEAD
+=======
 =======
 	enum tegra_pingroup pg = config->pingroup;
 	enum tegra_mux_func func = config->func;
 
 	if (pg < 0 || pg >=  TEGRA_MAX_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (pingroups[pg].mux_reg < 0)
@@ -303,16 +338,22 @@ static int tegra_pinmux_set_func(const struct tegra_pingroup_config *config)
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(pingroups[pg].mux_bank, pingroups[pg].mux_reg);
 	reg &= ~(0x3 << pingroups[pg].mux_bit);
 	reg |= mux << pingroups[pg].mux_bit;
 	pg_writel(reg, pingroups[pg].mux_bank, pingroups[pg].mux_reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(pingroups[pg].mux_reg);
 	reg &= ~(0x3 << pingroups[pg].mux_bit);
 	reg |= mux << pingroups[pg].mux_bit;
 	pg_writel(reg, pingroups[pg].mux_reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -322,9 +363,13 @@ static int tegra_pinmux_set_func(const struct tegra_pingroup_config *config)
 <<<<<<< HEAD
 int tegra_pinmux_set_tristate(int pg, enum tegra_tristate tristate)
 =======
+<<<<<<< HEAD
+int tegra_pinmux_set_tristate(int pg, enum tegra_tristate tristate)
+=======
 int tegra_pinmux_set_tristate(enum tegra_pingroup pg,
 	enum tegra_tristate tristate)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long reg;
 	unsigned long flags;
@@ -332,8 +377,12 @@ int tegra_pinmux_set_tristate(enum tegra_pingroup pg,
 <<<<<<< HEAD
 	if (pg < 0 || pg >=  pingroup_max)
 =======
+<<<<<<< HEAD
+	if (pg < 0 || pg >=  pingroup_max)
+=======
 	if (pg < 0 || pg >=  TEGRA_MAX_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (pingroups[pg].tri_reg < 0)
@@ -342,11 +391,16 @@ int tegra_pinmux_set_tristate(enum tegra_pingroup pg,
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(pingroups[pg].tri_bank, pingroups[pg].tri_reg);
 	reg &= ~(0x1 << pingroups[pg].tri_bit);
 	if (tristate)
 		reg |= 1 << pingroups[pg].tri_bit;
 	pg_writel(reg, pingroups[pg].tri_bank, pingroups[pg].tri_reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(pingroups[pg].tri_reg);
 	reg &= ~(0x1 << pingroups[pg].tri_bit);
@@ -354,6 +408,7 @@ int tegra_pinmux_set_tristate(enum tegra_pingroup pg,
 		reg |= 1 << pingroups[pg].tri_bit;
 	pg_writel(reg, pingroups[pg].tri_reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -363,9 +418,13 @@ int tegra_pinmux_set_tristate(enum tegra_pingroup pg,
 <<<<<<< HEAD
 int tegra_pinmux_set_pullupdown(int pg, enum tegra_pullupdown pupd)
 =======
+<<<<<<< HEAD
+int tegra_pinmux_set_pullupdown(int pg, enum tegra_pullupdown pupd)
+=======
 int tegra_pinmux_set_pullupdown(enum tegra_pingroup pg,
 	enum tegra_pullupdown pupd)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long reg;
 	unsigned long flags;
@@ -373,8 +432,12 @@ int tegra_pinmux_set_pullupdown(enum tegra_pingroup pg,
 <<<<<<< HEAD
 	if (pg < 0 || pg >=  pingroup_max)
 =======
+<<<<<<< HEAD
+	if (pg < 0 || pg >=  pingroup_max)
+=======
 	if (pg < 0 || pg >=  TEGRA_MAX_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (pingroups[pg].pupd_reg < 0)
@@ -389,16 +452,22 @@ int tegra_pinmux_set_pullupdown(enum tegra_pingroup pg,
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(pingroups[pg].pupd_bank, pingroups[pg].pupd_reg);
 	reg &= ~(0x3 << pingroups[pg].pupd_bit);
 	reg |= pupd << pingroups[pg].pupd_bit;
 	pg_writel(reg, pingroups[pg].pupd_bank, pingroups[pg].pupd_reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(pingroups[pg].pupd_reg);
 	reg &= ~(0x3 << pingroups[pg].pupd_bit);
 	reg |= pupd << pingroups[pg].pupd_bit;
 	pg_writel(reg, pingroups[pg].pupd_reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -410,8 +479,12 @@ static void tegra_pinmux_config_pingroup(const struct tegra_pingroup_config *con
 <<<<<<< HEAD
 	int pingroup = config->pingroup;
 =======
+<<<<<<< HEAD
+	int pingroup = config->pingroup;
+=======
 	enum tegra_pingroup pingroup = config->pingroup;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_mux_func func     = config->func;
 	enum tegra_pullupdown pupd   = config->pupd;
 	enum tegra_tristate tristate = config->tristate;
@@ -452,10 +525,16 @@ static const char *drive_pinmux_name(int pg)
 {
 	if (pg < 0 || pg >=  drive_max)
 =======
+<<<<<<< HEAD
+static const char *drive_pinmux_name(int pg)
+{
+	if (pg < 0 || pg >=  drive_max)
+=======
 static const char *drive_pinmux_name(enum tegra_drive_pingroup pg)
 {
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return "<UNKNOWN>";
 
 	return drive_pingroups[pg].name;
@@ -483,11 +562,16 @@ static const char *slew_name(unsigned long val)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tegra_drive_pinmux_set_hsm(int pg, enum tegra_hsm hsm)
 {
 	unsigned long flags;
 	u32 reg;
 	if (pg < 0 || pg >=  drive_max)
+<<<<<<< HEAD
+=======
 =======
 static int tegra_drive_pinmux_set_hsm(enum tegra_drive_pingroup pg,
 	enum tegra_hsm hsm)
@@ -496,6 +580,7 @@ static int tegra_drive_pinmux_set_hsm(enum tegra_drive_pingroup pg,
 	u32 reg;
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (hsm != TEGRA_HSM_ENABLE && hsm != TEGRA_HSM_DISABLE)
@@ -506,8 +591,12 @@ static int tegra_drive_pinmux_set_hsm(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 =======
+<<<<<<< HEAD
+	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+=======
 	reg = pg_readl(drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hsm == TEGRA_HSM_ENABLE)
 		reg |= (1 << 2);
 	else
@@ -515,8 +604,12 @@ static int tegra_drive_pinmux_set_hsm(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 =======
+<<<<<<< HEAD
+	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+=======
 	pg_writel(reg, drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -524,11 +617,16 @@ static int tegra_drive_pinmux_set_hsm(enum tegra_drive_pingroup pg,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tegra_drive_pinmux_set_schmitt(int pg, enum tegra_schmitt schmitt)
 {
 	unsigned long flags;
 	u32 reg;
 	if (pg < 0 || pg >=  drive_max)
+<<<<<<< HEAD
+=======
 =======
 static int tegra_drive_pinmux_set_schmitt(enum tegra_drive_pingroup pg,
 	enum tegra_schmitt schmitt)
@@ -537,6 +635,7 @@ static int tegra_drive_pinmux_set_schmitt(enum tegra_drive_pingroup pg,
 	u32 reg;
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (schmitt != TEGRA_SCHMITT_ENABLE && schmitt != TEGRA_SCHMITT_DISABLE)
@@ -547,8 +646,12 @@ static int tegra_drive_pinmux_set_schmitt(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 =======
+<<<<<<< HEAD
+	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+=======
 	reg = pg_readl(drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (schmitt == TEGRA_SCHMITT_ENABLE)
 		reg |= (1 << 3);
 	else
@@ -556,8 +659,12 @@ static int tegra_drive_pinmux_set_schmitt(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 =======
+<<<<<<< HEAD
+	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+=======
 	pg_writel(reg, drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -565,11 +672,16 @@ static int tegra_drive_pinmux_set_schmitt(enum tegra_drive_pingroup pg,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int tegra_drive_pinmux_set_drive(int pg, enum tegra_drive drive)
 {
 	unsigned long flags;
 	u32 reg;
 	if (pg < 0 || pg >=  drive_max)
+<<<<<<< HEAD
+=======
 =======
 static int tegra_drive_pinmux_set_drive(enum tegra_drive_pingroup pg,
 	enum tegra_drive drive)
@@ -578,6 +690,7 @@ static int tegra_drive_pinmux_set_drive(enum tegra_drive_pingroup pg,
 	u32 reg;
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (drive < 0 || drive >= TEGRA_MAX_DRIVE)
@@ -586,16 +699,22 @@ static int tegra_drive_pinmux_set_drive(enum tegra_drive_pingroup pg,
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 	reg &= ~(0x3 << 4);
 	reg |= drive << 4;
 	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(drive_pingroups[pg].reg);
 	reg &= ~(0x3 << 4);
 	reg |= drive << 4;
 	pg_writel(reg, drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -605,8 +724,12 @@ static int tegra_drive_pinmux_set_drive(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 static int tegra_drive_pinmux_set_pull_down(int pg,
 =======
+<<<<<<< HEAD
+static int tegra_drive_pinmux_set_pull_down(int pg,
+=======
 static int tegra_drive_pinmux_set_pull_down(enum tegra_drive_pingroup pg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_pull_strength pull_down)
 {
 	unsigned long flags;
@@ -614,8 +737,12 @@ static int tegra_drive_pinmux_set_pull_down(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	if (pg < 0 || pg >=  drive_max)
 =======
+<<<<<<< HEAD
+	if (pg < 0 || pg >=  drive_max)
+=======
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (pull_down < 0 || pull_down >= TEGRA_MAX_PULL)
@@ -624,16 +751,22 @@ static int tegra_drive_pinmux_set_pull_down(enum tegra_drive_pingroup pg,
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 	reg &= ~(0x1f << 12);
 	reg |= pull_down << 12;
 	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(drive_pingroups[pg].reg);
 	reg &= ~(0x1f << 12);
 	reg |= pull_down << 12;
 	pg_writel(reg, drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -643,8 +776,12 @@ static int tegra_drive_pinmux_set_pull_down(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 static int tegra_drive_pinmux_set_pull_up(int pg,
 =======
+<<<<<<< HEAD
+static int tegra_drive_pinmux_set_pull_up(int pg,
+=======
 static int tegra_drive_pinmux_set_pull_up(enum tegra_drive_pingroup pg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_pull_strength pull_up)
 {
 	unsigned long flags;
@@ -652,8 +789,12 @@ static int tegra_drive_pinmux_set_pull_up(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	if (pg < 0 || pg >=  drive_max)
 =======
+<<<<<<< HEAD
+	if (pg < 0 || pg >=  drive_max)
+=======
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (pull_up < 0 || pull_up >= TEGRA_MAX_PULL)
@@ -662,16 +803,22 @@ static int tegra_drive_pinmux_set_pull_up(enum tegra_drive_pingroup pg,
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 	reg &= ~(0x1f << 12);
 	reg |= pull_up << 12;
 	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(drive_pingroups[pg].reg);
 	reg &= ~(0x1f << 12);
 	reg |= pull_up << 12;
 	pg_writel(reg, drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -681,8 +828,12 @@ static int tegra_drive_pinmux_set_pull_up(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 static int tegra_drive_pinmux_set_slew_rising(int pg,
 =======
+<<<<<<< HEAD
+static int tegra_drive_pinmux_set_slew_rising(int pg,
+=======
 static int tegra_drive_pinmux_set_slew_rising(enum tegra_drive_pingroup pg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_slew slew_rising)
 {
 	unsigned long flags;
@@ -690,8 +841,12 @@ static int tegra_drive_pinmux_set_slew_rising(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	if (pg < 0 || pg >=  drive_max)
 =======
+<<<<<<< HEAD
+	if (pg < 0 || pg >=  drive_max)
+=======
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (slew_rising < 0 || slew_rising >= TEGRA_MAX_SLEW)
@@ -700,16 +855,22 @@ static int tegra_drive_pinmux_set_slew_rising(enum tegra_drive_pingroup pg,
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 	reg &= ~(0x3 << 28);
 	reg |= slew_rising << 28;
 	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(drive_pingroups[pg].reg);
 	reg &= ~(0x3 << 28);
 	reg |= slew_rising << 28;
 	pg_writel(reg, drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -719,8 +880,12 @@ static int tegra_drive_pinmux_set_slew_rising(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 static int tegra_drive_pinmux_set_slew_falling(int pg,
 =======
+<<<<<<< HEAD
+static int tegra_drive_pinmux_set_slew_falling(int pg,
+=======
 static int tegra_drive_pinmux_set_slew_falling(enum tegra_drive_pingroup pg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_slew slew_falling)
 {
 	unsigned long flags;
@@ -728,8 +893,12 @@ static int tegra_drive_pinmux_set_slew_falling(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 	if (pg < 0 || pg >=  drive_max)
 =======
+<<<<<<< HEAD
+	if (pg < 0 || pg >=  drive_max)
+=======
 	if (pg < 0 || pg >=  TEGRA_MAX_DRIVE_PINGROUP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ERANGE;
 
 	if (slew_falling < 0 || slew_falling >= TEGRA_MAX_SLEW)
@@ -738,16 +907,22 @@ static int tegra_drive_pinmux_set_slew_falling(enum tegra_drive_pingroup pg,
 	spin_lock_irqsave(&mux_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = pg_readl(drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
 	reg &= ~(0x3 << 30);
 	reg |= slew_falling << 30;
 	pg_writel(reg, drive_pingroups[pg].reg_bank, drive_pingroups[pg].reg);
+<<<<<<< HEAD
+=======
 =======
 	reg = pg_readl(drive_pingroups[pg].reg);
 	reg &= ~(0x3 << 30);
 	reg |= slew_falling << 30;
 	pg_writel(reg, drive_pingroups[pg].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&mux_lock, flags);
 
@@ -757,8 +932,12 @@ static int tegra_drive_pinmux_set_slew_falling(enum tegra_drive_pingroup pg,
 <<<<<<< HEAD
 static void tegra_drive_pinmux_config_pingroup(int pingroup,
 =======
+<<<<<<< HEAD
+static void tegra_drive_pinmux_config_pingroup(int pingroup,
+=======
 static void tegra_drive_pinmux_config_pingroup(enum tegra_drive_pingroup pingroup,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  enum tegra_hsm hsm,
 					  enum tegra_schmitt schmitt,
 					  enum tegra_drive drive,
@@ -840,8 +1019,12 @@ void tegra_pinmux_set_safe_pinmux_table(const struct tegra_pingroup_config *conf
 <<<<<<< HEAD
 		if (c.pingroup < 0 || c.pingroup >= pingroup_max) {
 =======
+<<<<<<< HEAD
+		if (c.pingroup < 0 || c.pingroup >= pingroup_max) {
+=======
 		if (c.pingroup < 0 || c.pingroup >= TEGRA_MAX_PINGROUP) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			WARN_ON(1);
 			continue;
 		}
@@ -865,8 +1048,12 @@ void tegra_pinmux_config_pinmux_table(const struct tegra_pingroup_config *config
 <<<<<<< HEAD
 		    config[i].pingroup >= pingroup_max) {
 =======
+<<<<<<< HEAD
+		    config[i].pingroup >= pingroup_max) {
+=======
 		    config[i].pingroup >= TEGRA_MAX_PINGROUP) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			WARN_ON(1);
 			continue;
 		}
@@ -887,8 +1074,12 @@ void tegra_pinmux_config_tristate_table(const struct tegra_pingroup_config *conf
 <<<<<<< HEAD
 	int pingroup;
 =======
+<<<<<<< HEAD
+	int pingroup;
+=======
 	enum tegra_pingroup pingroup;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < len; i++) {
 		pingroup = config[i].pingroup;
@@ -910,8 +1101,12 @@ void tegra_pinmux_config_pullupdown_table(const struct tegra_pingroup_config *co
 <<<<<<< HEAD
 	int pingroup;
 =======
+<<<<<<< HEAD
+	int pingroup;
+=======
 	enum tegra_pingroup pingroup;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < len; i++) {
 		pingroup = config[i].pingroup;
@@ -926,6 +1121,9 @@ void tegra_pinmux_config_pullupdown_table(const struct tegra_pingroup_config *co
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct of_device_id tegra_pinmux_of_match[] __devinitdata = {
 #ifdef CONFIG_ARCH_TEGRA_2x_SOC
 	{ .compatible = "nvidia,tegra20-pinmux", tegra20_pinmux_init },
@@ -1039,8 +1237,11 @@ static int __init tegra_pinmux_init(void)
 }
 postcore_initcall(tegra_pinmux_init);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef	CONFIG_DEBUG_FS
 
 #include <linux/debugfs.h>
@@ -1063,8 +1264,13 @@ static int dbg_pinmux_show(struct seq_file *s, void *unused)
 	for (i = 0; i < pingroup_max; i++) {
 		unsigned long reg;
 =======
+<<<<<<< HEAD
+	for (i = 0; i < pingroup_max; i++) {
+		unsigned long reg;
+=======
 	for (i = 0; i < TEGRA_MAX_PINGROUP; i++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long tri;
 		unsigned long mux;
 		unsigned long pupd;
@@ -1082,9 +1288,15 @@ static int dbg_pinmux_show(struct seq_file *s, void *unused)
 					pingroups[i].mux_reg);
 			mux = (reg >> pingroups[i].mux_bit) & 0x3;
 =======
+<<<<<<< HEAD
+			reg = pg_readl(pingroups[i].mux_bank,
+					pingroups[i].mux_reg);
+			mux = (reg >> pingroups[i].mux_bit) & 0x3;
+=======
 			mux = (pg_readl(pingroups[i].mux_reg) >>
 			       pingroups[i].mux_bit) & 0x3;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (pingroups[i].funcs[mux] == TEGRA_MUX_RSVD) {
 				seq_printf(s, "TEGRA_MUX_RSVD%1lu", mux+1);
 				len = 5;
@@ -1105,9 +1317,15 @@ static int dbg_pinmux_show(struct seq_file *s, void *unused)
 					pingroups[i].pupd_reg);
 			pupd = (reg >> pingroups[i].pupd_bit) & 0x3;
 =======
+<<<<<<< HEAD
+			reg = pg_readl(pingroups[i].pupd_bank,
+					pingroups[i].pupd_reg);
+			pupd = (reg >> pingroups[i].pupd_bit) & 0x3;
+=======
 			pupd = (pg_readl(pingroups[i].pupd_reg) >>
 				pingroups[i].pupd_bit) & 0x3;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			seq_printf(s, "TEGRA_PUPD_%s", pupd_name(pupd));
 			len = strlen(pupd_name(pupd));
 		}
@@ -1121,9 +1339,15 @@ static int dbg_pinmux_show(struct seq_file *s, void *unused)
 					pingroups[i].tri_reg);
 			tri = (reg >> pingroups[i].tri_bit) & 0x1;
 =======
+<<<<<<< HEAD
+			reg = pg_readl(pingroups[i].tri_bank,
+					pingroups[i].tri_reg);
+			tri = (reg >> pingroups[i].tri_bit) & 0x1;
+=======
 			tri = (pg_readl(pingroups[i].tri_reg) >>
 			       pingroups[i].tri_bit) & 0x1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			seq_printf(s, "TEGRA_TRI_%s", tri_name(tri));
 		}
@@ -1152,8 +1376,12 @@ static int dbg_drive_pinmux_show(struct seq_file *s, void *unused)
 <<<<<<< HEAD
 	for (i = 0; i < drive_max; i++) {
 =======
+<<<<<<< HEAD
+	for (i = 0; i < drive_max; i++) {
+=======
 	for (i = 0; i < TEGRA_MAX_DRIVE_PINGROUP; i++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 reg;
 
 		seq_printf(s, "\t{TEGRA_DRIVE_PINGROUP_%s",
@@ -1166,8 +1394,13 @@ static int dbg_drive_pinmux_show(struct seq_file *s, void *unused)
 		reg = pg_readl(drive_pingroups[i].reg_bank,
 				drive_pingroups[i].reg);
 =======
+<<<<<<< HEAD
+		reg = pg_readl(drive_pingroups[i].reg_bank,
+				drive_pingroups[i].reg);
+=======
 		reg = pg_readl(drive_pingroups[i].reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (HSM_EN(reg)) {
 			seq_printf(s, "TEGRA_HSM_ENABLE");
 			len = 16;

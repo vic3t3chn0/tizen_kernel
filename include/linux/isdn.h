@@ -71,8 +71,12 @@
 <<<<<<< HEAD
 #define ISDN_NET_ENCAP_X25IFACE   7 /* Documentation/networking/x25-iface.txt */
 =======
+<<<<<<< HEAD
+#define ISDN_NET_ENCAP_X25IFACE   7 /* Documentation/networking/x25-iface.txt */
+=======
 #define ISDN_NET_ENCAP_X25IFACE   7 /* Documentation/networking/x25-iface.txt*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ISDN_NET_ENCAP_MAX_ENCAP  ISDN_NET_ENCAP_X25IFACE
 
 /* Facility which currently uses an ISDN-channel */
@@ -194,8 +198,12 @@ typedef struct {
 <<<<<<< HEAD
 #include <linux/ppp-ioctl.h>
 =======
+<<<<<<< HEAD
+#include <linux/ppp-ioctl.h>
+=======
 #include <linux/if_ppp.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/isdn_ppp.h>
 #endif

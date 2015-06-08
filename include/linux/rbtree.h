@@ -132,6 +132,8 @@ static inline void rb_set_color(struct rb_node *rb, int color)
 #define RB_ROOT	(struct rb_root) { NULL, }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 static inline void rb_root_init(struct rb_root *root, struct rb_node *node)
 {
@@ -144,6 +146,7 @@ static inline void rb_root_init(struct rb_root *root, struct rb_node *node)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	rb_entry(ptr, type, member) container_of(ptr, type, member)
 
 #define RB_EMPTY_ROOT(root)	((root)->rb_node == NULL)

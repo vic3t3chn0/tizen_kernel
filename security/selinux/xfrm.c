@@ -49,8 +49,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "avc.h"
 #include "objsec.h"
@@ -317,8 +321,12 @@ int selinux_xfrm_policy_clone(struct xfrm_sec_ctx *old_ctx,
 <<<<<<< HEAD
 				  GFP_KERNEL);
 =======
+<<<<<<< HEAD
+				  GFP_KERNEL);
+=======
 				  GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!new_ctx)
 			return -ENOMEM;
 

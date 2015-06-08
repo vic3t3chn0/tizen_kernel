@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/kref.h>
 =======
+<<<<<<< HEAD
+#include <linux/kref.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ktime.h>
 #include <linux/list.h>
 #include <linux/spinlock.h>
@@ -31,7 +35,11 @@ struct sync_fence;
 <<<<<<< HEAD
 struct seq_file;
 =======
+<<<<<<< HEAD
+struct seq_file;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct sync_timeline_ops - sync object implementation ops
@@ -51,11 +59,16 @@ struct seq_file;
  * @print_obj:		deprecated
  * @print_pt:		deprecated
 =======
+<<<<<<< HEAD
+ * @print_obj:		deprecated
+ * @print_pt:		deprecated
+=======
  * @print_obj:		print aditional debug information about sync_timeline.
  *			  should not print a newline
  * @print_pt:		print aditional debug information about sync_pt.
  *			  should not print a newline
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @fill_driver_data:	write implmentation specific driver data to data.
  *			  should return an error if there is not enough room
  *			  as specified by size.  This information is returned
@@ -64,7 +77,12 @@ struct seq_file;
  * @timeline_value_str: fill str with the value of the sync_timeline's counter
  * @pt_value_str:	fill str with the value of the sync_pt
 =======
+<<<<<<< HEAD
+ * @timeline_value_str: fill str with the value of the sync_timeline's counter
+ * @pt_value_str:	fill str with the value of the sync_pt
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct sync_timeline_ops {
 	const char *driver_name;
@@ -85,11 +103,16 @@ struct sync_timeline_ops {
 	void (*release_obj)(struct sync_timeline *sync_timeline);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* deprecated */
 	void (*print_obj)(struct seq_file *s,
 			  struct sync_timeline *sync_timeline);
 
 	/* deprecated */
+<<<<<<< HEAD
+=======
 =======
 	/* optional */
 	void (*print_obj)(struct seq_file *s,
@@ -97,11 +120,15 @@ struct sync_timeline_ops {
 
 	/* optional */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void (*print_pt)(struct seq_file *s, struct sync_pt *sync_pt);
 
 	/* optional */
 	int (*fill_driver_data)(struct sync_pt *syncpt, void *data, int size);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* optional */
 	void (*timeline_value_str)(struct sync_timeline *timeline, char *str,
@@ -109,8 +136,11 @@ struct sync_timeline_ops {
 
 	/* optional */
 	void (*pt_value_str)(struct sync_pt *pt, char *str, int size);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -118,7 +148,11 @@ struct sync_timeline_ops {
 <<<<<<< HEAD
  * @kref:		reference count on fence.
 =======
+<<<<<<< HEAD
+ * @kref:		reference count on fence.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ops:		ops that define the implementaiton of the sync_timeline
  * @name:		name of the sync_timeline. Useful for debugging
  * @destoryed:		set when sync_timeline is destroyed
@@ -134,9 +168,15 @@ struct sync_timeline {
 	const struct sync_timeline_ops	*ops;
 	char			name[64];
 =======
+<<<<<<< HEAD
+	struct kref		kref;
+	const struct sync_timeline_ops	*ops;
+	char			name[64];
+=======
 	const struct sync_timeline_ops	*ops;
 	char			name[32];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* protected by child_list_lock */
 	bool			destroyed;
@@ -158,7 +198,11 @@ struct sync_timeline {
 <<<<<<< HEAD
  * @signaled_list:	membership in temorary signaled_list on stack
 =======
+<<<<<<< HEAD
+ * @signaled_list:	membership in temorary signaled_list on stack
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @fence:		sync_fence to which the sync_pt belongs
  * @pt_list:		membership in sync_fence.pt_list_head
  * @status:		1: signaled, 0:active, <0: error
@@ -173,7 +217,11 @@ struct sync_pt {
 <<<<<<< HEAD
 	struct list_head	signaled_list;
 =======
+<<<<<<< HEAD
+	struct list_head	signaled_list;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct sync_fence	*fence;
 	struct list_head	pt_list;
@@ -190,7 +238,11 @@ struct sync_pt {
 <<<<<<< HEAD
  * @kref:		referenace count on fence.
 =======
+<<<<<<< HEAD
+ * @kref:		referenace count on fence.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @name:		name of sync_fence.  Useful for debugging
  * @pt_list_head:	list of sync_pts in ths fence.  immutable once fence
  *			  is created
@@ -206,7 +258,11 @@ struct sync_fence {
 <<<<<<< HEAD
 	struct kref		kref;
 =======
+<<<<<<< HEAD
+	struct kref		kref;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char			name[32];
 
 	/* this list is immutable once the fence is created */
@@ -222,12 +278,18 @@ struct sync_fence {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sync_fence_waiter;
 typedef void (*sync_callback_t)(struct sync_fence *fence,
 				struct sync_fence_waiter *waiter);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct sync_fence_waiter - metadata for asynchronous waiter on a fence
  * @waiter_list:	membership in sync_fence.waiter_list_head
@@ -238,6 +300,9 @@ struct sync_fence_waiter {
 	struct list_head	waiter_list;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sync_callback_t		callback;
 };
 
@@ -247,12 +312,15 @@ static inline void sync_fence_waiter_init(struct sync_fence_waiter *waiter,
 	waiter->callback = callback;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	void (*callback)(struct sync_fence *fence, void *data);
 	void *callback_data;
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * API for sync_timeline implementers
  */
@@ -366,6 +434,9 @@ void sync_fence_install(struct sync_fence *fence, int fd);
  * sync_fence_wait_async() - registers and async wait on the fence
  * @fence:		fence to wait on
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @waiter:		waiter callback struck
  *
  * Returns 1 if @fence has already signaled.
@@ -389,6 +460,8 @@ int sync_fence_wait_async(struct sync_fence *fence,
  */
 int sync_fence_cancel_async(struct sync_fence *fence,
 			    struct sync_fence_waiter *waiter);
+<<<<<<< HEAD
+=======
 =======
  * @callback:		callback
  * @callback_data	data to pass to the callback
@@ -401,6 +474,7 @@ int sync_fence_wait_async(struct sync_fence *fence,
 			  void (*callback)(struct sync_fence *, void *data),
 			  void *callback_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * sync_fence_wait() - wait on fence
@@ -411,9 +485,14 @@ int sync_fence_wait_async(struct sync_fence *fence,
  * Wait for @fence to be signaled or have an error.  Waits indefinitely
  * if @timeout < 0
 =======
+<<<<<<< HEAD
+ * Wait for @fence to be signaled or have an error.  Waits indefinitely
+ * if @timeout < 0
+=======
  * Wait for @fence to be signaled or have an error.  Waits indefintly
  * if @timeout = 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int sync_fence_wait(struct sync_fence *fence, long timeout);
 
@@ -477,10 +556,16 @@ struct sync_fence_info_data {
  */
 #define SYNC_IOC_WAIT		_IOW(SYNC_IOC_MAGIC, 0, __s32)
 =======
+<<<<<<< HEAD
+ * pass timeout in milliseconds.  Waits indefinitely timeout < 0.
+ */
+#define SYNC_IOC_WAIT		_IOW(SYNC_IOC_MAGIC, 0, __s32)
+=======
  * pass timeout in milliseconds.
  */
 #define SYNC_IOC_WAIT		_IOW(SYNC_IOC_MAGIC, 0, __u32)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * DOC: SYNC_IOC_MERGE - merge two fences

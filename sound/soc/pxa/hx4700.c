@@ -67,6 +67,8 @@ static int hx4700_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* set codec DAI configuration */
 	ret = snd_soc_dai_set_fmt(codec_dai,
 			SND_SOC_DAIFMT_MSB | SND_SOC_DAIFMT_NB_NF |
@@ -82,6 +84,7 @@ static int hx4700_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set the I2S system clock as output */
 	ret = snd_soc_dai_set_sysclk(cpu_dai, PXA2XX_I2S_SYSCLK, 0,
 			SND_SOC_CLOCK_OUT);
@@ -182,7 +185,12 @@ static struct snd_soc_dai_link hx4700_dai = {
 	.dai_fmt = SND_SOC_DAIFMT_MSB | SND_SOC_DAIFMT_NB_NF |
 		   SND_SOC_DAIFMT_CBS_CFS,
 =======
+<<<<<<< HEAD
+	.dai_fmt = SND_SOC_DAIFMT_MSB | SND_SOC_DAIFMT_NB_NF |
+		   SND_SOC_DAIFMT_CBS_CFS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &hx4700_ops,
 };
 
@@ -192,7 +200,11 @@ static struct snd_soc_card snd_soc_card_hx4700 = {
 <<<<<<< HEAD
 	.owner			= THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner			= THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link		= &hx4700_dai,
 	.num_links		= 1,
 	.dapm_widgets		= hx4700_dapm_widgets,
@@ -222,15 +234,21 @@ static int __devinit hx4700_audio_probe(struct platform_device *pdev)
 	ret = snd_soc_register_card(&snd_soc_card_hx4700);
 	if (ret)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gpio_free_array(hx4700_audio_gpios,
 				ARRAY_SIZE(hx4700_audio_gpios));
 
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 		return ret;
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __devexit hx4700_audio_remove(struct platform_device *pdev)
@@ -258,6 +276,9 @@ static struct platform_driver hx4700_audio_driver = {
 <<<<<<< HEAD
 module_platform_driver(hx4700_audio_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(hx4700_audio_driver);
+=======
 static int __init hx4700_modinit(void)
 {
 	return platform_driver_register(&hx4700_audio_driver);
@@ -271,6 +292,7 @@ static void __exit hx4700_modexit(void)
 
 module_exit(hx4700_modexit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Philipp Zabel");
 MODULE_DESCRIPTION("ALSA SoC iPAQ hx4700");

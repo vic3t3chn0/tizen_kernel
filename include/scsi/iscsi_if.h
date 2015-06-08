@@ -60,12 +60,18 @@ enum iscsi_uevent_e {
 
 	ISCSI_UEVENT_PATH_UPDATE	= UEVENT_BASE + 20,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ISCSI_UEVENT_SET_IFACE_PARAMS	= UEVENT_BASE + 21,
 	ISCSI_UEVENT_PING		= UEVENT_BASE + 22,
 	ISCSI_UEVENT_GET_CHAP		= UEVENT_BASE + 23,
 	ISCSI_UEVENT_DELETE_CHAP	= UEVENT_BASE + 24,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* up events */
 	ISCSI_KEVENT_RECV_PDU		= KEVENT_BASE + 1,
@@ -82,7 +88,13 @@ enum iscsi_uevent_e {
 	ISCSI_KEVENT_HOST_EVENT		= KEVENT_BASE + 10,
 	ISCSI_KEVENT_PING_COMP		= KEVENT_BASE + 11,
 =======
+<<<<<<< HEAD
+	ISCSI_KEVENT_CONN_LOGIN_STATE   = KEVENT_BASE + 9,
+	ISCSI_KEVENT_HOST_EVENT		= KEVENT_BASE + 10,
+	ISCSI_KEVENT_PING_COMP		= KEVENT_BASE + 11,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum iscsi_tgt_dscvr {
@@ -92,6 +104,9 @@ enum iscsi_tgt_dscvr {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum iscsi_host_event_code {
 	ISCSI_EVENT_LINKUP		= 1,
 	ISCSI_EVENT_LINKDOWN,
@@ -99,8 +114,11 @@ enum iscsi_host_event_code {
 	ISCSI_EVENT_MAX,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct iscsi_uevent {
 	uint32_t type; /* k/u events type */
 	uint32_t iferror; /* carries interface or resource errors */
@@ -196,6 +214,9 @@ struct iscsi_uevent {
 			uint32_t	host_no;
 		} set_path;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct msg_set_iface_params {
 			uint32_t	host_no;
 			uint32_t	count;
@@ -220,8 +241,11 @@ struct iscsi_uevent {
 		       uint32_t        host_no;
 		       uint16_t        chap_tbl_idx;
 		} delete_chap;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} u;
 	union {
 		/* messages k -> u */
@@ -244,13 +268,19 @@ struct iscsi_uevent {
 			uint64_t	recv_handle;
 		} recv_req;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct msg_conn_login {
 			uint32_t        sid;
 			uint32_t        cid;
 			uint32_t        state; /* enum iscsi_conn_state */
 		} conn_login;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct msg_conn_error {
 			uint32_t	sid;
 			uint32_t	cid;
@@ -270,6 +300,9 @@ struct iscsi_uevent {
 			uint32_t	host_no;
 		} notify_if_down;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct msg_host_event {
 			uint32_t	host_no;
 			uint32_t	data_size;
@@ -301,11 +334,14 @@ struct iscsi_iface_param_info {
 	uint8_t value[0];	/* length sized value follows */
 } __packed;
 
+<<<<<<< HEAD
+=======
 =======
 	} r;
 } __attribute__ ((aligned (sizeof(uint64_t))));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * To keep the struct iscsi_uevent size the same for userspace code
  * compatibility, the main structure for ISCSI_UEVENT_PATH_UPDATE and
@@ -330,6 +366,9 @@ struct iscsi_path {
 } __attribute__ ((aligned (sizeof(uint64_t))));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* iscsi iface enabled/disabled setting */
 #define ISCSI_IFACE_DISABLE	0x01
 #define ISCSI_IFACE_ENABLE	0x02
@@ -395,8 +434,11 @@ enum iscsi_conn_state {
 	ISCSI_CONN_STATE_CLEANUP_WAIT,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Common error codes
  */
@@ -480,11 +522,19 @@ enum iscsi_param {
 	ISCSI_PARAM_CHAP_IN_IDX,
 	ISCSI_PARAM_CHAP_OUT_IDX,
 =======
+<<<<<<< HEAD
+
+	ISCSI_PARAM_CHAP_IN_IDX,
+	ISCSI_PARAM_CHAP_OUT_IDX,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* must always be last */
 	ISCSI_PARAM_MAX,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define ISCSI_MAX_RECV_DLENGTH		(1ULL << ISCSI_PARAM_MAX_RECV_DLENGTH)
@@ -526,6 +576,7 @@ enum iscsi_param {
 #define ISCSI_TARGET_ALIAS		(1ULL << ISCSI_PARAM_TARGET_ALIAS)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* iSCSI HBA params */
 enum iscsi_host_param {
 	ISCSI_HOST_PARAM_HWADDRESS,
@@ -533,6 +584,9 @@ enum iscsi_host_param {
 	ISCSI_HOST_PARAM_NETDEV_NAME,
 	ISCSI_HOST_PARAM_IPADDRESS,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ISCSI_HOST_PARAM_PORT_STATE,
 	ISCSI_HOST_PARAM_PORT_SPEED,
 	ISCSI_HOST_PARAM_MAX,
@@ -566,6 +620,8 @@ enum iscsi_ping_status_code {
 	ISCSI_PING_MAX_REQ_EXCEEDED		= 0x8,
 	ISCSI_PING_NO_ARP_RECEIVED		= 0x9,
 };
+<<<<<<< HEAD
+=======
 =======
 	ISCSI_HOST_PARAM_MAX,
 };
@@ -575,6 +631,7 @@ enum iscsi_ping_status_code {
 #define ISCSI_HOST_NETDEV_NAME		(1ULL << ISCSI_HOST_PARAM_NETDEV_NAME)
 #define ISCSI_HOST_IPADDRESS		(1ULL << ISCSI_HOST_PARAM_IPADDRESS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define iscsi_ptr(_handle) ((void*)(unsigned long)_handle)
 #define iscsi_handle(_ptr) ((uint64_t)(unsigned long)_ptr)
@@ -600,7 +657,11 @@ enum iscsi_ping_status_code {
 <<<<<<< HEAD
 #define CAP_LOGIN_OFFLOAD	0x4000  /* offload session login */
 =======
+<<<<<<< HEAD
+#define CAP_LOGIN_OFFLOAD	0x4000  /* offload session login */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These flags describes reason of stop_conn() call
@@ -662,6 +723,9 @@ struct iscsi_stats {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum chap_type_e {
 	CHAP_TYPE_OUT,
 	CHAP_TYPE_IN,
@@ -677,6 +741,9 @@ struct iscsi_chap_rec {
 	uint8_t password_length;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

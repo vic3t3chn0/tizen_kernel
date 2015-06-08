@@ -21,8 +21,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -230,8 +233,12 @@ static const struct snd_soc_dapm_widget wm8971_dapm_widgets[] = {
 <<<<<<< HEAD
 	SND_SOC_DAPM_SUPPLY("Mic Bias", WM8971_PWR1, 1, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+	SND_SOC_DAPM_SUPPLY("Mic Bias", WM8971_PWR1, 1, 0, NULL, 0),
+=======
 	SND_SOC_DAPM_MICBIAS("Mic Bias", WM8971_PWR1, 1, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_SOC_DAPM_ADC("Right ADC", "Right Capture", WM8971_PWR1, 2, 0),
 	SND_SOC_DAPM_ADC("Left ADC", "Left Capture", WM8971_PWR1, 3, 0),
 
@@ -263,8 +270,12 @@ static const struct snd_soc_dapm_widget wm8971_dapm_widgets[] = {
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route wm8971_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route wm8971_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* left mixer */
 	{"Left Mixer", "Playback Switch", "Left DAC"},
 	{"Left Mixer", "Left Bypass Switch", "Left Line Mux"},
@@ -343,6 +354,8 @@ static const struct snd_soc_dapm_route audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int wm8971_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -355,6 +368,7 @@ static int wm8971_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct _coeff_div {
 	u32 mclk;
 	u32 rate;
@@ -565,7 +579,13 @@ static int wm8971_set_bias_level(struct snd_soc_codec *codec,
 			snd_soc_cache_sync(codec);
 
 =======
+<<<<<<< HEAD
+		if (codec->dapm.bias_level == SND_SOC_BIAS_OFF)
+			snd_soc_cache_sync(codec);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* mute dac and set vmid to 500k, enable VREF */
 		snd_soc_write(codec, WM8971_PWR1, pwr_reg | 0x0140);
 		break;
@@ -587,8 +607,12 @@ static int wm8971_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8971_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8971_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8971_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= wm8971_pcm_hw_params,
 	.digital_mute	= wm8971_mute,
 	.set_fmt	= wm8971_set_dai_fmt,
@@ -624,8 +648,12 @@ static void wm8971_work(struct work_struct *work)
 <<<<<<< HEAD
 static int wm8971_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8971_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8971_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8971_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -633,6 +661,10 @@ static int wm8971_suspend(struct snd_soc_codec *codec, pm_message_t state)
 
 static int wm8971_resume(struct snd_soc_codec *codec)
 {
+<<<<<<< HEAD
+	u16 reg;
+
+=======
 <<<<<<< HEAD
 	u16 reg;
 
@@ -652,6 +684,7 @@ static int wm8971_resume(struct snd_soc_codec *codec)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8971_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
 	/* charge wm8971 caps */
@@ -694,6 +727,9 @@ static int wm8971_probe(struct snd_soc_codec *codec)
 
 	/* set the update bits */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_update_bits(codec, WM8971_LDAC, 0x0100, 0x0100);
 	snd_soc_update_bits(codec, WM8971_RDAC, 0x0100, 0x0100);
 	snd_soc_update_bits(codec, WM8971_LOUT1V, 0x0100, 0x0100);
@@ -702,6 +738,8 @@ static int wm8971_probe(struct snd_soc_codec *codec)
 	snd_soc_update_bits(codec, WM8971_ROUT2V, 0x0100, 0x0100);
 	snd_soc_update_bits(codec, WM8971_LINVOL, 0x0100, 0x0100);
 	snd_soc_update_bits(codec, WM8971_RINVOL, 0x0100, 0x0100);
+<<<<<<< HEAD
+=======
 =======
 	reg = snd_soc_read(codec, WM8971_LDAC);
 	snd_soc_write(codec, WM8971_LDAC, reg | 0x0100);
@@ -727,6 +765,7 @@ static int wm8971_probe(struct snd_soc_codec *codec)
 				ARRAY_SIZE(wm8971_snd_controls));
 	wm8971_add_widgets(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -752,6 +791,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8971 = {
 	.reg_word_size = sizeof(u16),
 	.reg_cache_default = wm8971_reg,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = wm8971_snd_controls,
 	.num_controls = ARRAY_SIZE(wm8971_snd_controls),
@@ -761,11 +803,14 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8971 = {
 	.num_dapm_routes = ARRAY_SIZE(wm8971_dapm_routes),
 };
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __devinit int wm8971_i2c_probe(struct i2c_client *i2c,
 				      const struct i2c_device_id *id)
 {
@@ -776,8 +821,13 @@ static __devinit int wm8971_i2c_probe(struct i2c_client *i2c,
 	wm8971 = devm_kzalloc(&i2c->dev, sizeof(struct wm8971_priv),
 			      GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	wm8971 = devm_kzalloc(&i2c->dev, sizeof(struct wm8971_priv),
+			      GFP_KERNEL);
+=======
 	wm8971 = kzalloc(sizeof(struct wm8971_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (wm8971 == NULL)
 		return -ENOMEM;
 
@@ -789,9 +839,13 @@ static __devinit int wm8971_i2c_probe(struct i2c_client *i2c,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	if (ret < 0)
 		kfree(wm8971);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -800,8 +854,11 @@ static __devexit int wm8971_i2c_remove(struct i2c_client *client)
 	snd_soc_unregister_codec(&client->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -816,8 +873,12 @@ static struct i2c_driver wm8971_i2c_driver = {
 <<<<<<< HEAD
 		.name = "wm8971",
 =======
+<<<<<<< HEAD
+		.name = "wm8971",
+=======
 		.name = "wm8971-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 	},
 	.probe =    wm8971_i2c_probe,
@@ -826,16 +887,22 @@ static struct i2c_driver wm8971_i2c_driver = {
 };
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init wm8971_modinit(void)
 {
 	int ret = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = i2c_add_driver(&wm8971_i2c_driver);
 	if (ret != 0) {
 		printk(KERN_ERR "Failed to register WM8971 I2C driver: %d\n",
@@ -843,8 +910,11 @@ static int __init wm8971_modinit(void)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 module_init(wm8971_modinit);
@@ -854,10 +924,14 @@ static void __exit wm8971_exit(void)
 <<<<<<< HEAD
 	i2c_del_driver(&wm8971_i2c_driver);
 =======
+<<<<<<< HEAD
+	i2c_del_driver(&wm8971_i2c_driver);
+=======
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
 	i2c_del_driver(&wm8971_i2c_driver);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(wm8971_exit);
 

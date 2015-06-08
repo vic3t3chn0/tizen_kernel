@@ -181,8 +181,12 @@ static void start_caching(struct btrfs_root *root)
 <<<<<<< HEAD
 	BUG_ON(IS_ERR(tsk)); /* -ENOMEM */
 =======
+<<<<<<< HEAD
+	BUG_ON(IS_ERR(tsk)); /* -ENOMEM */
+=======
 	BUG_ON(IS_ERR(tsk));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int btrfs_find_free_ino(struct btrfs_root *root, u64 *objectid)
@@ -278,8 +282,12 @@ void btrfs_unpin_free_ino(struct btrfs_root *root)
 <<<<<<< HEAD
 		BUG_ON(info->bitmap); /* Logic error */
 =======
+<<<<<<< HEAD
+		BUG_ON(info->bitmap); /* Logic error */
+=======
 		BUG_ON(info->bitmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (info->offset > root->cache_progress)
 			goto free;
@@ -410,7 +418,12 @@ int btrfs_save_ino_cache(struct btrfs_root *root,
 	struct btrfs_block_rsv *rsv;
 	u64 num_bytes;
 =======
+<<<<<<< HEAD
+	struct btrfs_block_rsv *rsv;
+	u64 num_bytes;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 alloc_hint = 0;
 	int ret;
 	int prealloc;
@@ -435,6 +448,9 @@ int btrfs_save_ino_cache(struct btrfs_root *root,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rsv = trans->block_rsv;
 	trans->block_rsv = &root->fs_info->trans_block_rsv;
 
@@ -461,6 +477,8 @@ again:
 
 	if (IS_ERR(inode)) {
 		BUG_ON(retry); /* Logic error */
+<<<<<<< HEAD
+=======
 =======
 again:
 	inode = lookup_free_ino_inode(root, path);
@@ -472,6 +490,7 @@ again:
 	if (IS_ERR(inode)) {
 		BUG_ON(retry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retry = true;
 
 		ret = create_free_ino_inode(root, trans, path);
@@ -479,14 +498,21 @@ again:
 <<<<<<< HEAD
 			goto out_release;
 =======
+<<<<<<< HEAD
+			goto out_release;
+=======
 			goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto again;
 	}
 
 	BTRFS_I(inode)->generation = 0;
 	ret = btrfs_update_inode(trans, root, inode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		btrfs_abort_transaction(trans, root, ret);
 		goto out_put;
@@ -498,6 +524,8 @@ again:
 			btrfs_abort_transaction(trans, root, ret);
 			goto out_put;
 		}
+<<<<<<< HEAD
+=======
 =======
 	WARN_ON(ret);
 
@@ -506,6 +534,7 @@ again:
 		if (ret)
 			goto out_put;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	spin_lock(&root->cache_lock);
@@ -528,14 +557,21 @@ again:
 <<<<<<< HEAD
 	ret = btrfs_delalloc_reserve_space(inode, prealloc);
 =======
+<<<<<<< HEAD
+	ret = btrfs_delalloc_reserve_space(inode, prealloc);
+=======
 	ret = btrfs_check_data_free_space(inode, prealloc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto out_put;
 
 	ret = btrfs_prealloc_file_range_trans(inode, trans, 0, 0, prealloc,
 					      prealloc, prealloc, &alloc_hint);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		btrfs_delalloc_release_space(inode, prealloc);
 		goto out_put;
@@ -552,6 +588,8 @@ out_release:
 out:
 	trans->block_rsv = rsv;
 	trans->bytes_reserved = num_bytes;
+<<<<<<< HEAD
+=======
 =======
 	if (ret)
 		goto out_put;
@@ -563,6 +601,7 @@ out:
 	if (ret == 0)
 		ret = btrfs_write_out_ino_cache(root, trans, path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	btrfs_free_path(path);
 	return ret;
@@ -590,8 +629,12 @@ static int btrfs_find_highest_objectid(struct btrfs_root *root, u64 *objectid)
 <<<<<<< HEAD
 	BUG_ON(ret == 0); /* Corruption */
 =======
+<<<<<<< HEAD
+	BUG_ON(ret == 0); /* Corruption */
+=======
 	BUG_ON(ret == 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (path->slots[0] > 0) {
 		slot = path->slots[0] - 1;
 		l = path->nodes[0];

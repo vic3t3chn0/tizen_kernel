@@ -27,8 +27,13 @@
  * Please see Documentation/filesystems/configfs/configfs.txt for more
  * information.
 =======
+<<<<<<< HEAD
+ * Please see Documentation/filesystems/configfs/configfs.txt for more
+ * information.
+=======
  * Please see Documentation/filesystems/configfs.txt for more information.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #undef DEBUG
@@ -50,9 +55,12 @@ static struct lock_class_key default_group_class[MAX_LOCK_DEPTH];
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct super_block * configfs_sb;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct address_space_operations configfs_aops = {
 	.readpage	= simple_readpage,
 	.write_begin	= simple_write_begin,
@@ -126,8 +134,12 @@ int configfs_setattr(struct dentry * dentry, struct iattr * iattr)
 <<<<<<< HEAD
 static inline void set_default_inode_attr(struct inode * inode, umode_t mode)
 =======
+<<<<<<< HEAD
+static inline void set_default_inode_attr(struct inode * inode, umode_t mode)
+=======
 static inline void set_default_inode_attr(struct inode * inode, mode_t mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	inode->i_mode = mode;
 	inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
@@ -144,15 +156,21 @@ static inline void set_inode_attr(struct inode * inode, struct iattr * iattr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct inode *configfs_new_inode(umode_t mode, struct configfs_dirent *sd,
 				 struct super_block *s)
 {
 	struct inode * inode = new_inode(s);
+<<<<<<< HEAD
+=======
 =======
 struct inode * configfs_new_inode(mode_t mode, struct configfs_dirent * sd)
 {
 	struct inode * inode = new_inode(configfs_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (inode) {
 		inode->i_ino = get_next_ino();
 		inode->i_mapping->a_ops = &configfs_aops;
@@ -204,6 +222,9 @@ static void configfs_set_inode_lock_class(struct configfs_dirent *sd,
 #endif /* CONFIG_LOCKDEP */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int configfs_create(struct dentry * dentry, umode_t mode, int (*init)(struct inode *))
 {
 	int error = 0;
@@ -236,6 +257,8 @@ int configfs_create(struct dentry * dentry, umode_t mode, int (*init)(struct ino
 	d_instantiate(dentry, inode);
 	if (S_ISDIR(mode) || S_ISLNK(mode))
 		dget(dentry);  /* pin link and directory dentries in core */
+<<<<<<< HEAD
+=======
 =======
 int configfs_create(struct dentry * dentry, int mode, int (*init)(struct inode *))
 {
@@ -271,6 +294,7 @@ int configfs_create(struct dentry * dentry, int mode, int (*init)(struct inode *
 		iput(inode);
  Done:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -348,8 +372,12 @@ int __init configfs_inode_init(void)
 <<<<<<< HEAD
 void configfs_inode_exit(void)
 =======
+<<<<<<< HEAD
+void configfs_inode_exit(void)
+=======
 void __exit configfs_inode_exit(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	bdi_destroy(&configfs_backing_dev_info);
 }

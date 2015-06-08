@@ -17,7 +17,15 @@
 
 #include "bfad_drv.h"
 #include "bfa_ioc.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "bfi_reg.h"
+=======
 #include "bfi_cbreg.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "bfi_cbreg.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "bfa_defs.h"
 
 BFA_TRC_FILE(CNA, IOC_CB);
@@ -69,6 +77,11 @@ bfa_ioc_set_cb_hwif(struct bfa_ioc_s *ioc)
 static bfa_boolean_t
 bfa_ioc_cb_firmware_lock(struct bfa_ioc_s *ioc)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bfi_ioc_image_hdr_s fwhdr;
 	uint32_t fwstate = readl(ioc->ioc_regs.ioc_fwstate);
 
@@ -84,6 +97,10 @@ bfa_ioc_cb_firmware_lock(struct bfa_ioc_s *ioc)
 	bfa_trc(ioc, fwhdr.exec);
 	writel(BFI_IOC_UNINIT, ioc->ioc_regs.ioc_fwstate);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return BFA_TRUE;
 }
 
@@ -98,7 +115,15 @@ bfa_ioc_cb_firmware_unlock(struct bfa_ioc_s *ioc)
 static void
 bfa_ioc_cb_notify_fail(struct bfa_ioc_s *ioc)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	writel(~0U, ioc->ioc_regs.err_set);
+=======
 	writel(__PSS_ERR_STATUS_SET, ioc->ioc_regs.err_set);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	writel(__PSS_ERR_STATUS_SET, ioc->ioc_regs.err_set);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	readl(ioc->ioc_regs.err_set);
 }
 
@@ -152,8 +177,18 @@ bfa_ioc_cb_reg_init(struct bfa_ioc_s *ioc)
 	 */
 	ioc->ioc_regs.pss_ctl_reg = (rb + PSS_CTL_REG);
 	ioc->ioc_regs.pss_err_status_reg = (rb + PSS_ERR_STATUS_REG);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ioc->ioc_regs.app_pll_fast_ctl_reg = (rb + APP_PLL_LCLK_CTL_REG);
+	ioc->ioc_regs.app_pll_slow_ctl_reg = (rb + APP_PLL_SCLK_CTL_REG);
+=======
 	ioc->ioc_regs.app_pll_fast_ctl_reg = (rb + APP_PLL_400_CTL_REG);
 	ioc->ioc_regs.app_pll_slow_ctl_reg = (rb + APP_PLL_212_CTL_REG);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ioc->ioc_regs.app_pll_fast_ctl_reg = (rb + APP_PLL_400_CTL_REG);
+	ioc->ioc_regs.app_pll_slow_ctl_reg = (rb + APP_PLL_212_CTL_REG);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * IOC semaphore registers and serialization
@@ -285,6 +320,23 @@ bfa_ioc_cb_sync_complete(struct bfa_ioc_s *ioc)
 }
 
 bfa_status_t
+<<<<<<< HEAD
+<<<<<<< HEAD
+bfa_ioc_cb_pll_init(void __iomem *rb, enum bfi_asic_mode fcmode)
+{
+	u32	pll_sclk, pll_fclk;
+
+	pll_sclk = __APP_PLL_SCLK_ENABLE | __APP_PLL_SCLK_LRESETN |
+		__APP_PLL_SCLK_P0_1(3U) |
+		__APP_PLL_SCLK_JITLMT0_1(3U) |
+		__APP_PLL_SCLK_CNTLMT0_1(3U);
+	pll_fclk = __APP_PLL_LCLK_ENABLE | __APP_PLL_LCLK_LRESETN |
+		__APP_PLL_LCLK_RSEL200500 | __APP_PLL_LCLK_P0_1(3U) |
+		__APP_PLL_LCLK_JITLMT0_1(3U) |
+		__APP_PLL_LCLK_CNTLMT0_1(3U);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bfa_ioc_cb_pll_init(void __iomem *rb, bfa_boolean_t fcmode)
 {
 	u32	pll_sclk, pll_fclk;
@@ -297,6 +349,10 @@ bfa_ioc_cb_pll_init(void __iomem *rb, bfa_boolean_t fcmode)
 		__APP_PLL_400_RSEL200500 | __APP_PLL_400_P0_1(3U) |
 		__APP_PLL_400_JITLMT0_1(3U) |
 		__APP_PLL_400_CNTLMT0_1(3U);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(BFI_IOC_UNINIT, (rb + BFA_IOC0_STATE_REG));
 	writel(BFI_IOC_UNINIT, (rb + BFA_IOC1_STATE_REG));
 	writel(0xffffffffU, (rb + HOSTFN0_INT_MSK));
@@ -305,6 +361,29 @@ bfa_ioc_cb_pll_init(void __iomem *rb, bfa_boolean_t fcmode)
 	writel(0xffffffffU, (rb + HOSTFN1_INT_STATUS));
 	writel(0xffffffffU, (rb + HOSTFN0_INT_MSK));
 	writel(0xffffffffU, (rb + HOSTFN1_INT_MSK));
+<<<<<<< HEAD
+<<<<<<< HEAD
+	writel(__APP_PLL_SCLK_LOGIC_SOFT_RESET, rb + APP_PLL_SCLK_CTL_REG);
+	writel(__APP_PLL_SCLK_BYPASS | __APP_PLL_SCLK_LOGIC_SOFT_RESET,
+			rb + APP_PLL_SCLK_CTL_REG);
+	writel(__APP_PLL_LCLK_LOGIC_SOFT_RESET, rb + APP_PLL_LCLK_CTL_REG);
+	writel(__APP_PLL_LCLK_BYPASS | __APP_PLL_LCLK_LOGIC_SOFT_RESET,
+			rb + APP_PLL_LCLK_CTL_REG);
+	udelay(2);
+	writel(__APP_PLL_SCLK_LOGIC_SOFT_RESET, rb + APP_PLL_SCLK_CTL_REG);
+	writel(__APP_PLL_LCLK_LOGIC_SOFT_RESET, rb + APP_PLL_LCLK_CTL_REG);
+	writel(pll_sclk | __APP_PLL_SCLK_LOGIC_SOFT_RESET,
+			rb + APP_PLL_SCLK_CTL_REG);
+	writel(pll_fclk | __APP_PLL_LCLK_LOGIC_SOFT_RESET,
+			rb + APP_PLL_LCLK_CTL_REG);
+	udelay(2000);
+	writel(0xffffffffU, (rb + HOSTFN0_INT_STATUS));
+	writel(0xffffffffU, (rb + HOSTFN1_INT_STATUS));
+	writel(pll_sclk, (rb + APP_PLL_SCLK_CTL_REG));
+	writel(pll_fclk, (rb + APP_PLL_LCLK_CTL_REG));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(__APP_PLL_212_LOGIC_SOFT_RESET, rb + APP_PLL_212_CTL_REG);
 	writel(__APP_PLL_212_BYPASS | __APP_PLL_212_LOGIC_SOFT_RESET,
 			rb + APP_PLL_212_CTL_REG);
@@ -323,6 +402,10 @@ bfa_ioc_cb_pll_init(void __iomem *rb, bfa_boolean_t fcmode)
 	writel(0xffffffffU, (rb + HOSTFN1_INT_STATUS));
 	writel(pll_sclk, (rb + APP_PLL_212_CTL_REG));
 	writel(pll_fclk, (rb + APP_PLL_400_CTL_REG));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return BFA_STATUS_OK;
 }

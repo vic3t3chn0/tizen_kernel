@@ -23,8 +23,12 @@
 <<<<<<< HEAD
 #define PERIPH_VIRT		IOMEM(0xf2000000)
 =======
+<<<<<<< HEAD
+#define PERIPH_VIRT		IOMEM(0xf2000000)
+=======
 #define PERIPH_VIRT		0xf2000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PERIPH_SIZE		0x02000000
 
 /*
@@ -35,8 +39,12 @@
 <<<<<<< HEAD
 #define SMEMC_VIRT		IOMEM(0xf6000000)
 =======
+<<<<<<< HEAD
+#define SMEMC_VIRT		IOMEM(0xf6000000)
+=======
 #define SMEMC_VIRT		0xf6000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SMEMC_SIZE		0x00100000
 
 /*
@@ -46,8 +54,12 @@
 <<<<<<< HEAD
 #define DMEMC_VIRT		IOMEM(0xf6100000)
 =======
+<<<<<<< HEAD
+#define DMEMC_VIRT		IOMEM(0xf6100000)
+=======
 #define DMEMC_VIRT		0xf6100000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DMEMC_SIZE		0x00100000
 
 /*
@@ -57,8 +69,12 @@
 <<<<<<< HEAD
 #define IMEMC_VIRT		IOMEM(0xfe000000)
 =======
+<<<<<<< HEAD
+#define IMEMC_VIRT		IOMEM(0xfe000000)
+=======
 #define IMEMC_VIRT		0xfe000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IMEMC_SIZE		0x00100000
 
 #endif /* __ASM_MACH_ADDR_MAP_H */

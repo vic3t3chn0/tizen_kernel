@@ -114,7 +114,11 @@ struct in_addr {
 <<<<<<< HEAD
 #define IP_UNICAST_IF			50
 =======
+<<<<<<< HEAD
+#define IP_UNICAST_IF			50
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MCAST_EXCLUDE	0
 #define MCAST_INCLUDE	1
@@ -189,8 +193,12 @@ struct sockaddr_in {
 <<<<<<< HEAD
   __kernel_sa_family_t	sin_family;	/* Address family		*/
 =======
+<<<<<<< HEAD
+  __kernel_sa_family_t	sin_family;	/* Address family		*/
+=======
   sa_family_t		sin_family;	/* Address family		*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   __be16		sin_port;	/* Port number			*/
   struct in_addr	sin_addr;	/* Internet address		*/
 

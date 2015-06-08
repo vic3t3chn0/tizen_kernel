@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/interrupt.h>
 =======
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 
 #include <linux/socket.h>
@@ -224,8 +228,12 @@ static const struct net_device_ops bnep_netdev_ops = {
 <<<<<<< HEAD
 	.ndo_set_rx_mode     = bnep_net_set_mc_list,
 =======
+<<<<<<< HEAD
+	.ndo_set_rx_mode     = bnep_net_set_mc_list,
+=======
 	.ndo_set_multicast_list = bnep_net_set_mc_list,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_set_mac_address = bnep_net_set_mac_addr,
 	.ndo_tx_timeout      = bnep_net_timeout,
 	.ndo_change_mtu	     = eth_change_mtu,

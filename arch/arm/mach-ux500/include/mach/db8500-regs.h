@@ -27,8 +27,14 @@
 /* This address fulfills the 256k alignment requirement of the lcla base */
 #define U8500_DMA_LCLA_BASE	U8500_ESRAM_BANK4
 =======
+<<<<<<< HEAD
+
+/* This address fulfills the 256k alignment requirement of the lcla base */
+#define U8500_DMA_LCLA_BASE	U8500_ESRAM_BANK4
+=======
 #define U8500_DMA_LCPA_BASE_ED	(U8500_ESRAM_BANK4 + 0x4000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define U8500_PER3_BASE		0x80000000
 #define U8500_STM_BASE		0x80100000
@@ -50,9 +56,14 @@
 #define U8500_PER7_BASE		0xa03d0000
 #define U8500_PER5_BASE		0xa03e0000
 =======
+<<<<<<< HEAD
+#define U8500_PER7_BASE		0xa03d0000
+#define U8500_PER5_BASE		0xa03e0000
+=======
 #define U8500_PER5_BASE		0xa03e0000
 #define U8500_PER7_BASE_ED	0xa03d0000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define U8500_SVA_BASE		0xa0100000
 #define U8500_SIA_BASE		0xa0200000
@@ -61,8 +72,11 @@
 #define U8500_MCDE_BASE		0xa0350000
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define U8500_DMA_BASE_ED	0xa0362000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define U8500_DMA_BASE		0x801C0000	/* v1 */
 
 #define U8500_SBAG_BASE		0xa0390000
@@ -82,6 +96,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* per7 base addresses */
 #define U8500_CR_BASE_ED	(U8500_PER7_BASE_ED + 0x8000)
 #define U8500_MTU0_BASE_ED	(U8500_PER7_BASE_ED + 0xa000)
@@ -90,6 +106,7 @@
 #define U8500_CLKRST7_BASE_ED	(U8500_PER7_BASE_ED + 0xf000)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define U8500_UART0_BASE	(U8500_PER1_BASE + 0x0000)
 #define U8500_UART1_BASE	(U8500_PER1_BASE + 0x1000)
 
@@ -120,15 +137,21 @@
 #define U8500_DMC_BASE		(U8500_PER4_BASE + 0x06000)
 #define U8500_PRCMU_BASE	(U8500_PER4_BASE + 0x07000)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define U8500_PRCMU_TCDM_BASE	(U8500_PER4_BASE + 0x68000)
 #define U8500_PRCMU_TCPM_BASE   (U8500_PER4_BASE + 0x60000)
 #define U8500_PRCMU_TIMER_3_BASE (U8500_PER4_BASE + 0x07338)
 #define U8500_PRCMU_TIMER_4_BASE (U8500_PER4_BASE + 0x07450)
+<<<<<<< HEAD
+=======
 =======
 #define U8500_PRCMU_TCDM_BASE_V1 (U8500_PER4_BASE + 0x0f000)
 #define U8500_PRCMU_TCDM_BASE	(U8500_PER4_BASE + 0x68000)
 #define U8500_PRCMU_TCPM_BASE   (U8500_PER4_BASE + 0x60000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* per3 base addresses */
 #define U8500_FSMC_BASE		(U8500_PER3_BASE + 0x0000)
@@ -195,5 +218,11 @@
 #define U8500_BB_UID_BASE      (U8500_BACKUPRAM1_BASE + 0xFC0)
 
 =======
+<<<<<<< HEAD
+/* SoC identification number information */
+#define U8500_BB_UID_BASE      (U8500_BACKUPRAM1_BASE + 0xFC0)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

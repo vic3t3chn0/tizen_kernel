@@ -59,9 +59,14 @@
 #include <asm/barrier.h>
 
 =======
+<<<<<<< HEAD
+#include <asm/barrier.h>
+
+=======
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Must define these before including other files, inline functions need them
@@ -383,11 +388,15 @@ static inline int spin_can_lock(spinlock_t *lock)
 <<<<<<< HEAD
 #define assert_spin_locked(lock)	assert_raw_spin_locked(&(lock)->rlock)
 =======
+<<<<<<< HEAD
+#define assert_spin_locked(lock)	assert_raw_spin_locked(&(lock)->rlock)
+=======
 static inline void assert_spin_locked(spinlock_t *lock)
 {
 	assert_raw_spin_locked(&lock->rlock);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Pull the atomic_t declaration:
@@ -396,8 +405,12 @@ static inline void assert_spin_locked(spinlock_t *lock)
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * atomic_dec_and_lock - lock on reaching reference count zero
  * @atomic: the atomic counter

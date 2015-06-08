@@ -10,7 +10,15 @@
 
 /* enable to disorder received bchannels by sequence 2143658798... */
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+  #define REORDER_DEBUG
+=======
 #define REORDER_DEBUG
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define REORDER_DEBUG
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 */
 
 /* frames */
@@ -29,8 +37,18 @@
 
 /* channel structure */
 struct l1oip_chan {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct dchannel		*dch;
+	struct bchannel		*bch;
+=======
 	struct dchannel       	*dch;
 	struct bchannel       	*bch;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct dchannel       	*dch;
+	struct bchannel       	*bch;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			tx_counter;	/* counts xmit bytes/packets */
 	u32			rx_counter;	/* counts recv bytes/packets */
 	u32			codecstate;	/* used by codec to save data */
@@ -60,12 +78,34 @@ struct l1oip {
 	int			limit;		/* limit number of bchannels */
 
 	/* timer */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct timer_list	keep_tl;
+	struct timer_list	timeout_tl;
+=======
 	struct timer_list 	keep_tl;
 	struct timer_list 	timeout_tl;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct timer_list 	keep_tl;
+	struct timer_list 	timeout_tl;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			timeout_on;
 	struct work_struct	workq;
 
 	/* socket */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct socket		*socket;	/* if set, socket is created */
+	struct completion	socket_complete;/* completion of sock thread */
+	struct task_struct	*socket_thread;
+	spinlock_t		socket_lock;	/* access sock outside thread */
+	u32			remoteip;	/* if all set, ip is assigned */
+	u16			localport;	/* must always be set */
+	u16			remoteport;	/* must always be set */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct socket 		*socket;	/* if set, socket is created */
 	struct completion 	socket_complete;/* completion of sock thread */
 	struct task_struct	*socket_thread;
@@ -73,6 +113,10 @@ struct l1oip {
 	u32			remoteip;	/* if all set, ip is assigned */
 	u16	 		localport;	/* must always be set */
 	u16	 		remoteport;	/* must always be set */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sockaddr_in	sin_local;	/* local socket name */
 	struct sockaddr_in	sin_remote;	/* remote socket name */
 	struct msghdr		sendmsg;	/* ip message to send */
@@ -88,4 +132,11 @@ extern int l1oip_alaw_to_ulaw(u8 *data, int len, u8 *result);
 extern int l1oip_ulaw_to_alaw(u8 *data, int len, u8 *result);
 extern void l1oip_4bit_free(void);
 extern int l1oip_4bit_alloc(int ulaw);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

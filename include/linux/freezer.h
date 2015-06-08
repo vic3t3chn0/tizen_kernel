@@ -4,6 +4,9 @@
 #define FREEZER_H_INCLUDED
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/debug_locks.h>
 #include <linux/sched.h>
 #include <linux/wait.h>
@@ -18,6 +21,8 @@ extern bool pm_nosig_freezing;		/* PM nosig freezing in effect */
  * Check if a process has been frozen
  */
 static inline bool frozen(struct task_struct *p)
+<<<<<<< HEAD
+=======
 =======
 #include <linux/sched.h>
 #include <linux/wait.h>
@@ -28,11 +33,15 @@ static inline bool frozen(struct task_struct *p)
  */
 static inline int frozen(struct task_struct *p)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return p->flags & PF_FROZEN;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern bool freezing_slow_path(struct task_struct *p);
 
 /*
@@ -96,6 +105,8 @@ extern bool cgroup_freezing(struct task_struct *task);
 static inline bool cgroup_freezing(struct task_struct *task)
 {
 	return false;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Check if there is a request to freeze a process
@@ -152,6 +163,7 @@ static inline int cgroup_freezing_or_frozen(struct task_struct *task)
 {
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif /* !CONFIG_CGROUP_FREEZER */
 
@@ -163,6 +175,9 @@ static inline int cgroup_freezing_or_frozen(struct task_struct *task)
  * complete.  However, we don't want kernel threads to be frozen in unexpected
  * places, so we allow them to block freeze_processes() instead or to set
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * PF_NOFREEZE if needed. Fortunately, in the ____call_usermodehelper() case the
  * parent won't really block freeze_processes(), since ____call_usermodehelper()
  * (the child) does a little before exec/exit and it can't be frozen before
@@ -385,6 +400,8 @@ static inline void thaw_processes(void) {}
 static inline void thaw_kernel_threads(void) {}
 
 static inline bool try_to_freeze(void) { return false; }
+<<<<<<< HEAD
+=======
 =======
  * PF_NOFREEZE if needed and PF_FREEZER_SKIP is only set for userland vfork
  * parents.  Fortunately, in the ____call_usermodehelper() case the parent won't
@@ -483,12 +500,16 @@ static inline void thaw_processes(void) {}
 
 static inline int try_to_freeze(void) { return 0; }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void freezer_do_not_count(void) {}
 static inline void freezer_count(void) {}
 static inline int freezer_should_skip(struct task_struct *p) { return 0; }
 static inline void set_freezable(void) {}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define freezable_schedule()  schedule()
 
@@ -507,9 +528,12 @@ static inline void set_freezable(void) {}
 
 #define freezable_schedule_hrtimeout_range(expires, delta, mode)	\
 	schedule_hrtimeout_range(expires, delta, mode)
+<<<<<<< HEAD
+=======
 =======
 static inline void set_freezable_with_signal(void) {}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define wait_event_freezable(wq, condition)				\
 		wait_event_interruptible(wq, condition)
@@ -518,6 +542,9 @@ static inline void set_freezable_with_signal(void) {}
 		wait_event_interruptible_timeout(wq, condition, timeout)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define wait_event_freezable_exclusive(wq, condition)			\
 		wait_event_interruptible_exclusive(wq, condition)
 
@@ -527,8 +554,11 @@ static inline void set_freezable_with_signal(void) {}
 #define wait_event_freezekillable_unsafe(wq, condition)			\
 		wait_event_killable(wq, condition)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !CONFIG_FREEZER */
 
 #endif	/* FREEZER_H_INCLUDED */

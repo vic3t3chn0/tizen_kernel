@@ -41,8 +41,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/machdep.h>
 #include <asm/rtas.h>
@@ -65,7 +68,13 @@
 #include <asm/switch_to.h>
 #include <asm/debug.h>
 =======
+<<<<<<< HEAD
+#include <asm/fadump.h>
+#include <asm/switch_to.h>
+#include <asm/debug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_DEBUGGER) || defined(CONFIG_KEXEC)
 int (*__debugger)(struct pt_regs *regs) __read_mostly;
@@ -108,6 +117,9 @@ static inline void pmac_backlight_unblank(void) { }
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static arch_spinlock_t die_lock = __ARCH_SPIN_LOCK_UNLOCKED;
 static int die_owner = -1;
 static unsigned int die_nest_count;
@@ -116,6 +128,8 @@ static int die_counter;
 static unsigned __kprobes long oops_begin(struct pt_regs *regs)
 {
 	int cpu;
+<<<<<<< HEAD
+=======
 =======
 int die(const char *str, struct pt_regs *regs, long err)
 {
@@ -130,6 +144,7 @@ int die(const char *str, struct pt_regs *regs, long err)
 	};
 	static int die_counter;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 
 	if (debugger(regs))
@@ -138,6 +153,9 @@ int die(const char *str, struct pt_regs *regs, long err)
 	oops_enter();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* racy, but better than risking deadlock. */
 	raw_local_irq_save(flags);
 	cpu = smp_processor_id();
@@ -241,6 +259,8 @@ void die(const char *str, struct pt_regs *regs, long err)
 	if (__die(str, regs, err))
 		err = 0;
 	oops_end(flags, regs, err);
+<<<<<<< HEAD
+=======
 =======
 	if (die.lock_owner != raw_smp_processor_id()) {
 		console_verbose();
@@ -301,6 +321,7 @@ void die(const char *str, struct pt_regs *regs, long err)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void user_single_step_siginfo(struct task_struct *tsk,
@@ -322,17 +343,23 @@ void _exception(int signr, struct pt_regs *regs, int code, unsigned long addr)
 
 	if (!user_mode(regs)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		die("Exception in kernel mode", regs, signr);
 		return;
 	}
 
 	if (show_unhandled_signals && unhandled_signal(current, signr)) {
+<<<<<<< HEAD
+=======
 =======
 		if (die("Exception in kernel mode", regs, signr))
 			return;
 	} else if (show_unhandled_signals &&
 		   unhandled_signal(current, signr)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk_ratelimited(regs->msr & MSR_64BIT ? fmt64 : fmt32,
 				   current->comm, current->pid, signr,
 				   addr, regs->nip, regs->link, code);
@@ -343,7 +370,13 @@ void _exception(int signr, struct pt_regs *regs, int code, unsigned long addr)
 		local_irq_enable();
 
 =======
+<<<<<<< HEAD
+	if (arch_irqs_disabled() && !arch_irq_disabled_regs(regs))
+		local_irq_enable();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&info, 0, sizeof(info));
 	info.si_signo = signr;
 	info.si_code = code;
@@ -360,6 +393,10 @@ void system_reset_exception(struct pt_regs *regs)
 			return;
 	}
 
+<<<<<<< HEAD
+	die("System Reset", regs, SIGABRT);
+
+=======
 <<<<<<< HEAD
 	die("System Reset", regs, SIGABRT);
 
@@ -384,6 +421,7 @@ void system_reset_exception(struct pt_regs *regs)
 	crash_kexec_secondary(regs);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Must die if the interrupt is not recoverable */
 	if (!(regs->msr & MSR_RI))
 		panic("Unrecoverable System Reset");
@@ -603,6 +641,9 @@ int machine_check_e500mc(struct pt_regs *regs)
 	if (reason & MCSR_DCPERR_MC) {
 		printk("Data Cache Parity Error\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * In write shadow mode we auto-recover from the error, but it
@@ -611,9 +652,12 @@ int machine_check_e500mc(struct pt_regs *regs)
 		 */
 		if (!(mfspr(SPRN_L1CSR2) & L1CSR2_DCWS))
 			recoverable = 0;
+<<<<<<< HEAD
+=======
 =======
 		recoverable = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (reason & MCSR_L2MMU_MHIT) {
@@ -1095,10 +1139,15 @@ static int emulate_instruction(struct pt_regs *regs)
 		mtspr(SPRN_DSCR, regs->gpr[rd]);
 		current->thread.dscr_inherit = 1;
 =======
+<<<<<<< HEAD
+		mtspr(SPRN_DSCR, regs->gpr[rd]);
+		current->thread.dscr_inherit = 1;
+=======
 		current->thread.dscr = regs->gpr[rd];
 		current->thread.dscr_inherit = 1;
 		mtspr(SPRN_DSCR, current->thread.dscr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 #endif
@@ -1149,8 +1198,14 @@ void __kprobes program_check_exception(struct pt_regs *regs)
 	if (!arch_irq_disabled_regs(regs))
 		local_irq_enable();
 =======
+<<<<<<< HEAD
+	/* We restore the interrupt state now */
+	if (!arch_irq_disabled_regs(regs))
+		local_irq_enable();
+=======
 	local_irq_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MATH_EMULATION
 	/* (reason & REASON_ILLEGAL) would be the obvious thing here,
@@ -1201,12 +1256,18 @@ void alignment_exception(struct pt_regs *regs)
 	int sig, code, fixed = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We restore the interrupt state now */
 	if (!arch_irq_disabled_regs(regs))
 		local_irq_enable();
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* we don't implement logging of alignment exceptions */
 	if (!(current->thread.align_ctl & PR_UNALIGN_SIGBUS))
 		fixed = fix_alignment(regs);
@@ -1468,8 +1529,11 @@ void __kprobes DebugException(struct pt_regs *regs, unsigned long debug_status)
 			current->thread.dbcr0 &= ~DBCR0_IC;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ADV_DEBUG_REGS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (DBCR_ACTIVE_EVENTS(current->thread.dbcr0,
 					       current->thread.dbcr1))
 				regs->msr |= MSR_DE;
@@ -1478,8 +1542,11 @@ void __kprobes DebugException(struct pt_regs *regs, unsigned long debug_status)
 				current->thread.dbcr0 &= ~DBCR0_IDM;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		_exception(SIGTRAP, regs, TRAP_TRACE, regs->nip);
@@ -1571,11 +1638,15 @@ void SPEFloatingPointException(struct pt_regs *regs)
 <<<<<<< HEAD
 	flush_spe_to_thread(current);
 =======
+<<<<<<< HEAD
+	flush_spe_to_thread(current);
+=======
 	preempt_disable();
 	if (regs->msr & MSR_SPE)
 		giveup_spe(current);
 	preempt_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spefscr = current->thread.spefscr;
 	fpexc_mode = current->thread.fpexc_mode;

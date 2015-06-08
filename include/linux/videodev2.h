@@ -187,8 +187,11 @@ enum v4l2_memory {
 	V4L2_MEMORY_OVERLAY          = 3,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	V4L2_MEMORY_DMABUF           = 4,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* see also http://vektor.theorem.ca/graphics/ycbcr/ */
@@ -240,6 +243,9 @@ struct v4l2_fract {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
   * struct v4l2_capability - Describes V4L2 device caps returned by VIDIOC_QUERYCAP
   *
@@ -259,6 +265,8 @@ struct v4l2_capability {
 	__u32	capabilities;
 	__u32	device_caps;
 	__u32	reserved[3];
+<<<<<<< HEAD
+=======
 =======
 /*
  *	D R I V E R   C A P A B I L I T I E S
@@ -271,6 +279,7 @@ struct v4l2_capability {
 	__u32	capabilities;	/* Device capabilities */
 	__u32	reserved[4];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Values for 'capabilities' field */
@@ -304,7 +313,12 @@ struct v4l2_capability {
 #define V4L2_CAP_DEVICE_CAPS            0x80000000  /* sets device capabilities field */
 
 =======
+<<<<<<< HEAD
+#define V4L2_CAP_DEVICE_CAPS            0x80000000  /* sets device capabilities field */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	V I D E O   I M A G E   F O R M A T
  */
@@ -382,9 +396,14 @@ struct v4l2_pix_format {
 #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
 #define V4L2_PIX_FMT_NV12MT  v4l2_fourcc('T', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 64x32 macroblocks */
 =======
+<<<<<<< HEAD
+#define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
+#define V4L2_PIX_FMT_NV12MT  v4l2_fourcc('T', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 64x32 macroblocks */
+=======
 #define V4L2_PIX_FMT_NV12M        v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
 #define V4L2_PIX_FMT_NV12MT       v4l2_fourcc('T', 'M', '1', '2') /* 12  Y/CbCr 4:2:0 64x32 macroblocks */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* three non contiguous planes - Y, Cb, Cr */
 #define V4L2_PIX_FMT_YUV420M v4l2_fourcc('Y', 'M', '1', '2') /* 12  YUV420 planar */
@@ -418,6 +437,9 @@ struct v4l2_pix_format {
 #define V4L2_PIX_FMT_H264     v4l2_fourcc('H', '2', '6', '4') /* H264 with start codes */
 #define V4L2_PIX_FMT_H264_NO_SC v4l2_fourcc('A', 'V', 'C', '1') /* H264 without start codes */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define V4L2_PIX_FMT_H263     v4l2_fourcc('H', '2', '6', '3') /* H263          */
 #define V4L2_PIX_FMT_MPEG1    v4l2_fourcc('M', 'P', 'G', '1') /* MPEG-1 ES     */
 #define V4L2_PIX_FMT_MPEG2    v4l2_fourcc('M', 'P', 'G', '2') /* MPEG-2 ES     */
@@ -430,6 +452,8 @@ struct v4l2_pix_format {
 #define V4L2_PIX_FMT_VP8 v4l2_fourcc('V', 'P', '8', '0') /* ON2 VP8 stream */
 #define V4L2_PIX_FMT_HEVC v4l2_fourcc('H', 'E', 'V', 'C') /* for HEVC stream */
 #define V4L2_PIX_FMT_HEVC_HYBRID v4l2_fourcc('H', 'V', 'C', 'H')
+<<<<<<< HEAD
+=======
 =======
 #define V4L2_PIX_FMT_H263     v4l2_fourcc('H', '2', '6', '3') /* H263    */
 #define V4L2_PIX_FMT_MPEG1    v4l2_fourcc('M', 'P', 'G', '1') /* MPEG-1 ES     */
@@ -439,6 +463,7 @@ struct v4l2_pix_format {
 #define V4L2_PIX_FMT_VC1_ANNEX_G v4l2_fourcc('V', 'C', '1', 'G') /* SMPTE 421M Annex G compliant stream */
 #define V4L2_PIX_FMT_VC1_ANNEX_L v4l2_fourcc('V', 'C', '1', 'L') /* SMPTE 421M Annex L compliant stream */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*  Vendor-specific formats   */
 #define V4L2_PIX_FMT_CPIA1    v4l2_fourcc('C', 'P', 'I', 'A') /* cpia1 YUV */
@@ -466,6 +491,9 @@ struct v4l2_pix_format {
 #define V4L2_PIX_FMT_KONICA420  v4l2_fourcc('K', 'O', 'N', 'I') /* YUV420 planar in blocks of 256 pixels */
 #define V4L2_PIX_FMT_JPGL	v4l2_fourcc('J', 'P', 'G', 'L') /* JPEG-Lite */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* se401 janggu compressed rgb */
 #define V4L2_PIX_FMT_SE401      v4l2_fourcc('S', '4', '0', '1')
 /* Composite stats */
@@ -488,11 +516,14 @@ struct v4l2_pix_format {
 #define V4L2_PIX_FMT_STATS_BF   v4l2_fourcc('S', 'T', 'B', 'F')
 /* Bayer hist stats */
 #define V4L2_PIX_FMT_STATS_BHST v4l2_fourcc('B', 'H', 'S', 'T')
+<<<<<<< HEAD
+=======
 =======
 /* RGB x:10:10:10 */
 #define V4L2_PIX_FMT_INTC_RGB30	v4l2_fourcc('R', 'G', 'B', '0')
 #define V4L2_PIX_FMT_SE401      v4l2_fourcc('S', '4', '0', '1') /* se401 janggu compressed rgb */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	F O R M A T   E N U M E R A T I O N
@@ -657,9 +688,12 @@ struct v4l2_requestbuffers {
  *			pointing to this plane
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @fd:			when memory is V4L2_MEMORY_DMABUF, a userspace file
  *			descriptor associated with this plane
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @data_offset:	offset in the plane to the start of data; usually 0,
  *			unless there is a header in front of the data
  *
@@ -676,8 +710,11 @@ struct v4l2_plane {
 		unsigned long	userptr;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		int		fd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} m;
 	__u32			data_offset;
 	__u32			reserved[11];
@@ -702,10 +739,13 @@ struct v4l2_plane {
  *		a userspace pointer pointing to this buffer
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @fd:		for non-multiplanar buffers with
  * 		memory == V4L2_MEMORY_DMABUF; a userspace file descriptor
  *		associated with this buffer
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @planes:	for multiplanar buffers; userspace pointer to the array of plane
  *		info structs for this buffer
  * @length:	size in bytes of the buffer (NOT its payload) for single-plane
@@ -734,8 +774,11 @@ struct v4l2_buffer {
 		struct v4l2_plane *planes;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		int		fd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} m;
 	__u32			length;
 	__u32			input;
@@ -758,6 +801,9 @@ struct v4l2_buffer {
 #define V4L2_BUF_FLAG_NO_CACHE_INVALIDATE	0x0800
 #define V4L2_BUF_FLAG_NO_CACHE_CLEAN		0x1000
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define V4L2_BUF_FLAG_EOS		0x2000
 #define V4L2_QCOM_BUF_FLAG_CODECCONFIG  0x4000
 #define V4L2_QCOM_BUF_FLAG_EOSEQ  0x8000
@@ -769,8 +815,11 @@ struct v4l2_buffer {
 #define V4L2_QCOM_BUF_INPUT_UNSUPPORTED 0x200000
 #define V4L2_QCOM_BUF_FLAG_EOS          0x2000
 #define V4L2_QCOM_BUF_FLAG_READONLY     0x400000
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	O V E R L A Y   P R E V I E W
@@ -832,14 +881,20 @@ struct v4l2_captureparm {
 #define V4L2_MODE_HIGHQUALITY	0x0001	/*  High quality imaging mode */
 #define V4L2_CAP_TIMEPERFRAME	0x1000	/*  timeperframe field is supported */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define V4L2_CAP_QCOM_FRAMESKIP	0x2000	/*  frame skipping is supported */
 
 struct v4l2_qcom_frameskip {
 	__u64		   maxframeinterval;
 	__u8		   fpsvariance;
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct v4l2_outputparm {
 	__u32		   capability;	 /*  Supported modes */
@@ -872,6 +927,9 @@ struct v4l2_crop {
 /* Selection targets */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Current cropping area */
 #define V4L2_SEL_TGT_CROP_ACTIVE	0x0000
 /* Default cropping area */
@@ -886,6 +944,8 @@ struct v4l2_crop {
 #define V4L2_SEL_TGT_COMPOSE_BOUNDS	0x0102
 /* Current composing area plus all padding pixels */
 #define V4L2_SEL_TGT_COMPOSE_PADDED	0x0103
+<<<<<<< HEAD
+=======
 =======
 /* current cropping area */
 #define V4L2_SEL_TGT_CROP_ACTIVE	0
@@ -902,6 +962,7 @@ struct v4l2_crop {
 /* current composing area plus all padding pixels */
 #define V4L2_SEL_TGT_COMPOSE_PADDED	259
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct v4l2_selection - selection info
@@ -914,8 +975,12 @@ struct v4l2_crop {
 <<<<<<< HEAD
  * Hardware may use multiple helper windows to process a video stream.
 =======
+<<<<<<< HEAD
+ * Hardware may use multiple helper windows to process a video stream.
+=======
  * Hardware may use multiple helper window to process a video stream.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The structure is used to exchange this selection areas between
  * an application and a driver.
  */
@@ -1114,6 +1179,8 @@ struct v4l2_dv_enum_preset {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define		V4L2_DV_480P60			19
 #define		V4L2_DV_1080I59_94		20
 #define		V4L2_DV_1080P59_94		21
@@ -1143,6 +1210,7 @@ struct v4l2_dv_enum_preset {
 #define		V4L2_DV_1080P30_TB		44
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	D V 	B T	T I M I N G S
  */
@@ -1300,8 +1368,12 @@ struct v4l2_ext_controls {
 <<<<<<< HEAD
 #define V4L2_CTRL_CLASS_JPEG 0x009d0000		/* JPEG-compression controls */
 =======
+<<<<<<< HEAD
+#define V4L2_CTRL_CLASS_JPEG 0x009d0000		/* JPEG-compression controls */
+=======
 #define V4L2_CTRL_CLASS_FM_RX 0x009d0000	/* FM Tuner control class */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define V4L2_CTRL_ID_MASK      	  (0x0fffffff)
 #define V4L2_CTRL_ID2CLASS(id)    ((id) & 0x0fff0000UL)
@@ -1435,8 +1507,14 @@ enum v4l2_colorfx {
 #define V4L2_CID_SPECIAL_EFFECT			(V4L2_CID_BASE+43)
 /* Minimum number of buffer neede by the device */
 =======
+<<<<<<< HEAD
+#define V4L2_CID_LASTP1                         (V4L2_CID_BASE+42)
+#define V4L2_CID_SPECIAL_EFFECT			(V4L2_CID_BASE+43)
+/* Minimum number of buffer neede by the device */
+=======
 #define V4L2_CID_LASTP1				(V4L2_CID_BASE+42)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*  MPEG-class control IDs defined by V4L2 */
 #define V4L2_CID_MPEG_BASE 			(V4L2_CTRL_CLASS_MPEG | 0x900)
@@ -1580,6 +1658,9 @@ enum v4l2_mpeg_audio_ac3_bitrate {
 	V4L2_MPEG_AUDIO_AC3_BITRATE_640K = 18,
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define V4L2_CID_MPEG_AUDIO_DEC_PLAYBACK	(V4L2_CID_MPEG_BASE+112)
 enum v4l2_mpeg_audio_dec_playback {
 	V4L2_MPEG_AUDIO_DEC_PLAYBACK_AUTO	    = 0,
@@ -1590,8 +1671,11 @@ enum v4l2_mpeg_audio_dec_playback {
 	V4L2_MPEG_AUDIO_DEC_PLAYBACK_SWAPPED_STEREO = 5,
 };
 #define V4L2_CID_MPEG_AUDIO_DEC_MULTILINGUAL_PLAYBACK (V4L2_CID_MPEG_BASE+113)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*  MPEG video controls specific to multiplexed streams */
 #define V4L2_CID_MPEG_VIDEO_ENCODING 		(V4L2_CID_MPEG_BASE+200)
@@ -1632,7 +1716,11 @@ enum v4l2_mpeg_video_header_mode {
 <<<<<<< HEAD
 	V4L2_MPEG_VIDEO_HEADER_MODE_JOINED_WITH_I_FRAME		= 2,
 =======
+<<<<<<< HEAD
+	V4L2_MPEG_VIDEO_HEADER_MODE_JOINED_WITH_I_FRAME		= 2,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 };
 #define V4L2_CID_MPEG_VIDEO_MAX_REF_PIC			(V4L2_CID_MPEG_BASE+217)
@@ -1645,16 +1733,22 @@ enum v4l2_mpeg_video_multi_slice_mode {
 	V4L2_MPEG_VIDEO_MULTI_SICE_MODE_MAX_MB		= 1,
 	V4L2_MPEG_VIDEO_MULTI_SICE_MODE_MAX_BYTES	= 2,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	V4L2_MPEG_VIDEO_MULTI_SLICE_GOB			= 3,
 };
 #define V4L2_CID_MPEG_VIDEO_VBV_SIZE			(V4L2_CID_MPEG_BASE+222)
 #define V4L2_CID_MPEG_VIDEO_DEC_PTS			(V4L2_CID_MPEG_BASE+223)
 #define V4L2_CID_MPEG_VIDEO_DEC_FRAME			(V4L2_CID_MPEG_BASE+224)
 
+<<<<<<< HEAD
+=======
 =======
 };
 #define V4L2_CID_MPEG_VIDEO_VBV_SIZE			(V4L2_CID_MPEG_BASE+222)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define V4L2_CID_MPEG_VIDEO_H263_I_FRAME_QP		(V4L2_CID_MPEG_BASE+300)
 #define V4L2_CID_MPEG_VIDEO_H263_P_FRAME_QP		(V4L2_CID_MPEG_BASE+301)
 #define V4L2_CID_MPEG_VIDEO_H263_B_FRAME_QP		(V4L2_CID_MPEG_BASE+302)
@@ -1694,7 +1788,11 @@ enum v4l2_mpeg_video_h264_level {
 <<<<<<< HEAD
 	V4L2_MPEG_VIDEO_H264_LEVEL_5_2	= 16,
 =======
+<<<<<<< HEAD
+	V4L2_MPEG_VIDEO_H264_LEVEL_5_2	= 16,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #define V4L2_CID_MPEG_VIDEO_H264_LOOP_FILTER_ALPHA	(V4L2_CID_MPEG_BASE+360)
 #define V4L2_CID_MPEG_VIDEO_H264_LOOP_FILTER_BETA	(V4L2_CID_MPEG_BASE+361)
@@ -1726,7 +1824,11 @@ enum v4l2_mpeg_video_h264_profile {
 <<<<<<< HEAD
 	V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_HIGH		= 17,
 =======
+<<<<<<< HEAD
+	V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_HIGH		= 17,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #define V4L2_CID_MPEG_VIDEO_H264_VUI_EXT_SAR_HEIGHT	(V4L2_CID_MPEG_BASE+364)
 #define V4L2_CID_MPEG_VIDEO_H264_VUI_EXT_SAR_WIDTH	(V4L2_CID_MPEG_BASE+365)
@@ -1780,7 +1882,11 @@ enum v4l2_mpeg_video_mpeg4_profile {
 <<<<<<< HEAD
 #define V4L2_CID_QCOM_VIDEO_SYNC_FRAME_SEQ_HDR		(V4L2_CID_MPEG_BASE+408)
 =======
+<<<<<<< HEAD
+#define V4L2_CID_QCOM_VIDEO_SYNC_FRAME_SEQ_HDR		(V4L2_CID_MPEG_BASE+408)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*  MPEG-class control IDs specific to the CX2341x driver as defined by V4L2 */
 #define V4L2_CID_MPEG_CX2341X_BASE 				(V4L2_CTRL_CLASS_MPEG | 0x1000)
@@ -1851,6 +1957,9 @@ enum v4l2_mpeg_mfc51_video_force_frame_type {
 #define V4L2_CID_MPEG_MFC51_VIDEO_H264_NUM_REF_PIC_FOR_P		(V4L2_CID_MPEG_MFC51_BASE+54)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  MPEG-class control IDs specific to the msm_vidc driver */
 #define V4L2_CID_MPEG_MSM_VIDC_BASE		(V4L2_CTRL_CLASS_MPEG | 0x2000)
 
@@ -2056,8 +2165,11 @@ enum v4l2_mpeg_vidc_video_decoder_multi_stream {
 #define V4L2_CID_MPEG_VIDC_VIDEO_CONCEAL_COLOR \
 		(V4L2_CID_MPEG_MSM_VIDC_BASE + 38)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  Camera class control IDs */
 #define V4L2_CID_CAMERA_CLASS_BASE 	(V4L2_CTRL_CLASS_CAMERA | 0x900)
 #define V4L2_CID_CAMERA_CLASS 		(V4L2_CTRL_CLASS_CAMERA | 1)
@@ -2127,6 +2239,8 @@ enum v4l2_preemphasis {
 #define V4L2_CID_TUNE_ANTENNA_CAPACITOR		(V4L2_CID_FM_TX_CLASS_BASE + 114)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* FM Tuner class control IDs */
 #define V4L2_CID_FM_RX_CLASS_BASE		(V4L2_CTRL_CLASS_FM_RX | 0x900)
 #define V4L2_CID_FM_RX_CLASS			(V4L2_CTRL_CLASS_FM_RX | 1)
@@ -2138,6 +2252,7 @@ enum v4l2_deemphasis {
 	V4L2_DEEMPHASIS_75_uS		= 2,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Flash and privacy (indicator) light controls */
 #define V4L2_CID_FLASH_CLASS_BASE		(V4L2_CTRL_CLASS_FLASH | 0x900)
@@ -2177,6 +2292,9 @@ enum v4l2_flash_strobe_source {
 #define V4L2_CID_FLASH_READY			(V4L2_CID_FLASH_CLASS_BASE + 12)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  JPEG-class control IDs defined by V4L2 */
 #define V4L2_CID_JPEG_CLASS_BASE		(V4L2_CTRL_CLASS_JPEG | 0x900)
 #define V4L2_CID_JPEG_CLASS			(V4L2_CTRL_CLASS_JPEG | 1)
@@ -2200,8 +2318,11 @@ enum v4l2_jpeg_chroma_subsampling {
 #define	V4L2_JPEG_ACTIVE_MARKER_DQT		(1 << 17)
 #define	V4L2_JPEG_ACTIVE_MARKER_DHT		(1 << 18)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	T U N I N G
  */
@@ -2354,7 +2475,11 @@ struct v4l2_enc_idx {
 <<<<<<< HEAD
 #define V4L2_ENC_QCOM_CMD_FLUSH  (4)
 =======
+<<<<<<< HEAD
+#define V4L2_ENC_QCOM_CMD_FLUSH  (4)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Flags for V4L2_ENC_CMD_STOP */
 #define V4L2_ENC_CMD_STOP_AT_GOP_END    (1 << 0)
@@ -2370,6 +2495,9 @@ struct v4l2_encoder_cmd {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Decoder commands */
 #define V4L2_DEC_CMD_START       (0)
 #define V4L2_DEC_CMD_STOP        (1)
@@ -2426,8 +2554,11 @@ struct v4l2_decoder_cmd {
 		} raw;
 	};
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 
@@ -2634,6 +2765,9 @@ struct v4l2_streamparm {
 #define V4L2_EVENT_PRIVATE_START		0x08000000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define V4L2_EVENT_MSM_VIDC_START	(V4L2_EVENT_PRIVATE_START + 0x00001000)
 #define V4L2_EVENT_MSM_VIDC_FLUSH_DONE	(V4L2_EVENT_MSM_VIDC_START + 1)
 #define V4L2_EVENT_MSM_VIDC_PORT_SETTINGS_CHANGED_SUFFICIENT	\
@@ -2647,8 +2781,11 @@ struct v4l2_streamparm {
 #define V4L2_EVENT_MSM_VIDC_RELEASE_UNQUEUED_BUFFER \
 		(V4L2_EVENT_MSM_VIDC_START + 7)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Payload for V4L2_EVENT_VSYNC */
 struct v4l2_event_vsync {
 	/* Can be V4L2_FIELD_ANY, _NONE, _TOP or _BOTTOM */
@@ -2681,16 +2818,22 @@ struct v4l2_event {
 	__u32				type;
 	union {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct v4l2_event_vsync		vsync;
 		struct v4l2_event_ctrl		ctrl;
 		struct v4l2_event_frame_sync	frame_sync;
 		__u8				data[64];
+<<<<<<< HEAD
+=======
 =======
 		struct v4l2_event_vsync vsync;
 		struct v4l2_event_ctrl		ctrl;
 		struct v4l2_event_frame_sync	frame_sync;
 		__u8			data[64];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} u;
 	__u32				pending;
 	__u32				sequence;
@@ -2862,13 +3005,19 @@ struct v4l2_create_buffers {
 #define VIDIOC_S_SELECTION	_IOWR('V', 95, struct v4l2_selection)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Experimental, these two ioctls may change over the next couple of kernel
    versions. */
 #define VIDIOC_DECODER_CMD	_IOWR('V', 96, struct v4l2_decoder_cmd)
 #define VIDIOC_TRY_DECODER_CMD	_IOWR('V', 97, struct v4l2_decoder_cmd)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Reminder: when adding new ioctls please add support for them to
    drivers/media/video/v4l2-compat-ioctl32.c as well! */
 

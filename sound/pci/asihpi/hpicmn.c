@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -64,8 +68,12 @@ u16 hpi_validate_response(struct hpi_message *phm, struct hpi_response *phr)
 <<<<<<< HEAD
 		HPI_DEBUG_LOG(ERROR, "header function %d invalid\n",
 =======
+<<<<<<< HEAD
+		HPI_DEBUG_LOG(ERROR, "header function %d invalid\n",
+=======
 		HPI_DEBUG_LOG(ERROR, "header type %d invalid\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			phr->function);
 		return HPI_ERROR_INVALID_RESPONSE;
 	}
@@ -79,8 +87,12 @@ u16 hpi_add_adapter(struct hpi_adapter_obj *pao)
 <<<<<<< HEAD
 	/*HPI_ASSERT(pao->type); */
 =======
+<<<<<<< HEAD
+	/*HPI_ASSERT(pao->type); */
+=======
 	/*HPI_ASSERT(pao->wAdapterType); */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hpios_alistlock_lock(&adapters);
 
@@ -90,6 +102,9 @@ u16 hpi_add_adapter(struct hpi_adapter_obj *pao)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (adapters.adapter[pao->index].type) {
 		int a;
 		for (a = HPI_MAX_ADAPTERS - 1; a >= 0; a--) {
@@ -97,6 +112,8 @@ u16 hpi_add_adapter(struct hpi_adapter_obj *pao)
 				HPI_DEBUG_LOG(WARNING,
 					"ASI%X duplicate index %d moved to %d\n",
 					pao->type, pao->index, a);
+<<<<<<< HEAD
+=======
 =======
 	if (adapters.adapter[pao->index].adapter_type) {
 		int a;
@@ -106,6 +123,7 @@ u16 hpi_add_adapter(struct hpi_adapter_obj *pao)
 					"ASI%X duplicate index %d moved to %d\n",
 					pao->adapter_type, pao->index, a);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				pao->index = a;
 				break;
 			}
@@ -129,8 +147,12 @@ void hpi_delete_adapter(struct hpi_adapter_obj *pao)
 <<<<<<< HEAD
 	if (!pao->type) {
 =======
+<<<<<<< HEAD
+	if (!pao->type) {
+=======
 	if (!pao->adapter_type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		HPI_DEBUG_LOG(ERROR, "removing null adapter?\n");
 		return;
 	}
@@ -139,8 +161,12 @@ void hpi_delete_adapter(struct hpi_adapter_obj *pao)
 <<<<<<< HEAD
 	if (adapters.adapter[pao->index].type)
 =======
+<<<<<<< HEAD
+	if (adapters.adapter[pao->index].type)
+=======
 	if (adapters.adapter[pao->index].adapter_type)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		adapters.gw_num_adapters--;
 	memset(&adapters.adapter[pao->index], 0, sizeof(adapters.adapter[0]));
 	hpios_alistlock_unlock(&adapters);
@@ -165,8 +191,12 @@ struct hpi_adapter_obj *hpi_find_adapter(u16 adapter_index)
 <<<<<<< HEAD
 	if (pao->type != 0) {
 =======
+<<<<<<< HEAD
+	if (pao->type != 0) {
+=======
 	if (pao->adapter_type != 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		   HPI_DEBUG_LOG(VERBOSE, "Found adapter index %d\n",
 		   wAdapterIndex);
@@ -202,8 +232,12 @@ static void subsys_get_adapter(struct hpi_message *phm,
 <<<<<<< HEAD
 		if (adapters.adapter[index].type) {
 =======
+<<<<<<< HEAD
+		if (adapters.adapter[index].type) {
+=======
 		if (adapters.adapter[index].adapter_type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!count)
 				break;
 			count--;
@@ -213,11 +247,16 @@ static void subsys_get_adapter(struct hpi_message *phm,
 	if (index < HPI_MAX_ADAPTERS) {
 		phr->u.s.adapter_index = adapters.adapter[index].index;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		phr->u.s.adapter_type = adapters.adapter[index].type;
 	} else {
 		phr->u.s.adapter_index = 0;
 		phr->u.s.adapter_type = 0;
 		phr->error = HPI_ERROR_INVALID_OBJ_INDEX;
+<<<<<<< HEAD
+=======
 =======
 		phr->u.s.adapter_type = adapters.adapter[index].adapter_type;
 	} else {
@@ -225,6 +264,7 @@ static void subsys_get_adapter(struct hpi_message *phm,
 		phr->u.s.adapter_type = 0;
 		phr->error = HPI_ERROR_BAD_ADAPTER_NUMBER;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -364,9 +404,13 @@ short hpi_check_control_cache(struct hpi_control_cache *p_cache,
 <<<<<<< HEAD
 	size_t response_size;
 =======
+<<<<<<< HEAD
+	size_t response_size;
+=======
 	struct hpi_control_cache_pad *p_pad;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!find_control(phm->obj_index, p_cache, &pI)) {
 		HPI_DEBUG_LOG(VERBOSE,
 			"HPICMN find_control() failed for adap %d\n",
@@ -376,6 +420,9 @@ short hpi_check_control_cache(struct hpi_control_cache *p_cache,
 
 	phr->error = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phr->specific_error = 0;
 	phr->version = 0;
 
@@ -383,8 +430,11 @@ short hpi_check_control_cache(struct hpi_control_cache *p_cache,
 	response_size =
 		sizeof(struct hpi_response_header) +
 		sizeof(struct hpi_control_res);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* pC is the default cached control strucure. May be cast to
 	   something else in the following switch statement.
@@ -392,8 +442,11 @@ short hpi_check_control_cache(struct hpi_control_cache *p_cache,
 	pC = (struct hpi_control_cache_single *)pI;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	p_pad = (struct hpi_control_cache_pad *)pI;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (pI->control_type) {
 
@@ -592,18 +645,24 @@ short hpi_check_control_cache(struct hpi_control_cache *p_cache,
 		pI->control_index, pI->control_type, phm->u.c.attribute);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (found) {
 		phr->size = (u16)response_size;
 		phr->type = HPI_TYPE_RESPONSE;
 		phr->object = phm->object;
 		phr->function = phm->function;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (found)
 		phr->size =
 			sizeof(struct hpi_response_header) +
 			sizeof(struct hpi_control_res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return found;
 }
@@ -706,17 +765,25 @@ struct hpi_control_cache *hpi_alloc_control_cache(const u32 control_count,
 	p_cache->p_info = kcalloc(control_count, sizeof(*p_cache->p_info),
 				  GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	p_cache->p_info = kcalloc(control_count, sizeof(*p_cache->p_info),
+				  GFP_KERNEL);
+=======
 	p_cache->p_info =
 		kmalloc(sizeof(*p_cache->p_info) * control_count, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!p_cache->p_info) {
 		kfree(p_cache);
 		return NULL;
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(p_cache->p_info, 0, sizeof(*p_cache->p_info) * control_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p_cache->cache_size_in_bytes = size_in_bytes;
 	p_cache->control_count = control_count;
 	p_cache->p_cache = p_dsp_control_buffer;
@@ -765,8 +832,12 @@ void HPI_COMMON(struct hpi_message *phm, struct hpi_response *phr)
 <<<<<<< HEAD
 	case HPI_TYPE_REQUEST:
 =======
+<<<<<<< HEAD
+	case HPI_TYPE_REQUEST:
+=======
 	case HPI_TYPE_MESSAGE:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (phm->object) {
 		case HPI_OBJ_SUBSYSTEM:
 			subsys_message(phm, phr);

@@ -47,7 +47,11 @@
 <<<<<<< HEAD
 #include <asm/setup.h>
 =======
+<<<<<<< HEAD
+#include <asm/setup.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int gcmp_present = -1;
 int gic_present;
@@ -329,8 +333,12 @@ static struct irqaction irq_resched = {
 <<<<<<< HEAD
 	.flags		= IRQF_PERCPU,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_PERCPU,
+=======
 	.flags		= IRQF_DISABLED|IRQF_PERCPU,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "IPI_resched"
 };
 
@@ -339,8 +347,12 @@ static struct irqaction irq_call = {
 <<<<<<< HEAD
 	.flags		= IRQF_PERCPU,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_PERCPU,
+=======
 	.flags		= IRQF_DISABLED|IRQF_PERCPU,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "IPI_call"
 };
 #endif /* CONFIG_MIPS_MT_SMP */
@@ -366,8 +378,13 @@ static struct irqaction i8259irq = {
 	.name = "XT-PIC cascade",
 	.flags = IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.name = "XT-PIC cascade",
+	.flags = IRQF_NO_THREAD,
+=======
 	.name = "XT-PIC cascade"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct irqaction corehi_irqaction = {
@@ -376,8 +393,13 @@ static struct irqaction corehi_irqaction = {
 	.name = "CoreHi",
 	.flags = IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.name = "CoreHi",
+	.flags = IRQF_NO_THREAD,
+=======
 	.name = "CoreHi"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static msc_irqmap_t __initdata msc_irqmap[] = {

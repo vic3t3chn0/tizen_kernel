@@ -52,11 +52,15 @@ ecryptfs_miscdev_poll(struct file *file, poll_table *pt)
 <<<<<<< HEAD
 	BUG_ON(rc || !daemon);
 =======
+<<<<<<< HEAD
+	BUG_ON(rc || !daemon);
+=======
 	if (rc || !daemon) {
 		mutex_unlock(&ecryptfs_daemon_hash_mux);
 		return -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&daemon->mux);
 	mutex_unlock(&ecryptfs_daemon_hash_mux);
 	if (daemon->flags & ECRYPTFS_DAEMON_ZOMBIE) {
@@ -131,8 +135,11 @@ ecryptfs_miscdev_open(struct inode *inode, struct file *file)
 	daemon->flags |= ECRYPTFS_DAEMON_MISCDEV_OPEN;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	file->private_data = daemon;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_inc(&ecryptfs_num_miscdev_opens);
 out_unlock_daemon:
 	mutex_unlock(&daemon->mux);
@@ -168,10 +175,16 @@ ecryptfs_miscdev_release(struct inode *inode, struct file *file)
 	mutex_lock(&daemon->mux);
 	BUG_ON(daemon->pid != task_pid(current));
 =======
+<<<<<<< HEAD
+	BUG_ON(rc || !daemon);
+	mutex_lock(&daemon->mux);
+	BUG_ON(daemon->pid != task_pid(current));
+=======
 	if (rc || !daemon)
 		daemon = file->private_data;
 	mutex_lock(&daemon->mux);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!(daemon->flags & ECRYPTFS_DAEMON_MISCDEV_OPEN));
 	daemon->flags &= ~ECRYPTFS_DAEMON_MISCDEV_OPEN;
 	atomic_dec(&ecryptfs_num_miscdev_opens);
@@ -209,6 +222,9 @@ int ecryptfs_send_miscdev(char *data, size_t data_size,
 			  u16 msg_flags, struct ecryptfs_daemon *daemon)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc = 0;
 
 	mutex_lock(&msg_ctx->mux);
@@ -221,6 +237,8 @@ int ecryptfs_send_miscdev(char *data, size_t data_size,
 		       (sizeof(*msg_ctx->msg) + data_size));
 		goto out_unlock;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct ecryptfs_message *msg;
 
@@ -235,12 +253,16 @@ int ecryptfs_send_miscdev(char *data, size_t data_size,
 	mutex_lock(&msg_ctx->mux);
 	msg_ctx->msg = msg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msg_ctx->msg->index = msg_ctx->index;
 	msg_ctx->msg->data_len = data_size;
 	msg_ctx->type = msg_type;
 	memcpy(msg_ctx->msg->data, data, data_size);
 	msg_ctx->msg_size = (sizeof(*msg_ctx->msg) + data_size);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&daemon->mux);
 	list_add_tail(&msg_ctx->daemon_out_list, &daemon->msg_ctx_out_queue);
 	daemon->num_queued_msg_ctx++;
@@ -273,6 +295,8 @@ out_unlock:
 #define PKT_TYPE_OFFSET		0
 #define PKT_CTR_OFFSET		PKT_TYPE_SIZE
 #define PKT_LEN_OFFSET		(PKT_TYPE_SIZE + PKT_CTR_SIZE)
+<<<<<<< HEAD
+=======
 =======
 	list_add_tail(&msg_ctx->daemon_out_list, &daemon->msg_ctx_out_queue);
 	mutex_unlock(&msg_ctx->mux);
@@ -285,6 +309,7 @@ out_unlock:
 	return 0;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * ecryptfs_miscdev_read - format and send message from queue
@@ -308,8 +333,12 @@ ecryptfs_miscdev_read(struct file *file, char __user *buf, size_t count,
 <<<<<<< HEAD
 	char packet_length[ECRYPTFS_MAX_PKT_LEN_SIZE];
 =======
+<<<<<<< HEAD
+	char packet_length[ECRYPTFS_MAX_PKT_LEN_SIZE];
+=======
 	char packet_length[3];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t i;
 	size_t total_length;
 	uid_t euid = current_euid();
@@ -318,6 +347,10 @@ ecryptfs_miscdev_read(struct file *file, char __user *buf, size_t count,
 	mutex_lock(&ecryptfs_daemon_hash_mux);
 	/* TODO: Just use file->private_data? */
 	rc = ecryptfs_find_daemon_by_euid(&daemon, euid, current_user_ns());
+<<<<<<< HEAD
+	BUG_ON(rc || !daemon);
+	mutex_lock(&daemon->mux);
+=======
 <<<<<<< HEAD
 	BUG_ON(rc || !daemon);
 	mutex_lock(&daemon->mux);
@@ -333,6 +366,7 @@ ecryptfs_miscdev_read(struct file *file, char __user *buf, size_t count,
 		return -EPERM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (daemon->flags & ECRYPTFS_DAEMON_ZOMBIE) {
 		rc = 0;
 		mutex_unlock(&ecryptfs_daemon_hash_mux);
@@ -374,7 +408,13 @@ check_list:
 	BUG_ON(current_user_ns() != daemon->user_ns);
 	BUG_ON(task_pid(current) != daemon->pid);
 =======
+<<<<<<< HEAD
+	BUG_ON(euid != daemon->euid);
+	BUG_ON(current_user_ns() != daemon->user_ns);
+	BUG_ON(task_pid(current) != daemon->pid);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msg_ctx = list_first_entry(&daemon->msg_ctx_out_queue,
 				   struct ecryptfs_msg_ctx, daemon_out_list);
 	BUG_ON(!msg_ctx);
@@ -397,6 +437,10 @@ check_list:
 	total_length = (PKT_TYPE_SIZE + PKT_CTR_SIZE + packet_length_size
 			+ msg_ctx->msg_size);
 =======
+<<<<<<< HEAD
+	total_length = (PKT_TYPE_SIZE + PKT_CTR_SIZE + packet_length_size
+			+ msg_ctx->msg_size);
+=======
 	/* miscdevfs packet format:
 	 *  Octet 0: Type
 	 *  Octets 1-4: network byte order msg_ctx->counter
@@ -407,6 +451,7 @@ check_list:
 	 *  include a message */
 	total_length = (1 + 4 + packet_length_size + msg_ctx->msg_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (count < total_length) {
 		rc = 0;
 		printk(KERN_WARNING "%s: Only given user buffer of "
@@ -418,15 +463,21 @@ check_list:
 	if (put_user(msg_ctx->type, buf))
 		goto out_unlock_msg_ctx;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (put_user(cpu_to_be32(msg_ctx->counter),
 		     (__be32 __user *)(&buf[PKT_CTR_OFFSET])))
 		goto out_unlock_msg_ctx;
 	i = PKT_TYPE_SIZE + PKT_CTR_SIZE;
+<<<<<<< HEAD
+=======
 =======
 	if (put_user(cpu_to_be32(msg_ctx->counter), (__be32 __user *)(buf + 1)))
 		goto out_unlock_msg_ctx;
 	i = 5;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (msg_ctx->msg) {
 		if (copy_to_user(&buf[i], packet_length, packet_length_size))
 			goto out_unlock_msg_ctx;
@@ -493,6 +544,8 @@ out:
  *
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * miscdevfs packet format:
  *  Octet 0: Type
  *  Octets 1-4: network byte order msg_ctx->counter (0's for non-response)
@@ -500,6 +553,7 @@ out:
  *  Octets N0-N1: struct ecryptfs_message (including data)
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Returns the number of bytes read from @buf
  */
 static ssize_t
@@ -509,6 +563,9 @@ ecryptfs_miscdev_write(struct file *file, const char __user *buf,
 	__be32 counter_nbo;
 	u32 seq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t packet_size, packet_size_length;
 	char *data;
 	uid_t euid = current_euid();
@@ -528,6 +585,8 @@ ecryptfs_miscdev_write(struct file *file, const char __user *buf,
 	}
 
 	if (copy_from_user(packet_size_peek, &buf[PKT_LEN_OFFSET],
+<<<<<<< HEAD
+=======
 =======
 	size_t packet_size, packet_size_length, i;
 	ssize_t sz = 0;
@@ -554,6 +613,7 @@ ecryptfs_miscdev_write(struct file *file, const char __user *buf,
 
 	if (copy_from_user(packet_size_peek, (buf + 1 + 4),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   sizeof(packet_size_peek))) {
 		printk(KERN_WARNING "%s: Error while inspecting packet size\n",
 		       __func__);
@@ -565,12 +625,17 @@ ecryptfs_miscdev_write(struct file *file, const char __user *buf,
 	if (rc) {
 		printk(KERN_WARNING "%s: Error parsing packet length; "
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       "rc = [%zd]\n", __func__, rc);
 		return rc;
 	}
 
 	if ((PKT_TYPE_SIZE + PKT_CTR_SIZE + packet_size_length + packet_size)
 	    != count) {
+<<<<<<< HEAD
+=======
 =======
 		       "rc = [%d]\n", __func__, rc);
 		return rc;
@@ -578,6 +643,7 @@ ecryptfs_miscdev_write(struct file *file, const char __user *buf,
 
 	if ((1 + 4 + packet_size_length + packet_size) != count) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_WARNING "%s: Invalid packet size [%zu]\n", __func__,
 		       packet_size);
 		return -EINVAL;
@@ -589,12 +655,17 @@ memdup:
 		printk(KERN_ERR "%s: memdup_user returned error [%ld]\n",
 		       __func__, PTR_ERR(data));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return PTR_ERR(data);
 	}
 	switch (data[PKT_TYPE_OFFSET]) {
 	case ECRYPTFS_MSG_RESPONSE:
 		if (count < (MIN_MSG_PKT_SIZE
 			     + sizeof(struct ecryptfs_message))) {
+<<<<<<< HEAD
+=======
 =======
 		goto out;
 	}
@@ -604,11 +675,15 @@ memdup:
 	case ECRYPTFS_MSG_RESPONSE:
 		if (count < (1 + 4 + 1 + sizeof(struct ecryptfs_message))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_WARNING "%s: Minimum acceptable packet "
 			       "size is [%zd], but amount of data written is "
 			       "only [%zd]. Discarding response packet.\n",
 			       __func__,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       (MIN_MSG_PKT_SIZE
 				+ sizeof(struct ecryptfs_message)), count);
 			rc = -EINVAL;
@@ -626,6 +701,8 @@ memdup:
 			       __func__, rc);
 			goto out_free;
 		}
+<<<<<<< HEAD
+=======
 =======
 			       (1 + 4 + 1 + sizeof(struct ecryptfs_message)),
 			       count);
@@ -642,6 +719,7 @@ memdup:
 			       "response to requesting operation; rc = [%d]\n",
 			       __func__, rc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case ECRYPTFS_MSG_HELO:
 	case ECRYPTFS_MSG_QUIT:
@@ -651,6 +729,9 @@ memdup:
 				"message of unrecognized type [%d]\n",
 				data[0]);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EINVAL;
 		goto out_free;
 	}
@@ -658,6 +739,8 @@ memdup:
 out_free:
 	kfree(data);
 	return rc;
+<<<<<<< HEAD
+=======
 =======
 		break;
 	}
@@ -666,6 +749,7 @@ out_free:
 out:
 	return sz;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 

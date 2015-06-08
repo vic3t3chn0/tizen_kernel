@@ -31,7 +31,11 @@ struct squashfs_cache {
 <<<<<<< HEAD
 	int			curr_blk;
 =======
+<<<<<<< HEAD
+	int			curr_blk;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			next_blk;
 	int			num_waiters;
 	int			unused;

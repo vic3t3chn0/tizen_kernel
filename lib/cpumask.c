@@ -5,8 +5,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bootmem.h>
 
 int __first_cpu(const cpumask_t *srcp)
@@ -32,6 +36,8 @@ EXPORT_SYMBOL(__next_cpu_nr);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int __any_online_cpu(const cpumask_t *mask)
 {
 	int cpu;
@@ -45,6 +51,7 @@ int __any_online_cpu(const cpumask_t *mask)
 EXPORT_SYMBOL(__any_online_cpu);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * cpumask_next_and - get the next cpu in *src1p & *src2p
  * @n: the cpu prior to the place to search (ie. return will be > @n)
@@ -141,8 +148,12 @@ bool alloc_cpumask_var(cpumask_var_t *mask, gfp_t flags)
 <<<<<<< HEAD
 	return alloc_cpumask_var_node(mask, flags, NUMA_NO_NODE);
 =======
+<<<<<<< HEAD
+	return alloc_cpumask_var_node(mask, flags, NUMA_NO_NODE);
+=======
 	return alloc_cpumask_var_node(mask, flags, numa_node_id());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(alloc_cpumask_var);
 

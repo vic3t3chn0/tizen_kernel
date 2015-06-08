@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Functions for ST-RAM allocations
 =======
+<<<<<<< HEAD
+ * Functions for ST-RAM allocations
+=======
  * arch/m68k/atari/stram.c: Functions for ST-RAM allocations
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright 1994-97 Roman Hodek <Roman.Hodek@informatik.uni-erlangen.de>
  *
@@ -35,6 +39,9 @@
 #include <asm/io.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The ST-RAM allocator allocates memory from a pool of reserved ST-RAM of
@@ -64,6 +71,8 @@ static int __init atari_stram_setup(char *arg)
 
 early_param("stram_pool", atari_stram_setup);
 
+<<<<<<< HEAD
+=======
 =======
 #undef DEBUG
 
@@ -151,6 +160,7 @@ static int remove_region( BLOCK *block );
 /*							   Public Interface								*/
 /* ------------------------------------------------------------------------ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * This init function is called very early by atari/config.c
@@ -160,6 +170,9 @@ void __init atari_stram_init(void)
 {
 	int i;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *stram_start;
 
 	/*
@@ -177,6 +190,8 @@ void __init atari_stram_init(void)
 
 	/* Should never come here! (There is always ST-Ram!) */
 	panic("atari_stram_init: no ST-RAM found!");
+<<<<<<< HEAD
+=======
 =======
 
 	/* initialize static blocks */
@@ -198,6 +213,7 @@ void __init atari_stram_init(void)
 	/* Should never come here! (There is always ST-Ram!) */
 	panic( "atari_stram_init: no ST-RAM found!" );
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -208,6 +224,9 @@ void __init atari_stram_init(void)
 void __init atari_stram_reserve_pages(void *start_mem)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * always reserve first page of ST-RAM, the first 2 KiB are
 	 * supervisor-only!
@@ -273,6 +292,8 @@ void atari_stram_free(void *addr)
 	kfree(res);
 }
 EXPORT_SYMBOL(atari_stram_free);
+<<<<<<< HEAD
+=======
 =======
 	/* always reserve first page of ST-RAM, the first 2 kB are
 	 * supervisor-only! */
@@ -498,3 +519,4 @@ module_init(proc_stram_init);
  * End:
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -3,12 +3,18 @@ config ALCHEMY_GPIOINT_AU1000
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # au1300-style GPIO/INT controller
 config ALCHEMY_GPIOINT_AU1300
 	bool
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # select this in your board config if you don't want to use the gpio
 # namespace as documented in the manuals.  In this case however you need
 # to create the necessary gpio_* functions in your board code/headers!
@@ -28,6 +34,9 @@ config MIPS_MTX1
 <<<<<<< HEAD
 	select ALCHEMY_GPIOINT_AU1000
 =======
+<<<<<<< HEAD
+	select ALCHEMY_GPIOINT_AU1000
+=======
 	select SOC_AU1500
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
@@ -37,17 +46,23 @@ config MIPS_BOSPORUS
 	select SOC_AU1500
 	select DMA_NONCOHERENT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
 
 config MIPS_DB1000
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "Alchemy DB1000/DB1500/DB1100 boards"
 	select ALCHEMY_GPIOINT_AU1000
 	select DMA_NONCOHERENT
 	select HW_HAS_PCI
 	select MIPS_DISABLE_OBSOLETE_IDE
 	select SYS_SUPPORTS_BIG_ENDIAN
+<<<<<<< HEAD
+=======
 =======
 	bool "Alchemy DB1000 board"
 	select SOC_AU1000
@@ -61,6 +76,7 @@ config MIPS_DB1100
 	select SOC_AU1100
 	select DMA_NONCOHERENT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
 
@@ -69,20 +85,30 @@ config MIPS_DB1200
 	bool "Alchemy DB1200/PB1200 board"
 	select ALCHEMY_GPIOINT_AU1000
 =======
+<<<<<<< HEAD
+	bool "Alchemy DB1200/PB1200 board"
+	select ALCHEMY_GPIOINT_AU1000
+=======
 	bool "Alchemy DB1200 board"
 	select SOC_AU1200
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select DMA_COHERENT
 	select MIPS_DISABLE_OBSOLETE_IDE
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MIPS_DB1300
 	bool "NetLogic DB1300 board"
 	select ALCHEMY_GPIOINT_AU1300
 	select DMA_COHERENT
 	select MIPS_DISABLE_OBSOLETE_IDE
+<<<<<<< HEAD
+=======
 =======
 config MIPS_DB1500
 	bool "Alchemy DB1500 board"
@@ -92,6 +118,7 @@ config MIPS_DB1500
 	select MIPS_DISABLE_OBSOLETE_IDE
 	select SYS_SUPPORTS_BIG_ENDIAN
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
 
@@ -102,14 +129,25 @@ config MIPS_DB1550
 	select HW_HAS_PCI
 	select DMA_COHERENT
 =======
+<<<<<<< HEAD
+	select ALCHEMY_GPIOINT_AU1000
+	select HW_HAS_PCI
+	select DMA_COHERENT
+=======
 	select SOC_AU1550
 	select HW_HAS_PCI
 	select DMA_NONCOHERENT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MIPS_DISABLE_OBSOLETE_IDE
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
 
+<<<<<<< HEAD
+config MIPS_PB1100
+	bool "Alchemy PB1100 board"
+	select ALCHEMY_GPIOINT_AU1000
+=======
 <<<<<<< HEAD
 config MIPS_PB1100
 	bool "Alchemy PB1100 board"
@@ -135,12 +173,18 @@ config MIPS_PB1100
 	bool "Alchemy PB1100 board"
 	select SOC_AU1100
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select DMA_NONCOHERENT
 	select HW_HAS_PCI
 	select SWAP_IO_SPACE
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
 
+<<<<<<< HEAD
+config MIPS_PB1500
+	bool "Alchemy PB1500 board"
+	select ALCHEMY_GPIOINT_AU1000
+=======
 <<<<<<< HEAD
 config MIPS_PB1500
 	bool "Alchemy PB1500 board"
@@ -158,6 +202,7 @@ config MIPS_PB1500
 	bool "Alchemy PB1500 board"
 	select SOC_AU1500
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select DMA_NONCOHERENT
 	select HW_HAS_PCI
 	select SYS_SUPPORTS_LITTLE_ENDIAN
@@ -168,8 +213,12 @@ config MIPS_PB1550
 <<<<<<< HEAD
 	select ALCHEMY_GPIOINT_AU1000
 =======
+<<<<<<< HEAD
+	select ALCHEMY_GPIOINT_AU1000
+=======
 	select SOC_AU1550
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select DMA_NONCOHERENT
 	select HW_HAS_PCI
 	select MIPS_DISABLE_OBSOLETE_IDE
@@ -182,8 +231,12 @@ config MIPS_XXS1500
 <<<<<<< HEAD
 	select ALCHEMY_GPIOINT_AU1000
 =======
+<<<<<<< HEAD
+	select ALCHEMY_GPIOINT_AU1000
+=======
 	select SOC_AU1500
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	select SYS_HAS_EARLY_PRINTK
 
@@ -192,8 +245,12 @@ config MIPS_GPR
 <<<<<<< HEAD
 	select ALCHEMY_GPIOINT_AU1000
 =======
+<<<<<<< HEAD
+	select ALCHEMY_GPIOINT_AU1000
+=======
 	select SOC_AU1550
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HW_HAS_PCI
 	select DMA_NONCOHERENT
 	select MIPS_DISABLE_OBSOLETE_IDE
@@ -201,6 +258,8 @@ config MIPS_GPR
 	select SYS_HAS_EARLY_PRINTK
 
 endchoice
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -224,3 +283,4 @@ config SOC_AU1200
 	bool
 	select ALCHEMY_GPIOINT_AU1000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

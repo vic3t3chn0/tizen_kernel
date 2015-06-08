@@ -8,13 +8,19 @@
 #include <linux/reboot.h>
 #include <linux/io.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq.h>
 #include <linux/memblock.h>
 #include <asm/pgtable.h>
 #include <linux/of_fdt.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/pgtable.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgalloc.h>
 #include <asm/mmu_context.h>
 #include <asm/cacheflush.h>
@@ -23,29 +29,43 @@
 #include <asm/system_misc.h>
 #include <asm/mmu_writeable.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+#include <asm/mmu_writeable.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern const unsigned char relocate_new_kernel[];
 extern const unsigned int relocate_new_kernel_size;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void setup_mm_for_reboot(char mode);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern unsigned long kexec_start_address;
 extern unsigned long kexec_indirection_page;
 extern unsigned long kexec_mach_type;
 extern unsigned long kexec_boot_atags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KEXEC_HARDBOOT
 extern unsigned long kexec_hardboot;
 extern unsigned long kexec_boot_atags_len;
 extern unsigned long kexec_kernel_len;
 void (*kexec_hardboot_hook)(void);
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static atomic_t waiting_for_crash_ipi;
 
@@ -57,6 +77,9 @@ static atomic_t waiting_for_crash_ipi;
 int machine_kexec_prepare(struct kimage *image)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kexec_segment *current_segment;
 	__be32 header;
 	int i, err;
@@ -89,8 +112,11 @@ int machine_kexec_prepare(struct kimage *image)
 #endif
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -114,6 +140,9 @@ void machine_crash_nonpanic_core(void *unused)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void machine_kexec_mask_interrupts(void)
 {
 	unsigned int i;
@@ -137,8 +166,11 @@ static void machine_kexec_mask_interrupts(void)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void machine_crash_shutdown(struct pt_regs *regs)
 {
 	unsigned long msecs;
@@ -159,7 +191,11 @@ void machine_crash_shutdown(struct pt_regs *regs)
 <<<<<<< HEAD
 	machine_kexec_mask_interrupts();
 =======
+<<<<<<< HEAD
+	machine_kexec_mask_interrupts();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "Loading crashdump kernel...\n");
 }
@@ -178,7 +214,11 @@ void machine_kexec(struct kimage *image)
 <<<<<<< HEAD
 	arch_kexec();
 =======
+<<<<<<< HEAD
+	arch_kexec();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	page_list = image->head & PAGE_MASK;
 
@@ -189,6 +229,9 @@ void machine_kexec(struct kimage *image)
 
 	/* Prepare parameters for reboot_code_buffer*/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mem_text_write_kernel_word(&kexec_start_address, image->start);
 	mem_text_write_kernel_word(&kexec_indirection_page, page_list);
 	mem_text_write_kernel_word(&kexec_mach_type, machine_arch_type);
@@ -197,12 +240,15 @@ void machine_kexec(struct kimage *image)
 #ifdef CONFIG_KEXEC_HARDBOOT
 	mem_text_write_kernel_word(&kexec_hardboot, image->hardboot);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	kexec_start_address = image->start;
 	kexec_indirection_page = page_list;
 	kexec_mach_type = machine_arch_type;
 	kexec_boot_atags = image->start - KEXEC_ARM_ZIMAGE_OFFSET + KEXEC_ARM_ATAGS_OFFSET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* copy our kernel relocation code to the control code page */
 	memcpy(reboot_code_buffer,
@@ -216,6 +262,9 @@ void machine_kexec(struct kimage *image)
 	if (kexec_reinit)
 		kexec_reinit();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_KEXEC_HARDBOOT
 	/* Run any final machine-specific shutdown code. */
@@ -224,6 +273,8 @@ void machine_kexec(struct kimage *image)
 #endif
 
 	soft_restart(reboot_code_buffer_phys);
+<<<<<<< HEAD
+=======
 =======
 	local_irq_disable();
 	local_fiq_disable();
@@ -236,4 +287,5 @@ void machine_kexec(struct kimage *image)
 	flush_cache_all();
 	cpu_reset(reboot_code_buffer_phys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

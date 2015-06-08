@@ -405,8 +405,12 @@ static int atmel_ssc_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 				"atmel_ssc_dai: sample size %d "
 =======
+<<<<<<< HEAD
+				"atmel_ssc_dai: sample size %d "
+=======
 				"atmel_ssc_dai: sample size %d"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"is too large for I2S\n", bits);
 		return -EINVAL;
 	}
@@ -726,8 +730,12 @@ static int atmel_ssc_remove(struct snd_soc_dai *dai)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops atmel_ssc_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops atmel_ssc_dai_ops = {
+=======
 static struct snd_soc_dai_ops atmel_ssc_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= atmel_ssc_startup,
 	.shutdown	= atmel_ssc_shutdown,
 	.prepare	= atmel_ssc_prepare,
@@ -850,11 +858,16 @@ int atmel_ssc_set_audio(int ssc_id)
 	if (!ssc_pdev)
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+	if (!ssc_pdev)
+		return -ENOMEM;
+=======
 	if (!ssc_pdev) {
 		ssc_free(ssc);
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If we can grab the SSC briefly to parent the DAI device off it */
 	ssc = ssc_request(ssc_id);
@@ -877,6 +890,9 @@ EXPORT_SYMBOL_GPL(atmel_ssc_set_audio);
 <<<<<<< HEAD
 module_platform_driver(asoc_ssc_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(asoc_ssc_driver);
+=======
 static int __init snd_atmel_ssc_init(void)
 {
 	return platform_driver_register(&asoc_ssc_driver);
@@ -889,6 +905,7 @@ static void __exit snd_atmel_ssc_exit(void)
 }
 module_exit(snd_atmel_ssc_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR("Sedji Gaouaou, sedji.gaouaou@atmel.com, www.atmel.com");

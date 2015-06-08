@@ -185,8 +185,12 @@ static int blk_fill_sgv4_hdr_rq(struct request_queue *q, struct request *rq,
 <<<<<<< HEAD
 	if (copy_from_user(rq->cmd, (void __user *)(unsigned long)hdr->request,
 =======
+<<<<<<< HEAD
+	if (copy_from_user(rq->cmd, (void __user *)(unsigned long)hdr->request,
+=======
 	if (copy_from_user(rq->cmd, (void *)(unsigned long)hdr->request,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   hdr->request_len))
 		return -EFAULT;
 
@@ -256,8 +260,12 @@ bsg_map_hdr(struct bsg_device *bd, struct sg_io_v4 *hdr, fmode_t has_write_perm,
 <<<<<<< HEAD
 	void __user *dxferp = NULL;
 =======
+<<<<<<< HEAD
+	void __user *dxferp = NULL;
+=======
 	void *dxferp = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bsg_class_device *bcd = &q->bsg_dev;
 
 	/* if the LLD has been removed then the bsg_unregister_queue will
@@ -302,8 +310,12 @@ bsg_map_hdr(struct bsg_device *bd, struct sg_io_v4 *hdr, fmode_t has_write_perm,
 <<<<<<< HEAD
 		dxferp = (void __user *)(unsigned long)hdr->din_xferp;
 =======
+<<<<<<< HEAD
+		dxferp = (void __user *)(unsigned long)hdr->din_xferp;
+=======
 		dxferp = (void*)(unsigned long)hdr->din_xferp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret =  blk_rq_map_user(q, next_rq, NULL, dxferp,
 				       hdr->din_xfer_len, GFP_KERNEL);
 		if (ret)
@@ -313,16 +325,22 @@ bsg_map_hdr(struct bsg_device *bd, struct sg_io_v4 *hdr, fmode_t has_write_perm,
 	if (hdr->dout_xfer_len) {
 		dxfer_len = hdr->dout_xfer_len;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dxferp = (void __user *)(unsigned long)hdr->dout_xferp;
 	} else if (hdr->din_xfer_len) {
 		dxfer_len = hdr->din_xfer_len;
 		dxferp = (void __user *)(unsigned long)hdr->din_xferp;
+<<<<<<< HEAD
+=======
 =======
 		dxferp = (void*)(unsigned long)hdr->dout_xferp;
 	} else if (hdr->din_xfer_len) {
 		dxfer_len = hdr->din_xfer_len;
 		dxferp = (void*)(unsigned long)hdr->din_xferp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		dxfer_len = 0;
 
@@ -467,8 +485,12 @@ static int blk_complete_sgv4_hdr_rq(struct request *rq, struct sg_io_v4 *hdr,
 <<<<<<< HEAD
 		ret = copy_to_user((void __user *)(unsigned long)hdr->response,
 =======
+<<<<<<< HEAD
+		ret = copy_to_user((void __user *)(unsigned long)hdr->response,
+=======
 		ret = copy_to_user((void*)(unsigned long)hdr->response,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   rq->sense, len);
 		if (!ret)
 			hdr->response_len = len;
@@ -632,8 +654,12 @@ bsg_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
 <<<<<<< HEAD
 	if (!bytes_read || err_block_err(ret))
 =======
+<<<<<<< HEAD
+	if (!bytes_read || err_block_err(ret))
+=======
 	if (!bytes_read || (bytes_read && err_block_err(ret)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bytes_read = ret;
 
 	return bytes_read;
@@ -716,8 +742,12 @@ bsg_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 <<<<<<< HEAD
 	if (!bytes_written || err_block_err(ret))
 =======
+<<<<<<< HEAD
+	if (!bytes_written || err_block_err(ret))
+=======
 	if (!bytes_written || (bytes_written && err_block_err(ret)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bytes_written = ret;
 
 	dprintk("%s: returning %Zd\n", bd->name, bytes_written);
@@ -801,10 +831,15 @@ static struct bsg_device *bsg_add_device(struct inode *inode,
 {
 	struct bsg_device *bd;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef BSG_DEBUG
 	unsigned char buf[32];
 #endif
 	if (!blk_get_queue(rq))
+<<<<<<< HEAD
+=======
 =======
 	int ret;
 #ifdef BSG_DEBUG
@@ -813,6 +848,7 @@ static struct bsg_device *bsg_add_device(struct inode *inode,
 	ret = blk_get_queue(rq);
 	if (ret)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ERR_PTR(-ENXIO);
 
 	bd = bsg_alloc_device();
@@ -919,8 +955,12 @@ static unsigned int bsg_poll(struct file *file, poll_table *wait)
 <<<<<<< HEAD
 	if (bd->queued_cmds < bd->max_queue)
 =======
+<<<<<<< HEAD
+	if (bd->queued_cmds < bd->max_queue)
+=======
 	if (bd->queued_cmds >= bd->max_queue)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask |= POLLOUT;
 	spin_unlock_irq(&bd->lock);
 
@@ -1116,8 +1156,12 @@ static struct cdev bsg_cdev;
 <<<<<<< HEAD
 static char *bsg_devnode(struct device *dev, umode_t *mode)
 =======
+<<<<<<< HEAD
+static char *bsg_devnode(struct device *dev, umode_t *mode)
+=======
 static char *bsg_devnode(struct device *dev, mode_t *mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return kasprintf(GFP_KERNEL, "bsg/%s", dev_name(dev));
 }

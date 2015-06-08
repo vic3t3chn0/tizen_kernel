@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/delay.h>
 #include <linux/device.h>
@@ -288,8 +292,13 @@ static void *dma_4u_alloc_coherent(struct device *dev, size_t size,
 				   dma_addr_t *dma_addrp, gfp_t gfp,
 				   struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				   dma_addr_t *dma_addrp, gfp_t gfp,
+				   struct dma_attrs *attrs)
+=======
 				   dma_addr_t *dma_addrp, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags, order, first_page;
 	struct iommu *iommu;
@@ -343,8 +352,13 @@ static void dma_4u_free_coherent(struct device *dev, size_t size,
 				 void *cpu, dma_addr_t dvma,
 				 struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				 void *cpu, dma_addr_t dvma,
+				 struct dma_attrs *attrs)
+=======
 				 void *cpu, dma_addr_t dvma)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct iommu *iommu;
 	unsigned long flags, order, npages;
@@ -843,9 +857,14 @@ static struct dma_map_ops sun4u_dma_ops = {
 	.alloc			= dma_4u_alloc_coherent,
 	.free			= dma_4u_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc			= dma_4u_alloc_coherent,
+	.free			= dma_4u_free_coherent,
+=======
 	.alloc_coherent		= dma_4u_alloc_coherent,
 	.free_coherent		= dma_4u_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_page		= dma_4u_map_page,
 	.unmap_page		= dma_4u_unmap_page,
 	.map_sg			= dma_4u_map_sg,

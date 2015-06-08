@@ -30,6 +30,13 @@
 #include <linux/slab.h>
 #include <linux/usb.h>
 #include <linux/hid.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "hid-ids.h"
 
 #ifdef CONFIG_SMARTJOYPLUS_FF
@@ -65,8 +72,17 @@ static int sjoyff_init(struct hid_device *hid)
 {
 	struct sjoyff_device *sjoyff;
 	struct hid_report *report;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct hid_input *hidinput;
+=======
 	struct hid_input *hidinput = list_entry(hid->inputs.next,
 						struct hid_input, list);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct hid_input *hidinput = list_entry(hid->inputs.next,
+						struct hid_input, list);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head *report_list =
 			&hid->report_enum[HID_OUTPUT_REPORT].report_list;
 	struct list_head *report_ptr = report_list;
@@ -78,6 +94,51 @@ static int sjoyff_init(struct hid_device *hid)
 		return -ENODEV;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	list_for_each_entry(hidinput, &hid->inputs, list) {
+		report_ptr = report_ptr->next;
+
+		if (report_ptr == report_list) {
+			hid_err(hid, "required output report is missing\n");
+			return -ENODEV;
+		}
+
+		report = list_entry(report_ptr, struct hid_report, list);
+		if (report->maxfield < 1) {
+			hid_err(hid, "no fields in the report\n");
+			return -ENODEV;
+		}
+
+		if (report->field[0]->report_count < 3) {
+			hid_err(hid, "not enough values in the field\n");
+			return -ENODEV;
+		}
+
+		sjoyff = kzalloc(sizeof(struct sjoyff_device), GFP_KERNEL);
+		if (!sjoyff)
+			return -ENOMEM;
+
+		dev = hidinput->input;
+
+		set_bit(FF_RUMBLE, dev->ffbit);
+
+		error = input_ff_create_memless(dev, sjoyff, hid_sjoyff_play);
+		if (error) {
+			kfree(sjoyff);
+			return error;
+		}
+
+		sjoyff->report = report;
+		sjoyff->report->field[0]->value[0] = 0x01;
+		sjoyff->report->field[0]->value[1] = 0x00;
+		sjoyff->report->field[0]->value[2] = 0x00;
+		usbhid_submit_report(hid, sjoyff->report, USB_DIR_OUT);
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	report_ptr = report_ptr->next;
 
 	if (report_ptr == report_list) {
@@ -116,6 +177,10 @@ static int sjoyff_init(struct hid_device *hid)
 	sjoyff->report->field[0]->value[2] = 0x00;
 	usbhid_submit_report(hid, sjoyff->report, USB_DIR_OUT);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hid_info(hid, "Force feedback for SmartJoy PLUS PS2/USB adapter\n");
 
 	return 0;
@@ -131,6 +196,14 @@ static int sjoy_probe(struct hid_device *hdev, const struct hid_device_id *id)
 {
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hdev->quirks |= id->driver_data;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = hid_parse(hdev);
 	if (ret) {
 		hid_err(hdev, "parse failed\n");
@@ -151,7 +224,27 @@ err:
 }
 
 static const struct hid_device_id sjoy_devices[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP_LTD, USB_DEVICE_ID_SUPER_JOY_BOX_3_PRO),
+		.driver_data = HID_QUIRK_NOGET },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP_LTD, USB_DEVICE_ID_SUPER_DUAL_BOX_PRO),
+		.driver_data = HID_QUIRK_MULTI_INPUT | HID_QUIRK_NOGET |
+			       HID_QUIRK_SKIP_OUTPUT_REPORTS },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP_LTD, USB_DEVICE_ID_SUPER_JOY_BOX_5_PRO),
+		.driver_data = HID_QUIRK_MULTI_INPUT | HID_QUIRK_NOGET |
+			       HID_QUIRK_SKIP_OUTPUT_REPORTS },
 	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP, USB_DEVICE_ID_SMARTJOY_PLUS) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP, USB_DEVICE_ID_SUPER_JOY_BOX_3) },
+	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP, USB_DEVICE_ID_DUAL_USB_JOYPAD),
+		.driver_data = HID_QUIRK_MULTI_INPUT |
+			       HID_QUIRK_SKIP_OUTPUT_REPORTS },
+=======
+	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP, USB_DEVICE_ID_SMARTJOY_PLUS) },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{ HID_USB_DEVICE(USB_VENDOR_ID_WISEGROUP, USB_DEVICE_ID_SMARTJOY_PLUS) },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ }
 };
 MODULE_DEVICE_TABLE(hid, sjoy_devices);

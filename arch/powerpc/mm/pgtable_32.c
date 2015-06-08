@@ -36,7 +36,11 @@
 <<<<<<< HEAD
 #include <asm/setup.h>
 =======
+<<<<<<< HEAD
+#include <asm/setup.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "mmu_decl.h"
 
@@ -214,8 +218,12 @@ __ioremap_caller(phys_addr_t addr, unsigned long size, unsigned long flags,
 <<<<<<< HEAD
 		printk("__ioremap(): phys addr 0x%llx is RAM lr %pf\n",
 =======
+<<<<<<< HEAD
+		printk("__ioremap(): phys addr 0x%llx is RAM lr %pf\n",
+=======
 		printk("__ioremap(): phys addr 0x%llx is RAM lr %p\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       (unsigned long long)p, __builtin_return_address(0));
 		return NULL;
 	}

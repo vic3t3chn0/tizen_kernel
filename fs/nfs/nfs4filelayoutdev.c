@@ -48,8 +48,12 @@
 <<<<<<< HEAD
 static DEFINE_SPINLOCK(nfs4_ds_cache_lock);
 =======
+<<<<<<< HEAD
+static DEFINE_SPINLOCK(nfs4_ds_cache_lock);
+=======
 DEFINE_SPINLOCK(nfs4_ds_cache_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static LIST_HEAD(nfs4_data_server_cache);
 
 /* Debug routines */
@@ -61,11 +65,16 @@ print_ds(struct nfs4_pnfs_ds *ds)
 		return;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk("        ds %s\n"
 		"        ref count %d\n"
 		"        client %p\n"
 		"        cl_exchange_flags %x\n",
 		ds->ds_remotestr,
+<<<<<<< HEAD
+=======
 =======
 	printk("        ip_addr %x port %hu\n"
 		"        ref count %d\n"
@@ -73,11 +82,15 @@ print_ds(struct nfs4_pnfs_ds *ds)
 		"        cl_exchange_flags %x\n",
 		ntohl(ds->ds_ip_addr), ntohs(ds->ds_port),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		atomic_read(&ds->ds_count), ds->ds_clp,
 		ds->ds_clp ? ds->ds_clp->cl_exchange_flags : 0);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool
 same_sockaddr(struct sockaddr *addr1, struct sockaddr *addr2)
 {
@@ -154,6 +167,8 @@ _data_server_lookup_locked(const struct list_head *dsaddrs)
 	list_for_each_entry(ds, &nfs4_data_server_cache, ds_node)
 		if (_same_data_server_addrs_locked(&ds->ds_addrs, dsaddrs))
 			return ds;
+<<<<<<< HEAD
+=======
 =======
 /* nfs4_ds_cache_lock is held */
 static struct nfs4_pnfs_ds *
@@ -171,6 +186,7 @@ _data_server_lookup_locked(u32 ip_addr, u32 port)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -179,13 +195,20 @@ _data_server_lookup_locked(u32 ip_addr, u32 port)
 <<<<<<< HEAD
  * Currently only supports IPv4 and IPv6 addresses
 =======
+<<<<<<< HEAD
+ * Currently only supports IPv4 and IPv6 addresses
+=======
  * Currently only support IPv4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int
 nfs4_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nfs_client *clp = ERR_PTR(-EIO);
 	struct nfs4_pnfs_ds_addr *da;
 	int status = 0;
@@ -206,6 +229,8 @@ nfs4_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds)
 			break;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	struct nfs_client *clp;
 	struct sockaddr_in sin;
@@ -222,6 +247,7 @@ nfs4_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds)
 	clp = nfs4_set_ds_client(mds_srv->nfs_client, (struct sockaddr *)&sin,
 				 sizeof(sin), IPPROTO_TCP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(clp)) {
 		status = PTR_ERR(clp);
 		goto out;
@@ -237,9 +263,14 @@ nfs4_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds)
 		dprintk("%s [existing] server=%s\n", __func__,
 			ds->ds_remotestr);
 =======
+<<<<<<< HEAD
+		dprintk("%s [existing] server=%s\n", __func__,
+			ds->ds_remotestr);
+=======
 		dprintk("%s [existing] ip=%x, port=%hu\n", __func__,
 			ntohl(ds->ds_ip_addr), ntohs(ds->ds_port));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -261,9 +292,13 @@ nfs4_ds_connect(struct nfs_server *mds_srv, struct nfs4_pnfs_ds *ds)
 <<<<<<< HEAD
 	dprintk("%s [new] addr: %s\n", __func__, ds->ds_remotestr);
 =======
+<<<<<<< HEAD
+	dprintk("%s [new] addr: %s\n", __func__, ds->ds_remotestr);
+=======
 	dprintk("%s [new] ip=%x, port=%hu\n", __func__, ntohl(ds->ds_ip_addr),
 		ntohs(ds->ds_port));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return status;
 out_put:
@@ -278,7 +313,12 @@ destroy_ds(struct nfs4_pnfs_ds *ds)
 	struct nfs4_pnfs_ds_addr *da;
 
 =======
+<<<<<<< HEAD
+	struct nfs4_pnfs_ds_addr *da;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk("--> %s\n", __func__);
 	ifdebug(FACILITY)
 		print_ds(ds);
@@ -286,6 +326,9 @@ destroy_ds(struct nfs4_pnfs_ds *ds)
 	if (ds->ds_clp)
 		nfs_put_client(ds->ds_clp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (!list_empty(&ds->ds_addrs)) {
 		da = list_first_entry(&ds->ds_addrs,
@@ -297,8 +340,11 @@ destroy_ds(struct nfs4_pnfs_ds *ds)
 	}
 
 	kfree(ds->ds_remotestr);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(ds);
 }
 
@@ -326,6 +372,9 @@ nfs4_fl_free_deviceid(struct nfs4_file_layout_dsaddr *dsaddr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Create a string with a human readable address and port to avoid
  * complicated setup around many dprinks.
@@ -399,6 +448,8 @@ nfs4_pnfs_ds_add(struct list_head *dsaddrs, gfp_t gfp_flags)
 		INIT_LIST_HEAD(&ds->ds_addrs);
 		list_splice_init(dsaddrs, &ds->ds_addrs);
 		ds->ds_remotestr = remotestr;
+<<<<<<< HEAD
+=======
 =======
 static struct nfs4_pnfs_ds *
 nfs4_pnfs_ds_add(struct inode *inode, u32 ip_addr, u32 port, gfp_t gfp_flags)
@@ -415,11 +466,15 @@ nfs4_pnfs_ds_add(struct inode *inode, u32 ip_addr, u32 port, gfp_t gfp_flags)
 		ds->ds_ip_addr = ip_addr;
 		ds->ds_port = port;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		atomic_set(&ds->ds_count, 1);
 		INIT_LIST_HEAD(&ds->ds_node);
 		ds->ds_clp = NULL;
 		list_add(&ds->ds_node, &nfs4_data_server_cache);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dprintk("%s add new data server %s\n", __func__,
 			ds->ds_remotestr);
 	} else {
@@ -428,6 +483,8 @@ nfs4_pnfs_ds_add(struct inode *inode, u32 ip_addr, u32 port, gfp_t gfp_flags)
 		atomic_inc(&tmp_ds->ds_count);
 		dprintk("%s data server %s found, inc'ed ds_count to %d\n",
 			__func__, tmp_ds->ds_remotestr,
+<<<<<<< HEAD
+=======
 =======
 		dprintk("%s add new data server ip 0x%x\n", __func__,
 			ds->ds_ip_addr);
@@ -437,6 +494,7 @@ nfs4_pnfs_ds_add(struct inode *inode, u32 ip_addr, u32 port, gfp_t gfp_flags)
 		dprintk("%s data server found ip 0x%x, inc'ed ds_count to %d\n",
 			__func__, tmp_ds->ds_ip_addr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			atomic_read(&tmp_ds->ds_count));
 		ds = tmp_ds;
 	}
@@ -447,6 +505,9 @@ out:
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Currently only supports ipv4, ipv6 and one multi-path address.
  */
 static struct nfs4_pnfs_ds_addr *
@@ -463,6 +524,8 @@ decode_ds_addr(struct net *net, struct xdr_stream *streamp, gfp_t gfp_flags)
 	char *startsep = "";
 	char *endsep = "";
 
+<<<<<<< HEAD
+=======
 =======
  * Currently only support ipv4, and one multi-path address.
  */
@@ -477,6 +540,7 @@ decode_and_add_ds(struct xdr_stream *streamp, struct inode *inode, gfp_t gfp_fla
 	int tmp[2];
 	__be32 *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* r_netid */
 	p = xdr_inline_decode(streamp, 4);
@@ -489,6 +553,9 @@ decode_and_add_ds(struct xdr_stream *streamp, struct inode *inode, gfp_t gfp_fla
 		goto out_err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netid = kmalloc(nlen+1, gfp_flags);
 	if (unlikely(!netid))
 		goto out_err;
@@ -500,6 +567,8 @@ decode_and_add_ds(struct xdr_stream *streamp, struct inode *inode, gfp_t gfp_fla
 	p = xdr_inline_decode(streamp, 4);
 	if (unlikely(!p))
 		goto out_free_netid;
+<<<<<<< HEAD
+=======
 =======
 	/* Check that netid is "tcp" */
 	if (nlen != 3 ||  memcmp((char *)p, "tcp", 3)) {
@@ -512,11 +581,15 @@ decode_and_add_ds(struct xdr_stream *streamp, struct inode *inode, gfp_t gfp_fla
 	if (unlikely(!p))
 		goto out_err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rlen = be32_to_cpup(p);
 
 	p = xdr_inline_decode(streamp, rlen);
 	if (unlikely(!p))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_free_netid;
 
 	/* port is ".ABC.DEF", 8 chars max */
@@ -524,6 +597,8 @@ decode_and_add_ds(struct xdr_stream *streamp, struct inode *inode, gfp_t gfp_fla
 		dprintk("%s: Invalid address, length %d\n", __func__,
 			rlen);
 		goto out_free_netid;
+<<<<<<< HEAD
+=======
 =======
 		goto out_err;
 
@@ -533,6 +608,7 @@ decode_and_add_ds(struct xdr_stream *streamp, struct inode *inode, gfp_t gfp_fla
 			rlen);
 		goto out_err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	buf = kmalloc(rlen + 1, gfp_flags);
 	if (!buf) {
@@ -540,13 +616,20 @@ decode_and_add_ds(struct xdr_stream *streamp, struct inode *inode, gfp_t gfp_fla
 <<<<<<< HEAD
 		goto out_free_netid;
 =======
+<<<<<<< HEAD
+		goto out_free_netid;
+=======
 		goto out_err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	buf[rlen] = '\0';
 	memcpy(buf, p, rlen);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* replace port '.' with '-' */
 	portstr = strrchr(buf, '.');
 	if (!portstr) {
@@ -633,6 +716,8 @@ out_free_netid:
 	kfree(netid);
 out_err:
 	return NULL;
+<<<<<<< HEAD
+=======
 =======
 	/* replace the port dots with dashes for the in4_pton() delimiter*/
 	for (i = 0; i < 2; i++) {
@@ -663,6 +748,7 @@ out_free:
 out_err:
 	return ds;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Decode opaque device data and return the result */
@@ -683,7 +769,12 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 	struct list_head dsaddrs;
 	struct nfs4_pnfs_ds_addr *da;
 =======
+<<<<<<< HEAD
+	struct list_head dsaddrs;
+	struct nfs4_pnfs_ds_addr *da;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* set up xdr stream */
 	scratch = alloc_page(gfp_flags);
@@ -704,8 +795,12 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 <<<<<<< HEAD
 		printk(KERN_WARNING "NFS: %s: stripe count %d greater than "
 =======
+<<<<<<< HEAD
+		printk(KERN_WARNING "NFS: %s: stripe count %d greater than "
+=======
 		printk(KERN_WARNING "%s: stripe count %d greater than "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       "supported maximum %d\n", __func__,
 			cnt, NFS4_PNFS_MAX_STRIPE_CNT);
 		goto out_err_free_scratch;
@@ -739,8 +834,12 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 <<<<<<< HEAD
 		printk(KERN_WARNING "NFS: %s: multipath count %d greater than "
 =======
+<<<<<<< HEAD
+		printk(KERN_WARNING "NFS: %s: multipath count %d greater than "
+=======
 		printk(KERN_WARNING "%s: multipath count %d greater than "
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"supported maximum %d\n", __func__,
 			num, NFS4_PNFS_MAX_MULTI_CNT);
 		goto out_err_free_stripe_indices;
@@ -751,8 +850,12 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 <<<<<<< HEAD
 		printk(KERN_WARNING "NFS: %s: stripe index %u >= num ds %u\n",
 =======
+<<<<<<< HEAD
+		printk(KERN_WARNING "NFS: %s: stripe index %u >= num ds %u\n",
+=======
 		printk(KERN_WARNING "%s: stripe index %u >= num ds %u\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, max_stripe_index, num);
 		goto out_err_free_stripe_indices;
 	}
@@ -776,7 +879,12 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 	INIT_LIST_HEAD(&dsaddrs);
 
 =======
+<<<<<<< HEAD
+	INIT_LIST_HEAD(&dsaddrs);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < dsaddr->ds_num; i++) {
 		int j;
 		u32 mp_count;
@@ -787,6 +895,9 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 
 		mp_count = be32_to_cpup(p); /* multipath count */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (j = 0; j < mp_count; j++) {
 			da = decode_ds_addr(NFS_SERVER(ino)->nfs_client->net,
 					    &stream, gfp_flags);
@@ -811,6 +922,8 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 			list_del_init(&da->da_node);
 			kfree(da->da_remotestr);
 			kfree(da);
+<<<<<<< HEAD
+=======
 =======
 		if (mp_count > 1) {
 			printk(KERN_WARNING
@@ -849,6 +962,7 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 					goto out_err_free_deviceid;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -856,6 +970,9 @@ decode_device(struct inode *ino, struct pnfs_device *pdev, gfp_t gfp_flags)
 	return dsaddr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_err_drain_dsaddrs:
 	while (!list_empty(&dsaddrs)) {
 		da = list_first_entry(&dsaddrs, struct nfs4_pnfs_ds_addr,
@@ -864,8 +981,11 @@ out_err_drain_dsaddrs:
 		kfree(da->da_remotestr);
 		kfree(da);
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_err_free_deviceid:
 	nfs4_fl_free_deviceid(dsaddr);
 	/* stripe_indicies was part of dsaddr */
@@ -894,8 +1014,12 @@ decode_and_add_device(struct inode *inode, struct pnfs_device *dev, gfp_t gfp_fl
 <<<<<<< HEAD
 		printk(KERN_WARNING "NFS: %s: Could not decode or add device\n",
 =======
+<<<<<<< HEAD
+		printk(KERN_WARNING "NFS: %s: Could not decode or add device\n",
+=======
 		printk(KERN_WARNING "%s: Could not decode or add device\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__);
 		return NULL;
 	}
@@ -933,8 +1057,12 @@ get_device_info(struct inode *inode, struct nfs4_deviceid *dev_id, gfp_t gfp_fla
 <<<<<<< HEAD
 	max_pages = nfs_page_array_len(0, max_resp_sz);
 =======
+<<<<<<< HEAD
+	max_pages = nfs_page_array_len(0, max_resp_sz);
+=======
 	max_pages = max_resp_sz >> PAGE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk("%s inode %p max_resp_sz %u max_pages %d\n",
 		__func__, inode, max_resp_sz, max_pages);
 
@@ -1029,6 +1157,9 @@ nfs4_fl_select_ds_fh(struct pnfs_layout_segment *lseg, u32 j)
 static void
 filelayout_mark_devid_negative(struct nfs4_file_layout_dsaddr *dsaddr,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       int err, const char *ds_remotestr)
 {
 	u32 *p = (u32 *)&dsaddr->id_node.deviceid;
@@ -1036,6 +1167,8 @@ filelayout_mark_devid_negative(struct nfs4_file_layout_dsaddr *dsaddr,
 	printk(KERN_ERR "NFS: data server %s connection error %d."
 		" Deviceid [%x%x%x%x] marked out of use.\n",
 		ds_remotestr, err, p[0], p[1], p[2], p[3]);
+<<<<<<< HEAD
+=======
 =======
 			       int err, u32 ds_addr)
 {
@@ -1045,6 +1178,7 @@ filelayout_mark_devid_negative(struct nfs4_file_layout_dsaddr *dsaddr,
 		" Deviceid [%x%x%x%x] marked out of use.\n",
 		ds_addr, err, p[0], p[1], p[2], p[3]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&nfs4_ds_cache_lock);
 	dsaddr->flags |= NFS4_DEVICE_ID_NEG_ENTRY;
@@ -1061,8 +1195,12 @@ nfs4_fl_prepare_ds(struct pnfs_layout_segment *lseg, u32 ds_idx)
 <<<<<<< HEAD
 		printk(KERN_ERR "NFS: %s: No data server for offset index %d\n",
 =======
+<<<<<<< HEAD
+		printk(KERN_ERR "NFS: %s: No data server for offset index %d\n",
+=======
 		printk(KERN_ERR "%s: No data server for offset index %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, ds_idx);
 		return NULL;
 	}
@@ -1082,8 +1220,12 @@ nfs4_fl_prepare_ds(struct pnfs_layout_segment *lseg, u32 ds_idx)
 <<<<<<< HEAD
 						       ds->ds_remotestr);
 =======
+<<<<<<< HEAD
+						       ds->ds_remotestr);
+=======
 						       ntohl(ds->ds_ip_addr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return NULL;
 		}
 	}

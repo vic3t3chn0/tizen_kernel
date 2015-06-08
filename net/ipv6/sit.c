@@ -94,8 +94,12 @@ struct pcpu_tstats {
 <<<<<<< HEAD
 } __attribute__((aligned(4*sizeof(unsigned long))));
 =======
+<<<<<<< HEAD
+} __attribute__((aligned(4*sizeof(unsigned long))));
+=======
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct net_device_stats *ipip6_get_stats(struct net_device *dev)
 {
@@ -483,8 +487,12 @@ static void ipip6_tunnel_uninit(struct net_device *dev)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(sitn->tunnels_wc[0], NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(sitn->tunnels_wc[0], NULL);
+=======
 		rcu_assign_pointer(sitn->tunnels_wc[0], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		ipip6_tunnel_unlink(sitn, netdev_priv(dev));
 		ipip6_tunnel_del_prl(netdev_priv(dev), NULL);
@@ -683,6 +691,9 @@ static netdev_tx_t ipip6_tunnel_xmit(struct sk_buff *skb,
 		goto tx_error;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tos == 1)
 		tos = ipv6_get_dsfield(iph6);
 
@@ -693,6 +704,8 @@ static netdev_tx_t ipip6_tunnel_xmit(struct sk_buff *skb,
 
 		if (skb_dst(skb))
 			neigh = dst_neigh_lookup(skb_dst(skb), &iph6->daddr);
+<<<<<<< HEAD
+=======
 =======
 	/* ISATAP (RFC4214) - must come before 6to4 */
 	if (dev->priv_flags & IFF_ISATAP) {
@@ -701,6 +714,7 @@ static netdev_tx_t ipip6_tunnel_xmit(struct sk_buff *skb,
 		if (skb_dst(skb))
 			neigh = dst_get_neighbour(skb_dst(skb));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (neigh == NULL) {
 			if (net_ratelimit())
@@ -716,12 +730,18 @@ static netdev_tx_t ipip6_tunnel_xmit(struct sk_buff *skb,
 			dst = addr6->s6_addr32[3];
 		else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			do_tx_error = true;
 
 		neigh_release(neigh);
 		if (do_tx_error)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto tx_error;
 	}
 
@@ -731,15 +751,21 @@ static netdev_tx_t ipip6_tunnel_xmit(struct sk_buff *skb,
 	if (!dst) {
 		struct neighbour *neigh = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bool do_tx_error = false;
 
 		if (skb_dst(skb))
 			neigh = dst_neigh_lookup(skb_dst(skb), &iph6->daddr);
+<<<<<<< HEAD
+=======
 =======
 
 		if (skb_dst(skb))
 			neigh = dst_get_neighbour(skb_dst(skb));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (neigh == NULL) {
 			if (net_ratelimit())
@@ -756,6 +782,9 @@ static netdev_tx_t ipip6_tunnel_xmit(struct sk_buff *skb,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((addr_type & IPV6_ADDR_COMPATv4) != 0)
 			dst = addr6->s6_addr32[3];
 		else
@@ -764,12 +793,15 @@ static netdev_tx_t ipip6_tunnel_xmit(struct sk_buff *skb,
 		neigh_release(neigh);
 		if (do_tx_error)
 			goto tx_error;
+<<<<<<< HEAD
+=======
 =======
 		if ((addr_type & IPV6_ADDR_COMPATv4) == 0)
 			goto tx_error_icmp;
 
 		dst = addr6->s6_addr32[3];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rt = ip_route_output_ports(dev_net(dev), &fl4, NULL,
@@ -962,8 +994,12 @@ ipip6_tunnel_ioctl (struct net_device *dev, struct ifreq *ifr, int cmd)
 <<<<<<< HEAD
 			ip6rd.prefix = t->ip6rd.prefix;
 =======
+<<<<<<< HEAD
+			ip6rd.prefix = t->ip6rd.prefix;
+=======
 			ipv6_addr_copy(&ip6rd.prefix, &t->ip6rd.prefix);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ip6rd.relay_prefix = t->ip6rd.relay_prefix;
 			ip6rd.prefixlen = t->ip6rd.prefixlen;
 			ip6rd.relay_prefixlen = t->ip6rd.relay_prefixlen;
@@ -1134,8 +1170,12 @@ ipip6_tunnel_ioctl (struct net_device *dev, struct ifreq *ifr, int cmd)
 <<<<<<< HEAD
 			t->ip6rd.prefix = prefix;
 =======
+<<<<<<< HEAD
+			t->ip6rd.prefix = prefix;
+=======
 			ipv6_addr_copy(&t->ip6rd.prefix, &prefix);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			t->ip6rd.relay_prefix = relay_prefix;
 			t->ip6rd.prefixlen = ip6rd.prefixlen;
 			t->ip6rd.relay_prefixlen = ip6rd.relay_prefixlen;

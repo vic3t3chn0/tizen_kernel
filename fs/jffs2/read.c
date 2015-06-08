@@ -13,7 +13,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/slab.h>
 #include <linux/crc32.h>
@@ -45,8 +50,13 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		pr_warn("Error reading node from 0x%08x: %d\n",
 			ref_offset(fd->raw), ret);
 =======
+<<<<<<< HEAD
+		pr_warn("Error reading node from 0x%08x: %d\n",
+			ref_offset(fd->raw), ret);
+=======
 		printk(KERN_WARNING "Error reading node from 0x%08x: %d\n", ref_offset(fd->raw), ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 	if (readlen != sizeof(*ri)) {
@@ -55,14 +65,22 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		pr_warn("Short read from 0x%08x: wanted 0x%zx bytes, got 0x%zx\n",
 			ref_offset(fd->raw), sizeof(*ri), readlen);
 =======
+<<<<<<< HEAD
+		pr_warn("Short read from 0x%08x: wanted 0x%zx bytes, got 0x%zx\n",
+			ref_offset(fd->raw), sizeof(*ri), readlen);
+=======
 		printk(KERN_WARNING "Short read from 0x%08x: wanted 0x%zx bytes, got 0x%zx\n",
 		       ref_offset(fd->raw), sizeof(*ri), readlen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 	crc = crc32(0, ri, sizeof(*ri)-8);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jffs2_dbg(1, "Node read from %08x: node_crc %08x, calculated CRC %08x. dsize %x, csize %x, offset %x, buf %p\n",
 		  ref_offset(fd->raw), je32_to_cpu(ri->node_crc),
 		  crc, je32_to_cpu(ri->dsize), je32_to_cpu(ri->csize),
@@ -70,6 +88,8 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 	if (crc != je32_to_cpu(ri->node_crc)) {
 		pr_warn("Node CRC %08x != calculated CRC %08x for node at %08x\n",
 			je32_to_cpu(ri->node_crc), crc, ref_offset(fd->raw));
+<<<<<<< HEAD
+=======
 =======
 	D1(printk(KERN_DEBUG "Node read from %08x: node_crc %08x, calculated CRC %08x. dsize %x, csize %x, offset %x, buf %p\n",
 		  ref_offset(fd->raw), je32_to_cpu(ri->node_crc),
@@ -79,6 +99,7 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		printk(KERN_WARNING "Node CRC %08x != calculated CRC %08x for node at %08x\n",
 		       je32_to_cpu(ri->node_crc), crc, ref_offset(fd->raw));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EIO;
 		goto out_ri;
 	}
@@ -95,9 +116,14 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 			pr_warn("jffs2_read_dnode() asked for %d bytes at %d from %d-byte node\n",
 				len, ofs, je32_to_cpu(ri->dsize));
 =======
+<<<<<<< HEAD
+			pr_warn("jffs2_read_dnode() asked for %d bytes at %d from %d-byte node\n",
+				len, ofs, je32_to_cpu(ri->dsize));
+=======
 		printk(KERN_WARNING "jffs2_read_dnode() asked for %d bytes at %d from %d-byte node\n",
 		       len, ofs, je32_to_cpu(ri->dsize));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -EINVAL;
 		goto out_ri;
 	});
@@ -141,9 +167,14 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 	jffs2_dbg(2, "Read %d bytes to %p\n", je32_to_cpu(ri->csize),
 		  readbuf);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(2, "Read %d bytes to %p\n", je32_to_cpu(ri->csize),
+		  readbuf);
+=======
 	D2(printk(KERN_DEBUG "Read %d bytes to %p\n", je32_to_cpu(ri->csize),
 		  readbuf));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = jffs2_flash_read(c, (ref_offset(fd->raw)) + sizeof(*ri),
 			       je32_to_cpu(ri->csize), &readlen, readbuf);
 
@@ -155,6 +186,9 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 	crc = crc32(0, readbuf, je32_to_cpu(ri->csize));
 	if (crc != je32_to_cpu(ri->data_crc)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_warn("Data CRC %08x != calculated CRC %08x for node at %08x\n",
 			je32_to_cpu(ri->data_crc), crc, ref_offset(fd->raw));
 		ret = -EIO;
@@ -168,6 +202,8 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		ret = jffs2_decompress(c, f, ri->compr | (ri->usercompr << 8), readbuf, decomprbuf, je32_to_cpu(ri->csize), je32_to_cpu(ri->dsize));
 		if (ret) {
 			pr_warn("Error: jffs2_decompress returned %d\n", ret);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_WARNING "Data CRC %08x != calculated CRC %08x for node at %08x\n",
 		       je32_to_cpu(ri->data_crc), crc, ref_offset(fd->raw));
@@ -182,6 +218,7 @@ int jffs2_read_dnode(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		if (ret) {
 			printk(KERN_WARNING "Error: jffs2_decompress returned %d\n", ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out_decomprbuf;
 		}
 	}
@@ -212,9 +249,14 @@ int jffs2_read_inode_range(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 	jffs2_dbg(1, "%s(): ino #%u, range 0x%08x-0x%08x\n",
 		  __func__, f->inocache->ino, offset, offset + len);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "%s(): ino #%u, range 0x%08x-0x%08x\n",
+		  __func__, f->inocache->ino, offset, offset + len);
+=======
 	D1(printk(KERN_DEBUG "jffs2_read_inode_range: ino #%u, range 0x%08x-0x%08x\n",
 		  f->inocache->ino, offset, offset+len));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	frag = jffs2_lookup_node_frag(&f->fragtree, offset);
 
@@ -228,25 +270,36 @@ int jffs2_read_inode_range(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 		jffs2_dbg(2, "%s(): offset %d, end %d\n",
 			  __func__, offset, end);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(2, "%s(): offset %d, end %d\n",
+			  __func__, offset, end);
+=======
 		D2(printk(KERN_DEBUG "jffs2_read_inode_range: offset %d, end %d\n", offset, end));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (unlikely(!frag || frag->ofs > offset ||
 			     frag->ofs + frag->size <= offset)) {
 			uint32_t holesize = end - offset;
 			if (frag && frag->ofs > offset) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				jffs2_dbg(1, "Eep. Hole in ino #%u fraglist. frag->ofs = 0x%08x, offset = 0x%08x\n",
 					  f->inocache->ino, frag->ofs, offset);
 				holesize = min(holesize, frag->ofs - offset);
 			}
 			jffs2_dbg(1, "Filling non-frag hole from %d-%d\n",
 				  offset, offset + holesize);
+<<<<<<< HEAD
+=======
 =======
 				D1(printk(KERN_NOTICE "Eep. Hole in ino #%u fraglist. frag->ofs = 0x%08x, offset = 0x%08x\n", f->inocache->ino, frag->ofs, offset));
 				holesize = min(holesize, frag->ofs - offset);
 			}
 			D1(printk(KERN_DEBUG "Filling non-frag hole from %d-%d\n", offset, offset+holesize));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			memset(buf, 0, holesize);
 			buf += holesize;
 			offset += holesize;
@@ -258,8 +311,14 @@ int jffs2_read_inode_range(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 				  offset, holeend, frag->ofs,
 				  frag->ofs + frag->size);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "Filling frag hole from %d-%d (frag 0x%x 0x%x)\n",
+				  offset, holeend, frag->ofs,
+				  frag->ofs + frag->size);
+=======
 			D1(printk(KERN_DEBUG "Filling frag hole from %d-%d (frag 0x%x 0x%x)\n", offset, holeend, frag->ofs, frag->ofs + frag->size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			memset(buf, 0, holeend - offset);
 			buf += holeend - offset;
 			offset = holeend;
@@ -272,6 +331,9 @@ int jffs2_read_inode_range(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 			fragofs = offset - frag->ofs;
 			readlen = min(frag->size - fragofs, end - offset);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			jffs2_dbg(1, "Reading %d-%d from node at 0x%08x (%d)\n",
 				  frag->ofs+fragofs,
 				  frag->ofs + fragofs+readlen,
@@ -282,6 +344,8 @@ int jffs2_read_inode_range(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 			if (ret) {
 				jffs2_dbg(1, "%s(): error %d\n",
 					  __func__, ret);
+<<<<<<< HEAD
+=======
 =======
 			D1(printk(KERN_DEBUG "Reading %d-%d from node at 0x%08x (%d)\n",
 				  frag->ofs+fragofs, frag->ofs+fragofs+readlen,
@@ -291,6 +355,7 @@ int jffs2_read_inode_range(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 			if (ret) {
 				D1(printk(KERN_DEBUG"jffs2_read_inode_range error %d\n",ret));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				memset(buf, 0, readlen);
 				return ret;
 			}
@@ -300,8 +365,12 @@ int jffs2_read_inode_range(struct jffs2_sb_info *c, struct jffs2_inode_info *f,
 <<<<<<< HEAD
 			jffs2_dbg(2, "node read was OK. Looping\n");
 =======
+<<<<<<< HEAD
+			jffs2_dbg(2, "node read was OK. Looping\n");
+=======
 			D2(printk(KERN_DEBUG "node read was OK. Looping\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return 0;

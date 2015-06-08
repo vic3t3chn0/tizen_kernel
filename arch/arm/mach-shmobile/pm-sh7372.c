@@ -16,6 +16,9 @@
 #include <linux/err.h>
 #include <linux/slab.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pm_clock.h>
 #include <linux/platform_device.h>
 #include <linux/delay.h>
@@ -487,6 +490,8 @@ static void sh7372_cpuidle_setup(struct cpuidle_driver *drv)
 {
 	struct cpuidle_state *state = &drv->states[drv->state_count];
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 #include <asm/io.h>
@@ -532,15 +537,21 @@ static void sh7372_cpuidle_setup(struct cpuidle_device *dev)
 
 	state = &dev->states[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snprintf(state->name, CPUIDLE_NAME_LEN, "C2");
 	strncpy(state->desc, "Core Standby Mode", CPUIDLE_DESC_LEN);
 	state->exit_latency = 10;
 	state->target_residency = 20 + 10;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state->flags = CPUIDLE_FLAG_TIME_VALID;
 	shmobile_cpuidle_modes[drv->state_count] = sh7372_enter_core_standby;
 
 	drv->state_count++;
+<<<<<<< HEAD
+=======
 =======
 	state->power_usage = 1; /* perhaps not */
 	state->flags = 0;
@@ -549,6 +560,7 @@ static void sh7372_cpuidle_setup(struct cpuidle_device *dev)
 
 	dev->state_count = i + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void sh7372_cpuidle_init(void)
@@ -561,6 +573,9 @@ static void sh7372_cpuidle_init(void) {}
 
 #ifdef CONFIG_SUSPEND
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int sh7372_enter_suspend(suspend_state_t suspend_state)
 {
@@ -620,6 +635,8 @@ static void sh7372_suspend_init(void)
 {
 	shmobile_suspend_ops.enter = sh7372_enter_suspend;
 	pm_notifier(sh7372_pm_notifier_fn, 0);
+<<<<<<< HEAD
+=======
 =======
 static int sh7372_enter_suspend(suspend_state_t suspend_state)
 {
@@ -631,6 +648,7 @@ static void sh7372_suspend_init(void)
 {
 	shmobile_suspend_ops.enter = sh7372_enter_suspend;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else
 static void sh7372_suspend_init(void) {}
@@ -638,10 +656,13 @@ static void sh7372_suspend_init(void) {}
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define DBGREG1 0xe6100020
 #define DBGREG9 0xe6100040
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init sh7372_pm_init(void)
 {
 	/* enable DBG hardware block to kick SYSC */
@@ -654,7 +675,13 @@ void __init sh7372_pm_init(void)
 	__raw_writel(0, PDNSEL);
 
 =======
+<<<<<<< HEAD
+	/* do not convert A3SM, A3SP, A3SG, A4R power down into A4S */
+	__raw_writel(0, PDNSEL);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sh7372_suspend_init();
 	sh7372_cpuidle_init();
 }

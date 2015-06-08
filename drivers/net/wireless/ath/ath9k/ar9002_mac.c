@@ -15,6 +15,13 @@
  */
 
 #include "hw.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define AR_BufLen           0x00000fff
 
@@ -28,11 +35,20 @@ static void ar9002_hw_set_desc_link(void *ds, u32 ds_link)
 	((struct ath_desc*) ds)->ds_link = ds_link;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ar9002_hw_get_desc_link(void *ds, u32 **ds_link)
 {
 	*ds_link = &((struct ath_desc *)ds)->ds_link;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool ar9002_hw_get_isr(struct ath_hw *ah, enum ath9k_int *masked)
 {
 	u32 isr = 0;
@@ -111,7 +127,15 @@ static bool ar9002_hw_get_isr(struct ath_hw *ah, enum ath9k_int *masked)
 		}
 
 		if (isr & AR_ISR_RXORN) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, INTERRUPT,
+=======
 			ath_dbg(common, ATH_DBG_INTERRUPT,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_INTERRUPT,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"receive FIFO overrun interrupt\n");
 		}
 
@@ -147,24 +171,54 @@ static bool ar9002_hw_get_isr(struct ath_hw *ah, enum ath9k_int *masked)
 
 		if (fatal_int) {
 			if (sync_cause & AR_INTR_SYNC_HOST1_FATAL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				ath_dbg(common, ANY,
+					"received PCI FATAL interrupt\n");
+			}
+			if (sync_cause & AR_INTR_SYNC_HOST1_PERR) {
+				ath_dbg(common, ANY,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ath_dbg(common, ATH_DBG_ANY,
 					"received PCI FATAL interrupt\n");
 			}
 			if (sync_cause & AR_INTR_SYNC_HOST1_PERR) {
 				ath_dbg(common, ATH_DBG_ANY,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					"received PCI PERR interrupt\n");
 			}
 			*masked |= ATH9K_INT_FATAL;
 		}
 		if (sync_cause & AR_INTR_SYNC_RADM_CPL_TIMEOUT) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, INTERRUPT,
+=======
 			ath_dbg(common, ATH_DBG_INTERRUPT,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_INTERRUPT,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"AR_INTR_SYNC_RADM_CPL_TIMEOUT\n");
 			REG_WRITE(ah, AR_RC, AR_RC_HOSTIF);
 			REG_WRITE(ah, AR_RC, 0);
 			*masked |= ATH9K_INT_FATAL;
 		}
 		if (sync_cause & AR_INTR_SYNC_LOCAL_TIMEOUT) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, INTERRUPT,
+=======
 			ath_dbg(common, ATH_DBG_INTERRUPT,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_INTERRUPT,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"AR_INTR_SYNC_LOCAL_TIMEOUT\n");
 		}
 
@@ -175,6 +229,17 @@ static bool ar9002_hw_get_isr(struct ath_hw *ah, enum ath9k_int *masked)
 	return true;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void
+ar9002_set_txdesc(struct ath_hw *ah, void *ds, struct ath_tx_info *i)
+{
+	struct ar5416_desc *ads = AR5416DESC(ds);
+	u32 ctl1, ctl6;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ar9002_hw_fill_txdesc(struct ath_hw *ah, void *ds, u32 seglen,
 				  bool is_firstseg, bool is_lastseg,
 				  const void *ds0, dma_addr_t buf_addr,
@@ -197,11 +262,108 @@ static void ar9002_hw_fill_txdesc(struct ath_hw *ah, void *ds, u32 seglen,
 		ads->ds_ctl2 = 0;
 		ads->ds_ctl3 = 0;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ads->ds_txstatus0 = ads->ds_txstatus1 = 0;
 	ads->ds_txstatus2 = ads->ds_txstatus3 = 0;
 	ads->ds_txstatus4 = ads->ds_txstatus5 = 0;
 	ads->ds_txstatus6 = ads->ds_txstatus7 = 0;
 	ads->ds_txstatus8 = ads->ds_txstatus9 = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	ACCESS_ONCE(ads->ds_link) = i->link;
+	ACCESS_ONCE(ads->ds_data) = i->buf_addr[0];
+
+	ctl1 = i->buf_len[0] | (i->is_last ? 0 : AR_TxMore);
+	ctl6 = SM(i->keytype, AR_EncrType);
+
+	if (AR_SREV_9285(ah)) {
+		ads->ds_ctl8 = 0;
+		ads->ds_ctl9 = 0;
+		ads->ds_ctl10 = 0;
+		ads->ds_ctl11 = 0;
+	}
+
+	if ((i->is_first || i->is_last) &&
+	    i->aggr != AGGR_BUF_MIDDLE && i->aggr != AGGR_BUF_LAST) {
+		ACCESS_ONCE(ads->ds_ctl2) = set11nTries(i->rates, 0)
+			| set11nTries(i->rates, 1)
+			| set11nTries(i->rates, 2)
+			| set11nTries(i->rates, 3)
+			| (i->dur_update ? AR_DurUpdateEna : 0)
+			| SM(0, AR_BurstDur);
+
+		ACCESS_ONCE(ads->ds_ctl3) = set11nRate(i->rates, 0)
+			| set11nRate(i->rates, 1)
+			| set11nRate(i->rates, 2)
+			| set11nRate(i->rates, 3);
+	} else {
+		ACCESS_ONCE(ads->ds_ctl2) = 0;
+		ACCESS_ONCE(ads->ds_ctl3) = 0;
+	}
+
+	if (!i->is_first) {
+		ACCESS_ONCE(ads->ds_ctl0) = 0;
+		ACCESS_ONCE(ads->ds_ctl1) = ctl1;
+		ACCESS_ONCE(ads->ds_ctl6) = ctl6;
+		return;
+	}
+
+	ctl1 |= (i->keyix != ATH9K_TXKEYIX_INVALID ? SM(i->keyix, AR_DestIdx) : 0)
+		| SM(i->type, AR_FrameType)
+		| (i->flags & ATH9K_TXDESC_NOACK ? AR_NoAck : 0)
+		| (i->flags & ATH9K_TXDESC_EXT_ONLY ? AR_ExtOnly : 0)
+		| (i->flags & ATH9K_TXDESC_EXT_AND_CTL ? AR_ExtAndCtl : 0);
+
+	switch (i->aggr) {
+	case AGGR_BUF_FIRST:
+		ctl6 |= SM(i->aggr_len, AR_AggrLen);
+		/* fall through */
+	case AGGR_BUF_MIDDLE:
+		ctl1 |= AR_IsAggr | AR_MoreAggr;
+		ctl6 |= SM(i->ndelim, AR_PadDelim);
+		break;
+	case AGGR_BUF_LAST:
+		ctl1 |= AR_IsAggr;
+		break;
+	case AGGR_BUF_NONE:
+		break;
+	}
+
+	ACCESS_ONCE(ads->ds_ctl0) = (i->pkt_len & AR_FrameLen)
+		| (i->flags & ATH9K_TXDESC_VMF ? AR_VirtMoreFrag : 0)
+		| SM(i->txpower, AR_XmitPower)
+		| (i->flags & ATH9K_TXDESC_VEOL ? AR_VEOL : 0)
+		| (i->flags & ATH9K_TXDESC_INTREQ ? AR_TxIntrReq : 0)
+		| (i->keyix != ATH9K_TXKEYIX_INVALID ? AR_DestIdxValid : 0)
+		| (i->flags & ATH9K_TXDESC_CLRDMASK ? AR_ClrDestMask : 0)
+		| (i->flags & ATH9K_TXDESC_RTSENA ? AR_RTSEnable :
+		   (i->flags & ATH9K_TXDESC_CTSENA ? AR_CTSEnable : 0));
+
+	ACCESS_ONCE(ads->ds_ctl1) = ctl1;
+	ACCESS_ONCE(ads->ds_ctl6) = ctl6;
+
+	if (i->aggr == AGGR_BUF_MIDDLE || i->aggr == AGGR_BUF_LAST)
+		return;
+
+	ACCESS_ONCE(ads->ds_ctl4) = set11nPktDurRTSCTS(i->rates, 0)
+		| set11nPktDurRTSCTS(i->rates, 1);
+
+	ACCESS_ONCE(ads->ds_ctl5) = set11nPktDurRTSCTS(i->rates, 2)
+		| set11nPktDurRTSCTS(i->rates, 3);
+
+	ACCESS_ONCE(ads->ds_ctl7) = set11nRateFlags(i->rates, 0)
+		| set11nRateFlags(i->rates, 1)
+		| set11nRateFlags(i->rates, 2)
+		| set11nRateFlags(i->rates, 3)
+		| SM(i->rtscts_rate, AR_RTSCTSRate);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ar9002_hw_proc_txdesc(struct ath_hw *ah, void *ds,
@@ -276,6 +438,11 @@ static int ar9002_hw_proc_txdesc(struct ath_hw *ah, void *ds,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ar9002_hw_set11n_txdesc(struct ath_hw *ah, void *ds,
 				    u32 pktLen, enum ath9k_pkt_type type,
 				    u32 txPower, u32 keyIx,
@@ -415,19 +582,40 @@ static void ar9002_hw_clr11n_aggr(struct ath_hw *ah, void *ds)
 	ads->ds_ctl1 &= (~AR_IsAggr & ~AR_MoreAggr);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ath9k_hw_setuprxdesc(struct ath_hw *ah, struct ath_desc *ds,
 			  u32 size, u32 flags)
 {
 	struct ar5416_desc *ads = AR5416DESC(ds);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct ath9k_hw_capabilities *pCap = &ah->caps;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ath9k_hw_capabilities *pCap = &ah->caps;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ads->ds_ctl1 = size & AR_BufLen;
 	if (flags & ATH9K_RXDESC_INTREQ)
 		ads->ds_ctl1 |= AR_RxIntrReq;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	memset(&ads->u.rx, 0, sizeof(ads->u.rx));
+=======
 	ads->ds_rxstatus8 &= ~AR_RxDone;
 	if (!(pCap->hw_caps & ATH9K_HW_CAP_AUTOSLEEP))
 		memset(&(ads->u), 0, sizeof(ads->u));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ads->ds_rxstatus8 &= ~AR_RxDone;
+	if (!(pCap->hw_caps & ATH9K_HW_CAP_AUTOSLEEP))
+		memset(&(ads->u), 0, sizeof(ads->u));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(ath9k_hw_setuprxdesc);
 
@@ -437,6 +625,14 @@ void ar9002_hw_attach_mac_ops(struct ath_hw *ah)
 
 	ops->rx_enable = ar9002_hw_rx_enable;
 	ops->set_desc_link = ar9002_hw_set_desc_link;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops->get_isr = ar9002_hw_get_isr;
+	ops->set_txdesc = ar9002_set_txdesc;
+	ops->proc_txdesc = ar9002_hw_proc_txdesc;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops->get_desc_link = ar9002_hw_get_desc_link;
 	ops->get_isr = ar9002_hw_get_isr;
 	ops->fill_txdesc = ar9002_hw_fill_txdesc;
@@ -448,4 +644,8 @@ void ar9002_hw_attach_mac_ops(struct ath_hw *ah)
 	ops->set11n_aggr_last = ar9002_hw_set11n_aggr_last;
 	ops->clr11n_aggr = ar9002_hw_clr11n_aggr;
 	ops->set_clrdmask = ar9002_hw_set_clrdmask;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -197,6 +197,9 @@ DEFINE_EVENT(kvm_mmu_page_class, kvm_mmu_prepare_zap_page,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DEFINE_EVENT(kvm_mmu_page_class, kvm_mmu_delay_free_pages,
 	TP_PROTO(struct kvm_mmu_page *sp),
 
@@ -243,6 +246,8 @@ TRACE_EVENT(
 
 	TP_printk("addr:%llx gfn %llx access %x", __entry->addr, __entry->gfn,
 		  __entry->access)
+<<<<<<< HEAD
+=======
 =======
 TRACE_EVENT(
 	kvm_mmu_audit,
@@ -262,6 +267,7 @@ TRACE_EVENT(
 	TP_printk("vcpu:%d %s", __entry->vcpu->cpu,
 		  audit_point_name[__entry->audit_point])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 );
 #endif /* _TRACE_KVMMMU_H */
 

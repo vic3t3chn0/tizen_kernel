@@ -76,8 +76,12 @@ typedef struct debug_info {
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } debug_info_t;
 
 typedef int (debug_header_proc_t) (debug_info_t* id,
@@ -131,8 +135,12 @@ debug_info_t *debug_register_mode(const char *name, int pages, int nr_areas,
 <<<<<<< HEAD
 				  int buf_size, umode_t mode, uid_t uid,
 =======
+<<<<<<< HEAD
+				  int buf_size, umode_t mode, uid_t uid,
+=======
 				  int buf_size, mode_t mode, uid_t uid,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  gid_t gid);
 
 void debug_unregister(debug_info_t* id);
@@ -142,7 +150,11 @@ void debug_set_level(debug_info_t* id, int new_level);
 <<<<<<< HEAD
 void debug_set_critical(void);
 =======
+<<<<<<< HEAD
+void debug_set_critical(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void debug_stop_all(void);
 
 static inline debug_entry_t*

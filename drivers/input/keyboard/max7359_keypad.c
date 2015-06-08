@@ -316,6 +316,12 @@ static struct i2c_driver max7359_i2c_driver = {
 	.id_table	= max7359_ids,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(max7359_i2c_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init max7359_init(void)
 {
 	return i2c_add_driver(&max7359_i2c_driver);
@@ -327,6 +333,10 @@ static void __exit max7359_exit(void)
 	i2c_del_driver(&max7359_i2c_driver);
 }
 module_exit(max7359_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Kim Kyuwon <q1.kim@samsung.com>");
 MODULE_DESCRIPTION("MAX7359 Key Switch Controller Driver");

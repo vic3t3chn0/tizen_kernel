@@ -376,9 +376,14 @@ static void yy_fatal_error (yyconst char msg[]  );
 #define YY_NUM_RULES 30
 #define YY_END_OF_BUFFER 31
 =======
+<<<<<<< HEAD
+#define YY_NUM_RULES 30
+#define YY_END_OF_BUFFER 31
+=======
 #define YY_NUM_RULES 17
 #define YY_END_OF_BUFFER 18
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -387,6 +392,9 @@ struct yy_trans_info
 	flex_int32_t yy_nxt;
 	};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static yyconst flex_int16_t yy_accept[161] =
     {   0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
@@ -406,6 +414,8 @@ static yyconst flex_int16_t yy_accept[161] =
         4,   17,    0,    0,    2,    0,    0,    0,    0,    0,
         0,    0,    0,    0,    0,    0,    0,    1,    0,    0,
         0,    0,    5,    8,    0,    0,    0,    0,    7,    0
+<<<<<<< HEAD
+=======
 =======
 static yyconst flex_int16_t yy_accept[94] =
     {   0,
@@ -421,6 +431,7 @@ static yyconst flex_int16_t yy_accept[94] =
         0,    4,    0
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     } ;
 
 static yyconst flex_int32_t yy_ec[256] =
@@ -429,6 +440,9 @@ static yyconst flex_int32_t yy_ec[256] =
         2,    2,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         1,    2,    4,    5,    6,    1,    1,    7,    8,    1,
         1,    9,   10,   10,   11,   10,   12,   13,   14,   15,
        15,   15,   15,   15,   15,   15,   15,   16,    1,   17,
@@ -440,6 +454,8 @@ static yyconst flex_int32_t yy_ec[256] =
        30,   20,   21,   21,   31,   21,   21,   32,   33,   34,
        35,   36,   21,   37,   38,   39,   40,   41,   21,   24,
        42,   21,   43,   44,   45,    1,    1,    1,    1,    1,
+<<<<<<< HEAD
+=======
 =======
         1,    2,    1,    4,    5,    1,    1,    6,    1,    1,
         1,    7,    5,    5,    8,    5,    9,   10,   11,   12,
@@ -453,6 +469,7 @@ static yyconst flex_int32_t yy_ec[256] =
        15,   15,   15,   27,   28,   29,   30,   31,   15,   16,
        15,   15,   32,    1,   33,    1,    1,    1,    1,    1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -470,6 +487,9 @@ static yyconst flex_int32_t yy_ec[256] =
     } ;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static yyconst flex_int32_t yy_meta[46] =
     {   0,
         1,    1,    1,    1,    1,    2,    3,    1,    2,    2,
@@ -578,6 +598,8 @@ static yyconst flex_int16_t yy_nxt[441] =
     } ;
 
 static yyconst flex_int16_t yy_chk[441] =
+<<<<<<< HEAD
+=======
 =======
 static yyconst flex_int32_t yy_meta[34] =
     {   0,
@@ -655,11 +677,15 @@ static yyconst flex_int16_t yy_nxt[281] =
 
 static yyconst flex_int16_t yy_chk[281] =
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    4,    9,    9,    9,   10,
        50,    4,    5,    5,    5,    5,   10,   10,   10,   50,
@@ -705,6 +731,8 @@ static yyconst flex_int16_t yy_chk[281] =
       160,  160,  160,  160,  160,  160,  160,  160,  160,  160,
       160,  160,  160,  160,  160,  160,  160,  160,  160,  160,
       160,  160,  160,  160,  160,  160,  160,  160,  160,  160
+<<<<<<< HEAD
+=======
 =======
         1,    1,    1,    5,    5,    5,    5,   91,    5,    9,
         9,    9,    5,    5,    5,    5,    5,    7,    7,    7,
@@ -734,6 +762,7 @@ static yyconst flex_int16_t yy_chk[281] =
        93,   93,   93,   93,   93,   93,   93,   93,   93,   93,
        93,   93,   93,   93,   93,   93,   93,   93,   93,   93
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -778,8 +807,12 @@ char *yytext;
 <<<<<<< HEAD
 #line 38 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+#line 38 "dtc-lexer.l"
+=======
 #line 37 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "dtc.h"
 #include "srcpos.h"
 #include "dtc-parser.tab.h"
@@ -810,8 +843,12 @@ static int pop_input_file(void);
 <<<<<<< HEAD
 #line 664 "dtc-lexer.lex.c"
 =======
+<<<<<<< HEAD
+#line 664 "dtc-lexer.lex.c"
+=======
 #line 607 "dtc-lexer.lex.c"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define INITIAL 0
 #define INCLUDE 1
@@ -995,7 +1032,13 @@ extern int yylex (void);
 		YY_CURRENT_BUFFER_LVALUE->yy_at_bol = \
 				(yytext[yyleng - 1] == '\n'); \
 =======
+<<<<<<< HEAD
+	if ( yyleng > 0 ) \
+		YY_CURRENT_BUFFER_LVALUE->yy_at_bol = \
+				(yytext[yyleng - 1] == '\n'); \
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	YY_USER_ACTION
 
 /** The main scanner function which does all the work.
@@ -1011,10 +1054,16 @@ YY_DECL
 
 #line 858 "dtc-lexer.lex.c"
 =======
+<<<<<<< HEAD
+#line 67 "dtc-lexer.l"
+
+#line 858 "dtc-lexer.lex.c"
+=======
 #line 66 "dtc-lexer.l"
 
 #line 798 "dtc-lexer.lex.c"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ( !(yy_init) )
 		{
@@ -1058,7 +1107,11 @@ YY_DECL
 <<<<<<< HEAD
 		yy_current_state += YY_AT_BOL();
 =======
+<<<<<<< HEAD
+		yy_current_state += YY_AT_BOL();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 yy_match:
 		do
 			{
@@ -1074,8 +1127,12 @@ yy_match:
 <<<<<<< HEAD
 				if ( yy_current_state >= 161 )
 =======
+<<<<<<< HEAD
+				if ( yy_current_state >= 161 )
+=======
 				if ( yy_current_state >= 94 )
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1084,8 +1141,12 @@ yy_match:
 <<<<<<< HEAD
 		while ( yy_current_state != 160 );
 =======
+<<<<<<< HEAD
+		while ( yy_current_state != 160 );
+=======
 		while ( yy_current_state != 93 );
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		yy_cp = (yy_last_accepting_cpos);
 		yy_current_state = (yy_last_accepting_state);
 
@@ -1111,8 +1172,12 @@ YY_RULE_SETUP
 <<<<<<< HEAD
 #line 68 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+#line 68 "dtc-lexer.l"
+=======
 #line 67 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			char *name = strchr(yytext, '\"') + 1;
 			yytext[yyleng-1] = '\0';
@@ -1120,6 +1185,9 @@ YY_RULE_SETUP
 		}
 	YY_BREAK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
@@ -1145,8 +1213,11 @@ YY_RULE_SETUP
 			srcpos_set_line(xstrdup(fn), atoi(line) - 1);
 		}
 	YY_BREAK
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(INCLUDE):
 case YY_STATE_EOF(BYTESTRING):
@@ -1155,8 +1226,12 @@ case YY_STATE_EOF(V1):
 <<<<<<< HEAD
 #line 95 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+#line 95 "dtc-lexer.l"
+=======
 #line 73 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			if (!pop_input_file()) {
 				yyterminate();
@@ -1164,16 +1239,22 @@ case YY_STATE_EOF(V1):
 		}
 	YY_BREAK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
 #line 101 "dtc-lexer.l"
+<<<<<<< HEAD
+=======
 =======
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 79 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			DPRINT("String: %s\n", yytext);
 			yylval.data = data_copy_escape_string(yytext+1,
@@ -1186,10 +1267,16 @@ case 4:
 YY_RULE_SETUP
 #line 108 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+case 4:
+YY_RULE_SETUP
+#line 108 "dtc-lexer.l"
+=======
 case 3:
 YY_RULE_SETUP
 #line 86 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			DPRINT("Keyword: /dts-v1/\n");
 			dts_version = 1;
@@ -1202,10 +1289,16 @@ case 5:
 YY_RULE_SETUP
 #line 115 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+case 5:
+YY_RULE_SETUP
+#line 115 "dtc-lexer.l"
+=======
 case 4:
 YY_RULE_SETUP
 #line 93 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			DPRINT("Keyword: /memreserve/\n");
 			BEGIN_DEFAULT();
@@ -1213,6 +1306,9 @@ YY_RULE_SETUP
 		}
 	YY_BREAK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case 6:
 YY_RULE_SETUP
 #line 121 "dtc-lexer.l"
@@ -1245,11 +1341,14 @@ YY_RULE_SETUP
 case 9:
 YY_RULE_SETUP
 #line 141 "dtc-lexer.l"
+<<<<<<< HEAD
+=======
 =======
 case 5:
 YY_RULE_SETUP
 #line 99 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			DPRINT("Label: %s\n", yytext);
 			yylval.labelref = xstrdup(yytext);
@@ -1262,10 +1361,16 @@ case 10:
 YY_RULE_SETUP
 #line 148 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+case 10:
+YY_RULE_SETUP
+#line 148 "dtc-lexer.l"
+=======
 case 6:
 YY_RULE_SETUP
 #line 106 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			yylval.literal = xstrdup(yytext);
 			DPRINT("Literal: '%s'\n", yylval.literal);
@@ -1273,6 +1378,9 @@ YY_RULE_SETUP
 		}
 	YY_BREAK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
@@ -1287,11 +1395,14 @@ YY_RULE_SETUP
 case 12:
 YY_RULE_SETUP
 #line 161 "dtc-lexer.l"
+<<<<<<< HEAD
+=======
 =======
 case 7:
 YY_RULE_SETUP
 #line 112 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {	/* label reference */
 			DPRINT("Ref: %s\n", yytext+1);
 			yylval.labelref = xstrdup(yytext+1);
@@ -1303,10 +1414,16 @@ case 13:
 YY_RULE_SETUP
 #line 167 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+case 13:
+YY_RULE_SETUP
+#line 167 "dtc-lexer.l"
+=======
 case 8:
 YY_RULE_SETUP
 #line 118 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {	/* new-style path reference */
 			yytext[yyleng-1] = '\0';
 			DPRINT("Ref: %s\n", yytext+2);
@@ -1319,10 +1436,16 @@ case 14:
 YY_RULE_SETUP
 #line 174 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+case 14:
+YY_RULE_SETUP
+#line 174 "dtc-lexer.l"
+=======
 case 9:
 YY_RULE_SETUP
 #line 125 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			yylval.byte = strtol(yytext, NULL, 16);
 			DPRINT("Byte: %02x\n", (int)yylval.byte);
@@ -1334,10 +1457,16 @@ case 15:
 YY_RULE_SETUP
 #line 180 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+case 15:
+YY_RULE_SETUP
+#line 180 "dtc-lexer.l"
+=======
 case 10:
 YY_RULE_SETUP
 #line 131 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			DPRINT("/BYTESTRING\n");
 			BEGIN_DEFAULT();
@@ -1345,6 +1474,9 @@ YY_RULE_SETUP
 		}
 	YY_BREAK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case 16:
 YY_RULE_SETUP
 #line 186 "dtc-lexer.l"
@@ -1352,6 +1484,8 @@ YY_RULE_SETUP
 			DPRINT("PropNodeName: %s\n", yytext);
 			yylval.propnodename = xstrdup((yytext[0] == '\\') ?
 							yytext + 1 : yytext);
+<<<<<<< HEAD
+=======
 =======
 case 11:
 YY_RULE_SETUP
@@ -1360,6 +1494,7 @@ YY_RULE_SETUP
 			DPRINT("PropNodeName: %s\n", yytext);
 			yylval.propnodename = xstrdup(yytext);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			BEGIN_DEFAULT();
 			return DT_PROPNODENAME;
 		}
@@ -1369,16 +1504,25 @@ case 17:
 YY_RULE_SETUP
 #line 194 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+case 17:
+YY_RULE_SETUP
+#line 194 "dtc-lexer.l"
+=======
 case 12:
 YY_RULE_SETUP
 #line 144 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			DPRINT("Binary Include\n");
 			return DT_INCBIN;
 		}
 	YY_BREAK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case 18:
 /* rule 18 can match eol */
 YY_RULE_SETUP
@@ -1440,6 +1584,8 @@ YY_RULE_SETUP
 case 29:
 YY_RULE_SETUP
 #line 212 "dtc-lexer.l"
+<<<<<<< HEAD
+=======
 =======
 case 13:
 /* rule 13 can match eol */
@@ -1463,6 +1609,7 @@ case 16:
 YY_RULE_SETUP
 #line 153 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 			DPRINT("Char: %c (\\x%02x)\n", yytext[0],
 				(unsigned)yytext[0]);
@@ -1479,12 +1626,17 @@ YY_RULE_SETUP
 		}
 	YY_BREAK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 case 30:
 YY_RULE_SETUP
 #line 227 "dtc-lexer.l"
 ECHO;
 	YY_BREAK
 #line 1211 "dtc-lexer.lex.c"
+<<<<<<< HEAD
+=======
 =======
 case 17:
 YY_RULE_SETUP
@@ -1493,6 +1645,7 @@ ECHO;
 	YY_BREAK
 #line 1044 "dtc-lexer.lex.c"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1774,7 +1927,11 @@ static int yy_get_next_buffer (void)
 <<<<<<< HEAD
 	yy_current_state += YY_AT_BOL();
 =======
+<<<<<<< HEAD
+	yy_current_state += YY_AT_BOL();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
@@ -1790,8 +1947,12 @@ static int yy_get_next_buffer (void)
 <<<<<<< HEAD
 			if ( yy_current_state >= 161 )
 =======
+<<<<<<< HEAD
+			if ( yy_current_state >= 161 )
+=======
 			if ( yy_current_state >= 94 )
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1820,11 +1981,16 @@ static int yy_get_next_buffer (void)
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ( yy_current_state >= 161 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 	yy_is_jam = (yy_current_state == 160);
+<<<<<<< HEAD
+=======
 =======
 		if ( yy_current_state >= 94 )
 			yy_c = yy_meta[(unsigned int) yy_c];
@@ -1832,6 +1998,7 @@ static int yy_get_next_buffer (void)
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 	yy_is_jam = (yy_current_state == 93);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1910,7 +2077,12 @@ static int yy_get_next_buffer (void)
 	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = (c == '\n');
 
 =======
+<<<<<<< HEAD
+	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = (c == '\n');
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return c;
 }
 #endif	/* ifndef YY_NO_INPUT */
@@ -2472,8 +2644,12 @@ void yyfree (void * ptr )
 <<<<<<< HEAD
 #line 227 "dtc-lexer.l"
 =======
+<<<<<<< HEAD
+#line 227 "dtc-lexer.l"
+=======
 #line 168 "dtc-lexer.l"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 

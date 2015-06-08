@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/amba/bus.h>
 #include <linux/amba/pl061.h>
 #include <linux/amba/mmci.h>
@@ -34,7 +38,12 @@
 #include <linux/mtd/physmap.h>
 #include <linux/mtd/partitions.h>
 =======
+<<<<<<< HEAD
+#include <linux/mtd/physmap.h>
+#include <linux/mtd/partitions.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 
 #include <mach/hardware.h>
@@ -122,24 +131,33 @@ static struct pl061_platform_data gpio0_plat_data = {
 	.gpio_base	= 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl061_platform_data gpio1_plat_data = {
 	.gpio_base	= 8,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl061_platform_data gpio2_plat_data = {
 	.gpio_base	= 16,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_base	= -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct pl022_ssp_controller ssp0_plat_data = {
@@ -152,6 +170,9 @@ static struct pl022_ssp_controller ssp0_plat_data = {
  * RealView PB1176 AMBA devices
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO2_IRQ	{ IRQ_PB1176_GPIO2 }
 #define GPIO3_IRQ	{ IRQ_PB1176_GPIO3 }
 #define AACI_IRQ	{ IRQ_PB1176_AACI }
@@ -196,6 +217,8 @@ APB_DEVICE(uart2,	"dev:uart2",	PB1176_UART2,	NULL);
 APB_DEVICE(uart3,	"dev:uart3",	PB1176_UART3,	NULL);
 APB_DEVICE(ssp0,	"dev:ssp0",	PB1176_SSP,	&ssp0_plat_data);
 AHB_DEVICE(clcd,	"dev:clcd",	PB1176_CLCD,	&clcd_plat_data);
+<<<<<<< HEAD
+=======
 =======
 #define GPIO2_IRQ	{ IRQ_PB1176_GPIO2, NO_IRQ }
 #define GPIO3_IRQ	{ IRQ_PB1176_GPIO3, NO_IRQ }
@@ -242,6 +265,7 @@ AMBA_DEVICE(uart3,	"dev:uart3",	PB1176_UART3,	NULL);
 AMBA_DEVICE(ssp0,	"dev:ssp0",	PB1176_SSP,	&ssp0_plat_data);
 AMBA_DEVICE(clcd,	"dev:clcd",	PB1176_CLCD,	&clcd_plat_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct amba_device *amba_devs[] __initdata = {
 	&uart0_device,
@@ -272,8 +296,12 @@ static struct resource realview_pb1176_flash_resources[] = {
 <<<<<<< HEAD
 	{
 =======
+<<<<<<< HEAD
+	{
+=======
 	[0] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start		= REALVIEW_PB1176_FLASH_BASE,
 		.end		= REALVIEW_PB1176_FLASH_BASE + REALVIEW_PB1176_FLASH_SIZE - 1,
 		.flags		= IORESOURCE_MEM,
@@ -282,13 +310,21 @@ static struct resource realview_pb1176_flash_resources[] = {
 #ifdef CONFIG_REALVIEW_PB1176_SECURE_FLASH
 	{
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_REALVIEW_PB1176_SECURE_FLASH
+	{
+=======
 	[1] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start		= REALVIEW_PB1176_SEC_FLASH_BASE,
 		.end		= REALVIEW_PB1176_SEC_FLASH_BASE + REALVIEW_PB1176_SEC_FLASH_SIZE - 1,
 		.flags		= IORESOURCE_MEM,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 };
 
@@ -320,6 +356,8 @@ static struct platform_device pb1176_rom_device = {
 		.platform_data = &pb1176_rom_pdata,
 	},
 };
+<<<<<<< HEAD
+=======
 =======
 };
 #ifdef CONFIG_REALVIEW_PB1176_SECURE_FLASH
@@ -328,6 +366,7 @@ static struct platform_device pb1176_rom_device = {
 #define PB1176_FLASH_BLOCKS	1
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource realview_pb1176_smsc911x_resources[] = {
 	[0] = {
@@ -419,24 +458,34 @@ static struct sys_timer realview_pb1176_timer = {
 <<<<<<< HEAD
 static void realview_pb1176_restart(char mode, const char *cmd)
 =======
+<<<<<<< HEAD
+static void realview_pb1176_restart(char mode, const char *cmd)
+=======
 static void realview_pb1176_reset(char mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void __iomem *reset_ctrl = __io_address(REALVIEW_SYS_RESETCTL);
 	void __iomem *lock_ctrl = __io_address(REALVIEW_SYS_LOCK);
 	__raw_writel(REALVIEW_SYS_LOCK_VAL, lock_ctrl);
 	__raw_writel(REALVIEW_PB1176_SYS_SOFT_RESET, reset_ctrl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dsb();
 }
 
 static void realview_pb1176_fixup(struct tag *tags, char **from,
+<<<<<<< HEAD
+=======
 =======
 }
 
 static void realview_pb1176_fixup(struct machine_desc *mdesc,
 				  struct tag *tags, char **from,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  struct meminfo *meminfo)
 {
 	/*
@@ -461,8 +510,13 @@ static void __init realview_pb1176_init(void)
 				ARRAY_SIZE(realview_pb1176_flash_resources));
 	platform_device_register(&pb1176_rom_device);
 =======
+<<<<<<< HEAD
+				ARRAY_SIZE(realview_pb1176_flash_resources));
+	platform_device_register(&pb1176_rom_device);
+=======
 				PB1176_FLASH_BLOCKS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	realview_eth_register(NULL, realview_pb1176_smsc911x_resources);
 	platform_device_register(&realview_i2c_device);
 	realview_usb_register(realview_pb1176_isp1761_resources);
@@ -479,8 +533,11 @@ static void __init realview_pb1176_init(void)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	realview_reset = realview_pb1176_reset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(REALVIEW_PB1176, "ARM-RealView PB1176")
@@ -488,21 +545,31 @@ MACHINE_START(REALVIEW_PB1176, "ARM-RealView PB1176")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= PLAT_PHYS_OFFSET + 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fixup		= realview_pb1176_fixup,
 	.map_io		= realview_pb1176_map_io,
 	.init_early	= realview_init_early,
 	.init_irq	= gic_init_irq,
 	.timer		= &realview_pb1176_timer,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handle_irq	= gic_handle_irq,
 	.init_machine	= realview_pb1176_init,
 #ifdef CONFIG_ZONE_DMA
 	.dma_zone_size	= SZ_256M,
 #endif
 	.restart	= realview_pb1176_restart,
+<<<<<<< HEAD
+=======
 =======
 	.init_machine	= realview_pb1176_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -17,7 +17,11 @@ struct vm_area_struct;		/* vma defining user mapping in mm_types.h */
 <<<<<<< HEAD
 #define VM_LOWMEM	0x00000040	/* Tracking of direct mapped lowmem */
 =======
+<<<<<<< HEAD
+#define VM_LOWMEM	0x00000040	/* Tracking of direct mapped lowmem */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* bits [20..32] reserved for arch specific ioremap internals */
 
 /*
@@ -39,12 +43,16 @@ struct vm_struct {
 <<<<<<< HEAD
 	const void		*caller;
 =======
+<<<<<<< HEAD
+	const void		*caller;
+=======
 	void			*caller;
 #ifdef CONFIG_DEBUG_VMALLOC
 	unsigned int		pid;
 	unsigned char		*task_name;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -77,8 +85,12 @@ extern void *__vmalloc_node_range(unsigned long size, unsigned long align,
 <<<<<<< HEAD
 			pgprot_t prot, int node, const void *caller);
 =======
+<<<<<<< HEAD
+			pgprot_t prot, int node, const void *caller);
+=======
 			pgprot_t prot, int node, void *caller);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void vfree(const void *addr);
 
 extern void *vmap(struct page **pages, unsigned int count,
@@ -104,8 +116,12 @@ extern struct vm_struct *get_vm_area_caller(unsigned long size,
 <<<<<<< HEAD
 					unsigned long flags, const void *caller);
 =======
+<<<<<<< HEAD
+					unsigned long flags, const void *caller);
+=======
 					unsigned long flags, void *caller);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct vm_struct *__get_vm_area(unsigned long size, unsigned long flags,
 					unsigned long start, unsigned long end);
 extern struct vm_struct *__get_vm_area_caller(unsigned long size,
@@ -116,9 +132,15 @@ extern struct vm_struct *__get_vm_area_caller(unsigned long size,
 extern struct vm_struct *remove_vm_area(const void *addr);
 extern struct vm_struct *find_vm_area(const void *addr);
 =======
+<<<<<<< HEAD
+					const void *caller);
+extern struct vm_struct *remove_vm_area(const void *addr);
+extern struct vm_struct *find_vm_area(const void *addr);
+=======
 					void *caller);
 extern struct vm_struct *remove_vm_area(const void *addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int map_vm_area(struct vm_struct *area, pgprot_t prot,
 			struct page ***pages);
@@ -148,8 +170,12 @@ unmap_kernel_range(unsigned long addr, unsigned long size)
 <<<<<<< HEAD
 extern struct vm_struct *alloc_vm_area(size_t size, pte_t **ptes);
 =======
+<<<<<<< HEAD
+extern struct vm_struct *alloc_vm_area(size_t size, pte_t **ptes);
+=======
 extern struct vm_struct *alloc_vm_area(size_t size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void free_vm_area(struct vm_struct *area);
 
 /* for /dev/kmem */
@@ -162,6 +188,9 @@ extern long vwrite(char *buf, char *addr, unsigned long count);
 extern rwlock_t vmlist_lock;
 extern struct vm_struct *vmlist;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __init void vm_area_add_early(struct vm_struct *vm);
 extern __init void vm_area_register_early(struct vm_struct *vm, size_t align);
 extern __init int vm_area_check_early(struct vm_struct *vm);
@@ -171,9 +200,12 @@ extern void mark_vmalloc_reserved_area(void *addr, unsigned long size);
 static inline void mark_vmalloc_reserved_area(void *addr, unsigned long size)
 { };
 #endif
+<<<<<<< HEAD
+=======
 =======
 extern __init void vm_area_register_early(struct vm_struct *vm, size_t align);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SMP
 # ifdef CONFIG_MMU

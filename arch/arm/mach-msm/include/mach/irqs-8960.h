@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2011 Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -21,6 +25,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* 0-15:  STI/SGI (software triggered/generated interrupts)
    16-31: PPI (private peripheral interrupts)
    32+:   SPI (shared peripheral interrupts) */
@@ -29,6 +35,7 @@
 #define GIC_SPI_START 32
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INT_VGIC				(GIC_PPI_START + 0)
 #define INT_DEBUG_TIMER_EXP			(GIC_PPI_START + 1)
 #define INT_GP_TIMER_EXP			(GIC_PPI_START + 2)
@@ -42,8 +49,12 @@
 <<<<<<< HEAD
 #define INT_ARMQC_PERFMON			(GIC_PPI_START + 10)
 =======
+<<<<<<< HEAD
+#define INT_ARMQC_PERFMON			(GIC_PPI_START + 10)
+=======
 #define CPU_SICCPUXPERFMONIRPTREQ		(GIC_PPI_START + 10)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SC_AVSCPUXDOWN				(GIC_PPI_START + 11)
 #define SC_AVSCPUXUP				(GIC_PPI_START + 12)
 #define SC_SICCPUXACGIRPTREQ			(GIC_PPI_START + 13)
@@ -51,6 +62,9 @@
 /* PPI 15 is unused */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define APCC_QGICACGIRPTREQ			(GIC_SPI_START + 0)
 #define APCC_QGICL2PERFMONIRPTREQ		(GIC_SPI_START + 1)
 #define SC_SICL2PERFMONIRPTREQ			APCC_QGICL2PERFMONIRPTREQ
@@ -69,6 +83,8 @@
 #define PM8921_SEC_IRQ_103			(GIC_SPI_START + 14)
 #define PM8018_SEC_IRQ_106			(GIC_SPI_START + 15)
 #define TLMM_MSM_SUMMARY_IRQ			(GIC_SPI_START + 16)
+<<<<<<< HEAD
+=======
 =======
 #define SC_SICMPUIRPTREQ			(GIC_SPI_START + 0)
 #define SC_SICL2IRPTREQ				(GIC_SPI_START + 1)
@@ -88,6 +104,7 @@
 #define PM8018_SEC_IRQ_106			(GIC_SPI_START + 15)
 #define TLMM_APCC_SUMMARY_IRQ			(GIC_SPI_START + 16)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPDM_RT_1_IRQ				(GIC_SPI_START + 17)
 #define SPDM_DIAG_IRQ				(GIC_SPI_START + 18)
 #define RPM_APCC_CPU0_GP_HIGH_IRQ		(GIC_SPI_START + 19)
@@ -214,24 +231,34 @@
 <<<<<<< HEAD
 #define MSM8960_CSIPHY_2LN_IRQ			(GIC_SPI_START + 140)
 =======
+<<<<<<< HEAD
+#define MSM8960_CSIPHY_2LN_IRQ			(GIC_SPI_START + 140)
+=======
 #define CSIPHY_2LN_IRQ				(GIC_SPI_START + 140)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define USB2_IRQ				(GIC_SPI_START + 141)
 #define USB1_IRQ				(GIC_SPI_START + 142)
 #define TSSC_SSBI_IRQ				(GIC_SPI_START + 143)
 #define TSSC_SAMPLE_IRQ				(GIC_SPI_START + 144)
 #define TSSC_PENUP_IRQ				(GIC_SPI_START + 145)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM8960_GSBI1_UARTDM_IRQ		(GIC_SPI_START + 146)
 #define MSM8960_GSBI1_QUP_IRQ			(GIC_SPI_START + 147)
 #define MSM8960_GSBI2_UARTDM_IRQ		(GIC_SPI_START + 148)
 #define MSM8960_GSBI2_QUP_IRQ		        (GIC_SPI_START + 149)
+<<<<<<< HEAD
+=======
 =======
 #define GSBI1_UARTDM_IRQ			(GIC_SPI_START + 146)
 #define GSBI1_QUP_IRQ				(GIC_SPI_START + 147)
 #define GSBI2_UARTDM_IRQ			(GIC_SPI_START + 148)
 #define GSBI2_QUP_IRQ			        (GIC_SPI_START + 149)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GSBI3_UARTDM_IRQ			(GIC_SPI_START + 150)
 #define GSBI3_QUP_IRQ				(GIC_SPI_START + 151)
 #define GSBI4_UARTDM_IRQ			(GIC_SPI_START + 152)
@@ -253,16 +280,22 @@
 #define MSMC_SC_SEC_TMR_IRQ			(GIC_SPI_START + 168)
 #define MSMC_SC_SEC_WDOG_BARK_IRQ		(GIC_SPI_START + 169)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ADM_0_SCSS_0_IRQ			(GIC_SPI_START + 170)
 #define ADM_0_SCSS_1_IRQ			(GIC_SPI_START + 171)
 #define ADM_0_SCSS_2_IRQ			(GIC_SPI_START + 172)
 #define ADM_0_SCSS_3_IRQ			(GIC_SPI_START + 173)
+<<<<<<< HEAD
+=======
 =======
 #define INT_ADM0_SCSS_0_IRQ			(GIC_SPI_START + 170)
 #define INT_ADM0_SCSS_1_IRQ			(GIC_SPI_START + 171)
 #define INT_ADM0_SCSS_2_IRQ			(GIC_SPI_START + 172)
 #define INT_ADM0_SCSS_3_IRQ			(GIC_SPI_START + 173)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CC_SCSS_WDT1CPU1BITEEXPIRED		(GIC_SPI_START + 174)
 #define CC_SCSS_WDT1CPU0BITEEXPIRED		(GIC_SPI_START + 175)
 #define CC_SCSS_WDT0CPU1BITEEXPIRED		(GIC_SPI_START + 176)
@@ -290,11 +323,16 @@
 #define RIVA_APSS_SPARE_IRQ			(GIC_SPI_START + 198)
 #define RIVA_APSS_WDOG_BITE_RESET_RDY_IRQ	(GIC_SPI_START + 199)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RIVA_APSS_RESET_DONE_IRQ		(GIC_SPI_START + 200)
 #define RIVA_APSS_ASIC_IRQ			(GIC_SPI_START + 201)
 #define RIVA_APPS_WLAN_RX_DATA_AVAIL_IRQ	(GIC_SPI_START + 202)
 #define RIVA_APPS_WLAN_DATA_XFER_DONE_IRQ	(GIC_SPI_START + 203)
 #define RIVA_APPS_WLAN_SMSM_IRQ			(GIC_SPI_START + 204)
+<<<<<<< HEAD
+=======
 =======
 #define RIVA_ASS_RESET_DONE_IRQ			(GIC_SPI_START + 200)
 #define RIVA_APSS_ASIC_IRQ			(GIC_SPI_START + 201)
@@ -302,6 +340,7 @@
 #define RIVA_APPS_WLAN_DATA_XFER_DONE_IRQ	(GIC_SPI_START + 203)
 #define RIVA_APPS_WLAM_SMSM_IRQ			(GIC_SPI_START + 204)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RIVA_APPS_LOG_CTRL_IRQ			(GIC_SPI_START + 205)
 #define RIVA_APPS_FM_CTRL_IRQ			(GIC_SPI_START + 206)
 #define RIVA_APPS_HCI_IRQ			(GIC_SPI_START + 207)
@@ -317,6 +356,9 @@
 #define QDSS_CTI2KPSS_CPU1_IRQ			(GIC_SPI_START + 217)
 #define QDSS_CTI2KPSS_CPU0_IRQ			(GIC_SPI_START + 218)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TLMM_MSM_DIR_CONN_IRQ_16		(GIC_SPI_START + 219)
 #define TLMM_MSM_DIR_CONN_IRQ_17		(GIC_SPI_START + 220)
 #define TLMM_MSM_DIR_CONN_IRQ_18		(GIC_SPI_START + 221)
@@ -341,6 +383,8 @@
 #define INT_DSPS_A11_SMSM	SPS_MTI_30
 #define INT_WCNSS_A11		RIVA_APSS_SPARE_IRQ
 #define INT_WCNSS_A11_SMSM	RIVA_APPS_WLAN_SMSM_IRQ
+<<<<<<< HEAD
+=======
 =======
 #define TLMM_APCC_DIR_CONN_IRQ_16		(GIC_SPI_START + 219)
 #define TLMM_APCC_DIR_CONN_IRQ_17		(GIC_SPI_START + 220)
@@ -357,6 +401,7 @@
 #define NR_BOARD_IRQS 0
 #define NR_GPIO_IRQS 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

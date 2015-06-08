@@ -23,9 +23,18 @@
 /*  ----------------------------------- DSP/BIOS Bridge */
 #include <dspbridge/dbdefs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Trace & Debug */
 #include <dspbridge/dbc.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Trace & Debug */
+#include <dspbridge/dbc.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- Platform Manager */
 #include <dspbridge/dev.h>
 
@@ -33,9 +42,18 @@
 #include <ioobj.h>
 #include <dspbridge/io.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Globals */
 static u32 refs;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Globals */
+static u32 refs;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  ======== io_create ========
  *  Purpose:
@@ -50,10 +68,19 @@ int io_create(struct io_mgr **io_man, struct dev_object *hdev_obj,
 	struct io_mgr_ *pio_mgr = NULL;
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(io_man != NULL);
 	DBC_REQUIRE(mgr_attrts != NULL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*io_man = NULL;
 
 	/* A memory base of 0 implies no memory base: */
@@ -94,8 +121,16 @@ int io_destroy(struct io_mgr *hio_mgr)
 	struct io_mgr_ *pio_mgr = (struct io_mgr_ *)hio_mgr;
 	int status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	intf_fxns = pio_mgr->intf_fxns;
 
 	/* Let Bridge channel module destroy the io_mgr: */
@@ -103,6 +138,11 @@ int io_destroy(struct io_mgr *hio_mgr)
 
 	return status;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *  ======== io_exit ========
@@ -136,3 +176,7 @@ bool io_init(void)
 
 	return ret;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

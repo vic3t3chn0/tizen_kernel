@@ -2,6 +2,9 @@
 #define _ASM_IA64_POSIX_TYPES_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef unsigned int	__kernel_nlink_t;
 #define __kernel_nlink_t __kernel_nlink_t
 
@@ -9,6 +12,8 @@ typedef unsigned long	__kernel_sigset_t;	/* at least 32 bits */
 
 #include <asm-generic/posix_types.h>
 
+<<<<<<< HEAD
+=======
 =======
 /*
  * This file is generally used by user-level software, so you need to
@@ -133,4 +138,5 @@ static __inline__ void __FD_ZERO(__kernel_fd_set *p)
 #  endif /* !__GNUC__ */
 # endif /* __KERNEL__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_IA64_POSIX_TYPES_H */

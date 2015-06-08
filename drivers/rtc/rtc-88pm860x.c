@@ -72,9 +72,21 @@ static int pm860x_rtc_alarm_irq_enable(struct device *dev, unsigned int enabled)
 	struct pm860x_rtc_info *info = dev_get_drvdata(dev);
 
 	if (enabled)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pm860x_set_bits(info->i2c, PM8607_RTC1, ALARM_EN, ALARM_EN);
+	else
+		pm860x_set_bits(info->i2c, PM8607_RTC1, ALARM_EN, 0);
+=======
 		pm860x_set_bits(info->i2c, PM8607_RTC1, ALARM, ALARM);
 	else
 		pm860x_set_bits(info->i2c, PM8607_RTC1, ALARM, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		pm860x_set_bits(info->i2c, PM8607_RTC1, ALARM, ALARM);
+	else
+		pm860x_set_bits(info->i2c, PM8607_RTC1, ALARM, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -376,6 +388,15 @@ static int __devinit pm860x_rtc_probe(struct platform_device *pdev)
 	INIT_DELAYED_WORK(&info->calib_work, calibrate_vrtc_work);
 	schedule_delayed_work(&info->calib_work, VRTC_CALIB_INTERVAL);
 #endif	/* VRTC_CALIBRATION */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	device_init_wakeup(&pdev->dev, 1);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 out_rtc:
 	free_irq(info->irq, info);
@@ -401,15 +422,57 @@ static int __devexit pm860x_rtc_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+static int pm860x_rtc_suspend(struct device *dev)
+{
+	struct platform_device *pdev = to_platform_device(dev);
+	struct pm860x_chip *chip = dev_get_drvdata(pdev->dev.parent);
+
+	if (device_may_wakeup(dev))
+		chip->wakeup_flag |= 1 << PM8607_IRQ_RTC;
+	return 0;
+}
+static int pm860x_rtc_resume(struct device *dev)
+{
+	struct platform_device *pdev = to_platform_device(dev);
+	struct pm860x_chip *chip = dev_get_drvdata(pdev->dev.parent);
+
+	if (device_may_wakeup(dev))
+		chip->wakeup_flag &= ~(1 << PM8607_IRQ_RTC);
+	return 0;
+}
+#endif
+
+static SIMPLE_DEV_PM_OPS(pm860x_rtc_pm_ops, pm860x_rtc_suspend, pm860x_rtc_resume);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver pm860x_rtc_driver = {
 	.driver		= {
 		.name	= "88pm860x-rtc",
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.pm	= &pm860x_rtc_pm_ops,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe		= pm860x_rtc_probe,
 	.remove		= __devexit_p(pm860x_rtc_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(pm860x_rtc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init pm860x_rtc_init(void)
 {
 	return platform_driver_register(&pm860x_rtc_driver);
@@ -421,6 +484,10 @@ static void __exit pm860x_rtc_exit(void)
 	platform_driver_unregister(&pm860x_rtc_driver);
 }
 module_exit(pm860x_rtc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Marvell 88PM860x RTC driver");
 MODULE_AUTHOR("Haojian Zhuang <haojian.zhuang@marvell.com>");

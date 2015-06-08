@@ -28,8 +28,12 @@ extern int gfs2_dir_read(struct inode *inode, u64 *offset, void *opaque,
 <<<<<<< HEAD
 			 filldir_t filldir, struct file_ra_state *f_ra);
 =======
+<<<<<<< HEAD
+			 filldir_t filldir, struct file_ra_state *f_ra);
+=======
 			 filldir_t filldir);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int gfs2_dir_mvino(struct gfs2_inode *dip, const struct qstr *filename,
 			  const struct gfs2_inode *nip, unsigned int new_type);
 
@@ -42,7 +46,11 @@ extern int gfs2_dir_get_new_buffer(struct gfs2_inode *ip, u64 block,
 <<<<<<< HEAD
 extern void gfs2_dir_hash_inval(struct gfs2_inode *ip);
 =======
+<<<<<<< HEAD
+extern void gfs2_dir_hash_inval(struct gfs2_inode *ip);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline u32 gfs2_disk_hash(const char *data, int len)
 {

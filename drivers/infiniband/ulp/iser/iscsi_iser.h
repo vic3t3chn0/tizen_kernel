@@ -45,6 +45,13 @@
 #include <scsi/libiscsi.h>
 #include <scsi/scsi_transport_iscsi.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/wait.h>
 #include <linux/sched.h>
 #include <linux/list.h>
@@ -88,7 +95,15 @@
 	} while (0)
 
 #define SHIFT_4K	12
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define SIZE_4K	(1ULL << SHIFT_4K)
+=======
 #define SIZE_4K	(1UL << SHIFT_4K)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define SIZE_4K	(1UL << SHIFT_4K)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MASK_4K	(~(SIZE_4K-1))
 
 					/* support up to 512KB in one RDMA */
@@ -256,7 +271,16 @@ struct iser_conn {
 	struct list_head	     conn_list;       /* entry in ig conn list */
 
 	char  			     *login_buf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	char			     *login_req_buf, *login_resp_buf;
+	u64			     login_req_dma, login_resp_dma;
+=======
 	u64 			     login_dma;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u64 			     login_dma;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int 		     rx_desc_head;
 	struct iser_rx_desc	     *rx_descs;
 	struct ib_recv_wr	     rx_wr[ISER_MIN_POSTED_RX];
@@ -276,7 +300,14 @@ struct iscsi_iser_task {
 	struct iser_regd_buf         rdma_regd[ISER_DIRS_NUM];/* regd rdma buf */
 	struct iser_data_buf         data[ISER_DIRS_NUM];     /* orig. data des*/
 	struct iser_data_buf         data_copy[ISER_DIRS_NUM];/* contig. copy  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int                          headers_initialized;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int                          headers_initialized;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct iser_page_vec {

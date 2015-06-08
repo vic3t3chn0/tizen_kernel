@@ -2,12 +2,17 @@
  * Cryptographic API.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * s390 implementation of the SHA256 and SHA224 Secure Hash Algorithm.
  *
  * s390 Version:
  *   Copyright IBM Corp. 2005,2011
  *   Author(s): Jan Glauber (jang@de.ibm.com)
  *
+<<<<<<< HEAD
+=======
 =======
  * s390 implementation of the SHA256 Secure Hash Algorithm.
  *
@@ -19,6 +24,7 @@
  * and "arch/s390/crypto/sha1_s390.c"
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
  * Software Foundation; either version 2 of the License, or (at your option)
@@ -77,8 +83,12 @@ static int sha256_import(struct shash_desc *desc, const void *in)
 <<<<<<< HEAD
 static struct shash_alg sha256_alg = {
 =======
+<<<<<<< HEAD
+static struct shash_alg sha256_alg = {
+=======
 static struct shash_alg alg = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.digestsize	=	SHA256_DIGEST_SIZE,
 	.init		=	sha256_init,
 	.update		=	s390_sha_update,
@@ -98,6 +108,9 @@ static struct shash_alg alg = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sha224_init(struct shash_desc *desc)
 {
 	struct s390_sha_ctx *sctx = shash_desc_ctx(desc);
@@ -149,6 +162,8 @@ static int __init sha256_s390_init(void)
 		crypto_unregister_shash(&sha256_alg);
 out:
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 static int sha256_s390_init(void)
 {
@@ -157,6 +172,7 @@ static int sha256_s390_init(void)
 
 	return crypto_register_shash(&alg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __exit sha256_s390_fini(void)
@@ -165,8 +181,13 @@ static void __exit sha256_s390_fini(void)
 	crypto_unregister_shash(&sha224_alg);
 	crypto_unregister_shash(&sha256_alg);
 =======
+<<<<<<< HEAD
+	crypto_unregister_shash(&sha224_alg);
+	crypto_unregister_shash(&sha256_alg);
+=======
 	crypto_unregister_shash(&alg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init(sha256_s390_init);
@@ -178,6 +199,12 @@ MODULE_ALIAS("sha224");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("SHA256 and SHA224 Secure Hash Algorithm");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("sha224");
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("SHA256 and SHA224 Secure Hash Algorithm");
+=======
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("SHA256 Secure Hash Algorithm");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

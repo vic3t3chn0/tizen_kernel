@@ -21,7 +21,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/errno.h>
 #include <linux/kernel.h>
@@ -163,8 +168,12 @@ err:
 <<<<<<< HEAD
 	pr_err("can't create entry in proc filesystem!\n");
 =======
+<<<<<<< HEAD
+	pr_err("can't create entry in proc filesystem!\n");
+=======
 	pr_err("%s: can't create entry in proc filesystem!\n", __func__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vlan_proc_cleanup(net);
 	return -ENOBUFS;
 }
@@ -176,6 +185,9 @@ err:
 int vlan_proc_add_dev(struct net_device *vlandev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct vlan_dev_priv *vlan = vlan_dev_priv(vlandev);
 	struct vlan_net *vn = net_generic(dev_net(vlandev), vlan_net_id);
 
@@ -183,6 +195,8 @@ int vlan_proc_add_dev(struct net_device *vlandev)
 		proc_create_data(vlandev->name, S_IFREG|S_IRUSR|S_IWUSR,
 				 vn->proc_vlan_dir, &vlandev_fops, vlandev);
 	if (!vlan->dent)
+<<<<<<< HEAD
+=======
 =======
 	struct vlan_dev_info *dev_info = vlan_dev_info(vlandev);
 	struct vlan_net *vn = net_generic(dev_net(vlandev), vlan_net_id);
@@ -192,6 +206,7 @@ int vlan_proc_add_dev(struct net_device *vlandev)
 				 vn->proc_vlan_dir, &vlandev_fops, vlandev);
 	if (!dev_info->dent)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOBUFS;
 	return 0;
 }
@@ -205,16 +220,22 @@ int vlan_proc_rem_dev(struct net_device *vlandev)
 
 	/** NOTE:  This will consume the memory pointed to by dent, it seems. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (vlan_dev_priv(vlandev)->dent) {
 		remove_proc_entry(vlan_dev_priv(vlandev)->dent->name,
 				  vn->proc_vlan_dir);
 		vlan_dev_priv(vlandev)->dent = NULL;
+<<<<<<< HEAD
+=======
 =======
 	if (vlan_dev_info(vlandev)->dent) {
 		remove_proc_entry(vlan_dev_info(vlandev)->dent->name,
 				  vn->proc_vlan_dir);
 		vlan_dev_info(vlandev)->dent = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -258,8 +279,12 @@ static void *vlan_seq_next(struct seq_file *seq, void *v, loff_t *pos)
 <<<<<<< HEAD
 	dev = v;
 =======
+<<<<<<< HEAD
+	dev = v;
+=======
 	dev = (struct net_device *)v;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (v == SEQ_START_TOKEN)
 		dev = net_device_entry(&net->dev_base_head);
 
@@ -297,16 +322,22 @@ static int vlan_seq_show(struct seq_file *seq, void *v)
 	} else {
 		const struct net_device *vlandev = v;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const struct vlan_dev_priv *vlan = vlan_dev_priv(vlandev);
 
 		seq_printf(seq, "%-15s| %d  | %s\n",  vlandev->name,
 			   vlan->vlan_id,    vlan->real_dev->name);
+<<<<<<< HEAD
+=======
 =======
 		const struct vlan_dev_info *dev_info = vlan_dev_info(vlandev);
 
 		seq_printf(seq, "%-15s| %d  | %s\n",  vlandev->name,
 			   dev_info->vlan_id,    dev_info->real_dev->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -317,8 +348,12 @@ static int vlandev_seq_show(struct seq_file *seq, void *offset)
 <<<<<<< HEAD
 	const struct vlan_dev_priv *vlan = vlan_dev_priv(vlandev);
 =======
+<<<<<<< HEAD
+	const struct vlan_dev_priv *vlan = vlan_dev_priv(vlandev);
+=======
 	const struct vlan_dev_info *dev_info = vlan_dev_info(vlandev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rtnl_link_stats64 temp;
 	const struct rtnl_link_stats64 *stats;
 	static const char fmt64[] = "%30s %12llu\n";
@@ -334,9 +369,14 @@ static int vlandev_seq_show(struct seq_file *seq, void *offset)
 		   vlandev->name, vlan->vlan_id,
 		   (int)(vlan->flags & 1), vlandev->priv_flags);
 =======
+<<<<<<< HEAD
+		   vlandev->name, vlan->vlan_id,
+		   (int)(vlan->flags & 1), vlandev->priv_flags);
+=======
 		   vlandev->name, dev_info->vlan_id,
 		   (int)(dev_info->flags & 1), vlandev->priv_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	seq_printf(seq, fmt64, "total frames received", stats->rx_packets);
 	seq_printf(seq, fmt64, "total bytes received", stats->rx_bytes);
@@ -345,6 +385,9 @@ static int vlandev_seq_show(struct seq_file *seq, void *offset)
 	seq_printf(seq, fmt64, "total frames transmitted", stats->tx_packets);
 	seq_printf(seq, fmt64, "total bytes transmitted", stats->tx_bytes);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	seq_printf(seq, "Device: %s", vlan->real_dev->name);
 	/* now show all PRIORITY mappings relating to this VLAN */
 	seq_printf(seq, "\nINGRESS priority mappings: "
@@ -357,6 +400,8 @@ static int vlandev_seq_show(struct seq_file *seq, void *offset)
 		   vlan->ingress_priority_map[5],
 		   vlan->ingress_priority_map[6],
 		   vlan->ingress_priority_map[7]);
+<<<<<<< HEAD
+=======
 =======
 	seq_printf(seq, "Device: %s", dev_info->real_dev->name);
 	/* now show all PRIORITY mappings relating to this VLAN */
@@ -371,6 +416,7 @@ static int vlandev_seq_show(struct seq_file *seq, void *offset)
 		   dev_info->ingress_priority_map[6],
 		   dev_info->ingress_priority_map[7]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	seq_printf(seq, " EGRESS priority mappings: ");
 	for (i = 0; i < 16; i++) {
@@ -378,8 +424,12 @@ static int vlandev_seq_show(struct seq_file *seq, void *offset)
 <<<<<<< HEAD
 			= vlan->egress_priority_map[i];
 =======
+<<<<<<< HEAD
+			= vlan->egress_priority_map[i];
+=======
 			= dev_info->egress_priority_map[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (mp) {
 			seq_printf(seq, "%u:%hu ",
 				   mp->priority, ((mp->vlan_qos >> 13) & 0x7));

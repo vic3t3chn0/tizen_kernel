@@ -42,8 +42,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/firmware.h>
 #include <linux/input.h>
 #include <sound/core.h>
@@ -72,9 +76,14 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP; /* all enabled */
 static bool external_amp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP; /* all enabled */
+static bool external_amp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP; /* all enabled */
 static int external_amp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int amp_gpio[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = -1};
 
 module_param_array(index, int, NULL, 0444);
@@ -860,10 +869,15 @@ struct snd_m3 {
 	char phys[64];			/* physical device path */
 #else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_kcontrol *master_switch;
 	struct snd_kcontrol *master_volume;
 #endif
 	struct work_struct hwvol_work;
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t ac97_lock;
 	struct snd_kcontrol *master_switch;
@@ -871,6 +885,7 @@ struct snd_m3 {
 	struct tasklet_struct hwvol_tq;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int in_suspend;
 
@@ -1626,10 +1641,15 @@ static void snd_m3_update_ptr(struct snd_m3 *chip, struct m3_dma *s)
    generating an interrupt. The pair of counters is stored in bits 1-3 and 5-7
    of a byte wide register. The meaning of bits 0 and 4 is unknown. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void snd_m3_update_hw_volume(struct work_struct *work)
 {
 	struct snd_m3 *chip = container_of(work, struct snd_m3, hwvol_work);
 	int x, val;
+<<<<<<< HEAD
+=======
 =======
 static void snd_m3_update_hw_volume(unsigned long private_data)
 {
@@ -1639,6 +1659,7 @@ static void snd_m3_update_hw_volume(unsigned long private_data)
 	unsigned long flags;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Figure out which volume control button was pushed,
 	   based on differences from the default register
@@ -1671,11 +1692,15 @@ static void snd_m3_update_hw_volume(unsigned long private_data)
 <<<<<<< HEAD
 	val = snd_ac97_read(chip->ac97, AC97_MASTER);
 =======
+<<<<<<< HEAD
+	val = snd_ac97_read(chip->ac97, AC97_MASTER);
+=======
 	/* FIXME: we can't call snd_ac97_* functions since here is in tasklet. */
 	spin_lock_irqsave(&chip->ac97_lock, flags);
 
 	val = chip->ac97->regs[AC97_MASTER_VOL];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (x) {
 	case 0x88:
 		/* The counters have not changed, yet we've received a HV
@@ -1684,12 +1709,15 @@ static void snd_m3_update_hw_volume(unsigned long private_data)
 		val ^= 0x8000;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		chip->ac97->regs[AC97_MASTER_VOL] = val;
 		outw(val, chip->iobase + CODEC_DATA);
 		outb(AC97_MASTER_VOL, chip->iobase + CODEC_COMMAND);
 		snd_ctl_notify(chip->card, SNDRV_CTL_EVENT_MASK_VALUE,
 			       &chip->master_switch->id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case 0xaa:
 		/* counters increased by 1 -> volume up */
@@ -1699,12 +1727,15 @@ static void snd_m3_update_hw_volume(unsigned long private_data)
 			val -= 0x0100;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		chip->ac97->regs[AC97_MASTER_VOL] = val;
 		outw(val, chip->iobase + CODEC_DATA);
 		outb(AC97_MASTER_VOL, chip->iobase + CODEC_COMMAND);
 		snd_ctl_notify(chip->card, SNDRV_CTL_EVENT_MASK_VALUE,
 			       &chip->master_volume->id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case 0x66:
 		/* counters decreased by 1 -> volume down */
@@ -1713,11 +1744,16 @@ static void snd_m3_update_hw_volume(unsigned long private_data)
 		if ((val & 0x7f00) < 0x1f00)
 			val += 0x0100;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	if (snd_ac97_update(chip->ac97, AC97_MASTER, val))
 		snd_ctl_notify(chip->card, SNDRV_CTL_EVENT_MASK_VALUE,
 			       &chip->master_switch->id);
+<<<<<<< HEAD
+=======
 =======
 		chip->ac97->regs[AC97_MASTER_VOL] = val;
 		outw(val, chip->iobase + CODEC_DATA);
@@ -1728,6 +1764,7 @@ static void snd_m3_update_hw_volume(unsigned long private_data)
 	}
 	spin_unlock_irqrestore(&chip->ac97_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	if (!chip->input_dev)
 		return;
@@ -1774,12 +1811,16 @@ static irqreturn_t snd_m3_interrupt(int irq, void *dev_id)
 <<<<<<< HEAD
 		schedule_work(&chip->hwvol_work);
 =======
+<<<<<<< HEAD
+		schedule_work(&chip->hwvol_work);
+=======
 #ifdef CONFIG_SND_MAESTRO3_INPUT
 		snd_m3_update_hw_volume((unsigned long)chip);
 #else
 		tasklet_schedule(&chip->hwvol_tq);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * ack an assp int if its running
@@ -2047,19 +2088,27 @@ snd_m3_ac97_read(struct snd_ac97 *ac97, unsigned short reg)
 	struct snd_m3 *chip = ac97->private_data;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef CONFIG_SND_MAESTRO3_INPUT
 	unsigned long flags;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short data = 0xffff;
 
 	if (snd_m3_ac97_wait(chip))
 		goto fail;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_m3_outb(chip, 0x80 | (reg & 0x7f), CODEC_COMMAND);
 	if (snd_m3_ac97_wait(chip))
 		goto fail;
 	data = snd_m3_inw(chip, CODEC_DATA);
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_SND_MAESTRO3_INPUT
 	spin_lock_irqsave(&chip->ac97_lock, flags);
@@ -2073,6 +2122,7 @@ fail_unlock:
 	spin_unlock_irqrestore(&chip->ac97_lock, flags);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail:
 	return data;
 }
@@ -2082,11 +2132,16 @@ snd_m3_ac97_write(struct snd_ac97 *ac97, unsigned short reg, unsigned short val)
 {
 	struct snd_m3 *chip = ac97->private_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (snd_m3_ac97_wait(chip))
 		return;
 	snd_m3_outw(chip, val, CODEC_DATA);
 	snd_m3_outb(chip, reg & 0x7f, CODEC_COMMAND);
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_SND_MAESTRO3_INPUT
 	unsigned long flags;
@@ -2103,6 +2158,7 @@ snd_m3_ac97_write(struct snd_ac97 *ac97, unsigned short reg, unsigned short val)
 	spin_unlock_irqrestore(&chip->ac97_lock, flags);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -2524,7 +2580,11 @@ static int snd_m3_free(struct snd_m3 *chip)
 <<<<<<< HEAD
 	cancel_work_sync(&chip->hwvol_work);
 =======
+<<<<<<< HEAD
+	cancel_work_sync(&chip->hwvol_work);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SND_MAESTRO3_INPUT
 	if (chip->input_dev)
 		input_unregister_device(chip->input_dev);
@@ -2581,7 +2641,11 @@ static int m3_suspend(struct pci_dev *pci, pm_message_t state)
 <<<<<<< HEAD
 	cancel_work_sync(&chip->hwvol_work);
 =======
+<<<<<<< HEAD
+	cancel_work_sync(&chip->hwvol_work);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_power_change_state(card, SNDRV_CTL_POWER_D3hot);
 	snd_pcm_suspend_all(chip->pcm);
 	snd_ac97_suspend(chip->ac97);
@@ -2740,10 +2804,13 @@ snd_m3_create(struct snd_card *card, struct pci_dev *pci,
 	spin_lock_init(&chip->reg_lock);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef CONFIG_SND_MAESTRO3_INPUT
 	spin_lock_init(&chip->ac97_lock);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (pci->device) {
 	case PCI_DEVICE_ID_ESS_ALLEGRO:
@@ -2760,7 +2827,11 @@ snd_m3_create(struct snd_card *card, struct pci_dev *pci,
 <<<<<<< HEAD
 	INIT_WORK(&chip->hwvol_work, snd_m3_update_hw_volume);
 =======
+<<<<<<< HEAD
+	INIT_WORK(&chip->hwvol_work, snd_m3_update_hw_volume);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	chip->external_amp = enable_amp;
 	if (amp_gpio >= 0 && amp_gpio <= 0x0f)
@@ -2834,6 +2905,10 @@ snd_m3_create(struct snd_card *card, struct pci_dev *pci,
 	if (request_irq(pci->irq, snd_m3_interrupt, IRQF_SHARED,
 			KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+	if (request_irq(pci->irq, snd_m3_interrupt, IRQF_SHARED,
+			KBUILD_MODNAME, chip)) {
+=======
 #ifndef CONFIG_SND_MAESTRO3_INPUT
 	tasklet_init(&chip->hwvol_tq, snd_m3_update_hw_volume, (unsigned long)chip);
 #endif
@@ -2841,6 +2916,7 @@ snd_m3_create(struct snd_card *card, struct pci_dev *pci,
 	if (request_irq(pci->irq, snd_m3_interrupt, IRQF_SHARED,
 			card->driver, chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to grab IRQ %d\n", pci->irq);
 		snd_m3_free(chip);
 		return -ENOMEM;
@@ -2954,9 +3030,14 @@ snd_m3_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 				  MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
 				  -1, &chip->rmidi);
 =======
+<<<<<<< HEAD
+				  MPU401_INFO_INTEGRATED | MPU401_INFO_IRQ_HOOK,
+				  -1, &chip->rmidi);
+=======
 				  MPU401_INFO_INTEGRATED,
 				  chip->irq, 0, &chip->rmidi);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		printk(KERN_WARNING "maestro3: no MIDI support.\n");
 #endif
@@ -2976,8 +3057,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "Maestro3",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_m3_ids,
 	.probe = snd_m3_probe,
 	.remove = __devexit_p(snd_m3_remove),

@@ -14,7 +14,12 @@
 #ifdef CONFIG_COMPAT
 
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_COMPAT
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/compiler.h>
 #include <linux/linkage.h>
 #include <linux/types.h>
@@ -43,9 +48,12 @@ asmlinkage long sys32_sigaction(int, struct old_sigaction32 __user *,
 				struct old_sigaction32 __user *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 asmlinkage long sys32_rt_sigprocmask(int, compat_sigset_t __user *,
 				     compat_sigset_t __user *, unsigned int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys32_alarm(unsigned int);
 
 asmlinkage long sys32_waitpid(compat_pid_t, unsigned int *, int);
@@ -96,5 +104,11 @@ asmlinkage long sys32_fanotify_mark(int, unsigned int, u32, u32, int,
 #endif /* CONFIG_COMPAT */
 
 =======
+<<<<<<< HEAD
+
+#endif /* CONFIG_COMPAT */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_X86_SYS_IA32_H */

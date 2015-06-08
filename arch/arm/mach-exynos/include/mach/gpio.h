@@ -1,9 +1,14 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Copyright (c) 2010-2012 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
  *
  * EXYNOS - GPIO lib support
+<<<<<<< HEAD
+=======
 =======
 /* linux/arch/arm/mach-exynos/include/mach/gpio.h
  *
@@ -12,6 +17,7 @@
  *
  * EXYNOS - gpio map definitions
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -22,6 +28,9 @@
 #define __ASM_ARCH_GPIO_H __FILE__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Macro for EXYNOS GPIO numbering */
 
 #define EXYNOS_GPIO_NEXT(__gpio) \
@@ -292,6 +301,8 @@ enum exynos5_gpio_number {
 /* define the number of gpios */
 
 #define ARCH_NR_GPIOS		(CONFIG_SAMSUNG_GPIO_EXTRA + S3C_GPIO_END)
+<<<<<<< HEAD
+=======
 =======
 #include "gpio-exynos4.h"
 #include "gpio-exynos5.h"
@@ -320,5 +331,6 @@ extern void (*exynos5_sleep_gpio_table_set)(void);
 
 #include <asm-generic/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_GPIO_H */

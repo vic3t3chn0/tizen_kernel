@@ -72,6 +72,9 @@
  * Figure out the MAX IRQ number.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Neponset, SA1111 and UCB1x00 are sparse IRQ aware, so can dynamically
  * allocate their IRQs above NR_IRQS.
  *
@@ -88,6 +91,8 @@
 #define NR_IRQS (IRQ_BOARD_START + NR_IRQS_LOCOMO)
 #endif
 #define SA1100_NR_IRQS (IRQ_BOARD_START + NR_IRQS_LOCOMO)
+<<<<<<< HEAD
+=======
 =======
  * If we have an SA1111, the max IRQ is S1_BVD1_STSCHG+1.
  * If we have an LoCoMo, the max IRQ is IRQ_BOARD_START + 4
@@ -109,3 +114,4 @@
 #define IRQ_NEPONSET_USAR	(IRQ_BOARD_START + 1)
 #define IRQ_NEPONSET_SA1111	(IRQ_BOARD_START + 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

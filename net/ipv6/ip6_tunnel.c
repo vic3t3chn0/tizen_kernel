@@ -43,8 +43,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <net/icmp.h>
 #include <net/ip.h>
@@ -100,8 +104,12 @@ struct pcpu_tstats {
 <<<<<<< HEAD
 } __attribute__((aligned(4*sizeof(unsigned long))));
 =======
+<<<<<<< HEAD
+} __attribute__((aligned(4*sizeof(unsigned long))));
+=======
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct net_device_stats *ip6_get_stats(struct net_device *dev)
 {
@@ -363,8 +371,12 @@ ip6_tnl_dev_uninit(struct net_device *dev)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(ip6n->tnls_wc[0], NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(ip6n->tnls_wc[0], NULL);
+=======
 		rcu_assign_pointer(ip6n->tnls_wc[0], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		ip6_tnl_unlink(ip6n, t);
 	ip6_tnl_dst_reset(t);
@@ -669,9 +681,14 @@ ip6ip6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
 		if (rt && rt->dst.dev)
 			skb2->dev = rt->dst.dev;
 =======
+<<<<<<< HEAD
+		if (rt && rt->dst.dev)
+			skb2->dev = rt->dst.dev;
+=======
 		if (rt && rt->rt6i_dev)
 			skb2->dev = rt->rt6i_dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		icmpv6_send(skb2, rel_type, rel_code, rel_info);
 
@@ -911,8 +928,12 @@ static int ip6_tnl_xmit2(struct sk_buff *skb,
 <<<<<<< HEAD
 	struct dst_entry *dst = NULL, *ndst = NULL;
 =======
+<<<<<<< HEAD
+	struct dst_entry *dst = NULL, *ndst = NULL;
+=======
 	struct dst_entry *dst;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net_device *tdev;
 	int mtu;
 	unsigned int max_headroom = sizeof(struct ipv6hdr);
@@ -921,6 +942,9 @@ static int ip6_tnl_xmit2(struct sk_buff *skb,
 	int pkt_len;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!fl6->flowi6_mark)
 		dst = ip6_tnl_dst_check(t);
 	if (!dst) {
@@ -935,6 +959,8 @@ static int ip6_tnl_xmit2(struct sk_buff *skb,
 			goto tx_err_link_failure;
 		}
 		dst = ndst;
+<<<<<<< HEAD
+=======
 =======
 	if ((dst = ip6_tnl_dst_check(t)) != NULL)
 		dst_hold(dst);
@@ -950,6 +976,7 @@ static int ip6_tnl_xmit2(struct sk_buff *skb,
 			goto tx_err_link_failure;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	tdev = dst->dev;
@@ -996,16 +1023,22 @@ static int ip6_tnl_xmit2(struct sk_buff *skb,
 	}
 	skb_dst_drop(skb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fl6->flowi6_mark) {
 		skb_dst_set(skb, dst);
 		ndst = NULL;
 	} else {
 		skb_dst_set_noref(skb, dst);
 	}
+<<<<<<< HEAD
+=======
 =======
 	skb_dst_set(skb, dst_clone(dst));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb->transport_header = skb->network_header;
 
 	proto = fl6->flowi6_proto;
@@ -1025,9 +1058,14 @@ static int ip6_tnl_xmit2(struct sk_buff *skb,
 	ipv6h->saddr = fl6->saddr;
 	ipv6h->daddr = fl6->daddr;
 =======
+<<<<<<< HEAD
+	ipv6h->saddr = fl6->saddr;
+	ipv6h->daddr = fl6->daddr;
+=======
 	ipv6_addr_copy(&ipv6h->saddr, &fl6->saddr);
 	ipv6_addr_copy(&ipv6h->daddr, &fl6->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nf_reset(skb);
 	pkt_len = skb->len;
 	err = ip6_local_out(skb);
@@ -1045,8 +1083,13 @@ static int ip6_tnl_xmit2(struct sk_buff *skb,
 	if (ndst)
 		ip6_tnl_dst_store(t, ndst);
 =======
+<<<<<<< HEAD
+	if (ndst)
+		ip6_tnl_dst_store(t, ndst);
+=======
 	ip6_tnl_dst_store(t, dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 tx_err_link_failure:
 	stats->tx_carrier_errors++;
@@ -1055,8 +1098,12 @@ tx_err_dst_release:
 <<<<<<< HEAD
 	dst_release(ndst);
 =======
+<<<<<<< HEAD
+	dst_release(ndst);
+=======
 	dst_release(dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -1084,16 +1131,22 @@ ip4ip6_tnl_xmit(struct sk_buff *skb, struct net_device *dev)
 	dsfield = ipv4_get_dsfield(iph);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (t->parms.flags & IP6_TNL_F_USE_ORIG_TCLASS)
 		fl6.flowlabel |= htonl((__u32)iph->tos << IPV6_TCLASS_SHIFT)
 					  & IPV6_TCLASS_MASK;
 	if (t->parms.flags & IP6_TNL_F_USE_ORIG_FWMARK)
 		fl6.flowi6_mark = skb->mark;
+<<<<<<< HEAD
+=======
 =======
 	if ((t->parms.flags & IP6_TNL_F_USE_ORIG_TCLASS))
 		fl6.flowlabel |= htonl((__u32)iph->tos << IPV6_TCLASS_SHIFT)
 					  & IPV6_TCLASS_MASK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = ip6_tnl_xmit2(skb, dev, dsfield, &fl6, encap_limit, &mtu);
 	if (err != 0) {
@@ -1141,18 +1194,24 @@ ip6ip6_tnl_xmit(struct sk_buff *skb, struct net_device *dev)
 
 	dsfield = ipv6_get_dsfield(ipv6h);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (t->parms.flags & IP6_TNL_F_USE_ORIG_TCLASS)
 		fl6.flowlabel |= (*(__be32 *) ipv6h & IPV6_TCLASS_MASK);
 	if (t->parms.flags & IP6_TNL_F_USE_ORIG_FLOWLABEL)
 		fl6.flowlabel |= (*(__be32 *) ipv6h & IPV6_FLOWLABEL_MASK);
 	if (t->parms.flags & IP6_TNL_F_USE_ORIG_FWMARK)
 		fl6.flowi6_mark = skb->mark;
+<<<<<<< HEAD
+=======
 =======
 	if ((t->parms.flags & IP6_TNL_F_USE_ORIG_TCLASS))
 		fl6.flowlabel |= (*(__be32 *) ipv6h & IPV6_TCLASS_MASK);
 	if ((t->parms.flags & IP6_TNL_F_USE_ORIG_FLOWLABEL))
 		fl6.flowlabel |= (*(__be32 *) ipv6h & IPV6_FLOWLABEL_MASK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = ip6_tnl_xmit2(skb, dev, dsfield, &fl6, encap_limit, &mtu);
 	if (err != 0) {
@@ -1227,9 +1286,14 @@ static void ip6_tnl_link_config(struct ip6_tnl *t)
 	fl6->saddr = p->laddr;
 	fl6->daddr = p->raddr;
 =======
+<<<<<<< HEAD
+	fl6->saddr = p->laddr;
+	fl6->daddr = p->raddr;
+=======
 	ipv6_addr_copy(&fl6->saddr, &p->laddr);
 	ipv6_addr_copy(&fl6->daddr, &p->raddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fl6->flowi6_oif = p->link;
 	fl6->flowlabel = 0;
 
@@ -1259,11 +1323,16 @@ static void ip6_tnl_link_config(struct ip6_tnl *t)
 			return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rt->dst.dev) {
 			dev->hard_header_len = rt->dst.dev->hard_header_len +
 				sizeof (struct ipv6hdr);
 
 			dev->mtu = rt->dst.dev->mtu - sizeof (struct ipv6hdr);
+<<<<<<< HEAD
+=======
 =======
 		if (rt->rt6i_dev) {
 			dev->hard_header_len = rt->rt6i_dev->hard_header_len +
@@ -1271,6 +1340,7 @@ static void ip6_tnl_link_config(struct ip6_tnl *t)
 
 			dev->mtu = rt->rt6i_dev->mtu - sizeof (struct ipv6hdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!(t->parms.flags & IP6_TNL_F_IGN_ENCAP_LIMIT))
 				dev->mtu-=8;
 
@@ -1297,9 +1367,14 @@ ip6_tnl_change(struct ip6_tnl *t, struct ip6_tnl_parm *p)
 	t->parms.laddr = p->laddr;
 	t->parms.raddr = p->raddr;
 =======
+<<<<<<< HEAD
+	t->parms.laddr = p->laddr;
+	t->parms.raddr = p->raddr;
+=======
 	ipv6_addr_copy(&t->parms.laddr, &p->laddr);
 	ipv6_addr_copy(&t->parms.raddr, &p->raddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	t->parms.flags = p->flags;
 	t->parms.hop_limit = p->hop_limit;
 	t->parms.encap_limit = p->encap_limit;

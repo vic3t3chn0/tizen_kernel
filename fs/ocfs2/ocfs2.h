@@ -839,8 +839,12 @@ static inline void _ocfs2_set_bit(unsigned int bit, unsigned long *bitmap)
 <<<<<<< HEAD
 	__set_bit_le(bit, bitmap);
 =======
+<<<<<<< HEAD
+	__set_bit_le(bit, bitmap);
+=======
 	__test_and_set_bit_le(bit, bitmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #define ocfs2_set_bit(bit, addr) _ocfs2_set_bit((bit), (unsigned long *)(addr))
 
@@ -849,8 +853,12 @@ static inline void _ocfs2_clear_bit(unsigned int bit, unsigned long *bitmap)
 <<<<<<< HEAD
 	__clear_bit_le(bit, bitmap);
 =======
+<<<<<<< HEAD
+	__clear_bit_le(bit, bitmap);
+=======
 	__test_and_clear_bit_le(bit, bitmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #define ocfs2_clear_bit(bit, addr) _ocfs2_clear_bit((bit), (unsigned long *)(addr))
 
@@ -858,6 +866,9 @@ static inline void _ocfs2_clear_bit(unsigned int bit, unsigned long *bitmap)
 #define ocfs2_find_next_zero_bit find_next_zero_bit_le
 #define ocfs2_find_next_bit find_next_bit_le
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void *correct_addr_and_bit_unaligned(int *bit, void *addr)
 {
@@ -905,7 +916,10 @@ static inline int ocfs2_find_next_zero_bit_unaligned(void *bitmap, int max,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif  /* OCFS2_H */
 

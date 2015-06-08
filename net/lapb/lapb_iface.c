@@ -34,8 +34,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fcntl.h>
 #include <linux/mm.h>
 #include <linux/interrupt.h>
@@ -146,8 +149,13 @@ out:
 int lapb_register(struct net_device *dev,
 		  const struct lapb_register_struct *callbacks)
 =======
+<<<<<<< HEAD
+int lapb_register(struct net_device *dev,
+		  const struct lapb_register_struct *callbacks)
+=======
 int lapb_register(struct net_device *dev, struct lapb_register_struct *callbacks)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct lapb_cb *lapb;
 	int rc = LAPB_BADTOKEN;
@@ -169,8 +177,12 @@ int lapb_register(struct net_device *dev, struct lapb_register_struct *callbacks
 <<<<<<< HEAD
 	lapb->callbacks = callbacks;
 =======
+<<<<<<< HEAD
+	lapb->callbacks = callbacks;
+=======
 	lapb->callbacks = *callbacks;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__lapb_insert_cb(lapb);
 
@@ -313,6 +325,9 @@ int lapb_disconnect_request(struct net_device *dev)
 
 	switch (lapb->state) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case LAPB_STATE_0:
 		rc = LAPB_NOTCONNECTED;
 		goto out_put;
@@ -333,6 +348,8 @@ int lapb_disconnect_request(struct net_device *dev)
 	case LAPB_STATE_2:
 		rc = LAPB_OK;
 		goto out_put;
+<<<<<<< HEAD
+=======
 =======
 		case LAPB_STATE_0:
 			rc = LAPB_NOTCONNECTED;
@@ -355,6 +372,7 @@ int lapb_disconnect_request(struct net_device *dev)
 			rc = LAPB_OK;
 			goto out_put;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	lapb_clear_queues(lapb);
@@ -419,9 +437,14 @@ void lapb_connect_confirmation(struct lapb_cb *lapb, int reason)
 	if (lapb->callbacks->connect_confirmation)
 		lapb->callbacks->connect_confirmation(lapb->dev, reason);
 =======
+<<<<<<< HEAD
+	if (lapb->callbacks->connect_confirmation)
+		lapb->callbacks->connect_confirmation(lapb->dev, reason);
+=======
 	if (lapb->callbacks.connect_confirmation)
 		lapb->callbacks.connect_confirmation(lapb->dev, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void lapb_connect_indication(struct lapb_cb *lapb, int reason)
@@ -430,9 +453,14 @@ void lapb_connect_indication(struct lapb_cb *lapb, int reason)
 	if (lapb->callbacks->connect_indication)
 		lapb->callbacks->connect_indication(lapb->dev, reason);
 =======
+<<<<<<< HEAD
+	if (lapb->callbacks->connect_indication)
+		lapb->callbacks->connect_indication(lapb->dev, reason);
+=======
 	if (lapb->callbacks.connect_indication)
 		lapb->callbacks.connect_indication(lapb->dev, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void lapb_disconnect_confirmation(struct lapb_cb *lapb, int reason)
@@ -441,9 +469,14 @@ void lapb_disconnect_confirmation(struct lapb_cb *lapb, int reason)
 	if (lapb->callbacks->disconnect_confirmation)
 		lapb->callbacks->disconnect_confirmation(lapb->dev, reason);
 =======
+<<<<<<< HEAD
+	if (lapb->callbacks->disconnect_confirmation)
+		lapb->callbacks->disconnect_confirmation(lapb->dev, reason);
+=======
 	if (lapb->callbacks.disconnect_confirmation)
 		lapb->callbacks.disconnect_confirmation(lapb->dev, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void lapb_disconnect_indication(struct lapb_cb *lapb, int reason)
@@ -452,9 +485,14 @@ void lapb_disconnect_indication(struct lapb_cb *lapb, int reason)
 	if (lapb->callbacks->disconnect_indication)
 		lapb->callbacks->disconnect_indication(lapb->dev, reason);
 =======
+<<<<<<< HEAD
+	if (lapb->callbacks->disconnect_indication)
+		lapb->callbacks->disconnect_indication(lapb->dev, reason);
+=======
 	if (lapb->callbacks.disconnect_indication)
 		lapb->callbacks.disconnect_indication(lapb->dev, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int lapb_data_indication(struct lapb_cb *lapb, struct sk_buff *skb)
@@ -463,9 +501,14 @@ int lapb_data_indication(struct lapb_cb *lapb, struct sk_buff *skb)
 	if (lapb->callbacks->data_indication)
 		return lapb->callbacks->data_indication(lapb->dev, skb);
 =======
+<<<<<<< HEAD
+	if (lapb->callbacks->data_indication)
+		return lapb->callbacks->data_indication(lapb->dev, skb);
+=======
 	if (lapb->callbacks.data_indication)
 		return lapb->callbacks.data_indication(lapb->dev, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kfree_skb(skb);
 	return NET_RX_SUCCESS; /* For now; must be != NET_RX_DROP */
@@ -479,9 +522,14 @@ int lapb_data_transmit(struct lapb_cb *lapb, struct sk_buff *skb)
 	if (lapb->callbacks->data_transmit) {
 		lapb->callbacks->data_transmit(lapb->dev, skb);
 =======
+<<<<<<< HEAD
+	if (lapb->callbacks->data_transmit) {
+		lapb->callbacks->data_transmit(lapb->dev, skb);
+=======
 	if (lapb->callbacks.data_transmit) {
 		lapb->callbacks.data_transmit(lapb->dev, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		used = 1;
 	}
 

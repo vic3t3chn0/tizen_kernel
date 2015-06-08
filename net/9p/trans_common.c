@@ -22,6 +22,9 @@
 /**
  *  p9_release_req_pages - Release pages after the transaction.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void p9_release_pages(struct page **pages, int nr_pages)
 {
@@ -32,6 +35,8 @@ void p9_release_pages(struct page **pages, int nr_pages)
 	}
 }
 EXPORT_SYMBOL(p9_release_pages);
+<<<<<<< HEAD
+=======
 =======
  *  @*private: PDU's private page of struct trans_rpage_info
  */
@@ -47,16 +52,22 @@ p9_release_req_pages(struct trans_rpage_info *rpinfo)
 }
 EXPORT_SYMBOL(p9_release_req_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * p9_nr_pages - Return number of pages needed to accommodate the payload.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int p9_nr_pages(char *data, int len)
 {
 	unsigned long start_page, end_page;
 	start_page =  (unsigned long)data >> PAGE_SHIFT;
 	end_page = ((unsigned long)data + len + PAGE_SIZE - 1) >> PAGE_SHIFT;
+<<<<<<< HEAD
+=======
 =======
 int
 p9_nr_pages(struct p9_req_t *req)
@@ -66,6 +77,7 @@ p9_nr_pages(struct p9_req_t *req)
 	end_page = ((unsigned long)req->tc->pubuf + req->tc->pbuf_size +
 			PAGE_SIZE - 1) >> PAGE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return end_page - start_page;
 }
 EXPORT_SYMBOL(p9_nr_pages);
@@ -80,6 +92,9 @@ EXPORT_SYMBOL(p9_nr_pages);
  * @rw: Indicates if the pages are for read or write.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int p9_payload_gup(char *data, int *nr_pages, struct page **pages, int write)
 {
@@ -91,6 +106,8 @@ int p9_payload_gup(char *data, int *nr_pages, struct page **pages, int write)
 		return nr_mapped_pages;
 
 	*nr_pages = nr_mapped_pages;
+<<<<<<< HEAD
+=======
 =======
 int
 p9_payload_gup(struct p9_req_t *req, size_t *pdata_off, int *pdata_len,
@@ -122,6 +139,7 @@ p9_payload_gup(struct p9_req_t *req, size_t *pdata_off, int *pdata_len,
 				(size_t)pdata_mapped_pages << PAGE_SHIFT);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL(p9_payload_gup);

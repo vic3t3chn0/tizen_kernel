@@ -36,12 +36,20 @@
 #include <linux/clk.h>
 #include <video/vga.h>
 =======
+<<<<<<< HEAD
+#include <linux/clk.h>
+#include <video/vga.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/platform.h>
 #include <asm/hardware/arm_timer.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/setup.h>
 #include <asm/param.h>		/* HZ */
 #include <asm/mach-types.h>
@@ -49,6 +57,8 @@
 
 #include <mach/lm.h>
 #include <mach/irqs.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/irq.h>
 #include <asm/setup.h>
@@ -57,6 +67,7 @@
 
 #include <mach/lm.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/arch.h>
 #include <asm/mach/irq.h>
@@ -172,7 +183,11 @@ static void __init ap_map_io(void)
 <<<<<<< HEAD
 	vga_base = PCI_MEMORY_VADDR;
 =======
+<<<<<<< HEAD
+	vga_base = PCI_MEMORY_VADDR;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define INTEGRATOR_SC_VALID_INT	0x003fffff
@@ -340,6 +355,9 @@ static void __init ap_init(void)
 #define TIMER2_VA_BASE IO_ADDRESS(INTEGRATOR_TIMER2_BASE)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long timer_reload;
 
 static u32 notrace integrator_read_sched_clock(void)
@@ -355,6 +373,8 @@ static void integrator_clocksource_init(unsigned long inrate)
 
 	if (rate >= 1500000) {
 		rate /= 16;
+<<<<<<< HEAD
+=======
 =======
 /*
  * How long is the timer interval?
@@ -378,6 +398,7 @@ static void integrator_clocksource_init(u32 khz)
 	if (khz >= 1500) {
 		khz /= 16;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ctrl |= TIMER_CTRL_DIV16;
 	}
 
@@ -389,8 +410,13 @@ static void integrator_clocksource_init(u32 khz)
 			rate, 200, 16, clocksource_mmio_readl_down);
 	setup_sched_clock(integrator_read_sched_clock, 16, rate);
 =======
+<<<<<<< HEAD
+			rate, 200, 16, clocksource_mmio_readl_down);
+	setup_sched_clock(integrator_read_sched_clock, 16, rate);
+=======
 		khz * 1000, 200, 16, clocksource_mmio_readl_down);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __iomem * const clkevt_base = (void __iomem *)TIMER1_VA_BASE;
@@ -415,6 +441,9 @@ static void clkevt_set_mode(enum clock_event_mode mode, struct clock_event_devic
 	u32 ctrl = readl(clkevt_base + TIMER_CTRL) & ~TIMER_CTRL_ENABLE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Disable timer */
 	writel(ctrl, clkevt_base + TIMER_CTRL);
 
@@ -438,6 +467,8 @@ static void clkevt_set_mode(enum clock_event_mode mode, struct clock_event_devic
 		break;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(mode == CLOCK_EVT_MODE_ONESHOT);
 
@@ -449,6 +480,7 @@ static void clkevt_set_mode(enum clock_event_mode mode, struct clock_event_devic
 
 	writel(ctrl, clkevt_base + TIMER_CTRL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int clkevt_set_next_event(unsigned long next, struct clock_event_device *evt)
@@ -465,10 +497,15 @@ static int clkevt_set_next_event(unsigned long next, struct clock_event_device *
 static struct clock_event_device integrator_clockevent = {
 	.name		= "timer1",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.features	= CLOCK_EVT_FEAT_PERIODIC | CLOCK_EVT_FEAT_ONESHOT,
 	.set_mode	= clkevt_set_mode,
 	.set_next_event	= clkevt_set_next_event,
 	.rating		= 300,
+<<<<<<< HEAD
+=======
 =======
 	.shift		= 34,
 	.features	= CLOCK_EVT_FEAT_PERIODIC,
@@ -477,6 +514,7 @@ static struct clock_event_device integrator_clockevent = {
 	.rating		= 300,
 	.cpumask	= cpu_all_mask,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct irqaction integrator_timer_irq = {
@@ -487,6 +525,9 @@ static struct irqaction integrator_timer_irq = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void integrator_clockevent_init(unsigned long inrate)
 {
 	unsigned long rate = inrate;
@@ -508,6 +549,8 @@ static void integrator_clockevent_init(unsigned long inrate)
 					rate,
 					1,
 					0xffffU);
+<<<<<<< HEAD
+=======
 =======
 static void integrator_clockevent_init(u32 khz)
 {
@@ -533,6 +576,7 @@ static void integrator_clockevent_init(u32 khz)
 	setup_irq(IRQ_TIMERINT1, &integrator_timer_irq);
 	clockevents_register_device(evt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -541,6 +585,9 @@ static void integrator_clockevent_init(u32 khz)
 static void __init ap_init_timer(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk *clk;
 	unsigned long rate;
 
@@ -548,9 +595,12 @@ static void __init ap_init_timer(void)
 	BUG_ON(IS_ERR(clk));
 	clk_enable(clk);
 	rate = clk_get_rate(clk);
+<<<<<<< HEAD
+=======
 =======
 	u32 khz = TICKS_PER_uSEC * 1000;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	writel(0, TIMER0_VA_BASE + TIMER_CTRL);
 	writel(0, TIMER1_VA_BASE + TIMER_CTRL);
@@ -560,9 +610,14 @@ static void __init ap_init_timer(void)
 	integrator_clocksource_init(rate);
 	integrator_clockevent_init(rate);
 =======
+<<<<<<< HEAD
+	integrator_clocksource_init(rate);
+	integrator_clockevent_init(rate);
+=======
 	integrator_clocksource_init(khz);
 	integrator_clockevent_init(khz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct sys_timer ap_timer = {
@@ -572,15 +627,21 @@ static struct sys_timer ap_timer = {
 MACHINE_START(INTEGRATOR, "ARM-Integrator")
 	/* Maintainer: ARM Ltd/Deep Blue Solutions Ltd */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= integrator_reserve,
 	.map_io		= ap_map_io,
 	.nr_irqs	= NR_IRQS_INTEGRATOR_AP,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x00000100,
 	.reserve	= integrator_reserve,
 	.map_io		= ap_map_io,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_early	= integrator_init_early,
 	.init_irq	= ap_init_irq,
 	.timer		= &ap_timer,
@@ -588,5 +649,9 @@ MACHINE_START(INTEGRATOR, "ARM-Integrator")
 <<<<<<< HEAD
 	.restart	= integrator_restart,
 =======
+<<<<<<< HEAD
+	.restart	= integrator_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

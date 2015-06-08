@@ -42,7 +42,14 @@ struct ndfc_controller {
 	struct nand_chip chip;
 	int chip_select;
 	struct nand_hw_control ndfc_control;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct mtd_partition *parts;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct mtd_partition *parts;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct ndfc_controller ndfc_ctrl[NDFC_MAX_CS];
@@ -159,6 +166,14 @@ static int ndfc_verify_buf(struct mtd_info *mtd, const uint8_t *buf, int len)
 static int ndfc_chip_init(struct ndfc_controller *ndfc,
 			  struct device_node *node)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct device_node *flash_np;
+	struct nand_chip *chip = &ndfc->chip;
+	struct mtd_part_parser_data ppdata;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MTD_CMDLINE_PARTS
 	static const char *part_types[] = { "cmdlinepart", NULL };
 #else
@@ -166,6 +181,10 @@ static int ndfc_chip_init(struct ndfc_controller *ndfc,
 #endif
 	struct device_node *flash_np;
 	struct nand_chip *chip = &ndfc->chip;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	chip->IO_ADDR_R = ndfc->ndfcbase + NDFC_DATA;
@@ -184,6 +203,13 @@ static int ndfc_chip_init(struct ndfc_controller *ndfc,
 	chip->ecc.mode = NAND_ECC_HW;
 	chip->ecc.size = 256;
 	chip->ecc.bytes = 3;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	chip->ecc.strength = 1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chip->priv = ndfc;
 
 	ndfc->mtd.priv = chip;
@@ -193,6 +219,13 @@ static int ndfc_chip_init(struct ndfc_controller *ndfc,
 	if (!flash_np)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ppdata.of_node = flash_np;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ndfc->mtd.name = kasprintf(GFP_KERNEL, "%s.%s",
 			dev_name(&ndfc->ofdev->dev), flash_np->name);
 	if (!ndfc->mtd.name) {
@@ -204,6 +237,12 @@ static int ndfc_chip_init(struct ndfc_controller *ndfc,
 	if (ret)
 		goto err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = mtd_device_parse_register(&ndfc->mtd, NULL, &ppdata, NULL, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = parse_mtd_partitions(&ndfc->mtd, part_types, &ndfc->parts, 0);
 	if (ret < 0)
 		goto err;
@@ -216,6 +255,10 @@ static int ndfc_chip_init(struct ndfc_controller *ndfc,
 	}
 
 	ret = mtd_device_register(&ndfc->mtd, ndfc->parts, ret);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 err:
 	of_node_put(flash_np);
@@ -288,6 +331,13 @@ static int __devexit ndfc_remove(struct platform_device *ofdev)
 	struct ndfc_controller *ndfc = dev_get_drvdata(&ofdev->dev);
 
 	nand_release(&ndfc->mtd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree(ndfc->mtd.name);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -308,6 +358,12 @@ static struct platform_driver ndfc_driver = {
 	.remove = __devexit_p(ndfc_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(ndfc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ndfc_nand_init(void)
 {
 	return platform_driver_register(&ndfc_driver);
@@ -320,6 +376,10 @@ static void __exit ndfc_nand_exit(void)
 
 module_init(ndfc_nand_init);
 module_exit(ndfc_nand_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Thomas Gleixner <tglx@linutronix.de>");

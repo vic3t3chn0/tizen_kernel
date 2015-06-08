@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -28,13 +32,19 @@
 #include "send.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "hash.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "soft-interface.h"
 #include "hard-interface.h"
 #include "icmp_socket.h"
 #include "translation-table.h"
 #include "originator.h"
+<<<<<<< HEAD
+#include "vis.h"
+=======
 <<<<<<< HEAD
 #include "vis.h"
 =======
@@ -44,6 +54,7 @@
 #include "gateway_common.h"
 #include "gateway_client.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "unicast.h"
 
 void slide_own_bcast_window(struct hard_iface *hard_iface)
@@ -57,8 +68,12 @@ void slide_own_bcast_window(struct hard_iface *hard_iface)
 <<<<<<< HEAD
 	uint32_t i;
 =======
+<<<<<<< HEAD
+	uint32_t i;
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t word_index;
 
 	for (i = 0; i < hash->size; i++) {
@@ -79,6 +94,11 @@ void slide_own_bcast_window(struct hard_iface *hard_iface)
 	}
 }
 
+<<<<<<< HEAD
+static void _update_route(struct bat_priv *bat_priv,
+			  struct orig_node *orig_node,
+			  struct neigh_node *neigh_node)
+=======
 <<<<<<< HEAD
 static void _update_route(struct bat_priv *bat_priv,
 			  struct orig_node *orig_node,
@@ -107,6 +127,7 @@ static void update_route(struct bat_priv *bat_priv,
 			 struct neigh_node *neigh_node,
 			 unsigned char *tt_buff, int tt_buff_len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct neigh_node *curr_router;
 
@@ -115,10 +136,15 @@ static void update_route(struct bat_priv *bat_priv,
 	/* route deleted */
 	if ((curr_router) && (!neigh_node)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bat_dbg(DBG_ROUTES, bat_priv, "Deleting route towards: %pM\n",
 			orig_node->orig);
 		tt_global_del_orig(bat_priv, orig_node,
 				   "Deleted route towards originator");
+<<<<<<< HEAD
+=======
 =======
 
 		bat_dbg(DBG_ROUTES, bat_priv, "Deleting route towards: %pM\n",
@@ -126,6 +152,7 @@ static void update_route(struct bat_priv *bat_priv,
 		tt_global_del_orig(bat_priv, orig_node,
 				    "originator timed out");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* route added */
 	} else if ((!curr_router) && (neigh_node)) {
@@ -134,10 +161,15 @@ static void update_route(struct bat_priv *bat_priv,
 			"Adding route towards: %pM (via %pM)\n",
 			orig_node->orig, neigh_node->addr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* route changed */
 	} else if (neigh_node && curr_router) {
 		bat_dbg(DBG_ROUTES, bat_priv,
 			"Changing route towards: %pM (now via %pM - was via %pM)\n",
+<<<<<<< HEAD
+=======
 =======
 		tt_global_add_orig(bat_priv, orig_node,
 				    tt_buff, tt_buff_len);
@@ -148,6 +180,7 @@ static void update_route(struct bat_priv *bat_priv,
 			"Changing route towards: %pM "
 			"(now via %pM - was via %pM)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			orig_node->orig, neigh_node->addr,
 			curr_router->addr);
 	}
@@ -172,11 +205,16 @@ static void update_route(struct bat_priv *bat_priv,
 void update_route(struct bat_priv *bat_priv, struct orig_node *orig_node,
 		  struct neigh_node *neigh_node)
 =======
+<<<<<<< HEAD
+void update_route(struct bat_priv *bat_priv, struct orig_node *orig_node,
+		  struct neigh_node *neigh_node)
+=======
 
 void update_routes(struct bat_priv *bat_priv, struct orig_node *orig_node,
 		   struct neigh_node *neigh_node, unsigned char *tt_buff,
 		   int tt_buff_len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct neigh_node *router = NULL;
 
@@ -189,18 +227,24 @@ void update_routes(struct bat_priv *bat_priv, struct orig_node *orig_node,
 <<<<<<< HEAD
 		_update_route(bat_priv, orig_node, neigh_node);
 =======
+<<<<<<< HEAD
+		_update_route(bat_priv, orig_node, neigh_node);
+=======
 		update_route(bat_priv, orig_node, neigh_node,
 			     tt_buff, tt_buff_len);
 	/* may be just TT changed */
 	else
 		update_TT(bat_priv, orig_node, tt_buff, tt_buff_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	if (router)
 		neigh_node_free_ref(router);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int is_bidirectional_neigh(struct orig_node *orig_node,
@@ -307,6 +351,7 @@ out:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* caller must hold the neigh_list_lock */
 void bonding_candidate_del(struct orig_node *orig_node,
 			   struct neigh_node *neigh_node)
@@ -328,9 +373,14 @@ out:
 void bonding_candidate_add(struct orig_node *orig_node,
 			   struct neigh_node *neigh_node)
 =======
+<<<<<<< HEAD
+void bonding_candidate_add(struct orig_node *orig_node,
+			   struct neigh_node *neigh_node)
+=======
 static void bonding_candidate_add(struct orig_node *orig_node,
 				  struct neigh_node *neigh_node)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hlist_node *node;
 	struct neigh_node *tmp_neigh_node, *router = NULL;
@@ -401,11 +451,16 @@ out:
 
 /* copy primary address for bonding */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void bonding_save_primary(const struct orig_node *orig_node,
 			  struct orig_node *orig_neigh_node,
 			  const struct batman_ogm_packet *batman_ogm_packet)
 {
 	if (!(batman_ogm_packet->flags & PRIMARIES_FIRST_HOP))
+<<<<<<< HEAD
+=======
 =======
 static void bonding_save_primary(struct orig_node *orig_node,
 				 struct orig_node *orig_neigh_node,
@@ -413,11 +468,14 @@ static void bonding_save_primary(struct orig_node *orig_node,
 {
 	if (!(batman_packet->flags & PRIMARIES_FIRST_HOP))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	memcpy(orig_neigh_node->primary_addr, orig_node->orig, ETH_ALEN);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void update_orig(struct bat_priv *bat_priv,
@@ -561,18 +619,24 @@ out:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* checks whether the host restarted and is in the protection time.
  * returns:
  *  0 if the packet is to be accepted
  *  1 if the packet is to be ignored.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int window_protected(struct bat_priv *bat_priv, int32_t seq_num_diff,
 		     unsigned long *last_reset)
 {
 	if ((seq_num_diff <= -TQ_LOCAL_WINDOW_SIZE) ||
 	    (seq_num_diff >= EXPECTED_SEQNO_RANGE)) {
 		if (has_timed_out(*last_reset, RESET_PROTECTION_MS)) {
+<<<<<<< HEAD
+=======
 =======
 static int window_protected(struct bat_priv *bat_priv,
 			    int32_t seq_num_diff,
@@ -583,6 +647,7 @@ static int window_protected(struct bat_priv *bat_priv,
 		if (time_after(jiffies, *last_reset +
 			msecs_to_jiffies(RESET_PROTECTION_MS))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			*last_reset = jiffies;
 			bat_dbg(DBG_BATMAN, bat_priv,
@@ -594,14 +659,23 @@ static int window_protected(struct bat_priv *bat_priv,
 			return 1;
 		}
 =======
+<<<<<<< HEAD
+		} else {
+			return 1;
+		}
+=======
 		} else
 			return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int recv_bat_ogm_packet(struct sk_buff *skb, struct hard_iface *hard_iface)
 {
 	struct bat_priv *bat_priv = netdev_priv(hard_iface->soft_iface);
@@ -609,6 +683,8 @@ int recv_bat_ogm_packet(struct sk_buff *skb, struct hard_iface *hard_iface)
 
 	/* drop packet if it has not necessary minimum size */
 	if (unlikely(!pskb_may_pull(skb, BATMAN_OGM_LEN)))
+<<<<<<< HEAD
+=======
 =======
 /* processes a batman packet for all interfaces, adjusts the sequence number and
  * finds out whether it is a duplicate.
@@ -934,6 +1010,7 @@ int recv_bat_packet(struct sk_buff *skb, struct hard_iface *hard_iface)
 	/* drop packet if it has not necessary minimum size */
 	if (unlikely(!pskb_may_pull(skb, sizeof(struct batman_packet))))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NET_RX_DROP;
 
 	ethhdr = (struct ethhdr *)skb_mac_header(skb);
@@ -957,6 +1034,9 @@ int recv_bat_packet(struct sk_buff *skb, struct hard_iface *hard_iface)
 <<<<<<< HEAD
 	bat_priv->bat_algo_ops->bat_ogm_receive(hard_iface, skb);
 =======
+<<<<<<< HEAD
+	bat_priv->bat_algo_ops->bat_ogm_receive(hard_iface, skb);
+=======
 	ethhdr = (struct ethhdr *)skb_mac_header(skb);
 
 	receive_aggr_bat_packet(ethhdr,
@@ -964,6 +1044,7 @@ int recv_bat_packet(struct sk_buff *skb, struct hard_iface *hard_iface)
 				skb_headlen(skb),
 				hard_iface);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kfree_skb(skb);
 	return NET_RX_SUCCESS;
@@ -1012,8 +1093,12 @@ static int recv_my_icmp_packet(struct bat_priv *bat_priv,
 <<<<<<< HEAD
 	icmp_packet->header.ttl = TTL;
 =======
+<<<<<<< HEAD
+	icmp_packet->header.ttl = TTL;
+=======
 	icmp_packet->ttl = TTL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	send_skb_packet(skb, router->if_incoming, router->addr);
 	ret = NET_RX_SUCCESS;
@@ -1045,10 +1130,15 @@ static int recv_icmp_ttl_exceeded(struct bat_priv *bat_priv,
 		pr_debug("Warning - can't forward icmp packet from %pM to %pM: ttl exceeded\n",
 			 icmp_packet->orig, icmp_packet->dst);
 =======
+<<<<<<< HEAD
+		pr_debug("Warning - can't forward icmp packet from %pM to %pM: ttl exceeded\n",
+			 icmp_packet->orig, icmp_packet->dst);
+=======
 		pr_debug("Warning - can't forward icmp packet from %pM to "
 			 "%pM: ttl exceeded\n", icmp_packet->orig,
 			 icmp_packet->dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -1077,8 +1167,12 @@ static int recv_icmp_ttl_exceeded(struct bat_priv *bat_priv,
 <<<<<<< HEAD
 	icmp_packet->header.ttl = TTL;
 =======
+<<<<<<< HEAD
+	icmp_packet->header.ttl = TTL;
+=======
 	icmp_packet->ttl = TTL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	send_skb_packet(skb, router->if_incoming, router->addr);
 	ret = NET_RX_SUCCESS;
@@ -1137,8 +1231,12 @@ int recv_icmp_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 		       ethhdr->h_dest, ETH_ALEN);
 =======
+<<<<<<< HEAD
+		       ethhdr->h_dest, ETH_ALEN);
+=======
 			ethhdr->h_dest, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		icmp_packet->rr_cur++;
 	}
 
@@ -1150,8 +1248,12 @@ int recv_icmp_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	if (icmp_packet->header.ttl < 2)
 =======
+<<<<<<< HEAD
+	if (icmp_packet->header.ttl < 2)
+=======
 	if (icmp_packet->ttl < 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return recv_icmp_ttl_exceeded(bat_priv, skb);
 
 	/* get routing information */
@@ -1173,8 +1275,12 @@ int recv_icmp_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	icmp_packet->header.ttl--;
 =======
+<<<<<<< HEAD
+	icmp_packet->header.ttl--;
+=======
 	icmp_packet->ttl--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* route it */
 	send_skb_packet(skb, router->if_incoming, router->addr);
@@ -1197,8 +1303,12 @@ static struct neigh_node *find_bond_router(struct orig_node *primary_orig,
 <<<<<<< HEAD
 					   const struct hard_iface *recv_if)
 =======
+<<<<<<< HEAD
+					   const struct hard_iface *recv_if)
+=======
 					   struct hard_iface *recv_if)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct neigh_node *tmp_neigh_node;
 	struct neigh_node *router = NULL, *first_candidate = NULL;
@@ -1252,8 +1362,12 @@ static struct neigh_node *find_ifalter_router(struct orig_node *primary_orig,
 <<<<<<< HEAD
 					      const struct hard_iface *recv_if)
 =======
+<<<<<<< HEAD
+					      const struct hard_iface *recv_if)
+=======
 					      struct hard_iface *recv_if)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct neigh_node *tmp_neigh_node;
 	struct neigh_node *router = NULL, *first_candidate = NULL;
@@ -1297,6 +1411,9 @@ static struct neigh_node *find_ifalter_router(struct orig_node *primary_orig,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int recv_tt_query(struct sk_buff *skb, struct hard_iface *recv_if)
 {
 	struct bat_priv *bat_priv = netdev_priv(recv_if->soft_iface);
@@ -1418,8 +1535,11 @@ out:
 	return NET_RX_DROP;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* find a suitable router for this originator, and use
  * bonding if possible. increases the found neighbors
  * refcount.*/
@@ -1428,8 +1548,12 @@ struct neigh_node *find_router(struct bat_priv *bat_priv,
 <<<<<<< HEAD
 			       const struct hard_iface *recv_if)
 =======
+<<<<<<< HEAD
+			       const struct hard_iface *recv_if)
+=======
 			       struct hard_iface *recv_if)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct orig_node *primary_orig_node;
 	struct orig_node *router_orig;
@@ -1498,7 +1622,13 @@ return_router:
 		goto err_unlock;
 
 =======
+<<<<<<< HEAD
+	if (router && router->if_incoming->if_status != IF_ACTIVE)
+		goto err_unlock;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 	return router;
 err_unlock:
@@ -1552,11 +1682,17 @@ int route_unicast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 		pr_debug("Warning - can't forward unicast packet from %pM to %pM: ttl exceeded\n",
 			 ethhdr->h_source, unicast_packet->dest);
 =======
+<<<<<<< HEAD
+	if (unicast_packet->header.ttl < 2) {
+		pr_debug("Warning - can't forward unicast packet from %pM to %pM: ttl exceeded\n",
+			 ethhdr->h_source, unicast_packet->dest);
+=======
 	if (unicast_packet->ttl < 2) {
 		pr_debug("Warning - can't forward unicast packet from %pM to "
 			 "%pM: ttl exceeded\n", ethhdr->h_source,
 			 unicast_packet->dest);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -1581,8 +1717,12 @@ int route_unicast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	if (unicast_packet->header.packet_type == BAT_UNICAST &&
 =======
+<<<<<<< HEAD
+	if (unicast_packet->header.packet_type == BAT_UNICAST &&
+=======
 	if (unicast_packet->packet_type == BAT_UNICAST &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    atomic_read(&bat_priv->fragmentation) &&
 	    skb->len > neigh_node->if_incoming->net_dev->mtu) {
 		ret = frag_send_skb(skb, bat_priv,
@@ -1593,8 +1733,12 @@ int route_unicast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	if (unicast_packet->header.packet_type == BAT_UNICAST_FRAG &&
 =======
+<<<<<<< HEAD
+	if (unicast_packet->header.packet_type == BAT_UNICAST_FRAG &&
+=======
 	if (unicast_packet->packet_type == BAT_UNICAST_FRAG &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    frag_can_reassemble(skb, neigh_node->if_incoming->net_dev->mtu)) {
 
 		ret = frag_reassemble_skb(skb, bat_priv, &new_skb);
@@ -1616,8 +1760,12 @@ int route_unicast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	unicast_packet->header.ttl--;
 =======
+<<<<<<< HEAD
+	unicast_packet->header.ttl--;
+=======
 	unicast_packet->ttl--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* route it */
 	send_skb_packet(skb, neigh_node->if_incoming, neigh_node->addr);
@@ -1632,6 +1780,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int check_unicast_ttvn(struct bat_priv *bat_priv,
 			       struct sk_buff *skb) {
 	uint8_t curr_ttvn;
@@ -1703,12 +1854,15 @@ int recv_unicast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 	struct bat_priv *bat_priv = netdev_priv(recv_if->soft_iface);
 	struct unicast_packet *unicast_packet;
 	int hdr_size = sizeof(*unicast_packet);
+<<<<<<< HEAD
+=======
 =======
 int recv_unicast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 {
 	struct unicast_packet *unicast_packet;
 	int hdr_size = sizeof(struct unicast_packet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (check_unicast_packet(skb, hdr_size) < 0)
 		return NET_RX_DROP;
@@ -1718,7 +1872,13 @@ int recv_unicast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 		return NET_RX_DROP;
 
 =======
+<<<<<<< HEAD
+	if (!check_unicast_ttvn(bat_priv, skb))
+		return NET_RX_DROP;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unicast_packet = (struct unicast_packet *)skb->data;
 
 	/* packet for me */
@@ -1737,8 +1897,12 @@ int recv_ucast_frag_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	int hdr_size = sizeof(*unicast_packet);
 =======
+<<<<<<< HEAD
+	int hdr_size = sizeof(*unicast_packet);
+=======
 	int hdr_size = sizeof(struct unicast_frag_packet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *new_skb = NULL;
 	int ret;
 
@@ -1750,7 +1914,13 @@ int recv_ucast_frag_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 		return NET_RX_DROP;
 
 =======
+<<<<<<< HEAD
+	if (!check_unicast_ttvn(bat_priv, skb))
+		return NET_RX_DROP;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unicast_packet = (struct unicast_frag_packet *)skb->data;
 
 	/* packet for me */
@@ -1783,8 +1953,12 @@ int recv_bcast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	int hdr_size = sizeof(*bcast_packet);
 =======
+<<<<<<< HEAD
+	int hdr_size = sizeof(*bcast_packet);
+=======
 	int hdr_size = sizeof(struct bcast_packet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = NET_RX_DROP;
 	int32_t seq_diff;
 
@@ -1815,8 +1989,12 @@ int recv_bcast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	if (bcast_packet->header.ttl < 2)
 =======
+<<<<<<< HEAD
+	if (bcast_packet->header.ttl < 2)
+=======
 	if (bcast_packet->ttl < 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	orig_node = orig_hash_find(bat_priv, bcast_packet->orig);
@@ -1849,8 +2027,12 @@ int recv_bcast_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	add_bcast_packet_to_list(bat_priv, skb, 1);
 =======
+<<<<<<< HEAD
+	add_bcast_packet_to_list(bat_priv, skb, 1);
+=======
 	add_bcast_packet_to_list(bat_priv, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* broadcast for me */
 	interface_rx(recv_if->soft_iface, skb, recv_if, hdr_size);
@@ -1873,8 +2055,12 @@ int recv_vis_packet(struct sk_buff *skb, struct hard_iface *recv_if)
 <<<<<<< HEAD
 	int hdr_size = sizeof(*vis_packet);
 =======
+<<<<<<< HEAD
+	int hdr_size = sizeof(*vis_packet);
+=======
 	int hdr_size = sizeof(struct vis_packet);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* keep skb linear */
 	if (skb_linearize(skb) < 0)

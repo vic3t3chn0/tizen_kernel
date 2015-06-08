@@ -58,6 +58,9 @@ xfs_inode_item_size(
 	uint			nvecs = 2;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (ip->i_d.di_format) {
 	case XFS_DINODE_FMT_EXTENTS:
 		if ((iip->ili_fields & XFS_ILOG_DEXT) &&
@@ -80,6 +83,8 @@ xfs_inode_item_size(
 
 	case XFS_DINODE_FMT_DEV:
 	case XFS_DINODE_FMT_UUID:
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Only log the data/extents/b-tree root if there is something
@@ -155,6 +160,7 @@ xfs_inode_item_size(
 			~(XFS_ILOG_DDATA | XFS_ILOG_DBROOT |
 			  XFS_ILOG_DEXT | XFS_ILOG_DEV);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	default:
@@ -162,6 +168,11 @@ xfs_inode_item_size(
 		break;
 	}
 
+<<<<<<< HEAD
+	if (!XFS_IFORK_Q(ip))
+		return nvecs;
+
+=======
 <<<<<<< HEAD
 	if (!XFS_IFORK_Q(ip))
 		return nvecs;
@@ -178,6 +189,7 @@ xfs_inode_item_size(
 		return nvecs;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Log any necessary attribute data.
@@ -185,6 +197,9 @@ xfs_inode_item_size(
 	switch (ip->i_d.di_aformat) {
 	case XFS_DINODE_FMT_EXTENTS:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((iip->ili_fields & XFS_ILOG_AEXT) &&
 		    ip->i_d.di_anextents > 0 &&
 		    ip->i_afp->if_bytes > 0)
@@ -201,6 +216,8 @@ xfs_inode_item_size(
 		if ((iip->ili_fields & XFS_ILOG_ADATA) &&
 		    ip->i_afp->if_bytes > 0)
 			nvecs++;
+<<<<<<< HEAD
+=======
 =======
 		iip->ili_format.ilf_fields &=
 			~(XFS_ILOG_ADATA | XFS_ILOG_ABROOT);
@@ -237,6 +254,7 @@ xfs_inode_item_size(
 			iip->ili_format.ilf_fields &= ~XFS_ILOG_ADATA;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	default:
@@ -308,6 +326,8 @@ xfs_inode_item_format(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Clear i_update_core if the timestamps (or any other
 	 * non-transactional modification) need flushing/logging
@@ -345,6 +365,7 @@ xfs_inode_item_format(
 	xfs_synchronize_times(ip);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vecp->i_addr = &ip->i_d;
 	vecp->i_len  = sizeof(struct xfs_icdinode);
 	vecp->i_type = XLOG_REG_TYPE_ICORE;
@@ -352,8 +373,11 @@ xfs_inode_item_format(
 	nvecs++;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	iip->ili_format.ilf_fields |= XFS_ILOG_CORE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If this is really an old format inode, then we need to
@@ -387,6 +411,9 @@ xfs_inode_item_format(
 	switch (ip->i_d.di_format) {
 	case XFS_DINODE_FMT_EXTENTS:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_DDATA | XFS_ILOG_DBROOT |
 			  XFS_ILOG_DEV | XFS_ILOG_UUID);
@@ -398,6 +425,8 @@ xfs_inode_item_format(
 			ASSERT(ip->i_df.if_bytes / sizeof(xfs_bmbt_rec_t) > 0);
 			ASSERT(iip->ili_extents_buf == NULL);
 
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_DDATA | XFS_ILOG_DBROOT |
@@ -410,6 +439,7 @@ xfs_inode_item_format(
 			ASSERT((ip->i_df.if_bytes /
 				(uint)sizeof(xfs_bmbt_rec_t)) > 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef XFS_NATIVE_HOST
                        if (ip->i_d.di_nextents == ip->i_df.if_bytes /
                                                (uint)sizeof(xfs_bmbt_rec_t)) {
@@ -435,18 +465,28 @@ xfs_inode_item_format(
 		} else {
 			iip->ili_fields &= ~XFS_ILOG_DEXT;
 =======
+<<<<<<< HEAD
+		} else {
+			iip->ili_fields &= ~XFS_ILOG_DEXT;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
 	case XFS_DINODE_FMT_BTREE:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_DDATA | XFS_ILOG_DEXT |
 			  XFS_ILOG_DEV | XFS_ILOG_UUID);
 
 		if ((iip->ili_fields & XFS_ILOG_DBROOT) &&
 		    ip->i_df.if_broot_bytes > 0) {
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_DDATA | XFS_ILOG_DEXT |
@@ -454,6 +494,7 @@ xfs_inode_item_format(
 		if (iip->ili_format.ilf_fields & XFS_ILOG_DBROOT) {
 			ASSERT(ip->i_df.if_broot_bytes > 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ASSERT(ip->i_df.if_broot != NULL);
 			vecp->i_addr = ip->i_df.if_broot;
 			vecp->i_len = ip->i_df.if_broot_bytes;
@@ -462,6 +503,9 @@ xfs_inode_item_format(
 			nvecs++;
 			iip->ili_format.ilf_dsize = ip->i_df.if_broot_bytes;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			ASSERT(!(iip->ili_fields &
 				 XFS_ILOG_DBROOT));
@@ -477,18 +521,26 @@ xfs_inode_item_format(
 			}
 #endif
 			iip->ili_fields &= ~XFS_ILOG_DBROOT;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
 	case XFS_DINODE_FMT_LOCAL:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_DEXT | XFS_ILOG_DBROOT |
 			  XFS_ILOG_DEV | XFS_ILOG_UUID);
 		if ((iip->ili_fields & XFS_ILOG_DDATA) &&
 		    ip->i_df.if_bytes > 0) {
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_DBROOT | XFS_ILOG_DEXT |
@@ -496,6 +548,7 @@ xfs_inode_item_format(
 		if (iip->ili_format.ilf_fields & XFS_ILOG_DDATA) {
 			ASSERT(ip->i_df.if_bytes > 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ASSERT(ip->i_df.if_u1.if_data != NULL);
 			ASSERT(ip->i_d.di_size > 0);
 
@@ -517,22 +570,33 @@ xfs_inode_item_format(
 		} else {
 			iip->ili_fields &= ~XFS_ILOG_DDATA;
 =======
+<<<<<<< HEAD
+		} else {
+			iip->ili_fields &= ~XFS_ILOG_DDATA;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
 	case XFS_DINODE_FMT_DEV:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_DDATA | XFS_ILOG_DBROOT |
 			  XFS_ILOG_DEXT | XFS_ILOG_UUID);
 		if (iip->ili_fields & XFS_ILOG_DEV) {
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_DBROOT | XFS_ILOG_DEXT |
 			  XFS_ILOG_DDATA | XFS_ILOG_UUID)));
 		if (iip->ili_format.ilf_fields & XFS_ILOG_DEV) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			iip->ili_format.ilf_u.ilfu_rdev =
 				ip->i_df.if_u2.if_rdev;
 		}
@@ -540,16 +604,22 @@ xfs_inode_item_format(
 
 	case XFS_DINODE_FMT_UUID:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_DDATA | XFS_ILOG_DBROOT |
 			  XFS_ILOG_DEXT | XFS_ILOG_DEV);
 		if (iip->ili_fields & XFS_ILOG_UUID) {
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_DBROOT | XFS_ILOG_DEXT |
 			  XFS_ILOG_DDATA | XFS_ILOG_DEV)));
 		if (iip->ili_format.ilf_fields & XFS_ILOG_UUID) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			iip->ili_format.ilf_u.ilfu_uuid =
 				ip->i_df.if_u2.if_uuid;
 		}
@@ -562,12 +632,17 @@ xfs_inode_item_format(
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * If there are no attributes associated with the file, then we're done.
 	 */
 	if (!XFS_IFORK_Q(ip)) {
 		iip->ili_fields &=
 			~(XFS_ILOG_ADATA | XFS_ILOG_ABROOT | XFS_ILOG_AEXT);
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	 * If there are no attributes associated with the file,
 	 * then we're done.
@@ -580,11 +655,15 @@ xfs_inode_item_format(
 			 (XFS_ILOG_ADATA | XFS_ILOG_ABROOT | XFS_ILOG_AEXT)));
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	switch (ip->i_d.di_aformat) {
 	case XFS_DINODE_FMT_EXTENTS:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_ADATA | XFS_ILOG_ABROOT);
 
@@ -594,6 +673,8 @@ xfs_inode_item_format(
 			ASSERT(ip->i_afp->if_bytes / sizeof(xfs_bmbt_rec_t) ==
 				ip->i_d.di_anextents);
 			ASSERT(ip->i_afp->if_u1.if_extents != NULL);
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_ADATA | XFS_ILOG_ABROOT)));
@@ -608,6 +689,7 @@ xfs_inode_item_format(
 			ASSERT(ip->i_d.di_anextents > 0);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef XFS_NATIVE_HOST
 			/*
 			 * There are not delayed allocation extents
@@ -628,12 +710,20 @@ xfs_inode_item_format(
 		} else {
 			iip->ili_fields &= ~XFS_ILOG_AEXT;
 =======
+<<<<<<< HEAD
+		} else {
+			iip->ili_fields &= ~XFS_ILOG_AEXT;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
 	case XFS_DINODE_FMT_BTREE:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_ADATA | XFS_ILOG_AEXT);
 
@@ -641,6 +731,8 @@ xfs_inode_item_format(
 		    ip->i_afp->if_broot_bytes > 0) {
 			ASSERT(ip->i_afp->if_broot != NULL);
 
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_ADATA | XFS_ILOG_AEXT)));
@@ -648,6 +740,7 @@ xfs_inode_item_format(
 			ASSERT(ip->i_afp->if_broot_bytes > 0);
 			ASSERT(ip->i_afp->if_broot != NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			vecp->i_addr = ip->i_afp->if_broot;
 			vecp->i_len = ip->i_afp->if_broot_bytes;
 			vecp->i_type = XLOG_REG_TYPE_IATTR_BROOT;
@@ -658,23 +751,34 @@ xfs_inode_item_format(
 		} else {
 			iip->ili_fields &= ~XFS_ILOG_ABROOT;
 =======
+<<<<<<< HEAD
+		} else {
+			iip->ili_fields &= ~XFS_ILOG_ABROOT;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
 	case XFS_DINODE_FMT_LOCAL:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iip->ili_fields &=
 			~(XFS_ILOG_AEXT | XFS_ILOG_ABROOT);
 
 		if ((iip->ili_fields & XFS_ILOG_ADATA) &&
 		    ip->i_afp->if_bytes > 0) {
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(!(iip->ili_format.ilf_fields &
 			 (XFS_ILOG_ABROOT | XFS_ILOG_AEXT)));
 		if (iip->ili_format.ilf_fields & XFS_ILOG_ADATA) {
 			ASSERT(ip->i_afp->if_bytes > 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ASSERT(ip->i_afp->if_u1.if_data != NULL);
 
 			vecp->i_addr = ip->i_afp->if_u1.if_data;
@@ -695,7 +799,12 @@ xfs_inode_item_format(
 		} else {
 			iip->ili_fields &= ~XFS_ILOG_ADATA;
 =======
+<<<<<<< HEAD
+		} else {
+			iip->ili_fields &= ~XFS_ILOG_ADATA;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 
@@ -705,6 +814,9 @@ xfs_inode_item_format(
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	/*
 	 * Now update the log format that goes out to disk from the in-core
@@ -714,9 +826,12 @@ out:
 	 */
 	iip->ili_format.ilf_fields = XFS_ILOG_CORE |
 		(iip->ili_fields & ~XFS_ILOG_TIMESTAMP);
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(nvecs == lip->li_desc->lid_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iip->ili_format.ilf_size = nvecs;
 }
 
@@ -757,8 +872,12 @@ xfs_inode_item_unpin(
 <<<<<<< HEAD
 		wake_up_bit(&ip->i_flags, __XFS_IPINNED_BIT);
 =======
+<<<<<<< HEAD
+		wake_up_bit(&ip->i_flags, __XFS_IPINNED_BIT);
+=======
 		wake_up(&ip->i_ipin_wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -802,12 +921,16 @@ xfs_inode_item_trylock(
 <<<<<<< HEAD
 		xfs_iunlock(ip, XFS_ILOCK_SHARED);
 =======
+<<<<<<< HEAD
+		xfs_iunlock(ip, XFS_ILOCK_SHARED);
+=======
 		/*
 		 * we hold the AIL lock - notify the unlock routine of this
 		 * so it doesn't try to get the lock again.
 		 */
 		xfs_iunlock(ip, XFS_ILOCK_SHARED|XFS_IUNLOCK_NONOTIFY);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return XFS_ITEM_PINNED;
 	}
 
@@ -816,8 +939,12 @@ xfs_inode_item_trylock(
 <<<<<<< HEAD
 		ASSERT(iip->ili_fields != 0);
 =======
+<<<<<<< HEAD
+		ASSERT(iip->ili_fields != 0);
+=======
 		ASSERT(iip->ili_format.ilf_fields != 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(iip->ili_logged == 0);
 		ASSERT(lip->li_flags & XFS_LI_IN_AIL);
 	}
@@ -843,6 +970,10 @@ xfs_inode_item_unlock(
 	ASSERT(ip->i_itemp != NULL);
 	ASSERT(xfs_isilocked(ip, XFS_ILOCK_EXCL));
 =======
+<<<<<<< HEAD
+	ASSERT(ip->i_itemp != NULL);
+	ASSERT(xfs_isilocked(ip, XFS_ILOCK_EXCL));
+=======
 	ASSERT(iip->ili_inode->i_itemp != NULL);
 	ASSERT(xfs_isilocked(iip->ili_inode, XFS_ILOCK_EXCL));
 
@@ -851,6 +982,7 @@ xfs_inode_item_unlock(
 	 */
 	ip->i_transp = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If the inode needed a separate buffer with which to log
@@ -862,8 +994,12 @@ xfs_inode_item_unlock(
 <<<<<<< HEAD
 		ASSERT(iip->ili_fields & XFS_ILOG_DEXT);
 =======
+<<<<<<< HEAD
+		ASSERT(iip->ili_fields & XFS_ILOG_DEXT);
+=======
 		ASSERT(iip->ili_format.ilf_fields & XFS_ILOG_DEXT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(ip->i_df.if_bytes > 0);
 		kmem_free(iip->ili_extents_buf);
 		iip->ili_extents_buf = NULL;
@@ -874,8 +1010,12 @@ xfs_inode_item_unlock(
 <<<<<<< HEAD
 		ASSERT(iip->ili_fields & XFS_ILOG_AEXT);
 =======
+<<<<<<< HEAD
+		ASSERT(iip->ili_fields & XFS_ILOG_AEXT);
+=======
 		ASSERT(iip->ili_format.ilf_fields & XFS_ILOG_AEXT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(ip->i_afp->if_bytes > 0);
 		kmem_free(iip->ili_aextents_buf);
 		iip->ili_aextents_buf = NULL;
@@ -887,11 +1027,16 @@ xfs_inode_item_unlock(
 	if (lock_flags)
 		xfs_iunlock(ip, lock_flags);
 =======
+<<<<<<< HEAD
+	if (lock_flags)
+		xfs_iunlock(ip, lock_flags);
+=======
 	if (lock_flags) {
 		xfs_iunlock(iip->ili_inode, lock_flags);
 		IRELE(iip->ili_inode);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -956,8 +1101,12 @@ xfs_inode_item_pushbuf(
 <<<<<<< HEAD
 	if (!xfs_isiflocked(ip) ||
 =======
+<<<<<<< HEAD
+	if (!xfs_isiflocked(ip) ||
+=======
 	if (completion_done(&ip->i_flush) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    !(lip->li_flags & XFS_LI_IN_AIL)) {
 		xfs_iunlock(ip, XFS_ILOCK_SHARED);
 		return true;
@@ -974,8 +1123,12 @@ xfs_inode_item_pushbuf(
 <<<<<<< HEAD
 	if (xfs_buf_ispinned(bp))
 =======
+<<<<<<< HEAD
+	if (xfs_buf_ispinned(bp))
+=======
 	if (XFS_BUF_ISPINNED(bp))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = false;
 	xfs_buf_relse(bp);
 	return ret;
@@ -997,8 +1150,12 @@ xfs_inode_item_push(
 <<<<<<< HEAD
 	ASSERT(xfs_isiflocked(ip));
 =======
+<<<<<<< HEAD
+	ASSERT(xfs_isiflocked(ip));
+=======
 	ASSERT(!completion_done(&ip->i_flush));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Since we were able to lock the inode's flush lock and
@@ -1012,9 +1169,13 @@ xfs_inode_item_push(
 <<<<<<< HEAD
 	ASSERT(XFS_FORCED_SHUTDOWN(ip->i_mount) || iip->ili_fields != 0);
 =======
+<<<<<<< HEAD
+	ASSERT(XFS_FORCED_SHUTDOWN(ip->i_mount) || iip->ili_fields != 0);
+=======
 	ASSERT(XFS_FORCED_SHUTDOWN(ip->i_mount) ||
 	       iip->ili_format.ilf_fields != 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Push the inode to it's backing buffer. This will not remove the
@@ -1046,8 +1207,12 @@ xfs_inode_item_committing(
 <<<<<<< HEAD
 static const struct xfs_item_ops xfs_inode_item_ops = {
 =======
+<<<<<<< HEAD
+static const struct xfs_item_ops xfs_inode_item_ops = {
+=======
 static struct xfs_item_ops xfs_inode_item_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.iop_size	= xfs_inode_item_size,
 	.iop_format	= xfs_inode_item_format,
 	.iop_pin	= xfs_inode_item_pin,
@@ -1131,8 +1296,12 @@ xfs_iflush_done(
 <<<<<<< HEAD
 	blip = bp->b_fspriv;
 =======
+<<<<<<< HEAD
+	blip = bp->b_fspriv;
+=======
 	blip = XFS_BUF_FSPRIVATE(bp, xfs_log_item_t *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prev = NULL;
 	while (blip != NULL) {
 		if (lip->li_cb != xfs_iflush_done) {
@@ -1147,8 +1316,12 @@ xfs_iflush_done(
 <<<<<<< HEAD
 			bp->b_fspriv = next;
 =======
+<<<<<<< HEAD
+			bp->b_fspriv = next;
+=======
 			XFS_BUF_SET_FSPRIVATE(bp, next);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			prev->li_bio_list = next;
 		}
@@ -1252,8 +1425,12 @@ xfs_iflush_abort(
 <<<<<<< HEAD
 		iip->ili_fields = 0;
 =======
+<<<<<<< HEAD
+		iip->ili_fields = 0;
+=======
 		iip->ili_format.ilf_fields = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/*
 	 * Release the inode's flush lock since we're done with it.

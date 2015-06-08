@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/nfs.h>
 =======
+<<<<<<< HEAD
+#include <linux/nfs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/nfs3.h>
 #include <linux/nfs4.h>
 #include <linux/nfs_page.h>
@@ -25,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "internal.h"
 #include "pnfs.h"
@@ -52,8 +60,12 @@ nfs_page_free(struct nfs_page *p)
 <<<<<<< HEAD
  * @ctx: open context to use
 =======
+<<<<<<< HEAD
+ * @ctx: open context to use
+=======
  * @file: file descriptor to use
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @inode: inode to which the request is attached
  * @page: page to write
  * @offset: starting offset within the page for the write
@@ -119,6 +131,8 @@ void nfs_unlock_request(struct nfs_page *req)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * nfs_set_page_tag_locked - Tag a request as locked
  * @req:
@@ -150,6 +164,7 @@ void nfs_clear_page_tag_locked(struct nfs_page *req)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * nfs_clear_request - Free up all resources allocated to the request
  * @req:
@@ -248,8 +263,12 @@ void nfs_pageio_init(struct nfs_pageio_descriptor *desc,
 <<<<<<< HEAD
 		     const struct nfs_pageio_ops *pg_ops,
 =======
+<<<<<<< HEAD
+		     const struct nfs_pageio_ops *pg_ops,
+=======
 		     int (*doio)(struct nfs_pageio_descriptor *),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     size_t bsize,
 		     int io_flags)
 {
@@ -260,12 +279,17 @@ void nfs_pageio_init(struct nfs_pageio_descriptor *desc,
 	desc->pg_base = 0;
 	desc->pg_moreio = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	desc->pg_recoalesce = 0;
 	desc->pg_inode = inode;
 	desc->pg_ops = pg_ops;
 	desc->pg_ioflags = io_flags;
 	desc->pg_error = 0;
 	desc->pg_lseg = NULL;
+<<<<<<< HEAD
+=======
 =======
 	desc->pg_inode = inode;
 	desc->pg_doio = doio;
@@ -275,6 +299,7 @@ void nfs_pageio_init(struct nfs_pageio_descriptor *desc,
 	desc->pg_test = nfs_generic_pg_test;
 	pnfs_pageio_init(desc, inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -307,8 +332,12 @@ static bool nfs_can_coalesce_requests(struct nfs_page *prev,
 <<<<<<< HEAD
 	return pgio->pg_ops->pg_test(pgio, prev, req);
 =======
+<<<<<<< HEAD
+	return pgio->pg_ops->pg_test(pgio, prev, req);
+=======
 	return pgio->pg_test(pgio, prev, req);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -333,7 +362,12 @@ static int nfs_pageio_do_add_request(struct nfs_pageio_descriptor *desc,
 		if (desc->pg_ops->pg_init)
 			desc->pg_ops->pg_init(desc, req);
 =======
+<<<<<<< HEAD
+		if (desc->pg_ops->pg_init)
+			desc->pg_ops->pg_init(desc, req);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		desc->pg_base = req->wb_pgbase;
 	}
 	nfs_list_remove_request(req);
@@ -351,8 +385,12 @@ static void nfs_pageio_doio(struct nfs_pageio_descriptor *desc)
 <<<<<<< HEAD
 		int error = desc->pg_ops->pg_doio(desc);
 =======
+<<<<<<< HEAD
+		int error = desc->pg_ops->pg_doio(desc);
+=======
 		int error = desc->pg_doio(desc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error < 0)
 			desc->pg_error = error;
 		else
@@ -375,8 +413,12 @@ static void nfs_pageio_doio(struct nfs_pageio_descriptor *desc)
 <<<<<<< HEAD
 static int __nfs_pageio_add_request(struct nfs_pageio_descriptor *desc,
 =======
+<<<<<<< HEAD
+static int __nfs_pageio_add_request(struct nfs_pageio_descriptor *desc,
+=======
 int nfs_pageio_add_request(struct nfs_pageio_descriptor *desc,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   struct nfs_page *req)
 {
 	while (!nfs_pageio_do_add_request(desc, req)) {
@@ -389,12 +431,20 @@ int nfs_pageio_add_request(struct nfs_pageio_descriptor *desc,
 		if (desc->pg_recoalesce)
 			return 0;
 =======
+<<<<<<< HEAD
+		if (desc->pg_recoalesce)
+			return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 1;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int nfs_do_recoalesce(struct nfs_pageio_descriptor *desc)
 {
 	LIST_HEAD(head);
@@ -437,8 +487,11 @@ int nfs_pageio_add_request(struct nfs_pageio_descriptor *desc,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * nfs_pageio_complete - Complete I/O on an nfs_pageio_descriptor
  * @desc: pointer to io descriptor
@@ -446,6 +499,9 @@ int nfs_pageio_add_request(struct nfs_pageio_descriptor *desc,
 void nfs_pageio_complete(struct nfs_pageio_descriptor *desc)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (;;) {
 		nfs_pageio_doio(desc);
 		if (!desc->pg_recoalesce)
@@ -453,9 +509,12 @@ void nfs_pageio_complete(struct nfs_pageio_descriptor *desc)
 		if (!nfs_do_recoalesce(desc))
 			break;
 	}
+<<<<<<< HEAD
+=======
 =======
 	nfs_pageio_doio(desc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -474,6 +533,10 @@ void nfs_pageio_cond_complete(struct nfs_pageio_descriptor *desc, pgoff_t index)
 	if (!list_empty(&desc->pg_list)) {
 		struct nfs_page *prev = nfs_list_entry(desc->pg_list.prev);
 		if (index != prev->wb_index + 1)
+<<<<<<< HEAD
+			nfs_pageio_complete(desc);
+	}
+=======
 <<<<<<< HEAD
 			nfs_pageio_complete(desc);
 	}
@@ -542,6 +605,7 @@ int nfs_scan_list(struct nfs_inode *nfsi,
 out:
 	return res;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int __init nfs_init_nfspagecache(void)

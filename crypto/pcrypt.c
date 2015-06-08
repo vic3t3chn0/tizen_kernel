@@ -281,11 +281,16 @@ static int pcrypt_aead_init_tfm(struct crypto_tfm *tfm)
 	ictx->tfm_count++;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpu_index = ictx->tfm_count % cpumask_weight(cpu_online_mask);
 
 	ctx->cb_cpu = cpumask_first(cpu_online_mask);
 	for (cpu = 0; cpu < cpu_index; cpu++)
 		ctx->cb_cpu = cpumask_next(ctx->cb_cpu, cpu_online_mask);
+<<<<<<< HEAD
+=======
 =======
 	cpu_index = ictx->tfm_count % cpumask_weight(cpu_active_mask);
 
@@ -293,6 +298,7 @@ static int pcrypt_aead_init_tfm(struct crypto_tfm *tfm)
 	for (cpu = 0; cpu < cpu_index; cpu++)
 		ctx->cb_cpu = cpumask_next(ctx->cb_cpu, cpu_active_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cipher = crypto_spawn_aead(crypto_instance_ctx(inst));
 
@@ -483,8 +489,12 @@ static int pcrypt_init_padata(struct padata_pcrypt *pcrypt,
 <<<<<<< HEAD
 	cpumask_and(mask->mask, cpu_possible_mask, cpu_online_mask);
 =======
+<<<<<<< HEAD
+	cpumask_and(mask->mask, cpu_possible_mask, cpu_online_mask);
+=======
 	cpumask_and(mask->mask, cpu_possible_mask, cpu_active_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_assign_pointer(pcrypt->cb_cpumask, mask);
 
 	pcrypt->nblock.notifier_call = pcrypt_cpumask_change_notify;

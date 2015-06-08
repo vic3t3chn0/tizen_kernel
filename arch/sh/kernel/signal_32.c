@@ -27,8 +27,11 @@
 #include <linux/tracehook.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/ucontext.h>
 #include <asm/uaccess.h>
 #include <asm/pgtable.h>
@@ -62,6 +65,9 @@ sys_sigsuspend(old_sigset_t mask,
 	       struct pt_regs __regs)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigset_t blocked;
 
 	current->saved_sigmask = current->blocked;
@@ -69,6 +75,8 @@ sys_sigsuspend(old_sigset_t mask,
 	mask &= _BLOCKABLE;
 	siginitset(&blocked, mask);
 	set_current_blocked(&blocked);
+<<<<<<< HEAD
+=======
 =======
 	mask &= _BLOCKABLE;
 	spin_lock_irq(&current->sighand->siglock);
@@ -77,6 +85,7 @@ sys_sigsuspend(old_sigset_t mask,
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	current->state = TASK_INTERRUPTIBLE;
 	schedule();
@@ -256,12 +265,16 @@ asmlinkage int sys_sigreturn(unsigned long r4, unsigned long r5,
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (restore_sigcontext(regs, &frame->sc, &r0))
 		goto badframe;
@@ -294,11 +307,15 @@ asmlinkage int sys_rt_sigreturn(unsigned long r4, unsigned long r5,
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (restore_sigcontext(regs, &frame->uc.uc_mcontext, &r0))
 		goto badframe;
@@ -573,6 +590,10 @@ handle_signal(unsigned long sig, struct k_sigaction *ka, siginfo_t *info,
 	if (ret == 0)
 		block_sigmask(ka, sig);
 =======
+<<<<<<< HEAD
+	if (ret == 0)
+		block_sigmask(ka, sig);
+=======
 	if (ka->sa.sa_flags & SA_ONESHOT)
 		ka->sa.sa_handler = SIG_DFL;
 
@@ -585,6 +606,7 @@ handle_signal(unsigned long sig, struct k_sigaction *ka, siginfo_t *info,
 		spin_unlock_irq(&current->sighand->siglock);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -616,10 +638,13 @@ static void do_signal(struct pt_regs *regs, unsigned int save_r0)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (try_to_freeze())
 		goto no_signal;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (current_thread_info()->status & TS_RESTORE_SIGMASK)
 		oldset = &current->saved_sigmask;
 	else
@@ -649,8 +674,11 @@ static void do_signal(struct pt_regs *regs, unsigned int save_r0)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 no_signal:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Did we come from a system call? */
 	if (regs->tra >= 0) {
 		/* Restart the system call - no handlers present */

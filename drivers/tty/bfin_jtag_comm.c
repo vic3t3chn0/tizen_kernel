@@ -25,7 +25,15 @@
 #include <linux/tty.h>
 #include <linux/tty_driver.h>
 #include <linux/tty_flip.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define pr_init(fmt, args...) ({ static const __initconst char __fmt[] = fmt; printk(__fmt, ## args); })
 
@@ -257,7 +265,14 @@ static int __init bfin_jc_init(void)
 	if (!bfin_jc_driver)
 		goto err_driver;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	bfin_jc_driver->owner        = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bfin_jc_driver->owner        = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bfin_jc_driver->driver_name  = DRV_NAME;
 	bfin_jc_driver->name         = DEV_NAME;
 	bfin_jc_driver->type         = TTY_DRIVER_TYPE_SERIAL;

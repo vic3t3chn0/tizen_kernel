@@ -7,11 +7,14 @@ static struct {
 	int cache_filter;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_FAULT_INJECTION_DEBUG_FS
 	struct dentry *ignore_gfp_wait_file;
 	struct dentry *cache_filter_file;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } failslab = {
 	.attr = FAULT_ATTR_INITIALIZER,
 	.ignore_gfp_wait = 1,
@@ -42,6 +45,9 @@ __setup("failslab=", setup_failslab);
 static int __init failslab_debugfs_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *dir;
 	umode_t mode = S_IFREG | S_IRUSR | S_IWUSR;
 
@@ -61,6 +67,8 @@ fail:
 	debugfs_remove_recursive(dir);
 
 	return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 	mode_t mode = S_IFREG | S_IRUSR | S_IWUSR;
 	struct dentry *dir;
@@ -89,6 +97,7 @@ fail:
 
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 late_initcall(failslab_debugfs_init);

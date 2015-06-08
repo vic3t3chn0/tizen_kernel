@@ -40,6 +40,9 @@ void finv_buffer_remote(void *buffer, size_t size, int hfh)
 	char *p, *base;
 	size_t step_size, load_count;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * On TILEPro the striping granularity is a fixed 8KB; on
@@ -55,9 +58,12 @@ void finv_buffer_remote(void *buffer, size_t size, int hfh)
 	const unsigned long STRIPE_WIDTH = 8192;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	const unsigned long STRIPE_WIDTH = 8192;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __tilegx__
 	/*
 	 * On TILE-Gx, we must disable the dstream prefetcher before doing
@@ -95,8 +101,12 @@ void finv_buffer_remote(void *buffer, size_t size, int hfh)
 <<<<<<< HEAD
 	 * we crossed a "striping" boundary (the granularity of striping
 =======
+<<<<<<< HEAD
+	 * we crossed a "striping" boundary (the granularity of striping
+=======
 	 * we crossed an 8KB boundary (the granularity of striping
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * across memory controllers).  Keep backing up and doing this
 	 * until we are before the beginning of the buffer, or have
 	 * hit all the controllers.
@@ -111,6 +121,9 @@ void finv_buffer_remote(void *buffer, size_t size, int hfh)
 	 * controller" that we simply do that, to simplify the logic.
 	 *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * On TILE-Gx the hash-for-home function is much more complex,
 	 * with the upshot being we can't readily guarantee we have
 	 * hit both entries in the 128-entry AMT that were hit by any
@@ -127,6 +140,8 @@ void finv_buffer_remote(void *buffer, size_t size, int hfh)
 		load_count = (STRIPE_WIDTH / L2_CACHE_BYTES) *
 			      (1 << CHIP_LOG_NUM_MSHIMS());
 #endif
+<<<<<<< HEAD
+=======
 =======
 	 * FIXME: See bug 9535 for some issues with this code.
 	 */
@@ -135,6 +150,7 @@ void finv_buffer_remote(void *buffer, size_t size, int hfh)
 		load_count = (STRIPE_WIDTH / L2_CACHE_BYTES) *
 			      (1 << CHIP_LOG_NUM_MSHIMS());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		step_size = STRIPE_WIDTH;
 		load_count = (1 << CHIP_LOG_NUM_MSHIMS());
@@ -153,8 +169,12 @@ void finv_buffer_remote(void *buffer, size_t size, int hfh)
 <<<<<<< HEAD
 	if ((unsigned long)base < (unsigned long)buffer)
 =======
+<<<<<<< HEAD
+	if ((unsigned long)base < (unsigned long)buffer)
+=======
 	if ((long)base < (long)buffer)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		base = buffer;
 
 	/*

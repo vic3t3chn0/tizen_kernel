@@ -158,8 +158,12 @@ static struct irqaction local0_cascade = {
 <<<<<<< HEAD
 	.flags		= IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_NO_THREAD,
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "local0 cascade",
 };
 
@@ -168,8 +172,12 @@ static struct irqaction local1_cascade = {
 <<<<<<< HEAD
 	.flags		= IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_NO_THREAD,
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "local1 cascade",
 };
 
@@ -178,8 +186,12 @@ static struct irqaction buserr = {
 <<<<<<< HEAD
 	.flags		= IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_NO_THREAD,
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "Bus Error",
 };
 
@@ -188,8 +200,12 @@ static struct irqaction map0_cascade = {
 <<<<<<< HEAD
 	.flags		= IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_NO_THREAD,
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "mapable0 cascade",
 };
 
@@ -199,8 +215,12 @@ static struct irqaction map1_cascade = {
 <<<<<<< HEAD
 	.flags		= IRQF_NO_THREAD,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_NO_THREAD,
+=======
 	.flags		= IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "mapable1 cascade",
 };
 #define SGI_INTERRUPTS	SGINT_END

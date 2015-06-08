@@ -24,11 +24,16 @@
 #include <linux/kdebug.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/kdebug.h>
+
+=======
 #include <linux/module.h>
 #include <linux/kdebug.h>
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgtable.h>
 #include <asm/memreg.h>
@@ -236,7 +241,12 @@ asmlinkage void do_sparc_fault(struct pt_regs *regs, int text_fault, int write,
 	unsigned int flags = (FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE |
 			      (write ? FAULT_FLAG_WRITE : 0));
 =======
+<<<<<<< HEAD
+	unsigned int flags = (FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE |
+			      (write ? FAULT_FLAG_WRITE : 0));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if(text_fault)
 		address = regs->pc;
@@ -266,9 +276,15 @@ asmlinkage void do_sparc_fault(struct pt_regs *regs, int text_fault, int write,
 
 retry:
 =======
+<<<<<<< HEAD
+	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
+
+retry:
+=======
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, 0, regs, address);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	down_read(&mm->mmap_sem);
 
 	/*
@@ -308,14 +324,20 @@ good_area:
 	 * the fault.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fault = handle_mm_fault(mm, vma, address, flags);
 
 	if ((fault & VM_FAULT_RETRY) && fatal_signal_pending(current))
 		return;
 
+<<<<<<< HEAD
+=======
 =======
 	fault = handle_mm_fault(mm, vma, address, write ? FAULT_FLAG_WRITE : 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(fault & VM_FAULT_ERROR)) {
 		if (fault & VM_FAULT_OOM)
 			goto out_of_memory;
@@ -324,6 +346,9 @@ good_area:
 		BUG();
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (flags & FAULT_FLAG_ALLOW_RETRY) {
 		if (fault & VM_FAULT_MAJOR) {
@@ -347,6 +372,8 @@ good_area:
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	if (fault & VM_FAULT_MAJOR) {
 		current->maj_flt++;
@@ -358,6 +385,7 @@ good_area:
 			      regs, address);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	up_read(&mm->mmap_sem);
 	return;
 

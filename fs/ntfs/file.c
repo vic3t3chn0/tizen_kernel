@@ -707,8 +707,12 @@ map_buffer_cached:
 <<<<<<< HEAD
 				kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+				kaddr = kmap_atomic(page);
+=======
 				kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (bh_pos < pos) {
 					pofs = bh_pos & ~PAGE_CACHE_MASK;
 					memset(kaddr + pofs, 0, pos - bh_pos);
@@ -720,8 +724,12 @@ map_buffer_cached:
 <<<<<<< HEAD
 				kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+				kunmap_atomic(kaddr);
+=======
 				kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				flush_dcache_page(page);
 			}
 			continue;
@@ -1300,10 +1308,16 @@ static inline size_t ntfs_copy_from_user(struct page **pages,
 		left = __copy_from_user_inatomic(addr + ofs, buf, len);
 		kunmap_atomic(addr);
 =======
+<<<<<<< HEAD
+		addr = kmap_atomic(*pages);
+		left = __copy_from_user_inatomic(addr + ofs, buf, len);
+		kunmap_atomic(addr);
+=======
 		addr = kmap_atomic(*pages, KM_USER0);
 		left = __copy_from_user_inatomic(addr + ofs, buf, len);
 		kunmap_atomic(addr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (unlikely(left)) {
 			/* Do it the slow way. */
 			addr = kmap(*pages);
@@ -1416,16 +1430,22 @@ static inline size_t ntfs_copy_from_user_iovec(struct page **pages,
 		if (len > bytes)
 			len = bytes;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		addr = kmap_atomic(*pages);
 		copied = __ntfs_copy_from_user_iovec_inatomic(addr + ofs,
 				*iov, *iov_ofs, len);
 		kunmap_atomic(addr);
+<<<<<<< HEAD
+=======
 =======
 		addr = kmap_atomic(*pages, KM_USER0);
 		copied = __ntfs_copy_from_user_iovec_inatomic(addr + ofs,
 				*iov, *iov_ofs, len);
 		kunmap_atomic(addr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (unlikely(copied != len)) {
 			/* Do it the slow way. */
 			addr = kmap(*pages);
@@ -1715,8 +1735,12 @@ static int ntfs_commit_pages_after_write(struct page **pages,
 <<<<<<< HEAD
 	kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(page);
+=======
 	kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Copy the received data from the page to the mft record. */
 	memcpy(kattr + pos, kaddr + pos, bytes);
 	/* Update the attribute length if necessary. */
@@ -1741,8 +1765,12 @@ static int ntfs_commit_pages_after_write(struct page **pages,
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Update initialized_size/i_size if necessary. */
 	read_lock_irqsave(&ni->size_lock, flags);
 	initialized_size = ni->initialized_size;
@@ -1865,10 +1893,15 @@ static ssize_t ntfs_file_buffered_write(struct kiocb *iocb,
 		inode_dio_wait(vi);
 		err = ntfs_truncate(vi);
 =======
+<<<<<<< HEAD
+		inode_dio_wait(vi);
+		err = ntfs_truncate(vi);
+=======
 		down_write(&vi->i_alloc_sem);
 		err = ntfs_truncate(vi);
 		up_write(&vi->i_alloc_sem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err || NInoTruncateFailed(ni)) {
 			if (!err)
 				err = -EIO;
@@ -2191,22 +2224,33 @@ static ssize_t ntfs_file_aio_write(struct kiocb *iocb, const struct iovec *iov,
 static int ntfs_file_fsync(struct file *filp, loff_t start, loff_t end,
 			   int datasync)
 =======
+<<<<<<< HEAD
+static int ntfs_file_fsync(struct file *filp, loff_t start, loff_t end,
+			   int datasync)
+=======
 static int ntfs_file_fsync(struct file *filp, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *vi = filp->f_mapping->host;
 	int err, ret = 0;
 
 	ntfs_debug("Entering for inode 0x%lx.", vi->i_ino);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = filemap_write_and_wait_range(vi->i_mapping, start, end);
 	if (err)
 		return err;
 	mutex_lock(&vi->i_mutex);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(S_ISDIR(vi->i_mode));
 	if (!datasync || !NInoNonResident(NTFS_I(vi)))
 		ret = __ntfs_write_inode(vi, 1);
@@ -2227,7 +2271,11 @@ static int ntfs_file_fsync(struct file *filp, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&vi->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&vi->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

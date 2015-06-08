@@ -71,7 +71,11 @@ struct file_handle;
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sem.h>
 #include <asm/siginfo.h>
 #include <asm/signal.h>
@@ -482,8 +486,12 @@ asmlinkage long sys_chroot(const char __user *filename);
 <<<<<<< HEAD
 asmlinkage long sys_mknod(const char __user *filename, umode_t mode,
 =======
+<<<<<<< HEAD
+asmlinkage long sys_mknod(const char __user *filename, umode_t mode,
+=======
 asmlinkage long sys_mknod(const char __user *filename, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				unsigned dev);
 asmlinkage long sys_link(const char __user *oldname,
 				const char __user *newname);
@@ -495,9 +503,14 @@ asmlinkage long sys_rename(const char __user *oldname,
 asmlinkage long sys_chmod(const char __user *filename, umode_t mode);
 asmlinkage long sys_fchmod(unsigned int fd, umode_t mode);
 =======
+<<<<<<< HEAD
+asmlinkage long sys_chmod(const char __user *filename, umode_t mode);
+asmlinkage long sys_fchmod(unsigned int fd, umode_t mode);
+=======
 asmlinkage long sys_chmod(const char __user *filename, mode_t mode);
 asmlinkage long sys_fchmod(unsigned int fd, mode_t mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 asmlinkage long sys_fcntl(unsigned int fd, unsigned int cmd, unsigned long arg);
 #if BITS_PER_LONG == 32
@@ -535,10 +548,16 @@ asmlinkage long sys_creat(const char __user *pathname, umode_t mode);
 asmlinkage long sys_open(const char __user *filename,
 				int flags, umode_t mode);
 =======
+<<<<<<< HEAD
+asmlinkage long sys_creat(const char __user *pathname, umode_t mode);
+asmlinkage long sys_open(const char __user *filename,
+				int flags, umode_t mode);
+=======
 asmlinkage long sys_creat(const char __user *pathname, int mode);
 asmlinkage long sys_open(const char __user *filename,
 				int flags, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_close(unsigned int fd);
 asmlinkage long sys_access(const char __user *filename, int mode);
 asmlinkage long sys_vhangup(void);
@@ -604,8 +623,12 @@ asmlinkage long sys_getcwd(char __user *buf, unsigned long size);
 <<<<<<< HEAD
 asmlinkage long sys_mkdir(const char __user *pathname, umode_t mode);
 =======
+<<<<<<< HEAD
+asmlinkage long sys_mkdir(const char __user *pathname, umode_t mode);
+=======
 asmlinkage long sys_mkdir(const char __user *pathname, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_chdir(const char __user *filename);
 asmlinkage long sys_fchdir(unsigned int fd);
 asmlinkage long sys_rmdir(const char __user *pathname);
@@ -650,8 +673,12 @@ asmlinkage long sys_poll(struct pollfd __user *ufds, unsigned int nfds,
 <<<<<<< HEAD
 				int timeout);
 =======
+<<<<<<< HEAD
+				int timeout);
+=======
 				long timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_select(int n, fd_set __user *inp, fd_set __user *outp,
 			fd_set __user *exp, struct timeval __user *tvp);
 asmlinkage long sys_old_select(struct sel_arg_struct __user *arg);
@@ -709,8 +736,12 @@ asmlinkage long sys_ipc(unsigned int call, int first, unsigned long second,
 <<<<<<< HEAD
 asmlinkage long sys_mq_open(const char __user *name, int oflag, umode_t mode, struct mq_attr __user *attr);
 =======
+<<<<<<< HEAD
+asmlinkage long sys_mq_open(const char __user *name, int oflag, umode_t mode, struct mq_attr __user *attr);
+=======
 asmlinkage long sys_mq_open(const char __user *name, int oflag, mode_t mode, struct mq_attr __user *attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_mq_unlink(const char __user *name);
 asmlinkage long sys_mq_timedsend(mqd_t mqdes, const char __user *msg_ptr, size_t msg_len, unsigned int msg_prio, const struct timespec __user *abs_timeout);
 asmlinkage long sys_mq_timedreceive(mqd_t mqdes, char __user *msg_ptr, size_t msg_len, unsigned int __user *msg_prio, const struct timespec __user *abs_timeout);
@@ -735,10 +766,13 @@ asmlinkage long sys_sysfs(int option,
 				unsigned long arg1, unsigned long arg2);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 asmlinkage long sys_nfsservctl(int cmd,
 				struct nfsctl_arg __user *arg,
 				void __user *res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_syslog(int type, char __user *buf, int len);
 asmlinkage long sys_uselib(const char __user *library);
 asmlinkage long sys_ni_syscall(void);
@@ -791,11 +825,16 @@ asmlinkage long sys_spu_run(int fd, __u32 __user *unpc,
 				 __u32 __user *ustatus);
 asmlinkage long sys_spu_create(const char __user *name,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned int flags, umode_t mode, int fd);
 
 asmlinkage long sys_mknodat(int dfd, const char __user * filename, umode_t mode,
 			    unsigned dev);
 asmlinkage long sys_mkdirat(int dfd, const char __user * pathname, umode_t mode);
+<<<<<<< HEAD
+=======
 =======
 		unsigned int flags, mode_t mode, int fd);
 
@@ -803,6 +842,7 @@ asmlinkage long sys_mknodat(int dfd, const char __user * filename, int mode,
 			    unsigned dev);
 asmlinkage long sys_mkdirat(int dfd, const char __user * pathname, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_unlinkat(int dfd, const char __user * pathname, int flag);
 asmlinkage long sys_symlinkat(const char __user * oldname,
 			      int newdfd, const char __user * newname);
@@ -815,11 +855,16 @@ asmlinkage long sys_futimesat(int dfd, const char __user *filename,
 asmlinkage long sys_faccessat(int dfd, const char __user *filename, int mode);
 asmlinkage long sys_fchmodat(int dfd, const char __user * filename,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     umode_t mode);
 asmlinkage long sys_fchownat(int dfd, const char __user *filename, uid_t user,
 			     gid_t group, int flag);
 asmlinkage long sys_openat(int dfd, const char __user *filename, int flags,
 			   umode_t mode);
+<<<<<<< HEAD
+=======
 =======
 			     mode_t mode);
 asmlinkage long sys_fchownat(int dfd, const char __user *filename, uid_t user,
@@ -827,6 +872,7 @@ asmlinkage long sys_fchownat(int dfd, const char __user *filename, uid_t user,
 asmlinkage long sys_openat(int dfd, const char __user *filename, int flags,
 			   int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_newfstatat(int dfd, const char __user *filename,
 			       struct stat __user *statbuf, int flag);
 asmlinkage long sys_fstatat64(int dfd, const char __user *filename,
@@ -898,6 +944,9 @@ asmlinkage long sys_open_by_handle_at(int mountdirfd,
 				      int flags);
 asmlinkage long sys_setns(int fd, int nstype);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 asmlinkage long sys_process_vm_readv(pid_t pid,
 				     const struct iovec __user *lvec,
 				     unsigned long liovcnt,
@@ -911,6 +960,9 @@ asmlinkage long sys_process_vm_writev(pid_t pid,
 				      unsigned long riovcnt,
 				      unsigned long flags);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

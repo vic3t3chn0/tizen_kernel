@@ -26,11 +26,16 @@
 #include "ieee80211_i.h"
 #include "rate.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "driver-ops.h"
 
 enum work_action {
 	WORK_ACT_NONE,
 	WORK_ACT_TIMEOUT,
+<<<<<<< HEAD
+=======
 =======
 
 #define IEEE80211_AUTH_TIMEOUT (HZ / 5)
@@ -44,6 +49,7 @@ enum work_action {
 	WORK_ACT_TIMEOUT,
 	WORK_ACT_DONE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -78,6 +84,8 @@ void free_work(struct ieee80211_work *wk)
 	kfree_rcu(wk, rcu_head);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int ieee80211_compatible_rates(const u8 *supp_rates, int supp_rates_len,
@@ -535,6 +543,7 @@ ieee80211_associate(struct ieee80211_work *wk)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static enum work_action __must_check
 ieee80211_remain_on_channel_timeout(struct ieee80211_work *wk)
 {
@@ -574,6 +583,8 @@ ieee80211_offchannel_tx(struct ieee80211_work *wk)
 	return WORK_ACT_TIMEOUT;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static enum work_action __must_check
@@ -909,6 +920,7 @@ ieee80211_calc_ct(enum nl80211_channel_type wk_ct,
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ieee80211_work_timer(unsigned long data)
 {
 	struct ieee80211_local *local = (void *) data;
@@ -925,8 +937,11 @@ static void ieee80211_work_work(struct work_struct *work)
 		container_of(work, struct ieee80211_local, work_work);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct sk_buff *skb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ieee80211_work *wk, *tmp;
 	LIST_HEAD(free_work);
 	enum work_action rma;
@@ -944,11 +959,14 @@ static void ieee80211_work_work(struct work_struct *work)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* first process frames to avoid timing out while a frame is pending */
 	while ((skb = skb_dequeue(&local->work_skb_queue)))
 		ieee80211_work_rx_queued_mgmt(local, skb);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&local->mtx);
 
 	ieee80211_recalc_idle(local);
@@ -966,12 +984,17 @@ static void ieee80211_work_work(struct work_struct *work)
 
 		if (!started && !local->tmp_channel) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ieee80211_offchannel_stop_vifs(local, true);
 
 			local->tmp_channel = wk->chan;
 			local->tmp_channel_type = wk->chan_type;
 
 			ieee80211_hw_config(local, 0);
+<<<<<<< HEAD
+=======
 =======
 			bool on_oper_chan;
 			bool tmp_chan_changed = false;
@@ -1017,6 +1040,7 @@ static void ieee80211_work_work(struct work_struct *work)
 				 */
 				ieee80211_hw_config(local, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			started = true;
 			wk->timeout = jiffies;
@@ -1047,6 +1071,8 @@ static void ieee80211_work_work(struct work_struct *work)
 			break;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		case IEEE80211_WORK_DIRECT_PROBE:
 			rma = ieee80211_direct_probe(wk);
 			break;
@@ -1057,6 +1083,7 @@ static void ieee80211_work_work(struct work_struct *work)
 			rma = ieee80211_associate(wk);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case IEEE80211_WORK_REMAIN_ON_CHANNEL:
 			rma = ieee80211_remain_on_channel_timeout(wk);
 			break;
@@ -1065,10 +1092,13 @@ static void ieee80211_work_work(struct work_struct *work)
 			break;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		case IEEE80211_WORK_ASSOC_BEACON_WAIT:
 			rma = ieee80211_assoc_beacon_wait(wk);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		wk->started = started;
@@ -1095,17 +1125,26 @@ static void ieee80211_work_work(struct work_struct *work)
 		if (wk->chan != local->tmp_channel ||
 		    wk->chan_type != local->tmp_channel_type)
 =======
+<<<<<<< HEAD
+		if (wk->chan != local->tmp_channel ||
+		    wk->chan_type != local->tmp_channel_type)
+=======
 		if (wk->chan != local->tmp_channel)
 			continue;
 		if (!ieee80211_work_ct_coexists(wk->chan_type,
 						local->tmp_channel_type))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		remain_off_channel = true;
 	}
 
 	if (!remain_off_channel && local->tmp_channel) {
 		local->tmp_channel = NULL;
+<<<<<<< HEAD
+		ieee80211_hw_config(local, 0);
+
+=======
 <<<<<<< HEAD
 		ieee80211_hw_config(local, 0);
 
@@ -1128,6 +1167,7 @@ static void ieee80211_work_work(struct work_struct *work)
 		 * as a future optimization.
 		 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ieee80211_offchannel_return(local, true);
 
 		/* give connection some time to breathe */
@@ -1185,8 +1225,11 @@ void ieee80211_work_init(struct ieee80211_local *local)
 	INIT_WORK(&local->work_work, ieee80211_work_work);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	skb_queue_head_init(&local->work_skb_queue);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ieee80211_work_purge(struct ieee80211_sub_if_data *sdata)
@@ -1220,6 +1263,8 @@ void ieee80211_work_purge(struct ieee80211_sub_if_data *sdata)
 	mutex_unlock(&local->mtx);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 ieee80211_rx_result ieee80211_work_rx_mgmt(struct ieee80211_sub_if_data *sdata,
@@ -1260,6 +1305,7 @@ ieee80211_rx_result ieee80211_work_rx_mgmt(struct ieee80211_sub_if_data *sdata,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static enum work_done_result ieee80211_remain_done(struct ieee80211_work *wk,
 						   struct sk_buff *skb)
 {

@@ -30,8 +30,11 @@
 #include <mach/common.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/board-mx31ads.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/iomux-mx3.h>
 
 #ifdef CONFIG_MACH_MX31ADS_WM1133_EV1
@@ -47,7 +50,13 @@
 #define PBC_BASE_ADDRESS	MX31_CS4_BASE_ADDR_VIRT
 
 =======
+<<<<<<< HEAD
+/* Base address of PBC controller */
+#define PBC_BASE_ADDRESS	MX31_CS4_BASE_ADDR_VIRT
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PBC Board interrupt status register */
 #define PBC_INTSTATUS           0x000016
 
@@ -74,7 +83,11 @@
 <<<<<<< HEAD
 #define MXC_EXP_IO_BASE		MXC_BOARD_IRQ_START
 =======
+<<<<<<< HEAD
+#define MXC_EXP_IO_BASE		MXC_BOARD_IRQ_START
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MXC_IRQ_TO_EXPIO(irq)	((irq) - MXC_EXP_IO_BASE)
 
 #define EXPIO_INT_XUART_INTA	(MXC_EXP_IO_BASE + 10)
@@ -83,12 +96,18 @@
 #define MXC_MAX_EXP_IO_LINES	16
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* CS8900 */
 #define EXPIO_INT_ENET_INT	(MXC_EXP_IO_BASE + 8)
 #define CS4_CS8900_MMIO_START	0x20000
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The serial port definition structure.
  */
@@ -122,6 +141,9 @@ static struct platform_device serial_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct resource mx31ads_cs8900_resources[] __initconst = {
 	DEFINE_RES_MEM(MX31_CS4_BASE_ADDR + CS4_CS8900_MMIO_START, SZ_64K),
 	DEFINE_RES_IRQ(EXPIO_INT_ENET_INT),
@@ -134,22 +156,31 @@ static const struct platform_device_info mx31ads_cs8900_devinfo __initconst = {
 	.num_res = ARRAY_SIZE(mx31ads_cs8900_resources),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init mxc_init_extuart(void)
 {
 	return platform_device_register(&serial_device);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mxc_init_ext_ethernet(void)
 {
 	platform_device_register_full(
 		(struct platform_device_info *)&mx31ads_cs8900_devinfo);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct imxuart_platform_data uart_pdata __initconst = {
 	.flags = IMXUART_HAVE_RTSCTS,
 };
@@ -515,8 +546,12 @@ static struct i2c_board_info __initdata mx31ads_i2c1_devices[] = {
 <<<<<<< HEAD
 static void __init mxc_init_i2c(void)
 =======
+<<<<<<< HEAD
+static void __init mxc_init_i2c(void)
+=======
 static void mxc_init_i2c(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	i2c_register_board_info(1, mx31ads_i2c1_devices,
 				ARRAY_SIZE(mx31ads_i2c1_devices));
@@ -537,21 +572,31 @@ static unsigned int ssi_pins[] = {
 <<<<<<< HEAD
 static void __init mxc_init_audio(void)
 =======
+<<<<<<< HEAD
+static void __init mxc_init_audio(void)
+=======
 static void mxc_init_audio(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	imx31_add_imx_ssi(0, NULL);
 	mxc_iomux_setup_multiple_pins(ssi_pins, ARRAY_SIZE(ssi_pins), "ssi");
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Static mappings, starting from the CS4 start address up to the start address
  * of the CS8900.
  */
+<<<<<<< HEAD
+=======
 =======
 /* static mappings */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct map_desc mx31ads_io_desc[] __initdata = {
 	{
 		.virtual	= MX31_CS4_BASE_ADDR_VIRT,
@@ -559,8 +604,12 @@ static struct map_desc mx31ads_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.length		= CS4_CS8900_MMIO_START,
 =======
+<<<<<<< HEAD
+		.length		= CS4_CS8900_MMIO_START,
+=======
 		.length		= MX31_CS4_SIZE / 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.type		= MT_DEVICE
 	},
 };
@@ -583,7 +632,12 @@ static void __init mx31ads_init(void)
 	imx31_soc_init();
 
 =======
+<<<<<<< HEAD
+	imx31_soc_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_init_extuart();
 	mxc_init_imx_uart();
 	mxc_init_i2c();
@@ -591,7 +645,11 @@ static void __init mx31ads_init(void)
 <<<<<<< HEAD
 	mxc_init_ext_ethernet();
 =======
+<<<<<<< HEAD
+	mxc_init_ext_ethernet();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init mx31ads_timer_init(void)
@@ -606,6 +664,9 @@ static struct sys_timer mx31ads_timer = {
 MACHINE_START(MX31ADS, "Freescale MX31ADS")
 	/* Maintainer: Freescale Semiconductor, Inc. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset = 0x100,
 	.map_io = mx31ads_map_io,
 	.init_early = imx31_init_early,
@@ -614,6 +675,8 @@ MACHINE_START(MX31ADS, "Freescale MX31ADS")
 	.timer = &mx31ads_timer,
 	.init_machine = mx31ads_init,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params = MX3x_PHYS_OFFSET + 0x100,
 	.map_io = mx31ads_map_io,
@@ -622,4 +685,5 @@ MACHINE_START(MX31ADS, "Freescale MX31ADS")
 	.timer = &mx31ads_timer,
 	.init_machine = mx31ads_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

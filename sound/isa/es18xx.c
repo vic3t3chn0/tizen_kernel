@@ -85,8 +85,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 
 #include <asm/io.h>
@@ -1812,8 +1816,12 @@ static int __devinit snd_es18xx_new_device(struct snd_card *card,
 <<<<<<< HEAD
 	if (request_irq(irq, snd_es18xx_interrupt, 0, "ES18xx",
 =======
+<<<<<<< HEAD
+	if (request_irq(irq, snd_es18xx_interrupt, 0, "ES18xx",
+=======
 	if (request_irq(irq, snd_es18xx_interrupt, IRQF_DISABLED, "ES18xx",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(void *) card)) {
 		snd_es18xx_free(card);
 		snd_printk(KERN_ERR PFX "unable to grap IRQ %d\n", irq);
@@ -1977,10 +1985,16 @@ static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP; /* Enable this ca
 #ifdef CONFIG_PNP
 static bool isapnp[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP; /* Enable this card */
+#ifdef CONFIG_PNP
+static bool isapnp[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP; /* Enable this card */
 #ifdef CONFIG_PNP
 static int isapnp[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_ISAPNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 static long port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;	/* 0x220,0x240,0x260,0x280 */
 #ifndef CONFIG_PNP
@@ -2178,9 +2192,14 @@ static int __devinit snd_audiodrive_probe(struct snd_card *card, int dev)
 					  mpu_port[dev], MPU401_INFO_IRQ_HOOK,
 					  -1, &chip->rmidi);
 =======
+<<<<<<< HEAD
+					  mpu_port[dev], MPU401_INFO_IRQ_HOOK,
+					  -1, &chip->rmidi);
+=======
 					  mpu_port[dev], 0,
 					  irq[dev], 0, &chip->rmidi);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 	}

@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/control.h>
 #include <sound/tlv.h>
@@ -44,7 +48,12 @@ struct link_master {
 	void (*hook)(void *private_data, int);
 	void *hook_private_data;
 =======
+<<<<<<< HEAD
+	void (*hook)(void *private_data, int);
+	void *hook_private_data;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -63,7 +72,11 @@ struct link_slave {
 <<<<<<< HEAD
 	struct snd_kcontrol *kctl; /* original kcontrol pointer */
 =======
+<<<<<<< HEAD
+	struct snd_kcontrol *kctl; /* original kcontrol pointer */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_kcontrol slave; /* the copy of original control entry */
 };
 
@@ -142,8 +155,14 @@ static int master_init(struct link_master *master)
 			master->hook(master->hook_private_data, master->val);
 		return 1;
 =======
+<<<<<<< HEAD
+		if (master->hook)
+			master->hook(master->hook_private_data, master->val);
+		return 1;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return -ENOENT;
 }
@@ -229,11 +248,15 @@ static int slave_put(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	return slave_put_val(slave, ucontrol);
 =======
+<<<<<<< HEAD
+	return slave_put_val(slave, ucontrol);
+=======
 	err = slave_put_val(slave, ucontrol);
 	if (err < 0)
 		return err;
 	return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int slave_tlv_cmd(struct snd_kcontrol *kcontrol,
@@ -280,7 +303,11 @@ int _snd_ctl_add_slave(struct snd_kcontrol *master, struct snd_kcontrol *slave,
 <<<<<<< HEAD
 	srec->kctl = slave;
 =======
+<<<<<<< HEAD
+	srec->kctl = slave;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	srec->slave = *slave;
 	memcpy(srec->slave.vd, slave->vd, slave->count * sizeof(*slave->vd));
 	srec->master = master_link;
@@ -360,7 +387,12 @@ static int master_put(struct snd_kcontrol *kcontrol,
 	if (master->hook && !err)
 		master->hook(master->hook_private_data, master->val);
 =======
+<<<<<<< HEAD
+	if (master->hook && !err)
+		master->hook(master->hook_private_data, master->val);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -368,6 +400,9 @@ static void master_free(struct snd_kcontrol *kcontrol)
 {
 	struct link_master *master = snd_kcontrol_chip(kcontrol);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct link_slave *slave, *n;
 
 	/* free all slave links and retore the original slave kctls */
@@ -380,12 +415,15 @@ static void master_free(struct snd_kcontrol *kcontrol)
 		sctl->list = olist; /* keep the current linked-list */
 		kfree(slave);
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct link_slave *slave;
 
 	list_for_each_entry(slave, &master->slaves, list)
 		slave->master = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(master);
 }
 
@@ -448,6 +486,9 @@ struct snd_kcontrol *snd_ctl_make_virtual_master(char *name,
 }
 EXPORT_SYMBOL(snd_ctl_make_virtual_master);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * snd_ctl_add_vmaster_hook - Add a hook to a vmaster control
@@ -487,5 +528,8 @@ void snd_ctl_sync_vmaster_hook(struct snd_kcontrol *kcontrol)
 		master->hook(master->hook_private_data, master->val);
 }
 EXPORT_SYMBOL_GPL(snd_ctl_sync_vmaster_hook);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -126,8 +126,12 @@ static int psc_i2s_set_fmt(struct snd_soc_dai *cpu_dai, unsigned int format)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops psc_i2s_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops psc_i2s_dai_ops = {
+=======
 static struct snd_soc_dai_ops psc_i2s_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= psc_i2s_hw_params,
 	.set_sysclk	= psc_i2s_set_sysclk,
 	.set_fmt	= psc_i2s_set_fmt,
@@ -229,6 +233,9 @@ static struct platform_driver psc_i2s_driver = {
 <<<<<<< HEAD
 module_platform_driver(psc_i2s_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(psc_i2s_driver);
+=======
 /* ---------------------------------------------------------------------
  * Module setup and teardown; simply register the of_platform driver
  * for the PSC in I2S mode.
@@ -245,6 +252,7 @@ static void __exit psc_i2s_exit(void)
 }
 module_exit(psc_i2s_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Grant Likely <grant.likely@secretlab.ca>");
 MODULE_DESCRIPTION("Freescale MPC5200 PSC in I2S mode ASoC Driver");

@@ -221,7 +221,11 @@ nlmsg_failure:
 <<<<<<< HEAD
 	kfree_skb(skb);
 =======
+<<<<<<< HEAD
+	kfree_skb(skb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*errp = -EINVAL;
 	printk(KERN_ERR "ip6_queue: error creating packet message\n");
 	return NULL;
@@ -320,8 +324,12 @@ ipq_set_verdict(struct ipq_verdict_msg *vmsg, unsigned int len)
 <<<<<<< HEAD
 	if (vmsg->value > NF_MAX_VERDICT || vmsg->value == NF_STOLEN)
 =======
+<<<<<<< HEAD
+	if (vmsg->value > NF_MAX_VERDICT || vmsg->value == NF_STOLEN)
+=======
 	if (vmsg->value > NF_MAX_VERDICT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	entry = ipq_find_dequeue_entry(vmsg->id);
@@ -371,6 +379,11 @@ ipq_receive_peer(struct ipq_peer_msg *pmsg,
 					 len - sizeof(*pmsg));
 		break;
 =======
+<<<<<<< HEAD
+		status = ipq_set_verdict(&pmsg->msg.verdict,
+					 len - sizeof(*pmsg));
+		break;
+=======
 		if (pmsg->msg.verdict.value > NF_MAX_VERDICT)
 			status = -EINVAL;
 		else
@@ -378,6 +391,7 @@ ipq_receive_peer(struct ipq_peer_msg *pmsg,
 						 len - sizeof(*pmsg));
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		status = -EINVAL;
 	}
@@ -424,7 +438,11 @@ __ipq_rcv_skb(struct sk_buff *skb)
 <<<<<<< HEAD
 	bool enable_timestamp = false;
 =======
+<<<<<<< HEAD
+	bool enable_timestamp = false;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skblen = skb->len;
 	if (skblen < sizeof(*nlh))
@@ -454,8 +472,12 @@ __ipq_rcv_skb(struct sk_buff *skb)
 <<<<<<< HEAD
 	if (!capable(CAP_NET_ADMIN))
 =======
+<<<<<<< HEAD
+	if (!capable(CAP_NET_ADMIN))
+=======
 	if (security_netlink_recv(skb, CAP_NET_ADMIN))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		RCV_SKB_FAIL(-EPERM);
 
 	spin_lock_bh(&queue_lock);
@@ -469,8 +491,12 @@ __ipq_rcv_skb(struct sk_buff *skb)
 <<<<<<< HEAD
 		enable_timestamp = true;
 =======
+<<<<<<< HEAD
+		enable_timestamp = true;
+=======
 		net_enable_timestamp();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		peer_pid = pid;
 	}
 
@@ -479,7 +505,12 @@ __ipq_rcv_skb(struct sk_buff *skb)
 	if (enable_timestamp)
 		net_enable_timestamp();
 =======
+<<<<<<< HEAD
+	if (enable_timestamp)
+		net_enable_timestamp();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	status = ipq_receive_peer(NLMSG_DATA(nlh), type,
 				  nlmsglen - NLMSG_LENGTH(0));

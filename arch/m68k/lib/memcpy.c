@@ -23,6 +23,9 @@ void *memcpy(void *to, const void *from, size_t n)
 		n--;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_M68000)
 	if ((long)from & 1) {
 		char *cto = to;
@@ -32,8 +35,11 @@ void *memcpy(void *to, const void *from, size_t n)
 		return xto;
 	}
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (n > 2 && (long)to & 2) {
 		short *sto = to;
 		const short *sfrom = from;

@@ -35,7 +35,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "rds.h"
 
@@ -202,10 +206,13 @@ struct rds_message *rds_message_alloc(unsigned int extra_len, gfp_t gfp)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (extra_len > KMALLOC_MAX_SIZE - sizeof(struct rds_message))
 		return NULL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rm = kzalloc(sizeof(struct rds_message) + extra_len, gfp);
 	if (!rm)
 		goto out;

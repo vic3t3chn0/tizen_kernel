@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct net;
 struct completion;
@@ -57,10 +61,14 @@ struct proc_dir_entry {
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	unsigned int namelen;
 	const char *name;
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nlink_t nlink;
 	uid_t uid;
 	gid_t gid;
@@ -82,16 +90,22 @@ struct proc_dir_entry {
 	atomic_t count;		/* use count */
 	int pde_users;	/* number of callers into module in progress */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct completion *pde_unload_completion;
 	struct list_head pde_openers;	/* who did ->open, but not ->release */
 	spinlock_t pde_unload_lock; /* proc_fops checks and pde_users bumps */
 	u8 namelen;
 	char name[];
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t pde_unload_lock; /* proc_fops checks and pde_users bumps */
 	struct completion *pde_unload_completion;
 	struct list_head pde_openers;	/* who did ->open, but not ->release */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum kcore_type {
@@ -127,10 +141,16 @@ extern struct proc_dir_entry *create_proc_entry(const char *name, umode_t mode,
 						struct proc_dir_entry *parent);
 struct proc_dir_entry *proc_create_data(const char *name, umode_t mode,
 =======
+<<<<<<< HEAD
+extern struct proc_dir_entry *create_proc_entry(const char *name, umode_t mode,
+						struct proc_dir_entry *parent);
+struct proc_dir_entry *proc_create_data(const char *name, umode_t mode,
+=======
 extern struct proc_dir_entry *create_proc_entry(const char *name, mode_t mode,
 						struct proc_dir_entry *parent);
 struct proc_dir_entry *proc_create_data(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct proc_dir_entry *parent,
 				const struct file_operations *proc_fops,
 				void *data);
@@ -169,16 +189,22 @@ extern struct proc_dir_entry *proc_symlink(const char *,
 		struct proc_dir_entry *, const char *);
 extern struct proc_dir_entry *proc_mkdir(const char *,struct proc_dir_entry *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct proc_dir_entry *proc_mkdir_mode(const char *name, umode_t mode,
 			struct proc_dir_entry *parent);
 
 static inline struct proc_dir_entry *proc_create(const char *name, umode_t mode,
+<<<<<<< HEAD
+=======
 =======
 extern struct proc_dir_entry *proc_mkdir_mode(const char *name, mode_t mode,
 			struct proc_dir_entry *parent);
 
 static inline struct proc_dir_entry *proc_create(const char *name, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct proc_dir_entry *parent, const struct file_operations *proc_fops)
 {
 	return proc_create_data(name, mode, parent, proc_fops, NULL);
@@ -188,8 +214,12 @@ static inline struct proc_dir_entry *create_proc_read_entry(const char *name,
 <<<<<<< HEAD
 	umode_t mode, struct proc_dir_entry *base, 
 =======
+<<<<<<< HEAD
+	umode_t mode, struct proc_dir_entry *base, 
+=======
 	mode_t mode, struct proc_dir_entry *base, 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_proc_t *read_proc, void * data)
 {
 	struct proc_dir_entry *res=create_proc_entry(name,mode,base);
@@ -204,8 +234,12 @@ extern struct proc_dir_entry *proc_net_fops_create(struct net *net,
 <<<<<<< HEAD
 	const char *name, umode_t mode, const struct file_operations *fops);
 =======
+<<<<<<< HEAD
+	const char *name, umode_t mode, const struct file_operations *fops);
+=======
 	const char *name, mode_t mode, const struct file_operations *fops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void proc_net_remove(struct net *net, const char *name);
 extern struct proc_dir_entry *proc_net_mkdir(struct net *net, const char *name,
 	struct proc_dir_entry *parent);
@@ -227,10 +261,16 @@ static inline struct proc_dir_entry *create_proc_entry(const char *name,
 static inline struct proc_dir_entry *proc_create(const char *name,
 	umode_t mode, struct proc_dir_entry *parent,
 =======
+<<<<<<< HEAD
+	umode_t mode, struct proc_dir_entry *parent) { return NULL; }
+static inline struct proc_dir_entry *proc_create(const char *name,
+	umode_t mode, struct proc_dir_entry *parent,
+=======
 	mode_t mode, struct proc_dir_entry *parent) { return NULL; }
 static inline struct proc_dir_entry *proc_create(const char *name,
 	mode_t mode, struct proc_dir_entry *parent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct file_operations *proc_fops)
 {
 	return NULL;
@@ -239,8 +279,12 @@ static inline struct proc_dir_entry *proc_create_data(const char *name,
 <<<<<<< HEAD
 	umode_t mode, struct proc_dir_entry *parent,
 =======
+<<<<<<< HEAD
+	umode_t mode, struct proc_dir_entry *parent,
+=======
 	mode_t mode, struct proc_dir_entry *parent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct file_operations *proc_fops, void *data)
 {
 	return NULL;
@@ -253,16 +297,22 @@ static inline struct proc_dir_entry *proc_mkdir(const char *name,
 	struct proc_dir_entry *parent) {return NULL;}
 static inline struct proc_dir_entry *proc_mkdir_mode(const char *name,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	umode_t mode, struct proc_dir_entry *parent) { return NULL; }
 
 static inline struct proc_dir_entry *create_proc_read_entry(const char *name,
 	umode_t mode, struct proc_dir_entry *base, 
+<<<<<<< HEAD
+=======
 =======
 	mode_t mode, struct proc_dir_entry *parent) { return NULL; }
 
 static inline struct proc_dir_entry *create_proc_read_entry(const char *name,
 	mode_t mode, struct proc_dir_entry *base, 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_proc_t *read_proc, void * data) { return NULL; }
 
 struct tty_driver;
@@ -310,8 +360,12 @@ union proc_op {
 <<<<<<< HEAD
 	int (*proc_get_link)(struct dentry *, struct path *);
 =======
+<<<<<<< HEAD
+	int (*proc_get_link)(struct dentry *, struct path *);
+=======
 	int (*proc_get_link)(struct inode *, struct path *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*proc_read)(struct task_struct *task, char *page);
 	int (*proc_show)(struct seq_file *m,
 		struct pid_namespace *ns, struct pid *pid,

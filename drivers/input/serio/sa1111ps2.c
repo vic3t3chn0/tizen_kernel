@@ -20,10 +20,42 @@
 #include <linux/spinlock.h>
 
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#include <asm/hardware/sa1111.h>
+
+#define PS2CR		0x0000
+#define PS2STAT		0x0004
+#define PS2DATA		0x0008
+#define PS2CLKDIV	0x000c
+#define PS2PRECNT	0x0010
+
+#define PS2CR_ENA	0x08
+#define PS2CR_FKD	0x02
+#define PS2CR_FKC	0x01
+
+#define PS2STAT_STP	0x0100
+#define PS2STAT_TXE	0x0080
+#define PS2STAT_TXB	0x0040
+#define PS2STAT_RXF	0x0020
+#define PS2STAT_RXB	0x0010
+#define PS2STAT_ENA	0x0008
+#define PS2STAT_RXP	0x0004
+#define PS2STAT_KBD	0x0002
+#define PS2STAT_KBC	0x0001
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/system.h>
 
 #include <asm/hardware/sa1111.h>
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ps2if {
 	struct serio		*io;
 	struct sa1111_dev	*dev;
@@ -45,22 +77,51 @@ static irqreturn_t ps2_rxint(int irq, void *dev_id)
 	struct ps2if *ps2if = dev_id;
 	unsigned int scancode, flag, status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = sa1111_readl(ps2if->base + PS2STAT);
+	while (status & PS2STAT_RXF) {
+		if (status & PS2STAT_STP)
+			sa1111_writel(PS2STAT_STP, ps2if->base + PS2STAT);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = sa1111_readl(ps2if->base + SA1111_PS2STAT);
 	while (status & PS2STAT_RXF) {
 		if (status & PS2STAT_STP)
 			sa1111_writel(PS2STAT_STP, ps2if->base + SA1111_PS2STAT);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		flag = (status & PS2STAT_STP ? SERIO_FRAME : 0) |
 		       (status & PS2STAT_RXP ? 0 : SERIO_PARITY);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		scancode = sa1111_readl(ps2if->base + PS2DATA) & 0xff;
+=======
 		scancode = sa1111_readl(ps2if->base + SA1111_PS2DATA) & 0xff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		scancode = sa1111_readl(ps2if->base + SA1111_PS2DATA) & 0xff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (hweight8(scancode) & 1)
 			flag ^= SERIO_PARITY;
 
 		serio_interrupt(ps2if->io, scancode, flag);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		status = sa1111_readl(ps2if->base + PS2STAT);
+=======
 		status = sa1111_readl(ps2if->base + SA1111_PS2STAT);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		status = sa1111_readl(ps2if->base + SA1111_PS2STAT);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         }
 
         return IRQ_HANDLED;
@@ -75,12 +136,28 @@ static irqreturn_t ps2_txint(int irq, void *dev_id)
 	unsigned int status;
 
 	spin_lock(&ps2if->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = sa1111_readl(ps2if->base + PS2STAT);
+=======
 	status = sa1111_readl(ps2if->base + SA1111_PS2STAT);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	status = sa1111_readl(ps2if->base + SA1111_PS2STAT);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ps2if->head == ps2if->tail) {
 		disable_irq_nosync(irq);
 		/* done */
 	} else if (status & PS2STAT_TXE) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sa1111_writel(ps2if->buf[ps2if->tail], ps2if->base + PS2DATA);
+=======
 		sa1111_writel(ps2if->buf[ps2if->tail], ps2if->base + SA1111_PS2DATA);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sa1111_writel(ps2if->buf[ps2if->tail], ps2if->base + SA1111_PS2DATA);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ps2if->tail = (ps2if->tail + 1) & (sizeof(ps2if->buf) - 1);
 	}
 	spin_unlock(&ps2if->lock);
@@ -103,8 +180,18 @@ static int ps2_write(struct serio *io, unsigned char val)
 	/*
 	 * If the TX register is empty, we can go straight out.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (sa1111_readl(ps2if->base + PS2STAT) & PS2STAT_TXE) {
+		sa1111_writel(val, ps2if->base + PS2DATA);
+=======
 	if (sa1111_readl(ps2if->base + SA1111_PS2STAT) & PS2STAT_TXE) {
 		sa1111_writel(val, ps2if->base + SA1111_PS2DATA);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (sa1111_readl(ps2if->base + SA1111_PS2STAT) & PS2STAT_TXE) {
+		sa1111_writel(val, ps2if->base + SA1111_PS2DATA);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		if (ps2if->head == ps2if->tail)
 			enable_irq(ps2if->dev->irq[1]);
@@ -124,13 +211,30 @@ static int ps2_open(struct serio *io)
 	struct ps2if *ps2if = io->port_data;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = sa1111_enable_device(ps2if->dev);
+	if (ret)
+		return ret;
+=======
 	sa1111_enable_device(ps2if->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sa1111_enable_device(ps2if->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = request_irq(ps2if->dev->irq[0], ps2_rxint, 0,
 			  SA1111_DRIVER_NAME(ps2if->dev), ps2if);
 	if (ret) {
 		printk(KERN_ERR "sa1111ps2: could not allocate IRQ%d: %d\n",
 			ps2if->dev->irq[0], ret);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sa1111_disable_device(ps2if->dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -140,6 +244,13 @@ static int ps2_open(struct serio *io)
 		printk(KERN_ERR "sa1111ps2: could not allocate IRQ%d: %d\n",
 			ps2if->dev->irq[1], ret);
 		free_irq(ps2if->dev->irq[0], ps2if);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		sa1111_disable_device(ps2if->dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -147,7 +258,15 @@ static int ps2_open(struct serio *io)
 
 	enable_irq_wake(ps2if->dev->irq[0]);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sa1111_writel(PS2CR_ENA, ps2if->base + PS2CR);
+=======
 	sa1111_writel(PS2CR_ENA, ps2if->base + SA1111_PS2CR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sa1111_writel(PS2CR_ENA, ps2if->base + SA1111_PS2CR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -155,7 +274,15 @@ static void ps2_close(struct serio *io)
 {
 	struct ps2if *ps2if = io->port_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sa1111_writel(0, ps2if->base + PS2CR);
+=======
 	sa1111_writel(0, ps2if->base + SA1111_PS2CR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sa1111_writel(0, ps2if->base + SA1111_PS2CR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	disable_irq_wake(ps2if->dev->irq[0]);
 
@@ -175,7 +302,15 @@ static void __devinit ps2_clear_input(struct ps2if *ps2if)
 	int maxread = 100;
 
 	while (maxread--) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((sa1111_readl(ps2if->base + PS2DATA) & 0xff) == 0xff)
+=======
 		if ((sa1111_readl(ps2if->base + SA1111_PS2DATA) & 0xff) == 0xff)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((sa1111_readl(ps2if->base + SA1111_PS2DATA) & 0xff) == 0xff)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 	}
 }
@@ -185,11 +320,25 @@ static unsigned int __devinit ps2_test_one(struct ps2if *ps2if,
 {
 	unsigned int val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sa1111_writel(PS2CR_ENA | mask, ps2if->base + PS2CR);
+
+	udelay(2);
+
+	val = sa1111_readl(ps2if->base + PS2STAT);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sa1111_writel(PS2CR_ENA | mask, ps2if->base + SA1111_PS2CR);
 
 	udelay(2);
 
 	val = sa1111_readl(ps2if->base + SA1111_PS2STAT);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return val & (PS2STAT_KBC | PS2STAT_KBD);
 }
 
@@ -220,7 +369,15 @@ static int __devinit ps2_test(struct ps2if *ps2if)
 		ret = -ENODEV;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sa1111_writel(0, ps2if->base + PS2CR);
+=======
 	sa1111_writel(0, ps2if->base + SA1111_PS2CR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sa1111_writel(0, ps2if->base + SA1111_PS2CR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -274,8 +431,18 @@ static int __devinit ps2_probe(struct sa1111_dev *dev)
 	sa1111_enable_device(ps2if->dev);
 
 	/* Incoming clock is 8MHz */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sa1111_writel(0, ps2if->base + PS2CLKDIV);
+	sa1111_writel(127, ps2if->base + PS2PRECNT);
+=======
 	sa1111_writel(0, ps2if->base + SA1111_PS2CLKDIV);
 	sa1111_writel(127, ps2if->base + SA1111_PS2PRECNT);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	sa1111_writel(0, ps2if->base + SA1111_PS2CLKDIV);
+	sa1111_writel(127, ps2if->base + SA1111_PS2PRECNT);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Flush any pending input.
@@ -300,8 +467,17 @@ static int __devinit ps2_probe(struct sa1111_dev *dev)
 
  out:
 	sa1111_disable_device(ps2if->dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	release_mem_region(dev->res.start, resource_size(&dev->res));
+=======
 	release_mem_region(dev->res.start,
 			   dev->res.end - dev->res.start + 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	release_mem_region(dev->res.start,
+			   dev->res.end - dev->res.start + 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  free:
 	sa1111_set_drvdata(dev, NULL);
 	kfree(ps2if);
@@ -317,8 +493,17 @@ static int __devexit ps2_remove(struct sa1111_dev *dev)
 	struct ps2if *ps2if = sa1111_get_drvdata(dev);
 
 	serio_unregister_port(ps2if->io);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	release_mem_region(dev->res.start, resource_size(&dev->res));
+=======
 	release_mem_region(dev->res.start,
 			   dev->res.end - dev->res.start + 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	release_mem_region(dev->res.start,
+			   dev->res.end - dev->res.start + 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sa1111_set_drvdata(dev, NULL);
 
 	kfree(ps2if);
@@ -332,6 +517,13 @@ static int __devexit ps2_remove(struct sa1111_dev *dev)
 static struct sa1111_driver ps2_driver = {
 	.drv = {
 		.name	= "sa1111-ps2",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.owner	= THIS_MODULE,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.devid		= SA1111_DEVID_PS2,
 	.probe		= ps2_probe,

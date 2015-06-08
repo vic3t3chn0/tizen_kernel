@@ -15,8 +15,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/blackfin.h>
 
@@ -56,9 +59,13 @@ void kgdb_l2_test(void)
 <<<<<<< HEAD
 noinline int kgdb_test(char *name, int len, int count, int z)
 =======
+<<<<<<< HEAD
+noinline int kgdb_test(char *name, int len, int count, int z)
+=======
 
 int kgdb_test(char *name, int len, int count, int z)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pr_alert("kgdb name(%d): %s, %d, %d\n", len, name, count, z);
 	count = z;

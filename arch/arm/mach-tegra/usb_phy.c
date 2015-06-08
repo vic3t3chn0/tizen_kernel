@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/io.h>
 #include <linux/gpio.h>
@@ -35,7 +39,11 @@
 <<<<<<< HEAD
 #include <mach/gpio-tegra.h>
 =======
+<<<<<<< HEAD
+#include <mach/gpio-tegra.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/usb_phy.h>
 #include <mach/iomap.h>
 
@@ -618,8 +626,12 @@ static int ulpi_phy_power_on(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 	ret = usb_phy_io_write(phy->ulpi, 0x40, 0x08);
 =======
+<<<<<<< HEAD
+	ret = usb_phy_io_write(phy->ulpi, 0x40, 0x08);
+=======
 	ret = otg_io_write(phy->ulpi, 0x40, 0x08);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		pr_err("%s: ulpi write failed\n", __func__);
 		return ret;
@@ -628,8 +640,12 @@ static int ulpi_phy_power_on(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 	ret = usb_phy_io_write(phy->ulpi, 0x80, 0x0B);
 =======
+<<<<<<< HEAD
+	ret = usb_phy_io_write(phy->ulpi, 0x80, 0x0B);
+=======
 	ret = otg_io_write(phy->ulpi, 0x80, 0x0B);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		pr_err("%s: ulpi write failed\n", __func__);
 		return ret;
@@ -748,7 +764,11 @@ err0:
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_open);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_open);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int tegra_usb_phy_power_on(struct tegra_usb_phy *phy)
 {
@@ -760,7 +780,11 @@ int tegra_usb_phy_power_on(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_power_on);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_power_on);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_usb_phy_power_off(struct tegra_usb_phy *phy)
 {
@@ -772,7 +796,11 @@ void tegra_usb_phy_power_off(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_power_off);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_power_off);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_usb_phy_preresume(struct tegra_usb_phy *phy)
 {
@@ -782,7 +810,11 @@ void tegra_usb_phy_preresume(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_preresume);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_preresume);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_usb_phy_postresume(struct tegra_usb_phy *phy)
 {
@@ -792,7 +824,11 @@ void tegra_usb_phy_postresume(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_postresume);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_postresume);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_ehci_phy_restore_start(struct tegra_usb_phy *phy,
 				 enum tegra_usb_phy_port_speed port_speed)
@@ -803,7 +839,11 @@ void tegra_ehci_phy_restore_start(struct tegra_usb_phy *phy,
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_ehci_phy_restore_start);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_ehci_phy_restore_start);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_ehci_phy_restore_end(struct tegra_usb_phy *phy)
 {
@@ -813,7 +853,11 @@ void tegra_ehci_phy_restore_end(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_ehci_phy_restore_end);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_ehci_phy_restore_end);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_usb_phy_clk_disable(struct tegra_usb_phy *phy)
 {
@@ -823,7 +867,11 @@ void tegra_usb_phy_clk_disable(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_clk_disable);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_clk_disable);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_usb_phy_clk_enable(struct tegra_usb_phy *phy)
 {
@@ -833,7 +881,11 @@ void tegra_usb_phy_clk_enable(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_clk_enable);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_clk_enable);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_usb_phy_close(struct tegra_usb_phy *phy)
 {
@@ -848,4 +900,8 @@ void tegra_usb_phy_close(struct tegra_usb_phy *phy)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(tegra_usb_phy_close);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(tegra_usb_phy_close);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

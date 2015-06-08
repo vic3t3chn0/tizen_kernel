@@ -117,6 +117,8 @@ static const struct snd_soc_dapm_route trimslice_audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int trimslice_asoc_init(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_soc_codec *codec = rtd->codec;
@@ -132,6 +134,7 @@ static int trimslice_asoc_init(struct snd_soc_pcm_runtime *rtd)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_link trimslice_tlv320aic23_dai = {
 	.name = "TLV320AIC23",
 	.stream_name = "AIC23",
@@ -141,8 +144,11 @@ static struct snd_soc_dai_link trimslice_tlv320aic23_dai = {
 	.codec_dai_name = "tlv320aic23-hifi",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.init = trimslice_asoc_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &trimslice_asoc_ops,
 };
 
@@ -151,7 +157,11 @@ static struct snd_soc_card snd_soc_trimslice = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &trimslice_tlv320aic23_dai,
 	.num_links = 1,
 
@@ -162,7 +172,11 @@ static struct snd_soc_card snd_soc_trimslice = {
 <<<<<<< HEAD
 	.fully_routed = true,
 =======
+<<<<<<< HEAD
+	.fully_routed = true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __devinit int tegra_snd_trimslice_probe(struct platform_device *pdev)
@@ -172,18 +186,24 @@ static __devinit int tegra_snd_trimslice_probe(struct platform_device *pdev)
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trimslice = devm_kzalloc(&pdev->dev, sizeof(struct tegra_trimslice),
 				 GFP_KERNEL);
 	if (!trimslice) {
 		dev_err(&pdev->dev, "Can't allocate tegra_trimslice\n");
 		ret = -ENOMEM;
 		goto err;
+<<<<<<< HEAD
+=======
 =======
 	trimslice = kzalloc(sizeof(struct tegra_trimslice), GFP_KERNEL);
 	if (!trimslice) {
 		dev_err(&pdev->dev, "Can't allocate tegra_trimslice\n");
 		return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ret = tegra_asoc_utils_init(&trimslice->util_data, &pdev->dev);
@@ -191,8 +211,12 @@ static __devinit int tegra_snd_trimslice_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		goto err;
 =======
+<<<<<<< HEAD
+		goto err;
+=======
 		goto err_free_trimslice;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	card->dev = &pdev->dev;
 	platform_set_drvdata(pdev, card);
@@ -212,9 +236,13 @@ err_fini_utils:
 <<<<<<< HEAD
 err:
 =======
+<<<<<<< HEAD
+err:
+=======
 err_free_trimslice:
 	kfree(trimslice);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -229,9 +257,12 @@ static int __devexit tegra_snd_trimslice_remove(struct platform_device *pdev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(trimslice);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -243,6 +274,9 @@ static struct platform_driver tegra_snd_trimslice_driver = {
 	.probe = tegra_snd_trimslice_probe,
 	.remove = __devexit_p(tegra_snd_trimslice_remove),
 };
+<<<<<<< HEAD
+module_platform_driver(tegra_snd_trimslice_driver);
+=======
 <<<<<<< HEAD
 module_platform_driver(tegra_snd_trimslice_driver);
 =======
@@ -259,6 +293,7 @@ static void __exit snd_tegra_trimslice_exit(void)
 }
 module_exit(snd_tegra_trimslice_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Mike Rapoport <mike@compulab.co.il>");
 MODULE_DESCRIPTION("Trimslice machine ASoC driver");

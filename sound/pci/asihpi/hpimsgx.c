@@ -4,8 +4,12 @@
 <<<<<<< HEAD
     Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
 =======
+<<<<<<< HEAD
+    Copyright (C) 1997-2011  AudioScience Inc. <support@audioscience.com>
+=======
     Copyright (C) 1997-2010  AudioScience Inc. <support@audioscience.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of version 2 of the GNU General Public License as
@@ -23,8 +27,12 @@
 <<<<<<< HEAD
 Extended Message Function With Response Caching
 =======
+<<<<<<< HEAD
+Extended Message Function With Response Caching
+=======
 Extended Message Function With Response Cacheing
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 (C) Copyright AudioScience Inc. 2002
 *****************************************************************************/
@@ -33,7 +41,11 @@ Extended Message Function With Response Cacheing
 <<<<<<< HEAD
 #include "hpi_version.h"
 =======
+<<<<<<< HEAD
+#include "hpi_version.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "hpimsginit.h"
 #include "hpicmn.h"
 #include "hpimsgx.h"
@@ -200,8 +212,11 @@ static void subsys_message(struct hpi_message *phm, struct hpi_response *phr,
 		memset(&hpi_entry_points, 0, sizeof(hpi_entry_points));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		hpios_locked_mem_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Init subsys_findadapters response to no-adapters */
 		HPIMSGX__reset(HPIMSGX_ALLADAPTERS);
 		hpi_init_response(phr, HPI_OBJ_SUBSYSTEM,
@@ -214,8 +229,11 @@ static void subsys_message(struct hpi_message *phm, struct hpi_response *phr,
 		HPIMSGX__cleanup(HPIMSGX_ALLADAPTERS, h_owner);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		hpios_locked_mem_free_all();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hpi_init_response(phr, HPI_OBJ_SUBSYSTEM,
 			HPI_SUBSYS_DRIVER_UNLOAD, 0);
 		return;
@@ -336,8 +354,12 @@ void hpi_send_recv_ex(struct hpi_message *phm, struct hpi_response *phr,
 <<<<<<< HEAD
 	if (phm->type != HPI_TYPE_REQUEST) {
 =======
+<<<<<<< HEAD
+	if (phm->type != HPI_TYPE_REQUEST) {
+=======
 	if (phm->type != HPI_TYPE_MESSAGE) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hpi_init_response(phr, phm->object, phm->function,
 			HPI_ERROR_INVALID_TYPE);
 		return;

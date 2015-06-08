@@ -1053,6 +1053,33 @@ struct drm_i915_file_private {
 
 #include "i915_trace.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * RC6 is a special power stage which allows the GPU to enter an very
+ * low-voltage mode when idle, using down to 0V while at this stage.  This
+ * stage is entered automatically when the GPU is idle when RC6 support is
+ * enabled, and as soon as new workload arises GPU wakes up automatically as well.
+ *
+ * There are different RC6 modes available in Intel GPU, which differentiate
+ * among each other with the latency required to enter and leave RC6 and
+ * voltage consumed by the GPU in different states.
+ *
+ * The combination of the following flags define which states GPU is allowed
+ * to enter, while RC6 is the normal RC6 state, RC6p is the deep RC6, and
+ * RC6pp is deepest RC6. Their support by hardware varies according to the
+ * GPU, BIOS, chipset and platform. RC6 is usually the safest one and the one
+ * which brings the most power savings; deeper states save more power, but
+ * require higher latency to switch to and wake up.
+ */
+#define INTEL_RC6_ENABLE			(1<<0)
+#define INTEL_RC6p_ENABLE			(1<<1)
+#define INTEL_RC6pp_ENABLE			(1<<2)
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct drm_ioctl_desc i915_ioctls[];
 extern int i915_max_ioctl;
 extern unsigned int i915_fbpercrtc __always_unused;
@@ -1065,7 +1092,15 @@ extern int i915_vbt_sdvo_panel_type __read_mostly;
 extern int i915_enable_rc6 __read_mostly;
 extern int i915_enable_fbc __read_mostly;
 extern bool i915_enable_hangcheck __read_mostly;
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern int i915_enable_ppgtt __read_mostly;
+=======
 extern bool i915_enable_ppgtt __read_mostly;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern bool i915_enable_ppgtt __read_mostly;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int i915_suspend(struct drm_device *dev, pm_message_t state);
 extern int i915_resume(struct drm_device *dev);

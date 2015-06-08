@@ -230,8 +230,12 @@ static int nuc900_dma_trigger(struct snd_pcm_substream *substream, int cmd)
 <<<<<<< HEAD
 static int nuc900_dma_getposition(struct snd_pcm_substream *substream,
 =======
+<<<<<<< HEAD
+static int nuc900_dma_getposition(struct snd_pcm_substream *substream,
+=======
 int nuc900_dma_getposition(struct snd_pcm_substream *substream,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					dma_addr_t *src, dma_addr_t *dst)
 {
 	struct snd_pcm_runtime *runtime = substream->runtime;
@@ -275,8 +279,12 @@ static int nuc900_dma_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 			0, "nuc900-dma", substream))
 =======
+<<<<<<< HEAD
+			0, "nuc900-dma", substream))
+=======
 			IRQF_DISABLED, "nuc900-dma", substream))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EBUSY;
 
 	runtime->private_data = nuc900_audio;
@@ -324,16 +332,22 @@ static void nuc900_dma_free_dma_buffers(struct snd_pcm *pcm)
 
 static u64 nuc900_pcm_dmamask = DMA_BIT_MASK(32);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int nuc900_dma_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_pcm *pcm = rtd->pcm;
 
+<<<<<<< HEAD
+=======
 =======
 static int nuc900_dma_new(struct snd_card *card,
 	struct snd_soc_dai *dai, struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!card->dev->dma_mask)
 		card->dev->dma_mask = &nuc900_pcm_dmamask;
 	if (!card->dev->coherent_dma_mask)
@@ -375,6 +389,9 @@ static struct platform_driver nuc900_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(nuc900_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(nuc900_pcm_driver);
+=======
 static int __init nuc900_pcm_init(void)
 {
 	return platform_driver_register(&nuc900_pcm_driver);
@@ -387,6 +404,7 @@ static void __exit nuc900_pcm_exit(void)
 }
 module_exit(nuc900_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Wan ZongShun, <mcuos.com@gmail.com>");
 MODULE_DESCRIPTION("nuc900 Audio DMA module");

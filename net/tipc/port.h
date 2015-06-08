@@ -154,8 +154,12 @@ extern spinlock_t tipc_port_list_lock;
 <<<<<<< HEAD
 struct tipc_port_list;
 =======
+<<<<<<< HEAD
+struct tipc_port_list;
+=======
 struct port_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * TIPC port manipulation routines
@@ -212,7 +216,11 @@ int tipc_disconnect_port(struct tipc_port *tp_ptr);
 <<<<<<< HEAD
 int tipc_port_recv_msg(struct sk_buff *buf);
 =======
+<<<<<<< HEAD
+int tipc_port_recv_msg(struct sk_buff *buf);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tipc_send(u32 portref, unsigned int num_sect, struct iovec const *msg_sect,
 	      unsigned int total_len);
 
@@ -239,8 +247,12 @@ void tipc_port_recv_proto_msg(struct sk_buff *buf);
 <<<<<<< HEAD
 void tipc_port_recv_mcast(struct sk_buff *buf, struct tipc_port_list *dp);
 =======
+<<<<<<< HEAD
+void tipc_port_recv_mcast(struct sk_buff *buf, struct tipc_port_list *dp);
+=======
 void tipc_port_recv_mcast(struct sk_buff *buf, struct port_list *dp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void tipc_port_reinit(void);
 
 /**
@@ -285,6 +297,8 @@ static inline int tipc_port_congested(struct tipc_port *p_ptr)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * tipc_port_recv_msg - receive message from lower layer and deliver to port user
  */
@@ -327,4 +341,5 @@ reject:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

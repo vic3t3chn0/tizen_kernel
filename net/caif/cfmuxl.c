@@ -111,8 +111,12 @@ struct cflayer *cfmuxl_remove_dnlayer(struct cflayer *layr, u8 phyid)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(muxl->dn_cache[idx], NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(muxl->dn_cache[idx], NULL);
+=======
 	rcu_assign_pointer(muxl->dn_cache[idx], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dn = get_from_id(&muxl->frml_list, phyid);
 	if (dn == NULL)
 		goto out;
@@ -171,8 +175,12 @@ struct cflayer *cfmuxl_remove_uplayer(struct cflayer *layr, u8 id)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(muxl->up_cache[idx], NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(muxl->up_cache[idx], NULL);
+=======
 	rcu_assign_pointer(muxl->up_cache[idx], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_del_rcu(&up->node);
 out:
 	spin_unlock_bh(&muxl->receive_lock);
@@ -258,8 +266,11 @@ static void cfmuxl_ctrlcmd(struct cflayer *layr, enum caif_ctrlcmd ctrl,
 	struct cflayer *layer;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int idx;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_read_lock();
 	list_for_each_entry_rcu(layer, &muxl->srvl_list, node) {
@@ -268,6 +279,11 @@ static void cfmuxl_ctrlcmd(struct cflayer *layr, enum caif_ctrlcmd ctrl,
 
 			if ((ctrl == _CAIF_CTRLCMD_PHYIF_DOWN_IND ||
 				ctrl == CAIF_CTRLCMD_REMOTE_SHUTDOWN_IND) &&
+<<<<<<< HEAD
+					layer->id != 0)
+				cfmuxl_remove_uplayer(layr, layer->id);
+
+=======
 <<<<<<< HEAD
 					layer->id != 0)
 				cfmuxl_remove_uplayer(layr, layer->id);
@@ -282,6 +298,7 @@ static void cfmuxl_ctrlcmd(struct cflayer *layr, enum caif_ctrlcmd ctrl,
 				spin_unlock_bh(&muxl->receive_lock);
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* NOTE: ctrlcmd is not allowed to block */
 			layer->ctrlcmd(layer, ctrl, phyid);
 		}

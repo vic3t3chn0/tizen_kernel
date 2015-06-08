@@ -207,7 +207,11 @@ struct buffer_head *udf_read_tagged(struct super_block *sb, uint32_t block,
 <<<<<<< HEAD
 	u8 checksum;
 =======
+<<<<<<< HEAD
+	u8 checksum;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Read the block */
 	if (block == 0xFFFFFFFF)
@@ -219,9 +223,14 @@ struct buffer_head *udf_read_tagged(struct super_block *sb, uint32_t block,
 		udf_err(sb, "read failed, block=%u, location=%d\n",
 			block, location);
 =======
+<<<<<<< HEAD
+		udf_err(sb, "read failed, block=%u, location=%d\n",
+			block, location);
+=======
 		udf_debug("block=%d, location=%d: read failed\n",
 			  block, location);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 
@@ -237,14 +246,20 @@ struct buffer_head *udf_read_tagged(struct super_block *sb, uint32_t block,
 
 	/* Verify the tag checksum */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	checksum = udf_tag_checksum(tag_p);
 	if (checksum != tag_p->tagChecksum) {
 		udf_err(sb, "tag checksum failed, block %u: 0x%02x != 0x%02x\n",
 			block, checksum, tag_p->tagChecksum);
+<<<<<<< HEAD
+=======
 =======
 	if (udf_tag_checksum(tag_p) != tag_p->tagChecksum) {
 		printk(KERN_ERR "udf: tag checksum failed block %d\n", block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_out;
 	}
 
@@ -255,9 +270,14 @@ struct buffer_head *udf_read_tagged(struct super_block *sb, uint32_t block,
 		udf_err(sb, "tag version 0x%04x != 0x0002 || 0x0003, block %u\n",
 			le16_to_cpu(tag_p->descVersion), block);
 =======
+<<<<<<< HEAD
+		udf_err(sb, "tag version 0x%04x != 0x0002 || 0x0003, block %u\n",
+			le16_to_cpu(tag_p->descVersion), block);
+=======
 		udf_debug("tag version 0x%04x != 0x0002 || 0x0003 block %d\n",
 			  le16_to_cpu(tag_p->descVersion), block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_out;
 	}
 
@@ -273,9 +293,14 @@ struct buffer_head *udf_read_tagged(struct super_block *sb, uint32_t block,
 		  le16_to_cpu(tag_p->descCRC),
 		  le16_to_cpu(tag_p->descCRCLength));
 =======
+<<<<<<< HEAD
+		  le16_to_cpu(tag_p->descCRC),
+		  le16_to_cpu(tag_p->descCRCLength));
+=======
 	    le16_to_cpu(tag_p->descCRC), le16_to_cpu(tag_p->descCRCLength));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error_out:
 	brelse(bh);
 	return NULL;

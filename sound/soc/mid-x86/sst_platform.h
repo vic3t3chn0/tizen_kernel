@@ -43,6 +43,9 @@
 #define SST_MAX_PERIODS		(1024*2)
 #define SST_FIFO_SIZE		0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SST_CODEC_TYPE_PCM	1
 
 struct pcm_stream_info {
@@ -51,6 +54,8 @@ struct pcm_stream_info {
 	void (*period_elapsed) (void *mad_substream);
 	unsigned long long buffer_ptr;
 	int sfreq;
+<<<<<<< HEAD
+=======
 =======
 #define SST_CARD_NAMES		"intel_mid_card"
 #define MSIC_VENDOR_ID		3
@@ -61,6 +66,7 @@ struct sst_runtime_stream {
 	struct intel_sst_card_ops *sstdrv_ops;
 	spinlock_t	status_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum sst_drv_status {
@@ -72,6 +78,9 @@ enum sst_drv_status {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum sst_controls {
 	SST_SND_ALLOC =			0x00,
 	SST_SND_PAUSE =			0x01,
@@ -140,6 +149,9 @@ struct sst_device {
 
 int sst_register_dsp(struct sst_device *sst);
 int sst_unregister_dsp(struct sst_device *sst);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

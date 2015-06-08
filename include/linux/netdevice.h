@@ -32,6 +32,9 @@
 
 #ifdef __KERNEL__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pm_qos.h>
 #include <linux/timer.h>
 #include <linux/bug.h>
@@ -40,6 +43,8 @@
 #include <asm/cache.h>
 #include <asm/byteorder.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/pm_qos_params.h>
 #include <linux/timer.h>
@@ -51,6 +56,7 @@
 
 #include <linux/device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/percpu.h>
 #include <linux/rculist.h>
 #include <linux/dmaengine.h>
@@ -58,7 +64,11 @@
 <<<<<<< HEAD
 #include <linux/dynamic_queue_limits.h>
 =======
+<<<<<<< HEAD
+#include <linux/dynamic_queue_limits.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/ethtool.h>
 #include <net/net_namespace.h>
@@ -67,17 +77,23 @@
 #include <net/dcbnl.h>
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/netprio_cgroup.h>
 
 #include <linux/netdev_features.h>
 
 struct netpoll_info;
 struct device;
+<<<<<<< HEAD
+=======
 =======
 
 struct vlan_group;
 struct netpoll_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct phy_device;
 /* 802.11 specific */
 struct wireless_dev;
@@ -87,12 +103,15 @@ struct wireless_dev;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define HAVE_ALLOC_NETDEV		/* feature macro: alloc_xxxdev
 					   functions are available. */
 #define HAVE_FREE_NETDEV		/* free_netdev() */
 #define HAVE_NETDEV_PRIV		/* netdev_priv() */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* hardware address assignment types */
 #define NET_ADDR_PERM		0	/* address is permanent (default) */
 #define NET_ADDR_RANDOM		1	/* address is generated randomly */
@@ -177,8 +196,12 @@ static inline bool dev_xmit_complete(int rc)
 <<<<<<< HEAD
 #if defined(CONFIG_WLAN) || IS_ENABLED(CONFIG_AX25)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_WLAN) || IS_ENABLED(CONFIG_AX25)
+=======
 #if defined(CONFIG_WLAN) || defined(CONFIG_AX25) || defined(CONFIG_AX25_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # if defined(CONFIG_MAC80211_MESH)
 #  define LL_MAX_HEADER 128
 # else
@@ -187,8 +210,12 @@ static inline bool dev_xmit_complete(int rc)
 <<<<<<< HEAD
 #elif IS_ENABLED(CONFIG_TR)
 =======
+<<<<<<< HEAD
+#elif IS_ENABLED(CONFIG_TR)
+=======
 #elif defined(CONFIG_TR) || defined(CONFIG_TR_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # define LL_MAX_HEADER 48
 #else
 # define LL_MAX_HEADER 32
@@ -198,11 +225,16 @@ static inline bool dev_xmit_complete(int rc)
 #if !IS_ENABLED(CONFIG_NET_IPIP) && !IS_ENABLED(CONFIG_NET_IPGRE) && \
     !IS_ENABLED(CONFIG_IPV6_SIT) && !IS_ENABLED(CONFIG_IPV6_TUNNEL)
 =======
+<<<<<<< HEAD
+#if !IS_ENABLED(CONFIG_NET_IPIP) && !IS_ENABLED(CONFIG_NET_IPGRE) && \
+    !IS_ENABLED(CONFIG_IPV6_SIT) && !IS_ENABLED(CONFIG_IPV6_TUNNEL)
+=======
 #if !defined(CONFIG_NET_IPIP) && !defined(CONFIG_NET_IPIP_MODULE) && \
     !defined(CONFIG_NET_IPGRE) &&  !defined(CONFIG_NET_IPGRE_MODULE) && \
     !defined(CONFIG_IPV6_SIT) && !defined(CONFIG_IPV6_SIT_MODULE) && \
     !defined(CONFIG_IPV6_TUNNEL) && !defined(CONFIG_IPV6_TUNNEL_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAX_HEADER LL_MAX_HEADER
 #else
 #define MAX_HEADER (LL_MAX_HEADER + 48)
@@ -259,13 +291,19 @@ enum {
 #include <linux/skbuff.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_RPS
 #include <linux/static_key.h>
 extern struct static_key rps_needed;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct neighbour;
 struct neigh_parms;
 struct sk_buff;
@@ -284,10 +322,16 @@ struct netdev_hw_addr {
 	bool			global_use;
 	int			refcount;
 =======
+<<<<<<< HEAD
+	bool			synced;
+	bool			global_use;
+	int			refcount;
+=======
 	bool			global_use;
 	int			refcount;
 	int			synced;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rcu_head		rcu_head;
 };
 
@@ -316,6 +360,10 @@ struct hh_cache {
 	u16		hh_len;
 	u16		__pad;
 =======
+<<<<<<< HEAD
+	u16		hh_len;
+	u16		__pad;
+=======
 	struct hh_cache *hh_next;	/* Next entry			     */
 	atomic_t	hh_refcnt;	/* number of users                   */
 /*
@@ -332,6 +380,7 @@ struct hh_cache {
 	u16		hh_len;		/* length of header */
 	int		(*hh_output)(struct sk_buff *skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	seqlock_t	hh_lock;
 
 	/* cached hardware header; allow for machine alignment needs.        */
@@ -345,6 +394,8 @@ struct hh_cache {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline void hh_cache_put(struct hh_cache *hh)
 {
 	if (atomic_dec_and_test(&hh->hh_refcnt))
@@ -352,6 +403,7 @@ static inline void hh_cache_put(struct hh_cache *hh)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Reserve HH_DATA_MOD byte aligned hard_header_len, but at least that much.
  * Alternative is:
  *   dev->hard_header_len ? (dev->hard_header_len +
@@ -361,10 +413,13 @@ static inline void hh_cache_put(struct hh_cache *hh)
  * relationship HH alignment <= LL alignment.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *
  * LL_ALLOCATED_SPACE also takes into account the tailroom the device
  * may need.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #define LL_RESERVED_SPACE(dev) \
 	((((dev)->hard_header_len+(dev)->needed_headroom)&~(HH_DATA_MOD - 1)) + HH_DATA_MOD)
@@ -372,9 +427,12 @@ static inline void hh_cache_put(struct hh_cache *hh)
 	((((dev)->hard_header_len+(dev)->needed_headroom+(extra))&~(HH_DATA_MOD - 1)) + HH_DATA_MOD)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define LL_ALLOCATED_SPACE(dev) \
 	((((dev)->hard_header_len+(dev)->needed_headroom+(dev)->needed_tailroom)&~(HH_DATA_MOD - 1)) + HH_DATA_MOD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct header_ops {
 	int	(*create) (struct sk_buff *skb, struct net_device *dev,
@@ -385,9 +443,13 @@ struct header_ops {
 <<<<<<< HEAD
 	int	(*cache)(const struct neighbour *neigh, struct hh_cache *hh, __be16 type);
 =======
+<<<<<<< HEAD
+	int	(*cache)(const struct neighbour *neigh, struct hh_cache *hh, __be16 type);
+=======
 #define HAVE_HEADER_CACHE
 	int	(*cache)(const struct neighbour *neigh, struct hh_cache *hh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void	(*cache_update)(struct hh_cache *hh,
 				const struct net_device *dev,
 				const unsigned char *haddr);
@@ -517,8 +579,12 @@ extern void __napi_schedule(struct napi_struct *n);
 <<<<<<< HEAD
 static inline bool napi_disable_pending(struct napi_struct *n)
 =======
+<<<<<<< HEAD
+static inline bool napi_disable_pending(struct napi_struct *n)
+=======
 static inline int napi_disable_pending(struct napi_struct *n)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return test_bit(NAPI_STATE_DISABLE, &n->state);
 }
@@ -535,8 +601,12 @@ static inline int napi_disable_pending(struct napi_struct *n)
 <<<<<<< HEAD
 static inline bool napi_schedule_prep(struct napi_struct *n)
 =======
+<<<<<<< HEAD
+static inline bool napi_schedule_prep(struct napi_struct *n)
+=======
 static inline int napi_schedule_prep(struct napi_struct *n)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return !napi_disable_pending(n) &&
 		!test_and_set_bit(NAPI_STATE_SCHED, &n->state);
@@ -557,6 +627,9 @@ static inline void napi_schedule(struct napi_struct *n)
 
 /* Try to reschedule poll. Called by dev->poll() after napi_complete().  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool napi_reschedule(struct napi_struct *napi)
 {
 	if (napi_schedule_prep(napi)) {
@@ -564,6 +637,8 @@ static inline bool napi_reschedule(struct napi_struct *napi)
 		return true;
 	}
 	return false;
+<<<<<<< HEAD
+=======
 =======
 static inline int napi_reschedule(struct napi_struct *napi)
 {
@@ -573,6 +648,7 @@ static inline int napi_reschedule(struct napi_struct *napi)
 	}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -633,6 +709,9 @@ static inline void napi_synchronize(const struct napi_struct *n)
 
 enum netdev_queue_state_t {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__QUEUE_STATE_DRV_XOFF,
 	__QUEUE_STATE_STACK_XOFF,
 	__QUEUE_STATE_FROZEN,
@@ -650,6 +729,8 @@ enum netdev_queue_state_t {
  * of the XOFF bits are set in the state).  Drivers should not need to call
  * netif_xmit*stopped functions, they should only be using netif_tx_*.
  */
+<<<<<<< HEAD
+=======
 =======
 	__QUEUE_STATE_XOFF,
 	__QUEUE_STATE_FROZEN,
@@ -657,6 +738,7 @@ enum netdev_queue_state_t {
 				    (1 << __QUEUE_STATE_FROZEN))
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct netdev_queue {
 /*
@@ -668,10 +750,15 @@ struct netdev_queue {
 	struct Qdisc		*qdisc_sleeping;
 #ifdef CONFIG_SYSFS
 =======
+<<<<<<< HEAD
+	struct Qdisc		*qdisc_sleeping;
+#ifdef CONFIG_SYSFS
+=======
 	unsigned long		state;
 	struct Qdisc		*qdisc_sleeping;
 #ifdef CONFIG_RPS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kobject		kobj;
 #endif
 #if defined(CONFIG_XPS) && defined(CONFIG_NUMA)
@@ -687,6 +774,9 @@ struct netdev_queue {
 	 */
 	unsigned long		trans_start;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Number of TX timeouts for this queue
@@ -699,8 +789,11 @@ struct netdev_queue {
 #ifdef CONFIG_BQL
 	struct dql		dql;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } ____cacheline_aligned_in_smp;
 
 static inline int netdev_queue_numa_node_read(const struct netdev_queue *q)
@@ -732,8 +825,12 @@ struct rps_map {
 <<<<<<< HEAD
 #define RPS_MAP_SIZE(_num) (sizeof(struct rps_map) + ((_num) * sizeof(u16)))
 =======
+<<<<<<< HEAD
+#define RPS_MAP_SIZE(_num) (sizeof(struct rps_map) + ((_num) * sizeof(u16)))
+=======
 #define RPS_MAP_SIZE(_num) (sizeof(struct rps_map) + (_num * sizeof(u16)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The rps_dev_flow structure contains the mapping of a flow to a CPU, the
@@ -760,8 +857,12 @@ struct rps_dev_flow_table {
 <<<<<<< HEAD
     ((_num) * sizeof(struct rps_dev_flow)))
 =======
+<<<<<<< HEAD
+    ((_num) * sizeof(struct rps_dev_flow)))
+=======
     (_num * sizeof(struct rps_dev_flow)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The rps_sock_flow_table contains mappings of flows to the last CPU
@@ -775,8 +876,12 @@ struct rps_sock_flow_table {
 <<<<<<< HEAD
     ((_num) * sizeof(u16)))
 =======
+<<<<<<< HEAD
+    ((_num) * sizeof(u16)))
+=======
     (_num * sizeof(u16)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define RPS_NO_CPU 0xffff
 
@@ -831,8 +936,12 @@ struct xps_map {
 <<<<<<< HEAD
 #define XPS_MAP_SIZE(_num) (sizeof(struct xps_map) + ((_num) * sizeof(u16)))
 =======
+<<<<<<< HEAD
+#define XPS_MAP_SIZE(_num) (sizeof(struct xps_map) + ((_num) * sizeof(u16)))
+=======
 #define XPS_MAP_SIZE(_num) (sizeof(struct xps_map) + (_num * sizeof(u16)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define XPS_MIN_MAP_ALLOC ((L1_CACHE_BYTES - sizeof(struct xps_map))	\
     / sizeof(u16))
 
@@ -856,6 +965,9 @@ struct netdev_tc_txq {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_FCOE) || defined(CONFIG_FCOE_MODULE)
 /*
  * This structure is to hold information about the device
@@ -873,8 +985,11 @@ struct netdev_fcoe_hbainfo {
 };
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This structure defines the management hooks for network devices.
  * The following hooks can be defined; unless noted otherwise, they are
@@ -919,10 +1034,15 @@ struct netdev_fcoe_hbainfo {
  *	If driver handles unicast address filtering, it should set
  *	IFF_UNICAST_FLT to its priv_flags.
 =======
+<<<<<<< HEAD
+ *	If driver handles unicast address filtering, it should set
+ *	IFF_UNICAST_FLT to its priv_flags.
+=======
  *
  * void (*ndo_set_multicast_list)(struct net_device *dev);
  *	This function is called when the multicast address list changes.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * int (*ndo_set_mac_address)(struct net_device *dev, void *addr);
  *	This function  is called when the Media Access Control address
@@ -966,11 +1086,16 @@ struct netdev_fcoe_hbainfo {
  *	   neither operation.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * int (*ndo_vlan_rx_add_vid)(struct net_device *dev, unsigned short vid);
  *	If device support VLAN filtering (dev->features & NETIF_F_HW_VLAN_FILTER)
  *	this function is called when a VLAN id is registered.
  *
  * int (*ndo_vlan_rx_kill_vid)(struct net_device *dev, unsigned short vid);
+<<<<<<< HEAD
+=======
 =======
  * void (*ndo_vlan_rx_register)(struct net_device *dev, struct vlan_group *grp);
  *	If device support VLAN receive acceleration
@@ -984,6 +1109,7 @@ struct netdev_fcoe_hbainfo {
  *
  * void (*ndo_vlan_rx_kill_vid)(struct net_device *dev, unsigned short vid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	If device support VLAN filtering (dev->features & NETIF_F_HW_VLAN_FILTER)
  *	this function is called when a VLAN id is unregistered.
  *
@@ -996,7 +1122,11 @@ struct netdev_fcoe_hbainfo {
 <<<<<<< HEAD
  * int (*ndo_set_vf_spoofchk)(struct net_device *dev, int vf, bool setting);
 =======
+<<<<<<< HEAD
+ * int (*ndo_set_vf_spoofchk)(struct net_device *dev, int vf, bool setting);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * int (*ndo_get_vf_config)(struct net_device *dev,
  *			    int vf, struct ifla_vf_info *ivf);
  * int (*ndo_set_vf_port)(struct net_device *dev, int vf,
@@ -1039,6 +1169,9 @@ struct netdev_fcoe_hbainfo {
  *	successfully to perform DDP on this I/O, otherwise this returns 0.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * int (*ndo_fcoe_get_hbainfo)(struct net_device *dev,
  *			       struct netdev_fcoe_hbainfo *hbainfo);
  *	Called when the FCoE Protocol stack wants information on the underlying
@@ -1046,8 +1179,11 @@ struct netdev_fcoe_hbainfo {
  *	register attributes with Fiber Channel management service as per the
  *	FC-GS Fabric Device Management Information(FDMI) specification.
  *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * int (*ndo_fcoe_get_wwn)(struct net_device *dev, u64 *wwn, int type);
  *	Called when the underlying device wants to override default World Wide
  *	Name (WWN) generation mechanism in FCoE protocol stack to pass its own
@@ -1074,8 +1210,13 @@ struct netdev_fcoe_hbainfo {
  * netdev_features_t (*ndo_fix_features)(struct net_device *dev,
  *		netdev_features_t features);
 =======
+<<<<<<< HEAD
+ * netdev_features_t (*ndo_fix_features)(struct net_device *dev,
+ *		netdev_features_t features);
+=======
  * u32 (*ndo_fix_features)(struct net_device *dev, u32 features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Adjusts the requested feature flags according to device-specific
  *	constraints, and returns the resulting flags. Must not modify
  *	the device state.
@@ -1083,8 +1224,12 @@ struct netdev_fcoe_hbainfo {
 <<<<<<< HEAD
  * int (*ndo_set_features)(struct net_device *dev, netdev_features_t features);
 =======
+<<<<<<< HEAD
+ * int (*ndo_set_features)(struct net_device *dev, netdev_features_t features);
+=======
  * int (*ndo_set_features)(struct net_device *dev, u32 features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	Called to update device configuration to new features. Passed
  *	feature set might be less than what was returned by ndo_fix_features()).
  *	Must return >0 or -errno if it changed dev->features itself.
@@ -1092,8 +1237,11 @@ struct netdev_fcoe_hbainfo {
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define HAVE_NET_DEVICE_OPS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct net_device_ops {
 	int			(*ndo_init)(struct net_device *dev);
 	void			(*ndo_uninit)(struct net_device *dev);
@@ -1108,8 +1256,11 @@ struct net_device_ops {
 	void			(*ndo_set_rx_mode)(struct net_device *dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	void			(*ndo_set_multicast_list)(struct net_device *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			(*ndo_set_mac_address)(struct net_device *dev,
 						       void *addr);
 	int			(*ndo_validate_addr)(struct net_device *dev);
@@ -1132,12 +1283,18 @@ struct net_device_ops {
 						       unsigned short vid);
 	int			(*ndo_vlan_rx_kill_vid)(struct net_device *dev,
 =======
+<<<<<<< HEAD
+	int			(*ndo_vlan_rx_add_vid)(struct net_device *dev,
+						       unsigned short vid);
+	int			(*ndo_vlan_rx_kill_vid)(struct net_device *dev,
+=======
 	void			(*ndo_vlan_rx_register)(struct net_device *dev,
 						        struct vlan_group *grp);
 	void			(*ndo_vlan_rx_add_vid)(struct net_device *dev,
 						       unsigned short vid);
 	void			(*ndo_vlan_rx_kill_vid)(struct net_device *dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						        unsigned short vid);
 #ifdef CONFIG_NET_POLL_CONTROLLER
 	void                    (*ndo_poll_controller)(struct net_device *dev);
@@ -1155,7 +1312,12 @@ struct net_device_ops {
 	int			(*ndo_set_vf_spoofchk)(struct net_device *dev,
 						       int vf, bool setting);
 =======
+<<<<<<< HEAD
+	int			(*ndo_set_vf_spoofchk)(struct net_device *dev,
+						       int vf, bool setting);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			(*ndo_get_vf_config)(struct net_device *dev,
 						     int vf,
 						     struct ifla_vf_info *ivf);
@@ -1168,8 +1330,12 @@ struct net_device_ops {
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_FCOE)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_FCOE)
+=======
 #if defined(CONFIG_FCOE) || defined(CONFIG_FCOE_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			(*ndo_fcoe_enable)(struct net_device *dev);
 	int			(*ndo_fcoe_disable)(struct net_device *dev);
 	int			(*ndo_fcoe_ddp_setup)(struct net_device *dev,
@@ -1183,13 +1349,19 @@ struct net_device_ops {
 						       struct scatterlist *sgl,
 						       unsigned int sgc);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			(*ndo_fcoe_get_hbainfo)(struct net_device *dev,
 							struct netdev_fcoe_hbainfo *hbainfo);
 #endif
 
 #if IS_ENABLED(CONFIG_LIBFCOE)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NETDEV_FCOE_WWNN 0
 #define NETDEV_FCOE_WWPN 1
 	int			(*ndo_fcoe_get_wwn)(struct net_device *dev,
@@ -1198,7 +1370,11 @@ struct net_device_ops {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_RFS_ACCEL
 	int			(*ndo_rx_flow_steer)(struct net_device *dev,
 						     const struct sk_buff *skb,
@@ -1210,18 +1386,24 @@ struct net_device_ops {
 	int			(*ndo_del_slave)(struct net_device *dev,
 						 struct net_device *slave_dev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netdev_features_t	(*ndo_fix_features)(struct net_device *dev,
 						    netdev_features_t features);
 	int			(*ndo_set_features)(struct net_device *dev,
 						    netdev_features_t features);
 	int			(*ndo_neigh_construct)(struct neighbour *n);
 	void			(*ndo_neigh_destroy)(struct neighbour *n);
+<<<<<<< HEAD
+=======
 =======
 	u32			(*ndo_fix_features)(struct net_device *dev,
 						    u32 features);
 	int			(*ndo_set_features)(struct net_device *dev,
 						    u32 features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -1246,8 +1428,12 @@ struct net_device {
 <<<<<<< HEAD
 	struct pm_qos_request	pm_qos_req;
 =======
+<<<<<<< HEAD
+	struct pm_qos_request	pm_qos_req;
+=======
 	struct pm_qos_request_list pm_qos_req;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* device name hash chain */
 	struct hlist_node	name_hlist;
@@ -1276,6 +1462,9 @@ struct net_device {
 
 	/* currently active device features */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netdev_features_t	features;
 	/* user-changeable features */
 	netdev_features_t	hw_features;
@@ -1283,6 +1472,8 @@ struct net_device {
 	netdev_features_t	wanted_features;
 	/* mask of features inheritable by VLAN devices */
 	netdev_features_t	vlan_features;
+<<<<<<< HEAD
+=======
 =======
 	u32			features;
 	/* user-changeable features */
@@ -1370,6 +1561,7 @@ struct net_device {
 	/* changeable features with no special hardware requirements */
 #define NETIF_F_SOFT_FEATURES	(NETIF_F_GSO | NETIF_F_GRO)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Interface index. Unique device identifier	*/
 	int			ifindex;
@@ -1399,8 +1591,13 @@ struct net_device {
 	unsigned int		priv_flags; /* Like 'flags' but invisible to userspace.
 					     * See if.h for definitions. */
 =======
+<<<<<<< HEAD
+	unsigned int		priv_flags; /* Like 'flags' but invisible to userspace.
+					     * See if.h for definitions. */
+=======
 	unsigned int		priv_flags; /* Like 'flags' but invisible to userspace. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short		gflags;
 	unsigned short		padded;	/* How much padding added by alloc_netdev() */
 
@@ -1428,7 +1625,11 @@ struct net_device {
 <<<<<<< HEAD
 	unsigned char		neigh_priv_len;
 =======
+<<<<<<< HEAD
+	unsigned char		neigh_priv_len;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short          dev_id;		/* for shared network cards */
 
 	spinlock_t		addr_list_lock;
@@ -1437,8 +1638,12 @@ struct net_device {
 <<<<<<< HEAD
 	bool			uc_promisc;
 =======
+<<<<<<< HEAD
+	bool			uc_promisc;
+=======
 	int			uc_promisc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int		promiscuity;
 	unsigned int		allmulti;
 
@@ -1446,11 +1651,16 @@ struct net_device {
 	/* Protocol specific pointers */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_VLAN_8021Q)
 	struct vlan_info __rcu	*vlan_info;	/* VLAN info */
 #endif
 #if IS_ENABLED(CONFIG_NET_DSA)
 	struct dsa_switch_tree	*dsa_ptr;	/* dsa specific data */
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_VLAN_8021Q) || defined(CONFIG_VLAN_8021Q_MODULE)
 	struct vlan_group __rcu	*vlgrp;		/* VLAN group */
@@ -1458,6 +1668,7 @@ struct net_device {
 #ifdef CONFIG_NET_DSA
 	void			*dsa_ptr;	/* dsa specific data */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	void 			*atalk_ptr;	/* AppleTalk link 	*/
 	struct in_device __rcu	*ip_ptr;	/* IPv4 specific data	*/
@@ -1494,16 +1705,22 @@ struct net_device {
 	unsigned char		broadcast[MAX_ADDR_LEN];	/* hw bcast add	*/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSFS
 	struct kset		*queues_kset;
 #endif
 
 #ifdef CONFIG_RPS
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_RPS
 	struct kset		*queues_kset;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct netdev_rx_queue	*_rx;
 
 	/* Number of RX queues allocated at register_netdev() time */
@@ -1618,9 +1835,12 @@ struct net_device {
 	unsigned int		gso_max_size;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define GSO_MAX_SEGS		65535
 	u16			gso_max_segs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_DCB
 	/* Data Center Bridging netlink ops */
@@ -1631,6 +1851,9 @@ struct net_device {
 	u8 prio_tc_map[TC_BITMASK + 1];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_FCOE)
 	/* max exchange id for FCoE LRO by ddp */
 	unsigned int		fcoe_ddp_xid;
@@ -1638,6 +1861,8 @@ struct net_device {
 #if IS_ENABLED(CONFIG_NETPRIO_CGROUP)
 	struct netprio_map __rcu *priomap;
 #endif
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_FCOE) || defined(CONFIG_FCOE_MODULE)
 	/* max exchange id for FCoE LRO by ddp */
@@ -1647,6 +1872,7 @@ struct net_device {
 	struct ethtool_rx_ntuple_list ethtool_ntuple_list;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* phy device may attach itself for hardware timestamping */
 	struct phy_device *phydev;
 
@@ -1844,8 +2070,12 @@ struct packet_type {
 <<<<<<< HEAD
 						netdev_features_t features);
 =======
+<<<<<<< HEAD
+						netdev_features_t features);
+=======
 						u32 features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			(*gso_send_check)(struct sk_buff *skb);
 	struct sk_buff		**(*gro_receive)(struct sk_buff **head,
 					       struct sk_buff *skb);
@@ -1855,6 +2085,9 @@ struct packet_type {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/notifier.h>
 
 /* netdevice notifier chain. Please remember to update the rtnetlink
@@ -1890,11 +2123,14 @@ extern int unregister_netdevice_notifier(struct notifier_block *nb);
 extern int call_netdevice_notifiers(unsigned long val, struct net_device *dev);
 
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/interrupt.h>
 #include <linux/notifier.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern rwlock_t				dev_base_lock;		/* Device list lock */
 
 
@@ -1982,6 +2218,11 @@ extern int		init_dummy_netdev(struct net_device *dev);
 extern void		netdev_resync_ops(struct net_device *dev);
 
 =======
+<<<<<<< HEAD
+extern int		init_dummy_netdev(struct net_device *dev);
+extern void		netdev_resync_ops(struct net_device *dev);
+
+=======
 extern int 		register_netdevice_notifier(struct notifier_block *nb);
 extern int		unregister_netdevice_notifier(struct notifier_block *nb);
 extern int		init_dummy_netdev(struct net_device *dev);
@@ -1989,6 +2230,7 @@ extern void		netdev_resync_ops(struct net_device *dev);
 
 extern int call_netdevice_notifiers(unsigned long val, struct net_device *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct net_device	*dev_get_by_index(struct net *net, int ifindex);
 extern struct net_device	*__dev_get_by_index(struct net *net, int ifindex);
 extern struct net_device	*dev_get_by_index_rcu(struct net *net, int ifindex);
@@ -2126,9 +2368,12 @@ DECLARE_PER_CPU_ALIGNED(struct softnet_data, softnet_data);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define HAVE_NETIF_QUEUE
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __netif_schedule(struct Qdisc *q);
 
 static inline void netif_schedule_queue(struct netdev_queue *txq)
@@ -2136,8 +2381,12 @@ static inline void netif_schedule_queue(struct netdev_queue *txq)
 <<<<<<< HEAD
 	if (!(txq->state & QUEUE_STATE_ANY_XOFF))
 =======
+<<<<<<< HEAD
+	if (!(txq->state & QUEUE_STATE_ANY_XOFF))
+=======
 	if (!test_bit(__QUEUE_STATE_XOFF, &txq->state))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__netif_schedule(txq->qdisc);
 }
 
@@ -2154,8 +2403,12 @@ static inline void netif_tx_start_queue(struct netdev_queue *dev_queue)
 <<<<<<< HEAD
 	clear_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state);
 =======
+<<<<<<< HEAD
+	clear_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state);
+=======
 	clear_bit(__QUEUE_STATE_XOFF, &dev_queue->state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2190,8 +2443,12 @@ static inline void netif_tx_wake_queue(struct netdev_queue *dev_queue)
 <<<<<<< HEAD
 	if (test_and_clear_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state))
 =======
+<<<<<<< HEAD
+	if (test_and_clear_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state))
+=======
 	if (test_and_clear_bit(__QUEUE_STATE_XOFF, &dev_queue->state))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__netif_schedule(dev_queue->qdisc);
 }
 
@@ -2226,8 +2483,12 @@ static inline void netif_tx_stop_queue(struct netdev_queue *dev_queue)
 <<<<<<< HEAD
 	set_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state);
 =======
+<<<<<<< HEAD
+	set_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state);
+=======
 	set_bit(__QUEUE_STATE_XOFF, &dev_queue->state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2257,10 +2518,16 @@ static inline bool netif_tx_queue_stopped(const struct netdev_queue *dev_queue)
 {
 	return test_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state);
 =======
+<<<<<<< HEAD
+static inline bool netif_tx_queue_stopped(const struct netdev_queue *dev_queue)
+{
+	return test_bit(__QUEUE_STATE_DRV_XOFF, &dev_queue->state);
+=======
 static inline int netif_tx_queue_stopped(const struct netdev_queue *dev_queue)
 {
 	return test_bit(__QUEUE_STATE_XOFF, &dev_queue->state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2272,13 +2539,20 @@ static inline int netif_tx_queue_stopped(const struct netdev_queue *dev_queue)
 <<<<<<< HEAD
 static inline bool netif_queue_stopped(const struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_queue_stopped(const struct net_device *dev)
+=======
 static inline int netif_queue_stopped(const struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return netif_tx_queue_stopped(netdev_get_tx_queue(dev, 0));
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool netif_xmit_stopped(const struct netdev_queue *dev_queue)
 {
 	return dev_queue->state & QUEUE_STATE_ANY_XOFF;
@@ -2359,11 +2633,14 @@ static inline void netdev_tx_reset_queue(struct netdev_queue *q)
 static inline void netdev_reset_queue(struct net_device *dev_queue)
 {
 	netdev_tx_reset_queue(netdev_get_tx_queue(dev_queue, 0));
+<<<<<<< HEAD
+=======
 =======
 static inline int netif_tx_queue_frozen_or_stopped(const struct netdev_queue *dev_queue)
 {
 	return dev_queue->state & QUEUE_STATE_XOFF_OR_FROZEN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2375,8 +2652,12 @@ static inline int netif_tx_queue_frozen_or_stopped(const struct netdev_queue *de
 <<<<<<< HEAD
 static inline bool netif_running(const struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_running(const struct net_device *dev)
+=======
 static inline int netif_running(const struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return test_bit(__LINK_STATE_START, &dev->state);
 }
@@ -2430,9 +2711,14 @@ static inline void netif_stop_subqueue(struct net_device *dev, u16 queue_index)
 static inline bool __netif_subqueue_stopped(const struct net_device *dev,
 					    u16 queue_index)
 =======
+<<<<<<< HEAD
+static inline bool __netif_subqueue_stopped(const struct net_device *dev,
+					    u16 queue_index)
+=======
 static inline int __netif_subqueue_stopped(const struct net_device *dev,
 					 u16 queue_index)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct netdev_queue *txq = netdev_get_tx_queue(dev, queue_index);
 
@@ -2443,9 +2729,14 @@ static inline int __netif_subqueue_stopped(const struct net_device *dev,
 static inline bool netif_subqueue_stopped(const struct net_device *dev,
 					  struct sk_buff *skb)
 =======
+<<<<<<< HEAD
+static inline bool netif_subqueue_stopped(const struct net_device *dev,
+					  struct sk_buff *skb)
+=======
 static inline int netif_subqueue_stopped(const struct net_device *dev,
 					 struct sk_buff *skb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return __netif_subqueue_stopped(dev, skb_get_queue_mapping(skb));
 }
@@ -2467,8 +2758,12 @@ static inline void netif_wake_subqueue(struct net_device *dev, u16 queue_index)
 <<<<<<< HEAD
 	if (test_and_clear_bit(__QUEUE_STATE_DRV_XOFF, &txq->state))
 =======
+<<<<<<< HEAD
+	if (test_and_clear_bit(__QUEUE_STATE_DRV_XOFF, &txq->state))
+=======
 	if (test_and_clear_bit(__QUEUE_STATE_XOFF, &txq->state))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__netif_schedule(txq->qdisc);
 }
 
@@ -2491,8 +2786,12 @@ static inline u16 skb_tx_hash(const struct net_device *dev,
 <<<<<<< HEAD
 static inline bool netif_is_multiqueue(const struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_is_multiqueue(const struct net_device *dev)
+=======
 static inline int netif_is_multiqueue(const struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return dev->num_tx_queues > 1;
 }
@@ -2539,11 +2838,16 @@ extern void dev_kfree_skb_any(struct sk_buff *skb);
 extern int		netif_rx(struct sk_buff *skb);
 extern int		netif_rx_ni(struct sk_buff *skb);
 =======
+<<<<<<< HEAD
+extern int		netif_rx(struct sk_buff *skb);
+extern int		netif_rx_ni(struct sk_buff *skb);
+=======
 #define HAVE_NETIF_RX 1
 extern int		netif_rx(struct sk_buff *skb);
 extern int		netif_rx_ni(struct sk_buff *skb);
 #define HAVE_NETIF_RECEIVE_SKB 1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int		netif_receive_skb(struct sk_buff *skb);
 extern gro_result_t	dev_gro_receive(struct napi_struct *napi,
 					struct sk_buff *skb);
@@ -2572,8 +2876,12 @@ extern void netdev_rx_handler_unregister(struct net_device *dev);
 <<<<<<< HEAD
 extern bool		dev_valid_name(const char *name);
 =======
+<<<<<<< HEAD
+extern bool		dev_valid_name(const char *name);
+=======
 extern int		dev_valid_name(const char *name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int		dev_ioctl(struct net *net, unsigned int cmd, void __user *);
 extern int		dev_ethtool(struct net *net, struct ifreq *);
 extern unsigned		dev_get_flags(const struct net_device *);
@@ -2610,8 +2918,12 @@ static inline void dev_put(struct net_device *dev)
 <<<<<<< HEAD
 	this_cpu_dec(*dev->pcpu_refcnt);
 =======
+<<<<<<< HEAD
+	this_cpu_dec(*dev->pcpu_refcnt);
+=======
 	irqsafe_cpu_dec(*dev->pcpu_refcnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2625,8 +2937,12 @@ static inline void dev_hold(struct net_device *dev)
 <<<<<<< HEAD
 	this_cpu_inc(*dev->pcpu_refcnt);
 =======
+<<<<<<< HEAD
+	this_cpu_inc(*dev->pcpu_refcnt);
+=======
 	irqsafe_cpu_inc(*dev->pcpu_refcnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Carrier loss detection, dial on demand. The functions netif_carrier_on
@@ -2650,8 +2966,12 @@ extern void linkwatch_forget_dev(struct net_device *dev);
 <<<<<<< HEAD
 static inline bool netif_carrier_ok(const struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_carrier_ok(const struct net_device *dev)
+=======
 static inline int netif_carrier_ok(const struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return !test_bit(__LINK_STATE_NOCARRIER, &dev->state);
 }
@@ -2706,8 +3026,12 @@ static inline void netif_dormant_off(struct net_device *dev)
 <<<<<<< HEAD
 static inline bool netif_dormant(const struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_dormant(const struct net_device *dev)
+=======
 static inline int netif_dormant(const struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return test_bit(__LINK_STATE_DORMANT, &dev->state);
 }
@@ -2722,8 +3046,12 @@ static inline int netif_dormant(const struct net_device *dev)
 <<<<<<< HEAD
 static inline bool netif_oper_up(const struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_oper_up(const struct net_device *dev)
+=======
 static inline int netif_oper_up(const struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return (dev->operstate == IF_OPER_UP ||
 		dev->operstate == IF_OPER_UNKNOWN /* backward compat */);
@@ -2738,8 +3066,12 @@ static inline int netif_oper_up(const struct net_device *dev)
 <<<<<<< HEAD
 static inline bool netif_device_present(struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_device_present(struct net_device *dev)
+=======
 static inline int netif_device_present(struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return test_bit(__LINK_STATE_PRESENT, &dev->state);
 }
@@ -2753,8 +3085,11 @@ extern void netif_device_attach(struct net_device *dev);
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define HAVE_NETIF_MSG 1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	NETIF_MSG_DRV		= 0x0001,
@@ -2818,10 +3153,16 @@ static inline bool __netif_tx_trylock(struct netdev_queue *txq)
 {
 	bool ok = spin_trylock(&txq->_xmit_lock);
 =======
+<<<<<<< HEAD
+static inline bool __netif_tx_trylock(struct netdev_queue *txq)
+{
+	bool ok = spin_trylock(&txq->_xmit_lock);
+=======
 static inline int __netif_tx_trylock(struct netdev_queue *txq)
 {
 	int ok = spin_trylock(&txq->_xmit_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (likely(ok))
 		txq->xmit_lock_owner = smp_processor_id();
 	return ok;
@@ -2937,13 +3278,19 @@ static inline void netif_addr_lock(struct net_device *dev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void netif_addr_lock_nested(struct net_device *dev)
 {
 	spin_lock_nested(&dev->addr_list_lock, SINGLE_DEPTH_NESTING);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void netif_addr_lock_bh(struct net_device *dev)
 {
 	spin_lock_bh(&dev->addr_list_lock);
@@ -3049,7 +3396,12 @@ extern struct rtnl_link_stats64 *dev_get_stats(struct net_device *dev,
 extern void netdev_stats_to_stats64(struct rtnl_link_stats64 *stats64,
 				    const struct net_device_stats *netdev_stats);
 =======
+<<<<<<< HEAD
+extern void netdev_stats_to_stats64(struct rtnl_link_stats64 *stats64,
+				    const struct net_device_stats *netdev_stats);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int		netdev_max_backlog;
 extern int		netdev_tstamp_prequeue;
@@ -3063,8 +3415,13 @@ extern int skb_checksum_help(struct sk_buff *skb);
 extern struct sk_buff *skb_gso_segment(struct sk_buff *skb,
 	netdev_features_t features);
 =======
+<<<<<<< HEAD
+extern struct sk_buff *skb_gso_segment(struct sk_buff *skb,
+	netdev_features_t features);
+=======
 extern struct sk_buff *skb_gso_segment(struct sk_buff *skb, u32 features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BUG
 extern void netdev_rx_csum_fault(struct net_device *dev);
 #else
@@ -3092,6 +3449,9 @@ extern const char *netdev_drivername(const struct net_device *dev);
 extern void linkwatch_run_queue(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline netdev_features_t netdev_get_wanted_features(
 	struct net_device *dev)
 {
@@ -3099,6 +3459,8 @@ static inline netdev_features_t netdev_get_wanted_features(
 }
 netdev_features_t netdev_increment_features(netdev_features_t all,
 	netdev_features_t one, netdev_features_t mask);
+<<<<<<< HEAD
+=======
 =======
 static inline u32 netdev_get_wanted_features(struct net_device *dev)
 {
@@ -3107,6 +3469,7 @@ static inline u32 netdev_get_wanted_features(struct net_device *dev)
 u32 netdev_increment_features(u32 all, u32 one, u32 mask);
 u32 netdev_fix_features(struct net_device *dev, u32 features);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __netdev_update_features(struct net_device *dev);
 void netdev_update_features(struct net_device *dev);
 void netdev_change_features(struct net_device *dev);
@@ -3115,6 +3478,9 @@ void netif_stacked_transfer_operstate(const struct net_device *rootdev,
 					struct net_device *dev);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 netdev_features_t netif_skb_features(struct sk_buff *skb);
 
 static inline bool net_gso_ok(netdev_features_t features, int gso_type)
@@ -3133,6 +3499,8 @@ static inline bool net_gso_ok(netdev_features_t features, int gso_type)
 }
 
 static inline bool skb_gso_ok(struct sk_buff *skb, netdev_features_t features)
+<<<<<<< HEAD
+=======
 =======
 u32 netif_skb_features(struct sk_buff *skb);
 
@@ -3144,24 +3512,31 @@ static inline int net_gso_ok(u32 features, int gso_type)
 
 static inline int skb_gso_ok(struct sk_buff *skb, u32 features)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return net_gso_ok(features, skb_shinfo(skb)->gso_type) &&
 	       (!skb_has_frag_list(skb) || (features & NETIF_F_FRAGLIST));
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool netif_needs_gso(struct sk_buff *skb,
 				   netdev_features_t features)
 {
 	return skb_is_gso(skb) && (!skb_gso_ok(skb, features) ||
 		unlikely((skb->ip_summed != CHECKSUM_PARTIAL) &&
 			 (skb->ip_summed != CHECKSUM_UNNECESSARY)));
+<<<<<<< HEAD
+=======
 =======
 static inline int netif_needs_gso(struct sk_buff *skb, int features)
 {
 	return skb_is_gso(skb) && (!skb_gso_ok(skb, features) ||
 		unlikely(skb->ip_summed != CHECKSUM_PARTIAL));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void netif_set_gso_max_size(struct net_device *dev,
@@ -3173,19 +3548,28 @@ static inline void netif_set_gso_max_size(struct net_device *dev,
 <<<<<<< HEAD
 static inline bool netif_is_bond_slave(struct net_device *dev)
 =======
+<<<<<<< HEAD
+static inline bool netif_is_bond_slave(struct net_device *dev)
+=======
 static inline int netif_is_bond_slave(struct net_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return dev->flags & IFF_SLAVE && dev->priv_flags & IFF_BONDING;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool netif_supports_nofcs(struct net_device *dev)
 {
 	return dev->priv_flags & IFF_SUPP_NOFCS;
 }
 
 extern struct pernet_operations __net_initdata loopback_net_ops;
+<<<<<<< HEAD
+=======
 =======
 extern struct pernet_operations __net_initdata loopback_net_ops;
 
@@ -3208,6 +3592,7 @@ static inline u32 dev_ethtool_get_flags(struct net_device *dev)
 	return dev->ethtool_ops->get_flags(dev);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Logging, debugging and troubleshooting/diagnostic helpers. */
 
@@ -3221,6 +3606,9 @@ static inline const char *netdev_name(const struct net_device *dev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int __netdev_printk(const char *level, const struct net_device *dev,
 			struct va_format *vaf);
 
@@ -3241,6 +3629,8 @@ extern __printf(2, 3)
 int netdev_notice(const struct net_device *dev, const char *format, ...);
 extern __printf(2, 3)
 int netdev_info(const struct net_device *dev, const char *format, ...);
+<<<<<<< HEAD
+=======
 =======
 extern int netdev_printk(const char *level, const struct net_device *dev,
 			 const char *format, ...)
@@ -3260,11 +3650,15 @@ extern int netdev_notice(const struct net_device *dev, const char *format, ...)
 extern int netdev_info(const struct net_device *dev, const char *format, ...)
 	__attribute__ ((format (printf, 2, 3)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MODULE_ALIAS_NETDEV(device) \
 	MODULE_ALIAS("netdev-" device)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_DYNAMIC_DEBUG)
 #define netdev_dbg(__dev, format, args...)			\
 do {								\
@@ -3273,6 +3667,8 @@ do {								\
 #elif defined(DEBUG)
 #define netdev_dbg(__dev, format, args...)			\
 	netdev_printk(KERN_DEBUG, __dev, format, ##args)
+<<<<<<< HEAD
+=======
 =======
 #if defined(DEBUG)
 #define netdev_dbg(__dev, format, args...)			\
@@ -3284,6 +3680,7 @@ do {								\
 			netdev_name(__dev), ##args);		\
 } while (0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define netdev_dbg(__dev, format, args...)			\
 ({								\
@@ -3352,10 +3749,14 @@ do {								\
 <<<<<<< HEAD
 		dynamic_netdev_dbg(netdev, format, ##args);	\
 =======
+<<<<<<< HEAD
+		dynamic_netdev_dbg(netdev, format, ##args);	\
+=======
 		dynamic_dev_dbg((netdev)->dev.parent,		\
 				"%s: " format,			\
 				netdev_name(netdev), ##args);	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } while (0)
 #else
 #define netif_dbg(priv, type, dev, format, args...)			\

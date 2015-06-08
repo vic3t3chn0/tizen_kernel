@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #include "util/tool.h"
 =======
+<<<<<<< HEAD
+#include "util/tool.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "util/parse-options.h"
 #include "util/trace-event.h"
@@ -25,8 +29,12 @@ typedef int (*sort_fn_t)(struct alloc_stat *, struct alloc_stat *);
 <<<<<<< HEAD
 static const char		*input_name;
 =======
+<<<<<<< HEAD
+static const char		*input_name;
+=======
 static char const		*input_name = "perf.data";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int			alloc_flag;
 static int			caller_flag;
@@ -120,8 +128,14 @@ static void setup_cpunode_map(void)
 	}
 	closedir(dir1);
 =======
+<<<<<<< HEAD
+		closedir(dir2);
+	}
+	closedir(dir1);
+=======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void insert_alloc_stat(unsigned long call_site, unsigned long ptr,
@@ -318,6 +332,9 @@ static void process_raw_event(union perf_event *raw_event __used, void *data,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int process_sample_event(struct perf_tool *tool __used,
 				union perf_event *event,
 				struct perf_sample *sample,
@@ -325,6 +342,8 @@ static int process_sample_event(struct perf_tool *tool __used,
 				struct machine *machine)
 {
 	struct thread *thread = machine__findnew_thread(machine, event->ip.pid);
+<<<<<<< HEAD
+=======
 =======
 static int process_sample_event(union perf_event *event,
 				struct perf_sample *sample,
@@ -333,6 +352,7 @@ static int process_sample_event(union perf_event *event,
 {
 	struct thread *thread = perf_session__findnew(session, event->ip.pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (thread == NULL) {
 		pr_debug("problem processing %d event, skipping it.\n",
@@ -351,8 +371,12 @@ static int process_sample_event(union perf_event *event,
 <<<<<<< HEAD
 static struct perf_tool perf_kmem = {
 =======
+<<<<<<< HEAD
+static struct perf_tool perf_kmem = {
+=======
 static struct perf_event_ops event_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.sample			= process_sample_event,
 	.comm			= perf_event__process_comm,
 	.ordered_samples	= true,
@@ -514,8 +538,12 @@ static int __cmd_kmem(void)
 <<<<<<< HEAD
 							 0, false, &perf_kmem);
 =======
+<<<<<<< HEAD
+							 0, false, &perf_kmem);
+=======
 							 0, false, &event_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (session == NULL)
 		return -ENOMEM;
 
@@ -529,8 +557,12 @@ static int __cmd_kmem(void)
 <<<<<<< HEAD
 	err = perf_session__process_events(session, &perf_kmem);
 =======
+<<<<<<< HEAD
+	err = perf_session__process_events(session, &perf_kmem);
+=======
 	err = perf_session__process_events(session, &event_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err != 0)
 		goto out_delete;
 	sort_result();
@@ -682,7 +714,11 @@ static int setup_sorting(struct list_head *sort_list, const char *arg)
 <<<<<<< HEAD
 			free(str);
 =======
+<<<<<<< HEAD
+			free(str);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 		}
 	}

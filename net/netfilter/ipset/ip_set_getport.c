@@ -20,7 +20,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* We must handle non-linear skbs */
 static bool
@@ -115,8 +119,12 @@ EXPORT_SYMBOL_GPL(ip_set_get_ip4_port);
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
+=======
 #if defined(CONFIG_IP6_NF_IPTABLES) || defined(CONFIG_IP6_NF_IPTABLES_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool
 ip_set_get_ip6_port(const struct sk_buff *skb, bool src,
 		    __be16 *port, u8 *proto)
@@ -124,16 +132,22 @@ ip_set_get_ip6_port(const struct sk_buff *skb, bool src,
 	int protoff;
 	u8 nexthdr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be16 frag_off;
 
 	nexthdr = ipv6_hdr(skb)->nexthdr;
 	protoff = ipv6_skip_exthdr(skb, sizeof(struct ipv6hdr), &nexthdr,
 				   &frag_off);
+<<<<<<< HEAD
+=======
 =======
 
 	nexthdr = ipv6_hdr(skb)->nexthdr;
 	protoff = ipv6_skip_exthdr(skb, sizeof(struct ipv6hdr), &nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (protoff < 0)
 		return false;
 
@@ -150,16 +164,22 @@ ip_set_get_ip_port(const struct sk_buff *skb, u8 pf, bool src, __be16 *port)
 
 	switch (pf) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case NFPROTO_IPV4:
 		ret = ip_set_get_ip4_port(skb, src, port, &proto);
 		break;
 	case NFPROTO_IPV6:
+<<<<<<< HEAD
+=======
 =======
 	case AF_INET:
 		ret = ip_set_get_ip4_port(skb, src, port, &proto);
 		break;
 	case AF_INET6:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = ip_set_get_ip6_port(skb, src, port, &proto);
 		break;
 	default:

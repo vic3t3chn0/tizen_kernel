@@ -11,7 +11,15 @@
 #include <linux/init.h>
 #include <linux/errno.h>
 #include <linux/cpu.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/sysdev.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/workqueue.h>
 #include <asm/smp.h>
 
@@ -31,14 +39,32 @@ static struct work_struct sclp_cpu_change_work;
 static void sclp_cpu_capability_notify(struct work_struct *work)
 {
 	int cpu;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct device *dev;
+=======
 	struct sys_device *sysdev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct sys_device *sysdev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	s390_adjust_jiffies();
 	pr_warning("cpu capability changed.\n");
 	get_online_cpus();
 	for_each_online_cpu(cpu) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev = get_cpu_device(cpu);
+		kobject_uevent(&dev->kobj, KOBJ_CHANGE);
+=======
 		sysdev = get_cpu_sysdev(cpu);
 		kobject_uevent(&sysdev->kobj, KOBJ_CHANGE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		sysdev = get_cpu_sysdev(cpu);
+		kobject_uevent(&sysdev->kobj, KOBJ_CHANGE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	put_online_cpus();
 }

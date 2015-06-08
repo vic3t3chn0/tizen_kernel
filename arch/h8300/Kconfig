@@ -7,7 +7,11 @@ config H8300
 <<<<<<< HEAD
 	select GENERIC_CPU_DEVICES
 =======
+<<<<<<< HEAD
+	select GENERIC_CPU_DEVICES
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config SYMBOL_PREFIX
 	string
@@ -167,8 +171,12 @@ config HW_CONSOLE
 <<<<<<< HEAD
 	depends on VT
 =======
+<<<<<<< HEAD
+	depends on VT
+=======
 	depends on VT && !S390 && !UM
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default y
 
 comment "Unix98 PTY support"
@@ -206,8 +214,12 @@ source "drivers/char/pcmcia/Kconfig"
 <<<<<<< HEAD
 source "drivers/tty/serial/Kconfig"
 =======
+<<<<<<< HEAD
+source "drivers/tty/serial/Kconfig"
+=======
 source "drivers/serial/Kconfig"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 source "drivers/i2c/Kconfig"
 

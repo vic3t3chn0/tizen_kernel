@@ -36,8 +36,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/interrupt.h>
 #include <linux/kernel.h>
@@ -50,14 +53,20 @@
 #include <linux/mutex.h>
 #include <linux/reboot.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #ifdef CONFIG_X86
 /* for snoop control */
 #include <asm/pgtable.h>
 #include <asm/cacheflush.h>
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/initval.h>
 #include "hda_codec.h"
@@ -68,8 +77,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static char *model[SNDRV_CARDS];
 static int position_fix[SNDRV_CARDS];
 static int bdl_pos_adj[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS-1)] = -1};
@@ -78,8 +91,12 @@ static int probe_only[SNDRV_CARDS];
 <<<<<<< HEAD
 static bool single_cmd;
 =======
+<<<<<<< HEAD
+static bool single_cmd;
+=======
 static int single_cmd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int enable_msi = -1;
 #ifdef CONFIG_SND_HDA_PATCH_LOADER
 static char *patch[SNDRV_CARDS];
@@ -102,8 +119,12 @@ MODULE_PARM_DESC(position_fix, "DMA pointer read method."
 <<<<<<< HEAD
 		 "(0 = auto, 1 = LPIB, 2 = POSBUF, 3 = VIACOMBO, 4 = COMBO).");
 =======
+<<<<<<< HEAD
+		 "(0 = auto, 1 = LPIB, 2 = POSBUF, 3 = VIACOMBO, 4 = COMBO).");
+=======
 		 "(0 = auto, 1 = LPIB, 2 = POSBUF, 3 = VIACOMBO).");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_array(bdl_pos_adj, int, NULL, 0644);
 MODULE_PARM_DESC(bdl_pos_adj, "BDL position adjustment offset.");
 module_param_array(probe_mask, int, NULL, 0444);
@@ -116,8 +137,12 @@ MODULE_PARM_DESC(single_cmd, "Use single command to communicate with codecs "
 <<<<<<< HEAD
 module_param(enable_msi, bint, 0444);
 =======
+<<<<<<< HEAD
+module_param(enable_msi, bint, 0444);
+=======
 module_param(enable_msi, int, 0444);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(enable_msi, "Enable Message Signaled Interrupt (MSI)");
 #ifdef CONFIG_SND_HDA_PATCH_LOADER
 module_param_array(patch, charp, NULL, 0444);
@@ -142,13 +167,20 @@ MODULE_PARM_DESC(power_save, "Automatic power-saving timeout "
 <<<<<<< HEAD
 static bool power_save_controller = 1;
 =======
+<<<<<<< HEAD
+static bool power_save_controller = 1;
+=======
 static int power_save_controller = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(power_save_controller, bool, 0644);
 MODULE_PARM_DESC(power_save_controller, "Reset controller in power save mode.");
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int align_buffer_size = -1;
 module_param(align_buffer_size, bint, 0644);
 MODULE_PARM_DESC(align_buffer_size,
@@ -165,8 +197,11 @@ MODULE_PARM_DESC(snoop, "Enable/disable snooping");
 #endif
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 MODULE_SUPPORTED_DEVICE("{{Intel, ICH6},"
 			 "{Intel, ICH6M},"
@@ -181,7 +216,11 @@ MODULE_SUPPORTED_DEVICE("{{Intel, ICH6},"
 <<<<<<< HEAD
 			 "{Intel, LPT},"
 =======
+<<<<<<< HEAD
+			 "{Intel, LPT},"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 "{Intel, PBG},"
 			 "{Intel, SCH},"
 			 "{ATI, SB450},"
@@ -236,8 +275,13 @@ MODULE_DESCRIPTION("Intel HDA driver");
 #define ICH6_REG_OLD_SSYNC		0x34	/* SSYNC for old ICH */
 #define ICH6_REG_SSYNC			0x38
 =======
+<<<<<<< HEAD
+#define ICH6_REG_OLD_SSYNC		0x34	/* SSYNC for old ICH */
+#define ICH6_REG_SSYNC			0x38
+=======
 #define ICH6_REG_SYNC			0x34	
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ICH6_REG_CORBLBASE		0x40
 #define ICH6_REG_CORBUBASE		0x44
 #define ICH6_REG_CORBWP			0x48
@@ -370,7 +414,11 @@ enum {
 <<<<<<< HEAD
 	POS_FIX_COMBO,
 =======
+<<<<<<< HEAD
+	POS_FIX_COMBO,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Defines for ATI HD Audio support in SB450 south bridge */
@@ -426,8 +474,12 @@ struct azx_dev {
 <<<<<<< HEAD
 	int assigned_key;		/* last device# key assigned to */
 =======
+<<<<<<< HEAD
+	int assigned_key;		/* last device# key assigned to */
+=======
 	int device;			/* last device number assigned to */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int opened :1;
 	unsigned int running :1;
@@ -441,7 +493,11 @@ struct azx_dev {
 <<<<<<< HEAD
 	unsigned int wc_marked:1;
 =======
+<<<<<<< HEAD
+	unsigned int wc_marked:1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* CORB/RIRB */
@@ -457,6 +513,9 @@ struct azx_rb {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct azx_pcm {
 	struct azx *chip;
 	struct snd_pcm *pcm;
@@ -465,8 +524,11 @@ struct azx_pcm {
 	struct list_head list;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct azx {
 	struct snd_card *card;
 	struct pci_dev *pci;
@@ -497,8 +559,12 @@ struct azx {
 <<<<<<< HEAD
 	struct list_head pcm_list; /* azx_pcm list */
 =======
+<<<<<<< HEAD
+	struct list_head pcm_list; /* azx_pcm list */
+=======
 	struct snd_pcm *pcm[HDA_MAX_PCMS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* HD codec */
 	unsigned short codec_mask;
@@ -528,7 +594,12 @@ struct azx {
 	unsigned int snoop:1;
 	unsigned int align_buffer_size:1;
 =======
+<<<<<<< HEAD
+	unsigned int snoop:1;
+	unsigned int align_buffer_size:1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* for debugging */
 	unsigned int last_cmd[AZX_MAX_CODECS];
@@ -550,7 +621,11 @@ enum {
 <<<<<<< HEAD
 	AZX_DRIVER_ATIHDMI_NS,
 =======
+<<<<<<< HEAD
+	AZX_DRIVER_ATIHDMI_NS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	AZX_DRIVER_VIA,
 	AZX_DRIVER_SIS,
 	AZX_DRIVER_ULI,
@@ -580,7 +655,13 @@ enum {
 #define AZX_DCAPS_BUFSIZE	(1 << 21)	/* no buffer size alignment */
 #define AZX_DCAPS_ALIGN_BUFSIZE	(1 << 22)	/* buffer size alignment */
 =======
+<<<<<<< HEAD
+#define AZX_DCAPS_OLD_SSYNC	(1 << 20)	/* Old SSYNC reg for ICH */
+#define AZX_DCAPS_BUFSIZE	(1 << 21)	/* no buffer size alignment */
+#define AZX_DCAPS_ALIGN_BUFSIZE	(1 << 22)	/* buffer size alignment */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* quirks for ATI SB / AMD Hudson */
 #define AZX_DCAPS_PRESET_ATI_SB \
@@ -597,8 +678,13 @@ enum {
 	(AZX_DCAPS_NVIDIA_SNOOP | AZX_DCAPS_RIRB_DELAY | AZX_DCAPS_NO_MSI |\
 	 AZX_DCAPS_ALIGN_BUFSIZE)
 =======
+<<<<<<< HEAD
+	(AZX_DCAPS_NVIDIA_SNOOP | AZX_DCAPS_RIRB_DELAY | AZX_DCAPS_NO_MSI |\
+	 AZX_DCAPS_ALIGN_BUFSIZE)
+=======
 	(AZX_DCAPS_NVIDIA_SNOOP | AZX_DCAPS_RIRB_DELAY | AZX_DCAPS_NO_MSI)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static char *driver_short_names[] __devinitdata = {
 	[AZX_DRIVER_ICH] = "HDA Intel",
@@ -609,7 +695,11 @@ static char *driver_short_names[] __devinitdata = {
 <<<<<<< HEAD
 	[AZX_DRIVER_ATIHDMI_NS] = "HDA ATI HDMI",
 =======
+<<<<<<< HEAD
+	[AZX_DRIVER_ATIHDMI_NS] = "HDA ATI HDMI",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[AZX_DRIVER_VIA] = "HDA VIA VT82xx",
 	[AZX_DRIVER_SIS] = "HDA SIS966",
 	[AZX_DRIVER_ULI] = "HDA ULI M5461",
@@ -652,6 +742,9 @@ static char *driver_short_names[] __devinitdata = {
 #define get_azx_dev(substream) (substream->runtime->private_data)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86
 static void __mark_pages_wc(struct azx *chip, void *addr, size_t size, bool on)
 {
@@ -691,8 +784,11 @@ static inline void mark_runtime_wc(struct azx *chip, struct azx_dev *azx_dev,
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int azx_acquire_irq(struct azx *chip, int do_disconnect);
 static int azx_send_cmd(struct hda_bus *bus, unsigned int val);
 /*
@@ -717,7 +813,11 @@ static int azx_alloc_cmd_io(struct azx *chip)
 <<<<<<< HEAD
 	mark_pages_wc(chip, &chip->rb, true);
 =======
+<<<<<<< HEAD
+	mark_pages_wc(chip, &chip->rb, true);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1238,9 +1338,12 @@ static void azx_init_pci(struct azx *chip)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned short snoop;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Clear bits 0-2 of PCI register TCSEL (at offset 0x44)
 	 * TCSEL == Traffic Class Select Register, which sets PCI express QOS
 	 * Ensuring these bits are 0 clears playback static on some HD Audio
@@ -1257,16 +1360,22 @@ static void azx_init_pci(struct azx *chip)
 	 */
 	if (chip->driver_caps & AZX_DCAPS_ATI_SNOOP) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printdd(SFX "Setting ATI snoop: %d\n", azx_snoop(chip));
 		update_pci_byte(chip->pci,
 				ATI_SB450_HDAUDIO_MISC_CNTR2_ADDR, 0x07,
 				azx_snoop(chip) ? ATI_SB450_HDAUDIO_ENABLE_SNOOP : 0);
+<<<<<<< HEAD
+=======
 =======
 		snd_printdd(SFX "Enabling ATI snoop\n");
 		update_pci_byte(chip->pci,
 				ATI_SB450_HDAUDIO_MISC_CNTR2_ADDR, 
 				0x07, ATI_SB450_HDAUDIO_ENABLE_SNOOP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* For NVIDIA HDA, enable snoop */
@@ -1274,8 +1383,12 @@ static void azx_init_pci(struct azx *chip)
 <<<<<<< HEAD
 		snd_printdd(SFX "Setting Nvidia snoop: %d\n", azx_snoop(chip));
 =======
+<<<<<<< HEAD
+		snd_printdd(SFX "Setting Nvidia snoop: %d\n", azx_snoop(chip));
+=======
 		snd_printdd(SFX "Enabling Nvidia snoop\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		update_pci_byte(chip->pci,
 				NVIDIA_HDA_TRANSREG_ADDR,
 				0x0f, NVIDIA_HDA_ENABLE_COHBITS);
@@ -1290,6 +1403,9 @@ static void azx_init_pci(struct azx *chip)
 	/* Enable SCH/PCH snoop if needed */
 	if (chip->driver_caps & AZX_DCAPS_SCH_SNOOP) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned short snoop;
 		pci_read_config_word(chip->pci, INTEL_SCH_HDA_DEVC, &snoop);
 		if ((!azx_snoop(chip) && !(snoop & INTEL_SCH_HDA_DEVC_NOSNOOP)) ||
@@ -1304,6 +1420,8 @@ static void azx_init_pci(struct azx *chip)
 		snd_printdd(SFX "SCH snoop: %s\n",
 				(snoop & INTEL_SCH_HDA_DEVC_NOSNOOP)
 				? "Disabled" : "Enabled");
+<<<<<<< HEAD
+=======
 =======
 		pci_read_config_word(chip->pci, INTEL_SCH_HDA_DEVC, &snoop);
 		if (snoop & INTEL_SCH_HDA_DEVC_NOSNOOP) {
@@ -1316,6 +1434,7 @@ static void azx_init_pci(struct azx *chip)
 				? "Failed" : "OK");
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         }
 }
 
@@ -1523,6 +1642,9 @@ static void azx_stream_reset(struct azx *chip, struct azx_dev *azx_dev)
 static int azx_setup_controller(struct azx *chip, struct azx_dev *azx_dev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int val;
 	/* make sure the run bit is zero for SD */
 	azx_stream_clear(chip, azx_dev);
@@ -1533,6 +1655,8 @@ static int azx_setup_controller(struct azx *chip, struct azx_dev *azx_dev)
 	if (!azx_snoop(chip))
 		val |= SD_CTL_TRAFFIC_PRIO;
 	azx_sd_writel(azx_dev, SD_CTL, val);
+<<<<<<< HEAD
+=======
 =======
 	/* make sure the run bit is zero for SD */
 	azx_stream_clear(chip, azx_dev);
@@ -1541,6 +1665,7 @@ static int azx_setup_controller(struct azx *chip, struct azx_dev *azx_dev)
 		      (azx_sd_readl(azx_dev, SD_CTL) & ~SD_CTL_STREAM_TAG_MASK)|
 		      (azx_dev->stream_tag << SD_CTL_STREAM_TAG_SHIFT));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* program the length of samples in cyclic buffer */
 	azx_sd_writel(azx_dev, SD_CBL, azx_dev->bufsize);
@@ -1612,11 +1737,17 @@ static void azx_bus_reset(struct hda_bus *bus)
 		list_for_each_entry(p, &chip->pcm_list, list)
 			snd_pcm_suspend_all(p->pcm);
 =======
+<<<<<<< HEAD
+		struct azx_pcm *p;
+		list_for_each_entry(p, &chip->pcm_list, list)
+			snd_pcm_suspend_all(p->pcm);
+=======
 		int i;
 
 		for (i = 0; i < HDA_MAX_PCMS; i++)
 			snd_pcm_suspend_all(chip->pcm[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_hda_suspend(chip->bus);
 		snd_hda_resume(chip->bus);
 	}
@@ -1745,7 +1876,13 @@ azx_assign_device(struct azx *chip, struct snd_pcm_substream *substream)
 	int key = (substream->pcm->device << 16) | (substream->number << 2) |
 		(substream->stream + 1);
 =======
+<<<<<<< HEAD
+	/* make a non-zero unique key for the substream */
+	int key = (substream->pcm->device << 16) | (substream->number << 2) |
+		(substream->stream + 1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
 		dev = chip->playback_index_offset;
@@ -1760,8 +1897,12 @@ azx_assign_device(struct azx *chip, struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 			if (res->assigned_key == key)
 =======
+<<<<<<< HEAD
+			if (res->assigned_key == key)
+=======
 			if (res->device == substream->pcm->device)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 		}
 	if (res) {
@@ -1769,8 +1910,12 @@ azx_assign_device(struct azx *chip, struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 		res->assigned_key = key;
 =======
+<<<<<<< HEAD
+		res->assigned_key = key;
+=======
 		res->device = substream->pcm->device;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return res;
 }
@@ -1807,6 +1952,8 @@ static struct snd_pcm_hardware azx_pcm_hw = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct azx_pcm {
 	struct azx *chip;
 	struct hda_codec *codec;
@@ -1814,6 +1961,7 @@ struct azx_pcm {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int azx_pcm_open(struct snd_pcm_substream *substream)
 {
 	struct azx_pcm *apcm = snd_pcm_substream_chip(substream);
@@ -1826,7 +1974,11 @@ static int azx_pcm_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	int buff_step;
 =======
+<<<<<<< HEAD
+	int buff_step;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&chip->open_mutex);
 	azx_dev = azx_assign_device(chip, substream);
@@ -1842,6 +1994,9 @@ static int azx_pcm_open(struct snd_pcm_substream *substream)
 	snd_pcm_limit_hw_rates(runtime);
 	snd_pcm_hw_constraint_integer(runtime, SNDRV_PCM_HW_PARAM_PERIODS);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chip->align_buffer_size)
 		/* constrain buffer sizes to be multiple of 128
 		   bytes. This is more efficient in terms of memory
@@ -1861,12 +2016,15 @@ static int azx_pcm_open(struct snd_pcm_substream *substream)
 				   buff_step);
 	snd_pcm_hw_constraint_step(runtime, 0, SNDRV_PCM_HW_PARAM_PERIOD_BYTES,
 				   buff_step);
+<<<<<<< HEAD
+=======
 =======
 	snd_pcm_hw_constraint_step(runtime, 0, SNDRV_PCM_HW_PARAM_BUFFER_BYTES,
 				   128);
 	snd_pcm_hw_constraint_step(runtime, 0, SNDRV_PCM_HW_PARAM_PERIOD_BYTES,
 				   128);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_hda_power_up(apcm->codec);
 	err = hinfo->ops.open(hinfo, apcm->codec, substream);
 	if (err < 0) {
@@ -1922,6 +2080,9 @@ static int azx_pcm_hw_params(struct snd_pcm_substream *substream,
 			     struct snd_pcm_hw_params *hw_params)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct azx_pcm *apcm = snd_pcm_substream_chip(substream);
 	struct azx *chip = apcm->chip;
 	struct snd_pcm_runtime *runtime = substream->runtime;
@@ -1938,6 +2099,8 @@ static int azx_pcm_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 	mark_runtime_wc(chip, azx_dev, runtime, true);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	struct azx_dev *azx_dev = get_azx_dev(substream);
 
@@ -1947,6 +2110,7 @@ static int azx_pcm_hw_params(struct snd_pcm_substream *substream,
 	return snd_pcm_lib_malloc_pages(substream,
 					params_buffer_bytes(hw_params));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int azx_pcm_hw_free(struct snd_pcm_substream *substream)
@@ -1957,7 +2121,12 @@ static int azx_pcm_hw_free(struct snd_pcm_substream *substream)
 	struct azx *chip = apcm->chip;
 	struct snd_pcm_runtime *runtime = substream->runtime;
 =======
+<<<<<<< HEAD
+	struct azx *chip = apcm->chip;
+	struct snd_pcm_runtime *runtime = substream->runtime;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hda_pcm_stream *hinfo = apcm->hinfo[substream->stream];
 
 	/* reset BDL address */
@@ -1973,7 +2142,11 @@ static int azx_pcm_hw_free(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	mark_runtime_wc(chip, azx_dev, runtime, false);
 =======
+<<<<<<< HEAD
+	mark_runtime_wc(chip, azx_dev, runtime, false);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return snd_pcm_lib_free_pages(substream);
 }
 
@@ -1991,7 +2164,13 @@ static int azx_pcm_prepare(struct snd_pcm_substream *substream)
 		snd_hda_spdif_out_of_nid(apcm->codec, hinfo->nid);
 	unsigned short ctls = spdif ? spdif->ctls : 0;
 =======
+<<<<<<< HEAD
+	struct hda_spdif_out *spdif =
+		snd_hda_spdif_out_of_nid(apcm->codec, hinfo->nid);
+	unsigned short ctls = spdif ? spdif->ctls : 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	azx_stream_reset(chip, azx_dev);
 	format_val = snd_hda_calc_stream_format(runtime->rate,
@@ -2001,8 +2180,12 @@ static int azx_pcm_prepare(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 						ctls);
 =======
+<<<<<<< HEAD
+						ctls);
+=======
 						apcm->codec->spdif_ctls);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!format_val) {
 		snd_printk(KERN_ERR SFX
 			   "invalid format_val, rate=%d, ch=%d, format=%d\n",
@@ -2083,14 +2266,20 @@ static int azx_pcm_trigger(struct snd_pcm_substream *substream, int cmd)
 	if (nsync > 1) {
 		/* first, set SYNC bits of corresponding streams */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (chip->driver_caps & AZX_DCAPS_OLD_SSYNC)
 			azx_writel(chip, OLD_SSYNC,
 				   azx_readl(chip, OLD_SSYNC) | sbits);
 		else
 			azx_writel(chip, SSYNC, azx_readl(chip, SSYNC) | sbits);
+<<<<<<< HEAD
+=======
 =======
 		azx_writel(chip, SYNC, azx_readl(chip, SYNC) | sbits);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	snd_pcm_group_for_each_entry(s, substream) {
 		if (s->pcm->card != substream->pcm->card)
@@ -2147,14 +2336,20 @@ static int azx_pcm_trigger(struct snd_pcm_substream *substream, int cmd)
 		spin_lock(&chip->reg_lock);
 		/* reset SYNC bits */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (chip->driver_caps & AZX_DCAPS_OLD_SSYNC)
 			azx_writel(chip, OLD_SSYNC,
 				   azx_readl(chip, OLD_SSYNC) & ~sbits);
 		else
 			azx_writel(chip, SSYNC, azx_readl(chip, SSYNC) & ~sbits);
+<<<<<<< HEAD
+=======
 =======
 		azx_writel(chip, SYNC, azx_readl(chip, SYNC) & ~sbits);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&chip->reg_lock);
 	}
 	return 0;
@@ -2172,8 +2367,12 @@ static unsigned int azx_via_get_position(struct azx *chip,
 <<<<<<< HEAD
 	if (azx_dev->substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
 =======
+<<<<<<< HEAD
+	if (azx_dev->substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
+=======
 	if (azx_dev->index >= 4) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Playback, no problem using link position */
 		return link_pos;
 	}
@@ -2225,8 +2424,13 @@ static unsigned int azx_get_position(struct azx *chip,
 				     struct azx_dev *azx_dev,
 				     bool with_check)
 =======
+<<<<<<< HEAD
+				     struct azx_dev *azx_dev,
+				     bool with_check)
+=======
 				     struct azx_dev *azx_dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int pos;
 	int stream = azx_dev->substream->stream;
@@ -2243,6 +2447,9 @@ static unsigned int azx_get_position(struct azx *chip,
 		/* use the position buffer */
 		pos = le32_to_cpu(*azx_dev->posbuf);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (with_check && chip->position_fix[stream] == POS_FIX_AUTO) {
 			if (!pos || pos == (u32)-1) {
 				printk(KERN_WARNING
@@ -2254,8 +2461,11 @@ static unsigned int azx_get_position(struct azx *chip,
 				chip->position_fix[stream] = POS_FIX_POSBUF;
 		}
 		break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (pos >= azx_dev->bufsize)
@@ -2272,8 +2482,12 @@ static snd_pcm_uframes_t azx_pcm_pointer(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 			       azx_get_position(chip, azx_dev, false));
 =======
+<<<<<<< HEAD
+			       azx_get_position(chip, azx_dev, false));
+=======
 			       azx_get_position(chip, azx_dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -2299,6 +2513,9 @@ static int azx_position_ok(struct azx *chip, struct azx_dev *azx_dev)
 <<<<<<< HEAD
 	pos = azx_get_position(chip, azx_dev, true);
 =======
+<<<<<<< HEAD
+	pos = azx_get_position(chip, azx_dev, true);
+=======
 	pos = azx_get_position(chip, azx_dev);
 	if (chip->position_fix[stream] == POS_FIX_AUTO) {
 		if (!pos) {
@@ -2311,6 +2528,7 @@ static int azx_position_ok(struct azx *chip, struct azx_dev *azx_dev)
 			chip->position_fix[stream] = POS_FIX_POSBUF;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (WARN_ONCE(!azx_dev->period_bytes,
 		      "hda-intel: zero azx_dev->period_bytes"))
@@ -2378,6 +2596,9 @@ static void azx_clear_irq_pending(struct azx *chip)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86
 static int azx_pcm_mmap(struct snd_pcm_substream *substream,
 			struct vm_area_struct *area)
@@ -2392,8 +2613,11 @@ static int azx_pcm_mmap(struct snd_pcm_substream *substream,
 #define azx_pcm_mmap	NULL
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_pcm_ops azx_pcm_ops = {
 	.open = azx_pcm_open,
 	.close = azx_pcm_close,
@@ -2406,7 +2630,11 @@ static struct snd_pcm_ops azx_pcm_ops = {
 <<<<<<< HEAD
 	.mmap = azx_pcm_mmap,
 =======
+<<<<<<< HEAD
+	.mmap = azx_pcm_mmap,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.page = snd_pcm_sgbuf_ops_page,
 };
 
@@ -2417,8 +2645,12 @@ static void azx_pcm_free(struct snd_pcm *pcm)
 <<<<<<< HEAD
 		list_del(&apcm->list);
 =======
+<<<<<<< HEAD
+		list_del(&apcm->list);
+=======
 		apcm->chip->pcm[pcm->device] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(apcm);
 	}
 }
@@ -2427,7 +2659,12 @@ static void azx_pcm_free(struct snd_pcm *pcm)
 #define MAX_PREALLOC_SIZE	(32 * 1024 * 1024)
 
 =======
+<<<<<<< HEAD
+#define MAX_PREALLOC_SIZE	(32 * 1024 * 1024)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 azx_attach_pcm_stream(struct hda_bus *bus, struct hda_codec *codec,
 		      struct hda_pcm *cpcm)
@@ -2437,6 +2674,9 @@ azx_attach_pcm_stream(struct hda_bus *bus, struct hda_codec *codec,
 	struct azx_pcm *apcm;
 	int pcm_dev = cpcm->device;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int size;
 	int s, err;
 
@@ -2445,6 +2685,8 @@ azx_attach_pcm_stream(struct hda_bus *bus, struct hda_codec *codec,
 			snd_printk(KERN_ERR SFX "PCM %d already exists\n", pcm_dev);
 			return -EBUSY;
 		}
+<<<<<<< HEAD
+=======
 =======
 	int s, err;
 
@@ -2457,6 +2699,7 @@ azx_attach_pcm_stream(struct hda_bus *bus, struct hda_codec *codec,
 		snd_printk(KERN_ERR SFX "PCM %d already exists\n", pcm_dev);
 		return -EBUSY;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	err = snd_pcm_new(chip->card, cpcm->name, pcm_dev,
 			  cpcm->stream[SNDRV_PCM_STREAM_PLAYBACK].substreams,
@@ -2472,7 +2715,11 @@ azx_attach_pcm_stream(struct hda_bus *bus, struct hda_codec *codec,
 <<<<<<< HEAD
 	apcm->pcm = pcm;
 =======
+<<<<<<< HEAD
+	apcm->pcm = pcm;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	apcm->codec = codec;
 	pcm->private_data = apcm;
 	pcm->private_free = azx_pcm_free;
@@ -2481,8 +2728,12 @@ azx_attach_pcm_stream(struct hda_bus *bus, struct hda_codec *codec,
 <<<<<<< HEAD
 	list_add_tail(&apcm->list, &chip->pcm_list);
 =======
+<<<<<<< HEAD
+	list_add_tail(&apcm->list, &chip->pcm_list);
+=======
 	chip->pcm[pcm_dev] = pcm;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpcm->pcm = pcm;
 	for (s = 0; s < 2; s++) {
 		apcm->hinfo[s] = &cpcm->stream[s];
@@ -2491,17 +2742,23 @@ azx_attach_pcm_stream(struct hda_bus *bus, struct hda_codec *codec,
 	}
 	/* buffer pre-allocation */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size = CONFIG_SND_HDA_PREALLOC_SIZE * 1024;
 	if (size > MAX_PREALLOC_SIZE)
 		size = MAX_PREALLOC_SIZE;
 	snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_DEV_SG,
 					      snd_dma_pci_data(chip->pci),
 					      size, MAX_PREALLOC_SIZE);
+<<<<<<< HEAD
+=======
 =======
 	snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_DEV_SG,
 					      snd_dma_pci_data(chip->pci),
 					      1024 * 64, 32 * 1024 * 1024);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2547,8 +2804,12 @@ static int azx_acquire_irq(struct azx *chip, int do_disconnect)
 <<<<<<< HEAD
 			KBUILD_MODNAME, chip)) {
 =======
+<<<<<<< HEAD
+			KBUILD_MODNAME, chip)) {
+=======
 			"hda_intel", chip)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "hda-intel: unable to grab IRQ %d, "
 		       "disabling device\n", chip->pci->irq);
 		if (do_disconnect)
@@ -2623,12 +2884,17 @@ static int azx_suspend(struct pci_dev *pci, pm_message_t state)
 	struct snd_card *card = pci_get_drvdata(pci);
 	struct azx *chip = card->private_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct azx_pcm *p;
 
 	snd_power_change_state(card, SNDRV_CTL_POWER_D3hot);
 	azx_clear_irq_pending(chip);
 	list_for_each_entry(p, &chip->pcm_list, list)
 		snd_pcm_suspend_all(p->pcm);
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -2637,6 +2903,7 @@ static int azx_suspend(struct pci_dev *pci, pm_message_t state)
 	for (i = 0; i < HDA_MAX_PCMS; i++)
 		snd_pcm_suspend_all(chip->pcm[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chip->initialized)
 		snd_hda_suspend(chip->bus);
 	azx_stop_chip(chip);
@@ -2732,6 +2999,9 @@ static int azx_free(struct azx *chip)
 	if (chip->azx_dev) {
 		for (i = 0; i < chip->num_streams; i++)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (chip->azx_dev[i].bdl.area) {
 				mark_pages_wc(chip, &chip->azx_dev[i].bdl, false);
 				snd_dma_free_pages(&chip->azx_dev[i].bdl);
@@ -2745,6 +3015,8 @@ static int azx_free(struct azx *chip)
 		mark_pages_wc(chip, &chip->posbuf, false);
 		snd_dma_free_pages(&chip->posbuf);
 	}
+<<<<<<< HEAD
+=======
 =======
 			if (chip->azx_dev[i].bdl.area)
 				snd_dma_free_pages(&chip->azx_dev[i].bdl);
@@ -2754,6 +3026,7 @@ static int azx_free(struct azx *chip)
 	if (chip->posbuf.area)
 		snd_dma_free_pages(&chip->posbuf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_release_regions(chip->pci);
 	pci_disable_device(chip->pci);
 	kfree(chip->azx_dev);
@@ -2775,6 +3048,10 @@ static struct snd_pci_quirk position_fix_list[] __devinitdata = {
 	SND_PCI_QUIRK(0x1028, 0x01cc, "Dell D820", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1028, 0x01de, "Dell Precision 390", POS_FIX_LPIB),
 =======
+<<<<<<< HEAD
+	SND_PCI_QUIRK(0x1028, 0x01cc, "Dell D820", POS_FIX_LPIB),
+	SND_PCI_QUIRK(0x1028, 0x01de, "Dell Precision 390", POS_FIX_LPIB),
+=======
 	SND_PCI_QUIRK(0x1025, 0x009f, "Acer Aspire 5110", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1025, 0x026f, "Acer Aspire 5538", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1028, 0x01cc, "Dell D820", POS_FIX_LPIB),
@@ -2783,11 +3060,15 @@ static struct snd_pci_quirk position_fix_list[] __devinitdata = {
 	SND_PCI_QUIRK(0x1028, 0x02c6, "Dell Inspiron 1010", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1028, 0x0470, "Dell Inspiron 1120", POS_FIX_LPIB),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_PCI_QUIRK(0x103c, 0x306d, "HP dv3", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1043, 0x813d, "ASUS P5AD2", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1043, 0x81b3, "ASUS", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1043, 0x81e7, "ASUS M2V", POS_FIX_LPIB),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_PCI_QUIRK(0x104d, 0x9069, "Sony VPCS11V9E", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x10de, 0xcb89, "Macbook Pro 7,1", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1297, 0x3166, "Shuttle", POS_FIX_LPIB),
@@ -2796,6 +3077,8 @@ static struct snd_pci_quirk position_fix_list[] __devinitdata = {
 	SND_PCI_QUIRK(0x1565, 0x8218, "Biostar Microtech", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x1849, 0x0888, "775Dual-VSTA", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x8086, 0x2503, "DG965OT AAD63733-203", POS_FIX_LPIB),
+<<<<<<< HEAD
+=======
 =======
 	SND_PCI_QUIRK(0x1043, 0x8410, "ASUS", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x104d, 0x9069, "Sony VPCS11V9E", POS_FIX_LPIB),
@@ -2810,6 +3093,7 @@ static struct snd_pci_quirk position_fix_list[] __devinitdata = {
 	SND_PCI_QUIRK(0x8086, 0x2503, "DG965OT AAD63733-203", POS_FIX_LPIB),
 	SND_PCI_QUIRK(0x8086, 0xd601, "eMachines T5212", POS_FIX_LPIB),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{}
 };
 
@@ -2824,7 +3108,11 @@ static int __devinit check_position_fix(struct azx *chip, int fix)
 <<<<<<< HEAD
 	case POS_FIX_COMBO:
 =======
+<<<<<<< HEAD
+	case POS_FIX_COMBO:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return fix;
 	}
 
@@ -2905,8 +3193,11 @@ static struct snd_pci_quirk msi_black_list[] __devinitdata = {
 	SND_PCI_QUIRK(0x1043, 0x822d, "ASUS", 0), /* Athlon64 X2 + nvidia MCP55 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	SND_PCI_QUIRK(0x1179, 0xfb44, "Toshiba Satellite C870", 0), /* AMD Hudson */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_PCI_QUIRK(0x1849, 0x0888, "ASRock", 0), /* Athlon64 X2 + nvidia */
 	SND_PCI_QUIRK(0xa0a0, 0x0575, "Aopen MZ915-M", 0), /* ICH6 */
 	{}
@@ -2938,6 +3229,9 @@ static void __devinit check_msi(struct azx *chip)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* check the snoop mode availability */
 static void __devinit azx_check_snoop_available(struct azx *chip)
 {
@@ -2967,8 +3261,11 @@ static void __devinit azx_check_snoop_available(struct azx *chip)
 		chip->snoop = snoop;
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * constructor
@@ -3008,6 +3305,9 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 	chip->dev_index = dev;
 	INIT_WORK(&chip->irq_pending_work, azx_irq_pending_work);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&chip->pcm_list);
 
 	chip->position_fix[0] = chip->position_fix[1] =
@@ -3023,6 +3323,8 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 	chip->single_cmd = single_cmd;
 	chip->snoop = hda_snoop;
 	azx_check_snoop_available(chip);
+<<<<<<< HEAD
+=======
 =======
 
 	chip->position_fix[0] = chip->position_fix[1] =
@@ -3031,6 +3333,7 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 
 	chip->single_cmd = single_cmd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (bdl_pos_adj[dev] < 0) {
 		switch (chip->driver_type) {
@@ -3104,6 +3407,9 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* disable buffer size rounding to 128-byte multiples if supported */
 	if (align_buffer_size >= 0)
 		chip->align_buffer_size = !!align_buffer_size;
@@ -3116,8 +3422,11 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 			chip->align_buffer_size = 1;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* allow 64bit DMA address if supported by H/W */
 	if ((gcap & ICH6_GCAP_64OK) && !pci_set_dma_mask(pci, DMA_BIT_MASK(64)))
 		pci_set_consistent_dma_mask(pci, DMA_BIT_MASK(64));
@@ -3143,7 +3452,11 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 <<<<<<< HEAD
 		case AZX_DRIVER_ATIHDMI_NS:
 =======
+<<<<<<< HEAD
+		case AZX_DRIVER_ATIHDMI_NS:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			chip->playback_streams = ATIHDMI_NUM_PLAYBACK;
 			chip->capture_streams = ATIHDMI_NUM_CAPTURE;
 			break;
@@ -3176,7 +3489,11 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 <<<<<<< HEAD
 		mark_pages_wc(chip, &chip->azx_dev[i].bdl, true);
 =======
+<<<<<<< HEAD
+		mark_pages_wc(chip, &chip->azx_dev[i].bdl, true);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/* allocate memory for the position buffer */
 	err = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV,
@@ -3189,7 +3506,11 @@ static int __devinit azx_create(struct snd_card *card, struct pci_dev *pci,
 <<<<<<< HEAD
 	mark_pages_wc(chip, &chip->posbuf, true);
 =======
+<<<<<<< HEAD
+	mark_pages_wc(chip, &chip->posbuf, true);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* allocate CORB/RIRB */
 	err = azx_alloc_cmd_io(chip);
 	if (err < 0)
@@ -3332,6 +3653,9 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 	/* CPT */
 	{ PCI_DEVICE(0x8086, 0x1c20),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  .driver_data = AZX_DRIVER_PCH | AZX_DCAPS_SCH_SNOOP |
 	  AZX_DCAPS_BUFSIZE },
 	/* PBG */
@@ -3378,6 +3702,8 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 	{ PCI_DEVICE(0x8086, 0x3a6e),
 	  .driver_data = AZX_DRIVER_ICH | AZX_DCAPS_OLD_SSYNC |
 	  AZX_DCAPS_BUFSIZE },  /* ICH10 */
+<<<<<<< HEAD
+=======
 =======
 	  .driver_data = AZX_DRIVER_PCH | AZX_DCAPS_SCH_SNOOP },
 	/* PBG */
@@ -3390,6 +3716,7 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 	{ PCI_DEVICE(0x8086, 0x811b),
 	  .driver_data = AZX_DRIVER_SCH | AZX_DCAPS_SCH_SNOOP },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Generic Intel */
 	{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_ANY_ID),
 	  .class = PCI_CLASS_MULTIMEDIA_HD_AUDIO << 8,
@@ -3397,8 +3724,12 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 <<<<<<< HEAD
 	  .driver_data = AZX_DRIVER_ICH | AZX_DCAPS_BUFSIZE },
 =======
+<<<<<<< HEAD
+	  .driver_data = AZX_DRIVER_ICH | AZX_DCAPS_BUFSIZE },
+=======
 	  .driver_data = AZX_DRIVER_ICH },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* ATI SB 450/600/700/800/900 */
 	{ PCI_DEVICE(0x1002, 0x437b),
 	  .driver_data = AZX_DRIVER_ATI | AZX_DCAPS_PRESET_ATI_SB },
@@ -3437,6 +3768,9 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 	{ PCI_DEVICE(0x1002, 0xaa48),
 	  .driver_data = AZX_DRIVER_ATIHDMI | AZX_DCAPS_PRESET_ATI_HDMI },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ PCI_DEVICE(0x1002, 0x9902),
 	  .driver_data = AZX_DRIVER_ATIHDMI_NS | AZX_DCAPS_PRESET_ATI_HDMI },
 	{ PCI_DEVICE(0x1002, 0xaaa0),
@@ -3445,8 +3779,11 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 	  .driver_data = AZX_DRIVER_ATIHDMI_NS | AZX_DCAPS_PRESET_ATI_HDMI },
 	{ PCI_DEVICE(0x1002, 0xaab0),
 	  .driver_data = AZX_DRIVER_ATIHDMI_NS | AZX_DCAPS_PRESET_ATI_HDMI },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* VIA VT8251/VT8237A */
 	{ PCI_DEVICE(0x1106, 0x3288),
 	  .driver_data = AZX_DRIVER_VIA | AZX_DCAPS_POSFIX_VIA },
@@ -3475,8 +3812,12 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 <<<<<<< HEAD
 	  AZX_DCAPS_RIRB_PRE_DELAY | AZX_DCAPS_POSFIX_LPIB },
 =======
+<<<<<<< HEAD
+	  AZX_DCAPS_RIRB_PRE_DELAY | AZX_DCAPS_POSFIX_LPIB },
+=======
 	  AZX_DCAPS_RIRB_PRE_DELAY },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	/* this entry seems still valid -- i.e. without emu20kx chip */
 	{ PCI_DEVICE(0x1102, 0x0009),
@@ -3484,8 +3825,12 @@ static DEFINE_PCI_DEVICE_TABLE(azx_ids) = {
 <<<<<<< HEAD
 	  AZX_DCAPS_RIRB_PRE_DELAY | AZX_DCAPS_POSFIX_LPIB },
 =======
+<<<<<<< HEAD
+	  AZX_DCAPS_RIRB_PRE_DELAY | AZX_DCAPS_POSFIX_LPIB },
+=======
 	  AZX_DCAPS_RIRB_PRE_DELAY },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	/* Vortex86MX */
 	{ PCI_DEVICE(0x17f3, 0x3010), .driver_data = AZX_DRIVER_GENERIC },
@@ -3509,8 +3854,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "HDA Intel",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = azx_ids,
 	.probe = azx_probe,
 	.remove = __devexit_p(azx_remove),

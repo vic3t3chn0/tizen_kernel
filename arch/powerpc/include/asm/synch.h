@@ -43,6 +43,9 @@ static inline void isync(void)
 	isync;						\
 	MAKE_LWSYNC_SECTION_ENTRY(97, __lwsync_fixup);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PPC_ACQUIRE_BARRIER	 "\n" stringify_in_c(__PPC_ACQUIRE_BARRIER)
 #define PPC_RELEASE_BARRIER	 stringify_in_c(LWSYNC) "\n"
 #define PPC_ATOMIC_ENTRY_BARRIER "\n" stringify_in_c(LWSYNC) "\n"
@@ -52,6 +55,8 @@ static inline void isync(void)
 #define PPC_RELEASE_BARRIER
 #define PPC_ATOMIC_ENTRY_BARRIER
 #define PPC_ATOMIC_EXIT_BARRIER
+<<<<<<< HEAD
+=======
 =======
 #define PPC_ACQUIRE_BARRIER	"\n" stringify_in_c(__PPC_ACQUIRE_BARRIER)
 #define PPC_RELEASE_BARRIER	stringify_in_c(LWSYNC) "\n"
@@ -59,6 +64,7 @@ static inline void isync(void)
 #define PPC_ACQUIRE_BARRIER
 #define PPC_RELEASE_BARRIER
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* __KERNEL__ */

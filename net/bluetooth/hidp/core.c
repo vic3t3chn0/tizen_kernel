@@ -6,7 +6,13 @@
    Copyright 2011,2012 Sony Corporation
    Copyright (c) 2012 Sony Mobile Communications AB.
 =======
+<<<<<<< HEAD
+   Copyright (c) 2012-2013 The Linux Foundation.  All rights reserved.
+   Copyright 2011,2012 Sony Corporation
+   Copyright (c) 2012 Sony Mobile Communications AB.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License version 2 as
@@ -30,7 +36,11 @@
 <<<<<<< HEAD
 #include <linux/interrupt.h>
 =======
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/types.h>
 #include <linux/errno.h>
@@ -49,8 +59,11 @@
 #include <linux/mutex.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/kthread.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/sock.h>
 
 #include <linux/input.h>
@@ -112,14 +125,20 @@ static void __hidp_link_session(struct hidp_session *session)
 	list_add(&session->list, &hidp_session_list);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	hci_conn_hold_device(session->conn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __hidp_unlink_session(struct hidp_session *session)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bdaddr_t *dst = &session->bdaddr;
 	struct hci_dev *hdev;
 	struct device *dev = NULL;
@@ -135,9 +154,12 @@ static void __hidp_unlink_session(struct hidp_session *session)
 
 	if (dev)
 		hci_conn_put_device(session->conn);
+<<<<<<< HEAD
+=======
 =======
 	hci_conn_put_device(session->conn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_del(&session->list);
 	module_put(THIS_MODULE);
@@ -368,13 +390,22 @@ static int hidp_get_raw_report(struct hid_device *hid,
 	int data_size = 1;
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_HID_SONY_PS3_CTRL_BT
+	int data_size = 1;
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (report_type) {
 	case HID_FEATURE_REPORT:
 		report_type = HIDP_TRANS_GET_REPORT | HIDP_DATA_RTYPE_FEATURE;
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HID_SONY_PS3_CTRL_BT
 	case HID_FEATREP_WDATASIZE:
 			report_type = HIDP_TRANS_GET_REPORT
@@ -382,8 +413,11 @@ static int hidp_get_raw_report(struct hid_device *hid,
 			data_size = 3;
 		break;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case HID_INPUT_REPORT:
 		report_type = HIDP_TRANS_GET_REPORT | HIDP_DATA_RTYPE_INPUT;
 		break;
@@ -403,15 +437,21 @@ static int hidp_get_raw_report(struct hid_device *hid,
 	set_bit(HIDP_WAITING_FOR_RETURN, &session->flags);
 	data[0] = report_number;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_HID_SONY_PS3_CTRL_BT
 	if (hidp_send_ctrl_message(hid->driver_data, report_type, data, 1))
 #else
 	if (hidp_send_ctrl_message(hid->driver_data, report_type,
 			data, data_size))
 #endif
+<<<<<<< HEAD
+=======
 =======
 	if (hidp_send_ctrl_message(hid->driver_data, report_type, data, 1))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_eio;
 
 	/* Wait for the return of the report. The returned report
@@ -527,8 +567,12 @@ static void hidp_idle_timeout(unsigned long arg)
 <<<<<<< HEAD
 	hidp_schedule(session);
 =======
+<<<<<<< HEAD
+	hidp_schedule(session);
+=======
 	wake_up_process(session->task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void hidp_set_timer(struct hidp_session *session)
@@ -604,9 +648,15 @@ static void hidp_process_hid_control(struct hidp_session *session,
 		atomic_inc(&session->terminate);
 		hidp_schedule(session);
 =======
+<<<<<<< HEAD
+		/* Kill session thread */
+		atomic_inc(&session->terminate);
+		hidp_schedule(session);
+=======
 		atomic_inc(&session->terminate);
 		wake_up_process(current);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -768,12 +818,19 @@ static int hidp_session(void *arg)
 <<<<<<< HEAD
 	int vendor = 0x0000, product = 0x0000;
 =======
+<<<<<<< HEAD
+	int vendor = 0x0000, product = 0x0000;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wait_queue_t ctrl_wait, intr_wait;
 
 	BT_DBG("session %p", session);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (session->input) {
 		vendor  = session->input->id.vendor;
 		product = session->input->id.product;
@@ -785,8 +842,11 @@ static int hidp_session(void *arg)
 	}
 
 	daemonize("khidpd_%04x%04x", vendor, product);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_user_nice(current, -15);
 
 	init_waitqueue_entry(&ctrl_wait, current);
@@ -800,9 +860,15 @@ static int hidp_session(void *arg)
 		set_current_state(TASK_INTERRUPTIBLE);
 
 =======
+<<<<<<< HEAD
+	while (!atomic_read(&session->terminate)) {
+		set_current_state(TASK_INTERRUPTIBLE);
+
+=======
 	set_current_state(TASK_INTERRUPTIBLE);
 	while (!atomic_read(&session->terminate)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ctrl_sk->sk_state != BT_CONNECTED ||
 				intr_sk->sk_state != BT_CONNECTED)
 			break;
@@ -810,25 +876,37 @@ static int hidp_session(void *arg)
 		while ((skb = skb_dequeue(&ctrl_sk->sk_receive_queue))) {
 			skb_orphan(skb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!skb_linearize(skb))
 				hidp_recv_ctrl_frame(session, skb);
 			else
 				kfree_skb(skb);
+<<<<<<< HEAD
+=======
 =======
 			hidp_recv_ctrl_frame(session, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		while ((skb = skb_dequeue(&intr_sk->sk_receive_queue))) {
 			skb_orphan(skb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!skb_linearize(skb))
 				hidp_recv_intr_frame(session, skb);
 			else
 				kfree_skb(skb);
+<<<<<<< HEAD
+=======
 =======
 			hidp_recv_intr_frame(session, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		hidp_process_transmit(session);
@@ -836,8 +914,11 @@ static int hidp_session(void *arg)
 		schedule();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		set_current_state(TASK_INTERRUPTIBLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	set_current_state(TASK_RUNNING);
 	remove_wait_queue(sk_sleep(intr_sk), &intr_wait);
@@ -876,18 +957,26 @@ static int hidp_session(void *arg)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(session->rd_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(session);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct hci_conn *hidp_get_connection(struct hidp_session *session)
 {
 	bdaddr_t *src = &bt_sk(session->ctrl_sock->sk)->src;
 	bdaddr_t *dst = &bt_sk(session->ctrl_sock->sk)->dst;
 	struct hci_conn *conn;
+<<<<<<< HEAD
+=======
 =======
 static struct device *hidp_get_device(struct hidp_session *session)
 {
@@ -895,6 +984,7 @@ static struct device *hidp_get_device(struct hidp_session *session)
 	bdaddr_t *dst = &bt_sk(session->ctrl_sock->sk)->dst;
 	struct device *device = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hci_dev *hdev;
 
 	hdev = hci_get_route(dst, src);
@@ -902,6 +992,9 @@ static struct device *hidp_get_device(struct hidp_session *session)
 		return NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hci_dev_lock_bh(hdev);
 	conn = hci_conn_hash_lookup_ba(hdev, ACL_LINK, dst);
 	if (conn) {
@@ -913,6 +1006,8 @@ static struct device *hidp_get_device(struct hidp_session *session)
 	hci_dev_put(hdev);
 
 	return conn;
+<<<<<<< HEAD
+=======
 =======
 	session->conn = hci_conn_hash_lookup_ba(hdev, ACL_LINK, dst);
 	if (session->conn)
@@ -922,6 +1017,7 @@ static struct device *hidp_get_device(struct hidp_session *session)
 
 	return device;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int hidp_setup_input(struct hidp_session *session,
@@ -974,8 +1070,12 @@ static int hidp_setup_input(struct hidp_session *session,
 <<<<<<< HEAD
 	input->dev.parent = &session->conn->dev;
 =======
+<<<<<<< HEAD
+	input->dev.parent = &session->conn->dev;
+=======
 	input->dev.parent = hidp_get_device(session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	input->event = hidp_input_event;
 
@@ -984,9 +1084,13 @@ static int hidp_setup_input(struct hidp_session *session,
 <<<<<<< HEAD
 		hci_conn_put_device(session->conn);
 =======
+<<<<<<< HEAD
+		hci_conn_put_device(session->conn);
+=======
 		input_free_device(input);
 		session->input = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 
@@ -1080,11 +1184,16 @@ static int hidp_setup_hid(struct hidp_session *session,
 	hid->country = req->country;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	strncpy(hid->name, req->name, 128);
 	strncpy(hid->phys, batostr(&bt_sk(session->ctrl_sock->sk)->src), 64);
 	strncpy(hid->uniq, batostr(&bt_sk(session->ctrl_sock->sk)->dst), 64);
 
 	hid->dev.parent = &session->conn->dev;
+<<<<<<< HEAD
+=======
 =======
 	strncpy(hid->name, req->name, sizeof(req->name) - 1);
 	strncpy(hid->phys, batostr(&bt_sk(session->ctrl_sock->sk)->src), 64);
@@ -1092,6 +1201,7 @@ static int hidp_setup_hid(struct hidp_session *session,
 
 	hid->dev.parent = hidp_get_device(session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hid->ll_driver = &hidp_hid_driver;
 
 	hid->hid_get_raw_report = hidp_get_raw_report;
@@ -1111,8 +1221,11 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 	struct hidp_session *session, *s;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int vendor, product;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	BT_DBG("");
@@ -1141,11 +1254,16 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 	session->ctrl_mtu = min_t(uint, l2cap_pi(ctrl_sock->sk)->omtu, l2cap_pi(ctrl_sock->sk)->imtu);
 	session->intr_mtu = min_t(uint, l2cap_pi(intr_sock->sk)->omtu, l2cap_pi(intr_sock->sk)->imtu);
 =======
+<<<<<<< HEAD
+	session->ctrl_mtu = min_t(uint, l2cap_pi(ctrl_sock->sk)->omtu, l2cap_pi(ctrl_sock->sk)->imtu);
+	session->intr_mtu = min_t(uint, l2cap_pi(intr_sock->sk)->omtu, l2cap_pi(intr_sock->sk)->imtu);
+=======
 	session->ctrl_mtu = min_t(uint, l2cap_pi(ctrl_sock->sk)->chan->omtu,
 					l2cap_pi(ctrl_sock->sk)->chan->imtu);
 	session->intr_mtu = min_t(uint, l2cap_pi(intr_sock->sk)->chan->omtu,
 					l2cap_pi(intr_sock->sk)->chan->imtu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BT_DBG("ctrl mtu %d intr mtu %d", session->ctrl_mtu, session->intr_mtu);
 
@@ -1154,14 +1272,20 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 	session->state     = BT_CONNECTED;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	session->conn = hidp_get_connection(session);
 	if (!session->conn) {
 		err = -ENOTCONN;
 		goto failed;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	setup_timer(&session->timer, hidp_idle_timeout, (unsigned long)session);
 
 	skb_queue_head_init(&session->ctrl_transmit);
@@ -1178,7 +1302,12 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 	__hidp_link_session(session);
 
 =======
+<<<<<<< HEAD
+	__hidp_link_session(session);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (req->rd_size > 0) {
 		err = hidp_setup_hid(session, req);
 		if (err && err != -ENODEV)
@@ -1192,11 +1321,16 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hidp_set_timer(session);
 
 	err = kernel_thread(hidp_session, session, CLONE_KERNEL);
 	if (err < 0)
 		goto unlink;
+<<<<<<< HEAD
+=======
 =======
 	__hidp_link_session(session);
 
@@ -1221,12 +1355,17 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (session->waiting_for_startup) {
 		wait_event_interruptible(session->startup_queue,
 			!session->waiting_for_startup);
 	}
 
 	err = hid_add_device(session->hid);
+<<<<<<< HEAD
+	if (err < 0)
+		goto err_add_device;
+=======
 <<<<<<< HEAD
 	if (err < 0)
 		goto err_add_device;
@@ -1238,6 +1377,7 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 		return err;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (session->input) {
 		hidp_send_ctrl_message(session,
@@ -1252,6 +1392,9 @@ int hidp_add_connection(struct hidp_connadd_req *req, struct socket *ctrl_sock, 
 	return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_add_device:
 	hid_destroy_device(session->hid);
 	session->hid = NULL;
@@ -1261,6 +1404,8 @@ err_add_device:
 unlink:
 	hidp_del_timer(session);
 
+<<<<<<< HEAD
+=======
 =======
 unlink:
 	hidp_del_timer(session);
@@ -1268,6 +1413,7 @@ unlink:
 	__hidp_unlink_session(session);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (session->input) {
 		input_unregister_device(session->input);
 		session->input = NULL;
@@ -1286,7 +1432,12 @@ purge:
 	__hidp_unlink_session(session);
 
 =======
+<<<<<<< HEAD
+	__hidp_unlink_session(session);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_queue_purge(&session->ctrl_transmit);
 	skb_queue_purge(&session->intr_transmit);
 
@@ -1296,7 +1447,11 @@ failed:
 <<<<<<< HEAD
 	input_free_device(session->input);
 =======
+<<<<<<< HEAD
+	input_free_device(session->input);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(session);
 	return err;
 }
@@ -1321,6 +1476,9 @@ int hidp_del_connection(struct hidp_conndel_req *req)
 			skb_queue_purge(&session->intr_transmit);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Wakeup user-space polling for socket errors */
 			session->intr_sock->sk->sk_err = EUNATCH;
 			session->ctrl_sock->sk->sk_err = EUNATCH;
@@ -1328,10 +1486,13 @@ int hidp_del_connection(struct hidp_conndel_req *req)
 			/* Kill session thread */
 			atomic_inc(&session->terminate);
 			hidp_schedule(session);
+<<<<<<< HEAD
+=======
 =======
 			atomic_inc(&session->terminate);
 			wake_up_process(session->task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else
 		err = -ENOENT;

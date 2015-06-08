@@ -69,8 +69,12 @@
 <<<<<<< HEAD
 static void __iommu_set_twl(struct omap_iommu *obj, bool on)
 =======
+<<<<<<< HEAD
+static void __iommu_set_twl(struct omap_iommu *obj, bool on)
+=======
 static void __iommu_set_twl(struct iommu *obj, bool on)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 l = iommu_read_reg(obj, MMU_CNTL);
 
@@ -92,8 +96,12 @@ static void __iommu_set_twl(struct iommu *obj, bool on)
 <<<<<<< HEAD
 static int omap2_iommu_enable(struct omap_iommu *obj)
 =======
+<<<<<<< HEAD
+static int omap2_iommu_enable(struct omap_iommu *obj)
+=======
 static int omap2_iommu_enable(struct iommu *obj)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 l, pa;
 	unsigned long timeout;
@@ -138,8 +146,12 @@ static int omap2_iommu_enable(struct iommu *obj)
 <<<<<<< HEAD
 static void omap2_iommu_disable(struct omap_iommu *obj)
 =======
+<<<<<<< HEAD
+static void omap2_iommu_disable(struct omap_iommu *obj)
+=======
 static void omap2_iommu_disable(struct iommu *obj)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 l = iommu_read_reg(obj, MMU_CNTL);
 
@@ -153,8 +165,12 @@ static void omap2_iommu_disable(struct iommu *obj)
 <<<<<<< HEAD
 static void omap2_iommu_set_twl(struct omap_iommu *obj, bool on)
 =======
+<<<<<<< HEAD
+static void omap2_iommu_set_twl(struct omap_iommu *obj, bool on)
+=======
 static void omap2_iommu_set_twl(struct iommu *obj, bool on)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	__iommu_set_twl(obj, false);
 }
@@ -162,8 +178,12 @@ static void omap2_iommu_set_twl(struct iommu *obj, bool on)
 <<<<<<< HEAD
 static u32 omap2_iommu_fault_isr(struct omap_iommu *obj, u32 *ra)
 =======
+<<<<<<< HEAD
+static u32 omap2_iommu_fault_isr(struct omap_iommu *obj, u32 *ra)
+=======
 static u32 omap2_iommu_fault_isr(struct iommu *obj, u32 *ra)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 stat, da;
 	u32 errs = 0;
@@ -196,8 +216,12 @@ static u32 omap2_iommu_fault_isr(struct iommu *obj, u32 *ra)
 <<<<<<< HEAD
 static void omap2_tlb_read_cr(struct omap_iommu *obj, struct cr_regs *cr)
 =======
+<<<<<<< HEAD
+static void omap2_tlb_read_cr(struct omap_iommu *obj, struct cr_regs *cr)
+=======
 static void omap2_tlb_read_cr(struct iommu *obj, struct cr_regs *cr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	cr->cam = iommu_read_reg(obj, MMU_READ_CAM);
 	cr->ram = iommu_read_reg(obj, MMU_READ_RAM);
@@ -206,8 +230,12 @@ static void omap2_tlb_read_cr(struct iommu *obj, struct cr_regs *cr)
 <<<<<<< HEAD
 static void omap2_tlb_load_cr(struct omap_iommu *obj, struct cr_regs *cr)
 =======
+<<<<<<< HEAD
+static void omap2_tlb_load_cr(struct omap_iommu *obj, struct cr_regs *cr)
+=======
 static void omap2_tlb_load_cr(struct iommu *obj, struct cr_regs *cr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	iommu_write_reg(obj, cr->cam | MMU_CAM_V, MMU_CAM);
 	iommu_write_reg(obj, cr->ram, MMU_RAM);
@@ -225,8 +253,13 @@ static u32 omap2_cr_to_virt(struct cr_regs *cr)
 static struct cr_regs *omap2_alloc_cr(struct omap_iommu *obj,
 						struct iotlb_entry *e)
 =======
+<<<<<<< HEAD
+static struct cr_regs *omap2_alloc_cr(struct omap_iommu *obj,
+						struct iotlb_entry *e)
+=======
 static struct cr_regs *omap2_alloc_cr(struct iommu *obj, struct iotlb_entry *e)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cr_regs *cr;
 
@@ -259,6 +292,9 @@ static u32 omap2_get_pte_attr(struct iotlb_entry *e)
 	attr |= e->endian;
 	attr |= e->elsz >> 3;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	attr <<= (((e->pgsz == MMU_CAM_PGSZ_4K) ||
 			(e->pgsz == MMU_CAM_PGSZ_64K)) ? 0 : 6);
 	return attr;
@@ -266,6 +302,8 @@ static u32 omap2_get_pte_attr(struct iotlb_entry *e)
 
 static ssize_t
 omap2_dump_cr(struct omap_iommu *obj, struct cr_regs *cr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 	attr <<= ((e->pgsz & MMU_CAM_PGSZ_4K) ? 0 : 6);
 
@@ -274,6 +312,7 @@ omap2_dump_cr(struct omap_iommu *obj, struct cr_regs *cr, char *buf)
 
 static ssize_t omap2_dump_cr(struct iommu *obj, struct cr_regs *cr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *p = buf;
 
@@ -301,8 +340,13 @@ static ssize_t omap2_dump_cr(struct iommu *obj, struct cr_regs *cr, char *buf)
 static ssize_t
 omap2_iommu_dump_ctx(struct omap_iommu *obj, char *buf, ssize_t len)
 =======
+<<<<<<< HEAD
+static ssize_t
+omap2_iommu_dump_ctx(struct omap_iommu *obj, char *buf, ssize_t len)
+=======
 static ssize_t omap2_iommu_dump_ctx(struct iommu *obj, char *buf, ssize_t len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *p = buf;
 
@@ -331,8 +375,12 @@ out:
 <<<<<<< HEAD
 static void omap2_iommu_save_ctx(struct omap_iommu *obj)
 =======
+<<<<<<< HEAD
+static void omap2_iommu_save_ctx(struct omap_iommu *obj)
+=======
 static void omap2_iommu_save_ctx(struct iommu *obj)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 	u32 *p = obj->ctx;
@@ -348,8 +396,12 @@ static void omap2_iommu_save_ctx(struct iommu *obj)
 <<<<<<< HEAD
 static void omap2_iommu_restore_ctx(struct omap_iommu *obj)
 =======
+<<<<<<< HEAD
+static void omap2_iommu_restore_ctx(struct omap_iommu *obj)
+=======
 static void omap2_iommu_restore_ctx(struct iommu *obj)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 	u32 *p = obj->ctx;
@@ -402,8 +454,12 @@ static int __init omap2_iommu_init(void)
 <<<<<<< HEAD
 	return omap_install_iommu_arch(&omap2_iommu_ops);
 =======
+<<<<<<< HEAD
+	return omap_install_iommu_arch(&omap2_iommu_ops);
+=======
 	return install_iommu_arch(&omap2_iommu_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_init(omap2_iommu_init);
 
@@ -412,8 +468,12 @@ static void __exit omap2_iommu_exit(void)
 <<<<<<< HEAD
 	omap_uninstall_iommu_arch(&omap2_iommu_ops);
 =======
+<<<<<<< HEAD
+	omap_uninstall_iommu_arch(&omap2_iommu_ops);
+=======
 	uninstall_iommu_arch(&omap2_iommu_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_exit(omap2_iommu_exit);
 

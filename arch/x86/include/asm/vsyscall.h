@@ -18,11 +18,14 @@ enum vsyscall_num {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Definitions for CONFIG_GENERIC_TIME definitions */
 #define __vsyscall_fn \
 	__attribute__ ((unused, __section__(".vsyscall_fn"))) notrace
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VGETCPU_RDTSCP	1
 #define VGETCPU_LSL	2
 
@@ -35,14 +38,20 @@ extern struct timezone sys_tz;
 extern void map_vsyscall(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Called on instruction fetch fault in vsyscall page.
  * Returns true if handled.
  */
 extern bool emulate_vsyscall(struct pt_regs *regs, unsigned long address);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 
 #endif /* _ASM_X86_VSYSCALL_H */

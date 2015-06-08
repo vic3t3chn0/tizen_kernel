@@ -254,7 +254,12 @@ static void __init eukrea_cpuimx27_init(void)
 	imx27_soc_init();
 
 =======
+<<<<<<< HEAD
+	imx27_soc_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_gpio_setup_multiple_pins(eukrea_cpuimx27_pins,
 		ARRAY_SIZE(eukrea_cpuimx27_pins), "CPUIMX27");
 
@@ -314,6 +319,9 @@ static struct sys_timer eukrea_cpuimx27_timer = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_START(EUKREA_CPUIMX27, "EUKREA CPUIMX27")
 	.atag_offset = 0x100,
 	.map_io = mx27_map_io,
@@ -323,6 +331,8 @@ MACHINE_START(EUKREA_CPUIMX27, "EUKREA CPUIMX27")
 	.timer = &eukrea_cpuimx27_timer,
 	.init_machine = eukrea_cpuimx27_init,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 MACHINE_START(CPUIMX27, "EUKREA CPUIMX27")
 	.boot_params = MX27_PHYS_OFFSET + 0x100,
@@ -332,4 +342,5 @@ MACHINE_START(CPUIMX27, "EUKREA CPUIMX27")
 	.timer = &eukrea_cpuimx27_timer,
 	.init_machine = eukrea_cpuimx27_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

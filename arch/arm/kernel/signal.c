@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #include <linux/random.h>
 =======
+<<<<<<< HEAD
+#include <linux/random.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/signal.h>
 #include <linux/personality.h>
 #include <linux/freezer.h>
@@ -21,16 +25,22 @@
 #include <asm/elf.h>
 #include <asm/cacheflush.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/traps.h>
 #include <asm/ucontext.h>
 #include <asm/unistd.h>
 #include <asm/vfp.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/ucontext.h>
 #include <asm/unistd.h>
 #include <asm/vfp.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "signal.h"
 
 #define _BLOCKABLE (~(sigmask(SIGKILL) | sigmask(SIGSTOP)))
@@ -58,8 +68,12 @@
 <<<<<<< HEAD
 static const unsigned long sigreturn_codes[7] = {
 =======
+<<<<<<< HEAD
+static const unsigned long sigreturn_codes[7] = {
+=======
 const unsigned long sigreturn_codes[7] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MOV_R7_NR_SIGRETURN,    SWI_SYS_SIGRETURN,    SWI_THUMB_SIGRETURN,
 	MOV_R7_NR_RT_SIGRETURN, SWI_SYS_RT_SIGRETURN, SWI_THUMB_RT_SIGRETURN,
 };
@@ -82,6 +96,9 @@ const unsigned long syscall_restart_code[2] = {
 asmlinkage int sys_sigsuspend(int restart, unsigned long oldmask, old_sigset_t mask)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigset_t blocked;
 
 	current->saved_sigmask = current->blocked;
@@ -89,6 +106,8 @@ asmlinkage int sys_sigsuspend(int restart, unsigned long oldmask, old_sigset_t m
 	mask &= _BLOCKABLE;
 	siginitset(&blocked, mask);
 	set_current_blocked(&blocked);
+<<<<<<< HEAD
+=======
 =======
 	mask &= _BLOCKABLE;
 	spin_lock_irq(&current->sighand->siglock);
@@ -97,6 +116,7 @@ asmlinkage int sys_sigsuspend(int restart, unsigned long oldmask, old_sigset_t m
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	current->state = TASK_INTERRUPTIBLE;
 	schedule();
@@ -140,7 +160,12 @@ sys_sigaction(int sig, const struct old_sigaction __user *act,
 static unsigned long signal_return_offset;
 
 =======
+<<<<<<< HEAD
+static unsigned long signal_return_offset;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CRUNCH
 static int preserve_crunch_context(struct crunch_sigframe __user *frame)
 {
@@ -211,14 +236,20 @@ static int preserve_vfp_context(struct vfp_sigframe __user *frame)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct thread_info *thread = current_thread_info();
 	struct vfp_hard_struct *h = &thread->vfpstate.hard;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const unsigned long magic = VFP_MAGIC;
 	const unsigned long size = VFP_STORAGE_SIZE;
 	int err = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__put_user_error(magic, &frame->magic, err);
 	__put_user_error(size, &frame->size, err);
 
@@ -226,6 +257,8 @@ static int preserve_vfp_context(struct vfp_sigframe __user *frame)
 		return -EFAULT;
 
 	return vfp_preserve_user_clear_hwstate(&frame->ufp, &frame->ufp_exc);
+<<<<<<< HEAD
+=======
 =======
 	vfp_sync_hwstate(thread);
 	__put_user_error(magic, &frame->magic, err);
@@ -251,10 +284,15 @@ static int preserve_vfp_context(struct vfp_sigframe __user *frame)
 
 	return err ? -EFAULT : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int restore_vfp_context(struct vfp_sigframe __user *frame)
 {
+<<<<<<< HEAD
+	unsigned long magic;
+	unsigned long size;
+=======
 <<<<<<< HEAD
 	unsigned long magic;
 	unsigned long size;
@@ -265,6 +303,7 @@ static int restore_vfp_context(struct vfp_sigframe __user *frame)
 	unsigned long size;
 	unsigned long fpexc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0;
 
 	__get_user_error(magic, &frame->magic, err);
@@ -275,6 +314,9 @@ static int restore_vfp_context(struct vfp_sigframe __user *frame)
 	if (magic != VFP_MAGIC || size != VFP_STORAGE_SIZE)
 		return -EINVAL;
 
+<<<<<<< HEAD
+	return vfp_restore_user_hwstate(&frame->ufp, &frame->ufp_exc);
+=======
 <<<<<<< HEAD
 	return vfp_restore_user_hwstate(&frame->ufp, &frame->ufp_exc);
 =======
@@ -306,6 +348,7 @@ static int restore_vfp_context(struct vfp_sigframe __user *frame)
 
 	return err ? -EFAULT : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif
@@ -335,11 +378,15 @@ static int restore_sigframe(struct pt_regs *regs, struct sigframe __user *sf)
 <<<<<<< HEAD
 		set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+		set_current_blocked(&set);
+=======
 		spin_lock_irq(&current->sighand->siglock);
 		current->blocked = set;
 		recalc_sigpending();
 		spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	__get_user_error(regs->ARM_r0, &sf->uc.uc_mcontext.arm_r0, err);
@@ -543,6 +590,9 @@ setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 		thumb = handler & 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if __LINUX_ARM_ARCH__ >= 7
 		/*
 		 * Clear the If-Then Thumb-2 execution state
@@ -555,6 +605,8 @@ setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 
 		if (thumb) {
 			cpsr |= PSR_T_BIT;
+<<<<<<< HEAD
+=======
 =======
 		if (thumb) {
 			cpsr |= PSR_T_BIT;
@@ -563,6 +615,7 @@ setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 			cpsr &= ~PSR_IT_MASK;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else
 			cpsr &= ~PSR_T_BIT;
 	}
@@ -581,6 +634,9 @@ setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 			return 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMU
 		if (cpsr & MODE32_BIT) {
 			struct mm_struct *mm = current->mm;
@@ -595,6 +651,8 @@ setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 		} else
 #endif
 		{
+<<<<<<< HEAD
+=======
 =======
 		if (cpsr & MODE32_BIT) {
 			/*
@@ -604,6 +662,7 @@ setup_return(struct pt_regs *regs, struct k_sigaction *ka,
 			retcode = KERN_SIGRETURN_CODE + (idx << 2) + thumb;
 		} else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Ensure that the instruction cache sees
 			 * the return code written onto the stack.
@@ -727,6 +786,9 @@ handle_signal(unsigned long sig, struct k_sigaction *ka,
 <<<<<<< HEAD
 	block_sigmask(ka, sig);
 =======
+<<<<<<< HEAD
+	block_sigmask(ka, sig);
+=======
 	spin_lock_irq(&tsk->sighand->siglock);
 	sigorsets(&tsk->blocked, &tsk->blocked,
 		  &ka->sa.sa_mask);
@@ -735,6 +797,7 @@ handle_signal(unsigned long sig, struct k_sigaction *ka,
 	recalc_sigpending();
 	spin_unlock_irq(&tsk->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -781,6 +844,9 @@ static void do_signal(struct pt_regs *regs, int syscall)
 		case -ERESTARTSYS:
 		case -ERESTARTNOINTR:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case -ERESTART_RESTARTBLOCK:
 			regs->ARM_r0 = regs->ARM_ORIG_r0;
 			regs->ARM_pc = restart_addr;
@@ -789,6 +855,8 @@ static void do_signal(struct pt_regs *regs, int syscall)
 	}
 
 	if (try_to_freeze_nowarn())
+<<<<<<< HEAD
+=======
 =======
 			regs->ARM_r0 = regs->ARM_ORIG_r0;
 			regs->ARM_pc = restart_addr;
@@ -801,6 +869,7 @@ static void do_signal(struct pt_regs *regs, int syscall)
 
 	if (try_to_freeze())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto no_signal;
 
 	/*
@@ -821,8 +890,13 @@ static void do_signal(struct pt_regs *regs, int syscall)
 			if (retval == -ERESTARTNOHAND ||
 			    retval == -ERESTART_RESTARTBLOCK
 =======
+<<<<<<< HEAD
+			if (retval == -ERESTARTNOHAND ||
+			    retval == -ERESTART_RESTARTBLOCK
+=======
 			if (retval == -ERESTARTNOHAND
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    || (retval == -ERESTARTSYS
 				&& !(ka.sa.sa_flags & SA_RESTART))) {
 				regs->ARM_r0 = -EINTR;
@@ -831,7 +905,11 @@ static void do_signal(struct pt_regs *regs, int syscall)
 <<<<<<< HEAD
 			clear_thread_flag(TIF_SYSCALL_RESTARTSYS);
 =======
+<<<<<<< HEAD
+			clear_thread_flag(TIF_SYSCALL_RESTARTSYS);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		if (test_thread_flag(TIF_RESTORE_SIGMASK))
@@ -860,6 +938,9 @@ static void do_signal(struct pt_regs *regs, int syscall)
 		 */
 		if (retval == -ERESTART_RESTARTBLOCK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    && regs->ARM_pc == restart_addr)
 			set_thread_flag(TIF_SYSCALL_RESTARTSYS);
 	}
@@ -869,6 +950,8 @@ static void do_signal(struct pt_regs *regs, int syscall)
 	 */
 	if (test_and_clear_thread_flag(TIF_RESTORE_SIGMASK))
 		set_current_blocked(&current->saved_sigmask);
+<<<<<<< HEAD
+=======
 =======
 		    && regs->ARM_pc == continue_addr) {
 			if (thumb_mode(regs)) {
@@ -903,6 +986,7 @@ static void do_signal(struct pt_regs *regs, int syscall)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 asmlinkage void
@@ -919,6 +1003,9 @@ do_notify_resume(struct pt_regs *regs, unsigned int thread_flags, int syscall)
 	}
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct page *get_signal_page(void)
 {
@@ -949,5 +1036,8 @@ struct page *get_signal_page(void)
 
 	return page;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

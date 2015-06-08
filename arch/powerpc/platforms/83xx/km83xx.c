@@ -30,9 +30,13 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/io.h>
 #include <asm/machdep.h>
@@ -60,12 +64,21 @@ static void __init mpc83xx_km_setup_arch(void)
 	struct device_node *np;
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_QUICC_ENGINE
+	struct device_node *np;
+#endif
+=======
 	struct device_node *np;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ppc_md.progress)
 		ppc_md.progress("kmpbec83xx_setup_arch()", 0);
 
+<<<<<<< HEAD
+	mpc83xx_setup_pci();
+=======
 <<<<<<< HEAD
 	mpc83xx_setup_pci();
 =======
@@ -74,6 +87,7 @@ static void __init mpc83xx_km_setup_arch(void)
 		mpc83xx_add_bridge(np);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_QUICC_ENGINE
 	qe_reset();
@@ -118,8 +132,12 @@ static void __init mpc83xx_km_setup_arch(void)
 <<<<<<< HEAD
 			base = ioremap(res.start, resource_size(&res));
 =======
+<<<<<<< HEAD
+			base = ioremap(res.start, resource_size(&res));
+=======
 			base = ioremap(res.start, res.end - res.start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/*
 			 * IMMR + 0x14A8[4:5] = 11 (clk delay for UCC 2)
@@ -140,6 +158,9 @@ static void __init mpc83xx_km_setup_arch(void)
 #endif				/* CONFIG_QUICC_ENGINE */
 }
 
+<<<<<<< HEAD
+machine_device_initcall(mpc83xx_km, mpc83xx_declare_of_platform_devices);
+=======
 <<<<<<< HEAD
 machine_device_initcall(mpc83xx_km, mpc83xx_declare_of_platform_devices);
 =======
@@ -192,6 +213,7 @@ static void __init mpc83xx_km_init_IRQ(void)
 #endif				/* CONFIG_QUICC_ENGINE */
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* list of the supported boards */
 static char *board[] __initdata = {
@@ -223,8 +245,12 @@ define_machine(mpc83xx_km) {
 <<<<<<< HEAD
 	.init_IRQ	= mpc83xx_ipic_and_qe_init_IRQ,
 =======
+<<<<<<< HEAD
+	.init_IRQ	= mpc83xx_ipic_and_qe_init_IRQ,
+=======
 	.init_IRQ	= mpc83xx_km_init_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_irq	= ipic_get_irq,
 	.restart	= mpc83xx_restart,
 	.time_init	= mpc83xx_time_init,

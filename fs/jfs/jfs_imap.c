@@ -460,8 +460,12 @@ struct inode *diReadSpecial(struct super_block *sb, ino_t inum, int secondary)
 <<<<<<< HEAD
 		set_nlink(ip, 1);	/* Don't want iput() deleting it */
 =======
+<<<<<<< HEAD
+		set_nlink(ip, 1);	/* Don't want iput() deleting it */
+=======
 		ip->i_nlink = 1;	/* Don't want iput() deleting it */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iput(ip);
 		return (NULL);
 	}
@@ -476,8 +480,12 @@ struct inode *diReadSpecial(struct super_block *sb, ino_t inum, int secondary)
 <<<<<<< HEAD
 		set_nlink(ip, 1);	/* Don't want iput() deleting it */
 =======
+<<<<<<< HEAD
+		set_nlink(ip, 1);	/* Don't want iput() deleting it */
+=======
 		ip->i_nlink = 1;	/* Don't want iput() deleting it */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iput(ip);
 		/* release the page */
 		release_metapage(mp);
@@ -3087,8 +3095,12 @@ static int copy_from_dinode(struct dinode * dip, struct inode *ip)
 <<<<<<< HEAD
 	set_nlink(ip, le32_to_cpu(dip->di_nlink));
 =======
+<<<<<<< HEAD
+	set_nlink(ip, le32_to_cpu(dip->di_nlink));
+=======
 	ip->i_nlink = le32_to_cpu(dip->di_nlink);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	jfs_ip->saved_uid = le32_to_cpu(dip->di_uid);
 	if (sbi->uid == -1)

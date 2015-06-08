@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include <linux/list_sort.h>
 =======
+<<<<<<< HEAD
+#include <linux/list_sort.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "gfs2.h"
 #include "incore.h"
@@ -365,8 +369,12 @@ retry:
 <<<<<<< HEAD
 u64 gfs2_log_bmap(struct gfs2_sbd *sdp, unsigned int lbn)
 =======
+<<<<<<< HEAD
+u64 gfs2_log_bmap(struct gfs2_sbd *sdp, unsigned int lbn)
+=======
 static u64 log_bmap(struct gfs2_sbd *sdp, unsigned int lbn)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct gfs2_journal_extent *je;
 
@@ -479,9 +487,14 @@ void gfs2_log_incr_head(struct gfs2_sbd *sdp)
 	BUG_ON((sdp->sd_log_flush_head == sdp->sd_log_tail) &&
 	       (sdp->sd_log_flush_head != sdp->sd_log_head));
 =======
+<<<<<<< HEAD
+	BUG_ON((sdp->sd_log_flush_head == sdp->sd_log_tail) &&
+	       (sdp->sd_log_flush_head != sdp->sd_log_head));
+=======
 	if (sdp->sd_log_flush_head == sdp->sd_log_tail)
 		BUG_ON(sdp->sd_log_flush_head != sdp->sd_log_head);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (++sdp->sd_log_flush_head == sdp->sd_jdesc->jd_blocks) {
 		sdp->sd_log_flush_head = 0;
@@ -489,6 +502,8 @@ void gfs2_log_incr_head(struct gfs2_sbd *sdp)
 	}
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /**
@@ -585,6 +600,7 @@ struct buffer_head *gfs2_log_fake_buf(struct gfs2_sbd *sdp,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void log_pull_tail(struct gfs2_sbd *sdp, unsigned int new_tail)
 {
 	unsigned int dist = log_distance(sdp, new_tail, sdp->sd_log_tail);
@@ -599,6 +615,10 @@ static void log_pull_tail(struct gfs2_sbd *sdp, unsigned int new_tail)
 	sdp->sd_log_tail = new_tail;
 }
 
+<<<<<<< HEAD
+
+static void log_flush_wait(struct gfs2_sbd *sdp)
+=======
 <<<<<<< HEAD
 
 static void log_flush_wait(struct gfs2_sbd *sdp)
@@ -664,6 +684,7 @@ static void log_write_header(struct gfs2_sbd *sdp, u32 flags, int pull)
 
 static void log_flush_commit(struct gfs2_sbd *sdp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	DEFINE_WAIT(wait);
 
@@ -677,6 +698,9 @@ static void log_flush_commit(struct gfs2_sbd *sdp)
 		finish_wait(&sdp->sd_log_flush_wait, &wait);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int bd_cmp(void *priv, struct list_head *a, struct list_head *b)
@@ -691,10 +715,13 @@ static int bd_cmp(void *priv, struct list_head *a, struct list_head *b)
 	if (bda->bd_bh->b_blocknr > bdb->bd_bh->b_blocknr)
 		return 1;
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 
 	log_write_header(sdp, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void gfs2_ordered_write(struct gfs2_sbd *sdp)
@@ -707,7 +734,11 @@ static void gfs2_ordered_write(struct gfs2_sbd *sdp)
 <<<<<<< HEAD
 	list_sort(NULL, &sdp->sd_log_le_ordered, &bd_cmp);
 =======
+<<<<<<< HEAD
+	list_sort(NULL, &sdp->sd_log_le_ordered, &bd_cmp);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (!list_empty(&sdp->sd_log_le_ordered)) {
 		bd = list_entry(sdp->sd_log_le_ordered.next, struct gfs2_bufdata, bd_le.le_list);
 		list_move(&bd->bd_le.le_list, &written);
@@ -754,6 +785,9 @@ static void gfs2_ordered_wait(struct gfs2_sbd *sdp)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * log_write_header - Get and initialize a journal header buffer
  * @sdp: The GFS2 superblock
  *
@@ -816,8 +850,11 @@ static void log_write_header(struct gfs2_sbd *sdp, u32 flags, int pull)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * gfs2_log_flush - flush incore transaction(s)
  * @sdp: the filesystem
  * @gl: The glock structure to flush.  If NULL, flush the whole incore log
@@ -861,10 +898,15 @@ void gfs2_log_flush(struct gfs2_sbd *sdp, struct gfs2_glock *gl)
 	gfs2_ordered_write(sdp);
 	lops_before_commit(sdp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sdp->sd_log_head != sdp->sd_log_flush_head) {
 		log_write_header(sdp, 0, 0);
 	} else if (sdp->sd_log_tail != current_tail(sdp) && !sdp->sd_log_idle){
+<<<<<<< HEAD
+=======
 =======
 	gfs2_ordered_wait(sdp);
 
@@ -872,6 +914,7 @@ void gfs2_log_flush(struct gfs2_sbd *sdp, struct gfs2_glock *gl)
 		log_flush_commit(sdp);
 	else if (sdp->sd_log_tail != current_tail(sdp) && !sdp->sd_log_idle){
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gfs2_log_lock(sdp);
 		atomic_dec(&sdp->sd_log_blks_free); /* Adjust for unreserved buffer */
 		trace_gfs2_log_blocks(sdp, -1);
@@ -1069,9 +1112,14 @@ int gfs2_logd(void *data)
 
 		try_to_freeze();
 =======
+<<<<<<< HEAD
+
+		try_to_freeze();
+=======
 		if (freezing(current))
 			refrigerator();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		do {
 			prepare_to_wait(&sdp->sd_logd_waitq, &wait,

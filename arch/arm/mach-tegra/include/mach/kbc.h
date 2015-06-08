@@ -28,6 +28,10 @@
 #define KBC_MAX_GPIO	24
 #define KBC_MAX_KPENT	8
 =======
+<<<<<<< HEAD
+#define KBC_MAX_GPIO	24
+#define KBC_MAX_KPENT	8
+=======
 #ifdef CONFIG_ARCH_TEGRA_2x_SOC
 #define KBC_MAX_GPIO	24
 #define KBC_MAX_KPENT	8
@@ -36,12 +40,16 @@
 #define KBC_MAX_KPENT	7
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define KBC_MAX_ROW	16
 #define KBC_MAX_COL	8
 #define KBC_MAX_KEY	(KBC_MAX_ROW * KBC_MAX_COL)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum tegra_pin_type {
 	PIN_CFG_IGNORE,
 	PIN_CFG_COL,
@@ -50,10 +58,13 @@ enum tegra_pin_type {
 
 struct tegra_kbc_pin_cfg {
 	enum tegra_pin_type type;
+<<<<<<< HEAD
+=======
 =======
 struct tegra_kbc_pin_cfg {
 	bool is_row;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char num;
 };
 
@@ -72,7 +83,11 @@ struct tegra_kbc_platform_data {
 <<<<<<< HEAD
 	u32 wakeup_key;
 =======
+<<<<<<< HEAD
+	u32 wakeup_key;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool wakeup;
 	bool use_fn_map;
 	bool use_ghost_filter;

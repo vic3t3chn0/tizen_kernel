@@ -21,7 +21,12 @@
 #include <linux/namei.h>
 #include <linux/fs.h>
 =======
+<<<<<<< HEAD
+#include <linux/namei.h>
+#include <linux/fs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "irq.h"
 
 static struct kvm_assigned_dev_kernel *kvm_find_assigned_dev(struct list_head *head,
@@ -56,16 +61,24 @@ static int find_index_from_host_irq(struct kvm_assigned_dev_kernel
 	if (index < 0)
 		printk(KERN_WARNING "Fail to find correlated MSI-X entry!\n");
 =======
+<<<<<<< HEAD
+	if (index < 0)
+		printk(KERN_WARNING "Fail to find correlated MSI-X entry!\n");
+=======
 	if (index < 0) {
 		printk(KERN_WARNING "Fail to find correlated MSI-X entry!\n");
 		return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return index;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t kvm_assigned_dev_intx(int irq, void *dev_id)
 {
 	struct kvm_assigned_dev_kernel *assigned_dev = dev_id;
@@ -111,6 +124,8 @@ static irqreturn_t kvm_assigned_dev_thread_intx(int irq, void *dev_id)
 
 	kvm_assigned_dev_raise_guest_irq(assigned_dev,
 					 assigned_dev->guest_irq);
+<<<<<<< HEAD
+=======
 =======
 static irqreturn_t kvm_assigned_dev_thread(int irq, void *dev_id)
 {
@@ -137,11 +152,15 @@ static irqreturn_t kvm_assigned_dev_thread(int irq, void *dev_id)
 		kvm_set_irq(assigned_dev->kvm, assigned_dev->irq_source_id,
 			    assigned_dev->guest_irq, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return IRQ_HANDLED;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __KVM_HAVE_MSI
 static irqreturn_t kvm_assigned_dev_thread_msi(int irq, void *dev_id)
 {
@@ -204,6 +223,8 @@ static void kvm_assigned_dev_ack_irq(struct kvm_irq_ack_notifier *kian)
 	}
 
 	spin_unlock(&dev->intx_mask_lock);
+<<<<<<< HEAD
+=======
 =======
 /* Ack the irq line for an assigned device */
 static void kvm_assigned_dev_ack_irq(struct kvm_irq_ack_notifier *kian)
@@ -228,6 +249,7 @@ static void kvm_assigned_dev_ack_irq(struct kvm_irq_ack_notifier *kian)
 	}
 	spin_unlock(&dev->intx_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void deassign_guest_irq(struct kvm *kvm,
@@ -238,9 +260,15 @@ static void deassign_guest_irq(struct kvm *kvm,
 		kvm_unregister_irq_ack_notifier(kvm,
 						&assigned_dev->ack_notifier);
 =======
+<<<<<<< HEAD
+	if (assigned_dev->ack_notifier.gsi != -1)
+		kvm_unregister_irq_ack_notifier(kvm,
+						&assigned_dev->ack_notifier);
+=======
 	kvm_unregister_irq_ack_notifier(kvm, &assigned_dev->ack_notifier);
 	assigned_dev->ack_notifier.gsi = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kvm_set_irq(assigned_dev->kvm, assigned_dev->irq_source_id,
 		    assigned_dev->guest_irq, 0);
@@ -275,8 +303,12 @@ static void deassign_host_irq(struct kvm *kvm,
 <<<<<<< HEAD
 				 assigned_dev);
 =======
+<<<<<<< HEAD
+				 assigned_dev);
+=======
 				 (void *)assigned_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		assigned_dev->entries_nr = 0;
 		kfree(assigned_dev->host_msix_entries);
@@ -285,6 +317,9 @@ static void deassign_host_irq(struct kvm *kvm,
 	} else {
 		/* Deal with MSI and INTx */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((assigned_dev->irq_requested_type &
 		     KVM_DEV_IRQ_HOST_INTX) &&
 		    (assigned_dev->flags & KVM_DEV_ASSIGN_PCI_2_3)) {
@@ -296,11 +331,14 @@ static void deassign_host_irq(struct kvm *kvm,
 			disable_irq(assigned_dev->host_irq);
 
 		free_irq(assigned_dev->host_irq, assigned_dev);
+<<<<<<< HEAD
+=======
 =======
 		disable_irq(assigned_dev->host_irq);
 
 		free_irq(assigned_dev->host_irq, (void *)assigned_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (assigned_dev->irq_requested_type & KVM_DEV_IRQ_HOST_MSI)
 			pci_disable_msi(assigned_dev->dev);
@@ -356,7 +394,12 @@ static void kvm_free_assigned_device(struct kvm *kvm,
 	assigned_dev->dev->dev_flags &= ~PCI_DEV_FLAGS_ASSIGNED;
 
 =======
+<<<<<<< HEAD
+	assigned_dev->dev->dev_flags &= ~PCI_DEV_FLAGS_ASSIGNED;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_release_regions(assigned_dev->dev);
 	pci_disable_device(assigned_dev->dev);
 	pci_dev_put(assigned_dev->dev);
@@ -383,6 +426,9 @@ static int assigned_device_enable_host_intx(struct kvm *kvm,
 					    struct kvm_assigned_dev_kernel *dev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_handler_t irq_handler;
 	unsigned long flags;
 
@@ -411,6 +457,8 @@ static int assigned_device_enable_host_intx(struct kvm *kvm,
 		pci_intx(dev->dev, true);
 		spin_unlock_irq(&dev->intx_lock);
 	}
+<<<<<<< HEAD
+=======
 =======
 	dev->host_irq = dev->dev->irq;
 	/* Even though this is PCI, we don't want to use shared
@@ -422,6 +470,7 @@ static int assigned_device_enable_host_intx(struct kvm *kvm,
 				 IRQF_ONESHOT, dev->irq_name, (void *)dev))
 		return -EIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -443,9 +492,15 @@ static int assigned_device_enable_host_msi(struct kvm *kvm,
 				 kvm_assigned_dev_thread_msi, 0,
 				 dev->irq_name, dev)) {
 =======
+<<<<<<< HEAD
+	if (request_threaded_irq(dev->host_irq, NULL,
+				 kvm_assigned_dev_thread_msi, 0,
+				 dev->irq_name, dev)) {
+=======
 	if (request_threaded_irq(dev->host_irq, NULL, kvm_assigned_dev_thread,
 				 0, dev->irq_name, (void *)dev)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_disable_msi(dev->dev);
 		return -EIO;
 	}
@@ -475,9 +530,14 @@ static int assigned_device_enable_host_msix(struct kvm *kvm,
 					 NULL, kvm_assigned_dev_thread_msix,
 					 0, dev->irq_name, dev);
 =======
+<<<<<<< HEAD
+					 NULL, kvm_assigned_dev_thread_msix,
+					 0, dev->irq_name, dev);
+=======
 					 NULL, kvm_assigned_dev_thread,
 					 0, dev->irq_name, (void *)dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (r)
 			goto err;
 	}
@@ -488,8 +548,12 @@ err:
 <<<<<<< HEAD
 		free_irq(dev->host_msix_entries[i].vector, dev);
 =======
+<<<<<<< HEAD
+		free_irq(dev->host_msix_entries[i].vector, dev);
+=======
 		free_irq(dev->host_msix_entries[i].vector, (void *)dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_disable_msix(dev->dev);
 	return r;
 }
@@ -514,8 +578,11 @@ static int assigned_device_enable_guest_msi(struct kvm *kvm,
 	dev->ack_notifier.gsi = -1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dev->host_irq_disabled = false;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 #endif
@@ -529,8 +596,11 @@ static int assigned_device_enable_guest_msix(struct kvm *kvm,
 	dev->ack_notifier.gsi = -1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dev->host_irq_disabled = false;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 #endif
@@ -567,7 +637,11 @@ static int assign_host_irq(struct kvm *kvm,
 <<<<<<< HEAD
 	dev->host_irq_disabled = false;
 =======
+<<<<<<< HEAD
+	dev->host_irq_disabled = false;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!r)
 		dev->irq_requested_type |= host_irq_type;
@@ -616,8 +690,13 @@ static int assign_guest_irq(struct kvm *kvm,
 		if (dev->ack_notifier.gsi != -1)
 			kvm_register_irq_ack_notifier(kvm, &dev->ack_notifier);
 =======
+<<<<<<< HEAD
+		if (dev->ack_notifier.gsi != -1)
+			kvm_register_irq_ack_notifier(kvm, &dev->ack_notifier);
+=======
 		kvm_register_irq_ack_notifier(kvm, &dev->ack_notifier);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		kvm_free_irq_source_id(kvm, dev->irq_source_id);
 
@@ -676,7 +755,11 @@ static int kvm_vm_ioctl_deassign_dev_irq(struct kvm *kvm,
 <<<<<<< HEAD
 	unsigned long irq_type;
 =======
+<<<<<<< HEAD
+	unsigned long irq_type;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&kvm->lock);
 
@@ -690,14 +773,23 @@ static int kvm_vm_ioctl_deassign_dev_irq(struct kvm *kvm,
 					  KVM_DEV_IRQ_GUEST_MASK);
 	r = kvm_deassign_irq(kvm, match, irq_type);
 =======
+<<<<<<< HEAD
+	irq_type = assigned_irq->flags & (KVM_DEV_IRQ_HOST_MASK |
+					  KVM_DEV_IRQ_GUEST_MASK);
+	r = kvm_deassign_irq(kvm, match, irq_type);
+=======
 	r = kvm_deassign_irq(kvm, match, assigned_irq->flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	mutex_unlock(&kvm->lock);
 	return r;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * We want to test whether the caller has been granted permissions to
  * use this device.  To be able to configure and control the device,
@@ -758,8 +850,11 @@ static int probe_sysfs_permissions(struct pci_dev *dev)
 #endif
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 				      struct kvm_assigned_pci_dev *assigned_dev)
 {
@@ -767,12 +862,18 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 	struct kvm_assigned_dev_kernel *match;
 	struct pci_dev *dev;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 header_type;
 
 	if (!(assigned_dev->flags & KVM_DEV_ASSIGN_ENABLE_IOMMU))
 		return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&kvm->lock);
 	idx = srcu_read_lock(&kvm->srcu);
@@ -801,6 +902,9 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 		goto out_free;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Don't allow bridges to be assigned */
 	pci_read_config_byte(dev, PCI_HEADER_TYPE, &header_type);
@@ -813,8 +917,11 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 	if (r)
 		goto out_put;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pci_enable_device(dev)) {
 		printk(KERN_INFO "%s: Could not enable PCI device\n", __func__);
 		r = -EBUSY;
@@ -834,12 +941,18 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 		printk(KERN_DEBUG "%s: Couldn't store %s saved state\n",
 		       __func__, dev_name(&dev->dev));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pci_intx_mask_supported(dev))
 		assigned_dev->flags &= ~KVM_DEV_ASSIGN_PCI_2_3;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	match->assigned_dev_id = assigned_dev->assigned_dev_id;
 	match->host_segnr = assigned_dev->segnr;
 	match->host_busnr = assigned_dev->busnr;
@@ -850,7 +963,11 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 <<<<<<< HEAD
 	spin_lock_init(&match->intx_mask_lock);
 =======
+<<<<<<< HEAD
+	spin_lock_init(&match->intx_mask_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	match->irq_source_id = -1;
 	match->kvm = kvm;
 	match->ack_notifier.irq_acked = kvm_assigned_dev_ack_irq;
@@ -858,6 +975,9 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 	list_add(&match->list, &kvm->arch.assigned_dev_head);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!kvm->arch.iommu_domain) {
 		r = kvm_iommu_map_guest(kvm);
 		if (r)
@@ -866,6 +986,8 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 	r = kvm_assign_device(kvm, match);
 	if (r)
 		goto out_list_del;
+<<<<<<< HEAD
+=======
 =======
 	if (assigned_dev->flags & KVM_DEV_ASSIGN_ENABLE_IOMMU) {
 		if (!kvm->arch.iommu_domain) {
@@ -878,6 +1000,7 @@ static int kvm_vm_ioctl_assign_device(struct kvm *kvm,
 			goto out_list_del;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	srcu_read_unlock(&kvm->srcu, idx);
@@ -920,9 +1043,13 @@ static int kvm_vm_ioctl_deassign_device(struct kvm *kvm,
 <<<<<<< HEAD
 	kvm_deassign_device(kvm, match);
 =======
+<<<<<<< HEAD
+	kvm_deassign_device(kvm, match);
+=======
 	if (match->flags & KVM_DEV_ASSIGN_ENABLE_IOMMU)
 		kvm_deassign_device(kvm, match);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kvm_free_assigned_device(kvm, match);
 
@@ -954,8 +1081,12 @@ static int kvm_vm_ioctl_set_msix_nr(struct kvm *kvm,
 <<<<<<< HEAD
 		    adev->entries_nr > KVM_MAX_MSIX_PER_DEV) {
 =======
+<<<<<<< HEAD
+		    adev->entries_nr > KVM_MAX_MSIX_PER_DEV) {
+=======
 		    adev->entries_nr >= KVM_MAX_MSIX_PER_DEV) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			r = -EINVAL;
 			goto msix_nr_out;
 		}
@@ -1019,6 +1150,9 @@ msix_entry_out:
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int kvm_vm_ioctl_set_pci_irq_mask(struct kvm *kvm,
 		struct kvm_assigned_pci_dev *assigned_dev)
 {
@@ -1068,8 +1202,11 @@ out:
 	return r;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long kvm_vm_ioctl_assigned_device(struct kvm *kvm, unsigned ioctl,
 				  unsigned long arg)
 {
@@ -1178,6 +1315,9 @@ long kvm_vm_ioctl_assigned_device(struct kvm *kvm, unsigned ioctl,
 	}
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case KVM_ASSIGN_SET_INTX_MASK: {
 		struct kvm_assigned_pci_dev assigned_dev;
 
@@ -1187,8 +1327,11 @@ long kvm_vm_ioctl_assigned_device(struct kvm *kvm, unsigned ioctl,
 		r = kvm_vm_ioctl_set_pci_irq_mask(kvm, &assigned_dev);
 		break;
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		r = -ENOTTY;
 		break;
@@ -1198,5 +1341,8 @@ out:
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

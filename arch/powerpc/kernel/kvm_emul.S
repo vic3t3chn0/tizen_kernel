@@ -16,7 +16,11 @@
 <<<<<<< HEAD
  * Copyright 2010-2011 Freescale Semiconductor, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright 2010-2011 Freescale Semiconductor, Inc.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Authors: Alexander Graf <agraf@suse.de>
  */
@@ -74,7 +78,13 @@ kvm_hypercall_start:
 kvm_template_start:
 
 =======
+<<<<<<< HEAD
+.global kvm_template_start
+kvm_template_start:
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 .global kvm_emulate_mtmsrd
 kvm_emulate_mtmsrd:
 
@@ -182,7 +192,13 @@ kvm_emulate_mtmsr_reg2:
 	STL64(r30, KVM_MAGIC_PAGE + KVM_MAGIC_MSR, 0)
 
 =======
+<<<<<<< HEAD
+	/* Put MSR into magic page because we don't call mtmsr */
+	STL64(r30, KVM_MAGIC_PAGE + KVM_MAGIC_MSR, 0)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Check if we have to fetch an interrupt */
 	lwz	r31, (KVM_MAGIC_PAGE + KVM_MAGIC_INT)(0)
 	cmpwi	r31, 0
@@ -191,10 +207,15 @@ kvm_emulate_mtmsr_reg2:
 	/* Check if we may trigger an interrupt */
 	andi.	r31, r30, MSR_EE
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bne	do_mtmsr
 
 no_mtmsr:
 
+<<<<<<< HEAD
+=======
 =======
 	beq	no_mtmsr
 
@@ -206,6 +227,7 @@ no_mtmsr:
 	STL64(r30, KVM_MAGIC_PAGE + KVM_MAGIC_MSR, 0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SCRATCH_RESTORE
 
 	/* Go back to caller */
@@ -234,6 +256,9 @@ kvm_emulate_mtmsr_len:
 	.long (kvm_emulate_mtmsr_end - kvm_emulate_mtmsr) / 4
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* also used for wrteei 1 */
 .global kvm_emulate_wrtee
 kvm_emulate_wrtee:
@@ -301,6 +326,8 @@ kvm_emulate_wrtee_len:
 
 .global kvm_emulate_wrteei_0
 kvm_emulate_wrteei_0:
+<<<<<<< HEAD
+=======
 =======
 
 
@@ -308,12 +335,16 @@ kvm_emulate_wrteei_0:
 kvm_emulate_wrteei:
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SCRATCH_SAVE
 
 	/* Fetch old MSR in r31 */
 	LL64(r31, KVM_MAGIC_PAGE + KVM_MAGIC_MSR, 0)
 
 	/* Remove MSR_EE from old MSR */
+<<<<<<< HEAD
+	rlwinm	r31, r31, 0, ~MSR_EE
+=======
 <<<<<<< HEAD
 	rlwinm	r31, r31, 0, ~MSR_EE
 =======
@@ -325,6 +356,7 @@ kvm_emulate_wrteei:
 kvm_emulate_wrteei_ee:
 	ori	r31, r31, 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Write new MSR value back */
 	STL64(r31, KVM_MAGIC_PAGE + KVM_MAGIC_MSR, 0)
@@ -333,6 +365,9 @@ kvm_emulate_wrteei_ee:
 
 	/* Go back to caller */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kvm_emulate_wrteei_0_branch:
 	b	.
 kvm_emulate_wrteei_0_end:
@@ -344,6 +379,8 @@ kvm_emulate_wrteei_0_branch_offs:
 .global kvm_emulate_wrteei_0_len
 kvm_emulate_wrteei_0_len:
 	.long (kvm_emulate_wrteei_0_end - kvm_emulate_wrteei_0) / 4
+<<<<<<< HEAD
+=======
 =======
 kvm_emulate_wrteei_branch:
 	b	.
@@ -362,6 +399,7 @@ kvm_emulate_wrteei_len:
 	.long (kvm_emulate_wrteei_end - kvm_emulate_wrteei) / 4
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 .global kvm_emulate_mtsrin
 kvm_emulate_mtsrin:
@@ -416,4 +454,10 @@ kvm_emulate_mtsrin_len:
 .global kvm_template_end
 kvm_template_end:
 =======
+<<<<<<< HEAD
+
+.global kvm_template_end
+kvm_template_end:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

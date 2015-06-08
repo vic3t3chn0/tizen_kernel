@@ -17,17 +17,24 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
 #include <sound/soc.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SLP_WIP
 #include <linux/slab.h>
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int snd_soc_calc_frame_size(int sample_size, int channels, int tdm_slots)
 {
@@ -86,6 +93,10 @@ static const struct snd_pcm_hardware dummy_dma_hardware = {
 static int dummy_dma_open(struct snd_pcm_substream *substream)
 {
 =======
+<<<<<<< HEAD
+static int dummy_dma_open(struct snd_pcm_substream *substream)
+{
+=======
 #ifdef CONFIG_SLP_WIP
 struct dma_dummy {
 	unsigned long base_time;
@@ -107,11 +118,17 @@ static int dummy_dma_open(struct snd_pcm_substream *substream)
 	runtime->private_data = pdma;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_set_runtime_hwparams(substream, &dummy_dma_hardware);
 
 	return 0;
 }
 
+<<<<<<< HEAD
+static struct snd_pcm_ops dummy_dma_ops = {
+	.open		= dummy_dma_open,
+	.ioctl		= snd_pcm_lib_ioctl,
+=======
 <<<<<<< HEAD
 static struct snd_pcm_ops dummy_dma_ops = {
 	.open		= dummy_dma_open,
@@ -203,6 +220,7 @@ static struct snd_pcm_ops dummy_dma_ops = {
 	.trigger	= dummy_dma_trigger,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct snd_soc_platform_driver dummy_platform = {
@@ -210,6 +228,9 @@ static struct snd_soc_platform_driver dummy_platform = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_codec_driver dummy_codec;
 static struct snd_soc_dai_driver dummy_dai = {
 	.name = "snd-soc-dummy-dai",
@@ -230,11 +251,14 @@ static __devinit int snd_soc_dummy_probe(struct platform_device *pdev)
 	}
 
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 static __devinit int snd_soc_dummy_probe(struct platform_device *pdev)
 {
 	return snd_soc_register_platform(&pdev->dev, &dummy_platform);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static __devexit int snd_soc_dummy_remove(struct platform_device *pdev)
@@ -243,7 +267,11 @@ static __devexit int snd_soc_dummy_remove(struct platform_device *pdev)
 <<<<<<< HEAD
 	snd_soc_unregister_codec(&pdev->dev);
 =======
+<<<<<<< HEAD
+	snd_soc_unregister_codec(&pdev->dev);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

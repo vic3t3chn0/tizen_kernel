@@ -6,8 +6,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/sched.h>
 #include <linux/mm.h>
@@ -35,8 +39,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/tlbflush.h>
 #include <asm/mmu_context.h>
 #include <asm/cpudata.h>
@@ -851,8 +859,12 @@ static void tsb_sync(void *info)
 <<<<<<< HEAD
 	/* It is not valid to test "current->active_mm == mm" here.
 =======
+<<<<<<< HEAD
+	/* It is not valid to test "current->active_mm == mm" here.
+=======
 	/* It is not valid to test "currrent->active_mm == mm" here.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *
 	 * The value of "current" is not changed atomically with
 	 * switch_mm().  But that's OK, we just need to check the
@@ -871,8 +883,12 @@ extern unsigned long xcall_flush_tlb_mm;
 <<<<<<< HEAD
 extern unsigned long xcall_flush_tlb_pending;
 =======
+<<<<<<< HEAD
+extern unsigned long xcall_flush_tlb_pending;
+=======
 extern unsigned long xcall_flush_tlb_page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern unsigned long xcall_flush_tlb_kernel_range;
 extern unsigned long xcall_fetch_glob_regs;
 extern unsigned long xcall_receive_signal;
@@ -1087,6 +1103,9 @@ local_flush_and_out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void smp_flush_tlb_pending(struct mm_struct *mm, unsigned long nr, unsigned long *vaddrs)
 {
 	u32 ctx = CTX_HWBITS(mm->context);
@@ -1098,6 +1117,8 @@ void smp_flush_tlb_pending(struct mm_struct *mm, unsigned long nr, unsigned long
 		smp_cross_call_masked(&xcall_flush_tlb_pending,
 				      ctx, nr, (unsigned long) vaddrs,
 				      mm_cpumask(mm));
+<<<<<<< HEAD
+=======
 =======
 struct tlb_pending_info {
 	unsigned long ctx;
@@ -1128,12 +1149,15 @@ void smp_flush_tlb_pending(struct mm_struct *mm, unsigned long nr, unsigned long
 		smp_call_function_many(mm_cpumask(mm), tlb_pending_func,
 				       &info, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	__flush_tlb_pending(ctx, nr, vaddrs);
 
 	put_cpu();
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void smp_flush_tlb_page(struct mm_struct *mm, unsigned long vaddr)
@@ -1153,6 +1177,7 @@ void smp_flush_tlb_page(struct mm_struct *mm, unsigned long vaddr)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void smp_flush_tlb_kernel_range(unsigned long start, unsigned long end)
 {
 	start &= PAGE_MASK;

@@ -61,6 +61,13 @@ Notes:
 #include <linux/gfp.h>
 #include <linux/ioport.h>
 #include <linux/interrupt.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/dma.h>
 #include "comedi_fc.h"
 
@@ -406,9 +413,20 @@ struct dt282x_private {
 			}					\
 			udelay(5);				\
 		}						\
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (_i)						\
+			b					\
+=======
 		if (_i) {					\
 			b					\
 		}						\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (_i) {					\
+			b					\
+		}						\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (0)
 
 static int dt282x_attach(struct comedi_device *dev,

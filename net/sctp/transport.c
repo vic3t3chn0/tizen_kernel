@@ -625,6 +625,9 @@ void sctp_transport_reset(struct sctp_transport *t)
 	t->cacc.cacc_saw_newack = 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Schedule retransmission on the given transport */
 void sctp_transport_immediate_rtx(struct sctp_transport *t)
@@ -641,5 +644,8 @@ void sctp_transport_immediate_rtx(struct sctp_transport *t)
 	}
 	return;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

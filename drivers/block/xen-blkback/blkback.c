@@ -258,13 +258,34 @@ irqreturn_t xen_blkif_be_int(int irq, void *dev_id)
 
 static void print_stats(struct xen_blkif *blkif)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("xen-blkback (%s): oo %3d  |  rd %4d  |  wr %4d  |  f %4d"
+		 "  |  ds %4d\n",
+		 current->comm, blkif->st_oo_req,
+		 blkif->st_rd_req, blkif->st_wr_req,
+		 blkif->st_f_req, blkif->st_ds_req);
+=======
 	pr_info("xen-blkback (%s): oo %3d  |  rd %4d  |  wr %4d  |  f %4d\n",
 		 current->comm, blkif->st_oo_req,
 		 blkif->st_rd_req, blkif->st_wr_req, blkif->st_f_req);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pr_info("xen-blkback (%s): oo %3d  |  rd %4d  |  wr %4d  |  f %4d\n",
+		 current->comm, blkif->st_oo_req,
+		 blkif->st_rd_req, blkif->st_wr_req, blkif->st_f_req);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blkif->st_print = jiffies + msecs_to_jiffies(10 * 1000);
 	blkif->st_rd_req = 0;
 	blkif->st_wr_req = 0;
 	blkif->st_oo_req = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	blkif->st_ds_req = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int xen_blkif_schedule(void *arg)
@@ -318,6 +339,13 @@ struct seg_buf {
 static void xen_blkbk_unmap(struct pending_req *req)
 {
 	struct gnttab_unmap_grant_ref unmap[BLKIF_MAX_SEGMENTS_PER_REQUEST];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct page *pages[BLKIF_MAX_SEGMENTS_PER_REQUEST];
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int i, invcount = 0;
 	grant_handle_t handle;
 	int ret;
@@ -329,6 +357,17 @@ static void xen_blkbk_unmap(struct pending_req *req)
 		gnttab_set_unmap_op(&unmap[invcount], vaddr(req, i),
 				    GNTMAP_host_map, handle);
 		pending_handle(req, i) = BLKBACK_INVALID_HANDLE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pages[invcount] = virt_to_page(vaddr(req, i));
+		invcount++;
+	}
+
+	ret = gnttab_unmap_refs(unmap, pages, invcount, false);
+	BUG_ON(ret);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		invcount++;
 	}
 
@@ -348,6 +387,10 @@ static void xen_blkbk_unmap(struct pending_req *req)
 			continue;
 		}
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int xen_blkbk_map(struct blkif_request *req,
@@ -356,7 +399,15 @@ static int xen_blkbk_map(struct blkif_request *req,
 {
 	struct gnttab_map_grant_ref map[BLKIF_MAX_SEGMENTS_PER_REQUEST];
 	int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int nseg = req->u.rw.nr_segments;
+=======
 	int nseg = req->nr_segments;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int nseg = req->nr_segments;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	/*
@@ -375,7 +426,15 @@ static int xen_blkbk_map(struct blkif_request *req,
 				  pending_req->blkif->domid);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = gnttab_map_refs(map, NULL, &blkbk->pending_page(pending_req, 0), nseg);
+=======
 	ret = HYPERVISOR_grant_table_op(GNTTABOP_map_grant_ref, map, nseg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = HYPERVISOR_grant_table_op(GNTTABOP_map_grant_ref, map, nseg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(ret);
 
 	/*
@@ -395,6 +454,11 @@ static int xen_blkbk_map(struct blkif_request *req,
 		if (ret)
 			continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = m2p_add_override(PFN_DOWN(map[i].dev_bus_addr),
 			blkbk->pending_page(pending_req, i), false);
 		if (ret) {
@@ -404,12 +468,69 @@ static int xen_blkbk_map(struct blkif_request *req,
 			continue;
 		}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seg[i].buf  = map[i].dev_bus_addr |
 			(req->u.rw.seg[i].first_sect << 9);
 	}
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int dispatch_discard_io(struct xen_blkif *blkif,
+				struct blkif_request *req)
+{
+	int err = 0;
+	int status = BLKIF_RSP_OKAY;
+	struct block_device *bdev = blkif->vbd.bdev;
+	unsigned long secure;
+
+	blkif->st_ds_req++;
+
+	xen_blkif_get(blkif);
+	secure = (blkif->vbd.discard_secure &&
+		 (req->u.discard.flag & BLKIF_DISCARD_SECURE)) ?
+		 BLKDEV_DISCARD_SECURE : 0;
+
+	err = blkdev_issue_discard(bdev, req->u.discard.sector_number,
+				   req->u.discard.nr_sectors,
+				   GFP_KERNEL, secure);
+
+	if (err == -EOPNOTSUPP) {
+		pr_debug(DRV_PFX "discard op failed, not supported\n");
+		status = BLKIF_RSP_EOPNOTSUPP;
+	} else if (err)
+		status = BLKIF_RSP_ERROR;
+
+	make_response(blkif, req->u.discard.id, req->operation, status);
+	xen_blkif_put(blkif);
+	return err;
+}
+
+static void xen_blk_drain_io(struct xen_blkif *blkif)
+{
+	atomic_set(&blkif->drain, 1);
+	do {
+		/* The initial value is one, and one refcnt taken at the
+		 * start of the xen_blkif_schedule thread. */
+		if (atomic_read(&blkif->refcnt) <= 2)
+			break;
+		wait_for_completion_interruptible_timeout(
+				&blkif->drain_complete, HZ);
+
+		if (!atomic_read(&blkif->drain))
+			break;
+	} while (!kthread_should_stop());
+	atomic_set(&blkif->drain, 0);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Completion callback on the bio's. Called as bh->b_end_io()
  */
@@ -422,6 +543,17 @@ static void __end_block_io_op(struct pending_req *pending_req, int error)
 		pr_debug(DRV_PFX "flush diskcache op failed, not supported\n");
 		xen_blkbk_flush_diskcache(XBT_NIL, pending_req->blkif->be, 0);
 		pending_req->status = BLKIF_RSP_EOPNOTSUPP;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else if ((pending_req->operation == BLKIF_OP_WRITE_BARRIER) &&
+		    (error == -EOPNOTSUPP)) {
+		pr_debug(DRV_PFX "write barrier op failed, not supported\n");
+		xen_blkbk_barrier(XBT_NIL, pending_req->blkif->be, 0);
+		pending_req->status = BLKIF_RSP_EOPNOTSUPP;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (error) {
 		pr_debug(DRV_PFX "Buffer not up-to-date at end of operation,"
 			 " error=%d\n", error);
@@ -438,6 +570,16 @@ static void __end_block_io_op(struct pending_req *pending_req, int error)
 		make_response(pending_req->blkif, pending_req->id,
 			      pending_req->operation, pending_req->status);
 		xen_blkif_put(pending_req->blkif);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (atomic_read(&pending_req->blkif->refcnt) <= 2) {
+			if (atomic_read(&pending_req->blkif->drain))
+				complete(&pending_req->blkif->drain_complete);
+		}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free_req(pending_req);
 	}
 }
@@ -458,7 +600,16 @@ static void end_block_io_op(struct bio *bio, int error)
  * (which has the sectors we want, number of them, grant references, etc),
  * and transmute  it to the block API to hand it over to the proper block disk.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int
+__do_block_io_op(struct xen_blkif *blkif)
+=======
 static int do_block_io_op(struct xen_blkif *blkif)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int do_block_io_op(struct xen_blkif *blkif)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	union blkif_back_rings *blk_rings = &blkif->blk_rings;
 	struct blkif_request req;
@@ -504,8 +655,21 @@ static int do_block_io_op(struct xen_blkif *blkif)
 
 		/* Apply all sanity checks to /private copy/ of request. */
 		barrier();
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (unlikely(req.operation == BLKIF_OP_DISCARD)) {
+			free_req(pending_req);
+			if (dispatch_discard_io(blkif, &req))
+				break;
+		} else if (dispatch_rw_block_io(blkif, &req, pending_req))
+=======
 
 		if (dispatch_rw_block_io(blkif, &req, pending_req))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+		if (dispatch_rw_block_io(blkif, &req, pending_req))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		/* Yield point for this unbounded loop. */
@@ -515,6 +679,28 @@ static int do_block_io_op(struct xen_blkif *blkif)
 	return more_to_do;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int
+do_block_io_op(struct xen_blkif *blkif)
+{
+	union blkif_back_rings *blk_rings = &blkif->blk_rings;
+	int more_to_do;
+
+	do {
+		more_to_do = __do_block_io_op(blkif);
+		if (more_to_do)
+			break;
+
+		RING_FINAL_CHECK_FOR_REQUESTS(&blk_rings->common, more_to_do);
+	} while (more_to_do);
+
+	return more_to_do;
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Transmutation of the 'struct blkif_request' to a proper 'struct bio'
  * and call the 'submit_bio' to pass it to the underlying storage.
@@ -531,6 +717,13 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 	int i, nbio = 0;
 	int operation;
 	struct blk_plug plug;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool drain = false;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (req->operation) {
 	case BLKIF_OP_READ:
@@ -541,11 +734,26 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 		blkif->st_wr_req++;
 		operation = WRITE_ODIRECT;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case BLKIF_OP_WRITE_BARRIER:
+		drain = true;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BLKIF_OP_FLUSH_DISKCACHE:
 		blkif->st_f_req++;
 		operation = WRITE_FLUSH;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	case BLKIF_OP_WRITE_BARRIER:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case BLKIF_OP_WRITE_BARRIER:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		operation = 0; /* make gcc happy */
 		goto fail_response;
@@ -553,7 +761,16 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 	}
 
 	/* Check that the number of segments is sane. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	nseg = req->u.rw.nr_segments;
+
+=======
 	nseg = req->nr_segments;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	nseg = req->nr_segments;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(nseg == 0 && operation != WRITE_FLUSH) ||
 	    unlikely(nseg > BLKIF_MAX_SEGMENTS_PER_REQUEST)) {
 		pr_debug(DRV_PFX "Bad number of segments in request (%d)\n",
@@ -562,12 +779,28 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 		goto fail_response;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	preq.dev           = req->u.rw.handle;
+=======
 	preq.dev           = req->handle;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	preq.dev           = req->handle;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preq.sector_number = req->u.rw.sector_number;
 	preq.nr_sects      = 0;
 
 	pending_req->blkif     = blkif;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pending_req->id        = req->u.rw.id;
+=======
 	pending_req->id        = req->id;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pending_req->id        = req->id;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pending_req->operation = req->operation;
 	pending_req->status    = BLKIF_RSP_OKAY;
 	pending_req->nr_pages  = nseg;
@@ -603,6 +836,18 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Wait on all outstanding I/O's and once that has been completed
+	 * issue the WRITE_FLUSH.
+	 */
+	if (drain)
+		xen_blk_drain_io(pending_req->blkif);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If we have failed at this point, we need to undo the M2P override,
 	 * set gnttab_set_unmap_op on all of the grant references and perform
@@ -612,7 +857,18 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 	if (xen_blkbk_map(req, pending_req, seg))
 		goto fail_flush;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * This corresponding xen_blkif_put is done in __end_block_io_op, or
+	 * below (in "!bio") if we are handling a BLKIF_OP_DISCARD.
+	 */
+=======
 	/* This corresponding xen_blkif_put is done in __end_block_io_op */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* This corresponding xen_blkif_put is done in __end_block_io_op */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xen_blkif_get(blkif);
 
 	for (i = 0; i < nseg; i++) {
@@ -636,7 +892,15 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 		preq.sector_number += seg[i].nsec;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* This will be hit if the operation was a flush or discard. */
+=======
 	/* This will be hit if the operation was a flush. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* This will be hit if the operation was a flush. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!bio) {
 		BUG_ON(operation != WRITE_FLUSH);
 
@@ -650,7 +914,21 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 		bio->bi_end_io  = end_block_io_op;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * We set it one so that the last submit_bio does not have to call
+	 * atomic_inc.
+	 */
 	atomic_set(&pending_req->pendcnt, nbio);
+
+	/* Get a reference count for the disk queue and start sending I/O */
+=======
+	atomic_set(&pending_req->pendcnt, nbio);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_set(&pending_req->pendcnt, nbio);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blk_start_plug(&plug);
 
 	for (i = 0; i < nbio; i++)
@@ -670,7 +948,15 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
 	xen_blkbk_unmap(pending_req);
  fail_response:
 	/* Haven't submitted any bio's yet. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	make_response(blkif, req->u.rw.id, req->operation, BLKIF_RSP_ERROR);
+=======
 	make_response(blkif, req->id, req->operation, BLKIF_RSP_ERROR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	make_response(blkif, req->id, req->operation, BLKIF_RSP_ERROR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_req(pending_req);
 	msleep(1); /* back off a bit */
 	return -EIO;
@@ -678,7 +964,14 @@ static int dispatch_rw_block_io(struct xen_blkif *blkif,
  fail_put_bio:
 	for (i = 0; i < nbio; i++)
 		bio_put(biolist[i]);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	atomic_set(&pending_req->pendcnt, 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_set(&pending_req->pendcnt, 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__end_block_io_op(pending_req, -EINVAL);
 	msleep(1); /* back off a bit */
 	return -EIO;
@@ -695,7 +988,14 @@ static void make_response(struct xen_blkif *blkif, u64 id,
 	struct blkif_response  resp;
 	unsigned long     flags;
 	union blkif_back_rings *blk_rings = &blkif->blk_rings;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int more_to_do = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int more_to_do = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int notify;
 
 	resp.id        = id;
@@ -722,6 +1022,12 @@ static void make_response(struct xen_blkif *blkif, u64 id,
 	}
 	blk_rings->common.rsp_prod_pvt++;
 	RING_PUSH_RESPONSES_AND_CHECK_NOTIFY(&blk_rings->common, notify);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spin_unlock_irqrestore(&blkif->blk_ring_lock, flags);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (blk_rings->common.rsp_prod_pvt == blk_rings->common.req_cons) {
 		/*
 		 * Tail check for pending requests. Allows frontend to avoid
@@ -738,6 +1044,10 @@ static void make_response(struct xen_blkif *blkif, u64 id,
 
 	if (more_to_do)
 		blkif_notify_work(blkif);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (notify)
 		notify_remote_via_irq(blkif->irq);
 }
@@ -747,7 +1057,15 @@ static int __init xen_blkif_init(void)
 	int i, mmap_pages;
 	int rc = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!xen_domain())
+=======
 	if (!xen_pv_domain())
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!xen_pv_domain())
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	blkbk = kzalloc(sizeof(struct xen_blkbk), GFP_KERNEL);
@@ -758,9 +1076,21 @@ static int __init xen_blkif_init(void)
 
 	mmap_pages = xen_blkif_reqs * BLKIF_MAX_SEGMENTS_PER_REQUEST;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	blkbk->pending_reqs          = kzalloc(sizeof(blkbk->pending_reqs[0]) *
+					xen_blkif_reqs, GFP_KERNEL);
+	blkbk->pending_grant_handles = kmalloc(sizeof(blkbk->pending_grant_handles[0]) *
+=======
 	blkbk->pending_reqs          = kmalloc(sizeof(blkbk->pending_reqs[0]) *
 					xen_blkif_reqs, GFP_KERNEL);
 	blkbk->pending_grant_handles = kzalloc(sizeof(blkbk->pending_grant_handles[0]) *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	blkbk->pending_reqs          = kmalloc(sizeof(blkbk->pending_reqs[0]) *
+					xen_blkif_reqs, GFP_KERNEL);
+	blkbk->pending_grant_handles = kzalloc(sizeof(blkbk->pending_grant_handles[0]) *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					mmap_pages, GFP_KERNEL);
 	blkbk->pending_pages         = kzalloc(sizeof(blkbk->pending_pages[0]) *
 					mmap_pages, GFP_KERNEL);
@@ -783,8 +1113,16 @@ static int __init xen_blkif_init(void)
 	if (rc)
 		goto failed_init;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	memset(blkbk->pending_reqs, 0, sizeof(blkbk->pending_reqs));
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	memset(blkbk->pending_reqs, 0, sizeof(blkbk->pending_reqs));
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_LIST_HEAD(&blkbk->pending_free);
 	spin_lock_init(&blkbk->pending_free_lock);
 	init_waitqueue_head(&blkbk->pending_free_wq);
@@ -819,3 +1157,10 @@ static int __init xen_blkif_init(void)
 module_init(xen_blkif_init);
 
 MODULE_LICENSE("Dual BSD/GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_ALIAS("xen-backend:vbd");
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

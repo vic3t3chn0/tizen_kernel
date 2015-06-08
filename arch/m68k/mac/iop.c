@@ -117,8 +117,11 @@
 #include <asm/mac_iop.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/mac_oss.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*#define DEBUG_IOP*/
 
@@ -154,9 +157,12 @@ irqreturn_t iop_ism_irq(int, void *);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void oss_irq_enable(int);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Private access functions
  */
@@ -311,6 +317,9 @@ void __init iop_register_interrupts(void)
 {
 	if (iop_ism_present) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (macintosh_config->ident == MAC_MODEL_IIFX) {
 			if (request_irq(IRQ_MAC_ADB, iop_ism_irq, 0,
 					"ISM IOP", (void *)IOP_NUM_ISM))
@@ -318,6 +327,8 @@ void __init iop_register_interrupts(void)
 		} else {
 			if (request_irq(IRQ_VIA2_0, iop_ism_irq, 0, "ISM IOP",
 					(void *)IOP_NUM_ISM))
+<<<<<<< HEAD
+=======
 =======
 		if (oss_present) {
 			if (request_irq(OSS_IRQLEV_IOPISM, iop_ism_irq,
@@ -330,6 +341,7 @@ void __init iop_register_interrupts(void)
 					IRQ_FLG_LOCK|IRQ_FLG_FAST, "ISM IOP",
 					(void *) IOP_NUM_ISM))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				pr_err("Couldn't register ISM IOP interrupt\n");
 		}
 		if (!iop_alive(iop_base[IOP_NUM_ISM])) {

@@ -32,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/asoundef.h>
 #include <sound/jack.h>
@@ -43,7 +47,11 @@
 <<<<<<< HEAD
 #include "hda_jack.h"
 =======
+<<<<<<< HEAD
+#include "hda_jack.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	STAC_VREF_EVENT	= 1,
@@ -103,14 +111,20 @@ enum {
 	STAC_92HD83XXX_PWR_REF,
 	STAC_DELL_S14,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	STAC_DELL_VOSTRO_3500,
 	STAC_92HD83XXX_HP_cNB11_INTQUAD,
 	STAC_HP_DV7_4000,
 	STAC_HP_ZEPHYR,
+<<<<<<< HEAD
+=======
 =======
 	STAC_92HD83XXX_HP,
 	STAC_HP_DV7_4000,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	STAC_92HD83XXX_MODELS
 };
 
@@ -190,6 +204,8 @@ enum {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct sigmatel_event {
 	hda_nid_t nid;
 	unsigned char type;
@@ -198,6 +214,7 @@ struct sigmatel_event {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sigmatel_mic_route {
 	hda_nid_t pin;
 	signed char mux_idx;
@@ -234,7 +251,12 @@ struct sigmatel_spec {
 	unsigned int vref_mute_led_nid; /* pin NID for mute-LED vref control */
 	unsigned int vref_led;
 =======
+<<<<<<< HEAD
+	unsigned int vref_mute_led_nid; /* pin NID for mute-LED vref control */
+	unsigned int vref_led;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* stream */
 	unsigned int stream_delay;
@@ -251,6 +273,11 @@ struct sigmatel_spec {
 	const hda_nid_t *dac_list;
 
 =======
+<<<<<<< HEAD
+	const hda_nid_t *pwr_nids;
+	const hda_nid_t *dac_list;
+
+=======
 	const unsigned int *pwr_mapping;
 	const hda_nid_t *pwr_nids;
 	const hda_nid_t *dac_list;
@@ -259,6 +286,7 @@ struct sigmatel_spec {
 	struct snd_array events;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* playback */
 	struct hda_input_mux *mono_mux;
 	unsigned int cur_mmux;
@@ -348,7 +376,12 @@ struct sigmatel_spec {
 
 	struct hda_vmaster_mute_hook vmaster_mute;
 =======
+<<<<<<< HEAD
+
+	struct hda_vmaster_mute_hook vmaster_mute;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const hda_nid_t stac9200_adc_nids[1] = {
@@ -409,9 +442,15 @@ static const hda_nid_t stac92hd83xxx_pwr_nids[7] = {
 	0x0a, 0x0b, 0x0c, 0xd, 0x0e,
 	0x0f, 0x10
 =======
+<<<<<<< HEAD
+static const hda_nid_t stac92hd83xxx_pwr_nids[7] = {
+	0x0a, 0x0b, 0x0c, 0xd, 0x0e,
+	0x0f, 0x10
+=======
 static const hda_nid_t stac92hd83xxx_pwr_nids[4] = {
 	0xa, 0xb, 0xd, 0xe,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const hda_nid_t stac92hd83xxx_slave_dig_outs[2] = {
@@ -420,11 +459,14 @@ static const hda_nid_t stac92hd83xxx_slave_dig_outs[2] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static const unsigned int stac92hd83xxx_pwr_mapping[4] = {
 	0x03, 0x0c, 0x20, 0x40,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const hda_nid_t stac92hd83xxx_dmic_nids[] = {
 		0x11, 0x20,
 };
@@ -715,6 +757,9 @@ static int stac92xx_smux_enum_put(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int stac_vrefout_set(struct hda_codec *codec,
 					hda_nid_t nid, unsigned int new_vref)
 {
@@ -739,8 +784,11 @@ static int stac_vrefout_set(struct hda_codec *codec,
 	return 1;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int stac92xx_vref_set(struct hda_codec *codec,
 					hda_nid_t nid, unsigned int new_vref)
 {
@@ -948,6 +996,9 @@ static const struct hda_verb stac92hd83xxx_core_init[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hda_verb stac92hd83xxx_hp_zephyr_init[] = {
 	{ 0x22, 0x785, 0x43 },
 	{ 0x22, 0x782, 0xe0 },
@@ -955,8 +1006,11 @@ static const struct hda_verb stac92hd83xxx_hp_zephyr_init[] = {
 	{}
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hda_verb stac92hd71bxx_core_init[] = {
 	/* set master volume and direct control */
 	{ 0x28, AC_VERB_SET_VOLUME_KNOB_CONTROL, 0xff},
@@ -1066,9 +1120,14 @@ static const struct snd_kcontrol_new stac9200_mixer[] = {
 	HDA_CODEC_VOLUME_MIN_MUTE("PCM Playback Volume", 0xb, 0, HDA_OUTPUT),
 	HDA_CODEC_MUTE("PCM Playback Switch", 0xb, 0, HDA_OUTPUT),
 =======
+<<<<<<< HEAD
+	HDA_CODEC_VOLUME_MIN_MUTE("PCM Playback Volume", 0xb, 0, HDA_OUTPUT),
+	HDA_CODEC_MUTE("PCM Playback Switch", 0xb, 0, HDA_OUTPUT),
+=======
 	HDA_CODEC_VOLUME_MIN_MUTE("Master Playback Volume", 0xb, 0, HDA_OUTPUT),
 	HDA_CODEC_MUTE("Master Playback Switch", 0xb, 0, HDA_OUTPUT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	HDA_CODEC_VOLUME("Capture Volume", 0x0a, 0, HDA_OUTPUT),
 	HDA_CODEC_MUTE("Capture Switch", 0x0a, 0, HDA_OUTPUT),
 	{ } /* end */
@@ -1099,9 +1158,14 @@ static const struct snd_kcontrol_new stac925x_mixer[] = {
 	HDA_CODEC_VOLUME_MIN_MUTE("PCM Playback Volume", 0xe, 0, HDA_OUTPUT),
 	HDA_CODEC_MUTE("PCM Playback Switch", 0x0e, 0, HDA_OUTPUT),
 =======
+<<<<<<< HEAD
+	HDA_CODEC_VOLUME_MIN_MUTE("PCM Playback Volume", 0xe, 0, HDA_OUTPUT),
+	HDA_CODEC_MUTE("PCM Playback Switch", 0x0e, 0, HDA_OUTPUT),
+=======
 	HDA_CODEC_VOLUME_MIN_MUTE("Master Playback Volume", 0xe, 0, HDA_OUTPUT),
 	HDA_CODEC_MUTE("Master Playback Switch", 0x0e, 0, HDA_OUTPUT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ } /* end */
 };
 
@@ -1134,6 +1198,9 @@ static struct snd_kcontrol_new stac_smux_mixer = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char * const slave_pfxs[] = {
 	"Front", "Surround", "Center", "LFE", "Side",
 	"Headphone", "Speaker", "IEC958",
@@ -1148,6 +1215,8 @@ static void stac92xx_vmaster_hook(void *private_data, int val)
 }
 
 static void stac92xx_free_kctls(struct hda_codec *codec);
+<<<<<<< HEAD
+=======
 =======
 static const char * const slave_vols[] = {
 	"Front Playback Volume",
@@ -1175,6 +1244,7 @@ static const char * const slave_sws[] = {
 static void stac92xx_free_kctls(struct hda_codec *codec);
 static int stac92xx_add_jack(struct hda_codec *codec, hda_nid_t nid, int type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int stac92xx_build_controls(struct hda_codec *codec)
 {
@@ -1182,9 +1252,13 @@ static int stac92xx_build_controls(struct hda_codec *codec)
 <<<<<<< HEAD
 	unsigned int vmaster_tlv[4];
 =======
+<<<<<<< HEAD
+	unsigned int vmaster_tlv[4];
+=======
 	struct auto_pin_cfg *cfg = &spec->autocfg;
 	hda_nid_t nid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	int i;
 
@@ -1228,8 +1302,14 @@ static int stac92xx_build_controls(struct hda_codec *codec)
 						    spec->multiout.dig_out_nid,
 						    spec->multiout.dig_out_nid);
 =======
+<<<<<<< HEAD
+		err = snd_hda_create_spdif_out_ctls(codec,
+						    spec->multiout.dig_out_nid,
+						    spec->multiout.dig_out_nid);
+=======
 		err = snd_hda_create_spdif_out_ctls(codec, spec->multiout.dig_out_nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 		err = snd_hda_create_spdif_share_sw(codec,
@@ -1246,6 +1326,9 @@ static int stac92xx_build_controls(struct hda_codec *codec)
 
 	/* if we have no master control, let's create it */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_hda_set_vmaster_tlv(codec, spec->multiout.dac_nids[0],
 				HDA_OUTPUT, vmaster_tlv);
 	/* correct volume offset */
@@ -1268,6 +1351,8 @@ static int stac92xx_build_controls(struct hda_codec *codec)
 	if (spec->gpio_led) {
 		spec->vmaster_mute.hook = stac92xx_vmaster_hook;
 		err = snd_hda_add_vmaster_hook(codec, &spec->vmaster_mute, true);
+<<<<<<< HEAD
+=======
 =======
 	if (!snd_hda_find_mixer_ctl(codec, "Master Playback Volume")) {
 		unsigned int vmaster_tlv[4];
@@ -1286,6 +1371,7 @@ static int stac92xx_build_controls(struct hda_codec *codec)
 		err = snd_hda_add_vmaster(codec, "Master Playback Switch",
 					  NULL, slave_sws);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 	}
@@ -1299,6 +1385,11 @@ static int stac92xx_build_controls(struct hda_codec *codec)
 
 	stac92xx_free_kctls(codec); /* no longer needed */
 
+<<<<<<< HEAD
+	err = snd_hda_jack_add_kctls(codec, &spec->autocfg);
+	if (err < 0)
+		return err;
+=======
 <<<<<<< HEAD
 	err = snd_hda_jack_add_kctls(codec, &spec->autocfg);
 	if (err < 0)
@@ -1330,6 +1421,7 @@ static int stac92xx_build_controls(struct hda_codec *codec)
 			return err;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;	
 }
@@ -1765,7 +1857,12 @@ static const struct snd_pci_quirk stac92hd73xx_codec_id_cfg_tbl[] = {
 	SND_PCI_QUIRK(PCI_VENDOR_ID_DELL, 0x0490,
 		      "Alienware M17x R3", STAC_DELL_EQ),
 =======
+<<<<<<< HEAD
+	SND_PCI_QUIRK(PCI_VENDOR_ID_DELL, 0x0490,
+		      "Alienware M17x R3", STAC_DELL_EQ),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{} /* terminator */
 };
 
@@ -1782,14 +1879,20 @@ static const unsigned int dell_s14_pin_configs[10] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned int dell_vostro_3500_pin_configs[10] = {
 	0x02a11020, 0x0221101f, 0x400000f0, 0x90170110,
 	0x400000f1, 0x400000f2, 0x400000f3, 0x90a60160,
 	0x400000f4, 0x400000f5,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned int hp_dv7_4000_pin_configs[10] = {
 	0x03a12050, 0x0321201f, 0x40f000f0, 0x90170110,
 	0x40f000f0, 0x40f000f0, 0x90170110, 0xd5a30140,
@@ -1797,6 +1900,9 @@ static const unsigned int hp_dv7_4000_pin_configs[10] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned int hp_zephyr_pin_configs[10] = {
 	0x01813050, 0x0421201f, 0x04a1205e, 0x96130310,
 	0x96130310, 0x0101401f, 0x1111611f, 0xd5a30130,
@@ -1809,20 +1915,29 @@ static const unsigned int hp_cNB11_intquad_pin_configs[10] = {
 	0x40f000f0, 0x40f000f0,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned int *stac92hd83xxx_brd_tbl[STAC_92HD83XXX_MODELS] = {
 	[STAC_92HD83XXX_REF] = ref92hd83xxx_pin_configs,
 	[STAC_92HD83XXX_PWR_REF] = ref92hd83xxx_pin_configs,
 	[STAC_DELL_S14] = dell_s14_pin_configs,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[STAC_DELL_VOSTRO_3500] = dell_vostro_3500_pin_configs,
 	[STAC_92HD83XXX_HP_cNB11_INTQUAD] = hp_cNB11_intquad_pin_configs,
 	[STAC_HP_DV7_4000] = hp_dv7_4000_pin_configs,
 	[STAC_HP_ZEPHYR] = hp_zephyr_pin_configs,
+<<<<<<< HEAD
+=======
 =======
 	[STAC_HP_DV7_4000] = hp_dv7_4000_pin_configs,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const char * const stac92hd83xxx_models[STAC_92HD83XXX_MODELS] = {
@@ -1831,14 +1946,20 @@ static const char * const stac92hd83xxx_models[STAC_92HD83XXX_MODELS] = {
 	[STAC_92HD83XXX_PWR_REF] = "mic-ref",
 	[STAC_DELL_S14] = "dell-s14",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[STAC_DELL_VOSTRO_3500] = "dell-vostro-3500",
 	[STAC_92HD83XXX_HP_cNB11_INTQUAD] = "hp_cNB11_intquad",
 	[STAC_HP_DV7_4000] = "hp-dv7-4000",
 	[STAC_HP_ZEPHYR] = "hp-zephyr",
+<<<<<<< HEAD
+=======
 =======
 	[STAC_92HD83XXX_HP] = "hp",
 	[STAC_HP_DV7_4000] = "hp-dv7-4000",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_pci_quirk stac92hd83xxx_cfg_tbl[] = {
@@ -1850,6 +1971,9 @@ static const struct snd_pci_quirk stac92hd83xxx_cfg_tbl[] = {
 	SND_PCI_QUIRK(PCI_VENDOR_ID_DELL, 0x02ba,
 		      "unknown Dell", STAC_DELL_S14),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_PCI_QUIRK(PCI_VENDOR_ID_DELL, 0x1028,
 		      "Dell Vostro 3500", STAC_DELL_VOSTRO_3500),
 	SND_PCI_QUIRK(PCI_VENDOR_ID_HP, 0x1656,
@@ -1900,10 +2024,13 @@ static const struct snd_pci_quirk stac92hd83xxx_cfg_tbl[] = {
 static const struct snd_pci_quirk stac92hd83xxx_codec_id_cfg_tbl[] = {
 	SND_PCI_QUIRK(PCI_VENDOR_ID_HP, 0x3561,
 			  "HP", STAC_HP_ZEPHYR),
+<<<<<<< HEAD
+=======
 =======
 	SND_PCI_QUIRK_MASK(PCI_VENDOR_ID_HP, 0xff00, 0x3600,
 		      "HP", STAC_92HD83XXX_HP),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{} /* terminator */
 };
 
@@ -3034,8 +3161,13 @@ static inline int stac92xx_add_jack_mode_control(struct hda_codec *codec,
 		snd_hda_get_pin_label(codec, nid, &spec->autocfg,
 				      name, sizeof(name), NULL);
 =======
+<<<<<<< HEAD
+		snd_hda_get_pin_label(codec, nid, &spec->autocfg,
+				      name, sizeof(name), NULL);
+=======
 		strcpy(name, hda_get_input_pin_label(codec, nid, 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return stac92xx_add_control(codec->spec, control,
 					strcat(name, " Jack Mode"), nid);
 	}
@@ -3148,9 +3280,15 @@ static hda_nid_t get_unassigned_dac(struct hda_codec *codec, hda_nid_t nid)
 	int j, conn_len;
 	hda_nid_t conn[HDA_MAX_CONNECTIONS], fallback_dac;
 =======
+<<<<<<< HEAD
+	struct auto_pin_cfg *cfg = &spec->autocfg;
+	int j, conn_len;
+	hda_nid_t conn[HDA_MAX_CONNECTIONS], fallback_dac;
+=======
 	int j, conn_len;
 	hda_nid_t conn[HDA_MAX_CONNECTIONS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int wcaps, wtype;
 
 	conn_len = snd_hda_get_connections(codec, nid, conn,
@@ -3179,6 +3317,9 @@ static hda_nid_t get_unassigned_dac(struct hda_codec *codec, hda_nid_t nid)
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* if all DACs are already assigned, connect to the primary DAC,
 	   unless we're assigning a secondary headphone */
@@ -3194,12 +3335,15 @@ static hda_nid_t get_unassigned_dac(struct hda_codec *codec, hda_nid_t nid)
 	if (conn_len > 1) {
 		for (j = 0; j < conn_len; j++) {
 			if (conn[j] == fallback_dac) {
+<<<<<<< HEAD
+=======
 =======
 	/* if all DACs are already assigned, connect to the primary DAC */
 	if (conn_len > 1) {
 		for (j = 0; j < conn_len; j++) {
 			if (conn[j] == spec->multiout.dac_nids[0]) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				snd_hda_codec_write_cache(codec, nid, 0,
 						  AC_VERB_SET_CONNECT_SEL, j);
 				break;
@@ -3684,6 +3828,11 @@ static hda_nid_t get_connected_node(struct hda_codec *codec, hda_nid_t mux,
 #define get_connection_index(codec, mux, nid) \
 	snd_hda_get_conn_index(codec, mux, nid, 1)
 =======
+<<<<<<< HEAD
+/* look for NID recursively */
+#define get_connection_index(codec, mux, nid) \
+	snd_hda_get_conn_index(codec, mux, nid, 1)
+=======
 static int get_connection_index(struct hda_codec *codec, hda_nid_t mux,
 				hda_nid_t nid)
 {
@@ -3709,6 +3858,7 @@ static int get_connection_index(struct hda_codec *codec, hda_nid_t mux,
 	return -1;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* create a volume assigned to the given pin (only if supported) */
 /* return 1 if the volume control is created */
@@ -3755,8 +3905,12 @@ static int stac92xx_auto_create_dmic_input_ctls(struct hda_codec *codec,
 <<<<<<< HEAD
 		char label[32];
 =======
+<<<<<<< HEAD
+		char label[32];
+=======
 		const char *label;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		nid = spec->dmic_nids[i];
 		if (get_wcaps_type(get_wcaps(codec, nid)) != AC_WID_PIN)
@@ -3773,8 +3927,13 @@ static int stac92xx_auto_create_dmic_input_ctls(struct hda_codec *codec,
 		snd_hda_get_pin_label(codec, nid, &spec->autocfg,
 				      label, sizeof(label), NULL);
 =======
+<<<<<<< HEAD
+		snd_hda_get_pin_label(codec, nid, &spec->autocfg,
+				      label, sizeof(label), NULL);
+=======
 		label = hda_get_input_pin_label(codec, nid, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_hda_add_imux_item(dimux, label, index, &type_idx);
 		if (snd_hda_get_bool_hint(codec, "separate_dmux") != 1)
 			snd_hda_add_imux_item(imux, label, index, &type_idx);
@@ -4011,15 +4170,21 @@ static int is_dual_headphones(struct hda_codec *codec)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int stac92xx_parse_auto_config(struct hda_codec *codec)
 {
 	struct sigmatel_spec *spec = codec->spec;
 	hda_nid_t dig_out = 0, dig_in = 0;
+<<<<<<< HEAD
+=======
 =======
 static int stac92xx_parse_auto_config(struct hda_codec *codec, hda_nid_t dig_out, hda_nid_t dig_in)
 {
 	struct sigmatel_spec *spec = codec->spec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int hp_swap = 0;
 	int i, err;
 
@@ -4203,6 +4368,9 @@ static int stac92xx_parse_auto_config(struct hda_codec *codec, hda_nid_t dig_out
 		spec->surr_switch = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* find digital out and in converters */
 	for (i = codec->start_nid; i < codec->start_nid + codec->num_nodes; i++) {
 		unsigned int wid_caps = get_wcaps(codec, i);
@@ -4219,8 +4387,11 @@ static int stac92xx_parse_auto_config(struct hda_codec *codec, hda_nid_t dig_out
 			}
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (spec->autocfg.dig_outs)
 		spec->multiout.dig_out_nid = dig_out;
 	if (dig_in && spec->autocfg.dig_in_pin)
@@ -4357,7 +4528,12 @@ static void stac_gpio_set(struct hda_codec *codec, unsigned int mask,
 	snd_printdd("%s msk %x dir %x gpio %x\n", __func__, mask, dir_mask, data);
 
 =======
+<<<<<<< HEAD
+	snd_printdd("%s msk %x dir %x gpio %x\n", __func__, mask, dir_mask, data);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gpiostate = snd_hda_codec_read(codec, codec->afg, 0,
 				       AC_VERB_GET_GPIO_DATA, 0);
 	gpiostate = (gpiostate & ~dir_mask) | (data & dir_mask);
@@ -4385,6 +4561,9 @@ static void stac_gpio_set(struct hda_codec *codec, unsigned int mask,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int stac_add_event(struct hda_codec *codec, hda_nid_t nid,
 			  unsigned char type, int data)
 {
@@ -4397,6 +4576,8 @@ static int stac_add_event(struct hda_codec *codec, hda_nid_t nid,
 	event->private_data = data;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 static int stac92xx_add_jack(struct hda_codec *codec,
 		hda_nid_t nid, int type)
@@ -4466,6 +4647,7 @@ static struct sigmatel_event *stac_get_event_from_tag(struct hda_codec *codec,
 	}
 	return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* check if given nid is a valid pin and no other events are assigned
@@ -4476,6 +4658,9 @@ static int enable_pin_detect(struct hda_codec *codec, hda_nid_t nid,
 			     unsigned int type)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hda_jack_tbl *event;
 
 	if (!is_jack_detectable(codec, nid))
@@ -4487,6 +4672,8 @@ static int enable_pin_detect(struct hda_codec *codec, hda_nid_t nid,
 		return 0;
 	event->action = type;
 	snd_hda_jack_detect_enable(codec, nid, 0);
+<<<<<<< HEAD
+=======
 =======
 	struct sigmatel_event *event;
 	int tag;
@@ -4507,6 +4694,7 @@ static int enable_pin_detect(struct hda_codec *codec, hda_nid_t nid,
 				  AC_VERB_SET_UNSOLICITED_ENABLE,
 				  AC_USRSP_EN | tag);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -4586,6 +4774,9 @@ static void stac_store_hints(struct hda_codec *codec)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void stac_issue_unsol_events(struct hda_codec *codec, int num_pins,
 				    const hda_nid_t *pins)
 {
@@ -4607,8 +4798,11 @@ static void stac_fake_hp_events(struct hda_codec *codec)
 					spec->autocfg.line_out_pins);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int stac92xx_init(struct hda_codec *codec)
 {
 	struct sigmatel_spec *spec = codec->spec;
@@ -4662,11 +4856,15 @@ static int stac92xx_init(struct hda_codec *codec)
 <<<<<<< HEAD
 		stac_fake_hp_events(codec);
 =======
+<<<<<<< HEAD
+		stac_fake_hp_events(codec);
+=======
 		if (cfg->hp_pins[0])
 			stac_issue_unsol_event(codec, cfg->hp_pins[0]);
 		else if (cfg->line_out_pins[0])
 			stac_issue_unsol_event(codec, cfg->line_out_pins[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		stac92xx_auto_init_multi_out(codec);
 		stac92xx_auto_init_hp_out(codec);
@@ -4732,8 +4930,14 @@ static int stac92xx_init(struct hda_codec *codec)
 		if (!spec->hp_detect ||
 		    spec->vref_mute_led_nid == nid) {
 =======
+<<<<<<< HEAD
+		/* or when the VREF is used for controlling LED */
+		if (!spec->hp_detect ||
+		    spec->vref_mute_led_nid == nid) {
+=======
 		if (!spec->hp_detect) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			stac_toggle_power_map(codec, nid, 1);
 			continue;
 		}
@@ -4756,6 +4960,9 @@ static int stac92xx_init(struct hda_codec *codec)
 		/* skip any ports that don't have jacks since presence
  		 * detection is useless */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (def_conf != AC_JACK_PORT_NONE &&
 		    !is_jack_detectable(codec, nid)) {
 			stac_toggle_power_map(codec, nid, 1);
@@ -4773,6 +4980,8 @@ static int stac92xx_init(struct hda_codec *codec)
 
 	/* sync mute LED */
 	snd_hda_sync_vmaster_hook(&spec->vmaster_mute);
+<<<<<<< HEAD
+=======
 =======
 		if (def_conf != AC_JACK_PORT_COMPLEX) {
 			if (def_conf != AC_JACK_PORT_NONE)
@@ -4787,6 +4996,7 @@ static int stac92xx_init(struct hda_codec *codec)
 	if (spec->gpio_led)
 		hda_call_check_power_status(codec, 0x01);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (spec->dac_list)
 		stac92xx_power_down(codec);
 	return 0;
@@ -4806,6 +5016,9 @@ static void stac92xx_free_kctls(struct hda_codec *codec)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void stac92xx_shutup_pins(struct hda_codec *codec)
 {
 	unsigned int i, def_conf;
@@ -4821,8 +5034,11 @@ static void stac92xx_shutup_pins(struct hda_codec *codec)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void stac92xx_shutup(struct hda_codec *codec)
 {
 	struct sigmatel_spec *spec = codec->spec;
@@ -4830,8 +5046,12 @@ static void stac92xx_shutup(struct hda_codec *codec)
 <<<<<<< HEAD
 	stac92xx_shutup_pins(codec);
 =======
+<<<<<<< HEAD
+	stac92xx_shutup_pins(codec);
+=======
 	snd_hda_shutup_pins(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (spec->eapd_mask)
 		stac_gpio_set(codec, spec->gpio_mask,
@@ -4849,9 +5069,12 @@ static void stac92xx_free(struct hda_codec *codec)
 	stac92xx_shutup(codec);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_hda_input_jack_free(codec);
 	snd_array_free(&spec->events);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kfree(spec);
 	snd_hda_detach_beep_device(codec);
@@ -5050,12 +5273,16 @@ static void stac_toggle_power_map(struct hda_codec *codec, hda_nid_t nid,
 <<<<<<< HEAD
 	idx = 1 << idx;
 =======
+<<<<<<< HEAD
+	idx = 1 << idx;
+=======
 	/* several codecs have two power down bits */
 	if (spec->pwr_mapping)
 		idx = spec->pwr_mapping[idx];
 	else
 		idx = 1 << idx;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	val = snd_hda_codec_read(codec, codec->afg, 0, 0x0fec, 0x0) & 0xff;
 	if (enable)
@@ -5124,6 +5351,9 @@ static void stac92xx_mic_detect(struct hda_codec *codec)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void handle_unsol_event(struct hda_codec *codec,
 			       struct hda_jack_tbl *event)
 {
@@ -5131,6 +5361,8 @@ static void handle_unsol_event(struct hda_codec *codec,
 	int data;
 
 	switch (event->action) {
+<<<<<<< HEAD
+=======
 =======
 static void stac_issue_unsol_event(struct hda_codec *codec, hda_nid_t nid)
 {
@@ -5153,6 +5385,7 @@ static void stac92xx_unsol_event(struct hda_codec *codec, unsigned int res)
 
 	switch (event->type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case STAC_HP_EVENT:
 	case STAC_LO_EVENT:
 		stac92xx_hp_detect(codec);
@@ -5165,8 +5398,12 @@ static void stac92xx_unsol_event(struct hda_codec *codec, unsigned int res)
 <<<<<<< HEAD
 	switch (event->action) {
 =======
+<<<<<<< HEAD
+	switch (event->action) {
+=======
 	switch (event->type) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case STAC_HP_EVENT:
 	case STAC_LO_EVENT:
 	case STAC_MIC_EVENT:
@@ -5176,8 +5413,11 @@ static void stac92xx_unsol_event(struct hda_codec *codec, unsigned int res)
 			stac92xx_pin_sense(codec, event->nid);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		snd_hda_input_jack_report(codec, event->nid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		switch (codec->subsystem_id) {
 		case 0x103c308f:
@@ -5205,13 +5445,20 @@ static void stac92xx_unsol_event(struct hda_codec *codec, unsigned int res)
 <<<<<<< HEAD
 				    !!(data & (1 << event->private_data)));
 =======
+<<<<<<< HEAD
+				    !!(data & (1 << event->private_data)));
+=======
 				    !!(data & (1 << event->data)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void stac_issue_unsol_event(struct hda_codec *codec, hda_nid_t nid)
 {
 	struct hda_jack_tbl *event = snd_hda_jack_tbl_get(codec, nid);
@@ -5234,8 +5481,11 @@ static void stac92xx_unsol_event(struct hda_codec *codec, unsigned int res)
 	snd_hda_jack_report_sync(codec);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hp_blike_system(u32 subsystem_id);
 
 static void set_hp_led_gpio(struct hda_codec *codec)
@@ -5277,8 +5527,12 @@ static void set_hp_led_gpio(struct hda_codec *codec)
 <<<<<<< HEAD
 static int find_mute_led_cfg(struct hda_codec *codec, int default_polarity)
 =======
+<<<<<<< HEAD
+static int find_mute_led_cfg(struct hda_codec *codec, int default_polarity)
+=======
 static int find_mute_led_gpio(struct hda_codec *codec, int default_polarity)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sigmatel_spec *spec = codec->spec;
 	const struct dmi_device *dev = NULL;
@@ -5287,6 +5541,9 @@ static int find_mute_led_gpio(struct hda_codec *codec, int default_polarity)
 		while ((dev = dmi_find_device(DMI_DEV_TYPE_OEM_STRING,
 								NULL, dev))) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (sscanf(dev->name, "HP_Mute_LED_%d_%x",
 				  &spec->gpio_led_polarity,
 				  &spec->gpio_led) == 2) {
@@ -5298,12 +5555,15 @@ static int find_mute_led_gpio(struct hda_codec *codec, int default_polarity)
 					spec->gpio_led = 1 << spec->gpio_led;
 				else
 					spec->vref_mute_led_nid = spec->gpio_led;
+<<<<<<< HEAD
+=======
 =======
 			if (sscanf(dev->name, "HP_Mute_LED_%d_%d",
 				  &spec->gpio_led_polarity,
 				  &spec->gpio_led) == 2) {
 				spec->gpio_led = 1 << spec->gpio_led;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return 1;
 			}
 			if (sscanf(dev->name, "HP_Mute_LED_%d",
@@ -5312,6 +5572,9 @@ static int find_mute_led_gpio(struct hda_codec *codec, int default_polarity)
 				return 1;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* BIOS bug: unfilled OEM string */
 			if (strstr(dev->name, "HP_Mute_LED_P_G")) {
 				set_hp_led_gpio(codec);
@@ -5325,23 +5588,32 @@ static int find_mute_led_gpio(struct hda_codec *codec, int default_polarity)
 				}
 				return 1;
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		/*
 		 * Fallback case - if we don't find the DMI strings,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * we statically set the GPIO - if not a B-series system
 		 * and default polarity is provided
 		 */
 		if (!hp_blike_system(codec->subsystem_id) &&
 			(default_polarity == 0 || default_polarity == 1)) {
+<<<<<<< HEAD
+=======
 =======
 		 * we statically set the GPIO - if not a B-series system.
 		 */
 		if (!hp_blike_system(codec->subsystem_id)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_hp_led_gpio(codec);
 			spec->gpio_led_polarity = default_polarity;
 			return 1;
@@ -5430,17 +5702,26 @@ static void stac927x_proc_hook(struct snd_info_buffer *buffer,
 static int stac92xx_resume(struct hda_codec *codec)
 {
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+static int stac92xx_resume(struct hda_codec *codec)
+{
+=======
 #ifdef SND_HDA_NEEDS_RESUME
 static int stac92xx_resume(struct hda_codec *codec)
 {
 	struct sigmatel_spec *spec = codec->spec;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stac92xx_init(codec);
 	snd_hda_codec_resume_amp(codec);
 	snd_hda_codec_resume_cache(codec);
 	/* fake event to set up pins again to override cached values */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	stac_fake_hp_events(codec);
 	return 0;
 }
@@ -5518,6 +5799,8 @@ static void stac92xx_update_led_status(struct hda_codec *codec, int enabled)
 				 spec->vref_led);
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 	if (spec->hp_detect) {
 		if (spec->autocfg.hp_pins[0])
@@ -5580,6 +5863,7 @@ static int stac92xx_suspend(struct hda_codec *codec, pm_message_t state)
 }
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct hda_codec_ops stac92xx_patch_ops = {
 	.build_controls = stac92xx_build_controls,
@@ -5590,8 +5874,12 @@ static const struct hda_codec_ops stac92xx_patch_ops = {
 <<<<<<< HEAD
 #ifdef CONFIG_PM
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+=======
 #ifdef SND_HDA_NEEDS_RESUME
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.suspend = stac92xx_suspend,
 	.resume = stac92xx_resume,
 #endif
@@ -5729,8 +6017,12 @@ static int patch_stac925x(struct hda_codec *codec)
 <<<<<<< HEAD
 	err = stac92xx_parse_auto_config(codec);
 =======
+<<<<<<< HEAD
+	err = stac92xx_parse_auto_config(codec);
+=======
 	err = stac92xx_parse_auto_config(codec, 0x8, 0x7);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!err) {
 		if (spec->board_config < 0) {
 			printk(KERN_WARNING "hda_codec: No auto-config is "
@@ -5874,8 +6166,12 @@ again:
 <<<<<<< HEAD
 	err = stac92xx_parse_auto_config(codec);
 =======
+<<<<<<< HEAD
+	err = stac92xx_parse_auto_config(codec);
+=======
 	err = stac92xx_parse_auto_config(codec, 0x25, 0x27);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!err) {
 		if (spec->board_config < 0) {
@@ -6057,10 +6353,13 @@ static int patch_stac92hd83xxx(struct hda_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* reset pin power-down; Windows may leave these bits after reboot */
 	snd_hda_codec_write_cache(codec, codec->afg, 0, 0x7EC, 0);
 	snd_hda_codec_write_cache(codec, codec->afg, 0, 0x7ED, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	codec->no_trigger_sense = 1;
 	codec->spec = spec;
 
@@ -6072,8 +6371,11 @@ static int patch_stac92hd83xxx(struct hda_codec *codec)
 	spec->pwr_nids = stac92hd83xxx_pwr_nids;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spec->pwr_mapping = stac92hd83xxx_pwr_mapping;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->num_pwrs = ARRAY_SIZE(stac92hd83xxx_pwr_nids);
 	spec->multiout.dac_nids = spec->dac_nids;
 	spec->init = stac92hd83xxx_core_init;
@@ -6083,14 +6385,20 @@ static int patch_stac92hd83xxx(struct hda_codec *codec)
 							stac92hd83xxx_models,
 							stac92hd83xxx_cfg_tbl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* check codec subsystem id if not found */
 	if (spec->board_config < 0)
 		spec->board_config =
 			snd_hda_check_board_codec_sid_config(codec,
 				STAC_92HD83XXX_MODELS, stac92hd83xxx_models,
 				stac92hd83xxx_codec_id_cfg_tbl);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 again:
 	if (spec->board_config < 0)
 		snd_printdd(KERN_INFO "hda_codec: %s: BIOS auto-probing.\n",
@@ -6100,6 +6408,9 @@ again:
 				stac92hd83xxx_brd_tbl[spec->board_config]);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	codec->patch_ops = stac92xx_patch_ops;
 
 	switch (spec->board_config) {
@@ -6109,6 +6420,8 @@ again:
 	}
 
 	if (find_mute_led_cfg(codec, -1/*no default cfg*/))
+<<<<<<< HEAD
+=======
 =======
 	if (spec->board_config != STAC_92HD83XXX_PWR_REF)
 		spec->num_pwrs = 0;
@@ -6117,11 +6430,15 @@ again:
 
 	if (find_mute_led_gpio(codec, 0))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printd("mute LED gpio %d polarity %d\n",
 				spec->gpio_led,
 				spec->gpio_led_polarity);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (spec->gpio_led) {
 		if (!spec->vref_mute_led_nid) {
 			spec->gpio_mask |= spec->gpio_led;
@@ -6137,6 +6454,8 @@ again:
 	}
 
 	err = stac92xx_parse_auto_config(codec);
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SND_HDA_POWER_SAVE
 	if (spec->gpio_led) {
@@ -6155,6 +6474,7 @@ again:
 	else
 		err = stac92xx_parse_auto_config(codec, 0x1d, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!err) {
 		if (spec->board_config < 0) {
 			printk(KERN_WARNING "hda_codec: No auto-config is "
@@ -6324,8 +6644,12 @@ again:
 <<<<<<< HEAD
 			err = stac_add_event(codec, codec->afg,
 =======
+<<<<<<< HEAD
+			err = stac_add_event(codec, codec->afg,
+=======
 			err = stac_add_event(spec, codec->afg,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					     STAC_VREF_EVENT, 0x02);
 			if (err < 0)
 				return err;
@@ -6334,10 +6658,14 @@ again:
 <<<<<<< HEAD
 			snd_hda_jack_detect_enable(codec, codec->afg, 0);
 =======
+<<<<<<< HEAD
+			snd_hda_jack_detect_enable(codec, codec->afg, 0);
+=======
 			snd_hda_codec_write_cache(codec, codec->afg, 0,
 				AC_VERB_SET_UNSOLICITED_ENABLE,
 				AC_USRSP_EN | err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spec->gpio_mask |= 0x02;
 			break;
 		}
@@ -6347,9 +6675,12 @@ again:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		/* no output amps */
 		spec->num_pwrs = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* disable VSW */
 		spec->init = stac92hd71bxx_core_init;
 		unmute_init++;
@@ -6366,9 +6697,12 @@ again:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		/* no output amps */
 		spec->num_pwrs = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* fallthru */
 	default:
 		spec->init = stac92hd71bxx_core_init;
@@ -6467,13 +6801,20 @@ again:
 <<<<<<< HEAD
 	if (find_mute_led_cfg(codec, 1))
 =======
+<<<<<<< HEAD
+	if (find_mute_led_cfg(codec, 1))
+=======
 	if (find_mute_led_gpio(codec, 1))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printd("mute LED gpio %d polarity %d\n",
 				spec->gpio_led,
 				spec->gpio_led_polarity);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (spec->gpio_led) {
 		if (!spec->vref_mute_led_nid) {
 			spec->gpio_mask |= spec->gpio_led;
@@ -6491,6 +6832,8 @@ again:
 	spec->multiout.dac_nids = spec->dac_nids;
 
 	err = stac92xx_parse_auto_config(codec);
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SND_HDA_POWER_SAVE
 	if (spec->gpio_led) {
@@ -6507,6 +6850,7 @@ again:
 
 	err = stac92xx_parse_auto_config(codec, 0x21, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!err) {
 		if (spec->board_config < 0) {
 			printk(KERN_WARNING "hda_codec: No auto-config is "
@@ -6618,8 +6962,12 @@ static int patch_stac922x(struct hda_codec *codec)
 <<<<<<< HEAD
 	err = stac92xx_parse_auto_config(codec);
 =======
+<<<<<<< HEAD
+	err = stac92xx_parse_auto_config(codec);
+=======
 	err = stac92xx_parse_auto_config(codec, 0x08, 0x09);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!err) {
 		if (spec->board_config < 0) {
 			printk(KERN_WARNING "hda_codec: No auto-config is "
@@ -6747,8 +7095,12 @@ static int patch_stac927x(struct hda_codec *codec)
 <<<<<<< HEAD
 	err = stac92xx_parse_auto_config(codec);
 =======
+<<<<<<< HEAD
+	err = stac92xx_parse_auto_config(codec);
+=======
 	err = stac92xx_parse_auto_config(codec, 0x1e, 0x20);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!err) {
 		if (spec->board_config < 0) {
 			printk(KERN_WARNING "hda_codec: No auto-config is "
@@ -6848,8 +7200,12 @@ static int patch_stac9205(struct hda_codec *codec)
 <<<<<<< HEAD
 		err = stac_add_event(codec, codec->afg, STAC_VREF_EVENT, 0x01);
 =======
+<<<<<<< HEAD
+		err = stac_add_event(codec, codec->afg, STAC_VREF_EVENT, 0x01);
+=======
 		err = stac_add_event(spec, codec->afg, STAC_VREF_EVENT, 0x01);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 		snd_hda_codec_write_cache(codec, codec->afg, 0,
@@ -6857,10 +7213,14 @@ static int patch_stac9205(struct hda_codec *codec)
 <<<<<<< HEAD
 		snd_hda_jack_detect_enable(codec, codec->afg, 0);
 =======
+<<<<<<< HEAD
+		snd_hda_jack_detect_enable(codec, codec->afg, 0);
+=======
 		snd_hda_codec_write_cache(codec, codec->afg, 0,
 					  AC_VERB_SET_UNSOLICITED_ENABLE,
 					  AC_USRSP_EN | err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		spec->gpio_dir = 0x0b;
 		spec->eapd_mask = 0x01;
@@ -6884,8 +7244,12 @@ static int patch_stac9205(struct hda_codec *codec)
 <<<<<<< HEAD
 	err = stac92xx_parse_auto_config(codec);
 =======
+<<<<<<< HEAD
+	err = stac92xx_parse_auto_config(codec);
+=======
 	err = stac92xx_parse_auto_config(codec, 0x1f, 0x20);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!err) {
 		if (spec->board_config < 0) {
 			printk(KERN_WARNING "hda_codec: No auto-config is "
@@ -6993,8 +7357,12 @@ static int patch_stac9872(struct hda_codec *codec)
 <<<<<<< HEAD
 	err = stac92xx_parse_auto_config(codec);
 =======
+<<<<<<< HEAD
+	err = stac92xx_parse_auto_config(codec);
+=======
 	err = stac92xx_parse_auto_config(codec, 0x10, 0x12);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		stac92xx_free(codec);
 		return -EINVAL;

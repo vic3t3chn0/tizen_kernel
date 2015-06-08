@@ -43,7 +43,12 @@
 #include <trace/events/xen.h>
 
 =======
+<<<<<<< HEAD
+#include <trace/events/xen.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgtable.h>
 
@@ -53,7 +58,11 @@
 <<<<<<< HEAD
 #include <xen/interface/platform.h>
 =======
+<<<<<<< HEAD
+#include <xen/interface/platform.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The hypercall asms have to meet several constraints:
@@ -309,6 +318,9 @@ HYPERVISOR_set_timer_op(u64 timeout)
 
 static inline int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 HYPERVISOR_dom0_op(struct xen_platform_op *platform_op)
 {
 	platform_op->interface_version = XENPF_INTERFACE_VERSION;
@@ -316,8 +328,11 @@ HYPERVISOR_dom0_op(struct xen_platform_op *platform_op)
 }
 
 static inline int
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 HYPERVISOR_set_debugreg(int reg, unsigned long value)
 {
 	return _hypercall2(int, set_debugreg, reg, value);
@@ -482,7 +497,12 @@ MULTI_fpu_taskswitch(struct multicall_entry *mcl, int set)
 
 	trace_xen_mc_entry(mcl, 1);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, 1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -503,7 +523,12 @@ MULTI_update_va_mapping(struct multicall_entry *mcl, unsigned long va,
 
 	trace_xen_mc_entry(mcl, sizeof(new_val) == sizeof(long) ? 3 : 4);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, sizeof(new_val) == sizeof(long) ? 3 : 4);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -518,7 +543,12 @@ MULTI_grant_table_op(struct multicall_entry *mcl, unsigned int cmd,
 
 	trace_xen_mc_entry(mcl, 3);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, 3);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -542,7 +572,12 @@ MULTI_update_va_mapping_otherdomain(struct multicall_entry *mcl, unsigned long v
 
 	trace_xen_mc_entry(mcl, sizeof(new_val) == sizeof(long) ? 4 : 5);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, sizeof(new_val) == sizeof(long) ? 4 : 5);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -563,7 +598,12 @@ MULTI_update_descriptor(struct multicall_entry *mcl, u64 maddr,
 
 	trace_xen_mc_entry(mcl, sizeof(maddr) == sizeof(long) ? 2 : 4);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, sizeof(maddr) == sizeof(long) ? 2 : 4);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -576,7 +616,12 @@ MULTI_memory_op(struct multicall_entry *mcl, unsigned int cmd, void *arg)
 
 	trace_xen_mc_entry(mcl, 2);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, 2);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -592,7 +637,12 @@ MULTI_mmu_update(struct multicall_entry *mcl, struct mmu_update *req,
 
 	trace_xen_mc_entry(mcl, 4);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, 4);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -608,7 +658,12 @@ MULTI_mmuext_op(struct multicall_entry *mcl, struct mmuext_op *op, int count,
 
 	trace_xen_mc_entry(mcl, 4);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, 4);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -621,7 +676,12 @@ MULTI_set_gdt(struct multicall_entry *mcl, unsigned long *frames, int entries)
 
 	trace_xen_mc_entry(mcl, 2);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, 2);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void
@@ -635,7 +695,12 @@ MULTI_stack_switch(struct multicall_entry *mcl,
 
 	trace_xen_mc_entry(mcl, 2);
 =======
+<<<<<<< HEAD
+
+	trace_xen_mc_entry(mcl, 2);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif /* _ASM_X86_XEN_HYPERCALL_H */

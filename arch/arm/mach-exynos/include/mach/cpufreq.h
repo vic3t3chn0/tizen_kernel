@@ -6,8 +6,12 @@
 <<<<<<< HEAD
  * EXYNOS - CPUFreq support
 =======
+<<<<<<< HEAD
+ * EXYNOS - CPUFreq support
+=======
  * EXYNOS4 - CPUFreq support
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -16,11 +20,14 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* CPU frequency level index for using cpufreq lock API
  * This should be same with cpufreq_frequency_table
 */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum cpufreq_level_index {
 	L0, L1, L2, L3, L4,
 	L5, L6, L7, L8, L9,
@@ -29,6 +36,8 @@ enum cpufreq_level_index {
 	L20,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 enum busfreq_level_request {
@@ -110,6 +119,7 @@ struct dvfs_qos_info {
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct exynos_dvfs_info {
 	unsigned long	mpll_freq_khz;
 	unsigned int	pll_safe_idx;
@@ -118,19 +128,27 @@ struct exynos_dvfs_info {
 	unsigned int	min_support_idx;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int	gov_support_freq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk	*cpu_clk;
 	unsigned int	*volt_table;
 	struct cpufreq_frequency_table	*freq_table;
 	void (*set_freq)(unsigned int, unsigned int);
 	bool (*need_apll_change)(unsigned int, unsigned int);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern int exynos4210_cpufreq_init(struct exynos_dvfs_info *);
 extern int exynos4x12_cpufreq_init(struct exynos_dvfs_info *);
 extern int exynos5250_cpufreq_init(struct exynos_dvfs_info *);
+<<<<<<< HEAD
+=======
 =======
 
 #ifdef CONFIG_SLP
@@ -175,3 +193,4 @@ extern int exynos5250_cpufreq_init(struct exynos_dvfs_info *);
 void exynos5250_set_arm_abbg(unsigned int arm_volt, unsigned int int_volt);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

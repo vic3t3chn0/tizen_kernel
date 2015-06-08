@@ -10,6 +10,13 @@
 #include <linux/kernel.h>
 #include <linux/i2c.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../iio.h"
 #include "ade7854.h"
@@ -20,7 +27,15 @@ static int ade7854_i2c_write_reg_8(struct device *dev,
 {
 	int ret;
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&st->buf_lock);
 	st->tx[0] = (reg_address >> 8) & 0xFF;
@@ -39,7 +54,15 @@ static int ade7854_i2c_write_reg_16(struct device *dev,
 {
 	int ret;
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&st->buf_lock);
 	st->tx[0] = (reg_address >> 8) & 0xFF;
@@ -59,7 +82,15 @@ static int ade7854_i2c_write_reg_24(struct device *dev,
 {
 	int ret;
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&st->buf_lock);
 	st->tx[0] = (reg_address >> 8) & 0xFF;
@@ -80,7 +111,15 @@ static int ade7854_i2c_write_reg_32(struct device *dev,
 {
 	int ret;
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&st->buf_lock);
 	st->tx[0] = (reg_address >> 8) & 0xFF;
@@ -101,7 +140,15 @@ static int ade7854_i2c_read_reg_8(struct device *dev,
 		u8 *val)
 {
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	mutex_lock(&st->buf_lock);
@@ -127,7 +174,15 @@ static int ade7854_i2c_read_reg_16(struct device *dev,
 		u16 *val)
 {
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	mutex_lock(&st->buf_lock);
@@ -153,7 +208,15 @@ static int ade7854_i2c_read_reg_24(struct device *dev,
 		u32 *val)
 {
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	mutex_lock(&st->buf_lock);
@@ -179,7 +242,15 @@ static int ade7854_i2c_read_reg_32(struct device *dev,
 		u32 *val)
 {
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st = iio_priv(indio_dev);
+=======
 	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct ade7854_state *st = iio_dev_get_devdata(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	mutex_lock(&st->buf_lock);
@@ -204,6 +275,19 @@ static int __devinit ade7854_i2c_probe(struct i2c_client *client,
 		const struct i2c_device_id *id)
 {
 	int ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ade7854_state *st;
+	struct iio_dev *indio_dev;
+
+	indio_dev = iio_allocate_device(sizeof(*st));
+	if (indio_dev == NULL)
+		return -ENOMEM;
+	st = iio_priv(indio_dev);
+	i2c_set_clientdata(client, indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ade7854_state *st = kzalloc(sizeof *st, GFP_KERNEL);
 	if (!st) {
 		ret =  -ENOMEM;
@@ -211,6 +295,10 @@ static int __devinit ade7854_i2c_probe(struct i2c_client *client,
 	}
 
 	i2c_set_clientdata(client, st);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	st->read_reg_8 = ade7854_i2c_read_reg_8;
 	st->read_reg_16 = ade7854_i2c_read_reg_16;
 	st->read_reg_24 = ade7854_i2c_read_reg_24;
@@ -222,11 +310,23 @@ static int __devinit ade7854_i2c_probe(struct i2c_client *client,
 	st->i2c = client;
 	st->irq = client->irq;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = ade7854_probe(indio_dev, &client->dev);
+	if (ret)
+		iio_free_device(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ade7854_probe(st, &client->dev);
 	if (ret) {
 		kfree(st);
 		return ret;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -253,6 +353,12 @@ static struct i2c_driver ade7854_i2c_driver = {
 	.remove   = __devexit_p(ade7854_i2c_remove),
 	.id_table = ade7854_id,
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(ade7854_i2c_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __init int ade7854_i2c_init(void)
 {
@@ -266,6 +372,10 @@ static __exit void ade7854_i2c_exit(void)
 }
 module_exit(ade7854_i2c_exit);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Barry Song <21cnbao@gmail.com>");
 MODULE_DESCRIPTION("Analog Devices ADE7854/58/68/78 Polyphase Multifunction Energy Metering IC I2C Driver");

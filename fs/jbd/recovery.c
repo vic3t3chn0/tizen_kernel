@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/blkdev.h>
 =======
+<<<<<<< HEAD
+#include <linux/blkdev.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -272,7 +276,13 @@ int journal_recover(journal_t *journal)
 	if (journal->j_flags & JFS_BARRIER)
 		blkdev_issue_flush(journal->j_fs_dev, GFP_KERNEL, NULL);
 =======
+<<<<<<< HEAD
+	/* Flush disk caches to get replayed data on the permanent storage */
+	if (journal->j_flags & JFS_BARRIER)
+		blkdev_issue_flush(journal->j_fs_dev, GFP_KERNEL, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }

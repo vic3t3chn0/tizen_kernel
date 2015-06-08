@@ -14,8 +14,11 @@
 #include <linux/serial_8250.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/mbus.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ata_platform.h>
 #include <linux/mtd/nand.h>
 #include <linux/dma-mapping.h>
@@ -37,7 +40,11 @@
 <<<<<<< HEAD
 #include <plat/addr-map.h>
 =======
+<<<<<<< HEAD
+#include <plat/addr-map.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 
 /*****************************************************************************
@@ -84,9 +91,13 @@ void __init kirkwood_ehci_init(void)
 <<<<<<< HEAD
 	orion_ehci_init(USB_PHYS_BASE, IRQ_KIRKWOOD_USB, EHCI_PHY_NA);
 =======
+<<<<<<< HEAD
+	orion_ehci_init(USB_PHYS_BASE, IRQ_KIRKWOOD_USB, EHCI_PHY_NA);
+=======
 	orion_ehci_init(&kirkwood_mbus_dram_info,
 			USB_PHYS_BASE, IRQ_KIRKWOOD_USB, EHCI_PHY_NA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -100,8 +111,12 @@ void __init kirkwood_ge00_init(struct mv643xx_eth_platform_data *eth_data)
 <<<<<<< HEAD
 	orion_ge00_init(eth_data,
 =======
+<<<<<<< HEAD
+	orion_ge00_init(eth_data,
+=======
 	orion_ge00_init(eth_data, &kirkwood_mbus_dram_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GE00_PHYS_BASE, IRQ_KIRKWOOD_GE00_SUM,
 			IRQ_KIRKWOOD_GE00_ERR, kirkwood_tclk);
 }
@@ -118,8 +133,12 @@ void __init kirkwood_ge01_init(struct mv643xx_eth_platform_data *eth_data)
 <<<<<<< HEAD
 	orion_ge01_init(eth_data,
 =======
+<<<<<<< HEAD
+	orion_ge01_init(eth_data,
+=======
 	orion_ge01_init(eth_data, &kirkwood_mbus_dram_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GE01_PHYS_BASE, IRQ_KIRKWOOD_GE01_SUM,
 			IRQ_KIRKWOOD_GE01_ERR, kirkwood_tclk);
 }
@@ -201,9 +220,13 @@ void __init kirkwood_sata_init(struct mv_sata_platform_data *sata_data)
 <<<<<<< HEAD
 	orion_sata_init(sata_data, SATA_PHYS_BASE, IRQ_KIRKWOOD_SATA);
 =======
+<<<<<<< HEAD
+	orion_sata_init(sata_data, SATA_PHYS_BASE, IRQ_KIRKWOOD_SATA);
+=======
 	orion_sata_init(sata_data, &kirkwood_mbus_dram_info,
 			SATA_PHYS_BASE, IRQ_KIRKWOOD_SATA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -247,8 +270,11 @@ void __init kirkwood_sdio_init(struct mvsdio_platform_data *mvsdio_data)
 		mvsdio_data->clock = 200000000;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mvsdio_data->dram = &kirkwood_mbus_dram_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kirkwood_clk_ctrl |= CGC_SDIO;
 	kirkwood_sdio.dev.platform_data = mvsdio_data;
 	platform_device_register(&kirkwood_sdio);
@@ -309,11 +335,16 @@ void __init kirkwood_crypto_init(void)
  * XOR0
  ****************************************************************************/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init kirkwood_xor0_init(void)
 {
 	kirkwood_clk_ctrl |= CGC_XOR0;
 
 	orion_xor0_init(XOR0_PHYS_BASE, XOR0_HIGH_PHYS_BASE,
+<<<<<<< HEAD
+=======
 =======
 static void __init kirkwood_xor0_init(void)
 {
@@ -322,6 +353,7 @@ static void __init kirkwood_xor0_init(void)
 	orion_xor0_init(&kirkwood_mbus_dram_info,
 			XOR0_PHYS_BASE, XOR0_HIGH_PHYS_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			IRQ_KIRKWOOD_XOR_00, IRQ_KIRKWOOD_XOR_01);
 }
 
@@ -332,8 +364,12 @@ static void __init kirkwood_xor0_init(void)
 <<<<<<< HEAD
 void __init kirkwood_xor1_init(void)
 =======
+<<<<<<< HEAD
+void __init kirkwood_xor1_init(void)
+=======
 static void __init kirkwood_xor1_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	kirkwood_clk_ctrl |= CGC_XOR1;
 
@@ -348,8 +384,12 @@ static void __init kirkwood_xor1_init(void)
 <<<<<<< HEAD
 void __init kirkwood_wdt_init(void)
 =======
+<<<<<<< HEAD
+void __init kirkwood_wdt_init(void)
+=======
 static void __init kirkwood_wdt_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	orion_wdt_init(kirkwood_tclk);
 }
@@ -409,8 +449,11 @@ static struct resource kirkwood_i2s_resources[] = {
 static struct kirkwood_asoc_platform_data kirkwood_i2s_data = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.dram        = &kirkwood_mbus_dram_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.burst       = 128,
 };
 
@@ -445,8 +488,12 @@ void __init kirkwood_audio_init(void)
 <<<<<<< HEAD
 char * __init kirkwood_id(void)
 =======
+<<<<<<< HEAD
+char * __init kirkwood_id(void)
+=======
 static char * __init kirkwood_id(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 dev, rev;
 
@@ -484,7 +531,12 @@ static char * __init kirkwood_id(void)
 		else if (rev == MV88F6282_REV_A1)
 			return "MV88F6282-Rev-A1";
 =======
+<<<<<<< HEAD
+		else if (rev == MV88F6282_REV_A1)
+			return "MV88F6282-Rev-A1";
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			return "MV88F6282-Rev-Unsupported";
 	} else {
@@ -495,8 +547,12 @@ static char * __init kirkwood_id(void)
 <<<<<<< HEAD
 void __init kirkwood_l2_init(void)
 =======
+<<<<<<< HEAD
+void __init kirkwood_l2_init(void)
+=======
 static void __init kirkwood_l2_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_CACHE_FEROCEON_L2_WRITETHROUGH
 	writel(readl(L2_CONFIG_REG) | L2_WRITETHROUGH, L2_CONFIG_REG);
@@ -513,8 +569,11 @@ void __init kirkwood_init(void)
 		kirkwood_id(), kirkwood_tclk);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kirkwood_i2s_data.tclk = kirkwood_tclk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Disable propagation of mbus errors to the CPU local bus,
@@ -597,6 +656,9 @@ static int __init kirkwood_clock_gate(void)
 }
 late_initcall(kirkwood_clock_gate);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void kirkwood_restart(char mode, const char *cmd)
 {
@@ -613,5 +675,8 @@ void kirkwood_restart(char mode, const char *cmd)
 	while (1)
 		;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

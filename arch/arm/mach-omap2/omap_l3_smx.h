@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * OMAP3XXX L3 Interconnect Driver header
  *
@@ -22,6 +25,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+<<<<<<< HEAD
+=======
 =======
  /*
   * OMAP3XXX L3 Interconnect Driver header
@@ -47,6 +52,7 @@
   * USA
   */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ARCH_ARM_MACH_OMAP2_L3_INTERCONNECT_3XXX_H
 #define __ARCH_ARM_MACH_OMAP2_L3_INTERCONNECT_3XXX_H
 
@@ -69,8 +75,12 @@
 <<<<<<< HEAD
 static const u64 shift = 1;
 =======
+<<<<<<< HEAD
+static const u64 shift = 1;
+=======
 const u64 shift = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define L3_STATUS_0_MPUIA_BRST		(shift << 0)
 #define L3_STATUS_0_MPUIA_RSP		(shift << 1)
@@ -109,6 +119,9 @@ const u64 shift = 1;
 #define L3_STATUS_0_MAD2DTA_REQ		(shift << 61)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L3_STATUS_0_TIMEOUT_MASK	(L3_STATUS_0_MPUIA_BRST		\
 					| L3_STATUS_0_MPUIA_RSP		\
 					| L3_STATUS_0_IVAIA_BRST	\
@@ -135,6 +148,8 @@ const u64 shift = 1;
 					| L3_STATUS_0_L4CORETA_REQ	\
 					| L3_STATUS_0_L4PERTA_REQ	\
 					| L3_STATUS_0_L4EMUTA_REQ	\
+<<<<<<< HEAD
+=======
 =======
 #define L3_STATUS_0_TIMEOUT_MASK	(L3_STATUS_0_MPUIA_BRST         \
 					| L3_STATUS_0_MPUIA_RSP         \
@@ -163,6 +178,7 @@ const u64 shift = 1;
 					| L3_STATUS_0_L4PERTA_REQ       \
 					| L3_STATUS_0_L4EMUTA_REQ       \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					| L3_STATUS_0_MAD2DTA_REQ)
 
 #define L3_SI_FLAG_STATUS_1		0x530
@@ -197,6 +213,9 @@ const u64 shift = 1;
 enum omap3_l3_initiator_id {
 	/* LCD has 1 ID */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OMAP_L3_LCD = 29,
 	/* SAD2D has 1 ID */
 	OMAP_L3_SAD2D = 28,
@@ -210,6 +229,8 @@ enum omap3_l3_initiator_id {
 	OMAP_L3_IA_IVA_SS_1 = 22,
 	OMAP_L3_IA_IVA_SS_2 = 21,
 	OMAP_L3_IA_IVA_SS_3 = 20,
+<<<<<<< HEAD
+=======
 =======
 	OMAP_L3_LCD	        = 29,
 	/* SAD2D has 1 ID */
@@ -225,6 +246,7 @@ enum omap3_l3_initiator_id {
 	OMAP_L3_IA_IVA_SS_2     = 21,
 	OMAP_L3_IA_IVA_SS_3     = 20,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* IVA 2.2 SS DMA has 6 IDS */
 	OMAP_L3_IA_IVA_SS_DMA_1 = 19,
 	OMAP_L3_IA_IVA_SS_DMA_2 = 18,
@@ -234,6 +256,9 @@ enum omap3_l3_initiator_id {
 	OMAP_L3_IA_IVA_SS_DMA_6 = 14,
 	/* SGX has 1 ID */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OMAP_L3_IA_SGX = 13,
 	/* CAM has 3 ID */
 	OMAP_L3_IA_CAM_1 = 12,
@@ -253,6 +278,8 @@ enum omap3_l3_initiator_id {
 	OMAP_L3_USBOTG = 2,
 	/* HSUSB HOST has 1 ID */
 	OMAP_L3_USBHOST = 1,
+<<<<<<< HEAD
+=======
 =======
 	OMAP_L3_IA_SGX		= 13,
 	/* CAM has 3 ID */
@@ -274,6 +301,7 @@ enum omap3_l3_initiator_id {
 	/* HSUSB HOST has 1 ID */
 	OMAP_L3_USBHOST		= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum omap3_l3_code {
@@ -290,6 +318,9 @@ enum omap3_l3_code {
 
 struct omap3_l3 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev;
 	struct clk *ick;
 
@@ -305,6 +336,8 @@ struct omap3_l3 {
 
 /* offsets for l3 agents in order with the Flag status register */
 static unsigned int omap3_l3_app_bases[] = {
+<<<<<<< HEAD
+=======
 =======
 	struct device   *dev;
 	struct clk      *ick;
@@ -322,6 +355,7 @@ static unsigned int omap3_l3_app_bases[] = {
 /* offsets for l3 agents in order with the Flag status register */
 unsigned int __iomem omap3_l3_app_bases[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* MPU IA */
 	0x1400,
 	0x1400,
@@ -423,8 +457,12 @@ unsigned int __iomem omap3_l3_app_bases[] = {
 <<<<<<< HEAD
 static unsigned int omap3_l3_debug_bases[] = {
 =======
+<<<<<<< HEAD
+static unsigned int omap3_l3_debug_bases[] = {
+=======
 unsigned int __iomem omap3_l3_debug_bases[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* MPU DATA IA */
 	0x1400,
 	/* RESERVED */
@@ -443,8 +481,12 @@ unsigned int __iomem omap3_l3_debug_bases[] = {
 <<<<<<< HEAD
 static u32 *omap3_l3_bases[] = {
 =======
+<<<<<<< HEAD
+static u32 *omap3_l3_bases[] = {
+=======
 u32 *omap3_l3_bases[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_l3_app_bases,
 	omap3_l3_debug_bases,
 };

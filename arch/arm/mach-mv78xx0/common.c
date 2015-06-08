@@ -14,8 +14,11 @@
 #include <linux/serial_8250.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/mbus.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ata_platform.h>
 #include <linux/ethtool.h>
 #include <asm/mach/map.h>
@@ -30,7 +33,11 @@
 <<<<<<< HEAD
 #include <plat/addr-map.h>
 =======
+<<<<<<< HEAD
+#include <plat/addr-map.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 
 static int get_tclk(void);
@@ -180,9 +187,13 @@ void __init mv78xx0_ehci0_init(void)
 <<<<<<< HEAD
 	orion_ehci_init(USB0_PHYS_BASE, IRQ_MV78XX0_USB_0, EHCI_PHY_NA);
 =======
+<<<<<<< HEAD
+	orion_ehci_init(USB0_PHYS_BASE, IRQ_MV78XX0_USB_0, EHCI_PHY_NA);
+=======
 	orion_ehci_init(&mv78xx0_mbus_dram_info,
 			USB0_PHYS_BASE, IRQ_MV78XX0_USB_0, EHCI_PHY_NA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -194,9 +205,13 @@ void __init mv78xx0_ehci1_init(void)
 <<<<<<< HEAD
 	orion_ehci_1_init(USB1_PHYS_BASE, IRQ_MV78XX0_USB_1);
 =======
+<<<<<<< HEAD
+	orion_ehci_1_init(USB1_PHYS_BASE, IRQ_MV78XX0_USB_1);
+=======
 	orion_ehci_1_init(&mv78xx0_mbus_dram_info,
 			  USB1_PHYS_BASE, IRQ_MV78XX0_USB_1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -208,9 +223,13 @@ void __init mv78xx0_ehci2_init(void)
 <<<<<<< HEAD
 	orion_ehci_2_init(USB2_PHYS_BASE, IRQ_MV78XX0_USB_2);
 =======
+<<<<<<< HEAD
+	orion_ehci_2_init(USB2_PHYS_BASE, IRQ_MV78XX0_USB_2);
+=======
 	orion_ehci_2_init(&mv78xx0_mbus_dram_info,
 			  USB2_PHYS_BASE, IRQ_MV78XX0_USB_2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -222,8 +241,12 @@ void __init mv78xx0_ge00_init(struct mv643xx_eth_platform_data *eth_data)
 <<<<<<< HEAD
 	orion_ge00_init(eth_data,
 =======
+<<<<<<< HEAD
+	orion_ge00_init(eth_data,
+=======
 	orion_ge00_init(eth_data, &mv78xx0_mbus_dram_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GE00_PHYS_BASE, IRQ_MV78XX0_GE00_SUM,
 			IRQ_MV78XX0_GE_ERR, get_tclk());
 }
@@ -237,8 +260,12 @@ void __init mv78xx0_ge01_init(struct mv643xx_eth_platform_data *eth_data)
 <<<<<<< HEAD
 	orion_ge01_init(eth_data,
 =======
+<<<<<<< HEAD
+	orion_ge01_init(eth_data,
+=======
 	orion_ge01_init(eth_data, &mv78xx0_mbus_dram_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GE01_PHYS_BASE, IRQ_MV78XX0_GE01_SUM,
 			NO_IRQ, get_tclk());
 }
@@ -265,8 +292,12 @@ void __init mv78xx0_ge10_init(struct mv643xx_eth_platform_data *eth_data)
 <<<<<<< HEAD
 	orion_ge10_init(eth_data,
 =======
+<<<<<<< HEAD
+	orion_ge10_init(eth_data,
+=======
 	orion_ge10_init(eth_data, &mv78xx0_mbus_dram_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GE10_PHYS_BASE, IRQ_MV78XX0_GE10_SUM,
 			NO_IRQ, get_tclk());
 }
@@ -293,8 +324,12 @@ void __init mv78xx0_ge11_init(struct mv643xx_eth_platform_data *eth_data)
 <<<<<<< HEAD
 	orion_ge11_init(eth_data,
 =======
+<<<<<<< HEAD
+	orion_ge11_init(eth_data,
+=======
 	orion_ge11_init(eth_data, &mv78xx0_mbus_dram_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GE11_PHYS_BASE, IRQ_MV78XX0_GE11_SUM,
 			NO_IRQ, get_tclk());
 }
@@ -316,9 +351,13 @@ void __init mv78xx0_sata_init(struct mv_sata_platform_data *sata_data)
 <<<<<<< HEAD
 	orion_sata_init(sata_data, SATA_PHYS_BASE, IRQ_MV78XX0_SATA);
 =======
+<<<<<<< HEAD
+	orion_sata_init(sata_data, SATA_PHYS_BASE, IRQ_MV78XX0_SATA);
+=======
 	orion_sata_init(sata_data, &mv78xx0_mbus_dram_info,
 			SATA_PHYS_BASE, IRQ_MV78XX0_SATA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -442,6 +481,9 @@ void __init mv78xx0_init(void)
 #endif
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void mv78xx0_restart(char mode, const char *cmd)
 {
@@ -458,5 +500,8 @@ void mv78xx0_restart(char mode, const char *cmd)
 	while (1)
 		;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

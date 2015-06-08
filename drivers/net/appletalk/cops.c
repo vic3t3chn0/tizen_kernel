@@ -70,7 +70,14 @@ static const char *version =
 #include <linux/bitops.h>
 #include <linux/jiffies.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/dma.h>
 
@@ -264,7 +271,15 @@ static const struct net_device_ops cops_netdev_ops = {
 	.ndo_start_xmit   	= cops_send_packet,
 	.ndo_tx_timeout		= cops_timeout,
         .ndo_do_ioctl           = cops_ioctl,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= set_multicast_list,
+=======
 	.ndo_set_multicast_list = set_multicast_list,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.ndo_set_multicast_list = set_multicast_list,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*

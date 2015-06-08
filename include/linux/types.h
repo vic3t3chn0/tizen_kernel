@@ -27,7 +27,11 @@ typedef __kernel_mode_t		mode_t;
 <<<<<<< HEAD
 typedef unsigned short		umode_t;
 =======
+<<<<<<< HEAD
+typedef unsigned short		umode_t;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef __kernel_nlink_t	nlink_t;
 typedef __kernel_off_t		off_t;
 typedef __kernel_pid_t		pid_t;
@@ -195,8 +199,12 @@ typedef __u32 __bitwise __wsum;
 <<<<<<< HEAD
  * architectures) and to 8-byte boundaries on 64-bit architectures.  The new
 =======
+<<<<<<< HEAD
+ * architectures) and to 8-byte boundaries on 64-bit architectures.  The new
+=======
  * architectures) and to 8-byte boundaries on 64-bit architetures.  The new
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * aligned_64 type enforces 8-byte alignment so that structs containing
  * aligned_64 values have the same alignment on 32-bit and 64-bit architectures.
  * No conversions are necessary between 32-bit user-space and a 64-bit kernel.
@@ -218,14 +226,20 @@ typedef u32 phys_addr_t;
 typedef phys_addr_t resource_size_t;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This type is the placeholder for a hardware interrupt number. It has to be
  * big enough to enclose whatever representation is used by a given platform.
  */
 typedef unsigned long irq_hw_number_t;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct {
 	int counter;
 } atomic_t;
@@ -256,6 +270,9 @@ struct ustat {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct rcu_head - callback structure for use with RCU
  * @next: next update requests in a list
@@ -266,8 +283,11 @@ struct rcu_head {
 	void (*func)(struct rcu_head *head);
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __KERNEL__ */
 #endif /*  __ASSEMBLY__ */
 #endif /* _LINUX_TYPES_H */

@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <net/scm.h>
 #include <net/sock.h>
@@ -85,8 +89,12 @@ int verify_compat_iovec(struct msghdr *kern_msg, struct iovec *kern_iov,
 <<<<<<< HEAD
 		   struct sockaddr_storage *kern_address, int mode)
 =======
+<<<<<<< HEAD
+		   struct sockaddr_storage *kern_address, int mode)
+=======
 		   struct sockaddr *kern_address, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int tot_len;
 
@@ -228,9 +236,12 @@ int put_cmsg_compat(struct msghdr *kmsg, int level, int type, int len, void *dat
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct compat_timeval ctv;
 	struct compat_timespec cts[3];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct compat_cmsghdr __user *cm = (struct compat_cmsghdr __user *) kmsg->msg_control;
 	struct compat_cmsghdr cmhdr;
 	int cmlen;
@@ -241,6 +252,9 @@ int put_cmsg_compat(struct msghdr *kmsg, int level, int type, int len, void *dat
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!COMPAT_USE_64BIT_TIME) {
 		struct compat_timeval ctv;
 		struct compat_timespec cts[3];
@@ -263,6 +277,8 @@ int put_cmsg_compat(struct msghdr *kmsg, int level, int type, int len, void *dat
 			data = &cts;
 			len = sizeof(cts[0]) * count;
 		}
+<<<<<<< HEAD
+=======
 =======
 	if (level == SOL_SOCKET && type == SCM_TIMESTAMP) {
 		struct timeval *tv = (struct timeval *)data;
@@ -283,6 +299,7 @@ int put_cmsg_compat(struct msghdr *kmsg, int level, int type, int len, void *dat
 		data = &cts;
 		len = sizeof(cts[0]) * count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	cmlen = CMSG_COMPAT_LEN(len);
@@ -490,6 +507,9 @@ static int compat_sock_getsockopt(struct socket *sock, int level, int optname,
 int compat_sock_get_timestamp(struct sock *sk, struct timeval __user *userstamp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct compat_timeval __user *ctv;
 	int err;
 	struct timeval tv;
@@ -499,6 +519,8 @@ int compat_sock_get_timestamp(struct sock *sk, struct timeval __user *userstamp)
 
 	ctv = (struct compat_timeval __user *) userstamp;
 	err = -ENOENT;
+<<<<<<< HEAD
+=======
 =======
 	struct compat_timeval __user *ctv =
 			(struct compat_timeval __user *) userstamp;
@@ -506,6 +528,7 @@ int compat_sock_get_timestamp(struct sock *sk, struct timeval __user *userstamp)
 	struct timeval tv;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sock_flag(sk, SOCK_TIMESTAMP))
 		sock_enable_timestamp(sk, SOCK_TIMESTAMP);
 	tv = ktime_to_timeval(sk->sk_stamp);
@@ -526,6 +549,9 @@ EXPORT_SYMBOL(compat_sock_get_timestamp);
 int compat_sock_get_timestampns(struct sock *sk, struct timespec __user *userstamp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct compat_timespec __user *ctv;
 	int err;
 	struct timespec ts;
@@ -535,6 +561,8 @@ int compat_sock_get_timestampns(struct sock *sk, struct timespec __user *usersta
 
 	ctv = (struct compat_timespec __user *) userstamp;
 	err = -ENOENT;
+<<<<<<< HEAD
+=======
 =======
 	struct compat_timespec __user *ctv =
 			(struct compat_timespec __user *) userstamp;
@@ -542,6 +570,7 @@ int compat_sock_get_timestampns(struct sock *sk, struct timespec __user *usersta
 	struct timespec ts;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sock_flag(sk, SOCK_TIMESTAMP))
 		sock_enable_timestamp(sk, SOCK_TIMESTAMP);
 	ts = ktime_to_timespec(sk->sk_stamp);
@@ -827,13 +856,19 @@ asmlinkage long compat_sys_recvmmsg(int fd, struct compat_mmsghdr __user *mmsg,
 	struct timespec ktspec;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (COMPAT_USE_64BIT_TIME)
 		return __sys_recvmmsg(fd, (struct mmsghdr __user *)mmsg, vlen,
 				      flags | MSG_CMSG_COMPAT,
 				      (struct timespec *) timeout);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (timeout == NULL)
 		return __sys_recvmmsg(fd, (struct mmsghdr __user *)mmsg, vlen,
 				      flags | MSG_CMSG_COMPAT, NULL);

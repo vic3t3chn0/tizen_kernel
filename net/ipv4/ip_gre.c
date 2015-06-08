@@ -14,7 +14,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/capability.h>
 #include <linux/module.h>
 #include <linux/types.h>
@@ -54,8 +59,12 @@
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/ipv6.h>
 #include <net/ip6_fib.h>
 #include <net/ip6_route.h>
@@ -77,8 +86,12 @@
 <<<<<<< HEAD
    solution, but it supposes maintaining new variable in ALL
 =======
+<<<<<<< HEAD
+   solution, but it supposes maintaining new variable in ALL
+=======
    solution, but it supposes maintaing new variable in ALL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    skb, even if no tunneling is used.
 
    Current solution: xmit_recursion breaks dead loops. This is a percpu
@@ -107,8 +120,12 @@
 <<<<<<< HEAD
    taking into account fragmentation. TO be short, ttl is not solution at all.
 =======
+<<<<<<< HEAD
+   taking into account fragmentation. TO be short, ttl is not solution at all.
+=======
    taking into account fragmentation. TO be short, tt is not solution at all.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
    Current solution: The solution was UNEXPECTEDLY SIMPLE.
    We force DF flag on tunnels with preconfigured hop limit,
@@ -118,8 +135,12 @@
 <<<<<<< HEAD
    rapidly degrades to value <68, where looping stops.
 =======
+<<<<<<< HEAD
+   rapidly degrades to value <68, where looping stops.
+=======
    fastly degrades to value <68, where looping stops.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    Yes, it is not good if there exists a router in the loop,
    which does not force DF, even when encapsulating packets have DF set.
    But it is not our problem! Nobody could accuse us, we made
@@ -195,8 +216,12 @@ struct pcpu_tstats {
 <<<<<<< HEAD
 } __attribute__((aligned(4*sizeof(unsigned long))));
 =======
+<<<<<<< HEAD
+} __attribute__((aligned(4*sizeof(unsigned long))));
+=======
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct net_device_stats *ipgre_get_stats(struct net_device *dev)
 {
@@ -448,12 +473,18 @@ static struct ip_tunnel *ipgre_tunnel_locate(struct net *net,
 		goto failed_free;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Can use a lockless transmit, unless we generate output sequences */
 	if (!(nt->parms.o_flags & GRE_SEQ))
 		dev->features |= NETIF_F_LLTX;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_hold(dev);
 	ipgre_tunnel_link(ign, nt);
 	return nt;
@@ -489,9 +520,14 @@ static void ipgre_err(struct sk_buff *skb, u32 info)
    what the hell these idiots break standards established
    by themselves???
 =======
+<<<<<<< HEAD
+   what the hell these idiots break standards established
+   by themselves???
+=======
    what the hell these idiots break standrads established
    by themself???
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 	const struct iphdr *iph = (const struct iphdr *)skb->data;
@@ -764,6 +800,9 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 		if (skb->protocol == htons(ETH_P_IP)) {
 			rt = skb_rtable(skb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dst = rt->rt_gateway;
 		}
 #if IS_ENABLED(CONFIG_IPV6)
@@ -774,6 +813,8 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 			int addr_type;
 
 			neigh = dst_neigh_lookup(skb_dst(skb), &ipv6_hdr(skb)->daddr);
+<<<<<<< HEAD
+=======
 =======
 			if ((dst = rt->rt_gateway) == 0)
 				goto tx_error_icmp;
@@ -785,6 +826,7 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 			int addr_type;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (neigh == NULL)
 				goto tx_error;
 
@@ -798,6 +840,9 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 
 			if ((addr_type & IPV6_ADDR_COMPATv4) == 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				do_tx_error_icmp = true;
 			else {
 				do_tx_error_icmp = false;
@@ -806,11 +851,14 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 			neigh_release(neigh);
 			if (do_tx_error_icmp)
 				goto tx_error_icmp;
+<<<<<<< HEAD
+=======
 =======
 				goto tx_error_icmp;
 
 			dst = addr6->s6_addr32[3];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 #endif
 		else
@@ -863,8 +911,12 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (skb->protocol == htons(ETH_P_IPV6)) {
 		struct rt6_info *rt6 = (struct rt6_info *)skb_dst(skb);
 
@@ -943,8 +995,12 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else if (skb->protocol == htons(ETH_P_IPV6))
 			iph->ttl = ((const struct ipv6hdr *)old_iph)->hop_limit;
 #endif
@@ -980,15 +1036,21 @@ static netdev_tx_t ipgre_tunnel_xmit(struct sk_buff *skb, struct net_device *dev
 	return NETDEV_TX_OK;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_IPV6)
 tx_error_icmp:
 	dst_link_failure(skb);
 #endif
+<<<<<<< HEAD
+=======
 =======
 tx_error_icmp:
 	dst_link_failure(skb);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 tx_error:
 	dev->stats.tx_errors++;
 	dev_kfree_skb(skb);
@@ -1604,8 +1666,12 @@ static int ipgre_newlink(struct net *src_net, struct net_device *dev, struct nla
 <<<<<<< HEAD
 		eth_hw_addr_random(dev);
 =======
+<<<<<<< HEAD
+		eth_hw_addr_random(dev);
+=======
 		random_ether_addr(dev->dev_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mtu = ipgre_tunnel_bind_dev(dev);
 	if (!tb[IFLA_MTU])
@@ -1788,8 +1854,12 @@ static int __init ipgre_init(void)
 <<<<<<< HEAD
 	pr_info("GRE over IPv4 tunneling driver\n");
 =======
+<<<<<<< HEAD
+	pr_info("GRE over IPv4 tunneling driver\n");
+=======
 	printk(KERN_INFO "GRE over IPv4 tunneling driver\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = register_pernet_device(&ipgre_net_ops);
 	if (err < 0)
@@ -1800,8 +1870,12 @@ static int __init ipgre_init(void)
 <<<<<<< HEAD
 		pr_info("%s: can't add protocol\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_info("%s: can't add protocol\n", __func__);
+=======
 		printk(KERN_INFO "ipgre init: can't add protocol\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto add_proto_failed;
 	}
 
@@ -1833,8 +1907,12 @@ static void __exit ipgre_fini(void)
 <<<<<<< HEAD
 		pr_info("%s: can't remove protocol\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_info("%s: can't remove protocol\n", __func__);
+=======
 		printk(KERN_INFO "ipgre close: can't remove protocol\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unregister_pernet_device(&ipgre_net_ops);
 }
 

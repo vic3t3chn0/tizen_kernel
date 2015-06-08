@@ -48,8 +48,12 @@ struct hwtstamp_config {
 <<<<<<< HEAD
 enum hwtstamp_tx_types {
 =======
+<<<<<<< HEAD
+enum hwtstamp_tx_types {
+=======
 enum {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * No outgoing packet will need hardware time stamping;
 	 * should a packet arrive which asks for it, no hardware
@@ -65,6 +69,9 @@ enum {
 	 */
 	HWTSTAMP_TX_ON,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Enables time stamping for outgoing packets just as
@@ -78,12 +85,15 @@ enum {
 
 /* possible values for hwtstamp_config->rx_filter */
 enum hwtstamp_rx_filters {
+<<<<<<< HEAD
+=======
 =======
 };
 
 /* possible values for hwtstamp_config->rx_filter */
 enum {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* time stamp no incoming packet at all */
 	HWTSTAMP_FILTER_NONE,
 

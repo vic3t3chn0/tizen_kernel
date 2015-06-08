@@ -24,10 +24,15 @@ extern struct fs_struct init_fs;
 
 #ifdef CONFIG_CGROUPS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INIT_GROUP_RWSEM(sig)						\
 	.group_rwsem = __RWSEM_INITIALIZER(sig.group_rwsem),
 #else
 #define INIT_GROUP_RWSEM(sig)
+<<<<<<< HEAD
+=======
 =======
 #define INIT_THREADGROUP_FORK_LOCK(sig)					\
 	.threadgroup_fork_lock =					\
@@ -35,6 +40,7 @@ extern struct fs_struct init_fs;
 #else
 #define INIT_THREADGROUP_FORK_LOCK(sig)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_CPUSETS
@@ -57,11 +63,16 @@ extern struct fs_struct init_fs;
 		.cputime = INIT_CPUTIME,				\
 		.running = 0,						\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.lock = __RAW_SPIN_LOCK_UNLOCKED(sig.cputimer.lock),	\
 	},								\
 	.cred_guard_mutex =						\
 		 __MUTEX_INITIALIZER(sig.cred_guard_mutex),		\
 	INIT_GROUP_RWSEM(sig)						\
+<<<<<<< HEAD
+=======
 =======
 		.lock = __SPIN_LOCK_UNLOCKED(sig.cputimer.lock),	\
 	},								\
@@ -69,6 +80,7 @@ extern struct fs_struct init_fs;
 		 __MUTEX_INITIALIZER(sig.cred_guard_mutex),		\
 	INIT_THREADGROUP_FORK_LOCK(sig)					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 extern struct nsproxy init_nsproxy;
@@ -161,7 +173,12 @@ extern struct task_group root_task_group;
 #define INIT_TASK_COMM "swapper"
 
 =======
+<<<<<<< HEAD
+#define INIT_TASK_COMM "swapper"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  INIT_TASK is used to set up the first task table, touch at
  * your own risk!. Base=0, limit=0x1fffff (=2MB)
@@ -187,8 +204,12 @@ extern struct task_group root_task_group;
 <<<<<<< HEAD
 		.time_slice	= RR_TIMESLICE,				\
 =======
+<<<<<<< HEAD
+		.time_slice	= RR_TIMESLICE,				\
+=======
 		.time_slice	= HZ, 					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.nr_cpus_allowed = NR_CPUS,				\
 	},								\
 	.tasks		= LIST_HEAD_INIT(tsk.tasks),			\
@@ -206,8 +227,12 @@ extern struct task_group root_task_group;
 <<<<<<< HEAD
 	.comm		= INIT_TASK_COMM,				\
 =======
+<<<<<<< HEAD
+	.comm		= INIT_TASK_COMM,				\
+=======
 	.comm		= "swapper",					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.thread		= INIT_THREAD,					\
 	.fs		= &init_fs,					\
 	.files		= &init_files,					\
@@ -223,8 +248,11 @@ extern struct task_group root_task_group;
 	.cpu_timers	= INIT_CPU_TIMERS(tsk.cpu_timers),		\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.fs_excl	= ATOMIC_INIT(0),				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pi_lock	= __RAW_SPIN_LOCK_UNLOCKED(tsk.pi_lock),	\
 	.timer_slack_ns = 50000, /* 50 usec default slack */		\
 	.pids = {							\
@@ -235,8 +263,11 @@ extern struct task_group root_task_group;
 	.thread_group	= LIST_HEAD_INIT(tsk.thread_group),		\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.dirties = INIT_PROP_LOCAL_SINGLE(dirties),			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_IDS							\
 	INIT_PERF_EVENTS(tsk)						\
 	INIT_TRACE_IRQFLAGS						\

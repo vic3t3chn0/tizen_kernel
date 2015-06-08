@@ -28,17 +28,23 @@
 #include <linux/uaccess.h>
 #include <linux/perf_event.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/alignment.h>
 #include <asm/fpu.h>
 #include <asm/kprobes.h>
 #include <asm/traps.h>
 #include <asm/bl_bit.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 #include <asm/alignment.h>
 #include <asm/fpu.h>
 #include <asm/kprobes.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_CPU_SH2
 # define TRAP_RESERVED_INST	4
@@ -325,6 +331,9 @@ static int handle_unaligned_ins(insn_size_t instruction, struct pt_regs *regs,
 		}
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	case 9: /* mov.w @(disp,PC),Rn */
 		srcu = (unsigned char __user *)regs->pc;
@@ -354,8 +363,11 @@ static int handle_unaligned_ins(insn_size_t instruction, struct pt_regs *regs,
 			goto fetch_fault;
 		ret = 0;
 		break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return ret;
 
@@ -436,8 +448,12 @@ int handle_unaligned_access(insn_size_t instruction, struct pt_regs *regs,
 <<<<<<< HEAD
 		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1,
 =======
+<<<<<<< HEAD
+		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1,
+=======
 		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1, 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      regs, address);
 	}
 
@@ -513,7 +529,11 @@ int handle_unaligned_access(insn_size_t instruction, struct pt_regs *regs,
 <<<<<<< HEAD
 			ret = 0;
 =======
+<<<<<<< HEAD
+			ret = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case 0x0F00: /* bf/s lab */
 			ret = handle_delayslot(regs, instruction, ma);
@@ -530,7 +550,11 @@ int handle_unaligned_access(insn_size_t instruction, struct pt_regs *regs,
 <<<<<<< HEAD
 			ret = 0;
 =======
+<<<<<<< HEAD
+			ret = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case 0x0D00: /* bt/s lab */
 			ret = handle_delayslot(regs, instruction, ma);
@@ -551,7 +575,13 @@ int handle_unaligned_access(insn_size_t instruction, struct pt_regs *regs,
 		goto simple;
 
 =======
+<<<<<<< HEAD
+	case 0x9000: /* mov.w @(disp,Rm),Rn */
+		goto simple;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 0xA000: /* bra label */
 		ret = handle_delayslot(regs, instruction, ma);
 		if (ret==0)
@@ -570,7 +600,13 @@ int handle_unaligned_access(insn_size_t instruction, struct pt_regs *regs,
 	case 0xD000: /* mov.l @(disp,Rm),Rn */
 		goto simple;
 =======
+<<<<<<< HEAD
+
+	case 0xD000: /* mov.l @(disp,Rm),Rn */
+		goto simple;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return ret;
 

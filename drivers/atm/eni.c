@@ -19,9 +19,20 @@
 #include <linux/atm_eni.h>
 #include <linux/bitops.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/io.h>
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/io.h>
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+#include <asm/io.h>
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/string.h>
 #include <asm/byteorder.h>
@@ -156,9 +167,18 @@ static int tx_complete = 0,dma_complete = 0,queued = 0,requeued = 0,
 
 static struct atm_dev *eni_boards = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static u32 *cpu_zeroes = NULL; /* aligned "magic" zeroes */
 static dma_addr_t zeroes;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u32 *cpu_zeroes = NULL; /* aligned "magic" zeroes */
+static dma_addr_t zeroes;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Read/write registers on card */
 #define eni_in(r)	readl(eni_dev->reg+(r)*4)
 #define eni_out(v,r)	writel((v),eni_dev->reg+(r)*4)
@@ -1134,11 +1154,28 @@ DPRINTK("doing direct send\n"); /* @@@ well, this doesn't work anyway */
 				    skb_headlen(skb));
 			else
 				put_dma(tx->index,eni_dev->dma,&j,(unsigned long)
+<<<<<<< HEAD
+<<<<<<< HEAD
+				    skb_frag_page(&skb_shinfo(skb)->frags[i]) +
+					skb_shinfo(skb)->frags[i].page_offset,
+				    skb_frag_size(&skb_shinfo(skb)->frags[i]));
+	}
+	if (skb->len & 3) {
+		put_dma(tx->index, eni_dev->dma, &j, eni_dev->zero.dma,
+			4 - (skb->len & 3));
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    skb_shinfo(skb)->frags[i].page + skb_shinfo(skb)->frags[i].page_offset,
 				    skb_shinfo(skb)->frags[i].size);
 	}
 	if (skb->len & 3)
 		put_dma(tx->index,eni_dev->dma,&j,zeroes,4-(skb->len & 3));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* JK for AAL5 trailer - AAL0 doesn't need it, but who cares ... */
 	eni_dev->dma[j++] = (((tx->tx_pos+size) & (tx->words-1)) <<
 	     MID_DMA_COUNT_SHIFT) | (tx->index << MID_DMA_CHAN_SHIFT) |
@@ -1727,6 +1764,13 @@ static int __devinit eni_do_init(struct atm_dev *dev)
 		    "mapping\n",dev->number);
 		return error;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	eni_dev->ioaddr = base;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eni_dev->base_diff = real_base - (unsigned long) base;
 	/* id may not be present in ASIC Tonga boards - check this @@@ */
 	if (!eni_dev->asic) {
@@ -1788,6 +1832,20 @@ unmap:
 	goto out;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void eni_do_release(struct atm_dev *dev)
+{
+	struct eni_dev *ed = ENI_DEV(dev);
+
+	dev->phy->stop(dev);
+	dev->phy = NULL;
+	iounmap(ed->ioaddr);
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __devinit eni_start(struct atm_dev *dev)
 {
@@ -1872,7 +1930,15 @@ free_list:
 	kfree(eni_dev->free_list);
 
 free_irq:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	free_irq(eni_dev->irq, dev);
+=======
 	free_irq(eni_dev->irq, eni_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	free_irq(eni_dev->irq, eni_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	return error;
@@ -2219,6 +2285,65 @@ static const struct atmdev_ops ops = {
 
 
 static int __devinit eni_init_one(struct pci_dev *pci_dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  const struct pci_device_id *ent)
+{
+	struct atm_dev *dev;
+	struct eni_dev *eni_dev;
+	struct eni_zero *zero;
+	int rc;
+
+	rc = pci_enable_device(pci_dev);
+	if (rc < 0)
+		goto out;
+
+	rc = -ENOMEM;
+	eni_dev = kmalloc(sizeof(struct eni_dev), GFP_KERNEL);
+	if (!eni_dev)
+		goto err_disable;
+
+	zero = &eni_dev->zero;
+	zero->addr = pci_alloc_consistent(pci_dev, ENI_ZEROES_SIZE, &zero->dma);
+	if (!zero->addr)
+		goto err_kfree;
+
+	dev = atm_dev_register(DEV_LABEL, &pci_dev->dev, &ops, -1, NULL);
+	if (!dev)
+		goto err_free_consistent;
+
+	dev->dev_data = eni_dev;
+	pci_set_drvdata(pci_dev, dev);
+	eni_dev->pci_dev = pci_dev;
+	eni_dev->asic = ent->driver_data;
+
+	rc = eni_do_init(dev);
+	if (rc < 0)
+		goto err_unregister;
+
+	rc = eni_start(dev);
+	if (rc < 0)
+		goto err_eni_release;
+
+	eni_dev->more = eni_boards;
+	eni_boards = dev;
+out:
+	return rc;
+
+err_eni_release:
+	eni_do_release(dev);
+err_unregister:
+	atm_dev_deregister(dev);
+err_free_consistent:
+	pci_free_consistent(pci_dev, ENI_ZEROES_SIZE, zero->addr, zero->dma);
+err_kfree:
+	kfree(eni_dev);
+err_disable:
+	pci_disable_device(pci_dev);
+	goto out;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     const struct pci_device_id *ent)
 {
 	struct atm_dev *dev;
@@ -2261,6 +2386,10 @@ out1:
 	kfree(eni_dev);
 out0:
 	return error;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -2272,9 +2401,29 @@ static struct pci_device_id eni_pci_tbl[] = {
 MODULE_DEVICE_TABLE(pci,eni_pci_tbl);
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __devexit eni_remove_one(struct pci_dev *pdev)
+{
+	struct atm_dev *dev = pci_get_drvdata(pdev);
+	struct eni_dev *ed = ENI_DEV(dev);
+	struct eni_zero *zero = &ed->zero;
+
+	eni_do_release(dev);
+	atm_dev_deregister(dev);
+	pci_free_consistent(pdev, ENI_ZEROES_SIZE, zero->addr, zero->dma);
+	kfree(ed);
+	pci_disable_device(pdev);
+=======
 static void __devexit eni_remove_one(struct pci_dev *pci_dev)
 {
 	/* grrr */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void __devexit eni_remove_one(struct pci_dev *pci_dev)
+{
+	/* grrr */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 

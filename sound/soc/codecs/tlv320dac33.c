@@ -29,8 +29,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/gpio.h>
 #include <linux/regulator/consumer.h>
@@ -59,6 +62,9 @@
 
 #define SAMPLES_TO_US(rate, samples) \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	(1000000000 / (((rate) * 1000) / (samples)))
 
 #define US_TO_SAMPLES(rate, us) \
@@ -66,6 +72,8 @@
 
 #define UTHR_FROM_PERIOD_SIZE(samples, playrate, burstrate) \
 	(((samples)*5000) / (((burstrate)*5000) / ((burstrate) - (playrate))))
+<<<<<<< HEAD
+=======
 =======
 	(1000000000 / ((rate * 1000) / samples))
 
@@ -75,6 +83,7 @@
 #define UTHR_FROM_PERIOD_SIZE(samples, playrate, burstrate) \
 	((samples * 5000) / ((burstrate * 5000) / (burstrate - playrate)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void dac33_calculate_times(struct snd_pcm_substream *substream);
 static int dac33_prepare_chip(struct snd_pcm_substream *substream);
@@ -642,6 +651,8 @@ static const struct snd_soc_dapm_route audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int dac33_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -655,6 +666,7 @@ static int dac33_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dac33_set_bias_level(struct snd_soc_codec *codec,
 				enum snd_soc_bias_level level)
 {
@@ -837,9 +849,12 @@ static int dac33_startup(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_pcm_hw_constraint_msbits(substream->runtime, 0, 32, 24);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1431,8 +1446,11 @@ static int dac33_soc_probe(struct snd_soc_codec *codec)
 	codec->hw_write = (hw_write_t) i2c_master_send;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	codec->dapm.idle_bias_off = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dac33->codec = codec;
 
 	/* Read the tlv320dac33 ID registers */
@@ -1456,8 +1474,12 @@ static int dac33_soc_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 				  IRQF_TRIGGER_RISING,
 =======
+<<<<<<< HEAD
+				  IRQF_TRIGGER_RISING,
+=======
 				  IRQF_TRIGGER_RISING | IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  codec->name, codec);
 		if (ret < 0) {
 			dev_err(codec->dev, "Could not request IRQ%d (%d)\n",
@@ -1478,11 +1500,16 @@ static int dac33_soc_probe(struct snd_soc_codec *codec)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Only add the FIFO controls, if we have valid IRQ number */
 	if (dac33->irq >= 0)
 		snd_soc_add_codec_controls(codec, dac33_mode_snd_controls,
 				     ARRAY_SIZE(dac33_mode_snd_controls));
 
+<<<<<<< HEAD
+=======
 =======
 	snd_soc_add_controls(codec, dac33_snd_controls,
 			     ARRAY_SIZE(dac33_snd_controls));
@@ -1494,6 +1521,7 @@ static int dac33_soc_probe(struct snd_soc_codec *codec)
 	dac33_add_widgets(codec);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_power:
 	return ret;
 }
@@ -1514,8 +1542,12 @@ static int dac33_soc_remove(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 static int dac33_soc_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int dac33_soc_suspend(struct snd_soc_codec *codec)
+=======
 static int dac33_soc_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	dac33_set_bias_level(codec, SND_SOC_BIAS_OFF);
 
@@ -1536,7 +1568,11 @@ static struct snd_soc_codec_driver soc_codec_dev_tlv320dac33 = {
 <<<<<<< HEAD
 	.idle_bias_off = true,
 =======
+<<<<<<< HEAD
+	.idle_bias_off = true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.reg_cache_size = ARRAY_SIZE(dac33_reg),
 	.reg_word_size = sizeof(u8),
 	.reg_cache_default = dac33_reg,
@@ -1545,6 +1581,9 @@ static struct snd_soc_codec_driver soc_codec_dev_tlv320dac33 = {
 	.suspend = dac33_soc_suspend,
 	.resume = dac33_soc_resume,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = dac33_snd_controls,
 	.num_controls = ARRAY_SIZE(dac33_snd_controls),
@@ -1552,8 +1591,11 @@ static struct snd_soc_codec_driver soc_codec_dev_tlv320dac33 = {
 	.num_dapm_widgets = ARRAY_SIZE(dac33_dapm_widgets),
 	.dapm_routes = audio_map,
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define DAC33_RATES	(SNDRV_PCM_RATE_44100 | \
@@ -1563,8 +1605,12 @@ static struct snd_soc_codec_driver soc_codec_dev_tlv320dac33 = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops dac33_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops dac33_dai_ops = {
+=======
 static struct snd_soc_dai_ops dac33_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= dac33_startup,
 	.shutdown	= dac33_shutdown,
 	.hw_params	= dac33_hw_params,
@@ -1586,8 +1632,14 @@ static struct snd_soc_dai_driver dac33_dai = {
 		.sig_bits = 24,
 	},
 =======
+<<<<<<< HEAD
+		.formats = DAC33_FORMATS,
+		.sig_bits = 24,
+	},
+=======
 		.formats = DAC33_FORMATS,},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &dac33_dai_ops,
 };
 
@@ -1608,8 +1660,13 @@ static int __devinit dac33_i2c_probe(struct i2c_client *client,
 	dac33 = devm_kzalloc(&client->dev, sizeof(struct tlv320dac33_priv),
 			     GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	dac33 = devm_kzalloc(&client->dev, sizeof(struct tlv320dac33_priv),
+			     GFP_KERNEL);
+=======
 	dac33 = kzalloc(sizeof(struct tlv320dac33_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dac33 == NULL)
 		return -ENOMEM;
 
@@ -1666,8 +1723,11 @@ err_get:
 err_gpio:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(dac33);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1686,9 +1746,12 @@ static int __devexit dac33_i2c_remove(struct i2c_client *client)
 	snd_soc_unregister_codec(&client->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(dac33);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

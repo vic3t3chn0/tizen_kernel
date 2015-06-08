@@ -25,6 +25,9 @@
 #define __PLAT_GPIO_CFG_H __FILE__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include<linux/types.h>
 
 typedef unsigned int __bitwise__ samsung_gpio_pull_t;
@@ -35,6 +38,8 @@ struct samsung_gpio_chip;
 
 /**
  * struct samsung_gpio_cfg GPIO configuration
+<<<<<<< HEAD
+=======
 =======
 typedef unsigned int __bitwise__ s3c_gpio_pull_t;
 typedef unsigned int __bitwise__ s5p_gpio_drvstr_t;
@@ -47,6 +52,7 @@ struct s3c_gpio_chip;
 /**
  * struct s3c_gpio_cfg GPIO configuration
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @cfg_eint: Configuration setting when used for external interrupt source
  * @get_pull: Read the current pull configuration for the GPIO
  * @set_pull: Set the current pull configuraiton for the GPIO
@@ -62,13 +68,20 @@ struct s3c_gpio_chip;
 <<<<<<< HEAD
  * @sa samsung_gpio_cfgpin
 =======
+<<<<<<< HEAD
+ * @sa samsung_gpio_cfgpin
+=======
  * @sa s3c_gpio_cfgpin
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @sa s3c_gpio_getcfg
  * @sa s3c_gpio_setpull
  * @sa s3c_gpio_getpull
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct samsung_gpio_cfg {
 	unsigned int	cfg_eint;
 
@@ -78,6 +91,8 @@ struct samsung_gpio_cfg {
 
 	unsigned (*get_config)(struct samsung_gpio_chip *chip, unsigned offs);
 	int	 (*set_config)(struct samsung_gpio_chip *chip, unsigned offs,
+<<<<<<< HEAD
+=======
 =======
 struct s3c_gpio_cfg {
 	unsigned int	cfg_eint;
@@ -89,6 +104,7 @@ struct s3c_gpio_cfg {
 	unsigned (*get_config)(struct s3c_gpio_chip *chip, unsigned offs);
 	int	 (*set_config)(struct s3c_gpio_chip *chip, unsigned offs,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       unsigned config);
 };
 
@@ -103,8 +119,12 @@ struct s3c_gpio_cfg {
 <<<<<<< HEAD
 #define samsung_gpio_is_cfg_special(_cfg) \
 =======
+<<<<<<< HEAD
+#define samsung_gpio_is_cfg_special(_cfg) \
+=======
 #define s3c_gpio_is_cfg_special(_cfg) \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	(((_cfg) & S3C_GPIO_SPECIAL_MARK) == S3C_GPIO_SPECIAL_MARK)
 
 /**
@@ -161,12 +181,17 @@ extern int s3c_gpio_cfgpin_range(unsigned int start, unsigned int nr,
  * These values control the state of the weak pull-{up,down} resistors
  * available on most pins on the S3C series. Not all chips support both
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * up or down settings, and it may be dependent on the chip that is being
  * used to whether the particular mode is available.
  */
 #define S3C_GPIO_PULL_NONE	((__force samsung_gpio_pull_t)0x00)
 #define S3C_GPIO_PULL_DOWN	((__force samsung_gpio_pull_t)0x01)
 #define S3C_GPIO_PULL_UP	((__force samsung_gpio_pull_t)0x02)
+<<<<<<< HEAD
+=======
 =======
  * up or down settings, and it may be dependant on the chip that is being
  * used to whether the particular mode is available.
@@ -193,6 +218,7 @@ extern int s3c_gpio_cfgpin_range(unsigned int start, unsigned int nr,
 #define S3C_GPIO_SETPIN_NONE	     2
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * s3c_gpio_setpull() - set the state of a gpio pin pull resistor
@@ -208,8 +234,12 @@ extern int s3c_gpio_cfgpin_range(unsigned int start, unsigned int nr,
 <<<<<<< HEAD
 extern int s3c_gpio_setpull(unsigned int pin, samsung_gpio_pull_t pull);
 =======
+<<<<<<< HEAD
+extern int s3c_gpio_setpull(unsigned int pin, samsung_gpio_pull_t pull);
+=======
 extern int s3c_gpio_setpull(unsigned int pin, s3c_gpio_pull_t pull);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * s3c_gpio_getpull() - get the pull resistor state of a gpio pin
@@ -220,8 +250,12 @@ extern int s3c_gpio_setpull(unsigned int pin, s3c_gpio_pull_t pull);
 <<<<<<< HEAD
 extern samsung_gpio_pull_t s3c_gpio_getpull(unsigned int pin);
 =======
+<<<<<<< HEAD
+extern samsung_gpio_pull_t s3c_gpio_getpull(unsigned int pin);
+=======
 extern s3c_gpio_pull_t s3c_gpio_getpull(unsigned int pin);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* configure `all` aspects of an gpio */
 
@@ -243,8 +277,12 @@ extern int s3c_gpio_cfgall_range(unsigned int start, unsigned int nr,
 <<<<<<< HEAD
 				 unsigned int cfg, samsung_gpio_pull_t pull);
 =======
+<<<<<<< HEAD
+				 unsigned int cfg, samsung_gpio_pull_t pull);
+=======
 				 unsigned int cfg, s3c_gpio_pull_t pull);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int s3c_gpio_cfgrange_nopull(unsigned int pin, unsigned int size,
 					   unsigned int cfg)
@@ -281,6 +319,8 @@ extern s5p_gpio_drvstr_t s5p_gpio_get_drvstr(unsigned int pin);
 */
 extern int s5p_gpio_set_drvstr(unsigned int pin, s5p_gpio_drvstr_t drvstr);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Define values for the power down configuration available for each gpio pin.
@@ -343,6 +383,7 @@ extern int s5p_gpio_set_pd_pull(unsigned int pin, s5p_gpio_pd_pull_t pd_pull);
 extern s5p_gpio_pd_pull_t s5p_gpio_get_pd_pull(unsigned int pin);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * s5p_register_gpio_interrupt() - register interrupt support for a gpio group
  * @pin: The pin number from the group to be registered

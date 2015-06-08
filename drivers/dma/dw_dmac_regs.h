@@ -13,6 +13,24 @@
 
 #define DW_DMA_MAX_NR_CHANNELS	8
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* flow controller */
+enum dw_dma_fc {
+	DW_DMA_FC_D_M2M,
+	DW_DMA_FC_D_M2P,
+	DW_DMA_FC_D_P2M,
+	DW_DMA_FC_D_P2P,
+	DW_DMA_FC_P_P2M,
+	DW_DMA_FC_SP_P2P,
+	DW_DMA_FC_P_M2P,
+	DW_DMA_FC_DP_P2P,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Redefine this macro to handle differences between 32- and 64-bit
  * addressing, big vs. little endian, etc.
@@ -140,18 +158,41 @@ struct dw_dma_chan {
 	u8			mask;
 	u8			priority;
 	bool			paused;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool			initialized;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spinlock_t		lock;
 
 	/* these other elements are all protected by lock */
 	unsigned long		flags;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	dma_cookie_t		completed;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dma_cookie_t		completed;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	active_list;
 	struct list_head	queue;
 	struct list_head	free_list;
 	struct dw_cyclic_desc	*cdesc;
 
 	unsigned int		descs_allocated;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* configuration passed via DMA_SLAVE_CONFIG */
+	struct dma_slave_config dma_sconfig;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct dw_dma_chan_regs __iomem *

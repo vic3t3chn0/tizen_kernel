@@ -71,7 +71,11 @@ int unshare_nsproxy_namespaces(unsigned long, struct nsproxy **,
 <<<<<<< HEAD
 int __init nsproxy_cache_init(void);
 =======
+<<<<<<< HEAD
+int __init nsproxy_cache_init(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void put_nsproxy(struct nsproxy *ns)
 {

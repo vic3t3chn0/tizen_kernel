@@ -15,23 +15,32 @@
 
 #include <asm/mmu_context.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/thread_notify.h>
 #include <asm/tlbflush.h>
 
 #include <mach/msm_rtb.h>
 
 static DEFINE_RAW_SPINLOCK(cpu_asid_lock);
+<<<<<<< HEAD
+=======
 =======
 #include <asm/tlbflush.h>
 
 static DEFINE_SPINLOCK(cpu_asid_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned int cpu_last_asid = ASID_FIRST_VERSION;
 #ifdef CONFIG_SMP
 DEFINE_PER_CPU(struct mm_struct *, current_mm);
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_LPAE
 #define cpu_set_asid(asid) {						\
 	unsigned long ttbl, ttbh;					\
@@ -108,8 +117,11 @@ static void set_asid(unsigned int asid)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * We fork()ed a process, and we need a new context for the child
  * to run in.  We reserve version 0 for initial tasks so we will
@@ -122,8 +134,12 @@ void __init_new_context(struct task_struct *tsk, struct mm_struct *mm)
 <<<<<<< HEAD
 	raw_spin_lock_init(&mm->context.id_lock);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_init(&mm->context.id_lock);
+=======
 	spin_lock_init(&mm->context.id_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void flush_context(void)
@@ -132,9 +148,13 @@ static void flush_context(void)
 <<<<<<< HEAD
 	set_asid(0);
 =======
+<<<<<<< HEAD
+	set_asid(0);
+=======
 	asm("mcr	p15, 0, %0, c13, c0, 1\n" : : "r" (0));
 	isb();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	local_flush_tlb_all();
 	if (icache_is_vivt_asid_tagged()) {
 		__flush_icache_all();
@@ -157,8 +177,12 @@ static void set_mm_context(struct mm_struct *mm, unsigned int asid)
 <<<<<<< HEAD
 	raw_spin_lock_irqsave(&mm->context.id_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_lock_irqsave(&mm->context.id_lock, flags);
+=======
 	spin_lock_irqsave(&mm->context.id_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (likely((mm->context.id ^ cpu_last_asid) >> ASID_BITS)) {
 		/*
 		 * Old version of ASID found. Set the new one and
@@ -170,8 +194,12 @@ static void set_mm_context(struct mm_struct *mm, unsigned int asid)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&mm->context.id_lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&mm->context.id_lock, flags);
+=======
 	spin_unlock_irqrestore(&mm->context.id_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Set the mm_cpumask(mm) bit for the current CPU.
@@ -206,9 +234,13 @@ static void reset_context(void *info)
 <<<<<<< HEAD
 	set_asid(mm->context.id);
 =======
+<<<<<<< HEAD
+	set_asid(mm->context.id);
+=======
 	asm("mcr	p15, 0, %0, c13, c0, 1\n" : : "r" (mm->context.id));
 	isb();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #else
@@ -228,8 +260,12 @@ void __new_context(struct mm_struct *mm)
 <<<<<<< HEAD
 	raw_spin_lock(&cpu_asid_lock);
 =======
+<<<<<<< HEAD
+	raw_spin_lock(&cpu_asid_lock);
+=======
 	spin_lock(&cpu_asid_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 	/*
 	 * Check the ASID again, in case the change was broadcast from
@@ -240,8 +276,12 @@ void __new_context(struct mm_struct *mm)
 <<<<<<< HEAD
 		raw_spin_unlock(&cpu_asid_lock);
 =======
+<<<<<<< HEAD
+		raw_spin_unlock(&cpu_asid_lock);
+=======
 		spin_unlock(&cpu_asid_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 #endif
@@ -272,6 +312,10 @@ void __new_context(struct mm_struct *mm)
 <<<<<<< HEAD
 	raw_spin_unlock(&cpu_asid_lock);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock(&cpu_asid_lock);
+=======
 	spin_unlock(&cpu_asid_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -11,6 +11,13 @@
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
 #include <linux/gpio.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/interrupt.h>
 #include <linux/usb.h>
@@ -31,7 +38,15 @@
  * Needs to be loaded before the UDC driver that will use it.
  */
 struct gpio_vbus_data {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_phy		phy;
+=======
 	struct otg_transceiver otg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct otg_transceiver otg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device          *dev;
 	struct regulator       *vbus_draw;
 	int			vbus_draw_enabled;
@@ -95,9 +110,21 @@ static void gpio_vbus_work(struct work_struct *work)
 	struct gpio_vbus_data *gpio_vbus =
 		container_of(work, struct gpio_vbus_data, work);
 	struct gpio_vbus_mach_info *pdata = gpio_vbus->dev->platform_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int gpio, status;
+
+	if (!gpio_vbus->phy.otg->gadget)
+=======
 	int gpio;
 
 	if (!gpio_vbus->otg.gadget)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int gpio;
+
+	if (!gpio_vbus->otg.gadget)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	/* Peripheral controllers which manage the pullup themselves won't have
@@ -107,8 +134,20 @@ static void gpio_vbus_work(struct work_struct *work)
 	 */
 	gpio = pdata->gpio_pullup;
 	if (is_vbus_powered(pdata)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		status = USB_EVENT_VBUS;
+		gpio_vbus->phy.state = OTG_STATE_B_PERIPHERAL;
+		gpio_vbus->phy.last_event = status;
+		usb_gadget_vbus_connect(gpio_vbus->phy.otg->gadget);
+=======
 		gpio_vbus->otg.state = OTG_STATE_B_PERIPHERAL;
 		usb_gadget_vbus_connect(gpio_vbus->otg.gadget);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		gpio_vbus->otg.state = OTG_STATE_B_PERIPHERAL;
+		usb_gadget_vbus_connect(gpio_vbus->otg.gadget);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* drawing a "unit load" is *always* OK, except for OTG */
 		set_vbus_draw(gpio_vbus, 100);
@@ -116,6 +155,15 @@ static void gpio_vbus_work(struct work_struct *work)
 		/* optionally enable D+ pullup */
 		if (gpio_is_valid(gpio))
 			gpio_set_value(gpio, !pdata->gpio_pullup_inverted);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		atomic_notifier_call_chain(&gpio_vbus->phy.notifier,
+					   status, gpio_vbus->phy.otg->gadget);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* optionally disable D+ pullup */
 		if (gpio_is_valid(gpio))
@@ -123,8 +171,23 @@ static void gpio_vbus_work(struct work_struct *work)
 
 		set_vbus_draw(gpio_vbus, 0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		usb_gadget_vbus_disconnect(gpio_vbus->phy.otg->gadget);
+		status = USB_EVENT_NONE;
+		gpio_vbus->phy.state = OTG_STATE_B_IDLE;
+		gpio_vbus->phy.last_event = status;
+
+		atomic_notifier_call_chain(&gpio_vbus->phy.notifier,
+					   status, gpio_vbus->phy.otg->gadget);
+=======
 		usb_gadget_vbus_disconnect(gpio_vbus->otg.gadget);
 		gpio_vbus->otg.state = OTG_STATE_B_IDLE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		usb_gadget_vbus_disconnect(gpio_vbus->otg.gadget);
+		gpio_vbus->otg.state = OTG_STATE_B_IDLE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -134,12 +197,28 @@ static irqreturn_t gpio_vbus_irq(int irq, void *data)
 	struct platform_device *pdev = data;
 	struct gpio_vbus_mach_info *pdata = pdev->dev.platform_data;
 	struct gpio_vbus_data *gpio_vbus = platform_get_drvdata(pdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_otg *otg = gpio_vbus->phy.otg;
+
+	dev_dbg(&pdev->dev, "VBUS %s (gadget: %s)\n",
+		is_vbus_powered(pdata) ? "supplied" : "inactive",
+		otg->gadget ? otg->gadget->name : "none");
+
+	if (otg->gadget)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(&pdev->dev, "VBUS %s (gadget: %s)\n",
 		is_vbus_powered(pdata) ? "supplied" : "inactive",
 		gpio_vbus->otg.gadget ? gpio_vbus->otg.gadget->name : "none");
 
 	if (gpio_vbus->otg.gadget)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		schedule_work(&gpio_vbus->work);
 
 	return IRQ_HANDLED;
@@ -148,15 +227,33 @@ static irqreturn_t gpio_vbus_irq(int irq, void *data)
 /* OTG transceiver interface */
 
 /* bind/unbind the peripheral controller */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int gpio_vbus_set_peripheral(struct usb_otg *otg,
+					struct usb_gadget *gadget)
+=======
 static int gpio_vbus_set_peripheral(struct otg_transceiver *otg,
 				struct usb_gadget *gadget)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int gpio_vbus_set_peripheral(struct otg_transceiver *otg,
+				struct usb_gadget *gadget)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct gpio_vbus_data *gpio_vbus;
 	struct gpio_vbus_mach_info *pdata;
 	struct platform_device *pdev;
 	int gpio, irq;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	gpio_vbus = container_of(otg->phy, struct gpio_vbus_data, phy);
+=======
 	gpio_vbus = container_of(otg, struct gpio_vbus_data, otg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	gpio_vbus = container_of(otg, struct gpio_vbus_data, otg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdev = to_platform_device(gpio_vbus->dev);
 	pdata = gpio_vbus->dev->platform_data;
 	irq = gpio_to_irq(pdata->gpio_vbus);
@@ -173,7 +270,15 @@ static int gpio_vbus_set_peripheral(struct otg_transceiver *otg,
 		set_vbus_draw(gpio_vbus, 0);
 
 		usb_gadget_vbus_disconnect(otg->gadget);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		otg->phy->state = OTG_STATE_UNDEFINED;
+=======
 		otg->state = OTG_STATE_UNDEFINED;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		otg->state = OTG_STATE_UNDEFINED;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		otg->gadget = NULL;
 		return 0;
@@ -188,6 +293,18 @@ static int gpio_vbus_set_peripheral(struct otg_transceiver *otg,
 }
 
 /* effective for B devices, ignored for A-peripheral */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int gpio_vbus_set_power(struct usb_phy *phy, unsigned mA)
+{
+	struct gpio_vbus_data *gpio_vbus;
+
+	gpio_vbus = container_of(phy, struct gpio_vbus_data, phy);
+
+	if (phy->state == OTG_STATE_B_PERIPHERAL)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gpio_vbus_set_power(struct otg_transceiver *otg, unsigned mA)
 {
 	struct gpio_vbus_data *gpio_vbus;
@@ -195,16 +312,34 @@ static int gpio_vbus_set_power(struct otg_transceiver *otg, unsigned mA)
 	gpio_vbus = container_of(otg, struct gpio_vbus_data, otg);
 
 	if (otg->state == OTG_STATE_B_PERIPHERAL)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_vbus_draw(gpio_vbus, mA);
 	return 0;
 }
 
 /* for non-OTG B devices: set/clear transceiver suspend mode */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int gpio_vbus_set_suspend(struct usb_phy *phy, int suspend)
+{
+	struct gpio_vbus_data *gpio_vbus;
+
+	gpio_vbus = container_of(phy, struct gpio_vbus_data, phy);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gpio_vbus_set_suspend(struct otg_transceiver *otg, int suspend)
 {
 	struct gpio_vbus_data *gpio_vbus;
 
 	gpio_vbus = container_of(otg, struct gpio_vbus_data, otg);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* draw max 0 mA from vbus in suspend mode; or the previously
 	 * recorded amount of current if not suspended
@@ -212,7 +347,15 @@ static int gpio_vbus_set_suspend(struct otg_transceiver *otg, int suspend)
 	 * NOTE: high powered configs (mA > 100) may draw up to 2.5 mA
 	 * if they're wake-enabled ... we don't handle that yet.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return gpio_vbus_set_power(phy, suspend ? 0 : gpio_vbus->mA);
+=======
 	return gpio_vbus_set_power(otg, suspend ? 0 : gpio_vbus->mA);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return gpio_vbus_set_power(otg, suspend ? 0 : gpio_vbus->mA);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* platform driver interface */
@@ -232,6 +375,26 @@ static int __init gpio_vbus_probe(struct platform_device *pdev)
 	if (!gpio_vbus)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	gpio_vbus->phy.otg = kzalloc(sizeof(struct usb_otg), GFP_KERNEL);
+	if (!gpio_vbus->phy.otg) {
+		kfree(gpio_vbus);
+		return -ENOMEM;
+	}
+
+	platform_set_drvdata(pdev, gpio_vbus);
+	gpio_vbus->dev = &pdev->dev;
+	gpio_vbus->phy.label = "gpio-vbus";
+	gpio_vbus->phy.set_power = gpio_vbus_set_power;
+	gpio_vbus->phy.set_suspend = gpio_vbus_set_suspend;
+	gpio_vbus->phy.state = OTG_STATE_UNDEFINED;
+
+	gpio_vbus->phy.otg->phy = &gpio_vbus->phy;
+	gpio_vbus->phy.otg->set_peripheral = gpio_vbus_set_peripheral;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_set_drvdata(pdev, gpio_vbus);
 	gpio_vbus->dev = &pdev->dev;
 	gpio_vbus->otg.label = "gpio-vbus";
@@ -239,6 +402,10 @@ static int __init gpio_vbus_probe(struct platform_device *pdev)
 	gpio_vbus->otg.set_peripheral = gpio_vbus_set_peripheral;
 	gpio_vbus->otg.set_power = gpio_vbus_set_power;
 	gpio_vbus->otg.set_suspend = gpio_vbus_set_suspend;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = gpio_request(gpio, "vbus_detect");
 	if (err) {
@@ -277,6 +444,15 @@ static int __init gpio_vbus_probe(struct platform_device *pdev)
 			irq, err);
 		goto err_irq;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	ATOMIC_INIT_NOTIFIER_HEAD(&gpio_vbus->phy.notifier);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_WORK(&gpio_vbus->work, gpio_vbus_work);
 
 	gpio_vbus->vbus_draw = regulator_get(&pdev->dev, "vbus_draw");
@@ -287,7 +463,15 @@ static int __init gpio_vbus_probe(struct platform_device *pdev)
 	}
 
 	/* only active when a gadget is registered */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = usb_set_transceiver(&gpio_vbus->phy);
+=======
 	err = otg_set_transceiver(&gpio_vbus->otg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = otg_set_transceiver(&gpio_vbus->otg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		dev_err(&pdev->dev, "can't register transceiver, err: %d\n",
 			err);
@@ -303,6 +487,13 @@ err_irq:
 	gpio_free(pdata->gpio_vbus);
 err_gpio:
 	platform_set_drvdata(pdev, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree(gpio_vbus->phy.otg);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(gpio_vbus);
 	return err;
 }
@@ -315,13 +506,28 @@ static int __exit gpio_vbus_remove(struct platform_device *pdev)
 
 	regulator_put(gpio_vbus->vbus_draw);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_set_transceiver(NULL);
+=======
 	otg_set_transceiver(NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	otg_set_transceiver(NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	free_irq(gpio_to_irq(gpio), &pdev->dev);
 	if (gpio_is_valid(pdata->gpio_pullup))
 		gpio_free(pdata->gpio_pullup);
 	gpio_free(gpio);
 	platform_set_drvdata(pdev, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree(gpio_vbus->phy.otg);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(gpio_vbus);
 
 	return 0;

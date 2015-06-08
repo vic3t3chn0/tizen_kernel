@@ -17,6 +17,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_LOCAL_APIC
 extern int op_nmi_init(struct oprofile_operations *ops);
 extern void op_nmi_exit(void);
@@ -36,6 +39,8 @@ int __init oprofile_arch_init(struct oprofile_operations *ops)
 void oprofile_arch_exit(void)
 {
 	op_nmi_exit();
+<<<<<<< HEAD
+=======
 =======
 extern int op_nmi_init(struct oprofile_operations *ops);
 extern int op_nmi_timer_init(struct oprofile_operations *ops);
@@ -71,4 +76,5 @@ void oprofile_arch_exit(void)
 		op_nmi_exit();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

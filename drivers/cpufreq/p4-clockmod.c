@@ -31,6 +31,13 @@
 #include <asm/processor.h>
 #include <asm/msr.h>
 #include <asm/timer.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/cpu_device_id.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "speedstep-lib.h"
 
@@ -289,21 +296,52 @@ static struct cpufreq_driver p4clockmod_driver = {
 	.attr		= p4clockmod_attr,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct x86_cpu_id cpufreq_p4_id[] = {
+	{ X86_VENDOR_INTEL, X86_FAMILY_ANY, X86_MODEL_ANY, X86_FEATURE_ACC },
+	{}
+};
+
+/*
+ * Intentionally no MODULE_DEVICE_TABLE here: this driver should not
+ * be auto loaded.  Please don't add one.
+ */
+
+static int __init cpufreq_p4_init(void)
+{
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init cpufreq_p4_init(void)
 {
 	struct cpuinfo_x86 *c = &cpu_data(0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	/*
 	 * THERM_CONTROL is architectural for IA32 now, so
 	 * we can rely on the capability checks
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!x86_match_cpu(cpufreq_p4_id) || !boot_cpu_has(X86_FEATURE_ACPI))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (c->x86_vendor != X86_VENDOR_INTEL)
 		return -ENODEV;
 
 	if (!test_cpu_cap(c, X86_FEATURE_ACPI) ||
 				!test_cpu_cap(c, X86_FEATURE_ACC))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	ret = cpufreq_register_driver(&p4clockmod_driver);

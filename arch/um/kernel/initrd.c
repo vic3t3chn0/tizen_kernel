@@ -9,8 +9,11 @@
 #include "asm/types.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "initrd.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "init.h"
 #include "os.h"
 
@@ -19,7 +22,11 @@ static char *initrd __initdata = NULL;
 <<<<<<< HEAD
 static int load_initrd(char *filename, void *buf, int size);
 =======
+<<<<<<< HEAD
+static int load_initrd(char *filename, void *buf, int size);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init read_initrd(void)
 {
@@ -72,8 +79,12 @@ __uml_setup("initrd=", uml_initrd_setup,
 <<<<<<< HEAD
 static int load_initrd(char *filename, void *buf, int size)
 =======
+<<<<<<< HEAD
+static int load_initrd(char *filename, void *buf, int size)
+=======
 int load_initrd(char *filename, void *buf, int size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int fd, n;
 

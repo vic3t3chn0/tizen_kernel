@@ -18,8 +18,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/rcupdate.h>
 
 /* size of the nodename buffer */
@@ -33,7 +37,11 @@ struct auth_cred {
 <<<<<<< HEAD
 	const char *principal;
 =======
+<<<<<<< HEAD
+	const char *principal;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char machine_cred : 1;
 };
 
@@ -110,7 +118,12 @@ struct rpc_authops {
 	int			(*pipes_create)(struct rpc_auth *);
 	void			(*pipes_destroy)(struct rpc_auth *);
 =======
+<<<<<<< HEAD
+	int			(*pipes_create)(struct rpc_auth *);
+	void			(*pipes_destroy)(struct rpc_auth *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct rpc_credops {
@@ -143,8 +156,12 @@ struct rpc_cred *	rpc_lookup_cred(void);
 <<<<<<< HEAD
 struct rpc_cred *	rpc_lookup_machine_cred(const char *service_name);
 =======
+<<<<<<< HEAD
+struct rpc_cred *	rpc_lookup_machine_cred(const char *service_name);
+=======
 struct rpc_cred *	rpc_lookup_machine_cred(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int			rpcauth_register(const struct rpc_authops *);
 int			rpcauth_unregister(const struct rpc_authops *);
 struct rpc_auth *	rpcauth_create(rpc_authflavor_t, struct rpc_clnt *);

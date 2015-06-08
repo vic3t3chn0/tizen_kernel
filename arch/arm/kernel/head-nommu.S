@@ -21,9 +21,14 @@
 #include <asm/cp15.h>
 #include <asm/thread_info.h>
 =======
+<<<<<<< HEAD
+#include <asm/cp15.h>
+#include <asm/thread_info.h>
+=======
 #include <asm/thread_info.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Kernel startup entry point.
@@ -38,6 +43,9 @@
  *
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.arm
 
 	__HEAD
@@ -48,10 +56,13 @@ ENTRY(stext)
  THUMB(	.thumb			)	@ switch to Thumb now.
  THUMB(1:			)
 
+<<<<<<< HEAD
+=======
 =======
 	__HEAD
 ENTRY(stext)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	setmode	PSR_F_BIT | PSR_I_BIT | SVC_MODE, r9 @ ensure svc mode
 						@ and irqs disabled
 #ifndef CONFIG_CPU_CP15
@@ -79,16 +90,22 @@ __after_proc_init:
 	 * the CPU init function.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ALIGNMENT_TRAP
 	orr	r0, r0, #CR_A
 #else
 	bic	r0, r0, #CR_A
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_ALLOW_CPU_ALIGNMENT
 bic	r0, r0, #CR_A
 #else
   orr  r0, r0, #CR_A
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 #ifdef CONFIG_CPU_DCACHE_DISABLE
 	bic	r0, r0, #CR_C

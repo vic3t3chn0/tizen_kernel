@@ -35,6 +35,9 @@
  */
 #include <linux/types.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/parser.h>
 #include <linux/fs.h>
 #include <linux/nfs_idmap.h>
@@ -140,10 +143,13 @@ void nfs_fattr_map_and_free_names(struct nfs_server *server, struct nfs_fattr *f
 	if (nfs_fattr_map_group_name(server, fattr))
 		nfs_fattr_free_group_name(fattr);
 }
+<<<<<<< HEAD
+=======
 =======
 #include <linux/string.h>
 #include <linux/kernel.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int nfs_map_string_to_numeric(const char *name, size_t namelen, __u32 *res)
 {
@@ -168,6 +174,9 @@ static int nfs_map_numeric_to_string(__u32 id, char *buf, size_t buflen)
 <<<<<<< HEAD
 static struct key_type key_type_id_resolver = {
 =======
+<<<<<<< HEAD
+static struct key_type key_type_id_resolver = {
+=======
 #ifdef CONFIG_NFS_USE_NEW_IDMAPPER
 
 #include <linux/slab.h>
@@ -189,6 +198,7 @@ const struct cred *id_resolver_cache;
 
 struct key_type key_type_id_resolver = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "id_resolver",
 	.instantiate	= user_instantiate,
 	.match		= user_match,
@@ -201,8 +211,12 @@ struct key_type key_type_id_resolver = {
 <<<<<<< HEAD
 static int nfs_idmap_init_keyring(void)
 =======
+<<<<<<< HEAD
+static int nfs_idmap_init_keyring(void)
+=======
 int nfs_idmap_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cred *cred;
 	struct key *keyring;
@@ -212,8 +226,13 @@ int nfs_idmap_init(void)
 	printk(KERN_NOTICE "NFS: Registering the %s key type\n",
 		key_type_id_resolver.name);
 =======
+<<<<<<< HEAD
+	printk(KERN_NOTICE "NFS: Registering the %s key type\n",
+		key_type_id_resolver.name);
+=======
 	printk(KERN_NOTICE "Registering the %s key type\n", key_type_id_resolver.name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cred = prepare_kernel_cred(NULL);
 	if (!cred)
@@ -239,7 +258,11 @@ int nfs_idmap_init(void)
 <<<<<<< HEAD
 	set_bit(KEY_FLAG_ROOT_CAN_CLEAR, &keyring->flags);
 =======
+<<<<<<< HEAD
+	set_bit(KEY_FLAG_ROOT_CAN_CLEAR, &keyring->flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cred->thread_keyring = keyring;
 	cred->jit_keyring = KEY_REQKEY_DEFL_THREAD_KEYRING;
 	id_resolver_cache = cred;
@@ -255,8 +278,12 @@ failed_put_cred:
 <<<<<<< HEAD
 static void nfs_idmap_quit_keyring(void)
 =======
+<<<<<<< HEAD
+static void nfs_idmap_quit_keyring(void)
+=======
 void nfs_idmap_quit(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	key_revoke(id_resolver_cache->thread_keyring);
 	unregister_key_type(&key_type_id_resolver);
@@ -292,14 +319,20 @@ static ssize_t nfs_idmap_get_desc(const char *name, size_t namelen,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t nfs_idmap_request_key(struct key_type *key_type,
 				     const char *name, size_t namelen,
 				     const char *type, void *data,
 				     size_t data_size, struct idmap *idmap)
+<<<<<<< HEAD
+=======
 =======
 static ssize_t nfs_idmap_request_key(const char *name, size_t namelen,
 		const char *type, void *data, size_t data_size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct cred *saved_cred;
 	struct key *rkey;
@@ -313,16 +346,22 @@ static ssize_t nfs_idmap_request_key(const char *name, size_t namelen,
 
 	saved_cred = override_creds(id_resolver_cache);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (idmap)
 		rkey = request_key_with_auxdata(key_type, desc, "", 0, idmap);
 	else
 		rkey = request_key(&key_type_id_resolver, desc, "");
 	revert_creds(saved_cred);
 
+<<<<<<< HEAD
+=======
 =======
 	rkey = request_key(&key_type_id_resolver, desc, "");
 	revert_creds(saved_cred);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(desc);
 	if (IS_ERR(rkey)) {
 		ret = PTR_ERR(rkey);
@@ -356,6 +395,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t nfs_idmap_get_key(const char *name, size_t namelen,
 				 const char *type, void *data,
 				 size_t data_size, struct idmap *idmap)
@@ -374,11 +416,14 @@ static ssize_t nfs_idmap_get_key(const char *name, size_t namelen,
 /* ID -> Name */
 static ssize_t nfs_idmap_lookup_name(__u32 id, const char *type, char *buf,
 				     size_t buflen, struct idmap *idmap)
+<<<<<<< HEAD
+=======
 =======
 
 /* ID -> Name */
 static ssize_t nfs_idmap_lookup_name(__u32 id, const char *type, char *buf, size_t buflen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char id_str[NFS_UINT_MAXLEN];
 	int id_len;
@@ -388,8 +433,12 @@ static ssize_t nfs_idmap_lookup_name(__u32 id, const char *type, char *buf, size
 <<<<<<< HEAD
 	ret = nfs_idmap_get_key(id_str, id_len, type, buf, buflen, idmap);
 =======
+<<<<<<< HEAD
+	ret = nfs_idmap_get_key(id_str, id_len, type, buf, buflen, idmap);
+=======
 	ret = nfs_idmap_request_key(id_str, id_len, type, buf, buflen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		return -EINVAL;
 	return ret;
@@ -400,9 +449,14 @@ static ssize_t nfs_idmap_lookup_name(__u32 id, const char *type, char *buf, size
 static int nfs_idmap_lookup_id(const char *name, size_t namelen, const char *type,
 			       __u32 *id, struct idmap *idmap)
 =======
+<<<<<<< HEAD
+static int nfs_idmap_lookup_id(const char *name, size_t namelen, const char *type,
+			       __u32 *id, struct idmap *idmap)
+=======
 static int nfs_idmap_lookup_id(const char *name, size_t namelen,
 				const char *type, __u32 *id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char id_str[NFS_UINT_MAXLEN];
 	long id_long;
@@ -412,8 +466,12 @@ static int nfs_idmap_lookup_id(const char *name, size_t namelen,
 <<<<<<< HEAD
 	data_size = nfs_idmap_get_key(name, namelen, type, id_str, NFS_UINT_MAXLEN, idmap);
 =======
+<<<<<<< HEAD
+	data_size = nfs_idmap_get_key(name, namelen, type, id_str, NFS_UINT_MAXLEN, idmap);
+=======
 	data_size = nfs_idmap_request_key(name, namelen, type, id_str, NFS_UINT_MAXLEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (data_size <= 0) {
 		ret = -EINVAL;
 	} else {
@@ -424,6 +482,9 @@ static int nfs_idmap_lookup_id(const char *name, size_t namelen,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* idmap classic begins here */
 module_param(nfs_idmap_cache_timeout, int, 0644);
 
@@ -515,6 +576,8 @@ static int nfs_idmap_register(struct nfs_client *clp,
 	}
 	return err;
 }
+<<<<<<< HEAD
+=======
 =======
 int nfs_map_name_to_uid(const struct nfs_server *server, const char *name, size_t namelen, __u32 *uid)
 {
@@ -625,6 +688,7 @@ static const struct rpc_pipe_ops idmap_upcall_ops = {
 	.destroy_msg	= idmap_pipe_destroy_msg,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int
 nfs_idmap_new(struct nfs_client *clp)
@@ -633,7 +697,11 @@ nfs_idmap_new(struct nfs_client *clp)
 <<<<<<< HEAD
 	struct rpc_pipe *pipe;
 =======
+<<<<<<< HEAD
+	struct rpc_pipe *pipe;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error;
 
 	BUG_ON(clp->cl_idmap != NULL);
@@ -643,6 +711,9 @@ nfs_idmap_new(struct nfs_client *clp)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pipe = rpc_mkpipe_data(&idmap_upcall_ops, 0);
 	if (IS_ERR(pipe)) {
 		error = PTR_ERR(pipe);
@@ -656,6 +727,8 @@ nfs_idmap_new(struct nfs_client *clp)
 		return error;
 	}
 	idmap->idmap_pipe = pipe;
+<<<<<<< HEAD
+=======
 =======
 	idmap->idmap_dentry = rpc_mkpipe(clp->cl_rpcclient->cl_path.dentry,
 			"idmap", idmap, &idmap_upcall_ops, 0);
@@ -671,6 +744,7 @@ nfs_idmap_new(struct nfs_client *clp)
 	idmap->idmap_user_hash.h_type = IDMAP_TYPE_USER;
 	idmap->idmap_group_hash.h_type = IDMAP_TYPE_GROUP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clp->cl_idmap = idmap;
 	return 0;
@@ -687,13 +761,21 @@ nfs_idmap_delete(struct nfs_client *clp)
 	nfs_idmap_unregister(clp, idmap->idmap_pipe);
 	rpc_destroy_pipe_data(idmap->idmap_pipe);
 =======
+<<<<<<< HEAD
+	nfs_idmap_unregister(clp, idmap->idmap_pipe);
+	rpc_destroy_pipe_data(idmap->idmap_pipe);
+=======
 	rpc_unlink(idmap->idmap_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clp->cl_idmap = NULL;
 	kfree(idmap);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __rpc_pipefs_event(struct nfs_client *clp, unsigned long event,
 			      struct super_block *sb)
 {
@@ -907,6 +989,8 @@ static int nfs_idmap_read_message(struct idmap_msg *im, struct key *key, struct 
 	}
 
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Helper routines for manipulating the hashtable
@@ -1131,6 +1215,7 @@ idmap_pipe_upcall(struct file *filp, struct rpc_pipe_msg *msg,
 	msg->errno = 0;
 	return mlen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static ssize_t
@@ -1139,6 +1224,9 @@ idmap_pipe_downcall(struct file *filp, const char __user *src, size_t mlen)
 	struct rpc_inode *rpci = RPC_I(filp->f_path.dentry->d_inode);
 	struct idmap *idmap = (struct idmap *)rpci->private;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct key_construction *cons = idmap->idmap_key_cons;
 	struct idmap_msg im;
 	size_t namelen_in;
@@ -1175,6 +1263,8 @@ idmap_pipe_downcall(struct file *filp, const char __user *src, size_t mlen)
 out:
 	complete_request_key(idmap->idmap_key_cons, ret);
 out_incomplete:
+<<<<<<< HEAD
+=======
 =======
 	struct idmap_msg im_in, *im = &idmap->idmap_im;
 	struct idmap_hashtable *h;
@@ -1250,12 +1340,18 @@ out_incomplete:
 out:
 	mutex_unlock(&idmap->idmap_im_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static void
 idmap_pipe_destroy_msg(struct rpc_pipe_msg *msg)
 {
+<<<<<<< HEAD
+	/* Free memory allocated in nfs_idmap_legacy_upcall() */
+	kfree(msg->data);
+	kfree(msg);
+=======
 <<<<<<< HEAD
 	/* Free memory allocated in nfs_idmap_legacy_upcall() */
 	kfree(msg->data);
@@ -1292,6 +1388,7 @@ static unsigned int fnvhash32(const void *buf, size_t buflen)
 
 	return hash;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int nfs_map_name_to_uid(const struct nfs_server *server, const char *name, size_t namelen, __u32 *uid)
@@ -1301,6 +1398,9 @@ int nfs_map_name_to_uid(const struct nfs_server *server, const char *name, size_
 	if (nfs_map_string_to_numeric(name, namelen, uid))
 		return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return nfs_idmap_lookup_id(name, namelen, "uid", uid, idmap);
 }
 
@@ -1311,6 +1411,8 @@ int nfs_map_group_to_gid(const struct nfs_server *server, const char *name, size
 	if (nfs_map_string_to_numeric(name, namelen, gid))
 		return 0;
 	return nfs_idmap_lookup_id(name, namelen, "gid", gid, idmap);
+<<<<<<< HEAD
+=======
 =======
 	return nfs_idmap_id(idmap, &idmap->idmap_user_hash, name, namelen, uid);
 }
@@ -1323,6 +1425,7 @@ int nfs_map_group_to_gid(const struct nfs_server *server, const char *name, size
 		return 0;
 	return nfs_idmap_id(idmap, &idmap->idmap_group_hash, name, namelen, uid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int nfs_map_uid_to_name(const struct nfs_server *server, __u32 uid, char *buf, size_t buflen)
@@ -1334,8 +1437,12 @@ int nfs_map_uid_to_name(const struct nfs_server *server, __u32 uid, char *buf, s
 <<<<<<< HEAD
 		ret = nfs_idmap_lookup_name(uid, "user", buf, buflen, idmap);
 =======
+<<<<<<< HEAD
+		ret = nfs_idmap_lookup_name(uid, "user", buf, buflen, idmap);
+=======
 		ret = nfs_idmap_name(idmap, &idmap->idmap_user_hash, uid, buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		ret = nfs_map_numeric_to_string(uid, buf, buflen);
 	return ret;
@@ -1343,19 +1450,28 @@ int nfs_map_uid_to_name(const struct nfs_server *server, __u32 uid, char *buf, s
 <<<<<<< HEAD
 int nfs_map_gid_to_group(const struct nfs_server *server, __u32 gid, char *buf, size_t buflen)
 =======
+<<<<<<< HEAD
+int nfs_map_gid_to_group(const struct nfs_server *server, __u32 gid, char *buf, size_t buflen)
+=======
 int nfs_map_gid_to_group(const struct nfs_server *server, __u32 uid, char *buf, size_t buflen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct idmap *idmap = server->nfs_client->cl_idmap;
 	int ret = -EINVAL;
 
 	if (!(server->caps & NFS_CAP_UIDGID_NOMAP))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = nfs_idmap_lookup_name(gid, "group", buf, buflen, idmap);
 	if (ret < 0)
 		ret = nfs_map_numeric_to_string(gid, buf, buflen);
 	return ret;
 }
+<<<<<<< HEAD
+=======
 =======
 		ret = nfs_idmap_name(idmap, &idmap->idmap_group_hash, uid, buf);
 	if (ret < 0)
@@ -1365,3 +1481,4 @@ int nfs_map_gid_to_group(const struct nfs_server *server, __u32 uid, char *buf, 
 
 #endif /* CONFIG_NFS_USE_NEW_IDMAPPER */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

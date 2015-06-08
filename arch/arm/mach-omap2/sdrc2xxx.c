@@ -25,6 +25,9 @@
 #include <linux/io.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/hardware.h>
 #include <plat/clock.h>
 #include <plat/sram.h>
@@ -34,6 +37,8 @@
 #include "common.h"
 #include "prm2xxx_3xxx.h"
 #include "clock.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/clock.h>
@@ -43,6 +48,7 @@
 #include "clock.h"
 #include <plat/sdrc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "sdrc.h"
 
 /* Memory timing, DLL mode flags */

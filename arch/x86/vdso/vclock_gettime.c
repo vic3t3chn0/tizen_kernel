@@ -8,8 +8,11 @@
  * Check with readelf after changing.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Also alternative() doesn't work.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /* Disable profiling for userspace code: */
@@ -23,7 +26,11 @@
 <<<<<<< HEAD
 #include <asm/fixmap.h>
 =======
+<<<<<<< HEAD
+#include <asm/fixmap.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/vgtod.h>
 #include <asm/timex.h>
 #include <asm/hpet.h>
@@ -33,6 +40,9 @@
 #define gtod (&VVAR(vsyscall_gtod_data))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 notrace static cycle_t vread_tsc(void)
 {
 	cycle_t ret;
@@ -70,8 +80,11 @@ static notrace cycle_t vread_hpet(void)
 	return readl((const void __iomem *)fix_to_virt(VSYSCALL_HPET) + 0xf0);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 notrace static long vdso_fallback_gettime(long clock, struct timespec *ts)
 {
 	long ret;
@@ -81,6 +94,9 @@ notrace static long vdso_fallback_gettime(long clock, struct timespec *ts)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 notrace static long vdso_fallback_gtod(struct timeval *tv, struct timezone *tz)
 {
 	long ret;
@@ -159,6 +175,8 @@ notrace static int do_monotonic_coarse(struct timespec *ts)
 		ts->tv_sec = gtod->monotonic_time_coarse.tv_sec;
 		ts->tv_nsec = gtod->monotonic_time_coarse.tv_nsec;
 	} while (unlikely(read_seqcount_retry(&gtod->seq, seq)));
+<<<<<<< HEAD
+=======
 =======
 notrace static inline long vgetns(void)
 {
@@ -238,6 +256,7 @@ notrace static noinline int do_monotonic_coarse(struct timespec *ts)
 	ts->tv_sec = secs;
 	ts->tv_nsec = ns;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -245,6 +264,9 @@ notrace static noinline int do_monotonic_coarse(struct timespec *ts)
 notrace int __vdso_clock_gettime(clockid_t clock, struct timespec *ts)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = VCLOCK_NONE;
 
 	switch (clock) {
@@ -263,6 +285,8 @@ notrace int __vdso_clock_gettime(clockid_t clock, struct timespec *ts)
 	if (ret == VCLOCK_NONE)
 		return vdso_fallback_gettime(clock, ts);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	if (likely(gtod->sysctl_enabled))
 		switch (clock) {
@@ -281,6 +305,7 @@ notrace int __vdso_clock_gettime(clockid_t clock, struct timespec *ts)
 		}
 	return vdso_fallback_gettime(clock, ts);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 int clock_gettime(clockid_t, struct timespec *)
 	__attribute__((weak, alias("__vdso_clock_gettime")));
@@ -288,6 +313,9 @@ int clock_gettime(clockid_t, struct timespec *)
 notrace int __vdso_gettimeofday(struct timeval *tv, struct timezone *tz)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	long ret = VCLOCK_NONE;
 
 	if (likely(tv != NULL)) {
@@ -306,6 +334,8 @@ notrace int __vdso_gettimeofday(struct timeval *tv, struct timezone *tz)
 	if (ret == VCLOCK_NONE)
 		return vdso_fallback_gtod(tv, tz);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	long ret;
 	if (likely(gtod->sysctl_enabled && gtod->clock.vread)) {
@@ -327,11 +357,15 @@ notrace int __vdso_gettimeofday(struct timeval *tv, struct timezone *tz)
 	    "0" (__NR_gettimeofday), "D" (tv), "S" (tz) : "memory");
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 int gettimeofday(struct timeval *, struct timezone *)
 	__attribute__((weak, alias("__vdso_gettimeofday")));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This will break when the xtime seconds get inaccurate, but that is
  * unlikely
@@ -340,6 +374,8 @@ notrace time_t __vdso_time(time_t *t)
 {
 	/* This is atomic on x86_64 so we don't need any locks. */
 	time_t result = ACCESS_ONCE(VVAR(vsyscall_gtod_data).wall_time_sec);
+<<<<<<< HEAD
+=======
 =======
 /* This will break when the xtime seconds get inaccurate, but that is
  * unlikely */
@@ -363,6 +399,7 @@ notrace time_t __vdso_time(time_t *t)
 	/* This is atomic on x86_64 so we don't need any locks. */
 	result = ACCESS_ONCE(VVAR(vsyscall_gtod_data).wall_time_sec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (t)
 		*t = result;

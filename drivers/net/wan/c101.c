@@ -14,6 +14,14 @@
  *    Moxa C101 User's Manual
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/capability.h>
@@ -313,16 +321,43 @@ static int __init c101_run(unsigned long irq, unsigned long winbase)
 	int result;
 
 	if (irq<3 || irq>15 || irq == 6) /* FIXME */ {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("invalid IRQ value\n");
+=======
 		printk(KERN_ERR "c101: invalid IRQ value\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "c101: invalid IRQ value\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 
 	if (winbase < 0xC0000 || winbase > 0xDFFFF || (winbase & 0x3FFF) !=0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("invalid RAM value\n");
+=======
 		printk(KERN_ERR "c101: invalid RAM value\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "c101: invalid RAM value\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 
 	card = kzalloc(sizeof(card_t), GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (card == NULL)
+		return -ENOBUFS;
+
+	card->dev = alloc_hdlcdev(card);
+	if (!card->dev) {
+		pr_err("unable to allocate memory\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (card == NULL) {
 		printk(KERN_ERR "c101: unable to allocate memory\n");
 		return -ENOBUFS;
@@ -331,26 +366,54 @@ static int __init c101_run(unsigned long irq, unsigned long winbase)
 	card->dev = alloc_hdlcdev(card);
 	if (!card->dev) {
 		printk(KERN_ERR "c101: unable to allocate memory\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(card);
 		return -ENOBUFS;
 	}
 
 	if (request_irq(irq, sca_intr, 0, devname, card)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("could not allocate IRQ\n");
+=======
 		printk(KERN_ERR "c101: could not allocate IRQ\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "c101: could not allocate IRQ\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c101_destroy_card(card);
 		return -EBUSY;
 	}
 	card->irq = irq;
 
 	if (!request_mem_region(winbase, C101_MAPPED_RAM_SIZE, devname)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("could not request RAM window\n");
+=======
 		printk(KERN_ERR "c101: could not request RAM window\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "c101: could not request RAM window\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c101_destroy_card(card);
 		return -EBUSY;
 	}
 	card->phy_winbase = winbase;
 	card->win0base = ioremap(winbase, C101_MAPPED_RAM_SIZE);
 	if (!card->win0base) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("could not map I/O address\n");
+=======
 		printk(KERN_ERR "c101: could not map I/O address\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_ERR "c101: could not map I/O address\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c101_destroy_card(card);
 		return -EFAULT;
 	}
@@ -381,7 +444,15 @@ static int __init c101_run(unsigned long irq, unsigned long winbase)
 
 	result = register_hdlc_device(dev);
 	if (result) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_warn("unable to register hdlc device\n");
+=======
 		printk(KERN_WARNING "c101: unable to register hdlc device\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_WARNING "c101: unable to register hdlc device\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c101_destroy_card(card);
 		return result;
 	}
@@ -389,10 +460,21 @@ static int __init c101_run(unsigned long irq, unsigned long winbase)
 	sca_init_port(card); /* Set up C101 memory */
 	set_carrier(card);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	netdev_info(dev, "Moxa C101 on IRQ%u, using %u TX + %u RX packets rings\n",
+		    card->irq, card->tx_ring_buffers, card->rx_ring_buffers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "%s: Moxa C101 on IRQ%u,"
 	       " using %u TX + %u RX packets rings\n",
 	       dev->name, card->irq,
 	       card->tx_ring_buffers, card->rx_ring_buffers);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*new_card = card;
 	new_card = &card->next_card;
@@ -405,12 +487,28 @@ static int __init c101_init(void)
 {
 	if (hw == NULL) {
 #ifdef MODULE
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("no card initialized\n");
+=======
 		printk(KERN_INFO "c101: no card initialized\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO "c101: no card initialized\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 		return -EINVAL;	/* no parameters specified, abort */
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("%s\n", version);
+=======
 	printk(KERN_INFO "%s\n", version);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_INFO "%s\n", version);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	do {
 		unsigned long irq, ram;
@@ -428,7 +526,15 @@ static int __init c101_init(void)
 			return first_card ? 0 : -EINVAL;
 	}while(*hw++ == ':');
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_err("invalid hardware parameters\n");
+=======
 	printk(KERN_ERR "c101: invalid hardware parameters\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_ERR "c101: invalid hardware parameters\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return first_card ? 0 : -EINVAL;
 }
 

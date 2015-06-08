@@ -38,8 +38,11 @@
 #include <asm/page.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 
@@ -149,18 +152,24 @@ static struct pci_bus * __init enp2611_pci_scan_bus(int nr,
 						struct pci_sys_data *sys)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return pci_scan_root_bus(NULL, sys->busnr, &enp2611_pci_ops, sys,
 				 &sys->resources);
 }
 
 static int __init enp2611_pci_map_irq(const struct pci_dev *dev, u8 slot,
 	u8 pin)
+<<<<<<< HEAD
+=======
 =======
 	return pci_scan_bus(sys->busnr, &enp2611_pci_ops, sys);
 }
 
 static int __init enp2611_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq;
 
@@ -268,8 +277,12 @@ MACHINE_START(ENP2611, "Radisys ENP-2611 PCI network processor board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= enp2611_map_io,
 	.init_irq	= ixp2000_init_irq,
 	.timer		= &enp2611_timer,
@@ -277,7 +290,11 @@ MACHINE_START(ENP2611, "Radisys ENP-2611 PCI network processor board")
 <<<<<<< HEAD
 	.restart	= ixp2000_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ixp2000_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 
 

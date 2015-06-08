@@ -34,8 +34,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_BRIDGE_NETFILTER
 #include "../bridge/br_private.h"
@@ -65,8 +69,12 @@ struct nfqnl_instance {
 <<<<<<< HEAD
 	unsigned int	id_sequence;		/* 'sequence' of pkt ids */
 =======
+<<<<<<< HEAD
+	unsigned int	id_sequence;		/* 'sequence' of pkt ids */
+=======
 	atomic_t	id_sequence;		/* 'sequence' of pkt ids */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head queue_list;		/* packets in queue */
 };
 
@@ -180,6 +188,9 @@ __enqueue_entry(struct nfqnl_instance *queue, struct nf_queue_entry *entry)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 __dequeue_entry(struct nfqnl_instance *queue, struct nf_queue_entry *entry)
 {
@@ -187,8 +198,11 @@ __dequeue_entry(struct nfqnl_instance *queue, struct nf_queue_entry *entry)
 	queue->queue_total--;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct nf_queue_entry *
 find_dequeue_entry(struct nfqnl_instance *queue, unsigned int id)
 {
@@ -207,11 +221,16 @@ find_dequeue_entry(struct nfqnl_instance *queue, unsigned int id)
 	if (entry)
 		__dequeue_entry(queue, entry);
 =======
+<<<<<<< HEAD
+	if (entry)
+		__dequeue_entry(queue, entry);
+=======
 	if (entry) {
 		list_del(&entry->list);
 		queue->queue_total--;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_bh(&queue->lock);
 
@@ -240,8 +259,13 @@ nfqnl_build_packet_message(struct nfqnl_instance *queue,
 			   struct nf_queue_entry *entry,
 			   __be32 **packet_id_ptr)
 =======
+<<<<<<< HEAD
+			   struct nf_queue_entry *entry,
+			   __be32 **packet_id_ptr)
+=======
 			   struct nf_queue_entry *entry)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	sk_buff_data_t old_tail;
 	size_t size;
@@ -251,8 +275,13 @@ nfqnl_build_packet_message(struct nfqnl_instance *queue,
 	struct nlattr *nla;
 	struct nfqnl_msg_packet_hdr *pmsg;
 =======
+<<<<<<< HEAD
+	struct nlattr *nla;
+	struct nfqnl_msg_packet_hdr *pmsg;
+=======
 	struct nfqnl_msg_packet_hdr pmsg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nlmsghdr *nlh;
 	struct nfgenmsg *nfmsg;
 	struct sk_buff *entskb = entry->skb;
@@ -306,11 +335,16 @@ nfqnl_build_packet_message(struct nfqnl_instance *queue,
 	nfmsg->res_id = htons(queue->queue_num);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nla = __nla_reserve(skb, NFQA_PACKET_HDR, sizeof(*pmsg));
 	pmsg = nla_data(nla);
 	pmsg->hw_protocol	= entskb->protocol;
 	pmsg->hook		= entry->hook;
 	*packet_id_ptr		= &pmsg->packet_id;
+<<<<<<< HEAD
+=======
 =======
 	entry->id = atomic_inc_return(&queue->id_sequence);
 	pmsg.packet_id 		= htonl(entry->id);
@@ -319,6 +353,7 @@ nfqnl_build_packet_message(struct nfqnl_instance *queue,
 
 	NLA_PUT(skb, NFQA_PACKET_HDR, sizeof(pmsg), &pmsg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	indev = entry->indev;
 	if (indev) {
@@ -433,7 +468,11 @@ nfqnl_enqueue_packet(struct nf_queue_entry *entry, unsigned int queuenum)
 <<<<<<< HEAD
 	__be32 *packet_id_ptr;
 =======
+<<<<<<< HEAD
+	__be32 *packet_id_ptr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* rcu_read_lock()ed by nf_hook_slow() */
 	queue = instance_lookup(queuenum);
@@ -450,8 +489,12 @@ nfqnl_enqueue_packet(struct nf_queue_entry *entry, unsigned int queuenum)
 <<<<<<< HEAD
 	nskb = nfqnl_build_packet_message(queue, entry, &packet_id_ptr);
 =======
+<<<<<<< HEAD
+	nskb = nfqnl_build_packet_message(queue, entry, &packet_id_ptr);
+=======
 	nskb = nfqnl_build_packet_message(queue, entry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (nskb == NULL) {
 		err = -ENOMEM;
 		goto err_out;
@@ -474,7 +517,12 @@ nfqnl_enqueue_packet(struct nf_queue_entry *entry, unsigned int queuenum)
 	entry->id = ++queue->id_sequence;
 	*packet_id_ptr = htonl(entry->id);
 =======
+<<<<<<< HEAD
+	entry->id = ++queue->id_sequence;
+	*packet_id_ptr = htonl(entry->id);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* nfnetlink_unicast will either free the nskb or add it to a socket */
 	err = nfnetlink_unicast(nskb, &init_net, queue->peer_pid, MSG_DONTWAIT);
@@ -663,6 +711,9 @@ static const struct nla_policy nfqa_verdict_policy[NFQA_MAX+1] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct nla_policy nfqa_verdict_batch_policy[NFQA_MAX+1] = {
 	[NFQA_VERDICT_HDR]	= { .len = sizeof(struct nfqnl_msg_verdict_hdr) },
 	[NFQA_MARK]		= { .type = NLA_U32 },
@@ -749,8 +800,11 @@ nfqnl_recv_verdict_batch(struct sock *ctnl, struct sk_buff *skb,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 nfqnl_recv_verdict(struct sock *ctnl, struct sk_buff *skb,
 		   const struct nlmsghdr *nlh,
@@ -764,6 +818,9 @@ nfqnl_recv_verdict(struct sock *ctnl, struct sk_buff *skb,
 	unsigned int verdict;
 	struct nf_queue_entry *entry;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	queue = instance_lookup(queue_num);
 	if (!queue)
@@ -781,6 +838,8 @@ nfqnl_recv_verdict(struct sock *ctnl, struct sk_buff *skb,
 	entry = find_dequeue_entry(queue, ntohl(vhdr->id));
 	if (entry == NULL)
 		return -ENOENT;
+<<<<<<< HEAD
+=======
 =======
 	int err;
 
@@ -816,6 +875,7 @@ nfqnl_recv_verdict(struct sock *ctnl, struct sk_buff *skb,
 	}
 	rcu_read_unlock();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (nfqa[NFQA_PAYLOAD]) {
 		if (nfqnl_mangle(nla_data(nfqa[NFQA_PAYLOAD]),
@@ -830,11 +890,14 @@ nfqnl_recv_verdict(struct sock *ctnl, struct sk_buff *skb,
 	return 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 err_out_unlock:
 	rcu_read_unlock();
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -952,10 +1015,16 @@ static const struct nfnl_callback nfqnl_cb[NFQNL_MSG_MAX] = {
 				    .attr_count = NFQA_MAX, },
 	[NFQNL_MSG_VERDICT]	= { .call_rcu = nfqnl_recv_verdict,
 =======
+<<<<<<< HEAD
+	[NFQNL_MSG_PACKET]	= { .call_rcu = nfqnl_recv_unsupp,
+				    .attr_count = NFQA_MAX, },
+	[NFQNL_MSG_VERDICT]	= { .call_rcu = nfqnl_recv_verdict,
+=======
 	[NFQNL_MSG_PACKET]	= { .call = nfqnl_recv_unsupp,
 				    .attr_count = NFQA_MAX, },
 	[NFQNL_MSG_VERDICT]	= { .call = nfqnl_recv_verdict,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    .attr_count = NFQA_MAX,
 				    .policy = nfqa_verdict_policy },
 	[NFQNL_MSG_CONFIG]	= { .call = nfqnl_recv_config,
@@ -966,7 +1035,13 @@ static const struct nfnl_callback nfqnl_cb[NFQNL_MSG_MAX] = {
 				    .attr_count = NFQA_MAX,
 				    .policy = nfqa_verdict_batch_policy },
 =======
+<<<<<<< HEAD
+	[NFQNL_MSG_VERDICT_BATCH]={ .call_rcu = nfqnl_recv_verdict_batch,
+				    .attr_count = NFQA_MAX,
+				    .policy = nfqa_verdict_batch_policy },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct nfnetlink_subsystem nfqnl_subsys = {
@@ -1051,8 +1126,12 @@ static int seq_show(struct seq_file *s, void *v)
 <<<<<<< HEAD
 			  inst->id_sequence, 1);
 =======
+<<<<<<< HEAD
+			  inst->id_sequence, 1);
+=======
 			  atomic_read(&inst->id_sequence), 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const struct seq_operations nfqnl_seq_ops = {

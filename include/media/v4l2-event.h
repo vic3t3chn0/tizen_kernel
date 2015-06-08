@@ -30,6 +30,9 @@
 #include <linux/wait.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Overview:
  *
@@ -120,6 +123,8 @@ int v4l2_event_subscribe(struct v4l2_fh *fh,
 int v4l2_event_unsubscribe(struct v4l2_fh *fh,
 			   struct v4l2_event_subscription *sub);
 void v4l2_event_unsubscribe_all(struct v4l2_fh *fh);
+<<<<<<< HEAD
+=======
 =======
 struct v4l2_fh;
 struct video_device;
@@ -156,5 +161,6 @@ int v4l2_event_subscribe(struct v4l2_fh *fh,
 int v4l2_event_unsubscribe(struct v4l2_fh *fh,
 			   struct v4l2_event_subscription *sub);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* V4L2_EVENT_H */

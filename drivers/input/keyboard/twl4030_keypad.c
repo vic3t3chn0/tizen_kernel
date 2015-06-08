@@ -34,7 +34,14 @@
 #include <linux/i2c/twl.h>
 #include <linux/slab.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The TWL4030 family chips include a keypad controller that supports
  * up to an 8x8 switch matrix.  The controller can issue system wakeup
@@ -302,7 +309,15 @@ static int __devinit twl4030_kp_program(struct twl4030_keypad *kp)
 	if (twl4030_kpwrite_u8(kp, i, KEYP_DEB) < 0)
 		return -EIO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Set timeout period to 200 ms */
+=======
 	/* Set timeout period to 100 ms */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Set timeout period to 100 ms */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i = KEYP_PERIOD_US(200000, PTV_PRESCALER);
 	if (twl4030_kpwrite_u8(kp, (i & 0xFF), KEYP_TIMEOUT_L) < 0)
 		return -EIO;
@@ -460,6 +475,12 @@ static struct platform_driver twl4030_kp_driver = {
 		.owner	= THIS_MODULE,
 	},
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(twl4030_kp_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init twl4030_kp_init(void)
 {
@@ -472,9 +493,20 @@ static void __exit twl4030_kp_exit(void)
 	platform_driver_unregister(&twl4030_kp_driver);
 }
 module_exit(twl4030_kp_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Texas Instruments");
 MODULE_DESCRIPTION("TWL4030 Keypad Driver");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:twl4030_keypad");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

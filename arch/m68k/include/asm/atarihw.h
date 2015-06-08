@@ -34,7 +34,12 @@ extern int atari_dont_touch_floppy_select;
 extern int atari_SCC_reset_done;
 
 =======
+<<<<<<< HEAD
+extern int atari_SCC_reset_done;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* convenience macros for testing machine type */
 #define MACH_IS_ST	((atari_mch_cookie >> 16) == ATARI_MCH_ST)
 #define MACH_IS_STE	((atari_mch_cookie >> 16) == ATARI_MCH_STE && \
@@ -408,9 +413,14 @@ struct CODEC
 #define CODEC_GPIO_IN           0
 #define CODEC_GPIO_OUT          1
 =======
+<<<<<<< HEAD
+#define CODEC_GPIO_IN           0
+#define CODEC_GPIO_OUT          1
+=======
 #define GPIO_IN                 0
 #define GPIO_OUT                1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   u_char unused6;
   u_char gpio_data;
 };

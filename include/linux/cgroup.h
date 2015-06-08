@@ -154,6 +154,8 @@ enum {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* which pidlist file are we talking about? */
 enum cgroup_filetype {
 	CGROUP_FILE_PROCS,
@@ -187,6 +189,7 @@ struct cgroup_pidlist {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cgroup {
 	unsigned long flags;		/* "unsigned long" so bitops work */
 
@@ -318,8 +321,12 @@ struct cftype {
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If non-zero, defines the maximum length of string that can
@@ -458,6 +465,9 @@ void cgroup_release_and_wakeup_rmdir(struct cgroup_subsys_state *css);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Control Group taskset, used to pass around set of tasks to cgroup_subsys
  * methods.
  */
@@ -480,14 +490,20 @@ int cgroup_taskset_size(struct cgroup_taskset *tset);
 		    cgroup_taskset_cur_cgroup((tset)) != (skip_cgrp))
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Control Group subsystem type.
  * See Documentation/cgroups/cgroups.txt for details
  */
 
 struct cgroup_subsys {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cgroup_subsys_state *(*create)(struct cgroup *cgrp);
 	int (*pre_destroy)(struct cgroup *cgrp);
 	void (*destroy)(struct cgroup *cgrp);
@@ -501,6 +517,8 @@ struct cgroup_subsys {
 	int (*populate)(struct cgroup_subsys *ss, struct cgroup *cgrp);
 	void (*post_clone)(struct cgroup *cgrp);
 	void (*bind)(struct cgroup *root);
+<<<<<<< HEAD
+=======
 =======
 	struct cgroup_subsys_state *(*create)(struct cgroup_subsys *ss,
 						  struct cgroup *cgrp);
@@ -524,6 +542,7 @@ struct cgroup_subsys {
 	void (*post_clone)(struct cgroup_subsys *ss, struct cgroup *cgrp);
 	void (*bind)(struct cgroup_subsys *ss, struct cgroup *root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int subsys_id;
 	int active;
@@ -583,8 +602,11 @@ static inline struct cgroup_subsys_state *cgroup_subsys_state(
 	rcu_dereference_check(task->cgroups->subsys[subsys_id],		\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			      rcu_read_lock_held() ||			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      lockdep_is_held(&task->alloc_lock) ||	\
 			      cgroup_lock_is_held() || (__c))
 
@@ -631,12 +653,15 @@ int cgroup_attach_task_all(struct task_struct *from, struct task_struct *);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int cgroup_attach_task_current_cg(struct task_struct *tsk)
 {
 	return cgroup_attach_task_all(current, tsk);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * CSS ID is ID for cgroup_subsys_state structs under subsys. This only works
  * if cgroup_subsys.use_id == true. It can be used for looking up and scanning.
@@ -701,11 +726,14 @@ static inline int cgroup_attach_task_all(struct task_struct *from,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int cgroup_attach_task_current_cg(struct task_struct *t)
 {
 	return 0;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* !CONFIG_CGROUPS */
 

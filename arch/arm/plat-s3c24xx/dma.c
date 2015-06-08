@@ -29,8 +29,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <mach/hardware.h>
 #include <mach/dma.h>
@@ -437,8 +440,12 @@ s3c2410_dma_canload(struct s3c2410_dma_chan *chan)
 <<<<<<< HEAD
 int s3c2410_dma_enqueue(unsigned int channel, void *id,
 =======
+<<<<<<< HEAD
+int s3c2410_dma_enqueue(unsigned int channel, void *id,
+=======
 int s3c2410_dma_enqueue(enum dma_ch channel, void *id,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dma_addr_t data, int size)
 {
 	struct s3c2410_dma_chan *chan = s3c_dma_lookup_channel(channel);
@@ -1105,9 +1112,14 @@ EXPORT_SYMBOL(s3c2410_dma_config);
  * source:    DMA_FROM_DEVICE: source is hardware
  *            DMA_TO_DEVICE: source is memory
 =======
+<<<<<<< HEAD
+ * source:    DMA_FROM_DEVICE: source is hardware
+ *            DMA_TO_DEVICE: source is memory
+=======
  * source:    S3C2410_DMASRC_HW: source is hardware
  *            S3C2410_DMASRC_MEM: source is memory
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * devaddr:   physical address of the source
 */
@@ -1116,8 +1128,12 @@ int s3c2410_dma_devconfig(enum dma_ch channel,
 <<<<<<< HEAD
 			  enum dma_data_direction source,
 =======
+<<<<<<< HEAD
+			  enum dma_data_direction source,
+=======
 			  enum s3c2410_dmasrc source,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  unsigned long devaddr)
 {
 	struct s3c2410_dma_chan *chan = s3c_dma_lookup_channel(channel);
@@ -1150,8 +1166,12 @@ int s3c2410_dma_devconfig(enum dma_ch channel,
 <<<<<<< HEAD
 	case DMA_FROM_DEVICE:
 =======
+<<<<<<< HEAD
+	case DMA_FROM_DEVICE:
+=======
 	case S3C2410_DMASRC_HW:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* source is hardware */
 		pr_debug("%s: hw source, devaddr=%08lx, hwcfg=%d\n",
 			 __func__, devaddr, hwcfg);
@@ -1165,8 +1185,12 @@ int s3c2410_dma_devconfig(enum dma_ch channel,
 <<<<<<< HEAD
 	case DMA_TO_DEVICE:
 =======
+<<<<<<< HEAD
+	case DMA_TO_DEVICE:
+=======
 	case S3C2410_DMASRC_MEM:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* source is memory */
 		pr_debug("%s: mem source, devaddr=%08lx, hwcfg=%d\n",
 			 __func__, devaddr, hwcfg);
@@ -1462,10 +1486,15 @@ int __init s3c24xx_dma_init_map(struct s3c24xx_dma_selection *sel)
 	int ptr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nmap = kmemdup(sel->map, map_sz, GFP_KERNEL);
 	if (nmap == NULL)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+=======
 =======
 	nmap = kmalloc(map_sz, GFP_KERNEL);
 	if (nmap == NULL)
@@ -1473,6 +1502,7 @@ int __init s3c24xx_dma_init_map(struct s3c24xx_dma_selection *sel)
 
 	memcpy(nmap, sel->map, map_sz);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&dma_sel, sel, sizeof(*sel));
 
 	dma_sel.map = nmap;

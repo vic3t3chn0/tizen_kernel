@@ -4,7 +4,12 @@
 #include <linux/io.h>
 #include <mach/hardware.h>
 =======
+<<<<<<< HEAD
+#include <linux/io.h>
+#include <mach/hardware.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned int __mxc_cpu_type;
 EXPORT_SYMBOL(__mxc_cpu_type);
@@ -15,6 +20,9 @@ void mxc_set_cpu_type(unsigned int type)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void imx_print_silicon_rev(const char *cpu, int srev)
 {
 	if (srev == IMX_CHIP_REVISION_UNKNOWN)
@@ -46,5 +54,8 @@ void __init imx_set_aips(void __iomem *base)
 	reg = __raw_readl(base + 0x50) & 0x00FFFFFF;
 	__raw_writel(reg, base + 0x50);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

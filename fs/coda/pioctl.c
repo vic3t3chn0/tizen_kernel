@@ -27,8 +27,12 @@
 <<<<<<< HEAD
 static int coda_ioctl_permission(struct inode *inode, int mask);
 =======
+<<<<<<< HEAD
+static int coda_ioctl_permission(struct inode *inode, int mask);
+=======
 static int coda_ioctl_permission(struct inode *inode, int mask, unsigned int flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static long coda_pioctl(struct file *filp, unsigned int cmd,
 			unsigned long user_data);
 
@@ -48,8 +52,12 @@ const struct file_operations coda_ioctl_operations = {
 <<<<<<< HEAD
 static int coda_ioctl_permission(struct inode *inode, int mask)
 =======
+<<<<<<< HEAD
+static int coda_ioctl_permission(struct inode *inode, int mask)
+=======
 static int coda_ioctl_permission(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return (mask & MAY_EXEC) ? -EACCES : 0;
 }

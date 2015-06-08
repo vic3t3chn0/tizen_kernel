@@ -22,7 +22,11 @@ late_initcall(net_secret_init);
 <<<<<<< HEAD
 #ifdef CONFIG_INET
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_INET
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 seq_scale(u32 seq)
 {
 	/*
@@ -38,15 +42,21 @@ static u32 seq_scale(u32 seq)
 	return seq + (ktime_to_ns(ktime_get_real()) >> 6);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #if IS_ENABLED(CONFIG_IPV6)
 __u32 secure_tcpv6_sequence_number(const __be32 *saddr, const __be32 *daddr,
+<<<<<<< HEAD
+=======
 =======
 
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 __u32 secure_tcpv6_sequence_number(__be32 *saddr, __be32 *daddr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   __be16 sport, __be16 dport)
 {
 	u32 secret[MD5_MESSAGE_BYTES / 4];
@@ -58,8 +68,12 @@ __u32 secure_tcpv6_sequence_number(__be32 *saddr, __be32 *daddr,
 <<<<<<< HEAD
 		secret[i] = net_secret[i] + (__force u32)daddr[i];
 =======
+<<<<<<< HEAD
+		secret[i] = net_secret[i] + (__force u32)daddr[i];
+=======
 		secret[i] = net_secret[i] + daddr[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	secret[4] = net_secret[4] +
 		(((__force u16)sport << 16) + (__force u16)dport);
 	for (i = 5; i < MD5_MESSAGE_BYTES / 4; i++)
@@ -150,8 +164,12 @@ EXPORT_SYMBOL_GPL(secure_ipv4_port_ephemeral);
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IP_DCCP)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IP_DCCP)
+=======
 #if defined(CONFIG_IP_DCCP) || defined(CONFIG_IP_DCCP_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u64 secure_dccp_sequence_number(__be32 saddr, __be32 daddr,
 				__be16 sport, __be16 dport)
 {
@@ -176,8 +194,12 @@ EXPORT_SYMBOL(secure_dccp_sequence_number);
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u64 secure_dccpv6_sequence_number(__be32 *saddr, __be32 *daddr,
 				  __be16 sport, __be16 dport)
 {

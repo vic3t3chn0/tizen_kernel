@@ -50,6 +50,9 @@ HW_DECLARE_SPINLOCK(gpio)
 
 /* sysctl */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int bcmring_arch_warm_reboot;	/* do a warm reboot on hard reset */
 
 static void bcmring_restart(char mode, const char *cmd)
@@ -73,9 +76,12 @@ static void bcmring_restart(char mode, const char *cmd)
 		chipcHw_reset(chipcHw_REG_SOFT_RESET_CHIP_SOFT);
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 int bcmring_arch_warm_reboot;	/* do a warm reboot on hard reset */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct ctl_table_header *bcmring_sysctl_header;
 
@@ -166,9 +172,14 @@ static void __init bcmring_init_machine(void)
 static void __init bcmring_fixup(struct tag *t, char **cmdline,
 	struct meminfo *mi) {
 =======
+<<<<<<< HEAD
+static void __init bcmring_fixup(struct tag *t, char **cmdline,
+	struct meminfo *mi) {
+=======
 static void __init bcmring_fixup(struct machine_desc *desc,
      struct tag *t, char **cmdline, struct meminfo *mi) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BLK_DEV_INITRD
 	printk(KERN_NOTICE "bcmring_fixup\n");
 	t->hdr.tag = ATAG_CORE;
@@ -207,6 +218,11 @@ MACHINE_START(BCMRING, "BCMRING")
 	.init_machine = bcmring_init_machine,
 	.restart = bcmring_restart,
 =======
+<<<<<<< HEAD
+	.init_machine = bcmring_init_machine,
+	.restart = bcmring_restart,
+=======
 	.init_machine = bcmring_init_machine
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

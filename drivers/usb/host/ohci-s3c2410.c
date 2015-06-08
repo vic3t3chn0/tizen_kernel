@@ -384,7 +384,15 @@ static int usb_hcd_s3c2410_probe(const struct hc_driver *driver,
 
 	ohci_hcd_init(hcd_to_ohci(hcd));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	retval = usb_add_hcd(hcd, dev->resource[1].start, 0);
+=======
 	retval = usb_add_hcd(hcd, dev->resource[1].start, IRQF_DISABLED);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	retval = usb_add_hcd(hcd, dev->resource[1].start, IRQF_DISABLED);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval != 0)
 		goto err_ioremap;
 
@@ -486,15 +494,86 @@ static int __devexit ohci_hcd_s3c2410_drv_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM
+static int ohci_hcd_s3c2410_drv_suspend(struct device *dev)
+{
+	struct usb_hcd *hcd = dev_get_drvdata(dev);
+	struct ohci_hcd *ohci = hcd_to_ohci(hcd);
+	struct platform_device *pdev = to_platform_device(dev);
+	unsigned long flags;
+	int rc = 0;
+
+	/*
+	 * Root hub was already suspended. Disable irq emission and
+	 * mark HW unaccessible, bail out if RH has been resumed. Use
+	 * the spinlock to properly synchronize with possible pending
+	 * RH suspend or resume activity.
+	 */
+	spin_lock_irqsave(&ohci->lock, flags);
+	if (ohci->rh_state != OHCI_RH_SUSPENDED) {
+		rc = -EINVAL;
+		goto bail;
+	}
+
+	clear_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+
+	s3c2410_stop_hc(pdev);
+bail:
+	spin_unlock_irqrestore(&ohci->lock, flags);
+
+	return rc;
+}
+
+static int ohci_hcd_s3c2410_drv_resume(struct device *dev)
+{
+	struct usb_hcd *hcd = dev_get_drvdata(dev);
+	struct platform_device *pdev = to_platform_device(dev);
+
+	s3c2410_start_hc(pdev, hcd);
+
+	set_bit(HCD_FLAG_HW_ACCESSIBLE, &hcd->flags);
+	ohci_finish_controller_resume(hcd);
+
+	return 0;
+}
+#else
+#define ohci_hcd_s3c2410_drv_suspend	NULL
+#define ohci_hcd_s3c2410_drv_resume	NULL
+#endif
+
+static const struct dev_pm_ops ohci_hcd_s3c2410_pm_ops = {
+	.suspend	= ohci_hcd_s3c2410_drv_suspend,
+	.resume		= ohci_hcd_s3c2410_drv_resume,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver ohci_hcd_s3c2410_driver = {
 	.probe		= ohci_hcd_s3c2410_drv_probe,
 	.remove		= __devexit_p(ohci_hcd_s3c2410_drv_remove),
 	.shutdown	= usb_hcd_platform_shutdown,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.driver		= {
+		.owner	= THIS_MODULE,
+		.name	= "s3c2410-ohci",
+		.pm	= &ohci_hcd_s3c2410_pm_ops,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*.suspend	= ohci_hcd_s3c2410_drv_suspend, */
 	/*.resume	= ohci_hcd_s3c2410_drv_resume, */
 	.driver		= {
 		.owner	= THIS_MODULE,
 		.name	= "s3c2410-ohci",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 

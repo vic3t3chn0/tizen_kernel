@@ -189,7 +189,13 @@ struct onenand_chip {
 	(this->options & ONENAND_HAS_NOP_1)
 
 =======
+<<<<<<< HEAD
+#define ONENAND_IS_NOP_1(this)						\
+	(this->options & ONENAND_HAS_NOP_1)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Check byte access in OneNAND */
 #define ONENAND_CHECK_BYTE_ACCESS(addr)		(addr & 0x1)
 
@@ -204,7 +210,11 @@ struct onenand_chip {
 <<<<<<< HEAD
 #define ONENAND_HAS_NOP_1		(0x0020)
 =======
+<<<<<<< HEAD
+#define ONENAND_HAS_NOP_1		(0x0020)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ONENAND_SKIP_UNLOCK_CHECK	(0x0100)
 #define ONENAND_PAGEBUF_ALLOC		(0x1000)
 #define ONENAND_OOBBUF_ALLOC		(0x2000)

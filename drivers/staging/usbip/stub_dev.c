@@ -19,10 +19,26 @@
 
 #include <linux/device.h>
 #include <linux/kthread.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "usbip_common.h"
 #include "stub.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Define device IDs here if you want to explicitly limit exportable devices.
+ * In most cases, wildcard matching will be okay because driver binding can be
+ * changed dynamically by a userland program.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int stub_probe(struct usb_interface *interface,
 		      const struct usb_device_id *id);
 static void stub_disconnect(struct usb_interface *interface);
@@ -33,6 +49,10 @@ static int stub_post_reset(struct usb_interface *interface);
  * Define device IDs here if you want to explicitly limit exportable devices.
  * In the most cases, wild card matching will be ok because driver binding can
  * be changed dynamically by a userland program.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static struct usb_device_id stub_table[] = {
 #if 0
@@ -56,6 +76,14 @@ static struct usb_device_id stub_table[] = {
 };
 MODULE_DEVICE_TABLE(usb, stub_table);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * usbip_status shows the status of usbip-host as long as this driver is bound
+ * to the target device.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct usb_driver stub_driver = {
 	.name		= "usbip",
 	.probe		= stub_probe,
@@ -68,6 +96,10 @@ struct usb_driver stub_driver = {
 /*
  * usbip_status shows status of usbip as long as this driver is bound to the
  * target device.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static ssize_t show_status(struct device *dev, struct device_attribute *attr,
 			   char *buf)
@@ -123,11 +155,20 @@ static ssize_t store_sockfd(struct device *dev, struct device_attribute *attr,
 			spin_unlock(&sdev->ud.lock);
 			return -EINVAL;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if 0
 		setnodelay(socket);
 		setkeepalive(socket);
 		setreuse(socket);
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sdev->ud.tcp_socket = socket;
 
 		spin_unlock(&sdev->ud.lock);
@@ -211,10 +252,24 @@ static void stub_shutdown_connection(struct usbip_device *ud)
 	if (ud->tcp_tx && !task_is_dead(ud->tcp_tx))
 		kthread_stop(ud->tcp_tx);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * 2. close the socket
+	 *
+	 * tcp_socket is freed after threads are killed so that usbip_xmit does
+	 * not touch NULL socket.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* 2. close the socket */
 	/*
 	 * tcp_socket is freed after threads are killed.
 	 * So usbip_xmit do not touch NULL socket.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	if (ud->tcp_socket) {
 		sock_release(ud->tcp_socket);
@@ -234,8 +289,18 @@ static void stub_shutdown_connection(struct usbip_device *ud)
 			list_del(&unlink->list);
 			kfree(unlink);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		list_for_each_entry_safe(unlink, tmp, &sdev->unlink_free,
+					 list) {
+=======
 		list_for_each_entry_safe(unlink, tmp,
 						 &sdev->unlink_free, list) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		list_for_each_entry_safe(unlink, tmp,
+						 &sdev->unlink_free, list) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_del(&unlink->list);
 			kfree(unlink);
 		}
@@ -262,13 +327,30 @@ static void stub_device_reset(struct usbip_device *ud)
 
 	/* try to reset the device */
 	ret = usb_reset_device(udev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_unlock_device(udev);
 
 	spin_lock(&ud->lock);
 	if (ret) {
 		dev_err(&udev->dev, "device reset\n");
 		ud->status = SDEV_ST_ERROR;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	} else {
+		dev_info(&udev->dev, "device reset\n");
+		ud->status = SDEV_ST_AVAILABLE;
+	}
+	spin_unlock(&ud->lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	} else {
 		dev_info(&udev->dev, "device reset\n");
@@ -278,6 +360,10 @@ static void stub_device_reset(struct usbip_device *ud)
 	spin_unlock(&ud->lock);
 
 	return;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void stub_device_unusable(struct usbip_device *ud)
@@ -320,7 +406,14 @@ static struct stub_device *stub_device_alloc(struct usb_device *udev,
 	sdev->devid		= (busnum << 16) | devnum;
 	sdev->ud.side		= USBIP_STUB;
 	sdev->ud.status		= SDEV_ST_AVAILABLE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* sdev->ud.lock = SPIN_LOCK_UNLOCKED; */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* sdev->ud.lock = SPIN_LOCK_UNLOCKED; */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&sdev->ud.lock);
 	sdev->ud.tcp_socket	= NULL;
 
@@ -329,7 +422,14 @@ static struct stub_device *stub_device_alloc(struct usb_device *udev,
 	INIT_LIST_HEAD(&sdev->priv_free);
 	INIT_LIST_HEAD(&sdev->unlink_free);
 	INIT_LIST_HEAD(&sdev->unlink_tx);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* sdev->priv_lock = SPIN_LOCK_UNLOCKED; */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* sdev->priv_lock = SPIN_LOCK_UNLOCKED; */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&sdev->priv_lock);
 
 	init_waitqueue_head(&sdev->tx_waitq);
@@ -379,7 +479,15 @@ static int stub_probe(struct usb_interface *interface,
 
 	/* check we should claim or not by busid_table */
 	busid_priv = get_busid_priv(udev_busid);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!busid_priv || (busid_priv->status == STUB_BUSID_REMOV) ||
+=======
 	if (!busid_priv  || (busid_priv->status == STUB_BUSID_REMOV) ||
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!busid_priv  || (busid_priv->status == STUB_BUSID_REMOV) ||
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (busid_priv->status == STUB_BUSID_OTHER)) {
 		dev_info(&interface->dev, "%s is not in match_busid table... "
 			 "skip!\n", udev_busid);
@@ -424,7 +532,14 @@ static int stub_probe(struct usb_interface *interface,
 				udev_busid);
 			usb_set_intfdata(interface, NULL);
 			busid_priv->interf_count--;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return err;
 		}
 
@@ -432,7 +547,15 @@ static int stub_probe(struct usb_interface *interface,
 		return 0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* ok, this is my device */
+=======
 	/* ok. this is my device. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* ok. this is my device. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sdev = stub_device_alloc(udev, interface);
 	if (!sdev)
 		return -ENOMEM;
@@ -447,7 +570,14 @@ static int stub_probe(struct usb_interface *interface,
 	/* set private data to usb_interface */
 	usb_set_intfdata(interface, sdev);
 	busid_priv->interf_count++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	busid_priv->sdev = sdev;
 
 	err = stub_add_files(&interface->dev);
@@ -457,7 +587,14 @@ static int stub_probe(struct usb_interface *interface,
 		usb_put_intf(interface);
 
 		busid_priv->interf_count = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		busid_priv->sdev = NULL;
 		stub_device_free(sdev);
 		return err;
@@ -546,11 +683,25 @@ static void stub_disconnect(struct usb_interface *interface)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Presence of pre_reset and post_reset prevents the driver from being unbound
+ * when the device is being reset
+ */
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 
  * Presence of pre_reset and post_reset prevents the driver from being unbound
  * when the device is being reset
  */
  
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int stub_pre_reset(struct usb_interface *interface)
 {
 	dev_dbg(&interface->dev, "pre_reset\n");
@@ -562,3 +713,18 @@ int stub_post_reset(struct usb_interface *interface)
 	dev_dbg(&interface->dev, "post_reset\n");
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+struct usb_driver stub_driver = {
+	.name		= "usbip-host",
+	.probe		= stub_probe,
+	.disconnect	= stub_disconnect,
+	.id_table	= stub_table,
+	.pre_reset	= stub_pre_reset,
+	.post_reset	= stub_post_reset,
+};
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

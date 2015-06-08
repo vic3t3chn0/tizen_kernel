@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
@@ -39,12 +43,17 @@
 #include <linux/leds.h>
 #include <linux/smc91x.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/omapfb.h>
 #include <linux/mtd/mtd.h>
 #include <linux/mtd/partitions.h>
 #include <linux/mtd/physmap.h>
 #include <linux/i2c/tps65010.h>
 
+<<<<<<< HEAD
+=======
 =======
 
 #include <linux/mtd/mtd.h>
@@ -57,6 +66,7 @@
 #include <asm/gpio.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
@@ -66,13 +76,19 @@
 #include <plat/mux.h>
 #include <plat/tc.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* At OMAP5912 OSK the Ethernet is directly connected to CS1 */
 #define OMAP_OSK_ETHR_START		0x04800300
@@ -152,9 +168,12 @@ static struct resource osk5912_smc91x_resources[] = {
 	[1] = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.start	= OMAP_GPIO_IRQ(0),
 		.end	= OMAP_GPIO_IRQ(0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	},
 };
@@ -173,9 +192,12 @@ static struct resource osk5912_cf_resources[] = {
 	[0] = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.start	= OMAP_GPIO_IRQ(62),
 		.end	= OMAP_GPIO_IRQ(62),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ,
 	},
 };
@@ -269,8 +291,11 @@ static struct i2c_board_info __initdata osk_i2c_board_info[] = {
 		I2C_BOARD_INFO("tps65010", 0x48),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq		= OMAP_GPIO_IRQ(OMAP_MPUIO(1)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data	= &tps_board,
 
 	},
@@ -310,6 +335,8 @@ static void __init osk_init_cf(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init osk_init_irq(void)
 {
 	omap1_init_common_hw();
@@ -317,6 +344,7 @@ static void __init osk_init_irq(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_usb_config osk_usb_config __initdata = {
 	/* has usb host connector (A) ... for development it can also
 	 * be used, with a NONSTANDARD gender-bending cable/dongle, as
@@ -341,6 +369,8 @@ static struct omap_lcd_config osk_lcd_config __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct omap_board_config_kernel osk_config[] __initdata = {
 #ifdef	CONFIG_OMAP_OSK_MISTRAL
 	{ OMAP_TAG_LCD,			&osk_lcd_config },
@@ -348,6 +378,7 @@ static struct omap_board_config_kernel osk_config[] __initdata = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef	CONFIG_OMAP_OSK_MISTRAL
 
 #include <linux/input.h>
@@ -458,8 +489,11 @@ static struct spi_board_info __initdata mistral_boardinfo[] = { {
 	.platform_data		= &mistral_ts_info,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq			= OMAP_GPIO_IRQ(4),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.max_speed_hz		= 120000 /* max sample rate at 3V */
 					* 26 /* command + data + overhead */,
 	.bus_num		= 2,
@@ -525,7 +559,11 @@ static void __init osk_mistral_init(void)
 <<<<<<< HEAD
 	mistral_boardinfo[0].irq = gpio_to_irq(4);
 =======
+<<<<<<< HEAD
+	mistral_boardinfo[0].irq = gpio_to_irq(4);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_register_board_info(mistral_boardinfo,
 			ARRAY_SIZE(mistral_boardinfo));
 
@@ -598,16 +636,22 @@ static void __init osk_init(void)
 	osk_flash_resource.end = osk_flash_resource.start = omap_cs3_phys();
 	osk_flash_resource.end += SZ_32M - 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	osk5912_smc91x_resources[1].start = gpio_to_irq(0);
 	osk5912_smc91x_resources[1].end = gpio_to_irq(0);
 	osk5912_cf_resources[0].start = gpio_to_irq(62);
 	osk5912_cf_resources[0].end = gpio_to_irq(62);
 	platform_add_devices(osk5912_devices, ARRAY_SIZE(osk5912_devices));
+<<<<<<< HEAD
+=======
 =======
 	platform_add_devices(osk5912_devices, ARRAY_SIZE(osk5912_devices));
 	omap_board_config = osk_config;
 	omap_board_config_size = ARRAY_SIZE(osk_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	l = omap_readl(USB_TRANSCEIVER_CTRL);
 	l |= (3 << 1);
@@ -622,6 +666,9 @@ static void __init osk_init(void)
 
 	omap_serial_init();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	osk_i2c_board_info[0].irq = gpio_to_irq(OMAP_MPUIO(1));
 	omap_register_i2c_bus(1, 400, osk_i2c_board_info,
 			      ARRAY_SIZE(osk_i2c_board_info));
@@ -631,6 +678,8 @@ static void __init osk_init(void)
 	omapfb_set_lcd_config(&osk_lcd_config);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	omap_register_i2c_bus(1, 400, osk_i2c_board_info,
 			      ARRAY_SIZE(osk_i2c_board_info));
@@ -641,11 +690,15 @@ static void __init osk_map_io(void)
 {
 	omap1_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(OMAP_OSK, "TI-OSK")
 	/* Maintainer: Dirk Behme <dirk.behme@de.bosch.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= omap16xx_map_io,
 	.init_early	= omap1_init_early,
@@ -654,6 +707,8 @@ MACHINE_START(OMAP_OSK, "TI-OSK")
 	.init_machine	= osk_init,
 	.timer		= &omap1_timer,
 	.restart	= omap1_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x10000100,
 	.map_io		= osk_map_io,
@@ -662,4 +717,5 @@ MACHINE_START(OMAP_OSK, "TI-OSK")
 	.init_machine	= osk_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

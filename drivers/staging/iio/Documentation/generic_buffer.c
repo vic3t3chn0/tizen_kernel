@@ -28,6 +28,13 @@
 #include <linux/types.h>
 #include <string.h>
 #include <poll.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <endian.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "iio_utils.h"
 
 /**
@@ -56,6 +63,19 @@ int size_from_channelarray(struct iio_channel_info *channels, int num_channels)
 
 void print2byte(int input, struct iio_channel_info *info)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* First swap if incorrect endian */
+
+	if (info->be)
+		input = be16toh((uint_16t)input);
+	else
+		input = le16toh((uint_16t)input);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* shift before conversion to avoid sign extension
 	   of left aligned data */
 	input = input >> info->shift;
@@ -173,7 +193,15 @@ int main(int argc, char **argv)
 		return -1;
 
 	/* Find the device requested */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_num = find_type_by_name(device_name, "iio:device");
+=======
 	dev_num = find_type_by_name(device_name, "device");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_num = find_type_by_name(device_name, "device");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev_num < 0) {
 		printf("Failed to find the %s\n", device_name);
 		ret = -ENODEV;
@@ -181,7 +209,15 @@ int main(int argc, char **argv)
 	}
 	printf("iio device number being used is %d\n", dev_num);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	asprintf(&dev_dir_name, "%siio:device%d", iio_dir, dev_num);
+=======
 	asprintf(&dev_dir_name, "%sdevice%d", iio_dir, dev_num);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	asprintf(&dev_dir_name, "%sdevice%d", iio_dir, dev_num);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (trigger_name == NULL) {
 		/*
 		 * Build the trigger name. If it is device associated it's
@@ -212,6 +248,13 @@ int main(int argc, char **argv)
 	ret = build_channel_array(dev_dir_name, &infoarray, &num_channels);
 	if (ret) {
 		printf("Problem reading scan element information\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printf("diag %s\n", dev_dir_name);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_free_triggername;
 	}
 
@@ -220,7 +263,16 @@ int main(int argc, char **argv)
 	 * As we know that the lis3l02dq has only one buffer this may
 	 * be built rather than found.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = asprintf(&buf_dir_name,
+		       "%siio:device%d/buffer", iio_dir, dev_num);
+=======
 	ret = asprintf(&buf_dir_name, "%sdevice%d:buffer0", iio_dir, dev_num);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = asprintf(&buf_dir_name, "%sdevice%d:buffer0", iio_dir, dev_num);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		ret = -ENOMEM;
 		goto error_free_triggername;
@@ -251,9 +303,19 @@ int main(int argc, char **argv)
 		goto error_free_buf_dir_name;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = asprintf(&buffer_access, "/dev/iio:device%d", dev_num);
+=======
 	ret = asprintf(&buffer_access,
 		       "/dev/device%d:buffer0",
 		       dev_num);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = asprintf(&buffer_access,
+		       "/dev/device%d:buffer0",
+		       dev_num);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		ret = -ENOMEM;
 		goto error_free_data;

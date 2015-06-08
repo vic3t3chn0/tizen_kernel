@@ -16,9 +16,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "padmux.h"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The following is for the actual devices on the SSP/SPI bus
  */
@@ -47,9 +50,14 @@ struct pl022_config_chip dummy_chip_info = {
 	.rx_lev_trig = SSP_RX_4_OR_MORE_ELEM,
 	.tx_lev_trig = SSP_TX_4_OR_MORE_EMPTY_LOC,
 =======
+<<<<<<< HEAD
+	.rx_lev_trig = SSP_RX_4_OR_MORE_ELEM,
+	.tx_lev_trig = SSP_TX_4_OR_MORE_EMPTY_LOC,
+=======
 	.rx_lev_trig = SSP_RX_1_OR_MORE_ELEM,
 	.tx_lev_trig = SSP_TX_1_OR_MORE_EMPTY_LOC,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ctrl_len = SSP_BITS_12,
 	.wait_state = SSP_MWIRE_WAIT_ZERO,
 	.duplex = SSP_MICROWIRE_CHANNEL_FULL_DUPLEX,
@@ -106,6 +114,9 @@ void __init u300_spi_init(struct amba_device *adev)
 <<<<<<< HEAD
 	adev->dev.platform_data = &ssp_platform_data;
 =======
+<<<<<<< HEAD
+	adev->dev.platform_data = &ssp_platform_data;
+=======
 	struct pmx *pmx;
 
 	adev->dev.platform_data = &ssp_platform_data;
@@ -126,6 +137,7 @@ void __init u300_spi_init(struct amba_device *adev)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init u300_spi_register_board_devices(void)

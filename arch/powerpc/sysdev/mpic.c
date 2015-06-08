@@ -157,8 +157,12 @@ static inline unsigned int mpic_processor_id(struct mpic *mpic)
 <<<<<<< HEAD
 	if (!(mpic->flags & MPIC_SECONDARY))
 =======
+<<<<<<< HEAD
+	if (!(mpic->flags & MPIC_SECONDARY))
+=======
 	if (mpic->flags & MPIC_PRIMARY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpu = hard_smp_processor_id();
 
 	return cpu;
@@ -320,6 +324,9 @@ static void _mpic_map_mmio(struct mpic *mpic, phys_addr_t phys_addr,
 
 #ifdef CONFIG_PPC_DCR
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void _mpic_map_dcr(struct mpic *mpic, struct mpic_reg_bank *rb,
 			  unsigned int offset, unsigned int size)
 {
@@ -329,6 +336,8 @@ static void _mpic_map_dcr(struct mpic *mpic, struct mpic_reg_bank *rb,
 }
 
 static inline void mpic_map(struct mpic *mpic,
+<<<<<<< HEAD
+=======
 =======
 static void _mpic_map_dcr(struct mpic *mpic, struct device_node *node,
 			  struct mpic_reg_bank *rb,
@@ -344,6 +353,7 @@ static void _mpic_map_dcr(struct mpic *mpic, struct device_node *node,
 
 static inline void mpic_map(struct mpic *mpic, struct device_node *node,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    phys_addr_t phys_addr, struct mpic_reg_bank *rb,
 			    unsigned int offset, unsigned int size)
 {
@@ -351,8 +361,12 @@ static inline void mpic_map(struct mpic *mpic, struct device_node *node,
 <<<<<<< HEAD
 		_mpic_map_dcr(mpic, rb, offset, size);
 =======
+<<<<<<< HEAD
+		_mpic_map_dcr(mpic, rb, offset, size);
+=======
 		_mpic_map_dcr(mpic, node, rb, offset, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		_mpic_map_mmio(mpic, phys_addr, rb, offset, size);
 }
@@ -360,8 +374,12 @@ static inline void mpic_map(struct mpic *mpic, struct device_node *node,
 <<<<<<< HEAD
 #define mpic_map(m,p,b,o,s)	_mpic_map_mmio(m,p,b,o,s)
 =======
+<<<<<<< HEAD
+#define mpic_map(m,p,b,o,s)	_mpic_map_mmio(m,p,b,o,s)
+=======
 #define mpic_map(m,n,p,b,o,s)	_mpic_map_mmio(m,p,b,o,s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !CONFIG_PPC_DCR */
 
 
@@ -624,6 +642,8 @@ static void __init mpic_scan_ht_pics(struct mpic *mpic)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SMP
 static int irq_choose_cpu(const struct cpumask *mask)
 {
@@ -661,6 +681,7 @@ static int irq_choose_cpu(const struct cpumask *mask)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Find an mpic associated with a given linux interrupt */
 static struct mpic *mpic_find(unsigned int irq)
 {
@@ -675,15 +696,24 @@ static struct mpic *mpic_find(unsigned int irq)
 static unsigned int mpic_is_ipi(struct mpic *mpic, unsigned int src)
 {
 =======
+<<<<<<< HEAD
+static unsigned int mpic_is_ipi(struct mpic *mpic, unsigned int src)
+{
+=======
 static unsigned int mpic_is_ipi(struct mpic *mpic, unsigned int irq)
 {
 	unsigned int src = virq_to_hw(irq);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (src >= mpic->ipi_vecs[0] && src <= mpic->ipi_vecs[3]);
 }
 
 /* Determine if the linux irq is a timer */
+<<<<<<< HEAD
+static unsigned int mpic_is_tm(struct mpic *mpic, unsigned int src)
+{
+=======
 <<<<<<< HEAD
 static unsigned int mpic_is_tm(struct mpic *mpic, unsigned int src)
 {
@@ -693,6 +723,7 @@ static unsigned int mpic_is_tm(struct mpic *mpic, unsigned int irq)
 	unsigned int src = virq_to_hw(irq);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (src >= mpic->timer_vecs[0] && src <= mpic->timer_vecs[7]);
 }
 
@@ -875,9 +906,12 @@ static void mpic_end_ipi(struct irq_data *d)
 	 * applying to them. We EOI them late to avoid re-entering.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 * We mark IPI's with IRQF_DISABLED as they must run with
 	 * irqs disabled.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	mpic_eoi(mpic);
 }
@@ -892,8 +926,12 @@ static void mpic_unmask_tm(struct irq_data *d)
 <<<<<<< HEAD
 	DBG("%s: enable_tm: %d (tm %d)\n", mpic->name, d->irq, src);
 =======
+<<<<<<< HEAD
+	DBG("%s: enable_tm: %d (tm %d)\n", mpic->name, d->irq, src);
+=======
 	DBG("%s: enable_tm: %d (tm %d)\n", mpic->name, irq, src);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpic_tm_write(src, mpic_tm_read(src) & ~MPIC_VECPRI_MASK);
 	mpic_tm_read(src);
 }
@@ -960,6 +998,9 @@ int mpic_set_irq_type(struct irq_data *d, unsigned int flow_type)
 	    mpic, d->irq, src, flow_type);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (src >= mpic->num_sources)
 		return -EINVAL;
 
@@ -996,6 +1037,8 @@ int mpic_set_irq_type(struct irq_data *d, unsigned int flow_type)
 	irqd_set_trigger_type(d, flow_type);
 
 	/* Apply to HW */
+<<<<<<< HEAD
+=======
 =======
 	if (src >= mpic->irq_count)
 		return -EINVAL;
@@ -1009,6 +1052,7 @@ int mpic_set_irq_type(struct irq_data *d, unsigned int flow_type)
 	irqd_set_trigger_type(d, flow_type);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mpic_is_ht_interrupt(mpic, src))
 		vecpri = MPIC_VECPRI_POLARITY_POSITIVE |
 			MPIC_VECPRI_SENSE_EDGE;
@@ -1017,8 +1061,11 @@ int mpic_set_irq_type(struct irq_data *d, unsigned int flow_type)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	vold = mpic_irq_read(src, MPIC_INFO(IRQ_VECTOR_PRI));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vnew = vold & ~(MPIC_INFO(VECPRI_POLARITY_MASK) |
 			MPIC_INFO(VECPRI_SENSE_MASK));
 	vnew |= vecpri;
@@ -1028,8 +1075,12 @@ int mpic_set_irq_type(struct irq_data *d, unsigned int flow_type)
 <<<<<<< HEAD
 	return IRQ_SET_MASK_OK_NOCOPY;
 =======
+<<<<<<< HEAD
+	return IRQ_SET_MASK_OK_NOCOPY;
+=======
 	return IRQ_SET_MASK_OK_NOCOPY;;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void mpic_set_vector(unsigned int virq, unsigned int vector)
@@ -1044,8 +1095,12 @@ void mpic_set_vector(unsigned int virq, unsigned int vector)
 <<<<<<< HEAD
 	if (src >= mpic->num_sources)
 =======
+<<<<<<< HEAD
+	if (src >= mpic->num_sources)
+=======
 	if (src >= mpic->irq_count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	vecpri = mpic_irq_read(src, MPIC_INFO(IRQ_VECTOR_PRI));
@@ -1065,8 +1120,12 @@ void mpic_set_destination(unsigned int virq, unsigned int cpuid)
 <<<<<<< HEAD
 	if (src >= mpic->num_sources)
 =======
+<<<<<<< HEAD
+	if (src >= mpic->num_sources)
+=======
 	if (src >= mpic->irq_count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 
 	mpic_irq_write(src, MPIC_INFO(IRQ_DESTINATION), 1 << cpuid);
@@ -1108,8 +1167,12 @@ static struct irq_chip mpic_irq_ht_chip = {
 <<<<<<< HEAD
 static int mpic_host_match(struct irq_domain *h, struct device_node *node)
 =======
+<<<<<<< HEAD
+static int mpic_host_match(struct irq_domain *h, struct device_node *node)
+=======
 static int mpic_host_match(struct irq_host *h, struct device_node *node)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Exact match, unless mpic node is NULL */
 	return h->of_node == NULL || h->of_node == node;
@@ -1118,8 +1181,12 @@ static int mpic_host_match(struct irq_host *h, struct device_node *node)
 <<<<<<< HEAD
 static int mpic_host_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int mpic_host_map(struct irq_domain *h, unsigned int virq,
+=======
 static int mpic_host_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 irq_hw_number_t hw)
 {
 	struct mpic *mpic = h->host_data;
@@ -1137,8 +1204,12 @@ static int mpic_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 		WARN_ON(mpic->flags & MPIC_SECONDARY);
 =======
+<<<<<<< HEAD
+		WARN_ON(mpic->flags & MPIC_SECONDARY);
+=======
 		WARN_ON(!(mpic->flags & MPIC_PRIMARY));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		DBG("mpic: mapping as IPI\n");
 		irq_set_chip_data(virq, mpic);
@@ -1152,8 +1223,12 @@ static int mpic_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 		WARN_ON(mpic->flags & MPIC_SECONDARY);
 =======
+<<<<<<< HEAD
+		WARN_ON(mpic->flags & MPIC_SECONDARY);
+=======
 		WARN_ON(!(mpic->flags & MPIC_PRIMARY));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		DBG("mpic: mapping as timer\n");
 		irq_set_chip_data(virq, mpic);
@@ -1165,8 +1240,12 @@ static int mpic_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 	if (hw >= mpic->num_sources)
 =======
+<<<<<<< HEAD
+	if (hw >= mpic->num_sources)
+=======
 	if (hw >= mpic->irq_count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	mpic_msi_reserve_hwirq(mpic, hw);
@@ -1189,8 +1268,12 @@ static int mpic_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 	irq_set_irq_type(virq, IRQ_TYPE_DEFAULT);
 =======
+<<<<<<< HEAD
+	irq_set_irq_type(virq, IRQ_TYPE_DEFAULT);
+=======
 	irq_set_irq_type(virq, IRQ_TYPE_NONE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If the MPIC was reset, then all vectors have already been
 	 * initialized.  Otherwise, a per source lazy initialization
@@ -1208,8 +1291,12 @@ static int mpic_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static int mpic_host_xlate(struct irq_domain *h, struct device_node *ct,
 =======
+<<<<<<< HEAD
+static int mpic_host_xlate(struct irq_domain *h, struct device_node *ct,
+=======
 static int mpic_host_xlate(struct irq_host *h, struct device_node *ct,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   const u32 *intspec, unsigned int intsize,
 			   irq_hw_number_t *out_hwirq, unsigned int *out_flags)
 
@@ -1280,6 +1367,9 @@ static int mpic_host_xlate(struct irq_host *h, struct device_node *ct,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* IRQ handler for a secondary MPIC cascaded from another IRQ controller */
 static void mpic_cascade(unsigned int irq, struct irq_desc *desc)
 {
@@ -1297,14 +1387,19 @@ static void mpic_cascade(unsigned int irq, struct irq_desc *desc)
 }
 
 static struct irq_domain_ops mpic_host_ops = {
+<<<<<<< HEAD
+=======
 =======
 static struct irq_host_ops mpic_host_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.match = mpic_host_match,
 	.map = mpic_host_map,
 	.xlate = mpic_host_xlate,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int mpic_reset_prohibited(struct device_node *node)
@@ -1313,6 +1408,7 @@ static int mpic_reset_prohibited(struct device_node *node)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Exported functions
  */
@@ -1325,6 +1421,9 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 				const char *name)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, psize, intvec_top;
 	struct mpic *mpic;
 	u32 greg_feature;
@@ -1386,6 +1485,8 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 	mpic->hc_irq = mpic_irq_chip;
 	mpic->hc_irq.name = name;
 	if (!(mpic->flags & MPIC_SECONDARY))
+<<<<<<< HEAD
+=======
 =======
 	struct mpic	*mpic;
 	u32		greg_feature;
@@ -1404,6 +1505,7 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 	mpic->hc_irq.name = name;
 	if (flags & MPIC_PRIMARY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic->hc_irq.irq_set_affinity = mpic_set_affinity;
 #ifdef CONFIG_MPIC_U3_HT_IRQS
 	mpic->hc_ht_irq = mpic_irq_ht_chip;
@@ -1411,8 +1513,12 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 <<<<<<< HEAD
 	if (!(mpic->flags & MPIC_SECONDARY))
 =======
+<<<<<<< HEAD
+	if (!(mpic->flags & MPIC_SECONDARY))
+=======
 	if (flags & MPIC_PRIMARY)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic->hc_ht_irq.irq_set_affinity = mpic_set_affinity;
 #endif /* CONFIG_MPIC_U3_HT_IRQS */
 
@@ -1429,6 +1535,11 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 
 	if (mpic->flags & MPIC_LARGE_VECTORS)
 =======
+<<<<<<< HEAD
+	mpic->num_sources = 0; /* so far */
+
+	if (mpic->flags & MPIC_LARGE_VECTORS)
+=======
 	mpic->flags = flags;
 	mpic->isu_size = isu_size;
 	mpic->irq_count = irq_count;
@@ -1436,6 +1547,7 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 
 	if (flags & MPIC_LARGE_VECTORS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		intvec_top = 2047;
 	else
 		intvec_top = 255;
@@ -1455,6 +1567,9 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 	mpic->spurious_vec  = intvec_top;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Look for protected sources */
 	psrc = of_get_property(mpic->node, "protected-sources", &psize);
 	if (psrc) {
@@ -1466,6 +1581,8 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 			if (psrc[i] > intvec_top)
 				continue;
 			__set_bit(psrc[i], mpic->protected);
+<<<<<<< HEAD
+=======
 =======
 	/* Check for "big-endian" in device-tree */
 	if (node && of_get_property(node, "big-endian", NULL) != NULL)
@@ -1491,11 +1608,15 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 				__set_bit(psrc[i], mpic->protected);
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
 #ifdef CONFIG_MPIC_WEIRD
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpic->hw_set = mpic_infos[MPIC_GET_REGSET(mpic->flags)];
 #endif
 
@@ -1519,6 +1640,8 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 	/* Map the global registers */
 	mpic_map(mpic, mpic->paddr, &mpic->gregs, MPIC_INFO(GREG_BASE), 0x1000);
 	mpic_map(mpic, mpic->paddr, &mpic->tmregs, MPIC_INFO(TIMER_BASE), 0x1000);
+<<<<<<< HEAD
+=======
 =======
 	mpic->hw_set = mpic_infos[MPIC_GET_REGSET(flags)];
 #endif
@@ -1554,6 +1677,7 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 	mpic_map(mpic, node, paddr, &mpic->gregs, MPIC_INFO(GREG_BASE), 0x1000);
 	mpic_map(mpic, node, paddr, &mpic->tmregs, MPIC_INFO(TIMER_BASE), 0x1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Reset */
 
@@ -1563,11 +1687,15 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 <<<<<<< HEAD
 	if (!(mpic->flags & MPIC_NO_RESET)) {
 =======
+<<<<<<< HEAD
+	if (!(mpic->flags & MPIC_NO_RESET)) {
+=======
 	if (mpic_reset_prohibited(node))
 		mpic->flags |= MPIC_NO_RESET;
 
 	if ((flags & MPIC_WANTS_RESET) && !(mpic->flags & MPIC_NO_RESET)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_DEBUG "mpic: Resetting\n");
 		mpic_write(mpic->gregs, MPIC_INFO(GREG_GLOBAL_CONF_0),
 			   mpic_read(mpic->gregs, MPIC_INFO(GREG_GLOBAL_CONF_0))
@@ -1581,8 +1709,12 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 <<<<<<< HEAD
 	if (mpic->flags & MPIC_ENABLE_COREINT)
 =======
+<<<<<<< HEAD
+	if (mpic->flags & MPIC_ENABLE_COREINT)
+=======
 	if (flags & MPIC_ENABLE_COREINT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic_write(mpic->gregs, MPIC_INFO(GREG_GLOBAL_CONF_0),
 			   mpic_read(mpic->gregs, MPIC_INFO(GREG_GLOBAL_CONF_0))
 			   | MPIC_GREG_GCONF_COREINT);
@@ -1590,13 +1722,20 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 <<<<<<< HEAD
 	if (mpic->flags & MPIC_ENABLE_MCK)
 =======
+<<<<<<< HEAD
+	if (mpic->flags & MPIC_ENABLE_MCK)
+=======
 	if (flags & MPIC_ENABLE_MCK)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic_write(mpic->gregs, MPIC_INFO(GREG_GLOBAL_CONF_0),
 			   mpic_read(mpic->gregs, MPIC_INFO(GREG_GLOBAL_CONF_0))
 			   | MPIC_GREG_GCONF_MCK);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The MPIC driver will crash if there are more cores than we
 	 * can initialize, so we may as well catch that problem here.
@@ -1656,6 +1795,8 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 	if (mpic->irqhost == NULL)
 		return NULL;
 
+<<<<<<< HEAD
+=======
 =======
 	/* Read feature register, calculate num CPUs and, for non-ISU
 	 * MPICs, num sources as well. On ISU MPICs, sources are counted
@@ -1699,6 +1840,7 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 	mpic->irqhost->host_data = mpic;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Display version */
 	switch (greg_feature & MPIC_GREG_FEATURE_VERSION_MASK) {
 	case 1:
@@ -1719,8 +1861,12 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 <<<<<<< HEAD
 	       name, vers, (unsigned long long)mpic->paddr, num_possible_cpus());
 =======
+<<<<<<< HEAD
+	       name, vers, (unsigned long long)mpic->paddr, num_possible_cpus());
+=======
 	       name, vers, (unsigned long long)paddr, mpic->num_cpus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "mpic: ISU size: %d, shift: %d, mask: %x\n",
 	       mpic->isu_size, mpic->isu_shift, mpic->isu_mask);
 
@@ -1730,20 +1876,30 @@ struct mpic * __init mpic_alloc(struct device_node *node,
 <<<<<<< HEAD
 	if (!(mpic->flags & MPIC_SECONDARY)) {
 =======
+<<<<<<< HEAD
+	if (!(mpic->flags & MPIC_SECONDARY)) {
+=======
 	if (flags & MPIC_PRIMARY) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic_primary = mpic;
 		irq_set_default_host(mpic->irqhost);
 	}
 
 	return mpic;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 err_of_node_put:
 	of_node_put(node);
 	return NULL;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init mpic_assign_isu(struct mpic *mpic, unsigned int isu_num,
@@ -1756,8 +1912,12 @@ void __init mpic_assign_isu(struct mpic *mpic, unsigned int isu_num,
 <<<<<<< HEAD
 	mpic_map(mpic,
 =======
+<<<<<<< HEAD
+	mpic_map(mpic,
+=======
 	mpic_map(mpic, mpic->irqhost->of_node,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 paddr, &mpic->isus[isu_num], 0,
 		 MPIC_INFO(IRQ_STRIDE) * mpic->isu_size);
 
@@ -1765,6 +1925,11 @@ void __init mpic_assign_isu(struct mpic *mpic, unsigned int isu_num,
 		mpic->num_sources = isu_first + mpic->isu_size;
 }
 
+<<<<<<< HEAD
+void __init mpic_init(struct mpic *mpic)
+{
+	int i, cpu;
+=======
 <<<<<<< HEAD
 void __init mpic_init(struct mpic *mpic)
 {
@@ -1781,6 +1946,7 @@ void __init mpic_init(struct mpic *mpic)
 	int i;
 	int cpu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(mpic->num_sources == 0);
 
@@ -1817,6 +1983,11 @@ void __init mpic_init(struct mpic *mpic)
 	DBG("MPIC flags: %x\n", mpic->flags);
 	if ((mpic->flags & MPIC_U3_HT_IRQS) && !(mpic->flags & MPIC_SECONDARY)) {
 =======
+<<<<<<< HEAD
+	/* Do the HT PIC fixups on U3 broken mpic */
+	DBG("MPIC flags: %x\n", mpic->flags);
+	if ((mpic->flags & MPIC_U3_HT_IRQS) && !(mpic->flags & MPIC_SECONDARY)) {
+=======
 	/* Initialize interrupt sources */
 	if (mpic->irq_count == 0)
 		mpic->irq_count = mpic->num_sources;
@@ -1825,6 +1996,7 @@ void __init mpic_init(struct mpic *mpic)
 	DBG("MPIC flags: %x\n", mpic->flags);
 	if ((mpic->flags & MPIC_U3_HT_IRQS) && (mpic->flags & MPIC_PRIMARY)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic_scan_ht_pics(mpic);
 		mpic_u3msi_init(mpic);
 	}
@@ -1872,6 +2044,9 @@ void __init mpic_init(struct mpic *mpic)
 	BUG_ON(mpic->save_data == NULL);
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Check if this MPIC is chained from a parent interrupt controller */
 	if (mpic->flags & MPIC_SECONDARY) {
@@ -1883,8 +2058,11 @@ void __init mpic_init(struct mpic *mpic)
 			irq_set_chained_handler(virq, &mpic_cascade);
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init mpic_set_clk_ratio(struct mpic *mpic, u32 clock_ratio)
@@ -1926,8 +2104,12 @@ void mpic_irq_set_priority(unsigned int irq, unsigned int pri)
 <<<<<<< HEAD
 	if (mpic_is_ipi(mpic, src)) {
 =======
+<<<<<<< HEAD
+	if (mpic_is_ipi(mpic, src)) {
+=======
 	if (mpic_is_ipi(mpic, irq)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg = mpic_ipi_read(src - mpic->ipi_vecs[0]) &
 			~MPIC_VECPRI_PRIORITY_MASK;
 		mpic_ipi_write(src - mpic->ipi_vecs[0],
@@ -1935,8 +2117,12 @@ void mpic_irq_set_priority(unsigned int irq, unsigned int pri)
 <<<<<<< HEAD
 	} else if (mpic_is_tm(mpic, src)) {
 =======
+<<<<<<< HEAD
+	} else if (mpic_is_tm(mpic, src)) {
+=======
 	} else if (mpic_is_tm(mpic, irq)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg = mpic_tm_read(src - mpic->timer_vecs[0]) &
 			~MPIC_VECPRI_PRIORITY_MASK;
 		mpic_tm_write(src - mpic->timer_vecs[0],
@@ -2171,7 +2357,11 @@ void mpic_reset_core(int cpu)
 <<<<<<< HEAD
 	int i;
 =======
+<<<<<<< HEAD
+	int i;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Set target bit for core reset */
 	pir = mpic_read(mpic->gregs, MPIC_INFO(GREG_PROCESSOR_INIT));
@@ -2184,6 +2374,9 @@ void mpic_reset_core(int cpu)
 	mpic_write(mpic->gregs, MPIC_INFO(GREG_PROCESSOR_INIT), pir);
 	mpic_read(mpic->gregs, MPIC_INFO(GREG_PROCESSOR_INIT));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Perform 15 EOI on each reset core to clear pending interrupts.
 	 * This is required for FSL CoreNet based devices */
@@ -2193,8 +2386,11 @@ void mpic_reset_core(int cpu)
 				      MPIC_CPU_EOI, 0);
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif /* CONFIG_SMP */
 

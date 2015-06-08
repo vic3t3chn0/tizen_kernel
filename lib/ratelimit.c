@@ -14,8 +14,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * __ratelimit - rate limiting
@@ -46,8 +50,12 @@ int ___ratelimit(struct ratelimit_state *rs, const char *func)
 <<<<<<< HEAD
 	if (!raw_spin_trylock_irqsave(&rs->lock, flags))
 =======
+<<<<<<< HEAD
+	if (!raw_spin_trylock_irqsave(&rs->lock, flags))
+=======
 	if (!spin_trylock_irqsave(&rs->lock, flags))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	if (!rs->begin)
@@ -71,8 +79,12 @@ int ___ratelimit(struct ratelimit_state *rs, const char *func)
 <<<<<<< HEAD
 	raw_spin_unlock_irqrestore(&rs->lock, flags);
 =======
+<<<<<<< HEAD
+	raw_spin_unlock_irqrestore(&rs->lock, flags);
+=======
 	spin_unlock_irqrestore(&rs->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }

@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #include <linux/dma-mapping.h>
 =======
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/of_platform.h>
 
@@ -303,12 +307,17 @@ static struct snd_pcm_ops psc_dma_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 psc_dma_dmamask = DMA_BIT_MASK(32);
 static int psc_dma_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_soc_dai *dai = rtd->cpu_dai;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static u64 psc_dma_dmamask = 0xffffffff;
 static int psc_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
@@ -316,6 +325,7 @@ static int psc_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 {
 	struct snd_soc_pcm_runtime *rtd = pcm->private_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct psc_dma *psc_dma = snd_soc_dai_get_drvdata(rtd->cpu_dai);
 	size_t size = psc_dma_hardware.buffer_bytes_max;
 	int rc = 0;
@@ -327,11 +337,16 @@ static int psc_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 		card->dev->dma_mask = &psc_dma_dmamask;
 	if (!card->dev->coherent_dma_mask)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		card->dev->coherent_dma_mask = DMA_BIT_MASK(32);
 
 	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
 		rc = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, pcm->card->dev,
 				size, &pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream->dma_buffer);
+<<<<<<< HEAD
+=======
 =======
 		card->dev->coherent_dma_mask = 0xffffffff;
 
@@ -339,6 +354,7 @@ static int psc_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 		rc = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, pcm->card->dev,
 				size, &pcm->streams[0].substream->dma_buffer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc)
 			goto playback_alloc_err;
 	}
@@ -348,10 +364,16 @@ static int psc_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 		rc = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, pcm->card->dev,
 				size, &pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream->dma_buffer);
 =======
+<<<<<<< HEAD
+	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
+		rc = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, pcm->card->dev,
+				size, &pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream->dma_buffer);
+=======
 	if (pcm->streams[1].substream) {
 		rc = snd_dma_alloc_pages(SNDRV_DMA_TYPE_DEV, pcm->card->dev,
 				size, &pcm->streams[1].substream->dma_buffer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc)
 			goto capture_alloc_err;
 	}
@@ -366,9 +388,14 @@ static int psc_dma_new(struct snd_card *card, struct snd_soc_dai *dai,
 	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream)
 		snd_dma_free_pages(&pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream->dma_buffer);
 =======
+<<<<<<< HEAD
+	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream)
+		snd_dma_free_pages(&pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream->dma_buffer);
+=======
 	if (pcm->streams[0].substream)
 		snd_dma_free_pages(&pcm->streams[0].substream->dma_buffer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
  playback_alloc_err:
 	dev_err(card->dev, "Cannot allocate buffer(s)\n");
@@ -419,8 +446,12 @@ static int mpc5200_hpcd_probe(struct platform_device *op)
 <<<<<<< HEAD
 	regs = ioremap(res.start, resource_size(&res));
 =======
+<<<<<<< HEAD
+	regs = ioremap(res.start, resource_size(&res));
+=======
 	regs = ioremap(res.start, 1 + res.end - res.start);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!regs) {
 		dev_err(&op->dev, "Could not map registers\n");
 		return -ENODEV;
@@ -564,6 +595,9 @@ static struct platform_driver mpc5200_hpcd_of_driver = {
 <<<<<<< HEAD
 module_platform_driver(mpc5200_hpcd_of_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(mpc5200_hpcd_of_driver);
+=======
 static int __init mpc5200_hpcd_init(void)
 {
 	return platform_driver_register(&mpc5200_hpcd_of_driver);
@@ -576,6 +610,7 @@ static void __exit mpc5200_hpcd_exit(void)
 }
 module_exit(mpc5200_hpcd_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Grant Likely <grant.likely@secretlab.ca>");
 MODULE_DESCRIPTION("Freescale MPC5200 PSC in DMA mode ASoC Driver");

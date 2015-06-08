@@ -42,9 +42,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_SOC_AU1550) || defined(CONFIG_SOC_AU1200)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The Descriptor Based DMA supports up to 16 channels.
  *
@@ -66,6 +69,9 @@ static dbdma_global_t *dbdma_gptr =
 static int dbdma_initialized;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static dbdev_tab_t *dbdev_tab;
 
 static dbdev_tab_t au1550_dbdev_tab[] __initdata = {
@@ -200,6 +206,8 @@ static dbdev_tab_t au1300_dbdev_tab[] __initdata = {
 
 /* 32 predefined plus 32 custom */
 #define DBDEV_TAB_SIZE		64
+<<<<<<< HEAD
+=======
 =======
 static dbdev_tab_t dbdev_tab[] = {
 #ifdef CONFIG_SOC_AU1550
@@ -316,6 +324,7 @@ static dbdev_tab_t dbdev_tab[] = {
 #define DBDEV_TAB_SIZE	ARRAY_SIZE(dbdev_tab)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static chan_tab_t *chan_tab_ptr[NUM_DBDMA_CHANS];
 
@@ -1169,6 +1178,9 @@ static struct syscore_ops alchemy_dbdma_syscore_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init dbdma_setup(unsigned int irq, dbdev_tab_t *idtable)
 {
 	int ret;
@@ -1180,17 +1192,23 @@ static int __init dbdma_setup(unsigned int irq, dbdev_tab_t *idtable)
 	memcpy(dbdev_tab, idtable, 32 * sizeof(dbdev_tab_t));
 	for (ret = 32; ret < DBDEV_TAB_SIZE; ret++)
 		dbdev_tab[ret].dev_id = ~0;
+<<<<<<< HEAD
+=======
 =======
 static int __init au1xxx_dbdma_init(void)
 {
 	int irq_nr, ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbdma_gptr->ddma_config = 0;
 	dbdma_gptr->ddma_throttle = 0;
 	dbdma_gptr->ddma_inten = 0xffff;
 	au_sync();
 
+<<<<<<< HEAD
+	ret = request_irq(irq, dbdma_interrupt, 0, "dbdma", (void *)dbdma_gptr);
+=======
 <<<<<<< HEAD
 	ret = request_irq(irq, dbdma_interrupt, 0, "dbdma", (void *)dbdma_gptr);
 =======
@@ -1208,20 +1226,27 @@ static int __init au1xxx_dbdma_init(void)
 	ret = request_irq(irq_nr, dbdma_interrupt, IRQF_DISABLED,
 			"Au1xxx dbdma", (void *)dbdma_gptr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		printk(KERN_ERR "Cannot grab DBDMA interrupt!\n");
 	else {
 		dbdma_initialized = 1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_INFO "Alchemy DBDMA initialized\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		register_syscore_ops(&alchemy_dbdma_syscore_ops);
 	}
 
 	return ret;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init alchemy_dbdma_init(void)
 {
@@ -1236,8 +1261,11 @@ static int __init alchemy_dbdma_init(void)
 	return 0;
 }
 subsys_initcall(alchemy_dbdma_init);
+<<<<<<< HEAD
+=======
 =======
 subsys_initcall(au1xxx_dbdma_init);
 
 #endif /* defined(CONFIG_SOC_AU1550) || defined(CONFIG_SOC_AU1200) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

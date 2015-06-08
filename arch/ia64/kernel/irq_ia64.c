@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/random.h>	/* for rand_initialize_irq() */
 =======
+<<<<<<< HEAD
+#include <linux/random.h>	/* for rand_initialize_irq() */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/signal.h>
 #include <linux/smp.h>
 #include <linux/threads.h>
@@ -44,8 +48,11 @@
 #include <asm/pgtable.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/tlbflush.h>
 
 #ifdef CONFIG_PERFMON
@@ -127,8 +134,12 @@ static inline int find_unassigned_vector(cpumask_t domain)
 <<<<<<< HEAD
 	cpumask_and(&mask, &domain, cpu_online_mask);
 =======
+<<<<<<< HEAD
+	cpumask_and(&mask, &domain, cpu_online_mask);
+=======
 	cpus_and(mask, domain, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpus_empty(mask))
 		return -EINVAL;
 
@@ -154,8 +165,12 @@ static int __bind_irq_vector(int irq, int vector, cpumask_t domain)
 <<<<<<< HEAD
 	cpumask_and(&mask, &domain, cpu_online_mask);
 =======
+<<<<<<< HEAD
+	cpumask_and(&mask, &domain, cpu_online_mask);
+=======
 	cpus_and(mask, domain, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpus_empty(mask))
 		return -EINVAL;
 	if ((cfg->vector == vector) && cpus_equal(cfg->domain, domain))
@@ -196,8 +211,12 @@ static void __clear_irq_vector(int irq)
 <<<<<<< HEAD
 	cpumask_and(&mask, &cfg->domain, cpu_online_mask);
 =======
+<<<<<<< HEAD
+	cpumask_and(&mask, &cfg->domain, cpu_online_mask);
+=======
 	cpus_and(mask, cfg->domain, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_cpu_mask(cpu, mask)
 		per_cpu(vector_irq, cpu)[vector] = -1;
 	cfg->vector = IRQ_VECTOR_UNASSIGNED;
@@ -343,8 +362,12 @@ void irq_complete_move(unsigned irq)
 <<<<<<< HEAD
 	cpumask_and(&cleanup_mask, &cfg->old_domain, cpu_online_mask);
 =======
+<<<<<<< HEAD
+	cpumask_and(&cleanup_mask, &cfg->old_domain, cpu_online_mask);
+=======
 	cpus_and(cleanup_mask, cfg->old_domain, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfg->move_cleanup_count = cpus_weight(cleanup_mask);
 	for_each_cpu_mask(i, cleanup_mask)
 		platform_send_ipi(i, IA64_IRQ_MOVE_VECTOR, IA64_IPI_DM_INT, 0);

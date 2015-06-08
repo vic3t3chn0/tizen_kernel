@@ -125,7 +125,15 @@ int ehca_create_eq(struct ehca_shca *shca,
 		tasklet_init(&eq->interrupt_task, ehca_tasklet_eq, (long)shca);
 
 		ret = ibmebus_request_irq(eq->ist, ehca_interrupt_eq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					  0, "ehca_eq",
+=======
 					  IRQF_DISABLED, "ehca_eq",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					  IRQF_DISABLED, "ehca_eq",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  (void *)shca);
 		if (ret < 0)
 			ehca_err(ib_dev, "Can't map interrupt handler.");
@@ -133,7 +141,15 @@ int ehca_create_eq(struct ehca_shca *shca,
 		tasklet_init(&eq->interrupt_task, ehca_tasklet_neq, (long)shca);
 
 		ret = ibmebus_request_irq(eq->ist, ehca_interrupt_neq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					  0, "ehca_neq",
+=======
 					  IRQF_DISABLED, "ehca_neq",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					  IRQF_DISABLED, "ehca_neq",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  (void *)shca);
 		if (ret < 0)
 			ehca_err(ib_dev, "Can't map interrupt handler.");

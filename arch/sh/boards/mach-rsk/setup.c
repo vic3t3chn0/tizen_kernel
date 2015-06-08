@@ -16,12 +16,17 @@
 #include <linux/mtd/partitions.h>
 #include <linux/mtd/physmap.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mtd/map.h>
 #include <asm/machvec.h>
 #include <asm/io.h>
 
 static const char *part_probes[] = { "cmdlinepart", NULL };
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_MTD
 #include <linux/mtd/map.h>
@@ -30,6 +35,7 @@ static const char *part_probes[] = { "cmdlinepart", NULL };
 #include <asm/io.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct mtd_partition rsk_partitions[] = {
 	{
 		.name		= "Bootloader",
@@ -49,15 +55,21 @@ static struct mtd_partition rsk_partitions[] = {
 
 static struct physmap_flash_data flash_data = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.parts			= rsk_partitions,
 	.nr_parts		= ARRAY_SIZE(rsk_partitions),
 	.width			= 2,
 	.part_probe_types	= part_probes,
+<<<<<<< HEAD
+=======
 =======
 	.parts		= rsk_partitions,
 	.nr_parts	= ARRAY_SIZE(rsk_partitions),
 	.width		= 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource flash_resource = {
@@ -76,6 +88,8 @@ static struct platform_device flash_device = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_MTD
@@ -110,6 +124,7 @@ static inline void set_mtd_partitions(void) {}
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *rsk_devices[] __initdata = {
 	&flash_device,
 };
@@ -118,8 +133,11 @@ static int __init rsk_devices_setup(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	set_mtd_partitions();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return platform_add_devices(rsk_devices,
 				    ARRAY_SIZE(rsk_devices));
 }

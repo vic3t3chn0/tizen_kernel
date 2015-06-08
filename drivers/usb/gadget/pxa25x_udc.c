@@ -11,6 +11,11 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -21,6 +26,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /* #define VERBOSE_DEBUG */
@@ -51,7 +60,14 @@
 #include <asm/byteorder.h>
 #include <asm/dma.h>
 #include <asm/gpio.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/unaligned.h>
 
@@ -232,8 +248,17 @@ static int pxa25x_ep_enable (struct usb_ep *_ep,
 	if (!_ep || !desc || ep->desc || _ep->name == ep0name
 			|| desc->bDescriptorType != USB_DT_ENDPOINT
 			|| ep->bEndpointAddress != desc->bEndpointAddress
+<<<<<<< HEAD
+<<<<<<< HEAD
+			|| ep->fifo_size < usb_endpoint_maxp (desc)) {
+=======
 			|| ep->fifo_size < le16_to_cpu
 						(desc->wMaxPacketSize)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			|| ep->fifo_size < le16_to_cpu
+						(desc->wMaxPacketSize)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		DMSG("%s, bad ep or descriptor\n", __func__);
 		return -EINVAL;
 	}
@@ -248,7 +273,15 @@ static int pxa25x_ep_enable (struct usb_ep *_ep,
 
 	/* hardware _could_ do smaller, but driver doesn't */
 	if ((desc->bmAttributes == USB_ENDPOINT_XFER_BULK
+<<<<<<< HEAD
+<<<<<<< HEAD
+				&& usb_endpoint_maxp (desc)
+=======
 				&& le16_to_cpu (desc->wMaxPacketSize)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				&& le16_to_cpu (desc->wMaxPacketSize)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						!= BULK_FIFO_SIZE)
 			|| !desc->wMaxPacketSize) {
 		DMSG("%s, bad %s maxpacket\n", __func__, _ep->name);
@@ -264,7 +297,15 @@ static int pxa25x_ep_enable (struct usb_ep *_ep,
 	ep->desc = desc;
 	ep->stopped = 0;
 	ep->pio_irqs = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ep->ep.maxpacket = usb_endpoint_maxp (desc);
+=======
 	ep->ep.maxpacket = le16_to_cpu (desc->wMaxPacketSize);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ep->ep.maxpacket = le16_to_cpu (desc->wMaxPacketSize);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* flush fifo (mostly for OUT buffers) */
 	pxa25x_ep_fifo_flush (_ep);
@@ -294,6 +335,13 @@ static int pxa25x_ep_disable (struct usb_ep *_ep)
 	pxa25x_ep_fifo_flush (_ep);
 
 	ep->desc = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ep->ep.desc = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ep->stopped = 1;
 
 	local_irq_restore(flags);
@@ -401,7 +449,15 @@ write_fifo (struct pxa25x_ep *ep, struct pxa25x_request *req)
 {
 	unsigned		max;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	max = usb_endpoint_maxp(ep->desc);
+=======
 	max = le16_to_cpu(ep->desc->wMaxPacketSize);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	max = le16_to_cpu(ep->desc->wMaxPacketSize);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	do {
 		unsigned	count;
 		int		is_last, is_short;
@@ -671,8 +727,17 @@ pxa25x_ep_queue(struct usb_ep *_ep, struct usb_request *_req, gfp_t gfp_flags)
 	 * we can report per-packet status.  that also helps with dma.
 	 */
 	if (unlikely (ep->bmAttributes == USB_ENDPOINT_XFER_ISOC
+<<<<<<< HEAD
+<<<<<<< HEAD
+		        && req->req.length > usb_endpoint_maxp (ep->desc)))
+=======
 			&& req->req.length > le16_to_cpu
 						(ep->desc->wMaxPacketSize)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			&& req->req.length > le16_to_cpu
+						(ep->desc->wMaxPacketSize)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EMSGSIZE;
 
 	DBG(DBG_NOISY, "%s queue req %p, len %d buf %p\n",
@@ -1007,16 +1072,41 @@ static int pxa25x_udc_vbus_draw(struct usb_gadget *_gadget, unsigned mA)
 	udc = container_of(_gadget, struct pxa25x_udc, gadget);
 
 	if (udc->transceiver)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return usb_phy_set_power(udc->transceiver, mA);
+	return -EOPNOTSUPP;
+}
+
+static int pxa25x_start(struct usb_gadget_driver *driver,
+		int (*bind)(struct usb_gadget *));
+static int pxa25x_stop(struct usb_gadget_driver *driver);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return otg_set_power(udc->transceiver, mA);
 	return -EOPNOTSUPP;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct usb_gadget_ops pxa25x_udc_ops = {
 	.get_frame	= pxa25x_udc_get_frame,
 	.wakeup		= pxa25x_udc_wakeup,
 	.vbus_session	= pxa25x_udc_vbus_session,
 	.pullup		= pxa25x_udc_pullup,
 	.vbus_draw	= pxa25x_udc_vbus_draw,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.start		= pxa25x_start,
+	.stop		= pxa25x_stop,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*-------------------------------------------------------------------------*/
@@ -1099,7 +1189,15 @@ udc_seq_show(struct seq_file *m, void *_d)
 			tmp = *dev->ep [i].reg_udccs;
 			seq_printf(m,
 				"%s max %d %s udccs %02x irqs %lu\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				ep->ep.name, usb_endpoint_maxp(desc),
+=======
 				ep->ep.name, le16_to_cpu(desc->wMaxPacketSize),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				ep->ep.name, le16_to_cpu(desc->wMaxPacketSize),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"pio", tmp, ep->pio_irqs);
 			/* TODO translate all five groups of udccs bits! */
 
@@ -1198,6 +1296,13 @@ static void udc_reinit(struct pxa25x_udc *dev)
 			list_add_tail (&ep->ep.ep_list, &dev->gadget.ep_list);
 
 		ep->desc = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ep->ep.desc = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ep->stopped = 0;
 		INIT_LIST_HEAD (&ep->queue);
 		ep->pio_irqs = 0;
@@ -1263,14 +1368,30 @@ static void udc_enable (struct pxa25x_udc *dev)
  * disconnect is reported.  then a host may connect again, or
  * the driver might get unbound.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pxa25x_start(struct usb_gadget_driver *driver,
+=======
 int usb_gadget_probe_driver(struct usb_gadget_driver *driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int usb_gadget_probe_driver(struct usb_gadget_driver *driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int (*bind)(struct usb_gadget *))
 {
 	struct pxa25x_udc	*dev = the_controller;
 	int			retval;
 
 	if (!driver
+<<<<<<< HEAD
+<<<<<<< HEAD
+			|| driver->max_speed < USB_SPEED_FULL
+=======
 			|| driver->speed < USB_SPEED_FULL
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			|| driver->speed < USB_SPEED_FULL
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			|| !bind
 			|| !driver->disconnect
 			|| !driver->setup)
@@ -1307,7 +1428,16 @@ fail:
 
 	/* connect to bus through transceiver */
 	if (dev->transceiver) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		retval = otg_set_peripheral(dev->transceiver->otg,
+						&dev->gadget);
+=======
 		retval = otg_set_peripheral(dev->transceiver, &dev->gadget);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		retval = otg_set_peripheral(dev->transceiver, &dev->gadget);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (retval) {
 			DMSG("can't bind to transceiver\n");
 			if (driver->unbind)
@@ -1322,7 +1452,14 @@ fail:
 bind_fail:
 	return retval;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(usb_gadget_probe_driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+EXPORT_SYMBOL(usb_gadget_probe_driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void
 stop_activity(struct pxa25x_udc *dev, struct usb_gadget_driver *driver)
@@ -1351,7 +1488,15 @@ stop_activity(struct pxa25x_udc *dev, struct usb_gadget_driver *driver)
 	udc_reinit(dev);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pxa25x_stop(struct usb_gadget_driver *driver)
+=======
 int usb_gadget_unregister_driver(struct usb_gadget_driver *driver)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int usb_gadget_unregister_driver(struct usb_gadget_driver *driver)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pxa25x_udc	*dev = the_controller;
 
@@ -1367,7 +1512,15 @@ int usb_gadget_unregister_driver(struct usb_gadget_driver *driver)
 	local_irq_enable();
 
 	if (dev->transceiver)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		(void) otg_set_peripheral(dev->transceiver->otg, NULL);
+=======
 		(void) otg_set_peripheral(dev->transceiver, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		(void) otg_set_peripheral(dev->transceiver, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	driver->unbind(&dev->gadget);
 	dev->gadget.dev.driver = NULL;
@@ -1379,8 +1532,16 @@ int usb_gadget_unregister_driver(struct usb_gadget_driver *driver)
 	dump_state(dev);
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(usb_gadget_unregister_driver);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+EXPORT_SYMBOL(usb_gadget_unregister_driver);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*-------------------------------------------------------------------------*/
 
@@ -2168,7 +2329,15 @@ static int __init pxa25x_udc_probe(struct platform_device *pdev)
 	dev->dev = &pdev->dev;
 	dev->mach = pdev->dev.platform_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->transceiver = usb_get_transceiver();
+=======
 	dev->transceiver = otg_get_transceiver();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev->transceiver = otg_get_transceiver();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (gpio_is_valid(dev->mach->gpio_pullup)) {
 		if ((retval = gpio_request(dev->mach->gpio_pullup,
@@ -2199,7 +2368,15 @@ static int __init pxa25x_udc_probe(struct platform_device *pdev)
 
 	/* irq setup after old hardware state is cleaned up */
 	retval = request_irq(irq, pxa25x_udc_irq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, driver_name, dev);
+=======
 			IRQF_DISABLED, driver_name, dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			IRQF_DISABLED, driver_name, dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval != 0) {
 		pr_err("%s: can't get irq %d, err %d\n",
 			driver_name, irq, retval);
@@ -2211,7 +2388,15 @@ static int __init pxa25x_udc_probe(struct platform_device *pdev)
 	if (machine_is_lubbock()) {
 		retval = request_irq(LUBBOCK_USB_DISC_IRQ,
 				lubbock_vbus_irq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				IRQF_SAMPLE_RANDOM,
+=======
 				IRQF_DISABLED | IRQF_SAMPLE_RANDOM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				IRQF_DISABLED | IRQF_SAMPLE_RANDOM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				driver_name, dev);
 		if (retval != 0) {
 			pr_err("%s: can't get irq %i, err %d\n",
@@ -2220,7 +2405,15 @@ static int __init pxa25x_udc_probe(struct platform_device *pdev)
 		}
 		retval = request_irq(LUBBOCK_USB_IRQ,
 				lubbock_vbus_irq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				IRQF_SAMPLE_RANDOM,
+=======
 				IRQF_DISABLED | IRQF_SAMPLE_RANDOM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				IRQF_DISABLED | IRQF_SAMPLE_RANDOM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				driver_name, dev);
 		if (retval != 0) {
 			pr_err("%s: can't get irq %i, err %d\n",
@@ -2231,8 +2424,21 @@ static int __init pxa25x_udc_probe(struct platform_device *pdev)
 #endif
 	create_debug_files(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	retval = usb_add_gadget_udc(&pdev->dev, &dev->gadget);
+	if (!retval)
+		return retval;
+
+	remove_debug_files(dev);
+=======
 	return 0;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return 0;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef	CONFIG_ARCH_LUBBOCK
 lubbock_fail0:
 	free_irq(LUBBOCK_USB_DISC_IRQ, dev);
@@ -2244,7 +2450,15 @@ lubbock_fail0:
 		gpio_free(dev->mach->gpio_pullup);
  err_gpio_pullup:
 	if (dev->transceiver) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		usb_put_transceiver(dev->transceiver);
+=======
 		otg_put_transceiver(dev->transceiver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		otg_put_transceiver(dev->transceiver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev->transceiver = NULL;
 	}
 	clk_put(dev->clk);
@@ -2261,6 +2475,13 @@ static int __exit pxa25x_udc_remove(struct platform_device *pdev)
 {
 	struct pxa25x_udc *dev = platform_get_drvdata(pdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	usb_del_gadget_udc(&dev->gadget);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dev->driver)
 		return -EBUSY;
 
@@ -2285,7 +2506,15 @@ static int __exit pxa25x_udc_remove(struct platform_device *pdev)
 	clk_put(dev->clk);
 
 	if (dev->transceiver) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		usb_put_transceiver(dev->transceiver);
+=======
 		otg_put_transceiver(dev->transceiver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		otg_put_transceiver(dev->transceiver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev->transceiver = NULL;
 	}
 

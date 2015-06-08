@@ -2,9 +2,14 @@
 #ifndef __ASM_SH_UNISTD_32_H
 #define __ASM_SH_UNISTD_32_H
 =======
+<<<<<<< HEAD
+#ifndef __ASM_SH_UNISTD_32_H
+#define __ASM_SH_UNISTD_32_H
+=======
 #ifndef __ASM_SH_UNISTD_H
 #define __ASM_SH_UNISTD_H
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Copyright (C) 1999  Niibe Yutaka
@@ -34,8 +39,12 @@
 <<<<<<< HEAD
 				 /* 17 was sys_break */
 =======
+<<<<<<< HEAD
+				 /* 17 was sys_break */
+=======
 #define __NR_break		 17
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_oldstat		 18
 #define __NR_lseek		 19
 #define __NR_getpid		 20
@@ -50,11 +59,16 @@
 #define __NR_pause		 29
 #define __NR_utime		 30
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 /* 31 was sys_stty */
 				 /* 32 was sys_gtty */
 #define __NR_access		 33
 #define __NR_nice		 34
 				 /* 35 was sys_ftime */
+<<<<<<< HEAD
+=======
 =======
 #define __NR_stty		 31
 #define __NR_gtty		 32
@@ -62,6 +76,7 @@
 #define __NR_nice		 34
 #define __NR_ftime		 35
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_sync		 36
 #define __NR_kill		 37
 #define __NR_rename		 38
@@ -73,8 +88,12 @@
 <<<<<<< HEAD
 				 /* 44 was sys_prof */
 =======
+<<<<<<< HEAD
+				 /* 44 was sys_prof */
+=======
 #define __NR_prof		 44
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_brk		 45
 #define __NR_setgid		 46
 #define __NR_getgid		 47
@@ -84,6 +103,9 @@
 #define __NR_acct		 51
 #define __NR_umount2		 52
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 /* 53 was sys_lock */
 #define __NR_ioctl		 54
 #define __NR_fcntl		 55
@@ -91,6 +113,8 @@
 #define __NR_setpgid		 57
 				 /* 58 was sys_ulimit */
 				 /* 59 was sys_olduname */
+<<<<<<< HEAD
+=======
 =======
 #define __NR_lock		 53
 #define __NR_ioctl		 54
@@ -100,6 +124,7 @@
 #define __NR_ulimit		 58
 #define __NR_oldolduname	 59
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_umask		 60
 #define __NR_chroot		 61
 #define __NR_ustat		 62
@@ -125,8 +150,12 @@
 <<<<<<< HEAD
 				 /* 82 was sys_oldselect */
 =======
+<<<<<<< HEAD
+				 /* 82 was sys_oldselect */
+=======
 #define __NR_select		 82
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_symlink		 83
 #define __NR_oldlstat		 84
 #define __NR_readlink		 85
@@ -143,16 +172,22 @@
 #define __NR_getpriority	 96
 #define __NR_setpriority	 97
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 /* 98 was sys_profil */
 #define __NR_statfs		 99
 #define __NR_fstatfs		100
 				/* 101 was sys_ioperm */
+<<<<<<< HEAD
+=======
 =======
 #define __NR_profil		 98
 #define __NR_statfs		 99
 #define __NR_fstatfs		100
 #define __NR_ioperm		101
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_socketcall		102
 #define __NR_syslog		103
 #define __NR_setitimer		104
@@ -162,16 +197,22 @@
 #define __NR_fstat		108
 #define __NR_olduname		109
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* 110 was sys_iopl */
 #define __NR_vhangup		111
 				/* 112 was sys_idle */
 				/* 113 was sys_vm86old */
+<<<<<<< HEAD
+=======
 =======
 #define __NR_iopl		110
 #define __NR_vhangup		111
 #define __NR_idle		112
 #define __NR_vm86old		113
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_wait4		114
 #define __NR_swapoff		115
 #define __NR_sysinfo		116
@@ -186,16 +227,22 @@
 #define __NR_mprotect		125
 #define __NR_sigprocmask	126
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* 127 was sys_create_module */
 #define __NR_init_module	128
 #define __NR_delete_module	129
 				/* 130 was sys_get_kernel_syms */
+<<<<<<< HEAD
+=======
 =======
 #define __NR_create_module	127
 #define __NR_init_module	128
 #define __NR_delete_module	129
 #define __NR_get_kernel_syms	130
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_quotactl		131
 #define __NR_getpgid		132
 #define __NR_fchdir		133
@@ -205,8 +252,12 @@
 <<<<<<< HEAD
 				/* 137 was sys_afs_syscall */
 =======
+<<<<<<< HEAD
+				/* 137 was sys_afs_syscall */
+=======
 #define __NR_afs_syscall	137 /* Syscall for Andrew File System */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_setfsuid		138
 #define __NR_setfsgid		139
 #define __NR__llseek		140
@@ -239,9 +290,14 @@
 				/* 166 was sys_vm86 */
 				/* 167 was sys_query_module */
 =======
+<<<<<<< HEAD
+				/* 166 was sys_vm86 */
+				/* 167 was sys_query_module */
+=======
 #define __NR_vm86		166
 #define __NR_query_module	167
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_poll		168
 #define __NR_nfsservctl		169
 #define __NR_setresgid		170
@@ -266,9 +322,14 @@
 				/* 188 reserved for sys_getpmsg */
 				/* 189 reserved for sys_putpmsg */
 =======
+<<<<<<< HEAD
+				/* 188 reserved for sys_getpmsg */
+				/* 189 reserved for sys_putpmsg */
+=======
 #define __NR_streams1		188	/* some people actually want it */
 #define __NR_streams2		189	/* some people actually want it */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_vfork		190
 #define __NR_ugetrlimit		191	/* SuS compliant getrlimit */
 #define __NR_mmap2		192
@@ -305,8 +366,13 @@
 				/* 222 is reserved for tux */
 				/* 223 is unused */
 =======
+<<<<<<< HEAD
+				/* 222 is reserved for tux */
+				/* 223 is unused */
+=======
 /* 223 is unused */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_gettid		224
 #define __NR_readahead		225
 #define __NR_setxattr		226
@@ -330,9 +396,14 @@
 				/* 243 is reserved for set_thread_area */
 				/* 244 is reserved for get_thread_area */
 =======
+<<<<<<< HEAD
+				/* 243 is reserved for set_thread_area */
+				/* 244 is reserved for get_thread_area */
+=======
 #define __NR_set_thread_area	243
 #define __NR_get_thread_area	244
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_io_setup		245
 #define __NR_io_destroy		246
 #define __NR_io_getevents	247
@@ -342,8 +413,12 @@
 <<<<<<< HEAD
 				/* 251 is unused */
 =======
+<<<<<<< HEAD
+				/* 251 is unused */
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_exit_group		252
 #define __NR_lookup_dcookie	253
 #define __NR_epoll_create	254
@@ -368,8 +443,12 @@
 <<<<<<< HEAD
 				/* 273 is reserved for vserver */
 =======
+<<<<<<< HEAD
+				/* 273 is reserved for vserver */
+=======
 #define __NR_vserver		273
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_mbind              274
 #define __NR_get_mempolicy      275
 #define __NR_set_mempolicy      276
@@ -392,8 +471,12 @@
 <<<<<<< HEAD
 				/* 293 is unused */
 =======
+<<<<<<< HEAD
+				/* 293 is unused */
+=======
 /* 293 is unused */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_migrate_pages	294
 #define __NR_openat		295
 #define __NR_mkdirat		296
@@ -468,12 +551,17 @@
 #define __NR_sendmmsg		363
 #define __NR_setns		364
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_process_vm_readv	365
 #define __NR_process_vm_writev	366
 
 #define NR_syscalls 367
 
 #endif /* __ASM_SH_UNISTD_32_H */
+<<<<<<< HEAD
+=======
 =======
 
 #define NR_syscalls 365
@@ -519,3 +607,4 @@
 #endif /* __KERNEL__ */
 #endif /* __ASM_SH_UNISTD_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

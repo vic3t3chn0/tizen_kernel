@@ -26,7 +26,11 @@ struct ordered_samples {
 <<<<<<< HEAD
 	unsigned int		nr_samples;
 =======
+<<<<<<< HEAD
+	unsigned int		nr_samples;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct perf_session {
@@ -35,10 +39,13 @@ struct perf_session {
 	unsigned long		mmap_window;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct rb_root		threads;
 	struct list_head	dead_threads;
 	struct thread		*last_match;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct machine		host_machine;
 	struct rb_root		machines;
 	struct perf_evlist	*evlist;
@@ -60,6 +67,9 @@ struct perf_session {
 	char			*cwd;
 	struct ordered_samples	ordered_samples;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char			filename[1];
 };
 
@@ -68,6 +78,8 @@ struct perf_tool;
 struct perf_session *perf_session__new(const char *filename, int mode,
 				       bool force, bool repipe,
 				       struct perf_tool *tool);
+<<<<<<< HEAD
+=======
 =======
 	struct callchain_cursor	callchain_cursor;
 	char			filename[0];
@@ -108,6 +120,7 @@ struct perf_session *perf_session__new(const char *filename, int mode,
 				       bool force, bool repipe,
 				       struct perf_event_ops *ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void perf_session__delete(struct perf_session *self);
 
 void perf_event_header__bswap(struct perf_event_header *self);
@@ -115,11 +128,16 @@ void perf_event_header__bswap(struct perf_event_header *self);
 int __perf_session__process_events(struct perf_session *self,
 				   u64 data_offset, u64 data_size, u64 size,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   struct perf_tool *tool);
 int perf_session__process_events(struct perf_session *self,
 				 struct perf_tool *tool);
 
 int perf_session__resolve_callchain(struct perf_session *self, struct perf_evsel *evsel,
+<<<<<<< HEAD
+=======
 =======
 				   struct perf_event_ops *ops);
 int perf_session__process_events(struct perf_session *self,
@@ -127,17 +145,23 @@ int perf_session__process_events(struct perf_session *self,
 
 int perf_session__resolve_callchain(struct perf_session *self,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    struct thread *thread,
 				    struct ip_callchain *chain,
 				    struct symbol **parent);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct branch_info *machine__resolve_bstack(struct machine *self,
 					    struct thread *thread,
 					    struct branch_stack *bs);
 
 bool perf_session__has_traces(struct perf_session *self, const char *msg);
 
+<<<<<<< HEAD
+=======
 =======
 bool perf_session__has_traces(struct perf_session *self, const char *msg);
 
@@ -146,6 +170,7 @@ int perf_session__set_kallsyms_ref_reloc_sym(struct map **maps,
 					     u64 addr);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mem_bswap_64(void *src, int byte_size);
 void perf_event__attr_swap(struct perf_event_attr *attr);
 
@@ -179,6 +204,9 @@ struct machine *perf_session__findnew_machine(struct perf_session *self, pid_t p
 static inline
 void perf_session__process_machines(struct perf_session *self,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    struct perf_tool *tool,
 				    machine__process_t process)
 {
@@ -189,6 +217,8 @@ void perf_session__process_machines(struct perf_session *self,
 struct thread *perf_session__findnew(struct perf_session *self, pid_t pid);
 size_t perf_session__fprintf(struct perf_session *self, FILE *fp);
 
+<<<<<<< HEAD
+=======
 =======
 				    machine__process_t process)
 {
@@ -197,6 +227,7 @@ size_t perf_session__fprintf(struct perf_session *self, FILE *fp);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 size_t perf_session__fprintf_dsos(struct perf_session *self, FILE *fp);
 
 size_t perf_session__fprintf_dsos_buildid(struct perf_session *self,
@@ -211,6 +242,9 @@ static inline int perf_session__parse_sample(struct perf_session *session,
 	return perf_event__parse_sample(event, session->sample_type,
 					session->sample_size,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					session->sample_id_all, sample,
 					session->header.needs_swap);
 }
@@ -221,15 +255,21 @@ static inline int perf_session__synthesize_sample(struct perf_session *session,
 {
 	return perf_event__synthesize_sample(event, session->sample_type,
 					     sample, session->header.needs_swap);
+<<<<<<< HEAD
+=======
 =======
 					session->sample_id_all, sample);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct perf_evsel *perf_session__find_first_evtype(struct perf_session *session,
 					    unsigned int type);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void perf_event__print_ip(union perf_event *event, struct perf_sample *sample,
 			  struct machine *machine, struct perf_evsel *evsel,
 			  int print_sym, int print_dso, int print_symoffset);
@@ -238,10 +278,13 @@ int perf_session__cpu_bitmap(struct perf_session *session,
 			     const char *cpu_list, unsigned long *cpu_bitmap);
 
 void perf_session__fprintf_info(struct perf_session *s, FILE *fp, bool full);
+<<<<<<< HEAD
+=======
 =======
 void perf_session__print_symbols(union perf_event *event,
 				 struct perf_sample *sample,
 				 struct perf_session *session);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __PERF_SESSION_H */

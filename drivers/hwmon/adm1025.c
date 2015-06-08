@@ -12,7 +12,15 @@
  * resolution of about 0.5% of the nominal value). Temperature values are
  * reported with a 1 deg resolution and a 3 deg accuracy. Complete
  * datasheet can be obtained from Analog's website at:
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *   http://www.onsemi.com/PowerSolutions/product.do?id=ADM1025
+=======
  *   http://www.onsemi.com/PowerSolutions/product.do?id=ADM1025 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *   http://www.onsemi.com/PowerSolutions/product.do?id=ADM1025 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This driver also supports the ADM1025A, which differs from the ADM1025
  * only in that it has "open-drain VID inputs while the ADM1025 has
@@ -91,15 +99,37 @@ enum chips { adm1025, ne1619 };
 
 static const int in_scale[6] = { 2500, 2250, 3300, 5000, 12000, 3300 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define IN_FROM_REG(reg, scale)	(((reg) * (scale) + 96) / 192)
+#define IN_TO_REG(val, scale)	((val) <= 0 ? 0 : \
+				 (val) * 192 >= (scale) * 255 ? 255 : \
+				 ((val) * 192 + (scale) / 2) / (scale))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IN_FROM_REG(reg,scale)	(((reg) * (scale) + 96) / 192)
 #define IN_TO_REG(val,scale)	((val) <= 0 ? 0 : \
 				 (val) * 192 >= (scale) * 255 ? 255 : \
 				 ((val) * 192 + (scale)/2) / (scale))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define TEMP_FROM_REG(reg)	((reg) * 1000)
 #define TEMP_TO_REG(val)	((val) <= -127500 ? -128 : \
 				 (val) >= 126500 ? 127 : \
+<<<<<<< HEAD
+<<<<<<< HEAD
+				 (((val) < 0 ? (val) - 500 : \
+				   (val) + 500) / 1000))
+=======
 				 (((val) < 0 ? (val)-500 : (val)+500) / 1000))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				 (((val) < 0 ? (val)-500 : (val)+500) / 1000))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Functions declaration
@@ -218,7 +248,20 @@ static ssize_t set_in_min(struct device *dev, struct device_attribute *attr,
 	int index = to_sensor_dev_attr(attr)->index;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct adm1025_data *data = i2c_get_clientdata(client);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 	data->in_min[index] = IN_TO_REG(val, in_scale[index]);
@@ -234,7 +277,20 @@ static ssize_t set_in_max(struct device *dev, struct device_attribute *attr,
 	int index = to_sensor_dev_attr(attr)->index;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct adm1025_data *data = i2c_get_clientdata(client);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 	data->in_max[index] = IN_TO_REG(val, in_scale[index]);
@@ -264,7 +320,20 @@ static ssize_t set_temp_min(struct device *dev, struct device_attribute *attr,
 	int index = to_sensor_dev_attr(attr)->index;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct adm1025_data *data = i2c_get_clientdata(client);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 	data->temp_min[index] = TEMP_TO_REG(val);
@@ -280,7 +349,20 @@ static ssize_t set_temp_max(struct device *dev, struct device_attribute *attr,
 	int index = to_sensor_dev_attr(attr)->index;
 	struct i2c_client *client = to_i2c_client(dev);
 	struct adm1025_data *data = i2c_get_clientdata(client);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	long val;
+	int err;
+
+	err = kstrtol(buf, 10, &val);
+	if (err)
+		return err;
+=======
 	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	long val = simple_strtol(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&data->update_lock);
 	data->temp_max[index] = TEMP_TO_REG(val);
@@ -343,7 +425,22 @@ static ssize_t set_vrm(struct device *dev, struct device_attribute *attr,
 		       const char *buf, size_t count)
 {
 	struct adm1025_data *data = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long val;
+	int err;
+
+	err = kstrtoul(buf, 10, &val);
+	if (err)
+		return err;
+
+	data->vrm = val;
+=======
 	data->vrm = simple_strtoul(buf, NULL, 10);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	data->vrm = simple_strtoul(buf, NULL, 10);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return count;
 }
 static DEVICE_ATTR(vrm, S_IRUGO | S_IWUSR, show_vrm, set_vrm);
@@ -462,14 +559,33 @@ static int adm1025_probe(struct i2c_client *client,
 	adm1025_init_client(client);
 
 	/* Register sysfs hooks */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = sysfs_create_group(&client->dev.kobj, &adm1025_group);
+	if (err)
+=======
 	if ((err = sysfs_create_group(&client->dev.kobj, &adm1025_group)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((err = sysfs_create_group(&client->dev.kobj, &adm1025_group)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit_free;
 
 	/* Pin 11 is either in4 (+12V) or VID4 */
 	config = i2c_smbus_read_byte_data(client, ADM1025_REG_CONFIG);
 	if (!(config & 0x20)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = sysfs_create_group(&client->dev.kobj, &adm1025_group_in4);
+		if (err)
+=======
 		if ((err = sysfs_create_group(&client->dev.kobj,
 					      &adm1025_group_in4)))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((err = sysfs_create_group(&client->dev.kobj,
+					      &adm1025_group_in4)))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto exit_remove;
 	}
 
@@ -506,7 +622,15 @@ static void adm1025_init_client(struct i2c_client *client)
 	 * setting yet, we better set the high limits to the max so that
 	 * no alarm triggers.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < 6; i++) {
+=======
 	for (i=0; i<6; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i=0; i<6; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg = i2c_smbus_read_byte_data(client,
 					       ADM1025_REG_IN_MAX(i));
 		if (reg == 0)
@@ -514,7 +638,15 @@ static void adm1025_init_client(struct i2c_client *client)
 						  ADM1025_REG_IN_MAX(i),
 						  0xFF);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < 2; i++) {
+=======
 	for (i=0; i<2; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i=0; i<2; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg = i2c_smbus_read_byte_data(client,
 					       ADM1025_REG_TEMP_HIGH(i));
 		if (reg == 0)
@@ -555,7 +687,15 @@ static struct adm1025_data *adm1025_update_device(struct device *dev)
 		int i;
 
 		dev_dbg(&client->dev, "Updating data.\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		for (i = 0; i < 6; i++) {
+=======
 		for (i=0; i<6; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		for (i=0; i<6; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			data->in[i] = i2c_smbus_read_byte_data(client,
 				      ADM1025_REG_IN(i));
 			data->in_min[i] = i2c_smbus_read_byte_data(client,
@@ -563,7 +703,15 @@ static struct adm1025_data *adm1025_update_device(struct device *dev)
 			data->in_max[i] = i2c_smbus_read_byte_data(client,
 					  ADM1025_REG_IN_MAX(i));
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		for (i = 0; i < 2; i++) {
+=======
 		for (i=0; i<2; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		for (i=0; i<2; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			data->temp[i] = i2c_smbus_read_byte_data(client,
 					ADM1025_REG_TEMP(i));
 			data->temp_min[i] = i2c_smbus_read_byte_data(client,
@@ -589,6 +737,12 @@ static struct adm1025_data *adm1025_update_device(struct device *dev)
 	return data;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(adm1025_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sensors_adm1025_init(void)
 {
 	return i2c_add_driver(&adm1025_driver);
@@ -598,10 +752,23 @@ static void __exit sensors_adm1025_exit(void)
 {
 	i2c_del_driver(&adm1025_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Jean Delvare <khali@linux-fr.org>");
 MODULE_DESCRIPTION("ADM1025 driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(sensors_adm1025_init);
 module_exit(sensors_adm1025_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(sensors_adm1025_init);
+module_exit(sensors_adm1025_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

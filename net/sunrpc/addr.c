@@ -24,9 +24,15 @@
 
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static size_t rpc_ntop6_noscopeid(const struct sockaddr *sap,
 				  char *buf, const int buflen)
@@ -99,8 +105,12 @@ static size_t rpc_ntop6(const struct sockaddr *sap,
 <<<<<<< HEAD
 #else	/* !IS_ENABLED(CONFIG_IPV6) */
 =======
+<<<<<<< HEAD
+#else	/* !IS_ENABLED(CONFIG_IPV6) */
+=======
 #else	/* !(defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static size_t rpc_ntop6_noscopeid(const struct sockaddr *sap,
 				  char *buf, const int buflen)
@@ -117,8 +127,12 @@ static size_t rpc_ntop6(const struct sockaddr *sap,
 <<<<<<< HEAD
 #endif	/* !IS_ENABLED(CONFIG_IPV6) */
 =======
+<<<<<<< HEAD
+#endif	/* !IS_ENABLED(CONFIG_IPV6) */
+=======
 #endif	/* !(defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int rpc_ntop4(const struct sockaddr *sap,
 		     char *buf, const size_t buflen)
@@ -169,15 +183,21 @@ static size_t rpc_pton4(const char *buf, const size_t buflen,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_IPV6)
 static int rpc_parse_scope_id(struct net *net, const char *buf,
 			      const size_t buflen, const char *delim,
 			      struct sockaddr_in6 *sin6)
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 static int rpc_parse_scope_id(const char *buf, const size_t buflen,
 			      const char *delim, struct sockaddr_in6 *sin6)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *p;
 	size_t len;
@@ -200,8 +220,12 @@ static int rpc_parse_scope_id(const char *buf, const size_t buflen,
 <<<<<<< HEAD
 		dev = dev_get_by_name(net, p);
 =======
+<<<<<<< HEAD
+		dev = dev_get_by_name(net, p);
+=======
 		dev = dev_get_by_name(&init_net, p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dev != NULL) {
 			scope_id = dev->ifindex;
 			dev_put(dev);
@@ -224,8 +248,12 @@ static int rpc_parse_scope_id(const char *buf, const size_t buflen,
 <<<<<<< HEAD
 static size_t rpc_pton6(struct net *net, const char *buf, const size_t buflen,
 =======
+<<<<<<< HEAD
+static size_t rpc_pton6(struct net *net, const char *buf, const size_t buflen,
+=======
 static size_t rpc_pton6(const char *buf, const size_t buflen,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct sockaddr *sap, const size_t salen)
 {
 	struct sockaddr_in6 *sin6 = (struct sockaddr_in6 *)sap;
@@ -244,8 +272,12 @@ static size_t rpc_pton6(const char *buf, const size_t buflen,
 <<<<<<< HEAD
 	if (!rpc_parse_scope_id(net, buf, buflen, delim, sin6))
 =======
+<<<<<<< HEAD
+	if (!rpc_parse_scope_id(net, buf, buflen, delim, sin6))
+=======
 	if (!rpc_parse_scope_id(buf, buflen, delim, sin6))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	sin6->sin6_family = AF_INET6;
@@ -255,8 +287,12 @@ static size_t rpc_pton6(const char *buf, const size_t buflen,
 <<<<<<< HEAD
 static size_t rpc_pton6(struct net *net, const char *buf, const size_t buflen,
 =======
+<<<<<<< HEAD
+static size_t rpc_pton6(struct net *net, const char *buf, const size_t buflen,
+=======
 static size_t rpc_pton6(const char *buf, const size_t buflen,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct sockaddr *sap, const size_t salen)
 {
 	return 0;
@@ -268,7 +304,11 @@ static size_t rpc_pton6(const char *buf, const size_t buflen,
 <<<<<<< HEAD
  * @net: applicable network namespace
 =======
+<<<<<<< HEAD
+ * @net: applicable network namespace
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @buf: C string containing presentation format IP address
  * @buflen: length of presentation address in bytes
  * @sap: buffer into which to plant socket address
@@ -284,8 +324,12 @@ static size_t rpc_pton6(const char *buf, const size_t buflen,
 <<<<<<< HEAD
 size_t rpc_pton(struct net *net, const char *buf, const size_t buflen,
 =======
+<<<<<<< HEAD
+size_t rpc_pton(struct net *net, const char *buf, const size_t buflen,
+=======
 size_t rpc_pton(const char *buf, const size_t buflen,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct sockaddr *sap, const size_t salen)
 {
 	unsigned int i;
@@ -295,8 +339,12 @@ size_t rpc_pton(const char *buf, const size_t buflen,
 <<<<<<< HEAD
 			return rpc_pton6(net, buf, buflen, sap, salen);
 =======
+<<<<<<< HEAD
+			return rpc_pton6(net, buf, buflen, sap, salen);
+=======
 			return rpc_pton6(buf, buflen, sap, salen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rpc_pton4(buf, buflen, sap, salen);
 }
 EXPORT_SYMBOL_GPL(rpc_pton);
@@ -307,7 +355,11 @@ EXPORT_SYMBOL_GPL(rpc_pton);
 <<<<<<< HEAD
  * @gfp_flags: allocation mode
 =======
+<<<<<<< HEAD
+ * @gfp_flags: allocation mode
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Returns a %NUL-terminated string in dynamically allocated memory;
  * otherwise NULL is returned if an error occurred.  Caller must
@@ -316,8 +368,12 @@ EXPORT_SYMBOL_GPL(rpc_pton);
 <<<<<<< HEAD
 char *rpc_sockaddr2uaddr(const struct sockaddr *sap, gfp_t gfp_flags)
 =======
+<<<<<<< HEAD
+char *rpc_sockaddr2uaddr(const struct sockaddr *sap, gfp_t gfp_flags)
+=======
 char *rpc_sockaddr2uaddr(const struct sockaddr *sap)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char portbuf[RPCBIND_MAXUADDRPLEN];
 	char addrbuf[RPCBIND_MAXUADDRLEN];
@@ -346,12 +402,17 @@ char *rpc_sockaddr2uaddr(const struct sockaddr *sap)
 		return NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return kstrdup(addrbuf, gfp_flags);
 }
 
 /**
  * rpc_uaddr2sockaddr - convert a universal address to a socket address.
  * @net: applicable network namespace
+<<<<<<< HEAD
+=======
 =======
 	return kstrdup(addrbuf, GFP_KERNEL);
 }
@@ -360,6 +421,7 @@ EXPORT_SYMBOL_GPL(rpc_sockaddr2uaddr);
 /**
  * rpc_uaddr2sockaddr - convert a universal address to a socket address.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @uaddr: C string containing universal address to convert
  * @uaddr_len: length of universal address string
  * @sap: buffer into which to plant socket address
@@ -376,9 +438,15 @@ size_t rpc_uaddr2sockaddr(struct net *net, const char *uaddr,
 			  const size_t uaddr_len, struct sockaddr *sap,
 			  const size_t salen)
 =======
+<<<<<<< HEAD
+size_t rpc_uaddr2sockaddr(struct net *net, const char *uaddr,
+			  const size_t uaddr_len, struct sockaddr *sap,
+			  const size_t salen)
+=======
 size_t rpc_uaddr2sockaddr(const char *uaddr, const size_t uaddr_len,
 			  struct sockaddr *sap, const size_t salen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *c, buf[RPCBIND_MAXUADDRLEN + sizeof('\0')];
 	unsigned long portlo, porthi;
@@ -413,8 +481,12 @@ size_t rpc_uaddr2sockaddr(const char *uaddr, const size_t uaddr_len,
 <<<<<<< HEAD
 	if (rpc_pton(net, buf, strlen(buf), sap, salen) == 0)
 =======
+<<<<<<< HEAD
+	if (rpc_pton(net, buf, strlen(buf), sap, salen) == 0)
+=======
 	if (rpc_pton(buf, strlen(buf), sap, salen) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	switch (sap->sa_family) {

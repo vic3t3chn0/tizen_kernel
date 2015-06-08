@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -51,9 +55,14 @@
 #include <mach/at91rm9200_mc.h>
 #include <mach/at91_ramc.h>
 =======
+<<<<<<< HEAD
+#include <mach/at91rm9200_mc.h>
+#include <mach/at91_ramc.h>
+=======
 #include <mach/gpio.h>
 #include <mach/at91rm9200_mc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cpu.h>
 
 #include "generic.h"
@@ -68,8 +77,12 @@ static void __init yl9200_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91rm9200_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Setup the LEDs D2=PB17 (timer), D3=PB16 (cpu) */
 	at91_init_leds(AT91_PIN_PB16, AT91_PIN_PB17);
@@ -94,6 +107,8 @@ static void __init yl9200_init_early(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init yl9200_init_irq(void)
 {
 	at91rm9200_init_interrupts(NULL);
@@ -101,6 +116,7 @@ static void __init yl9200_init_irq(void)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * LEDs
  */
@@ -135,8 +151,12 @@ static struct gpio_led yl9200_leds[] = {
 <<<<<<< HEAD
 static struct macb_platform_data __initdata yl9200_eth_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata yl9200_eth_data = {
+=======
 static struct at91_eth_data __initdata yl9200_eth_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin		= AT91_PIN_PB28,
 	.is_rmii		= 1,
 };
@@ -150,7 +170,12 @@ static struct at91_usbh_data __initdata yl9200_usbh_data = {
 	.vbus_pin		= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin		= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -173,9 +198,15 @@ static struct at91_mmc_data __initdata yl9200_mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.wire4		= 1,
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 	// .wp_pin	= ... not connected
 	.wire4		= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -210,6 +241,9 @@ static struct mtd_partition __initdata yl9200_nand_partition[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct atmel_nand_data __initdata yl9200_nand_data = {
 	.ale		= 6,
 	.cle		= 7,
@@ -219,6 +253,8 @@ static struct atmel_nand_data __initdata yl9200_nand_data = {
 	.ecc_mode	= NAND_ECC_SOFT,
 	.parts		= yl9200_nand_partition,
 	.num_parts	= ARRAY_SIZE(yl9200_nand_partition),
+<<<<<<< HEAD
+=======
 =======
 static struct mtd_partition * __init nand_partitions(int size, int *num_partitions)
 {
@@ -234,6 +270,7 @@ static struct atmel_nand_data __initdata yl9200_nand_data = {
 	.enable_pin	= AT91_PIN_PC15,	/* !CE  (Sheet10) */
 	.partition_info	= nand_partitions,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -441,8 +478,12 @@ static struct spi_board_info yl9200_spi_devices[] = {
 <<<<<<< HEAD
 static void yl9200_init_video(void)
 =======
+<<<<<<< HEAD
+static void yl9200_init_video(void)
+=======
 static void __init yl9200_init_video(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* NWAIT Signal */
 	at91_set_A_periph(AT91_PIN_PC6, 0);
@@ -451,8 +492,12 @@ static void __init yl9200_init_video(void)
 <<<<<<< HEAD
 	at91_ramc_write(0, AT91_SMC_CSR(2), AT91_SMC_DBW_16		/* 16 bit */
 =======
+<<<<<<< HEAD
+	at91_ramc_write(0, AT91_SMC_CSR(2), AT91_SMC_DBW_16		/* 16 bit */
+=======
 	at91_sys_write(AT91_SMC_CSR(2), AT91_SMC_DBW_16		/* 16 bit */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			| AT91_SMC_WSEN | AT91_SMC_NWS_(0x4)	/* wait states */
 			| AT91_SMC_TDF_(0x100)			/* float time */
 	);
@@ -655,9 +700,15 @@ MACHINE_START(YL9200, "uCdragon YL-9200")
 	.init_early	= yl9200_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= yl9200_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91rm9200_map_io,
 	.init_early	= yl9200_init_early,
 	.init_irq	= yl9200_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= yl9200_board_init,
 MACHINE_END

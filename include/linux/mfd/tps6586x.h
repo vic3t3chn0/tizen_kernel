@@ -2,6 +2,9 @@
 #define __LINUX_MFD_TPS6586X_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TPS6586X_SLEW_RATE_INSTANTLY	0x00
 #define TPS6586X_SLEW_RATE_110UV	0x01
 #define TPS6586X_SLEW_RATE_220UV	0x02
@@ -14,8 +17,11 @@
 #define TPS6586X_SLEW_RATE_SET		0x08
 #define TPS6586X_SLEW_RATE_MASK         0x07
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	TPS6586X_ID_SM_0,
 	TPS6586X_ID_SM_1,
@@ -64,12 +70,18 @@ enum {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tps6586x_settings {
 	int slew_rate;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tps6586x_subdev_info {
 	int		id;
 	const char	*name;

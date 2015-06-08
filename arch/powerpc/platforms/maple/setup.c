@@ -20,7 +20,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/stddef.h>
 #include <linux/unistd.h>
@@ -52,8 +56,11 @@
 #include <asm/prom.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable.h>
 #include <asm/io.h>
 #include <asm/pci-bridge.h>
@@ -230,8 +237,12 @@ static void __init maple_init_IRQ(void)
 <<<<<<< HEAD
 	unsigned int flags = 0;
 =======
+<<<<<<< HEAD
+	unsigned int flags = 0;
+=======
 	unsigned int flags = MPIC_PRIMARY;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Locate MPIC in the device-tree. Note that there is a bug
 	 * in Maple device-tree where the type of the controller is
@@ -275,8 +286,12 @@ static void __init maple_init_IRQ(void)
 <<<<<<< HEAD
 	flags |= MPIC_U3_HT_IRQS;
 =======
+<<<<<<< HEAD
+	flags |= MPIC_U3_HT_IRQS;
+=======
 	flags |= MPIC_U3_HT_IRQS | MPIC_WANTS_RESET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* All U3/U4 are big-endian, older SLOF firmware doesn't encode this */
 	flags |= MPIC_BIG_ENDIAN;
 
@@ -357,15 +372,25 @@ define_machine(maple) {
  * all boards with U3H (CPC925) bridge.
  */
 =======
+<<<<<<< HEAD
+ * all boards with U3H (CPC925) bridge.
+ */
+=======
  * Motorola ATCA-6101 blade.
  */
 #define MAPLE_CPC925_MODEL	"Motorola,ATCA-6101"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init maple_cpc925_edac_setup(void)
 {
 	struct platform_device *pdev;
 	struct device_node *np = NULL;
 	struct resource r;
+<<<<<<< HEAD
+	int ret;
+	volatile void __iomem *mem;
+	u32 rev;
+=======
 <<<<<<< HEAD
 	int ret;
 	volatile void __iomem *mem;
@@ -393,6 +418,7 @@ static int __init maple_cpc925_edac_setup(void)
 	if (ret != 0)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	np = of_find_node_by_type(NULL, "memory-controller");
 	if (!np) {
@@ -411,6 +437,9 @@ static int __init maple_cpc925_edac_setup(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mem = ioremap(r.start, resource_size(&r));
 	if (!mem) {
 		printk(KERN_ERR "%s: Unable to map memory-controller memory\n",
@@ -427,8 +456,11 @@ static int __init maple_cpc925_edac_setup(void)
 		return 0;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdev = platform_device_register_simple("cpc925_edac", 0, &r, 1);
 	if (IS_ERR(pdev))
 		return PTR_ERR(pdev);

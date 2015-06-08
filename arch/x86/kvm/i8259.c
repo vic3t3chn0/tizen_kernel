@@ -39,7 +39,13 @@
 	pr_err_ratelimited("kvm: pic: " fmt, ## __VA_ARGS__)
 
 =======
+<<<<<<< HEAD
+#define pr_pic_unimpl(fmt, ...)	\
+	pr_err_ratelimited("kvm: pic: " fmt, ## __VA_ARGS__)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void pic_irq_request(struct kvm *kvm, int level);
 
 static void pic_lock(struct kvm_pic *s)
@@ -266,15 +272,21 @@ int kvm_pic_read_irq(struct kvm *kvm)
 void kvm_pic_reset(struct kvm_kpic_state *s)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int irq, i;
 	struct kvm_vcpu *vcpu;
 	u8 irr = s->irr, isr = s->imr;
 	bool found = false;
+<<<<<<< HEAD
+=======
 =======
 	int irq;
 	struct kvm_vcpu *vcpu0 = s->pics_state->kvm->bsp_vcpu;
 	u8 irr = s->irr, isr = s->imr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	s->last_irr = 0;
 	s->irr = 0;
@@ -292,6 +304,9 @@ void kvm_pic_reset(struct kvm_kpic_state *s)
 	s->init4 = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kvm_for_each_vcpu(i, vcpu, s->pics_state->kvm)
 		if (kvm_apic_accept_pic_intr(vcpu)) {
 			found = true;
@@ -305,6 +320,8 @@ void kvm_pic_reset(struct kvm_kpic_state *s)
 	for (irq = 0; irq < PIC_NUM_PINS/2; irq++)
 		if (irr & (1 << irq) || isr & (1 << irq))
 			pic_clear_isr(s, irq);
+<<<<<<< HEAD
+=======
 =======
 	for (irq = 0; irq < PIC_NUM_PINS/2; irq++) {
 		if (vcpu0 && kvm_apic_accept_pic_intr(vcpu0))
@@ -313,6 +330,7 @@ void kvm_pic_reset(struct kvm_kpic_state *s)
 			}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void pic_ioport_write(void *opaque, u32 addr, u32 val)
@@ -328,7 +346,11 @@ static void pic_ioport_write(void *opaque, u32 addr, u32 val)
 <<<<<<< HEAD
 			s->irr &= s->elcr;
 =======
+<<<<<<< HEAD
+			s->irr &= s->elcr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			s->imr = 0;
 			s->priority_add = 0;
 			s->special_mask = 0;
@@ -340,16 +362,22 @@ static void pic_ioport_write(void *opaque, u32 addr, u32 val)
 			s->init_state = 1;
 			if (val & 0x02)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				pr_pic_unimpl("single mode not supported");
 			if (val & 0x08)
 				pr_pic_unimpl(
 					"level sensitive irq not supported");
+<<<<<<< HEAD
+=======
 =======
 				printk(KERN_ERR "single mode not supported");
 			if (val & 0x08)
 				printk(KERN_ERR
 				       "level sensitive irq not supported");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (val & 0x08) {
 			if (val & 0x04)
 				s->poll = 1;
@@ -504,6 +532,11 @@ static int picdev_write(struct kvm_pic *s,
 			 gpa_t addr, int len, const void *val)
 {
 =======
+<<<<<<< HEAD
+static int picdev_write(struct kvm_pic *s,
+			 gpa_t addr, int len, const void *val)
+{
+=======
 static inline struct kvm_pic *to_pic(struct kvm_io_device *dev)
 {
 	return container_of(dev, struct kvm_pic, dev);
@@ -514,6 +547,7 @@ static int picdev_write(struct kvm_io_device *this,
 {
 	struct kvm_pic *s = to_pic(this);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char data = *(unsigned char *)val;
 	if (!picdev_in_range(addr))
 		return -EOPNOTSUPP;
@@ -522,9 +556,13 @@ static int picdev_write(struct kvm_io_device *this,
 <<<<<<< HEAD
 		pr_pic_unimpl("non byte write\n");
 =======
+<<<<<<< HEAD
+		pr_pic_unimpl("non byte write\n");
+=======
 		if (printk_ratelimit())
 			printk(KERN_ERR "PIC: non byte write\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 	pic_lock(s);
@@ -549,11 +587,17 @@ static int picdev_read(struct kvm_pic *s,
 		       gpa_t addr, int len, void *val)
 {
 =======
+<<<<<<< HEAD
+static int picdev_read(struct kvm_pic *s,
+		       gpa_t addr, int len, void *val)
+{
+=======
 static int picdev_read(struct kvm_io_device *this,
 		       gpa_t addr, int len, void *val)
 {
 	struct kvm_pic *s = to_pic(this);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char data = 0;
 	if (!picdev_in_range(addr))
 		return -EOPNOTSUPP;
@@ -562,9 +606,13 @@ static int picdev_read(struct kvm_io_device *this,
 <<<<<<< HEAD
 		pr_pic_unimpl("non byte read\n");
 =======
+<<<<<<< HEAD
+		pr_pic_unimpl("non byte read\n");
+=======
 		if (printk_ratelimit())
 			printk(KERN_ERR "PIC: non byte read\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 	pic_lock(s);
@@ -586,6 +634,9 @@ static int picdev_read(struct kvm_io_device *this,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int picdev_master_write(struct kvm_io_device *dev,
 			       gpa_t addr, int len, const void *val)
 {
@@ -628,8 +679,11 @@ static int picdev_eclr_read(struct kvm_io_device *dev,
 			    addr, len, val);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * callback when PIC0 irq status changed
  */
@@ -643,6 +697,9 @@ static void pic_irq_request(struct kvm *kvm, int level)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct kvm_io_device_ops picdev_master_ops = {
 	.read     = picdev_master_read,
 	.write    = picdev_master_write,
@@ -656,11 +713,14 @@ static const struct kvm_io_device_ops picdev_slave_ops = {
 static const struct kvm_io_device_ops picdev_eclr_ops = {
 	.read     = picdev_eclr_read,
 	.write    = picdev_eclr_write,
+<<<<<<< HEAD
+=======
 =======
 static const struct kvm_io_device_ops picdev_ops = {
 	.read     = picdev_read,
 	.write    = picdev_write,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct kvm_pic *kvm_create_pic(struct kvm *kvm)
@@ -682,6 +742,9 @@ struct kvm_pic *kvm_create_pic(struct kvm *kvm)
 	 * Initialize PIO device
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kvm_iodevice_init(&s->dev_master, &picdev_master_ops);
 	kvm_iodevice_init(&s->dev_slave, &picdev_slave_ops);
 	kvm_iodevice_init(&s->dev_eclr, &picdev_eclr_ops);
@@ -715,6 +778,8 @@ fail_unlock:
 	kfree(s);
 
 	return NULL;
+<<<<<<< HEAD
+=======
 =======
 	kvm_iodevice_init(&s->dev, &picdev_ops);
 	mutex_lock(&kvm->slots_lock);
@@ -727,6 +792,7 @@ fail_unlock:
 
 	return s;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void kvm_destroy_pic(struct kvm *kvm)
@@ -739,8 +805,14 @@ void kvm_destroy_pic(struct kvm *kvm)
 		kvm_io_bus_unregister_dev(kvm, KVM_PIO_BUS, &vpic->dev_slave);
 		kvm_io_bus_unregister_dev(kvm, KVM_PIO_BUS, &vpic->dev_eclr);
 =======
+<<<<<<< HEAD
+		kvm_io_bus_unregister_dev(kvm, KVM_PIO_BUS, &vpic->dev_master);
+		kvm_io_bus_unregister_dev(kvm, KVM_PIO_BUS, &vpic->dev_slave);
+		kvm_io_bus_unregister_dev(kvm, KVM_PIO_BUS, &vpic->dev_eclr);
+=======
 		kvm_io_bus_unregister_dev(kvm, KVM_PIO_BUS, &vpic->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kvm->arch.vpic = NULL;
 		kfree(vpic);
 	}

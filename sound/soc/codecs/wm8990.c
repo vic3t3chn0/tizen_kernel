@@ -19,8 +19,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -40,6 +43,9 @@ struct wm8990_priv {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8990_volatile_register(struct snd_soc_codec *codec,
 				    unsigned int reg)
 {
@@ -51,12 +57,15 @@ static int wm8990_volatile_register(struct snd_soc_codec *codec,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 /*
  * wm8990 register cache.  Note that register 0 is not included in the
  * cache.
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const u16 wm8990_reg[] = {
 	0x8990,     /* R0  - Reset */
 	0x0000,     /* R1  - Power Management (1) */
@@ -414,8 +423,12 @@ static int inmixer_event(struct snd_soc_dapm_widget *w,
 <<<<<<< HEAD
 		reg &= ~WM8990_AINR_ENA;
 =======
+<<<<<<< HEAD
+		reg &= ~WM8990_AINR_ENA;
+=======
 		reg &= ~WM8990_AINL_ENA;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	snd_soc_write(w->codec, WM8990_POWER_MANAGEMENT_2, reg);
 
@@ -794,9 +807,14 @@ SND_SOC_DAPM_PGA("ROPGA", WM8990_POWER_MANAGEMENT_3, WM8990_ROPGA_ENA_BIT, 0,
 SND_SOC_DAPM_SUPPLY("MICBIAS", WM8990_POWER_MANAGEMENT_1,
 		    WM8990_MICBIAS_ENA_BIT, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+SND_SOC_DAPM_SUPPLY("MICBIAS", WM8990_POWER_MANAGEMENT_1,
+		    WM8990_MICBIAS_ENA_BIT, 0, NULL, 0),
+=======
 SND_SOC_DAPM_MICBIAS("MICBIAS", WM8990_POWER_MANAGEMENT_1,
 	WM8990_MICBIAS_ENA_BIT, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_OUTPUT("LON"),
 SND_SOC_DAPM_OUTPUT("LOP"),
@@ -1002,8 +1020,11 @@ static int wm8990_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u16 reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_soc_codec *codec = codec_dai->codec;
 	struct _pll_div pll_div;
 
@@ -1012,12 +1033,17 @@ static int wm8990_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id,
 
 		/* Turn on PLL */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_2,
 				    WM8990_PLL_ENA, WM8990_PLL_ENA);
 
 		/* sysclk comes from PLL */
 		snd_soc_update_bits(codec, WM8990_CLOCKING_2,
 				    WM8990_SYSCLK_SRC, WM8990_SYSCLK_SRC);
+<<<<<<< HEAD
+=======
 =======
 		reg = snd_soc_read(codec, WM8990_POWER_MANAGEMENT_2);
 		reg |= WM8990_PLL_ENA;
@@ -1027,6 +1053,7 @@ static int wm8990_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id,
 		reg = snd_soc_read(codec, WM8990_CLOCKING_2);
 		snd_soc_write(codec, WM8990_CLOCKING_2, reg | WM8990_SYSCLK_SRC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* set up N , fractional mode and pre-divisor if necessary */
 		snd_soc_write(codec, WM8990_PLL1, pll_div.n | WM8990_SDM |
@@ -1039,11 +1066,17 @@ static int wm8990_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id,
 		snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_2,
 				    WM8990_PLL_ENA, 0);
 =======
+<<<<<<< HEAD
+		/* Turn off PLL */
+		snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_2,
+				    WM8990_PLL_ENA, 0);
+=======
 		/* Turn on PLL */
 		reg = snd_soc_read(codec, WM8990_POWER_MANAGEMENT_2);
 		reg &= ~WM8990_PLL_ENA;
 		snd_soc_write(codec, WM8990_POWER_MANAGEMENT_2, reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -1122,6 +1155,9 @@ static int wm8990_set_dai_clkdiv(struct snd_soc_dai *codec_dai,
 {
 	struct snd_soc_codec *codec = codec_dai->codec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (div_id) {
 	case WM8990_MCLK_DIV:
@@ -1139,6 +1175,8 @@ static int wm8990_set_dai_clkdiv(struct snd_soc_dai *codec_dai,
 	case WM8990_BCLK_DIV:
 		snd_soc_update_bits(codec, WM8990_CLOCKING_1,
 				    WM8990_BCLK_DIV_MASK, div);
+<<<<<<< HEAD
+=======
 =======
 	u16 reg;
 
@@ -1163,6 +1201,7 @@ static int wm8990_set_dai_clkdiv(struct snd_soc_dai *codec_dai,
 			~WM8990_BCLK_DIV_MASK;
 		snd_soc_write(codec, WM8990_CLOCKING_1, reg | div);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		return -EINVAL;
@@ -1223,8 +1262,12 @@ static int wm8990_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 	u16 val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (level) {
 	case SND_SOC_BIAS_ON:
@@ -1236,23 +1279,34 @@ static int wm8990_set_bias_level(struct snd_soc_codec *codec,
 		snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_1,
 				    WM8990_VMID_MODE_MASK, 0x2);
 =======
+<<<<<<< HEAD
+		snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_1,
+				    WM8990_VMID_MODE_MASK, 0x2);
+=======
 		val = snd_soc_read(codec, WM8990_POWER_MANAGEMENT_1) &
 			~WM8990_VMID_MODE_MASK;
 		snd_soc_write(codec, WM8990_POWER_MANAGEMENT_1, val | 0x2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case SND_SOC_BIAS_STANDBY:
 		if (codec->dapm.bias_level == SND_SOC_BIAS_OFF) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = snd_soc_cache_sync(codec);
 			if (ret < 0) {
 				dev_err(codec->dev, "Failed to sync cache: %d\n", ret);
 				return ret;
 			}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Enable all output discharge bits */
 			snd_soc_write(codec, WM8990_ANTIPOP1, WM8990_DIS_LLINE |
 				WM8990_DIS_RLINE | WM8990_DIS_OUT3 |
@@ -1311,10 +1365,15 @@ static int wm8990_set_bias_level(struct snd_soc_codec *codec,
 		snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_1,
 				    WM8990_VMID_MODE_MASK, 0x4);
 =======
+<<<<<<< HEAD
+		snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_1,
+				    WM8990_VMID_MODE_MASK, 0x4);
+=======
 		val = snd_soc_read(codec, WM8990_POWER_MANAGEMENT_1) &
 			~WM8990_VMID_MODE_MASK;
 		snd_soc_write(codec, WM8990_POWER_MANAGEMENT_1, val | 0x4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case SND_SOC_BIAS_OFF:
@@ -1332,9 +1391,14 @@ static int wm8990_set_bias_level(struct snd_soc_codec *codec,
 		snd_soc_update_bits(codec, WM8990_DAC_CTRL,
 				    WM8990_DAC_MUTE, WM8990_DAC_MUTE);
 =======
+<<<<<<< HEAD
+		snd_soc_update_bits(codec, WM8990_DAC_CTRL,
+				    WM8990_DAC_MUTE, WM8990_DAC_MUTE);
+=======
 		val = snd_soc_read(codec, WM8990_DAC_CTRL);
 		snd_soc_write(codec, WM8990_DAC_CTRL, val | WM8990_DAC_MUTE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Enable any disabled outputs */
 		snd_soc_write(codec, WM8990_POWER_MANAGEMENT_1, 0x1f03);
@@ -1379,8 +1443,12 @@ static int wm8990_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8990_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8990_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8990_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= wm8990_hw_params,
 	.digital_mute	= wm8990_mute,
 	.set_fmt	= wm8990_set_dai_fmt,
@@ -1410,8 +1478,12 @@ static struct snd_soc_dai_driver wm8990_dai = {
 <<<<<<< HEAD
 static int wm8990_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8990_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8990_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8990_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -1419,6 +1491,8 @@ static int wm8990_suspend(struct snd_soc_codec *codec, pm_message_t state)
 
 static int wm8990_resume(struct snd_soc_codec *codec)
 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	int i;
@@ -1435,6 +1509,7 @@ static int wm8990_resume(struct snd_soc_codec *codec)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8990_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 	return 0;
 }
@@ -1448,8 +1523,11 @@ static int wm8990_probe(struct snd_soc_codec *codec)
 	int ret;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u16 reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 16, SND_SOC_I2C);
 	if (ret < 0) {
@@ -1463,6 +1541,9 @@ static int wm8990_probe(struct snd_soc_codec *codec)
 	wm8990_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_update_bits(codec, WM8990_AUDIO_INTERFACE_4,
 			    WM8990_ALRCGPIO1, WM8990_ALRCGPIO1);
 
@@ -1471,6 +1552,8 @@ static int wm8990_probe(struct snd_soc_codec *codec)
 
 	snd_soc_update_bits(codec, WM8990_POWER_MANAGEMENT_2,
 			    WM8990_OPCLK_ENA, WM8990_OPCLK_ENA);
+<<<<<<< HEAD
+=======
 =======
 	reg = snd_soc_read(codec, WM8990_AUDIO_INTERFACE_4);
 	snd_soc_write(codec, WM8990_AUDIO_INTERFACE_4, reg | WM8990_ALRCGPIO1);
@@ -1482,6 +1565,7 @@ static int wm8990_probe(struct snd_soc_codec *codec)
 	reg = snd_soc_read(codec, WM8990_POWER_MANAGEMENT_2);
 	snd_soc_write(codec, WM8990_POWER_MANAGEMENT_2, reg | WM8990_OPCLK_ENA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_write(codec, WM8990_LEFT_OUTPUT_VOLUME, 0x50 | (1<<8));
 	snd_soc_write(codec, WM8990_RIGHT_OUTPUT_VOLUME, 0x50 | (1<<8));
@@ -1489,8 +1573,12 @@ static int wm8990_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, wm8990_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, wm8990_snd_controls,
+=======
 	snd_soc_add_controls(codec, wm8990_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ARRAY_SIZE(wm8990_snd_controls));
 	wm8990_add_widgets(codec);
 
@@ -1516,7 +1604,11 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8990 = {
 <<<<<<< HEAD
 	.volatile_register = wm8990_volatile_register,
 =======
+<<<<<<< HEAD
+	.volatile_register = wm8990_volatile_register,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_I2C) || defined(CONFIG_I2C_MODULE)
@@ -1557,8 +1649,12 @@ static struct i2c_driver wm8990_i2c_driver = {
 <<<<<<< HEAD
 		.name = "wm8990",
 =======
+<<<<<<< HEAD
+		.name = "wm8990",
+=======
 		.name = "wm8990-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.owner = THIS_MODULE,
 	},
 	.probe =    wm8990_i2c_probe,

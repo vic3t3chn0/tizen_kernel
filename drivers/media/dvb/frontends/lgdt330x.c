@@ -290,6 +290,14 @@ static int lgdt330x_read_ucblocks(struct dvb_frontend* fe, u32* ucblocks)
 	int err;
 	u8 buf[2];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	*ucblocks = 0;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (state->config->demod_chip) {
 	case LGDT3302:
 		err = i2c_read_demod_bytes(state, LGDT3302_PACKET_ERR_COUNTER1,
@@ -304,14 +312,34 @@ static int lgdt330x_read_ucblocks(struct dvb_frontend* fe, u32* ucblocks)
 		       "Only LGDT3302 and LGDT3303 are supported chips.\n");
 		err = -ENODEV;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (err < 0)
+		return err;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*ucblocks = (buf[0] << 8) | buf[1];
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int lgdt330x_set_parameters(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+=======
 static int lgdt330x_set_parameters(struct dvb_frontend* fe,
 				   struct dvb_frontend_parameters *param)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int lgdt330x_set_parameters(struct dvb_frontend* fe,
+				   struct dvb_frontend_parameters *param)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Array of byte pairs <address, value>
 	 * to initialize 8VSB for lgdt3303 chip 50 MHz IF
@@ -345,10 +373,23 @@ static int lgdt330x_set_parameters(struct dvb_frontend* fe,
 
 	static u8 top_ctrl_cfg[]   = { TOP_CONTROL, 0x03 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int err = 0;
+	/* Change only if we are actually changing the modulation */
+	if (state->current_modulation != p->modulation) {
+		switch (p->modulation) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	/* Change only if we are actually changing the modulation */
 	if (state->current_modulation != param->u.vsb.modulation) {
 		switch(param->u.vsb.modulation) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case VSB_8:
 			dprintk("%s: VSB_8 MODE\n", __func__);
 
@@ -397,9 +438,26 @@ static int lgdt330x_set_parameters(struct dvb_frontend* fe,
 			}
 			break;
 		default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			printk(KERN_WARNING "lgdt330x: %s: Modulation type(%d) UNSUPPORTED\n", __func__, p->modulation);
+			return -1;
+		}
+		if (err < 0)
+			printk(KERN_WARNING "lgdt330x: %s: error blasting "
+			       "bytes to lgdt3303 for modulation type(%d)\n",
+			       __func__, p->modulation);
+
+=======
 			printk(KERN_WARNING "lgdt330x: %s: Modulation type(%d) UNSUPPORTED\n", __func__, param->u.vsb.modulation);
 			return -1;
 		}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			printk(KERN_WARNING "lgdt330x: %s: Modulation type(%d) UNSUPPORTED\n", __func__, param->u.vsb.modulation);
+			return -1;
+		}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * select serial or parallel MPEG harware interface
 		 * Serial:   0x04 for LGDT3302 or 0x40 for LGDT3303
@@ -412,29 +470,67 @@ static int lgdt330x_set_parameters(struct dvb_frontend* fe,
 				      sizeof(top_ctrl_cfg));
 		if (state->config->set_ts_params)
 			state->config->set_ts_params(fe, 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		state->current_modulation = p->modulation;
+=======
 		state->current_modulation = param->u.vsb.modulation;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		state->current_modulation = param->u.vsb.modulation;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Tune to the specified frequency */
 	if (fe->ops.tuner_ops.set_params) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fe->ops.tuner_ops.set_params(fe);
+=======
 		fe->ops.tuner_ops.set_params(fe, param);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fe->ops.tuner_ops.set_params(fe, param);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fe->ops.i2c_gate_ctrl) fe->ops.i2c_gate_ctrl(fe, 0);
 	}
 
 	/* Keep track of the new frequency */
 	/* FIXME this is the wrong way to do this...           */
 	/* The tuner is shared with the video4linux analog API */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	state->current_frequency = p->frequency;
+=======
 	state->current_frequency = param->frequency;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	state->current_frequency = param->frequency;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lgdt330x_SwReset(state);
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int lgdt330x_get_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+	struct lgdt330x_state *state = fe->demodulator_priv;
+	p->frequency = state->current_frequency;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int lgdt330x_get_frontend(struct dvb_frontend* fe,
 				 struct dvb_frontend_parameters* param)
 {
 	struct lgdt330x_state *state = fe->demodulator_priv;
 	param->frequency = state->current_frequency;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -764,9 +860,21 @@ error:
 }
 
 static struct dvb_frontend_ops lgdt3302_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_ATSC, SYS_DVBC_ANNEX_B },
+	.info = {
+		.name= "LG Electronics LGDT3302 VSB/QAM Frontend",
+=======
 	.info = {
 		.name= "LG Electronics LGDT3302 VSB/QAM Frontend",
 		.type = FE_ATSC,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.info = {
+		.name= "LG Electronics LGDT3302 VSB/QAM Frontend",
+		.type = FE_ATSC,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min= 54000000,
 		.frequency_max= 858000000,
 		.frequency_stepsize= 62500,
@@ -787,9 +895,21 @@ static struct dvb_frontend_ops lgdt3302_ops = {
 };
 
 static struct dvb_frontend_ops lgdt3303_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_ATSC, SYS_DVBC_ANNEX_B },
+	.info = {
+		.name= "LG Electronics LGDT3303 VSB/QAM Frontend",
+=======
 	.info = {
 		.name= "LG Electronics LGDT3303 VSB/QAM Frontend",
 		.type = FE_ATSC,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.info = {
+		.name= "LG Electronics LGDT3303 VSB/QAM Frontend",
+		.type = FE_ATSC,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min= 54000000,
 		.frequency_max= 858000000,
 		.frequency_stepsize= 62500,

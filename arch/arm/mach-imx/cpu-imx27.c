@@ -27,12 +27,17 @@
 #include <mach/hardware.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mx27_cpu_rev = -1;
 static int mx27_cpu_partnumber;
 
 #define SYS_CHIP_ID             0x00    /* The offset of CHIP ID register */
 
 static int mx27_read_cpu_rev(void)
+<<<<<<< HEAD
+=======
 =======
 static int cpu_silicon_rev = -1;
 static int cpu_partnumber;
@@ -41,6 +46,7 @@ static int cpu_partnumber;
 
 static void query_silicon_parameter(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 val;
 	/*
@@ -52,6 +58,9 @@ static void query_silicon_parameter(void)
 				+ SYS_CHIP_ID));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mx27_cpu_partnumber = (int)((val >> 12) & 0xFFFF);
 
 	switch (val >> 28) {
@@ -64,6 +73,8 @@ static void query_silicon_parameter(void)
 	default:
 		return IMX_CHIP_REVISION_UNKNOWN;
 	}
+<<<<<<< HEAD
+=======
 =======
 	switch (val >> 28) {
 	case 0:
@@ -80,6 +91,7 @@ static void query_silicon_parameter(void)
 	}
 	cpu_partnumber = (int)((val >> 12) & 0xFFFF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -90,6 +102,9 @@ static void query_silicon_parameter(void)
 int mx27_revision(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mx27_cpu_rev == -1)
 		mx27_cpu_rev = mx27_read_cpu_rev();
 
@@ -97,6 +112,8 @@ int mx27_revision(void)
 		return -EINVAL;
 
 	return mx27_cpu_rev;
+<<<<<<< HEAD
+=======
 =======
 	if (cpu_silicon_rev == -1)
 		query_silicon_parameter();
@@ -106,5 +123,6 @@ int mx27_revision(void)
 
 	return cpu_silicon_rev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(mx27_revision);

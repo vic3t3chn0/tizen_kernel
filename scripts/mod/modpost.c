@@ -41,7 +41,12 @@ static int vmlinux_section_warnings = 1;
 /* Exit with an error when there is a section mismatch if set to 1 */
 static int section_error_on_mismatch;
 =======
+<<<<<<< HEAD
+/* Exit with an error when there is a section mismatch if set to 1 */
+static int section_error_on_mismatch;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Only warn about unresolved symbols */
 static int warn_unresolved = 0;
 /* How a symbol is exported */
@@ -1503,6 +1508,9 @@ static int addend_386_rel(struct elf_info *elf, Elf_Shdr *sechdr, Elf_Rela *r)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef R_ARM_CALL
 #define R_ARM_CALL	28
 #endif
@@ -1510,8 +1518,11 @@ static int addend_386_rel(struct elf_info *elf, Elf_Shdr *sechdr, Elf_Rela *r)
 #define R_ARM_JUMP24	29
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int addend_arm_rel(struct elf_info *elf, Elf_Shdr *sechdr, Elf_Rela *r)
 {
 	unsigned int r_typ = ELF_R_TYPE(r->r_info);
@@ -1527,7 +1538,12 @@ static int addend_arm_rel(struct elf_info *elf, Elf_Shdr *sechdr, Elf_Rela *r)
 	case R_ARM_CALL:
 	case R_ARM_JUMP24:
 =======
+<<<<<<< HEAD
+	case R_ARM_CALL:
+	case R_ARM_JUMP24:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* From ARM ABI: ((S + A) | T) - P */
 		r->r_addend = (int)(long)(elf->hdr +
 		              sechdr->sh_offset +
@@ -1873,14 +1889,20 @@ static void add_header(struct buffer *b, struct module *mod)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void add_intree_flag(struct buffer *b, int is_intree)
 {
 	if (is_intree)
 		buf_printf(b, "\nMODULE_INFO(intree, \"Y\");\n");
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void add_staging_flag(struct buffer *b, const char *name)
 {
 	static const char *staging_dir = "drivers/staging";
@@ -2130,8 +2152,12 @@ int main(int argc, char **argv)
 <<<<<<< HEAD
 	while ((opt = getopt(argc, argv, "i:I:e:cmsSo:awM:K:E")) != -1) {
 =======
+<<<<<<< HEAD
+	while ((opt = getopt(argc, argv, "i:I:e:cmsSo:awM:K:E")) != -1) {
+=======
 	while ((opt = getopt(argc, argv, "i:I:e:cmsSo:awM:K:")) != -1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (opt) {
 		case 'i':
 			kernel_read = optarg;
@@ -2174,7 +2200,13 @@ int main(int argc, char **argv)
 			section_error_on_mismatch = 1;
 			break;
 =======
+<<<<<<< HEAD
+		case 'E':
+			section_error_on_mismatch = 1;
+			break;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		default:
 			exit(1);
 		}
@@ -2214,7 +2246,11 @@ int main(int argc, char **argv)
 <<<<<<< HEAD
 		add_intree_flag(&buf, !external_module);
 =======
+<<<<<<< HEAD
+		add_intree_flag(&buf, !external_module);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		add_staging_flag(&buf, mod->name);
 		err |= add_versions(&buf, mod);
 		add_depends(&buf, mod, modules);
@@ -2228,6 +2264,9 @@ int main(int argc, char **argv)
 	if (dump_write)
 		write_dump(dump_write);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sec_mismatch_count && !sec_mismatch_verbose) {
 		merror(
@@ -2245,6 +2284,8 @@ int main(int argc, char **argv)
 		"build with:\n'make CONFIG_NO_ERROR_ON_MISMATCH=y'\n"
 		"(NOTE: This is not recommended)\n");
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (sec_mismatch_count && !sec_mismatch_verbose)
 		warn("modpost: Found %d section mismatch(es).\n"
@@ -2252,6 +2293,7 @@ int main(int argc, char **argv)
 		     "'make CONFIG_DEBUG_SECTION_MISMATCH=y'\n",
 		     sec_mismatch_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }

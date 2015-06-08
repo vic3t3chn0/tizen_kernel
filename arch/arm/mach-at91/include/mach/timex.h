@@ -24,6 +24,9 @@
 #include <mach/hardware.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARCH_AT91X40
 
 #define AT91X40_MASTER_CLOCK	40000000
@@ -36,6 +39,8 @@
 #endif
 
 #endif /* __ASM_ARCH_TIMEX_H */
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_ARCH_AT91RM9200)
 
@@ -100,3 +105,4 @@
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

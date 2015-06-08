@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/irq.h>
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/traps.h>
 #include <asm/bootinfo.h>
@@ -36,9 +40,12 @@ volatile __u8 *psc;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 irqreturn_t psc_irq(int, void *);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Debugging dump, used in various places to see what's going on.
  */
@@ -120,6 +127,9 @@ void __init psc_init(void)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * PSC interrupt handler. It's a lot like the VIA interrupt handler.
  */
 
@@ -128,6 +138,8 @@ static void psc_irq(unsigned int irq, struct irq_desc *desc)
 	unsigned int offset = (unsigned int)irq_desc_get_handler_data(desc);
 	int pIFR	= pIFRbase + offset;
 	int pIER	= pIERbase + offset;
+<<<<<<< HEAD
+=======
 =======
  * Register the PSC interrupt dispatchers for autovector interrupts 3-6.
  */
@@ -153,6 +165,7 @@ irqreturn_t psc_irq(int irq, void *dev_id)
 	int pIFR	= pIFRbase + ((int) dev_id);
 	int pIER	= pIERbase + ((int) dev_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int irq_num;
 	unsigned char irq_bit, events;
 
@@ -160,8 +173,12 @@ irqreturn_t psc_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 	printk("psc_irq: irq %u pIFR = 0x%02X pIER = 0x%02X\n",
 =======
+<<<<<<< HEAD
+	printk("psc_irq: irq %u pIFR = 0x%02X pIER = 0x%02X\n",
+=======
 	printk("psc_irq: irq %d pIFR = 0x%02X pIER = 0x%02X\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		irq, (int) psc_read_byte(pIFR), (int) psc_read_byte(pIER));
 #endif
 
@@ -170,8 +187,12 @@ irqreturn_t psc_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return IRQ_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irq_num = irq << 3;
 	irq_bit = 1;
@@ -181,13 +202,20 @@ irqreturn_t psc_irq(int irq, void *dev_id)
 <<<<<<< HEAD
 			generic_handle_irq(irq_num);
 =======
+<<<<<<< HEAD
+			generic_handle_irq(irq_num);
+=======
 			m68k_handle_int(irq_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		irq_num++;
 		irq_bit <<= 1;
 	} while (events >= irq_bit);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -204,9 +232,12 @@ void __init psc_register_interrupts(void)
 	irq_set_handler_data(IRQ_AUTO_5, (void *)0x50);
 	irq_set_chained_handler(IRQ_AUTO_6, psc_irq);
 	irq_set_handler_data(IRQ_AUTO_6, (void *)0x60);
+<<<<<<< HEAD
+=======
 =======
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void psc_irq_enable(int irq) {
@@ -232,6 +263,8 @@ void psc_irq_disable(int irq) {
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 void psc_irq_clear(int irq) {
 	int irq_src	= IRQ_SRC(irq);
@@ -250,3 +283,4 @@ int psc_irq_pending(int irq)
 	return psc_read_byte(pIFR) & (1 << irq_idx);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -6,17 +6,23 @@
  * Author:	Torsten Schenk <torsten.schenk@zoho.com>
  * Created:	Jan 01, 2011
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright:	(C) Torsten Schenk
  *
  * Thanks to:
  * - Holger Ruckdeschel: he found out how to control individual channel
  *   volumes and introduced mute switch
  *
+<<<<<<< HEAD
+=======
 =======
  * Version:	0.3.0
  * Copyright:	(C) Torsten Schenk
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -28,7 +34,11 @@
 <<<<<<< HEAD
 #include <sound/tlv.h>
 =======
+<<<<<<< HEAD
+#include <sound/tlv.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "control.h"
 #include "comm.h"
@@ -38,6 +48,8 @@ static char *opt_coax_texts[2] = { "Optical", "Coax" };
 static char *line_phono_texts[2] = { "Line", "Phono" };
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * calculated with $value\[i\] = 128 \cdot sqrt[3]{\frac{i}{128}}$
@@ -61,6 +73,7 @@ static const u8 log_volume_table[128] = {
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * data that needs to be sent to device. sets up card internal stuff.
  * values dumped from windows driver and filtered by trial'n'error.
  */
@@ -78,8 +91,12 @@ init_data[] = {
 <<<<<<< HEAD
 	{ 0x12, 0x0d, 0x38 }, { 0x12, 0x21, 0x82 }, { 0x12, 0x22, 0x80 },
 =======
+<<<<<<< HEAD
+	{ 0x12, 0x0d, 0x38 }, { 0x12, 0x21, 0x82 }, { 0x12, 0x22, 0x80 },
+=======
 	{ 0x12, 0x0d, 0x78 }, { 0x12, 0x21, 0x82 }, { 0x12, 0x22, 0x80 },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0x12, 0x23, 0x00 }, { 0x12, 0x06, 0x02 }, { 0x12, 0x03, 0x00 },
 	{ 0x12, 0x02, 0x00 }, { 0x22, 0x03, 0x01 },
 	{ 0 } /* TERMINATING ENTRY */
@@ -95,12 +112,21 @@ static DECLARE_TLV_DB_MINMAX(tlv_output, -9000, 0);
 static DECLARE_TLV_DB_MINMAX(tlv_input, -1500, 1500);
 
 =======
+<<<<<<< HEAD
+static DECLARE_TLV_DB_MINMAX(tlv_output, -9000, 0);
+static DECLARE_TLV_DB_MINMAX(tlv_input, -1500, 1500);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	DIGITAL_THRU_ONLY_SAMPLERATE = 3
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void usb6fire_control_output_vol_update(struct control_runtime *rt)
 {
 	struct comm_runtime *comm_rt = rt->chip->comm;
@@ -135,6 +161,8 @@ static void usb6fire_control_input_vol_update(struct control_runtime *rt)
 					rt->input_vol[i] & 0x3f);
 				rt->ivol_updated |= 1 << i;
 			}
+<<<<<<< HEAD
+=======
 =======
 static void usb6fire_control_master_vol_update(struct control_runtime *rt)
 {
@@ -147,6 +175,7 @@ static void usb6fire_control_master_vol_update(struct control_runtime *rt)
 		comm_rt->write8(comm_rt, 0x12, 0x0e, 0x00);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void usb6fire_control_line_phono_update(struct control_runtime *rt)
@@ -229,6 +258,9 @@ static int usb6fire_control_streaming_update(struct control_runtime *rt)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int usb6fire_control_output_vol_info(struct snd_kcontrol *kcontrol,
 		struct snd_ctl_elem_info *uinfo)
 {
@@ -340,6 +372,8 @@ static int usb6fire_control_input_vol_info(struct snd_kcontrol *kcontrol,
 }
 
 static int usb6fire_control_input_vol_put(struct snd_kcontrol *kcontrol,
+<<<<<<< HEAD
+=======
 =======
 static int usb6fire_control_master_vol_info(struct snd_kcontrol *kcontrol,
 		struct snd_ctl_elem_info *uinfo)
@@ -353,11 +387,15 @@ static int usb6fire_control_master_vol_info(struct snd_kcontrol *kcontrol,
 
 static int usb6fire_control_master_vol_put(struct snd_kcontrol *kcontrol,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct snd_ctl_elem_value *ucontrol)
 {
 	struct control_runtime *rt = snd_kcontrol_chip(kcontrol);
 	int changed = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (rt->input_vol[0] != ucontrol->value.integer.value[0]) {
 		rt->input_vol[0] = ucontrol->value.integer.value[0] - 15;
@@ -384,6 +422,8 @@ static int usb6fire_control_input_vol_get(struct snd_kcontrol *kcontrol,
 	ucontrol->value.integer.value[0] = rt->input_vol[0] + 15;
 	ucontrol->value.integer.value[1] = rt->input_vol[1] + 15;
 
+<<<<<<< HEAD
+=======
 =======
 	if (rt->master_vol != ucontrol->value.integer.value[0]) {
 		rt->master_vol = ucontrol->value.integer.value[0];
@@ -399,6 +439,7 @@ static int usb6fire_control_master_vol_get(struct snd_kcontrol *kcontrol,
 	struct control_runtime *rt = snd_kcontrol_chip(kcontrol);
 	ucontrol->value.integer.value[0] = rt->master_vol;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -494,6 +535,9 @@ static int usb6fire_control_digital_thru_get(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct __devinitdata snd_kcontrol_new vol_elements[] = {
 	{
 		.iface = SNDRV_CTL_ELEM_IFACE_MIXER,
@@ -571,6 +615,8 @@ static struct __devinitdata snd_kcontrol_new mute_elements[] = {
 static struct __devinitdata snd_kcontrol_new elements[] = {
 	{
 		.iface = SNDRV_CTL_ELEM_IFACE_MIXER,
+<<<<<<< HEAD
+=======
 =======
 static struct __devinitdata snd_kcontrol_new elements[] = {
 	{
@@ -585,6 +631,7 @@ static struct __devinitdata snd_kcontrol_new elements[] = {
 	{
 		.iface = SNDRV_CTL_ELEM_IFACE_MIXER,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name = "Line/Phono Capture Route",
 		.index = 0,
 		.access = SNDRV_CTL_ELEM_ACCESS_READWRITE,
@@ -611,6 +658,9 @@ static struct __devinitdata snd_kcontrol_new elements[] = {
 		.put = usb6fire_control_digital_thru_put
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.iface = SNDRV_CTL_ELEM_IFACE_MIXER,
 		.name = "Analog Capture Volume",
@@ -659,11 +709,14 @@ static int usb6fire_control_add_virtual(
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	{}
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __devinit usb6fire_control_init(struct sfire_chip *chip)
 {
 	int i;
@@ -690,6 +743,9 @@ int __devinit usb6fire_control_init(struct sfire_chip *chip)
 	usb6fire_control_opt_coax_update(rt);
 	usb6fire_control_line_phono_update(rt);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb6fire_control_output_vol_update(rt);
 	usb6fire_control_output_mute_update(rt);
 	usb6fire_control_input_vol_update(rt);
@@ -710,11 +766,14 @@ int __devinit usb6fire_control_init(struct sfire_chip *chip)
 		return ret;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	usb6fire_control_master_vol_update(rt);
 	usb6fire_control_streaming_update(rt);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i = 0;
 	while (elements[i].name) {
 		ret = snd_ctl_add(chip->card, snd_ctl_new1(&elements[i], rt));

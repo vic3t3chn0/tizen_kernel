@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/types.h>
 #include <linux/interrupt.h>
@@ -25,8 +29,12 @@
 <<<<<<< HEAD
 #include <mach/gpio-ks8695.h>
 =======
+<<<<<<< HEAD
+#include <mach/gpio-ks8695.h>
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/devices.h>
 
 #include "generic.h"
@@ -35,8 +43,12 @@
 <<<<<<< HEAD
 static int micrel_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+static int micrel_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 static int micrel_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return KS8695_IRQ_EXTERN0;
 }
@@ -68,8 +80,12 @@ MACHINE_START(KS8695, "KS8695 Centaur Development Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= KS8695_SDRAM_PA + 0x100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= ks8695_map_io,
 	.init_irq	= ks8695_init_irq,
 	.init_machine	= micrel_init,
@@ -77,5 +93,9 @@ MACHINE_START(KS8695, "KS8695 Centaur Development Board")
 <<<<<<< HEAD
 	.restart	= ks8695_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ks8695_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

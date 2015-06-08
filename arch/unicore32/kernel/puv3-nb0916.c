@@ -15,8 +15,11 @@
 #include <linux/device.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/mtd/physmap.h>
 #include <linux/io.h>
@@ -130,8 +133,12 @@ int __init mach_nb0916_init(void)
 <<<<<<< HEAD
 		IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
 =======
+<<<<<<< HEAD
+		IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
+=======
 		IRQF_DISABLED | IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"NB0916 lcd case off", NULL) < 0) {
 
 		printk(KERN_DEBUG "LCD-Case-OFF IRQ %d not available\n",
@@ -142,8 +149,12 @@ int __init mach_nb0916_init(void)
 <<<<<<< HEAD
 		IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
 =======
+<<<<<<< HEAD
+		IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
+=======
 		IRQF_DISABLED | IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"NB0916 overheating protection", NULL) < 0) {
 
 		printk(KERN_DEBUG "Overheating Protection IRQ %d not available\n",

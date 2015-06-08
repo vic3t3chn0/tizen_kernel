@@ -145,8 +145,12 @@ hydra_init(void)
 <<<<<<< HEAD
 	Hydra = ioremap(r.start, resource_size(&r));
 =======
+<<<<<<< HEAD
+	Hydra = ioremap(r.start, resource_size(&r));
+=======
 	Hydra = ioremap(r.start, r.end-r.start);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk("Hydra Mac I/O at %llx\n", (unsigned long long)r.start);
 	printk("Hydra Feature_Control was %x",
 	       in_le32(&Hydra->Feature_Control));
@@ -206,8 +210,12 @@ static void __init setup_peg2(struct pci_controller *hose, struct device_node *d
 <<<<<<< HEAD
 	pci_add_flags(PCI_REASSIGN_ALL_BUS);
 =======
+<<<<<<< HEAD
+	pci_add_flags(PCI_REASSIGN_ALL_BUS);
+=======
 	ppc_pci_add_flags(PPC_PCI_REASSIGN_ALL_BUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* keep the reference to the root node */
 }
 

@@ -36,8 +36,12 @@ static int handle_set_prefix(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 		operand2 += vcpu->run->s.regs.gprs[base2];
 =======
+<<<<<<< HEAD
+		operand2 += vcpu->run->s.regs.gprs[base2];
+=======
 		operand2 += vcpu->arch.guest_gprs[base2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* must be word boundary */
 	if (operand2 & 3) {
@@ -63,9 +67,13 @@ static int handle_set_prefix(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 	kvm_s390_set_prefix(vcpu, address);
 =======
+<<<<<<< HEAD
+	kvm_s390_set_prefix(vcpu, address);
+=======
 	vcpu->arch.sie_block->prefix = address;
 	vcpu->arch.sie_block->ihcpu = 0xffff;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	VCPU_EVENT(vcpu, 5, "setting prefix to %x", address);
 out:
@@ -85,8 +93,12 @@ static int handle_store_prefix(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 		operand2 += vcpu->run->s.regs.gprs[base2];
 =======
+<<<<<<< HEAD
+		operand2 += vcpu->run->s.regs.gprs[base2];
+=======
 		operand2 += vcpu->arch.guest_gprs[base2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* must be word boundary */
 	if (operand2 & 3) {
@@ -121,8 +133,12 @@ static int handle_store_cpu_address(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 		useraddr += vcpu->run->s.regs.gprs[base2];
 =======
+<<<<<<< HEAD
+		useraddr += vcpu->run->s.regs.gprs[base2];
+=======
 		useraddr += vcpu->arch.guest_gprs[base2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (useraddr & 1) {
 		kvm_s390_inject_program_int(vcpu, PGM_SPECIFICATION);
@@ -200,8 +216,12 @@ static int handle_stidp(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 		operand2 += vcpu->run->s.regs.gprs[base2];
 =======
+<<<<<<< HEAD
+		operand2 += vcpu->run->s.regs.gprs[base2];
+=======
 		operand2 += vcpu->arch.guest_gprs[base2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (operand2 & 7) {
 		kvm_s390_inject_program_int(vcpu, PGM_SPECIFICATION);
@@ -257,10 +277,16 @@ static int handle_stsi(struct kvm_vcpu *vcpu)
 	int sel1 = vcpu->run->s.regs.gprs[0] & 0xff;
 	int sel2 = vcpu->run->s.regs.gprs[1] & 0xffff;
 =======
+<<<<<<< HEAD
+	int fc = (vcpu->run->s.regs.gprs[0] & 0xf0000000) >> 28;
+	int sel1 = vcpu->run->s.regs.gprs[0] & 0xff;
+	int sel2 = vcpu->run->s.regs.gprs[1] & 0xffff;
+=======
 	int fc = (vcpu->arch.guest_gprs[0] & 0xf0000000) >> 28;
 	int sel1 = vcpu->arch.guest_gprs[0] & 0xff;
 	int sel2 = vcpu->arch.guest_gprs[1] & 0xffff;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int base2 = vcpu->arch.sie_block->ipb >> 28;
 	int disp2 = ((vcpu->arch.sie_block->ipb & 0x0fff0000) >> 16);
 	u64 operand2;
@@ -274,8 +300,12 @@ static int handle_stsi(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 		operand2 += vcpu->run->s.regs.gprs[base2];
 =======
+<<<<<<< HEAD
+		operand2 += vcpu->run->s.regs.gprs[base2];
+=======
 		operand2 += vcpu->arch.guest_gprs[base2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (operand2 & 0xfff && fc > 0)
 		return kvm_s390_inject_program_int(vcpu, PGM_SPECIFICATION);
@@ -285,8 +315,12 @@ static int handle_stsi(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 		vcpu->run->s.regs.gprs[0] = 3 << 28;
 =======
+<<<<<<< HEAD
+		vcpu->run->s.regs.gprs[0] = 3 << 28;
+=======
 		vcpu->arch.guest_gprs[0] = 3 << 28;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		vcpu->arch.sie_block->gpsw.mask &= ~(3ul << 44);
 		return 0;
 	case 1: /* same handling for 1 and 2 */
@@ -318,8 +352,12 @@ static int handle_stsi(struct kvm_vcpu *vcpu)
 <<<<<<< HEAD
 	vcpu->run->s.regs.gprs[0] = 0;
 =======
+<<<<<<< HEAD
+	vcpu->run->s.regs.gprs[0] = 0;
+=======
 	vcpu->arch.guest_gprs[0] = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 out_mem:
 	free_page(mem);
@@ -365,6 +403,9 @@ int kvm_s390_handle_b2(struct kvm_vcpu *vcpu)
 	return -EOPNOTSUPP;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int handle_tprot(struct kvm_vcpu *vcpu)
 {
@@ -420,5 +461,8 @@ int kvm_s390_handle_e5(struct kvm_vcpu *vcpu)
 	return -EOPNOTSUPP;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

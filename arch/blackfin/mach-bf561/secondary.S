@@ -24,6 +24,9 @@
 
 ENTRY(_coreb_trampoline_start)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Enable Cycle Counter and Nesting Of Interrupts */
 #ifdef CONFIG_BFIN_SCRATCH_REG_CYCLES
 	R0 = SYSCFG_SNEN;
@@ -61,6 +64,8 @@ ENTRY(_coreb_trampoline_start)
 	[p5 + (DTEST_COMMAND - COREMMR_BASE)] = r6;
 	[p5 + (ITEST_COMMAND - COREMMR_BASE)] = r6;
 	CSYNC;
+<<<<<<< HEAD
+=======
 =======
 	/* Set the SYSCFG register */
 	R0 = 0x36;
@@ -106,11 +111,15 @@ ENTRY(_coreb_trampoline_start)
 	M2 = r0;
 	M3 = r0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	trace_buffer_init(p0,r0);
 
 	/* Turn off the icache */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r1 = [p5 + (IMEM_CONTROL - COREMMR_BASE)];
 	BITCLR (r1, ENICPLB_P);
 	[p5 + (IMEM_CONTROL - COREMMR_BASE)] = r1;
@@ -126,6 +135,8 @@ ENTRY(_coreb_trampoline_start)
 	p1.l = _initial_pda_coreb;
 	p1.h = _initial_pda_coreb;
 	r4 = RETX;
+<<<<<<< HEAD
+=======
 =======
 	p0.l = LO(IMEM_CONTROL);
 	p0.h = HI(IMEM_CONTROL);
@@ -157,6 +168,7 @@ ENTRY(_coreb_trampoline_start)
 	[P0] = R0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_DEBUG_DOUBLEFAULT
 	/* Only save these if we are storing them,
 	 * This happens here, since L1 gets clobbered
@@ -164,6 +176,9 @@ ENTRY(_coreb_trampoline_start)
 	 */
 	GET_PDA(p0, r0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r0 = [p0 + PDA_DF_RETX];
 	r1 = [p0 + PDA_DF_DCPLB];
 	r2 = [p0 + PDA_DF_ICPLB];
@@ -174,6 +189,8 @@ ENTRY(_coreb_trampoline_start)
 	[p1 + PDA_INIT_DF_SEQSTAT] = r3;
 #endif
 	[p1 + PDA_INIT_RETX] = r4;
+<<<<<<< HEAD
+=======
 =======
 	r7 = [p0 + PDA_DF_RETX];
 	p1.l = _init_saved_retx_coreb;
@@ -196,6 +213,7 @@ ENTRY(_coreb_trampoline_start)
 	[p1] = r7;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Initialize stack pointer */
 	sp.l = lo(INITIAL_STACK);
@@ -210,6 +228,9 @@ ENTRY(_coreb_trampoline_start)
 	/* EVT15 = _real_start */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p1.l = _coreb_start;
 	p1.h = _coreb_start;
 	[p5 + (EVT15 - COREMMR_BASE)] = p1;
@@ -217,6 +238,8 @@ ENTRY(_coreb_trampoline_start)
 
 	r0 = EVT_IVG15 (z);
 	sti r0;
+<<<<<<< HEAD
+=======
 =======
 	p0.l = lo(EVT15);
 	p0.h = hi(EVT15);
@@ -232,6 +255,7 @@ ENTRY(_coreb_trampoline_start)
 	[p0] = p1;
 	csync;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	raise 15;
 	p0.l = .LWAIT_HERE;

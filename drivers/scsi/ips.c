@@ -1511,6 +1511,19 @@ static int ips_is_passthru(struct scsi_cmnd *SC)
                 /* kmap_atomic() ensures addressability of the user buffer.*/
                 /* local_irq_save() protects the KM_IRQ0 address slot.     */
                 local_irq_save(flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+                buffer = kmap_atomic(sg_page(sg)) + sg->offset;
+                if (buffer && buffer[0] == 'C' && buffer[1] == 'O' &&
+                    buffer[2] == 'P' && buffer[3] == 'P') {
+                        kunmap_atomic(buffer - sg->offset);
+                        local_irq_restore(flags);
+                        return 1;
+                }
+                kunmap_atomic(buffer - sg->offset);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
                 buffer = kmap_atomic(sg_page(sg), KM_IRQ0) + sg->offset;
                 if (buffer && buffer[0] == 'C' && buffer[1] == 'O' &&
                     buffer[2] == 'P' && buffer[3] == 'P') {
@@ -1519,6 +1532,10 @@ static int ips_is_passthru(struct scsi_cmnd *SC)
                         return 1;
                 }
                 kunmap_atomic(buffer - sg->offset, KM_IRQ0);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
                 local_irq_restore(flags);
 	}
 	return 0;
@@ -4494,7 +4511,15 @@ ips_init_scb(ips_ha_t * ha, ips_scb_t * scb)
 /*                                                                          */
 /*   Initialize a CCB to default values                                     */
 /*                                                                          */
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* ASSUMED to be called from within a lock                                 */
+=======
 /* ASSUMED to be callled from within a lock                                 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* ASSUMED to be callled from within a lock                                 */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*                                                                          */
 /****************************************************************************/
 static ips_scb_t *

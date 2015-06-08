@@ -48,6 +48,15 @@
 #include <linux/platform_device.h>
 #include <linux/clk.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/of.h>
+#include <linux/of_device.h>
+#include <linux/of_i2c.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/irqs.h>
 #include <mach/hardware.h>
@@ -125,6 +134,17 @@ struct imx_i2c_struct {
 	unsigned int		ifdr; /* IMX_I2C_IFDR */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct of_device_id i2c_imx_dt_ids[] = {
+	{ .compatible = "fsl,imx1-i2c", },
+	{ /* sentinel */ }
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** Functions for IMX I2C adapter driver ***************************************
 *******************************************************************************/
 
@@ -141,11 +161,20 @@ static int i2c_imx_bus_busy(struct imx_i2c_struct *i2c_imx, int for_busy)
 			break;
 		if (!for_busy && !(temp & I2SR_IBB))
 			break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (signal_pending(current)) {
 			dev_dbg(&i2c_imx->adapter.dev,
 				"<%s> I2C Interrupted\n", __func__);
 			return -EINTR;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (time_after(jiffies, orig_jiffies + msecs_to_jiffies(500))) {
 			dev_dbg(&i2c_imx->adapter.dev,
 				"<%s> I2C bus is busy\n", __func__);
@@ -188,7 +217,15 @@ static int i2c_imx_start(struct imx_i2c_struct *i2c_imx)
 
 	dev_dbg(&i2c_imx->adapter.dev, "<%s>\n", __func__);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	clk_prepare_enable(i2c_imx->clk);
+=======
 	clk_enable(i2c_imx->clk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_enable(i2c_imx->clk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writeb(i2c_imx->ifdr, i2c_imx->base + IMX_I2C_IFDR);
 	/* Enable I2C controller */
 	writeb(0, i2c_imx->base + IMX_I2C_I2SR);
@@ -237,7 +274,15 @@ static void i2c_imx_stop(struct imx_i2c_struct *i2c_imx)
 
 	/* Disable I2C controller */
 	writeb(0, i2c_imx->base + IMX_I2C_I2CR);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	clk_disable_unprepare(i2c_imx->clk);
+=======
 	clk_disable(i2c_imx->clk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_disable(i2c_imx->clk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init i2c_imx_set_clk(struct imx_i2c_struct *i2c_imx,
@@ -466,10 +511,23 @@ static int __init i2c_imx_probe(struct platform_device *pdev)
 {
 	struct imx_i2c_struct *i2c_imx;
 	struct resource *res;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct imxi2c_platform_data *pdata = pdev->dev.platform_data;
+	void __iomem *base;
+	resource_size_t res_size;
+	int irq, bitrate;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct imxi2c_platform_data *pdata;
 	void __iomem *base;
 	resource_size_t res_size;
 	int irq;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	dev_dbg(&pdev->dev, "<%s>\n", __func__);
@@ -485,6 +543,16 @@ static int __init i2c_imx_probe(struct platform_device *pdev)
 		return -ENOENT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res_size = resource_size(res);
+
+	if (!request_mem_region(res->start, res_size, DRIVER_NAME)) {
+		dev_err(&pdev->dev, "request_mem_region failed\n");
+		return -EBUSY;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdata = pdev->dev.platform_data;
 
 	if (pdata && pdata->init) {
@@ -498,6 +566,10 @@ static int __init i2c_imx_probe(struct platform_device *pdev)
 	if (!request_mem_region(res->start, res_size, DRIVER_NAME)) {
 		ret = -EBUSY;
 		goto fail0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	base = ioremap(res->start, res_size);
@@ -520,6 +592,13 @@ static int __init i2c_imx_probe(struct platform_device *pdev)
 	i2c_imx->adapter.algo		= &i2c_imx_algo;
 	i2c_imx->adapter.dev.parent	= &pdev->dev;
 	i2c_imx->adapter.nr 		= pdev->id;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_imx->adapter.dev.of_node	= pdev->dev.of_node;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2c_imx->irq			= irq;
 	i2c_imx->base			= base;
 	i2c_imx->res			= res;
@@ -546,10 +625,25 @@ static int __init i2c_imx_probe(struct platform_device *pdev)
 	i2c_set_adapdata(&i2c_imx->adapter, i2c_imx);
 
 	/* Set up clock divider */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bitrate = IMX_I2C_BIT_RATE;
+	ret = of_property_read_u32(pdev->dev.of_node,
+				   "clock-frequency", &bitrate);
+	if (ret < 0 && pdata && pdata->bitrate)
+		bitrate = pdata->bitrate;
+	i2c_imx_set_clk(i2c_imx, bitrate);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pdata && pdata->bitrate)
 		i2c_imx_set_clk(i2c_imx, pdata->bitrate);
 	else
 		i2c_imx_set_clk(i2c_imx, IMX_I2C_BIT_RATE);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Set up chip registers to defaults */
 	writeb(0, i2c_imx->base + IMX_I2C_I2CR);
@@ -562,6 +656,14 @@ static int __init i2c_imx_probe(struct platform_device *pdev)
 		goto fail5;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	of_i2c_register_devices(&i2c_imx->adapter);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set up platform driver data */
 	platform_set_drvdata(pdev, i2c_imx);
 
@@ -586,16 +688,32 @@ fail2:
 	iounmap(base);
 fail1:
 	release_mem_region(res->start, resource_size(res));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 fail0:
 	if (pdata && pdata->exit)
 		pdata->exit(&pdev->dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+fail0:
+	if (pdata && pdata->exit)
+		pdata->exit(&pdev->dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret; /* Return error number */
 }
 
 static int __exit i2c_imx_remove(struct platform_device *pdev)
 {
 	struct imx_i2c_struct *i2c_imx = platform_get_drvdata(pdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct imxi2c_platform_data *pdata = pdev->dev.platform_data;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct imxi2c_platform_data *pdata = pdev->dev.platform_data;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* remove adapter */
 	dev_dbg(&i2c_imx->adapter.dev, "adapter removed\n");
@@ -611,10 +729,19 @@ static int __exit i2c_imx_remove(struct platform_device *pdev)
 	writeb(0, i2c_imx->base + IMX_I2C_I2CR);
 	writeb(0, i2c_imx->base + IMX_I2C_I2SR);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Shut down hardware */
 	if (pdata && pdata->exit)
 		pdata->exit(&pdev->dev);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clk_put(i2c_imx->clk);
 
 	iounmap(i2c_imx->base);
@@ -628,6 +755,13 @@ static struct platform_driver i2c_imx_driver = {
 	.driver	= {
 		.name	= DRIVER_NAME,
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.of_match_table = i2c_imx_dt_ids,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 };
 

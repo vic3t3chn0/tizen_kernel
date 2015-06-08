@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * 
 =======
+<<<<<<< HEAD
+ * 
+=======
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (c) 2008 Herbert Xu <herbert@gondor.apana.org.au>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -12,8 +16,12 @@
 <<<<<<< HEAD
  * Software Foundation; either version 2 of the License, or (at your option) 
 =======
+<<<<<<< HEAD
+ * Software Foundation; either version 2 of the License, or (at your option) 
+=======
  * Software Foundation; either version 2 of the License, or (at your option)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * any later version.
  *
  */
@@ -207,17 +215,6 @@ static inline int crypto_ahash_init(struct ahash_request *req)
 {
 <<<<<<< HEAD
 =======
-#ifdef CONFIG_CRYPTO_FIPS
-	if (unlikely(in_fips_err()))
-		return -EACCES;
-#endif
-
->>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
-	return crypto_ahash_reqtfm(req)->init(req);
-}
-
-static inline int crypto_ahash_update(struct ahash_request *req)
-{
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_CRYPTO_FIPS
@@ -226,6 +223,23 @@ static inline int crypto_ahash_update(struct ahash_request *req)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
+	return crypto_ahash_reqtfm(req)->init(req);
+}
+
+static inline int crypto_ahash_update(struct ahash_request *req)
+{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_CRYPTO_FIPS
+	if (unlikely(in_fips_err()))
+		return -EACCES;
+#endif
+
+>>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return crypto_ahash_reqtfm(req)->update(req);
 }
 
@@ -242,12 +256,15 @@ static inline struct ahash_request *ahash_request_alloc(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_FIPS
 	if (unlikely(in_fips_err()))
 		return NULL;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	req = kmalloc(sizeof(struct ahash_request) +
 		      crypto_ahash_reqsize(tfm), gfp);
 
@@ -365,12 +382,15 @@ static inline int crypto_shash_export(struct shash_desc *desc, void *out)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_FIPS
 	if (unlikely(in_fips_err()))
 		return -EACCES;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return crypto_shash_alg(desc->tfm)->export(desc, out);
 }
 
@@ -378,17 +398,6 @@ static inline int crypto_shash_import(struct shash_desc *desc, const void *in)
 {
 <<<<<<< HEAD
 =======
-#ifdef CONFIG_CRYPTO_FIPS
-	if (unlikely(in_fips_err()))
-		return -EACCES;
-#endif
-
->>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
-	return crypto_shash_alg(desc->tfm)->import(desc, in);
-}
-
-static inline int crypto_shash_init(struct shash_desc *desc)
-{
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_CRYPTO_FIPS
@@ -397,6 +406,23 @@ static inline int crypto_shash_init(struct shash_desc *desc)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
+	return crypto_shash_alg(desc->tfm)->import(desc, in);
+}
+
+static inline int crypto_shash_init(struct shash_desc *desc)
+{
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+#ifdef CONFIG_CRYPTO_FIPS
+	if (unlikely(in_fips_err()))
+		return -EACCES;
+#endif
+
+>>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return crypto_shash_alg(desc->tfm)->init(desc);
 }
 

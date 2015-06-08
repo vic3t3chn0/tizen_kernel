@@ -19,8 +19,12 @@
 <<<<<<< HEAD
  * See Documentation/DMA-API-HOWTO.txt and
 =======
+<<<<<<< HEAD
+ * See Documentation/DMA-API-HOWTO.txt and
+=======
  * See Documentation/PCI/PCI-DMA-mapping.txt and
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Documentation/DMA-API.txt for documentation.
  */
 
@@ -35,7 +39,11 @@
 <<<<<<< HEAD
 #include <asm/cacheflush.h>
 =======
+<<<<<<< HEAD
+#include <asm/cacheflush.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DMA_ERROR_CODE		(~(dma_addr_t)0x0)
 
@@ -43,8 +51,11 @@
 #define __dma_free_coherent(size, addr)		((void)0)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define __dma_sync(addr, size, rw)		((void)0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline unsigned long device_to_mask(struct device *dev)
 {
@@ -107,6 +118,9 @@ static inline int dma_set_mask(struct device *dev, u64 dma_mask)
 #include <asm-generic/dma-mapping-common.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void __dma_sync(unsigned long paddr,
 			      size_t size, enum dma_data_direction direction)
 {
@@ -123,8 +137,11 @@ static inline void __dma_sync(unsigned long paddr,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int dma_mapping_error(struct device *dev, dma_addr_t dma_addr)
 {
 	struct dma_map_ops *ops = get_dma_ops(dev);
@@ -138,15 +155,21 @@ static inline int dma_mapping_error(struct device *dev, dma_addr_t dma_addr)
 #define dma_free_noncoherent(d, s, v, h) dma_free_coherent(d, s, v, h)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dma_alloc_coherent(d, s, h, f) dma_alloc_attrs(d, s, h, f, NULL)
 
 static inline void *dma_alloc_attrs(struct device *dev, size_t size,
 				    dma_addr_t *dma_handle, gfp_t flag,
 				    struct dma_attrs *attrs)
+<<<<<<< HEAD
+=======
 =======
 static inline void *dma_alloc_coherent(struct device *dev, size_t size,
 					dma_addr_t *dma_handle, gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dma_map_ops *ops = get_dma_ops(dev);
 	void *memory;
@@ -156,23 +179,33 @@ static inline void *dma_alloc_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 	memory = ops->alloc(dev, size, dma_handle, flag, attrs);
 =======
+<<<<<<< HEAD
+	memory = ops->alloc(dev, size, dma_handle, flag, attrs);
+=======
 	memory = ops->alloc_coherent(dev, size, dma_handle, flag);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	debug_dma_alloc_coherent(dev, size, *dma_handle, memory);
 	return memory;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dma_free_coherent(d,s,c,h) dma_free_attrs(d, s, c, h, NULL)
 
 static inline void dma_free_attrs(struct device *dev, size_t size,
 				  void *cpu_addr, dma_addr_t dma_handle,
 				  struct dma_attrs *attrs)
+<<<<<<< HEAD
+=======
 =======
 static inline void dma_free_coherent(struct device *dev, size_t size,
 				     void *cpu_addr, dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dma_map_ops *ops = get_dma_ops(dev);
 
@@ -181,8 +214,12 @@ static inline void dma_free_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 	ops->free(dev, size, cpu_addr, dma_handle, attrs);
 =======
+<<<<<<< HEAD
+	ops->free(dev, size, cpu_addr, dma_handle, attrs);
+=======
 	ops->free_coherent(dev, size, cpu_addr, dma_handle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void dma_cache_sync(struct device *dev, void *vaddr, size_t size,
@@ -192,8 +229,12 @@ static inline void dma_cache_sync(struct device *dev, void *vaddr, size_t size,
 <<<<<<< HEAD
 	__dma_sync(virt_to_phys(vaddr), size, (int)direction);
 =======
+<<<<<<< HEAD
+	__dma_sync(virt_to_phys(vaddr), size, (int)direction);
+=======
 	__dma_sync(vaddr, size, (int)direction);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif	/* _ASM_MICROBLAZE_DMA_MAPPING_H */

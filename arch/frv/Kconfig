@@ -11,7 +11,12 @@ config FRV
 	select ARCH_HAVE_NMI_SAFE_CMPXCHG
 	select GENERIC_CPU_DEVICES
 =======
+<<<<<<< HEAD
+	select ARCH_HAVE_NMI_SAFE_CMPXCHG
+	select GENERIC_CPU_DEVICES
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ZONE_DMA
 	bool
@@ -324,7 +329,11 @@ config PCI
 <<<<<<< HEAD
 	select GENERIC_PCI_IOMAP
 =======
+<<<<<<< HEAD
+	select GENERIC_PCI_IOMAP
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Some FR-V systems (such as the MB93090-MB00 VDK) have PCI
 	  onboard. If you have one of these boards and you wish to use the PCI
@@ -351,6 +360,8 @@ source "drivers/pcmcia/Kconfig"
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #config MATH_EMULATION
 #	bool "Math emulation support (EXPERIMENTAL)"
 #	depends on EXPERIMENTAL
@@ -362,6 +373,7 @@ source "drivers/pcmcia/Kconfig"
 #	  should probably wait a while.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 menu "Power management options"
 
 config ARCH_SUSPEND_POSSIBLE

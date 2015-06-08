@@ -14,9 +14,22 @@
 #include <linux/list.h>
 #include <linux/radix-tree.h>
 #include <linux/spinlock.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+#include "internals.h"
+
+static struct intc_map_entry intc_irq_xlate[INTC_NR_IRQS];
+=======
 #include "internals.h"
 
 static struct intc_map_entry intc_irq_xlate[NR_IRQS];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "internals.h"
+
+static struct intc_map_entry intc_irq_xlate[NR_IRQS];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct intc_virq_list {
 	unsigned int irq;

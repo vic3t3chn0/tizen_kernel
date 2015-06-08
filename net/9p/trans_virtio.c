@@ -30,7 +30,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/in.h>
 #include <linux/module.h>
 #include <linux/net.h>
@@ -153,28 +158,43 @@ static void req_done(struct virtqueue *vq)
 <<<<<<< HEAD
 	p9_debug(P9_DEBUG_TRANS, ": request done\n");
 =======
+<<<<<<< HEAD
+	p9_debug(P9_DEBUG_TRANS, ": request done\n");
+=======
 	P9_DPRINTK(P9_DEBUG_TRANS, ": request done\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	while (1) {
 		spin_lock_irqsave(&chan->lock, flags);
 		rc = virtqueue_get_buf(chan->vq, &len);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc == NULL) {
 			spin_unlock_irqrestore(&chan->lock, flags);
 			break;
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chan->ring_bufs_avail = 1;
 		spin_unlock_irqrestore(&chan->lock, flags);
 		/* Wakeup if anyone waiting for VirtIO ring space. */
 		wake_up(chan->vc_wq);
+<<<<<<< HEAD
+		p9_debug(P9_DEBUG_TRANS, ": rc %p\n", rc);
+		p9_debug(P9_DEBUG_TRANS, ": lookup tag %d\n", rc->tag);
+		req = p9_tag_lookup(chan->client, rc->tag);
+=======
 <<<<<<< HEAD
 		p9_debug(P9_DEBUG_TRANS, ": rc %p\n", rc);
 		p9_debug(P9_DEBUG_TRANS, ": lookup tag %d\n", rc->tag);
@@ -195,6 +215,7 @@ static void req_done(struct virtqueue *vq)
 			req->tc->private = NULL;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		req->status = REQ_STATUS_RCVD;
 		p9_client_cb(chan->client, req);
 	}
@@ -218,10 +239,15 @@ static void req_done(struct virtqueue *vq)
 static int pack_sg_list(struct scatterlist *sg, int start,
 			int limit, char *data, int count)
 =======
+<<<<<<< HEAD
+static int pack_sg_list(struct scatterlist *sg, int start,
+			int limit, char *data, int count)
+=======
 static int
 pack_sg_list(struct scatterlist *sg, int start, int limit, char *data,
 								int count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int s;
 	int index = start;
@@ -251,6 +277,9 @@ static int p9_virtio_cancel(struct p9_client *client, struct p9_req_t *req)
  * @sg: scatter/gather list to pack into
  * @start: which segment of the sg_list to start at
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @**pdata: a list of pages to add into sg.
  * @nr_pages: number of pages to pack into the scatter/gather list
  * @data: data to pack into scatter/gather list
@@ -281,6 +310,8 @@ pack_sg_list_p(struct scatterlist *sg, int start, int limit,
 		nr_pages--;
 	}
 	return index - start;
+<<<<<<< HEAD
+=======
 =======
  * @pdata_off: Offset into the first page
  * @**pdata: a list of pages to add into sg.
@@ -308,6 +339,7 @@ pack_sg_list_p(struct scatterlist *sg, int start, int limit, size_t pdata_off,
 	}
 	return index-start;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -321,6 +353,9 @@ static int
 p9_virtio_request(struct p9_client *client, struct p9_req_t *req)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	int in, out;
 	unsigned long flags;
@@ -484,6 +519,8 @@ req_retry_pinned:
 
 	err = virtqueue_add_buf(chan->vq, chan->sg, out, in, req->tc,
 				GFP_ATOMIC);
+<<<<<<< HEAD
+=======
 =======
 	int in, out, inp, outp;
 	struct virtio_chan *chan = client->trans;
@@ -596,12 +633,16 @@ req_retry_pinned:
 
 	err = virtqueue_add_buf(chan->vq, chan->sg, out, in, req->tc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		if (err == -ENOSPC) {
 			chan->ring_bufs_avail = 0;
 			spin_unlock_irqrestore(&chan->lock, flags);
 			err = wait_event_interruptible(*chan->vc_wq,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						       chan->ring_bufs_avail);
 			if (err  == -ERESTARTSYS)
 				goto err_out;
@@ -640,6 +681,8 @@ err_out:
 	kfree(in_pages);
 	kfree(out_pages);
 	return err;
+<<<<<<< HEAD
+=======
 =======
 							chan->ring_bufs_avail);
 			if (err  == -ERESTARTSYS)
@@ -664,6 +707,7 @@ err_out:
 	P9_DPRINTK(P9_DEBUG_TRANS, "9p debug: virtio request kicked\n");
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static ssize_t p9_mount_tag_show(struct device *dev,
@@ -700,8 +744,12 @@ static int p9_virtio_probe(struct virtio_device *vdev)
 <<<<<<< HEAD
 		pr_err("Failed to allocate virtio 9P channel\n");
 =======
+<<<<<<< HEAD
+		pr_err("Failed to allocate virtio 9P channel\n");
+=======
 		printk(KERN_ERR "9p: Failed to allocate virtio 9P channel\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENOMEM;
 		goto fail;
 	}
@@ -805,8 +853,12 @@ p9_virtio_create(struct p9_client *client, const char *devname, char *args)
 <<<<<<< HEAD
 		pr_err("no channels available\n");
 =======
+<<<<<<< HEAD
+		pr_err("no channels available\n");
+=======
 		printk(KERN_ERR "9p: no channels available\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 
@@ -869,9 +921,14 @@ static struct p9_trans_module p9_virtio_trans = {
 	.zc_request = p9_virtio_zc_request,
 	.cancel = p9_virtio_cancel,
 =======
+<<<<<<< HEAD
+	.zc_request = p9_virtio_zc_request,
+	.cancel = p9_virtio_cancel,
+=======
 	.cancel = p9_virtio_cancel,
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We leave one entry for input and one entry for response
 	 * headers. We also skip one more entry to accomodate, address
@@ -881,8 +938,11 @@ static struct p9_trans_module p9_virtio_trans = {
 	.maxsize = PAGE_SIZE * (VIRTQUEUE_NUM - 3),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.pref = P9_TRANS_PREF_PAYLOAD_SEP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.def = 0,
 	.owner = THIS_MODULE,
 };

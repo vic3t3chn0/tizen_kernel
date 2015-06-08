@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -27,6 +31,9 @@
 #define _NET_BATMAN_ADV_TRANSLATION_TABLE_H_
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int tt_len(int changes_num);
 int tt_changes_fill_buffer(struct bat_priv *bat_priv,
 			   unsigned char *buff, int buff_len);
@@ -66,6 +73,8 @@ bool is_ap_isolated(struct bat_priv *bat_priv, uint8_t *src, uint8_t *dst);
 void tt_update_orig(struct bat_priv *bat_priv, struct orig_node *orig_node,
 		    const unsigned char *tt_buff, uint8_t tt_num_changes,
 		    uint8_t ttvn, uint16_t tt_crc);
+<<<<<<< HEAD
+=======
 =======
 int tt_local_init(struct bat_priv *bat_priv);
 void tt_local_add(struct net_device *soft_iface, uint8_t *addr);
@@ -85,5 +94,6 @@ void tt_global_del_orig(struct bat_priv *bat_priv,
 void tt_global_free(struct bat_priv *bat_priv);
 struct orig_node *transtable_search(struct bat_priv *bat_priv, uint8_t *addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _NET_BATMAN_ADV_TRANSLATION_TABLE_H_ */

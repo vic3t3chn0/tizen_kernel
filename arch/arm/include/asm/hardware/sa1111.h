@@ -133,10 +133,15 @@
 #define SKPCR_PWMCLKEN	(1<<8)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* USB Host controller */
 #define SA1111_USB		0x0400
 
 /*
+<<<<<<< HEAD
+=======
 =======
 /*
  * USB Host controller
@@ -167,6 +172,7 @@
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Serial Audio Controller
  *
  * Registers
@@ -336,6 +342,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _PA_DDR		_SA1111( 0x1000 )
 #define _PA_DRR		_SA1111( 0x1004 )
 #define _PA_DWR		_SA1111( 0x1004 )
@@ -353,6 +361,7 @@
 #define _PC_SSR		_SA1111( 0x102c )
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SA1111_GPIO	0x1000
 
 #define SA1111_GPIO_PADDR	(0x000)
@@ -436,6 +445,9 @@
 #define SA1111_WAKEPOL1		0x0038
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PS/2 Trackpad and Mouse Interfaces */
 #define SA1111_KBD		0x0a00
 #define SA1111_MSE		0x0c00
@@ -443,6 +455,8 @@
 /* PCMCIA Interface */
 #define SA1111_PCMCIA		0x1600
 
+<<<<<<< HEAD
+=======
 =======
 /*
  * PS/2 Trackpad and Mouse Interfaces
@@ -530,6 +544,7 @@
 #define PCSSR_S0_SLEEP	(1<<0)
 #define PCSSR_S1_SLEEP	(1<<1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 
@@ -537,6 +552,9 @@
 extern struct bus_type sa1111_bus_type;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SA1111_DEVID_SBI	(1 << 0)
 #define SA1111_DEVID_SK		(1 << 1)
 #define SA1111_DEVID_USB	(1 << 2)
@@ -548,6 +566,8 @@ extern struct bus_type sa1111_bus_type;
 #define SA1111_DEVID_GPIO	(1 << 7)
 #define SA1111_DEVID_INT	(1 << 8)
 #define SA1111_DEVID_PCMCIA	(1 << 9)
+<<<<<<< HEAD
+=======
 =======
 #define SA1111_DEVID_SBI	0
 #define SA1111_DEVID_SK		1
@@ -559,6 +579,7 @@ extern struct bus_type sa1111_bus_type;
 #define SA1111_DEVID_INT	7
 #define SA1111_DEVID_PCMCIA	8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct sa1111_dev {
 	struct device	dev;
@@ -585,7 +606,11 @@ struct sa1111_driver {
 <<<<<<< HEAD
 	void (*shutdown)(struct sa1111_dev *);
 =======
+<<<<<<< HEAD
+	void (*shutdown)(struct sa1111_dev *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define SA1111_DRV(_d)	container_of((_d), struct sa1111_driver, drv)
@@ -594,15 +619,21 @@ struct sa1111_driver {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * These frob the SKPCR register, and call platform specific
  * enable/disable functions.
  */
 int sa1111_enable_device(struct sa1111_dev *);
+<<<<<<< HEAD
+=======
 =======
  * These frob the SKPCR register.
  */
 void sa1111_enable_device(struct sa1111_dev *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sa1111_disable_device(struct sa1111_dev *);
 
 unsigned int sa1111_pll_clock(struct sa1111_dev *);
@@ -626,12 +657,18 @@ void sa1111_set_sleep_io(struct sa1111_dev *sadev, unsigned int bits, unsigned i
 struct sa1111_platform_data {
 	int	irq_base;	/* base for cascaded on-chip IRQs */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned disable_devs;
 	void	*data;
 	int	(*enable)(void *, unsigned);
 	void	(*disable)(void *, unsigned);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif  /* _ASM_ARCH_SA1111 */

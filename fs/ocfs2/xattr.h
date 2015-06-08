@@ -71,8 +71,12 @@ int ocfs2_calc_xattr_init(struct inode *, struct buffer_head *,
 <<<<<<< HEAD
 			  umode_t, struct ocfs2_security_xattr_info *,
 =======
+<<<<<<< HEAD
+			  umode_t, struct ocfs2_security_xattr_info *,
+=======
 			  int, struct ocfs2_security_xattr_info *,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  int *, int *, int *);
 
 /*

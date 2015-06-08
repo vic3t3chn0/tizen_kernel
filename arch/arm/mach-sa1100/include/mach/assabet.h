@@ -86,6 +86,9 @@ extern void ASSABET_BCR_frob(unsigned int mask, unsigned int set);
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* GPIOs (bitmasks) for which the generic definition doesn't say much */
 #define ASSABET_GPIO_RADIO_IRQ		GPIO_GPIO (14)	/* Radio interrupt request  */
 #define ASSABET_GPIO_PS_MODE_SYNC	GPIO_GPIO (16)	/* Power supply mode/sync   */
@@ -99,6 +102,8 @@ extern void ASSABET_BCR_frob(unsigned int mask, unsigned int set);
 #define ASSABET_GPIO_CF_CD		22	/* CF CD  */
 #define ASSABET_GPIO_CF_BVD2		24	/* CF BVD / IOSPKR */
 #define ASSABET_GPIO_CF_BVD1		25	/* CF BVD / IOSTSCHG */
+<<<<<<< HEAD
+=======
 =======
 /* GPIOs for which the generic definition doesn't say much */
 #define ASSABET_GPIO_RADIO_IRQ		GPIO_GPIO (14)	/* Radio interrupt request  */
@@ -117,5 +122,6 @@ extern void ASSABET_BCR_frob(unsigned int mask, unsigned int set);
 #define ASSABET_IRQ_GPIO_CF_BVD2	IRQ_GPIO24
 #define ASSABET_IRQ_GPIO_CF_BVD1	IRQ_GPIO25
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

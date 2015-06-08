@@ -21,6 +21,13 @@
 #include <linux/rtc.h>
 #include <linux/platform_device.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DRV_VERSION "0.4"
 
@@ -173,7 +180,15 @@ static int __devinit ds1742_rtc_probe(struct platform_device *pdev)
 	pdata = devm_kzalloc(&pdev->dev, sizeof(*pdata), GFP_KERNEL);
 	if (!pdata)
 		return -ENOMEM;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pdata->size = resource_size(res);
+=======
 	pdata->size = res->end - res->start + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pdata->size = res->end - res->start + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!devm_request_mem_region(&pdev->dev, res->start, pdata->size,
 		pdev->name))
 		return -EBUSY;
@@ -239,6 +254,12 @@ static struct platform_driver ds1742_rtc_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(ds1742_rtc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int ds1742_init(void)
 {
 	return platform_driver_register(&ds1742_rtc_driver);
@@ -251,6 +272,10 @@ static __exit void ds1742_exit(void)
 
 module_init(ds1742_init);
 module_exit(ds1742_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Atsushi Nemoto <anemo@mba.ocn.ne.jp>");
 MODULE_DESCRIPTION("Dallas DS1742 RTC driver");

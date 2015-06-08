@@ -193,10 +193,30 @@ static int max8925_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alrm)
 	ret = max8925_reg_read(info->rtc, MAX8925_RTC_IRQ_MASK);
 	if (ret < 0)
 		goto out;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ret & ALARM0_IRQ) {
+		alrm->enabled = 0;
+	} else {
+		ret = max8925_reg_read(info->rtc, MAX8925_ALARM0_CNTL);
+		if (ret < 0)
+			goto out;
+		if (!ret)
+			alrm->enabled = 0;
+		else
+			alrm->enabled = 1;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((ret & ALARM0_IRQ) == 0)
 		alrm->enabled = 1;
 	else
 		alrm->enabled = 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = max8925_reg_read(info->rtc, MAX8925_RTC_STATUS);
 	if (ret < 0)
 		goto out;
@@ -204,6 +224,13 @@ static int max8925_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alrm)
 		alrm->pending = 1;
 	else
 		alrm->pending = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return ret;
 }
@@ -220,8 +247,21 @@ static int max8925_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alrm)
 	ret = max8925_bulk_write(info->rtc, MAX8925_ALARM0_SEC, TIME_NUM, buf);
 	if (ret < 0)
 		goto out;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (alrm->enabled)
+		/* only enable alarm on year/month/day/hour/min/sec */
+		ret = max8925_reg_write(info->rtc, MAX8925_ALARM0_CNTL, 0x77);
+	else
+		ret = max8925_reg_write(info->rtc, MAX8925_ALARM0_CNTL, 0x0);
+=======
 	/* only enable alarm on year/month/day/hour/min/sec */
 	ret = max8925_reg_write(info->rtc, MAX8925_ALARM0_CNTL, 0x77);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* only enable alarm on year/month/day/hour/min/sec */
+	ret = max8925_reg_write(info->rtc, MAX8925_ALARM0_CNTL, 0x77);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		goto out;
 out:
@@ -261,6 +301,14 @@ static int __devinit max8925_rtc_probe(struct platform_device *pdev)
 	/* XXX - isn't this redundant? */
 	platform_set_drvdata(pdev, info);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	device_init_wakeup(&pdev->dev, 1);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info->rtc_dev = rtc_device_register("max8925-rtc", &pdev->dev,
 					&max8925_rtc_ops, THIS_MODULE);
 	ret = PTR_ERR(info->rtc_dev);
@@ -290,15 +338,57 @@ static int __devexit max8925_rtc_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+static int max8925_rtc_suspend(struct device *dev)
+{
+	struct platform_device *pdev = to_platform_device(dev);
+	struct max8925_chip *chip = dev_get_drvdata(pdev->dev.parent);
+
+	if (device_may_wakeup(dev))
+		chip->wakeup_flag |= 1 << MAX8925_IRQ_RTC_ALARM0;
+	return 0;
+}
+static int max8925_rtc_resume(struct device *dev)
+{
+	struct platform_device *pdev = to_platform_device(dev);
+	struct max8925_chip *chip = dev_get_drvdata(pdev->dev.parent);
+
+	if (device_may_wakeup(dev))
+		chip->wakeup_flag &= ~(1 << MAX8925_IRQ_RTC_ALARM0);
+	return 0;
+}
+#endif
+
+static SIMPLE_DEV_PM_OPS(max8925_rtc_pm_ops, max8925_rtc_suspend, max8925_rtc_resume);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver max8925_rtc_driver = {
 	.driver		= {
 		.name	= "max8925-rtc",
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.pm     = &max8925_rtc_pm_ops,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe		= max8925_rtc_probe,
 	.remove		= __devexit_p(max8925_rtc_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(max8925_rtc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init max8925_rtc_init(void)
 {
 	return platform_driver_register(&max8925_rtc_driver);
@@ -310,6 +400,10 @@ static void __exit max8925_rtc_exit(void)
 	platform_driver_unregister(&max8925_rtc_driver);
 }
 module_exit(max8925_rtc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Maxim MAX8925 RTC driver");
 MODULE_AUTHOR("Haojian Zhuang <haojian.zhuang@marvell.com>");

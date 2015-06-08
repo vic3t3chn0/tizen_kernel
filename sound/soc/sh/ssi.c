@@ -335,8 +335,12 @@ static int ssi_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops ssi_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops ssi_dai_ops = {
+=======
 static struct snd_soc_dai_ops ssi_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= ssi_startup,
 	.shutdown	= ssi_shutdown,
 	.trigger	= ssi_trigger,
@@ -349,8 +353,12 @@ static struct snd_soc_dai_ops ssi_dai_ops = {
 <<<<<<< HEAD
 static struct snd_soc_dai_driver sh4_ssi_dai[] = {
 =======
+<<<<<<< HEAD
+static struct snd_soc_dai_driver sh4_ssi_dai[] = {
+=======
 struct snd_soc_dai_driver sh4_ssi_dai[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	.name			= "ssi-dai.0",
 	.playback = {
@@ -412,6 +420,9 @@ static struct platform_driver sh4_ssi_driver = {
 <<<<<<< HEAD
 module_platform_driver(sh4_ssi_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(sh4_ssi_driver);
+=======
 static int __init snd_sh4_ssi_init(void)
 {
 	return platform_driver_register(&sh4_ssi_driver);
@@ -424,6 +435,7 @@ static void __exit snd_sh4_ssi_exit(void)
 }
 module_exit(snd_sh4_ssi_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("SuperH onchip SSI (I2S) audio driver");

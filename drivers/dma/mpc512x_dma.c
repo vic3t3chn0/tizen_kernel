@@ -44,6 +44,14 @@
 
 #include <linux/random.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "dmaengine.h"
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Number of DMA Transfer descriptors allocated per channel */
 #define MPC_DMA_DESCRIPTORS	64
 
@@ -188,7 +196,14 @@ struct mpc_dma_chan {
 	struct list_head		completed;
 	struct mpc_dma_tcd		*tcd;
 	dma_addr_t			tcd_paddr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	dma_cookie_t			completed_cookie;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dma_cookie_t			completed_cookie;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Lock for this structure */
 	spinlock_t			lock;
@@ -365,7 +380,15 @@ static void mpc_dma_process_completed(struct mpc_dma *mdma)
 		/* Free descriptors */
 		spin_lock_irqsave(&mchan->lock, flags);
 		list_splice_tail_init(&list, &mchan->free);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mchan->chan.completed_cookie = last_cookie;
+=======
 		mchan->completed_cookie = last_cookie;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		mchan->completed_cookie = last_cookie;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock_irqrestore(&mchan->lock, flags);
 	}
 }
@@ -438,6 +461,12 @@ static dma_cookie_t mpc_dma_tx_submit(struct dma_async_tx_descriptor *txd)
 		mpc_dma_execute(mchan);
 
 	/* Update cookie */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cookie = dma_cookie_assign(txd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cookie = mchan->chan.cookie + 1;
 	if (cookie <= 0)
 		cookie = 1;
@@ -445,6 +474,10 @@ static dma_cookie_t mpc_dma_tx_submit(struct dma_async_tx_descriptor *txd)
 	mchan->chan.cookie = cookie;
 	mdesc->desc.cookie = cookie;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&mchan->lock, flags);
 
 	return cookie;
@@ -562,6 +595,19 @@ mpc_dma_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
 	       struct dma_tx_state *txstate)
 {
 	struct mpc_dma_chan *mchan = dma_chan_to_mpc_dma_chan(chan);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum dma_status ret;
+	unsigned long flags;
+
+	spin_lock_irqsave(&mchan->lock, flags);
+	ret = dma_cookie_status(chan, cookie, txstate);
+	spin_unlock_irqrestore(&mchan->lock, flags);
+
+	return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	dma_cookie_t last_used;
 	dma_cookie_t last_complete;
@@ -573,6 +619,10 @@ mpc_dma_tx_status(struct dma_chan *chan, dma_cookie_t cookie,
 
 	dma_set_tx_state(txstate, last_complete, last_used, 0);
 	return dma_async_is_complete(cookie, last_complete, last_used);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Prepare descriptor for memory to memory copy */
@@ -741,9 +791,19 @@ static int __devinit mpc_dma_probe(struct platform_device *op)
 		mchan = &mdma->channels[i];
 
 		mchan->chan.device = dma;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dma_cookie_init(&mchan->chan);
+=======
 		mchan->chan.chan_id = i;
 		mchan->chan.cookie = 1;
 		mchan->completed_cookie = mchan->chan.cookie;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		mchan->chan.chan_id = i;
+		mchan->chan.cookie = 1;
+		mchan->completed_cookie = mchan->chan.cookie;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		INIT_LIST_HEAD(&mchan->free);
 		INIT_LIST_HEAD(&mchan->prepared);
@@ -836,6 +896,12 @@ static struct platform_driver mpc_dma_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(mpc_dma_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init mpc_dma_init(void)
 {
 	return platform_driver_register(&mpc_dma_driver);
@@ -847,6 +913,10 @@ static void __exit mpc_dma_exit(void)
 	platform_driver_unregister(&mpc_dma_driver);
 }
 module_exit(mpc_dma_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Piotr Ziecik <kosmo@semihalf.com>");

@@ -35,8 +35,12 @@ static int mpic_msi_reserve_u3_hwirqs(struct mpic *mpic)
 <<<<<<< HEAD
 	const struct irq_domain_ops *ops = mpic->irqhost->ops;
 =======
+<<<<<<< HEAD
+	const struct irq_domain_ops *ops = mpic->irqhost->ops;
+=======
 	struct irq_host_ops *ops = mpic->irqhost->ops;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device_node *np;
 	int flags, index, i;
 	struct of_irq oirq;
@@ -61,8 +65,12 @@ static int mpic_msi_reserve_u3_hwirqs(struct mpic *mpic)
 <<<<<<< HEAD
 	for (i = 124; i < mpic->num_sources; i++)
 =======
+<<<<<<< HEAD
+	for (i = 124; i < mpic->num_sources; i++)
+=======
 	for (i = 124; i < mpic->irq_count; i++)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		msi_bitmap_reserve_hwirq(&mpic->msi_bitmap, i);
 
 
@@ -94,8 +102,12 @@ int mpic_msi_init_allocator(struct mpic *mpic)
 <<<<<<< HEAD
 	rc = msi_bitmap_alloc(&mpic->msi_bitmap, mpic->num_sources,
 =======
+<<<<<<< HEAD
+	rc = msi_bitmap_alloc(&mpic->msi_bitmap, mpic->num_sources,
+=======
 	rc = msi_bitmap_alloc(&mpic->msi_bitmap, mpic->irq_count,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      mpic->irqhost->of_node);
 	if (rc)
 		return rc;

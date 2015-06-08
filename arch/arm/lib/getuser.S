@@ -21,9 +21,15 @@
  * Outputs:	r0 is the error code
  *		r2 contains the zero-extended value
 =======
+<<<<<<< HEAD
+ *		r1 contains the address limit, which must be preserved
+ * Outputs:	r0 is the error code
+ *		r2 contains the zero-extended value
+=======
  * Outputs:	r0 is the error code
  *		r2, r3 contains the zero-extended value
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *		lr corrupted
  *
  * No other registers must be altered.  (see <asm/uaccess.h>
@@ -36,7 +42,11 @@
 <<<<<<< HEAD
 #include <asm/assembler.h>
 =======
+<<<<<<< HEAD
+#include <asm/assembler.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/errno.h>
 #include <asm/domain.h>
 
@@ -45,14 +55,22 @@ ENTRY(__get_user_1)
 	check_uaccess r0, 1, r1, r2, __get_user_bad
 1: TUSER(ldrb)	r2, [r0]
 =======
+<<<<<<< HEAD
+	check_uaccess r0, 1, r1, r2, __get_user_bad
+1: TUSER(ldrb)	r2, [r0]
+=======
 1:	T(ldrb)	r2, [r0]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	r0, #0
 	mov	pc, lr
 ENDPROC(__get_user_1)
 
 ENTRY(__get_user_2)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	check_uaccess r0, 2, r1, r2, __get_user_bad
 #ifdef CONFIG_CPU_USE_DOMAINS
 rb	.req	ip
@@ -67,6 +85,8 @@ rb	.req	r0
 	orr	r2, r2, rb, lsl #8
 #else
 	orr	r2, rb, r2, lsl #8
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_THUMB2_KERNEL
 2:	T(ldrb)	r2, [r0]
@@ -80,6 +100,7 @@ rb	.req	r0
 #else
 	orr	r2, r3, r2, lsl #8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	mov	r0, #0
 	mov	pc, lr
@@ -90,8 +111,13 @@ ENTRY(__get_user_4)
 	check_uaccess r0, 4, r1, r2, __get_user_bad
 4: TUSER(ldr)	r2, [r0]
 =======
+<<<<<<< HEAD
+	check_uaccess r0, 4, r1, r2, __get_user_bad
+4: TUSER(ldr)	r2, [r0]
+=======
 4:	T(ldr)	r2, [r0]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	r0, #0
 	mov	pc, lr
 ENDPROC(__get_user_4)

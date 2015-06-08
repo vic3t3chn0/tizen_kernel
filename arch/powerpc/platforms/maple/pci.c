@@ -208,6 +208,9 @@ static volatile void __iomem *u3_ht_cfg_access(struct pci_controller* hose,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int u3_ht_root_read_config(struct pci_controller *hose, u8 offset,
 				  int len, u32 *val)
 {
@@ -256,8 +259,11 @@ static int u3_ht_root_write_config(struct pci_controller *hose, u8 offset,
 	return PCIBIOS_SUCCESSFUL;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int u3_ht_read_config(struct pci_bus *bus, unsigned int devfn,
 			     int offset, int len, u32 *val)
 {
@@ -273,7 +279,13 @@ static int u3_ht_read_config(struct pci_bus *bus, unsigned int devfn,
 		return u3_ht_root_read_config(hose, offset, len, val);
 
 =======
+<<<<<<< HEAD
+	if (bus->number == hose->first_busno && devfn == PCI_DEVFN(0, 0))
+		return u3_ht_root_read_config(hose, offset, len, val);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (offset > 0xff)
 		return PCIBIOS_BAD_REGISTER_NUMBER;
 
@@ -314,7 +326,13 @@ static int u3_ht_write_config(struct pci_bus *bus, unsigned int devfn,
 		return u3_ht_root_write_config(hose, offset, len, val);
 
 =======
+<<<<<<< HEAD
+	if (bus->number == hose->first_busno && devfn == PCI_DEVFN(0, 0))
+		return u3_ht_root_write_config(hose, offset, len, val);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (offset > 0xff)
 		return PCIBIOS_BAD_REGISTER_NUMBER;
 
@@ -494,7 +512,11 @@ static void __init setup_u3_ht(struct pci_controller* hose)
 <<<<<<< HEAD
 	hose->cfg_addr = ioremap(0xf8070000, 0x1000);
 =======
+<<<<<<< HEAD
+	hose->cfg_addr = ioremap(0xf8070000, 0x1000);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hose->first_busno = 0;
 	hose->last_busno = 0xef;
@@ -635,8 +657,12 @@ void __init maple_pci_init(void)
 <<<<<<< HEAD
 	pci_add_flags(PCI_PROBE_ONLY);
 =======
+<<<<<<< HEAD
+	pci_add_flags(PCI_PROBE_ONLY);
+=======
 	pci_probe_only = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int maple_pci_get_legacy_ide_irq(struct pci_dev *pdev, int channel)

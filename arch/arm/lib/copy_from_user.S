@@ -70,6 +70,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.macro cpy8w dst src reg1 reg2 abort
 	.irp    offset, #0, #8, #16, #24
 	ldr1w \src, \reg1, \abort
@@ -80,6 +82,7 @@
 	.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.macro str1b ptr reg cond=al abort
 	str\cond\()b \reg, [\ptr], #1
 	.endm

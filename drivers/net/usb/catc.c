@@ -749,7 +749,15 @@ static const struct net_device_ops catc_netdev_ops = {
 	.ndo_start_xmit		= catc_start_xmit,
 
 	.ndo_tx_timeout		= catc_tx_timeout,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= catc_set_multicast_list,
+=======
 	.ndo_set_multicast_list = catc_set_multicast_list,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.ndo_set_multicast_list = catc_set_multicast_list,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_change_mtu		= eth_change_mtu,
 	.ndo_set_mac_address 	= eth_mac_addr,
 	.ndo_validate_addr	= eth_validate_addr,
@@ -949,6 +957,12 @@ static struct usb_driver catc_driver = {
 	.id_table =	catc_id_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(catc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init catc_init(void)
 {
 	int result = usb_register(&catc_driver);
@@ -965,3 +979,7 @@ static void __exit catc_exit(void)
 
 module_init(catc_init);
 module_exit(catc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

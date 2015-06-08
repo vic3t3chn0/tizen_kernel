@@ -26,6 +26,9 @@
 #include <linux/types.h>
 #include <linux/kvm_types.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/threads.h>
 #include <linux/spinlock.h>
 #include <linux/kvm_para.h>
@@ -58,6 +61,8 @@ extern int kvm_test_age_hva(struct kvm *kvm, unsigned long hva);
 extern void kvm_set_spte_hva(struct kvm *kvm, unsigned long hva, pte_t pte);
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 #include <linux/kvm_para.h>
 #include <asm/kvm_asm.h>
@@ -69,6 +74,7 @@ extern void kvm_set_spte_hva(struct kvm *kvm, unsigned long hva, pte_t pte);
 
 #define KVM_COALESCED_MMIO_PAGE_OFFSET 1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* We don't currently support large pages. */
 #define KVM_HPAGE_GFN_SHIFT(x)	0
@@ -93,12 +99,18 @@ struct kvm_run;
 struct kvm_vcpu;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct lppaca;
 struct slb_shadow;
 struct dtl;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvm_vm_stat {
 	u32 remote_tlb_flush;
 };
@@ -176,6 +188,9 @@ struct kvmppc_exit_timing {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvmppc_pginfo {
 	unsigned long pfn;
 	atomic_t refcnt;
@@ -290,11 +305,14 @@ struct kvmppc_vcore {
 #define VCORE_EXITING	2
 #define VCORE_SLEEPING	3
 
+<<<<<<< HEAD
+=======
 =======
 struct kvm_arch {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvmppc_pte {
 	ulong eaddr;
 	u64 vpage;
@@ -323,6 +341,9 @@ struct kvmppc_mmu {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvmppc_slb {
 	u64 esid;
 	u64 vsid;
@@ -335,6 +356,8 @@ struct kvmppc_slb {
 	bool large	: 1;	/* PTEs are 16MB */
 	bool tb		: 1;	/* 1TB segment */
 	bool class	: 1;
+<<<<<<< HEAD
+=======
 =======
 struct hpte_cache {
 	struct hlist_node list_pte;
@@ -347,12 +370,18 @@ struct hpte_cache {
 	ulong slot;
 	struct kvmppc_pte pte;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct kvm_vcpu_arch {
 	ulong host_stack;
 	u32 host_pid;
 #ifdef CONFIG_PPC_BOOK3S
+<<<<<<< HEAD
+	struct kvmppc_slb slb[64];
+	int slb_max;		/* 1 + index of last valid entry in slb[] */
+	int slb_nr;		/* total number of entries in SLB */
+=======
 <<<<<<< HEAD
 	struct kvmppc_slb slb[64];
 	int slb_max;		/* 1 + index of last valid entry in slb[] */
@@ -367,6 +396,7 @@ struct kvm_vcpu_arch {
 	ulong rmcall;
 	ulong host_paca_phys;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_mmu mmu;
 #endif
 
@@ -376,14 +406,20 @@ struct kvm_vcpu_arch {
 	u64 fpscr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SPE
 	ulong evr[32];
 	ulong spefscr;
 	ulong host_spefscr;
 	u64 acc;
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ALTIVEC
 	vector128 vr[32];
 	vector128 vscr;
@@ -393,8 +429,12 @@ struct kvm_vcpu_arch {
 <<<<<<< HEAD
 	u64 vsr[64];
 =======
+<<<<<<< HEAD
+	u64 vsr[64];
+=======
 	u64 vsr[32];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_PPC_BOOK3S
@@ -404,8 +444,11 @@ struct kvm_vcpu_arch {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_BOOKE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ulong pc;
 	ulong ctr;
 	ulong lr;
@@ -413,6 +456,9 @@ struct kvm_vcpu_arch {
 	ulong xer;
 	u32 cr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC_BOOK3S
 	ulong hflags;
@@ -428,6 +474,8 @@ struct kvm_vcpu_arch {
 	u32 vrsave; /* also USPRG0 */
 	u32 mmucr;
 	ulong shadow_msr;
+<<<<<<< HEAD
+=======
 =======
 #endif
 
@@ -443,6 +491,7 @@ struct kvm_vcpu_arch {
 	ulong sprg6;
 	ulong sprg7;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ulong csrr0;
 	ulong csrr1;
 	ulong dsrr0;
@@ -452,14 +501,20 @@ struct kvm_vcpu_arch {
 	ulong mcsr;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ulong esr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 dec;
 	u32 decar;
 	u32 tbl;
 	u32 tbu;
 	u32 tcr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ulong tsr; /* we need to perform set/clr_bits() which requires ulong */
 	u32 ivor[64];
 	ulong ivpr;
@@ -467,6 +522,8 @@ struct kvm_vcpu_arch {
 
 	u32 shadow_pid;
 	u32 shadow_pid1;
+<<<<<<< HEAD
+=======
 =======
 	u32 tsr;
 	u32 ivor[64];
@@ -476,6 +533,7 @@ struct kvm_vcpu_arch {
 
 	u32 shadow_pid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 pid;
 	u32 swap_pid;
 
@@ -490,7 +548,13 @@ struct kvm_vcpu_arch {
 	u32 pmc[8];
 
 =======
+<<<<<<< HEAD
+	u64 mmcr[3];
+	u32 pmc[8];
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KVM_EXIT_TIMING
 	struct mutex exit_timing_lock;
 	struct kvmppc_exit_timing timing_exit;
@@ -506,16 +570,22 @@ struct kvm_vcpu_arch {
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_BOOK3S
 	ulong fault_dar;
 	u32 fault_dsisr;
 #endif
 
 #ifdef CONFIG_BOOKE
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_BOOKE
 	u32 last_inst;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ulong fault_dear;
 	ulong fault_esr;
 	ulong queued_dear;
@@ -531,12 +601,18 @@ struct kvm_vcpu_arch {
 	u8 osi_needed;
 	u8 osi_enabled;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 papr_enabled;
 	u8 sane;
 	u8 cpu_type;
 	u8 hcall_needed;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u32 cpr0_cfgaddr; /* holds the last set cpr0_cfgaddr */
 
@@ -544,6 +620,9 @@ struct kvm_vcpu_arch {
 	struct tasklet_struct tasklet;
 	u64 dec_jiffies;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 dec_expires;
 	unsigned long pending_exceptions;
 	u16 last_cpu;
@@ -565,14 +644,20 @@ struct kvm_vcpu_arch {
 	bool timer_running;
 	wait_queue_head_t cpu_run;
 
+<<<<<<< HEAD
+=======
 =======
 	unsigned long pending_exceptions;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvm_vcpu_arch_shared *shared;
 	unsigned long magic_page_pa; /* phys addr to map the magic page to */
 	unsigned long magic_page_ea; /* effect. addr to map the magic page to */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KVM_BOOK3S_64_HV
 	struct kvm_vcpu_arch_shared shregs;
 
@@ -600,6 +685,8 @@ struct kvm_vcpu_arch {
 #define KVM_MMIO_REG_QPR	0x0040
 #define KVM_MMIO_REG_FQPR	0x0060
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_PPC_BOOK3S
 	struct hlist_head hpte_hash_pte[HPTEG_HASH_NUM_PTE];
@@ -612,4 +699,5 @@ struct kvm_vcpu_arch {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __POWERPC_KVM_HOST_H__ */

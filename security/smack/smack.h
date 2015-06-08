@@ -25,6 +25,8 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Smack labels were limited to 23 characters for a long time.
  */
 #define SMK_LABELLEN	24
@@ -33,6 +35,7 @@
 /*
  * Maximum number of bytes for the levels in a CIPSO IP option.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Why 23? CIPSO is constrained to 30, so a 32 byte buffer is
  * bigger than can be used, and 24 is the next lower multiple
  * of 8, and there are too many issues if there isn't space set
@@ -42,8 +45,13 @@
 #define SMK_MAXLEN	23
 #define SMK_LABELLEN	(SMK_MAXLEN+1)
 =======
+<<<<<<< HEAD
+#define SMK_MAXLEN	23
+#define SMK_LABELLEN	(SMK_MAXLEN+1)
+=======
 #define SMK_CIPSOLEN	24
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct superblock_smack {
 	char		*smk_root;
@@ -82,8 +90,11 @@ struct task_smack {
 #define	SMK_INODE_TRANSMUTE	0x02	/* directory is transmuting */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define	SMK_INODE_CHANGED	0x04	/* smack was transmuted */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * A label access rule.
@@ -97,6 +108,9 @@ struct smack_rule {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * An entry in the table mapping smack values to
  * CIPSO level/category-set values.
  */
@@ -106,8 +120,11 @@ struct smack_cipso {
 };
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * An entry in the table identifying hosts.
  */
 struct smk_netlbladdr {
@@ -139,8 +156,14 @@ struct smk_netlbladdr {
  * gets stored here, too. This will most likely be rare as
  * the cipso direct mapping in used internally.
 =======
+<<<<<<< HEAD
+ * If there is a cipso value associated with the label it
+ * gets stored here, too. This will most likely be rare as
+ * the cipso direct mapping in used internally.
+=======
  * The cipso value associated with the label gets stored here, too.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Keep the access rules for this subject label here so that
  * the entire set of rules does not need to be examined every
@@ -148,6 +171,9 @@ struct smk_netlbladdr {
  */
 struct smack_known {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head	list;
 	char			smk_known[SMK_LABELLEN];
 	u32			smk_secid;
@@ -155,6 +181,8 @@ struct smack_known {
 	spinlock_t		smk_cipsolock;	/* for changing cipso map */
 	struct list_head	smk_rules;	/* access rules */
 	struct mutex		smk_rules_lock;	/* lock for the rules */
+<<<<<<< HEAD
+=======
 =======
 	struct list_head		list;
 	char				*smk_known;
@@ -163,6 +191,7 @@ struct smack_known {
 	struct list_head		smk_rules;	/* access rules */
 	struct mutex			smk_rules_lock;	/* lock for rules */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -201,8 +230,11 @@ struct smack_known {
 #define SMACK_CIPSO_DIRECT_DEFAULT	250	/* Arbitrary */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define SMACK_CIPSO_MAPPED_DEFAULT	251	/* Also arbitrary */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SMACK_CIPSO_MAXCATVAL		63	/* Bigger gets harder */
 #define SMACK_CIPSO_MAXLEVEL            255     /* CIPSO 2.2 standard */
 #define SMACK_CIPSO_MAXCATNUM           239     /* CIPSO 2.2 standard */
@@ -224,6 +256,9 @@ struct smack_known {
 #define SMK_NUM_ACCESS_TYPE 5
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* SMACK data */
 struct smack_audit_data {
 	const char *function;
@@ -233,8 +268,11 @@ struct smack_audit_data {
 	int result;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Smack audit data; is empty if CONFIG_AUDIT not set
  * to save some stack
@@ -245,7 +283,11 @@ struct smk_audit_info {
 <<<<<<< HEAD
 	struct smack_audit_data sad;
 =======
+<<<<<<< HEAD
+	struct smack_audit_data sad;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 };
 /*
@@ -260,15 +302,21 @@ int smk_access_entry(char *, char *, struct list_head *);
 int smk_access(char *, char *, int, struct smk_audit_info *);
 int smk_curacc(char *, u32, struct smk_audit_info *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int smack_to_cipso(const char *, struct smack_cipso *);
 char *smack_from_cipso(u32, char *);
 char *smack_from_secid(const u32);
 void smk_parse_smack(const char *string, int len, char *smack);
+<<<<<<< HEAD
+=======
 =======
 char *smack_from_secid(const u32);
 char *smk_parse_smack(const char *string, int len);
 int smk_netlbl_mls(int, char *, struct netlbl_lsm_secattr *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 char *smk_import(const char *, int);
 struct smack_known *smk_import_entry(const char *, int);
 struct smack_known *smk_find_entry(const char *);
@@ -280,8 +328,11 @@ u32 smack_to_secid(const char *);
 extern int smack_cipso_direct;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int smack_cipso_mapped;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern char *smack_net_ambient;
 extern char *smack_onlycap;
 extern const char *smack_cipso_option;
@@ -295,8 +346,11 @@ extern struct smack_known smack_known_web;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct mutex	smack_known_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct list_head smack_known_list;
 extern struct list_head smk_netlbladdr_list;
 
@@ -304,6 +358,9 @@ extern struct security_operations smack_ops;
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Stricly for CIPSO level manipulation.
  * Set the category bit number in a smack label sized buffer.
  */
@@ -316,8 +373,11 @@ static inline void smack_catset_bit(int cat, char *catsetp)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Is the directory transmuting?
  */
 static inline int smk_inode_transmutable(const struct inode *isp)
@@ -362,6 +422,8 @@ static inline char *smk_of_current(void)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Is the task privileged and allowed to be privileged
  * by the onlycap rule.
  */
@@ -376,6 +438,7 @@ static inline int smack_privileged(int cap)
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * logging functions
  */
 #define SMACK_AUDIT_DENIED 0x1
@@ -399,6 +462,9 @@ static inline void smk_ad_init(struct smk_audit_info *a, const char *func,
 	memset(a, 0, sizeof(*a));
 	a->a.type = type;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	a->a.smack_audit_data = &a->sad;
 	a->a.smack_audit_data->function = func;
 }
@@ -409,9 +475,12 @@ static inline void smk_ad_init_net(struct smk_audit_info *a, const char *func,
 	smk_ad_init(a, func, type);
 	memset(net, 0, sizeof(*net));
 	a->a.u.net = net;
+<<<<<<< HEAD
+=======
 =======
 	a->a.smack_audit_data.function = func;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void smk_ad_setfield_u_tsk(struct smk_audit_info *a,
@@ -440,8 +509,12 @@ static inline void smk_ad_setfield_u_net_sk(struct smk_audit_info *a,
 <<<<<<< HEAD
 	a->a.u.net->sk = sk;
 =======
+<<<<<<< HEAD
+	a->a.u.net->sk = sk;
+=======
 	a->a.u.net.sk = sk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #else /* no AUDIT */

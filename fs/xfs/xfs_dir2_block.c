@@ -24,6 +24,9 @@
 #include "xfs_sb.h"
 #include "xfs_ag.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_mount.h"
 #include "xfs_da_btree.h"
 #include "xfs_bmap_btree.h"
@@ -33,6 +36,8 @@
 #include "xfs_dir2.h"
 #include "xfs_dir2_format.h"
 #include "xfs_dir2_priv.h"
+<<<<<<< HEAD
+=======
 =======
 #include "xfs_dir2.h"
 #include "xfs_mount.h"
@@ -46,6 +51,7 @@
 #include "xfs_dir2_leaf.h"
 #include "xfs_dir2_block.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_error.h"
 #include "xfs_trace.h"
 
@@ -82,8 +88,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* block header */
+=======
 	xfs_dir2_block_t	*block;		/* directory block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf entries */
 	xfs_dabuf_t		*bp;		/* buffer for block */
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
@@ -122,6 +132,9 @@ xfs_dir2_block_addname(
 	}
 	ASSERT(bp != NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr = bp->data;
 	/*
 	 * Check the magic number, corrupted if wrong.
@@ -129,6 +142,8 @@ xfs_dir2_block_addname(
 	if (unlikely(hdr->magic != cpu_to_be32(XFS_DIR2_BLOCK_MAGIC))) {
 		XFS_CORRUPTION_ERROR("xfs_dir2_block_addname",
 				     XFS_ERRLEVEL_LOW, mp, hdr);
+<<<<<<< HEAD
+=======
 =======
 	block = bp->data;
 	/*
@@ -138,6 +153,7 @@ xfs_dir2_block_addname(
 		XFS_CORRUPTION_ERROR("xfs_dir2_block_addname",
 				     XFS_ERRLEVEL_LOW, mp, block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_da_brelse(tp, bp);
 		return XFS_ERROR(EFSCORRUPTED);
 	}
@@ -149,9 +165,14 @@ xfs_dir2_block_addname(
 	bf = hdr->bestfree;
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 =======
+<<<<<<< HEAD
+	bf = hdr->bestfree;
+	btp = xfs_dir2_block_tail_p(mp, hdr);
+=======
 	bf = block->hdr.bestfree;
 	btp = xfs_dir2_block_tail_p(mp, block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blp = xfs_dir2_block_leaf_p(btp);
 	/*
 	 * No stale entries?  Need space for entry and new leaf.
@@ -167,8 +188,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 		enddup = (xfs_dir2_data_unused_t *)((char *)hdr + be16_to_cpu(*tagp));
 =======
+<<<<<<< HEAD
+		enddup = (xfs_dir2_data_unused_t *)((char *)hdr + be16_to_cpu(*tagp));
+=======
 		enddup = (xfs_dir2_data_unused_t *)((char *)block + be16_to_cpu(*tagp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * If it's not free then can't do this add without cleaning up:
 		 * the space before the first leaf entry needs to be free so it
@@ -184,8 +209,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 			      ((char *)hdr + be16_to_cpu(bf[0].offset));
 =======
+<<<<<<< HEAD
+			      ((char *)hdr + be16_to_cpu(bf[0].offset));
+=======
 			      ((char *)block + be16_to_cpu(bf[0].offset));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (dup == enddup) {
 				/*
 				 * It is the biggest freespace, is it too small
@@ -201,8 +230,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 						      ((char *)hdr +
 =======
+<<<<<<< HEAD
+						      ((char *)hdr +
+=======
 						      ((char *)block +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						       be16_to_cpu(bf[1].offset));
 					else
 						dup = NULL;
@@ -228,8 +261,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 		      ((char *)hdr + be16_to_cpu(bf[0].offset));
 =======
+<<<<<<< HEAD
+		      ((char *)hdr + be16_to_cpu(bf[0].offset));
+=======
 		      ((char *)block + be16_to_cpu(bf[0].offset));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		compact = 0;
 	}
 	/*
@@ -246,8 +283,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 		dup = (xfs_dir2_data_unused_t *)((char *)hdr + be16_to_cpu(*tagp));
 =======
+<<<<<<< HEAD
+		dup = (xfs_dir2_data_unused_t *)((char *)hdr + be16_to_cpu(*tagp));
+=======
 		dup = (xfs_dir2_data_unused_t *)((char *)block + be16_to_cpu(*tagp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * If it's not free then the data will go where the
 		 * leaf data starts now, if it works at all.
@@ -310,8 +351,13 @@ xfs_dir2_block_addname(
 			if (blp[fromidx].address ==
 			    cpu_to_be32(XFS_DIR2_NULL_DATAPTR)) {
 =======
+<<<<<<< HEAD
+			if (blp[fromidx].address ==
+			    cpu_to_be32(XFS_DIR2_NULL_DATAPTR)) {
+=======
 			if (be32_to_cpu(blp[fromidx].address) == XFS_DIR2_NULL_DATAPTR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (highstale == -1)
 					highstale = toidx;
 				else {
@@ -331,8 +377,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 			(xfs_dir2_data_aoff_t)((char *)blp - (char *)hdr),
 =======
+<<<<<<< HEAD
+			(xfs_dir2_data_aoff_t)((char *)blp - (char *)hdr),
+=======
 			(xfs_dir2_data_aoff_t)((char *)blp - (char *)block),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(xfs_dir2_data_aoff_t)((be32_to_cpu(btp->stale) - 1) * sizeof(*blp)),
 			&needlog, &needscan);
 		blp += be32_to_cpu(btp->stale) - 1;
@@ -345,8 +395,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 			xfs_dir2_data_freescan(mp, hdr, &needlog);
 =======
+<<<<<<< HEAD
+			xfs_dir2_data_freescan(mp, hdr, &needlog);
+=======
 			xfs_dir2_data_freescan(mp, (xfs_dir2_data_t *)block, &needlog);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			needscan = 0;
 		}
 	}
@@ -385,8 +439,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 			((char *)enddup - (char *)hdr + be16_to_cpu(enddup->length) -
 =======
+<<<<<<< HEAD
+			((char *)enddup - (char *)hdr + be16_to_cpu(enddup->length) -
+=======
 			((char *)enddup - (char *)block + be16_to_cpu(enddup->length) -
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 sizeof(*blp)),
 			(xfs_dir2_data_aoff_t)sizeof(*blp),
 			&needlog, &needscan);
@@ -402,9 +460,13 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 			xfs_dir2_data_freescan(mp, hdr, &needlog);
 =======
+<<<<<<< HEAD
+			xfs_dir2_data_freescan(mp, hdr, &needlog);
+=======
 			xfs_dir2_data_freescan(mp, (xfs_dir2_data_t *)block,
 				&needlog);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			needscan = 0;
 		}
 		/*
@@ -429,8 +491,13 @@ xfs_dir2_block_addname(
 			blp[lowstale].address !=
 			cpu_to_be32(XFS_DIR2_NULL_DATAPTR);
 =======
+<<<<<<< HEAD
+			blp[lowstale].address !=
+			cpu_to_be32(XFS_DIR2_NULL_DATAPTR);
+=======
 			be32_to_cpu(blp[lowstale].address) != XFS_DIR2_NULL_DATAPTR;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     lowstale--)
 			continue;
 		for (highstale = mid + 1;
@@ -439,8 +506,13 @@ xfs_dir2_block_addname(
 			blp[highstale].address !=
 			cpu_to_be32(XFS_DIR2_NULL_DATAPTR) &&
 =======
+<<<<<<< HEAD
+			blp[highstale].address !=
+			cpu_to_be32(XFS_DIR2_NULL_DATAPTR) &&
+=======
 			be32_to_cpu(blp[highstale].address) != XFS_DIR2_NULL_DATAPTR &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(lowstale < 0 || mid - lowstale > highstale - mid);
 		     highstale++)
 			continue;
@@ -482,8 +554,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 				(char *)dep - (char *)hdr));
 =======
+<<<<<<< HEAD
+				(char *)dep - (char *)hdr));
+=======
 				(char *)dep - (char *)block));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_block_log_leaf(tp, bp, lfloglow, lfloghigh);
 	/*
 	 * Mark space for the data entry used.
@@ -492,8 +568,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 		(xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr),
 =======
+<<<<<<< HEAD
+		(xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr),
+=======
 		(xfs_dir2_data_aoff_t)((char *)dup - (char *)block),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(xfs_dir2_data_aoff_t)len, &needlog, &needscan);
 	/*
 	 * Create the new data entry.
@@ -505,8 +585,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 	*tagp = cpu_to_be16((char *)dep - (char *)hdr);
 =======
+<<<<<<< HEAD
+	*tagp = cpu_to_be16((char *)dep - (char *)hdr);
+=======
 	*tagp = cpu_to_be16((char *)dep - (char *)block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Clean up the bestfree array and log the header, tail, and entry.
 	 */
@@ -514,8 +598,12 @@ xfs_dir2_block_addname(
 <<<<<<< HEAD
 		xfs_dir2_data_freescan(mp, hdr, &needlog);
 =======
+<<<<<<< HEAD
+		xfs_dir2_data_freescan(mp, hdr, &needlog);
+=======
 		xfs_dir2_data_freescan(mp, (xfs_dir2_data_t *)block, &needlog);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (needlog)
 		xfs_dir2_data_log_header(tp, bp);
 	xfs_dir2_block_log_tail(tp, bp);
@@ -538,8 +626,12 @@ xfs_dir2_block_getdents(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* block header */
+=======
 	xfs_dir2_block_t	*block;		/* directory block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dabuf_t		*bp;		/* buffer for block */
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
 	xfs_dir2_data_entry_t	*dep;		/* block data entry */
@@ -575,8 +667,12 @@ xfs_dir2_block_getdents(
 <<<<<<< HEAD
 	hdr = bp->data;
 =======
+<<<<<<< HEAD
+	hdr = bp->data;
+=======
 	block = bp->data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_check(dp, bp);
 	/*
 	 * Set up values for the loop.
@@ -585,9 +681,14 @@ xfs_dir2_block_getdents(
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 	ptr = (char *)(hdr + 1);
 =======
+<<<<<<< HEAD
+	btp = xfs_dir2_block_tail_p(mp, hdr);
+	ptr = (char *)(hdr + 1);
+=======
 	btp = xfs_dir2_block_tail_p(mp, block);
 	ptr = (char *)block->u;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	endptr = (char *)xfs_dir2_block_leaf_p(btp);
 
 	/*
@@ -614,11 +715,16 @@ xfs_dir2_block_getdents(
 		 * The entry is before the desired starting point, skip it.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((char *)dep - (char *)hdr < wantoff)
 			continue;
 
 		cook = xfs_dir2_db_off_to_dataptr(mp, mp->m_dirdatablk,
 					    (char *)dep - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 		if ((char *)dep - (char *)block < wantoff)
 			continue;
@@ -626,6 +732,7 @@ xfs_dir2_block_getdents(
 		cook = xfs_dir2_db_off_to_dataptr(mp, mp->m_dirdatablk,
 					    (char *)dep - (char *)block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * If it didn't fit, set the final offset to here & return.
@@ -660,6 +767,9 @@ xfs_dir2_block_log_leaf(
 	int			last)		/* index of last logged leaf */
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_hdr_t	*hdr = bp->data;
 	xfs_dir2_leaf_entry_t	*blp;
 	xfs_dir2_block_tail_t	*btp;
@@ -668,6 +778,8 @@ xfs_dir2_block_log_leaf(
 	blp = xfs_dir2_block_leaf_p(btp);
 	xfs_da_log_buf(tp, bp, (uint)((char *)&blp[first] - (char *)hdr),
 		(uint)((char *)&blp[last + 1] - (char *)hdr - 1));
+<<<<<<< HEAD
+=======
 =======
 	xfs_dir2_block_t	*block;		/* directory block structure */
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf entries */
@@ -681,6 +793,7 @@ xfs_dir2_block_log_leaf(
 	xfs_da_log_buf(tp, bp, (uint)((char *)&blp[first] - (char *)block),
 		(uint)((char *)&blp[last + 1] - (char *)block - 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -692,12 +805,17 @@ xfs_dir2_block_log_tail(
 	xfs_dabuf_t		*bp)		/* block buffer */
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_hdr_t	*hdr = bp->data;
 	xfs_dir2_block_tail_t	*btp;
 
 	btp = xfs_dir2_block_tail_p(tp->t_mountp, hdr);
 	xfs_da_log_buf(tp, bp, (uint)((char *)btp - (char *)hdr),
 		(uint)((char *)(btp + 1) - (char *)hdr - 1));
+<<<<<<< HEAD
+=======
 =======
 	xfs_dir2_block_t	*block;		/* directory block structure */
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
@@ -709,6 +827,7 @@ xfs_dir2_block_log_tail(
 	xfs_da_log_buf(tp, bp, (uint)((char *)btp - (char *)block),
 		(uint)((char *)(btp + 1) - (char *)block - 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -722,8 +841,12 @@ xfs_dir2_block_lookup(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* block header */
+=======
 	xfs_dir2_block_t	*block;		/* block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf entries */
 	xfs_dabuf_t		*bp;		/* block buffer */
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
@@ -748,10 +871,16 @@ xfs_dir2_block_lookup(
 	xfs_dir2_data_check(dp, bp);
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 =======
+<<<<<<< HEAD
+	hdr = bp->data;
+	xfs_dir2_data_check(dp, bp);
+	btp = xfs_dir2_block_tail_p(mp, hdr);
+=======
 	block = bp->data;
 	xfs_dir2_data_check(dp, bp);
 	btp = xfs_dir2_block_tail_p(mp, block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blp = xfs_dir2_block_leaf_p(btp);
 	/*
 	 * Get the offset from the leaf entry, to point to the data.
@@ -759,8 +888,12 @@ xfs_dir2_block_lookup(
 <<<<<<< HEAD
 	dep = (xfs_dir2_data_entry_t *)((char *)hdr +
 =======
+<<<<<<< HEAD
+	dep = (xfs_dir2_data_entry_t *)((char *)hdr +
+=======
 	dep = (xfs_dir2_data_entry_t *)((char *)block +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_dataptr_to_off(mp, be32_to_cpu(blp[ent].address)));
 	/*
 	 * Fill in inode number, CI name if appropriate, release the block.
@@ -784,8 +917,12 @@ xfs_dir2_block_lookup_int(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* block header */
+=======
 	xfs_dir2_block_t	*block;		/* block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf entries */
 	xfs_dabuf_t		*bp;		/* block buffer */
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
@@ -816,10 +953,16 @@ xfs_dir2_block_lookup_int(
 	xfs_dir2_data_check(dp, bp);
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 =======
+<<<<<<< HEAD
+	hdr = bp->data;
+	xfs_dir2_data_check(dp, bp);
+	btp = xfs_dir2_block_tail_p(mp, hdr);
+=======
 	block = bp->data;
 	xfs_dir2_data_check(dp, bp);
 	btp = xfs_dir2_block_tail_p(mp, block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blp = xfs_dir2_block_leaf_p(btp);
 	/*
 	 * Loop doing a binary search for our hash value.
@@ -860,8 +1003,12 @@ xfs_dir2_block_lookup_int(
 <<<<<<< HEAD
 			((char *)hdr + xfs_dir2_dataptr_to_off(mp, addr));
 =======
+<<<<<<< HEAD
+			((char *)hdr + xfs_dir2_dataptr_to_off(mp, addr));
+=======
 			((char *)block + xfs_dir2_dataptr_to_off(mp, addr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Compare name and if it's an exact match, return the index
 		 * and buffer. If it's the first case-insensitive match, store
@@ -903,8 +1050,12 @@ xfs_dir2_block_removename(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* block header */
+=======
 	xfs_dir2_block_t	*block;		/* block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf pointer */
 	xfs_dabuf_t		*bp;		/* block buffer */
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
@@ -935,9 +1086,14 @@ xfs_dir2_block_removename(
 	hdr = bp->data;
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 =======
+<<<<<<< HEAD
+	hdr = bp->data;
+	btp = xfs_dir2_block_tail_p(mp, hdr);
+=======
 	block = bp->data;
 	btp = xfs_dir2_block_tail_p(mp, block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blp = xfs_dir2_block_leaf_p(btp);
 	/*
 	 * Point to the data entry using the leaf entry.
@@ -946,8 +1102,12 @@ xfs_dir2_block_removename(
 <<<<<<< HEAD
 	      ((char *)hdr + xfs_dir2_dataptr_to_off(mp, be32_to_cpu(blp[ent].address)));
 =======
+<<<<<<< HEAD
+	      ((char *)hdr + xfs_dir2_dataptr_to_off(mp, be32_to_cpu(blp[ent].address)));
+=======
 	      ((char *)block + xfs_dir2_dataptr_to_off(mp, be32_to_cpu(blp[ent].address)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Mark the data entry's space free.
 	 */
@@ -956,8 +1116,12 @@ xfs_dir2_block_removename(
 <<<<<<< HEAD
 		(xfs_dir2_data_aoff_t)((char *)dep - (char *)hdr),
 =======
+<<<<<<< HEAD
+		(xfs_dir2_data_aoff_t)((char *)dep - (char *)hdr),
+=======
 		(xfs_dir2_data_aoff_t)((char *)dep - (char *)block),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_entsize(dep->namelen), &needlog, &needscan);
 	/*
 	 * Fix up the block tail.
@@ -976,8 +1140,12 @@ xfs_dir2_block_removename(
 <<<<<<< HEAD
 		xfs_dir2_data_freescan(mp, hdr, &needlog);
 =======
+<<<<<<< HEAD
+		xfs_dir2_data_freescan(mp, hdr, &needlog);
+=======
 		xfs_dir2_data_freescan(mp, (xfs_dir2_data_t *)block, &needlog);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (needlog)
 		xfs_dir2_data_log_header(tp, bp);
 	xfs_dir2_data_check(dp, bp);
@@ -988,9 +1156,14 @@ xfs_dir2_block_removename(
 	size = xfs_dir2_block_sfsize(dp, hdr, &sfh);
 	if (size > XFS_IFORK_DSIZE(dp)) {
 =======
+<<<<<<< HEAD
+	size = xfs_dir2_block_sfsize(dp, hdr, &sfh);
+	if (size > XFS_IFORK_DSIZE(dp)) {
+=======
 	if ((size = xfs_dir2_block_sfsize(dp, block, &sfh)) >
 	    XFS_IFORK_DSIZE(dp)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_da_buf_done(bp);
 		return 0;
 	}
@@ -1011,8 +1184,12 @@ xfs_dir2_block_replace(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* block header */
+=======
 	xfs_dir2_block_t	*block;		/* block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf entries */
 	xfs_dabuf_t		*bp;		/* block buffer */
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
@@ -1037,9 +1214,14 @@ xfs_dir2_block_replace(
 	hdr = bp->data;
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 =======
+<<<<<<< HEAD
+	hdr = bp->data;
+	btp = xfs_dir2_block_tail_p(mp, hdr);
+=======
 	block = bp->data;
 	btp = xfs_dir2_block_tail_p(mp, block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	blp = xfs_dir2_block_leaf_p(btp);
 	/*
 	 * Point to the data entry we need to change.
@@ -1048,8 +1230,12 @@ xfs_dir2_block_replace(
 <<<<<<< HEAD
 	      ((char *)hdr + xfs_dir2_dataptr_to_off(mp, be32_to_cpu(blp[ent].address)));
 =======
+<<<<<<< HEAD
+	      ((char *)hdr + xfs_dir2_dataptr_to_off(mp, be32_to_cpu(blp[ent].address)));
+=======
 	      ((char *)block + xfs_dir2_dataptr_to_off(mp, be32_to_cpu(blp[ent].address)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(be64_to_cpu(dep->inumber) != args->inumber);
 	/*
 	 * Change the inode number to the new value.
@@ -1091,8 +1277,12 @@ xfs_dir2_leaf_to_block(
 <<<<<<< HEAD
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 =======
+<<<<<<< HEAD
+	xfs_dir2_data_hdr_t	*hdr;		/* block header */
+=======
 	xfs_dir2_block_t	*block;		/* block structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_block_tail_t	*btp;		/* block tail */
 	xfs_inode_t		*dp;		/* incore directory inode */
 	xfs_dir2_data_unused_t	*dup;		/* unused data entry */
@@ -1119,8 +1309,12 @@ xfs_dir2_leaf_to_block(
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAF1_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_DIR2_LEAF1_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_DIR2_LEAF1_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ltp = xfs_dir2_leaf_tail_p(mp, leaf);
 	/*
 	 * If there are data blocks other than the first one, take this
@@ -1134,8 +1328,12 @@ xfs_dir2_leaf_to_block(
 <<<<<<< HEAD
 		    mp->m_dirblksize - (uint)sizeof(*hdr)) {
 =======
+<<<<<<< HEAD
+		    mp->m_dirblksize - (uint)sizeof(*hdr)) {
+=======
 		    mp->m_dirblksize - (uint)sizeof(block->hdr)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((error =
 			    xfs_dir2_leaf_trim_data(args, lbp,
 				    (xfs_dir2_db_t)(be32_to_cpu(ltp->bestcount) - 1))))
@@ -1154,12 +1352,17 @@ xfs_dir2_leaf_to_block(
 		goto out;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr = dbp->data;
 	ASSERT(hdr->magic == cpu_to_be32(XFS_DIR2_DATA_MAGIC));
 	/*
 	 * Size of the "leaf" area in the block.
 	 */
 	size = (uint)sizeof(xfs_dir2_block_tail_t) +
+<<<<<<< HEAD
+=======
 =======
 	block = dbp->data;
 	ASSERT(be32_to_cpu(block->hdr.magic) == XFS_DIR2_DATA_MAGIC);
@@ -1168,6 +1371,7 @@ xfs_dir2_leaf_to_block(
 	 */
 	size = (uint)sizeof(block->tail) +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       (uint)sizeof(*lep) * (be16_to_cpu(leaf->hdr.count) - be16_to_cpu(leaf->hdr.stale));
 	/*
 	 * Look at the last data entry.
@@ -1176,9 +1380,14 @@ xfs_dir2_leaf_to_block(
 	tagp = (__be16 *)((char *)hdr + mp->m_dirblksize) - 1;
 	dup = (xfs_dir2_data_unused_t *)((char *)hdr + be16_to_cpu(*tagp));
 =======
+<<<<<<< HEAD
+	tagp = (__be16 *)((char *)hdr + mp->m_dirblksize) - 1;
+	dup = (xfs_dir2_data_unused_t *)((char *)hdr + be16_to_cpu(*tagp));
+=======
 	tagp = (__be16 *)((char *)block + mp->m_dirblksize) - 1;
 	dup = (xfs_dir2_data_unused_t *)((char *)block + be16_to_cpu(*tagp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If it's not free or is too short we can't do it.
 	 */
@@ -1193,8 +1402,12 @@ xfs_dir2_leaf_to_block(
 <<<<<<< HEAD
 	hdr->magic = cpu_to_be32(XFS_DIR2_BLOCK_MAGIC);
 =======
+<<<<<<< HEAD
+	hdr->magic = cpu_to_be32(XFS_DIR2_BLOCK_MAGIC);
+=======
 	block->hdr.magic = cpu_to_be32(XFS_DIR2_BLOCK_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	needlog = 1;
 	needscan = 0;
 	/*
@@ -1208,8 +1421,12 @@ xfs_dir2_leaf_to_block(
 <<<<<<< HEAD
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 =======
+<<<<<<< HEAD
+	btp = xfs_dir2_block_tail_p(mp, hdr);
+=======
 	btp = xfs_dir2_block_tail_p(mp, block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btp->count = cpu_to_be32(be16_to_cpu(leaf->hdr.count) - be16_to_cpu(leaf->hdr.stale));
 	btp->stale = 0;
 	xfs_dir2_block_log_tail(tp, dbp);
@@ -1222,8 +1439,13 @@ xfs_dir2_leaf_to_block(
 		if (leaf->ents[from].address ==
 		    cpu_to_be32(XFS_DIR2_NULL_DATAPTR))
 =======
+<<<<<<< HEAD
+		if (leaf->ents[from].address ==
+		    cpu_to_be32(XFS_DIR2_NULL_DATAPTR))
+=======
 		if (be32_to_cpu(leaf->ents[from].address) == XFS_DIR2_NULL_DATAPTR)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		lep[to++] = leaf->ents[from];
 	}
@@ -1236,8 +1458,12 @@ xfs_dir2_leaf_to_block(
 <<<<<<< HEAD
 		xfs_dir2_data_freescan(mp, hdr, &needlog);
 =======
+<<<<<<< HEAD
+		xfs_dir2_data_freescan(mp, hdr, &needlog);
+=======
 		xfs_dir2_data_freescan(mp, (xfs_dir2_data_t *)block, &needlog);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (needlog)
 		xfs_dir2_data_log_header(tp, dbp);
 	/*
@@ -1255,9 +1481,14 @@ xfs_dir2_leaf_to_block(
 	size = xfs_dir2_block_sfsize(dp, hdr, &sfh);
 	if (size > XFS_IFORK_DSIZE(dp)) {
 =======
+<<<<<<< HEAD
+	size = xfs_dir2_block_sfsize(dp, hdr, &sfh);
+	if (size > XFS_IFORK_DSIZE(dp)) {
+=======
 	if ((size = xfs_dir2_block_sfsize(dp, block, &sfh)) >
 	    XFS_IFORK_DSIZE(dp)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = 0;
 		goto out;
 	}
@@ -1279,10 +1510,15 @@ xfs_dir2_sf_to_block(
 {
 	xfs_dir2_db_t		blkno;		/* dir-relative block # (0) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_hdr_t	*hdr;		/* block header */
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf entries */
 	xfs_dabuf_t		*bp;		/* block buffer */
 	xfs_dir2_block_tail_t	*btp;		/* block tail pointer */
+<<<<<<< HEAD
+=======
 =======
 	xfs_dir2_block_t	*block;		/* block structure */
 	xfs_dir2_leaf_entry_t	*blp;		/* block leaf entries */
@@ -1291,6 +1527,7 @@ xfs_dir2_sf_to_block(
 	char			*buf;		/* sf buffer */
 	int			buf_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dir2_data_entry_t	*dep;		/* data entry pointer */
 	xfs_inode_t		*dp;		/* incore directory inode */
 	int			dummy;		/* trash */
@@ -1308,8 +1545,13 @@ xfs_dir2_sf_to_block(
 	xfs_dir2_sf_hdr_t	*oldsfp;	/* old shortform header  */
 	xfs_dir2_sf_hdr_t	*sfp;		/* shortform header  */
 =======
+<<<<<<< HEAD
+	xfs_dir2_sf_hdr_t	*oldsfp;	/* old shortform header  */
+	xfs_dir2_sf_hdr_t	*sfp;		/* shortform header  */
+=======
 	xfs_dir2_sf_t		*sfp;		/* shortform structure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be16			*tagp;		/* end of data entry */
 	xfs_trans_t		*tp;		/* transaction pointer */
 	struct xfs_name		name;
@@ -1328,6 +1570,9 @@ xfs_dir2_sf_to_block(
 		return XFS_ERROR(EIO);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	oldsfp = (xfs_dir2_sf_hdr_t *)dp->i_df.if_u1.if_data;
 
@@ -1346,6 +1591,8 @@ xfs_dir2_sf_to_block(
 	dp->i_d.di_size = 0;
 	xfs_trans_log_inode(tp, dp, XFS_ILOG_CORE);
 
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(dp->i_df.if_bytes == dp->i_d.di_size);
 	ASSERT(dp->i_df.if_u1.if_data != NULL);
@@ -1368,6 +1615,7 @@ xfs_dir2_sf_to_block(
 	 */
 	sfp = (xfs_dir2_sf_t *)buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Add block 0 to the inode.
 	 */
@@ -1376,8 +1624,12 @@ xfs_dir2_sf_to_block(
 <<<<<<< HEAD
 		kmem_free(sfp);
 =======
+<<<<<<< HEAD
+		kmem_free(sfp);
+=======
 		kmem_free(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return error;
 	}
 	/*
@@ -1386,11 +1638,16 @@ xfs_dir2_sf_to_block(
 	error = xfs_dir2_data_init(args, blkno, &bp);
 	if (error) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kmem_free(sfp);
 		return error;
 	}
 	hdr = bp->data;
 	hdr->magic = cpu_to_be32(XFS_DIR2_BLOCK_MAGIC);
+<<<<<<< HEAD
+=======
 =======
 		kmem_free(buf);
 		return error;
@@ -1398,6 +1655,7 @@ xfs_dir2_sf_to_block(
 	block = bp->data;
 	block->hdr.magic = cpu_to_be32(XFS_DIR2_BLOCK_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Compute size of block "tail" area.
 	 */
@@ -1405,8 +1663,12 @@ xfs_dir2_sf_to_block(
 <<<<<<< HEAD
 	    (sfp->count + 2) * (uint)sizeof(xfs_dir2_leaf_entry_t);
 =======
+<<<<<<< HEAD
+	    (sfp->count + 2) * (uint)sizeof(xfs_dir2_leaf_entry_t);
+=======
 	    (sfp->hdr.count + 2) * (uint)sizeof(xfs_dir2_leaf_entry_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The whole thing is initialized to free by the init routine.
 	 * Say we're using the leaf and tail area.
@@ -1414,8 +1676,12 @@ xfs_dir2_sf_to_block(
 <<<<<<< HEAD
 	dup = (xfs_dir2_data_unused_t *)(hdr + 1);
 =======
+<<<<<<< HEAD
+	dup = (xfs_dir2_data_unused_t *)(hdr + 1);
+=======
 	dup = (xfs_dir2_data_unused_t *)block->u;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	needlog = needscan = 0;
 	xfs_dir2_data_use_free(tp, bp, dup, mp->m_dirblksize - i, i, &needlog,
 		&needscan);
@@ -1424,11 +1690,16 @@ xfs_dir2_sf_to_block(
 	 * Fill in the tail.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btp = xfs_dir2_block_tail_p(mp, hdr);
 	btp->count = cpu_to_be32(sfp->count + 2);	/* ., .. */
 	btp->stale = 0;
 	blp = xfs_dir2_block_leaf_p(btp);
 	endoffset = (uint)((char *)blp - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 	btp = xfs_dir2_block_tail_p(mp, block);
 	btp->count = cpu_to_be32(sfp->hdr.count + 2);	/* ., .. */
@@ -1436,6 +1707,7 @@ xfs_dir2_sf_to_block(
 	blp = xfs_dir2_block_leaf_p(btp);
 	endoffset = (uint)((char *)blp - (char *)block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Remove the freespace, we'll manage it.
 	 */
@@ -1443,8 +1715,12 @@ xfs_dir2_sf_to_block(
 <<<<<<< HEAD
 		(xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr),
 =======
+<<<<<<< HEAD
+		(xfs_dir2_data_aoff_t)((char *)dup - (char *)hdr),
+=======
 		(xfs_dir2_data_aoff_t)((char *)dup - (char *)block),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		be16_to_cpu(dup->length), &needlog, &needscan);
 	/*
 	 * Create entry for .
@@ -1453,18 +1729,27 @@ xfs_dir2_sf_to_block(
 <<<<<<< HEAD
 	      ((char *)hdr + XFS_DIR2_DATA_DOT_OFFSET);
 =======
+<<<<<<< HEAD
+	      ((char *)hdr + XFS_DIR2_DATA_DOT_OFFSET);
+=======
 	      ((char *)block + XFS_DIR2_DATA_DOT_OFFSET);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dep->inumber = cpu_to_be64(dp->i_ino);
 	dep->namelen = 1;
 	dep->name[0] = '.';
 	tagp = xfs_dir2_data_entry_tag_p(dep);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*tagp = cpu_to_be16((char *)dep - (char *)hdr);
 	xfs_dir2_data_log_entry(tp, bp, dep);
 	blp[0].hashval = cpu_to_be32(xfs_dir_hash_dot);
 	blp[0].address = cpu_to_be32(xfs_dir2_byte_to_dataptr(mp,
 				(char *)dep - (char *)hdr));
+<<<<<<< HEAD
+=======
 =======
 	*tagp = cpu_to_be16((char *)dep - (char *)block);
 	xfs_dir2_data_log_entry(tp, bp, dep);
@@ -1472,11 +1757,15 @@ xfs_dir2_sf_to_block(
 	blp[0].address = cpu_to_be32(xfs_dir2_byte_to_dataptr(mp,
 				(char *)dep - (char *)block));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Create entry for ..
 	 */
 	dep = (xfs_dir2_data_entry_t *)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		((char *)hdr + XFS_DIR2_DATA_DOTDOT_OFFSET);
 	dep->inumber = cpu_to_be64(xfs_dir2_sf_get_parent_ino(sfp));
 	dep->namelen = 2;
@@ -1487,6 +1776,8 @@ xfs_dir2_sf_to_block(
 	blp[1].hashval = cpu_to_be32(xfs_dir_hash_dotdot);
 	blp[1].address = cpu_to_be32(xfs_dir2_byte_to_dataptr(mp,
 				(char *)dep - (char *)hdr));
+<<<<<<< HEAD
+=======
 =======
 		((char *)block + XFS_DIR2_DATA_DOTDOT_OFFSET);
 	dep->inumber = cpu_to_be64(xfs_dir2_sf_get_inumber(sfp, &sfp->hdr.parent));
@@ -1499,6 +1790,7 @@ xfs_dir2_sf_to_block(
 	blp[1].address = cpu_to_be32(xfs_dir2_byte_to_dataptr(mp,
 				(char *)dep - (char *)block));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	offset = XFS_DIR2_DATA_FIRST_OFFSET;
 	/*
 	 * Loop over existing entries, stuff them in.
@@ -1507,8 +1799,13 @@ xfs_dir2_sf_to_block(
 	i = 0;
 	if (!sfp->count)
 =======
+<<<<<<< HEAD
+	i = 0;
+	if (!sfp->count)
+=======
 	if ((i = 0) == sfp->hdr.count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sfep = NULL;
 	else
 		sfep = xfs_dir2_sf_firstentry(sfp);
@@ -1529,6 +1826,9 @@ xfs_dir2_sf_to_block(
 		 */
 		if (offset < newoffset) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dup = (xfs_dir2_data_unused_t *)((char *)hdr + offset);
 			dup->freetag = cpu_to_be16(XFS_DIR2_DATA_FREE_TAG);
 			dup->length = cpu_to_be16(newoffset - offset);
@@ -1536,6 +1836,8 @@ xfs_dir2_sf_to_block(
 				((char *)dup - (char *)hdr));
 			xfs_dir2_data_log_unused(tp, bp, dup);
 			xfs_dir2_data_freeinsert(hdr, dup, &dummy);
+<<<<<<< HEAD
+=======
 =======
 			dup = (xfs_dir2_data_unused_t *)
 			      ((char *)block + offset);
@@ -1547,6 +1849,7 @@ xfs_dir2_sf_to_block(
 			(void)xfs_dir2_data_freeinsert((xfs_dir2_data_t *)block,
 				dup, &dummy);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			offset += be16_to_cpu(dup->length);
 			continue;
 		}
@@ -1554,12 +1857,17 @@ xfs_dir2_sf_to_block(
 		 * Copy a real entry.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dep = (xfs_dir2_data_entry_t *)((char *)hdr + newoffset);
 		dep->inumber = cpu_to_be64(xfs_dir2_sfe_get_ino(sfp, sfep));
 		dep->namelen = sfep->namelen;
 		memcpy(dep->name, sfep->name, dep->namelen);
 		tagp = xfs_dir2_data_entry_tag_p(dep);
 		*tagp = cpu_to_be16((char *)dep - (char *)hdr);
+<<<<<<< HEAD
+=======
 =======
 		dep = (xfs_dir2_data_entry_t *)((char *)block + newoffset);
 		dep->inumber = cpu_to_be64(xfs_dir2_sf_get_inumber(sfp,
@@ -1569,6 +1877,7 @@ xfs_dir2_sf_to_block(
 		tagp = xfs_dir2_data_entry_tag_p(dep);
 		*tagp = cpu_to_be16((char *)dep - (char *)block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_dir2_data_log_entry(tp, bp, dep);
 		name.name = sfep->name;
 		name.len = sfep->namelen;
@@ -1580,10 +1889,16 @@ xfs_dir2_sf_to_block(
 		offset = (int)((char *)(tagp + 1) - (char *)hdr);
 		if (++i == sfp->count)
 =======
+<<<<<<< HEAD
+						 (char *)dep - (char *)hdr));
+		offset = (int)((char *)(tagp + 1) - (char *)hdr);
+		if (++i == sfp->count)
+=======
 						 (char *)dep - (char *)block));
 		offset = (int)((char *)(tagp + 1) - (char *)block);
 		if (++i == sfp->hdr.count)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sfep = NULL;
 		else
 			sfep = xfs_dir2_sf_nextentry(sfp, sfep);
@@ -1592,8 +1907,12 @@ xfs_dir2_sf_to_block(
 <<<<<<< HEAD
 	kmem_free(sfp);
 =======
+<<<<<<< HEAD
+	kmem_free(sfp);
+=======
 	kmem_free(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Sort the leaf entries by hash value.
 	 */

@@ -28,6 +28,9 @@
 #include "control.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * FIXME: Find a mechanism to enable/disable runtime the McBSP ICLK autoidle.
  * Sidetone needs non-gated ICLK and sidetone autoidle is broken.
@@ -38,16 +41,22 @@
 /* McBSP1 internal signal muxing function for OMAP2/3 */
 static int omap2_mcbsp1_mux_rx_clk(struct device *dev, const char *signal,
 				   const char *src)
+<<<<<<< HEAD
+=======
 =======
 /* McBSP internal signal muxing functions */
 
 void omap2_mcbsp1_mux_clkr_src(u8 mux)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 v;
 
 	v = omap_ctrl_readl(OMAP2_CONTROL_DEVCONF0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!strcmp(signal, "clkr")) {
 		if (!strcmp(src, "clkr"))
@@ -112,6 +121,8 @@ static int omap4_mcbsp4_mux_rx_clk(struct device *dev, const char *signal,
 static int omap2_mcbsp_set_clk_src(struct device *dev, struct clk *clk,
 				   const char *src)
 {
+<<<<<<< HEAD
+=======
 =======
 	if (mux == CLKR_SRC_CLKR)
 		v &= ~OMAP2_MCBSP1_CLKR_MASK;
@@ -140,10 +151,16 @@ int omap2_mcbsp_set_clks_src(u8 id, u8 fck_src_id)
 {
 	struct omap_mcbsp *mcbsp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk *fck_src;
 	char *fck_src_name;
 	int r;
 
+<<<<<<< HEAD
+	if (!strcmp(src, "clks_ext"))
+		fck_src_name = "pad_fck";
+	else if (!strcmp(src, "clks_fclk"))
+=======
 <<<<<<< HEAD
 	if (!strcmp(src, "clks_ext"))
 		fck_src_name = "pad_fck";
@@ -159,6 +176,7 @@ int omap2_mcbsp_set_clks_src(u8 id, u8 fck_src_id)
 		fck_src_name = "pad_fck";
 	else if (fck_src_id == MCBSP_CLKS_PRCM_SRC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fck_src_name = "prcm_fck";
 	else
 		return -EINVAL;
@@ -166,8 +184,12 @@ int omap2_mcbsp_set_clks_src(u8 id, u8 fck_src_id)
 <<<<<<< HEAD
 	fck_src = clk_get(dev, fck_src_name);
 =======
+<<<<<<< HEAD
+	fck_src = clk_get(dev, fck_src_name);
+=======
 	fck_src = clk_get(mcbsp->dev, fck_src_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR_OR_NULL(fck_src)) {
 		pr_err("omap-mcbsp: %s: could not clk_get() %s\n", "clks",
 		       fck_src_name);
@@ -179,10 +201,16 @@ int omap2_mcbsp_set_clks_src(u8 id, u8 fck_src_id)
 
 	r = clk_set_parent(clk, fck_src);
 =======
+<<<<<<< HEAD
+	pm_runtime_put_sync(dev);
+
+	r = clk_set_parent(clk, fck_src);
+=======
 	pm_runtime_put_sync(mcbsp->dev);
 
 	r = clk_set_parent(mcbsp->fclk, fck_src);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR_VALUE(r)) {
 		pr_err("omap-mcbsp: %s: could not clk_set_parent() to %s\n",
 		       "clks", fck_src_name);
@@ -193,14 +221,21 @@ int omap2_mcbsp_set_clks_src(u8 id, u8 fck_src_id)
 <<<<<<< HEAD
 	pm_runtime_get_sync(dev);
 =======
+<<<<<<< HEAD
+	pm_runtime_get_sync(dev);
+=======
 	pm_runtime_get_sync(mcbsp->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clk_put(fck_src);
 
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int omap3_enable_st_clock(unsigned int id, bool enable)
 {
@@ -221,6 +256,8 @@ static int omap3_enable_st_clock(unsigned int id, bool enable)
 }
 
 static int __init omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
+<<<<<<< HEAD
+=======
 =======
 EXPORT_SYMBOL(omap2_mcbsp_set_clks_src);
 
@@ -234,6 +271,7 @@ struct omap_device_pm_latency omap2_mcbsp_latency[] = {
 
 static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int id, count = 1;
 	char *name = "omap-mcbsp";
@@ -242,8 +280,12 @@ static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 <<<<<<< HEAD
 	struct platform_device *pdev;
 =======
+<<<<<<< HEAD
+	struct platform_device *pdev;
+=======
 	struct omap_device *od;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sscanf(oh->name, "mcbsp%d", &id);
 
@@ -254,6 +296,9 @@ static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdata->reg_step = 4;
 	if (oh->class->rev < MCBSP_CONFIG_TYPE2) {
 		pdata->reg_size = 2;
@@ -270,9 +315,12 @@ static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 	/* On OMAP4 the McBSP4 port has 6 pin configuration */
 	if (id == 4 && oh->class->rev == MCBSP_CONFIG_TYPE4)
 		pdata->mux_signal = omap4_mcbsp4_mux_rx_clk;
+<<<<<<< HEAD
+=======
 =======
 	pdata->mcbsp_config_type = oh->class->rev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (oh->class->rev == MCBSP_CONFIG_TYPE3) {
 		if (id == 2)
@@ -282,6 +330,9 @@ static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 			/* The FIFO has 128 locations */
 			pdata->buffer_size = 0x80;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (oh->class->rev == MCBSP_CONFIG_TYPE4) {
 		/* The FIFO has 128 locations for all instances */
 		pdata->buffer_size = 0x80;
@@ -290,16 +341,22 @@ static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 	if (oh->class->rev >= MCBSP_CONFIG_TYPE3)
 		pdata->has_wakeup = true;
 
+<<<<<<< HEAD
+=======
 =======
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	oh_device[0] = oh;
 
 	if (oh->dev_attr) {
 		oh_device[1] = omap_hwmod_lookup((
 		(struct omap_mcbsp_dev_attr *)(oh->dev_attr))->sidetone);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pdata->enable_st_clock = omap3_enable_st_clock;
 		count++;
 	}
@@ -311,6 +368,8 @@ static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 					name, oh->name);
 		return PTR_ERR(pdev);
 	}
+<<<<<<< HEAD
+=======
 =======
 		count++;
 	}
@@ -325,6 +384,7 @@ static int omap_init_mcbsp(struct omap_hwmod *oh, void *unused)
 	}
 	omap_mcbsp_count++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -335,6 +395,9 @@ static int __init omap2_mcbsp_init(void)
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	mcbsp_ptr = kzalloc(omap_mcbsp_count * sizeof(struct omap_mcbsp *),
 								GFP_KERNEL);
 	if (!mcbsp_ptr)
@@ -342,5 +405,6 @@ static int __init omap2_mcbsp_init(void)
 
 	return omap_mcbsp_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 arch_initcall(omap2_mcbsp_init);

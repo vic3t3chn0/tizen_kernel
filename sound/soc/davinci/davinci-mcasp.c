@@ -735,7 +735,11 @@ static int davinci_mcasp_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 	case SNDRV_PCM_FORMAT_U8:
 =======
+<<<<<<< HEAD
+	case SNDRV_PCM_FORMAT_U8:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SNDRV_PCM_FORMAT_S8:
 		dma_params->data_type = 1;
 		word_length = DAVINCI_AUDIO_WORD_8;
@@ -744,7 +748,11 @@ static int davinci_mcasp_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 	case SNDRV_PCM_FORMAT_U16_LE:
 =======
+<<<<<<< HEAD
+	case SNDRV_PCM_FORMAT_U16_LE:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SNDRV_PCM_FORMAT_S16_LE:
 		dma_params->data_type = 2;
 		word_length = DAVINCI_AUDIO_WORD_16;
@@ -753,7 +761,11 @@ static int davinci_mcasp_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 	case SNDRV_PCM_FORMAT_U32_LE:
 =======
+<<<<<<< HEAD
+	case SNDRV_PCM_FORMAT_U32_LE:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SNDRV_PCM_FORMAT_S32_LE:
 		dma_params->data_type = 4;
 		word_length = DAVINCI_AUDIO_WORD_32;
@@ -825,8 +837,12 @@ static int davinci_mcasp_startup(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops davinci_mcasp_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops davinci_mcasp_dai_ops = {
+=======
 static struct snd_soc_dai_ops davinci_mcasp_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.startup	= davinci_mcasp_startup,
 	.trigger	= davinci_mcasp_trigger,
 	.hw_params	= davinci_mcasp_hw_params,
@@ -835,6 +851,9 @@ static struct snd_soc_dai_ops davinci_mcasp_dai_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DAVINCI_MCASP_PCM_FMTS (SNDRV_PCM_FMTBIT_S8 | \
 				SNDRV_PCM_FMTBIT_U8 | \
 				SNDRV_PCM_FMTBIT_S16_LE | \
@@ -842,8 +861,11 @@ static struct snd_soc_dai_ops davinci_mcasp_dai_ops = {
 				SNDRV_PCM_FMTBIT_S32_LE | \
 				SNDRV_PCM_FMTBIT_U32_LE)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_driver davinci_mcasp_dai[] = {
 	{
 		.name		= "davinci-mcasp.0",
@@ -854,10 +876,14 @@ static struct snd_soc_dai_driver davinci_mcasp_dai[] = {
 <<<<<<< HEAD
 			.formats	= DAVINCI_MCASP_PCM_FMTS,
 =======
+<<<<<<< HEAD
+			.formats	= DAVINCI_MCASP_PCM_FMTS,
+=======
 			.formats 	= SNDRV_PCM_FMTBIT_S8 |
 						SNDRV_PCM_FMTBIT_S16_LE |
 						SNDRV_PCM_FMTBIT_S32_LE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		.capture 	= {
 			.channels_min 	= 2,
@@ -866,10 +892,14 @@ static struct snd_soc_dai_driver davinci_mcasp_dai[] = {
 <<<<<<< HEAD
 			.formats	= DAVINCI_MCASP_PCM_FMTS,
 =======
+<<<<<<< HEAD
+			.formats	= DAVINCI_MCASP_PCM_FMTS,
+=======
 			.formats	= SNDRV_PCM_FMTBIT_S8 |
 						SNDRV_PCM_FMTBIT_S16_LE |
 						SNDRV_PCM_FMTBIT_S32_LE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		.ops 		= &davinci_mcasp_dai_ops,
 
@@ -883,8 +913,12 @@ static struct snd_soc_dai_driver davinci_mcasp_dai[] = {
 <<<<<<< HEAD
 			.formats	= DAVINCI_MCASP_PCM_FMTS,
 =======
+<<<<<<< HEAD
+			.formats	= DAVINCI_MCASP_PCM_FMTS,
+=======
 			.formats	= SNDRV_PCM_FMTBIT_S16_LE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 		.ops 		= &davinci_mcasp_dai_ops,
 	},
@@ -898,15 +932,21 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 	struct snd_platform_data *pdata;
 	struct davinci_audio_dev *dev;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	dev = devm_kzalloc(&pdev->dev, sizeof(struct davinci_audio_dev),
 			   GFP_KERNEL);
+<<<<<<< HEAD
+=======
 =======
 	int ret = 0;
 
 	dev = kzalloc(sizeof(struct davinci_audio_dev), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dev)
 		return	-ENOMEM;
 
@@ -914,6 +954,9 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 	if (!mem) {
 		dev_err(&pdev->dev, "no mem resource?\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 
@@ -922,6 +965,8 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 	if (!ioarea) {
 		dev_err(&pdev->dev, "Audio region already claimed\n");
 		return -EBUSY;
+<<<<<<< HEAD
+=======
 =======
 		ret = -ENODEV;
 		goto err_release_data;
@@ -934,10 +979,15 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 		ret = -EBUSY;
 		goto err_release_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	pdata = pdev->dev.platform_data;
 	dev->clk = clk_get(&pdev->dev, NULL);
+<<<<<<< HEAD
+	if (IS_ERR(dev->clk))
+		return -ENODEV;
+=======
 <<<<<<< HEAD
 	if (IS_ERR(dev->clk))
 		return -ENODEV;
@@ -947,6 +997,7 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 		goto err_release_region;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clk_enable(dev->clk);
 	dev->clk_active = 1;
@@ -954,8 +1005,12 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 	dev->base = devm_ioremap(&pdev->dev, mem->start, resource_size(mem));
 =======
+<<<<<<< HEAD
+	dev->base = devm_ioremap(&pdev->dev, mem->start, resource_size(mem));
+=======
 	dev->base = ioremap(mem->start, resource_size(mem));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dev->base) {
 		dev_err(&pdev->dev, "ioremap failed\n");
 		ret = -ENOMEM;
@@ -986,8 +1041,12 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		goto err_release_clk;
 =======
+<<<<<<< HEAD
+		goto err_release_clk;
+=======
 		goto err_iounmap;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	dma_data->channel = res->start;
@@ -1006,8 +1065,12 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		goto err_release_clk;
 =======
+<<<<<<< HEAD
+		goto err_release_clk;
+=======
 		goto err_iounmap;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	dma_data->channel = res->start;
@@ -1016,12 +1079,17 @@ static int davinci_mcasp_probe(struct platform_device *pdev)
 
 	if (ret != 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err_release_clk;
 	return 0;
 
 err_release_clk:
 	clk_disable(dev->clk);
 	clk_put(dev->clk);
+<<<<<<< HEAD
+=======
 =======
 		goto err_iounmap;
 	return 0;
@@ -1037,6 +1105,7 @@ err_release_data:
 	kfree(dev);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1045,8 +1114,11 @@ static int davinci_mcasp_remove(struct platform_device *pdev)
 	struct davinci_audio_dev *dev = dev_get_drvdata(&pdev->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct resource *mem;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_unregister_dai(&pdev->dev);
 	clk_disable(dev->clk);
@@ -1055,12 +1127,15 @@ static int davinci_mcasp_remove(struct platform_device *pdev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	release_mem_region(mem->start, resource_size(mem));
 
 	kfree(dev);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1076,6 +1151,9 @@ static struct platform_driver davinci_mcasp_driver = {
 <<<<<<< HEAD
 module_platform_driver(davinci_mcasp_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(davinci_mcasp_driver);
+=======
 static int __init davinci_mcasp_init(void)
 {
 	return platform_driver_register(&davinci_mcasp_driver);
@@ -1088,6 +1166,7 @@ static void __exit davinci_mcasp_exit(void)
 }
 module_exit(davinci_mcasp_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Steve Chen");
 MODULE_DESCRIPTION("TI DAVINCI McASP SoC Interface");

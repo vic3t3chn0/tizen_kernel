@@ -43,6 +43,23 @@
 
 static char *def_mode;
 static char *def_vram;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool def_vrfb;
+static int def_rotate;
+static bool def_mirror;
+static bool auto_update;
+static unsigned int auto_update_freq;
+module_param(auto_update, bool, 0);
+module_param(auto_update_freq, uint, 0644);
+
+#ifdef DEBUG
+bool omapfb_debug;
+module_param_named(debug, omapfb_debug, bool, 0644);
+static bool omapfb_test_pattern;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int def_vrfb;
 static int def_rotate;
 static int def_mirror;
@@ -51,6 +68,10 @@ static int def_mirror;
 unsigned int omapfb_debug;
 module_param_named(debug, omapfb_debug, bool, 0644);
 static unsigned int omapfb_test_pattern;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_named(test, omapfb_test_pattern, bool, 0644);
 #endif
 
@@ -804,6 +825,20 @@ static unsigned calc_rotation_offset_vrfb(const struct fb_var_screeninfo *var,
 static void omapfb_calc_addr(const struct omapfb_info *ofbi,
 			     const struct fb_var_screeninfo *var,
 			     const struct fb_fix_screeninfo *fix,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			     int rotation, u32 *paddr)
+{
+	u32 data_start_p;
+	int offset;
+
+	if (ofbi->rotation_type == OMAP_DSS_ROT_VRFB)
+		data_start_p = omapfb_get_region_rot_paddr(ofbi, rotation);
+	else
+		data_start_p = omapfb_get_region_paddr(ofbi);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     int rotation, u32 *paddr, void __iomem **vaddr)
 {
 	u32 data_start_p;
@@ -817,6 +852,10 @@ static void omapfb_calc_addr(const struct omapfb_info *ofbi,
 		data_start_p = omapfb_get_region_paddr(ofbi);
 		data_start_v = omapfb_get_region_vaddr(ofbi);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ofbi->rotation_type == OMAP_DSS_ROT_VRFB)
 		offset = calc_rotation_offset_vrfb(var, fix, rotation);
@@ -824,16 +863,35 @@ static void omapfb_calc_addr(const struct omapfb_info *ofbi,
 		offset = calc_rotation_offset_dma(var, fix, rotation);
 
 	data_start_p += offset;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	data_start_v += offset;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	data_start_v += offset;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (offset)
 		DBG("offset %d, %d = %d\n",
 		    var->xoffset, var->yoffset, offset);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	DBG("paddr %x\n", data_start_p);
+
+	*paddr = data_start_p;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBG("paddr %x, vaddr %p\n", data_start_p, data_start_v);
 
 	*paddr = data_start_p;
 	*vaddr = data_start_v;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* setup overlay according to the fb */
@@ -846,7 +904,14 @@ int omapfb_setup_overlay(struct fb_info *fbi, struct omap_overlay *ovl,
 	struct fb_fix_screeninfo *fix = &fbi->fix;
 	enum omap_color_mode mode = 0;
 	u32 data_start_p = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	void __iomem *data_start_v = NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	void __iomem *data_start_v = NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_overlay_info info;
 	int xres, yres;
 	int screen_width;
@@ -876,8 +941,17 @@ int omapfb_setup_overlay(struct fb_info *fbi, struct omap_overlay *ovl,
 	}
 
 	if (ofbi->region->size)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		omapfb_calc_addr(ofbi, var, fix, rotation, &data_start_p);
+=======
 		omapfb_calc_addr(ofbi, var, fix, rotation,
 				 &data_start_p, &data_start_v);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		omapfb_calc_addr(ofbi, var, fix, rotation,
+				 &data_start_p, &data_start_v);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	r = fb_mode_to_dss_mode(var, &mode);
 	if (r) {
@@ -906,7 +980,14 @@ int omapfb_setup_overlay(struct fb_info *fbi, struct omap_overlay *ovl,
 		mirror = ofbi->mirror;
 
 	info.paddr = data_start_p;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	info.vaddr = data_start_v;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	info.vaddr = data_start_v;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info.screen_width = screen_width;
 	info.width = xres;
 	info.height = yres;
@@ -975,16 +1056,40 @@ int omapfb_apply_changes(struct fb_info *fbi, int init)
 				outh = var->yres;
 			}
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			struct omap_overlay_info info;
+			ovl->get_overlay_info(ovl, &info);
+			outw = info.out_width;
+			outh = info.out_height;
+=======
 			outw = ovl->info.out_width;
 			outh = ovl->info.out_height;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			outw = ovl->info.out_width;
+			outh = ovl->info.out_height;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		if (init) {
 			posx = 0;
 			posy = 0;
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			struct omap_overlay_info info;
+			ovl->get_overlay_info(ovl, &info);
+			posx = info.pos_x;
+			posy = info.pos_y;
+=======
 			posx = ovl->info.pos_x;
 			posy = ovl->info.pos_y;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			posx = ovl->info.pos_x;
+			posy = ovl->info.pos_y;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		r = omapfb_setup_overlay(fbi, ovl, posx, posy, outw, outh);
@@ -1242,6 +1347,13 @@ static int omapfb_blank(int blank, struct fb_info *fbi)
 	struct omapfb_info *ofbi = FB2OFB(fbi);
 	struct omapfb2_device *fbdev = ofbi->fbdev;
 	struct omap_dss_device *display = fb2display(fbi);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct omapfb_display_data *d;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int r = 0;
 
 	if (!display)
@@ -1249,6 +1361,14 @@ static int omapfb_blank(int blank, struct fb_info *fbi)
 
 	omapfb_lock(fbdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	d = get_display_data(fbdev, display);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (blank) {
 	case FB_BLANK_UNBLANK:
 		if (display->state != OMAP_DSS_DISPLAY_SUSPENDED)
@@ -1257,6 +1377,17 @@ static int omapfb_blank(int blank, struct fb_info *fbi)
 		if (display->driver->resume)
 			r = display->driver->resume(display);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((display->caps & OMAP_DSS_DISPLAY_CAP_MANUAL_UPDATE) &&
+				d->update_mode == OMAPFB_AUTO_UPDATE &&
+				!d->auto_update_work_enabled)
+			omapfb_start_auto_update(fbdev, display);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case FB_BLANK_NORMAL:
@@ -1268,6 +1399,15 @@ static int omapfb_blank(int blank, struct fb_info *fbi)
 		if (display->state != OMAP_DSS_DISPLAY_ACTIVE)
 			goto exit;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (d->auto_update_work_enabled)
+			omapfb_stop_auto_update(fbdev, display);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (display->driver->suspend)
 			r = display->driver->suspend(display);
 
@@ -1389,7 +1529,15 @@ static int omapfb_alloc_fbmem(struct fb_info *fbi, unsigned long size,
 
 	if (!paddr) {
 		DBG("allocating %lu bytes for fb %d\n", size, ofbi->id);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		r = omap_vram_alloc(size, &paddr);
+=======
 		r = omap_vram_alloc(OMAP_VRAM_MEMTYPE_SDRAM, size, &paddr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		r = omap_vram_alloc(OMAP_VRAM_MEMTYPE_SDRAM, size, &paddr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		DBG("reserving %lu bytes at %lx for fb %d\n", size, paddr,
 				ofbi->id);
@@ -1477,6 +1625,11 @@ static int omapfb_alloc_fbmem_display(struct fb_info *fbi, unsigned long size,
 	return omapfb_alloc_fbmem(fbi, size, paddr);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static enum omap_color_mode fb_format_to_dss_mode(enum omapfb_color_format fmt)
 {
 	enum omap_color_mode mode;
@@ -1531,6 +1684,10 @@ static enum omap_color_mode fb_format_to_dss_mode(enum omapfb_color_format fmt)
 	return mode;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int omapfb_parse_vram_param(const char *param, int max_entries,
 		unsigned long *sizes, unsigned long *paddrs)
 {
@@ -1604,6 +1761,11 @@ static int omapfb_allocate_all_fbs(struct omapfb2_device *fbdev)
 		memset(&vram_paddrs, 0, sizeof(vram_paddrs));
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fbdev->dev->platform_data) {
 		struct omapfb_platform_data *opd;
 		opd = fbdev->dev->platform_data;
@@ -1621,6 +1783,10 @@ static int omapfb_allocate_all_fbs(struct omapfb2_device *fbdev)
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < fbdev->num_fbs; i++) {
 		/* allocate memory automatically only for fb0, or if
 		 * excplicitly defined with vram or plat data option */
@@ -1659,7 +1825,15 @@ int omapfb_realloc_fbmem(struct fb_info *fbi, unsigned long size, int type)
 	int old_type = rg->type;
 	int r;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (type != OMAPFB_MEMTYPE_SDRAM)
+=======
 	if (type > OMAPFB_MEMTYPE_MAX)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (type > OMAPFB_MEMTYPE_MAX)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	size = PAGE_ALIGN(size);
@@ -1724,6 +1898,84 @@ err:
 	return r;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void omapfb_auto_update_work(struct work_struct *work)
+{
+	struct omap_dss_device *dssdev;
+	struct omap_dss_driver *dssdrv;
+	struct omapfb_display_data *d;
+	u16 w, h;
+	unsigned int freq;
+	struct omapfb2_device *fbdev;
+
+	d = container_of(work, struct omapfb_display_data,
+			auto_update_work.work);
+
+	dssdev = d->dssdev;
+	dssdrv = dssdev->driver;
+	fbdev = d->fbdev;
+
+	if (!dssdrv || !dssdrv->update)
+		return;
+
+	if (dssdrv->sync)
+		dssdrv->sync(dssdev);
+
+	dssdrv->get_resolution(dssdev, &w, &h);
+	dssdrv->update(dssdev, 0, 0, w, h);
+
+	freq = auto_update_freq;
+	if (freq == 0)
+		freq = 20;
+	queue_delayed_work(fbdev->auto_update_wq,
+			&d->auto_update_work, HZ / freq);
+}
+
+void omapfb_start_auto_update(struct omapfb2_device *fbdev,
+		struct omap_dss_device *display)
+{
+	struct omapfb_display_data *d;
+
+	if (fbdev->auto_update_wq == NULL) {
+		struct workqueue_struct *wq;
+
+		wq = create_singlethread_workqueue("omapfb_auto_update");
+
+		if (wq == NULL) {
+			dev_err(fbdev->dev, "Failed to create workqueue for "
+					"auto-update\n");
+			return;
+		}
+
+		fbdev->auto_update_wq = wq;
+	}
+
+	d = get_display_data(fbdev, display);
+
+	INIT_DELAYED_WORK(&d->auto_update_work, omapfb_auto_update_work);
+
+	d->auto_update_work_enabled = true;
+
+	omapfb_auto_update_work(&d->auto_update_work.work);
+}
+
+void omapfb_stop_auto_update(struct omapfb2_device *fbdev,
+		struct omap_dss_device *display)
+{
+	struct omapfb_display_data *d;
+
+	d = get_display_data(fbdev, display);
+
+	cancel_delayed_work_sync(&d->auto_update_work);
+
+	d->auto_update_work_enabled = false;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* initialize fb_info, var, fix to something sane based on the display */
 static int omapfb_fb_init(struct omapfb2_device *fbdev, struct fb_info *fbi)
 {
@@ -1746,6 +1998,11 @@ static int omapfb_fb_init(struct omapfb2_device *fbdev, struct fb_info *fbi)
 
 	var->rotate = def_rotate;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Check if there is a default color format set in the board file,
 	 * and use this format instead the default deducted from the
@@ -1772,6 +2029,10 @@ static int omapfb_fb_init(struct omapfb2_device *fbdev, struct fb_info *fbi)
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (display) {
 		u16 w, h;
 		int rotation = (var->rotate + ofbi->rotation[0]) % 4;
@@ -1858,10 +2119,34 @@ static void omapfb_free_resources(struct omapfb2_device *fbdev)
 	}
 
 	for (i = 0; i < fbdev->num_displays; i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct omap_dss_device *dssdev = fbdev->displays[i].dssdev;
+
+		if (fbdev->displays[i].auto_update_work_enabled)
+			omapfb_stop_auto_update(fbdev, dssdev);
+
+		if (dssdev->state != OMAP_DSS_DISPLAY_DISABLED)
+			dssdev->driver->disable(dssdev);
+
+		omap_dss_put_device(dssdev);
+	}
+
+	if (fbdev->auto_update_wq != NULL) {
+		flush_workqueue(fbdev->auto_update_wq);
+		destroy_workqueue(fbdev->auto_update_wq);
+		fbdev->auto_update_wq = NULL;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fbdev->displays[i]->state != OMAP_DSS_DISPLAY_DISABLED)
 			fbdev->displays[i]->driver->disable(fbdev->displays[i]);
 
 		omap_dss_put_device(fbdev->displays[i]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	dev_set_drvdata(fbdev->dev, NULL);
@@ -1978,6 +2263,14 @@ static int omapfb_create_framebuffers(struct omapfb2_device *fbdev)
 		if (ofbi->num_overlays > 0) {
 			struct omap_overlay *ovl = ofbi->overlays[0];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ovl->manager->apply(ovl->manager);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			r = omapfb_overlay_enable(ovl, 1);
 
 			if (r) {
@@ -2084,14 +2377,32 @@ static int omapfb_set_def_mode(struct omapfb2_device *fbdev,
 	int r;
 	u8 bpp;
 	struct omap_video_timings timings, temp_timings;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct omapfb_display_data *d;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	r = omapfb_mode_to_timings(mode_str, &timings, &bpp);
 	if (r)
 		return r;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	d = get_display_data(fbdev, display);
+	d->bpp_override = bpp;
+=======
 	fbdev->bpp_overrides[fbdev->num_bpp_overrides].dssdev = display;
 	fbdev->bpp_overrides[fbdev->num_bpp_overrides].bpp = bpp;
 	++fbdev->num_bpp_overrides;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	fbdev->bpp_overrides[fbdev->num_bpp_overrides].dssdev = display;
+	fbdev->bpp_overrides[fbdev->num_bpp_overrides].bpp = bpp;
+	++fbdev->num_bpp_overrides;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (display->driver->check_timings) {
 		r = display->driver->check_timings(display, &timings);
@@ -2117,6 +2428,19 @@ static int omapfb_set_def_mode(struct omapfb2_device *fbdev,
 static int omapfb_get_recommended_bpp(struct omapfb2_device *fbdev,
 		struct omap_dss_device *dssdev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct omapfb_display_data *d;
+
+	BUG_ON(dssdev->driver->get_recommended_bpp == NULL);
+
+	d = get_display_data(fbdev, dssdev);
+
+	if (d->bpp_override != 0)
+		return d->bpp_override;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	BUG_ON(dssdev->driver->get_recommended_bpp == NULL);
@@ -2125,6 +2449,10 @@ static int omapfb_get_recommended_bpp(struct omapfb2_device *fbdev,
 		if (dssdev == fbdev->bpp_overrides[i].dssdev)
 			return fbdev->bpp_overrides[i].bpp;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return dssdev->driver->get_recommended_bpp(dssdev);
 }
@@ -2156,9 +2484,21 @@ static int omapfb_parse_def_modes(struct omapfb2_device *fbdev)
 
 		display = NULL;
 		for (i = 0; i < fbdev->num_displays; ++i) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (strcmp(fbdev->displays[i].dssdev->name,
+						display_str) == 0) {
+				display = fbdev->displays[i].dssdev;
+=======
 			if (strcmp(fbdev->displays[i]->name,
 						display_str) == 0) {
 				display = fbdev->displays[i];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (strcmp(fbdev->displays[i]->name,
+						display_str) == 0) {
+				display = fbdev->displays[i];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 		}
@@ -2178,10 +2518,104 @@ static int omapfb_parse_def_modes(struct omapfb2_device *fbdev)
 	return r;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void fb_videomode_to_omap_timings(struct fb_videomode *m,
+		struct omap_video_timings *t)
+{
+	t->x_res = m->xres;
+	t->y_res = m->yres;
+	t->pixel_clock = PICOS2KHZ(m->pixclock);
+	t->hsw = m->hsync_len;
+	t->hfp = m->right_margin;
+	t->hbp = m->left_margin;
+	t->vsw = m->vsync_len;
+	t->vfp = m->lower_margin;
+	t->vbp = m->upper_margin;
+}
+
+static int omapfb_find_best_mode(struct omap_dss_device *display,
+		struct omap_video_timings *timings)
+{
+	struct fb_monspecs *specs;
+	u8 *edid;
+	int r, i, best_xres, best_idx, len;
+
+	if (!display->driver->read_edid)
+		return -ENODEV;
+
+	len = 0x80 * 2;
+	edid = kmalloc(len, GFP_KERNEL);
+
+	r = display->driver->read_edid(display, edid, len);
+	if (r < 0)
+		goto err1;
+
+	specs = kzalloc(sizeof(*specs), GFP_KERNEL);
+
+	fb_edid_to_monspecs(edid, specs);
+
+	if (edid[126] > 0)
+		fb_edid_add_monspecs(edid + 0x80, specs);
+
+	best_xres = 0;
+	best_idx = -1;
+
+	for (i = 0; i < specs->modedb_len; ++i) {
+		struct fb_videomode *m;
+		struct omap_video_timings t;
+
+		m = &specs->modedb[i];
+
+		if (m->pixclock == 0)
+			continue;
+
+		/* skip repeated pixel modes */
+		if (m->xres == 2880 || m->xres == 1440)
+			continue;
+
+		fb_videomode_to_omap_timings(m, &t);
+
+		r = display->driver->check_timings(display, &t);
+		if (r == 0 && best_xres < m->xres) {
+			best_xres = m->xres;
+			best_idx = i;
+		}
+	}
+
+	if (best_xres == 0) {
+		r = -ENOENT;
+		goto err2;
+	}
+
+	fb_videomode_to_omap_timings(&specs->modedb[best_idx], timings);
+
+	r = 0;
+
+err2:
+	fb_destroy_modedb(specs->modedb);
+	kfree(specs);
+err1:
+	kfree(edid);
+
+	return r;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int omapfb_init_display(struct omapfb2_device *fbdev,
 		struct omap_dss_device *dssdev)
 {
 	struct omap_dss_driver *dssdrv = dssdev->driver;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct omapfb_display_data *d;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int r;
 
 	r = dssdrv->enable(dssdev);
@@ -2191,8 +2625,30 @@ static int omapfb_init_display(struct omapfb2_device *fbdev,
 		return r;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	d = get_display_data(fbdev, dssdev);
+
+	d->fbdev = fbdev;
+
 	if (dssdev->caps & OMAP_DSS_DISPLAY_CAP_MANUAL_UPDATE) {
 		u16 w, h;
+
+		if (auto_update) {
+			omapfb_start_auto_update(fbdev, dssdev);
+			d->update_mode = OMAPFB_AUTO_UPDATE;
+		} else {
+			d->update_mode = OMAPFB_MANUAL_UPDATE;
+		}
+
+=======
+	if (dssdev->caps & OMAP_DSS_DISPLAY_CAP_MANUAL_UPDATE) {
+		u16 w, h;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (dssdev->caps & OMAP_DSS_DISPLAY_CAP_MANUAL_UPDATE) {
+		u16 w, h;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dssdrv->enable_te) {
 			r = dssdrv->enable_te(dssdev, 1);
 			if (r) {
@@ -2201,6 +2657,11 @@ static int omapfb_init_display(struct omapfb2_device *fbdev,
 			}
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dssdrv->set_update_mode) {
 			r = dssdrv->set_update_mode(dssdev,
 					OMAP_DSS_UPDATE_MANUAL);
@@ -2211,6 +2672,10 @@ static int omapfb_init_display(struct omapfb2_device *fbdev,
 			}
 		}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dssdrv->get_resolution(dssdev, &w, &h);
 		r = dssdrv->update(dssdev, 0, 0, w, h);
 		if (r) {
@@ -2219,6 +2684,12 @@ static int omapfb_init_display(struct omapfb2_device *fbdev,
 			return r;
 		}
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		d->update_mode = OMAPFB_AUTO_UPDATE;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (dssdrv->set_update_mode) {
 			r = dssdrv->set_update_mode(dssdev,
 					OMAP_DSS_UPDATE_AUTO);
@@ -2228,6 +2699,10 @@ static int omapfb_init_display(struct omapfb2_device *fbdev,
 				return r;
 			}
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -2275,6 +2750,28 @@ static int omapfb_probe(struct platform_device *pdev)
 	fbdev->num_displays = 0;
 	dssdev = NULL;
 	for_each_dss_dev(dssdev) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct omapfb_display_data *d;
+
+		omap_dss_get_device(dssdev);
+
+		if (!dssdev->driver) {
+			dev_warn(&pdev->dev, "no driver for display: %s\n",
+				dssdev->name);
+			omap_dss_put_device(dssdev);
+			continue;
+		}
+
+		d = &fbdev->displays[fbdev->num_displays++];
+		d->dssdev = dssdev;
+		if (dssdev->caps & OMAP_DSS_DISPLAY_CAP_MANUAL_UPDATE)
+			d->update_mode = OMAPFB_MANUAL_UPDATE;
+		else
+			d->update_mode = OMAPFB_AUTO_UPDATE;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		omap_dss_get_device(dssdev);
 
 		if (!dssdev->driver) {
@@ -2283,6 +2780,10 @@ static int omapfb_probe(struct platform_device *pdev)
 		}
 
 		fbdev->displays[fbdev->num_displays++] = dssdev;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (r)
@@ -2302,9 +2803,39 @@ static int omapfb_probe(struct platform_device *pdev)
 	for (i = 0; i < fbdev->num_managers; i++)
 		fbdev->managers[i] = omap_dss_get_overlay_manager(i);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* gfx overlay should be the default one. find a display
+	 * connected to that, and use it as default display */
+	ovl = omap_dss_get_overlay(0);
+	if (ovl->manager && ovl->manager->device) {
+		def_display = ovl->manager->device;
+	} else {
+		dev_warn(&pdev->dev, "cannot find default display\n");
+		def_display = NULL;
+	}
+
 	if (def_mode && strlen(def_mode) > 0) {
 		if (omapfb_parse_def_modes(fbdev))
 			dev_warn(&pdev->dev, "cannot parse default modes\n");
+	} else if (def_display && def_display->driver->set_timings &&
+			def_display->driver->check_timings) {
+		struct omap_video_timings t;
+
+		r = omapfb_find_best_mode(def_display, &t);
+
+		if (r == 0)
+			def_display->driver->set_timings(def_display, &t);
+=======
+	if (def_mode && strlen(def_mode) > 0) {
+		if (omapfb_parse_def_modes(fbdev))
+			dev_warn(&pdev->dev, "cannot parse default modes\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (def_mode && strlen(def_mode) > 0) {
+		if (omapfb_parse_def_modes(fbdev))
+			dev_warn(&pdev->dev, "cannot parse default modes\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	r = omapfb_create_framebuffers(fbdev);
@@ -2321,6 +2852,11 @@ static int omapfb_probe(struct platform_device *pdev)
 
 	DBG("mgr->apply'ed\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* gfx overlay should be the default one. find a display
 	 * connected to that, and use it as default display */
 	ovl = omap_dss_get_overlay(0);
@@ -2331,6 +2867,10 @@ static int omapfb_probe(struct platform_device *pdev)
 		def_display = NULL;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (def_display) {
 		r = omapfb_init_display(fbdev, def_display);
 		if (r) {

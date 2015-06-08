@@ -340,8 +340,12 @@
 <<<<<<< HEAD
 			compatible = "fsl,ns16550", "ns16550";
 =======
+<<<<<<< HEAD
+			compatible = "fsl,ns16550", "ns16550";
+=======
 			compatible = "ns16550";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reg = <0x4500 0x100>;
 			clock-frequency = <0>;
 			current-speed = <9600>;
@@ -355,8 +359,12 @@
 <<<<<<< HEAD
 			compatible = "fsl,ns16550", "ns16550";
 =======
+<<<<<<< HEAD
+			compatible = "fsl,ns16550", "ns16550";
+=======
 			compatible = "ns16550";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reg = <0x4600 0x100>;
 			clock-frequency = <0>;
 			current-speed = <9600>;
@@ -390,7 +398,12 @@
 		interrupt-parent = <&mpic>;
 		interrupts = <19 2>;
 =======
+<<<<<<< HEAD
+		interrupt-parent = <&mpic>;
+		interrupts = <19 2>;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ranges = <
 			0 0x0 0xf8000000 0x08000000	// NOR boot flash

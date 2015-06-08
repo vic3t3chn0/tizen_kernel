@@ -18,7 +18,12 @@
 #include <linux/ahci_platform.h>
 #include <linux/clk.h>
 =======
+<<<<<<< HEAD
+#include <linux/ahci_platform.h>
+#include <linux/clk.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/cputype.h>
 #include <mach/common.h>
@@ -41,7 +46,11 @@
 <<<<<<< HEAD
 #define DA850_SATA_BASE			0x01e18000
 =======
+<<<<<<< HEAD
+#define DA850_SATA_BASE			0x01e18000
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DA850_MMCSD1_BASE		0x01e1b000
 #define DA8XX_EMAC_CPPI_PORT_BASE	0x01e20000
 #define DA8XX_EMAC_CPGMACSS_BASE	0x01e22000
@@ -145,7 +154,11 @@ static struct edma_soc_info da830_edma_cc0_info = {
 <<<<<<< HEAD
 	.default_queue		= EVENTQ_1,
 =======
+<<<<<<< HEAD
+	.default_queue		= EVENTQ_1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct edma_soc_info *da830_edma_info[EDMA_MAX_CC] = {
@@ -164,7 +177,11 @@ static struct edma_soc_info da850_edma_cc_info[] = {
 <<<<<<< HEAD
 		.default_queue		= EVENTQ_1,
 =======
+<<<<<<< HEAD
+		.default_queue		= EVENTQ_1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.n_channel		= 32,
@@ -177,7 +194,11 @@ static struct edma_soc_info da850_edma_cc_info[] = {
 <<<<<<< HEAD
 		.default_queue		= EVENTQ_0,
 =======
+<<<<<<< HEAD
+		.default_queue		= EVENTQ_0,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -379,13 +400,19 @@ struct platform_device da8xx_wdt_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void da8xx_restart(char mode, const char *cmd)
 {
 	davinci_watchdog_reset(&da8xx_wdt_device);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init da8xx_register_watchdog(void)
 {
 	return platform_device_register(&da8xx_wdt_device);
@@ -872,6 +899,9 @@ int __init da8xx_register_spi(int instance, struct spi_board_info *info,
 	return platform_device_register(&da8xx_spi_device[instance]);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_ARCH_DAVINCI_DA850
 
@@ -995,5 +1025,8 @@ int __init da850_register_sata(unsigned long refclkpn)
 	return platform_device_register(&da850_sata_device);
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

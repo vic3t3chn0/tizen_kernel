@@ -16,8 +16,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/mman.h>
 #include <linux/swap.h>
@@ -28,8 +32,11 @@
 #include <linux/vmalloc.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/tracehook.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/blkdev.h>
 #include <linux/backing-dev.h>
 #include <linux/mount.h>
@@ -465,8 +472,12 @@ void  __attribute__((weak)) vmalloc_sync_all(void)
 <<<<<<< HEAD
 struct vm_struct *alloc_vm_area(size_t size, pte_t **ptes)
 =======
+<<<<<<< HEAD
+struct vm_struct *alloc_vm_area(size_t size, pte_t **ptes)
+=======
 struct vm_struct *alloc_vm_area(size_t size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	BUG();
 	return NULL;
@@ -822,8 +833,12 @@ struct vm_area_struct *find_vma(struct mm_struct *mm, unsigned long addr)
 <<<<<<< HEAD
 	vma = mm->mmap_cache;
 =======
+<<<<<<< HEAD
+	vma = mm->mmap_cache;
+=======
 	vma = ACCESS_ONCE(mm->mmap_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (vma && vma->vm_start <= addr && vma->vm_end > addr)
 		return vma;
 
@@ -1107,8 +1122,12 @@ static unsigned long determine_vm_flags(struct file *file,
 <<<<<<< HEAD
 	if ((flags & MAP_PRIVATE) && current->ptrace)
 =======
+<<<<<<< HEAD
+	if ((flags & MAP_PRIVATE) && current->ptrace)
+=======
 	if ((flags & MAP_PRIVATE) && tracehook_expect_breakpoints(current))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		vm_flags &= ~VM_MAYSHARE;
 
 	return vm_flags;
@@ -1256,8 +1275,12 @@ enomem:
 <<<<<<< HEAD
 static unsigned long do_mmap_pgoff(struct file *file,
 =======
+<<<<<<< HEAD
+static unsigned long do_mmap_pgoff(struct file *file,
+=======
 unsigned long do_mmap_pgoff(struct file *file,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    unsigned long addr,
 			    unsigned long len,
 			    unsigned long prot,
@@ -1495,6 +1518,9 @@ error_getting_region:
 	return -ENOMEM;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 unsigned long do_mmap(struct file *file, unsigned long addr,
 	unsigned long len, unsigned long prot,
@@ -1521,9 +1547,12 @@ unsigned long vm_mmap(struct file *file, unsigned long addr,
 	return ret;
 }
 EXPORT_SYMBOL(vm_mmap);
+<<<<<<< HEAD
+=======
 =======
 EXPORT_SYMBOL(do_mmap_pgoff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SYSCALL_DEFINE6(mmap_pgoff, unsigned long, addr, unsigned long, len,
 		unsigned long, prot, unsigned long, flags,
@@ -1763,16 +1792,22 @@ erase_whole_vma:
 EXPORT_SYMBOL(do_munmap);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int vm_munmap(unsigned long addr, size_t len)
 {
 	struct mm_struct *mm = current->mm;
 	int ret;
+<<<<<<< HEAD
+=======
 =======
 SYSCALL_DEFINE2(munmap, unsigned long, addr, size_t, len)
 {
 	int ret;
 	struct mm_struct *mm = current->mm;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	down_write(&mm->mmap_sem);
 	ret = do_munmap(mm, addr, len);
@@ -1780,14 +1815,20 @@ SYSCALL_DEFINE2(munmap, unsigned long, addr, size_t, len)
 	return ret;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(vm_munmap);
 
 SYSCALL_DEFINE2(munmap, unsigned long, addr, size_t, len)
 {
 	return vm_munmap(addr, len);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * release all the mappings made in a process's VM space
@@ -1816,8 +1857,12 @@ void exit_mmap(struct mm_struct *mm)
 <<<<<<< HEAD
 unsigned long vm_brk(unsigned long addr, unsigned long len)
 =======
+<<<<<<< HEAD
+unsigned long vm_brk(unsigned long addr, unsigned long len)
+=======
 unsigned long do_brk(unsigned long addr, unsigned long len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -ENOMEM;
 }
@@ -1900,6 +1945,8 @@ EXPORT_SYMBOL(remap_pfn_range);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int vm_iomap_memory(struct vm_area_struct *vma, phys_addr_t start, unsigned long len)
 {
 	unsigned long pfn = start >> PAGE_SHIFT;
@@ -1911,6 +1958,7 @@ int vm_iomap_memory(struct vm_area_struct *vma, phys_addr_t start, unsigned long
 EXPORT_SYMBOL(vm_iomap_memory);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int remap_vmalloc_range(struct vm_area_struct *vma, void *addr,
 			unsigned long pgoff)
 {
@@ -1973,6 +2021,9 @@ int __vm_enough_memory(struct mm_struct *mm, long pages, int cap_sys_admin)
 
 	if (sysctl_overcommit_memory == OVERCOMMIT_GUESS) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free = global_page_state(NR_FREE_PAGES);
 		free += global_page_state(NR_FILE_PAGES);
 
@@ -1985,12 +2036,15 @@ int __vm_enough_memory(struct mm_struct *mm, long pages, int cap_sys_admin)
 		free -= global_page_state(NR_SHMEM);
 
 		free += get_nr_swap_pages();
+<<<<<<< HEAD
+=======
 =======
 		unsigned long n;
 
 		free = global_page_state(NR_FILE_PAGES);
 		free += nr_swap_pages;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Any slabs which are created with the
@@ -2002,12 +2056,17 @@ int __vm_enough_memory(struct mm_struct *mm, long pages, int cap_sys_admin)
 
 		/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Leave reserved pages. The pages are not for anonymous pages.
 		 */
 		if (free <= totalreserve_pages)
 			goto error;
 		else
 			free -= totalreserve_pages;
+<<<<<<< HEAD
+=======
 =======
 		 * Leave the last 3% for root
 		 */
@@ -2031,6 +2090,7 @@ int __vm_enough_memory(struct mm_struct *mm, long pages, int cap_sys_admin)
 		else
 			n -= totalreserve_pages;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Leave the last 3% for root
@@ -2039,9 +2099,13 @@ int __vm_enough_memory(struct mm_struct *mm, long pages, int cap_sys_admin)
 <<<<<<< HEAD
 			free -= free / 32;
 =======
+<<<<<<< HEAD
+			free -= free / 32;
+=======
 			n -= n / 32;
 		free += n;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (free > pages)
 			return 0;

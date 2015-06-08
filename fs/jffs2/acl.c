@@ -13,7 +13,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/slab.h>
 #include <linux/fs.h>
@@ -164,8 +169,12 @@ static void *jffs2_acl_to_medium(const struct posix_acl *acl, size_t *size)
 <<<<<<< HEAD
 struct posix_acl *jffs2_get_acl(struct inode *inode, int type)
 =======
+<<<<<<< HEAD
+struct posix_acl *jffs2_get_acl(struct inode *inode, int type)
+=======
 static struct posix_acl *jffs2_get_acl(struct inode *inode, int type)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct posix_acl *acl;
 	char *value = NULL;
@@ -239,8 +248,12 @@ static int jffs2_set_acl(struct inode *inode, int type, struct posix_acl *acl)
 <<<<<<< HEAD
 			umode_t mode = inode->i_mode;
 =======
+<<<<<<< HEAD
+			umode_t mode = inode->i_mode;
+=======
 			mode_t mode = inode->i_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rc = posix_acl_equiv_mode(acl, &mode);
 			if (rc < 0)
 				return rc;
@@ -275,12 +288,18 @@ static int jffs2_set_acl(struct inode *inode, int type, struct posix_acl *acl)
 <<<<<<< HEAD
 int jffs2_init_acl_pre(struct inode *dir_i, struct inode *inode, umode_t *i_mode)
 =======
+<<<<<<< HEAD
+int jffs2_init_acl_pre(struct inode *dir_i, struct inode *inode, umode_t *i_mode)
+=======
 int jffs2_check_acl(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct posix_acl *acl;
 	int rc;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	if (flags & IPERM_FLAG_RCU)
@@ -303,6 +322,7 @@ int jffs2_init_acl_pre(struct inode *dir_i, struct inode *inode, int *i_mode)
 	int rc;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cache_no_acl(inode);
 
 	if (S_ISLNK(*i_mode))
@@ -319,6 +339,9 @@ int jffs2_init_acl_pre(struct inode *dir_i, struct inode *inode, int *i_mode)
 			set_cached_acl(inode, ACL_TYPE_DEFAULT, acl);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = posix_acl_create(&acl, GFP_KERNEL, i_mode);
 		if (rc < 0)
 			return rc;
@@ -326,6 +349,8 @@ int jffs2_init_acl_pre(struct inode *dir_i, struct inode *inode, int *i_mode)
 			set_cached_acl(inode, ACL_TYPE_ACCESS, acl);
 
 		posix_acl_release(acl);
+<<<<<<< HEAD
+=======
 =======
 		clone = posix_acl_clone(acl, GFP_KERNEL);
 		if (!clone)
@@ -340,6 +365,7 @@ int jffs2_init_acl_pre(struct inode *dir_i, struct inode *inode, int *i_mode)
 
 		posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -368,8 +394,12 @@ int jffs2_acl_chmod(struct inode *inode)
 <<<<<<< HEAD
 	struct posix_acl *acl;
 =======
+<<<<<<< HEAD
+	struct posix_acl *acl;
+=======
 	struct posix_acl *acl, *clone;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc;
 
 	if (S_ISLNK(inode->i_mode))
@@ -378,11 +408,16 @@ int jffs2_acl_chmod(struct inode *inode)
 	if (IS_ERR(acl) || !acl)
 		return PTR_ERR(acl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = posix_acl_chmod(&acl, GFP_KERNEL, inode->i_mode);
 	if (rc)
 		return rc;
 	rc = jffs2_set_acl(inode, ACL_TYPE_ACCESS, acl);
 	posix_acl_release(acl);
+<<<<<<< HEAD
+=======
 =======
 	clone = posix_acl_clone(acl, GFP_KERNEL);
 	posix_acl_release(acl);
@@ -393,6 +428,7 @@ int jffs2_acl_chmod(struct inode *inode)
 		rc = jffs2_set_acl(inode, ACL_TYPE_ACCESS, clone);
 	posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 

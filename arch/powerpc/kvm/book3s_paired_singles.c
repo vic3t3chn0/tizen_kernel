@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/vmalloc.h>
 
 /* #define DEBUG */
@@ -204,8 +208,13 @@ static int kvmppc_emulate_fpr_load(struct kvm_run *run, struct kvm_vcpu *vcpu,
 		emulated = kvmppc_handle_load(run, vcpu, KVM_MMIO_REG_FPR | rs,
 					      len, 1);
 =======
+<<<<<<< HEAD
+		emulated = kvmppc_handle_load(run, vcpu, KVM_MMIO_REG_FPR | rs,
+					      len, 1);
+=======
 		emulated = kvmppc_handle_load(run, vcpu, KVM_REG_FPR | rs, len, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto done_load;
 	}
 
@@ -296,6 +305,9 @@ static int kvmppc_emulate_psq_load(struct kvm_run *run, struct kvm_vcpu *vcpu,
 		goto done_load;
 	} else if ((r == EMULATE_DO_MMIO) && w) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		emulated = kvmppc_handle_load(run, vcpu, KVM_MMIO_REG_FPR | rs,
 					      4, 1);
 		vcpu->arch.qpr[rs] = tmp[1];
@@ -303,6 +315,8 @@ static int kvmppc_emulate_psq_load(struct kvm_run *run, struct kvm_vcpu *vcpu,
 	} else if (r == EMULATE_DO_MMIO) {
 		emulated = kvmppc_handle_load(run, vcpu, KVM_MMIO_REG_FQPR | rs,
 					      8, 1);
+<<<<<<< HEAD
+=======
 =======
 		emulated = kvmppc_handle_load(run, vcpu, KVM_REG_FPR | rs, 4, 1);
 		vcpu->arch.qpr[rs] = tmp[1];
@@ -310,6 +324,7 @@ static int kvmppc_emulate_psq_load(struct kvm_run *run, struct kvm_vcpu *vcpu,
 	} else if (r == EMULATE_DO_MMIO) {
 		emulated = kvmppc_handle_load(run, vcpu, KVM_REG_FQPR | rs, 8, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto done_load;
 	}
 

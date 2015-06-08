@@ -26,7 +26,12 @@ config KVM
 	# for TASKSTATS/TASK_DELAY_ACCT:
 	depends on NET
 =======
+<<<<<<< HEAD
+	# for TASKSTATS/TASK_DELAY_ACCT:
+	depends on NET
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PREEMPT_NOTIFIERS
 	select MMU_NOTIFIER
 	select ANON_INODES
@@ -41,7 +46,13 @@ config KVM
 	select TASK_DELAY_ACCT
 	select PERF_EVENTS
 =======
+<<<<<<< HEAD
+	select TASKSTATS
+	select TASK_DELAY_ACCT
+	select PERF_EVENTS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Support hosting fully virtualized guest machines using hardware
 	  virtualization extensions.  You will need a fairly recent
@@ -63,7 +74,12 @@ config KVM_INTEL
 	# for perf_guest_get_msrs():
 	depends on CPU_SUP_INTEL
 =======
+<<<<<<< HEAD
+	# for perf_guest_get_msrs():
+	depends on CPU_SUP_INTEL
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Provides support for KVM on Intel processors equipped with the VT
 	  extensions.
@@ -94,7 +110,10 @@ source drivers/vhost/Kconfig
 source drivers/lguest/Kconfig
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 source drivers/virtio/Kconfig
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 endif # VIRTUALIZATION

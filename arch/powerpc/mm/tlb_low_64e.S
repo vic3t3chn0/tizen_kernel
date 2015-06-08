@@ -31,6 +31,9 @@
 #define VPTE_INDEX_SIZE (VPTE_PGD_SHIFT + PGD_INDEX_SIZE)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**********************************************************************
  *                                                                    *
  * TLB miss handling for Book3E with a bolted linear mapping          *
@@ -231,8 +234,11 @@ itlb_miss_fault_bolted:
 	oris	r11,r11,_PAGE_ACCESSED@h
 	beq	tlb_miss_common_bolted
 	b	itlb_miss_kernel_bolted
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**********************************************************************
  *                                                                    *
@@ -554,9 +560,14 @@ END_MMU_FTR_SECTION_IFSET(MMU_FTR_USE_TLBRSRV)
 	cmpdi	cr0,r15,0
 	bge	virt_page_table_tlb_miss_fault
 =======
+<<<<<<< HEAD
+	cmpdi	cr0,r15,0
+	bge	virt_page_table_tlb_miss_fault
+=======
 	cmpldi	cr0,r15,0
 	beq	virt_page_table_tlb_miss_fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef CONFIG_PPC_64K_PAGES
 	/* Get to PUD entry */
@@ -567,9 +578,14 @@ END_MMU_FTR_SECTION_IFSET(MMU_FTR_USE_TLBRSRV)
 	cmpdi	cr0,r15,0
 	bge	virt_page_table_tlb_miss_fault
 =======
+<<<<<<< HEAD
+	cmpdi	cr0,r15,0
+	bge	virt_page_table_tlb_miss_fault
+=======
 	cmpldi	cr0,r15,0
 	beq	virt_page_table_tlb_miss_fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PPC_64K_PAGES */
 
 	/* Get to PMD entry */
@@ -580,9 +596,14 @@ END_MMU_FTR_SECTION_IFSET(MMU_FTR_USE_TLBRSRV)
 	cmpdi	cr0,r15,0
 	bge	virt_page_table_tlb_miss_fault
 =======
+<<<<<<< HEAD
+	cmpdi	cr0,r15,0
+	bge	virt_page_table_tlb_miss_fault
+=======
 	cmpldi	cr0,r15,0
 	beq	virt_page_table_tlb_miss_fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Ok, we're all right, we can now create a kernel translation for
 	 * a 4K or 64K page from r16 -> r15.
@@ -818,9 +839,14 @@ htw_tlb_miss:
 	cmpdi	cr0,r15,0
 	bge	htw_tlb_miss_fault
 =======
+<<<<<<< HEAD
+	cmpdi	cr0,r15,0
+	bge	htw_tlb_miss_fault
+=======
 	cmpldi	cr0,r15,0
 	beq	htw_tlb_miss_fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef CONFIG_PPC_64K_PAGES
 	/* Get to PUD entry */
@@ -831,9 +857,14 @@ htw_tlb_miss:
 	cmpdi	cr0,r15,0
 	bge	htw_tlb_miss_fault
 =======
+<<<<<<< HEAD
+	cmpdi	cr0,r15,0
+	bge	htw_tlb_miss_fault
+=======
 	cmpldi	cr0,r15,0
 	beq	htw_tlb_miss_fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PPC_64K_PAGES */
 
 	/* Get to PMD entry */
@@ -844,9 +875,14 @@ htw_tlb_miss:
 	cmpdi	cr0,r15,0
 	bge	htw_tlb_miss_fault
 =======
+<<<<<<< HEAD
+	cmpdi	cr0,r15,0
+	bge	htw_tlb_miss_fault
+=======
 	cmpldi	cr0,r15,0
 	beq	htw_tlb_miss_fault
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Ok, we're all right, we can now create an indirect entry for
 	 * a 1M or 256M page.

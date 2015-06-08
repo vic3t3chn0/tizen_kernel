@@ -81,8 +81,11 @@ static int have_wrcomb(void)
 	struct pci_dev *dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u8 rev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev = pci_get_class(PCI_CLASS_BRIDGE_HOST << 8, NULL);
 	if (dev != NULL) {
@@ -93,11 +96,16 @@ static int have_wrcomb(void)
 		 */
 		if (dev->vendor == PCI_VENDOR_ID_SERVERWORKS &&
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    dev->device == PCI_DEVICE_ID_SERVERWORKS_LE &&
 		    dev->revision <= 5) {
 			pr_info("mtrr: Serverworks LE rev < 6 detected. Write-combining disabled.\n");
 			pci_dev_put(dev);
 			return 0;
+<<<<<<< HEAD
+=======
 =======
 		    dev->device == PCI_DEVICE_ID_SERVERWORKS_LE) {
 			pci_read_config_byte(dev, PCI_CLASS_REVISION, &rev);
@@ -107,6 +115,7 @@ static int have_wrcomb(void)
 				return 0;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		/*
 		 * Intel 450NX errata # 23. Non ascending cacheline evictions to
@@ -150,9 +159,12 @@ static void __init init_table(void)
 struct set_mtrr_data {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	atomic_t	count;
 	atomic_t	gate;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long	smp_base;
 	unsigned long	smp_size;
 	unsigned int	smp_reg;
@@ -164,16 +176,25 @@ struct set_mtrr_data {
  * mtrr_rendezvous_handler - Work done in the synchronization handler. Executed
  * by all the CPUs.
 =======
+<<<<<<< HEAD
+/**
+ * mtrr_rendezvous_handler - Work done in the synchronization handler. Executed
+ * by all the CPUs.
+=======
 static DEFINE_PER_CPU(struct cpu_stop_work, mtrr_work);
 
 /**
  * mtrr_work_handler - Synchronisation handler. Executed by "other" CPUs.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @info: pointer to mtrr configuration data
  *
  * Returns nothing.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mtrr_rendezvous_handler(void *info)
 {
 	struct set_mtrr_data *data = info;
@@ -197,6 +218,8 @@ static int mtrr_rendezvous_handler(void *info)
 	} else if (mtrr_aps_delayed_init || !cpu_online(smp_processor_id())) {
 		mtrr_if->set_all();
 	}
+<<<<<<< HEAD
+=======
 =======
 static int mtrr_work_handler(void *info)
 {
@@ -233,6 +256,7 @@ static int mtrr_work_handler(void *info)
 	local_irq_restore(flags);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -270,11 +294,16 @@ static inline int types_compatible(mtrr_type type1, mtrr_type type2)
  * 15. Enable interrupts.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * What does that mean for us? Well, stop_machine() will ensure that
  * the rendezvous handler is started on each CPU. And in lockstep they
  * do the state transition of disabling interrupts, updating MTRR's
  * (the CPU vendors may each do it differently, so we call mtrr_if->set()
  * callback and let them take care of it.) and enabling interrupts.
+<<<<<<< HEAD
+=======
 =======
  * What does that mean for us? Well, first we set data.count to the number
  * of CPUs. As each CPU announces that it started the rendezvous handler by
@@ -291,6 +320,7 @@ static inline int types_compatible(mtrr_type type1, mtrr_type type2)
  * When we finish, we wait for data.count to hit 0 and toggle the data.gate flag
  * Everyone then enables interrupts and we all continue on.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Note that the mechanism is the same for UP systems, too; all the SMP stuff
  * becomes nops.
@@ -299,6 +329,9 @@ static void
 set_mtrr(unsigned int reg, unsigned long base, unsigned long size, mtrr_type type)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct set_mtrr_data data = { .smp_reg = reg,
 				      .smp_base = base,
 				      .smp_size = size,
@@ -319,6 +352,8 @@ static void set_mtrr_from_inactive_cpu(unsigned int reg, unsigned long base,
 
 	stop_machine_from_inactive_cpu(mtrr_rendezvous_handler, &data,
 				       cpu_callout_mask);
+<<<<<<< HEAD
+=======
 =======
 	struct set_mtrr_data data;
 	unsigned long flags;
@@ -430,6 +465,7 @@ static void set_mtrr_from_inactive_cpu(unsigned int reg, unsigned long base,
 		mutex_unlock(&stop_cpus_mutex);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -886,8 +922,12 @@ void mtrr_ap_init(void)
 <<<<<<< HEAD
 	set_mtrr_from_inactive_cpu(~0U, 0, 0, 0);
 =======
+<<<<<<< HEAD
+	set_mtrr_from_inactive_cpu(~0U, 0, 0, 0);
+=======
 	set_mtrr(~0U, 0, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**

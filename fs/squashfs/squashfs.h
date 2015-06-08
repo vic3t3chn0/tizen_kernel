@@ -99,7 +99,10 @@ extern const struct inode_operations squashfs_symlink_inode_ops;
 extern const struct xattr_handler *squashfs_xattr_handlers[];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 /* zlib_wrapper.c */
 extern const struct squashfs_decompressor squashfs_zlib_comp_ops;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

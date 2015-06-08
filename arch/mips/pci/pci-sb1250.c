@@ -216,8 +216,12 @@ static int __init sb1250_pcibios_init(void)
 <<<<<<< HEAD
 	pci_set_flags(PCI_PROBE_ONLY);
 =======
+<<<<<<< HEAD
+	pci_set_flags(PCI_PROBE_ONLY);
+=======
 	pci_probe_only = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Avoid ISA compat ranges.  */
 	PCIBIOS_MIN_IO = 0x00008000UL;

@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  * Author: Ryan Mallon
 =======
+<<<<<<< HEAD
+ * Author: Ryan Mallon
+=======
  * Author: Ryan Mallon <ryan@bluewatersys.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  This program is free software; you can redistribute  it and/or modify it
  *  under  the terms of  the GNU General  Public License as published by the
@@ -19,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/soc.h>
@@ -42,6 +50,8 @@ static int snappercl15_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	err = snd_soc_dai_set_fmt(codec_dai, SND_SOC_DAIFMT_I2S |
 				  SND_SOC_DAIFMT_NB_IF |
 				  SND_SOC_DAIFMT_CBS_CFS);
@@ -53,6 +63,7 @@ static int snappercl15_hw_params(struct snd_pcm_substream *substream,
 		return err;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = snd_soc_dai_set_sysclk(codec_dai, 0, CODEC_CLOCK, 
 				     SND_SOC_CLOCK_IN);
 	if (err)
@@ -110,7 +121,12 @@ static struct snd_soc_dai_link snappercl15_dai = {
 	.dai_fmt	= SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_IF |
 			  SND_SOC_DAIFMT_CBS_CFS,
 =======
+<<<<<<< HEAD
+	.dai_fmt	= SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_IF |
+			  SND_SOC_DAIFMT_CBS_CFS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops		= &snappercl15_ops,
 };
 
@@ -119,12 +135,19 @@ static struct snd_soc_card snd_soc_snappercl15 = {
 <<<<<<< HEAD
 	.owner		= THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner		= THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link	= &snappercl15_dai,
 	.num_links	= 1,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit snappercl15_probe(struct platform_device *pdev)
 {
 	struct snd_soc_card *card = &snd_soc_snappercl15;
@@ -142,6 +165,8 @@ static int __devinit snappercl15_probe(struct platform_device *pdev)
 			ret);
 		ep93xx_i2s_release();
 	}
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *snappercl15_snd_device;
 
@@ -167,11 +192,15 @@ static int __init snappercl15_init(void)
 	if (ret)
 		platform_device_put(snappercl15_snd_device);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devexit snappercl15_remove(struct platform_device *pdev)
 {
 	struct snd_soc_card *card = platform_get_drvdata(pdev);
@@ -197,6 +226,8 @@ MODULE_AUTHOR("Ryan Mallon");
 MODULE_DESCRIPTION("ALSA SoC Snapper CL15");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:snappercl15-audio");
+<<<<<<< HEAD
+=======
 =======
 static void __exit snappercl15_exit(void)
 {
@@ -212,3 +243,4 @@ MODULE_DESCRIPTION("ALSA SoC Snapper CL15");
 MODULE_LICENSE("GPL");
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

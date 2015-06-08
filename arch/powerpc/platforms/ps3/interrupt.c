@@ -22,8 +22,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq.h>
 
 #include <asm/machdep.h>
@@ -36,19 +40,30 @@
 #if defined(DEBUG)
 #define DBG udbg_printf
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FAIL udbg_printf
 #else
 #define DBG pr_devel
 #define FAIL pr_debug
+<<<<<<< HEAD
+=======
 =======
 #else
 #define DBG pr_debug
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /**
  * struct ps3_bmp - a per cpu irq status and mask bitmap structure
  * @status: 256 bit status bitmap indexed by plug
+<<<<<<< HEAD
+ * @unused_1: Alignment
+ * @mask: 256 bit mask bitmap indexed by plug
+ * @unused_2: Alignment
+=======
 <<<<<<< HEAD
  * @unused_1: Alignment
  * @mask: 256 bit mask bitmap indexed by plug
@@ -60,6 +75,7 @@
  * @lock:
  * @ipi_debug_brk_mask:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The HV maintains per SMT thread mappings of HV outlet to HV plug on
  * behalf of the guest.  These mappings are implemented as 256 bit guest
@@ -92,37 +108,52 @@ struct ps3_bmp {
 	};
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u64 ipi_debug_brk_mask;
 	spinlock_t lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
  * struct ps3_private - a per cpu data structure
  * @bmp: ps3_bmp structure
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @bmp_lock: Syncronize access to bmp.
  * @ipi_debug_brk_mask: Mask for debug break IPIs
  * @ppe_id: HV logical_ppe_id
  * @thread_id: HV thread_id
  * @ipi_mask: Mask of IPI virqs
+<<<<<<< HEAD
+=======
 =======
  * @ppe_id: HV logical_ppe_id
  * @thread_id: HV thread_id
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 struct ps3_private {
 	struct ps3_bmp bmp __attribute__ ((aligned (PS3_BMP_MINALIGN)));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t bmp_lock;
 	u64 ppe_id;
 	u64 thread_id;
 	unsigned long ipi_debug_brk_mask;
+<<<<<<< HEAD
+=======
 =======
 	u64 ppe_id;
 	u64 thread_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long ipi_mask;
 };
 
@@ -143,8 +174,12 @@ static void ps3_chip_mask(struct irq_data *d)
 <<<<<<< HEAD
 	DBG("%s:%d: thread_id %llu, virq %d\n", __func__, __LINE__,
 =======
+<<<<<<< HEAD
+	DBG("%s:%d: thread_id %llu, virq %d\n", __func__, __LINE__,
+=======
 	pr_debug("%s:%d: thread_id %llu, virq %d\n", __func__, __LINE__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pd->thread_id, d->irq);
 
 	local_irq_save(flags);
@@ -168,8 +203,12 @@ static void ps3_chip_unmask(struct irq_data *d)
 <<<<<<< HEAD
 	DBG("%s:%d: thread_id %llu, virq %d\n", __func__, __LINE__,
 =======
+<<<<<<< HEAD
+	DBG("%s:%d: thread_id %llu, virq %d\n", __func__, __LINE__,
+=======
 	pr_debug("%s:%d: thread_id %llu, virq %d\n", __func__, __LINE__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pd->thread_id, d->irq);
 
 	local_irq_save(flags);
@@ -236,8 +275,12 @@ static int ps3_virq_setup(enum ps3_cpu_binding cpu, unsigned long outlet,
 <<<<<<< HEAD
 		FAIL("%s:%d: irq_create_mapping failed: outlet %lu\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: irq_create_mapping failed: outlet %lu\n",
+=======
 		pr_debug("%s:%d: irq_create_mapping failed: outlet %lu\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, outlet);
 		result = -ENOMEM;
 		goto fail_create;
@@ -246,8 +289,12 @@ static int ps3_virq_setup(enum ps3_cpu_binding cpu, unsigned long outlet,
 <<<<<<< HEAD
 	DBG("%s:%d: outlet %lu => cpu %u, virq %u\n", __func__, __LINE__,
 =======
+<<<<<<< HEAD
+	DBG("%s:%d: outlet %lu => cpu %u, virq %u\n", __func__, __LINE__,
+=======
 	pr_debug("%s:%d: outlet %lu => cpu %u, virq %u\n", __func__, __LINE__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		outlet, cpu, *virq);
 
 	result = irq_set_chip_data(*virq, pd);
@@ -256,8 +303,12 @@ static int ps3_virq_setup(enum ps3_cpu_binding cpu, unsigned long outlet,
 <<<<<<< HEAD
 		FAIL("%s:%d: irq_set_chip_data failed\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: irq_set_chip_data failed\n",
+=======
 		pr_debug("%s:%d: irq_set_chip_data failed\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__);
 		goto fail_set;
 	}
@@ -286,8 +337,12 @@ static int ps3_virq_destroy(unsigned int virq)
 <<<<<<< HEAD
 	DBG("%s:%d: ppe_id %llu, thread_id %llu, virq %u\n", __func__,
 =======
+<<<<<<< HEAD
+	DBG("%s:%d: ppe_id %llu, thread_id %llu, virq %u\n", __func__,
+=======
 	pr_debug("%s:%d: ppe_id %llu, thread_id %llu, virq %u\n", __func__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__LINE__, pd->ppe_id, pd->thread_id, virq);
 
 	irq_set_chip_data(virq, NULL);
@@ -296,8 +351,12 @@ static int ps3_virq_destroy(unsigned int virq)
 <<<<<<< HEAD
 	DBG("%s:%d <-\n", __func__, __LINE__);
 =======
+<<<<<<< HEAD
+	DBG("%s:%d <-\n", __func__, __LINE__);
+=======
 	pr_debug("%s:%d <-\n", __func__, __LINE__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -323,8 +382,12 @@ int ps3_irq_plug_setup(enum ps3_cpu_binding cpu, unsigned long outlet,
 <<<<<<< HEAD
 		FAIL("%s:%d: ps3_virq_setup failed\n", __func__, __LINE__);
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: ps3_virq_setup failed\n", __func__, __LINE__);
+=======
 		pr_debug("%s:%d: ps3_virq_setup failed\n", __func__, __LINE__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail_setup;
 	}
 
@@ -339,8 +402,12 @@ int ps3_irq_plug_setup(enum ps3_cpu_binding cpu, unsigned long outlet,
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_connect_irq_plug_ext failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_connect_irq_plug_ext failed: %s\n",
+=======
 		pr_info("%s:%d: lv1_connect_irq_plug_ext failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__func__, __LINE__, ps3_result(result));
 		result = -EPERM;
 		goto fail_connect;
@@ -372,8 +439,12 @@ int ps3_irq_plug_destroy(unsigned int virq)
 <<<<<<< HEAD
 	DBG("%s:%d: ppe_id %llu, thread_id %llu, virq %u\n", __func__,
 =======
+<<<<<<< HEAD
+	DBG("%s:%d: ppe_id %llu, thread_id %llu, virq %u\n", __func__,
+=======
 	pr_debug("%s:%d: ppe_id %llu, thread_id %llu, virq %u\n", __func__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__LINE__, pd->ppe_id, pd->thread_id, virq);
 
 	ps3_chip_mask(irq_get_irq_data(virq));
@@ -384,8 +455,12 @@ int ps3_irq_plug_destroy(unsigned int virq)
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_disconnect_irq_plug_ext failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_disconnect_irq_plug_ext failed: %s\n",
+=======
 		pr_info("%s:%d: lv1_disconnect_irq_plug_ext failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__func__, __LINE__, ps3_result(result));
 
 	ps3_virq_destroy(virq);
@@ -416,8 +491,12 @@ int ps3_event_receive_port_setup(enum ps3_cpu_binding cpu, unsigned int *virq)
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_construct_event_receive_port failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_construct_event_receive_port failed: %s\n",
+=======
 		pr_debug("%s:%d: lv1_construct_event_receive_port failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ps3_result(result));
 		*virq = NO_IRQ;
 		return result;
@@ -446,8 +525,12 @@ int ps3_event_receive_port_destroy(unsigned int virq)
 <<<<<<< HEAD
 	DBG(" -> %s:%d virq %u\n", __func__, __LINE__, virq);
 =======
+<<<<<<< HEAD
+	DBG(" -> %s:%d virq %u\n", __func__, __LINE__, virq);
+=======
 	pr_debug(" -> %s:%d virq %u\n", __func__, __LINE__, virq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ps3_chip_mask(irq_get_irq_data(virq));
 
@@ -457,8 +540,12 @@ int ps3_event_receive_port_destroy(unsigned int virq)
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_destruct_event_receive_port failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_destruct_event_receive_port failed: %s\n",
+=======
 		pr_debug("%s:%d: lv1_destruct_event_receive_port failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ps3_result(result));
 
 	/*
@@ -469,8 +556,12 @@ int ps3_event_receive_port_destroy(unsigned int virq)
 <<<<<<< HEAD
 	DBG(" <- %s:%d\n", __func__, __LINE__);
 =======
+<<<<<<< HEAD
+	DBG(" <- %s:%d\n", __func__, __LINE__);
+=======
 	pr_debug(" <- %s:%d\n", __func__, __LINE__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }
 
@@ -509,8 +600,12 @@ int ps3_sb_event_receive_port_setup(struct ps3_system_bus_device *dev,
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_connect_interrupt_event_receive_port"
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_connect_interrupt_event_receive_port"
+=======
 		pr_debug("%s:%d: lv1_connect_interrupt_event_receive_port"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			" failed: %s\n", __func__, __LINE__,
 			ps3_result(result));
 		ps3_event_receive_port_destroy(*virq);
@@ -521,8 +616,12 @@ int ps3_sb_event_receive_port_setup(struct ps3_system_bus_device *dev,
 <<<<<<< HEAD
 	DBG("%s:%d: interrupt_id %u, virq %u\n", __func__, __LINE__,
 =======
+<<<<<<< HEAD
+	DBG("%s:%d: interrupt_id %u, virq %u\n", __func__, __LINE__,
+=======
 	pr_debug("%s:%d: interrupt_id %u, virq %u\n", __func__, __LINE__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev->interrupt_id, *virq);
 
 	return 0;
@@ -539,8 +638,12 @@ int ps3_sb_event_receive_port_destroy(struct ps3_system_bus_device *dev,
 <<<<<<< HEAD
 	DBG(" -> %s:%d: interrupt_id %u, virq %u\n", __func__, __LINE__,
 =======
+<<<<<<< HEAD
+	DBG(" -> %s:%d: interrupt_id %u, virq %u\n", __func__, __LINE__,
+=======
 	pr_debug(" -> %s:%d: interrupt_id %u, virq %u\n", __func__, __LINE__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev->interrupt_id, virq);
 
 	result = lv1_disconnect_interrupt_event_receive_port(dev->bus_id,
@@ -550,8 +653,12 @@ int ps3_sb_event_receive_port_destroy(struct ps3_system_bus_device *dev,
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_disconnect_interrupt_event_receive_port"
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_disconnect_interrupt_event_receive_port"
+=======
 		pr_debug("%s:%d: lv1_disconnect_interrupt_event_receive_port"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			" failed: %s\n", __func__, __LINE__,
 			ps3_result(result));
 
@@ -569,8 +676,12 @@ int ps3_sb_event_receive_port_destroy(struct ps3_system_bus_device *dev,
 <<<<<<< HEAD
 	DBG(" <- %s:%d\n", __func__, __LINE__);
 =======
+<<<<<<< HEAD
+	DBG(" <- %s:%d\n", __func__, __LINE__);
+=======
 	pr_debug(" <- %s:%d\n", __func__, __LINE__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }
 EXPORT_SYMBOL(ps3_sb_event_receive_port_destroy);
@@ -598,8 +709,12 @@ int ps3_io_irq_setup(enum ps3_cpu_binding cpu, unsigned int interrupt_id,
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_construct_io_irq_outlet failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_construct_io_irq_outlet failed: %s\n",
+=======
 		pr_debug("%s:%d: lv1_construct_io_irq_outlet failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ps3_result(result));
 		return result;
 	}
@@ -632,8 +747,12 @@ int ps3_io_irq_destroy(unsigned int virq)
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_destruct_io_irq_outlet failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_destruct_io_irq_outlet failed: %s\n",
+=======
 		pr_debug("%s:%d: lv1_destruct_io_irq_outlet failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ps3_result(result));
 
 	return result;
@@ -668,8 +787,12 @@ int ps3_vuart_irq_setup(enum ps3_cpu_binding cpu, void* virt_addr_bmp,
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_configure_virtual_uart_irq failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_configure_virtual_uart_irq failed: %s\n",
+=======
 		pr_debug("%s:%d: lv1_configure_virtual_uart_irq failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ps3_result(result));
 		return result;
 	}
@@ -692,8 +815,12 @@ int ps3_vuart_irq_destroy(unsigned int virq)
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_configure_virtual_uart_irq failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_configure_virtual_uart_irq failed: %s\n",
+=======
 		pr_debug("%s:%d: lv1_configure_virtual_uart_irq failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ps3_result(result));
 		return result;
 	}
@@ -729,8 +856,12 @@ int ps3_spe_irq_setup(enum ps3_cpu_binding cpu, unsigned long spe_id,
 <<<<<<< HEAD
 		FAIL("%s:%d: lv1_get_spe_irq_outlet failed: %s\n",
 =======
+<<<<<<< HEAD
+		FAIL("%s:%d: lv1_get_spe_irq_outlet failed: %s\n",
+=======
 		pr_debug("%s:%d: lv1_get_spe_irq_outlet failed: %s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ps3_result(result));
 		return result;
 	}
@@ -764,8 +895,12 @@ static void _dump_64_bmp(const char *header, const u64 *p, unsigned cpu,
 <<<<<<< HEAD
 	pr_debug("%s:%d: %s %u {%04llx_%04llx_%04llx_%04llx}\n",
 =======
+<<<<<<< HEAD
+	pr_debug("%s:%d: %s %u {%04llx_%04llx_%04llx_%04llx}\n",
+=======
 	pr_debug("%s:%d: %s %u {%04lx_%04lx_%04lx_%04lx}\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		func, line, header, cpu,
 		*p >> 48, (*p >> 32) & 0xffff, (*p >> 16) & 0xffff,
 		*p & 0xffff);
@@ -777,8 +912,12 @@ static void __maybe_unused _dump_256_bmp(const char *header,
 <<<<<<< HEAD
 	pr_debug("%s:%d: %s %u {%016llx:%016llx:%016llx:%016llx}\n",
 =======
+<<<<<<< HEAD
+	pr_debug("%s:%d: %s %u {%016llx:%016llx:%016llx:%016llx}\n",
+=======
 	pr_debug("%s:%d: %s %u {%016lx:%016lx:%016lx:%016lx}\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		func, line, header, cpu, p[0], p[1], p[2], p[3]);
 }
 
@@ -788,16 +927,22 @@ static void _dump_bmp(struct ps3_private* pd, const char* func, int line)
 	unsigned long flags;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&pd->bmp_lock, flags);
 	_dump_64_bmp("stat", &pd->bmp.status, pd->thread_id, func, line);
 	_dump_64_bmp("mask", (u64*)&pd->bmp.mask, pd->thread_id, func, line);
 	spin_unlock_irqrestore(&pd->bmp_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(&pd->bmp.lock, flags);
 	_dump_64_bmp("stat", &pd->bmp.status, pd->thread_id, func, line);
 	_dump_64_bmp("mask", &pd->bmp.mask, pd->thread_id, func, line);
 	spin_unlock_irqrestore(&pd->bmp.lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define dump_mask(_x) _dump_mask(_x, __func__, __LINE__)
@@ -811,26 +956,38 @@ static void __maybe_unused _dump_mask(struct ps3_private *pd,
 	_dump_64_bmp("mask", (u64*)&pd->bmp.mask, pd->thread_id, func, line);
 	spin_unlock_irqrestore(&pd->bmp_lock, flags);
 =======
+<<<<<<< HEAD
+	spin_lock_irqsave(&pd->bmp_lock, flags);
+	_dump_64_bmp("mask", (u64*)&pd->bmp.mask, pd->thread_id, func, line);
+	spin_unlock_irqrestore(&pd->bmp_lock, flags);
+=======
 	spin_lock_irqsave(&pd->bmp.lock, flags);
 	_dump_64_bmp("mask", &pd->bmp.mask, pd->thread_id, func, line);
 	spin_unlock_irqrestore(&pd->bmp.lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else
 static void dump_bmp(struct ps3_private* pd) {};
 #endif /* defined(DEBUG) */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ps3_host_map(struct irq_domain *h, unsigned int virq,
 	irq_hw_number_t hwirq)
 {
 	DBG("%s:%d: hwirq %lu, virq %u\n", __func__, __LINE__, hwirq,
+<<<<<<< HEAD
+=======
 =======
 static int ps3_host_map(struct irq_host *h, unsigned int virq,
 	irq_hw_number_t hwirq)
 {
 	pr_debug("%s:%d: hwirq %lu, virq %u\n", __func__, __LINE__, hwirq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		virq);
 
 	irq_set_chip_and_handler(virq, &ps3_irq_chip, handle_fasteoi_irq);
@@ -841,8 +998,12 @@ static int ps3_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static int ps3_host_match(struct irq_domain *h, struct device_node *np)
 =======
+<<<<<<< HEAD
+static int ps3_host_match(struct irq_domain *h, struct device_node *np)
+=======
 static int ps3_host_match(struct irq_host *h, struct device_node *np)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Match all */
 	return 1;
@@ -851,8 +1012,12 @@ static int ps3_host_match(struct irq_host *h, struct device_node *np)
 <<<<<<< HEAD
 static const struct irq_domain_ops ps3_host_ops = {
 =======
+<<<<<<< HEAD
+static const struct irq_domain_ops ps3_host_ops = {
+=======
 static struct irq_host_ops ps3_host_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map = ps3_host_map,
 	.match = ps3_host_match,
 };
@@ -862,16 +1027,22 @@ void __init ps3_register_ipi_debug_brk(unsigned int cpu, unsigned int virq)
 	struct ps3_private *pd = &per_cpu(ps3_private, cpu);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(63 - virq, &pd->ipi_debug_brk_mask);
 
 	DBG("%s:%d: cpu %u, virq %u, mask %lxh\n", __func__, __LINE__,
 		cpu, virq, pd->ipi_debug_brk_mask);
+<<<<<<< HEAD
+=======
 =======
 	pd->bmp.ipi_debug_brk_mask = 0x8000000000000000UL >> virq;
 
 	pr_debug("%s:%d: cpu %u, virq %u, mask %llxh\n", __func__, __LINE__,
 		cpu, virq, pd->bmp.ipi_debug_brk_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init ps3_register_ipi_irq(unsigned int cpu, unsigned int virq)
@@ -896,9 +1067,14 @@ static unsigned int ps3_get_irq(void)
 	if (x & pd->ipi_debug_brk_mask)
 		x &= pd->ipi_debug_brk_mask;
 =======
+<<<<<<< HEAD
+	if (x & pd->ipi_debug_brk_mask)
+		x &= pd->ipi_debug_brk_mask;
+=======
 	if (x & pd->bmp.ipi_debug_brk_mask)
 		x &= pd->bmp.ipi_debug_brk_mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	asm volatile("cntlzd %0,%1" : "=r" (plug) : "r" (x));
 	plug &= 0x3f;
@@ -907,8 +1083,12 @@ static unsigned int ps3_get_irq(void)
 <<<<<<< HEAD
 		DBG("%s:%d: no plug found: thread_id %llu\n", __func__,
 =======
+<<<<<<< HEAD
+		DBG("%s:%d: no plug found: thread_id %llu\n", __func__,
+=======
 		pr_debug("%s:%d: no plug found: thread_id %llu\n", __func__,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__LINE__, pd->thread_id);
 		dump_bmp(&per_cpu(ps3_private, 0));
 		dump_bmp(&per_cpu(ps3_private, 1));
@@ -936,10 +1116,15 @@ void __init ps3_init_IRQ(void)
 	int result;
 	unsigned cpu;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct irq_domain *host;
 
 	host = irq_domain_add_nomap(NULL, PS3_PLUG_MAX + 1, &ps3_host_ops, NULL);
 	irq_set_default_host(host);
+<<<<<<< HEAD
+=======
 =======
 	struct irq_host *host;
 
@@ -948,6 +1133,7 @@ void __init ps3_init_IRQ(void)
 	irq_set_default_host(host);
 	irq_set_virq_count(PS3_PLUG_MAX + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for_each_possible_cpu(cpu) {
 		struct ps3_private *pd = &per_cpu(ps3_private, cpu);
@@ -959,10 +1145,16 @@ void __init ps3_init_IRQ(void)
 
 		DBG("%s:%d: ppe_id %llu, thread_id %llu, bmp %lxh\n",
 =======
+<<<<<<< HEAD
+		spin_lock_init(&pd->bmp_lock);
+
+		DBG("%s:%d: ppe_id %llu, thread_id %llu, bmp %lxh\n",
+=======
 		spin_lock_init(&pd->bmp.lock);
 
 		pr_debug("%s:%d: ppe_id %llu, thread_id %llu, bmp %lxh\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, pd->ppe_id, pd->thread_id,
 			ps3_mm_phys_to_lpar(__pa(&pd->bmp)));
 
@@ -973,8 +1165,12 @@ void __init ps3_init_IRQ(void)
 <<<<<<< HEAD
 			FAIL("%s:%d: lv1_configure_irq_state_bitmap failed:"
 =======
+<<<<<<< HEAD
+			FAIL("%s:%d: lv1_configure_irq_state_bitmap failed:"
+=======
 			pr_debug("%s:%d: lv1_configure_irq_state_bitmap failed:"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				" %s\n", __func__, __LINE__,
 				ps3_result(result));
 	}

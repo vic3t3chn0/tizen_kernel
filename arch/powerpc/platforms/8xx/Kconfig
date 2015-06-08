@@ -29,7 +29,11 @@ config MPC885ADS
 <<<<<<< HEAD
 	select OF_DYNAMIC
 =======
+<<<<<<< HEAD
+	select OF_DYNAMIC
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Freescale Semiconductor MPC885 Application Development System (ADS).
 	  Also known as DUET.

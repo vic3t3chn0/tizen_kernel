@@ -79,12 +79,16 @@ __start:
 <<<<<<< HEAD
 	mr	r31,r3			/* save device tree ptr */
 =======
+<<<<<<< HEAD
+	mr	r31,r3			/* save device tree ptr */
+=======
 	mr	r31,r3			/* save parameters */
 	mr	r30,r4
 	mr	r29,r5
 	mr	r28,r6
 	mr	r27,r7
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We have to turn on the MMU right away so we get cache modes
 	 * set correctly.
@@ -231,8 +235,12 @@ DataAccess:
 <<<<<<< HEAD
 	EXC_XFER_LITE(0x300, handle_page_fault)
 =======
+<<<<<<< HEAD
+	EXC_XFER_LITE(0x300, handle_page_fault)
+=======
 	EXC_XFER_EE_LITE(0x300, handle_page_fault)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Instruction access exception.
  * This is "never generated" by the MPC8xx.  We jump to it for other
@@ -246,8 +254,12 @@ InstructionAccess:
 <<<<<<< HEAD
 	EXC_XFER_LITE(0x400, handle_page_fault)
 =======
+<<<<<<< HEAD
+	EXC_XFER_LITE(0x400, handle_page_fault)
+=======
 	EXC_XFER_EE_LITE(0x400, handle_page_fault)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* External interrupt */
 	EXCEPTION(0x500, HardwareInterrupt, do_IRQ, EXC_XFER_LITE)
@@ -739,12 +751,17 @@ start_here:
 	li	r3,0
 	mr	r4,r31
 =======
+<<<<<<< HEAD
+	li	r3,0
+	mr	r4,r31
+=======
 	mr	r3,r31
 	mr	r4,r30
 	mr	r5,r29
 	mr	r6,r28
 	mr	r7,r27
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	machine_init
 	bl	MMU_init
 

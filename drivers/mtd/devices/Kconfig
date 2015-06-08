@@ -1,5 +1,12 @@
 menu "Self-contained MTD device drivers"
 	depends on MTD!=n
+<<<<<<< HEAD
+<<<<<<< HEAD
+	depends on HAS_IOMEM
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config MTD_PMC551
 	tristate "Ramix PMC551 PCI Mezzanine RAM card support"
@@ -49,6 +56,35 @@ config MTD_MS02NV
 	  say M here and read <file:Documentation/kbuild/modules.txt>.
 	  The module will be called ms02-nv.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config MTD_MSM_NAND
+	tristate "MSM NAND Device Support"
+	depends on MTD && ARCH_MSM
+	select CRC16
+	select BITREVERSE
+	select MTD_NAND_IDS
+	default y
+	help
+	  Support for some NAND chips connected to the MSM NAND controller.
+
+config MTD_MSM_QPIC_NAND
+	tristate "MSM QPIC NAND Device Support"
+	depends on MTD && ARCH_MSM && !MTD_MSM_NAND
+	select CRC16
+	select BITREVERSE
+	select MTD_NAND_IDS
+	default n
+	help
+	  Support for NAND controller in Qualcomm Parallel Interface
+	  controller (QPIC). This new controller supports BAM mode
+	  and BCH error correction mechanism. Based on the device
+	  capabilities either 4 bit or 8 bit BCH ECC will be used.
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MTD_DATAFLASH
 	tristate "Support for AT45xxx DataFlash"
 	depends on SPI_MASTER && EXPERIMENTAL
@@ -102,6 +138,19 @@ config M25PXX_USE_FAST_READ
 	help
 	  This option enables FAST_READ access supported by ST M25Pxx.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config MTD_SPEAR_SMI
+	tristate "SPEAR MTD NOR Support through SMI controller"
+	depends on PLAT_SPEAR
+	default y
+	help
+	  This enable SNOR support on SPEAR platforms using SMI controller
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MTD_SST25L
 	tristate "Support SST25L (non JEDEC) SPI Flash chips"
 	depends on SPI_MASTER
@@ -191,6 +240,13 @@ comment "Disk-On-Chip Device Drivers"
 
 config MTD_DOC2000
 	tristate "M-Systems Disk-On-Chip 2000 and Millennium (DEPRECATED)"
+<<<<<<< HEAD
+<<<<<<< HEAD
+	depends on MTD_NAND
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MTD_DOCPROBE
 	select MTD_NAND_IDS
 	---help---
@@ -213,6 +269,13 @@ config MTD_DOC2000
 
 config MTD_DOC2001
 	tristate "M-Systems Disk-On-Chip Millennium-only alternative driver (DEPRECATED)"
+<<<<<<< HEAD
+<<<<<<< HEAD
+	depends on MTD_NAND
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MTD_DOCPROBE
 	select MTD_NAND_IDS
 	---help---
@@ -234,6 +297,13 @@ config MTD_DOC2001
 
 config MTD_DOC2001PLUS
 	tristate "M-Systems Disk-On-Chip Millennium Plus"
+<<<<<<< HEAD
+<<<<<<< HEAD
+	depends on MTD_NAND
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MTD_DOCPROBE
 	select MTD_NAND_IDS
 	---help---
@@ -249,6 +319,31 @@ config MTD_DOC2001PLUS
 	  under "NAND Flash Device Drivers" (currently that driver does not
 	  support all Millennium Plus devices).
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config MTD_DOCG3
+	tristate "M-Systems Disk-On-Chip G3"
+	select BCH
+	select BCH_CONST_PARAMS
+	---help---
+	  This provides an MTD device driver for the M-Systems DiskOnChip
+	  G3 devices.
+
+	  The driver provides access to G3 DiskOnChip, distributed by
+	  M-Systems and now Sandisk. The support is very experimental,
+	  and doesn't give access to any write operations.
+
+if MTD_DOCG3
+config BCH_CONST_M
+	default 14
+config BCH_CONST_T
+	default 4
+endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MTD_DOCPROBE
 	tristate
 	select MTD_DOCECC
@@ -268,8 +363,17 @@ config MTD_DOCPROBE_ADVANCED
 config MTD_DOCPROBE_ADDRESS
 	hex "Physical address of DiskOnChip" if MTD_DOCPROBE_ADVANCED
 	depends on MTD_DOCPROBE
+<<<<<<< HEAD
+<<<<<<< HEAD
+	default "0x0"
+=======
 	default "0x0000" if MTD_DOCPROBE_ADVANCED
 	default "0" if !MTD_DOCPROBE_ADVANCED
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	default "0x0000" if MTD_DOCPROBE_ADVANCED
+	default "0" if !MTD_DOCPROBE_ADVANCED
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  By default, the probe for DiskOnChip devices will look for a
 	  DiskOnChip at every multiple of 0x2000 between 0xC8000 and 0xEE000.

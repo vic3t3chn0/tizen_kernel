@@ -27,8 +27,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -45,7 +48,11 @@
 <<<<<<< HEAD
 #include <asm/fsl_guts.h>
 =======
+<<<<<<< HEAD
+#include <asm/fsl_guts.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "mpc86xx.h"
 
@@ -53,14 +60,20 @@ static struct device_node *pixis_node;
 static unsigned char *pixis_bdcfg0, *pixis_arch;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* DIU Pixel Clock bits of the CLKDVDR Global Utilities register */
 #define CLKDVDR_PXCKEN		0x80000000
 #define CLKDVDR_PXCKINV		0x10000000
 #define CLKDVDR_PXCKDLY		0x06000000
 #define CLKDVDR_PXCLK_MASK	0x001F0000
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SUSPEND
 static irqreturn_t mpc8610_sw9_irq(int irq, void *data)
 {
@@ -162,16 +175,22 @@ machine_device_initcall(mpc86xx_hpcd, mpc8610_declare_of_platform_devices);
 	(c0 << AD_COMP_0_SHIFT) | (size << AD_PIXEL_S_SHIFT))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u32 mpc8610hpcd_get_pixel_format(enum fsl_diu_monitor_port port,
 				 unsigned int bits_per_pixel)
 {
 	static const u32 pixelformat[][3] = {
+<<<<<<< HEAD
+=======
 =======
 unsigned int mpc8610hpcd_get_pixel_format(unsigned int bits_per_pixel,
 						int monitor_port)
 {
 	static const unsigned long pixelformat[][3] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{
 			MAKE_AD(3, 0, 2, 1, 3, 8, 8, 8, 8),
 			MAKE_AD(4, 2, 0, 1, 2, 8, 8, 8, 0),
@@ -190,8 +209,13 @@ unsigned int mpc8610hpcd_get_pixel_format(unsigned int bits_per_pixel,
 	arch_monitor =
 		((*pixis_arch == 0x01) && (port == FSL_DIU_PORT_DVI)) ? 0 : 1;
 =======
+<<<<<<< HEAD
+	arch_monitor =
+		((*pixis_arch == 0x01) && (port == FSL_DIU_PORT_DVI)) ? 0 : 1;
+=======
 	arch_monitor = ((*pixis_arch == 0x01) && (monitor_port == 0))? 0 : 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (bits_per_pixel) {
 	case 32:
@@ -207,17 +231,23 @@ unsigned int mpc8610hpcd_get_pixel_format(unsigned int bits_per_pixel,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mpc8610hpcd_set_gamma_table(enum fsl_diu_monitor_port port,
 				 char *gamma_table_base)
 {
 	int i;
 	if (port == FSL_DIU_PORT_DLVDS) {
+<<<<<<< HEAD
+=======
 =======
 void mpc8610hpcd_set_gamma_table(int monitor_port, char *gamma_table_base)
 {
 	int i;
 	if (monitor_port == 2) {		/* dual link LVDS */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (i = 0; i < 256*3; i++)
 			gamma_table_base[i] = (gamma_table_base[i] << 2) |
 					 ((gamma_table_base[i] >> 6) & 0x03);
@@ -229,6 +259,9 @@ void mpc8610hpcd_set_gamma_table(int monitor_port, char *gamma_table_base)
 #define PX_BRDCFG0_DIU_MASK	(PX_BRDCFG0_DVISEL | PX_BRDCFG0_DLINK)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mpc8610hpcd_set_monitor_port(enum fsl_diu_monitor_port port)
 {
 	switch (port) {
@@ -300,6 +333,8 @@ enum fsl_diu_monitor_port
 mpc8610hpcd_valid_monitor_port(enum fsl_diu_monitor_port port)
 {
 	return port;
+<<<<<<< HEAD
+=======
 =======
 void mpc8610hpcd_set_monitor_port(int monitor_port)
 {
@@ -397,6 +432,7 @@ int mpc8610hpcd_set_sysfs_monitor_port(int val)
 {
 	return val < 3 ? val : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif
@@ -431,9 +467,13 @@ static void __init mpc86xx_hpcd_setup_arch(void)
 <<<<<<< HEAD
 	diu_ops.valid_monitor_port	= mpc8610hpcd_valid_monitor_port;
 =======
+<<<<<<< HEAD
+	diu_ops.valid_monitor_port	= mpc8610hpcd_valid_monitor_port;
+=======
 	diu_ops.show_monitor_port	= mpc8610hpcd_show_monitor_port;
 	diu_ops.set_sysfs_monitor_port	= mpc8610hpcd_set_sysfs_monitor_port;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	pixis_node = of_find_compatible_node(NULL, NULL, "fsl,fpga-pixis");

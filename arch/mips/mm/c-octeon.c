@@ -23,8 +23,11 @@
 #include <asm/r4kcache.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu_context.h>
 #include <asm/war.h>
 
@@ -89,10 +92,16 @@ static void octeon_flush_icache_all_cores(struct vm_area_struct *vma)
 	cpumask_clear_cpu(cpu, &mask);
 	for_each_cpu(cpu, &mask)
 =======
+<<<<<<< HEAD
+		mask = *cpu_online_mask;
+	cpumask_clear_cpu(cpu, &mask);
+	for_each_cpu(cpu, &mask)
+=======
 		mask = cpu_online_map;
 	cpu_clear(cpu, mask);
 	for_each_cpu_mask(cpu, mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		octeon_send_ipi_single(cpu, SMP_ICACHE_FLUSH);
 
 	preempt_enable();
@@ -179,12 +188,18 @@ static void octeon_flush_cache_page(struct vm_area_struct *vma,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void octeon_flush_kernel_vmap_range(unsigned long vaddr, int size)
 {
 	BUG();
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * Probe Octeon's caches
@@ -238,8 +253,12 @@ static void __cpuinit probe_octeon(void)
 <<<<<<< HEAD
 		panic("Unsupported Cavium Networks CPU type");
 =======
+<<<<<<< HEAD
+		panic("Unsupported Cavium Networks CPU type");
+=======
 		panic("Unsupported Cavium Networks CPU type\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -297,7 +316,12 @@ void __cpuinit octeon_cache_init(void)
 	__flush_kernel_vmap_range	= octeon_flush_kernel_vmap_range;
 
 =======
+<<<<<<< HEAD
+	__flush_kernel_vmap_range	= octeon_flush_kernel_vmap_range;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	build_clear_page();
 	build_copy_page();
 }

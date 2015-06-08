@@ -66,11 +66,15 @@ static int restore_sigframe(struct pt_regs *regs, struct sigframe __user *sf)
 <<<<<<< HEAD
 		set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+		set_current_blocked(&set);
+=======
 		spin_lock_irq(&current->sighand->siglock);
 		current->blocked = set;
 		recalc_sigpending();
 		spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	err |= __get_user(regs->UCreg_00, &sf->uc.uc_mcontext.regs.UCreg_00);
@@ -328,7 +332,11 @@ static int handle_signal(unsigned long sig, struct k_sigaction *ka,
 <<<<<<< HEAD
 	sigset_t blocked;
 =======
+<<<<<<< HEAD
+	sigset_t blocked;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int usig = sig;
 	int ret;
 
@@ -381,10 +389,15 @@ static int handle_signal(unsigned long sig, struct k_sigaction *ka,
 	 * Block the signal if we were successful.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigorsets(&blocked, &tsk->blocked, &ka->sa.sa_mask);
 	if (!(ka->sa.sa_flags & SA_NODEFER))
 		sigaddset(&blocked, sig);
 	set_current_blocked(&blocked);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irq(&tsk->sighand->siglock);
 	sigorsets(&tsk->blocked, &tsk->blocked,
@@ -394,6 +407,7 @@ static int handle_signal(unsigned long sig, struct k_sigaction *ka,
 	recalc_sigpending();
 	spin_unlock_irq(&tsk->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

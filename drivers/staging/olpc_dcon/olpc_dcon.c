@@ -21,6 +21,13 @@
 #include <linux/pci_ids.h>
 #include <linux/interrupt.h>
 #include <linux/delay.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/backlight.h>
 #include <linux/device.h>
 #include <linux/uaccess.h>
@@ -33,11 +40,22 @@
 
 /* Module definitions */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ushort resumeline = 898;
+module_param(resumeline, ushort, 0444);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int resumeline = 898;
 module_param(resumeline, int, 0444);
 
 static int noinit;
 module_param(noinit, int, 0444);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Default off since it doesn't work on DCON ASIC in B-test OLPC board */
 static int useaa = 1;
@@ -68,11 +86,24 @@ static s32 dcon_read(struct dcon_priv *dcon, u8 reg)
 
 static int dcon_hw_init(struct dcon_priv *dcon, int is_init)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	uint16_t ver;
+	int rc = 0;
+
+	ver = dcon_read(dcon, DCON_REG_ID);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct i2c_client *client = dcon->client;
 	uint16_t ver;
 	int rc = 0;
 
 	ver = i2c_smbus_read_word_data(client, DCON_REG_ID);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((ver >> 8) != 0xDC) {
 		printk(KERN_ERR "olpc-dcon:  DCON ID not 0xDCxx: 0x%04x "
 				"instead.\n", ver);
@@ -90,6 +121,24 @@ static int dcon_hw_init(struct dcon_priv *dcon, int is_init)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ver < 0xdc02) {
+		dev_err(&dcon->client->dev,
+				"DCON v1 is unsupported, giving up..\n");
+		rc = -ENODEV;
+		goto err;
+	}
+
+	/* SDRAM setup/hold time */
+	dcon_write(dcon, 0x3a, 0xc040);
+	dcon_write(dcon, 0x41, 0x0000);
+	dcon_write(dcon, 0x41, 0x0101);
+	dcon_write(dcon, 0x42, 0x0101);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ver < 0xdc02 && !noinit) {
 		/* Initialize the DCON registers */
 
@@ -114,6 +163,10 @@ static int dcon_hw_init(struct dcon_priv *dcon, int is_init)
 		i2c_smbus_write_word_data(client, 0x42, 0x0101);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Colour swizzle, AA, no passthrough, backlight */
 	if (is_init) {
 		dcon->disp_mode = MODE_PASSTHRU | MODE_BL_ENABLE |
@@ -121,11 +174,25 @@ static int dcon_hw_init(struct dcon_priv *dcon, int is_init)
 		if (useaa)
 			dcon->disp_mode |= MODE_COL_AA;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dcon_write(dcon, DCON_REG_MODE, dcon->disp_mode);
+
+
+	/* Set the scanline to interrupt on during resume */
+	dcon_write(dcon, DCON_REG_SCAN_INT, resumeline);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2c_smbus_write_word_data(client, DCON_REG_MODE, dcon->disp_mode);
 
 
 	/* Set the scanline to interrupt on during resume */
 	i2c_smbus_write_word_data(client, DCON_REG_SCAN_INT, resumeline);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 err:
 	return rc;
@@ -470,7 +537,15 @@ static ssize_t dcon_mono_store(struct device *dev,
 	unsigned long enable_mono;
 	int rc;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rc = kstrtoul(buf, 10, &enable_mono);
+=======
 	rc = strict_strtoul(buf, 10, &enable_mono);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rc = strict_strtoul(buf, 10, &enable_mono);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc)
 		return rc;
 
@@ -486,7 +561,15 @@ static ssize_t dcon_freeze_store(struct device *dev,
 	unsigned long output;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = kstrtoul(buf, 10, &output);
+=======
 	ret = strict_strtoul(buf, 10, &output);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = strict_strtoul(buf, 10, &output);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -512,10 +595,23 @@ static ssize_t dcon_freeze_store(struct device *dev,
 static ssize_t dcon_resumeline_store(struct device *dev,
 	struct device_attribute *attr, const char *buf, size_t count)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned short rl;
+	int rc;
+
+	rc = kstrtou16(buf, 10, &rl);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long rl;
 	int rc;
 
 	rc = strict_strtoul(buf, 10, &rl);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc)
 		return rc;
 
@@ -531,7 +627,15 @@ static ssize_t dcon_sleep_store(struct device *dev,
 	unsigned long output;
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = kstrtoul(buf, 10, &output);
+=======
 	ret = strict_strtoul(buf, 10, &output);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = strict_strtoul(buf, 10, &output);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		return ret;
 
@@ -712,7 +816,14 @@ static int dcon_probe(struct i2c_client *client, const struct i2c_device_id *id)
  eirq:
 	free_irq(DCON_IRQ, dcon);
  einit:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	i2c_set_clientdata(client, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_set_clientdata(client, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(dcon);
 	return rc;
 }
@@ -721,8 +832,16 @@ static int dcon_remove(struct i2c_client *client)
 {
 	struct dcon_priv *dcon = i2c_get_clientdata(client);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	i2c_set_clientdata(client, NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_set_clientdata(client, NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fb_unregister_client(&dcon->fbevent_nb);
 	unregister_reboot_notifier(&dcon->reboot_nb);
 	atomic_notifier_chain_unregister(&panic_notifier_list, &dcon_panic_nb);
@@ -772,9 +891,21 @@ static int dcon_resume(struct i2c_client *client)
 irqreturn_t dcon_interrupt(int irq, void *id)
 {
 	struct dcon_priv *dcon = id;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 status;
+
+	if (pdata->read_status(&status))
+=======
 	int status = pdata->read_status();
 
 	if (status == -1)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int status = pdata->read_status();
+
+	if (status == -1)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return IRQ_NONE;
 
 	switch (status & 3) {

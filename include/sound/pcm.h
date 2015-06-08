@@ -32,8 +32,12 @@
 <<<<<<< HEAD
 #include <linux/pm_qos.h>
 =======
+<<<<<<< HEAD
+#include <linux/pm_qos.h>
+=======
 #include <linux/pm_qos_params.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define snd_pcm_substream_chip(substream) ((substream)->private_data)
 #define snd_pcm_chip(pcm) ((pcm)->private_data)
@@ -87,7 +91,11 @@ struct snd_pcm_ops {
 <<<<<<< HEAD
 	int (*restart)(struct snd_pcm_substream *substream);
 =======
+<<<<<<< HEAD
+	int (*restart)(struct snd_pcm_substream *substream);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -119,14 +127,20 @@ struct snd_pcm_ops {
 #define SNDRV_PCM_POS_XRUN		((snd_pcm_uframes_t)-1)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SNDRV_DMA_MODE          (0)
 #define SNDRV_NON_DMA_MODE      (1 << 0)
 #define SNDRV_RENDER_STOPPED    (1 << 1)
 #define SNDRV_RENDER_RUNNING    (1 << 2)
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* If you change this don't forget to change rates[] table in pcm_native.c */
 #define SNDRV_PCM_RATE_5512		(1<<0)		/* 5512Hz */
 #define SNDRV_PCM_RATE_8000		(1<<1)		/* 8000Hz */
@@ -319,7 +333,11 @@ struct snd_pcm_runtime {
 <<<<<<< HEAD
 	unsigned int render_flag;
 =======
+<<<<<<< HEAD
+	unsigned int render_flag;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* -- SW params -- */
 	int tstamp_mode;		/* mmap timestamp is updated */
@@ -397,8 +415,12 @@ struct snd_pcm_substream {
 <<<<<<< HEAD
 	struct pm_qos_request latency_pm_qos_req; /* pm_qos request */
 =======
+<<<<<<< HEAD
+	struct pm_qos_request latency_pm_qos_req; /* pm_qos request */
+=======
 	struct pm_qos_request_list latency_pm_qos_req; /* pm_qos request */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t buffer_bytes_max;	/* limit ring buffer size */
 	struct snd_dma_buffer dma_buffer;
 	unsigned int dma_buf_id;
@@ -441,7 +463,11 @@ struct snd_pcm_substream {
 <<<<<<< HEAD
 	unsigned int hw_no_buffer: 1; /* substream may not have a buffer */
 =======
+<<<<<<< HEAD
+	unsigned int hw_no_buffer: 1; /* substream may not have a buffer */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define SUBSTREAM_BUSY(substream) ((substream)->ref_count > 0)
@@ -470,7 +496,12 @@ struct snd_pcm_str {
 	struct snd_kcontrol *chmap_kctl; /* channel-mapping controls */
 	struct snd_kcontrol *vol_kctl; /* volume controls */
 =======
+<<<<<<< HEAD
+	struct snd_kcontrol *chmap_kctl; /* channel-mapping controls */
+	struct snd_kcontrol *vol_kctl; /* volume controls */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct snd_pcm {
@@ -491,7 +522,11 @@ struct snd_pcm {
 <<<<<<< HEAD
 	bool internal; /* pcm is for internal use only */
 =======
+<<<<<<< HEAD
+	bool internal; /* pcm is for internal use only */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SND_PCM_OSS) || defined(CONFIG_SND_PCM_OSS_MODULE)
 	struct snd_pcm_oss oss;
 #endif
@@ -514,14 +549,20 @@ int snd_pcm_new(struct snd_card *card, const char *id, int device,
 		int playback_count, int capture_count,
 		struct snd_pcm **rpcm);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_pcm_new_soc_be(struct snd_card *card, const char *id, int device,
 		int playback_count, int capture_count,
 		struct snd_pcm ** rpcm);
 int snd_pcm_new_internal(struct snd_card *card, const char *id, int device,
 		int playback_count, int capture_count,
 		struct snd_pcm **rpcm);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_pcm_new_stream(struct snd_pcm *pcm, int stream, int substream_count);
 
 int snd_pcm_notify(struct snd_pcm_notify *notify, int nfree);
@@ -555,6 +596,9 @@ void snd_pcm_vma_notify_data(void *client, void *data);
 int snd_pcm_mmap_data(struct snd_pcm_substream *substream, struct file *file, struct vm_area_struct *area);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SND_DEBUG
 void snd_pcm_debug_name(struct snd_pcm_substream *substream,
@@ -567,8 +611,11 @@ snd_pcm_debug_name(struct snd_pcm_substream *substream, char *buf, size_t size)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  PCM library
  */
@@ -812,6 +859,9 @@ static inline const struct snd_interval *hw_param_interval_c(const struct snd_pc
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define params_channels(p) \
 	(hw_param_interval_c((p), SNDRV_PCM_HW_PARAM_CHANNELS)->min)
 #define params_rate(p) \
@@ -824,6 +874,8 @@ static inline const struct snd_interval *hw_param_interval_c(const struct snd_pc
 	(hw_param_interval_c((p), SNDRV_PCM_HW_PARAM_BUFFER_SIZE)->min)
 #define params_buffer_bytes(p) \
 	(hw_param_interval_c((p), SNDRV_PCM_HW_PARAM_BUFFER_BYTES)->min)
+<<<<<<< HEAD
+=======
 =======
 #define params_access(p) ((__force snd_pcm_access_t)snd_mask_min(hw_param_mask((p), SNDRV_PCM_HW_PARAM_ACCESS)))
 #define params_format(p) ((__force snd_pcm_format_t)snd_mask_min(hw_param_mask((p), SNDRV_PCM_HW_PARAM_FORMAT)))
@@ -837,6 +889,7 @@ static inline const struct snd_interval *hw_param_interval_c(const struct snd_pc
 #define params_buffer_bytes(p) hw_param_interval((p), SNDRV_PCM_HW_PARAM_BUFFER_BYTES)->min
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int snd_interval_refine(struct snd_interval *i, const struct snd_interval *v);
 void snd_interval_mul(const struct snd_interval *a, const struct snd_interval *b, struct snd_interval *c);
@@ -893,7 +946,12 @@ int snd_pcm_hw_constraint_pow2(struct snd_pcm_runtime *runtime,
 int snd_pcm_hw_rule_noresample(struct snd_pcm_runtime *runtime,
 			       unsigned int base_rate);
 =======
+<<<<<<< HEAD
+int snd_pcm_hw_rule_noresample(struct snd_pcm_runtime *runtime,
+			       unsigned int base_rate);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_pcm_hw_rule_add(struct snd_pcm_runtime *runtime,
 			unsigned int cond,
 			int var,
@@ -1108,7 +1166,12 @@ static inline void snd_pcm_mmap_data_close(struct vm_area_struct *area)
 int snd_pcm_lib_default_mmap(struct snd_pcm_substream *substream,
 			     struct vm_area_struct *area);
 =======
+<<<<<<< HEAD
+int snd_pcm_lib_default_mmap(struct snd_pcm_substream *substream,
+			     struct vm_area_struct *area);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* mmap for io-memory area */
 #if defined(CONFIG_X86) || defined(CONFIG_PPC) || defined(CONFIG_ALPHA)
 #define SNDRV_PCM_INFO_MMAP_IOMEM	SNDRV_PCM_INFO_MMAP
@@ -1139,6 +1202,9 @@ static inline void snd_pcm_limit_isa_dma_size(int dma, size_t *max)
 const char *snd_pcm_format_name(snd_pcm_format_t format);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * PCM channel-mapping control API
  */
@@ -1210,6 +1276,9 @@ int snd_pcm_add_volume_ctls(struct snd_pcm *pcm, int stream,
 			   unsigned long private_value,
 			   struct snd_pcm_volume **info_ret);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __SOUND_PCM_H */

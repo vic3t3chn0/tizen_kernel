@@ -19,8 +19,11 @@
 #include <linux/security.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/namei.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "fat.h"
 
 static int fat_ioctl_get_attributes(struct inode *inode, u32 __user *user_attr)
@@ -51,8 +54,12 @@ static int fat_ioctl_set_attributes(struct file *file, u32 __user *user_attr)
 <<<<<<< HEAD
 	err = mnt_want_write_file(file);
 =======
+<<<<<<< HEAD
+	err = mnt_want_write_file(file);
+=======
 	err = mnt_want_write(file->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out_unlock_inode;
 
@@ -119,14 +126,20 @@ out_drop_write:
 <<<<<<< HEAD
 	mnt_drop_write_file(file);
 =======
+<<<<<<< HEAD
+	mnt_drop_write_file(file);
+=======
 	mnt_drop_write(file->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_unlock_inode:
 	mutex_unlock(&inode->i_mutex);
 out:
 	return err;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 extern int _fat_fallocate(struct inode *inode, loff_t len);
@@ -186,6 +199,7 @@ static long fat_vmw_extend(struct file *filp, unsigned long len)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long fat_generic_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
 	struct inode *inode = filp->f_path.dentry->d_inode;
@@ -198,9 +212,12 @@ long fat_generic_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		return fat_ioctl_set_attributes(filp, user_attr);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	case FAT_IOCTL_VMW_EXTEND:
 		return fat_vmw_extend(filp, arg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return -ENOTTY;	/* Inappropriate ioctl for device */
 	}
@@ -228,8 +245,12 @@ static int fat_file_release(struct inode *inode, struct file *filp)
 <<<<<<< HEAD
 int fat_file_fsync(struct file *filp, loff_t start, loff_t end, int datasync)
 =======
+<<<<<<< HEAD
+int fat_file_fsync(struct file *filp, loff_t start, loff_t end, int datasync)
+=======
 int fat_file_fsync(struct file *filp, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode = filp->f_mapping->host;
 	int res, err;
@@ -237,8 +258,12 @@ int fat_file_fsync(struct file *filp, int datasync)
 <<<<<<< HEAD
 	res = generic_file_fsync(filp, start, end, datasync);
 =======
+<<<<<<< HEAD
+	res = generic_file_fsync(filp, start, end, datasync);
+=======
 	res = generic_file_fsync(filp, datasync);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = sync_mapping_buffers(MSDOS_SB(inode->i_sb)->fat_inode->i_mapping);
 
 	return res ? res : err;
@@ -401,8 +426,12 @@ static int fat_sanitize_mode(const struct msdos_sb_info *sbi,
 <<<<<<< HEAD
 	umode_t mask, perm;
 =======
+<<<<<<< HEAD
+	umode_t mask, perm;
+=======
 	mode_t mask, perm;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Note, the basic check is already done by a caller of
@@ -442,8 +471,12 @@ static int fat_allow_set_time(struct msdos_sb_info *sbi, struct inode *inode)
 <<<<<<< HEAD
 	umode_t allow_utime = sbi->options.allow_utime;
 =======
+<<<<<<< HEAD
+	umode_t allow_utime = sbi->options.allow_utime;
+=======
 	mode_t allow_utime = sbi->options.allow_utime;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (current_fsuid() != inode->i_uid) {
 		if (in_group_p(inode->i_gid))
@@ -493,7 +526,12 @@ int fat_setattr(struct dentry *dentry, struct iattr *attr)
 		inode_dio_wait(inode);
 
 =======
+<<<<<<< HEAD
+		inode_dio_wait(inode);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (attr->ia_size > inode->i_size) {
 			error = fat_cont_expand(inode, attr->ia_size);
 			if (error || attr->ia_valid == ATTR_SIZE)
@@ -527,14 +565,20 @@ int fat_setattr(struct dentry *dentry, struct iattr *attr)
 
 	if (attr->ia_valid & ATTR_SIZE) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		down_write(&MSDOS_I(inode)->truncate_lock);
 		truncate_setsize(inode, attr->ia_size);
 		fat_truncate_blocks(inode, attr->ia_size);
 		up_write(&MSDOS_I(inode)->truncate_lock);
+<<<<<<< HEAD
+=======
 =======
 		truncate_setsize(inode, attr->ia_size);
 		fat_truncate_blocks(inode, attr->ia_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	setattr_copy(inode, attr);

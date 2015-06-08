@@ -98,8 +98,12 @@ my %VCS_cmds_git = (
 <<<<<<< HEAD
 	"git log --no-color --follow --since=\$email_git_since " .
 =======
+<<<<<<< HEAD
+	"git log --no-color --follow --since=\$email_git_since " .
+=======
 	"git log --no-color --since=\$email_git_since " .
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    '--format="GitCommit: %H%n' .
 		      'GitAuthor: %an <%ae>%n' .
 		      'GitDate: %aD%n' .
@@ -336,8 +340,13 @@ sub read_mailmap {
 
 	if (/^([^<]+)<([^>]+)>$/) {
 =======
+<<<<<<< HEAD
+
+	if (/^([^<]+)<([^>]+)>$/) {
+=======
 	if (/^(.+)<(.+)>$/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    my $real_name = $1;
 	    my $address = $2;
 
@@ -348,8 +357,12 @@ sub read_mailmap {
 <<<<<<< HEAD
 	} elsif (/^<([^>]+)>\s*<([^>]+)>$/) {
 =======
+<<<<<<< HEAD
+	} elsif (/^<([^>]+)>\s*<([^>]+)>$/) {
+=======
 	} elsif (/^<([^\s]+)>\s*<([^\s]+)>$/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    my $real_address = $1;
 	    my $wrong_address = $2;
 
@@ -358,8 +371,12 @@ sub read_mailmap {
 <<<<<<< HEAD
 	} elsif (/^(.+)<([^>]+)>\s*<([^>]+)>$/) {
 =======
+<<<<<<< HEAD
+	} elsif (/^(.+)<([^>]+)>\s*<([^>]+)>$/) {
+=======
 	} elsif (/^(.+)<([^\s]+)>\s*<([^\s]+)>$/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    my $real_name = $1;
 	    my $real_address = $2;
 	    my $wrong_address = $3;
@@ -373,8 +390,12 @@ sub read_mailmap {
 <<<<<<< HEAD
 	} elsif (/^(.+)<([^>]+)>\s*(.+)\s*<([^>]+)>$/) {
 =======
+<<<<<<< HEAD
+	} elsif (/^(.+)<([^>]+)>\s*(.+)\s*<([^>]+)>$/) {
+=======
 	} elsif (/^(.+)<([^\s]+)>\s*([^\s].*)<([^\s]+)>$/) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    my $real_name = $1;
 	    my $real_address = $2;
 	    my $wrong_name = $3;
@@ -954,8 +975,12 @@ sub get_maintainer_role {
 <<<<<<< HEAD
     my $role = "unknown";
 =======
+<<<<<<< HEAD
+    my $role = "unknown";
+=======
     my $role;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $subsystem = $typevalue[$start];
     if (length($subsystem) > 20) {
 	$subsystem = substr($subsystem, 0, 17);
@@ -1052,6 +1077,9 @@ sub add_categories {
 			if (!$hash_list_to{lc($list_address)}) {
 			    $hash_list_to{lc($list_address)} = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    if ($list_additional =~ m/moderated/) {
 				push(@list_to, [$list_address,
 						"moderated list${list_role}"]);
@@ -1059,10 +1087,13 @@ sub add_categories {
 				push(@list_to, [$list_address,
 						"open list${list_role}"]);
 			    }
+<<<<<<< HEAD
+=======
 =======
 			    push(@list_to, [$list_address,
 					    "open list${list_role}"]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		    }
 		}
@@ -1426,8 +1457,12 @@ sub vcs_exists {
 <<<<<<< HEAD
 	warn("git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git\n");
 =======
+<<<<<<< HEAD
+	warn("git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git\n");
+=======
 	warn("git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux-2.6.git\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$printed_novcs = 1;
     }
     return 0;

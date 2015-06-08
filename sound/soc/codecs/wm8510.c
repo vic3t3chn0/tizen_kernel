@@ -22,10 +22,16 @@
 #include <linux/slab.h>
 #include <linux/of_device.h>
 =======
+<<<<<<< HEAD
+#include <linux/spi/spi.h>
+#include <linux/slab.h>
+#include <linux/of_device.h>
+=======
 #include <linux/platform_device.h>
 #include <linux/spi/spi.h>
 #include <linux/slab.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
@@ -190,8 +196,12 @@ SND_SOC_DAPM_OUTPUT("SPKOUTN"),
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route wm8510_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route wm8510_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Mono output mixer */
 	{"Mono Mixer", "PCM Playback Switch", "DAC"},
 	{"Mono Mixer", "Aux Playback Switch", "Aux Input"},
@@ -225,6 +235,8 @@ static const struct snd_soc_dapm_route audio_map[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int wm8510_add_widgets(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
@@ -237,6 +249,7 @@ static int wm8510_add_widgets(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pll_ {
 	unsigned int pre_div:4; /* prescale - 1 */
 	unsigned int n:4;
@@ -496,7 +509,12 @@ static int wm8510_set_bias_level(struct snd_soc_codec *codec,
 			snd_soc_cache_sync(codec);
 
 =======
+<<<<<<< HEAD
+			snd_soc_cache_sync(codec);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Initial cap charge at VMID 5k */
 			snd_soc_write(codec, WM8510_POWER1, power1 | 0x3);
 			mdelay(100);
@@ -527,8 +545,12 @@ static int wm8510_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8510_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8510_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8510_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= wm8510_pcm_hw_params,
 	.digital_mute	= wm8510_mute,
 	.set_fmt	= wm8510_set_dai_fmt,
@@ -557,8 +579,12 @@ static struct snd_soc_dai_driver wm8510_dai = {
 <<<<<<< HEAD
 static int wm8510_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8510_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8510_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8510_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -566,6 +592,9 @@ static int wm8510_suspend(struct snd_soc_codec *codec, pm_message_t state)
 
 static int wm8510_resume(struct snd_soc_codec *codec)
 {
+<<<<<<< HEAD
+	wm8510_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
+=======
 <<<<<<< HEAD
 	wm8510_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 =======
@@ -582,6 +611,7 @@ static int wm8510_resume(struct snd_soc_codec *codec)
 	wm8510_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -602,10 +632,13 @@ static int wm8510_probe(struct snd_soc_codec *codec)
 	wm8510_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_add_controls(codec, wm8510_snd_controls,
 				ARRAY_SIZE(wm8510_snd_controls));
 	wm8510_add_widgets(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -630,6 +663,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8510 = {
 	.reg_word_size = sizeof(u16),
 	.reg_cache_default =wm8510_reg,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = wm8510_snd_controls,
 	.num_controls = ARRAY_SIZE(wm8510_snd_controls),
@@ -642,8 +678,11 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8510 = {
 static const struct of_device_id wm8510_of_match[] = {
 	{ .compatible = "wlf,wm8510" },
 	{ },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_SPI_MASTER)
@@ -679,7 +718,11 @@ static struct spi_driver wm8510_spi_driver = {
 <<<<<<< HEAD
 		.of_match_table = wm8510_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = wm8510_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe		= wm8510_spi_probe,
 	.remove		= __devexit_p(wm8510_spi_remove),
@@ -726,9 +769,15 @@ static struct i2c_driver wm8510_i2c_driver = {
 		.owner = THIS_MODULE,
 		.of_match_table = wm8510_of_match,
 =======
+<<<<<<< HEAD
+		.name = "wm8510",
+		.owner = THIS_MODULE,
+		.of_match_table = wm8510_of_match,
+=======
 		.name = "wm8510-codec",
 		.owner = THIS_MODULE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe =    wm8510_i2c_probe,
 	.remove =   __devexit_p(wm8510_i2c_remove),

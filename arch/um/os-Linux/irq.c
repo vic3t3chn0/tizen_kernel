@@ -13,12 +13,17 @@
 #include "os.h"
 #include "um_malloc.h"
 =======
+<<<<<<< HEAD
+#include "os.h"
+#include "um_malloc.h"
+=======
 #include "kern_constants.h"
 #include "os.h"
 #include "process.h"
 #include "um_malloc.h"
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Locked by irq_lock in arch/um/kernel/irq.c.  Changed by os_create_pollfd

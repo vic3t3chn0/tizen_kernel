@@ -23,16 +23,22 @@
 #include <asm/cpudata.h>
 #include <asm/uaccess.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/atomic.h>
 #include <asm/nmi.h>
 #include <asm/pcr.h>
 #include <asm/perfctr.h>
 #include <asm/cacheflush.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/atomic.h>
 #include <asm/nmi.h>
 #include <asm/pcr.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "kernel.h"
 #include "kstack.h"
@@ -255,6 +261,9 @@ static const cache_map_t ultra3_cache_map = {
 	},
 },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 [C(NODE)] = {
 	[C(OP_READ)] = {
 		[C(RESULT_ACCESS)] = { CACHE_OP_UNSUPPORTED },
@@ -269,8 +278,11 @@ static const cache_map_t ultra3_cache_map = {
 		[ C(RESULT_MISS)   ] = { CACHE_OP_UNSUPPORTED },
 	},
 },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct sparc_pmu ultra3_pmu = {
@@ -387,6 +399,9 @@ static const cache_map_t niagara1_cache_map = {
 	},
 },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 [C(NODE)] = {
 	[C(OP_READ)] = {
 		[C(RESULT_ACCESS)] = { CACHE_OP_UNSUPPORTED },
@@ -401,8 +416,11 @@ static const cache_map_t niagara1_cache_map = {
 		[ C(RESULT_MISS)   ] = { CACHE_OP_UNSUPPORTED },
 	},
 },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct sparc_pmu niagara1_pmu = {
@@ -516,6 +534,9 @@ static const cache_map_t niagara2_cache_map = {
 	},
 },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 [C(NODE)] = {
 	[C(OP_READ)] = {
 		[C(RESULT_ACCESS)] = { CACHE_OP_UNSUPPORTED },
@@ -530,8 +551,11 @@ static const cache_map_t niagara2_cache_map = {
 		[ C(RESULT_MISS)   ] = { CACHE_OP_UNSUPPORTED },
 	},
 },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct sparc_pmu niagara2_pmu = {
@@ -573,11 +597,16 @@ static u64 nop_for_index(int idx)
 static inline void sparc_pmu_enable_event(struct cpu_hw_events *cpuc, struct hw_perf_event *hwc, int idx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 val, mask = mask_for_index(idx);
 
 	val = cpuc->pcr;
 	val &= ~mask;
 	val |= hwc->config;
+<<<<<<< HEAD
+=======
 =======
 	u64 enc, val, mask = mask_for_index(idx);
 
@@ -587,6 +616,7 @@ static inline void sparc_pmu_enable_event(struct cpu_hw_events *cpuc, struct hw_
 	val &= ~mask;
 	val |= event_encoding(enc, idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpuc->pcr = val;
 
 	pcr_ops->write(cpuc->pcr);
@@ -1133,12 +1163,18 @@ static int sparc_pmu_event_init(struct perf_event *event)
 		return -ENODEV;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* does not support taken branch sampling */
 	if (has_branch_stack(event))
 		return -EOPNOTSUPP;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (attr->type) {
 	case PERF_TYPE_HARDWARE:
 		if (attr->config >= sparc_pmu->max_events)
@@ -1356,8 +1392,12 @@ static int __kprobes perf_event_nmi_handler(struct notifier_block *self,
 <<<<<<< HEAD
 		if (perf_event_overflow(event, &data, regs))
 =======
+<<<<<<< HEAD
+		if (perf_event_overflow(event, &data, regs))
+=======
 		if (perf_event_overflow(event, 1, &data, regs))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sparc_pmu_stop(event, 0);
 	}
 
@@ -1464,7 +1504,12 @@ static void perf_callchain_user_64(struct perf_callchain_entry *entry,
 	perf_callchain_store(entry, regs->tpc);
 
 =======
+<<<<<<< HEAD
+	perf_callchain_store(entry, regs->tpc);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ufp = regs->u_regs[UREG_I6] + STACK_BIAS;
 	do {
 		struct sparc_stackf *usf, sf;
@@ -1489,7 +1534,12 @@ static void perf_callchain_user_32(struct perf_callchain_entry *entry,
 	perf_callchain_store(entry, regs->tpc);
 
 =======
+<<<<<<< HEAD
+	perf_callchain_store(entry, regs->tpc);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ufp = regs->u_regs[UREG_I6] & 0xffffffffUL;
 	do {
 		struct sparc_stackf32 *usf, sf;
@@ -1510,12 +1560,15 @@ perf_callchain_user(struct perf_callchain_entry *entry, struct pt_regs *regs)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	perf_callchain_store(entry, regs->tpc);
 
 	if (!current->mm)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flushw_user();
 	if (test_thread_flag(TIF_32BIT))
 		perf_callchain_user_32(entry, regs);

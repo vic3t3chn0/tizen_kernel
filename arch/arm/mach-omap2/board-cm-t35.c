@@ -1,16 +1,22 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * CompuLab CM-T35/CM-T3730 modules support
  *
  * Copyright (C) 2009-2011 CompuLab, Ltd.
  * Authors: Mike Rapoport <mike@compulab.co.il>
  *	    Igor Grinberg <grinberg@compulab.co.il>
+<<<<<<< HEAD
+=======
 =======
  * board-cm-t35.c (CompuLab CM-T35 module)
  *
  * Copyright (C) 2009 CompuLab, Ltd.
  * Author: Mike Rapoport <mike@compulab.co.il>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,12 +29,15 @@
  *
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -44,7 +53,11 @@
 <<<<<<< HEAD
 #include <linux/regulator/fixed.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/fixed.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/machine.h>
 #include <linux/mmc/host.h>
 
@@ -59,8 +72,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/nand.h>
 #include <plat/gpmc.h>
 #include <plat/usb.h>
@@ -69,7 +86,11 @@
 <<<<<<< HEAD
 #include <video/omap-panel-dvi.h>
 =======
+<<<<<<< HEAD
+#include <video/omap-panel-dvi.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/mcspi.h>
 
 #include <mach/hardware.h>
@@ -83,8 +104,13 @@
 #define CM_T35_GPIO_PENDOWN		57
 #define SB_T35_USB_HUB_RESET_GPIO	167
 =======
+<<<<<<< HEAD
+#define CM_T35_GPIO_PENDOWN		57
+#define SB_T35_USB_HUB_RESET_GPIO	167
+=======
 #define CM_T35_GPIO_PENDOWN	57
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CM_T35_SMSC911X_CS	5
 #define CM_T35_SMSC911X_GPIO	163
@@ -112,6 +138,9 @@ static struct omap_smsc911x_platform_data sb_t35_smsc911x_cfg = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply cm_t35_smsc911x_supplies[] = {
 	REGULATOR_SUPPLY("vddvario", "smsc911x.0"),
 	REGULATOR_SUPPLY("vdd33a", "smsc911x.0"),
@@ -129,10 +158,13 @@ static void __init cm_t35_init_ethernet(void)
 	regulator_register_fixed(1, sb_t35_smsc911x_supplies,
 				 ARRAY_SIZE(sb_t35_smsc911x_supplies));
 
+<<<<<<< HEAD
+=======
 =======
 static void __init cm_t35_init_ethernet(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gpmc_smsc911x_init(&cm_t35_smsc911x_cfg);
 	gpmc_smsc911x_init(&sb_t35_smsc911x_cfg);
 }
@@ -200,8 +232,12 @@ static struct mtd_partition cm_t35_nand_partitions[] = {
 <<<<<<< HEAD
 		.offset         = MTDPART_OFS_APPEND,	/* Offset = 0x2A0000 */
 =======
+<<<<<<< HEAD
+		.offset         = MTDPART_OFS_APPEND,	/* Offset = 0x2A0000 */
+=======
 		.offset         = MTDPART_OFS_APPEND,	/* Offset = 0x280000 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.size           = 32 * NAND_BLOCK_SIZE,
 	},
 	{
@@ -209,8 +245,12 @@ static struct mtd_partition cm_t35_nand_partitions[] = {
 <<<<<<< HEAD
 		.offset         = MTDPART_OFS_APPEND,	/* Offset = 0x6A0000 */
 =======
+<<<<<<< HEAD
+		.offset         = MTDPART_OFS_APPEND,	/* Offset = 0x6A0000 */
+=======
 		.offset         = MTDPART_OFS_APPEND,	/* Offset = 0x680000 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.size           = MTDPART_SIZ_FULL,
 	},
 };
@@ -221,10 +261,14 @@ static struct omap_nand_platform_data cm_t35_nand_data = {
 <<<<<<< HEAD
 	.cs			= 0,
 =======
+<<<<<<< HEAD
+	.cs			= 0,
+=======
 	.dma_channel		= -1,	/* disable DMA in OMAP NAND driver */
 	.cs			= 0,
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init cm_t35_init_nand(void)
@@ -311,9 +355,13 @@ static struct omap_dss_device cm_t35_lcd_device = {
 <<<<<<< HEAD
 static struct panel_dvi_platform_data dvi_panel = {
 =======
+<<<<<<< HEAD
+static struct panel_dvi_platform_data dvi_panel = {
+=======
 static struct panel_generic_dpi_data dvi_panel = {
 	.name			= "generic",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.platform_enable	= cm_t35_panel_enable_dvi,
 	.platform_disable	= cm_t35_panel_disable_dvi,
 };
@@ -324,8 +372,12 @@ static struct omap_dss_device cm_t35_dvi_device = {
 <<<<<<< HEAD
 	.driver_name		= "dvi",
 =======
+<<<<<<< HEAD
+	.driver_name		= "dvi",
+=======
 	.driver_name		= "generic_dpi_panel",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.data			= &dvi_panel,
 	.phy.dpi.data_lines	= 24,
 };
@@ -355,8 +407,11 @@ static struct omap2_mcspi_device_config tdo24m_mcspi_config = {
 	.turbo_mode	= 0,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.single_channel	= 1,	/* 0: slave, 1: master */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct tdo24m_platform_data tdo24m_config = {
@@ -409,6 +464,9 @@ static void __init cm_t35_init_display(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply cm_t35_vmmc1_supply[] = {
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.0"),
 };
@@ -422,6 +480,8 @@ static struct regulator_consumer_supply cm_t35_vio_supplies[] = {
 	REGULATOR_SUPPLY("vdds_dsi", "omapdss"),
 	REGULATOR_SUPPLY("vdds_dsi", "omapdss_dsi1"),
 };
+<<<<<<< HEAD
+=======
 =======
 static struct regulator_consumer_supply cm_t35_vmmc1_supply = {
 	.supply			= "vmmc",
@@ -437,6 +497,7 @@ static struct regulator_consumer_supply cm_t35_vdac_supply =
 static struct regulator_consumer_supply cm_t35_vdvi_supply =
 	REGULATOR_SUPPLY("vdvi", "omapdss");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* VMMC1 for MMC1 pins CMD, CLK, DAT0..DAT3 (20 mA, plus card == max 220 mA) */
 static struct regulator_init_data cm_t35_vmmc1 = {
@@ -453,9 +514,14 @@ static struct regulator_init_data cm_t35_vmmc1 = {
 	.num_consumer_supplies	= ARRAY_SIZE(cm_t35_vmmc1_supply),
 	.consumer_supplies	= cm_t35_vmmc1_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(cm_t35_vmmc1_supply),
+	.consumer_supplies	= cm_t35_vmmc1_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &cm_t35_vmmc1_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VSIM for MMC1 pins DAT4..DAT7 (2 mA, plus card == max 50 mA) */
@@ -470,6 +536,9 @@ static struct regulator_init_data cm_t35_vsim = {
 					| REGULATOR_CHANGE_STATUS,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies	= ARRAY_SIZE(cm_t35_vsim_supply),
 	.consumer_supplies	= cm_t35_vsim_supply,
 };
@@ -485,6 +554,8 @@ static struct regulator_init_data cm_t35_vio = {
 	},
 	.num_consumer_supplies	= ARRAY_SIZE(cm_t35_vio_supplies),
 	.consumer_supplies	= cm_t35_vio_supplies,
+<<<<<<< HEAD
+=======
 =======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &cm_t35_vsim_supply,
@@ -522,6 +593,7 @@ static struct regulator_init_data cm_t35_vpll2 = {
 static struct twl4030_usb_data cm_t35_usb_data = {
 	.usb_mode	= T2_USB_MODE_ULPI,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static uint32_t cm_t35_keymap[] = {
@@ -551,8 +623,12 @@ static struct omap2_hsmmc_info mmc[] = {
 <<<<<<< HEAD
 		.deferred	= true,
 =======
+<<<<<<< HEAD
+		.deferred	= true,
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.mmc		= 2,
@@ -577,6 +653,9 @@ static struct usbhs_omap_board_data usbhs_bdata __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void  __init cm_t35_init_usbh(void)
 {
 	int err;
@@ -594,8 +673,11 @@ static void  __init cm_t35_init_usbh(void)
 	usbhs_init(&usbhs_bdata);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cm_t35_twl_gpio_setup(struct device *dev, unsigned gpio,
 				 unsigned ngpio)
 {
@@ -609,10 +691,16 @@ static int cm_t35_twl_gpio_setup(struct device *dev, unsigned gpio,
 		udelay(10);
 		gpio_set_value_cansleep(wlan_rst, 1);
 =======
+<<<<<<< HEAD
+		gpio_set_value_cansleep(wlan_rst, 0);
+		udelay(10);
+		gpio_set_value_cansleep(wlan_rst, 1);
+=======
 		gpio_set_value(wlan_rst, 0);
 		udelay(10);
 		gpio_set_value(wlan_rst, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		pr_err("CM-T35: could not obtain gpio for WiFi reset\n");
 	}
@@ -622,12 +710,16 @@ static int cm_t35_twl_gpio_setup(struct device *dev, unsigned gpio,
 <<<<<<< HEAD
 	omap_hsmmc_late_init(mmc);
 =======
+<<<<<<< HEAD
+	omap_hsmmc_late_init(mmc);
+=======
 	omap2_hsmmc_init(mmc);
 
 	/* link regulators to MMC adapters */
 	cm_t35_vmmc1_supply.dev = mmc[0].dev;
 	cm_t35_vsim_supply.dev = mmc[0].dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -641,12 +733,17 @@ static struct twl4030_gpio_platform_data cm_t35_gpio_data = {
 
 static struct twl4030_platform_data cm_t35_twldata = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* platform_data for children goes here */
 	.keypad		= &cm_t35_kp_data,
 	.gpio		= &cm_t35_gpio_data,
 	.vmmc1		= &cm_t35_vmmc1,
 	.vsim		= &cm_t35_vsim,
 	.vio		= &cm_t35_vio,
+<<<<<<< HEAD
+=======
 =======
 	.irq_base	= TWL4030_IRQ_BASE,
 	.irq_end	= TWL4030_IRQ_END,
@@ -660,11 +757,15 @@ static struct twl4030_platform_data cm_t35_twldata = {
 	.vdac		= &cm_t35_vdac,
 	.vpll2		= &cm_t35_vpll2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init cm_t35_init_i2c(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_get_config(&cm_t35_twldata, TWL_COMMON_PDATA_USB,
 			      TWL_COMMON_REGULATOR_VDAC |
 			      TWL_COMMON_PDATA_AUDIO);
@@ -672,6 +773,8 @@ static void __init cm_t35_init_i2c(void)
 	omap3_pmic_init("tps65930", &cm_t35_twldata);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	omap3_pmic_init("tps65930", &cm_t35_twldata);
 }
@@ -684,6 +787,7 @@ static void __init cm_t35_init_early(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OMAP_MUX
 static struct omap_board_mux board_mux[] __initdata = {
 	/* nCS and IRQ for CM-T35 ethernet */
@@ -744,12 +848,18 @@ static struct omap_board_mux board_mux[] __initdata = {
 <<<<<<< HEAD
 	/* common DSS */
 =======
+<<<<<<< HEAD
+	/* common DSS */
+=======
 	/* DSS */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OMAP3_MUX(DSS_PCLK, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_HSYNC, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_VSYNC, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_ACBIAS, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	OMAP3_MUX(DSS_DATA0, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
@@ -759,6 +869,7 @@ static struct omap_board_mux board_mux[] __initdata = {
 	OMAP3_MUX(DSS_DATA4, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_DATA5, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OMAP3_MUX(DSS_DATA6, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_DATA7, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_DATA8, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
@@ -773,6 +884,8 @@ static struct omap_board_mux board_mux[] __initdata = {
 	OMAP3_MUX(DSS_DATA17, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	OMAP3_MUX(DSS_DATA18, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_DATA19, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_DATA20, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
@@ -780,6 +893,7 @@ static struct omap_board_mux board_mux[] __initdata = {
 	OMAP3_MUX(DSS_DATA22, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 	OMAP3_MUX(DSS_DATA23, OMAP_MUX_MODE0 | OMAP_PIN_OUTPUT),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* display controls */
 	OMAP3_MUX(MCBSP1_FSR, OMAP_MUX_MODE4 | OMAP_PIN_OUTPUT),
@@ -793,6 +907,9 @@ static struct omap_board_mux board_mux[] __initdata = {
 	{ .reg_offset = OMAP_MUX_TERMINATOR },
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __init cm_t3x_common_dss_mux_init(int mux_mode)
 {
@@ -832,8 +949,11 @@ static void __init cm_t3730_init_mux(void)
 #else
 static inline void cm_t35_init_mux(void) {}
 static inline void cm_t3730_init_mux(void) {}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static struct omap_board_config_kernel cm_t35_config[] __initdata = {
@@ -842,22 +962,32 @@ static struct omap_board_config_kernel cm_t35_config[] __initdata = {
 <<<<<<< HEAD
 static void __init cm_t3x_common_init(void)
 =======
+<<<<<<< HEAD
+static void __init cm_t3x_common_init(void)
+=======
 static void __init cm_t35_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	omap_board_config = cm_t35_config;
 	omap_board_config_size = ARRAY_SIZE(cm_t35_config);
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CUS);
 	omap_serial_init();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_sdrc_init(mt46h32m32lf6_sdrc_params,
 			     mt46h32m32lf6_sdrc_params);
 	omap_hsmmc_init(mmc);
 	cm_t35_init_i2c();
+<<<<<<< HEAD
+=======
 =======
 	cm_t35_init_i2c();
 	cm_t35_init_nand();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_ads7846_init(1, CM_T35_GPIO_PENDOWN, 0, NULL);
 	cm_t35_init_ethernet();
 	cm_t35_init_led();
@@ -865,6 +995,9 @@ static void __init cm_t35_init(void)
 
 	usb_musb_init(NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cm_t35_init_usbh();
 }
 
@@ -903,6 +1036,8 @@ MACHINE_START(CM_T3730, "Compulab CM-T3730")
 	.init_machine   = cm_t3730_init,
 	.timer          = &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	usbhs_init(&usbhs_bdata);
 }
@@ -916,4 +1051,5 @@ MACHINE_START(CM_T35, "Compulab CM-T35")
 	.init_machine	= cm_t35_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

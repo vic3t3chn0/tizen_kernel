@@ -52,7 +52,12 @@
 #include "../netns.h"
 
 =======
+<<<<<<< HEAD
+#include "../netns.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef RPC_DEBUG
 # define RPCDBG_FACILITY	RPCDBG_AUTH
 #endif
@@ -84,11 +89,16 @@ struct rsi {
 static struct rsi *rsi_update(struct cache_detail *cd, struct rsi *new, struct rsi *old);
 static struct rsi *rsi_lookup(struct cache_detail *cd, struct rsi *item);
 =======
+<<<<<<< HEAD
+static struct rsi *rsi_update(struct cache_detail *cd, struct rsi *new, struct rsi *old);
+static struct rsi *rsi_lookup(struct cache_detail *cd, struct rsi *item);
+=======
 static struct cache_head *rsi_table[RSI_HASHMAX];
 static struct cache_detail rsi_cache;
 static struct rsi *rsi_update(struct rsi *new, struct rsi *old);
 static struct rsi *rsi_lookup(struct rsi *item);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void rsi_free(struct rsi *rsii)
 {
@@ -229,8 +239,12 @@ static int rsi_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 	rsip = rsi_lookup(cd, &rsii);
 =======
+<<<<<<< HEAD
+	rsip = rsi_lookup(cd, &rsii);
+=======
 	rsip = rsi_lookup(&rsii);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rsip)
 		goto out;
 
@@ -275,8 +289,12 @@ static int rsi_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 	rsip = rsi_update(cd, &rsii, rsip);
 =======
+<<<<<<< HEAD
+	rsip = rsi_update(cd, &rsii, rsip);
+=======
 	rsip = rsi_update(&rsii, rsip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = 0;
 out:
 	rsi_free(&rsii);
@@ -284,8 +302,12 @@ out:
 <<<<<<< HEAD
 		cache_put(&rsip->h, cd);
 =======
+<<<<<<< HEAD
+		cache_put(&rsip->h, cd);
+=======
 		cache_put(&rsip->h, &rsi_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		status = -ENOMEM;
 	return status;
@@ -296,11 +318,17 @@ static struct cache_detail rsi_cache_template = {
 	.owner		= THIS_MODULE,
 	.hash_size	= RSI_HASHMAX,
 =======
+<<<<<<< HEAD
+static struct cache_detail rsi_cache_template = {
+	.owner		= THIS_MODULE,
+	.hash_size	= RSI_HASHMAX,
+=======
 static struct cache_detail rsi_cache = {
 	.owner		= THIS_MODULE,
 	.hash_size	= RSI_HASHMAX,
 	.hash_table     = rsi_table,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name           = "auth.rpcsec.init",
 	.cache_put      = rsi_put,
 	.cache_upcall   = rsi_upcall,
@@ -314,8 +342,12 @@ static struct cache_detail rsi_cache = {
 <<<<<<< HEAD
 static struct rsi *rsi_lookup(struct cache_detail *cd, struct rsi *item)
 =======
+<<<<<<< HEAD
+static struct rsi *rsi_lookup(struct cache_detail *cd, struct rsi *item)
+=======
 static struct rsi *rsi_lookup(struct rsi *item)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cache_head *ch;
 	int hash = rsi_hash(item);
@@ -323,8 +355,12 @@ static struct rsi *rsi_lookup(struct rsi *item)
 <<<<<<< HEAD
 	ch = sunrpc_cache_lookup(cd, &item->h, hash);
 =======
+<<<<<<< HEAD
+	ch = sunrpc_cache_lookup(cd, &item->h, hash);
+=======
 	ch = sunrpc_cache_lookup(&rsi_cache, &item->h, hash);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ch)
 		return container_of(ch, struct rsi, h);
 	else
@@ -334,8 +370,12 @@ static struct rsi *rsi_lookup(struct rsi *item)
 <<<<<<< HEAD
 static struct rsi *rsi_update(struct cache_detail *cd, struct rsi *new, struct rsi *old)
 =======
+<<<<<<< HEAD
+static struct rsi *rsi_update(struct cache_detail *cd, struct rsi *new, struct rsi *old)
+=======
 static struct rsi *rsi_update(struct rsi *new, struct rsi *old)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cache_head *ch;
 	int hash = rsi_hash(new);
@@ -343,8 +383,12 @@ static struct rsi *rsi_update(struct rsi *new, struct rsi *old)
 <<<<<<< HEAD
 	ch = sunrpc_cache_update(cd, &new->h,
 =======
+<<<<<<< HEAD
+	ch = sunrpc_cache_update(cd, &new->h,
+=======
 	ch = sunrpc_cache_update(&rsi_cache, &new->h,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 &old->h, hash);
 	if (ch)
 		return container_of(ch, struct rsi, h);
@@ -387,11 +431,16 @@ struct rsc {
 static struct rsc *rsc_update(struct cache_detail *cd, struct rsc *new, struct rsc *old);
 static struct rsc *rsc_lookup(struct cache_detail *cd, struct rsc *item);
 =======
+<<<<<<< HEAD
+static struct rsc *rsc_update(struct cache_detail *cd, struct rsc *new, struct rsc *old);
+static struct rsc *rsc_lookup(struct cache_detail *cd, struct rsc *item);
+=======
 static struct cache_head *rsc_table[RSC_HASHMAX];
 static struct cache_detail rsc_cache;
 static struct rsc *rsc_update(struct rsc *new, struct rsc *old);
 static struct rsc *rsc_lookup(struct rsc *item);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void rsc_free(struct rsc *rsci)
 {
@@ -496,8 +545,12 @@ static int rsc_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 	rscp = rsc_lookup(cd, &rsci);
 =======
+<<<<<<< HEAD
+	rscp = rsc_lookup(cd, &rsci);
+=======
 	rscp = rsc_lookup(&rsci);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rscp)
 		goto out;
 
@@ -562,8 +615,12 @@ static int rsc_parse(struct cache_detail *cd,
 <<<<<<< HEAD
 	rscp = rsc_update(cd, &rsci, rscp);
 =======
+<<<<<<< HEAD
+	rscp = rsc_update(cd, &rsci, rscp);
+=======
 	rscp = rsc_update(&rsci, rscp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = 0;
 out:
 	gss_mech_put(gm);
@@ -572,8 +629,12 @@ out:
 <<<<<<< HEAD
 		cache_put(&rscp->h, cd);
 =======
+<<<<<<< HEAD
+		cache_put(&rscp->h, cd);
+=======
 		cache_put(&rscp->h, &rsc_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		status = -ENOMEM;
 	return status;
@@ -584,11 +645,17 @@ static struct cache_detail rsc_cache_template = {
 	.owner		= THIS_MODULE,
 	.hash_size	= RSC_HASHMAX,
 =======
+<<<<<<< HEAD
+static struct cache_detail rsc_cache_template = {
+	.owner		= THIS_MODULE,
+	.hash_size	= RSC_HASHMAX,
+=======
 static struct cache_detail rsc_cache = {
 	.owner		= THIS_MODULE,
 	.hash_size	= RSC_HASHMAX,
 	.hash_table	= rsc_table,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "auth.rpcsec.context",
 	.cache_put	= rsc_put,
 	.cache_parse	= rsc_parse,
@@ -601,8 +668,12 @@ static struct cache_detail rsc_cache = {
 <<<<<<< HEAD
 static struct rsc *rsc_lookup(struct cache_detail *cd, struct rsc *item)
 =======
+<<<<<<< HEAD
+static struct rsc *rsc_lookup(struct cache_detail *cd, struct rsc *item)
+=======
 static struct rsc *rsc_lookup(struct rsc *item)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cache_head *ch;
 	int hash = rsc_hash(item);
@@ -610,8 +681,12 @@ static struct rsc *rsc_lookup(struct rsc *item)
 <<<<<<< HEAD
 	ch = sunrpc_cache_lookup(cd, &item->h, hash);
 =======
+<<<<<<< HEAD
+	ch = sunrpc_cache_lookup(cd, &item->h, hash);
+=======
 	ch = sunrpc_cache_lookup(&rsc_cache, &item->h, hash);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ch)
 		return container_of(ch, struct rsc, h);
 	else
@@ -621,8 +696,12 @@ static struct rsc *rsc_lookup(struct rsc *item)
 <<<<<<< HEAD
 static struct rsc *rsc_update(struct cache_detail *cd, struct rsc *new, struct rsc *old)
 =======
+<<<<<<< HEAD
+static struct rsc *rsc_update(struct cache_detail *cd, struct rsc *new, struct rsc *old)
+=======
 static struct rsc *rsc_update(struct rsc *new, struct rsc *old)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cache_head *ch;
 	int hash = rsc_hash(new);
@@ -630,8 +709,12 @@ static struct rsc *rsc_update(struct rsc *new, struct rsc *old)
 <<<<<<< HEAD
 	ch = sunrpc_cache_update(cd, &new->h,
 =======
+<<<<<<< HEAD
+	ch = sunrpc_cache_update(cd, &new->h,
+=======
 	ch = sunrpc_cache_update(&rsc_cache, &new->h,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 &old->h, hash);
 	if (ch)
 		return container_of(ch, struct rsc, h);
@@ -644,8 +727,12 @@ static struct rsc *
 <<<<<<< HEAD
 gss_svc_searchbyctx(struct cache_detail *cd, struct xdr_netobj *handle)
 =======
+<<<<<<< HEAD
+gss_svc_searchbyctx(struct cache_detail *cd, struct xdr_netobj *handle)
+=======
 gss_svc_searchbyctx(struct xdr_netobj *handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rsc rsci;
 	struct rsc *found;
@@ -654,11 +741,16 @@ gss_svc_searchbyctx(struct xdr_netobj *handle)
 	if (dup_to_netobj(&rsci.handle, handle->data, handle->len))
 		return NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	found = rsc_lookup(cd, &rsci);
 	rsc_free(&rsci);
 	if (!found)
 		return NULL;
 	if (cache_check(cd, &found->h, NULL))
+<<<<<<< HEAD
+=======
 =======
 	found = rsc_lookup(&rsci);
 	rsc_free(&rsci);
@@ -666,6 +758,7 @@ gss_svc_searchbyctx(struct xdr_netobj *handle)
 		return NULL;
 	if (cache_check(&rsc_cache, &found->h, NULL))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	return found;
 }
@@ -1066,8 +1159,12 @@ static inline int
 <<<<<<< HEAD
 gss_write_init_verf(struct cache_detail *cd, struct svc_rqst *rqstp, struct rsi *rsip)
 =======
+<<<<<<< HEAD
+gss_write_init_verf(struct cache_detail *cd, struct svc_rqst *rqstp, struct rsi *rsip)
+=======
 gss_write_init_verf(struct svc_rqst *rqstp, struct rsi *rsip)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rsc *rsci;
 	int        rc;
@@ -1077,8 +1174,12 @@ gss_write_init_verf(struct svc_rqst *rqstp, struct rsi *rsip)
 <<<<<<< HEAD
 	rsci = gss_svc_searchbyctx(cd, &rsip->out_handle);
 =======
+<<<<<<< HEAD
+	rsci = gss_svc_searchbyctx(cd, &rsip->out_handle);
+=======
 	rsci = gss_svc_searchbyctx(&rsip->out_handle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rsci == NULL) {
 		rsip->major_status = GSS_S_NO_CONTEXT;
 		return gss_write_null_verf(rqstp);
@@ -1087,8 +1188,12 @@ gss_write_init_verf(struct svc_rqst *rqstp, struct rsi *rsip)
 <<<<<<< HEAD
 	cache_put(&rsci->h, cd);
 =======
+<<<<<<< HEAD
+	cache_put(&rsci->h, cd);
+=======
 	cache_put(&rsci->h, &rsc_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -1110,7 +1215,11 @@ static int svcauth_gss_handle_init(struct svc_rqst *rqstp,
 <<<<<<< HEAD
 	struct sunrpc_net *sn = net_generic(rqstp->rq_xprt->xpt_net, sunrpc_net_id);
 =======
+<<<<<<< HEAD
+	struct sunrpc_net *sn = net_generic(rqstp->rq_xprt->xpt_net, sunrpc_net_id);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Read the verifier; should be NULL: */
 	*authp = rpc_autherr_badverf;
@@ -1140,11 +1249,16 @@ static int svcauth_gss_handle_init(struct svc_rqst *rqstp,
 
 	/* Perform upcall, or find upcall result: */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rsip = rsi_lookup(sn->rsi_cache, &rsikey);
 	rsi_free(&rsikey);
 	if (!rsip)
 		return SVC_CLOSE;
 	if (cache_check(sn->rsi_cache, &rsip->h, &rqstp->rq_chandle) < 0)
+<<<<<<< HEAD
+=======
 =======
 	rsip = rsi_lookup(&rsikey);
 	rsi_free(&rsikey);
@@ -1152,6 +1266,7 @@ static int svcauth_gss_handle_init(struct svc_rqst *rqstp,
 		return SVC_CLOSE;
 	if (cache_check(&rsi_cache, &rsip->h, &rqstp->rq_chandle) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* No upcall result: */
 		return SVC_CLOSE;
 
@@ -1160,8 +1275,12 @@ static int svcauth_gss_handle_init(struct svc_rqst *rqstp,
 <<<<<<< HEAD
 	if (gss_write_init_verf(sn->rsc_cache, rqstp, rsip))
 =======
+<<<<<<< HEAD
+	if (gss_write_init_verf(sn->rsc_cache, rqstp, rsip))
+=======
 	if (gss_write_init_verf(rqstp, rsip))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	if (resv->iov_len + 4 > PAGE_SIZE)
 		goto out;
@@ -1181,8 +1300,12 @@ out:
 <<<<<<< HEAD
 	cache_put(&rsip->h, sn->rsi_cache);
 =======
+<<<<<<< HEAD
+	cache_put(&rsip->h, sn->rsi_cache);
+=======
 	cache_put(&rsip->h, &rsi_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1209,7 +1332,11 @@ svcauth_gss_accept(struct svc_rqst *rqstp, __be32 *authp)
 <<<<<<< HEAD
 	struct sunrpc_net *sn = net_generic(rqstp->rq_xprt->xpt_net, sunrpc_net_id);
 =======
+<<<<<<< HEAD
+	struct sunrpc_net *sn = net_generic(rqstp->rq_xprt->xpt_net, sunrpc_net_id);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprintk("RPC:       svcauth_gss: argv->iov_len = %zd\n",
 			argv->iov_len);
@@ -1263,8 +1390,12 @@ svcauth_gss_accept(struct svc_rqst *rqstp, __be32 *authp)
 <<<<<<< HEAD
 		rsci = gss_svc_searchbyctx(sn->rsc_cache, &gc->gc_ctx);
 =======
+<<<<<<< HEAD
+		rsci = gss_svc_searchbyctx(sn->rsc_cache, &gc->gc_ctx);
+=======
 		rsci = gss_svc_searchbyctx(&gc->gc_ctx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!rsci)
 			goto auth_err;
 		switch (gss_verify_header(rqstp, rsci, rpcstart, gc, authp)) {
@@ -1347,8 +1478,12 @@ out:
 <<<<<<< HEAD
 		cache_put(&rsci->h, sn->rsc_cache);
 =======
+<<<<<<< HEAD
+		cache_put(&rsci->h, sn->rsc_cache);
+=======
 		cache_put(&rsci->h, &rsc_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1504,7 +1639,11 @@ svcauth_gss_release(struct svc_rqst *rqstp)
 <<<<<<< HEAD
 	struct sunrpc_net *sn = net_generic(rqstp->rq_xprt->xpt_net, sunrpc_net_id);
 =======
+<<<<<<< HEAD
+	struct sunrpc_net *sn = net_generic(rqstp->rq_xprt->xpt_net, sunrpc_net_id);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (gc->gc_proc != RPC_GSS_PROC_DATA)
 		goto out;
@@ -1550,8 +1689,12 @@ out_err:
 <<<<<<< HEAD
 		cache_put(&gsd->rsci->h, sn->rsc_cache);
 =======
+<<<<<<< HEAD
+		cache_put(&gsd->rsci->h, sn->rsc_cache);
+=======
 		cache_put(&gsd->rsci->h, &rsc_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gsd->rsci = NULL;
 
 	return stat;
@@ -1577,6 +1720,9 @@ static struct auth_ops svcauthops_gss = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int rsi_cache_create_net(struct net *net)
 {
 	struct sunrpc_net *sn = net_generic(net, sunrpc_net_id);
@@ -1649,6 +1795,8 @@ gss_svc_init_net(struct net *net)
 	return 0;
 out1:
 	rsc_cache_destroy_net(net);
+<<<<<<< HEAD
+=======
 =======
 int
 gss_svc_init(void)
@@ -1668,11 +1816,15 @@ out2:
 out1:
 	svc_auth_unregister(RPC_AUTH_GSS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rv;
 }
 
 void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 gss_svc_shutdown_net(struct net *net)
 {
 	rsi_cache_destroy_net(net);
@@ -1688,11 +1840,14 @@ gss_svc_init(void)
 void
 gss_svc_shutdown(void)
 {
+<<<<<<< HEAD
+=======
 =======
 gss_svc_shutdown(void)
 {
 	cache_unregister(&rsc_cache);
 	cache_unregister(&rsi_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	svc_auth_unregister(RPC_AUTH_GSS);
 }

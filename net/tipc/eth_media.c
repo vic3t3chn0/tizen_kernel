@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2005-2008, 2011, Wind River Systems
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2005-2008, 2011, Wind River Systems
+=======
  * Copyright (c) 2005-2007, Wind River Systems
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,11 +50,17 @@
 
 #define ETH_ADDR_OFFSET	4	/* message header offset of MAC address */
 =======
+<<<<<<< HEAD
+#define MAX_ETH_BEARERS		MAX_BEARERS
+
+#define ETH_ADDR_OFFSET	4	/* message header offset of MAC address */
+=======
 #define MAX_ETH_BEARERS		2
 #define ETH_LINK_PRIORITY	TIPC_DEF_LINK_PRI
 #define ETH_LINK_TOLERANCE	TIPC_DEF_LINK_TOL
 #define ETH_LINK_WINDOW		TIPC_DEF_LINK_WIN
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct eth_bearer - Ethernet bearer data structure
@@ -60,7 +70,11 @@
 <<<<<<< HEAD
  * @cleanup: work item used when disabling bearer
 =======
+<<<<<<< HEAD
+ * @cleanup: work item used when disabling bearer
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 struct eth_bearer {
@@ -68,21 +82,30 @@ struct eth_bearer {
 	struct net_device *dev;
 	struct packet_type tipc_packet_type;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct work_struct cleanup;
 };
 
 static struct tipc_media eth_media_info;
+<<<<<<< HEAD
+=======
 =======
 	struct work_struct setup;
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct eth_bearer eth_bearers[MAX_ETH_BEARERS];
 static int eth_started;
 static struct notifier_block notifier;
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * eth_media_addr_set - initialize Ethernet media address structure
  *
  * Media-dependent "value" field stores MAC address in first 6 bytes
@@ -98,8 +121,11 @@ static void eth_media_addr_set(struct tipc_media_addr *a, char *mac)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * send_msg - send a TIPC message out over an Ethernet interface
  */
 
@@ -128,8 +154,12 @@ static int send_msg(struct sk_buff *buf, struct tipc_bearer *tb_ptr,
 <<<<<<< HEAD
 	dev_hard_header(clone, dev, ETH_P_TIPC, dest->value,
 =======
+<<<<<<< HEAD
+	dev_hard_header(clone, dev, ETH_P_TIPC, dest->value,
+=======
 	dev_hard_header(clone, dev, ETH_P_TIPC, &dest->dev_addr.eth_addr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev->dev_addr, clone->len);
 	dev_queue_xmit(clone);
 	return 0;
@@ -167,6 +197,8 @@ static int recv_msg(struct sk_buff *buf, struct net_device *dev,
 /**
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * setup_bearer - setup association between Ethernet bearer and interface
  */
 static void setup_bearer(struct work_struct *work)
@@ -179,6 +211,7 @@ static void setup_bearer(struct work_struct *work)
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * enable_bearer - attach TIPC bearer to an Ethernet interface
  */
 
@@ -203,6 +236,9 @@ static int enable_bearer(struct tipc_bearer *tb_ptr)
 	/* Find device with specified name */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_lock(&dev_base_lock);
 	for_each_netdev(&init_net, pdev) {
 		if (!strncmp(pdev->name, driver_name, IFNAMSIZ)) {
@@ -224,6 +260,8 @@ static int enable_bearer(struct tipc_bearer *tb_ptr)
 	eb_ptr->tipc_packet_type.af_packet_priv = eb_ptr;
 	INIT_LIST_HEAD(&(eb_ptr->tipc_packet_type.list));
 	dev_add_pack(&eb_ptr->tipc_packet_type);
+<<<<<<< HEAD
+=======
 =======
 	for_each_netdev(&init_net, pdev) {
 		if (!strncmp(pdev->name, driver_name, IFNAMSIZ)) {
@@ -252,6 +290,7 @@ static int enable_bearer(struct tipc_bearer *tb_ptr)
 		schedule_work(&eb_ptr->setup);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Associate TIPC bearer with Ethernet bearer */
 
@@ -262,14 +301,21 @@ static int enable_bearer(struct tipc_bearer *tb_ptr)
 <<<<<<< HEAD
 	eth_media_addr_set(&tb_ptr->addr, (char *)dev->dev_addr);
 =======
+<<<<<<< HEAD
+	eth_media_addr_set(&tb_ptr->addr, (char *)dev->dev_addr);
+=======
 	tb_ptr->addr.type = htonl(TIPC_MEDIA_TYPE_ETH);
 	memcpy(&tb_ptr->addr.dev_addr, dev->dev_addr, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * cleanup_bearer - break association between Ethernet bearer and interface
  *
  * This routine must be invoked from a work queue because it can sleep.
@@ -291,6 +337,8 @@ static void cleanup_bearer(struct work_struct *work)
  * Mark Ethernet bearer as inactive so that incoming buffers are thrown away,
  * then get worker thread to complete bearer cleanup.  (Can't do cleanup
  * here because cleanup code needs to sleep and caller holds spinlocks.)
+<<<<<<< HEAD
+=======
 =======
  * disable_bearer - detach TIPC bearer from an Ethernet interface
  *
@@ -298,19 +346,26 @@ static void cleanup_bearer(struct work_struct *work)
  * called at tasklet level. => Use eth_bearer->bearer as a flag to throw away
  * incoming buffers, & postpone dev_remove_pack() to eth_media_stop() on exit.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 static void disable_bearer(struct tipc_bearer *tb_ptr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct eth_bearer *eb_ptr = (struct eth_bearer *)tb_ptr->usr_handle;
 
 	eb_ptr->bearer = NULL;
 	INIT_WORK(&eb_ptr->cleanup, cleanup_bearer);
 	schedule_work(&eb_ptr->cleanup);
+<<<<<<< HEAD
+=======
 =======
 	((struct eth_bearer *)tb_ptr->usr_handle)->bearer = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -370,6 +425,9 @@ static int recv_notification(struct notifier_block *nb, unsigned long evt,
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int eth_addr2str(struct tipc_media_addr *a, char *str_buf, int str_size)
 {
 	if (str_size < 18)	/* 18 = strlen("aa:bb:cc:dd:ee:ff\0") */
@@ -446,6 +504,8 @@ static struct tipc_media eth_media_info = {
 };
 
 /**
+<<<<<<< HEAD
+=======
 =======
 static char *eth_addr2str(struct tipc_media_addr *a, char *str_buf, int str_size)
 {
@@ -460,6 +520,7 @@ static char *eth_addr2str(struct tipc_media_addr *a, char *str_buf, int str_size
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tipc_eth_media_start - activate Ethernet bearer support
  *
  * Register Ethernet media type with TIPC bearer code.  Also register
@@ -470,13 +531,19 @@ int tipc_eth_media_start(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct tipc_media_addr bcast_addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int res;
 
 	if (eth_started)
 		return -EINVAL;
 
+<<<<<<< HEAD
+	res = tipc_register_media(&eth_media_info);
+=======
 <<<<<<< HEAD
 	res = tipc_register_media(&eth_media_info);
 =======
@@ -490,6 +557,7 @@ int tipc_eth_media_start(void)
 				  eth_addr2str, &bcast_addr, ETH_LINK_PRIORITY,
 				  ETH_LINK_TOLERANCE, ETH_LINK_WINDOW);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (res)
 		return res;
 
@@ -508,11 +576,16 @@ int tipc_eth_media_start(void)
 void tipc_eth_media_stop(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!eth_started)
 		return;
 
 	flush_scheduled_work();
 	unregister_netdevice_notifier(&notifier);
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -532,5 +605,6 @@ void tipc_eth_media_stop(void)
 	}
 	memset(&eth_bearers, 0, sizeof(eth_bearers));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eth_started = 0;
 }

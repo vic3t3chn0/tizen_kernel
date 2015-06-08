@@ -30,7 +30,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ctype.h>
 #include <linux/cache.h>
 #include <linux/init.h>
@@ -45,8 +49,11 @@
 #include <asm/types.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/machdep.h>
 #include <asm/prom.h>
@@ -65,7 +72,12 @@
 #include <asm/fadump.h>
 #include <asm/firmware.h>
 =======
+<<<<<<< HEAD
+#include <asm/fadump.h>
+#include <asm/firmware.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef DEBUG
 #define DBG(fmt...) udbg_printf(fmt)
@@ -119,10 +131,13 @@ u16 mmu_slb_size = 64;
 EXPORT_SYMBOL_GPL(mmu_slb_size);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_HUGETLB_PAGE
 unsigned int HPAGE_SHIFT;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_64K_PAGES
 int mmu_ci_restrictions;
 #endif
@@ -643,6 +658,9 @@ static void __init htab_initialize(void)
 		htab_address = NULL;
 		_SDR1 = 0; 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_FA_DUMP
 		/*
 		 * If firmware assisted dump is active firmware preserves
@@ -653,8 +671,11 @@ static void __init htab_initialize(void)
 		if (is_fadump_active() && ppc_md.hpte_clear_all)
 			ppc_md.hpte_clear_all();
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* Find storage for the HPT.  Must be contiguous in
 		 * the absolute address space. On cell we want it to be
@@ -780,6 +801,11 @@ void __init early_init_mmu(void)
 	if (mmu_has_feature(MMU_FTR_SLB))
 		slb_initialize();
 =======
+<<<<<<< HEAD
+	/* Initialize stab / SLB management */
+	if (mmu_has_feature(MMU_FTR_SLB))
+		slb_initialize();
+=======
 	/* Initialize stab / SLB management except on iSeries
 	 */
 	if (mmu_has_feature(MMU_FTR_SLB))
@@ -787,6 +813,7 @@ void __init early_init_mmu(void)
 	else if (!firmware_has_feature(FW_FEATURE_ISERIES))
 		stab_initialize(get_paca()->stab_real);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_SMP
@@ -800,9 +827,13 @@ void __cpuinit early_init_mmu_secondary(void)
 <<<<<<< HEAD
 	 * in real mode on pSeries.
 =======
+<<<<<<< HEAD
+	 * in real mode on pSeries.
+=======
 	 * in real mode on pSeries and we want a virtual address on
 	 * iSeries anyway
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	if (mmu_has_feature(MMU_FTR_SLB))
 		slb_initialize();

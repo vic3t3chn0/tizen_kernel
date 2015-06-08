@@ -15,9 +15,14 @@
  *  - Revision J, 05/23/2011; ADSP-BF538/BF538F Blackfin Processor Anomaly List
  *  - Revision O, 05/23/2011; ADSP-BF539/BF539F Blackfin Processor Anomaly List
 =======
+<<<<<<< HEAD
+ *  - Revision J, 05/23/2011; ADSP-BF538/BF538F Blackfin Processor Anomaly List
+ *  - Revision O, 05/23/2011; ADSP-BF539/BF539F Blackfin Processor Anomaly List
+=======
  *  - Revision I, 05/25/2010; ADSP-BF538/BF538F Blackfin Processor Anomaly List
  *  - Revision N, 05/25/2010; ADSP-BF539/BF539F Blackfin Processor Anomaly List
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _MACH_ANOMALY_H_
@@ -63,18 +68,26 @@
 #define ANOMALY_05000233 (1)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* If I-Cache Is On, CSYNC/SSYNC/IDLE Around Change of Control Causes Failures */
 #define ANOMALY_05000244 (__SILICON_REVISION__ < 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* False Hardware Error from an Access in the Shadow of a Conditional Branch */
 #define ANOMALY_05000245 (1)
 /* Maximum External Clock Speed for Timers */
 #define ANOMALY_05000253 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* High I/O Activity Causes Output Voltage of Internal Voltage Regulator (Vddint) to Decrease */
 #define ANOMALY_05000270 (__SILICON_REVISION__ < 4)
 /* Certain Data Cache Writethrough Modes Fail for Vddint <= 0.9V */
 #define ANOMALY_05000272 (ANOMALY_BF538)
+<<<<<<< HEAD
+=======
 =======
 /* DCPLB_FAULT_ADDR MMR Register May Be Corrupted */
 #define ANOMALY_05000261 (__SILICON_REVISION__ < 3)
@@ -83,6 +96,7 @@
 /* Certain Data Cache Writethrough Modes Fail for Vddint <= 0.9V */
 #define ANOMALY_05000272 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Writes to Synchronous SDRAM Memory May Be Lost */
 #define ANOMALY_05000273 (__SILICON_REVISION__ < 4)
 /* Writes to an I/O Data Register One SCLK Cycle after an Edge Is Detected May Clear Interrupt */
@@ -92,8 +106,12 @@
 <<<<<<< HEAD
 /* False Hardware Error when ISR Context Is Not Restored */
 =======
+<<<<<<< HEAD
+/* False Hardware Error when ISR Context Is Not Restored */
+=======
 /* False Hardware Error Exception when ISR Context Is Not Restored */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000281 (__SILICON_REVISION__ < 4)
 /* Memory DMA Corruption with 32-Bit Data and Traffic Control */
 #define ANOMALY_05000282 (__SILICON_REVISION__ < 4)
@@ -122,14 +140,20 @@
 /* Killed System MMR Write Completes Erroneously on Next System MMR Access */
 #define ANOMALY_05000315 (__SILICON_REVISION__ < 4)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PFx Glitch on Write to PORTFIO or PORTFIO_TOGGLE */
 #define ANOMALY_05000317 (__SILICON_REVISION__ < 4)	/* XXX: Same as 05000318 */
 /* PFx Glitch on Write to FIO_FLAG_D or FIO_FLAG_T */
 #define ANOMALY_05000318 (__SILICON_REVISION__ < 4)	/* XXX: Same as 05000317 */
+<<<<<<< HEAD
+=======
 =======
 /* PFx Glitch on Write to FIO_FLAG_D or FIO_FLAG_T */
 #define ANOMALY_05000318 (ANOMALY_BF539 && __SILICON_REVISION__ < 4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Regulator Programming Blocked when Hibernate Wakeup Source Remains Active */
 #define ANOMALY_05000355 (__SILICON_REVISION__ < 5)
 /* Serial Port (SPORT) Multichannel Transmit Failure when Channel 0 Is Disabled */
@@ -165,16 +189,25 @@
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition when Modifying PLL from External Memory */
 =======
+<<<<<<< HEAD
+/* Interrupted SPORT Receive Data Register Read Results In Underflow when SLEN > 15 */
+#define ANOMALY_05000473 (1)
+/* Possible Lockup Condition when Modifying PLL from External Memory */
+=======
 /* Interrupted 32-Bit SPORT Data Register Access Results In Underflow */
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition whem Modifying PLL from External Memory */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000475 (1)
 /* TESTSET Instruction Cannot Be Interrupted */
 #define ANOMALY_05000477 (1)
 /* Reads of ITEST_COMMAND and ITEST_DATA Registers Cause Cache Corruption */
 #define ANOMALY_05000481 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLL May Latch Incorrect Values Coming Out of Reset */
 #define ANOMALY_05000489 (1)
 /* Instruction Memory Stalls Can Cause IFLUSH to Fail */
@@ -193,10 +226,13 @@
 #define ANOMALY_05000244 (__SILICON_REVISION__ < 3)
 /* DCPLB_FAULT_ADDR MMR Register May Be Corrupted */
 #define ANOMALY_05000261 (__SILICON_REVISION__ < 3)
+<<<<<<< HEAD
+=======
 =======
 /* IFLUSH sucks at life */
 #define ANOMALY_05000491 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Anomalies that don't exist on this proc */
 #define ANOMALY_05000099 (0)

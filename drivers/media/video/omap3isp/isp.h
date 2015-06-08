@@ -27,11 +27,25 @@
 #ifndef OMAP3_ISP_CORE_H
 #define OMAP3_ISP_CORE_H
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <media/omap3isp.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/v4l2-device.h>
 #include <linux/device.h>
 #include <linux/io.h>
 #include <linux/platform_device.h>
 #include <linux/wait.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/iommu.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/iommu.h>
 #include <plat/iovmm.h>
 
@@ -94,6 +108,11 @@ enum isp_subclk_resource {
 	OMAP3_ISP_SUBCLK_RESIZER	= (1 << 4),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum isp_interface_type {
 	ISP_INTERFACE_PARALLEL,
 	ISP_INTERFACE_CSI2A_PHY2,
@@ -102,6 +121,10 @@ enum isp_interface_type {
 	ISP_INTERFACE_CSI2C_PHY1,
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ISP: OMAP 34xx ES 1.0 */
 #define ISP_REVISION_1_0		0x10
 /* ISP2: OMAP 34xx ES 2.0, 2.1 and 3.0 */
@@ -130,6 +153,11 @@ struct isp_reg {
 	u32 val;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct isp_parallel_platform_data - Parallel interface platform data
  * @data_lane_shift: Data lane shifter
@@ -200,6 +228,10 @@ struct isp_platform_data {
 	void (*set_constraints)(struct isp_device *isp, bool enable);
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct isp_platform_callback {
 	u32 (*set_xclk)(struct isp_device *isp, u32 xclk, u8 xclksel);
 	int (*csiphy_config)(struct isp_csiphy *phy,
@@ -288,7 +320,15 @@ struct isp_device {
 	unsigned int sbl_resources;
 	unsigned int subclk_resources;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct iommu_domain *domain;
+=======
 	struct iommu *iommu;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct iommu *iommu;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct isp_platform_callback platform_cb;
 };

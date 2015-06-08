@@ -10,7 +10,12 @@
 #include <linux/dma-mapping.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/ste_dma40.h>
 #include <mach/hardware.h>
 #include <mach/usb.h>
@@ -102,6 +107,9 @@ static struct musb_hdrc_platform_data musb_platform_data = {
 <<<<<<< HEAD
 	.mode = MUSB_OTG,
 =======
+<<<<<<< HEAD
+	.mode = MUSB_OTG,
+=======
 #if defined(CONFIG_USB_MUSB_OTG)
 	.mode = MUSB_OTG,
 #elif defined(CONFIG_USB_MUSB_PERIPHERAL)
@@ -110,6 +118,7 @@ static struct musb_hdrc_platform_data musb_platform_data = {
 	.mode = MUSB_HOST,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.config = &musb_hdrc_config,
 	.board_data = &musb_board_data,
 };
@@ -158,9 +167,14 @@ static inline void ux500_usb_dma_update_tx_ch_config(int *dst_dev_type)
 void ux500_add_usb(struct device *parent, resource_size_t base, int irq,
 		   int *dma_rx_cfg, int *dma_tx_cfg)
 =======
+<<<<<<< HEAD
+void ux500_add_usb(struct device *parent, resource_size_t base, int irq,
+		   int *dma_rx_cfg, int *dma_tx_cfg)
+=======
 void ux500_add_usb(resource_size_t base, int irq, int *dma_rx_cfg,
 	int *dma_tx_cfg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ux500_musb_device.resource[0].start = base;
 	ux500_musb_device.resource[0].end = base + SZ_64K - 1;
@@ -174,6 +188,11 @@ void ux500_add_usb(resource_size_t base, int irq, int *dma_rx_cfg,
 	ux500_musb_device.dev.parent = parent;
 
 =======
+<<<<<<< HEAD
+	ux500_musb_device.dev.parent = parent;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(&ux500_musb_device);
 }

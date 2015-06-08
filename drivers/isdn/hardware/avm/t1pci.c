@@ -1,9 +1,23 @@
 /* $Id: t1pci.c,v 1.1.2.2 2004/01/16 21:09:27 keil Exp $
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ * Module for AVM T1 PCI-card.
+ *
+ * Copyright 1999 by Carsten Paeth <calle@calle.de>
+ *
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * 
  * Module for AVM T1 PCI-card.
  * 
  * Copyright 1999 by Carsten Paeth <calle@calle.de>
  * 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
  *
@@ -59,7 +73,15 @@ static int t1pci_add_card(struct capicardparams *p, struct pci_dev *pdev)
 		goto err;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	card->dma = avmcard_dma_alloc("t1pci", pdev, 2048 + 128, 2048 + 128);
+=======
         card->dma = avmcard_dma_alloc("t1pci", pdev, 2048+128, 2048+128);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        card->dma = avmcard_dma_alloc("t1pci", pdev, 2048+128, 2048+128);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!card->dma) {
 		printk(KERN_WARNING "t1pci: no memory.\n");
 		retval = -ENOMEM;
@@ -136,6 +158,22 @@ static int t1pci_add_card(struct capicardparams *p, struct pci_dev *pdev)
 	pci_set_drvdata(pdev, card);
 	return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+err_free_irq:
+	free_irq(card->irq, card);
+err_unmap:
+	iounmap(card->mbase);
+err_release_region:
+	release_region(card->port, AVMB1_PORTLEN);
+err_free_dma:
+	avmcard_dma_free(card->dma);
+err_free:
+	b1_free_card(card);
+err:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  err_free_irq:
 	free_irq(card->irq, card);
  err_unmap:
@@ -147,6 +185,10 @@ static int t1pci_add_card(struct capicardparams *p, struct pci_dev *pdev)
  err_free:
 	b1_free_card(card);
  err:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -157,7 +199,15 @@ static void t1pci_remove(struct pci_dev *pdev)
 	avmcard *card = pci_get_drvdata(pdev);
 	avmctrl_info *cinfo = card->ctrlinfo;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	b1dma_reset(card);
+=======
  	b1dma_reset(card);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ 	b1dma_reset(card);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	detach_capi_ctr(&cinfo->capi_ctrl);
 	free_irq(card->irq, card);
@@ -217,10 +267,23 @@ static int __devinit t1pci_probe(struct pci_dev *dev,
 }
 
 static struct pci_driver t1pci_pci_driver = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.name           = "t1pci",
+	.id_table       = t1pci_pci_tbl,
+	.probe          = t1pci_probe,
+	.remove         = t1pci_remove,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        .name           = "t1pci",
        .id_table       = t1pci_pci_tbl,
        .probe          = t1pci_probe,
        .remove         = t1pci_remove,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct capi_driver capi_driver_t1pci = {
@@ -237,7 +300,15 @@ static int __init t1pci_init(void)
 	if ((p = strchr(revision, ':')) != NULL && p[1]) {
 		strlcpy(rev, p + 2, 32);
 		if ((p = strchr(rev, '$')) != NULL && p > rev)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			*(p - 1) = 0;
+=======
 		   *(p-1) = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		   *(p-1) = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		strcpy(rev, "1.0");
 

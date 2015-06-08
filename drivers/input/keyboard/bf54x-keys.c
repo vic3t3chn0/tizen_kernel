@@ -384,7 +384,15 @@ static int bfin_kpad_resume(struct platform_device *pdev)
 # define bfin_kpad_resume  NULL
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct platform_driver bfin_kpad_device_driver = {
+=======
 struct platform_driver bfin_kpad_device_driver = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct platform_driver bfin_kpad_device_driver = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver		= {
 		.name	= DRV_NAME,
 		.owner	= THIS_MODULE,
@@ -394,6 +402,12 @@ struct platform_driver bfin_kpad_device_driver = {
 	.suspend	= bfin_kpad_suspend,
 	.resume		= bfin_kpad_resume,
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(bfin_kpad_device_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init bfin_kpad_init(void)
 {
@@ -407,6 +421,10 @@ static void __exit bfin_kpad_exit(void)
 
 module_init(bfin_kpad_init);
 module_exit(bfin_kpad_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Michael Hennerich <hennerich@blackfin.uclinux.org>");

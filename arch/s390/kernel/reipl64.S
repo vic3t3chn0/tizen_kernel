@@ -2,13 +2,20 @@
 <<<<<<< HEAD
  *    Copyright IBM Corp 2000,2011
 =======
+<<<<<<< HEAD
+ *    Copyright IBM Corp 2000,2011
+=======
  *    Copyright IBM Corp 2000,2009
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    Author(s): Holger Smolinski <Holger.Smolinski@de.ibm.com>,
  *		 Denis Joseph Barrow,
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/linkage.h>
 #include <asm/asm-offsets.h>
 
@@ -74,20 +81,28 @@ ENTRY(store_status)
 	.previous
 
 #
+<<<<<<< HEAD
+=======
 =======
 #include <asm/asm-offsets.h>
 
 #
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # do_reipl_asm
 # Parameter: r2 = schid of reipl device
 #
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(do_reipl_asm)
 		basr	%r13,0
 .Lpg0:		lpswe	.Lnewpsw-.Lpg0(%r13)
 .Lpg1:		brasl	%r14,store_status
+<<<<<<< HEAD
+=======
 =======
 		.globl	do_reipl_asm
 do_reipl_asm:	basr	%r13,0
@@ -109,6 +124,7 @@ do_reipl_asm:	basr	%r13,0
 		stpt	__LC_CPU_TIMER_SAVE_AREA-0x1000(%r1)
 		stg	%r13, __LC_PSW_SAVE_AREA-0x1000+8(%r1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		lctlg	%c6,%c6,.Lall-.Lpg0(%r13)
 		lgr	%r1,%r2
@@ -148,11 +164,15 @@ do_reipl_asm:	basr	%r13,0
 <<<<<<< HEAD
 .Lall:		.quad	0x00000000ff000000
 =======
+<<<<<<< HEAD
+.Lall:		.quad	0x00000000ff000000
+=======
 .Lclkcmp:	.quad	0x0000000000000000
 .Lall:		.quad	0x00000000ff000000
 .Ldump_pfx:	.quad	dump_prefix_page
 .Lregsave:	.quad	0x0000000000000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.align	16
 /*
  * These addresses have to be 31 bit otherwise

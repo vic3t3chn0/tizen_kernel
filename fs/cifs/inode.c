@@ -135,8 +135,12 @@ cifs_fattr_to_inode(struct inode *inode, struct cifs_fattr *fattr)
 <<<<<<< HEAD
 	set_nlink(inode, fattr->cf_nlink);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, fattr->cf_nlink);
+=======
 	inode->i_nlink = fattr->cf_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_uid = fattr->cf_uid;
 	inode->i_gid = fattr->cf_gid;
 
@@ -180,9 +184,13 @@ cifs_fattr_to_inode(struct inode *inode, struct cifs_fattr *fattr)
 <<<<<<< HEAD
 	cifs_set_ops(inode);
 =======
+<<<<<<< HEAD
+	cifs_set_ops(inode);
+=======
 	if (inode->i_state & I_NEW)
 		cifs_set_ops(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void
@@ -544,13 +552,19 @@ cifs_all_info_to_fattr(struct cifs_fattr *fattr, FILE_ALL_INFO *info,
 		fattr->cf_mode = S_IFDIR | cifs_sb->mnt_dir_mode;
 		fattr->cf_dtype = DT_DIR;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Server can return wrong NumberOfLinks value for directories
 		 * when Unix extensions are disabled - fake it.
 		 */
 		fattr->cf_nlink = 2;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		fattr->cf_mode = S_IFREG | cifs_sb->mnt_file_mode;
 		fattr->cf_dtype = DT_REG;
@@ -559,16 +573,22 @@ cifs_all_info_to_fattr(struct cifs_fattr *fattr, FILE_ALL_INFO *info,
 		if (fattr->cf_cifsattrs & ATTR_READONLY)
 			fattr->cf_mode &= ~(S_IWUGO);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		fattr->cf_nlink = le32_to_cpu(info->NumberOfLinks);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	}
 
 	fattr->cf_nlink = le32_to_cpu(info->NumberOfLinks);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fattr->cf_uid = cifs_sb->mnt_uid;
 	fattr->cf_gid = cifs_sb->mnt_gid;
 }
@@ -932,8 +952,12 @@ struct inode *cifs_root_iget(struct super_block *sb)
 <<<<<<< HEAD
 		set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+		set_nlink(inode, 2);
+=======
 		inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_op = &cifs_ipc_inode_ops;
 		inode->i_fop = &simple_dir_operations;
 		inode->i_uid = cifs_sb->mnt_uid;
@@ -1295,8 +1319,12 @@ unlink_out:
 <<<<<<< HEAD
 int cifs_mkdir(struct inode *inode, struct dentry *direntry, umode_t mode)
 =======
+<<<<<<< HEAD
+int cifs_mkdir(struct inode *inode, struct dentry *direntry, umode_t mode)
+=======
 int cifs_mkdir(struct inode *inode, struct dentry *direntry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc = 0, tmprc;
 	int xid;
@@ -1310,8 +1338,12 @@ int cifs_mkdir(struct inode *inode, struct dentry *direntry, int mode)
 <<<<<<< HEAD
 	cFYI(1, "In cifs_mkdir, mode = 0x%hx inode = 0x%p", mode, inode);
 =======
+<<<<<<< HEAD
+	cFYI(1, "In cifs_mkdir, mode = 0x%hx inode = 0x%p", mode, inode);
+=======
 	cFYI(1, "In cifs_mkdir, mode = 0x%x inode = 0x%p", mode, inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cifs_sb = CIFS_SB(inode->i_sb);
 	tlink = cifs_sb_tlink(cifs_sb);
@@ -1360,8 +1392,11 @@ int cifs_mkdir(struct inode *inode, struct dentry *direntry, int mode)
 	to set uid/gid */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			inc_nlink(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			cifs_unix_basic_to_fattr(&fattr, pInfo, cifs_sb);
 			cifs_fill_uniqueid(inode->i_sb, &fattr);
@@ -1396,8 +1431,11 @@ mkdir_retry_old:
 mkdir_get_info:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		inc_nlink(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pTcon->unix_ext)
 			rc = cifs_get_inode_info_unix(&newinode, full_path,
 						      inode->i_sb, xid);
@@ -1412,8 +1450,12 @@ mkdir_get_info:
 <<<<<<< HEAD
 			set_nlink(direntry->d_inode, 2);
 =======
+<<<<<<< HEAD
+			set_nlink(direntry->d_inode, 2);
+=======
 				direntry->d_inode->i_nlink = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		mode &= ~current_umask();
 		/* must turn on setgid bit if parent dir has it */
@@ -1483,13 +1525,19 @@ mkdir_get_info:
 	}
 mkdir_out:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Force revalidate to get parent dir info when needed since cached
 	 * attributes are invalid now.
 	 */
 	CIFS_I(inode)->time = 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(full_path);
 	FreeXid(xid);
 	cifs_put_tlink(tlink);
@@ -1531,8 +1579,11 @@ int cifs_rmdir(struct inode *inode, struct dentry *direntry)
 	if (!rc) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		drop_nlink(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&direntry->d_inode->i_lock);
 		i_size_write(direntry->d_inode, 0);
 		clear_nlink(direntry->d_inode);
@@ -1541,6 +1592,9 @@ int cifs_rmdir(struct inode *inode, struct dentry *direntry)
 
 	cifsInode = CIFS_I(direntry->d_inode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* force revalidate to go get info when needed */
 	cifsInode->time = 0;
 
@@ -1550,6 +1604,8 @@ int cifs_rmdir(struct inode *inode, struct dentry *direntry)
 	 * attributes are invalid now.
 	 */
 	cifsInode->time = 0;
+<<<<<<< HEAD
+=======
 =======
 	cifsInode->time = 0;	/* force revalidate to go get info when
 				   needed */
@@ -1558,6 +1614,7 @@ int cifs_rmdir(struct inode *inode, struct dentry *direntry)
 	cifsInode->time = 0;	/* force revalidate to get parent dir info
 				   since cached search results now invalid */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	direntry->d_inode->i_ctime = inode->i_ctime = inode->i_mtime =
 		current_fs_time(inode->i_sb);
@@ -2174,7 +2231,12 @@ cifs_setattr_nounix(struct dentry *direntry, struct iattr *attrs)
 	uid_t uid = NO_CHANGE_32;
 	gid_t gid = NO_CHANGE_32;
 =======
+<<<<<<< HEAD
+	uid_t uid = NO_CHANGE_32;
+	gid_t gid = NO_CHANGE_32;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode *inode = direntry->d_inode;
 	struct cifs_sb_info *cifs_sb = CIFS_SB(inode->i_sb);
 	struct cifsInodeInfo *cifsInode = CIFS_I(inode);
@@ -2226,6 +2288,9 @@ cifs_setattr_nounix(struct dentry *direntry, struct iattr *attrs)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (attrs->ia_valid & ATTR_UID)
 		uid = attrs->ia_uid;
 
@@ -2245,6 +2310,8 @@ cifs_setattr_nounix(struct dentry *direntry, struct iattr *attrs)
 		}
 	} else
 #endif /* CONFIG_CIFS_ACL */
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Without unix extensions we can't send ownership changes to the
@@ -2254,6 +2321,7 @@ cifs_setattr_nounix(struct dentry *direntry, struct iattr *attrs)
 	 * able to support this in the future.
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!(cifs_sb->mnt_cifs_flags & CIFS_MOUNT_SET_UID))
 		attrs->ia_valid &= ~(ATTR_UID | ATTR_GID);
 
@@ -2263,12 +2331,17 @@ cifs_setattr_nounix(struct dentry *direntry, struct iattr *attrs)
 
 	if (attrs->ia_valid & ATTR_MODE) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mode = attrs->ia_mode;
 		rc = 0;
 #ifdef CONFIG_CIFS_ACL
 		if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_CIFS_ACL) {
 			rc = id_mode_to_cifs_acl(inode, full_path, mode,
 						NO_CHANGE_32, NO_CHANGE_32);
+<<<<<<< HEAD
+=======
 =======
 		cFYI(1, "Mode changed to 0%o", attrs->ia_mode);
 		mode = attrs->ia_mode;
@@ -2280,6 +2353,7 @@ cifs_setattr_nounix(struct dentry *direntry, struct iattr *attrs)
 		if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_CIFS_ACL) {
 			rc = mode_to_cifs_acl(inode, full_path, mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (rc) {
 				cFYI(1, "%s: Setting ACL failed with error: %d",
 					__func__, rc);

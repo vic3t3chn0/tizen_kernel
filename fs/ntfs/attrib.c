@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2001-2012 Anton Altaparmakov and Tuxera Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2001-2012 Anton Altaparmakov and Tuxera Inc.
+=======
  * Copyright (c) 2001-2007 Anton Altaparmakov
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (c) 2002 Richard Russon
  *
  * This program/include file is free software; you can redistribute it and/or
@@ -350,16 +354,22 @@ LCN ntfs_attr_vcn_to_lcn_nolock(ntfs_inode *ni, const VCN vcn,
 	bool is_retry = false;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!ni);
 	ntfs_debug("Entering for i_ino 0x%lx, vcn 0x%llx, %s_locked.",
 			ni->mft_no, (unsigned long long)vcn,
 			write_locked ? "write" : "read");
+<<<<<<< HEAD
+=======
 =======
 	ntfs_debug("Entering for i_ino 0x%lx, vcn 0x%llx, %s_locked.",
 			ni->mft_no, (unsigned long long)vcn,
 			write_locked ? "write" : "read");
 	BUG_ON(!ni);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!NInoNonResident(ni));
 	BUG_ON(vcn < 0);
 	if (!ni->runlist.rl) {
@@ -485,10 +495,16 @@ runlist_element *ntfs_attr_find_vcn_nolock(ntfs_inode *ni, const VCN vcn,
 	ntfs_debug("Entering for i_ino 0x%lx, vcn 0x%llx, with%s ctx.",
 			ni->mft_no, (unsigned long long)vcn, ctx ? "" : "out");
 =======
+<<<<<<< HEAD
+	BUG_ON(!ni);
+	ntfs_debug("Entering for i_ino 0x%lx, vcn 0x%llx, with%s ctx.",
+			ni->mft_no, (unsigned long long)vcn, ctx ? "" : "out");
+=======
 	ntfs_debug("Entering for i_ino 0x%lx, vcn 0x%llx, with%s ctx.",
 			ni->mft_no, (unsigned long long)vcn, ctx ? "" : "out");
 	BUG_ON(!ni);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!NInoNonResident(ni));
 	BUG_ON(vcn < 0);
 	if (!ni->runlist.rl) {
@@ -1676,8 +1692,12 @@ int ntfs_attr_make_non_resident(ntfs_inode *ni, const u32 data_size)
 <<<<<<< HEAD
 		kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+		kaddr = kmap_atomic(page);
+=======
 		kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memcpy(kaddr, (u8*)a +
 				le16_to_cpu(a->data.resident.value_offset),
 				attr_size);
@@ -1685,8 +1705,12 @@ int ntfs_attr_make_non_resident(ntfs_inode *ni, const u32 data_size)
 <<<<<<< HEAD
 		kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(kaddr);
+=======
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		flush_dcache_page(page);
 		SetPageUptodate(page);
 	}
@@ -1836,10 +1860,16 @@ undo_err_out:
 		memcpy((u8*)a + mp_ofs, kaddr, attr_size);
 		kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+		kaddr = kmap_atomic(page);
+		memcpy((u8*)a + mp_ofs, kaddr, attr_size);
+		kunmap_atomic(kaddr);
+=======
 		kaddr = kmap_atomic(page, KM_USER0);
 		memcpy((u8*)a + mp_ofs, kaddr, attr_size);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/* Setup the allocated size in the ntfs inode in case it changed. */
 	write_lock_irqsave(&ni->size_lock, flags);
@@ -2572,16 +2602,22 @@ int ntfs_attr_set(ntfs_inode *ni, const s64 ofs, const s64 cnt, const u8 val)
 		if (idx == end)
 			size = end_ofs;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kaddr = kmap_atomic(page);
 		memset(kaddr + start_ofs, val, size - start_ofs);
 		flush_dcache_page(page);
 		kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 		kaddr = kmap_atomic(page, KM_USER0);
 		memset(kaddr + start_ofs, val, size - start_ofs);
 		flush_dcache_page(page);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_page_dirty(page);
 		page_cache_release(page);
 		balance_dirty_pages_ratelimited(mapping);
@@ -2600,16 +2636,22 @@ int ntfs_attr_set(ntfs_inode *ni, const s64 ofs, const s64 cnt, const u8 val)
 			return -ENOMEM;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kaddr = kmap_atomic(page);
 		memset(kaddr, val, PAGE_CACHE_SIZE);
 		flush_dcache_page(page);
 		kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 		kaddr = kmap_atomic(page, KM_USER0);
 		memset(kaddr, val, PAGE_CACHE_SIZE);
 		flush_dcache_page(page);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * If the page has buffers, mark them uptodate since buffer
 		 * state and not page state is definitive in 2.6 kernels.
@@ -2644,16 +2686,22 @@ int ntfs_attr_set(ntfs_inode *ni, const s64 ofs, const s64 cnt, const u8 val)
 			return PTR_ERR(page);
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kaddr = kmap_atomic(page);
 		memset(kaddr, val, end_ofs);
 		flush_dcache_page(page);
 		kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 		kaddr = kmap_atomic(page, KM_USER0);
 		memset(kaddr, val, end_ofs);
 		flush_dcache_page(page);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_page_dirty(page);
 		page_cache_release(page);
 		balance_dirty_pages_ratelimited(mapping);

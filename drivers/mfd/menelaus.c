@@ -44,7 +44,15 @@
 
 #include <asm/mach/irq.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/gpio.h>
+=======
 #include <mach/gpio.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <mach/gpio.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/menelaus.h>
 
 #define DRIVER_NAME			"menelaus"
@@ -1226,7 +1234,15 @@ static int menelaus_probe(struct i2c_client *client,
 	menelaus_write_reg(MENELAUS_MCT_CTRL1, 0x73);
 
 	if (client->irq > 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = request_irq(client->irq, menelaus_irq, 0,
+=======
 		err = request_irq(client->irq, menelaus_irq, IRQF_DISABLED,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = request_irq(client->irq, menelaus_irq, IRQF_DISABLED,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  DRIVER_NAME, menelaus);
 		if (err) {
 			dev_dbg(&client->dev,  "can't get IRQ %d, err %d\n",

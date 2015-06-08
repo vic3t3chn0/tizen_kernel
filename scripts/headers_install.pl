@@ -38,7 +38,11 @@ foreach my $file (@files) {
 <<<<<<< HEAD
 		$line =~ s/\b__packed\b/__attribute__((packed))/g;
 =======
+<<<<<<< HEAD
+		$line =~ s/\b__packed\b/__attribute__((packed))/g;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		$line =~ s/^#include <linux\/compiler.h>//;
 		$line =~ s/(^|\s)(inline)\b/$1__$2__/g;
 		$line =~ s/(^|\s)(asm)\b(\s|[(]|$)/$1__$2__$3/g;

@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/cpufreq.h>
 =======
+<<<<<<< HEAD
+#include <linux/cpufreq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/mtu.h>
 #include <mach/hardware.h>
@@ -227,6 +231,9 @@ int clk_set_rate(struct clk *clk, unsigned long rate)
 EXPORT_SYMBOL(clk_set_rate);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int clk_set_parent(struct clk *clk, struct clk *parent)
 {
 	/*TODO*/
@@ -234,8 +241,11 @@ int clk_set_parent(struct clk *clk, struct clk *parent)
 }
 EXPORT_SYMBOL(clk_set_parent);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void clk_prcmu_enable(struct clk *clk)
 {
 	void __iomem *cg_set_reg = __io_address(U8500_PRCMU_BASE)
@@ -252,6 +262,8 @@ static void clk_prcmu_disable(struct clk *clk)
 	writel(1 << clk->prcmu_cg_bit, cg_clr_reg);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* ED doesn't have the combined set/clr registers */
@@ -272,6 +284,7 @@ static void clk_prcmu_ed_disable(struct clk *clk)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clkops clk_prcmu_ops = {
 	.enable = clk_prcmu_enable,
 	.disable = clk_prcmu_disable,
@@ -285,8 +298,11 @@ static unsigned int clkrst_base[] = {
 	[6] = U8500_CLKRST6_BASE,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	[7] = U8500_CLKRST7_BASE_ED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void clk_prcc_enable(struct clk *clk)
@@ -342,8 +358,11 @@ static DEFINE_PRCMU_CLK(per5clk,	0x0, 14, PER5CLK);
 static DEFINE_PRCMU_CLK_RATE(per6clk,	0x0, 15, PER6CLK, 133330000);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static DEFINE_PRCMU_CLK_RATE(per7clk,	0x0, 16, PER7CLK, 100000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PRCMU_CLK(lcdclk,		0x0, 17, LCDCLK);
 static DEFINE_PRCMU_CLK(bmlclk,		0x0, 18, BMLCLK);
 static DEFINE_PRCMU_CLK(hsitxclk,	0x0, 19, HSITXCLK);
@@ -374,10 +393,15 @@ static DEFINE_PRCC_CLK(1, i2c4,		10, 9, &clk_i2cclk);
 static DEFINE_PRCC_CLK(1, gpio0,	9, -1, NULL);
 static DEFINE_PRCC_CLK(1, slimbus0,	8,  8, &clk_slimclk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PRCC_CLK(1, spi3,		7, -1, NULL);
 static DEFINE_PRCC_CLK(1, i2c2,		6,  6, &clk_i2cclk);
 static DEFINE_PRCC_CLK(1, sdi0,		5,  5, &clk_sdmmcclk);
 static DEFINE_PRCC_CLK(1, msp1,		4,  4, &clk_msp1clk);
+<<<<<<< HEAD
+=======
 =======
 static DEFINE_PRCC_CLK(1, spi3_ed,	7,  7, NULL);
 static DEFINE_PRCC_CLK(1, spi3_v1,	7, -1, NULL);
@@ -386,6 +410,7 @@ static DEFINE_PRCC_CLK(1, sdi0,		5,  5, &clk_sdmmcclk);
 static DEFINE_PRCC_CLK(1, msp1_ed,	4,  4, &clk_msp02clk);
 static DEFINE_PRCC_CLK(1, msp1_v1,	4,  4, &clk_msp1clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PRCC_CLK(1, msp0,		3,  3, &clk_msp02clk);
 static DEFINE_PRCC_CLK(1, i2c1,		2,  2, &clk_i2cclk);
 static DEFINE_PRCC_CLK(1, uart1,	1,  1, &clk_uartclk);
@@ -393,6 +418,9 @@ static DEFINE_PRCC_CLK(1, uart0,	0,  0, &clk_uartclk);
 
 /* Peripheral Cluster #2 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PRCC_CLK(2, gpio1,	11, -1, NULL);
 static DEFINE_PRCC_CLK(2, ssitx,	10,  7, NULL);
 static DEFINE_PRCC_CLK(2, ssirx,	 9,  6, NULL);
@@ -405,6 +433,8 @@ static DEFINE_PRCC_CLK(2, pwl,		3,  1, NULL);
 static DEFINE_PRCC_CLK(2, spi1,		2, -1, NULL);
 static DEFINE_PRCC_CLK(2, spi2,		1, -1, NULL);
 static DEFINE_PRCC_CLK(2, i2c3,		0,  0, &clk_i2cclk);
+<<<<<<< HEAD
+=======
 =======
 
 static DEFINE_PRCC_CLK(2, gpio1_ed,	12, -1, NULL);
@@ -433,6 +463,7 @@ static DEFINE_PRCC_CLK(2, spi1_v1,	 2, -1, NULL);
 static DEFINE_PRCC_CLK(2, spi2_v1,	 1, -1, NULL);
 static DEFINE_PRCC_CLK(2, i2c3_v1,	 0,  0, &clk_i2cclk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Peripheral Cluster #3 */
 static DEFINE_PRCC_CLK(3, gpio2,	8, -1, NULL);
@@ -445,11 +476,16 @@ static DEFINE_PRCC_CLK(3, i2c0,		3,  3, &clk_i2cclk);
 static DEFINE_PRCC_CLK(3, ssp1,		2,  2, &clk_sspclk);
 static DEFINE_PRCC_CLK(3, ssp0,		1,  1, &clk_sspclk);
 =======
+<<<<<<< HEAD
+static DEFINE_PRCC_CLK(3, ssp1,		2,  2, &clk_sspclk);
+static DEFINE_PRCC_CLK(3, ssp0,		1,  1, &clk_sspclk);
+=======
 static DEFINE_PRCC_CLK(3, ssp1_ed,	2,  2, &clk_i2cclk);
 static DEFINE_PRCC_CLK(3, ssp0_ed,	1,  1, &clk_i2cclk);
 static DEFINE_PRCC_CLK(3, ssp1_v1,	2,  2, &clk_sspclk);
 static DEFINE_PRCC_CLK(3, ssp0_v1,	1,  1, &clk_sspclk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PRCC_CLK(3, fsmc,		0, -1, NULL);
 
 /* Peripheral Cluster #4 is in the always on domain */
@@ -459,14 +495,21 @@ static DEFINE_PRCC_CLK(5, gpio3,	1, -1, NULL);
 <<<<<<< HEAD
 static DEFINE_PRCC_CLK(5, usb,		0,  0, NULL);
 =======
+<<<<<<< HEAD
+static DEFINE_PRCC_CLK(5, usb,		0,  0, NULL);
+=======
 static DEFINE_PRCC_CLK(5, usb_ed,	0,  0, &clk_i2cclk);
 static DEFINE_PRCC_CLK(5, usb_v1,	0,  0, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Peripheral Cluster #6 */
 
 /* MTU ID in data */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PRCC_CLK_CUSTOM(6, mtu1, 8, -1, NULL, clk_mtu_get_rate, 1);
 static DEFINE_PRCC_CLK_CUSTOM(6, mtu0, 7, -1, NULL, clk_mtu_get_rate, 0);
 static DEFINE_PRCC_CLK(6, cfgreg,	6,  6, NULL);
@@ -476,6 +519,8 @@ static DEFINE_PRCC_CLK(6, pka,		3, -1, NULL);
 static DEFINE_PRCC_CLK(6, hash0,	2, -1, NULL);
 static DEFINE_PRCC_CLK(6, cryp0,	1, -1, NULL);
 static DEFINE_PRCC_CLK(6, rng,	0,  0, &clk_rngclk);
+<<<<<<< HEAD
+=======
 =======
 static DEFINE_PRCC_CLK_CUSTOM(6, mtu1_v1, 8, -1, NULL, clk_mtu_get_rate, 1);
 static DEFINE_PRCC_CLK_CUSTOM(6, mtu0_v1, 7, -1, NULL, clk_mtu_get_rate, 0);
@@ -499,6 +544,7 @@ static DEFINE_PRCC_CLK_CUSTOM(7, mtu0_ed, 2, -1, NULL, clk_mtu_get_rate, 0);
 static DEFINE_PRCC_CLK(7, wdg_ed,	1, -1, NULL);
 static DEFINE_PRCC_CLK(7, cfgreg_ed,	0, -1, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct clk clk_dummy_apb_pclk = {
 	.name = "apb_pclk",
@@ -507,8 +553,12 @@ static struct clk clk_dummy_apb_pclk = {
 <<<<<<< HEAD
 static struct clk_lookup u8500_clks[] = {
 =======
+<<<<<<< HEAD
+static struct clk_lookup u8500_clks[] = {
+=======
 static struct clk_lookup u8500_common_clks[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK(dummy_apb_pclk, NULL,	"apb_pclk"),
 
 	/* Peripheral Cluster #1 */
@@ -564,6 +614,9 @@ static struct clk_lookup u8500_common_clks[] = {
 	CLK(b2r2clk,	"b2r2",		NULL),
 	CLK(tvclk,	"tv",		NULL),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Peripheral Cluster #1 */
 	CLK(i2c4,	"nmk-i2c.4",	NULL),
@@ -599,6 +652,8 @@ static struct clk_lookup u8500_common_clks[] = {
 	CLK(hash1,	"hash1",	NULL),
 	CLK(unipro,	"unipro",	NULL),
 	CLK(rng,	"rng",		NULL),
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -678,6 +733,7 @@ static struct clk_lookup u8500_v1_clks[] = {
 	CLK(unipro_v1,	"unipro",	NULL),
 	CLK(rng_v1,	"rng",		NULL),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* PRCMU level clock gating */
 
@@ -744,6 +800,9 @@ static struct dentry *clk_debugfs_register_dir(struct clk *c,
 						struct dentry *p_dentry)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *d, *clk_d;
 	const char *p = c->name;
 
@@ -751,6 +810,8 @@ static struct dentry *clk_debugfs_register_dir(struct clk *c,
 		p = "BUG";
 
 	clk_d = debugfs_create_dir(p, p_dentry);
+<<<<<<< HEAD
+=======
 =======
 	struct dentry *d, *clk_d, *child, *child_tmp;
 	char s[255];
@@ -763,6 +824,7 @@ static struct dentry *clk_debugfs_register_dir(struct clk *c,
 
 	clk_d = debugfs_create_dir(s, p_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!clk_d)
 		return NULL;
 
@@ -785,10 +847,15 @@ static struct dentry *clk_debugfs_register_dir(struct clk *c,
 
 err_out:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	debugfs_remove_recursive(clk_d);
 	return NULL;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	d = clk_d;
 	list_for_each_entry_safe(child, child_tmp, &d->d_subdirs, d_u.d_child)
@@ -809,6 +876,7 @@ static void clk_debugfs_remove_dir(struct dentry *cdentry)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int clk_debugfs_register_one(struct clk *c)
 {
 	struct clk *pa = c->parent_periph;
@@ -828,8 +896,12 @@ static int clk_debugfs_register_one(struct clk *c)
 <<<<<<< HEAD
 			debugfs_remove_recursive(c->dent);
 =======
+<<<<<<< HEAD
+			debugfs_remove_recursive(c->dent);
+=======
 			clk_debugfs_remove_dir(c->dent);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			c->dent = NULL;
 			return -ENOMEM;
 		}
@@ -889,6 +961,9 @@ late_initcall(clk_debugfs_init);
 #endif /* defined(CONFIG_DEBUG_FS) */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long clk_smp_twd_rate = 500000000;
 
 unsigned long clk_smp_twd_get_rate(struct clk *clk)
@@ -937,6 +1012,8 @@ late_initcall(clk_init_smp_twd_cpufreq);
 int __init clk_init(void)
 {
 	if (cpu_is_u5500()) {
+<<<<<<< HEAD
+=======
 =======
 int __init clk_init(void)
 {
@@ -946,6 +1023,7 @@ int __init clk_init(void)
 		clk_per6clk.rate = 100000000;
 	} else if (cpu_is_u5500()) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Clock tree for U5500 not implemented yet */
 		clk_prcc_ops.enable = clk_prcc_ops.disable = NULL;
 		clk_prcmu_ops.enable = clk_prcmu_ops.disable = NULL;
@@ -954,11 +1032,16 @@ int __init clk_init(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clkdev_add_table(u8500_clks, ARRAY_SIZE(u8500_clks));
 	clkdev_add(&clk_smp_twd_lookup);
 
 #ifdef CONFIG_DEBUG_FS
 	clk_debugfs_add_table(u8500_clks, ARRAY_SIZE(u8500_clks));
+<<<<<<< HEAD
+=======
 =======
 	clkdev_add_table(u8500_common_clks, ARRAY_SIZE(u8500_common_clks));
 	if (cpu_is_u8500ed())
@@ -973,6 +1056,7 @@ int __init clk_init(void)
 	else
 		clk_debugfs_add_table(u8500_v1_clks, ARRAY_SIZE(u8500_v1_clks));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	return 0;
 }

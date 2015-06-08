@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/io.h>
 =======
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/delay.h>
 
@@ -213,8 +217,12 @@ static int jz4740_codec_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops jz4740_codec_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops jz4740_codec_dai_ops = {
+=======
 static struct snd_soc_dai_ops jz4740_codec_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params = jz4740_codec_hw_params,
 };
 
@@ -322,8 +330,12 @@ static int jz4740_codec_dev_remove(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 static int jz4740_codec_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int jz4740_codec_suspend(struct snd_soc_codec *codec)
+=======
 static int jz4740_codec_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return jz4740_codec_set_bias_level(codec, SND_SOC_BIAS_OFF);
 }
@@ -368,8 +380,13 @@ static int __devinit jz4740_codec_probe(struct platform_device *pdev)
 	jz4740_codec = devm_kzalloc(&pdev->dev, sizeof(*jz4740_codec),
 				    GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	jz4740_codec = devm_kzalloc(&pdev->dev, sizeof(*jz4740_codec),
+				    GFP_KERNEL);
+=======
 	jz4740_codec = kzalloc(sizeof(*jz4740_codec), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!jz4740_codec)
 		return -ENOMEM;
 
@@ -380,8 +397,12 @@ static int __devinit jz4740_codec_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		goto err_out;
 =======
+<<<<<<< HEAD
+		goto err_out;
+=======
 		goto err_free_codec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	mem = request_mem_region(mem->start, resource_size(mem), pdev->name);
@@ -391,8 +412,12 @@ static int __devinit jz4740_codec_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		goto err_out;
 =======
+<<<<<<< HEAD
+		goto err_out;
+=======
 		goto err_free_codec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	jz4740_codec->base = ioremap(mem->start, resource_size(mem));
@@ -421,10 +446,14 @@ err_release_mem_region:
 <<<<<<< HEAD
 err_out:
 =======
+<<<<<<< HEAD
+err_out:
+=======
 err_free_codec:
 	kfree(jz4740_codec);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -441,8 +470,11 @@ static int __devexit jz4740_codec_remove(struct platform_device *pdev)
 	platform_set_drvdata(pdev, NULL);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(jz4740_codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -459,6 +491,9 @@ static struct platform_driver jz4740_codec_driver = {
 <<<<<<< HEAD
 module_platform_driver(jz4740_codec_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(jz4740_codec_driver);
+=======
 static int __init jz4740_codec_init(void)
 {
 	return platform_driver_register(&jz4740_codec_driver);
@@ -471,6 +506,7 @@ static void __exit jz4740_codec_exit(void)
 }
 module_exit(jz4740_codec_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("JZ4740 SoC internal codec driver");
 MODULE_AUTHOR("Lars-Peter Clausen <lars@metafoo.de>");

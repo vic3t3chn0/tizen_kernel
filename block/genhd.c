@@ -17,8 +17,11 @@
 #include <linux/kobj_map.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/buffer_head.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 #include <linux/idr.h>
 #include <linux/log2.h>
@@ -514,8 +517,12 @@ static int exact_lock(dev_t devt, void *data)
 <<<<<<< HEAD
 static void register_disk(struct gendisk *disk)
 =======
+<<<<<<< HEAD
+static void register_disk(struct gendisk *disk)
+=======
 void register_disk(struct gendisk *disk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device *ddev = disk_to_dev(disk);
 	struct block_device *bdev;
@@ -528,8 +535,12 @@ void register_disk(struct gendisk *disk)
 <<<<<<< HEAD
 	dev_set_name(ddev, disk->disk_name);
 =======
+<<<<<<< HEAD
+	dev_set_name(ddev, disk->disk_name);
+=======
 	dev_set_name(ddev, "%s", disk->disk_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* delay uevents, until we scanned partition table */
 	dev_set_uevent_suppress(ddev, 1);
@@ -551,8 +562,12 @@ void register_disk(struct gendisk *disk)
 <<<<<<< HEAD
 	if (!disk_part_scan_enabled(disk))
 =======
+<<<<<<< HEAD
+	if (!disk_part_scan_enabled(disk))
+=======
 	if (!disk_partitionable(disk))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit;
 
 	/* No such device (e.g., media were just removed) */
@@ -623,8 +638,12 @@ void add_disk(struct gendisk *disk)
 <<<<<<< HEAD
 	/* Register BDI before referencing it from bdev */
 =======
+<<<<<<< HEAD
+	/* Register BDI before referencing it from bdev */
+=======
 	/* Register BDI before referencing it from bdev */ 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bdi = &disk->queue->backing_dev_info;
 	bdi_register_dev(bdi, disk_devt(disk));
 
@@ -640,8 +659,12 @@ void add_disk(struct gendisk *disk)
 <<<<<<< HEAD
 	WARN_ON_ONCE(!blk_get_queue(disk->queue));
 =======
+<<<<<<< HEAD
+	WARN_ON_ONCE(!blk_get_queue(disk->queue));
+=======
 	WARN_ON_ONCE(blk_get_queue(disk->queue));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	retval = sysfs_create_link(&disk_to_dev(disk)->kobj, &bdi->dev->kobj,
 				   "bdi");
@@ -878,8 +901,12 @@ static int show_partition(struct seq_file *seqf, void *v)
 <<<<<<< HEAD
 	if (!get_capacity(sgp) || (!disk_max_parts(sgp) &&
 =======
+<<<<<<< HEAD
+	if (!get_capacity(sgp) || (!disk_max_parts(sgp) &&
+=======
 	if (!get_capacity(sgp) || (!disk_partitionable(sgp) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   (sgp->flags & GENHD_FL_REMOVABLE)))
 		return 0;
 	if (sgp->flags & GENHD_FL_SUPPRESS_PARTITION_INFO)
@@ -948,12 +975,16 @@ static int __init genhd_device_init(void)
 <<<<<<< HEAD
 subsys_initcall(genhd_device_init);
 =======
+<<<<<<< HEAD
+subsys_initcall(genhd_device_init);
+=======
 #ifdef CONFIG_FAST_RESUME
 beforeresume_initcall(genhd_device_init);
 #else
 subsys_initcall(genhd_device_init);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static ssize_t disk_range_show(struct device *dev,
 			       struct device_attribute *attr, char *buf)
@@ -1066,6 +1097,8 @@ static const struct attribute_group *disk_attr_groups[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void disk_free_ptbl_rcu_cb(struct rcu_head *head)
 {
 	struct disk_part_tbl *ptbl =
@@ -1075,6 +1108,7 @@ static void disk_free_ptbl_rcu_cb(struct rcu_head *head)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * disk_replace_part_tbl - replace disk->part_tbl in RCU-safe way
  * @disk: disk to replace part_tbl for
@@ -1098,8 +1132,12 @@ static void disk_replace_part_tbl(struct gendisk *disk,
 <<<<<<< HEAD
 		kfree_rcu(old_ptbl, rcu_head);
 =======
+<<<<<<< HEAD
+		kfree_rcu(old_ptbl, rcu_head);
+=======
 		call_rcu(&old_ptbl->rcu_head, disk_free_ptbl_rcu_cb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1175,11 +1213,14 @@ static int disk_uevent(struct device *dev, struct kobj_uevent_env *env)
 	add_uevent_var(env, "NPARTS=%u", cnt);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_USB_HOST_NOTIFY
 	if (disk->interfaces == GENHD_IF_USB)
 		add_uevent_var(env, "MEDIAPRST=%d", disk->media_present);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1190,8 +1231,12 @@ struct class block_class = {
 <<<<<<< HEAD
 static char *block_devnode(struct device *dev, umode_t *mode)
 =======
+<<<<<<< HEAD
+static char *block_devnode(struct device *dev, umode_t *mode)
+=======
 static char *block_devnode(struct device *dev, mode_t *mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct gendisk *disk = dev_to_disk(dev);
 
@@ -1234,8 +1279,12 @@ static int diskstats_show(struct seq_file *seqf, void *v)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
  
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	disk_part_iter_init(&piter, gp, DISK_PITER_INCL_EMPTY_PART0);
 	while ((hd = disk_part_iter_next(&piter))) {
 		cpu = part_stat_lock();
@@ -1245,19 +1294,29 @@ static int diskstats_show(struct seq_file *seqf, void *v)
 		seq_printf(seqf, "%4d %7d %s %lu %lu %lu "
 			   "%u %lu %lu %lu %u %u %u %u\n",
 =======
+<<<<<<< HEAD
+		seq_printf(seqf, "%4d %7d %s %lu %lu %lu "
+			   "%u %lu %lu %lu %u %u %u %u\n",
+=======
 		seq_printf(seqf, "%4d %7d %s %lu %lu %llu "
 			   "%u %lu %lu %llu %u %u %u %u\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   MAJOR(part_devt(hd)), MINOR(part_devt(hd)),
 			   disk_name(gp, hd->partno, buf),
 			   part_stat_read(hd, ios[READ]),
 			   part_stat_read(hd, merges[READ]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   part_stat_read(hd, sectors[READ]),
 			   jiffies_to_msecs(part_stat_read(hd, ticks[READ])),
 			   part_stat_read(hd, ios[WRITE]),
 			   part_stat_read(hd, merges[WRITE]),
 			   part_stat_read(hd, sectors[WRITE]),
+<<<<<<< HEAD
+=======
 =======
 			   (unsigned long long)part_stat_read(hd, sectors[READ]),
 			   jiffies_to_msecs(part_stat_read(hd, ticks[READ])),
@@ -1265,6 +1324,7 @@ static int diskstats_show(struct seq_file *seqf, void *v)
 			   part_stat_read(hd, merges[WRITE]),
 			   (unsigned long long)part_stat_read(hd, sectors[WRITE]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   jiffies_to_msecs(part_stat_read(hd, ticks[WRITE])),
 			   part_in_flight(hd),
 			   jiffies_to_msecs(part_stat_read(hd, io_ticks)),
@@ -1275,8 +1335,12 @@ static int diskstats_show(struct seq_file *seqf, void *v)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
  
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1605,6 +1669,9 @@ void disk_unblock_events(struct gendisk *disk)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * disk_flush_events - schedule immediate event checking and flushing
  * @disk: disk to check and flush events for
  * @mask: events to flush
@@ -1619,6 +1686,8 @@ void disk_unblock_events(struct gendisk *disk)
 void disk_flush_events(struct gendisk *disk, unsigned int mask)
 {
 	struct disk_events *ev = disk->ev;
+<<<<<<< HEAD
+=======
 =======
  * disk_check_events - schedule immediate event checking
  * @disk: disk to check events for
@@ -1633,6 +1702,7 @@ void disk_check_events(struct gendisk *disk)
 	struct disk_events *ev = disk->ev;
 	unsigned long flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!ev)
 		return;
@@ -1641,8 +1711,13 @@ void disk_check_events(struct gendisk *disk)
 	spin_lock_irq(&ev->lock);
 	ev->clearing |= mask;
 =======
+<<<<<<< HEAD
+	spin_lock_irq(&ev->lock);
+	ev->clearing |= mask;
+=======
 	spin_lock_irqsave(&ev->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ev->block) {
 		cancel_delayed_work(&ev->dwork);
 		queue_delayed_work(system_nrt_freezable_wq, &ev->dwork, 0);
@@ -1651,10 +1726,15 @@ void disk_check_events(struct gendisk *disk)
 	spin_unlock_irq(&ev->lock);
 }
 =======
+<<<<<<< HEAD
+	spin_unlock_irq(&ev->lock);
+}
+=======
 	spin_unlock_irqrestore(&ev->lock, flags);
 }
 EXPORT_SYMBOL_GPL(disk_check_events);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * disk_clear_events - synchronously check, clear and return pending events
@@ -1710,12 +1790,17 @@ static void disk_events_workfn(struct work_struct *work)
 	char *envp[ARRAY_SIZE(disk_uevents) + 1] = { };
 	unsigned int clearing = ev->clearing;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int events;
 	unsigned long intv;
 	int nr_events = 0, i;
 
 	/* check events */
 	events = disk->fops->check_events(disk, clearing);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int events = 0;
 	unsigned long intv;
@@ -1727,6 +1812,7 @@ static void disk_events_workfn(struct work_struct *work)
 		events = disk->fops->check_events(disk, clearing);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* accumulate pending events and schedule next poll if necessary */
 	spin_lock_irq(&ev->lock);
@@ -1754,6 +1840,10 @@ static void disk_events_workfn(struct work_struct *work)
 	if (nr_events)
 		kobject_uevent_env(&disk_to_dev(disk)->kobj, KOBJ_CHANGE, envp);
 =======
+<<<<<<< HEAD
+	if (nr_events)
+		kobject_uevent_env(&disk_to_dev(disk)->kobj, KOBJ_CHANGE, envp);
+=======
 #ifdef CONFIG_USB_HOST_NOTIFY
 		if (disk->interfaces != GENHD_IF_USB) {
 			if (nr_events)
@@ -1762,6 +1852,7 @@ static void disk_events_workfn(struct work_struct *work)
 		}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1869,8 +1960,12 @@ static int disk_events_set_dfl_poll_msecs(const char *val,
 <<<<<<< HEAD
 		disk_flush_events(ev->disk, 0);
 =======
+<<<<<<< HEAD
+		disk_flush_events(ev->disk, 0);
+=======
 		disk_check_events(ev->disk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_unlock(&disk_events_mutex);
 

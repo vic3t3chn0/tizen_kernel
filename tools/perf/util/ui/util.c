@@ -2,10 +2,15 @@
 #include "../util.h"
 #include <signal.h>
 =======
+<<<<<<< HEAD
+#include "../util.h"
+#include <signal.h>
+=======
 #include <newt.h>
 #include <signal.h>
 #include <stdio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <stdbool.h>
 #include <string.h>
 #include <sys/ttydefaults.h>
@@ -14,6 +19,9 @@
 #include "../debug.h"
 #include "browser.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "keysyms.h"
 #include "helpline.h"
 #include "ui.h"
@@ -61,6 +69,8 @@ static int popup_menu__run(struct ui_browser *menu)
 
 	ui_browser__hide(menu);
 	return key;
+<<<<<<< HEAD
+=======
 =======
 #include "helpline.h"
 #include "ui.h"
@@ -82,11 +92,15 @@ static newtComponent newt_form__new(void)
 		newt_form__set_exit_keys(self);
 	return self;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int ui__popup_menu(int argc, char * const argv[])
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ui_browser menu = {
 		.entries    = (void *)argv,
 		.refresh    = ui_browser__argv_refresh,
@@ -187,6 +201,8 @@ int ui__question_window(const char *title, const char *text,
 	int max_len = 0, nr_lines = 0;
 	const char *t;
 
+<<<<<<< HEAD
+=======
 =======
 	struct newtExitStruct es;
 	int i, rc = -1, max_len = 5;
@@ -232,6 +248,7 @@ int ui__help_window(const char *text)
 		return -1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	t = text;
 	while (1) {
 		const char *sep = strchr(t, '\n');
@@ -249,6 +266,9 @@ int ui__help_window(const char *text)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	max_len += 2;
 	nr_lines += 4;
 	y = SLtt_Screen_Rows / 2 - nr_lines / 2,
@@ -322,6 +342,8 @@ int ui__error(const char *format, ...)
 	key = __ui__warning("Error", format, args);
 	va_end(args);
 	return key;
+<<<<<<< HEAD
+=======
 =======
 	tb = newtTextbox(0, 0, max_len, nr_lines, 0);
 	if (tb == NULL)
@@ -361,4 +383,5 @@ void ui__warning(const char *format, ...)
 		vfprintf(stderr, format, args);
 	va_end(args);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

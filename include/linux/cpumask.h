@@ -12,7 +12,11 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 typedef struct cpumask { DECLARE_BITMAP(bits, NR_CPUS); } cpumask_t;
 
@@ -622,6 +626,9 @@ static inline size_t cpumask_size(void)
  *
  *	free_cpumask_var(tmpmask);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *
  * However, one notable exception is there. alloc_cpumask_var() allocates
@@ -636,8 +643,11 @@ static inline size_t cpumask_size(void)
  *
  * This code makes NR_CPUS length memcopy and brings to a memory corruption.
  * cpumask_copy() provide safe copy functionality.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #ifdef CONFIG_CPUMASK_OFFSTACK
 typedef struct cpumask *cpumask_var_t;
@@ -772,6 +782,8 @@ static inline const struct cpumask *get_cpu_mask(unsigned int cpu)
 #ifndef CONFIG_DISABLE_OBSOLETE_CPUMASK_FUNCTIONS
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* These strip const, as traditionally they weren't const. */
 #define cpu_possible_map	(*(cpumask_t *)cpu_possible_mask)
 #define cpu_online_map		(*(cpumask_t *)cpu_online_mask)
@@ -779,6 +791,7 @@ static inline const struct cpumask *get_cpu_mask(unsigned int cpu)
 #define cpu_active_map		(*(cpumask_t *)cpu_active_mask)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpumask_of_cpu(cpu) (*get_cpu_mask(cpu))
 
 #define CPU_MASK_LAST_WORD BITMAP_LAST_WORD_MASK(NR_CPUS)
@@ -820,10 +833,15 @@ static inline const struct cpumask *get_cpu_mask(unsigned int cpu)
 int __first_cpu(const cpumask_t *srcp);
 int __next_cpu(int n, const cpumask_t *srcp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define first_cpu(src)		__first_cpu(&(src))
 #define next_cpu(n, src)	__next_cpu((n), &(src))
 #define any_online_cpu(mask) cpumask_any_and(&mask, cpu_online_mask)
+<<<<<<< HEAD
+=======
 =======
 int __any_online_cpu(const cpumask_t *mask);
 
@@ -831,6 +849,7 @@ int __any_online_cpu(const cpumask_t *mask);
 #define next_cpu(n, src)	__next_cpu((n), &(src))
 #define any_online_cpu(mask) __any_online_cpu(&(mask))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define for_each_cpu_mask(cpu, mask)			\
 	for ((cpu) = -1;				\
 		(cpu) = next_cpu((cpu), (mask)),	\

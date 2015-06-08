@@ -36,9 +36,14 @@ extern char modprobe_path[]; /* for sysctl */
 extern __printf(2, 3)
 int __request_module(bool wait, const char *name, ...);
 =======
+<<<<<<< HEAD
+extern __printf(2, 3)
+int __request_module(bool wait, const char *name, ...);
+=======
 extern int __request_module(bool wait, const char *name, ...) \
 	__attribute__((format(printf, 2, 3)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define request_module(mod...) __request_module(true, mod)
 #define request_module_nowait(mod...) __request_module(false, mod)
 #define try_then_request_module(x, mod...) \
@@ -54,10 +59,15 @@ struct cred;
 struct file;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UMH_NO_WAIT	0	/* don't wait at all */
 #define UMH_WAIT_EXEC	1	/* wait for the exec, but not the process */
 #define UMH_WAIT_PROC	2	/* wait for the process to complete */
 #define UMH_KILLABLE	4	/* wait for EXEC/PROC killable */
+<<<<<<< HEAD
+=======
 =======
 enum umh_wait {
 	UMH_NO_WAIT = -1,	/* don't wait at all */
@@ -65,6 +75,7 @@ enum umh_wait {
 	UMH_WAIT_PROC = 1,	/* wait for the process to complete */
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct subprocess_info {
 	struct work_struct work;
@@ -75,8 +86,12 @@ struct subprocess_info {
 <<<<<<< HEAD
 	int wait;
 =======
+<<<<<<< HEAD
+	int wait;
+=======
 	enum umh_wait wait;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int retval;
 	int (*init)(struct subprocess_info *info, struct cred *new);
 	void (*cleanup)(struct subprocess_info *info);
@@ -97,8 +112,12 @@ void call_usermodehelper_setfns(struct subprocess_info *info,
 <<<<<<< HEAD
 int call_usermodehelper_exec(struct subprocess_info *info, int wait);
 =======
+<<<<<<< HEAD
+int call_usermodehelper_exec(struct subprocess_info *info, int wait);
+=======
 int call_usermodehelper_exec(struct subprocess_info *info, enum umh_wait wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Free the subprocess_info. This is only needed if you're not going
    to call call_usermodehelper_exec */
@@ -108,9 +127,13 @@ static inline int
 <<<<<<< HEAD
 call_usermodehelper_fns(char *path, char **argv, char **envp, int wait,
 =======
+<<<<<<< HEAD
+call_usermodehelper_fns(char *path, char **argv, char **envp, int wait,
+=======
 call_usermodehelper_fns(char *path, char **argv, char **envp,
 			enum umh_wait wait,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			int (*init)(struct subprocess_info *info, struct cred *new),
 			void (*cleanup)(struct subprocess_info *), void *data)
 {
@@ -131,8 +154,12 @@ static inline int
 <<<<<<< HEAD
 call_usermodehelper(char *path, char **argv, char **envp, int wait)
 =======
+<<<<<<< HEAD
+call_usermodehelper(char *path, char **argv, char **envp, int wait)
+=======
 call_usermodehelper(char *path, char **argv, char **envp, enum umh_wait wait)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return call_usermodehelper_fns(path, argv, envp, wait,
 				       NULL, NULL, NULL);
@@ -141,6 +168,9 @@ call_usermodehelper(char *path, char **argv, char **envp, enum umh_wait wait)
 extern struct ctl_table usermodehelper_table[];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum umh_disable_depth {
 	UMH_ENABLED = 0,
 	UMH_FREEZING,
@@ -165,6 +195,8 @@ static inline void usermodehelper_enable(void)
 extern int usermodehelper_read_trylock(void);
 extern long usermodehelper_read_lock_wait(long timeout);
 extern void usermodehelper_read_unlock(void);
+<<<<<<< HEAD
+=======
 =======
 extern void usermodehelper_init(void);
 
@@ -172,5 +204,6 @@ extern int usermodehelper_disable(void);
 extern void usermodehelper_enable(void);
 extern bool usermodehelper_is_disabled(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __LINUX_KMOD_H__ */

@@ -10,8 +10,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
@@ -25,8 +29,12 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "common.h"
 
@@ -83,9 +91,14 @@ static struct resource smc91x_resources[] = {
 		.start	= MMP_GPIO_TO_IRQ(80),
 		.end	= MMP_GPIO_TO_IRQ(80),
 =======
+<<<<<<< HEAD
+		.start	= MMP_GPIO_TO_IRQ(80),
+		.end	= MMP_GPIO_TO_IRQ(80),
+=======
 		.start	= gpio_to_irq(80),
 		.end	= gpio_to_irq(80),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	}
 };
@@ -109,7 +122,11 @@ static void __init tavorevb_init(void)
 <<<<<<< HEAD
 	platform_device_register(&pxa910_device_gpio);
 =======
+<<<<<<< HEAD
+	platform_device_register(&pxa910_device_gpio);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* off-chip devices */
 	platform_device_register(&smc91x_device);
@@ -118,14 +135,20 @@ static void __init tavorevb_init(void)
 MACHINE_START(TAVOREVB, "PXA910 Evaluation Board (aka TavorEVB)")
 	.map_io		= mmp_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.nr_irqs	= MMP_NR_IRQS,
 	.init_irq       = pxa910_init_irq,
 	.timer          = &pxa910_timer,
 	.init_machine   = tavorevb_init,
 	.restart	= mmp_restart,
+<<<<<<< HEAD
+=======
 =======
 	.init_irq       = pxa910_init_irq,
 	.timer          = &pxa910_timer,
 	.init_machine   = tavorevb_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

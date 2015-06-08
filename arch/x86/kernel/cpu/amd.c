@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/init.h>
 #include <linux/bitops.h>
@@ -7,6 +10,8 @@
 
 #include <linux/io.h>
 #include <linux/sched.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/init.h>
 #include <linux/bitops.h>
@@ -14,6 +19,7 @@
 
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/processor.h>
 #include <asm/apic.h>
 #include <asm/cpu.h>
@@ -38,8 +44,13 @@
  *	and	section 2.6.2 of "AMD-K6 Processor Revision Guide - Model 6"
  *		(Publication # 21266  Issue Date: August 1998)
 =======
+<<<<<<< HEAD
+ *	and	section 2.6.2 of "AMD-K6 Processor Revision Guide - Model 6"
+ *		(Publication # 21266  Issue Date: August 1998)
+=======
  *		http://www.amd.com/K6/k6docs/revgd.html
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *	The following test is erm.. interesting. AMD neglected to up
  *	the chip setting when fixing the bug but they also tweaked some
@@ -109,8 +120,11 @@ static void __cpuinit init_amd_k6(struct cpuinfo_x86 *c)
 			printk(KERN_CONT "probably OK (after B9730xxxx).\n");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		printk(KERN_INFO "Please see http://membres.lycos.fr/poulot/k6bug.html\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* K6 with old style WHCR */
@@ -369,6 +383,9 @@ static void __cpuinit srat_detect_node(struct cpuinfo_x86 *c)
 		node = per_cpu(cpu_llc_id, cpu);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * On multi-fabric platform (e.g. Numascale NumaChip) a
 	 * platform-specific handler needs to be called to fixup some
@@ -377,8 +394,11 @@ static void __cpuinit srat_detect_node(struct cpuinfo_x86 *c)
 	if (x86_cpuinit.fixup_cpu_id)
 		x86_cpuinit.fixup_cpu_id(c, node);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!node_online(node)) {
 		/*
 		 * Two possibilities here:
@@ -439,6 +459,9 @@ static void __cpuinit early_init_amd_mc(struct cpuinfo_x86 *c)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __cpuinit bsp_init_amd(struct cpuinfo_x86 *c)
 {
 	if (cpu_has(c, X86_FEATURE_CONSTANT_TSC)) {
@@ -467,8 +490,11 @@ static void __cpuinit bsp_init_amd(struct cpuinfo_x86 *c)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __cpuinit early_init_amd(struct cpuinfo_x86 *c)
 {
 	early_init_amd_mc(c);
@@ -484,7 +510,12 @@ static void __cpuinit early_init_amd(struct cpuinfo_x86 *c)
 		if (!check_tsc_unstable())
 			sched_clock_stable = 1;
 =======
+<<<<<<< HEAD
+		if (!check_tsc_unstable())
+			sched_clock_stable = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 #ifdef CONFIG_X86_64
@@ -507,6 +538,8 @@ static void __cpuinit early_init_amd(struct cpuinfo_x86 *c)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/* We need to do the following only once */
 	if (c != &boot_cpu_data)
@@ -525,6 +558,7 @@ static void __cpuinit early_init_amd(struct cpuinfo_x86 *c)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __cpuinit init_amd(struct cpuinfo_x86 *c)
@@ -533,7 +567,12 @@ static void __cpuinit init_amd(struct cpuinfo_x86 *c)
 	u32 dummy;
 
 =======
+<<<<<<< HEAD
+	u32 dummy;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 	unsigned long long value;
 
@@ -629,6 +668,9 @@ static void __cpuinit init_amd(struct cpuinfo_x86 *c)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* re-enable TopologyExtensions if switched off by BIOS */
 	if ((c->x86 == 0x15) &&
 	    (c->x86_model >= 0x10) && (c->x86_model <= 0x1f) &&
@@ -644,6 +686,8 @@ static void __cpuinit init_amd(struct cpuinfo_x86 *c)
 				printk(KERN_INFO FW_INFO "CPU: Re-enabling "
 				  "disabled Topology Extensions Support\n");
 			}
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * The way access filter has a performance penalty on some workloads.
@@ -657,6 +701,7 @@ static void __cpuinit init_amd(struct cpuinfo_x86 *c)
 			val |= 0x1E;
 			checking_wrmsrl(0xc0011021, val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -748,7 +793,12 @@ static void __cpuinit init_amd(struct cpuinfo_x86 *c)
 
 	rdmsr_safe(MSR_AMD64_PATCH_LEVEL, &c->microcode, &dummy);
 =======
+<<<<<<< HEAD
+
+	rdmsr_safe(MSR_AMD64_PATCH_LEVEL, &c->microcode, &dummy);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_X86_32
@@ -791,7 +841,11 @@ static const struct cpu_dev __cpuinitconst amd_cpu_dev = {
 <<<<<<< HEAD
 	.c_bsp_init	= bsp_init_amd,
 =======
+<<<<<<< HEAD
+	.c_bsp_init	= bsp_init_amd,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.c_init		= init_amd,
 	.c_x86_vendor	= X86_VENDOR_AMD,
 };

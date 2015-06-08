@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2012, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2008-2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -20,21 +24,30 @@
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/msm_rotator.h>
 #include <linux/dma-mapping.h>
 #include <mach/kgsl.h>
 #include <linux/regulator/machine.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <linux/dma-mapping.h>
 #include <linux/clkdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 #include <mach/msm_iomap.h>
 #include <mach/dma.h>
 #include <mach/board.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/clkdev.h>
 #include <linux/msm_ion.h>
 #include "devices.h"
@@ -117,6 +130,8 @@ static struct resource resources_uart1[] = {
 		.flags	= IORESOURCE_MEM,
 	},
 };
+<<<<<<< HEAD
+=======
 =======
 
 #include "devices.h"
@@ -129,6 +144,7 @@ static struct resource resources_uart1[] = {
 
 #include <mach/mmc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource resources_uart2[] = {
 	{
@@ -141,15 +157,23 @@ static struct resource resources_uart2[] = {
 		.start	= MSM7X30_UART2_PHYS,
 		.end	= MSM7X30_UART2_PHYS + MSM7X30_UART2_SIZE - 1,
 =======
+<<<<<<< HEAD
+		.start	= MSM7X30_UART2_PHYS,
+		.end	= MSM7X30_UART2_PHYS + MSM7X30_UART2_SIZE - 1,
+=======
 		.start	= MSM_UART2_PHYS,
 		.end	= MSM_UART2_PHYS + MSM_UART2_SIZE - 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 		.name  = "uart_resource"
 	},
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource resources_uart3[] = {
 	{
 		.start	= INT_UART3,
@@ -170,8 +194,11 @@ struct platform_device msm_device_uart1 = {
 	.resource	= resources_uart1,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_device msm_device_uart2 = {
 	.name	= "msm_serial",
 	.id	= 1,
@@ -180,6 +207,9 @@ struct platform_device msm_device_uart2 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_device msm_device_uart3 = {
 	.name	= "msm_serial",
 	.id	= 2,
@@ -477,6 +507,8 @@ static struct resource resources_hsusb_otg[] = {
 	{
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + SZ_1K - 1,
+<<<<<<< HEAD
+=======
 =======
 struct platform_device msm_device_smd = {
 	.name   = "msm_smd",
@@ -488,6 +520,7 @@ static struct resource resources_otg[] = {
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + MSM_HSUSB_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -498,6 +531,9 @@ static struct resource resources_otg[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 dma_mask = 0xffffffffULL;
 struct platform_device msm_device_hsusb_otg = {
 	.name		= "msm_hsusb_otg",
@@ -527,6 +563,8 @@ static struct resource resources_gadget_peripheral[] = {
 	{
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + SZ_1K - 1,
+<<<<<<< HEAD
+=======
 =======
 struct platform_device msm_device_otg = {
 	.name		= "msm_otg",
@@ -543,6 +581,7 @@ static struct resource resources_hsusb[] = {
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + MSM_HSUSB_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -553,6 +592,9 @@ static struct resource resources_hsusb[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct platform_device msm_device_hsusb_peripheral = {
 	.name		= "msm_hsusb_peripheral",
 	.id		= -1,
@@ -579,6 +621,8 @@ static struct resource resources_hsusb_host[] = {
 	{
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + SZ_1K - 1,
+<<<<<<< HEAD
+=======
 =======
 struct platform_device msm_device_hsusb = {
 	.name		= "msm_hsusb",
@@ -596,6 +640,7 @@ static struct resource resources_hsusb_host[] = {
 		.start	= MSM_HSUSB_PHYS,
 		.end	= MSM_HSUSB_PHYS + MSM_HSUSB_SIZE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	},
 	{
@@ -608,6 +653,9 @@ static struct resource resources_hsusb_host[] = {
 struct platform_device msm_device_hsusb_host = {
 	.name		= "msm_hsusb_host",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id		= 0,
 	.num_resources	= ARRAY_SIZE(resources_hsusb_host),
 	.resource	= resources_hsusb_host,
@@ -1465,6 +1513,8 @@ static int __init msm7630_init_gpio(void)
 }
 
 postcore_initcall(msm7630_init_gpio);
+<<<<<<< HEAD
+=======
 =======
 	.id		= -1,
 	.num_resources	= ARRAY_SIZE(resources_hsusb_host),
@@ -1554,3 +1604,4 @@ struct clk_lookup msm_clocks_7x30[] = {
 unsigned msm_num_clocks_7x30 = ARRAY_SIZE(msm_clocks_7x30);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

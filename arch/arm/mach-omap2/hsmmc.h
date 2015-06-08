@@ -15,7 +15,11 @@ struct omap2_hsmmc_info {
 <<<<<<< HEAD
 	u32	pm_caps;	/* PM capabilities */
 =======
+<<<<<<< HEAD
+	u32	pm_caps;	/* PM capabilities */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool	transceiver;	/* MMC-2 option */
 	bool	ext_clock;	/* use external pin for input clock */
 	bool	cover_only;	/* No card detect - just cover switch */
@@ -25,6 +29,9 @@ struct omap2_hsmmc_info {
 	bool	no_off_init;	/* no power off when not in MMC sleep state */
 	bool	vcc_aux_disable_is_sleep; /* Regulator off remapped to sleep */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool	deferred;	/* mmc needs a deferred probe */
 	int	gpio_cd;	/* or -EINVAL */
 	int	gpio_wp;	/* or -EINVAL */
@@ -33,6 +40,8 @@ struct omap2_hsmmc_info {
 	int	ocr_mask;	/* temporary HACK */
 	int	max_freq;	/* maximum clock, if constrained by external
 				 * circuitry, or 0 for default */
+<<<<<<< HEAD
+=======
 =======
 	int	gpio_cd;	/* or -EINVAL */
 	int	gpio_wp;	/* or -EINVAL */
@@ -40,6 +49,7 @@ struct omap2_hsmmc_info {
 	struct device *dev;	/* returned: pointer to mmc adapter */
 	int	ocr_mask;	/* temporary HACK */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Remux (pad configuration) when powering on/off */
 	void (*remux)(struct device *dev, int slot, int power_on);
 	/* init some special card */
@@ -49,6 +59,9 @@ struct omap2_hsmmc_info {
 #if defined(CONFIG_MMC_OMAP_HS) || defined(CONFIG_MMC_OMAP_HS_MODULE)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void omap_hsmmc_init(struct omap2_hsmmc_info *);
 void omap_hsmmc_late_init(struct omap2_hsmmc_info *);
 
@@ -59,6 +72,8 @@ static inline void omap_hsmmc_init(struct omap2_hsmmc_info *info)
 }
 
 static inline void omap_hsmmc_late_init(struct omap2_hsmmc_info *info)
+<<<<<<< HEAD
+=======
 =======
 void omap2_hsmmc_init(struct omap2_hsmmc_info *);
 
@@ -66,6 +81,7 @@ void omap2_hsmmc_init(struct omap2_hsmmc_info *);
 
 static inline void omap2_hsmmc_init(struct omap2_hsmmc_info *info)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 

@@ -13,6 +13,9 @@
 #include <linux/init.h>
 #include <linux/io.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <asm/machdep.h>
 #include <asm/coldfire.h>
@@ -20,6 +23,8 @@
 
 /***************************************************************************/
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/spi/spi.h>
 #include <linux/gpio.h>
@@ -50,6 +55,7 @@ static struct platform_device m5249_uart = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_M5249C3
 
 static struct resource m5249_smc91x_resources[] = {
@@ -75,6 +81,9 @@ static struct platform_device m5249_smc91x = {
 #endif /* CONFIG_M5249C3 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *m5249_devices[] __initdata = {
 #ifdef CONFIG_M5249C3
 	&m5249_smc91x,
@@ -84,6 +93,8 @@ static struct platform_device *m5249_devices[] __initdata = {
 /***************************************************************************/
 
 #if IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI)
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SPI_COLDFIRE_QSPI) || defined(CONFIG_SPI_COLDFIRE_QSPI_MODULE)
 static struct resource m5249_qspi_resources[] = {
@@ -233,6 +244,7 @@ static struct platform_device m5249_qspi = {
 	.dev.platform_data	= &m5249_qspi_data,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __init m5249_qspi_init(void)
 {
@@ -241,6 +253,10 @@ static void __init m5249_qspi_init(void)
 	       MCF_MBAR + MCFSIM_QSPIICR);
 	mcf_mapirq2imr(MCF_IRQ_QSPI, MCFINTC_QSPI);
 }
+<<<<<<< HEAD
+
+#endif /* IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI) */
+=======
 <<<<<<< HEAD
 
 #endif /* IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI) */
@@ -282,6 +298,7 @@ static void __init m5249_uarts_init(void)
 		m5249_uart_init_line(line, m5249_uart_platform[line].irq);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /***************************************************************************/
 
@@ -304,6 +321,9 @@ static void __init m5249_smc91x_init(void)
 /***************************************************************************/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init config_BSP(char *commandp, int size)
 {
 	mach_sched_init = hw_timer_init;
@@ -312,6 +332,8 @@ void __init config_BSP(char *commandp, int size)
 	m5249_smc91x_init();
 #endif
 #if IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI)
+<<<<<<< HEAD
+=======
 =======
 static void __init m5249_timers_init(void)
 {
@@ -351,6 +373,7 @@ void __init config_BSP(char *commandp, int size)
 #endif
 #if defined(CONFIG_SPI_COLDFIRE_QSPI) || defined(CONFIG_SPI_COLDFIRE_QSPI_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	m5249_qspi_init();
 #endif
 }

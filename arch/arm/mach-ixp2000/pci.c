@@ -28,8 +28,11 @@
 #include <asm/irq.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 
 #include <asm/mach/pci.h>
@@ -139,8 +142,13 @@ struct pci_bus *ixp2000_pci_scan_bus(int nr, struct pci_sys_data *sysdata)
 	return pci_scan_root_bus(NULL, sysdata->busnr, &ixp2000_pci_ops,
 				 sysdata, &sysdata->resources);
 =======
+<<<<<<< HEAD
+	return pci_scan_root_bus(NULL, sysdata->busnr, &ixp2000_pci_ops,
+				 sysdata, &sysdata->resources);
+=======
 	return pci_scan_bus(sysdata->busnr, &ixp2000_pci_ops, sysdata);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -205,13 +213,19 @@ void __init
 ixp2000_pci_preinit(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_set_flags(0);
 
 	pcibios_min_io = 0;
 	pcibios_min_mem = 0;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_IXP2000_SUPPORT_BROKEN_PCI_IO
 	/*
 	 * Configure the PCI unit to properly byteswap I/O transactions,
@@ -254,15 +268,21 @@ int ixp2000_pci_setup(int nr, struct pci_sys_data *sys)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci_add_resource_offset(&sys->resources,
 				&ixp2000_pci_io_space, sys->io_offset);
 	pci_add_resource_offset(&sys->resources,
 				&ixp2000_pci_mem_space, sys->mem_offset);
+<<<<<<< HEAD
+=======
 =======
 	sys->resource[0] = &ixp2000_pci_io_space;
 	sys->resource[1] = &ixp2000_pci_mem_space;
 	sys->resource[2] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }

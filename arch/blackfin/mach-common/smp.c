@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/clockchips.h>
 =======
+<<<<<<< HEAD
+#include <linux/clockchips.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/profile.h>
 #include <linux/errno.h>
 #include <linux/mm.h>
@@ -30,8 +34,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cacheflush.h>
 #include <asm/irq_handler.h>
 #include <asm/mmu_context.h>
@@ -54,12 +62,17 @@ unsigned long blackfin_iflush_l1_entry[NR_CPUS];
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct blackfin_initial_pda __cpuinitdata initial_pda_coreb;
 
 #define BFIN_IPI_TIMER	      0
 #define BFIN_IPI_RESCHEDULE   1
 #define BFIN_IPI_CALL_FUNC    2
 #define BFIN_IPI_CPU_STOP     3
+<<<<<<< HEAD
+=======
 =======
 void __cpuinitdata *init_retx_coreb, *init_saved_retx_coreb,
 	*init_saved_seqstat_coreb, *init_saved_icplb_fault_addr_coreb,
@@ -69,6 +82,7 @@ void __cpuinitdata *init_retx_coreb, *init_saved_retx_coreb,
 #define BFIN_IPI_CALL_FUNC    1
 #define BFIN_IPI_CPU_STOP     2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct blackfin_flush_data {
 	unsigned long start;
@@ -180,6 +194,9 @@ static irqreturn_t ipi_handler_int0(int irq, void *dev_instance)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_PER_CPU(struct clock_event_device, coretmr_events);
 void ipi_timer(void)
 {
@@ -188,8 +205,11 @@ void ipi_timer(void)
 	evt->event_handler(evt);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t ipi_handler_int1(int irq, void *dev_instance)
 {
 	struct ipi_message *msg;
@@ -211,11 +231,23 @@ static irqreturn_t ipi_handler_int1(int irq, void *dev_instance)
 			ipi_timer();
 			break;
 =======
+<<<<<<< HEAD
+		case BFIN_IPI_TIMER:
+			ipi_timer();
+			break;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case BFIN_IPI_RESCHEDULE:
 			scheduler_ipi();
 			break;
 		case BFIN_IPI_CALL_FUNC:
+<<<<<<< HEAD
+			ipi_call_function(cpu, msg);
+			break;
+		case BFIN_IPI_CPU_STOP:
+			ipi_cpu_stop(cpu);
+=======
 <<<<<<< HEAD
 			ipi_call_function(cpu, msg);
 			break;
@@ -231,6 +263,7 @@ static irqreturn_t ipi_handler_int1(int irq, void *dev_instance)
 			ipi_cpu_stop(cpu);
 			spin_lock_irqsave(&msg_queue->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			printk(KERN_CRIT "CPU%u: Unknown IPI message 0x%lx\n",
@@ -339,6 +372,9 @@ EXPORT_SYMBOL_GPL(smp_call_function_single);
 void smp_send_reschedule(int cpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpumask_t callmap;
 	/* simply trigger an ipi */
 
@@ -346,17 +382,23 @@ void smp_send_reschedule(int cpu)
 	cpumask_set_cpu(cpu, &callmap);
 
 	smp_send_message(callmap, BFIN_IPI_RESCHEDULE, NULL, NULL, 0);
+<<<<<<< HEAD
+=======
 =======
 	/* simply trigger an ipi */
 	if (cpu_is_offline(cpu))
 		return;
 	platform_send_ipi_cpu(cpu, IRQ_SUPPLE_0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void smp_send_msg(const struct cpumask *mask, unsigned long type)
 {
 	smp_send_message(*mask, type, NULL, NULL, 0);
@@ -367,8 +409,11 @@ void smp_timer_broadcast(const struct cpumask *mask)
 	smp_send_msg(mask, BFIN_IPI_TIMER);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void smp_send_stop(void)
 {
 	cpumask_t callmap;
@@ -388,6 +433,9 @@ int __cpuinit __cpu_up(unsigned int cpu)
 {
 	int ret;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct blackfin_cpudata *ci = &per_cpu(cpu_data, cpu);
 	struct task_struct *idle = ci->idle;
 
@@ -406,6 +454,8 @@ int __cpuinit __cpu_up(unsigned int cpu)
 	} else {
 		init_idle(idle, cpu);
 	}
+<<<<<<< HEAD
+=======
 =======
 	static struct task_struct *idle;
 
@@ -419,6 +469,7 @@ int __cpuinit __cpu_up(unsigned int cpu)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	secondary_stack = task_stack_page(idle) + THREAD_SIZE;
 
 	ret = platform_boot_secondary(cpu, idle);
@@ -455,6 +506,9 @@ void __cpuinit secondary_start_kernel(void)
 		printk(KERN_EMERG "CoreB Recovering from DOUBLE FAULT event\n");
 #ifdef CONFIG_DEBUG_DOUBLEFAULT
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_EMERG " While handling exception (EXCAUSE = %#x) at %pF\n",
 			initial_pda_coreb.seqstat_doublefault & SEQSTAT_EXCAUSE,
 			initial_pda_coreb.retx_doublefault);
@@ -465,6 +519,8 @@ void __cpuinit secondary_start_kernel(void)
 #endif
 		printk(KERN_NOTICE " The instruction at %pF caused a double exception\n",
 			initial_pda_coreb.retx);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_EMERG " While handling exception (EXCAUSE = 0x%x) at %pF\n",
 			(int)init_saved_seqstat_coreb & SEQSTAT_EXCAUSE, init_saved_retx_coreb);
@@ -474,6 +530,7 @@ void __cpuinit secondary_start_kernel(void)
 		printk(KERN_NOTICE " The instruction at %pF caused a double exception\n",
 			init_retx_coreb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -506,7 +563,11 @@ void __cpuinit secondary_start_kernel(void)
 <<<<<<< HEAD
 	notify_cpu_starting(cpu);
 =======
+<<<<<<< HEAD
+	notify_cpu_starting(cpu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Calibrate loops per jiffy value.
 	 * IRQs need to be enabled here - D-cache can be invalidated
@@ -550,14 +611,20 @@ void smp_icache_flush_range_others(unsigned long start, unsigned long end)
 	smp_flush_data.end = end;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	preempt_disable();
 	if (smp_call_function(&ipi_flush_icache, &smp_flush_data, 1))
 		printk(KERN_WARNING "SMP: failed to run I-cache flush request on other CPUs\n");
 	preempt_enable();
+<<<<<<< HEAD
+=======
 =======
 	if (smp_call_function(&ipi_flush_icache, &smp_flush_data, 0))
 		printk(KERN_WARNING "SMP: failed to run I-cache flush request on other CPUs\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(smp_icache_flush_range_others);
 

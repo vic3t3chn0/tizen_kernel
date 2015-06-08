@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ioprio.h>
 #include <linux/blkdev.h>
 #include <linux/capability.h>
@@ -52,12 +56,17 @@ int set_task_ioprio(struct task_struct *task, int ioprio)
 		return err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ioc = get_task_io_context(task, GFP_ATOMIC, NUMA_NO_NODE);
 	if (ioc) {
 		ioc_ioprio_changed(ioc, ioprio);
 		put_io_context(ioc);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	task_lock(task);
 	do {
@@ -82,6 +91,7 @@ int set_task_ioprio(struct task_struct *task, int ioprio)
 
 	task_unlock(task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 EXPORT_SYMBOL_GPL(set_task_ioprio);

@@ -60,8 +60,11 @@ extern spinlock_t configfs_dirent_lock;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct vfsmount * configfs_mount;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct kmem_cache *configfs_dir_cachep;
 
 extern int configfs_is_root(struct config_item *item);
@@ -70,9 +73,14 @@ extern int configfs_is_root(struct config_item *item);
 extern struct inode * configfs_new_inode(umode_t mode, struct configfs_dirent *, struct super_block *);
 extern int configfs_create(struct dentry *, umode_t mode, int (*init)(struct inode *));
 =======
+<<<<<<< HEAD
+extern struct inode * configfs_new_inode(umode_t mode, struct configfs_dirent *, struct super_block *);
+extern int configfs_create(struct dentry *, umode_t mode, int (*init)(struct inode *));
+=======
 extern struct inode * configfs_new_inode(mode_t mode, struct configfs_dirent *);
 extern int configfs_create(struct dentry *, int mode, int (*init)(struct inode *));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int configfs_inode_init(void);
 extern void configfs_inode_exit(void);
 
@@ -89,10 +97,15 @@ extern void configfs_drop_dentry(struct configfs_dirent *sd, struct dentry *pare
 extern int configfs_setattr(struct dentry *dentry, struct iattr *iattr);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct dentry *configfs_pin_fs(void);
 extern void configfs_release_fs(void);
 
 extern struct rw_semaphore configfs_rename_sem;
+<<<<<<< HEAD
+=======
 =======
 extern int configfs_pin_fs(void);
 extern void configfs_release_fs(void);
@@ -100,6 +113,7 @@ extern void configfs_release_fs(void);
 extern struct rw_semaphore configfs_rename_sem;
 extern struct super_block * configfs_sb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const struct file_operations configfs_dir_operations;
 extern const struct file_operations configfs_file_operations;
 extern const struct file_operations bin_fops;
@@ -107,7 +121,11 @@ extern const struct inode_operations configfs_dir_inode_operations;
 <<<<<<< HEAD
 extern const struct inode_operations configfs_root_inode_operations;
 =======
+<<<<<<< HEAD
+extern const struct inode_operations configfs_root_inode_operations;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const struct inode_operations configfs_symlink_inode_operations;
 extern const struct dentry_operations configfs_dentry_ops;
 

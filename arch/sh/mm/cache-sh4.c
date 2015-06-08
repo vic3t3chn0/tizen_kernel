@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <asm/cache_insns.h>
 =======
+<<<<<<< HEAD
+#include <asm/cache_insns.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cacheflush.h>
 
 /*
@@ -251,8 +255,12 @@ static void sh4_flush_cache_page(void *args)
 <<<<<<< HEAD
 			vaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+			vaddr = kmap_atomic(page);
+=======
 			vaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		address = (unsigned long)vaddr;
 	}
@@ -270,8 +278,12 @@ static void sh4_flush_cache_page(void *args)
 <<<<<<< HEAD
 			kunmap_atomic(vaddr);
 =======
+<<<<<<< HEAD
+			kunmap_atomic(vaddr);
+=======
 			kunmap_atomic(vaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

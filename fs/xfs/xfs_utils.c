@@ -56,8 +56,12 @@ xfs_dir_ialloc(
 <<<<<<< HEAD
 	umode_t		mode,
 =======
+<<<<<<< HEAD
+	umode_t		mode,
+=======
 	mode_t		mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_nlink_t	nlink,
 	xfs_dev_t	rdev,
 	prid_t		prid,		/* project id */
@@ -302,9 +306,12 @@ xfs_bumplink(
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ip->i_d.di_nlink >= XFS_MAXLINK)
 		return XFS_ERROR(EMLINK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_trans_ichgtime(tp, ip, XFS_ICHGTIME_CHG);
 
 	ASSERT(ip->i_d.di_nlink > 0);

@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2010, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2010, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2010, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -13,6 +17,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #include <linux/module.h>
 #include <mach/irqs.h>
@@ -23,6 +30,8 @@ static int __init gpiomux_init(void)
 	return msm_gpiomux_init(NR_GPIO_IRQS);
 }
 postcore_initcall(gpiomux_init);
+<<<<<<< HEAD
+=======
 =======
  *
  * You should have received a copy of the GNU General Public License
@@ -66,3 +75,4 @@ struct msm_gpiomux_config msm_gpiomux_configs[GPIOMUX_NGPIOS] = {
 	},
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

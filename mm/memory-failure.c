@@ -45,7 +45,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pagemap.h>
 #include <linux/swap.h>
 #include <linux/backing-dev.h>
@@ -60,7 +64,11 @@
 <<<<<<< HEAD
 #include <linux/kfifo.h>
 =======
+<<<<<<< HEAD
+#include <linux/kfifo.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "internal.h"
 
 int sysctl_memory_failure_early_kill __read_mostly = 0;
@@ -194,12 +202,17 @@ EXPORT_SYMBOL_GPL(hwpoison_filter);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Send all the processes who have the page mapped a signal.
  * ``action optional'' if they are not immediately affected by the error
  * ``action required'' if error happened in current execution context
  */
 static int kill_proc(struct task_struct *t, unsigned long addr, int trapno,
 			unsigned long pfn, struct page *page, int flags)
+<<<<<<< HEAD
+=======
 =======
  * Send all the processes who have the page mapped an ``action optional''
  * signal.
@@ -207,16 +220,22 @@ static int kill_proc(struct task_struct *t, unsigned long addr, int trapno,
 static int kill_proc_ao(struct task_struct *t, unsigned long addr, int trapno,
 			unsigned long pfn, struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct siginfo si;
 	int ret;
 
 	printk(KERN_ERR
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"MCE %#lx: Killing %s:%d due to hardware memory corruption\n",
 		pfn, t->comm, t->pid);
 	si.si_signo = SIGBUS;
 	si.si_errno = 0;
+<<<<<<< HEAD
+=======
 =======
 		"MCE %#lx: Killing %s:%d early due to hardware memory corruption\n",
 		pfn, t->comm, t->pid);
@@ -224,12 +243,16 @@ static int kill_proc_ao(struct task_struct *t, unsigned long addr, int trapno,
 	si.si_errno = 0;
 	si.si_code = BUS_MCEERR_AO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	si.si_addr = (void *)addr;
 #ifdef __ARCH_SI_TRAPNO
 	si.si_trapno = trapno;
 #endif
 	si.si_addr_lsb = compound_trans_order(compound_head(page)) + PAGE_SHIFT;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((flags & MF_ACTION_REQUIRED) && t == current) {
 		si.si_code = BUS_MCEERR_AR;
@@ -244,6 +267,8 @@ static int kill_proc_ao(struct task_struct *t, unsigned long addr, int trapno,
 		si.si_code = BUS_MCEERR_AO;
 		ret = send_sig_info(SIGBUS, &si, t);  /* synchronous? */
 	}
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Don't use force here, it's convenient if the signal
@@ -253,6 +278,7 @@ static int kill_proc_ao(struct task_struct *t, unsigned long addr, int trapno,
 	 */
 	ret = send_sig_info(SIGBUS, &si, t);  /* synchronous? */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		printk(KERN_INFO "MCE: Error sending signal to %s:%d: %d\n",
 		       t->comm, t->pid, ret);
@@ -382,9 +408,15 @@ static void kill_procs(struct list_head *to_kill, int doit, int trapno,
 			  int fail, struct page *page, unsigned long pfn,
 			  int flags)
 =======
+<<<<<<< HEAD
+static void kill_procs(struct list_head *to_kill, int doit, int trapno,
+			  int fail, struct page *page, unsigned long pfn,
+			  int flags)
+=======
 static void kill_procs_ao(struct list_head *to_kill, int doit, int trapno,
 			  int fail, struct page *page, unsigned long pfn)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct to_kill *tk, *next;
 
@@ -412,9 +444,14 @@ static void kill_procs_ao(struct list_head *to_kill, int doit, int trapno,
 			else if (kill_proc(tk->tsk, tk->addr, trapno,
 					      pfn, page, flags) < 0)
 =======
+<<<<<<< HEAD
+			else if (kill_proc(tk->tsk, tk->addr, trapno,
+					      pfn, page, flags) < 0)
+=======
 			else if (kill_proc_ao(tk->tsk, tk->addr, trapno,
 					      pfn, page) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk(KERN_ERR
 		"MCE %#lx: Cannot send advisory machine check signal to %s:%d\n",
 					pfn, tk->tsk->comm, tk->tsk->pid);
@@ -897,8 +934,12 @@ static int hwpoison_user_mappings(struct page *p, unsigned long pfn,
 <<<<<<< HEAD
 				  int trapno, int flags)
 =======
+<<<<<<< HEAD
+				  int trapno, int flags)
+=======
 				  int trapno)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	enum ttu_flags ttu = TTU_UNMAP | TTU_IGNORE_MLOCK | TTU_IGNORE_ACCESS;
 	struct address_space *mapping;
@@ -1020,9 +1061,14 @@ static int hwpoison_user_mappings(struct page *p, unsigned long pfn,
 	kill_procs(&tokill, !!PageDirty(ppage), trapno,
 		      ret != SWAP_SUCCESS, p, pfn, flags);
 =======
+<<<<<<< HEAD
+	kill_procs(&tokill, !!PageDirty(ppage), trapno,
+		      ret != SWAP_SUCCESS, p, pfn, flags);
+=======
 	kill_procs_ao(&tokill, !!PageDirty(ppage), trapno,
 		      ret != SWAP_SUCCESS, p, pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -1044,6 +1090,9 @@ static void clear_page_hwpoison_huge_page(struct page *hpage)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * memory_failure - Handle memory failure of a page.
  * @pfn: Page Number of the corrupted page
@@ -1063,9 +1112,12 @@ static void clear_page_hwpoison_huge_page(struct page *hpage)
  * enabled and no spinlocks hold.
  */
 int memory_failure(unsigned long pfn, int trapno, int flags)
+<<<<<<< HEAD
+=======
 =======
 int __memory_failure(unsigned long pfn, int trapno, int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct page_state *ps;
 	struct page *p;
@@ -1147,8 +1199,12 @@ int __memory_failure(unsigned long pfn, int trapno, int flags)
 <<<<<<< HEAD
 	if (!PageHuge(p) && !PageTransTail(p)) {
 =======
+<<<<<<< HEAD
+	if (!PageHuge(p) && !PageTransTail(p)) {
+=======
 	if (!PageHuge(p) && !PageTransCompound(p)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!PageLRU(p))
 			shake_page(p, 0);
 		if (!PageLRU(p)) {
@@ -1218,8 +1274,12 @@ int __memory_failure(unsigned long pfn, int trapno, int flags)
 <<<<<<< HEAD
 	if (hwpoison_user_mappings(p, pfn, trapno, flags) != SWAP_SUCCESS) {
 =======
+<<<<<<< HEAD
+	if (hwpoison_user_mappings(p, pfn, trapno, flags) != SWAP_SUCCESS) {
+=======
 	if (hwpoison_user_mappings(p, pfn, trapno) != SWAP_SUCCESS) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR "MCE %#lx: cannot unmap page, give up\n", pfn);
 		res = -EBUSY;
 		goto out;
@@ -1246,6 +1306,9 @@ out:
 	return res;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(memory_failure);
 
 #define MEMORY_FAILURE_FIFO_ORDER	4
@@ -1276,6 +1339,8 @@ static DEFINE_PER_CPU(struct memory_failure_cpu, memory_failure_cpu);
  * when it detects hardware memory corruption of a page. It schedules
  * the recovering of error page, including dropping pages, killing
  * processes etc.
+<<<<<<< HEAD
+=======
 =======
 EXPORT_SYMBOL_GPL(__memory_failure);
 
@@ -1289,12 +1354,16 @@ EXPORT_SYMBOL_GPL(__memory_failure);
  * of a page. It tries its best to recover, which includes
  * dropping pages, killing processes etc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The function is primarily of use for corruptions that
  * happen outside the current execution context (e.g. when
  * detected by a background scrubber)
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Can run in IRQ context.
  */
 void memory_failure_queue(unsigned long pfn, int trapno, int flags)
@@ -1352,6 +1421,8 @@ static int __init memory_failure_init(void)
 	return 0;
 }
 core_initcall(memory_failure_init);
+<<<<<<< HEAD
+=======
 =======
  * Must run in process context (e.g. a work queue) with interrupts
  * enabled and no spinlocks hold.
@@ -1361,6 +1432,7 @@ void memory_failure(unsigned long pfn, int trapno)
 	__memory_failure(pfn, trapno, 0);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * unpoison_memory - Unpoison a previously poisoned page
@@ -1405,8 +1477,12 @@ int unpoison_memory(unsigned long pfn)
 <<<<<<< HEAD
 			pr_info("MCE: Memory failure is now running on free hugepage %#lx\n", pfn);
 =======
+<<<<<<< HEAD
+			pr_info("MCE: Memory failure is now running on free hugepage %#lx\n", pfn);
+=======
 			pr_debug("MCE: Memory failure is now running on free hugepage %#lx\n", pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 0;
 		}
 		if (TestClearPageHWPoison(p))
@@ -1498,12 +1574,16 @@ static int get_any_page(struct page *p, unsigned long pfn, int flags)
 <<<<<<< HEAD
 	unset_migratetype_isolate(p, MIGRATE_MOVABLE);
 =======
+<<<<<<< HEAD
+	unset_migratetype_isolate(p, MIGRATE_MOVABLE);
+=======
 #ifndef CONFIG_DMA_CMA
 	unset_migratetype_isolate(p);
 #else
 	unset_migratetype_isolate(p, MIGRATE_MOVABLE);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_memory_hotplug();
 	return ret;
 }
@@ -1526,8 +1606,12 @@ static int soft_offline_huge_page(struct page *page, int flags)
 <<<<<<< HEAD
 		pr_info("soft offline: %#lx hugepage already poisoned\n", pfn);
 =======
+<<<<<<< HEAD
+		pr_info("soft offline: %#lx hugepage already poisoned\n", pfn);
+=======
 		pr_debug("soft offline: %#lx hugepage already poisoned\n", pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EBUSY;
 	}
 
@@ -1538,9 +1622,14 @@ static int soft_offline_huge_page(struct page *page, int flags)
 	ret = migrate_huge_pages(&pagelist, new_page, MPOL_MF_MOVE_ALL, 0,
 				true);
 =======
+<<<<<<< HEAD
+	ret = migrate_huge_pages(&pagelist, new_page, MPOL_MF_MOVE_ALL, 0,
+				true);
+=======
 	ret = migrate_huge_pages(&pagelist, new_page, MPOL_MF_MOVE_ALL, false,
 				MIGRATE_SYNC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		struct page *page1, *page2;
 		list_for_each_entry_safe(page1, page2, &pagelist, lru)
@@ -1550,9 +1639,14 @@ static int soft_offline_huge_page(struct page *page, int flags)
 		pr_info("soft offline: %#lx: migration failed %d, type %lx\n",
 			pfn, ret, page->flags);
 =======
+<<<<<<< HEAD
+		pr_info("soft offline: %#lx: migration failed %d, type %lx\n",
+			pfn, ret, page->flags);
+=======
 		pr_debug("soft offline: %#lx: migration failed %d, type %lx\n",
 			 pfn, ret, page->flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret > 0)
 			ret = -EIO;
 		return ret;
@@ -1597,6 +1691,11 @@ int soft_offline_page(struct page *page, int flags)
 	if (PageHuge(page))
 		return soft_offline_huge_page(page, flags);
 =======
+<<<<<<< HEAD
+
+	if (PageHuge(page))
+		return soft_offline_huge_page(page, flags);
+=======
 	struct page *hpage = compound_trans_head(page);
 
 	if (PageHuge(page))
@@ -1609,6 +1708,7 @@ int soft_offline_page(struct page *page, int flags)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = get_any_page(page, pfn, flags);
 	if (ret < 0)
@@ -1640,8 +1740,12 @@ int soft_offline_page(struct page *page, int flags)
 <<<<<<< HEAD
 			pfn, page->flags);
 =======
+<<<<<<< HEAD
+			pfn, page->flags);
+=======
 				pfn, page->flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -1695,6 +1799,10 @@ int soft_offline_page(struct page *page, int flags)
 		ret = migrate_pages(&pagelist, new_page, MPOL_MF_MOVE_ALL,
 							0, MIGRATE_SYNC);
 =======
+<<<<<<< HEAD
+		ret = migrate_pages(&pagelist, new_page, MPOL_MF_MOVE_ALL,
+							0, MIGRATE_SYNC);
+=======
 #ifndef CONFIG_DMA_CMA
 		ret = migrate_pages(&pagelist, new_page, MPOL_MF_MOVE_ALL,
 								false, MIGRATE_SYNC);
@@ -1703,6 +1811,7 @@ int soft_offline_page(struct page *page, int flags)
 								false, MIGRATE_SYNC, 0);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret) {
 			putback_lru_pages(&pagelist);
 			pr_info("soft offline: %#lx: migration failed %d, type %lx\n",
@@ -1715,8 +1824,12 @@ int soft_offline_page(struct page *page, int flags)
 <<<<<<< HEAD
 			pfn, ret, page_count(page), page->flags);
 =======
+<<<<<<< HEAD
+			pfn, ret, page_count(page), page->flags);
+=======
 				pfn, ret, page_count(page), page->flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (ret)
 		return ret;

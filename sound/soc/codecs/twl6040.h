@@ -23,6 +23,9 @@
 #define __TWL6040_H__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum twl6040_trim {
 	TWL6040_TRIM_TRIM1 = 0,
 	TWL6040_TRIM_TRIM2,
@@ -41,6 +44,8 @@ void twl6040_hs_jack_detect(struct snd_soc_codec *codec,
 int twl6040_get_clk_id(struct snd_soc_codec *codec);
 int twl6040_get_trim_value(struct snd_soc_codec *codec, enum twl6040_trim trim);
 int twl6040_get_hs_step_size(struct snd_soc_codec *codec);
+<<<<<<< HEAD
+=======
 =======
 #define TWL6040_REG_ASICID		0x01
 #define TWL6040_REG_ASICREV		0x02
@@ -163,5 +168,6 @@ int twl6040_get_hs_step_size(struct snd_soc_codec *codec);
 void twl6040_hs_jack_detect(struct snd_soc_codec *codec,
 			    struct snd_soc_jack *jack, int report);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* End of __TWL6040_H__ */

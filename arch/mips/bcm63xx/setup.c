@@ -36,8 +36,12 @@ static void bcm6348_a1_reboot(void)
 <<<<<<< HEAD
 	printk(KERN_INFO "soft-resetting all blocks ...\n");
 =======
+<<<<<<< HEAD
+	printk(KERN_INFO "soft-resetting all blocks ...\n");
+=======
 	printk(KERN_INFO "soft-reseting all blocks ...\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg = bcm_perf_readl(PERF_SOFTRESET_REG);
 	reg &= ~SOFTRESET_6348_ALL;
 	bcm_perf_writel(reg, PERF_SOFTRESET_REG);
@@ -68,6 +72,9 @@ static void bcm6348_a1_reboot(void)
 void bcm63xx_machine_reboot(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 reg, perf_regs[2] = { 0, 0 };
 	unsigned int i;
 
@@ -95,6 +102,8 @@ void bcm63xx_machine_reboot(void)
 		}
 		bcm_perf_writel(reg, perf_regs[i]);
 	}
+<<<<<<< HEAD
+=======
 =======
 	u32 reg;
 
@@ -104,6 +113,7 @@ void bcm63xx_machine_reboot(void)
 	reg |= EXTIRQ_CFG_CLEAR_ALL;
 	bcm_perf_writel(reg, PERF_EXTIRQ_CFG_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (BCMCPU_IS_6348() && (bcm63xx_get_cpu_rev() == 0xa1))
 		bcm6348_a1_reboot();
@@ -161,5 +171,9 @@ int __init bcm63xx_register_devices(void)
 <<<<<<< HEAD
 device_initcall(bcm63xx_register_devices);
 =======
+<<<<<<< HEAD
+device_initcall(bcm63xx_register_devices);
+=======
 arch_initcall(bcm63xx_register_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

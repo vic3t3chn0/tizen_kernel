@@ -9,8 +9,12 @@
 <<<<<<< HEAD
  * febff000	22000000	4K	model number register (bits 0-2)
 =======
+<<<<<<< HEAD
+ * febff000	22000000	4K	model number register (bits 0-2)
+=======
  * febff000	22000000	4K	model number register
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * febfe000	22400000	4K	options register
  * febfd000	22800000	4K	options register #2
  * febf9000	10800000	4K	TS-5620 RTC index register
@@ -29,7 +33,13 @@
 #define TS72XX_MODEL_TS7400		0x04
 #define TS72XX_MODEL_MASK		0x07
 =======
+<<<<<<< HEAD
+#define TS72XX_MODEL_TS7300		0x03
+#define TS72XX_MODEL_TS7400		0x04
+#define TS72XX_MODEL_MASK		0x07
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 #define TS72XX_OPTIONS_PHYS_BASE	0x22400000
@@ -62,6 +72,9 @@
 #ifndef __ASSEMBLY__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int ts72xx_model(void)
 {
 	return __raw_readb(TS72XX_MODEL_VIRT_BASE) & TS72XX_MODEL_MASK;
@@ -70,11 +83,14 @@ static inline int ts72xx_model(void)
 static inline int board_is_ts7200(void)
 {
 	return ts72xx_model() == TS72XX_MODEL_TS7200;
+<<<<<<< HEAD
+=======
 =======
 static inline int board_is_ts7200(void)
 {
 	return __raw_readb(TS72XX_MODEL_VIRT_BASE) == TS72XX_MODEL_TS7200;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int board_is_ts7250(void)
@@ -82,13 +98,20 @@ static inline int board_is_ts7250(void)
 <<<<<<< HEAD
 	return ts72xx_model() == TS72XX_MODEL_TS7250;
 =======
+<<<<<<< HEAD
+	return ts72xx_model() == TS72XX_MODEL_TS7250;
+=======
 	return __raw_readb(TS72XX_MODEL_VIRT_BASE) == TS72XX_MODEL_TS7250;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int board_is_ts7260(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ts72xx_model() == TS72XX_MODEL_TS7260;
 }
 
@@ -100,9 +123,12 @@ static inline int board_is_ts7300(void)
 static inline int board_is_ts7400(void)
 {
 	return ts72xx_model() == TS72XX_MODEL_TS7400;
+<<<<<<< HEAD
+=======
 =======
 	return __raw_readb(TS72XX_MODEL_VIRT_BASE) == TS72XX_MODEL_TS7260;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int is_max197_installed(void)

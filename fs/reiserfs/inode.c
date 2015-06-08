@@ -9,10 +9,16 @@
 #include "acl.h"
 #include "xattr.h"
 =======
+<<<<<<< HEAD
+#include "reiserfs.h"
+#include "acl.h"
+#include "xattr.h"
+=======
 #include <linux/reiserfs_fs.h>
 #include <linux/reiserfs_acl.h>
 #include <linux/reiserfs_xattr.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/exportfs.h>
 #include <linux/pagemap.h>
 #include <linux/highmem.h>
@@ -1163,8 +1169,12 @@ static void init_inode(struct inode *inode, struct treepath *path)
 <<<<<<< HEAD
 		set_nlink(inode, sd_v1_nlink(sd));
 =======
+<<<<<<< HEAD
+		set_nlink(inode, sd_v1_nlink(sd));
+=======
 		inode->i_nlink = sd_v1_nlink(sd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_uid = sd_v1_uid(sd);
 		inode->i_gid = sd_v1_gid(sd);
 		inode->i_size = sd_v1_size(sd);
@@ -1212,8 +1222,12 @@ static void init_inode(struct inode *inode, struct treepath *path)
 <<<<<<< HEAD
 		set_nlink(inode, sd_v2_nlink(sd));
 =======
+<<<<<<< HEAD
+		set_nlink(inode, sd_v2_nlink(sd));
+=======
 		inode->i_nlink = sd_v2_nlink(sd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_uid = sd_v2_uid(sd);
 		inode->i_size = sd_v2_size(sd);
 		inode->i_gid = sd_v2_gid(sd);
@@ -1461,8 +1475,12 @@ void reiserfs_read_locked_inode(struct inode *inode,
 <<<<<<< HEAD
 		clear_nlink(inode);
 =======
+<<<<<<< HEAD
+		clear_nlink(inode);
+=======
 		inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -1494,13 +1512,19 @@ void reiserfs_read_locked_inode(struct inode *inode,
 	reiserfs_check_path(&path_to_sd);	/* init inode should be relsing */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Stat data v1 doesn't support ACLs.
 	 */
 	if (get_inode_sd_version(inode) == STAT_DATA_V1)
 		cache_no_acl(inode);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1598,11 +1622,16 @@ struct dentry *reiserfs_fh_to_dentry(struct super_block *sb, struct fid *fid,
 		fh_type = 5;
 	}
 =======
+<<<<<<< HEAD
+		fh_type = 5;
+	}
+=======
 		fh_type = fh_len;
 	}
 	if (fh_len < 2)
 		return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return reiserfs_get_dentry(sb, fid->raw[0], fid->raw[1],
 		(fh_type == 3 || fh_type >= 5) ? fid->raw[2] : 0);
@@ -1613,9 +1642,12 @@ struct dentry *reiserfs_fh_to_parent(struct super_block *sb, struct fid *fid,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (fh_type > fh_len)
 		fh_type = fh_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fh_type < 4)
 		return NULL;
 
@@ -1802,8 +1834,12 @@ int reiserfs_new_inode(struct reiserfs_transaction_handle *th,
 <<<<<<< HEAD
 		       struct inode *dir, umode_t mode, const char *symname,
 =======
+<<<<<<< HEAD
+		       struct inode *dir, umode_t mode, const char *symname,
+=======
 		       struct inode *dir, int mode, const char *symname,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       /* 0 for regular, EMTRY_DIR_SIZE for dirs,
 		          strlen (symname) for symlinks) */
 		       loff_t i_size, struct dentry *dentry,
@@ -1825,10 +1861,15 @@ int reiserfs_new_inode(struct reiserfs_transaction_handle *th,
 	dquot_initialize(inode);
 	err = dquot_alloc_inode(inode);
 =======
+<<<<<<< HEAD
+	dquot_initialize(inode);
+	err = dquot_alloc_inode(inode);
+=======
 	reiserfs_write_unlock(inode->i_sb);
 	err = dquot_alloc_inode(inode);
 	reiserfs_write_lock(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out_end_trans;
 	if (!dir->i_nlink) {
@@ -1878,8 +1919,12 @@ int reiserfs_new_inode(struct reiserfs_transaction_handle *th,
 <<<<<<< HEAD
 	set_nlink(inode, (S_ISDIR(mode) ? 2 : 1));
 =======
+<<<<<<< HEAD
+	set_nlink(inode, (S_ISDIR(mode) ? 2 : 1));
+=======
 	inode->i_nlink = (S_ISDIR(mode) ? 2 : 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* uid and gid must already be set by the caller for quota init */
 
@@ -2032,11 +2077,16 @@ int reiserfs_new_inode(struct reiserfs_transaction_handle *th,
 	/* Drop can be outside and it needs more credits so it's better to have it outside */
 	dquot_drop(inode);
 =======
+<<<<<<< HEAD
+	/* Drop can be outside and it needs more credits so it's better to have it outside */
+	dquot_drop(inode);
+=======
 	reiserfs_write_unlock(inode->i_sb);
 	/* Drop can be outside and it needs more credits so it's better to have it outside */
 	dquot_drop(inode);
 	reiserfs_write_lock(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_flags |= S_NOQUOTA;
 	make_bad_inode(inode);
 
@@ -2044,8 +2094,12 @@ int reiserfs_new_inode(struct reiserfs_transaction_handle *th,
 <<<<<<< HEAD
 	clear_nlink(inode);
 =======
+<<<<<<< HEAD
+	clear_nlink(inode);
+=======
 	inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	th->t_trans_id = 0;	/* so the caller can't use this handle later */
 	unlock_new_inode(inode); /* OK to do even if we hadn't locked it */
 	iput(inode);
@@ -3135,10 +3189,15 @@ static ssize_t reiserfs_direct_IO(int rw, struct kiocb *iocb,
 	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
 				  reiserfs_get_blocks_direct_io);
 =======
+<<<<<<< HEAD
+	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
+				  reiserfs_get_blocks_direct_io);
+=======
 	ret = blockdev_direct_IO(rw, iocb, inode, inode->i_sb->s_bdev, iov,
 				  offset, nr_segs,
 				  reiserfs_get_blocks_direct_io, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * In case of error extending write may have instantiated a few
@@ -3170,15 +3229,21 @@ int reiserfs_setattr(struct dentry *dentry, struct iattr *attr)
 	ia_valid = attr->ia_valid &= ~(ATTR_KILL_SUID|ATTR_KILL_SGID);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	depth = reiserfs_write_lock_once(inode->i_sb);
 	if (is_quota_modification(inode, attr))
 		dquot_initialize(inode);
 
+<<<<<<< HEAD
+=======
 =======
 	if (is_quota_modification(inode, attr))
 		dquot_initialize(inode);
 	depth = reiserfs_write_lock_once(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (attr->ia_valid & ATTR_SIZE) {
 		/* version 2 items will be caught by the s_maxbytes check
 		 ** done for us in vmtruncate
@@ -3193,7 +3258,13 @@ int reiserfs_setattr(struct dentry *dentry, struct iattr *attr)
 		inode_dio_wait(inode);
 
 =======
+<<<<<<< HEAD
+
+		inode_dio_wait(inode);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* fill in hole pointers in the expanding truncate case. */
 		if (attr->ia_size > inode->i_size) {
 			error = generic_cont_expand_simple(inode, attr->ia_size);
@@ -3248,10 +3319,14 @@ int reiserfs_setattr(struct dentry *dentry, struct iattr *attr)
 <<<<<<< HEAD
 		error = dquot_transfer(inode, attr);
 =======
+<<<<<<< HEAD
+		error = dquot_transfer(inode, attr);
+=======
 		reiserfs_write_unlock_once(inode->i_sb, depth);
 		error = dquot_transfer(inode, attr);
 		depth = reiserfs_write_lock_once(inode->i_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error) {
 			journal_end(&th, inode->i_sb, jbegin_count);
 			goto out;

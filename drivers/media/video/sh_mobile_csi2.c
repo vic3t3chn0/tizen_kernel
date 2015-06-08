@@ -15,9 +15,24 @@
 #include <linux/pm_runtime.h>
 #include <linux/slab.h>
 #include <linux/videodev2.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+
+#include <media/sh_mobile_ceu.h>
+#include <media/sh_mobile_csi2.h>
+#include <media/soc_camera.h>
+#include <media/soc_mediabus.h>
+=======
 
 #include <media/sh_mobile_csi2.h>
 #include <media/soc_camera.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+#include <media/sh_mobile_csi2.h>
+#include <media/soc_camera.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/v4l2-common.h>
 #include <media/v4l2-dev.h>
 #include <media/v4l2-device.h>
@@ -33,6 +48,16 @@
 struct sh_csi2 {
 	struct v4l2_subdev		subdev;
 	struct list_head		list;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int			irq;
+	unsigned long			mipi_flags;
+	void __iomem			*base;
+	struct platform_device		*pdev;
+	struct sh_csi2_client_config	*client;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct notifier_block		notifier;
 	unsigned int			irq;
 	void __iomem			*base;
@@ -40,6 +65,10 @@ struct sh_csi2 {
 	struct sh_csi2_client_config	*client;
 	unsigned long (*query_bus_param)(struct soc_camera_device *);
 	int (*set_bus_param)(struct soc_camera_device *, unsigned long);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int sh_csi2_try_fmt(struct v4l2_subdev *sd,
@@ -127,6 +156,39 @@ static int sh_csi2_s_fmt(struct v4l2_subdev *sd,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_csi2_g_mbus_config(struct v4l2_subdev *sd,
+				 struct v4l2_mbus_config *cfg)
+{
+	cfg->flags = V4L2_MBUS_PCLK_SAMPLE_RISING |
+		V4L2_MBUS_HSYNC_ACTIVE_HIGH | V4L2_MBUS_VSYNC_ACTIVE_HIGH |
+		V4L2_MBUS_MASTER | V4L2_MBUS_DATA_ACTIVE_HIGH;
+	cfg->type = V4L2_MBUS_PARALLEL;
+
+	return 0;
+}
+
+static int sh_csi2_s_mbus_config(struct v4l2_subdev *sd,
+				 const struct v4l2_mbus_config *cfg)
+{
+	struct sh_csi2 *priv = container_of(sd, struct sh_csi2, subdev);
+	struct soc_camera_device *icd = v4l2_get_subdev_hostdata(sd);
+	struct v4l2_subdev *client_sd = soc_camera_to_subdev(icd);
+	struct v4l2_mbus_config client_cfg = {.type = V4L2_MBUS_CSI2,
+					      .flags = priv->mipi_flags};
+
+	return v4l2_subdev_call(client_sd, video, s_mbus_config, &client_cfg);
+}
+
+static struct v4l2_subdev_video_ops sh_csi2_subdev_video_ops = {
+	.s_mbus_fmt	= sh_csi2_s_fmt,
+	.try_mbus_fmt	= sh_csi2_try_fmt,
+	.g_mbus_config	= sh_csi2_g_mbus_config,
+	.s_mbus_config	= sh_csi2_s_mbus_config,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct v4l2_subdev_video_ops sh_csi2_subdev_video_ops = {
 	.s_mbus_fmt	= sh_csi2_s_fmt,
 	.try_mbus_fmt	= sh_csi2_try_fmt,
@@ -137,6 +199,10 @@ static struct v4l2_subdev_core_ops sh_csi2_subdev_core_ops;
 static struct v4l2_subdev_ops sh_csi2_subdev_ops = {
 	.core	= &sh_csi2_subdev_core_ops,
 	.video	= &sh_csi2_subdev_video_ops,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void sh_csi2_hwinit(struct sh_csi2 *priv)
@@ -151,11 +217,35 @@ static void sh_csi2_hwinit(struct sh_csi2 *priv)
 	udelay(5);
 	iowrite32(0x00000000, priv->base + SH_CSI2_SRST);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (pdata->type) {
+	case SH_CSI2C:
+		if (priv->client->lanes == 1)
+			tmp |= 1;
+		else
+			/* Default - both lanes */
+			tmp |= 3;
+		break;
+	case SH_CSI2I:
+		if (!priv->client->lanes || priv->client->lanes > 4)
+			/* Default - all 4 lanes */
+			tmp |= 0xf;
+		else
+			tmp |= (1 << priv->client->lanes) - 1;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (priv->client->lanes & 3)
 		tmp |= priv->client->lanes & 3;
 	else
 		/* Default - both lanes */
 		tmp |= 3;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (priv->client->phy == SH_CSI2_PHY_MAIN)
 		tmp |= 0x8000;
@@ -170,6 +260,23 @@ static void sh_csi2_hwinit(struct sh_csi2 *priv)
 	iowrite32(tmp, priv->base + SH_CSI2_CHKSUM);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int sh_csi2_client_connect(struct sh_csi2 *priv)
+{
+	struct sh_csi2_pdata *pdata = priv->pdev->dev.platform_data;
+	struct soc_camera_device *icd = v4l2_get_subdev_hostdata(&priv->subdev);
+	struct v4l2_subdev *client_sd = soc_camera_to_subdev(icd);
+	struct device *dev = v4l2_get_subdevdata(&priv->subdev);
+	struct v4l2_mbus_config cfg;
+	unsigned long common_flags, csi2_flags;
+	int i, ret;
+
+	if (priv->client)
+		return -EBUSY;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sh_csi2_set_bus_param(struct soc_camera_device *icd,
 				 unsigned long flags)
 {
@@ -196,11 +303,98 @@ static int sh_csi2_notify(struct notifier_block *nb,
 		container_of(nb, struct sh_csi2, notifier);
 	struct sh_csi2_pdata *pdata = priv->pdev->dev.platform_data;
 	int ret, i;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < pdata->num_clients; i++)
 		if (&pdata->clients[i].pdev->dev == icd->pdev)
 			break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev, "%s(%p): found #%d\n", __func__, dev, i);
+
+	if (i == pdata->num_clients)
+		return -ENODEV;
+
+	/* Check if we can support this camera */
+	csi2_flags = V4L2_MBUS_CSI2_CONTINUOUS_CLOCK | V4L2_MBUS_CSI2_1_LANE;
+
+	switch (pdata->type) {
+	case SH_CSI2C:
+		if (pdata->clients[i].lanes != 1)
+			csi2_flags |= V4L2_MBUS_CSI2_2_LANE;
+		break;
+	case SH_CSI2I:
+		switch (pdata->clients[i].lanes) {
+		default:
+			csi2_flags |= V4L2_MBUS_CSI2_4_LANE;
+		case 3:
+			csi2_flags |= V4L2_MBUS_CSI2_3_LANE;
+		case 2:
+			csi2_flags |= V4L2_MBUS_CSI2_2_LANE;
+		}
+	}
+
+	cfg.type = V4L2_MBUS_CSI2;
+	ret = v4l2_subdev_call(client_sd, video, g_mbus_config, &cfg);
+	if (ret == -ENOIOCTLCMD)
+		common_flags = csi2_flags;
+	else if (!ret)
+		common_flags = soc_mbus_config_compatible(&cfg,
+							  csi2_flags);
+	else
+		common_flags = 0;
+
+	if (!common_flags)
+		return -EINVAL;
+
+	/* All good: camera MIPI configuration supported */
+	priv->mipi_flags = common_flags;
+	priv->client = pdata->clients + i;
+
+	pm_runtime_get_sync(dev);
+
+	sh_csi2_hwinit(priv);
+
+	return 0;
+}
+
+static void sh_csi2_client_disconnect(struct sh_csi2 *priv)
+{
+	if (!priv->client)
+		return;
+
+	priv->client = NULL;
+
+	pm_runtime_put(v4l2_get_subdevdata(&priv->subdev));
+}
+
+static int sh_csi2_s_power(struct v4l2_subdev *sd, int on)
+{
+	struct sh_csi2 *priv = container_of(sd, struct sh_csi2, subdev);
+
+	if (on)
+		return sh_csi2_client_connect(priv);
+
+	sh_csi2_client_disconnect(priv);
+	return 0;
+}
+
+static struct v4l2_subdev_core_ops sh_csi2_subdev_core_ops = {
+	.s_power	= sh_csi2_s_power,
+};
+
+static struct v4l2_subdev_ops sh_csi2_subdev_ops = {
+	.core	= &sh_csi2_subdev_core_ops,
+	.video	= &sh_csi2_subdev_video_ops,
+};
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_dbg(dev, "%s(%p): action = %lu, found #%d\n", __func__, dev, action, i);
 
 	if (i == pdata->num_clients)
@@ -245,6 +439,10 @@ static int sh_csi2_notify(struct notifier_block *nb,
 	return NOTIFY_OK;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __devinit int sh_csi2_probe(struct platform_device *pdev)
 {
 	struct resource *res;
@@ -274,6 +472,11 @@ static __devinit int sh_csi2_probe(struct platform_device *pdev)
 		return -ENOMEM;
 
 	priv->irq = irq;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	priv->notifier.notifier_call = sh_csi2_notify;
 
 	/* We MUST attach after the MIPI sensor */
@@ -282,6 +485,10 @@ static __devinit int sh_csi2_probe(struct platform_device *pdev)
 		dev_err(&pdev->dev, "CSI2 cannot register notifier\n");
 		goto ernotify;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!request_mem_region(res->start, resource_size(res), pdev->name)) {
 		dev_err(&pdev->dev, "CSI2 register region already claimed\n");
@@ -297,11 +504,31 @@ static __devinit int sh_csi2_probe(struct platform_device *pdev)
 	}
 
 	priv->pdev = pdev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	platform_set_drvdata(pdev, priv);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	v4l2_subdev_init(&priv->subdev, &sh_csi2_subdev_ops);
 	v4l2_set_subdevdata(&priv->subdev, &pdev->dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	snprintf(priv->subdev.name, V4L2_SUBDEV_NAME_SIZE, "%s.mipi-csi",
+		 dev_name(pdata->v4l2_dev->dev));
+	ret = v4l2_device_register_subdev(pdata->v4l2_dev, &priv->subdev);
+	dev_dbg(&pdev->dev, "%s(%p): ret(register_subdev) = %d\n", __func__, priv, ret);
+	if (ret < 0)
+		goto esdreg;
+=======
 	platform_set_drvdata(pdev, priv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	platform_set_drvdata(pdev, priv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pm_runtime_enable(&pdev->dev);
 
@@ -309,11 +536,25 @@ static __devinit int sh_csi2_probe(struct platform_device *pdev)
 
 	return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+esdreg:
+	iounmap(priv->base);
+eremap:
+	release_mem_region(res->start, resource_size(res));
+ereqreg:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 eremap:
 	release_mem_region(res->start, resource_size(res));
 ereqreg:
 	bus_unregister_notifier(&soc_camera_bus_type, &priv->notifier);
 ernotify:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(priv);
 
 	return ret;
@@ -324,7 +565,15 @@ static __devexit int sh_csi2_remove(struct platform_device *pdev)
 	struct sh_csi2 *priv = platform_get_drvdata(pdev);
 	struct resource *res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	v4l2_device_unregister_subdev(&priv->subdev);
+=======
 	bus_unregister_notifier(&soc_camera_bus_type, &priv->notifier);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bus_unregister_notifier(&soc_camera_bus_type, &priv->notifier);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_runtime_disable(&pdev->dev);
 	iounmap(priv->base);
 	release_mem_region(res->start, resource_size(res));
@@ -335,13 +584,30 @@ static __devexit int sh_csi2_remove(struct platform_device *pdev)
 }
 
 static struct platform_driver __refdata sh_csi2_pdrv = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.remove	= __devexit_p(sh_csi2_remove),
+	.probe	= sh_csi2_probe,
+	.driver	= {
+=======
 	.remove  = __devexit_p(sh_csi2_remove),
 	.driver  = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.remove  = __devexit_p(sh_csi2_remove),
+	.driver  = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name	= "sh-mobile-csi2",
 		.owner	= THIS_MODULE,
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(sh_csi2_pdrv);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sh_csi2_init(void)
 {
 	return platform_driver_probe(&sh_csi2_pdrv, sh_csi2_probe);
@@ -354,6 +620,10 @@ static void __exit sh_csi2_exit(void)
 
 module_init(sh_csi2_init);
 module_exit(sh_csi2_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("SH-Mobile MIPI CSI-2 driver");
 MODULE_AUTHOR("Guennadi Liakhovetski <g.liakhovetski@gmx.de>");

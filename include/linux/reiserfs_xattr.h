@@ -23,6 +23,8 @@ struct reiserfs_security_handle {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef __KERNEL__
 
 #include <linux/init.h>
@@ -152,4 +154,5 @@ static inline void reiserfs_security_free(struct reiserfs_security_handle *sec)
 #endif  /*  __KERNEL__  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif  /*  _LINUX_REISERFS_XATTR_H  */

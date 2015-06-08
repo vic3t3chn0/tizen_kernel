@@ -26,7 +26,12 @@
 #define GFS2_CONTROL_LOCK	4
 #define GFS2_MOUNTED_LOCK	5
 =======
+<<<<<<< HEAD
+#define GFS2_CONTROL_LOCK	4
+#define GFS2_MOUNTED_LOCK	5
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Format numbers for various metadata types */
 
@@ -174,7 +179,11 @@ struct gfs2_rindex {
 <<<<<<< HEAD
 #define GFS2_RGF_TRIMMED	0x00000010
 =======
+<<<<<<< HEAD
+#define GFS2_RGF_TRIMMED	0x00000010
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct gfs2_rgrp {
 	struct gfs2_meta_header rg_header;

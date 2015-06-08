@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spinlock.h>
 #include <linux/vmalloc.h>
 #include "internal.h"
@@ -47,8 +51,12 @@ static u16 section_to_node_table[NR_MEM_SECTIONS] __cacheline_aligned;
 <<<<<<< HEAD
 int page_to_nid(const struct page *page)
 =======
+<<<<<<< HEAD
+int page_to_nid(const struct page *page)
+=======
 int page_to_nid(struct page *page)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return section_to_node_table[page_to_section(page)];
 }
@@ -130,14 +138,20 @@ int __section_nr(struct mem_section* ms)
 {
 	unsigned long root_nr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mem_section *root;
 
 	if (NR_SECTION_ROOTS == 0)
 		return ms - __nr_to_section(0);
+<<<<<<< HEAD
+=======
 =======
 	struct mem_section* root;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (root_nr = 0; root_nr < NR_SECTION_ROOTS; root_nr++) {
 		root = __nr_to_section(root_nr * SECTIONS_PER_ROOT);
 		if (!root)
@@ -637,8 +651,12 @@ static void __kfree_section_memmap(struct page *memmap, unsigned long nr_pages)
 <<<<<<< HEAD
 static void free_map_bootmem(struct page *page, unsigned long nr_pages)
 =======
+<<<<<<< HEAD
+static void free_map_bootmem(struct page *page, unsigned long nr_pages)
+=======
 static void free_map_bootmem(struct page *memmap, unsigned long nr_pages)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 #else
@@ -680,10 +698,15 @@ static void __kfree_section_memmap(struct page *memmap, unsigned long nr_pages)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void free_map_bootmem(struct page *page, unsigned long nr_pages)
 {
 	unsigned long maps_section_nr, removing_section_nr, i;
 	unsigned long magic;
+<<<<<<< HEAD
+=======
 =======
 static void free_map_bootmem(struct page *memmap, unsigned long nr_pages)
 {
@@ -691,6 +714,7 @@ static void free_map_bootmem(struct page *memmap, unsigned long nr_pages)
 	unsigned long magic;
 	struct page *page = virt_to_page(memmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < nr_pages; i++, page++) {
 		magic = (unsigned long) page->lru.next;
@@ -740,6 +764,9 @@ static void free_section_usemap(struct page *memmap, unsigned long *usemap)
 
 	if (memmap) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct page *memmap_page;
 		memmap_page = virt_to_page(memmap);
 
@@ -747,12 +774,15 @@ static void free_section_usemap(struct page *memmap, unsigned long *usemap)
 			>> PAGE_SHIFT;
 
 		free_map_bootmem(memmap_page, nr_pages);
+<<<<<<< HEAD
+=======
 =======
 		nr_pages = PAGE_ALIGN(PAGES_PER_SECTION * sizeof(struct page))
 			>> PAGE_SHIFT;
 
 		free_map_bootmem(memmap, nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

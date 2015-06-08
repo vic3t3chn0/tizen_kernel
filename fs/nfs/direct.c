@@ -55,10 +55,15 @@
 #include <asm/uaccess.h>
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <asm/uaccess.h>
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/uaccess.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "internal.h"
 #include "iostat.h"
@@ -273,10 +278,14 @@ static const struct rpc_call_ops nfs_read_direct_ops = {
 <<<<<<< HEAD
 	.rpc_call_prepare = nfs_read_prepare,
 =======
+<<<<<<< HEAD
+	.rpc_call_prepare = nfs_read_prepare,
+=======
 #if defined(CONFIG_NFS_V4_1)
 	.rpc_call_prepare = nfs_read_prepare,
 #endif /* CONFIG_NFS_V4_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rpc_call_done = nfs_direct_read_result,
 	.rpc_release = nfs_direct_read_release,
 };
@@ -296,8 +305,12 @@ static ssize_t nfs_direct_read_schedule_segment(struct nfs_direct_req *dreq,
 <<<<<<< HEAD
 	struct inode *inode = ctx->dentry->d_inode;
 =======
+<<<<<<< HEAD
+	struct inode *inode = ctx->dentry->d_inode;
+=======
 	struct inode *inode = ctx->path.dentry->d_inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long user_addr = (unsigned long)iov->iov_base;
 	size_t count = iov->iov_len;
 	size_t rsize = NFS_SERVER(inode)->rsize;
@@ -570,10 +583,14 @@ static const struct rpc_call_ops nfs_commit_direct_ops = {
 <<<<<<< HEAD
 	.rpc_call_prepare = nfs_write_prepare,
 =======
+<<<<<<< HEAD
+	.rpc_call_prepare = nfs_write_prepare,
+=======
 #if defined(CONFIG_NFS_V4_1)
 	.rpc_call_prepare = nfs_write_prepare,
 #endif /* CONFIG_NFS_V4_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rpc_call_done = nfs_direct_commit_result,
 	.rpc_release = nfs_direct_commit_release,
 };
@@ -716,10 +733,14 @@ static const struct rpc_call_ops nfs_write_direct_ops = {
 <<<<<<< HEAD
 	.rpc_call_prepare = nfs_write_prepare,
 =======
+<<<<<<< HEAD
+	.rpc_call_prepare = nfs_write_prepare,
+=======
 #if defined(CONFIG_NFS_V4_1)
 	.rpc_call_prepare = nfs_write_prepare,
 #endif /* CONFIG_NFS_V4_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rpc_call_done = nfs_direct_write_result,
 	.rpc_release = nfs_direct_write_release,
 };
@@ -739,8 +760,12 @@ static ssize_t nfs_direct_write_schedule_segment(struct nfs_direct_req *dreq,
 <<<<<<< HEAD
 	struct inode *inode = ctx->dentry->d_inode;
 =======
+<<<<<<< HEAD
+	struct inode *inode = ctx->dentry->d_inode;
+=======
 	struct inode *inode = ctx->path.dentry->d_inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long user_addr = (unsigned long)iov->iov_base;
 	size_t count = iov->iov_len;
 	struct rpc_task *task;

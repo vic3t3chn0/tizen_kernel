@@ -33,16 +33,22 @@
 #include <linux/hugetlb.h>
 #include <asm/asm-offsets.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable.h>
 #include <asm/irq.h>
 #include <asm/mmu_context.h>
 #include <asm/facility.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 #include <asm/pgtable.h>
 #include <asm/irq.h>
 #include <asm/mmu_context.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "../kernel/entry.h"
 
 #ifndef CONFIG_64BIT
@@ -134,9 +140,13 @@ static inline int user_space_fault(unsigned long trans_exc_code)
 <<<<<<< HEAD
 static inline void report_user_fault(struct pt_regs *regs, long signr)
 =======
+<<<<<<< HEAD
+static inline void report_user_fault(struct pt_regs *regs, long signr)
+=======
 static inline void report_user_fault(struct pt_regs *regs, long int_code,
 				     int signr, unsigned long address)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if ((task_pid_nr(current) > 1) && !show_unhandled_signals)
 		return;
@@ -145,18 +155,24 @@ static inline void report_user_fault(struct pt_regs *regs, long int_code,
 	if (!printk_ratelimit())
 		return;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_ALERT "User process fault: interruption code 0x%X ",
 	       regs->int_code);
 	print_vma_addr(KERN_CONT "in ", regs->psw.addr & PSW_ADDR_INSN);
 	printk(KERN_CONT "\n");
 	printk(KERN_ALERT "failing address: %lX\n",
 	       regs->int_parm_long & __FAIL_ADDR_MASK);
+<<<<<<< HEAD
+=======
 =======
 	printk("User process fault: interruption code 0x%lX ", int_code);
 	print_vma_addr(KERN_CONT "in ", regs->psw.addr & PSW_ADDR_INSN);
 	printk("\n");
 	printk("failing address: %lX\n", address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	show_regs(regs);
 }
 
@@ -165,6 +181,9 @@ static inline void report_user_fault(struct pt_regs *regs, long int_code,
  * to keep the stack usage of do_page_fault small.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static noinline void do_sigsegv(struct pt_regs *regs, int si_code)
 {
 	struct siginfo si;
@@ -177,6 +196,8 @@ static noinline void do_sigsegv(struct pt_regs *regs, int si_code)
 }
 
 static noinline void do_no_context(struct pt_regs *regs)
+<<<<<<< HEAD
+=======
 =======
 static noinline void do_sigsegv(struct pt_regs *regs, long int_code,
 				int si_code, unsigned long trans_exc_code)
@@ -197,6 +218,7 @@ static noinline void do_sigsegv(struct pt_regs *regs, long int_code,
 static noinline void do_no_context(struct pt_regs *regs, long int_code,
 				   unsigned long trans_exc_code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct exception_table_entry *fixup;
 	unsigned long address;
@@ -216,9 +238,14 @@ static noinline void do_no_context(struct pt_regs *regs, long int_code,
 	address = regs->int_parm_long & __FAIL_ADDR_MASK;
 	if (!user_space_fault(regs->int_parm_long))
 =======
+<<<<<<< HEAD
+	address = regs->int_parm_long & __FAIL_ADDR_MASK;
+	if (!user_space_fault(regs->int_parm_long))
+=======
 	address = trans_exc_code & __FAIL_ADDR_MASK;
 	if (!user_space_fault(trans_exc_code))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ALERT "Unable to handle kernel pointer dereference"
 		       " at virtual kernel address %p\n", (void *)address);
 	else
@@ -226,11 +253,16 @@ static noinline void do_no_context(struct pt_regs *regs, long int_code,
 		       " at virtual user address %p\n", (void *)address);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	die(regs, "Oops");
 	do_exit(SIGKILL);
 }
 
 static noinline void do_low_address(struct pt_regs *regs)
+<<<<<<< HEAD
+=======
 =======
 	die("Oops", regs, int_code);
 	do_exit(SIGKILL);
@@ -239,12 +271,16 @@ static noinline void do_low_address(struct pt_regs *regs)
 static noinline void do_low_address(struct pt_regs *regs, long int_code,
 				    unsigned long trans_exc_code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Low-address protection hit in kernel mode means
 	   NULL pointer write access in kernel mode.  */
 	if (regs->psw.mask & PSW_MASK_PSTATE) {
 		/* Low-address protection hit in user mode 'cannot happen'. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		die (regs, "Low-address protection");
 		do_exit(SIGKILL);
 	}
@@ -255,6 +291,8 @@ static noinline void do_low_address(struct pt_regs *regs, long int_code,
 static noinline void do_sigbus(struct pt_regs *regs)
 {
 	struct task_struct *tsk = current;
+<<<<<<< HEAD
+=======
 =======
 		die ("Low-address protection", regs, int_code);
 		do_exit(SIGKILL);
@@ -269,6 +307,7 @@ static noinline void do_sigbus(struct pt_regs *regs, long int_code,
 	struct task_struct *tsk = current;
 	unsigned long address;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct siginfo si;
 
 	/*
@@ -276,6 +315,9 @@ static noinline void do_sigbus(struct pt_regs *regs, long int_code,
 	 * or user mode.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	si.si_signo = SIGBUS;
 	si.si_errno = 0;
 	si.si_code = BUS_ADRERR;
@@ -284,6 +326,8 @@ static noinline void do_sigbus(struct pt_regs *regs, long int_code,
 }
 
 static noinline void do_fault_error(struct pt_regs *regs, int fault)
+<<<<<<< HEAD
+=======
 =======
 	address = trans_exc_code & __FAIL_ADDR_MASK;
 	tsk->thread.prot_addr = address;
@@ -298,6 +342,7 @@ static noinline void do_fault_error(struct pt_regs *regs, int fault)
 static noinline void do_fault_error(struct pt_regs *regs, long int_code,
 				    unsigned long trans_exc_code, int fault)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int si_code;
 
@@ -310,11 +355,16 @@ static noinline void do_fault_error(struct pt_regs *regs, long int_code,
 			si_code = (fault == VM_FAULT_BADMAP) ?
 				SEGV_MAPERR : SEGV_ACCERR;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			do_sigsegv(regs, si_code);
 			return;
 		}
 	case VM_FAULT_BADCONTEXT:
 		do_no_context(regs);
+<<<<<<< HEAD
+=======
 =======
 			do_sigsegv(regs, int_code, si_code, trans_exc_code);
 			return;
@@ -322,6 +372,7 @@ static noinline void do_fault_error(struct pt_regs *regs, long int_code,
 	case VM_FAULT_BADCONTEXT:
 		do_no_context(regs, int_code, trans_exc_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default: /* fault & VM_FAULT_ERROR */
 		if (fault & VM_FAULT_OOM) {
@@ -329,8 +380,12 @@ static noinline void do_fault_error(struct pt_regs *regs, long int_code,
 <<<<<<< HEAD
 				do_no_context(regs);
 =======
+<<<<<<< HEAD
+				do_no_context(regs);
+=======
 				do_no_context(regs, int_code, trans_exc_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else
 				pagefault_out_of_memory();
 		} else if (fault & VM_FAULT_SIGBUS) {
@@ -341,10 +396,16 @@ static noinline void do_fault_error(struct pt_regs *regs, long int_code,
 			else
 				do_sigbus(regs);
 =======
+<<<<<<< HEAD
+				do_no_context(regs);
+			else
+				do_sigbus(regs);
+=======
 				do_no_context(regs, int_code, trans_exc_code);
 			else
 				do_sigbus(regs, int_code, trans_exc_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else
 			BUG();
 		break;
@@ -365,9 +426,13 @@ static noinline void do_fault_error(struct pt_regs *regs, long int_code,
 <<<<<<< HEAD
 static inline int do_exception(struct pt_regs *regs, int access)
 =======
+<<<<<<< HEAD
+static inline int do_exception(struct pt_regs *regs, int access)
+=======
 static inline int do_exception(struct pt_regs *regs, int access,
 			       unsigned long trans_exc_code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct task_struct *tsk;
 	struct mm_struct *mm;
@@ -375,7 +440,11 @@ static inline int do_exception(struct pt_regs *regs, int access,
 <<<<<<< HEAD
 	unsigned long trans_exc_code;
 =======
+<<<<<<< HEAD
+	unsigned long trans_exc_code;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long address;
 	unsigned int flags;
 	int fault;
@@ -388,7 +457,11 @@ static inline int do_exception(struct pt_regs *regs, int access,
 <<<<<<< HEAD
 	trans_exc_code = regs->int_parm_long;
 =======
+<<<<<<< HEAD
+	trans_exc_code = regs->int_parm_long;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Verify that the fault happened in user space, that
@@ -401,6 +474,9 @@ static inline int do_exception(struct pt_regs *regs, int access,
 
 	address = trans_exc_code & __FAIL_ADDR_MASK;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
 	flags = FAULT_FLAG_ALLOW_RETRY;
 	if (access == VM_WRITE || (trans_exc_code & store_indication) == 0x400)
@@ -423,6 +499,8 @@ static inline int do_exception(struct pt_regs *regs, int access,
 #endif
 
 retry:
+<<<<<<< HEAD
+=======
 =======
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, 0, regs, address);
 	flags = FAULT_FLAG_ALLOW_RETRY;
@@ -432,6 +510,7 @@ retry:
 	down_read(&mm->mmap_sem);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fault = VM_FAULT_BADMAP;
 	vma = find_vma(mm, address);
 	if (!vma)
@@ -472,11 +551,16 @@ retry:
 		if (fault & VM_FAULT_MAJOR) {
 			tsk->maj_flt++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ, 1,
 				      regs, address);
 		} else {
 			tsk->min_flt++;
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN, 1,
+<<<<<<< HEAD
+=======
 =======
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ, 1, 0,
 				      regs, address);
@@ -484,6 +568,7 @@ retry:
 			tsk->min_flt++;
 			perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN, 1, 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      regs, address);
 		}
 		if (fault & VM_FAULT_RETRY) {
@@ -493,7 +578,11 @@ retry:
 <<<<<<< HEAD
 			down_read(&mm->mmap_sem);
 =======
+<<<<<<< HEAD
+			down_read(&mm->mmap_sem);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto retry;
 		}
 	}
@@ -510,6 +599,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __kprobes do_protection_exception(struct pt_regs *regs)
 {
 	unsigned long trans_exc_code;
@@ -518,6 +610,8 @@ void __kprobes do_protection_exception(struct pt_regs *regs)
 	trans_exc_code = regs->int_parm_long;
 	/* Protection exception is suppressing, decrement psw address. */
 	regs->psw.addr = __rewind_psw(regs->psw, regs->int_code >> 16);
+<<<<<<< HEAD
+=======
 =======
 void __kprobes do_protection_exception(struct pt_regs *regs, long pgm_int_code,
 				       unsigned long trans_exc_code)
@@ -527,6 +621,7 @@ void __kprobes do_protection_exception(struct pt_regs *regs, long pgm_int_code,
 	/* Protection exception is suppressing, decrement psw address. */
 	regs->psw.addr -= (pgm_int_code >> 16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Check for low-address protection.  This needs to be treated
 	 * as a special case because the translation exception code
@@ -534,6 +629,9 @@ void __kprobes do_protection_exception(struct pt_regs *regs, long pgm_int_code,
 	 */
 	if (unlikely(!(trans_exc_code & 4))) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		do_low_address(regs);
 		return;
 	}
@@ -543,6 +641,8 @@ void __kprobes do_protection_exception(struct pt_regs *regs, long pgm_int_code,
 }
 
 void __kprobes do_dat_exception(struct pt_regs *regs)
+<<<<<<< HEAD
+=======
 =======
 		do_low_address(regs, pgm_int_code, trans_exc_code);
 		return;
@@ -555,11 +655,15 @@ void __kprobes do_dat_exception(struct pt_regs *regs)
 void __kprobes do_dat_exception(struct pt_regs *regs, long pgm_int_code,
 				unsigned long trans_exc_code)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int access, fault;
 
 	access = VM_READ | VM_EXEC | VM_WRITE;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fault = do_exception(regs, access);
 	if (unlikely(fault))
 		do_fault_error(regs, fault);
@@ -573,6 +677,8 @@ void __kprobes do_asce_exception(struct pt_regs *regs)
 	unsigned long trans_exc_code;
 
 	trans_exc_code = regs->int_parm_long;
+<<<<<<< HEAD
+=======
 =======
 	fault = do_exception(regs, access, trans_exc_code);
 	if (unlikely(fault))
@@ -587,6 +693,7 @@ void __kprobes do_asce_exception(struct pt_regs *regs, long pgm_int_code,
 	struct vm_area_struct *vma;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!user_space_fault(trans_exc_code) || in_atomic() || !mm))
 		goto no_context;
 
@@ -604,8 +711,12 @@ void __kprobes do_asce_exception(struct pt_regs *regs, long pgm_int_code,
 <<<<<<< HEAD
 		do_sigsegv(regs, SEGV_MAPERR);
 =======
+<<<<<<< HEAD
+		do_sigsegv(regs, SEGV_MAPERR);
+=======
 		do_sigsegv(regs, pgm_int_code, SEGV_MAPERR, trans_exc_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -613,8 +724,12 @@ no_context:
 <<<<<<< HEAD
 	do_no_context(regs);
 =======
+<<<<<<< HEAD
+	do_no_context(regs);
+=======
 	do_no_context(regs, pgm_int_code, trans_exc_code);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -626,22 +741,32 @@ int __handle_fault(unsigned long uaddr, unsigned long pgm_int_code, int write)
 <<<<<<< HEAD
 	regs.psw.mask = psw_kernel_bits | PSW_MASK_DAT | PSW_MASK_MCHECK;
 =======
+<<<<<<< HEAD
+	regs.psw.mask = psw_kernel_bits | PSW_MASK_DAT | PSW_MASK_MCHECK;
+=======
 	regs.psw.mask = psw_kernel_bits;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!irqs_disabled())
 		regs.psw.mask |= PSW_MASK_IO | PSW_MASK_EXT;
 	regs.psw.addr = (unsigned long) __builtin_return_address(0);
 	regs.psw.addr |= PSW_ADDR_AMODE;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs.int_code = pgm_int_code;
 	regs.int_parm_long = (uaddr & PAGE_MASK) | 2;
 	access = write ? VM_WRITE : VM_READ;
 	fault = do_exception(&regs, access);
+<<<<<<< HEAD
+=======
 =======
 	uaddr &= PAGE_MASK;
 	access = write ? VM_WRITE : VM_READ;
 	fault = do_exception(&regs, access, uaddr | 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(fault)) {
 		if (fault & VM_FAULT_OOM)
 			return -EFAULT;
@@ -649,8 +774,12 @@ int __handle_fault(unsigned long uaddr, unsigned long pgm_int_code, int write)
 <<<<<<< HEAD
 			do_sigbus(&regs);
 =======
+<<<<<<< HEAD
+			do_sigbus(&regs);
+=======
 			do_sigbus(&regs, pgm_int_code, uaddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return fault ? -EFAULT : 0;
 }
@@ -696,8 +825,12 @@ int pfault_init(void)
 <<<<<<< HEAD
 	if (pfault_disable)
 =======
+<<<<<<< HEAD
+	if (pfault_disable)
+=======
 	if (!MACHINE_IS_VM || pfault_disable)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	asm volatile(
 		"	diag	%1,%0,0x258\n"
@@ -721,8 +854,12 @@ void pfault_fini(void)
 <<<<<<< HEAD
 	if (pfault_disable)
 =======
+<<<<<<< HEAD
+	if (pfault_disable)
+=======
 	if (!MACHINE_IS_VM || pfault_disable)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	asm volatile(
 		"	diag	%0,0,0x258\n"
@@ -737,8 +874,12 @@ static LIST_HEAD(pfault_list);
 <<<<<<< HEAD
 static void pfault_interrupt(struct ext_code ext_code,
 =======
+<<<<<<< HEAD
+static void pfault_interrupt(struct ext_code ext_code,
+=======
 static void pfault_interrupt(unsigned int ext_int_code,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     unsigned int param32, unsigned long param64)
 {
 	struct task_struct *tsk;
@@ -754,8 +895,12 @@ static void pfault_interrupt(unsigned int ext_int_code,
 <<<<<<< HEAD
 	subcode = ext_code.subcode;
 =======
+<<<<<<< HEAD
+	subcode = ext_code.subcode;
+=======
 	subcode = ext_int_code >> 16;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((subcode & 0xff00) != __SUBCODE_MASK)
 		return;
 	kstat_cpu(smp_processor_id()).irqs[EXTINT_PFL]++;
@@ -785,6 +930,9 @@ static void pfault_interrupt(unsigned int ext_int_code,
 			list_del(&tsk->thread.list);
 			wake_up_process(tsk);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/* Completion interrupt was faster than initial
 			 * interrupt. Set pfault_wait to -1 so the initial
@@ -795,6 +943,8 @@ static void pfault_interrupt(unsigned int ext_int_code,
 			 * completion interrupts. */
 			if (tsk->state == TASK_RUNNING)
 				tsk->thread.pfault_wait = -1;
+<<<<<<< HEAD
+=======
 =======
 			put_task_struct(tsk);
 		} else {
@@ -803,10 +953,14 @@ static void pfault_interrupt(unsigned int ext_int_code,
 			 * interrupt doesn't put the task to sleep. */
 			tsk->thread.pfault_wait = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		put_task_struct(tsk);
 	} else {
 		/* signal bit not set -> a real page is missing. */
+<<<<<<< HEAD
+		if (tsk->thread.pfault_wait == -1) {
+=======
 <<<<<<< HEAD
 		if (tsk->thread.pfault_wait == -1) {
 =======
@@ -816,6 +970,7 @@ static void pfault_interrupt(unsigned int ext_int_code,
 			set_tsk_need_resched(tsk);
 		} else if (tsk->thread.pfault_wait == -1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Completion interrupt was faster than the initial
 			 * interrupt (pfault_wait == -1). Set pfault_wait
 			 * back to zero and exit. */
@@ -825,12 +980,16 @@ static void pfault_interrupt(unsigned int ext_int_code,
 <<<<<<< HEAD
 			 * interrupt. Let the task sleep. */
 =======
+<<<<<<< HEAD
+			 * interrupt. Let the task sleep. */
+=======
 			 * interrupt. Let the task sleep.
 			 * An extra task reference is needed since a different
 			 * cpu may set the task state to TASK_RUNNING again
 			 * before the scheduler is reached. */
 			get_task_struct(tsk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tsk->thread.pfault_wait = 1;
 			list_add(&tsk->thread.list, &pfault_list);
 			set_task_state(tsk, TASK_UNINTERRUPTIBLE);
@@ -857,8 +1016,11 @@ static int __cpuinit pfault_cpu_notify(struct notifier_block *self,
 			wake_up_process(tsk);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			put_task_struct(tsk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		spin_unlock_irq(&pfault_lock);
 		break;
@@ -874,9 +1036,12 @@ static int __init pfault_irq_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!MACHINE_IS_VM)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = register_external_interrupt(0x2603, pfault_interrupt);
 	if (rc)
 		goto out_extint;

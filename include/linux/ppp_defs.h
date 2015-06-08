@@ -2,6 +2,9 @@
  * ppp_defs.h - PPP definitions.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright 1994-2000 Paul Mackerras.
  *
  *  This program is free software; you can redistribute it and/or
@@ -10,6 +13,8 @@
  */
 #include <linux/types.h>
 
+<<<<<<< HEAD
+=======
 =======
  * Copyright (c) 1994 The Australian National University.
  * All rights reserved.
@@ -50,6 +55,7 @@
  */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _PPP_DEFS_H_
 #define _PPP_DEFS_H_
 

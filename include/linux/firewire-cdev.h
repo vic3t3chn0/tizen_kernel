@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 /* available since kernel version 2.6.22 */
 =======
+<<<<<<< HEAD
+/* available since kernel version 2.6.22 */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FW_CDEV_EVENT_BUS_RESET				0x00
 #define FW_CDEV_EVENT_RESPONSE				0x01
 #define FW_CDEV_EVENT_REQUEST				0x02
@@ -42,7 +46,12 @@
 
 /* available since kernel version 2.6.30 */
 =======
+<<<<<<< HEAD
+
+/* available since kernel version 2.6.30 */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FW_CDEV_EVENT_ISO_RESOURCE_ALLOCATED		0x04
 #define FW_CDEV_EVENT_ISO_RESOURCE_DEALLOCATED		0x05
 
@@ -130,11 +139,16 @@ struct fw_cdev_event_response {
 /**
  * struct fw_cdev_event_request - Old version of &fw_cdev_event_request2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @type:	See &fw_cdev_event_common; always %FW_CDEV_EVENT_REQUEST
  *
  * This event is sent instead of &fw_cdev_event_request2 if the kernel or
  * the client implements ABI version <= 3.  &fw_cdev_event_request lacks
  * essential information; use &fw_cdev_event_request2 instead.
+<<<<<<< HEAD
+=======
 =======
  * @closure:	See &fw_cdev_event_common; set by %FW_CDEV_IOC_ALLOCATE ioctl
  * @type:	See &fw_cdev_event_common; always %FW_CDEV_EVENT_REQUEST
@@ -155,6 +169,7 @@ struct fw_cdev_event_response {
  * with &fw_cdev_event_request2, except in kernel 2.6.32 and older which send
  * the response packet of the client's %FW_CDEV_IOC_SEND_RESPONSE ioctl.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct fw_cdev_event_request {
 	__u64 closure;
@@ -237,21 +252,31 @@ struct fw_cdev_event_request2 {
 <<<<<<< HEAD
  * @cycle:	Cycle counter of the last completed packet
 =======
+<<<<<<< HEAD
+ * @cycle:	Cycle counter of the last completed packet
+=======
  * @cycle:	Cycle counter of the interrupt packet
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @header_length: Total length of following headers, in bytes
  * @header:	Stripped headers, if any
  *
  * This event is sent when the controller has completed an &fw_cdev_iso_packet
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * with the %FW_CDEV_ISO_INTERRUPT bit set, when explicitly requested with
  * %FW_CDEV_IOC_FLUSH_ISO, or when there have been so many completed packets
  * without the interrupt bit set that the kernel's internal buffer for @header
  * is about to overflow.  (In the last case, kernels with ABI version < 5 drop
  * header data up to the next interrupt packet.)
+<<<<<<< HEAD
+=======
 =======
  * with the %FW_CDEV_ISO_INTERRUPT bit set.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Isochronous transmit events (context type %FW_CDEV_ISO_CONTEXT_TRANSMIT):
  *
@@ -311,10 +336,16 @@ struct fw_cdev_event_iso_interrupt {
  * %FW_CDEV_ISO_INTERRUPT bit set, or when explicitly requested with
  * %FW_CDEV_IOC_FLUSH_ISO.
 =======
+<<<<<<< HEAD
+ * chunks that have been completely filled and that have the
+ * %FW_CDEV_ISO_INTERRUPT bit set, or when explicitly requested with
+ * %FW_CDEV_IOC_FLUSH_ISO.
+=======
  * chunks that have the %FW_CDEV_ISO_INTERRUPT bit set.  Whether this happens
  * when a packet is completed and/or when a buffer chunk is completed depends
  * on the hardware implementation.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The buffer is continuously filled with the following data, per packet:
  *  - the 1394 iso packet header as described at &fw_cdev_event_iso_interrupt,
@@ -469,7 +500,13 @@ union fw_cdev_event {
 #define FW_CDEV_IOC_FLUSH_ISO           _IOW('#', 0x18, struct fw_cdev_flush_iso)
 
 =======
+<<<<<<< HEAD
+/* available since kernel version 3.4 */
+#define FW_CDEV_IOC_FLUSH_ISO           _IOW('#', 0x18, struct fw_cdev_flush_iso)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ABI version history
  *  1  (2.6.22)  - initial version
@@ -493,14 +530,20 @@ union fw_cdev_event {
  *                 %FW_CDEV_ISO_CONTEXT_RECEIVE_MULTICHANNEL, and
  *                 %FW_CDEV_IOC_SET_ISO_CHANNELS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  5  (3.4)     - send %FW_CDEV_EVENT_ISO_INTERRUPT events when needed to
  *                 avoid dropping data
  *               - added %FW_CDEV_IOC_FLUSH_ISO
  */
+<<<<<<< HEAD
+=======
 =======
  */
 #define FW_CDEV_VERSION 3 /* Meaningless; don't use this macro. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct fw_cdev_get_info - General purpose information ioctl
@@ -508,6 +551,9 @@ union fw_cdev_event {
  *		input parameter (ABI version implemented by the client) and
  *		output parameter (ABI version implemented by the kernel).
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *		A client shall fill in the ABI @version for which the client
  *		was implemented.  This is necessary for forward compatibility.
  * @rom_length:	If @rom is non-zero, up to @rom_length bytes of Configuration
@@ -516,6 +562,8 @@ union fw_cdev_event {
  *		Configuration ROM.
  * @rom:	If non-zero, address of a buffer to be filled by a copy of the
  *		device's Configuration ROM
+<<<<<<< HEAD
+=======
 =======
  *		A client must not fill in an %FW_CDEV_VERSION defined from an
  *		included kernel header file but the actual version for which
@@ -529,6 +577,7 @@ union fw_cdev_event {
  * @rom:	If non-zero, address of a buffer to be filled by a copy of the
  *		device's configuration ROM
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @bus_reset:	If non-zero, address of a buffer to be filled by a
  *		&struct fw_cdev_event_bus_reset with the current state
  *		of the bus.  This does not cause a bus reset to happen.
@@ -540,7 +589,13 @@ union fw_cdev_event {
  * performs right after it opened a /dev/fw* file.
  *
 =======
+<<<<<<< HEAD
+ * The %FW_CDEV_IOC_GET_INFO ioctl is usually the very first one which a client
+ * performs right after it opened a /dev/fw* file.
+ *
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * As a side effect, reception of %FW_CDEV_EVENT_BUS_RESET events to be read(2)
  * is started by this ioctl.
  */
@@ -683,8 +738,12 @@ struct fw_cdev_initiate_bus_reset {
 <<<<<<< HEAD
  * node's Configuration ROM.
 =======
+<<<<<<< HEAD
+ * node's Configuration ROM.
+=======
  * node's configuration ROM.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The @key field specifies the upper 8 bits of the descriptor root directory
  * pointer and the @data and @length fields specify the contents. The @key
@@ -704,10 +763,16 @@ struct fw_cdev_initiate_bus_reset {
  *
  * This ioctl affects the Configuration ROMs of all local nodes.
 =======
+<<<<<<< HEAD
+ * change of the Configuration ROM to other nodes.
+ *
+ * This ioctl affects the Configuration ROMs of all local nodes.
+=======
  * change of the configuration ROM to other nodes.
  *
  * This ioctl affects the configuration ROMs of all local nodes.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The ioctl only succeeds on device files which represent a local node.
  */
 struct fw_cdev_add_descriptor {
@@ -722,8 +787,12 @@ struct fw_cdev_add_descriptor {
 <<<<<<< HEAD
  * struct fw_cdev_remove_descriptor - Remove contents from the Configuration ROM
 =======
+<<<<<<< HEAD
+ * struct fw_cdev_remove_descriptor - Remove contents from the Configuration ROM
+=======
  * struct fw_cdev_remove_descriptor - Remove contents from the configuration ROM
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @handle:	Handle to the descriptor, as returned by the kernel when the
  *		descriptor was added
  *
@@ -732,9 +801,14 @@ struct fw_cdev_add_descriptor {
  * nodes' Configuration ROMs.  The kernel will also generate a bus reset to
  * signal the change of the Configuration ROM to other nodes.
 =======
+<<<<<<< HEAD
+ * nodes' Configuration ROMs.  The kernel will also generate a bus reset to
+ * signal the change of the Configuration ROM to other nodes.
+=======
  * nodes' configuration ROMs.  The kernel will also generate a bus reset to
  * signal the change of the configuration ROM to other nodes.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct fw_cdev_remove_descriptor {
 	__u32 handle;
@@ -947,6 +1021,9 @@ struct fw_cdev_stop_iso {
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct fw_cdev_flush_iso - flush completed iso packets
  * @handle:	handle of isochronous context to flush
  *
@@ -966,12 +1043,19 @@ struct fw_cdev_flush_iso {
 };
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct fw_cdev_get_cycle_timer - read cycle timer register
  * @local_time:   system time, in microseconds since the Epoch
  * @cycle_timer:  Cycle Time register contents
  *
+<<<<<<< HEAD
+ * Same as %FW_CDEV_IOC_GET_CYCLE_TIMER2, but fixed to use %CLOCK_REALTIME
+ * and only with microseconds resolution.
+=======
 <<<<<<< HEAD
  * Same as %FW_CDEV_IOC_GET_CYCLE_TIMER2, but fixed to use %CLOCK_REALTIME
  * and only with microseconds resolution.
@@ -984,6 +1068,7 @@ struct fw_cdev_flush_iso {
  * 12 bits cycleOffset, in host byte order.  Cf. the Cycle Time register
  * per IEEE 1394 or Isochronous Cycle Timer register per OHCI-1394.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * In version 1 and 2 of the ABI, this ioctl returned unreliable (non-
  * monotonic) @cycle_timer values on certain controllers.
@@ -1001,6 +1086,9 @@ struct fw_cdev_get_cycle_timer {
  * @cycle_timer:  Cycle Time register contents
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The %FW_CDEV_IOC_GET_CYCLE_TIMER2 ioctl reads the isochronous cycle timer
  * and also the system clock.  This allows to correlate reception time of
  * isochronous packets with system time.
@@ -1012,12 +1100,15 @@ struct fw_cdev_get_cycle_timer {
  * @cycle_timer consists of 7 bits cycleSeconds, 13 bits cycleCount, and
  * 12 bits cycleOffset, in host byte order.  Cf. the Cycle Time register
  * per IEEE 1394 or Isochronous Cycle Timer register per OHCI-1394.
+<<<<<<< HEAD
+=======
 =======
  * The %FW_CDEV_IOC_GET_CYCLE_TIMER2 works like
  * %FW_CDEV_IOC_GET_CYCLE_TIMER but lets you choose a clock like with POSIX'
  * clock_gettime function.  Supported @clk_id values are POSIX' %CLOCK_REALTIME
  * and %CLOCK_MONOTONIC and Linux' %CLOCK_MONOTONIC_RAW.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct fw_cdev_get_cycle_timer2 {
 	__s64 tv_sec;
@@ -1143,5 +1234,10 @@ struct fw_cdev_receive_phy_packets {
 #define FW_CDEV_VERSION 3 /* Meaningless legacy macro; don't use it. */
 
 =======
+<<<<<<< HEAD
+#define FW_CDEV_VERSION 3 /* Meaningless legacy macro; don't use it. */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _LINUX_FIREWIRE_CDEV_H */

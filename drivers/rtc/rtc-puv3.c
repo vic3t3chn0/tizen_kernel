@@ -164,7 +164,15 @@ static int puv3_rtc_open(struct device *dev)
 	int ret;
 
 	ret = request_irq(puv3_rtc_alarmno, puv3_rtc_alarmirq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, "pkunity-rtc alarm", rtc_dev);
+=======
 			  IRQF_DISABLED,  "pkunity-rtc alarm", rtc_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			  IRQF_DISABLED,  "pkunity-rtc alarm", rtc_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret) {
 		dev_err(dev, "IRQ%d error %d\n", puv3_rtc_alarmno, ret);
@@ -172,7 +180,15 @@ static int puv3_rtc_open(struct device *dev)
 	}
 
 	ret = request_irq(puv3_rtc_tickno, puv3_rtc_tickirq,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, "pkunity-rtc tick", rtc_dev);
+=======
 			  IRQF_DISABLED,  "pkunity-rtc tick", rtc_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			  IRQF_DISABLED,  "pkunity-rtc tick", rtc_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret) {
 		dev_err(dev, "IRQ%d error %d\n", puv3_rtc_tickno, ret);
@@ -220,7 +236,15 @@ static void puv3_rtc_enable(struct platform_device *pdev, int en)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devexit puv3_rtc_remove(struct platform_device *dev)
+=======
 static int puv3_rtc_remove(struct platform_device *dev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int puv3_rtc_remove(struct platform_device *dev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rtc_device *rtc = platform_get_drvdata(dev);
 
@@ -236,7 +260,15 @@ static int puv3_rtc_remove(struct platform_device *dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit puv3_rtc_probe(struct platform_device *pdev)
+=======
 static int puv3_rtc_probe(struct platform_device *pdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int puv3_rtc_probe(struct platform_device *pdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rtc_device *rtc;
 	struct resource *res;
@@ -267,9 +299,20 @@ static int puv3_rtc_probe(struct platform_device *pdev)
 		return -ENOENT;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	puv3_rtc_mem = request_mem_region(res->start, resource_size(res),
+					  pdev->name);
+=======
 	puv3_rtc_mem = request_mem_region(res->start,
 					 res->end-res->start+1,
 					 pdev->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	puv3_rtc_mem = request_mem_region(res->start,
+					 res->end-res->start+1,
+					 pdev->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (puv3_rtc_mem == NULL) {
 		dev_err(&pdev->dev, "failed to reserve memory region\n");
@@ -327,7 +370,15 @@ static int puv3_rtc_resume(struct platform_device *pdev)
 #define puv3_rtc_resume  NULL
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct platform_driver puv3_rtc_driver = {
+=======
 static struct platform_driver puv3_rtcdrv = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct platform_driver puv3_rtcdrv = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.probe		= puv3_rtc_probe,
 	.remove		= __devexit_p(puv3_rtc_remove),
 	.suspend	= puv3_rtc_suspend,
@@ -338,6 +389,12 @@ static struct platform_driver puv3_rtcdrv = {
 	}
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(puv3_rtc_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static char __initdata banner[] = "PKUnity-v3 RTC, (c) 2009 PKUnity Co.\n";
 
 static int __init puv3_rtc_init(void)
@@ -353,6 +410,10 @@ static void __exit puv3_rtc_exit(void)
 
 module_init(puv3_rtc_init);
 module_exit(puv3_rtc_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("RTC Driver for the PKUnity v3 chip");
 MODULE_AUTHOR("Hu Dongliang");

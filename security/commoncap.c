@@ -31,7 +31,11 @@
 <<<<<<< HEAD
 #include <linux/binfmts.h>
 =======
+<<<<<<< HEAD
+#include <linux/binfmts.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/personality.h>
 
 #ifdef CONFIG_ANDROID_PARANOID_NETWORK
@@ -69,6 +73,10 @@ int cap_netlink_send(struct sock *sk, struct sk_buff *skb)
 /**
  * cap_capable - Determine whether a task has a particular effective capability
 =======
+<<<<<<< HEAD
+/**
+ * cap_capable - Determine whether a task has a particular effective capability
+=======
 int cap_netlink_recv(struct sk_buff *skb, int cap)
 {
 	if (!cap_raised(current_cap(), cap))
@@ -81,6 +89,7 @@ EXPORT_SYMBOL(cap_netlink_recv);
  * cap_capable - Determine whether a task has a particular effective capability
  * @tsk: The task to query
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @cred: The credentials to use
  * @ns:  The user namespace in which we need the capability
  * @cap: The capability to check for
@@ -98,9 +107,14 @@ EXPORT_SYMBOL(cap_netlink_recv);
 int cap_capable(const struct cred *cred, struct user_namespace *targ_ns,
 		int cap, int audit)
 =======
+<<<<<<< HEAD
+int cap_capable(const struct cred *cred, struct user_namespace *targ_ns,
+		int cap, int audit)
+=======
 int cap_capable(struct task_struct *tsk, const struct cred *cred,
 		struct user_namespace *targ_ns, int cap, int audit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 #ifdef CONFIG_ANDROID_PARANOID_NETWORK
 	if (cap == CAP_NET_RAW && in_egroup_p(AID_NET_RAW))
@@ -252,10 +266,15 @@ static inline int cap_inh_is_capped(void)
 	if (cap_capable(current_cred(), current_cred()->user->user_ns,
 			CAP_SETPCAP, SECURITY_CAP_AUDIT) == 0)
 =======
+<<<<<<< HEAD
+	if (cap_capable(current_cred(), current_cred()->user->user_ns,
+			CAP_SETPCAP, SECURITY_CAP_AUDIT) == 0)
+=======
 	if (cap_capable(current, current_cred(),
 			current_cred()->user->user_ns, CAP_SETPCAP,
 			SECURITY_CAP_AUDIT) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	return 1;
 }
@@ -367,8 +386,13 @@ static inline int bprm_caps_from_vfs_caps(struct cpu_vfs_cap_data *caps,
 					  bool *effective,
 					  bool *has_cap)
 =======
+<<<<<<< HEAD
+					  bool *effective,
+					  bool *has_cap)
+=======
 					  bool *effective)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cred *new = bprm->cred;
 	unsigned i;
@@ -382,7 +406,13 @@ static inline int bprm_caps_from_vfs_caps(struct cpu_vfs_cap_data *caps,
 		*has_cap = true;
 
 =======
+<<<<<<< HEAD
+	if (caps->magic_etc & VFS_CAP_REVISION_MASK)
+		*has_cap = true;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CAP_FOR_EACH_U32(i) {
 		__u32 permitted = caps->permitted.cap[i];
 		__u32 inheritable = caps->inheritable.cap[i];
@@ -469,8 +499,12 @@ int get_vfs_caps_from_disk(const struct dentry *dentry, struct cpu_vfs_cap_data 
 <<<<<<< HEAD
 static int get_file_caps(struct linux_binprm *bprm, bool *effective, bool *has_cap)
 =======
+<<<<<<< HEAD
+static int get_file_caps(struct linux_binprm *bprm, bool *effective, bool *has_cap)
+=======
 static int get_file_caps(struct linux_binprm *bprm, bool *effective)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dentry *dentry;
 	int rc = 0;
@@ -499,8 +533,12 @@ static int get_file_caps(struct linux_binprm *bprm, bool *effective)
 <<<<<<< HEAD
 	rc = bprm_caps_from_vfs_caps(&vcaps, bprm, effective, has_cap);
 =======
+<<<<<<< HEAD
+	rc = bprm_caps_from_vfs_caps(&vcaps, bprm, effective, has_cap);
+=======
 	rc = bprm_caps_from_vfs_caps(&vcaps, bprm, effective);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc == -EINVAL)
 		printk(KERN_NOTICE "%s: cap_from_disk returned %d for %s\n",
 		       __func__, rc, bprm->filename);
@@ -526,11 +564,16 @@ int cap_bprm_set_creds(struct linux_binprm *bprm)
 	const struct cred *old = current_cred();
 	struct cred *new = bprm->cred;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool effective, has_cap = false;
 	int ret;
 
 	effective = false;
 	ret = get_file_caps(bprm, &effective, &has_cap);
+<<<<<<< HEAD
+=======
 =======
 	bool effective;
 	int ret;
@@ -538,6 +581,7 @@ int cap_bprm_set_creds(struct linux_binprm *bprm)
 	effective = false;
 	ret = get_file_caps(bprm, &effective);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0)
 		return ret;
 
@@ -550,8 +594,12 @@ int cap_bprm_set_creds(struct linux_binprm *bprm)
 <<<<<<< HEAD
 		if (has_cap && new->uid != 0 && new->euid == 0) {
 =======
+<<<<<<< HEAD
+		if (has_cap && new->uid != 0 && new->euid == 0) {
+=======
 		if (effective && new->uid != 0 && new->euid == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			warn_setuid_and_fcaps_mixed(bprm->filename);
 			goto skip;
 		}
@@ -940,8 +988,12 @@ int cap_task_prctl(int option, unsigned long arg2, unsigned long arg3,
 <<<<<<< HEAD
 		    || (cap_capable(current_cred(),
 =======
+<<<<<<< HEAD
+		    || (cap_capable(current_cred(),
+=======
 		    || (cap_capable(current, current_cred(),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    current_cred()->user->user_ns, CAP_SETPCAP,
 				    SECURITY_CAP_AUDIT) != 0)		/*[4]*/
 			/*
@@ -1010,8 +1062,12 @@ int cap_vm_enough_memory(struct mm_struct *mm, long pages)
 <<<<<<< HEAD
 	if (cap_capable(current_cred(), &init_user_ns, CAP_SYS_ADMIN,
 =======
+<<<<<<< HEAD
+	if (cap_capable(current_cred(), &init_user_ns, CAP_SYS_ADMIN,
+=======
 	if (cap_capable(current, current_cred(), &init_user_ns, CAP_SYS_ADMIN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			SECURITY_CAP_NOAUDIT) == 0)
 		cap_sys_admin = 1;
 	return __vm_enough_memory(mm, pages, cap_sys_admin);
@@ -1041,8 +1097,12 @@ int cap_file_mmap(struct file *file, unsigned long reqprot,
 <<<<<<< HEAD
 		ret = cap_capable(current_cred(), &init_user_ns, CAP_SYS_RAWIO,
 =======
+<<<<<<< HEAD
+		ret = cap_capable(current_cred(), &init_user_ns, CAP_SYS_RAWIO,
+=======
 		ret = cap_capable(current, current_cred(), &init_user_ns, CAP_SYS_RAWIO,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  SECURITY_CAP_AUDIT);
 		/* set PF_SUPERPRIV if it turns out we allow the low mmap */
 		if (ret == 0)

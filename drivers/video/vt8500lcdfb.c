@@ -210,8 +210,18 @@ static int vt8500lcd_pan_display(struct fb_var_screeninfo *var,
 	struct vt8500lcd_info *fbi = to_vt8500lcd_info(info);
 
 	writel((1 << 31)
+<<<<<<< HEAD
+<<<<<<< HEAD
+	     | (((info->var.xres_virtual - info->var.xres) * pixlen / 4) << 20)
+	     | (off >> 2), fbi->regbase + 0x20);
+=======
 		| (((var->xres_virtual - var->xres) * pixlen / 4) << 20)
 		| (off >> 2), fbi->regbase + 0x20);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		| (((var->xres_virtual - var->xres) * pixlen / 4) << 20)
+		| (off >> 2), fbi->regbase + 0x20);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -355,7 +365,15 @@ static int __devinit vt8500lcd_probe(struct platform_device *pdev)
 		goto failed_free_palette;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = request_irq(irq, vt8500lcd_handle_irq, 0, "LCD", fbi);
+=======
 	ret = request_irq(irq, vt8500lcd_handle_irq, IRQF_DISABLED, "LCD", fbi);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = request_irq(irq, vt8500lcd_handle_irq, IRQF_DISABLED, "LCD", fbi);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		dev_err(&pdev->dev, "request_irq failed: %d\n", ret);
 		ret = -EBUSY;
@@ -457,6 +475,12 @@ static struct platform_driver vt8500lcd_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(vt8500lcd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init vt8500lcd_init(void)
 {
 	return platform_driver_register(&vt8500lcd_driver);
@@ -469,6 +493,10 @@ static void __exit vt8500lcd_exit(void)
 
 module_init(vt8500lcd_init);
 module_exit(vt8500lcd_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Alexey Charkov <alchark@gmail.com>");
 MODULE_DESCRIPTION("LCD controller driver for VIA VT8500");

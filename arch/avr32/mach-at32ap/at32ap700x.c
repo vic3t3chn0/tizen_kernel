@@ -1057,9 +1057,12 @@ struct platform_device *__init at32_add_device_usart(unsigned int id)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct platform_device *atmel_default_console_device;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init at32_setup_serial_console(unsigned int usart_id)
 {
 	atmel_default_console_device = at32_usarts[usart_id];
@@ -1073,8 +1076,12 @@ void __init at32_setup_serial_console(unsigned int usart_id)
 <<<<<<< HEAD
 static struct macb_platform_data macb0_data;
 =======
+<<<<<<< HEAD
+static struct macb_platform_data macb0_data;
+=======
 static struct eth_platform_data macb0_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource macb0_resource[] = {
 	PBMEM(0xfff01800),
 	IRQ(25),
@@ -1086,8 +1093,12 @@ DEV_CLK(pclk, macb0, pbb, 6);
 <<<<<<< HEAD
 static struct macb_platform_data macb1_data;
 =======
+<<<<<<< HEAD
+static struct macb_platform_data macb1_data;
+=======
 static struct eth_platform_data macb1_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource macb1_resource[] = {
 	PBMEM(0xfff01c00),
 	IRQ(26),
@@ -1100,8 +1111,12 @@ struct platform_device *__init
 <<<<<<< HEAD
 at32_add_device_eth(unsigned int id, struct macb_platform_data *data)
 =======
+<<<<<<< HEAD
+at32_add_device_eth(unsigned int id, struct macb_platform_data *data)
+=======
 at32_add_device_eth(unsigned int id, struct eth_platform_data *data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct platform_device *pdev;
 	u32 pin_mask;
@@ -1181,8 +1196,12 @@ at32_add_device_eth(unsigned int id, struct eth_platform_data *data)
 <<<<<<< HEAD
 	memcpy(pdev->dev.platform_data, data, sizeof(struct macb_platform_data));
 =======
+<<<<<<< HEAD
+	memcpy(pdev->dev.platform_data, data, sizeof(struct macb_platform_data));
+=======
 	memcpy(pdev->dev.platform_data, data, sizeof(struct eth_platform_data));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_device_register(pdev);
 
 	return pdev;
@@ -1374,8 +1393,11 @@ at32_add_device_mci(unsigned int id, struct mci_platform_data *data)
 	slave->sdata.dma_dev = &dw_dmac0_device.dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	slave->sdata.reg_width = DW_DMA_SLAVE_WIDTH_32BIT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	slave->sdata.cfg_hi = (DWC_CFGH_SRC_PER(0)
 				| DWC_CFGH_DST_PER(1));
 	slave->sdata.cfg_lo &= ~(DWC_CFGL_HS_DST_POL
@@ -2072,18 +2094,24 @@ at32_add_device_ac97c(unsigned int id, struct ac97c_platform_data *data,
 		rx_dws->dma_dev = &dw_dmac0_device.dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		rx_dws->reg_width = DW_DMA_SLAVE_WIDTH_16BIT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rx_dws->cfg_hi = DWC_CFGH_SRC_PER(3);
 		rx_dws->cfg_lo &= ~(DWC_CFGL_HS_DST_POL | DWC_CFGL_HS_SRC_POL);
 		rx_dws->src_master = 0;
 		rx_dws->dst_master = 1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		rx_dws->src_msize = DW_DMA_MSIZE_1;
 		rx_dws->dst_msize = DW_DMA_MSIZE_1;
 		rx_dws->fc = DW_DMA_FC_D_P2M;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Check if DMA slave interface for playback should be configured. */
@@ -2091,18 +2119,24 @@ at32_add_device_ac97c(unsigned int id, struct ac97c_platform_data *data,
 		tx_dws->dma_dev = &dw_dmac0_device.dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		tx_dws->reg_width = DW_DMA_SLAVE_WIDTH_16BIT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tx_dws->cfg_hi = DWC_CFGH_DST_PER(4);
 		tx_dws->cfg_lo &= ~(DWC_CFGL_HS_DST_POL | DWC_CFGL_HS_SRC_POL);
 		tx_dws->src_master = 0;
 		tx_dws->dst_master = 1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		tx_dws->src_msize = DW_DMA_MSIZE_1;
 		tx_dws->dst_msize = DW_DMA_MSIZE_1;
 		tx_dws->fc = DW_DMA_FC_D_M2P;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (platform_device_add_data(pdev, data,
@@ -2174,18 +2208,24 @@ at32_add_device_abdac(unsigned int id, struct atmel_abdac_pdata *data)
 	dws->dma_dev = &dw_dmac0_device.dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dws->reg_width = DW_DMA_SLAVE_WIDTH_32BIT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dws->cfg_hi = DWC_CFGH_DST_PER(2);
 	dws->cfg_lo &= ~(DWC_CFGL_HS_DST_POL | DWC_CFGL_HS_SRC_POL);
 	dws->src_master = 0;
 	dws->dst_master = 1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dws->src_msize = DW_DMA_MSIZE_1;
 	dws->dst_msize = DW_DMA_MSIZE_1;
 	dws->fc = DW_DMA_FC_D_M2P;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (platform_device_add_data(pdev, data,
 				sizeof(struct atmel_abdac_pdata)))

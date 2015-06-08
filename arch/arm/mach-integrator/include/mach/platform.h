@@ -15,10 +15,13 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* DO NOT EDIT!! - this file automatically generated
  *                 from .s file by awk -f s2h.awk
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**************************************************************************
  * * Copyright © ARM Limited 1998.  All rights reserved.
  * ***********************************************************************/
@@ -404,6 +407,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TICKS_PER_uSEC                  24
 
 /*
@@ -414,6 +419,7 @@
 #define mSEC_10                         (mSEC_1 * 10)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INTEGRATOR_CSR_BASE             0x10000000
 #define INTEGRATOR_CSR_SIZE             0x10000000
 

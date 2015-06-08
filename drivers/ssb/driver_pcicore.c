@@ -3,13 +3,28 @@
  * Broadcom PCI-core driver
  *
  * Copyright 2005, Broadcom Corporation
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright 2006, 2007, Michael Buesch <m@bues.ch>
+=======
  * Copyright 2006, 2007, Michael Buesch <mb@bu3sch.de>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright 2006, 2007, Michael Buesch <mb@bu3sch.de>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Licensed under the GNU/GPL. See COPYING for details.
  */
 
 #include <linux/ssb/ssb.h>
 #include <linux/pci.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/ssb/ssb_embedded.h>
 
@@ -74,7 +89,15 @@ static u32 get_cfgspace_addr(struct ssb_pcicore *pc,
 	u32 tmp;
 
 	/* We do only have one cardbus device behind the bridge. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (pc->cardbusmode && (dev > 1))
+=======
 	if (pc->cardbusmode && (dev >= 1))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (pc->cardbusmode && (dev >= 1))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	if (bus == 0) {
@@ -314,7 +337,15 @@ int ssb_pcicore_pcibios_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 	return ssb_mips_irq(extpci_core->dev) + 2;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __devinit ssb_pcicore_init_hostmode(struct ssb_pcicore *pc)
+=======
 static void ssb_pcicore_init_hostmode(struct ssb_pcicore *pc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ssb_pcicore_init_hostmode(struct ssb_pcicore *pc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 val;
 
@@ -379,7 +410,15 @@ static void ssb_pcicore_init_hostmode(struct ssb_pcicore *pc)
 	register_pci_controller(&ssb_pcicore_controller);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit pcicore_is_in_hostmode(struct ssb_pcicore *pc)
+=======
 static int pcicore_is_in_hostmode(struct ssb_pcicore *pc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int pcicore_is_in_hostmode(struct ssb_pcicore *pc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ssb_bus *bus = pc->dev->bus;
 	u16 chipid_top;
@@ -412,7 +451,15 @@ static int pcicore_is_in_hostmode(struct ssb_pcicore *pc)
  * Workarounds.
  **************************************************/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __devinit ssb_pcicore_fix_sprom_core_index(struct ssb_pcicore *pc)
+=======
 static void ssb_pcicore_fix_sprom_core_index(struct ssb_pcicore *pc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ssb_pcicore_fix_sprom_core_index(struct ssb_pcicore *pc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u16 tmp = pcicore_read16(pc, SSB_PCICORE_SPROM(0));
 	if (((tmp & 0xF000) >> 12) != pc->dev->core_index) {
@@ -514,7 +561,15 @@ static void ssb_pcicore_pcie_setup_workarounds(struct ssb_pcicore *pc)
  * Generic and Clientmode operation code.
  **************************************************/
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __devinit ssb_pcicore_init_clientmode(struct ssb_pcicore *pc)
+=======
 static void ssb_pcicore_init_clientmode(struct ssb_pcicore *pc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ssb_pcicore_init_clientmode(struct ssb_pcicore *pc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ssb_device *pdev = pc->dev;
 	struct ssb_bus *bus = pdev->bus;
@@ -533,7 +588,15 @@ static void ssb_pcicore_init_clientmode(struct ssb_pcicore *pc)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void __devinit ssb_pcicore_init(struct ssb_pcicore *pc)
+=======
 void ssb_pcicore_init(struct ssb_pcicore *pc)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ssb_pcicore_init(struct ssb_pcicore *pc)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ssb_device *dev = pc->dev;
 

@@ -10,8 +10,12 @@
 <<<<<<< HEAD
 #include "chan.h"
 =======
+<<<<<<< HEAD
+#include "chan.h"
+=======
 #include "chan_kern.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "irq_kern.h"
 #include "irq_user.h"
 #include "kern_util.h"
@@ -26,10 +30,15 @@ static irqreturn_t line_interrupt(int irq, void *data)
 
 	if (line)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chan_interrupt(line, line->tty, irq);
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+=======
 =======
 		chan_interrupt(&line->chan_list, &line->task, line->tty, irq);
 	return IRQ_HANDLED;
@@ -45,6 +54,7 @@ static void line_timer_cb(struct work_struct *work)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Returns the free space inside the ring buffer of this line.
  *
@@ -159,8 +169,12 @@ static int flush_buffer(struct line *line)
 <<<<<<< HEAD
 		n = write_chan(line->chan_out, line->head, count,
 =======
+<<<<<<< HEAD
+		n = write_chan(line->chan_out, line->head, count,
+=======
 		n = write_chan(&line->chan_list, line->head, count,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       line->driver->write_irq);
 		if (n < 0)
 			return n;
@@ -180,8 +194,12 @@ static int flush_buffer(struct line *line)
 <<<<<<< HEAD
 	n = write_chan(line->chan_out, line->head, count,
 =======
+<<<<<<< HEAD
+	n = write_chan(line->chan_out, line->head, count,
+=======
 	n = write_chan(&line->chan_list, line->head, count,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       line->driver->write_irq);
 
 	if (n < 0)
@@ -200,11 +218,17 @@ void line_flush_buffer(struct tty_struct *tty)
 	spin_lock_irqsave(&line->lock, flags);
 	flush_buffer(line);
 =======
+<<<<<<< HEAD
+
+	spin_lock_irqsave(&line->lock, flags);
+	flush_buffer(line);
+=======
 	int err;
 
 	spin_lock_irqsave(&line->lock, flags);
 	err = flush_buffer(line);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&line->lock, flags);
 }
 
@@ -235,8 +259,12 @@ int line_write(struct tty_struct *tty, const unsigned char *buf, int len)
 <<<<<<< HEAD
 		n = write_chan(line->chan_out, buf, len,
 =======
+<<<<<<< HEAD
+		n = write_chan(line->chan_out, buf, len,
+=======
 		n = write_chan(&line->chan_list, buf, len,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       line->driver->write_irq);
 		if (n < 0) {
 			ret = n;
@@ -351,8 +379,12 @@ void line_throttle(struct tty_struct *tty)
 <<<<<<< HEAD
 	deactivate_chan(line->chan_in, line->driver->read_irq);
 =======
+<<<<<<< HEAD
+	deactivate_chan(line->chan_in, line->driver->read_irq);
+=======
 	deactivate_chan(&line->chan_list, line->driver->read_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	line->throttled = 1;
 }
 
@@ -364,9 +396,13 @@ void line_unthrottle(struct tty_struct *tty)
 <<<<<<< HEAD
 	chan_interrupt(line, tty, line->driver->read_irq);
 =======
+<<<<<<< HEAD
+	chan_interrupt(line, tty, line->driver->read_irq);
+=======
 	chan_interrupt(&line->chan_list, &line->task, tty,
 		       line->driver->read_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Maybe there is enough stuff pending that calling the interrupt
@@ -377,8 +413,12 @@ void line_unthrottle(struct tty_struct *tty)
 <<<<<<< HEAD
 		reactivate_chan(line->chan_in, line->driver->read_irq);
 =======
+<<<<<<< HEAD
+		reactivate_chan(line->chan_in, line->driver->read_irq);
+=======
 		reactivate_chan(&line->chan_list, line->driver->read_irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static irqreturn_t line_write_interrupt(int irq, void *data)
@@ -393,9 +433,14 @@ static irqreturn_t line_write_interrupt(int irq, void *data)
 	 * Interrupts are disabled here because genirq keep irqs disabled when
 	 * calling the action handler.
 =======
+<<<<<<< HEAD
+	 * Interrupts are disabled here because genirq keep irqs disabled when
+	 * calling the action handler.
+=======
 	 * Interrupts are disabled here because we registered the interrupt with
 	 * IRQF_DISABLED (see line_setup_irq).
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 
 	spin_lock(&line->lock);
@@ -404,7 +449,11 @@ static irqreturn_t line_write_interrupt(int irq, void *data)
 <<<<<<< HEAD
 		spin_unlock(&line->lock);
 =======
+<<<<<<< HEAD
+		spin_unlock(&line->lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return IRQ_NONE;
 	} else if (err < 0) {
 		line->head = line->buffer;
@@ -425,8 +474,12 @@ int line_setup_irq(int fd, int input, int output, struct line *line, void *data)
 <<<<<<< HEAD
 	int err = 0, flags = IRQF_SHARED | IRQF_SAMPLE_RANDOM;
 =======
+<<<<<<< HEAD
+	int err = 0, flags = IRQF_SHARED | IRQF_SAMPLE_RANDOM;
+=======
 	int err = 0, flags = IRQF_DISABLED | IRQF_SHARED | IRQF_SAMPLE_RANDOM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (input)
 		err = um_request_irq(driver->read_irq, fd, IRQ_READ,
@@ -440,8 +493,11 @@ int line_setup_irq(int fd, int input, int output, struct line *line, void *data)
 					driver->write_irq_name, data);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	line->have_irq = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -461,9 +517,14 @@ int line_setup_irq(int fd, int input, int output, struct line *line, void *data)
  * line->count serves to decide whether the device should be enabled or
  * disabled on the host.  If it's equal to 0, then we are doing the
 =======
+<<<<<<< HEAD
+ * line->count serves to decide whether the device should be enabled or
+ * disabled on the host.  If it's equal to 0, then we are doing the
+=======
  * tty->count serves to decide whether the device should be enabled or
  * disabled on the host.  If it's equal to 1, then we are doing the
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * first open or last close.  Otherwise, open and close just return.
  */
 
@@ -475,17 +536,26 @@ int line_open(struct line *lines, struct tty_struct *tty)
 <<<<<<< HEAD
 	mutex_lock(&line->count_lock);
 =======
+<<<<<<< HEAD
+	mutex_lock(&line->count_lock);
+=======
 	spin_lock(&line->count_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!line->valid)
 		goto out_unlock;
 
 	err = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (line->count++)
 		goto out_unlock;
 
 	BUG_ON(tty->driver_data);
+<<<<<<< HEAD
+=======
 =======
 	if (tty->count > 1)
 		goto out_unlock;
@@ -493,11 +563,15 @@ int line_open(struct line *lines, struct tty_struct *tty)
 	spin_unlock(&line->count_lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tty->driver_data = line;
 	line->tty = tty;
 
 	err = enable_chan(line);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) /* line_close() will be called by our caller */
 		goto out_unlock;
 
@@ -510,6 +584,8 @@ int line_open(struct line *lines, struct tty_struct *tty)
 			 &tty->winsize.ws_col);
 out_unlock:
 	mutex_unlock(&line->count_lock);
+<<<<<<< HEAD
+=======
 =======
 	if (err)
 		return err;
@@ -529,6 +605,7 @@ out_unlock:
 out_unlock:
 	spin_unlock(&line->count_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -549,12 +626,17 @@ void line_close(struct tty_struct *tty, struct file * filp)
 	flush_buffer(line);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&line->count_lock);
 	BUG_ON(!line->valid);
 
 	if (--line->count)
 		goto out_unlock;
 
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&line->count_lock);
 	if (!line->valid)
@@ -566,6 +648,7 @@ void line_close(struct tty_struct *tty, struct file * filp)
 	spin_unlock(&line->count_lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	line->tty = NULL;
 	tty->driver_data = NULL;
 
@@ -578,11 +661,16 @@ void line_close(struct tty_struct *tty, struct file * filp)
 out_unlock:
 	mutex_unlock(&line->count_lock);
 =======
+<<<<<<< HEAD
+out_unlock:
+	mutex_unlock(&line->count_lock);
+=======
 	return;
 
 out_unlock:
 	spin_unlock(&line->count_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void close_lines(struct line *lines, int nlines)
@@ -591,6 +679,9 @@ void close_lines(struct line *lines, int nlines)
 
 	for(i = 0; i < nlines; i++)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		close_chan(&lines[i]);
 }
 
@@ -604,6 +695,8 @@ int setup_one_line(struct line *lines, int n, char *init,
 	mutex_lock(&line->count_lock);
 
 	if (line->count) {
+<<<<<<< HEAD
+=======
 =======
 		close_chan(&lines[i].chan_list, 0);
 }
@@ -618,11 +711,15 @@ static int setup_one_line(struct line *lines, int n, char *init, int init_prio,
 
 	if (line->tty != NULL) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*error_out = "Device is already open";
 		goto out;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!strcmp(init, "none")) {
 		if (line->valid) {
 			line->valid = 0;
@@ -660,6 +757,8 @@ static int setup_one_line(struct line *lines, int n, char *init, int init_prio,
 	}
 out:
 	mutex_unlock(&line->count_lock);
+<<<<<<< HEAD
+=======
 =======
 	if (line->init_pri <= init_prio) {
 		line->init_pri = init_prio;
@@ -674,6 +773,7 @@ out:
 out:
 	spin_unlock(&line->count_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -685,10 +785,15 @@ out:
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int line_setup(char **conf, unsigned int num, char **def,
 	       char *init, char *name)
 {
 	char *error;
+<<<<<<< HEAD
+=======
 =======
 int line_setup(struct line *lines, unsigned int num, char *init,
 	       char **error_out)
@@ -696,6 +801,7 @@ int line_setup(struct line *lines, unsigned int num, char *init,
 	int i, n, err;
 	char *end;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (*init == '=') {
 		/*
@@ -703,6 +809,9 @@ int line_setup(struct line *lines, unsigned int num, char *init,
 		 * consoles at once.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*def = init + 1;
 	} else {
 		char *end;
@@ -724,6 +833,8 @@ out:
 	printk(KERN_ERR "Failed to set up %s with "
 	       "configuration string \"%s\" : %s\n", name, init, error);
 	return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 		n = -1;
 	}
@@ -756,6 +867,7 @@ out:
 	}
 	return n == -1 ? num : n;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int line_config(struct line *lines, unsigned int num, char *str,
@@ -764,9 +876,13 @@ int line_config(struct line *lines, unsigned int num, char *str,
 <<<<<<< HEAD
 	char *end;
 =======
+<<<<<<< HEAD
+	char *end;
+=======
 	struct line *line;
 	char *new;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int n;
 
 	if (*str == '=') {
@@ -775,6 +891,9 @@ int line_config(struct line *lines, unsigned int num, char *str,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n = simple_strtoul(str, &end, 0);
 	if (*end++ != '=') {
 		*error_out = "Couldn't parse device number";
@@ -786,6 +905,8 @@ int line_config(struct line *lines, unsigned int num, char *str,
 	}
 
 	return setup_one_line(lines, n, end, opts, error_out);
+<<<<<<< HEAD
+=======
 =======
 	new = kstrdup(str, GFP_KERNEL);
 	if (new == NULL) {
@@ -799,6 +920,7 @@ int line_config(struct line *lines, unsigned int num, char *str,
 	line = &lines[n];
 	return parse_chan_pair(line->init_str, line, n, opts, error_out);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int line_get_config(char *name, struct line *lines, unsigned int num, char *str,
@@ -824,8 +946,12 @@ int line_get_config(char *name, struct line *lines, unsigned int num, char *str,
 <<<<<<< HEAD
 	mutex_lock(&line->count_lock);
 =======
+<<<<<<< HEAD
+	mutex_lock(&line->count_lock);
+=======
 	spin_lock(&line->count_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!line->valid)
 		CONFIG_CHUNK(str, size, n, "none", 1);
 	else if (line->tty == NULL)
@@ -834,9 +960,14 @@ int line_get_config(char *name, struct line *lines, unsigned int num, char *str,
 	else n = chan_config_string(line, str, size, error_out);
 	mutex_unlock(&line->count_lock);
 =======
+<<<<<<< HEAD
+	else n = chan_config_string(line, str, size, error_out);
+	mutex_unlock(&line->count_lock);
+=======
 	else n = chan_config_string(&line->chan_list, str, size, error_out);
 	spin_unlock(&line->count_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return n;
 }
@@ -859,6 +990,9 @@ int line_id(char **str, int *start_out, int *end_out)
 int line_remove(struct line *lines, unsigned int num, int n, char **error_out)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (n >= num) {
 		*error_out = "Device number out of range";
 		return -EINVAL;
@@ -876,6 +1010,8 @@ int register_lines(struct line_driver *line_driver,
 
 	if (!driver)
 		return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 	int err;
 	char config[sizeof("conxxxx=none\0")];
@@ -897,6 +1033,7 @@ struct tty_driver *register_lines(struct line_driver *line_driver,
 	if (!driver)
 		return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	driver->driver_name = line_driver->name;
 	driver->name = line_driver->device_name;
@@ -905,6 +1042,9 @@ struct tty_driver *register_lines(struct line_driver *line_driver,
 	driver->type = line_driver->type;
 	driver->subtype = line_driver->subtype;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	driver->flags = TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV;
 	driver->init_termios = tty_std_termios;
 	
@@ -927,6 +1067,8 @@ struct tty_driver *register_lines(struct line_driver *line_driver,
 	line_driver->driver = driver;
 	mconsole_register_dev(&line_driver->mc);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	driver->flags = TTY_DRIVER_REAL_RAW;
 	driver->init_termios = tty_std_termios;
@@ -947,11 +1089,14 @@ struct tty_driver *register_lines(struct line_driver *line_driver,
 	mconsole_register_dev(&line_driver->mc);
 	return driver;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static DEFINE_SPINLOCK(winch_handler_lock);
 static LIST_HEAD(winch_handlers);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void lines_init(struct line *lines, int nlines, struct chan_opts *opts)
@@ -980,6 +1125,7 @@ void lines_init(struct line *lines, int nlines, struct chan_opts *opts)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct winch {
 	struct list_head list;
 	int fd;
@@ -988,6 +1134,9 @@ struct winch {
 	struct tty_struct *tty;
 	unsigned long stack;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct work_struct work;
 };
 
@@ -998,6 +1147,8 @@ static void __free_winch(struct work_struct *work)
 
 	if (winch->pid != -1)
 		os_kill_process(winch->pid, 1);
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -1013,12 +1164,16 @@ static void free_winch(struct winch *winch, int free_irq_ok)
 	if (winch->fd != -1)
 		os_close_file(winch->fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (winch->stack != 0)
 		free_stack(winch->stack, 0);
 	kfree(winch);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void free_winch(struct winch *winch)
 {
 	int fd = winch->fd;
@@ -1029,14 +1184,20 @@ static void free_winch(struct winch *winch)
 	__free_winch(&winch->work);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t winch_interrupt(int irq, void *data)
 {
 	struct winch *winch = data;
 	struct tty_struct *tty;
 	struct line *line;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int fd = winch->fd;
 	int err;
 	char c;
@@ -1048,6 +1209,8 @@ static irqreturn_t winch_interrupt(int irq, void *data)
 				winch->fd = -1;
 				list_del(&winch->list);
 				os_close_file(fd);
+<<<<<<< HEAD
+=======
 =======
 	int err;
 	char c;
@@ -1057,6 +1220,7 @@ static irqreturn_t winch_interrupt(int irq, void *data)
 		if (err < 0) {
 			if (err != -EAGAIN) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk(KERN_ERR "winch_interrupt : "
 				       "read failed, errno = %d\n", -err);
 				printk(KERN_ERR "fd %d is losing SIGWINCH "
@@ -1065,8 +1229,13 @@ static irqreturn_t winch_interrupt(int irq, void *data)
 				INIT_WORK(&winch->work, __free_winch);
 				schedule_work(&winch->work);
 =======
+<<<<<<< HEAD
+				INIT_WORK(&winch->work, __free_winch);
+				schedule_work(&winch->work);
+=======
 				free_winch(winch, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return IRQ_HANDLED;
 			}
 			goto out;
@@ -1079,8 +1248,12 @@ static irqreturn_t winch_interrupt(int irq, void *data)
 <<<<<<< HEAD
 			chan_window_size(line, &tty->winsize.ws_row,
 =======
+<<<<<<< HEAD
+			chan_window_size(line, &tty->winsize.ws_row,
+=======
 			chan_window_size(&line->chan_list, &tty->winsize.ws_row,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 &tty->winsize.ws_col);
 			kill_pgrp(tty->pgrp, SIGWINCH, 1);
 		}
@@ -1113,8 +1286,12 @@ void register_winch_irq(int fd, int tty_fd, int pid, struct tty_struct *tty,
 <<<<<<< HEAD
 			   IRQF_SHARED | IRQF_SAMPLE_RANDOM,
 =======
+<<<<<<< HEAD
+			   IRQF_SHARED | IRQF_SAMPLE_RANDOM,
+=======
 			   IRQF_DISABLED | IRQF_SHARED | IRQF_SAMPLE_RANDOM,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   "winch", winch) < 0) {
 		printk(KERN_ERR "register_winch_irq - failed to register "
 		       "IRQ\n");
@@ -1149,8 +1326,12 @@ static void unregister_winch(struct tty_struct *tty)
 <<<<<<< HEAD
 			free_winch(winch);
 =======
+<<<<<<< HEAD
+			free_winch(winch);
+=======
 			free_winch(winch, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -1169,8 +1350,12 @@ static void winch_cleanup(void)
 <<<<<<< HEAD
 		free_winch(winch);
 =======
+<<<<<<< HEAD
+		free_winch(winch);
+=======
 		free_winch(winch, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	spin_unlock(&winch_handler_lock);

@@ -38,8 +38,12 @@ static unsigned long siumckb_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops siumckb_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops siumckb_clk_ops = {
+=======
 static struct clk_ops siumckb_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc = siumckb_recalc,
 };
 
@@ -171,7 +175,11 @@ static struct snd_soc_card snd_soc_migor = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &migor_dai,
 	.num_links = 1,
 };

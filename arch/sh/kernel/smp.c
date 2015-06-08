@@ -25,10 +25,15 @@
 #include <linux/atomic.h>
 #include <asm/processor.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <asm/processor.h>
+=======
 #include <asm/atomic.h>
 #include <asm/processor.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu_context.h>
 #include <asm/smp.h>
 #include <asm/cacheflush.h>
@@ -36,7 +41,11 @@
 <<<<<<< HEAD
 #include <asm/setup.h>
 =======
+<<<<<<< HEAD
+#include <asm/setup.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __cpu_number_map[NR_CPUS];		/* Map physical to logical */
 int __cpu_logical_map[NR_CPUS];		/* Map logical to physical */
@@ -75,8 +84,12 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
 <<<<<<< HEAD
 	init_cpu_present(cpu_possible_mask);
 =======
+<<<<<<< HEAD
+	init_cpu_present(cpu_possible_mask);
+=======
 	init_cpu_present(&cpu_possible_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 

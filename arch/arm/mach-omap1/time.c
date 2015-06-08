@@ -39,8 +39,11 @@
 #include <linux/interrupt.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/sched.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spinlock.h>
 #include <linux/clk.h>
 #include <linux/err.h>
@@ -50,26 +53,35 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 #include <mach/hardware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/leds.h>
 #include <asm/irq.h>
 #include <asm/sched_clock.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach/irq.h>
 #include <asm/mach/time.h>
 
 #include "iomap.h"
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <asm/mach/irq.h>
 #include <asm/mach/time.h>
 
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_OMAP_MPU_TIMER
 
@@ -210,6 +222,11 @@ static u32 notrace omap_mpu_read_sched_clock(void)
 {
 	return ~omap_mpu_timer_read(1);
 =======
+<<<<<<< HEAD
+static u32 notrace omap_mpu_read_sched_clock(void)
+{
+	return ~omap_mpu_timer_read(1);
+=======
 static DEFINE_CLOCK_DATA(cd);
 
 static inline unsigned long long notrace _omap_mpu_sched_clock(void)
@@ -235,6 +252,7 @@ static void notrace mpu_update_sched_clock(void)
 	u32 cyc = ~omap_mpu_timer_read(1);
 	update_sched_clock(&cd, cyc, (u32)~0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init omap_init_clocksource(unsigned long rate)
@@ -247,8 +265,12 @@ static void __init omap_init_clocksource(unsigned long rate)
 <<<<<<< HEAD
 	setup_sched_clock(omap_mpu_read_sched_clock, 32, rate);
 =======
+<<<<<<< HEAD
+	setup_sched_clock(omap_mpu_read_sched_clock, 32, rate);
+=======
 	init_sched_clock(&cd, mpu_update_sched_clock, 32, rate);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (clocksource_mmio_init(&timer->read_tim, "mpu_timer2", rate,
 			300, 32, clocksource_mmio_readl_down))
@@ -281,6 +303,8 @@ static inline void omap_mpu_timer_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_OMAP_MPU_TIMER) && defined(CONFIG_OMAP_32K_TIMER)
 static unsigned long long (*preferred_sched_clock)(void);
 
@@ -306,6 +330,7 @@ static inline void preferred_sched_clock_init(bool use_32k_sched_clcok)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int omap_32k_timer_usable(void)
 {
 	int res = false;
@@ -326,6 +351,9 @@ static inline int omap_32k_timer_usable(void)
  * ---------------------------------------------------------------------------
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init omap1_timer_init(void)
 {
 	if (!omap_32k_timer_usable())
@@ -334,6 +362,8 @@ static void __init omap1_timer_init(void)
 
 struct sys_timer omap1_timer = {
 	.init		= omap1_timer_init,
+<<<<<<< HEAD
+=======
 =======
 static void __init omap_timer_init(void)
 {
@@ -348,4 +378,5 @@ static void __init omap_timer_init(void)
 struct sys_timer omap_timer = {
 	.init		= omap_timer_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

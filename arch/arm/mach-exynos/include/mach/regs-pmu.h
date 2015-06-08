@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* linux/arch/arm/mach-exynos4/include/mach/regs-pmu.h
 =======
+<<<<<<< HEAD
+/* linux/arch/arm/mach-exynos4/include/mach/regs-pmu.h
+=======
 /* linux/arch/arm/mach-exynos/include/mach/regs-pmu.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2010-2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
@@ -23,10 +27,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "regs-pmu-4210.h"
 #include "regs-pmu-4212.h"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P_CENTRAL_SEQ_CONFIGURATION		S5P_PMUREG(0x0200)
 
 #define S5P_CENTRAL_LOWPWR_CFG			(1 << 16)
@@ -40,6 +47,9 @@
 #define S5P_USE_STANDBY_WFE1			(1 << 25)
 #define S5P_USE_STANDBYWFE_ISP_ARM		(1 << 26)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define S5P_SWRESET				S5P_PMUREG(0x0400)
 #define EXYNOS_SWRESET				S5P_PMUREG(0x0400)
@@ -53,6 +63,8 @@
 
 #define S5P_DAC_PHY_CONTROL			S5P_PMUREG(0x070C)
 #define S5P_DAC_PHY_ENABLE			(1 << 0)
+<<<<<<< HEAD
+=======
 =======
 #define S5P_USE_MASK				((0x3 << 16) | (0x3 << 24))
 
@@ -87,6 +99,7 @@
 #define S5P_DAC_PHY_ENABLE			(1 << 0)
 #define S5P_DAC_DISABLE				(0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define S5P_MIPI_DPHY_CONTROL(n)		S5P_PMUREG(0x0710 + (n) * 4)
 #define S5P_MIPI_DPHY_ENABLE			(1 << 0)
@@ -95,10 +108,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define S5P_DPTX_PHY_CONTROL			S5P_PMUREG(0x720)
 #define S5P_DPTX_PHY_ENABLE			(1 << 0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P_INFORM0				S5P_PMUREG(0x0800)
 #define S5P_INFORM1				S5P_PMUREG(0x0804)
 #define S5P_INFORM2				S5P_PMUREG(0x0808)
@@ -109,6 +125,9 @@
 #define S5P_INFORM7				S5P_PMUREG(0x081C)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P_ARM_CORE0_LOWPWR			S5P_PMUREG(0x1000)
 #define S5P_DIS_IRQ_CORE0			S5P_PMUREG(0x1004)
 #define S5P_DIS_IRQ_CENTRAL0			S5P_PMUREG(0x1008)
@@ -183,6 +202,8 @@
 
 #define S5P_ARM_COMMON_OPTION			S5P_PMUREG(0x2408)
 #define S5P_TOP_PWR_OPTION			S5P_PMUREG(0x2C48)
+<<<<<<< HEAD
+=======
 =======
 #define S5P_PMU_DEBUG				S5P_PMUREG(0x0A00)
 #define S5P_PMU_CLKOUT_SEL_SHIFT		(8)
@@ -267,6 +288,7 @@
 
 #define S5P_ARM_COMMON_OPTION			S5P_PMUREG(0x2408)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P_CAM_OPTION				S5P_PMUREG(0x3C08)
 #define S5P_TV_OPTION				S5P_PMUREG(0x3C28)
 #define S5P_MFC_OPTION				S5P_PMUREG(0x3C48)
@@ -287,10 +309,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define S5P_XXTI_CONFIGURATION			S5P_PMUREG(0x3420)
 #define S5P_XXTI_STATUS				S5P_PMUREG(0x3424)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P_PMU_CAM_CONF			S5P_PMUREG(0x3C00)
 #define S5P_PMU_TV_CONF				S5P_PMUREG(0x3C20)
 #define S5P_PMU_MFC_CONF			S5P_PMUREG(0x3C40)
@@ -299,6 +324,9 @@
 #define S5P_PMU_GPS_CONF			S5P_PMUREG(0x3CE0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5P_PMU_SATA_PHY_CONTROL_EN		0x1
 #define S5P_CORE_LOCAL_PWR_EN			0x3
 #define S5P_INT_LOCAL_PWR_EN			0x7
@@ -360,6 +388,8 @@
 #define S5P_CSSYS_MEM_OPTION			S5P_PMUREG(0x2EA8)
 #define S5P_SECSS_MEM_OPTION			S5P_PMUREG(0x2EC8)
 #define S5P_ROTATOR_MEM_OPTION			S5P_PMUREG(0x2F48)
+<<<<<<< HEAD
+=======
 =======
 #define S5P_CORE_LOCAL_PWR_EN			0x3
 
@@ -373,5 +403,6 @@
 #define S5P_CHECK_DIDLE				0xBAD00000
 #define S5P_CHECK_LPA				0xABAD0000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_REGS_PMU_H */

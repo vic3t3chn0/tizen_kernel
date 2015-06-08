@@ -4,10 +4,16 @@
  *
  * (c) 2008-2011 Manuel Lauss <manuel.lauss@googlemail.com>
 =======
+<<<<<<< HEAD
+ * DB1200/DB1300/DB1550 ASoC audio fabric support code.
+ *
+ * (c) 2008-2011 Manuel Lauss <manuel.lauss@googlemail.com>
+=======
  * DB1200 ASoC audio fabric support code.
  *
  * (c) 2008-9 Manuel Lauss <manuel.lauss@gmail.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  */
 
@@ -28,6 +34,9 @@
 #include "psc.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device_id db1200_pids[] = {
 	{
 		.name		= "db1200-ac97",
@@ -51,8 +60,11 @@ static struct platform_device_id db1200_pids[] = {
 	{},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-------------------------  AC97 PART  ---------------------------*/
 
 static struct snd_soc_dai_link db1200_ac97_dai = {
@@ -67,6 +79,9 @@ static struct snd_soc_dai_link db1200_ac97_dai = {
 static struct snd_soc_card db1200_ac97_machine = {
 	.name		= "DB1200_AC97",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner		= THIS_MODULE,
 	.dai_link	= &db1200_ac97_dai,
 	.num_links	= 1,
@@ -89,8 +104,11 @@ static struct snd_soc_card db1300_ac97_machine = {
 
 static struct snd_soc_card db1550_ac97_machine = {
 	.name		= "DB1550_AC97",
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link	= &db1200_ac97_dai,
 	.num_links	= 1,
 };
@@ -143,12 +161,19 @@ static struct snd_soc_card db1200_i2s_machine = {
 <<<<<<< HEAD
 	.owner		= THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner		= THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link	= &db1200_i2s_dai,
 	.num_links	= 1,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_link db1300_i2s_dai = {
 	.name		= "WM8731",
 	.stream_name	= "WM8731 PCM",
@@ -224,6 +249,8 @@ module_platform_driver(db1200_audio_driver);
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("DB1200/DB1300/DB1550 ASoC audio support");
+<<<<<<< HEAD
+=======
 =======
 /*-------------------------  COMMON PART  ---------------------------*/
 
@@ -265,4 +292,5 @@ module_exit(db1200_audio_unload);
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("DB1200 ASoC audio support");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_AUTHOR("Manuel Lauss");

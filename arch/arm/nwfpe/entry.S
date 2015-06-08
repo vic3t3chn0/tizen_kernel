@@ -24,7 +24,12 @@
 #include <asm/opcodes.h>
 
 =======
+<<<<<<< HEAD
+#include <asm/opcodes.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* This is the kernel's entry point into the floating point emulator.
 It is called from the kernel with code similar to this:
 
@@ -87,11 +92,16 @@ nwfpe_enter:
 emulate:
 	ldr	r1, [sp, #S_PSR]	@ fetch the PSR
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	arm_check_condition	@ check the condition
 	cmp	r0, #ARM_OPCODE_CONDTEST_PASS	@ condition passed?
 
 	@ if condition code failed to match, next insn
 	bne	next			@ get the next instruction;
+<<<<<<< HEAD
+=======
 =======
 	bl	checkCondition		@ check the condition
 	cmp	r0, #0			@ r0 = 0 ==> condition failed
@@ -99,6 +109,7 @@ emulate:
 	@ if condition code failed to match, next insn
 	beq	next			@ get the next instruction;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mov	r0, r6			@ prepare for EmulateAll()
 	bl	EmulateAll		@ emulate the instruction

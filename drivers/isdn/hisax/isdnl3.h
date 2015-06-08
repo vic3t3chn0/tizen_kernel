@@ -5,7 +5,15 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define SBIT(state) (1 << state)
+=======
 #define SBIT(state) (1<<state)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define SBIT(state) (1<<state)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ALL_STATES  0x03ffffff
 
 #define PROTO_DIS_EURO	0x08
@@ -40,4 +48,11 @@ void l3_msg(struct PStack *st, int pr, void *arg);
 void setstack_dss1(struct PStack *st);
 void setstack_ni1(struct PStack *st);
 void setstack_1tr6(struct PStack *st);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

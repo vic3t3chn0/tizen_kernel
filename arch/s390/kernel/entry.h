@@ -5,6 +5,9 @@
 #include <linux/signal.h>
 #include <asm/ptrace.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cputime.h>
 #include <asm/timer.h>
 
@@ -27,6 +30,8 @@ asmlinkage void do_syscall_trace_exit(struct pt_regs *regs);
 void do_protection_exception(struct pt_regs *regs);
 void do_dat_exception(struct pt_regs *regs);
 void do_asce_exception(struct pt_regs *regs);
+<<<<<<< HEAD
+=======
 =======
 
 typedef void pgm_check_handler_t(struct pt_regs *, long, unsigned long);
@@ -36,6 +41,7 @@ pgm_check_handler_t do_dat_exception;
 
 extern int sysctl_userprocess_debug;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void do_per_trap(struct pt_regs *regs);
 void syscall_trace(struct pt_regs *regs, int entryexit);
@@ -44,6 +50,9 @@ void do_signal(struct pt_regs *regs);
 int handle_signal32(unsigned long sig, struct k_sigaction *ka,
 		    siginfo_t *info, sigset_t *oldset, struct pt_regs *regs);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void do_notify_resume(struct pt_regs *regs);
 
 struct ext_code;
@@ -53,6 +62,8 @@ void __init startup_init(void);
 void die(struct pt_regs *regs, const char *str);
 
 void __init time_init(void);
+<<<<<<< HEAD
+=======
 =======
 
 void do_extint(struct pt_regs *regs, unsigned int, unsigned int, unsigned long);
@@ -60,6 +71,7 @@ int __cpuinit start_secondary(void *cpuvoid);
 void __init startup_init(void);
 void die(const char * str, struct pt_regs * regs, long err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct s390_mmap_arg_struct;
 struct fadvise64_64_args;

@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/soc.h>
 #include <sound/pcm_params.h>
@@ -45,11 +49,16 @@ static const struct snd_pcm_hardware dma_hardware = {
 				    SNDRV_PCM_FMTBIT_U8 |
 				    SNDRV_PCM_FMTBIT_S8,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.channels_min		= 2,
 	.channels_max		= 2,
 	.buffer_bytes_max	= 128*1024,
 	.period_bytes_min	= PAGE_SIZE,
 	.period_bytes_max	= PAGE_SIZE*2,
+<<<<<<< HEAD
+=======
 =======
 	.channels_min		= 1,
 	.channels_max		= 6,
@@ -57,6 +66,7 @@ static const struct snd_pcm_hardware dma_hardware = {
 	.period_bytes_min	= PAGE_SIZE,
 	.period_bytes_max	= PAGE_SIZE*8,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.periods_min		= 2,
 	.periods_max		= 128,
 	.fifo_size		= 32,
@@ -68,8 +78,11 @@ struct runtime_data {
 	unsigned int dma_loaded;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int dma_limit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int dma_period;
 	dma_addr_t dma_start;
 	dma_addr_t dma_pos;
@@ -81,7 +94,12 @@ struct runtime_data {
 static void audio_buffdone(void *data);
 
 =======
+<<<<<<< HEAD
+static void audio_buffdone(void *data);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* dma_enqueue
  *
  * place a dma buffer onto the queue for the dma system
@@ -89,19 +107,28 @@ static void audio_buffdone(void *data);
 <<<<<<< HEAD
  */
 =======
+<<<<<<< HEAD
+ */
+=======
 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void dma_enqueue(struct snd_pcm_substream *substream)
 {
 	struct runtime_data *prtd = substream->runtime->private_data;
 	dma_addr_t pos = prtd->dma_pos;
 	unsigned int limit;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct samsung_dma_prep_info dma_info;
 
 	pr_debug("Entered %s\n", __func__);
 
 	limit = (prtd->dma_end - prtd->dma_start) / prtd->dma_period;
+<<<<<<< HEAD
+=======
 =======
 	int ret;
 
@@ -112,11 +139,15 @@ static void dma_enqueue(struct snd_pcm_substream *substream)
 	else
 		limit = prtd->dma_limit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("%s: loaded %d, limit %d\n",
 				__func__, prtd->dma_loaded, limit);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_info.cap = (samsung_dma_has_circular() ? DMA_CYCLIC : DMA_SLAVE);
 	dma_info.direction =
 		(substream->stream == SNDRV_PCM_STREAM_PLAYBACK
@@ -142,6 +173,8 @@ static void dma_enqueue(struct snd_pcm_substream *substream)
 		pos += prtd->dma_period;
 		if (pos >= prtd->dma_end)
 			pos = prtd->dma_start;
+<<<<<<< HEAD
+=======
 =======
 	if (s3c_dma_has_infiniteloop()) {
 		ret = s3c2410_dma_enqueue_ring(prtd->params->channel,
@@ -174,12 +207,16 @@ static void dma_enqueue(struct snd_pcm_substream *substream)
 				break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	prtd->dma_pos = pos;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void audio_buffdone(void *data)
 {
 	struct snd_pcm_substream *substream = data;
@@ -202,6 +239,8 @@ static void audio_buffdone(void *data)
 		}
 		spin_unlock(&prtd->lock);
 	}
+<<<<<<< HEAD
+=======
 =======
 static void audio_buffdone(struct s3c2410_dma_chan *channel,
 				void *dev_id, int size,
@@ -228,6 +267,7 @@ static void audio_buffdone(struct s3c2410_dma_chan *channel,
 
 	spin_unlock(&prtd->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int dma_hw_params(struct snd_pcm_substream *substream,
@@ -242,9 +282,13 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 	struct samsung_dma_info dma_info;
 =======
+<<<<<<< HEAD
+	struct samsung_dma_info dma_info;
+=======
 	int ret = 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("Entered %s\n", __func__);
 
@@ -263,6 +307,9 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 			prtd->params->client, prtd->params->channel);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prtd->params->ops = samsung_dma_get_ops();
 
 		dma_info.cap = (samsung_dma_has_circular() ?
@@ -277,6 +324,8 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 				prtd->params->channel, &dma_info);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		ret = s3c2410_dma_request(prtd->params->channel,
 					  prtd->params->client, NULL);
@@ -296,6 +345,7 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 				    audio_buffdone);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_pcm_set_runtime_buffer(substream, &substream->dma_buffer);
 
 	runtime->dma_bytes = totbytes;
@@ -304,12 +354,17 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 	prtd->dma_loaded = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	prtd->dma_limit = runtime->hw.periods_min;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prtd->dma_period = params_period_bytes(params);
 	prtd->dma_start = runtime->dma_addr;
 	prtd->dma_pos = prtd->dma_start;
 	prtd->dma_end = prtd->dma_start + totbytes;
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -320,6 +375,7 @@ static int dma_hw_params(struct snd_pcm_substream *substream,
 		(unsigned int)runtime->dma_area);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irq(&prtd->lock);
 
 	return 0;
@@ -332,6 +388,9 @@ static int dma_hw_free(struct snd_pcm_substream *substream)
 	pr_debug("Entered %s\n", __func__);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_pcm_set_runtime_buffer(substream, NULL);
 
 	if (prtd->params) {
@@ -341,6 +400,8 @@ static int dma_hw_free(struct snd_pcm_substream *substream)
 		prtd->params = NULL;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	/* TODO - do we need to ensure DMA flushed */
 	snd_pcm_set_runtime_buffer(substream, NULL);
@@ -359,6 +420,7 @@ static int dma_hw_free(struct snd_pcm_substream *substream)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -374,6 +436,11 @@ static int dma_prepare(struct snd_pcm_substream *substream)
 	if (!prtd->params)
 		return 0;
 
+<<<<<<< HEAD
+	/* flush the DMA channel */
+	prtd->params->ops->flush(prtd->params->ch);
+
+=======
 <<<<<<< HEAD
 	/* flush the DMA channel */
 	prtd->params->ops->flush(prtd->params->ch);
@@ -397,6 +464,7 @@ static int dma_prepare(struct snd_pcm_substream *substream)
 	/* flush the DMA channel */
 	s3c2410_dma_ctrl(prtd->params->channel, S3C2410_DMAOP_FLUSH);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prtd->dma_loaded = 0;
 	prtd->dma_pos = prtd->dma_start;
 
@@ -423,8 +491,12 @@ static int dma_trigger(struct snd_pcm_substream *substream, int cmd)
 <<<<<<< HEAD
 		prtd->params->ops->trigger(prtd->params->ch);
 =======
+<<<<<<< HEAD
+		prtd->params->ops->trigger(prtd->params->ch);
+=======
 		s3c2410_dma_ctrl(prtd->params->channel, S3C2410_DMAOP_START);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case SNDRV_PCM_TRIGGER_STOP:
@@ -434,8 +506,12 @@ static int dma_trigger(struct snd_pcm_substream *substream, int cmd)
 <<<<<<< HEAD
 		prtd->params->ops->stop(prtd->params->ch);
 =======
+<<<<<<< HEAD
+		prtd->params->ops->stop(prtd->params->ch);
+=======
 		s3c2410_dma_ctrl(prtd->params->channel, S3C2410_DMAOP_STOP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	default:
@@ -455,12 +531,17 @@ dma_pointer(struct snd_pcm_substream *substream)
 	struct runtime_data *prtd = runtime->private_data;
 	unsigned long res;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("Entered %s\n", __func__);
 
 	res = prtd->dma_pos - prtd->dma_start;
 
 	pr_debug("Pointer offset: %lu\n", res);
+<<<<<<< HEAD
+=======
 =======
 	dma_addr_t src, dst;
 
@@ -478,6 +559,7 @@ dma_pointer(struct snd_pcm_substream *substream)
 
 	pr_debug("Pointer %x %x\n", src, dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* we seem to be getting the odd error from the pcm library due
 	 * to out-of-bounds pointers. this is maybe due to the dma engine
@@ -512,8 +594,11 @@ static int dma_open(struct snd_pcm_substream *substream)
 	runtime->private_data = prtd;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -602,15 +687,21 @@ static void dma_free_dma_buffers(struct snd_pcm *pcm)
 static u64 dma_mask = DMA_BIT_MASK(32);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dma_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static int dma_new(struct snd_card *card,
 	struct snd_soc_dai *dai, struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	pr_debug("Entered %s\n", __func__);
@@ -623,10 +714,16 @@ static int dma_new(struct snd_card *card,
 
 	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
 =======
+<<<<<<< HEAD
+		card->dev->coherent_dma_mask = DMA_BIT_MASK(32);
+
+	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
+=======
 		card->dev->coherent_dma_mask = 0xffffffff;
 
 	if (dai->driver->playback.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = preallocate_dma_buffer(pcm,
 			SNDRV_PCM_STREAM_PLAYBACK);
 		if (ret)
@@ -636,8 +733,12 @@ static int dma_new(struct snd_card *card,
 <<<<<<< HEAD
 	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
 =======
+<<<<<<< HEAD
+	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
+=======
 	if (dai->driver->capture.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = preallocate_dma_buffer(pcm,
 			SNDRV_PCM_STREAM_CAPTURE);
 		if (ret)
@@ -650,8 +751,12 @@ out:
 <<<<<<< HEAD
 static struct snd_soc_platform_driver samsung_asoc_platform = {
 =======
+<<<<<<< HEAD
+static struct snd_soc_platform_driver samsung_asoc_platform = {
+=======
 struct snd_soc_platform_driver samsung_asoc_platform = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops		= &dma_ops,
 	.pcm_new	= dma_new,
 	.pcm_free	= dma_free_dma_buffers,
@@ -659,8 +764,11 @@ struct snd_soc_platform_driver samsung_asoc_platform = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef CONFIG_SND_SOC_SAMSUNG_USE_DMA_WRAPPER
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit samsung_asoc_platform_probe(struct platform_device *pdev)
 {
 	return snd_soc_register_platform(&pdev->dev, &samsung_asoc_platform);
@@ -685,6 +793,9 @@ static struct platform_driver asoc_dma_driver = {
 <<<<<<< HEAD
 module_platform_driver(asoc_dma_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(asoc_dma_driver);
+=======
 static int __init samsung_asoc_init(void)
 {
 	return platform_driver_register(&asoc_dma_driver);
@@ -698,6 +809,7 @@ static void __exit samsung_asoc_exit(void)
 module_exit(samsung_asoc_exit);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Ben Dooks, <ben@simtec.co.uk>");
 MODULE_DESCRIPTION("Samsung ASoC DMA Driver");

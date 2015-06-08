@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2010 Ryan Mallon
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010 Ryan Mallon
+=======
  * Copyright (C) 2010 Ryan Mallon <ryan@bluewatersys.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Based on the 2.6.24.7 support:
  *   Copyright (C) 2009 Simplemachines
@@ -24,14 +28,20 @@
 #include <linux/platform_device.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/i2c.h>
 #include <linux/i2c-gpio.h>
 
 #include <mach/hardware.h>
 #include <mach/fb.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/gpio-ep93xx.h>
 
 #include <asm/hardware/vic.h>
@@ -40,12 +50,15 @@
 
 #include "soc.h"
 
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct ep93xx_eth_data __initdata simone_eth_data = {
 	.phy_id		= 1,
 };
@@ -72,6 +85,9 @@ static struct i2c_board_info __initdata simone_i2c_board_info[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device simone_audio_device = {
 	.name		= "simone-audio",
 	.id		= -1,
@@ -83,8 +99,11 @@ static void __init simone_register_audio(void)
 	platform_device_register(&simone_audio_device);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init simone_init_machine(void)
 {
 	ep93xx_init_devices();
@@ -94,6 +113,9 @@ static void __init simone_init_machine(void)
 	ep93xx_register_i2c(&simone_i2c_gpio_data, simone_i2c_board_info,
 			    ARRAY_SIZE(simone_i2c_board_info));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	simone_register_audio();
 }
 
@@ -106,6 +128,8 @@ MACHINE_START(SIM_ONE, "Simplemachines Sim.One Board")
 	.timer		= &ep93xx_timer,
 	.init_machine	= simone_init_machine,
 	.restart	= ep93xx_restart,
+<<<<<<< HEAD
+=======
 =======
 	ep93xx_register_ac97();
 }
@@ -118,4 +142,5 @@ MACHINE_START(SIM_ONE, "Simplemachines Sim.One Board")
 	.timer		= &ep93xx_timer,
 	.init_machine	= simone_init_machine,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

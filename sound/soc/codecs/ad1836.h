@@ -1,11 +1,16 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Audio Codec driver supporting:
  *  AD1835A, AD1836, AD1837A, AD1838A, AD1839A
  *
  * Copyright 2009-2011 Analog Devices Inc.
  *
  * Licensed under the GPL-2 or later.
+<<<<<<< HEAD
+=======
 =======
  * File:         sound/soc/codecs/ad1836.h
  * Based on:
@@ -23,6 +28,7 @@
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef __AD1836_H__
@@ -33,8 +39,12 @@
 <<<<<<< HEAD
 #define AD1836_DAC_SERFMT_MASK         0xE0
 =======
+<<<<<<< HEAD
+#define AD1836_DAC_SERFMT_MASK         0xE0
+=======
 #define AD1836_DAC_SERFMT_MASK	       0xE0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AD1836_DAC_SERFMT_PCK256       (0x4 << 5)
 #define AD1836_DAC_SERFMT_PCK128       (0x5 << 5)
 #define AD1836_DAC_WORD_LEN_MASK       0x18
@@ -42,6 +52,9 @@
 
 #define AD1836_DAC_CTRL2               1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* These macros are one-based. So AD183X_MUTE_LEFT(1) will return the mute bit
  * for the first ADC/DAC */
@@ -50,6 +63,8 @@
 
 #define AD1836_DAC_L_VOL(x) ((x) * 2)
 #define AD1836_DAC_R_VOL(x) (1 + ((x) * 2))
+<<<<<<< HEAD
+=======
 =======
 #define AD1836_DACL1_MUTE              0
 #define AD1836_DACR1_MUTE              1
@@ -65,12 +80,18 @@
 #define AD1836_DAC_L3_VOL              6
 #define AD1836_DAC_R3_VOL              7
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define AD1836_ADC_CTRL1               12
 #define AD1836_ADC_POWERDOWN           7
 #define AD1836_ADC_HIGHPASS_FILTER     8
 
 #define AD1836_ADC_CTRL2               13
+<<<<<<< HEAD
+#define AD1836_ADC_WORD_LEN_MASK       0x30
+#define AD1836_ADC_WORD_OFFSET         4
+#define AD1836_ADC_SERFMT_MASK         (7 << 6)
+=======
 <<<<<<< HEAD
 #define AD1836_ADC_WORD_LEN_MASK       0x30
 #define AD1836_ADC_WORD_OFFSET         4
@@ -84,6 +105,7 @@
 #define AD1836_ADC_WORD_OFFSET         5
 #define AD1836_ADC_SERFMT_MASK	       (7 << 6)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AD1836_ADC_SERFMT_PCK256       (0x4 << 6)
 #define AD1836_ADC_SERFMT_PCK128       (0x5 << 6)
 #define AD1836_ADC_AUX                 (0x6 << 6)

@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * SH7091/SH7750/SH7750S/SH7750R/SH7751/SH7751R Setup
 =======
+<<<<<<< HEAD
+ * SH7091/SH7750/SH7750S/SH7750R/SH7751/SH7751R Setup
+=======
  * SH7750/SH7751 Setup
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  Copyright (C) 2006  Paul Mundt
  *  Copyright (C) 2006  Jamie Lenehan
@@ -45,7 +49,11 @@ static struct plat_sci_port sci_platform_data = {
 <<<<<<< HEAD
 	.port_reg	= 0xffe0001C,
 =======
+<<<<<<< HEAD
+	.port_reg	= 0xffe0001C,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags		= UPF_BOOT_AUTOCONF,
 	.scscr		= SCSCR_TE | SCSCR_RE,
 	.scbrr_algo_id	= SCBRR_ALGO_2,
@@ -54,7 +62,11 @@ static struct plat_sci_port sci_platform_data = {
 <<<<<<< HEAD
 	.regshift	= 2,
 =======
+<<<<<<< HEAD
+	.regshift	= 2,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device sci_device = {

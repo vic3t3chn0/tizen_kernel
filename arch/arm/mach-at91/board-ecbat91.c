@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -43,8 +47,11 @@
 #include <mach/board.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/cpu.h>
 
 #include "generic.h"
@@ -59,8 +66,12 @@ static void __init ecb_at91init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91rm9200_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Setup the LEDs */
 	at91_init_leds(AT91_PIN_PC7, AT91_PIN_PC7);
@@ -78,6 +89,9 @@ static void __init ecb_at91init_early(void)
 <<<<<<< HEAD
 static struct macb_platform_data __initdata ecb_at91eth_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata ecb_at91eth_data = {
+=======
 static void __init ecb_at91init_irq(void)
 {
 	at91rm9200_init_interrupts(NULL);
@@ -85,6 +99,7 @@ static void __init ecb_at91init_irq(void)
 
 static struct at91_eth_data __initdata ecb_at91eth_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PC4,
 	.is_rmii	= 0,
 };
@@ -95,7 +110,12 @@ static struct at91_usbh_data __initdata ecb_at91usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_mmc_data __initdata ecb_at91mmc_data = {
@@ -106,7 +126,13 @@ static struct at91_mmc_data __initdata ecb_at91mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.det_pin	= -EINVAL,
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -204,9 +230,15 @@ MACHINE_START(ECBAT91, "emQbit's ECB_AT91")
 	.init_early	= ecb_at91init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= ecb_at91init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91rm9200_map_io,
 	.init_early	= ecb_at91init_early,
 	.init_irq	= ecb_at91init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= ecb_at91board_init,
 MACHINE_END

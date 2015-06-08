@@ -15,9 +15,13 @@ lib-y := ctype.o string.o vsprintf.o cmdline.o \
 <<<<<<< HEAD
 	 is_single_threaded.o plist.o decompress.o memory_alloc.o
 =======
+<<<<<<< HEAD
+	 is_single_threaded.o plist.o decompress.o memory_alloc.o
+=======
 	 is_single_threaded.o plist.o decompress.o find_next_bit.o \
 	 memcopy.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 lib-$(CONFIG_MMU) += ioremap.o
 lib-$(CONFIG_SMP) += cpumask.o
@@ -25,8 +29,12 @@ lib-$(CONFIG_SMP) += cpumask.o
 <<<<<<< HEAD
 lib-y	+= kobject.o klist.o
 =======
+<<<<<<< HEAD
+lib-y	+= kobject.o klist.o
+=======
 lib-y	+= kobject.o kref.o klist.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 obj-y += bcd.o div64.o sort.o parser.o halfmd4.o debug_locks.o random32.o \
 	 bust_spinlocks.o hexdump.o kasprintf.o bitmap.o scatterlist.o \
@@ -34,8 +42,12 @@ obj-y += bcd.o div64.o sort.o parser.o halfmd4.o debug_locks.o random32.o \
 <<<<<<< HEAD
 	 bsearch.o find_last_bit.o find_next_bit.o llist.o
 =======
+<<<<<<< HEAD
+	 bsearch.o find_last_bit.o find_next_bit.o llist.o
+=======
 	 bsearch.o find_last_bit.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-y += kstrtox.o
 obj-$(CONFIG_TEST_KSTRTOX) += test-kstrtox.o
 
@@ -49,7 +61,11 @@ obj-$(CONFIG_GENERIC_IOMAP) += iomap.o
 <<<<<<< HEAD
 obj-$(CONFIG_GENERIC_PCI_IOMAP) += pci_iomap.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_GENERIC_PCI_IOMAP) += pci_iomap.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_HAS_IOMEM) += iomap_copy.o devres.o
 obj-$(CONFIG_CHECK_SIGNATURE) += check_signature.o
 obj-$(CONFIG_DEBUG_LOCKING_API_SELFTESTS) += locking-selftest.o
@@ -81,7 +97,11 @@ obj-$(CONFIG_LIBCRC32C)	+= libcrc32c.o
 <<<<<<< HEAD
 obj-$(CONFIG_CRC8)	+= crc8.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_CRC8)	+= crc8.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_GENERIC_ALLOCATOR) += genalloc.o
 
 obj-$(CONFIG_ZLIB_INFLATE) += zlib_inflate/
@@ -134,6 +154,9 @@ obj-$(CONFIG_AVERAGE) += average.o
 obj-$(CONFIG_CPU_RMAP) += cpu_rmap.o
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_CORDIC) += cordic.o
 
 obj-$(CONFIG_DQL) += dynamic_queue_limits.o
@@ -145,8 +168,11 @@ obj-$(CONFIG_CLZ_TAB) += clz_tab.o
 
 obj-$(CONFIG_QMI_ENCDEC) += qmi_encdec.o
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 hostprogs-y	:= gen_crc32table
 clean-files	:= crc32table.h
 

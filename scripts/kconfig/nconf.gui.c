@@ -359,8 +359,12 @@ int dialog_inputbox(WINDOW *main_window,
 <<<<<<< HEAD
 		const char *init, char **resultp, int *result_len)
 =======
+<<<<<<< HEAD
+		const char *init, char **resultp, int *result_len)
+=======
 		const char *init, char *result, int result_len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int prompt_lines = 0;
 	int prompt_width = 0;
@@ -372,6 +376,9 @@ int dialog_inputbox(WINDOW *main_window,
 	int res = -1;
 	int cursor_position = strlen(init);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int cursor_form_win;
 	char *result = *resultp;
 
@@ -379,9 +386,12 @@ int dialog_inputbox(WINDOW *main_window,
 		*result_len = strlen(init)+1;
 		*resultp = result = realloc(result, *result_len);
 	}
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* find the widest line of msg: */
 	prompt_lines = get_line_no(prompt);
@@ -401,8 +411,12 @@ int dialog_inputbox(WINDOW *main_window,
 <<<<<<< HEAD
 	strncpy(result, init, *result_len);
 =======
+<<<<<<< HEAD
+	strncpy(result, init, *result_len);
+=======
 	strncpy(result, init, result_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* create the windows */
 	win = newwin(prompt_lines+6, prompt_width+7, y, x);
@@ -428,8 +442,14 @@ int dialog_inputbox(WINDOW *main_window,
 	mvwprintw(form_win, 0, 0, "%s",
 		  result + cursor_position-cursor_form_win);
 =======
+<<<<<<< HEAD
+	cursor_form_win = min(cursor_position, prompt_width-1);
+	mvwprintw(form_win, 0, 0, "%s",
+		  result + cursor_position-cursor_form_win);
+=======
 	mvwprintw(form_win, 0, 0, "%s", result);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* create panels */
 	panel = new_panel(win);
@@ -459,7 +479,12 @@ int dialog_inputbox(WINDOW *main_window,
 				cursor_form_win--;
 				len--;
 =======
+<<<<<<< HEAD
+				cursor_form_win--;
+				len--;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			break;
 		case KEY_DC:
@@ -470,12 +495,19 @@ int dialog_inputbox(WINDOW *main_window,
 <<<<<<< HEAD
 				len--;
 =======
+<<<<<<< HEAD
+				len--;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			break;
 		case KEY_UP:
 		case KEY_RIGHT:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (cursor_position < len) {
 				cursor_position++;
 				cursor_form_win++;
@@ -528,6 +560,8 @@ int dialog_inputbox(WINDOW *main_window,
 		mvwprintw(form_win, 0, 0, "%s",
 			result + cursor_position-cursor_form_win);
 		wmove(form_win, 0, cursor_form_win);
+<<<<<<< HEAD
+=======
 =======
 			if (cursor_position < len &&
 			    cursor_position < min(result_len, prompt_width))
@@ -558,6 +592,7 @@ int dialog_inputbox(WINDOW *main_window,
 		mvwprintw(form_win, 0, 0, "%s", result);
 		wmove(form_win, 0, cursor_position);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		touchwin(win);
 		refresh_all_windows(main_window);
 

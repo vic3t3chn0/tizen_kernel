@@ -2,15 +2,21 @@
 #include <linux/clockchips.h>
 #include <linux/interrupt.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/delay.h>
 #include <linux/errno.h>
 #include <linux/i8253.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/sysdev.h>
 #include <linux/delay.h>
 #include <linux/errno.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/hpet.h>
 #include <linux/init.h>
@@ -23,9 +29,14 @@
 #include <asm/hpet.h>
 #include <asm/time.h>
 =======
+<<<<<<< HEAD
+#include <asm/hpet.h>
+#include <asm/time.h>
+=======
 #include <asm/i8253.h>
 #include <asm/hpet.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define HPET_MASK			CLOCKSOURCE_MASK(32)
 
@@ -44,9 +55,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define EVT_TO_HPET_DEV(evt) container_of(evt, struct hpet_dev, evt)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * HPET address is set in acpi/boot.c, when an ACPI entry exists
  */
@@ -69,13 +83,19 @@ struct hpet_dev {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 inline struct hpet_dev *EVT_TO_HPET_DEV(struct clock_event_device *evtdev)
 {
 	return container_of(evtdev, struct hpet_dev, evt);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 inline unsigned int hpet_readl(unsigned int a)
 {
 	return readl(hpet_virt_address + a);
@@ -97,8 +117,12 @@ static inline void hpet_set_mapping(void)
 <<<<<<< HEAD
 	__set_fixmap(VSYSCALL_HPET, hpet_address, PAGE_KERNEL_VVAR_NOCACHE);
 =======
+<<<<<<< HEAD
+	__set_fixmap(VSYSCALL_HPET, hpet_address, PAGE_KERNEL_VVAR_NOCACHE);
+=======
 	__set_fixmap(VSYSCALL_HPET, hpet_address, PAGE_KERNEL_VSYSCALL_NOCACHE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 
@@ -457,8 +481,12 @@ void hpet_msi_unmask(struct irq_data *data)
 <<<<<<< HEAD
 	cfg |= HPET_TN_FSB;
 =======
+<<<<<<< HEAD
+	cfg |= HPET_TN_FSB;
+=======
 	cfg |= HPET_TN_ENABLE | HPET_TN_FSB;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hpet_writel(cfg, HPET_Tn_CFG(hdev->num));
 }
 
@@ -472,8 +500,12 @@ void hpet_msi_mask(struct irq_data *data)
 <<<<<<< HEAD
 	cfg &= ~HPET_TN_FSB;
 =======
+<<<<<<< HEAD
+	cfg &= ~HPET_TN_FSB;
+=======
 	cfg &= ~(HPET_TN_ENABLE | HPET_TN_FSB);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hpet_writel(cfg, HPET_Tn_CFG(hdev->num));
 }
 
@@ -775,6 +807,8 @@ static cycle_t read_hpet(struct clocksource *cs)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_X86_64
 static cycle_t __vsyscall_fn vread_hpet(void)
 {
@@ -783,6 +817,7 @@ static cycle_t __vsyscall_fn vread_hpet(void)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clocksource clocksource_hpet = {
 	.name		= "hpet",
 	.rating		= 250,
@@ -794,8 +829,12 @@ static struct clocksource clocksource_hpet = {
 <<<<<<< HEAD
 	.archdata	= { .vclock_mode = VCLOCK_HPET },
 =======
+<<<<<<< HEAD
+	.archdata	= { .vclock_mode = VCLOCK_HPET },
+=======
 	.vread		= vread_hpet,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 };
 

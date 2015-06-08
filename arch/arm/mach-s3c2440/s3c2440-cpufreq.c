@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/clk.h>
 #include <linux/err.h>
@@ -278,8 +282,13 @@ struct s3c_cpufreq_info s3c2440_cpufreq_info = {
 static int s3c2440_cpufreq_add(struct device *dev,
 			       struct subsys_interface *sif)
 =======
+<<<<<<< HEAD
+static int s3c2440_cpufreq_add(struct device *dev,
+			       struct subsys_interface *sif)
+=======
 static int s3c2440_cpufreq_add(struct sys_device *sysdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	xtal = s3c_cpufreq_clk_get(NULL, "xtal");
 	hclk = s3c_cpufreq_clk_get(NULL, "hclk");
@@ -295,14 +304,20 @@ static int s3c2440_cpufreq_add(struct sys_device *sysdev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct subsys_interface s3c2440_cpufreq_interface = {
 	.name		= "s3c2440_cpufreq",
 	.subsys		= &s3c2440_subsys,
 	.add_dev	= s3c2440_cpufreq_add,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_driver s3c2440_cpufreq_driver = {
 	.add		= s3c2440_cpufreq_add,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int s3c2440_cpufreq_init(void)
@@ -310,23 +325,33 @@ static int s3c2440_cpufreq_init(void)
 <<<<<<< HEAD
 	return subsys_interface_register(&s3c2440_cpufreq_interface);
 =======
+<<<<<<< HEAD
+	return subsys_interface_register(&s3c2440_cpufreq_interface);
+=======
 	return sysdev_driver_register(&s3c2440_sysclass,
 				      &s3c2440_cpufreq_driver);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* arch_initcall adds the clocks we need, so use subsys_initcall. */
 subsys_initcall(s3c2440_cpufreq_init);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct subsys_interface s3c2442_cpufreq_interface = {
 	.name		= "s3c2442_cpufreq",
 	.subsys		= &s3c2442_subsys,
 	.add_dev	= s3c2440_cpufreq_add,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_driver s3c2442_cpufreq_driver = {
 	.add		= s3c2440_cpufreq_add,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int s3c2442_cpufreq_init(void)
@@ -334,9 +359,13 @@ static int s3c2442_cpufreq_init(void)
 <<<<<<< HEAD
 	return subsys_interface_register(&s3c2442_cpufreq_interface);
 =======
+<<<<<<< HEAD
+	return subsys_interface_register(&s3c2442_cpufreq_interface);
+=======
 	return sysdev_driver_register(&s3c2442_sysclass,
 				      &s3c2442_cpufreq_driver);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 subsys_initcall(s3c2442_cpufreq_init);

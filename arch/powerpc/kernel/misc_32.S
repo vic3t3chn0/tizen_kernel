@@ -12,7 +12,12 @@
  * PPC44x port. Copyright (C) 2011,  IBM Corporation
  * 		Author: Suzuki Poulose <suzuki@in.ibm.com>
 =======
+<<<<<<< HEAD
+ * PPC44x port. Copyright (C) 2011,  IBM Corporation
+ * 		Author: Suzuki Poulose <suzuki@in.ibm.com>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -742,6 +747,9 @@ relocate_new_kernel:
 
 	li	r0, 0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #elif defined(CONFIG_44x)  && !defined(CONFIG_PPC_47x)
 
 /*
@@ -911,8 +919,11 @@ next_tlb:
 	mr	r5, r31
 
 	li	r0, 0
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 	li	r0, 0
 

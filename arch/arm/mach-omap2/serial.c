@@ -21,14 +21,20 @@
 #include <linux/init.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/serial_reg.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clk.h>
 #include <linux/io.h>
 #include <linux/delay.h>
 #include <linux/platform_device.h>
 #include <linux/slab.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pm_runtime.h>
 #include <linux/console.h>
 
@@ -39,6 +45,8 @@
 #include <plat/omap_hwmod.h>
 #include <plat/omap_device.h>
 #include <plat/omap-pm.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/serial_8250.h>
 #include <linux/pm_runtime.h>
@@ -55,6 +63,7 @@
 #include <plat/omap_hwmod.h>
 #include <plat/omap_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "prm2xxx_3xxx.h"
 #include "pm.h"
@@ -64,6 +73,9 @@
 #include "mux.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * NOTE: By default the serial auto_suspend timeout is disabled as it causes
  * lost characters over the serial ports. This means that the UART clocks will
@@ -71,6 +83,8 @@
  * This also causes that any deeper omap sleep states are blocked.
  */
 #define DEFAULT_AUTOSUSPEND_DELAY	-1
+<<<<<<< HEAD
+=======
 =======
 #define UART_OMAP_NO_EMPTY_FIFO_READ_IP_REV	0x52
 #define UART_OMAP_WER		0x17	/* Wake-up enable register */
@@ -86,11 +100,17 @@
  */
 #define DEFAULT_TIMEOUT 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MAX_UART_HWMOD_NAME_LEN		16
 
 struct omap_uart_state {
 	int num;
+<<<<<<< HEAD
+
+	struct list_head node;
+	struct omap_hwmod *oh;
+=======
 <<<<<<< HEAD
 
 	struct list_head node;
@@ -134,11 +154,15 @@ struct omap_uart_state {
 	u16 mcr;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static LIST_HEAD(uart_list);
 static u8 num_uarts;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u8 console_uart_id = -1;
 static u8 no_console_suspend;
 static u8 uart_debug;
@@ -220,6 +244,8 @@ char *cmdline_find_option(char *str)
 
 static int __init omap_serial_early_init(void)
 {
+<<<<<<< HEAD
+=======
 =======
 
 static int uart_idle_hwmod(struct omap_device *od)
@@ -775,20 +801,27 @@ static int __init omap_serial_early_init(void)
 	int i = 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	do {
 		char oh_name[MAX_UART_HWMOD_NAME_LEN];
 		struct omap_hwmod *oh;
 		struct omap_uart_state *uart;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		char uart_name[MAX_UART_HWMOD_NAME_LEN];
 
 		snprintf(oh_name, MAX_UART_HWMOD_NAME_LEN,
 			 "uart%d", num_uarts + 1);
+<<<<<<< HEAD
+=======
 =======
 
 		snprintf(oh_name, MAX_UART_HWMOD_NAME_LEN,
 			 "uart%d", i + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		oh = omap_hwmod_lookup(oh_name);
 		if (!oh)
 			break;
@@ -799,6 +832,9 @@ static int __init omap_serial_early_init(void)
 
 		uart->oh = oh;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uart->num = num_uarts++;
 		list_add_tail(&uart->node, &uart_list);
 		snprintf(uart_name, MAX_UART_HWMOD_NAME_LEN,
@@ -828,6 +864,8 @@ static int __init omap_serial_early_init(void)
 			 */
 			oh->flags |= HWMOD_INIT_NO_IDLE | HWMOD_INIT_NO_RESET;
 		}
+<<<<<<< HEAD
+=======
 =======
 		uart->num = i++;
 		list_add_tail(&uart->node, &uart_list);
@@ -845,6 +883,7 @@ static int __init omap_serial_early_init(void)
 		 */
 		uart->oh->flags |= HWMOD_INIT_NO_IDLE | HWMOD_INIT_NO_RESET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (1);
 
 	return 0;
@@ -857,7 +896,11 @@ core_initcall(omap_serial_early_init);
 <<<<<<< HEAD
  * @info: platform specific data pointer
 =======
+<<<<<<< HEAD
+ * @info: platform specific data pointer
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This function initialies serial driver for given port only.
  * Platforms can call this function instead of omap_serial_init()
@@ -867,6 +910,9 @@ core_initcall(omap_serial_early_init);
  * use only one of the two.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init omap_serial_init_port(struct omap_board_data *bdata,
 			struct omap_uart_port_info *info)
 {
@@ -877,6 +923,8 @@ void __init omap_serial_init_port(struct omap_board_data *bdata,
 	u32 pdata_size = 0;
 	char *name;
 	struct omap_uart_port_info omap_up;
+<<<<<<< HEAD
+=======
 =======
 void __init omap_serial_init_port(struct omap_board_data *bdata)
 {
@@ -896,6 +944,7 @@ void __init omap_serial_init_port(struct omap_board_data *bdata)
 	struct omap_uart_port_info omap_up;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (WARN_ON(!bdata))
 		return;
@@ -908,6 +957,9 @@ void __init omap_serial_init_port(struct omap_board_data *bdata)
 		if (bdata->id == uart->num)
 			break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!info)
 		info = omap_serial_default_info;
 
@@ -936,6 +988,8 @@ void __init omap_serial_init_port(struct omap_board_data *bdata)
 
 	pdata = &omap_up;
 	pdata_size = sizeof(struct omap_uart_port_info);
+<<<<<<< HEAD
+=======
 =======
 
 	oh = uart->oh;
@@ -998,11 +1052,15 @@ void __init omap_serial_init_port(struct omap_board_data *bdata)
 	pdata_size = sizeof(struct omap_uart_port_info);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (WARN_ON(!oh))
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdev = omap_device_build(name, uart->num, oh, pdata, pdata_size,
 				 NULL, 0, false);
 	WARN(IS_ERR(pdev), "Could not build omap_device for %s: %s.\n",
@@ -1023,6 +1081,8 @@ void __init omap_serial_init_port(struct omap_board_data *bdata)
 /**
  * omap_serial_board_init() - initialize all supported serial ports
  * @info: platform specific data pointer
+<<<<<<< HEAD
+=======
 =======
 	od = omap_device_build(name, uart->num, oh, pdata, pdata_size,
 			       omap_uart_latency,
@@ -1082,6 +1142,7 @@ void __init omap_serial_init_port(struct omap_board_data *bdata)
 /**
  * omap_serial_init() - initialize all supported serial ports
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Initializes all available UARTs as serial ports. Platforms
  * can call this function when they want to have default behaviour
@@ -1090,8 +1151,12 @@ void __init omap_serial_init_port(struct omap_board_data *bdata)
 <<<<<<< HEAD
 void __init omap_serial_board_init(struct omap_uart_port_info *info)
 =======
+<<<<<<< HEAD
+void __init omap_serial_board_init(struct omap_uart_port_info *info)
+=======
 void __init omap_serial_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct omap_uart_state *uart;
 	struct omap_board_data bdata;
@@ -1102,6 +1167,9 @@ void __init omap_serial_init(void)
 		bdata.pads = NULL;
 		bdata.pads_cnt = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (cpu_is_omap44xx() || cpu_is_omap34xx())
 			omap_serial_fill_default_pads(&bdata);
@@ -1124,9 +1192,12 @@ void __init omap_serial_init(void)
 {
 	omap_serial_board_init(NULL);
 }
+<<<<<<< HEAD
+=======
 =======
 		omap_serial_init_port(&bdata);
 
 	}
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

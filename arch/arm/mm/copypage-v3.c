@@ -43,11 +43,16 @@ void v3_copy_user_highpage(struct page *to, struct page *from,
 	void *kto, *kfrom;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kto = kmap_atomic(to);
 	kfrom = kmap_atomic(from);
 	v3_copy_user_page(kto, kfrom);
 	kunmap_atomic(kfrom);
 	kunmap_atomic(kto);
+<<<<<<< HEAD
+=======
 =======
 	kto = kmap_atomic(to, KM_USER0);
 	kfrom = kmap_atomic(from, KM_USER1);
@@ -55,6 +60,7 @@ void v3_copy_user_highpage(struct page *to, struct page *from,
 	kunmap_atomic(kfrom, KM_USER1);
 	kunmap_atomic(kto, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -67,8 +73,12 @@ void v3_clear_user_highpage(struct page *page, unsigned long vaddr)
 <<<<<<< HEAD
 	void *ptr, *kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	void *ptr, *kaddr = kmap_atomic(page);
+=======
 	void *ptr, *kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asm volatile("\n\
 	mov	r1, %2				@ 1\n\
 	mov	r2, #0				@ 1\n\
@@ -87,8 +97,12 @@ void v3_clear_user_highpage(struct page *page, unsigned long vaddr)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct cpu_user_fns v3_user_fns __initdata = {

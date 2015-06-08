@@ -18,7 +18,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/zlib.h>
 #include <linux/zutil.h>
@@ -48,6 +53,9 @@ static int __init alloc_workspaces(void)
 	def_strm.workspace = vmalloc(zlib_deflate_workspacesize(MAX_WBITS,
 							MAX_MEM_LEVEL));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!def_strm.workspace)
 		return -ENOMEM;
 
@@ -60,6 +68,8 @@ static int __init alloc_workspaces(void)
 	}
 	jffs2_dbg(1, "Allocated %d bytes for inflate workspace\n",
 		  zlib_inflate_workspacesize());
+<<<<<<< HEAD
+=======
 =======
 	if (!def_strm.workspace) {
 		printk(KERN_WARNING "Failed to allocate %d bytes for deflate workspace\n", zlib_deflate_workspacesize(MAX_WBITS, MAX_MEM_LEVEL));
@@ -74,6 +84,7 @@ static int __init alloc_workspaces(void)
 	}
 	D1(printk(KERN_DEBUG "Allocated %d bytes for inflate workspace\n", zlib_inflate_workspacesize()));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -102,8 +113,12 @@ static int jffs2_zlib_compress(unsigned char *data_in,
 <<<<<<< HEAD
 		pr_warn("deflateInit failed\n");
 =======
+<<<<<<< HEAD
+		pr_warn("deflateInit failed\n");
+=======
 		printk(KERN_WARNING "deflateInit failed\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&deflate_mutex);
 		return -1;
 	}
@@ -118,6 +133,9 @@ static int jffs2_zlib_compress(unsigned char *data_in,
 		def_strm.avail_out = *dstlen - (def_strm.total_out + STREAM_END_SPACE);
 		def_strm.avail_in = min((unsigned)(*sourcelen-def_strm.total_in), def_strm.avail_out);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		jffs2_dbg(1, "calling deflate with avail_in %d, avail_out %d\n",
 			  def_strm.avail_in, def_strm.avail_out);
 		ret = zlib_deflate(&def_strm, Z_PARTIAL_FLUSH);
@@ -126,6 +144,8 @@ static int jffs2_zlib_compress(unsigned char *data_in,
 			  def_strm.total_in, def_strm.total_out);
 		if (ret != Z_OK) {
 			jffs2_dbg(1, "deflate in loop returned %d\n", ret);
+<<<<<<< HEAD
+=======
 =======
 		D1(printk(KERN_DEBUG "calling deflate with avail_in %d, avail_out %d\n",
 			  def_strm.avail_in, def_strm.avail_out));
@@ -135,6 +155,7 @@ static int jffs2_zlib_compress(unsigned char *data_in,
 		if (ret != Z_OK) {
 			D1(printk(KERN_DEBUG "deflate in loop returned %d\n", ret));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			zlib_deflateEnd(&def_strm);
 			mutex_unlock(&deflate_mutex);
 			return -1;
@@ -149,8 +170,12 @@ static int jffs2_zlib_compress(unsigned char *data_in,
 <<<<<<< HEAD
 		jffs2_dbg(1, "final deflate returned %d\n", ret);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "final deflate returned %d\n", ret);
+=======
 		D1(printk(KERN_DEBUG "final deflate returned %d\n", ret));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -1;
 		goto out;
 	}
@@ -160,9 +185,14 @@ static int jffs2_zlib_compress(unsigned char *data_in,
 		jffs2_dbg(1, "zlib compressed %ld bytes into %ld; failing\n",
 			  def_strm.total_in, def_strm.total_out);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "zlib compressed %ld bytes into %ld; failing\n",
+			  def_strm.total_in, def_strm.total_out);
+=======
 		D1(printk(KERN_DEBUG "zlib compressed %ld bytes into %ld; failing\n",
 			  def_strm.total_in, def_strm.total_out));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = -1;
 		goto out;
 	}
@@ -171,9 +201,14 @@ static int jffs2_zlib_compress(unsigned char *data_in,
 	jffs2_dbg(1, "zlib compressed %ld bytes into %ld\n",
 		  def_strm.total_in, def_strm.total_out);
 =======
+<<<<<<< HEAD
+	jffs2_dbg(1, "zlib compressed %ld bytes into %ld\n",
+		  def_strm.total_in, def_strm.total_out);
+=======
 	D1(printk(KERN_DEBUG "zlib compressed %ld bytes into %ld\n",
 		  def_strm.total_in, def_strm.total_out));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*dstlen = def_strm.total_out;
 	*sourcelen = def_strm.total_in;
@@ -209,8 +244,12 @@ static int jffs2_zlib_decompress(unsigned char *data_in,
 <<<<<<< HEAD
 		jffs2_dbg(2, "inflate skipping adler32\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(2, "inflate skipping adler32\n");
+=======
 		D2(printk(KERN_DEBUG "inflate skipping adler32\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wbits = -((data_in[0] >> 4) + 8);
 		inf_strm.next_in += 2;
 		inf_strm.avail_in -= 2;
@@ -219,8 +258,12 @@ static int jffs2_zlib_decompress(unsigned char *data_in,
 <<<<<<< HEAD
 		jffs2_dbg(1, "inflate not skipping adler32\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "inflate not skipping adler32\n");
+=======
 		D1(printk(KERN_DEBUG "inflate not skipping adler32\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 
@@ -228,8 +271,12 @@ static int jffs2_zlib_decompress(unsigned char *data_in,
 <<<<<<< HEAD
 		pr_warn("inflateInit failed\n");
 =======
+<<<<<<< HEAD
+		pr_warn("inflateInit failed\n");
+=======
 		printk(KERN_WARNING "inflateInit failed\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&inflate_mutex);
 		return 1;
 	}
@@ -240,8 +287,12 @@ static int jffs2_zlib_decompress(unsigned char *data_in,
 <<<<<<< HEAD
 		pr_notice("inflate returned %d\n", ret);
 =======
+<<<<<<< HEAD
+		pr_notice("inflate returned %d\n", ret);
+=======
 		printk(KERN_NOTICE "inflate returned %d\n", ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	zlib_inflateEnd(&inf_strm);
 	mutex_unlock(&inflate_mutex);

@@ -9,8 +9,13 @@
 #include <linux/export.h>
 #include <linux/thread_info.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/thread_info.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ctype.h>
 #include <linux/errno.h>
 #include <linux/bitmap.h>
@@ -18,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 
 /*
@@ -282,9 +291,12 @@ EXPORT_SYMBOL(__bitmap_weight);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define BITMAP_FIRST_WORD_MASK(start) (~0UL << ((start) % BITS_PER_LONG))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void bitmap_set(unsigned long *map, int start, int nr)
 {
 	unsigned long *p = map + BIT_WORD(start);
@@ -438,8 +450,12 @@ int __bitmap_parse(const char *buf, unsigned int buflen,
 <<<<<<< HEAD
 	const char __user __force *ubuf = (const char __user __force *)buf;
 =======
+<<<<<<< HEAD
+	const char __user __force *ubuf = (const char __user __force *)buf;
+=======
 	const char __user *ubuf = buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bitmap_zero(maskp, nmaskbits);
 
@@ -529,8 +545,14 @@ int bitmap_parse_user(const char __user *ubuf,
 				ulen, 1, maskp, nmaskbits);
 
 =======
+<<<<<<< HEAD
+	return __bitmap_parse((const char __force *)ubuf,
+				ulen, 1, maskp, nmaskbits);
+
+=======
 	return __bitmap_parse((const char *)ubuf, ulen, 1, maskp, nmaskbits);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(bitmap_parse_user);
 
@@ -623,8 +645,12 @@ static int __bitmap_parselist(const char *buf, unsigned int buflen,
 <<<<<<< HEAD
 	const char __user __force *ubuf = (const char __user __force *)buf;
 =======
+<<<<<<< HEAD
+	const char __user __force *ubuf = (const char __user __force *)buf;
+=======
 	const char __user *ubuf = buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int exp_digit, in_range;
 
 	totaldigits = c = 0;
@@ -727,8 +753,12 @@ int bitmap_parselist_user(const char __user *ubuf,
 <<<<<<< HEAD
 	return __bitmap_parselist((const char __force *)ubuf,
 =======
+<<<<<<< HEAD
+	return __bitmap_parselist((const char __force *)ubuf,
+=======
 	return __bitmap_parselist((const char *)ubuf,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					ulen, 1, maskp, nmaskbits);
 }
 EXPORT_SYMBOL(bitmap_parselist_user);
@@ -791,8 +821,12 @@ static int bitmap_pos_to_ord(const unsigned long *buf, int pos, int bits)
 <<<<<<< HEAD
 int bitmap_ord_to_pos(const unsigned long *buf, int ord, int bits)
 =======
+<<<<<<< HEAD
+int bitmap_ord_to_pos(const unsigned long *buf, int ord, int bits)
+=======
 static int bitmap_ord_to_pos(const unsigned long *buf, int ord, int bits)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int pos = 0;
 

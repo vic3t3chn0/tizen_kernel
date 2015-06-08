@@ -106,8 +106,12 @@ TRACE_EVENT(kvm_gtlb_write,
 <<<<<<< HEAD
 #ifdef CONFIG_KVM_BOOK3S_PR
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_KVM_BOOK3S_PR
+=======
 #ifdef CONFIG_PPC_BOOK3S
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 TRACE_EVENT(kvm_book3s_exit,
 	TP_PROTO(unsigned int exit_nr, struct kvm_vcpu *vcpu),
@@ -125,7 +129,11 @@ TRACE_EVENT(kvm_book3s_exit,
 <<<<<<< HEAD
 		struct kvmppc_book3s_shadow_vcpu *svcpu;
 =======
+<<<<<<< HEAD
+		struct kvmppc_book3s_shadow_vcpu *svcpu;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->exit_nr	= exit_nr;
 		__entry->pc		= kvmppc_get_pc(vcpu);
 		__entry->dar		= kvmppc_get_fault_dar(vcpu);
@@ -135,8 +143,14 @@ TRACE_EVENT(kvm_book3s_exit,
 		__entry->srr1		= svcpu->shadow_srr1;
 		svcpu_put(svcpu);
 =======
+<<<<<<< HEAD
+		svcpu = svcpu_get(vcpu);
+		__entry->srr1		= svcpu->shadow_srr1;
+		svcpu_put(svcpu);
+=======
 		__entry->srr1		= to_svcpu(vcpu)->shadow_srr1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	),
 
 	TP_printk("exit=0x%x | pc=0x%lx | msr=0x%lx | dar=0x%lx | srr1=0x%lx",
@@ -269,8 +283,12 @@ TRACE_EVENT(kvm_book3s_mmu_flush,
 <<<<<<< HEAD
 		__entry->count		= to_book3s(vcpu)->hpte_cache_count;
 =======
+<<<<<<< HEAD
+		__entry->count		= to_book3s(vcpu)->hpte_cache_count;
+=======
 		__entry->count		= vcpu->arch.hpte_cache_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->p1		= p1;
 		__entry->p2		= p2;
 		__entry->type		= type;
@@ -356,6 +374,9 @@ TRACE_EVENT(kvm_book3s_slbmte,
 #endif /* CONFIG_PPC_BOOK3S */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*************************************************************************
  *                         Book3E trace points                           *
@@ -413,8 +434,11 @@ TRACE_EVENT(kvm_booke206_gtlb_write,
 
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _TRACE_KVM_H */
 
 /* This part must be outside protection */

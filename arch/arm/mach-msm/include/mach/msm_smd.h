@@ -4,7 +4,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -22,6 +26,9 @@
 #define __ASM_ARCH_MSM_SMD_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/notifier.h>
 
@@ -148,16 +155,21 @@ struct smd_platform {
 };
 
 #ifdef CONFIG_MSM_SMD
+<<<<<<< HEAD
+=======
 =======
 typedef struct smd_channel smd_channel_t;
 
 extern int (*msm_check_for_modem_crash)(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* warning: notify() may be called before open returns */
 int smd_open(const char *name, smd_channel_t **ch, void *priv,
 	     void (*notify)(void *priv, unsigned event));
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define SMD_EVENT_DATA 1
@@ -165,18 +177,25 @@ int smd_open(const char *name, smd_channel_t **ch, void *priv,
 #define SMD_EVENT_CLOSE 3
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int smd_close(smd_channel_t *ch);
 
 /* passing a null pointer for data reads and discards */
 int smd_read(smd_channel_t *ch, void *data, int len);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int smd_read_from_cb(smd_channel_t *ch, void *data, int len);
 /* Same as smd_read() but takes a data buffer from userspace
  * The function might sleep.  Only safe to call from user context
  */
 int smd_read_user_buffer(smd_channel_t *ch, void *data, int len);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Write to stream channels may do a partial write and return
 ** the length actually written.
@@ -185,13 +204,19 @@ int smd_read_user_buffer(smd_channel_t *ch, void *data, int len);
 */
 int smd_write(smd_channel_t *ch, const void *data, int len);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Same as smd_write() but takes a data buffer from userspace
  * The function might sleep.  Only safe to call from user context
  */
 int smd_write_user_buffer(smd_channel_t *ch, const void *data, int len);
+<<<<<<< HEAD
+=======
 =======
 int smd_write_atomic(smd_channel_t *ch, const void *data, int len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int smd_write_avail(smd_channel_t *ch);
 int smd_read_avail(smd_channel_t *ch);
@@ -203,6 +228,8 @@ int smd_cur_packet_size(smd_channel_t *ch);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* used for tty unthrottling and the like -- causes the notify()
 ** callback to be called from the same lock context as is used
 ** when it is called from channel updates
@@ -210,6 +237,7 @@ int smd_cur_packet_size(smd_channel_t *ch);
 void smd_kick(smd_channel_t *ch);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if 0
 /* these are interruptable waits which will block you until the specified
@@ -220,6 +248,9 @@ int smd_wait_until_writable(smd_channel_t *ch, int bytes);
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* these are used to get and set the IF sigs of a channel.
  * DTR and RTS can be set; DSR, CTS, CD and RI can be read.
  */
@@ -500,6 +531,8 @@ static inline int smd_remote_ss_to_edge(const char *name)
 	return -EINVAL;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 typedef enum {
 	SMD_PORT_DS = 0,
@@ -542,5 +575,6 @@ typedef enum {
 	SMD_NUM_PORTS,
 } smd_port_id_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

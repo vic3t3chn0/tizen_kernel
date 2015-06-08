@@ -1001,8 +1001,12 @@ EXPORT_SYMBOL(set_memory_uc);
 <<<<<<< HEAD
 static int _set_memory_array(unsigned long *addr, int addrinarray,
 =======
+<<<<<<< HEAD
+static int _set_memory_array(unsigned long *addr, int addrinarray,
+=======
 int _set_memory_array(unsigned long *addr, int addrinarray,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long new_type)
 {
 	int i, j;
@@ -1340,6 +1344,8 @@ void kernel_map_pages(struct page *page, int numpages, int enable)
 	/*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 * If page allocator is not up yet then do not call c_p_a():
 	 */
 	if (!debug_pagealloc_enabled)
@@ -1347,6 +1353,7 @@ void kernel_map_pages(struct page *page, int numpages, int enable)
 
 	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * The return value is ignored as the calls cannot fail.
 	 * Large pages for identity mappings are not used at boot time
 	 * and hence no memory allocations during large page split.

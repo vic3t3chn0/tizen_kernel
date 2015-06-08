@@ -239,8 +239,16 @@ static int __devexit qt1070_remove(struct i2c_client *client)
 	input_unregister_device(data->input);
 	kfree(data);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	i2c_set_clientdata(client, NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_set_clientdata(client, NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -260,6 +268,12 @@ static struct i2c_driver qt1070_driver = {
 	.remove		= __devexit_p(qt1070_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(qt1070_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init qt1070_init(void)
 {
 	return i2c_add_driver(&qt1070_driver);
@@ -271,6 +285,10 @@ static void __exit qt1070_exit(void)
 	i2c_del_driver(&qt1070_driver);
 }
 module_exit(qt1070_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Bo Shen <voice.shen@atmel.com>");
 MODULE_DESCRIPTION("Driver for AT42QT1070 QTouch sensor");

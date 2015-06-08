@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2007-2009 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2007-2009 Nokia Corporation
  *
  * Written by Paul Walmsley
@@ -29,6 +33,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Function prototypes */
 # ifndef __ASSEMBLER__
 
@@ -36,4 +42,5 @@ extern int omap4_cm_wait_module_ready(void __iomem *clkctrl_reg);
 
 # endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

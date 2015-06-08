@@ -4,7 +4,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2012-2014 The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2012-2014 The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -22,12 +26,19 @@
 <<<<<<< HEAD
 #include <linux/fb.h>
 =======
+<<<<<<< HEAD
+#include <linux/fb.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MSMFB_IOCTL_MAGIC 'm'
 #define MSMFB_GRP_DISP          _IOW(MSMFB_IOCTL_MAGIC, 1, unsigned int)
 #define MSMFB_BLIT              _IOW(MSMFB_IOCTL_MAGIC, 2, unsigned int)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSMFB_SUSPEND_SW_REFRESHER _IOW(MSMFB_IOCTL_MAGIC, 128, unsigned int)
 #define MSMFB_RESUME_SW_REFRESHER _IOW(MSMFB_IOCTL_MAGIC, 129, unsigned int)
 #define MSMFB_CURSOR _IOW(MSMFB_IOCTL_MAGIC, 130, struct fb_cursor)
@@ -146,6 +157,8 @@ enum {
 	MDP_RGB_BORDERFILL,	/* border fill pipe */
 	MDP_FB_FORMAT = MDP_IMGTYPE2_START,    /* framebuffer format */
 	MDP_IMGTYPE_LIMIT2 /* Non valid image type after this enum */
+<<<<<<< HEAD
+=======
 =======
 
 enum {
@@ -163,6 +176,7 @@ enum {
 	MDP_RGBX_8888,		/* RGBX 888 */
 	MDP_IMGTYPE_LIMIT	/* Non valid image type after this enum */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 enum {
@@ -171,6 +185,9 @@ enum {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	HSIC_HUE = 0,
 	HSIC_SAT,
@@ -285,6 +302,8 @@ struct color {
 	uint32_t g;
 	uint32_t b;
 	uint32_t alpha;
+<<<<<<< HEAD
+=======
 =======
 /* flag values */
 #define MDP_ROT_NOP	0
@@ -307,6 +326,7 @@ struct mdp_img {
 	u32 width, height, format, offset;
 	int memory_id;		/* the file descriptor */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct mdp_blit_req {
@@ -315,6 +335,9 @@ struct mdp_blit_req {
 	struct mdp_rect src_rect;
 	struct mdp_rect dst_rect;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct color const_color;
 	uint32_t alpha;
 	uint32_t transp_mask;
@@ -1115,6 +1138,8 @@ int msm_fb_writeback_iommu_ref(struct fb_info *info, int enable);
 #endif
 
 #endif /*_MSM_MDP_H_*/
+<<<<<<< HEAD
+=======
 =======
 	u32 alpha, transp_mask, flags;
 };
@@ -1126,3 +1151,4 @@ struct mdp_blit_req_list {
 
 #endif /* _MSM_MDP_H_ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "prm-regbits-44xx.h"
 #include "prm44xx.h"
@@ -37,6 +41,9 @@
 #include "vp.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct omap_vfsm_instance omap4_vdd_mpu_vfsm = {
 	.voltsetup_reg = OMAP4_PRM_VOLTSETUP_MPU_RET_SLEEP_OFFSET,
 };
@@ -100,6 +107,8 @@ void __init omap44xx_voltagedomains_init(void)
 {
 	struct voltagedomain *voltdm;
 	int i;
+<<<<<<< HEAD
+=======
 =======
 static const struct omap_vfsm_instance_data omap4_vdd_mpu_vfsm_data = {
 	.voltsetup_reg = OMAP4_PRM_VOLTSETUP_MPU_RET_SLEEP_OFFSET,
@@ -156,12 +165,16 @@ static int __init omap44xx_voltage_early_init(void)
 	if (!cpu_is_omap44xx())
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * XXX Will depend on the process, validation, and binning
 	 * for the currently-running IC
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_OPP
 	omap4_voltdm_mpu.volt_data = omap44xx_vdd_mpu_volt_data;
 	omap4_voltdm_iva.volt_data = omap44xx_vdd_iva_volt_data;
@@ -173,6 +186,8 @@ static int __init omap44xx_voltage_early_init(void)
 
 	voltdm_init(voltagedomains_omap4);
 };
+<<<<<<< HEAD
+=======
 =======
 	omap4_vdd_mpu_info.volt_data = omap44xx_vdd_mpu_volt_data;
 	omap4_vdd_iva_info.volt_data = omap44xx_vdd_iva_volt_data;
@@ -184,3 +199,4 @@ static int __init omap44xx_voltage_early_init(void)
 };
 core_initcall(omap44xx_voltage_early_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

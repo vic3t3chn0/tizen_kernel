@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include "blk.h"
 =======
+<<<<<<< HEAD
+#include "blk.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Max dispatch from a group in 1 round */
 static int throtl_grp_quantum = 8;
@@ -151,10 +155,16 @@ static inline unsigned int total_nr_queued(struct throtl_data *td)
 {
 	return td->nr_queued[0] + td->nr_queued[1];
 =======
+<<<<<<< HEAD
+static inline unsigned int total_nr_queued(struct throtl_data *td)
+{
+	return td->nr_queued[0] + td->nr_queued[1];
+=======
 static inline int total_nr_queued(struct throtl_data *td)
 {
 	return (td->nr_queued[0] + td->nr_queued[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline struct throtl_grp *throtl_ref_get_tg(struct throtl_grp *tg)
@@ -314,11 +324,14 @@ throtl_grp *throtl_find_tg(struct throtl_data *td, struct blkio_cgroup *blkcg)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * This function returns with queue lock unlocked in case of error, like
  * request queue is no more
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct throtl_grp * throtl_get_tg(struct throtl_data *td)
 {
 	struct throtl_grp *tg = NULL, *__tg = NULL;
@@ -326,12 +339,18 @@ static struct throtl_grp * throtl_get_tg(struct throtl_data *td)
 	struct request_queue *q = td->queue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* no throttling for dead queue */
 	if (unlikely(blk_queue_dead(q)))
 		return NULL;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 	blkcg = task_blkio_cgroup(current);
 	tg = throtl_find_tg(td, blkcg);
@@ -347,6 +366,10 @@ static struct throtl_grp * throtl_get_tg(struct throtl_data *td)
 	 * we need to drop rcu lock and queue_lock before we call alloc.
 	 */
 =======
+<<<<<<< HEAD
+	 * we need to drop rcu lock and queue_lock before we call alloc.
+	 */
+=======
 	 * we need to drop rcu lock and queue_lock before we call alloc
 	 *
 	 * Take the request queue reference to make sure queue does not
@@ -354,10 +377,13 @@ static struct throtl_grp * throtl_get_tg(struct throtl_data *td)
 	 */
 	blk_get_queue(q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 	spin_unlock_irq(q->queue_lock);
 
 	tg = throtl_alloc_tg(td);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/*
@@ -373,19 +399,26 @@ static struct throtl_grp * throtl_get_tg(struct throtl_data *td)
 	}
 	blk_put_queue(q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Group allocated and queue is still alive. take the lock */
 	spin_lock_irq(q->queue_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Make sure @q is still alive */
 	if (unlikely(blk_queue_dead(q))) {
 		kfree(tg);
 		return NULL;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Initialize the new group. After sleeping, read the blkcg again.
 	 */
@@ -786,8 +819,12 @@ static void throtl_charge_bio(struct throtl_grp *tg, struct bio *bio)
 <<<<<<< HEAD
 	bool sync = rw_is_sync(bio->bi_rw);
 =======
+<<<<<<< HEAD
+	bool sync = rw_is_sync(bio->bi_rw);
+=======
 	bool sync = bio->bi_rw & REQ_SYNC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Charge the bio to the group */
 	tg->bytes_disp[rw] += bio->bi_size;
@@ -971,8 +1008,12 @@ static int throtl_dispatch(struct request_queue *q)
 <<<<<<< HEAD
 	throtl_log(td, "dispatch nr_queued=%u read=%u write=%u",
 =======
+<<<<<<< HEAD
+	throtl_log(td, "dispatch nr_queued=%u read=%u write=%u",
+=======
 	throtl_log(td, "dispatch nr_queued=%d read=%u write=%u",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			total_nr_queued(td), td->nr_queued[READ],
 			td->nr_queued[WRITE]);
 
@@ -1018,8 +1059,12 @@ throtl_schedule_delayed_work(struct throtl_data *td, unsigned long delay)
 <<<<<<< HEAD
 	if (total_nr_queued(td) || td->limits_changed) {
 =======
+<<<<<<< HEAD
+	if (total_nr_queued(td) || td->limits_changed) {
+=======
 	if (total_nr_queued(td) > 0 || td->limits_changed) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * We might have a work scheduled to be executed in future.
 		 * Cancel that and schedule a new one.
@@ -1065,12 +1110,15 @@ static void throtl_release_tgs(struct throtl_data *td)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void throtl_td_free(struct throtl_data *td)
 {
 	kfree(td);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Blk cgroup controller notification saying that blkio_group object is being
  * delinked as associated cgroup object is going away. That also means that
@@ -1176,6 +1224,9 @@ static struct blkio_policy_type blkio_policy_throtl = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool blk_throtl_bio(struct request_queue *q, struct bio *bio)
 {
 	struct throtl_data *td = q->td;
@@ -1187,6 +1238,8 @@ bool blk_throtl_bio(struct request_queue *q, struct bio *bio)
 	if (bio->bi_rw & REQ_THROTTLED) {
 		bio->bi_rw &= ~REQ_THROTTLED;
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 int blk_throtl_bio(struct request_queue *q, struct bio **biop)
 {
@@ -1200,6 +1253,7 @@ int blk_throtl_bio(struct request_queue *q, struct bio **biop)
 		bio->bi_rw &= ~REQ_THROTTLED;
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1221,10 +1275,16 @@ int blk_throtl_bio(struct request_queue *q, struct bio **biop)
 			rcu_read_unlock();
 			goto out;
 =======
+<<<<<<< HEAD
+					rw, rw_is_sync(bio->bi_rw));
+			rcu_read_unlock();
+			goto out;
+=======
 					rw, bio->bi_rw & REQ_SYNC);
 			rcu_read_unlock();
 			return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	rcu_read_unlock();
@@ -1234,10 +1294,15 @@ int blk_throtl_bio(struct request_queue *q, struct bio **biop)
 	 * IO group
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irq(q->queue_lock);
 	tg = throtl_get_tg(td);
 	if (unlikely(!tg))
 		goto out_unlock;
+<<<<<<< HEAD
+=======
 =======
 
 	spin_lock_irq(q->queue_lock);
@@ -1252,6 +1317,7 @@ int blk_throtl_bio(struct request_queue *q, struct bio **biop)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (tg->nr_queued[rw]) {
 		/*
@@ -1282,8 +1348,12 @@ int blk_throtl_bio(struct request_queue *q, struct bio **biop)
 <<<<<<< HEAD
 		goto out_unlock;
 =======
+<<<<<<< HEAD
+		goto out_unlock;
+=======
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 queue_bio:
@@ -1298,8 +1368,12 @@ queue_bio:
 <<<<<<< HEAD
 	throttled = true;
 =======
+<<<<<<< HEAD
+	throttled = true;
+=======
 	*biop = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (update_disptime) {
 		tg_update_disptime(td, tg);
@@ -1307,6 +1381,9 @@ queue_bio:
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_unlock:
 	spin_unlock_irq(q->queue_lock);
 out:
@@ -1346,11 +1423,14 @@ void blk_throtl_drain(struct request_queue *q)
 		generic_make_request(bio);
 
 	spin_lock_irq(q->queue_lock);
+<<<<<<< HEAD
+=======
 =======
 out:
 	spin_unlock_irq(q->queue_lock);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int blk_throtl_init(struct request_queue *q)
@@ -1426,14 +1506,20 @@ void blk_throtl_exit(struct request_queue *q)
 	 */
 	throtl_shutdown_wq(q);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void blk_throtl_release(struct request_queue *q)
 {
 	kfree(q->td);
+<<<<<<< HEAD
+=======
 =======
 	throtl_td_free(td);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init throtl_init(void)

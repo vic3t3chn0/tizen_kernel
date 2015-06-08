@@ -1,9 +1,13 @@
 <<<<<<< HEAD
 /*
 =======
+<<<<<<< HEAD
+/*
+=======
 /* linux/include/linux/power/charger-manager.h
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2011 Samsung Electronics Co., Ltd.
  * MyungJoo.Ham <myungjoo.ham@samsung.com>
  *
@@ -18,12 +22,17 @@
 **/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _CHARGER_MANAGER_H
 #define _CHARGER_MANAGER_H
 
 #include <linux/power_supply.h>
 
 enum data_source {
+<<<<<<< HEAD
+=======
 =======
 #ifndef __SAMSUNG_DEV_CHARGER_H
 #define __SAMSUNG_DEV_CHARGER_H
@@ -35,11 +44,15 @@ enum data_source {
 	CM_ASSUME_ALWAYS_TRUE,
 	CM_ASSUME_ALWAYS_FALSE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CM_FUEL_GAUGE,
 	CM_CHARGER_STAT,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum polling_modes {
 	CM_POLL_DISABLE = 0,
 	CM_POLL_ALWAYS,
@@ -129,6 +142,8 @@ struct charger_desc {
  * @status_save_batt:
  *	saved status of battery before entering suspend-to-RAM
  */
+<<<<<<< HEAD
+=======
 =======
 enum cm_event_types {
 	CM_EVENT_UNDESCRIBED = 0,
@@ -275,6 +290,7 @@ struct charger_desc {
 
 #define PSY_NAME_MAX	30
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct charger_manager {
 	struct list_head entry;
 	struct device *dev;
@@ -284,6 +300,9 @@ struct charger_manager {
 	struct power_supply **charger_stat;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool charger_enabled;
 
 	int emergency_stop;
@@ -303,6 +322,8 @@ extern bool cm_suspend_again(void);
 static void __maybe_unused setup_charger_manager(struct charger_global_desc *gd)
 { }
 
+<<<<<<< HEAD
+=======
 =======
 	bool cancel_suspend; /* if there is a pending charger event. */
 	bool charger_enabled;
@@ -358,10 +379,16 @@ static bool __maybe_unused is_charger_manager_active(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool __maybe_unused cm_suspend_again(void)
 {
 	return false;
 }
+<<<<<<< HEAD
+#endif
+
+#endif /* _CHARGER_MANAGER_H */
+=======
 <<<<<<< HEAD
 #endif
 
@@ -373,3 +400,4 @@ static void __maybe_unused cm_allow_charging(struct charger_manager *cm) { }
 
 #endif /* __SAMSUNG_DEV_CHARGER_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

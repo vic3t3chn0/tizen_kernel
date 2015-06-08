@@ -6,10 +6,15 @@
  */
 #include <linux/clockchips.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/i8253.h>
 #include <linux/init.h>
 #include <linux/interrupt.h>
 #include <linux/irq.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/clocksource.h>
 #include <linux/init.h>
@@ -17,18 +22,24 @@
 #include <linux/irq.h>
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spinlock.h>
 #include <linux/timex.h>
 
 #include <asm/irq.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/i8253.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/time.h>
 
 #include "common.h"
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 DEFINE_RAW_SPINLOCK(i8253_lock);
@@ -76,6 +87,7 @@ static struct clock_event_device pit_ce = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static irqreturn_t pit_timer_interrupt(int irq, void *dev_id)
 {
 	struct clock_event_device *ce = dev_id;
@@ -90,17 +102,26 @@ static struct irqaction pit_timer_irq = {
 <<<<<<< HEAD
 	.dev_id		= &i8253_clockevent,
 =======
+<<<<<<< HEAD
+	.dev_id		= &i8253_clockevent,
+=======
 	.dev_id		= &pit_ce,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init isa_timer_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clocksource_i8253_init();
 
 	setup_irq(i8253_clockevent.irq, &pit_timer_irq);
 	clockevent_i8253_init(false);
+<<<<<<< HEAD
+=======
 =======
 	pit_ce.cpumask = cpumask_of(smp_processor_id());
 	pit_ce.mult = div_sc(PIT_TICK_RATE, NSEC_PER_SEC, pit_ce.shift);
@@ -112,6 +133,7 @@ static void __init isa_timer_init(void)
 	setup_irq(pit_ce.irq, &pit_timer_irq);
 	clockevents_register_device(&pit_ce);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct sys_timer isa_timer = {

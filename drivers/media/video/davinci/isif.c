@@ -34,6 +34,13 @@
 #include <linux/videodev2.h>
 #include <linux/clk.h>
 #include <linux/err.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/mux.h>
 
@@ -1156,6 +1163,12 @@ static struct platform_driver isif_driver = {
 	.probe = isif_probe,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(isif_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init isif_init(void)
 {
 	return platform_driver_register(&isif_driver);
@@ -1168,5 +1181,9 @@ static void isif_exit(void)
 
 module_init(isif_init);
 module_exit(isif_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");

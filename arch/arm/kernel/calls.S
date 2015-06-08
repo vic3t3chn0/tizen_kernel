@@ -181,8 +181,12 @@
 <<<<<<< HEAD
 		CALL(sys_ni_syscall)		/* was nfsservctl */
 =======
+<<<<<<< HEAD
+		CALL(sys_ni_syscall)		/* was nfsservctl */
+=======
 		CALL(sys_nfsservctl)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 170 */	CALL(sys_setresgid16)
 		CALL(sys_getresgid16)
 		CALL(sys_prctl)
@@ -393,7 +397,12 @@
 		CALL(sys_process_vm_readv)
 		CALL(sys_process_vm_writev)
 =======
+<<<<<<< HEAD
+		CALL(sys_process_vm_readv)
+		CALL(sys_process_vm_writev)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef syscalls_counted
 .equ syscalls_padding, ((NR_syscalls + 3) & ~3) - NR_syscalls
 #define syscalls_counted

@@ -130,8 +130,13 @@ int ima_must_measure(struct inode *inode, int mask, int function)
 int ima_collect_measurement(struct integrity_iint_cache *iint,
 			    struct file *file)
 =======
+<<<<<<< HEAD
+int ima_collect_measurement(struct integrity_iint_cache *iint,
+			    struct file *file)
+=======
 int ima_collect_measurement(struct ima_iint_cache *iint, struct file *file)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int result = -EEXIST;
 
@@ -165,9 +170,14 @@ int ima_collect_measurement(struct ima_iint_cache *iint, struct file *file)
 void ima_store_measurement(struct integrity_iint_cache *iint,
 			   struct file *file, const unsigned char *filename)
 =======
+<<<<<<< HEAD
+void ima_store_measurement(struct integrity_iint_cache *iint,
+			   struct file *file, const unsigned char *filename)
+=======
 void ima_store_measurement(struct ima_iint_cache *iint, struct file *file,
 			   const unsigned char *filename)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const char *op = "add_template_measure";
 	const char *audit_cause = "ENOMEM";

@@ -21,7 +21,13 @@ It can also be used to show the build id of the running kernel or in an ELF
 file using -i/--input.
 
 =======
+<<<<<<< HEAD
+It can also be used to show the build id of the running kernel or in an ELF
+file using -i/--input.
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 OPTIONS
 -------
 -H::
@@ -30,6 +36,9 @@ OPTIONS
 -i::
 --input=::
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         Input file name. (default: perf.data unless stdin is a fifo)
 -f::
 --force::
@@ -37,12 +46,15 @@ OPTIONS
 -k::
 --kernel::
 	Show running kernel build id.
+<<<<<<< HEAD
+=======
 =======
         Input file name. (default: perf.data)
 -f::
 --force::
 	Don't do ownership validation.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 -v::
 --verbose::
 	Be more verbose.

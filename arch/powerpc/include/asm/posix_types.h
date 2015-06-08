@@ -8,6 +8,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __powerpc64__
 typedef unsigned long	__kernel_old_dev_t;
 #define __kernel_old_dev_t __kernel_old_dev_t
@@ -26,6 +29,8 @@ typedef short		__kernel_ipc_pid_t;
 
 #include <asm-generic/posix_types.h>
 
+<<<<<<< HEAD
+=======
 =======
 typedef unsigned long	__kernel_ino_t;
 typedef unsigned int	__kernel_mode_t;
@@ -146,4 +151,5 @@ static __inline__ void __FD_ZERO(__kernel_fd_set *p)
 #endif /* defined(__KERNEL__) */
 #endif /* __GNUC__ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_POWERPC_POSIX_TYPES_H */

@@ -49,6 +49,9 @@ DEFINE_EVENT(cpu, cpu_frequency,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TRACE_EVENT(cpu_frequency_switch_start,
 
 	TP_PROTO(unsigned int start_freq, unsigned int end_freq,
@@ -91,8 +94,11 @@ TRACE_EVENT(cpu_frequency_switch_end,
 	TP_printk("cpu_id=%lu", (unsigned long)__entry->cpu_id)
 );
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TRACE_EVENT(machine_suspend,
 
 	TP_PROTO(unsigned int state),
@@ -111,6 +117,9 @@ TRACE_EVENT(machine_suspend,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_EVENT_CLASS(wakeup_source,
 
 	TP_PROTO(const char *name, unsigned int state),
@@ -145,9 +154,12 @@ DEFINE_EVENT(wakeup_source, wakeup_source_deactivate,
 	TP_ARGS(name, state)
 );
 
+<<<<<<< HEAD
+=======
 =======
 /* This code will be removed after deprecation time exceeded (2.6.41) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_EVENT_POWER_TRACING_DEPRECATED
 
 /*
@@ -237,7 +249,12 @@ static inline void trace_power_end(u64 cpuid) {};
 static inline void trace_power_start_rcuidle(u64 type, u64 state, u64 cpuid) {};
 static inline void trace_power_end_rcuidle(u64 cpuid) {};
 =======
+<<<<<<< HEAD
+static inline void trace_power_start_rcuidle(u64 type, u64 state, u64 cpuid) {};
+static inline void trace_power_end_rcuidle(u64 cpuid) {};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void trace_power_frequency(u64 type, u64 state, u64 cpuid) {};
 #endif /* _PWR_EVENT_AVOID_DOUBLE_DEFINING_DEPRECATED */
 
@@ -291,6 +308,9 @@ DEFINE_EVENT(clock, clock_set_rate,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 TRACE_EVENT(clock_set_parent,
 
 	TP_PROTO(const char *name, const char *parent_name),
@@ -310,8 +330,11 @@ TRACE_EVENT(clock_set_parent,
 	TP_printk("%s parent=%s", __get_str(name), __get_str(parent_name))
 );
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The power domain events are used for power domains transitions
  */

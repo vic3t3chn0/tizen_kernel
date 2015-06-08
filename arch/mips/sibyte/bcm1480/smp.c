@@ -141,8 +141,12 @@ static void __cpuinit bcm1480_boot_secondary(int cpu, struct task_struct *idle)
 <<<<<<< HEAD
  * cpu_possible_mask and the logical/physical mappings.
 =======
+<<<<<<< HEAD
+ * cpu_possible_mask and the logical/physical mappings.
+=======
  * cpu_possible_map and the logical/physical mappings.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * XXXKW will the boot CPU ever not be physical 0?
  *
  * Common setup before any secondaries are started
@@ -154,9 +158,13 @@ static void __init bcm1480_smp_setup(void)
 <<<<<<< HEAD
 	init_cpu_possible(cpumask_of(0));
 =======
+<<<<<<< HEAD
+	init_cpu_possible(cpumask_of(0));
+=======
 	cpus_clear(cpu_possible_map);
 	cpu_set(0, cpu_possible_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__cpu_number_map[0] = 0;
 	__cpu_logical_map[0] = 0;
 
@@ -165,8 +173,12 @@ static void __init bcm1480_smp_setup(void)
 <<<<<<< HEAD
 			set_cpu_possible(i, true);
 =======
+<<<<<<< HEAD
+			set_cpu_possible(i, true);
+=======
 			cpu_set(i, cpu_possible_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__cpu_number_map[i] = ++num;
 			__cpu_logical_map[num] = i;
 		}

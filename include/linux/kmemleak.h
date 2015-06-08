@@ -27,14 +27,20 @@ extern void kmemleak_init(void) __ref;
 extern void kmemleak_alloc(const void *ptr, size_t size, int min_count,
 			   gfp_t gfp) __ref;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void kmemleak_alloc_percpu(const void __percpu *ptr, size_t size) __ref;
 extern void kmemleak_free(const void *ptr) __ref;
 extern void kmemleak_free_part(const void *ptr, size_t size) __ref;
 extern void kmemleak_free_percpu(const void __percpu *ptr) __ref;
+<<<<<<< HEAD
+=======
 =======
 extern void kmemleak_free(const void *ptr) __ref;
 extern void kmemleak_free_part(const void *ptr, size_t size) __ref;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void kmemleak_padding(const void *ptr, unsigned long offset,
 			     size_t size) __ref;
 extern void kmemleak_not_leak(const void *ptr) __ref;
@@ -80,7 +86,13 @@ static inline void kmemleak_alloc_percpu(const void __percpu *ptr, size_t size)
 {
 }
 =======
+<<<<<<< HEAD
+static inline void kmemleak_alloc_percpu(const void __percpu *ptr, size_t size)
+{
+}
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void kmemleak_free(const void *ptr)
 {
 }
@@ -95,7 +107,13 @@ static inline void kmemleak_free_percpu(const void __percpu *ptr)
 {
 }
 =======
+<<<<<<< HEAD
+static inline void kmemleak_free_percpu(const void __percpu *ptr)
+{
+}
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void kmemleak_not_leak(const void *ptr)
 {
 }

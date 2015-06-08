@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2012 Intel Corporation.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2012 Intel Corporation.
+=======
  * Copyright (c) 2010, Intel Corporation.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Len Brown <len.brown@intel.com>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -26,7 +30,11 @@
 <<<<<<< HEAD
 #define _GNU_SOURCE
 =======
+<<<<<<< HEAD
+#define _GNU_SOURCE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -43,7 +51,11 @@
 <<<<<<< HEAD
 #include <sched.h>
 =======
+<<<<<<< HEAD
+#include <sched.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MSR_TSC	0x10
 #define MSR_NEHALEM_PLATFORM_INFO	0xCE
@@ -64,7 +76,11 @@ unsigned int verbose;		/* set with -v */
 <<<<<<< HEAD
 unsigned int summary_only;	/* set with -s */
 =======
+<<<<<<< HEAD
+unsigned int summary_only;	/* set with -s */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned int skip_c0;
 unsigned int skip_c1;
 unsigned int do_nhm_cstates;
@@ -85,15 +101,21 @@ int aperf_mperf_unstable;
 int backwards_count;
 char *progname;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int num_cpus;
 cpu_set_t *cpu_mask;
 size_t cpu_mask_size;
+<<<<<<< HEAD
+=======
 =======
 int need_reinitialize;
 
 int num_cpus;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct counters {
 	unsigned long long tsc;		/* per thread */
@@ -123,6 +145,9 @@ struct timeval tv_odd;
 struct timeval tv_delta;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * cpu_mask_init(ncpus)
  *
@@ -160,18 +185,24 @@ int cpu_migrate(int cpu)
 int get_msr(int cpu, off_t offset, unsigned long long *msr)
 {
 	ssize_t retval;
+<<<<<<< HEAD
+=======
 =======
 unsigned long long get_msr(int cpu, off_t offset)
 {
 	ssize_t retval;
 	unsigned long long msr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char pathname[32];
 	int fd;
 
 	sprintf(pathname, "/dev/cpu/%d/msr", cpu);
 	fd = open(pathname, O_RDONLY);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fd < 0)
 		return -1;
 
@@ -182,6 +213,8 @@ unsigned long long get_msr(int cpu, off_t offset)
 		return -1;
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	if (fd < 0) {
 		perror(pathname);
@@ -199,12 +232,16 @@ unsigned long long get_msr(int cpu, off_t offset)
 	close(fd);
 	return msr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void print_header(void)
 {
 	if (show_pkg)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(stderr, "pk");
 	if (show_pkg)
 		fprintf(stderr, " ");
@@ -216,6 +253,8 @@ void print_header(void)
 		fprintf(stderr, " ");
 	if (do_nhm_cstates)
 		fprintf(stderr, "   %%c0");
+<<<<<<< HEAD
+=======
 =======
 		fprintf(stderr, "pkg ");
 	if (show_core)
@@ -225,11 +264,15 @@ void print_header(void)
 	if (do_nhm_cstates)
 		fprintf(stderr, "   %%c0 ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (has_aperf)
 		fprintf(stderr, "  GHz");
 	fprintf(stderr, "  TSC");
 	if (do_nhm_cstates)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(stderr, "    %%c1");
 	if (do_nhm_cstates)
 		fprintf(stderr, "    %%c3");
@@ -247,6 +290,8 @@ void print_header(void)
 		fprintf(stderr, "   %%pc7");
 	if (extra_msr_offset)
 		fprintf(stderr, "        MSR 0x%x ", extra_msr_offset);
+<<<<<<< HEAD
+=======
 =======
 		fprintf(stderr, "   %%c1 ");
 	if (do_nhm_cstates)
@@ -266,6 +311,7 @@ void print_header(void)
 	if (extra_msr_offset)
 		fprintf(stderr, "       MSR 0x%x ", extra_msr_offset);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	putc('\n', stderr);
 }
@@ -273,6 +319,9 @@ void print_header(void)
 void dump_cnt(struct counters *cnt)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!cnt)
 		return;
 	if (cnt->pkg) fprintf(stderr, "package: %d ", cnt->pkg);
@@ -288,6 +337,8 @@ void dump_cnt(struct counters *cnt)
 	if (cnt->pc6) fprintf(stderr, "pc6: %016llX\n", cnt->pc6);
 	if (cnt->pc7) fprintf(stderr, "pc7: %016llX\n", cnt->pc7);
 	if (cnt->extra_msr) fprintf(stderr, "msr0x%x: %016llX\n", extra_msr_offset, cnt->extra_msr);
+<<<<<<< HEAD
+=======
 =======
 	fprintf(stderr, "package: %d ", cnt->pkg);
 	fprintf(stderr, "core:: %d ", cnt->core);
@@ -303,6 +354,7 @@ void dump_cnt(struct counters *cnt)
 	fprintf(stderr, "pc7: %016llX\n", cnt->pc7);
 	fprintf(stderr, "msr0x%x: %016llX\n", extra_msr_offset, cnt->extra_msr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void dump_list(struct counters *cnt)
@@ -314,6 +366,9 @@ void dump_list(struct counters *cnt)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * column formatting convention & formats
  * package: "pk" 2 columns %2d
@@ -323,8 +378,11 @@ void dump_list(struct counters *cnt)
  * TSC: "TSC" 3 columns %3.2
  * percentage " %pc3" %6.2
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void print_cnt(struct counters *p)
 {
 	double interval_float;
@@ -335,6 +393,9 @@ void print_cnt(struct counters *p)
 	if (p == cnt_average) {
 		if (show_pkg)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fprintf(stderr, "  ");
 		if (show_pkg && show_core)
 			fprintf(stderr, " ");
@@ -351,6 +412,8 @@ void print_cnt(struct counters *p)
 			fprintf(stderr, "%3d", p->core);
 		if (show_cpu)
 			fprintf(stderr, " %3d", p->cpu);
+<<<<<<< HEAD
+=======
 =======
 			fprintf(stderr, "    ");
 		if (show_core)
@@ -365,23 +428,30 @@ void print_cnt(struct counters *p)
 		if (show_cpu)
 			fprintf(stderr, "%4d", p->cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* %c0 */
 	if (do_nhm_cstates) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (show_pkg || show_core || show_cpu)
 			fprintf(stderr, " ");
 		if (!skip_c0)
 			fprintf(stderr, "%6.2f", 100.0 * p->mperf/p->tsc);
 		else
 			fprintf(stderr, "  ****");
+<<<<<<< HEAD
+=======
 =======
 		if (!skip_c0)
 			fprintf(stderr, "%7.2f", 100.0 * p->mperf/p->tsc);
 		else
 			fprintf(stderr, "   ****");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* GHz */
@@ -390,8 +460,12 @@ void print_cnt(struct counters *p)
 <<<<<<< HEAD
 			fprintf(stderr, " %3.2f",
 =======
+<<<<<<< HEAD
+			fprintf(stderr, " %3.2f",
+=======
 			fprintf(stderr, "%5.2f",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				1.0 * p->tsc / units * p->aperf /
 				p->mperf / interval_float);
 		} else {
@@ -401,10 +475,16 @@ void print_cnt(struct counters *p)
 			} else {
 				fprintf(stderr, "%3.1f*",
 =======
+<<<<<<< HEAD
+				fprintf(stderr, " ***");
+			} else {
+				fprintf(stderr, "%3.1f*",
+=======
 				fprintf(stderr, " ****");
 			} else {
 				fprintf(stderr, "%4.1f*",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					1.0 * p->tsc /
 					units * p->aperf /
 					p->mperf / interval_float);
@@ -418,6 +498,9 @@ void print_cnt(struct counters *p)
 	if (do_nhm_cstates) {
 		if (!skip_c1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			fprintf(stderr, " %6.2f", 100.0 * p->c1/p->tsc);
 		else
 			fprintf(stderr, "  ****");
@@ -436,6 +519,8 @@ void print_cnt(struct counters *p)
 		fprintf(stderr, " %6.2f", 100.0 * p->pc6/p->tsc);
 	if (do_snb_cstates)
 		fprintf(stderr, " %6.2f", 100.0 * p->pc7/p->tsc);
+<<<<<<< HEAD
+=======
 =======
 			fprintf(stderr, "%7.2f", 100.0 * p->c1/p->tsc);
 		else
@@ -456,6 +541,7 @@ void print_cnt(struct counters *p)
 	if (do_snb_cstates)
 		fprintf(stderr, "%7.2f", 100.0 * p->pc7/p->tsc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (extra_msr_offset)
 		fprintf(stderr, "  0x%016llx", p->extra_msr);
 	putc('\n', stderr);
@@ -465,27 +551,39 @@ void print_counters(struct counters *counters)
 {
 	struct counters *cnt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static int printed;
 
 
 	if (!printed || !summary_only)
 		print_header();
+<<<<<<< HEAD
+=======
 =======
 
 	print_header();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (num_cpus > 1)
 		print_cnt(cnt_average);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printed = 1;
 
 	if (summary_only)
 		return;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (cnt = counters; cnt != NULL; cnt = cnt->next)
 		print_cnt(cnt);
 
@@ -654,6 +752,9 @@ void compute_average(struct counters *delta, struct counters *avg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int get_counters(struct counters *cnt)
 {
 	for ( ; cnt; cnt = cnt->next) {
@@ -699,6 +800,8 @@ int get_counters(struct counters *cnt)
 				return -1;
 	}
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 void get_counters(struct counters *cnt)
 {
@@ -726,6 +829,7 @@ void get_counters(struct counters *cnt)
 			cnt->extra_msr = get_msr(cnt->cpu, extra_msr_offset);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void print_nehalem_info(void)
@@ -739,8 +843,12 @@ void print_nehalem_info(void)
 <<<<<<< HEAD
 	get_msr(0, MSR_NEHALEM_PLATFORM_INFO, &msr);
 =======
+<<<<<<< HEAD
+	get_msr(0, MSR_NEHALEM_PLATFORM_INFO, &msr);
+=======
 	msr = get_msr(0, MSR_NEHALEM_PLATFORM_INFO);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ratio = (msr >> 40) & 0xFF;
 	fprintf(stderr, "%d * %.0f = %.0f MHz max efficiency\n",
@@ -759,8 +867,12 @@ void print_nehalem_info(void)
 <<<<<<< HEAD
 	get_msr(0, MSR_NEHALEM_TURBO_RATIO_LIMIT, &msr);
 =======
+<<<<<<< HEAD
+	get_msr(0, MSR_NEHALEM_TURBO_RATIO_LIMIT, &msr);
+=======
 	msr = get_msr(0, MSR_NEHALEM_TURBO_RATIO_LIMIT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ratio = (msr >> 24) & 0xFF;
 	if (ratio)
@@ -830,8 +942,13 @@ void insert_counters(struct counters **list,
 	if (!summary_only)
 		show_cpu = 1;	/* there is more than one CPU */
 =======
+<<<<<<< HEAD
+	if (!summary_only)
+		show_cpu = 1;	/* there is more than one CPU */
+=======
 	show_cpu = 1;	/* there is more than one CPU */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * insert on front of list.
@@ -853,8 +970,13 @@ void insert_counters(struct counters **list,
 		if (!summary_only)
 			show_pkg = 1;	/* there is more than 1 package */
 =======
+<<<<<<< HEAD
+		if (!summary_only)
+			show_pkg = 1;	/* there is more than 1 package */
+=======
 		show_pkg = 1;	/* there is more than 1 package */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	while (prev->next && (prev->next->pkg == new->pkg)
@@ -864,8 +986,13 @@ void insert_counters(struct counters **list,
 		if (!summary_only)
 			show_core = 1;	/* there is more than 1 core */
 =======
+<<<<<<< HEAD
+		if (!summary_only)
+			show_core = 1;	/* there is more than 1 core */
+=======
 		show_core = 1;	/* there is more than 1 core */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	while (prev->next && (prev->next->pkg == new->pkg)
@@ -968,8 +1095,12 @@ int get_core_id(int cpu)
 <<<<<<< HEAD
  * run func(pkg, core, cpu) on every cpu in /proc/stat
 =======
+<<<<<<< HEAD
+ * run func(pkg, core, cpu) on every cpu in /proc/stat
+=======
  * run func(index, cpu) on every cpu in /proc/stat
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 int for_all_cpus(void (func)(int, int, int))
@@ -1006,11 +1137,16 @@ int for_all_cpus(void (func)(int, int, int))
 void re_initialize(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	free_all_counters();
 	num_cpus = for_all_cpus(alloc_new_counters);
 	cpu_mask_uninit();
 	cpu_mask_init(num_cpus);
 	printf("turbostat: re-initialized with num_cpus %d\n", num_cpus);
+<<<<<<< HEAD
+=======
 =======
 	printf("turbostat: topology changed, re-initializing.\n");
 	free_all_counters();
@@ -1018,6 +1154,7 @@ void re_initialize(void)
 	need_reinitialize = 0;
 	printf("num_cpus is now %d\n", num_cpus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void dummy(int pkg, int core, int cpu) { return; }
@@ -1027,8 +1164,12 @@ void dummy(int pkg, int core, int cpu) { return; }
 <<<<<<< HEAD
 int verify_num_cpus(void)
 =======
+<<<<<<< HEAD
+int verify_num_cpus(void)
+=======
 void verify_num_cpus(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int new_num_cpus;
 
@@ -1043,9 +1184,15 @@ void verify_num_cpus(void)
 	}
 	return 0;
 =======
+<<<<<<< HEAD
+		return -1;
+	}
+	return 0;
+=======
 		need_reinitialize = 1;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void turbostat_loop()
@@ -1058,34 +1205,49 @@ restart:
 <<<<<<< HEAD
 		if (verify_num_cpus()) {
 =======
+<<<<<<< HEAD
+		if (verify_num_cpus()) {
+=======
 		verify_num_cpus();
 		if (need_reinitialize) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			re_initialize();
 			goto restart;
 		}
 		sleep(interval_sec);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (get_counters(cnt_odd)) {
 			re_initialize();
 			goto restart;
 		}
 		gettimeofday(&tv_odd, (struct timezone *)NULL);
+<<<<<<< HEAD
+=======
 =======
 		get_counters(cnt_odd);
 		gettimeofday(&tv_odd, (struct timezone *)NULL);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		compute_delta(cnt_odd, cnt_even, cnt_delta);
 		timersub(&tv_odd, &tv_even, &tv_delta);
 		compute_average(cnt_delta, cnt_average);
 		print_counters(cnt_delta);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sleep(interval_sec);
 		if (get_counters(cnt_even)) {
 			re_initialize();
 			goto restart;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (need_reinitialize) {
 			re_initialize();
@@ -1094,6 +1256,7 @@ restart:
 		sleep(interval_sec);
 		get_counters(cnt_even);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gettimeofday(&tv_even, (struct timezone *)NULL);
 		compute_delta(cnt_even, cnt_odd, cnt_delta);
 		timersub(&tv_even, &tv_odd, &tv_delta);
@@ -1141,7 +1304,12 @@ int has_nehalem_turbo_ratio_limit(unsigned int family, unsigned int model)
 	case 0x3A:	/* IVB */
 	case 0x3D:	/* IVB Xeon */
 =======
+<<<<<<< HEAD
+	case 0x3A:	/* IVB */
+	case 0x3D:	/* IVB Xeon */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 	case 0x2E:	/* Nehalem-EX Xeon - Beckton */
 	case 0x2F:	/* Westmere-EX Xeon - Eagleton */
@@ -1285,7 +1453,11 @@ void turbostat_init()
 <<<<<<< HEAD
 	cpu_mask_init(num_cpus);
 =======
+<<<<<<< HEAD
+	cpu_mask_init(num_cpus);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (verbose)
 		print_nehalem_info();
@@ -1339,15 +1511,21 @@ void cmdline(int argc, char **argv)
 	progname = argv[0];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while ((opt = getopt(argc, argv, "+svi:M:")) != -1) {
 		switch (opt) {
 		case 's':
 			summary_only++;
 			break;
+<<<<<<< HEAD
+=======
 =======
 	while ((opt = getopt(argc, argv, "+vi:M:")) != -1) {
 		switch (opt) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case 'v':
 			verbose++;
 			break;

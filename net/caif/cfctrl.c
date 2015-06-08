@@ -36,12 +36,17 @@ struct cflayer *cfctrl_create(void)
 	struct dev_info dev_info;
 	struct cfctrl *this =
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kzalloc(sizeof(struct cfctrl), GFP_ATOMIC);
 	if (!this)
 		return NULL;
 	caif_assert(offsetof(struct cfctrl, serv.layer) == 0);
 	memset(&dev_info, 0, sizeof(dev_info));
 	dev_info.id = 0xff;
+<<<<<<< HEAD
+=======
 =======
 		kmalloc(sizeof(struct cfctrl), GFP_ATOMIC);
 	if (!this) {
@@ -53,6 +58,7 @@ struct cflayer *cfctrl_create(void)
 	dev_info.id = 0xff;
 	memset(this, 0, sizeof(*this));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfsrvl_init(&this->serv, 0, &dev_info, false);
 	atomic_set(&this->req_seq_no, 1);
 	atomic_set(&this->rsp_seq_no, 1);
@@ -193,11 +199,16 @@ void cfctrl_enum_req(struct cflayer *layer, u8 physlinkid)
 	if (!pkt)
 		return;
 =======
+<<<<<<< HEAD
+	if (!pkt)
+		return;
+=======
 	if (!pkt) {
 		pr_warn("Out of memory\n");
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dn) {
 		pr_debug("not able to send enum request\n");
 		return;
@@ -242,11 +253,16 @@ int cfctrl_linkup_request(struct cflayer *layer,
 	if (!pkt)
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+	if (!pkt)
+		return -ENOMEM;
+=======
 	if (!pkt) {
 		pr_warn("Out of memory\n");
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cfpkt_addbdy(pkt, CFCTRL_CMD_LINK_SETUP);
 	cfpkt_addbdy(pkt, (param->chtype << 4) | param->linktype);
 	cfpkt_addbdy(pkt, (param->priority << 3) | param->phyid);
@@ -298,11 +314,16 @@ int cfctrl_linkup_request(struct cflayer *layer,
 	if (!req)
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+	if (!req)
+		return -ENOMEM;
+=======
 	if (!req) {
 		pr_warn("Out of memory\n");
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	req->client_layer = user_layer;
 	req->cmd = CFCTRL_CMD_LINK_SETUP;
 	req->param = *param;
@@ -326,11 +347,17 @@ int cfctrl_linkup_request(struct cflayer *layer,
 			pr_err("Could not remove request (%d)", count);
 			return -ENODEV;
 =======
+<<<<<<< HEAD
+		if (count != 1)
+			pr_err("Could not remove request (%d)", count);
+			return -ENODEV;
+=======
 		if (count != 1) {
 			pr_err("Could not remove request (%d)", count);
 			return -ENODEV;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -347,11 +374,16 @@ int cfctrl_linkdown_req(struct cflayer *layer, u8 channelid,
 	if (!pkt)
 		return -ENOMEM;
 =======
+<<<<<<< HEAD
+	if (!pkt)
+		return -ENOMEM;
+=======
 	if (!pkt) {
 		pr_warn("Out of memory\n");
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dn) {
 		pr_debug("not able to send link-down request\n");

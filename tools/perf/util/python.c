@@ -188,6 +188,9 @@ static PyTypeObject pyrf_throttle_event__type = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static char pyrf_lost_event__doc[] = PyDoc_STR("perf lost event object.");
 
 static PyMemberDef pyrf_lost_event__members[] = {
@@ -285,8 +288,11 @@ static PyTypeObject pyrf_sample_event__type = {
 	.tp_repr	= (reprfunc)pyrf_sample_event__repr,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pyrf_event__setup_types(void)
 {
 	int err;
@@ -298,7 +304,13 @@ static int pyrf_event__setup_types(void)
 	pyrf_read_event__type.tp_new =
 	pyrf_sample_event__type.tp_new =
 =======
+<<<<<<< HEAD
+	pyrf_lost_event__type.tp_new =
+	pyrf_read_event__type.tp_new =
+	pyrf_sample_event__type.tp_new =
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pyrf_throttle_event__type.tp_new = PyType_GenericNew;
 	err = PyType_Ready(&pyrf_mmap_event__type);
 	if (err < 0)
@@ -308,7 +320,13 @@ static int pyrf_event__setup_types(void)
 	if (err < 0)
 		goto out;
 =======
+<<<<<<< HEAD
+	err = PyType_Ready(&pyrf_lost_event__type);
+	if (err < 0)
+		goto out;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = PyType_Ready(&pyrf_task_event__type);
 	if (err < 0)
 		goto out;
@@ -319,14 +337,20 @@ static int pyrf_event__setup_types(void)
 	if (err < 0)
 		goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = PyType_Ready(&pyrf_read_event__type);
 	if (err < 0)
 		goto out;
 	err = PyType_Ready(&pyrf_sample_event__type);
 	if (err < 0)
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return err;
 }
@@ -336,8 +360,12 @@ static PyTypeObject *pyrf_event__type[] = {
 <<<<<<< HEAD
 	[PERF_RECORD_LOST]	 = &pyrf_lost_event__type,
 =======
+<<<<<<< HEAD
+	[PERF_RECORD_LOST]	 = &pyrf_lost_event__type,
+=======
 	[PERF_RECORD_LOST]	 = &pyrf_mmap_event__type,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[PERF_RECORD_COMM]	 = &pyrf_comm_event__type,
 	[PERF_RECORD_EXIT]	 = &pyrf_task_event__type,
 	[PERF_RECORD_THROTTLE]	 = &pyrf_throttle_event__type,
@@ -347,9 +375,14 @@ static PyTypeObject *pyrf_event__type[] = {
 	[PERF_RECORD_READ]	 = &pyrf_read_event__type,
 	[PERF_RECORD_SAMPLE]	 = &pyrf_sample_event__type,
 =======
+<<<<<<< HEAD
+	[PERF_RECORD_READ]	 = &pyrf_read_event__type,
+	[PERF_RECORD_SAMPLE]	 = &pyrf_sample_event__type,
+=======
 	[PERF_RECORD_READ]	 = &pyrf_mmap_event__type,
 	[PERF_RECORD_SAMPLE]	 = &pyrf_mmap_event__type,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static PyObject *pyrf_event__new(union perf_event *event)
@@ -380,8 +413,12 @@ static int pyrf_cpu_map__init(struct pyrf_cpu_map *pcpus,
 <<<<<<< HEAD
 	static char *kwlist[] = { "cpustr", NULL };
 =======
+<<<<<<< HEAD
+	static char *kwlist[] = { "cpustr", NULL };
+=======
 	static char *kwlist[] = { "cpustr", NULL, NULL, };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *cpustr = NULL;
 
 	if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|s",
@@ -451,6 +488,9 @@ static int pyrf_thread_map__init(struct pyrf_thread_map *pthreads,
 				 PyObject *args, PyObject *kwargs)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static char *kwlist[] = { "pid", "tid", "uid", NULL };
 	int pid = -1, tid = -1, uid = UINT_MAX;
 
@@ -459,6 +499,8 @@ static int pyrf_thread_map__init(struct pyrf_thread_map *pthreads,
 		return -1;
 
 	pthreads->threads = thread_map__new(pid, tid, uid);
+<<<<<<< HEAD
+=======
 =======
 	static char *kwlist[] = { "pid", "tid", NULL, NULL, };
 	int pid = -1, tid = -1;
@@ -469,6 +511,7 @@ static int pyrf_thread_map__init(struct pyrf_thread_map *pthreads,
 
 	pthreads->threads = thread_map__new(pid, tid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pthreads->threads == NULL)
 		return -1;
 	return 0;
@@ -568,8 +611,14 @@ static int pyrf_evsel__init(struct pyrf_evsel *pevsel,
 		 NULL
 	};
 =======
+<<<<<<< HEAD
+		"bp_len",
+		 NULL
+	};
+=======
 		"bp_len", NULL, NULL, };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 sample_period = 0;
 	u32 disabled = 0,
 	    inherit = 0,
@@ -653,8 +702,12 @@ static PyObject *pyrf_evsel__open(struct pyrf_evsel *pevsel,
 <<<<<<< HEAD
 	static char *kwlist[] = { "cpus", "threads", "group", "inherit", NULL };
 =======
+<<<<<<< HEAD
+	static char *kwlist[] = { "cpus", "threads", "group", "inherit", NULL };
+=======
 	static char *kwlist[] = {"cpus", "threads", "group", "inherit", NULL, NULL};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|OOii", kwlist,
 					 &pcpus, &pthreads, &group, &inherit))
@@ -668,14 +721,20 @@ static PyObject *pyrf_evsel__open(struct pyrf_evsel *pevsel,
 
 	evsel->attr.inherit = inherit;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * This will group just the fds for this single evsel, to group
 	 * multiple events, use evlist.open().
 	 */
 	if (perf_evsel__open(evsel, cpus, threads, group, NULL) < 0) {
+<<<<<<< HEAD
+=======
 =======
 	if (perf_evsel__open(evsel, cpus, threads, group) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		PyErr_SetFromErrno(PyExc_OSError);
 		return NULL;
 	}
@@ -748,9 +807,13 @@ static PyObject *pyrf_evlist__mmap(struct pyrf_evlist *pevlist,
 <<<<<<< HEAD
 	static char *kwlist[] = { "pages", "overwrite", NULL };
 =======
+<<<<<<< HEAD
+	static char *kwlist[] = { "pages", "overwrite", NULL };
+=======
 	static char *kwlist[] = {"pages", "overwrite",
 				  NULL, NULL};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int pages = 128, overwrite = false;
 
 	if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|ii", kwlist,
@@ -773,8 +836,12 @@ static PyObject *pyrf_evlist__poll(struct pyrf_evlist *pevlist,
 <<<<<<< HEAD
 	static char *kwlist[] = { "timeout", NULL };
 =======
+<<<<<<< HEAD
+	static char *kwlist[] = { "timeout", NULL };
+=======
 	static char *kwlist[] = {"timeout", NULL, NULL};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int timeout = -1, n;
 
 	if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|i", kwlist, &timeout))
@@ -848,8 +915,12 @@ static PyObject *pyrf_evlist__read_on_cpu(struct pyrf_evlist *pevlist,
 <<<<<<< HEAD
 	static char *kwlist[] = { "cpu", "sample_id_all", NULL };
 =======
+<<<<<<< HEAD
+	static char *kwlist[] = { "cpu", "sample_id_all", NULL };
+=======
 	static char *kwlist[] = {"cpu", "sample_id_all", NULL, NULL};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	if (!PyArg_ParseTupleAndKeywords(args, kwargs, "i|i", kwlist,
@@ -871,8 +942,12 @@ static PyObject *pyrf_evlist__read_on_cpu(struct pyrf_evlist *pevlist,
 <<<<<<< HEAD
 					       sample_id_all, &pevent->sample, false);
 =======
+<<<<<<< HEAD
+					       sample_id_all, &pevent->sample, false);
+=======
 					       sample_id_all, &pevent->sample);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return PyErr_Format(PyExc_OSError,
 					    "perf: can't parse sample, err=%d", err);
@@ -884,6 +959,9 @@ static PyObject *pyrf_evlist__read_on_cpu(struct pyrf_evlist *pevlist,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static PyObject *pyrf_evlist__open(struct pyrf_evlist *pevlist,
 				   PyObject *args, PyObject *kwargs)
 {
@@ -903,8 +981,11 @@ static PyObject *pyrf_evlist__open(struct pyrf_evlist *pevlist,
 	return Py_None;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static PyMethodDef pyrf_evlist__methods[] = {
 	{
 		.ml_name  = "mmap",
@@ -914,14 +995,20 @@ static PyMethodDef pyrf_evlist__methods[] = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ml_name  = "open",
 		.ml_meth  = (PyCFunction)pyrf_evlist__open,
 		.ml_flags = METH_VARARGS | METH_KEYWORDS,
 		.ml_doc	  = PyDoc_STR("open the file descriptors.")
 	},
 	{
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ml_name  = "poll",
 		.ml_meth  = (PyCFunction)pyrf_evlist__poll,
 		.ml_flags = METH_VARARGS | METH_KEYWORDS,

@@ -1210,8 +1210,12 @@ static int ipx_proto(const struct sk_buff *skb,
 <<<<<<< HEAD
 	int thoff = 0, tproto;
 =======
+<<<<<<< HEAD
+	int thoff = 0, tproto;
+=======
 	int thoff, tproto;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (par->family) {
 	case NFPROTO_IPV6:
@@ -1420,14 +1424,20 @@ static void if_tag_stat_update(const char *ifname, uid_t uid,
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_bh(&iface_stat_list_lock);
 	iface_entry = get_iface_entry(ifname);
 	if (!iface_entry) {
 		spin_unlock_bh(&iface_stat_list_lock);
+<<<<<<< HEAD
+=======
 =======
 	iface_entry = get_iface_entry(ifname);
 	if (!iface_entry) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_err_ratelimited("qtaguid: iface_stat: stat_update() "
 				   "%s not found\n", ifname);
 		return;
@@ -1435,7 +1445,11 @@ static void if_tag_stat_update(const char *ifname, uid_t uid,
 <<<<<<< HEAD
 	spin_unlock_bh(&iface_stat_list_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock_bh(&iface_stat_list_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* It is ok to process data when an iface_entry is inactive */
 
 	MT_DEBUG("qtaguid: iface_stat: stat_update() dev=%s entry=%p\n",
@@ -1487,7 +1501,12 @@ static void if_tag_stat_update(const char *ifname, uid_t uid,
 		if (!new_tag_stat)
 			goto unlock;
 =======
+<<<<<<< HEAD
+		if (!new_tag_stat)
+			goto unlock;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		uid_tag_counters = &new_tag_stat->counters;
 	} else {
 		uid_tag_counters = &tag_stat_entry->counters;
@@ -1500,7 +1519,12 @@ static void if_tag_stat_update(const char *ifname, uid_t uid,
 		if (!new_tag_stat)
 			goto unlock;
 =======
+<<<<<<< HEAD
+		if (!new_tag_stat)
+			goto unlock;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		new_tag_stat->parent_counters = uid_tag_counters;
 	} else {
 		/*
@@ -1517,6 +1541,10 @@ static void if_tag_stat_update(const char *ifname, uid_t uid,
 	tag_stat_update(new_tag_stat, direction, proto, bytes);
 unlock:
 =======
+<<<<<<< HEAD
+	tag_stat_update(new_tag_stat, direction, proto, bytes);
+unlock:
+=======
 
 	if (new_tag_stat)
 		tag_stat_update(new_tag_stat, direction, proto, bytes);
@@ -1524,6 +1552,7 @@ unlock:
 		WARN(1, "%s: new_tag_stat is NULL\n", __func__);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_bh(&iface_entry->tag_stat_list_lock);
 }
 
@@ -1677,8 +1706,11 @@ static int __init iface_stat_init(struct proc_dir_entry *parent_procdir)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_IPV6
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = register_inet6addr_notifier(&iface_inet6addr_notifier_blk);
 	if (err) {
 		pr_err("qtaguid: iface_stat: init "
@@ -1687,9 +1719,12 @@ static int __init iface_stat_init(struct proc_dir_entry *parent_procdir)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_unreg_ip4_addr:
@@ -1728,12 +1763,18 @@ static struct sock *qtaguid_find_sk(const struct sk_buff *skb,
 		sk = xt_socket_get6_sk(skb, par);
 		break;
 =======
+<<<<<<< HEAD
+	case NFPROTO_IPV6:
+		sk = xt_socket_get6_sk(skb, par);
+		break;
+=======
 #ifdef CONFIG_IPV6
 	case NFPROTO_IPV6:
 		sk = xt_socket_get6_sk(skb, par);
 		break;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case NFPROTO_IPV4:
 		sk = xt_socket_get4_sk(skb, par);
 		break;
@@ -1836,7 +1877,12 @@ static bool qtaguid_mt(const struct sk_buff *skb, struct xt_action_param *par)
 	if (sk && sk->sk_state == TCP_TIME_WAIT)
 		sk = NULL;
 =======
+<<<<<<< HEAD
+	if (sk && sk->sk_state == TCP_TIME_WAIT)
+		sk = NULL;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sk == NULL) {
 		/*
 		 * A missing sk->sk_socket happens when packets are in-flight
@@ -2658,9 +2704,15 @@ static int pp_stats_line(struct proc_print_info *ppi, int cnt_set)
 		if (get_atag_from_tag(tag)
 		    && !can_read_other_uid_stats(stat_uid)) {
 =======
+<<<<<<< HEAD
+		/* Detailed tags are not available to everybody */
+		if (get_atag_from_tag(tag)
+		    && !can_read_other_uid_stats(stat_uid)) {
+=======
 
 		if (!can_read_other_uid_stats(stat_uid)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			CT_DEBUG("qtaguid: stats line: "
 				 "%s 0x%llx %u: insufficient priv "
 				 "from pid=%u tgid=%u uid=%u stats.gid=%u\n",
@@ -2826,8 +2878,12 @@ static int qtudev_open(struct inode *inode, struct file *file)
 <<<<<<< HEAD
 		goto err_unlock;
 =======
+<<<<<<< HEAD
+		goto err_unlock;
+=======
 		goto err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Look for existing PID based proc_data */
@@ -2873,9 +2929,14 @@ err_unlock_free_utd:
 err_unlock:
 	spin_unlock_bh(&uid_tag_data_tree_lock);
 =======
+<<<<<<< HEAD
+err_unlock:
+	spin_unlock_bh(&uid_tag_data_tree_lock);
+=======
 	spin_unlock_bh(&uid_tag_data_tree_lock);
 err:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return res;
 }
 

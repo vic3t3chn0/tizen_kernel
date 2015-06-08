@@ -35,6 +35,9 @@
 <<<<<<< HEAD
 #define VIDCON0_VIDOUT_MASK			(0x3 << 26)
 =======
+<<<<<<< HEAD
+#define VIDCON0_VIDOUT_MASK			(0x3 << 26)
+=======
 
 #ifdef CONFIG_FB_EXYNOS_FIMD_V8
 #define VIDOUT_CON_VIDOUT_UP_MASK		(0x1 << 16)
@@ -51,6 +54,7 @@
 
 #define VIDCON0_VIDOUT_MASK			(0x7 << 26)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDCON0_VIDOUT_SHIFT			(26)
 #define VIDCON0_VIDOUT_RGB			(0x0 << 26)
 #define VIDCON0_VIDOUT_TV			(0x1 << 26)
@@ -58,8 +62,11 @@
 #define VIDCON0_VIDOUT_I80_LDI1			(0x3 << 26)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define VIDCON0_VIDOUT_WB			(0x4 << 26)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define VIDCON0_L1_DATA_MASK			(0x7 << 23)
 #define VIDCON0_L1_DATA_SHIFT			(23)
@@ -106,6 +113,9 @@
 <<<<<<< HEAD
 #define VIDCON1					(0x04)
 =======
+<<<<<<< HEAD
+#define VIDCON1					(0x04)
+=======
 #ifdef CONFIG_FB_EXYNOS_FIMD_V8
 #define VIDOUT_CON                              (0x20000)
 #define VIDCON1                                 (0x20004)
@@ -118,6 +128,7 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDCON1_LINECNT_MASK			(0x7ff << 16)
 #define VIDCON1_LINECNT_SHIFT			(16)
 #define VIDCON1_LINECNT_GET(_v)			(((_v) >> 16) & 0x7ff)
@@ -129,9 +140,13 @@
 <<<<<<< HEAD
 #define VIDCON1_VSTATUS_FRONTPORCH		(0x0 << 13)
 =======
+<<<<<<< HEAD
+#define VIDCON1_VSTATUS_FRONTPORCH		(0x0 << 13)
+=======
 #define VIDCON1_VSTATUS_FRONTPORCH		(0x3 << 13)
 #define VIDCON1_VSTATUS_MASK			(0x3 << 13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDCON1_VCLK_MASK			(0x3 << 9)
 #define VIDCON1_VCLK_HOLD			(0x0 << 9)
 #define VIDCON1_VCLK_RUN			(0x1 << 9)
@@ -144,6 +159,9 @@
 /* VIDCON2 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDCON2					(0x08)
 #define VIDCON2_EN601				(1 << 23)
 #define VIDCON2_TVFMTSEL_SW			(1 << 14)
@@ -156,6 +174,8 @@
 
 #define VIDCON2_ORGYCbCr			(1 << 8)
 #define VIDCON2_YUVORDCrCb			(1 << 7)
+<<<<<<< HEAD
+=======
 =======
 #define VIDCON2				(0x08)
 #define VIDCON2_WB_SKIP_1_2			(1 << 0)
@@ -179,6 +199,7 @@
 #define VIDCON2_ORGYCbCr		(1 << 8)
 #define VIDCON2_YUVORDCrCb		(1 << 7)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* PRTCON (S3C6410, S5PC100)
  * Might not be present in the S3C6410 documentation,
@@ -234,9 +255,13 @@
 <<<<<<< HEAD
 #define VIDTCON2				(0x18)
 =======
+<<<<<<< HEAD
+#define VIDTCON2				(0x18)
+=======
 /* VIDTCON2 */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VIDTCON2_LINEVAL_E(_x)			((((_x) & 0x800) >> 11) << 23)
 #define VIDTCON2_LINEVAL_MASK			(0x7ff << 11)
 #define VIDTCON2_LINEVAL_SHIFT			(11)
@@ -254,17 +279,24 @@
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WINCONx_BITSWP				(1 << 18)
 #define WINCONx_BYTSWP				(1 << 17)
 #define WINCONx_HAWSWP				(1 << 16)
 #define WINCONx_WSWP				(1 << 15)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define WINCONx_ENLOCAL_MASK			(0xf << 15)
 #define WINCONx_INRGB_RGB			(0 << 13)
 #define WINCONx_INRGB_YCBCR			(1 << 13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WINCONx_BURSTLEN_MASK			(0x3 << 9)
 #define WINCONx_BURSTLEN_SHIFT			(9)
 #define WINCONx_BURSTLEN_16WORD			(0x0 << 9)
@@ -286,8 +318,11 @@
 #define WINCON1_BLD_PIX				(1 << 6)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define WINCON1_BLD_PLANE			(0 << 6)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define WINCON1_ALPHA_SEL			(1 << 1)
 #define WINCON1_BPPMODE_MASK			(0xf << 2)
@@ -480,18 +515,23 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Clock gate mode control */
 #define REG_CLKGATE_MODE			(0x1b0)
 #define REG_CLKGATE_MODE_AUTO_CLOCK_GATE	(0 << 0)
 #define REG_CLKGATE_MODE_NON_CLOCK_GATE		(1 << 0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Blending equation control */
 #define BLENDCON				(0x260)
 #define BLENDCON_NEW_MASK			(1 << 0)
 #define BLENDCON_NEW_8BIT_ALPHA_VALUE		(1 << 0)
 #define BLENDCON_NEW_4BIT_ALPHA_VALUE		(0 << 0)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* DP clock control */
@@ -503,3 +543,4 @@
 #define VIDW0ALPHA1				(0x204)
 #define DUALRGB					(0x27c)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

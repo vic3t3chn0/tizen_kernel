@@ -5,8 +5,11 @@
  * Created:	Jan 01, 2011
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Version:	0.3.0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright:	(C) Torsten Schenk
  *
  * This program is free software; you can redistribute it and/or modify
@@ -48,14 +51,20 @@ struct control_runtime {
 	bool digital_thru_switch;
 	bool usb_streaming;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 output_vol[6];
 	u8 ovol_updated;
 	u8 output_mute;
 	s8 input_vol[2];
 	u8 ivol_updated;
+<<<<<<< HEAD
+=======
 =======
 	u8 master_vol;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int __devinit usb6fire_control_init(struct sfire_chip *chip);

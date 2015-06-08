@@ -24,11 +24,16 @@
 void machine_kexec_mask_interrupts(void) {
 	unsigned int i;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct irq_desc *desc;
 
 	for_each_irq_desc(i, desc) {
 		struct irq_chip *chip;
 
+<<<<<<< HEAD
+=======
 =======
 
 	for_each_irq(i) {
@@ -39,6 +44,7 @@ void machine_kexec_mask_interrupts(void) {
 			continue;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chip = irq_desc_get_chip(desc);
 		if (!chip)
 			continue;
@@ -117,10 +123,13 @@ void __init reserve_crashkernel(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* this is necessary because of memblock_phys_mem_size() */
 	memblock_analyze();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* use common parsing */
 	ret = parse_crashkernel(boot_command_line, memblock_phys_mem_size(),
 			&crash_size, &crash_base);
@@ -142,10 +151,16 @@ void __init reserve_crashkernel(void)
 
 #ifndef CONFIG_NONSTATIC_KERNEL
 =======
+<<<<<<< HEAD
+	crash_size = resource_size(&crashk_res);
+
+#ifndef CONFIG_NONSTATIC_KERNEL
+=======
 	crash_size = crashk_res.end - crashk_res.start + 1;
 
 #ifndef CONFIG_RELOCATABLE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (crashk_res.start != KDUMP_KERNELBASE)
 		printk("Crash kernel location must be 0x%x\n",
 				KDUMP_KERNELBASE);
@@ -154,6 +169,9 @@ void __init reserve_crashkernel(void)
 #else
 	if (!crashk_res.start) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC64
 		/*
 		 * On 64bit we split the RMO in half but cap it at half of
@@ -164,6 +182,8 @@ void __init reserve_crashkernel(void)
 #else
 		crashk_res.start = KDUMP_KERNELBASE;
 #endif
+<<<<<<< HEAD
+=======
 =======
 		/*
 		 * unspecified address, choose a region of specified size
@@ -172,6 +192,7 @@ void __init reserve_crashkernel(void)
 		 */
 		crashk_res.start = KDUMP_KERNELBASE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	crash_base = PAGE_ALIGN(crashk_res.start);
@@ -255,8 +276,12 @@ static void __init export_crashk_values(struct device_node *node)
 <<<<<<< HEAD
 		crashk_size = resource_size(&crashk_res);
 =======
+<<<<<<< HEAD
+		crashk_size = resource_size(&crashk_res);
+=======
 		crashk_size = crashk_res.end - crashk_res.start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prom_add_property(node, &crashk_size_prop);
 	}
 }

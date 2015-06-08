@@ -261,8 +261,12 @@ void hpfs_set_ea(struct inode *, struct fnode *, const char *,
 <<<<<<< HEAD
 int hpfs_file_fsync(struct file *, loff_t, loff_t, int);
 =======
+<<<<<<< HEAD
+int hpfs_file_fsync(struct file *, loff_t, loff_t, int);
+=======
 int hpfs_file_fsync(struct file *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const struct file_operations hpfs_file_ops;
 extern const struct inode_operations hpfs_file_iops;
 extern const struct address_space_operations hpfs_aops;
@@ -319,9 +323,14 @@ static inline struct hpfs_sb_info *hpfs_sb(struct super_block *sb)
 __printf(2, 3)
 void hpfs_error(struct super_block *, const char *, ...);
 =======
+<<<<<<< HEAD
+__printf(2, 3)
+void hpfs_error(struct super_block *, const char *, ...);
+=======
 void hpfs_error(struct super_block *, const char *, ...)
 	__attribute__((format (printf, 2, 3)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int hpfs_stop_cycles(struct super_block *, int, int *, int *, char *);
 unsigned hpfs_count_one_bitmap(struct super_block *, secno);
 

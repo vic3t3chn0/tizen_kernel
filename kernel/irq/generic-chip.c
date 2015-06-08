@@ -6,6 +6,13 @@
 #include <linux/io.h>
 #include <linux/irq.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/kernel_stat.h>
 #include <linux/syscore_ops.h>
@@ -144,6 +151,11 @@ void irq_gc_mask_disable_reg_and_ack(struct irq_data *d)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * irq_gc_mask_and_ack_set- Mask and ack pending interrupt
  * @d: irq_data
  */
@@ -160,6 +172,10 @@ void irq_gc_mask_and_ack_set(struct irq_data *d)
 }
 
 /**
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * irq_gc_eoi - EOI interrupt
  * @d: irq_data
  */
@@ -227,6 +243,13 @@ irq_alloc_generic_chip(const char *name, int num_ct, unsigned int irq_base,
 	}
 	return gc;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(irq_alloc_generic_chip);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Separate lockdep class for interrupt chip which can nest irq_desc
@@ -274,6 +297,13 @@ void irq_setup_generic_chip(struct irq_chip_generic *gc, u32 msk,
 	}
 	gc->irq_cnt = i - gc->irq_base;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(irq_setup_generic_chip);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * irq_setup_alt_chip - Switch to alternative chip
@@ -297,6 +327,13 @@ int irq_setup_alt_chip(struct irq_data *d, unsigned int type)
 	}
 	return -EINVAL;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(irq_setup_alt_chip);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * irq_remove_generic_chip - Remove a chip
@@ -327,6 +364,13 @@ void irq_remove_generic_chip(struct irq_chip_generic *gc, u32 msk,
 		irq_modify_status(i, clr, set);
 	}
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(irq_remove_generic_chip);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PM
 static int irq_gc_suspend(void)

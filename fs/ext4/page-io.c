@@ -8,8 +8,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/time.h>
 #include <linux/jbd2.h>
@@ -75,8 +78,11 @@ void ext4_free_io_end(ext4_io_end_t *io)
 	int i;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	wait_queue_head_t *wq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(!io);
 	if (io->page)
@@ -88,11 +94,16 @@ void ext4_free_io_end(ext4_io_end_t *io)
 	if (atomic_dec_and_test(&EXT4_I(io->inode)->i_ioend_count))
 		wake_up_all(ext4_ioend_wq(io->inode));
 =======
+<<<<<<< HEAD
+	if (atomic_dec_and_test(&EXT4_I(io->inode)->i_ioend_count))
+		wake_up_all(ext4_ioend_wq(io->inode));
+=======
 	wq = ext4_ioend_wq(io->inode);
 	if (atomic_dec_and_test(&EXT4_I(io->inode)->i_ioend_count) &&
 	    waitqueue_active(wq))
 		wake_up_all(wq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(io_end_cachep, io);
 }
 
@@ -103,7 +114,13 @@ void ext4_free_io_end(ext4_io_end_t *io)
  * Called with inode->i_mutex; we depend on this when we manipulate
  * io->flag, since we could otherwise race with ext4_flush_completed_IO()
 =======
+<<<<<<< HEAD
+ *
+ * Called with inode->i_mutex; we depend on this when we manipulate
+ * io->flag, since we could otherwise race with ext4_flush_completed_IO()
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int ext4_end_io_nolock(ext4_io_end_t *io)
 {
@@ -112,8 +129,11 @@ int ext4_end_io_nolock(ext4_io_end_t *io)
 	ssize_t size = io->size;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	wait_queue_head_t *wq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	ext4_debug("ext4_end_io_nolock: io 0x%p from inode %lu,list->next 0x%p,"
@@ -121,6 +141,9 @@ int ext4_end_io_nolock(ext4_io_end_t *io)
 		   io, inode->i_ino, io->list.next, io->list.prev);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ext4_convert_unwritten_extents(inode, offset, size);
 	if (ret < 0) {
 		ext4_msg(inode->i_sb, KERN_EMERG,
@@ -128,6 +151,8 @@ int ext4_end_io_nolock(ext4_io_end_t *io)
 			 "extents -- potential data loss!  "
 			 "(inode %lu, offset %llu, size %zd, error %d)",
 			 inode->i_ino, offset, size, ret);
+<<<<<<< HEAD
+=======
 =======
 	if (list_empty(&io->list))
 		return ret;
@@ -143,17 +168,23 @@ int ext4_end_io_nolock(ext4_io_end_t *io)
 		       __func__, ret, inode->i_ino);
 		return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (io->iocb)
 		aio_complete(io->iocb, io->result, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (io->flag & EXT4_IO_END_DIRECT)
 		inode_dio_done(inode);
 	/* Wake up anyone waiting on unwritten extent conversion */
 	if (atomic_dec_and_test(&EXT4_I(inode)->i_aiodio_unwritten))
 		wake_up_all(ext4_ioend_wq(io->inode));
+<<<<<<< HEAD
+=======
 =======
 	/* clear the DIO AIO unwritten flag */
 	if (io->flag & EXT4_IO_END_UNWRITTEN) {
@@ -167,6 +198,7 @@ int ext4_end_io_nolock(ext4_io_end_t *io)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -180,6 +212,9 @@ static void ext4_end_io_work(struct work_struct *work)
 	struct ext4_inode_info	*ei = EXT4_I(inode);
 	unsigned long		flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&ei->i_completed_io_lock, flags);
 	if (io->flag & EXT4_IO_END_IN_FSYNC)
@@ -195,11 +230,14 @@ requeue:
 		was_queued = !!(io->flag & EXT4_IO_END_QUEUED);
 		io->flag |= EXT4_IO_END_QUEUED;
 		spin_unlock_irqrestore(&ei->i_completed_io_lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	int			ret;
 
 	if (!mutex_trylock(&inode->i_mutex)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Requeue the work instead of waiting so that the work
 		 * items queued after this can be processed.
@@ -212,6 +250,9 @@ requeue:
 		 * been requeued.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (was_queued)
 			yield();
 		return;
@@ -221,6 +262,8 @@ requeue:
 	(void) ext4_end_io_nolock(io);
 	mutex_unlock(&inode->i_mutex);
 free:
+<<<<<<< HEAD
+=======
 =======
 		if (io->flag & EXT4_IO_END_QUEUED)
 			yield();
@@ -239,6 +282,7 @@ free:
 	spin_unlock_irqrestore(&ei->i_completed_io_lock, flags);
 	mutex_unlock(&inode->i_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext4_free_io_end(io);
 }
 
@@ -373,12 +417,16 @@ static int io_submit_init(struct ext4_io_submit *io,
 <<<<<<< HEAD
 	bio = bio_alloc(GFP_NOIO, min(nvecs, BIO_MAX_PAGES));
 =======
+<<<<<<< HEAD
+	bio = bio_alloc(GFP_NOIO, min(nvecs, BIO_MAX_PAGES));
+=======
 	do {
 		bio = bio_alloc(GFP_NOIO, nvecs);
 		nvecs >>= 1;
 	} while (bio == NULL);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bio->bi_sector = bh->b_blocknr * (bh->b_size >> 9);
 	bio->bi_bdev = bh->b_bdev;
 	bio->bi_private = io->io_end = io_end;
@@ -431,11 +479,16 @@ submit_and_retry:
 	if (buffer_uninit(bh))
 		ext4_set_io_unwritten_flag(inode, io_end);
 =======
+<<<<<<< HEAD
+	if (buffer_uninit(bh))
+		ext4_set_io_unwritten_flag(inode, io_end);
+=======
 	if (buffer_uninit(bh) && !(io_end->flag & EXT4_IO_END_UNWRITTEN)) {
 		io_end->flag |= EXT4_IO_END_UNWRITTEN;
 		atomic_inc(&EXT4_I(inode)->i_aiodio_unwritten);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	io->io_end->size += bh->b_size;
 	io->io_next_block++;
 	ret = bio_add_page(io->io_bio, bh->b_page, bh->b_size, bh_offset(bh));

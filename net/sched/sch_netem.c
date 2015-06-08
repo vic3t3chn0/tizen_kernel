@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/mm.h>
 =======
+<<<<<<< HEAD
+#include <linux/mm.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/slab.h>
 #include <linux/types.h>
@@ -28,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/reciprocal_div.h>
 =======
+<<<<<<< HEAD
+#include <linux/reciprocal_div.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <net/netlink.h>
 #include <net/pkt_sched.h>
@@ -74,14 +82,20 @@
 
 struct netem_sched_data {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* internal t(ime)fifo qdisc uses sch->q and sch->limit */
 
 	/* optional qdisc for classful handling (NULL at netem init) */
 	struct Qdisc	*qdisc;
 
+<<<<<<< HEAD
+=======
 =======
 	struct Qdisc	*qdisc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct qdisc_watchdog watchdog;
 
 	psched_tdiff_t latency;
@@ -95,13 +109,19 @@ struct netem_sched_data {
 	u32 reorder;
 	u32 corrupt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 rate;
 	s32 packet_overhead;
 	u32 cell_size;
 	u32 cell_size_reciprocal;
 	s32 cell_overhead;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct crndstate {
 		u32 last;
@@ -139,8 +159,14 @@ struct netem_sched_data {
  * Only valid when skbs are in our internal t(ime)fifo queue.
  */
 =======
+<<<<<<< HEAD
+/* Time stamp put into socket buffer control block
+ * Only valid when skbs are in our internal t(ime)fifo queue.
+ */
+=======
 /* Time stamp put into socket buffer control block */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct netem_skb_cb {
 	psched_time_t	time_to_send;
 };
@@ -327,6 +353,9 @@ static psched_tdiff_t tabledist(psched_tdiff_t mu, psched_tdiff_t sigma,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static psched_time_t packet_len_2_sched_time(unsigned int len, struct netem_sched_data *q)
 {
 	u64 ticks;
@@ -372,8 +401,11 @@ static int tfifo_enqueue(struct sk_buff *nskb, struct Qdisc *sch)
 	return qdisc_reshape_fail(nskb, sch);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Insert one skb into qdisc.
  * Note: parent depends on return value to account for queue length.
@@ -439,8 +471,12 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 <<<<<<< HEAD
 	    q->counter < q->gap - 1 ||	/* inside last reordering gap */
 =======
+<<<<<<< HEAD
+	    q->counter < q->gap - 1 ||	/* inside last reordering gap */
+=======
 	    q->counter < q->gap ||	/* inside last reordering gap */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    q->reorder < get_crandom(&q->reorder_cor)) {
 		psched_time_t now;
 		psched_tdiff_t delay;
@@ -450,6 +486,9 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 
 		now = psched_get_time();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (q->rate) {
 			struct sk_buff_head *list = &sch->q;
@@ -471,11 +510,14 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 		cb->time_to_send = now + delay;
 		++q->counter;
 		ret = tfifo_enqueue(skb, sch);
+<<<<<<< HEAD
+=======
 =======
 		cb->time_to_send = now + delay;
 		++q->counter;
 		ret = qdisc_enqueue(skb, q->qdisc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/*
 		 * Do re-ordering by putting one out of N packets at the front
@@ -487,8 +529,12 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 <<<<<<< HEAD
 		__skb_queue_head(&sch->q, skb);
 =======
+<<<<<<< HEAD
+		__skb_queue_head(&sch->q, skb);
+=======
 		__skb_queue_head(&q->qdisc->q, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sch->qstats.backlog += qdisc_pkt_len(skb);
 		sch->qstats.requeues++;
 		ret = NET_XMIT_SUCCESS;
@@ -503,8 +549,11 @@ static int netem_enqueue(struct sk_buff *skb, struct Qdisc *sch)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	sch->q.qlen++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NET_XMIT_SUCCESS;
 }
 
@@ -512,6 +561,9 @@ static unsigned int netem_drop(struct Qdisc *sch)
 {
 	struct netem_sched_data *q = qdisc_priv(sch);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int len;
 
 	len = qdisc_queue_drop(sch);
@@ -520,6 +572,8 @@ static unsigned int netem_drop(struct Qdisc *sch)
 	if (len)
 		sch->qstats.drops++;
 
+<<<<<<< HEAD
+=======
 =======
 	unsigned int len = 0;
 
@@ -528,6 +582,7 @@ static unsigned int netem_drop(struct Qdisc *sch)
 		sch->qstats.drops++;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return len;
 }
 
@@ -540,6 +595,9 @@ static struct sk_buff *netem_dequeue(struct Qdisc *sch)
 		return NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 tfifo_dequeue:
 	skb = qdisc_peek_head(sch);
 	if (skb) {
@@ -549,6 +607,8 @@ tfifo_dequeue:
 		if (cb->time_to_send <= psched_get_time()) {
 			__skb_unlink(skb, &sch->q);
 			sch->qstats.backlog -= qdisc_pkt_len(skb);
+<<<<<<< HEAD
+=======
 =======
 	skb = q->qdisc->ops->peek(q->qdisc);
 	if (skb) {
@@ -561,6 +621,7 @@ tfifo_dequeue:
 			if (unlikely(!skb))
 				return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_NET_CLS_ACT
 			/*
@@ -572,6 +633,9 @@ tfifo_dequeue:
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (q->qdisc) {
 				int err = qdisc_enqueue(skb, q->qdisc);
 
@@ -584,15 +648,21 @@ tfifo_dequeue:
 				goto tfifo_dequeue;
 			}
 deliver:
+<<<<<<< HEAD
+=======
 =======
 			sch->q.qlen--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			qdisc_unthrottled(sch);
 			qdisc_bstats_update(sch, skb);
 			return skb;
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (q->qdisc) {
 			skb = q->qdisc->ops->dequeue(q->qdisc);
 			if (skb)
@@ -606,11 +676,14 @@ deliver:
 		if (skb)
 			goto deliver;
 	}
+<<<<<<< HEAD
+=======
 =======
 		qdisc_watchdog_schedule(&q->watchdog, cb->time_to_send);
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NULL;
 }
 
@@ -623,9 +696,15 @@ static void netem_reset(struct Qdisc *sch)
 	if (q->qdisc)
 		qdisc_reset(q->qdisc);
 =======
+<<<<<<< HEAD
+	qdisc_reset_queue(sch);
+	if (q->qdisc)
+		qdisc_reset(q->qdisc);
+=======
 	qdisc_reset(q->qdisc);
 	sch->q.qlen = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	qdisc_watchdog_cancel(&q->watchdog);
 }
 
@@ -660,8 +739,12 @@ static int get_dist_table(struct Qdisc *sch, const struct nlattr *attr)
 <<<<<<< HEAD
 	d = kmalloc(s, GFP_KERNEL | __GFP_NOWARN);
 =======
+<<<<<<< HEAD
+	d = kmalloc(s, GFP_KERNEL | __GFP_NOWARN);
+=======
 	d = kmalloc(s, GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!d)
 		d = vmalloc(s);
 	if (!d)
@@ -675,15 +758,21 @@ static int get_dist_table(struct Qdisc *sch, const struct nlattr *attr)
 
 	spin_lock_bh(root_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	swap(q->delay_dist, d);
 	spin_unlock_bh(root_lock);
 
 	dist_free(d);
+<<<<<<< HEAD
+=======
 =======
 	dist_free(q->delay_dist);
 	q->delay_dist = d;
 	spin_unlock_bh(root_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -716,6 +805,9 @@ static void get_corrupt(struct Qdisc *sch, const struct nlattr *attr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void get_rate(struct Qdisc *sch, const struct nlattr *attr)
 {
 	struct netem_sched_data *q = qdisc_priv(sch);
@@ -729,8 +821,11 @@ static void get_rate(struct Qdisc *sch, const struct nlattr *attr)
 	q->cell_overhead = r->cell_overhead;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int get_loss_clg(struct Qdisc *sch, const struct nlattr *attr)
 {
 	struct netem_sched_data *q = qdisc_priv(sch);
@@ -747,8 +842,12 @@ static int get_loss_clg(struct Qdisc *sch, const struct nlattr *attr)
 <<<<<<< HEAD
 			if (nla_len(la) < sizeof(struct tc_netem_gimodel)) {
 =======
+<<<<<<< HEAD
+			if (nla_len(la) < sizeof(struct tc_netem_gimodel)) {
+=======
 			if (nla_len(la) != sizeof(struct tc_netem_gimodel)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				pr_info("netem: incorrect gi model size\n");
 				return -EINVAL;
 			}
@@ -771,9 +870,14 @@ static int get_loss_clg(struct Qdisc *sch, const struct nlattr *attr)
 			if (nla_len(la) < sizeof(struct tc_netem_gemodel)) {
 				pr_info("netem: incorrect ge model size\n");
 =======
+<<<<<<< HEAD
+			if (nla_len(la) < sizeof(struct tc_netem_gemodel)) {
+				pr_info("netem: incorrect ge model size\n");
+=======
 			if (nla_len(la) != sizeof(struct tc_netem_gemodel)) {
 				pr_info("netem: incorrect gi model size\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return -EINVAL;
 			}
 
@@ -802,7 +906,11 @@ static const struct nla_policy netem_policy[TCA_NETEM_MAX + 1] = {
 <<<<<<< HEAD
 	[TCA_NETEM_RATE]	= { .len = sizeof(struct tc_netem_rate) },
 =======
+<<<<<<< HEAD
+	[TCA_NETEM_RATE]	= { .len = sizeof(struct tc_netem_rate) },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[TCA_NETEM_LOSS]	= { .type = NLA_NESTED },
 };
 
@@ -843,12 +951,16 @@ static int netem_change(struct Qdisc *sch, struct nlattr *opt)
 <<<<<<< HEAD
 	sch->limit = qopt->limit;
 =======
+<<<<<<< HEAD
+	sch->limit = qopt->limit;
+=======
 	ret = fifo_set_limit(q->qdisc, qopt->limit);
 	if (ret) {
 		pr_info("netem: can't set fifo limit\n");
 		return ret;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	q->latency = qopt->latency;
 	q->jitter = qopt->jitter;
@@ -884,7 +996,13 @@ static int netem_change(struct Qdisc *sch, struct nlattr *opt)
 		get_rate(sch, tb[TCA_NETEM_RATE]);
 
 =======
+<<<<<<< HEAD
+	if (tb[TCA_NETEM_RATE])
+		get_rate(sch, tb[TCA_NETEM_RATE]);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	q->loss_model = CLG_RANDOM;
 	if (tb[TCA_NETEM_LOSS])
 		ret = get_loss_clg(sch, tb[TCA_NETEM_LOSS]);
@@ -892,6 +1010,8 @@ static int netem_change(struct Qdisc *sch, struct nlattr *opt)
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -977,6 +1097,7 @@ static struct Qdisc_ops tfifo_qdisc_ops __read_mostly = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int netem_init(struct Qdisc *sch, struct nlattr *opt)
 {
 	struct netem_sched_data *q = qdisc_priv(sch);
@@ -988,6 +1109,11 @@ static int netem_init(struct Qdisc *sch, struct nlattr *opt)
 	qdisc_watchdog_init(&q->watchdog, sch);
 
 	q->loss_model = CLG_RANDOM;
+<<<<<<< HEAD
+	ret = netem_change(sch, opt);
+	if (ret)
+		pr_info("netem: change failed\n");
+=======
 <<<<<<< HEAD
 	ret = netem_change(sch, opt);
 	if (ret)
@@ -1006,6 +1132,7 @@ static int netem_init(struct Qdisc *sch, struct nlattr *opt)
 		qdisc_destroy(q->qdisc);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1018,8 +1145,13 @@ static void netem_destroy(struct Qdisc *sch)
 	if (q->qdisc)
 		qdisc_destroy(q->qdisc);
 =======
+<<<<<<< HEAD
+	if (q->qdisc)
+		qdisc_destroy(q->qdisc);
+=======
 	qdisc_destroy(q->qdisc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dist_free(q->delay_dist);
 }
 
@@ -1082,7 +1214,11 @@ static int netem_dump(struct Qdisc *sch, struct sk_buff *skb)
 <<<<<<< HEAD
 	struct tc_netem_rate rate;
 =======
+<<<<<<< HEAD
+	struct tc_netem_rate rate;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	qopt.latency = q->latency;
 	qopt.jitter = q->jitter;
@@ -1106,14 +1242,20 @@ static int netem_dump(struct Qdisc *sch, struct sk_buff *skb)
 	NLA_PUT(skb, TCA_NETEM_CORRUPT, sizeof(corrupt), &corrupt);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rate.rate = q->rate;
 	rate.packet_overhead = q->packet_overhead;
 	rate.cell_size = q->cell_size;
 	rate.cell_overhead = q->cell_overhead;
 	NLA_PUT(skb, TCA_NETEM_RATE, sizeof(rate), &rate);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dump_loss_model(q, skb) != 0)
 		goto nla_put_failure;
 
@@ -1132,8 +1274,12 @@ static int netem_dump_class(struct Qdisc *sch, unsigned long cl,
 <<<<<<< HEAD
 	if (cl != 1 || !q->qdisc) 	/* only one class */
 =======
+<<<<<<< HEAD
+	if (cl != 1 || !q->qdisc) 	/* only one class */
+=======
 	if (cl != 1) 	/* only one class */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOENT;
 
 	tcm->tcm_handle |= TC_H_MIN(1);
@@ -1148,6 +1294,9 @@ static int netem_graft(struct Qdisc *sch, unsigned long arg, struct Qdisc *new,
 	struct netem_sched_data *q = qdisc_priv(sch);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sch_tree_lock(sch);
 	*old = q->qdisc;
 	q->qdisc = new;
@@ -1155,6 +1304,8 @@ static int netem_graft(struct Qdisc *sch, unsigned long arg, struct Qdisc *new,
 		qdisc_tree_decrease_qlen(*old, (*old)->q.qlen);
 		qdisc_reset(*old);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (new == NULL)
 		new = &noop_qdisc;
@@ -1165,6 +1316,7 @@ static int netem_graft(struct Qdisc *sch, unsigned long arg, struct Qdisc *new,
 	qdisc_tree_decrease_qlen(*old, (*old)->q.qlen);
 	qdisc_reset(*old);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sch_tree_unlock(sch);
 
 	return 0;

@@ -29,6 +29,9 @@ static int __init emu_find_memblk_by_nid(int nid, const struct numa_meminfo *mi)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 __init mem_hole_size(u64 start, u64 end)
 {
 	unsigned long start_pfn = PFN_UP(start);
@@ -39,8 +42,11 @@ static u64 __init mem_hole_size(u64 start, u64 end)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Sets up nid to range from @start to @end.  The return value is -errno if
  * something went wrong, 0 otherwise.
@@ -66,8 +72,12 @@ static int __init emu_setup_memblk(struct numa_meminfo *ei,
 <<<<<<< HEAD
 		emu_nid_to_phys[nid] = nid;
 =======
+<<<<<<< HEAD
+		emu_nid_to_phys[nid] = nid;
+=======
 		emu_nid_to_phys[nid] = pb->nid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pb->start += size;
 	if (pb->start >= pb->end) {
@@ -109,8 +119,12 @@ static int __init split_nodes_interleave(struct numa_meminfo *ei,
 <<<<<<< HEAD
 	size = max_addr - addr - mem_hole_size(addr, max_addr);
 =======
+<<<<<<< HEAD
+	size = max_addr - addr - mem_hole_size(addr, max_addr);
+=======
 	size = max_addr - addr - memblock_x86_hole_size(addr, max_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size = PFN_PHYS((unsigned long)(size >> PAGE_SHIFT) / nr_nodes);
 
 	/*
@@ -159,9 +173,13 @@ static int __init split_nodes_interleave(struct numa_meminfo *ei,
 <<<<<<< HEAD
 			while (end - start - mem_hole_size(start, end) < size) {
 =======
+<<<<<<< HEAD
+			while (end - start - mem_hole_size(start, end) < size) {
+=======
 			while (end - start -
 			       memblock_x86_hole_size(start, end) < size) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				end += FAKE_NODE_MIN_SIZE;
 				if (end > limit) {
 					end = limit;
@@ -178,8 +196,12 @@ static int __init split_nodes_interleave(struct numa_meminfo *ei,
 <<<<<<< HEAD
 			    mem_hole_size(end, dma32_end) < FAKE_NODE_MIN_SIZE)
 =======
+<<<<<<< HEAD
+			    mem_hole_size(end, dma32_end) < FAKE_NODE_MIN_SIZE)
+=======
 			    memblock_x86_hole_size(end, dma32_end) < FAKE_NODE_MIN_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				end = dma32_end;
 
 			/*
@@ -190,9 +212,13 @@ static int __init split_nodes_interleave(struct numa_meminfo *ei,
 <<<<<<< HEAD
 			if (limit - end - mem_hole_size(end, limit) < size)
 =======
+<<<<<<< HEAD
+			if (limit - end - mem_hole_size(end, limit) < size)
+=======
 			if (limit - end -
 			    memblock_x86_hole_size(end, limit) < size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				end = limit;
 
 			ret = emu_setup_memblk(ei, pi, nid++ % nr_nodes,
@@ -216,8 +242,12 @@ static u64 __init find_end_of_node(u64 start, u64 max_addr, u64 size)
 <<<<<<< HEAD
 	while (end - start - mem_hole_size(start, end) < size) {
 =======
+<<<<<<< HEAD
+	while (end - start - mem_hole_size(start, end) < size) {
+=======
 	while (end - start - memblock_x86_hole_size(start, end) < size) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		end += FAKE_NODE_MIN_SIZE;
 		if (end > max_addr) {
 			end = max_addr;
@@ -251,9 +281,13 @@ static int __init split_nodes_size_interleave(struct numa_meminfo *ei,
 <<<<<<< HEAD
 	min_size = (max_addr - addr - mem_hole_size(addr, max_addr)) / MAX_NUMNODES;
 =======
+<<<<<<< HEAD
+	min_size = (max_addr - addr - mem_hole_size(addr, max_addr)) / MAX_NUMNODES;
+=======
 	min_size = (max_addr - addr - memblock_x86_hole_size(addr, max_addr)) /
 						MAX_NUMNODES;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	min_size = max(min_size, FAKE_NODE_MIN_SIZE);
 	if ((min_size & FAKE_NODE_MIN_HASH_MASK) < min_size)
 		min_size = (min_size + FAKE_NODE_MIN_SIZE) &
@@ -296,8 +330,12 @@ static int __init split_nodes_size_interleave(struct numa_meminfo *ei,
 <<<<<<< HEAD
 			    mem_hole_size(end, dma32_end) < FAKE_NODE_MIN_SIZE)
 =======
+<<<<<<< HEAD
+			    mem_hole_size(end, dma32_end) < FAKE_NODE_MIN_SIZE)
+=======
 			    memblock_x86_hole_size(end, dma32_end) < FAKE_NODE_MIN_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				end = dma32_end;
 
 			/*
@@ -308,9 +346,13 @@ static int __init split_nodes_size_interleave(struct numa_meminfo *ei,
 <<<<<<< HEAD
 			if (limit - end - mem_hole_size(end, limit) < size)
 =======
+<<<<<<< HEAD
+			if (limit - end - mem_hole_size(end, limit) < size)
+=======
 			if (limit - end -
 			    memblock_x86_hole_size(end, limit) < size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				end = limit;
 
 			ret = emu_setup_memblk(ei, pi, nid++ % MAX_NUMNODES,
@@ -401,11 +443,16 @@ void __init numa_emulation(struct numa_meminfo *numa_meminfo, int numa_dist_cnt)
 		phys = memblock_find_in_range(0, PFN_PHYS(max_pfn_mapped),
 					      phys_size, PAGE_SIZE);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!phys) {
 			pr_warning("NUMA: Warning: can't allocate copy of distance table, disabling emulation\n");
 			goto no_emu;
 		}
 		memblock_reserve(phys, phys_size);
+<<<<<<< HEAD
+=======
 =======
 		if (phys == MEMBLOCK_ERROR) {
 			pr_warning("NUMA: Warning: can't allocate copy of distance table, disabling emulation\n");
@@ -413,6 +460,7 @@ void __init numa_emulation(struct numa_meminfo *numa_meminfo, int numa_dist_cnt)
 		}
 		memblock_x86_reserve_range(phys, phys + phys_size, "TMP NUMA DIST");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		phys_dist = __va(phys);
 
 		for (i = 0; i < numa_dist_cnt; i++)
@@ -484,8 +532,12 @@ void __init numa_emulation(struct numa_meminfo *numa_meminfo, int numa_dist_cnt)
 <<<<<<< HEAD
 		memblock_free(__pa(phys_dist), phys_size);
 =======
+<<<<<<< HEAD
+		memblock_free(__pa(phys_dist), phys_size);
+=======
 		memblock_x86_free_range(__pa(phys_dist), __pa(phys_dist) + phys_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 
 no_emu:

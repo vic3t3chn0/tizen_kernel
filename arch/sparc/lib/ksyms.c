@@ -64,9 +64,12 @@ extern void ___rw_read_exit(void);
 extern void ___rw_write_enter(void);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void ___atomic24_add(void);
 extern void ___atomic24_sub(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Alias functions whose names begin with "." and export the aliases.
  * The module references will be fixed up by module_frob_arch_sections.
@@ -102,11 +105,14 @@ EXPORT_SYMBOL(___rw_write_enter);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Atomic operations. */
 EXPORT_SYMBOL(___atomic24_add);
 EXPORT_SYMBOL(___atomic24_sub);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(__ashrdi3);
 EXPORT_SYMBOL(__ashldi3);
 EXPORT_SYMBOL(__lshrdi3);
@@ -138,6 +144,9 @@ EXPORT_SYMBOL(___copy_in_user);
 EXPORT_SYMBOL(__clear_user);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* RW semaphores */
 EXPORT_SYMBOL(__down_read);
 EXPORT_SYMBOL(__down_read_trylock);
@@ -147,8 +156,11 @@ EXPORT_SYMBOL(__up_read);
 EXPORT_SYMBOL(__up_write);
 EXPORT_SYMBOL(__downgrade_write);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Atomic counter implementation. */
 EXPORT_SYMBOL(atomic_add);
 EXPORT_SYMBOL(atomic_add_ret);

@@ -5,7 +5,12 @@
 #include <linux/linkage.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/linkage.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TRAPA_BUG_OPCODE	0xc33e	/* trapa #0x3e */
 #define BUGFLAG_UNWINDER	(1 << 1)
 
@@ -117,5 +122,11 @@ struct pt_regs;
 extern void die(const char *str, struct pt_regs *regs, long err) __attribute__ ((noreturn));
 
 =======
+<<<<<<< HEAD
+struct pt_regs;
+extern void die(const char *str, struct pt_regs *regs, long err) __attribute__ ((noreturn));
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_SH_BUG_H */

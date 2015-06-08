@@ -264,6 +264,13 @@ static struct spi_driver lb035q02_spi_driver = {
 	.remove		= __devexit_p(lb035q02_panel_spi_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(lb035q02_spi_driver);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init lb035q02_panel_drv_init(void)
 {
 	return spi_register_driver(&lb035q02_spi_driver);
@@ -276,4 +283,8 @@ static void __exit lb035q02_panel_drv_exit(void)
 
 module_init(lb035q02_panel_drv_init);
 module_exit(lb035q02_panel_drv_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");

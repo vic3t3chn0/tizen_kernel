@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/swiotlb.h>
 #include <linux/types.h>
 #include <linux/init.h>
@@ -65,6 +69,9 @@ static phys_addr_t octeon_gen1_dma_to_phys(struct device *dev, dma_addr_t daddr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static dma_addr_t octeon_gen2_phys_to_dma(struct device *dev, phys_addr_t paddr)
 {
 	return octeon_hole_phys_to_dma(paddr);
@@ -75,8 +82,11 @@ static phys_addr_t octeon_gen2_dma_to_phys(struct device *dev, dma_addr_t daddr)
 	return octeon_hole_dma_to_phys(daddr);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static dma_addr_t octeon_big_phys_to_dma(struct device *dev, phys_addr_t paddr)
 {
 	if (paddr >= 0x410000000ull && paddr < 0x420000000ull)
@@ -166,8 +176,12 @@ static void *octeon_dma_alloc_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 	dma_addr_t *dma_handle, gfp_t gfp, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+	dma_addr_t *dma_handle, gfp_t gfp, struct dma_attrs *attrs)
+=======
 	dma_addr_t *dma_handle, gfp_t gfp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void *ret;
 
@@ -205,8 +219,12 @@ static void octeon_dma_free_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 	void *vaddr, dma_addr_t dma_handle, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+	void *vaddr, dma_addr_t dma_handle, struct dma_attrs *attrs)
+=======
 	void *vaddr, dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int order = get_order(size);
 
@@ -258,9 +276,14 @@ static struct octeon_dma_map_ops octeon_linear_dma_map_ops = {
 		.alloc = octeon_dma_alloc_coherent,
 		.free = octeon_dma_free_coherent,
 =======
+<<<<<<< HEAD
+		.alloc = octeon_dma_alloc_coherent,
+		.free = octeon_dma_free_coherent,
+=======
 		.alloc_coherent = octeon_dma_alloc_coherent,
 		.free_coherent = octeon_dma_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.map_page = octeon_dma_map_page,
 		.unmap_page = swiotlb_unmap_page,
 		.map_sg = octeon_dma_map_sg,
@@ -292,11 +315,16 @@ void __init plat_swiotlb_setup(void)
 	for (i = 0 ; i < boot_mem_map.nr_map; i++) {
 		struct boot_mem_map_entry *e = &boot_mem_map.map[i];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (e->type != BOOT_MEM_RAM && e->type != BOOT_MEM_INIT_RAM)
 			continue;
 
 		/* These addresses map low for PCI. */
 		if (e->addr > 0x410000000ull && !OCTEON_IS_MODEL(OCTEON_CN6XXX))
+<<<<<<< HEAD
+=======
 =======
 		if (e->type != BOOT_MEM_RAM)
 			continue;
@@ -304,6 +332,7 @@ void __init plat_swiotlb_setup(void)
 		/* These addresses map low for PCI. */
 		if (e->addr > 0x410000000ull)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		addr_size += e->size;
@@ -334,13 +363,19 @@ void __init plat_swiotlb_setup(void)
 	}
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_USB_OCTEON_OHCI
 	/* OCTEON II ohci is only 32-bit. */
 	if (OCTEON_IS_MODEL(OCTEON_CN6XXX) && max_addr >= 0x100000000ul)
 		swiotlbsize = 64 * (1<<20);
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	swiotlb_nslabs = swiotlbsize >> IO_TLB_SHIFT;
 	swiotlb_nslabs = ALIGN(swiotlb_nslabs, IO_TLB_SEGSIZE);
 	swiotlbsize = swiotlb_nslabs << IO_TLB_SHIFT;
@@ -359,9 +394,14 @@ static struct octeon_dma_map_ops _octeon_pci_dma_map_ops = {
 		.alloc = octeon_dma_alloc_coherent,
 		.free = octeon_dma_free_coherent,
 =======
+<<<<<<< HEAD
+		.alloc = octeon_dma_alloc_coherent,
+		.free = octeon_dma_free_coherent,
+=======
 		.alloc_coherent = octeon_dma_alloc_coherent,
 		.free_coherent = octeon_dma_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.map_page = octeon_dma_map_page,
 		.unmap_page = swiotlb_unmap_page,
 		.map_sg = octeon_dma_map_sg,
@@ -381,12 +421,18 @@ void __init octeon_pci_dma_init(void)
 {
 	switch (octeon_dma_bar_type) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case OCTEON_DMA_BAR_TYPE_PCIE2:
 		_octeon_pci_dma_map_ops.phys_to_dma = octeon_gen2_phys_to_dma;
 		_octeon_pci_dma_map_ops.dma_to_phys = octeon_gen2_dma_to_phys;
 		break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case OCTEON_DMA_BAR_TYPE_PCIE:
 		_octeon_pci_dma_map_ops.phys_to_dma = octeon_gen1_phys_to_dma;
 		_octeon_pci_dma_map_ops.dma_to_phys = octeon_gen1_dma_to_phys;

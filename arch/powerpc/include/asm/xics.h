@@ -19,9 +19,14 @@
  * Mark IPIs as higher priority so we can take them inside interrupts
  * FIXME: still true now?
 =======
+<<<<<<< HEAD
+ * Mark IPIs as higher priority so we can take them inside interrupts
+ * FIXME: still true now?
+=======
  * Mark IPIs as higher priority so we can take them inside interrupts that
  * arent marked IRQF_DISABLED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #define IPI_PRIORITY		4
 
@@ -33,6 +38,9 @@
 
 /* Native ICP */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_ICP_NATIVE
 extern int icp_native_init(void);
 #else
@@ -45,12 +53,15 @@ extern int icp_hv_init(void);
 #else
 static inline int icp_hv_init(void) { return -ENODEV; }
 #endif
+<<<<<<< HEAD
+=======
 =======
 extern int icp_native_init(void);
 
 /* PAPR ICP */
 extern int icp_hv_init(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ICP ops */
 struct icp_ops {
@@ -72,6 +83,9 @@ extern int ics_native_init(void);
 
 /* RTAS ICS */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_ICS_RTAS
 extern int ics_rtas_init(void);
 #else
@@ -84,9 +98,12 @@ extern int ics_opal_init(void);
 #else
 static inline int ics_opal_init(void) { return -ENODEV; }
 #endif
+<<<<<<< HEAD
+=======
 =======
 extern int ics_rtas_init(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ICS instance, hooked up to chip_data of an irq */
 struct ics {
@@ -105,8 +122,12 @@ extern unsigned int xics_interrupt_server_size;
 <<<<<<< HEAD
 extern struct irq_domain *xics_host;
 =======
+<<<<<<< HEAD
+extern struct irq_domain *xics_host;
+=======
 extern struct irq_host *xics_host;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct xics_cppr {
 	unsigned char stack[MAX_NUM_PRIORITIES];

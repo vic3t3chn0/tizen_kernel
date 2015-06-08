@@ -46,8 +46,11 @@ static struct clocksource clocksource_cf_dt = {
 	.mask		= CLOCKSOURCE_MASK(32),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.shift		= 20,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags		= CLOCK_SOURCE_IS_CONTINUOUS,
 };
 
@@ -66,10 +69,14 @@ static int __init  init_cf_dt_clocksource(void)
 <<<<<<< HEAD
 	return clocksource_register_hz(&clocksource_cf_dt, DMA_FREQ);
 =======
+<<<<<<< HEAD
+	return clocksource_register_hz(&clocksource_cf_dt, DMA_FREQ);
+=======
 	clocksource_cf_dt.mult = clocksource_hz2mult(DMA_FREQ,
 						     clocksource_cf_dt.shift);
 	return clocksource_register(&clocksource_cf_dt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 arch_initcall(init_cf_dt_clocksource);

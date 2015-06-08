@@ -36,7 +36,11 @@
 <<<<<<< HEAD
 #include <plat/cpu.h>
 =======
+<<<<<<< HEAD
+#include <plat/cpu.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/clock.h>
 #include <plat/sram.h>
 #include <plat/sdrc.h>
@@ -170,6 +174,8 @@ int omap2_select_table_rate(struct clk *clk, unsigned long rate)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #ifdef CONFIG_CPU_FREQ
 /*
@@ -251,3 +257,4 @@ void omap2_clk_exit_cpufreq_table(struct cpufreq_frequency_table **table)
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

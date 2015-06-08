@@ -194,7 +194,13 @@
 #define SPRN_UAMOR	0x9d	/* User Authority Mask Override Register */
 #define SPRN_AMOR	0x15d	/* Authority Mask Override Register */
 =======
+<<<<<<< HEAD
+#define SPRN_AMR	0x1d	/* Authority Mask Register */
+#define SPRN_UAMOR	0x9d	/* User Authority Mask Override Register */
+#define SPRN_AMOR	0x15d	/* Authority Mask Override Register */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPRN_ACOP	0x1F	/* Available Coprocessor Register */
 #define SPRN_CTRLF	0x088
 #define SPRN_CTRLT	0x098
@@ -222,7 +228,11 @@
 <<<<<<< HEAD
 #define   DSISR_KEYFAULT	0x00200000	/* Key fault */
 =======
+<<<<<<< HEAD
+#define   DSISR_KEYFAULT	0x00200000	/* Key fault */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPRN_TBRL	0x10C	/* Time Base Read Lower Register (user, R/O) */
 #define SPRN_TBRU	0x10D	/* Time Base Read Upper Register (user, R/O) */
 #define SPRN_TBWL	0x11C	/* Time Base Lower Register (super, R/W) */
@@ -243,6 +253,9 @@
 #define   LPCR_VPM1	(1ul << (63-1))
 #define   LPCR_ISL	(1ul << (63-2))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define   LPCR_VC_SH	(63-2)
 #define   LPCR_DPFD_SH	(63-11)
 #define   LPCR_VRMASD	(0x1ful << (63-16))
@@ -252,6 +265,8 @@
 #define   LPCR_VRMASD_SH (63-16)
 #define   LPCR_RMLS    0x1C000000      /* impl dependent rmo limit sel */
 #define	  LPCR_RMLS_SH	(63-37)
+<<<<<<< HEAD
+=======
 =======
 #define   LPCR_DPFD_SH	(63-11)
 #define   LPCR_VRMA_L	(1ul << (63-12))
@@ -259,6 +274,7 @@
 #define   LPCR_VRMA_LP1	(1ul << (63-16))
 #define   LPCR_RMLS    0x1C000000      /* impl dependent rmo limit sel */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define   LPCR_ILE     0x02000000      /* !HV irqs set MSR:LE */
 #define   LPCR_PECE	0x00007000	/* powersave exit cause enable */
 #define     LPCR_PECE0	0x00004000	/* ext. exceptions can cause exit */
@@ -266,6 +282,9 @@
 #define     LPCR_PECE2	0x00001000	/* machine check etc can cause exit */
 #define   LPCR_MER	0x00000800	/* Mediated External Exception */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define   LPCR_LPES    0x0000000c
 #define   LPCR_LPES0   0x00000008      /* LPAR Env selector 0 */
 #define   LPCR_LPES1   0x00000004      /* LPAR Env selector 1 */
@@ -274,6 +293,8 @@
 #define   LPCR_HDICE   0x00000001      /* Hyp Decr enable (HV,PR,EE) */
 #define SPRN_LPID	0x13F	/* Logical Partition Identifier */
 #define   LPID_RSVD	0x3ff		/* Reserved LPID for partn switching */
+<<<<<<< HEAD
+=======
 =======
 #define   LPCR_LPES0   0x00000008      /* LPAR Env selector 0 */
 #define   LPCR_LPES1   0x00000004      /* LPAR Env selector 1 */
@@ -281,6 +302,7 @@
 #define   LPCR_HDICE   0x00000001      /* Hyp Decr enable (HV,PR,EE) */
 #define SPRN_LPID	0x13F	/* Logical Partition Identifier */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	SPRN_HMER	0x150	/* Hardware m? error recovery */
 #define	SPRN_HMEER	0x151	/* Hardware m? enable error recovery */
 #define	SPRN_HEIR	0x153	/* Hypervisor Emulated Instruction Register */
@@ -334,7 +356,11 @@
 <<<<<<< HEAD
 #define HID0_HDICE_SH	(63 - 23)	/* 970 HDEC interrupt enable */
 =======
+<<<<<<< HEAD
+#define HID0_HDICE_SH	(63 - 23)	/* 970 HDEC interrupt enable */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HID0_EMCP	(1<<31)		/* Enable Machine Check pin */
 #define HID0_EBA	(1<<29)		/* Enable Bus Address Parity */
 #define HID0_EBD	(1<<28)		/* Enable Bus Data Parity */
@@ -391,6 +417,9 @@
 #define SPRN_IBCR	0x135		/* 83xx Insn Breakpoint Control Reg */
 #define SPRN_HID4	0x3F4		/* 970 HID4 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define  HID4_LPES0	 (1ul << (63-0)) /* LPAR env. sel. bit 0 */
 #define	 HID4_RMLS2_SH	 (63 - 2)	/* Real mode limit bottom 2 bits */
 #define	 HID4_LPID5_SH	 (63 - 6)	/* partition ID bottom 4 bits */
@@ -398,8 +427,11 @@
 #define  HID4_LPES1	 (1 << (63-57))	/* LPAR env. sel. bit 1 */
 #define  HID4_RMLS0_SH	 (63 - 58)	/* Real mode limit top bit */
 #define	 HID4_LPID1_SH	 0		/* partition ID top 2 bits */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPRN_HID4_GEKKO	0x3F3		/* Gekko HID4 */
 #define SPRN_HID5	0x3F6		/* 970 HID5 */
 #define SPRN_HID6	0x3F9	/* BE HID 6 */
@@ -528,7 +560,13 @@
 #define   SRR1_ISI_N_OR_G	0x10000000 /* ISI: Access is no-exec or G */
 #define   SRR1_ISI_PROT		0x08000000 /* ISI: Other protection fault */
 =======
+<<<<<<< HEAD
+#define   SRR1_ISI_NOPT		0x40000000 /* ISI: Not found in hash */
+#define   SRR1_ISI_N_OR_G	0x10000000 /* ISI: Access is no-exec or G */
+#define   SRR1_ISI_PROT		0x08000000 /* ISI: Other protection fault */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define   SRR1_WAKEMASK		0x00380000 /* reason for wakeup */
 #define   SRR1_WAKESYSERR	0x00300000 /* System error */
 #define   SRR1_WAKEEE		0x00200000 /* External interrupt */
@@ -858,8 +896,12 @@
 <<<<<<< HEAD
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
 =======
+<<<<<<< HEAD
+	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
+=======
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE_206, 66)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SET_PACA(rX)					\
 	BEGIN_FTR_SECTION_NESTED(66);			\
@@ -869,8 +911,12 @@
 <<<<<<< HEAD
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
 =======
+<<<<<<< HEAD
+	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
+=======
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE_206, 66)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GET_SCRATCH0(rX)				\
 	BEGIN_FTR_SECTION_NESTED(66);			\
@@ -880,8 +926,12 @@
 <<<<<<< HEAD
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
 =======
+<<<<<<< HEAD
+	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
+=======
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE_206, 66)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SET_SCRATCH0(rX)				\
 	BEGIN_FTR_SECTION_NESTED(66);			\
@@ -891,8 +941,12 @@
 <<<<<<< HEAD
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
 =======
+<<<<<<< HEAD
+	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE, 66)
+=======
 	ALT_FTR_SECTION_END_NESTED_IFCLR(CPU_FTR_HVMODE_206, 66)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* CONFIG_PPC_BOOK3S_64 */
 #define GET_SCRATCH0(rX)	mfspr	rX,SPRN_SPRG_SCRATCH0
@@ -945,9 +999,14 @@
 #define SPRN_SPRG_RSCRATCH_MC	SPRN_SPRG1
 #define SPRN_SPRG_WSCRATCH_MC	SPRN_SPRG1
 =======
+<<<<<<< HEAD
+#define SPRN_SPRG_RSCRATCH_MC	SPRN_SPRG1
+#define SPRN_SPRG_WSCRATCH_MC	SPRN_SPRG1
+=======
 #define SPRN_SPRG_RSCRATCH_MC	SPRN_SPRG6R
 #define SPRN_SPRG_WSCRATCH_MC	SPRN_SPRG6W
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPRN_SPRG_RSCRATCH4	SPRN_SPRG7R
 #define SPRN_SPRG_WSCRATCH4	SPRN_SPRG7W
 #ifdef CONFIG_E200
@@ -1011,7 +1070,11 @@
 <<<<<<< HEAD
 #define PVR_476FPE	0x7ff50000
 =======
+<<<<<<< HEAD
+#define PVR_476FPE	0x7ff50000
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PVR_STB03XXX	0x40310000
 #define PVR_NP405H	0x41410000
 #define PVR_NP405L	0x41610000
@@ -1066,8 +1129,11 @@
 #define PV_POWER5p	0x003B
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define PV_POWER7	0x003F
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PV_970FX	0x003C
 #define PV_POWER6	0x003E
 #define PV_POWER7	0x003F
@@ -1084,9 +1150,13 @@
 <<<<<<< HEAD
 			asm volatile("mfmsr %0" : "=r" (rval)); rval;})
 =======
+<<<<<<< HEAD
+			asm volatile("mfmsr %0" : "=r" (rval)); rval;})
+=======
 			asm volatile("mfmsr %0" : "=r" (rval) : \
 						: "memory"); rval;})
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_BOOK3S_64
 #define __mtmsrd(v, l)	asm volatile("mtmsrd %0," __stringify(l) \
 				     : : "r" (v) : "memory")
@@ -1098,8 +1168,14 @@
 				     : "r" ((unsigned long)(v)) \
 				     : "memory")
 =======
+<<<<<<< HEAD
+#define mtmsr(v)	asm volatile("mtmsr %0" : \
+				     : "r" ((unsigned long)(v)) \
+				     : "memory")
+=======
 #define mtmsr(v)	asm volatile("mtmsr %0" : : "r" (v) : "memory")
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #define mfspr(rn)	({unsigned long rval; \
@@ -1109,8 +1185,13 @@
 #define mtspr(rn, v)	asm volatile("mtspr " __stringify(rn) ",%0" : \
 				     : "r" ((unsigned long)(v)) \
 =======
+<<<<<<< HEAD
+#define mtspr(rn, v)	asm volatile("mtspr " __stringify(rn) ",%0" : \
+				     : "r" ((unsigned long)(v)) \
+=======
 #define mtspr(rn, v)	asm volatile("mtspr " __stringify(rn) ",%0" : : "r" (v)\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     : "memory")
 
 #ifdef __powerpc64__
@@ -1160,6 +1241,10 @@
 #define __get_SP()	({unsigned long sp; \
 			asm volatile("mr %0,1": "=r" (sp)); sp;})
 =======
+<<<<<<< HEAD
+#define __get_SP()	({unsigned long sp; \
+			asm volatile("mr %0,1": "=r" (sp)); sp;})
+=======
 #ifdef CONFIG_PPC64
 
 extern void ppc64_runlatch_on(void);
@@ -1172,10 +1257,13 @@ extern void __ppc64_runlatch_off(void);
 			__ppc64_runlatch_off();			\
 	} while (0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern unsigned long scom970_read(unsigned int address);
 extern void scom970_write(unsigned int address, unsigned long value);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #else
@@ -1188,6 +1276,7 @@ extern void scom970_write(unsigned int address, unsigned long value);
 			asm volatile("mr %0,1": "=r" (sp)); sp;})
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pt_regs;
 
 extern void ppc_save_regs(struct pt_regs *regs);

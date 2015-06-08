@@ -33,6 +33,8 @@ static DEFINE_SPINLOCK(clockfw_lock);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static unsigned psc_domain(struct clk *clk)
 {
 	return (clk->flags & PSC_DSP)
@@ -41,6 +43,7 @@ static unsigned psc_domain(struct clk *clk)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __clk_enable(struct clk *clk)
 {
 	if (clk->parent)
@@ -50,9 +53,14 @@ static void __clk_enable(struct clk *clk)
 		davinci_psc_config(clk->domain, clk->gpsc, clk->lpsc,
 				true, clk->flags);
 =======
+<<<<<<< HEAD
+		davinci_psc_config(clk->domain, clk->gpsc, clk->lpsc,
+				true, clk->flags);
+=======
 		davinci_psc_config(psc_domain(clk), clk->gpsc, clk->lpsc,
 				PSC_STATE_ENABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __clk_disable(struct clk *clk)
@@ -65,10 +73,15 @@ static void __clk_disable(struct clk *clk)
 		davinci_psc_config(clk->domain, clk->gpsc, clk->lpsc,
 				false, clk->flags);
 =======
+<<<<<<< HEAD
+		davinci_psc_config(clk->domain, clk->gpsc, clk->lpsc,
+				false, clk->flags);
+=======
 		davinci_psc_config(psc_domain(clk), clk->gpsc, clk->lpsc,
 				(clk->flags & PSC_SWRSTDISABLE) ?
 				PSC_STATE_SWRSTDISABLE : PSC_STATE_DISABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (clk->parent)
 		__clk_disable(clk->parent);
 }
@@ -255,10 +268,15 @@ static int __init clk_disable_unused(void)
 		davinci_psc_config(ck->domain, ck->gpsc, ck->lpsc,
 				false, ck->flags);
 =======
+<<<<<<< HEAD
+		davinci_psc_config(ck->domain, ck->gpsc, ck->lpsc,
+				false, ck->flags);
+=======
 		davinci_psc_config(psc_domain(ck), ck->gpsc, ck->lpsc,
 				(ck->flags & PSC_SWRSTDISABLE) ?
 				PSC_STATE_SWRSTDISABLE : PSC_STATE_DISABLE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_unlock_irq(&clockfw_lock);
 
@@ -387,14 +405,20 @@ static unsigned long clk_leafclk_recalc(struct clk *clk)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int davinci_simple_set_rate(struct clk *clk, unsigned long rate)
 {
 	clk->rate = rate;
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long clk_pllclk_recalc(struct clk *clk)
 {
 	u32 ctrl, mult = 1, prediv = 1, postdiv = 1;
@@ -534,6 +558,9 @@ int davinci_set_pllrate(struct pll_data *pll, unsigned int prediv,
 EXPORT_SYMBOL(davinci_set_pllrate);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * davinci_set_refclk_rate() - Set the reference clock rate
  * @rate:	The new rate.
@@ -566,8 +593,11 @@ int davinci_set_refclk_rate(unsigned long rate)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init davinci_clk_init(struct clk_lookup *clocks)
   {
 	struct clk_lookup *c;

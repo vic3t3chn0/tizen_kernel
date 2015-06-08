@@ -32,11 +32,16 @@ static int __init init_autofs4_fs(void)
 	int err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	autofs_dev_ioctl_init();
 
 	err = register_filesystem(&autofs_fs_type);
 	if (err)
 		autofs_dev_ioctl_exit();
+<<<<<<< HEAD
+=======
 =======
 	err = register_filesystem(&autofs_fs_type);
 	if (err)
@@ -44,6 +49,7 @@ static int __init init_autofs4_fs(void)
 
 	autofs_dev_ioctl_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }

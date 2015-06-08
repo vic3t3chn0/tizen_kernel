@@ -218,7 +218,15 @@ static int __devinit z2_batt_probe(struct i2c_client *client,
 		irq_set_irq_type(gpio_to_irq(info->charge_gpio),
 				 IRQ_TYPE_EDGE_BOTH);
 		ret = request_irq(gpio_to_irq(info->charge_gpio),
+<<<<<<< HEAD
+<<<<<<< HEAD
+				z2_charge_switch_irq, 0,
+=======
 				z2_charge_switch_irq, IRQF_DISABLED,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				z2_charge_switch_irq, IRQF_DISABLED,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"AC Detect", charger);
 		if (ret)
 			goto err3;
@@ -313,6 +321,15 @@ static struct i2c_driver z2_batt_driver = {
 		.pm	= Z2_BATTERY_PM_OPS
 	},
 	.probe		= z2_batt_probe,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.remove		= __devexit_p(z2_batt_remove),
+	.id_table	= z2_batt_id,
+};
+module_i2c_driver(z2_batt_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.remove		= z2_batt_remove,
 	.id_table	= z2_batt_id,
 };
@@ -329,6 +346,10 @@ static void __exit z2_batt_exit(void)
 
 module_init(z2_batt_init);
 module_exit(z2_batt_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Peter Edwards <sweetlilmre@gmail.com>");

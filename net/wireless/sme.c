@@ -6,7 +6,11 @@
 <<<<<<< HEAD
  * Copyright (C) 2012   Sony Mobile Communications AB.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2012   Sony Mobile Communications AB.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/etherdevice.h>
@@ -198,8 +202,13 @@ static int cfg80211_conn_do_work(struct wireless_dev *wdev)
 					    params->mfp != NL80211_MFP_NO,
 					    &params->crypto,
 =======
+<<<<<<< HEAD
+					    params->mfp != NL80211_MFP_NO,
+					    &params->crypto,
+=======
 					    false, &params->crypto,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    params->flags, &params->ht_capa,
 					    &params->ht_capa_mask);
 		if (err)
@@ -426,8 +435,11 @@ void __cfg80211_connect_result(struct net_device *dev, const u8 *bssid,
 	struct wireless_dev *wdev = dev->ieee80211_ptr;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u8 *country_ie;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CFG80211_WEXT
 	union iwreq_data wrqu;
 #endif
@@ -512,6 +524,8 @@ void __cfg80211_connect_result(struct net_device *dev, const u8 *bssid,
 	cfg80211_upload_connect_keys(wdev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	country_ie = (u8 *) ieee80211_bss_get_ie(bss, WLAN_EID_COUNTRY);
 
@@ -528,6 +542,7 @@ void __cfg80211_connect_result(struct net_device *dev, const u8 *bssid,
 			    country_ie + 2,
 			    country_ie[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void cfg80211_connect_result(struct net_device *dev, const u8 *bssid,

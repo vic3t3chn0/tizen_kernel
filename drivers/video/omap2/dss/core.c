@@ -50,7 +50,15 @@ module_param_named(def_disp, def_disp_name, charp, 0);
 MODULE_PARM_DESC(def_disp, "default display name");
 
 #ifdef DEBUG
+<<<<<<< HEAD
+<<<<<<< HEAD
+bool dss_debug;
+=======
 unsigned int dss_debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+unsigned int dss_debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_named(debug, dss_debug, bool, 0644);
 #endif
 
@@ -145,6 +153,16 @@ static int dss_initialize_debugfs(void)
 	debugfs_create_file("venc", S_IRUGO, dss_debugfs_dir,
 			&venc_dump_regs, &dss_debug_fops);
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_OMAP4_DSS_HDMI
+	debugfs_create_file("hdmi", S_IRUGO, dss_debugfs_dir,
+			&hdmi_dump_regs, &dss_debug_fops);
+#endif
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -174,6 +192,16 @@ static int omap_dss_probe(struct platform_device *pdev)
 
 	dss_features_init();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dss_apply_init();
+
+	dss_init_overlay_managers(pdev);
+	dss_init_overlays(pdev);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dss_init_overlay_managers(pdev);
 	dss_init_overlays(pdev);
 
@@ -216,6 +244,10 @@ static int omap_dss_probe(struct platform_device *pdev)
 		goto err_hdmi;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = dss_initialize_debugfs();
 	if (r)
 		goto err_debugfs;
@@ -238,13 +270,26 @@ static int omap_dss_probe(struct platform_device *pdev)
 			pdata->default_device = dssdev;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	dss_clk_disable(DSS_CLK_ICK | DSS_CLK_FCK);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dss_clk_disable(DSS_CLK_ICK | DSS_CLK_FCK);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_register:
 	dss_uninitialize_debugfs();
 err_debugfs:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdmi_uninit_platform_driver();
 err_hdmi:
 	dsi_uninit_platform_driver();
@@ -257,6 +302,10 @@ err_dispc:
 err_rfbi:
 	dss_uninit_platform_driver();
 err_dss:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return r;
 }
@@ -268,6 +317,11 @@ static int omap_dss_remove(struct platform_device *pdev)
 
 	dss_uninitialize_debugfs();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	venc_uninit_platform_driver();
 	dispc_uninit_platform_driver();
 	rfbi_uninit_platform_driver();
@@ -275,6 +329,10 @@ static int omap_dss_remove(struct platform_device *pdev)
 	hdmi_uninit_platform_driver();
 	dss_uninit_platform_driver();
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dss_uninit_overlays(pdev);
 	dss_uninit_overlay_managers(pdev);
 
@@ -524,6 +582,86 @@ static int omap_dss_bus_register(void)
 
 /* INIT */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __init omap_dss_register_drivers(void)
+{
+	int r;
+
+	r = platform_driver_register(&omap_dss_driver);
+	if (r)
+		return r;
+
+	r = dss_init_platform_driver();
+	if (r) {
+		DSSERR("Failed to initialize DSS platform driver\n");
+		goto err_dss;
+	}
+
+	r = dispc_init_platform_driver();
+	if (r) {
+		DSSERR("Failed to initialize dispc platform driver\n");
+		goto err_dispc;
+	}
+
+	r = rfbi_init_platform_driver();
+	if (r) {
+		DSSERR("Failed to initialize rfbi platform driver\n");
+		goto err_rfbi;
+	}
+
+	r = venc_init_platform_driver();
+	if (r) {
+		DSSERR("Failed to initialize venc platform driver\n");
+		goto err_venc;
+	}
+
+	r = dsi_init_platform_driver();
+	if (r) {
+		DSSERR("Failed to initialize DSI platform driver\n");
+		goto err_dsi;
+	}
+
+	r = hdmi_init_platform_driver();
+	if (r) {
+		DSSERR("Failed to initialize hdmi\n");
+		goto err_hdmi;
+	}
+
+	return 0;
+
+err_hdmi:
+	dsi_uninit_platform_driver();
+err_dsi:
+	venc_uninit_platform_driver();
+err_venc:
+	rfbi_uninit_platform_driver();
+err_rfbi:
+	dispc_uninit_platform_driver();
+err_dispc:
+	dss_uninit_platform_driver();
+err_dss:
+	platform_driver_unregister(&omap_dss_driver);
+
+	return r;
+}
+
+static void __exit omap_dss_unregister_drivers(void)
+{
+	hdmi_uninit_platform_driver();
+	dsi_uninit_platform_driver();
+	venc_uninit_platform_driver();
+	rfbi_uninit_platform_driver();
+	dispc_uninit_platform_driver();
+	dss_uninit_platform_driver();
+
+	platform_driver_unregister(&omap_dss_driver);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OMAP2_DSS_MODULE
 static void omap_dss_bus_unregister(void)
 {
@@ -540,7 +678,15 @@ static int __init omap_dss_init(void)
 	if (r)
 		return r;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	r = omap_dss_register_drivers();
+=======
 	r = platform_driver_register(&omap_dss_driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	r = platform_driver_register(&omap_dss_driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (r) {
 		omap_dss_bus_unregister();
 		return r;
@@ -561,7 +707,15 @@ static void __exit omap_dss_exit(void)
 		core.vdds_sdi_reg = NULL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	omap_dss_unregister_drivers();
+=======
 	platform_driver_unregister(&omap_dss_driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	platform_driver_unregister(&omap_dss_driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	omap_dss_bus_unregister();
 }
@@ -576,7 +730,15 @@ static int __init omap_dss_init(void)
 
 static int __init omap_dss_init2(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return omap_dss_register_drivers();
+=======
 	return platform_driver_register(&omap_dss_driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return platform_driver_register(&omap_dss_driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 core_initcall(omap_dss_init);

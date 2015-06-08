@@ -28,8 +28,11 @@ struct ak4671_priv {
 	enum snd_soc_control_type control_type;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* ak4671 register cache & default register settings */
@@ -173,6 +176,9 @@ static int ak4671_out2_event(struct snd_soc_dapm_widget *w,
 {
 	struct snd_soc_codec *codec = w->codec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (event) {
 	case SND_SOC_DAPM_POST_PMU:
@@ -182,6 +188,8 @@ static int ak4671_out2_event(struct snd_soc_dapm_widget *w,
 	case SND_SOC_DAPM_PRE_PMD:
 		snd_soc_update_bits(codec, AK4671_LOUT2_POWER_MANAGERMENT,
 				    AK4671_MUTEN, 0);
+<<<<<<< HEAD
+=======
 =======
 	u8 reg;
 
@@ -196,6 +204,7 @@ static int ak4671_out2_event(struct snd_soc_dapm_widget *w,
 		reg &= ~AK4671_MUTEN;
 		snd_soc_write(codec, AK4671_LOUT2_POWER_MANAGERMENT, reg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -593,9 +602,12 @@ static int ak4671_set_bias_level(struct snd_soc_codec *codec,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	u8 reg;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (level) {
 	case SND_SOC_BIAS_ON:
 	case SND_SOC_BIAS_PREPARE:
@@ -604,10 +616,15 @@ static int ak4671_set_bias_level(struct snd_soc_codec *codec,
 		snd_soc_update_bits(codec, AK4671_AD_DA_POWER_MANAGEMENT,
 				    AK4671_PMVCM, AK4671_PMVCM);
 =======
+<<<<<<< HEAD
+		snd_soc_update_bits(codec, AK4671_AD_DA_POWER_MANAGEMENT,
+				    AK4671_PMVCM, AK4671_PMVCM);
+=======
 		reg = snd_soc_read(codec, AK4671_AD_DA_POWER_MANAGEMENT);
 		snd_soc_write(codec, AK4671_AD_DA_POWER_MANAGEMENT,
 				reg | AK4671_PMVCM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SND_SOC_BIAS_OFF:
 		snd_soc_write(codec, AK4671_AD_DA_POWER_MANAGEMENT, 0x00);
@@ -627,8 +644,12 @@ static int ak4671_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops ak4671_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops ak4671_dai_ops = {
+=======
 static struct snd_soc_dai_ops ak4671_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= ak4671_hw_params,
 	.set_sysclk	= ak4671_set_dai_sysclk,
 	.set_fmt	= ak4671_set_dai_fmt,
@@ -658,9 +679,12 @@ static int ak4671_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	codec->hw_write = (hw_write_t)i2c_master_send;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_codec_set_cache_io(codec, 8, 8, ak4671->control_type);
 	if (ret < 0) {
 		dev_err(codec->dev, "Failed to set cache I/O: %d\n", ret);
@@ -670,8 +694,12 @@ static int ak4671_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, ak4671_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, ak4671_snd_controls,
+=======
 	snd_soc_add_controls(codec, ak4671_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(ak4671_snd_controls));
 
 	ak4671_set_bias_level(codec, SND_SOC_BIAS_STANDBY);
@@ -708,25 +736,36 @@ static int __devinit ak4671_i2c_probe(struct i2c_client *client,
 	ak4671 = devm_kzalloc(&client->dev, sizeof(struct ak4671_priv),
 			      GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	ak4671 = devm_kzalloc(&client->dev, sizeof(struct ak4671_priv),
+			      GFP_KERNEL);
+=======
 	ak4671 = kzalloc(sizeof(struct ak4671_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ak4671 == NULL)
 		return -ENOMEM;
 
 	i2c_set_clientdata(client, ak4671);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ak4671->control_data = client;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ak4671->control_type = SND_SOC_I2C;
 
 	ret = snd_soc_register_codec(&client->dev,
 			&soc_codec_dev_ak4671, &ak4671_dai, 1);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ret < 0)
 		kfree(ak4671);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -735,8 +774,11 @@ static __devexit int ak4671_i2c_remove(struct i2c_client *client)
 	snd_soc_unregister_codec(&client->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/platform_device.h>
 #include <linux/interrupt.h>
@@ -186,8 +190,12 @@ static struct ucb1400_pdata vpac270_ucb1400_pdata = {
 <<<<<<< HEAD
 	.irq		= PXA_GPIO_TO_IRQ(BALLOON3_GPIO_CODEC_IRQ),
 =======
+<<<<<<< HEAD
+	.irq		= PXA_GPIO_TO_IRQ(BALLOON3_GPIO_CODEC_IRQ),
+=======
 	.irq		= IRQ_GPIO(BALLOON3_GPIO_CODEC_IRQ),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -602,8 +610,12 @@ static void balloon3_nand_cmd_ctl(struct mtd_info *mtd, int cmd, unsigned int ct
 <<<<<<< HEAD
 				BALLOON3_NAND_CONTROL_REG +
 =======
+<<<<<<< HEAD
+				BALLOON3_NAND_CONTROL_REG +
+=======
 				BALLOON3_NAND_CONTROL_REG |
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				BALLOON3_FPGA_SETnCLR);
 	}
 
@@ -623,8 +635,12 @@ static void balloon3_nand_select_chip(struct mtd_info *mtd, int chip)
 <<<<<<< HEAD
 		BALLOON3_NAND_CONTROL_REG + BALLOON3_FPGA_SETnCLR);
 =======
+<<<<<<< HEAD
+		BALLOON3_NAND_CONTROL_REG + BALLOON3_FPGA_SETnCLR);
+=======
 		BALLOON3_NAND_CONTROL_REG | BALLOON3_FPGA_SETnCLR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Deassert correct nCE line */
 	__raw_writew(BALLOON3_NAND_CONTROL_FLCE0 << chip,
@@ -645,8 +661,12 @@ static int balloon3_nand_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		BALLOON3_NAND_CONTROL2_REG + BALLOON3_FPGA_SETnCLR);
 =======
+<<<<<<< HEAD
+		BALLOON3_NAND_CONTROL2_REG + BALLOON3_FPGA_SETnCLR);
+=======
 		BALLOON3_NAND_CONTROL2_REG | BALLOON3_FPGA_SETnCLR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ver = __raw_readw(BALLOON3_FPGA_VER);
 	if (ver < 0x4f08)
@@ -672,8 +692,12 @@ static int balloon3_nand_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		BALLOON3_NAND_CONTROL_REG + BALLOON3_FPGA_SETnCLR);
 =======
+<<<<<<< HEAD
+		BALLOON3_NAND_CONTROL_REG + BALLOON3_FPGA_SETnCLR);
+=======
 		BALLOON3_NAND_CONTROL_REG | BALLOON3_FPGA_SETnCLR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err2:
@@ -834,8 +858,12 @@ static struct map_desc balloon3_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual	= (unsigned long)BALLOON3_FPGA_VIRT,
 =======
+<<<<<<< HEAD
+		.virtual	= (unsigned long)BALLOON3_FPGA_VIRT,
+=======
 		.virtual	=  BALLOON3_FPGA_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn		= __phys_to_pfn(BALLOON3_FPGA_PHYS),
 		.length		= BALLOON3_FPGA_LENGTH,
 		.type		= MT_DEVICE,
@@ -854,14 +882,20 @@ MACHINE_START(BALLOON3, "Balloon3")
 	.nr_irqs	= BALLOON3_NR_IRQS,
 	.init_irq	= balloon3_init_irq,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handle_irq	= pxa27x_handle_irq,
 	.timer		= &pxa_timer,
 	.init_machine	= balloon3_init,
 	.atag_offset	= 0x100,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.timer		= &pxa_timer,
 	.init_machine	= balloon3_init,
 	.boot_params	= PLAT_PHYS_OFFSET + 0x100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

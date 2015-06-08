@@ -147,8 +147,12 @@ static struct dentry *squashfs_lookup(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 	int err, length, dir_count, size;
 =======
+<<<<<<< HEAD
+	int err, length, dir_count, size;
+=======
 	int err, length = 0, dir_count, size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	TRACE("Entered squashfs_lookup [%llx:%x]\n", block, offset);
 
@@ -184,9 +188,13 @@ static struct dentry *squashfs_lookup(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 		if (dir_count > SQUASHFS_DIR_COUNT)
 =======
+<<<<<<< HEAD
+		if (dir_count > SQUASHFS_DIR_COUNT)
+=======
 		/* dir_count should never be larger than 256 */
 		if (dir_count > 256)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto data_error;
 
 		while (dir_count--) {
@@ -230,12 +238,15 @@ static struct dentry *squashfs_lookup(struct inode *dir, struct dentry *dentry,
 				inode = squashfs_iget(dir->i_sb, ino, ino_num);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				if (IS_ERR(inode)) {
 					err = PTR_ERR(inode);
 					goto failed;
 				}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto exit_lookup;
 			}
 		}
@@ -246,11 +257,15 @@ exit_lookup:
 <<<<<<< HEAD
 	return d_splice_alias(inode, dentry);
 =======
+<<<<<<< HEAD
+	return d_splice_alias(inode, dentry);
+=======
 	if (inode)
 		return d_splice_alias(inode, dentry);
 	d_add(dentry, inode);
 	return ERR_PTR(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 data_error:
 	err = -EIO;

@@ -16,16 +16,36 @@
 #include <linux/init.h>
 #include <linux/interrupt.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <pcmcia/ss.h>
 
 #include <mach/hardware.h>
 #include <asm/io.h>
 #include <asm/sizes.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#include <mach/board.h>
+#include <mach/at91rm9200_mc.h>
+#include <mach/at91_ramc.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/gpio.h>
 
 #include <mach/board.h>
 #include <mach/at91rm9200_mc.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -69,7 +89,15 @@ static irqreturn_t at91_cf_irq(int irq, void *_cf)
 {
 	struct at91_cf_socket *cf = _cf;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (irq == gpio_to_irq(cf->board->det_pin)) {
+=======
 	if (irq == cf->board->det_pin) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (irq == cf->board->det_pin) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned present = at91_cf_present(cf);
 
 		/* kick pccard as needed */
@@ -95,6 +123,18 @@ static int at91_cf_get_status(struct pcmcia_socket *s, u_int *sp)
 
 	/* NOTE: CF is always 3VCARD */
 	if (at91_cf_present(cf)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		int rdy	= gpio_is_valid(cf->board->irq_pin);	/* RDY/nIRQ */
+		int vcc	= gpio_is_valid(cf->board->vcc_pin);
+
+		*sp = SS_DETECT | SS_3VCARD;
+		if (!rdy || gpio_get_value(rdy))
+			*sp |= SS_READY;
+		if (!vcc || gpio_get_value(vcc))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int rdy	= cf->board->irq_pin;	/* RDY/nIRQ */
 		int vcc	= cf->board->vcc_pin;
 
@@ -102,6 +142,10 @@ static int at91_cf_get_status(struct pcmcia_socket *s, u_int *sp)
 		if (!rdy || gpio_get_value(cf->board->irq_pin))
 			*sp |= SS_READY;
 		if (!vcc || gpio_get_value(cf->board->vcc_pin))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*sp |= SS_POWERON;
 	} else
 		*sp = 0;
@@ -117,7 +161,15 @@ at91_cf_set_socket(struct pcmcia_socket *sock, struct socket_state_t *s)
 	cf = container_of(sock, struct at91_cf_socket, socket);
 
 	/* switch Vcc if needed and possible */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(cf->board->vcc_pin)) {
+=======
 	if (cf->board->vcc_pin) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (cf->board->vcc_pin) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (s->Vcc) {
 			case 0:
 				gpio_set_value(cf->board->vcc_pin, 0);
@@ -156,7 +208,15 @@ static int at91_cf_set_io_map(struct pcmcia_socket *s, struct pccard_io_map *io)
 	/*
 	 * Use 16 bit accesses unless/until we need 8-bit i/o space.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	csr = at91_ramc_read(0, AT91_SMC_CSR(cf->board->chipselect)) & ~AT91_SMC_DBW;
+=======
 	csr = at91_sys_read(AT91_SMC_CSR(cf->board->chipselect)) & ~AT91_SMC_DBW;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	csr = at91_sys_read(AT91_SMC_CSR(cf->board->chipselect)) & ~AT91_SMC_DBW;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * NOTE: this CF controller ignores IOIS16, so we can't really do
@@ -175,7 +235,15 @@ static int at91_cf_set_io_map(struct pcmcia_socket *s, struct pccard_io_map *io)
 		csr |= AT91_SMC_DBW_16;
 		pr_debug("%s: 16bit i/o bus\n", driver_name);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	at91_ramc_write(0, AT91_SMC_CSR(cf->board->chipselect), csr);
+=======
 	at91_sys_write(AT91_SMC_CSR(cf->board->chipselect), csr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	at91_sys_write(AT91_SMC_CSR(cf->board->chipselect), csr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	io->start = cf->socket.io_offset;
 	io->stop = io->start + SZ_2K - 1;
@@ -221,7 +289,15 @@ static int __init at91_cf_probe(struct platform_device *pdev)
 	struct resource		*io;
 	int			status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!board || !gpio_is_valid(board->det_pin) || !gpio_is_valid(board->rst_pin))
+=======
 	if (!board || !board->det_pin || !board->rst_pin)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!board || !board->det_pin || !board->rst_pin)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	io = platform_get_resource(pdev, IORESOURCE_MEM, 0);
@@ -241,7 +317,15 @@ static int __init at91_cf_probe(struct platform_device *pdev)
 	status = gpio_request(board->det_pin, "cf_det");
 	if (status < 0)
 		goto fail0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = request_irq(gpio_to_irq(board->det_pin), at91_cf_irq, 0, driver_name, cf);
+=======
 	status = request_irq(board->det_pin, at91_cf_irq, 0, driver_name, cf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	status = request_irq(board->det_pin, at91_cf_irq, 0, driver_name, cf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status < 0)
 		goto fail00;
 	device_init_wakeup(&pdev->dev, 1);
@@ -250,7 +334,15 @@ static int __init at91_cf_probe(struct platform_device *pdev)
 	if (status < 0)
 		goto fail0a;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(board->vcc_pin)) {
+=======
 	if (board->vcc_pin) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (board->vcc_pin) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = gpio_request(board->vcc_pin, "cf_vcc");
 		if (status < 0)
 			goto fail0b;
@@ -262,6 +354,20 @@ static int __init at91_cf_probe(struct platform_device *pdev)
 	 * unless we report that we handle everything (sigh).
 	 * (Note:  DK board doesn't wire the IRQ pin...)
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(board->irq_pin)) {
+		status = gpio_request(board->irq_pin, "cf_irq");
+		if (status < 0)
+			goto fail0c;
+		status = request_irq(gpio_to_irq(board->irq_pin), at91_cf_irq,
+				IRQF_SHARED, driver_name, cf);
+		if (status < 0)
+			goto fail0d;
+		cf->socket.pci_irq = gpio_to_irq(board->irq_pin);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (board->irq_pin) {
 		status = gpio_request(board->irq_pin, "cf_irq");
 		if (status < 0)
@@ -271,6 +377,10 @@ static int __init at91_cf_probe(struct platform_device *pdev)
 		if (status < 0)
 			goto fail0d;
 		cf->socket.pci_irq = board->irq_pin;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		cf->socket.pci_irq = nr_irqs + 1;
 
@@ -283,14 +393,31 @@ static int __init at91_cf_probe(struct platform_device *pdev)
 	}
 
 	/* reserve chip-select regions */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!request_mem_region(io->start, resource_size(io), driver_name)) {
+=======
 	if (!request_mem_region(io->start, io->end + 1 - io->start,
 				driver_name)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!request_mem_region(io->start, io->end + 1 - io->start,
+				driver_name)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = -ENXIO;
 		goto fail1;
 	}
 
 	pr_info("%s: irqs det #%d, io #%d\n", driver_name,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		gpio_to_irq(board->det_pin), gpio_to_irq(board->irq_pin));
+=======
 		board->det_pin, board->irq_pin);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		board->det_pin, board->irq_pin);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cf->socket.owner = THIS_MODULE;
 	cf->socket.dev.parent = &pdev->dev;
@@ -308,23 +435,54 @@ static int __init at91_cf_probe(struct platform_device *pdev)
 	return 0;
 
 fail2:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	release_mem_region(io->start, resource_size(io));
+fail1:
+	if (cf->socket.io_offset)
+		iounmap((void __iomem *) cf->socket.io_offset);
+	if (gpio_is_valid(board->irq_pin)) {
+		free_irq(gpio_to_irq(board->irq_pin), cf);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	release_mem_region(io->start, io->end + 1 - io->start);
 fail1:
 	if (cf->socket.io_offset)
 		iounmap((void __iomem *) cf->socket.io_offset);
 	if (board->irq_pin) {
 		free_irq(board->irq_pin, cf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail0d:
 		gpio_free(board->irq_pin);
 	}
 fail0c:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(board->vcc_pin))
+=======
 	if (board->vcc_pin)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (board->vcc_pin)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gpio_free(board->vcc_pin);
 fail0b:
 	gpio_free(board->rst_pin);
 fail0a:
 	device_init_wakeup(&pdev->dev, 0);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	free_irq(gpio_to_irq(board->det_pin), cf);
+=======
 	free_irq(board->det_pin, cf);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	free_irq(board->det_pin, cf);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail00:
 	gpio_free(board->det_pin);
 fail0:
@@ -339,6 +497,22 @@ static int __exit at91_cf_remove(struct platform_device *pdev)
 	struct resource		*io = cf->socket.io[0].res;
 
 	pcmcia_unregister_socket(&cf->socket);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	release_mem_region(io->start, resource_size(io));
+	iounmap((void __iomem *) cf->socket.io_offset);
+	if (gpio_is_valid(board->irq_pin)) {
+		free_irq(gpio_to_irq(board->irq_pin), cf);
+		gpio_free(board->irq_pin);
+	}
+	if (gpio_is_valid(board->vcc_pin))
+		gpio_free(board->vcc_pin);
+	gpio_free(board->rst_pin);
+	device_init_wakeup(&pdev->dev, 0);
+	free_irq(gpio_to_irq(board->det_pin), cf);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	release_mem_region(io->start, io->end + 1 - io->start);
 	iounmap((void __iomem *) cf->socket.io_offset);
 	if (board->irq_pin) {
@@ -350,6 +524,10 @@ static int __exit at91_cf_remove(struct platform_device *pdev)
 	gpio_free(board->rst_pin);
 	device_init_wakeup(&pdev->dev, 0);
 	free_irq(board->det_pin, cf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gpio_free(board->det_pin);
 	kfree(cf);
 	return 0;
@@ -363,9 +541,21 @@ static int at91_cf_suspend(struct platform_device *pdev, pm_message_t mesg)
 	struct at91_cf_data	*board = cf->board;
 
 	if (device_may_wakeup(&pdev->dev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		enable_irq_wake(gpio_to_irq(board->det_pin));
+		if (gpio_is_valid(board->irq_pin))
+			enable_irq_wake(gpio_to_irq(board->irq_pin));
+=======
 		enable_irq_wake(board->det_pin);
 		if (board->irq_pin)
 			enable_irq_wake(board->irq_pin);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		enable_irq_wake(board->det_pin);
+		if (board->irq_pin)
+			enable_irq_wake(board->irq_pin);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -376,9 +566,21 @@ static int at91_cf_resume(struct platform_device *pdev)
 	struct at91_cf_data	*board = cf->board;
 
 	if (device_may_wakeup(&pdev->dev)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		disable_irq_wake(gpio_to_irq(board->det_pin));
+		if (gpio_is_valid(board->irq_pin))
+			disable_irq_wake(gpio_to_irq(board->irq_pin));
+=======
 		disable_irq_wake(board->det_pin);
 		if (board->irq_pin)
 			disable_irq_wake(board->irq_pin);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		disable_irq_wake(board->det_pin);
+		if (board->irq_pin)
+			disable_irq_wake(board->irq_pin);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;

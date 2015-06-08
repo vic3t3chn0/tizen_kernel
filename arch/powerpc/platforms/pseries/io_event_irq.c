@@ -12,8 +12,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq.h>
 #include <linux/interrupt.h>
 #include <linux/of.h>
@@ -67,6 +71,11 @@ EXPORT_SYMBOL_GPL(pseries_ioei_notifier_list);
 
 static int ioei_check_exception_token;
 
+<<<<<<< HEAD
+static char ioei_rtas_buf[RTAS_DATA_BUF_SIZE] __cacheline_aligned;
+
+/**
+=======
 <<<<<<< HEAD
 static char ioei_rtas_buf[RTAS_DATA_BUF_SIZE] __cacheline_aligned;
 
@@ -140,6 +149,7 @@ static struct pseries_elog_section *find_xelog_section(struct rtas_error_log *el
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Find the data portion of an IO Event section from event log.
  * @elog: RTAS error/event log.
  *
@@ -151,8 +161,12 @@ static struct pseries_io_event * ioei_find_event(struct rtas_error_log *elog)
 <<<<<<< HEAD
 	struct pseries_errorlog *sect;
 =======
+<<<<<<< HEAD
+	struct pseries_errorlog *sect;
+=======
 	struct pseries_elog_section *sect;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We should only ever get called for io-event interrupts, but if
 	 * we do get called for another type then something went wrong so
@@ -169,8 +183,12 @@ static struct pseries_io_event * ioei_find_event(struct rtas_error_log *elog)
 <<<<<<< HEAD
 	sect = get_pseries_errorlog(elog, PSERIES_ELOG_SECT_ID_IO_EVENT);
 =======
+<<<<<<< HEAD
+	sect = get_pseries_errorlog(elog, PSERIES_ELOG_SECT_ID_IO_EVENT);
+=======
 	sect = find_xelog_section(elog, PSERIES_ELOG_SECT_ID_IO_EVENT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!sect)) {
 		printk_once(KERN_WARNING "io_event_irq: RTAS extended event "
 			    "log does not contain an IO Event section. "
@@ -231,6 +249,9 @@ static int __init ioei_init(void)
 
 	ioei_check_exception_token = rtas_token("check-exception");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ioei_check_exception_token == RTAS_UNKNOWN_SERVICE)
 		return -ENODEV;
 
@@ -240,6 +261,8 @@ static int __init ioei_init(void)
 		pr_info("IBM I/O event interrupts enabled\n");
 		of_node_put(np);
 	} else {
+<<<<<<< HEAD
+=======
 =======
 	if (ioei_check_exception_token == RTAS_UNKNOWN_SERVICE) {
 		pr_warning("IO Event IRQ not supported on this system !\n");
@@ -253,6 +276,7 @@ static int __init ioei_init(void)
 		pr_err("io_event_irq: No ibm,io-events on system! "
 		       "IO Event interrupt disabled.\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 	}
 	return 0;

@@ -1,6 +1,9 @@
 /*
  * linux/arch/arm/mach-sa1100/neponset.c
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #include <linux/err.h>
 #include <linux/init.h>
@@ -88,6 +91,8 @@ void neponset_ncr_frob(unsigned int mask, unsigned int val)
 		local_irq_restore(flags);
 	} else {
 		WARN(1, "nep_base unset\n");
+<<<<<<< HEAD
+=======
 =======
  *
  */
@@ -167,12 +172,16 @@ neponset_irq_handler(unsigned int irq, struct irq_desc *desc)
 			generic_handle_irq(IRQ_NEPONSET_SA1111);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
 static void neponset_set_mctrl(struct uart_port *port, u_int mctrl)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem *base = nep_base;
 	u_int mdm_ctl0;
 
@@ -180,10 +189,13 @@ static void neponset_set_mctrl(struct uart_port *port, u_int mctrl)
 		return;
 
 	mdm_ctl0 = readb_relaxed(base + MDM_CTL_0);
+<<<<<<< HEAD
+=======
 =======
 	u_int mdm_ctl0 = MDM_CTL_0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (port->mapbase == _Ser1UTCR0) {
 		if (mctrl & TIOCM_RTS)
 			mdm_ctl0 &= ~MDM_CTL0_RTS2;
@@ -209,13 +221,20 @@ static void neponset_set_mctrl(struct uart_port *port, u_int mctrl)
 <<<<<<< HEAD
 	writeb_relaxed(mdm_ctl0, base + MDM_CTL_0);
 =======
+<<<<<<< HEAD
+	writeb_relaxed(mdm_ctl0, base + MDM_CTL_0);
+=======
 	MDM_CTL_0 = mdm_ctl0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static u_int neponset_get_mctrl(struct uart_port *port)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem *base = nep_base;
 	u_int ret = TIOCM_CD | TIOCM_CTS | TIOCM_DSR;
 	u_int mdm_ctl1;
@@ -224,11 +243,14 @@ static u_int neponset_get_mctrl(struct uart_port *port)
 		return ret;
 
 	mdm_ctl1 = readb_relaxed(base + MDM_CTL_1);
+<<<<<<< HEAD
+=======
 =======
 	u_int ret = TIOCM_CD | TIOCM_CTS | TIOCM_DSR;
 	u_int mdm_ctl1 = MDM_CTL_1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (port->mapbase == _Ser1UTCR0) {
 		if (mdm_ctl1 & MDM_CTL1_DCD2)
 			ret &= ~TIOCM_CD;
@@ -254,6 +276,9 @@ static struct sa1100_port_fns neponset_port_fns __devinitdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Install handler for Neponset IRQ.  Note that we have to loop here
  * since the ETHERNET and USAR IRQs are level based, and we need to
@@ -488,6 +513,8 @@ static int neponset_suspend(struct device *dev)
 
 	d->ncr0 = readb_relaxed(d->base + NCR_0);
 	d->mdm_ctl_0 = readb_relaxed(d->base + MDM_CTL_0);
+<<<<<<< HEAD
+=======
 =======
 static int __devinit neponset_probe(struct platform_device *dev)
 {
@@ -521,10 +548,13 @@ static int __devinit neponset_probe(struct platform_device *dev)
 	 * Disable GPIO 0/1 drivers so the buttons work on the module.
 	 */
 	NCR_0 = NCR_GP01_OFF;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PM
 
 /*
@@ -544,22 +574,29 @@ static int neponset_suspend(struct platform_device *dev, pm_message_t state)
 }
 
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int neponset_resume(struct device *dev)
 {
 	struct neponset_drvdata *d = dev_get_drvdata(dev);
 
 	writeb_relaxed(d->ncr0, d->base + NCR_0);
 	writeb_relaxed(d->mdm_ctl_0, d->base + MDM_CTL_0);
+<<<<<<< HEAD
+=======
 =======
 static int neponset_resume(struct platform_device *dev)
 {
 	NCR_0 = neponset_saved_state;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct dev_pm_ops neponset_pm_ops = {
 	.suspend_noirq = neponset_suspend,
 	.resume_noirq = neponset_resume,
@@ -569,16 +606,22 @@ static const struct dev_pm_ops neponset_pm_ops = {
 #define PM_OPS &neponset_pm_ops
 #else
 #define PM_OPS NULL
+<<<<<<< HEAD
+=======
 =======
 #else
 #define neponset_suspend NULL
 #define neponset_resume  NULL
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static struct platform_driver neponset_device_driver = {
 	.probe		= neponset_probe,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.remove		= __devexit_p(neponset_remove),
 	.driver		= {
 		.name	= "neponset",
@@ -593,6 +636,8 @@ static int __init neponset_init(void)
 }
 
 subsys_initcall(neponset_init);
+<<<<<<< HEAD
+=======
 =======
 	.suspend	= neponset_suspend,
 	.resume		= neponset_resume,
@@ -734,3 +779,4 @@ void __init neponset_map_io(void)
 	iotable_init(neponset_io_desc, ARRAY_SIZE(neponset_io_desc));
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -41,7 +41,14 @@
  * USA.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -150,7 +157,15 @@ _config_display_some_debug(struct MPT2SAS_ADAPTER *ioc, u16 smid,
 			desc = "raid_config";
 			break;
 		case MPI2_CONFIG_EXTPAGETYPE_DRIVER_MAPPING:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			desc = "driver_mapping";
+=======
 			desc = "driver_mappping";
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			desc = "driver_mappping";
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 		break;
@@ -1357,6 +1372,15 @@ mpt2sas_config_get_volume_handle(struct MPT2SAS_ADAPTER *ioc, u16 pd_handle,
 	Mpi2ConfigReply_t mpi_reply;
 	int r, i, config_page_sz;
 	u16 ioc_status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int config_num;
+	u16 element_type;
+	u16 phys_disk_dev_handle;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*volume_handle = 0;
 	memset(&mpi_request, 0, sizeof(Mpi2ConfigRequest_t));
@@ -1372,6 +1396,58 @@ mpt2sas_config_get_volume_handle(struct MPT2SAS_ADAPTER *ioc, u16 pd_handle,
 	if (r)
 		goto out;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mpi_request.Action = MPI2_CONFIG_ACTION_PAGE_READ_CURRENT;
+	config_page_sz = (le16_to_cpu(mpi_reply.ExtPageLength) * 4);
+	config_page = kmalloc(config_page_sz, GFP_KERNEL);
+	if (!config_page) {
+		r = -1;
+		goto out;
+	}
+	config_num = 0xff;
+	while (1) {
+		mpi_request.PageAddress = cpu_to_le32(config_num +
+		    MPI2_RAID_PGAD_FORM_GET_NEXT_CONFIGNUM);
+		r = _config_request(ioc, &mpi_request, &mpi_reply,
+		    MPT2_CONFIG_PAGE_DEFAULT_TIMEOUT, config_page,
+		    config_page_sz);
+		if (r)
+			goto out;
+		r = -1;
+		ioc_status = le16_to_cpu(mpi_reply.IOCStatus) &
+		    MPI2_IOCSTATUS_MASK;
+		if (ioc_status != MPI2_IOCSTATUS_SUCCESS)
+			goto out;
+		for (i = 0; i < config_page->NumElements; i++) {
+			element_type = le16_to_cpu(config_page->
+			    ConfigElement[i].ElementFlags) &
+			    MPI2_RAIDCONFIG0_EFLAGS_MASK_ELEMENT_TYPE;
+			if (element_type ==
+			    MPI2_RAIDCONFIG0_EFLAGS_VOL_PHYS_DISK_ELEMENT ||
+			    element_type ==
+			    MPI2_RAIDCONFIG0_EFLAGS_OCE_ELEMENT) {
+				phys_disk_dev_handle =
+				    le16_to_cpu(config_page->ConfigElement[i].
+				    PhysDiskDevHandle);
+				if (phys_disk_dev_handle == pd_handle) {
+					*volume_handle =
+					    le16_to_cpu(config_page->
+					    ConfigElement[i].VolDevHandle);
+					r = 0;
+					goto out;
+				}
+			} else if (element_type ==
+			    MPI2_RAIDCONFIG0_EFLAGS_HOT_SPARE_ELEMENT) {
+				*volume_handle = 0;
+				r = 0;
+				goto out;
+			}
+		}
+		config_num = config_page->ConfigNum;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpi_request.PageAddress =
 	    cpu_to_le32(MPI2_RAID_PGAD_FORM_ACTIVE_CONFIG);
 	mpi_request.Action = MPI2_CONFIG_ACTION_PAGE_READ_CURRENT;
@@ -1401,6 +1477,10 @@ mpt2sas_config_get_volume_handle(struct MPT2SAS_ADAPTER *ioc, u16 pd_handle,
 			r = 0;
 			goto out;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
  out:
 	kfree(config_page);

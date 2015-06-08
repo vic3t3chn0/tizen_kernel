@@ -95,6 +95,9 @@ static int x25_state1_machine(struct sock *sk, struct sk_buff *skb, int frametyp
 
 	switch (frametype) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case X25_CALL_ACCEPTED: {
 
 		x25_stop_timer(sk);
@@ -151,6 +154,8 @@ static int x25_state1_machine(struct sock *sk, struct sk_buff *skb, int frametyp
 
 	default:
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case X25_CALL_ACCEPTED: {
 
@@ -209,6 +214,7 @@ static int x25_state1_machine(struct sock *sk, struct sk_buff *skb, int frametyp
 		default:
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -447,6 +453,9 @@ int x25_process_rx_frame(struct sock *sk, struct sk_buff *skb)
 
 	switch (x25->state) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case X25_STATE_1:
 		queued = x25_state1_machine(sk, skb, frametype);
 		break;
@@ -459,6 +468,8 @@ int x25_process_rx_frame(struct sock *sk, struct sk_buff *skb)
 	case X25_STATE_4:
 		queued = x25_state4_machine(sk, skb, frametype);
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case X25_STATE_1:
 			queued = x25_state1_machine(sk, skb, frametype);
@@ -473,6 +484,7 @@ int x25_process_rx_frame(struct sock *sk, struct sk_buff *skb)
 			queued = x25_state4_machine(sk, skb, frametype);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	x25_kick(sk);

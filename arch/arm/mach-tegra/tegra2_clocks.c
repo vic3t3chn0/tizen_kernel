@@ -167,6 +167,9 @@ static int tegra_periph_clk_enable_refcount[3 * 32];
 
 #define clk_writel(value, reg) \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__raw_writel(value, reg_clk_base + (reg))
 #define clk_readl(reg) \
 	__raw_readl(reg_clk_base + (reg))
@@ -176,6 +179,8 @@ static int tegra_periph_clk_enable_refcount[3 * 32];
 	__raw_readl(reg_pmc_base + (reg))
 
 static unsigned long clk_measure_input_freq(void)
+<<<<<<< HEAD
+=======
 =======
 	__raw_writel(value, (u32)reg_clk_base + (reg))
 #define clk_readl(reg) \
@@ -187,6 +192,7 @@ static unsigned long clk_measure_input_freq(void)
 
 unsigned long clk_measure_input_freq(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 clock_autodetect;
 	clk_writel(OSC_FREQ_DET_TRIG | 1, OSC_FREQ_DET);
@@ -292,6 +298,8 @@ static struct clk_ops tegra_clk_m_ops = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void tegra2_periph_reset_assert(struct clk *c)
 {
 	BUG_ON(!c->ops->reset);
@@ -305,6 +313,7 @@ void tegra2_periph_reset_deassert(struct clk *c)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* super clock functions */
 /* "super clocks" on tegra have two-stage muxes and a clock skipping
  * super divider.  We will ignore the clock skipping divider, since we
@@ -750,8 +759,12 @@ static void tegra2_pllx_clk_init(struct clk *c)
 <<<<<<< HEAD
 	if (tegra_sku_id == 7)
 =======
+<<<<<<< HEAD
+	if (tegra_sku_id == 7)
+=======
 	if (tegra_sku_id() == 7)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c->max_rate = 750000000;
 }
 
@@ -940,8 +953,12 @@ static void tegra2_periph_clk_init(struct clk *c)
 <<<<<<< HEAD
 	const struct clk_mux_sel *mux = NULL;
 =======
+<<<<<<< HEAD
+	const struct clk_mux_sel *mux = NULL;
+=======
 	const struct clk_mux_sel *mux = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct clk_mux_sel *sel;
 	if (c->flags & MUX) {
 		for (sel = c->inputs; sel->input != NULL; sel++) {
@@ -1160,7 +1177,13 @@ void tegra2_sdmmc_tap_delay(struct clk *c, int delay)
 
 	spin_lock_irqsave(&c->spinlock, flags);
 =======
+<<<<<<< HEAD
+	unsigned long flags;
+
+	spin_lock_irqsave(&c->spinlock, flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	delay = clamp(delay, 0, 15);
 	reg = clk_readl(c->reg);
@@ -1172,7 +1195,12 @@ void tegra2_sdmmc_tap_delay(struct clk *c, int delay)
 
 	spin_unlock_irqrestore(&c->spinlock, flags);
 =======
+<<<<<<< HEAD
+
+	spin_unlock_irqrestore(&c->spinlock, flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* External memory controller clock ops */
@@ -1185,6 +1213,9 @@ static void tegra2_emc_clk_init(struct clk *c)
 static long tegra2_emc_clk_round_rate(struct clk *c, unsigned long rate)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	long emc_rate;
 	long clk_rate;
 
@@ -1214,6 +1245,8 @@ static long tegra2_emc_clk_round_rate(struct clk *c, unsigned long rate)
 		emc_rate, clk_rate);
 
 	return emc_rate;
+<<<<<<< HEAD
+=======
 =======
 	long new_rate = rate;
 
@@ -1225,6 +1258,7 @@ static long tegra2_emc_clk_round_rate(struct clk *c, unsigned long rate)
 
 	return new_rate;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int tegra2_emc_clk_set_rate(struct clk *c, unsigned long rate)
@@ -1528,8 +1562,12 @@ static struct clk_mux_sel tegra_clk_m_sel[] = {
 <<<<<<< HEAD
 	{ NULL , 0},
 =======
+<<<<<<< HEAD
+	{ NULL , 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk tegra_clk_m = {
@@ -1934,8 +1972,12 @@ static const struct audio_sources {
 <<<<<<< HEAD
 	{ NULL, 0 }
 =======
+<<<<<<< HEAD
+	{ NULL, 0 }
+=======
 	{ 0, 0 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk tegra_clk_audio = {
@@ -1962,8 +2004,12 @@ static struct clk tegra_clk_audio_2x = {
 <<<<<<< HEAD
 static struct clk_lookup tegra_audio_clk_lookups[] = {
 =======
+<<<<<<< HEAD
+static struct clk_lookup tegra_audio_clk_lookups[] = {
+=======
 struct clk_lookup tegra_audio_clk_lookups[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ .con_id = "audio", .clk = &tegra_clk_audio },
 	{ .con_id = "audio_2x", .clk = &tegra_clk_audio_2x }
 };
@@ -2007,8 +2053,12 @@ static struct clk_mux_sel mux_cclk[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_sclk[] = {
@@ -2023,8 +2073,12 @@ static struct clk_mux_sel mux_sclk[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk tegra_clk_cclk = {
@@ -2098,8 +2152,12 @@ static struct clk_mux_sel mux_pllm_pllc_pllp_plla[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pllm_pllc_pllp_clkm[] = {
@@ -2110,8 +2168,12 @@ static struct clk_mux_sel mux_pllm_pllc_pllp_clkm[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pllp_pllc_pllm_clkm[] = {
@@ -2122,8 +2184,12 @@ static struct clk_mux_sel mux_pllp_pllc_pllm_clkm[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pllaout0_audio2x_pllp_clkm[] = {
@@ -2134,8 +2200,12 @@ static struct clk_mux_sel mux_pllaout0_audio2x_pllp_clkm[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pllp_plld_pllc_clkm[] = {
@@ -2146,8 +2216,12 @@ static struct clk_mux_sel mux_pllp_plld_pllc_clkm[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pllp_pllc_audio_clkm_clk32[] = {
@@ -2159,8 +2233,12 @@ static struct clk_mux_sel mux_pllp_pllc_audio_clkm_clk32[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pllp_pllc_pllm[] = {
@@ -2170,8 +2248,12 @@ static struct clk_mux_sel mux_pllp_pllc_pllm[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_clk_m[] = {
@@ -2179,8 +2261,12 @@ static struct clk_mux_sel mux_clk_m[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pllp_out3[] = {
@@ -2188,8 +2274,12 @@ static struct clk_mux_sel mux_pllp_out3[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_plld[] = {
@@ -2197,8 +2287,12 @@ static struct clk_mux_sel mux_plld[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_clk_32k[] = {
@@ -2206,8 +2300,12 @@ static struct clk_mux_sel mux_clk_32k[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_mux_sel mux_pclk[] = {
@@ -2215,8 +2313,12 @@ static struct clk_mux_sel mux_pclk[] = {
 <<<<<<< HEAD
 	{ NULL, 0},
 =======
+<<<<<<< HEAD
+	{ NULL, 0},
+=======
 	{ 0, 0},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk tegra_clk_emc = {
@@ -2262,8 +2364,12 @@ static struct clk tegra_clk_emc = {
 <<<<<<< HEAD
 static struct clk tegra_list_clks[] = {
 =======
+<<<<<<< HEAD
+static struct clk tegra_list_clks[] = {
+=======
 struct clk tegra_list_clks[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PERIPH_CLK("apbdma",	"tegra-dma",		NULL,	34,	0,	108000000, mux_pclk,			0),
 	PERIPH_CLK("rtc",	"rtc-tegra",		NULL,	4,	0,	32768,     mux_clk_32k,			PERIPH_NO_RESET),
 	PERIPH_CLK("timer",	"timer",		NULL,	5,	0,	26000000,  mux_clk_m,			0),
@@ -2324,9 +2430,14 @@ struct clk tegra_list_clks[] = {
 	PERIPH_CLK("disp1",	"tegradc.0",		NULL,	27,	0x138,	600000000, mux_pllp_plld_pllc_clkm,	MUX), /* scales with voltage and process_id */
 	PERIPH_CLK("disp2",	"tegradc.1",		NULL,	26,	0x13c,	600000000, mux_pllp_plld_pllc_clkm,	MUX), /* scales with voltage and process_id */
 =======
+<<<<<<< HEAD
+	PERIPH_CLK("disp1",	"tegradc.0",		NULL,	27,	0x138,	600000000, mux_pllp_plld_pllc_clkm,	MUX), /* scales with voltage and process_id */
+	PERIPH_CLK("disp2",	"tegradc.1",		NULL,	26,	0x13c,	600000000, mux_pllp_plld_pllc_clkm,	MUX), /* scales with voltage and process_id */
+=======
 	PERIPH_CLK("disp1",	"tegradc.0",		NULL,	27,	0x138,	600000000, mux_pllp_plld_pllc_clkm,	MUX | DIV_U71), /* scales with voltage and process_id */
 	PERIPH_CLK("disp2",	"tegradc.1",		NULL,	26,	0x13c,	600000000, mux_pllp_plld_pllc_clkm,	MUX | DIV_U71), /* scales with voltage and process_id */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PERIPH_CLK("usbd",	"fsl-tegra-udc",	NULL,	22,	0,	480000000, mux_clk_m,			0), /* requires min voltage */
 	PERIPH_CLK("usb2",	"tegra-ehci.1",		NULL,	58,	0,	480000000, mux_clk_m,			0), /* requires min voltage */
 	PERIPH_CLK("usb3",	"tegra-ehci.2",		NULL,	59,	0,	480000000, mux_clk_m,			0), /* requires min voltage */
@@ -2367,8 +2478,12 @@ struct clk tegra_list_clks[] = {
 <<<<<<< HEAD
 static struct clk_duplicate tegra_clk_duplicates[] = {
 =======
+<<<<<<< HEAD
+static struct clk_duplicate tegra_clk_duplicates[] = {
+=======
 struct clk_duplicate tegra_clk_duplicates[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK_DUPLICATE("uarta",	"tegra_uart.0",	NULL),
 	CLK_DUPLICATE("uartb",	"tegra_uart.1",	NULL),
 	CLK_DUPLICATE("uartc",	"tegra_uart.2",	NULL),
@@ -2402,8 +2517,12 @@ struct clk_duplicate tegra_clk_duplicates[] = {
 <<<<<<< HEAD
 static struct clk *tegra_ptr_clks[] = {
 =======
+<<<<<<< HEAD
+static struct clk *tegra_ptr_clks[] = {
+=======
 struct clk *tegra_ptr_clks[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&tegra_clk_32k,
 	&tegra_pll_s,
 	&tegra_clk_m,

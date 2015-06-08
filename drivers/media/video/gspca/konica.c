@@ -28,6 +28,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "konica"
 
 #include <linux/input.h>
@@ -200,7 +208,15 @@ static void reg_w(struct gspca_dev *gspca_dev, u16 value, u16 index)
 			0,
 			1000);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_w err %d\n", ret);
+=======
 		err("reg_w err %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_w err %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -221,7 +237,15 @@ static void reg_r(struct gspca_dev *gspca_dev, u16 value, u16 index)
 			2,
 			1000);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_w err %d\n", ret);
+=======
 		err("reg_w err %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_w err %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -245,9 +269,18 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	gspca_dev->cam.cam_mode = vga_mode;
 	gspca_dev->cam.nmodes = ARRAY_SIZE(vga_mode);
 	gspca_dev->cam.no_urb_create = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* The highest alt setting has an isoc packetsize of 0, so we
 	   don't want to use it */
 	gspca_dev->nbalt--;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* The highest alt setting has an isoc packetsize of 0, so we
+	   don't want to use it */
+	gspca_dev->nbalt--;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sd->brightness  = BRIGHTNESS_DEFAULT;
 	sd->contrast    = CONTRAST_DEFAULT;
@@ -284,7 +317,15 @@ static int sd_start(struct gspca_dev *gspca_dev)
 	intf = usb_ifnum_to_if(sd->gspca_dev.dev, sd->gspca_dev.iface);
 	alt = usb_altnum_to_altsetting(intf, sd->gspca_dev.alt);
 	if (!alt) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Couldn't get altsetting\n");
+=======
 		err("Couldn't get altsetting");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Couldn't get altsetting");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -315,7 +356,15 @@ static int sd_start(struct gspca_dev *gspca_dev)
 			le16_to_cpu(alt->endpoint[i].desc.wMaxPacketSize);
 		urb = usb_alloc_urb(SD_NPKT, GFP_KERNEL);
 		if (!urb) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("usb_alloc_urb failed\n");
+=======
 			err("usb_alloc_urb failed");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("usb_alloc_urb failed");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 		}
 		gspca_dev->urb[n] = urb;
@@ -324,7 +373,15 @@ static int sd_start(struct gspca_dev *gspca_dev)
 						GFP_KERNEL,
 						&urb->transfer_dma);
 		if (urb->transfer_buffer == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("usb_buffer_alloc failed\n");
+=======
 			err("usb_buffer_alloc failed");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("usb_buffer_alloc failed");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 		}
 
@@ -386,7 +443,15 @@ static void sd_isoc_irq(struct urb *urb)
 		PDEBUG(D_ERR, "urb status: %d", urb->status);
 		st = usb_submit_urb(urb, GFP_ATOMIC);
 		if (st < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("resubmit urb error %d\n", st);
+=======
 			err("resubmit urb error %d", st);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("resubmit urb error %d", st);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -477,7 +542,15 @@ resubmit:
 	}
 	st = usb_submit_urb(status_urb, GFP_ATOMIC);
 	if (st < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("usb_submit_urb(status_urb) ret %d\n", st);
+=======
 		err("usb_submit_urb(status_urb) ret %d", st);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("usb_submit_urb(status_urb) ret %d", st);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int sd_setbrightness(struct gspca_dev *gspca_dev, __s32 val)
@@ -632,6 +705,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -644,3 +723,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

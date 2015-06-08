@@ -37,13 +37,20 @@ static struct snd_soc_card snd_soc_simone = {
 <<<<<<< HEAD
 	.owner		= THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner		= THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link	= &simone_dai,
 	.num_links	= 1,
 };
 
 static struct platform_device *simone_snd_ac97_device;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __devinit simone_probe(struct platform_device *pdev)
 {
@@ -87,6 +94,8 @@ static struct platform_driver simone_driver = {
 };
 
 module_platform_driver(simone_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *simone_snd_device;
 
@@ -135,6 +144,7 @@ static void __exit simone_exit(void)
 }
 module_exit(simone_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("ALSA SoC Simplemachines Sim.One");
 MODULE_AUTHOR("Mika Westerberg <mika.westerberg@iki.fi>");
@@ -142,4 +152,8 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:simone-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:simone-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

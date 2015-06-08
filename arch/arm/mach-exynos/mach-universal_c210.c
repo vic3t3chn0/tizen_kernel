@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* linux/arch/arm/mach-exynos4/mach-universal_c210.c
 =======
+<<<<<<< HEAD
+/* linux/arch/arm/mach-exynos4/mach-universal_c210.c
+=======
 /* linux/arch/arm/mach-exynos/mach-universal_c210.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2010 Samsung Electronics Co., Ltd.
  *
@@ -21,13 +25,21 @@
 #include <linux/interrupt.h>
 #include <linux/fb.h>
 =======
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+#include <linux/fb.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mfd/max8998.h>
 #include <linux/regulator/machine.h>
 #include <linux/regulator/fixed.h>
 #include <linux/regulator/max8952.h>
 #include <linux/mmc/host.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/i2c-gpio.h>
 #include <linux/i2c/mcs.h>
 #include <linux/i2c/atmel_mxt_ts.h>
@@ -61,6 +73,8 @@
 
 #include "common.h"
 
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/mach/arch.h>
@@ -76,6 +90,7 @@
 #include <mach/map.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Following are default values for UCON, ULCON and UFCON UART registers */
 #define UNIVERSAL_UCON_DEFAULT	(S3C2410_UCON_TXILEVEL |	\
 				 S3C2410_UCON_RXILEVEL |	\
@@ -121,8 +136,12 @@ static struct regulator_consumer_supply max8952_consumer =
 <<<<<<< HEAD
 	REGULATOR_SUPPLY("vdd_arm", NULL);
 =======
+<<<<<<< HEAD
+	REGULATOR_SUPPLY("vdd_arm", NULL);
+=======
 	REGULATOR_SUPPLY("vddarm", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct max8952_platform_data universal_max8952_pdata __initdata = {
 	.gpio_vid0	= EXYNOS4_GPX0(3),
@@ -151,20 +170,30 @@ static struct regulator_consumer_supply lp3974_buck1_consumer =
 <<<<<<< HEAD
 	REGULATOR_SUPPLY("vdd_int", NULL);
 =======
+<<<<<<< HEAD
+	REGULATOR_SUPPLY("vdd_int", NULL);
+=======
 	REGULATOR_SUPPLY("vddint", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct regulator_consumer_supply lp3974_buck2_consumer =
 	REGULATOR_SUPPLY("vddg3d", NULL);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply lp3974_buck3_consumer[] = {
 	REGULATOR_SUPPLY("vdet", "s5p-sdo"),
 	REGULATOR_SUPPLY("vdd_reg", "0-003c"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data lp3974_buck1_data = {
 	.constraints	= {
 		.name		= "VINT_1.1V",
@@ -212,7 +241,12 @@ static struct regulator_init_data lp3974_buck3_data = {
 	.num_consumer_supplies = ARRAY_SIZE(lp3974_buck3_consumer),
 	.consumer_supplies = lp3974_buck3_consumer,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies = ARRAY_SIZE(lp3974_buck3_consumer),
+	.consumer_supplies = lp3974_buck3_consumer,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_buck4_data = {
@@ -242,14 +276,20 @@ static struct regulator_init_data lp3974_ldo2_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply lp3974_ldo3_consumer[] = {
 	REGULATOR_SUPPLY("vdd", "exynos4-hdmi"),
 	REGULATOR_SUPPLY("vdd_pll", "exynos4-hdmi"),
 	REGULATOR_SUPPLY("vdd11", "s5p-mipi-csis.0"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data lp3974_ldo3_data = {
 	.constraints	= {
 		.name		= "VUSB+MIPI_1.1V",
@@ -262,14 +302,20 @@ static struct regulator_init_data lp3974_ldo3_data = {
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies = ARRAY_SIZE(lp3974_ldo3_consumer),
 	.consumer_supplies = lp3974_ldo3_consumer,
 };
 
 static struct regulator_consumer_supply lp3974_ldo4_consumer[] = {
 	REGULATOR_SUPPLY("vdd_osc", "exynos4-hdmi"),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_ldo4_data = {
@@ -287,7 +333,12 @@ static struct regulator_init_data lp3974_ldo4_data = {
 	.num_consumer_supplies = ARRAY_SIZE(lp3974_ldo4_consumer),
 	.consumer_supplies = lp3974_ldo4_consumer,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies = ARRAY_SIZE(lp3974_ldo4_consumer),
+	.consumer_supplies = lp3974_ldo4_consumer,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_ldo5_data = {
@@ -317,12 +368,18 @@ static struct regulator_init_data lp3974_ldo6_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply lp3974_ldo7_consumer[] = {
 	REGULATOR_SUPPLY("vdd18", "s5p-mipi-csis.0"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data lp3974_ldo7_data = {
 	.constraints	= {
 		.name		= "VLCD+VMIPI_1.8V",
@@ -335,14 +392,20 @@ static struct regulator_init_data lp3974_ldo7_data = {
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies	= ARRAY_SIZE(lp3974_ldo7_consumer),
 	.consumer_supplies	= lp3974_ldo7_consumer,
 };
 
 static struct regulator_consumer_supply lp3974_ldo8_consumer[] = {
 	REGULATOR_SUPPLY("vdd33a_dac", "s5p-sdo"),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_ldo8_data = {
@@ -357,6 +420,9 @@ static struct regulator_init_data lp3974_ldo8_data = {
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies = ARRAY_SIZE(lp3974_ldo8_consumer),
 	.consumer_supplies = lp3974_ldo8_consumer,
 };
@@ -364,10 +430,13 @@ static struct regulator_init_data lp3974_ldo8_data = {
 static struct regulator_consumer_supply lp3974_ldo9_consumer =
 	REGULATOR_SUPPLY("vddio", "0-003c");
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data lp3974_ldo9_data = {
 	.constraints	= {
 		.name		= "VCC_2.8V",
@@ -383,7 +452,12 @@ static struct regulator_init_data lp3974_ldo9_data = {
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &lp3974_ldo9_consumer,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= 1,
+	.consumer_supplies	= &lp3974_ldo9_consumer,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_ldo10_data = {
@@ -405,7 +479,13 @@ static struct regulator_consumer_supply lp3974_ldo11_consumer =
 	REGULATOR_SUPPLY("dig_28", "0-001f");
 
 =======
+<<<<<<< HEAD
+static struct regulator_consumer_supply lp3974_ldo11_consumer =
+	REGULATOR_SUPPLY("dig_28", "0-001f");
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data lp3974_ldo11_data = {
 	.constraints	= {
 		.name		= "CAM_AF_3.3V",
@@ -421,7 +501,12 @@ static struct regulator_init_data lp3974_ldo11_data = {
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &lp3974_ldo11_consumer,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= 1,
+	.consumer_supplies	= &lp3974_ldo11_consumer,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_ldo12_data = {
@@ -455,7 +540,13 @@ static struct regulator_consumer_supply lp3974_ldo14_consumer =
 	REGULATOR_SUPPLY("dig_18", "0-001f");
 
 =======
+<<<<<<< HEAD
+static struct regulator_consumer_supply lp3974_ldo14_consumer =
+	REGULATOR_SUPPLY("dig_18", "0-001f");
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data lp3974_ldo14_data = {
 	.constraints	= {
 		.name		= "CAM_I_HOST_1.8V",
@@ -468,6 +559,9 @@ static struct regulator_init_data lp3974_ldo14_data = {
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &lp3974_ldo14_consumer,
 };
@@ -476,10 +570,13 @@ static struct regulator_init_data lp3974_ldo14_data = {
 static struct regulator_consumer_supply lp3974_ldo15_consumer =
 	REGULATOR_SUPPLY("dig_12", "0-001f");
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data lp3974_ldo15_data = {
 	.constraints	= {
 		.name		= "CAM_S_DIG+FM33_CORE_1.2V",
@@ -492,6 +589,9 @@ static struct regulator_init_data lp3974_ldo15_data = {
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &lp3974_ldo15_consumer,
 };
@@ -499,8 +599,11 @@ static struct regulator_init_data lp3974_ldo15_data = {
 static struct regulator_consumer_supply lp3974_ldo16_consumer[] = {
 	REGULATOR_SUPPLY("vdda", "0-003c"),
 	REGULATOR_SUPPLY("a_sensor", "0-001f"),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_ldo16_data = {
@@ -518,7 +621,12 @@ static struct regulator_init_data lp3974_ldo16_data = {
 	.num_consumer_supplies	= ARRAY_SIZE(lp3974_ldo16_consumer),
 	.consumer_supplies	= lp3974_ldo16_consumer,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(lp3974_ldo16_consumer),
+	.consumer_supplies	= lp3974_ldo16_consumer,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data lp3974_ldo17_data = {
@@ -630,6 +738,9 @@ static struct max8998_platform_data universal_lp3974_pdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum fixed_regulator_id {
 	FIXED_REG_ID_MMC0,
@@ -667,8 +778,11 @@ static struct platform_device hdmi_fixed_voltage = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* GPIO I2C 5 (PMIC) */
 static struct i2c_board_info i2c5_devs[] __initdata = {
 	{
@@ -681,6 +795,9 @@ static struct i2c_board_info i2c5_devs[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* I2C3 (TSP) */
 static struct mxt_platform_data qt602240_platform_data = {
 	.x_line		= 19,
@@ -775,8 +892,11 @@ static struct s3c2410_platform_i2c universal_i2c0_platdata __initdata = {
 	.sda_delay	= 200,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* GPIO KEYS */
 static struct gpio_keys_button universal_gpio_keys_tables[] = {
 	{
@@ -837,9 +957,14 @@ static struct s3c_sdhci_platdata universal_hsmmc0_data __initdata = {
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED),
 	.host_caps2		= MMC_CAP2_BROKEN_VOLTAGE,
 =======
+<<<<<<< HEAD
+				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED),
+	.host_caps2		= MMC_CAP2_BROKEN_VOLTAGE,
+=======
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED |
 				MMC_CAP_DISABLE),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.cd_type		= S3C_SDHCI_CD_PERMANENT,
 	.clk_type		= S3C_SDHCI_CLK_DIV_EXTERNAL,
 };
@@ -848,8 +973,12 @@ static struct regulator_consumer_supply mmc0_supplies[] = {
 <<<<<<< HEAD
 	REGULATOR_SUPPLY("vmmc", "exynos4-sdhci.0"),
 =======
+<<<<<<< HEAD
+	REGULATOR_SUPPLY("vmmc", "exynos4-sdhci.0"),
+=======
 	REGULATOR_SUPPLY("vmmc", "s3c-sdhci.0"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct regulator_init_data mmc0_fixed_voltage_init_data = {
@@ -874,8 +1003,12 @@ static struct platform_device mmc0_fixed_voltage = {
 <<<<<<< HEAD
 	.id			= FIXED_REG_ID_MMC0,
 =======
+<<<<<<< HEAD
+	.id			= FIXED_REG_ID_MMC0,
+=======
 	.id			= 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dev			= {
 		.platform_data	= &mmc0_fixed_voltage_config,
 	},
@@ -888,9 +1021,13 @@ static struct s3c_sdhci_platdata universal_hsmmc2_data __initdata = {
 <<<<<<< HEAD
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED,
 =======
+<<<<<<< HEAD
+				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED,
+=======
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED |
 				MMC_CAP_DISABLE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ext_cd_gpio		= EXYNOS4_GPX3(4),      /* XEINT_28 */
 	.ext_cd_gpio_invert	= 1,
 	.cd_type		= S3C_SDHCI_CD_GPIO,
@@ -904,9 +1041,13 @@ static struct s3c_sdhci_platdata universal_hsmmc3_data __initdata = {
 <<<<<<< HEAD
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED,
 =======
+<<<<<<< HEAD
+				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED,
+=======
 				MMC_CAP_MMC_HIGHSPEED | MMC_CAP_SD_HIGHSPEED |
 				MMC_CAP_DISABLE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.cd_type		= S3C_SDHCI_CD_EXTERNAL,
 };
 
@@ -919,18 +1060,24 @@ static void __init universal_sdhci_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* I2C0 */
 static struct i2c_board_info i2c0_devs[] __initdata = {
 	/* Camera, To be updated */
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* I2C1 */
 static struct i2c_board_info i2c1_devs[] __initdata = {
 	/* Gyro, To be updated */
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Frame Buffer */
 static struct s3c_fb_pd_win universal_fb_win0 = {
 	.win_mode = {
@@ -1148,15 +1295,21 @@ static struct platform_device *universal_devices[] __initdata = {
 	&s5p_device_fimc2,
 	&s5p_device_fimc3,
 	&s5p_device_g2d,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *universal_devices[] __initdata = {
 	/* Samsung Platform Devices */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&mmc0_fixed_voltage,
 	&s3c_device_hsmmc0,
 	&s3c_device_hsmmc2,
 	&s3c_device_hsmmc3,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&s3c_device_i2c0,
 	&s3c_device_i2c3,
 	&s3c_device_i2c5,
@@ -1179,17 +1332,23 @@ static struct platform_device *universal_devices[] __initdata = {
 	&cam_i_core_fixed_reg_dev,
 	&cam_s_if_fixed_reg_dev,
 	&s5p_device_fimc_md,
+<<<<<<< HEAD
+=======
 =======
 	&s3c_device_i2c5,
 	/* Universal Devices */
 	&universal_gpio_keys,
 	&s5p_device_onenand,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init universal_map_io(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clk_xusbxti.rate = 24000000;
 	exynos_init_io(NULL, 0);
 	s3c24xx_init_clocks(24000000);
@@ -1208,17 +1367,23 @@ static void s5p_tv_setup(void)
 static void __init universal_reserve(void)
 {
 	s5p_mfc_reserve_mem(0x43000000, 8 << 20, 0x51000000, 8 << 20);
+<<<<<<< HEAD
+=======
 =======
 	s5p_init_io(NULL, 0, S5P_VA_CHIPID);
 	s3c24xx_init_clocks(24000000);
 	s3c24xx_init_uarts(universal_uartcfgs, ARRAY_SIZE(universal_uartcfgs));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init universal_machine_init(void)
 {
 	universal_sdhci_init();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s5p_tv_setup();
 
 	s3c_i2c0_set_platdata(&universal_i2c0_platdata);
@@ -1240,6 +1405,8 @@ static void __init universal_machine_init(void)
 
 	universal_camera_init();
 
+<<<<<<< HEAD
+=======
 =======
 
 	i2c_register_board_info(0, i2c0_devs, ARRAY_SIZE(i2c0_devs));
@@ -1249,6 +1416,7 @@ static void __init universal_machine_init(void)
 	i2c_register_board_info(5, i2c5_devs, ARRAY_SIZE(i2c5_devs));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Last */
 	platform_add_devices(universal_devices, ARRAY_SIZE(universal_devices));
 }
@@ -1256,6 +1424,9 @@ static void __init universal_machine_init(void)
 MACHINE_START(UNIVERSAL_C210, "UNIVERSAL_C210")
 	/* Maintainer: Kyungmin Park <kyungmin.park@samsung.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_irq	= exynos4_init_irq,
 	.map_io		= universal_map_io,
@@ -1264,6 +1435,8 @@ MACHINE_START(UNIVERSAL_C210, "UNIVERSAL_C210")
 	.timer		= &s5p_timer,
 	.reserve        = &universal_reserve,
 	.restart	= exynos4_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= S5P_PA_SDRAM + 0x100,
 	.init_irq	= exynos4_init_irq,
@@ -1271,4 +1444,5 @@ MACHINE_START(UNIVERSAL_C210, "UNIVERSAL_C210")
 	.init_machine	= universal_machine_init,
 	.timer		= &exynos4_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

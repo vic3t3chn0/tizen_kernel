@@ -92,6 +92,9 @@ cifs_idmap_shrinker(struct shrinker *shrink, struct shrink_control *sc)
 	spin_unlock(&sidgidlock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	root = &siduidtree;
 	spin_lock(&uidsidlock);
 	shrink_idmap_tree(root, nr_to_scan, &nr_rem, &nr_del);
@@ -162,11 +165,14 @@ sid_rb_search(struct rb_root *root, unsigned long cid)
 	return NULL;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	return nr_rem;
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct shrinker cifs_shrinker = {
 	.shrink = cifs_idmap_shrinker,
 	.seeks = DEFAULT_SEEKS,
@@ -186,7 +192,11 @@ cifs_idmap_key_instantiate(struct key *key, const void *data, size_t datalen)
 <<<<<<< HEAD
 	key->datalen = datalen;
 =======
+<<<<<<< HEAD
+	key->datalen = datalen;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -302,6 +312,9 @@ sidid_pending_wait(void *unused)
 
 static int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 id_to_sid(unsigned long cid, uint sidtype, struct cifs_sid *ssid)
 {
 	int rc = 0;
@@ -416,8 +429,11 @@ id_sid_out:
 }
 
 static int
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sid_to_id(struct cifs_sb_info *cifs_sb, struct cifs_sid *psid,
 		struct cifs_fattr *fattr, uint sidtype)
 {
@@ -571,7 +587,11 @@ init_cifs_idmap(void)
 <<<<<<< HEAD
 	set_bit(KEY_FLAG_ROOT_CAN_CLEAR, &keyring->flags);
 =======
+<<<<<<< HEAD
+	set_bit(KEY_FLAG_ROOT_CAN_CLEAR, &keyring->flags);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cred->thread_keyring = keyring;
 	cred->jit_keyring = KEY_REQKEY_DEFL_THREAD_KEYRING;
 	root_cred = cred;
@@ -582,12 +602,18 @@ init_cifs_idmap(void)
 	gidtree = RB_ROOT;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_init(&uidsidlock);
 	siduidtree = RB_ROOT;
 	spin_lock_init(&gidsidlock);
 	sidgidtree = RB_ROOT;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	register_shrinker(&cifs_shrinker);
 
 	cFYI(1, "cifs idmap keyring: %d\n", key_serial(keyring));
@@ -628,6 +654,9 @@ cifs_destroy_idmaptrees(void)
 		rb_erase(node, root);
 	spin_unlock(&sidgidlock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	root = &siduidtree;
 	spin_lock(&uidsidlock);
@@ -640,8 +669,11 @@ cifs_destroy_idmaptrees(void)
 	while ((node = rb_first(root)))
 		rb_erase(node, root);
 	spin_unlock(&gidsidlock);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* if the two SIDs (roughly equivalent to a UUID for a user or group) are
@@ -929,8 +961,12 @@ static void parse_dacl(struct cifs_acl *pdacl, char *end_of_acl,
 <<<<<<< HEAD
 	if (num_aces > 0) {
 =======
+<<<<<<< HEAD
+	if (num_aces > 0) {
+=======
 	if (num_aces  > 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		umode_t user_mask = S_IRWXU;
 		umode_t group_mask = S_IRWXG;
 		umode_t other_mask = S_IRWXU | S_IRWXG | S_IRWXO;
@@ -939,7 +975,12 @@ static void parse_dacl(struct cifs_acl *pdacl, char *end_of_acl,
 		if (num_aces > ULONG_MAX / sizeof(struct cifs_ace *))
 			return;
 =======
+<<<<<<< HEAD
+		if (num_aces > ULONG_MAX / sizeof(struct cifs_ace *))
+			return;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ppace = kmalloc(num_aces * sizeof(struct cifs_ace *),
 				GFP_KERNEL);
 		if (!ppace) {
@@ -1098,12 +1139,17 @@ static int parse_sec_desc(struct cifs_sb_info *cifs_sb,
 		cFYI(1, "no ACL"); /* BB grant all or default perms? */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
 /* Convert permission bits from mode to equivalent CIFS ACL */
 static int build_sec_desc(struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 	__u32 secdesclen, __u64 nmode, uid_t uid, gid_t gid, int *aclflag)
+<<<<<<< HEAD
+=======
 =======
 /*	cifscred->uid = owner_sid_ptr->rid;
 	cifscred->gid = group_sid_ptr->rid;
@@ -1120,6 +1166,7 @@ static int build_sec_desc(struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 static int build_sec_desc(struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 				struct inode *inode, __u64 nmode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc = 0;
 	__u32 dacloffset;
@@ -1127,6 +1174,9 @@ static int build_sec_desc(struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 	__u32 sidsoffset;
 	struct cifs_sid *owner_sid_ptr, *group_sid_ptr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cifs_sid *nowner_sid_ptr, *ngroup_sid_ptr;
 	struct cifs_acl *dacl_ptr = NULL;  /* no need for SACL ptr */
 	struct cifs_acl *ndacl_ptr = NULL; /* no need for SACL ptr */
@@ -1191,6 +1241,8 @@ static int build_sec_desc(struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 			*aclflag = CIFS_ACL_GROUP;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct cifs_acl *dacl_ptr = NULL;  /* no need for SACL ptr */
 	struct cifs_acl *ndacl_ptr = NULL; /* no need for SACL ptr */
@@ -1219,6 +1271,7 @@ static int build_sec_desc(struct cifs_ntsd *pntsd, struct cifs_ntsd *pnntsd,
 	/* copy security descriptor control portion and owner and group sid */
 	copy_sec_desc(pntsd, pnntsd, sidsoffset);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return rc;
 }
@@ -1253,8 +1306,12 @@ static struct cifs_ntsd *get_cifs_acl_by_path(struct cifs_sb_info *cifs_sb,
 <<<<<<< HEAD
 	int xid, rc, create_options = 0;
 =======
+<<<<<<< HEAD
+	int xid, rc, create_options = 0;
+=======
 	int xid, rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u16 fid;
 	struct cifs_tcon *tcon;
 	struct tcon_link *tlink = cifs_sb_tlink(cifs_sb);
@@ -1266,17 +1323,23 @@ static struct cifs_ntsd *get_cifs_acl_by_path(struct cifs_sb_info *cifs_sb,
 	xid = GetXid();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (backup_cred(cifs_sb))
 		create_options |= CREATE_OPEN_BACKUP_INTENT;
 
 	rc = CIFSSMBOpen(xid, tcon, path, FILE_OPEN, READ_CONTROL,
 			create_options, &fid, &oplock, NULL, cifs_sb->local_nls,
 			cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MAP_SPECIAL_CHR);
+<<<<<<< HEAD
+=======
 =======
 	rc = CIFSSMBOpen(xid, tcon, path, FILE_OPEN, READ_CONTROL, 0,
 			 &fid, &oplock, NULL, cifs_sb->local_nls,
 			 cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MAP_SPECIAL_CHR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rc) {
 		rc = CIFSSMBGetCIFSACL(xid, tcon, fid, &pntsd, pacllen);
 		CIFSSMBClose(xid, tcon, fid);
@@ -1310,6 +1373,9 @@ struct cifs_ntsd *get_cifs_acl(struct cifs_sb_info *cifs_sb,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  /* Set an ACL on the server */
 int set_cifs_acl(struct cifs_ntsd *pnntsd, __u32 acllen,
 			struct inode *inode, const char *path, int aclflag)
@@ -1319,6 +1385,8 @@ int set_cifs_acl(struct cifs_ntsd *pnntsd, __u32 acllen,
 	__u16 fid;
 	struct cifs_tcon *tcon;
 	struct cifs_sb_info *cifs_sb = CIFS_SB(inode->i_sb);
+<<<<<<< HEAD
+=======
 =======
 static int set_cifs_acl_by_fid(struct cifs_sb_info *cifs_sb, __u16 fid,
 		struct cifs_ntsd *pnntsd, u32 acllen)
@@ -1346,6 +1414,7 @@ static int set_cifs_acl_by_path(struct cifs_sb_info *cifs_sb, const char *path,
 	__u16 fid;
 	struct cifs_tcon *tcon;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tcon_link *tlink = cifs_sb_tlink(cifs_sb);
 
 	if (IS_ERR(tlink))
@@ -1355,6 +1424,9 @@ static int set_cifs_acl_by_path(struct cifs_sb_info *cifs_sb, const char *path,
 	xid = GetXid();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (backup_cred(cifs_sb))
 		create_options |= CREATE_OPEN_BACKUP_INTENT;
 
@@ -1366,11 +1438,14 @@ static int set_cifs_acl_by_path(struct cifs_sb_info *cifs_sb, const char *path,
 	rc = CIFSSMBOpen(xid, tcon, path, FILE_OPEN, access_flags,
 			create_options, &fid, &oplock, NULL, cifs_sb->local_nls,
 			cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MAP_SPECIAL_CHR);
+<<<<<<< HEAD
+=======
 =======
 	rc = CIFSSMBOpen(xid, tcon, path, FILE_OPEN, WRITE_DAC, 0,
 			 &fid, &oplock, NULL, cifs_sb->local_nls,
 			 cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MAP_SPECIAL_CHR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc) {
 		cERROR(1, "Unable to open file to set ACL");
 		goto out;
@@ -1379,8 +1454,12 @@ static int set_cifs_acl_by_path(struct cifs_sb_info *cifs_sb, const char *path,
 <<<<<<< HEAD
 	rc = CIFSSMBSetCIFSACL(xid, tcon, fid, pnntsd, acllen, aclflag);
 =======
+<<<<<<< HEAD
+	rc = CIFSSMBSetCIFSACL(xid, tcon, fid, pnntsd, acllen, aclflag);
+=======
 	rc = CIFSSMBSetCIFSACL(xid, tcon, fid, pnntsd, acllen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cFYI(DBG2, "SetCIFSACL rc = %d", rc);
 
 	CIFSSMBClose(xid, tcon, fid);
@@ -1390,6 +1469,8 @@ out:
 	return rc;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Set an ACL on the server */
@@ -1412,6 +1493,7 @@ int set_cifs_acl(struct cifs_ntsd *pnntsd, __u32 acllen,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Translate the CIFS ACL (simlar to NTFS ACL) for a file into mode bits */
 int
 cifs_acl_to_fattr(struct cifs_sb_info *cifs_sb, struct cifs_fattr *fattr,
@@ -1444,17 +1526,23 @@ cifs_acl_to_fattr(struct cifs_sb_info *cifs_sb, struct cifs_fattr *fattr,
 
 /* Convert mode bits to an ACL so we can update the ACL on the server */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 id_mode_to_cifs_acl(struct inode *inode, const char *path, __u64 nmode,
 			uid_t uid, gid_t gid)
 {
 	int rc = 0;
 	int aclflag = CIFS_ACL_DACL; /* default flag to set */
+<<<<<<< HEAD
+=======
 =======
 int mode_to_cifs_acl(struct inode *inode, const char *path, __u64 nmode)
 {
 	int rc = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32 secdesclen = 0;
 	struct cifs_ntsd *pntsd = NULL; /* acl obtained from server */
 	struct cifs_ntsd *pnntsd = NULL; /* modified acl to be sent to server */
@@ -1488,8 +1576,13 @@ int mode_to_cifs_acl(struct inode *inode, const char *path, __u64 nmode)
 		rc = build_sec_desc(pntsd, pnntsd, secdesclen, nmode, uid, gid,
 					&aclflag);
 =======
+<<<<<<< HEAD
+		rc = build_sec_desc(pntsd, pnntsd, secdesclen, nmode, uid, gid,
+					&aclflag);
+=======
 		rc = build_sec_desc(pntsd, pnntsd, inode, nmode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		cFYI(DBG2, "build_sec_desc rc: %d", rc);
 
@@ -1499,8 +1592,13 @@ int mode_to_cifs_acl(struct inode *inode, const char *path, __u64 nmode)
 			rc = set_cifs_acl(pnntsd, secdesclen, inode,
 						path, aclflag);
 =======
+<<<<<<< HEAD
+			rc = set_cifs_acl(pnntsd, secdesclen, inode,
+						path, aclflag);
+=======
 			rc = set_cifs_acl(pnntsd, secdesclen, inode, path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cFYI(DBG2, "set_cifs_acl rc: %d", rc);
 		}
 

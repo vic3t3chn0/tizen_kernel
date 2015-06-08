@@ -330,10 +330,15 @@ static inline void pfx##write##bwlq(type val,				\
 			"dsll32	%M0, %M0, 0"			"\n\t"	\
 			"or	%L0, %L0, %M0"			"\n\t"	\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"sd	%L0, %2"			"\n\t"	\
 			".set	mips0"				"\n"	\
 			: "=r" (__tmp)					\
 			: "0" (__val), "m" (*__mem));			\
+<<<<<<< HEAD
+=======
 =======
 			".set	push"				"\n\t"	\
 			".set	noreorder"			"\n\t"	\
@@ -344,6 +349,7 @@ static inline void pfx##write##bwlq(type val,				\
 			: "=r" (__tmp)					\
 			: "0" (__val), "R" (*__mem));			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (irq)						\
 			local_irq_restore(__flags);			\
 	} else								\
@@ -369,12 +375,16 @@ static inline type pfx##read##bwlq(const volatile void __iomem *mem)	\
 <<<<<<< HEAD
 			"ld	%L0, %1"			"\n\t"	\
 =======
+<<<<<<< HEAD
+			"ld	%L0, %1"			"\n\t"	\
+=======
 			".set	push"				"\n\t"	\
 			".set	noreorder"			"\n\t"	\
 			".set	nomacro"			"\n\t"	\
 			"ld	%L0, %1"			"\n\t"	\
 			".set	pop"				"\n\t"	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"dsra32	%M0, %L0, 0"			"\n\t"	\
 			"sll	%L0, %L0, 0"			"\n\t"	\
 			".set	mips0"				"\n"	\
@@ -382,8 +392,12 @@ static inline type pfx##read##bwlq(const volatile void __iomem *mem)	\
 <<<<<<< HEAD
 			: "m" (*__mem));				\
 =======
+<<<<<<< HEAD
+			: "m" (*__mem));				\
+=======
 			: "R" (*__mem));				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (irq)						\
 			local_irq_restore(__flags);			\
 	} else {							\

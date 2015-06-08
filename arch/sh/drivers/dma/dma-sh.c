@@ -98,8 +98,12 @@ static int sh_dmac_request_dma(struct dma_channel *chan)
 <<<<<<< HEAD
 				0,
 =======
+<<<<<<< HEAD
+				0,
+=======
 				IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 				chan->dev_id, chan);
 }
@@ -312,8 +316,12 @@ static int __init sh_dmac_init(void)
 <<<<<<< HEAD
 				0,
 =======
+<<<<<<< HEAD
+				0,
+=======
 				IRQF_DISABLED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 				dmae_name[n], (void *)dmae_name[n]);
 		if (unlikely(i < 0)) {

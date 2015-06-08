@@ -174,8 +174,12 @@ SYSCALL_SPU(poll)
 <<<<<<< HEAD
 SYSCALL(ni_syscall)
 =======
+<<<<<<< HEAD
+SYSCALL(ni_syscall)
+=======
 COMPAT_SYS(nfsservctl)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SYSCALL_SPU(setresgid)
 SYSCALL_SPU(getresgid)
 COMPAT_SYS_SPU(prctl)
@@ -362,4 +366,9 @@ SYSCALL_SPU(setns)
 COMPAT_SYS(process_vm_readv)
 COMPAT_SYS(process_vm_writev)
 =======
+<<<<<<< HEAD
+COMPAT_SYS(process_vm_readv)
+COMPAT_SYS(process_vm_writev)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

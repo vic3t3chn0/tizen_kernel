@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <asm/hardware/vic.h>
 =======
+<<<<<<< HEAD
+#include <asm/hardware/vic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 #include <asm/setup.h>
@@ -38,8 +42,11 @@
 #include <plat/regs-serial.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/s5pv210.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/devs.h>
 #include <plat/cpu.h>
 #include <plat/fb.h>
@@ -52,7 +59,12 @@
 #include "common.h"
 
 =======
+<<<<<<< HEAD
+#include "common.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Following are default values for UCON, ULCON and UFCON UART registers */
 #define AQUILA_UCON_DEFAULT	(S3C2410_UCON_TXILEVEL |	\
 				 S3C2410_UCON_RXILEVEL |	\
@@ -498,9 +510,14 @@ static struct wm8994_pdata wm8994_platform_data = {
 	.ldo[0]	= { S5PV210_MP03(6), &wm8994_ldo1_data },	/* XM0FRNB_2 */
 	.ldo[1]	= { 0, &wm8994_ldo2_data },
 =======
+<<<<<<< HEAD
+	.ldo[0]	= { S5PV210_MP03(6), &wm8994_ldo1_data },	/* XM0FRNB_2 */
+	.ldo[1]	= { 0, &wm8994_ldo2_data },
+=======
 	.ldo[0]	= { S5PV210_MP03(6), NULL, &wm8994_ldo1_data },	/* XM0FRNB_2 */
 	.ldo[1]	= { 0, NULL, &wm8994_ldo2_data },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* GPIO I2C PMIC */
@@ -615,9 +632,13 @@ static void aquila_setup_sdhci(void)
 <<<<<<< HEAD
 	gpio_request_one(AQUILA_EXT_FLASH_EN, GPIOF_OUT_INIT_HIGH, "FLASH_EN");
 =======
+<<<<<<< HEAD
+	gpio_request_one(AQUILA_EXT_FLASH_EN, GPIOF_OUT_INIT_HIGH, "FLASH_EN");
+=======
 	gpio_request(AQUILA_EXT_FLASH_EN, "FLASH_EN");
 	gpio_direction_output(AQUILA_EXT_FLASH_EN, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	s3c_sdhci0_set_platdata(&aquila_hsmmc0_data);
 	s3c_sdhci1_set_platdata(&aquila_hsmmc1_data);
@@ -639,7 +660,11 @@ static struct platform_device *aquila_devices[] __initdata = {
 <<<<<<< HEAD
 	&s5p_device_fimc_md,
 =======
+<<<<<<< HEAD
+	&s5p_device_fimc_md,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&s5pv210_device_iis0,
 	&wm8994_fixed_voltage0,
 	&wm8994_fixed_voltage1,
@@ -672,8 +697,12 @@ static void __init aquila_map_io(void)
 <<<<<<< HEAD
 	s5pv210_init_io(NULL, 0);
 =======
+<<<<<<< HEAD
+	s5pv210_init_io(NULL, 0);
+=======
 	s5p_init_io(NULL, 0, S5P_VA_CHIPID);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s3c24xx_init_clocks(24000000);
 	s3c24xx_init_uarts(aquila_uartcfgs, ARRAY_SIZE(aquila_uartcfgs));
 	s5p_set_timer_source(S5P_PWM3, S5P_PWM4);
@@ -708,6 +737,9 @@ MACHINE_START(AQUILA, "Aquila")
 	   Marek Szyprowski <m.szyprowski@samsung.com>
 	   Kyungmin Park <kyungmin.park@samsung.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_irq	= s5pv210_init_irq,
 	.handle_irq	= vic_handle_irq,
@@ -715,6 +747,8 @@ MACHINE_START(AQUILA, "Aquila")
 	.init_machine	= aquila_machine_init,
 	.timer		= &s5p_timer,
 	.restart	= s5pv210_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= S5P_PA_SDRAM + 0x100,
 	.init_irq	= s5pv210_init_irq,
@@ -722,4 +756,5 @@ MACHINE_START(AQUILA, "Aquila")
 	.init_machine	= aquila_machine_init,
 	.timer		= &s5p_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -273,9 +273,14 @@ void foo(void)
 	DEFINE(IA64_GTOD_SEQ_OFFSET,
 	       offsetof (struct fsyscall_gtod_data_t, seq));
 =======
+<<<<<<< HEAD
+	DEFINE(IA64_GTOD_SEQ_OFFSET,
+	       offsetof (struct fsyscall_gtod_data_t, seq));
+=======
 	DEFINE(IA64_GTOD_LOCK_OFFSET,
 		offsetof (struct fsyscall_gtod_data_t, lock));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEFINE(IA64_GTOD_WALL_TIME_OFFSET,
 		offsetof (struct fsyscall_gtod_data_t, wall_time));
 	DEFINE(IA64_GTOD_MONO_TIME_OFFSET,

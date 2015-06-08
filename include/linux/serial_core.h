@@ -50,8 +50,13 @@
 #define PORT_XR17D15X	21	/* Exar XR17D15x UART */
 #define PORT_MAX_8250	21	/* max port ID */
 =======
+<<<<<<< HEAD
+#define PORT_XR17D15X	21	/* Exar XR17D15x UART */
+#define PORT_MAX_8250	21	/* max port ID */
+=======
 #define PORT_MAX_8250	20	/* max port ID */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * ARM specific type numbers.  These are not currently guaranteed
@@ -212,14 +217,20 @@
 #define PORT_XUARTPS	98
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Atheros AR933X SoC */
 #define PORT_AR933X	99
 
 /* Energy Micro efm32 SoC */
 #define PORT_EFMUART   100
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __KERNEL__
 
 #include <linux/compiler.h>
@@ -318,7 +329,11 @@ struct uart_port {
 <<<<<<< HEAD
 	int			(*handle_irq)(struct uart_port *);
 =======
+<<<<<<< HEAD
+	int			(*handle_irq)(struct uart_port *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void			(*pm)(struct uart_port *, unsigned int state,
 				      unsigned int old);
 	unsigned int		irq;			/* irq number */
@@ -339,10 +354,14 @@ struct uart_port {
 <<<<<<< HEAD
 #define UPIO_RM9000		(6)			/* RM9000 type IO */
 =======
+<<<<<<< HEAD
+#define UPIO_RM9000		(6)			/* RM9000 type IO */
+=======
 #define UPIO_DWAPB		(6)			/* DesignWare APB UART */
 #define UPIO_RM9000		(7)			/* RM9000 type IO */
 #define UPIO_DWAPB32		(8)			/* DesignWare APB UART (32 bit accesses) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int		read_status_mask;	/* driver specific */
 	unsigned int		ignore_status_mask;	/* driver specific */
@@ -377,7 +396,12 @@ struct uart_port {
 #define UPF_EXAR_EFR		((__force upf_t) (1 << 25))
 #define UPF_BUG_THRE		((__force upf_t) (1 << 26))
 =======
+<<<<<<< HEAD
+#define UPF_EXAR_EFR		((__force upf_t) (1 << 25))
+#define UPF_BUG_THRE		((__force upf_t) (1 << 26))
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The exact UART type is known and should not be probed.  */
 #define UPF_FIXED_TYPE		((__force upf_t) (1 << 27))
 #define UPF_BOOT_AUTOCONF	((__force upf_t) (1 << 28))
@@ -404,6 +428,9 @@ struct uart_port {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int serial_port_in(struct uart_port *up, int offset)
 {
 	return up->serial_in(up, offset);
@@ -414,8 +441,11 @@ static inline void serial_port_out(struct uart_port *up, int offset, int value)
 	up->serial_out(up, offset, value);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This is the state information which is persistent across opens.
  */
@@ -427,8 +457,11 @@ struct uart_state {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct tasklet_struct	tlet;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct uart_port	*uart_port;
 };
 
@@ -528,6 +561,9 @@ static inline int uart_tx_stopped(struct uart_port *port)
  * The following are helper functions for the low level drivers.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void uart_handle_dcd_change(struct uart_port *uport,
 		unsigned int status);
@@ -541,12 +577,15 @@ extern void uart_insert_char(struct uart_port *port, unsigned int status,
 static inline int
 uart_handle_sysrq_char(struct uart_port *port, unsigned int ch)
 {
+<<<<<<< HEAD
+=======
 =======
 static inline int
 uart_handle_sysrq_char(struct uart_port *port, unsigned int ch)
 {
 #ifdef SUPPORT_SYSRQ
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (port->sysrq) {
 		if (ch && time_before(jiffies, port->sysrq)) {
 			handle_sysrq(ch);
@@ -556,10 +595,15 @@ uart_handle_sysrq_char(struct uart_port *port, unsigned int ch)
 		port->sysrq = 0;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 #else
 #define uart_handle_sysrq_char(port,ch) ({ (void)port; 0; })
+<<<<<<< HEAD
+=======
 =======
 #endif
 	return 0;
@@ -567,6 +611,7 @@ uart_handle_sysrq_char(struct uart_port *port, unsigned int ch)
 #ifndef SUPPORT_SYSRQ
 #define uart_handle_sysrq_char(port,ch) uart_handle_sysrq_char(port, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -589,6 +634,8 @@ static inline int uart_handle_break(struct uart_port *port)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /**
@@ -675,6 +722,7 @@ uart_insert_char(struct uart_port *port, unsigned int status,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	UART_ENABLE_MS - determine if port should enable modem status irqs
  */

@@ -1,6 +1,14 @@
 /* n2_core.c: Niagara2 Stream Processing Unit (SPU) crypto support.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2010, 2011 David S. Miller <davem@davemloft.net>
+=======
  * Copyright (C) 2010 David S. Miller <davem@davemloft.net>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2010 David S. Miller <davem@davemloft.net>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
@@ -31,8 +39,18 @@
 #include "n2_core.h"
 
 #define DRV_MODULE_NAME		"n2_crypto"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DRV_MODULE_VERSION	"0.2"
+#define DRV_MODULE_RELDATE	"July 28, 2011"
+=======
 #define DRV_MODULE_VERSION	"0.1"
 #define DRV_MODULE_RELDATE	"April 29, 2010"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define DRV_MODULE_VERSION	"0.1"
+#define DRV_MODULE_RELDATE	"April 29, 2010"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static char version[] __devinitdata =
 	DRV_MODULE_NAME ".c:v" DRV_MODULE_VERSION " (" DRV_MODULE_RELDATE ")\n";
@@ -1006,9 +1024,21 @@ static int n2_do_ecb(struct ablkcipher_request *req, bool encrypt)
 
 	spin_unlock_irqrestore(&qp->lock, flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+out:
+	put_cpu();
+
+=======
 	put_cpu();
 
 out:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	put_cpu();
+
+out:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n2_chunk_complete(req, NULL);
 	return err;
 }
@@ -1096,9 +1126,21 @@ static int n2_do_chaining(struct ablkcipher_request *req, bool encrypt)
 
 	spin_unlock_irqrestore(&qp->lock, flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+out:
+	put_cpu();
+
+=======
 	put_cpu();
 
 out:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	put_cpu();
+
+out:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	n2_chunk_complete(req, err ? NULL : final_iv_addr);
 	return err;
 }
@@ -1402,7 +1444,16 @@ static int __devinit __n2_register_one_cipher(const struct n2_cipher_tmpl *tmpl)
 	snprintf(alg->cra_name, CRYPTO_MAX_ALG_NAME, "%s", tmpl->name);
 	snprintf(alg->cra_driver_name, CRYPTO_MAX_ALG_NAME, "%s-n2", tmpl->drv_name);
 	alg->cra_priority = N2_CRA_PRIORITY;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	alg->cra_flags = CRYPTO_ALG_TYPE_ABLKCIPHER |
+			 CRYPTO_ALG_KERN_DRIVER_ONLY | CRYPTO_ALG_ASYNC;
+=======
 	alg->cra_flags = CRYPTO_ALG_TYPE_ABLKCIPHER | CRYPTO_ALG_ASYNC;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	alg->cra_flags = CRYPTO_ALG_TYPE_ABLKCIPHER | CRYPTO_ALG_ASYNC;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	alg->cra_blocksize = tmpl->block_size;
 	p->enc_type = tmpl->enc_type;
 	alg->cra_ctxsize = sizeof(struct n2_cipher_context);
@@ -1493,7 +1544,17 @@ static int __devinit __n2_register_one_ahash(const struct n2_hash_tmpl *tmpl)
 	snprintf(base->cra_name, CRYPTO_MAX_ALG_NAME, "%s", tmpl->name);
 	snprintf(base->cra_driver_name, CRYPTO_MAX_ALG_NAME, "%s-n2", tmpl->name);
 	base->cra_priority = N2_CRA_PRIORITY;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	base->cra_flags = CRYPTO_ALG_TYPE_AHASH |
+			  CRYPTO_ALG_KERN_DRIVER_ONLY |
+			  CRYPTO_ALG_NEED_FALLBACK;
+=======
 	base->cra_flags = CRYPTO_ALG_TYPE_AHASH | CRYPTO_ALG_NEED_FALLBACK;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	base->cra_flags = CRYPTO_ALG_TYPE_AHASH | CRYPTO_ALG_NEED_FALLBACK;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	base->cra_blocksize = tmpl->block_size;
 	base->cra_ctxsize = sizeof(struct n2_hash_ctx);
 	base->cra_module = THIS_MODULE;
@@ -1823,6 +1884,22 @@ static int spu_mdesc_scan(struct mdesc_handle *mdesc, struct platform_device *de
 static int __devinit get_irq_props(struct mdesc_handle *mdesc, u64 node,
 				   struct spu_mdesc_info *ip)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	const u64 *ino;
+	int ino_len;
+	int i;
+
+	ino = mdesc_get_property(mdesc, node, "ino", &ino_len);
+	if (!ino) {
+		printk("NO 'ino'\n");
+		return -ENODEV;
+	}
+
+	ip->num_intrs = ino_len / sizeof(u64);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const u64 *intr, *ino;
 	int intr_len, ino_len;
 	int i;
@@ -1839,6 +1916,10 @@ static int __devinit get_irq_props(struct mdesc_handle *mdesc, u64 node,
 		return -EINVAL;
 
 	ip->num_intrs = intr_len / sizeof(u64);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip->ino_table = kzalloc((sizeof(struct ino_blob) *
 				 ip->num_intrs),
 				GFP_KERNEL);
@@ -1847,7 +1928,15 @@ static int __devinit get_irq_props(struct mdesc_handle *mdesc, u64 node,
 
 	for (i = 0; i < ip->num_intrs; i++) {
 		struct ino_blob *b = &ip->ino_table[i];
+<<<<<<< HEAD
+<<<<<<< HEAD
+		b->intr = i + 1;
+=======
 		b->intr = intr[i];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		b->intr = intr[i];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		b->ino = ino[i];
 	}
 
@@ -2204,6 +2293,16 @@ static struct of_device_id n2_crypto_match[] = {
 		.name = "n2cp",
 		.compatible = "SUNW,vf-cwq",
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.name = "n2cp",
+		.compatible = "SUNW,kt-cwq",
+	},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{},
 };
 
@@ -2228,6 +2327,16 @@ static struct of_device_id n2_mau_match[] = {
 		.name = "ncp",
 		.compatible = "SUNW,vf-mau",
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.name = "ncp",
+		.compatible = "SUNW,kt-mau",
+	},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{},
 };
 

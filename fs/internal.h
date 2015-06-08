@@ -18,12 +18,20 @@ struct path;
 <<<<<<< HEAD
 struct mount;
 =======
+<<<<<<< HEAD
+struct mount;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * block_dev.c
  */
 #ifdef CONFIG_BLOCK
+<<<<<<< HEAD
+extern void __init bdev_cache_init(void);
+
+=======
 <<<<<<< HEAD
 extern void __init bdev_cache_init(void);
 
@@ -37,6 +45,7 @@ static inline int sb_is_blkdev_sb(struct super_block *sb)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int __sync_blockdev(struct block_device *bdev, int wait);
 
 #else
@@ -46,12 +55,15 @@ static inline void bdev_cache_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int sb_is_blkdev_sb(struct super_block *sb)
 {
 	return 0;
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __sync_blockdev(struct block_device *bdev, int wait)
 {
 	return 0;
@@ -66,17 +78,23 @@ extern void __init chrdev_init(void);
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * exec.c
  */
 extern int check_unsafe_exec(struct linux_binprm *);
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * namespace.c
  */
 extern int copy_mount_options(const void __user *, unsigned long *);
 extern int copy_mount_string(const void __user *, char **);
 
+<<<<<<< HEAD
+extern struct vfsmount *lookup_mnt(struct path *);
+=======
 <<<<<<< HEAD
 extern struct vfsmount *lookup_mnt(struct path *);
 =======
@@ -89,6 +107,7 @@ extern void release_mounts(struct list_head *);
 extern void umount_tree(struct vfsmount *, int, struct list_head *);
 extern struct vfsmount *copy_tree(struct vfsmount *, struct dentry *, int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int finish_automount(struct vfsmount *, struct path *);
 
 extern void mnt_make_longterm(struct vfsmount *);
@@ -96,7 +115,11 @@ extern void mnt_make_shortterm(struct vfsmount *);
 <<<<<<< HEAD
 extern int sb_prepare_remount_readonly(struct super_block *);
 =======
+<<<<<<< HEAD
+extern int sb_prepare_remount_readonly(struct super_block *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void __init mnt_init(void);
 
@@ -121,16 +144,22 @@ extern struct file *get_empty_filp(void);
  */
 extern int do_remount_sb(struct super_block *, int, void *, int);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern bool grab_super_passive(struct super_block *sb);
 extern struct dentry *mount_fs(struct file_system_type *,
 			       int, const char *, void *);
 extern struct super_block *user_get_super(dev_t);
+<<<<<<< HEAD
+=======
 =======
 extern void __put_super(struct super_block *sb);
 extern void put_super(struct super_block *sb);
 extern struct dentry *mount_fs(struct file_system_type *,
 			       int, const char *, void *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * open.c
@@ -143,8 +172,12 @@ struct open_flags {
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	int mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int acc_mode;
 	int intent;
 };
@@ -170,10 +203,16 @@ extern int get_nr_dirty_inodes(void);
 extern void evict_inodes(struct super_block *);
 extern int invalidate_inodes(struct super_block *, bool);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * dcache.c
  */
 extern struct dentry *__d_alloc(struct super_block *, const struct qstr *);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

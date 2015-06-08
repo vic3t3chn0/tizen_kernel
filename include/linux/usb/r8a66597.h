@@ -6,8 +6,12 @@
 <<<<<<< HEAD
  * Author : Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 =======
+<<<<<<< HEAD
+ * Author : Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+=======
  * Author : Yoshihiro Shimoda <shimoda.yoshihiro@renesas.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,7 +44,13 @@ struct r8a66597_platdata {
 	u16		buswait;
 
 =======
+<<<<<<< HEAD
+	/* This parameter is for BUSWAIT */
+	u16		buswait;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set one = on chip controller, set zero = external controller */
 	unsigned	on_chip:1;
 
@@ -53,14 +63,20 @@ struct r8a66597_platdata {
 	/* set one = big endian, set zero = little endian */
 	unsigned	endian:1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* (external controller only) set one = WR0_N shorted to WR1_N */
 	unsigned	wr0_shorted_to_wr1:1;
 
 	/* set one = using SUDMAC */
 	unsigned	sudmac:1;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Register definitions */
@@ -431,6 +447,9 @@ struct r8a66597_platdata {
 #define	RTPORT		0x0001
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* SUDMAC registers */
 #define CH0CFG		0x00
 #define CH1CFG		0x04
@@ -488,7 +507,10 @@ struct r8a66597_platdata {
 #define CH1ENDC		0x0002 /* b2: Ch1 DMA Transfer End Int Stat Clear */
 #define CH0ENDC		0x0001 /* b1: Ch0 DMA Transfer End Int Stat Clear */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __LINUX_USB_R8A66597_H */
 

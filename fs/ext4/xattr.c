@@ -86,9 +86,14 @@
 # define ea_idebug(inode, fmt, ...)	no_printk(fmt, ##__VA_ARGS__)
 # define ea_bdebug(bh, fmt, ...)	no_printk(fmt, ##__VA_ARGS__)
 =======
+<<<<<<< HEAD
+# define ea_idebug(inode, fmt, ...)	no_printk(fmt, ##__VA_ARGS__)
+# define ea_bdebug(bh, fmt, ...)	no_printk(fmt, ##__VA_ARGS__)
+=======
 # define ea_idebug(f...)
 # define ea_bdebug(f...)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static void ext4_xattr_cache_insert(struct buffer_head *);
@@ -164,10 +169,15 @@ static inline int
 ext4_xattr_check_block(struct buffer_head *bh)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (BHDR(bh)->h_magic != cpu_to_le32(EXT4_XATTR_MAGIC) ||
 	    BHDR(bh)->h_blocks != cpu_to_le32(1))
 		return -EIO;
 	return ext4_xattr_check_names(BFIRST(bh), bh->b_data + bh->b_size);
+<<<<<<< HEAD
+=======
 =======
 	int error;
 
@@ -177,6 +187,7 @@ ext4_xattr_check_block(struct buffer_head *bh)
 	error = ext4_xattr_check_names(BFIRST(bh), bh->b_data + bh->b_size);
 	return error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int
@@ -236,8 +247,13 @@ ext4_xattr_block_get(struct inode *inode, int name_index, const char *name,
 	ea_idebug(inode, "reading block %llu",
 		  (unsigned long long)EXT4_I(inode)->i_file_acl);
 =======
+<<<<<<< HEAD
+	ea_idebug(inode, "reading block %llu",
+		  (unsigned long long)EXT4_I(inode)->i_file_acl);
+=======
 	ea_idebug(inode, "reading block %u", EXT4_I(inode)->i_file_acl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bh = sb_bread(inode->i_sb, EXT4_I(inode)->i_file_acl);
 	if (!bh)
 		goto cleanup;
@@ -384,8 +400,13 @@ ext4_xattr_block_list(struct dentry *dentry, char *buffer, size_t buffer_size)
 	ea_idebug(inode, "reading block %llu",
 		  (unsigned long long)EXT4_I(inode)->i_file_acl);
 =======
+<<<<<<< HEAD
+	ea_idebug(inode, "reading block %llu",
+		  (unsigned long long)EXT4_I(inode)->i_file_acl);
+=======
 	ea_idebug(inode, "reading block %u", EXT4_I(inode)->i_file_acl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bh = sb_bread(inode->i_sb, EXT4_I(inode)->i_file_acl);
 	error = -EIO;
 	if (!bh)
@@ -861,8 +882,13 @@ inserted:
 			ea_idebug(inode, "creating block %llu",
 				  (unsigned long long)block);
 =======
+<<<<<<< HEAD
+			ea_idebug(inode, "creating block %llu",
+				  (unsigned long long)block);
+=======
 			ea_idebug(inode, "creating block %d", block);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			new_bh = sb_getblk(sb, block);
 			if (!new_bh) {
@@ -1022,12 +1048,16 @@ ext4_xattr_set_handle(handle_t *handle, struct inode *inode, int name_index,
 <<<<<<< HEAD
 	error = ext4_reserve_inode_write(handle, inode, &is.iloc);
 =======
+<<<<<<< HEAD
+	error = ext4_reserve_inode_write(handle, inode, &is.iloc);
+=======
 	error = ext4_get_inode_loc(inode, &is.iloc);
 	if (error)
 		goto cleanup;
 
 	error = ext4_journal_get_write_access(handle, is.iloc.bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto cleanup;
 

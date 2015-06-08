@@ -37,8 +37,11 @@
 #include <asm/bios_ebda.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/pgtable.h>
 #include <asm/pgalloc.h>
@@ -614,13 +617,19 @@ void __init initmem_init(void)
 <<<<<<< HEAD
 	memblock_set_node(0, (phys_addr_t)ULLONG_MAX, 0);
 =======
+<<<<<<< HEAD
+	memblock_set_node(0, (phys_addr_t)ULLONG_MAX, 0);
+=======
 	memblock_x86_register_active_regions(0, 0, max_pfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
 void __init paging_init(void)
 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	unsigned long max_zone_pfns[MAX_NR_ZONES];
@@ -633,6 +642,7 @@ void __init paging_init(void)
 	max_zone_pfns[ZONE_NORMAL] = max_pfn;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sparse_memory_present_with_active_regions(MAX_NUMNODES);
 	sparse_init();
 
@@ -647,8 +657,12 @@ void __init paging_init(void)
 <<<<<<< HEAD
 	zone_sizes_init();
 =======
+<<<<<<< HEAD
+	zone_sizes_init();
+=======
 	free_area_init_nodes(max_zone_pfns);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -847,10 +861,13 @@ int kern_addr_valid(unsigned long addr)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (pud_large(*pud))
 		return pfn_valid(pud_pfn(*pud));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pmd = pmd_offset(pud, addr);
 	if (pmd_none(*pmd))
 		return 0;

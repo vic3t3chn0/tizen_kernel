@@ -63,6 +63,9 @@ struct platform_device *__init imx_add_mx2_camera(
 			pdata, sizeof(*pdata), DMA_BIT_MASK(32));
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct platform_device *__init imx_add_mx2_emmaprp(
 		const struct imx_mx2_camera_data *data)
@@ -81,5 +84,8 @@ struct platform_device *__init imx_add_mx2_emmaprp(
 	return imx_add_platform_device_dmamask("m2m-emmaprp", 0,
 			res, 2, NULL, 0, DMA_BIT_MASK(32));
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

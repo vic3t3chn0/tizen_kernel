@@ -196,11 +196,26 @@ static int uhci_hub_status_data(struct usb_hcd *hcd, char *buf)
 	status = get_hub_status_data(uhci, buf);
 
 	switch (uhci->rh_state) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	    case UHCI_RH_SUSPENDED:
+		/* if port change, ask to be resumed */
+		if (status || uhci->resuming_ports) {
+			status = 1;
+			usb_hcd_resume_root_hub(hcd);
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    case UHCI_RH_SUSPENDING:
 	    case UHCI_RH_SUSPENDED:
 		/* if port change, ask to be resumed */
 		if (status || uhci->resuming_ports)
 			usb_hcd_resume_root_hub(hcd);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	    case UHCI_RH_AUTO_STOPPED:
@@ -221,8 +236,17 @@ static int uhci_hub_status_data(struct usb_hcd *hcd, char *buf)
 		/* auto-stop if nothing connected for 1 second */
 		if (any_ports_active(uhci))
 			uhci->rh_state = UHCI_RH_RUNNING;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		else if (time_after_eq(jiffies, uhci->auto_stop_time))
+=======
 		else if (time_after_eq(jiffies, uhci->auto_stop_time) &&
 				!uhci->wait_for_hp)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		else if (time_after_eq(jiffies, uhci->auto_stop_time) &&
+				!uhci->wait_for_hp)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			suspend_rh(uhci, UHCI_RH_AUTO_STOPPED);
 		break;
 

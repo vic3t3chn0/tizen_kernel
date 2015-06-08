@@ -7,8 +7,11 @@
  * Created:	Jan 01, 2011
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Version:	0.3.0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright:	(C) Torsten Schenk
  *
  * This program is free software; you can redistribute it and/or modify
@@ -547,8 +550,12 @@ static snd_pcm_uframes_t usb6fire_pcm_pointer(
 <<<<<<< HEAD
 		return SNDRV_PCM_STATE_XRUN;
 =======
+<<<<<<< HEAD
+		return SNDRV_PCM_STATE_XRUN;
+=======
 		return SNDRV_PCM_POS_XRUN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&sub->lock, flags);
 	ret = sub->dma_off;

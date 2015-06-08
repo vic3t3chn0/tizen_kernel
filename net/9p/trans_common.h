@@ -17,6 +17,11 @@ void p9_release_pages(struct page **, int);
 int p9_payload_gup(char *, int *, struct page **, int);
 int p9_nr_pages(char *, int);
 =======
+<<<<<<< HEAD
+void p9_release_pages(struct page **, int);
+int p9_payload_gup(char *, int *, struct page **, int);
+int p9_nr_pages(char *, int);
+=======
 /* TRUE if it is user context */
 #define P9_IS_USER_CONTEXT (!segment_eq(get_fs(), KERNEL_DS))
 
@@ -36,3 +41,4 @@ void p9_release_req_pages(struct trans_rpage_info *);
 int p9_payload_gup(struct p9_req_t *, size_t *, int *, int, u8);
 int p9_nr_pages(struct p9_req_t *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

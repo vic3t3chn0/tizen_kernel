@@ -7,8 +7,11 @@
 #include <asm/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/processor.h>
 #include <linux/mc146818rtc.h>
 
@@ -88,9 +91,14 @@ static inline unsigned char current_lock_cmos_reg(void)
 #define lock_cmos(reg) do { } while (0)
 #define unlock_cmos() do { } while (0)
 =======
+<<<<<<< HEAD
+#define lock_cmos(reg) do { } while (0)
+#define unlock_cmos() do { } while (0)
+=======
 #define lock_cmos(reg)
 #define unlock_cmos()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define do_i_have_lock_cmos() 0
 #define current_lock_cmos_reg() 0
 #endif

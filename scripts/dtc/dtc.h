@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <stdbool.h>
 =======
+<<<<<<< HEAD
+#include <stdbool.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <stdarg.h>
 #include <assert.h>
 #include <ctype.h>
@@ -116,7 +120,11 @@ struct data data_append_cell(struct data d, cell_t word);
 <<<<<<< HEAD
 struct data data_append_integer(struct data d, uint64_t word, int bits);
 =======
+<<<<<<< HEAD
+struct data data_append_integer(struct data d, uint64_t word, int bits);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct data data_append_re(struct data d, const struct fdt_reserve_entry *re);
 struct data data_append_addr(struct data d, uint64_t addr);
 struct data data_append_byte(struct data d, uint8_t byte);
@@ -137,7 +145,11 @@ struct label {
 <<<<<<< HEAD
 	int deleted;
 =======
+<<<<<<< HEAD
+	int deleted;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *label;
 	struct label *next;
 };
@@ -146,7 +158,11 @@ struct property {
 <<<<<<< HEAD
 	int deleted;
 =======
+<<<<<<< HEAD
+	int deleted;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *name;
 	struct data val;
 
@@ -159,7 +175,11 @@ struct node {
 <<<<<<< HEAD
 	int deleted;
 =======
+<<<<<<< HEAD
+	int deleted;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *name;
 	struct property *proplist;
 	struct node *children;
@@ -177,6 +197,9 @@ struct node {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define for_each_label_withdel(l0, l) \
 	for ((l) = (l0); (l); (l) = (l)->next)
 
@@ -203,6 +226,8 @@ void delete_labels(struct label **labels);
 
 struct property *build_property(char *name, struct data val);
 struct property *build_property_delete(char *name);
+<<<<<<< HEAD
+=======
 =======
 #define for_each_label(l0, l) \
 	for ((l) = (l0); (l); (l) = (l)->next)
@@ -217,6 +242,7 @@ void add_label(struct label **labels, char *label);
 
 struct property *build_property(char *name, struct data val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct property *chain_property(struct property *first, struct property *list);
 struct property *reverse_properties(struct property *first);
 
@@ -224,21 +250,31 @@ struct node *build_node(struct property *proplist, struct node *children);
 <<<<<<< HEAD
 struct node *build_node_delete(void);
 =======
+<<<<<<< HEAD
+struct node *build_node_delete(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct node *name_node(struct node *node, char *name);
 struct node *chain_node(struct node *first, struct node *list);
 struct node *merge_nodes(struct node *old_node, struct node *new_node);
 
 void add_property(struct node *node, struct property *prop);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void delete_property_by_name(struct node *node, char *name);
 void delete_property(struct property *prop);
 void add_child(struct node *parent, struct node *child);
 void delete_node_by_name(struct node *parent, char *name);
 void delete_node(struct node *node);
+<<<<<<< HEAD
+=======
 =======
 void add_child(struct node *parent, struct node *child);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 const char *get_unitname(struct node *node);
 struct property *get_property(struct node *node, const char *propname);
@@ -288,7 +324,11 @@ void sort_tree(struct boot_info *bi);
 <<<<<<< HEAD
 void parse_checks_option(bool warn, bool error, const char *optarg);
 =======
+<<<<<<< HEAD
+void parse_checks_option(bool warn, bool error, const char *optarg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void process_checks(int force, struct boot_info *bi);
 
 /* Flattened trees */

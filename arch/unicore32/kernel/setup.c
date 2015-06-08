@@ -40,7 +40,11 @@
 <<<<<<< HEAD
 #include <asm/memblock.h>
 =======
+<<<<<<< HEAD
+#include <asm/memblock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "setup.h"
 
@@ -71,8 +75,12 @@ static struct resource mem_res[] = {
 <<<<<<< HEAD
 		.name = "Kernel code",
 =======
+<<<<<<< HEAD
+		.name = "Kernel code",
+=======
 		.name = "Kernel text",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = 0,
 		.end = 0,
 		.flags = IORESOURCE_MEM

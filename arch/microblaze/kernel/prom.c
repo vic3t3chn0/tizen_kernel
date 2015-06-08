@@ -38,8 +38,11 @@
 #include <linux/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu.h>
 #include <asm/pgtable.h>
 #include <asm/sections.h>
@@ -61,12 +64,20 @@ char *stdout;
 
 int __init early_init_dt_scan_chosen_serial(unsigned long node,
 =======
+<<<<<<< HEAD
+char *stdout;
+
+int __init early_init_dt_scan_chosen_serial(unsigned long node,
+=======
 /* MS this is Microblaze specifig function */
 static int __init early_init_dt_scan_serial(unsigned long node,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const char *uname, int depth, void *data)
 {
 	unsigned long l;
 	char *p;
+<<<<<<< HEAD
+=======
 	const __be32 *addr;
 
 	pr_debug("search \"serial\", depth: %d, uname: %s\n", depth, uname);
@@ -100,6 +111,7 @@ static int __init early_init_dt_scan_serial_full(unsigned long node,
 	unsigned long l;
 	char *p;
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("%s: depth: %d, uname: %s\n", __func__, depth, uname);
 
@@ -145,6 +157,8 @@ static int __init early_init_dt_scan_serial_full(unsigned long node,
 int __init of_early_console(void *version)
 {
 	return of_scan_flat_dt(early_init_dt_scan_chosen_serial, version);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int addr;
 
@@ -173,6 +187,7 @@ int __init early_uart16550_console(void)
 {
 	return of_scan_flat_dt(early_init_dt_scan_serial_full, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -192,8 +207,11 @@ void __init early_init_devtree(void *params)
 	/* Scan memory nodes and rebuild MEMBLOCKs */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	of_scan_flat_dt(early_init_dt_scan_root, NULL);
 	of_scan_flat_dt(early_init_dt_scan_memory, NULL);
 
@@ -204,8 +222,12 @@ void __init early_init_devtree(void *params)
 <<<<<<< HEAD
 	memblock_allow_resize();
 =======
+<<<<<<< HEAD
+	memblock_allow_resize();
+=======
 	memblock_analyze();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pr_debug("Phys. mem: %lx\n", (unsigned long) memblock_phys_mem_size());
 

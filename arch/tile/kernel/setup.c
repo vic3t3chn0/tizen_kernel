@@ -104,11 +104,16 @@ unsigned long __initdata pci_reserve_end_pfn = -1U;
 static int __init setup_maxmem(char *str)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long long maxmem;
 	if (str == NULL || (maxmem = memparse(str, NULL)) == 0)
 		return -EINVAL;
 
 	maxmem_pfn = (maxmem >> HPAGE_SHIFT) << (HPAGE_SHIFT - PAGE_SHIFT);
+<<<<<<< HEAD
+=======
 =======
 	long maxmem_mb;
 	if (str == NULL || strict_strtol(str, 0, &maxmem_mb) != 0 ||
@@ -118,6 +123,7 @@ static int __init setup_maxmem(char *str)
 	maxmem_pfn = (maxmem_mb >> (HPAGE_SHIFT - 20)) <<
 		(HPAGE_SHIFT - PAGE_SHIFT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info("Forcing RAM used to no more than %dMB\n",
 	       maxmem_pfn >> (20 - PAGE_SHIFT));
 	return 0;
@@ -128,6 +134,9 @@ static int __init setup_maxnodemem(char *str)
 {
 	char *endp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long long maxnodemem;
 	long node;
 
@@ -137,6 +146,8 @@ static int __init setup_maxnodemem(char *str)
 
 	maxnodemem = memparse(endp+1, NULL);
 	maxnodemem_pfn[node] = (maxnodemem >> HPAGE_SHIFT) <<
+<<<<<<< HEAD
+=======
 =======
 	long maxnodemem_mb, node;
 
@@ -147,6 +158,7 @@ static int __init setup_maxnodemem(char *str)
 
 	maxnodemem_pfn[node] = (maxnodemem_mb >> (HPAGE_SHIFT - 20)) <<
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(HPAGE_SHIFT - PAGE_SHIFT);
 	pr_info("Forcing RAM used on node %ld to no more than %dMB\n",
 	       node, maxnodemem_pfn[node] >> (20 - PAGE_SHIFT));
@@ -576,9 +588,13 @@ static void __init setup_bootmem_allocator(void)
 <<<<<<< HEAD
 		reserve_bootmem(crashk_res.start, resource_size(&crashk_res), 0);
 =======
+<<<<<<< HEAD
+		reserve_bootmem(crashk_res.start, resource_size(&crashk_res), 0);
+=======
 		reserve_bootmem(crashk_res.start,
 			crashk_res.end - crashk_res.start + 1, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 
@@ -939,6 +955,9 @@ void __cpuinit setup_cpu(int boot)
 #ifdef CONFIG_BLK_DEV_INITRD
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Note that the kernel can potentially support other compression
  * techniques than gz, though we don't do so by default.  If we ever
@@ -946,8 +965,11 @@ void __cpuinit setup_cpu(int boot)
  * or just allow a file with this name to be compressed with an
  * arbitrary compressor (somewhat counterintuitively).
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __initdata set_initramfs_file;
 static char __initdata initramfs_file[128] = "initramfs.cpio.gz";
 
@@ -968,10 +990,16 @@ early_param("initramfs_file", setup_initramfs_file);
  * If there is one, we allocate some memory for it and it will be
  * unpacked to the initramfs.
 =======
+<<<<<<< HEAD
+ * We look for an "initramfs.cpio.gz" file in the hvfs.
+ * If there is one, we allocate some memory for it and it will be
+ * unpacked to the initramfs.
+=======
  * We look for an additional "initramfs.cpio.gz" file in the hvfs.
  * If there is one, we allocate some memory for it and it will be
  * unpacked to the initramfs after any built-in initramfs_data.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void __init load_hv_initrd(void)
 {
@@ -1144,8 +1172,12 @@ EXPORT_SYMBOL(hash_for_home_map);
 <<<<<<< HEAD
  * flush on our behalf.  It is set to cpu_possible_mask OR'ed with
 =======
+<<<<<<< HEAD
+ * flush on our behalf.  It is set to cpu_possible_mask OR'ed with
+=======
  * flush on our behalf.  It is set to cpu_possible_map OR'ed with
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * hash_for_home_map, and it is what should be passed to
  * hv_flush_remote() to flush all caches.  Note that if there are
  * dedicated hypervisor driver tiles that have authorized use of their
@@ -1234,8 +1266,12 @@ static void __init setup_cpu_maps(void)
 <<<<<<< HEAD
 		cpu_lotar_map = *cpu_possible_mask;
 =======
+<<<<<<< HEAD
+		cpu_lotar_map = *cpu_possible_mask;
+=======
 		cpu_lotar_map = cpu_possible_map;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 #if CHIP_HAS_CBOX_HOME_MAP()
@@ -1250,10 +1286,16 @@ static void __init setup_cpu_maps(void)
 #else
 	cpu_cacheable_map = *cpu_possible_mask;
 =======
+<<<<<<< HEAD
+	cpumask_or(&cpu_cacheable_map, cpu_possible_mask, &hash_for_home_map);
+#else
+	cpu_cacheable_map = *cpu_possible_mask;
+=======
 	cpumask_or(&cpu_cacheable_map, &cpu_possible_map, &hash_for_home_map);
 #else
 	cpu_cacheable_map = cpu_possible_map;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 

@@ -41,8 +41,12 @@ static struct platform_device rtc_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_RTC_DRV_BFIN */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_RTC_DRV_BFIN */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_SERIAL_BFIN) || defined(CONFIG_SERIAL_BFIN_MODULE)
 #ifdef CONFIG_SERIAL_BFIN_UART0
@@ -54,6 +58,9 @@ static struct resource bfin_uart0_resources[] = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = IRQ_UART0_TX,
 		.end = IRQ_UART0_TX,
 		.flags = IORESOURCE_IRQ,
@@ -61,10 +68,13 @@ static struct resource bfin_uart0_resources[] = {
 	{
 		.start = IRQ_UART0_RX,
 		.end = IRQ_UART0_RX,
+<<<<<<< HEAD
+=======
 =======
 		.start = IRQ_UART0_RX,
 		.end = IRQ_UART0_RX+1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -112,8 +122,12 @@ static struct platform_device bfin_uart0_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_SERIAL_BFIN_UART0 */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SERIAL_BFIN_UART0 */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SERIAL_BFIN_UART1
 static struct resource bfin_uart1_resources[] = {
 	{
@@ -123,6 +137,9 @@ static struct resource bfin_uart1_resources[] = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = IRQ_UART1_TX,
 		.end = IRQ_UART1_TX,
 		.flags = IORESOURCE_IRQ,
@@ -130,10 +147,13 @@ static struct resource bfin_uart1_resources[] = {
 	{
 		.start = IRQ_UART1_RX,
 		.end = IRQ_UART1_RX,
+<<<<<<< HEAD
+=======
 =======
 		.start = IRQ_UART1_RX,
 		.end = IRQ_UART1_RX+1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -169,8 +189,12 @@ static struct platform_device bfin_uart1_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_SERIAL_BFIN_UART1 */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SERIAL_BFIN_UART1 */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SERIAL_BFIN_UART2
 static struct resource bfin_uart2_resources[] = {
 	{
@@ -180,6 +204,9 @@ static struct resource bfin_uart2_resources[] = {
 	},
 	{
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = IRQ_UART2_TX,
 		.end = IRQ_UART2_TX,
 		.flags = IORESOURCE_IRQ,
@@ -187,10 +214,13 @@ static struct resource bfin_uart2_resources[] = {
 	{
 		.start = IRQ_UART2_RX,
 		.end = IRQ_UART2_RX,
+<<<<<<< HEAD
+=======
 =======
 		.start = IRQ_UART2_RX,
 		.end = IRQ_UART2_RX+1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -227,9 +257,14 @@ static struct platform_device bfin_uart2_device = {
 #endif	/* CONFIG_SERIAL_BFIN_UART2 */
 #endif	/* CONFIG_SERIAL_BFIN */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SERIAL_BFIN_UART2 */
+#endif	/* CONFIG_SERIAL_BFIN */
+=======
 #endif
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_BFIN_SIR) || defined(CONFIG_BFIN_SIR_MODULE)
 #ifdef CONFIG_BFIN_SIR0
@@ -259,8 +294,12 @@ static struct platform_device bfin_sir0_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_BFIN_SIR0 */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_BFIN_SIR0 */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BFIN_SIR1
 static struct resource bfin_sir1_resources[] = {
 	{
@@ -288,8 +327,12 @@ static struct platform_device bfin_sir1_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_BFIN_SIR1 */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_BFIN_SIR1 */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_BFIN_SIR2
 static struct resource bfin_sir2_resources[] = {
 	{
@@ -318,9 +361,14 @@ static struct platform_device bfin_sir2_device = {
 #endif	/* CONFIG_BFIN_SIR2 */
 #endif	/* CONFIG_BFIN_SIR */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_BFIN_SIR2 */
+#endif	/* CONFIG_BFIN_SIR */
+=======
 #endif
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_SERIAL_BFIN_SPORT) || defined(CONFIG_SERIAL_BFIN_SPORT_MODULE)
 #ifdef CONFIG_SERIAL_BFIN_SPORT0_UART
@@ -359,8 +407,12 @@ static struct platform_device bfin_sport0_uart_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_SERIAL_BFIN_SPORT0_UART */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SERIAL_BFIN_SPORT0_UART */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SERIAL_BFIN_SPORT1_UART
 static struct resource bfin_sport1_uart_resources[] = {
 	{
@@ -397,8 +449,12 @@ static struct platform_device bfin_sport1_uart_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_SERIAL_BFIN_SPORT1_UART */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SERIAL_BFIN_SPORT1_UART */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SERIAL_BFIN_SPORT2_UART
 static struct resource bfin_sport2_uart_resources[] = {
 	{
@@ -435,8 +491,12 @@ static struct platform_device bfin_sport2_uart_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_SERIAL_BFIN_SPORT2_UART */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SERIAL_BFIN_SPORT2_UART */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SERIAL_BFIN_SPORT3_UART
 static struct resource bfin_sport3_uart_resources[] = {
 	{
@@ -474,9 +534,14 @@ static struct platform_device bfin_sport3_uart_device = {
 #endif	/* CONFIG_SERIAL_BFIN_SPORT3_UART */
 #endif	/* CONFIG_SERIAL_BFIN_SPORT */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SERIAL_BFIN_SPORT3_UART */
+#endif	/* CONFIG_SERIAL_BFIN_SPORT */
+=======
 #endif
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_CAN_BFIN) || defined(CONFIG_CAN_BFIN_MODULE)
 static unsigned short bfin_can_peripherals[] = {
@@ -517,8 +582,12 @@ static struct platform_device bfin_can_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_CAN_BFIN */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_CAN_BFIN */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *  USB-LAN EzExtender board
@@ -559,10 +628,16 @@ static struct platform_device smc91x_device = {
 
 #if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_SMC91X */
+
+#if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
+=======
 #endif
 
 #if defined(CONFIG_SPI_BFIN) || defined(CONFIG_SPI_BFIN_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* all SPI peripherals info goes here */
 #if defined(CONFIG_MTD_M25P80) \
 	|| defined(CONFIG_MTD_M25P80_MODULE)
@@ -594,10 +669,16 @@ static struct bfin5xx_spi_chip spi_flash_chip_info = {
 #endif	/* CONFIG_MTD_M25P80 */
 #endif	/* CONFIG_SPI_BFIN5XX */
 =======
+<<<<<<< HEAD
+};
+#endif	/* CONFIG_MTD_M25P80 */
+#endif	/* CONFIG_SPI_BFIN5XX */
+=======
 	.bits_per_word = 8,
 };
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_TOUCHSCREEN_AD7879) || defined(CONFIG_TOUCHSCREEN_AD7879_MODULE)
 #include <linux/spi/ad7879.h>
@@ -617,6 +698,9 @@ static const struct ad7879_platform_data bfin_ad7879_ts_info = {
 <<<<<<< HEAD
 #endif	/* CONFIG_TOUCHSCREEN_AD7879 */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_TOUCHSCREEN_AD7879 */
+=======
 #endif
 
 #if defined(CONFIG_TOUCHSCREEN_AD7879_SPI) || defined(CONFIG_TOUCHSCREEN_AD7879_SPI_MODULE)
@@ -626,6 +710,7 @@ static struct bfin5xx_spi_chip spi_ad7879_chip_info = {
 };
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_FB_BFIN_LQ035Q1) || defined(CONFIG_FB_BFIN_LQ035Q1_MODULE)
 #include <asm/bfin-lq035q1.h>
@@ -657,6 +742,9 @@ static struct platform_device bfin_lq035q1_device = {
 <<<<<<< HEAD
 #endif	/* CONFIG_FB_BFIN_LQ035Q1 */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_FB_BFIN_LQ035Q1 */
+=======
 #endif
 
 #if defined(CONFIG_SPI_SPIDEV) || defined(CONFIG_SPI_SPIDEV_MODULE)
@@ -673,6 +761,7 @@ static struct bfin5xx_spi_chip lq035q1_spi_chip_info = {
 };
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct spi_board_info bf538_spi_board_info[] __initdata = {
 #if defined(CONFIG_MTD_M25P80) \
@@ -690,8 +779,12 @@ static struct spi_board_info bf538_spi_board_info[] __initdata = {
 <<<<<<< HEAD
 #endif	/* CONFIG_MTD_M25P80 */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_MTD_M25P80 */
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_TOUCHSCREEN_AD7879_SPI) || defined(CONFIG_TOUCHSCREEN_AD7879_SPI_MODULE)
 	{
 		.modalias = "ad7879",
@@ -705,11 +798,17 @@ static struct spi_board_info bf538_spi_board_info[] __initdata = {
 	},
 #endif	/* CONFIG_TOUCHSCREEN_AD7879_SPI */
 =======
+<<<<<<< HEAD
+		.mode = SPI_CPHA | SPI_CPOL,
+	},
+#endif	/* CONFIG_TOUCHSCREEN_AD7879_SPI */
+=======
 		.controller_data = &spi_ad7879_chip_info,
 		.mode = SPI_CPHA | SPI_CPOL,
 	},
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_FB_BFIN_LQ035Q1) || defined(CONFIG_FB_BFIN_LQ035Q1_MODULE)
 	{
 		.modalias = "bfin-lq035q1-spi",
@@ -721,11 +820,17 @@ static struct spi_board_info bf538_spi_board_info[] __initdata = {
 	},
 #endif	/* CONFIG_FB_BFIN_LQ035Q1 */
 =======
+<<<<<<< HEAD
+		.mode = SPI_CPHA | SPI_CPOL,
+	},
+#endif	/* CONFIG_FB_BFIN_LQ035Q1 */
+=======
 		.controller_data = &lq035q1_spi_chip_info,
 		.mode = SPI_CPHA | SPI_CPOL,
 	},
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SPI_SPIDEV) || defined(CONFIG_SPI_SPIDEV_MODULE)
 	{
 		.modalias = "spidev",
@@ -736,10 +841,15 @@ static struct spi_board_info bf538_spi_board_info[] __initdata = {
 	},
 #endif	/* CONFIG_SPI_SPIDEV */
 =======
+<<<<<<< HEAD
+	},
+#endif	/* CONFIG_SPI_SPIDEV */
+=======
 		.controller_data = &spidev_chip_info,
 	},
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* SPI (0) */
@@ -850,9 +960,12 @@ static struct platform_device bf538_spi_master2 = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif  /* spi master and devices */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_I2C_BLACKFIN_TWI) || defined(CONFIG_I2C_BLACKFIN_TWI_MODULE)
 static struct resource bfin_twi0_resource[] = {
 	[0] = {
@@ -898,9 +1011,14 @@ static struct platform_device i2c_bfin_twi1_device = {
 #endif	/* CONFIG_BF542 */
 #endif	/* CONFIG_I2C_BLACKFIN_TWI */
 =======
+<<<<<<< HEAD
+#endif	/* CONFIG_BF542 */
+#endif	/* CONFIG_I2C_BLACKFIN_TWI */
+=======
 #endif
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_KEYBOARD_GPIO) || defined(CONFIG_KEYBOARD_GPIO_MODULE)
 #include <linux/gpio_keys.h>
@@ -1017,8 +1135,12 @@ static struct platform_device *cm_bf538_devices[] __initdata = {
 <<<<<<< HEAD
 #if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
+=======
 #if defined(CONFIG_SPI_BFIN) || defined(CONFIG_SPI_BFIN_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&bf538_spi_master0,
 	&bf538_spi_master1,
 	&bf538_spi_master2,
@@ -1085,8 +1207,12 @@ static int __init ezkit_init(void)
 <<<<<<< HEAD
 #if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SPI_BFIN5XX) || defined(CONFIG_SPI_BFIN5XX_MODULE)
+=======
 #if defined(CONFIG_SPI_BFIN) || defined(CONFIG_SPI_BFIN_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_register_board_info(bf538_spi_board_info,
 			ARRAY_SIZE(bf538_spi_board_info));
 #endif

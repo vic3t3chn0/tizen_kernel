@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct scsi_cmnd;
 
@@ -84,7 +88,11 @@ struct scsi_cmnd;
 <<<<<<< HEAD
 #define READ_CAPACITY_16      0x9e
 =======
+<<<<<<< HEAD
+#define READ_CAPACITY_16      0x9e
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define READ_10               0x28
 #define WRITE_10              0x2a
 #define SEEK_10               0x2b
@@ -154,7 +162,11 @@ struct scsi_cmnd;
 <<<<<<< HEAD
 #define SYNCHRONIZE_CACHE_16  0x91
 =======
+<<<<<<< HEAD
+#define SYNCHRONIZE_CACHE_16  0x91
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WRITE_SAME_16	      0x93
 #define SERVICE_ACTION_IN     0x9e
 /* values for service action in */
@@ -510,8 +522,12 @@ static inline int scsi_is_wlun(unsigned int lun)
 <<<<<<< HEAD
 #define sense_valid(sense)  ((sense) & 0x80)
 =======
+<<<<<<< HEAD
+#define sense_valid(sense)  ((sense) & 0x80)
+=======
 #define sense_valid(sense)  ((sense) & 0x80);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * default timeouts
@@ -581,5 +597,10 @@ static inline __u32 scsi_to_u32(__u8 *ptr)
 struct scsi_disk *scsi_disk_get_from_dev(struct device *dev);
 
 =======
+<<<<<<< HEAD
+struct scsi_disk *scsi_disk_get_from_dev(struct device *dev);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _SCSI_SCSI_H */

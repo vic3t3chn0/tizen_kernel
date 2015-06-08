@@ -20,7 +20,12 @@
 #include <linux/kernel.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/kernel.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/clock.h>
 
 /* CM_CLKSEL2_PLL.CORE_CLK_SRC bits (2XXX) */
@@ -73,7 +78,12 @@ void omap4_dpllmx_deny_gatectrl(struct clk *clk);
 long omap4_dpll_regm4xen_round_rate(struct clk *clk, unsigned long target_rate);
 unsigned long omap4_dpll_regm4xen_recalc(struct clk *clk);
 =======
+<<<<<<< HEAD
+long omap4_dpll_regm4xen_round_rate(struct clk *clk, unsigned long target_rate);
+unsigned long omap4_dpll_regm4xen_recalc(struct clk *clk);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_OMAP_RESET_CLOCKS
 void omap2_clk_disable_unused(struct clk *clk);
@@ -85,7 +95,11 @@ void omap2_init_clk_clkdm(struct clk *clk);
 <<<<<<< HEAD
 void __init omap2_clk_disable_clkdm_control(void);
 =======
+<<<<<<< HEAD
+void __init omap2_clk_disable_clkdm_control(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* clkt_clksel.c public functions */
 u32 omap2_clksel_round_rate_div(struct clk *clk, unsigned long target_rate,
@@ -144,8 +158,12 @@ void omap2_clk_print_new_rates(const char *hfclkin_ck_name,
 <<<<<<< HEAD
 extern u16 cpu_mask;
 =======
+<<<<<<< HEAD
+extern u16 cpu_mask;
+=======
 extern u8 cpu_mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern const struct clkops clkops_omap2_dflt_wait;
 extern const struct clkops clkops_dummy;
@@ -161,6 +179,8 @@ extern const struct clksel_rate dsp_ick_rates[];
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_ARCH_OMAP2) && defined(CONFIG_CPU_FREQ)
 extern void omap2_clk_init_cpufreq_table(struct cpufreq_frequency_table **table);
 extern void omap2_clk_exit_cpufreq_table(struct cpufreq_frequency_table **table);
@@ -170,6 +190,7 @@ extern void omap2_clk_exit_cpufreq_table(struct cpufreq_frequency_table **table)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const struct clkops clkops_omap2_iclk_dflt_wait;
 extern const struct clkops clkops_omap2_iclk_dflt;
 extern const struct clkops clkops_omap2_iclk_idle_only;

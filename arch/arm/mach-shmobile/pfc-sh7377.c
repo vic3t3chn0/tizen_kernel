@@ -23,6 +23,9 @@
 #include <mach/sh7377.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CPU_ALL_PORT(fn, pfx, sfx)				\
 	PORT_10(fn, pfx, sfx), PORT_90(fn, pfx, sfx),		\
 	PORT_10(fn, pfx##10, sfx),				\
@@ -47,6 +50,8 @@
 	PORT_1(fn, pfx##260, sfx), PORT_1(fn, pfx##261, sfx),	\
 	PORT_1(fn, pfx##262, sfx), PORT_1(fn, pfx##263, sfx),	\
 	PORT_1(fn, pfx##264, sfx)
+<<<<<<< HEAD
+=======
 =======
 #define _1(fn, pfx, sfx) fn(pfx, sfx)
 
@@ -92,12 +97,16 @@
 #define _PORT(pfx, sfx) pfx##_##sfx
 #define PORT_265(str) _265(_PORT, PORT, str)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	PINMUX_RESERVED = 0,
 
 	PINMUX_DATA_BEGIN,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PORT_ALL(DATA), /* PORT0_DATA -> PORT264_DATA */
 	PINMUX_DATA_END,
 
@@ -128,6 +137,8 @@ enum {
 	PORT_ALL(FN5), /* PORT0_FN5 -> PORT264_FN5 */
 	PORT_ALL(FN6), /* PORT0_FN6 -> PORT264_FN6 */
 	PORT_ALL(FN7), /* PORT0_FN7 -> PORT264_FN7 */
+<<<<<<< HEAD
+=======
 =======
 	PORT_265(DATA), /* PORT0_DATA -> PORT264_DATA */
 	PINMUX_DATA_END,
@@ -160,6 +171,7 @@ enum {
 	PORT_265(FN6), /* PORT0_FN6 -> PORT264_FN6 */
 	PORT_265(FN7), /* PORT0_FN7 -> PORT264_FN7 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	MSELBCR_MSEL17_1, MSELBCR_MSEL17_0,
 	MSELBCR_MSEL16_1, MSELBCR_MSEL16_0,
@@ -422,6 +434,8 @@ enum {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define PORT_DATA_I(nr)	\
 	PINMUX_DATA(PORT##nr##_DATA, PORT##nr##_FN0, PORT##nr##_IN)
 
@@ -462,6 +476,7 @@ enum {
 				PORT##nr##_IN_PD, PORT##nr##_IN_PU)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static pinmux_enum_t pinmux_data[] = {
 	/* specify valid pin states for each pin in GPIO mode */
 	/* 55-1 (GPIO) */
@@ -1146,6 +1161,11 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	/* 55-1 -> 55-5 (GPIO) */
 	GPIO_PORT_ALL(),
 =======
+<<<<<<< HEAD
+static struct pinmux_gpio pinmux_gpios[] = {
+	/* 55-1 -> 55-5 (GPIO) */
+	GPIO_PORT_ALL(),
+=======
 #define _GPIO_PORT(pfx, sfx) PINMUX_GPIO(GPIO_PORT##pfx, PORT##pfx##_DATA)
 #define GPIO_PORT_265() _265(_GPIO_PORT, , unused)
 #define GPIO_FN(str) PINMUX_GPIO(GPIO_FN_##str, str##_MARK)
@@ -1154,6 +1174,7 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	/* 55-1 -> 55-5 (GPIO) */
 	GPIO_PORT_265(),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Special Pull-up / Pull-down Functions */
 	GPIO_FN(PORT66_KEYIN0_PU), GPIO_FN(PORT67_KEYIN1_PU),
@@ -1433,6 +1454,8 @@ static struct pinmux_gpio pinmux_gpios[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* helper for top 4 bits in PORTnCR */
 #define PCRH(in, in_pd, in_pu, out)	\
 	0, (out), (in), 0,	\
@@ -1451,6 +1474,7 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pinmux_cfg_reg pinmux_config_regs[] = {
 	PORTCR(0, 0xe6050000), /* PORT0CR */
 	PORTCR(1, 0xe6050001), /* PORT1CR */

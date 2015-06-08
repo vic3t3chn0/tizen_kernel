@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2010,2013-2014, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2010,2013-2014, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2010, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -13,6 +17,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #include <linux/module.h>
 #include <linux/of.h>
@@ -43,6 +50,8 @@ static int msm_gpiomux_store(unsigned gpio, enum msm_gpiomux_setting which,
 		return -EFAULT;
 
 	if (gpio >= msm_gpiomux_ngpio)
+<<<<<<< HEAD
+=======
 =======
  *
  * You should have received a copy of the GNU General Public License
@@ -66,11 +75,15 @@ int msm_gpiomux_write(unsigned gpio,
 
 	if (gpio >= GPIOMUX_NGPIOS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	spin_lock_irqsave(&gpiomux_lock, irq_flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (old_setting) {
 		if (rec->sets[which] == NULL)
 			status = 1;
@@ -110,6 +123,8 @@ int msm_gpiomux_write(unsigned gpio, enum msm_gpiomux_setting which,
 
 	spin_unlock_irqrestore(&gpiomux_lock, irq_flags);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	if (active & GPIOMUX_VALID)
 		cfg->active = active;
@@ -124,12 +139,16 @@ int msm_gpiomux_write(unsigned gpio, enum msm_gpiomux_setting which,
 	spin_unlock_irqrestore(&gpiomux_lock, irq_flags);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(msm_gpiomux_write);
 
 int msm_gpiomux_get(unsigned gpio)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct msm_gpiomux_rec *rec = msm_gpiomux_recs + gpio;
 	unsigned long irq_flags;
 
@@ -142,6 +161,8 @@ int msm_gpiomux_get(unsigned gpio)
 	spin_lock_irqsave(&gpiomux_lock, irq_flags);
 	if (rec->ref++ == 0 && rec->sets[GPIOMUX_ACTIVE])
 		__msm_gpiomux_write(gpio, *rec->sets[GPIOMUX_ACTIVE]);
+<<<<<<< HEAD
+=======
 =======
 	struct msm_gpiomux_config *cfg = msm_gpiomux_configs + gpio;
 	unsigned long irq_flags;
@@ -153,6 +174,7 @@ int msm_gpiomux_get(unsigned gpio)
 	if (cfg->ref++ == 0 && cfg->active & GPIOMUX_VALID)
 		__msm_gpiomux_write(gpio, cfg->active);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&gpiomux_lock, irq_flags);
 	return 0;
 }
@@ -161,6 +183,9 @@ EXPORT_SYMBOL(msm_gpiomux_get);
 int msm_gpiomux_put(unsigned gpio)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct msm_gpiomux_rec *rec = msm_gpiomux_recs + gpio;
 	unsigned long irq_flags;
 
@@ -174,6 +199,8 @@ int msm_gpiomux_put(unsigned gpio)
 	BUG_ON(rec->ref == 0);
 	if (--rec->ref == 0 && rec->sets[GPIOMUX_SUSPENDED])
 		__msm_gpiomux_write(gpio, *rec->sets[GPIOMUX_SUSPENDED]);
+<<<<<<< HEAD
+=======
 =======
 	struct msm_gpiomux_config *cfg = msm_gpiomux_configs + gpio;
 	unsigned long irq_flags;
@@ -186,12 +213,16 @@ int msm_gpiomux_put(unsigned gpio)
 	if (--cfg->ref == 0 && cfg->suspended & GPIOMUX_VALID)
 		__msm_gpiomux_write(gpio, cfg->suspended);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(&gpiomux_lock, irq_flags);
 	return 0;
 }
 EXPORT_SYMBOL(msm_gpiomux_put);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int msm_tlmm_misc_reg_read(enum msm_tlmm_misc_reg misc_reg)
 {
 	return readl_relaxed(MSM_TLMM_BASE + misc_reg);
@@ -288,6 +319,8 @@ int msm_gpiomux_init_dt(void)
 	return msm_gpiomux_init(ngpio);
 }
 EXPORT_SYMBOL(msm_gpiomux_init_dt);
+<<<<<<< HEAD
+=======
 =======
 static int __init gpiomux_init(void)
 {
@@ -303,3 +336,4 @@ static int __init gpiomux_init(void)
 }
 postcore_initcall(gpiomux_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

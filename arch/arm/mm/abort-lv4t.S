@@ -4,11 +4,16 @@
  * Function: v4t_late_abort
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Params  : r2 = pt_regs
  *	   : r4 = aborted context pc
  *	   : r5 = aborted context psr
  *
  * Returns : r4-r5, r10-r11, r13 preserved
+<<<<<<< HEAD
+=======
 =======
  * Params  : r2 = address of aborted instruction
  *         : r3 = saved SPSR
@@ -19,6 +24,7 @@
  *	   : r9 = preserved
  *	   : sp = pointer to registers
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Purpose : obtain information about current aborted instruction.
  * Note: we read user space.  This means we might cause a data
@@ -29,8 +35,12 @@ ENTRY(v4t_late_abort)
 <<<<<<< HEAD
 	tst	r5, #PSR_T_BIT			@ check for thumb mode
 =======
+<<<<<<< HEAD
+	tst	r5, #PSR_T_BIT			@ check for thumb mode
+=======
 	tst	r3, #PSR_T_BIT			@ check for thumb mode
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CPU_CP15_MMU
 	mrc	p15, 0, r1, c5, c0, 0		@ get FSR
 	mrc	p15, 0, r0, c6, c0, 0		@ get FAR
@@ -43,8 +53,12 @@ ENTRY(v4t_late_abort)
 <<<<<<< HEAD
 	ldr	r8, [r4]			@ read arm instruction
 =======
+<<<<<<< HEAD
+	ldr	r8, [r4]			@ read arm instruction
+=======
 	ldr	r8, [r2]			@ read arm instruction
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tst	r8, #1 << 20			@ L = 1 -> write?
 	orreq	r1, r1, #1 << 11		@ yes.
 	and	r7, r8, #15 << 24
@@ -64,6 +78,9 @@ ENTRY(v4t_late_abort)
 /* a */	b	.data_unknown
 /* b */	b	.data_unknown
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* c */	b	do_DataAbort			@ ldc	rd, [rn], #m	@ Same as ldr	rd, [rn], #m
 /* d */	b	do_DataAbort			@ ldc	rd, [rn, #m]
 /* e */	b	.data_unknown
@@ -136,6 +153,8 @@ ENTRY(v4t_late_abort)
 	ldr	r6, [r2, r7, lsl #2]		@ Get register 'Rm'
 	mov	r9, r8, lsr #7			@ get shift count
 	ands	r9, r9, #31
+<<<<<<< HEAD
+=======
 =======
 /* c */	mov	pc, lr				@ ldc	rd, [rn], #m	@ Same as ldr	rd, [rn], #m
 /* d */	mov	pc, lr				@ ldc	rd, [rn, #m]
@@ -212,6 +231,7 @@ ENTRY(v4t_late_abort)
 	mov	r5, r8, lsr #7			@ get shift count
 	ands	r5, r5, #31
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	and	r7, r8, #0x70			@ get shift type
 	orreq	r7, r7, #8			@ shift count = 0
 	add	pc, pc, r7
@@ -220,8 +240,12 @@ ENTRY(v4t_late_abort)
 <<<<<<< HEAD
 	mov	r6, r6, lsl r9			@ 0: LSL #!0
 =======
+<<<<<<< HEAD
+	mov	r6, r6, lsl r9			@ 0: LSL #!0
+=======
 	mov	r6, r6, lsl r5			@ 0: LSL #!0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	.data_arm_apply_r6_and_rn
 	b	.data_arm_apply_r6_and_rn	@ 1: LSL #0
 	nop
@@ -232,8 +256,12 @@ ENTRY(v4t_late_abort)
 <<<<<<< HEAD
 	mov	r6, r6, lsr r9			@ 4: LSR #!0
 =======
+<<<<<<< HEAD
+	mov	r6, r6, lsr r9			@ 4: LSR #!0
+=======
 	mov	r6, r6, lsr r5			@ 4: LSR #!0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	.data_arm_apply_r6_and_rn
 	mov	r6, r6, lsr #32			@ 5: LSR #32
 	b	.data_arm_apply_r6_and_rn
@@ -244,8 +272,12 @@ ENTRY(v4t_late_abort)
 <<<<<<< HEAD
 	mov	r6, r6, asr r9			@ 8: ASR #!0
 =======
+<<<<<<< HEAD
+	mov	r6, r6, asr r9			@ 8: ASR #!0
+=======
 	mov	r6, r6, asr r5			@ 8: ASR #!0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	.data_arm_apply_r6_and_rn
 	mov	r6, r6, asr #32			@ 9: ASR #32
 	b	.data_arm_apply_r6_and_rn
@@ -256,8 +288,12 @@ ENTRY(v4t_late_abort)
 <<<<<<< HEAD
 	mov	r6, r6, ror r9			@ C: ROR #!0
 =======
+<<<<<<< HEAD
+	mov	r6, r6, ror r9			@ C: ROR #!0
+=======
 	mov	r6, r6, ror r5			@ C: ROR #!0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	.data_arm_apply_r6_and_rn
 	mov	r6, r6, rrx			@ D: RRX
 	b	.data_arm_apply_r6_and_rn
@@ -269,8 +305,12 @@ ENTRY(v4t_late_abort)
 <<<<<<< HEAD
 	ldrh	r8, [r4]			@ read instruction
 =======
+<<<<<<< HEAD
+	ldrh	r8, [r4]			@ read instruction
+=======
 	ldrh	r8, [r2]			@ read instruction
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tst	r8, #1 << 11			@ L = 1 -> write?
 	orreq	r1, r1, #1 << 8			@ yes
 	and	r7, r8, #15 << 12
@@ -284,16 +324,22 @@ ENTRY(v4t_late_abort)
 /* 4 */	b	.data_unknown
 /* 5 */	b	.data_thumb_reg
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 6 */	b	do_DataAbort
 /* 7 */	b	do_DataAbort
 /* 8 */	b	do_DataAbort
 /* 9 */	b	do_DataAbort
+<<<<<<< HEAD
+=======
 =======
 /* 6 */	mov	pc, lr
 /* 7 */	mov	pc, lr
 /* 8 */	mov	pc, lr
 /* 9 */	mov	pc, lr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* A */	b	.data_unknown
 /* B */	b	.data_thumb_pushpop
 /* C */	b	.data_thumb_ldmstm
@@ -304,22 +350,31 @@ ENTRY(v4t_late_abort)
 .data_thumb_reg:
 	tst	r8, #1 << 9
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	do_DataAbort
 	tst	r8, #1 << 10			@ If 'S' (signed) bit is set
 	movne	r1, #0				@ it must be a load instr
 	b	do_DataAbort
+<<<<<<< HEAD
+=======
 =======
 	moveq	pc, lr
 	tst	r8, #1 << 10			@ If 'S' (signed) bit is set
 	movne	r1, #0				@ it must be a load instr
 	mov	pc, lr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 .data_thumb_pushpop:
 	tst	r8, #1 << 10
 	beq	.data_unknown
 	and	r6, r8, #0x55			@ hweight8(r8) + R bit
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	and	r9, r8, #0xaa
 	add	r6, r6, r9, lsr #1
 	and	r9, r6, #0xcc
@@ -349,6 +404,8 @@ ENTRY(v4t_late_abort)
 	sub	r7, r7, r6, lsl #2		@ always decrement
 	str	r7, [r2, r9, lsr #6]
 	b	do_DataAbort
+<<<<<<< HEAD
+=======
 =======
 	and	r2, r8, #0xaa
 	add	r6, r6, r2, lsr #1
@@ -380,3 +437,4 @@ ENTRY(v4t_late_abort)
 	str	r7, [sp, r5, lsr #6]
 	mov	pc, lr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

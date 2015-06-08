@@ -18,8 +18,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/proc_fs.h>
 
 /*
@@ -124,7 +128,11 @@ struct cache_detail {
 <<<<<<< HEAD
 	struct net		*net;
 =======
+<<<<<<< HEAD
+	struct net		*net;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -206,6 +214,9 @@ extern void cache_purge(struct cache_detail *detail);
 #define NEVER (0x7FFFFFFF)
 extern void __init cache_initialize(void);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int cache_register_net(struct cache_detail *cd, struct net *net);
 extern void cache_unregister_net(struct cache_detail *cd, struct net *net);
 
@@ -216,6 +227,8 @@ extern void sunrpc_init_cache_detail(struct cache_detail *cd);
 extern void sunrpc_destroy_cache_detail(struct cache_detail *cd);
 extern int sunrpc_cache_register_pipefs(struct dentry *parent, const char *,
 					umode_t, struct cache_detail *);
+<<<<<<< HEAD
+=======
 =======
 extern int cache_register(struct cache_detail *cd);
 extern int cache_register_net(struct cache_detail *cd, struct net *net);
@@ -225,6 +238,7 @@ extern void cache_unregister_net(struct cache_detail *cd, struct net *net);
 extern int sunrpc_cache_register_pipefs(struct dentry *parent, const char *,
 					mode_t, struct cache_detail *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void sunrpc_cache_unregister_pipefs(struct cache_detail *);
 
 extern void qword_add(char **bpp, int *lp, char *str);
@@ -247,6 +261,8 @@ static inline int get_int(char **bpp, int *anint)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int get_uint(char **bpp, unsigned int *anint)
 {
 	char buf[50];
@@ -264,6 +280,7 @@ static inline int get_uint(char **bpp, unsigned int *anint)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * timestamps kept in the cache are expressed in seconds
  * since boot.  This is the best for measuring differences in
@@ -298,6 +315,8 @@ static inline time_t get_expiry(char **bpp)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_NFSD_DEPRECATED
 static inline void sunrpc_invalidate(struct cache_head *h,
 				     struct cache_detail *detail)
@@ -308,4 +327,5 @@ static inline void sunrpc_invalidate(struct cache_head *h,
 #endif /* CONFIG_NFSD_DEPRECATED */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /*  _LINUX_SUNRPC_CACHE_H_ */

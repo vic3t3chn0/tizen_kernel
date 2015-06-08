@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 #include <asm/hwdef-copro.h>
 =======
+<<<<<<< HEAD
+#include <asm/hwdef-copro.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable-hwdef.h>
 
 #if (PHYS_OFFSET & 0x003fffff)

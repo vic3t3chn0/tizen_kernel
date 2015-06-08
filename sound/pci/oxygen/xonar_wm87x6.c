@@ -1279,8 +1279,13 @@ static const struct oxygen_model model_xonar_ds = {
 			 CAPTURE_0_FROM_I2S_1 |
 			 CAPTURE_1_FROM_SPDIF,
 =======
+<<<<<<< HEAD
+			 CAPTURE_0_FROM_I2S_1 |
+			 CAPTURE_1_FROM_SPDIF,
+=======
 			 CAPTURE_0_FROM_I2S_1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dac_channels_pcm = 8,
 	.dac_channels_mixer = 8,
 	.dac_volume_min = 255 - 2*60,
@@ -1316,8 +1321,13 @@ static const struct oxygen_model model_xonar_hdav_slim = {
 			 CAPTURE_0_FROM_I2S_1 |
 			 CAPTURE_1_FROM_SPDIF,
 =======
+<<<<<<< HEAD
+			 CAPTURE_0_FROM_I2S_1 |
+			 CAPTURE_1_FROM_SPDIF,
+=======
 			 CAPTURE_0_FROM_I2S_1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dac_channels_pcm = 8,
 	.dac_channels_mixer = 2,
 	.dac_volume_min = 255 - 2*60,

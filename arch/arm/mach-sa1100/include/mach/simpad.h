@@ -43,17 +43,25 @@
 #define GPIO_CF_CD              24
 #define GPIO_CF_IRQ             1
 =======
+<<<<<<< HEAD
+#define GPIO_CF_CD              24
+#define GPIO_CF_IRQ             1
+=======
 #define GPIO_CF_CD              GPIO_GPIO24
 #define GPIO_CF_IRQ             GPIO_GPIO1
 #define IRQ_GPIO_CF_IRQ         IRQ_GPIO1
 #define IRQ_GPIO_CF_CD          IRQ_GPIO24
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*--- SmartCard ---*/
 #define GPIO_SMART_CARD		GPIO_GPIO10
 #define IRQ_GPIO_SMARD_CARD	IRQ_GPIO10
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*--- ucb1x00 GPIO ---*/
 #define SIMPAD_UCB1X00_GPIO_BASE	(GPIO_MAX + 1)
 #define SIMPAD_UCB1X00_GPIO_PROG1	(SIMPAD_UCB1X00_GPIO_BASE)
@@ -128,6 +136,8 @@ void simpad_clear_cs3_bit(int value);
 #define PCMCIA_SHORT	0x40
 
 /*--- Battery ---*/
+<<<<<<< HEAD
+=======
 =======
 // CS3 Latch is write only, a shadow is necessary
 
@@ -156,6 +166,7 @@ void simpad_clear_cs3_bit(int value);
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct simpad_battery {
 	unsigned char ac_status;	/* line connected yes/no */
 	unsigned char status;		/* battery loading yes/no */

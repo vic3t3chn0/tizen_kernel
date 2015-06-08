@@ -10,8 +10,12 @@ ipv6-objs :=	af_inet6.o anycast.o ip6_output.o ip6_input.o addrconf.o \
 <<<<<<< HEAD
 		raw.o protocol.o icmp.o mcast.o reassembly.o tcp_ipv6.o ping.o \
 =======
+<<<<<<< HEAD
+		raw.o protocol.o icmp.o mcast.o reassembly.o tcp_ipv6.o ping.o \
+=======
 		raw.o protocol.o icmp.o mcast.o reassembly.o tcp_ipv6.o \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		exthdrs.o datagram.o ip6_flowlabel.o inet6_connection_sock.o
 
 ipv6-$(CONFIG_SYSCTL) = sysctl_net_ipv6.o

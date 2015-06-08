@@ -17,6 +17,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/interrupt.h>
 #include <linux/irq.h>
@@ -26,6 +29,8 @@
 
 #include <asm/machdep.h>
 #include <asm/rtas.h>
+<<<<<<< HEAD
+=======
 =======
 /* Change Activity:
  * 2001/09/21 : engebret : Created with minimal EPOW and HW exception support.
@@ -59,6 +64,7 @@
 #include <asm/rtas.h>
 #include <asm/udbg.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/firmware.h>
 
 #include "pseries.h"
@@ -71,8 +77,11 @@ static DEFINE_PER_CPU(__u64, mce_data_buf);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int ras_get_sensor_state_token;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ras_check_exception_token;
 
 #define EPOW_SENSOR_TOKEN	9
@@ -92,8 +101,11 @@ static int __init init_ras_IRQ(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ras_get_sensor_state_token = rtas_token("get-sensor-state");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ras_check_exception_token = rtas_token("check-exception");
 
 	/* Internal Errors */
@@ -114,6 +126,9 @@ static int __init init_ras_IRQ(void)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 subsys_initcall(init_ras_IRQ);
 
 #define EPOW_SHUTDOWN_NORMAL				1
@@ -234,6 +249,8 @@ static irqreturn_t ras_epow_interrupt(int irq, void *dev_id)
 
 	if (state > 3)
 		critical = 1;		/* Time Critical */
+<<<<<<< HEAD
+=======
 =======
 __initcall(init_ras_IRQ);
 
@@ -256,6 +273,7 @@ static irqreturn_t ras_epow_interrupt(int irq, void *dev_id)
 	if (state > 3)
 		critical = 1;  /* Time Critical */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		critical = 0;
 
@@ -265,6 +283,9 @@ static irqreturn_t ras_epow_interrupt(int irq, void *dev_id)
 			   RTAS_VECTOR_EXTERNAL_INTERRUPT,
 			   virq_to_hw(irq),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   RTAS_EPOW_WARNING,
 			   critical, __pa(&ras_log_buf),
 				rtas_get_error_log_max());
@@ -272,6 +293,8 @@ static irqreturn_t ras_epow_interrupt(int irq, void *dev_id)
 	log_error(ras_log_buf, ERR_TYPE_RTAS_LOG, 0);
 
 	rtas_parse_epow_errlog((struct rtas_error_log *)ras_log_buf);
+<<<<<<< HEAD
+=======
 =======
 			   RTAS_EPOW_WARNING | RTAS_POWERMGM_EVENTS,
 			   critical, __pa(&ras_log_buf),
@@ -285,6 +308,7 @@ static irqreturn_t ras_epow_interrupt(int irq, void *dev_id)
 	/* format and print the extended information */
 	log_error(ras_log_buf, ERR_TYPE_RTAS_LOG, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock(&ras_log_buf_lock);
 	return IRQ_HANDLED;
@@ -304,8 +328,12 @@ static irqreturn_t ras_error_interrupt(int irq, void *dev_id)
 <<<<<<< HEAD
 	int status;
 =======
+<<<<<<< HEAD
+	int status;
+=======
 	int status = 0xdeadbeef;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int fatal;
 
 	spin_lock(&ras_log_buf_lock);
@@ -316,8 +344,12 @@ static irqreturn_t ras_error_interrupt(int irq, void *dev_id)
 <<<<<<< HEAD
 			   RTAS_INTERNAL_ERROR, 1 /* Time Critical */,
 =======
+<<<<<<< HEAD
+			   RTAS_INTERNAL_ERROR, 1 /* Time Critical */,
+=======
 			   RTAS_INTERNAL_ERROR, 1 /*Time Critical */,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   __pa(&ras_log_buf),
 				rtas_get_error_log_max());
 
@@ -333,6 +365,9 @@ static irqreturn_t ras_error_interrupt(int irq, void *dev_id)
 
 	if (fatal) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_emerg("Fatal hardware error reported by firmware");
 		pr_emerg("Check RTAS error log for details");
 		pr_emerg("Immediate power off");
@@ -340,6 +375,8 @@ static irqreturn_t ras_error_interrupt(int irq, void *dev_id)
 		kernel_power_off();
 	} else {
 		pr_err("Recoverable hardware error reported by firmware");
+<<<<<<< HEAD
+=======
 =======
 		udbg_printf("Fatal HW Error <0x%lx 0x%x>\n",
 			    *((unsigned long *)&ras_log_buf), status);
@@ -360,6 +397,7 @@ static irqreturn_t ras_error_interrupt(int irq, void *dev_id)
 		       "Warning: Recoverable hardware error <0x%lx 0x%x>\n",
 		       *((unsigned long *)&ras_log_buf), status);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	spin_unlock(&ras_log_buf_lock);

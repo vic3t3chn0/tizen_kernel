@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * linux/arch/arm/mach-exynos4/dev-dwmci.c
 =======
+<<<<<<< HEAD
+ * linux/arch/arm/mach-exynos4/dev-dwmci.c
+=======
  * linux/arch/arm/mach-exynos/dev-dwmci.c
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd.
  *		http://www.samsung.com
@@ -21,6 +25,9 @@
 #include <linux/platform_device.h>
 #include <linux/interrupt.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ioport.h>
 #include <linux/mmc/dw_mmc.h>
 
@@ -29,6 +36,8 @@
 #include <mach/map.h>
 
 static int exynos4_dwmci_get_bus_wd(u32 slot_id)
+<<<<<<< HEAD
+=======
 =======
 #include <linux/mmc/dw_mmc.h>
 #include <linux/mmc/host.h>
@@ -42,11 +51,15 @@ static int exynos4_dwmci_get_bus_wd(u32 slot_id)
 
 static int exynos_dwmci_get_bus_wd(u32 slot_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 4;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int exynos4_dwmci_init(u32 slot_id, irq_handler_t handler, void *data)
 {
 	return 0;
@@ -91,6 +104,8 @@ void __init exynos4_dwmci_set_platdata(struct dw_mci_board *pd)
 		npd->init = exynos4_dwmci_init;
 	if (!npd->get_bus_wd)
 		npd->get_bus_wd = exynos4_dwmci_get_bus_wd;
+<<<<<<< HEAD
+=======
 =======
 static int exynos_dwmci_init(u32 slot_id, irq_handler_t handler, void *data)
 {
@@ -298,4 +313,5 @@ void __init exynos_dwmci_set_platdata(struct dw_mci_board *pd, u32 slot_id)
 			npd->set_io_timing = exynos_dwmci_set_io_timing;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

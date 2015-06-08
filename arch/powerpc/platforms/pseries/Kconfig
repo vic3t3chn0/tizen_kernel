@@ -6,8 +6,14 @@ config PPC_PSERIES
 	select MPIC
 	select OF_DYNAMIC
 =======
+<<<<<<< HEAD
+	select HAVE_PCSPKR_PLATFORM
+	select MPIC
+	select OF_DYNAMIC
+=======
 	select MPIC
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PCI_MSI
 	select PPC_XICS
 	select PPC_ICP_NATIVE
@@ -23,7 +29,11 @@ config PPC_PSERIES
 <<<<<<< HEAD
 	select ZLIB_DEFLATE
 =======
+<<<<<<< HEAD
+	select ZLIB_DEFLATE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default y
 
 config PPC_SPLPAR
@@ -42,10 +52,16 @@ config EEH
 	depends on PPC_PSERIES && PCI
 	default y
 =======
+<<<<<<< HEAD
+	bool
+	depends on PPC_PSERIES && PCI
+	default y
+=======
 	bool "PCI Extended Error Handling (EEH)" if EXPERT
 	depends on PPC_PSERIES && PCI
 	default y if !EXPERT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config PSERIES_MSI
        bool
@@ -89,8 +105,12 @@ config LPARCFG
 <<<<<<< HEAD
 	depends on PPC_PSERIES
 =======
+<<<<<<< HEAD
+	depends on PPC_PSERIES
+=======
 	depends on PPC_PSERIES || PPC_ISERIES
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	Provide system capacity information via human readable
 	<key word>=<value> pairs through a /proc/ppc64/lparcfg interface.
@@ -139,6 +159,9 @@ config DTL
 
 	  Say N if you are unsure.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config PSERIES_IDLE
 	bool "Cpuidle driver for pSeries platforms"
@@ -148,5 +171,8 @@ config PSERIES_IDLE
 	help
 	  Select this option to enable processor idle state management
 	  through cpuidle subsystem.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

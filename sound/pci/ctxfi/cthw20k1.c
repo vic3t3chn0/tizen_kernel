@@ -1778,6 +1778,9 @@ static int hw_adc_init(struct hw *hw, const struct adc_conf *info)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct capabilities hw_capabilities(struct hw *hw)
 {
 	struct capabilities cap;
@@ -1789,12 +1792,15 @@ static struct capabilities hw_capabilities(struct hw *hw)
 	cap.mic_source_switch = 0;
 
 	return cap;
+<<<<<<< HEAD
+=======
 =======
 static int hw_have_digit_io_switch(struct hw *hw)
 {
 	/* SB073x and Vista compatible cards have no digit IO switch */
 	return !(hw->model == CTSB073X || hw->model == CTUAA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define CTLBITS(a, b, c, d)	(((a) << 24) | ((b) << 16) | ((c) << 8) | (d))
@@ -1950,8 +1956,12 @@ static int hw_card_start(struct hw *hw)
 <<<<<<< HEAD
 				  KBUILD_MODNAME, hw);
 =======
+<<<<<<< HEAD
+				  KBUILD_MODNAME, hw);
+=======
 				  "ctxfi", hw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0) {
 			printk(KERN_ERR "XFi: Cannot get irq %d\n", pci->irq);
 			goto error2;
@@ -2193,8 +2203,12 @@ static struct hw ct20k1_preset __devinitdata = {
 <<<<<<< HEAD
 	.capabilities = hw_capabilities,
 =======
+<<<<<<< HEAD
+	.capabilities = hw_capabilities,
+=======
 	.have_digit_io_switch = hw_have_digit_io_switch,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 	.suspend = hw_suspend,
 	.resume = hw_resume,

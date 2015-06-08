@@ -239,6 +239,11 @@ extern void ntp_init(void);
 extern void ntp_clear(void);
 
 =======
+<<<<<<< HEAD
+extern void ntp_init(void);
+extern void ntp_clear(void);
+
+=======
 /*
  * phase-lock loop variables
  */
@@ -257,6 +262,7 @@ static inline int ntp_synced(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Required to safely shift negative values */
 #define shift_right(x, s) ({	\
 	__typeof__(x) __x = (x);	\
@@ -275,11 +281,17 @@ extern u64 ntp_tick_length(void);
 
 extern int second_overflow(unsigned long secs);
 =======
+<<<<<<< HEAD
+extern u64 ntp_tick_length(void);
+
+extern int second_overflow(unsigned long secs);
+=======
 extern u64 tick_length;
 
 extern int second_overflow(unsigned long secs);
 extern void update_ntp_one_tick(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int do_adjtimex(struct timex *);
 extern void hardpps(const struct timespec *, const struct timespec *);
 

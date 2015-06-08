@@ -21,6 +21,9 @@ extern unsigned int boot_cpuid; /* move to smp.h */
 extern char cmd_line[COMMAND_LINE_SIZE];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern char *klimit;
 
 void early_printk(const char *fmt, ...);
@@ -29,6 +32,8 @@ int setup_early_printk(char *opt);
 void remap_early_printk(void);
 void disable_early_printk(void);
 
+<<<<<<< HEAD
+=======
 =======
 void early_printk(const char *fmt, ...);
 
@@ -42,6 +47,7 @@ void disable_early_printk(void);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void heartbeat(void);
 void setup_heartbeat(void);
 
@@ -59,8 +65,13 @@ void machine_early_init(const char *cmdline, unsigned int ram,
 		unsigned int fdt, unsigned int msr, unsigned int tlb0,
 		unsigned int tlb1);
 =======
+<<<<<<< HEAD
+		unsigned int fdt, unsigned int msr, unsigned int tlb0,
+		unsigned int tlb1);
+=======
 			unsigned int fdt, unsigned int msr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void machine_restart(char *cmd);
 void machine_shutdown(void);
@@ -68,12 +79,18 @@ void machine_halt(void);
 void machine_power_off(void);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void free_init_pages(char *what, unsigned long begin, unsigned long end);
 extern void *alloc_maybe_bootmem(size_t size, gfp_t mask);
 extern void *zalloc_maybe_bootmem(size_t size, gfp_t mask);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #  endif/* __KERNEL__ */
 # endif /* __ASSEMBLY__ */
 #endif /* _ASM_MICROBLAZE_SETUP_H */

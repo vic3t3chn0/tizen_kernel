@@ -27,8 +27,11 @@ static struct irqaction bfin_timer_irq = {
 	.name = "Blackfin Timer Tick",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.flags = IRQF_DISABLED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_IPIPE)
@@ -57,8 +60,12 @@ void __init setup_core_timer(void)
 <<<<<<< HEAD
 	bfin_write_TCNTL(TMPWR);
 =======
+<<<<<<< HEAD
+	bfin_write_TCNTL(TMPWR);
+=======
 	bfin_write_TCNTL(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CSYNC();
 
 	/* the TSCALE prescaler counter */
@@ -74,8 +81,12 @@ void __init setup_core_timer(void)
 <<<<<<< HEAD
 	bfin_write_TCNTL(TAUTORLD | TMREN | TMPWR);
 =======
+<<<<<<< HEAD
+	bfin_write_TCNTL(TAUTORLD | TMREN | TMPWR);
+=======
 	bfin_write_TCNTL(7);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 

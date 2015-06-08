@@ -20,6 +20,9 @@
 #include <bcm63xx_irq.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __dispatch_internal(void) __maybe_unused;
 static void __dispatch_internal_64(void) __maybe_unused;
 static void __internal_irq_mask_32(unsigned int irq) __maybe_unused;
@@ -189,8 +192,11 @@ static inline void handle_internal(int intbit)
 		do_IRQ(intbit + IRQ_INTERNAL_BASE);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * dispatch internal devices IRQ (uart, enet, watchdog, ...). do not
  * prioritize any interrupt relatively to another. the static counter
@@ -200,8 +206,12 @@ static inline void handle_internal(int intbit)
 <<<<<<< HEAD
 static void __dispatch_internal(void)
 =======
+<<<<<<< HEAD
+static void __dispatch_internal(void)
+=======
 static void bcm63xx_irq_dispatch_internal(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 pending;
 	static int i;
@@ -209,9 +219,13 @@ static void bcm63xx_irq_dispatch_internal(void)
 <<<<<<< HEAD
 	pending = bcm_readl(irq_stat_addr) & bcm_readl(irq_mask_addr);
 =======
+<<<<<<< HEAD
+	pending = bcm_readl(irq_stat_addr) & bcm_readl(irq_mask_addr);
+=======
 	pending = bcm_perf_readl(PERF_IRQMASK_REG) &
 		bcm_perf_readl(PERF_IRQSTAT_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pending)
 		return ;
@@ -222,6 +236,9 @@ static void bcm63xx_irq_dispatch_internal(void)
 		i = (i + 1) & 0x1f;
 		if (pending & (1 << to_call)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			handle_internal(to_call);
 			break;
 		}
@@ -244,9 +261,12 @@ static void __dispatch_internal_64(void)
 		i = (i + 1) & 0x3f;
 		if (pending & (1ull << to_call)) {
 			handle_internal(to_call);
+<<<<<<< HEAD
+=======
 =======
 			do_IRQ(to_call + IRQ_INTERNAL_BASE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -266,6 +286,9 @@ asmlinkage void plat_irq_dispatch(void)
 			do_IRQ(7);
 		if (cause & CAUSEF_IP2)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dispatch_internal();
 		if (!is_ext_irq_cascaded) {
 			if (cause & CAUSEF_IP3)
@@ -277,6 +300,8 @@ asmlinkage void plat_irq_dispatch(void)
 			if (cause & CAUSEF_IP6)
 				do_IRQ(IRQ_EXT_3);
 		}
+<<<<<<< HEAD
+=======
 =======
 			bcm63xx_irq_dispatch_internal();
 		if (cause & CAUSEF_IP3)
@@ -288,6 +313,7 @@ asmlinkage void plat_irq_dispatch(void)
 		if (cause & CAUSEF_IP6)
 			do_IRQ(IRQ_EXT_3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (1);
 }
 
@@ -296,6 +322,9 @@ asmlinkage void plat_irq_dispatch(void)
  * register.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __internal_irq_mask_32(unsigned int irq)
 {
 	u32 mask;
@@ -340,6 +369,8 @@ static void bcm63xx_internal_irq_mask(struct irq_data *d)
 static void bcm63xx_internal_irq_unmask(struct irq_data *d)
 {
 	internal_irq_unmask(d->irq - IRQ_INTERNAL_BASE);
+<<<<<<< HEAD
+=======
 =======
 static inline void bcm63xx_internal_irq_mask(struct irq_data *d)
 {
@@ -360,6 +391,7 @@ static void bcm63xx_internal_irq_unmask(struct irq_data *d)
 	mask |= (1 << irq);
 	bcm_perf_writel(mask, PERF_IRQMASK_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -369,6 +401,9 @@ static void bcm63xx_internal_irq_unmask(struct irq_data *d)
 static void bcm63xx_external_irq_mask(struct irq_data *d)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int irq = d->irq - IRQ_EXTERNAL_BASE;
 	u32 reg, regaddr;
 
@@ -383,6 +418,8 @@ static void bcm63xx_external_irq_mask(struct irq_data *d)
 	bcm_perf_writel(reg, regaddr);
 	if (is_ext_irq_cascaded)
 		internal_irq_mask(irq + ext_irq_start);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int irq = d->irq - IRQ_EXT_BASE;
 	u32 reg;
@@ -391,11 +428,15 @@ static void bcm63xx_external_irq_mask(struct irq_data *d)
 	reg &= ~EXTIRQ_CFG_MASK(irq);
 	bcm_perf_writel(reg, PERF_EXTIRQ_CFG_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void bcm63xx_external_irq_unmask(struct irq_data *d)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int irq = d->irq - IRQ_EXTERNAL_BASE;
 	u32 reg, regaddr;
 
@@ -411,6 +452,8 @@ static void bcm63xx_external_irq_unmask(struct irq_data *d)
 
 	if (is_ext_irq_cascaded)
 		internal_irq_unmask(irq + ext_irq_start);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int irq = d->irq - IRQ_EXT_BASE;
 	u32 reg;
@@ -419,11 +462,15 @@ static void bcm63xx_external_irq_unmask(struct irq_data *d)
 	reg |= EXTIRQ_CFG_MASK(irq);
 	bcm_perf_writel(reg, PERF_EXTIRQ_CFG_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void bcm63xx_external_irq_clear(struct irq_data *d)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int irq = d->irq - IRQ_EXTERNAL_BASE;
 	u32 reg, regaddr;
 
@@ -436,6 +483,8 @@ static void bcm63xx_external_irq_clear(struct irq_data *d)
 		reg |= EXTIRQ_CFG_CLEAR(irq % 4);
 
 	bcm_perf_writel(reg, regaddr);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int irq = d->irq - IRQ_EXT_BASE;
 	u32 reg;
@@ -459,6 +508,7 @@ static void bcm63xx_external_irq_shutdown(struct irq_data *d)
 	clear_c0_status(0x100 << (d->irq - IRQ_MIPS_BASE));
 	irq_disable_hazard();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int bcm63xx_external_irq_set_type(struct irq_data *d,
@@ -469,9 +519,15 @@ static int bcm63xx_external_irq_set_type(struct irq_data *d,
 	u32 reg, regaddr;
 	int levelsense, sense, bothedge;
 =======
+<<<<<<< HEAD
+	unsigned int irq = d->irq - IRQ_EXTERNAL_BASE;
+	u32 reg, regaddr;
+	int levelsense, sense, bothedge;
+=======
 	unsigned int irq = d->irq - IRQ_EXT_BASE;
 	u32 reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	flow_type &= IRQ_TYPE_SENSE_MASK;
 
@@ -479,6 +535,9 @@ static int bcm63xx_external_irq_set_type(struct irq_data *d,
 		flow_type = IRQ_TYPE_LEVEL_LOW;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	levelsense = sense = bothedge = 0;
 	switch (flow_type) {
 	case IRQ_TYPE_EDGE_BOTH:
@@ -499,6 +558,8 @@ static int bcm63xx_external_irq_set_type(struct irq_data *d,
 
 	case IRQ_TYPE_LEVEL_LOW:
 		levelsense = 1;
+<<<<<<< HEAD
+=======
 =======
 	reg = bcm_perf_readl(PERF_EXTIRQ_CFG_REG);
 	switch (flow_type) {
@@ -528,6 +589,7 @@ static int bcm63xx_external_irq_set_type(struct irq_data *d,
 		reg |= EXTIRQ_CFG_LEVELSENSE(irq);
 		reg &= ~EXTIRQ_CFG_SENSE(irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	default:
@@ -535,6 +597,9 @@ static int bcm63xx_external_irq_set_type(struct irq_data *d,
 		return -EINVAL;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	regaddr = get_ext_irq_perf_reg(irq);
 	reg = bcm_perf_readl(regaddr);
@@ -571,9 +636,12 @@ static int bcm63xx_external_irq_set_type(struct irq_data *d,
 	}
 
 	bcm_perf_writel(reg, regaddr);
+<<<<<<< HEAD
+=======
 =======
 	bcm_perf_writel(reg, PERF_EXTIRQ_CFG_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irqd_set_trigger_type(d, flow_type);
 	if (flow_type & (IRQ_TYPE_LEVEL_LOW | IRQ_TYPE_LEVEL_HIGH))
@@ -594,10 +662,13 @@ static struct irq_chip bcm63xx_external_irq_chip = {
 	.name		= "bcm63xx_epic",
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq_startup	= bcm63xx_external_irq_startup,
 	.irq_shutdown	= bcm63xx_external_irq_shutdown,
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.irq_ack	= bcm63xx_external_irq_clear,
 
 	.irq_mask	= bcm63xx_external_irq_mask,
@@ -610,6 +681,9 @@ static struct irqaction cpu_ip2_cascade_action = {
 	.handler	= no_action,
 	.name		= "cascade_ip2",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags		= IRQF_NO_THREAD,
 };
 
@@ -617,8 +691,11 @@ static struct irqaction cpu_ext_cascade_action = {
 	.handler	= no_action,
 	.name		= "cascade_extirq",
 	.flags		= IRQF_NO_THREAD,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init arch_init_irq(void)
@@ -628,13 +705,20 @@ void __init arch_init_irq(void)
 <<<<<<< HEAD
 	bcm63xx_init_irq();
 =======
+<<<<<<< HEAD
+	bcm63xx_init_irq();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mips_cpu_irq_init();
 	for (i = IRQ_INTERNAL_BASE; i < NR_IRQS; ++i)
 		irq_set_chip_and_handler(i, &bcm63xx_internal_irq_chip,
 					 handle_level_irq);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = IRQ_EXTERNAL_BASE; i < IRQ_EXTERNAL_BASE + ext_irq_count; ++i)
 		irq_set_chip_and_handler(i, &bcm63xx_external_irq_chip,
 					 handle_edge_irq);
@@ -645,6 +729,8 @@ void __init arch_init_irq(void)
 	}
 
 	setup_irq(MIPS_CPU_IRQ_BASE + 2, &cpu_ip2_cascade_action);
+<<<<<<< HEAD
+=======
 =======
 	for (i = IRQ_EXT_BASE; i < IRQ_EXT_BASE + 4; ++i)
 		irq_set_chip_and_handler(i, &bcm63xx_external_irq_chip,
@@ -652,4 +738,5 @@ void __init arch_init_irq(void)
 
 	setup_irq(IRQ_MIPS_BASE + 2, &cpu_ip2_cascade_action);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

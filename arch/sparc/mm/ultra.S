@@ -55,6 +55,8 @@ __flush_tlb_mm:		/* 18 insns */
 	.align		32
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.globl		__flush_tlb_page
 __flush_tlb_page:	/* 22 insns */
 	/* %o0 = context, %o1 = vaddr */
@@ -83,6 +85,7 @@ __flush_tlb_page:	/* 22 insns */
 
 	.align		32
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl		__flush_tlb_pending
 __flush_tlb_pending:	/* 26 insns */
 	/* %o0 = context, %o1 = nr, %o2 = vaddrs[] */
@@ -235,6 +238,8 @@ __cheetah_flush_tlb_mm: /* 19 insns */
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 __cheetah_flush_tlb_page:	/* 22 insns */
 	/* %o0 = context, %o1 = vaddr */
 	rdpr		%pstate, %g7
@@ -261,6 +266,7 @@ __cheetah_flush_tlb_page:	/* 22 insns */
 	 wrpr		%g7, 0x0, %pstate
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __cheetah_flush_tlb_pending:	/* 27 insns */
 	/* %o0 = context, %o1 = nr, %o2 = vaddrs[] */
 	rdpr		%pstate, %g7
@@ -329,6 +335,8 @@ __hypervisor_flush_tlb_mm: /* 10 insns */
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 __hypervisor_flush_tlb_page: /* 11 insns */
 	/* %o0 = context, %o1 = vaddr */
 	mov		%o0, %g2
@@ -344,6 +352,7 @@ __hypervisor_flush_tlb_page: /* 11 insns */
 	 nop
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __hypervisor_flush_tlb_pending: /* 16 insns */
 	/* %o0 = context, %o1 = nr, %o2 = vaddrs[] */
 	sllx		%o1, 3, %g1
@@ -416,6 +425,8 @@ cheetah_patch_cachetlbops:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	sethi		%hi(__flush_tlb_page), %o0
 	or		%o0, %lo(__flush_tlb_page), %o0
 	sethi		%hi(__cheetah_flush_tlb_page), %o1
@@ -424,6 +435,7 @@ cheetah_patch_cachetlbops:
 	 mov		22, %o2
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sethi		%hi(__flush_tlb_pending), %o0
 	or		%o0, %lo(__flush_tlb_pending), %o0
 	sethi		%hi(__cheetah_flush_tlb_pending), %o1
@@ -483,15 +495,21 @@ xcall_flush_tlb_mm:	/* 21 insns */
 	nop
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl		xcall_flush_tlb_pending
 xcall_flush_tlb_pending:	/* 21 insns */
 	/* %g5=context, %g1=nr, %g7=vaddrs[] */
 	sllx		%g1, 3, %g1
+<<<<<<< HEAD
+=======
 =======
 	.globl		xcall_flush_tlb_page
 xcall_flush_tlb_page:	/* 17 insns */
 	/* %g5=context, %g1=vaddr */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov		PRIMARY_CONTEXT, %g4
 	ldxa		[%g4] ASI_DMMU, %g2
 	srlx		%g2, CTX_PGSZ1_NUC_SHIFT, %g4
@@ -500,6 +518,9 @@ xcall_flush_tlb_page:	/* 17 insns */
 	mov		PRIMARY_CONTEXT, %g4
 	stxa		%g5, [%g4] ASI_DMMU
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:	sub		%g1, (1 << 3), %g1
 	ldx		[%g7 + %g1], %g5
 	andcc		%g5, 0x1, %g0
@@ -514,6 +535,8 @@ xcall_flush_tlb_page:	/* 17 insns */
 	stxa		%g2, [%g4] ASI_DMMU
 	retry
 	nop
+<<<<<<< HEAD
+=======
 =======
 	andcc		%g1, 0x1, %g0
 	be,pn		%icc, 2f
@@ -526,6 +549,7 @@ xcall_flush_tlb_page:	/* 17 insns */
 	nop
 	nop
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.globl		xcall_flush_tlb_kernel_range
 xcall_flush_tlb_kernel_range:	/* 25 insns */
@@ -701,6 +725,9 @@ __hypervisor_xcall_flush_tlb_mm: /* 21 insns */
 	retry
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl		__hypervisor_xcall_flush_tlb_pending
 __hypervisor_xcall_flush_tlb_pending: /* 21 insns */
 	/* %g5=ctx, %g1=nr, %g7=vaddrs[], %g2,%g3,%g4,g6=scratch */
@@ -710,6 +737,8 @@ __hypervisor_xcall_flush_tlb_pending: /* 21 insns */
 	mov		%o2, %g4
 1:	sub		%g1, (1 << 3), %g1
 	ldx		[%g7 + %g1], %o0	/* ARG0: virtual address */
+<<<<<<< HEAD
+=======
 =======
 	.globl		__hypervisor_xcall_flush_tlb_page
 __hypervisor_xcall_flush_tlb_page: /* 17 insns */
@@ -719,6 +748,7 @@ __hypervisor_xcall_flush_tlb_page: /* 17 insns */
 	mov		%o2, %g4
 	mov		%g1, %o0	        /* ARG0: virtual address */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov		%g5, %o1		/* ARG1: mmu context */
 	mov		HV_MMU_ALL, %o2		/* ARG2: flags */
 	srlx		%o0, PAGE_SHIFT, %o0
@@ -731,7 +761,12 @@ __hypervisor_xcall_flush_tlb_page: /* 17 insns */
 	brnz,pt		%g1, 1b
 	 nop
 =======
+<<<<<<< HEAD
+	brnz,pt		%g1, 1b
+	 nop
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov		%g2, %o0
 	mov		%g3, %o1
 	mov		%g4, %o2
@@ -816,6 +851,8 @@ hypervisor_patch_cachetlbops:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	sethi		%hi(__flush_tlb_page), %o0
 	or		%o0, %lo(__flush_tlb_page), %o0
 	sethi		%hi(__hypervisor_flush_tlb_page), %o1
@@ -824,6 +861,7 @@ hypervisor_patch_cachetlbops:
 	 mov		11, %o2
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sethi		%hi(__flush_tlb_pending), %o0
 	or		%o0, %lo(__flush_tlb_pending), %o0
 	sethi		%hi(__hypervisor_flush_tlb_pending), %o1
@@ -856,12 +894,17 @@ hypervisor_patch_cachetlbops:
 	 mov		21, %o2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sethi		%hi(xcall_flush_tlb_pending), %o0
 	or		%o0, %lo(xcall_flush_tlb_pending), %o0
 	sethi		%hi(__hypervisor_xcall_flush_tlb_pending), %o1
 	or		%o1, %lo(__hypervisor_xcall_flush_tlb_pending), %o1
 	call		tlb_patch_one
 	 mov		21, %o2
+<<<<<<< HEAD
+=======
 =======
 	sethi		%hi(xcall_flush_tlb_page), %o0
 	or		%o0, %lo(xcall_flush_tlb_page), %o0
@@ -870,6 +913,7 @@ hypervisor_patch_cachetlbops:
 	call		tlb_patch_one
 	 mov		17, %o2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sethi		%hi(xcall_flush_tlb_kernel_range), %o0
 	or		%o0, %lo(xcall_flush_tlb_kernel_range), %o0

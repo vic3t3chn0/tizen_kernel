@@ -32,6 +32,10 @@
 #define AMD_DELTA_LATCH2_SCARD_RSTIN	0x0400
 #define AMD_DELTA_LATCH2_SCARD_CMDVCC	0x0800
 =======
+<<<<<<< HEAD
+#define AMD_DELTA_LATCH2_SCARD_RSTIN	0x0400
+#define AMD_DELTA_LATCH2_SCARD_CMDVCC	0x0800
+=======
 #define AMS_DELTA_LATCH1_PHYS		0x01000000
 #define AMS_DELTA_LATCH1_VIRT		0xEA000000
 #define AMS_DELTA_MODEM_PHYS		0x04000000
@@ -60,6 +64,7 @@
 #define AMD_DELTA_LATCH2_SCARD_CMDVCC	0x0800
 #define AMS_DELTA_LATCH2_MODEM_NRESET	0x1000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AMS_DELTA_LATCH2_MODEM_CODEC	0x2000
 
 #define AMS_DELTA_GPIO_PIN_KEYBRD_DATA	0
@@ -72,6 +77,9 @@
 #define AMS_DELTA_GPIO_PIN_NAND_RB	12
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AMS_DELTA_GPIO_PIN_LCD_VBLEN		240
 #define AMS_DELTA_GPIO_PIN_LCD_NDISP		241
 #define AMS_DELTA_GPIO_PIN_NAND_NCE		242
@@ -95,11 +103,14 @@ void ams_delta_latch_write(int base, int ngpio, u16 mask, u16 value);
 #define ams_delta_latch2_write(mask, value) \
 	ams_delta_latch_write(AMS_DELTA_LATCH2_GPIO_BASE, \
 			AMS_DELTA_LATCH2_NGPIO, (mask), (value))
+<<<<<<< HEAD
+=======
 =======
 #ifndef __ASSEMBLY__
 void ams_delta_latch1_write(u8 mask, u8 value);
 void ams_delta_latch2_write(u16 mask, u16 value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* CONFIG_MACH_AMS_DELTA */

@@ -7,7 +7,11 @@
 <<<<<<< HEAD
 # genhdr-y  - Same as objhdr-y but in a generated/ directory
 =======
+<<<<<<< HEAD
+# genhdr-y  - Same as objhdr-y but in a generated/ directory
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # ==========================================================================
 
@@ -19,7 +23,13 @@ _dst := $(if $(dst),$(dst),$(obj))
 gen := $(if $(gen),$(gen),$(subst include/,include/generated/,$(obj)))
 
 =======
+<<<<<<< HEAD
+# generated header directory
+gen := $(if $(gen),$(gen),$(subst include/,include/generated/,$(obj)))
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kbuild-file := $(srctree)/$(obj)/Kbuild
 include $(kbuild-file)
 
@@ -44,15 +54,21 @@ wrapper-files := $(filter $(header-y), $(generic-y))
 # all headers files for this dir
 header-y      := $(filter-out $(generic-y), $(header-y))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 all-files     := $(header-y) $(objhdr-y) $(genhdr-y) $(wrapper-files)
 input-files   := $(addprefix $(srctree)/$(obj)/,$(header-y)) \
                  $(addprefix $(objtree)/$(obj)/,$(objhdr-y)) \
                  $(addprefix $(objtree)/$(gen)/,$(genhdr-y))
+<<<<<<< HEAD
+=======
 =======
 all-files     := $(header-y) $(objhdr-y) $(wrapper-files)
 input-files   := $(addprefix $(srctree)/$(obj)/,$(header-y)) \
                  $(addprefix $(objtree)/$(obj)/,$(objhdr-y))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 output-files  := $(addprefix $(install)/, $(all-files))
 
 # Work out what needs to be removed
@@ -72,7 +88,11 @@ quiet_cmd_install = INSTALL $(printdir) ($(words $(all-files))\
 <<<<<<< HEAD
         $(PERL) $< $(objtree)/$(gen) $(install) $(SRCARCH) $(genhdr-y); \
 =======
+<<<<<<< HEAD
+        $(PERL) $< $(objtree)/$(gen) $(install) $(SRCARCH) $(genhdr-y); \
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         for F in $(wrapper-files); do                                   \
                 echo "\#include <asm-generic/$$F>" > $(install)/$$F;    \
         done;                                                           \

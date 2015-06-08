@@ -50,8 +50,12 @@ struct xfs_trans;
 <<<<<<< HEAD
 	((xfs_suminfo_t *)((bp)->b_addr + \
 =======
+<<<<<<< HEAD
+	((xfs_suminfo_t *)((bp)->b_addr + \
+=======
 	((xfs_suminfo_t *)((char *)XFS_BUF_PTR(bp) + \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(((so) * (uint)sizeof(xfs_suminfo_t)) & XFS_BLOCKMASK(mp))))
 
 #define	XFS_BITTOBLOCK(mp,bi)	((bi) >> (mp)->m_blkbit_log)

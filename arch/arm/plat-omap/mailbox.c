@@ -32,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/mailbox.h>
 
@@ -313,8 +317,12 @@ static void omap_mbox_fini(struct omap_mbox *mbox)
 <<<<<<< HEAD
 		flush_work_sync(&mbox->rxq->work);
 =======
+<<<<<<< HEAD
+		flush_work_sync(&mbox->rxq->work);
+=======
 	flush_work_sync(&mbox->rxq->work);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mbox_queue_free(mbox->txq);
 		mbox_queue_free(mbox->rxq);
 	}

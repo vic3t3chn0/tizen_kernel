@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 CONFIG_EXPERIMENTAL=y
 # CONFIG_LOCALVERSION_AUTO is not set
 CONFIG_SYSVIPC=y
@@ -578,6 +581,8 @@ CONFIG_CRYPTO_ZLIB=m
 CONFIG_CRYPTO_LZO=m
 CONFIG_CRC_CCITT=m
 CONFIG_CRC7=m
+<<<<<<< HEAD
+=======
 =======
 #
 # Automatically generated make config: don't edit
@@ -1743,3 +1748,4 @@ CONFIG_NLATTR=y
 CONFIG_HAVE_KVM=y
 # CONFIG_VIRTUALIZATION is not set
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -51,8 +51,12 @@
 <<<<<<< HEAD
 .globl user_irqvec_fixup
 =======
+<<<<<<< HEAD
+.globl user_irqvec_fixup
+=======
 .globl user_irqvec_fixup, user_irqhandler_fixup
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 .text
 ENTRY(buserr)
@@ -107,8 +111,13 @@ ENTRY(ret_from_signal)
 	movel	%curptr@(TASK_STACK),%a1
 	tstb	%a1@(TINFO_FLAGS+2)
 =======
+<<<<<<< HEAD
+	movel	%curptr@(TASK_STACK),%a1
+	tstb	%a1@(TINFO_FLAGS+2)
+=======
 	tstb	%curptr@(TASK_INFO+TINFO_FLAGS+2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jge	1f
 	jbsr	syscall_trace
 1:	RESTORE_SWITCH_STACK
@@ -133,7 +142,12 @@ ENTRY(system_call)
 	movel	%d1,%a1
 
 =======
+<<<<<<< HEAD
+	movel	%d1,%a1
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	| save top of frame
 	movel	%sp,%curptr@(TASK_THREAD+THREAD_ESP0)
 
@@ -141,8 +155,12 @@ ENTRY(system_call)
 <<<<<<< HEAD
 	tstb	%a1@(TINFO_FLAGS+2)
 =======
+<<<<<<< HEAD
+	tstb	%a1@(TINFO_FLAGS+2)
+=======
 	tstb	%curptr@(TASK_INFO+TINFO_FLAGS+2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jmi	do_trace_entry
 	cmpl	#NR_syscalls,%d0
 	jcc	badsys
@@ -155,8 +173,13 @@ ret_from_syscall:
 	movel	%curptr@(TASK_STACK),%a1
 	movew	%a1@(TINFO_FLAGS+2),%d0
 =======
+<<<<<<< HEAD
+	movel	%curptr@(TASK_STACK),%a1
+	movew	%a1@(TINFO_FLAGS+2),%d0
+=======
 	movew	%curptr@(TASK_INFO+TINFO_FLAGS+2),%d0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jne	syscall_exit_work
 1:	RESTORE_ALL
 
@@ -186,8 +209,13 @@ resume_userspace:
 	movel	%curptr@(TASK_STACK),%a1
 	moveb	%a1@(TINFO_FLAGS+3),%d0
 =======
+<<<<<<< HEAD
+	movel	%curptr@(TASK_STACK),%a1
+	moveb	%a1@(TINFO_FLAGS+3),%d0
+=======
 	moveb	%curptr@(TASK_INFO+TINFO_FLAGS+3),%d0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jne	exit_work
 1:	RESTORE_ALL
 
@@ -231,8 +259,13 @@ ENTRY(auto_inthandler)
 	movel	%d0,%a1
 	addqb	#1,%a1@(TINFO_PREEMPT+1)
 =======
+<<<<<<< HEAD
+	movel	%d0,%a1
+	addqb	#1,%a1@(TINFO_PREEMPT+1)
+=======
 	addqb	#1,%curptr@(TASK_INFO+TINFO_PREEMPT+1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					|  put exception # in d0
 	bfextu	%sp@(PT_OFF_FORMATVEC){#4,#10},%d0
 	subw	#VEC_SPUR,%d0
@@ -241,12 +274,17 @@ ENTRY(auto_inthandler)
 	movel	%d0,%sp@-		|  put vector # on stack
 auto_irqhandler_fixup = . + 2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jsr	do_IRQ			|  process the IRQ
 	addql	#8,%sp			|  pop parameters off stack
 
 ret_from_interrupt:
 	movel	%curptr@(TASK_STACK),%a1
 	subqb	#1,%a1@(TINFO_PREEMPT+1)
+<<<<<<< HEAD
+=======
 =======
 	jsr	__m68k_handle_int	|  process the IRQ
 	addql	#8,%sp			|  pop parameters off stack
@@ -254,6 +292,7 @@ ret_from_interrupt:
 ret_from_interrupt:
 	subqb	#1,%curptr@(TASK_INFO+TINFO_PREEMPT+1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jeq	ret_from_last_interrupt
 2:	RESTORE_ALL
 
@@ -278,8 +317,13 @@ ENTRY(user_inthandler)
 	movel	%d0,%a1
 	addqb	#1,%a1@(TINFO_PREEMPT+1)
 =======
+<<<<<<< HEAD
+	movel	%d0,%a1
+	addqb	#1,%a1@(TINFO_PREEMPT+1)
+=======
 	addqb	#1,%curptr@(TASK_INFO+TINFO_PREEMPT+1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					|  put exception # in d0
 	bfextu	%sp@(PT_OFF_FORMATVEC){#4,#10},%d0
 user_irqvec_fixup = . + 2
@@ -288,11 +332,16 @@ user_irqvec_fixup = . + 2
 	movel	%sp,%sp@-
 	movel	%d0,%sp@-		|  put vector # on stack
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jsr	do_IRQ			|  process the IRQ
 	addql	#8,%sp			|  pop parameters off stack
 
 	movel	%curptr@(TASK_STACK),%a1
 	subqb	#1,%a1@(TINFO_PREEMPT+1)
+<<<<<<< HEAD
+=======
 =======
 user_irqhandler_fixup = . + 2
 	jsr	__m68k_handle_int	|  process the IRQ
@@ -300,6 +349,7 @@ user_irqhandler_fixup = . + 2
 
 	subqb	#1,%curptr@(TASK_INFO+TINFO_PREEMPT+1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jeq	ret_from_last_interrupt
 	RESTORE_ALL
 
@@ -312,8 +362,13 @@ ENTRY(bad_inthandler)
 	movel	%d0,%a1
 	addqb	#1,%a1@(TINFO_PREEMPT+1)
 =======
+<<<<<<< HEAD
+	movel	%d0,%a1
+	addqb	#1,%a1@(TINFO_PREEMPT+1)
+=======
 	addqb	#1,%curptr@(TASK_INFO+TINFO_PREEMPT+1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	movel	%sp,%sp@-
 	jsr	handle_badint
@@ -323,8 +378,13 @@ ENTRY(bad_inthandler)
 	movel	%curptr@(TASK_STACK),%a1
 	subqb	#1,%a1@(TINFO_PREEMPT+1)
 =======
+<<<<<<< HEAD
+	movel	%curptr@(TASK_STACK),%a1
+	subqb	#1,%a1@(TINFO_PREEMPT+1)
+=======
 	subqb	#1,%curptr@(TASK_INFO+TINFO_PREEMPT+1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jeq	ret_from_last_interrupt
 	RESTORE_ALL
 

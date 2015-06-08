@@ -46,9 +46,18 @@
 
 #include <net/iw_handler.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 /*---------------------  Static Definitions -------------------------*/
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+/*---------------------  Static Definitions -------------------------*/
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef WPA_SUPPLICANT_DRIVER_WEXT_SUPPORT
 #define SUPPORTED_WIRELESS_EXT                  18
 #else
@@ -63,6 +72,13 @@ static const long frequency_list[] = {
     5700, 5745, 5765, 5785, 5805, 5825
 	};
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int          msglevel                =MSG_LEVEL_INFO;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*---------------------  Static Classes  ----------------------------*/
 
@@ -76,6 +92,10 @@ static int          msglevel                =MSG_LEVEL_INFO;
 
 /*---------------------  Export Variables  --------------------------*/
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct iw_statistics *iwctl_get_wireless_stats(struct net_device *dev)
 {
 	PSDevice pDevice = netdev_priv(dev);
@@ -87,7 +107,14 @@ struct iw_statistics *iwctl_get_wireless_stats(struct net_device *dev)
                pDevice->wstats.qual.qual =(BYTE) pDevice->scStatistic.LinkQuality;
 	RFvRSSITodBm(pDevice, (BYTE)(pDevice->uCurrRSSI), &ldBm);
 	pDevice->wstats.qual.level = ldBm;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	//pDevice->wstats.qual.level = 0x100 - pDevice->uCurrRSSI;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	//pDevice->wstats.qual.level = 0x100 - pDevice->uCurrRSSI;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pDevice->wstats.qual.noise = 0;
 	pDevice->wstats.qual.updated = 1;
 	pDevice->wstats.discard.nwid = 0;
@@ -100,6 +127,11 @@ struct iw_statistics *iwctl_get_wireless_stats(struct net_device *dev)
 	return &pDevice->wstats;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*------------------------------------------------------------------*/
@@ -115,6 +147,10 @@ static int iwctl_commit(struct net_device *dev,
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Wireless Handler : get protocol name
  */
@@ -128,6 +164,11 @@ int iwctl_giwname(struct net_device *dev,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int iwctl_giwnwid(struct net_device *dev,
              struct iw_request_info *info,
 			 struct iw_param *wrq,
@@ -139,6 +180,10 @@ int iwctl_giwnwid(struct net_device *dev,
 	//return 0;
   return -EOPNOTSUPP;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Wireless Handler : set scan
  */
@@ -208,14 +253,28 @@ if(pDevice->byReAssocCount > 0) {   //reject scan when re-associating!
  }
 
 	 pMgmt->eScanType = WMAC_SCAN_PASSIVE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
          //printk("SIOCSIWSCAN:WLAN_CMD_BSSID_SCAN\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+         //printk("SIOCSIWSCAN:WLAN_CMD_BSSID_SCAN\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bScheduleCommand((void *) pDevice, WLAN_CMD_BSSID_SCAN, NULL);
 	spin_unlock_irq(&pDevice->lock);
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Wireless Handler : get scan results
  */
@@ -514,7 +573,15 @@ int iwctl_siwmode(struct net_device *dev,
  * Wireless Handler : get operation mode
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void iwctl_giwmode(struct net_device *dev,
+=======
 int iwctl_giwmode(struct net_device *dev,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int iwctl_giwmode(struct net_device *dev,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
              struct iw_request_info *info,
              __u32 *wmode,
              char *extra)
@@ -541,8 +608,16 @@ int iwctl_giwmode(struct net_device *dev,
 	default:
 		*wmode = IW_MODE_ADHOC;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -550,7 +625,15 @@ int iwctl_giwmode(struct net_device *dev,
  * Wireless Handler : get capability range
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void iwctl_giwrange(struct net_device *dev,
+=======
 int iwctl_giwrange(struct net_device *dev,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int iwctl_giwrange(struct net_device *dev,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
              struct iw_request_info *info,
              struct iw_point *wrq,
              char *extra)
@@ -645,9 +728,18 @@ int iwctl_giwrange(struct net_device *dev,
 		range->avg_qual.level = 176;	// -80 dBm
 		range->avg_qual.noise = 0;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -719,9 +811,19 @@ int iwctl_giwap(struct net_device *dev,
 
     memcpy(wrq->sa_data, pMgmt->abyCurrBSSID, 6);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+ if ((pDevice->bLinkPass == FALSE) && (pMgmt->eCurrMode != WMAC_MODE_ESS_AP))
+=======
 //20080123-02,<Modify> by Einsn Liu
  if ((pDevice->bLinkPass == FALSE) && (pMgmt->eCurrMode != WMAC_MODE_ESS_AP))
  //   if ((pDevice->bLinkPass == FALSE) && (pMgmt->eCurrMode == WMAC_MODE_ESS_STA))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+//20080123-02,<Modify> by Einsn Liu
+ if ((pDevice->bLinkPass == FALSE) && (pMgmt->eCurrMode != WMAC_MODE_ESS_AP))
+ //   if ((pDevice->bLinkPass == FALSE) && (pMgmt->eCurrMode == WMAC_MODE_ESS_STA))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         memset(wrq->sa_data, 0, 6);
 
     if (pMgmt->eCurrMode == WMAC_MODE_ESS_AP) {
@@ -906,8 +1008,17 @@ int iwctl_siwessid(struct net_device *dev,
 /*
  * Wireless Handler : get essid
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void iwctl_giwessid(struct net_device *dev,
+=======
 
 int iwctl_giwessid(struct net_device *dev,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+int iwctl_giwessid(struct net_device *dev,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
              struct iw_request_info *info,
              struct iw_point *wrq,
              char *extra)
@@ -924,14 +1035,29 @@ int iwctl_giwessid(struct net_device *dev,
 
 	// Get the current SSID
     pItemSSID = (PWLAN_IE_SSID)pMgmt->abyCurrSSID;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	//pItemSSID = (PWLAN_IE_SSID)pMgmt->abyDesireSSID;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	//pItemSSID = (PWLAN_IE_SSID)pMgmt->abyDesireSSID;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(extra, pItemSSID->abySSID , pItemSSID->len);
 	extra[pItemSSID->len] = '\0';
 
         wrq->length = pItemSSID->len;
 	wrq->flags = 1; // active
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1019,8 +1145,17 @@ int iwctl_siwrate(struct net_device *dev,
 /*
  * Wireless Handler : get data rate
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void iwctl_giwrate(struct net_device *dev,
+=======
 
 int iwctl_giwrate(struct net_device *dev,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+int iwctl_giwrate(struct net_device *dev,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
              struct iw_request_info *info,
              struct iw_param *wrq,
              char *extra)
@@ -1058,9 +1193,18 @@ int iwctl_giwrate(struct net_device *dev,
 	    if (pDevice->bFixRate == TRUE)
 	        wrq->fixed = TRUE;
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -1068,6 +1212,24 @@ int iwctl_giwrate(struct net_device *dev,
 /*
  * Wireless Handler : set rts threshold
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int iwctl_siwrts(struct net_device *dev,
+		 struct iw_param *wrq)
+{
+	PSDevice pDevice = (PSDevice)netdev_priv(dev);
+
+	if ((wrq->value < 0 || wrq->value > 2312) && !wrq->disabled)
+		return -EINVAL;
+
+	else if (wrq->disabled)
+		pDevice->wRTSThreshold = 2312;
+
+	else
+		pDevice->wRTSThreshold = wrq->value;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int iwctl_siwrts(struct net_device *dev,
              struct iw_request_info *info,
@@ -1089,6 +1251,10 @@ int iwctl_siwrts(struct net_device *dev,
 		    pDevice->wRTSThreshold = rthr;
 	    }
     }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1338,6 +1504,11 @@ int iwctl_siwencode(struct net_device *dev,
 	return rc;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Wireless Handler : get encode mode
  */
@@ -1387,6 +1558,10 @@ int iwctl_giwencode(struct net_device *dev,
 }
 */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int iwctl_giwencode(struct net_device *dev,
 			struct iw_request_info *info,
 			struct iw_point *wrq,
@@ -1573,7 +1748,14 @@ int iwctl_siwauth(struct net_device *dev,
 		wpa_version = wrq->value;
 		if(wrq->value == IW_AUTH_WPA_VERSION_DISABLED) {
 		       PRINT_K("iwctl_siwauth:set WPADEV to disable at 1??????\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			//pDevice->bWPADEVUp = FALSE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			//pDevice->bWPADEVUp = FALSE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		else if(wrq->value == IW_AUTH_WPA_VERSION_WPA) {
                           PRINT_K("iwctl_siwauth:set WPADEV to WPA1******\n");
@@ -1581,7 +1763,14 @@ int iwctl_siwauth(struct net_device *dev,
 		else {
                           PRINT_K("iwctl_siwauth:set WPADEV to WPA2******\n");
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		//pDevice->bWPASuppWextEnabled =TRUE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		//pDevice->bWPASuppWextEnabled =TRUE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case IW_AUTH_CIPHER_PAIRWISE:
 		pairwise = wrq->value;
@@ -1638,11 +1827,20 @@ int iwctl_siwauth(struct net_device *dev,
 		}
 		break;
 	case IW_AUTH_WPA_ENABLED:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		//pDevice->bWPADEVUp = !! wrq->value;
 		//if(pDevice->bWPADEVUp==TRUE)
 		  // printk("iwctl_siwauth:set WPADEV to enable successful*******\n");
 		//else
 		 //  printk("iwctl_siwauth:set WPADEV to enable fail?????\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case IW_AUTH_RX_UNENCRYPTED_EAPOL:
 		break;
@@ -1657,7 +1855,14 @@ int iwctl_siwauth(struct net_device *dev,
 			pDevice->eEncryptionStatus = Ndis802_11EncryptionDisabled;
 			pMgmt->bShareKeyAlgorithm = FALSE;
 			pMgmt->eAuthenMode = WMAC_AUTH_OPEN;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			//pDevice->bWPADEVUp = FALSE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			//pDevice->bWPADEVUp = FALSE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 PRINT_K("iwctl_siwauth:set WPADEV to disaable at 2?????\n");
 		}
 
@@ -1666,6 +1871,11 @@ int iwctl_siwauth(struct net_device *dev,
 		ret = -EOPNOTSUPP;
 		break;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
 	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO "wpa_version = %d\n",wpa_version);
 	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO "pairwise = %d\n",pairwise);
@@ -1675,6 +1885,10 @@ int iwctl_siwauth(struct net_device *dev,
 	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO "pDevice->bEncryptionEnable = %s\n",pDevice->bEncryptionEnable?"TRUE":"FALSE");
 	DBG_PRT(MSG_LEVEL_DEBUG, KERN_INFO "pDevice->bWPADEVUp = %s\n",pDevice->bWPADEVUp?"TRUE":"FALSE");
 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
    return ret;
 }
 
@@ -1763,8 +1977,16 @@ int iwctl_siwencodeext(struct net_device *dev,
     u8  seq[IW_ENCODE_SEQ_MAX_SIZE];
     u8 key[64];
     size_t seq_len=0,key_len=0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 //
    // int ii;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+//
+   // int ii;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     u8 *buf;
     size_t blen;
     u8 key_array[64];
@@ -1894,7 +2116,14 @@ int iwctl_siwmlme(struct net_device *dev,
 	PSDevice			pDevice = (PSDevice)netdev_priv(dev);
 	PSMgmtObject	pMgmt = &(pDevice->sMgmtObj);
 	struct iw_mlme *mlme = (struct iw_mlme *)extra;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	//u16 reason = cpu_to_le16(mlme->reason_code);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	//u16 reason = cpu_to_le16(mlme->reason_code);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if(memcmp(pMgmt->abyCurrBSSID, mlme->addr.sa_data, ETH_ALEN)){
@@ -1903,12 +2132,21 @@ int iwctl_siwmlme(struct net_device *dev,
 	}
 	switch(mlme->cmd){
 	case IW_MLME_DEAUTH:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		//this command seems to be not complete,please test it --einsnliu
 		//printk("iwctl_siwmlme--->send DEAUTH\n");
 		/* bScheduleCommand((void *) pDevice,
 		   WLAN_CMD_DEAUTH,
 		   (PBYTE)&reason); */
 		//break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IW_MLME_DISASSOC:
 		if(pDevice->bLinkPass == TRUE){
 		  PRINT_K("iwctl_siwmlme--->send DISASSOCIATE\n");
@@ -1927,6 +2165,14 @@ int iwctl_siwmlme(struct net_device *dev,
 
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const iw_handler		iwctl_handler[] =
+{
+	(iw_handler) NULL,      /* SIOCSIWCOMMIT */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*------------------------------------------------------------------*/
 /*
  * Structures to export the Wireless Handlers
@@ -1999,6 +2245,10 @@ static const iw_handler		iwctl_handler[] =
 static const iw_handler		iwctl_handler[] =
 {
 	(iw_handler) iwctl_commit,      // SIOCSIWCOMMIT
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	(iw_handler) NULL,      // SIOCGIWNAME
 	(iw_handler) NULL,				// SIOCSIWNWID
 	(iw_handler) NULL,				// SIOCGIWNWID
@@ -2075,6 +2325,14 @@ const struct iw_handler_def	iwctl_handler_def =
 {
 	.get_wireless_stats = &iwctl_get_wireless_stats,
 	.num_standard	= sizeof(iwctl_handler)/sizeof(iw_handler),
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.num_private	= 0,
+	.num_private_args = 0,
+	.standard	= (iw_handler *) iwctl_handler,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 //	.num_private	= sizeof(iwctl_private_handler)/sizeof(iw_handler),
 //	.num_private_args = sizeof(iwctl_private_args)/sizeof(struct iw_priv_args),
 	.num_private	= 0,
@@ -2082,6 +2340,10 @@ const struct iw_handler_def	iwctl_handler_def =
 	.standard	= (iw_handler *) iwctl_handler,
 //	.private	= (iw_handler *) iwctl_private_handler,
 //	.private_args	= (struct iw_priv_args *)iwctl_private_args,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.private	= NULL,
 	.private_args	= NULL,
 };

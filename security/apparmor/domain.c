@@ -70,8 +70,12 @@ static int may_change_ptraced_domain(struct task_struct *task,
 <<<<<<< HEAD
 	tracer = ptrace_parent(task);
 =======
+<<<<<<< HEAD
+	tracer = ptrace_parent(task);
+=======
 	tracer = tracehook_tracer_task(task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tracer) {
 		/* released below */
 		cred = get_task_cred(tracer);
@@ -380,17 +384,25 @@ int apparmor_bprm_set_creds(struct linux_binprm *bprm)
 	error = aa_path_name(&bprm->file->f_path, profile->path_flags, &buffer,
 			     &name, &info);
 =======
+<<<<<<< HEAD
+	error = aa_path_name(&bprm->file->f_path, profile->path_flags, &buffer,
+			     &name, &info);
+=======
 	error = aa_get_name(&bprm->file->f_path, profile->path_flags, &buffer,
 			    &name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error) {
 		if (profile->flags &
 		    (PFLAG_IX_ON_NAME_ERROR | PFLAG_UNCONFINED))
 			error = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		info = "Exec failed name resolution";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		name = bprm->filename;
 		goto audit;
 	}
@@ -427,8 +439,13 @@ int apparmor_bprm_set_creds(struct linux_binprm *bprm)
 		cp = change_profile_perms(profile, cxt->onexec->ns,
 					  cxt->onexec->base.name,
 =======
+<<<<<<< HEAD
+		cp = change_profile_perms(profile, cxt->onexec->ns,
+					  cxt->onexec->base.name,
+=======
 		cp = change_profile_perms(profile, cxt->onexec->ns, name,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  AA_MAY_ONEXEC, state);
 
 		if (!(cp.allow & AA_MAY_ONEXEC))

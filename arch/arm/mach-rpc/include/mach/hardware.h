@@ -16,6 +16,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifndef __ASSEMBLY__
 #define IOMEM(x) ((void __iomem *)(unsigned long)(x))
 #else
@@ -23,6 +25,7 @@
 #endif /* __ASSEMBLY__ */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * What hardware must be present
  */
@@ -42,8 +45,12 @@
 <<<<<<< HEAD
 #define EASI_BASE		IOMEM(0xe5000000)
 =======
+<<<<<<< HEAD
+#define EASI_BASE		IOMEM(0xe5000000)
+=======
 #define EASI_BASE		0xe5000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define IO_START		0x03000000	/* I/O */
 #define IO_SIZE			0x01000000
@@ -59,6 +66,9 @@
  * IO Addresses
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ECARD_EASI_BASE		(EASI_BASE)
 #define VIDC_BASE		(IO_BASE + 0x00400000)
 #define EXPMASK_BASE		(IO_BASE + 0x00360000)
@@ -73,6 +83,8 @@
 
 #define vidc_writel(val)	__raw_writel(val, VIDC_BASE)
 
+<<<<<<< HEAD
+=======
 =======
 #define VIDC_BASE		IOMEM(0xe0400000)
 #define EXPMASK_BASE		0xe0360000
@@ -90,6 +102,7 @@
 #define IO_EC_MEMC_BASE		0x80000000
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NETSLOT_BASE		0x0302b000
 #define NETSLOT_SIZE		0x00001000
 

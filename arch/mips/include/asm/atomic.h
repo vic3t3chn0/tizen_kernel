@@ -22,9 +22,14 @@
 #include <asm/cmpxchg.h>
 #include <asm/war.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+#include <asm/war.h>
+=======
 #include <asm/war.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ATOMIC_INIT(i)    { (i) }
 
@@ -311,8 +316,12 @@ static __inline__ int atomic_sub_if_positive(int i, atomic_t * v)
 <<<<<<< HEAD
  * __atomic_add_unless - add unless the number is a given value
 =======
+<<<<<<< HEAD
+ * __atomic_add_unless - add unless the number is a given value
+=======
  * atomic_add_unless - add unless the number is a given value
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @v: pointer of type atomic_t
  * @a: the amount to add to v...
  * @u: ...unless v is equal to u.
@@ -323,10 +332,16 @@ static __inline__ int atomic_sub_if_positive(int i, atomic_t * v)
  */
 static __inline__ int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+ * Returns the old value of @v.
+ */
+static __inline__ int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
  * Returns non-zero if @v was not @u, and zero otherwise.
  */
 static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int c, old;
 	c = atomic_read(v);
@@ -342,10 +357,15 @@ static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 	return c;
 }
 =======
+<<<<<<< HEAD
+	return c;
+}
+=======
 	return c != (u);
 }
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define atomic_dec_return(v) atomic_sub_return(1, (v))
 #define atomic_inc_return(v) atomic_add_return(1, (v))
@@ -703,8 +723,12 @@ static __inline__ long atomic64_sub_if_positive(long i, atomic64_t * v)
 <<<<<<< HEAD
  * Returns the old value of @v.
 =======
+<<<<<<< HEAD
+ * Returns the old value of @v.
+=======
  * Returns non-zero if @v was not @u, and zero otherwise.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static __inline__ int atomic64_add_unless(atomic64_t *v, long a, long u)
 {
@@ -792,11 +816,14 @@ static __inline__ int atomic64_add_unless(atomic64_t *v, long a, long u)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #else /* !CONFIG_64BIT */
 
 #include <asm-generic/atomic64.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_64BIT */
 
 /*
@@ -810,7 +837,10 @@ static __inline__ int atomic64_add_unless(atomic64_t *v, long a, long u)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/atomic-long.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_ATOMIC_H */

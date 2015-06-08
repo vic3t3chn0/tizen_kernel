@@ -23,13 +23,22 @@
 #include <asm/proc-fns.h>
 #include <asm/cpuidle.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <asm/proc-fns.h>
+#include <asm/cpuidle.h>
+=======
 #include <asm/proc-fns.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/kirkwood.h>
 
 #define KIRKWOOD_MAX_STATES	2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Actual code that puts the SoC in different idle states */
 static int kirkwood_enter_idle(struct cpuidle_device *dev,
 				struct cpuidle_driver *drv,
@@ -59,6 +68,8 @@ static struct cpuidle_driver kirkwood_idle_driver = {
 
 static DEFINE_PER_CPU(struct cpuidle_device, kirkwood_cpuidle_device);
 
+<<<<<<< HEAD
+=======
 =======
 static struct cpuidle_driver kirkwood_idle_driver = {
 	.name =         "kirkwood_idle",
@@ -98,16 +109,22 @@ static int kirkwood_enter_idle(struct cpuidle_device *dev,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Initialize CPU idle by registering the idle states */
 static int kirkwood_init_cpuidle(void)
 {
 	struct cpuidle_device *device;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	device = &per_cpu(kirkwood_cpuidle_device, smp_processor_id());
 	device->state_count = KIRKWOOD_MAX_STATES;
 
 	cpuidle_register_driver(&kirkwood_idle_driver);
+<<<<<<< HEAD
+=======
 =======
 	cpuidle_register_driver(&kirkwood_idle_driver);
 
@@ -131,6 +148,7 @@ static int kirkwood_init_cpuidle(void)
 	strcpy(device->states[1].desc, "WFI and DDR Self Refresh");
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpuidle_register_device(device)) {
 		printk(KERN_ERR "kirkwood_init_cpuidle: Failed registering\n");
 		return -EIO;

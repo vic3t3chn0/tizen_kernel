@@ -9,6 +9,9 @@
 #define __DEVICES_COMMON_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/dma-mapping.h>
 #include <linux/sys_soc.h>
@@ -18,6 +21,8 @@ extern struct amba_device *
 dbx500_add_amba_device(struct device *parent, const char *name,
 		       resource_size_t base, int irq, void *pdata,
 		       unsigned int periphid);
+<<<<<<< HEAD
+=======
 =======
 extern struct amba_device *
 dbx500_add_amba_device(const char *name, resource_size_t base,
@@ -28,11 +33,15 @@ dbx500_add_platform_device_4k1irq(const char *name, int id,
 				  resource_size_t base,
 				  int irq, void *pdata);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct spi_master_cntlr;
 
 static inline struct amba_device *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 dbx500_add_msp_spi(struct device *parent, const char *name,
 		   resource_size_t base, int irq,
 		   struct spi_master_cntlr *pdata)
@@ -48,6 +57,8 @@ dbx500_add_spi(struct device *parent, const char *name, resource_size_t base,
 {
 	return dbx500_add_amba_device(parent, name, base, irq,
 				      pdata, periphid);
+<<<<<<< HEAD
+=======
 =======
 dbx500_add_msp_spi(const char *name, resource_size_t base, int irq,
 		   struct spi_master_cntlr *pdata)
@@ -62,17 +73,23 @@ dbx500_add_spi(const char *name, resource_size_t base, int irq,
 {
 	return dbx500_add_amba_device(name, base, irq, pdata, periphid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct mmci_platform_data;
 
 static inline struct amba_device *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 dbx500_add_sdi(struct device *parent, const char *name, resource_size_t base,
 	       int irq, struct mmci_platform_data *pdata, u32 periphid)
 {
 	return dbx500_add_amba_device(parent, name, base, irq,
 				      pdata, periphid);
+<<<<<<< HEAD
+=======
 =======
 dbx500_add_sdi(const char *name, resource_size_t base, int irq,
 	       struct mmci_platform_data *pdata,
@@ -80,28 +97,38 @@ dbx500_add_sdi(const char *name, resource_size_t base, int irq,
 {
 	return dbx500_add_amba_device(name, base, irq, pdata, periphid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct amba_pl011_data;
 
 static inline struct amba_device *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 dbx500_add_uart(struct device *parent, const char *name, resource_size_t base,
 		int irq, struct amba_pl011_data *pdata)
 {
 	return dbx500_add_amba_device(parent, name, base, irq, pdata, 0);
+<<<<<<< HEAD
+=======
 =======
 dbx500_add_uart(const char *name, resource_size_t base, int irq,
 		struct amba_pl011_data *pdata)
 {
 	return dbx500_add_amba_device(name, base, irq, pdata, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct nmk_i2c_controller;
 
 static inline struct platform_device *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 dbx500_add_i2c(struct device *parent, int id, resource_size_t base, int irq,
 	       struct nmk_i2c_controller *data)
 {
@@ -128,6 +155,8 @@ static inline struct amba_device *
 dbx500_add_rtc(struct device *parent, resource_size_t base, int irq)
 {
 	return dbx500_add_amba_device(parent, "rtc-pl031", base, irq, NULL, 0);
+<<<<<<< HEAD
+=======
 =======
 dbx500_add_i2c(int id, resource_size_t base, int irq,
 	       struct nmk_i2c_controller *pdata)
@@ -151,6 +180,7 @@ dbx500_add_rtc(resource_size_t base, int irq)
 {
 	return dbx500_add_amba_device("rtc-pl031", base, irq, NULL, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct nmk_gpio_platform_data;
@@ -159,8 +189,13 @@ struct nmk_gpio_platform_data;
 void dbx500_add_gpios(struct device *parent, resource_size_t *base, int num,
 		      int irq, struct nmk_gpio_platform_data *pdata);
 =======
+<<<<<<< HEAD
+void dbx500_add_gpios(struct device *parent, resource_size_t *base, int num,
+		      int irq, struct nmk_gpio_platform_data *pdata);
+=======
 void dbx500_add_gpios(resource_size_t *base, int num, int irq,
 		      struct nmk_gpio_platform_data *pdata);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

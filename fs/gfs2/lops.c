@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/mempool.h>
 =======
+<<<<<<< HEAD
+#include <linux/mempool.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gfs2_ondisk.h>
 #include <linux/bio.h>
 #include <linux/fs.h>
@@ -65,6 +69,9 @@ static void gfs2_pin(struct gfs2_sbd *sdp, struct buffer_head *bh)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool buffer_is_rgrp(const struct gfs2_bufdata *bd)
 {
 	return bd->bd_gl->gl_name.ln_type == LM_TYPE_RGRP;
@@ -88,8 +95,11 @@ static void maybe_release_space(struct gfs2_bufdata *bd)
 	rgd->rd_free_clone = rgd->rd_free;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * gfs2_unpin - Unpin a buffer
  * @sdp: the filesystem the buffer belongs to
@@ -116,7 +126,13 @@ static void gfs2_unpin(struct gfs2_sbd *sdp, struct buffer_head *bh,
 		maybe_release_space(bd);
 
 =======
+<<<<<<< HEAD
+	if (buffer_is_rgrp(bd))
+		maybe_release_space(bd);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&sdp->sd_ail_lock);
 	if (bd->bd_ail) {
 		list_del(&bd->bd_ail_st_list);
@@ -154,6 +170,9 @@ static inline __be64 *bh_ptr_end(struct buffer_head *bh)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * gfs2_log_write_endio - End of I/O for a log buffer
  * @bh: The buffer head
@@ -246,8 +265,11 @@ static struct buffer_head *gfs2_log_fake_buf(struct gfs2_sbd *sdp,
 
 	return bh;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct buffer_head *gfs2_get_log_desc(struct gfs2_sbd *sdp, u32 ld_type)
 {
@@ -271,14 +293,20 @@ static void buf_lo_add(struct gfs2_sbd *sdp, struct gfs2_log_element *le)
 	struct gfs2_trans *tr;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lock_buffer(bd->bd_bh);
 	gfs2_log_lock(sdp);
 	if (!list_empty(&bd->bd_list_tr))
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	if (!list_empty(&bd->bd_list_tr))
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tr = current->journal_info;
 	tr->tr_touched = 1;
 	tr->tr_num_buf++;
@@ -287,8 +315,12 @@ static void buf_lo_add(struct gfs2_sbd *sdp, struct gfs2_log_element *le)
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(GLF_LFLUSH, &bd->bd_gl->gl_flags);
 	set_bit(GLF_DIRTY, &bd->bd_gl->gl_flags);
 	gfs2_meta_check(sdp, bd->bd_bh);
@@ -304,7 +336,13 @@ out:
 	gfs2_log_unlock(sdp);
 	unlock_buffer(bd->bd_bh);
 =======
+<<<<<<< HEAD
+out:
+	gfs2_log_unlock(sdp);
+	unlock_buffer(bd->bd_bh);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void buf_lo_before_commit(struct gfs2_sbd *sdp)
@@ -614,6 +652,8 @@ static void revoke_lo_after_scan(struct gfs2_jdesc *jd, int error, int pass)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void rg_lo_add(struct gfs2_sbd *sdp, struct gfs2_log_element *le)
 {
 	struct gfs2_rgrpd *rgd;
@@ -651,6 +691,7 @@ static void rg_lo_after_commit(struct gfs2_sbd *sdp, struct gfs2_ail *ai)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * databuf_lo_add - Add a databuf to the transaction.
  *
@@ -675,16 +716,22 @@ static void databuf_lo_add(struct gfs2_sbd *sdp, struct gfs2_log_element *le)
 	struct gfs2_inode *ip = GFS2_I(mapping->host);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lock_buffer(bd->bd_bh);
 	gfs2_log_lock(sdp);
 	if (tr) {
 		if (!list_empty(&bd->bd_list_tr))
 			goto out;
+<<<<<<< HEAD
+=======
 =======
 	if (tr) {
 		if (!list_empty(&bd->bd_list_tr))
 			return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tr->tr_touched = 1;
 		if (gfs2_is_jdata(ip)) {
 			tr->tr_num_buf++;
@@ -695,8 +742,12 @@ static void databuf_lo_add(struct gfs2_sbd *sdp, struct gfs2_log_element *le)
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	set_bit(GLF_LFLUSH, &bd->bd_gl->gl_flags);
 	set_bit(GLF_DIRTY, &bd->bd_gl->gl_flags);
@@ -713,7 +764,13 @@ out:
 	gfs2_log_unlock(sdp);
 	unlock_buffer(bd->bd_bh);
 =======
+<<<<<<< HEAD
+out:
+	gfs2_log_unlock(sdp);
+	unlock_buffer(bd->bd_bh);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void gfs2_check_magic(struct buffer_head *bh)
@@ -723,11 +780,16 @@ static void gfs2_check_magic(struct buffer_head *bh)
 
 	clear_buffer_escaped(bh);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kaddr = kmap_atomic(bh->b_page);
 	ptr = kaddr + bh_offset(bh);
 	if (*ptr == cpu_to_be32(GFS2_MAGIC))
 		set_buffer_escaped(bh);
 	kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 	kaddr = kmap_atomic(bh->b_page, KM_USER0);
 	ptr = kaddr + bh_offset(bh);
@@ -735,6 +797,7 @@ static void gfs2_check_magic(struct buffer_head *bh)
 		set_buffer_escaped(bh);
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void gfs2_write_blocks(struct gfs2_sbd *sdp, struct buffer_head *bh,
@@ -772,16 +835,22 @@ static void gfs2_write_blocks(struct gfs2_sbd *sdp, struct buffer_head *bh,
 			void *kaddr;
 			bh1 = gfs2_log_get_buf(sdp);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			kaddr = kmap_atomic(bd->bd_bh->b_page);
 			memcpy(bh1->b_data, kaddr + bh_offset(bd->bd_bh),
 			       bh1->b_size);
 			kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 			kaddr = kmap_atomic(bd->bd_bh->b_page, KM_USER0);
 			memcpy(bh1->b_data, kaddr + bh_offset(bd->bd_bh),
 			       bh1->b_size);
 			kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*(__be32 *)bh1->b_data = 0;
 			clear_buffer_escaped(bd->bd_bh);
 			unlock_buffer(bd->bd_bh);
@@ -881,9 +950,12 @@ static int databuf_lo_scan_elements(struct gfs2_jdesc *jd, unsigned int start,
 		brelse(bh_ip);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (error)
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		sdp->sd_replayed_blocks++;
 	}
@@ -950,9 +1022,12 @@ const struct gfs2_log_operations gfs2_revoke_lops = {
 const struct gfs2_log_operations gfs2_rg_lops = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.lo_add = rg_lo_add,
 	.lo_after_commit = rg_lo_after_commit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.lo_name = "rg",
 };
 

@@ -150,8 +150,12 @@ DEFINE_EVENT(kmem_free, kmem_cache_free,
 <<<<<<< HEAD
 TRACE_EVENT(mm_page_free,
 =======
+<<<<<<< HEAD
+TRACE_EVENT(mm_page_free,
+=======
 TRACE_EVENT(mm_page_free_direct,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	TP_PROTO(struct page *page, unsigned int order),
 
@@ -176,8 +180,12 @@ TRACE_EVENT(mm_page_free_direct,
 <<<<<<< HEAD
 TRACE_EVENT(mm_page_free_batched,
 =======
+<<<<<<< HEAD
+TRACE_EVENT(mm_page_free_batched,
+=======
 TRACE_EVENT(mm_pagevec_free,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	TP_PROTO(struct page *page, int cold),
 
@@ -225,8 +233,12 @@ TRACE_EVENT(mm_page_alloc,
 <<<<<<< HEAD
 		page_to_pfn(__entry->page),
 =======
+<<<<<<< HEAD
+		page_to_pfn(__entry->page),
+=======
 		__entry->page ? page_to_pfn(__entry->page) : 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->order,
 		__entry->migratetype,
 		show_gfp_flags(__entry->gfp_flags))
@@ -255,8 +267,12 @@ DECLARE_EVENT_CLASS(mm_page,
 <<<<<<< HEAD
 		page_to_pfn(__entry->page),
 =======
+<<<<<<< HEAD
+		page_to_pfn(__entry->page),
+=======
 		__entry->page ? page_to_pfn(__entry->page) : 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->order,
 		__entry->migratetype,
 		__entry->order == 0)
@@ -319,6 +335,9 @@ TRACE_EVENT(mm_page_alloc_extfrag,
 );
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 DECLARE_EVENT_CLASS(ion_alloc,
 
@@ -616,8 +635,11 @@ DEFINE_EVENT(smmu_map, iommu_map_range,
 	TP_ARGS(va, pa, chunk_size, len)
 	);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _TRACE_KMEM_H */
 
 /* This part must be outside protection */

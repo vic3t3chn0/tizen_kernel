@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <asm/hw_irq.h>
 =======
+<<<<<<< HEAD
+#include <asm/hw_irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/exception-64s.h>
 #include <asm/ptrace.h>
 
@@ -26,8 +30,12 @@
 <<<<<<< HEAD
  * 0x3000 - 0x5fff : interrupt support common interrupt prologs
 =======
+<<<<<<< HEAD
+ * 0x3000 - 0x5fff : interrupt support common interrupt prologs
+=======
  * 0x3000 - 0x5fff : interrupt support, iSeries and common interrupt prologs
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * 0x6000 - 0x6fff : Initial (CPU0) segment table
  * 0x7000 - 0x7fff : FWNMI data area
  * 0x8000 -        : Early init and support code
@@ -50,8 +58,11 @@ system_reset_pSeries:
 	HMT_MEDIUM;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	DO_KVM	0x100;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SET_SCRATCH0(r13)
 #ifdef CONFIG_PPC_P7_NAP
 BEGIN_FTR_SECTION
@@ -62,11 +73,16 @@ BEGIN_FTR_SECTION
 	 */
 	mfspr	r13,SPRN_SRR1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rlwinm.	r13,r13,47-31,30,31
 	beq	9f
 
 	/* waking up from powersave (nap) state */
 	cmpwi	cr1,r13,2
+<<<<<<< HEAD
+=======
 =======
 	rlwinm	r13,r13,47-31,30,31
 	cmpwi	cr0,r13,1
@@ -76,11 +92,15 @@ BEGIN_FTR_SECTION
 	bne	1f
 	b	.power7_wakeup_loss
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Total loss of HV state is fatal, we could try to use the
 	 * PIR to locate a PACA, then use an emergency stack etc...
 	 * but for now, let's just stay stuck here
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bgt	cr1,.
 	GET_PACA(r13)
 
@@ -110,6 +130,8 @@ machine_check_pSeries_1:
 	 * vector
 	 */
 	b	machine_check_pSeries
+<<<<<<< HEAD
+=======
 =======
 1:	cmpwi	cr0,r13,3
 	beq	.
@@ -124,12 +146,16 @@ _machine_check_pSeries:
 	SET_SCRATCH0(r13)
 	EXCEPTION_PROLOG_PSERIES(PACA_EXMC, machine_check_common, EXC_STD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	. = 0x300
 	.globl data_access_pSeries
 data_access_pSeries:
 	HMT_MEDIUM
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SET_SCRATCH0(r13)
 #ifndef CONFIG_POWER4_ONLY
 BEGIN_FTR_SECTION
@@ -139,6 +165,8 @@ END_MMU_FTR_SECTION_IFCLR(MMU_FTR_SLB)
 #endif
 	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, data_access_common, EXC_STD,
 				 KVMTEST, 0x300)
+<<<<<<< HEAD
+=======
 =======
 	DO_KVM	0x300
 	SET_SCRATCH0(r13)
@@ -166,16 +194,22 @@ FTR_SECTION_ELSE
 	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, data_access_common, EXC_STD)
 ALT_MMU_FTR_SECTION_END_IFCLR(MMU_FTR_SLB)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	. = 0x380
 	.globl data_access_slb_pSeries
 data_access_slb_pSeries:
 	HMT_MEDIUM
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SET_SCRATCH0(r13)
 	EXCEPTION_PROLOG_1(PACA_EXSLB, KVMTEST, 0x380)
 	std	r3,PACA_EXSLB+EX_R3(r13)
 	mfspr	r3,SPRN_DAR
+<<<<<<< HEAD
+=======
 =======
 	DO_KVM	0x380
 	SET_SCRATCH0(r13)
@@ -185,11 +219,15 @@ data_access_slb_pSeries:
 	std	r9,PACA_EXSLB+EX_R9(r13)	/* save r9 - r12 */
 	mfcr	r9
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __DISABLED__
 	/* Keep that around for when we re-implement dynamic VSIDs */
 	cmpdi	r3,0
 	bge	slb_miss_user_pseries
 #endif /* __DISABLED__ */
+<<<<<<< HEAD
+	mfspr	r12,SPRN_SRR1
+=======
 <<<<<<< HEAD
 	mfspr	r12,SPRN_SRR1
 =======
@@ -200,6 +238,7 @@ data_access_slb_pSeries:
 	std	r10,PACA_EXSLB+EX_R13(r13)
 	mfspr	r12,SPRN_SRR1		/* and SRR1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_RELOCATABLE
 	b	.slb_miss_realmode
 #else
@@ -222,10 +261,15 @@ data_access_slb_pSeries:
 instruction_access_slb_pSeries:
 	HMT_MEDIUM
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SET_SCRATCH0(r13)
 	EXCEPTION_PROLOG_1(PACA_EXSLB, KVMTEST_PR, 0x480)
 	std	r3,PACA_EXSLB+EX_R3(r13)
 	mfspr	r3,SPRN_SRR0		/* SRR0 is faulting address */
+<<<<<<< HEAD
+=======
 =======
 	DO_KVM	0x480
 	SET_SCRATCH0(r13)
@@ -235,11 +279,15 @@ instruction_access_slb_pSeries:
 	std	r9,PACA_EXSLB+EX_R9(r13)	/* save r9 - r12 */
 	mfcr	r9
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __DISABLED__
 	/* Keep that around for when we re-implement dynamic VSIDs */
 	cmpdi	r3,0
 	bge	slb_miss_user_pseries
 #endif /* __DISABLED__ */
+<<<<<<< HEAD
+	mfspr	r12,SPRN_SRR1
+=======
 <<<<<<< HEAD
 	mfspr	r12,SPRN_SRR1
 =======
@@ -250,6 +298,7 @@ instruction_access_slb_pSeries:
 	std	r10,PACA_EXSLB+EX_R13(r13)
 	mfspr	r12,SPRN_SRR1		/* and SRR1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_RELOCATABLE
 	b	.slb_miss_realmode
 #else
@@ -270,6 +319,9 @@ hardware_interrupt_pSeries:
 hardware_interrupt_hv:
 	BEGIN_FTR_SECTION
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		_MASKABLE_EXCEPTION_PSERIES(0x502, hardware_interrupt,
 					    EXC_HV, SOFTEN_TEST_HV)
 		KVM_HANDLER(PACA_EXGEN, EXC_HV, 0x502)
@@ -296,6 +348,8 @@ hardware_interrupt_hv:
 
 	STD_EXCEPTION_PSERIES(0xb00, 0xb00, trap_0b)
 	KVM_HANDLER_PR(PACA_EXGEN, EXC_STD, 0xb00)
+<<<<<<< HEAD
+=======
 =======
 		_MASKABLE_EXCEPTION_PSERIES(0x500, hardware_interrupt, EXC_STD)
 	FTR_SECTION_ELSE
@@ -312,12 +366,16 @@ hardware_interrupt_hv:
 	STD_EXCEPTION_PSERIES(0xa00, 0xa00, trap_0a)
 	STD_EXCEPTION_PSERIES(0xb00, 0xb00, trap_0b)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	. = 0xc00
 	.globl	system_call_pSeries
 system_call_pSeries:
 	HMT_MEDIUM
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KVM_BOOK3S_64_HANDLER
 	SET_SCRATCH0(r13)
 	GET_PACA(r13)
@@ -327,9 +385,12 @@ system_call_pSeries:
 	KVMTEST(0xc00)
 	GET_SCRATCH0(r13)
 #endif
+<<<<<<< HEAD
+=======
 =======
 	DO_KVM	0xc00
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 BEGIN_FTR_SECTION
 	cmpdi	r0,0x1ebe
 	beq-	1f
@@ -350,7 +411,12 @@ END_FTR_SECTION_IFSET(CPU_FTR_REAL_LE)
 	KVM_HANDLER(PACA_EXGEN, EXC_STD, 0xc00)
 
 =======
+<<<<<<< HEAD
+	KVM_HANDLER(PACA_EXGEN, EXC_STD, 0xc00)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Fast LE/BE switch system call */
 1:	mfspr	r12,SPRN_SRR1
 	xori	r12,r12,MSR_LE
@@ -362,7 +428,11 @@ END_FTR_SECTION_IFSET(CPU_FTR_REAL_LE)
 <<<<<<< HEAD
 	KVM_HANDLER_PR(PACA_EXGEN, EXC_STD, 0xd00)
 =======
+<<<<<<< HEAD
+	KVM_HANDLER_PR(PACA_EXGEN, EXC_STD, 0xd00)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* At 0xe??? we have a bunch of hypervisor exceptions, we branch
 	 * out of line to handle them
@@ -398,6 +468,9 @@ vsx_unavailable_pSeries_1:
 #ifdef CONFIG_CBE_RAS
 	STD_EXCEPTION_HV(0x1200, 0x1202, cbe_system_error)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	KVM_HANDLER_SKIP(PACA_EXGEN, EXC_HV, 0x1202)
 #endif /* CONFIG_CBE_RAS */
 
@@ -415,6 +488,8 @@ vsx_unavailable_pSeries_1:
 #ifdef CONFIG_CBE_RAS
 	STD_EXCEPTION_HV(0x1800, 0x1802, cbe_thermal)
 	KVM_HANDLER_SKIP(PACA_EXGEN, EXC_HV, 0x1802)
+<<<<<<< HEAD
+=======
 =======
 #endif /* CONFIG_CBE_RAS */
 	STD_EXCEPTION_PSERIES(0x1300, 0x1300, instruction_breakpoint)
@@ -425,6 +500,7 @@ vsx_unavailable_pSeries_1:
 #ifdef CONFIG_CBE_RAS
 	STD_EXCEPTION_HV(0x1800, 0x1802, cbe_thermal)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_CBE_RAS */
 
 	. = 0x3000
@@ -432,6 +508,9 @@ vsx_unavailable_pSeries_1:
 /*** Out of line interrupts support ***/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* moved from 0x200 */
 machine_check_pSeries:
 	.globl machine_check_fwnmi
@@ -552,6 +631,8 @@ _GLOBAL(__replay_interrupt)
 	andi.	r3,r3,0x0800
 	bne	decrementer_common
 	b	hardware_interrupt_common
+<<<<<<< HEAD
+=======
 =======
 	/* moved from 0xe00 */
 	STD_EXCEPTION_HV(., 0xe00, h_data_storage)
@@ -602,6 +683,7 @@ do_stab_bolted_pSeries:
 	std	r10,PACA_EXSLB+EX_R13(r13)
 	EXCEPTION_PROLOG_PSERIES_1(.do_stab_bolted, EXC_STD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC_PSERIES
 /*
@@ -616,6 +698,10 @@ system_reset_fwnmi:
 	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, system_reset_common, EXC_STD,
 				 NOTEST, 0x100)
 =======
+<<<<<<< HEAD
+	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, system_reset_common, EXC_STD,
+				 NOTEST, 0x100)
+=======
 	EXCEPTION_PROLOG_PSERIES(PACA_EXGEN, system_reset_common, EXC_STD)
 
 	.globl machine_check_fwnmi
@@ -625,6 +711,7 @@ machine_check_fwnmi:
 	SET_SCRATCH0(r13)		/* save r13 */
 	EXCEPTION_PROLOG_PSERIES(PACA_EXMC, machine_check_common, EXC_STD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* CONFIG_PPC_PSERIES */
 
@@ -658,6 +745,8 @@ slb_miss_user_pseries:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* KVM's trampoline code needs to be close to the interrupt handlers */
 
 #ifdef CONFIG_KVM_BOOK3S_64_HANDLER
@@ -665,6 +754,7 @@ slb_miss_user_pseries:
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.align	7
 	.globl	__end_interrupts
 __end_interrupts:
@@ -700,8 +790,13 @@ machine_check_common:
 	STD_EXCEPTION_COMMON_ASYNC(0x500, hardware_interrupt, do_IRQ)
 	STD_EXCEPTION_COMMON_ASYNC(0x900, decrementer, .timer_interrupt)
 =======
+<<<<<<< HEAD
+	STD_EXCEPTION_COMMON_ASYNC(0x500, hardware_interrupt, do_IRQ)
+	STD_EXCEPTION_COMMON_ASYNC(0x900, decrementer, .timer_interrupt)
+=======
 	STD_EXCEPTION_COMMON_LITE(0x900, decrementer, .timer_interrupt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	STD_EXCEPTION_COMMON(0xa00, trap_0a, .unknown_exception)
 	STD_EXCEPTION_COMMON(0xb00, trap_0b, .unknown_exception)
 	STD_EXCEPTION_COMMON(0xd00, single_step, .single_step_exception)
@@ -711,8 +806,12 @@ machine_check_common:
 <<<<<<< HEAD
 	STD_EXCEPTION_COMMON_ASYNC(0xf00, performance_monitor, .performance_monitor_exception)
 =======
+<<<<<<< HEAD
+	STD_EXCEPTION_COMMON_ASYNC(0xf00, performance_monitor, .performance_monitor_exception)
+=======
 	STD_EXCEPTION_COMMON_IDLE(0xf00, performance_monitor, .performance_monitor_exception)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	STD_EXCEPTION_COMMON(0x1300, instruction_breakpoint, .instruction_breakpoint_exception)
 #ifdef CONFIG_ALTIVEC
 	STD_EXCEPTION_COMMON(0x1700, altivec_assist, .altivec_assist_exception)
@@ -734,7 +833,13 @@ ppc64_runlatch_on_trampoline:
 	b	.__ppc64_runlatch_on
 
 =======
+<<<<<<< HEAD
+ppc64_runlatch_on_trampoline:
+	b	.__ppc64_runlatch_on
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Here we have detected that the kernel stack pointer is bad.
  * R9 contains the saved CR, r13 points to the paca,
@@ -812,7 +917,12 @@ data_access_common:
 	DISABLE_INTS
 	ld	r12,_MSR(r1)
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+	ld	r12,_MSR(r1)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r3,PACA_EXGEN+EX_DAR(r13)
 	lwz	r4,PACA_EXGEN+EX_DSISR(r13)
 	li	r5,0x300
@@ -830,7 +940,11 @@ h_data_storage_common:
 <<<<<<< HEAD
 	DISABLE_INTS
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         addi    r3,r1,STACK_FRAME_OVERHEAD
         bl      .unknown_exception
         b       .ret_from_except
@@ -843,7 +957,12 @@ instruction_access_common:
 	DISABLE_INTS
 	ld	r12,_MSR(r1)
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+	ld	r12,_MSR(r1)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r3,_NIP(r1)
 	andis.	r4,r12,0x5820
 	li	r5,0x400
@@ -941,6 +1060,8 @@ _GLOBAL(slb_miss_realmode)
 	lwz	r9,PACA_EXSLB+EX_CCR(r13)	/* get saved CR */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ISERIES
 BEGIN_FW_FTR_SECTION
 	ld	r11,PACALPPACAPTR(r13)
@@ -948,6 +1069,7 @@ BEGIN_FW_FTR_SECTION
 END_FW_FTR_SECTION_IFSET(FW_FEATURE_ISERIES)
 #endif /* CONFIG_PPC_ISERIES */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mtlr	r10
 
@@ -962,6 +1084,8 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_ISERIES)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PPC_ISERIES
 BEGIN_FW_FTR_SECTION
 	mtspr	SPRN_SRR0,r11
@@ -969,6 +1093,7 @@ BEGIN_FW_FTR_SECTION
 END_FW_FTR_SECTION_IFSET(FW_FEATURE_ISERIES)
 #endif /* CONFIG_PPC_ISERIES */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r9,PACA_EXSLB+EX_R9(r13)
 	ld	r10,PACA_EXSLB+EX_R10(r13)
 	ld	r11,PACA_EXSLB+EX_R11(r13)
@@ -980,6 +1105,9 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_ISERIES)
 <<<<<<< HEAD
 2:	mfspr	r11,SPRN_SRR0
 =======
+<<<<<<< HEAD
+2:	mfspr	r11,SPRN_SRR0
+=======
 2:
 #ifdef CONFIG_PPC_ISERIES
 BEGIN_FW_FTR_SECTION
@@ -988,6 +1116,7 @@ END_FW_FTR_SECTION_IFSET(FW_FEATURE_ISERIES)
 #endif /* CONFIG_PPC_ISERIES */
 	mfspr	r11,SPRN_SRR0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r10,PACAKBASE(r13)
 	LOAD_HANDLER(r10,unrecov_slb)
 	mtspr	SPRN_SRR0,r10
@@ -1006,6 +1135,8 @@ unrecov_slb:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.align	7
 	.globl hardware_interrupt_common
 	.globl hardware_interrupt_entry
@@ -1021,6 +1152,7 @@ END_FTR_SECTION_IFSET(CPU_FTR_CTRL)
 	bl	.do_IRQ
 	b	.ret_from_except_lite
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC_970_NAP
 power4_fixup_nap:
@@ -1048,9 +1180,14 @@ alignment_common:
 	DISABLE_INTS
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+	addi	r3,r1,STACK_FRAME_OVERHEAD
+=======
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	ENABLE_INTS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.alignment_exception
 	b	.ret_from_except
 
@@ -1063,9 +1200,14 @@ program_check_common:
 	DISABLE_INTS
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+	addi	r3,r1,STACK_FRAME_OVERHEAD
+=======
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	ENABLE_INTS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.program_check_exception
 	b	.ret_from_except
 
@@ -1079,9 +1221,14 @@ fp_unavailable_common:
 	DISABLE_INTS
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+	addi	r3,r1,STACK_FRAME_OVERHEAD
+=======
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	ENABLE_INTS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.kernel_fp_unavailable_exception
 	BUG_OPCODE
 1:	bl	.load_up_fpu
@@ -1104,9 +1251,14 @@ END_FTR_SECTION_IFSET(CPU_FTR_ALTIVEC)
 	DISABLE_INTS
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+	addi	r3,r1,STACK_FRAME_OVERHEAD
+=======
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	ENABLE_INTS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.altivec_unavailable_exception
 	b	.ret_from_except
 
@@ -1120,8 +1272,13 @@ BEGIN_FTR_SECTION
 	beq	1f
 	b	.load_up_vsx
 =======
+<<<<<<< HEAD
+	beq	1f
+	b	.load_up_vsx
+=======
 	bne	.load_up_vsx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:
 END_FTR_SECTION_IFSET(CPU_FTR_VSX)
 #endif
@@ -1130,9 +1287,14 @@ END_FTR_SECTION_IFSET(CPU_FTR_VSX)
 	DISABLE_INTS
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 =======
+<<<<<<< HEAD
+	DISABLE_INTS
+	addi	r3,r1,STACK_FRAME_OVERHEAD
+=======
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	ENABLE_INTS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.vsx_unavailable_exception
 	b	.ret_from_except
 
@@ -1141,6 +1303,8 @@ END_FTR_SECTION_IFSET(CPU_FTR_VSX)
 __end_handlers:
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * Return from an exception with minimal checks.
@@ -1204,6 +1368,7 @@ unrecov_fer:
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Hash table stuff
  */
 	.align	7
@@ -1225,6 +1390,8 @@ END_MMU_FTR_SECTION_IFCLR(MMU_FTR_SLB)
 	lwz	r0,TI_PREEMPT(r11)	/* If we're in an "NMI" */
 	andis.	r0,r0,NMI_MASK@h	/* (i.e. an irq when soft-disabled) */
 	bne	77f			/* then don't call hash_page now */
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -1250,6 +1417,7 @@ END_MMU_FTR_SECTION_IFCLR(MMU_FTR_SLB)
 	clrrdi	r5,r5,4
 #endif /* CONFIG_TRACE_IRQFLAGS */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We need to set the _PAGE_USER bit if MSR_PR is set or if we are
 	 * accessing a userspace segment (even from the kernel). We assume
@@ -1270,13 +1438,20 @@ END_MMU_FTR_SECTION_IFCLR(MMU_FTR_SLB)
 <<<<<<< HEAD
 	 * at return r3 = 0 for success, 1 for page fault, negative for error
 =======
+<<<<<<< HEAD
+	 * at return r3 = 0 for success, 1 for page fault, negative for error
+=======
 	 * at return r3 = 0 for success
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	bl	.hash_page		/* build HPTE if possible */
 	cmpdi	r3,0			/* see if hash_page succeeded */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Success */
 	beq	fast_exc_return_irq	/* Return from exception on success */
 
@@ -1285,6 +1460,8 @@ END_MMU_FTR_SECTION_IFCLR(MMU_FTR_SLB)
 
 /* Here we have a page fault that hash_page can't handle. */
 handle_page_fault:
+<<<<<<< HEAD
+=======
 =======
 BEGIN_FW_FTR_SECTION
 	/*
@@ -1332,6 +1509,7 @@ handle_dabr_fault:
 handle_page_fault:
 	ENABLE_INTS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 11:	ld	r4,_DAR(r1)
 	ld	r5,_DSISR(r1)
 	addi	r3,r1,STACK_FRAME_OVERHEAD
@@ -1340,8 +1518,12 @@ handle_page_fault:
 <<<<<<< HEAD
 	beq+	12f
 =======
+<<<<<<< HEAD
+	beq+	12f
+=======
 	beq+	13f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.save_nvgprs
 	mr	r5,r3
 	addi	r3,r1,STACK_FRAME_OVERHEAD
@@ -1350,6 +1532,9 @@ handle_page_fault:
 	b	.ret_from_except
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* We have a data breakpoint exception - handle it */
 handle_dabr_fault:
 	bl	.save_nvgprs
@@ -1359,9 +1544,12 @@ handle_dabr_fault:
 	bl      .do_dabr
 12:	b       .ret_from_except_lite
 
+<<<<<<< HEAD
+=======
 =======
 13:	b	.ret_from_except_lite
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* We have a page fault that hash_page could handle but HV refused
  * the PTE insertion
@@ -1369,8 +1557,12 @@ handle_dabr_fault:
 <<<<<<< HEAD
 13:	bl	.save_nvgprs
 =======
+<<<<<<< HEAD
+13:	bl	.save_nvgprs
+=======
 12:	bl	.save_nvgprs
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mr	r5,r3
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	ld	r4,_DAR(r1)
@@ -1487,8 +1679,12 @@ _GLOBAL(do_stab_bolted)
 <<<<<<< HEAD
 #if defined(CONFIG_PPC_PSERIES) || defined(CONFIG_PPC_POWERNV)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_PPC_PSERIES) || defined(CONFIG_PPC_POWERNV)
+=======
 #ifdef CONFIG_PPC_PSERIES
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Data area reserved for FWNMI option.
  * This address (0x7000) is fixed by the RPA.
@@ -1497,6 +1693,9 @@ _GLOBAL(do_stab_bolted)
 	.globl fwnmi_data_area
 fwnmi_data_area:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* pseries and powernv need to keep the whole page from
 	 * 0x7000 to 0x8000 free for use by the firmware
@@ -1526,6 +1725,8 @@ _GLOBAL(opal_mc_secondary_handler)
 	GET_SCRATCH0(r13)
 	b	machine_check_pSeries
 #endif /* CONFIG_PPC_POWERNV */
+<<<<<<< HEAD
+=======
 =======
 #endif /* CONFIG_PPC_PSERIES */
 
@@ -1570,3 +1771,4 @@ xLparMap:
 initial_stab:
 	.space	4096
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

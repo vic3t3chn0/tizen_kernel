@@ -33,9 +33,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct snd_soc_card card;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_link pcm030_fabric_dai[] = {
 {
 	.name = "AC97",
@@ -56,6 +59,9 @@ static struct snd_soc_dai_link pcm030_fabric_dai[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_card card = {
 	.name = "pcm030",
 	.owner = THIS_MODULE,
@@ -63,8 +69,11 @@ static struct snd_soc_card card = {
 	.num_links = ARRAY_SIZE(pcm030_fabric_dai),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int pcm030_fabric_init(void)
 {
 	struct platform_device *pdev;
@@ -75,12 +84,15 @@ static __init int pcm030_fabric_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	card.name = "pcm030";
 	card.dai_link = pcm030_fabric_dai;
 	card.num_links = ARRAY_SIZE(pcm030_fabric_dai);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdev = platform_device_alloc("soc-audio", 1);
 	if (!pdev) {
 		pr_err("pcm030_fabric_init: platform_device_alloc() failed\n");

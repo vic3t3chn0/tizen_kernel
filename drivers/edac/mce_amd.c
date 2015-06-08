@@ -9,7 +9,15 @@ static u8 xec_mask	 = 0xf;
 static u8 nb_err_cpumask = 0xf;
 
 static bool report_gart_errors;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void (*nb_bus_decoder)(int node_id, struct mce *m);
+=======
 static void (*nb_bus_decoder)(int node_id, struct mce *m, u32 nbcfg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void (*nb_bus_decoder)(int node_id, struct mce *m, u32 nbcfg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void amd_report_gart_errors(bool v)
 {
@@ -17,13 +25,29 @@ void amd_report_gart_errors(bool v)
 }
 EXPORT_SYMBOL_GPL(amd_report_gart_errors);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void amd_register_ecc_decoder(void (*f)(int, struct mce *))
+=======
 void amd_register_ecc_decoder(void (*f)(int, struct mce *, u32))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void amd_register_ecc_decoder(void (*f)(int, struct mce *, u32))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	nb_bus_decoder = f;
 }
 EXPORT_SYMBOL_GPL(amd_register_ecc_decoder);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void amd_unregister_ecc_decoder(void (*f)(int, struct mce *))
+=======
 void amd_unregister_ecc_decoder(void (*f)(int, struct mce *, u32))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void amd_unregister_ecc_decoder(void (*f)(int, struct mce *, u32))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (nb_bus_decoder) {
 		WARN_ON(nb_bus_decoder != f);
@@ -39,6 +63,20 @@ EXPORT_SYMBOL_GPL(amd_unregister_ecc_decoder);
  */
 
 /* transaction type */
+<<<<<<< HEAD
+<<<<<<< HEAD
+const char * const tt_msgs[] = { "INSN", "DATA", "GEN", "RESV" };
+EXPORT_SYMBOL_GPL(tt_msgs);
+
+/* cache level */
+const char * const ll_msgs[] = { "RESV", "L1", "L2", "L3/GEN" };
+EXPORT_SYMBOL_GPL(ll_msgs);
+
+/* memory transaction type */
+const char * const rrrr_msgs[] = {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const char *tt_msgs[] = { "INSN", "DATA", "GEN", "RESV" };
 EXPORT_SYMBOL_GPL(tt_msgs);
 
@@ -48,11 +86,31 @@ EXPORT_SYMBOL_GPL(ll_msgs);
 
 /* memory transaction type */
 const char *rrrr_msgs[] = {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        "GEN", "RD", "WR", "DRD", "DWR", "IRD", "PRF", "EV", "SNP"
 };
 EXPORT_SYMBOL_GPL(rrrr_msgs);
 
 /* participating processor */
+<<<<<<< HEAD
+<<<<<<< HEAD
+const char * const pp_msgs[] = { "SRC", "RES", "OBS", "GEN" };
+EXPORT_SYMBOL_GPL(pp_msgs);
+
+/* request timeout */
+const char * const to_msgs[] = { "no timeout", "timed out" };
+EXPORT_SYMBOL_GPL(to_msgs);
+
+/* memory or i/o */
+const char * const ii_msgs[] = { "MEM", "RESV", "IO", "GEN" };
+EXPORT_SYMBOL_GPL(ii_msgs);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const char *pp_msgs[] = { "SRC", "RES", "OBS", "GEN" };
 EXPORT_SYMBOL_GPL(pp_msgs);
 
@@ -75,6 +133,10 @@ static const char *f10h_nb_mce_desc[] = {
 	"ECC Error in the Probe Filter directory"
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char * const f15h_ic_mce_desc[] = {
 	"UC during a demand linefill from L2",
 	"Parity error during data load from IC",
@@ -88,7 +150,15 @@ static const char * const f15h_ic_mce_desc[] = {
 	"Parity error for IC probe tag valid bit",
 	"PFB non-cacheable bit parity error",
 	"PFB valid bit parity error",			/* xec = 0xd */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	"Microcode Patch Buffer",			/* xec = 010 */
+=======
 	"patch RAM",					/* xec = 010 */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	"patch RAM",					/* xec = 010 */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"uop queue",
 	"insn buffer",
 	"predecode buffer",
@@ -104,7 +174,15 @@ static const char * const f15h_cu_mce_desc[] = {
 	"WCC Tag ECC error",
 	"WCC Data ECC error",
 	"WCB Data parity error",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	"VB Data ECC or parity error",
+=======
 	"VB Data/ECC error",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	"VB Data/ECC error",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"L2 Tag ECC error",				/* xec = 0x10 */
 	"Hard L2 Tag ECC error",
 	"Multiple hits on L2 tag",
@@ -112,6 +190,34 @@ static const char * const f15h_cu_mce_desc[] = {
 	"PRB address parity error"
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char * const nb_mce_desc[] = {
+	"DRAM ECC error detected on the NB",
+	"CRC error detected on HT link",
+	"Link-defined sync error packets detected on HT link",
+	"HT Master abort",
+	"HT Target abort",
+	"Invalid GART PTE entry during GART table walk",
+	"Unsupported atomic RMW received from an IO link",
+	"Watchdog timeout due to lack of progress",
+	"DRAM ECC error detected on the NB",
+	"SVM DMA Exclusion Vector error",
+	"HT data error detected on link",
+	"Protocol error (link, L3, probe filter)",
+	"NB internal arrays parity error",
+	"DRAM addr/ctl signals parity error",
+	"IO link transmission error",
+	"L3 data cache ECC error",			/* xec = 0x1c */
+	"L3 cache tag error",
+	"L3 LRU parity bits error",
+	"ECC Error in the Probe Filter directory"
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char * const fr_ex_mce_desc[] = {
 	"CPU Watchdog timer expire",
 	"Wakeup array dest tag",
@@ -125,7 +231,15 @@ static const char * const fr_ex_mce_desc[] = {
 	"Physical register file AG0 port",
 	"Physical register file AG1 port",
 	"Flag register file",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	"DE error occurred"
+=======
 	"DE correctable error could not be corrected"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	"DE correctable error could not be corrected"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static bool f12h_dc_mce(u16 ec, u8 xec)
@@ -255,10 +369,22 @@ static bool f15h_dc_mce(u16 ec, u8 xec)
 	} else if (BUS_ERROR(ec)) {
 
 		if (!xec)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_cont("System Read Data Error.\n");
+		else
+			pr_cont(" Internal error condition type %d.\n", xec);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_cont("during system linefill.\n");
 		else
 			pr_cont(" Internal %s condition.\n",
 				((xec == 1) ? "livelock" : "deadlock"));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		ret = false;
 
@@ -355,7 +481,19 @@ static bool f15h_ic_mce(u16 ec, u8 xec)
 		pr_cont("%s.\n", f15h_ic_mce_desc[xec-2]);
 		break;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 0x10:
+		pr_cont("%s.\n", f15h_ic_mce_desc[xec-4]);
+		break;
+
+	case 0x11 ... 0x14:
+=======
 	case 0x10 ... 0x14:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case 0x10 ... 0x14:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_cont("Decoder %s parity error.\n", f15h_ic_mce_desc[xec-4]);
 		break;
 
@@ -496,6 +634,36 @@ wrong_ls_mce:
 	pr_emerg(HW_ERR "Corrupted LS MCE info?\n");
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void amd_decode_nb_mce(struct mce *m)
+{
+	struct cpuinfo_x86 *c = &boot_cpu_data;
+	int node_id = amd_get_nb_id(m->extcpu);
+	u16 ec = EC(m->status);
+	u8 xec = XEC(m->status, 0x1f);
+	u8 offset = 0;
+
+	pr_emerg(HW_ERR "Northbridge Error (node %d): ", node_id);
+
+	switch (xec) {
+	case 0x0 ... 0xe:
+
+		/* special handling for DRAM ECCs */
+		if (xec == 0x0 || xec == 0x8) {
+			/* no ECCs on F11h */
+			if (c->x86 == 0x11)
+				goto wrong_nb_mce;
+
+			pr_cont("%s.\n", nb_mce_desc[xec]);
+
+			if (nb_bus_decoder)
+				nb_bus_decoder(node_id, m);
+			return;
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool k8_nb_mce(u16 ec, u8 xec)
 {
 	bool ret = true;
@@ -548,6 +716,10 @@ static bool f10h_nb_mce(u16 ec, u8 xec)
 
 	case 0xe:
 		offset = 11;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 0xf:
@@ -556,15 +728,43 @@ static bool f10h_nb_mce(u16 ec, u8 xec)
 		else if (BUS_ERROR(ec))
 			pr_cont("DMA Exclusion Vector Table Walk error.\n");
 		else
+<<<<<<< HEAD
+<<<<<<< HEAD
+			goto wrong_nb_mce;
+		return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = false;
 
 		goto out;
 		break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	case 0x19:
 		if (boot_cpu_data.x86 == 0x15)
 			pr_cont("Compute Unit Data Error.\n");
 		else
+<<<<<<< HEAD
+<<<<<<< HEAD
+			goto wrong_nb_mce;
+		return;
+
+	case 0x1c ... 0x1f:
+		offset = 13;
+		break;
+
+	default:
+		goto wrong_nb_mce;
+	}
+
+	pr_cont("%s.\n", nb_mce_desc[xec - offset]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = false;
 
 		goto out;
@@ -650,6 +850,10 @@ void amd_decode_nb_mce(int node_id, struct mce *m, u32 nbcfg)
 		if ((xec == 0x8 || xec == 0x0) && nb_bus_decoder)
 			nb_bus_decoder(node_id, m, nbcfg);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 
 wrong_nb_mce:
@@ -665,9 +869,18 @@ static void amd_decode_fr_mce(struct mce *m)
 	if (c->x86 == 0xf || c->x86 == 0x11)
 		goto wrong_fr_mce;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	if (c->x86 != 0x15 && xec != 0x0)
 		goto wrong_fr_mce;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (c->x86 != 0x15 && xec != 0x0)
+		goto wrong_fr_mce;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_emerg(HW_ERR "%s Error: ",
 		 (c->x86 == 0x15 ? "Execution Unit" : "FIROB"));
 
@@ -764,13 +977,31 @@ int amd_decode_mce(struct notifier_block *nb, unsigned long val, void *data)
 {
 	struct mce *m = (struct mce *)data;
 	struct cpuinfo_x86 *c = &boot_cpu_data;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ecc;
+=======
 	int node, ecc;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int node, ecc;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (amd_filter_mce(m))
 		return NOTIFY_STOP;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_emerg(HW_ERR "CPU:%d\tMC%d_STATUS[%s|%s|%s|%s|%s",
+		m->extcpu, m->bank,
+=======
 	pr_emerg(HW_ERR "MC%d_STATUS[%s|%s|%s|%s|%s",
 		m->bank,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pr_emerg(HW_ERR "MC%d_STATUS[%s|%s|%s|%s|%s",
+		m->bank,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		((m->status & MCI_STATUS_OVER)	? "Over"  : "-"),
 		((m->status & MCI_STATUS_UC)	? "UE"	  : "CE"),
 		((m->status & MCI_STATUS_MISCV)	? "MiscV" : "-"),
@@ -789,6 +1020,14 @@ int amd_decode_mce(struct notifier_block *nb, unsigned long val, void *data)
 
 	pr_cont("]: 0x%016llx\n", m->status);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (m->status & MCI_STATUS_ADDRV)
+		pr_emerg(HW_ERR "\tMC%d_ADDR: 0x%016llx\n", m->bank, m->addr);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (m->bank) {
 	case 0:
@@ -811,8 +1050,17 @@ int amd_decode_mce(struct notifier_block *nb, unsigned long val, void *data)
 		break;
 
 	case 4:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		amd_decode_nb_mce(m);
+=======
 		node = amd_get_nb_id(m->extcpu);
 		amd_decode_nb_mce(node, m, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		node = amd_get_nb_id(m->extcpu);
+		amd_decode_nb_mce(node, m, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 5:
@@ -844,9 +1092,19 @@ static int __init mce_amd_init(void)
 	if (c->x86_vendor != X86_VENDOR_AMD)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (c->x86 < 0xf || c->x86 > 0x15)
+=======
 	if ((c->x86 < 0xf || c->x86 > 0x12) &&
 	    (c->x86 != 0x14 || c->x86_model > 0xf) &&
 	    (c->x86 != 0x15 || c->x86_model > 0xf))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((c->x86 < 0xf || c->x86 > 0x12) &&
+	    (c->x86 != 0x14 || c->x86_model > 0xf) &&
+	    (c->x86 != 0x15 || c->x86_model > 0xf))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	fam_ops = kzalloc(sizeof(struct amd_decoder_ops), GFP_KERNEL);
@@ -857,50 +1115,106 @@ static int __init mce_amd_init(void)
 	case 0xf:
 		fam_ops->dc_mce = k8_dc_mce;
 		fam_ops->ic_mce = k8_ic_mce;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		fam_ops->nb_mce = k8_nb_mce;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fam_ops->nb_mce = k8_nb_mce;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 0x10:
 		fam_ops->dc_mce = f10h_dc_mce;
 		fam_ops->ic_mce = k8_ic_mce;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		fam_ops->nb_mce = f10h_nb_mce;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fam_ops->nb_mce = f10h_nb_mce;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 0x11:
 		fam_ops->dc_mce = k8_dc_mce;
 		fam_ops->ic_mce = k8_ic_mce;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		fam_ops->nb_mce = f10h_nb_mce;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fam_ops->nb_mce = f10h_nb_mce;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 0x12:
 		fam_ops->dc_mce = f12h_dc_mce;
 		fam_ops->ic_mce = k8_ic_mce;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		fam_ops->nb_mce = nb_noop_mce;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fam_ops->nb_mce = nb_noop_mce;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 0x14:
 		nb_err_cpumask  = 0x3;
 		fam_ops->dc_mce = f14h_dc_mce;
 		fam_ops->ic_mce = f14h_ic_mce;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		fam_ops->nb_mce = nb_noop_mce;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fam_ops->nb_mce = nb_noop_mce;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	case 0x15:
 		xec_mask = 0x1f;
 		fam_ops->dc_mce = f15h_dc_mce;
 		fam_ops->ic_mce = f15h_ic_mce;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		break;
+
+	default:
+		printk(KERN_WARNING "Huh? What family is it: 0x%x?!\n", c->x86);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fam_ops->nb_mce = f10h_nb_mce;
 		break;
 
 	default:
 		printk(KERN_WARNING "Huh? What family is that: %d?!\n", c->x86);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(fam_ops);
 		return -EINVAL;
 	}
 
 	pr_info("MCE: In-kernel MCE decoding enabled.\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mce_register_decode_chain(&amd_mce_dec_nb);
+=======
 	atomic_notifier_chain_register(&x86_mce_decoder_chain, &amd_mce_dec_nb);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_notifier_chain_register(&x86_mce_decoder_chain, &amd_mce_dec_nb);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -909,7 +1223,15 @@ early_initcall(mce_amd_init);
 #ifdef MODULE
 static void __exit mce_amd_exit(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mce_unregister_decode_chain(&amd_mce_dec_nb);
+=======
 	atomic_notifier_chain_unregister(&x86_mce_decoder_chain, &amd_mce_dec_nb);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_notifier_chain_unregister(&x86_mce_decoder_chain, &amd_mce_dec_nb);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(fam_ops);
 }
 

@@ -56,13 +56,32 @@ static void inftl_add_mtd(struct mtd_blktrans_ops *tr, struct mtd_info *mtd)
 	if (memcmp(mtd->name, "DiskOnChip", 10))
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!mtd->_block_isbad) {
+=======
 	if (!mtd->block_isbad) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!mtd->block_isbad) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_ERR
 "INFTL no longer supports the old DiskOnChip drivers loaded via docprobe.\n"
 "Please use the new diskonchip driver under the NAND subsystem.\n");
 		return;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: add_mtd for %s\n", mtd->name);
+
+	inftl = kzalloc(sizeof(*inftl), GFP_KERNEL);
+
+	if (!inftl)
+		return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: add_mtd for %s\n", mtd->name);
 
 	inftl = kzalloc(sizeof(*inftl), GFP_KERNEL);
@@ -71,6 +90,10 @@ static void inftl_add_mtd(struct mtd_blktrans_ops *tr, struct mtd_info *mtd)
 		printk(KERN_WARNING "INFTL: Out of memory for data structures\n");
 		return;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inftl->mbd.mtd = mtd;
 	inftl->mbd.devnum = -1;
@@ -133,7 +156,15 @@ static void inftl_remove_dev(struct mtd_blktrans_dev *dev)
 {
 	struct INFTLrecord *inftl = (void *)dev;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: remove_dev (i=%d)\n", dev->devnum);
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: remove_dev (i=%d)\n", dev->devnum);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: remove_dev (i=%d)\n", dev->devnum);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	del_mtd_blktrans_dev(dev);
 
@@ -154,13 +185,29 @@ int inftl_read_oob(struct mtd_info *mtd, loff_t offs, size_t len,
 	struct mtd_oob_ops ops;
 	int res;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_PLACE_OOB;
+=======
 	ops.mode = MTD_OOB_PLACE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ops.mode = MTD_OOB_PLACE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.ooboffs = offs & (mtd->writesize - 1);
 	ops.ooblen = len;
 	ops.oobbuf = buf;
 	ops.datbuf = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = mtd_read_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+=======
 	res = mtd->read_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	res = mtd->read_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = ops.oobretlen;
 	return res;
 }
@@ -174,13 +221,29 @@ int inftl_write_oob(struct mtd_info *mtd, loff_t offs, size_t len,
 	struct mtd_oob_ops ops;
 	int res;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_PLACE_OOB;
+=======
 	ops.mode = MTD_OOB_PLACE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ops.mode = MTD_OOB_PLACE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.ooboffs = offs & (mtd->writesize - 1);
 	ops.ooblen = len;
 	ops.oobbuf = buf;
 	ops.datbuf = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = mtd_write_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+=======
 	res = mtd->write_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	res = mtd->write_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = ops.oobretlen;
 	return res;
 }
@@ -194,14 +257,30 @@ static int inftl_write(struct mtd_info *mtd, loff_t offs, size_t len,
 	struct mtd_oob_ops ops;
 	int res;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ops.mode = MTD_OPS_PLACE_OOB;
+=======
 	ops.mode = MTD_OOB_PLACE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ops.mode = MTD_OOB_PLACE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ops.ooboffs = offs;
 	ops.ooblen = mtd->oobsize;
 	ops.oobbuf = oob;
 	ops.datbuf = buf;
 	ops.len = len;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	res = mtd_write_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+=======
 	res = mtd->write_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	res = mtd->write_oob(mtd, offs & ~(mtd->writesize - 1), &ops);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*retlen = ops.retlen;
 	return res;
 }
@@ -215,16 +294,36 @@ static u16 INFTL_findfreeblock(struct INFTLrecord *inftl, int desperate)
 	u16 pot = inftl->LastFreeEUN;
 	int silly = inftl->nb_blocks;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: INFTL_findfreeblock(inftl=%p,desperate=%d)\n",
+			inftl, desperate);
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_findfreeblock(inftl=%p,"
 		"desperate=%d)\n", inftl, desperate);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_findfreeblock(inftl=%p,"
+		"desperate=%d)\n", inftl, desperate);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Normally, we force a fold to happen before we run out of free
 	 * blocks completely.
 	 */
 	if (!desperate && inftl->numfreeEUNs < 2) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_debug("INFTL: there are too few free EUNs (%d)\n",
+				inftl->numfreeEUNs);
+=======
 		DEBUG(MTD_DEBUG_LEVEL1, "INFTL: there are too few free "
 			"EUNs (%d)\n", inftl->numfreeEUNs);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DEBUG(MTD_DEBUG_LEVEL1, "INFTL: there are too few free "
+			"EUNs (%d)\n", inftl->numfreeEUNs);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return BLOCK_NIL;
 	}
 
@@ -259,8 +358,18 @@ static u16 INFTL_foldchain(struct INFTLrecord *inftl, unsigned thisVUC, unsigned
 	struct inftl_oob oob;
 	size_t retlen;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: INFTL_foldchain(inftl=%p,thisVUC=%d,pending=%d)\n",
+			inftl, thisVUC, pendingblock);
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_foldchain(inftl=%p,thisVUC=%d,"
 		"pending=%d)\n", inftl, thisVUC, pendingblock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_foldchain(inftl=%p,thisVUC=%d,"
+		"pending=%d)\n", inftl, thisVUC, pendingblock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(BlockMap, 0xff, sizeof(BlockMap));
 	memset(BlockDeleted, 0, sizeof(BlockDeleted));
@@ -323,8 +432,17 @@ static u16 INFTL_foldchain(struct INFTLrecord *inftl, unsigned thisVUC, unsigned
 	 * Chain, and the Erase Unit into which we are supposed to be copying.
 	 * Go for it.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: folding chain %d into unit %d\n", thisVUC, targetEUN);
+=======
 	DEBUG(MTD_DEBUG_LEVEL1, "INFTL: folding chain %d into unit %d\n",
 		thisVUC, targetEUN);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL1, "INFTL: folding chain %d into unit %d\n",
+		thisVUC, targetEUN);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (block = 0; block < inftl->EraseSize/SECTORSIZE ; block++) {
 		unsigned char movebuf[SECTORSIZE];
@@ -346,6 +464,24 @@ static u16 INFTL_foldchain(struct INFTLrecord *inftl, unsigned thisVUC, unsigned
 		if (BlockMap[block] == BLOCK_NIL)
 			continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = mtd_read(mtd,
+			       (inftl->EraseSize * BlockMap[block]) + (block * SECTORSIZE),
+			       SECTORSIZE,
+			       &retlen,
+			       movebuf);
+		if (ret < 0 && !mtd_is_bitflip(ret)) {
+			ret = mtd_read(mtd,
+				       (inftl->EraseSize * BlockMap[block]) + (block * SECTORSIZE),
+				       SECTORSIZE,
+				       &retlen,
+				       movebuf);
+			if (ret != -EIO)
+				pr_debug("INFTL: error went away on retry?\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = mtd->read(mtd, (inftl->EraseSize * BlockMap[block]) +
 				(block * SECTORSIZE), SECTORSIZE, &retlen,
 				movebuf);
@@ -357,6 +493,10 @@ static u16 INFTL_foldchain(struct INFTLrecord *inftl, unsigned thisVUC, unsigned
 			if (ret != -EIO)
 				DEBUG(MTD_DEBUG_LEVEL1, "INFTL: error went "
 				      "away on retry?\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		memset(&oob, 0xff, sizeof(struct inftl_oob));
 		oob.b.Status = oob.b.Status1 = SECTOR_USED;
@@ -372,8 +512,17 @@ static u16 INFTL_foldchain(struct INFTLrecord *inftl, unsigned thisVUC, unsigned
 	 * is important, by doing oldest first if we crash/reboot then it
 	 * it is relatively simple to clean up the mess).
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: want to erase virtual chain %d\n", thisVUC);
+=======
 	DEBUG(MTD_DEBUG_LEVEL1, "INFTL: want to erase virtual chain %d\n",
 		thisVUC);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL1, "INFTL: want to erase virtual chain %d\n",
+		thisVUC);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (;;) {
 		/* Find oldest unit in chain. */
@@ -421,7 +570,15 @@ static u16 INFTL_makefreeblock(struct INFTLrecord *inftl, unsigned pendingblock)
 	u16 ChainLength = 0, thislen;
 	u16 chain, EUN;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: INFTL_makefreeblock(inftl=%p,"
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_makefreeblock(inftl=%p,"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_makefreeblock(inftl=%p,"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"pending=%d)\n", inftl, pendingblock);
 
 	for (chain = 0; chain < inftl->nb_blocks; chain++) {
@@ -484,8 +641,18 @@ static inline u16 INFTL_findwriteunit(struct INFTLrecord *inftl, unsigned block)
 	size_t retlen;
 	int silly, silly2 = 3;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: INFTL_findwriteunit(inftl=%p,block=%d)\n",
+			inftl, block);
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_findwriteunit(inftl=%p,"
 		"block=%d)\n", inftl, block);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_findwriteunit(inftl=%p,"
+		"block=%d)\n", inftl, block);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	do {
 		/*
@@ -501,8 +668,18 @@ static inline u16 INFTL_findwriteunit(struct INFTLrecord *inftl, unsigned block)
 				       blockofs, 8, &retlen, (char *)&bci);
 
 			status = bci.Status | bci.Status1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_debug("INFTL: status of block %d in EUN %d is %x\n",
+					block , writeEUN, status);
+=======
 			DEBUG(MTD_DEBUG_LEVEL3, "INFTL: status of block %d in "
 				"EUN %d is %x\n", block , writeEUN, status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			DEBUG(MTD_DEBUG_LEVEL3, "INFTL: status of block %d in "
+				"EUN %d is %x\n", block , writeEUN, status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			switch(status) {
 			case SECTOR_FREE:
@@ -555,9 +732,21 @@ hitused:
 			 * Hopefully we free something, lets try again.
 			 * This time we are desperate...
 			 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_debug("INFTL: using desperate==1 to find free EUN "
+					"to accommodate write to VUC %d\n",
+					thisVUC);
+=======
 			DEBUG(MTD_DEBUG_LEVEL1, "INFTL: using desperate==1 "
 				"to find free EUN to accommodate write to "
 				"VUC %d\n", thisVUC);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			DEBUG(MTD_DEBUG_LEVEL1, "INFTL: using desperate==1 "
+				"to find free EUN to accommodate write to "
+				"VUC %d\n", thisVUC);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			writeEUN = INFTL_findfreeblock(inftl, 1);
 			if (writeEUN == BLOCK_NIL) {
 				/*
@@ -647,7 +836,15 @@ static void INFTL_trydeletechain(struct INFTLrecord *inftl, unsigned thisVUC)
 	struct inftl_bci bci;
 	size_t retlen;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: INFTL_trydeletechain(inftl=%p,"
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_trydeletechain(inftl=%p,"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_trydeletechain(inftl=%p,"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"thisVUC=%d)\n", inftl, thisVUC);
 
 	memset(BlockUsed, 0, sizeof(BlockUsed));
@@ -711,7 +908,15 @@ static void INFTL_trydeletechain(struct INFTLrecord *inftl, unsigned thisVUC)
 	 * For each block in the chain free it and make it available
 	 * for future use. Erase from the oldest unit first.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: deleting empty VUC %d\n", thisVUC);
+=======
 	DEBUG(MTD_DEBUG_LEVEL1, "INFTL: deleting empty VUC %d\n", thisVUC);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL1, "INFTL: deleting empty VUC %d\n", thisVUC);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (;;) {
 		u16 *prevEUN = &inftl->VUtable[thisVUC];
@@ -719,7 +924,15 @@ static void INFTL_trydeletechain(struct INFTLrecord *inftl, unsigned thisVUC)
 
 		/* If the chain is all gone already, we're done */
 		if (thisEUN == BLOCK_NIL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_debug("INFTL: Empty VUC %d for deletion was already absent\n", thisEUN);
+=======
 			DEBUG(MTD_DEBUG_LEVEL2, "INFTL: Empty VUC %d for deletion was already absent\n", thisEUN);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			DEBUG(MTD_DEBUG_LEVEL2, "INFTL: Empty VUC %d for deletion was already absent\n", thisEUN);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		}
 
@@ -731,7 +944,15 @@ static void INFTL_trydeletechain(struct INFTLrecord *inftl, unsigned thisVUC)
 			thisEUN = *prevEUN;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_debug("Deleting EUN %d from VUC %d\n",
+=======
 		DEBUG(MTD_DEBUG_LEVEL3, "Deleting EUN %d from VUC %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		DEBUG(MTD_DEBUG_LEVEL3, "Deleting EUN %d from VUC %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      thisEUN, thisVUC);
 
 		if (INFTL_formatblock(inftl, thisEUN) < 0) {
@@ -767,7 +988,15 @@ static int INFTL_deleteblock(struct INFTLrecord *inftl, unsigned block)
 	size_t retlen;
 	struct inftl_bci bci;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: INFTL_deleteblock(inftl=%p,"
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_deleteblock(inftl=%p,"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: INFTL_deleteblock(inftl=%p,"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"block=%d)\n", inftl, block);
 
 	while (thisEUN < inftl->nb_blocks) {
@@ -826,7 +1055,15 @@ static int inftl_writeblock(struct mtd_blktrans_dev *mbd, unsigned long block,
 	struct inftl_oob oob;
 	char *p, *pend;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: inftl_writeblock(inftl=%p,block=%ld,"
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: inftl_writeblock(inftl=%p,block=%ld,"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: inftl_writeblock(inftl=%p,block=%ld,"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"buffer=%p)\n", inftl, block, buffer);
 
 	/* Is block all zero? */
@@ -876,7 +1113,15 @@ static int inftl_readblock(struct mtd_blktrans_dev *mbd, unsigned long block,
 	struct inftl_bci bci;
 	size_t retlen;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_debug("INFTL: inftl_readblock(inftl=%p,block=%ld,"
+=======
 	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: inftl_readblock(inftl=%p,block=%ld,"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DEBUG(MTD_DEBUG_LEVEL3, "INFTL: inftl_readblock(inftl=%p,block=%ld,"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"buffer=%p)\n", inftl, block, buffer);
 
 	while (thisEUN < inftl->nb_blocks) {
@@ -919,10 +1164,23 @@ foundit:
 	} else {
 		size_t retlen;
 		loff_t ptr = (thisEUN * inftl->EraseSize) + blockofs;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		int ret = mtd_read(mtd, ptr, SECTORSIZE, &retlen, buffer);
+
+		/* Handle corrected bit flips gracefully */
+		if (ret < 0 && !mtd_is_bitflip(ret))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int ret = mtd->read(mtd, ptr, SECTORSIZE, &retlen, buffer);
 
 		/* Handle corrected bit flips gracefully */
 		if (ret < 0 && ret != -EUCLEAN)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EIO;
 	}
 	return 0;

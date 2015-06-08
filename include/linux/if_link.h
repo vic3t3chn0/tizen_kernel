@@ -283,7 +283,11 @@ enum {
 <<<<<<< HEAD
 	IFLA_VF_SPOOFCHK,	/* Spoof Checking on/off switch */
 =======
+<<<<<<< HEAD
+	IFLA_VF_SPOOFCHK,	/* Spoof Checking on/off switch */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__IFLA_VF_MAX,
 };
 
@@ -306,6 +310,9 @@ struct ifla_vf_tx_rate {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ifla_vf_spoofchk {
 	__u32 vf;
 	__u32 setting;
@@ -313,8 +320,11 @@ struct ifla_vf_spoofchk {
 #ifdef __KERNEL__
 
 /* We don't want this structure exposed to user space */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ifla_vf_info {
 	__u32 vf;
 	__u8 mac[32];
@@ -326,8 +336,14 @@ struct ifla_vf_info {
 };
 #endif
 =======
+<<<<<<< HEAD
+	__u32 spoofchk;
+};
+#endif
+=======
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* VF ports management section
  *

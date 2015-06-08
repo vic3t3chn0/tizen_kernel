@@ -34,11 +34,23 @@ struct of_flash_list {
 
 struct of_flash {
 	struct mtd_info		*cmtd;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct mtd_partition	*parts;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct mtd_partition	*parts;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int list_size; /* number of elements in of_flash_list */
 	struct of_flash_list	list[0];
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OF_FLASH_PARTS(info)	((info)->parts)
 static int parse_obsolete_partitions(struct platform_device *dev,
 				     struct of_flash *info,
@@ -86,6 +98,10 @@ static int parse_obsolete_partitions(struct platform_device *dev,
 	return nr_parts;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int of_flash_remove(struct platform_device *dev)
 {
 	struct of_flash *info;
@@ -101,11 +117,22 @@ static int of_flash_remove(struct platform_device *dev)
 		mtd_concat_destroy(info->cmtd);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (info->cmtd)
+		mtd_device_unregister(info->cmtd);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (info->cmtd) {
 		if (OF_FLASH_PARTS(info))
 			kfree(OF_FLASH_PARTS(info));
 		mtd_device_unregister(info->cmtd);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < info->list_size; i++) {
 		if (info->list[i].mtd)
@@ -165,7 +192,16 @@ static struct mtd_info * __devinit obsolete_probe(struct platform_device *dev,
    specifies the list of partition probers to use. If none is given then the
    default is use. These take precedence over other device tree
    information. */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char *part_probe_types_def[] = { "cmdlinepart", "RedBoot",
+					"ofpart", "ofoldpart", NULL };
+=======
 static const char *part_probe_types_def[] = { "cmdlinepart", "RedBoot", NULL };
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const char *part_probe_types_def[] = { "cmdlinepart", "RedBoot", NULL };
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char ** __devinit of_get_probes(struct device_node *dp)
 {
 	const char *cp;
@@ -218,6 +254,13 @@ static int __devinit of_flash_probe(struct platform_device *dev)
 	int reg_tuple_size;
 	struct mtd_info **mtd_list = NULL;
 	resource_size_t res_size;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mtd_part_parser_data ppdata;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	match = of_match_device(of_flash_match, &dev->dev);
 	if (!match)
@@ -331,6 +374,17 @@ static int __devinit of_flash_probe(struct platform_device *dev)
 	if (err)
 		goto err_out;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ppdata.of_node = dp;
+	part_probe_types = of_get_probes(dp);
+	mtd_device_parse_register(info->cmtd, part_probe_types, &ppdata,
+			NULL, 0);
+	of_free_probes(part_probe_types);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	part_probe_types = of_get_probes(dp);
 	err = parse_mtd_partitions(info->cmtd, part_probe_types,
 				   &info->parts, 0);
@@ -354,6 +408,10 @@ static int __devinit of_flash_probe(struct platform_device *dev)
 
 	mtd_device_register(info->cmtd, info->parts, err);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(mtd_list);
 
 	return 0;
@@ -404,6 +462,12 @@ static struct platform_driver of_flash_driver = {
 	.remove		= of_flash_remove,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(of_flash_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init of_flash_init(void)
 {
 	return platform_driver_register(&of_flash_driver);
@@ -416,6 +480,10 @@ static void __exit of_flash_exit(void)
 
 module_init(of_flash_init);
 module_exit(of_flash_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Vitaly Wool <vwool@ru.mvista.com>");

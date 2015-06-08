@@ -159,7 +159,14 @@ static void setup_packet_header(struct asus_oled_packet *packet, char flags,
 
 static void enable_oled(struct asus_oled_dev *odev, uint8_t enabl)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int a;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int a;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int retval;
 	int act_len;
 	struct asus_oled_packet *packet;
@@ -178,6 +185,20 @@ static void enable_oled(struct asus_oled_dev *odev, uint8_t enabl)
 	else
 		packet->bitmap[0] = 0xae;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	retval = usb_bulk_msg(odev->udev,
+		usb_sndbulkpipe(odev->udev, 2),
+		packet,
+		sizeof(struct asus_oled_header) + 1,
+		&act_len,
+		-1);
+
+	if (retval)
+		dev_dbg(&odev->udev->dev, "retval = %d\n", retval);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (a = 0; a < 1; a++) {
 		retval = usb_bulk_msg(odev->udev,
 			usb_sndbulkpipe(odev->udev, 2),
@@ -189,6 +210,10 @@ static void enable_oled(struct asus_oled_dev *odev, uint8_t enabl)
 		if (retval)
 			dev_dbg(&odev->udev->dev, "retval = %d\n", retval);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	odev->enabled = enabl;
 
@@ -201,7 +226,15 @@ static ssize_t set_enabled(struct device *dev, struct device_attribute *attr,
 	struct usb_interface *intf = to_usb_interface(dev);
 	struct asus_oled_dev *odev = usb_get_intfdata(intf);
 	unsigned long value;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &value))
+=======
 	if (strict_strtoul(buf, 10, &value))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &value))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	enable_oled(odev, value);
@@ -217,7 +250,15 @@ static ssize_t class_set_enabled(struct device *device,
 		(struct asus_oled_dev *) dev_get_drvdata(device);
 	unsigned long value;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &value))
+=======
 	if (strict_strtoul(buf, 10, &value))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &value))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	enable_oled(odev, value);

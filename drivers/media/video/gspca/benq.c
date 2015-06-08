@@ -18,6 +18,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "benq"
 
 #include "gspca.h"
@@ -62,7 +70,15 @@ static void reg_w(struct gspca_dev *gspca_dev,
 			0,
 			500);
 	if (ret < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("reg_w err %d\n", ret);
+=======
 		err("reg_w err %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("reg_w err %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gspca_dev->usb_err = ret;
 	}
 }
@@ -74,7 +90,14 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	gspca_dev->cam.cam_mode = vga_mode;
 	gspca_dev->cam.nmodes = ARRAY_SIZE(vga_mode);
 	gspca_dev->cam.no_urb_create = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	gspca_dev->cam.reverse_alts = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	gspca_dev->cam.reverse_alts = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -84,6 +107,11 @@ static int sd_init(struct gspca_dev *gspca_dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sd_isoc_init(struct gspca_dev *gspca_dev)
 {
 	int ret;
@@ -98,6 +126,10 @@ static int sd_isoc_init(struct gspca_dev *gspca_dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- start the camera -- */
 static int sd_start(struct gspca_dev *gspca_dev)
 {
@@ -113,7 +145,15 @@ static int sd_start(struct gspca_dev *gspca_dev)
 	for (n = 0; n < 4; n++) {
 		urb = usb_alloc_urb(SD_NPKT, GFP_KERNEL);
 		if (!urb) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("usb_alloc_urb failed\n");
+=======
 			err("usb_alloc_urb failed");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("usb_alloc_urb failed");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 		}
 		gspca_dev->urb[n] = urb;
@@ -123,7 +163,15 @@ static int sd_start(struct gspca_dev *gspca_dev)
 						&urb->transfer_dma);
 
 		if (urb->transfer_buffer == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("usb_alloc_coherent failed\n");
+=======
 			err("usb_alloc_coherent failed");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("usb_alloc_coherent failed");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -ENOMEM;
 		}
 		urb->dev = gspca_dev->dev;
@@ -147,13 +195,33 @@ static int sd_start(struct gspca_dev *gspca_dev)
 
 static void sd_stopN(struct gspca_dev *gspca_dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_interface *intf;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	reg_w(gspca_dev, 0x003c, 0x0003);
 	reg_w(gspca_dev, 0x003c, 0x0004);
 	reg_w(gspca_dev, 0x003c, 0x0005);
 	reg_w(gspca_dev, 0x003c, 0x0006);
 	reg_w(gspca_dev, 0x003c, 0x0007);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	intf = usb_ifnum_to_if(gspca_dev->dev, gspca_dev->iface);
+	usb_set_interface(gspca_dev->dev, gspca_dev->iface,
+					intf->num_altsetting - 1);
+=======
 	usb_set_interface(gspca_dev->dev, gspca_dev->iface,
 					gspca_dev->nbalt - 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	usb_set_interface(gspca_dev->dev, gspca_dev->iface,
+					gspca_dev->nbalt - 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void sd_pkt_scan(struct gspca_dev *gspca_dev,
@@ -181,7 +249,15 @@ static void sd_isoc_irq(struct urb *urb)
 		if (gspca_dev->frozen)
 			return;
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("urb status: %d\n", urb->status);
+=======
 		err("urb status: %d", urb->status);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("urb status: %d", urb->status);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -209,7 +285,15 @@ static void sd_isoc_irq(struct urb *urb)
 		if (st == 0)
 			st = urb->iso_frame_desc[i].status;
 		if (st) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_err("ISOC data error: [%d] status=%d\n",
+=======
 			err("ISOC data error: [%d] status=%d",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err("ISOC data error: [%d] status=%d",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				i, st);
 			gspca_dev->last_packet_type = DISCARD_PACKET;
 			continue;
@@ -256,10 +340,23 @@ static void sd_isoc_irq(struct urb *urb)
 	/* resubmit the URBs */
 	st = usb_submit_urb(urb0, GFP_ATOMIC);
 	if (st < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("usb_submit_urb(0) ret %d\n", st);
+	st = usb_submit_urb(urb, GFP_ATOMIC);
+	if (st < 0)
+		pr_err("usb_submit_urb() ret %d\n", st);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err("usb_submit_urb(0) ret %d", st);
 	st = usb_submit_urb(urb, GFP_ATOMIC);
 	if (st < 0)
 		err("usb_submit_urb() ret %d", st);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* sub-driver description */
@@ -269,7 +366,14 @@ static const struct sd_desc sd_desc = {
 	.nctrls = ARRAY_SIZE(sd_ctrls),
 	.config = sd_config,
 	.init = sd_init,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.isoc_init = sd_isoc_init,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.isoc_init = sd_isoc_init,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.start = sd_start,
 	.stopN = sd_stopN,
 	.pkt_scan = sd_pkt_scan,
@@ -301,6 +405,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -313,3 +423,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

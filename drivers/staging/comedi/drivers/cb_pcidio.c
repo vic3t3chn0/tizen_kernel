@@ -184,8 +184,16 @@ static int pcidio_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 	int index;
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	printk("comedi%d: cb_pcidio: \n", dev->minor);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi%d: cb_pcidio: \n", dev->minor);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Allocate the private structure area.  alloc_private() is a
  * convenient macro defined in comedidev.h.
@@ -223,8 +231,17 @@ static int pcidio_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_err(dev->hw_dev, "No supported ComputerBoards/MeasurementComputing card found on requested position\n");
+=======
 	printk("No supported ComputerBoards/MeasurementComputing card found on "
 	       "requested position\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("No supported ComputerBoards/MeasurementComputing card found on "
+	       "requested position\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -EIO;
 
 found:
@@ -236,6 +253,17 @@ found:
 	dev->board_name = thisboard->name;
 
 	devpriv->pci_dev = pcidev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_dbg(dev->hw_dev, "Found %s on bus %i, slot %i\n", thisboard->name,
+		devpriv->pci_dev->bus->number,
+		PCI_SLOT(devpriv->pci_dev->devfn));
+	if (comedi_pci_enable(pcidev, thisboard->name))
+		return -EIO;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk("Found %s on bus %i, slot %i\n", thisboard->name,
 	       devpriv->pci_dev->bus->number,
 	       PCI_SLOT(devpriv->pci_dev->devfn));
@@ -244,6 +272,10 @@ found:
 		    ("cb_pcidio: failed to enable PCI device and request regions\n");
 		return -EIO;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	devpriv->dio_reg_base
 	    =
 	    pci_resource_start(devpriv->pci_dev,
@@ -259,11 +291,24 @@ found:
 	for (i = 0; i < thisboard->n_8255; i++) {
 		subdev_8255_init(dev, dev->subdevices + i,
 				 NULL, devpriv->dio_reg_base + i * 4);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_dbg(dev->hw_dev, "subdev %d: base = 0x%lx\n", i,
+			devpriv->dio_reg_base + i * 4);
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(" subdev %d: base = 0x%lx\n", i,
 		       devpriv->dio_reg_base + i * 4);
 	}
 
 	printk("attached\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -277,7 +322,14 @@ found:
  */
 static int pcidio_detach(struct comedi_device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	printk("comedi%d: cb_pcidio: remove\n", dev->minor);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi%d: cb_pcidio: remove\n", dev->minor);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (devpriv) {
 		if (devpriv->pci_dev) {
 			if (devpriv->dio_reg_base)

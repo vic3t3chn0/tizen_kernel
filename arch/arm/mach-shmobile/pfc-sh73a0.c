@@ -23,6 +23,9 @@
 #include <linux/gpio.h>
 #include <mach/sh73a0.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irqs.h>
 
 #define CPU_ALL_PORT(fn, pfx, sfx)				\
@@ -55,6 +58,8 @@
 	PORT_1(fn, pfx##282, sfx),				\
 	PORT_1(fn, pfx##288, sfx), PORT_1(fn, pfx##289, sfx),	\
 	PORT_10(fn, pfx##29, sfx), PORT_10(fn, pfx##30, sfx)
+<<<<<<< HEAD
+=======
 =======
 
 #define _1(fn, pfx, sfx) fn(pfx, sfx)
@@ -100,12 +105,16 @@
 #define _PORT(pfx, sfx) pfx##_##sfx
 #define PORT_310(str) _310(_PORT, PORT, str)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	PINMUX_RESERVED = 0,
 
 	PINMUX_DATA_BEGIN,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PORT_ALL(DATA),			/* PORT0_DATA -> PORT309_DATA */
 	PINMUX_DATA_END,
 
@@ -136,6 +145,8 @@ enum {
 	PORT_ALL(FN5),			/* PORT0_FN5 -> PORT309_FN5 */
 	PORT_ALL(FN6),			/* PORT0_FN6 -> PORT309_FN6 */
 	PORT_ALL(FN7),			/* PORT0_FN7 -> PORT309_FN7 */
+<<<<<<< HEAD
+=======
 =======
 	PORT_310(DATA),			/* PORT0_DATA -> PORT309_DATA */
 	PINMUX_DATA_END,
@@ -168,6 +179,7 @@ enum {
 	PORT_310(FN6),			/* PORT0_FN6 -> PORT309_FN6 */
 	PORT_310(FN7),			/* PORT0_FN7 -> PORT309_FN7 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	MSEL2CR_MSEL19_0, MSEL2CR_MSEL19_1,
 	MSEL2CR_MSEL18_0, MSEL2CR_MSEL18_1,
@@ -557,6 +569,9 @@ enum {
 	KEYIN6_PU_MARK,
 	KEYIN7_PU_MARK,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SDHICD0_PU_MARK,
 	SDHID0_0_PU_MARK,
 	SDHID0_1_PU_MARK,
@@ -564,14 +579,20 @@ enum {
 	SDHID0_3_PU_MARK,
 	SDHICMD0_PU_MARK,
 	SDHIWP0_PU_MARK,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SDHID1_0_PU_MARK,
 	SDHID1_1_PU_MARK,
 	SDHID1_2_PU_MARK,
 	SDHID1_3_PU_MARK,
 	SDHICMD1_PU_MARK,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SDHID2_0_PU_MARK,
 	SDHID2_1_PU_MARK,
 	SDHID2_2_PU_MARK,
@@ -588,10 +609,13 @@ enum {
 	MMCD0_6_PU_MARK,
 	MMCD0_7_PU_MARK,
 	FSIBISLD_PU_MARK,
+<<<<<<< HEAD
+=======
 =======
 	MMCCMD0_PU_MARK,
 	MMCCMD1_PU_MARK,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FSIACK_PU_MARK,
 	FSIAILR_PU_MARK,
 	FSIAIBT_PU_MARK,
@@ -600,6 +624,8 @@ enum {
 	PINMUX_MARK_END,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define PORT_DATA_I(nr)	\
@@ -642,6 +668,7 @@ enum {
 				PORT##nr##_IN_PD, PORT##nr##_IN_PU)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static pinmux_enum_t pinmux_data[] = {
 	/* specify valid pin states for each pin in GPIO mode */
 
@@ -1488,6 +1515,9 @@ static pinmux_enum_t pinmux_data[] = {
 	PINMUX_DATA(SDHICMD2_MARK, PORT269_FN1),
 	PINMUX_DATA(MMCCLK0_MARK, PORT270_FN1, MSEL4CR_MSEL15_0),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PINMUX_DATA(MMCD0_0_MARK, PORT271_FN1, PORT271_IN_PU,
 		MSEL4CR_MSEL15_0),
 	PINMUX_DATA(MMCD0_1_MARK, PORT272_FN1, PORT272_IN_PU,
@@ -1510,6 +1540,8 @@ static pinmux_enum_t pinmux_data[] = {
 	PINMUX_DATA(TS_SCK5_MARK, PORT278_FN3),
 	PINMUX_DATA(MMCCMD0_MARK, PORT279_FN1, PORT279_IN_PU,
 		MSEL4CR_MSEL15_0),
+<<<<<<< HEAD
+=======
 =======
 	PINMUX_DATA(MMCD0_0_MARK, PORT271_FN1, MSEL4CR_MSEL15_0),
 	PINMUX_DATA(MMCD0_1_MARK, PORT272_FN1, MSEL4CR_MSEL15_0),
@@ -1525,6 +1557,7 @@ static pinmux_enum_t pinmux_data[] = {
 	PINMUX_DATA(TS_SCK5_MARK, PORT278_FN3),
 	PINMUX_DATA(MMCCMD0_MARK, PORT279_FN1, MSEL4CR_MSEL15_0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PINMUX_DATA(RESETOUTS__MARK, PORT281_FN1), \
 	PINMUX_DATA(EXTAL2OUT_MARK, PORT281_FN2),
 	PINMUX_DATA(MCP_WAIT__MCP_FRB_MARK, PORT288_FN1),
@@ -1642,6 +1675,9 @@ static pinmux_enum_t pinmux_data[] = {
 	PINMUX_DATA(KEYIN7_PU_MARK, PORT73_FN2, PORT73_IN_PU),
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PINMUX_DATA(SDHICD0_PU_MARK,  PORT251_FN1, PORT251_IN_PU),
 	PINMUX_DATA(SDHID0_0_PU_MARK, PORT252_FN1, PORT252_IN_PU),
 	PINMUX_DATA(SDHID0_1_PU_MARK, PORT253_FN1, PORT253_IN_PU),
@@ -1683,6 +1719,8 @@ static pinmux_enum_t pinmux_data[] = {
 		    PORT278_FN1, PORT278_IN_PU, MSEL4CR_MSEL15_0),
 
 	PINMUX_DATA(FSIBISLD_PU_MARK, PORT39_FN1, PORT39_IN_PU),
+<<<<<<< HEAD
+=======
 =======
 	PINMUX_DATA(SDHID1_0_PU_MARK, PORT259_IN_PU, PORT259_FN1),
 	PINMUX_DATA(SDHID1_1_PU_MARK, PORT260_IN_PU, PORT260_FN1),
@@ -1695,12 +1733,17 @@ static pinmux_enum_t pinmux_data[] = {
 	PINMUX_DATA(MMCCMD1_PU_MARK, PORT297_FN2, PORT279_IN_PU,
 		MSEL4CR_MSEL15_1),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PINMUX_DATA(FSIACK_PU_MARK, PORT49_FN1, PORT49_IN_PU),
 	PINMUX_DATA(FSIAILR_PU_MARK, PORT50_FN5, PORT50_IN_PU),
 	PINMUX_DATA(FSIAIBT_PU_MARK, PORT51_FN5, PORT51_IN_PU),
 	PINMUX_DATA(FSIAISLD_PU_MARK, PORT55_FN1, PORT55_IN_PU),
 };
 
+<<<<<<< HEAD
+static struct pinmux_gpio pinmux_gpios[] = {
+	GPIO_PORT_ALL(),
+=======
 <<<<<<< HEAD
 static struct pinmux_gpio pinmux_gpios[] = {
 	GPIO_PORT_ALL(),
@@ -1712,6 +1755,7 @@ static struct pinmux_gpio pinmux_gpios[] = {
 static struct pinmux_gpio pinmux_gpios[] = {
 	GPIO_PORT_310(),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Table 25-1 (Functions 0-7) */
 	GPIO_FN(VBUS_0),
@@ -2356,6 +2400,9 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	GPIO_FN(KEYIN6_PU),
 	GPIO_FN(KEYIN7_PU),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	GPIO_FN(SDHICD0_PU),
 	GPIO_FN(SDHID0_0_PU),
 	GPIO_FN(SDHID0_1_PU),
@@ -2363,14 +2410,20 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	GPIO_FN(SDHID0_3_PU),
 	GPIO_FN(SDHICMD0_PU),
 	GPIO_FN(SDHIWP0_PU),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	GPIO_FN(SDHID1_0_PU),
 	GPIO_FN(SDHID1_1_PU),
 	GPIO_FN(SDHID1_2_PU),
 	GPIO_FN(SDHID1_3_PU),
 	GPIO_FN(SDHICMD1_PU),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	GPIO_FN(SDHID2_0_PU),
 	GPIO_FN(SDHID2_1_PU),
 	GPIO_FN(SDHID2_2_PU),
@@ -2386,16 +2439,21 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	GPIO_FN(MMCD0_5_PU),
 	GPIO_FN(MMCD0_6_PU),
 	GPIO_FN(MMCD0_7_PU),
+<<<<<<< HEAD
+=======
 =======
 	GPIO_FN(MMCCMD0_PU),
 	GPIO_FN(MMCCMD1_PU),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	GPIO_FN(FSIACK_PU),
 	GPIO_FN(FSIAILR_PU),
 	GPIO_FN(FSIAIBT_PU),
 	GPIO_FN(FSIAISLD_PU),
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define PORTCR(nr, reg)	\
@@ -2411,6 +2469,7 @@ static struct pinmux_gpio pinmux_gpios[] = {
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pinmux_cfg_reg pinmux_config_regs[] = {
 	PORTCR(0, 0xe6050000), /* PORT0CR */
 	PORTCR(1, 0xe6050001), /* PORT1CR */
@@ -2924,6 +2983,9 @@ static struct pinmux_data_reg pinmux_data_regs[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* IRQ pins through INTCS with IRQ0->15 from 0x200 and IRQ16-31 from 0x3200 */
 #define EXT_IRQ16L(n) intcs_evt2irq(0x200 + ((n) << 5))
 #define EXT_IRQ16H(n) intcs_evt2irq(0x3200 + ((n - 16) << 5))
@@ -2963,8 +3025,11 @@ static struct pinmux_irq pinmux_irqs[] = {
 	PINMUX_IRQ(EXT_IRQ16L(9), PORT308_FN0),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pinmux_info sh73a0_pinmux_info = {
 	.name = "sh73a0_pfc",
 	.reserved_id = PINMUX_RESERVED,
@@ -2990,7 +3055,13 @@ static struct pinmux_info sh73a0_pinmux_info = {
 	.gpio_irq = pinmux_irqs,
 	.gpio_irq_size = ARRAY_SIZE(pinmux_irqs),
 =======
+<<<<<<< HEAD
+
+	.gpio_irq = pinmux_irqs,
+	.gpio_irq_size = ARRAY_SIZE(pinmux_irqs),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void sh73a0_pinmux_init(void)

@@ -20,6 +20,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define MX51_DEBUG_BASE_ADDR		0x60000000
 #define MX51_DEBUG_SIZE			SZ_1M
 
@@ -33,6 +35,7 @@
 #define MX51_CORTEX_DBG_BASE_ADDR	(MX51_DEBUG_BASE_ADDR + 0x08000)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * SPBA global module enabled #0
  */
@@ -59,13 +62,19 @@
 #define MX51_AIPS1_SIZE			SZ_1M
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_USB_BASE_ADDR		(MX51_AIPS1_BASE_ADDR + 0x80000)
 #define MX51_USB_OTG_BASE_ADDR		(MX51_USB_BASE_ADDR + 0x0000)
 #define MX51_USB_HS1_BASE_ADDR		(MX51_USB_BASE_ADDR + 0x0200)
 #define MX51_USB_HS2_BASE_ADDR		(MX51_USB_BASE_ADDR + 0x0400)
+<<<<<<< HEAD
+=======
 =======
 #define MX51_OTG_BASE_ADDR		(MX51_AIPS1_BASE_ADDR + 0x80000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_GPIO1_BASE_ADDR		(MX51_AIPS1_BASE_ADDR + 0x84000)
 #define MX51_GPIO2_BASE_ADDR		(MX51_AIPS1_BASE_ADDR + 0x88000)
 #define MX51_GPIO3_BASE_ADDR		(MX51_AIPS1_BASE_ADDR + 0x8c000)
@@ -145,7 +154,11 @@
 <<<<<<< HEAD
 #define MX51_TZIC_SIZE			SZ_16K
 =======
+<<<<<<< HEAD
+#define MX51_TZIC_SIZE			SZ_16K
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MX51_IO_P2V(x)			IMX_IO_P2V(x)
 #define MX51_IO_ADDRESS(x)		IOMEM(MX51_IO_P2V(x))
@@ -258,14 +271,22 @@
 #define MX51_INT_BASE			0
 #define MX51_INT_RESV0			0
 =======
+<<<<<<< HEAD
+#define MX51_INT_BASE			0
+#define MX51_INT_RESV0			0
+=======
 #define MX51_MXC_INT_BASE		0
 #define MX51_MXC_INT_RESV0		0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_INT_ESDHC1			1
 #define MX51_INT_ESDHC2			2
 #define MX51_INT_ESDHC3			3
 #define MX51_INT_ESDHC4			4
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_INT_RESV5			5
 #define MX51_INT_SDMA			6
 #define MX51_INT_IOMUX			7
@@ -290,6 +311,8 @@
 #define MX51_INT_RTIC			26
 #define MX51_INT_CSU			27
 #define MX51_INT_SLIM_B			28
+<<<<<<< HEAD
+=======
 =======
 #define MX51_MXC_INT_RESV5		5
 #define MX51_INT_SDMA			6
@@ -316,12 +339,16 @@
 #define MX51_MXC_INT_CSU		27
 #define MX51_MXC_INT_SLIM_B		28
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_INT_SSI1			29
 #define MX51_INT_SSI2			30
 #define MX51_INT_UART1			31
 #define MX51_INT_UART2			32
 #define MX51_INT_UART3			33
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_INT_RESV34			34
 #define MX51_INT_RESV35			35
 #define MX51_INT_ECSPI1			36
@@ -348,6 +375,8 @@
 #define MX51_INT_GPIO4_HIGH		57
 #define MX51_INT_WDOG1			58
 #define MX51_INT_WDOG2			59
+<<<<<<< HEAD
+=======
 =======
 #define MX51_MXC_INT_RESV34		34
 #define MX51_MXC_INT_RESV35		35
@@ -376,11 +405,15 @@
 #define MX51_MXC_INT_WDOG1		58
 #define MX51_MXC_INT_WDOG2		59
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_INT_KPP			60
 #define MX51_INT_PWM1			61
 #define MX51_INT_I2C1			62
 #define MX51_INT_I2C2			63
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX51_INT_HS_I2C			64
 #define MX51_INT_RESV65			65
 #define MX51_INT_RESV66			66
@@ -420,6 +453,8 @@
 #define MX51_INT_VPU_IDLE		100
 #define MX51_INT_EMI_NFC		101
 #define MX51_INT_GPU_IDLE		102
+<<<<<<< HEAD
+=======
 =======
 #define MX51_MXC_INT_HS_I2C		64
 #define MX51_MXC_INT_RESV65		65
@@ -461,6 +496,7 @@
 #define MX51_MXC_INT_EMI_NFC		101
 #define MX51_MXC_INT_GPU_IDLE		102
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if !defined(__ASSEMBLY__) && !defined(__MXC_BOOT_UNCOMPRESS)
 extern int mx51_revision(void);
@@ -469,8 +505,11 @@ extern void mx51_display_revision(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* tape-out 1 defines */
 #define MX51_TZIC_BASE_ADDR_TO1		0x8fffc000
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* ifndef __MACH_MX51_H__ */

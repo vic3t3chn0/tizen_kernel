@@ -6,11 +6,25 @@
 
 /*
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Each stripe contains one buffer per device.  Each buffer can be in
+ * one of a number of states stored in "flags".  Changes between
+ * these states happen *almost* exclusively under the protection of the
+ * STRIPE_ACTIVE flag.  Some very specific changes can happen in bi_end_io, and
+ * these are not protected by STRIPE_ACTIVE.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Each stripe contains one buffer per disc.  Each buffer can be in
  * one of a number of states stored in "flags".  Changes between
  * these states happen *almost* exclusively under a per-stripe
  * spinlock.  Some very specific changes can happen in bi_end_io, and
  * these are not protected by the spin lock.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The flag bits that are used to represent these states are:
  *   R5_UPTODATE and R5_LOCKED
@@ -27,7 +41,15 @@
  * The possible state transitions are:
  *
  *  Empty -> Want   - on read or write to get old data for  parity calc
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *  Empty -> Dirty  - on compute_parity to satisfy write/sync request.
+=======
  *  Empty -> Dirty  - on compute_parity to satisfy write/sync request.(RECONSTRUCT_WRITE)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *  Empty -> Dirty  - on compute_parity to satisfy write/sync request.(RECONSTRUCT_WRITE)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Empty -> Clean  - on compute_block when computing a block for failed drive
  *  Want  -> Empty  - on failed read
  *  Want  -> Clean  - on successful completion of read request
@@ -76,12 +98,25 @@
  * block and the cached buffer are successfully written, any buffer on
  * a written list can be returned with b_end_io.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * The write list and read list both act as fifos.  The read list,
+ * write list and written list are protected by the device_lock.
+ * The device_lock is only for list manipulations and will only be
+ * held for a very short time.  It can be claimed from interrupts.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The write list and read list both act as fifos.  The read list is
  * protected by the device_lock.  The write and written lists are
  * protected by the stripe lock.  The device_lock, which can be
  * claimed while the stipe lock is held, is only for list
  * manipulations and will only be held for a very short time.  It can
  * be claimed from interrupts.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *
  * Stripes in the stripe cache can be on one of two lists (or on
@@ -96,7 +131,14 @@
  *
  * The inactive_list, handle_list and hash bucket lists are all protected by the
  * device_lock.
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *  - stripes on the inactive_list never have their stripe_lock held.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *  - stripes on the inactive_list never have their stripe_lock held.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  - stripes have a reference counter. If count==0, they are on a list.
  *  - If a stripe might need handling, STRIPE_HANDLE is set.
  *  - When refcount reaches zero, then if STRIPE_HANDLE it is put on
@@ -116,10 +158,23 @@
  *  attach a request to an active stripe (add_stripe_bh())
  *     lockdev attach-buffer unlockdev
  *  handle a stripe (handle_stripe())
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *     setSTRIPE_ACTIVE,  clrSTRIPE_HANDLE ...
+ *		(lockdev check-buffers unlockdev) ..
+ *		change-state ..
+ *		record io/ops needed clearSTRIPE_ACTIVE schedule io/ops
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *     lockstripe clrSTRIPE_HANDLE ...
  *		(lockdev check-buffers unlockdev) ..
  *		change-state ..
  *		record io/ops needed unlockstripe schedule io/ops
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  release an active stripe (release_stripe())
  *     lockdev if (!--cnt) { if  STRIPE_HANDLE, add to handle_list else add to inactive-list } unlockdev
  *
@@ -128,8 +183,17 @@
  * on a cached buffer, and plus one if the stripe is undergoing stripe
  * operations.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * The stripe operations are:
+=======
  * Stripe operations are performed outside the stripe lock,
  * the stripe operations are:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Stripe operations are performed outside the stripe lock,
+ * the stripe operations are:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * -copying data between the stripe cache and user application buffers
  * -computing blocks to save a disk access, or to recover a missing block
  * -updating the parity on a write operation (reconstruct write and
@@ -159,7 +223,16 @@
  */
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Operations state - intermediate states that are visible outside of 
+ *   STRIPE_ACTIVE.
+=======
  * Operations state - intermediate states that are visible outside of sh->lock
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Operations state - intermediate states that are visible outside of sh->lock
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * In general _idle indicates nothing is running, _run indicates a data
  * processing operation is active, and _result means the data processing result
  * is stable and can be acted upon.  For simple operations like biofill and
@@ -200,7 +273,15 @@ enum reconstruct_states {
 struct stripe_head {
 	struct hlist_node	hash;
 	struct list_head	lru;	      /* inactive_list or handle_list */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct r5conf		*raid_conf;
+=======
 	struct raid5_private_data *raid_conf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct raid5_private_data *raid_conf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	short			generation;	/* increments with every
 						 * reshape */
 	sector_t		sector;		/* sector of this row */
@@ -209,7 +290,14 @@ struct stripe_head {
 	short			ddf_layout;/* use DDF ordering to calculate Q */
 	unsigned long		state;		/* state flags */
 	atomic_t		count;	      /* nr of active thread/requests */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	spinlock_t		lock;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spinlock_t		lock;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			bm_seq;	/* sequence number for bitmap flushes */
 	int			disks;		/* disks in stripe */
 	enum check_states	check_state;
@@ -230,8 +318,21 @@ struct stripe_head {
 		#endif
 	} ops;
 	struct r5dev {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		/* rreq and rvec are used for the replacement device when
+		 * writing data to both devices.
+		 */
+		struct bio	req, rreq;
+		struct bio_vec	vec, rvec;
+=======
 		struct bio	req;
 		struct bio_vec	vec;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		struct bio	req;
+		struct bio_vec	vec;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct page	*page;
 		struct bio	*toread, *read, *towrite, *written;
 		sector_t	sector;			/* sector of this page */
@@ -240,6 +341,68 @@ struct stripe_head {
 };
 
 /* stripe_head_state - collects and tracks the dynamic state of a stripe_head
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *     for handle_stripe.
+ */
+struct stripe_head_state {
+	/* 'syncing' means that we need to read all devices, either
+	 * to check/correct parity, or to reconstruct a missing device.
+	 * 'replacing' means we are replacing one or more drives and
+	 * the source is valid at this point so we don't need to
+	 * read all devices, just the replacement targets.
+	 */
+	int syncing, expanding, expanded, replacing;
+	int locked, uptodate, to_read, to_write, failed, written;
+	int to_fill, compute, req_compute, non_overwrite;
+	int failed_num[2];
+	int p_failed, q_failed;
+	int dec_preread_active;
+	unsigned long ops_request;
+
+	struct bio *return_bi;
+	struct md_rdev *blocked_rdev;
+	int handle_bad_blocks;
+};
+
+/* Flags for struct r5dev.flags */
+enum r5dev_flags {
+	R5_UPTODATE,	/* page contains current data */
+	R5_LOCKED,	/* IO has been submitted on "req" */
+	R5_DOUBLE_LOCKED,/* Cannot clear R5_LOCKED until 2 writes complete */
+	R5_OVERWRITE,	/* towrite covers whole page */
+/* and some that are internal to handle_stripe */
+	R5_Insync,	/* rdev && rdev->in_sync at start */
+	R5_Wantread,	/* want to schedule a read */
+	R5_Wantwrite,
+	R5_Overlap,	/* There is a pending overlapping request
+			 * on this block */
+	R5_ReadError,	/* seen a read error here recently */
+	R5_ReWrite,	/* have tried to over-write the readerror */
+
+	R5_Expanded,	/* This block now has post-expand data */
+	R5_Wantcompute,	/* compute_block in progress treat as
+			 * uptodate
+			 */
+	R5_Wantfill,	/* dev->toread contains a bio that needs
+			 * filling
+			 */
+	R5_Wantdrain,	/* dev->towrite needs to be drained */
+	R5_WantFUA,	/* Write should be FUA */
+	R5_WriteError,	/* got a write error - need to record it */
+	R5_MadeGood,	/* A bad block has been fixed by writing to it */
+	R5_ReadRepl,	/* Will/did read from replacement rather than orig */
+	R5_MadeGoodRepl,/* A bad block on the replacement device has been
+			 * fixed by writing to it */
+	R5_NeedReplace,	/* This device has a replacement which is not
+			 * up-to-date at this stripe. */
+	R5_WantReplace, /* We need to update the replacement, we have read
+			 * data in, and now is a good time to write it out.
+			 */
+};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *     for handle_stripe.  It is only valid under spin_lock(sh->lock);
  */
 struct stripe_head_state {
@@ -285,10 +448,38 @@ struct r6_state {
 #define	CHECK_PARITY		3
 /* Additional compute_parity mode -- updates the parity w/o LOCKING */
 #define UPDATE_PARITY		4
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Stripe state
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum {
+	STRIPE_ACTIVE,
+	STRIPE_HANDLE,
+	STRIPE_SYNC_REQUESTED,
+	STRIPE_SYNCING,
+	STRIPE_INSYNC,
+	STRIPE_PREREAD_ACTIVE,
+	STRIPE_DELAYED,
+	STRIPE_DEGRADED,
+	STRIPE_BIT_DELAY,
+	STRIPE_EXPANDING,
+	STRIPE_EXPAND_SOURCE,
+	STRIPE_EXPAND_READY,
+	STRIPE_IO_STARTED,	/* do not count towards 'bypass_count' */
+	STRIPE_FULL_WRITE,	/* all blocks are set to be overwritten */
+	STRIPE_BIOFILL_RUN,
+	STRIPE_COMPUTE_RUN,
+	STRIPE_OPS_REQ_PENDING,
+};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define STRIPE_HANDLE		2
 #define	STRIPE_SYNCING		3
 #define	STRIPE_INSYNC		4
@@ -304,10 +495,27 @@ struct r6_state {
 #define	STRIPE_BIOFILL_RUN	14
 #define	STRIPE_COMPUTE_RUN	15
 #define	STRIPE_OPS_REQ_PENDING	16
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Operation request flags
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum {
+	STRIPE_OP_BIOFILL,
+	STRIPE_OP_COMPUTE_BLK,
+	STRIPE_OP_PREXOR,
+	STRIPE_OP_BIODRAIN,
+	STRIPE_OP_RECONSTRUCT,
+	STRIPE_OP_CHECK,
+};
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define STRIPE_OP_BIOFILL	0
 #define STRIPE_OP_COMPUTE_BLK	1
 #define STRIPE_OP_PREXOR	2
@@ -315,6 +523,10 @@ struct r6_state {
 #define STRIPE_OP_RECONSTRUCT	4
 #define STRIPE_OP_CHECK	5
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Plugging:
  *
@@ -336,11 +548,30 @@ struct r6_state {
  * PREREAD_ACTIVE.
  * In stripe_handle, if we find pre-reading is necessary, we do it if
  * PREREAD_ACTIVE is set, else we set DELAYED which will send it to the delayed queue.
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * HANDLE gets cleared if stripe_handle leaves nothing locked.
+=======
  * HANDLE gets cleared if stripe_handle leave nothing locked.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * HANDLE gets cleared if stripe_handle leave nothing locked.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 
 struct disk_info {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct md_rdev	*rdev, *replacement;
+};
+
+struct r5conf {
+	struct hlist_head	*stripe_hashtbl;
+	struct mddev		*mddev;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mdk_rdev_t	*rdev;
 };
 
@@ -348,6 +579,10 @@ struct raid5_private_data {
 	struct hlist_head	*stripe_hashtbl;
 	mddev_t			*mddev;
 	struct disk_info	*spare;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			chunk_sectors;
 	int			level, algorithm;
 	int			max_degraded;
@@ -399,7 +634,15 @@ struct raid5_private_data {
 					    * (fresh device added).
 					    * Cleared when a sync completes.
 					    */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int			recovery_disabled;
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* per cpu variables */
 	struct raid5_percpu {
 		struct page	*spare_page; /* Used when checking P/Q in raid6 */
@@ -433,11 +676,23 @@ struct raid5_private_data {
 	/* When taking over an array from a different personality, we store
 	 * the new thread here until we fully activate the array.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct md_thread	*thread;
+};
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mdk_thread_s	*thread;
 };
 
 typedef struct raid5_private_data raid5_conf_t;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Our supported algorithms
  */
@@ -500,7 +755,19 @@ static inline int algorithm_is_DDF(int layout)
 	return layout >= 8 && layout <= 10;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern int md_raid5_congested(struct mddev *mddev, int bits);
+extern void md_raid5_kick_device(struct r5conf *conf);
+extern int raid5_set_cache_size(struct mddev *mddev, int size);
+=======
 extern int md_raid5_congested(mddev_t *mddev, int bits);
 extern void md_raid5_kick_device(raid5_conf_t *conf);
 extern int raid5_set_cache_size(mddev_t *mddev, int size);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+extern int md_raid5_congested(mddev_t *mddev, int bits);
+extern void md_raid5_kick_device(raid5_conf_t *conf);
+extern int raid5_set_cache_size(mddev_t *mddev, int size);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

@@ -15,8 +15,11 @@
 #include <linux/rmap.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/syscalls.h>
 #include <linux/mmu_notifier.h>
 
@@ -46,12 +49,16 @@ static void zap_pte(struct mm_struct *mm, struct vm_area_struct *vma,
 <<<<<<< HEAD
 			dec_mm_counter(mm, MM_FILEPAGES);
 =======
+<<<<<<< HEAD
+			dec_mm_counter(mm, MM_FILEPAGES);
+=======
 		#ifdef CONFIG_LOWMEM_CHECK
 			dec_mm_counter(mm, MM_FILEPAGES, page);
 		#else
 			dec_mm_counter(mm, MM_FILEPAGES);
 		#endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else {
 		if (!pte_file(pte))

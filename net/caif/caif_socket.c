@@ -48,6 +48,11 @@ struct caifsock {
 	struct sock sk; /* must be first member */
 	struct cflayer layer;
 =======
+<<<<<<< HEAD
+struct caifsock {
+	struct sock sk; /* must be first member */
+	struct cflayer layer;
+=======
 static struct dentry *debugfsdir;
 
 #ifdef CONFIG_DEBUG_FS
@@ -77,6 +82,7 @@ struct caifsock {
 	struct cflayer layer;
 	char name[CAIF_LAYER_NAME_SZ]; /* Used for debugging */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 flow_state;
 	struct caif_connect_request conn_req;
 	struct mutex readlock;
@@ -169,8 +175,11 @@ static int caif_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 		set_rx_flow_off(cf_sk);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dbfs_atomic_inc(&cnt.num_rx_flow_off);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		caif_flow_ctrl(sk, CAIF_MODEMCMD_FLOW_OFF_REQ);
 	}
 
@@ -183,8 +192,11 @@ static int caif_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 			pr_debug("sending flow OFF due to rmem_schedule\n");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dbfs_atomic_inc(&cnt.num_rx_flow_off);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		caif_flow_ctrl(sk, CAIF_MODEMCMD_FLOW_OFF_REQ);
 	}
 	skb->dev = NULL;
@@ -247,8 +259,11 @@ static void caif_ctrl_cb(struct cflayer *layr,
 		/* OK from modem to start sending again */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dbfs_atomic_inc(&cnt.num_tx_flow_on_ind);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_tx_flow_on(cf_sk);
 		cf_sk->sk.sk_state_change(&cf_sk->sk);
 		break;
@@ -257,8 +272,11 @@ static void caif_ctrl_cb(struct cflayer *layr,
 		/* Modem asks us to shut up */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dbfs_atomic_inc(&cnt.num_tx_flow_off_ind);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_tx_flow_off(cf_sk);
 		cf_sk->sk.sk_state_change(&cf_sk->sk);
 		break;
@@ -269,8 +287,11 @@ static void caif_ctrl_cb(struct cflayer *layr,
 						cfsk_hold, cfsk_put);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dbfs_atomic_inc(&cnt.num_connect_resp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cf_sk->sk.sk_state = CAIF_CONNECTED;
 		set_tx_flow_on(cf_sk);
 		cf_sk->sk.sk_state_change(&cf_sk->sk);
@@ -286,8 +307,11 @@ static void caif_ctrl_cb(struct cflayer *layr,
 		/* Connect request failed */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dbfs_atomic_inc(&cnt.num_connect_fail_resp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cf_sk->sk.sk_err = ECONNREFUSED;
 		cf_sk->sk.sk_state = CAIF_DISCONNECTED;
 		cf_sk->sk.sk_shutdown = SHUTDOWN_MASK;
@@ -303,8 +327,11 @@ static void caif_ctrl_cb(struct cflayer *layr,
 		/* Modem has closed this connection, or device is down. */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dbfs_atomic_inc(&cnt.num_remote_shutdown_ind);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cf_sk->sk.sk_shutdown = SHUTDOWN_MASK;
 		cf_sk->sk.sk_err = ECONNRESET;
 		set_rx_flow_on(cf_sk);
@@ -326,8 +353,11 @@ static void caif_check_flow_release(struct sock *sk)
 	if (atomic_read(&sk->sk_rmem_alloc) <= sk_rcvbuf_lowwater(cf_sk)) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			dbfs_atomic_inc(&cnt.num_rx_flow_on);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_rx_flow_on(cf_sk);
 			caif_flow_ctrl(sk, CAIF_MODEMCMD_FLOW_ON_REQ);
 	}
@@ -570,14 +600,20 @@ static int transmit_skb(struct sk_buff *skb, struct caifsock *cf_sk,
 	memset(skb->cb, 0, sizeof(struct caif_payload_info));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cf_sk->layer.dn == NULL) {
 		kfree_skb(skb);
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (cf_sk->layer.dn == NULL)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return cf_sk->layer.dn->transmit(cf_sk->layer.dn, pkt);
 }
@@ -721,16 +757,22 @@ static int caif_stream_sendmsg(struct kiocb *kiocb, struct socket *sock,
 		err = transmit_skb(skb, cf_sk,
 				msg->msg_flags&MSG_DONTWAIT, timeo);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			/* skb is already freed */
 			goto pipe_err;
 
+<<<<<<< HEAD
+=======
 =======
 		if (err < 0) {
 			kfree_skb(skb);
 			goto pipe_err;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sent += size;
 	}
 
@@ -900,8 +942,11 @@ static int caif_connect(struct socket *sock, struct sockaddr *uaddr,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dbfs_atomic_inc(&cnt.num_connect_req);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cf_sk->layer.receive = caif_sktrecv_cb;
 
 	err = caif_connect_client(sock_net(sk), &cf_sk->conn_req,
@@ -992,9 +1037,12 @@ static int caif_release(struct socket *sock)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dbfs_atomic_inc(&cnt.num_disconnect);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(IS_ERR(cf_sk->debugfs_socket_dir));
 	if (cf_sk->debugfs_socket_dir != NULL)
 		debugfs_remove_recursive(cf_sk->debugfs_socket_dir);
@@ -1099,10 +1147,15 @@ static void caif_sock_destructor(struct sock *sk)
 	caif_assert(!sk->sk_socket);
 	if (!sock_flag(sk, SOCK_DEAD)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		WARN(1, "Attempt to release alive CAIF socket: %p\n", sk);
 		return;
 	}
 	sk_stream_kill_queues(&cf_sk->sk);
+<<<<<<< HEAD
+=======
 =======
 		pr_debug("Attempt to release alive CAIF socket: %p\n", sk);
 		return;
@@ -1110,6 +1163,7 @@ static void caif_sock_destructor(struct sock *sk)
 	sk_stream_kill_queues(&cf_sk->sk);
 	dbfs_atomic_dec(&cnt.caif_nr_socks);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	caif_free_client(&cf_sk->layer);
 }
 
@@ -1118,8 +1172,11 @@ static int caif_create(struct net *net, struct socket *sock, int protocol,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int num;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sock *sk = NULL;
 	struct caifsock *cf_sk = NULL;
 	static struct proto prot = {.name = "PF_CAIF",
@@ -1182,6 +1239,8 @@ static int caif_create(struct net *net, struct socket *sock, int protocol,
 	cf_sk->conn_req.protocol = protocol;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Increase the number of sockets created. */
 	dbfs_atomic_inc(&cnt.caif_nr_socks);
 	num = dbfs_atomic_inc(&cnt.caif_sock_create);
@@ -1211,6 +1270,7 @@ static int caif_create(struct net *net, struct socket *sock, int protocol,
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	release_sock(&cf_sk->sk);
 	return 0;
 }
@@ -1225,8 +1285,12 @@ static struct net_proto_family caif_family_ops = {
 <<<<<<< HEAD
 static int __init caif_sktinit_module(void)
 =======
+<<<<<<< HEAD
+static int __init caif_sktinit_module(void)
+=======
 static int af_caif_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err = sock_register(&caif_family_ops);
 	if (!err)
@@ -1234,6 +1298,11 @@ static int af_caif_init(void)
 	return 0;
 }
 
+<<<<<<< HEAD
+static void __exit caif_sktexit_module(void)
+{
+	sock_unregister(PF_CAIF);
+=======
 <<<<<<< HEAD
 static void __exit caif_sktexit_module(void)
 {
@@ -1288,6 +1357,7 @@ static void __exit caif_sktexit_module(void)
 	if (debugfsdir != NULL)
 		debugfs_remove_recursive(debugfsdir);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 module_init(caif_sktinit_module);
 module_exit(caif_sktexit_module);

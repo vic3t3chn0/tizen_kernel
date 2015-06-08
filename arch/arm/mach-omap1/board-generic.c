@@ -15,8 +15,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
@@ -27,10 +31,15 @@
 #include <asm/mach/map.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/mux.h>
 #include <plat/usb.h>
 #include <plat/board.h>
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <mach/gpio.h>
 #include <plat/mux.h>
@@ -44,6 +53,7 @@ static void __init omap_generic_init_irq(void)
 	omap_init_irq();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* assume no Mini-AB port */
 
@@ -99,6 +109,9 @@ static void __init omap_generic_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_START(OMAP_GENERIC, "Generic OMAP1510/1610/1710")
 	/* Maintainer: Tony Lindgren <tony@atomide.com> */
 	.atag_offset	= 0x100,
@@ -109,6 +122,8 @@ MACHINE_START(OMAP_GENERIC, "Generic OMAP1510/1610/1710")
 	.init_machine	= omap_generic_init,
 	.timer		= &omap1_timer,
 	.restart	= omap1_restart,
+<<<<<<< HEAD
+=======
 =======
 static void __init omap_generic_map_io(void)
 {
@@ -124,4 +139,5 @@ MACHINE_START(OMAP_GENERIC, "Generic OMAP1510/1610/1710")
 	.init_machine	= omap_generic_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

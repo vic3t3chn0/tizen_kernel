@@ -508,8 +508,14 @@ static void sctp_v4_get_dst(struct sctp_transport *t, union sctp_addr *saddr,
 			    (laddr->state != SCTP_ADDR_SRC &&
 			    !asoc->src_out_of_asoc_ok))
 =======
+<<<<<<< HEAD
+			if (!laddr->valid || (laddr->state == SCTP_ADDR_DEL) ||
+			    (laddr->state != SCTP_ADDR_SRC &&
+			    !asoc->src_out_of_asoc_ok))
+=======
 			if (!laddr->valid || (laddr->state != SCTP_ADDR_SRC))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			if (sctp_v4_cmp_addr(&dst_saddr, &laddr->a))
 				goto out_unlock;
@@ -630,6 +636,9 @@ static void sctp_v4_ecn_capable(struct sock *sk)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void sctp_addr_wq_timeout_handler(unsigned long arg)
 {
 	struct sctp_sockaddr_entry *addrw, *temp;
@@ -767,8 +776,11 @@ void sctp_addr_wq_mgmt(struct sctp_sockaddr_entry *addr, int cmd)
 	spin_unlock_bh(&sctp_addr_wq_lock);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Event handler for inet address addition/deletion events.
  * The sctp_local_addr_list needs to be protocted by a spin lock since
  * multiple notifiers (say IPv4 and IPv6) may be running at the same
@@ -799,7 +811,11 @@ static int sctp_inetaddr_event(struct notifier_block *this, unsigned long ev,
 <<<<<<< HEAD
 			sctp_addr_wq_mgmt(addr, SCTP_ADDR_NEW);
 =======
+<<<<<<< HEAD
+			sctp_addr_wq_mgmt(addr, SCTP_ADDR_NEW);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock_bh(&sctp_local_addr_lock);
 		}
 		break;
@@ -813,7 +829,11 @@ static int sctp_inetaddr_event(struct notifier_block *this, unsigned long ev,
 <<<<<<< HEAD
 				sctp_addr_wq_mgmt(addr, SCTP_ADDR_DEL);
 =======
+<<<<<<< HEAD
+				sctp_addr_wq_mgmt(addr, SCTP_ADDR_DEL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				found = 1;
 				addr->valid = 0;
 				list_del_rcu(&addr->list);
@@ -1318,8 +1338,12 @@ SCTP_STATIC __init int sctp_init(void)
 <<<<<<< HEAD
 	sysctl_sctp_rmem[1] = 1500 * SKB_TRUESIZE(1);
 =======
+<<<<<<< HEAD
+	sysctl_sctp_rmem[1] = 1500 * SKB_TRUESIZE(1);
+=======
 	sysctl_sctp_rmem[1] = (1500 *(sizeof(struct sk_buff) + 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sysctl_sctp_rmem[2] = max(sysctl_sctp_rmem[1], max_share);
 
 	sysctl_sctp_wmem[0] = SK_MEM_QUANTUM;
@@ -1397,7 +1421,11 @@ SCTP_STATIC __init int sctp_init(void)
 <<<<<<< HEAD
 	sctp_default_auto_asconf = 0;
 =======
+<<<<<<< HEAD
+	sctp_default_auto_asconf = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Enable PR-SCTP by default. */
 	sctp_prsctp_enable = 1;
@@ -1423,6 +1451,9 @@ SCTP_STATIC __init int sctp_init(void)
 	sctp_get_local_addr_list();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Initialize the address event list */
 	INIT_LIST_HEAD(&sctp_addr_waitq);
 	INIT_LIST_HEAD(&sctp_auto_asconf_splist);
@@ -1430,8 +1461,11 @@ SCTP_STATIC __init int sctp_init(void)
 	sctp_addr_wq_timer.expires = 0;
 	setup_timer(&sctp_addr_wq_timer, sctp_addr_wq_timeout_handler, 0);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = sctp_v4_protosw_init();
 
 	if (status)
@@ -1506,7 +1540,11 @@ SCTP_STATIC __exit void sctp_exit(void)
 <<<<<<< HEAD
 	sctp_free_addr_wq();
 =======
+<<<<<<< HEAD
+	sctp_free_addr_wq();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Free the control endpoint.  */
 	inet_ctl_sock_destroy(sctp_ctl_sock);

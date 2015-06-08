@@ -11,6 +11,9 @@
  * In user code, they are accessed through the VVAR macro.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * These variables live in a page of kernel data that has an extra RO
  * mapping for userspace.  Each variable needs a unique offset within
  * that page; specify that offset with the DECLARE_VVAR macro.  (If
@@ -19,6 +22,8 @@
 
 /* Base address of vvars.  This is not ABI. */
 #define VVAR_ADDRESS (-10*1024*1024 - 4096)
+<<<<<<< HEAD
+=======
 =======
  * Each of these variables lives in the vsyscall page, and each
  * one needs a unique offset within the little piece of the page
@@ -30,6 +35,7 @@
 /* Offset of vars within vsyscall page */
 #define VSYSCALL_VARS_OFFSET (3072 + 128)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(__VVAR_KERNEL_LDS)
 
@@ -40,19 +46,28 @@
 <<<<<<< HEAD
 	EMIT_VVAR(name, offset)
 =======
+<<<<<<< HEAD
+	EMIT_VVAR(name, offset)
+=======
 	EMIT_VVAR(name, VSYSCALL_VARS_OFFSET + offset)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else
 
 #define DECLARE_VVAR(offset, type, name)				\
 	static type const * const vvaraddr_ ## name =			\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		(void *)(VVAR_ADDRESS + (offset));
 
 #define DEFINE_VVAR(type, name)						\
 	type name							\
 	__attribute__((section(".vvar_" #name), aligned(16)))
+<<<<<<< HEAD
+=======
 =======
 		(void *)(VSYSCALL_START + VSYSCALL_VARS_OFFSET + (offset));
 
@@ -60,6 +75,7 @@
 	type __vvar_ ## name						\
 	__attribute__((section(".vsyscall_var_" #name), aligned(16)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define VVAR(name) (*vvaraddr_ ## name)
 
@@ -69,10 +85,15 @@
 
 DECLARE_VVAR(0, volatile unsigned long, jiffies)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_VVAR(16, int, vgetcpu_mode)
 DECLARE_VVAR(128, struct vsyscall_gtod_data, vsyscall_gtod_data)
 
 #undef DECLARE_VVAR
+<<<<<<< HEAD
+=======
 =======
 DECLARE_VVAR(8, int, vgetcpu_mode)
 DECLARE_VVAR(128, struct vsyscall_gtod_data, vsyscall_gtod_data)
@@ -80,3 +101,4 @@ DECLARE_VVAR(128, struct vsyscall_gtod_data, vsyscall_gtod_data)
 #undef DECLARE_VVAR
 #undef VSYSCALL_VARS_OFFSET
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

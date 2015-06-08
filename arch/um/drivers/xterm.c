@@ -15,11 +15,16 @@
 #include "os.h"
 #include "um_malloc.h"
 =======
+<<<<<<< HEAD
+#include "os.h"
+#include "um_malloc.h"
+=======
 #include "kern_constants.h"
 #include "os.h"
 #include "um_malloc.h"
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xterm.h"
 
 struct xterm_chan {
@@ -131,7 +136,11 @@ static int xterm_open(int input, int output, int primary, void *d,
 <<<<<<< HEAD
 		close(fd);
 =======
+<<<<<<< HEAD
+		close(fd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 	close(fd);

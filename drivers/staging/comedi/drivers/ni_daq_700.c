@@ -51,7 +51,15 @@ IRQ is assigned but not used.
 #include <pcmcia/cisreg.h>
 #include <pcmcia/ds.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct pcmcia_device *pcmcia_cur_dev;
+=======
 static struct pcmcia_device *pcmcia_cur_dev = NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct pcmcia_device *pcmcia_cur_dev = NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DIO700_SIZE 8		/*  size of io region used by board */
 
@@ -381,11 +389,25 @@ static int dio700_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 #endif
 		break;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_ERR "bug! couldn't determine board type\n");
+		return -EINVAL;
+		break;
+	}
+	printk(KERN_ERR "comedi%d: ni_daq_700: %s, io 0x%lx", dev->minor,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk("bug! couldn't determine board type\n");
 		return -EINVAL;
 		break;
 	}
 	printk("comedi%d: ni_daq_700: %s, io 0x%lx", dev->minor,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       thisboard->name, iobase);
 #ifdef incomplete
 	if (irq)
@@ -396,7 +418,15 @@ static int dio700_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 	printk("\n");
 
 	if (iobase == 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_ERR "io base address is zero!\n");
+=======
 		printk("io base address is zero!\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk("io base address is zero!\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -421,7 +451,15 @@ static int dio700_attach(struct comedi_device *dev, struct comedi_devconfig *it)
 
 static int dio700_detach(struct comedi_device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	printk(KERN_ERR "comedi%d: ni_daq_700: cs-remove\n", dev->minor);
+=======
 	printk("comedi%d: ni_daq_700: cs-remove\n", dev->minor);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk("comedi%d: ni_daq_700: cs-remove\n", dev->minor);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dev->subdevices)
 		subdev_700_cleanup(dev, dev->subdevices + 0);

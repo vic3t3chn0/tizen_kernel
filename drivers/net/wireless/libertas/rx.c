@@ -5,8 +5,20 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 #include <linux/etherdevice.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/hardirq.h>
 #include <linux/slab.h>
 #include <linux/types.h>
+#include <linux/export.h>
+=======
+#include <linux/slab.h>
+#include <linux/types.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/slab.h>
+#include <linux/types.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/cfg80211.h>
 
 #include "defs.h"
@@ -14,6 +26,13 @@
 #include "radiotap.h"
 #include "decl.h"
 #include "dev.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "mesh.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct eth803hdr {
 	u8 dest_addr[6];

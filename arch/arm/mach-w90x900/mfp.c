@@ -30,11 +30,16 @@
 #define GPSELC		(0x03 << 2)
 #define GPSELD		(0x0f << 4)
 =======
+<<<<<<< HEAD
+#define GPSELC		(0x03 << 2)
+#define GPSELD		(0x0f << 4)
+=======
 
 #define GPSELC		(0x03 << 2)
 #define ENKPI		(0x02 << 2)
 #define ENNAND		(0x01 << 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GPSELEI0	(0x01 << 26)
 #define GPSELEI1	(0x01 << 27)
@@ -45,19 +50,29 @@
 <<<<<<< HEAD
 #define GPIOG18TO20	(0x07 << 18)
 =======
+<<<<<<< HEAD
+#define GPIOG18TO20	(0x07 << 18)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ENSPI		(0x0a << 14)
 #define ENI2C0		(0x01 << 14)
 #define ENI2C1		(0x01 << 16)
 #define ENAC97		(0x02 << 22)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ENSD1		(0x02 << 18)
 #define ENSD0		(0x0a << 4)
 #define ENKPI		(0x02 << 2)
 #define ENNAND		(0x01 << 2)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static DEFINE_MUTEX(mfp_mutex);
 
@@ -146,13 +161,20 @@ EXPORT_SYMBOL(mfp_set_groupi);
 <<<<<<< HEAD
 void mfp_set_groupg(struct device *dev, const char *subname)
 =======
+<<<<<<< HEAD
+void mfp_set_groupg(struct device *dev, const char *subname)
+=======
 void mfp_set_groupg(struct device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long mfpen;
 	const char *dev_id;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON((!dev) && (!subname));
 
 	mutex_lock(&mfp_mutex);
@@ -161,6 +183,8 @@ void mfp_set_groupg(struct device *dev)
 		dev_id = subname;
 	else
 		dev_id = dev_name(dev);
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(!dev);
 
@@ -168,6 +192,7 @@ void mfp_set_groupg(struct device *dev)
 
 	dev_id = dev_name(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mfpen = __raw_readl(REG_MFSEL);
 
@@ -181,17 +206,23 @@ void mfp_set_groupg(struct device *dev)
 		mfpen &= ~(GPIOG2TO3);
 		mfpen |= ENI2C1;/*enable i2c1*/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (strcmp(dev_id, "nuc900-ac97") == 0) {
 		mfpen &= ~(GPIOG22TO23);
 		mfpen |= ENAC97;/*enable AC97*/
 	} else if (strcmp(dev_id, "nuc900-mmc-port1") == 0) {
 		mfpen &= ~(GPIOG18TO20);
 		mfpen |= (ENSD1 | 0x01);/*enable sd1*/
+<<<<<<< HEAD
+=======
 =======
 	} else if (strcmp(dev_id, "nuc900-audio") == 0) {
 		mfpen &= ~(GPIOG22TO23);
 		mfpen |= ENAC97;/*enable AC97*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		mfpen &= ~(GPIOG0TO1 | GPIOG2TO3);/*GPIOG[3:0]*/
 	}
@@ -203,6 +234,9 @@ void mfp_set_groupg(struct device *dev)
 EXPORT_SYMBOL(mfp_set_groupg);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void mfp_set_groupd(struct device *dev, const char *subname)
 {
 	unsigned long mfpen;
@@ -230,5 +264,8 @@ void mfp_set_groupd(struct device *dev, const char *subname)
 	mutex_unlock(&mfp_mutex);
 }
 EXPORT_SYMBOL(mfp_set_groupd);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

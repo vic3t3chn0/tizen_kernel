@@ -75,8 +75,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/kernel.h>
 #include <linux/jiffies.h>
@@ -308,16 +311,22 @@ static struct sk_buff *igmpv3_newpack(struct net_device *dev, int size)
 	struct net *net = dev_net(dev);
 	struct flowi4 fl4;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int hlen = LL_RESERVED_SPACE(dev);
 	int tlen = dev->needed_tailroom;
 
 	while (1) {
 		skb = alloc_skb(size + hlen + tlen,
+<<<<<<< HEAD
+=======
 =======
 
 	while (1) {
 		skb = alloc_skb(size + LL_ALLOCATED_SPACE(dev),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				GFP_ATOMIC | __GFP_NOWARN);
 		if (skb)
 			break;
@@ -341,8 +350,12 @@ static struct sk_buff *igmpv3_newpack(struct net_device *dev, int size)
 <<<<<<< HEAD
 	skb_reserve(skb, hlen);
 =======
+<<<<<<< HEAD
+	skb_reserve(skb, hlen);
+=======
 	skb_reserve(skb, LL_RESERVED_SPACE(dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb_reset_network_header(skb);
 	pip = ip_hdr(skb);
@@ -360,8 +373,12 @@ static struct sk_buff *igmpv3_newpack(struct net_device *dev, int size)
 <<<<<<< HEAD
 	ip_select_ident(pip, &rt->dst, NULL);
 =======
+<<<<<<< HEAD
+	ip_select_ident(pip, &rt->dst, NULL);
+=======
 	ip_select_ident(skb, &rt->dst, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	((u8*)&pip[1])[0] = IPOPT_RA;
 	((u8*)&pip[1])[1] = 4;
 	((u8*)&pip[1])[2] = 0;
@@ -669,7 +686,11 @@ static int igmp_send_report(struct in_device *in_dev, struct ip_mc_list *pmc,
 <<<<<<< HEAD
 	int hlen, tlen;
 =======
+<<<<<<< HEAD
+	int hlen, tlen;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (type == IGMPV3_HOST_MEMBERSHIP_REPORT)
 		return igmpv3_send_report(in_dev, pmc);
@@ -689,8 +710,14 @@ static int igmp_send_report(struct in_device *in_dev, struct ip_mc_list *pmc,
 	tlen = dev->needed_tailroom;
 	skb = alloc_skb(IGMP_SIZE + hlen + tlen, GFP_ATOMIC);
 =======
+<<<<<<< HEAD
+	hlen = LL_RESERVED_SPACE(dev);
+	tlen = dev->needed_tailroom;
+	skb = alloc_skb(IGMP_SIZE + hlen + tlen, GFP_ATOMIC);
+=======
 	skb = alloc_skb(IGMP_SIZE+LL_ALLOCATED_SPACE(dev), GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (skb == NULL) {
 		ip_rt_put(rt);
 		return -1;
@@ -701,8 +728,12 @@ static int igmp_send_report(struct in_device *in_dev, struct ip_mc_list *pmc,
 <<<<<<< HEAD
 	skb_reserve(skb, hlen);
 =======
+<<<<<<< HEAD
+	skb_reserve(skb, hlen);
+=======
 	skb_reserve(skb, LL_RESERVED_SPACE(dev));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb_reset_network_header(skb);
 	iph = ip_hdr(skb);
@@ -719,8 +750,12 @@ static int igmp_send_report(struct in_device *in_dev, struct ip_mc_list *pmc,
 <<<<<<< HEAD
 	ip_select_ident(iph, &rt->dst, NULL);
 =======
+<<<<<<< HEAD
+	ip_select_ident(iph, &rt->dst, NULL);
+=======
 	ip_select_ident(skb, &rt->dst, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	((u8*)&iph[1])[0] = IPOPT_RA;
 	((u8*)&iph[1])[1] = 4;
 	((u8*)&iph[1])[2] = 0;
@@ -745,8 +780,12 @@ static void igmp_gq_timer_expire(unsigned long data)
 <<<<<<< HEAD
 	__in_dev_put(in_dev);
 =======
+<<<<<<< HEAD
+	__in_dev_put(in_dev);
+=======
 	in_dev_put(in_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void igmp_ifc_timer_expire(unsigned long data)
@@ -761,8 +800,12 @@ static void igmp_ifc_timer_expire(unsigned long data)
 <<<<<<< HEAD
 	__in_dev_put(in_dev);
 =======
+<<<<<<< HEAD
+	__in_dev_put(in_dev);
+=======
 	in_dev_put(in_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void igmp_ifc_event(struct in_device *in_dev)
@@ -1059,8 +1102,12 @@ static void ip_mc_filter_add(struct in_device *in_dev, __be32 addr)
 <<<<<<< HEAD
 	   is changed. This check should be done in ndo_set_rx_mode
 =======
+<<<<<<< HEAD
+	   is changed. This check should be done in ndo_set_rx_mode
+=======
 	   is changed. This check should be done in dev->set_multicast_list
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	   routine. Something sort of:
 	   if (dev->mc_list && dev->flags&IFF_MULTICAST) { do it; }
 	   --ANK
@@ -1628,8 +1675,12 @@ static int ip_mc_add1_src(struct ip_mc_list *pmc, int sfmode,
 <<<<<<< HEAD
 	__be32 *psfsrc)
 =======
+<<<<<<< HEAD
+	__be32 *psfsrc)
+=======
 	__be32 *psfsrc, int delta)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ip_sf_list *psf, *psf_prev;
 
@@ -1767,8 +1818,12 @@ static int ip_mc_add_src(struct in_device *in_dev, __be32 *pmca, int sfmode,
 <<<<<<< HEAD
 		err = ip_mc_add1_src(pmc, sfmode, &psfsrc[i]);
 =======
+<<<<<<< HEAD
+		err = ip_mc_add1_src(pmc, sfmode, &psfsrc[i]);
+=======
 		err = ip_mc_add1_src(pmc, sfmode, &psfsrc[i], delta);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			break;
 	}
@@ -1779,8 +1834,13 @@ static int ip_mc_add_src(struct in_device *in_dev, __be32 *pmca, int sfmode,
 		if (!delta)
 			pmc->sfcount[sfmode]--;
 =======
+<<<<<<< HEAD
+		if (!delta)
+			pmc->sfcount[sfmode]--;
+=======
 		pmc->sfcount[sfmode]--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (j=0; j<i; j++)
 			(void) ip_mc_del1_src(pmc, sfmode, &psfsrc[j]);
 	} else if (isexclude != (pmc->sfcount[MCAST_EXCLUDE] != 0)) {
@@ -1902,8 +1962,12 @@ static int ip_mc_leave_src(struct sock *sk, struct ip_mc_socklist *iml,
 <<<<<<< HEAD
 	RCU_INIT_POINTER(iml->sflist, NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(iml->sflist, NULL);
+=======
 	rcu_assign_pointer(iml->sflist, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* decrease mem now to avoid the memleak warning */
 	atomic_sub(IP_SFLSIZE(psf->sl_max), &sk->sk_omem_alloc);
 	kfree_rcu(psf, rcu);

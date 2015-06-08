@@ -29,6 +29,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void *module_alloc(unsigned long size)
 {
 	return size ? vmalloc(size) : NULL;
@@ -47,6 +49,7 @@ int module_frob_arch_sections(Elf_Ehdr *hdr, Elf_Shdr *sechdrs,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int apply_relocate(Elf_Shdr *sechdrs, const char *strtab,
 		unsigned int symindex, unsigned int relindex,
 		struct module *me)
@@ -154,7 +157,13 @@ int apply_relocate_add(Elf_Shdr *sechdrs, const char *strtab,
 	 * for an unsupported relocation variant
 	 */
 =======
+<<<<<<< HEAD
+	/* Non-standard return value... most other arch's return -ENOEXEC
+	 * for an unsupported relocation variant
+	 */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -163,6 +172,8 @@ const struct exception_table_entry *search_module_dbetables(unsigned long addr)
 {
 	return NULL;
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -175,3 +186,4 @@ int module_finalize(const Elf_Ehdr *hdr, const Elf_Shdr *sechdrs,
 
 void module_arch_cleanup(struct module *mod) {}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

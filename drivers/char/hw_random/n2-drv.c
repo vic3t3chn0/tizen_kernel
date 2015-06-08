@@ -1,6 +1,14 @@
 /* n2-drv.c: Niagara-2 RNG driver.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2008, 2011 David S. Miller <davem@davemloft.net>
+=======
  * Copyright (C) 2008 David S. Miller <davem@davemloft.net>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2008 David S. Miller <davem@davemloft.net>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -22,8 +30,18 @@
 
 #define DRV_MODULE_NAME		"n2rng"
 #define PFX DRV_MODULE_NAME	": "
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DRV_MODULE_VERSION	"0.2"
+#define DRV_MODULE_RELDATE	"July 27, 2011"
+=======
 #define DRV_MODULE_VERSION	"0.1"
 #define DRV_MODULE_RELDATE	"May 15, 2008"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define DRV_MODULE_VERSION	"0.1"
+#define DRV_MODULE_RELDATE	"May 15, 2008"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static char version[] __devinitdata =
 	DRV_MODULE_NAME ".c:v" DRV_MODULE_VERSION " (" DRV_MODULE_RELDATE ")\n";
@@ -623,14 +641,30 @@ static const struct of_device_id n2rng_match[];
 static int __devinit n2rng_probe(struct platform_device *op)
 {
 	const struct of_device_id *match;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int multi_capable;
+=======
 	int victoria_falls;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int victoria_falls;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = -ENOMEM;
 	struct n2rng *np;
 
 	match = of_match_device(n2rng_match, &op->dev);
 	if (!match)
 		return -EINVAL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	multi_capable = (match->data != NULL);
+=======
 	victoria_falls = (match->data != NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	victoria_falls = (match->data != NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	n2rng_driver_version();
 	np = kzalloc(sizeof(*np), GFP_KERNEL);
@@ -640,8 +674,18 @@ static int __devinit n2rng_probe(struct platform_device *op)
 
 	INIT_DELAYED_WORK(&np->work, n2rng_work);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (multi_capable)
+		np->flags |= N2RNG_FLAG_MULTI;
+=======
 	if (victoria_falls)
 		np->flags |= N2RNG_FLAG_VF;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (victoria_falls)
+		np->flags |= N2RNG_FLAG_VF;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -ENODEV;
 	np->hvapi_major = 2;
@@ -658,10 +702,23 @@ static int __devinit n2rng_probe(struct platform_device *op)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (np->flags & N2RNG_FLAG_MULTI) {
+		if (np->hvapi_major < 2) {
+			dev_err(&op->dev, "multi-unit-capable RNG requires "
+				"HVAPI major version 2 or later, got %lu\n",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (np->flags & N2RNG_FLAG_VF) {
 		if (np->hvapi_major < 2) {
 			dev_err(&op->dev, "VF RNG requires HVAPI major "
 				"version 2 or later, got %lu\n",
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				np->hvapi_major);
 			goto out_hvapi_unregister;
 		}
@@ -688,8 +745,18 @@ static int __devinit n2rng_probe(struct platform_device *op)
 		goto out_free_units;
 
 	dev_info(&op->dev, "Found %s RNG, units: %d\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 ((np->flags & N2RNG_FLAG_MULTI) ?
+		  "multi-unit-capable" : "single-unit"),
+=======
 		 ((np->flags & N2RNG_FLAG_VF) ?
 		  "Victoria Falls" : "Niagara2"),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 ((np->flags & N2RNG_FLAG_VF) ?
+		  "Victoria Falls" : "Niagara2"),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 np->num_units);
 
 	np->hwrng.name = "n2rng";
@@ -751,6 +818,17 @@ static const struct of_device_id n2rng_match[] = {
 		.compatible	= "SUNW,vf-rng",
 		.data		= (void *) 1,
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.name		= "random-number-generator",
+		.compatible	= "SUNW,kt-rng",
+		.data		= (void *) 1,
+	},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{},
 };
 MODULE_DEVICE_TABLE(of, n2rng_match);
@@ -765,6 +843,12 @@ static struct platform_driver n2rng_driver = {
 	.remove		= __devexit_p(n2rng_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(n2rng_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init n2rng_init(void)
 {
 	return platform_driver_register(&n2rng_driver);
@@ -777,3 +861,7 @@ static void __exit n2rng_exit(void)
 
 module_init(n2rng_init);
 module_exit(n2rng_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

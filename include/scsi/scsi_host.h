@@ -356,6 +356,9 @@ struct scsi_host_template {
 	enum blk_eh_timer_return (*eh_timed_out)(struct scsi_cmnd *);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* This is an optional routine that allows transport to initiate
 	 * LLD adapter or firmware reset using sysfs attribute.
 	 *
@@ -369,8 +372,11 @@ struct scsi_host_template {
 #define SCSI_FIRMWARE_RESET	2
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Name of proc directory
 	 */
@@ -677,7 +683,13 @@ struct Scsi_Host {
 	unsigned eh_noresume:1;
 
 =======
+<<<<<<< HEAD
+	/* Don't resume host in EH */
+	unsigned eh_noresume:1;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Optional work queue to be utilized by the transport
 	 */
@@ -739,10 +751,13 @@ struct Scsi_Host {
 	struct device *dma_dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_USB_HOST_NOTIFY
 	unsigned int  by_usb;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We should ensure that this is aligned, both for better performance
@@ -823,8 +838,13 @@ static inline int scsi_host_scan_allowed(struct Scsi_Host *shost)
 	return shost->shost_state == SHOST_RUNNING ||
 	       shost->shost_state == SHOST_RECOVERY;
 =======
+<<<<<<< HEAD
+	return shost->shost_state == SHOST_RUNNING ||
+	       shost->shost_state == SHOST_RECOVERY;
+=======
 	return shost->shost_state == SHOST_RUNNING;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 extern void scsi_unblock_requests(struct Scsi_Host *);

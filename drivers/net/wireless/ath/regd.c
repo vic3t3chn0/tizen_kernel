@@ -21,6 +21,14 @@
 #include "regd.h"
 #include "regd_common.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __ath_regd_init(struct ath_regulatory *reg);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This is a set of common rules used by our world regulatory domains.
  * We have 12 world regulatory domains. To save space we consolidate
@@ -347,10 +355,38 @@ static void ath_reg_apply_world_flags(struct wiphy *wiphy,
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u16 ath_regd_find_country_by_name(char *alpha2)
+{
+	unsigned int i;
+
+	for (i = 0; i < ARRAY_SIZE(allCountries); i++) {
+		if (!memcmp(allCountries[i].isoName, alpha2, 2))
+			return allCountries[i].countryCode;
+	}
+
+	return -1;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ath_reg_notifier_apply(struct wiphy *wiphy,
 			   struct regulatory_request *request,
 			   struct ath_regulatory *reg)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct ath_common *common = container_of(reg, struct ath_common,
+						 regulatory);
+	u16 country_code;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We always apply this */
 	ath_reg_apply_radar_flags(wiphy);
 
@@ -363,6 +399,42 @@ int ath_reg_notifier_apply(struct wiphy *wiphy,
 		return 0;
 
 	switch (request->initiator) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case NL80211_REGDOM_SET_BY_CORE:
+		/*
+		 * If common->reg_world_copy is world roaming it means we *were*
+		 * world roaming... so we now have to restore that data.
+		 */
+		if (!ath_is_world_regd(&common->reg_world_copy))
+			break;
+
+		memcpy(reg, &common->reg_world_copy,
+		       sizeof(struct ath_regulatory));
+		break;
+	case NL80211_REGDOM_SET_BY_DRIVER:
+	case NL80211_REGDOM_SET_BY_USER:
+		break;
+	case NL80211_REGDOM_SET_BY_COUNTRY_IE:
+		if (!ath_is_world_regd(reg))
+			break;
+
+		country_code = ath_regd_find_country_by_name(request->alpha2);
+		if (country_code == (u16) -1)
+			break;
+
+		reg->current_rd = COUNTRY_ERD_FLAG;
+		reg->current_rd |= country_code;
+
+		printk(KERN_DEBUG "ath: regdomain 0x%0x updated by CountryIE\n",
+			reg->current_rd);
+		__ath_regd_init(reg);
+
+		ath_reg_apply_world_flags(wiphy, request->initiator, reg);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case NL80211_REGDOM_SET_BY_DRIVER:
 	case NL80211_REGDOM_SET_BY_CORE:
 	case NL80211_REGDOM_SET_BY_USER:
@@ -371,6 +443,10 @@ int ath_reg_notifier_apply(struct wiphy *wiphy,
 		if (ath_is_world_regd(reg))
 			ath_reg_apply_world_flags(wiphy, request->initiator,
 						  reg);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -479,6 +555,13 @@ ath_regd_init_wiphy(struct ath_regulatory *reg,
 		 */
 		regd = ath_world_regdomain(reg);
 		wiphy->flags |= WIPHY_FLAG_CUSTOM_REGULATORY;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		wiphy->country_ie_pref = NL80211_COUNTRY_IE_FOLLOW_POWER;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/*
 		 * This gets applied in the case of the absence of CRDA,
@@ -508,11 +591,21 @@ static void ath_regd_sanitize(struct ath_regulatory *reg)
 	reg->current_rd = 0x64;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __ath_regd_init(struct ath_regulatory *reg)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 ath_regd_init(struct ath_regulatory *reg,
 	      struct wiphy *wiphy,
 	      int (*reg_notifier)(struct wiphy *wiphy,
 				  struct regulatory_request *request))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct country_code_to_enum_rd *country = NULL;
 	u16 regdmn;
@@ -583,7 +676,37 @@ ath_regd_init(struct ath_regulatory *reg,
 	printk(KERN_DEBUG "ath: Regpair used: 0x%0x\n",
 		reg->regpair->regDmnEnum);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+}
+
+int
+ath_regd_init(struct ath_regulatory *reg,
+	      struct wiphy *wiphy,
+	      int (*reg_notifier)(struct wiphy *wiphy,
+				  struct regulatory_request *request))
+{
+	struct ath_common *common = container_of(reg, struct ath_common,
+						 regulatory);
+	int r;
+
+	r = __ath_regd_init(reg);
+	if (r)
+		return r;
+
+	if (ath_is_world_regd(reg))
+		memcpy(&common->reg_world_copy, reg,
+		       sizeof(struct ath_regulatory));
+
 	ath_regd_init_wiphy(reg, wiphy, reg_notifier);
+
+=======
+	ath_regd_init_wiphy(reg, wiphy, reg_notifier);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_regd_init_wiphy(reg, wiphy, reg_notifier);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL(ath_regd_init);

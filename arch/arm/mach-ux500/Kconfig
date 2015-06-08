@@ -6,6 +6,9 @@ config UX500_SOC_COMMON
 	select ARM_GIC
 	select HAS_MTU
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select PL310_ERRATA_753970
 	select ARM_ERRATA_754322
 	select ARM_ERRATA_764369
@@ -66,6 +69,8 @@ config MACH_UX500_DT
 	depends on MACH_MOP500
 	select USE_OF
 
+<<<<<<< HEAD
+=======
 =======
 	select ARM_ERRATA_753970
 	select ARM_ERRATA_754322
@@ -99,6 +104,7 @@ config MACH_U5500
 	help
 	  Include support for the U5500 development platform.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endmenu
 
 config UX500_DEBUG_UART

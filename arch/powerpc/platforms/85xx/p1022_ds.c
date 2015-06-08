@@ -26,6 +26,9 @@
 #include <sysdev/fsl_soc.h>
 #include <sysdev/fsl_pci.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/udbg.h>
 #include <asm/fsl_guts.h>
 #include "smp.h"
@@ -38,12 +41,15 @@
 #define PMUXCR_ELBCDIU_NOR16	0x80000000
 #define PMUXCR_ELBCDIU_DIU	0x40000000
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/fsl_guts.h>
 
 #if defined(CONFIG_FB_FSL_DIU) || defined(CONFIG_FB_FSL_DIU_MODULE)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Board-specific initialization of the DIU.  This code should probably be
  * executed when the DIU is opened, rather than in arch code, but the DIU
@@ -62,6 +68,9 @@
 
 /* Some ngPIXIS register definitions */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PX_CTL		3
 #define PX_BRDCFG0	8
 #define PX_BRDCFG1	9
@@ -71,8 +80,11 @@
 #define PX_BRDCFG0_ELBC_SPI_NULL	0xc0
 #define PX_BRDCFG0_ELBC_DIU		0x02
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PX_BRDCFG1_DVIEN	0x80
 #define PX_BRDCFG1_DFPEN	0x40
 #define PX_BRDCFG1_BACKLIGHT	0x20
@@ -82,7 +94,12 @@
 #define PX_CTL_ALTACC		0x80
 
 =======
+<<<<<<< HEAD
+#define PX_CTL_ALTACC		0x80
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * DIU Area Descriptor
  *
@@ -129,9 +146,14 @@
 static u32 p1022ds_get_pixel_format(enum fsl_diu_monitor_port port,
 				    unsigned int bits_per_pixel)
 =======
+<<<<<<< HEAD
+static u32 p1022ds_get_pixel_format(enum fsl_diu_monitor_port port,
+				    unsigned int bits_per_pixel)
+=======
 static unsigned int p1022ds_get_pixel_format(unsigned int bits_per_pixel,
 	int monitor_port)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (bits_per_pixel) {
 	case 32:
@@ -159,8 +181,13 @@ static unsigned int p1022ds_get_pixel_format(unsigned int bits_per_pixel,
 static void p1022ds_set_gamma_table(enum fsl_diu_monitor_port port,
 				    char *gamma_table_base)
 =======
+<<<<<<< HEAD
+static void p1022ds_set_gamma_table(enum fsl_diu_monitor_port port,
+				    char *gamma_table_base)
+=======
 static void p1022ds_set_gamma_table(int monitor_port, char *gamma_table_base)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 
@@ -169,6 +196,9 @@ static void p1022ds_set_gamma_table(int monitor_port, char *gamma_table_base)
  *
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void p1022ds_set_monitor_port(enum fsl_diu_monitor_port port)
 {
 	struct device_node *guts_node;
@@ -282,6 +312,8 @@ exit:
 
 	of_node_put(indirect_node);
 	of_node_put(guts_node);
+<<<<<<< HEAD
+=======
 =======
 static void p1022ds_set_monitor_port(int monitor_port)
 {
@@ -316,6 +348,7 @@ static void p1022ds_set_monitor_port(int monitor_port)
 		pr_err("p1022ds: unsupported monitor port %i\n", monitor_port);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -329,8 +362,12 @@ void p1022ds_set_pixel_clock(unsigned int pixclock)
 <<<<<<< HEAD
 	struct ccsr_guts __iomem *guts;
 =======
+<<<<<<< HEAD
+	struct ccsr_guts __iomem *guts;
+=======
 	struct ccsr_guts_85xx __iomem *guts;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long freq;
 	u64 temp;
 	u32 pxclk;
@@ -355,6 +392,9 @@ void p1022ds_set_pixel_clock(unsigned int pixclock)
 	freq = temp;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * 'pxclk' is the ratio of the platform clock to the pixel clock.
 	 * This number is programmed into the CLKDVDR register, and the valid
@@ -362,10 +402,13 @@ void p1022ds_set_pixel_clock(unsigned int pixclock)
 	 */
 	pxclk = DIV_ROUND_CLOSEST(fsl_get_sys_freq(), freq);
 	pxclk = clamp_t(u32, pxclk, 2, 255);
+<<<<<<< HEAD
+=======
 =======
 	/* pixclk is the ratio of the platform clock to the pixel clock */
 	pxclk = DIV_ROUND_CLOSEST(fsl_get_sys_freq(), freq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Disable the pixel clock, and set it to non-inverted and no delay */
 	clrbits32(&guts->clkdvdr,
@@ -374,6 +417,9 @@ void p1022ds_set_pixel_clock(unsigned int pixclock)
 	/* Enable the clock and set the pxclk */
 	setbits32(&guts->clkdvdr, CLKDVDR_PXCKEN | (pxclk << 16));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	iounmap(guts);
 }
@@ -391,6 +437,8 @@ p1022ds_valid_monitor_port(enum fsl_diu_monitor_port port)
 	default:
 		return FSL_DIU_PORT_DVI; /* Dual-link LVDS is not supported */
 	}
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -413,6 +461,7 @@ int p1022ds_set_sysfs_monitor_port(int val)
 {
 	return val < 2 ? val : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif
@@ -420,6 +469,9 @@ int p1022ds_set_sysfs_monitor_port(int val)
 void __init p1022_ds_pic_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN |
 		MPIC_SINGLE_DEST_CPU,
 		0, 256, " OpenPIC  ");
@@ -468,6 +520,8 @@ static int __init early_video_setup(char *options)
 }
 early_param("video", early_video_setup);
 
+<<<<<<< HEAD
+=======
 =======
 	struct mpic *mpic;
 	struct resource r;
@@ -500,6 +554,7 @@ early_param("video", early_video_setup);
 #ifdef CONFIG_SMP
 void __init mpc85xx_smp_init(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -539,6 +594,9 @@ static void __init p1022_ds_setup_arch(void)
 	diu_ops.set_monitor_port	= p1022ds_set_monitor_port;
 	diu_ops.set_pixel_clock		= p1022ds_set_pixel_clock;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	diu_ops.valid_monitor_port	= p1022ds_valid_monitor_port;
 
 	/*
@@ -571,6 +629,8 @@ static void __init p1022_ds_setup_arch(void)
 #endif
 
 	mpc85xx_smp_init();
+<<<<<<< HEAD
+=======
 =======
 	diu_ops.show_monitor_port	= p1022ds_show_monitor_port;
 	diu_ops.set_sysfs_monitor_port	= p1022ds_set_sysfs_monitor_port;
@@ -580,6 +640,7 @@ static void __init p1022_ds_setup_arch(void)
 	mpc85xx_smp_init();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SWIOTLB
 	if (memblock_end_of_DRAM() > max) {
@@ -592,6 +653,9 @@ static void __init p1022_ds_setup_arch(void)
 	pr_info("Freescale P1022 DS reference board\n");
 }
 
+<<<<<<< HEAD
+machine_device_initcall(p1022_ds, mpc85xx_common_publish_devices);
+=======
 <<<<<<< HEAD
 machine_device_initcall(p1022_ds, mpc85xx_common_publish_devices);
 =======
@@ -611,6 +675,7 @@ static int __init p1022_ds_publish_devices(void)
 }
 machine_device_initcall(p1022_ds, p1022_ds_publish_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 machine_arch_initcall(p1022_ds, swiotlb_setup_bus_notifier);
 

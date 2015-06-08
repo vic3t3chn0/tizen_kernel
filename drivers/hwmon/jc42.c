@@ -176,12 +176,26 @@ static int jc42_probe(struct i2c_client *client,
 		      const struct i2c_device_id *id);
 static int jc42_detect(struct i2c_client *client, struct i2c_board_info *info);
 static int jc42_remove(struct i2c_client *client);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static int jc42_read_value(struct i2c_client *client, u8 reg);
 static int jc42_write_value(struct i2c_client *client, u8 reg, u16 value);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int jc42_read_value(struct i2c_client *client, u8 reg);
+static int jc42_write_value(struct i2c_client *client, u8 reg, u16 value);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct jc42_data *jc42_update_device(struct device *dev);
 
 static const struct i2c_device_id jc42_id[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ "jc42", 0 },
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "adt7408", 0 },
 	{ "at30ts00", 0 },
 	{ "cat94ts02", 0 },
@@ -201,6 +215,10 @@ static const struct i2c_device_id jc42_id[] = {
 	{ "stts3000", 0 },
 	{ "tse2002", 0 },
 	{ "ts3000", 0 },
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ }
 };
 MODULE_DEVICE_TABLE(i2c, jc42_id);
@@ -213,7 +231,15 @@ static int jc42_suspend(struct device *dev)
 	struct jc42_data *data = i2c_get_clientdata(client);
 
 	data->config |= JC42_CFG_SHUTDOWN;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_smbus_write_word_swapped(client, JC42_REG_CONFIG, data->config);
+=======
 	jc42_write_value(client, JC42_REG_CONFIG, data->config);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	jc42_write_value(client, JC42_REG_CONFIG, data->config);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -223,7 +249,15 @@ static int jc42_resume(struct device *dev)
 	struct jc42_data *data = i2c_get_clientdata(client);
 
 	data->config &= ~JC42_CFG_SHUTDOWN;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_smbus_write_word_swapped(client, JC42_REG_CONFIG, data->config);
+=======
 	jc42_write_value(client, JC42_REG_CONFIG, data->config);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	jc42_write_value(client, JC42_REG_CONFIG, data->config);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -337,11 +371,25 @@ static ssize_t set_##value(struct device *dev,				\
 	struct jc42_data *data = i2c_get_clientdata(client);		\
 	int err, ret = count;						\
 	long val;							\
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtol(buf, 10, &val) < 0)				\
+		return -EINVAL;						\
+	mutex_lock(&data->update_lock);					\
+	data->value = jc42_temp_to_reg(val, data->extended);		\
+	err = i2c_smbus_write_word_swapped(client, reg, data->value);	\
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (strict_strtol(buf, 10, &val) < 0)				\
 		return -EINVAL;						\
 	mutex_lock(&data->update_lock);					\
 	data->value = jc42_temp_to_reg(val, data->extended);		\
 	err = jc42_write_value(client, reg, data->value);		\
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)							\
 		ret = err;						\
 	mutex_unlock(&data->update_lock);				\
@@ -352,8 +400,20 @@ set(temp_min, JC42_REG_TEMP_LOWER);
 set(temp_max, JC42_REG_TEMP_UPPER);
 set(temp_crit, JC42_REG_TEMP_CRITICAL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * JC42.4 compliant chips only support four hysteresis values.
+ * Pick best choice and go from there.
+ */
+=======
 /* JC42.4 compliant chips only support four hysteresis values.
  * Pick best choice and go from there. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* JC42.4 compliant chips only support four hysteresis values.
+ * Pick best choice and go from there. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t set_temp_crit_hyst(struct device *dev,
 				  struct device_attribute *attr,
 				  const char *buf, size_t count)
@@ -365,7 +425,15 @@ static ssize_t set_temp_crit_hyst(struct device *dev,
 	int err;
 	int ret = count;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtoul(buf, 10, &val) < 0)
+=======
 	if (strict_strtoul(buf, 10, &val) < 0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (strict_strtoul(buf, 10, &val) < 0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	diff = jc42_temp_from_reg(data->temp_crit) - val;
@@ -383,7 +451,16 @@ static ssize_t set_temp_crit_hyst(struct device *dev,
 	data->config = (data->config
 			& ~(JC42_CFG_HYST_MASK << JC42_CFG_HYST_SHIFT))
 	  | (hyst << JC42_CFG_HYST_SHIFT);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = i2c_smbus_write_word_swapped(client, JC42_REG_CONFIG,
+					   data->config);
+=======
 	err = jc42_write_value(client, JC42_REG_CONFIG, data->config);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	err = jc42_write_value(client, JC42_REG_CONFIG, data->config);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		ret = err;
 	mutex_unlock(&data->update_lock);
@@ -440,7 +517,15 @@ static struct attribute *jc42_attributes[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t jc42_attribute_mode(struct kobject *kobj,
+=======
 static mode_t jc42_attribute_mode(struct kobject *kobj,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t jc42_attribute_mode(struct kobject *kobj,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  struct attribute *attr, int index)
 {
 	struct device *dev = container_of(kobj, struct device, kobj);
@@ -468,20 +553,45 @@ static const struct attribute_group jc42_group = {
 };
 
 /* Return 0 if detection is successful, -ENODEV otherwise */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int jc42_detect(struct i2c_client *client, struct i2c_board_info *info)
+{
+	struct i2c_adapter *adapter = client->adapter;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int jc42_detect(struct i2c_client *new_client,
 		       struct i2c_board_info *info)
 {
 	struct i2c_adapter *adapter = new_client->adapter;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, config, cap, manid, devid;
 
 	if (!i2c_check_functionality(adapter, I2C_FUNC_SMBUS_BYTE_DATA |
 				     I2C_FUNC_SMBUS_WORD_DATA))
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cap = i2c_smbus_read_word_swapped(client, JC42_REG_CAP);
+	config = i2c_smbus_read_word_swapped(client, JC42_REG_CONFIG);
+	manid = i2c_smbus_read_word_swapped(client, JC42_REG_MANID);
+	devid = i2c_smbus_read_word_swapped(client, JC42_REG_DEVICEID);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap = jc42_read_value(new_client, JC42_REG_CAP);
 	config = jc42_read_value(new_client, JC42_REG_CONFIG);
 	manid = jc42_read_value(new_client, JC42_REG_MANID);
 	devid = jc42_read_value(new_client, JC42_REG_DEVICEID);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cap < 0 || config < 0 || manid < 0 || devid < 0)
 		return -ENODEV;
@@ -500,6 +610,38 @@ static int jc42_detect(struct i2c_client *new_client,
 	return -ENODEV;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int jc42_probe(struct i2c_client *client, const struct i2c_device_id *id)
+{
+	struct jc42_data *data;
+	int config, cap, err;
+	struct device *dev = &client->dev;
+
+	data = devm_kzalloc(dev, sizeof(struct jc42_data), GFP_KERNEL);
+	if (!data)
+		return -ENOMEM;
+
+	i2c_set_clientdata(client, data);
+	mutex_init(&data->update_lock);
+
+	cap = i2c_smbus_read_word_swapped(client, JC42_REG_CAP);
+	if (cap < 0)
+		return cap;
+
+	data->extended = !!(cap & JC42_CAP_RANGE);
+
+	config = i2c_smbus_read_word_swapped(client, JC42_REG_CONFIG);
+	if (config < 0)
+		return config;
+
+	data->orig_config = config;
+	if (config & JC42_CFG_SHUTDOWN) {
+		config &= ~JC42_CFG_SHUTDOWN;
+		i2c_smbus_write_word_swapped(client, JC42_REG_CONFIG, config);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int jc42_probe(struct i2c_client *new_client,
 		      const struct i2c_device_id *id)
 {
@@ -531,15 +673,33 @@ static int jc42_probe(struct i2c_client *new_client,
 	if (config & JC42_CFG_SHUTDOWN) {
 		config &= ~JC42_CFG_SHUTDOWN;
 		jc42_write_value(new_client, JC42_REG_CONFIG, config);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	data->config = config;
 
 	/* Register sysfs hooks */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	err = sysfs_create_group(&dev->kobj, &jc42_group);
+	if (err)
+		return err;
+
+	data->hwmon_dev = hwmon_device_register(dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = sysfs_create_group(&new_client->dev.kobj, &jc42_group);
 	if (err)
 		goto exit_free;
 
 	data->hwmon_dev = hwmon_device_register(&new_client->dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(data->hwmon_dev)) {
 		err = PTR_ERR(data->hwmon_dev);
 		goto exit_remove;
@@ -548,10 +708,20 @@ static int jc42_probe(struct i2c_client *new_client,
 	return 0;
 
 exit_remove:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sysfs_remove_group(&dev->kobj, &jc42_group);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sysfs_remove_group(&new_client->dev.kobj, &jc42_group);
 exit_free:
 	kfree(data);
 exit:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -561,6 +731,16 @@ static int jc42_remove(struct i2c_client *client)
 	hwmon_device_unregister(data->hwmon_dev);
 	sysfs_remove_group(&client->dev.kobj, &jc42_group);
 	if (data->config != data->orig_config)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		i2c_smbus_write_word_swapped(client, JC42_REG_CONFIG,
+					     data->orig_config);
+	return 0;
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		jc42_write_value(client, JC42_REG_CONFIG, data->orig_config);
 	kfree(data);
 	return 0;
@@ -580,6 +760,10 @@ static int jc42_write_value(struct i2c_client *client, u8 reg, u16 value)
 	return i2c_smbus_write_word_data(client, reg, swab16(value));
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct jc42_data *jc42_update_device(struct device *dev)
 {
 	struct i2c_client *client = to_i2c_client(dev);
@@ -590,28 +774,61 @@ static struct jc42_data *jc42_update_device(struct device *dev)
 	mutex_lock(&data->update_lock);
 
 	if (time_after(jiffies, data->last_updated + HZ) || !data->valid) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		val = i2c_smbus_read_word_swapped(client, JC42_REG_TEMP);
+=======
 		val = jc42_read_value(client, JC42_REG_TEMP);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		val = jc42_read_value(client, JC42_REG_TEMP);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (val < 0) {
 			ret = ERR_PTR(val);
 			goto abort;
 		}
 		data->temp_input = val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		val = i2c_smbus_read_word_swapped(client,
+						  JC42_REG_TEMP_CRITICAL);
+=======
 		val = jc42_read_value(client, JC42_REG_TEMP_CRITICAL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		val = jc42_read_value(client, JC42_REG_TEMP_CRITICAL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (val < 0) {
 			ret = ERR_PTR(val);
 			goto abort;
 		}
 		data->temp_crit = val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		val = i2c_smbus_read_word_swapped(client, JC42_REG_TEMP_LOWER);
+=======
 		val = jc42_read_value(client, JC42_REG_TEMP_LOWER);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		val = jc42_read_value(client, JC42_REG_TEMP_LOWER);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (val < 0) {
 			ret = ERR_PTR(val);
 			goto abort;
 		}
 		data->temp_min = val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		val = i2c_smbus_read_word_swapped(client, JC42_REG_TEMP_UPPER);
+=======
 		val = jc42_read_value(client, JC42_REG_TEMP_UPPER);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		val = jc42_read_value(client, JC42_REG_TEMP_UPPER);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (val < 0) {
 			ret = ERR_PTR(val);
 			goto abort;
@@ -626,6 +843,12 @@ abort:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(jc42_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sensors_jc42_init(void)
 {
 	return i2c_add_driver(&jc42_driver);
@@ -635,10 +858,23 @@ static void __exit sensors_jc42_exit(void)
 {
 	i2c_del_driver(&jc42_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Guenter Roeck <guenter.roeck@ericsson.com>");
 MODULE_DESCRIPTION("JC42 driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(sensors_jc42_init);
 module_exit(sensors_jc42_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(sensors_jc42_init);
+module_exit(sensors_jc42_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

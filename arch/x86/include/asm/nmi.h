@@ -23,6 +23,9 @@ void arch_trigger_all_cpu_backtrace(void);
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NMI_FLAG_FIRST	1
 
 enum {
@@ -44,6 +47,8 @@ void unregister_nmi_handler(unsigned int, const char *);
 void stop_nmi(void);
 void restart_nmi(void);
 void local_touch_nmi(void);
+<<<<<<< HEAD
+=======
 =======
 /*
  * Define some priorities for the nmi notifier call chain.
@@ -68,5 +73,6 @@ void local_touch_nmi(void);
 void stop_nmi(void);
 void restart_nmi(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _ASM_X86_NMI_H */

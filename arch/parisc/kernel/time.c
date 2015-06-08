@@ -32,7 +32,11 @@
 <<<<<<< HEAD
 #include <asm/page.h>
 =======
+<<<<<<< HEAD
+#include <asm/page.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/param.h>
 #include <asm/pdc.h>
 #include <asm/led.h>
@@ -204,9 +208,12 @@ static struct clocksource clocksource_cr16 = {
 	.mask			= CLOCKSOURCE_MASK(BITS_PER_LONG),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.mult			= 0, /* to be set */
 	.shift			= 22,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags			= CLOCK_SOURCE_IS_CONTINUOUS,
 };
 
@@ -280,8 +287,12 @@ void __init time_init(void)
 <<<<<<< HEAD
 	clocksource_register_khz(&clocksource_cr16, current_cr16_khz);
 =======
+<<<<<<< HEAD
+	clocksource_register_khz(&clocksource_cr16, current_cr16_khz);
+=======
 	clocksource_cr16.mult = clocksource_khz2mult(current_cr16_khz,
 						clocksource_cr16.shift);
 	clocksource_register(&clocksource_cr16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

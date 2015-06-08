@@ -4,6 +4,9 @@
 <<<<<<< HEAD
 #include <asm-generic/delay.h>
 =======
+<<<<<<< HEAD
+#include <asm-generic/delay.h>
+=======
 /*
  * Copyright (C) 1993 Linus Torvalds
  *
@@ -29,6 +32,7 @@ extern void __delay(unsigned long loops);
 	((n) > 20000 ? __bad_ndelay() : __const_udelay((n) * 5ul)) : \
 	__ndelay(n))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void use_tsc_delay(void);
 

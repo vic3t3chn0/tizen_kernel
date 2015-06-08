@@ -9,7 +9,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/pci-bridge.h>
 
@@ -124,6 +128,9 @@ EXPORT_SYMBOL(ioport_unmap);
 <<<<<<< HEAD
 #ifdef CONFIG_PCI
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PCI
+=======
 void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long max)
 {
 	resource_size_t start = pci_resource_start(dev, bar);
@@ -143,6 +150,7 @@ void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long max)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pci_iounmap(struct pci_dev *dev, void __iomem *addr)
 {
 	if (isa_vaddr_is_ioport(addr))
@@ -156,6 +164,11 @@ void pci_iounmap(struct pci_dev *dev, void __iomem *addr)
 EXPORT_SYMBOL(pci_iounmap);
 #endif /* CONFIG_PCI */
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(pci_iounmap);
+#endif /* CONFIG_PCI */
+=======
 EXPORT_SYMBOL(pci_iomap);
 EXPORT_SYMBOL(pci_iounmap);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

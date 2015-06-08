@@ -12,12 +12,18 @@
 #include "header.h"
 #include "debugfs.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "parse-events-flex.h"
 #include "pmu.h"
 
 #define MAX_NAME_LEN 100
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct event_symbol {
 	u8		type;
@@ -30,6 +36,10 @@ struct event_symbol {
 int parse_events_parse(struct list_head *list, struct list_head *list_tmp,
 		       int *idx);
 =======
+<<<<<<< HEAD
+int parse_events_parse(struct list_head *list, struct list_head *list_tmp,
+		       int *idx);
+=======
 enum event_result {
 	EVT_FAILED,
 	EVT_HANDLED,
@@ -38,6 +48,7 @@ enum event_result {
 
 char debugfs_path[MAXPATHLEN];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CHW(x) .type = PERF_TYPE_HARDWARE, .config = PERF_COUNT_HW_##x
 #define CSW(x) .type = PERF_TYPE_SOFTWARE, .config = PERF_COUNT_SW_##x
@@ -55,7 +66,11 @@ static struct event_symbol event_symbols[] = {
 <<<<<<< HEAD
   { CHW(REF_CPU_CYCLES),		"ref-cycles",			""			},
 =======
+<<<<<<< HEAD
+  { CHW(REF_CPU_CYCLES),		"ref-cycles",			""			},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
   { CSW(CPU_CLOCK),			"cpu-clock",			""			},
   { CSW(TASK_CLOCK),			"task-clock",			""			},
@@ -89,7 +104,11 @@ static const char *hw_event_names[PERF_COUNT_HW_MAX] = {
 <<<<<<< HEAD
 	"ref-cycles",
 =======
+<<<<<<< HEAD
+	"ref-cycles",
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const char *sw_event_names[PERF_COUNT_SW_MAX] = {
@@ -107,6 +126,9 @@ static const char *sw_event_names[PERF_COUNT_SW_MAX] = {
 #define MAX_ALIASES 8
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *hw_cache[PERF_COUNT_HW_CACHE_MAX][MAX_ALIASES] = {
  { "L1-dcache",	"l1-d",		"l1d",		"L1-data",		},
  { "L1-icache",	"l1-i",		"l1i",		"L1-instruction",	},
@@ -118,6 +140,8 @@ static const char *hw_cache[PERF_COUNT_HW_CACHE_MAX][MAX_ALIASES] = {
 };
 
 static const char *hw_cache_op[PERF_COUNT_HW_CACHE_OP_MAX][MAX_ALIASES] = {
+<<<<<<< HEAD
+=======
 =======
 static const char *hw_cache[][MAX_ALIASES] = {
  { "L1-dcache",	"l1-d",		"l1d",		"L1-data",		},
@@ -130,6 +154,7 @@ static const char *hw_cache[][MAX_ALIASES] = {
 
 static const char *hw_cache_op[][MAX_ALIASES] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  { "load",	"loads",	"read",					},
  { "store",	"stores",	"write",				},
  { "prefetch",	"prefetches",	"speculative-read", "speculative-load",	},
@@ -139,8 +164,13 @@ static const char *hw_cache_op[][MAX_ALIASES] = {
 static const char *hw_cache_result[PERF_COUNT_HW_CACHE_RESULT_MAX]
 				  [MAX_ALIASES] = {
 =======
+<<<<<<< HEAD
+static const char *hw_cache_result[PERF_COUNT_HW_CACHE_RESULT_MAX]
+				  [MAX_ALIASES] = {
+=======
 static const char *hw_cache_result[][MAX_ALIASES] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  { "refs",	"Reference",	"ops",		"access",		},
  { "misses",	"miss",							},
 };
@@ -166,7 +196,11 @@ static unsigned long hw_cache_stat[C(MAX)] = {
 <<<<<<< HEAD
  [C(NODE)]	= (CACHE_READ | CACHE_WRITE | CACHE_PREFETCH),
 =======
+<<<<<<< HEAD
+ [C(NODE)]	= (CACHE_READ | CACHE_WRITE | CACHE_PREFETCH),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define for_each_subsystem(sys_dir, sys_dirent, sys_next)	       \
@@ -183,8 +217,12 @@ static int tp_event_has_id(struct dirent *sys_dir, struct dirent *evt_dir)
 <<<<<<< HEAD
 	snprintf(evt_path, MAXPATHLEN, "%s/%s/%s/id", tracing_events_path,
 =======
+<<<<<<< HEAD
+	snprintf(evt_path, MAXPATHLEN, "%s/%s/%s/id", tracing_events_path,
+=======
 	snprintf(evt_path, MAXPATHLEN, "%s/%s/%s/id", debugfs_path,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sys_dir->d_name, evt_dir->d_name);
 	fd = open(evt_path, O_RDONLY);
 	if (fd < 0)
@@ -212,24 +250,34 @@ struct tracepoint_path *tracepoint_id_to_path(u64 config)
 <<<<<<< HEAD
 	char id_buf[24];
 =======
+<<<<<<< HEAD
+	char id_buf[24];
+=======
 	char id_buf[4];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int fd;
 	u64 id;
 	char evt_path[MAXPATHLEN];
 	char dir_path[MAXPATHLEN];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (debugfs_valid_mountpoint(tracing_events_path))
 		return NULL;
 
 	sys_dir = opendir(tracing_events_path);
+<<<<<<< HEAD
+=======
 =======
 	if (debugfs_valid_mountpoint(debugfs_path))
 		return NULL;
 
 	sys_dir = opendir(debugfs_path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sys_dir)
 		return NULL;
 
@@ -238,8 +286,12 @@ struct tracepoint_path *tracepoint_id_to_path(u64 config)
 <<<<<<< HEAD
 		snprintf(dir_path, MAXPATHLEN, "%s/%s", tracing_events_path,
 =======
+<<<<<<< HEAD
+		snprintf(dir_path, MAXPATHLEN, "%s/%s", tracing_events_path,
+=======
 		snprintf(dir_path, MAXPATHLEN, "%s/%s", debugfs_path,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 sys_dirent.d_name);
 		evt_dir = opendir(dir_path);
 		if (!evt_dir)
@@ -356,6 +408,9 @@ const char *event_name(struct perf_evsel *evsel)
 	u64 config = evsel->attr.config;
 	int type = evsel->attr.type;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *buf;
 	size_t buf_sz;
 
@@ -396,6 +451,8 @@ const char *__event_name(int type, u64 config, char *pmu_name)
 	static char buf[32];
 
 	if (!pmu_name && type == PERF_TYPE_RAW) {
+<<<<<<< HEAD
+=======
 =======
 
 	if (evsel->name)
@@ -410,6 +467,7 @@ const char *__event_name(int type, u64 config)
 
 	if (type == PERF_TYPE_RAW) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sprintf(buf, "raw 0x%" PRIx64, config);
 		return buf;
 	}
@@ -451,21 +509,30 @@ const char *__event_name(int type, u64 config)
 
 	default:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pmu_name) {
 			snprintf(buf, sizeof(buf), "%s 0x%" PRIx64, pmu_name,
 					config);
 			return buf;
 		} else
 			break;
+<<<<<<< HEAD
+=======
 =======
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return "unknown";
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int add_event(struct list_head *list, int *idx,
 		     struct perf_event_attr *attr, char *name)
 {
@@ -484,9 +551,12 @@ static int add_event(struct list_head *list, int *idx,
 }
 
 static int parse_aliases(char *str, const char *names[][MAX_ALIASES], int size)
+<<<<<<< HEAD
+=======
 =======
 static int parse_aliases(const char **str, const char *names[][MAX_ALIASES], int size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i, j;
 	int n, longest = -1;
@@ -495,11 +565,16 @@ static int parse_aliases(const char **str, const char *names[][MAX_ALIASES], int
 		for (j = 0; j < MAX_ALIASES && names[i][j]; j++) {
 			n = strlen(names[i][j]);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (n > longest && !strncasecmp(str, names[i][j], n))
 				longest = n;
 		}
 		if (longest > 0)
 			return i;
+<<<<<<< HEAD
+=======
 =======
 			if (n > longest && !strncasecmp(*str, names[i][j], n))
 				longest = n;
@@ -509,12 +584,16 @@ static int parse_aliases(const char **str, const char *names[][MAX_ALIASES], int
 			return i;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return -1;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int parse_events_add_cache(struct list_head *list, int *idx,
 			   char *type, char *op_result1, char *op_result2)
 {
@@ -524,6 +603,8 @@ int parse_events_add_cache(struct list_head *list, int *idx,
 	char *op_result[2] = { op_result1, op_result2 };
 	int i, n;
 
+<<<<<<< HEAD
+=======
 =======
 static enum event_result
 parse_generic_hw_event(const char **str, struct perf_event_attr *attr)
@@ -533,11 +614,15 @@ parse_generic_hw_event(const char **str, struct perf_event_attr *attr)
 
 	cache_type = parse_aliases(&s, hw_cache, PERF_COUNT_HW_CACHE_MAX);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * No fallback - if we cannot get a clear cache type
 	 * then bail out:
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cache_type = parse_aliases(type, hw_cache,
 				   PERF_COUNT_HW_CACHE_MAX);
 	if (cache_type == -1)
@@ -556,6 +641,8 @@ parse_generic_hw_event(const char **str, struct perf_event_attr *attr)
 			if (cache_op >= 0) {
 				if (!is_cache_op_valid(cache_type, cache_op))
 					return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	if (cache_type == -1)
 		return EVT_FAILED;
@@ -570,6 +657,7 @@ parse_generic_hw_event(const char **str, struct perf_event_attr *attr)
 				if (!is_cache_op_valid(cache_type, cache_op))
 					return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			}
 		}
@@ -578,12 +666,18 @@ parse_generic_hw_event(const char **str, struct perf_event_attr *attr)
 <<<<<<< HEAD
 			cache_result = parse_aliases(str, hw_cache_result,
 =======
+<<<<<<< HEAD
+			cache_result = parse_aliases(str, hw_cache_result,
+=======
 			cache_result = parse_aliases(&s, hw_cache_result,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						PERF_COUNT_HW_CACHE_RESULT_MAX);
 			if (cache_result >= 0)
 				continue;
 		}
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -594,6 +688,7 @@ parse_generic_hw_event(const char **str, struct perf_event_attr *attr)
 		--s;
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -609,6 +704,9 @@ parse_generic_hw_event(const char **str, struct perf_event_attr *attr)
 		cache_result = PERF_COUNT_HW_CACHE_RESULT_ACCESS;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&attr, 0, sizeof(attr));
 	attr.config = cache_type | (cache_op << 8) | (cache_result << 16);
 	attr.type = PERF_TYPE_HW_CACHE;
@@ -620,6 +718,8 @@ static int add_tracepoint(struct list_head *list, int *idx,
 {
 	struct perf_event_attr attr;
 	char name[MAX_NAME_LEN];
+<<<<<<< HEAD
+=======
 =======
 	attr->config = cache_type | (cache_op << 8) | (cache_result << 16);
 	attr->type = PERF_TYPE_HW_CACHE;
@@ -636,6 +736,7 @@ parse_single_tracepoint_event(char *sys_name,
 			      const char **strp)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char evt_path[MAXPATHLEN];
 	char id_buf[4];
 	u64 id;
@@ -644,18 +745,27 @@ parse_single_tracepoint_event(char *sys_name,
 <<<<<<< HEAD
 	snprintf(evt_path, MAXPATHLEN, "%s/%s/%s/id", tracing_events_path,
 =======
+<<<<<<< HEAD
+	snprintf(evt_path, MAXPATHLEN, "%s/%s/%s/id", tracing_events_path,
+=======
 	snprintf(evt_path, MAXPATHLEN, "%s/%s/%s/id", debugfs_path,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 sys_name, evt_name);
 
 	fd = open(evt_path, O_RDONLY);
 	if (fd < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 
 	if (read(fd, id_buf, sizeof(id_buf)) < 0) {
 		close(fd);
 		return -1;
+<<<<<<< HEAD
+=======
 =======
 		return EVT_FAILED;
 
@@ -663,11 +773,15 @@ parse_single_tracepoint_event(char *sys_name,
 		close(fd);
 		return EVT_FAILED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	close(fd);
 	id = atoll(id_buf);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(&attr, 0, sizeof(attr));
 	attr.config = id;
@@ -683,6 +797,8 @@ parse_single_tracepoint_event(char *sys_name,
 
 static int add_tracepoint_multi(struct list_head *list, int *idx,
 				char *sys_name, char *evt_name)
+<<<<<<< HEAD
+=======
 =======
 	attr->config = id;
 	attr->type = PERF_TYPE_TRACEPOINT;
@@ -704,11 +820,15 @@ static enum event_result
 parse_multiple_tracepoint_event(const struct option *opt, char *sys_name,
 				const char *evt_exp, char *flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char evt_path[MAXPATHLEN];
 	struct dirent *evt_ent;
 	DIR *evt_dir;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	snprintf(evt_path, MAXPATHLEN, "%s/%s", tracing_events_path, sys_name);
@@ -719,6 +839,8 @@ parse_multiple_tracepoint_event(const struct option *opt, char *sys_name,
 	}
 
 	while (!ret && (evt_ent = readdir(evt_dir))) {
+<<<<<<< HEAD
+=======
 =======
 
 	snprintf(evt_path, MAXPATHLEN, "%s/%s", debugfs_path, sys_name);
@@ -734,6 +856,7 @@ parse_multiple_tracepoint_event(const struct option *opt, char *sys_name,
 		int len;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!strcmp(evt_ent->d_name, ".")
 		    || !strcmp(evt_ent->d_name, "..")
 		    || !strcmp(evt_ent->d_name, "enable")
@@ -741,6 +864,9 @@ parse_multiple_tracepoint_event(const struct option *opt, char *sys_name,
 			continue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!strglobmatch(evt_ent->d_name, evt_name))
 			continue;
 
@@ -766,6 +892,8 @@ int parse_events_add_tracepoint(struct list_head *list, int *idx,
 
 static int
 parse_breakpoint_type(const char *type, struct perf_event_attr *attr)
+<<<<<<< HEAD
+=======
 =======
 		if (!strglobmatch(evt_ent->d_name, evt_exp))
 			continue;
@@ -836,6 +964,7 @@ static enum event_result
 parse_breakpoint_type(const char *type, const char **strp,
 		      struct perf_event_attr *attr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -843,8 +972,12 @@ parse_breakpoint_type(const char *type, const char **strp,
 <<<<<<< HEAD
 		if (!type || !type[i])
 =======
+<<<<<<< HEAD
+		if (!type || !type[i])
+=======
 		if (!type[i])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 
 		switch (type[i]) {
@@ -859,6 +992,9 @@ parse_breakpoint_type(const char *type, const char **strp,
 			break;
 		default:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EINVAL;
 		}
 	}
@@ -880,6 +1016,8 @@ int parse_events_add_breakpoint(struct list_head *list, int *idx,
 
 	if (parse_breakpoint_type(type, &attr))
 		return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 			return EVT_FAILED;
 		}
@@ -928,12 +1066,16 @@ parse_breakpoint_event(const char **strp, struct perf_event_attr *attr)
 			return EVT_FAILED;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We should find a nice way to override the access length
 	 * Provide some defaults for now
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (attr.bp_type == HW_BREAKPOINT_X)
 		attr.bp_len = sizeof(long);
 	else
@@ -981,6 +1123,8 @@ static int config_attr(struct perf_event_attr *attr,
 	list_for_each_entry(term, head, list)
 		if (config_term(attr, term) && fail)
 			return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	if (attr->bp_type == HW_BREAKPOINT_X)
 		attr->bp_len = sizeof(long);
@@ -1006,11 +1150,15 @@ static int check_events(const char *str, unsigned int i)
 			return n;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int parse_events_add_numeric_legacy(struct list_head *list, int *idx,
 			     const char *name, unsigned long config,
 			     struct list_head *head_config)
@@ -1103,6 +1251,8 @@ int parse_events_modifier(struct list_head *list, char *str)
 	if (str == NULL)
 		return 0;
 
+<<<<<<< HEAD
+=======
 =======
 static enum event_result
 parse_symbolic_event(const char **strp, struct perf_event_attr *attr)
@@ -1181,6 +1331,7 @@ parse_event_modifier(const char **strp, struct perf_event_attr *attr)
 		return -1;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (*str) {
 		if (*str == 'u') {
 			if (!exclude)
@@ -1195,6 +1346,9 @@ parse_event_modifier(const char **strp, struct perf_event_attr *attr)
 				exclude = eu = ek = eh = 1;
 			eh = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (*str == 'G') {
 			if (!exclude_GH)
 				exclude_GH = eG = eH = 1;
@@ -1203,8 +1357,11 @@ parse_event_modifier(const char **strp, struct perf_event_attr *attr)
 			if (!exclude_GH)
 				exclude_GH = eG = eH = 1;
 			eH = 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else if (*str == 'p') {
 			precise++;
 		} else
@@ -1213,6 +1370,9 @@ parse_event_modifier(const char **strp, struct perf_event_attr *attr)
 		++str;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * precise ip:
@@ -1235,6 +1395,8 @@ parse_event_modifier(const char **strp, struct perf_event_attr *attr)
 		evsel->attr.exclude_host   = eH;
 		evsel->attr.exclude_guest  = eG;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (str < *strp + 2)
 		return -1;
@@ -1246,11 +1408,15 @@ parse_event_modifier(const char **strp, struct perf_event_attr *attr)
 	attr->exclude_hv     = eh;
 	attr->precise_ip     = precise;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int parse_events(struct perf_evlist *evlist, const char *str, int unset __used)
 {
 	LIST_HEAD(list);
@@ -1286,6 +1452,8 @@ int parse_events_option(const struct option *opt, const char *str,
 {
 	struct perf_evlist *evlist = *(struct perf_evlist **)opt->value;
 	return parse_events(evlist, str, unset);
+<<<<<<< HEAD
+=======
 =======
 /*
  * Each event can have multiple symbolic names.
@@ -1376,6 +1544,7 @@ int parse_events(const struct option *opt, const char *str, int unset __used)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int parse_filter(const struct option *opt, const char *str,
@@ -1423,16 +1592,22 @@ void print_tracepoint_events(const char *subsys_glob, const char *event_glob)
 	char dir_path[MAXPATHLEN];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (debugfs_valid_mountpoint(tracing_events_path))
 		return;
 
 	sys_dir = opendir(tracing_events_path);
+<<<<<<< HEAD
+=======
 =======
 	if (debugfs_valid_mountpoint(debugfs_path))
 		return;
 
 	sys_dir = opendir(debugfs_path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sys_dir)
 		return;
 
@@ -1444,8 +1619,12 @@ void print_tracepoint_events(const char *subsys_glob, const char *event_glob)
 <<<<<<< HEAD
 		snprintf(dir_path, MAXPATHLEN, "%s/%s", tracing_events_path,
 =======
+<<<<<<< HEAD
+		snprintf(dir_path, MAXPATHLEN, "%s/%s", tracing_events_path,
+=======
 		snprintf(dir_path, MAXPATHLEN, "%s/%s", debugfs_path,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 sys_dirent.d_name);
 		evt_dir = opendir(dir_path);
 		if (!evt_dir)
@@ -1478,16 +1657,22 @@ int is_valid_tracepoint(const char *event_string)
 	char dir_path[MAXPATHLEN];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (debugfs_valid_mountpoint(tracing_events_path))
 		return 0;
 
 	sys_dir = opendir(tracing_events_path);
+<<<<<<< HEAD
+=======
 =======
 	if (debugfs_valid_mountpoint(debugfs_path))
 		return 0;
 
 	sys_dir = opendir(debugfs_path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sys_dir)
 		return 0;
 
@@ -1496,8 +1681,12 @@ int is_valid_tracepoint(const char *event_string)
 <<<<<<< HEAD
 		snprintf(dir_path, MAXPATHLEN, "%s/%s", tracing_events_path,
 =======
+<<<<<<< HEAD
+		snprintf(dir_path, MAXPATHLEN, "%s/%s", tracing_events_path,
+=======
 		snprintf(dir_path, MAXPATHLEN, "%s/%s", debugfs_path,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 sys_dirent.d_name);
 		evt_dir = opendir(dir_path);
 		if (!evt_dir)
@@ -1567,9 +1756,12 @@ int print_hwcache_events(const char *event_glob)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define MAX_NAME_LEN 100
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Print the help text for the event symbols:
  */
@@ -1619,16 +1811,22 @@ void print_events(const char *event_glob)
 	printf("\n");
 	printf("  %-50s [%s]\n",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       "rNNN",
 	       event_type_descriptors[PERF_TYPE_RAW]);
 	printf("  %-50s [%s]\n",
 	       "cpu/t1=v1[,t2=v2,t3 ...]/modifier",
 	       event_type_descriptors[PERF_TYPE_RAW]);
 	printf("   (see 'perf list --help' on how to encode it)\n");
+<<<<<<< HEAD
+=======
 =======
 		"rNNN (see 'perf list --help' on how to encode it)",
 	       event_type_descriptors[PERF_TYPE_RAW]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printf("\n");
 
 	printf("  %-50s [%s]\n",
@@ -1638,6 +1836,9 @@ void print_events(const char *event_glob)
 
 	print_tracepoint_events(NULL, NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int parse_events__is_hardcoded_term(struct parse_events__term *term)
@@ -1686,8 +1887,11 @@ void parse_events__free_terms(struct list_head *terms)
 		free(term);
 
 	free(terms);
+<<<<<<< HEAD
+=======
 =======
 
 	exit(129);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

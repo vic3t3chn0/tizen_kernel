@@ -17,8 +17,12 @@ enum blktrace_cat {
 <<<<<<< HEAD
 	BLK_TC_FLUSH	= 1 << 2,	/* flush */
 =======
+<<<<<<< HEAD
+	BLK_TC_FLUSH	= 1 << 2,	/* flush */
+=======
 	BLK_TC_BARRIER	= 1 << 2,	/* barrier */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BLK_TC_SYNC	= 1 << 3,	/* sync IO */
 	BLK_TC_SYNCIO	= BLK_TC_SYNC,
 	BLK_TC_QUEUE	= 1 << 4,	/* queueing/merging */
@@ -37,9 +41,15 @@ enum blktrace_cat {
 
 	BLK_TC_END	= 1 << 15,	/* we've run out of bits! */
 =======
+<<<<<<< HEAD
+	BLK_TC_FUA	= 1 << 15,	/* fua requests */
+
+	BLK_TC_END	= 1 << 15,	/* we've run out of bits! */
+=======
 
 	BLK_TC_END	= 1 << 15,	/* only 16-bits, reminder */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define BLK_TC_SHIFT		(16)
@@ -182,8 +192,12 @@ extern int do_blk_trace_setup(struct request_queue *q, char *name,
 <<<<<<< HEAD
 extern __printf(2, 3)
 =======
+<<<<<<< HEAD
+extern __printf(2, 3)
+=======
 extern __attribute__((format(printf, 2, 3)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __trace_note_message(struct blk_trace *, const char *fmt, ...);
 
 /**

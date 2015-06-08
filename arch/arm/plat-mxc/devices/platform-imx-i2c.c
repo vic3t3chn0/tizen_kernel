@@ -86,14 +86,20 @@ const struct imx_imx_i2c_data imx51_imx_i2c_data[] __initconst = {
 	imx51_imx_i2c_data_entry(0, 1),
 	imx51_imx_i2c_data_entry(1, 2),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{
 		.id = 2,
 		.iobase = MX51_HSI2C_DMA_BASE_ADDR,
 		.iosize = SZ_16K,
 		.irq = MX51_INT_HS_I2C,
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif /* ifdef CONFIG_SOC_IMX51 */
 
@@ -108,9 +114,15 @@ const struct imx_imx_i2c_data imx53_imx_i2c_data[] __initconst = {
 };
 #endif /* ifdef CONFIG_SOC_IMX53 */
 =======
+<<<<<<< HEAD
+	imx53_imx_i2c_data_entry(2, 3),
+};
+#endif /* ifdef CONFIG_SOC_IMX53 */
+=======
 };
 #endif /* ifdef CONFIG_SOC_IMX51 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct platform_device *__init imx_add_imx_i2c(
 		const struct imx_imx_i2c_data *data,

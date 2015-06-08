@@ -232,9 +232,12 @@ static const struct snd_kcontrol_new neo1973_wm8753_controls[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_MACH_NEO1973_GTA02
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int gta02_speaker_enabled;
 
 static int lm4853_set_spk(struct snd_kcontrol *kcontrol,
@@ -304,8 +307,12 @@ static int neo1973_gta02_wm8753_init(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	ret = snd_soc_add_card_controls(codec->card, neo1973_gta02_wm8753_controls,
 =======
+<<<<<<< HEAD
+	ret = snd_soc_add_card_controls(codec->card, neo1973_gta02_wm8753_controls,
+=======
 	ret = snd_soc_add_controls(codec, neo1973_gta02_wm8753_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ARRAY_SIZE(neo1973_gta02_wm8753_controls));
 	if (ret)
 		return ret;
@@ -320,11 +327,14 @@ static int neo1973_gta02_wm8753_init(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #else
 static int neo1973_gta02_wm8753_init(struct snd_soc_code *codec) { return 0; }
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int neo1973_wm8753_init(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_soc_codec *codec = rtd->codec;
@@ -334,11 +344,14 @@ static int neo1973_wm8753_init(struct snd_soc_pcm_runtime *rtd)
 	/* set up NC codec pins */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (machine_is_neo1973_gta01()) {
 		snd_soc_dapm_nc_pin(dapm, "LOUT2");
 		snd_soc_dapm_nc_pin(dapm, "ROUT2");
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_dapm_nc_pin(dapm, "OUT3");
 	snd_soc_dapm_nc_pin(dapm, "OUT4");
 	snd_soc_dapm_nc_pin(dapm, "LINE1");
@@ -354,8 +367,12 @@ static int neo1973_wm8753_init(struct snd_soc_pcm_runtime *rtd)
 <<<<<<< HEAD
 	ret = snd_soc_add_card_controls(rtd->card, neo1973_wm8753_controls,
 =======
+<<<<<<< HEAD
+	ret = snd_soc_add_card_controls(rtd->card, neo1973_wm8753_controls,
+=======
 	ret = snd_soc_add_controls(codec, neo1973_wm8753_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ARRAY_SIZE(neo1973_wm8753_controls));
 	if (ret)
 		return ret;
@@ -384,6 +401,11 @@ static int neo1973_wm8753_init(struct snd_soc_pcm_runtime *rtd)
 			return ret;
 	}
 
+<<<<<<< HEAD
+	return 0;
+}
+
+=======
 <<<<<<< HEAD
 	return 0;
 }
@@ -441,6 +463,7 @@ static int neo1973_lm4857_init(struct snd_soc_dapm_context *dapm) { return 0; };
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_dai_link neo1973_dai[] = {
 { /* Hifi Playback - for similatious use with voice below */
 	.name = "WM8753",
@@ -469,12 +492,15 @@ static struct snd_soc_aux_dev neo1973_aux_devs[] = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{
 		.name = "lm4857",
 		.codec_name = "lm4857.0-007c",
 		.init = neo1973_lm4857_init,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct snd_soc_codec_conf neo1973_codec_conf[] = {
@@ -486,17 +512,25 @@ static struct snd_soc_codec_conf neo1973_codec_conf[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_MACH_NEO1973_GTA02
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct gpio neo1973_gta02_gpios[] = {
 	{ GTA02_GPIO_HP_IN, GPIOF_OUT_INIT_HIGH, "GTA02_HP_IN" },
 	{ GTA02_GPIO_AMP_SHUT, GPIOF_OUT_INIT_HIGH, "GTA02_AMP_SHUT" },
 };
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct snd_soc_card neo1973 = {
 	.name = "neo1973",
 	.owner = THIS_MODULE,
+<<<<<<< HEAD
+=======
 =======
 #else
 static const struct gpio neo1973_gta02_gpios[] = {};
@@ -505,6 +539,7 @@ static const struct gpio neo1973_gta02_gpios[] = {};
 static struct snd_soc_card neo1973 = {
 	.name = "neo1973",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = neo1973_dai,
 	.num_links = ARRAY_SIZE(neo1973_dai),
 	.aux_dev = neo1973_aux_devs,
@@ -522,8 +557,12 @@ static int __init neo1973_init(void)
 <<<<<<< HEAD
 	if (!machine_is_neo1973_gta02())
 =======
+<<<<<<< HEAD
+	if (!machine_is_neo1973_gta02())
+=======
 	if (!machine_is_neo1973_gta01() && !machine_is_neo1973_gta02())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	if (machine_is_neo1973_gta02()) {

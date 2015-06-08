@@ -245,6 +245,13 @@
  */
 #include <linux/netdevice.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "i2400m.h"
 
 
@@ -561,7 +568,15 @@ void i2400m_tx_new(struct i2400m *i2400m)
 {
 	struct device *dev = i2400m_dev(i2400m);
 	struct i2400m_msg_hdr *tx_msg;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool try_head = false;
+=======
 	bool try_head = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bool try_head = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(i2400m->tx_msg != NULL);
 	/*
 	 * In certain situations, TX queue might have enough space to
@@ -579,7 +594,15 @@ try_head:
 	else if (tx_msg == TAIL_FULL) {
 		i2400m_tx_skip_tail(i2400m);
 		d_printf(2, dev, "new TX message: tail full, trying head\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		try_head = true;
+=======
 		try_head = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		try_head = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto try_head;
 	}
 	memset(tx_msg, 0, I2400M_TX_PLD_SIZE);
@@ -719,7 +742,15 @@ int i2400m_tx(struct i2400m *i2400m, const void *buf, size_t buf_len,
 	unsigned long flags;
 	size_t padded_len;
 	void *ptr;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool try_head = false;
+=======
 	bool try_head = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	bool try_head = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned is_singleton = pl_type == I2400M_PT_RESET_WARM
 		|| pl_type == I2400M_PT_RESET_COLD;
 
@@ -770,7 +801,15 @@ try_new:
 		d_printf(2, dev, "pl append: tail full\n");
 		i2400m_tx_close(i2400m);
 		i2400m_tx_skip_tail(i2400m);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		try_head = true;
+=======
 		try_head = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		try_head = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto try_new;
 	} else if (ptr == NULL) {	/* All full */
 		result = -ENOSPC;

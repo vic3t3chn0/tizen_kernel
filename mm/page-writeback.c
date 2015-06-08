@@ -15,8 +15,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spinlock.h>
 #include <linux/fs.h>
 #include <linux/mm.h>
@@ -37,6 +41,9 @@
 #include <linux/cpu.h>
 #include <linux/syscalls.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/buffer_head.h> /* __set_page_dirty_buffers */
 #include <linux/pagevec.h>
 #include <linux/mm_inline.h>
@@ -67,6 +74,8 @@
  * will look to see if it needs to force writeback or throttling.
  */
 static long ratelimit_pages = 32;
+<<<<<<< HEAD
+=======
 =======
 #include <linux/buffer_head.h>
 #include <linux/pagevec.h>
@@ -92,6 +101,7 @@ static inline long sync_writeback_pages(unsigned long dirtied)
 	return dirtied + dirtied / 2;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The following parameters are exported via /proc/sys/vm */
 
@@ -132,7 +142,12 @@ unsigned int dirty_writeback_interval = 5 * 100; /* centiseconds */
 EXPORT_SYMBOL_GPL(dirty_writeback_interval);
 
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(dirty_writeback_interval);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The longest time for which data is allowed to remain dirty
  */
@@ -156,7 +171,11 @@ EXPORT_SYMBOL(laptop_mode);
 <<<<<<< HEAD
 unsigned long global_dirty_limit;
 =======
+<<<<<<< HEAD
+unsigned long global_dirty_limit;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Scale the writeback cache size proportional to the relative writeout speeds.
@@ -176,6 +195,9 @@ unsigned long global_dirty_limit;
  */
 static struct prop_descriptor vm_completions;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Work out the current dirty-memory clamping and background writeout
@@ -376,9 +398,12 @@ bool zone_dirty_ok(struct zone *zone)
 	       zone_page_state(zone, NR_UNSTABLE_NFS) +
 	       zone_page_state(zone, NR_WRITEBACK) <= limit;
 }
+<<<<<<< HEAD
+=======
 =======
 static struct prop_descriptor vm_dirties;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * couple the period to the dirty_ratio:
@@ -395,8 +420,12 @@ static int calc_period_shift(void)
 <<<<<<< HEAD
 		dirty_total = (vm_dirty_ratio * global_dirtyable_memory()) /
 =======
+<<<<<<< HEAD
+		dirty_total = (vm_dirty_ratio * global_dirtyable_memory()) /
+=======
 		dirty_total = (vm_dirty_ratio * determine_dirtyable_memory()) /
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				100;
 	return 2 + ilog2(dirty_total - 1);
 }
@@ -412,8 +441,13 @@ static void update_completion_period(void)
 
 	writeback_set_ratelimit();
 =======
+<<<<<<< HEAD
+
+	writeback_set_ratelimit();
+=======
 	prop_change_shift(&vm_dirties, shift);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int dirty_background_ratio_handler(struct ctl_table *table, int write,
@@ -457,8 +491,11 @@ int dirty_ratio_handler(struct ctl_table *table, int write,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int dirty_bytes_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,
 		loff_t *ppos)
@@ -483,7 +520,11 @@ static inline void __bdi_writeout_inc(struct backing_dev_info *bdi)
 <<<<<<< HEAD
 	__inc_bdi_stat(bdi, BDI_WRITTEN);
 =======
+<<<<<<< HEAD
+	__inc_bdi_stat(bdi, BDI_WRITTEN);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__prop_inc_percpu_max(&vm_completions, &bdi->completions,
 			      bdi->max_prop_frac);
 }
@@ -500,18 +541,24 @@ EXPORT_SYMBOL_GPL(bdi_writeout_inc);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void task_dirty_inc(struct task_struct *tsk)
 {
 	prop_inc_single(&vm_dirties, &tsk->dirties);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Obtain an accurate fraction of the BDI's portion.
  */
 static void bdi_writeout_fraction(struct backing_dev_info *bdi,
 		long *numerator, long *denominator)
 {
+<<<<<<< HEAD
+	prop_fraction_percpu(&vm_completions, &bdi->completions,
+=======
 <<<<<<< HEAD
 	prop_fraction_percpu(&vm_completions, &bdi->completions,
 =======
@@ -529,10 +576,16 @@ static inline void task_dirties_fraction(struct task_struct *tsk,
 {
 	prop_fraction_single(&vm_dirties, &tsk->dirties,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				numerator, denominator);
 }
 
 /*
+<<<<<<< HEAD
+ * bdi_min_ratio keeps the sum of the minimum dirty shares of all
+ * registered backing devices, which, for obvious reasons, can not
+ * exceed 100%.
+=======
 <<<<<<< HEAD
  * bdi_min_ratio keeps the sum of the minimum dirty shares of all
  * registered backing devices, which, for obvious reasons, can not
@@ -570,6 +623,7 @@ static unsigned long task_dirty_limit(struct task_struct *tsk,
 /*
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static unsigned int bdi_min_ratio;
 
@@ -615,6 +669,9 @@ int bdi_set_max_ratio(struct backing_dev_info *bdi, unsigned max_ratio)
 EXPORT_SYMBOL(bdi_set_max_ratio);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long dirty_freerun_ceiling(unsigned long thresh,
 					   unsigned long bg_thresh)
 {
@@ -1281,6 +1338,8 @@ static long bdi_min_pause(struct backing_dev_info *bdi,
 	 * The minimal pause time will normally be half the target pause time.
 	 */
 	return pages >= DIRTY_POLL_THRESH ? 1 + t / 2 : t;
+<<<<<<< HEAD
+=======
 =======
 /*
  * Work out the current dirty-memory clamping and background writeout
@@ -1413,6 +1472,7 @@ unsigned long bdi_dirty_limit(struct backing_dev_info *bdi, unsigned long dirty)
 
 	return bdi_dirty;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1421,13 +1481,20 @@ unsigned long bdi_dirty_limit(struct backing_dev_info *bdi, unsigned long dirty)
 <<<<<<< HEAD
  * the caller to wait once crossing the (background_thresh + dirty_thresh) / 2.
 =======
+<<<<<<< HEAD
+ * the caller to wait once crossing the (background_thresh + dirty_thresh) / 2.
+=======
  * the caller to perform writeback if the system is over `vm_dirty_ratio'.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * If we're over `background_thresh' then the writeback threads are woken to
  * perform some writeout.
  */
 static void balance_dirty_pages(struct address_space *mapping,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				unsigned long pages_dirtied)
 {
 	unsigned long nr_reclaimable;	/* = file_dirty + unstable_nfs */
@@ -1462,6 +1529,8 @@ static void balance_dirty_pages(struct address_space *mapping,
 		nr_reclaimable = global_page_state(NR_FILE_DIRTY) +
 					global_page_state(NR_UNSTABLE_NFS);
 		nr_dirty = nr_reclaimable + global_page_state(NR_WRITEBACK);
+<<<<<<< HEAD
+=======
 =======
 				unsigned long write_chunk)
 {
@@ -1487,6 +1556,7 @@ static void balance_dirty_pages(struct address_space *mapping,
 					global_page_state(NR_UNSTABLE_NFS);
 		nr_writeback = global_page_state(NR_WRITEBACK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		global_dirty_limits(&background_thresh, &dirty_thresh);
 
@@ -1496,6 +1566,9 @@ static void balance_dirty_pages(struct address_space *mapping,
 		 * when the bdi limits are ramping up.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		freerun = dirty_freerun_ceiling(dirty_thresh,
 						background_thresh);
 		if (nr_dirty <= freerun) {
@@ -1523,6 +1596,8 @@ static void balance_dirty_pages(struct address_space *mapping,
 		 *   at some rate <= (write_bw / 2) for bringing down bdi_dirty.
 		 */
 		bdi_thresh = bdi_dirty_limit(bdi, dirty_thresh);
+<<<<<<< HEAD
+=======
 =======
 		if (nr_reclaimable + nr_writeback <=
 				(background_thresh + dirty_thresh) / 2)
@@ -1531,6 +1606,7 @@ static void balance_dirty_pages(struct address_space *mapping,
 		bdi_thresh = bdi_dirty_limit(bdi, dirty_thresh);
 		bdi_thresh = task_dirty_limit(current, bdi_thresh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * In order to avoid the stacked BDI deadlock we need
@@ -1543,6 +1619,9 @@ static void balance_dirty_pages(struct address_space *mapping,
 		 * deltas.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (bdi_thresh < 2 * bdi_stat_error(bdi)) {
 			bdi_reclaimable = bdi_stat_sum(bdi, BDI_RECLAIMABLE);
 			bdi_dirty = bdi_reclaimable +
@@ -1660,6 +1739,8 @@ pause:
 
 		if (fatal_signal_pending(current))
 			break;
+<<<<<<< HEAD
+=======
 =======
 		if (bdi_thresh < 2*bdi_stat_error(bdi)) {
 			bdi_nr_reclaimable = bdi_stat_sum(bdi, BDI_RECLAIMABLE);
@@ -1714,6 +1795,7 @@ pause:
 		if (pause > HZ / 10)
 			pause = HZ / 10;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!dirty_exceeded && bdi->dirty_exceeded)
@@ -1731,14 +1813,20 @@ pause:
 	 * background_thresh, to keep the amount of dirty memory low.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (laptop_mode)
 		return;
 
 	if (nr_reclaimable > background_thresh)
+<<<<<<< HEAD
+=======
 =======
 	if ((laptop_mode && pages_written) ||
 	    (!laptop_mode && (nr_reclaimable > background_thresh)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bdi_start_background_writeback(bdi);
 }
 
@@ -1753,6 +1841,9 @@ void set_page_dirty_balance(struct page *page, int page_mkwrite)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_PER_CPU(int, bdp_ratelimits);
 
 /*
@@ -1770,9 +1861,12 @@ static DEFINE_PER_CPU(int, bdp_ratelimits);
  * count and eventually get throttled.
  */
 DEFINE_PER_CPU(int, dirty_throttle_leaks) = 0;
+<<<<<<< HEAD
+=======
 =======
 static DEFINE_PER_CPU(unsigned long, bdp_ratelimits) = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * balance_dirty_pages_ratelimited_nr - balance dirty memory state
@@ -1792,6 +1886,9 @@ void balance_dirty_pages_ratelimited_nr(struct address_space *mapping,
 					unsigned long nr_pages_dirtied)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct backing_dev_info *bdi = mapping->backing_dev_info;
 	int ratelimit;
 	int *p;
@@ -1832,6 +1929,8 @@ void balance_dirty_pages_ratelimited_nr(struct address_space *mapping,
 
 	if (unlikely(current->nr_dirtied >= ratelimit))
 		balance_dirty_pages(mapping, current->nr_dirtied);
+<<<<<<< HEAD
+=======
 =======
 	unsigned long ratelimit;
 	unsigned long *p;
@@ -1856,6 +1955,7 @@ void balance_dirty_pages_ratelimited_nr(struct address_space *mapping,
 	}
 	preempt_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(balance_dirty_pages_ratelimited_nr);
 
@@ -1869,7 +1969,11 @@ void throttle_vm_writeout(gfp_t gfp_mask)
 <<<<<<< HEAD
 		dirty_thresh = hard_dirty_limit(dirty_thresh);
 =======
+<<<<<<< HEAD
+		dirty_thresh = hard_dirty_limit(dirty_thresh);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
                 /*
                  * Boost the allowable dirty threshold a bit for page
@@ -1919,8 +2023,13 @@ void laptop_mode_timer_fn(unsigned long data)
 		bdi_start_writeback(&q->backing_dev_info, nr_pages,
 					WB_REASON_LAPTOP_TIMER);
 =======
+<<<<<<< HEAD
+		bdi_start_writeback(&q->backing_dev_info, nr_pages,
+					WB_REASON_LAPTOP_TIMER);
+=======
 		bdi_start_writeback(&q->backing_dev_info, nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1962,6 +2071,9 @@ void laptop_sync_completion(void)
 <<<<<<< HEAD
  * thresholds.
 =======
+<<<<<<< HEAD
+ * thresholds.
+=======
  * thresholds before writeback cuts in.
  *
  * But the limit should not be set too high.  Because it also controls the
@@ -1970,17 +2082,23 @@ void laptop_sync_completion(void)
  * time.  So limit it to four megabytes - the balance_dirty_pages() caller
  * will write six megabyte chunks, max.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 void writeback_set_ratelimit(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long background_thresh;
 	unsigned long dirty_thresh;
 	global_dirty_limits(&background_thresh, &dirty_thresh);
 	ratelimit_pages = dirty_thresh / (num_online_cpus() * 32);
 	if (ratelimit_pages < 16)
 		ratelimit_pages = 16;
+<<<<<<< HEAD
+=======
 =======
 	ratelimit_pages = vm_total_pages / (num_online_cpus() * 32);
 	if (ratelimit_pages < 16)
@@ -1988,6 +2106,7 @@ void writeback_set_ratelimit(void)
 	if (ratelimit_pages * PAGE_CACHE_SIZE > 4096 * 1024)
 		ratelimit_pages = (4096 * 1024) / PAGE_CACHE_SIZE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __cpuinit
@@ -2031,8 +2150,11 @@ void __init page_writeback_init(void)
 	prop_descriptor_init(&vm_completions, shift);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	prop_descriptor_init(&vm_dirties, shift);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -2361,14 +2483,20 @@ void account_page_dirtied(struct page *page, struct address_space *mapping)
 		__inc_zone_page_state(page, NR_DIRTIED);
 		__inc_bdi_stat(mapping->backing_dev_info, BDI_RECLAIMABLE);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__inc_bdi_stat(mapping->backing_dev_info, BDI_DIRTIED);
 		task_io_account_write(PAGE_CACHE_SIZE);
 		current->nr_dirtied++;
 		this_cpu_inc(bdp_ratelimits);
+<<<<<<< HEAD
+=======
 =======
 		task_dirty_inc(current);
 		task_io_account_write(PAGE_CACHE_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 EXPORT_SYMBOL(account_page_dirtied);
@@ -2383,8 +2511,11 @@ void account_page_writeback(struct page *page)
 	inc_zone_page_state(page, NR_WRITEBACK);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	inc_zone_page_state(page, NR_WRITTEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(account_page_writeback);
 
@@ -2434,6 +2565,9 @@ EXPORT_SYMBOL(__set_page_dirty_nobuffers);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Call this whenever redirtying a page, to de-account the dirty counters
  * (NR_DIRTIED, BDI_DIRTIED, tsk->nr_dirtied), so that they match the written
  * counters (NR_WRITTEN, BDI_WRITTEN) in long term. The mismatches will lead to
@@ -2452,8 +2586,11 @@ void account_page_redirty(struct page *page)
 EXPORT_SYMBOL(account_page_redirty);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * When a writepage implementation decides that it doesn't want to write this
  * page for some reason, it should redirty the locked page via
  * redirty_page_for_writepage() and it should then unlock the page and return 0
@@ -2464,7 +2601,11 @@ int redirty_page_for_writepage(struct writeback_control *wbc, struct page *page)
 <<<<<<< HEAD
 	account_page_redirty(page);
 =======
+<<<<<<< HEAD
+	account_page_redirty(page);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return __set_page_dirty_nobuffers(page);
 }
 EXPORT_SYMBOL(redirty_page_for_writepage);
@@ -2627,14 +2768,20 @@ int test_clear_page_writeback(struct page *page)
 		ret = TestClearPageWriteback(page);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		dec_zone_page_state(page, NR_WRITEBACK);
 		inc_zone_page_state(page, NR_WRITTEN);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (ret)
 		dec_zone_page_state(page, NR_WRITEBACK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -2683,11 +2830,15 @@ int mapping_tagged(struct address_space *mapping, int tag)
 <<<<<<< HEAD
 	return radix_tree_tagged(&mapping->page_tree, tag);
 =======
+<<<<<<< HEAD
+	return radix_tree_tagged(&mapping->page_tree, tag);
+=======
 	int ret;
 	rcu_read_lock();
 	ret = radix_tree_tagged(&mapping->page_tree, tag);
 	rcu_read_unlock();
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(mapping_tagged);

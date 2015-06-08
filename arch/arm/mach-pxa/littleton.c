@@ -128,9 +128,14 @@ static struct resource smc91x_resources[] = {
 		.start	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO90)),
 		.end	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO90)),
 =======
+<<<<<<< HEAD
+		.start	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO90)),
+		.end	= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO90)),
+=======
 		.start	= IRQ_GPIO(mfp_to_gpio(MFP_PIN_GPIO90)),
 		.end	= IRQ_GPIO(mfp_to_gpio(MFP_PIN_GPIO90)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_LOWEDGE,
 	}
 };
@@ -335,9 +340,15 @@ static struct pxa3xx_nand_platform_data littleton_nand_info = {
 	.parts[0]	= littleton_nand_partitions,
 	.nr_parts[0]	= ARRAY_SIZE(littleton_nand_partitions),
 =======
+<<<<<<< HEAD
+	.num_cs		= 1,
+	.parts[0]	= littleton_nand_partitions,
+	.nr_parts[0]	= ARRAY_SIZE(littleton_nand_partitions),
+=======
 	.parts		= littleton_nand_partitions,
 	.nr_parts	= ARRAY_SIZE(littleton_nand_partitions),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init littleton_init_nand(void)
@@ -409,8 +420,12 @@ static struct i2c_board_info littleton_i2c_info[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO18)),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(mfp_to_gpio(MFP_PIN_GPIO18)),
+=======
 		.irq		= gpio_to_irq(mfp_to_gpio(MFP_PIN_GPIO18)),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	[1] = {
 		.type		= "max7320",
@@ -453,6 +468,9 @@ static void __init littleton_init(void)
 
 MACHINE_START(LITTLETON, "Marvell Form Factor Development Platform (aka Littleton)")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= pxa3xx_map_io,
 	.nr_irqs	= LITTLETON_NR_IRQS,
@@ -461,6 +479,8 @@ MACHINE_START(LITTLETON, "Marvell Form Factor Development Platform (aka Littleto
 	.timer		= &pxa_timer,
 	.init_machine	= littleton_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= pxa3xx_map_io,
@@ -469,4 +489,5 @@ MACHINE_START(LITTLETON, "Marvell Form Factor Development Platform (aka Littleto
 	.timer		= &pxa_timer,
 	.init_machine	= littleton_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

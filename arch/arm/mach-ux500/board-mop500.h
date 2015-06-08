@@ -8,6 +8,9 @@
 #define __BOARD_MOP500_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Snowball specific GPIO assignments, this board has no GPIO expander */
 #define SNOWBALL_ACCEL_INT1_GPIO	163
 #define SNOWBALL_ACCEL_INT2_GPIO	164
@@ -54,6 +57,8 @@
 #define GPIO_BU21013_CS			MOP500_EGPIO(13)
 #define MOP500_DISP2_RST_GPIO		MOP500_EGPIO(14)
 #define MOP500_DISP1_RST_GPIO		MOP500_EGPIO(15)
+<<<<<<< HEAD
+=======
 =======
 /* HREFv60-specific GPIO assignments, this board has no GPIO expander */
 #define HREFV60_TOUCH_RST_GPIO		143
@@ -74,11 +79,15 @@
 #define GPIO_PROX_SENSOR		MOP500_EGPIO(7)
 #define GPIO_BU21013_CS			MOP500_EGPIO(13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO_SDMMC_EN			MOP500_EGPIO(17)
 #define GPIO_SDMMC_1V8_3V_SEL		MOP500_EGPIO(18)
 #define MOP500_EGPIO_END		MOP500_EGPIO(24)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * GPIOs on the AB8500 mixed-signals circuit
  * Notice that we subtract 1 from the number passed into the macro, this is
@@ -106,6 +115,8 @@ void __init mop500_stuib_init(void);
 void __init mop500_pins_init(void);
 void __init hrefv60_pins_init(void);
 void __init snowball_pins_init(void);
+<<<<<<< HEAD
+=======
 =======
 /* GPIOs on the AB8500 mixed-signals circuit */
 #define MOP500_AB8500_GPIO(x)		(MOP500_EGPIO_END + (x))
@@ -118,6 +129,7 @@ void __init mop500_u8500uib_init(void);
 void __init mop500_stuib_init(void);
 void __init mop500_pins_init(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void mop500_uib_i2c_add(int busnum, struct i2c_board_info *info,
 		unsigned n);

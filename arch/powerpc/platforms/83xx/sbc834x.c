@@ -30,9 +30,13 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/system.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/io.h>
 #include <asm/machdep.h>
@@ -53,6 +57,9 @@
 static void __init sbc834x_setup_arch(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ppc_md.progress)
 		ppc_md.progress("sbc834x_setup_arch()", 0);
 
@@ -60,6 +67,8 @@ static void __init sbc834x_setup_arch(void)
 }
 
 machine_device_initcall(sbc834x, mpc83xx_declare_of_platform_devices);
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_PCI
 	struct device_node *np;
@@ -108,6 +117,7 @@ static int __init sbc834x_declare_of_platform_devices(void)
 }
 machine_device_initcall(sbc834x, sbc834x_declare_of_platform_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called very early, MMU is off, device-tree isn't unflattened
@@ -117,6 +127,9 @@ static int __init sbc834x_probe(void)
 	unsigned long root = of_get_flat_dt_root();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return of_flat_dt_is_compatible(root, "SBC834xE");
 }
 
@@ -125,6 +138,8 @@ define_machine(sbc834x) {
 	.probe			= sbc834x_probe,
 	.setup_arch		= sbc834x_setup_arch,
 	.init_IRQ		= mpc83xx_ipic_init_IRQ,
+<<<<<<< HEAD
+=======
 =======
 	return of_flat_dt_is_compatible(root, "SBC834x");
 }
@@ -135,6 +150,7 @@ define_machine(sbc834x) {
 	.setup_arch		= sbc834x_setup_arch,
 	.init_IRQ		= sbc834x_init_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_irq		= ipic_get_irq,
 	.restart		= mpc83xx_restart,
 	.time_init		= mpc83xx_time_init,

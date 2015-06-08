@@ -18,19 +18,28 @@ unsigned long __generic_copy_from_user(void *to, const void __user *from,
 <<<<<<< HEAD
 		"1:	"MOVES".l	(%1)+,%3\n"
 =======
+<<<<<<< HEAD
+		"1:	"MOVES".l	(%1)+,%3\n"
+=======
 		"1:	moves.l	(%1)+,%3\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"	move.l	%3,(%2)+\n"
 		"	subq.l	#1,%0\n"
 		"	jne	1b\n"
 		"2:	btst	#1,%5\n"
 		"	jeq	4f\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"3:	"MOVES".w	(%1)+,%3\n"
 		"	move.w	%3,(%2)+\n"
 		"4:	btst	#0,%5\n"
 		"	jeq	6f\n"
 		"5:	"MOVES".b	(%1)+,%3\n"
+<<<<<<< HEAD
+=======
 =======
 		"3:	moves.w	(%1)+,%3\n"
 		"	move.w	%3,(%2)+\n"
@@ -38,6 +47,7 @@ unsigned long __generic_copy_from_user(void *to, const void __user *from,
 		"	jeq	6f\n"
 		"5:	moves.b	(%1)+,%3\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"	move.b  %3,(%2)+\n"
 		"6:\n"
 		"	.section .fixup,\"ax\"\n"
@@ -83,19 +93,28 @@ unsigned long __generic_copy_to_user(void __user *to, const void *from,
 <<<<<<< HEAD
 		"2:	"MOVES".l	%3,(%2)+\n"
 =======
+<<<<<<< HEAD
+		"2:	"MOVES".l	%3,(%2)+\n"
+=======
 		"2:	moves.l	%3,(%2)+\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"3:	subq.l	#1,%0\n"
 		"	jne	1b\n"
 		"4:	btst	#1,%5\n"
 		"	jeq	6f\n"
 		"	move.w	(%1)+,%3\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"5:	"MOVES".w	%3,(%2)+\n"
 		"6:	btst	#0,%5\n"
 		"	jeq	8f\n"
 		"	move.b	(%1)+,%3\n"
 		"7:	"MOVES".b  %3,(%2)+\n"
+<<<<<<< HEAD
+=======
 =======
 		"5:	moves.w	%3,(%2)+\n"
 		"6:	btst	#0,%5\n"
@@ -103,6 +122,7 @@ unsigned long __generic_copy_to_user(void __user *to, const void *from,
 		"	move.b	(%1)+,%3\n"
 		"7:	moves.b  %3,(%2)+\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"8:\n"
 		"	.section .fixup,\"ax\"\n"
 		"	.even\n"
@@ -142,8 +162,12 @@ long strncpy_from_user(char *dst, const char __user *src, long count)
 <<<<<<< HEAD
 		"1:	"MOVES".b	(%2)+,%4\n"
 =======
+<<<<<<< HEAD
+		"1:	"MOVES".b	(%2)+,%4\n"
+=======
 		"1:	moves.b	(%2)+,%4\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"	move.b	%4,(%1)+\n"
 		"	jeq	2f\n"
 		"	subq.l	#1,%3\n"
@@ -183,8 +207,12 @@ long strnlen_user(const char __user *src, long n)
 <<<<<<< HEAD
 		"2:	"MOVES".b	(%0)+,%2\n"
 =======
+<<<<<<< HEAD
+		"2:	"MOVES".b	(%0)+,%2\n"
+=======
 		"2:	moves.b	(%0)+,%2\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"	tst.b	%2\n"
 		"	jne	1b\n"
 		"	jra	4f\n"
@@ -223,23 +251,33 @@ unsigned long __clear_user(void __user *to, unsigned long n)
 <<<<<<< HEAD
 		"1:	"MOVES".l	%2,(%1)+\n"
 =======
+<<<<<<< HEAD
+		"1:	"MOVES".l	%2,(%1)+\n"
+=======
 		"1:	moves.l	%2,(%1)+\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"2:	subq.l	#1,%0\n"
 		"	jne	1b\n"
 		"3:	btst	#1,%4\n"
 		"	jeq	5f\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"4:	"MOVES".w	%2,(%1)+\n"
 		"5:	btst	#0,%4\n"
 		"	jeq	7f\n"
 		"6:	"MOVES".b	%2,(%1)\n"
+<<<<<<< HEAD
+=======
 =======
 		"4:	moves.w	%2,(%1)+\n"
 		"5:	btst	#0,%4\n"
 		"	jeq	7f\n"
 		"6:	moves.b	%2,(%1)\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"7:\n"
 		"	.section .fixup,\"ax\"\n"
 		"	.even\n"

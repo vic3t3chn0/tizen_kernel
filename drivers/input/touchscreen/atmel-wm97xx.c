@@ -164,7 +164,15 @@ static irqreturn_t atmel_wm97xx_channel_b_interrupt(int irq, void *dev_id)
 
 		data = ac97c_readl(atmel_wm97xx, CBRHR);
 		value = data & 0x0fff;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		source = data & WM97XX_ADCSEL_MASK;
+=======
 		source = data & WM97XX_ADCSRC_MASK;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		source = data & WM97XX_ADCSRC_MASK;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pen_down = (data & WM97XX_PEN_DOWN) >> 8;
 
 		if (source == WM97XX_ADCSEL_X)
@@ -392,9 +400,22 @@ static int __exit atmel_wm97xx_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+static int atmel_wm97xx_suspend(struct *dev)
+{
+	struct platform_device *pdev = to_platform_device(dev);
+=======
 #ifdef CONFIG_PM
 static int atmel_wm97xx_suspend(struct platform_device *pdev, pm_message_t msg)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_PM
+static int atmel_wm97xx_suspend(struct platform_device *pdev, pm_message_t msg)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct atmel_wm97xx *atmel_wm97xx = platform_get_drvdata(pdev);
 
 	ac97c_writel(atmel_wm97xx, IDR, AC97C_INT_CBEVT);
@@ -404,8 +425,19 @@ static int atmel_wm97xx_suspend(struct platform_device *pdev, pm_message_t msg)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int atmel_wm97xx_resume(struct device *dev)
+{
+	struct platform_device *pdev = to_platform_device(dev);
+=======
 static int atmel_wm97xx_resume(struct platform_device *pdev)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int atmel_wm97xx_resume(struct platform_device *pdev)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct atmel_wm97xx *atmel_wm97xx = platform_get_drvdata(pdev);
 	struct wm97xx *wm = atmel_wm97xx->wm;
 
@@ -416,6 +448,23 @@ static int atmel_wm97xx_resume(struct platform_device *pdev)
 
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+
+static SIMPLE_DEV_PM_OPS(atmel_wm97xx_pm_ops,
+			 atmel_wm97xx_suspend, atmel_wm97xx_resume);
+
+static struct platform_driver atmel_wm97xx_driver = {
+	.remove		= __exit_p(atmel_wm97xx_remove),
+	.driver		= {
+		.name	= "wm97xx-touch",
+		.owner	= THIS_MODULE,
+		.pm	= &atmel_wm97xx_pm_ops,
+	},
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define atmel_wm97xx_suspend	NULL
 #define atmel_wm97xx_resume	NULL
@@ -428,6 +477,10 @@ static struct platform_driver atmel_wm97xx_driver = {
 	},
 	.suspend	= atmel_wm97xx_suspend,
 	.resume		= atmel_wm97xx_resume,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init atmel_wm97xx_init(void)
@@ -442,6 +495,14 @@ static void __exit atmel_wm97xx_exit(void)
 }
 module_exit(atmel_wm97xx_exit);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_AUTHOR("Hans-Christian Egtvedt <egtvedt@samfundet.no>");
+=======
 MODULE_AUTHOR("Hans-Christian Egtvedt <hans-christian.egtvedt@atmel.com>");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+MODULE_AUTHOR("Hans-Christian Egtvedt <hans-christian.egtvedt@atmel.com>");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_DESCRIPTION("wm97xx continuous touch driver for Atmel AT91 and AVR32");
 MODULE_LICENSE("GPL");

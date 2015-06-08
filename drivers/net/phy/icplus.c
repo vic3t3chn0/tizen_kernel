@@ -30,10 +30,31 @@
 #include <asm/irq.h>
 #include <asm/uaccess.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_DESCRIPTION("ICPlus IP175C/IP101A/IP101G/IC1001 PHY drivers");
+MODULE_AUTHOR("Michael Barkowski");
+MODULE_LICENSE("GPL");
+
+/* IP101A/G - IP1001 */
+#define IP10XX_SPEC_CTRL_STATUS		16	/* Spec. Control Register */
+#define IP1001_SPEC_CTRL_STATUS_2	20	/* IP1001 Spec. Control Reg 2 */
+#define IP1001_PHASE_SEL_MASK		3	/* IP1001 RX/TXPHASE_SEL */
+#define IP1001_APS_ON			11	/* IP1001 APS Mode  bit */
+#define IP101A_G_APS_ON			2	/* IP101A/G APS Mode bit */
+#define IP101A_G_IRQ_CONF_STATUS	0x11	/* Conf Info IRQ & Status Reg */
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_DESCRIPTION("ICPlus IP175C/IC1001 PHY drivers");
 MODULE_AUTHOR("Michael Barkowski");
 MODULE_LICENSE("GPL");
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ip175c_config_init(struct phy_device *phydev)
 {
 	int err, i;
@@ -42,36 +63,86 @@ static int ip175c_config_init(struct phy_device *phydev)
 	if (full_reset_performed == 0) {
 
 		/* master reset */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mdiobus_write(phydev->bus, 30, 0, 0x175c);
+=======
 		err = phydev->bus->write(phydev->bus, 30, 0, 0x175c);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = phydev->bus->write(phydev->bus, 30, 0, 0x175c);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 
 		/* ensure no bus delays overlap reset period */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mdiobus_read(phydev->bus, 30, 0);
+=======
 		err = phydev->bus->read(phydev->bus, 30, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = phydev->bus->read(phydev->bus, 30, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* data sheet specifies reset period is 2 msec */
 		mdelay(2);
 
 		/* enable IP175C mode */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mdiobus_write(phydev->bus, 29, 31, 0x175c);
+=======
 		err = phydev->bus->write(phydev->bus, 29, 31, 0x175c);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = phydev->bus->write(phydev->bus, 29, 31, 0x175c);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 
 		/* Set MII0 speed and duplex (in PHY mode) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = mdiobus_write(phydev->bus, 29, 22, 0x420);
+=======
 		err = phydev->bus->write(phydev->bus, 29, 22, 0x420);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err = phydev->bus->write(phydev->bus, 29, 22, 0x420);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 
 		/* reset switch ports */
 		for (i = 0; i < 5; i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			err = mdiobus_write(phydev->bus, i,
+					    MII_BMCR, BMCR_RESET);
+=======
 			err = phydev->bus->write(phydev->bus, i,
 						 MII_BMCR, BMCR_RESET);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err = phydev->bus->write(phydev->bus, i,
+						 MII_BMCR, BMCR_RESET);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (err < 0)
 				return err;
 		}
 
 		for (i = 0; i < 5; i++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			err = mdiobus_read(phydev->bus, i, MII_BMCR);
+=======
 			err = phydev->bus->read(phydev->bus, i, MII_BMCR);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			err = phydev->bus->read(phydev->bus, i, MII_BMCR);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		mdelay(2);
 
@@ -89,6 +160,79 @@ static int ip175c_config_init(struct phy_device *phydev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int ip1xx_reset(struct phy_device *phydev)
+{
+	int bmcr;
+
+	/* Software Reset PHY */
+	bmcr = phy_read(phydev, MII_BMCR);
+	if (bmcr < 0)
+		return bmcr;
+	bmcr |= BMCR_RESET;
+	bmcr = phy_write(phydev, MII_BMCR, bmcr);
+	if (bmcr < 0)
+		return bmcr;
+
+	do {
+		bmcr = phy_read(phydev, MII_BMCR);
+		if (bmcr < 0)
+			return bmcr;
+	} while (bmcr & BMCR_RESET);
+
+	return 0;
+}
+
+static int ip1001_config_init(struct phy_device *phydev)
+{
+	int c;
+
+	c = ip1xx_reset(phydev);
+	if (c < 0)
+		return c;
+
+	/* Enable Auto Power Saving mode */
+	c = phy_read(phydev, IP1001_SPEC_CTRL_STATUS_2);
+	if (c < 0)
+		return c;
+	c |= IP1001_APS_ON;
+	c = phy_write(phydev, IP1001_SPEC_CTRL_STATUS_2, c);
+	if (c < 0)
+		return c;
+
+	if (phydev->interface == PHY_INTERFACE_MODE_RGMII) {
+		/* Additional delay (2ns) used to adjust RX clock phase
+		 * at RGMII interface */
+		c = phy_read(phydev, IP10XX_SPEC_CTRL_STATUS);
+		if (c < 0)
+			return c;
+
+		c |= IP1001_PHASE_SEL_MASK;
+		c = phy_write(phydev, IP10XX_SPEC_CTRL_STATUS, c);
+		if (c < 0)
+			return c;
+	}
+
+	return 0;
+}
+
+static int ip101a_g_config_init(struct phy_device *phydev)
+{
+	int c;
+
+	c = ip1xx_reset(phydev);
+	if (c < 0)
+		return c;
+
+	/* Enable Auto Power Saving mode */
+	c = phy_read(phydev, IP10XX_SPEC_CTRL_STATUS);
+	c |= IP101A_G_APS_ON;
+
+	return phy_write(phydev, IP10XX_SPEC_CTRL_STATUS, c);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ip1001_config_init(struct phy_device *phydev)
 {
 	int err, value;
@@ -114,6 +258,10 @@ static int ip1001_config_init(struct phy_device *phydev)
 		return err;
 
 	return err;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ip175c_read_status(struct phy_device *phydev)
@@ -135,6 +283,21 @@ static int ip175c_config_aneg(struct phy_device *phydev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int ip101a_g_ack_interrupt(struct phy_device *phydev)
+{
+	int err = phy_read(phydev, IP101A_G_IRQ_CONF_STATUS);
+	if (err < 0)
+		return err;
+
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct phy_driver ip175c_driver = {
 	.phy_id		= 0x02430d80,
 	.name		= "ICPlus IP175C",
@@ -162,6 +325,28 @@ static struct phy_driver ip1001_driver = {
 	.driver		= { .owner = THIS_MODULE,},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct phy_driver ip101a_g_driver = {
+	.phy_id		= 0x02430c54,
+	.name		= "ICPlus IP101A/G",
+	.phy_id_mask	= 0x0ffffff0,
+	.features	= PHY_BASIC_FEATURES | SUPPORTED_Pause |
+			  SUPPORTED_Asym_Pause,
+	.flags		= PHY_HAS_INTERRUPT,
+	.ack_interrupt	= ip101a_g_ack_interrupt,
+	.config_init	= &ip101a_g_config_init,
+	.config_aneg	= &genphy_config_aneg,
+	.read_status	= &genphy_read_status,
+	.suspend	= genphy_suspend,
+	.resume		= genphy_resume,
+	.driver		= { .owner = THIS_MODULE,},
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init icplus_init(void)
 {
 	int ret = 0;
@@ -170,12 +355,29 @@ static int __init icplus_init(void)
 	if (ret < 0)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = phy_driver_register(&ip101a_g_driver);
+	if (ret < 0)
+		return -ENODEV;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return phy_driver_register(&ip175c_driver);
 }
 
 static void __exit icplus_exit(void)
 {
 	phy_driver_unregister(&ip1001_driver);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	phy_driver_unregister(&ip101a_g_driver);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phy_driver_unregister(&ip175c_driver);
 }
 
@@ -185,6 +387,13 @@ module_exit(icplus_exit);
 static struct mdio_device_id __maybe_unused icplus_tbl[] = {
 	{ 0x02430d80, 0x0ffffff0 },
 	{ 0x02430d90, 0x0ffffff0 },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ 0x02430c54, 0x0ffffff0 },
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ }
 };
 

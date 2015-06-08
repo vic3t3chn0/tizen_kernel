@@ -360,9 +360,21 @@ static int vt6420_prereset(struct ata_link *link, unsigned long deadline)
 
 	online = (sstatus & 0xf) == 0x3;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ata_port_info(ap,
+		      "SATA link %s 1.5 Gbps (SStatus %X SControl %X)\n",
+		      online ? "up" : "down", sstatus, scontrol);
+=======
 	ata_port_printk(ap, KERN_INFO,
 			"SATA link %s 1.5 Gbps (SStatus %X SControl %X)\n",
 			online ? "up" : "down", sstatus, scontrol);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ata_port_printk(ap, KERN_INFO,
+			"SATA link %s 1.5 Gbps (SStatus %X SControl %X)\n",
+			online ? "up" : "down", sstatus, scontrol);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* SStatus is read one more time */
 	svia_scr_read(link, SCR_STATUS, &sstatus);
@@ -469,7 +481,15 @@ static int vt6420_prepare_host(struct pci_dev *pdev, struct ata_host **r_host)
 
 	rc = pcim_iomap_regions(pdev, 1 << 5, DRV_NAME);
 	if (rc) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err(&pdev->dev, "failed to iomap PCI BAR 5\n");
+=======
 		dev_printk(KERN_ERR, &pdev->dev, "failed to iomap PCI BAR 5\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_printk(KERN_ERR, &pdev->dev, "failed to iomap PCI BAR 5\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return rc;
 	}
 
@@ -488,14 +508,32 @@ static int vt6421_prepare_host(struct pci_dev *pdev, struct ata_host **r_host)
 
 	*r_host = host = ata_host_alloc_pinfo(&pdev->dev, ppi, ARRAY_SIZE(ppi));
 	if (!host) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err(&pdev->dev, "failed to allocate host\n");
+=======
 		dev_printk(KERN_ERR, &pdev->dev, "failed to allocate host\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_printk(KERN_ERR, &pdev->dev, "failed to allocate host\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 
 	rc = pcim_iomap_regions(pdev, 0x3f, DRV_NAME);
 	if (rc) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err(&pdev->dev, "failed to request/iomap PCI BARs (errno=%d)\n",
+			rc);
+=======
 		dev_printk(KERN_ERR, &pdev->dev, "failed to request/iomap "
 			   "PCI BARs (errno=%d)\n", rc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_printk(KERN_ERR, &pdev->dev, "failed to request/iomap "
+			   "PCI BARs (errno=%d)\n", rc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return rc;
 	}
 	host->iomap = pcim_iomap_table(pdev);
@@ -526,7 +564,15 @@ static int vt8251_prepare_host(struct pci_dev *pdev, struct ata_host **r_host)
 
 	rc = pcim_iomap_regions(pdev, 1 << 5, DRV_NAME);
 	if (rc) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err(&pdev->dev, "failed to iomap PCI BAR 5\n");
+=======
 		dev_printk(KERN_ERR, &pdev->dev, "failed to iomap PCI BAR 5\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_printk(KERN_ERR, &pdev->dev, "failed to iomap PCI BAR 5\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return rc;
 	}
 
@@ -542,15 +588,36 @@ static void svia_configure(struct pci_dev *pdev, int board_id)
 	u8 tmp8;
 
 	pci_read_config_byte(pdev, PCI_INTERRUPT_LINE, &tmp8);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev_info(&pdev->dev, "routed to hard irq line %d\n",
+		 (int) (tmp8 & 0xf0) == 0xf0 ? 0 : tmp8 & 0x0f);
+=======
 	dev_printk(KERN_INFO, &pdev->dev, "routed to hard irq line %d\n",
 	       (int) (tmp8 & 0xf0) == 0xf0 ? 0 : tmp8 & 0x0f);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_printk(KERN_INFO, &pdev->dev, "routed to hard irq line %d\n",
+	       (int) (tmp8 & 0xf0) == 0xf0 ? 0 : tmp8 & 0x0f);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* make sure SATA channels are enabled */
 	pci_read_config_byte(pdev, SATA_CHAN_ENAB, &tmp8);
 	if ((tmp8 & ALL_PORTS) != ALL_PORTS) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_dbg(&pdev->dev, "enabling SATA channels (0x%x)\n",
+			(int)tmp8);
+=======
 		dev_printk(KERN_DEBUG, &pdev->dev,
 			   "enabling SATA channels (0x%x)\n",
 			   (int) tmp8);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_printk(KERN_DEBUG, &pdev->dev,
+			   "enabling SATA channels (0x%x)\n",
+			   (int) tmp8);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tmp8 |= ALL_PORTS;
 		pci_write_config_byte(pdev, SATA_CHAN_ENAB, tmp8);
 	}
@@ -558,9 +625,20 @@ static void svia_configure(struct pci_dev *pdev, int board_id)
 	/* make sure interrupts for each channel sent to us */
 	pci_read_config_byte(pdev, SATA_INT_GATE, &tmp8);
 	if ((tmp8 & ALL_PORTS) != ALL_PORTS) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_dbg(&pdev->dev, "enabling SATA channel interrupts (0x%x)\n",
+			(int) tmp8);
+=======
 		dev_printk(KERN_DEBUG, &pdev->dev,
 			   "enabling SATA channel interrupts (0x%x)\n",
 			   (int) tmp8);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_printk(KERN_DEBUG, &pdev->dev,
+			   "enabling SATA channel interrupts (0x%x)\n",
+			   (int) tmp8);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tmp8 |= ALL_PORTS;
 		pci_write_config_byte(pdev, SATA_INT_GATE, tmp8);
 	}
@@ -568,9 +646,21 @@ static void svia_configure(struct pci_dev *pdev, int board_id)
 	/* make sure native mode is enabled */
 	pci_read_config_byte(pdev, SATA_NATIVE_MODE, &tmp8);
 	if ((tmp8 & NATIVE_MODE_ALL) != NATIVE_MODE_ALL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_dbg(&pdev->dev,
+			"enabling SATA channel native mode (0x%x)\n",
+			(int) tmp8);
+=======
 		dev_printk(KERN_DEBUG, &pdev->dev,
 			   "enabling SATA channel native mode (0x%x)\n",
 			   (int) tmp8);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_printk(KERN_DEBUG, &pdev->dev,
+			   "enabling SATA channel native mode (0x%x)\n",
+			   (int) tmp8);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tmp8 |= NATIVE_MODE_ALL;
 		pci_write_config_byte(pdev, SATA_NATIVE_MODE, tmp8);
 	}
@@ -606,15 +696,31 @@ static void svia_configure(struct pci_dev *pdev, int board_id)
 
 static int svia_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	static int printed_version;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	static int printed_version;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int i;
 	int rc;
 	struct ata_host *host = NULL;
 	int board_id = (int) ent->driver_data;
 	const unsigned *bar_sizes;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ata_print_version_once(&pdev->dev, DRV_VERSION);
+=======
 	if (!printed_version++)
 		dev_printk(KERN_DEBUG, &pdev->dev, "version " DRV_VERSION "\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!printed_version++)
+		dev_printk(KERN_DEBUG, &pdev->dev, "version " DRV_VERSION "\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rc = pcim_enable_device(pdev);
 	if (rc)
@@ -628,7 +734,15 @@ static int svia_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
 	for (i = 0; i < ARRAY_SIZE(svia_bar_sizes); i++)
 		if ((pci_resource_start(pdev, i) == 0) ||
 		    (pci_resource_len(pdev, i) < bar_sizes[i])) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_err(&pdev->dev,
+=======
 			dev_printk(KERN_ERR, &pdev->dev,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			dev_printk(KERN_ERR, &pdev->dev,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"invalid PCI BAR %u (sz 0x%llx, val 0x%llx)\n",
 				i,
 				(unsigned long long)pci_resource_start(pdev, i),

@@ -1,7 +1,16 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * $Id: libsbew.h,v 2.1 2005/10/27 18:54:19 rickd PMCC4_3_1B $
  */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _INC_LIBSBEW_H_
 #define _INC_LIBSBEW_H_
 
@@ -25,6 +34,13 @@
  * For further information, contact via email: support@sbei.com
  * SBE, Inc.  San Ramon, California  U.S.A.
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * RCS info:
  * RCS revision: $Revision: 2.1 $
  * Last changed on $Date: 2005/10/27 18:54:19 $
@@ -51,6 +67,10 @@ extern      "C"
 {
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /********************************/
 /**  set driver logging level  **/
 /********************************/
@@ -323,7 +343,15 @@ struct sbecom_port_param
 #define CFG_CH_DINV_TX      0x02
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Possible resettable chipsets/functions */
+=======
 /* Posssible resettable chipsets/functions */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* Posssible resettable chipsets/functions */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RESET_DEV_TEMUX     1
 #define RESET_DEV_TECT3     RESET_DEV_TEMUX
 #define RESET_DEV_PLL       2
@@ -574,8 +602,17 @@ struct sbecom_port_param
     extern int  wancfg_set_tsioc (wcfg_t *, struct wanc1t3_ts_param *);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef __cplusplus
 }
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif                          /*** _INC_LIBSBEW_H_ ***/

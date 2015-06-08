@@ -22,12 +22,17 @@
 #include <linux/perf_event.h>
 #include <linux/hw_breakpoint.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/uaccess.h>
 #include <asm/pgtable.h>
 #include <asm/processor.h>
 #include <asm/i387.h>
 #include <asm/fpu-internal.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/module.h>
 
@@ -37,6 +42,7 @@
 #include <asm/processor.h>
 #include <asm/i387.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/debugreg.h>
 #include <asm/ldt.h>
 #include <asm/desc.h>
@@ -46,7 +52,11 @@
 <<<<<<< HEAD
 #include <asm/traps.h>
 =======
+<<<<<<< HEAD
+#include <asm/traps.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "tls.h"
 
@@ -180,6 +190,8 @@ static inline bool invalid_selector(u16 value)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * X86_32 CPUs don't save ss and esp if the CPU is already in kernel mode
  * when it traps.  The previous stack will be directly underneath the saved
@@ -210,6 +222,7 @@ unsigned long kernel_stack_pointer(struct pt_regs *regs)
 EXPORT_SYMBOL_GPL(kernel_stack_pointer);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long *pt_regs_access(struct pt_regs *regs, unsigned long regno)
 {
 	BUILD_BUG_ON(offsetof(struct pt_regs, bx) != 0);
@@ -577,8 +590,12 @@ static int genregs_set(struct task_struct *target,
 <<<<<<< HEAD
 static void ptrace_triggered(struct perf_event *bp,
 =======
+<<<<<<< HEAD
+static void ptrace_triggered(struct perf_event *bp,
+=======
 static void ptrace_triggered(struct perf_event *bp, int nmi,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     struct perf_sample_data *data,
 			     struct pt_regs *regs)
 {
@@ -769,8 +786,13 @@ static int ptrace_set_breakpoint_addr(struct task_struct *tsk, int nr,
 		bp = register_user_hw_breakpoint(&attr, ptrace_triggered,
 						 NULL, tsk);
 =======
+<<<<<<< HEAD
+		bp = register_user_hw_breakpoint(&attr, ptrace_triggered,
+						 NULL, tsk);
+=======
 		bp = register_user_hw_breakpoint(&attr, ptrace_triggered, tsk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * CHECKME: the previous code returned -EIO if the addr wasn't
@@ -807,8 +829,13 @@ put:
 static int ptrace_set_debugreg(struct task_struct *tsk, int n,
 			       unsigned long val)
 =======
+<<<<<<< HEAD
+static int ptrace_set_debugreg(struct task_struct *tsk, int n,
+			       unsigned long val)
+=======
 int ptrace_set_debugreg(struct task_struct *tsk, int n, unsigned long val)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct thread_struct *thread = &(tsk->thread);
 	int rc = 0;
@@ -1189,6 +1216,9 @@ static int genregs32_set(struct task_struct *target,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_X32_ABI
 static long x32_arch_ptrace(struct task_struct *child,
 			    compat_long_t request, compat_ulong_t caddr,
@@ -1283,8 +1313,11 @@ static long x32_arch_ptrace(struct task_struct *child,
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 long compat_arch_ptrace(struct task_struct *child, compat_long_t request,
 			compat_ulong_t caddr, compat_ulong_t cdata)
 {
@@ -1295,13 +1328,19 @@ long compat_arch_ptrace(struct task_struct *child, compat_long_t request,
 	__u32 val;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_X32_ABI
 	if (!is_ia32_task())
 		return x32_arch_ptrace(child, request, caddr, cdata);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (request) {
 	case PTRACE_PEEKUSR:
 		ret = getreg32(child, addr, &val);
@@ -1492,8 +1531,12 @@ static void fill_sigtrap_info(struct task_struct *tsk,
 <<<<<<< HEAD
 	tsk->thread.trap_nr = X86_TRAP_DB;
 =======
+<<<<<<< HEAD
+	tsk->thread.trap_nr = X86_TRAP_DB;
+=======
 	tsk->thread.trap_no = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tsk->thread.error_code = error_code;
 
 	memset(info, 0, sizeof(*info));
@@ -1560,6 +1603,9 @@ long syscall_trace_enter(struct pt_regs *regs)
 		trace_sys_enter(regs, regs->orig_ax);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_IA32)
 		audit_syscall_entry(AUDIT_ARCH_I386,
 				    regs->orig_ax,
@@ -1572,6 +1618,8 @@ long syscall_trace_enter(struct pt_regs *regs)
 				    regs->di, regs->si,
 				    regs->dx, regs->r10);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	if (unlikely(current->audit_context)) {
 		if (IS_IA32)
@@ -1588,6 +1636,7 @@ long syscall_trace_enter(struct pt_regs *regs)
 #endif
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret ?: regs->orig_ax;
 }
@@ -1599,9 +1648,13 @@ void syscall_trace_leave(struct pt_regs *regs)
 <<<<<<< HEAD
 	audit_syscall_exit(regs);
 =======
+<<<<<<< HEAD
+	audit_syscall_exit(regs);
+=======
 	if (unlikely(current->audit_context))
 		audit_syscall_exit(AUDITSC_RESULT(regs->ax), regs->ax);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(test_thread_flag(TIF_SYSCALL_TRACEPOINT)))
 		trace_sys_exit(regs, regs->ax);

@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/rcupdate.h>
 =======
+<<<<<<< HEAD
+#include <linux/rcupdate.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "netns.h"
 
@@ -138,6 +142,9 @@ EXPORT_SYMBOL_GPL(rpc_free_iostats);
  * rpc_count_iostats - tally up per-task stats
  * @task: completed rpc_task
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @stats: array of stat structures
  *
  * Relies on the caller for serialization.
@@ -151,6 +158,8 @@ void rpc_count_iostats(const struct rpc_task *task, struct rpc_iostats *stats)
 	if (!stats || !req)
 		return;
 
+<<<<<<< HEAD
+=======
 =======
  *
  * Relies on the caller for serialization.
@@ -167,6 +176,7 @@ void rpc_count_iostats(struct rpc_task *task)
 
 	stats = task->tk_client->cl_metrics;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	op_metrics = &stats[task->tk_msg.rpc_proc->p_statidx];
 
 	op_metrics->om_ops++;
@@ -187,7 +197,11 @@ void rpc_count_iostats(struct rpc_task *task)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(rpc_count_iostats);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(rpc_count_iostats);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void _print_name(struct seq_file *seq, unsigned int op,
 			struct rpc_procinfo *procs)
@@ -206,8 +220,12 @@ void rpc_print_iostats(struct seq_file *seq, struct rpc_clnt *clnt)
 <<<<<<< HEAD
 	struct rpc_xprt *xprt;
 =======
+<<<<<<< HEAD
+	struct rpc_xprt *xprt;
+=======
 	struct rpc_xprt *xprt = clnt->cl_xprt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int op, maxproc = clnt->cl_maxproc;
 
 	if (!stats)
@@ -218,15 +236,21 @@ void rpc_print_iostats(struct seq_file *seq, struct rpc_clnt *clnt)
 			clnt->cl_prog, clnt->cl_vers, clnt->cl_protname);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 	xprt = rcu_dereference(clnt->cl_xprt);
 	if (xprt)
 		xprt->ops->print_stats(xprt, seq);
 	rcu_read_unlock();
+<<<<<<< HEAD
+=======
 =======
 	if (xprt)
 		xprt->ops->print_stats(xprt, seq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	seq_printf(seq, "\tper-op statistics\n");
 	for (op = 0; op < maxproc; op++) {
@@ -253,8 +277,13 @@ static inline struct proc_dir_entry *
 do_register(struct net *net, const char *name, void *data,
 	    const struct file_operations *fops)
 =======
+<<<<<<< HEAD
+do_register(struct net *net, const char *name, void *data,
+	    const struct file_operations *fops)
+=======
 do_register(const char *name, void *data, const struct file_operations *fops)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sunrpc_net *sn;
 
@@ -262,8 +291,12 @@ do_register(const char *name, void *data, const struct file_operations *fops)
 <<<<<<< HEAD
 	sn = net_generic(net, sunrpc_net_id);
 =======
+<<<<<<< HEAD
+	sn = net_generic(net, sunrpc_net_id);
+=======
 	sn = net_generic(&init_net, sunrpc_net_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return proc_create_data(name, 0, sn->proc_net_rpc, fops, data);
 }
 
@@ -273,20 +306,31 @@ rpc_proc_register(struct net *net, struct rpc_stat *statp)
 {
 	return do_register(net, statp->program->name, statp, &rpc_proc_fops);
 =======
+<<<<<<< HEAD
+rpc_proc_register(struct net *net, struct rpc_stat *statp)
+{
+	return do_register(net, statp->program->name, statp, &rpc_proc_fops);
+=======
 rpc_proc_register(struct rpc_stat *statp)
 {
 	return do_register(statp->program->name, statp, &rpc_proc_fops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(rpc_proc_register);
 
 void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 rpc_proc_unregister(struct net *net, const char *name)
 {
 	struct sunrpc_net *sn;
 
 	sn = net_generic(net, sunrpc_net_id);
+<<<<<<< HEAD
+=======
 =======
 rpc_proc_unregister(const char *name)
 {
@@ -294,6 +338,7 @@ rpc_proc_unregister(const char *name)
 
 	sn = net_generic(&init_net, sunrpc_net_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	remove_proc_entry(name, sn->proc_net_rpc);
 }
 EXPORT_SYMBOL_GPL(rpc_proc_unregister);
@@ -304,20 +349,31 @@ svc_proc_register(struct net *net, struct svc_stat *statp, const struct file_ope
 {
 	return do_register(net, statp->program->pg_name, statp, fops);
 =======
+<<<<<<< HEAD
+svc_proc_register(struct net *net, struct svc_stat *statp, const struct file_operations *fops)
+{
+	return do_register(net, statp->program->pg_name, statp, fops);
+=======
 svc_proc_register(struct svc_stat *statp, const struct file_operations *fops)
 {
 	return do_register(statp->program->pg_name, statp, fops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(svc_proc_register);
 
 void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 svc_proc_unregister(struct net *net, const char *name)
 {
 	struct sunrpc_net *sn;
 
 	sn = net_generic(net, sunrpc_net_id);
+<<<<<<< HEAD
+=======
 =======
 svc_proc_unregister(const char *name)
 {
@@ -325,6 +381,7 @@ svc_proc_unregister(const char *name)
 
 	sn = net_generic(&init_net, sunrpc_net_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	remove_proc_entry(name, sn->proc_net_rpc);
 }
 EXPORT_SYMBOL_GPL(svc_proc_unregister);

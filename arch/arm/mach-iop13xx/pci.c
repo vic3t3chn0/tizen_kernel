@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/irq.h>
 #include <mach/hardware.h>
 #include <asm/sizes.h>
@@ -45,9 +49,12 @@ size_t iop13xx_atue_mem_size;
 size_t iop13xx_atux_mem_size;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 unsigned long iop13xx_pcibios_min_io = 0;
 unsigned long iop13xx_pcibios_min_mem = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 EXPORT_SYMBOL(iop13xx_atue_mem_base);
 EXPORT_SYMBOL(iop13xx_atux_mem_base);
@@ -400,8 +407,12 @@ static int
 <<<<<<< HEAD
 iop13xx_pcie_map_irq(const struct pci_dev *dev, u8 idsel, u8 pin)
 =======
+<<<<<<< HEAD
+iop13xx_pcie_map_irq(const struct pci_dev *dev, u8 idsel, u8 pin)
+=======
 iop13xx_pcie_map_irq(struct pci_dev *dev, u8 idsel, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	WARN_ON(idsel != 0);
 
@@ -550,6 +561,9 @@ struct pci_bus *iop13xx_scan_bus(int nr, struct pci_sys_data *sys)
 				udelay(100);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bus = pci_bus_atux = pci_scan_root_bus(NULL, sys->busnr,
 						       &iop13xx_atux_ops,
 						       sys, &sys->resources);
@@ -558,6 +572,8 @@ struct pci_bus *iop13xx_scan_bus(int nr, struct pci_sys_data *sys)
 		bus = pci_bus_atue = pci_scan_root_bus(NULL, sys->busnr,
 						       &iop13xx_atue_ops,
 						       sys, &sys->resources);
+<<<<<<< HEAD
+=======
 =======
 		bus = pci_bus_atux = pci_scan_bus(sys->busnr,
 						  &iop13xx_atux_ops,
@@ -568,6 +584,7 @@ struct pci_bus *iop13xx_scan_bus(int nr, struct pci_sys_data *sys)
 						  &iop13xx_atue_ops,
 						  sys);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -997,8 +1014,13 @@ void __init iop13xx_pci_init(void)
 	pcibios_min_io = 0;
 	pcibios_min_mem = IOP13XX_PCIX_LOWER_MEM_BA;
 =======
+<<<<<<< HEAD
+	pcibios_min_io = 0;
+	pcibios_min_mem = IOP13XX_PCIX_LOWER_MEM_BA;
+=======
 	iop13xx_pcibios_min_mem = IOP13XX_PCIX_LOWER_MEM_BA;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* if Linux is given control of an ATU
 	 * clear out its prior configuration,
@@ -1115,10 +1137,15 @@ int iop13xx_pci_setup(int nr, struct pci_sys_data *sys)
 	pci_add_resource_offset(&sys->resources, &res[0], sys->io_offset);
 	pci_add_resource_offset(&sys->resources, &res[1], sys->mem_offset);
 =======
+<<<<<<< HEAD
+	pci_add_resource_offset(&sys->resources, &res[0], sys->io_offset);
+	pci_add_resource_offset(&sys->resources, &res[1], sys->mem_offset);
+=======
 	sys->resource[0] = &res[0];
 	sys->resource[1] = &res[1];
 	sys->resource[2] = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }

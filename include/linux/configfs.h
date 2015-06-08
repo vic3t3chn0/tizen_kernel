@@ -45,8 +45,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CONFIGFS_ITEM_NAME_LEN	20
 
@@ -131,8 +135,12 @@ struct configfs_attribute {
 <<<<<<< HEAD
 	umode_t			ca_mode;
 =======
+<<<<<<< HEAD
+	umode_t			ca_mode;
+=======
 	mode_t			ca_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*

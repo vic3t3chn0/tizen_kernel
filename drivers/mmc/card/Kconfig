@@ -77,6 +77,20 @@ config MMC_TEST
 	  This driver is only of interest to those developing or
 	  testing a host driver. Most people should say N here.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config MMC_BLOCK_TEST
+	tristate "MMC block test"
+	depends on MMC_BLOCK && IOSCHED_TEST
+	help
+	  MMC block test can be used with test iosched to test the MMC block
+	  device.
+	  Currently used to test eMMC 4.5 features (packed commands, sanitize,
+	  BKOPs).
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MMC_SELECTIVE_PACKED_CMD_POLICY
 	tristate "Change the condition of Pakced command"
 	help
@@ -87,4 +101,9 @@ config MMC_CPRM
 	depends on MMC_BLOCK
 	default n
 	help
+<<<<<<< HEAD
 	  Japan only feature of CPRM MMC driver.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	  Japan only feature of CPRM MMC driver.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

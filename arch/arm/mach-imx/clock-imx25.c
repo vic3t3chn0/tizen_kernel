@@ -266,7 +266,11 @@ DEFINE_CLOCK(can2_clk,	 1, CCM_CGCR1,  3, get_rate_ipg, NULL, NULL);
 <<<<<<< HEAD
 DEFINE_CLOCK(iim_clk,    0, CCM_CGCR1, 26, NULL, NULL, NULL);
 =======
+<<<<<<< HEAD
+DEFINE_CLOCK(iim_clk,    0, CCM_CGCR1, 26, NULL, NULL, NULL);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define _REGISTER_CLOCK(d, n, c)	\
 	{				\
@@ -277,12 +281,17 @@ DEFINE_CLOCK(iim_clk,    0, CCM_CGCR1, 26, NULL, NULL, NULL);
 
 static struct clk_lookup lookups[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* i.mx25 has the i.mx21 type uart */
 	_REGISTER_CLOCK("imx21-uart.0", NULL, uart1_clk)
 	_REGISTER_CLOCK("imx21-uart.1", NULL, uart2_clk)
 	_REGISTER_CLOCK("imx21-uart.2", NULL, uart3_clk)
 	_REGISTER_CLOCK("imx21-uart.3", NULL, uart4_clk)
 	_REGISTER_CLOCK("imx21-uart.4", NULL, uart5_clk)
+<<<<<<< HEAD
+=======
 =======
 	_REGISTER_CLOCK("imx-uart.0", NULL, uart1_clk)
 	_REGISTER_CLOCK("imx-uart.1", NULL, uart2_clk)
@@ -290,21 +299,28 @@ static struct clk_lookup lookups[] = {
 	_REGISTER_CLOCK("imx-uart.3", NULL, uart4_clk)
 	_REGISTER_CLOCK("imx-uart.4", NULL, uart5_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("mxc-ehci.0", "usb", usbotg_clk)
 	_REGISTER_CLOCK("mxc-ehci.1", "usb", usbotg_clk)
 	_REGISTER_CLOCK("mxc-ehci.2", "usb", usbotg_clk)
 	_REGISTER_CLOCK("fsl-usb2-udc", "usb", usbotg_clk)
 	_REGISTER_CLOCK("mxc_nand.0", NULL, nfc_clk)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* i.mx25 has the i.mx35 type cspi */
 	_REGISTER_CLOCK("imx35-cspi.0", NULL, cspi1_clk)
 	_REGISTER_CLOCK("imx35-cspi.1", NULL, cspi2_clk)
 	_REGISTER_CLOCK("imx35-cspi.2", NULL, cspi3_clk)
+<<<<<<< HEAD
+=======
 =======
 	_REGISTER_CLOCK("imx25-cspi.0", NULL, cspi1_clk)
 	_REGISTER_CLOCK("imx25-cspi.1", NULL, cspi2_clk)
 	_REGISTER_CLOCK("imx25-cspi.2", NULL, cspi3_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("mxc_pwm.0", NULL, pwm1_clk)
 	_REGISTER_CLOCK("mxc_pwm.1", NULL, pwm2_clk)
 	_REGISTER_CLOCK("mxc_pwm.2", NULL, pwm3_clk)
@@ -317,8 +333,12 @@ static struct clk_lookup lookups[] = {
 <<<<<<< HEAD
 	_REGISTER_CLOCK("imx25-fec.0", NULL, fec_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("imx25-fec.0", NULL, fec_clk)
+=======
 	_REGISTER_CLOCK("fec.0", NULL, fec_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("imxdi_rtc.0", NULL, dryice_clk)
 	_REGISTER_CLOCK("imx-fb.0", NULL, lcdc_clk)
 	_REGISTER_CLOCK("imx2-wdt.0", NULL, wdt_clk)
@@ -328,9 +348,14 @@ static struct clk_lookup lookups[] = {
 	_REGISTER_CLOCK("sdhci-esdhc-imx25.0", NULL, esdhc1_clk)
 	_REGISTER_CLOCK("sdhci-esdhc-imx25.1", NULL, esdhc2_clk)
 =======
+<<<<<<< HEAD
+	_REGISTER_CLOCK("sdhci-esdhc-imx25.0", NULL, esdhc1_clk)
+	_REGISTER_CLOCK("sdhci-esdhc-imx25.1", NULL, esdhc2_clk)
+=======
 	_REGISTER_CLOCK("sdhci-esdhc-imx.0", NULL, esdhc1_clk)
 	_REGISTER_CLOCK("sdhci-esdhc-imx.1", NULL, esdhc2_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_REGISTER_CLOCK("mx2-camera.0", NULL, csi_clk)
 	_REGISTER_CLOCK(NULL, "audmux", audmux_clk)
 	_REGISTER_CLOCK("flexcan.0", NULL, can1_clk)
@@ -340,8 +365,14 @@ static struct clk_lookup lookups[] = {
 	_REGISTER_CLOCK("imx35-sdma", NULL, sdma_clk)
 	_REGISTER_CLOCK(NULL, "iim", iim_clk)
 =======
+<<<<<<< HEAD
+	/* i.mx25 has the i.mx35 type sdma */
+	_REGISTER_CLOCK("imx35-sdma", NULL, sdma_clk)
+	_REGISTER_CLOCK(NULL, "iim", iim_clk)
+=======
 	_REGISTER_CLOCK("imx-sdma", NULL, sdma_clk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int __init mx25_clocks_init(void)
@@ -364,6 +395,9 @@ int __init mx25_clocks_init(void)
 			CRM_BASE + 0x64);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Clock source for gpt is ahb_div */
 	__raw_writel(__raw_readl(CRM_BASE+0x64) & ~(1 << 5), CRM_BASE + 0x64);
 
@@ -371,8 +405,11 @@ int __init mx25_clocks_init(void)
 	imx_print_silicon_rev("i.MX25", mx25_revision());
 	clk_disable(&iim_clk);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_timer_init(&gpt_clk, MX25_IO_ADDRESS(MX25_GPT1_BASE_ADDR), 54);
 
 	return 0;

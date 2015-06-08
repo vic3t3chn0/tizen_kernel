@@ -65,6 +65,9 @@
 
 #define __apicdebuginit(type) static type __init
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define for_each_irq_pin(entry, head) \
 	for (entry = head; entry; entry = entry->next)
@@ -87,11 +90,14 @@ void __init set_io_apic_ops(const struct io_apic_ops *ops)
 	io_apic_ops = *ops;
 }
 
+<<<<<<< HEAD
+=======
 =======
 #define for_each_irq_pin(entry, head) \
 	for (entry = head; entry; entry = entry->next)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *      Is the SiS APIC rmw bug present ?
  *      -1 = don't know, 0 = no, 1 = yes
@@ -118,6 +124,9 @@ static struct ioapic {
 } ioapics[MAX_IO_APICS];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define mpc_ioapic_ver(ioapic_idx)	ioapics[ioapic_idx].mp_config.apicver
 
 int mpc_ioapic_id(int ioapic_idx)
@@ -133,6 +142,8 @@ unsigned int mpc_ioapic_addr(int ioapic_idx)
 struct mp_ioapic_gsi *mp_ioapic_gsi_routing(int ioapic_idx)
 {
 	return &ioapics[ioapic_idx].gsi_config;
+<<<<<<< HEAD
+=======
 =======
 #define mpc_ioapic_ver(id)		ioapics[id].mp_config.apicver
 
@@ -150,6 +161,7 @@ struct mp_ioapic_gsi *mp_ioapic_gsi_routing(int id)
 {
 	return &ioapics[id].gsi_config;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int nr_ioapics;
@@ -232,12 +244,16 @@ static struct irq_pin_list *alloc_irq_pin_list(int node)
 <<<<<<< HEAD
 static struct irq_cfg irq_cfgx[NR_IRQS_LEGACY];
 =======
+<<<<<<< HEAD
+static struct irq_cfg irq_cfgx[NR_IRQS_LEGACY];
+=======
 #ifdef CONFIG_SPARSE_IRQ
 static struct irq_cfg irq_cfgx[NR_IRQS_LEGACY];
 #else
 static struct irq_cfg irq_cfgx[NR_IRQS];
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __init arch_early_irq_init(void)
 {
@@ -248,11 +264,16 @@ int __init arch_early_irq_init(void)
 	if (!legacy_pic->nr_legacy_irqs)
 		io_apic_irqs = ~0UL;
 =======
+<<<<<<< HEAD
+	if (!legacy_pic->nr_legacy_irqs)
+		io_apic_irqs = ~0UL;
+=======
 	if (!legacy_pic->nr_legacy_irqs) {
 		nr_irqs_gsi = 0;
 		io_apic_irqs = ~0UL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < nr_ioapics; i++) {
 		ioapics[i].saved_registers =
@@ -288,8 +309,11 @@ int __init arch_early_irq_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SPARSE_IRQ
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct irq_cfg *irq_cfg(unsigned int irq)
 {
 	return irq_get_chip_data(irq);
@@ -326,6 +350,8 @@ static void free_irq_cfg(unsigned int at, struct irq_cfg *cfg)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #else
 
 struct irq_cfg *irq_cfg(unsigned int irq)
@@ -343,6 +369,7 @@ static inline void free_irq_cfg(unsigned int at, struct irq_cfg *cfg) { }
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct irq_cfg *alloc_irq_and_cfg_at(unsigned int at, int node)
 {
 	int res = irq_alloc_desc_at(at, node);
@@ -376,6 +403,9 @@ static void free_irq_at(unsigned int at, struct irq_cfg *cfg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline unsigned int io_apic_read(unsigned int apic, unsigned int reg)
 {
 	return io_apic_ops.read(apic, reg);
@@ -392,8 +422,11 @@ static inline void io_apic_modify(unsigned int apic, unsigned int reg, unsigned 
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct io_apic {
 	unsigned int index;
 	unsigned int unused[3];
@@ -417,8 +450,12 @@ static inline void io_apic_eoi(unsigned int apic, unsigned int vector)
 <<<<<<< HEAD
 static unsigned int __io_apic_read(unsigned int apic, unsigned int reg)
 =======
+<<<<<<< HEAD
+static unsigned int __io_apic_read(unsigned int apic, unsigned int reg)
+=======
 static inline unsigned int io_apic_read(unsigned int apic, unsigned int reg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct io_apic __iomem *io_apic = io_apic_base(apic);
 	writel(reg, &io_apic->index);
@@ -426,15 +463,21 @@ static inline unsigned int io_apic_read(unsigned int apic, unsigned int reg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __io_apic_write(unsigned int apic, unsigned int reg, unsigned int value)
 {
 	struct io_apic __iomem *io_apic = io_apic_base(apic);
 
+<<<<<<< HEAD
+=======
 =======
 static inline void io_apic_write(unsigned int apic, unsigned int reg, unsigned int value)
 {
 	struct io_apic __iomem *io_apic = io_apic_base(apic);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	writel(reg, &io_apic->index);
 	writel(value, &io_apic->data);
 }
@@ -448,8 +491,12 @@ static inline void io_apic_write(unsigned int apic, unsigned int reg, unsigned i
 <<<<<<< HEAD
 static void __io_apic_modify(unsigned int apic, unsigned int reg, unsigned int value)
 =======
+<<<<<<< HEAD
+static void __io_apic_modify(unsigned int apic, unsigned int reg, unsigned int value)
+=======
 static inline void io_apic_modify(unsigned int apic, unsigned int reg, unsigned int value)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct io_apic __iomem *io_apic = io_apic_base(apic);
 
@@ -487,6 +534,9 @@ union entry_union {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct IO_APIC_route_entry __ioapic_read_entry(int apic, int pin)
 {
 	union entry_union eu;
@@ -497,24 +547,33 @@ static struct IO_APIC_route_entry __ioapic_read_entry(int apic, int pin)
 	return eu.entry;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct IO_APIC_route_entry ioapic_read_entry(int apic, int pin)
 {
 	union entry_union eu;
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	raw_spin_lock_irqsave(&ioapic_lock, flags);
 	eu.entry = __ioapic_read_entry(apic, pin);
 	raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 
+<<<<<<< HEAD
+=======
 =======
 	raw_spin_lock_irqsave(&ioapic_lock, flags);
 	eu.w1 = io_apic_read(apic, 0x10 + 2 * pin);
 	eu.w2 = io_apic_read(apic, 0x11 + 2 * pin);
 	raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return eu.entry;
 }
 
@@ -527,9 +586,13 @@ static struct IO_APIC_route_entry ioapic_read_entry(int apic, int pin)
 <<<<<<< HEAD
 static void __ioapic_write_entry(int apic, int pin, struct IO_APIC_route_entry e)
 =======
+<<<<<<< HEAD
+static void __ioapic_write_entry(int apic, int pin, struct IO_APIC_route_entry e)
+=======
 static void
 __ioapic_write_entry(int apic, int pin, struct IO_APIC_route_entry e)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	union entry_union eu = {{0, 0}};
 
@@ -544,7 +607,11 @@ static void ioapic_write_entry(int apic, int pin, struct IO_APIC_route_entry e)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spin_lock_irqsave(&ioapic_lock, flags);
 	__ioapic_write_entry(apic, pin, e);
 	raw_spin_unlock_irqrestore(&ioapic_lock, flags);
@@ -574,9 +641,13 @@ static void ioapic_mask_entry(int apic, int pin)
 <<<<<<< HEAD
 static int __add_pin_to_irq_node(struct irq_cfg *cfg, int node, int apic, int pin)
 =======
+<<<<<<< HEAD
+static int __add_pin_to_irq_node(struct irq_cfg *cfg, int node, int apic, int pin)
+=======
 static int
 __add_pin_to_irq_node(struct irq_cfg *cfg, int node, int apic, int pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct irq_pin_list **last, *entry;
 
@@ -656,6 +727,8 @@ static void io_apic_modify_irq(struct irq_cfg *cfg,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __mask_and_edge_IO_APIC_irq(struct irq_pin_list *entry)
 {
 	__io_apic_modify_irq(entry, ~IO_APIC_REDIR_LEVEL_TRIGGER,
@@ -669,6 +742,7 @@ static void __unmask_and_level_IO_APIC_irq(struct irq_pin_list *entry)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void io_apic_sync(struct irq_pin_list *entry)
 {
 	/*
@@ -679,7 +753,11 @@ static void io_apic_sync(struct irq_pin_list *entry)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	io_apic = io_apic_base(entry->apic);
 	readl(&io_apic->data);
 }
@@ -718,6 +796,9 @@ static void unmask_ioapic_irq(struct irq_data *data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * IO-APIC versions below 0x20 don't support EOI register.
  * For the record, here is the information about various versions:
@@ -778,8 +859,11 @@ static void eoi_ioapic_irq(unsigned int irq, struct irq_cfg *cfg)
 	raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void clear_IO_APIC_pin(unsigned int apic, unsigned int pin)
 {
 	struct IO_APIC_route_entry entry;
@@ -789,6 +873,9 @@ static void clear_IO_APIC_pin(unsigned int apic, unsigned int pin)
 	if (entry.delivery_mode == dest_SMI)
 		return;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Make sure the entry is masked and re-read the contents to check
@@ -827,12 +914,15 @@ static void clear_IO_APIC_pin(unsigned int apic, unsigned int pin)
 	if (entry.irr)
 		printk(KERN_ERR "Unable to reset IRR for apic: %d, pin :%d\n",
 		       mpc_ioapic_id(apic), pin);
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Disable it in the IO-APIC irq-routing table:
 	 */
 	ioapic_mask_entry(apic, pin);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void clear_IO_APIC (void)
@@ -951,8 +1041,12 @@ int restore_ioapic_entries(void)
 <<<<<<< HEAD
 static int find_irq_entry(int ioapic_idx, int pin, int type)
 =======
+<<<<<<< HEAD
+static int find_irq_entry(int ioapic_idx, int pin, int type)
+=======
 static int find_irq_entry(int apic, int pin, int type)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -961,8 +1055,12 @@ static int find_irq_entry(int apic, int pin, int type)
 <<<<<<< HEAD
 		    (mp_irqs[i].dstapic == mpc_ioapic_id(ioapic_idx) ||
 =======
+<<<<<<< HEAD
+		    (mp_irqs[i].dstapic == mpc_ioapic_id(ioapic_idx) ||
+=======
 		    (mp_irqs[i].dstapic == mpc_ioapic_id(apic) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     mp_irqs[i].dstapic == MP_APIC_ALL) &&
 		    mp_irqs[i].dstirq == pin)
 			return i;
@@ -1002,6 +1100,9 @@ static int __init find_isa_irq_apic(int irq, int type)
 			break;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (i < mp_irq_entries) {
 		int ioapic_idx;
@@ -1009,6 +1110,8 @@ static int __init find_isa_irq_apic(int irq, int type)
 		for (ioapic_idx = 0; ioapic_idx < nr_ioapics; ioapic_idx++)
 			if (mpc_ioapic_id(ioapic_idx) == mp_irqs[i].dstapic)
 				return ioapic_idx;
+<<<<<<< HEAD
+=======
 =======
 	if (i < mp_irq_entries) {
 		int apic;
@@ -1017,6 +1120,7 @@ static int __init find_isa_irq_apic(int irq, int type)
 				return apic;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return -1;
@@ -1234,8 +1338,12 @@ int IO_APIC_get_PCI_irq_vector(int bus, int slot, int pin,
 <<<<<<< HEAD
 	int ioapic_idx, i, best_guess = -1;
 =======
+<<<<<<< HEAD
+	int ioapic_idx, i, best_guess = -1;
+=======
 	int apic, i, best_guess = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	apic_printk(APIC_DEBUG,
 		    "querying PCI -> IRQ mapping bus:%d, slot:%d, pin:%d.\n",
@@ -1252,9 +1360,14 @@ int IO_APIC_get_PCI_irq_vector(int bus, int slot, int pin,
 		for (ioapic_idx = 0; ioapic_idx < nr_ioapics; ioapic_idx++)
 			if (mpc_ioapic_id(ioapic_idx) == mp_irqs[i].dstapic ||
 =======
+<<<<<<< HEAD
+		for (ioapic_idx = 0; ioapic_idx < nr_ioapics; ioapic_idx++)
+			if (mpc_ioapic_id(ioapic_idx) == mp_irqs[i].dstapic ||
+=======
 		for (apic = 0; apic < nr_ioapics; apic++)
 			if (mpc_ioapic_id(apic) == mp_irqs[i].dstapic ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    mp_irqs[i].dstapic == MP_APIC_ALL)
 				break;
 
@@ -1263,6 +1376,9 @@ int IO_APIC_get_PCI_irq_vector(int bus, int slot, int pin,
 		    (bus == lbus) &&
 		    (slot == ((mp_irqs[i].srcbusirq >> 2) & 0x1f))) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			int irq = pin_2_irq(i, ioapic_idx, mp_irqs[i].dstirq);
 
 			if (!(ioapic_idx || IO_APIC_IRQ(irq)))
@@ -1270,6 +1386,8 @@ int IO_APIC_get_PCI_irq_vector(int bus, int slot, int pin,
 
 			if (pin == (mp_irqs[i].srcbusirq & 3)) {
 				set_io_apic_irq_attr(irq_attr, ioapic_idx,
+<<<<<<< HEAD
+=======
 =======
 			int irq = pin_2_irq(i, apic, mp_irqs[i].dstirq);
 
@@ -1279,6 +1397,7 @@ int IO_APIC_get_PCI_irq_vector(int bus, int slot, int pin,
 			if (pin == (mp_irqs[i].srcbusirq & 3)) {
 				set_io_apic_irq_attr(irq_attr, apic,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						     mp_irqs[i].dstirq,
 						     irq_trigger(i),
 						     irq_polarity(i));
@@ -1292,8 +1411,12 @@ int IO_APIC_get_PCI_irq_vector(int bus, int slot, int pin,
 <<<<<<< HEAD
 				set_io_apic_irq_attr(irq_attr, ioapic_idx,
 =======
+<<<<<<< HEAD
+				set_io_apic_irq_attr(irq_attr, ioapic_idx,
+=======
 				set_io_apic_irq_attr(irq_attr, apic,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						     mp_irqs[i].dstirq,
 						     irq_trigger(i),
 						     irq_polarity(i));
@@ -1481,8 +1604,11 @@ void __setup_vector_irq(int cpu)
 static struct irq_chip ioapic_chip;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct irq_chip ir_ioapic_chip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_X86_32
 static inline int IO_APIC_irq_trigger(int irq)
@@ -1529,8 +1655,12 @@ static void ioapic_register_intr(unsigned int irq, struct irq_cfg *cfg,
 <<<<<<< HEAD
 		irq_remap_modify_chip_defaults(chip);
 =======
+<<<<<<< HEAD
+		irq_remap_modify_chip_defaults(chip);
+=======
 		chip = &ir_ioapic_chip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fasteoi = trigger != 0;
 	}
 
@@ -1540,6 +1670,9 @@ static void ioapic_register_intr(unsigned int irq, struct irq_cfg *cfg,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int setup_ir_ioapic_entry(int irq,
 			      struct IR_IO_APIC_route_entry *entry,
@@ -1634,6 +1767,8 @@ static int setup_ioapic_entry(int irq, struct IO_APIC_route_entry *entry,
 
 static void setup_ioapic_irq(unsigned int irq, struct irq_cfg *cfg,
 				struct io_apic_irq_attr *attr)
+<<<<<<< HEAD
+=======
 =======
 static int setup_ioapic_entry(int apic_id, int irq,
 			      struct IO_APIC_route_entry *entry,
@@ -1697,6 +1832,7 @@ static int setup_ioapic_entry(int apic_id, int irq,
 static void setup_ioapic_irq(int apic_id, int pin, unsigned int irq,
 			     struct irq_cfg *cfg, int trigger, int polarity)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct IO_APIC_route_entry entry;
 	unsigned int dest;
@@ -1719,6 +1855,9 @@ static void setup_ioapic_irq(int apic_id, int pin, unsigned int irq,
 	apic_printk(APIC_VERBOSE,KERN_DEBUG
 		    "IOAPIC[%d]: Set routing entry (%d-%d -> 0x%x -> "
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    "IRQ %d Mode:%i Active:%i Dest:%d)\n",
 		    attr->ioapic, mpc_ioapic_id(attr->ioapic), attr->ioapic_pin,
 		    cfg->vector, irq, attr->trigger, attr->polarity, dest);
@@ -1739,6 +1878,8 @@ static void setup_ioapic_irq(int apic_id, int pin, unsigned int irq,
 }
 
 static bool __init io_apic_pin_not_connected(int idx, int ioapic_idx, int pin)
+<<<<<<< HEAD
+=======
 =======
 		    "IRQ %d Mode:%i Active:%i)\n",
 		    apic_id, mpc_ioapic_id(apic_id), pin, cfg->vector,
@@ -1762,17 +1903,23 @@ static bool __init io_apic_pin_not_connected(int idx, int ioapic_idx, int pin)
 
 static bool __init io_apic_pin_not_connected(int idx, int apic_id, int pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (idx != -1)
 		return false;
 
 	apic_printk(APIC_VERBOSE, KERN_DEBUG " apic %d pin %d not connected\n",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    mpc_ioapic_id(ioapic_idx), pin);
 	return true;
 }
 
 static void __init __io_apic_setup_irqs(unsigned int ioapic_idx)
+<<<<<<< HEAD
+=======
 =======
 		    mpc_ioapic_id(apic_id), pin);
 	return true;
@@ -1780,12 +1927,16 @@ static void __init __io_apic_setup_irqs(unsigned int ioapic_idx)
 
 static void __init __io_apic_setup_irqs(unsigned int apic_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int idx, node = cpu_to_node(0);
 	struct io_apic_irq_attr attr;
 	unsigned int pin, irq;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (pin = 0; pin < ioapics[ioapic_idx].nr_registers; pin++) {
 		idx = find_irq_entry(ioapic_idx, pin, mp_INT);
 		if (io_apic_pin_not_connected(idx, ioapic_idx, pin))
@@ -1794,6 +1945,8 @@ static void __init __io_apic_setup_irqs(unsigned int apic_id)
 		irq = pin_2_irq(idx, ioapic_idx, pin);
 
 		if ((ioapic_idx > 0) && (irq > 16))
+<<<<<<< HEAD
+=======
 =======
 	for (pin = 0; pin < ioapics[apic_id].nr_registers; pin++) {
 		idx = find_irq_entry(apic_id, pin, mp_INT);
@@ -1804,6 +1957,7 @@ static void __init __io_apic_setup_irqs(unsigned int apic_id)
 
 		if ((apic_id > 0) && (irq > 16))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		/*
@@ -1812,16 +1966,22 @@ static void __init __io_apic_setup_irqs(unsigned int apic_id)
 		 */
 		if (apic->multi_timer_check &&
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    apic->multi_timer_check(ioapic_idx, irq))
 			continue;
 
 		set_io_apic_irq_attr(&attr, ioapic_idx, pin, irq_trigger(idx),
+<<<<<<< HEAD
+=======
 =======
 		    apic->multi_timer_check(apic_id, irq))
 			continue;
 
 		set_io_apic_irq_attr(&attr, apic_id, pin, irq_trigger(idx),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     irq_polarity(idx));
 
 		io_apic_setup_irq_pin(irq, node, &attr);
@@ -1831,12 +1991,17 @@ static void __init __io_apic_setup_irqs(unsigned int apic_id)
 static void __init setup_IO_APIC_irqs(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int ioapic_idx;
 
 	apic_printk(APIC_VERBOSE, KERN_DEBUG "init IO_APIC IRQs\n");
 
 	for (ioapic_idx = 0; ioapic_idx < nr_ioapics; ioapic_idx++)
 		__io_apic_setup_irqs(ioapic_idx);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int apic_id;
 
@@ -1845,6 +2010,7 @@ static void __init setup_IO_APIC_irqs(void)
 	for (apic_id = 0; apic_id < nr_ioapics; apic_id++)
 		__io_apic_setup_irqs(apic_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1857,14 +2023,21 @@ void setup_IO_APIC_irq_extra(u32 gsi)
 <<<<<<< HEAD
 	int ioapic_idx = 0, pin, idx, irq, node = cpu_to_node(0);
 =======
+<<<<<<< HEAD
+	int ioapic_idx = 0, pin, idx, irq, node = cpu_to_node(0);
+=======
 	int apic_id = 0, pin, idx, irq, node = cpu_to_node(0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct io_apic_irq_attr attr;
 
 	/*
 	 * Convert 'gsi' to 'ioapic.pin'.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ioapic_idx = mp_find_ioapic(gsi);
 	if (ioapic_idx < 0)
 		return;
@@ -1881,6 +2054,8 @@ void setup_IO_APIC_irq_extra(u32 gsi)
 		return;
 
 	set_io_apic_irq_attr(&attr, ioapic_idx, pin, irq_trigger(idx),
+<<<<<<< HEAD
+=======
 =======
 	apic_id = mp_find_ioapic(gsi);
 	if (apic_id < 0)
@@ -1899,6 +2074,7 @@ void setup_IO_APIC_irq_extra(u32 gsi)
 
 	set_io_apic_irq_attr(&attr, apic_id, pin, irq_trigger(idx),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     irq_polarity(idx));
 
 	io_apic_setup_irq_pin_once(irq, node, &attr);
@@ -1911,9 +2087,14 @@ void setup_IO_APIC_irq_extra(u32 gsi)
 static void __init setup_timer_IRQ0_pin(unsigned int ioapic_idx,
 					 unsigned int pin, int vector)
 =======
+<<<<<<< HEAD
+static void __init setup_timer_IRQ0_pin(unsigned int ioapic_idx,
+					 unsigned int pin, int vector)
+=======
 static void __init setup_timer_IRQ0_pin(unsigned int apic_id, unsigned int pin,
 					int vector)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct IO_APIC_route_entry entry;
 
@@ -1945,12 +2126,17 @@ static void __init setup_timer_IRQ0_pin(unsigned int apic_id, unsigned int pin,
 	 * Add it to the IO-APIC irq-routing table:
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ioapic_write_entry(ioapic_idx, pin, entry);
 }
 
 __apicdebuginit(void) print_IO_APIC(int ioapic_idx)
 {
 	int i;
+<<<<<<< HEAD
+=======
 =======
 	ioapic_write_entry(apic_id, pin, entry);
 }
@@ -1960,12 +2146,16 @@ __apicdebuginit(void) print_IO_APIC(void)
 {
 	int apic, i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	union IO_APIC_reg_00 reg_00;
 	union IO_APIC_reg_01 reg_01;
 	union IO_APIC_reg_02 reg_02;
 	union IO_APIC_reg_03 reg_03;
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	raw_spin_lock_irqsave(&ioapic_lock, flags);
 	reg_00.raw = io_apic_read(ioapic_idx, 0);
@@ -1978,6 +2168,8 @@ __apicdebuginit(void) print_IO_APIC(void)
 
 	printk("\n");
 	printk(KERN_DEBUG "IO APIC #%d......\n", mpc_ioapic_id(ioapic_idx));
+<<<<<<< HEAD
+=======
 =======
 	struct irq_cfg *cfg;
 	unsigned int irq;
@@ -2007,6 +2199,7 @@ __apicdebuginit(void) print_IO_APIC(void)
 	printk("\n");
 	printk(KERN_DEBUG "IO APIC #%d......\n", mpc_ioapic_id(apic));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_DEBUG ".... register #00: %08X\n", reg_00.raw);
 	printk(KERN_DEBUG ".......    : physical APIC id: %02X\n", reg_00.bits.ID);
 	printk(KERN_DEBUG ".......    : Delivery Type: %X\n", reg_00.bits.delivery_type);
@@ -2014,18 +2207,24 @@ __apicdebuginit(void) print_IO_APIC(void)
 
 	printk(KERN_DEBUG ".... register #01: %08X\n", *(int *)&reg_01);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_DEBUG ".......     : max redirection entries: %02X\n",
 		reg_01.bits.entries);
 
 	printk(KERN_DEBUG ".......     : PRQ implemented: %X\n", reg_01.bits.PRQ);
 	printk(KERN_DEBUG ".......     : IO APIC version: %02X\n",
 		reg_01.bits.version);
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_DEBUG ".......     : max redirection entries: %04X\n", reg_01.bits.entries);
 
 	printk(KERN_DEBUG ".......     : PRQ implemented: %X\n", reg_01.bits.PRQ);
 	printk(KERN_DEBUG ".......     : IO APIC version: %04X\n", reg_01.bits.version);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Some Intel chipsets with IO APIC VERSION of 0x1? don't have reg_02,
@@ -2051,6 +2250,9 @@ __apicdebuginit(void) print_IO_APIC(void)
 	printk(KERN_DEBUG ".... IRQ redirection table:\n");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (intr_remapping_enabled) {
 		printk(KERN_DEBUG " NR Indx Fmt Mask Trig IRR"
 			" Pol Stat Indx2 Zero Vect:\n");
@@ -2127,6 +2329,8 @@ __apicdebuginit(void) print_IO_APICs(void)
 	for (ioapic_idx = 0; ioapic_idx < nr_ioapics; ioapic_idx++)
 		print_IO_APIC(ioapic_idx);
 
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_DEBUG " NR Dst Mask Trig IRR Pol"
 			  " Stat Dmod Deli Vect:\n");
@@ -2154,17 +2358,24 @@ __apicdebuginit(void) print_IO_APICs(void)
 	}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_DEBUG "IRQ to pin mappings:\n");
 	for_each_active_irq(irq) {
 		struct irq_pin_list *entry;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chip = irq_get_chip(irq);
 		if (chip != &ioapic_chip)
 			continue;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cfg = irq_get_chip_data(irq);
 		if (!cfg)
 			continue;
@@ -2180,9 +2391,12 @@ __apicdebuginit(void) print_IO_APICs(void)
 	printk(KERN_INFO ".................................... done.\n");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 __apicdebuginit(void) print_APIC_field(int base)
@@ -2379,8 +2593,12 @@ __apicdebuginit(int) print_ICs(void)
 <<<<<<< HEAD
 	print_IO_APICs();
 =======
+<<<<<<< HEAD
+	print_IO_APICs();
+=======
 	print_IO_APIC();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -2388,8 +2606,12 @@ __apicdebuginit(int) print_ICs(void)
 <<<<<<< HEAD
 late_initcall(print_ICs);
 =======
+<<<<<<< HEAD
+late_initcall(print_ICs);
+=======
 fs_initcall(print_ICs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* Where if anywhere is the i8259 connect in external int mode */
@@ -2512,8 +2734,12 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 <<<<<<< HEAD
 	int ioapic_idx;
 =======
+<<<<<<< HEAD
+	int ioapic_idx;
+=======
 	int apic_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 	unsigned char old_id;
 	unsigned long flags;
@@ -2528,6 +2754,9 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 	 * Set the IOAPIC ID to the value stored in the MPC table.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (ioapic_idx = 0; ioapic_idx < nr_ioapics; ioapic_idx++) {
 		/* Read the register 0 value */
 		raw_spin_lock_irqsave(&ioapic_lock, flags);
@@ -2542,6 +2771,8 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 			printk(KERN_ERR "... fixing up to %d. (tell your hw vendor)\n",
 				reg_00.bits.ID);
 			ioapics[ioapic_idx].mp_config.apicid = reg_00.bits.ID;
+<<<<<<< HEAD
+=======
 =======
 	for (apic_id = 0; apic_id < nr_ioapics; apic_id++) {
 
@@ -2559,6 +2790,7 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 				reg_00.bits.ID);
 			ioapics[apic_id].mp_config.apicid = reg_00.bits.ID;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		/*
@@ -2572,10 +2804,16 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 			printk(KERN_ERR "BIOS bug, IO-APIC#%d ID %d is already used!...\n",
 				ioapic_idx, mpc_ioapic_id(ioapic_idx));
 =======
+<<<<<<< HEAD
+					    mpc_ioapic_id(ioapic_idx))) {
+			printk(KERN_ERR "BIOS bug, IO-APIC#%d ID %d is already used!...\n",
+				ioapic_idx, mpc_ioapic_id(ioapic_idx));
+=======
 					    mpc_ioapic_id(apic_id))) {
 			printk(KERN_ERR "BIOS bug, IO-APIC#%d ID %d is already used!...\n",
 				apic_id, mpc_ioapic_id(apic_id));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			for (i = 0; i < get_physical_broadcast(); i++)
 				if (!physid_isset(i, phys_id_present_map))
 					break;
@@ -2585,6 +2823,9 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 				i);
 			physid_set(i, phys_id_present_map);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ioapics[ioapic_idx].mp_config.apicid = i;
 		} else {
 			physid_mask_t tmp;
@@ -2593,6 +2834,8 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 			apic_printk(APIC_VERBOSE, "Setting %d in the "
 					"phys_id_present_map\n",
 					mpc_ioapic_id(ioapic_idx));
+<<<<<<< HEAD
+=======
 =======
 			ioapics[apic_id].mp_config.apicid = i;
 		} else {
@@ -2603,6 +2846,7 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 					"phys_id_present_map\n",
 					mpc_ioapic_id(apic_id));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			physids_or(phys_id_present_map, phys_id_present_map, tmp);
 		}
 
@@ -2611,11 +2855,16 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 		 * if the ID changed.
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (old_id != mpc_ioapic_id(ioapic_idx))
 			for (i = 0; i < mp_irq_entries; i++)
 				if (mp_irqs[i].dstapic == old_id)
 					mp_irqs[i].dstapic
 						= mpc_ioapic_id(ioapic_idx);
+<<<<<<< HEAD
+=======
 =======
 		if (old_id != mpc_ioapic_id(apic_id))
 			for (i = 0; i < mp_irq_entries; i++)
@@ -2623,6 +2872,7 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 					mp_irqs[i].dstapic
 						= mpc_ioapic_id(apic_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Update the ID register according to the right value
@@ -2631,18 +2881,27 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 <<<<<<< HEAD
 		if (mpc_ioapic_id(ioapic_idx) == reg_00.bits.ID)
 =======
+<<<<<<< HEAD
+		if (mpc_ioapic_id(ioapic_idx) == reg_00.bits.ID)
+=======
 		if (mpc_ioapic_id(apic_id) == reg_00.bits.ID)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		apic_printk(APIC_VERBOSE, KERN_INFO
 			"...changing IO-APIC physical APIC ID to %d ...",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mpc_ioapic_id(ioapic_idx));
 
 		reg_00.bits.ID = mpc_ioapic_id(ioapic_idx);
 		raw_spin_lock_irqsave(&ioapic_lock, flags);
 		io_apic_write(ioapic_idx, 0, reg_00.raw);
+<<<<<<< HEAD
+=======
 =======
 			mpc_ioapic_id(apic_id));
 
@@ -2650,6 +2909,7 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 		raw_spin_lock_irqsave(&ioapic_lock, flags);
 		io_apic_write(apic_id, 0, reg_00.raw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 
 		/*
@@ -2661,10 +2921,16 @@ void __init setup_ioapic_ids_from_mpc_nocheck(void)
 		raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 		if (reg_00.bits.ID != mpc_ioapic_id(ioapic_idx))
 =======
+<<<<<<< HEAD
+		reg_00.raw = io_apic_read(ioapic_idx, 0);
+		raw_spin_unlock_irqrestore(&ioapic_lock, flags);
+		if (reg_00.bits.ID != mpc_ioapic_id(ioapic_idx))
+=======
 		reg_00.raw = io_apic_read(apic_id, 0);
 		raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 		if (reg_00.bits.ID != mpc_ioapic_id(apic_id))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk("could not set ID!\n");
 		else
 			apic_printk(APIC_VERBOSE, " ok.\n");
@@ -2878,8 +3144,12 @@ ioapic_set_affinity(struct irq_data *data, const struct cpumask *mask,
 <<<<<<< HEAD
 #ifdef CONFIG_IRQ_REMAP
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_IRQ_REMAP
+=======
 #ifdef CONFIG_INTR_REMAP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Migrate the IO-APIC irq in the presence of intr-remapping.
@@ -2896,7 +3166,13 @@ ioapic_set_affinity(struct irq_data *data, const struct cpumask *mask,
  * As the migration is a simple atomic update of IRTE, the same mechanism
  * is used to migrate MSI irq's in the presence of interrupt-remapping.
 =======
+<<<<<<< HEAD
+ *
+ * As the migration is a simple atomic update of IRTE, the same mechanism
+ * is used to migrate MSI irq's in the presence of interrupt-remapping.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int
 ir_ioapic_set_affinity(struct irq_data *data, const struct cpumask *mask,
@@ -2922,6 +3198,9 @@ ir_ioapic_set_affinity(struct irq_data *data, const struct cpumask *mask,
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Atomically updates the IRTE with the new destination, vector
 	 * and flushes the interrupt entry cache.
 	 */
@@ -2932,12 +3211,15 @@ ir_ioapic_set_affinity(struct irq_data *data, const struct cpumask *mask,
 	 * at the new destination. So, time to cleanup the previous
 	 * vector allocation.
 	 */
+<<<<<<< HEAD
+=======
 =======
 	 * Modified the IRTE and flushes the Interrupt entry cache.
 	 */
 	modify_irte(irq, &irte);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cfg->move_in_progress)
 		send_cleanup_vector(cfg);
 
@@ -2963,9 +3245,14 @@ asmlinkage void smp_irq_move_cleanup_interrupt(void)
 	irq_enter();
 	exit_idle();
 =======
+<<<<<<< HEAD
+	irq_enter();
+	exit_idle();
+=======
 	exit_idle();
 	irq_enter();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	me = smp_processor_id();
 	for (vector = FIRST_EXTERNAL_VECTOR; vector < NR_VECTORS; vector++) {
@@ -3056,6 +3343,9 @@ static void ack_apic_edge(struct irq_data *data)
 atomic_t irq_mis_count;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_GENERIC_PENDING_IRQ
 static inline bool ioapic_irqd_mask(struct irq_data *data, struct irq_cfg *cfg)
 {
@@ -3112,6 +3402,8 @@ static inline void ioapic_irqd_unmask(struct irq_data *data,
 {
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 /*
  * IO-APIC versions below 0x20 don't support EOI register.
@@ -3155,17 +3447,23 @@ static void eoi_ioapic_irq(unsigned int irq, struct irq_cfg *cfg)
 	raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void ack_apic_level(struct irq_data *data)
 {
 	struct irq_cfg *cfg = data->chip_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, irq = data->irq;
 	unsigned long v;
 	bool masked;
 
 	irq_complete_move(cfg);
 	masked = ioapic_irqd_mask(data, cfg);
+<<<<<<< HEAD
+=======
 =======
 	int i, do_unmask_irq = 0, irq = data->irq;
 	unsigned long v;
@@ -3179,6 +3477,7 @@ static void ack_apic_level(struct irq_data *data)
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * It appears there is an erratum which affects at least version 0x11
@@ -3235,10 +3534,15 @@ static void ack_apic_level(struct irq_data *data)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ioapic_irqd_unmask(data, cfg, masked);
 }
 
 #ifdef CONFIG_IRQ_REMAP
+<<<<<<< HEAD
+=======
 =======
 	/* Now we can move and renable the irq */
 	if (unlikely(do_unmask_irq)) {
@@ -3276,6 +3580,7 @@ static void ack_apic_level(struct irq_data *data)
 
 #ifdef CONFIG_INTR_REMAP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ir_ack_apic_edge(struct irq_data *data)
 {
 	ack_APIC_irq();
@@ -3287,6 +3592,9 @@ static void ir_ack_apic_level(struct irq_data *data)
 	eoi_ioapic_irq(data->irq, data->chip_data);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void ir_print_prefix(struct irq_data *data, struct seq_file *p)
 {
@@ -3304,9 +3612,12 @@ static void irq_remap_modify_chip_defaults(struct irq_chip *chip)
 #endif
 }
 #endif /* CONFIG_IRQ_REMAP */
+<<<<<<< HEAD
+=======
 =======
 #endif /* CONFIG_INTR_REMAP */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct irq_chip ioapic_chip __read_mostly = {
 	.name			= "IO-APIC",
@@ -3321,6 +3632,8 @@ static struct irq_chip ioapic_chip __read_mostly = {
 	.irq_retrigger		= ioapic_retrigger_irq,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct irq_chip ir_ioapic_chip __read_mostly = {
@@ -3339,6 +3652,7 @@ static struct irq_chip ir_ioapic_chip __read_mostly = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void init_IO_APIC_traps(void)
 {
 	struct irq_cfg *cfg;
@@ -3631,12 +3945,18 @@ static inline void __init check_timer(void)
 	local_irq_disable();
 	apic_printk(APIC_QUIET, KERN_INFO "..... failed :(.\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (x2apic_preenabled)
 		apic_printk(APIC_QUIET, KERN_INFO
 			    "Perhaps problem with the pre-enabled x2apic mode\n"
 			    "Try booting with x2apic and interrupt-remapping disabled in the bios.\n");
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	panic("IO-APIC + timer doesn't work!  Boot with apic=debug and send a "
 		"report.  Then try booting with the 'noapic' option.\n");
 out:
@@ -3700,18 +4020,27 @@ late_initcall(io_apic_bug_finalize);
 <<<<<<< HEAD
 static void resume_ioapic_id(int ioapic_idx)
 =======
+<<<<<<< HEAD
+static void resume_ioapic_id(int ioapic_idx)
+=======
 static void resume_ioapic_id(int ioapic_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 	union IO_APIC_reg_00 reg_00;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spin_lock_irqsave(&ioapic_lock, flags);
 	reg_00.raw = io_apic_read(ioapic_idx, 0);
 	if (reg_00.bits.ID != mpc_ioapic_id(ioapic_idx)) {
 		reg_00.bits.ID = mpc_ioapic_id(ioapic_idx);
 		io_apic_write(ioapic_idx, 0, reg_00.raw);
+<<<<<<< HEAD
+=======
 =======
 
 	raw_spin_lock_irqsave(&ioapic_lock, flags);
@@ -3720,6 +4049,7 @@ static void resume_ioapic_id(int ioapic_id)
 		reg_00.bits.ID = mpc_ioapic_id(ioapic_id);
 		io_apic_write(ioapic_id, 0, reg_00.raw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	raw_spin_unlock_irqrestore(&ioapic_lock, flags);
 }
@@ -3727,16 +4057,22 @@ static void resume_ioapic_id(int ioapic_id)
 static void ioapic_resume(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ioapic_idx;
 
 	for (ioapic_idx = nr_ioapics - 1; ioapic_idx >= 0; ioapic_idx--)
 		resume_ioapic_id(ioapic_idx);
+<<<<<<< HEAD
+=======
 =======
 	int ioapic_id;
 
 	for (ioapic_id = nr_ioapics - 1; ioapic_id >= 0; ioapic_id--)
 		resume_ioapic_id(ioapic_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	restore_ioapic_entries();
 }
@@ -3918,6 +4254,8 @@ msi_set_affinity(struct irq_data *data, const struct cpumask *mask, bool force)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_INTR_REMAP
 /*
  * Migrate the MSI irq to another cpumask. This migration is
@@ -3958,6 +4296,7 @@ ir_msi_set_affinity(struct irq_data *data, const struct cpumask *mask,
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_SMP */
 
 /*
@@ -3977,6 +4316,8 @@ static struct irq_chip msi_chip = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct irq_chip msi_ir_chip = {
 	.name			= "IR-PCI-MSI",
 	.irq_unmask		= unmask_msi_irq,
@@ -3991,6 +4332,7 @@ static struct irq_chip msi_ir_chip = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Map the PCI dev to the corresponding remapping hardware unit
  * and allocate 'nvec' consecutive interrupt-remapping table entries
@@ -4036,8 +4378,12 @@ static int setup_msi_irq(struct pci_dev *dev, struct msi_desc *msidesc, int irq)
 <<<<<<< HEAD
 		irq_remap_modify_chip_defaults(chip);
 =======
+<<<<<<< HEAD
+		irq_remap_modify_chip_defaults(chip);
+=======
 		chip = &msi_ir_chip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	irq_set_chip_and_handler_name(irq, chip, handle_edge_irq, "edge");
@@ -4113,8 +4459,12 @@ void native_teardown_msi_irq(unsigned int irq)
 <<<<<<< HEAD
 #ifdef CONFIG_DMAR_TABLE
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_DMAR_TABLE
+=======
 #if defined (CONFIG_DMAR) || defined (CONFIG_INTR_REMAP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 static int
 dmar_msi_set_affinity(struct irq_data *data, const struct cpumask *mask,
@@ -4197,6 +4547,8 @@ static int hpet_msi_set_affinity(struct irq_data *data,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct irq_chip ir_hpet_msi_type = {
 	.name			= "IR-HPET_MSI",
 	.irq_unmask		= hpet_msi_unmask,
@@ -4211,6 +4563,7 @@ static struct irq_chip ir_hpet_msi_type = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct irq_chip hpet_msi_type = {
 	.name = "HPET_MSI",
 	.irq_unmask = hpet_msi_unmask,
@@ -4250,8 +4603,12 @@ int arch_setup_hpet_msi(unsigned int irq, unsigned int id)
 <<<<<<< HEAD
 		irq_remap_modify_chip_defaults(chip);
 =======
+<<<<<<< HEAD
+		irq_remap_modify_chip_defaults(chip);
+=======
 		chip = &ir_hpet_msi_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	irq_set_chip_and_handler_name(irq, chip, handle_edge_irq, "edge");
 	return 0;
@@ -4362,9 +4719,13 @@ io_apic_setup_irq_pin(unsigned int irq, int node, struct io_apic_irq_attr *attr)
 <<<<<<< HEAD
 		setup_ioapic_irq(irq, cfg, attr);
 =======
+<<<<<<< HEAD
+		setup_ioapic_irq(irq, cfg, attr);
+=======
 		setup_ioapic_irq(attr->ioapic, attr->ioapic_pin, irq, cfg,
 				 attr->trigger, attr->polarity);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -4372,6 +4733,9 @@ int io_apic_setup_irq_pin_once(unsigned int irq, int node,
 			       struct io_apic_irq_attr *attr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int ioapic_idx = attr->ioapic, pin = attr->ioapic_pin;
 	int ret;
 
@@ -4379,6 +4743,8 @@ int io_apic_setup_irq_pin_once(unsigned int irq, int node,
 	if (test_bit(pin, ioapics[ioapic_idx].pin_programmed)) {
 		pr_debug("Pin %d-%d already programmed\n",
 			 mpc_ioapic_id(ioapic_idx), pin);
+<<<<<<< HEAD
+=======
 =======
 	unsigned int id = attr->ioapic, pin = attr->ioapic_pin;
 	int ret;
@@ -4388,6 +4754,7 @@ int io_apic_setup_irq_pin_once(unsigned int irq, int node,
 		pr_debug("Pin %d-%d already programmed\n",
 			 mpc_ioapic_id(id), pin);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 	ret = io_apic_setup_irq_pin(irq, node, attr);
@@ -4395,8 +4762,12 @@ int io_apic_setup_irq_pin_once(unsigned int irq, int node,
 <<<<<<< HEAD
 		set_bit(pin, ioapics[ioapic_idx].pin_programmed);
 =======
+<<<<<<< HEAD
+		set_bit(pin, ioapics[ioapic_idx].pin_programmed);
+=======
 		set_bit(pin, ioapics[id].pin_programmed);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -4434,8 +4805,11 @@ int get_nr_irqs_gsi(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SPARSE_IRQ
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init arch_probe_nr_irqs(void)
 {
 	int nr;
@@ -4457,8 +4831,11 @@ int __init arch_probe_nr_irqs(void)
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int io_apic_set_pci_routing(struct device *dev, int irq,
 			    struct io_apic_irq_attr *irq_attr)
@@ -4692,13 +5069,19 @@ static struct resource * __init ioapic_setup_resources(int nr_ioapics)
 void __init ioapic_and_gsi_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	io_apic_ops.init();
 }
 
 static void __init __ioapic_init_mappings(void)
 {
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long ioapic_phys, idx = FIX_IO_APIC_BASE_0;
 	struct resource *ioapic_res;
 	int i;
@@ -4794,12 +5177,17 @@ static __init int bad_ioapic(unsigned long address)
 {
 	if (nr_ioapics >= MAX_IO_APICS) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_warn("WARNING: Max # of I/O APICs (%d) exceeded (found %d), skipping\n",
 			MAX_IO_APICS, nr_ioapics);
 		return 1;
 	}
 	if (!address) {
 		pr_warn("WARNING: Bogus (zero) I/O APIC address found in table, skipping!\n");
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_WARNING "WARNING: Max # of I/O APICs (%d) exceeded "
 		       "(found %d), skipping\n", MAX_IO_APICS, nr_ioapics);
@@ -4809,12 +5197,16 @@ static __init int bad_ioapic(unsigned long address)
 		printk(KERN_WARNING "WARNING: Bogus (zero) I/O APIC address"
 		       " found in table, skipping!\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 1;
 	}
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int bad_ioapic_register(int idx)
 {
 	union IO_APIC_reg_00 reg_00;
@@ -4834,8 +5226,11 @@ static __init int bad_ioapic_register(int idx)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init mp_register_ioapic(int id, u32 address, u32 gsi_base)
 {
 	int idx = 0;
@@ -4853,14 +5248,20 @@ void __init mp_register_ioapic(int id, u32 address, u32 gsi_base)
 
 	set_fixmap_nocache(FIX_IO_APIC_BASE_0 + idx, address);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (bad_ioapic_register(idx)) {
 		clear_fixmap(FIX_IO_APIC_BASE_0 + idx);
 		return;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ioapics[idx].mp_config.apicid = io_apic_unique_id(id);
 	ioapics[idx].mp_config.apicver = io_apic_get_version(idx);
 
@@ -4882,16 +5283,22 @@ void __init mp_register_ioapic(int id, u32 address, u32 gsi_base)
 		gsi_top = gsi_cfg->gsi_end + 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_info("IOAPIC[%d]: apic_id %d, version %d, address 0x%x, GSI %d-%d\n",
 		idx, mpc_ioapic_id(idx),
 		mpc_ioapic_ver(idx), mpc_ioapic_addr(idx),
 		gsi_cfg->gsi_base, gsi_cfg->gsi_end);
+<<<<<<< HEAD
+=======
 =======
 	printk(KERN_INFO "IOAPIC[%d]: apic_id %d, version %d, address 0x%x, "
 	       "GSI %d-%d\n", idx, mpc_ioapic_id(idx),
 	       mpc_ioapic_ver(idx), mpc_ioapic_addr(idx),
 	       gsi_cfg->gsi_base, gsi_cfg->gsi_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nr_ioapics++;
 }

@@ -19,7 +19,12 @@
 /* Don't pollute the namespace since <signal.h> includes this file. */
 #define __need_int_reg_t
 =======
+<<<<<<< HEAD
+/* Don't pollute the namespace since <signal.h> includes this file. */
+#define __need_int_reg_t
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <arch/abi.h>
 
 /*
@@ -28,6 +33,9 @@
  */
 struct sigcontext {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__uint_reg_t gregs[53];	/* General-purpose registers.  */
 	__uint_reg_t tp;	/* Aliases gregs[TREG_TP].  */
 	__uint_reg_t sp;	/* Aliases gregs[TREG_SP].  */
@@ -36,6 +44,8 @@ struct sigcontext {
 	__uint_reg_t ics;	/* In Interrupt Critical Section?  */
 	__uint_reg_t faultnum;	/* Fault number.  */
 	__uint_reg_t pad[5];
+<<<<<<< HEAD
+=======
 =======
 	uint_reg_t gregs[53];	/* General-purpose registers.  */
 	uint_reg_t tp;		/* Aliases gregs[TREG_TP].  */
@@ -46,6 +56,7 @@ struct sigcontext {
 	uint_reg_t faultnum;	/* Fault number.  */
 	uint_reg_t pad[5];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* _ASM_TILE_SIGCONTEXT_H */

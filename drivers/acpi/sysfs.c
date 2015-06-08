@@ -149,12 +149,28 @@ static int param_get_debug_level(char *buffer, const struct kernel_param *kp)
 	return result;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct kernel_param_ops param_ops_debug_layer = {
+=======
 static struct kernel_param_ops param_ops_debug_layer = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct kernel_param_ops param_ops_debug_layer = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set = param_set_uint,
 	.get = param_get_debug_layer,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct kernel_param_ops param_ops_debug_level = {
+=======
 static struct kernel_param_ops param_ops_debug_level = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct kernel_param_ops param_ops_debug_level = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set = param_set_uint,
 	.get = param_get_debug_level,
 };
@@ -173,7 +189,15 @@ static int param_set_trace_state(const char *val, struct kernel_param *kp)
 {
 	int result = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!strncmp(val, "enable", strlen("enable") - 1)) {
+=======
 	if (!strncmp(val, "enable", strlen("enable"))) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!strncmp(val, "enable", strlen("enable"))) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		result = acpi_debug_trace(trace_method_name, trace_debug_level,
 					  trace_debug_layer, 0);
 		if (result)
@@ -181,7 +205,15 @@ static int param_set_trace_state(const char *val, struct kernel_param *kp)
 		goto exit;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!strncmp(val, "disable", strlen("disable") - 1)) {
+=======
 	if (!strncmp(val, "disable", strlen("disable"))) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!strncmp(val, "disable", strlen("disable"))) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int name = 0;
 		result = acpi_debug_trace((char *)&name, trace_debug_level,
 					  trace_debug_layer, 0);
@@ -706,11 +738,37 @@ static void __exit interrupt_stats_exit(void)
 	return;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t
+acpi_show_profile(struct device *dev, struct device_attribute *attr,
+		  char *buf)
+{
+	return sprintf(buf, "%d\n", acpi_gbl_FADT.preferred_profile);
+}
+
+static const struct device_attribute pm_profile_attr =
+	__ATTR(pm_profile, S_IRUGO, acpi_show_profile, NULL);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init acpi_sysfs_init(void)
 {
 	int result;
 
 	result = acpi_tables_sysfs_init();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (result)
+		return result;
+	result = sysfs_create_file(acpi_kobj, &pm_profile_attr.attr);
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return result;
 }

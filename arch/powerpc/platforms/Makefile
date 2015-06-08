@@ -18,9 +18,14 @@ obj-$(CONFIG_PPC_86xx)		+= 86xx/
 obj-$(CONFIG_PPC_POWERNV)	+= powernv/
 obj-$(CONFIG_PPC_PSERIES)	+= pseries/
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_PPC_POWERNV)	+= powernv/
+obj-$(CONFIG_PPC_PSERIES)	+= pseries/
+=======
 obj-$(CONFIG_PPC_PSERIES)	+= pseries/
 obj-$(CONFIG_PPC_ISERIES)	+= iseries/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_PPC_MAPLE)		+= maple/
 obj-$(CONFIG_PPC_PASEMI)	+= pasemi/
 obj-$(CONFIG_PPC_CELL)		+= cell/

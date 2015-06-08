@@ -5,11 +5,16 @@
  * Function: v6_early_abort
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Params  : r2 = pt_regs
  *	   : r4 = aborted context pc
  *	   : r5 = aborted context psr
  *
  * Returns : r4 - r11, r13 preserved
+<<<<<<< HEAD
+=======
 =======
  * Params  : r2 = address of aborted instruction
  *         : r3 = saved SPSR
@@ -20,6 +25,7 @@
  *	   : r9 = preserved
  *	   : sp = pointer to registers
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Purpose : obtain information about current aborted instruction.
  * Note: we read user space.  This means we might cause a data
@@ -38,6 +44,9 @@ ENTRY(v6_early_abort)
 	mrc	p15, 0, r0, c6, c0, 0		@ get FAR
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Faulty SWP instruction on 1136 doesn't set bit 11 in DFSR.
  */
 #ifdef CONFIG_ARM_ERRATA_326103
@@ -58,6 +67,8 @@ ENTRY(v6_early_abort)
 	orreq	r1, r1, #1 << 11		@ yes.
 #endif
 	b	do_DataAbort
+<<<<<<< HEAD
+=======
 =======
  * Faulty SWP instruction on 1136 doesn't set bit 11 in DFSR (erratum 326103).
  * The test below covers all the write situations, including Java bytecodes
@@ -77,3 +88,4 @@ ENTRY(v6_early_abort)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -5,7 +5,11 @@
 <<<<<<< HEAD
  * Copyright (C) 2013 Sony Mobile Communications AB.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2013 Sony Mobile Communications AB.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author: Liam Girdwood <lrg@slimlogic.co.uk>
  *
@@ -40,13 +44,19 @@
 #define __LINUX_REGULATOR_CONSUMER_H_
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/compiler.h>
 
 struct device;
 struct notifier_block;
+<<<<<<< HEAD
+=======
 =======
 #include <linux/device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Regulator operating modes.
@@ -126,12 +136,18 @@ struct regulator;
  * @consumer: The regulator consumer for the supply.  This will be managed
  *            by the bulk API.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @min_uV:   The minimum requested voltage for the regulator (in microvolts),
  *            or 0 to not set a voltage.
  * @max_uV:   The maximum requested voltage for the regulator (in microvolts),
  *            or 0 to use @min_uV.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The regulator APIs provide a series of regulator_bulk_() API calls as
  * a convenience to consumers which require multiple supplies.  This
@@ -141,6 +157,9 @@ struct regulator_bulk_data {
 	const char *supply;
 	struct regulator *consumer;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int min_uV;
 	int max_uV;
 
@@ -158,8 +177,11 @@ struct regulator_bulk_data {
 struct regulator_ocp_notification {
 	void (*notify)(void *);
 	void *ctxt;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_REGULATOR)
@@ -168,17 +190,23 @@ struct regulator_ocp_notification {
 struct regulator *__must_check regulator_get(struct device *dev,
 					     const char *id);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct regulator *__must_check devm_regulator_get(struct device *dev,
 					     const char *id);
 struct regulator *__must_check regulator_get_exclusive(struct device *dev,
 						       const char *id);
 void regulator_put(struct regulator *regulator);
 void devm_regulator_put(struct regulator *regulator);
+<<<<<<< HEAD
+=======
 =======
 struct regulator *__must_check regulator_get_exclusive(struct device *dev,
 						       const char *id);
 void regulator_put(struct regulator *regulator);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* regulator output control and status */
 int regulator_enable(struct regulator *regulator);
@@ -186,6 +214,9 @@ int regulator_disable(struct regulator *regulator);
 int regulator_force_disable(struct regulator *regulator);
 int regulator_is_enabled(struct regulator *regulator);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int regulator_disable_deferred(struct regulator *regulator, int ms);
 
 int regulator_bulk_get(struct device *dev, int num_consumers,
@@ -200,6 +231,8 @@ int regulator_bulk_disable(int num_consumers,
 			   struct regulator_bulk_data *consumers);
 int regulator_bulk_force_disable(int num_consumers,
 			   struct regulator_bulk_data *consumers);
+<<<<<<< HEAD
+=======
 =======
 
 int regulator_bulk_get(struct device *dev, int num_consumers,
@@ -209,6 +242,7 @@ int regulator_bulk_enable(int num_consumers,
 int regulator_bulk_disable(int num_consumers,
 			   struct regulator_bulk_data *consumers);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void regulator_bulk_free(int num_consumers,
 			 struct regulator_bulk_data *consumers);
 
@@ -230,12 +264,18 @@ unsigned int regulator_get_mode(struct regulator *regulator);
 int regulator_set_optimum_mode(struct regulator *regulator, int load_uA);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* regulator register ocp notification */
 int regulator_register_ocp_notification(struct regulator *regulator,
 			struct regulator_ocp_notification *ocp_notification);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* regulator notifier block */
 int regulator_register_notifier(struct regulator *regulator,
 			      struct notifier_block *nb);
@@ -266,6 +306,9 @@ static inline struct regulator *__must_check regulator_get(struct device *dev,
 	return NULL;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct regulator *__must_check
 devm_regulator_get(struct device *dev, const char *id)
@@ -273,19 +316,28 @@ devm_regulator_get(struct device *dev, const char *id)
 	return NULL;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void regulator_put(struct regulator *regulator)
 {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void devm_regulator_put(struct regulator *regulator)
 {
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_enable(struct regulator *regulator)
 {
 	return 0;
@@ -297,6 +349,9 @@ static inline int regulator_disable(struct regulator *regulator)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_force_disable(struct regulator *regulator)
 {
 	return 0;
@@ -308,8 +363,11 @@ static inline int regulator_disable_deferred(struct regulator *regulator,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_is_enabled(struct regulator *regulator)
 {
 	return 1;
@@ -323,14 +381,20 @@ static inline int regulator_bulk_get(struct device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int devm_regulator_bulk_get(struct device *dev, int num_consumers,
 					  struct regulator_bulk_data *consumers)
 {
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_bulk_enable(int num_consumers,
 					struct regulator_bulk_data *consumers)
 {
@@ -344,27 +408,39 @@ static inline int regulator_bulk_disable(int num_consumers,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_bulk_force_disable(int num_consumers,
 					struct regulator_bulk_data *consumers)
 {
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void regulator_bulk_free(int num_consumers,
 				       struct regulator_bulk_data *consumers)
 {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_count_voltages(struct regulator *regulator)
 {
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_set_voltage(struct regulator *regulator,
 					int min_uV, int max_uV)
 {
@@ -405,6 +481,9 @@ static inline int regulator_set_optimum_mode(struct regulator *regulator,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_register_ocp_notification(
 			struct regulator *regulator,
 			struct regulator_ocp_notification *ocp_notification);
@@ -412,8 +491,11 @@ static inline int regulator_register_ocp_notification(
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int regulator_register_notifier(struct regulator *regulator,
 			      struct notifier_block *nb)
 {

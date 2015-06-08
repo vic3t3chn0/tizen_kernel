@@ -229,6 +229,17 @@ static struct device_node * __init of_pdt_build_tree(struct device_node *parent,
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void * __init kernel_tree_alloc(u64 size, u64 align)
+{
+	return prom_early_alloc(size);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init of_pdt_build_devicetree(phandle root_node, struct of_pdt_ops *ops)
 {
 	struct device_node **nextp;
@@ -245,4 +256,13 @@ void __init of_pdt_build_devicetree(phandle root_node, struct of_pdt_ops *ops)
 	nextp = &allnodes->allnext;
 	allnodes->child = of_pdt_build_tree(allnodes,
 			of_pdt_prom_ops->getchild(allnodes->phandle), &nextp);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* Get pointer to "/chosen" and "/aliasas" nodes for use everywhere */
+	of_alias_scan(kernel_tree_alloc);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

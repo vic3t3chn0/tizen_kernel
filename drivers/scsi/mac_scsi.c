@@ -43,7 +43,14 @@
 
 #include <asm/io.h>
 #include <asm/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/macintosh.h>
 #include <asm/macints.h>
@@ -215,6 +222,11 @@ static int __init mac_scsi_setup(char *str) {
 __setup("mac5380=", mac_scsi_setup);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * If you want to find the instance with (k)gdb ...
  */
 #if NDEBUG
@@ -222,6 +234,10 @@ static struct Scsi_Host *default_instance;
 #endif
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Function : int macscsi_detect(struct scsi_host_template * tpnt)
  *
  * Purpose : initializes mac NCR5380 driver based on the
@@ -233,7 +249,15 @@ static struct Scsi_Host *default_instance;
  *
  */
  
+<<<<<<< HEAD
+<<<<<<< HEAD
+int __init macscsi_detect(struct scsi_host_template * tpnt)
+=======
 int macscsi_detect(struct scsi_host_template * tpnt)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int macscsi_detect(struct scsi_host_template * tpnt)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
     static int called = 0;
     int flags = 0;
@@ -268,10 +292,20 @@ int macscsi_detect(struct scsi_host_template * tpnt)
     /* Once we support multiple 5380s (e.g. DuoDock) we'll do
        something different here */
     instance = scsi_register (tpnt, sizeof(struct NCR5380_hostdata));
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if NDEBUG
     default_instance = instance;
 #endif
     
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if (macintosh_config->ident == MAC_MODEL_IIFX) {
 	mac_scsi_regp  = via1+0x8000;
 	mac_scsi_drq   = via1+0xE000;
@@ -301,8 +335,17 @@ int macscsi_detect(struct scsi_host_template * tpnt)
     ((struct NCR5380_hostdata *)instance->hostdata)->ctrl = 0;
 
     if (instance->irq != SCSI_IRQ_NONE)
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (request_irq(instance->irq, NCR5380_intr, 0, "ncr5380", instance)) {
+=======
 	if (request_irq(instance->irq, NCR5380_intr, IRQ_FLG_SLOW, 
 			"ncr5380", instance)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (request_irq(instance->irq, NCR5380_intr, IRQ_FLG_SLOW, 
+			"ncr5380", instance)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    printk(KERN_WARNING "scsi%d: IRQ%d not free, interrupts disabled\n",
 		   instance->host_no, instance->irq);
 	    instance->irq = SCSI_IRQ_NONE;
@@ -350,9 +393,18 @@ static void mac_scsi_reset_boot(struct Scsi_Host *instance)
 
 	printk(KERN_INFO "Macintosh SCSI: resetting the SCSI bus..." );
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* switch off SCSI IRQ - catch an interrupt without IRQ bit set else */
 	disable_irq(IRQ_MAC_SCSI);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* switch off SCSI IRQ - catch an interrupt without IRQ bit set else */
+	disable_irq(IRQ_MAC_SCSI);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* get in phase */
 	NCR5380_write( TARGET_COMMAND_REG,
 		      PHASE_SR_TO_TCR( NCR5380_read(STATUS_REG) ));
@@ -368,9 +420,18 @@ static void mac_scsi_reset_boot(struct Scsi_Host *instance)
 	for( end = jiffies + AFTER_RESET_DELAY; time_before(jiffies, end); )
 		barrier();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* switch on SCSI IRQ again */
 	enable_irq(IRQ_MAC_SCSI);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* switch on SCSI IRQ again */
+	enable_irq(IRQ_MAC_SCSI);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO " done\n" );
 }
 #endif

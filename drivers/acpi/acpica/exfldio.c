@@ -5,7 +5,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,6 +94,13 @@ acpi_ex_setup_region(union acpi_operand_object *obj_desc,
 {
 	acpi_status status = AE_OK;
 	union acpi_operand_object *rgn_desc;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 space_id;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ACPI_FUNCTION_TRACE_U32(ex_setup_region, field_datum_byte_offset);
 
@@ -101,6 +116,23 @@ acpi_ex_setup_region(union acpi_operand_object *obj_desc,
 		return_ACPI_STATUS(AE_AML_OPERAND_TYPE);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	space_id = rgn_desc->region.space_id;
+
+	/* Validate the Space ID */
+
+	if (!acpi_is_valid_space_id(space_id)) {
+		ACPI_ERROR((AE_INFO,
+			    "Invalid/unknown Address Space ID: 0x%2.2X",
+			    space_id));
+		return_ACPI_STATUS(AE_AML_INVALID_SPACE_ID);
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If the Region Address and Length have not been previously evaluated,
 	 * evaluate them now and save the results.
@@ -119,11 +151,26 @@ acpi_ex_setup_region(union acpi_operand_object *obj_desc,
 	}
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * Exit now for SMBus, GSBus or IPMI address space, it has a non-linear
+	 * address space and the request cannot be directly validated
+	 */
+	if (space_id == ACPI_ADR_SPACE_SMBUS ||
+	    space_id == ACPI_ADR_SPACE_GSBUS ||
+	    space_id == ACPI_ADR_SPACE_IPMI) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Exit now for SMBus or IPMI address space, it has a non-linear
 	 * address space and the request cannot be directly validated
 	 */
 	if (rgn_desc->region.space_id == ACPI_ADR_SPACE_SMBUS ||
 	    rgn_desc->region.space_id == ACPI_ADR_SPACE_IPMI) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* SMBus or IPMI has a non-linear address space */
 
@@ -271,11 +318,26 @@ acpi_ex_access_region(union acpi_operand_object *obj_desc,
 
 	/* Invoke the appropriate address_space/op_region handler */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	status = acpi_ev_address_space_dispatch(rgn_desc, obj_desc,
+						function, region_offset,
+						ACPI_MUL_8(obj_desc->
+							   common_field.
+							   access_byte_width),
+						value);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status =
 	    acpi_ev_address_space_dispatch(rgn_desc, function, region_offset,
 					   ACPI_MUL_8(obj_desc->common_field.
 						      access_byte_width),
 					   value);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ACPI_FAILURE(status)) {
 		if (status == AE_NOT_IMPLEMENTED) {
@@ -316,6 +378,13 @@ acpi_ex_access_region(union acpi_operand_object *obj_desc,
 static u8
 acpi_ex_register_overflow(union acpi_operand_object *obj_desc, u64 value)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ACPI_FUNCTION_NAME(ex_register_overflow);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (obj_desc->common_field.bit_length >= ACPI_INTEGER_BIT_SIZE) {
 		/*
@@ -330,6 +399,17 @@ acpi_ex_register_overflow(union acpi_operand_object *obj_desc, u64 value)
 		 * The Value is larger than the maximum value that can fit into
 		 * the register.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ACPI_ERROR((AE_INFO,
+			    "Index value 0x%8.8X%8.8X overflows field width 0x%X",
+			    ACPI_FORMAT_UINT64(value),
+			    obj_desc->common_field.bit_length));
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return (TRUE);
 	}
 
@@ -702,6 +782,12 @@ acpi_ex_extract_from_field(union acpi_operand_object *obj_desc,
 
 	if ((obj_desc->common_field.start_field_bit_offset == 0) &&
 	    (obj_desc->common_field.bit_length == access_bit_width)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		status = acpi_ex_field_datum_io(obj_desc, 0, buffer, ACPI_READ);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (buffer_length >= sizeof(u64)) {
 			status =
 			    acpi_ex_field_datum_io(obj_desc, 0, buffer,
@@ -715,6 +801,10 @@ acpi_ex_extract_from_field(union acpi_operand_object *obj_desc,
 			ACPI_MEMCPY(buffer, &raw_datum, buffer_length);
 		}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return_ACPI_STATUS(status);
 	}
 

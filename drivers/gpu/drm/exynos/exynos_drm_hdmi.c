@@ -37,8 +37,16 @@ struct drm_hdmi_context {
 	struct exynos_drm_subdrv	subdrv;
 	struct exynos_drm_hdmi_context	*hdmi_ctx;
 	struct exynos_drm_hdmi_context	*mixer_ctx;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	bool	enabled[MIXER_WIN_NR];
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	bool	enabled[MIXER_WIN_NR];
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void exynos_hdmi_ops_register(struct exynos_hdmi_ops *ops)
@@ -191,6 +199,24 @@ static void drm_hdmi_dpms(struct device *subdrv_dev, int mode)
 
 	DRM_DEBUG_KMS("%s\n", __FILE__);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (mode) {
+	case DRM_MODE_DPMS_ON:
+		break;
+	case DRM_MODE_DPMS_STANDBY:
+	case DRM_MODE_DPMS_SUSPEND:
+	case DRM_MODE_DPMS_OFF:
+		if (hdmi_ops && hdmi_ops->disable)
+			hdmi_ops->disable(ctx->hdmi_ctx->ctx);
+		break;
+	default:
+		DRM_DEBUG_KMS("unkown dps mode: %d\n", mode);
+		break;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mixer_ops && mixer_ops->dpms)
 		mixer_ops->dpms(ctx->mixer_ctx->ctx, mode);
 
@@ -214,11 +240,22 @@ static void drm_hdmi_apply(struct device *subdrv_dev)
 
 	if (hdmi_ops && hdmi_ops->commit)
 		hdmi_ops->commit(ctx->hdmi_ctx->ctx);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct exynos_drm_manager_ops drm_hdmi_manager_ops = {
 	.dpms = drm_hdmi_dpms,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.apply = drm_hdmi_apply,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.apply = drm_hdmi_apply,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.enable_vblank = drm_hdmi_enable_vblank,
 	.disable_vblank = drm_hdmi_disable_vblank,
 	.mode_fixup = drm_hdmi_mode_fixup,
@@ -241,6 +278,16 @@ static void drm_mixer_mode_set(struct device *subdrv_dev,
 static void drm_mixer_commit(struct device *subdrv_dev, int zpos)
 {
 	struct drm_hdmi_context *ctx = to_context(subdrv_dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	DRM_DEBUG_KMS("%s\n", __FILE__);
+
+	if (mixer_ops && mixer_ops->win_commit)
+		mixer_ops->win_commit(ctx->mixer_ctx->ctx, zpos);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int win = (zpos == DEFAULT_ZPOS) ? MIXER_DEFAULT_WIN : zpos;
 
 	DRM_DEBUG_KMS("%s\n", __FILE__);
@@ -254,11 +301,25 @@ static void drm_mixer_commit(struct device *subdrv_dev, int zpos)
 		mixer_ops->win_commit(ctx->mixer_ctx->ctx, win);
 
 	ctx->enabled[win] = true;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void drm_mixer_disable(struct device *subdrv_dev, int zpos)
 {
 	struct drm_hdmi_context *ctx = to_context(subdrv_dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	DRM_DEBUG_KMS("%s\n", __FILE__);
+
+	if (mixer_ops && mixer_ops->win_disable)
+		mixer_ops->win_disable(ctx->mixer_ctx->ctx, zpos);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int win = (zpos == DEFAULT_ZPOS) ? MIXER_DEFAULT_WIN : zpos;
 
 	DRM_DEBUG_KMS("%s\n", __FILE__);
@@ -272,6 +333,10 @@ static void drm_mixer_disable(struct device *subdrv_dev, int zpos)
 		mixer_ops->win_disable(ctx->mixer_ctx->ctx, win);
 
 	ctx->enabled[win] = false;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct exynos_drm_overlay_ops drm_hdmi_overlay_ops = {
@@ -364,6 +429,31 @@ static int __devinit exynos_drm_hdmi_probe(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int hdmi_runtime_suspend(struct device *dev)
+{
+	DRM_DEBUG_KMS("%s\n", __FILE__);
+
+	return 0;
+}
+
+static int hdmi_runtime_resume(struct device *dev)
+{
+	DRM_DEBUG_KMS("%s\n", __FILE__);
+
+	return 0;
+}
+
+static const struct dev_pm_ops hdmi_pm_ops = {
+	.runtime_suspend = hdmi_runtime_suspend,
+	.runtime_resume	 = hdmi_runtime_resume,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devexit exynos_drm_hdmi_remove(struct platform_device *pdev)
 {
 	struct drm_hdmi_context *ctx = platform_get_drvdata(pdev);
@@ -382,5 +472,12 @@ struct platform_driver exynos_drm_common_hdmi_driver = {
 	.driver		= {
 		.name	= "exynos-drm-hdmi",
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.pm = &hdmi_pm_ops,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };

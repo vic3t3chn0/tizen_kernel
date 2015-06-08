@@ -24,6 +24,13 @@
 #include <linux/slab.h>
 #include <linux/stat.h>
 #include <linux/via-core.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/via_i2c.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/olpc.h>
 
 #define _MASTER_FILE
@@ -38,8 +45,16 @@ static char *viafb_mode1;
 static int viafb_bpp = 32;
 static int viafb_bpp1 = 32;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static unsigned int viafb_second_xres = 640;
 static unsigned int viafb_second_yres = 480;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static unsigned int viafb_second_xres = 640;
+static unsigned int viafb_second_yres = 480;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int viafb_second_offset;
 static int viafb_second_size;
 
@@ -201,7 +216,14 @@ static int viafb_check_var(struct fb_var_screeninfo *var,
 	struct fb_info *info)
 {
 	int depth, refresh;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct VideoModeTable *vmode_entry;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct VideoModeTable *vmode_entry;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct viafb_par *ppar = info->par;
 	u32 line;
 
@@ -211,8 +233,20 @@ static int viafb_check_var(struct fb_var_screeninfo *var,
 	if (var->vmode & FB_VMODE_INTERLACED || var->vmode & FB_VMODE_DOUBLE)
 		return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* the refresh rate is not important here, as we only want to know
+	 * whether the resolution exists
+	 */
+	if (!viafb_get_best_mode(var->xres, var->yres, 60)) {
+=======
 	vmode_entry = viafb_get_mode(var->xres, var->yres);
 	if (!vmode_entry) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	vmode_entry = viafb_get_mode(var->xres, var->yres);
+	if (!vmode_entry) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		DEBUG_MSG(KERN_INFO
 			  "viafb: Mode %dx%dx%d not supported!!\n",
 			  var->xres, var->yres, var->bits_per_pixel);
@@ -254,7 +288,16 @@ static int viafb_check_var(struct fb_var_screeninfo *var,
 		get_var_refresh(var));
 
 	/* Adjust var according to our driver's own table */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	viafb_fill_var_timing_info(var,
+		viafb_get_best_mode(var->xres, var->yres, refresh));
+=======
 	viafb_fill_var_timing_info(var, refresh, vmode_entry);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	viafb_fill_var_timing_info(var, refresh, vmode_entry);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (var->accel_flags & FB_ACCELF_TEXT &&
 		!ppar->shared->vdev->engine_mmio)
 		var->accel_flags = 0;
@@ -265,7 +308,14 @@ static int viafb_check_var(struct fb_var_screeninfo *var,
 static int viafb_set_par(struct fb_info *info)
 {
 	struct viafb_par *viapar = info->par;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct VideoModeTable *vmode_entry, *vmode_entry1 = NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct VideoModeTable *vmode_entry, *vmode_entry1 = NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int refresh;
 	DEBUG_MSG(KERN_INFO "viafb_set_par!\n");
 
@@ -274,10 +324,20 @@ static int viafb_set_par(struct fb_info *info)
 	viafb_update_device_setting(viafbinfo->var.xres, viafbinfo->var.yres,
 		viafbinfo->var.bits_per_pixel, 0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (viafb_dual_fb) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vmode_entry = viafb_get_mode(viafbinfo->var.xres, viafbinfo->var.yres);
 	if (viafb_dual_fb) {
 		vmode_entry1 = viafb_get_mode(viafbinfo1->var.xres,
 			viafbinfo1->var.yres);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		viafb_update_device_setting(viafbinfo1->var.xres,
 			viafbinfo1->var.yres, viafbinfo1->var.bits_per_pixel,
 			1);
@@ -285,13 +345,41 @@ static int viafb_set_par(struct fb_info *info)
 		DEBUG_MSG(KERN_INFO
 		"viafb_second_xres = %d, viafb_second_yres = %d, bpp = %d\n",
 			  viafb_second_xres, viafb_second_yres, viafb_bpp1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		vmode_entry1 = viafb_get_mode(viafb_second_xres,
 			viafb_second_yres);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		vmode_entry1 = viafb_get_mode(viafb_second_xres,
+			viafb_second_yres);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		viafb_update_device_setting(viafb_second_xres,
 			viafb_second_yres, viafb_bpp1, 1);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	refresh = get_var_refresh(&info->var);
+	if (viafb_dual_fb && viapar->iga_path == IGA2) {
+		viafb_bpp1 = info->var.bits_per_pixel;
+		viafb_refresh1 = refresh;
+	} else {
+		viafb_bpp = info->var.bits_per_pixel;
+		viafb_refresh = refresh;
+	}
+
+	if (info->var.accel_flags & FB_ACCELF_TEXT)
+		info->flags &= ~FBINFO_HWACCEL_DISABLED;
+	else
+		info->flags |= FBINFO_HWACCEL_DISABLED;
+	viafb_setmode();
+	viafb_pan_display(&info->var, info);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	refresh = viafb_get_refresh(info->var.xres, info->var.yres,
 		get_var_refresh(&info->var));
 	if (vmode_entry) {
@@ -311,6 +399,10 @@ static int viafb_set_par(struct fb_info *info)
 			vmode_entry1, viafb_bpp1);
 		viafb_pan_display(&info->var, info);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1164,7 +1256,16 @@ static ssize_t viafb_dvp0_proc_write(struct file *file,
 	for (i = 0; i < 3; i++) {
 		value = strsep(&pbuf, " ");
 		if (value != NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (kstrtou8(value, 0, &reg_val) < 0)
+				return -EINVAL;
+=======
 			strict_strtoul(value, 0, (unsigned long *)&reg_val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			strict_strtoul(value, 0, (unsigned long *)&reg_val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			DEBUG_MSG(KERN_INFO "DVP0:reg_val[%l]=:%x\n", i,
 				  reg_val);
 			switch (i) {
@@ -1234,7 +1335,16 @@ static ssize_t viafb_dvp1_proc_write(struct file *file,
 	for (i = 0; i < 3; i++) {
 		value = strsep(&pbuf, " ");
 		if (value != NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (kstrtou8(value, 0, &reg_val) < 0)
+				return -EINVAL;
+=======
 			strict_strtoul(value, 0, (unsigned long *)&reg_val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			strict_strtoul(value, 0, (unsigned long *)&reg_val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			switch (i) {
 			case 0:
 				viafb_write_reg_mask(CR9B, VIACR,
@@ -1292,7 +1402,16 @@ static ssize_t viafb_dfph_proc_write(struct file *file,
 	if (copy_from_user(&buf[0], buffer, length))
 		return -EFAULT;
 	buf[length - 1] = '\0';	/*Ensure end string */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtou8(buf, 0, &reg_val) < 0)
+		return -EINVAL;
+=======
 	strict_strtoul(&buf[0], 0, (unsigned long *)&reg_val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	strict_strtoul(&buf[0], 0, (unsigned long *)&reg_val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	viafb_write_reg_mask(CR97, VIACR, reg_val, 0x0f);
 	return count;
 }
@@ -1331,7 +1450,16 @@ static ssize_t viafb_dfpl_proc_write(struct file *file,
 	if (copy_from_user(&buf[0], buffer, length))
 		return -EFAULT;
 	buf[length - 1] = '\0';	/*Ensure end string */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (kstrtou8(buf, 0, &reg_val) < 0)
+		return -EINVAL;
+=======
 	strict_strtoul(&buf[0], 0, (unsigned long *)&reg_val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	strict_strtoul(&buf[0], 0, (unsigned long *)&reg_val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	viafb_write_reg_mask(CR99, VIACR, reg_val, 0x0f);
 	return count;
 }
@@ -1400,8 +1528,18 @@ static ssize_t viafb_vt1636_proc_write(struct file *file,
 		for (i = 0; i < 2; i++) {
 			value = strsep(&pbuf, " ");
 			if (value != NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				if (kstrtou8(value, 0, &reg_val.Data) < 0)
+					return -EINVAL;
+=======
 				strict_strtoul(value, 0,
 					(unsigned long *)&reg_val.Data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				strict_strtoul(value, 0,
+					(unsigned long *)&reg_val.Data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				switch (i) {
 				case 0:
 					reg_val.Index = 0x08;
@@ -1437,8 +1575,18 @@ static ssize_t viafb_vt1636_proc_write(struct file *file,
 		for (i = 0; i < 2; i++) {
 			value = strsep(&pbuf, " ");
 			if (value != NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				if (kstrtou8(value, 0, &reg_val.Data) < 0)
+					return -EINVAL;
+=======
 				strict_strtoul(value, 0,
 					(unsigned long *)&reg_val.Data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				strict_strtoul(value, 0,
+					(unsigned long *)&reg_val.Data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				switch (i) {
 				case 0:
 					reg_val.Index = 0x08;
@@ -1672,12 +1820,38 @@ static void viafb_remove_proc(struct viafb_shared *shared)
 }
 #undef IS_VT1636
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int parse_mode(const char *str, u32 devices, u32 *xres, u32 *yres)
+{
+	const struct fb_videomode *mode = NULL;
+	char *ptr;
+
+	if (!str) {
+		if (devices == VIA_CRT)
+			mode = via_aux_get_preferred_mode(
+				viaparinfo->shared->i2c_26);
+		else if (devices == VIA_DVP1)
+			mode = via_aux_get_preferred_mode(
+				viaparinfo->shared->i2c_31);
+
+		if (mode) {
+			*xres = mode->xres;
+			*yres = mode->yres;
+		} else if (machine_is_olpc()) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int parse_mode(const char *str, u32 *xres, u32 *yres)
 {
 	char *ptr;
 
 	if (!str) {
 		if (machine_is_olpc()) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*xres = 1200;
 			*yres = 900;
 		} else {
@@ -1731,11 +1905,49 @@ static struct viafb_pm_hooks viafb_fb_pm_hooks = {
 
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __devinit i2c_bus_probe(struct viafb_shared *shared)
+{
+	/* should be always CRT */
+	printk(KERN_INFO "viafb: Probing I2C bus 0x26\n");
+	shared->i2c_26 = via_aux_probe(viafb_find_i2c_adapter(VIA_PORT_26));
+
+	/* seems to be usually DVP1 */
+	printk(KERN_INFO "viafb: Probing I2C bus 0x31\n");
+	shared->i2c_31 = via_aux_probe(viafb_find_i2c_adapter(VIA_PORT_31));
+
+	/* FIXME: what is this? */
+	if (!machine_is_olpc()) {
+		printk(KERN_INFO "viafb: Probing I2C bus 0x2C\n");
+		shared->i2c_2C = via_aux_probe(viafb_find_i2c_adapter(VIA_PORT_2C));
+	}
+
+	printk(KERN_INFO "viafb: Finished I2C bus probing");
+}
+
+static void i2c_bus_free(struct viafb_shared *shared)
+{
+	via_aux_free(shared->i2c_26);
+	via_aux_free(shared->i2c_31);
+	via_aux_free(shared->i2c_2C);
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __devinit via_fb_pci_probe(struct viafb_dev *vdev)
 {
 	u32 default_xres, default_yres;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct VideoModeTable *vmode_entry;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct VideoModeTable *vmode_entry;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct fb_var_screeninfo default_var;
 	int rc;
 	u32 viafb_par_length;
@@ -1765,6 +1977,13 @@ int __devinit via_fb_pci_probe(struct viafb_dev *vdev)
 		&viaparinfo->shared->lvds_setting_info2;
 	viaparinfo->chip_info = &viaparinfo->shared->chip_info;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_bus_probe(viaparinfo->shared);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (viafb_dual_fb)
 		viafb_SAMM_ON = 1;
 	parse_lcd_port();
@@ -1807,20 +2026,45 @@ int __devinit via_fb_pci_probe(struct viafb_dev *vdev)
 			viafb_second_size * 1024 * 1024;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	parse_mode(viafb_mode, viaparinfo->shared->iga1_devices,
+		&default_xres, &default_yres);
+	if (viafb_SAMM_ON == 1)
+		parse_mode(viafb_mode1, viaparinfo->shared->iga2_devices,
+			&viafb_second_xres, &viafb_second_yres);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	parse_mode(viafb_mode, &default_xres, &default_yres);
 	vmode_entry = viafb_get_mode(default_xres, default_yres);
 	if (viafb_SAMM_ON == 1)
 		parse_mode(viafb_mode1, &viafb_second_xres,
 			&viafb_second_yres);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	default_var.xres = default_xres;
 	default_var.yres = default_yres;
 	default_var.xres_virtual = default_xres;
 	default_var.yres_virtual = default_yres;
 	default_var.bits_per_pixel = viafb_bpp;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	viafb_fill_var_timing_info(&default_var, viafb_get_best_mode(
+		default_var.xres, default_var.yres, viafb_refresh));
+=======
 	viafb_fill_var_timing_info(&default_var, viafb_get_refresh(
 		default_var.xres, default_var.yres, viafb_refresh),
 		viafb_get_mode(default_var.xres, default_var.yres));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	viafb_fill_var_timing_info(&default_var, viafb_get_refresh(
+		default_var.xres, default_var.yres, viafb_refresh),
+		viafb_get_mode(default_var.xres, default_var.yres));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	viafb_setup_fixinfo(&viafbinfo->fix, viaparinfo);
 	viafbinfo->var = default_var;
 
@@ -1859,9 +2103,20 @@ int __devinit via_fb_pci_probe(struct viafb_dev *vdev)
 		default_var.xres_virtual = viafb_second_xres;
 		default_var.yres_virtual = viafb_second_yres;
 		default_var.bits_per_pixel = viafb_bpp1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		viafb_fill_var_timing_info(&default_var, viafb_get_best_mode(
+			default_var.xres, default_var.yres, viafb_refresh1));
+=======
 		viafb_fill_var_timing_info(&default_var, viafb_get_refresh(
 			default_var.xres, default_var.yres, viafb_refresh1),
 			viafb_get_mode(default_var.xres, default_var.yres));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		viafb_fill_var_timing_info(&default_var, viafb_get_refresh(
+			default_var.xres, default_var.yres, viafb_refresh1),
+			viafb_get_mode(default_var.xres, default_var.yres));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		viafb_setup_fixinfo(&viafbinfo1->fix, viaparinfo1);
 		viafb_check_var(&default_var, viafbinfo1);
@@ -1921,6 +2176,13 @@ out_fb1_release:
 	if (viafbinfo1)
 		framebuffer_release(viafbinfo1);
 out_fb_release:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_bus_free(viaparinfo->shared);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	framebuffer_release(viafbinfo);
 	return rc;
 }
@@ -1933,6 +2195,13 @@ void __devexit via_fb_pci_remove(struct pci_dev *pdev)
 	if (viafb_dual_fb)
 		unregister_framebuffer(viafbinfo1);
 	viafb_remove_proc(viaparinfo->shared);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_bus_free(viaparinfo->shared);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	framebuffer_release(viafbinfo);
 	if (viafb_dual_fb)
 		framebuffer_release(viafbinfo1);
@@ -1956,6 +2225,72 @@ static int __init viafb_setup(void)
 		if (!*this_opt)
 			continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!strncmp(this_opt, "viafb_mode1=", 12)) {
+			viafb_mode1 = kstrdup(this_opt + 12, GFP_KERNEL);
+		} else if (!strncmp(this_opt, "viafb_mode=", 11)) {
+			viafb_mode = kstrdup(this_opt + 11, GFP_KERNEL);
+		} else if (!strncmp(this_opt, "viafb_bpp1=", 11)) {
+			if (kstrtouint(this_opt + 11, 0, &viafb_bpp1) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_bpp=", 10)) {
+			if (kstrtouint(this_opt + 10, 0, &viafb_bpp) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_refresh1=", 15)) {
+			if (kstrtoint(this_opt + 15, 0, &viafb_refresh1) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_refresh=", 14)) {
+			if (kstrtoint(this_opt + 14, 0, &viafb_refresh) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_lcd_dsp_method=", 21)) {
+			if (kstrtoint(this_opt + 21, 0,
+				      &viafb_lcd_dsp_method) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_lcd_panel_id=", 19)) {
+			if (kstrtoint(this_opt + 19, 0,
+				      &viafb_lcd_panel_id) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_accel=", 12)) {
+			if (kstrtoint(this_opt + 12, 0, &viafb_accel) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_SAMM_ON=", 14)) {
+			if (kstrtoint(this_opt + 14, 0, &viafb_SAMM_ON) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_active_dev=", 17)) {
+			viafb_active_dev = kstrdup(this_opt + 17, GFP_KERNEL);
+		} else if (!strncmp(this_opt,
+			"viafb_display_hardware_layout=", 30)) {
+			if (kstrtoint(this_opt + 30, 0,
+				      &viafb_display_hardware_layout) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_second_size=", 18)) {
+			if (kstrtoint(this_opt + 18, 0, &viafb_second_size) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt,
+			"viafb_platform_epia_dvi=", 24)) {
+			if (kstrtoint(this_opt + 24, 0,
+				      &viafb_platform_epia_dvi) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt,
+			"viafb_device_lcd_dualedge=", 26)) {
+			if (kstrtoint(this_opt + 26, 0,
+				      &viafb_device_lcd_dualedge) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_bus_width=", 16)) {
+			if (kstrtoint(this_opt + 16, 0, &viafb_bus_width) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_lcd_mode=", 15)) {
+			if (kstrtoint(this_opt + 15, 0, &viafb_lcd_mode) < 0)
+				return -EINVAL;
+		} else if (!strncmp(this_opt, "viafb_lcd_port=", 15)) {
+			viafb_lcd_port = kstrdup(this_opt + 15, GFP_KERNEL);
+		} else if (!strncmp(this_opt, "viafb_dvi_port=", 15)) {
+			viafb_dvi_port = kstrdup(this_opt + 15, GFP_KERNEL);
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!strncmp(this_opt, "viafb_mode1=", 12))
 			viafb_mode1 = kstrdup(this_opt + 12, GFP_KERNEL);
 		else if (!strncmp(this_opt, "viafb_mode=", 11))
@@ -2011,6 +2346,10 @@ static int __init viafb_setup(void)
 			viafb_lcd_port = kstrdup(this_opt + 15, GFP_KERNEL);
 		else if (!strncmp(this_opt, "viafb_dvi_port=", 15))
 			viafb_dvi_port = kstrdup(this_opt + 15, GFP_KERNEL);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
@@ -2022,7 +2361,15 @@ static int __init viafb_setup(void)
 int __init viafb_init(void)
 {
 	u32 dummy_x, dummy_y;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int r = 0;
+=======
 	int r;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int r;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (machine_is_olpc())
 		/* Apply XO-1.5-specific configuration. */
@@ -2033,10 +2380,23 @@ int __init viafb_init(void)
 	if (r < 0)
 		return r;
 #endif
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (parse_mode(viafb_mode, 0, &dummy_x, &dummy_y)
+		|| !viafb_get_best_mode(dummy_x, dummy_y, viafb_refresh)
+		|| parse_mode(viafb_mode1, 0, &dummy_x, &dummy_y)
+		|| !viafb_get_best_mode(dummy_x, dummy_y, viafb_refresh1)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (parse_mode(viafb_mode, &dummy_x, &dummy_y)
 		|| !viafb_get_mode(dummy_x, dummy_y)
 		|| parse_mode(viafb_mode1, &dummy_x, &dummy_y)
 		|| !viafb_get_mode(dummy_x, dummy_y)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		|| viafb_bpp < 0 || viafb_bpp > 32
 		|| viafb_bpp1 < 0 || viafb_bpp1 > 32
 		|| parse_active_dev())
@@ -2045,7 +2405,15 @@ int __init viafb_init(void)
 	printk(KERN_INFO
        "VIA Graphics Integration Chipset framebuffer %d.%d initializing\n",
 	       VERSION_MAJOR, VERSION_MINOR);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return r;
+=======
 	return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __exit viafb_exit(void)

@@ -15,8 +15,12 @@ struct pci_root_info {
 <<<<<<< HEAD
 	struct list_head *resources;
 =======
+<<<<<<< HEAD
+	struct list_head *resources;
+=======
 	struct pci_bus *bus;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int busnum;
 };
 
@@ -29,14 +33,20 @@ static int __init set_use_crs(const struct dmi_system_id *id)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init set_nouse_crs(const struct dmi_system_id *id)
 {
 	pci_use_crs = false;
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct dmi_system_id pci_use_crs_table[] __initconst = {
 	/* http://bugzilla.kernel.org/show_bug.cgi?id=14183 */
 	{
@@ -78,6 +88,9 @@ static const struct dmi_system_id pci_use_crs_table[] __initconst = {
 		},
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Now for the blacklist.. */
 
@@ -101,8 +114,11 @@ static const struct dmi_system_id pci_use_crs_table[] __initconst = {
 			DMI_MATCH(DMI_BIOS_VERSION, "6JET85WW (1.43 )"),
 		},
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{}
 };
 
@@ -229,8 +245,12 @@ setup_resource(struct acpi_resource *acpi_res, void *data)
 <<<<<<< HEAD
 			"([%#llx-%#llx] ignored, not CPU addressable)\n", 
 =======
+<<<<<<< HEAD
+			"([%#llx-%#llx] ignored, not CPU addressable)\n", 
+=======
 			"([%#llx-%#llx] ignored, not CPU addressable)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			start, orig_end, end + 1, orig_end);
 	}
 
@@ -308,10 +328,13 @@ static void add_resources(struct pci_root_info *info)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!pci_use_crs)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	coalesce_windows(info, IORESOURCE_MEM);
 	coalesce_windows(info, IORESOURCE_IO);
 
@@ -328,11 +351,16 @@ static void add_resources(struct pci_root_info *info)
 		conflict = insert_resource_conflict(root, res);
 		if (conflict)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev_info(&info->bridge->dev,
 				 "ignoring host bridge window %pR (conflicts with %s %pR)\n",
 				 res, conflict->name, conflict);
 		else
 			pci_add_resource(info->resources, res);
+<<<<<<< HEAD
+=======
 =======
 			dev_err(&info->bridge->dev,
 				"address space collision: host bridge window %pR "
@@ -341,6 +369,7 @@ static void add_resources(struct pci_root_info *info)
 		else
 			pci_bus_add_resource(info->bus, res, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -349,12 +378,21 @@ get_current_resources(struct acpi_device *device, int busnum,
 <<<<<<< HEAD
 		      int domain, struct list_head *resources)
 =======
+<<<<<<< HEAD
+		      int domain, struct list_head *resources)
+=======
 			int domain, struct pci_bus *bus)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pci_root_info info;
 	size_t size;
 
+<<<<<<< HEAD
+	info.bridge = device;
+	info.res_num = 0;
+	info.resources = resources;
+=======
 <<<<<<< HEAD
 	info.bridge = device;
 	info.res_num = 0;
@@ -367,6 +405,7 @@ get_current_resources(struct acpi_device *device, int busnum,
 	info.bus = bus;
 	info.res_num = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	acpi_walk_resources(device->handle, METHOD_NAME__CRS, count_resource,
 				&info);
 	if (!info.res_num)
@@ -378,8 +417,12 @@ get_current_resources(struct acpi_device *device, int busnum,
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		goto res_alloc_fail;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info.name = kasprintf(GFP_KERNEL, "PCI Bus %04x:%02x", domain, busnum);
 	if (!info.name)
@@ -390,6 +433,9 @@ get_current_resources(struct acpi_device *device, int busnum,
 				&info);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (pci_use_crs) {
 		add_resources(&info);
 
@@ -400,6 +446,8 @@ get_current_resources(struct acpi_device *device, int busnum,
 
 name_alloc_fail:
 	kfree(info.res);
+<<<<<<< HEAD
+=======
 =======
 	add_resources(&info);
 	return;
@@ -409,6 +457,7 @@ name_alloc_fail:
 res_alloc_fail:
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct pci_bus * __devinit pci_acpi_scan_root(struct acpi_pci_root *root)
@@ -419,7 +468,11 @@ struct pci_bus * __devinit pci_acpi_scan_root(struct acpi_pci_root *root)
 <<<<<<< HEAD
 	LIST_HEAD(resources);
 =======
+<<<<<<< HEAD
+	LIST_HEAD(resources);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pci_bus *bus;
 	struct pci_sysdata *sd;
 	int node;
@@ -475,6 +528,9 @@ struct pci_bus * __devinit pci_acpi_scan_root(struct acpi_pci_root *root)
 		kfree(sd);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		get_current_resources(device, busnum, domain, &resources);
 
 		/*
@@ -502,12 +558,15 @@ struct pci_bus * __devinit pci_acpi_scan_root(struct acpi_pci_root *root)
 				continue;
 
 			pcie_bus_configure_settings(child, self->pcie_mpss);
+<<<<<<< HEAD
+=======
 =======
 		bus = pci_create_bus(NULL, busnum, &pci_root_ops, sd);
 		if (bus) {
 			get_current_resources(device, busnum, domain, bus);
 			bus->subordinate = pci_scan_child_bus(bus);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 

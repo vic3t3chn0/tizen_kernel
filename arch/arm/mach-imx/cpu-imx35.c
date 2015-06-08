@@ -14,11 +14,16 @@
 #include <mach/iim.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mx35_cpu_rev = -1;
 
 static int mx35_read_cpu_rev(void)
 {
 	u32 rev;
+<<<<<<< HEAD
+=======
 =======
 unsigned int mx35_cpu_rev;
 EXPORT_SYMBOL(mx35_cpu_rev);
@@ -28,11 +33,15 @@ void __init mx35_read_cpu_rev(void)
 	u32 rev;
 	char *srev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rev = __raw_readl(MX35_IO_ADDRESS(MX35_IIM_BASE_ADDR + MXC_IIMSREV));
 	switch (rev) {
 	case 0x00:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return IMX_CHIP_REVISION_1_0;
 	case 0x10:
 		return IMX_CHIP_REVISION_2_0;
@@ -51,6 +60,8 @@ int mx35_revision(void)
 	return mx35_cpu_rev;
 }
 EXPORT_SYMBOL(mx35_revision);
+<<<<<<< HEAD
+=======
 =======
 		mx35_cpu_rev = IMX_CHIP_REVISION_1_0;
 		srev = "1.0";
@@ -71,3 +82,4 @@ EXPORT_SYMBOL(mx35_revision);
 	printk(KERN_INFO "CPU identified as i.MX35, silicon rev %s\n", srev);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

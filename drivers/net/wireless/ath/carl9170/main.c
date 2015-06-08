@@ -48,7 +48,15 @@
 #include "carl9170.h"
 #include "cmd.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool modparam_nohwcrypt;
+=======
 static int modparam_nohwcrypt;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int modparam_nohwcrypt;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_named(nohwcrypt, modparam_nohwcrypt, bool, S_IRUGO);
 MODULE_PARM_DESC(nohwcrypt, "Disable hardware crypto offload.");
 
@@ -345,11 +353,25 @@ static int carl9170_op_start(struct ieee80211_hw *hw)
 	carl9170_zap_queues(ar);
 
 	/* reset QoS defaults */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	CARL9170_FILL_QUEUE(ar->edcf[AR9170_TXQ_VO], 2, 3,     7, 47);
+	CARL9170_FILL_QUEUE(ar->edcf[AR9170_TXQ_VI], 2, 7,    15, 94);
+	CARL9170_FILL_QUEUE(ar->edcf[AR9170_TXQ_BE], 3, 15, 1023,  0);
+	CARL9170_FILL_QUEUE(ar->edcf[AR9170_TXQ_BK], 7, 15, 1023,  0);
+	CARL9170_FILL_QUEUE(ar->edcf[AR9170_TXQ_SPECIAL], 2, 3, 7, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CARL9170_FILL_QUEUE(ar->edcf[0], 3, 15, 1023,  0); /* BEST EFFORT */
 	CARL9170_FILL_QUEUE(ar->edcf[1], 2, 7,    15, 94); /* VIDEO */
 	CARL9170_FILL_QUEUE(ar->edcf[2], 2, 3,     7, 47); /* VOICE */
 	CARL9170_FILL_QUEUE(ar->edcf[3], 7, 15, 1023,  0); /* BACKGROUND */
 	CARL9170_FILL_QUEUE(ar->edcf[4], 2, 3,     7,  0); /* SPECIAL */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ar->current_factor = ar->current_density = -1;
 	/* "The first key is unique." */
@@ -413,6 +435,15 @@ static int carl9170_op_start(struct ieee80211_hw *hw)
 
 	carl9170_set_state_when(ar, CARL9170_IDLE, CARL9170_STARTED);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ieee80211_queue_delayed_work(ar->hw, &ar->stat_work,
+		round_jiffies(msecs_to_jiffies(CARL9170_STAT_WORK)));
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ieee80211_wake_queues(ar->hw);
 	err = 0;
 
@@ -423,6 +454,13 @@ out:
 
 static void carl9170_cancel_worker(struct ar9170 *ar)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cancel_delayed_work_sync(&ar->stat_work);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cancel_delayed_work_sync(&ar->tx_janitor);
 #ifdef CONFIG_CARL9170_LEDS
 	cancel_delayed_work_sync(&ar->led_work);
@@ -442,7 +480,15 @@ static void carl9170_op_stop(struct ieee80211_hw *hw)
 
 	mutex_lock(&ar->mutex);
 	if (IS_ACCEPTING_CMD(ar)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		RCU_INIT_POINTER(ar->beacon_iter, NULL);
+=======
 		rcu_assign_pointer(ar->beacon_iter, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rcu_assign_pointer(ar->beacon_iter, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		carl9170_led_set_state(ar, 0);
 
@@ -674,7 +720,15 @@ unlock:
 		vif_priv->active = false;
 		bitmap_release_region(&ar->vif_bitmap, vif_id, 0);
 		ar->vifs--;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		RCU_INIT_POINTER(ar->vif_priv[vif_id].vif, NULL);
+=======
 		rcu_assign_pointer(ar->vif_priv[vif_id].vif, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rcu_assign_pointer(ar->vif_priv[vif_id].vif, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list_del_rcu(&vif_priv->list);
 		mutex_unlock(&ar->mutex);
 		synchronize_rcu();
@@ -712,7 +766,15 @@ static void carl9170_op_remove_interface(struct ieee80211_hw *hw,
 	WARN_ON(vif_priv->enable_beacon);
 	vif_priv->enable_beacon = false;
 	list_del_rcu(&vif_priv->list);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	RCU_INIT_POINTER(ar->vif_priv[id].vif, NULL);
+=======
 	rcu_assign_pointer(ar->vif_priv[id].vif, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rcu_assign_pointer(ar->vif_priv[id].vif, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (vif == main_vif) {
 		rcu_read_unlock();
@@ -794,6 +856,49 @@ static void carl9170_ps_work(struct work_struct *work)
 	mutex_unlock(&ar->mutex);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int carl9170_update_survey(struct ar9170 *ar, bool flush, bool noise)
+{
+	int err;
+
+	if (noise) {
+		err = carl9170_get_noisefloor(ar);
+		if (err)
+			return err;
+	}
+
+	if (ar->fw.hw_counters) {
+		err = carl9170_collect_tally(ar);
+		if (err)
+			return err;
+	}
+
+	if (flush)
+		memset(&ar->tally, 0, sizeof(ar->tally));
+
+	return 0;
+}
+
+static void carl9170_stat_work(struct work_struct *work)
+{
+	struct ar9170 *ar = container_of(work, struct ar9170, stat_work.work);
+	int err;
+
+	mutex_lock(&ar->mutex);
+	err = carl9170_update_survey(ar, false, true);
+	mutex_unlock(&ar->mutex);
+
+	if (err)
+		return;
+
+	ieee80211_queue_delayed_work(ar->hw, &ar->stat_work,
+		round_jiffies(msecs_to_jiffies(CARL9170_STAT_WORK)));
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int carl9170_op_config(struct ieee80211_hw *hw, u32 changed)
 {
@@ -812,11 +917,20 @@ static int carl9170_op_config(struct ieee80211_hw *hw, u32 changed)
 			goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (changed & IEEE80211_CONF_CHANGE_POWER) {
 		/* TODO */
 		err = 0;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (changed & IEEE80211_CONF_CHANGE_SMPS) {
 		/* TODO */
 		err = 0;
@@ -828,11 +942,31 @@ static int carl9170_op_config(struct ieee80211_hw *hw, u32 changed)
 		if (err)
 			goto out;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = carl9170_update_survey(ar, true, false);
+		if (err)
+			goto out;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = carl9170_set_channel(ar, hw->conf.channel,
 			hw->conf.channel_type, CARL9170_RFI_NONE);
 		if (err)
 			goto out;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		err = carl9170_update_survey(ar, false, true);
+		if (err)
+			goto out;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = carl9170_set_dyn_sifs_ack(ar);
 		if (err)
 			goto out;
@@ -842,6 +976,18 @@ static int carl9170_op_config(struct ieee80211_hw *hw, u32 changed)
 			goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (changed & IEEE80211_CONF_CHANGE_POWER) {
+		err = carl9170_set_mac_tpc(ar, ar->hw->conf.channel);
+		if (err)
+			goto out;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	mutex_unlock(&ar->mutex);
 	return err;
@@ -1029,7 +1175,16 @@ out:
 	mutex_unlock(&ar->mutex);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u64 carl9170_op_get_tsf(struct ieee80211_hw *hw,
+			       struct ieee80211_vif *vif)
+=======
 static u64 carl9170_op_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u64 carl9170_op_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ar9170 *ar = hw->priv;
 	struct carl9170_tsf_rsp tsf;
@@ -1208,7 +1363,15 @@ static int carl9170_op_sta_add(struct ieee80211_hw *hw,
 		}
 
 		for (i = 0; i < CARL9170_NUM_TID; i++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			RCU_INIT_POINTER(sta_info->agg[i], NULL);
+=======
 			rcu_assign_pointer(sta_info->agg[i], NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			rcu_assign_pointer(sta_info->agg[i], NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		sta_info->ampdu_max_len = 1 << (3 + sta->ht_cap.ampdu_factor);
 		sta_info->ht_sta = true;
@@ -1235,7 +1398,15 @@ static int carl9170_op_sta_remove(struct ieee80211_hw *hw,
 			struct carl9170_sta_tid *tid_info;
 
 			tid_info = rcu_dereference(sta_info->agg[i]);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			RCU_INIT_POINTER(sta_info->agg[i], NULL);
+=======
 			rcu_assign_pointer(sta_info->agg[i], NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			rcu_assign_pointer(sta_info->agg[i], NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (!tid_info)
 				continue;
@@ -1255,7 +1426,16 @@ static int carl9170_op_sta_remove(struct ieee80211_hw *hw,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int carl9170_op_conf_tx(struct ieee80211_hw *hw,
+			       struct ieee80211_vif *vif, u16 queue,
+=======
 static int carl9170_op_conf_tx(struct ieee80211_hw *hw, u16 queue,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int carl9170_op_conf_tx(struct ieee80211_hw *hw, u16 queue,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       const struct ieee80211_tx_queue_params *param)
 {
 	struct ar9170 *ar = hw->priv;
@@ -1347,7 +1527,15 @@ static int carl9170_op_ampdu_action(struct ieee80211_hw *hw,
 			spin_unlock_bh(&ar->tx_ampdu_list_lock);
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		RCU_INIT_POINTER(sta_info->agg[tid], NULL);
+=======
 		rcu_assign_pointer(sta_info->agg[tid], NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rcu_assign_pointer(sta_info->agg[tid], NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rcu_read_unlock();
 
 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
@@ -1421,6 +1609,164 @@ static int carl9170_register_wps_button(struct ar9170 *ar)
 }
 #endif /* CONFIG_CARL9170_WPC */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_CARL9170_HWRNG
+static int carl9170_rng_get(struct ar9170 *ar)
+{
+
+#define RW	(CARL9170_MAX_CMD_PAYLOAD_LEN / sizeof(u32))
+#define RB	(CARL9170_MAX_CMD_PAYLOAD_LEN)
+
+	static const __le32 rng_load[RW] = {
+		[0 ... (RW - 1)] = cpu_to_le32(AR9170_RAND_REG_NUM)};
+
+	u32 buf[RW];
+
+	unsigned int i, off = 0, transfer, count;
+	int err;
+
+	BUILD_BUG_ON(RB > CARL9170_MAX_CMD_PAYLOAD_LEN);
+
+	if (!IS_ACCEPTING_CMD(ar) || !ar->rng.initialized)
+		return -EAGAIN;
+
+	count = ARRAY_SIZE(ar->rng.cache);
+	while (count) {
+		err = carl9170_exec_cmd(ar, CARL9170_CMD_RREG,
+					RB, (u8 *) rng_load,
+					RB, (u8 *) buf);
+		if (err)
+			return err;
+
+		transfer = min_t(unsigned int, count, RW);
+		for (i = 0; i < transfer; i++)
+			ar->rng.cache[off + i] = buf[i];
+
+		off += transfer;
+		count -= transfer;
+	}
+
+	ar->rng.cache_idx = 0;
+
+#undef RW
+#undef RB
+	return 0;
+}
+
+static int carl9170_rng_read(struct hwrng *rng, u32 *data)
+{
+	struct ar9170 *ar = (struct ar9170 *)rng->priv;
+	int ret = -EIO;
+
+	mutex_lock(&ar->mutex);
+	if (ar->rng.cache_idx >= ARRAY_SIZE(ar->rng.cache)) {
+		ret = carl9170_rng_get(ar);
+		if (ret) {
+			mutex_unlock(&ar->mutex);
+			return ret;
+		}
+	}
+
+	*data = ar->rng.cache[ar->rng.cache_idx++];
+	mutex_unlock(&ar->mutex);
+
+	return sizeof(u16);
+}
+
+static void carl9170_unregister_hwrng(struct ar9170 *ar)
+{
+	if (ar->rng.initialized) {
+		hwrng_unregister(&ar->rng.rng);
+		ar->rng.initialized = false;
+	}
+}
+
+static int carl9170_register_hwrng(struct ar9170 *ar)
+{
+	int err;
+
+	snprintf(ar->rng.name, ARRAY_SIZE(ar->rng.name),
+		 "%s_%s", KBUILD_MODNAME, wiphy_name(ar->hw->wiphy));
+	ar->rng.rng.name = ar->rng.name;
+	ar->rng.rng.data_read = carl9170_rng_read;
+	ar->rng.rng.priv = (unsigned long)ar;
+
+	if (WARN_ON(ar->rng.initialized))
+		return -EALREADY;
+
+	err = hwrng_register(&ar->rng.rng);
+	if (err) {
+		dev_err(&ar->udev->dev, "Failed to register the random "
+			"number generator (%d)\n", err);
+		return err;
+	}
+
+	ar->rng.initialized = true;
+
+	err = carl9170_rng_get(ar);
+	if (err) {
+		carl9170_unregister_hwrng(ar);
+		return err;
+	}
+
+	return 0;
+}
+#endif /* CONFIG_CARL9170_HWRNG */
+
+static int carl9170_op_get_survey(struct ieee80211_hw *hw, int idx,
+				struct survey_info *survey)
+{
+	struct ar9170 *ar = hw->priv;
+	struct ieee80211_channel *chan;
+	struct ieee80211_supported_band *band;
+	int err, b, i;
+
+	chan = ar->channel;
+	if (!chan)
+		return -ENODEV;
+
+	if (idx == chan->hw_value) {
+		mutex_lock(&ar->mutex);
+		err = carl9170_update_survey(ar, false, true);
+		mutex_unlock(&ar->mutex);
+		if (err)
+			return err;
+	}
+
+	for (b = 0; b < IEEE80211_NUM_BANDS; b++) {
+		band = ar->hw->wiphy->bands[b];
+
+		if (!band)
+			continue;
+
+		for (i = 0; i < band->n_channels; i++) {
+			if (band->channels[i].hw_value == idx) {
+				chan = &band->channels[i];
+				goto found;
+			}
+		}
+	}
+	return -ENOENT;
+
+found:
+	memcpy(survey, &ar->survey[idx], sizeof(*survey));
+
+	survey->channel = chan;
+	survey->filled = SURVEY_INFO_NOISE_DBM;
+
+	if (ar->channel == chan)
+		survey->filled |= SURVEY_INFO_IN_USE;
+
+	if (ar->fw.hw_counters) {
+		survey->filled |= SURVEY_INFO_CHANNEL_TIME |
+				  SURVEY_INFO_CHANNEL_TIME_BUSY |
+				  SURVEY_INFO_CHANNEL_TIME_TX;
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int carl9170_op_get_survey(struct ieee80211_hw *hw, int idx,
 				struct survey_info *survey)
 {
@@ -1439,6 +1785,10 @@ static int carl9170_op_get_survey(struct ieee80211_hw *hw, int idx,
 	survey->channel = ar->channel;
 	survey->filled = SURVEY_INFO_NOISE_DBM;
 	survey->noise = ar->noise[0];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -1486,6 +1836,19 @@ static void carl9170_op_sta_notify(struct ieee80211_hw *hw,
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool carl9170_tx_frames_pending(struct ieee80211_hw *hw)
+{
+	struct ar9170 *ar = hw->priv;
+
+	return !!atomic_read(&ar->tx_total_queued);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct ieee80211_ops carl9170_ops = {
 	.start			= carl9170_op_start,
 	.stop			= carl9170_op_stop,
@@ -1506,6 +1869,13 @@ static const struct ieee80211_ops carl9170_ops = {
 	.get_survey		= carl9170_op_get_survey,
 	.get_stats		= carl9170_op_get_stats,
 	.ampdu_action		= carl9170_op_ampdu_action,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.tx_frames_pending	= carl9170_tx_frames_pending,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void *carl9170_alloc(size_t priv_size)
@@ -1563,6 +1933,13 @@ void *carl9170_alloc(size_t priv_size)
 	INIT_WORK(&ar->ping_work, carl9170_ping_work);
 	INIT_WORK(&ar->restart_work, carl9170_restart_work);
 	INIT_WORK(&ar->ampdu_work, carl9170_ampdu_work);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	INIT_DELAYED_WORK(&ar->stat_work, carl9170_stat_work);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_DELAYED_WORK(&ar->tx_janitor, carl9170_tx_janitor);
 	INIT_LIST_HEAD(&ar->tx_ampdu_list);
 	rcu_assign_pointer(ar->tx_ampdu_iter,
@@ -1579,6 +1956,13 @@ void *carl9170_alloc(size_t priv_size)
 		     IEEE80211_HW_REPORTS_TX_ACK_STATUS |
 		     IEEE80211_HW_SUPPORTS_PS |
 		     IEEE80211_HW_PS_NULLFUNC_STACK |
+<<<<<<< HEAD
+<<<<<<< HEAD
+		     IEEE80211_HW_NEED_DTIM_PERIOD |
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     IEEE80211_HW_SIGNAL_DBM;
 
 	if (!modparam_noht) {
@@ -1600,6 +1984,15 @@ void *carl9170_alloc(size_t priv_size)
 		ar->noise[i] = -95; /* ATH_DEFAULT_NOISE_FLOOR */
 
 	hw->wiphy->flags &= ~WIPHY_FLAG_PS_ON_BY_DEFAULT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* As IBSS Encryption is software-based, IBSS RSN is supported. */
+	hw->wiphy->flags |= WIPHY_FLAG_IBSS_RSN;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ar;
 
 err_nomem:
@@ -1623,7 +2016,15 @@ static int carl9170_read_eeprom(struct ar9170 *ar)
 	BUILD_BUG_ON(sizeof(ar->eeprom) % RB);
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < sizeof(ar->eeprom) / RB; i++) {
+=======
 	for (i = 0; i < sizeof(ar->eeprom)/RB; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = 0; i < sizeof(ar->eeprom)/RB; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (j = 0; j < RW; j++)
 			offsets[j] = cpu_to_le32(AR9170_EEPROM_START +
 						 RB * i + 4 * j);
@@ -1645,6 +2046,13 @@ static int carl9170_parse_eeprom(struct ar9170 *ar)
 	struct ath_regulatory *regulatory = &ar->common.regulatory;
 	unsigned int rx_streams, tx_streams, tx_params = 0;
 	int bands = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int chans = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ar->eeprom.length == cpu_to_le16(0xffff))
 		return -ENODATA;
@@ -1668,14 +2076,42 @@ static int carl9170_parse_eeprom(struct ar9170 *ar)
 	if (ar->eeprom.operating_flags & AR9170_OPFLAG_2GHZ) {
 		ar->hw->wiphy->bands[IEEE80211_BAND_2GHZ] =
 			&carl9170_band_2GHz;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		chans += carl9170_band_2GHz.n_channels;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bands++;
 	}
 	if (ar->eeprom.operating_flags & AR9170_OPFLAG_5GHZ) {
 		ar->hw->wiphy->bands[IEEE80211_BAND_5GHZ] =
 			&carl9170_band_5GHz;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		chans += carl9170_band_5GHz.n_channels;
 		bands++;
 	}
 
+	if (!bands)
+		return -EINVAL;
+
+	ar->survey = kzalloc(sizeof(struct survey_info) * chans, GFP_KERNEL);
+	if (!ar->survey)
+		return -ENOMEM;
+	ar->num_channels = chans;
+
+=======
+		bands++;
+	}
+
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		bands++;
+	}
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * I measured this, a bandswitch takes roughly
 	 * 135 ms and a frequency switch about 80.
@@ -1689,12 +2125,27 @@ static int carl9170_parse_eeprom(struct ar9170 *ar)
 		ar->hw->channel_change_time = 80 * 1000;
 
 	regulatory->current_rd = le16_to_cpu(ar->eeprom.reg_domain[0]);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	regulatory->current_rd_ext = le16_to_cpu(ar->eeprom.reg_domain[1]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	regulatory->current_rd_ext = le16_to_cpu(ar->eeprom.reg_domain[1]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* second part of wiphy init */
 	SET_IEEE80211_PERM_ADDR(ar->hw, ar->eeprom.mac_address);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
 	return bands ? 0 : -EINVAL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return bands ? 0 : -EINVAL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int carl9170_reg_notifier(struct wiphy *wiphy,
@@ -1725,10 +2176,19 @@ int carl9170_register(struct ar9170 *ar)
 	if (err)
 		return err;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = carl9170_fw_fix_eeprom(ar);
 	if (err)
 		return err;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = carl9170_parse_eeprom(ar);
 	if (err)
 		return err;
@@ -1778,6 +2238,18 @@ int carl9170_register(struct ar9170 *ar)
 		goto err_unreg;
 #endif /* CONFIG_CARL9170_WPC */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_CARL9170_HWRNG
+	err = carl9170_register_hwrng(ar);
+	if (err)
+		goto err_unreg;
+#endif /* CONFIG_CARL9170_HWRNG */
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_info(&ar->udev->dev, "Atheros AR9170 is registered as '%s'\n",
 		 wiphy_name(ar->hw->wiphy));
 
@@ -1810,6 +2282,16 @@ void carl9170_unregister(struct ar9170 *ar)
 	}
 #endif /* CONFIG_CARL9170_WPC */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_CARL9170_HWRNG
+	carl9170_unregister_hwrng(ar);
+#endif /* CONFIG_CARL9170_HWRNG */
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	carl9170_cancel_worker(ar);
 	cancel_work_sync(&ar->restart_work);
 
@@ -1827,6 +2309,15 @@ void carl9170_free(struct ar9170 *ar)
 	kfree(ar->mem_bitmap);
 	ar->mem_bitmap = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree(ar->survey);
+	ar->survey = NULL;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_destroy(&ar->mutex);
 
 	ieee80211_free_hw(ar->hw);

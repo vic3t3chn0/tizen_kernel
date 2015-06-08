@@ -287,6 +287,11 @@ void blk_queue_end_tag(struct request_queue *q, struct request *rq)
 
 	BUG_ON(tag >= bqt->real_max_depth);
 =======
+<<<<<<< HEAD
+	unsigned tag = rq->tag; /* negative tags invalid */
+
+	BUG_ON(tag >= bqt->real_max_depth);
+=======
 	int tag = rq->tag;
 
 	BUG_ON(tag == -1);
@@ -298,6 +303,7 @@ void blk_queue_end_tag(struct request_queue *q, struct request *rq)
 		 */
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_del_init(&rq->queuelist);
 	rq->cmd_flags &= ~REQ_QUEUED;

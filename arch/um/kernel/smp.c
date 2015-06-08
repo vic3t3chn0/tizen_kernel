@@ -79,8 +79,12 @@ static int idle_proc(void *cpup)
 <<<<<<< HEAD
 	set_cpu_online(cpu, true);
 =======
+<<<<<<< HEAD
+	set_cpu_online(cpu, true);
+=======
 	cpu_set(cpu, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default_idle();
 	return 0;
 }
@@ -117,9 +121,13 @@ void smp_prepare_cpus(unsigned int maxcpus)
 <<<<<<< HEAD
 	set_cpu_online(me, true);
 =======
+<<<<<<< HEAD
+	set_cpu_online(me, true);
+=======
 	cpu_clear(me, cpu_online_map);
 	cpu_set(me, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpu_set(me, cpu_callin_map);
 
 	err = os_pipe(cpu_data[me].ipi_pipe, 1, 1);
@@ -149,8 +157,12 @@ void smp_prepare_boot_cpu(void)
 <<<<<<< HEAD
 	set_cpu_online(smp_processor_id(), true);
 =======
+<<<<<<< HEAD
+	set_cpu_online(smp_processor_id(), true);
+=======
 	cpu_set(smp_processor_id(), cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int __cpu_up(unsigned int cpu)
@@ -159,8 +171,12 @@ int __cpu_up(unsigned int cpu)
 <<<<<<< HEAD
 	while (!cpu_online(cpu))
 =======
+<<<<<<< HEAD
+	while (!cpu_online(cpu))
+=======
 	while (!cpu_isset(cpu, cpu_online_map))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mb();
 	return 0;
 }

@@ -26,8 +26,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/clock.h>
 #include <plat/sram.h>
 
@@ -122,10 +126,15 @@ int omap2_sdrc_get_params(unsigned long r,
 void __init omap2_set_globals_sdrc(struct omap_globals *omap2_globals)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (omap2_globals->sdrc)
 		omap2_sdrc_base = omap2_globals->sdrc;
 	if (omap2_globals->sms)
 		omap2_sms_base = omap2_globals->sms;
+<<<<<<< HEAD
+=======
 =======
 	/* Static mapping, never released */
 	if (omap2_globals->sdrc) {
@@ -137,6 +146,7 @@ void __init omap2_set_globals_sdrc(struct omap_globals *omap2_globals)
 		WARN_ON(!omap2_sms_base);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**

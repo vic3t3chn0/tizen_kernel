@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/slab.h>
 =======
+<<<<<<< HEAD
+#include <linux/slab.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/io.h>
 #include <linux/pwm_backlight.h>
 
@@ -66,8 +70,12 @@ static void samsung_bl_exit(struct device *dev)
 <<<<<<< HEAD
 static struct platform_pwm_backlight_data samsung_dfl_bl_data __initdata = {
 =======
+<<<<<<< HEAD
+static struct platform_pwm_backlight_data samsung_dfl_bl_data __initdata = {
+=======
 static struct platform_pwm_backlight_data samsung_dfl_bl_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.max_brightness = 255,
 	.dft_brightness = 255,
 	.pwm_period_ns  = 78770,
@@ -78,8 +86,12 @@ static struct platform_pwm_backlight_data samsung_dfl_bl_data = {
 <<<<<<< HEAD
 static struct platform_device samsung_dfl_bl_device __initdata = {
 =======
+<<<<<<< HEAD
+static struct platform_device samsung_dfl_bl_device __initdata = {
+=======
 static struct platform_device samsung_dfl_bl_device = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "pwm-backlight",
 };
 
@@ -91,8 +103,12 @@ static struct platform_device samsung_dfl_bl_device = {
 <<<<<<< HEAD
 void __init samsung_bl_set(struct samsung_bl_gpio_info *gpio_info,
 =======
+<<<<<<< HEAD
+void __init samsung_bl_set(struct samsung_bl_gpio_info *gpio_info,
+=======
 void samsung_bl_set(struct samsung_bl_gpio_info *gpio_info,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct platform_pwm_backlight_data *bl_data)
 {
 	int ret = 0;
@@ -134,7 +150,12 @@ void samsung_bl_set(struct samsung_bl_gpio_info *gpio_info,
 	if (bl_data->notify_after)
 		samsung_bl_data->notify_after = bl_data->notify_after;
 =======
+<<<<<<< HEAD
+	if (bl_data->notify_after)
+		samsung_bl_data->notify_after = bl_data->notify_after;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bl_data->exit)
 		samsung_bl_data->exit = bl_data->exit;
 	if (bl_data->check_fb)

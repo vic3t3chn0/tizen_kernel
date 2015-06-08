@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/delay.h>
 #include <sound/core.h>
@@ -47,8 +51,12 @@ static char *id = SNDRV_DEFAULT_STR1;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable = 1;
 =======
+<<<<<<< HEAD
+static bool enable = 1;
+=======
 static int enable = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int codecs = 1;
 
 module_param(index, int, 0444);
@@ -994,8 +1002,12 @@ timeout:
 <<<<<<< HEAD
 		dev_err(&sis->pci->dev, "ac97 codec %d timeout cmd 0x%08x\n",
 =======
+<<<<<<< HEAD
+		dev_err(&sis->pci->dev, "ac97 codec %d timeout cmd 0x%08x\n",
+=======
 		printk(KERN_ERR "sis7019: ac97 codec %d timeout cmd 0x%08x\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					codec, cmd);
 	}
 
@@ -1157,8 +1169,12 @@ static int sis_chip_init(struct sis7019 *sis)
 <<<<<<< HEAD
 		dev_err(&sis->pci->dev, "could not find any codecs\n");
 =======
+<<<<<<< HEAD
+		dev_err(&sis->pci->dev, "could not find any codecs\n");
+=======
 		printk(KERN_ERR "sis7019: could not find any codecs\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 	}
 
@@ -1167,9 +1183,14 @@ static int sis_chip_init(struct sis7019 *sis)
 		dev_warn(&sis->pci->dev, "missing codecs, found %0x, expected %0x\n",
 					 sis->codecs_present, codecs);
 =======
+<<<<<<< HEAD
+		dev_warn(&sis->pci->dev, "missing codecs, found %0x, expected %0x\n",
+					 sis->codecs_present, codecs);
+=======
 		printk(KERN_WARNING "sis7019: missing codecs, found %0x, expected %0x\n",
 		       sis->codecs_present, codecs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Let the hardware know that the audio driver is alive,
@@ -1280,13 +1301,20 @@ static int sis_resume(struct pci_dev *pci)
 <<<<<<< HEAD
 		dev_err(&pci->dev, "unable to re-enable device\n");
 =======
+<<<<<<< HEAD
+		dev_err(&pci->dev, "unable to re-enable device\n");
+=======
 		printk(KERN_ERR "sis7019: unable to re-enable device\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 
 	if (sis_chip_init(sis)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(&pci->dev, "unable to re-init controller\n");
 		goto error;
 	}
@@ -1294,6 +1322,8 @@ static int sis_resume(struct pci_dev *pci)
 	if (request_irq(pci->irq, sis_interrupt, IRQF_SHARED,
 			KBUILD_MODNAME, sis)) {
 		dev_err(&pci->dev, "unable to regain IRQ %d\n", pci->irq);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_ERR "sis7019: unable to re-init controller\n");
 		goto error;
@@ -1303,6 +1333,7 @@ static int sis_resume(struct pci_dev *pci)
 				card->shortname, sis)) {
 		printk(KERN_ERR "sis7019: unable to regain IRQ %d\n", pci->irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 
@@ -1373,9 +1404,13 @@ static int __devinit sis_chip_create(struct snd_card *card,
 <<<<<<< HEAD
 		dev_err(&pci->dev, "architecture does not support 30-bit PCI busmaster DMA");
 =======
+<<<<<<< HEAD
+		dev_err(&pci->dev, "architecture does not support 30-bit PCI busmaster DMA");
+=======
 		printk(KERN_ERR "sis7019: architecture does not support "
 					"30-bit PCI busmaster DMA");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_out_enabled;
 	}
 
@@ -1392,8 +1427,12 @@ static int __devinit sis_chip_create(struct snd_card *card,
 <<<<<<< HEAD
 		dev_err(&pci->dev, "unable request regions\n");
 =======
+<<<<<<< HEAD
+		dev_err(&pci->dev, "unable request regions\n");
+=======
 		printk(KERN_ERR "sis7019: unable request regions\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_out_enabled;
 	}
 
@@ -1403,8 +1442,12 @@ static int __devinit sis_chip_create(struct snd_card *card,
 <<<<<<< HEAD
 		dev_err(&pci->dev, "unable to remap MMIO, aborting\n");
 =======
+<<<<<<< HEAD
+		dev_err(&pci->dev, "unable to remap MMIO, aborting\n");
+=======
 		printk(KERN_ERR "sis7019: unable to remap MMIO, aborting\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_out_cleanup;
 	}
 
@@ -1413,8 +1456,12 @@ static int __devinit sis_chip_create(struct snd_card *card,
 <<<<<<< HEAD
 		dev_err(&pci->dev, "unable to allocate state storage\n");
 =======
+<<<<<<< HEAD
+		dev_err(&pci->dev, "unable to allocate state storage\n");
+=======
 		printk(KERN_ERR "sis7019: unable to allocate state storage\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_out_cleanup;
 	}
 
@@ -1427,10 +1474,16 @@ static int __devinit sis_chip_create(struct snd_card *card,
 			sis)) {
 		dev_err(&pci->dev, "unable to allocate irq %d\n", sis->irq);
 =======
+<<<<<<< HEAD
+	if (request_irq(pci->irq, sis_interrupt, IRQF_SHARED, KBUILD_MODNAME,
+			sis)) {
+		dev_err(&pci->dev, "unable to allocate irq %d\n", sis->irq);
+=======
 	if (request_irq(pci->irq, sis_interrupt, IRQF_DISABLED|IRQF_SHARED,
 				card->shortname, sis)) {
 		printk(KERN_ERR "unable to allocate irq %d\n", sis->irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error_out_cleanup;
 	}
 
@@ -1538,8 +1591,12 @@ static struct pci_driver sis7019_driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "SiS7019",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_sis7019_ids,
 	.probe = snd_sis7019_probe,
 	.remove = __devexit_p(snd_sis7019_remove),

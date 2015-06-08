@@ -13,8 +13,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/uio.h>
 #include <linux/rmap.h>
 #include <linux/mmu_notifier.h>
@@ -202,12 +206,16 @@ retry:
 <<<<<<< HEAD
 			dec_mm_counter(mm, MM_FILEPAGES);
 =======
+<<<<<<< HEAD
+			dec_mm_counter(mm, MM_FILEPAGES);
+=======
 		#ifdef CONFIG_LOWMEM_CHECK
 			dec_mm_counter(mm, MM_FILEPAGES, page);
 		#else
 			dec_mm_counter(mm, MM_FILEPAGES);
 		#endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			BUG_ON(pte_dirty(pteval));
 			pte_unmap_unlock(pte, ptl);
 			page_cache_release(page);

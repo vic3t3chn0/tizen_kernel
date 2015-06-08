@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <cpu/dma.h>
 #include <asm-generic/dma.h>
 
@@ -98,8 +102,12 @@ struct dma_channel {
 <<<<<<< HEAD
 	struct device dev;
 =======
+<<<<<<< HEAD
+	struct device dev;
+=======
 	struct sys_device dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *priv_data;
 };
 

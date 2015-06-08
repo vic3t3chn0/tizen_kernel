@@ -100,10 +100,13 @@ static int do_signal(struct pt_regs *regs, sigset_t *oldset)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (try_to_freeze())
 		goto no_signal;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (current_thread_info()->status & TS_RESTORE_SIGMASK)
 		oldset = &current->saved_sigmask;
 	else if (!oldset)
@@ -130,8 +133,11 @@ static int do_signal(struct pt_regs *regs, sigset_t *oldset)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 no_signal:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Did we come from a system call? */
 	if (regs->syscall_nr >= 0) {
 		/* Restart the system call - no handlers present */
@@ -170,6 +176,9 @@ sys_sigsuspend(old_sigset_t mask,
 	       struct pt_regs * regs)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigset_t saveset, blocked;
 
 	saveset = current->blocked;
@@ -177,6 +186,8 @@ sys_sigsuspend(old_sigset_t mask,
 	mask &= _BLOCKABLE;
 	siginitset(&blocked, mask);
 	set_current_blocked(&blocked);
+<<<<<<< HEAD
+=======
 =======
 	sigset_t saveset;
 
@@ -187,6 +198,7 @@ sys_sigsuspend(old_sigset_t mask,
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	REF_REG_RET = -EINTR;
 	while (1) {
@@ -222,12 +234,17 @@ sys_rt_sigsuspend(sigset_t *unewset, size_t sigsetsize,
 	saveset = current->blocked;
 	set_current_blocked(&newset);
 =======
+<<<<<<< HEAD
+	saveset = current->blocked;
+	set_current_blocked(&newset);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	saveset = current->blocked;
 	current->blocked = newset;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	REF_REG_RET = -EINTR;
 	while (1) {
@@ -436,12 +453,16 @@ asmlinkage int sys_sigreturn(unsigned long r2, unsigned long r3,
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (restore_sigcontext(regs, &frame->sc, &ret))
 		goto badframe;
@@ -477,11 +498,15 @@ asmlinkage int sys_rt_sigreturn(unsigned long r2, unsigned long r3,
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (restore_sigcontext(regs, &frame->uc.uc_mcontext, &ret))
 		goto badframe;
@@ -771,6 +796,10 @@ handle_signal(unsigned long sig, siginfo_t *info, struct k_sigaction *ka,
 	if (ret == 0)
 		block_sigmask(ka, sig);
 =======
+<<<<<<< HEAD
+	if (ret == 0)
+		block_sigmask(ka, sig);
+=======
 	if (ka->sa.sa_flags & SA_ONESHOT)
 		ka->sa.sa_handler = SIG_DFL;
 
@@ -783,6 +812,7 @@ handle_signal(unsigned long sig, siginfo_t *info, struct k_sigaction *ka,
 		spin_unlock_irq(&current->sighand->siglock);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }

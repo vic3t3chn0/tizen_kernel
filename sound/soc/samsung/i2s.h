@@ -6,8 +6,12 @@
 <<<<<<< HEAD
  *	Jaswinder Singh <jassisinghbrar@gmail.com>
 =======
+<<<<<<< HEAD
+ *	Jaswinder Singh <jassisinghbrar@gmail.com>
+=======
  *	Jaswinder Singh <jassi.brar@samsung.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -28,6 +32,9 @@
 
 #define SAMSUNG_I2S_RCLKSRC_0	0
 #define SAMSUNG_I2S_RCLKSRC_1	1
+<<<<<<< HEAD
+#define SAMSUNG_I2S_CDCLK		2
+=======
 <<<<<<< HEAD
 #define SAMSUNG_I2S_CDCLK		2
 =======
@@ -149,5 +156,6 @@
 
 #define msecs_to_loops(t) (loops_per_jiffy / 1000 * HZ * t)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __SND_SOC_SAMSUNG_I2S_H */

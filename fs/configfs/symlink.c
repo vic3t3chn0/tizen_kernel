@@ -113,8 +113,12 @@ static int get_target(const char *symname, struct path *path,
 <<<<<<< HEAD
 		      struct config_item **target, struct super_block *sb)
 =======
+<<<<<<< HEAD
+		      struct config_item **target, struct super_block *sb)
+=======
 		      struct config_item **target)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 
@@ -123,8 +127,12 @@ static int get_target(const char *symname, struct path *path,
 <<<<<<< HEAD
 		if (path->dentry->d_sb == sb) {
 =======
+<<<<<<< HEAD
+		if (path->dentry->d_sb == sb) {
+=======
 		if (path->dentry->d_sb == configfs_sb) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*target = configfs_get_config_item(path->dentry);
 			if (!*target) {
 				ret = -ENOENT;
@@ -151,11 +159,14 @@ int configfs_symlink(struct inode *dir, struct dentry *dentry, const char *symna
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ret = -EPERM;  /* What lack-of-symlink returns */
 	if (dentry->d_parent == configfs_sb->s_root)
 		goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sd = dentry->d_parent->d_fsdata;
 	/*
 	 * Fake invisibility if dir belongs to a group/default groups hierarchy
@@ -176,8 +187,12 @@ int configfs_symlink(struct inode *dir, struct dentry *dentry, const char *symna
 <<<<<<< HEAD
 	ret = get_target(symname, &path, &target_item, dentry->d_sb);
 =======
+<<<<<<< HEAD
+	ret = get_target(symname, &path, &target_item, dentry->d_sb);
+=======
 	ret = get_target(symname, &path, &target_item);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret)
 		goto out_put;
 
@@ -215,9 +230,12 @@ int configfs_unlink(struct inode *dir, struct dentry *dentry)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	BUG_ON(dentry->d_parent == configfs_sb->s_root);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sl = sd->s_element;
 
 	parent_item = configfs_get_config_item(dentry->d_parent);

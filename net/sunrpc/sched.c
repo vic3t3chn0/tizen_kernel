@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/freezer.h>
 =======
+<<<<<<< HEAD
+#include <linux/freezer.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/sunrpc/clnt.h>
 
@@ -36,7 +40,13 @@
 #include <trace/events/sunrpc.h>
 
 =======
+<<<<<<< HEAD
+#define CREATE_TRACE_POINTS
+#include <trace/events/sunrpc.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * RPC slabs and memory pools
  */
@@ -112,8 +122,14 @@ static void __rpc_add_wait_queue_priority(struct rpc_wait_queue *queue,
 		struct rpc_task *task,
 		unsigned char queue_priority)
 =======
+<<<<<<< HEAD
+static void __rpc_add_wait_queue_priority(struct rpc_wait_queue *queue,
+		struct rpc_task *task,
+		unsigned char queue_priority)
+=======
 static void __rpc_add_wait_queue_priority(struct rpc_wait_queue *queue, struct rpc_task *task)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct list_head *q;
 	struct rpc_task *t;
@@ -123,9 +139,14 @@ static void __rpc_add_wait_queue_priority(struct rpc_wait_queue *queue, struct r
 	q = &queue->tasks[queue_priority];
 	if (unlikely(queue_priority > queue->maxpriority))
 =======
+<<<<<<< HEAD
+	q = &queue->tasks[queue_priority];
+	if (unlikely(queue_priority > queue->maxpriority))
+=======
 	q = &queue->tasks[task->tk_priority];
 	if (unlikely(task->tk_priority > queue->maxpriority))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		q = &queue->tasks[queue->maxpriority];
 	list_for_each_entry(t, q, u.tk_wait.list) {
 		if (t->tk_owner == task->tk_owner) {
@@ -149,8 +170,14 @@ static void __rpc_add_wait_queue(struct rpc_wait_queue *queue,
 		struct rpc_task *task,
 		unsigned char queue_priority)
 =======
+<<<<<<< HEAD
+static void __rpc_add_wait_queue(struct rpc_wait_queue *queue,
+		struct rpc_task *task,
+		unsigned char queue_priority)
+=======
 static void __rpc_add_wait_queue(struct rpc_wait_queue *queue, struct rpc_task *task)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	BUG_ON (RPC_IS_QUEUED(task));
 
@@ -158,8 +185,12 @@ static void __rpc_add_wait_queue(struct rpc_wait_queue *queue, struct rpc_task *
 <<<<<<< HEAD
 		__rpc_add_wait_queue_priority(queue, task, queue_priority);
 =======
+<<<<<<< HEAD
+		__rpc_add_wait_queue_priority(queue, task, queue_priority);
+=======
 		__rpc_add_wait_queue_priority(queue, task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (RPC_IS_SWAPPER(task))
 		list_add(&task->u.tk_wait.list, &queue->tasks[0]);
 	else
@@ -168,9 +199,12 @@ static void __rpc_add_wait_queue(struct rpc_wait_queue *queue, struct rpc_task *
 	queue->qlen++;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* barrier matches the read in rpc_wake_up_task_queue_locked() */
 	smp_wmb();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rpc_set_queued(task);
 
 	dprintk("RPC: %5u added to queue %p \"%s\"\n",
@@ -239,10 +273,14 @@ static void __rpc_init_priority_wait_queue(struct rpc_wait_queue *queue, const c
 <<<<<<< HEAD
 	rpc_assign_waitqueue_name(queue, qname);
 =======
+<<<<<<< HEAD
+	rpc_assign_waitqueue_name(queue, qname);
+=======
 #ifdef RPC_DEBUG
 	queue->name = qname;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void rpc_init_priority_wait_queue(struct rpc_wait_queue *queue, const char *qname)
@@ -270,8 +308,12 @@ static int rpc_wait_bit_killable(void *word)
 <<<<<<< HEAD
 	freezable_schedule_unsafe();
 =======
+<<<<<<< HEAD
+	freezable_schedule_unsafe();
+=======
 	schedule();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -294,7 +336,12 @@ static void rpc_set_active(struct rpc_task *task)
 	trace_rpc_task_begin(task->tk_client, task, NULL);
 
 =======
+<<<<<<< HEAD
+	trace_rpc_task_begin(task->tk_client, task, NULL);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rpc_task_set_debuginfo(task);
 	set_bit(RPC_TASK_ACTIVE, &task->tk_runstate);
 }
@@ -315,7 +362,12 @@ static int rpc_complete_task(struct rpc_task *task)
 	trace_rpc_task_complete(task->tk_client, task, NULL);
 
 =======
+<<<<<<< HEAD
+	trace_rpc_task_complete(task->tk_client, task, NULL);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&wq->lock, flags);
 	clear_bit(RPC_TASK_ACTIVE, &task->tk_runstate);
 	ret = atomic_dec_and_test(&task->tk_count);
@@ -366,14 +418,20 @@ static void rpc_make_runnable(struct rpc_task *task)
  * as it's on a wait queue.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __rpc_sleep_on_priority(struct rpc_wait_queue *q,
 		struct rpc_task *task,
 		rpc_action action,
 		unsigned char queue_priority)
+<<<<<<< HEAD
+=======
 =======
 static void __rpc_sleep_on(struct rpc_wait_queue *q, struct rpc_task *task,
 			rpc_action action)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	dprintk("RPC: %5u sleep_on(queue \"%s\" time %lu)\n",
 			task->tk_pid, rpc_qname(q), jiffies);
@@ -383,8 +441,14 @@ static void __rpc_sleep_on(struct rpc_wait_queue *q, struct rpc_task *task,
 
 	__rpc_add_wait_queue(q, task, queue_priority);
 =======
+<<<<<<< HEAD
+	trace_rpc_task_sleep(task->tk_client, task, q);
+
+	__rpc_add_wait_queue(q, task, queue_priority);
+=======
 	__rpc_add_wait_queue(q, task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(task->tk_callback != NULL);
 	task->tk_callback = action;
@@ -404,13 +468,20 @@ void rpc_sleep_on(struct rpc_wait_queue *q, struct rpc_task *task,
 <<<<<<< HEAD
 	__rpc_sleep_on_priority(q, task, action, task->tk_priority);
 =======
+<<<<<<< HEAD
+	__rpc_sleep_on_priority(q, task, action, task->tk_priority);
+=======
 	__rpc_sleep_on(q, task, action);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_bh(&q->lock);
 }
 EXPORT_SYMBOL_GPL(rpc_sleep_on);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void rpc_sleep_on_priority(struct rpc_wait_queue *q, struct rpc_task *task,
 		rpc_action action, int priority)
 {
@@ -425,8 +496,11 @@ void rpc_sleep_on_priority(struct rpc_wait_queue *q, struct rpc_task *task,
 	spin_unlock_bh(&q->lock);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * __rpc_do_wake_up_task - wake up a single rpc_task
  * @queue: wait queue
@@ -449,7 +523,12 @@ static void __rpc_do_wake_up_task(struct rpc_wait_queue *queue, struct rpc_task 
 	trace_rpc_task_wakeup(task->tk_client, task, queue);
 
 =======
+<<<<<<< HEAD
+	trace_rpc_task_wakeup(task->tk_client, task, queue);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__rpc_remove_wait_queue(queue, task);
 
 	rpc_make_runnable(task);
@@ -466,12 +545,17 @@ static void rpc_wake_up_task_queue_locked(struct rpc_wait_queue *queue, struct r
 	if (RPC_IS_QUEUED(task) && task->tk_waitqueue == queue)
 		__rpc_do_wake_up_task(queue, task);
 =======
+<<<<<<< HEAD
+	if (RPC_IS_QUEUED(task) && task->tk_waitqueue == queue)
+		__rpc_do_wake_up_task(queue, task);
+=======
 	if (RPC_IS_QUEUED(task)) {
 		smp_rmb();
 		if (task->tk_waitqueue == queue)
 			__rpc_do_wake_up_task(queue, task);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -505,8 +589,12 @@ EXPORT_SYMBOL_GPL(rpc_wake_up_queued_task);
 <<<<<<< HEAD
 static struct rpc_task *__rpc_find_next_queued_priority(struct rpc_wait_queue *queue)
 =======
+<<<<<<< HEAD
+static struct rpc_task *__rpc_find_next_queued_priority(struct rpc_wait_queue *queue)
+=======
 static struct rpc_task * __rpc_wake_up_next_priority(struct rpc_wait_queue *queue)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct list_head *q;
 	struct rpc_task *task;
@@ -552,6 +640,9 @@ new_owner:
 	rpc_set_waitqueue_owner(queue, task->tk_owner);
 out:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return task;
 }
 
@@ -581,6 +672,8 @@ struct rpc_task *rpc_wake_up_first(struct rpc_wait_queue *queue,
 			rpc_wake_up_task_queue_locked(queue, task);
 		else
 			task = NULL;
+<<<<<<< HEAD
+=======
 =======
 	rpc_wake_up_task_queue_locked(queue, task);
 	return task;
@@ -602,12 +695,16 @@ struct rpc_task * rpc_wake_up_next(struct rpc_wait_queue *queue)
 		task_for_first(task, &queue->tasks[0])
 			rpc_wake_up_task_queue_locked(queue, task);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spin_unlock_bh(&queue->lock);
 
 	return task;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(rpc_wake_up_first);
 
 static bool rpc_wake_up_next_func(struct rpc_task *task, void *data)
@@ -622,8 +719,11 @@ struct rpc_task *rpc_wake_up_next(struct rpc_wait_queue *queue)
 {
 	return rpc_wake_up_first(queue, rpc_wake_up_next_func, NULL);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(rpc_wake_up_next);
 
 /**
@@ -732,6 +832,9 @@ void rpc_prepare_task(struct rpc_task *task)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 rpc_init_task_statistics(struct rpc_task *task)
 {
@@ -753,8 +856,11 @@ rpc_reset_task_statistics(struct rpc_task *task)
 	rpc_init_task_statistics(task);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Helper that calls task->tk_ops->rpc_call_done if it exists
  */
@@ -770,7 +876,11 @@ void rpc_exit_task(struct rpc_task *task)
 <<<<<<< HEAD
 			rpc_reset_task_statistics(task);
 =======
+<<<<<<< HEAD
+			rpc_reset_task_statistics(task);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -826,7 +936,11 @@ static void __rpc_execute(struct rpc_task *task)
 <<<<<<< HEAD
 		trace_rpc_task_run_action(task->tk_client, task, task->tk_action);
 =======
+<<<<<<< HEAD
+		trace_rpc_task_run_action(task->tk_client, task, task->tk_action);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		do_action(task);
 
 		/*
@@ -902,10 +1016,14 @@ static void rpc_async_schedule(struct work_struct *work)
 <<<<<<< HEAD
 	__rpc_execute(container_of(work, struct rpc_task, u.tk_work));
 =======
+<<<<<<< HEAD
+	__rpc_execute(container_of(work, struct rpc_task, u.tk_work));
+=======
 	current->flags |= PF_FSTRANS;
 	__rpc_execute(container_of(work, struct rpc_task, u.tk_work));
 	current->flags &= ~PF_FSTRANS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -985,12 +1103,15 @@ static void rpc_init_task(struct rpc_task *task, const struct rpc_task_setup *ta
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Initialize retry counters */
 	task->tk_garb_retry = 2;
 	task->tk_cred_retry = 2;
 	task->tk_rebind_retry = 2;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	task->tk_priority = task_setup_data->priority - RPC_PRIORITY_LOW;
 	task->tk_owner = current->tgid;
 
@@ -1003,9 +1124,13 @@ static void rpc_init_task(struct rpc_task *task, const struct rpc_task_setup *ta
 <<<<<<< HEAD
 	rpc_init_task_statistics(task);
 =======
+<<<<<<< HEAD
+	rpc_init_task_statistics(task);
+=======
 	/* starting timestamp */
 	task->tk_start = ktime_get();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprintk("RPC:       new task initialized, procpid %u\n",
 				task_pid_nr(current));
@@ -1042,6 +1167,9 @@ struct rpc_task *rpc_new_task(const struct rpc_task_setup *setup_data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void rpc_free_task(struct rpc_task *task)
 {
 	const struct rpc_call_ops *tk_ops = task->tk_ops;
@@ -1052,6 +1180,8 @@ static void rpc_free_task(struct rpc_task *task)
 		mempool_free(task, rpc_task_mempool);
 	}
 	rpc_release_calldata(tk_ops, calldata);
+<<<<<<< HEAD
+=======
 =======
 /*
  * rpc_free_task - release rpc task and perform cleanups
@@ -1083,6 +1213,7 @@ static void rpc_free_task(struct rpc_task *task)
 		mempool_free(task, rpc_task_mempool);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void rpc_async_release(struct work_struct *work)

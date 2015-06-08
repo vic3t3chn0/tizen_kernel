@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/uaccess.h>
 =======
+<<<<<<< HEAD
+#include <linux/uaccess.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct gfs2_rgrpd;
 struct gfs2_sbd;
@@ -23,6 +27,9 @@ struct gfs2_holder;
 extern void gfs2_rgrp_verify(struct gfs2_rgrpd *rgd);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct gfs2_rgrpd *gfs2_blk2rgrpd(struct gfs2_sbd *sdp, u64 blk, bool exact);
 extern struct gfs2_rgrpd *gfs2_rgrpd_get_first(struct gfs2_sbd *sdp);
 extern struct gfs2_rgrpd *gfs2_rgrpd_get_next(struct gfs2_rgrpd *rgd);
@@ -48,6 +55,8 @@ extern int gfs2_alloc_blocks(struct gfs2_inode *ip, u64 *bn, unsigned int *n,
 			     bool dinode, u64 *generation);
 
 extern void __gfs2_free_blocks(struct gfs2_inode *ip, u64 bstart, u32 blen, int meta);
+<<<<<<< HEAD
+=======
 =======
 struct gfs2_rgrpd *gfs2_blk2rgrpd(struct gfs2_sbd *sdp, u64 blk);
 struct gfs2_rgrpd *gfs2_rgrpd_get_first(struct gfs2_sbd *sdp);
@@ -87,6 +96,7 @@ extern void __gfs2_free_data(struct gfs2_inode *ip, u64 bstart, u32 blen);
 extern void gfs2_free_data(struct gfs2_inode *ip, u64 bstart, u32 blen);
 extern void __gfs2_free_meta(struct gfs2_inode *ip, u64 bstart, u32 blen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void gfs2_free_meta(struct gfs2_inode *ip, u64 bstart, u32 blen);
 extern void gfs2_free_di(struct gfs2_rgrpd *rgd, struct gfs2_inode *ip);
 extern void gfs2_unlink_di(struct inode *inode);
@@ -103,19 +113,29 @@ struct gfs2_rgrp_list {
 <<<<<<< HEAD
 extern void gfs2_rlist_add(struct gfs2_inode *ip, struct gfs2_rgrp_list *rlist,
 =======
+<<<<<<< HEAD
+extern void gfs2_rlist_add(struct gfs2_inode *ip, struct gfs2_rgrp_list *rlist,
+=======
 extern void gfs2_rlist_add(struct gfs2_sbd *sdp, struct gfs2_rgrp_list *rlist,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   u64 block);
 extern void gfs2_rlist_alloc(struct gfs2_rgrp_list *rlist, unsigned int state);
 extern void gfs2_rlist_free(struct gfs2_rgrp_list *rlist);
 extern u64 gfs2_ri_total(struct gfs2_sbd *sdp);
 extern int gfs2_rgrp_dump(struct seq_file *seq, const struct gfs2_glock *gl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int gfs2_rgrp_send_discards(struct gfs2_sbd *sdp, u64 offset,
 				   struct buffer_head *bh,
 				   const struct gfs2_bitmap *bi, unsigned minlen, u64 *ptrimmed);
 extern int gfs2_fitrim(struct file *filp, void __user *argp);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __RGRP_DOT_H__ */

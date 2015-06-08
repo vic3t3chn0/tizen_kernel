@@ -1,11 +1,16 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  SMP related functions
  *
  *    Copyright IBM Corp. 1999,2012
  *    Author(s): Denis Joseph Barrow,
  *		 Martin Schwidefsky <schwidefsky@de.ibm.com>,
  *		 Heiko Carstens <heiko.carstens@de.ibm.com>,
+<<<<<<< HEAD
+=======
 =======
  *  arch/s390/kernel/smp.c
  *
@@ -14,11 +19,17 @@
  *		 Martin Schwidefsky (schwidefsky@de.ibm.com)
  *		 Heiko Carstens (heiko.carstens@de.ibm.com)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  based on other smp stuff by
  *    (c) 1995 Alan Cox, CymruNET Ltd  <alan@cymru.net>
  *    (c) 1998 Ingo Molnar
  *
+<<<<<<< HEAD
+ * The code outside of smp.c uses logical cpu numbers, only smp.c does
+ * the translation of logical to physical cpu ids. All new code that
+ * operates on physical cpu numbers needs to go into smp.c.
+=======
 <<<<<<< HEAD
  * The code outside of smp.c uses logical cpu numbers, only smp.c does
  * the translation of logical to physical cpu ids. All new code that
@@ -33,6 +44,7 @@
  * one which is causing all the confusion with __cpu_logical_map and
  * cpu_number_map in other architectures.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #define KMSG_COMPONENT "cpu"
@@ -47,6 +59,9 @@
 #include <linux/kernel_stat.h>
 #include <linux/delay.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/irqflags.h>
 #include <linux/cpu.h>
@@ -58,6 +73,8 @@
 #include <asm/ipl.h>
 #include <asm/setup.h>
 #include <asm/irq.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/cache.h>
 #include <linux/interrupt.h>
@@ -74,11 +91,15 @@
 #include <asm/irq.h>
 #include <asm/cpcmd.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/tlbflush.h>
 #include <asm/timer.h>
 #include <asm/lowcore.h>
 #include <asm/sclp.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/vdso.h>
 #include <asm/debug.h>
 #include <asm/os_info.h>
@@ -117,6 +138,8 @@ enum {
 };
 
 enum {
+<<<<<<< HEAD
+=======
 =======
 #include <asm/cputime.h>
 #include <asm/vdso.h>
@@ -133,11 +156,15 @@ static int smp_use_sigp_detection;
 
 enum s390_cpu_state {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CPU_STATE_STANDBY,
 	CPU_STATE_CONFIGURED,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pcpu {
 	struct cpu cpu;
 	struct task_struct *idle;	/* idle process for the cpu */
@@ -478,6 +505,8 @@ void smp_send_stop(void)
 		struct pcpu *pcpu = pcpu_devices + cpu;
 		pcpu_sigp_retry(pcpu, sigp_stop, 0);
 		while (!pcpu_stopped(pcpu))
+<<<<<<< HEAD
+=======
 =======
 DEFINE_MUTEX(smp_cpu_state_mutex);
 int smp_cpu_polarization[NR_CPUS];
@@ -560,12 +589,16 @@ void smp_send_stop(void)
 
 		while (!cpu_stopped(cpu))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cpu_relax();
 	}
 }
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Stop the current cpu.
  */
 void smp_stop_cpu(void)
@@ -596,6 +629,8 @@ static void do_ext_call_interrupt(struct ext_code ext_code,
 
 	if (test_bit(ec_stop_cpu, &bits))
 		smp_stop_cpu();
+<<<<<<< HEAD
+=======
 =======
  * This is the main routine where commands issued by other
  * cpus are handled.
@@ -612,6 +647,7 @@ static void do_ext_call_interrupt(unsigned int ext_int_code,
 	 */
 	bits = xchg(&S390_lowcore.ext_call_fast, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(ec_schedule, &bits))
 		scheduler_ipi();
@@ -621,6 +657,9 @@ static void do_ext_call_interrupt(unsigned int ext_int_code,
 
 	if (test_bit(ec_call_function_single, &bits))
 		generic_smp_call_function_single_interrupt();
+<<<<<<< HEAD
+
+=======
 <<<<<<< HEAD
 
 =======
@@ -639,6 +678,7 @@ static void smp_ext_bitcall(int cpu, int sig)
 	while (sigp(cpu, sigp_emergency_signal) == sigp_busy)
 		udelay(10);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void arch_send_call_function_ipi_mask(const struct cpumask *mask)
@@ -649,8 +689,12 @@ void arch_send_call_function_ipi_mask(const struct cpumask *mask)
 <<<<<<< HEAD
 		pcpu_ec_call(pcpu_devices + cpu, ec_call_function);
 =======
+<<<<<<< HEAD
+		pcpu_ec_call(pcpu_devices + cpu, ec_call_function);
+=======
 		smp_ext_bitcall(cpu, ec_call_function);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void arch_send_call_function_single_ipi(int cpu)
@@ -658,8 +702,12 @@ void arch_send_call_function_single_ipi(int cpu)
 <<<<<<< HEAD
 	pcpu_ec_call(pcpu_devices + cpu, ec_call_function_single);
 =======
+<<<<<<< HEAD
+	pcpu_ec_call(pcpu_devices + cpu, ec_call_function_single);
+=======
 	smp_ext_bitcall(cpu, ec_call_function_single);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifndef CONFIG_64BIT
@@ -688,8 +736,12 @@ void smp_send_reschedule(int cpu)
 <<<<<<< HEAD
 	pcpu_ec_call(pcpu_devices + cpu, ec_schedule);
 =======
+<<<<<<< HEAD
+	pcpu_ec_call(pcpu_devices + cpu, ec_schedule);
+=======
 	smp_ext_bitcall(cpu, ec_schedule);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -701,9 +753,15 @@ struct ec_creg_mask_parms {
 	unsigned long andval;
 	int cr;
 =======
+<<<<<<< HEAD
+	unsigned long orval;
+	unsigned long andval;
+	int cr;
+=======
 	unsigned long orvals[16];
 	unsigned long andvals[16];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -718,12 +776,18 @@ static void smp_ctl_bit_callback(void *info)
 	__ctl_store(cregs, 0, 15);
 	cregs[pp->cr] = (cregs[pp->cr] & pp->andval) | pp->orval;
 =======
+<<<<<<< HEAD
+
+	__ctl_store(cregs, 0, 15);
+	cregs[pp->cr] = (cregs[pp->cr] & pp->andval) | pp->orval;
+=======
 	int i;
 
 	__ctl_store(cregs, 0, 15);
 	for (i = 0; i <= 15; i++)
 		cregs[i] = (cregs[i] & pp->andvals[i]) | pp->orvals[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__ctl_load(cregs, 0, 15);
 }
 
@@ -736,12 +800,17 @@ void smp_ctl_set_bit(int cr, int bit)
 	struct ec_creg_mask_parms parms = { 1UL << bit, -1UL, cr };
 
 =======
+<<<<<<< HEAD
+	struct ec_creg_mask_parms parms = { 1UL << bit, -1UL, cr };
+
+=======
 	struct ec_creg_mask_parms parms;
 
 	memset(&parms.orvals, 0, sizeof(parms.orvals));
 	memset(&parms.andvals, 0xff, sizeof(parms.andvals));
 	parms.orvals[cr] = 1UL << bit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	on_each_cpu(smp_ctl_bit_callback, &parms, 1);
 }
 EXPORT_SYMBOL(smp_ctl_set_bit);
@@ -755,17 +824,25 @@ void smp_ctl_clear_bit(int cr, int bit)
 	struct ec_creg_mask_parms parms = { 0, ~(1UL << bit), cr };
 
 =======
+<<<<<<< HEAD
+	struct ec_creg_mask_parms parms = { 0, ~(1UL << bit), cr };
+
+=======
 	struct ec_creg_mask_parms parms;
 
 	memset(&parms.orvals, 0, sizeof(parms.orvals));
 	memset(&parms.andvals, 0xff, sizeof(parms.andvals));
 	parms.andvals[cr] = ~(1UL << bit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	on_each_cpu(smp_ctl_bit_callback, &parms, 1);
 }
 EXPORT_SYMBOL(smp_ctl_clear_bit);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_ZFCPDUMP) || defined(CONFIG_CRASH_DUMP)
 
 struct save_area *zfcpdump_save_areas[NR_CPUS + 1];
@@ -871,6 +948,8 @@ static int __devinit __smp_rescan_cpus(struct sclp_cpu_info *info,
 		cpu = cpumask_next(cpu, &avail);
 	}
 	return nr;
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_ZFCPDUMP
 
@@ -981,6 +1060,7 @@ static int __smp_rescan_cpus(void)
 	else
 		return smp_rescan_cpus_sclp(avail);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init smp_detect_cpus(void)
@@ -988,6 +1068,9 @@ static void __init smp_detect_cpus(void)
 	unsigned int cpu, c_cpus, s_cpus;
 	struct sclp_cpu_info *info;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info = smp_get_cpu_info();
 	if (!info)
@@ -1016,6 +1099,8 @@ static void __init smp_detect_cpus(void)
 	__smp_rescan_cpus(info, 0);
 	put_online_cpus();
 	kfree(info);
+<<<<<<< HEAD
+=======
 =======
 	u16 boot_cpu_addr, cpu_addr;
 
@@ -1068,12 +1153,16 @@ out:
 	__smp_rescan_cpus();
 	put_online_cpus();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
  *	Activate a secondary processor.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __cpuinit smp_start_secondary(void *cpuvoid)
 {
 	S390_lowcore.last_update_clock = get_clock();
@@ -1096,6 +1185,8 @@ static void __cpuinit smp_start_secondary(void *cpuvoid)
 	local_irq_enable();
 	/* cpu_idle will call schedule for us */
 	cpu_idle();
+<<<<<<< HEAD
+=======
 =======
 int __cpuinit start_secondary(void *cpuvoid)
 {
@@ -1121,6 +1212,7 @@ int __cpuinit start_secondary(void *cpuvoid)
 	cpu_idle();
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct create_idle {
@@ -1140,6 +1232,9 @@ static void __cpuinit smp_fork_idle(struct work_struct *work)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Upping and downing of CPUs */
 int __cpuinit __cpu_up(unsigned int cpu)
 {
@@ -1154,6 +1249,8 @@ int __cpuinit __cpu_up(unsigned int cpu)
 	    sigp_order_code_accepted)
 		return -EIO;
 	if (!pcpu->idle) {
+<<<<<<< HEAD
+=======
 =======
 static int __cpuinit smp_alloc_lowcore(int cpu)
 {
@@ -1227,6 +1324,7 @@ int __cpuinit __cpu_up(unsigned int cpu)
 	idle = current_set[cpu];
 	if (!idle) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c_idle.done = COMPLETION_INITIALIZER_ONSTACK(c_idle.done);
 		INIT_WORK_ONSTACK(&c_idle.work, smp_fork_idle);
 		c_idle.cpu = cpu;
@@ -1235,6 +1333,9 @@ int __cpuinit __cpu_up(unsigned int cpu)
 		if (IS_ERR(c_idle.idle))
 			return PTR_ERR(c_idle.idle);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pcpu->idle = c_idle.idle;
 	}
 	init_idle(pcpu->idle, cpu);
@@ -1247,6 +1348,8 @@ int __cpuinit __cpu_up(unsigned int cpu)
 	while (!cpu_online(cpu))
 		cpu_relax();
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 		idle = c_idle.idle;
 		current_set[cpu] = c_idle.idle;
@@ -1302,17 +1405,23 @@ err_out:
 	smp_free_lowcore(cpu);
 	return -EIO;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init setup_possible_cpus(char *s)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int max, cpu;
 
 	if (kstrtoint(s, 0, &max) < 0)
 		return 0;
 	init_cpu_possible(cpumask_of(0));
 	for (cpu = 1; cpu < max && cpu < nr_cpu_ids; cpu++)
+<<<<<<< HEAD
+=======
 =======
 	int pcpus, cpu;
 
@@ -1320,6 +1429,7 @@ static int __init setup_possible_cpus(char *s)
 	init_cpu_possible(cpumask_of(0));
 	for (cpu = 1; cpu < pcpus && cpu < nr_cpu_ids; cpu++)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_cpu_possible(cpu, true);
 	return 0;
 }
@@ -1330,6 +1440,9 @@ early_param("possible_cpus", setup_possible_cpus);
 int __cpu_disable(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long cregs[16];
 
 	set_cpu_online(smp_processor_id(), false);
@@ -1341,6 +1454,8 @@ int __cpu_disable(void)
 	cregs[6]  &= ~0xff000000UL;	/* disable all I/O interrupts */
 	cregs[14] &= ~0x1f000000UL;	/* disable most machine checks */
 	__ctl_load(cregs, 0, 15);
+<<<<<<< HEAD
+=======
 =======
 	struct ec_creg_mask_parms cr_parms;
 	int cpu = smp_processor_id();
@@ -1369,12 +1484,16 @@ int __cpu_disable(void)
 	smp_ctl_bit_callback(&cr_parms);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 void __cpu_die(unsigned int cpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pcpu *pcpu;
 
 	/* Wait until target cpu is down */
@@ -1382,6 +1501,8 @@ void __cpu_die(unsigned int cpu)
 	while (!pcpu_stopped(pcpu))
 		cpu_relax();
 	pcpu_free_lowcore(pcpu);
+<<<<<<< HEAD
+=======
 =======
 	/* Wait until target cpu is down */
 	while (!cpu_stopped(cpu))
@@ -1390,6 +1511,7 @@ void __cpu_die(unsigned int cpu)
 		udelay(10);
 	smp_free_lowcore(cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_dec(&init_mm.context.attach_count);
 }
 
@@ -1400,15 +1522,23 @@ void __noreturn cpu_die(void)
 	pcpu_sigp_retry(pcpu_devices + smp_processor_id(), sigp_stop, 0);
 	for (;;) ;
 =======
+<<<<<<< HEAD
+	pcpu_sigp_retry(pcpu_devices + smp_processor_id(), sigp_stop, 0);
+	for (;;) ;
+=======
 	while (sigp(smp_processor_id(), sigp_stop) == sigp_busy)
 		cpu_relax();
 	for (;;);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif /* CONFIG_HOTPLUG_CPU */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void smp_call_os_info_init_fn(void)
 {
 	int (*init_fn)(void);
@@ -1430,6 +1560,8 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
 		panic("Couldn't request external interrupt 0x1202");
 	smp_call_os_info_init_fn();
 	smp_detect_cpus();
+<<<<<<< HEAD
+=======
 =======
 void __init smp_prepare_cpus(unsigned int max_cpus)
 {
@@ -1472,11 +1604,15 @@ void __init smp_prepare_cpus(unsigned int max_cpus)
 		BUG();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init smp_prepare_boot_cpu(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pcpu *pcpu = pcpu_devices;
 
 	boot_cpu_address = stap();
@@ -1490,6 +1626,8 @@ void __init smp_prepare_boot_cpu(void)
 	cpu_set_polarization(0, POLARIZATION_UNKNOWN);
 	set_cpu_present(0, true);
 	set_cpu_online(0, true);
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(smp_processor_id() != 0);
 
@@ -1501,6 +1639,7 @@ void __init smp_prepare_boot_cpu(void)
 	smp_cpu_state[0] = CPU_STATE_CONFIGURED;
 	smp_cpu_polarization[0] = POLARIZATION_UNKNWN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init smp_cpus_done(unsigned int max_cpus)
@@ -1512,8 +1651,11 @@ void __init smp_setup_processor_id(void)
 	S390_lowcore.cpu_nr = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	__cpu_logical_map[0] = stap();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1532,9 +1674,14 @@ int setup_profiling_timer(unsigned int multiplier)
 static ssize_t cpu_configure_show(struct device *dev,
 				  struct device_attribute *attr, char *buf)
 =======
+<<<<<<< HEAD
+static ssize_t cpu_configure_show(struct device *dev,
+				  struct device_attribute *attr, char *buf)
+=======
 static ssize_t cpu_configure_show(struct sys_device *dev,
 				struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ssize_t count;
 
@@ -1542,19 +1689,28 @@ static ssize_t cpu_configure_show(struct sys_device *dev,
 <<<<<<< HEAD
 	count = sprintf(buf, "%d\n", pcpu_devices[dev->id].state);
 =======
+<<<<<<< HEAD
+	count = sprintf(buf, "%d\n", pcpu_devices[dev->id].state);
+=======
 	count = sprintf(buf, "%d\n", smp_cpu_state[dev->id]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&smp_cpu_state_mutex);
 	return count;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t cpu_configure_store(struct device *dev,
 				   struct device_attribute *attr,
 				   const char *buf, size_t count)
 {
 	struct pcpu *pcpu;
 	int cpu, val, rc;
+<<<<<<< HEAD
+=======
 =======
 static ssize_t cpu_configure_store(struct sys_device *dev,
 				  struct sysdev_attribute *attr,
@@ -1563,6 +1719,7 @@ static ssize_t cpu_configure_store(struct sys_device *dev,
 	int cpu = dev->id;
 	int val, rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char delim;
 
 	if (sscanf(buf, "%d %c", &val, &delim) != 1)
@@ -1571,13 +1728,19 @@ static ssize_t cpu_configure_store(struct sys_device *dev,
 		return -EINVAL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	get_online_cpus();
 	mutex_lock(&smp_cpu_state_mutex);
 	rc = -EBUSY;
 	/* disallow configuration changes of online cpus and cpu 0 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpu = dev->id;
 	if (cpu_online(cpu) || cpu == 0)
 		goto out;
@@ -1603,6 +1766,8 @@ static ssize_t cpu_configure_store(struct sys_device *dev,
 		pcpu->state = CPU_STATE_CONFIGURED;
 		cpu_set_polarization(cpu, POLARIZATION_UNKNOWN);
 		topology_expect_change();
+<<<<<<< HEAD
+=======
 =======
 	if (cpu_online(cpu) || cpu == 0)
 		goto out;
@@ -1626,6 +1791,7 @@ static ssize_t cpu_configure_store(struct sys_device *dev,
 			}
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		break;
@@ -1636,6 +1802,9 @@ out:
 	return rc ? rc : count;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(configure, 0644, cpu_configure_show, cpu_configure_store);
 #endif /* CONFIG_HOTPLUG_CPU */
 
@@ -1651,6 +1820,8 @@ static struct attribute *cpu_common_attrs[] = {
 	&dev_attr_configure.attr,
 #endif
 	&dev_attr_address.attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(configure, 0644, cpu_configure_show, cpu_configure_store);
 #endif /* CONFIG_HOTPLUG_CPU */
@@ -1699,6 +1870,7 @@ static struct attribute *cpu_common_attrs[] = {
 	&attr_address.attr,
 	&attr_polarization.attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL,
 };
 
@@ -1710,9 +1882,14 @@ static struct attribute_group cpu_common_attr_group = {
 static ssize_t show_capability(struct device *dev,
 				struct device_attribute *attr, char *buf)
 =======
+<<<<<<< HEAD
+static ssize_t show_capability(struct device *dev,
+				struct device_attribute *attr, char *buf)
+=======
 static ssize_t show_capability(struct sys_device *dev,
 				struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int capability;
 	int rc;
@@ -1723,6 +1900,9 @@ static ssize_t show_capability(struct sys_device *dev,
 	return sprintf(buf, "%u\n", capability);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(capability, 0444, show_capability, NULL);
 
 static ssize_t show_idle_count(struct device *dev,
@@ -1765,6 +1945,8 @@ static struct attribute *cpu_online_attrs[] = {
 	&dev_attr_capability.attr,
 	&dev_attr_idle_count.attr,
 	&dev_attr_idle_time_us.attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(capability, 0444, show_capability, NULL);
 
@@ -1821,6 +2003,7 @@ static struct attribute *cpu_online_attrs[] = {
 	&attr_idle_count.attr,
 	&attr_idle_time_us.attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL,
 };
 
@@ -1836,9 +2019,14 @@ static int __cpuinit smp_cpu_notify(struct notifier_block *self,
 	struct cpu *c = &pcpu_devices[cpu].cpu;
 	struct device *s = &c->dev;
 =======
+<<<<<<< HEAD
+	struct cpu *c = &pcpu_devices[cpu].cpu;
+	struct device *s = &c->dev;
+=======
 	struct cpu *c = &per_cpu(cpu_devices, cpu);
 	struct sys_device *s = &c->sysdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct s390_idle_data *idle;
 	int err = 0;
 
@@ -1867,9 +2055,14 @@ static int __devinit smp_add_present_cpu(int cpu)
 	struct cpu *c = &pcpu_devices[cpu].cpu;
 	struct device *s = &c->dev;
 =======
+<<<<<<< HEAD
+	struct cpu *c = &pcpu_devices[cpu].cpu;
+	struct device *s = &c->dev;
+=======
 	struct cpu *c = &per_cpu(cpu_devices, cpu);
 	struct sys_device *s = &c->sysdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc;
 
 	c->hotpluggable = 1;
@@ -1880,6 +2073,9 @@ static int __devinit smp_add_present_cpu(int cpu)
 	if (rc)
 		goto out_cpu;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_online(cpu)) {
 		rc = sysfs_create_group(&s->kobj, &cpu_online_attr_group);
 		if (rc)
@@ -1894,6 +2090,8 @@ out_topology:
 	if (cpu_online(cpu))
 		sysfs_remove_group(&s->kobj, &cpu_online_attr_group);
 out_online:
+<<<<<<< HEAD
+=======
 =======
 	if (!cpu_online(cpu))
 		goto out;
@@ -1901,6 +2099,7 @@ out_online:
 	if (!rc)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sysfs_remove_group(&s->kobj, &cpu_common_attr_group);
 out_cpu:
 #ifdef CONFIG_HOTPLUG_CPU
@@ -1915,6 +2114,9 @@ out:
 int __ref smp_rescan_cpus(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sclp_cpu_info *info;
 	int nr;
 
@@ -1934,6 +2136,8 @@ int __ref smp_rescan_cpus(void)
 
 static ssize_t __ref rescan_store(struct device *dev,
 				  struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 	cpumask_t newcpus;
 	int cpu;
@@ -1963,6 +2167,7 @@ out:
 static ssize_t __ref rescan_store(struct sysdev_class *class,
 				  struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  const char *buf,
 				  size_t count)
 {
@@ -1972,6 +2177,9 @@ static ssize_t __ref rescan_store(struct sysdev_class *class,
 	return rc ? rc : count;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(rescan, 0200, NULL, rescan_store);
 #endif /* CONFIG_HOTPLUG_CPU */
 
@@ -1985,6 +2193,8 @@ static int __init s390_smp_init(void)
 	if (rc)
 		return rc;
 #endif
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(rescan, 0200, NULL, rescan_store);
 #endif /* CONFIG_HOTPLUG_CPU */
@@ -2045,6 +2255,7 @@ static int __init topology_init(void)
 	if (rc)
 		return rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_present_cpu(cpu) {
 		rc = smp_add_present_cpu(cpu);
 		if (rc)
@@ -2055,5 +2266,9 @@ static int __init topology_init(void)
 <<<<<<< HEAD
 subsys_initcall(s390_smp_init);
 =======
+<<<<<<< HEAD
+subsys_initcall(s390_smp_init);
+=======
 subsys_initcall(topology_init);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

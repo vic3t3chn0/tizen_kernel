@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/utsname.h>
 =======
+<<<<<<< HEAD
+#include <linux/utsname.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * F_CTL values for simple requests and responses.
@@ -48,12 +52,18 @@ struct fc_ct_req {
 		struct fc_ns_rsnn snn;
 		struct fc_ns_rspn spn;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct fc_fdmi_rhba rhba;
 		struct fc_fdmi_rpa  rpa;
 		struct fc_fdmi_dprt dprt;
 		struct fc_fdmi_dhba dhba;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} payload;
 };
 
@@ -113,8 +123,14 @@ static inline struct fc_ct_req *fc_ct_hdr_fill(const struct fc_frame *fp,
 					       enum fc_ct_fs_type fs_type,
 					       u8 subtype)
 =======
+<<<<<<< HEAD
+					       unsigned int op, size_t req_size,
+					       enum fc_ct_fs_type fs_type,
+					       u8 subtype)
+=======
 					       unsigned int op, size_t req_size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct fc_ct_req *ct;
 	size_t ct_plen;
@@ -127,9 +143,14 @@ static inline struct fc_ct_req *fc_ct_hdr_fill(const struct fc_frame *fp,
 	ct->hdr.ct_fs_type = fs_type;
 	ct->hdr.ct_fs_subtype = subtype;
 =======
+<<<<<<< HEAD
+	ct->hdr.ct_fs_type = fs_type;
+	ct->hdr.ct_fs_subtype = subtype;
+=======
 	ct->hdr.ct_fs_type = FC_FST_DIR;
 	ct->hdr.ct_fs_subtype = FC_NS_SUBTYPE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ct->hdr.ct_cmd = htons((u16) op);
 	return ct;
 }
@@ -138,8 +159,12 @@ static inline struct fc_ct_req *fc_ct_hdr_fill(const struct fc_frame *fp,
 <<<<<<< HEAD
  * fc_ct_ns_fill() - Fill in a name service request frame
 =======
+<<<<<<< HEAD
+ * fc_ct_ns_fill() - Fill in a name service request frame
+=======
  * fc_ct_fill() - Fill in a name service request frame
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @lport: local port.
  * @fc_id: FC_ID of non-destination rport for GPN_ID and similar inquiries.
  * @fp: frame to contain payload.
@@ -150,8 +175,12 @@ static inline struct fc_ct_req *fc_ct_hdr_fill(const struct fc_frame *fp,
 <<<<<<< HEAD
 static inline int fc_ct_ns_fill(struct fc_lport *lport,
 =======
+<<<<<<< HEAD
+static inline int fc_ct_ns_fill(struct fc_lport *lport,
+=======
 static inline int fc_ct_fill(struct fc_lport *lport,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      u32 fc_id, struct fc_frame *fp,
 		      unsigned int op, enum fc_rctl *r_ctl,
 		      enum fc_fh_type *fh_type)
@@ -165,8 +194,13 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_gid_ft),
 				    FC_FST_DIR, FC_NS_SUBTYPE);
 =======
+<<<<<<< HEAD
+		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_gid_ft),
+				    FC_FST_DIR, FC_NS_SUBTYPE);
+=======
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_gid_ft));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ct->payload.gid.fn_fc4_type = FC_TYPE_FCP;
 		break;
 
@@ -176,8 +210,14 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 				    FC_FST_DIR, FC_NS_SUBTYPE);
 		ct->payload.gid.fn_fc4_type = FC_TYPE_FCP;
 =======
+<<<<<<< HEAD
+		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_fid),
+				    FC_FST_DIR, FC_NS_SUBTYPE);
+		ct->payload.gid.fn_fc4_type = FC_TYPE_FCP;
+=======
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_fid));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hton24(ct->payload.fid.fp_fid, fc_id);
 		break;
 
@@ -186,8 +226,13 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rft),
 				    FC_FST_DIR, FC_NS_SUBTYPE);
 =======
+<<<<<<< HEAD
+		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rft),
+				    FC_FST_DIR, FC_NS_SUBTYPE);
+=======
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rft));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hton24(ct->payload.rft.fid.fp_fid, lport->port_id);
 		ct->payload.rft.fts = lport->fcts;
 		break;
@@ -197,8 +242,13 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rff_id),
 				    FC_FST_DIR, FC_NS_SUBTYPE);
 =======
+<<<<<<< HEAD
+		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rff_id),
+				    FC_FST_DIR, FC_NS_SUBTYPE);
+=======
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rff_id));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hton24(ct->payload.rff.fr_fid.fp_fid, lport->port_id);
 		ct->payload.rff.fr_type = FC_TYPE_FCP;
 		if (lport->service_params & FCP_SPPF_INIT_FCN)
@@ -212,8 +262,13 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rn_id),
 				    FC_FST_DIR, FC_NS_SUBTYPE);
 =======
+<<<<<<< HEAD
+		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rn_id),
+				    FC_FST_DIR, FC_NS_SUBTYPE);
+=======
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rn_id));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hton24(ct->payload.rn.fr_fid.fp_fid, lport->port_id);
 		put_unaligned_be64(lport->wwnn, &ct->payload.rn.fr_wwn);
 		break;
@@ -224,8 +279,13 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rspn) + len,
 				    FC_FST_DIR, FC_NS_SUBTYPE);
 =======
+<<<<<<< HEAD
+		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rspn) + len,
+				    FC_FST_DIR, FC_NS_SUBTYPE);
+=======
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rspn) + len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hton24(ct->payload.spn.fr_fid.fp_fid, lport->port_id);
 		strncpy(ct->payload.spn.fr_name,
 			fc_host_symbolic_name(lport->host), len);
@@ -238,8 +298,13 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rsnn) + len,
 				    FC_FST_DIR, FC_NS_SUBTYPE);
 =======
+<<<<<<< HEAD
+		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rsnn) + len,
+				    FC_FST_DIR, FC_NS_SUBTYPE);
+=======
 		ct = fc_ct_hdr_fill(fp, op, sizeof(struct fc_ns_rsnn) + len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		put_unaligned_be64(lport->wwnn, &ct->payload.snn.fr_wwn);
 		strncpy(ct->payload.snn.fr_name,
 			fc_host_symbolic_name(lport->host), len);
@@ -256,6 +321,9 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * fc_ct_ms_fill() - Fill in a mgmt service request frame
  * @lport: local port.
  * @fc_id: FC_ID of non-destination rport for GPN_ID and similar inquiries.
@@ -580,8 +648,11 @@ static inline int fc_ct_fill(struct fc_lport *lport,
 	return rc;
 }
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * fc_plogi_fill - Fill in plogi request frame
  */
 static inline void fc_plogi_fill(struct fc_lport *lport, struct fc_frame *fp,

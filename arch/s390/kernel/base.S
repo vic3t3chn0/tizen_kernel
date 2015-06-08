@@ -9,7 +9,11 @@
 <<<<<<< HEAD
 #include <linux/linkage.h>
 =======
+<<<<<<< HEAD
+#include <linux/linkage.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/asm-offsets.h>
 #include <asm/ptrace.h>
 
@@ -18,9 +22,13 @@
 <<<<<<< HEAD
 ENTRY(s390_base_mcck_handler)
 =======
+<<<<<<< HEAD
+ENTRY(s390_base_mcck_handler)
+=======
 	.globl	s390_base_mcck_handler
 s390_base_mcck_handler:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	basr	%r13,0
 0:	lg	%r15,__LC_PANIC_STACK	# load panic stack
 	aghi	%r15,-STACK_FRAME_OVERHEAD
@@ -37,7 +45,11 @@ s390_base_mcck_handler:
 <<<<<<< HEAD
 	.align 8
 =======
+<<<<<<< HEAD
+	.align 8
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl	s390_base_mcck_handler_fn
 s390_base_mcck_handler_fn:
 	.quad	0
@@ -47,10 +59,15 @@ s390_base_mcck_handler_fn:
 ENTRY(s390_base_ext_handler)
 	stmg	%r0,%r15,__LC_SAVE_AREA_ASYNC
 =======
+<<<<<<< HEAD
+ENTRY(s390_base_ext_handler)
+	stmg	%r0,%r15,__LC_SAVE_AREA_ASYNC
+=======
 	.globl	s390_base_ext_handler
 s390_base_ext_handler:
 	stmg	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	basr	%r13,0
 0:	aghi	%r15,-STACK_FRAME_OVERHEAD
 	larl	%r1,s390_base_ext_handler_fn
@@ -61,8 +78,12 @@ s390_base_ext_handler:
 <<<<<<< HEAD
 1:	lmg	%r0,%r15,__LC_SAVE_AREA_ASYNC
 =======
+<<<<<<< HEAD
+1:	lmg	%r0,%r15,__LC_SAVE_AREA_ASYNC
+=======
 1:	lmg	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ni	__LC_EXT_OLD_PSW+1,0xfd	# clear wait state bit
 	lpswe	__LC_EXT_OLD_PSW
 
@@ -70,7 +91,11 @@ s390_base_ext_handler:
 <<<<<<< HEAD
 	.align 8
 =======
+<<<<<<< HEAD
+	.align 8
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl s390_base_ext_handler_fn
 s390_base_ext_handler_fn:
 	.quad	0
@@ -80,10 +105,15 @@ s390_base_ext_handler_fn:
 ENTRY(s390_base_pgm_handler)
 	stmg	%r0,%r15,__LC_SAVE_AREA_SYNC
 =======
+<<<<<<< HEAD
+ENTRY(s390_base_pgm_handler)
+	stmg	%r0,%r15,__LC_SAVE_AREA_SYNC
+=======
 	.globl	s390_base_pgm_handler
 s390_base_pgm_handler:
 	stmg	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	basr	%r13,0
 0:	aghi	%r15,-STACK_FRAME_OVERHEAD
 	larl	%r1,s390_base_pgm_handler_fn
@@ -94,8 +124,12 @@ s390_base_pgm_handler:
 <<<<<<< HEAD
 	lmg	%r0,%r15,__LC_SAVE_AREA_SYNC
 =======
+<<<<<<< HEAD
+	lmg	%r0,%r15,__LC_SAVE_AREA_SYNC
+=======
 	lmg	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lpswe	__LC_PGM_OLD_PSW
 1:	lpswe	disabled_wait_psw-0b(%r13)
 
@@ -107,13 +141,20 @@ disabled_wait_psw:
 <<<<<<< HEAD
 	.align 8
 =======
+<<<<<<< HEAD
+	.align 8
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl s390_base_pgm_handler_fn
 s390_base_pgm_handler_fn:
 	.quad	0
 	.previous
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # Calls diag 308 subcode 1 and continues execution
 #
@@ -159,12 +200,15 @@ ENTRY(diag308_reset)
 #else /* CONFIG_64BIT */
 
 ENTRY(s390_base_mcck_handler)
+<<<<<<< HEAD
+=======
 =======
 #else /* CONFIG_64BIT */
 
 	.globl	s390_base_mcck_handler
 s390_base_mcck_handler:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	basr	%r13,0
 0:	l	%r15,__LC_PANIC_STACK	# load panic stack
 	ahi	%r15,-STACK_FRAME_OVERHEAD
@@ -182,7 +226,11 @@ s390_base_mcck_handler:
 <<<<<<< HEAD
 	.align 4
 =======
+<<<<<<< HEAD
+	.align 4
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl	s390_base_mcck_handler_fn
 s390_base_mcck_handler_fn:
 	.long	0
@@ -192,10 +240,15 @@ s390_base_mcck_handler_fn:
 ENTRY(s390_base_ext_handler)
 	stm	%r0,%r15,__LC_SAVE_AREA_ASYNC
 =======
+<<<<<<< HEAD
+ENTRY(s390_base_ext_handler)
+	stm	%r0,%r15,__LC_SAVE_AREA_ASYNC
+=======
 	.globl	s390_base_ext_handler
 s390_base_ext_handler:
 	stm	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	basr	%r13,0
 0:	ahi	%r15,-STACK_FRAME_OVERHEAD
 	l	%r1,2f-0b(%r13)
@@ -206,8 +259,12 @@ s390_base_ext_handler:
 <<<<<<< HEAD
 1:	lm	%r0,%r15,__LC_SAVE_AREA_ASYNC
 =======
+<<<<<<< HEAD
+1:	lm	%r0,%r15,__LC_SAVE_AREA_ASYNC
+=======
 1:	lm	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ni	__LC_EXT_OLD_PSW+1,0xfd	# clear wait state bit
 	lpsw	__LC_EXT_OLD_PSW
 
@@ -217,7 +274,11 @@ s390_base_ext_handler:
 <<<<<<< HEAD
 	.align 4
 =======
+<<<<<<< HEAD
+	.align 4
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl	s390_base_ext_handler_fn
 s390_base_ext_handler_fn:
 	.long	0
@@ -227,10 +288,15 @@ s390_base_ext_handler_fn:
 ENTRY(s390_base_pgm_handler)
 	stm	%r0,%r15,__LC_SAVE_AREA_SYNC
 =======
+<<<<<<< HEAD
+ENTRY(s390_base_pgm_handler)
+	stm	%r0,%r15,__LC_SAVE_AREA_SYNC
+=======
 	.globl	s390_base_pgm_handler
 s390_base_pgm_handler:
 	stm	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	basr	%r13,0
 0:	ahi	%r15,-STACK_FRAME_OVERHEAD
 	l	%r1,2f-0b(%r13)
@@ -241,8 +307,12 @@ s390_base_pgm_handler:
 <<<<<<< HEAD
 	lm	%r0,%r15,__LC_SAVE_AREA_SYNC
 =======
+<<<<<<< HEAD
+	lm	%r0,%r15,__LC_SAVE_AREA_SYNC
+=======
 	lm	%r0,%r15,__LC_SAVE_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lpsw	__LC_PGM_OLD_PSW
 
 1:	lpsw	disabled_wait_psw-0b(%r13)
@@ -257,7 +327,11 @@ disabled_wait_psw:
 <<<<<<< HEAD
 	.align 4
 =======
+<<<<<<< HEAD
+	.align 4
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl	s390_base_pgm_handler_fn
 s390_base_pgm_handler_fn:
 	.long	0

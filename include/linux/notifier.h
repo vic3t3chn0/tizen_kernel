@@ -186,6 +186,9 @@ static inline int notifier_to_errno(int ret)
  */
  
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* CPU notfiers are defined in include/linux/cpu.h. */
 
 /* netdevice notifiers are defined in include/linux/netdevice.h */
@@ -197,6 +200,8 @@ static inline int notifier_to_errno(int ret)
 /* Virtual Terminal events are defined in include/linux/vt.h. */
 
 #define NETLINK_URELEASE	0x0001	/* Unicast netlink socket released */
+<<<<<<< HEAD
+=======
 =======
 /* netdevice notifier chain. Please remember to update the rtnetlink
  * notification exclusion list in rtnetlink_event() when adding new
@@ -273,6 +278,7 @@ static inline int notifier_to_errno(int ret)
 #define PM_RESTORE_PREPARE	0x0005 /* Going to restore a saved image */
 #define PM_POST_RESTORE		0x0006 /* Restore failed */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Console keyboard events.
  * Note: KBD_KEYCODE is always sent before KBD_UNBOUND_KEYCODE, KBD_UNICODE and
@@ -287,6 +293,8 @@ extern struct blocking_notifier_head reboot_notifier_list;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Virtual Terminal events. */
 #define VT_ALLOCATE		0x0001 /* Console got allocated */
 #define VT_DEALLOCATE		0x0002 /* Console will be deallocated */
@@ -295,5 +303,6 @@ extern struct blocking_notifier_head reboot_notifier_list;
 #define VT_PREWRITE		0x0005 /* A char is about to be written to the console */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 #endif /* _LINUX_NOTIFIER_H */

@@ -24,6 +24,9 @@
 	} while (0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef TRACE_HEADER_MULTI_READ
 enum {
 	TRACE_SIGNAL_DELIVERED,
@@ -34,8 +37,11 @@ enum {
 };
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * signal_generate - called when a signal is generated
  * @sig: signal number
@@ -45,7 +51,12 @@ enum {
  * @group: shared or private
  * @result: TRACE_SIGNAL_*
 =======
+<<<<<<< HEAD
+ * @group: shared or private
+ * @result: TRACE_SIGNAL_*
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Current process sends a 'sig' signal to 'task' process with
  * 'info' siginfo. If 'info' is SEND_SIG_NOINFO or SEND_SIG_PRIV,
@@ -56,15 +67,21 @@ enum {
 TRACE_EVENT(signal_generate,
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TP_PROTO(int sig, struct siginfo *info, struct task_struct *task,
 			int group, int result),
 
 	TP_ARGS(sig, info, task, group, result),
+<<<<<<< HEAD
+=======
 =======
 	TP_PROTO(int sig, struct siginfo *info, struct task_struct *task),
 
 	TP_ARGS(sig, info, task),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	TP_STRUCT__entry(
 		__field(	int,	sig			)
@@ -76,7 +93,12 @@ TRACE_EVENT(signal_generate,
 		__field(	int,	group			)
 		__field(	int,	result			)
 =======
+<<<<<<< HEAD
+		__field(	int,	group			)
+		__field(	int,	result			)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	),
 
 	TP_fast_assign(
@@ -85,6 +107,9 @@ TRACE_EVENT(signal_generate,
 		memcpy(__entry->comm, task->comm, TASK_COMM_LEN);
 		__entry->pid	= task->pid;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__entry->group	= group;
 		__entry->result	= result;
 	),
@@ -93,6 +118,8 @@ TRACE_EVENT(signal_generate,
 		  __entry->sig, __entry->errno, __entry->code,
 		  __entry->comm, __entry->pid, __entry->group,
 		  __entry->result)
+<<<<<<< HEAD
+=======
 =======
 	),
 
@@ -100,6 +127,7 @@ TRACE_EVENT(signal_generate,
 		  __entry->sig, __entry->errno, __entry->code,
 		  __entry->comm, __entry->pid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 );
 
 /**
@@ -142,6 +170,8 @@ TRACE_EVENT(signal_deliver,
 		  __entry->sa_handler, __entry->sa_flags)
 );
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 DECLARE_EVENT_CLASS(signal_queue_overflow,
@@ -204,6 +234,7 @@ DEFINE_EVENT(signal_queue_overflow, signal_lose_info,
 );
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _TRACE_SIGNAL_H */
 
 /* This part must be outside protection */

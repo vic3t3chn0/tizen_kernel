@@ -297,8 +297,12 @@ EXPORT(sysn32_call_table)
 <<<<<<< HEAD
 	PTR	sys_ni_syscall			/* was nfsservctl */
 =======
+<<<<<<< HEAD
+	PTR	sys_ni_syscall			/* was nfsservctl */
+=======
 	PTR	compat_sys_nfsservctl
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PTR	sys_ni_syscall			/* res. for getpmsg */
 	PTR	sys_ni_syscall			/* 6175  for putpmsg */
 	PTR	sys_ni_syscall			/* res. for afs_syscall */
@@ -322,8 +326,12 @@ EXPORT(sysn32_call_table)
 <<<<<<< HEAD
 	PTR	sys_32_futex
 =======
+<<<<<<< HEAD
+	PTR	sys_32_futex
+=======
 	PTR	compat_sys_futex
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PTR	compat_sys_sched_setaffinity	/* 6195 */
 	PTR	compat_sys_sched_getaffinity
 	PTR	sys_cacheflush
@@ -437,11 +445,17 @@ EXPORT(sysn32_call_table)
 	PTR	compat_sys_clock_adjtime	/* 6305 */
 	PTR	sys_syncfs
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PTR	compat_sys_sendmmsg
 	PTR	sys_setns
 	PTR	compat_sys_process_vm_readv
 	PTR	compat_sys_process_vm_writev	/* 6310 */
+<<<<<<< HEAD
+=======
 =======
 	PTR	sys_setns
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.size	sysn32_call_table,.-sysn32_call_table

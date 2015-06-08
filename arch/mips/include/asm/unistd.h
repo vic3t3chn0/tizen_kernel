@@ -364,13 +364,19 @@
 #define __NR_clock_adjtime		(__NR_Linux + 341)
 #define __NR_syncfs			(__NR_Linux + 342)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_sendmmsg			(__NR_Linux + 343)
 #define __NR_setns			(__NR_Linux + 344)
 #define __NR_process_vm_readv		(__NR_Linux + 345)
 #define __NR_process_vm_writev		(__NR_Linux + 346)
+<<<<<<< HEAD
+=======
 =======
 #define __NR_setns			(__NR_Linux + 343)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Offset of the last Linux o32 flavoured syscall
@@ -378,8 +384,12 @@
 <<<<<<< HEAD
 #define __NR_Linux_syscalls		346
 =======
+<<<<<<< HEAD
+#define __NR_Linux_syscalls		346
+=======
 #define __NR_Linux_syscalls		343
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _MIPS_SIM == _MIPS_SIM_ABI32 */
 
@@ -387,8 +397,12 @@
 <<<<<<< HEAD
 #define __NR_O32_Linux_syscalls		346
 =======
+<<<<<<< HEAD
+#define __NR_O32_Linux_syscalls		346
+=======
 #define __NR_O32_Linux_syscalls		343
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if _MIPS_SIM == _MIPS_SIM_ABI64
 
@@ -699,13 +713,19 @@
 #define __NR_clock_adjtime		(__NR_Linux + 300)
 #define __NR_syncfs			(__NR_Linux + 301)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_sendmmsg			(__NR_Linux + 302)
 #define __NR_setns			(__NR_Linux + 303)
 #define __NR_process_vm_readv		(__NR_Linux + 304)
 #define __NR_process_vm_writev		(__NR_Linux + 305)
+<<<<<<< HEAD
+=======
 =======
 #define __NR_setns			(__NR_Linux + 302)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Offset of the last Linux 64-bit flavoured syscall
@@ -713,8 +733,12 @@
 <<<<<<< HEAD
 #define __NR_Linux_syscalls		305
 =======
+<<<<<<< HEAD
+#define __NR_Linux_syscalls		305
+=======
 #define __NR_Linux_syscalls		302
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _MIPS_SIM == _MIPS_SIM_ABI64 */
 
@@ -722,8 +746,12 @@
 <<<<<<< HEAD
 #define __NR_64_Linux_syscalls		305
 =======
+<<<<<<< HEAD
+#define __NR_64_Linux_syscalls		305
+=======
 #define __NR_64_Linux_syscalls		302
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if _MIPS_SIM == _MIPS_SIM_NABI32
 
@@ -1039,13 +1067,19 @@
 #define __NR_clock_adjtime		(__NR_Linux + 305)
 #define __NR_syncfs			(__NR_Linux + 306)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_sendmmsg			(__NR_Linux + 307)
 #define __NR_setns			(__NR_Linux + 308)
 #define __NR_process_vm_readv		(__NR_Linux + 309)
 #define __NR_process_vm_writev		(__NR_Linux + 310)
+<<<<<<< HEAD
+=======
 =======
 #define __NR_setns			(__NR_Linux + 307)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Offset of the last N32 flavoured syscall
@@ -1053,8 +1087,12 @@
 <<<<<<< HEAD
 #define __NR_Linux_syscalls		310
 =======
+<<<<<<< HEAD
+#define __NR_Linux_syscalls		310
+=======
 #define __NR_Linux_syscalls		307
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _MIPS_SIM == _MIPS_SIM_NABI32 */
 
@@ -1062,8 +1100,12 @@
 <<<<<<< HEAD
 #define __NR_N32_Linux_syscalls		310
 =======
+<<<<<<< HEAD
+#define __NR_N32_Linux_syscalls		310
+=======
 #define __NR_N32_Linux_syscalls		307
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef __KERNEL__
 

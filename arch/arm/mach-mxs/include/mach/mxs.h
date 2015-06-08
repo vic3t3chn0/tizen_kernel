@@ -24,10 +24,15 @@
 #endif
 #include <asm/mach-types.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/digctl.h>
 #include <mach/hardware.h>
 
 /*
+<<<<<<< HEAD
+=======
 =======
 #include <mach/hardware.h>
 
@@ -45,6 +50,7 @@
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * IO addresses common to MXS-based
  */
 #define MXS_IO_BASE_ADDR		0x80000000
@@ -98,7 +104,12 @@
 #define MXS_GPIO_NR(bank, nr)	((bank) * 32 + (nr))
 
 =======
+<<<<<<< HEAD
+#define MXS_GPIO_NR(bank, nr)	((bank) * 32 + (nr))
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MXS_SET_ADDR		0x4
 #define MXS_CLR_ADDR		0x8
 #define MXS_TOG_ADDR		0xc
@@ -119,6 +130,9 @@ static inline void __mxs_togl(u32 mask, void __iomem *reg)
 	__raw_writel(mask, reg + MXS_TOG_ADDR);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * MXS CPU types
@@ -134,8 +148,11 @@ static inline int cpu_is_mx28(void)
 {
 	return ((__raw_readl(MXS_CHIPID) >> 16) == 0x2800);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* __MACH_MXS_H__ */

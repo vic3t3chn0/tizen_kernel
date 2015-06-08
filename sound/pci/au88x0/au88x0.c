@@ -22,8 +22,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 #include <sound/initval.h>
 
@@ -33,8 +37,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pcifix[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 255 };
 
 module_param_array(index, int, NULL, 0444);
@@ -207,8 +215,12 @@ snd_vortex_create(struct snd_card *card, struct pci_dev *pci, vortex_t ** rchip)
 <<<<<<< HEAD
 			       IRQF_SHARED, KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+			       IRQF_SHARED, KBUILD_MODNAME,
+=======
 	                       IRQF_SHARED, CARD_NAME_SHORT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	                       chip)) != 0) {
 		printk(KERN_ERR "cannot grab irq\n");
 		goto irq_out;
@@ -281,6 +293,9 @@ snd_vortex_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 
 	// (4) Alloc components.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = snd_vortex_mixer(chip);
 	if (err < 0) {
 		snd_card_free(card);
@@ -289,10 +304,13 @@ snd_vortex_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 	// ADB pcm.
 	err = snd_vortex_new_pcm(chip, VORTEX_PCM_ADB, NR_PCM);
 	if (err < 0) {
+<<<<<<< HEAD
+=======
 =======
 	// ADB pcm.
 	if ((err = snd_vortex_new_pcm(chip, VORTEX_PCM_ADB, NR_ADB)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_card_free(card);
 		return err;
 	}
@@ -324,12 +342,15 @@ snd_vortex_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	// snd_ac97_mixer and Vortex mixer.
 	if ((err = snd_vortex_mixer(chip)) < 0) {
 		snd_card_free(card);
 		return err;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((err = snd_vortex_midi(chip)) < 0) {
 		snd_card_free(card);
 		return err;
@@ -404,8 +425,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = CARD_NAME_SHORT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_vortex_ids,
 	.probe = snd_vortex_probe,
 	.remove = __devexit_p(snd_vortex_remove),

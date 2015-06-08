@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -28,6 +32,9 @@
 #include "soft-interface.h"
 #include "hard-interface.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "send.h"
 #include "hash.h"
 #include "originator.h"
@@ -45,6 +52,8 @@ static int compare_tt(const struct hlist_node *node, const void *data2)
 {
 	const void *data1 = container_of(node, struct tt_common_entry,
 					 hash_entry);
+<<<<<<< HEAD
+=======
 =======
 #include "hash.h"
 #include "originator.h"
@@ -67,11 +76,15 @@ static int compare_gtt(struct hlist_node *node, void *data2)
 {
 	void *data1 = container_of(node, struct tt_global_entry, hash_entry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return (memcmp(data1, data2, ETH_ALEN) == 0 ? 1 : 0);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tt_start_timer(struct bat_priv *bat_priv)
 {
 	INIT_DELAYED_WORK(&bat_priv->tt_work, tt_purge);
@@ -86,6 +99,8 @@ static struct tt_common_entry *tt_hash_find(struct hashtable_t *hash,
 	struct hlist_node *node;
 	struct tt_common_entry *tt_common_entry, *tt_common_entry_tmp = NULL;
 	uint32_t index;
+<<<<<<< HEAD
+=======
 =======
 static void tt_local_start_timer(struct bat_priv *bat_priv)
 {
@@ -102,6 +117,7 @@ static struct tt_local_entry *tt_local_hash_find(struct bat_priv *bat_priv,
 	struct tt_local_entry *tt_local_entry, *tt_local_entry_tmp = NULL;
 	int index;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!hash)
 		return NULL;
@@ -111,6 +127,9 @@ static struct tt_local_entry *tt_local_hash_find(struct bat_priv *bat_priv,
 
 	rcu_read_lock();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hlist_for_each_entry_rcu(tt_common_entry, node, head, hash_entry) {
 		if (!compare_eth(tt_common_entry, data))
 			continue;
@@ -119,6 +138,8 @@ static struct tt_local_entry *tt_local_hash_find(struct bat_priv *bat_priv,
 			continue;
 
 		tt_common_entry_tmp = tt_common_entry;
+<<<<<<< HEAD
+=======
 =======
 	hlist_for_each_entry_rcu(tt_local_entry, node, head, hash_entry) {
 		if (!compare_eth(tt_local_entry, data))
@@ -126,11 +147,15 @@ static struct tt_local_entry *tt_local_hash_find(struct bat_priv *bat_priv,
 
 		tt_local_entry_tmp = tt_local_entry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	rcu_read_unlock();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return tt_common_entry_tmp;
 }
 
@@ -217,6 +242,8 @@ int tt_len(int changes_num)
 }
 
 static int tt_local_init(struct bat_priv *bat_priv)
+<<<<<<< HEAD
+=======
 =======
 	return tt_local_entry_tmp;
 }
@@ -252,6 +279,7 @@ static struct tt_global_entry *tt_global_hash_find(struct bat_priv *bat_priv,
 
 int tt_local_init(struct bat_priv *bat_priv)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (bat_priv->tt_local_hash)
 		return 1;
@@ -262,6 +290,9 @@ int tt_local_init(struct bat_priv *bat_priv)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -293,6 +324,8 @@ void tt_local_add(struct net_device *soft_iface, const uint8_t *addr,
 	if (is_wifi_iface(ifindex))
 		tt_local_entry->common.flags |= TT_CLIENT_WIFI;
 	atomic_set(&tt_local_entry->common.refcount, 2);
+<<<<<<< HEAD
+=======
 =======
 	atomic_set(&bat_priv->tt_local_changed, 0);
 	tt_local_start_timer(bat_priv);
@@ -342,11 +375,15 @@ void tt_local_add(struct net_device *soft_iface, uint8_t *addr)
 
 	memcpy(tt_local_entry->addr, addr, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tt_local_entry->last_seen = jiffies;
 
 	/* the batman interface mac address should never be purged */
 	if (compare_eth(addr, soft_iface->dev_addr))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tt_local_entry->common.flags |= TT_CLIENT_NOPURGE;
 
 	/* The local entry has to be marked as NEW to avoid to send it in
@@ -432,6 +469,8 @@ int tt_changes_fill_buffer(struct bat_priv *bat_priv,
 	spin_unlock_bh(&bat_priv->tt_buff_lock);
 
 	return tot_changes;
+<<<<<<< HEAD
+=======
 =======
 		tt_local_entry->never_purge = 1;
 	else
@@ -493,6 +532,7 @@ int tt_local_fill_buffer(struct bat_priv *bat_priv,
 	spin_unlock_bh(&bat_priv->tt_lhash_lock);
 	return count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int tt_local_seq_print_text(struct seq_file *seq, void *offset)
@@ -501,6 +541,9 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 	struct bat_priv *bat_priv = netdev_priv(net_dev);
 	struct hashtable_t *hash = bat_priv->tt_local_hash;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tt_common_entry *tt_common_entry;
 	struct hard_iface *primary_if;
 	struct hlist_node *node;
@@ -512,6 +555,8 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 	if (!primary_if) {
 		ret = seq_printf(seq,
 				 "BATMAN mesh %s disabled - please specify interfaces to enable it\n",
+<<<<<<< HEAD
+=======
 =======
 	struct tt_local_entry *tt_local_entry;
 	struct hard_iface *primary_if;
@@ -526,6 +571,7 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 		ret = seq_printf(seq, "BATMAN mesh %s disabled - "
 				 "please specify interfaces to enable it\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 net_dev->name);
 		goto out;
 	}
@@ -535,13 +581,24 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 		ret = seq_printf(seq,
 				 "BATMAN mesh %s disabled - primary interface not active\n",
 =======
+<<<<<<< HEAD
+		ret = seq_printf(seq,
+				 "BATMAN mesh %s disabled - primary interface not active\n",
+=======
 		ret = seq_printf(seq, "BATMAN mesh %s disabled - "
 				 "primary interface not active\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 net_dev->name);
 		goto out;
 	}
 
+<<<<<<< HEAD
+	seq_printf(seq,
+		   "Locally retrieved addresses (from %s) announced via TT (TTVN: %u):\n",
+		   net_dev->name, (uint8_t)atomic_read(&bat_priv->ttvn));
+
+=======
 <<<<<<< HEAD
 	seq_printf(seq,
 		   "Locally retrieved addresses (from %s) announced via TT (TTVN: %u):\n",
@@ -555,10 +612,13 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 
 	buf_size = 1;
 	/* Estimate length for: " * xx:xx:xx:xx:xx:xx\n" */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < hash->size; i++) {
 		head = &hash->table[i];
 
 		rcu_read_lock();
+<<<<<<< HEAD
+=======
 		__hlist_for_each_rcu(node, head)
 			buf_size += 21;
 		rcu_read_unlock();
@@ -580,6 +640,7 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 
 		rcu_read_lock();
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hlist_for_each_entry_rcu(tt_common_entry, node,
 					 head, hash_entry) {
 			seq_printf(seq, " * %pM [%c%c%c%c%c]\n",
@@ -597,6 +658,8 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 		}
 		rcu_read_unlock();
 	}
+<<<<<<< HEAD
+=======
 =======
 		hlist_for_each_entry_rcu(tt_local_entry, node,
 					 head, hash_entry) {
@@ -611,6 +674,7 @@ int tt_local_seq_print_text(struct seq_file *seq, void *offset)
 	seq_printf(seq, "%s", buff);
 	kfree(buff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	if (primary_if)
 		hardif_free_ref(primary_if);
@@ -618,6 +682,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tt_local_set_pending(struct bat_priv *bat_priv,
 				 struct tt_local_entry *tt_local_entry,
 				 uint16_t flags, const char *message)
@@ -727,6 +794,8 @@ static void tt_local_table_free(struct bat_priv *bat_priv)
 }
 
 static int tt_global_init(struct bat_priv *bat_priv)
+<<<<<<< HEAD
+=======
 =======
 static void _tt_local_del(struct hlist_node *node, void *arg)
 {
@@ -815,6 +884,7 @@ void tt_local_free(struct bat_priv *bat_priv)
 
 int tt_global_init(struct bat_priv *bat_priv)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (bat_priv->tt_global_hash)
 		return 1;
@@ -828,6 +898,9 @@ int tt_global_init(struct bat_priv *bat_priv)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void tt_changes_list_free(struct bat_priv *bat_priv)
 {
 	struct tt_change_node *entry, *safe;
@@ -912,6 +985,8 @@ out:
 	if (tt_global_entry)
 		tt_global_entry_free_ref(tt_global_entry);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 void tt_global_add_orig(struct bat_priv *bat_priv,
 			 struct orig_node *orig_node,
@@ -982,6 +1057,7 @@ void tt_global_add_orig(struct bat_priv *bat_priv,
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int tt_global_seq_print_text(struct seq_file *seq, void *offset)
@@ -992,12 +1068,19 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 <<<<<<< HEAD
 	struct tt_common_entry *tt_common_entry;
 =======
+<<<<<<< HEAD
+	struct tt_common_entry *tt_common_entry;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tt_global_entry *tt_global_entry;
 	struct hard_iface *primary_if;
 	struct hlist_node *node;
 	struct hlist_head *head;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32_t i;
 	int ret = 0;
 
@@ -1005,6 +1088,8 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 	if (!primary_if) {
 		ret = seq_printf(seq,
 				 "BATMAN mesh %s disabled - please specify interfaces to enable it\n",
+<<<<<<< HEAD
+=======
 =======
 	size_t buf_size, pos;
 	char *buff;
@@ -1015,6 +1100,7 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 		ret = seq_printf(seq, "BATMAN mesh %s disabled - please "
 				 "specify interfaces to enable it\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 net_dev->name);
 		goto out;
 	}
@@ -1024,9 +1110,14 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 		ret = seq_printf(seq,
 				 "BATMAN mesh %s disabled - primary interface not active\n",
 =======
+<<<<<<< HEAD
+		ret = seq_printf(seq,
+				 "BATMAN mesh %s disabled - primary interface not active\n",
+=======
 		ret = seq_printf(seq, "BATMAN mesh %s disabled - "
 				 "primary interface not active\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 net_dev->name);
 		goto out;
 	}
@@ -1037,16 +1128,24 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 <<<<<<< HEAD
 	seq_printf(seq, "       %-13s %s       %-15s %s %s\n",
 		   "Client", "(TTVN)", "Originator", "(Curr TTVN)", "Flags");
+
+=======
+<<<<<<< HEAD
+	seq_printf(seq, "       %-13s %s       %-15s %s %s\n",
+		   "Client", "(TTVN)", "Originator", "(Curr TTVN)", "Flags");
 =======
 
 	spin_lock_bh(&bat_priv->tt_ghash_lock);
 
 	buf_size = 1;
 	/* Estimate length for: " * xx:xx:xx:xx:xx:xx via xx:xx:xx:xx:xx:xx\n"*/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < hash->size; i++) {
 		head = &hash->table[i];
 
 		rcu_read_lock();
+<<<<<<< HEAD
+=======
 		__hlist_for_each_rcu(node, head)
 			buf_size += 43;
 		rcu_read_unlock();
@@ -1067,6 +1166,7 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 
 		rcu_read_lock();
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		hlist_for_each_entry_rcu(tt_common_entry, node,
 					 head, hash_entry) {
 			tt_global_entry = container_of(tt_common_entry,
@@ -1087,6 +1187,8 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 		}
 		rcu_read_unlock();
 	}
+<<<<<<< HEAD
+=======
 =======
 		hlist_for_each_entry_rcu(tt_global_entry, node,
 					 head, hash_entry) {
@@ -1103,6 +1205,7 @@ int tt_global_seq_print_text(struct seq_file *seq, void *offset)
 	seq_printf(seq, "%s", buff);
 	kfree(buff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	if (primary_if)
 		hardif_free_ref(primary_if);
@@ -1110,6 +1213,9 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void _tt_global_del(struct bat_priv *bat_priv,
 			   struct tt_global_entry *tt_global_entry,
 			   const char *message)
@@ -1317,6 +1423,8 @@ struct orig_node *transtable_search(struct bat_priv *bat_priv,
 	/* check whether the clients should not communicate due to AP
 	 * isolation */
 	if (tt_local_entry && _is_ap_isolated(tt_local_entry, tt_global_entry))
+<<<<<<< HEAD
+=======
 =======
 static void _tt_global_del_orig(struct bat_priv *bat_priv,
 				 struct tt_global_entry *tt_global_entry,
@@ -1389,6 +1497,7 @@ struct orig_node *transtable_search(struct bat_priv *bat_priv, uint8_t *addr)
 
 	if (!tt_global_entry)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 
 	if (!atomic_inc_not_zero(&tt_global_entry->orig_node->refcount))
@@ -1398,6 +1507,9 @@ struct orig_node *transtable_search(struct bat_priv *bat_priv, uint8_t *addr)
 
 out:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (tt_global_entry)
 		tt_global_entry_free_ref(tt_global_entry);
 	if (tt_local_entry)
@@ -2445,8 +2557,11 @@ request_table:
 		}
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 	spin_unlock_bh(&bat_priv->tt_ghash_lock);
 	return orig_node;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

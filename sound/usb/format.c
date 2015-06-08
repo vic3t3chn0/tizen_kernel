@@ -229,8 +229,12 @@ static int parse_uac2_sample_rate_range(struct audioformat *fp, int nr_triplets,
 <<<<<<< HEAD
 		unsigned int rate;
 =======
+<<<<<<< HEAD
+		unsigned int rate;
+=======
 		int rate;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if ((max < 0) || (min < 0) || (res < 0) || (max < min))
 			continue;
@@ -258,12 +262,18 @@ static int parse_uac2_sample_rate_range(struct audioformat *fp, int nr_triplets,
 
 			nr_rates++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (nr_rates >= MAX_NR_RATES) {
 				snd_printk(KERN_ERR "invalid uac2 rates\n");
 				break;
 			}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* avoid endless loop */
 			if (res == 0)
@@ -300,8 +310,12 @@ static int parse_audio_format_rates_v2(struct snd_usb_audio *chip,
 <<<<<<< HEAD
 			      tmp, sizeof(tmp));
 =======
+<<<<<<< HEAD
+			      tmp, sizeof(tmp));
+=======
 			      tmp, sizeof(tmp), 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret < 0) {
 		snd_printk(KERN_ERR "%s(): unable to retrieve number of sample rates (clock %d)\n",
@@ -325,8 +339,12 @@ static int parse_audio_format_rates_v2(struct snd_usb_audio *chip,
 <<<<<<< HEAD
 			      data, data_size);
 =======
+<<<<<<< HEAD
+			      data, data_size);
+=======
 			      data, data_size, 1000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret < 0) {
 		snd_printk(KERN_ERR "%s(): unable to retrieve sample rate range (clock %d)\n",

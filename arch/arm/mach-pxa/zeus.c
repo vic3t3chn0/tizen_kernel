@@ -32,18 +32,24 @@
 
 #include <asm/mach-types.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/suspend.h>
 #include <asm/system_info.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 
 #include <mach/pxa27x.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 
 #include <mach/pxa2xx-regs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/regs-uart.h>
 #include <mach/ohci.h>
 #include <mach/mmc.h>
@@ -52,8 +58,11 @@
 #include <mach/pxafb.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/mfp-pxa27x.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/pm.h>
 #include <mach/audio.h>
 #include <mach/arcom-pcmcia.h>
@@ -248,8 +257,12 @@ static struct plat_serial8250_port serial_platform_data[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTA_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTA_GPIO),
+=======
 		.irq		= gpio_to_irq(ZEUS_UARTA_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irqflags	= IRQF_TRIGGER_RISING,
 		.uartclk	= 14745600,
 		.regshift	= 1,
@@ -261,8 +274,12 @@ static struct plat_serial8250_port serial_platform_data[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTB_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTB_GPIO),
+=======
 		.irq		= gpio_to_irq(ZEUS_UARTB_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irqflags	= IRQF_TRIGGER_RISING,
 		.uartclk	= 14745600,
 		.regshift	= 1,
@@ -274,8 +291,12 @@ static struct plat_serial8250_port serial_platform_data[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTC_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTC_GPIO),
+=======
 		.irq		= gpio_to_irq(ZEUS_UARTC_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irqflags	= IRQF_TRIGGER_RISING,
 		.uartclk	= 14745600,
 		.regshift	= 1,
@@ -287,8 +308,12 @@ static struct plat_serial8250_port serial_platform_data[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTD_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(ZEUS_UARTD_GPIO),
+=======
 		.irq		= gpio_to_irq(ZEUS_UARTD_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irqflags	= IRQF_TRIGGER_RISING,
 		.uartclk	= 14745600,
 		.regshift	= 1,
@@ -353,9 +378,14 @@ static struct resource zeus_dm9k0_resource[] = {
 		.start = PXA_GPIO_TO_IRQ(ZEUS_ETH0_GPIO),
 		.end   = PXA_GPIO_TO_IRQ(ZEUS_ETH0_GPIO),
 =======
+<<<<<<< HEAD
+		.start = PXA_GPIO_TO_IRQ(ZEUS_ETH0_GPIO),
+		.end   = PXA_GPIO_TO_IRQ(ZEUS_ETH0_GPIO),
+=======
 		.start = gpio_to_irq(ZEUS_ETH0_GPIO),
 		.end   = gpio_to_irq(ZEUS_ETH0_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ | IORESOURCE_IRQ_LOWEDGE,
 	},
 };
@@ -376,9 +406,14 @@ static struct resource zeus_dm9k1_resource[] = {
 		.start = PXA_GPIO_TO_IRQ(ZEUS_ETH1_GPIO),
 		.end   = PXA_GPIO_TO_IRQ(ZEUS_ETH1_GPIO),
 =======
+<<<<<<< HEAD
+		.start = PXA_GPIO_TO_IRQ(ZEUS_ETH1_GPIO),
+		.end   = PXA_GPIO_TO_IRQ(ZEUS_ETH1_GPIO),
+=======
 		.start = gpio_to_irq(ZEUS_ETH1_GPIO),
 		.end   = gpio_to_irq(ZEUS_ETH1_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ | IORESOURCE_IRQ_LOWEDGE,
 	},
 };
@@ -464,8 +499,12 @@ static struct spi_board_info zeus_spi_board_info[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(ZEUS_CAN_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(ZEUS_CAN_GPIO),
+=======
 		.irq		= gpio_to_irq(ZEUS_CAN_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.max_speed_hz	= 1*1000*1000,
 		.bus_num	= 3,
 		.mode		= SPI_MODE_0,
@@ -721,8 +760,12 @@ static void zeus_power_off(void)
 <<<<<<< HEAD
 	cpu_suspend(PWRMODE_DEEPSLEEP, pxa27x_finish_suspend);
 =======
+<<<<<<< HEAD
+	cpu_suspend(PWRMODE_DEEPSLEEP, pxa27x_finish_suspend);
+=======
 	pxa27x_cpu_suspend(PWRMODE_DEEPSLEEP, PLAT_PHYS_OFFSET - PAGE_OFFSET);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else
 #define zeus_power_off   NULL
@@ -802,8 +845,12 @@ static struct i2c_board_info __initdata zeus_i2c_devices[] = {
 <<<<<<< HEAD
 		.irq		= PXA_GPIO_TO_IRQ(ZEUS_EXTGPIO_GPIO),
 =======
+<<<<<<< HEAD
+		.irq		= PXA_GPIO_TO_IRQ(ZEUS_EXTGPIO_GPIO),
+=======
 		.irq		= gpio_to_irq(ZEUS_EXTGPIO_GPIO),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{ I2C_BOARD_INFO("lm75a",	0x48) },
 	{ I2C_BOARD_INFO("24c01",	0x50) },
@@ -913,8 +960,12 @@ static struct map_desc zeus_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)ZEUS_CPLD_VERSION,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)ZEUS_CPLD_VERSION,
+=======
 		.virtual = ZEUS_CPLD_VERSION,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn     = __phys_to_pfn(ZEUS_CPLD_VERSION_PHYS),
 		.length  = 0x1000,
 		.type    = MT_DEVICE,
@@ -923,8 +974,12 @@ static struct map_desc zeus_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)ZEUS_CPLD_ISA_IRQ,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)ZEUS_CPLD_ISA_IRQ,
+=======
 		.virtual = ZEUS_CPLD_ISA_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn     = __phys_to_pfn(ZEUS_CPLD_ISA_IRQ_PHYS),
 		.length  = 0x1000,
 		.type    = MT_DEVICE,
@@ -933,8 +988,12 @@ static struct map_desc zeus_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)ZEUS_CPLD_CONTROL,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)ZEUS_CPLD_CONTROL,
+=======
 		.virtual = ZEUS_CPLD_CONTROL,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn     = __phys_to_pfn(ZEUS_CPLD_CONTROL_PHYS),
 		.length  = 0x1000,
 		.type    = MT_DEVICE,
@@ -943,8 +1002,12 @@ static struct map_desc zeus_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual = (unsigned long)ZEUS_PC104IO,
 =======
+<<<<<<< HEAD
+		.virtual = (unsigned long)ZEUS_PC104IO,
+=======
 		.virtual = ZEUS_PC104IO,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn     = __phys_to_pfn(ZEUS_PC104IO_PHYS),
 		.length  = 0x00800000,
 		.type    = MT_DEVICE,
@@ -971,6 +1034,9 @@ static void __init zeus_map_io(void)
 MACHINE_START(ARCOM_ZEUS, "Arcom/Eurotech ZEUS")
 	/* Maintainer: Marc Zyngier <maz@misterjones.org> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= zeus_map_io,
 	.nr_irqs	= ZEUS_NR_IRQS,
@@ -979,6 +1045,8 @@ MACHINE_START(ARCOM_ZEUS, "Arcom/Eurotech ZEUS")
 	.timer		= &pxa_timer,
 	.init_machine	= zeus_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= zeus_map_io,
@@ -987,5 +1055,6 @@ MACHINE_START(ARCOM_ZEUS, "Arcom/Eurotech ZEUS")
 	.timer		= &pxa_timer,
 	.init_machine	= zeus_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 

@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #define _PAGE_READWRITE	0x000
 =======
+<<<<<<< HEAD
+#define _PAGE_READWRITE	0x000
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define _PAGE_ACCESSED	0x008
 #define _PAGE_DIRTY	0x010
 #define _PAGE_SUPER	0x080	/* 68040 supervisor only */

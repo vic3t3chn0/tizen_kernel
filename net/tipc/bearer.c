@@ -44,8 +44,12 @@
 <<<<<<< HEAD
 static struct tipc_media *media_list[MAX_MEDIA];
 =======
+<<<<<<< HEAD
+static struct tipc_media *media_list[MAX_MEDIA];
+=======
 static struct media media_list[MAX_MEDIA];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 media_count;
 
 struct tipc_bearer tipc_bearers[MAX_BEARERS];
@@ -70,6 +74,9 @@ static int media_name_valid(const char *name)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tipc_media_find - locates specified media object by name
  */
 
@@ -95,6 +102,8 @@ static struct tipc_media *media_find_id(u8 type)
 	for (i = 0; i < media_count; i++) {
 		if (media_list[i]->type_id == type)
 			return media_list[i];
+<<<<<<< HEAD
+=======
 =======
  * media_find - locates specified media object by name
  */
@@ -108,6 +117,7 @@ static struct media *media_find(const char *name)
 		if (!strcmp(m_ptr->name, name))
 			return m_ptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return NULL;
 }
@@ -118,6 +128,10 @@ static struct media *media_find(const char *name)
  * Bearers for this media type must be activated separately at a later stage.
  */
 
+<<<<<<< HEAD
+int tipc_register_media(struct tipc_media *m_ptr)
+{
+=======
 <<<<<<< HEAD
 int tipc_register_media(struct tipc_media *m_ptr)
 {
@@ -140,11 +154,15 @@ int  tipc_register_media(u32 media_type,
 	u32 media_id;
 	u32 i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int res = -EINVAL;
 
 	write_lock_bh(&tipc_net_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!media_name_valid(m_ptr->name))
 		goto exit;
 	if ((m_ptr->bcast_addr.media_id != m_ptr->type_id) ||
@@ -167,6 +185,8 @@ exit:
 	write_unlock_bh(&tipc_net_lock);
 	if (res)
 		warn("Media <%s> registration error\n", m_ptr->name);
+<<<<<<< HEAD
+=======
 =======
 	if (tipc_mode != TIPC_NET_MODE) {
 		warn("Media <%s> rejected, not in networked mode yet\n", name);
@@ -229,6 +249,7 @@ exit:
 exit:
 	write_unlock_bh(&tipc_net_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return res;
 }
 
@@ -239,6 +260,9 @@ exit:
 void tipc_media_addr_printf(struct print_buf *pb, struct tipc_media_addr *a)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char addr_str[MAX_ADDR_STR];
 	struct tipc_media *m_ptr;
 
@@ -252,6 +276,8 @@ void tipc_media_addr_printf(struct print_buf *pb, struct tipc_media_addr *a)
 		tipc_printf(pb, "UNKNOWN(%u)", a->media_id);
 		for (i = 0; i < sizeof(a->value); i++)
 			tipc_printf(pb, "-%02x", a->value[i]);
+<<<<<<< HEAD
+=======
 =======
 	struct media *m_ptr;
 	u32 media_type;
@@ -275,6 +301,7 @@ void tipc_media_addr_printf(struct print_buf *pb, struct tipc_media_addr *a)
 		for (i = 0; i < (sizeof(*a) - sizeof(a->type)); i++)
 			tipc_printf(pb, "-%02x", addr[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -287,8 +314,11 @@ struct sk_buff *tipc_media_get_names(void)
 	struct sk_buff *buf;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct media *m_ptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	buf = tipc_cfg_reply_alloc(MAX_MEDIA * TLV_SPACE(TIPC_MAX_MEDIA_NAME));
@@ -297,15 +327,21 @@ struct sk_buff *tipc_media_get_names(void)
 
 	read_lock_bh(&tipc_net_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < media_count; i++) {
 		tipc_cfg_append_tlv(buf, TIPC_TLV_MEDIA_NAME,
 				    media_list[i]->name,
 				    strlen(media_list[i]->name) + 1);
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0, m_ptr = media_list; i < media_count; i++, m_ptr++) {
 		tipc_cfg_append_tlv(buf, TIPC_TLV_MEDIA_NAME, m_ptr->name,
 				    strlen(m_ptr->name) + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	read_unlock_bh(&tipc_net_lock);
 	return buf;
@@ -323,8 +359,12 @@ static int bearer_name_validate(const char *name,
 <<<<<<< HEAD
 				struct tipc_bearer_names *name_parts)
 =======
+<<<<<<< HEAD
+				struct tipc_bearer_names *name_parts)
+=======
 				struct bearer_name *name_parts)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char name_copy[TIPC_MAX_BEARER_NAME];
 	char *media_name;
@@ -369,16 +409,22 @@ static int bearer_name_validate(const char *name,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tipc_bearer_find - locates bearer object with matching bearer name
  */
 
 struct tipc_bearer *tipc_bearer_find(const char *name)
+<<<<<<< HEAD
+=======
 =======
  * bearer_find - locates bearer object with matching bearer name
  */
 
 static struct tipc_bearer *bearer_find(const char *name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tipc_bearer *b_ptr;
 	u32 i;
@@ -419,8 +465,11 @@ struct sk_buff *tipc_bearer_get_names(void)
 	struct sk_buff *buf;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct media *m_ptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tipc_bearer *b_ptr;
 	int i, j;
 
@@ -430,16 +479,22 @@ struct sk_buff *tipc_bearer_get_names(void)
 
 	read_lock_bh(&tipc_net_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < media_count; i++) {
 		for (j = 0; j < MAX_BEARERS; j++) {
 			b_ptr = &tipc_bearers[j];
 			if (b_ptr->active && (b_ptr->media == media_list[i])) {
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0, m_ptr = media_list; i < media_count; i++, m_ptr++) {
 		for (j = 0; j < MAX_BEARERS; j++) {
 			b_ptr = &tipc_bearers[j];
 			if (b_ptr->active && (b_ptr->media == m_ptr)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				tipc_cfg_append_tlv(buf, TIPC_TLV_BEARER_NAME,
 						    b_ptr->name,
 						    strlen(b_ptr->name) + 1);
@@ -478,8 +533,12 @@ static int bearer_push(struct tipc_bearer *b_ptr)
 <<<<<<< HEAD
 	struct tipc_link *ln, *tln;
 =======
+<<<<<<< HEAD
+	struct tipc_link *ln, *tln;
+=======
 	struct link *ln, *tln;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (b_ptr->blocked)
 		return 0;
@@ -503,6 +562,11 @@ void tipc_bearer_lock_push(struct tipc_bearer *b_ptr)
 	bearer_push(b_ptr);
 	spin_unlock_bh(&b_ptr->lock);
 =======
+<<<<<<< HEAD
+	spin_lock_bh(&b_ptr->lock);
+	bearer_push(b_ptr);
+	spin_unlock_bh(&b_ptr->lock);
+=======
 	int res;
 
 	spin_lock_bh(&b_ptr->lock);
@@ -511,6 +575,7 @@ void tipc_bearer_lock_push(struct tipc_bearer *b_ptr)
 	if (res)
 		tipc_bcbearer_push();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -523,8 +588,11 @@ void tipc_continue(struct tipc_bearer *b_ptr)
 	spin_lock_bh(&b_ptr->lock);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	b_ptr->continue_count++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!list_empty(&b_ptr->cong_links))
 		tipc_k_signal((Handler)tipc_bearer_lock_push, (unsigned long)b_ptr);
 	b_ptr->blocked = 0;
@@ -543,8 +611,13 @@ void tipc_continue(struct tipc_bearer *b_ptr)
 static void tipc_bearer_schedule_unlocked(struct tipc_bearer *b_ptr,
 						struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+static void tipc_bearer_schedule_unlocked(struct tipc_bearer *b_ptr,
+						struct tipc_link *l_ptr)
+=======
 static void tipc_bearer_schedule_unlocked(struct tipc_bearer *b_ptr, struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	list_move_tail(&l_ptr->link_list, &b_ptr->cong_links);
 }
@@ -560,8 +633,12 @@ static void tipc_bearer_schedule_unlocked(struct tipc_bearer *b_ptr, struct link
 <<<<<<< HEAD
 void tipc_bearer_schedule(struct tipc_bearer *b_ptr, struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+void tipc_bearer_schedule(struct tipc_bearer *b_ptr, struct tipc_link *l_ptr)
+=======
 void tipc_bearer_schedule(struct tipc_bearer *b_ptr, struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	spin_lock_bh(&b_ptr->lock);
 	tipc_bearer_schedule_unlocked(b_ptr, l_ptr);
@@ -578,8 +655,13 @@ void tipc_bearer_schedule(struct tipc_bearer *b_ptr, struct link *l_ptr)
 int tipc_bearer_resolve_congestion(struct tipc_bearer *b_ptr,
 					struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+int tipc_bearer_resolve_congestion(struct tipc_bearer *b_ptr,
+					struct tipc_link *l_ptr)
+=======
 int tipc_bearer_resolve_congestion(struct tipc_bearer *b_ptr, struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int res = 1;
 
@@ -601,8 +683,12 @@ int tipc_bearer_resolve_congestion(struct tipc_bearer *b_ptr, struct link *l_ptr
 <<<<<<< HEAD
 int tipc_bearer_congested(struct tipc_bearer *b_ptr, struct tipc_link *l_ptr)
 =======
+<<<<<<< HEAD
+int tipc_bearer_congested(struct tipc_bearer *b_ptr, struct tipc_link *l_ptr)
+=======
 int tipc_bearer_congested(struct tipc_bearer *b_ptr, struct link *l_ptr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (unlikely(b_ptr->blocked))
 		return 1;
@@ -622,9 +708,14 @@ int tipc_enable_bearer(const char *name, u32 disc_domain, u32 priority)
 	struct tipc_media *m_ptr;
 	struct tipc_bearer_names b_names;
 =======
+<<<<<<< HEAD
+	struct tipc_media *m_ptr;
+	struct tipc_bearer_names b_names;
+=======
 	struct media *m_ptr;
 	struct bearer_name b_name;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char addr_string[16];
 	u32 bearer_id;
 	u32 with_this_prio;
@@ -634,8 +725,12 @@ int tipc_enable_bearer(const char *name, u32 disc_domain, u32 priority)
 <<<<<<< HEAD
 	if (!tipc_own_addr) {
 =======
+<<<<<<< HEAD
+	if (!tipc_own_addr) {
+=======
 	if (tipc_mode != TIPC_NET_MODE) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		warn("Bearer <%s> rejected, not supported in standalone mode\n",
 		     name);
 		return -ENOPROTOOPT;
@@ -643,8 +738,12 @@ int tipc_enable_bearer(const char *name, u32 disc_domain, u32 priority)
 <<<<<<< HEAD
 	if (!bearer_name_validate(name, &b_names)) {
 =======
+<<<<<<< HEAD
+	if (!bearer_name_validate(name, &b_names)) {
+=======
 	if (!bearer_name_validate(name, &b_name)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		warn("Bearer <%s> rejected, illegal name\n", name);
 		return -EINVAL;
 	}
@@ -663,9 +762,13 @@ int tipc_enable_bearer(const char *name, u32 disc_domain, u32 priority)
 <<<<<<< HEAD
 	if ((priority > TIPC_MAX_LINK_PRI) &&
 =======
+<<<<<<< HEAD
+	if ((priority > TIPC_MAX_LINK_PRI) &&
+=======
 	if ((priority < TIPC_MIN_LINK_PRI ||
 	     priority > TIPC_MAX_LINK_PRI) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    (priority != TIPC_MEDIA_LINK_PRI)) {
 		warn("Bearer <%s> rejected, illegal priority\n", name);
 		return -EINVAL;
@@ -674,16 +777,22 @@ int tipc_enable_bearer(const char *name, u32 disc_domain, u32 priority)
 	write_lock_bh(&tipc_net_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	m_ptr = tipc_media_find(b_names.media_name);
 	if (!m_ptr) {
 		warn("Bearer <%s> rejected, media <%s> not registered\n", name,
 		     b_names.media_name);
+<<<<<<< HEAD
+=======
 =======
 	m_ptr = media_find(b_name.media_name);
 	if (!m_ptr) {
 		warn("Bearer <%s> rejected, media <%s> not registered\n", name,
 		     b_name.media_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto exit;
 	}
 
@@ -734,7 +843,12 @@ restart:
 	b_ptr->tolerance = m_ptr->tolerance;
 	b_ptr->window = m_ptr->window;
 =======
+<<<<<<< HEAD
+	b_ptr->tolerance = m_ptr->tolerance;
+	b_ptr->window = m_ptr->window;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b_ptr->net_plane = bearer_id + 'A';
 	b_ptr->active = 1;
 	b_ptr->priority = priority;
@@ -765,11 +879,16 @@ int tipc_block_bearer(const char *name)
 {
 	struct tipc_bearer *b_ptr = NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tipc_link *l_ptr;
 	struct tipc_link *temp_l_ptr;
 
 	read_lock_bh(&tipc_net_lock);
 	b_ptr = tipc_bearer_find(name);
+<<<<<<< HEAD
+=======
 =======
 	struct link *l_ptr;
 	struct link *temp_l_ptr;
@@ -777,6 +896,7 @@ int tipc_block_bearer(const char *name)
 	read_lock_bh(&tipc_net_lock);
 	b_ptr = bearer_find(name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!b_ptr) {
 		warn("Attempt to block unknown bearer <%s>\n", name);
 		read_unlock_bh(&tipc_net_lock);
@@ -789,7 +909,11 @@ int tipc_block_bearer(const char *name)
 <<<<<<< HEAD
 	list_splice_init(&b_ptr->cong_links, &b_ptr->links);
 =======
+<<<<<<< HEAD
+	list_splice_init(&b_ptr->cong_links, &b_ptr->links);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(l_ptr, temp_l_ptr, &b_ptr->links, link_list) {
 		struct tipc_node *n_ptr = l_ptr->owner;
 
@@ -814,9 +938,14 @@ static void bearer_disable(struct tipc_bearer *b_ptr)
 	struct tipc_link *l_ptr;
 	struct tipc_link *temp_l_ptr;
 =======
+<<<<<<< HEAD
+	struct tipc_link *l_ptr;
+	struct tipc_link *temp_l_ptr;
+=======
 	struct link *l_ptr;
 	struct link *temp_l_ptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	info("Disabling bearer <%s>\n", b_ptr->name);
 	spin_lock_bh(&b_ptr->lock);
@@ -825,7 +954,11 @@ static void bearer_disable(struct tipc_bearer *b_ptr)
 <<<<<<< HEAD
 	list_splice_init(&b_ptr->cong_links, &b_ptr->links);
 =======
+<<<<<<< HEAD
+	list_splice_init(&b_ptr->cong_links, &b_ptr->links);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_for_each_entry_safe(l_ptr, temp_l_ptr, &b_ptr->links, link_list) {
 		tipc_link_delete(l_ptr);
 	}
@@ -844,8 +977,12 @@ int tipc_disable_bearer(const char *name)
 <<<<<<< HEAD
 	b_ptr = tipc_bearer_find(name);
 =======
+<<<<<<< HEAD
+	b_ptr = tipc_bearer_find(name);
+=======
 	b_ptr = bearer_find(name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (b_ptr == NULL) {
 		warn("Attempt to disable unknown bearer <%s>\n", name);
 		res = -EINVAL;

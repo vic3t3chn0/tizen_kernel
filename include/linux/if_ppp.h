@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 #include <linux/ppp-ioctl.h>
 =======
+<<<<<<< HEAD
+#include <linux/ppp-ioctl.h>
+=======
 /*
  * if_ppp.h - Point-to-Point Protocol definitions.
  *
@@ -175,3 +178,4 @@ struct pppol2tp_ioc_stats {
 
 #endif /* _IF_PPP_H_ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

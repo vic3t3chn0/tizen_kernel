@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/prom.h>
 
@@ -35,12 +39,17 @@ void __irq_entry do_IRQ(struct pt_regs *regs)
 
 	irq_enter();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq = get_irq();
 next_irq:
 	BUG_ON(!irq);
 	generic_handle_irq(irq);
 
 	irq = get_irq();
+<<<<<<< HEAD
+=======
 =======
 	irq = get_irq(regs);
 next_irq:
@@ -49,6 +58,7 @@ next_irq:
 
 	irq = get_irq(regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (irq != -1U) {
 		pr_debug("next irq: %d\n", irq);
 		++concurrent_irq;
@@ -59,6 +69,8 @@ next_irq:
 	set_irq_regs(old_regs);
 	trace_hardirqs_on();
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -77,3 +89,4 @@ unsigned int irq_create_of_mapping(struct device_node *controller,
 }
 EXPORT_SYMBOL_GPL(irq_create_of_mapping);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

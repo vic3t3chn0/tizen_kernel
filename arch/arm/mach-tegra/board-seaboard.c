@@ -21,8 +21,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/i2c-tegra.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/input.h>
 #include <linux/io.h>
@@ -30,6 +33,9 @@
 #include <linux/gpio_keys.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/wm8903.h>
 
 #include <mach/iomap.h>
@@ -40,6 +46,8 @@
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/hardware/gic.h>
+<<<<<<< HEAD
+=======
 =======
 #include <mach/iomap.h>
 #include <mach/irqs.h>
@@ -48,6 +56,7 @@
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "board.h"
 #include "board-seaboard.h"
@@ -62,8 +71,13 @@ static struct plat_serial8250_port debug_uart_platform_data[] = {
 		.flags		= UPF_BOOT_AUTOCONF | UPF_FIXED_TYPE,
 		.type		= PORT_TEGRA,
 =======
+<<<<<<< HEAD
+		.flags		= UPF_BOOT_AUTOCONF | UPF_FIXED_TYPE,
+		.type		= PORT_TEGRA,
+=======
 		.flags		= UPF_BOOT_AUTOCONF,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.iotype		= UPIO_MEM,
 		.regshift	= 2,
 		.uartclk	= 216000000,
@@ -85,6 +99,9 @@ static __initdata struct tegra_clk_init_table seaboard_clk_init_table[] = {
 	{ "uartb",	"pll_p",	216000000,	true},
 	{ "uartd",	"pll_p",	216000000,	true},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ "pll_a",	"pll_p_out1",	56448000,	true },
 	{ "pll_a_out0",	"pll_a",	11289600,	true },
 	{ "cdev1",	NULL,		0,		true },
@@ -94,6 +111,8 @@ static __initdata struct tegra_clk_init_table seaboard_clk_init_table[] = {
 	{ NULL,		NULL,		0,		0},
 };
 
+<<<<<<< HEAD
+=======
 =======
 	{ NULL,		NULL,		0,		0},
 };
@@ -115,6 +134,7 @@ static struct tegra_i2c_platform_data seaboard_dvc_platform_data = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct gpio_keys_button seaboard_gpio_keys_buttons[] = {
 	{
 		.code		= SW_LID,
@@ -168,6 +188,9 @@ static struct tegra_sdhci_platform_data sdhci_pdata4 = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct tegra_wm8903_platform_data seaboard_audio_pdata = {
 	.gpio_spkr_en		= TEGRA_GPIO_SPKR_EN,
 	.gpio_hp_det		= TEGRA_GPIO_HP_DET,
@@ -195,6 +218,8 @@ static struct platform_device *seaboard_devices[] __initdata = {
 	&tegra_das_device,
 	&tegra_pcm_device,
 	&seaboard_audio_device,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *seaboard_devices[] __initdata = {
 	&debug_uart,
@@ -204,14 +229,18 @@ static struct platform_device *seaboard_devices[] __initdata = {
 	&tegra_sdhci_device4,
 	&seaboard_gpio_keys_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info __initdata isl29018_device = {
 	I2C_BOARD_INFO("isl29018", 0x44),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.irq = TEGRA_GPIO_TO_IRQ(TEGRA_GPIO_ISL29018_IRQ),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info __initdata adt7461_device = {
@@ -219,6 +248,9 @@ static struct i2c_board_info __initdata adt7461_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct wm8903_platform_data wm8903_pdata = {
 	.irq_active_low = 0,
 	.micdet_cfg = 0,
@@ -261,14 +293,20 @@ static int seaboard_ehci_init(void)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init seaboard_i2c_init(void)
 {
 	gpio_request(TEGRA_GPIO_ISL29018_IRQ, "isl29018");
 	gpio_direction_input(TEGRA_GPIO_ISL29018_IRQ);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	isl29018_device.irq = gpio_to_irq(TEGRA_GPIO_ISL29018_IRQ);
 	i2c_register_board_info(0, &isl29018_device, 1);
 
@@ -276,6 +314,8 @@ static void __init seaboard_i2c_init(void)
 	i2c_register_board_info(0, &wm8903_device, 1);
 
 	i2c_register_board_info(3, &adt7461_device, 1);
+<<<<<<< HEAD
+=======
 =======
 	i2c_register_board_info(0, &isl29018_device, 1);
 
@@ -286,6 +326,7 @@ static void __init seaboard_i2c_init(void)
 	tegra_i2c_device3.dev.platform_data = &seaboard_i2c3_platform_data;
 	tegra_i2c_device4.dev.platform_data = &seaboard_dvc_platform_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_device_register(&tegra_i2c_device1);
 	platform_device_register(&tegra_i2c_device2);
@@ -308,7 +349,12 @@ static void __init seaboard_common_init(void)
 
 	seaboard_ehci_init();
 =======
+<<<<<<< HEAD
+
+	seaboard_ehci_init();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init tegra_seaboard_init(void)
@@ -335,7 +381,13 @@ static void __init tegra_kaen_init(void)
 	tegra_gpio_enable(TEGRA_GPIO_KAEN_HP_MUTE);
 
 =======
+<<<<<<< HEAD
+	seaboard_audio_pdata.gpio_hp_mute = TEGRA_GPIO_KAEN_HP_MUTE;
+	tegra_gpio_enable(TEGRA_GPIO_KAEN_HP_MUTE);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	seaboard_common_init();
 
 	seaboard_i2c_init();
@@ -356,6 +408,9 @@ static void __init tegra_wario_init(void)
 
 MACHINE_START(SEABOARD, "seaboard")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset    = 0x100,
 	.map_io         = tegra_map_common_io,
 	.init_early     = tegra20_init_early,
@@ -386,6 +441,8 @@ MACHINE_START(WARIO, "wario")
 	.timer          = &tegra_timer,
 	.init_machine   = tegra_wario_init,
 	.restart	= tegra_assert_system_reset,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params    = 0x00000100,
 	.map_io         = tegra_map_common_io,
@@ -412,4 +469,5 @@ MACHINE_START(WARIO, "wario")
 	.timer          = &tegra_timer,
 	.init_machine   = tegra_wario_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

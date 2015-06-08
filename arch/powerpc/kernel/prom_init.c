@@ -37,8 +37,11 @@
 #include <asm/smp.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu.h>
 #include <asm/pgtable.h>
 #include <asm/pci.h>
@@ -49,11 +52,17 @@
 <<<<<<< HEAD
 #include <asm/opal.h>
 =======
+<<<<<<< HEAD
+#include <asm/opal.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/linux_logo.h>
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * Properties whose value is longer than this get excluded from our
@@ -65,6 +74,7 @@
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Eventually bump that one up
  */
 #define DEVTREE_CHUNK_SIZE	0x100000
@@ -154,8 +164,14 @@ extern void __start(unsigned long r3, unsigned long r4, unsigned long r5,
 		    unsigned long r6, unsigned long r7, unsigned long r8,
 		    unsigned long r9);
 =======
+<<<<<<< HEAD
+extern void __start(unsigned long r3, unsigned long r4, unsigned long r5,
+		    unsigned long r6, unsigned long r7, unsigned long r8,
+		    unsigned long r9);
+=======
 extern void __start(unsigned long r3, unsigned long r4, unsigned long r5);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC64
 extern int enter_prom(struct prom_args *args, unsigned long entry);
@@ -204,7 +220,11 @@ static unsigned long __initdata prom_tce_alloc_end;
 <<<<<<< HEAD
 #define PLATFORM_OPAL		0x0600
 =======
+<<<<<<< HEAD
+#define PLATFORM_OPAL		0x0600
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __initdata of_platform;
 
@@ -474,8 +494,12 @@ static void __init __attribute__((noreturn)) prom_panic(const char *reason)
 <<<<<<< HEAD
 	/* ToDo: should put up an SRC here on pSeries */
 =======
+<<<<<<< HEAD
+	/* ToDo: should put up an SRC here on pSeries */
+=======
 	/* ToDo: should put up an SRC here on p/iSeries */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	call_prom("exit", 0, 0);
 
 	for (;;)			/* should never get here */
@@ -671,8 +695,12 @@ static void __init early_cmdline_parse(void)
 <<<<<<< HEAD
 #if defined(CONFIG_PPC_PSERIES) || defined(CONFIG_PPC_POWERNV)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_PPC_PSERIES) || defined(CONFIG_PPC_POWERNV)
+=======
 #ifdef CONFIG_PPC_PSERIES
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * There are two methods for telling firmware what our capabilities are.
  * Newer machines have an "ibm,client-architecture-support" method on the
@@ -769,8 +797,12 @@ static unsigned char ibm_architecture_vec[] = {
 <<<<<<< HEAD
 	W(256),				/* 256MB min RMA */
 =======
+<<<<<<< HEAD
+	W(256),				/* 256MB min RMA */
+=======
 	W(64),				/* 64MB min RMA */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	W(0xffffffff),			/* full client load */
 	0,				/* min RMA percentage of total RAM */
 	48,				/* max log_2(hash table size) */
@@ -1254,6 +1286,8 @@ static void __init prom_init_mem(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Check if we have an initrd after the kernel, if we do move our bottom
 	 * point to after it
 	 */
@@ -1263,6 +1297,7 @@ static void __init prom_init_mem(void)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If prom_memory_limit is set we reduce the upper limits *except* for
 	 * alloc_top_high. This must be the real top of RAM so we can put
@@ -1301,6 +1336,9 @@ static void __init prom_init_mem(void)
 	RELOC(alloc_top_high) = RELOC(ram_top);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Check if we have an initrd after the kernel but still inside
 	 * the RMO.  If we do move our bottom point to after it.
@@ -1310,8 +1348,11 @@ static void __init prom_init_mem(void)
 	    RELOC(prom_initrd_end) > RELOC(alloc_bottom))
 		RELOC(alloc_bottom) = PAGE_ALIGN(RELOC(prom_initrd_end));
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prom_printf("memory layout at init:\n");
 	prom_printf("  memory_limit : %x (16 MB aligned)\n", RELOC(prom_memory_limit));
 	prom_printf("  alloc_bottom : %x\n", RELOC(alloc_bottom));
@@ -1322,6 +1363,9 @@ static void __init prom_init_mem(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init prom_close_stdin(void)
 {
 	struct prom_t *_prom = &RELOC(prom);
@@ -1600,8 +1644,11 @@ static void __init prom_instantiate_opal(void)
 }
 
 #endif /* CONFIG_PPC_POWERNV */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Allocate room for and instantiate RTAS
@@ -1629,11 +1676,16 @@ static void __init prom_instantiate_rtas(void)
 	if (base == 0)
 		prom_panic("Could not allocate memory for RTAS\n");
 =======
+<<<<<<< HEAD
+	if (base == 0)
+		prom_panic("Could not allocate memory for RTAS\n");
+=======
 	if (base == 0) {
 		prom_printf("RTAS allocation failed !\n");
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rtas_inst = call_prom("open", 1, 1, ADDR("/rtas"));
 	if (!IHANDLE_VALID(rtas_inst)) {
@@ -1660,14 +1712,20 @@ static void __init prom_instantiate_rtas(void)
 		     &entry, sizeof(entry));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_POWERNV
 	/* PowerVN takeover hack */
 	RELOC(prom_rtas_data) = base;
 	RELOC(prom_rtas_entry) = entry;
 	prom_getprop(rtas_node, "start-cpu", &RELOC(prom_rtas_start_cpu), 4);
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	prom_debug("rtas base     = 0x%x\n", base);
 	prom_debug("rtas entry    = 0x%x\n", entry);
 	prom_debug("rtas size     = 0x%x\n", (long)size);
@@ -1888,8 +1946,12 @@ static void __init prom_hold_cpus(void)
 <<<<<<< HEAD
 			/* Primary Thread of non-boot cpu or any thread */
 =======
+<<<<<<< HEAD
+			/* Primary Thread of non-boot cpu or any thread */
+=======
 			/* Primary Thread of non-boot cpu */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			prom_printf("starting cpu hw idx %lu... ", reg);
 			call_prom("start-cpu", 3, 0, node,
 				  secondary_hold, reg);
@@ -2000,6 +2062,8 @@ static void __init prom_init_stdout(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init prom_close_stdin(void)
 {
 	struct prom_t *_prom = &RELOC(prom);
@@ -2010,6 +2074,7 @@ static void __init prom_close_stdin(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init prom_find_machine_type(void)
 {
 	struct prom_t *_prom = &RELOC(prom);
@@ -2023,8 +2088,12 @@ static int __init prom_find_machine_type(void)
 <<<<<<< HEAD
 	/* Look for a PowerMac or a Cell */
 =======
+<<<<<<< HEAD
+	/* Look for a PowerMac or a Cell */
+=======
 	/* Look for a PowerMac */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	len = prom_getprop(_prom->root, "compatible",
 			   compat, sizeof(compat)-1);
 	if (len > 0) {
@@ -2051,14 +2120,20 @@ static int __init prom_find_machine_type(void)
 	}
 #ifdef CONFIG_PPC64
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Try to detect OPAL */
 	if (PHANDLE_VALID(call_prom("finddevice", 1, 1, ADDR("/ibm,opal"))))
 		return PLATFORM_OPAL;
 
 	/* Try to figure out if it's an IBM pSeries or any other
+<<<<<<< HEAD
+=======
 =======
 	/* If not a mac, try to figure out if it's an IBM pSeries or any other
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * PAPR compliant platform. We assume it is if :
 	 *  - /device_type is "chrp" (please, do NOT use that for future
 	 *    non-IBM designs !
@@ -2162,8 +2237,12 @@ static void __init prom_check_displays(void)
 <<<<<<< HEAD
 		for (i = 0; i < 16; i++, clut += 3)
 =======
+<<<<<<< HEAD
+		for (i = 0; i < 16; i++, clut += 3)
+=======
 		for (i = 0; i < 32; i++, clut += 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (prom_set_color(ih, i, clut[0], clut[1],
 					   clut[2]) != 0)
 				break;
@@ -2196,18 +2275,24 @@ static void __init *make_room(unsigned long *mem_start, unsigned long *mem_end,
 			room = DEVTREE_CHUNK_SIZE;
 		if (room < PAGE_SIZE)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			prom_panic("No memory for flatten_device_tree "
 				   "(no room)\n");
 		chunk = alloc_up(room, 0);
 		if (chunk == 0)
 			prom_panic("No memory for flatten_device_tree "
 				   "(claim failed)\n");
+<<<<<<< HEAD
+=======
 =======
 			prom_panic("No memory for flatten_device_tree (no room)");
 		chunk = alloc_up(room, 0);
 		if (chunk == 0)
 			prom_panic("No memory for flatten_device_tree (claim failed)");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*mem_end = chunk + room;
 	}
 
@@ -2299,8 +2384,12 @@ static void __init scan_dt_build_struct(phandle node, unsigned long *mem_start,
 <<<<<<< HEAD
 	int l, room, has_phandle = 0;
 =======
+<<<<<<< HEAD
+	int l, room, has_phandle = 0;
+=======
 	int l, room;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dt_push_token(OF_DT_BEGIN_NODE, mem_start, mem_end);
 
@@ -2369,6 +2458,8 @@ static void __init scan_dt_build_struct(phandle node, unsigned long *mem_start,
 			continue;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (l > MAX_PROPERTY_LENGTH) {
 			prom_printf("WARNING: ignoring large property ");
 			/* It seems OF doesn't null-terminate the path :-( */
@@ -2377,6 +2468,7 @@ static void __init scan_dt_build_struct(phandle node, unsigned long *mem_start,
 			continue;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* push property head */
 		dt_push_token(OF_DT_PROP, mem_start, mem_end);
@@ -2388,6 +2480,9 @@ static void __init scan_dt_build_struct(phandle node, unsigned long *mem_start,
 		call_prom("getprop", 4, 1, node, RELOC(pname), valp, l);
 		*mem_start = _ALIGN(*mem_start, 4);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!strcmp(RELOC(pname), RELOC("phandle")))
 			has_phandle = 1;
@@ -2408,6 +2503,8 @@ static void __init scan_dt_build_struct(phandle node, unsigned long *mem_start,
 			valp = make_room(mem_start, mem_end, 4, 4);
 			*(u32 *)valp = node;
 		}
+<<<<<<< HEAD
+=======
 =======
 	}
 
@@ -2423,6 +2520,7 @@ static void __init scan_dt_build_struct(phandle node, unsigned long *mem_start,
 		valp = make_room(mem_start, mem_end, 4, 4);
 		*(u32 *)valp = node;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* do all our children */
@@ -2449,8 +2547,12 @@ static void __init flatten_device_tree(void)
 <<<<<<< HEAD
 	 * few pages), crop to 1MB, as this is our "chunk" size
 =======
+<<<<<<< HEAD
+	 * few pages), crop to 1MB, as this is our "chunk" size
+=======
 	 * few pages), crop to 4Mb, as this is our "chuck" size
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	room = RELOC(alloc_top) - RELOC(alloc_bottom) - 0x4000;
 	if (room > DEVTREE_CHUNK_SIZE)
@@ -2913,7 +3015,11 @@ static void __init prom_check_initrd(unsigned long r3, unsigned long r4)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * We enter here early on, when the Open Firmware prom is still
  * handling exceptions and the MMU hash table for us.
@@ -2968,9 +3074,15 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 
 #ifndef CONFIG_NONSTATIC_KERNEL
 =======
+<<<<<<< HEAD
+	prom_printf("Detected machine type: %x\n", RELOC(of_platform));
+
+#ifndef CONFIG_NONSTATIC_KERNEL
+=======
 
 #ifndef CONFIG_RELOCATABLE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Bail if this is a kdump kernel. */
 	if (PHYSICAL_START > 0)
 		prom_panic("Error: You can't boot a kdump kernel from OF!\n");
@@ -2984,8 +3096,12 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 <<<<<<< HEAD
 #if defined(CONFIG_PPC_PSERIES) || defined(CONFIG_PPC_POWERNV)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_PPC_PSERIES) || defined(CONFIG_PPC_POWERNV)
+=======
 #ifdef CONFIG_PPC_PSERIES
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * On pSeries, inform the firmware about our capabilities
 	 */
@@ -3032,6 +3148,9 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * On non-powermacs, try to instantiate RTAS. PowerMacs don't
 	 * have a usable RTAS implementation.
 	 */
@@ -3059,6 +3178,8 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 	if (RELOC(of_platform) != PLATFORM_POWERMAC &&
 	    RELOC(of_platform) != PLATFORM_OPAL)
 		prom_hold_cpus();
+<<<<<<< HEAD
+=======
 =======
 	 * On non-powermacs, try to instantiate RTAS and puts all CPUs
 	 * in spin-loops. PowerMacs don't have a working RTAS and use
@@ -3069,6 +3190,7 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 		prom_hold_cpus();
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Fill in some infos for use by the kernel later on
@@ -3111,16 +3233,22 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 	 * in case stdin is USB and still active on IBM machines...
 	 * Unfortunately quiesce crashes on some powermacs if we have
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * closed stdin already (in particular the powerbook 101). It
 	 * appears that the OPAL version of OFW doesn't like it either.
 	 */
 	if (RELOC(of_platform) != PLATFORM_POWERMAC &&
 	    RELOC(of_platform) != PLATFORM_OPAL)
+<<<<<<< HEAD
+=======
 =======
 	 * closed stdin already (in particular the powerbook 101).
 	 */
 	if (RELOC(of_platform) != PLATFORM_POWERMAC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		prom_close_stdin();
 
 	/*
@@ -3137,22 +3265,31 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 	 */
 	hdr = RELOC(dt_header_start);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Don't print anything after quiesce under OPAL, it crashes OFW */
 	if (RELOC(of_platform) != PLATFORM_OPAL) {
 		prom_printf("returning from prom_init\n");
 		prom_debug("->dt_header_start=0x%x\n", hdr);
 	}
+<<<<<<< HEAD
+=======
 =======
 	prom_printf("returning from prom_init\n");
 	prom_debug("->dt_header_start=0x%x\n", hdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC32
 	reloc_got2(-offset);
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_EARLY_DEBUG_OPAL
 	/* OPAL early debug gets the OPAL base & entry in r8 and r9 */
 	__start(hdr, kbase, 0, 0, 0,
@@ -3160,9 +3297,12 @@ unsigned long __init prom_init(unsigned long r3, unsigned long r4,
 #else
 	__start(hdr, kbase, 0, 0, 0, 0, 0);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	__start(hdr, kbase, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

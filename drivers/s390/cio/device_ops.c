@@ -198,7 +198,15 @@ int ccw_device_start_key(struct ccw_device *cdev, struct ccw1 *cpa,
 	if (cdev->private->state == DEV_STATE_VERIFY) {
 		/* Remember to fake irb when finished. */
 		if (!cdev->private->flags.fake_irb) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			cdev->private->flags.fake_irb = FAKE_CMD_IRB;
+=======
 			cdev->private->flags.fake_irb = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			cdev->private->flags.fake_irb = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cdev->private->intparm = intparm;
 			return 0;
 		} else
@@ -213,9 +221,21 @@ int ccw_device_start_key(struct ccw_device *cdev, struct ccw1 *cpa,
 	ret = cio_set_options (sch, flags);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Adjust requested path mask to exclude unusable paths. */
+	if (lpm) {
+		lpm &= sch->lpm;
+=======
 	/* Adjust requested path mask to excluded varied off paths. */
 	if (lpm) {
 		lpm &= sch->opm;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Adjust requested path mask to excluded varied off paths. */
+	if (lpm) {
+		lpm &= sch->opm;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (lpm == 0)
 			return -EACCES;
 	}
@@ -605,11 +625,35 @@ int ccw_device_tm_start_key(struct ccw_device *cdev, struct tcw *tcw,
 	sch = to_subchannel(cdev->dev.parent);
 	if (!sch->schib.pmcw.ena)
 		return -EINVAL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (cdev->private->state == DEV_STATE_VERIFY) {
+		/* Remember to fake irb when finished. */
+		if (!cdev->private->flags.fake_irb) {
+			cdev->private->flags.fake_irb = FAKE_TM_IRB;
+			cdev->private->intparm = intparm;
+			return 0;
+		} else
+			/* There's already a fake I/O around. */
+			return -EBUSY;
+	}
+	if (cdev->private->state != DEV_STATE_ONLINE)
+		return -EIO;
+	/* Adjust requested path mask to exclude unusable paths. */
+	if (lpm) {
+		lpm &= sch->lpm;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cdev->private->state != DEV_STATE_ONLINE)
 		return -EIO;
 	/* Adjust requested path mask to excluded varied off paths. */
 	if (lpm) {
 		lpm &= sch->opm;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (lpm == 0)
 			return -EACCES;
 	}

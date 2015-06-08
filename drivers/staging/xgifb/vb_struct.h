@@ -1,5 +1,11 @@
 #ifndef _VB_STRUCT_
 #define _VB_STRUCT_
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "../../video/sis/vstruct.h"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef _INITNEW_
 #define EXTERN
@@ -20,6 +26,10 @@ struct XGI_LCDDataStruct {
 	unsigned short LCDVT;
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct XGI_LVDSCRT1HDataStruct {
 	unsigned char Reg[8];
@@ -29,6 +39,11 @@ struct XGI_LVDSCRT1VDataStruct {
 	unsigned char Reg[7];
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_TVDataStruct {
 	unsigned short RVBHCMAX;
 	unsigned short RVBHCFACT;
@@ -63,6 +78,10 @@ struct XGI_LVDSCRT1DataStruct {
 
 /*add for LCDA*/
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_StStruct {
 	unsigned char St_ModeID;
 	unsigned short St_ModeFlag;
@@ -75,6 +94,11 @@ struct XGI_StStruct {
 	unsigned char VB_StTVYFilterIndex;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_StandTableStruct {
 	unsigned char CRT_COLS;
 	unsigned char ROWS;
@@ -87,6 +111,10 @@ struct XGI_StandTableStruct {
 	unsigned char GRC[9];
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_ExtStruct {
 	unsigned char Ext_ModeID;
 	unsigned short Ext_ModeFlag;
@@ -113,17 +141,31 @@ struct XGI_Ext2Struct {
 	/* unsigned short ROM_OFFSET; */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct XGI_MCLKDataStruct {
 	unsigned char SR28, SR29, SR2A;
 	unsigned short CLOCK;
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_ECLKDataStruct {
 	unsigned char SR2E, SR2F, SR30;
 	unsigned short CLOCK;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_VCLKDataStruct {
 	unsigned char SR2B, SR2C;
 	unsigned short CLOCK;
@@ -150,6 +192,10 @@ struct XGI_LCDNBDesStruct {
 	unsigned char NB[12];
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*add for new UNIVGABIOS*/
 struct XGI_LCDDesStruct {
 	unsigned short LCDHDES;
@@ -165,12 +211,21 @@ struct XGI_LCDDataTablStruct {
 	unsigned short DATAPTR;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_TVTablDataStruct {
 	unsigned short MASK;
 	unsigned short CAP;
 	unsigned short DATAPTR;
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI330_LCDDataDesStruct {
 	unsigned short LCDHDES;
 	unsigned short LCDHRS;
@@ -246,6 +301,11 @@ struct XGI_TimingVStruct {
 	unsigned char data[7];
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_CH7007TV_TimingHStruct {
 	unsigned char data[10];
 };
@@ -254,14 +314,27 @@ struct XGI_CH7007TV_TimingVStruct {
 	unsigned char data[10];
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_XG21CRT1Struct {
 	unsigned char ModeID, CR02, CR03, CR15, CR16;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI330_CHTVRegDataStruct {
 	unsigned char Reg[16];
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI330_LCDCapStruct {
 	unsigned char	LCD_ID;
 	unsigned short	LCD_Capability;
@@ -324,6 +397,11 @@ struct XGI301C_Tap4TimingStruct {
 	unsigned char  Reg[64];   /* C0-FF */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct XGI_New_StandTableStruct {
 	unsigned char  CRT_COLS;
 	unsigned char  ROWS;
@@ -336,6 +414,10 @@ struct XGI_New_StandTableStruct {
 	unsigned char  GRC[9];
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct vb_device_info {
 	unsigned char  ISXPDOS;
 	unsigned long   P3c4, P3d4, P3c0, P3ce, P3c2, P3cc;
@@ -350,6 +432,17 @@ struct vb_device_info {
 	unsigned short   ModeType;
 	/* ,IF_DEF_FSTN; add for dstn */
 	unsigned short   IF_DEF_LVDS, IF_DEF_TRUMPION, IF_DEF_DSTN;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned short   IF_DEF_CRT2Monitor;
+	unsigned short   IF_DEF_LCDA, IF_DEF_YPbPr;
+	unsigned short   IF_DEF_ExpLink;
+	unsigned short   IF_DEF_HiVision;
+	unsigned short   LCDResInfo, LCDTypeInfo, VBType;/*301b*/
+	unsigned short   VBInfo, TVInfo, LCDInfo;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short   IF_DEF_CRT2Monitor, IF_DEF_VideoCapture;
 	unsigned short   IF_DEF_LCDA, IF_DEF_CH7017, IF_DEF_YPbPr,
 			 IF_DEF_ScaleLCD, IF_DEF_OEMUtil, IF_DEF_PWD;
@@ -358,13 +451,26 @@ struct vb_device_info {
 	unsigned short   IF_DEF_CH7007; /* Billy 2007/05/03 */
 	unsigned short   LCDResInfo, LCDTypeInfo, VBType;/*301b*/
 	unsigned short   VBInfo, TVInfo, LCDInfo, Set_VGAType;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short   VBExtInfo;/*301lv*/
 	unsigned short   SetFlag;
 	unsigned short   NewFlickerMode;
 	unsigned short   SelectCRT2Rate;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	void __iomem *FBAddr;
+=======
 	unsigned char *ROMAddr;
 	unsigned char *FBAddr;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned char *ROMAddr;
+	unsigned char *FBAddr;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long BaseAddr;
 	unsigned long RelIO;
 
@@ -415,15 +521,32 @@ struct vb_device_info {
 	unsigned char  *pCRT2Data_4_D;
 	unsigned char  *pCRT2Data_4_E;
 	unsigned char  *pCRT2Data_4_10;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct SiS_MCLKData  *MCLKData;
+=======
 	struct XGI_MCLKDataStruct  *MCLKData;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct XGI_MCLKDataStruct  *MCLKData;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct XGI_ECLKDataStruct  *ECLKData;
 
 	unsigned char   *XGI_TVDelayList;
 	unsigned char   *XGI_TVDelayList2;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char   *CHTVVCLKUNTSC;
 	unsigned char   *CHTVVCLKONTSC;
 	unsigned char   *CHTVVCLKUPAL;
 	unsigned char   *CHTVVCLKOPAL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char   *NTSCTiming;
 	unsigned char   *PALTiming;
 	unsigned char   *HiTVExtTiming;
@@ -444,17 +567,48 @@ struct vb_device_info {
 	unsigned char   *pXGINew_CR97 ;
 
 	struct XGI330_LCDCapStruct  *LCDCapList;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct XGI21_LVDSCapStruct  *XG21_LVDSCapList;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct XGI21_LVDSCapStruct  *XG21_LVDSCapList;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct XGI_TimingHStruct  *TimingH;
 	struct XGI_TimingVStruct  *TimingV;
 
 	struct XGI_StStruct          *SModeIDTable;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct SiS_StandTable_S  *StandTable;
+=======
 	struct XGI_StandTableStruct  *StandTable;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct XGI_StandTableStruct  *StandTable;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct XGI_ExtStruct         *EModeIDTable;
 	struct XGI_Ext2Struct        *RefIndex;
 	/* XGINew_CRT1TableStruct *CRT1Table; */
 	struct XGI_CRT1TableStruct    *XGINEWUB_CRT1Table;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct SiS_VCLKData    *VCLKData;
+	struct SiS_VBVCLKData  *VBVCLKData;
+	struct SiS_StResInfo_S   *StResInfo;
+	struct SiS_ModeResInfo_S *ModeResInfo;
+	struct XGI_XG21CRT1Struct	  *UpdateCRT1;
+
+	int ram_type;
+	int ram_channel;
+	int ram_bus;
+};  /* _struct vb_device_info */
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct XGI_VCLKDataStruct    *VCLKData;
 	struct XGI_VBVCLKDataStruct  *VBVCLKData;
 	struct XGI_StResInfoStruct   *StResInfo;
@@ -479,4 +633,8 @@ struct TimingInfo {
 };
 
 #define _VB_STRUCT_
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _VB_STRUCT_ */

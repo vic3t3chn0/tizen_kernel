@@ -4,16 +4,22 @@ config M68K
 	select HAVE_IDE
 	select HAVE_AOUT if MMU
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_GENERIC_HARDIRQS
 	select GENERIC_IRQ_SHOW
 	select ARCH_HAVE_NMI_SAFE_CMPXCHG if RMW_INSNS
 	select GENERIC_CPU_DEVICES
 	select FPU if MMU
+<<<<<<< HEAD
+=======
 =======
 	select GENERIC_ATOMIC64 if MMU
 	select HAVE_GENERIC_HARDIRQS if !MMU
 	select GENERIC_IRQ_SHOW if !MMU
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config RWSEM_GENERIC_SPINLOCK
 	bool
@@ -29,14 +35,20 @@ config ARCH_HAS_ILOG2_U64
 	bool
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config GENERIC_CLOCKEVENTS
 	bool
 
 config GENERIC_GPIO
 	bool
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config GENERIC_HWEIGHT
 	bool
 	default y
@@ -50,7 +62,13 @@ config GENERIC_CSUM
 	bool
 
 =======
+<<<<<<< HEAD
+config GENERIC_CSUM
+	bool
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config TIME_LOW_RES
 	bool
 	default y
@@ -60,7 +78,13 @@ config ARCH_USES_GETTIMEOFFSET
 	def_bool MMU && !COLDFIRE
 
 =======
+<<<<<<< HEAD
+config ARCH_USES_GETTIMEOFFSET
+	def_bool MMU && !COLDFIRE
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NO_IOPORT
 	def_bool y
 
@@ -71,6 +95,9 @@ config ZONE_DMA
 	bool
 	default y
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config CPU_HAS_NO_BITFIELDS
 	bool
@@ -84,8 +111,11 @@ config CPU_HAS_ADDRESS_SPACES
 config FPU
 	bool
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HZ
 	int
 	default 1000 if CLEOPATRA
@@ -101,12 +131,19 @@ config MMU
 <<<<<<< HEAD
 	select GENERIC_IOMAP
 =======
+<<<<<<< HEAD
+	select GENERIC_IOMAP
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Select if you want MMU-based virtualised addressing space
 	  support by paged memory management. If unsure, say 'Y'.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MMU_MOTOROLA
 	bool
 
@@ -135,6 +172,8 @@ endif
 
 if !MMU || COLDFIRE
 source "kernel/time/Kconfig"
+<<<<<<< HEAD
+=======
 =======
 menu "Platform dependent setup"
 
@@ -144,6 +183,7 @@ endif
 if !MMU
 source arch/m68k/Kconfig.nommu
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif
 
 source "mm/Kconfig"
@@ -165,10 +205,16 @@ config PM
 	help
 	  Support processor power management modes
 =======
+<<<<<<< HEAD
+	bool "Power Management support"
+	help
+	  Support processor power management modes
+=======
         bool "Power Management support"
         help
           Support processor power management modes
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 endmenu
 endif
@@ -177,6 +223,9 @@ source "net/Kconfig"
 
 source "drivers/Kconfig"
 
+<<<<<<< HEAD
+source "arch/m68k/Kconfig.devices"
+=======
 <<<<<<< HEAD
 source "arch/m68k/Kconfig.devices"
 =======
@@ -326,6 +375,7 @@ endmenu
 
 endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 source "fs/Kconfig"
 

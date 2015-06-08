@@ -23,6 +23,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "pac207"
 
 #include <linux/input.h>
@@ -39,6 +47,19 @@ MODULE_LICENSE("GPL");
 #define PAC207_BRIGHTNESS_DEFAULT	46
 
 #define PAC207_EXPOSURE_MIN		3
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define PAC207_EXPOSURE_MAX		90 /* 1 sec expo time / 1 fps */
+#define PAC207_EXPOSURE_DEFAULT		5 /* power on default: 3 */
+#define PAC207_EXPOSURE_KNEE		9 /* fps: 90 / exposure -> 9: 10 fps */
+
+#define PAC207_GAIN_MIN			0
+#define PAC207_GAIN_MAX			31
+#define PAC207_GAIN_DEFAULT		7 /* power on default: 9 */
+#define PAC207_GAIN_KNEE		15
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PAC207_EXPOSURE_MAX		26
 #define PAC207_EXPOSURE_DEFAULT		5 /* power on default: 3 */
 #define PAC207_EXPOSURE_KNEE		8 /* 4 = 30 fps, 11 = 8, 15 = 6 */
@@ -47,6 +68,10 @@ MODULE_LICENSE("GPL");
 #define PAC207_GAIN_MAX			31
 #define PAC207_GAIN_DEFAULT		9 /* power on default: 9 */
 #define PAC207_GAIN_KNEE		31
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define PAC207_AUTOGAIN_DEADZONE	30
 
@@ -178,8 +203,18 @@ static int pac207_write_regs(struct gspca_dev *gspca_dev, u16 index,
 			0x00, index,
 			gspca_dev->usb_buf, length, PAC207_CTRL_TIMEOUT);
 	if (err < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Failed to write registers to index 0x%04X, error %d\n",
+		       index, err);
+=======
 		err("Failed to write registers to index 0x%04X, error %d)",
 			index, err);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Failed to write registers to index 0x%04X, error %d)",
+			index, err);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -194,8 +229,18 @@ static int pac207_write_reg(struct gspca_dev *gspca_dev, u16 index, u16 value)
 			USB_DIR_OUT | USB_TYPE_VENDOR | USB_RECIP_INTERFACE,
 			value, index, NULL, 0, PAC207_CTRL_TIMEOUT);
 	if (err)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Failed to write a register (index 0x%04X, value 0x%02X, error %d)\n",
+		       index, value, err);
+=======
 		err("Failed to write a register (index 0x%04X,"
 			" value 0x%02X, error %d)", index, value, err);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Failed to write a register (index 0x%04X,"
+			" value 0x%02X, error %d)", index, value, err);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -210,8 +255,18 @@ static int pac207_read_reg(struct gspca_dev *gspca_dev, u16 index)
 			0x00, index,
 			gspca_dev->usb_buf, 1, PAC207_CTRL_TIMEOUT);
 	if (res < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("Failed to read a register (index 0x%04X, error %d)\n",
+		       index, res);
+=======
 		err("Failed to read a register (index 0x%04X, error %d)",
 			index, res);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("Failed to read a register (index 0x%04X, error %d)",
+			index, res);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return res;
 	}
 
@@ -330,7 +385,15 @@ static void pac207_do_auto_gain(struct gspca_dev *gspca_dev)
 	if (sd->autogain_ignore_frames > 0)
 		sd->autogain_ignore_frames--;
 	else if (gspca_auto_gain_n_exposure(gspca_dev, avg_lum,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			90, PAC207_AUTOGAIN_DEADZONE,
+=======
 			100, PAC207_AUTOGAIN_DEADZONE,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			100, PAC207_AUTOGAIN_DEADZONE,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			PAC207_GAIN_KNEE, PAC207_EXPOSURE_KNEE))
 		sd->autogain_ignore_frames = PAC_AUTOGAIN_IGNORE_FRAMES;
 }
@@ -567,6 +630,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -579,3 +648,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -15,8 +15,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 #include <linux/sched.h>
 #include <linux/init.h>
@@ -43,7 +47,12 @@
 #include <linux/hugetlb.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/hugetlb.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/kdump.h>
 #include <asm/prom.h>
@@ -61,8 +70,11 @@
 #include <asm/setup.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/rtas.h>
 #include <asm/iommu.h>
 #include <asm/serial.h>
@@ -79,7 +91,12 @@
 #include <asm/kvm_ppc.h>
 #include <asm/hugetlb.h>
 =======
+<<<<<<< HEAD
+#include <asm/kvm_ppc.h>
+#include <asm/hugetlb.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "setup.h"
 
@@ -93,8 +110,12 @@ int boot_cpuid = 0;
 <<<<<<< HEAD
 int __initdata spinning_secondaries;
 =======
+<<<<<<< HEAD
+int __initdata spinning_secondaries;
+=======
 int __initdata boot_cpu_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u64 ppc64_pft_size;
 
 /* Pick defaults since we might want to patch instructions
@@ -238,6 +259,9 @@ void __init early_setup(unsigned long dt_ptr)
 	early_init_mmu();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Reserve any gigantic pages requested on the command line.
 	 * memblock needs to have been initialized by the time this is
@@ -245,8 +269,11 @@ void __init early_setup(unsigned long dt_ptr)
 	 */
 	reserve_hugetlb_gpages();
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBG(" <- early_setup()\n");
 }
 
@@ -285,11 +312,16 @@ void smp_release_cpus(void)
 		mb();
 		HMT_low();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (spinning_secondaries == 0)
 			break;
 		udelay(1);
 	}
 	DBG("spinning_secondaries = %d\n", spinning_secondaries);
+<<<<<<< HEAD
+=======
 =======
 		if (boot_cpu_count == 0)
 			break;
@@ -297,6 +329,7 @@ void smp_release_cpus(void)
 	}
 	DBG("boot_cpu_count = %d\n", boot_cpu_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	DBG(" <- smp_release_cpus()\n");
 }
@@ -317,6 +350,9 @@ static void __init initialize_cache_info(void)
 	DBG(" -> initialize_cache_info()\n");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_node_by_type(np, "cpu") {
 		num_cpus += 1;
 
@@ -325,6 +361,8 @@ static void __init initialize_cache_info(void)
 		 * d-cache and i-cache sizes... -Peter
 		 */
 		if (num_cpus == 1) {
+<<<<<<< HEAD
+=======
 =======
 	for (np = NULL; (np = of_find_node_by_type(np, "cpu"));) {
 		num_cpus += 1;
@@ -335,6 +373,7 @@ static void __init initialize_cache_info(void)
 
 		if ( num_cpus == 1 ) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			const u32 *sizep, *lsizep;
 			u32 size, lsize;
 
@@ -344,6 +383,9 @@ static void __init initialize_cache_info(void)
 			if (sizep != NULL)
 				size = *sizep;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			lsizep = of_get_property(np, "d-cache-block-size",
 						 NULL);
 			/* fallback if block size missing */
@@ -351,12 +393,15 @@ static void __init initialize_cache_info(void)
 				lsizep = of_get_property(np,
 							 "d-cache-line-size",
 							 NULL);
+<<<<<<< HEAD
+=======
 =======
 			lsizep = of_get_property(np, "d-cache-block-size", NULL);
 			/* fallback if block size missing */
 			if (lsizep == NULL)
 				lsizep = of_get_property(np, "d-cache-line-size", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (lsizep != NULL)
 				lsize = *lsizep;
 			if (sizep == 0 || lsizep == 0)
@@ -374,17 +419,23 @@ static void __init initialize_cache_info(void)
 			if (sizep != NULL)
 				size = *sizep;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			lsizep = of_get_property(np, "i-cache-block-size",
 						 NULL);
 			if (lsizep == NULL)
 				lsizep = of_get_property(np,
 							 "i-cache-line-size",
 							 NULL);
+<<<<<<< HEAD
+=======
 =======
 			lsizep = of_get_property(np, "i-cache-block-size", NULL);
 			if (lsizep == NULL)
 				lsizep = of_get_property(np, "i-cache-line-size", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (lsizep != NULL)
 				lsize = *lsizep;
 			if (sizep == 0 || lsizep == 0)
@@ -654,7 +705,12 @@ void __init setup_arch(char **cmdline_p)
 	kvm_linear_init();
 
 =======
+<<<<<<< HEAD
+	kvm_linear_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ppc64_boot_msg(0x15, "Setup Done");
 }
 

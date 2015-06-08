@@ -79,12 +79,15 @@ static inline int ffs(int x)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int fls64(__u64 w)
 {
 	return (sizeof(__u64) * 8) - __builtin_clzll(w);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * fls - find last set bit in word
  * @x: the word to search
@@ -99,15 +102,21 @@ static inline int fls64(__u64 w)
 static inline int fls(int x)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (sizeof(int) * 8) - __builtin_clz(x);
 }
 
 static inline int fls64(__u64 w)
 {
 	return (sizeof(__u64) * 8) - __builtin_clzll(w);
+<<<<<<< HEAD
+=======
 =======
 	return fls64((unsigned int) x);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline unsigned int __arch_hweight32(unsigned int w)

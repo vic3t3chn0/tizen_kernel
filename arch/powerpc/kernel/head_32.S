@@ -142,9 +142,13 @@ __start:
 <<<<<<< HEAD
 1:	mr	r31,r3			/* save device tree ptr */
 =======
+<<<<<<< HEAD
+1:	mr	r31,r3			/* save device tree ptr */
+=======
 1:	mr	r31,r3			/* save parameters */
 	mr	r30,r4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	li	r24,0			/* cpu # */
 
 /*
@@ -403,8 +407,12 @@ DataAccess:
 <<<<<<< HEAD
 	EXC_XFER_LITE(0x300, handle_page_fault)
 =======
+<<<<<<< HEAD
+	EXC_XFER_LITE(0x300, handle_page_fault)
+=======
 	EXC_XFER_EE_LITE(0x300, handle_page_fault)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* Instruction access exception. */
@@ -422,8 +430,12 @@ InstructionAccess:
 <<<<<<< HEAD
 	EXC_XFER_LITE(0x400, handle_page_fault)
 =======
+<<<<<<< HEAD
+	EXC_XFER_LITE(0x400, handle_page_fault)
+=======
 	EXC_XFER_EE_LITE(0x400, handle_page_fault)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* External interrupt */
 	EXCEPTION(0x500, HardwareInterrupt, do_IRQ, EXC_XFER_LITE)
@@ -980,9 +992,14 @@ start_here:
 	li	r3,0
 	mr	r4,r31
 =======
+<<<<<<< HEAD
+	li	r3,0
+	mr	r4,r31
+=======
 	mr	r3,r31
 	mr	r4,r30
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	machine_init
 	bl	__save_cpu_setup
 	bl	MMU_init

@@ -262,6 +262,12 @@ static struct spi_driver vgg2432a4_driver = {
 	.resume		= vgg2432a4_resume,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(vgg2432a4_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Device driver initialisation */
 
 static int __init vgg2432a4_init(void)
@@ -276,6 +282,10 @@ static void __exit vgg2432a4_exit(void)
 
 module_init(vgg2432a4_init);
 module_exit(vgg2432a4_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Ben Dooks <ben-linux@fluff.org>");
 MODULE_DESCRIPTION("VGG2432A4 LCD Driver");

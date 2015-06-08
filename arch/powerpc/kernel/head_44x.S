@@ -62,6 +62,9 @@ _ENTRY(_start);
 	 */
 	nop
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mr	r31,r3		/* save device tree ptr */
 	li	r24,0		/* CPU number */
 
@@ -93,6 +96,8 @@ _ENTRY(_start);
 
 	bl	relocate
 #endif
+<<<<<<< HEAD
+=======
 =======
 /*
  * Save parameters we are passed
@@ -104,6 +109,7 @@ _ENTRY(_start);
 	mr	r27,r7
 	li	r24,0		/* CPU number */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bl	init_cpu_state
 
@@ -128,6 +134,9 @@ _ENTRY(_start);
 	bl	early_init
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_RELOCATABLE
 	/*
 	 * Relocatable kernel support based on processing of dynamic
@@ -216,6 +225,8 @@ _ENTRY(_start);
  */
 	li	r3,0
 	mr	r4,r31
+<<<<<<< HEAD
+=======
 =======
 /*
  * Decide what sort of machine this is and initialize the MMU.
@@ -226,6 +237,7 @@ _ENTRY(_start);
 	mr	r6,r28
 	mr	r7,r27
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	machine_init
 	bl	MMU_init
 
@@ -847,7 +859,12 @@ _GLOBAL(init_cpu_state)
 	cmplwi	cr0,r3,PVR_476FPE@h
 	beq	head_start_47x
 =======
+<<<<<<< HEAD
+	cmplwi	cr0,r3,PVR_476FPE@h
+	beq	head_start_47x
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cmplwi	cr0,r3,PVR_476@h
 	beq	head_start_47x
 	cmplwi	cr0,r3,PVR_476_ISS@h
@@ -917,6 +934,9 @@ skpinv:	addi	r4,r4,1				/* Increment */
  * Configure and load pinned entry into TLB slot 63.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NONSTATIC_KERNEL
 	/*
 	 * In case of a NONSTATIC_KERNEL we reuse the TLB XLAT
@@ -933,8 +953,11 @@ skpinv:	addi	r4,r4,1				/* Increment */
 	/* Use our current RPN entry */
 	mr	r4,r25
 #else
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lis	r3,PAGE_OFFSET@h
 	ori	r3,r3,PAGE_OFFSET@l
@@ -944,7 +967,11 @@ skpinv:	addi	r4,r4,1				/* Increment */
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Load the kernel PID = 0 */
 	li	r0,0
@@ -1156,10 +1183,13 @@ clear_utlb_entry:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Kernel is at the base of RAM */
 	li r4, 0			/* Load the kernel physical address */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Load the kernel PID = 0 */
 	li	r0,0
 	mtspr	SPRN_PID,r0
@@ -1173,10 +1203,15 @@ clear_utlb_entry:
 	/* Word 1 - use r25.  RPN is the same as the original entry */
 
 =======
+<<<<<<< HEAD
+	/* Word 1 - use r25.  RPN is the same as the original entry */
+
+=======
 	/* Word 1 */
 	clrrwi	r4,r4,12		/* Mask off the real page number */
 					/* ERPN is 0 for first 4GB page */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Word 2 */
 	li	r5,0
 	ori	r5,r5,PPC47x_TLB2_S_RWX
@@ -1190,8 +1225,12 @@ clear_utlb_entry:
 <<<<<<< HEAD
 	tlbwe	r25,r0,1
 =======
+<<<<<<< HEAD
+	tlbwe	r25,r0,1
+=======
 	tlbwe	r4,r0,1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tlbwe	r5,r0,2
 
 /*
@@ -1290,6 +1329,9 @@ head_start_common:
 	mtspr	SPRN_IVPR,r4
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If the kernel was loaded at a non-zero 256 MB page, we need to
 	 * mask off the most significant 4 bits to get the relative address
@@ -1297,9 +1339,12 @@ head_start_common:
 	 */
 	rlwinm	r22,r22,0,4,31
 	addis	r22,r22,PAGE_OFFSET@h
+<<<<<<< HEAD
+=======
 =======
 	addis	r22,r22,KERNELBASE@h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtlr	r22
 	isync
 	blr

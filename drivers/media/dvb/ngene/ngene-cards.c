@@ -40,6 +40,14 @@
 #include "lnbh24.h"
 #include "lgdt330x.h"
 #include "mt2131.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "tda18271c2dd.h"
+#include "drxk.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /****************************************************************************/
@@ -83,6 +91,55 @@ static int tuner_attach_stv6110(struct ngene_channel *chan)
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int drxk_gate_ctrl(struct dvb_frontend *fe, int enable)
+{
+	struct ngene_channel *chan = fe->sec_priv;
+	int status;
+
+	if (enable) {
+		down(&chan->dev->pll_mutex);
+		status = chan->gate_ctrl(fe, 1);
+	} else {
+		status = chan->gate_ctrl(fe, 0);
+		up(&chan->dev->pll_mutex);
+	}
+	return status;
+}
+
+static int tuner_attach_tda18271(struct ngene_channel *chan)
+{
+	struct i2c_adapter *i2c;
+	struct dvb_frontend *fe;
+
+	i2c = &chan->dev->channel[0].i2c_adapter;
+	if (chan->fe->ops.i2c_gate_ctrl)
+		chan->fe->ops.i2c_gate_ctrl(chan->fe, 1);
+	fe = dvb_attach(tda18271c2dd_attach, chan->fe, i2c, 0x60);
+	if (chan->fe->ops.i2c_gate_ctrl)
+		chan->fe->ops.i2c_gate_ctrl(chan->fe, 0);
+	if (!fe) {
+		printk(KERN_ERR "No TDA18271 found!\n");
+		return -ENODEV;
+	}
+
+	return 0;
+}
+
+static int tuner_attach_probe(struct ngene_channel *chan)
+{
+	if (chan->demod_type == 0)
+		return tuner_attach_stv6110(chan);
+	if (chan->demod_type == 1)
+		return tuner_attach_tda18271(chan);
+	return -EINVAL;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int demod_attach_stv0900(struct ngene_channel *chan)
 {
 	struct i2c_adapter *i2c;
@@ -130,6 +187,67 @@ static void cineS2_tuner_i2c_lock(struct dvb_frontend *fe, int lock)
 		up(&chan->dev->pll_mutex);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int i2c_read(struct i2c_adapter *adapter, u8 adr, u8 *val)
+{
+	struct i2c_msg msgs[1] = {{.addr = adr,  .flags = I2C_M_RD,
+				   .buf  = val,  .len   = 1 } };
+	return (i2c_transfer(adapter, msgs, 1) == 1) ? 0 : -1;
+}
+
+static int i2c_read_reg16(struct i2c_adapter *adapter, u8 adr,
+			  u16 reg, u8 *val)
+{
+	u8 msg[2] = {reg>>8, reg&0xff};
+	struct i2c_msg msgs[2] = {{.addr = adr, .flags = 0,
+				   .buf  = msg, .len   = 2},
+				  {.addr = adr, .flags = I2C_M_RD,
+				   .buf  = val, .len   = 1} };
+	return (i2c_transfer(adapter, msgs, 2) == 2) ? 0 : -1;
+}
+
+static int port_has_stv0900(struct i2c_adapter *i2c, int port)
+{
+	u8 val;
+	if (i2c_read_reg16(i2c, 0x68+port/2, 0xf100, &val) < 0)
+		return 0;
+	return 1;
+}
+
+static int port_has_drxk(struct i2c_adapter *i2c, int port)
+{
+	u8 val;
+
+	if (i2c_read(i2c, 0x29+port, &val) < 0)
+		return 0;
+	return 1;
+}
+
+static int demod_attach_drxk(struct ngene_channel *chan,
+			     struct i2c_adapter *i2c)
+{
+	struct drxk_config config;
+
+	memset(&config, 0, sizeof(config));
+	config.microcode_name = "drxk_a3.mc";
+	config.adr = 0x29 + (chan->number ^ 2);
+
+	chan->fe = dvb_attach(drxk_attach, &config, i2c);
+	if (!chan->fe) {
+		printk(KERN_ERR "No DRXK found!\n");
+		return -ENODEV;
+	}
+	chan->fe->sec_priv = chan;
+	chan->gate_ctrl = chan->fe->ops.i2c_gate_ctrl;
+	chan->fe->ops.i2c_gate_ctrl = drxk_gate_ctrl;
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cineS2_probe(struct ngene_channel *chan)
 {
 	struct i2c_adapter *i2c;
@@ -144,6 +262,47 @@ static int cineS2_probe(struct ngene_channel *chan)
 	else
 		i2c = &chan->dev->channel[1].i2c_adapter;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (port_has_stv0900(i2c, chan->number)) {
+		chan->demod_type = 0;
+		fe_conf = chan->dev->card_info->fe_config[chan->number];
+		/* demod found, attach it */
+		rc = demod_attach_stv0900(chan);
+		if (rc < 0 || chan->number < 2)
+			return rc;
+
+		/* demod #2: reprogram outputs DPN1 & DPN2 */
+		i2c_msg.addr = fe_conf->address;
+		i2c_msg.len = 3;
+		buf[0] = 0xf1;
+		switch (chan->number) {
+		case 2:
+			buf[1] = 0x5c;
+			buf[2] = 0xc2;
+			break;
+		case 3:
+			buf[1] = 0x61;
+			buf[2] = 0xcc;
+			break;
+		default:
+			return -ENODEV;
+		}
+		rc = i2c_transfer(i2c, &i2c_msg, 1);
+		if (rc != 1) {
+			printk(KERN_ERR DEVICE_NAME ": could not setup DPNx\n");
+			return -EIO;
+		}
+	} else if (port_has_drxk(i2c, chan->number^2)) {
+		chan->demod_type = 1;
+		demod_attach_drxk(chan, i2c);
+	} else {
+		printk(KERN_ERR "No demod found on chan %d\n", chan->number);
+		return -ENODEV;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fe_conf = chan->dev->card_info->fe_config[chan->number];
 	i2c_msg.addr = fe_conf->address;
 
@@ -181,6 +340,10 @@ static int cineS2_probe(struct ngene_channel *chan)
 		return -EIO;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -306,7 +469,15 @@ static struct ngene_info ngene_info_satixS2v2 = {
 	.io_type	= {NGENE_IO_TSIN, NGENE_IO_TSIN, NGENE_IO_TSIN, NGENE_IO_TSIN,
 			   NGENE_IO_TSOUT},
 	.demod_attach	= {demod_attach_stv0900, demod_attach_stv0900, cineS2_probe, cineS2_probe},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.tuner_attach	= {tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_probe, tuner_attach_probe},
+=======
 	.tuner_attach	= {tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.tuner_attach	= {tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fe_config	= {&fe_cineS2, &fe_cineS2, &fe_cineS2_2, &fe_cineS2_2},
 	.tuner_config	= {&tuner_cineS2_0, &tuner_cineS2_1, &tuner_cineS2_0, &tuner_cineS2_1},
 	.lnb		= {0x0a, 0x08, 0x0b, 0x09},
@@ -321,7 +492,15 @@ static struct ngene_info ngene_info_cineS2v5 = {
 	.io_type	= {NGENE_IO_TSIN, NGENE_IO_TSIN, NGENE_IO_TSIN, NGENE_IO_TSIN,
 			   NGENE_IO_TSOUT},
 	.demod_attach	= {demod_attach_stv0900, demod_attach_stv0900, cineS2_probe, cineS2_probe},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.tuner_attach	= {tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_probe, tuner_attach_probe},
+=======
 	.tuner_attach	= {tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.tuner_attach	= {tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fe_config	= {&fe_cineS2, &fe_cineS2, &fe_cineS2_2, &fe_cineS2_2},
 	.tuner_config	= {&tuner_cineS2_0, &tuner_cineS2_1, &tuner_cineS2_0, &tuner_cineS2_1},
 	.lnb		= {0x0a, 0x08, 0x0b, 0x09},
@@ -331,6 +510,18 @@ static struct ngene_info ngene_info_cineS2v5 = {
 };
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct ngene_info ngene_info_duoFlex = {
+	.type           = NGENE_SIDEWINDER,
+	.name           = "Digital Devices DuoFlex PCIe or miniPCIe",
+	.io_type        = {NGENE_IO_TSIN, NGENE_IO_TSIN, NGENE_IO_TSIN, NGENE_IO_TSIN,
+			   NGENE_IO_TSOUT},
+	.demod_attach   = {cineS2_probe, cineS2_probe, cineS2_probe, cineS2_probe},
+	.tuner_attach   = {tuner_attach_probe, tuner_attach_probe, tuner_attach_probe, tuner_attach_probe},
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct ngene_info ngene_info_duoFlexS2 = {
 	.type           = NGENE_SIDEWINDER,
 	.name           = "Digital Devices DuoFlex S2 miniPCIe",
@@ -338,6 +529,10 @@ static struct ngene_info ngene_info_duoFlexS2 = {
 			   NGENE_IO_TSOUT},
 	.demod_attach   = {cineS2_probe, cineS2_probe, cineS2_probe, cineS2_probe},
 	.tuner_attach   = {tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110, tuner_attach_stv6110},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fe_config      = {&fe_cineS2, &fe_cineS2, &fe_cineS2_2, &fe_cineS2_2},
 	.tuner_config   = {&tuner_cineS2_0, &tuner_cineS2_1, &tuner_cineS2_0, &tuner_cineS2_1},
 	.lnb            = {0x0a, 0x08, 0x0b, 0x09},
@@ -385,8 +580,18 @@ static const struct pci_device_id ngene_id_tbl[] __devinitdata = {
 	NGENE_ID(0x18c3, 0xdb01, ngene_info_satixS2),
 	NGENE_ID(0x18c3, 0xdb02, ngene_info_satixS2v2),
 	NGENE_ID(0x18c3, 0xdd00, ngene_info_cineS2v5),
+<<<<<<< HEAD
+<<<<<<< HEAD
+	NGENE_ID(0x18c3, 0xdd10, ngene_info_duoFlex),
+	NGENE_ID(0x18c3, 0xdd20, ngene_info_duoFlex),
+=======
 	NGENE_ID(0x18c3, 0xdd10, ngene_info_duoFlexS2),
 	NGENE_ID(0x18c3, 0xdd20, ngene_info_duoFlexS2),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	NGENE_ID(0x18c3, 0xdd10, ngene_info_duoFlexS2),
+	NGENE_ID(0x18c3, 0xdd20, ngene_info_duoFlexS2),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NGENE_ID(0x1461, 0x062e, ngene_info_m780),
 	{0}
 };

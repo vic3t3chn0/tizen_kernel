@@ -22,9 +22,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IO_SPACE_LIMIT 0xffff
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * WARNING: this has to mirror definitions in platform.h
  */
@@ -36,7 +39,10 @@
 #define __io(a)			((void __iomem *)(PCI_IO_VADDR + (a)))
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define __mem_pci(a)		(a)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

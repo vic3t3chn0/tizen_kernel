@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/init.h>
 #include <linux/smp.h>
@@ -55,7 +59,11 @@
 <<<<<<< HEAD
 #include "entry.h"
 =======
+<<<<<<< HEAD
+#include "entry.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* change this if you have some constant time drift */
 #define USECS_PER_JIFFY     ((unsigned long) 1000000/HZ)
@@ -74,8 +82,12 @@ unsigned long long notrace __kprobes sched_clock(void)
 <<<<<<< HEAD
 	return (get_clock_monotonic() * 125) >> 9;
 =======
+<<<<<<< HEAD
+	return (get_clock_monotonic() * 125) >> 9;
+=======
 	return tod_to_ns(get_clock_monotonic());
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -122,6 +134,9 @@ static void fixup_clock_comparator(unsigned long long delta)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int s390_next_ktime(ktime_t expires,
 			   struct clock_event_device *evt)
 {
@@ -133,12 +148,15 @@ static int s390_next_ktime(ktime_t expires,
 	nsecs = ktime_to_ns(ktime_add(timespec_to_ktime(ts), expires));
 	do_div(nsecs, 125);
 	S390_lowcore.clock_comparator = sched_clock_base_cc + (nsecs << 9);
+<<<<<<< HEAD
+=======
 =======
 static int s390_next_event(unsigned long delta,
 			   struct clock_event_device *evt)
 {
 	S390_lowcore.clock_comparator = get_clock() + delta;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_clock_comparator(S390_lowcore.clock_comparator);
 	return 0;
 }
@@ -167,8 +185,13 @@ void init_cpu_timer(void)
 	cd->features		= CLOCK_EVT_FEAT_ONESHOT |
 				  CLOCK_EVT_FEAT_KTIME;
 =======
+<<<<<<< HEAD
+	cd->features		= CLOCK_EVT_FEAT_ONESHOT |
+				  CLOCK_EVT_FEAT_KTIME;
+=======
 	cd->features		= CLOCK_EVT_FEAT_ONESHOT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cd->mult		= 16777;
 	cd->shift		= 12;
 	cd->min_delta_ns	= 1;
@@ -178,8 +201,12 @@ void init_cpu_timer(void)
 <<<<<<< HEAD
 	cd->set_next_ktime	= s390_next_ktime;
 =======
+<<<<<<< HEAD
+	cd->set_next_ktime	= s390_next_ktime;
+=======
 	cd->set_next_event	= s390_next_event;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cd->set_mode		= s390_set_mode;
 
 	clockevents_register_device(cd);
@@ -194,8 +221,12 @@ void init_cpu_timer(void)
 <<<<<<< HEAD
 static void clock_comparator_interrupt(struct ext_code ext_code,
 =======
+<<<<<<< HEAD
+static void clock_comparator_interrupt(struct ext_code ext_code,
+=======
 static void clock_comparator_interrupt(unsigned int ext_int_code,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       unsigned int param32,
 				       unsigned long param64)
 {
@@ -210,8 +241,12 @@ static void stp_timing_alert(struct stp_irq_parm *);
 <<<<<<< HEAD
 static void timing_alert_interrupt(struct ext_code ext_code,
 =======
+<<<<<<< HEAD
+static void timing_alert_interrupt(struct ext_code ext_code,
+=======
 static void timing_alert_interrupt(unsigned int ext_int_code,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   unsigned int param32, unsigned long param64)
 {
 	kstat_cpu(smp_processor_id()).irqs[EXTINT_TLA]++;
@@ -1154,6 +1189,9 @@ out_unlock:
  * Sysfs interface functions
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct bus_type etr_subsys = {
 	.name		= "etr",
 	.dev_name	= "etr",
@@ -1174,6 +1212,8 @@ static struct device etr_port1_dev = {
  */
 static ssize_t etr_stepping_port_show(struct device *dev,
 					struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_class etr_sysclass = {
 	.name	= "etr",
@@ -1195,22 +1235,29 @@ static struct sys_device etr_port1_dev = {
 static ssize_t etr_stepping_port_show(struct sysdev_class *class,
 					struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					char *buf)
 {
 	return sprintf(buf, "%i\n", etr_port0.esw.p);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(stepping_port, 0400, etr_stepping_port_show, NULL);
 
 static ssize_t etr_stepping_mode_show(struct device *dev,
 					struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(stepping_port, 0400, etr_stepping_port_show, NULL);
 
 static ssize_t etr_stepping_mode_show(struct sysdev_class *class,
 				      	struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					char *buf)
 {
 	char *mode_str;
@@ -1227,8 +1274,12 @@ static ssize_t etr_stepping_mode_show(struct sysdev_class *class,
 <<<<<<< HEAD
 static DEVICE_ATTR(stepping_mode, 0400, etr_stepping_mode_show, NULL);
 =======
+<<<<<<< HEAD
+static DEVICE_ATTR(stepping_mode, 0400, etr_stepping_mode_show, NULL);
+=======
 static SYSDEV_CLASS_ATTR(stepping_mode, 0400, etr_stepping_mode_show, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * ETR port attributes
@@ -1236,8 +1287,12 @@ static SYSDEV_CLASS_ATTR(stepping_mode, 0400, etr_stepping_mode_show, NULL);
 <<<<<<< HEAD
 static inline struct etr_aib *etr_aib_from_dev(struct device *dev)
 =======
+<<<<<<< HEAD
+static inline struct etr_aib *etr_aib_from_dev(struct device *dev)
+=======
 static inline struct etr_aib *etr_aib_from_dev(struct sys_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (dev == &etr_port0_dev)
 		return etr_port0_online ? &etr_port0 : NULL;
@@ -1249,9 +1304,14 @@ static inline struct etr_aib *etr_aib_from_dev(struct sys_device *dev)
 static ssize_t etr_online_show(struct device *dev,
 				struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t etr_online_show(struct device *dev,
+				struct device_attribute *attr,
+=======
 static ssize_t etr_online_show(struct sys_device *dev,
 				struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	unsigned int online;
@@ -1264,9 +1324,14 @@ static ssize_t etr_online_show(struct sys_device *dev,
 static ssize_t etr_online_store(struct device *dev,
 				struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t etr_online_store(struct device *dev,
+				struct device_attribute *attr,
+=======
 static ssize_t etr_online_store(struct sys_device *dev,
 				struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const char *buf, size_t count)
 {
 	unsigned int value;
@@ -1304,16 +1369,22 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(online, 0600, etr_online_show, etr_online_store);
 
 static ssize_t etr_stepping_control_show(struct device *dev,
 					struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(online, 0600, etr_online_show, etr_online_store);
 
 static ssize_t etr_stepping_control_show(struct sys_device *dev,
 					struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					char *buf)
 {
 	return sprintf(buf, "%i\n", (dev == &etr_port0_dev) ?
@@ -1321,16 +1392,22 @@ static ssize_t etr_stepping_control_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(stepping_control, 0400, etr_stepping_control_show, NULL);
 
 static ssize_t etr_mode_code_show(struct device *dev,
 				struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(stepping_control, 0400, etr_stepping_control_show, NULL);
 
 static ssize_t etr_mode_code_show(struct sys_device *dev,
 				struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (!etr_port0_online && !etr_port1_online)
 		/* Status word is not uptodate if both ports are offline. */
@@ -1340,16 +1417,22 @@ static ssize_t etr_mode_code_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(state_code, 0400, etr_mode_code_show, NULL);
 
 static ssize_t etr_untuned_show(struct device *dev,
 				struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(state_code, 0400, etr_mode_code_show, NULL);
 
 static ssize_t etr_untuned_show(struct sys_device *dev,
 				struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct etr_aib *aib = etr_aib_from_dev(dev);
 
@@ -1359,16 +1442,22 @@ static ssize_t etr_untuned_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(untuned, 0400, etr_untuned_show, NULL);
 
 static ssize_t etr_network_id_show(struct device *dev,
 				struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(untuned, 0400, etr_untuned_show, NULL);
 
 static ssize_t etr_network_id_show(struct sys_device *dev,
 				struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct etr_aib *aib = etr_aib_from_dev(dev);
 
@@ -1378,16 +1467,22 @@ static ssize_t etr_network_id_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(network, 0400, etr_network_id_show, NULL);
 
 static ssize_t etr_id_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(network, 0400, etr_network_id_show, NULL);
 
 static ssize_t etr_id_show(struct sys_device *dev,
 			struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct etr_aib *aib = etr_aib_from_dev(dev);
 
@@ -1397,16 +1492,22 @@ static ssize_t etr_id_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(id, 0400, etr_id_show, NULL);
 
 static ssize_t etr_port_number_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(id, 0400, etr_id_show, NULL);
 
 static ssize_t etr_port_number_show(struct sys_device *dev,
 			struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct etr_aib *aib = etr_aib_from_dev(dev);
 
@@ -1416,16 +1517,22 @@ static ssize_t etr_port_number_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(port, 0400, etr_port_number_show, NULL);
 
 static ssize_t etr_coupled_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(port, 0400, etr_port_number_show, NULL);
 
 static ssize_t etr_coupled_show(struct sys_device *dev,
 			struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct etr_aib *aib = etr_aib_from_dev(dev);
 
@@ -1435,16 +1542,22 @@ static ssize_t etr_coupled_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(coupled, 0400, etr_coupled_show, NULL);
 
 static ssize_t etr_local_time_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(coupled, 0400, etr_coupled_show, NULL);
 
 static ssize_t etr_local_time_show(struct sys_device *dev,
 			struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct etr_aib *aib = etr_aib_from_dev(dev);
 
@@ -1454,16 +1567,22 @@ static ssize_t etr_local_time_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(local_time, 0400, etr_local_time_show, NULL);
 
 static ssize_t etr_utc_offset_show(struct device *dev,
 			struct device_attribute *attr, char *buf)
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(local_time, 0400, etr_local_time_show, NULL);
 
 static ssize_t etr_utc_offset_show(struct sys_device *dev,
 			struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct etr_aib *aib = etr_aib_from_dev(dev);
 
@@ -1473,6 +1592,9 @@ static ssize_t etr_utc_offset_show(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(utc_offset, 0400, etr_utc_offset_show, NULL);
 
 static struct device_attribute *etr_port_attributes[] = {
@@ -1499,6 +1621,8 @@ static int __init etr_register_port(struct device *dev)
 		goto out;
 	for (attr = etr_port_attributes; *attr; attr++) {
 		rc = device_create_file(dev, *attr);
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(utc_offset, 0400, etr_utc_offset_show, NULL);
 
@@ -1527,6 +1651,7 @@ static int __init etr_register_port(struct sys_device *dev)
 	for (attr = etr_port_attributes; *attr; attr++) {
 		rc = sysdev_create_file(dev, *attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc)
 			goto out_unreg;
 	}
@@ -1537,14 +1662,22 @@ out_unreg:
 		device_remove_file(dev, *attr);
 	device_unregister(dev);
 =======
+<<<<<<< HEAD
+		device_remove_file(dev, *attr);
+	device_unregister(dev);
+=======
 		sysdev_remove_file(dev, *attr);
 	sysdev_unregister(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return rc;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init etr_unregister_port(struct device *dev)
 {
 	struct device_attribute **attr;
@@ -1552,6 +1685,8 @@ static void __init etr_unregister_port(struct device *dev)
 	for (attr = etr_port_attributes; *attr; attr++)
 		device_remove_file(dev, *attr);
 	device_unregister(dev);
+<<<<<<< HEAD
+=======
 =======
 static void __init etr_unregister_port(struct sys_device *dev)
 {
@@ -1561,6 +1696,7 @@ static void __init etr_unregister_port(struct sys_device *dev)
 		sysdev_remove_file(dev, *attr);
 	sysdev_unregister(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init etr_init_sysfs(void)
@@ -1568,6 +1704,9 @@ static int __init etr_init_sysfs(void)
 	int rc;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = subsys_system_register(&etr_subsys, NULL);
 	if (rc)
 		goto out;
@@ -1575,6 +1714,8 @@ static int __init etr_init_sysfs(void)
 	if (rc)
 		goto out_unreg_subsys;
 	rc = device_create_file(etr_subsys.dev_root, &dev_attr_stepping_mode);
+<<<<<<< HEAD
+=======
 =======
 	rc = sysdev_class_register(&etr_sysclass);
 	if (rc)
@@ -1584,6 +1725,7 @@ static int __init etr_init_sysfs(void)
 		goto out_unreg_class;
 	rc = sysdev_class_create_file(&etr_sysclass, &attr_stepping_mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc)
 		goto out_remove_stepping_port;
 	rc = etr_register_port(&etr_port0_dev);
@@ -1598,11 +1740,16 @@ out_remove_port0:
 	etr_unregister_port(&etr_port0_dev);
 out_remove_stepping_mode:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	device_remove_file(etr_subsys.dev_root, &dev_attr_stepping_mode);
 out_remove_stepping_port:
 	device_remove_file(etr_subsys.dev_root, &dev_attr_stepping_port);
 out_unreg_subsys:
 	bus_unregister(&etr_subsys);
+<<<<<<< HEAD
+=======
 =======
 	sysdev_class_remove_file(&etr_sysclass, &attr_stepping_mode);
 out_remove_stepping_port:
@@ -1610,6 +1757,7 @@ out_remove_stepping_port:
 out_unreg_class:
 	sysdev_class_unregister(&etr_sysclass);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return rc;
 }
@@ -1810,6 +1958,9 @@ out_unlock:
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * STP subsys sysfs interface functions
  */
 static struct bus_type stp_subsys = {
@@ -1819,6 +1970,8 @@ static struct bus_type stp_subsys = {
 
 static ssize_t stp_ctn_id_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
  * STP class sysfs interface functions
  */
@@ -1829,6 +1982,7 @@ static struct sysdev_class stp_sysclass = {
 static ssize_t stp_ctn_id_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	if (!stp_online)
@@ -1838,16 +1992,22 @@ static ssize_t stp_ctn_id_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(ctn_id, 0400, stp_ctn_id_show, NULL);
 
 static ssize_t stp_ctn_type_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(ctn_id, 0400, stp_ctn_id_show, NULL);
 
 static ssize_t stp_ctn_type_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	if (!stp_online)
@@ -1856,16 +2016,22 @@ static ssize_t stp_ctn_type_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(ctn_type, 0400, stp_ctn_type_show, NULL);
 
 static ssize_t stp_dst_offset_show(struct device *dev,
 				   struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(ctn_type, 0400, stp_ctn_type_show, NULL);
 
 static ssize_t stp_dst_offset_show(struct sysdev_class *class,
 				   struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   char *buf)
 {
 	if (!stp_online || !(stp_info.vbits & 0x2000))
@@ -1874,16 +2040,22 @@ static ssize_t stp_dst_offset_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(dst_offset, 0400, stp_dst_offset_show, NULL);
 
 static ssize_t stp_leap_seconds_show(struct device *dev,
 					struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(dst_offset, 0400, stp_dst_offset_show, NULL);
 
 static ssize_t stp_leap_seconds_show(struct sysdev_class *class,
 					struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					char *buf)
 {
 	if (!stp_online || !(stp_info.vbits & 0x8000))
@@ -1892,16 +2064,22 @@ static ssize_t stp_leap_seconds_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(leap_seconds, 0400, stp_leap_seconds_show, NULL);
 
 static ssize_t stp_stratum_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(leap_seconds, 0400, stp_leap_seconds_show, NULL);
 
 static ssize_t stp_stratum_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	if (!stp_online)
@@ -1910,16 +2088,22 @@ static ssize_t stp_stratum_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(stratum, 0400, stp_stratum_show, NULL);
 
 static ssize_t stp_time_offset_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(stratum, 0400, stp_stratum_show, NULL);
 
 static ssize_t stp_time_offset_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	if (!stp_online || !(stp_info.vbits & 0x0800))
@@ -1928,16 +2112,22 @@ static ssize_t stp_time_offset_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(time_offset, 0400, stp_time_offset_show, NULL);
 
 static ssize_t stp_time_zone_offset_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(time_offset, 0400, stp_time_offset_show, NULL);
 
 static ssize_t stp_time_zone_offset_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	if (!stp_online || !(stp_info.vbits & 0x4000))
@@ -1946,11 +2136,16 @@ static ssize_t stp_time_zone_offset_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(time_zone_offset, 0400,
 			 stp_time_zone_offset_show, NULL);
 
 static ssize_t stp_timing_mode_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(time_zone_offset, 0400,
 			 stp_time_zone_offset_show, NULL);
@@ -1958,6 +2153,7 @@ static SYSDEV_CLASS_ATTR(time_zone_offset, 0400,
 static ssize_t stp_timing_mode_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	if (!stp_online)
@@ -1966,16 +2162,22 @@ static ssize_t stp_timing_mode_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(timing_mode, 0400, stp_timing_mode_show, NULL);
 
 static ssize_t stp_timing_state_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(timing_mode, 0400, stp_timing_mode_show, NULL);
 
 static ssize_t stp_timing_state_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	if (!stp_online)
@@ -1984,16 +2186,22 @@ static ssize_t stp_timing_state_show(struct sysdev_class *class,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(timing_state, 0400, stp_timing_state_show, NULL);
 
 static ssize_t stp_online_show(struct device *dev,
 				struct device_attribute *attr,
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_CLASS_ATTR(timing_state, 0400, stp_timing_state_show, NULL);
 
 static ssize_t stp_online_show(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char *buf)
 {
 	return sprintf(buf, "%i\n", stp_online);
@@ -2003,9 +2211,14 @@ static ssize_t stp_online_show(struct sysdev_class *class,
 static ssize_t stp_online_store(struct device *dev,
 				struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t stp_online_store(struct device *dev,
+				struct device_attribute *attr,
+=======
 static ssize_t stp_online_store(struct sysdev_class *class,
 				struct sysdev_class_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const char *buf, size_t count)
 {
 	unsigned int value;
@@ -2028,22 +2241,31 @@ static ssize_t stp_online_store(struct sysdev_class *class,
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Can't use DEVICE_ATTR because the attribute should be named
  * stp/online but dev_attr_online already exists in this file ..
  */
 static struct device_attribute dev_attr_stp_online = {
+<<<<<<< HEAD
+=======
 =======
  * Can't use SYSDEV_CLASS_ATTR because the attribute should be named
  * stp/online but attr_online already exists in this file ..
  */
 static struct sysdev_class_attribute attr_stp_online = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.attr = { .name = "online", .mode = 0600 },
 	.show	= stp_online_show,
 	.store	= stp_online_store,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct device_attribute *stp_attributes[] = {
 	&dev_attr_ctn_id,
 	&dev_attr_ctn_type,
@@ -2055,6 +2277,8 @@ static struct device_attribute *stp_attributes[] = {
 	&dev_attr_time_zone_offset,
 	&dev_attr_timing_mode,
 	&dev_attr_timing_state,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_class_attribute *stp_attributes[] = {
 	&attr_ctn_id,
@@ -2068,12 +2292,16 @@ static struct sysdev_class_attribute *stp_attributes[] = {
 	&attr_timing_mode,
 	&attr_timing_state,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
 static int __init stp_init_sysfs(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device_attribute **attr;
 	int rc;
 
@@ -2082,6 +2310,8 @@ static int __init stp_init_sysfs(void)
 		goto out;
 	for (attr = stp_attributes; *attr; attr++) {
 		rc = device_create_file(stp_subsys.dev_root, *attr);
+<<<<<<< HEAD
+=======
 =======
 	struct sysdev_class_attribute **attr;
 	int rc;
@@ -2092,6 +2322,7 @@ static int __init stp_init_sysfs(void)
 	for (attr = stp_attributes; *attr; attr++) {
 		rc = sysdev_class_create_file(&stp_sysclass, *attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc)
 			goto out_unreg;
 	}
@@ -2102,9 +2333,14 @@ out_unreg:
 		device_remove_file(stp_subsys.dev_root, *attr);
 	bus_unregister(&stp_subsys);
 =======
+<<<<<<< HEAD
+		device_remove_file(stp_subsys.dev_root, *attr);
+	bus_unregister(&stp_subsys);
+=======
 		sysdev_class_remove_file(&stp_sysclass, *attr);
 	sysdev_class_unregister(&stp_sysclass);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return rc;
 }

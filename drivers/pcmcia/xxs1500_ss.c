@@ -21,7 +21,14 @@
 #include <pcmcia/cistpl.h>
 
 #include <asm/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-au1x00/au1000.h>
 
 #define MEM_MAP_SIZE	0x400000
@@ -321,6 +328,12 @@ static struct platform_driver xxs1500_pcmcia_socket_driver = {
 	.remove		= __devexit_p(xxs1500_pcmcia_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(xxs1500_pcmcia_socket_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init xxs1500_pcmcia_socket_load(void)
 {
 	return platform_driver_register(&xxs1500_pcmcia_socket_driver);
@@ -333,6 +346,10 @@ void  __exit xxs1500_pcmcia_socket_unload(void)
 
 module_init(xxs1500_pcmcia_socket_load);
 module_exit(xxs1500_pcmcia_socket_unload);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("PCMCIA Socket Services for MyCable XXS1500 systems");

@@ -58,8 +58,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "l2tp_core.h"
 
@@ -404,7 +408,11 @@ static void l2tp_recv_dequeue(struct l2tp_session *session)
 <<<<<<< HEAD
 start:
 =======
+<<<<<<< HEAD
+start:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_bh(&session->reorder_q.lock);
 	skb_queue_walk_safe(&session->reorder_q, skb, tmp) {
 		if (time_after(jiffies, L2TP_SKB_CB(skb)->expires)) {
@@ -444,8 +452,12 @@ start:
 <<<<<<< HEAD
 		goto start;
 =======
+<<<<<<< HEAD
+		goto start;
+=======
 		spin_lock_bh(&session->reorder_q.lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 out:
@@ -769,10 +781,13 @@ static int l2tp_udp_recv_core(struct l2tp_tunnel *tunnel, struct sk_buff *skb,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Point to L2TP header */
 	optr = ptr = skb->data;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Trace packet contents, if enabled */
 	if (tunnel->debug & L2TP_MSG_DATA) {
 		length = min(32u, skb->len);
@@ -786,8 +801,12 @@ static int l2tp_udp_recv_core(struct l2tp_tunnel *tunnel, struct sk_buff *skb,
 <<<<<<< HEAD
 			printk(" %02X", skb->data[offset]);
 =======
+<<<<<<< HEAD
+			printk(" %02X", skb->data[offset]);
+=======
 			printk(" %02X", ptr[offset]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} while (++offset < length);
 
 		printk("\n");
@@ -798,7 +817,13 @@ static int l2tp_udp_recv_core(struct l2tp_tunnel *tunnel, struct sk_buff *skb,
 	optr = ptr = skb->data;
 
 =======
+<<<<<<< HEAD
+	/* Point to L2TP header */
+	optr = ptr = skb->data;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Get L2TP header flags */
 	hdrflags = ntohs(*(__be16 *) ptr);
 
@@ -1099,8 +1124,12 @@ int l2tp_xmit_skb(struct l2tp_session *session, struct sk_buff *skb, int hdr_len
 <<<<<<< HEAD
 	skb_dst_set(skb, dst_clone(__sk_dst_check(sk, 0)));
 =======
+<<<<<<< HEAD
+	skb_dst_set(skb, dst_clone(__sk_dst_check(sk, 0)));
+=======
 	skb_dst_set(skb, dst_clone(__sk_dst_get(sk)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inet = inet_sk(sk);
 	fl = &inet->cork.fl;
@@ -1282,17 +1311,23 @@ static void l2tp_tunnel_free(struct l2tp_tunnel *tunnel)
 	spin_lock_bh(&pn->l2tp_tunnel_list_lock);
 	list_del_rcu(&tunnel->list);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_bh(&pn->l2tp_tunnel_list_lock);
 	synchronize_rcu();
 
 	atomic_dec(&l2tp_tunnel_count);
 	kfree(tunnel);
+<<<<<<< HEAD
+=======
 =======
 	kfree_rcu(tunnel, rcu);
 	spin_unlock_bh(&pn->l2tp_tunnel_list_lock);
 
 	atomic_dec(&l2tp_tunnel_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Create a socket for the tunnel, if one isn't set up by

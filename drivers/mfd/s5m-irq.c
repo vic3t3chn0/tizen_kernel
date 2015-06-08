@@ -1,5 +1,13 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * s5m-irq.c
+=======
  * s5m87xx-irq.c
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * s5m87xx-irq.c
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (c) 2011 Samsung Electronics Co., Ltd
  *              http://www.samsung.com
@@ -188,7 +196,15 @@ static void s5m8767_irq_sync_unlock(struct irq_data *data)
 	for (i = 0; i < ARRAY_SIZE(s5m87xx->irq_masks_cur); i++) {
 		if (s5m87xx->irq_masks_cur[i] != s5m87xx->irq_masks_cache[i]) {
 			s5m87xx->irq_masks_cache[i] = s5m87xx->irq_masks_cur[i];
+<<<<<<< HEAD
+<<<<<<< HEAD
+			s5m_reg_write(s5m87xx, S5M8767_REG_INT1M + i,
+=======
 			s5m_reg_write(s5m87xx->i2c, S5M8767_REG_INT1M + i,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			s5m_reg_write(s5m87xx->i2c, S5M8767_REG_INT1M + i,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					s5m87xx->irq_masks_cur[i]);
 		}
 	}
@@ -243,7 +259,15 @@ static void s5m8763_irq_sync_unlock(struct irq_data *data)
 	for (i = 0; i < ARRAY_SIZE(s5m87xx->irq_masks_cur); i++) {
 		if (s5m87xx->irq_masks_cur[i] != s5m87xx->irq_masks_cache[i]) {
 			s5m87xx->irq_masks_cache[i] = s5m87xx->irq_masks_cur[i];
+<<<<<<< HEAD
+<<<<<<< HEAD
+			s5m_reg_write(s5m87xx, S5M8763_REG_IRQM1 + i,
+=======
 			s5m_reg_write(s5m87xx->i2c, S5M8763_REG_IRQM1 + i,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			s5m_reg_write(s5m87xx->i2c, S5M8763_REG_IRQM1 + i,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					s5m87xx->irq_masks_cur[i]);
 		}
 	}
@@ -286,7 +310,15 @@ static irqreturn_t s5m8767_irq_thread(int irq, void *data)
 	int i;
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = s5m_bulk_read(s5m87xx, S5M8767_REG_INT1,
+=======
 	ret = s5m_bulk_read(s5m87xx->i2c, S5M8767_REG_INT1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = s5m_bulk_read(s5m87xx->i2c, S5M8767_REG_INT1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				NUM_IRQ_REGS - 1, irq_reg);
 	if (ret < 0) {
 		dev_err(s5m87xx->dev, "Failed to read interrupt register: %d\n",
@@ -312,7 +344,15 @@ static irqreturn_t s5m8763_irq_thread(int irq, void *data)
 	int ret;
 	int i;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = s5m_bulk_read(s5m87xx, S5M8763_REG_IRQ1,
+=======
 	ret = s5m_bulk_read(s5m87xx->i2c, S5M8763_REG_IRQ1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ret = s5m_bulk_read(s5m87xx->i2c, S5M8763_REG_IRQ1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				NUM_IRQ_REGS, irq_reg);
 	if (ret < 0) {
 		dev_err(s5m87xx->dev, "Failed to read interrupt register: %d\n",
@@ -342,7 +382,18 @@ int s5m_irq_resume(struct s5m87xx_dev *s5m87xx)
 			s5m8767_irq_thread(s5m87xx->irq_base, s5m87xx);
 			break;
 		default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_err(s5m87xx->dev,
+				"Unknown device type %d\n",
+				s5m87xx->device_type);
+			return -EINVAL;
+=======
 			break;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			break;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		}
 	}
@@ -376,12 +427,27 @@ int s5m_irq_init(struct s5m87xx_dev *s5m87xx)
 		for (i = 0; i < NUM_IRQ_REGS; i++) {
 			s5m87xx->irq_masks_cur[i] = 0xff;
 			s5m87xx->irq_masks_cache[i] = 0xff;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			s5m_reg_write(s5m87xx, S5M8763_REG_IRQM1 + i,
+						0xff);
+		}
+
+		s5m_reg_write(s5m87xx, S5M8763_REG_STATUSM1, 0xff);
+		s5m_reg_write(s5m87xx, S5M8763_REG_STATUSM2, 0xff);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			s5m_reg_write(s5m87xx->i2c, S5M8763_REG_IRQM1 + i,
 						0xff);
 		}
 
 		s5m_reg_write(s5m87xx->i2c, S5M8763_REG_STATUSM1, 0xff);
 		s5m_reg_write(s5m87xx->i2c, S5M8763_REG_STATUSM2, 0xff);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		for (i = 0; i < S5M8763_IRQ_NR; i++) {
 			cur_irq = i + s5m87xx->irq_base;
@@ -410,12 +476,28 @@ int s5m_irq_init(struct s5m87xx_dev *s5m87xx)
 		for (i = 0; i < NUM_IRQ_REGS - 1; i++) {
 			s5m87xx->irq_masks_cur[i] = 0xff;
 			s5m87xx->irq_masks_cache[i] = 0xff;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			s5m_reg_write(s5m87xx, S5M8767_REG_INT1M + i,
+=======
 			s5m_reg_write(s5m87xx->i2c, S5M8767_REG_INT1M + i,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			s5m_reg_write(s5m87xx->i2c, S5M8767_REG_INT1M + i,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						0xff);
 		}
 		for (i = 0; i < S5M8767_IRQ_NR; i++) {
 			cur_irq = i + s5m87xx->irq_base;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			irq_set_chip_data(cur_irq, s5m87xx);
+=======
 			ret = irq_set_chip_data(cur_irq, s5m87xx);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ret = irq_set_chip_data(cur_irq, s5m87xx);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (ret) {
 				dev_err(s5m87xx->dev,
 					"Failed to irq_set_chip_data %d: %d\n",
@@ -444,7 +526,17 @@ int s5m_irq_init(struct s5m87xx_dev *s5m87xx)
 		}
 		break;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_err(s5m87xx->dev,
+			"Unknown device type %d\n", s5m87xx->device_type);
+		return -EINVAL;
+=======
 		break;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		break;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!s5m87xx->ono)
@@ -467,12 +559,30 @@ int s5m_irq_init(struct s5m87xx_dev *s5m87xx)
 					IRQF_ONESHOT, "s5m87xx-ono", s5m87xx);
 		break;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = -EINVAL;
+		break;
+	}
+
+	if (ret) {
+		dev_err(s5m87xx->dev, "Failed to request IRQ %d: %d\n",
+			s5m87xx->ono, ret);
+		return ret;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
 	if (ret)
 		dev_err(s5m87xx->dev, "Failed to request IRQ %d: %d\n",
 			s5m87xx->ono, ret);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

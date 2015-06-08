@@ -38,8 +38,11 @@
 #include <asm/irq.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/tlbflush.h>
 #include <asm/pgtable.h>
 
@@ -63,8 +66,13 @@
 static int __init roadrunner_map_irq(const struct pci_dev *dev, u8 idsel,
 	u8 pin)
 =======
+<<<<<<< HEAD
+static int __init roadrunner_map_irq(const struct pci_dev *dev, u8 idsel,
+	u8 pin)
+=======
 static int __init roadrunner_map_irq(struct pci_dev *dev, u8 idsel, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	static int pci_card_slot_irq[] = {INTB, INTC, INTD, INTA};
 	static int pmc_card_slot_irq[] = {INTA, INTB, INTC, INTD};
@@ -187,7 +195,13 @@ MACHINE_START(ROADRUNNER, "ADI Engineering RoadRunner Development Platform")
 	.init_machine	= roadrunner_init,
 	.restart	= ixp23xx_restart,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+	.init_machine	= roadrunner_init,
+	.restart	= ixp23xx_restart,
+=======
 	.boot_params	= 0x00000100,
 	.init_machine	= roadrunner_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

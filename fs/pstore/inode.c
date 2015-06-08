@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/list.h>
 =======
+<<<<<<< HEAD
+#include <linux/list.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 #include <linux/mount.h>
 #include <linux/ramfs.h>
@@ -39,7 +43,11 @@
 <<<<<<< HEAD
 #include <linux/spinlock.h>
 =======
+<<<<<<< HEAD
+#include <linux/spinlock.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/uaccess.h>
 
 #include "internal.h"
@@ -47,6 +55,9 @@
 #define	PSTORE_NAMELEN	64
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_SPINLOCK(allpstore_lock);
 static LIST_HEAD(allpstore);
 
@@ -55,15 +66,20 @@ struct pstore_private {
 	struct pstore_info *psi;
 	enum pstore_type_id type;
 	u64	id;
+<<<<<<< HEAD
+=======
 =======
 struct pstore_private {
 	u64	id;
 	int	(*erase)(u64);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ssize_t	size;
 	char	data[];
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int pstore_file_open(struct inode *inode, struct file *file)
@@ -73,6 +89,7 @@ static int pstore_file_open(struct inode *inode, struct file *file)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t pstore_file_read(struct file *file, char __user *userbuf,
 						size_t count, loff_t *ppos)
 {
@@ -85,8 +102,12 @@ static const struct file_operations pstore_file_operations = {
 <<<<<<< HEAD
 	.open	= simple_open,
 =======
+<<<<<<< HEAD
+	.open	= simple_open,
+=======
 	.open	= pstore_file_open,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read	= pstore_file_read,
 	.llseek	= default_llseek,
 };
@@ -103,8 +124,13 @@ static int pstore_unlink(struct inode *dir, struct dentry *dentry)
 	if (p->psi->erase)
 		p->psi->erase(p->type, p->id, p->psi);
 =======
+<<<<<<< HEAD
+	if (p->psi->erase)
+		p->psi->erase(p->type, p->id, p->psi);
+=======
 	p->erase(p->id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return simple_unlink(dir, dentry);
 }
@@ -112,6 +138,9 @@ static int pstore_unlink(struct inode *dir, struct dentry *dentry)
 static void pstore_evict_inode(struct inode *inode)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pstore_private	*p = inode->i_private;
 	unsigned long		flags;
 
@@ -122,10 +151,13 @@ static void pstore_evict_inode(struct inode *inode)
 		spin_unlock_irqrestore(&allpstore_lock, flags);
 		kfree(p);
 	}
+<<<<<<< HEAD
+=======
 =======
 	end_writeback(inode);
 	kfree(inode->i_private);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const struct inode_operations pstore_dir_inode_operations = {
@@ -134,12 +166,17 @@ static const struct inode_operations pstore_dir_inode_operations = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct inode *pstore_get_inode(struct super_block *sb)
 {
 	struct inode *inode = new_inode(sb);
 	if (inode) {
 		inode->i_ino = get_next_ino();
 		inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
+<<<<<<< HEAD
+=======
 =======
 static struct inode *pstore_get_inode(struct super_block *sb,
 					const struct inode *dir, int mode, dev_t dev)
@@ -162,6 +199,7 @@ static struct inode *pstore_get_inode(struct super_block *sb,
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return inode;
 }
@@ -232,14 +270,22 @@ int pstore_mkfile(enum pstore_type_id type, char *psname, u64 id,
 		  char *data, size_t size, struct timespec time,
 		  struct pstore_info *psi)
 =======
+<<<<<<< HEAD
+		  char *data, size_t size, struct timespec time,
+		  struct pstore_info *psi)
+=======
 			      char *data, size_t size,
 			      struct timespec time, int (*erase)(u64))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dentry		*root = pstore_sb->s_root;
 	struct dentry		*dentry;
 	struct inode		*inode;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			rc = 0;
 	char			name[PSTORE_NAMELEN];
 	struct pstore_private	*private, *pos;
@@ -270,6 +316,8 @@ int pstore_mkfile(enum pstore_type_id type, char *psname, u64 id,
 	private->type = type;
 	private->id = id;
 	private->psi = psi;
+<<<<<<< HEAD
+=======
 =======
 	int			rc;
 	char			name[PSTORE_NAMELEN];
@@ -285,6 +333,7 @@ int pstore_mkfile(enum pstore_type_id type, char *psname, u64 id,
 	private->id = id;
 	private->erase = erase;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (type) {
 	case PSTORE_TYPE_DMESG:
@@ -319,12 +368,18 @@ int pstore_mkfile(enum pstore_type_id type, char *psname, u64 id,
 	d_add(dentry, inode);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&allpstore_lock, flags);
 	list_add(&private->list, &allpstore);
 	spin_unlock_irqrestore(&allpstore_lock, flags);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&root->d_inode->i_mutex);
 
 	return 0;
@@ -344,10 +399,14 @@ int pstore_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 	struct inode *inode;
 =======
+<<<<<<< HEAD
+	struct inode *inode;
+=======
 	struct inode *inode = NULL;
 	struct dentry *root;
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	save_mount_options(sb, data);
 
@@ -363,6 +422,9 @@ int pstore_fill_super(struct super_block *sb, void *data, int silent)
 	parse_options(data);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode = pstore_get_inode(sb);
 	if (inode) {
 		inode->i_mode = S_IFDIR | 0755;
@@ -377,6 +439,8 @@ int pstore_fill_super(struct super_block *sb, void *data, int silent)
 	pstore_get_records(0);
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	inode = pstore_get_inode(sb, NULL, S_IFDIR | 0755, 0);
 	if (!inode) {
@@ -400,6 +464,7 @@ fail:
 	iput(inode);
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct dentry *pstore_mount(struct file_system_type *fs_type,

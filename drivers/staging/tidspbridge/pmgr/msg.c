@@ -23,9 +23,18 @@
 /*  ----------------------------------- DSP/BIOS Bridge */
 #include <dspbridge/dbdefs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Trace & Debug */
 #include <dspbridge/dbc.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Trace & Debug */
+#include <dspbridge/dbc.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- Bridge Driver */
 #include <dspbridge/dspdefs.h>
 
@@ -36,9 +45,18 @@
 #include <msgobj.h>
 #include <dspbridge/msg.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Globals */
 static u32 refs;		/* module reference count */
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Globals */
+static u32 refs;		/* module reference count */
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  ======== msg_create ========
  *  Purpose:
@@ -53,11 +71,20 @@ int msg_create(struct msg_mgr **msg_man,
 	struct msg_mgr *hmsg_mgr;
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(msg_man != NULL);
 	DBC_REQUIRE(msg_callback != NULL);
 	DBC_REQUIRE(hdev_obj != NULL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*msg_man = NULL;
 
 	dev_get_intf_fxns(hdev_obj, &intf_fxns);
@@ -90,8 +117,16 @@ void msg_delete(struct msg_mgr *hmsg_mgr)
 	struct msg_mgr_ *msg_mgr_obj = (struct msg_mgr_ *)hmsg_mgr;
 	struct bridge_drv_interface *intf_fxns;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (msg_mgr_obj) {
 		intf_fxns = msg_mgr_obj->intf_fxns;
 
@@ -102,6 +137,11 @@ void msg_delete(struct msg_mgr *hmsg_mgr)
 			__func__, hmsg_mgr);
 	}
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *  ======== msg_exit ========
@@ -127,3 +167,7 @@ bool msg_mod_init(void)
 
 	return true;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -23,8 +23,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <net/sock.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/inet_frag.h>
 
 static void inet_frag_secret_rebuild(unsigned long dummy)
@@ -277,8 +280,11 @@ struct inet_frag_queue *inet_frag_find(struct netns_frags *nf,
 	struct hlist_node *n;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int depth = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	hlist_for_each_entry(q, n, &f->hash[hash], list) {
 		if (q->net == nf && f->match(q, key)) {
@@ -287,12 +293,17 @@ struct inet_frag_queue *inet_frag_find(struct netns_frags *nf,
 			return q;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	read_unlock(&f->lock);
 
 	return inet_frag_create(nf, f, key);
 }
 EXPORT_SYMBOL(inet_frag_find);
+<<<<<<< HEAD
+=======
 =======
 		depth++;
 	}
@@ -317,3 +328,4 @@ void inet_frag_maybe_warn_overflow(struct inet_frag_queue *q,
 }
 EXPORT_SYMBOL(inet_frag_maybe_warn_overflow);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

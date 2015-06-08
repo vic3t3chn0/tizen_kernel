@@ -22,8 +22,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _GNU_SOURCE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sys/utsname.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -36,8 +39,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #undef _GNU_SOURCE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "perf.h"
 #include "builtin.h"
 #include "util/util.h"
@@ -54,8 +60,11 @@
 #define DEFAULT_FUNC_FILTER "!_*"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define MAX_PATH_LEN 256
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Session management structure */
 static struct {
@@ -73,8 +82,12 @@ static struct {
 <<<<<<< HEAD
 	const char *target;
 =======
+<<<<<<< HEAD
+	const char *target;
+=======
 	const char *target_module;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int max_probe_points;
 	struct strfilter *filter;
 } params;
@@ -148,6 +161,9 @@ static int opt_show_lines(const struct option *opt __used,
 	int ret = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!str)
 		return 0;
 
@@ -160,12 +176,15 @@ static int opt_show_lines(const struct option *opt __used,
 	params.show_lines = true;
 	ret = parse_line_range_desc(str, &params.line_range);
 	INIT_LIST_HEAD(&params.line_range.line_list);
+<<<<<<< HEAD
+=======
 =======
 	if (str)
 		ret = parse_line_range_desc(str, &params.line_range);
 	INIT_LIST_HEAD(&params.line_range.line_list);
 	params.show_lines = true;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -274,9 +293,15 @@ static const struct option options[] = {
 		   "modname|path",
 		   "target module name (for online) or path (for offline)"),
 =======
+<<<<<<< HEAD
+	OPT_STRING('m', "module", &params.target,
+		   "modname|path",
+		   "target module name (for online) or path (for offline)"),
+=======
 	OPT_STRING('m', "module", &params.target_module,
 		   "modname", "target module name"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	OPT__DRY_RUN(&probe_event_dry_run),
 	OPT_INTEGER('\0', "max-probes", &params.max_probe_points,
@@ -364,8 +389,12 @@ int cmd_probe(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 		ret = show_available_funcs(params.target,
 =======
+<<<<<<< HEAD
+		ret = show_available_funcs(params.target,
+=======
 		ret = show_available_funcs(params.target_module,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   params.filter);
 		strfilter__delete(params.filter);
 		if (ret < 0)
@@ -389,8 +418,12 @@ int cmd_probe(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 		ret = show_line_range(&params.line_range, params.target);
 =======
+<<<<<<< HEAD
+		ret = show_line_range(&params.line_range, params.target);
+=======
 		ret = show_line_range(&params.line_range, params.target_module);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0)
 			pr_err("  Error: Failed to show lines. (%d)\n", ret);
 		return ret;
@@ -410,8 +443,12 @@ int cmd_probe(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 					  params.target,
 =======
+<<<<<<< HEAD
+					  params.target,
+=======
 					  params.target_module,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  params.filter,
 					  params.show_ext_vars);
 		strfilter__delete(params.filter);
@@ -436,8 +473,12 @@ int cmd_probe(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 					    params.target,
 =======
+<<<<<<< HEAD
+					    params.target,
+=======
 					    params.target_module,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					    params.force_add);
 		if (ret < 0) {
 			pr_err("  Error: Failed to add events. (%d)\n", ret);

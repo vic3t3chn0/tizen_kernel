@@ -24,5 +24,15 @@ obj-$(CONFIG_INPUT_TOUCHSCREEN)	+= touchscreen/
 obj-$(CONFIG_INPUT_MISC)	+= misc/
 
 obj-$(CONFIG_INPUT_APMPOWER)	+= apm-power.o
+<<<<<<< HEAD
+<<<<<<< HEAD
+obj-$(CONFIG_INPUT_OF_MATRIX_KEYMAP) += of_keymap.o
+obj-$(CONFIG_INPUT_KEYRESET)	+= keyreset.o
+=======
 obj-$(CONFIG_INPUT_KEYRESET)	+= keyreset.o
 obj-$(CONFIG_INPUT_SECBRIDGE)   += sec-input-bridge.o
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+obj-$(CONFIG_INPUT_KEYRESET)	+= keyreset.o
+obj-$(CONFIG_INPUT_SECBRIDGE)   += sec-input-bridge.o
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

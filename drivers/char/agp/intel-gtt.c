@@ -30,10 +30,23 @@
 /*
  * If we have Intel graphics, we're not going to have anything other than
  * an Intel IOMMU. So make the correct use of the PCI DMA API contingent
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * on the Intel IOMMU support (CONFIG_INTEL_IOMMU).
+ * Only newer chipsets need to bother with this, of course.
+ */
+#ifdef CONFIG_INTEL_IOMMU
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * on the Intel IOMMU support (CONFIG_DMAR).
  * Only newer chipsets need to bother with this, of course.
  */
 #ifdef CONFIG_DMAR
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define USE_PCI_DMA_API 1
 #else
 #define USE_PCI_DMA_API 0
@@ -76,7 +89,14 @@ static struct _intel_private {
 	struct resource ifp_resource;
 	int resource_valid;
 	struct page *scratch_page;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	dma_addr_t scratch_page_dma;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dma_addr_t scratch_page_dma;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } intel_private;
 
 #define INTEL_GTT_GEN	intel_private.driver->gen
@@ -306,9 +326,21 @@ static int intel_gtt_setup_scratch_page(void)
 		if (pci_dma_mapping_error(intel_private.pcidev, dma_addr))
 			return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		intel_private.base.scratch_page_dma = dma_addr;
+	} else
+		intel_private.base.scratch_page_dma = page_to_phys(page);
+=======
 		intel_private.scratch_page_dma = dma_addr;
 	} else
 		intel_private.scratch_page_dma = page_to_phys(page);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		intel_private.scratch_page_dma = dma_addr;
+	} else
+		intel_private.scratch_page_dma = page_to_phys(page);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	intel_private.scratch_page = page;
 
@@ -631,7 +663,15 @@ static unsigned int intel_gtt_mappable_entries(void)
 static void intel_gtt_teardown_scratch_page(void)
 {
 	set_pages_wb(intel_private.scratch_page, 1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pci_unmap_page(intel_private.pcidev, intel_private.base.scratch_page_dma,
+=======
 	pci_unmap_page(intel_private.pcidev, intel_private.scratch_page_dma,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pci_unmap_page(intel_private.pcidev, intel_private.scratch_page_dma,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       PAGE_SIZE, PCI_DMA_BIDIRECTIONAL);
 	put_page(intel_private.scratch_page);
 	__free_page(intel_private.scratch_page);
@@ -681,6 +721,13 @@ static int intel_gtt_init(void)
 		iounmap(intel_private.registers);
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	intel_private.base.gtt = intel_private.gtt;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	global_cache_flush();   /* FIXME: ? */
 
@@ -923,6 +970,15 @@ static int intel_fake_agp_insert_entries(struct agp_memory *mem,
 {
 	int ret = -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (intel_private.base.do_idle_maps)
+		return -ENODEV;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (intel_private.clear_fake_agp) {
 		int start = intel_private.base.stolen_size / PAGE_SIZE;
 		int end = intel_private.base.gtt_mappable_entries;
@@ -972,7 +1028,15 @@ void intel_gtt_clear_range(unsigned int first_entry, unsigned int num_entries)
 	unsigned int i;
 
 	for (i = first_entry; i < (first_entry + num_entries); i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		intel_private.driver->write_entry(intel_private.base.scratch_page_dma,
+=======
 		intel_private.driver->write_entry(intel_private.scratch_page_dma,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		intel_private.driver->write_entry(intel_private.scratch_page_dma,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						  i, 0);
 	}
 	readl(intel_private.gtt+i-1);
@@ -985,6 +1049,15 @@ static int intel_fake_agp_remove_entries(struct agp_memory *mem,
 	if (mem->page_count == 0)
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (intel_private.base.do_idle_maps)
+		return -ENODEV;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	intel_gtt_clear_range(pg_start, mem->page_count);
 
 	if (intel_private.base.needs_dmar) {
@@ -1177,6 +1250,31 @@ static void gen6_cleanup(void)
 {
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* Certain Gen5 chipsets require require idling the GPU before
+ * unmapping anything from the GTT when VT-d is enabled.
+ */
+static inline int needs_idle_maps(void)
+{
+#ifdef CONFIG_INTEL_IOMMU
+	const unsigned short gpu_devid = intel_private.pcidev->device;
+
+	/* Query intel_iommu to see if we need the workaround. Presumably that
+	 * was loaded first.
+	 */
+	if ((gpu_devid == PCI_DEVICE_ID_INTEL_IRONLAKE_M_HB ||
+	     gpu_devid == PCI_DEVICE_ID_INTEL_IRONLAKE_M_IG) &&
+	     intel_iommu_gfx_mapped)
+		return 1;
+#endif
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int i9xx_setup(void)
 {
 	u32 reg_addr;
@@ -1211,6 +1309,15 @@ static int i9xx_setup(void)
 		intel_private.gtt_bus_addr = reg_addr + gtt_offset;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (needs_idle_maps())
+		intel_private.base.do_idle_maps = 1;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	intel_i9xx_setup_flush();
 
 	return 0;
@@ -1430,6 +1537,14 @@ static const struct intel_gtt_driver_description {
 	    "Ivybridge", &sandybridge_gtt_driver },
 	{ PCI_DEVICE_ID_INTEL_IVYBRIDGE_S_GT1_IG,
 	    "Ivybridge", &sandybridge_gtt_driver },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ PCI_DEVICE_ID_INTEL_IVYBRIDGE_S_GT2_IG,
+	    "Ivybridge", &sandybridge_gtt_driver },
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0, NULL, NULL }
 };
 

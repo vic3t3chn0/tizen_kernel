@@ -2,12 +2,18 @@
 <<<<<<< HEAD
  * Amiga Linux interrupt handling code
 =======
+<<<<<<< HEAD
+ * Amiga Linux interrupt handling code
+=======
  * linux/arch/m68k/amiga/amiints.c -- Amiga Linux interrupt handling code
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This file is subject to the terms and conditions of the GNU General Public
  * License.  See the file COPYING in the main directory of this archive
  * for more details.
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  *
@@ -40,6 +46,7 @@
  *           drivers.
  *           /Jes
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/init.h>
@@ -48,7 +55,11 @@
 <<<<<<< HEAD
 #include <linux/irq.h>
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/irq.h>
 #include <asm/traps.h>
@@ -56,6 +67,8 @@
 #include <asm/amigaints.h>
 #include <asm/amipcmcia.h>
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void amiga_enable_irq(unsigned int irq);
@@ -109,6 +122,7 @@ void __init amiga_init_IRQ(void)
 	cia_init_IRQ(&ciab_base);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Enable/disable a particular machine specific interrupt source.
@@ -118,6 +132,9 @@ void __init amiga_init_IRQ(void)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void amiga_irq_enable(struct irq_data *data)
 {
 	amiga_custom.intena = IF_SETCLR | (1 << (data->irq - IRQ_USER));
@@ -135,6 +152,8 @@ static struct irq_chip amiga_irq_chip = {
 };
 
 
+<<<<<<< HEAD
+=======
 =======
 static void amiga_enable_irq(unsigned int irq)
 {
@@ -147,6 +166,7 @@ static void amiga_disable_irq(unsigned int irq)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The builtin Amiga hardware interrupt handlers.
  */
@@ -154,8 +174,12 @@ static void amiga_disable_irq(unsigned int irq)
 <<<<<<< HEAD
 static void ami_int1(unsigned int irq, struct irq_desc *desc)
 =======
+<<<<<<< HEAD
+static void ami_int1(unsigned int irq, struct irq_desc *desc)
+=======
 static irqreturn_t ami_int1(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned short ints = amiga_custom.intreqr & amiga_custom.intenar;
 
@@ -165,8 +189,12 @@ static irqreturn_t ami_int1(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_TBE);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_TBE);
+=======
 		m68k_handle_int(IRQ_AMIGA_TBE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if floppy disk transfer complete, interrupt */
@@ -175,19 +203,28 @@ static irqreturn_t ami_int1(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_DSKBLK);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_DSKBLK);
+=======
 		m68k_handle_int(IRQ_AMIGA_DSKBLK);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if software interrupt set, interrupt */
 	if (ints & IF_SOFT) {
 		amiga_custom.intreq = IF_SOFT;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		generic_handle_irq(IRQ_AMIGA_SOFT);
 	}
 }
 
 static void ami_int3(unsigned int irq, struct irq_desc *desc)
+<<<<<<< HEAD
+=======
 =======
 		m68k_handle_int(IRQ_AMIGA_SOFT);
 	}
@@ -196,6 +233,7 @@ static void ami_int3(unsigned int irq, struct irq_desc *desc)
 
 static irqreturn_t ami_int3(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned short ints = amiga_custom.intreqr & amiga_custom.intenar;
 
@@ -205,8 +243,12 @@ static irqreturn_t ami_int3(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_BLIT);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_BLIT);
+=======
 		m68k_handle_int(IRQ_AMIGA_BLIT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if a copper interrupt */
@@ -215,19 +257,28 @@ static irqreturn_t ami_int3(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_COPPER);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_COPPER);
+=======
 		m68k_handle_int(IRQ_AMIGA_COPPER);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if a vertical blank interrupt */
 	if (ints & IF_VERTB) {
 		amiga_custom.intreq = IF_VERTB;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		generic_handle_irq(IRQ_AMIGA_VERTB);
 	}
 }
 
 static void ami_int4(unsigned int irq, struct irq_desc *desc)
+<<<<<<< HEAD
+=======
 =======
 		m68k_handle_int(IRQ_AMIGA_VERTB);
 	}
@@ -236,6 +287,7 @@ static void ami_int4(unsigned int irq, struct irq_desc *desc)
 
 static irqreturn_t ami_int4(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned short ints = amiga_custom.intreqr & amiga_custom.intenar;
 
@@ -245,8 +297,12 @@ static irqreturn_t ami_int4(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_AUD0);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_AUD0);
+=======
 		m68k_handle_int(IRQ_AMIGA_AUD0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if audio 1 interrupt */
@@ -255,8 +311,12 @@ static irqreturn_t ami_int4(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_AUD1);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_AUD1);
+=======
 		m68k_handle_int(IRQ_AMIGA_AUD1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if audio 2 interrupt */
@@ -265,19 +325,28 @@ static irqreturn_t ami_int4(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_AUD2);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_AUD2);
+=======
 		m68k_handle_int(IRQ_AMIGA_AUD2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if audio 3 interrupt */
 	if (ints & IF_AUD3) {
 		amiga_custom.intreq = IF_AUD3;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		generic_handle_irq(IRQ_AMIGA_AUD3);
 	}
 }
 
 static void ami_int5(unsigned int irq, struct irq_desc *desc)
+<<<<<<< HEAD
+=======
 =======
 		m68k_handle_int(IRQ_AMIGA_AUD3);
 	}
@@ -286,6 +355,7 @@ static void ami_int5(unsigned int irq, struct irq_desc *desc)
 
 static irqreturn_t ami_int5(int irq, void *dev_id)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned short ints = amiga_custom.intreqr & amiga_custom.intenar;
 
@@ -295,14 +365,21 @@ static irqreturn_t ami_int5(int irq, void *dev_id)
 <<<<<<< HEAD
 		generic_handle_irq(IRQ_AMIGA_RBF);
 =======
+<<<<<<< HEAD
+		generic_handle_irq(IRQ_AMIGA_RBF);
+=======
 		m68k_handle_int(IRQ_AMIGA_RBF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* if a disk sync interrupt */
 	if (ints & IF_DSKSYN) {
 		amiga_custom.intreq = IF_DSKSYN;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		generic_handle_irq(IRQ_AMIGA_DSKSYN);
 	}
 }
@@ -340,9 +417,12 @@ void __init amiga_init_IRQ(void)
 
 	cia_init_IRQ(&ciaa_base);
 	cia_init_IRQ(&ciab_base);
+<<<<<<< HEAD
+=======
 =======
 		m68k_handle_int(IRQ_AMIGA_DSKSYN);
 	}
 	return IRQ_HANDLED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

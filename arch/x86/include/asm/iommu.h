@@ -8,7 +8,11 @@ extern int iommu_pass_through;
 <<<<<<< HEAD
 extern int iommu_group_mf;
 =======
+<<<<<<< HEAD
+extern int iommu_group_mf;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* 10 seconds */
 #define DMAR_OPERATION_TIMEOUT ((cycles_t) tsc_khz*10*1000)

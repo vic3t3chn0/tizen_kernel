@@ -27,8 +27,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/initval.h>
 #include <sound/opl3.h>
@@ -47,10 +51,16 @@ static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	    /* Enable this card 
 #ifdef CONFIG_PNP
 static bool isapnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	    /* Enable this card */
+#ifdef CONFIG_PNP
+static bool isapnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	    /* Enable this card */
 #ifdef CONFIG_PNP
 static int isapnp[SNDRV_CARDS] = {[0 ... (SNDRV_CARDS - 1)] = 1};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 static long cs4232_pcm_port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;	/* PnP setup */
 static int cs4232_pcm_irq[SNDRV_CARDS] = SNDRV_DEFAULT_IRQ; /* 5,7,9,11,12,15 */
@@ -64,8 +74,12 @@ static int dma2[SNDRV_CARDS] = SNDRV_DEFAULT_DMA;	    /* 0,1,3,5,6,7 */
 <<<<<<< HEAD
 static bool use_cs4232_midi[SNDRV_CARDS];
 =======
+<<<<<<< HEAD
+static bool use_cs4232_midi[SNDRV_CARDS];
+=======
 static int use_cs4232_midi[SNDRV_CARDS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for WaveFront soundcard.");
@@ -435,8 +449,12 @@ snd_wavefront_probe (struct snd_card *card, int dev)
 <<<<<<< HEAD
 			0, "ICS2115", acard)) {
 =======
+<<<<<<< HEAD
+			0, "ICS2115", acard)) {
+=======
 			IRQF_DISABLED, "ICS2115", acard)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_printk(KERN_ERR "unable to use ICS2115 IRQ %d\n", ics2115_irq[dev]);
 		return -EBUSY;
 	}
@@ -470,9 +488,13 @@ snd_wavefront_probe (struct snd_card *card, int dev)
 <<<<<<< HEAD
 					  cs4232_mpu_irq[dev], NULL);
 =======
+<<<<<<< HEAD
+					  cs4232_mpu_irq[dev], NULL);
+=======
 					  cs4232_mpu_irq[dev], IRQF_DISABLED,
 					  NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0) {
 			snd_printk (KERN_ERR "can't allocate CS4232 MPU-401 device\n");
 			return err;

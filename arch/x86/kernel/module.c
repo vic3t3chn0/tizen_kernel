@@ -28,8 +28,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/pgtable.h>
 
@@ -50,6 +53,8 @@ void *module_alloc(unsigned long size)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Free memory returned from module_alloc */
 void module_free(struct module *mod, void *module_region)
 {
@@ -66,6 +71,7 @@ int module_frob_arch_sections(Elf_Ehdr *hdr,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_32
 int apply_relocate(Elf32_Shdr *sechdrs,
 		   const char *strtab,
@@ -108,6 +114,8 @@ int apply_relocate(Elf32_Shdr *sechdrs,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 int apply_relocate_add(Elf32_Shdr *sechdrs,
 		       const char *strtab,
@@ -120,6 +128,7 @@ int apply_relocate_add(Elf32_Shdr *sechdrs,
 	return -ENOEXEC;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else /*X86_64*/
 int apply_relocate_add(Elf64_Shdr *sechdrs,
 		   const char *strtab,
@@ -192,6 +201,8 @@ overflow:
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 int apply_relocate(Elf_Shdr *sechdrs,
 		   const char *strtab,
@@ -204,6 +215,7 @@ int apply_relocate(Elf_Shdr *sechdrs,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 int module_finalize(const Elf_Ehdr *hdr,

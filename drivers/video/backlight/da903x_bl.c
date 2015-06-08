@@ -19,6 +19,13 @@
 #include <linux/backlight.h>
 #include <linux/mfd/da903x.h>
 #include <linux/slab.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DA9030_WLED_CONTROL	0x25
 #define DA9030_WLED_CP_EN	(1 << 6)
@@ -109,7 +116,15 @@ static int da903x_backlight_probe(struct platform_device *pdev)
 	struct backlight_properties props;
 	int max_brightness;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	data = devm_kzalloc(&pdev->dev, sizeof(*data), GFP_KERNEL);
+=======
 	data = kzalloc(sizeof(*data), GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	data = kzalloc(sizeof(*data), GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (data == NULL)
 		return -ENOMEM;
 
@@ -123,7 +138,14 @@ static int da903x_backlight_probe(struct platform_device *pdev)
 	default:
 		dev_err(&pdev->dev, "invalid backlight device ID(%d)\n",
 				pdev->id);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		kfree(data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		kfree(data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -142,7 +164,14 @@ static int da903x_backlight_probe(struct platform_device *pdev)
 				       &da903x_backlight_ops, &props);
 	if (IS_ERR(bl)) {
 		dev_err(&pdev->dev, "failed to register backlight\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		kfree(data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		kfree(data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return PTR_ERR(bl);
 	}
 
@@ -156,10 +185,21 @@ static int da903x_backlight_probe(struct platform_device *pdev)
 static int da903x_backlight_remove(struct platform_device *pdev)
 {
 	struct backlight_device *bl = platform_get_drvdata(pdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	backlight_device_unregister(bl);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct da903x_backlight_data *data = bl_get_data(bl);
 
 	backlight_device_unregister(bl);
 	kfree(data);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -198,6 +238,12 @@ static struct platform_driver da903x_backlight_driver = {
 	.remove		= da903x_backlight_remove,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(da903x_backlight_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init da903x_backlight_init(void)
 {
 	return platform_driver_register(&da903x_backlight_driver);
@@ -209,6 +255,10 @@ static void __exit da903x_backlight_exit(void)
 	platform_driver_unregister(&da903x_backlight_driver);
 }
 module_exit(da903x_backlight_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Backlight Driver for Dialog Semiconductor DA9030/DA9034");
 MODULE_AUTHOR("Eric Miao <eric.miao@marvell.com>"

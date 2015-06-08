@@ -8,7 +8,14 @@
 
 #include <linux/interrupt.h>
 #include <linux/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/gpio.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/mutex.h>
 #include <linux/device.h>
@@ -17,10 +24,24 @@
 #include <linux/slab.h>
 #include <linux/sysfs.h>
 #include <linux/list.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+
+#include "../iio.h"
+#include "../sysfs.h"
+#include "../buffer.h"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../iio.h"
 #include "../sysfs.h"
 #include "../ring_generic.h"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "meter.h"
 #include "ade7758.h"
 
@@ -583,8 +604,18 @@ out:
 }
 
 static IIO_DEV_ATTR_TEMP_RAW(ade7758_read_8bit);
+<<<<<<< HEAD
+<<<<<<< HEAD
+static IIO_CONST_ATTR(in_temp_offset, "129 C");
+static IIO_CONST_ATTR(in_temp_scale, "4 C");
+=======
 static IIO_CONST_ATTR(temp_offset, "129 C");
 static IIO_CONST_ATTR(temp_scale, "4 C");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static IIO_CONST_ATTR(temp_offset, "129 C");
+static IIO_CONST_ATTR(temp_scale, "4 C");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static IIO_DEV_ATTR_AWATTHR(ade7758_read_16bit,
 		ADE7758_AWATTHR);
@@ -614,9 +645,21 @@ static IIO_DEV_ATTR_RESET(ade7758_write_reset);
 static IIO_CONST_ATTR_SAMP_FREQ_AVAIL("26040 13020 6510 3255");
 
 static struct attribute *ade7758_attributes[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	&iio_dev_attr_in_temp_raw.dev_attr.attr,
+	&iio_const_attr_in_temp_offset.dev_attr.attr,
+	&iio_const_attr_in_temp_scale.dev_attr.attr,
+=======
 	&iio_dev_attr_temp_raw.dev_attr.attr,
 	&iio_const_attr_temp_offset.dev_attr.attr,
 	&iio_const_attr_temp_scale.dev_attr.attr,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	&iio_dev_attr_temp_raw.dev_attr.attr,
+	&iio_const_attr_temp_offset.dev_attr.attr,
+	&iio_const_attr_temp_scale.dev_attr.attr,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&iio_dev_attr_sampling_frequency.dev_attr.attr,
 	&iio_const_attr_sampling_frequency_available.dev_attr.attr,
 	&iio_dev_attr_reset.dev_attr.attr,
@@ -662,6 +705,69 @@ static const struct attribute_group ade7758_attribute_group = {
 };
 
 static struct iio_chan_spec ade7758_channels[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	IIO_CHAN(IIO_VOLTAGE, 0, 1, 0, "raw", 0, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_A, AD7758_VOLTAGE),
+		0, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_CURRENT, 0, 1, 0, "raw", 0, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_A, AD7758_CURRENT),
+		1, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "apparent_raw", 0, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_A, AD7758_APP_PWR),
+		2, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "active_raw", 0, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_A, AD7758_ACT_PWR),
+		3, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "reactive_raw", 0, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_A, AD7758_REACT_PWR),
+		4, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_VOLTAGE, 0, 1, 0, "raw", 1, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_B, AD7758_VOLTAGE),
+		5, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_CURRENT, 0, 1, 0, "raw", 1, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_B, AD7758_CURRENT),
+		6, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "apparent_raw", 1, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_B, AD7758_APP_PWR),
+		7, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "active_raw", 1, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_B, AD7758_ACT_PWR),
+		8, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "reactive_raw", 1, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_B, AD7758_REACT_PWR),
+		9, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_VOLTAGE, 0, 1, 0, "raw", 2, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_C, AD7758_VOLTAGE),
+		10, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_CURRENT, 0, 1, 0, "raw", 2, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_C, AD7758_CURRENT),
+		11, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "apparent_raw", 2, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_C, AD7758_APP_PWR),
+		12, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "active_raw", 2, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		AD7758_WT(AD7758_PHASE_C, AD7758_ACT_PWR),
+		13, IIO_ST('s', 24, 32, 0), 0),
+	IIO_CHAN(IIO_POWER, 0, 1, 0, "reactive_raw", 2, 0,
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IIO_CHAN(IIO_IN, 0, 1, 0, "raw", 0, 0,
 		(1 << IIO_CHAN_INFO_SCALE_SHARED),
 		AD7758_WT(AD7758_PHASE_A, AD7758_VOLTAGE),
@@ -720,6 +826,10 @@ static struct iio_chan_spec ade7758_channels[] = {
 		13, IIO_ST('s', 24, 32, 0), 0),
 	IIO_CHAN(IIO_POWER, 0, 1, 0, "reactive_raw", 2, 0,
 		(1 << IIO_CHAN_INFO_SCALE_SHARED),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		AD7758_WT(AD7758_PHASE_C, AD7758_REACT_PWR),
 		14, IIO_ST('s', 24, 32, 0), 0),
 	IIO_CHAN_SOFT_TIMESTAMP(15),
@@ -732,7 +842,15 @@ static const struct iio_info ade7758_info = {
 
 static int __devinit ade7758_probe(struct spi_device *spi)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int i, ret;
+=======
 	int i, ret, regdone = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int i, ret, regdone = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ade7758_state *st;
 	struct iio_dev *indio_dev = iio_allocate_device(sizeof(*st));
 
@@ -746,12 +864,28 @@ static int __devinit ade7758_probe(struct spi_device *spi)
 	spi_set_drvdata(spi, indio_dev);
 
 	/* Allocate the comms buffers */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	st->rx = kcalloc(ADE7758_MAX_RX, sizeof(*st->rx), GFP_KERNEL);
+=======
 	st->rx = kzalloc(sizeof(*st->rx)*ADE7758_MAX_RX, GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	st->rx = kzalloc(sizeof(*st->rx)*ADE7758_MAX_RX, GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (st->rx == NULL) {
 		ret = -ENOMEM;
 		goto error_free_dev;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	st->tx = kcalloc(ADE7758_MAX_TX, sizeof(*st->tx), GFP_KERNEL);
+=======
 	st->tx = kzalloc(sizeof(*st->tx)*ADE7758_MAX_TX, GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	st->tx = kzalloc(sizeof(*st->tx)*ADE7758_MAX_TX, GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (st->tx == NULL) {
 		ret = -ENOMEM;
 		goto error_free_rx;
@@ -766,7 +900,15 @@ static int __devinit ade7758_probe(struct spi_device *spi)
 	indio_dev->modes = INDIO_DIRECT_MODE;
 
 	for (i = 0; i < AD7758_NUM_WAVESRC; i++)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		set_bit(i, &st->available_scan_masks[i]);
+=======
 		st->available_scan_masks[i] = 1 << i;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		st->available_scan_masks[i] = 1 << i;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	indio_dev->available_scan_masks = st->available_scan_masks;
 
@@ -774,6 +916,14 @@ static int __devinit ade7758_probe(struct spi_device *spi)
 	if (ret)
 		goto error_free_tx;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = iio_buffer_register(indio_dev,
+				  &ade7758_channels[0],
+				  ARRAY_SIZE(ade7758_channels));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = iio_device_register(indio_dev);
 	if (ret)
 		goto error_unreg_ring_funcs;
@@ -782,6 +932,10 @@ static int __devinit ade7758_probe(struct spi_device *spi)
 	ret = iio_ring_buffer_register_ex(indio_dev->ring, 0,
 					  &ade7758_channels[0],
 					  ARRAY_SIZE(ade7758_channels));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		dev_err(&spi->dev, "failed to initialize the ring\n");
 		goto error_unreg_ring_funcs;
@@ -795,6 +949,25 @@ static int __devinit ade7758_probe(struct spi_device *spi)
 	if (spi->irq) {
 		ret = ade7758_probe_trigger(indio_dev);
 		if (ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			goto error_uninitialize_ring;
+	}
+
+	ret = iio_device_register(indio_dev);
+	if (ret)
+		goto error_remove_trigger;
+
+	return 0;
+
+error_remove_trigger:
+	if (indio_dev->modes & INDIO_BUFFER_TRIGGERED)
+		ade7758_remove_trigger(indio_dev);
+error_uninitialize_ring:
+	ade7758_uninitialize_ring(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto error_remove_trigger;
 	}
 
@@ -805,6 +978,10 @@ error_remove_trigger:
 		ade7758_remove_trigger(indio_dev);
 error_uninitialize_ring:
 	ade7758_uninitialize_ring(indio_dev->ring);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error_unreg_ring_funcs:
 	ade7758_unconfigure_ring(indio_dev);
 error_free_tx:
@@ -812,10 +989,20 @@ error_free_tx:
 error_free_rx:
 	kfree(st->rx);
 error_free_dev:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_free_device(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (regdone)
 		iio_device_unregister(indio_dev);
 	else
 		iio_free_device(indio_dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error_ret:
 	return ret;
 }
@@ -826,11 +1013,30 @@ static int ade7758_remove(struct spi_device *spi)
 	struct ade7758_state *st = iio_priv(indio_dev);
 	int ret;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_device_unregister(indio_dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ade7758_stop_device(&indio_dev->dev);
 	if (ret)
 		goto err_ret;
 
 	ade7758_remove_trigger(indio_dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ade7758_uninitialize_ring(indio_dev);
+	ade7758_unconfigure_ring(indio_dev);
+	kfree(st->tx);
+	kfree(st->rx);
+
+	iio_free_device(indio_dev);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ade7758_uninitialize_ring(indio_dev->ring);
 	ade7758_unconfigure_ring(indio_dev);
 	kfree(st->tx);
@@ -838,6 +1044,10 @@ static int ade7758_remove(struct spi_device *spi)
 	iio_device_unregister(indio_dev);
 
 	return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_ret:
 	return ret;
 }
@@ -846,6 +1056,13 @@ static const struct spi_device_id ade7758_id[] = {
 	{"ade7758", 0},
 	{}
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_DEVICE_TABLE(spi, ade7758_id);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct spi_driver ade7758_driver = {
 	.driver = {
@@ -856,6 +1073,12 @@ static struct spi_driver ade7758_driver = {
 	.remove = __devexit_p(ade7758_remove),
 	.id_table = ade7758_id,
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(ade7758_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __init int ade7758_init(void)
 {
@@ -868,6 +1091,10 @@ static __exit void ade7758_exit(void)
 	spi_unregister_driver(&ade7758_driver);
 }
 module_exit(ade7758_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Barry Song <21cnbao@gmail.com>");
 MODULE_DESCRIPTION("Analog Devices ADE7758 Polyphase Multifunction Energy Metering IC Driver");

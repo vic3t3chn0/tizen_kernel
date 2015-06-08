@@ -23,8 +23,11 @@
 #include <asm/smp.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/firmware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/compiler.h>
 #include <asm/udbg.h>
 #include <asm/code-patching.h>
@@ -312,12 +315,15 @@ void slb_initialize(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* On iSeries the bolted entries have already been set up by
 	 * the hypervisor from the lparMap data in head.S */
 	if (firmware_has_feature(FW_FEATURE_ISERIES))
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	lflags = SLB_VSID_KERNEL | linear_llp;
 	vflags = SLB_VSID_KERNEL | vmalloc_llp;
 

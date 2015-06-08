@@ -16,7 +16,12 @@ config REALVIEW_EB_A9MP
 	select HAVE_SMP
 	select MIGHT_HAVE_CACHE_L2X0
 =======
+<<<<<<< HEAD
+	select HAVE_SMP
+	select MIGHT_HAVE_CACHE_L2X0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Enable support for the Cortex-A9MPCore tile fitted to the
 	  Realview(R) Emulation Baseboard platform.
@@ -30,7 +35,12 @@ config REALVIEW_EB_ARM11MP
 	select HAVE_SMP
 	select MIGHT_HAVE_CACHE_L2X0
 =======
+<<<<<<< HEAD
+	select HAVE_SMP
+	select MIGHT_HAVE_CACHE_L2X0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Enable support for the ARM11MPCore tile fitted to the Realview(R)
 	  Emulation Baseboard platform.
@@ -53,7 +63,12 @@ config MACH_REALVIEW_PB11MP
 	select HAVE_SMP
 	select MIGHT_HAVE_CACHE_L2X0
 =======
+<<<<<<< HEAD
+	select HAVE_SMP
+	select MIGHT_HAVE_CACHE_L2X0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select ARCH_HAS_BARRIERS if SMP
 	help
 	  Include support for the ARM(R) RealView(R) Platform Baseboard for
@@ -69,7 +84,12 @@ config MACH_REALVIEW_PB1176
 	select HAVE_TCM
 	select MIGHT_HAVE_CACHE_L2X0
 =======
+<<<<<<< HEAD
+	select HAVE_TCM
+	select MIGHT_HAVE_CACHE_L2X0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Include support for the ARM(R) RealView(R) Platform Baseboard for
 	  ARM1176JZF-S.
@@ -101,7 +121,12 @@ config MACH_REALVIEW_PBX
 	select HAVE_SMP
 	select MIGHT_HAVE_CACHE_L2X0
 =======
+<<<<<<< HEAD
+	select HAVE_SMP
+	select MIGHT_HAVE_CACHE_L2X0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select ARCH_SPARSEMEM_ENABLE if CPU_V7 && !REALVIEW_HIGH_PHYS_OFFSET
 	select ZONE_DMA if SPARSEMEM
 	help

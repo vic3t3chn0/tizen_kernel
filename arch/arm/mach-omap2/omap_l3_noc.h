@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * OMAP4XXX L3 Interconnect  error handling driver header
  *
@@ -24,6 +27,8 @@
 #ifndef __ARCH_ARM_MACH_OMAP2_L3_INTERCONNECT_3XXX_H
 #define __ARCH_ARM_MACH_OMAP2_L3_INTERCONNECT_3XXX_H
 
+<<<<<<< HEAD
+=======
 =======
  /*
   * OMAP4XXX L3 Interconnect  error handling driver header
@@ -54,12 +59,16 @@
  * L3 register offsets
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L3_MODULES			3
 #define CLEAR_STDERR_LOG		(1 << 31)
 #define CUSTOM_ERROR			0x2
 #define STANDARD_ERROR			0x0
 #define INBAND_ERROR			0x0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L3_APPLICATION_ERROR		0x0
 #define L3_DEBUG_ERROR			0x1
 
@@ -191,6 +200,8 @@ struct omap4_l3 {
 	int debug_irq;
 	int app_irq;
 };
+<<<<<<< HEAD
+=======
 =======
 #define EMIF_KERRLOG_OFFSET		0x10
 #define L3_SLAVE_ADDRESS_OFFSET		0x14
@@ -291,4 +302,5 @@ struct omap4_l3 {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #define cpu_has_32fpr			0
 =======
+<<<<<<< HEAD
+#define cpu_has_32fpr			0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_has_counter			1
 #define cpu_has_watch			1
 #define cpu_has_divec			1
@@ -26,7 +30,11 @@
 <<<<<<< HEAD
 #define cpu_has_prefetch		1
 =======
+<<<<<<< HEAD
+#define cpu_has_prefetch		1
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_has_mcheck			1
 #define cpu_has_ejtag			1
 #define cpu_has_llsc			1
@@ -40,7 +48,11 @@
 <<<<<<< HEAD
 #define cpu_has_pindexed_dcache		0
 =======
+<<<<<<< HEAD
+#define cpu_has_pindexed_dcache		0
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cpu_has_mips32r1		1
 #define cpu_has_mips32r2		0
 #define cpu_has_mips64r1		0

@@ -8,8 +8,12 @@
 <<<<<<< HEAD
  * Author: Paul Moore <paul@paul-moore.com>
 =======
+<<<<<<< HEAD
+ * Author: Paul Moore <paul@paul-moore.com>
+=======
  * Author: Paul Moore <paul.moore@hp.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  */
 
@@ -49,8 +53,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "netlabel_domainhash.h"
 #include "netlabel_user.h"
@@ -195,8 +203,12 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (info->attrs[NLBL_MGMT_A_IPV6ADDR]) {
 		struct in6_addr *addr;
 		struct in6_addr *mask;
@@ -231,8 +243,12 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 <<<<<<< HEAD
 		map->list.addr = *addr;
 =======
+<<<<<<< HEAD
+		map->list.addr = *addr;
+=======
 		ipv6_addr_copy(&map->list.addr, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		map->list.addr.s6_addr32[0] &= mask->s6_addr32[0];
 		map->list.addr.s6_addr32[1] &= mask->s6_addr32[1];
 		map->list.addr.s6_addr32[2] &= mask->s6_addr32[2];
@@ -240,8 +256,12 @@ static int netlbl_mgmt_add_common(struct genl_info *info,
 <<<<<<< HEAD
 		map->list.mask = *mask;
 =======
+<<<<<<< HEAD
+		map->list.mask = *mask;
+=======
 		ipv6_addr_copy(&map->list.mask, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		map->list.valid = 1;
 		map->type = entry->type;
 
@@ -293,8 +313,12 @@ static int netlbl_mgmt_listentry(struct sk_buff *skb,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct netlbl_af6list *iter6;
 #endif
 
@@ -351,8 +375,12 @@ static int netlbl_mgmt_listentry(struct sk_buff *skb,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		netlbl_af6list_foreach_rcu(iter6,
 					   &entry->type_def.addrsel->list6) {
 			struct netlbl_domaddr6_map *map6;

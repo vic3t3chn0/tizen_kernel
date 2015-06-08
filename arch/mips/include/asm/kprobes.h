@@ -78,7 +78,12 @@ struct prev_kprobe {
 #define SKIP_DELAYSLOT 0x0001
 
 =======
+<<<<<<< HEAD
+#define SKIP_DELAYSLOT 0x0001
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* per-cpu kprobe control block */
 struct kprobe_ctlblk {
 	unsigned long kprobe_status;
@@ -92,7 +97,13 @@ struct kprobe_ctlblk {
 	unsigned long flags;
 	unsigned long target_epc;
 =======
+<<<<<<< HEAD
+	/* Per-thread fields, used while emulating branches */
+	unsigned long flags;
+	unsigned long target_epc;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 jprobes_stack[MAX_JPROBES_STACK_SIZE];
 	struct prev_kprobe prev_kprobe;
 };

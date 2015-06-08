@@ -19,7 +19,11 @@ struct cpuinfo_arm {
 <<<<<<< HEAD
 	struct task_struct *idle;
 =======
+<<<<<<< HEAD
+	struct task_struct *idle;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int	loops_per_jiffy;
 #endif
 };

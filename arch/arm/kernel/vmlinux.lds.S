@@ -5,6 +5,9 @@
 
 #include <asm-generic/vmlinux.lds.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cache.h>
 #include <asm/thread_info.h>
 #include <asm/memory.h>
@@ -15,6 +18,8 @@
 
 #define PROC_INFO							\
 	. = ALIGN(4);							\
+<<<<<<< HEAD
+=======
 =======
 #include <asm/thread_info.h>
 #include <asm/memory.h>
@@ -22,19 +27,26 @@
 	
 #define PROC_INFO							\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	VMLINUX_SYMBOL(__proc_info_begin) = .;				\
 	*(.proc.info.init)						\
 	VMLINUX_SYMBOL(__proc_info_end) = .;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IDMAP_TEXT							\
 	ALIGN_FUNCTION();						\
 	VMLINUX_SYMBOL(__idmap_text_start) = .;				\
 	*(.idmap.text)							\
 	VMLINUX_SYMBOL(__idmap_text_end) = .;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HOTPLUG_CPU
 #define ARM_CPU_DISCARD(x)
 #define ARM_CPU_KEEP(x)		x
@@ -44,6 +56,9 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if (defined(CONFIG_SMP_ON_UP) && !defined(CONFIG_DEBUG_SPINLOCK)) || \
 	defined(CONFIG_GENERIC_BUG)
 #define ARM_EXIT_KEEP(x)	x
@@ -51,12 +66,15 @@
 #else
 #define ARM_EXIT_KEEP(x)
 #define ARM_EXIT_DISCARD(x)	x
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SMP_ON_UP) && !defined(CONFIG_DEBUG_SPINLOCK)
 #define ARM_EXIT_KEEP(x)	x
 #else
 #define ARM_EXIT_KEEP(x)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 OUTPUT_ARCH(arm)
@@ -71,12 +89,17 @@ jiffies = jiffies_64 + 4;
 SECTIONS
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * XXX: The linker does not define how output sections are
 	 * assigned to input sections when there are multiple statements
 	 * matching the same input section name.  There is no documented
 	 * order of matching.
 	 *
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_XIP_KERNEL
 	. = XIP_VIRT_ADDR(CONFIG_XIP_PHYS_ADDR);
@@ -131,6 +154,7 @@ SECTIONS
 
 	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * unwind exit sections must be discarded before the rest of the
 	 * unwind sections get included.
 	 */
@@ -144,7 +168,13 @@ SECTIONS
 		ARM_EXIT_DISCARD(EXIT_DATA)
 		EXIT_CALL
 =======
+<<<<<<< HEAD
+		ARM_EXIT_DISCARD(EXIT_TEXT)
+		ARM_EXIT_DISCARD(EXIT_DATA)
+		EXIT_CALL
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_HOTPLUG
 		*(.ARM.exidx.devexit.text)
 		*(.ARM.extab.devexit.text)
@@ -154,6 +184,9 @@ SECTIONS
 		*(__ex_table)
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_SMP_ON_UP
 		*(.alt.smp.init)
 #endif
@@ -176,12 +209,15 @@ SECTIONS
 
 	.text : {			/* Real text segment		*/
 		_stext = .;		/* Text and read-only data	*/
+<<<<<<< HEAD
+=======
 =======
 	}
 
 	.text : {			/* Real text segment		*/
 		_text = .;		/* Text and read-only data	*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__exception_text_start = .;
 			*(.exception.text)
 			__exception_text_end = .;
@@ -193,16 +229,23 @@ SECTIONS
 <<<<<<< HEAD
 			IDMAP_TEXT
 =======
+<<<<<<< HEAD
+			IDMAP_TEXT
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMU
 			*(.fixup)
 #endif
 			*(.gnu.warning)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			*(.rodata)
 			*(.rodata.*)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*(.glue_7)
 			*(.glue_7t)
 		. = ALIGN(4);
@@ -215,7 +258,13 @@ SECTIONS
 	. = ALIGN(1<<SECTION_SHIFT);
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_STRICT_MEMORY_RWX
+	. = ALIGN(1<<SECTION_SHIFT);
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RO_DATA(PAGE_SIZE)
 
 #ifdef CONFIG_ARM_UNWIND
@@ -238,6 +287,9 @@ SECTIONS
 	_etext = .;			/* End of text and rodata section */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_XIP_KERNEL
 #ifdef CONFIG_STRICT_MEMORY_RWX
 	. = ALIGN(1<<SECTION_SHIFT);
@@ -318,8 +370,11 @@ SECTIONS
 #endif
 	PERCPU_SECTION(L1_CACHE_BYTES)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_XIP_KERNEL
 	__data_loc = ALIGN(4);		/* location in binary */
 	. = PAGE_OFFSET + TEXT_OFFSET;
@@ -327,7 +382,11 @@ SECTIONS
 <<<<<<< HEAD
 	__init_end = .;
 =======
+<<<<<<< HEAD
+	__init_end = .;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	. = ALIGN(THREAD_SIZE);
 	__data_loc = .;
 #endif
@@ -356,9 +415,14 @@ SECTIONS
 		CACHELINE_ALIGNED_DATA(L1_CACHE_BYTES)
 		READ_MOSTLY_DATA(L1_CACHE_BYTES)
 =======
+<<<<<<< HEAD
+		CACHELINE_ALIGNED_DATA(L1_CACHE_BYTES)
+		READ_MOSTLY_DATA(L1_CACHE_BYTES)
+=======
 		CACHELINE_ALIGNED_DATA(32)
 		READ_MOSTLY_DATA(32)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * The exception fixup table (might need resorting at runtime)
@@ -366,8 +430,12 @@ SECTIONS
 <<<<<<< HEAD
 		. = ALIGN(4);
 =======
+<<<<<<< HEAD
+		. = ALIGN(4);
+=======
 		. = ALIGN(32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__start___ex_table = .;
 #ifdef CONFIG_MMU
 		*(__ex_table)
@@ -450,6 +518,8 @@ SECTIONS
 	.comment 0 : { *(.comment) }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	/* Default discards */
 	DISCARDS
@@ -460,6 +530,7 @@ SECTIONS
 	}
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

@@ -30,6 +30,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/mman.h>
@@ -42,6 +45,8 @@ typedef unsigned int   u32;
 #define DEFAULT_MAJOR_ROOT 0
 #define DEFAULT_MINOR_ROOT 0
 #define DEFAULT_ROOT_DEV (DEFAULT_MAJOR_ROOT << 8 | DEFAULT_MINOR_ROOT)
+<<<<<<< HEAD
+=======
 =======
 #include <sys/sysmacros.h>
 #include <unistd.h>
@@ -56,6 +61,7 @@ typedef unsigned long  u32;
 #define DEFAULT_MAJOR_ROOT 0
 #define DEFAULT_MINOR_ROOT 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Minimal number of setup sectors */
 #define SETUP_SECT_MIN 5
@@ -148,31 +154,45 @@ static void usage(void)
 <<<<<<< HEAD
 	die("Usage: build setup system [> image]");
 =======
+<<<<<<< HEAD
+	die("Usage: build setup system [> image]");
+=======
 	die("Usage: build setup system [rootdev] [> image]");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int main(int argc, char ** argv)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_EFI_STUB
 	unsigned int file_sz, pe_header;
 #endif
 	unsigned int i, sz, setup_sectors;
 	int c;
 	u32 sys_size;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int i, sz, setup_sectors;
 	int c;
 	u32 sys_size;
 	u8 major_root, minor_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct stat sb;
 	FILE *file;
 	int fd;
 	void *kernel;
 	u32 crc = 0xffffffffUL;
 
+<<<<<<< HEAD
+	if (argc != 3)
+		usage();
+=======
 <<<<<<< HEAD
 	if (argc != 3)
 		usage();
@@ -204,6 +224,7 @@ int main(int argc, char ** argv)
 	}
 	fprintf(stderr, "Root device is (%d, %d)\n", major_root, minor_root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Copy the setup code */
 	file = fopen(argv[1], "r");
@@ -217,8 +238,12 @@ int main(int argc, char ** argv)
 <<<<<<< HEAD
 	if (get_unaligned_le16(&buf[510]) != 0xAA55)
 =======
+<<<<<<< HEAD
+	if (get_unaligned_le16(&buf[510]) != 0xAA55)
+=======
 	if (buf[510] != 0x55 || buf[511] != 0xaa)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		die("Boot block hasn't got boot flag (0xAA55)");
 	fclose(file);
 
@@ -233,9 +258,13 @@ int main(int argc, char ** argv)
 <<<<<<< HEAD
 	put_unaligned_le16(DEFAULT_ROOT_DEV, &buf[508]);
 =======
+<<<<<<< HEAD
+	put_unaligned_le16(DEFAULT_ROOT_DEV, &buf[508]);
+=======
 	buf[508] = minor_root;
 	buf[509] = major_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	fprintf(stderr, "Setup is %d bytes (padded to %d bytes).\n", c, i);
 
@@ -256,6 +285,9 @@ int main(int argc, char ** argv)
 	/* Patch the setup code with the appropriate size parameters */
 	buf[0x1f1] = setup_sectors-1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	put_unaligned_le32(sys_size, &buf[0x1f4]);
 
 #ifdef CONFIG_EFI_STUB
@@ -301,12 +333,15 @@ int main(int argc, char ** argv)
 
 #endif /* CONFIG_X86_32 */
 #endif /* CONFIG_EFI_STUB */
+<<<<<<< HEAD
+=======
 =======
 	buf[0x1f4] = sys_size;
 	buf[0x1f5] = sys_size >> 8;
 	buf[0x1f6] = sys_size >> 16;
 	buf[0x1f7] = sys_size >> 24;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	crc = partial_crc32(buf, i, crc);
 	if (fwrite(buf, 1, i, stdout) != i)
@@ -330,9 +365,15 @@ int main(int argc, char ** argv)
 	put_unaligned_le32(crc, buf);
 	if (fwrite(buf, 1, 4, stdout) != 4)
 =======
+<<<<<<< HEAD
+	fprintf(stderr, "CRC %x\n", crc);
+	put_unaligned_le32(crc, buf);
+	if (fwrite(buf, 1, 4, stdout) != 4)
+=======
 	fprintf(stderr, "CRC %lx\n", crc);
 	if (fwrite(&crc, 1, 4, stdout) != 4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		die("Writing CRC failed");
 
 	close(fd);

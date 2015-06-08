@@ -19,6 +19,14 @@
  *  bfad_im.c Linux driver IM module.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "bfad_drv.h"
 #include "bfad_im.h"
 #include "bfa_fcs.h"
@@ -175,6 +183,16 @@ bfad_im_info(struct Scsi_Host *shost)
 	struct bfad_im_port_s *im_port =
 			(struct bfad_im_port_s *) shost->hostdata[0];
 	struct bfad_s *bfad = im_port->bfad;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	memset(bfa_buf, 0, sizeof(bfa_buf));
+	snprintf(bfa_buf, sizeof(bfa_buf),
+		"Brocade FC/FCOE Adapter, " "hwpath: %s driver: %s",
+		bfad->pci_name, BFAD_DRIVER_VERSION);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bfa_s *bfa = &bfad->bfa;
 	struct bfa_ioc_s *ioc = &bfa->ioc;
 	char model[BFA_ADAPTER_MODEL_NAME_LEN];
@@ -190,6 +208,10 @@ bfad_im_info(struct Scsi_Host *shost)
 		snprintf(bfa_buf, sizeof(bfa_buf),
 		"Brocade FC Adapter, " "model: %s hwpath: %s driver: %s",
 		model, bfad->pci_name, BFAD_DRIVER_VERSION);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return bfa_buf;
 }
@@ -572,9 +594,18 @@ bfad_im_scsi_host_alloc(struct bfad_s *bfad, struct bfad_im_port_s *im_port,
 		goto out_fc_rel;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* setup host fixed attribute if the lk supports */
 	bfad_fc_host_init(im_port);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* setup host fixed attribute if the lk supports */
+	bfad_fc_host_init(im_port);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 out_fc_rel:
@@ -669,6 +700,37 @@ bfad_im_port_clean(struct bfad_im_port_s *im_port)
 	spin_unlock_irqrestore(&bfad->bfad_lock, flags);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void bfad_aen_im_notify_handler(struct work_struct *work)
+{
+	struct bfad_im_s *im =
+		container_of(work, struct bfad_im_s, aen_im_notify_work);
+	struct bfa_aen_entry_s *aen_entry;
+	struct bfad_s *bfad = im->bfad;
+	struct Scsi_Host *shost = bfad->pport.im_port->shost;
+	void *event_data;
+	unsigned long flags;
+
+	while (!list_empty(&bfad->active_aen_q)) {
+		spin_lock_irqsave(&bfad->bfad_aen_spinlock, flags);
+		bfa_q_deq(&bfad->active_aen_q, &aen_entry);
+		spin_unlock_irqrestore(&bfad->bfad_aen_spinlock, flags);
+		event_data = (char *)aen_entry + sizeof(struct list_head);
+		fc_host_post_vendor_event(shost, fc_get_event_number(),
+				sizeof(struct bfa_aen_entry_s) -
+				sizeof(struct list_head),
+				(char *)event_data, BFAD_NL_VENDOR_ID);
+		spin_lock_irqsave(&bfad->bfad_aen_spinlock, flags);
+		list_add_tail(&aen_entry->qe, &bfad->free_aen_q);
+		spin_unlock_irqrestore(&bfad->bfad_aen_spinlock, flags);
+	}
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bfa_status_t
 bfad_im_probe(struct bfad_s *bfad)
 {
@@ -689,6 +751,13 @@ bfad_im_probe(struct bfad_s *bfad)
 		rc = BFA_STATUS_FAILED;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	INIT_WORK(&im->aen_im_notify_work, bfad_aen_im_notify_handler);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ext:
 	return rc;
 }
@@ -713,6 +782,15 @@ bfad_scsi_host_alloc(struct bfad_im_port_s *im_port, struct bfad_s *bfad)
 	else
 		sht = &bfad_im_vport_template;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (max_xfer_size != BFAD_MAX_SECTORS >> 1)
+		sht->max_sectors = max_xfer_size << 1;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sht->sg_tablesize = bfad->cfg_data.io_max_sge;
 
 	return scsi_host_alloc(sht, sizeof(unsigned long));
@@ -790,7 +868,16 @@ struct scsi_host_template bfad_im_scsi_host_template = {
 	.cmd_per_lun = 3,
 	.use_clustering = ENABLE_CLUSTERING,
 	.shost_attrs = bfad_im_host_attrs,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.max_sectors = BFAD_MAX_SECTORS,
+	.vendor_id = BFA_PCI_VENDOR_ID_BROCADE,
+=======
 	.max_sectors = 0xFFFF,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.max_sectors = 0xFFFF,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct scsi_host_template bfad_im_vport_template = {
@@ -811,7 +898,15 @@ struct scsi_host_template bfad_im_vport_template = {
 	.cmd_per_lun = 3,
 	.use_clustering = ENABLE_CLUSTERING,
 	.shost_attrs = bfad_im_vport_attrs,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.max_sectors = BFAD_MAX_SECTORS,
+=======
 	.max_sectors = 0xFFFF,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.max_sectors = 0xFFFF,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 bfa_status_t
@@ -899,16 +994,88 @@ bfad_get_itnim(struct bfad_im_port_s *im_port, int id)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Function is invoked from the SCSI Host Template slave_alloc() entry point.
+ * Has the logic to query the LUN Mask database to check if this LUN needs to
+ * be made visible to the SCSI mid-layer or not.
+ *
+ * Returns BFA_STATUS_OK if this LUN needs to be added to the OS stack.
+ * Returns -ENXIO to notify SCSI mid-layer to not add this LUN to the OS stack.
+ */
+static int
+bfad_im_check_if_make_lun_visible(struct scsi_device *sdev,
+				  struct fc_rport *rport)
+{
+	struct bfad_itnim_data_s *itnim_data =
+				(struct bfad_itnim_data_s *) rport->dd_data;
+	struct bfa_s *bfa = itnim_data->itnim->bfa_itnim->bfa;
+	struct bfa_rport_s *bfa_rport = itnim_data->itnim->bfa_itnim->rport;
+	struct bfa_lun_mask_s *lun_list = bfa_get_lun_mask_list(bfa);
+	int i = 0, ret = -ENXIO;
+
+	for (i = 0; i < MAX_LUN_MASK_CFG; i++) {
+		if (lun_list[i].state == BFA_IOIM_LUN_MASK_ACTIVE &&
+		    scsilun_to_int(&lun_list[i].lun) == sdev->lun &&
+		    lun_list[i].rp_tag == bfa_rport->rport_tag &&
+		    lun_list[i].lp_tag == (u8)bfa_rport->rport_info.lp_tag) {
+			ret = BFA_STATUS_OK;
+			break;
+		}
+	}
+	return ret;
+}
+
+/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Scsi_Host template entry slave_alloc
  */
 static int
 bfad_im_slave_alloc(struct scsi_device *sdev)
 {
 	struct fc_rport *rport = starget_to_rport(scsi_target(sdev));
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct bfad_itnim_data_s *itnim_data =
+				(struct bfad_itnim_data_s *) rport->dd_data;
+	struct bfa_s *bfa = itnim_data->itnim->bfa_itnim->bfa;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!rport || fc_remote_port_chkready(rport))
 		return -ENXIO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (bfa_get_lun_mask_status(bfa) == BFA_LUNMASK_ENABLED) {
+		/*
+		 * We should not mask LUN 0 - since this will translate
+		 * to no LUN / TARGET for SCSI ml resulting no scan.
+		 */
+		if (sdev->lun == 0) {
+			sdev->sdev_bflags |= BLIST_NOREPORTLUN |
+					     BLIST_SPARSELUN;
+			goto done;
+		}
+
+		/*
+		 * Query LUN Mask configuration - to expose this LUN
+		 * to the SCSI mid-layer or to mask it.
+		 */
+		if (bfad_im_check_if_make_lun_visible(sdev, rport) !=
+							BFA_STATUS_OK)
+			return -ENXIO;
+	}
+done:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sdev->hostdata = rport->dd_data;
 
 	return 0;
@@ -925,7 +1092,18 @@ bfad_im_supported_speeds(struct bfa_s *bfa)
 		return 0;
 
 	bfa_ioc_get_attr(&bfa->ioc, ioc_attr);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ioc_attr->adapter_attr.max_speed == BFA_PORT_SPEED_16GBPS)
+		supported_speed |=  FC_PORTSPEED_16GBIT | FC_PORTSPEED_8GBIT |
+				FC_PORTSPEED_4GBIT | FC_PORTSPEED_2GBIT;
+	else if (ioc_attr->adapter_attr.max_speed == BFA_PORT_SPEED_8GBPS) {
+=======
 	if (ioc_attr->adapter_attr.max_speed == BFA_PORT_SPEED_8GBPS) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ioc_attr->adapter_attr.max_speed == BFA_PORT_SPEED_8GBPS) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ioc_attr->adapter_attr.is_mezz) {
 			supported_speed |= FC_PORTSPEED_8GBIT |
 				FC_PORTSPEED_4GBIT |
@@ -1015,6 +1193,14 @@ bfad_im_fc_rport_add(struct bfad_im_port_s *im_port, struct bfad_itnim_s *itnim)
 	    && (fc_rport->scsi_target_id < MAX_FCP_TARGET))
 		itnim->scsi_tgt_id = fc_rport->scsi_target_id;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	itnim->channel = fc_rport->channel;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 }
 

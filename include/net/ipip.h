@@ -53,8 +53,12 @@ struct ip_tunnel_prl_entry {
 <<<<<<< HEAD
 	ip_select_ident(iph, &rt->dst, NULL);				\
 =======
+<<<<<<< HEAD
+	ip_select_ident(iph, &rt->dst, NULL);				\
+=======
 	ip_select_ident(skb, &rt->dst, NULL);				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 									\
 	err = ip_local_out(skb);					\
 	if (likely(net_xmit_eval(err) == 0)) {				\

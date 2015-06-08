@@ -16,6 +16,17 @@ config UEVENT_HELPER_PATH
 	  that it creates a high system load, or on smaller systems
 	  it is known to create out-of-memory situations during bootup.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  To disable user space helper program execution at early boot
+	  time specify an empty string here. This setting can be altered
+	  via /proc/sys/kernel/hotplug or via /sys/kernel/uevent_helper
+	  later at runtime.
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config DEVTMPFS
 	bool "Maintain a devtmpfs filesystem to mount at /dev"
 	depends on HOTPLUG
@@ -65,17 +76,41 @@ config PREVENT_FIRMWARE_BUILD
 	default y
 	help
 	  Say yes to avoid building firmware. Firmware is usually shipped
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  with the driver and only when updating the firmware should a
+	  rebuild be made.
+	  If unsure, say Y here.
+=======
 	  with the driver, and only when updating the firmware a rebuild
 	  should be made.
 	  If unsure say Y here.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	  with the driver, and only when updating the firmware a rebuild
+	  should be made.
+	  If unsure say Y here.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config FW_LOADER
 	tristate "Userspace firmware loading support" if EXPERT
 	default y
 	---help---
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  This option is provided for the case where none of the in-tree modules
+	  require userspace firmware loading support, but a module built
+	  out-of-tree does.
+=======
 	  This option is provided for the case where no in-kernel-tree modules
 	  require userspace firmware loading support, but a module built outside
 	  the kernel tree does.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	  This option is provided for the case where no in-kernel-tree modules
+	  require userspace firmware loading support, but a module built outside
+	  the kernel tree does.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config FIRMWARE_IN_KERNEL
 	bool "Include in-kernel firmware blobs in kernel binary"
@@ -83,15 +118,40 @@ config FIRMWARE_IN_KERNEL
 	default y
 	help
 	  The kernel source tree includes a number of firmware 'blobs'
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  that are used by various drivers. The recommended way to
+	  use these is to run "make firmware_install", which, after
+	  converting ihex files to binary, copies all of the needed
+	  binary files in firmware/ to /lib/firmware/ on your system so
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  which are used by various drivers. The recommended way to
 	  use these is to run "make firmware_install" and to copy the
 	  resulting binary files created in usr/lib/firmware directory
 	  of the kernel tree to the /lib/firmware on your system so
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  that they can be loaded by userspace helpers on request.
 
 	  Enabling this option will build each required firmware blob
 	  into the kernel directly, where request_firmware() will find
 	  them without having to call out to userspace. This may be
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  useful if your root file system requires a device that uses
+	  such firmware and do not wish to use an initrd.
+
+	  This single option controls the inclusion of firmware for
+	  every driver that uses request_firmware() and ships its
+	  firmware in the kernel source tree, which avoids a
+	  proliferation of 'Include firmware for xxx device' options.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  useful if your root file system requires a device which uses
 	  such firmware, and do not wish to use an initrd.
 
@@ -99,6 +159,10 @@ config FIRMWARE_IN_KERNEL
 	  every driver which uses request_firmware() and ships its
 	  firmware in the kernel source tree, to avoid a proliferation
 	  of 'Include firmware for xxx device' options.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	  Say 'N' and let firmware be loaded from userspace.
 
@@ -106,12 +170,42 @@ config EXTRA_FIRMWARE
 	string "External firmware blobs to build into the kernel binary"
 	depends on FW_LOADER
 	help
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  This option allows firmware to be built into the kernel for the case
+	  where the user either cannot or doesn't want to provide it from
+=======
 	  This option allows firmware to be built into the kernel, for the
 	  cases where the user either cannot or doesn't want to provide it from
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	  This option allows firmware to be built into the kernel, for the
+	  cases where the user either cannot or doesn't want to provide it from
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  userspace at runtime (for example, when the firmware in question is
 	  required for accessing the boot device, and the user doesn't want to
 	  use an initrd).
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  This option is a string and takes the (space-separated) names of the
+	  firmware files -- the same names that appear in MODULE_FIRMWARE()
+	  and request_firmware() in the source. These files should exist under
+	  the directory specified by the EXTRA_FIRMWARE_DIR option, which is
+	  by default the firmware subdirectory of the kernel source tree.
+
+	  For example, you might set CONFIG_EXTRA_FIRMWARE="usb8388.bin", copy
+	  the usb8388.bin file into the firmware directory, and build the kernel.
+	  Then any request_firmware("usb8388.bin") will be satisfied internally
+	  without needing to call out to userspace.
+
+	  WARNING: If you include additional firmware files into your binary
+	  kernel image that are not available under the terms of the GPL,
+	  then it may be a violation of the GPL to distribute the resulting
+	  image since it combines both GPL and non-GPL work. You should
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  This option is a string, and takes the (space-separated) names of the
 	  firmware files -- the same names which appear in MODULE_FIRMWARE()
 	  and request_firmware() in the source. These files should exist under
@@ -127,6 +221,10 @@ config EXTRA_FIRMWARE
 	  kernel image which are not available under the terms of the GPL,
 	  then it may be a violation of the GPL to distribute the resulting
 	  image -- since it combines both GPL and non-GPL work. You should
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  consult a lawyer of your own before distributing such an image.
 
 config EXTRA_FIRMWARE_DIR
@@ -136,10 +234,22 @@ config EXTRA_FIRMWARE_DIR
 	help
 	  This option controls the directory in which the kernel build system
 	  looks for the firmware files listed in the EXTRA_FIRMWARE option.
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  The default is firmware/ in the kernel source tree, but by changing
+	  this option you can point it elsewhere, such as /lib/firmware/ or
+	  some other directory containing the firmware files.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  The default is the firmware/ directory in the kernel source tree,
 	  but by changing this option you can point it elsewhere, such as
 	  the /lib/firmware/ directory or another separate directory
 	  containing firmware files.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config DEBUG_DRIVER
 	bool "Driver Core verbose debug messages"
@@ -168,16 +278,59 @@ config SYS_HYPERVISOR
 	bool
 	default n
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config GENERIC_CPU_DEVICES
+	bool
+	default n
+
+config SOC_BUS
+	bool
+
+source "drivers/base/regmap/Kconfig"
+
+config DMA_SHARED_BUFFER
+	bool
+	default n
+	select ANON_INODES
+	depends on EXPERIMENTAL
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config DMA_SHARED_BUFFER
 	bool "Buffer framework to be shared between drivers"
 	default n
 	depends on ANON_INODES
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option enables the framework for buffer-sharing between
 	  multiple drivers. A buffer is associated with a file using driver
 	  APIs extension; the file's descriptor can then be passed on to other
 	  driver.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config GENLOCK
+	bool "Enable a generic cross-process locking mechanism"
+	depends on ANON_INODES
+	help
+	  Enable a generic cross-process locking API to provide protection
+	  for shared memory objects such as graphics buffers.
+
+config GENLOCK_MISCDEVICE
+	bool "Enable a misc-device for userspace to access the genlock engine"
+	depends on GENLOCK
+	help
+	  Create a miscdevice for the purposes of allowing userspace to create
+	  and interact with locks created using genlock.
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SYNC
 	bool "Synchronization framework"
 	default n
@@ -205,9 +358,21 @@ config SW_SYNC_USER
          *WARNING* improper use of this can result in deadlocking kernel
 	 drivers from userspace.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config CMA
+	bool "Contiguous Memory Allocator (EXPERIMENTAL)"
+	depends on HAVE_DMA_CONTIGUOUS && HAVE_MEMBLOCK && EXPERIMENTAL
+=======
 config DMA_CMA
 	bool "Contiguous Memory Allocator (EXPERIMENTAL)"
 	default n
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+config DMA_CMA
+	bool "Contiguous Memory Allocator (EXPERIMENTAL)"
+	default n
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MIGRATION
 	help
 	  This enables the Contiguous Memory Allocator which allows drivers
@@ -217,10 +382,23 @@ config DMA_CMA
 	  For more information see <include/linux/dma-contiguous.h>.
 	  If unsure, say "n".
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+if CMA
+
+config CMA_DEBUG
+	bool "CMA debug messages (DEVELOPMENT)"
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 if DMA_CMA
 
 config DMA_CMA_DEBUG
 	bool "NEW CMA debug messages (DEVELOPMENT)"
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	depends on DEBUG_KERNEL
 	help
 	  Turns on debug messages in CMA.  This produces KERN_DEBUG
@@ -235,7 +413,16 @@ config CMA_SIZE_MBYTES
 	depends on !CMA_SIZE_SEL_PERCENTAGE
 	default 16
 	help
+<<<<<<< HEAD
+<<<<<<< HEAD
+	  Defines the size (in MiB) of the default memory area for Contiguous
+	  Memory Allocator.
+=======
 	  Defines the size (in MiB) of the default memory area for CMA.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	  Defines the size (in MiB) of the default memory area for CMA.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config CMA_SIZE_PERCENTAGE
 	int "Percentage of total memory"

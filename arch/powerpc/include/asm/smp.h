@@ -33,8 +33,12 @@ extern int boot_cpuid;
 <<<<<<< HEAD
 extern int spinning_secondaries;
 =======
+<<<<<<< HEAD
+extern int spinning_secondaries;
+=======
 extern int boot_cpu_count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void cpu_die(void);
 
@@ -72,7 +76,11 @@ void generic_set_cpu_dead(unsigned int cpu);
 <<<<<<< HEAD
 int generic_check_cpu_restart(unsigned int cpu);
 =======
+<<<<<<< HEAD
+int generic_check_cpu_restart(unsigned int cpu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_PPC64
@@ -131,11 +139,16 @@ extern void smp_muxed_ipi_message_pass(int cpu, int msg);
 extern irqreturn_t smp_ipi_demux(void);
 
 =======
+<<<<<<< HEAD
+extern irqreturn_t smp_ipi_demux(void);
+
+=======
 extern void smp_muxed_ipi_resend(void);
 extern irqreturn_t smp_ipi_demux(void);
 
 void smp_init_iSeries(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void smp_init_pSeries(void);
 void smp_init_cell(void);
 void smp_init_celleb(void);

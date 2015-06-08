@@ -40,6 +40,9 @@ static struct __initdata resource omap7xx_mpu_gpio_resources[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_gpio_reg_offs omap7xx_mpuio_regs = {
 	.revision	= USHRT_MAX,
 	.direction	= OMAP_MPUIO_IO_CNTL / 2,
@@ -57,6 +60,8 @@ static struct __initdata omap_gpio_platform_data omap7xx_mpu_gpio_config = {
 	.bank_width		= 16,
 	.bank_stride		= 2,
 	.regs                   = &omap7xx_mpuio_regs,
+<<<<<<< HEAD
+=======
 =======
 static struct __initdata omap_gpio_platform_data omap7xx_mpu_gpio_config = {
 	.virtual_irq_start	= IH_MPUIO_BASE,
@@ -64,6 +69,7 @@ static struct __initdata omap_gpio_platform_data omap7xx_mpu_gpio_config = {
 	.bank_width		= 32,
 	.bank_stride		= 2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device omap7xx_mpu_gpio = {
@@ -90,6 +96,9 @@ static struct __initdata resource omap7xx_gpio1_resources[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_gpio_reg_offs omap7xx_gpio_regs = {
 	.revision	= USHRT_MAX,
 	.direction	= OMAP7XX_GPIO_DIR_CONTROL,
@@ -105,12 +114,15 @@ static struct __initdata omap_gpio_platform_data omap7xx_gpio1_config = {
 	.virtual_irq_start	= IH_GPIO_BASE,
 	.bank_width		= 32,
 	.regs			= &omap7xx_gpio_regs,
+<<<<<<< HEAD
+=======
 =======
 static struct __initdata omap_gpio_platform_data omap7xx_gpio1_config = {
 	.virtual_irq_start	= IH_GPIO_BASE,
 	.bank_type		= METHOD_GPIO_7XX,
 	.bank_width		= 32,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device omap7xx_gpio1 = {
@@ -142,9 +154,14 @@ static struct __initdata omap_gpio_platform_data omap7xx_gpio2_config = {
 	.bank_width		= 32,
 	.regs			= &omap7xx_gpio_regs,
 =======
+<<<<<<< HEAD
+	.bank_width		= 32,
+	.regs			= &omap7xx_gpio_regs,
+=======
 	.bank_type		= METHOD_GPIO_7XX,
 	.bank_width		= 32,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device omap7xx_gpio2 = {
@@ -176,9 +193,14 @@ static struct __initdata omap_gpio_platform_data omap7xx_gpio3_config = {
 	.bank_width		= 32,
 	.regs			= &omap7xx_gpio_regs,
 =======
+<<<<<<< HEAD
+	.bank_width		= 32,
+	.regs			= &omap7xx_gpio_regs,
+=======
 	.bank_type		= METHOD_GPIO_7XX,
 	.bank_width		= 32,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device omap7xx_gpio3 = {
@@ -210,9 +232,14 @@ static struct __initdata omap_gpio_platform_data omap7xx_gpio4_config = {
 	.bank_width		= 32,
 	.regs			= &omap7xx_gpio_regs,
 =======
+<<<<<<< HEAD
+	.bank_width		= 32,
+	.regs			= &omap7xx_gpio_regs,
+=======
 	.bank_type		= METHOD_GPIO_7XX,
 	.bank_width		= 32,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device omap7xx_gpio4 = {
@@ -244,9 +271,14 @@ static struct __initdata omap_gpio_platform_data omap7xx_gpio5_config = {
 	.bank_width		= 32,
 	.regs			= &omap7xx_gpio_regs,
 =======
+<<<<<<< HEAD
+	.bank_width		= 32,
+	.regs			= &omap7xx_gpio_regs,
+=======
 	.bank_type		= METHOD_GPIO_7XX,
 	.bank_width		= 32,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device omap7xx_gpio5 = {
@@ -278,9 +310,14 @@ static struct __initdata omap_gpio_platform_data omap7xx_gpio6_config = {
 	.bank_width		= 32,
 	.regs			= &omap7xx_gpio_regs,
 =======
+<<<<<<< HEAD
+	.bank_width		= 32,
+	.regs			= &omap7xx_gpio_regs,
+=======
 	.bank_type		= METHOD_GPIO_7XX,
 	.bank_width		= 32,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device omap7xx_gpio6 = {
@@ -320,9 +357,12 @@ static int __init omap7xx_gpio_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	gpio_bank_count = ARRAY_SIZE(omap7xx_gpio_dev);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 postcore_initcall(omap7xx_gpio_init);

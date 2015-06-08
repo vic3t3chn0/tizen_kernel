@@ -55,7 +55,15 @@ struct gh_t_hash_tab *gh_create(u16 max_bucket, u16 val_size,
 	hash_tab->match = match;
 	hash_tab->delete = delete == NULL ? noop : delete;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	hash_tab->buckets =
+=======
 	hash_tab->buckets = (struct element **)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hash_tab->buckets = (struct element **)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    kzalloc(sizeof(struct element *) * max_bucket, GFP_KERNEL);
 	if (hash_tab->buckets == NULL) {
 		gh_delete(hash_tab);
@@ -95,6 +103,11 @@ void gh_delete(struct gh_t_hash_tab *hash_tab)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== gh_exit ========
  */
 
@@ -104,6 +117,10 @@ void gh_exit(void)
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== gh_find ========
  */
 
@@ -122,6 +139,11 @@ void *gh_find(struct gh_t_hash_tab *hash_tab, void *key)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== gh_init ========
  */
 
@@ -131,6 +153,10 @@ void gh_init(void)
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== gh_insert ========
  */
 

@@ -46,6 +46,9 @@ extern unsigned long get_phb_buid (struct device_node *);
 extern int rtas_setup_phb(struct pci_controller *phb);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_EEH
 
 void pci_addr_cache_build(void);
@@ -61,6 +64,8 @@ int rtas_read_config(struct pci_dn *, int where, int size, u32 *val);
 void eeh_mark_slot(struct device_node *dn, int mode_flag);
 void eeh_clear_slot(struct device_node *dn, int mode_flag);
 struct device_node *eeh_find_device_pe(struct device_node *dn);
+<<<<<<< HEAD
+=======
 =======
 extern unsigned long pci_probe_only;
 
@@ -151,6 +156,7 @@ void eeh_clear_slot (struct device_node *dn, int mode_flag);
  */
 struct device_node * find_device_pe(struct device_node *dn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void eeh_sysfs_add_device(struct pci_dev *pdev);
 void eeh_sysfs_remove_device(struct pci_dev *pdev);
@@ -161,13 +167,19 @@ static inline const char *eeh_pci_name(struct pci_dev *pdev)
 } 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline const char *eeh_driver_name(struct pci_dev *pdev)
 {
 	return (pdev && pdev->driver) ? pdev->driver->name : "<null>";
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_EEH */
 
 #else /* CONFIG_PCI */

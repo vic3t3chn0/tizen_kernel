@@ -5,7 +5,12 @@
    Copyright 2011,2012 Sony Corporation
    Copyright (c) 2012 Sony Mobile Communications AB.
 =======
+<<<<<<< HEAD
+   Copyright 2011,2012 Sony Corporation
+   Copyright (c) 2012 Sony Mobile Communications AB.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License version 2 as
@@ -86,6 +91,9 @@
 #define HIDP_BOOT_PROTOCOL_MODE		1
 #define HIDP_BLUETOOTH_VENDOR_ID	9
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	HIDP_WAITING_FOR_RETURN		10
 #define HIDP_WAITING_FOR_SEND_ACK	11
 #define HIDP_WAITING_FOR_RETURN		10
@@ -93,10 +101,13 @@
 #ifdef CONFIG_HID_SONY_PS3_CTRL_BT
 #define HIDP_DATA_SIZE_TRUE		8
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define HIDP_WAITING_FOR_RETURN		10
 #define HIDP_WAITING_FOR_SEND_ACK	11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct hidp_connadd_req {
 	int   ctrl_sock;	/* Connected control socket */
@@ -160,8 +171,11 @@ struct hidp_session {
 	atomic_t terminate;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct task_struct *task;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned char keys[8];
 	unsigned char leds;

@@ -17,6 +17,8 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 #define NEPONSET_CPLD_BASE      (0x10000000)
 #define Nep_p2v( x )            ((x) - NEPONSET_CPLD_BASE + 0xf3000000)
@@ -66,6 +68,7 @@
 #define MDM_CTL1_DCD2		(1 << 5)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NCR_GP01_OFF		(1<<0)
 #define NCR_TP_PWR_EN		(1<<1)
 #define NCR_MS_PWR_EN		(1<<2)
@@ -75,10 +78,16 @@
 #define NCR_A1VPP		(1<<6)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void neponset_ncr_frob(unsigned int, unsigned int);
 #define neponset_ncr_set(v)	neponset_ncr_frob(0, v)
 #define neponset_ncr_clear(v)	neponset_ncr_frob(v, 0)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

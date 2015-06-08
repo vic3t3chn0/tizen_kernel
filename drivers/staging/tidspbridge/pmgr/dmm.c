@@ -28,9 +28,18 @@
 /*  ----------------------------------- DSP/BIOS Bridge */
 #include <dspbridge/dbdefs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Trace & Debug */
 #include <dspbridge/dbc.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Trace & Debug */
+#include <dspbridge/dbc.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- OS Adaptation Layer */
 #include <dspbridge/sync.h>
 
@@ -54,8 +63,16 @@ struct dmm_object {
 	spinlock_t dmm_lock;	/* Lock to access dmm mgr */
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Globals */
 static u32 refs;		/* module reference count */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Globals */
+static u32 refs;		/* module reference count */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct map_page {
 	u32 region_size:15;
 	u32 mapped_size:15;
@@ -123,8 +140,16 @@ int dmm_create(struct dmm_object **dmm_manager,
 {
 	struct dmm_object *dmm_obj = NULL;
 	int status = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(dmm_manager != NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(dmm_manager != NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	*dmm_manager = NULL;
 	/* create, zero, and tag a cmm mgr object */
@@ -149,7 +174,14 @@ int dmm_destroy(struct dmm_object *dmm_mgr)
 	struct dmm_object *dmm_obj = (struct dmm_object *)dmm_mgr;
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dmm_mgr) {
 		status = dmm_delete_tables(dmm_obj);
 		if (!status)
@@ -169,7 +201,14 @@ int dmm_delete_tables(struct dmm_object *dmm_mgr)
 {
 	int status = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Delete all DMM tables */
 	if (dmm_mgr)
 		vfree(virtual_mapping_table);
@@ -179,6 +218,11 @@ int dmm_delete_tables(struct dmm_object *dmm_mgr)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dmm_exit ========
  *  Purpose:
  *      Discontinue usage of module; free resources when reference count
@@ -192,6 +236,10 @@ void dmm_exit(void)
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dmm_get_handle ========
  *  Purpose:
  *      Return the dynamic memory manager object for this device.
@@ -202,8 +250,16 @@ int dmm_get_handle(void *hprocessor, struct dmm_object **dmm_manager)
 	int status = 0;
 	struct dev_object *hdev_obj;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(dmm_manager != NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+	DBC_REQUIRE(dmm_manager != NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hprocessor != NULL)
 		status = proc_get_dev_object(hprocessor, &hdev_obj);
 	else
@@ -216,6 +272,11 @@ int dmm_get_handle(void *hprocessor, struct dmm_object **dmm_manager)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dmm_init ========
  *  Purpose:
  *      Initializes private state of DMM module.
@@ -238,6 +299,10 @@ bool dmm_init(void)
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== dmm_map_memory ========
  *  Purpose:
  *      Add a mapping block to the reserved chunk. DMM assumes that this block

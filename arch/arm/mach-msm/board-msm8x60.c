@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2010, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -14,6 +18,9 @@
  * GNU General Public License for more details.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/err.h>
@@ -10573,6 +10580,8 @@ MACHINE_START(MSM8X60_DRAGON, "QCT MSM8X60 DRAGON")
 	.init_early = msm8x60_charm_init_early,
 	.restart = msm_restart,
 	.smp = &scorpion_smp_ops,
+<<<<<<< HEAD
+=======
 =======
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
@@ -10656,4 +10665,5 @@ MACHINE_START(MSM8X60_FFA, "QCT MSM8X60 FFA")
 	.init_machine = msm8x60_init,
 	.timer = &msm_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

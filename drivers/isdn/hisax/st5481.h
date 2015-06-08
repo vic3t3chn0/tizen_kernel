@@ -4,7 +4,15 @@
  * Author       Frode Isaksen
  * Copyright    2001 by Frode Isaksen      <fisaksen@bewan.com>
  *              2001 by Kai Germaschewski  <kai.germaschewski@gmx.de>
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+=======
  * 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
  *
@@ -31,7 +39,15 @@
 #define EP_B2_IN  0x05U /* B2 channel in */
 #define EP_D_OUT  0x06U /* D channel out */
 #define EP_D_IN   0x07U /* D channel in */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+  
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 // Number of isochronous packets. With 20 packets we get
 // 50 interrupts/sec for each endpoint.
 
@@ -51,7 +67,15 @@
 #define B_FLOW_ADJUST 2
 
 // Registers that are written using vendor specific device request
+<<<<<<< HEAD
+<<<<<<< HEAD
+// on endpoint 0.
+=======
 // on endpoint 0. 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+// on endpoint 0. 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define LBA			0x02 /* S loopback */
 #define SET_DEFAULT		0x06 /* Soft reset */
@@ -84,7 +108,15 @@
 #define	FFMSK_B2		0x50 /* B2 fifo interrupt MASK register */
 #define GPIO_DIR		0x52 /* GPIO pins direction registers */
 #define GPIO_OUT		0x53 /* GPIO pins output register */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define GPIO_IN			0x54 /* GPIO pins input register */
+=======
 #define GPIO_IN			0x54 /* GPIO pins input register */ 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define GPIO_IN			0x54 /* GPIO pins input register */ 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TXCI			0x56 /* CI command to be transmitted */
 
 
@@ -124,8 +156,18 @@
 #define IN_COUNTER_ZEROED	0x02 /* In down-counter reached 0 */
 #define OUT_COUNTER_ZEROED	0x01 /* Out down-counter reached 0 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ANY_REC_INT	(IN_OVERRUN + IN_UP + IN_DOWN + IN_COUNTER_ZEROED)
+#define ANY_XMIT_INT	(OUT_UNDERRUN + OUT_UP + OUT_DOWN + OUT_COUNTER_ZEROED)
+=======
 #define ANY_REC_INT	(IN_OVERRUN+IN_UP+IN_DOWN+IN_COUNTER_ZEROED)
 #define ANY_XMIT_INT	(OUT_UNDERRUN+OUT_UP+OUT_DOWN+OUT_COUNTER_ZEROED)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define ANY_REC_INT	(IN_OVERRUN+IN_UP+IN_DOWN+IN_COUNTER_ZEROED)
+#define ANY_XMIT_INT	(OUT_UNDERRUN+OUT_UP+OUT_DOWN+OUT_COUNTER_ZEROED)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 // Level 1 commands that are sent using the TXCI device request
@@ -158,7 +200,15 @@ enum {
 	ST_DOUT_NORMAL,
 
 	ST_DOUT_WAIT_FOR_UNDERRUN,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ST_DOUT_WAIT_FOR_NOT_BUSY,
+=======
         ST_DOUT_WAIT_FOR_NOT_BUSY,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        ST_DOUT_WAIT_FOR_NOT_BUSY,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ST_DOUT_WAIT_FOR_STOP,
 	ST_DOUT_WAIT_FOR_RESET,
 };
@@ -188,9 +238,21 @@ enum {
 	ST_L1_F8,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define L1_STATE_COUNT (ST_L1_F8 + 1)
+
+// The first 16 entries match the Level 1 indications that
+=======
 #define L1_STATE_COUNT (ST_L1_F8+1)
 
 // The first 16 entries match the Level 1 indications that 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define L1_STATE_COUNT (ST_L1_F8+1)
+
+// The first 16 entries match the Level 1 indications that 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 // are found at offset 4 (CCIST) in the interrupt packet
 
 enum {
@@ -217,6 +279,19 @@ enum {
 
 #define L1_EVENT_COUNT (EV_TIMER3 + 1)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ERR(format, arg...)						\
+	printk(KERN_ERR "%s:%s: " format "\n" , __FILE__,  __func__ , ## arg)
+
+#define WARNING(format, arg...)						\
+	printk(KERN_WARNING "%s:%s: " format "\n" , __FILE__,  __func__ , ## arg)
+
+#define INFO(format, arg...)						\
+	printk(KERN_INFO "%s:%s: " format "\n" , __FILE__,  __func__ , ## arg)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ERR(format, arg...) \
 printk(KERN_ERR "%s:%s: " format "\n" , __FILE__,  __func__ , ## arg)
 
@@ -225,6 +300,10 @@ printk(KERN_WARNING "%s:%s: " format "\n" , __FILE__,  __func__ , ## arg)
 
 #define INFO(format, arg...) \
 printk(KERN_INFO "%s:%s: " format "\n" , __FILE__,  __func__ , ## arg)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/isdn/hdlc.h>
 #include "fsm.h"
@@ -237,7 +316,15 @@ printk(KERN_INFO "%s:%s: " format "\n" , __FILE__,  __func__ , ## arg)
 
 /* Generic FIFO structure */
 struct fifo {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u_char r, w, count, size;
+=======
 	u_char r,w,count,size;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u_char r,w,count,size;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t lock;
 };
 
@@ -269,7 +356,15 @@ static inline int fifo_add(struct fifo *fifo)
 		index = -1;
 	} else {
 		// Return index where to get the next data to add to the FIFO
+<<<<<<< HEAD
+<<<<<<< HEAD
+		index = fifo->w++ & (fifo->size - 1);
+=======
 		index = fifo->w++ & (fifo->size-1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		index = fifo->w++ & (fifo->size-1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fifo->count++;
 	}
 	spin_unlock_irqrestore(&fifo->lock, flags);
@@ -294,7 +389,15 @@ static inline int fifo_remove(struct fifo *fifo)
 		index = -1;
 	} else {
 		// Return index where to get the next data from the FIFO
+<<<<<<< HEAD
+<<<<<<< HEAD
+		index = fifo->r++ & (fifo->size - 1);
+=======
 		index = fifo->r++ & (fifo->size-1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		index = fifo->r++ & (fifo->size-1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fifo->count--;
 	}
 	spin_unlock_irqrestore(&fifo->lock, flags);
@@ -311,14 +414,30 @@ typedef struct ctrl_msg {
 	struct usb_ctrlrequest dr;
 	ctrl_complete_t complete;
 	void *context;
+<<<<<<< HEAD
+<<<<<<< HEAD
+} ctrl_msg;
+=======
 } ctrl_msg; 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+} ctrl_msg; 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* FIFO of ctrl messages waiting to be sent */
 #define MAX_EP0_MSG 16
 struct ctrl_msg_fifo {
 	struct fifo f;
 	struct ctrl_msg data[MAX_EP0_MSG];
+<<<<<<< HEAD
+<<<<<<< HEAD
+};
+=======
 };	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+};	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define MAX_DFRAME_LEN_L1	300
 #define HSCX_BUFMAX	4096
@@ -330,7 +449,15 @@ struct st5481_ctrl {
 };
 
 struct st5481_intr {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	//	struct evt_fifo evt_fifo;
+=======
   //	struct evt_fifo evt_fifo;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+  //	struct evt_fifo evt_fifo;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct urb *urb;
 };
 
@@ -407,6 +534,19 @@ struct st5481_adapter {
  * Submit an URB with error reporting. This is a macro so
  * the __func__ returns the caller function name.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define SUBMIT_URB(urb, mem_flags)					\
+	({								\
+		int status;						\
+		if ((status = usb_submit_urb(urb, mem_flags)) < 0) {	\
+			WARNING("usb_submit_urb failed,status=%d", status); \
+		}							\
+		status;							\
+	})
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SUBMIT_URB(urb, mem_flags) \
 ({ \
 	int status; \
@@ -415,13 +555,25 @@ struct st5481_adapter {
 	} \
         status; \
 })
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * USB double buffering, return the URB index (0 or 1).
  */
 static inline int get_buf_nr(struct urb *urbs[], struct urb *urb)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return (urbs[0] == urb ? 0 : 1);
+=======
         return (urbs[0]==urb ? 0 : 1); 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        return (urbs[0]==urb ? 0 : 1); 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* ---------------------------------------------------------------------- */
@@ -442,6 +594,22 @@ void st5481_d_exit(void);
 
 /* USB */
 void st5481_ph_command(struct st5481_adapter *adapter, unsigned int command);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int st5481_setup_isocpipes(struct urb *urb[2], struct usb_device *dev,
+			   unsigned int pipe, int num_packets,
+			   int packet_size, int buf_size,
+			   usb_complete_t complete, void *context);
+void st5481_release_isocpipes(struct urb *urb[2]);
+
+void st5481_usb_pipe_reset(struct st5481_adapter *adapter,
+			   u_char pipe, ctrl_complete_t complete, void *context);
+void st5481_usb_device_ctrl_msg(struct st5481_adapter *adapter,
+				u8 request, u16 value,
+				ctrl_complete_t complete, void *context);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int st5481_setup_isocpipes(struct urb* urb[2], struct usb_device *dev, 
 			   unsigned int pipe, int num_packets,
 			   int packet_size, int buf_size,
@@ -453,6 +621,10 @@ void st5481_usb_pipe_reset(struct st5481_adapter *adapter,
 void st5481_usb_device_ctrl_msg(struct st5481_adapter *adapter,
 			 u8 request, u16 value,
 			 ctrl_complete_t complete, void *context);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int  st5481_setup_usb(struct st5481_adapter *adapter);
 void st5481_release_usb(struct st5481_adapter *adapter);
 void st5481_start(struct st5481_adapter *adapter);
@@ -468,18 +640,43 @@ extern int st5481_debug;
 
 #ifdef CONFIG_HISAX_DEBUG
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define DBG_ISO_PACKET(level, urb)					\
+	if (level & __debug_variable) dump_iso_packet(__func__, urb)
+=======
 #define DBG_ISO_PACKET(level,urb) \
   if (level & __debug_variable) dump_iso_packet(__func__,urb)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define DBG_ISO_PACKET(level,urb) \
+  if (level & __debug_variable) dump_iso_packet(__func__,urb)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __attribute__((unused))
 dump_iso_packet(const char *name, struct urb *urb)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int i, j;
+	int len, ofs;
+	u_char *data;
+
+	printk(KERN_DEBUG "%s: packets=%d,errors=%d\n",
+	       name, urb->number_of_packets, urb->error_count);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i,j;
 	int len,ofs;
 	u_char *data;
 
 	printk(KERN_DEBUG "%s: packets=%d,errors=%d\n",
 	       name,urb->number_of_packets,urb->error_count);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i  < urb->number_of_packets; ++i) {
 		if (urb->pipe & USB_DIR_IN) {
 			len = urb->iso_frame_desc[i].actual_length;
@@ -487,11 +684,25 @@ dump_iso_packet(const char *name, struct urb *urb)
 			len = urb->iso_frame_desc[i].length;
 		}
 		ofs = urb->iso_frame_desc[i].offset;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_DEBUG "len=%.2d,ofs=%.3d ", len, ofs);
+		if (len) {
+			data = urb->transfer_buffer + ofs;
+			for (j = 0; j < len; j++) {
+				printk("%.2x", data[j]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_DEBUG "len=%.2d,ofs=%.3d ",len,ofs);
 		if (len) {
 			data = urb->transfer_buffer+ofs;
 			for (j=0; j < len; j++) {
 				printk ("%.2x", data[j]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 		printk("\n");
@@ -513,6 +724,19 @@ static inline const char *ST5481_CMD_string(int evt)
 	case ST5481_CMD_ARL: return "ARL";
 	case ST5481_CMD_PDN: return "PDN";
 	};
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	sprintf(s, "0x%x", evt);
+	return s;
+}
+
+#else
+
+#define DBG_ISO_PACKET(level, urb) do {} while (0)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	
 	sprintf(s,"0x%x",evt);
 	return s;
@@ -521,9 +745,21 @@ static inline const char *ST5481_CMD_string(int evt)
 #else
 
 #define DBG_ISO_PACKET(level,urb) do {} while (0)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif
+=======
 #endif 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -37,9 +37,21 @@ struct zl10353_state {
 
 	struct zl10353_config config;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 bandwidth;
+	u32 ucblocks;
+	u32 frequency;
+=======
 	enum fe_bandwidth bandwidth;
        u32 ucblocks;
        u32 frequency;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	enum fe_bandwidth bandwidth;
+       u32 ucblocks;
+       u32 frequency;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int debug;
@@ -122,17 +134,38 @@ static void zl10353_dump_regs(struct dvb_frontend *fe)
 }
 
 static void zl10353_calc_nominal_rate(struct dvb_frontend *fe,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				      u32 bandwidth,
+=======
 				      enum fe_bandwidth bandwidth,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				      enum fe_bandwidth bandwidth,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      u16 *nominal_rate)
 {
 	struct zl10353_state *state = fe->demodulator_priv;
 	u32 adc_clock = 450560; /* 45.056 MHz */
 	u64 value;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 bw = bandwidth / 1000000;
+=======
 	u8 bw;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u8 bw;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (state->config.adc_clock)
 		adc_clock = state->config.adc_clock;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bandwidth) {
 	case BANDWIDTH_6_MHZ:
 		bw = 6;
@@ -146,6 +179,10 @@ static void zl10353_calc_nominal_rate(struct dvb_frontend *fe,
 		break;
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	value = (u64)10 * (1 << 23) / 7 * 125;
 	value = (bw * value) + adc_clock / 2;
 	do_div(value, adc_clock);
@@ -192,16 +229,39 @@ static int zl10353_sleep(struct dvb_frontend *fe)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int zl10353_set_parameters(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
+=======
 static int zl10353_set_parameters(struct dvb_frontend *fe,
 				  struct dvb_frontend_parameters *param)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int zl10353_set_parameters(struct dvb_frontend *fe,
+				  struct dvb_frontend_parameters *param)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct zl10353_state *state = fe->demodulator_priv;
 	u16 nominal_rate, input_freq;
 	u8 pllbuf[6] = { 0x67 }, acq_ctl = 0;
 	u16 tps = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	state->frequency = c->frequency;
+=======
 	struct dvb_ofdm_parameters *op = &param->u.ofdm;
 
        state->frequency = param->frequency;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct dvb_ofdm_parameters *op = &param->u.ofdm;
+
+       state->frequency = param->frequency;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	zl10353_single_write(fe, RESET, 0x80);
 	udelay(200);
@@ -211,6 +271,19 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 
 	zl10353_single_write(fe, AGC_TARGET, 0x28);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (c->transmission_mode != TRANSMISSION_MODE_AUTO)
+		acq_ctl |= (1 << 0);
+	if (c->guard_interval != GUARD_INTERVAL_AUTO)
+		acq_ctl |= (1 << 1);
+	zl10353_single_write(fe, ACQ_CTL, acq_ctl);
+
+	switch (c->bandwidth_hz) {
+	case 6000000:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (op->transmission_mode != TRANSMISSION_MODE_AUTO)
 		acq_ctl |= (1 << 0);
 	if (op->guard_interval != GUARD_INTERVAL_AUTO)
@@ -219,34 +292,79 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 
 	switch (op->bandwidth) {
 	case BANDWIDTH_6_MHZ:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* These are extrapolated from the 7 and 8MHz values */
 		zl10353_single_write(fe, MCLK_RATIO, 0x97);
 		zl10353_single_write(fe, 0x64, 0x34);
 		zl10353_single_write(fe, 0xcc, 0xdd);
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 7000000:
+=======
 	case BANDWIDTH_7_MHZ:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case BANDWIDTH_7_MHZ:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		zl10353_single_write(fe, MCLK_RATIO, 0x86);
 		zl10353_single_write(fe, 0x64, 0x35);
 		zl10353_single_write(fe, 0xcc, 0x73);
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	default:
+		c->bandwidth_hz = 8000000;
+		/* fall though */
+	case 8000000:
+=======
 	case BANDWIDTH_8_MHZ:
 	default:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case BANDWIDTH_8_MHZ:
+	default:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		zl10353_single_write(fe, MCLK_RATIO, 0x75);
 		zl10353_single_write(fe, 0x64, 0x36);
 		zl10353_single_write(fe, 0xcc, 0x73);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	zl10353_calc_nominal_rate(fe, c->bandwidth_hz, &nominal_rate);
+	zl10353_single_write(fe, TRL_NOMINAL_RATE_1, msb(nominal_rate));
+	zl10353_single_write(fe, TRL_NOMINAL_RATE_0, lsb(nominal_rate));
+	state->bandwidth = c->bandwidth_hz;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	zl10353_calc_nominal_rate(fe, op->bandwidth, &nominal_rate);
 	zl10353_single_write(fe, TRL_NOMINAL_RATE_1, msb(nominal_rate));
 	zl10353_single_write(fe, TRL_NOMINAL_RATE_0, lsb(nominal_rate));
 	state->bandwidth = op->bandwidth;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	zl10353_calc_input_freq(fe, &input_freq);
 	zl10353_single_write(fe, INPUT_FREQ_1, msb(input_freq));
 	zl10353_single_write(fe, INPUT_FREQ_0, lsb(input_freq));
 
 	/* Hint at TPS settings */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (c->code_rate_HP) {
+=======
 	switch (op->code_rate_HP) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->code_rate_HP) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case FEC_2_3:
 		tps |= (1 << 7);
 		break;
@@ -266,7 +384,15 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (c->code_rate_LP) {
+=======
 	switch (op->code_rate_LP) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->code_rate_LP) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case FEC_2_3:
 		tps |= (1 << 4);
 		break;
@@ -283,14 +409,32 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 	case FEC_AUTO:
 		break;
 	case FEC_NONE:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (c->hierarchy == HIERARCHY_AUTO ||
+		    c->hierarchy == HIERARCHY_NONE)
+=======
 		if (op->hierarchy_information == HIERARCHY_AUTO ||
 		    op->hierarchy_information == HIERARCHY_NONE)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (op->hierarchy_information == HIERARCHY_AUTO ||
+		    op->hierarchy_information == HIERARCHY_NONE)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 	default:
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (c->modulation) {
+=======
 	switch (op->constellation) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->constellation) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case QPSK:
 		break;
 	case QAM_AUTO:
@@ -304,7 +448,15 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (c->transmission_mode) {
+=======
 	switch (op->transmission_mode) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->transmission_mode) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case TRANSMISSION_MODE_2K:
 	case TRANSMISSION_MODE_AUTO:
 		break;
@@ -315,7 +467,15 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (c->guard_interval) {
+=======
 	switch (op->guard_interval) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->guard_interval) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case GUARD_INTERVAL_1_32:
 	case GUARD_INTERVAL_AUTO:
 		break;
@@ -332,7 +492,15 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (c->hierarchy) {
+=======
 	switch (op->hierarchy_information) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->hierarchy_information) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case HIERARCHY_AUTO:
 	case HIERARCHY_NONE:
 		break;
@@ -362,12 +530,28 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 	 */
 	if (state->config.no_tuner) {
 		if (fe->ops.tuner_ops.set_params) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fe->ops.tuner_ops.set_params(fe);
+=======
 			fe->ops.tuner_ops.set_params(fe, param);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fe->ops.tuner_ops.set_params(fe, param);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (fe->ops.i2c_gate_ctrl)
 				fe->ops.i2c_gate_ctrl(fe, 0);
 		}
 	} else if (fe->ops.tuner_ops.calc_regs) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fe->ops.tuner_ops.calc_regs(fe, pllbuf + 1, 5);
+=======
 		fe->ops.tuner_ops.calc_regs(fe, param, pllbuf + 1, 5);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fe->ops.tuner_ops.calc_regs(fe, param, pllbuf + 1, 5);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pllbuf[1] <<= 1;
 		zl10353_write(fe, pllbuf, sizeof(pllbuf));
 	}
@@ -383,11 +567,24 @@ static int zl10353_set_parameters(struct dvb_frontend *fe,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int zl10353_get_parameters(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
+	struct zl10353_state *state = fe->demodulator_priv;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int zl10353_get_parameters(struct dvb_frontend *fe,
 				  struct dvb_frontend_parameters *param)
 {
 	struct zl10353_state *state = fe->demodulator_priv;
 	struct dvb_ofdm_parameters *op = &param->u.ofdm;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int s6, s9;
 	u16 tps;
 	static const u8 tps_fec_to_api[8] = {
@@ -411,6 +608,30 @@ static int zl10353_get_parameters(struct dvb_frontend *fe,
 	tps = zl10353_read_register(state, TPS_RECEIVED_1) << 8 |
 	      zl10353_read_register(state, TPS_RECEIVED_0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	c->code_rate_HP = tps_fec_to_api[(tps >> 7) & 7];
+	c->code_rate_LP = tps_fec_to_api[(tps >> 4) & 7];
+
+	switch ((tps >> 13) & 3) {
+	case 0:
+		c->modulation = QPSK;
+		break;
+	case 1:
+		c->modulation = QAM_16;
+		break;
+	case 2:
+		c->modulation = QAM_64;
+		break;
+	default:
+		c->modulation = QAM_AUTO;
+		break;
+	}
+
+	c->transmission_mode = (tps & 0x01) ? TRANSMISSION_MODE_8K :
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	op->code_rate_HP = tps_fec_to_api[(tps >> 7) & 7];
 	op->code_rate_LP = tps_fec_to_api[(tps >> 4) & 7];
 
@@ -430,10 +651,32 @@ static int zl10353_get_parameters(struct dvb_frontend *fe,
 	}
 
 	op->transmission_mode = (tps & 0x01) ? TRANSMISSION_MODE_8K :
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       TRANSMISSION_MODE_2K;
 
 	switch ((tps >> 2) & 3) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		c->guard_interval = GUARD_INTERVAL_1_32;
+		break;
+	case 1:
+		c->guard_interval = GUARD_INTERVAL_1_16;
+		break;
+	case 2:
+		c->guard_interval = GUARD_INTERVAL_1_8;
+		break;
+	case 3:
+		c->guard_interval = GUARD_INTERVAL_1_4;
+		break;
+	default:
+		c->guard_interval = GUARD_INTERVAL_AUTO;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		op->guard_interval = GUARD_INTERVAL_1_32;
 		break;
 	case 1:
@@ -447,11 +690,39 @@ static int zl10353_get_parameters(struct dvb_frontend *fe,
 		break;
 	default:
 		op->guard_interval = GUARD_INTERVAL_AUTO;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
 	switch ((tps >> 10) & 7) {
 	case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		c->hierarchy = HIERARCHY_NONE;
+		break;
+	case 1:
+		c->hierarchy = HIERARCHY_1;
+		break;
+	case 2:
+		c->hierarchy = HIERARCHY_2;
+		break;
+	case 3:
+		c->hierarchy = HIERARCHY_4;
+		break;
+	default:
+		c->hierarchy = HIERARCHY_AUTO;
+		break;
+	}
+
+	c->frequency = state->frequency;
+	c->bandwidth_hz = state->bandwidth;
+	c->inversion = INVERSION_AUTO;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		op->hierarchy_information = HIERARCHY_NONE;
 		break;
 	case 1:
@@ -471,6 +742,10 @@ static int zl10353_get_parameters(struct dvb_frontend *fe,
        param->frequency = state->frequency;
 	op->bandwidth = state->bandwidth;
 	param->inversion = INVERSION_AUTO;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -651,10 +926,22 @@ error:
 }
 
 static struct dvb_frontend_ops zl10353_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBT },
+	.info = {
+		.name			= "Zarlink ZL10353 DVB-T",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.info = {
 		.name			= "Zarlink ZL10353 DVB-T",
 		.type			= FE_OFDM,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min		= 174000000,
 		.frequency_max		= 862000000,
 		.frequency_stepsize	= 166667,

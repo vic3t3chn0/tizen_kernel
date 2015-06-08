@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HAVE_IMX_GPC
 	bool
 
@@ -30,6 +33,8 @@ config ARCH_MX51
 	bool
 
 config ARCH_MX53
+<<<<<<< HEAD
+=======
 =======
 config IMX_HAVE_DMA_V1
 	bool
@@ -43,6 +48,7 @@ config ARCH_MX31
 
 config ARCH_MX35
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool
 
 config SOC_IMX1
@@ -51,9 +57,14 @@ config SOC_IMX1
 	select ARCH_MX1
 	select CPU_ARM920T
 =======
+<<<<<<< HEAD
+	select ARCH_MX1
+	select CPU_ARM920T
+=======
 	select CPU_ARM920T
 	select IMX_HAVE_DMA_V1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_IOMUX_V1
 	select MXC_AVIC
 
@@ -63,10 +74,15 @@ config SOC_IMX21
 	select MACH_MX21
 	select CPU_ARM926T
 =======
+<<<<<<< HEAD
+	select MACH_MX21
+	select CPU_ARM926T
+=======
 	select CPU_ARM926T
 	select ARCH_MXC_AUDMUX_V1
 	select IMX_HAVE_DMA_V1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_IOMUX_V1
 	select MXC_AVIC
 
@@ -76,9 +92,14 @@ config SOC_IMX25
 	select ARCH_MX25
 	select CPU_ARM926T
 =======
+<<<<<<< HEAD
+	select ARCH_MX25
+	select CPU_ARM926T
+=======
 	select CPU_ARM926T
 	select ARCH_MXC_AUDMUX_V2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select ARCH_MXC_IOMUX_V3
 	select MXC_AVIC
 
@@ -88,10 +109,15 @@ config SOC_IMX27
 	select MACH_MX27
 	select CPU_ARM926T
 =======
+<<<<<<< HEAD
+	select MACH_MX27
+	select CPU_ARM926T
+=======
 	select CPU_ARM926T
 	select ARCH_MXC_AUDMUX_V1
 	select IMX_HAVE_DMA_V1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_IOMUX_V1
 	select MXC_AVIC
 
@@ -103,16 +129,24 @@ config SOC_IMX31
 	select MXC_AVIC
 	select SMP_ON_UP if SMP
 =======
+<<<<<<< HEAD
+	select MXC_AVIC
+	select SMP_ON_UP if SMP
+=======
 	select ARCH_MXC_AUDMUX_V2
 	select ARCH_MX31
 	select MXC_AVIC
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config SOC_IMX35
 	bool
 	select CPU_V6
 	select ARCH_MXC_IOMUX_V3
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_EPIT
 	select MXC_AVIC
 	select SMP_ON_UP if SMP
@@ -143,6 +177,8 @@ config	SOC_IMX53
 	select ARCH_MX53
 
 if ARCH_IMX_V4_V5
+<<<<<<< HEAD
+=======
 =======
 	select ARCH_MXC_AUDMUX_V2
 	select HAVE_EPIT
@@ -152,6 +188,7 @@ if ARCH_IMX_V4_V5
 
 if ARCH_MX1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 comment "MX1 platforms:"
 config MACH_MXLADS
@@ -178,11 +215,17 @@ config MACH_APF9328
 <<<<<<< HEAD
 	select IMX_HAVE_PLATFORM_IMX_I2C
 =======
+<<<<<<< HEAD
+	select IMX_HAVE_PLATFORM_IMX_I2C
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_PLATFORM_IMX_UART
 	help
 	  Say Yes here if you are using the Armadeus APF9328 development board
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 endif
@@ -210,6 +253,7 @@ endif
 if MACH_MX21
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "MX21 platforms:"
 
 config MACH_MX21ADS
@@ -225,11 +269,14 @@ config MACH_MX21ADS
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 endif
 
 if ARCH_MX25
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "MX25 platforms:"
 
 config MACH_MX25_3DS
@@ -238,7 +285,11 @@ config MACH_MX25_3DS
 <<<<<<< HEAD
 	select IMX_HAVE_PLATFORM_FLEXCAN
 =======
+<<<<<<< HEAD
+	select IMX_HAVE_PLATFORM_FLEXCAN
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_PLATFORM_FSL_USB2_UDC
 	select IMX_HAVE_PLATFORM_IMX2_WDT
 	select IMX_HAVE_PLATFORM_IMXDI_RTC
@@ -253,8 +304,12 @@ config MACH_MX25_3DS
 <<<<<<< HEAD
 config MACH_EUKREA_CPUIMX25SD
 =======
+<<<<<<< HEAD
+config MACH_EUKREA_CPUIMX25SD
+=======
 config MACH_EUKREA_CPUIMX25
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "Support Eukrea CPUIMX25 Platform"
 	select SOC_IMX25
 	select IMX_HAVE_PLATFORM_FLEXCAN
@@ -273,8 +328,12 @@ choice
 <<<<<<< HEAD
 	depends on MACH_EUKREA_CPUIMX25SD
 =======
+<<<<<<< HEAD
+	depends on MACH_EUKREA_CPUIMX25SD
+=======
 	depends on MACH_EUKREA_CPUIMX25
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default MACH_EUKREA_MBIMXSD25_BASEBOARD
 
 config MACH_EUKREA_MBIMXSD25_BASEBOARD
@@ -284,7 +343,11 @@ config MACH_EUKREA_MBIMXSD25_BASEBOARD
 <<<<<<< HEAD
 	select LEDS_GPIO_REGISTER
 =======
+<<<<<<< HEAD
+	select LEDS_GPIO_REGISTER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This adds board specific devices that can be found on Eukrea's
 	  MBIMXSD evaluation board.
@@ -293,11 +356,14 @@ endchoice
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 endif
 
 if MACH_MX27
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "MX27 platforms:"
 
 config MACH_MX27ADS
@@ -389,7 +455,11 @@ config MACH_EUKREA_MBIMX27_BASEBOARD
 <<<<<<< HEAD
 	select LEDS_GPIO_REGISTER
 =======
+<<<<<<< HEAD
+	select LEDS_GPIO_REGISTER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This adds board specific devices that can be found on Eukrea's
 	  MBIMX27 evaluation board.
@@ -402,16 +472,22 @@ config MACH_MX27_3DS
 	select IMX_HAVE_PLATFORM_FSL_USB2_UDC
 	select IMX_HAVE_PLATFORM_IMX2_WDT
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_PLATFORM_IMX_FB
 	select IMX_HAVE_PLATFORM_IMX_I2C
 	select IMX_HAVE_PLATFORM_IMX_KEYPAD
 	select IMX_HAVE_PLATFORM_IMX_UART
 	select IMX_HAVE_PLATFORM_MX2_CAMERA
+<<<<<<< HEAD
+=======
 =======
 	select IMX_HAVE_PLATFORM_IMX_I2C
 	select IMX_HAVE_PLATFORM_IMX_KEYPAD
 	select IMX_HAVE_PLATFORM_IMX_UART
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_PLATFORM_MXC_EHCI
 	select IMX_HAVE_PLATFORM_MXC_MMC
 	select IMX_HAVE_PLATFORM_SPI_IMX
@@ -429,14 +505,20 @@ config MACH_IMX27_VISSTRIM_M10
 	select IMX_HAVE_PLATFORM_IMX_SSI
 	select IMX_HAVE_PLATFORM_IMX_UART
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_PLATFORM_MX2_CAMERA
 	select IMX_HAVE_PLATFORM_MXC_EHCI
 	select IMX_HAVE_PLATFORM_MXC_MMC
 	select LEDS_GPIO_REGISTER
+<<<<<<< HEAD
+=======
 =======
 	select IMX_HAVE_PLATFORM_MXC_MMC
 	select IMX_HAVE_PLATFORM_MXC_EHCI
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Include support for Visstrim_m10 platform and its different variants.
 	  This includes specific configurations for the board and its
@@ -492,6 +574,9 @@ config MACH_IMX27IPCAM
 	  configurations for the board and its peripherals.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MACH_IMX27_DT
 	bool "Support i.MX27 platforms from device tree"
 	select SOC_IMX27
@@ -503,11 +588,14 @@ config MACH_IMX27_DT
 endif
 
 if ARCH_IMX_V6_V7
+<<<<<<< HEAD
+=======
 =======
 endif
 
 if ARCH_MX3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 comment "MX31 platforms:"
 
@@ -560,7 +648,11 @@ config MACH_MX31LITE
 <<<<<<< HEAD
 	select LEDS_GPIO_REGISTER
 =======
+<<<<<<< HEAD
+	select LEDS_GPIO_REGISTER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Include support for MX31 LITEKIT platform. This includes specific
 	  configurations for the board and its peripherals.
@@ -606,7 +698,11 @@ config MACH_MX31_3DS
 <<<<<<< HEAD
 	select IMX_HAVE_PLATFORM_MXC_MMC
 =======
+<<<<<<< HEAD
+	select IMX_HAVE_PLATFORM_MXC_MMC
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_PLATFORM_MXC_NAND
 	select IMX_HAVE_PLATFORM_SPI_IMX
 	select MXC_ULPI if USB_ULPI
@@ -630,7 +726,11 @@ config MACH_MX31MOBOARD
 <<<<<<< HEAD
 	select IMX_HAVE_PLATFORM_IMX2_WDT
 =======
+<<<<<<< HEAD
+	select IMX_HAVE_PLATFORM_IMX2_WDT
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select IMX_HAVE_PLATFORM_IMX_I2C
 	select IMX_HAVE_PLATFORM_IMX_UART
 	select IMX_HAVE_PLATFORM_IPU_CORE
@@ -640,7 +740,11 @@ config MACH_MX31MOBOARD
 <<<<<<< HEAD
 	select LEDS_GPIO_REGISTER
 =======
+<<<<<<< HEAD
+	select LEDS_GPIO_REGISTER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MXC_ULPI if USB_ULPI
 	help
 	  Include support for mx31moboard platform. This includes specific
@@ -653,7 +757,11 @@ config MACH_QONG
 <<<<<<< HEAD
 	select IMX_HAVE_PLATFORM_IMX2_WDT
 =======
+<<<<<<< HEAD
+	select IMX_HAVE_PLATFORM_IMX2_WDT
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Include support for Dave/DENX QongEVB-LITE platform. This includes
 	  specific configurations for the board and its peripherals.
@@ -728,8 +836,12 @@ config MACH_MX35_3DS
 <<<<<<< HEAD
 config MACH_EUKREA_CPUIMX35SD
 =======
+<<<<<<< HEAD
+config MACH_EUKREA_CPUIMX35SD
+=======
 config MACH_EUKREA_CPUIMX35
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool "Support Eukrea CPUIMX35 Platform"
 	select SOC_IMX35
 	select IMX_HAVE_PLATFORM_FLEXCAN
@@ -750,8 +862,12 @@ choice
 <<<<<<< HEAD
 	depends on MACH_EUKREA_CPUIMX35SD
 =======
+<<<<<<< HEAD
+	depends on MACH_EUKREA_CPUIMX35SD
+=======
 	depends on MACH_EUKREA_CPUIMX35
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default MACH_EUKREA_MBIMXSD35_BASEBOARD
 
 config MACH_EUKREA_MBIMXSD35_BASEBOARD
@@ -762,7 +878,11 @@ config MACH_EUKREA_MBIMXSD35_BASEBOARD
 <<<<<<< HEAD
 	select LEDS_GPIO_REGISTER
 =======
+<<<<<<< HEAD
+	select LEDS_GPIO_REGISTER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This adds board specific devices that can be found on Eukrea's
 	  MBIMXSD evaluation board.
@@ -786,6 +906,9 @@ config MACH_VPR200
 	  configurations for the board and its peripherals.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 comment "i.MX5 platforms:"
 
 config MACH_MX50_RDP
@@ -1004,6 +1127,9 @@ config SOC_IMX6Q
 	help
 	  This enables support for Freescale i.MX6 Quad processor.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif

@@ -18,8 +18,12 @@ quiet_cmd_make-caps = GEN     $@
 <<<<<<< HEAD
 cmd_make-caps = echo "static const char *const capability_names[] = {" > $@ ;\
 =======
+<<<<<<< HEAD
+cmd_make-caps = echo "static const char *const capability_names[] = {" > $@ ;\
+=======
 cmd_make-caps = echo "static const char *capability_names[] = {" > $@ ;\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sed $< >>$@ -r -n -e '/CAP_FS_MASK/d' \
 	-e 's/^\#define[ \t]+CAP_([A-Z0-9_]+)[ \t]+([0-9]+)/[\2] = "\L\1",/p';\
 	echo "};" >> $@
@@ -35,8 +39,12 @@ cmd_make-caps = echo "static const char *capability_names[] = {" > $@ ;\
 <<<<<<< HEAD
 # RLIMIT defines to the order defined in asm-generic/resource.h  This is
 =======
+<<<<<<< HEAD
+# RLIMIT defines to the order defined in asm-generic/resource.h  This is
+=======
 # RLIMIT defines to the order defined in asm-generic/resource.h  Thi is
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # required by policy load to map policy ordering of RLIMITs to internal
 # ordering for architectures that redefine an RLIMIT.
 # Transforms lines from
@@ -44,6 +52,9 @@ cmd_make-caps = echo "static const char *capability_names[] = {" > $@ ;\
 # to
 # RLIMIT_STACK, 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #
 # and build the securityfs entries for the mapping.
 # Transforms lines from
@@ -71,6 +82,8 @@ $(obj)/capability_names.h : $(srctree)/include/linux/capability.h \
 	$(call cmd,make-caps)
 $(obj)/rlim_names.h : $(srctree)/include/asm-generic/resource.h \
 		      $(src)/Makefile
+<<<<<<< HEAD
+=======
 =======
 quiet_cmd_make-rlim = GEN     $@
 cmd_make-rlim = echo "static const char *rlim_names[] = {" > $@ ;\
@@ -87,4 +100,5 @@ $(obj)/capability_names.h : $(srctree)/include/linux/capability.h
 	$(call cmd,make-caps)
 $(obj)/rlim_names.h : $(srctree)/include/asm-generic/resource.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$(call cmd,make-rlim)

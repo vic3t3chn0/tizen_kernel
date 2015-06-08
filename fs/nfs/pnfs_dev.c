@@ -31,7 +31,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "pnfs.h"
 
 #define NFSDBG_FACILITY		NFSDBG_PNFS
@@ -49,7 +53,11 @@ static DEFINE_SPINLOCK(nfs4_deviceid_lock);
 <<<<<<< HEAD
 #ifdef NFS_DEBUG
 =======
+<<<<<<< HEAD
+#ifdef NFS_DEBUG
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 nfs4_print_deviceid(const struct nfs4_deviceid *id)
 {
@@ -62,7 +70,11 @@ EXPORT_SYMBOL_GPL(nfs4_print_deviceid);
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline u32
 nfs4_deviceid_hash(const struct nfs4_deviceid *id)
@@ -106,8 +118,12 @@ _lookup_deviceid(const struct pnfs_layoutdriver_type *ld,
 <<<<<<< HEAD
 static struct nfs4_deviceid_node *
 =======
+<<<<<<< HEAD
+static struct nfs4_deviceid_node *
+=======
 struct nfs4_deviceid_node *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 _find_get_deviceid(const struct pnfs_layoutdriver_type *ld,
 		   const struct nfs_client *clp, const struct nfs4_deviceid *id,
 		   long hash)
@@ -120,9 +136,14 @@ _find_get_deviceid(const struct pnfs_layoutdriver_type *ld,
 	if (d != NULL)
 		atomic_inc(&d->ref);
 =======
+<<<<<<< HEAD
+	if (d != NULL)
+		atomic_inc(&d->ref);
+=======
 	if (d && !atomic_inc_not_zero(&d->ref))
 		d = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 	return d;
 }
@@ -139,8 +160,12 @@ EXPORT_SYMBOL_GPL(nfs4_find_get_deviceid);
 <<<<<<< HEAD
  * Remove a deviceid from cache
 =======
+<<<<<<< HEAD
+ * Remove a deviceid from cache
+=======
  * Unhash and put deviceid
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * @clp nfs_client associated with deviceid
  * @id the deviceid to unhash
@@ -151,9 +176,14 @@ EXPORT_SYMBOL_GPL(nfs4_find_get_deviceid);
 void
 nfs4_delete_deviceid(const struct pnfs_layoutdriver_type *ld,
 =======
+<<<<<<< HEAD
+void
+nfs4_delete_deviceid(const struct pnfs_layoutdriver_type *ld,
+=======
 struct nfs4_deviceid_node *
 nfs4_unhash_put_deviceid(const struct pnfs_layoutdriver_type *ld,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 const struct nfs_client *clp, const struct nfs4_deviceid *id)
 {
 	struct nfs4_deviceid_node *d;
@@ -167,8 +197,12 @@ nfs4_unhash_put_deviceid(const struct pnfs_layoutdriver_type *ld,
 <<<<<<< HEAD
 		return;
 =======
+<<<<<<< HEAD
+		return;
+=======
 		return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	hlist_del_init_rcu(&d->node);
 	spin_unlock(&nfs4_deviceid_lock);
@@ -176,6 +210,9 @@ nfs4_unhash_put_deviceid(const struct pnfs_layoutdriver_type *ld,
 
 	/* balance the initial ref set in pnfs_insert_deviceid */
 	if (atomic_dec_and_test(&d->ref))
+<<<<<<< HEAD
+		d->ld->free_deviceid_node(d);
+=======
 <<<<<<< HEAD
 		d->ld->free_deviceid_node(d);
 =======
@@ -202,6 +239,7 @@ nfs4_delete_deviceid(const struct pnfs_layoutdriver_type *ld,
 		return;
 	d->ld->free_deviceid_node(d);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(nfs4_delete_deviceid);
 
@@ -218,7 +256,11 @@ nfs4_init_deviceid_node(struct nfs4_deviceid_node *d,
 <<<<<<< HEAD
 	d->flags = 0;
 =======
+<<<<<<< HEAD
+	d->flags = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	d->deviceid = *id;
 	atomic_set(&d->ref, 1);
 }
@@ -268,12 +310,22 @@ EXPORT_SYMBOL_GPL(nfs4_insert_deviceid_node);
  * Note that since the test for d->ref == 0 is sufficient to establish
  * that the node is no longer hashed in the global device id cache.
 =======
+<<<<<<< HEAD
+ * return true iff the node was deleted
+ * Note that since the test for d->ref == 0 is sufficient to establish
+ * that the node is no longer hashed in the global device id cache.
+=======
  * @ret true iff the node was deleted
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 bool
 nfs4_put_deviceid_node(struct nfs4_deviceid_node *d)
 {
+<<<<<<< HEAD
+	if (!atomic_dec_and_test(&d->ref))
+		return false;
+=======
 <<<<<<< HEAD
 	if (!atomic_dec_and_test(&d->ref))
 		return false;
@@ -284,6 +336,7 @@ nfs4_put_deviceid_node(struct nfs4_deviceid_node *d)
 	spin_unlock(&nfs4_deviceid_lock);
 	synchronize_rcu();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	d->ld->free_deviceid_node(d);
 	return true;
 }
@@ -329,6 +382,9 @@ nfs4_deviceid_purge_client(const struct nfs_client *clp)
 		_deviceid_purge_client(clp, h);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Stop use of all deviceids associated with an nfs_client
@@ -348,5 +404,8 @@ nfs4_deviceid_mark_client_invalid(struct nfs_client *clp)
 	}
 	rcu_read_unlock();
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

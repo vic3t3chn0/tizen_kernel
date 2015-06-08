@@ -23,6 +23,13 @@
 #include <linux/signal.h>
 #include <linux/platform_device.h>
 #include <linux/clk.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <mach/hardware.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/ohci.h>
 #include <mach/pxa3xx-u2d.h>
 
@@ -218,7 +225,15 @@ static int pxa27x_start_hc(struct pxa27x_ohci *ohci, struct device *dev)
 
 	inf = dev->platform_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	clk_prepare_enable(ohci->clk);
+=======
 	clk_enable(ohci->clk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_enable(ohci->clk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pxa27x_reset_hc(ohci);
 
@@ -268,7 +283,15 @@ static void pxa27x_stop_hc(struct pxa27x_ohci *ohci, struct device *dev)
 	__raw_writel(uhccoms, ohci->mmio_base + UHCCOMS);
 	udelay(10);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	clk_disable_unprepare(ohci->clk);
+=======
 	clk_disable(ohci->clk);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	clk_disable(ohci->clk);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -359,7 +382,15 @@ int usb_hcd_pxa27x_probe (const struct hc_driver *driver, struct platform_device
 
 	ohci_hcd_init(hcd_to_ohci(hcd));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	retval = usb_add_hcd(hcd, irq, 0);
+=======
 	retval = usb_add_hcd(hcd, irq, IRQF_DISABLED);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	retval = usb_add_hcd(hcd, irq, IRQF_DISABLED);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retval == 0)
 		return retval;
 
@@ -502,8 +533,16 @@ static int ohci_hcd_pxa27x_drv_suspend(struct device *dev)
 	ohci->ohci.next_statechange = jiffies;
 
 	pxa27x_stop_hc(ohci, dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	hcd->state = HC_STATE_SUSPENDED;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hcd->state = HC_STATE_SUSPENDED;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

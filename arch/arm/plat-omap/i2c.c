@@ -109,6 +109,9 @@ static inline int omap1_i2c_add_bus(int bus_id)
 	pdata = &i2c_pdata[bus_id - 1];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* all OMAP1 have IP version 1 register set */
 	pdata->rev = OMAP_I2C_IP_VERSION_1;
 
@@ -125,8 +128,11 @@ static inline int omap1_i2c_add_bus(int bus_id)
 	else
 		pdata->flags |= OMAP_I2C_FLAG_BUS_SHIFT_2;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return platform_device_register(pdev);
 }
 
@@ -144,6 +150,8 @@ static void omap_pm_set_max_mpu_wakeup_lat_compat(struct device *dev, long t)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct omap_device_pm_latency omap_i2c_latency[] = {
 	[0] = {
 		.deactivate_func	= omap_device_idle_hwmods,
@@ -153,20 +161,27 @@ static struct omap_device_pm_latency omap_i2c_latency[] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int omap2_i2c_add_bus(int bus_id)
 {
 	int l;
 	struct omap_hwmod *oh;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct platform_device *pdev;
 	char oh_name[MAX_OMAP_I2C_HWMOD_NAME_LEN];
 	struct omap_i2c_bus_platform_data *pdata;
 	struct omap_i2c_dev_attr *dev_attr;
+<<<<<<< HEAD
+=======
 =======
 	struct omap_device *od;
 	char oh_name[MAX_OMAP_I2C_HWMOD_NAME_LEN];
 	struct omap_i2c_bus_platform_data *pdata;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	omap2_i2c_mux_pins(bus_id);
 
@@ -182,6 +197,9 @@ static inline int omap2_i2c_add_bus(int bus_id)
 	pdata = &i2c_pdata[bus_id - 1];
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * pass the hwmod class's CPU-specific knowledge of I2C IP revision in
 	 * use, and functionality implementation flags, up to the OMAP I2C
 	 * driver via platform data
@@ -192,8 +210,11 @@ static inline int omap2_i2c_add_bus(int bus_id)
 	pdata->flags = dev_attr->flags;
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * When waiting for completion of a i2c transfer, we need to
 	 * set a wake up latency constraint for the MPU. This is to
 	 * ensure quick enough wakeup from idle, when transfer
@@ -203,12 +224,17 @@ static inline int omap2_i2c_add_bus(int bus_id)
 	if (cpu_is_omap34xx())
 		pdata->set_mpu_wkup_lat = omap_pm_set_max_mpu_wakeup_lat_compat;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pdev = omap_device_build(name, bus_id, oh, pdata,
 			sizeof(struct omap_i2c_bus_platform_data),
 			NULL, 0, 0);
 	WARN(IS_ERR(pdev), "Could not build omap_device for %s\n", name);
 
 	return PTR_RET(pdev);
+<<<<<<< HEAD
+=======
 =======
 	od = omap_device_build(name, bus_id, oh, pdata,
 			sizeof(struct omap_i2c_bus_platform_data),
@@ -217,6 +243,7 @@ static inline int omap2_i2c_add_bus(int bus_id)
 
 	return PTR_ERR(od);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #else
 static inline int omap2_i2c_add_bus(int bus_id)

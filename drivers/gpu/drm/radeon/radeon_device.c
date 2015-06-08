@@ -89,6 +89,16 @@ static const char radeon_family_name[][16] = {
 	"TURKS",
 	"CAICOS",
 	"CAYMAN",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	"ARUBA",
+	"TAHITI",
+	"PITCAIRN",
+	"VERDE",
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"LAST",
 };
 
@@ -237,8 +247,18 @@ int radeon_wb_init(struct radeon_device *rdev)
 				rdev->wb.use_event = true;
 		}
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* always use writeback/events on NI, APUs */
+	if (rdev->family >= CHIP_PALM) {
+=======
 	/* always use writeback/events on NI */
 	if (ASIC_IS_DCE5(rdev)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* always use writeback/events on NI */
+	if (ASIC_IS_DCE5(rdev)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rdev->wb.enabled = true;
 		rdev->wb.use_event = true;
 	}
@@ -358,6 +378,23 @@ bool radeon_card_posted(struct radeon_device *rdev)
 		return false;
 
 	/* first check CRTCs */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ASIC_IS_DCE41(rdev)) {
+		reg = RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC0_REGISTER_OFFSET) |
+			RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC1_REGISTER_OFFSET);
+		if (reg & EVERGREEN_CRTC_MASTER_EN)
+			return true;
+	} else if (ASIC_IS_DCE4(rdev)) {
+		reg = RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC0_REGISTER_OFFSET) |
+			RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC1_REGISTER_OFFSET) |
+			RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC2_REGISTER_OFFSET) |
+			RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC3_REGISTER_OFFSET) |
+			RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC4_REGISTER_OFFSET) |
+			RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC5_REGISTER_OFFSET);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ASIC_IS_DCE4(rdev)) {
 		reg = RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC0_REGISTER_OFFSET) |
 			RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC1_REGISTER_OFFSET);
@@ -369,6 +406,10 @@ bool radeon_card_posted(struct radeon_device *rdev)
 				reg |= RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC4_REGISTER_OFFSET) |
 					RREG32(EVERGREEN_CRTC_CONTROL + EVERGREEN_CRTC5_REGISTER_OFFSET);
 			}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (reg & EVERGREEN_CRTC_MASTER_EN)
 			return true;
 	} else if (ASIC_IS_AVIVO(rdev)) {
@@ -963,7 +1004,15 @@ int radeon_resume_kms(struct drm_device *dev)
 	/* init dig PHYs, disp eng pll */
 	if (rdev->is_atom_bios) {
 		radeon_atom_encoder_init(rdev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		radeon_atom_disp_eng_pll_init(rdev);
+=======
 		radeon_atom_dcpll_init(rdev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		radeon_atom_dcpll_init(rdev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/* reset hpd state */
 	radeon_hpd_init(rdev);

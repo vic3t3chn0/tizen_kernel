@@ -6,9 +6,14 @@
  *    Copyright IBM Corp. 1999, 2012
  *
 =======
+<<<<<<< HEAD
+ *    Copyright IBM Corp. 1999, 2012
+ *
+=======
  *    Copyright (C) 1999, 2000 IBM Deutschland Entwicklung GmbH,
  *                             IBM Corporation
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    Author(s): Michael Holzheu (holzheu@de.ibm.com),
  *               Holger Smolinski (Holger.Smolinski@de.ibm.com)
  *
@@ -82,8 +87,12 @@ static debug_info_t *debug_info_create(const char *name, int pages_per_area,
 <<<<<<< HEAD
 			int nr_areas, int buf_size, umode_t mode);
 =======
+<<<<<<< HEAD
+			int nr_areas, int buf_size, umode_t mode);
+=======
 			int nr_areas, int buf_size, mode_t mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void debug_info_get(debug_info_t *);
 static void debug_info_put(debug_info_t *);
 static int debug_prolog_level_fn(debug_info_t * id,
@@ -179,7 +188,11 @@ static int initialized;
 <<<<<<< HEAD
 static int debug_critical;
 =======
+<<<<<<< HEAD
+static int debug_critical;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct file_operations debug_file_ops = {
 	.owner   = THIS_MODULE,
@@ -346,8 +359,12 @@ debug_info_create(const char *name, int pages_per_area, int nr_areas,
 <<<<<<< HEAD
 		  int buf_size, umode_t mode)
 =======
+<<<<<<< HEAD
+		  int buf_size, umode_t mode)
+=======
 		  int buf_size, mode_t mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	debug_info_t* rc;
 
@@ -708,8 +725,12 @@ debug_info_t *debug_register_mode(const char *name, int pages_per_area,
 <<<<<<< HEAD
 				  int nr_areas, int buf_size, umode_t mode,
 =======
+<<<<<<< HEAD
+				  int nr_areas, int buf_size, umode_t mode,
+=======
 				  int nr_areas, int buf_size, mode_t mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  uid_t uid, gid_t gid)
 {
 	debug_info_t *rc = NULL;
@@ -954,13 +975,19 @@ debug_stop_all(void)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void debug_set_critical(void)
 {
 	debug_critical = 1;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * debug_event_common:
  * - write debug entry with given size
@@ -975,14 +1002,20 @@ debug_event_common(debug_info_t * id, int level, const void *buf, int len)
 	if (!debug_active || !id->areas)
 		return NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (debug_critical) {
 		if (!spin_trylock_irqsave(&id->lock, flags))
 			return NULL;
 	} else
 		spin_lock_irqsave(&id->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(&id->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	active = get_active_entry(id);
 	memset(DEBUG_DATA(active), 0, id->buf_size);
 	memcpy(DEBUG_DATA(active), buf, min(len, id->buf_size));
@@ -1006,14 +1039,20 @@ debug_entry_t
 	if (!debug_active || !id->areas)
 		return NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (debug_critical) {
 		if (!spin_trylock_irqsave(&id->lock, flags))
 			return NULL;
 	} else
 		spin_lock_irqsave(&id->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(&id->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	active = get_active_entry(id);
 	memset(DEBUG_DATA(active), 0, id->buf_size);
 	memcpy(DEBUG_DATA(active), buf, min(len, id->buf_size));
@@ -1059,14 +1098,20 @@ debug_sprintf_event(debug_info_t* id, int level,char *string,...)
 	numargs=debug_count_numargs(string);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (debug_critical) {
 		if (!spin_trylock_irqsave(&id->lock, flags))
 			return NULL;
 	} else
 		spin_lock_irqsave(&id->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(&id->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	active = get_active_entry(id);
 	curr_event=(debug_sprintf_entry_t *) DEBUG_DATA(active);
 	va_start(ap,string);
@@ -1101,14 +1146,20 @@ debug_sprintf_exception(debug_info_t* id, int level,char *string,...)
 	numargs=debug_count_numargs(string);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (debug_critical) {
 		if (!spin_trylock_irqsave(&id->lock, flags))
 			return NULL;
 	} else
 		spin_lock_irqsave(&id->lock, flags);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_irqsave(&id->lock, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	active = get_active_entry(id);
 	curr_event=(debug_sprintf_entry_t *)DEBUG_DATA(active);
 	va_start(ap,string);
@@ -1154,8 +1205,12 @@ debug_register_view(debug_info_t * id, struct debug_view *view)
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *pde;
 
 	if (!id)
@@ -1494,16 +1549,22 @@ debug_hex_ascii_format_fn(debug_info_t * id, struct debug_view *view,
 	for (i = 0; i < id->buf_size; i++) {
 		unsigned char c = in_buf[i];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (isascii(c) && isprint(c))
 			rc += sprintf(out_buf + rc, "%c", c);
 		else
 			rc += sprintf(out_buf + rc, ".");
+<<<<<<< HEAD
+=======
 =======
 		if (!isprint(c))
 			rc += sprintf(out_buf + rc, ".");
 		else
 			rc += sprintf(out_buf + rc, "%c", c);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	rc += sprintf(out_buf + rc, "\n");
 	return rc;

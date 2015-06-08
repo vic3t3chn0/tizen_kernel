@@ -276,9 +276,14 @@ _GLOBAL(csum_partial_copy_generic)
 	li	r7,4
 	sub	r6,r7,r6
 =======
+<<<<<<< HEAD
+	li	r7,4
+	sub	r6,r7,r6
+=======
 	li	r9,4
 	sub	r6,r9,r6
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mtctr	r6
 
 1:

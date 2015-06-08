@@ -24,9 +24,14 @@
 #include <linux/rtc.h>
 #include <asm/setup.h>
 =======
+<<<<<<< HEAD
+#include <linux/rtc.h>
+#include <asm/setup.h>
+=======
 #include <asm/setup.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgtable.h>
 #include <asm/machdep.h>
 #include <asm/MC68VZ328.h>
@@ -100,8 +105,11 @@ static struct clocksource m68328_clk = {
 	.read	= m68328_read_clk,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.shift	= 20,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.mask	= CLOCKSOURCE_MASK(32),
 	.flags	= CLOCK_SOURCE_IS_CONTINUOUS,
 };
@@ -126,14 +134,21 @@ void hw_timer_init(void)
 <<<<<<< HEAD
 	clocksource_register_hz(&m68328_clk, TICKS_PER_JIFFY*HZ);
 =======
+<<<<<<< HEAD
+	clocksource_register_hz(&m68328_clk, TICKS_PER_JIFFY*HZ);
+=======
 	m68328_clk.mult = clocksource_hz2mult(TICKS_PER_JIFFY*HZ, m68328_clk.shift);
 	clocksource_register(&m68328_clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int m68328_hwclk(int set, struct rtc_time *t)
 {
 	if (!set) {
@@ -145,6 +160,8 @@ int m68328_hwclk(int set, struct rtc_time *t)
 	}
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 void m68328_timer_gettod(int *year, int *mon, int *day, int *hour, int *min, int *sec)
 {
@@ -155,6 +172,7 @@ void m68328_timer_gettod(int *year, int *mon, int *day, int *hour, int *min, int
 	*min = (now >> 16) % 60;
 	*sec = now % 60;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/

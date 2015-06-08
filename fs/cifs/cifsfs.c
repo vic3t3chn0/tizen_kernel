@@ -56,8 +56,12 @@ int traceSMB = 0;
 <<<<<<< HEAD
 bool enable_oplocks = true;
 =======
+<<<<<<< HEAD
+bool enable_oplocks = true;
+=======
 unsigned int oplockEnabled = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned int linuxExtEnabled = 1;
 unsigned int lookupCacheEnabled = 1;
 unsigned int multiuser_mount = 0;
@@ -79,6 +83,9 @@ MODULE_PARM_DESC(cifs_min_small, "Small network buffers in pool. Default: 30 "
 				 "Range: 2 to 256");
 unsigned int cifs_max_pending = CIFS_MAX_REQ;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(cifs_max_pending, int, 0444);
 MODULE_PARM_DESC(cifs_max_pending, "Simultaneous requests to server. "
 				   "Default: 32767 Range: 2 to 32767.");
@@ -86,6 +93,8 @@ module_param(enable_oplocks, bool, 0644);
 MODULE_PARM_DESC(enable_oplocks, "Enable or disable oplocks (bool). Default:"
 				 "y/Y/1");
 
+<<<<<<< HEAD
+=======
 =======
 module_param(cifs_max_pending, int, 0);
 MODULE_PARM_DESC(cifs_max_pending, "Simultaneous requests to server. "
@@ -96,11 +105,15 @@ MODULE_PARM_DESC(echo_retries, "Number of echo attempts before giving up and "
 			       "reconnecting server. Default: 5. 0 means "
 			       "never reconnect.");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern mempool_t *cifs_sm_req_poolp;
 extern mempool_t *cifs_req_poolp;
 extern mempool_t *cifs_mid_poolp;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct workqueue_struct	*cifsiod_wq;
 /*
  * Bumps refcount for cifs super block.
@@ -108,8 +121,11 @@ struct workqueue_struct	*cifsiod_wq;
  * already held, e.g. in open-type syscalls context. Otherwise it can race with
  * atomic_dec_and_test in deactivate_locked_super.
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 cifs_sb_active(struct super_block *sb)
 {
@@ -158,10 +174,15 @@ cifs_read_super(struct super_block *sb)
 	if (IS_ERR(inode)) {
 		rc = PTR_ERR(inode);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_no_root;
 	}
 
 	sb->s_root = d_make_root(inode);
+<<<<<<< HEAD
+=======
 =======
 		inode = NULL;
 		goto out_no_root;
@@ -170,6 +191,7 @@ cifs_read_super(struct super_block *sb)
 	sb->s_root = d_alloc_root(inode);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sb->s_root) {
 		rc = -ENOMEM;
 		goto out_no_root;
@@ -184,8 +206,12 @@ cifs_read_super(struct super_block *sb)
 <<<<<<< HEAD
 #ifdef CONFIG_CIFS_NFSD_EXPORT
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_CIFS_NFSD_EXPORT
+=======
 #ifdef CIFS_NFSD_EXPORT
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_SERVER_INUM) {
 		cFYI(1, "export ops supported");
 		sb->s_export_op = &cifs_export_ops;
@@ -193,8 +219,12 @@ cifs_read_super(struct super_block *sb)
 <<<<<<< HEAD
 #endif /* CONFIG_CIFS_NFSD_EXPORT */
 =======
+<<<<<<< HEAD
+#endif /* CONFIG_CIFS_NFSD_EXPORT */
+=======
 #endif /* CIFS_NFSD_EXPORT */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -202,10 +232,13 @@ out_no_root:
 	cERROR(1, "cifs_read_super: get root inode failed");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (inode)
 		iput(inode);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -269,8 +302,12 @@ cifs_statfs(struct dentry *dentry, struct kstatfs *buf)
 <<<<<<< HEAD
 static int cifs_permission(struct inode *inode, int mask)
 =======
+<<<<<<< HEAD
+static int cifs_permission(struct inode *inode, int mask)
+=======
 static int cifs_permission(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct cifs_sb_info *cifs_sb;
 
@@ -288,8 +325,12 @@ static int cifs_permission(struct inode *inode, int mask, unsigned int flags)
 <<<<<<< HEAD
 		return generic_permission(inode, mask);
 =======
+<<<<<<< HEAD
+		return generic_permission(inode, mask);
+=======
 		return generic_permission(inode, mask, flags, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct kmem_cache *cifs_inode_cachep;
@@ -412,10 +453,16 @@ cifs_show_options(struct seq_file *s, struct dentry *root)
 {
 	struct cifs_sb_info *cifs_sb = CIFS_SB(root->d_sb);
 =======
+<<<<<<< HEAD
+cifs_show_options(struct seq_file *s, struct dentry *root)
+{
+	struct cifs_sb_info *cifs_sb = CIFS_SB(root->d_sb);
+=======
 cifs_show_options(struct seq_file *s, struct vfsmount *m)
 {
 	struct cifs_sb_info *cifs_sb = CIFS_SB(m->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cifs_tcon *tcon = cifs_sb_master_tcon(cifs_sb);
 	struct sockaddr *srcaddr;
 	srcaddr = (struct sockaddr *)&tcon->ses->server->srcaddr;
@@ -451,8 +498,12 @@ cifs_show_options(struct seq_file *s, struct vfsmount *m)
 <<<<<<< HEAD
 	seq_printf(s, ",uid=%u", cifs_sb->mnt_uid);
 =======
+<<<<<<< HEAD
+	seq_printf(s, ",uid=%u", cifs_sb->mnt_uid);
+=======
 	seq_printf(s, ",uid=%d", cifs_sb->mnt_uid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_OVERR_UID)
 		seq_printf(s, ",forceuid");
 	else
@@ -461,8 +512,12 @@ cifs_show_options(struct seq_file *s, struct vfsmount *m)
 <<<<<<< HEAD
 	seq_printf(s, ",gid=%u", cifs_sb->mnt_gid);
 =======
+<<<<<<< HEAD
+	seq_printf(s, ",gid=%u", cifs_sb->mnt_gid);
+=======
 	seq_printf(s, ",gid=%d", cifs_sb->mnt_gid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_OVERR_GID)
 		seq_printf(s, ",forcegid");
 	else
@@ -474,8 +529,12 @@ cifs_show_options(struct seq_file *s, struct vfsmount *m)
 <<<<<<< HEAD
 		seq_printf(s, ",file_mode=0%ho,dir_mode=0%ho",
 =======
+<<<<<<< HEAD
+		seq_printf(s, ",file_mode=0%ho,dir_mode=0%ho",
+=======
 		seq_printf(s, ",file_mode=0%o,dir_mode=0%o",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   cifs_sb->mnt_file_mode,
 					   cifs_sb->mnt_dir_mode);
 	if (tcon->seal)
@@ -515,14 +574,21 @@ cifs_show_options(struct seq_file *s, struct vfsmount *m)
 <<<<<<< HEAD
 	if (root->d_sb->s_flags & MS_POSIXACL)
 =======
+<<<<<<< HEAD
+	if (root->d_sb->s_flags & MS_POSIXACL)
+=======
 	if (m->mnt_sb->s_flags & MS_POSIXACL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		seq_printf(s, ",acl");
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_MF_SYMLINKS)
 		seq_printf(s, ",mfsymlinks");
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_FSCACHE)
 		seq_printf(s, ",fsc");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_NOSSYNC)
 		seq_printf(s, ",nostrictsync");
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_NO_PERM)
@@ -538,6 +604,8 @@ cifs_show_options(struct seq_file *s, struct vfsmount *m)
 	seq_printf(s, ",wsize=%u", cifs_sb->wsize);
 	/* convert actimeo and display it in seconds */
 	seq_printf(s, ",actimeo=%lu", cifs_sb->actimeo / HZ);
+<<<<<<< HEAD
+=======
 =======
 
 	seq_printf(s, ",rsize=%d", cifs_sb->rsize);
@@ -545,6 +613,7 @@ cifs_show_options(struct seq_file *s, struct vfsmount *m)
 	/* convert actimeo and display it in seconds */
 		seq_printf(s, ",actimeo=%lu", cifs_sb->actimeo / HZ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -589,8 +658,12 @@ static void cifs_umount_begin(struct super_block *sb)
 <<<<<<< HEAD
 static int cifs_show_stats(struct seq_file *s, struct dentry *root)
 =======
+<<<<<<< HEAD
+static int cifs_show_stats(struct seq_file *s, struct dentry *root)
+=======
 static int cifs_show_stats(struct seq_file *s, struct vfsmount *mnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* BB FIXME */
 	return 0;
@@ -644,8 +717,11 @@ cifs_get_root(struct smb_vol *vol, struct super_block *sb)
 	char sep;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int xid;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	full_path = cifs_build_path_to_root(vol, cifs_sb,
 					    cifs_sb_master_tcon(cifs_sb));
@@ -656,8 +732,11 @@ cifs_get_root(struct smb_vol *vol, struct super_block *sb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	xid = GetXid();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sep = CIFS_DIR_SEP(cifs_sb);
 	dentry = dget(sb->s_root);
 	p = s = full_path;
@@ -673,12 +752,15 @@ cifs_get_root(struct smb_vol *vol, struct super_block *sb)
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (!S_ISDIR(dir->i_mode)) {
 			dput(dentry);
 			dentry = ERR_PTR(-ENOTDIR);
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* skip separators */
 		while (*s == sep)
@@ -698,8 +780,11 @@ cifs_get_root(struct smb_vol *vol, struct super_block *sb)
 	} while (!IS_ERR(dentry));
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	_FreeXid(xid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(full_path);
 	return dentry;
 }
@@ -822,15 +907,21 @@ static ssize_t cifs_file_aio_write(struct kiocb *iocb, const struct iovec *iov,
 static loff_t cifs_llseek(struct file *file, loff_t offset, int origin)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * origin == SEEK_END || SEEK_DATA || SEEK_HOLE => we must revalidate
 	 * the cached file length
 	 */
 	if (origin != SEEK_SET && origin != SEEK_CUR) {
+<<<<<<< HEAD
+=======
 =======
 	/* origin == SEEK_END => we must revalidate the cached file length */
 	if (origin == SEEK_END) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int rc;
 		struct inode *inode = file->f_path.dentry->d_inode;
 
@@ -860,8 +951,12 @@ static loff_t cifs_llseek(struct file *file, loff_t offset, int origin)
 <<<<<<< HEAD
 	return generic_file_llseek(file, offset, origin);
 =======
+<<<<<<< HEAD
+	return generic_file_llseek(file, offset, origin);
+=======
 	return generic_file_llseek_unlocked(file, offset, origin);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int cifs_setlease(struct file *file, long arg, struct file_lock **lease)
@@ -1084,8 +1179,13 @@ cifs_init_once(void *inode)
 	INIT_LIST_HEAD(&cifsi->llist);
 	mutex_init(&cifsi->lock_mutex);
 =======
+<<<<<<< HEAD
+	INIT_LIST_HEAD(&cifsi->llist);
+	mutex_init(&cifsi->lock_mutex);
+=======
 	INIT_LIST_HEAD(&cifsi->lockList);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -1252,6 +1352,9 @@ init_cifs(void)
 		cifs_max_pending = 2;
 		cFYI(1, "cifs_max_pending set to min of 2");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (cifs_max_pending > CIFS_MAX_REQ) {
 		cifs_max_pending = CIFS_MAX_REQ;
 		cFYI(1, "cifs_max_pending set to max of %u", CIFS_MAX_REQ);
@@ -1261,11 +1364,14 @@ init_cifs(void)
 	if (!cifsiod_wq) {
 		rc = -ENOMEM;
 		goto out_clean_proc;
+<<<<<<< HEAD
+=======
 =======
 	} else if (cifs_max_pending > 256) {
 		cifs_max_pending = 256;
 		cFYI(1, "cifs_max_pending set to max of 256");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rc = cifs_fscache_register();
@@ -1273,8 +1379,12 @@ init_cifs(void)
 <<<<<<< HEAD
 		goto out_destroy_wq;
 =======
+<<<<<<< HEAD
+		goto out_destroy_wq;
+=======
 		goto out_clean_proc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rc = cifs_init_inodecache();
 	if (rc)
@@ -1326,7 +1436,12 @@ out_unreg_fscache:
 out_destroy_wq:
 	destroy_workqueue(cifsiod_wq);
 =======
+<<<<<<< HEAD
+out_destroy_wq:
+	destroy_workqueue(cifsiod_wq);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_clean_proc:
 	cifs_proc_clean();
 	return rc;
@@ -1340,12 +1455,17 @@ exit_cifs(void)
 	unregister_filesystem(&cifs_fs_type);
 	cifs_dfs_release_automount_timer();
 =======
+<<<<<<< HEAD
+	unregister_filesystem(&cifs_fs_type);
+	cifs_dfs_release_automount_timer();
+=======
 	cifs_proc_clean();
 	cifs_fscache_unregister();
 #ifdef CONFIG_CIFS_DFS_UPCALL
 	cifs_dfs_release_automount_timer();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CIFS_ACL
 	cifs_destroy_idmaptrees();
 	exit_cifs_idmap();
@@ -1354,18 +1474,24 @@ exit_cifs(void)
 	unregister_key_type(&cifs_spnego_key_type);
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cifs_destroy_request_bufs();
 	cifs_destroy_mids();
 	cifs_destroy_inodecache();
 	cifs_fscache_unregister();
 	destroy_workqueue(cifsiod_wq);
 	cifs_proc_clean();
+<<<<<<< HEAD
+=======
 =======
 	unregister_filesystem(&cifs_fs_type);
 	cifs_destroy_inodecache();
 	cifs_destroy_mids();
 	cifs_destroy_request_bufs();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MODULE_AUTHOR("Steve French <sfrench@us.ibm.com>");

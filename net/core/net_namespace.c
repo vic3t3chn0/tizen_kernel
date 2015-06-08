@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/net_namespace.h>
 #include <net/netns/generic.h>
 
@@ -31,10 +35,14 @@ EXPORT_SYMBOL_GPL(net_namespace_list);
 <<<<<<< HEAD
 struct net init_net;
 =======
+<<<<<<< HEAD
+struct net init_net;
+=======
 struct net init_net = {
 	.dev_base_head = LIST_HEAD_INIT(init_net.dev_base_head),
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL(init_net);
 
 #define INITIAL_NET_GEN_PTRS	13 /* +1 for len +2 for rcu_head */
@@ -162,7 +170,11 @@ static __net_init int setup_net(struct net *net)
 <<<<<<< HEAD
 	net->dev_base_seq = 1;
 =======
+<<<<<<< HEAD
+	net->dev_base_seq = 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef NETNS_REFCNT_DEBUG
 	atomic_set(&net->use_count, 0);

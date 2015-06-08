@@ -87,7 +87,15 @@
 #define	VBUS_DET			BIT(2)
 
 struct twl6030_usb {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_phy		phy;
+=======
 	struct otg_transceiver	otg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct otg_transceiver	otg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device		*dev;
 
 	/* for vbus reporting with irqs disabled */
@@ -95,15 +103,38 @@ struct twl6030_usb {
 
 	struct regulator		*usb3v3;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* used to set vbus, in atomic path */
+	struct work_struct	set_vbus_work;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			irq1;
 	int			irq2;
 	u8			linkstat;
 	u8			asleep;
 	bool			irq_enabled;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool			vbus_enable;
+	unsigned long		features;
+};
+
+#define phy_to_twl(x)		container_of((x), struct twl6030_usb, phy)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long		features;
 };
 
 #define xceiv_to_twl(x)		container_of((x), struct twl6030_usb, otg)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*-------------------------------------------------------------------------*/
 
@@ -133,6 +164,12 @@ static inline u8 twl6030_readb(struct twl6030_usb *twl, u8 module, u8 address)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int twl6030_phy_init(struct usb_phy *x)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-------------------------------------------------------------------------*/
 static int twl6030_set_phy_clk(struct otg_transceiver *x, int on)
 {
@@ -150,12 +187,24 @@ static int twl6030_set_phy_clk(struct otg_transceiver *x, int on)
 }
 
 static int twl6030_phy_init(struct otg_transceiver *x)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct twl6030_usb *twl;
 	struct device *dev;
 	struct twl4030_usb_data *pdata;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	twl = phy_to_twl(x);
+=======
 	twl = xceiv_to_twl(x);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	twl = xceiv_to_twl(x);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev  = twl->dev;
 	pdata = dev->platform_data;
 
@@ -167,21 +216,49 @@ static int twl6030_phy_init(struct otg_transceiver *x)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void twl6030_phy_shutdown(struct usb_phy *x)
+=======
 static void twl6030_phy_shutdown(struct otg_transceiver *x)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void twl6030_phy_shutdown(struct otg_transceiver *x)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct twl6030_usb *twl;
 	struct device *dev;
 	struct twl4030_usb_data *pdata;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	twl = phy_to_twl(x);
+=======
 	twl = xceiv_to_twl(x);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	twl = xceiv_to_twl(x);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev  = twl->dev;
 	pdata = dev->platform_data;
 	pdata->phy_power(twl->dev, 0, 0);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int twl6030_phy_suspend(struct usb_phy *x, int suspend)
+{
+	struct twl6030_usb *twl = phy_to_twl(x);
+=======
 static int twl6030_phy_suspend(struct otg_transceiver *x, int suspend)
 {
 	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int twl6030_phy_suspend(struct otg_transceiver *x, int suspend)
+{
+	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev = twl->dev;
 	struct twl4030_usb_data *pdata = dev->platform_data;
 
@@ -190,9 +267,21 @@ static int twl6030_phy_suspend(struct otg_transceiver *x, int suspend)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int twl6030_start_srp(struct usb_otg *otg)
+{
+	struct twl6030_usb *twl = phy_to_twl(otg->phy);
+=======
 static int twl6030_start_srp(struct otg_transceiver *x)
 {
 	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int twl6030_start_srp(struct otg_transceiver *x)
+{
+	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	twl6030_writeb(twl, TWL_MODULE_USB, 0x24, USB_VBUS_CTRL_SET);
 	twl6030_writeb(twl, TWL_MODULE_USB, 0x84, USB_VBUS_CTRL_SET);
@@ -268,6 +357,13 @@ static DEVICE_ATTR(vbus, 0444, twl6030_usb_vbus_show, NULL);
 static irqreturn_t twl6030_usb_irq(int irq, void *_twl)
 {
 	struct twl6030_usb *twl = _twl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_otg *otg = twl->phy.otg;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int status;
 	u8 vbus_state, hw_state;
 
@@ -280,6 +376,23 @@ static irqreturn_t twl6030_usb_irq(int irq, void *_twl)
 			regulator_enable(twl->usb3v3);
 			twl->asleep = 1;
 			status = USB_EVENT_VBUS;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			otg->default_a = false;
+			twl->phy.state = OTG_STATE_B_IDLE;
+			twl->linkstat = status;
+			twl->phy.last_event = status;
+			atomic_notifier_call_chain(&twl->phy.notifier,
+						status, otg->gadget);
+		} else {
+			status = USB_EVENT_NONE;
+			twl->linkstat = status;
+			twl->phy.last_event = status;
+			atomic_notifier_call_chain(&twl->phy.notifier,
+						status, otg->gadget);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			twl->otg.default_a = false;
 			twl->otg.state = OTG_STATE_B_IDLE;
 			twl->linkstat = status;
@@ -292,6 +405,10 @@ static irqreturn_t twl6030_usb_irq(int irq, void *_twl)
 			twl->otg.last_event = status;
 			atomic_notifier_call_chain(&twl->otg.notifier,
 						status, twl->otg.gadget);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (twl->asleep) {
 				regulator_disable(twl->usb3v3);
 				twl->asleep = 0;
@@ -306,6 +423,13 @@ static irqreturn_t twl6030_usb_irq(int irq, void *_twl)
 static irqreturn_t twl6030_usbotg_irq(int irq, void *_twl)
 {
 	struct twl6030_usb *twl = _twl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_otg *otg = twl->phy.otg;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int status = USB_EVENT_NONE;
 	u8 hw_state;
 
@@ -319,12 +443,27 @@ static irqreturn_t twl6030_usbotg_irq(int irq, void *_twl)
 		twl6030_writeb(twl, TWL_MODULE_USB, USB_ID_INT_EN_HI_SET,
 								0x10);
 		status = USB_EVENT_ID;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		otg->default_a = true;
+		twl->phy.state = OTG_STATE_A_IDLE;
+		twl->linkstat = status;
+		twl->phy.last_event = status;
+		atomic_notifier_call_chain(&twl->phy.notifier, status,
+							otg->gadget);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		twl->otg.default_a = true;
 		twl->otg.state = OTG_STATE_A_IDLE;
 		twl->linkstat = status;
 		twl->otg.last_event = status;
 		atomic_notifier_call_chain(&twl->otg.notifier, status,
 							twl->otg.gadget);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else  {
 		twl6030_writeb(twl, TWL_MODULE_USB, USB_ID_INT_EN_HI_CLR,
 								0x10);
@@ -336,6 +475,20 @@ static irqreturn_t twl6030_usbotg_irq(int irq, void *_twl)
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int twl6030_set_peripheral(struct usb_otg *otg,
+		struct usb_gadget *gadget)
+{
+	if (!otg)
+		return -ENODEV;
+
+	otg->gadget = gadget;
+	if (!gadget)
+		otg->phy->state = OTG_STATE_UNDEFINED;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int twl6030_set_peripheral(struct otg_transceiver *x,
 		struct usb_gadget *gadget)
 {
@@ -348,13 +501,29 @@ static int twl6030_set_peripheral(struct otg_transceiver *x,
 	twl->otg.gadget = gadget;
 	if (!gadget)
 		twl->otg.state = OTG_STATE_UNDEFINED;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int twl6030_enable_irq(struct usb_phy *x)
+{
+	struct twl6030_usb *twl = phy_to_twl(x);
+=======
 static int twl6030_enable_irq(struct otg_transceiver *x)
 {
 	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int twl6030_enable_irq(struct otg_transceiver *x)
+{
+	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	twl6030_writeb(twl, TWL_MODULE_USB, USB_ID_INT_EN_HI_SET, 0x1);
 	twl6030_interrupt_unmask(0x05, REG_INT_MSK_LINE_C);
@@ -370,14 +539,59 @@ static int twl6030_enable_irq(struct otg_transceiver *x)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void otg_set_vbus_work(struct work_struct *data)
+{
+	struct twl6030_usb *twl = container_of(data, struct twl6030_usb,
+								set_vbus_work);
+=======
 static int twl6030_set_vbus(struct otg_transceiver *x, bool enabled)
 {
 	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int twl6030_set_vbus(struct otg_transceiver *x, bool enabled)
+{
+	struct twl6030_usb *twl = xceiv_to_twl(x);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Start driving VBUS. Set OPA_MODE bit in CHARGERUSB_CTRL1
 	 * register. This enables boost mode.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (twl->vbus_enable)
+		twl6030_writeb(twl, TWL_MODULE_MAIN_CHARGE , 0x40,
+							CHARGERUSB_CTRL1);
+	else
+		twl6030_writeb(twl, TWL_MODULE_MAIN_CHARGE , 0x00,
+							CHARGERUSB_CTRL1);
+}
+
+static int twl6030_set_vbus(struct usb_otg *otg, bool enabled)
+{
+	struct twl6030_usb *twl = phy_to_twl(otg->phy);
+
+	twl->vbus_enable = enabled;
+	schedule_work(&twl->set_vbus_work);
+
+	return 0;
+}
+
+static int twl6030_set_host(struct usb_otg *otg, struct usb_bus *host)
+{
+	if (!otg)
+		return -ENODEV;
+
+	otg->host = host;
+	if (!host)
+		otg->phy->state = OTG_STATE_UNDEFINED;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (enabled)
 		twl6030_writeb(twl, TWL_MODULE_MAIN_CHARGE , 0x40,
 						CHARGERUSB_CTRL1);
@@ -398,6 +612,10 @@ static int twl6030_set_host(struct otg_transceiver *x, struct usb_bus *host)
 	twl->otg.host = host;
 	if (!host)
 		twl->otg.state = OTG_STATE_UNDEFINED;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -406,6 +624,13 @@ static int __devinit twl6030_usb_probe(struct platform_device *pdev)
 	struct twl6030_usb	*twl;
 	int			status, err;
 	struct twl4030_usb_data *pdata;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_otg		*otg;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device *dev = &pdev->dev;
 	pdata = dev->platform_data;
 
@@ -413,10 +638,40 @@ static int __devinit twl6030_usb_probe(struct platform_device *pdev)
 	if (!twl)
 		return -ENOMEM;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	otg = kzalloc(sizeof *otg, GFP_KERNEL);
+	if (!otg) {
+		kfree(twl);
+		return -ENOMEM;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	twl->dev		= &pdev->dev;
 	twl->irq1		= platform_get_irq(pdev, 0);
 	twl->irq2		= platform_get_irq(pdev, 1);
 	twl->features		= pdata->features;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	twl->phy.dev		= twl->dev;
+	twl->phy.label		= "twl6030";
+	twl->phy.otg		= otg;
+	twl->phy.init		= twl6030_phy_init;
+	twl->phy.shutdown	= twl6030_phy_shutdown;
+	twl->phy.set_suspend	= twl6030_phy_suspend;
+
+	otg->phy		= &twl->phy;
+	otg->set_host		= twl6030_set_host;
+	otg->set_peripheral	= twl6030_set_peripheral;
+	otg->set_vbus		= twl6030_set_vbus;
+	otg->start_srp		= twl6030_start_srp;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	twl->otg.dev		= twl->dev;
 	twl->otg.label		= "twl6030";
 	twl->otg.set_host	= twl6030_set_host;
@@ -426,6 +681,10 @@ static int __devinit twl6030_usb_probe(struct platform_device *pdev)
 	twl->otg.shutdown	= twl6030_phy_shutdown;
 	twl->otg.set_suspend	= twl6030_phy_suspend;
 	twl->otg.start_srp	= twl6030_start_srp;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* init spinlock for workqueue */
 	spin_lock_init(&twl->lock);
@@ -433,16 +692,40 @@ static int __devinit twl6030_usb_probe(struct platform_device *pdev)
 	err = twl6030_usb_ldo_init(twl);
 	if (err) {
 		dev_err(&pdev->dev, "ldo init failed\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		kfree(otg);
+		kfree(twl);
+		return err;
+	}
+	usb_set_transceiver(&twl->phy);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(twl);
 		return err;
 	}
 	otg_set_transceiver(&twl->otg);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_set_drvdata(pdev, twl);
 	if (device_create_file(&pdev->dev, &dev_attr_vbus))
 		dev_warn(&pdev->dev, "could not create sysfs file\n");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ATOMIC_INIT_NOTIFIER_HEAD(&twl->phy.notifier);
+
+	INIT_WORK(&twl->set_vbus_work, otg_set_vbus_work);
+=======
 	ATOMIC_INIT_NOTIFIER_HEAD(&twl->otg.notifier);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ATOMIC_INIT_NOTIFIER_HEAD(&twl->otg.notifier);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	twl->irq_enabled = true;
 	status = request_threaded_irq(twl->irq1, NULL, twl6030_usbotg_irq,
@@ -452,6 +735,13 @@ static int __devinit twl6030_usb_probe(struct platform_device *pdev)
 		dev_err(&pdev->dev, "can't get IRQ %d, err %d\n",
 			twl->irq1, status);
 		device_remove_file(twl->dev, &dev_attr_vbus);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		kfree(otg);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(twl);
 		return status;
 	}
@@ -464,14 +754,31 @@ static int __devinit twl6030_usb_probe(struct platform_device *pdev)
 			twl->irq2, status);
 		free_irq(twl->irq1, twl);
 		device_remove_file(twl->dev, &dev_attr_vbus);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		kfree(otg);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(twl);
 		return status;
 	}
 
 	twl->asleep = 0;
 	pdata->phy_init(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	twl6030_phy_suspend(&twl->phy, 0);
+	twl6030_enable_irq(&twl->phy);
+=======
 	twl6030_phy_suspend(&twl->otg, 0);
 	twl6030_enable_irq(&twl->otg);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	twl6030_phy_suspend(&twl->otg, 0);
+	twl6030_enable_irq(&twl->otg);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_info(&pdev->dev, "Initialized TWL6030 USB module\n");
 
 	return 0;
@@ -494,6 +801,14 @@ static int __exit twl6030_usb_remove(struct platform_device *pdev)
 	regulator_put(twl->usb3v3);
 	pdata->phy_exit(twl->dev);
 	device_remove_file(twl->dev, &dev_attr_vbus);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cancel_work_sync(&twl->set_vbus_work);
+	kfree(twl->phy.otg);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(twl);
 
 	return 0;

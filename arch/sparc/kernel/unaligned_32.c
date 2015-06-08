@@ -14,11 +14,16 @@
 #include <asm/ptrace.h>
 #include <asm/processor.h>
 =======
+<<<<<<< HEAD
+#include <asm/ptrace.h>
+#include <asm/processor.h>
+=======
 #include <linux/module.h>
 #include <asm/ptrace.h>
 #include <asm/processor.h>
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <linux/smp.h>
 #include <linux/perf_event.h>
@@ -255,8 +260,12 @@ asmlinkage void kernel_unaligned_trap(struct pt_regs *regs, unsigned int insn)
 <<<<<<< HEAD
 		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1, regs, addr);
 =======
+<<<<<<< HEAD
+		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1, regs, addr);
+=======
 		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1, 0, regs, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (dir) {
 		case load:
 			err = do_int_load(fetch_reg_addr(((insn>>25)&0x1f),
@@ -350,8 +359,12 @@ asmlinkage void user_unaligned_trap(struct pt_regs *regs, unsigned int insn)
 <<<<<<< HEAD
 		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1, regs, addr);
 =======
+<<<<<<< HEAD
+		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1, regs, addr);
+=======
 		perf_sw_event(PERF_COUNT_SW_ALIGNMENT_FAULTS, 1, 0, regs, addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch(dir) {
 		case load:
 			err = do_int_load(fetch_reg_addr(((insn>>25)&0x1f),

@@ -73,8 +73,12 @@ static inline void huge_ptep_clear_flush(struct vm_area_struct *vma,
 <<<<<<< HEAD
 	flush_tlb_page(vma, addr & huge_page_mask(hstate_vma(vma)));
 =======
+<<<<<<< HEAD
+	flush_tlb_page(vma, addr & huge_page_mask(hstate_vma(vma)));
+=======
 	flush_tlb_mm(vma->vm_mm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int huge_pte_none(pte_t pte)

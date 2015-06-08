@@ -40,8 +40,12 @@ static struct clocksource clocksource_uv = {
 <<<<<<< HEAD
 	.rating		= 299,
 =======
+<<<<<<< HEAD
+	.rating		= 299,
+=======
 	.rating		= 400,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read		= uv_read_rtc,
 	.mask		= (cycle_t)UVH_RTC_REAL_TIME_CLOCK_MASK,
 	.flags		= CLOCK_SOURCE_IS_CONTINUOUS,
@@ -385,11 +389,14 @@ static __init int uv_rtc_setup_clock(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* If single blade, prefer tsc */
 	if (uv_num_possible_blades() == 1)
 		clocksource_uv.rating = 250;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = clocksource_register_hz(&clocksource_uv, sn_rtc_cycles_per_second);
 	if (rc)
 		printk(KERN_INFO "UV RTC clocksource failed rc %d\n", rc);

@@ -66,8 +66,13 @@ hash_ipportip4_data_equal(const struct hash_ipportip4_elem *ip1,
 			  const struct hash_ipportip4_elem *ip2,
 			  u32 *multi)
 =======
+<<<<<<< HEAD
+			  const struct hash_ipportip4_elem *ip2,
+			  u32 *multi)
+=======
 			  const struct hash_ipportip4_elem *ip2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return ip1->ip == ip2->ip &&
 	       ip1->ip2 == ip2->ip2 &&
@@ -133,6 +138,9 @@ nla_put_failure:
 #include <linux/netfilter/ipset/ip_set_ahash.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void
 hash_ipportip4_data_next(struct ip_set_hash *h,
 			 const struct hash_ipportip4_elem *d)
@@ -145,17 +153,23 @@ static int
 hash_ipportip4_kadt(struct ip_set *set, const struct sk_buff *skb,
 		    const struct xt_action_param *par,
 		    enum ipset_adt adt, const struct ip_set_adt_opt *opt)
+<<<<<<< HEAD
+=======
 =======
 static int
 hash_ipportip4_kadt(struct ip_set *set, const struct sk_buff *skb,
 		    enum ipset_adt adt, u8 pf, u8 dim, u8 flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct ip_set_hash *h = set->data;
 	ipset_adtfn adtfn = set->variant->adt[adt];
 	struct hash_ipportip4_elem data = { };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ip_set_get_ip4_port(skb, opt->flags & IPSET_DIM_TWO_SRC,
 				 &data.port, &data.proto))
 		return -EINVAL;
@@ -164,6 +178,8 @@ hash_ipportip4_kadt(struct ip_set *set, const struct sk_buff *skb,
 	ip4addrptr(skb, opt->flags & IPSET_DIM_THREE_SRC, &data.ip2);
 
 	return adtfn(set, &data, opt_timeout(opt, h), opt->cmdflags);
+<<<<<<< HEAD
+=======
 =======
 	if (!ip_set_get_ip4_port(skb, flags & IPSET_DIM_TWO_SRC,
 				 &data.port, &data.proto))
@@ -174,6 +190,7 @@ hash_ipportip4_kadt(struct ip_set *set, const struct sk_buff *skb,
 
 	return adtfn(set, &data, h->timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -181,8 +198,12 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		    enum ipset_adt adt, u32 *lineno, u32 flags, bool retried)
 =======
+<<<<<<< HEAD
+		    enum ipset_adt adt, u32 *lineno, u32 flags, bool retried)
+=======
 		    enum ipset_adt adt, u32 *lineno, u32 flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct ip_set_hash *h = set->data;
 	ipset_adtfn adtfn = set->variant->adt[adt];
@@ -190,8 +211,12 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 	u32 ip, ip_to = 0, p = 0, port, port_to;
 =======
+<<<<<<< HEAD
+	u32 ip, ip_to = 0, p = 0, port, port_to;
+=======
 	u32 ip, ip_to, p, port, port_to;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 timeout = h->timeout;
 	bool with_ports = false;
 	int ret;
@@ -242,8 +267,12 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		ret = adtfn(set, &data, timeout, flags);
 =======
+<<<<<<< HEAD
+		ret = adtfn(set, &data, timeout, flags);
+=======
 		ret = adtfn(set, &data, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ip_set_eexist(ret, flags) ? 0 : ret;
 	}
 
@@ -262,9 +291,13 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		ip_set_mask_from_to(ip, ip_to, cidr);
 =======
+<<<<<<< HEAD
+		ip_set_mask_from_to(ip, ip_to, cidr);
+=======
 		ip &= ip_set_hostmask(cidr);
 		ip_to = ip | ~ip_set_hostmask(cidr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		ip_to = ip;
 
@@ -276,6 +309,9 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retried)
 		ip = h->next.ip;
 	for (; !before(ip_to, ip); ip++) {
@@ -284,6 +320,8 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 			data.ip = htonl(ip);
 			data.port = htons(p);
 			ret = adtfn(set, &data, timeout, flags);
+<<<<<<< HEAD
+=======
 =======
 	for (; !before(ip_to, ip); ip++)
 		for (p = port; p <= port_to; p++) {
@@ -291,6 +329,7 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 			data.port = htons(p);
 			ret = adtfn(set, &data, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (ret && !ip_set_eexist(ret, flags))
 				return ret;
@@ -300,7 +339,11 @@ hash_ipportip4_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 	}
 =======
+<<<<<<< HEAD
+	}
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -340,8 +383,13 @@ hash_ipportip6_data_equal(const struct hash_ipportip6_elem *ip1,
 			  const struct hash_ipportip6_elem *ip2,
 			  u32 *multi)
 =======
+<<<<<<< HEAD
+			  const struct hash_ipportip6_elem *ip2,
+			  u32 *multi)
+=======
 			  const struct hash_ipportip6_elem *ip2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return ipv6_addr_cmp(&ip1->ip.in6, &ip2->ip.in6) == 0 &&
 	       ipv6_addr_cmp(&ip1->ip2.in6, &ip2->ip2.in6) == 0 &&
@@ -409,6 +457,9 @@ nla_put_failure:
 #include <linux/netfilter/ipset/ip_set_ahash.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void
 hash_ipportip6_data_next(struct ip_set_hash *h,
 			 const struct hash_ipportip6_elem *d)
@@ -420,17 +471,23 @@ static int
 hash_ipportip6_kadt(struct ip_set *set, const struct sk_buff *skb,
 		    const struct xt_action_param *par,
 		    enum ipset_adt adt, const struct ip_set_adt_opt *opt)
+<<<<<<< HEAD
+=======
 =======
 static int
 hash_ipportip6_kadt(struct ip_set *set, const struct sk_buff *skb,
 		    enum ipset_adt adt, u8 pf, u8 dim, u8 flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct ip_set_hash *h = set->data;
 	ipset_adtfn adtfn = set->variant->adt[adt];
 	struct hash_ipportip6_elem data = { };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ip_set_get_ip6_port(skb, opt->flags & IPSET_DIM_TWO_SRC,
 				 &data.port, &data.proto))
 		return -EINVAL;
@@ -439,6 +496,8 @@ hash_ipportip6_kadt(struct ip_set *set, const struct sk_buff *skb,
 	ip6addrptr(skb, opt->flags & IPSET_DIM_THREE_SRC, &data.ip2.in6);
 
 	return adtfn(set, &data, opt_timeout(opt, h), opt->cmdflags);
+<<<<<<< HEAD
+=======
 =======
 	if (!ip_set_get_ip6_port(skb, flags & IPSET_DIM_TWO_SRC,
 				 &data.port, &data.proto))
@@ -449,6 +508,7 @@ hash_ipportip6_kadt(struct ip_set *set, const struct sk_buff *skb,
 
 	return adtfn(set, &data, h->timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int
@@ -456,8 +516,12 @@ hash_ipportip6_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		    enum ipset_adt adt, u32 *lineno, u32 flags, bool retried)
 =======
+<<<<<<< HEAD
+		    enum ipset_adt adt, u32 *lineno, u32 flags, bool retried)
+=======
 		    enum ipset_adt adt, u32 *lineno, u32 flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct ip_set_hash *h = set->data;
 	ipset_adtfn adtfn = set->variant->adt[adt];
@@ -513,8 +577,12 @@ hash_ipportip6_uadt(struct ip_set *set, struct nlattr *tb[],
 <<<<<<< HEAD
 		ret = adtfn(set, &data, timeout, flags);
 =======
+<<<<<<< HEAD
+		ret = adtfn(set, &data, timeout, flags);
+=======
 		ret = adtfn(set, &data, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ip_set_eexist(ret, flags) ? 0 : ret;
 	}
 
@@ -524,16 +592,22 @@ hash_ipportip6_uadt(struct ip_set *set, struct nlattr *tb[],
 		swap(port, port_to);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (retried)
 		port = h->next.port;
 	for (; port <= port_to; port++) {
 		data.port = htons(port);
 		ret = adtfn(set, &data, timeout, flags);
+<<<<<<< HEAD
+=======
 =======
 	for (; port <= port_to; port++) {
 		data.port = htons(port);
 		ret = adtfn(set, &data, timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (ret && !ip_set_eexist(ret, flags))
 			return ret;
@@ -556,9 +630,15 @@ hash_ipportip_create(struct ip_set *set, struct nlattr *tb[], u32 flags)
 
 	if (!(set->family == NFPROTO_IPV4 || set->family == NFPROTO_IPV6))
 =======
+<<<<<<< HEAD
+	size_t hsize;
+
+	if (!(set->family == NFPROTO_IPV4 || set->family == NFPROTO_IPV6))
+=======
 
 	if (!(set->family == AF_INET || set->family == AF_INET6))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -IPSET_ERR_INVALID_FAMILY;
 
 	if (unlikely(!ip_set_optattr_netorder(tb, IPSET_ATTR_HASHSIZE) ||
@@ -585,17 +665,23 @@ hash_ipportip_create(struct ip_set *set, struct nlattr *tb[], u32 flags)
 
 	hbits = htable_bits(hashsize);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hsize = htable_size(hbits);
 	if (hsize == 0) {
 		kfree(h);
 		return -ENOMEM;
 	}
 	h->table = ip_set_alloc(hsize);
+<<<<<<< HEAD
+=======
 =======
 	h->table = ip_set_alloc(
 			sizeof(struct htable)
 			+ jhash_size(hbits) * sizeof(struct hbucket));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!h->table) {
 		kfree(h);
 		return -ENOMEM;
@@ -608,16 +694,22 @@ hash_ipportip_create(struct ip_set *set, struct nlattr *tb[], u32 flags)
 		h->timeout = ip_set_timeout_uget(tb[IPSET_ATTR_TIMEOUT]);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set->variant = set->family == NFPROTO_IPV4
 			? &hash_ipportip4_tvariant : &hash_ipportip6_tvariant;
 
 		if (set->family == NFPROTO_IPV4)
+<<<<<<< HEAD
+=======
 =======
 		set->variant = set->family == AF_INET
 			? &hash_ipportip4_tvariant : &hash_ipportip6_tvariant;
 
 		if (set->family == AF_INET)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			hash_ipportip4_gc_init(set);
 		else
 			hash_ipportip6_gc_init(set);
@@ -625,8 +717,12 @@ hash_ipportip_create(struct ip_set *set, struct nlattr *tb[], u32 flags)
 <<<<<<< HEAD
 		set->variant = set->family == NFPROTO_IPV4
 =======
+<<<<<<< HEAD
+		set->variant = set->family == NFPROTO_IPV4
+=======
 		set->variant = set->family == AF_INET
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			? &hash_ipportip4_variant : &hash_ipportip6_variant;
 	}
 
@@ -647,9 +743,15 @@ static struct ip_set_type hash_ipportip_type __read_mostly = {
 	.revision_min	= 0,
 	.revision_max	= 1,	/* SCTP and UDPLITE support added */
 =======
+<<<<<<< HEAD
+	.family		= NFPROTO_UNSPEC,
+	.revision_min	= 0,
+	.revision_max	= 1,	/* SCTP and UDPLITE support added */
+=======
 	.family		= AF_UNSPEC,
 	.revision	= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.create		= hash_ipportip_create,
 	.create_policy	= {
 		[IPSET_ATTR_HASHSIZE]	= { .type = NLA_U32 },

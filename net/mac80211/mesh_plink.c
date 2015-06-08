@@ -23,13 +23,20 @@
 #define PLINK_GET_LLID(p) (p + 2)
 #define PLINK_GET_PLID(p) (p + 4)
 =======
+<<<<<<< HEAD
+#define PLINK_GET_LLID(p) (p + 2)
+#define PLINK_GET_PLID(p) (p + 4)
+=======
 #define PLINK_GET_LLID(p) (p + 4)
 #define PLINK_GET_PLID(p) (p + 6)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define mod_plink_timer(s, t) (mod_timer(&s->plink_timer, \
 				jiffies + HZ * t / 1000))
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Peer link cancel reasons, all subject to ANA approval */
@@ -44,6 +51,7 @@
 #define MESH_SECURITY_FAILED_VERIFICATION	10
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dot11MeshMaxRetries(s) (s->u.mesh.mshcfg.dot11MeshMaxRetries)
 #define dot11MeshRetryTimeout(s) (s->u.mesh.mshcfg.dot11MeshRetryTimeout)
 #define dot11MeshConfirmTimeout(s) (s->u.mesh.mshcfg.dot11MeshConfirmTimeout)
@@ -51,11 +59,16 @@
 #define dot11MeshMaxPeerLinks(s) (s->u.mesh.mshcfg.dot11MeshMaxPeerLinks)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* We only need a valid sta if user configured a minimum rssi_threshold. */
 #define rssi_threshold_check(sta, sdata) \
 		(sdata->u.mesh.mshcfg.rssi_threshold == 0 ||\
 		(sta && (s8) -ewma_read(&sta->avg_signal) > \
 		sdata->u.mesh.mshcfg.rssi_threshold))
+<<<<<<< HEAD
+=======
 =======
 enum plink_frame_type {
 	PLINK_OPEN = 1,
@@ -63,6 +76,7 @@ enum plink_frame_type {
 	PLINK_CLOSE
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum plink_event {
 	PLINK_UNDEFINED,
@@ -77,12 +91,18 @@ enum plink_event {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
 		enum ieee80211_self_protected_actioncode action,
 		u8 *da, __le16 llid, __le16 plid, __le16 reason);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline
 void mesh_plink_inc_estab_count(struct ieee80211_sub_if_data *sdata)
 {
@@ -117,6 +137,9 @@ static inline void mesh_plink_fsm_restart(struct sta_info *sta)
  */
 static struct sta_info *mesh_plink_alloc(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					 u8 *hw_addr, u32 rates,
 					 struct ieee802_11_elems *elems)
 {
@@ -126,6 +149,8 @@ static struct sta_info *mesh_plink_alloc(struct ieee80211_sub_if_data *sdata,
 
 	sband = local->hw.wiphy->bands[local->oper_channel->band];
 
+<<<<<<< HEAD
+=======
 =======
 					 u8 *hw_addr, u32 rates)
 {
@@ -133,6 +158,7 @@ static struct sta_info *mesh_plink_alloc(struct ieee80211_sub_if_data *sdata,
 	struct sta_info *sta;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (local->num_sta >= MESH_MAX_PLINKS)
 		return NULL;
 
@@ -141,6 +167,9 @@ static struct sta_info *mesh_plink_alloc(struct ieee80211_sub_if_data *sdata,
 		return NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sta_info_pre_move_state(sta, IEEE80211_STA_AUTH);
 	sta_info_pre_move_state(sta, IEEE80211_STA_ASSOC);
 	sta_info_pre_move_state(sta, IEEE80211_STA_AUTHORIZED);
@@ -152,10 +181,13 @@ static struct sta_info *mesh_plink_alloc(struct ieee80211_sub_if_data *sdata,
 		ieee80211_ht_cap_ie_to_sta_ht_cap(sdata, sband,
 						  elems->ht_cap_elem,
 						  &sta->sta.ht_cap);
+<<<<<<< HEAD
+=======
 =======
 	sta->flags = WLAN_STA_AUTHORIZED | WLAN_STA_AUTH;
 	sta->sta.supp_rates[local->hw.conf.channel->band] = rates;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rate_control_rate_init(sta);
 
 	return sta;
@@ -200,12 +232,18 @@ void mesh_plink_deactivate(struct sta_info *sta)
 	spin_lock_bh(&sta->lock);
 	deactivated = __mesh_plink_deactivate(sta);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sta->reason = cpu_to_le16(WLAN_REASON_MESH_PEER_CANCELED);
 	mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
 			    sta->sta.addr, sta->llid, sta->plid,
 			    sta->reason);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_bh(&sta->lock);
 
 	if (deactivated)
@@ -214,6 +252,9 @@ void mesh_plink_deactivate(struct sta_info *sta)
 
 static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		enum ieee80211_self_protected_actioncode action,
 		u8 *da, __le16 llid, __le16 plid, __le16 reason) {
 	struct ieee80211_local *local = sdata->local;
@@ -242,6 +283,8 @@ static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
 	skb_reserve(skb, local->tx_headroom);
 	mgmt = (struct ieee80211_mgmt *) skb_put(skb, hdr_len);
 	memset(mgmt, 0, hdr_len);
+<<<<<<< HEAD
+=======
 =======
 		enum plink_frame_type action, u8 *da, __le16 llid, __le16 plid,
 		__le16 reason) {
@@ -264,12 +307,16 @@ static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
 		skb_put(skb, 25 + sizeof(mgmt->u.action.u.plink_action));
 	memset(mgmt, 0, 25 + sizeof(mgmt->u.action.u.plink_action));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mgmt->frame_control = cpu_to_le16(IEEE80211_FTYPE_MGMT |
 					  IEEE80211_STYPE_ACTION);
 	memcpy(mgmt->da, da, ETH_ALEN);
 	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
 	memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mgmt->u.action.category = WLAN_CATEGORY_SELF_PROTECTED;
 	mgmt->u.action.u.self_prot.action_code = action;
 
@@ -340,6 +387,8 @@ static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
 	if (mesh_add_vendor_ies(skb, sdata))
 		return -1;
 
+<<<<<<< HEAD
+=======
 =======
 	mgmt->u.action.category = WLAN_CATEGORY_MESH_ACTION;
 	mgmt->u.action.u.plink_action.action_code = action;
@@ -393,6 +442,7 @@ static int mesh_plink_frame_tx(struct ieee80211_sub_if_data *sdata,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ieee80211_tx_skb(sdata, skb);
 	return 0;
 }
@@ -419,8 +469,12 @@ void mesh_neighbour_update(u8 *hw_addr, u32 rates,
 <<<<<<< HEAD
 			sta = mesh_plink_alloc(sdata, hw_addr, rates, elems);
 =======
+<<<<<<< HEAD
+			sta = mesh_plink_alloc(sdata, hw_addr, rates, elems);
+=======
 			sta = mesh_plink_alloc(sdata, hw_addr, rates);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!sta)
 			return;
 		if (sta_info_insert_rcu(sta)) {
@@ -438,8 +492,13 @@ void mesh_neighbour_update(u8 *hw_addr, u32 rates,
 			sdata->u.mesh.mshcfg.auto_open_plinks &&
 			rssi_threshold_check(sta, sdata))
 =======
+<<<<<<< HEAD
+			sdata->u.mesh.mshcfg.auto_open_plinks &&
+			rssi_threshold_check(sta, sdata))
+=======
 			sdata->u.mesh.mshcfg.auto_open_plinks)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mesh_plink_open(sta);
 
 	rcu_read_unlock();
@@ -492,11 +551,16 @@ static void mesh_plink_timer(unsigned long data)
 			mod_plink_timer(sta, sta->plink_timeout);
 			spin_unlock_bh(&sta->lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_OPEN,
 					    sta->sta.addr, llid, 0, 0);
 			break;
 		}
 		reason = cpu_to_le16(WLAN_REASON_MESH_MAX_RETRIES);
+<<<<<<< HEAD
+=======
 =======
 			mesh_plink_frame_tx(sdata, PLINK_OPEN, sta->sta.addr, llid,
 					    0, 0);
@@ -504,17 +568,23 @@ static void mesh_plink_timer(unsigned long data)
 		}
 		reason = cpu_to_le16(MESH_MAX_RETRIES);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* fall through on else */
 	case NL80211_PLINK_CNF_RCVD:
 		/* confirm timer */
 		if (!reason)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reason = cpu_to_le16(WLAN_REASON_MESH_CONFIRM_TIMEOUT);
 		sta->plink_state = NL80211_PLINK_HOLDING;
 		mod_plink_timer(sta, dot11MeshHoldingTimeout(sdata));
 		spin_unlock_bh(&sta->lock);
 		mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
 				    sta->sta.addr, llid, plid, reason);
+<<<<<<< HEAD
+=======
 =======
 			reason = cpu_to_le16(MESH_CONFIRM_TIMEOUT);
 		sta->plink_state = NL80211_PLINK_HOLDING;
@@ -523,6 +593,7 @@ static void mesh_plink_timer(unsigned long data)
 		mesh_plink_frame_tx(sdata, PLINK_CLOSE, sta->sta.addr, llid, plid,
 				    reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case NL80211_PLINK_HOLDING:
 		/* holding timer */
@@ -569,8 +640,12 @@ int mesh_plink_open(struct sta_info *sta)
 <<<<<<< HEAD
 	if (!test_sta_flag(sta, WLAN_STA_AUTH))
 =======
+<<<<<<< HEAD
+	if (!test_sta_flag(sta, WLAN_STA_AUTH))
+=======
 	if (!test_sta_flags(sta, WLAN_STA_AUTH))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EPERM;
 
 	spin_lock_bh(&sta->lock);
@@ -589,8 +664,12 @@ int mesh_plink_open(struct sta_info *sta)
 <<<<<<< HEAD
 	return mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_OPEN,
 =======
+<<<<<<< HEAD
+	return mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_OPEN,
+=======
 	return mesh_plink_frame_tx(sdata, PLINK_OPEN,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   sta->sta.addr, llid, 0, 0);
 }
 
@@ -619,8 +698,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 	enum ieee80211_self_protected_actioncode ftype;
 =======
+<<<<<<< HEAD
+	enum ieee80211_self_protected_actioncode ftype;
+=======
 	enum plink_frame_type ftype;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size_t baselen;
 	bool deactivated, matches_local = true;
 	u8 ie_len;
@@ -648,15 +731,21 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	baseaddr = mgmt->u.action.u.self_prot.variable;
 	baselen = (u8 *) mgmt->u.action.u.self_prot.variable - (u8 *) mgmt;
 	if (mgmt->u.action.u.self_prot.action_code ==
 						WLAN_SP_MESH_PEERING_CONFIRM) {
+<<<<<<< HEAD
+=======
 =======
 	baseaddr = mgmt->u.action.u.plink_action.variable;
 	baselen = (u8 *) mgmt->u.action.u.plink_action.variable - (u8 *) mgmt;
 	if (mgmt->u.action.u.plink_action.action_code == PLINK_CONFIRM) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		baseaddr += 4;
 		baselen += 4;
 	}
@@ -664,8 +753,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 	if (!elems.peering) {
 =======
+<<<<<<< HEAD
+	if (!elems.peering) {
+=======
 	if (!elems.peer_link) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpl_dbg("Mesh plink: missing necessary peer link ie\n");
 		return;
 	}
@@ -676,12 +769,17 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ftype = mgmt->u.action.u.self_prot.action_code;
 	ie_len = elems.peering_len;
 	if ((ftype == WLAN_SP_MESH_PEERING_OPEN && ie_len != 4) ||
 	    (ftype == WLAN_SP_MESH_PEERING_CONFIRM && ie_len != 6) ||
 	    (ftype == WLAN_SP_MESH_PEERING_CLOSE && ie_len != 6
 							&& ie_len != 8)) {
+<<<<<<< HEAD
+=======
 =======
 	ftype = mgmt->u.action.u.plink_action.action_code;
 	ie_len = elems.peer_link_len;
@@ -689,6 +787,7 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	    (ftype == PLINK_CONFIRM && ie_len != 8) ||
 	    (ftype == PLINK_CLOSE && ie_len != 8 && ie_len != 10)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpl_dbg("Mesh plink: incorrect plink ie length %d %d\n",
 		    ftype, ie_len);
 		return;
@@ -698,8 +797,13 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	if (ftype != WLAN_SP_MESH_PEERING_CLOSE &&
 				(!elems.mesh_id || !elems.mesh_config)) {
 =======
+<<<<<<< HEAD
+	if (ftype != WLAN_SP_MESH_PEERING_CLOSE &&
+				(!elems.mesh_id || !elems.mesh_config)) {
+=======
 	if (ftype != PLINK_CLOSE && (!elems.mesh_id || !elems.mesh_config)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpl_dbg("Mesh plink: missing necessary ie\n");
 		return;
 	}
@@ -707,15 +811,21 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	 * from the point of view of this host.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(&plid, PLINK_GET_LLID(elems.peering), 2);
 	if (ftype == WLAN_SP_MESH_PEERING_CONFIRM ||
 	    (ftype == WLAN_SP_MESH_PEERING_CLOSE && ie_len == 8))
 		memcpy(&llid, PLINK_GET_PLID(elems.peering), 2);
+<<<<<<< HEAD
+=======
 =======
 	memcpy(&plid, PLINK_GET_LLID(elems.peer_link), 2);
 	if (ftype == PLINK_CONFIRM || (ftype == PLINK_CLOSE && ie_len == 10))
 		memcpy(&llid, PLINK_GET_PLID(elems.peer_link), 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_read_lock();
 
@@ -723,14 +833,21 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 	if (!sta && ftype != WLAN_SP_MESH_PEERING_OPEN) {
 =======
+<<<<<<< HEAD
+	if (!sta && ftype != WLAN_SP_MESH_PEERING_OPEN) {
+=======
 	if (!sta && ftype != PLINK_OPEN) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpl_dbg("Mesh plink: cls or cnf from unknown peer\n");
 		rcu_read_unlock();
 		return;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ftype == WLAN_SP_MESH_PEERING_OPEN &&
 	    !rssi_threshold_check(sta, sdata)) {
 		mpl_dbg("Mesh plink: %pM does not meet rssi threshold\n",
@@ -740,9 +857,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	}
 
 	if (sta && !test_sta_flag(sta, WLAN_STA_AUTH)) {
+<<<<<<< HEAD
+=======
 =======
 	if (sta && !test_sta_flags(sta, WLAN_STA_AUTH)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpl_dbg("Mesh plink: Action frame from non-authed peer\n");
 		rcu_read_unlock();
 		return;
@@ -756,6 +876,9 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	/* Now we will figure out the appropriate event... */
 	event = PLINK_UNDEFINED;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ftype != WLAN_SP_MESH_PEERING_CLOSE &&
 	    (!mesh_matches_local(&elems, sdata))) {
 		matches_local = false;
@@ -767,6 +890,8 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 			event = CNF_RJCT;
 			break;
 		default:
+<<<<<<< HEAD
+=======
 =======
 	if (ftype != PLINK_CLOSE && (!mesh_matches_local(&elems, sdata))) {
 		matches_local = false;
@@ -780,6 +905,7 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 		case PLINK_CLOSE:
 			/* avoid warning */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -787,6 +913,9 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	if (!sta && !matches_local) {
 		rcu_read_unlock();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reason = cpu_to_le16(WLAN_REASON_MESH_CONFIG);
 		llid = 0;
 		mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
@@ -794,6 +923,8 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 		return;
 	} else if (!sta) {
 		/* ftype == WLAN_SP_MESH_PEERING_OPEN */
+<<<<<<< HEAD
+=======
 =======
 		reason = cpu_to_le16(MESH_CAPABILITY_POLICY_VIOLATION);
 		llid = 0;
@@ -803,6 +934,7 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 	} else if (!sta) {
 		/* ftype == PLINK_OPEN */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 rates;
 
 		rcu_read_unlock();
@@ -816,8 +948,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 		sta = mesh_plink_alloc(sdata, mgmt->sa, rates, &elems);
 =======
+<<<<<<< HEAD
+		sta = mesh_plink_alloc(sdata, mgmt->sa, rates, &elems);
+=======
 		sta = mesh_plink_alloc(sdata, mgmt->sa, rates);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!sta) {
 			mpl_dbg("Mesh plink error: plink table full\n");
 			return;
@@ -834,8 +970,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 		case WLAN_SP_MESH_PEERING_OPEN:
 =======
+<<<<<<< HEAD
+		case WLAN_SP_MESH_PEERING_OPEN:
+=======
 		case PLINK_OPEN:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!mesh_plink_free_count(sdata) ||
 			    (sta->plid && sta->plid != plid))
 				event = OPN_IGNR;
@@ -845,8 +985,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 		case WLAN_SP_MESH_PEERING_CONFIRM:
 =======
+<<<<<<< HEAD
+		case WLAN_SP_MESH_PEERING_CONFIRM:
+=======
 		case PLINK_CONFIRM:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!mesh_plink_free_count(sdata) ||
 			    (sta->llid != llid || sta->plid != plid))
 				event = CNF_IGNR;
@@ -856,8 +1000,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 		case WLAN_SP_MESH_PEERING_CLOSE:
 =======
+<<<<<<< HEAD
+		case WLAN_SP_MESH_PEERING_CLOSE:
+=======
 		case PLINK_CLOSE:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (sta->plink_state == NL80211_PLINK_ESTAB)
 				/* Do not check for llid or plid. This does not
 				 * follow the standard but since multiple plinks
@@ -907,18 +1055,24 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 			mesh_plink_timer_set(sta, dot11MeshRetryTimeout(sdata));
 			spin_unlock_bh(&sta->lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mesh_plink_frame_tx(sdata,
 					    WLAN_SP_MESH_PEERING_OPEN,
 					    sta->sta.addr, llid, 0, 0);
 			mesh_plink_frame_tx(sdata,
 					    WLAN_SP_MESH_PEERING_CONFIRM,
 					    sta->sta.addr, llid, plid, 0);
+<<<<<<< HEAD
+=======
 =======
 			mesh_plink_frame_tx(sdata, PLINK_OPEN, sta->sta.addr, llid,
 					    0, 0);
 			mesh_plink_frame_tx(sdata, PLINK_CONFIRM, sta->sta.addr,
 					    llid, plid, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			spin_unlock_bh(&sta->lock);
@@ -931,16 +1085,22 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 		case OPN_RJCT:
 		case CNF_RJCT:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reason = cpu_to_le16(WLAN_REASON_MESH_CONFIG);
 		case CLS_ACPT:
 			if (!reason)
 				reason = cpu_to_le16(WLAN_REASON_MESH_CLOSE);
+<<<<<<< HEAD
+=======
 =======
 			reason = cpu_to_le16(MESH_CAPABILITY_POLICY_VIOLATION);
 		case CLS_ACPT:
 			if (!reason)
 				reason = cpu_to_le16(MESH_CLOSE_RCVD);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sta->reason = reason;
 			sta->plink_state = NL80211_PLINK_HOLDING;
 			if (!mod_plink_timer(sta,
@@ -954,9 +1114,15 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 					    WLAN_SP_MESH_PEERING_CLOSE,
 					    sta->sta.addr, llid, plid, reason);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata,
+					    WLAN_SP_MESH_PEERING_CLOSE,
+					    sta->sta.addr, llid, plid, reason);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CLOSE, sta->sta.addr, llid,
 					    plid, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case OPN_ACPT:
 			/* retry timer is left untouched */
@@ -969,9 +1135,15 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 					    WLAN_SP_MESH_PEERING_CONFIRM,
 					    sta->sta.addr, llid, plid, 0);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata,
+					    WLAN_SP_MESH_PEERING_CONFIRM,
+					    sta->sta.addr, llid, plid, 0);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CONFIRM, sta->sta.addr, llid,
 					    plid, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case CNF_ACPT:
 			sta->plink_state = NL80211_PLINK_CNF_RCVD;
@@ -992,16 +1164,22 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 		case OPN_RJCT:
 		case CNF_RJCT:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reason = cpu_to_le16(WLAN_REASON_MESH_CONFIG);
 		case CLS_ACPT:
 			if (!reason)
 				reason = cpu_to_le16(WLAN_REASON_MESH_CLOSE);
+<<<<<<< HEAD
+=======
 =======
 			reason = cpu_to_le16(MESH_CAPABILITY_POLICY_VIOLATION);
 		case CLS_ACPT:
 			if (!reason)
 				reason = cpu_to_le16(MESH_CLOSE_RCVD);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sta->reason = reason;
 			sta->plink_state = NL80211_PLINK_HOLDING;
 			if (!mod_plink_timer(sta,
@@ -1014,9 +1192,14 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 			mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
 					    sta->sta.addr, llid, plid, reason);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
+					    sta->sta.addr, llid, plid, reason);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CLOSE, sta->sta.addr, llid,
 					    plid, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case OPN_ACPT:
 			llid = sta->llid;
@@ -1026,9 +1209,15 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 					    WLAN_SP_MESH_PEERING_CONFIRM,
 					    sta->sta.addr, llid, plid, 0);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata,
+					    WLAN_SP_MESH_PEERING_CONFIRM,
+					    sta->sta.addr, llid, plid, 0);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CONFIRM, sta->sta.addr, llid,
 					    plid, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case CNF_ACPT:
 			del_timer(&sta->plink_timer);
@@ -1050,16 +1239,22 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 		case OPN_RJCT:
 		case CNF_RJCT:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reason = cpu_to_le16(WLAN_REASON_MESH_CONFIG);
 		case CLS_ACPT:
 			if (!reason)
 				reason = cpu_to_le16(WLAN_REASON_MESH_CLOSE);
+<<<<<<< HEAD
+=======
 =======
 			reason = cpu_to_le16(MESH_CAPABILITY_POLICY_VIOLATION);
 		case CLS_ACPT:
 			if (!reason)
 				reason = cpu_to_le16(MESH_CLOSE_RCVD);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sta->reason = reason;
 			sta->plink_state = NL80211_PLINK_HOLDING;
 			if (!mod_plink_timer(sta,
@@ -1073,9 +1268,15 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 					    WLAN_SP_MESH_PEERING_CLOSE,
 					    sta->sta.addr, llid, plid, reason);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata,
+					    WLAN_SP_MESH_PEERING_CLOSE,
+					    sta->sta.addr, llid, plid, reason);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CLOSE, sta->sta.addr, llid,
 					    plid, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case OPN_ACPT:
 			del_timer(&sta->plink_timer);
@@ -1090,9 +1291,15 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 					    WLAN_SP_MESH_PEERING_CONFIRM,
 					    sta->sta.addr, llid, plid, 0);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata,
+					    WLAN_SP_MESH_PEERING_CONFIRM,
+					    sta->sta.addr, llid, plid, 0);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CONFIRM, sta->sta.addr, llid,
 					    plid, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			spin_unlock_bh(&sta->lock);
@@ -1106,8 +1313,12 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 <<<<<<< HEAD
 			reason = cpu_to_le16(WLAN_REASON_MESH_CLOSE);
 =======
+<<<<<<< HEAD
+			reason = cpu_to_le16(WLAN_REASON_MESH_CLOSE);
+=======
 			reason = cpu_to_le16(MESH_CLOSE_RCVD);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sta->reason = reason;
 			deactivated = __mesh_plink_deactivate(sta);
 			sta->plink_state = NL80211_PLINK_HOLDING;
@@ -1120,9 +1331,14 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 			mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
 					    sta->sta.addr, llid, plid, reason);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
+					    sta->sta.addr, llid, plid, reason);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CLOSE, sta->sta.addr, llid,
 					    plid, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case OPN_ACPT:
 			llid = sta->llid;
@@ -1132,9 +1348,15 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 					    WLAN_SP_MESH_PEERING_CONFIRM,
 					    sta->sta.addr, llid, plid, 0);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata,
+					    WLAN_SP_MESH_PEERING_CONFIRM,
+					    sta->sta.addr, llid, plid, 0);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CONFIRM, sta->sta.addr, llid,
 					    plid, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			spin_unlock_bh(&sta->lock);
@@ -1160,9 +1382,14 @@ void mesh_rx_plink_frame(struct ieee80211_sub_if_data *sdata, struct ieee80211_m
 			mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
 					    sta->sta.addr, llid, plid, reason);
 =======
+<<<<<<< HEAD
+			mesh_plink_frame_tx(sdata, WLAN_SP_MESH_PEERING_CLOSE,
+					    sta->sta.addr, llid, plid, reason);
+=======
 			mesh_plink_frame_tx(sdata, PLINK_CLOSE, sta->sta.addr,
 					    llid, plid, reason);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			spin_unlock_bh(&sta->lock);

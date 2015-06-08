@@ -10,6 +10,9 @@
 
 #include <linux/types.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ethtool.h>
 
 /* Generic MII registers. */
@@ -106,6 +109,8 @@
 #define LPA_RFAULT		0x2000	/* Link partner faulted        */
 #define LPA_LPACK		0x4000	/* Link partner acked us       */
 #define LPA_NPAGE		0x8000	/* Next page bit               */
+<<<<<<< HEAD
+=======
 =======
 
 /* Generic MII registers. */
@@ -204,12 +209,16 @@
 #define LPA_LPACK               0x4000  /* Link partner acked us       */
 #define LPA_NPAGE               0x8000  /* Next page bit               */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define LPA_DUPLEX		(LPA_10FULL | LPA_100FULL)
 #define LPA_100			(LPA_100FULL | LPA_100HALF | LPA_100BASE4)
 
 /* Expansion register for auto-negotiation. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXPANSION_NWAY		0x0001	/* Can do N-way auto-nego      */
 #define EXPANSION_LCWP		0x0002	/* Got new RX page code word   */
 #define EXPANSION_ENABLENPAGE	0x0004	/* This enables npage words    */
@@ -236,6 +245,8 @@
 #define LPA_1000REMRXOK		0x1000	/* Link partner remote receiver status */
 #define LPA_1000FULL		0x0800	/* Link partner 1000BASE-T full duplex */
 #define LPA_1000HALF		0x0400	/* Link partner 1000BASE-T half duplex */
+<<<<<<< HEAD
+=======
 =======
 #define EXPANSION_NWAY          0x0001  /* Can do N-way auto-nego      */
 #define EXPANSION_LCWP          0x0002  /* Got new RX page code word   */
@@ -262,6 +273,7 @@
 #define LPA_1000FULL            0x0800  /* Link partner 1000BASE-T full duplex */
 #define LPA_1000HALF            0x0400  /* Link partner 1000BASE-T half duplex */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Flow control flags */
 #define FLOW_CTRL_TX		0x01
@@ -278,8 +290,12 @@ struct mii_ioctl_data {
 <<<<<<< HEAD
 #ifdef __KERNEL__
 =======
+<<<<<<< HEAD
+#ifdef __KERNEL__
+=======
 #ifdef __KERNEL__ 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/if.h>
 
@@ -313,8 +329,12 @@ extern int generic_mii_ioctl(struct mii_if_info *mii_if,
 <<<<<<< HEAD
 			     struct mii_ioctl_data *mii_data, int cmd,
 =======
+<<<<<<< HEAD
+			     struct mii_ioctl_data *mii_data, int cmd,
+=======
                       	     struct mii_ioctl_data *mii_data, int cmd,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     unsigned int *duplex_changed);
 
 
@@ -325,8 +345,11 @@ static inline struct mii_ioctl_data *if_mii(struct ifreq *rq)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mii_nway_result
  * @negotiated: value of MII ANAR and'd with ANLPAR
@@ -380,6 +403,9 @@ static inline unsigned int mii_duplex (unsigned int duplex_lock,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ethtool_adv_to_mii_adv_t
  * @ethadv: the ethtool advertisement settings
  *
@@ -579,8 +605,11 @@ static inline u32 mii_lpa_to_ethtool_lpa_x(u32 lpa)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * mii_advertise_flowctrl - get flow control advertisement flags
  * @cap: Flow control capabilities (FLOW_CTRL_RX, FLOW_CTRL_TX or both)
  */

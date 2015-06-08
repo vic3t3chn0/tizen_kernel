@@ -37,9 +37,15 @@
 #include <linux/interrupt.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/irq.h>
+#include <linux/interrupt.h>
+
+=======
 
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/omap_hwmod.h>
 
@@ -48,7 +54,11 @@
 <<<<<<< HEAD
 #include "prm.h"
 =======
+<<<<<<< HEAD
+#include "prm.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define OMAP_MUX_BASE_OFFSET		0x30	/* Offset from CTRL_BASE */
 #define OMAP_MUX_BASE_SZ		0x5ca
@@ -320,8 +330,13 @@ omap_hwmod_mux_init(struct omap_device_pad *bpads, int nr_pads)
 		if (pad->flags &
 		    (OMAP_DEVICE_PAD_REMUX | OMAP_DEVICE_PAD_WAKEUP))
 =======
+<<<<<<< HEAD
+		if (pad->flags &
+		    (OMAP_DEVICE_PAD_REMUX | OMAP_DEVICE_PAD_WAKEUP))
+=======
 		if (pad->flags & OMAP_DEVICE_PAD_REMUX)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			nr_pads_dynamic++;
 
 		pr_debug("%s: Initialized %s\n", __func__, pad->name);
@@ -350,8 +365,13 @@ omap_hwmod_mux_init(struct omap_device_pad *bpads, int nr_pads)
 		if (pad->flags &
 		    (OMAP_DEVICE_PAD_REMUX | OMAP_DEVICE_PAD_WAKEUP)) {
 =======
+<<<<<<< HEAD
+		if (pad->flags &
+		    (OMAP_DEVICE_PAD_REMUX | OMAP_DEVICE_PAD_WAKEUP)) {
+=======
 		if (pad->flags & OMAP_DEVICE_PAD_REMUX) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_debug("%s: pad %s tagged dynamic\n",
 					__func__, pad->name);
 			hmux->pads_dynamic[nr_pads_dynamic] = pad;
@@ -372,6 +392,9 @@ err1:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * omap_hwmod_mux_scan_wakeups - omap hwmod scan wakeup pads
  * @hmux: Pads for a hwmod
@@ -444,8 +467,11 @@ static irqreturn_t omap_hwmod_mux_handle_irq(int irq, void *unused)
 	return IRQ_HANDLED;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Assumes the calling function takes care of locking */
 void omap_hwmod_mux(struct omap_hwmod_mux_info *hmux, u8 state)
 {
@@ -813,7 +839,11 @@ static int __init omap_mux_late_init(void)
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_for_each_entry(partition, &mux_partitions, node) {
 		struct omap_mux_entry *e, *tmp;
@@ -835,6 +865,9 @@ static int __init omap_mux_late_init(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = request_irq(omap_prcm_event_to_irq("io"),
 		omap_hwmod_mux_handle_irq, IRQF_SHARED | IRQF_NO_SUSPEND,
 			"hwmod_io", omap_mux_late_init);
@@ -842,8 +875,11 @@ static int __init omap_mux_late_init(void)
 	if (ret)
 		pr_warning("mux: Failed to setup hwmod io irq %d\n", ret);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_mux_dbg_init();
 
 	return 0;
@@ -931,10 +967,15 @@ static void __init omap_mux_set_cmdline_signals(void)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	options = kstrdup(omap_mux_options, GFP_KERNEL);
 	if (!options)
 		return;
 
+<<<<<<< HEAD
+=======
 =======
 	options = kmalloc(strlen(omap_mux_options) + 1, GFP_KERNEL);
 	if (!options)
@@ -942,6 +983,7 @@ static void __init omap_mux_set_cmdline_signals(void)
 
 	strcpy(options, omap_mux_options);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	next_opt = options;
 
 	while ((token = strsep(&next_opt, ",")) != NULL) {
@@ -972,10 +1014,15 @@ static int __init omap_mux_copy_names(struct omap_mux *src,
 	for (i = 0; i < OMAP_MUX_NR_MODES; i++) {
 		if (src->muxnames[i]) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dst->muxnames[i] = kstrdup(src->muxnames[i],
 						   GFP_KERNEL);
 			if (!dst->muxnames[i])
 				goto free;
+<<<<<<< HEAD
+=======
 =======
 			dst->muxnames[i] =
 				kmalloc(strlen(src->muxnames[i]) + 1,
@@ -984,12 +1031,18 @@ static int __init omap_mux_copy_names(struct omap_mux *src,
 				goto free;
 			strcpy(dst->muxnames[i], src->muxnames[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
 #ifdef CONFIG_DEBUG_FS
 	for (i = 0; i < OMAP_MUX_NR_SIDES; i++) {
 		if (src->balls[i]) {
+<<<<<<< HEAD
+			dst->balls[i] = kstrdup(src->balls[i], GFP_KERNEL);
+			if (!dst->balls[i])
+				goto free;
+=======
 <<<<<<< HEAD
 			dst->balls[i] = kstrdup(src->balls[i], GFP_KERNEL);
 			if (!dst->balls[i])
@@ -1002,6 +1055,7 @@ static int __init omap_mux_copy_names(struct omap_mux *src,
 				goto free;
 			strcpy(dst->balls[i], src->balls[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 #endif
@@ -1148,9 +1202,14 @@ static void omap_mux_init_package(struct omap_mux *superset,
 static void __init omap_mux_init_signals(struct omap_mux_partition *partition,
 					 struct omap_board_mux *board_mux)
 =======
+<<<<<<< HEAD
+static void __init omap_mux_init_signals(struct omap_mux_partition *partition,
+					 struct omap_board_mux *board_mux)
+=======
 static void omap_mux_init_signals(struct omap_mux_partition *partition,
 				  struct omap_board_mux *board_mux)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	omap_mux_set_cmdline_signals();
 	omap_mux_write_array(partition, board_mux);
@@ -1168,9 +1227,14 @@ static void omap_mux_init_package(struct omap_mux *superset,
 static void __init omap_mux_init_signals(struct omap_mux_partition *partition,
 					 struct omap_board_mux *board_mux)
 =======
+<<<<<<< HEAD
+static void __init omap_mux_init_signals(struct omap_mux_partition *partition,
+					 struct omap_board_mux *board_mux)
+=======
 static void omap_mux_init_signals(struct omap_mux_partition *partition,
 				  struct omap_board_mux *board_mux)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 }
 

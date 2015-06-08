@@ -18,17 +18,23 @@
 #include <linux/err.h>
 #include <linux/io.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clocksource.h>
 
 #include <asm/sched_clock.h>
 
 #include <plat/hardware.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/sched.h>
 
 #include <asm/sched_clock.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/common.h>
 #include <plat/board.h>
 
@@ -36,8 +42,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * 32KHz clocksource ... always available, on pretty most chips except
  * OMAP 730 and 1510.  Other timers could be used as clocksources, with
@@ -45,6 +54,9 @@
  * but systems won't necessarily want to spend resources that way.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *timer_32k_base;
 
 #define OMAP16XX_TIMER_32K_SYNCHRONIZED		0xfffbc410
@@ -52,6 +64,8 @@ static void __iomem *timer_32k_base;
 static u32 notrace omap_32k_read_sched_clock(void)
 {
 	return timer_32k_base ? __raw_readl(timer_32k_base) : 0;
+<<<<<<< HEAD
+=======
 =======
 
 #define OMAP16XX_TIMER_32K_SYNCHRONIZED		0xfffbc410
@@ -163,6 +177,7 @@ static void notrace omap_update_sched_clock(void)
 	u32 cyc = clocksource_32k.read(&clocksource_32k);
 	update_sched_clock(&cd, cyc, (u32)~0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -177,7 +192,11 @@ static cycles_t cycles, last_cycles;
 <<<<<<< HEAD
 static unsigned int persistent_mult, persistent_shift;
 =======
+<<<<<<< HEAD
+static unsigned int persistent_mult, persistent_shift;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void read_persistent_clock(struct timespec *ts)
 {
 	unsigned long long nsecs;
@@ -186,10 +205,15 @@ void read_persistent_clock(struct timespec *ts)
 
 	last_cycles = cycles;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cycles = timer_32k_base ? __raw_readl(timer_32k_base) : 0;
 	delta = cycles - last_cycles;
 
 	nsecs = clocksource_cyc2ns(delta, persistent_mult, persistent_shift);
+<<<<<<< HEAD
+=======
 =======
 	cycles = clocksource_32k.read(&clocksource_32k);
 	delta = cycles - last_cycles;
@@ -197,6 +221,7 @@ void read_persistent_clock(struct timespec *ts)
 	nsecs = clocksource_cyc2ns(delta,
 				   clocksource_32k.mult, clocksource_32k.shift);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	timespec_add_ns(tsp, nsecs);
 	*ts = *tsp;
@@ -209,6 +234,9 @@ int __init omap_init_clocksource_32k(void)
 
 	if (cpu_is_omap16xx() || cpu_class_is_omap2()) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 pbase;
 		unsigned long size = SZ_4K;
 		void __iomem *base;
@@ -233,6 +261,8 @@ int __init omap_init_clocksource_32k(void)
 		if (!base)
 			return -ENODEV;
 
+<<<<<<< HEAD
+=======
 =======
 		struct clk *sync_32k_ick;
 
@@ -250,11 +280,15 @@ int __init omap_init_clocksource_32k(void)
 			return -ENODEV;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sync_32k_ick = clk_get(NULL, "omap_32ksync_ick");
 		if (!IS_ERR(sync_32k_ick))
 			clk_enable(sync_32k_ick);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		timer_32k_base = base;
 
 		/*
@@ -269,6 +303,8 @@ int __init omap_init_clocksource_32k(void)
 			printk(err, "32k_counter");
 
 		setup_sched_clock(omap_32k_read_sched_clock, 32, 32768);
+<<<<<<< HEAD
+=======
 =======
 		offset_32k = clocksource_32k.read(&clocksource_32k);
 
@@ -278,6 +314,7 @@ int __init omap_init_clocksource_32k(void)
 		init_fixed_sched_clock(&cd, omap_update_sched_clock, 32,
 				       32768, SC_MULT, SC_SHIFT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }

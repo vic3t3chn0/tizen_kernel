@@ -34,7 +34,13 @@ extern unsigned int boot_reason;
 extern unsigned int cold_boot;
 
 =======
+<<<<<<< HEAD
+extern unsigned int boot_reason;
+extern unsigned int cold_boot;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct debug_info {
 #ifdef CONFIG_HAVE_HW_BREAKPOINT
 	struct perf_event	*hbp[ARM_MAX_HBP_SLOTS];
@@ -63,8 +69,11 @@ struct thread_struct {
 	unsigned long *stack = (unsigned long *)sp;			\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	set_fs(USER_DS);						\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(regs->uregs, 0, sizeof(regs->uregs));			\
 	if (current->personality & ADDR_LIMIT_32BIT)			\
 		regs->ARM_cpsr = USR_MODE;				\
@@ -102,7 +111,12 @@ unsigned long get_wchan(struct task_struct *p);
 void cpu_idle_wait(void);
 
 =======
+<<<<<<< HEAD
+void cpu_idle_wait(void);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Create a new kernel thread
  */
@@ -141,7 +155,12 @@ static inline void prefetch(const void *ptr)
 #define HAVE_ARCH_PICK_MMAP_LAYOUT
 
 =======
+<<<<<<< HEAD
+#define HAVE_ARCH_PICK_MMAP_LAYOUT
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* __ASM_ARM_PROCESSOR_H */

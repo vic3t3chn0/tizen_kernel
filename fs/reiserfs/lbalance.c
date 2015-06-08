@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include "reiserfs.h"
 =======
+<<<<<<< HEAD
+#include "reiserfs.h"
+=======
 #include <linux/reiserfs_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/buffer_head.h>
 
 /* these are used in do_balance.c */
@@ -982,8 +986,12 @@ static int leaf_cut_entries(struct buffer_head *bh,
 <<<<<<< HEAD
 	       "10185: item contains not enough entries: entry_count = %d, from = %d, to delete = %d",
 =======
+<<<<<<< HEAD
+	       "10185: item contains not enough entries: entry_count = %d, from = %d, to delete = %d",
+=======
 	       "10185: item contains not enough entries: entry_cout = %d, from = %d, to delete = %d",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	       I_ENTRY_COUNT(ih), from, del_count);
 
 	if (del_count == 0)

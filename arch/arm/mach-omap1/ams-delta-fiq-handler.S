@@ -18,9 +18,14 @@
 #include <asm/assembler.h>
 
 =======
+<<<<<<< HEAD
+#include <asm/assembler.h>
+
+=======
 
 #include <plat/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/board-ams-delta.h>
 
 #include <mach/ams-delta-fiq.h>
@@ -29,7 +34,12 @@
 #include "iomap.h"
 
 =======
+<<<<<<< HEAD
+#include "iomap.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * GPIO related definitions, copied from arch/arm/plat-omap/gpio.c.
  * Unfortunately, those were not placed in a separate header file.

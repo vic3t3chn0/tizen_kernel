@@ -16,8 +16,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct inetpeer_addr_base {
 	union {
@@ -37,6 +41,9 @@ struct inet_peer {
 	struct inetpeer_addr	daddr;
 	__u32			avl_height;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u32			metrics[RTAX_MAX];
 	u32			rate_tokens;	/* rate limiting for ICMP */
@@ -49,6 +56,8 @@ struct inet_peer {
 	/*
 	 * Once inet_peer is queued for deletion (refcnt == -1), following fields
 	 * are not available: rid, ip_id_count, tcp_ts, tcp_ts_stamp
+<<<<<<< HEAD
+=======
 =======
 	struct list_head	unused;
 	__u32			dtime;		/* the time of last use of not
@@ -58,6 +67,7 @@ struct inet_peer {
 	 * Once inet_peer is queued for deletion (refcnt == -1), following fields
 	 * are not available: rid, ip_id_count, tcp_ts, tcp_ts_stamp, metrics
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * We can share memory with rcu_head to help keep inet_peer small.
 	 */
 	union {
@@ -67,6 +77,9 @@ struct inet_peer {
 			__u32				tcp_ts;
 			__u32				tcp_ts_stamp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		};
 		struct rcu_head         rcu;
 		struct inet_peer	*gc_next;
@@ -75,6 +88,8 @@ struct inet_peer {
 	/* following fields might be frequently dirtied */
 	__u32			dtime;	/* the time of last use of not referenced entries */
 	atomic_t		refcnt;
+<<<<<<< HEAD
+=======
 =======
 			u32				metrics[RTAX_MAX];
 			u32				rate_tokens;	/* rate limiting for ICMP */
@@ -87,6 +102,7 @@ struct inet_peer {
 		struct rcu_head         rcu;
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void			inet_initpeers(void) __init;
@@ -102,8 +118,12 @@ static inline bool inet_metrics_new(const struct inet_peer *p)
 <<<<<<< HEAD
 struct inet_peer	*inet_getpeer(const struct inetpeer_addr *daddr, int create);
 =======
+<<<<<<< HEAD
+struct inet_peer	*inet_getpeer(const struct inetpeer_addr *daddr, int create);
+=======
 struct inet_peer	*inet_getpeer(struct inetpeer_addr *daddr, int create);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct inet_peer *inet_getpeer_v4(__be32 v4daddr, int create)
 {
@@ -121,8 +141,12 @@ static inline struct inet_peer *inet_getpeer_v6(const struct in6_addr *v6daddr, 
 <<<<<<< HEAD
 	*(struct in6_addr *)daddr.addr.a6 = *v6daddr;
 =======
+<<<<<<< HEAD
+	*(struct in6_addr *)daddr.addr.a6 = *v6daddr;
+=======
 	ipv6_addr_copy((struct in6_addr *)daddr.addr.a6, v6daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	daddr.family = AF_INET6;
 	return inet_getpeer(&daddr, create);
 }
@@ -135,7 +159,12 @@ extern bool inet_peer_xrlim_allow(struct inet_peer *peer, int timeout);
 extern void inetpeer_invalidate_tree(int family);
 
 =======
+<<<<<<< HEAD
+extern void inetpeer_invalidate_tree(int family);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * temporary check to make sure we dont access rid, ip_id_count, tcp_ts,
  * tcp_ts_stamp if no refcount is taken on inet_peer
@@ -148,6 +177,9 @@ static inline void inet_peer_refcheck(const struct inet_peer *p)
 
 /* can be called with or without local BH being disabled */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int inet_getid(struct inet_peer *p, int more)
 {
 	int old, new;
@@ -160,6 +192,8 @@ static inline int inet_getid(struct inet_peer *p, int more)
 			new = 1;
 	} while (atomic_cmpxchg(&p->ip_id_count, old, new) != old);
 	return new;
+<<<<<<< HEAD
+=======
 =======
 static inline __u16	inet_getid(struct inet_peer *p, int more)
 {
@@ -167,6 +201,7 @@ static inline __u16	inet_getid(struct inet_peer *p, int more)
 	inet_peer_refcheck(p);
 	return atomic_add_return(more, &p->ip_id_count) - more;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif /* _NET_INETPEER_H */

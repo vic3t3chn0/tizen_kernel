@@ -24,15 +24,21 @@
 
 #include "hpi_internal.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "hpi_version.h"
 #include "hpimsginit.h"
 #include "hpioctl.h"
 #include "hpicmn.h"
 
+<<<<<<< HEAD
+=======
 =======
 #include "hpimsginit.h"
 #include "hpioctl.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/pci.h>
 #include <linux/init.h>
@@ -43,7 +49,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/control.h>
 #include <sound/pcm.h>
@@ -54,10 +64,15 @@
 #include <sound/hwdep.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("AudioScience inc. <support@audioscience.com>");
 MODULE_DESCRIPTION("AudioScience ALSA ASI5000 ASI6000 ASI87xx ASI89xx "
 			HPI_VER_STRING);
+<<<<<<< HEAD
+=======
 =======
 
 MODULE_LICENSE("GPL");
@@ -82,6 +97,7 @@ static void pcm_debug_name(struct snd_pcm_substream *substream,
 #define DEBUG_NAME(name, substream) do { } while (0)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined CONFIG_SND_DEBUG_VERBOSE
 /**
@@ -104,9 +120,14 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 static bool enable_hpi_hwdep = 1;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+static bool enable_hpi_hwdep = 1;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 static int enable_hpi_hwdep = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, S_IRUGO);
 MODULE_PARM_DESC(index, "ALSA index value for AudioScience soundcard.");
@@ -164,6 +185,9 @@ struct snd_card_asihpi {
 <<<<<<< HEAD
 	struct hpi_adapter *hpi;
 =======
+<<<<<<< HEAD
+	struct hpi_adapter *hpi;
+=======
 	u16 adapter_index;
 	u32 serial_number;
 	u16 type;
@@ -171,6 +195,7 @@ struct snd_card_asihpi {
 	u16 num_outstreams;
 	u16 num_instreams;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	u32 h_mixer;
 	struct clk_cache cc;
@@ -185,7 +210,12 @@ struct snd_card_asihpi {
 	u16 in_min_chans;
 	u16 out_min_chans;
 =======
+<<<<<<< HEAD
+	u16 in_min_chans;
+	u16 out_min_chans;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Per stream data */
@@ -341,8 +371,13 @@ static void print_hwparams(struct snd_pcm_substream *substream,
 	char name[16];
 	snd_pcm_debug_name(substream, name, sizeof(name));
 =======
+<<<<<<< HEAD
+	char name[16];
+	snd_pcm_debug_name(substream, name, sizeof(name));
+=======
 	DEBUG_NAME(substream, name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_printd("%s HWPARAMS\n", name);
 	snd_printd(" samplerate %d Hz\n", params_rate(p));
 	snd_printd(" channels %d\n", params_channels(p));
@@ -553,7 +588,11 @@ static int snd_card_asihpi_pcm_hw_params(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	bytes_per_sec = params_rate(params) * params_channels(params);
 	width = snd_pcm_format_width(params_format(params));
@@ -623,9 +662,15 @@ static int snd_card_asihpi_trigger(struct snd_pcm_substream *substream,
 
 	snd_pcm_debug_name(substream, name, sizeof(name));
 =======
+<<<<<<< HEAD
+	char name[16];
+
+	snd_pcm_debug_name(substream, name, sizeof(name));
+=======
 	DEBUG_NAME(substream, name);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_printdd("%s trigger\n", name);
 
 	switch (cmd) {
@@ -794,8 +839,14 @@ static void snd_card_asihpi_timer_function(unsigned long data)
 
 	snd_pcm_debug_name(substream, name, sizeof(name));
 =======
+<<<<<<< HEAD
+	char name[16];
+
+	snd_pcm_debug_name(substream, name, sizeof(name));
+=======
 	DEBUG_NAME(substream, name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_printdd("%s snd_card_asihpi_timer_function\n", name);
 
@@ -828,9 +879,13 @@ static void snd_card_asihpi_timer_function(unsigned long data)
 <<<<<<< HEAD
 				if (bytes_avail == 0) {
 =======
+<<<<<<< HEAD
+				if (bytes_avail == 0) {
+=======
 				if ((bytes_avail == 0) &&
 				    (on_card_bytes < ds->pcm_buf_host_rw_ofs)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					hpi_handle_error(hpi_stream_start(ds->h_stream));
 					snd_printdd("P%d start\n", s->number);
 					ds->drained_count = 0;
@@ -842,8 +897,12 @@ static void snd_card_asihpi_timer_function(unsigned long data)
 <<<<<<< HEAD
 				if (ds->drained_count > 20) {
 =======
+<<<<<<< HEAD
+				if (ds->drained_count > 20) {
+=======
 				if (ds->drained_count > 2) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					snd_pcm_stop(s, SNDRV_PCM_STATE_XRUN);
 					continue;
 				}
@@ -968,9 +1027,14 @@ static void snd_card_asihpi_timer_function(unsigned long data)
 			ds->pcm_buf_host_rw_ofs += xfercount;
 			ds->pcm_buf_elapsed_dma_ofs += xfercount;
 =======
+<<<<<<< HEAD
+			ds->pcm_buf_host_rw_ofs += xfercount;
+			ds->pcm_buf_elapsed_dma_ofs += xfercount;
+=======
 			ds->pcm_buf_host_rw_ofs = ds->pcm_buf_host_rw_ofs + xfercount;
 			ds->pcm_buf_elapsed_dma_ofs = pcm_buf_dma_ofs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			snd_pcm_period_elapsed(s);
 		}
 	}
@@ -988,8 +1052,14 @@ static int snd_card_asihpi_playback_ioctl(struct snd_pcm_substream *substream,
 	snd_pcm_debug_name(substream, name, sizeof(name));
 	snd_printddd(KERN_INFO "%s ioctl %d\n", name, cmd);
 =======
+<<<<<<< HEAD
+	char name[16];
+	snd_pcm_debug_name(substream, name, sizeof(name));
+	snd_printddd(KERN_INFO "%s ioctl %d\n", name, cmd);
+=======
 	snd_printddd(KERN_INFO "P%d ioctl %d\n", substream->number, cmd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return snd_pcm_lib_ioctl(substream, cmd, arg);
 }
 
@@ -1015,6 +1085,9 @@ snd_card_asihpi_playback_pointer(struct snd_pcm_substream *substream)
 	struct snd_card_asihpi_pcm *dpcm = runtime->private_data;
 	snd_pcm_uframes_t ptr;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char name[16];
 	snd_pcm_debug_name(substream, name, sizeof(name));
 
@@ -1025,6 +1098,8 @@ snd_card_asihpi_playback_pointer(struct snd_pcm_substream *substream)
 
 static u64 snd_card_asihpi_playback_formats(struct snd_card_asihpi *asihpi,
 						u32 h_stream)
+<<<<<<< HEAD
+=======
 =======
 
 	ptr = bytes_to_frames(runtime, dpcm->pcm_buf_dma_ofs  % dpcm->buffer_bytes);
@@ -1036,6 +1111,7 @@ static void snd_card_asihpi_playback_format(struct snd_card_asihpi *asihpi,
 						u32 h_stream,
 						struct snd_pcm_hardware *pcmhw)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hpi_format hpi_format;
 	u16 format;
@@ -1045,7 +1121,11 @@ static void snd_card_asihpi_playback_format(struct snd_card_asihpi *asihpi,
 <<<<<<< HEAD
 	u64 formats = 0;
 =======
+<<<<<<< HEAD
+	u64 formats = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* on cards without SRC, must query at valid rate,
 	* maybe set by external sync
@@ -1061,6 +1141,9 @@ static void snd_card_asihpi_playback_format(struct snd_card_asihpi *asihpi,
 	for (format = HPI_FORMAT_PCM8_UNSIGNED;
 	     format <= HPI_FORMAT_PCM24_SIGNED; format++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = hpi_format_create(&hpi_format, asihpi->out_max_chans,
 					format, sample_rate, 128000, 0);
 		if (!err)
@@ -1071,6 +1154,8 @@ static void snd_card_asihpi_playback_format(struct snd_card_asihpi *asihpi,
 	return formats;
 }
 
+<<<<<<< HEAD
+=======
 =======
 		err = hpi_format_create(&hpi_format,
 					2, format, sample_rate, 128000, 0);
@@ -1095,6 +1180,7 @@ static struct snd_pcm_hardware snd_card_asihpi_playback = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 {
 	struct snd_pcm_runtime *runtime = substream->runtime;
@@ -1103,7 +1189,11 @@ static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	struct snd_pcm_hardware snd_card_asihpi_playback;
 =======
+<<<<<<< HEAD
+	struct snd_pcm_hardware snd_card_asihpi_playback;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	dpcm = kzalloc(sizeof(*dpcm), GFP_KERNEL);
@@ -1113,9 +1203,13 @@ static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	err = hpi_outstream_open(card->hpi->adapter->index,
 =======
+<<<<<<< HEAD
+	err = hpi_outstream_open(card->hpi->adapter->index,
+=======
 	err =
 	    hpi_outstream_open(card->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      substream->number, &dpcm->h_stream);
 	hpi_handle_error(err);
 	if (err)
@@ -1138,6 +1232,9 @@ static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 	runtime->private_free = snd_card_asihpi_runtime_free;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&snd_card_asihpi_playback, 0, sizeof(snd_card_asihpi_playback));
 	snd_card_asihpi_playback.buffer_bytes_max = BUFFER_BYTES_MAX;
 	snd_card_asihpi_playback.period_bytes_min = PERIOD_BYTES_MIN;
@@ -1151,6 +1248,8 @@ static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 	snd_card_asihpi_playback.channels_min = card->out_min_chans;
 	snd_card_asihpi_playback.formats =
 			snd_card_asihpi_playback_formats(card, dpcm->h_stream);
+<<<<<<< HEAD
+=======
 =======
 	snd_card_asihpi_playback.channels_max = card->out_max_chans;
 	/*?snd_card_asihpi_playback.period_bytes_min =
@@ -1159,6 +1258,7 @@ static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 	snd_card_asihpi_playback_format(card, dpcm->h_stream,
 					&snd_card_asihpi_playback);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_card_asihpi_pcm_samplerates(card,  &snd_card_asihpi_playback);
 
@@ -1171,14 +1271,20 @@ static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 					SNDRV_PCM_INFO_MMAP_VALID;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (card->support_grouping) {
 		snd_card_asihpi_playback.info |= SNDRV_PCM_INFO_SYNC_START;
 		snd_pcm_set_sync(substream);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (card->support_grouping)
 		snd_card_asihpi_playback.info |= SNDRV_PCM_INFO_SYNC_START;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* struct is copied, so can create initializer dynamically */
 	runtime->hw = snd_card_asihpi_playback;
@@ -1197,9 +1303,12 @@ static int snd_card_asihpi_playback_open(struct snd_pcm_substream *substream)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_pcm_set_sync(substream);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_printdd("playback open\n");
 
 	return 0;
@@ -1269,10 +1378,15 @@ static int snd_card_asihpi_capture_prepare(struct snd_pcm_substream *substream)
 static u64 snd_card_asihpi_capture_formats(struct snd_card_asihpi *asihpi,
 					u32 h_stream)
 =======
+<<<<<<< HEAD
+static u64 snd_card_asihpi_capture_formats(struct snd_card_asihpi *asihpi,
+					u32 h_stream)
+=======
 static void snd_card_asihpi_capture_format(struct snd_card_asihpi *asihpi,
 					u32 h_stream,
 					 struct snd_pcm_hardware *pcmhw)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
   struct hpi_format hpi_format;
 	u16 format;
@@ -1282,7 +1396,11 @@ static void snd_card_asihpi_capture_format(struct snd_card_asihpi *asihpi,
 <<<<<<< HEAD
 	u64 formats = 0;
 =======
+<<<<<<< HEAD
+	u64 formats = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* on cards without SRC, must query at valid rate,
 		maybe set by external sync */
@@ -1298,6 +1416,9 @@ static void snd_card_asihpi_capture_format(struct snd_card_asihpi *asihpi,
 		format <= HPI_FORMAT_PCM24_SIGNED; format++) {
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = hpi_format_create(&hpi_format, asihpi->in_max_chans,
 					format, sample_rate, 128000, 0);
 		if (!err)
@@ -1308,6 +1429,8 @@ static void snd_card_asihpi_capture_format(struct snd_card_asihpi *asihpi,
 	return formats;
 }
 
+<<<<<<< HEAD
+=======
 =======
 		err = hpi_format_create(&hpi_format, 2, format,
 				sample_rate, 128000, 0);
@@ -1333,6 +1456,7 @@ static struct snd_pcm_hardware snd_card_asihpi_capture = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_card_asihpi_capture_open(struct snd_pcm_substream *substream)
 {
 	struct snd_pcm_runtime *runtime = substream->runtime;
@@ -1341,7 +1465,11 @@ static int snd_card_asihpi_capture_open(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	struct snd_pcm_hardware snd_card_asihpi_capture;
 =======
+<<<<<<< HEAD
+	struct snd_pcm_hardware snd_card_asihpi_capture;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	dpcm = kzalloc(sizeof(*dpcm), GFP_KERNEL);
@@ -1350,16 +1478,22 @@ static int snd_card_asihpi_capture_open(struct snd_pcm_substream *substream)
 
 	snd_printdd("capture open adapter %d stream %d\n",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			card->hpi->adapter->index, substream->number);
 
 	err = hpi_handle_error(
 	    hpi_instream_open(card->hpi->adapter->index,
+<<<<<<< HEAD
+=======
 =======
 		   card->adapter_index, substream->number);
 
 	err = hpi_handle_error(
 	    hpi_instream_open(card->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     substream->number, &dpcm->h_stream));
 	if (err)
 		kfree(dpcm);
@@ -1370,8 +1504,11 @@ static int snd_card_asihpi_capture_open(struct snd_pcm_substream *substream)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_timer(&dpcm->timer);
 	dpcm->timer.data = (unsigned long) dpcm;
 	dpcm->timer.function = snd_card_asihpi_timer_function;
@@ -1380,6 +1517,9 @@ static int snd_card_asihpi_capture_open(struct snd_pcm_substream *substream)
 	runtime->private_free = snd_card_asihpi_runtime_free;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&snd_card_asihpi_capture, 0, sizeof(snd_card_asihpi_capture));
 	snd_card_asihpi_capture.buffer_bytes_max = BUFFER_BYTES_MAX;
 	snd_card_asihpi_capture.period_bytes_min = PERIOD_BYTES_MIN;
@@ -1391,11 +1531,14 @@ static int snd_card_asihpi_capture_open(struct snd_pcm_substream *substream)
 	snd_card_asihpi_capture.channels_min = card->in_min_chans;
 	snd_card_asihpi_capture.formats =
 		snd_card_asihpi_capture_formats(card, dpcm->h_stream);
+<<<<<<< HEAD
+=======
 =======
 	snd_card_asihpi_capture.channels_max = card->in_max_chans;
 	snd_card_asihpi_capture_format(card, dpcm->h_stream,
 				       &snd_card_asihpi_capture);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_card_asihpi_pcm_samplerates(card,  &snd_card_asihpi_capture);
 	snd_card_asihpi_capture.info = SNDRV_PCM_INFO_INTERLEAVED |
 					SNDRV_PCM_INFO_MMAP |
@@ -1442,6 +1585,9 @@ static struct snd_pcm_ops snd_card_asihpi_capture_mmap_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit snd_card_asihpi_pcm_new(
 		struct snd_card_asihpi *asihpi, int device)
 {
@@ -1456,6 +1602,8 @@ static int __devinit snd_card_asihpi_pcm_new(
 
 	err = snd_pcm_new(asihpi->card, "Asihpi PCM", device,
 			num_outstreams,	num_instreams, &pcm);
+<<<<<<< HEAD
+=======
 =======
 static int __devinit snd_card_asihpi_pcm_new(struct snd_card_asihpi *asihpi,
 				      int device, int substreams)
@@ -1467,6 +1615,7 @@ static int __devinit snd_card_asihpi_pcm_new(struct snd_card_asihpi *asihpi,
 			 asihpi->num_outstreams, asihpi->num_instreams,
 			 &pcm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 	/* pointer to ops struct is stored, dont change ops afterwards! */
@@ -1528,18 +1677,24 @@ static const char * const asihpi_src_names[] = {
 	"Clock",
 	"Bitstream",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"Mic",
 	"Net",
 	"Analog",
 	"Adapter",
 	"RTP",
 	"Internal"
+<<<<<<< HEAD
+=======
 =======
 	"Microphone",
 	"Cobranet",
 	"Analog",
 	"Adapter",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 compile_time_assert(
@@ -1559,9 +1714,15 @@ static const char * const asihpi_dst_names[] = {
 	"Analog",
 	"RTP",
 =======
+<<<<<<< HEAD
+	"Net",
+	"Analog",
+	"RTP",
+=======
 	"Cobranet Out",
 	"Analog"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 compile_time_assert(
@@ -1642,7 +1803,11 @@ static int snd_asihpi_volume_info(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	u32 count;
 =======
+<<<<<<< HEAD
+	u32 count;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 err;
 	/* native gains are in millibels */
 	short min_gain_mB;
@@ -1658,16 +1823,22 @@ static int snd_asihpi_volume_info(struct snd_kcontrol *kcontrol,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = hpi_meter_query_channels(h_control, &count);
 	if (err)
 		count = HPI_MAX_CHANNELS;
 
 	uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
 	uinfo->count = count;
+<<<<<<< HEAD
+=======
 =======
 	uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
 	uinfo->count = 2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uinfo->value.integer.min = min_gain_mB / VOL_STEP_mB;
 	uinfo->value.integer.max = max_gain_mB / VOL_STEP_mB;
 	uinfo->value.integer.step = step_gain_mB / VOL_STEP_mB;
@@ -1709,6 +1880,9 @@ static int snd_asihpi_volume_put(struct snd_kcontrol *kcontrol,
 static const DECLARE_TLV_DB_SCALE(db_scale_100, -10000, VOL_STEP_mB, 0);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define snd_asihpi_volume_mute_info	snd_ctl_boolean_mono_info
 
 static int snd_asihpi_volume_mute_get(struct snd_kcontrol *kcontrol,
@@ -1736,8 +1910,11 @@ static int snd_asihpi_volume_mute_put(struct snd_kcontrol *kcontrol,
 	return change;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit snd_asihpi_volume_add(struct snd_card_asihpi *asihpi,
 					struct hpi_control *hpi_ctl)
 {
@@ -1747,7 +1924,12 @@ static int __devinit snd_asihpi_volume_add(struct snd_card_asihpi *asihpi,
 	int err;
 	u32 mute;
 =======
+<<<<<<< HEAD
+	int err;
+	u32 mute;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	asihpi_ctl_init(&snd_control, hpi_ctl, "Volume");
 	snd_control.access = SNDRV_CTL_ELEM_ACCESS_READWRITE |
@@ -1758,6 +1940,9 @@ static int __devinit snd_asihpi_volume_add(struct snd_card_asihpi *asihpi,
 	snd_control.tlv.p = db_scale_100;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ctl_add(card, &snd_control, asihpi);
 	if (err)
 		return err;
@@ -1771,9 +1956,12 @@ static int __devinit snd_asihpi_volume_add(struct snd_card_asihpi *asihpi,
 		err = ctl_add(card, &snd_control, asihpi);
 	}
 	return err;
+<<<<<<< HEAD
+=======
 =======
 	return ctl_add(card, &snd_control, asihpi);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*------------------------------------------------------------
@@ -2286,6 +2474,9 @@ static int snd_asihpi_meter_info(struct snd_kcontrol *kcontrol,
 				 struct snd_ctl_elem_info *uinfo)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 h_control = kcontrol->private_value;
 	u32 count;
 	u16 err;
@@ -2295,10 +2486,13 @@ static int snd_asihpi_meter_info(struct snd_kcontrol *kcontrol,
 
 	uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
 	uinfo->count = count;
+<<<<<<< HEAD
+=======
 =======
 	uinfo->type = SNDRV_CTL_ELEM_TYPE_INTEGER;
 	uinfo->count = HPI_MAX_CHANNELS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uinfo->value.integer.min = 0;
 	uinfo->value.integer.max = 0x7FFFFFFF;
 	return 0;
@@ -2517,7 +2711,13 @@ static int snd_asihpi_cmode_info(struct snd_kcontrol *kcontrol,
 		return -EINVAL;
 
 =======
+<<<<<<< HEAD
+	if (!valid_modes)
+		return -EINVAL;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uinfo->type = SNDRV_CTL_ELEM_TYPE_ENUMERATED;
 	uinfo->count = 1;
 	uinfo->value.enumerated.items = valid_modes;
@@ -2820,8 +3020,12 @@ static int __devinit snd_card_asihpi_mixer_new(struct snd_card_asihpi *asihpi)
 <<<<<<< HEAD
 	    hpi_mixer_open(asihpi->hpi->adapter->index,
 =======
+<<<<<<< HEAD
+	    hpi_mixer_open(asihpi->hpi->adapter->index,
+=======
 	    hpi_mixer_open(asihpi->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  &asihpi->h_mixer);
 	hpi_handle_error(err);
 	if (err)
@@ -2940,6 +3144,9 @@ snd_asihpi_proc_read(struct snd_info_entry *entry,
 {
 	struct snd_card_asihpi *asihpi = entry->private_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 h_control;
 	u32 rate = 0;
 	u16 source = 0;
@@ -2967,6 +3174,8 @@ snd_asihpi_proc_read(struct snd_info_entry *entry,
 	snd_iprintf(buffer,
 		"Serial#%d\nHardware version %c%d\nDSP code version %03d\n",
 		serial_number, ((version >> 3) & 0xf) + 'A', version & 0x7,
+<<<<<<< HEAD
+=======
 =======
 	u16 version;
 	u32 h_control;
@@ -2987,6 +3196,7 @@ snd_asihpi_proc_read(struct snd_info_entry *entry,
 		asihpi->serial_number, ((version >> 3) & 0xf) + 'A',
 		version & 0x7,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		((version >> 13) * 100) + ((version >> 7) & 0x3f));
 
 	err = hpi_mixer_get_control(asihpi->h_mixer,
@@ -2995,6 +3205,9 @@ snd_asihpi_proc_read(struct snd_info_entry *entry,
 
 	if (!err) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = hpi_sample_clock_get_sample_rate(h_control, &rate);
 		err += hpi_sample_clock_get_source(h_control, &source);
 
@@ -3004,6 +3217,8 @@ snd_asihpi_proc_read(struct snd_info_entry *entry,
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 		err = hpi_sample_clock_get_sample_rate(
 					h_control, &rate);
@@ -3018,6 +3233,7 @@ snd_asihpi_proc_read(struct snd_info_entry *entry,
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __devinit snd_asihpi_proc_init(struct snd_card_asihpi *asihpi)
 {
 	struct snd_info_entry *entry;
@@ -3092,12 +3308,16 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	struct hpi_adapter *hpi;
 =======
+<<<<<<< HEAD
+	struct hpi_adapter *hpi;
+=======
 
 	u16 version;
 	int pcm_substreams;
 
 	struct hpi_adapter *hpi_card;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_card *card;
 	struct snd_card_asihpi *asihpi;
 
@@ -3106,7 +3326,11 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	u32 adapter_index;
 =======
+<<<<<<< HEAD
+	u32 adapter_index;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	static int dev;
 	if (dev >= SNDRV_CARDS)
@@ -3115,8 +3339,12 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	/* Should this be enable[hpi->index] ? */
 =======
+<<<<<<< HEAD
+	/* Should this be enable[hpi->index] ? */
+=======
 	/* Should this be enable[hpi_card->index] ? */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!enable[dev]) {
 		dev++;
 		return -ENOENT;
@@ -3125,23 +3353,33 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	/* Initialise low-level HPI driver */
 =======
+<<<<<<< HEAD
+	/* Initialise low-level HPI driver */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = asihpi_adapter_probe(pci_dev, pci_id);
 	if (err < 0)
 		return err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hpi = pci_get_drvdata(pci_dev);
 	adapter_index = hpi->adapter->index;
 	/* first try to give the card the same index as its hardware index */
 	err = snd_card_create(adapter_index,
 			      id[adapter_index], THIS_MODULE,
+<<<<<<< HEAD
+=======
 =======
 	hpi_card = pci_get_drvdata(pci_dev);
 	/* first try to give the card the same index as its hardware index */
 	err = snd_card_create(hpi_card->index,
 			      id[hpi_card->index], THIS_MODULE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      sizeof(struct snd_card_asihpi),
 			      &card);
 	if (err < 0) {
@@ -3158,13 +3396,20 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 			adapter_index, card->number);
 =======
+<<<<<<< HEAD
+			adapter_index, card->number);
+=======
 			hpi_card->index, card->number);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	snd_card_set_dev(card, &pci_dev->dev);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asihpi = card->private_data;
 	asihpi->card = card;
 	asihpi->pci = pci_dev;
@@ -3174,6 +3419,8 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 			asihpi->hpi->adapter->type, adapter_index);
 
 	err = hpi_adapter_get_property(adapter_index,
+<<<<<<< HEAD
+=======
 =======
 	asihpi = (struct snd_card_asihpi *) card->private_data;
 	asihpi->card = card;
@@ -3203,6 +3450,7 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 
 	err = hpi_adapter_get_property(asihpi->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		HPI_ADAPTER_PROPERTY_CAPS1,
 		NULL, &asihpi->support_grouping);
 	if (err)
@@ -3211,8 +3459,12 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	err = hpi_adapter_get_property(adapter_index,
 =======
+<<<<<<< HEAD
+	err = hpi_adapter_get_property(adapter_index,
+=======
 	err = hpi_adapter_get_property(asihpi->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		HPI_ADAPTER_PROPERTY_CAPS2,
 		&asihpi->support_mrx, NULL);
 	if (err)
@@ -3221,8 +3473,12 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	err = hpi_adapter_get_property(adapter_index,
 =======
+<<<<<<< HEAD
+	err = hpi_adapter_get_property(adapter_index,
+=======
 	err = hpi_adapter_get_property(asihpi->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		HPI_ADAPTER_PROPERTY_INTERVAL,
 		NULL, &asihpi->update_interval_frames);
 	if (err)
@@ -3234,8 +3490,12 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	hpi_handle_error(hpi_instream_open(adapter_index,
 =======
+<<<<<<< HEAD
+	hpi_handle_error(hpi_instream_open(adapter_index,
+=======
 	hpi_handle_error(hpi_instream_open(asihpi->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     0, &h_stream));
 
 	err = hpi_instream_host_buffer_free(h_stream);
@@ -3246,8 +3506,12 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	err = hpi_adapter_get_property(adapter_index,
 =======
+<<<<<<< HEAD
+	err = hpi_adapter_get_property(adapter_index,
+=======
 	err = hpi_adapter_get_property(asihpi->adapter_index,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		HPI_ADAPTER_PROPERTY_CURCHANNELS,
 		&asihpi->in_max_chans, &asihpi->out_max_chans);
 	if (err) {
@@ -3256,6 +3520,9 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (asihpi->out_max_chans > 2) { /* assume LL mode */
 		asihpi->out_min_chans = asihpi->out_max_chans;
 		asihpi->in_min_chans = asihpi->in_max_chans;
@@ -3266,9 +3533,12 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 	}
 
 	snd_printk(KERN_INFO "Has dma:%d, grouping:%d, mrx:%d\n",
+<<<<<<< HEAD
+=======
 =======
 	snd_printk(KERN_INFO "has dma:%d, grouping:%d, mrx:%d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			asihpi->can_dma,
 			asihpi->support_grouping,
 			asihpi->support_mrx
@@ -3277,8 +3547,12 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 <<<<<<< HEAD
 	err = snd_card_asihpi_pcm_new(asihpi, 0);
 =======
+<<<<<<< HEAD
+	err = snd_card_asihpi_pcm_new(asihpi, 0);
+=======
 	err = snd_card_asihpi_pcm_new(asihpi, 0, pcm_substreams);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0) {
 		snd_printk(KERN_ERR "pcm_new failed\n");
 		goto __nodev;
@@ -3306,6 +3580,9 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 	strcpy(card->driver, "ASIHPI");
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sprintf(card->shortname, "AudioScience ASI%4X",
 			asihpi->hpi->adapter->type);
 	sprintf(card->longname, "%s %i",
@@ -3314,6 +3591,8 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 
 	if (!err) {
 		hpi->snd_card = card;
+<<<<<<< HEAD
+=======
 =======
 	sprintf(card->shortname, "AudioScience ASI%4X", asihpi->type);
 	sprintf(card->longname, "%s %i",
@@ -3323,6 +3602,7 @@ static int __devinit snd_asihpi_probe(struct pci_dev *pci_dev,
 	if (!err) {
 		hpi_card->snd_card_asihpi = card;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev++;
 		return 0;
 	}
@@ -3340,11 +3620,17 @@ static void __devexit snd_asihpi_remove(struct pci_dev *pci_dev)
 	snd_card_free(hpi->snd_card);
 	hpi->snd_card = NULL;
 =======
+<<<<<<< HEAD
+	struct hpi_adapter *hpi = pci_get_drvdata(pci_dev);
+	snd_card_free(hpi->snd_card);
+	hpi->snd_card = NULL;
+=======
 	struct hpi_adapter *hpi_card = pci_get_drvdata(pci_dev);
 
 	snd_card_free(hpi_card->snd_card_asihpi);
 	hpi_card->snd_card_asihpi = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asihpi_adapter_remove(pci_dev);
 }
 
@@ -3363,8 +3649,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "asihpi",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = asihpi_pci_tbl,
 	.probe = snd_asihpi_probe,
 	.remove = __devexit_p(snd_asihpi_remove),

@@ -1,10 +1,25 @@
 /* $Id: kcapi.c,v 1.1.2.8 2004/03/26 19:57:20 armin Exp $
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ * Kernel CAPI 2.0 Module
+ *
+ * Copyright 1999 by Carsten Paeth <calle@calle.de>
+ * Copyright 2002 by Kai Germaschewski <kai@germaschewski.name>
+ *
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * 
  * Kernel CAPI 2.0 Module
  * 
  * Copyright 1999 by Carsten Paeth <calle@calle.de>
  * Copyright 2002 by Kai Germaschewski <kai@germaschewski.name>
  * 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
  *
@@ -55,7 +70,15 @@ struct capictr_event {
 
 /* ------------------------------------------------------------- */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct capi_version driver_version = {2, 0, 1, 1 << 4};
+=======
 static struct capi_version driver_version = {2, 0, 1, 1<<4};
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct capi_version driver_version = {2, 0, 1, 1<<4};
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static char driver_serial[CAPI_SERIAL_LEN] = "0004711";
 static char capi_manufakturer[64] = "AVM Berlin";
 
@@ -172,7 +195,15 @@ register_appl(struct capi_ctr *ctr, u16 applid, capi_register_params *rparam)
 static void release_appl(struct capi_ctr *ctr, u16 applid)
 {
 	DBG("applid %#x", applid);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctr->release_appl(ctr, applid);
 	capi_ctr_put(ctr);
 }
@@ -186,7 +217,15 @@ static void notify_up(u32 contr)
 	mutex_lock(&capi_controller_lock);
 
 	if (showcapimsgs & 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		printk(KERN_DEBUG "kcapi: notify up contr %d\n", contr);
+=======
 	        printk(KERN_DEBUG "kcapi: notify up contr %d\n", contr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	        printk(KERN_DEBUG "kcapi: notify up contr %d\n", contr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ctr = get_capi_ctr_by_nr(contr);
 	if (ctr) {
@@ -352,16 +391,38 @@ void capi_ctr_handle_message(struct capi_ctr *ctr, u16 appl,
 		cdb = capi_message2str(skb->data);
 		if (cdb) {
 			printk(KERN_INFO "kcapi: controller [%03d] not active, got: %s",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			       ctr->cnr, cdb->buf);
+			cdebbuf_free(cdb);
+		} else
+			printk(KERN_INFO "kcapi: controller [%03d] not active, cannot trace\n",
+			       ctr->cnr);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				ctr->cnr, cdb->buf);
 			cdebbuf_free(cdb);
 		} else
 			printk(KERN_INFO "kcapi: controller [%03d] not active, cannot trace\n",
 				ctr->cnr);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 
 	cmd = CAPIMSG_COMMAND(skb->data);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	subcmd = CAPIMSG_SUBCOMMAND(skb->data);
+=======
         subcmd = CAPIMSG_SUBCOMMAND(skb->data);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        subcmd = CAPIMSG_SUBCOMMAND(skb->data);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cmd == CAPI_DATA_B3 && subcmd == CAPI_IND) {
 		ctr->nrecvdatapkt++;
 		if (ctr->traceflag > 2)
@@ -382,6 +443,18 @@ void capi_ctr_handle_message(struct capi_ctr *ctr, u16 appl,
 			cdb = capi_message2str(skb->data);
 			if (cdb) {
 				printk(KERN_DEBUG "kcapi: got [%03d] %s\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				       ctr->cnr, cdb->buf);
+				cdebbuf_free(cdb);
+			} else
+				printk(KERN_DEBUG "kcapi: got [%03d] id#%d %s len=%u, cannot trace\n",
+				       ctr->cnr, CAPIMSG_APPID(skb->data),
+				       capi_cmd2str(cmd, subcmd),
+				       CAPIMSG_LEN(skb->data));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					ctr->cnr, cdb->buf);
 				cdebbuf_free(cdb);
 			} else
@@ -389,6 +462,10 @@ void capi_ctr_handle_message(struct capi_ctr *ctr, u16 appl,
 					ctr->cnr, CAPIMSG_APPID(skb->data),
 					capi_cmd2str(cmd, subcmd),
 					CAPIMSG_LEN(skb->data));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 	}
@@ -400,12 +477,27 @@ void capi_ctr_handle_message(struct capi_ctr *ctr, u16 appl,
 		cdb = capi_message2str(skb->data);
 		if (cdb) {
 			printk(KERN_ERR "kcapi: handle_message: applid %d state released (%s)\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			       CAPIMSG_APPID(skb->data), cdb->buf);
+			cdebbuf_free(cdb);
+		} else
+			printk(KERN_ERR "kcapi: handle_message: applid %d state released (%s) cannot trace\n",
+			       CAPIMSG_APPID(skb->data),
+			       capi_cmd2str(cmd, subcmd));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			CAPIMSG_APPID(skb->data), cdb->buf);
 			cdebbuf_free(cdb);
 		} else
 			printk(KERN_ERR "kcapi: handle_message: applid %d state released (%s) cannot trace\n",
 				CAPIMSG_APPID(skb->data),
 				capi_cmd2str(cmd, subcmd));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error;
 	}
 	skb_queue_tail(&ap->recv_queue, skb);
@@ -519,7 +611,15 @@ int attach_capi_ctr(struct capi_ctr *ctr)
 	if (i == CAPI_MAXCONTR) {
 		mutex_unlock(&capi_controller_lock);
 		printk(KERN_ERR "kcapi: out of controller slots\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EBUSY;
+=======
 	   	return -EBUSY;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	   	return -EBUSY;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	capi_controller[i] = ctr;
 
@@ -541,7 +641,15 @@ int attach_capi_ctr(struct capi_ctr *ctr)
 	mutex_unlock(&capi_controller_lock);
 
 	printk(KERN_NOTICE "kcapi: controller [%03d]: %s attached\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+	       ctr->cnr, ctr->name);
+=======
 			ctr->cnr, ctr->name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ctr->cnr, ctr->name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -772,7 +880,15 @@ u16 capi20_put_message(struct capi20_appl *ap, struct sk_buff *skb)
 	u8 cmd, subcmd;
 
 	DBG("applid %#x", ap->applid);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
  
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ncontrollers == 0)
 		return CAPI_REGNOTINSTALLED;
 	if ((ap->applid == 0) || ap->release_in_progress)
@@ -794,9 +910,21 @@ u16 capi20_put_message(struct capi20_appl *ap, struct sk_buff *skb)
 		return CAPI_SENDQUEUEFULL;
 
 	cmd = CAPIMSG_COMMAND(skb->data);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	subcmd = CAPIMSG_SUBCOMMAND(skb->data);
+
+	if (cmd == CAPI_DATA_B3 && subcmd == CAPI_REQ) {
+=======
         subcmd = CAPIMSG_SUBCOMMAND(skb->data);
 
 	if (cmd == CAPI_DATA_B3 && subcmd== CAPI_REQ) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        subcmd = CAPIMSG_SUBCOMMAND(skb->data);
+
+	if (cmd == CAPI_DATA_B3 && subcmd== CAPI_REQ) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ctr->nsentdatapkt++;
 		ap->nsentdatapkt++;
 		if (ctr->traceflag > 2)
@@ -819,6 +947,20 @@ u16 capi20_put_message(struct capi20_appl *ap, struct sk_buff *skb)
 			_cdebbuf *cdb = capi_message2str(skb->data);
 			if (cdb) {
 				printk(KERN_DEBUG "kcapi: put [%03d] %s\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				       CAPIMSG_CONTROLLER(skb->data),
+				       cdb->buf);
+				cdebbuf_free(cdb);
+			} else
+				printk(KERN_DEBUG "kcapi: put [%03d] id#%d %s len=%u cannot trace\n",
+				       CAPIMSG_CONTROLLER(skb->data),
+				       CAPIMSG_APPID(skb->data),
+				       capi_cmd2str(cmd, subcmd),
+				       CAPIMSG_LEN(skb->data));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					CAPIMSG_CONTROLLER(skb->data),
 					cdb->buf);
 				cdebbuf_free(cdb);
@@ -828,6 +970,10 @@ u16 capi20_put_message(struct capi20_appl *ap, struct sk_buff *skb)
 					CAPIMSG_APPID(skb->data),
 					capi_cmd2str(cmd, subcmd),
 					CAPIMSG_LEN(skb->data));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return ctr->send_message(ctr, skb);
@@ -1028,6 +1174,19 @@ static int old_capi_manufacturer(unsigned int cmd, void __user *data)
 	case AVMB1_ADDCARD:
 	case AVMB1_ADDCARD_WITH_TYPE:
 		if (cmd == AVMB1_ADDCARD) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if ((retval = copy_from_user(&cdef, data,
+						     sizeof(avmb1_carddef))))
+				return -EFAULT;
+			cdef.cardtype = AVM_CARDTYPE_B1;
+		} else {
+			if ((retval = copy_from_user(&cdef, data,
+						     sizeof(avmb1_extcarddef))))
+				return -EFAULT;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		   if ((retval = copy_from_user(&cdef, data,
 					    sizeof(avmb1_carddef))))
 			   return -EFAULT;
@@ -1036,6 +1195,10 @@ static int old_capi_manufacturer(unsigned int cmd, void __user *data)
 		   if ((retval = copy_from_user(&cdef, data,
 					    sizeof(avmb1_extcarddef))))
 			   return -EFAULT;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		cparams.port = cdef.port;
 		cparams.irq = cdef.irq;
@@ -1043,6 +1206,29 @@ static int old_capi_manufacturer(unsigned int cmd, void __user *data)
 
 		mutex_lock(&capi_drivers_lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		switch (cdef.cardtype) {
+		case AVM_CARDTYPE_B1:
+			list_for_each(l, &capi_drivers) {
+				driver = list_entry(l, struct capi_driver, list);
+				if (strcmp(driver->name, "b1isa") == 0)
+					break;
+			}
+			break;
+		case AVM_CARDTYPE_T1:
+			list_for_each(l, &capi_drivers) {
+				driver = list_entry(l, struct capi_driver, list);
+				if (strcmp(driver->name, "t1isa") == 0)
+					break;
+			}
+			break;
+		default:
+			driver = NULL;
+			break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
                 switch (cdef.cardtype) {
 			case AVM_CARDTYPE_B1:
 				list_for_each(l, &capi_drivers) {
@@ -1061,6 +1247,10 @@ static int old_capi_manufacturer(unsigned int cmd, void __user *data)
 			default:
 				driver = NULL;
 				break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if (!driver) {
 			printk(KERN_ERR "kcapi: driver not loaded.\n");
@@ -1136,7 +1326,15 @@ static int old_capi_manufacturer(unsigned int cmd, void __user *data)
 
 		retval = wait_on_ctr_state(ctr, CAPI_CTR_RUNNING);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	load_unlock_out:
+=======
 load_unlock_out:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+load_unlock_out:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&capi_controller_lock);
 		return retval;
 
@@ -1167,7 +1365,15 @@ load_unlock_out:
 
 		retval = wait_on_ctr_state(ctr, CAPI_CTR_DETECTED);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	reset_unlock_out:
+=======
 reset_unlock_out:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+reset_unlock_out:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&capi_controller_lock);
 		return retval;
 	}
@@ -1235,7 +1441,15 @@ int capi20_manufacturer(unsigned int cmd, void __user *data)
 		cparams.membase = cdef.membase;
 		cparams.cardnr = cdef.cardnr;
 		cparams.cardtype = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		cdef.driver[sizeof(cdef.driver) - 1] = 0;
+=======
 		cdef.driver[sizeof(cdef.driver)-1] = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		cdef.driver[sizeof(cdef.driver)-1] = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		mutex_lock(&capi_drivers_lock);
 
@@ -1246,7 +1460,15 @@ int capi20_manufacturer(unsigned int cmd, void __user *data)
 		}
 		if (driver == NULL) {
 			printk(KERN_ERR "kcapi: driver \"%s\" not loaded.\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			       cdef.driver);
+=======
 					cdef.driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					cdef.driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			retval = -ESRCH;
 		} else if (!driver->add_card) {
 			printk(KERN_ERR "kcapi: driver \"%s\" has no add card function.\n", cdef.driver);
@@ -1260,7 +1482,15 @@ int capi20_manufacturer(unsigned int cmd, void __user *data)
 
 	default:
 		printk(KERN_ERR "kcapi: manufacturer command %d unknown.\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		       cmd);
+=======
 					cmd);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					cmd);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 
 	}
@@ -1305,7 +1535,15 @@ static int __init kcapi_init(void)
 
 static void __exit kcapi_exit(void)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kcapi_proc_exit();
+=======
         kcapi_proc_exit();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        kcapi_proc_exit();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unregister_capictr_notifier(&capictr_nb);
 	cdebug_exit();

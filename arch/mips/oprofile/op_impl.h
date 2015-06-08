@@ -40,5 +40,10 @@ struct op_mips_model {
 void op_mips_backtrace(struct pt_regs * const regs, unsigned int depth);
 
 =======
+<<<<<<< HEAD
+void op_mips_backtrace(struct pt_regs * const regs, unsigned int depth);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

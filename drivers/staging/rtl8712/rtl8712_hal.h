@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+/******************************************************************************
+ *
+ * Copyright(c) 2007 - 2010 Realtek Corporation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of version 2 of the GNU General Public License as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110, USA
+ *
+ * Modifications for inclusion into the Linux staging tree are
+ * Copyright(c) 2010 Larry Finger. All rights reserved.
+ *
+ * Contact information:
+ * WLAN FAE <wlanfae@realtek.com>
+ * Larry Finger <Larry.Finger@lwfinger.net>
+ *
+ ******************************************************************************/
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __RTL8712_HAL_H__
 #define __RTL8712_HAL_H__
 
@@ -113,12 +144,27 @@ struct fw_hdr {/*8-byte alinment required*/
 	struct fw_priv	fwpriv;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct hal_priv {
+=======
 struct hal_priv{
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct hal_priv{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*Endpoint handles*/
 	struct  net_device *pipehdls_r8712[10];
 	u8 (*hal_bus_init)(struct _adapter *adapter);
 };
 
 uint	 rtl8712_hal_init(struct _adapter *padapter);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int rtl871x_load_fw(struct _adapter *padapter);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

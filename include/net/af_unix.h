@@ -14,7 +14,11 @@ extern struct sock *unix_get_socket(struct file *filp);
 <<<<<<< HEAD
 extern struct sock *unix_peer_get(struct sock *);
 =======
+<<<<<<< HEAD
+extern struct sock *unix_peer_get(struct sock *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define UNIX_HASH_SIZE	256
 
@@ -23,7 +27,12 @@ extern unsigned int unix_tot_inflight;
 extern spinlock_t unix_table_lock;
 extern struct hlist_head unix_socket_table[UNIX_HASH_SIZE + 1];
 =======
+<<<<<<< HEAD
+extern spinlock_t unix_table_lock;
+extern struct hlist_head unix_socket_table[UNIX_HASH_SIZE + 1];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct unix_address {
 	atomic_t	refcnt;
@@ -58,9 +67,13 @@ struct unix_sock {
 <<<<<<< HEAD
 	struct path		path;
 =======
+<<<<<<< HEAD
+	struct path		path;
+=======
 	struct dentry		*dentry;
 	struct vfsmount		*mnt;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mutex		readlock;
 	struct sock		*peer;
 	struct sock		*other;
@@ -81,7 +94,13 @@ long unix_inq_len(struct sock *sk);
 long unix_outq_len(struct sock *sk);
 
 =======
+<<<<<<< HEAD
+long unix_inq_len(struct sock *sk);
+long unix_outq_len(struct sock *sk);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 extern int unix_sysctl_register(struct net *net);
 extern void unix_sysctl_unregister(struct net *net);

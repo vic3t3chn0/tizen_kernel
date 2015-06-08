@@ -25,8 +25,12 @@
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IP6_NF_IPTABLES)
+=======
 #if defined(CONFIG_IP6_NF_IPTABLES) || defined(CONFIG_IP6_NF_IPTABLES_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define XT_SOCKET_HAVE_IPV6 1
 #include <linux/netfilter_ipv6/ip6_tables.h>
 #include <net/netfilter/ipv6/nf_defrag_ipv6.h>
@@ -37,8 +41,12 @@
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_NF_CONNTRACK)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_NF_CONNTRACK)
+=======
 #if defined(CONFIG_NF_CONNTRACK) || defined(CONFIG_NF_CONNTRACK_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define XT_SOCKET_HAVE_CONNTRACK 1
 #include <net/netfilter/nf_conntrack.h>
 #endif
@@ -237,7 +245,11 @@ extract_icmp6_fields(const struct sk_buff *skb,
 <<<<<<< HEAD
 	__be16 inside_fragoff;
 =======
+<<<<<<< HEAD
+	__be16 inside_fragoff;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int inside_hdrlen;
 
 	icmph = skb_header_pointer(skb, outside_hdrlen,
@@ -257,8 +269,13 @@ extract_icmp6_fields(const struct sk_buff *skb,
 	inside_hdrlen = ipv6_skip_exthdr(skb, outside_hdrlen + sizeof(_icmph) + sizeof(_inside_iph),
 					 &inside_nexthdr, &inside_fragoff);
 =======
+<<<<<<< HEAD
+	inside_hdrlen = ipv6_skip_exthdr(skb, outside_hdrlen + sizeof(_icmph) + sizeof(_inside_iph),
+					 &inside_nexthdr, &inside_fragoff);
+=======
 	inside_hdrlen = ipv6_skip_exthdr(skb, outside_hdrlen + sizeof(_icmph) + sizeof(_inside_iph), &inside_nexthdr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (inside_hdrlen < 0)
 		return 1; /* hjm: Packet has no/incomplete transport layer headers. */
 

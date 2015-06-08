@@ -5,7 +5,11 @@
 <<<<<<< HEAD
  * Author: Lee Jones <lee.jones@linaro.org> for ST-Ericsson
 =======
+<<<<<<< HEAD
+ * Author: Lee Jones <lee.jones@linaro.org> for ST-Ericsson
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * License terms: GNU General Public License (GPL) version 2
  */
 
@@ -15,6 +19,9 @@
 #include <linux/mfd/db8500-prcmu.h>
 #include <linux/mfd/db5500-prcmu.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clksrc-dbx500-prcmu.h>
 #include <linux/sys_soc.h>
 #include <linux/err.h>
@@ -26,6 +33,8 @@
 #include <asm/hardware/gic.h>
 #include <asm/mach/map.h>
 
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/cacheflush.h>
@@ -36,6 +45,7 @@
 
 #include <plat/mtu.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <mach/setup.h>
 #include <mach/devices.h>
@@ -45,15 +55,21 @@
 void __iomem *_PRCMU_BASE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct of_device_id ux500_dt_irq_match[] = {
 	{ .compatible = "arm,cortex-a9-gic", .data = gic_of_init, },
 	{},
 };
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CACHE_L2X0
 static void __iomem *l2x0_base;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init ux500_init_irq(void)
 {
@@ -70,15 +86,21 @@ void __init ux500_init_irq(void)
 		ux500_unknown_soc();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OF
 	if (of_have_populated_dt())
 		of_irq_init(ux500_dt_irq_match);
 	else
 #endif
 		gic_init(0, 29, dist_base, cpu_base);
+<<<<<<< HEAD
+=======
 =======
 	gic_init(0, 29, dist_base, cpu_base);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Init clocks here so that they are available for system timer
@@ -88,6 +110,9 @@ void __init ux500_init_irq(void)
 		db5500_prcmu_early_init();
 	if (cpu_is_u8500())
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		db8500_prcmu_early_init();
 	clk_init();
 }
@@ -161,6 +186,8 @@ struct device * __init ux500_soc_device_init(const char *soc_id)
 
 	return parent;
 }
+<<<<<<< HEAD
+=======
 =======
 		prcmu_early_init();
 	clk_init();
@@ -279,3 +306,4 @@ struct sys_timer ux500_timer = {
 	.init	= ux500_timer_init,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

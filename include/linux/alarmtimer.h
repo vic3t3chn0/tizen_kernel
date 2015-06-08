@@ -14,6 +14,9 @@ enum alarmtimer_type {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum alarmtimer_restart {
 	ALARMTIMER_NORESTART,
 	ALARMTIMER_RESTART,
@@ -24,8 +27,11 @@ enum alarmtimer_restart {
 #define ALARMTIMER_STATE_ENQUEUED	0x01
 #define ALARMTIMER_STATE_CALLBACK	0x02
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct alarm - Alarm timer structure
  * @node:	timerqueue node for adding to the event list this value
@@ -43,16 +49,25 @@ struct alarm {
 	enum alarmtimer_type	type;
 	int			state;
 =======
+<<<<<<< HEAD
+	enum alarmtimer_restart	(*function)(struct alarm *, ktime_t now);
+	enum alarmtimer_type	type;
+	int			state;
+=======
 	ktime_t			period;
 	void			(*function)(struct alarm *);
 	enum alarmtimer_type	type;
 	bool			enabled;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void			*data;
 };
 
 void alarm_init(struct alarm *alarm, enum alarmtimer_type type,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		enum alarmtimer_restart (*function)(struct alarm *, ktime_t));
 void alarm_start(struct alarm *alarm, ktime_t start);
 int alarm_try_to_cancel(struct alarm *alarm);
@@ -89,10 +104,13 @@ static inline int alarmtimer_callback_running(struct alarm *timer)
 
 /* Provide way to access the rtc device being used by alarmtimers */
 struct rtc_device *alarmtimer_get_rtcdev(void);
+<<<<<<< HEAD
+=======
 =======
 		void (*function)(struct alarm *));
 void alarm_start(struct alarm *alarm, ktime_t start, ktime_t period);
 void alarm_cancel(struct alarm *alarm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

@@ -83,6 +83,9 @@ ENTRY(vfp_support_entry)
 	bic	r5, r1, #FPEXC_EX	@ make sure exceptions are disabled
 	cmp	r4, r10			@ this thread owns the hw context?
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_SMP
 	@ For UP, checking that this thread owns the hw context is
 	@ sufficient to determine that the hardware state is valid.
@@ -92,14 +95,22 @@ ENTRY(vfp_support_entry)
 	@ thread wants ownership of the VFP hardware, save the old
 	@ state if there was a previous (valid) owner.
 
+<<<<<<< HEAD
+=======
 =======
 	beq	vfp_hw_state_valid
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	VFPFMXR	FPEXC, r5		@ enable VFP, disable any pending
 					@ exceptions, so we can get at the
 					@ rest of it
 
+<<<<<<< HEAD
+	DBGSTR1	"save old state %p", r4
+	cmp	r4, #0			@ if the vfp_current_hw_state is NULL
+	beq	vfp_reload_hw		@ then the hw state needs reloading
+=======
 <<<<<<< HEAD
 	DBGSTR1	"save old state %p", r4
 	cmp	r4, #0			@ if the vfp_current_hw_state is NULL
@@ -113,6 +124,7 @@ ENTRY(vfp_support_entry)
 	cmp	r4, #0
 	beq	no_old_VFP_process
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	VFPFSTMIA r4, r5		@ save the working registers
 	VFPFMRX	r5, FPSCR		@ current status
 #ifndef CONFIG_CPU_FEROCEON
@@ -126,6 +138,9 @@ ENTRY(vfp_support_entry)
 #endif
 	stmia	r4, {r1, r5, r6, r8}	@ save FPEXC, FPSCR, FPINST, FPINST2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 vfp_reload_hw:
 
 #else
@@ -153,6 +168,8 @@ vfp_reload_hw:
 					@ rest of it
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 					@ and point r4 at the word at the
 					@ start of the register dump
@@ -160,6 +177,7 @@ vfp_reload_hw:
 
 no_old_VFP_process:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBGSTR1	"load state %p", r10
 	str	r10, [r3, r11, lsl #2]	@ update the vfp_current_hw_state pointer
 					@ Load the saved state back into the VFP
@@ -208,6 +226,9 @@ look_for_VFP_exceptions:
 	bne	process_exception
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARCH_MSM_KRAIT
 	@ Krait does not set FPEXC.DEX for unsupported short vector instructions
 	mrc     p15, 0, r2, c0, c0, 0
@@ -224,8 +245,11 @@ look_for_VFP_exceptions:
 skip:
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@ Fall into hand on to next handler - appropriate coproc instr
 	@ not recognised by VFP
 

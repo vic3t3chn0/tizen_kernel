@@ -207,6 +207,9 @@ reenable_mmu:				/* re-enable mmu so we can */
 	beq	1f
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * The trace_hardirqs_off will use CALLER_ADDR0 and CALLER_ADDR1.
 	 * If from user mode there is only one stack frame on the stack, and
@@ -244,6 +247,8 @@ reenable_mmu:				/* re-enable mmu so we can */
 	lwz	r6,GPR6(r1)
 	lwz	r7,GPR7(r1)
 	lwz	r8,GPR8(r1)
+<<<<<<< HEAD
+=======
 =======
 	/* Save handler and return address into the 2 unused words
 	 * of the STACK_FRAME_OVERHEAD (sneak sneak sneak). Everything
@@ -265,6 +270,7 @@ reenable_mmu:				/* re-enable mmu so we can */
 	lwz	r9,8(r1)
 	lwz	r11,12(r1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:	mtctr	r11
 	mtlr	r9
 	bctr				/* jump to handler */
@@ -1241,8 +1247,12 @@ do_user_signal:			/* r10 contains MSR_KERNEL here */
 <<<<<<< HEAD
 	bl	do_notify_resume
 =======
+<<<<<<< HEAD
+	bl	do_notify_resume
+=======
 	bl	do_signal
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	REST_NVGPRS(r1)
 	b	recheck
 

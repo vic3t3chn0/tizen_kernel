@@ -36,8 +36,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/firmware.h>
 #include <asm/hvcall.h>
 #include <asm/mmu.h>
@@ -72,8 +76,12 @@ static unsigned long min_mem_mb = CMM_MIN_MEM_MB;
 <<<<<<< HEAD
 static struct device cmm_dev;
 =======
+<<<<<<< HEAD
+static struct device cmm_dev;
+=======
 static struct sys_device cmm_sysdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Brian King <brking@linux.vnet.ibm.com>");
 MODULE_DESCRIPTION("IBM System p Collaborative Memory Manager");
@@ -359,9 +367,14 @@ static int cmm_thread(void *dummy)
 	static ssize_t show_##name(struct device *dev,	\
 				   struct device_attribute *attr,	\
 =======
+<<<<<<< HEAD
+	static ssize_t show_##name(struct device *dev,	\
+				   struct device_attribute *attr,	\
+=======
 	static ssize_t show_##name(struct sys_device *dev,	\
 				   struct sysdev_attribute *attr,	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   char *buf)			\
 	{							\
 		return sprintf(buf, format, ##args);		\
@@ -369,8 +382,12 @@ static int cmm_thread(void *dummy)
 <<<<<<< HEAD
 	static DEVICE_ATTR(name, S_IRUGO, show_##name, NULL)
 =======
+<<<<<<< HEAD
+	static DEVICE_ATTR(name, S_IRUGO, show_##name, NULL)
+=======
 	static SYSDEV_ATTR(name, S_IRUGO, show_##name, NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 CMM_SHOW(loaned_kb, "%lu\n", PAGES2KB(loaned_pages));
 CMM_SHOW(loaned_target_kb, "%lu\n", PAGES2KB(loaned_pages_target));
@@ -379,9 +396,14 @@ CMM_SHOW(loaned_target_kb, "%lu\n", PAGES2KB(loaned_pages_target));
 static ssize_t show_oom_pages(struct device *dev,
 			      struct device_attribute *attr, char *buf)
 =======
+<<<<<<< HEAD
+static ssize_t show_oom_pages(struct device *dev,
+			      struct device_attribute *attr, char *buf)
+=======
 static ssize_t show_oom_pages(struct sys_device *dev,
 			      struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return sprintf(buf, "%lu\n", PAGES2KB(oom_freed_pages));
 }
@@ -390,9 +412,14 @@ static ssize_t show_oom_pages(struct sys_device *dev,
 static ssize_t store_oom_pages(struct device *dev,
 			       struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t store_oom_pages(struct device *dev,
+			       struct device_attribute *attr,
+=======
 static ssize_t store_oom_pages(struct sys_device *dev,
 			       struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       const char *buf, size_t count)
 {
 	unsigned long val = simple_strtoul (buf, NULL, 10);
@@ -407,6 +434,9 @@ static ssize_t store_oom_pages(struct sys_device *dev,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(oom_freed_kb, S_IWUSR | S_IRUGO,
 		   show_oom_pages, store_oom_pages);
 
@@ -419,6 +449,8 @@ static struct device_attribute *cmm_attrs[] = {
 static struct bus_type cmm_subsys = {
 	.name = "cmm",
 	.dev_name = "cmm",
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(oom_freed_kb, S_IWUSR| S_IRUGO,
 		   show_oom_pages, store_oom_pages);
@@ -432,6 +464,7 @@ static struct sysdev_attribute *cmm_attrs[] = {
 static struct sysdev_class cmm_sysdev_class = {
 	.name = "cmm",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -441,6 +474,9 @@ static struct sysdev_class cmm_sysdev_class = {
  * 	0 on success / other on failure
  **/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cmm_sysfs_register(struct device *dev)
 {
 	int i, rc;
@@ -456,6 +492,8 @@ static int cmm_sysfs_register(struct device *dev)
 
 	for (i = 0; i < ARRAY_SIZE(cmm_attrs); i++) {
 		if ((rc = device_create_file(dev, cmm_attrs[i])))
+<<<<<<< HEAD
+=======
 =======
 static int cmm_sysfs_register(struct sys_device *sysdev)
 {
@@ -473,6 +511,7 @@ static int cmm_sysfs_register(struct sys_device *sysdev)
 	for (i = 0; i < ARRAY_SIZE(cmm_attrs); i++) {
 		if ((rc = sysdev_create_file(sysdev, cmm_attrs[i])))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto fail;
 	}
 
@@ -481,16 +520,22 @@ static int cmm_sysfs_register(struct sys_device *sysdev)
 fail:
 	while (--i >= 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		device_remove_file(dev, cmm_attrs[i]);
 	device_unregister(dev);
 subsys_unregister:
 	bus_unregister(&cmm_subsys);
+<<<<<<< HEAD
+=======
 =======
 		sysdev_remove_file(sysdev, cmm_attrs[i]);
 	sysdev_unregister(sysdev);
 class_unregister:
 	sysdev_class_unregister(&cmm_sysdev_class);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -501,8 +546,12 @@ class_unregister:
 <<<<<<< HEAD
 static void cmm_unregister_sysfs(struct device *dev)
 =======
+<<<<<<< HEAD
+static void cmm_unregister_sysfs(struct device *dev)
+=======
 static void cmm_unregister_sysfs(struct sys_device *sysdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i;
 
@@ -512,10 +561,16 @@ static void cmm_unregister_sysfs(struct sys_device *sysdev)
 	device_unregister(dev);
 	bus_unregister(&cmm_subsys);
 =======
+<<<<<<< HEAD
+		device_remove_file(dev, cmm_attrs[i]);
+	device_unregister(dev);
+	bus_unregister(&cmm_subsys);
+=======
 		sysdev_remove_file(sysdev, cmm_attrs[i]);
 	sysdev_unregister(sysdev);
 	sysdev_class_unregister(&cmm_sysdev_class);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -737,8 +792,12 @@ static int cmm_init(void)
 <<<<<<< HEAD
 	if ((rc = cmm_sysfs_register(&cmm_dev)))
 =======
+<<<<<<< HEAD
+	if ((rc = cmm_sysfs_register(&cmm_dev)))
+=======
 	if ((rc = cmm_sysfs_register(&cmm_sysdev)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_reboot_notifier;
 
 	if (register_memory_notifier(&cmm_mem_nb) ||
@@ -762,8 +821,12 @@ out_unregister_notifier:
 <<<<<<< HEAD
 	cmm_unregister_sysfs(&cmm_dev);
 =======
+<<<<<<< HEAD
+	cmm_unregister_sysfs(&cmm_dev);
+=======
 	cmm_unregister_sysfs(&cmm_sysdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_reboot_notifier:
 	unregister_reboot_notifier(&cmm_reboot_nb);
 out_oom_notifier:
@@ -789,8 +852,12 @@ static void cmm_exit(void)
 <<<<<<< HEAD
 	cmm_unregister_sysfs(&cmm_dev);
 =======
+<<<<<<< HEAD
+	cmm_unregister_sysfs(&cmm_dev);
+=======
 	cmm_unregister_sysfs(&cmm_sysdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**

@@ -2,10 +2,15 @@
 /* ANSI-C code produced by gperf version 3.0.4 */
 /* Command-line: gperf -t --output-file scripts/kconfig/zconf.hash.c_shipped -a -C -E -g -k '1,3,$' -p -t scripts/kconfig/zconf.gperf  */
 =======
+<<<<<<< HEAD
+/* ANSI-C code produced by gperf version 3.0.4 */
+/* Command-line: gperf -t --output-file scripts/kconfig/zconf.hash.c_shipped -a -C -E -g -k '1,3,$' -p -t scripts/kconfig/zconf.gperf  */
+=======
 /* ANSI-C code produced by gperf version 3.0.3 */
 /* Command-line: gperf  */
 /* Computed positions: -k'1,3' */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if !((' ' == 32) && ('!' == 33) && ('"' == 34) && ('#' == 35) \
       && ('%' == 37) && ('&' == 38) && ('\'' == 39) && ('(' == 40) \
@@ -35,17 +40,23 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #line 10 "scripts/kconfig/zconf.gperf"
 struct kconf_id;
 
 static const struct kconf_id *kconf_id_lookup(register const char *str, register unsigned int len);
 /* maximum key range = 71, duplicates = 0 */
+<<<<<<< HEAD
+=======
 =======
 struct kconf_id;
 
 static struct kconf_id *kconf_id_lookup(register const char *str, register unsigned int len);
 /* maximum key range = 50, duplicates = 0 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef __GNUC__
 __inline
@@ -58,6 +69,9 @@ static unsigned int
 kconf_id_hash (register const char *str, register unsigned int len)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   static const unsigned char asso_values[] =
     {
       73, 73, 73, 73, 73, 73, 73, 73, 73, 73,
@@ -86,6 +100,8 @@ kconf_id_hash (register const char *str, register unsigned int len)
       73, 73, 73, 73, 73, 73, 73, 73, 73, 73,
       73, 73, 73, 73, 73, 73, 73, 73, 73, 73,
       73, 73, 73, 73, 73, 73
+<<<<<<< HEAD
+=======
 =======
   static unsigned char asso_values[] =
     {
@@ -116,6 +132,7 @@ kconf_id_hash (register const char *str, register unsigned int len)
       52, 52, 52, 52, 52, 52, 52, 52, 52, 52,
       52, 52, 52, 52, 52, 52
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     };
   register int hval = len;
 
@@ -132,13 +149,20 @@ kconf_id_hash (register const char *str, register unsigned int len)
 <<<<<<< HEAD
   return hval + asso_values[(unsigned char)str[len - 1]];
 =======
+<<<<<<< HEAD
+  return hval + asso_values[(unsigned char)str[len - 1]];
+=======
   return hval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct kconf_id_strings_t
   {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     char kconf_id_strings_str2[sizeof("if")];
     char kconf_id_strings_str3[sizeof("int")];
     char kconf_id_strings_str5[sizeof("endif")];
@@ -206,6 +230,8 @@ static const struct kconf_id_strings_t kconf_id_strings_contents =
     "help",
     "prompt",
     "depends"
+<<<<<<< HEAD
+=======
 =======
     char kconf_id_strings_str2[sizeof("on")];
     char kconf_id_strings_str3[sizeof("env")];
@@ -275,16 +301,22 @@ static struct kconf_id_strings_t kconf_id_strings_contents =
     "mainmenu",
     "source"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   };
 #define kconf_id_strings ((const char *) &kconf_id_strings_contents)
 #ifdef __GNUC__
 __inline
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined __GNUC_STDC_INLINE__ || defined __GNUC_GNU_INLINE__
 __attribute__ ((__gnu_inline__))
 #endif
 #endif
 const struct kconf_id *
+<<<<<<< HEAD
+=======
 =======
 #ifdef __GNUC_STDC_INLINE__
 __attribute__ ((__gnu_inline__))
@@ -292,6 +324,7 @@ __attribute__ ((__gnu_inline__))
 #endif
 struct kconf_id *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kconf_id_lookup (register const char *str, register unsigned int len)
 {
   enum
@@ -301,6 +334,9 @@ kconf_id_lookup (register const char *str, register unsigned int len)
       MAX_WORD_LENGTH = 14,
       MIN_HASH_VALUE = 2,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
       MAX_HASH_VALUE = 72
     };
 
@@ -389,6 +425,8 @@ kconf_id_lookup (register const char *str, register unsigned int len)
       {-1}, {-1}, {-1}, {-1}, {-1}, {-1},
 #line 27 "scripts/kconfig/zconf.gperf"
       {(int)(long)&((struct kconf_id_strings_t *)0)->kconf_id_strings_str72,	T_DEPENDS,	TF_COMMAND}
+<<<<<<< HEAD
+=======
 =======
       MAX_HASH_VALUE = 51
     };
@@ -439,6 +477,7 @@ kconf_id_lookup (register const char *str, register unsigned int len)
       {-1}, {-1},
       {(int)(long)&((struct kconf_id_strings_t *)0)->kconf_id_strings_str51,		T_SOURCE,	TF_COMMAND}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     };
 
   if (len <= MAX_WORD_LENGTH && len >= MIN_WORD_LENGTH)
@@ -462,5 +501,9 @@ kconf_id_lookup (register const char *str, register unsigned int len)
 <<<<<<< HEAD
 #line 47 "scripts/kconfig/zconf.gperf"
 =======
+<<<<<<< HEAD
+#line 47 "scripts/kconfig/zconf.gperf"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 

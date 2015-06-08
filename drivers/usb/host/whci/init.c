@@ -178,7 +178,15 @@ void whc_clean_up(struct whc *whc)
 	if (whc->qset_pool)
 		dma_pool_destroy(whc->qset_pool);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	len   = resource_size(&whc->umc->resource);
+=======
 	len   = whc->umc->resource.end - whc->umc->resource.start + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	len   = whc->umc->resource.end - whc->umc->resource.start + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (whc->base)
 		iounmap(whc->base);
 	if (whc->base_phys)

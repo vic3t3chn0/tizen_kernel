@@ -14,7 +14,11 @@
 <<<<<<< HEAD
 #include <linux/io.h>
 =======
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/platform_device.h>
 
@@ -258,6 +262,9 @@ static struct platform_driver pxa2xx_ac97_driver = {
 <<<<<<< HEAD
 module_platform_driver(pxa2xx_ac97_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(pxa2xx_ac97_driver);
+=======
 static int __init pxa2xx_ac97_init(void)
 {
 	return platform_driver_register(&pxa2xx_ac97_driver);
@@ -271,6 +278,7 @@ static void __exit pxa2xx_ac97_exit(void)
 module_init(pxa2xx_ac97_init);
 module_exit(pxa2xx_ac97_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Nicolas Pitre");
 MODULE_DESCRIPTION("AC97 driver for the Intel PXA2xx chip");

@@ -13,10 +13,14 @@ struct omap_dss_device;
 <<<<<<< HEAD
  * @use_dsi_backlight: true if panel uses DSI command to control backlight
 =======
+<<<<<<< HEAD
+ * @use_dsi_backlight: true if panel uses DSI command to control backlight
+=======
  * @max_backlight_level: maximum backlight level
  * @set_backlight: pointer to backlight set function
  * @get_backlight: pointer to backlight get function
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct nokia_dsi_panel_data {
 	const char *name;
@@ -32,10 +36,14 @@ struct nokia_dsi_panel_data {
 <<<<<<< HEAD
 	bool use_dsi_backlight;
 =======
+<<<<<<< HEAD
+	bool use_dsi_backlight;
+=======
 	int max_backlight_level;
 	int (*set_backlight)(struct omap_dss_device *dssdev, int level);
 	int (*get_backlight)(struct omap_dss_device *dssdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __OMAP_NOKIA_DSI_PANEL_H */

@@ -43,7 +43,15 @@ MODULE_LICENSE("GPL");
 { USB_DEVICE_VER(id_vendor, id_product, bcdDeviceMin, bcdDeviceMax), \
   .driver_info = (flags)|(USB_US_TYPE_STOR<<24) }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_device_id cypress_usb_ids[] = {
+=======
 struct usb_device_id cypress_usb_ids[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct usb_device_id cypress_usb_ids[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #	include "unusual_cypress.h"
 	{ }		/* Terminating entry */
 };
@@ -248,13 +256,27 @@ static int cypress_probe(struct usb_interface *intf,
 {
 	struct us_data *us;
 	int result;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct usb_device *device;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct usb_device *device;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	result = usb_stor_probe1(&us, intf, id,
 			(id - cypress_usb_ids) + cypress_unusual_dev_list);
 	if (result)
 		return result;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	us->protocol_name = "Transparent SCSI with Cypress ATACB";
+	us->proto_handler = cypress_atacb_passthrough;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Among CY7C68300 chips, the A revision does not support Cypress ATACB
 	 * Filter out this revision from EEPROM default descriptor values
 	 */
@@ -268,6 +290,10 @@ static int cypress_probe(struct usb_interface *intf,
 		us->protocol_name = "Transparent SCSI";
 		us->proto_handler = usb_stor_transparent_scsi_command;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	result = usb_stor_probe2(us);
 	return result;
@@ -284,6 +310,15 @@ static struct usb_driver cypress_driver = {
 	.post_reset =	usb_stor_post_reset,
 	.id_table =	cypress_usb_ids,
 	.soft_unbind =	1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.no_dynamic_id = 1,
+};
+
+module_usb_driver(cypress_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init cypress_init(void)
@@ -298,3 +333,7 @@ static void __exit cypress_exit(void)
 
 module_init(cypress_init);
 module_exit(cypress_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

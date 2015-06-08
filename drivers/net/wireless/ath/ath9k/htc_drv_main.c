@@ -266,7 +266,15 @@ static int ath9k_htc_set_channel(struct ath9k_htc_priv *priv,
 
 	ath9k_wmi_event_drain(priv);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG,
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"(%u MHz) -> (%u MHz), HT: %d, HT40: %d fastcc: %d\n",
 		priv->ah->curchan->channel,
 		channel->center_freq, conf_is_ht(conf), conf_is_ht40(conf),
@@ -415,7 +423,15 @@ static int ath9k_htc_add_monitor_interface(struct ath9k_htc_priv *priv)
 	priv->vif_sta_pos[priv->mon_vif_idx] = sta_idx;
 	priv->ah->is_monitoring = true;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG,
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"Attached a monitor interface at idx: %d, sta idx: %d\n",
 		priv->mon_vif_idx, sta_idx);
 
@@ -427,7 +443,15 @@ err_sta:
 	 */
 	__ath9k_htc_remove_monitor_interface(priv);
 err_vif:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, FATAL, "Unable to attach a monitor interface\n");
+=======
 	ath_dbg(common, ATH_DBG_FATAL, "Unable to attach a monitor interface\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_FATAL, "Unable to attach a monitor interface\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -452,7 +476,15 @@ static int ath9k_htc_remove_monitor_interface(struct ath9k_htc_priv *priv)
 	priv->nstations--;
 	priv->ah->is_monitoring = false;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG,
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"Removed a monitor interface at idx: %d, sta idx: %d\n",
 		priv->mon_vif_idx, sta_idx);
 
@@ -512,11 +544,25 @@ static int ath9k_htc_add_station(struct ath9k_htc_priv *priv,
 	}
 
 	if (sta) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG,
+			"Added a station entry for: %pM (idx: %d)\n",
+			sta->addr, tsta.sta_index);
+	} else {
+		ath_dbg(common, CONFIG,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath_dbg(common, ATH_DBG_CONFIG,
 			"Added a station entry for: %pM (idx: %d)\n",
 			sta->addr, tsta.sta_index);
 	} else {
 		ath_dbg(common, ATH_DBG_CONFIG,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Added a station entry for VIF %d (idx: %d)\n",
 			avp->index, tsta.sta_index);
 	}
@@ -556,11 +602,25 @@ static int ath9k_htc_remove_station(struct ath9k_htc_priv *priv,
 	}
 
 	if (sta) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG,
+			"Removed a station entry for: %pM (idx: %d)\n",
+			sta->addr, sta_idx);
+	} else {
+		ath_dbg(common, CONFIG,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath_dbg(common, ATH_DBG_CONFIG,
 			"Removed a station entry for: %pM (idx: %d)\n",
 			sta->addr, sta_idx);
 	} else {
 		ath_dbg(common, ATH_DBG_CONFIG,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Removed a station entry for VIF %d (idx: %d)\n",
 			avp->index, sta_idx);
 	}
@@ -665,7 +725,15 @@ static void ath9k_htc_init_rate(struct ath9k_htc_priv *priv,
 	ath9k_htc_setup_rate(priv, sta, &trate);
 	ret = ath9k_htc_send_rate_cmd(priv, &trate);
 	if (!ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG,
+=======
 		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Updated target sta: %pM, rate caps: 0x%X\n",
 			sta->addr, be32_to_cpu(trate.capflags));
 }
@@ -692,7 +760,15 @@ static void ath9k_htc_update_rate(struct ath9k_htc_priv *priv,
 
 	ret = ath9k_htc_send_rate_cmd(priv, &trate);
 	if (!ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG,
+=======
 		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Updated target sta: %pM, rate caps: 0x%X\n",
 			bss_conf->bssid, be32_to_cpu(trate.capflags));
 }
@@ -721,11 +797,25 @@ static int ath9k_htc_tx_aggr_oper(struct ath9k_htc_priv *priv,
 
 	WMI_CMD_BUF(WMI_TX_AGGR_ENABLE_CMDID, &aggr);
 	if (ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG,
+			"Unable to %s TX aggregation for (%pM, %d)\n",
+			(aggr.aggr_enable) ? "start" : "stop", sta->addr, tid);
+	else
+		ath_dbg(common, CONFIG,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath_dbg(common, ATH_DBG_CONFIG,
 			"Unable to %s TX aggregation for (%pM, %d)\n",
 			(aggr.aggr_enable) ? "start" : "stop", sta->addr, tid);
 	else
 		ath_dbg(common, ATH_DBG_CONFIG,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"%s TX aggregation for (%pM, %d)\n",
 			(aggr.aggr_enable) ? "Starting" : "Stopping",
 			sta->addr, tid);
@@ -784,7 +874,15 @@ void ath9k_htc_ani_work(struct work_struct *work)
 	/* Long calibration runs independently of short calibration. */
 	if ((timestamp - common->ani.longcal_timer) >= ATH_LONG_CALINTERVAL) {
 		longcal = true;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, ANI, "longcal @%lu\n", jiffies);
+=======
 		ath_dbg(common, ATH_DBG_ANI, "longcal @%lu\n", jiffies);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_ANI, "longcal @%lu\n", jiffies);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		common->ani.longcal_timer = timestamp;
 	}
 
@@ -793,8 +891,17 @@ void ath9k_htc_ani_work(struct work_struct *work)
 		if ((timestamp - common->ani.shortcal_timer) >=
 		    short_cal_interval) {
 			shortcal = true;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, ANI, "shortcal @%lu\n", jiffies);
+=======
 			ath_dbg(common, ATH_DBG_ANI,
 				"shortcal @%lu\n", jiffies);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_ANI,
+				"shortcal @%lu\n", jiffies);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			common->ani.shortcal_timer = timestamp;
 			common->ani.resetcal_timer = timestamp;
 		}
@@ -808,7 +915,16 @@ void ath9k_htc_ani_work(struct work_struct *work)
 	}
 
 	/* Verify whether we must check ANI */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ah->config.enable_ani &&
+	    (timestamp - common->ani.checkani_timer) >= ATH_ANI_POLLINTERVAL) {
+=======
 	if ((timestamp - common->ani.checkani_timer) >= ATH_ANI_POLLINTERVAL) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((timestamp - common->ani.checkani_timer) >= ATH_ANI_POLLINTERVAL) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		aniflag = true;
 		common->ani.checkani_timer = timestamp;
 	}
@@ -826,8 +942,17 @@ void ath9k_htc_ani_work(struct work_struct *work)
 		if (longcal || shortcal)
 			common->ani.caldone =
 				ath9k_hw_calibrate(ah, ah->curchan,
+<<<<<<< HEAD
+<<<<<<< HEAD
+						   ah->rxchainmask, longcal);
+=======
 						   common->rx_chainmask,
 						   longcal);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+						   common->rx_chainmask,
+						   longcal);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ath9k_htc_ps_restore(priv);
 	}
@@ -839,7 +964,15 @@ set_timer:
 	* short calibration and long calibration.
 	*/
 	cal_interval = ATH_LONG_CALINTERVAL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ah->config.enable_ani)
+=======
 	if (priv->ah->config.enable_ani)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (priv->ah->config.enable_ani)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cal_interval = min(cal_interval, (u32)ATH_ANI_POLLINTERVAL);
 	if (!common->ani.caldone)
 		cal_interval = min(cal_interval, (u32)short_cal_interval);
@@ -866,7 +999,15 @@ static void ath9k_htc_tx(struct ieee80211_hw *hw, struct sk_buff *skb)
 	padsize = padpos & 3;
 	if (padsize && skb->len > padpos) {
 		if (skb_headroom(skb) < padsize) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, XMIT, "No room for padding\n");
+=======
 			ath_dbg(common, ATH_DBG_XMIT, "No room for padding\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_XMIT, "No room for padding\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto fail_tx;
 		}
 		skb_push(skb, padsize);
@@ -875,13 +1016,29 @@ static void ath9k_htc_tx(struct ieee80211_hw *hw, struct sk_buff *skb)
 
 	slot = ath9k_htc_tx_get_slot(priv);
 	if (slot < 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, XMIT, "No free TX slot\n");
+=======
 		ath_dbg(common, ATH_DBG_XMIT, "No free TX slot\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_XMIT, "No free TX slot\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto fail_tx;
 	}
 
 	ret = ath9k_htc_tx_start(priv, skb, slot, false);
 	if (ret != 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, XMIT, "Tx failed\n");
+=======
 		ath_dbg(common, ATH_DBG_XMIT, "Tx failed\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_XMIT, "Tx failed\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto clear_slot;
 	}
 
@@ -909,7 +1066,15 @@ static int ath9k_htc_start(struct ieee80211_hw *hw)
 
 	mutex_lock(&priv->mutex);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG,
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"Starting driver with initial channel: %d MHz\n",
 		curchan->center_freq);
 
@@ -920,7 +1085,14 @@ static int ath9k_htc_start(struct ieee80211_hw *hw)
 	/* setup initial channel */
 	init_channel = ath9k_cmn_get_curchannel(hw, ah);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ath9k_hw_htc_resetinit(ah);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath9k_hw_htc_resetinit(ah);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ath9k_hw_reset(ah, init_channel, ah->caldata, false);
 	if (ret) {
 		ath_err(common,
@@ -943,7 +1115,15 @@ static int ath9k_htc_start(struct ieee80211_hw *hw)
 
 	ret = ath9k_htc_update_cap_target(priv, 0);
 	if (ret)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG,
+=======
 		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Failed to update capability in target\n");
 
 	priv->op_flags &= ~OP_INVALID;
@@ -958,12 +1138,23 @@ static int ath9k_htc_start(struct ieee80211_hw *hw)
 	mod_timer(&priv->tx.cleanup_timer,
 		  jiffies + msecs_to_jiffies(ATH9K_HTC_TX_CLEANUP_INTERVAL));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath9k_htc_start_btcoex(priv);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ah->btcoex_hw.scheme == ATH_BTCOEX_CFG_3WIRE) {
 		ath9k_hw_btcoex_set_weight(ah, AR_BT_COEX_WGHT,
 					   AR_STOMP_LOW_WLAN_WGHT);
 		ath9k_hw_btcoex_enable(ah);
 		ath_htc_resume_btcoex_work(priv);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&priv->mutex);
 
 	return ret;
@@ -980,7 +1171,15 @@ static void ath9k_htc_stop(struct ieee80211_hw *hw)
 	mutex_lock(&priv->mutex);
 
 	if (priv->op_flags & OP_INVALID) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, ANY, "Device not present\n");
+=======
 		ath_dbg(common, ATH_DBG_ANY, "Device not present\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_ANY, "Device not present\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&priv->mutex);
 		return;
 	}
@@ -1010,11 +1209,21 @@ static void ath9k_htc_stop(struct ieee80211_hw *hw)
 
 	mutex_lock(&priv->mutex);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath9k_htc_stop_btcoex(priv);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ah->btcoex_hw.enabled) {
 		ath9k_hw_btcoex_disable(ah);
 		if (ah->btcoex_hw.scheme == ATH_BTCOEX_CFG_3WIRE)
 			ath_htc_cancel_btcoex_work(priv);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Remove a monitor interface if it's present. */
 	if (priv->ah->is_monitoring)
@@ -1027,7 +1236,15 @@ static void ath9k_htc_stop(struct ieee80211_hw *hw)
 
 	priv->op_flags |= OP_INVALID;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG, "Driver halt\n");
+=======
 	ath_dbg(common, ATH_DBG_CONFIG, "Driver halt\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG, "Driver halt\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&priv->mutex);
 }
 
@@ -1120,8 +1337,18 @@ static int ath9k_htc_add_interface(struct ieee80211_hw *hw,
 		ath9k_htc_start_ani(priv);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG, "Attach a VIF of type: %d at idx: %d\n",
+		vif->type, avp->index);
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
 		"Attach a VIF of type: %d at idx: %d\n", vif->type, avp->index);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+		"Attach a VIF of type: %d at idx: %d\n", vif->type, avp->index);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	ath9k_htc_ps_restore(priv);
@@ -1177,7 +1404,15 @@ static void ath9k_htc_remove_interface(struct ieee80211_hw *hw,
 			ath9k_htc_stop_ani(priv);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG, "Detach Interface at idx: %d\n", avp->index);
+=======
 	ath_dbg(common, ATH_DBG_CONFIG, "Detach Interface at idx: %d\n", avp->index);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG, "Detach Interface at idx: %d\n", avp->index);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ath9k_htc_ps_restore(priv);
 	mutex_unlock(&priv->mutex);
@@ -1202,8 +1437,17 @@ static int ath9k_htc_config(struct ieee80211_hw *hw, u32 changed)
 		mutex_unlock(&priv->htc_pm_lock);
 
 		if (enable_radio) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, CONFIG, "not-idle: enabling radio\n");
+=======
 			ath_dbg(common, ATH_DBG_CONFIG,
 				"not-idle: enabling radio\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_CONFIG,
+				"not-idle: enabling radio\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ath9k_htc_setpower(priv, ATH9K_PM_AWAKE);
 			ath9k_htc_radio_enable(hw);
 		}
@@ -1225,7 +1469,15 @@ static int ath9k_htc_config(struct ieee80211_hw *hw, u32 changed)
 		struct ieee80211_channel *curchan = hw->conf.channel;
 		int pos = curchan->hw_value;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG, "Set channel: %d MHz\n",
+=======
 		ath_dbg(common, ATH_DBG_CONFIG, "Set channel: %d MHz\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG, "Set channel: %d MHz\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			curchan->center_freq);
 
 		ath9k_cmn_update_ichannel(&priv->ah->channels[pos],
@@ -1265,8 +1517,17 @@ static int ath9k_htc_config(struct ieee80211_hw *hw, u32 changed)
 		}
 		mutex_unlock(&priv->htc_pm_lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG, "idle: disabling radio\n");
+=======
 		ath_dbg(common, ATH_DBG_CONFIG,
 			"idle: disabling radio\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG,
+			"idle: disabling radio\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath9k_htc_radio_disable(hw);
 	}
 
@@ -1294,17 +1555,47 @@ static void ath9k_htc_configure_filter(struct ieee80211_hw *hw,
 	u32 rfilt;
 
 	mutex_lock(&priv->mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	changed_flags &= SUPPORTED_FILTERS;
+	*total_flags &= SUPPORTED_FILTERS;
+
+	if (priv->op_flags & OP_INVALID) {
+		ath_dbg(ath9k_hw_common(priv->ah), ANY,
+			"Unable to configure filter on invalid state\n");
+		mutex_unlock(&priv->mutex);
+		return;
+	}
+	ath9k_htc_ps_wakeup(priv);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ath9k_htc_ps_wakeup(priv);
 
 	changed_flags &= SUPPORTED_FILTERS;
 	*total_flags &= SUPPORTED_FILTERS;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	priv->rxfilter = *total_flags;
 	rfilt = ath9k_htc_calcrxfilter(priv);
 	ath9k_hw_setrxfilter(priv->ah, rfilt);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(ath9k_hw_common(priv->ah), CONFIG, "Set HW RX filter: 0x%x\n",
+		rfilt);
+=======
 	ath_dbg(ath9k_hw_common(priv->ah), ATH_DBG_CONFIG,
 		"Set HW RX filter: 0x%x\n", rfilt);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(ath9k_hw_common(priv->ah), ATH_DBG_CONFIG,
+		"Set HW RX filter: 0x%x\n", rfilt);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ath9k_htc_ps_restore(priv);
 	mutex_unlock(&priv->mutex);
@@ -1347,7 +1638,16 @@ static int ath9k_htc_sta_remove(struct ieee80211_hw *hw,
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int ath9k_htc_conf_tx(struct ieee80211_hw *hw,
+			     struct ieee80211_vif *vif, u16 queue,
+=======
 static int ath9k_htc_conf_tx(struct ieee80211_hw *hw, u16 queue,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ath9k_htc_conf_tx(struct ieee80211_hw *hw, u16 queue,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     const struct ieee80211_tx_queue_params *params)
 {
 	struct ath9k_htc_priv *priv = hw->priv;
@@ -1370,7 +1670,15 @@ static int ath9k_htc_conf_tx(struct ieee80211_hw *hw, u16 queue,
 
 	qnum = get_hw_qnum(queue, priv->hwq_map);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG,
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"Configure tx [queue/hwq] [%d/%d],  aifs: %d, cw_min: %d, cw_max: %d, txop: %d\n",
 		queue, qnum, params->aifs, params->cw_min,
 		params->cw_max, params->txop);
@@ -1404,8 +1712,33 @@ static int ath9k_htc_set_key(struct ieee80211_hw *hw,
 	if (htc_modparam_nohwcrypt)
 		return -ENOSPC;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((vif->type == NL80211_IFTYPE_ADHOC ||
+	     vif->type == NL80211_IFTYPE_MESH_POINT) &&
+	    (key->cipher == WLAN_CIPHER_SUITE_TKIP ||
+	     key->cipher == WLAN_CIPHER_SUITE_CCMP) &&
+	    !(key->flags & IEEE80211_KEY_FLAG_PAIRWISE)) {
+		/*
+		 * For now, disable hw crypto for the RSN IBSS group keys. This
+		 * could be optimized in the future to use a modified key cache
+		 * design to support per-STA RX GTK, but until that gets
+		 * implemented, use of software crypto for group addressed
+		 * frames is a acceptable to allow RSN IBSS to be used.
+		 */
+		return -EOPNOTSUPP;
+	}
+
+	mutex_lock(&priv->mutex);
+	ath_dbg(common, CONFIG, "Set HW Key\n");
+=======
 	mutex_lock(&priv->mutex);
 	ath_dbg(common, ATH_DBG_CONFIG, "Set HW Key\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_lock(&priv->mutex);
+	ath_dbg(common, ATH_DBG_CONFIG, "Set HW Key\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ath9k_htc_ps_wakeup(priv);
 
 	switch (cmd) {
@@ -1441,8 +1774,17 @@ static void ath9k_htc_set_bssid(struct ath9k_htc_priv *priv)
 	struct ath_common *common = ath9k_hw_common(priv->ah);
 
 	ath9k_hw_write_associd(priv->ah);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG, "BSSID: %pM aid: 0x%x\n",
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
 		"BSSID: %pM aid: 0x%x\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+		"BSSID: %pM aid: 0x%x\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		common->curbssid, common->curaid);
 }
 
@@ -1480,7 +1822,15 @@ static void ath9k_htc_bss_info_changed(struct ieee80211_hw *hw,
 	ath9k_htc_ps_wakeup(priv);
 
 	if (changed & BSS_CHANGED_ASSOC) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG, "BSS Changed ASSOC %d\n",
+=======
 		ath_dbg(common, ATH_DBG_CONFIG, "BSS Changed ASSOC %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG, "BSS Changed ASSOC %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			bss_conf->assoc);
 
 		bss_conf->assoc ?
@@ -1505,8 +1855,18 @@ static void ath9k_htc_bss_info_changed(struct ieee80211_hw *hw,
 	}
 
 	if ((changed & BSS_CHANGED_BEACON_ENABLED) && bss_conf->enable_beacon) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG, "Beacon enabled for BSS: %pM\n",
+			bss_conf->bssid);
+=======
 		ath_dbg(common, ATH_DBG_CONFIG,
 			"Beacon enabled for BSS: %pM\n", bss_conf->bssid);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG,
+			"Beacon enabled for BSS: %pM\n", bss_conf->bssid);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath9k_htc_set_tsfadjust(priv, vif);
 		priv->op_flags |= OP_ENABLE_BEACON;
 		ath9k_htc_beacon_config(priv, vif);
@@ -1518,7 +1878,15 @@ static void ath9k_htc_bss_info_changed(struct ieee80211_hw *hw,
 		 * AP/IBSS interfaces.
 		 */
 		if ((priv->num_ap_vif <= 1) || priv->num_ibss_vif) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, CONFIG,
+=======
 			ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"Beacon disabled for BSS: %pM\n",
 				bss_conf->bssid);
 			priv->op_flags &= ~OP_ENABLE_BEACON;
@@ -1536,7 +1904,15 @@ static void ath9k_htc_bss_info_changed(struct ieee80211_hw *hw,
 		    (vif->type == NL80211_IFTYPE_AP)) {
 			priv->op_flags |= OP_TSF_RESET;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, CONFIG,
+=======
 		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_CONFIG,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Beacon interval changed for BSS: %pM\n",
 			bss_conf->bssid);
 		ath9k_htc_beacon_config(priv, vif);
@@ -1558,7 +1934,16 @@ static void ath9k_htc_bss_info_changed(struct ieee80211_hw *hw,
 	mutex_unlock(&priv->mutex);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u64 ath9k_htc_get_tsf(struct ieee80211_hw *hw,
+			     struct ieee80211_vif *vif)
+=======
 static u64 ath9k_htc_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u64 ath9k_htc_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ath9k_htc_priv *priv = hw->priv;
 	u64 tsf;
@@ -1572,7 +1957,16 @@ static u64 ath9k_htc_get_tsf(struct ieee80211_hw *hw)
 	return tsf;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void ath9k_htc_set_tsf(struct ieee80211_hw *hw,
+			      struct ieee80211_vif *vif, u64 tsf)
+=======
 static void ath9k_htc_set_tsf(struct ieee80211_hw *hw, u64 tsf)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ath9k_htc_set_tsf(struct ieee80211_hw *hw, u64 tsf)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ath9k_htc_priv *priv = hw->priv;
 
@@ -1583,7 +1977,16 @@ static void ath9k_htc_set_tsf(struct ieee80211_hw *hw, u64 tsf)
 	mutex_unlock(&priv->mutex);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void ath9k_htc_reset_tsf(struct ieee80211_hw *hw,
+				struct ieee80211_vif *vif)
+=======
 static void ath9k_htc_reset_tsf(struct ieee80211_hw *hw)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void ath9k_htc_reset_tsf(struct ieee80211_hw *hw)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ath9k_htc_priv *priv = hw->priv;
 
@@ -1723,14 +2126,45 @@ static int ath9k_htc_set_bitrate_mask(struct ieee80211_hw *hw,
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, CONFIG, "Set bitrate masks: 0x%x, 0x%x\n",
+=======
 	ath_dbg(common, ATH_DBG_CONFIG,
 		"Set bitrate masks: 0x%x, 0x%x\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_CONFIG,
+		"Set bitrate masks: 0x%x, 0x%x\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask->control[IEEE80211_BAND_2GHZ].legacy,
 		mask->control[IEEE80211_BAND_5GHZ].legacy);
 out:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+static int ath9k_htc_get_stats(struct ieee80211_hw *hw,
+			       struct ieee80211_low_level_stats *stats)
+{
+	struct ath9k_htc_priv *priv = hw->priv;
+	struct ath_hw *ah = priv->ah;
+	struct ath9k_mib_stats *mib_stats = &ah->ah_mibStats;
+
+	stats->dot11ACKFailureCount = mib_stats->ackrcv_bad;
+	stats->dot11RTSFailureCount = mib_stats->rts_bad;
+	stats->dot11FCSErrorCount = mib_stats->fcs_bad;
+	stats->dot11RTSSuccessCount = mib_stats->rts_good;
+
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ieee80211_ops ath9k_htc_ops = {
 	.tx                 = ath9k_htc_tx,
 	.start              = ath9k_htc_start,
@@ -1754,4 +2188,11 @@ struct ieee80211_ops ath9k_htc_ops = {
 	.rfkill_poll        = ath9k_htc_rfkill_poll_state,
 	.set_coverage_class = ath9k_htc_set_coverage_class,
 	.set_bitrate_mask   = ath9k_htc_set_bitrate_mask,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.get_stats	    = ath9k_htc_get_stats,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

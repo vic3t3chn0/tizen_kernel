@@ -26,10 +26,15 @@ HOSTCFLAGS_dtc-parser.tab.o := $(HOSTCFLAGS_DTC)
 
 # dependencies on generated files need to be listed explicitly
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 $(obj)/dtc-lexer.lex.o: $(obj)/dtc-parser.tab.h
 
 # generated files need to be cleaned explicitly
 clean-files	:= dtc-lexer.lex.c dtc-parser.tab.c dtc-parser.tab.h
+<<<<<<< HEAD
+=======
 =======
 $(obj)/dtc-parser.tab.o: $(obj)/dtc-parser.tab.c $(obj)/dtc-parser.tab.h
 $(obj)/dtc-lexer.lex.o:  $(obj)/dtc-lexer.lex.c $(obj)/dtc-parser.tab.h
@@ -60,3 +65,4 @@ $(obj)/dtc-lexer.lex.c: $(src)/dtc-lexer.l FORCE
 
 endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

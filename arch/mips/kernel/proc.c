@@ -28,8 +28,12 @@ static int show_cpuinfo(struct seq_file *m, void *v)
 <<<<<<< HEAD
 	if (!cpu_online(n))
 =======
+<<<<<<< HEAD
+	if (!cpu_online(n))
+=======
 	if (!cpu_isset(n, cpu_online_map))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 #endif
 

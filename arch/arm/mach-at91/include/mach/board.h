@@ -41,6 +41,9 @@
 #include <sound/atmel-ac97c.h>
 #include <linux/serial.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_data/macb.h>
 #include <linux/platform_data/atmel.h>
 
@@ -50,6 +53,8 @@ struct at91_udc_data {
 	u8	vbus_active_low;	/* vbus polarity */
 	u8	vbus_polled;		/* Use polling, not interrupt */
 	int	pullup_pin;		/* active == D+ pulled up */
+<<<<<<< HEAD
+=======
 =======
 
  /* USB Device */
@@ -59,6 +64,7 @@ struct at91_udc_data {
 	u8	vbus_polled;		/* Use polling, not interrupt */
 	u8	pullup_pin;		/* active == D+ pulled up */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8	pullup_active_low;	/* true == pullup_pin is active low */
 };
 extern void __init at91_add_device_udc(struct at91_udc_data *data);
@@ -69,16 +75,22 @@ extern void __init at91_add_device_usba(struct usba_platform_data *data);
  /* Compact Flash */
 struct at91_cf_data {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int	irq_pin;		/* I/O IRQ */
 	int	det_pin;		/* Card detect */
 	int	vcc_pin;		/* power switching */
 	int	rst_pin;		/* card reset */
+<<<<<<< HEAD
+=======
 =======
 	u8	irq_pin;		/* I/O IRQ */
 	u8	det_pin;		/* Card detect */
 	u8	vcc_pin;		/* power switching */
 	u8	rst_pin;		/* card reset */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8	chipselect;		/* EBI Chip Select number */
 	u8	flags;
 #define AT91_CF_TRUE_IDE	0x01
@@ -90,11 +102,16 @@ extern void __init at91_add_device_cf(struct at91_cf_data *data);
   /* at91_mci platform config */
 struct at91_mmc_data {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		det_pin;	/* card detect IRQ */
 	unsigned	slot_b:1;	/* uses Slot B */
 	unsigned	wire4:1;	/* (SD) supports DAT0..DAT3 */
 	int		wp_pin;		/* (SD) writeprotect detect */
 	int		vcc_pin;	/* power switching (high == on) */
+<<<<<<< HEAD
+=======
 =======
 	u8		det_pin;	/* card detect IRQ */
 	unsigned	slot_b:1;	/* uses Slot B */
@@ -102,6 +119,7 @@ struct at91_mmc_data {
 	u8		wp_pin;		/* (SD) writeprotect detect */
 	u8		vcc_pin;	/* power switching (high == on) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 extern void __init at91_add_device_mmc(short mmc_id, struct at91_mmc_data *data);
 
@@ -109,6 +127,9 @@ extern void __init at91_add_device_mmc(short mmc_id, struct at91_mmc_data *data)
 extern void __init at91_add_device_mci(short mmc_id, struct mci_platform_data *data);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __init at91_add_device_eth(struct macb_platform_data *data);
 
  /* USB Host */
@@ -121,6 +142,8 @@ struct at91_usbh_data {
 	u8              vbus_pin_active_low[AT91_MAX_USBH_PORTS];
 	u8              overcurrent_status[AT91_MAX_USBH_PORTS];
 	u8              overcurrent_changed[AT91_MAX_USBH_PORTS];
+<<<<<<< HEAD
+=======
 =======
  /* Ethernet (EMAC & MACB) */
 struct at91_eth_data {
@@ -140,11 +163,14 @@ struct at91_usbh_data {
 	u8		ports;		/* number of ports on root hub */
 	u8		vbus_pin[2];	/* port power-control pin */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 extern void __init at91_add_device_usbh(struct at91_usbh_data *data);
 extern void __init at91_add_device_usbh_ohci(struct at91_usbh_data *data);
 extern void __init at91_add_device_usbh_ehci(struct at91_usbh_data *data);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  /* NAND / SmartMedia */
@@ -159,6 +185,7 @@ struct atmel_nand_data {
 	struct mtd_partition* (*partition_info)(int, int*);
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __init at91_add_device_nand(struct atmel_nand_data *data);
 
  /* I2C*/
@@ -233,8 +260,14 @@ struct isi_platform_data;
 extern void __init at91_add_device_isi(struct isi_platform_data *data,
 		bool use_pck_as_mck);
 =======
+<<<<<<< HEAD
+struct isi_platform_data;
+extern void __init at91_add_device_isi(struct isi_platform_data *data,
+		bool use_pck_as_mck);
+=======
 extern void __init at91_add_device_isi(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
  /* Touchscreen Controller */
 struct at91_tsadcc_data {

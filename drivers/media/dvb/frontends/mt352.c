@@ -111,13 +111,33 @@ static int mt352_sleep(struct dvb_frontend* fe)
 }
 
 static void mt352_calc_nominal_rate(struct mt352_state* state,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				    u32 bandwidth,
+=======
 				    enum fe_bandwidth bandwidth,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				    enum fe_bandwidth bandwidth,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				    unsigned char *buf)
 {
 	u32 adc_clock = 20480; /* 20.340 MHz */
 	u32 bw,value;
 
 	switch (bandwidth) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 6000000:
+		bw = 6;
+		break;
+	case 7000000:
+		bw = 7;
+		break;
+	case 8000000:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BANDWIDTH_6_MHZ:
 		bw = 6;
 		break;
@@ -125,6 +145,10 @@ static void mt352_calc_nominal_rate(struct mt352_state* state,
 		bw = 7;
 		break;
 	case BANDWIDTH_8_MHZ:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		bw = 8;
 		break;
@@ -166,15 +190,34 @@ static void mt352_calc_input_freq(struct mt352_state* state,
 	buf[1] = lsb(value);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int mt352_set_parameters(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *op = &fe->dtv_property_cache;
+=======
 static int mt352_set_parameters(struct dvb_frontend* fe,
 				struct dvb_frontend_parameters *param)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int mt352_set_parameters(struct dvb_frontend* fe,
+				struct dvb_frontend_parameters *param)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mt352_state* state = fe->demodulator_priv;
 	unsigned char buf[13];
 	static unsigned char tuner_go[] = { 0x5d, 0x01 };
 	static unsigned char fsm_go[]   = { 0x5e, 0x01 };
 	unsigned int tps = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct dvb_ofdm_parameters *op = &param->u.ofdm;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct dvb_ofdm_parameters *op = &param->u.ofdm;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (op->code_rate_HP) {
 		case FEC_2_3:
@@ -213,14 +256,32 @@ static int mt352_set_parameters(struct dvb_frontend* fe,
 		case FEC_AUTO:
 			break;
 		case FEC_NONE:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (op->hierarchy == HIERARCHY_AUTO ||
+			    op->hierarchy == HIERARCHY_NONE)
+=======
 			if (op->hierarchy_information == HIERARCHY_AUTO ||
 			    op->hierarchy_information == HIERARCHY_NONE)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (op->hierarchy_information == HIERARCHY_AUTO ||
+			    op->hierarchy_information == HIERARCHY_NONE)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 		default:
 			return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (op->modulation) {
+=======
 	switch (op->constellation) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->constellation) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case QPSK:
 			break;
 		case QAM_AUTO:
@@ -262,7 +323,15 @@ static int mt352_set_parameters(struct dvb_frontend* fe,
 			return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (op->hierarchy) {
+=======
 	switch (op->hierarchy_information) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (op->hierarchy_information) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case HIERARCHY_AUTO:
 		case HIERARCHY_NONE:
 			break;
@@ -288,12 +357,28 @@ static int mt352_set_parameters(struct dvb_frontend* fe,
 	buf[3] = 0x50;  // old
 //	buf[3] = 0xf4;  // pinnacle
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mt352_calc_nominal_rate(state, op->bandwidth_hz, buf+4);
+=======
 	mt352_calc_nominal_rate(state, op->bandwidth, buf+4);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mt352_calc_nominal_rate(state, op->bandwidth, buf+4);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mt352_calc_input_freq(state, buf+6);
 
 	if (state->config.no_tuner) {
 		if (fe->ops.tuner_ops.set_params) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fe->ops.tuner_ops.set_params(fe);
+=======
 			fe->ops.tuner_ops.set_params(fe, param);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fe->ops.tuner_ops.set_params(fe, param);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (fe->ops.i2c_gate_ctrl)
 				fe->ops.i2c_gate_ctrl(fe, 0);
 		}
@@ -302,7 +387,15 @@ static int mt352_set_parameters(struct dvb_frontend* fe,
 		_mt352_write(fe, fsm_go, 2);
 	} else {
 		if (fe->ops.tuner_ops.calc_regs) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			fe->ops.tuner_ops.calc_regs(fe, buf+8, 5);
+=======
 			fe->ops.tuner_ops.calc_regs(fe, param, buf+8, 5);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			fe->ops.tuner_ops.calc_regs(fe, param, buf+8, 5);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			buf[8] <<= 1;
 			_mt352_write(fe, buf, sizeof(buf));
 			_mt352_write(fe, tuner_go, 2);
@@ -312,14 +405,33 @@ static int mt352_set_parameters(struct dvb_frontend* fe,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int mt352_get_parameters(struct dvb_frontend* fe)
+{
+	struct dtv_frontend_properties *op = &fe->dtv_property_cache;
+=======
 static int mt352_get_parameters(struct dvb_frontend* fe,
 				struct dvb_frontend_parameters *param)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int mt352_get_parameters(struct dvb_frontend* fe,
+				struct dvb_frontend_parameters *param)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mt352_state* state = fe->demodulator_priv;
 	u16 tps;
 	u16 div;
 	u8 trl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct dvb_ofdm_parameters *op = &param->u.ofdm;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct dvb_ofdm_parameters *op = &param->u.ofdm;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static const u8 tps_fec_to_api[8] =
 	{
 		FEC_1_2,
@@ -348,6 +460,21 @@ static int mt352_get_parameters(struct dvb_frontend* fe,
 	switch ( (tps >> 13) & 3)
 	{
 		case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			op->modulation = QPSK;
+			break;
+		case 1:
+			op->modulation = QAM_16;
+			break;
+		case 2:
+			op->modulation = QAM_64;
+			break;
+		default:
+			op->modulation = QAM_AUTO;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			op->constellation = QPSK;
 			break;
 		case 1:
@@ -358,6 +485,10 @@ static int mt352_get_parameters(struct dvb_frontend* fe,
 			break;
 		default:
 			op->constellation = QAM_AUTO;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 	}
 
@@ -385,6 +516,41 @@ static int mt352_get_parameters(struct dvb_frontend* fe,
 	switch ( (tps >> 10) & 7)
 	{
 		case 0:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			op->hierarchy = HIERARCHY_NONE;
+			break;
+		case 1:
+			op->hierarchy = HIERARCHY_1;
+			break;
+		case 2:
+			op->hierarchy = HIERARCHY_2;
+			break;
+		case 3:
+			op->hierarchy = HIERARCHY_4;
+			break;
+		default:
+			op->hierarchy = HIERARCHY_AUTO;
+			break;
+	}
+
+	op->frequency = (500 * (div - IF_FREQUENCYx6)) / 3 * 1000;
+
+	if (trl == 0x72)
+		op->bandwidth_hz = 8000000;
+	else if (trl == 0x64)
+		op->bandwidth_hz = 7000000;
+	else
+		op->bandwidth_hz = 6000000;
+
+
+	if (mt352_read_register(state, STATUS_2) & 0x02)
+		op->inversion = INVERSION_OFF;
+	else
+		op->inversion = INVERSION_ON;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			op->hierarchy_information = HIERARCHY_NONE;
 			break;
 		case 1:
@@ -415,6 +581,10 @@ static int mt352_get_parameters(struct dvb_frontend* fe,
 		param->inversion = INVERSION_OFF;
 	else
 		param->inversion = INVERSION_ON;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -569,10 +739,22 @@ error:
 }
 
 static struct dvb_frontend_ops mt352_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBT },
+	.info = {
+		.name			= "Zarlink MT352 DVB-T",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.info = {
 		.name			= "Zarlink MT352 DVB-T",
 		.type			= FE_OFDM,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min		= 174000000,
 		.frequency_max		= 862000000,
 		.frequency_stepsize	= 166667,

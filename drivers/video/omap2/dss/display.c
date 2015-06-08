@@ -29,6 +29,13 @@
 
 #include <video/omapdss.h>
 #include "dss.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "dss_features.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static ssize_t display_enabled_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
@@ -44,6 +51,18 @@ static ssize_t display_enabled_store(struct device *dev,
 		const char *buf, size_t size)
 {
 	struct omap_dss_device *dssdev = to_dss_device(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int r;
+	bool enabled;
+
+	r = strtobool(buf, &enabled);
+	if (r)
+		return r;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int r, enabled;
 
 	r = kstrtoint(buf, 0, &enabled);
@@ -52,6 +71,10 @@ static ssize_t display_enabled_store(struct device *dev,
 
 	enabled = !!enabled;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (enabled != (dssdev->state != OMAP_DSS_DISPLAY_DISABLED)) {
 		if (enabled) {
 			r = dssdev->driver->enable(dssdev);
@@ -65,6 +88,11 @@ static ssize_t display_enabled_store(struct device *dev,
 	return size;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t display_upd_mode_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
@@ -107,6 +135,10 @@ static ssize_t display_upd_mode_store(struct device *dev,
 	return size;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t display_tear_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
@@ -120,17 +152,39 @@ static ssize_t display_tear_store(struct device *dev,
 		struct device_attribute *attr, const char *buf, size_t size)
 {
 	struct omap_dss_device *dssdev = to_dss_device(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int r;
+	bool te;
+=======
 	int te, r;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int te, r;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dssdev->driver->enable_te || !dssdev->driver->get_te)
 		return -ENOENT;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	r = strtobool(buf, &te);
+	if (r)
+		return r;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = kstrtoint(buf, 0, &te);
 	if (r)
 		return r;
 
 	te = !!te;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = dssdev->driver->enable_te(dssdev, te);
 	if (r)
 		return r;
@@ -236,17 +290,39 @@ static ssize_t display_mirror_store(struct device *dev,
 		struct device_attribute *attr, const char *buf, size_t size)
 {
 	struct omap_dss_device *dssdev = to_dss_device(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int r;
+	bool mirror;
+=======
 	int mirror, r;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int mirror, r;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!dssdev->driver->set_mirror || !dssdev->driver->get_mirror)
 		return -ENOENT;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	r = strtobool(buf, &mirror);
+	if (r)
+		return r;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = kstrtoint(buf, 0, &mirror);
 	if (r)
 		return r;
 
 	mirror = !!mirror;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	r = dssdev->driver->set_mirror(dssdev, mirror);
 	if (r)
 		return r;
@@ -294,8 +370,16 @@ static ssize_t display_wss_store(struct device *dev,
 
 static DEVICE_ATTR(enabled, S_IRUGO|S_IWUSR,
 		display_enabled_show, display_enabled_store);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static DEVICE_ATTR(update_mode, S_IRUGO|S_IWUSR,
 		display_upd_mode_show, display_upd_mode_store);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static DEVICE_ATTR(update_mode, S_IRUGO|S_IWUSR,
+		display_upd_mode_show, display_upd_mode_store);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(tear_elim, S_IRUGO|S_IWUSR,
 		display_tear_show, display_tear_store);
 static DEVICE_ATTR(timings, S_IRUGO|S_IWUSR,
@@ -309,7 +393,14 @@ static DEVICE_ATTR(wss, S_IRUGO|S_IWUSR,
 
 static struct device_attribute *display_sysfs_attrs[] = {
 	&dev_attr_enabled,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	&dev_attr_update_mode,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	&dev_attr_update_mode,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&dev_attr_tear_elim,
 	&dev_attr_timings,
 	&dev_attr_rotate,
@@ -326,6 +417,11 @@ void omapdss_default_get_resolution(struct omap_dss_device *dssdev,
 }
 EXPORT_SYMBOL(omapdss_default_get_resolution);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void default_get_overlay_fifo_thresholds(enum omap_plane plane,
 		u32 fifo_size, enum omap_burst_size *burst_size,
 		u32 *fifo_low, u32 *fifo_high)
@@ -339,6 +435,10 @@ void default_get_overlay_fifo_thresholds(enum omap_plane plane,
 	*fifo_low = fifo_size - burst_size_bytes;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omapdss_default_get_recommended_bpp(struct omap_dss_device *dssdev)
 {
 	switch (dssdev->type) {
@@ -349,8 +449,22 @@ int omapdss_default_get_recommended_bpp(struct omap_dss_device *dssdev)
 			return 16;
 
 	case OMAP_DISPLAY_TYPE_DBI:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (dssdev->ctrl.pixel_size == 24)
+			return 24;
+		else
+			return 16;
+	case OMAP_DISPLAY_TYPE_DSI:
+		if (dsi_get_pixel_size(dssdev->panel.dsi_pix_fmt) > 16)
+=======
 	case OMAP_DISPLAY_TYPE_DSI:
 		if (dssdev->ctrl.pixel_size == 24)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case OMAP_DISPLAY_TYPE_DSI:
+		if (dssdev->ctrl.pixel_size == 24)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 24;
 		else
 			return 16;
@@ -389,8 +503,20 @@ bool dss_use_replication(struct omap_dss_device *dssdev,
 		bpp = 24;
 		break;
 	case OMAP_DISPLAY_TYPE_DBI:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		bpp = dssdev->ctrl.pixel_size;
+		break;
+	case OMAP_DISPLAY_TYPE_DSI:
+		bpp = dsi_get_pixel_size(dssdev->panel.dsi_pix_fmt);
+=======
 	case OMAP_DISPLAY_TYPE_DSI:
 		bpp = dssdev->ctrl.pixel_size;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case OMAP_DISPLAY_TYPE_DSI:
+		bpp = dssdev->ctrl.pixel_size;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		BUG();

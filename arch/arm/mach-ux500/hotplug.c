@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <asm/smp_plat.h>
 =======
+<<<<<<< HEAD
+#include <asm/smp_plat.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern volatile int pen_release;
 
@@ -31,8 +35,12 @@ static inline void platform_do_lowpower(unsigned int cpu)
 <<<<<<< HEAD
 		if (pen_release == cpu_logical_map(cpu)) {
 =======
+<<<<<<< HEAD
+		if (pen_release == cpu_logical_map(cpu)) {
+=======
 		if (pen_release == cpu) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * OK, proper wakeup, we're done
 			 */

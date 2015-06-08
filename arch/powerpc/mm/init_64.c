@@ -63,8 +63,11 @@
 #include <asm/sections.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/iommu.h>
 #include <asm/abs_addr.h>
 #include <asm/vdso.h>
@@ -88,6 +91,8 @@ EXPORT_SYMBOL_GPL(kernstart_addr);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void free_initmem(void)
 {
 	unsigned long addr;
@@ -105,6 +110,7 @@ void free_initmem(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void pgd_ctor(void *addr)
 {
 	memset(addr, 0, PGD_TABLE_SIZE);

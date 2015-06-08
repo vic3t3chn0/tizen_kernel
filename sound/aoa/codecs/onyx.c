@@ -1069,8 +1069,11 @@ static int onyx_i2c_probe(struct i2c_client *client,
  fail:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	i2c_set_clientdata(client, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(onyx);
 	return -ENODEV;
 }
@@ -1118,9 +1121,13 @@ static int onyx_i2c_remove(struct i2c_client *client)
 <<<<<<< HEAD
 	kfree(onyx->codec_info);
 =======
+<<<<<<< HEAD
+	kfree(onyx->codec_info);
+=======
 	if (onyx->codec_info)
 		kfree(onyx->codec_info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(onyx);
 	return 0;
 }
@@ -1144,6 +1151,9 @@ static struct i2c_driver onyx_driver = {
 <<<<<<< HEAD
 module_i2c_driver(onyx_driver);
 =======
+<<<<<<< HEAD
+module_i2c_driver(onyx_driver);
+=======
 static int __init onyx_init(void)
 {
 	return i2c_add_driver(&onyx_driver);
@@ -1157,3 +1167,4 @@ static void __exit onyx_exit(void)
 module_init(onyx_init);
 module_exit(onyx_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

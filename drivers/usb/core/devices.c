@@ -190,7 +190,15 @@ static char *usb_dump_endpoint_descriptor(int speed, char *start, char *end,
 	dir = usb_endpoint_dir_in(desc) ? 'I' : 'O';
 
 	if (speed == USB_SPEED_HIGH) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		switch (usb_endpoint_maxp(desc) & (0x03 << 11)) {
+=======
 		switch (le16_to_cpu(desc->wMaxPacketSize) & (0x03 << 11)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		switch (le16_to_cpu(desc->wMaxPacketSize) & (0x03 << 11)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case 1 << 11:
 			bandwidth = 2; break;
 		case 2 << 11:
@@ -240,7 +248,15 @@ static char *usb_dump_endpoint_descriptor(int speed, char *start, char *end,
 
 	start += sprintf(start, format_endpt, desc->bEndpointAddress, dir,
 			 desc->bmAttributes, type,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 (usb_endpoint_maxp(desc) & 0x07ff) *
+=======
 			 (le16_to_cpu(desc->wMaxPacketSize) & 0x07ff) *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			 (le16_to_cpu(desc->wMaxPacketSize) & 0x07ff) *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 bandwidth,
 			 interval, unit);
 	return start;
@@ -624,7 +640,15 @@ static ssize_t usb_device_read(struct file *file, char __user *buf,
 	/* print devices for all busses */
 	list_for_each_entry(bus, &usb_bus_list, bus_list) {
 		/* recurse through all children of the root hub */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!bus->root_hub)
+=======
 		if (!bus_to_hcd(bus)->rh_registered)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!bus_to_hcd(bus)->rh_registered)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		usb_lock_device(bus->root_hub);
 		ret = usb_device_dump(&buf, &nbytes, &skip_bytes, ppos,

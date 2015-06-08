@@ -104,6 +104,9 @@ static const int mxc_uart1_pins[] = {
 <<<<<<< HEAD
 static const struct imxuart_platform_data uart_pdata __initconst = {
 =======
+<<<<<<< HEAD
+static const struct imxuart_platform_data uart_pdata __initconst = {
+=======
 static int uart1_mxc_init(struct platform_device *pdev)
 {
 	return mxc_gpio_setup_multiple_pins(mxc_uart1_pins,
@@ -120,6 +123,7 @@ static const struct imxuart_platform_data uart_pdata __initconst = {
 	.init = uart1_mxc_init,
 	.exit = uart1_mxc_exit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags = IMXUART_HAVE_RTSCTS,
 };
 
@@ -134,13 +138,19 @@ static struct platform_device *devices[] __initdata = {
 static void __init scb9328_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	imx1_soc_init();
 
 	mxc_gpio_setup_multiple_pins(mxc_uart1_pins,
 			ARRAY_SIZE(mxc_uart1_pins), "UART1");
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	imx1_add_imx_uart0(&uart_pdata);
 
 	printk(KERN_INFO"Scb9328: Adding devices\n");
@@ -159,6 +169,9 @@ static struct sys_timer scb9328_timer = {
 MACHINE_START(SCB9328, "Synertronixx scb9328")
 	/* Sascha Hauer */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset = 100,
 	.map_io = mx1_map_io,
 	.init_early = imx1_init_early,
@@ -167,6 +180,8 @@ MACHINE_START(SCB9328, "Synertronixx scb9328")
 	.timer = &scb9328_timer,
 	.init_machine = scb9328_init,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params = 0x08000100,
 	.map_io = mx1_map_io,
@@ -175,4 +190,5 @@ MACHINE_START(SCB9328, "Synertronixx scb9328")
 	.timer = &scb9328_timer,
 	.init_machine = scb9328_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

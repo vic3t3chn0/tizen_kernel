@@ -35,6 +35,13 @@
 #include <linux/init.h>
 #include <linux/slab.h>
 #include <linux/uaccess.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/console.h>
 #include <linux/screen_info.h>
 
@@ -441,7 +448,15 @@ static int smtc_setcolreg(unsigned regno, unsigned red, unsigned green,
 }
 
 #ifdef __BIG_ENDIAN
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t smtcfb_read(struct fb_info *info, char __user *buf, size_t
+=======
 static ssize_t smtcfb_read(struct fb_info *info, char __user * buf, size_t
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static ssize_t smtcfb_read(struct fb_info *info, char __user * buf, size_t
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				count, loff_t *ppos)
 {
 	unsigned long p = *ppos;
@@ -1022,9 +1037,21 @@ failed_free:
 
 /* Jason (08/11/2009) PCI_DRV wrapper essential structs */
 static DEFINE_PCI_DEVICE_TABLE(smtcfb_pci_table) = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{ PCI_DEVICE(0x126f, 0x710), },
+	{ PCI_DEVICE(0x126f, 0x712), },
+	{ PCI_DEVICE(0x126f, 0x720), },
+=======
 	{0x126f, 0x710, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0},
 	{0x126f, 0x712, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0},
 	{0x126f, 0x720, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{0x126f, 0x710, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0},
+	{0x126f, 0x712, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0},
+	{0x126f, 0x720, PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{0,}
 };
 

@@ -158,6 +158,9 @@ mdfour(unsigned char *md4_hash, unsigned char *link_str, int link_len)
 		goto mdfour_err;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rc = crypto_shash_update(&sdescmd4->shash, link_str, link_len);
 	if (rc) {
 		cERROR(1, "%s: Could not update with link_str\n", __func__);
@@ -166,10 +169,13 @@ mdfour(unsigned char *md4_hash, unsigned char *link_str, int link_len)
 	rc = crypto_shash_final(&sdescmd4->shash, md4_hash);
 	if (rc)
 		cERROR(1, "%s: Could not genereate md4 hash\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 	crypto_shash_update(&sdescmd4->shash, link_str, link_len);
 	rc = crypto_shash_final(&sdescmd4->shash, md4_hash);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 mdfour_err:
 	crypto_free_shash(md4);
@@ -204,6 +210,8 @@ SMBencrypt(unsigned char *passwd, const unsigned char *c8, unsigned char *p24)
 	return rc;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* Routines for Windows NT MD4 Hash functions. */
@@ -241,12 +249,16 @@ _my_mbstowcs(__u16 *dst, const unsigned char *src, int len)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Creates the MD4 Hash of the users password in NT UNICODE.
  */
 
 int
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 E_md4hash(const unsigned char *passwd, unsigned char *p16,
 	const struct nls_table *codepage)
 {
@@ -264,6 +276,8 @@ E_md4hash(const unsigned char *passwd, unsigned char *p16,
 
 	rc = mdfour(p16, (unsigned char *) wpwd, len * sizeof(__le16));
 	memset(wpwd, 0, 129 * sizeof(__le16));
+<<<<<<< HEAD
+=======
 =======
 E_md4hash(const unsigned char *passwd, unsigned char *p16)
 {
@@ -289,15 +303,21 @@ E_md4hash(const unsigned char *passwd, unsigned char *p16)
 	rc = mdfour(p16, (unsigned char *) wpwd, len);
 	memset(wpwd, 0, 129 * 2);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return rc;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Does the NT MD4 hash then des encryption. */
 int
 SMBNTencrypt(unsigned char *passwd, unsigned char *c8, unsigned char *p24,
 		const struct nls_table *codepage)
+<<<<<<< HEAD
+=======
 =======
 #if 0 /* currently unused */
 /* Does both the NT and LM owfs of a user's password */
@@ -388,6 +408,7 @@ NTLMSSPOWFencrypt(unsigned char passwd[8],
 int
 SMBNTencrypt(unsigned char *passwd, unsigned char *c8, unsigned char *p24)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc;
 	unsigned char p16[16], p21[21];
@@ -398,8 +419,12 @@ SMBNTencrypt(unsigned char *passwd, unsigned char *c8, unsigned char *p24)
 <<<<<<< HEAD
 	rc = E_md4hash(passwd, p16, codepage);
 =======
+<<<<<<< HEAD
+	rc = E_md4hash(passwd, p16, codepage);
+=======
 	rc = E_md4hash(passwd, p16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc) {
 		cFYI(1, "%s Can't generate NT hash, error: %d", __func__, rc);
 		return rc;
@@ -408,6 +433,8 @@ SMBNTencrypt(unsigned char *passwd, unsigned char *c8, unsigned char *p24)
 	rc = E_P24(p21, c8, p24);
 	return rc;
 }
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -447,3 +474,4 @@ SMBsesskeygen_ntv1(const unsigned char kr[16],
 }
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

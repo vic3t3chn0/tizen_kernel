@@ -7,8 +7,14 @@
 #include <linux/io.h>
 #include <linux/irqdomain.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+#include <linux/io.h>
+#include <linux/irqdomain.h>
+=======
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/list.h>
 #include <linux/of.h>
@@ -24,13 +30,21 @@
 #include <asm/hpet.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/irq_controller.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/apic.h>
 #include <asm/pci_x86.h>
 
 __initdata u64 initial_dtb;
 char __initdata cmd_line[COMMAND_LINE_SIZE];
+<<<<<<< HEAD
+
+int __initdata of_ioapic;
+
+=======
 <<<<<<< HEAD
 
 int __initdata of_ioapic;
@@ -89,6 +103,7 @@ unsigned int irq_create_of_mapping(struct device_node *controller,
 EXPORT_SYMBOL_GPL(irq_create_of_mapping);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long pci_address_to_pio(phys_addr_t address)
 {
 	/*
@@ -150,6 +165,9 @@ module_init(add_bus_probe);
 
 #ifdef CONFIG_PCI
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct device_node *pcibios_get_phb_of_node(struct pci_bus *bus)
 {
 	struct device_node *np;
@@ -168,8 +186,11 @@ struct device_node *pcibios_get_phb_of_node(struct pci_bus *bus)
 	return NULL;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int x86_of_pci_irq_enable(struct pci_dev *dev)
 {
 	struct of_irq oirq;
@@ -201,6 +222,10 @@ static void x86_of_pci_irq_disable(struct pci_dev *dev)
 
 void __cpuinit x86_of_pci_init(void)
 {
+<<<<<<< HEAD
+	pcibios_enable_irq = x86_of_pci_irq_enable;
+	pcibios_disable_irq = x86_of_pci_irq_disable;
+=======
 <<<<<<< HEAD
 	pcibios_enable_irq = x86_of_pci_irq_enable;
 	pcibios_disable_irq = x86_of_pci_irq_disable;
@@ -250,6 +275,7 @@ void __cpuinit x86_of_pci_init(void)
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -419,6 +445,9 @@ static struct of_ioapic_type of_ioapic_type[] =
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ioapic_xlate(struct irq_domain *domain,
 			struct device_node *controller,
 			const u32 *intspec, u32 intsize,
@@ -456,6 +485,8 @@ const struct irq_domain_ops ioapic_irq_domain_ops = {
 	.xlate = ioapic_xlate,
 };
 
+<<<<<<< HEAD
+=======
 =======
 static int ioapic_xlate(struct irq_domain *id, const u32 *intspec, u32 intsize,
 			u32 *out_hwirq, u32 *out_type)
@@ -488,6 +519,7 @@ static int ioapic_xlate(struct irq_domain *id, const u32 *intspec, u32 intsize,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init ioapic_add_ofnode(struct device_node *np)
 {
 	struct resource r;
@@ -504,6 +536,9 @@ static void __init ioapic_add_ofnode(struct device_node *np)
 		if (r.start == mpc_ioapic_addr(i)) {
 			struct irq_domain *id;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct mp_ioapic_gsi *gsi_cfg;
 
 			gsi_cfg = mp_ioapic_gsi_routing(i);
@@ -512,6 +547,8 @@ static void __init ioapic_add_ofnode(struct device_node *np)
 						   &ioapic_irq_domain_ops,
 						   (void*)i);
 			BUG_ON(!id);
+<<<<<<< HEAD
+=======
 =======
 
 			id = kzalloc(sizeof(*id), GFP_KERNEL);
@@ -521,6 +558,7 @@ static void __init ioapic_add_ofnode(struct device_node *np)
 			id->priv = (void *)i;
 			add_interrupt_host(id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		}
 	}

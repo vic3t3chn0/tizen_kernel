@@ -35,9 +35,13 @@ struct pci_ops *pci_root_ops;
 <<<<<<< HEAD
  * These are configured and inserted by pcibios_init().
 =======
+<<<<<<< HEAD
+ * These are configured and inserted by pcibios_init().
+=======
  * These are configured and inserted by pcibios_init() and are attached to the
  * root bus by pcibios_fixup_bus().
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static struct resource pci_ioport_resource = {
 	.name	= "PCI IO",
@@ -82,6 +86,8 @@ static inline int __query(const struct pci_bus *bus, unsigned int devfn)
 }
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * translate Linuxcentric addresses to PCI bus addresses
@@ -131,6 +137,7 @@ EXPORT_SYMBOL(pcibios_bus_to_resource);
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  */
 static int pci_ampci_read_config_byte(struct pci_bus *bus, unsigned int devfn,
@@ -373,10 +380,13 @@ static void __devinit pcibios_fixup_device_resources(struct pci_dev *dev)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		region.start = dev->resource[i].start;
 		region.end = dev->resource[i].end;
 		pcibios_bus_to_resource(dev, &dev->resource[i], &region);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (is_valid_resource(dev, i))
 			pci_claim_resource(dev, i);
 	}
@@ -392,12 +402,15 @@ void __devinit pcibios_fixup_bus(struct pci_bus *bus)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (bus->number == 0) {
 		bus->resource[0] = &pci_ioport_resource;
 		bus->resource[1] = &pci_iomem_resource;
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bus->self) {
 		pci_read_bridge_bases(bus);
 		pcibios_fixup_device_resources(bus->self);
@@ -420,7 +433,13 @@ static int __init pcibios_init(void)
 	LIST_HEAD(resources);
 
 =======
+<<<<<<< HEAD
+	resource_size_t io_offset, mem_offset;
+	LIST_HEAD(resources);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ioport_resource.start	= 0xA0000000;
 	ioport_resource.end	= 0xDFFFFFFF;
 	iomem_resource.start	= 0xA0000000;
@@ -443,6 +462,9 @@ static int __init pcibios_init(void)
 	       MEM_PAGING_REG);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	io_offset = pci_ioport_resource.start -
 	    (pci_ioport_resource.start & 0x00ffffff);
 	mem_offset = pci_iomem_resource.start -
@@ -452,9 +474,12 @@ static int __init pcibios_init(void)
 	pci_add_resource_offset(&resources, &pci_iomem_resource, mem_offset);
 	pci_root_bus = pci_scan_root_bus(NULL, 0, &pci_direct_ampci, NULL,
 					 &resources);
+<<<<<<< HEAD
+=======
 =======
 	pci_root_bus = pci_scan_bus(0, &pci_direct_ampci, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pcibios_irq_init();
 	pcibios_fixup_irqs();

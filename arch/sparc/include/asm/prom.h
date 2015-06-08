@@ -25,8 +25,13 @@
 #include <linux/atomic.h>
 #include <linux/irqdomain.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <linux/irqdomain.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define OF_ROOT_NODE_ADDR_CELLS_DEFAULT	2
 #define OF_ROOT_NODE_SIZE_CELLS_DEFAULT	1
@@ -62,6 +67,8 @@ extern void of_iounmap(struct resource *res, void __iomem *base, unsigned long s
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* These routines are here to provide compatibility with how powerpc
  * handles IRQ mapping for OF device nodes.  We precompute and permanently
  * register them in the platform_device objects, whereas powerpc computes them
@@ -72,6 +79,7 @@ static inline void irq_dispose_mapping(unsigned int virq)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct device_node *of_console_device;
 extern char *of_console_path;
 extern char *of_console_options;

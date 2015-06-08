@@ -71,8 +71,12 @@ long jfs_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 		err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(filp);
+=======
 		err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 
@@ -127,8 +131,12 @@ setflags_out:
 <<<<<<< HEAD
 		mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(filp);
+=======
 		mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return err;
 	}
 	default:

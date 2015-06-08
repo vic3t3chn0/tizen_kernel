@@ -585,6 +585,11 @@ int __twofish_setkey(struct twofish_ctx *ctx, const u8 *key,
 		     unsigned int key_len, u32 *flags)
 {
 =======
+<<<<<<< HEAD
+int __twofish_setkey(struct twofish_ctx *ctx, const u8 *key,
+		     unsigned int key_len, u32 *flags)
+{
+=======
 int twofish_setkey(struct crypto_tfm *tfm, const u8 *key, unsigned int key_len)
 {
 
@@ -592,6 +597,7 @@ int twofish_setkey(struct crypto_tfm *tfm, const u8 *key, unsigned int key_len)
 	u32 *flags = &tfm->crt_flags;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, j, k;
 
 	/* Temporaries for CALC_K. */
@@ -708,6 +714,9 @@ int twofish_setkey(struct crypto_tfm *tfm, const u8 *key, unsigned int key_len)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(__twofish_setkey);
 
 int twofish_setkey(struct crypto_tfm *tfm, const u8 *key, unsigned int key_len)
@@ -715,9 +724,12 @@ int twofish_setkey(struct crypto_tfm *tfm, const u8 *key, unsigned int key_len)
 	return __twofish_setkey(crypto_tfm_ctx(tfm), key, key_len,
 				&tfm->crt_flags);
 }
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(twofish_setkey);
 
 MODULE_LICENSE("GPL");

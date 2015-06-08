@@ -32,6 +32,9 @@
 #define OMAP_MMC_MAX_SLOTS	2
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * struct omap_mmc_dev_attr.flags possibilities
  *
@@ -50,9 +53,12 @@
  */
 #define OMAP_HSMMC_SUPPORTS_DUAL_VOLT		BIT(0)
 #define OMAP_HSMMC_BROKEN_MULTIBLOCK_READ	BIT(1)
+<<<<<<< HEAD
+=======
 =======
 #define OMAP_HSMMC_SUPPORTS_DUAL_VOLT	BIT(1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct omap_mmc_dev_attr {
 	u8 flags;
@@ -103,7 +109,11 @@ struct omap_mmc_platform_data {
 <<<<<<< HEAD
 		u32 pm_caps;	/* PM capabilities of the mmc */
 =======
+<<<<<<< HEAD
+		u32 pm_caps;	/* PM capabilities of the mmc */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * nomux means "standard" muxing is wrong on this board, and
@@ -146,9 +156,12 @@ struct omap_mmc_platform_data {
 		int (*get_ro)(struct device *dev, int slot);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		int (*set_sleep)(struct device *dev, int slot, int sleep,
 				 int vdd, int cardsleep);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		void (*remux)(struct device *dev, int slot, int power_on);
 		/* Call back before enabling / disabling regulators */
 		void (*before_set_reg)(struct device *dev, int slot,

@@ -38,8 +38,11 @@ struct drm_mode_set;
 struct drm_framebuffer;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct drm_object_properties;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 #define DRM_MODE_OBJECT_CRTC 0xcccccccc
@@ -56,6 +59,8 @@ struct drm_mode_object {
 	uint32_t type;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct drm_object_properties *properties;
 };
 
@@ -65,6 +70,7 @@ struct drm_object_properties {
 	uint32_t ids[DRM_OBJECT_MAX_PROPERTY];
 	uint64_t values[DRM_OBJECT_MAX_PROPERTY];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -315,9 +321,13 @@ struct drm_plane;
 <<<<<<< HEAD
  * @destroy: deinit and free object.
 =======
+<<<<<<< HEAD
+ * @destroy: deinit and free object.
+=======
  * @destroy: deinit and free object
  * @set_property: called when a property is changed
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The drm_crtc_funcs structure is the central CRTC management structure
  * in the DRM.  Each CRTC controls one or more connectors (note that the name
@@ -363,10 +373,13 @@ struct drm_crtc_funcs {
 			 struct drm_pending_vblank_event *event);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	int (*set_property)(struct drm_crtc *crtc,
 			    struct drm_property *property, uint64_t val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -388,8 +401,11 @@ struct drm_crtc_funcs {
  * @helper_private: mid-layer private data
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @properties: property tracking for this CRTC
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Each CRTC may have one or more connectors associated with it.  This structure
  * allows the CRTC to be controlled.
@@ -427,9 +443,12 @@ struct drm_crtc {
 	void *helper_private;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	struct drm_object_properties properties;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -489,7 +508,11 @@ struct drm_encoder_funcs {
 <<<<<<< HEAD
 #define DRM_CONNECTOR_MAX_PROPERTY 16
 =======
+<<<<<<< HEAD
+#define DRM_CONNECTOR_MAX_PROPERTY 16
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DRM_CONNECTOR_LEN 32
 #define DRM_CONNECTOR_MAX_ENCODER 3
 
@@ -562,8 +585,13 @@ enum drm_connector_force {
  * @property_ids: property tracking for this connector
  * @property_values: value pointers or data for properties
 =======
+<<<<<<< HEAD
+ * @property_ids: property tracking for this connector
+ * @property_values: value pointers or data for properties
+=======
  * @properties: property tracking for this connector
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @polled: a %DRM_CONNECTOR_POLL_<foo> value for core driven polling
  * @dpms: current dpms state
  * @helper_private: mid-layer private data
@@ -611,8 +639,13 @@ struct drm_connector {
 	u32 property_ids[DRM_CONNECTOR_MAX_PROPERTY];
 	uint64_t property_values[DRM_CONNECTOR_MAX_PROPERTY];
 =======
+<<<<<<< HEAD
+	u32 property_ids[DRM_CONNECTOR_MAX_PROPERTY];
+	uint64_t property_values[DRM_CONNECTOR_MAX_PROPERTY];
+=======
 	struct drm_object_properties properties;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	uint8_t polled; /* DRM_CONNECTOR_POLL_* */
 
@@ -643,8 +676,11 @@ struct drm_connector {
  * @destroy: clean up plane resources
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @set_property: called when a property is changed
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct drm_plane_funcs {
 	int (*update_plane)(struct drm_plane *plane,
@@ -657,10 +693,13 @@ struct drm_plane_funcs {
 	void (*destroy)(struct drm_plane *plane);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	int (*set_property)(struct drm_plane *plane,
 			    struct drm_property *property, uint64_t val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -680,8 +719,11 @@ struct drm_plane_funcs {
  * @helper_private: storage for drver layer
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @properties: property tracking for this plane
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct drm_plane {
 	struct drm_device *dev;
@@ -706,9 +748,12 @@ struct drm_plane {
 	void *helper_private;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	struct drm_object_properties properties;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -965,6 +1010,8 @@ extern int drm_connector_property_get_value(struct drm_connector *connector,
 					 uint64_t *value);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int drm_object_property_set_value(struct drm_mode_object *obj,
 					 struct drm_property *property,
 					 uint64_t val);
@@ -972,6 +1019,7 @@ extern int drm_object_property_get_value(struct drm_mode_object *obj,
 					 struct drm_property *property,
 					 uint64_t *value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct drm_display_mode *drm_crtc_mode_create(struct drm_device *dev);
 extern void drm_framebuffer_set_object(struct drm_device *dev,
 				       unsigned long handle);
@@ -988,12 +1036,17 @@ extern bool drm_crtc_in_use(struct drm_crtc *crtc);
 extern int drm_connector_attach_property(struct drm_connector *connector,
 				      struct drm_property *property, uint64_t init_val);
 =======
+<<<<<<< HEAD
+extern int drm_connector_attach_property(struct drm_connector *connector,
+				      struct drm_property *property, uint64_t init_val);
+=======
 extern void drm_connector_attach_property(struct drm_connector *connector,
 					  struct drm_property *property, uint64_t init_val);
 extern void drm_object_attach_property(struct drm_mode_object *obj,
 				       struct drm_property *property,
 				       uint64_t init_val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct drm_property *drm_property_create(struct drm_device *dev, int flags,
 						const char *name, int num_values);
 extern struct drm_property *drm_property_create_enum(struct drm_device *dev, int flags,
@@ -1002,11 +1055,14 @@ extern struct drm_property *drm_property_create_enum(struct drm_device *dev, int
 					 int num_values);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct drm_property *drm_property_create_bitmask(struct drm_device *dev,
 					 int flags, const char *name,
 					 const struct drm_prop_enum_list *props,
 					 int num_values);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct drm_property *drm_property_create_range(struct drm_device *dev, int flags,
 					 const char *name,
 					 uint64_t min, uint64_t max);
@@ -1114,11 +1170,14 @@ extern int drm_mode_destroy_dumb_ioctl(struct drm_device *dev,
 				      void *data, struct drm_file *file_priv);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int drm_mode_obj_get_properties_ioctl(struct drm_device *dev, void *data,
 					     struct drm_file *file_priv);
 extern int drm_mode_obj_set_property_ioctl(struct drm_device *dev, void *data,
 					   struct drm_file *file_priv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern void drm_fb_get_bpp_depth(uint32_t format, unsigned int *depth,
 				 int *bpp);

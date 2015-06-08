@@ -79,8 +79,13 @@ struct sas_phy {
 	/* available to the lldd */
 	void			*hostdata;
 =======
+<<<<<<< HEAD
+	/* available to the lldd */
+	void			*hostdata;
+=======
 	struct work_struct      reset_work;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define dev_to_phy(d) \
@@ -178,7 +183,12 @@ struct sas_function_template {
 	int (*phy_setup)(struct sas_phy *);
 	void (*phy_release)(struct sas_phy *);
 =======
+<<<<<<< HEAD
+	int (*phy_setup)(struct sas_phy *);
+	void (*phy_release)(struct sas_phy *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*set_phy_speed)(struct sas_phy *, struct sas_phy_linkrates *);
 	int (*smp_handler)(struct Scsi_Host *, struct sas_rphy *, struct request *);
 };
@@ -207,7 +217,11 @@ extern void sas_rphy_delete(struct sas_rphy *);
 <<<<<<< HEAD
 extern void sas_rphy_unlink(struct sas_rphy *);
 =======
+<<<<<<< HEAD
+extern void sas_rphy_unlink(struct sas_rphy *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int scsi_is_sas_rphy(const struct device *);
 
 struct sas_port *sas_port_alloc(struct device *, int);
@@ -220,14 +234,20 @@ void sas_port_delete_phy(struct sas_port *, struct sas_phy *);
 void sas_port_mark_backlink(struct sas_port *);
 int scsi_is_sas_port(const struct device *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sas_phy *sas_port_get_phy(struct sas_port *port);
 static inline void sas_port_put_phy(struct sas_phy *phy)
 {
 	if (phy)
 		put_device(&phy->dev);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct scsi_transport_template *
 sas_attach_transport(struct sas_function_template *);

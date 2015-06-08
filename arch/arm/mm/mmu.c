@@ -20,8 +20,14 @@
 
 #include <asm/cp15.h>
 =======
+<<<<<<< HEAD
+#include <linux/vmalloc.h>
+
+#include <asm/cp15.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cputype.h>
 #include <asm/sections.h>
 #include <asm/cachetype.h>
@@ -35,8 +41,14 @@
 #include <asm/traps.h>
 #include <asm/mmu_writeable.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_info.h>
+#include <asm/traps.h>
+#include <asm/mmu_writeable.h>
+=======
 #include <asm/traps.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
@@ -45,7 +57,12 @@
 #include <asm/user_accessible_timer.h>
 
 =======
+<<<<<<< HEAD
+#include <asm/user_accessible_timer.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "mm.h"
 
 /*
@@ -71,7 +88,13 @@ pmd_t *top_pmd;
 #define RX_AREA_END             __start_rodata
 
 =======
+<<<<<<< HEAD
+#define RX_AREA_START           _text
+#define RX_AREA_END             __start_rodata
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int cachepolicy __initdata = CPOLICY_WRITEBACK;
 static unsigned int ecc_mask __initdata = 0;
 pgprot_t pgprot_user;
@@ -86,8 +109,12 @@ struct cachepolicy {
 <<<<<<< HEAD
 	pmdval_t	pmd;
 =======
+<<<<<<< HEAD
+	pmdval_t	pmd;
+=======
 	unsigned int	pmd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pteval_t	pte;
 };
 
@@ -180,7 +207,11 @@ early_param("nowb", early_nowrite);
 <<<<<<< HEAD
 #ifndef CONFIG_ARM_LPAE
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_ARM_LPAE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init early_ecc(char *p)
 {
 	if (memcmp(p, "on", 2) == 0)
@@ -193,7 +224,11 @@ early_param("ecc", early_ecc);
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init noalign_setup(char *__unused)
 {
@@ -266,7 +301,11 @@ static struct mem_type mem_types[] = {
 <<<<<<< HEAD
 #ifndef CONFIG_ARM_LPAE
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_ARM_LPAE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[MT_MINICLEAN] = {
 		.prot_sect = PMD_TYPE_SECT | PMD_SECT_XN | PMD_SECT_MINICACHE,
 		.domain    = DOMAIN_KERNEL,
@@ -274,7 +313,11 @@ static struct mem_type mem_types[] = {
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[MT_LOW_VECTORS] = {
 		.prot_pte  = L_PTE_PRESENT | L_PTE_YOUNG | L_PTE_DIRTY |
 				L_PTE_RDONLY,
@@ -294,6 +337,9 @@ static struct mem_type mem_types[] = {
 		.domain    = DOMAIN_KERNEL,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[MT_MEMORY_R] = {
 		.prot_sect = PMD_TYPE_SECT | PMD_SECT_XN,
 		.domain    = DOMAIN_KERNEL,
@@ -306,8 +352,11 @@ static struct mem_type mem_types[] = {
 		.prot_sect = PMD_TYPE_SECT,
 		.domain    = DOMAIN_KERNEL,
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[MT_ROM] = {
 		.prot_sect = PMD_TYPE_SECT,
 		.domain    = DOMAIN_KERNEL,
@@ -332,6 +381,9 @@ static struct mem_type mem_types[] = {
 		.domain    = DOMAIN_KERNEL,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[MT_MEMORY_SO] = {
 		.prot_pte  = L_PTE_PRESENT | L_PTE_YOUNG | L_PTE_DIRTY |
 				L_PTE_MT_UNCACHED,
@@ -352,8 +404,11 @@ static struct mem_type mem_types[] = {
 		.prot_sect = PROT_SECT_DEVICE | PMD_SECT_S,
 		.domain    = DOMAIN_IO,
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const struct mem_type *get_mem_type(unsigned int type)
@@ -363,6 +418,9 @@ const struct mem_type *get_mem_type(unsigned int type)
 EXPORT_SYMBOL(get_mem_type);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PTE_SET_FN(_name, pteop) \
 static int pte_set_##_name(pte_t *ptep, pgtable_t token, unsigned long addr, \
 			void *data) \
@@ -405,8 +463,11 @@ EXPORT_SYMBOL(set_memory_x);
 SET_MEMORY_FN(nx, pte_set_nx)
 EXPORT_SYMBOL(set_memory_nx);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Adjust the PMD section entries according to the CPU in use.
  */
@@ -417,8 +478,12 @@ static void __init build_mem_type_table(void)
 <<<<<<< HEAD
 	pteval_t user_pgprot, kern_pgprot, vecs_pgprot;
 =======
+<<<<<<< HEAD
+	pteval_t user_pgprot, kern_pgprot, vecs_pgprot;
+=======
 	unsigned int user_pgprot, kern_pgprot, vecs_pgprot;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int cpu_arch = cpu_architecture();
 	int i;
 
@@ -547,7 +612,11 @@ static void __init build_mem_type_table(void)
 <<<<<<< HEAD
 		mem_types[MT_MEMORY_DMA_READY].prot_pte |= L_PTE_SHARED;
 =======
+<<<<<<< HEAD
+		mem_types[MT_MEMORY_DMA_READY].prot_pte |= L_PTE_SHARED;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem_types[MT_MEMORY_NONCACHED].prot_sect |= PMD_SECT_S;
 		mem_types[MT_MEMORY_NONCACHED].prot_pte |= L_PTE_SHARED;
 	}
@@ -558,22 +627,32 @@ static void __init build_mem_type_table(void)
 <<<<<<< HEAD
 #ifndef CONFIG_ARM_LPAE
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_ARM_LPAE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Mark cache clean areas and XIP ROM read only
 		 * from SVC mode and no access from userspace.
 		 */
 		mem_types[MT_ROM].prot_sect |= PMD_SECT_APX|PMD_SECT_AP_WRITE;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem_types[MT_MEMORY_RX].prot_sect |= PMD_SECT_APX|PMD_SECT_AP_WRITE;
 		mem_types[MT_MEMORY_R].prot_sect |= PMD_SECT_APX|PMD_SECT_AP_WRITE;
 		mem_types[MT_MINICLEAN].prot_sect |= PMD_SECT_APX|PMD_SECT_AP_WRITE;
 		mem_types[MT_CACHECLEAN].prot_sect |= PMD_SECT_APX|PMD_SECT_AP_WRITE;
 #endif
+<<<<<<< HEAD
+=======
 =======
 		mem_types[MT_MINICLEAN].prot_sect |= PMD_SECT_APX|PMD_SECT_AP_WRITE;
 		mem_types[MT_CACHECLEAN].prot_sect |= PMD_SECT_APX|PMD_SECT_AP_WRITE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (is_smp()) {
 			/*
@@ -590,14 +669,20 @@ static void __init build_mem_type_table(void)
 			mem_types[MT_MEMORY].prot_sect |= PMD_SECT_S;
 			mem_types[MT_MEMORY].prot_pte |= L_PTE_SHARED;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mem_types[MT_MEMORY_DMA_READY].prot_pte |= L_PTE_SHARED;
 			mem_types[MT_MEMORY_NONCACHED].prot_sect |= PMD_SECT_S;
 			mem_types[MT_MEMORY_R].prot_sect |= PMD_SECT_S;
 			mem_types[MT_MEMORY_RW].prot_sect |= PMD_SECT_S;
 			mem_types[MT_MEMORY_RX].prot_sect |= PMD_SECT_S;
+<<<<<<< HEAD
+=======
 =======
 			mem_types[MT_MEMORY_NONCACHED].prot_sect |= PMD_SECT_S;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mem_types[MT_MEMORY_NONCACHED].prot_pte |= L_PTE_SHARED;
 		}
 	}
@@ -621,6 +706,9 @@ static void __init build_mem_type_table(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_LPAE
 	/*
 	 * Do not generate access flag faults for the kernel mappings.
@@ -636,10 +724,13 @@ static void __init build_mem_type_table(void)
 
 	for (i = 0; i < 16; i++) {
 		unsigned long v = pgprot_val(protection_map[i]);
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < 16; i++) {
 		pteval_t v = pgprot_val(protection_map[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		protection_map[i] = __pgprot(v | user_pgprot);
 	}
 
@@ -655,14 +746,20 @@ static void __init build_mem_type_table(void)
 	mem_types[MT_MEMORY].prot_sect |= ecc_mask | cp->pmd;
 	mem_types[MT_MEMORY].prot_pte |= kern_pgprot;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mem_types[MT_MEMORY_DMA_READY].prot_pte |= kern_pgprot;
 	mem_types[MT_MEMORY_NONCACHED].prot_sect |= ecc_mask;
 	mem_types[MT_MEMORY_R].prot_sect |= ecc_mask | cp->pmd;
 	mem_types[MT_MEMORY_RW].prot_sect |= ecc_mask | cp->pmd;
 	mem_types[MT_MEMORY_RX].prot_sect |= ecc_mask | cp->pmd;
+<<<<<<< HEAD
+=======
 =======
 	mem_types[MT_MEMORY_NONCACHED].prot_sect |= ecc_mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mem_types[MT_ROM].prot_sect |= cp->pmd;
 
 	switch (cp->pmd) {
@@ -706,22 +803,34 @@ static void __init *early_alloc_aligned(unsigned long sz, unsigned long align)
 {
 	void *ptr = __va(memblock_alloc(sz, align));
 =======
+<<<<<<< HEAD
+static void __init *early_alloc_aligned(unsigned long sz, unsigned long align)
+{
+	void *ptr = __va(memblock_alloc(sz, align));
+=======
 static void __init *early_alloc(unsigned long sz)
 {
 	void *ptr = __va(memblock_alloc(sz, sz));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(ptr, 0, sz);
 	return ptr;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init *early_alloc(unsigned long sz)
 {
 	return early_alloc_aligned(sz, sz);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static pte_t * __init early_pte_alloc(pmd_t *pmd, unsigned long addr, unsigned long prot)
 {
 	if (pmd_none(*pmd)) {
@@ -744,6 +853,9 @@ static void __init alloc_init_pte(pmd_t *pmd, unsigned long addr,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init map_init_section(pmd_t *pmd, unsigned long addr,
 			unsigned long end, phys_addr_t phys,
 			const struct mem_type *type)
@@ -770,14 +882,20 @@ static void __init map_init_section(pmd_t *pmd, unsigned long addr,
 }
 
 static void __init alloc_init_pmd(pud_t *pud, unsigned long addr,
+<<<<<<< HEAD
+=======
 =======
 static void __init alloc_init_section(pud_t *pud, unsigned long addr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      unsigned long end, phys_addr_t phys,
 				      const struct mem_type *type)
 {
 	pmd_t *pmd = pmd_offset(pud, addr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long next;
 
 	do {
@@ -806,6 +924,8 @@ static void __init alloc_init_section(pud_t *pud, unsigned long addr,
 
 static void __init alloc_init_pud(pgd_t *pgd, unsigned long addr,
 	unsigned long end, unsigned long phys, const struct mem_type *type)
+<<<<<<< HEAD
+=======
 =======
 
 	/*
@@ -838,6 +958,7 @@ static void __init alloc_init_pud(pgd_t *pgd, unsigned long addr,
 static void alloc_init_pud(pgd_t *pgd, unsigned long addr, unsigned long end,
 	unsigned long phys, const struct mem_type *type)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pud_t *pud = pud_offset(pgd, addr);
 	unsigned long next;
@@ -847,8 +968,12 @@ static void alloc_init_pud(pgd_t *pgd, unsigned long addr, unsigned long end,
 <<<<<<< HEAD
 		alloc_init_pmd(pud, addr, next, phys, type);
 =======
+<<<<<<< HEAD
+		alloc_init_pmd(pud, addr, next, phys, type);
+=======
 		alloc_init_section(pud, addr, next, phys, type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		phys += next - addr;
 	} while (pud++, addr = next, addr != end);
 }
@@ -856,7 +981,11 @@ static void alloc_init_pud(pgd_t *pgd, unsigned long addr, unsigned long end,
 <<<<<<< HEAD
 #ifndef CONFIG_ARM_LPAE
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_ARM_LPAE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init create_36bit_mapping(struct map_desc *md,
 					const struct mem_type *type)
 {
@@ -919,7 +1048,11 @@ static void __init create_36bit_mapping(struct map_desc *md,
 <<<<<<< HEAD
 #endif	/* !CONFIG_ARM_LPAE */
 =======
+<<<<<<< HEAD
+#endif	/* !CONFIG_ARM_LPAE */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Create the page directory entries and any necessary
@@ -940,8 +1073,14 @@ static void __init create_mapping(struct map_desc *md)
 		md->virtual != get_user_accessible_timers_base()) &&
 			md->virtual < TASK_SIZE) {
 =======
+<<<<<<< HEAD
+	if ((md->virtual != vectors_base() &&
+		md->virtual != get_user_accessible_timers_base()) &&
+			md->virtual < TASK_SIZE) {
+=======
 	if (md->virtual != vectors_base() && md->virtual < TASK_SIZE) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_WARNING "BUG: not creating mapping for 0x%08llx"
 		       " at 0x%08lx in user region\n",
 		       (long long)__pfn_to_phys((u64)md->pfn), md->virtual);
@@ -950,15 +1089,21 @@ static void __init create_mapping(struct map_desc *md)
 
 	if ((md->type == MT_DEVICE || md->type == MT_ROM) &&
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    md->virtual >= PAGE_OFFSET &&
 	    (md->virtual < VMALLOC_START || md->virtual >= VMALLOC_END)) {
 		printk(KERN_WARNING "BUG: mapping for 0x%08llx"
 		       " at 0x%08lx out of vmalloc space\n",
+<<<<<<< HEAD
+=======
 =======
 	    md->virtual >= PAGE_OFFSET && md->virtual < VMALLOC_END) {
 		printk(KERN_WARNING "BUG: mapping for 0x%08llx"
 		       " at 0x%08lx overlaps vmalloc space\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       (long long)__pfn_to_phys((u64)md->pfn), md->virtual);
 	}
 
@@ -967,7 +1112,11 @@ static void __init create_mapping(struct map_desc *md)
 <<<<<<< HEAD
 #ifndef CONFIG_ARM_LPAE
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_ARM_LPAE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Catch 36-bit addresses
 	 */
@@ -978,7 +1127,11 @@ static void __init create_mapping(struct map_desc *md)
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	addr = md->virtual & PAGE_MASK;
 	phys = __pfn_to_phys(md->pfn);
@@ -1009,6 +1162,9 @@ static void __init create_mapping(struct map_desc *md)
 void __init iotable_init(struct map_desc *io_desc, int nr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct map_desc *md;
 	struct vm_struct *vm;
 	int rc = 0;
@@ -1107,6 +1263,8 @@ static void __init fill_pmd_gaps(void)
 
 static void * __initdata vmalloc_min =
 	(void *)(VMALLOC_END - (240 << 20) - VMALLOC_OFFSET);
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -1116,6 +1274,7 @@ static void * __initdata vmalloc_min =
 
 static void * __initdata vmalloc_min = (void *)(VMALLOC_END - SZ_128M);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * vmalloc=size forces the vmalloc area to be exactly 'size'
@@ -1123,8 +1282,12 @@ static void * __initdata vmalloc_min = (void *)(VMALLOC_END - SZ_128M);
 <<<<<<< HEAD
  * area - the default is 240m.
 =======
+<<<<<<< HEAD
+ * area - the default is 240m.
+=======
  * area - the default is 128m.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static int __init early_vmalloc(char *arg)
 {
@@ -1152,14 +1315,21 @@ early_param("vmalloc", early_vmalloc);
 <<<<<<< HEAD
 phys_addr_t arm_lowmem_limit __initdata = 0;
 =======
+<<<<<<< HEAD
+phys_addr_t arm_lowmem_limit __initdata = 0;
+=======
 static phys_addr_t lowmem_limit __initdata = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init sanity_check_meminfo(void)
 {
 	int i, j, highmem = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ENABLE_VMALLOC_SAVING
 	unsigned long hole_start;
 	for (i = 0; i < (meminfo.nr_banks - 1); i++) {
@@ -1176,8 +1346,11 @@ void __init sanity_check_meminfo(void)
 	find_memory_hole();
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0, j = 0; i < meminfo.nr_banks; i++) {
 		struct membank *bank = &meminfo.bank[j];
 		*bank = meminfo.bank[i];
@@ -1187,7 +1360,13 @@ void __init sanity_check_meminfo(void)
 			highmem = 1;
 
 =======
+<<<<<<< HEAD
+		if (bank->start > ULONG_MAX)
+			highmem = 1;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HIGHMEM
 		if (__va(bank->start) >= vmalloc_min ||
 		    __va(bank->start) < (void *)PAGE_OFFSET)
@@ -1202,8 +1381,12 @@ void __init sanity_check_meminfo(void)
 <<<<<<< HEAD
 		if (!highmem && __va(bank->start) < vmalloc_min &&
 =======
+<<<<<<< HEAD
+		if (!highmem && __va(bank->start) < vmalloc_min &&
+=======
 		if (__va(bank->start) < vmalloc_min &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    bank->size > vmalloc_min - __va(bank->start)) {
 			if (meminfo.nr_banks >= NR_BANKS) {
 				printk(KERN_CRIT "NR_BANKS too low, "
@@ -1225,6 +1408,9 @@ void __init sanity_check_meminfo(void)
 
 		/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Highmem banks not allowed with !CONFIG_HIGHMEM.
 		 */
 		if (highmem) {
@@ -1236,8 +1422,11 @@ void __init sanity_check_meminfo(void)
 		}
 
 		/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Check whether this memory bank would entirely overlap
 		 * the vmalloc area.
 		 */
@@ -1269,9 +1458,14 @@ void __init sanity_check_meminfo(void)
 		if (!bank->highmem && bank->start + bank->size > arm_lowmem_limit)
 			arm_lowmem_limit = bank->start + bank->size;
 =======
+<<<<<<< HEAD
+		if (!bank->highmem && bank->start + bank->size > arm_lowmem_limit)
+			arm_lowmem_limit = bank->start + bank->size;
+=======
 		if (!bank->highmem && bank->start + bank->size > lowmem_limit)
 			lowmem_limit = bank->start + bank->size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		j++;
 	}
@@ -1300,8 +1494,13 @@ void __init sanity_check_meminfo(void)
 	high_memory = __va(arm_lowmem_limit - 1) + 1;
 	memblock_set_current_limit(arm_lowmem_limit);
 =======
+<<<<<<< HEAD
+	high_memory = __va(arm_lowmem_limit - 1) + 1;
+	memblock_set_current_limit(arm_lowmem_limit);
+=======
 	memblock_set_current_limit(lowmem_limit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void prepare_page_table(void)
@@ -1315,8 +1514,12 @@ static inline void prepare_page_table(void)
 <<<<<<< HEAD
 	for (addr = 0; addr < MODULES_VADDR; addr += PMD_SIZE)
 =======
+<<<<<<< HEAD
+	for (addr = 0; addr < MODULES_VADDR; addr += PMD_SIZE)
+=======
 	for (addr = 0; addr < MODULES_VADDR; addr += PGDIR_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pmd_clear(pmd_off_k(addr));
 
 #ifdef CONFIG_XIP_KERNEL
@@ -1326,10 +1529,16 @@ static inline void prepare_page_table(void)
 #endif
 	for ( ; addr < PAGE_OFFSET; addr += PMD_SIZE)
 =======
+<<<<<<< HEAD
+	addr = ((unsigned long)_etext + PMD_SIZE - 1) & PMD_MASK;
+#endif
+	for ( ; addr < PAGE_OFFSET; addr += PMD_SIZE)
+=======
 	addr = ((unsigned long)_etext + PGDIR_SIZE - 1) & PGDIR_MASK;
 #endif
 	for ( ; addr < PAGE_OFFSET; addr += PGDIR_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pmd_clear(pmd_off_k(addr));
 
 	/*
@@ -1337,6 +1546,9 @@ static inline void prepare_page_table(void)
 	 */
 	end = memblock.memory.regions[0].base + memblock.memory.regions[0].size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (end >= arm_lowmem_limit)
 		end = arm_lowmem_limit;
 
@@ -1357,6 +1569,8 @@ static inline void prepare_page_table(void)
 #define SWAPPER_PG_DIR_SIZE	(PTRS_PER_PGD * sizeof(pgd_t))
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 	if (end >= lowmem_limit)
 		end = lowmem_limit;
@@ -1371,6 +1585,7 @@ static inline void prepare_page_table(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Reserve the special regions of memory
  */
@@ -1383,8 +1598,12 @@ void __init arm_mm_memblock_reserve(void)
 <<<<<<< HEAD
 	memblock_reserve(__pa(swapper_pg_dir), SWAPPER_PG_DIR_SIZE);
 =======
+<<<<<<< HEAD
+	memblock_reserve(__pa(swapper_pg_dir), SWAPPER_PG_DIR_SIZE);
+=======
 	memblock_reserve(__pa(swapper_pg_dir), PTRS_PER_PGD * sizeof(pgd_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SA1111
 	/*
@@ -1400,9 +1619,14 @@ void __init arm_mm_memblock_reserve(void)
  * Set up the device mappings.  Since we clear out the page tables for all
  * mappings above VMALLOC_START, we will remove any debug device mappings.
 =======
+<<<<<<< HEAD
+ * Set up the device mappings.  Since we clear out the page tables for all
+ * mappings above VMALLOC_START, we will remove any debug device mappings.
+=======
  * Set up device the mappings.  Since we clear out the page tables for all
  * mappings above VMALLOC_END, we will remove any debug device mappings.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This means you have to be careful how you debug this function, or any
  * called function.  This means you can't use any function or debugging
  * method which may touch any device, otherwise the kernel _will_ crash.
@@ -1414,22 +1638,32 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 <<<<<<< HEAD
 	void *vectors;
 =======
+<<<<<<< HEAD
+	void *vectors;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Allocate the vector page early.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vectors = early_alloc(PAGE_SIZE * 2);
 
 	early_trap_init(vectors);
 
 	for (addr = VMALLOC_START; addr; addr += PMD_SIZE)
+<<<<<<< HEAD
+=======
 =======
 	vectors_page = early_alloc(PAGE_SIZE);
 
 	for (addr = VMALLOC_END; addr; addr += PGDIR_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pmd_clear(pmd_off_k(addr));
 
 	/*
@@ -1468,6 +1702,9 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 	 * create a mapping at the low-vectors virtual address.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	map.pfn = __phys_to_pfn(virt_to_phys(vectors));
 	map.virtual = 0xffff0000;
 	map.length = PAGE_SIZE;
@@ -1476,12 +1713,15 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 #else
 	map.type = MT_LOW_VECTORS;
 #endif
+<<<<<<< HEAD
+=======
 =======
 	map.pfn = __phys_to_pfn(virt_to_phys(vectors_page));
 	map.virtual = 0xffff0000;
 	map.length = PAGE_SIZE;
 	map.type = MT_HIGH_VECTORS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	create_mapping(&map);
 
 	if (!vectors_high()) {
@@ -1489,12 +1729,19 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 <<<<<<< HEAD
 		map.length = PAGE_SIZE * 2;
 =======
+<<<<<<< HEAD
+		map.length = PAGE_SIZE * 2;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		map.type = MT_LOW_VECTORS;
 		create_mapping(&map);
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Now create a kernel read-only mapping */
 	map.pfn += 1;
 	map.virtual = 0xffff0000 + PAGE_SIZE;
@@ -1502,14 +1749,20 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 	map.type = MT_LOW_VECTORS;
 	create_mapping(&map);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Ask the machine support to map in the statically mapped devices.
 	 */
 	if (mdesc->map_io)
 		mdesc->map_io();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fill_pmd_gaps();
 
 	if (use_user_accessible_timers()) {
@@ -1525,8 +1778,11 @@ static void __init devicemaps_init(struct machine_desc *mdesc)
 			create_mapping(&map);
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Finally flush the caches and tlb to ensure that we're in a
@@ -1547,6 +1803,9 @@ static void __init kmap_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_STRICT_MEMORY_RWX
 static struct {
 	pmd_t *pmd_to_flush;
@@ -1666,6 +1925,8 @@ static void __init map_lowmem(void)
 
 		if (end > arm_lowmem_limit)
 			end = arm_lowmem_limit;
+<<<<<<< HEAD
+=======
 =======
 static void __init map_lowmem(void)
 {
@@ -1680,12 +1941,16 @@ static void __init map_lowmem(void)
 		if (end > lowmem_limit)
 			end = lowmem_limit;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (start >= end)
 			break;
 
 		map.pfn = __phys_to_pfn(start);
 		map.virtual = __phys_to_virt(start);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_STRICT_MEMORY_RWX
 		if (start <= __pa(_text) && __pa(_text) < end) {
 			map.length = SECTION_SIZE;
@@ -1758,6 +2023,8 @@ static void __init map_lowmem(void)
 		mark_vmalloc_reserved_area(vm->addr, vm->size);
 		vm++;
 	}
+<<<<<<< HEAD
+=======
 =======
 		map.length = end - start;
 		map.type = MT_MEMORY;
@@ -1765,6 +2032,7 @@ static void __init map_lowmem(void)
 		create_mapping(&map);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1778,8 +2046,12 @@ void __init paging_init(struct machine_desc *mdesc)
 <<<<<<< HEAD
 	memblock_set_current_limit(arm_lowmem_limit);
 =======
+<<<<<<< HEAD
+	memblock_set_current_limit(arm_lowmem_limit);
+=======
 	memblock_set_current_limit(lowmem_limit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	build_mem_type_table();
 	prepare_page_table();
@@ -1787,7 +2059,11 @@ void __init paging_init(struct machine_desc *mdesc)
 <<<<<<< HEAD
 	dma_contiguous_remap();
 =======
+<<<<<<< HEAD
+	dma_contiguous_remap();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	devicemaps_init(mdesc);
 	kmap_init();
 

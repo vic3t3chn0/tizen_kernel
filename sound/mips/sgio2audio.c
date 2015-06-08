@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/ip32/ip32_ints.h>
 #include <asm/ip32/mace.h>
@@ -982,6 +986,9 @@ static struct platform_driver sgio2audio_driver = {
 <<<<<<< HEAD
 module_platform_driver(sgio2audio_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(sgio2audio_driver);
+=======
 static int __init alsa_card_sgio2audio_init(void)
 {
 	return platform_driver_register(&sgio2audio_driver);
@@ -995,3 +1002,4 @@ static void __exit alsa_card_sgio2audio_exit(void)
 module_init(alsa_card_sgio2audio_init)
 module_exit(alsa_card_sgio2audio_exit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

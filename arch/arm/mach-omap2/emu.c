@@ -22,12 +22,18 @@
 #include <linux/err.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 
 #include "iomap.h"
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Alexander Shishkin");
 
@@ -37,6 +43,10 @@ MODULE_AUTHOR("Alexander Shishkin");
 #define ETB_BASE	(L4_EMU_34XX_PHYS + 0x1b000)
 #define DAPCTL		(L4_EMU_34XX_PHYS + 0x1d000)
 
+<<<<<<< HEAD
+static AMBA_APB_DEVICE(omap3_etb, "etb", 0x000bb907, ETB_BASE, { }, NULL);
+static AMBA_APB_DEVICE(omap3_etm, "etm", 0x102bb921, ETM_BASE, { }, NULL);
+=======
 <<<<<<< HEAD
 static AMBA_APB_DEVICE(omap3_etb, "etb", 0x000bb907, ETB_BASE, { }, NULL);
 static AMBA_APB_DEVICE(omap3_etm, "etm", 0x102bb921, ETM_BASE, { }, NULL);
@@ -65,6 +75,7 @@ static struct amba_device omap3_etm_device = {
 	.periphid	= 0x102bb921,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init emu_init(void)
 {
@@ -80,5 +91,8 @@ static int __init emu_init(void)
 subsys_initcall(emu_init);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

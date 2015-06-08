@@ -26,6 +26,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MODULE_NAME "cpia1"
 
 #include <linux/input.h>
@@ -550,8 +558,17 @@ retry:
 			      gspca_dev->usb_buf, databytes, 1000);
 
 	if (ret < 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("usb_control_msg %02x, error %d\n", command[1], ret);
+=======
 		err("usb_control_msg %02x, error %d", command[1],
 		       ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("usb_control_msg %02x, error %d", command[1],
+		       ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret == -EPIPE && retries > 0) {
 		retries--;
@@ -1279,7 +1296,15 @@ static void monitor_exposure(struct gspca_dev *gspca_dev)
 	cmd[7] = 0;
 	ret = cpia_usb_transferCmd(gspca_dev, cmd);
 	if (ret) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_err("ReadVPRegs(30,4,9,8) - failed: %d\n", ret);
+=======
 		err("ReadVPRegs(30,4,9,8) - failed: %d", ret);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		err("ReadVPRegs(30,4,9,8) - failed: %d", ret);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	exp_acc = gspca_dev->usb_buf[0];
@@ -2131,6 +2156,12 @@ static struct usb_driver sd_driver = {
 #endif
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(sd_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* -- module insert / remove -- */
 static int __init sd_mod_init(void)
 {
@@ -2143,3 +2174,7 @@ static void __exit sd_mod_exit(void)
 
 module_init(sd_mod_init);
 module_exit(sd_mod_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

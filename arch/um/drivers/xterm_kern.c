@@ -53,8 +53,12 @@ int xterm_fd(int socket, int *pid_out)
 <<<<<<< HEAD
 			     IRQF_SHARED | IRQF_SAMPLE_RANDOM,
 =======
+<<<<<<< HEAD
+			     IRQF_SHARED | IRQF_SAMPLE_RANDOM,
+=======
 			     IRQF_DISABLED | IRQF_SHARED | IRQF_SAMPLE_RANDOM,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     "xterm", data);
 	if (err) {
 		printk(KERN_ERR "xterm_fd : failed to get IRQ for xterm, "

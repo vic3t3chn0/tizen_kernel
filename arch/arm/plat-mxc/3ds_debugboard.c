@@ -20,7 +20,12 @@
 #include <linux/regulator/machine.h>
 #include <linux/regulator/fixed.h>
 =======
+<<<<<<< HEAD
+#include <linux/regulator/machine.h>
+#include <linux/regulator/fixed.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 
@@ -86,8 +91,12 @@ static struct platform_device smsc_lan9217_device = {
 <<<<<<< HEAD
 	.id = -1,
 =======
+<<<<<<< HEAD
+	.id = -1,
+=======
 	.id = 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dev = {
 		.platform_data = &smsc911x_config,
 	},
@@ -158,13 +167,19 @@ static struct irq_chip expio_irq_chip = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply dummy_supplies[] = {
 	REGULATOR_SUPPLY("vdd33a", "smsc911x"),
 	REGULATOR_SUPPLY("vddvario", "smsc911x"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init mxc_expio_init(u32 base, u32 p_irq)
 {
 	int i;
@@ -209,7 +224,12 @@ int __init mxc_expio_init(u32 base, u32 p_irq)
 	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
 
 =======
+<<<<<<< HEAD
+	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	smsc911x_resources[0].start = LAN9217_BASE_ADDR(base);
 	smsc911x_resources[0].end = LAN9217_BASE_ADDR(base) + 0x100 - 1;
 	platform_device_register(&smsc_lan9217_device);

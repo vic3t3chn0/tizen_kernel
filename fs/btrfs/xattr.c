@@ -103,6 +103,9 @@ static int do_setxattr(struct btrfs_trans_handle *trans,
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (flags & XATTR_REPLACE) {
 		di = btrfs_lookup_xattr(trans, root, path, btrfs_ino(inode), name,
 					name_len, -1);
@@ -171,6 +174,8 @@ again:
 			goto again;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* first lets see if we already have this xattr */
 	di = btrfs_lookup_xattr(trans, root, path, btrfs_ino(inode), name,
@@ -210,6 +215,7 @@ again:
 				      name, name_len, value, size);
 	BUG_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	btrfs_free_path(path);
 	return ret;
@@ -220,7 +226,13 @@ out:
  * @value: "" makes the attribute to empty, NULL removes it
  */
 =======
+<<<<<<< HEAD
+/*
+ * @value: "" makes the attribute to empty, NULL removes it
+ */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __btrfs_setxattr(struct btrfs_trans_handle *trans,
 		     struct inode *inode, const char *name,
 		     const void *value, size_t size, int flags)
@@ -246,8 +258,12 @@ out:
 <<<<<<< HEAD
 	btrfs_end_transaction(trans, root);
 =======
+<<<<<<< HEAD
+	btrfs_end_transaction(trans, root);
+=======
 	btrfs_end_transaction_throttle(trans, root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -442,6 +458,9 @@ int btrfs_removexattr(struct dentry *dentry, const char *name)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int btrfs_initxattrs(struct inode *inode, const struct xattr *xattr_array,
 		     void *fs_info)
 {
@@ -474,6 +493,8 @@ int btrfs_xattr_security_init(struct btrfs_trans_handle *trans,
 {
 	return security_inode_init_security(inode, dir, qstr,
 					    &btrfs_initxattrs, trans);
+<<<<<<< HEAD
+=======
 =======
 int btrfs_xattr_security_init(struct btrfs_trans_handle *trans,
 			      struct inode *inode, struct inode *dir,
@@ -508,4 +529,5 @@ int btrfs_xattr_security_init(struct btrfs_trans_handle *trans,
 	kfree(value);
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

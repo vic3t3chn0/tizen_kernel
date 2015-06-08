@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2003-2011 Cavium Networks
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2003-2011 Cavium Networks
+=======
  * Copyright (c) 2003-2010 Cavium Networks
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This file is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, Version 2, as
@@ -31,6 +35,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /**
  * cvmx-pexp-defs.h
  *
@@ -39,6 +45,7 @@
  *
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __CVMX_PEXP_DEFS_H__
 #define __CVMX_PEXP_DEFS_H__
 
@@ -149,8 +156,12 @@
 <<<<<<< HEAD
 #define CVMX_PEXP_SLI_CTL_PORTX(offset) (CVMX_ADD_IO_SEG(0x00011F0000010050ull) + ((offset) & 3) * 16)
 =======
+<<<<<<< HEAD
+#define CVMX_PEXP_SLI_CTL_PORTX(offset) (CVMX_ADD_IO_SEG(0x00011F0000010050ull) + ((offset) & 3) * 16)
+=======
 #define CVMX_PEXP_SLI_CTL_PORTX(offset) (CVMX_ADD_IO_SEG(0x00011F0000010050ull) + ((offset) & 1) * 16)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_PEXP_SLI_CTL_STATUS (CVMX_ADD_IO_SEG(0x00011F0000010570ull))
 #define CVMX_PEXP_SLI_DATA_OUT_CNT (CVMX_ADD_IO_SEG(0x00011F00000105F0ull))
 #define CVMX_PEXP_SLI_DBG_DATA (CVMX_ADD_IO_SEG(0x00011F0000010310ull))
@@ -164,13 +175,19 @@
 #define CVMX_PEXP_SLI_LAST_WIN_RDATA0 (CVMX_ADD_IO_SEG(0x00011F0000010600ull))
 #define CVMX_PEXP_SLI_LAST_WIN_RDATA1 (CVMX_ADD_IO_SEG(0x00011F0000010610ull))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_PEXP_SLI_LAST_WIN_RDATA2 (CVMX_ADD_IO_SEG(0x00011F00000106C0ull))
 #define CVMX_PEXP_SLI_LAST_WIN_RDATA3 (CVMX_ADD_IO_SEG(0x00011F00000106D0ull))
 #define CVMX_PEXP_SLI_MAC_CREDIT_CNT (CVMX_ADD_IO_SEG(0x00011F0000013D70ull))
 #define CVMX_PEXP_SLI_MAC_CREDIT_CNT2 (CVMX_ADD_IO_SEG(0x00011F0000013E10ull))
+<<<<<<< HEAD
+=======
 =======
 #define CVMX_PEXP_SLI_MAC_CREDIT_CNT (CVMX_ADD_IO_SEG(0x00011F0000013D70ull))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_PEXP_SLI_MEM_ACCESS_CTL (CVMX_ADD_IO_SEG(0x00011F00000102F0ull))
 #define CVMX_PEXP_SLI_MEM_ACCESS_SUBIDX(offset) (CVMX_ADD_IO_SEG(0x00011F00000100E0ull) + ((offset) & 31) * 16 - 16*12)
 #define CVMX_PEXP_SLI_MSI_ENB0 (CVMX_ADD_IO_SEG(0x00011F0000013C50ull))
@@ -227,7 +244,11 @@
 <<<<<<< HEAD
 #define CVMX_PEXP_SLI_PKT_OUT_BP_EN (CVMX_ADD_IO_SEG(0x00011F0000011240ull))
 =======
+<<<<<<< HEAD
+#define CVMX_PEXP_SLI_PKT_OUT_BP_EN (CVMX_ADD_IO_SEG(0x00011F0000011240ull))
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_PEXP_SLI_PKT_OUT_ENB (CVMX_ADD_IO_SEG(0x00011F0000011010ull))
 #define CVMX_PEXP_SLI_PKT_PCIE_PORT (CVMX_ADD_IO_SEG(0x00011F00000110E0ull))
 #define CVMX_PEXP_SLI_PKT_PORT_IN_RST (CVMX_ADD_IO_SEG(0x00011F00000111F0ull))
@@ -240,8 +261,13 @@
 #define CVMX_PEXP_SLI_PORTX_PKIND(offset) (CVMX_ADD_IO_SEG(0x00011F0000010800ull) + ((offset) & 31) * 16)
 #define CVMX_PEXP_SLI_S2M_PORTX_CTL(offset) (CVMX_ADD_IO_SEG(0x00011F0000013D80ull) + ((offset) & 3) * 16)
 =======
+<<<<<<< HEAD
+#define CVMX_PEXP_SLI_PORTX_PKIND(offset) (CVMX_ADD_IO_SEG(0x00011F0000010800ull) + ((offset) & 31) * 16)
+#define CVMX_PEXP_SLI_S2M_PORTX_CTL(offset) (CVMX_ADD_IO_SEG(0x00011F0000013D80ull) + ((offset) & 3) * 16)
+=======
 #define CVMX_PEXP_SLI_S2M_PORTX_CTL(offset) (CVMX_ADD_IO_SEG(0x00011F0000013D80ull) + ((offset) & 1) * 16)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_PEXP_SLI_SCRATCH_1 (CVMX_ADD_IO_SEG(0x00011F00000103C0ull))
 #define CVMX_PEXP_SLI_SCRATCH_2 (CVMX_ADD_IO_SEG(0x00011F00000103D0ull))
 #define CVMX_PEXP_SLI_STATE1 (CVMX_ADD_IO_SEG(0x00011F0000010620ull))
@@ -250,7 +276,11 @@
 <<<<<<< HEAD
 #define CVMX_PEXP_SLI_TX_PIPE (CVMX_ADD_IO_SEG(0x00011F0000011230ull))
 =======
+<<<<<<< HEAD
+#define CVMX_PEXP_SLI_TX_PIPE (CVMX_ADD_IO_SEG(0x00011F0000011230ull))
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_PEXP_SLI_WINDOW_CTL (CVMX_ADD_IO_SEG(0x00011F00000102E0ull))
 
 #endif

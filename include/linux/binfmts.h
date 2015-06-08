@@ -21,8 +21,12 @@ struct pt_regs;
 <<<<<<< HEAD
 #include <linux/sched.h>
 =======
+<<<<<<< HEAD
+#include <linux/sched.h>
+=======
 #include <linux/list.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CORENAME_MAX_SIZE 128
 
@@ -65,7 +69,11 @@ struct linux_binprm {
 <<<<<<< HEAD
 	char tcomm[TASK_COMM_LEN];
 =======
+<<<<<<< HEAD
+	char tcomm[TASK_COMM_LEN];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define BINPRM_FLAGS_ENFORCE_NONDUMP_BIT 0
@@ -79,7 +87,12 @@ struct linux_binprm {
 #define BINPRM_MAX_RECURSION 4
 
 =======
+<<<<<<< HEAD
+#define BINPRM_MAX_RECURSION 4
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Function parameter for binfmt->coredump */
 struct coredump_params {
 	long signr;
@@ -103,6 +116,9 @@ struct linux_binfmt {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void __register_binfmt(struct linux_binfmt *fmt, int insert);
 
 /* Registration of default binfmt handlers */
@@ -114,6 +130,8 @@ static inline void register_binfmt(struct linux_binfmt *fmt)
 static inline void insert_binfmt(struct linux_binfmt *fmt)
 {
 	__register_binfmt(fmt, 1);
+<<<<<<< HEAD
+=======
 =======
 extern int __register_binfmt(struct linux_binfmt *fmt, int insert);
 
@@ -127,6 +145,7 @@ static inline int insert_binfmt(struct linux_binfmt *fmt)
 {
 	return __register_binfmt(fmt, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 extern void unregister_binfmt(struct linux_binfmt *);
@@ -139,7 +158,11 @@ extern void setup_new_exec(struct linux_binprm * bprm);
 <<<<<<< HEAD
 extern void would_dump(struct linux_binprm *, struct file *);
 =======
+<<<<<<< HEAD
+extern void would_dump(struct linux_binprm *, struct file *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern int suid_dumpable;
 #define SUID_DUMP_DISABLE	0	/* No setuid dumping */
@@ -157,8 +180,11 @@ extern int setup_arg_pages(struct linux_binprm * bprm,
 extern int bprm_mm_init(struct linux_binprm *bprm);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern int bprm_change_interp(char *interp, struct linux_binprm *bprm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int copy_strings_kernel(int argc, const char *const *argv,
 			       struct linux_binprm *bprm);
 extern int prepare_bprm_creds(struct linux_binprm *bprm);

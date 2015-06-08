@@ -218,6 +218,15 @@ bfad_im_get_host_speed(struct Scsi_Host *shost)
 	case BFA_PORT_SPEED_10GBPS:
 		fc_host_speed(shost) = FC_PORTSPEED_10GBIT;
 		break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case BFA_PORT_SPEED_16GBPS:
+		fc_host_speed(shost) = FC_PORTSPEED_16GBIT;
+		break;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case BFA_PORT_SPEED_8GBPS:
 		fc_host_speed(shost) = FC_PORTSPEED_8GBIT;
 		break;
@@ -439,6 +448,49 @@ bfad_im_vport_create(struct fc_vport *fc_vport, bool disable)
 	return status;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int
+bfad_im_issue_fc_host_lip(struct Scsi_Host *shost)
+{
+	struct bfad_im_port_s *im_port =
+			(struct bfad_im_port_s *) shost->hostdata[0];
+	struct bfad_s *bfad = im_port->bfad;
+	struct bfad_hal_comp fcomp;
+	unsigned long flags;
+	uint32_t status;
+
+	init_completion(&fcomp.comp);
+	spin_lock_irqsave(&bfad->bfad_lock, flags);
+	status = bfa_port_disable(&bfad->bfa.modules.port,
+					bfad_hcb_comp, &fcomp);
+	spin_unlock_irqrestore(&bfad->bfad_lock, flags);
+
+	if (status != BFA_STATUS_OK)
+		return -EIO;
+
+	wait_for_completion(&fcomp.comp);
+	if (fcomp.status != BFA_STATUS_OK)
+		return -EIO;
+
+	spin_lock_irqsave(&bfad->bfad_lock, flags);
+	status = bfa_port_enable(&bfad->bfa.modules.port,
+					bfad_hcb_comp, &fcomp);
+	spin_unlock_irqrestore(&bfad->bfad_lock, flags);
+	if (status != BFA_STATUS_OK)
+		return -EIO;
+
+	wait_for_completion(&fcomp.comp);
+	if (fcomp.status != BFA_STATUS_OK)
+		return -EIO;
+
+	return 0;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 bfad_im_vport_delete(struct fc_vport *fc_vport)
 {
@@ -454,8 +506,21 @@ bfad_im_vport_delete(struct fc_vport *fc_vport)
 	unsigned long flags;
 	struct completion fcomp;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (im_port->flags & BFAD_PORT_DELETE) {
+		bfad_scsi_host_free(bfad, im_port);
+		list_del(&vport->list_entry);
+		return 0;
+	}
+=======
 	if (im_port->flags & BFAD_PORT_DELETE)
 		goto free_scsi_host;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (im_port->flags & BFAD_PORT_DELETE)
+		goto free_scsi_host;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	port = im_port->port;
 
@@ -486,9 +551,20 @@ bfad_im_vport_delete(struct fc_vport *fc_vport)
 
 	wait_for_completion(vport->comp_del);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bfad_scsi_host_free(bfad, im_port);
+	list_del(&vport->list_entry);
+=======
 free_scsi_host:
 	bfad_scsi_host_free(bfad, im_port);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+free_scsi_host:
+	bfad_scsi_host_free(bfad, im_port);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(vport);
 
 	return 0;
@@ -576,10 +652,25 @@ struct fc_function_template bfad_im_fc_function_template = {
 	.show_rport_dev_loss_tmo = 1,
 	.get_rport_dev_loss_tmo = bfad_im_get_rport_loss_tmo,
 	.set_rport_dev_loss_tmo = bfad_im_set_rport_loss_tmo,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.issue_fc_host_lip = bfad_im_issue_fc_host_lip,
+	.vport_create = bfad_im_vport_create,
+	.vport_delete = bfad_im_vport_delete,
+	.vport_disable = bfad_im_vport_disable,
+	.bsg_request = bfad_im_bsg_request,
+	.bsg_timeout = bfad_im_bsg_timeout,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.vport_create = bfad_im_vport_create,
 	.vport_delete = bfad_im_vport_delete,
 	.vport_disable = bfad_im_vport_disable,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct fc_function_template bfad_im_vport_fc_function_template = {
@@ -674,8 +765,20 @@ bfad_im_model_desc_show(struct device *dev, struct device_attribute *attr,
 	struct bfad_s *bfad = im_port->bfad;
 	char model[BFA_ADAPTER_MODEL_NAME_LEN];
 	char model_descr[BFA_ADAPTER_MODEL_DESCR_LEN];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int nports = 0;
 
 	bfa_get_adapter_model(&bfad->bfa, model);
+	nports = bfa_get_nports(&bfad->bfa);
+=======
+
+	bfa_get_adapter_model(&bfad->bfa, model);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	bfa_get_adapter_model(&bfad->bfa, model);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!strcmp(model, "Brocade-425"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
 			"Brocade 4Gbps PCIe dual port FC HBA");
@@ -684,10 +787,23 @@ bfad_im_model_desc_show(struct device *dev, struct device_attribute *attr,
 			"Brocade 8Gbps PCIe dual port FC HBA");
 	else if (!strcmp(model, "Brocade-42B"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"Brocade 4Gbps PCIe dual port FC HBA for HP");
+	else if (!strcmp(model, "Brocade-82B"))
+		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+			"Brocade 8Gbps PCIe dual port FC HBA for HP");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"HP 4Gbps PCIe dual port FC HBA");
 	else if (!strcmp(model, "Brocade-82B"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
 			"HP 8Gbps PCIe dual port FC HBA");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (!strcmp(model, "Brocade-1010"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
 			"Brocade 10Gbps single port CNA");
@@ -696,7 +812,15 @@ bfad_im_model_desc_show(struct device *dev, struct device_attribute *attr,
 			"Brocade 10Gbps dual port CNA");
 	else if (!strcmp(model, "Brocade-1007"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"Brocade 10Gbps CNA for IBM Blade Center");
+=======
 			"Brocade 10Gbps CNA");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			"Brocade 10Gbps CNA");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (!strcmp(model, "Brocade-415"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
 			"Brocade 4Gbps PCIe single port FC HBA");
@@ -705,6 +829,50 @@ bfad_im_model_desc_show(struct device *dev, struct device_attribute *attr,
 			"Brocade 8Gbps PCIe single port FC HBA");
 	else if (!strcmp(model, "Brocade-41B"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"Brocade 4Gbps PCIe single port FC HBA for HP");
+	else if (!strcmp(model, "Brocade-81B"))
+		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+			"Brocade 8Gbps PCIe single port FC HBA for HP");
+	else if (!strcmp(model, "Brocade-804"))
+		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+			"Brocade 8Gbps FC HBA for HP Bladesystem C-class");
+	else if (!strcmp(model, "Brocade-902") ||
+		 !strcmp(model, "Brocade-1741"))
+		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+			"Brocade 10Gbps CNA for Dell M-Series Blade Servers");
+	else if (strstr(model, "Brocade-1560")) {
+		if (nports == 1)
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 16Gbps PCIe single port FC HBA");
+		else
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 16Gbps PCIe dual port FC HBA");
+	} else if (strstr(model, "Brocade-1710")) {
+		if (nports == 1)
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 10Gbps single port CNA");
+		else
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 10Gbps dual port CNA");
+	} else if (strstr(model, "Brocade-1860")) {
+		if (nports == 1 && bfa_ioc_is_cna(&bfad->bfa.ioc))
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 10Gbps single port CNA");
+		else if (nports == 1 && !bfa_ioc_is_cna(&bfad->bfa.ioc))
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 16Gbps PCIe single port FC HBA");
+		else if (nports == 2 && bfa_ioc_is_cna(&bfad->bfa.ioc))
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 10Gbps dual port CNA");
+		else if (nports == 2 && !bfa_ioc_is_cna(&bfad->bfa.ioc))
+			snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
+				"Brocade 16Gbps PCIe dual port FC HBA");
+	} else
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"HP 4Gbps PCIe single port FC HBA");
 	else if (!strcmp(model, "Brocade-81B"))
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
@@ -716,6 +884,10 @@ bfad_im_model_desc_show(struct device *dev, struct device_attribute *attr,
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
 			"Brocade 10Gbps CNA");
 	else
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snprintf(model_descr, BFA_ADAPTER_MODEL_DESCR_LEN,
 			"Invalid Model");
 

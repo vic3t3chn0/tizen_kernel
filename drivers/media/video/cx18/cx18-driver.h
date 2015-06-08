@@ -25,7 +25,14 @@
 #ifndef CX18_DRIVER_H
 #define CX18_DRIVER_H
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/init.h>
@@ -45,8 +52,16 @@
 #include <linux/slab.h>
 #include <asm/byteorder.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/dvb/video.h>
 #include <linux/dvb/audio.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/dvb/video.h>
+#include <linux/dvb/audio.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/v4l2-common.h>
 #include <media/v4l2-ioctl.h>
 #include <media/v4l2-device.h>
@@ -410,6 +425,13 @@ struct cx18_stream {
 
 	/* Videobuf for YUV video */
 	u32 pixelformat;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 vb_bytes_per_frame;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head vb_capture;    /* video capture queue */
 	spinlock_t vb_lock;
 	struct timer_list vb_timeout;
@@ -431,10 +453,19 @@ struct cx18_open_id {
 	u32 open_id;
 	int type;
 	struct cx18 *cx;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct videobuf_queue vbuf_q;
 	spinlock_t s_lock; /* Protect vbuf_q */
 	enum v4l2_buf_type vb_type;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct cx18_open_id *fh2id(struct v4l2_fh *fh)

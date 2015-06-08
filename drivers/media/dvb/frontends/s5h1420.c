@@ -472,15 +472,33 @@ static void s5h1420_reset(struct s5h1420_state* state)
 }
 
 static void s5h1420_setsymbolrate(struct s5h1420_state* state,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				  struct dtv_frontend_properties *p)
+=======
 				  struct dvb_frontend_parameters *p)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				  struct dvb_frontend_parameters *p)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 v;
 	u64 val;
 
 	dprintk("enter %s\n", __func__);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	val = ((u64) p->symbol_rate / 1000ULL) * (1ULL<<24);
+	if (p->symbol_rate < 29000000)
+=======
 	val = ((u64) p->u.qpsk.symbol_rate / 1000ULL) * (1ULL<<24);
 	if (p->u.qpsk.symbol_rate < 29000000)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	val = ((u64) p->u.qpsk.symbol_rate / 1000ULL) * (1ULL<<24);
+	if (p->u.qpsk.symbol_rate < 29000000)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val *= 2;
 	do_div(val, (state->fclk / 1000));
 
@@ -543,7 +561,15 @@ static int s5h1420_getfreqoffset(struct s5h1420_state* state)
 }
 
 static void s5h1420_setfec_inversion(struct s5h1420_state* state,
+<<<<<<< HEAD
+<<<<<<< HEAD
+				     struct dtv_frontend_properties *p)
+=======
 				     struct dvb_frontend_parameters *p)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				     struct dvb_frontend_parameters *p)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u8 inversion = 0;
 	u8 vit08, vit09;
@@ -555,11 +581,25 @@ static void s5h1420_setfec_inversion(struct s5h1420_state* state,
 	else if (p->inversion == INVERSION_ON)
 		inversion = state->config->invert ? 0 : 0x08;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((p->fec_inner == FEC_AUTO) || (p->inversion == INVERSION_AUTO)) {
+		vit08 = 0x3f;
+		vit09 = 0;
+	} else {
+		switch (p->fec_inner) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((p->u.qpsk.fec_inner == FEC_AUTO) || (p->inversion == INVERSION_AUTO)) {
 		vit08 = 0x3f;
 		vit09 = 0;
 	} else {
 		switch(p->u.qpsk.fec_inner) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case FEC_1_2:
 			vit08 = 0x01; vit09 = 0x10;
 			break;
@@ -628,6 +668,18 @@ static fe_spectral_inversion_t s5h1420_getinversion(struct s5h1420_state* state)
 	return INVERSION_OFF;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int s5h1420_set_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+	struct s5h1420_state* state = fe->demodulator_priv;
+	int frequency_delta;
+	struct dvb_frontend_tune_settings fesettings;
+	uint8_t clock_setting;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int s5h1420_set_frontend(struct dvb_frontend* fe,
 				struct dvb_frontend_parameters *p)
 {
@@ -635,21 +687,46 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	int frequency_delta;
 	struct dvb_frontend_tune_settings fesettings;
 	uint8_t clock_settting;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprintk("enter %s\n", __func__);
 
 	/* check if we should do a fast-tune */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	memcpy(&fesettings.parameters, p, sizeof(struct dvb_frontend_parameters));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	memcpy(&fesettings.parameters, p, sizeof(struct dvb_frontend_parameters));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s5h1420_get_tune_settings(fe, &fesettings);
 	frequency_delta = p->frequency - state->tunedfreq;
 	if ((frequency_delta > -fesettings.max_drift) &&
 			(frequency_delta < fesettings.max_drift) &&
 			(frequency_delta != 0) &&
+<<<<<<< HEAD
+<<<<<<< HEAD
+			(state->fec_inner == p->fec_inner) &&
+			(state->symbol_rate == p->symbol_rate)) {
+
+		if (fe->ops.tuner_ops.set_params) {
+			fe->ops.tuner_ops.set_params(fe);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(state->fec_inner == p->u.qpsk.fec_inner) &&
 			(state->symbol_rate == p->u.qpsk.symbol_rate)) {
 
 		if (fe->ops.tuner_ops.set_params) {
 			fe->ops.tuner_ops.set_params(fe, p);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (fe->ops.i2c_gate_ctrl) fe->ops.i2c_gate_ctrl(fe, 0);
 		}
 		if (fe->ops.tuner_ops.get_frequency) {
@@ -669,6 +746,18 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	s5h1420_reset(state);
 
 	/* set s5h1420 fclk PLL according to desired symbol rate */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->symbol_rate > 33000000)
+		state->fclk = 80000000;
+	else if (p->symbol_rate > 28500000)
+		state->fclk = 59000000;
+	else if (p->symbol_rate > 25000000)
+		state->fclk = 86000000;
+	else if (p->symbol_rate > 1900000)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (p->u.qpsk.symbol_rate > 33000000)
 		state->fclk = 80000000;
 	else if (p->u.qpsk.symbol_rate > 28500000)
@@ -676,6 +765,10 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	else if (p->u.qpsk.symbol_rate > 25000000)
 		state->fclk = 86000000;
 	else if (p->u.qpsk.symbol_rate > 1900000)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		state->fclk = 88000000;
 	else
 		state->fclk = 44000000;
@@ -684,6 +777,24 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	switch (state->fclk) {
 	default:
 	case 88000000:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		clock_setting = 80;
+		break;
+	case 86000000:
+		clock_setting = 78;
+		break;
+	case 80000000:
+		clock_setting = 72;
+		break;
+	case 59000000:
+		clock_setting = 51;
+		break;
+	case 44000000:
+		clock_setting = 36;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		clock_settting = 80;
 		break;
 	case 86000000:
@@ -697,6 +808,10 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 		break;
 	case 44000000:
 		clock_settting = 36;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 	dprintk("pll01: %d, ToneFreq: %d\n", state->fclk/1000000 - 8, (state->fclk + (TONE_FREQ * 32) - 1) / (TONE_FREQ * 32));
@@ -705,7 +820,15 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	s5h1420_writereg(state, DiS01, (state->fclk + (TONE_FREQ * 32) - 1) / (TONE_FREQ * 32));
 
 	/* TODO DC offset removal, config parameter ? */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->symbol_rate > 29000000)
+=======
 	if (p->u.qpsk.symbol_rate > 29000000)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (p->u.qpsk.symbol_rate > 29000000)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		s5h1420_writereg(state, QPSK01, 0xae | 0x10);
 	else
 		s5h1420_writereg(state, QPSK01, 0xac | 0x10);
@@ -718,15 +841,35 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	s5h1420_writereg(state, Loop01, 0xF0);
 	s5h1420_writereg(state, Loop02, 0x2a); /* e7 for s5h1420 */
 	s5h1420_writereg(state, Loop03, 0x79); /* 78 for s5h1420 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->symbol_rate > 20000000)
+=======
 	if (p->u.qpsk.symbol_rate > 20000000)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (p->u.qpsk.symbol_rate > 20000000)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		s5h1420_writereg(state, Loop04, 0x79);
 	else
 		s5h1420_writereg(state, Loop04, 0x58);
 	s5h1420_writereg(state, Loop05, 0x6b);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (p->symbol_rate >= 8000000)
+		s5h1420_writereg(state, Post01, (0 << 6) | 0x10);
+	else if (p->symbol_rate >= 4000000)
+=======
 	if (p->u.qpsk.symbol_rate >= 8000000)
 		s5h1420_writereg(state, Post01, (0 << 6) | 0x10);
 	else if (p->u.qpsk.symbol_rate >= 4000000)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (p->u.qpsk.symbol_rate >= 8000000)
+		s5h1420_writereg(state, Post01, (0 << 6) | 0x10);
+	else if (p->u.qpsk.symbol_rate >= 4000000)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		s5h1420_writereg(state, Post01, (1 << 6) | 0x10);
 	else
 		s5h1420_writereg(state, Post01, (3 << 6) | 0x10);
@@ -744,7 +887,15 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 
 	/* set tuner PLL */
 	if (fe->ops.tuner_ops.set_params) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		fe->ops.tuner_ops.set_params(fe);
+=======
 		fe->ops.tuner_ops.set_params(fe, p);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		fe->ops.tuner_ops.set_params(fe, p);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fe->ops.i2c_gate_ctrl)
 			fe->ops.i2c_gate_ctrl(fe, 0);
 		s5h1420_setfreqoffset(state, 0);
@@ -757,8 +908,18 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	/* start QPSK */
 	s5h1420_writereg(state, QPSK01, s5h1420_readreg(state, QPSK01) | 1);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	state->fec_inner = p->fec_inner;
+	state->symbol_rate = p->symbol_rate;
+=======
 	state->fec_inner = p->u.qpsk.fec_inner;
 	state->symbol_rate = p->u.qpsk.symbol_rate;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	state->fec_inner = p->u.qpsk.fec_inner;
+	state->symbol_rate = p->u.qpsk.symbol_rate;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state->postlocked = 0;
 	state->tunedfreq = p->frequency;
 
@@ -766,15 +927,37 @@ static int s5h1420_set_frontend(struct dvb_frontend* fe,
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int s5h1420_get_frontend(struct dvb_frontend* fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+=======
 static int s5h1420_get_frontend(struct dvb_frontend* fe,
 				struct dvb_frontend_parameters *p)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int s5h1420_get_frontend(struct dvb_frontend* fe,
+				struct dvb_frontend_parameters *p)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct s5h1420_state* state = fe->demodulator_priv;
 
 	p->frequency = state->tunedfreq + s5h1420_getfreqoffset(state);
 	p->inversion = s5h1420_getinversion(state);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	p->symbol_rate = s5h1420_getsymbolrate(state);
+	p->fec_inner = s5h1420_getfec(state);
+=======
 	p->u.qpsk.symbol_rate = s5h1420_getsymbolrate(state);
 	p->u.qpsk.fec_inner = s5h1420_getfec(state);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	p->u.qpsk.symbol_rate = s5h1420_getsymbolrate(state);
+	p->u.qpsk.fec_inner = s5h1420_getfec(state);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -782,6 +965,35 @@ static int s5h1420_get_frontend(struct dvb_frontend* fe,
 static int s5h1420_get_tune_settings(struct dvb_frontend* fe,
 				     struct dvb_frontend_tune_settings* fesettings)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+	if (p->symbol_rate > 20000000) {
+		fesettings->min_delay_ms = 50;
+		fesettings->step_size = 2000;
+		fesettings->max_drift = 8000;
+	} else if (p->symbol_rate > 12000000) {
+		fesettings->min_delay_ms = 100;
+		fesettings->step_size = 1500;
+		fesettings->max_drift = 9000;
+	} else if (p->symbol_rate > 8000000) {
+		fesettings->min_delay_ms = 100;
+		fesettings->step_size = 1000;
+		fesettings->max_drift = 8000;
+	} else if (p->symbol_rate > 4000000) {
+		fesettings->min_delay_ms = 100;
+		fesettings->step_size = 500;
+		fesettings->max_drift = 7000;
+	} else if (p->symbol_rate > 2000000) {
+		fesettings->min_delay_ms = 200;
+		fesettings->step_size = (p->symbol_rate / 8000);
+		fesettings->max_drift = 14 * fesettings->step_size;
+	} else {
+		fesettings->min_delay_ms = 200;
+		fesettings->step_size = (p->symbol_rate / 8000);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fesettings->parameters.u.qpsk.symbol_rate > 20000000) {
 		fesettings->min_delay_ms = 50;
 		fesettings->step_size = 2000;
@@ -805,6 +1017,10 @@ static int s5h1420_get_tune_settings(struct dvb_frontend* fe,
 	} else {
 		fesettings->min_delay_ms = 200;
 		fesettings->step_size = (fesettings->parameters.u.qpsk.symbol_rate / 8000);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fesettings->max_drift = 18 * fesettings->step_size;
 	}
 
@@ -937,10 +1153,22 @@ error:
 EXPORT_SYMBOL(s5h1420_attach);
 
 static struct dvb_frontend_ops s5h1420_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBS },
+	.info = {
+		.name     = "Samsung S5H1420/PnpNetwork PN1010 DVB-S",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.info = {
 		.name     = "Samsung S5H1420/PnpNetwork PN1010 DVB-S",
 		.type     = FE_QPSK,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min    = 950000,
 		.frequency_max    = 2150000,
 		.frequency_stepsize = 125,     /* kHz for QPSK frontends */

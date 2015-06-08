@@ -21,6 +21,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void *module_alloc(unsigned long size)
 {
 	if (size == 0)
@@ -29,6 +31,7 @@ void *module_alloc(unsigned long size)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void module_free(struct module *mod, void *module_region)
 {
 	vfree(mod->arch.syminfo);
@@ -277,8 +280,12 @@ int apply_relocate_add(Elf32_Shdr *sechdrs, const char *strtab,
 <<<<<<< HEAD
 			    && (relocation & 0xfffc0003) != 0xffff0000)
 =======
+<<<<<<< HEAD
+			    && (relocation & 0xfffc0003) != 0xffff0000)
+=======
 			    && (relocation & 0xfffc0000) != 0xfffc0000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return reloc_overflow(module, "R_AVR32_GOT18SW",
 						     relocation);
 			relocation >>= 2;
@@ -308,6 +315,8 @@ int apply_relocate_add(Elf32_Shdr *sechdrs, const char *strtab,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int apply_relocate(Elf32_Shdr *sechdrs, const char *strtab,
 		   unsigned int symindex, unsigned int relindex,
 		   struct module *module)
@@ -318,6 +327,7 @@ int apply_relocate(Elf32_Shdr *sechdrs, const char *strtab,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int module_finalize(const Elf_Ehdr *hdr, const Elf_Shdr *sechdrs,
 		    struct module *module)
 {
@@ -328,8 +338,11 @@ int module_finalize(const Elf_Ehdr *hdr, const Elf_Shdr *sechdrs,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 void module_arch_cleanup(struct module *module)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -9,8 +9,11 @@
 #include "os.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct dog_data {
 	int stdin;
@@ -38,8 +41,12 @@ int start_watchdog(int *in_fd_ret, int *out_fd_ret, char *sock)
 <<<<<<< HEAD
 	char pid_buf[sizeof("nnnnnnn\0")], c;
 =======
+<<<<<<< HEAD
+	char pid_buf[sizeof("nnnnnnn\0")], c;
+=======
 	char pid_buf[sizeof("nnnnn\0")], c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *pid_args[] = { "/usr/bin/uml_watchdog", "-pid", pid_buf, NULL };
 	char *mconsole_args[] = { "/usr/bin/uml_watchdog", "-mconsole", NULL,
 				  NULL };

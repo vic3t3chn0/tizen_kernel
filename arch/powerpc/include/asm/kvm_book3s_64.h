@@ -21,6 +21,9 @@
 #define __ASM_KVM_BOOK3S_64_H__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KVM_BOOK3S_PR
 static inline struct kvmppc_book3s_shadow_vcpu *svcpu_get(struct kvm_vcpu *vcpu)
 {
@@ -241,6 +244,8 @@ static inline bool slot_is_aligned(struct kvm_memory_slot *memslot,
 	return !(memslot->base_gfn & mask) && !(memslot->npages & mask);
 }
 
+<<<<<<< HEAD
+=======
 =======
 static inline struct kvmppc_book3s_shadow_vcpu *to_svcpu(struct kvm_vcpu *vcpu)
 {
@@ -248,4 +253,5 @@ static inline struct kvmppc_book3s_shadow_vcpu *to_svcpu(struct kvm_vcpu *vcpu)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_KVM_BOOK3S_64_H__ */

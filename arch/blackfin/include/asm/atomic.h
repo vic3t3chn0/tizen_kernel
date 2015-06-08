@@ -1,20 +1,29 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright 2004-2011 Analog Devices Inc.
  *
  * Licensed under the GPL-2 or later.
  */
+<<<<<<< HEAD
+=======
 =======
  * Copyright 2004-2009 Analog Devices Inc.
  *
  * Licensed under the GPL-2 or later.
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef __ARCH_BLACKFIN_ATOMIC__
 #define __ARCH_BLACKFIN_ATOMIC__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/cmpxchg.h>
 
 #ifdef CONFIG_SMP
@@ -39,6 +48,8 @@ asmlinkage int __raw_atomic_test_asm(const volatile int *ptr, int value);
 #endif
 
 #include <asm-generic/atomic.h>
+<<<<<<< HEAD
+=======
 =======
 #ifndef CONFIG_SMP
 # include <asm-generic/atomic.h>
@@ -156,5 +167,6 @@ static inline int atomic_test_mask(int mask, atomic_t *v)
 
 #include <asm-generic/atomic64.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

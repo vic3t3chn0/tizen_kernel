@@ -32,6 +32,9 @@ static void cfserl_ctrlcmd(struct cflayer *layr, enum caif_ctrlcmd ctrl,
 				int phyid);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cflayer *cfserl_create(int instance, bool use_stx)
 {
 	struct cfserl *this = kzalloc(sizeof(struct cfserl), GFP_ATOMIC);
@@ -41,6 +44,8 @@ struct cflayer *cfserl_create(int instance, bool use_stx)
 	this->layer.receive = cfserl_receive;
 	this->layer.transmit = cfserl_transmit;
 	this->layer.ctrlcmd = cfserl_ctrlcmd;
+<<<<<<< HEAD
+=======
 =======
 struct cflayer *cfserl_create(int type, int instance, bool use_stx)
 {
@@ -56,6 +61,7 @@ struct cflayer *cfserl_create(int type, int instance, bool use_stx)
 	this->layer.ctrlcmd = cfserl_ctrlcmd;
 	this->layer.type = type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	this->usestx = use_stx;
 	spin_lock_init(&this->sync);
 	snprintf(this->layer.name, CAIF_LAYER_NAME_SZ, "ser1");

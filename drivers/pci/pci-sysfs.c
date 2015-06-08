@@ -19,6 +19,13 @@
 #include <linux/sched.h>
 #include <linux/pci.h>
 #include <linux/stat.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/topology.h>
 #include <linux/mm.h>
 #include <linux/fs.h>
@@ -329,7 +336,15 @@ static void remove_callback(struct device *dev)
 	struct pci_dev *pdev = to_pci_dev(dev);
 
 	mutex_lock(&pci_remove_rescan_mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pci_stop_and_remove_bus_device(pdev);
+=======
 	pci_remove_bus_device(pdev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pci_remove_bus_device(pdev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&pci_remove_rescan_mutex);
 }
 
@@ -365,7 +380,18 @@ dev_bus_rescan_store(struct device *dev, struct device_attribute *attr,
 
 	if (val) {
 		mutex_lock(&pci_remove_rescan_mutex);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!pci_is_root_bus(bus) && list_empty(&bus->devices))
+			pci_rescan_bus_bridge_resize(bus->self);
+		else
+			pci_rescan_bus(bus);
+=======
 		pci_rescan_bus(bus);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		pci_rescan_bus(bus);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_unlock(&pci_remove_rescan_mutex);
 	}
 	return count;
@@ -431,7 +457,15 @@ pci_read_config(struct file *filp, struct kobject *kobj,
 	u8 *data = (u8*) buf;
 
 	/* Several chips lock up trying to read undefined config space */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (security_capable(filp->f_cred, &init_user_ns, CAP_SYS_ADMIN) == 0) {
+=======
 	if (security_capable(&init_user_ns, filp->f_cred, CAP_SYS_ADMIN) == 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (security_capable(&init_user_ns, filp->f_cred, CAP_SYS_ADMIN) == 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		size = dev->cfg_size;
 	} else if (dev->hdr_type == PCI_HEADER_TYPE_CARDBUS) {
 		size = 128;

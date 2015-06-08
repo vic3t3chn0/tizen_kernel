@@ -35,7 +35,15 @@ MODULE_DESCRIPTION("i2c device driver for cs53l32a Audio ADC");
 MODULE_AUTHOR("Martin Vaughan");
 MODULE_LICENSE("GPL");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param(debug, bool, 0644);
 
@@ -248,6 +256,12 @@ static struct i2c_driver cs53l32a_driver = {
 	.id_table	= cs53l32a_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(cs53l32a_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int init_cs53l32a(void)
 {
 	return i2c_add_driver(&cs53l32a_driver);
@@ -260,3 +274,7 @@ static __exit void exit_cs53l32a(void)
 
 module_init(init_cs53l32a);
 module_exit(exit_cs53l32a);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -33,7 +33,11 @@ enum ath79_soc_type ath79_soc;
 <<<<<<< HEAD
 unsigned int ath79_soc_rev;
 =======
+<<<<<<< HEAD
+unsigned int ath79_soc_rev;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __iomem *ath79_pll_base;
 void __iomem *ath79_reset_base;
@@ -72,7 +76,12 @@ void ath79_device_reset_set(u32 mask)
 	else if (soc_is_ar933x())
 		reg = AR933X_RESET_REG_RESET_MODULE;
 =======
+<<<<<<< HEAD
+	else if (soc_is_ar933x())
+		reg = AR933X_RESET_REG_RESET_MODULE;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		BUG();
 
@@ -99,7 +108,12 @@ void ath79_device_reset_clear(u32 mask)
 	else if (soc_is_ar933x())
 		reg = AR933X_RESET_REG_RESET_MODULE;
 =======
+<<<<<<< HEAD
+	else if (soc_is_ar933x())
+		reg = AR933X_RESET_REG_RESET_MODULE;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		BUG();
 

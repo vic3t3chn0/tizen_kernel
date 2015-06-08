@@ -9,6 +9,11 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -18,6 +23,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -35,6 +44,14 @@
  * Ethernet link.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct f_eem {
+	struct gether			port;
+	u8				ctrl_id;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct eem_ep_descs {
 	struct usb_endpoint_descriptor	*in;
 	struct usb_endpoint_descriptor	*out;
@@ -47,6 +64,10 @@ struct f_eem {
 	struct eem_ep_descs		fs;
 	struct eem_ep_descs		hs;
 	struct eem_ep_descs		ss;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct f_eem *func_to_eem(struct usb_function *f)
@@ -216,6 +237,20 @@ static int eem_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 			gether_disconnect(&eem->port);
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!eem->port.in_ep->desc || !eem->port.out_ep->desc) {
+			DBG(cdev, "init eem\n");
+			if (config_ep_by_speed(cdev->gadget, f,
+					       eem->port.in_ep) ||
+			    config_ep_by_speed(cdev->gadget, f,
+					       eem->port.out_ep)) {
+				eem->port.in_ep->desc = NULL;
+				eem->port.out_ep->desc = NULL;
+				goto fail;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!eem->port.in) {
 			DBG(cdev, "init eem\n");
 			if (gadget_is_superspeed(cdev->gadget) &&
@@ -227,6 +262,10 @@ static int eem_set_alt(struct usb_function *f, unsigned intf, unsigned alt)
 					eem->hs.in, eem->fs.in);
 				eem->port.out = ep_choose(cdev->gadget,
 					eem->hs.out, eem->fs.out);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 
@@ -299,11 +338,20 @@ eem_bind(struct usb_configuration *c, struct usb_function *f)
 	if (!f->descriptors)
 		goto fail;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	eem->fs.in = usb_find_endpoint(eem_fs_function,
 			f->descriptors, &eem_fs_in_desc);
 	eem->fs.out = usb_find_endpoint(eem_fs_function,
 			f->descriptors, &eem_fs_out_desc);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* support all relevant hardware speeds... we expect that when
 	 * hardware is dual speed, all bulk-capable endpoints work at
 	 * both speeds
@@ -318,11 +366,20 @@ eem_bind(struct usb_configuration *c, struct usb_function *f)
 		f->hs_descriptors = usb_copy_descriptors(eem_hs_function);
 		if (!f->hs_descriptors)
 			goto fail;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		eem->hs.in = usb_find_endpoint(eem_hs_function,
 				f->hs_descriptors, &eem_hs_in_desc);
 		eem->hs.out = usb_find_endpoint(eem_hs_function,
 				f->hs_descriptors, &eem_hs_out_desc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (gadget_is_superspeed(c->cdev->gadget)) {
@@ -335,11 +392,20 @@ eem_bind(struct usb_configuration *c, struct usb_function *f)
 		f->ss_descriptors = usb_copy_descriptors(eem_ss_function);
 		if (!f->ss_descriptors)
 			goto fail;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		eem->ss.in = usb_find_endpoint(eem_ss_function,
 				f->ss_descriptors, &eem_ss_in_desc);
 		eem->ss.out = usb_find_endpoint(eem_ss_function,
 				f->ss_descriptors, &eem_ss_out_desc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	DBG(cdev, "CDC Ethernet (EEM): %s speed IN/%s OUT/%s\n",
@@ -355,9 +421,21 @@ fail:
 		usb_free_descriptors(f->hs_descriptors);
 
 	/* we might as well release our claims on endpoints */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (eem->port.out_ep->desc)
+		eem->port.out_ep->driver_data = NULL;
+	if (eem->port.in_ep->desc)
+=======
 	if (eem->port.out)
 		eem->port.out_ep->driver_data = NULL;
 	if (eem->port.in)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (eem->port.out)
+		eem->port.out_ep->driver_data = NULL;
+	if (eem->port.in)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		eem->port.in_ep->driver_data = NULL;
 
 	ERROR(cdev, "%s: can't bind, err %d\n", f->name, status);

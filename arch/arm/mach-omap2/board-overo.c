@@ -44,15 +44,21 @@
 
 #include <plat/board.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 #include <video/omapdss.h>
 #include <video/omap-panel-generic-dpi.h>
 #include <video/omap-panel-dvi.h>
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <video/omapdss.h>
 #include <video/omap-panel-generic-dpi.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/gpmc.h>
 #include <mach/hardware.h>
 #include <plat/nand.h>
@@ -86,9 +92,15 @@ static struct regulator_consumer_supply ads7846_supply[] = {
 	REGULATOR_SUPPLY("vcc", "spi1.0"),
 };
 =======
+<<<<<<< HEAD
+static struct regulator_consumer_supply ads7846_supply[] = {
+	REGULATOR_SUPPLY("vcc", "spi1.0"),
+};
+=======
 static struct regulator_consumer_supply ads7846_supply =
 	REGULATOR_SUPPLY("vcc", "spi1.0");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct regulator_init_data vads7846_regulator = {
 	.constraints = {
@@ -98,9 +110,14 @@ static struct regulator_init_data vads7846_regulator = {
 	.num_consumer_supplies	= ARRAY_SIZE(ads7846_supply),
 	.consumer_supplies	= ads7846_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(ads7846_supply),
+	.consumer_supplies	= ads7846_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &ads7846_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct fixed_voltage_config vads7846 = {
@@ -200,16 +217,22 @@ static void overo_panel_disable_dvi(struct omap_dss_device *dssdev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct panel_dvi_platform_data dvi_panel = {
 	.platform_enable	= overo_panel_enable_dvi,
 	.platform_disable	= overo_panel_disable_dvi,
 	.i2c_bus_num		= 3,
+<<<<<<< HEAD
+=======
 =======
 static struct panel_generic_dpi_data dvi_panel = {
 	.name			= "generic",
 	.platform_enable	= overo_panel_enable_dvi,
 	.platform_disable	= overo_panel_disable_dvi,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct omap_dss_device overo_dvi_device = {
@@ -218,8 +241,12 @@ static struct omap_dss_device overo_dvi_device = {
 <<<<<<< HEAD
 	.driver_name		= "dvi",
 =======
+<<<<<<< HEAD
+	.driver_name		= "dvi",
+=======
 	.driver_name		= "generic_dpi_panel",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.data			= &dvi_panel,
 	.phy.dpi.data_lines	= 24,
 };
@@ -295,6 +322,8 @@ static struct omap_dss_board_info overo_dss_data = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct regulator_consumer_supply overo_vdda_dac_supply =
 	REGULATOR_SUPPLY("vdda_dac", "omapdss_venc");
 
@@ -304,6 +333,7 @@ static struct regulator_consumer_supply overo_vdds_dsi_supply[] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct mtd_partition overo_nand_partitions[] = {
 	{
 		.name           = "xloader",
@@ -355,9 +385,14 @@ static struct omap2_hsmmc_info mmc[] = {
 static struct regulator_consumer_supply overo_vmmc1_supply[] = {
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.0"),
 =======
+<<<<<<< HEAD
+static struct regulator_consumer_supply overo_vmmc1_supply[] = {
+	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.0"),
+=======
 static struct regulator_consumer_supply overo_vmmc1_supply = {
 	.supply			= "vmmc",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_LEDS_GPIO) || defined(CONFIG_LEDS_GPIO_MODULE)
@@ -452,11 +487,14 @@ static int overo_twl_gpio_setup(struct device *dev,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	omap2_hsmmc_init(mmc);
 
 	overo_vmmc1_supply.dev = mmc[0].dev;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_LEDS_GPIO) || defined(CONFIG_LEDS_GPIO_MODULE)
 	/* TWL4030_GPIO_MAX + 1 == ledB, PMU_STAT (out, active low LED) */
 	gpio_leds[2].gpio = gpio + TWL4030_GPIO_MAX + 1;
@@ -475,11 +513,14 @@ static struct twl4030_gpio_platform_data overo_gpio_data = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct twl4030_usb_data overo_usb_data = {
 	.usb_mode	= T2_USB_MODE_ULPI,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_init_data overo_vmmc1 = {
 	.constraints = {
 		.min_uV			= 1850000,
@@ -491,6 +532,9 @@ static struct regulator_init_data overo_vmmc1 = {
 					| REGULATOR_CHANGE_STATUS,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies	= ARRAY_SIZE(overo_vmmc1_supply),
 	.consumer_supplies	= overo_vmmc1_supply,
 };
@@ -498,6 +542,8 @@ static struct regulator_init_data overo_vmmc1 = {
 static struct twl4030_platform_data overo_twldata = {
 	.gpio		= &overo_gpio_data,
 	.vmmc1		= &overo_vmmc1,
+<<<<<<< HEAD
+=======
 =======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &overo_vmmc1_supply,
@@ -549,19 +595,26 @@ static struct twl4030_platform_data overo_twldata = {
 	.vdac		= &overo_vdac,
 	.vpll2		= &overo_vpll2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init overo_i2c_init(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_get_config(&overo_twldata,
 			TWL_COMMON_PDATA_USB | TWL_COMMON_PDATA_AUDIO,
 			TWL_COMMON_REGULATOR_VDAC | TWL_COMMON_REGULATOR_VPLL2);
 
 	overo_twldata.vpll2->constraints.name = "VDVI";
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_init("tps65950", &overo_twldata);
 	/* i2c2 pins are used for gpio */
 	omap_register_i2c_bus(3, 400, NULL, 0);
@@ -591,6 +644,8 @@ static int __init overo_spi_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init overo_init_early(void)
 {
 	omap2_init_common_infrastructure();
@@ -599,6 +654,7 @@ static void __init overo_init_early(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct usbhs_omap_board_data usbhs_bdata __initconst = {
 	.port_mode[0] = OMAP_USBHS_PORT_MODE_UNUSED,
 	.port_mode[1] = OMAP_EHCI_PORT_MODE_PHY,
@@ -621,6 +677,9 @@ static struct gpio overo_bt_gpios[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply dummy_supplies[] = {
 	REGULATOR_SUPPLY("vddvario", "smsc911x.0"),
 	REGULATOR_SUPPLY("vdd33a", "smsc911x.0"),
@@ -628,13 +687,19 @@ static struct regulator_consumer_supply dummy_supplies[] = {
 	REGULATOR_SUPPLY("vdd33a", "smsc911x.1"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init overo_init(void)
 {
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CBB);
 	omap_hsmmc_init(mmc);
@@ -643,12 +708,15 @@ static void __init overo_init(void)
 	omap_serial_init();
 	omap_sdrc_init(mt46h32m32lf6_sdrc_params,
 				  mt46h32m32lf6_sdrc_params);
+<<<<<<< HEAD
+=======
 =======
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CBB);
 	overo_i2c_init();
 	omap_display_init(&overo_dss_data);
 	omap_serial_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_nand_flash_init(0, overo_nand_partitions,
 			     ARRAY_SIZE(overo_nand_partitions));
 	usb_musb_init(NULL);
@@ -656,8 +724,11 @@ static void __init overo_init(void)
 	overo_spi_init();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	overo_ads7846_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	overo_init_smsc911x();
 	overo_display_init();
 	overo_init_led();
@@ -701,6 +772,9 @@ static void __init overo_init(void)
 
 MACHINE_START(OVERO, "Gumstix Overo")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= omap_reserve,
 	.map_io		= omap3_map_io,
@@ -710,6 +784,8 @@ MACHINE_START(OVERO, "Gumstix Overo")
 	.init_machine	= overo_init,
 	.timer		= &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= omap_reserve,
@@ -719,4 +795,5 @@ MACHINE_START(OVERO, "Gumstix Overo")
 	.init_machine	= overo_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

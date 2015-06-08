@@ -27,9 +27,18 @@
 /*  ----------------------------------- DSP/BIOS Bridge */
 #include <dspbridge/dbdefs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Trace & Debug */
 #include <dspbridge/dbc.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Trace & Debug */
+#include <dspbridge/dbc.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- OS Adaptation Layer */
 #include <dspbridge/drv.h>
 #include <dspbridge/sync.h>
@@ -82,10 +91,19 @@
 #define OMAP343X_CONTROL_IVA2_BOOTADDR (OMAP2_CONTROL_GENERAL + 0x0190)
 #define OMAP343X_CONTROL_IVA2_BOOTMOD (OMAP2_CONTROL_GENERAL + 0x0194)
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP343X_CTRL_REGADDR(reg) \
 	OMAP2_L4_IO_ADDRESS(OMAP343X_CTRL_BASE + (reg))
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Forward Declarations: */
 static int bridge_brd_monitor(struct bridge_dev_context *dev_ctxt);
 static int bridge_brd_read(struct bridge_dev_context *dev_ctxt,
@@ -256,9 +274,18 @@ static void bad_page_dump(u32 pa, struct page *pg)
 void bridge_drv_entry(struct bridge_drv_interface **drv_intf,
 		   const char *driver_file_name)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	DBC_REQUIRE(driver_file_name != NULL);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	DBC_REQUIRE(driver_file_name != NULL);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (strcmp(driver_file_name, "UMA") == 0)
 		*drv_intf = &drv_interface_fxns;
 	else
@@ -389,6 +416,13 @@ static int bridge_brd_start(struct bridge_dev_context *dev_ctxt,
 	u32 clk_cmd;
 	struct io_mgr *hio_mgr;
 	u32 ul_load_monitor_timer;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 wdt_en = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_dsp_platform_data *pdata =
 		omap_dspbridge_dev->dev.platform_data;
 
@@ -399,16 +433,34 @@ static int bridge_brd_start(struct bridge_dev_context *dev_ctxt,
 	(void)dev_get_symbol(dev_context->dev_obj, SHMBASENAME,
 			     &ul_shm_base_virt);
 	ul_shm_base_virt *= DSPWORDSIZE;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* DSP Virtual address */
+	ul_tlb_base_virt = dev_context->atlb_entry[0].dsp_va;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_ASSERT(ul_shm_base_virt != 0);
 	/* DSP Virtual address */
 	ul_tlb_base_virt = dev_context->atlb_entry[0].dsp_va;
 	DBC_ASSERT(ul_tlb_base_virt <= ul_shm_base_virt);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ul_shm_offset_virt =
 	    ul_shm_base_virt - (ul_tlb_base_virt * DSPWORDSIZE);
 	/* Kernel logical address */
 	ul_shm_base = dev_context->atlb_entry[0].gpp_va + ul_shm_offset_virt;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ASSERT(ul_shm_base != 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ASSERT(ul_shm_base != 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* 2nd wd is used as sync field */
 	dw_sync_addr = ul_shm_base + SHMSYNCOFFSET;
 	/* Write a signature into the shm base + offset; this will
@@ -426,19 +478,53 @@ static int bridge_brd_start(struct bridge_dev_context *dev_ctxt,
 
 		/* Assert RST1 i.e only the RST only for DSP megacell */
 		if (!status) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			/*
+			 * XXX: ioremapping  MUST be removed once ctrl
+			 * function is made available.
+			 */
+			void __iomem *ctrl = ioremap(OMAP343X_CTRL_BASE, SZ_4K);
+			if (!ctrl)
+				return -ENOMEM;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(*pdata->dsp_prm_rmw_bits)(OMAP3430_RST1_IVA2_MASK,
 					OMAP3430_RST1_IVA2_MASK, OMAP3430_IVA2_MOD,
 					OMAP2_RM_RSTCTRL);
 			/* Mask address with 1K for compatibility */
 			__raw_writel(dsp_addr & OMAP3_IVA2_BOOTADDR_MASK,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					ctrl + OMAP343X_CONTROL_IVA2_BOOTADDR);
+=======
 					OMAP343X_CTRL_REGADDR(
 					OMAP343X_CONTROL_IVA2_BOOTADDR));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					OMAP343X_CTRL_REGADDR(
+					OMAP343X_CONTROL_IVA2_BOOTADDR));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Set bootmode to self loop if dsp_debug flag is true
 			 */
 			__raw_writel((dsp_debug) ? OMAP3_IVA2_BOOTMOD_IDLE : 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					ctrl + OMAP343X_CONTROL_IVA2_BOOTMOD);
+
+			iounmap(ctrl);
+=======
 					OMAP343X_CTRL_REGADDR(
 					OMAP343X_CONTROL_IVA2_BOOTMOD));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					OMAP343X_CTRL_REGADDR(
+					OMAP343X_CONTROL_IVA2_BOOTMOD));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	if (!status) {
@@ -603,9 +689,24 @@ static int bridge_brd_start(struct bridge_dev_context *dev_ctxt,
 		if (!wait_for_start(dev_context, dw_sync_addr))
 			status = -ETIMEDOUT;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_get_symbol(dev_context->dev_obj, "_WDT_enable", &wdt_en);
+		if (wdt_en) {
+			/* Start wdt */
+			dsp_wdt_sm_set((void *)ul_shm_base);
+			dsp_wdt_enable(true);
+		}
+=======
 		/* Start wdt */
 		dsp_wdt_sm_set((void *)ul_shm_base);
 		dsp_wdt_enable(true);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		/* Start wdt */
+		dsp_wdt_sm_set((void *)ul_shm_base);
+		dsp_wdt_enable(true);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		status = dev_get_io_mgr(dev_context->dev_obj, &hio_mgr);
 		if (hio_mgr) {
@@ -1046,8 +1147,16 @@ static int bridge_dev_destroy(struct bridge_dev_context *dev_ctxt)
 
 	/* Free the driver's device context: */
 	kfree(drv_datap->base_img);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(drv_datap);
 	dev_set_drvdata(bridge, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(drv_datap);
+	dev_set_drvdata(bridge, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree((void *)dev_ctxt);
 	return status;
 }

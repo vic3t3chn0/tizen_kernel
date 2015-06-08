@@ -19,6 +19,9 @@ my %opt;
 my %repeat_tests;
 my %repeats;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #default opts
 my %default = (
@@ -64,6 +67,8 @@ my %default = (
     "LOG_FILE"			=> undef,
     "IGNORE_UNUSED"		=> 0,
 );
+<<<<<<< HEAD
+=======
 =======
 my %default;
 
@@ -98,6 +103,7 @@ $default{"STOP_AFTER_FAILURE"}	= 60;
 $default{"STOP_TEST_AFTER"}	= 600;
 $default{"LOCALVERSION"}	= "-test";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 my $ktest_config;
 my $version;
@@ -111,25 +117,37 @@ my $test_type;
 my $build_type;
 my $build_options;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $pre_build;
 my $post_build;
 my $pre_build_die;
 my $post_build_die;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $reboot_type;
 my $reboot_script;
 my $power_cycle;
 my $reboot;
 my $reboot_on_error;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $switch_to_good;
 my $switch_to_test;
 my $poweroff_on_error;
 my $reboot_on_success;
+<<<<<<< HEAD
+=======
 =======
 my $poweroff_on_error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $die_on_failure;
 my $powercycle_after_reboot;
 my $poweroff_after_halt;
@@ -138,7 +156,11 @@ my $scp_to_target;
 <<<<<<< HEAD
 my $scp_to_target_install;
 =======
+<<<<<<< HEAD
+my $scp_to_target_install;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $power_off;
 my $grub_menu;
 my $grub_number;
@@ -146,6 +168,9 @@ my $target;
 my $make;
 my $post_install;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $no_install;
 my $noclean;
 my $minconfig;
@@ -166,6 +191,8 @@ my $bisect_ret_bad;
 my $bisect_ret_skip;
 my $bisect_ret_abort;
 my $bisect_ret_default;
+<<<<<<< HEAD
+=======
 =======
 my $noclean;
 my $minconfig;
@@ -176,6 +203,7 @@ my $reverse_bisect;
 my $bisect_manual;
 my $bisect_skip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $in_patchcheck = 0;
 my $run_test;
 my $redirect;
@@ -183,7 +211,11 @@ my $buildlog;
 <<<<<<< HEAD
 my $testlog;
 =======
+<<<<<<< HEAD
+my $testlog;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $dmesg;
 my $monitor_fp;
 my $monitor_pid;
@@ -192,6 +224,9 @@ my $sleep_time;
 my $bisect_sleep_time;
 my $patchcheck_sleep_time;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $ignore_warnings;
 my $store_failures;
 my $store_successes;
@@ -201,12 +236,15 @@ my $booted_timeout;
 my $detect_triplefault;
 my $console;
 my $reboot_success_line;
+<<<<<<< HEAD
+=======
 =======
 my $store_failures;
 my $timeout;
 my $booted_timeout;
 my $console;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $success_line;
 my $stop_after_success;
 my $stop_after_failure;
@@ -216,12 +254,19 @@ my $target_image;
 <<<<<<< HEAD
 my $checkout;
 =======
+<<<<<<< HEAD
+my $checkout;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $localversion;
 my $iteration = 0;
 my $successes = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my $bisect_good;
 my $bisect_bad;
 my $bisect_type;
@@ -351,6 +396,8 @@ chomp ($variable{"PWD"} = `pwd`);
 $config_help{"MACHINE"} = << "EOF"
  The machine hostname that you will test.
  For build only tests, it is still needed to differentiate log files.
+<<<<<<< HEAD
+=======
 =======
 my %entered_configs;
 my %config_help;
@@ -359,6 +406,7 @@ my %variable;
 $config_help{"MACHINE"} = << "EOF"
  The machine hostname that you will test.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EOF
     ;
 $config_help{"SSH_USER"} = << "EOF"
@@ -372,7 +420,12 @@ $config_help{"BUILD_DIR"} = << "EOF"
  You can use \${PWD} that will be the path where ktest.pl is run, or use
  \${THIS_DIR} which is assigned \${PWD} but may be changed later.
 =======
+<<<<<<< HEAD
+ You can use \${PWD} that will be the path where ktest.pl is run, or use
+ \${THIS_DIR} which is assigned \${PWD} but may be changed later.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EOF
     ;
 $config_help{"OUTPUT_DIR"} = << "EOF"
@@ -382,7 +435,12 @@ $config_help{"OUTPUT_DIR"} = << "EOF"
  You can use \${PWD} that will be the path where ktest.pl is run, or use
  \${THIS_DIR} which is assigned \${PWD} but may be changed later.
 =======
+<<<<<<< HEAD
+ You can use \${PWD} that will be the path where ktest.pl is run, or use
+ \${THIS_DIR} which is assigned \${PWD} but may be changed later.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EOF
     ;
 $config_help{"BUILD_TARGET"} = << "EOF"
@@ -391,13 +449,19 @@ $config_help{"BUILD_TARGET"} = << "EOF"
 EOF
     ;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 $config_help{"BUILD_OPTIONS"} = << "EOF"
  Options to add to \"make\" when building.
  i.e.  -j20
 EOF
     ;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 $config_help{"TARGET_IMAGE"} = << "EOF"
  The place to put your image on the test machine.
 EOF
@@ -464,6 +528,9 @@ EOF
     ;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub read_prompt {
     my ($cancel, $prompt) = @_;
 
@@ -516,11 +583,14 @@ sub read_ync {
 sub get_ktest_config {
     my ($config) = @_;
     my $ans;
+<<<<<<< HEAD
+=======
 =======
 
 sub get_ktest_config {
     my ($config) = @_;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     return if (defined($opt{$config}));
 
@@ -532,6 +602,9 @@ sub get_ktest_config {
     for (;;) {
 	print "$config = ";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (defined($default{$config}) && length($default{$config})) {
 	    print "\[$default{$config}\] ";
 	}
@@ -540,6 +613,8 @@ sub get_ktest_config {
 	if ($ans =~ /^\s*$/) {
 	    if ($default{$config}) {
 		$ans = $default{$config};
+<<<<<<< HEAD
+=======
 =======
 	if (defined($default{$config})) {
 	    print "\[$default{$config}\] ";
@@ -550,6 +625,7 @@ sub get_ktest_config {
 	    if ($default{$config}) {
 		$entered_configs{$config} = $default{$config};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    } else {
 		print "Your answer can not be blank\n";
 		next;
@@ -558,7 +634,11 @@ sub get_ktest_config {
 <<<<<<< HEAD
 	$entered_configs{$config} = ${ans};
 =======
+<<<<<<< HEAD
+	$entered_configs{$config} = ${ans};
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	last;
     }
 }
@@ -566,6 +646,9 @@ sub get_ktest_config {
 sub get_ktest_configs {
     get_ktest_config("MACHINE");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     get_ktest_config("BUILD_DIR");
     get_ktest_config("OUTPUT_DIR");
 
@@ -590,6 +673,8 @@ sub get_ktest_configs {
 
     return if ($buildonly);
 
+<<<<<<< HEAD
+=======
 =======
     get_ktest_config("SSH_USER");
     get_ktest_config("BUILD_DIR");
@@ -601,6 +686,7 @@ sub get_ktest_configs {
     get_ktest_config("LOCALVERSION");
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $rtype = $opt{"REBOOT_TYPE"};
 
     if (!defined($rtype)) {
@@ -616,9 +702,12 @@ sub get_ktest_configs {
 	get_ktest_config("GRUB_MENU");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
     } else {
 	get_ktest_config("REBOOT_SCRIPT");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 }
 
@@ -626,8 +715,12 @@ sub process_variables {
 <<<<<<< HEAD
     my ($value, $remove_undef) = @_;
 =======
+<<<<<<< HEAD
+    my ($value, $remove_undef) = @_;
+=======
     my ($value) = @_;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $retval = "";
 
     # We want to check for '\', and it is just easier
@@ -646,6 +739,9 @@ sub process_variables {
 	if (defined($variable{$var})) {
 	    $retval = "$retval$variable{$var}";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} elsif (defined($remove_undef) && $remove_undef) {
 	    # for if statements, any variable that is not defined,
 	    # we simple convert to 0
@@ -657,11 +753,14 @@ sub process_variables {
 	    # it so we don't warn if this option is not one of
 	    # ktests options.
 	    $used_options{$var} = 1;
+<<<<<<< HEAD
+=======
 =======
 	} else {
 	    # put back the origin piece.
 	    $retval = "$retval\$\{$var\}";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	$value = $end;
     }
@@ -675,6 +774,9 @@ sub process_variables {
 
 sub set_value {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my ($lvalue, $rvalue, $override, $overrides, $name) = @_;
 
     my $prvalue = process_variables($rvalue);
@@ -699,12 +801,15 @@ sub set_value {
 	    die "$name: $.: Option $lvalue defined more than once!\n$extra";
 	}
 	${$overrides}{$lvalue} = $prvalue;
+<<<<<<< HEAD
+=======
 =======
     my ($lvalue, $rvalue) = @_;
 
     if (defined($opt{$lvalue})) {
 	die "Error: Option $lvalue defined more than once!\n";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
     if ($rvalue =~ /^\s*$/) {
 	delete $opt{$lvalue};
@@ -712,9 +817,13 @@ sub set_value {
 <<<<<<< HEAD
 	$opt{$lvalue} = $prvalue;
 =======
+<<<<<<< HEAD
+	$opt{$lvalue} = $prvalue;
+=======
 	$rvalue = process_variables($rvalue);
 	$opt{$lvalue} = $rvalue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 }
 
@@ -730,6 +839,9 @@ sub set_variable {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub process_compare {
     my ($lval, $cmp, $rval) = @_;
 
@@ -840,12 +952,15 @@ sub __read_config {
 
     my $in;
     open($in, $config) || die "can't read file $config";
+<<<<<<< HEAD
+=======
 =======
 sub read_config {
     my ($config) = @_;
 
     open(IN, $config) || die "can't read file $config";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     my $name = $config;
     $name =~ s,.*/(.*),$1,;
@@ -853,14 +968,21 @@ sub read_config {
 <<<<<<< HEAD
     my $test_num = $$current_test_num;
 =======
+<<<<<<< HEAD
+    my $test_num = $$current_test_num;
+=======
     my $test_num = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $default = 1;
     my $repeat = 1;
     my $num_tests_set = 0;
     my $skip = 0;
     my $rest;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $line;
     my $test_case = 0;
     my $if = 0;
@@ -870,15 +992,21 @@ sub read_config {
     my %overrides;
 
     while (<$in>) {
+<<<<<<< HEAD
+=======
 =======
 
     while (<IN>) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	# ignore blank lines and comments
 	next if (/^\s*$/ || /\s*\#/);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (/^\s*(TEST_START|DEFAULTS)\b(.*)/) {
 
 	    my $type = $1;
@@ -957,6 +1085,8 @@ sub read_config {
 	    }
 
 	    if ($skip && $type eq "TEST_START") {
+<<<<<<< HEAD
+=======
 =======
 	if (/^\s*TEST_START(.*)/) {
 
@@ -997,11 +1127,15 @@ sub read_config {
 
 	    if ($skip) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		$test_num = $old_test_num;
 		$repeat = $old_repeat;
 	    }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} elsif (/^\s*ELSE\b(.*)$/) {
 	    if (!$if) {
 		die "$name: $.: ELSE found with out matching IF section\n$_";
@@ -1022,6 +1156,8 @@ sub read_config {
 		} else {
 		    $if = 0;
 		}
+<<<<<<< HEAD
+=======
 =======
 	} elsif (/^\s*DEFAULTS(.*)$/) {
 	    $default = 1;
@@ -1034,6 +1170,7 @@ sub read_config {
 	    } else {
 		$skip = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    }
 
 	    if ($rest !~ /^\s*$/) {
@@ -1041,6 +1178,9 @@ sub read_config {
 	    }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} elsif (/^\s*INCLUDE\s+(\S+)/) {
 
 	    next if ($skip);
@@ -1068,8 +1208,11 @@ sub read_config {
 		$test_case = 1;
 	    }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} elsif (/^\s*([A-Z_\[\]\d]+)\s*=\s*(.*?)\s*$/) {
 
 	    next if ($skip);
@@ -1096,16 +1239,22 @@ sub read_config {
 
 	    if ($default || $lvalue =~ /\[\d+\]$/) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_value($lvalue, $rvalue, $override, \%overrides, $name);
 	    } else {
 		my $val = "$lvalue\[$test_num\]";
 		set_value($val, $rvalue, $override, \%overrides, $name);
+<<<<<<< HEAD
+=======
 =======
 		set_value($lvalue, $rvalue);
 	    } else {
 		my $val = "$lvalue\[$test_num\]";
 		set_value($val, $rvalue);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if ($repeat > 1) {
 		    $repeats{$val} = $repeat;
@@ -1134,15 +1283,21 @@ sub read_config {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
     close(IN);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if ($test_num) {
 	$test_num += $repeat - 1;
 	$opt{"NUM_TESTS"} = $test_num;
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     close($in);
 
     $$current_test_num = $test_num;
@@ -1176,11 +1331,14 @@ sub read_config {
 	get_test_case;
     }
 
+<<<<<<< HEAD
+=======
 =======
     # make sure we have all mandatory configs
     get_ktest_configs;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     # set any defaults
 
     foreach my $default (keys %default) {
@@ -1189,6 +1347,9 @@ sub read_config {
 	}
     }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     if ($opt{"IGNORE_UNUSED"} == 1) {
 	return;
@@ -1299,8 +1460,11 @@ sub eval_option {
     }
 
     return $option;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 sub _logit {
@@ -1326,6 +1490,9 @@ sub doprint {
 
 sub run_command;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub start_monitor;
 sub end_monitor;
 sub wait_for_monitor;
@@ -1340,10 +1507,13 @@ sub reboot {
 	wait_for_monitor 1;
     }
 
+<<<<<<< HEAD
+=======
 =======
 
 sub reboot {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     # try to reboot normally
     if (run_command $reboot) {
 	if (defined($powercycle_after_reboot)) {
@@ -1355,6 +1525,9 @@ sub reboot {
 	run_command "$power_cycle";
     }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     if (defined($time)) {
 	wait_for_monitor($time, $reboot_success_line);
@@ -1370,8 +1543,11 @@ sub reboot_to_good {
     }
 
     reboot $time;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 sub do_not_reboot {
@@ -1380,8 +1556,12 @@ sub do_not_reboot {
 <<<<<<< HEAD
     return $test_type eq "build" || $no_reboot ||
 =======
+<<<<<<< HEAD
+    return $test_type eq "build" || $no_reboot ||
+=======
     return $test_type eq "build" ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	($test_type eq "patchcheck" && $opt{"PATCHCHECK_TYPE[$i]"} eq "build") ||
 	($test_type eq "bisect" && $opt{"BISECT_TYPE[$i]"} eq "build");
 }
@@ -1397,8 +1577,12 @@ sub dodie {
 <<<<<<< HEAD
 	reboot_to_good;
 =======
+<<<<<<< HEAD
+	reboot_to_good;
+=======
 	reboot;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     } elsif ($poweroff_on_error && defined($power_off)) {
 	doprint "POWERING OFF\n";
@@ -1459,19 +1643,28 @@ sub end_monitor {
 
 sub wait_for_monitor {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my ($time, $stop) = @_;
     my $full_line = "";
     my $line;
     my $booted = 0;
+<<<<<<< HEAD
+=======
 =======
     my ($time) = @_;
     my $line;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     doprint "** Wait for monitor to settle down **\n";
 
     # read the monitor and wait for the system to calm down
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     while (!$booted) {
 	$line = wait_for_input($monitor_fp, $time);
 	last if (!defined($line));
@@ -1527,6 +1720,8 @@ sub save_logs {
 	doprint "*** Saved info to $dir ***\n";
 }
 
+<<<<<<< HEAD
+=======
 =======
     do {
 	$line = wait_for_input($monitor_fp, $time);
@@ -1536,6 +1731,7 @@ sub save_logs {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub fail {
 
 	if ($die_on_failure) {
@@ -1550,6 +1746,9 @@ sub fail {
 	if (!do_not_reboot) {
 	    doprint "REBOOTING\n";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    reboot_to_good $sleep_time;
 	}
 
@@ -1557,17 +1756,23 @@ sub fail {
 
 	if (defined($test_name)) {
 	    $name = " ($test_name)";
+<<<<<<< HEAD
+=======
 =======
 	    reboot;
 	    start_monitor;
 	    wait_for_monitor $sleep_time;
 	    end_monitor;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	doprint "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 	doprint "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	doprint "KTEST RESULT: TEST $i$name Failed: ", @_, "\n";
 	doprint "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 	doprint "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
@@ -1575,6 +1780,8 @@ sub fail {
 	if (defined($store_failures)) {
 	    save_logs "fail", $store_failures;
         }
+<<<<<<< HEAD
+=======
 =======
 	doprint "KTEST RESULT: TEST $i Failed: ", @_, "\n";
 	doprint "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
@@ -1613,6 +1820,7 @@ sub fail {
 
 	doprint "*** Saved info to $faildir ***\n";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
@@ -1676,9 +1884,13 @@ sub run_scp {
 <<<<<<< HEAD
     my ($src, $dst, $cp_scp) = @_;
 =======
+<<<<<<< HEAD
+    my ($src, $dst, $cp_scp) = @_;
+=======
     my ($src, $dst) = @_;
     my $cp_scp = $scp_to_target;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     $cp_scp =~ s/\$SRC_FILE/$src/g;
     $cp_scp =~ s/\$DST_FILE/$dst/g;
@@ -1687,6 +1899,9 @@ sub run_scp {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub run_scp_install {
     my ($src, $dst) = @_;
 
@@ -1703,8 +1918,11 @@ sub run_scp_mod {
     return run_scp($src, $dst, $cp_scp);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub get_grub_index {
 
     if ($reboot_type ne "grub") {
@@ -1722,17 +1940,23 @@ sub get_grub_index {
 	or die "unable to get menu.lst";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $found = 0;
 
     while (<IN>) {
 	if (/^\s*title\s+$grub_menu\s*$/) {
 	    $grub_number++;
 	    $found = 1;
+<<<<<<< HEAD
+=======
 =======
     while (<IN>) {
 	if (/^\s*title\s+$grub_menu\s*$/) {
 	    $grub_number++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    last;
 	} elsif (/^\s*title\s/) {
 	    $grub_number++;
@@ -1744,8 +1968,12 @@ sub get_grub_index {
 <<<<<<< HEAD
 	if (!$found);
 =======
+<<<<<<< HEAD
+	if (!$found);
+=======
 	if ($grub_number < 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     doprint "$grub_number\n";
 }
 
@@ -1782,6 +2010,9 @@ sub wait_for_input
 
 sub reboot_to {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if (defined($switch_to_test)) {
 	run_command $switch_to_test;
     }
@@ -1792,6 +2023,8 @@ sub reboot_to {
 	run_command "$reboot_script";
     }
     reboot;
+<<<<<<< HEAD
+=======
 =======
     if ($reboot_type eq "grub") {
 	run_ssh "'(echo \"savedefault --default=$grub_number --once\" | grub --batch && reboot)'";
@@ -1800,6 +2033,7 @@ sub reboot_to {
 
     run_command "$reboot_script";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 sub get_sha1 {
@@ -1829,7 +2063,11 @@ sub monitor {
 <<<<<<< HEAD
     my $bug_ignored = 0;
 =======
+<<<<<<< HEAD
+    my $bug_ignored = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $skip_call_trace = 0;
     my $loops;
 
@@ -1848,6 +2086,9 @@ sub monitor {
     my $monitor_start = time;
     my $done = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $version_found = 0;
 
     while (!$done) {
@@ -1877,6 +2118,8 @@ sub monitor {
 	    }
 	}
 
+<<<<<<< HEAD
+=======
 =======
 
     while (!$done) {
@@ -1890,6 +2133,7 @@ sub monitor {
 	last if (!defined($line));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	doprint $line;
 	print DMESG $line;
 
@@ -1917,16 +2161,22 @@ sub monitor {
 	if ($full_line =~ /call trace:/i) {
 	    if (!$bug && !$skip_call_trace) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ($ignore_errors) {
 		    $bug_ignored = 1;
 		} else {
 		    $bug = 1;
 		    $failure_start = time;
 		}
+<<<<<<< HEAD
+=======
 =======
 		$bug = 1;
 		$failure_start = time;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    }
 	}
 
@@ -1949,6 +2199,9 @@ sub monitor {
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	# Detect triple faults by testing the banner
 	if ($full_line =~ /\bLinux version (\S+).*\n/) {
 	    if ($1 eq $version) {
@@ -1965,8 +2218,11 @@ sub monitor {
 	    }
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ($line =~ /\n/) {
 	    $full_line = "";
 	}
@@ -1992,6 +2248,9 @@ sub monitor {
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if ($bug_ignored) {
 	doprint "WARNING: Call Trace detected but ignored due to IGNORE_ERRORS=1\n";
     }
@@ -2023,6 +2282,8 @@ sub install {
     my $cp_target = eval_kernel_version $target_image;
 
     run_scp_install "$outputdir/$build_target", "$cp_target" or
+<<<<<<< HEAD
+=======
 =======
     return 1;
 }
@@ -2031,6 +2292,7 @@ sub install {
 
     run_scp "$outputdir/$build_target", "$target_image" or
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dodie "failed to copy image";
 
     my $install_mods = 0;
@@ -2050,7 +2312,11 @@ sub install {
 <<<<<<< HEAD
 	do_post_install;
 =======
+<<<<<<< HEAD
+	do_post_install;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	doprint "No modules needed\n";
 	return;
     }
@@ -2058,8 +2324,12 @@ sub install {
 <<<<<<< HEAD
     run_command "$make INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=$tmpdir modules_install" or
 =======
+<<<<<<< HEAD
+    run_command "$make INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=$tmpdir modules_install" or
+=======
     run_command "$make INSTALL_MOD_PATH=$tmpdir modules_install" or
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dodie "Failed to install modules";
 
     my $modlib = "/lib/modules/$version";
@@ -2075,8 +2345,12 @@ sub install {
 <<<<<<< HEAD
     run_scp_mod "$tmpdir/$modtar", "/tmp" or
 =======
+<<<<<<< HEAD
+    run_scp_mod "$tmpdir/$modtar", "/tmp" or
+=======
     run_scp "$tmpdir/$modtar", "/tmp" or
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dodie "failed to copy modules";
 
     unlink "$tmpdir/$modtar";
@@ -2084,13 +2358,20 @@ sub install {
 <<<<<<< HEAD
     run_ssh "'(cd / && tar xjf /tmp/$modtar)'" or
 =======
+<<<<<<< HEAD
+    run_ssh "'(cd / && tar xjf /tmp/$modtar)'" or
+=======
     run_ssh "'(cd / && tar xf /tmp/$modtar)'" or
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dodie "failed to tar modules";
 
     run_ssh "rm -f /tmp/$modtar";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     do_post_install;
 }
 
@@ -2114,6 +2395,8 @@ sub start_monitor_and_boot {
 
     start_monitor;
     return monitor;
+<<<<<<< HEAD
+=======
 =======
     return if (!defined($post_install));
 
@@ -2122,6 +2405,7 @@ sub start_monitor_and_boot {
     run_command "$cp_post_install" or
 	dodie "Failed to run post install";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 sub check_buildlog {
@@ -2157,6 +2441,9 @@ sub check_buildlog {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub apply_min_config {
     my $outconfig = "$output_config.new";
 
@@ -2201,6 +2488,8 @@ sub make_oldconfig {
 	# try a yes '' | oldconfig
 	doprint "oldnoconfig failed, trying yes '' | make oldconfig\n";
 	run_command "yes '' | $make oldconfig" or
+<<<<<<< HEAD
+=======
 =======
 sub make_oldconfig {
     my ($defconfig) = @_;
@@ -2211,11 +2500,15 @@ sub make_oldconfig {
 	doprint "oldnoconfig failed, trying yes '' | make oldconfig\n";
 	run_command "yes '' | $defconfig $make oldconfig" or
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    dodie "failed make config oldconfig";
     }
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # read a config file and use this to force new configs.
 sub load_force_config {
     my ($config) = @_;
@@ -2250,6 +2543,8 @@ sub build {
 	}
     }
 
+<<<<<<< HEAD
+=======
 =======
 sub build {
     my ($type) = @_;
@@ -2258,6 +2553,7 @@ sub build {
     unlink $buildlog;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if ($type =~ /^useconfig:(.*)/) {
 	run_command "cp $1 $output_config" or
 	    dodie "could not copy $1 to .config";
@@ -2273,6 +2569,9 @@ sub build {
 	run_command "touch $output_config";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!$noclean) {
 	    run_command "mv $output_config $outputdir/config_temp" or
 		dodie "moving .config";
@@ -2283,6 +2582,8 @@ sub build {
 		dodie "moving config_temp";
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	run_command "mv $output_config $outputdir/config_temp" or
 	    dodie "moving .config";
@@ -2295,6 +2596,7 @@ sub build {
 	    dodie "moving config_temp";
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     } elsif (!$noclean) {
 	unlink "$output_config";
 	run_command "$make mrproper" or
@@ -2308,6 +2610,9 @@ sub build {
 
     if (defined($minconfig)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	load_force_config($minconfig);
     }
 
@@ -2340,6 +2645,8 @@ sub build {
     }
 
     $no_reboot = $save_no_reboot;
+<<<<<<< HEAD
+=======
 =======
 	$defconfig = "KCONFIG_ALLCONFIG=$minconfig";
     }
@@ -2360,6 +2667,7 @@ sub build {
     }
     undef $redirect;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     return 1;
 }
@@ -2382,6 +2690,9 @@ sub success {
     $successes++;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $name = "";
 
     if (defined($test_name)) {
@@ -2404,6 +2715,8 @@ sub success {
     }
 }
 
+<<<<<<< HEAD
+=======
 =======
     doprint "\n\n*******************************************\n";
     doprint     "*******************************************\n";
@@ -2429,6 +2742,7 @@ sub get_version {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub answer_bisect {
     for (;;) {
 	doprint "Pass or fail? [p/f]";
@@ -2453,13 +2767,19 @@ sub child_run_test {
     $die_on_failure = 1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     $redirect = "$testlog";
     run_command $run_test or $failed = 1;
     undef $redirect;
 
+<<<<<<< HEAD
+=======
 =======
     run_command $run_test or $failed = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     exit $failed;
 }
 
@@ -2535,6 +2855,9 @@ sub do_run_test {
     $child_exit = $?;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if (!$bug && $in_bisect) {
 	if (defined($bisect_ret_good)) {
 	    if ($child_exit == $bisect_ret_good) {
@@ -2572,8 +2895,11 @@ sub do_run_test {
 	}
     }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if ($bug || $child_exit) {
 	return 0 if $in_bisect;
 	fail "test failed" and return 0;
@@ -2603,8 +2929,12 @@ sub run_git_bisect {
 <<<<<<< HEAD
 	$bisect_bad_commit = $1;
 =======
+<<<<<<< HEAD
+	$bisect_bad_commit = $1;
+=======
 	$bisect_bad = $1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	doprint "Found bad commit... $1\n";
 	return 0;
     } else {
@@ -2620,11 +2950,15 @@ sub bisect_reboot {
 <<<<<<< HEAD
     reboot_to_good $bisect_sleep_time;
 =======
+<<<<<<< HEAD
+    reboot_to_good $bisect_sleep_time;
+=======
     reboot;
     start_monitor;
     wait_for_monitor $bisect_sleep_time;
     end_monitor;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 # returns 1 on success, 0 on failure, -1 on skip
@@ -2651,6 +2985,9 @@ sub run_bisect_test {
 <<<<<<< HEAD
 	start_monitor_and_boot or $failed = 1;
 =======
+<<<<<<< HEAD
+	start_monitor_and_boot or $failed = 1;
+=======
 	get_grub_index;
 	get_version;
 	install;
@@ -2658,6 +2995,7 @@ sub run_bisect_test {
 	start_monitor;
 	monitor or $failed = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ($type ne "boot") {
 	    if ($failed && $bisect_skip) {
@@ -2707,8 +3045,12 @@ sub run_bisect {
 <<<<<<< HEAD
     if ($reverse_bisect && $ret >= 0) {
 =======
+<<<<<<< HEAD
+    if ($reverse_bisect && $ret >= 0) {
+=======
     if ($reverse_bisect) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$ret = !$ret;
     }
 
@@ -2723,6 +3065,9 @@ sub run_bisect {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub update_bisect_replay {
     my $tmp_log = "$tmpdir/ktest_bisect_log";
     run_command "git bisect log > $tmp_log" or
@@ -2730,14 +3075,20 @@ sub update_bisect_replay {
     return $tmp_log;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub bisect {
     my ($i) = @_;
 
     my $result;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     die "BISECT_GOOD[$i] not defined\n"	if (!defined($bisect_good));
     die "BISECT_BAD[$i] not defined\n"	if (!defined($bisect_bad));
     die "BISECT_TYPE[$i] not defined\n"	if (!defined($bisect_type));
@@ -2748,6 +3099,8 @@ sub bisect {
     my $start = $bisect_start;
     my $replay = $bisect_replay;
     my $start_files = $bisect_files;
+<<<<<<< HEAD
+=======
 =======
     die "BISECT_GOOD[$i] not defined\n"	if (!defined($opt{"BISECT_GOOD[$i]"}));
     die "BISECT_BAD[$i] not defined\n"	if (!defined($opt{"BISECT_BAD[$i]"}));
@@ -2760,6 +3113,7 @@ sub bisect {
     my $replay = $opt{"BISECT_REPLAY[$i]"};
     my $start_files = $opt{"BISECT_FILES[$i]"};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     if (defined($start_files)) {
 	$start_files = " -- " . $start_files;
@@ -2774,9 +3128,13 @@ sub bisect {
 <<<<<<< HEAD
     if (defined($bisect_reverse) && $bisect_reverse == 1) {
 =======
+<<<<<<< HEAD
+    if (defined($bisect_reverse) && $bisect_reverse == 1) {
+=======
     if (defined($opt{"BISECT_REVERSE[$i]"}) &&
 	$opt{"BISECT_REVERSE[$i]"} == 1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	doprint "Performing a reverse bisect (bad is good, good is bad!)\n";
 	$reverse_bisect = 1;
     } else {
@@ -2789,6 +3147,9 @@ sub bisect {
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     # Check if a bisect was running
     my $bisect_start_file = "$builddir/.git/BISECT_START";
 
@@ -2814,10 +3175,13 @@ sub bisect {
     }
 
     if ($do_check) {
+<<<<<<< HEAD
+=======
 =======
     my $check = $opt{"BISECT_CHECK[$i]"};
     if (defined($check) && $check ne "0") {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	# get current HEAD
 	my $head = get_sha1("HEAD");
@@ -2885,8 +3249,12 @@ sub bisect {
 <<<<<<< HEAD
     doprint "Bad commit was [$bisect_bad_commit]\n";
 =======
+<<<<<<< HEAD
+    doprint "Bad commit was [$bisect_bad_commit]\n";
+=======
     doprint "Bad commit was [$bisect_bad]\n";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     success $i;
 }
@@ -2903,9 +3271,14 @@ my %dependency;
 sub assign_configs {
     my ($hash, $config) = @_;
 =======
+<<<<<<< HEAD
+sub assign_configs {
+    my ($hash, $config) = @_;
+=======
 sub process_config_ignore {
     my ($config) = @_;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     open (IN, $config)
 	or dodie "Failed to read $config";
@@ -2915,8 +3288,12 @@ sub process_config_ignore {
 <<<<<<< HEAD
 	    ${$hash}{$2} = $1;
 =======
+<<<<<<< HEAD
+	    ${$hash}{$2} = $1;
+=======
 	    $config_ignore{$2} = $1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
     }
 
@@ -2924,14 +3301,20 @@ sub process_config_ignore {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub process_config_ignore {
     my ($config) = @_;
 
     assign_configs \%config_ignore, $config;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub read_current_config {
     my ($config_ref) = @_;
 
@@ -2993,8 +3376,12 @@ sub create_config {
 <<<<<<< HEAD
     make_oldconfig;
 =======
+<<<<<<< HEAD
+    make_oldconfig;
+=======
     make_oldconfig "";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 sub compare_configs {
@@ -3061,8 +3448,12 @@ sub run_config_bisect {
 <<<<<<< HEAD
     my $type = $config_bisect_type;
 =======
+<<<<<<< HEAD
+    my $type = $config_bisect_type;
+=======
     my $type = $opt{"CONFIG_BISECT_TYPE[$iteration]"};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $ret;
     my %current_config;
 
@@ -3167,6 +3558,9 @@ sub config_bisect {
     my ($i) = @_;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $start_config = $config_bisect;
 
     my $tmpconfig = "$tmpdir/use_config";
@@ -3175,12 +3569,15 @@ sub config_bisect {
 	process_config_ignore $config_bisect_good;
     }
 
+<<<<<<< HEAD
+=======
 =======
     my $start_config = $opt{"CONFIG_BISECT[$i]"};
 
     my $tmpconfig = "$tmpdir/use_config";
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     # Make the file with the bad config and the min config
     if (defined($minconfig)) {
 	# read the min config for things to ignore
@@ -3190,6 +3587,10 @@ sub config_bisect {
 	unlink $tmpconfig;
     }
 
+<<<<<<< HEAD
+    if (-f $tmpconfig) {
+	load_force_config($tmpconfig);
+=======
 <<<<<<< HEAD
     if (-f $tmpconfig) {
 	load_force_config($tmpconfig);
@@ -3204,6 +3605,7 @@ sub config_bisect {
     if (-f $tmpconfig) {
 	$defconfig = "KCONFIG_ALLCONFIG=$tmpconfig";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	process_config_ignore $tmpconfig;
     }
 
@@ -3217,8 +3619,12 @@ sub config_bisect {
 <<<<<<< HEAD
 	or dodie "failed to open $output_config";
 =======
+<<<<<<< HEAD
+	or dodie "failed to open $output_config";
+=======
 	or dodie "faied to open $output_config";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     while (<IN>) {
 	if (/^((CONFIG\S*)=.*)/) {
@@ -3231,9 +3637,14 @@ sub config_bisect {
     # Now run oldconfig with the minconfig
     make_oldconfig;
 =======
+<<<<<<< HEAD
+    # Now run oldconfig with the minconfig
+    make_oldconfig;
+=======
     # Now run oldconfig with the minconfig (and addconfigs)
     make_oldconfig $defconfig;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     # check to see what we lost (or gained)
     open (IN, $output_config)
@@ -3310,11 +3721,15 @@ sub patchcheck_reboot {
 <<<<<<< HEAD
     reboot_to_good $patchcheck_sleep_time;
 =======
+<<<<<<< HEAD
+    reboot_to_good $patchcheck_sleep_time;
+=======
     reboot;
     start_monitor;
     wait_for_monitor $patchcheck_sleep_time;
     end_monitor;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 sub patchcheck {
@@ -3322,6 +3737,9 @@ sub patchcheck {
 
     die "PATCHCHECK_START[$i] not defined\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!defined($patchcheck_start));
     die "PATCHCHECK_TYPE[$i] not defined\n"
 	if (!defined($patchcheck_type));
@@ -3331,6 +3749,8 @@ sub patchcheck {
     my $end = "HEAD";
     if (defined($patchcheck_end)) {
 	$end = $patchcheck_end;
+<<<<<<< HEAD
+=======
 =======
 	if (!defined($opt{"PATCHCHECK_START[$i]"}));
     die "PATCHCHECK_TYPE[$i] not defined\n"
@@ -3342,6 +3762,7 @@ sub patchcheck {
     if (defined($opt{"PATCHCHECK_END[$i]"})) {
 	$end = $opt{"PATCHCHECK_END[$i]"};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 
     # Get the true sha1's since we can use things like HEAD~3
@@ -3351,8 +3772,12 @@ sub patchcheck {
 <<<<<<< HEAD
     my $type = $patchcheck_type;
 =======
+<<<<<<< HEAD
+    my $type = $patchcheck_type;
+=======
     my $type = $opt{"PATCHCHECK_TYPE[$i]"};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     # Can't have a test without having a test to run
     if ($type eq "test" && !defined($run_test)) {
@@ -3380,6 +3805,9 @@ sub patchcheck {
 
     my $save_clean = $noclean;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my %ignored_warnings;
 
     if (defined($ignore_warnings)) {
@@ -3387,8 +3815,11 @@ sub patchcheck {
 	    $ignored_warnings{$sha1} = 1;
 	}
     }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     $in_patchcheck = 1;
     foreach my $item (@list) {
@@ -3416,6 +3847,9 @@ sub patchcheck {
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!defined($ignored_warnings{$sha1})) {
 	    check_buildlog $sha1 or return 0;
@@ -3426,6 +3860,8 @@ sub patchcheck {
 	my $failed = 0;
 
 	start_monitor_and_boot or $failed = 1;
+<<<<<<< HEAD
+=======
 =======
 	check_buildlog $sha1 or return 0;
 
@@ -3440,6 +3876,7 @@ sub patchcheck {
 	start_monitor;
 	monitor or $failed = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!$failed && $type ne "boot"){
 	    do_run_test or $failed = 1;
@@ -3457,6 +3894,9 @@ sub patchcheck {
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 my %depends;
 my %depcount;
 my $iflevel = 0;
@@ -3992,6 +4432,8 @@ if ($#ARGV == 0) {
 if (! -f $ktest_config) {
     $newconfig = 1;
     get_test_case;
+<<<<<<< HEAD
+=======
 =======
 $#ARGV < 1 or die "ktest.pl version: $VERSION\n   usage: ktest.pl config-file\n";
 
@@ -4020,11 +4462,15 @@ if ($#ARGV == 0) {
 
 if (! -f $ktest_config) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     open(OUT, ">$ktest_config") or die "Can not create $ktest_config";
     print OUT << "EOF"
 # Generated by ktest.pl
 #
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 # PWD is a ktest.pl variable that will result in the process working
 # directory that ktest.pl is executed in.
@@ -4040,11 +4486,14 @@ THIS_DIR := $variable{"PWD"}
 # The config options below it will override the defaults
 TEST_START
 TEST_TYPE = $default{"TEST_TYPE"}
+<<<<<<< HEAD
+=======
 =======
 # Define each test with TEST_START
 # The config options below it will override the defaults
 TEST_START
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 DEFAULTS
 EOF
@@ -4054,12 +4503,18 @@ EOF
 read_config $ktest_config;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 if (defined($opt{"LOG_FILE"})) {
     $opt{"LOG_FILE"} = eval_option($opt{"LOG_FILE"}, -1);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Append any configs entered in manually to the config file.
 my @new_configs = keys %entered_configs;
 if ($#new_configs >= 0) {
@@ -4070,8 +4525,12 @@ if ($#new_configs >= 0) {
 <<<<<<< HEAD
 	$opt{$config} = process_variables($entered_configs{$config});
 =======
+<<<<<<< HEAD
+	$opt{$config} = process_variables($entered_configs{$config});
+=======
 	$opt{$config} = $entered_configs{$config};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 }
 
@@ -4134,6 +4593,8 @@ sub __set_test_option {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 sub eval_option {
     my ($option, $i) = @_;
 
@@ -4175,12 +4636,16 @@ sub eval_option {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 sub set_test_option {
     my ($name, $i) = @_;
 
     my $option = __set_test_option($name, $i);
     return $option if (!defined($option));
 
+<<<<<<< HEAD
+    return eval_option($option, $i);
+=======
 <<<<<<< HEAD
     return eval_option($option, $i);
 =======
@@ -4203,23 +4668,33 @@ sub set_test_option {
 
     return $option;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 # First we need to do is the builds
 for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     # Do not reboot on failing test options
     $no_reboot = 1;
     $reboot_success = 0;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     $iteration = $i;
 
     my $makecmd = set_test_option("MAKE_CMD", $i);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     # Load all the options into their mapped variable names
     foreach my $opt (keys %option_map) {
 	${$option_map{$opt}} = set_test_option($opt, $i);
@@ -4239,6 +4714,8 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 	    mkpath($dir) or
 		die "can't create $dir";
 	}
+<<<<<<< HEAD
+=======
 =======
     $machine = set_test_option("MACHINE", $i);
     $ssh_user = set_test_option("SSH_USER", $i);
@@ -4289,6 +4766,7 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 	mkpath($tmpdir) or
 	    die "can't create $tmpdir";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 
     $ENV{"SSH_USER"} = $ssh_user;
@@ -4298,31 +4776,45 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
     $buildlog = "$tmpdir/buildlog-$machine";
     $testlog = "$tmpdir/testlog-$machine";
 =======
+<<<<<<< HEAD
+    $buildlog = "$tmpdir/buildlog-$machine";
+    $testlog = "$tmpdir/testlog-$machine";
+=======
     $target = "$ssh_user\@$machine";
 
     $buildlog = "$tmpdir/buildlog-$machine";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     $dmesg = "$tmpdir/dmesg-$machine";
     $make = "$makecmd O=$outputdir";
     $output_config = "$outputdir/.config";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if (!$buildonly) {
 	$target = "$ssh_user\@$machine";
 	if ($reboot_type eq "grub") {
 	    dodie "GRUB_MENU not defined" if (!defined($grub_menu));
 	}
+<<<<<<< HEAD
+=======
 =======
     if ($reboot_type eq "grub") {
 	dodie "GRUB_MENU not defined" if (!defined($grub_menu));
     } elsif (!defined($reboot_script)) {
 	dodie "REBOOT_SCRIPT not defined"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 
     my $run_type = $build_type;
     if ($test_type eq "patchcheck") {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	$run_type = $patchcheck_type;
     } elsif ($test_type eq "bisect") {
 	$run_type = $bisect_type;
@@ -4332,6 +4824,8 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 
     if ($test_type eq "make_min_config") {
 	$run_type = "";
+<<<<<<< HEAD
+=======
 =======
 	$run_type = $opt{"PATCHCHECK_TYPE[$i]"};
     } elsif ($test_type eq "bisect") {
@@ -4339,6 +4833,7 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
     } elsif ($test_type eq "config_bisect") {
 	$run_type = $opt{"CONFIG_BISECT_TYPE[$i]"};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 
     # mistake in config file?
@@ -4347,6 +4842,9 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     my $installme = "";
     $installme = " no_install" if ($no_install);
 
@@ -4363,6 +4861,8 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 	    $min = "";
 	}
 	run_command "cat $addconfig $min > $tmpdir/add_config" or
+<<<<<<< HEAD
+=======
 =======
     doprint "\n\n";
     doprint "RUNNING TEST $i of $opt{NUM_TESTS} with option $test_type $run_type\n\n";
@@ -4376,20 +4876,27 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
     } elsif (defined($addconfig)) {
 	run_command "cat $addconfig $minconfig > $tmpdir/add_config" or
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    dodie "Failed to create temp config";
 	$minconfig = "$tmpdir/add_config";
     }
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
     my $checkout = $opt{"CHECKOUT[$i]"};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if (defined($checkout)) {
 	run_command "git checkout $checkout" or
 	    die "failed to checkout $checkout";
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     $no_reboot = 0;
 
     # A test may opt to not reboot the box
@@ -4397,8 +4904,11 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 	$reboot_success = 1;
     }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if ($test_type eq "bisect") {
 	bisect $i;
 	next;
@@ -4413,7 +4923,13 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 	make_min_config $i;
 	next;
 =======
+<<<<<<< HEAD
+    } elsif ($test_type eq "make_min_config") {
+	make_min_config $i;
+	next;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     }
 
     if ($build_type ne "nobuild") {
@@ -4421,6 +4937,9 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
     }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if ($test_type eq "install") {
 	get_version;
 	install;
@@ -4431,6 +4950,8 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
     if ($test_type ne "build") {
 	my $failed = 0;
 	start_monitor_and_boot or $failed = 1;
+<<<<<<< HEAD
+=======
 =======
     if ($test_type ne "build") {
 	get_grub_index;
@@ -4441,6 +4962,7 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 	start_monitor;
 	monitor or $failed = 1;;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!$failed && $test_type ne "boot" && defined($run_test)) {
 	    do_run_test or $failed = 1;
@@ -4455,6 +4977,9 @@ for (my $i = 1; $i <= $opt{"NUM_TESTS"}; $i++) {
 if ($opt{"POWEROFF_ON_SUCCESS"}) {
     halt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } elsif ($opt{"REBOOT_ON_SUCCESS"} && !do_not_reboot && $reboot_success) {
     reboot_to_good;
 } elsif (defined($switch_to_good)) {
@@ -4463,12 +4988,15 @@ if ($opt{"POWEROFF_ON_SUCCESS"}) {
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 } elsif ($opt{"REBOOT_ON_SUCCESS"} && !do_not_reboot) {
     reboot;
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 doprint "\n    $successes of $opt{NUM_TESTS} tests were successful\n\n";
 
 exit 0;

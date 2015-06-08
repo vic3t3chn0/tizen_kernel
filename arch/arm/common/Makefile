@@ -10,12 +10,18 @@ obj-$(CONFIG_SA1111)		+= sa1111.o
 obj-$(CONFIG_PCI_HOST_VIA82C505) += via82c505.o
 obj-$(CONFIG_DMABOUNCE)		+= dmabounce.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_SA1111)		+= sa1111.o
+obj-$(CONFIG_PCI_HOST_VIA82C505) += via82c505.o
+obj-$(CONFIG_DMABOUNCE)		+= dmabounce.o
+=======
 obj-$(CONFIG_PL330)		+= pl330.o
 obj-$(CONFIG_SA1111)		+= sa1111.o
 obj-$(CONFIG_PCI_HOST_VIA82C505) += via82c505.o
 obj-$(CONFIG_DMABOUNCE)		+= dmabounce.o
 obj-$(CONFIG_TIMER_ACORN)	+= time-acorn.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_SHARP_LOCOMO)	+= locomo.o
 obj-$(CONFIG_SHARP_PARAM)	+= sharpsl_param.o
 obj-$(CONFIG_SHARP_SCOOP)	+= scoop.o
@@ -28,4 +34,8 @@ obj-$(CONFIG_FIQ_DEBUGGER)	+= fiq_debugger.o
 <<<<<<< HEAD
 obj-$(CONFIG_CP_ACCESS)         += cpaccess.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_CP_ACCESS)         += cpaccess.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

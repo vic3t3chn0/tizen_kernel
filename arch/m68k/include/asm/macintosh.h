@@ -16,6 +16,11 @@ extern void mac_init_IRQ(void);
 extern void mac_irq_enable(struct irq_data *data);
 extern void mac_irq_disable(struct irq_data *data);
 =======
+<<<<<<< HEAD
+
+extern void mac_irq_enable(struct irq_data *data);
+extern void mac_irq_disable(struct irq_data *data);
+=======
 extern int mac_irq_pending(unsigned int);
 
 /*
@@ -24,6 +29,7 @@ extern int mac_irq_pending(unsigned int);
 
 extern void via1_set_head(int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	Macintosh Table
@@ -55,8 +61,12 @@ struct mac_model
 <<<<<<< HEAD
 #define MAC_VIA_IICI		2
 =======
+<<<<<<< HEAD
+#define MAC_VIA_IICI		2
+=======
 #define MAC_VIA_IIci		2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAC_VIA_QUADRA		3
 
 #define MAC_SCSI_NONE		0

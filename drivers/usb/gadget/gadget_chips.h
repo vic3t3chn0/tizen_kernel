@@ -15,6 +15,48 @@
 #ifndef __GADGET_CHIPS_H
 #define __GADGET_CHIPS_H
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * NOTICE: the entries below are alphabetical and should be kept
+ * that way.
+ *
+ * Always be sure to add new entries to the correct position or
+ * accept the bashing later.
+ *
+ * If you have forgotten the alphabetical order let VIM/EMACS
+ * do that for you.
+ */
+#define gadget_is_amd5536udc(g)		(!strcmp("amd5536udc", (g)->name))
+#define gadget_is_at91(g)		(!strcmp("at91_udc", (g)->name))
+#define gadget_is_atmel_usba(g)		(!strcmp("atmel_usba_udc", (g)->name))
+#define gadget_is_ci13xxx_msm(g)	(!strcmp("ci13xxx_msm", (g)->name))
+#define gadget_is_ci13xxx_msm_hsic(g)	(!strcmp("ci13xxx_msm_hsic", (g)->name))
+#define gadget_is_ci13xxx_pci(g)	(!strcmp("ci13xxx_pci", (g)->name))
+#define gadget_is_dummy(g)		(!strcmp("dummy_udc", (g)->name))
+#define gadget_is_dwc3(g)		(!strcmp("dwc3-gadget", (g)->name))
+#define gadget_is_fsl_qe(g)		(!strcmp("fsl_qe_udc", (g)->name))
+#define gadget_is_fsl_usb2(g)		(!strcmp("fsl-usb2-udc", (g)->name))
+#define gadget_is_goku(g)		(!strcmp("goku_udc", (g)->name))
+#define gadget_is_imx(g)		(!strcmp("imx_udc", (g)->name))
+#define gadget_is_langwell(g)		(!strcmp("langwell_udc", (g)->name))
+#define gadget_is_m66592(g)		(!strcmp("m66592_udc", (g)->name))
+#define gadget_is_msm72k(g)		(!strcmp("msm72k_udc", (g)->name))
+#define gadget_is_musbhdrc(g)		(!strcmp("musb-hdrc", (g)->name))
+#define gadget_is_net2272(g)		(!strcmp("net2272", (g)->name))
+#define gadget_is_net2280(g)		(!strcmp("net2280", (g)->name))
+#define gadget_is_omap(g)		(!strcmp("omap_udc", (g)->name))
+#define gadget_is_pch(g)		(!strcmp("pch_udc", (g)->name))
+#define gadget_is_pxa(g)		(!strcmp("pxa25x_udc", (g)->name))
+#define gadget_is_pxa27x(g)		(!strcmp("pxa27x_udc", (g)->name))
+#define gadget_is_r8a66597(g)		(!strcmp("r8a66597_udc", (g)->name))
+#define gadget_is_renesas_usbhs(g)	(!strcmp("renesas_usbhs_udc", (g)->name))
+#define gadget_is_s3c2410(g)		(!strcmp("s3c2410_udc", (g)->name))
+#define gadget_is_s3c_hsotg(g)		(!strcmp("s3c-hsotg", (g)->name))
+#define gadget_is_s3c_hsudc(g)		(!strcmp("s3c-hsudc", (g)->name))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_USB_GADGET_NET2280
 #define	gadget_is_net2280(g)	!strcmp("net2280", (g)->name)
 #else
@@ -171,6 +213,10 @@
 #else
 #define	gadget_is_renesas_usbhs(g) 0
 #endif
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * usb_gadget_controller_number - support bcdDevice id convention
@@ -227,8 +273,16 @@ static inline int usb_gadget_controller_number(struct usb_gadget *gadget)
 		return 0x25;
 	else if (gadget_is_s3c_hsotg(gadget))
 		return 0x26;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	else if (gadget_is_s3c(gadget))
 		return 0x26;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	else if (gadget_is_s3c(gadget))
+		return 0x26;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (gadget_is_pch(gadget))
 		return 0x27;
 	else if (gadget_is_ci13xxx_msm(gadget))
@@ -237,8 +291,24 @@ static inline int usb_gadget_controller_number(struct usb_gadget *gadget)
 		return 0x29;
 	else if (gadget_is_s3c_hsudc(gadget))
 		return 0x30;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	else if (gadget_is_net2272(gadget))
+		return 0x31;
+	else if (gadget_is_dwc3(gadget))
+		return 0x32;
+	else if (gadget_is_msm72k(gadget))
+		return 0x33;
+	else if (gadget_is_ci13xxx_msm_hsic(gadget))
+		return 0x34;
+=======
 	else if (gadget_is_exynos_ss_udc(gadget))
 		return 0x31;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	else if (gadget_is_exynos_ss_udc(gadget))
+		return 0x31;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return -ENOENT;
 }

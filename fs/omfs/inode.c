@@ -31,8 +31,12 @@ struct buffer_head *omfs_bread(struct super_block *sb, sector_t block)
 <<<<<<< HEAD
 struct inode *omfs_new_inode(struct inode *dir, umode_t mode)
 =======
+<<<<<<< HEAD
+struct inode *omfs_new_inode(struct inode *dir, umode_t mode)
+=======
 struct inode *omfs_new_inode(struct inode *dir, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	u64 new_block;
@@ -548,12 +552,18 @@ static int omfs_fill_super(struct super_block *sb, void *data, int silent)
 	if (!sb->s_root)
 		goto out_brelse_bh2;
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(root);
+	if (!sb->s_root)
+		goto out_brelse_bh2;
+=======
 	sb->s_root = d_alloc_root(root);
 	if (!sb->s_root) {
 		iput(root);
 		goto out_brelse_bh2;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_DEBUG "omfs: Mounted volume %s\n", omfs_rb->r_name);
 
 	ret = 0;

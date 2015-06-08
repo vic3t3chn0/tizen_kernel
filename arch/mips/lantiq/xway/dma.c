@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <lantiq_soc.h>
 #include <xway_dma.h>
@@ -226,11 +230,16 @@ ltq_dma_init(void)
 	/* insert and request the memory region */
 	if (insert_resource(&iomem_resource, &ltq_dma_resource) < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		panic("Failed to insert dma memory");
 
 	if (request_mem_region(ltq_dma_resource.start,
 			resource_size(&ltq_dma_resource), "dma") < 0)
 		panic("Failed to request dma memory");
+<<<<<<< HEAD
+=======
 =======
 		panic("Failed to insert dma memory\n");
 
@@ -238,6 +247,7 @@ ltq_dma_init(void)
 			resource_size(&ltq_dma_resource), "dma") < 0)
 		panic("Failed to request dma memory\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* remap dma register range */
 	ltq_dma_membase = ioremap_nocache(ltq_dma_resource.start,
@@ -246,8 +256,12 @@ ltq_dma_init(void)
 <<<<<<< HEAD
 		panic("Failed to remap dma memory");
 =======
+<<<<<<< HEAD
+		panic("Failed to remap dma memory");
+=======
 		panic("Failed to remap dma memory\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* power up and reset the dma engine */
 	ltq_pmu_enable(PMU_DMA);

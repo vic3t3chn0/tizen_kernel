@@ -29,9 +29,13 @@ static void __init
 <<<<<<< HEAD
 fixup_clep7312(struct tag *tags, char **cmdline, struct meminfo *mi)
 =======
+<<<<<<< HEAD
+fixup_clep7312(struct tag *tags, char **cmdline, struct meminfo *mi)
+=======
 fixup_clep7312(struct machine_desc *desc, struct tag *tags,
 	    char **cmdline, struct meminfo *mi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mi->nr_banks=1;
 	mi->bank[0].start = 0xc0000000;
@@ -44,8 +48,12 @@ MACHINE_START(CLEP7212, "Cirrus Logic 7212/7312")
 <<<<<<< HEAD
 	.atag_offset	= 0x0100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x0100,
+=======
 	.boot_params	= 0xc0000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fixup		= fixup_clep7312,
 	.map_io		= clps711x_map_io,
 	.init_irq	= clps711x_init_irq,
@@ -53,6 +61,10 @@ MACHINE_START(CLEP7212, "Cirrus Logic 7212/7312")
 <<<<<<< HEAD
 	.restart	= clps711x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= clps711x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 

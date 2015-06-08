@@ -157,11 +157,16 @@ static int __init ipcomp4_init(void)
 {
 	if (xfrm_register_type(&ipcomp_type, AF_INET) < 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_info("%s: can't add xfrm type\n", __func__);
 		return -EAGAIN;
 	}
 	if (inet_add_protocol(&ipcomp4_protocol, IPPROTO_COMP) < 0) {
 		pr_info("%s: can't add protocol\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_INFO "ipcomp init: can't add xfrm type\n");
 		return -EAGAIN;
@@ -169,6 +174,7 @@ static int __init ipcomp4_init(void)
 	if (inet_add_protocol(&ipcomp4_protocol, IPPROTO_COMP) < 0) {
 		printk(KERN_INFO "ipcomp init: can't add protocol\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfrm_unregister_type(&ipcomp_type, AF_INET);
 		return -EAGAIN;
 	}
@@ -183,10 +189,16 @@ static void __exit ipcomp4_fini(void)
 	if (xfrm_unregister_type(&ipcomp_type, AF_INET) < 0)
 		pr_info("%s: can't remove xfrm type\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_info("%s: can't remove protocol\n", __func__);
+	if (xfrm_unregister_type(&ipcomp_type, AF_INET) < 0)
+		pr_info("%s: can't remove xfrm type\n", __func__);
+=======
 		printk(KERN_INFO "ip ipcomp close: can't remove protocol\n");
 	if (xfrm_unregister_type(&ipcomp_type, AF_INET) < 0)
 		printk(KERN_INFO "ip ipcomp close: can't remove xfrm type\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 module_init(ipcomp4_init);

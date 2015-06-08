@@ -27,6 +27,11 @@
 
 struct daio_usage {
 =======
+<<<<<<< HEAD
+#define DAIO_OUT_MAX		SPDIFOO
+
+struct daio_usage {
+=======
 #define DAIO_RESOURCE_NUM	NUM_DAIOTYP
 #define DAIO_OUT_MAX		SPDIFOO
 
@@ -42,6 +47,7 @@ union daio_usage {
 		unsigned short spdifi1:1;
 	} bf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short data;
 };
 
@@ -70,7 +76,11 @@ struct daio_rsc_idx idx_20k2[NUM_DAIOTYP] = {
 <<<<<<< HEAD
 	[MIC]	 = {.left = 0x55, .right = 0xd5},
 =======
+<<<<<<< HEAD
+	[MIC]	 = {.left = 0x55, .right = 0xd5},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[SPDIFOO] = {.left = 0x00, .right = 0x01},
 	[SPDIFIO] = {.left = 0x05, .right = 0x85},
 };
@@ -151,7 +161,11 @@ static unsigned int daio_device_index(enum DAIOTYP type, struct hw *hw)
 <<<<<<< HEAD
 		case MIC:	return 5;
 =======
+<<<<<<< HEAD
+		case MIC:	return 5;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		default:	return -EINVAL;
 		}
 	default:
@@ -534,16 +548,22 @@ static int dai_rsc_uninit(struct dai *dai)
 static int daio_mgr_get_rsc(struct rsc_mgr *mgr, enum DAIOTYP type)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (((struct daio_usage *)mgr->rscs)->data & (0x1 << type))
 		return -ENOENT;
 
 	((struct daio_usage *)mgr->rscs)->data |= (0x1 << type);
+<<<<<<< HEAD
+=======
 =======
 	if (((union daio_usage *)mgr->rscs)->data & (0x1 << type))
 		return -ENOENT;
 
 	((union daio_usage *)mgr->rscs)->data |= (0x1 << type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -553,8 +573,12 @@ static int daio_mgr_put_rsc(struct rsc_mgr *mgr, enum DAIOTYP type)
 <<<<<<< HEAD
 	((struct daio_usage *)mgr->rscs)->data &= ~(0x1 << type);
 =======
+<<<<<<< HEAD
+	((struct daio_usage *)mgr->rscs)->data &= ~(0x1 << type);
+=======
 	((union daio_usage *)mgr->rscs)->data &= ~(0x1 << type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -740,8 +764,12 @@ int daio_mgr_create(void *hw, struct daio_mgr **rdaio_mgr)
 <<<<<<< HEAD
 	err = rsc_mgr_init(&daio_mgr->mgr, DAIO, NUM_DAIOTYP, hw);
 =======
+<<<<<<< HEAD
+	err = rsc_mgr_init(&daio_mgr->mgr, DAIO, NUM_DAIOTYP, hw);
+=======
 	err = rsc_mgr_init(&daio_mgr->mgr, DAIO, DAIO_RESOURCE_NUM, hw);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto error1;
 

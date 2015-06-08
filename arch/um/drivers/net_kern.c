@@ -164,8 +164,12 @@ static int uml_net_open(struct net_device *dev)
 <<<<<<< HEAD
 			     IRQF_SHARED, dev->name, dev);
 =======
+<<<<<<< HEAD
+			     IRQF_SHARED, dev->name, dev);
+=======
 			     IRQF_DISABLED | IRQF_SHARED, dev->name, dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err != 0) {
 		printk(KERN_ERR "uml_net_open: failed to get irq(%d)\n", err);
 		err = -ENETUNREACH;
@@ -267,6 +271,9 @@ static int uml_net_change_mtu(struct net_device *dev, int new_mtu)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NET_POLL_CONTROLLER
 static void uml_net_poll_controller(struct net_device *dev)
 {
@@ -276,8 +283,11 @@ static void uml_net_poll_controller(struct net_device *dev)
 }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void uml_net_get_drvinfo(struct net_device *dev,
 				struct ethtool_drvinfo *info)
 {
@@ -303,8 +313,12 @@ static void uml_net_user_timer_expire(unsigned long _conn)
 <<<<<<< HEAD
 static int setup_etheraddr(char *str, unsigned char *addr, char *name)
 =======
+<<<<<<< HEAD
+static int setup_etheraddr(char *str, unsigned char *addr, char *name)
+=======
 static void setup_etheraddr(char *str, unsigned char *addr, char *name)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char *end;
 	int i;
@@ -348,8 +362,12 @@ static void setup_etheraddr(char *str, unsigned char *addr, char *name)
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 random:
 	printk(KERN_INFO
@@ -358,7 +376,11 @@ random:
 <<<<<<< HEAD
 	return 1;
 =======
+<<<<<<< HEAD
+	return 1;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static DEFINE_SPINLOCK(devices_lock);
@@ -390,8 +412,12 @@ static const struct net_device_ops uml_netdev_ops = {
 <<<<<<< HEAD
 	.ndo_set_rx_mode	= uml_net_set_multicast_list,
 =======
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= uml_net_set_multicast_list,
+=======
 	.ndo_set_multicast_list = uml_net_set_multicast_list,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_tx_timeout 	= uml_net_tx_timeout,
 	.ndo_set_mac_address	= eth_mac_addr,
 	.ndo_change_mtu 	= uml_net_change_mtu,
@@ -401,7 +427,13 @@ static const struct net_device_ops uml_netdev_ops = {
 	.ndo_poll_controller = uml_net_poll_controller,
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_NET_POLL_CONTROLLER
+	.ndo_poll_controller = uml_net_poll_controller,
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -420,7 +452,11 @@ static void eth_configure(int n, void *init, char *mac,
 <<<<<<< HEAD
 	int random_mac;
 =======
+<<<<<<< HEAD
+	int random_mac;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	size = transport->private_size + sizeof(struct uml_net_private);
 
@@ -450,8 +486,12 @@ static void eth_configure(int n, void *init, char *mac,
 <<<<<<< HEAD
 	random_mac = setup_etheraddr(mac, device->mac, dev->name);
 =======
+<<<<<<< HEAD
+	random_mac = setup_etheraddr(mac, device->mac, dev->name);
+=======
 	setup_etheraddr(mac, device->mac, dev->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "Netdevice %d (%pM) : ", n, device->mac);
 
@@ -513,7 +553,13 @@ static void eth_configure(int n, void *init, char *mac,
 		dev->addr_assign_type |= NET_ADDR_RANDOM;
 
 =======
+<<<<<<< HEAD
+	if (random_mac)
+		dev->addr_assign_type |= NET_ADDR_RANDOM;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev->mtu = transport->user->mtu;
 	dev->netdev_ops = &uml_netdev_ops;
 	dev->ethtool_ops = &uml_net_ethtool_ops;

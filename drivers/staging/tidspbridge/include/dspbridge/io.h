@@ -55,7 +55,14 @@ struct io_attrs {
  *      -EINVAL: Invalid DSP word size (must be > 0).
  *               Invalid base address for DSP communications.
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      io_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      io_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      io_man != NULL.
  *      mgr_attrts != NULL.
  *  Ensures:
@@ -74,11 +81,23 @@ extern int io_create(struct io_mgr **io_man,
  *      0:        Success.
  *      -EFAULT:    hio_mgr was invalid.
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      io_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      io_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Ensures:
  */
 extern int io_destroy(struct io_mgr *hio_mgr);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  ======== io_exit ========
  *  Purpose:
@@ -106,4 +125,8 @@ extern void io_exit(void);
  */
 extern bool io_init(void);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CHNL_ */

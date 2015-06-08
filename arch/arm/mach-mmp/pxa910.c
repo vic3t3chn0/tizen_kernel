@@ -9,8 +9,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -19,7 +22,11 @@
 <<<<<<< HEAD
 #include <linux/platform_device.h>
 =======
+<<<<<<< HEAD
+#include <linux/platform_device.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach/time.h>
 #include <mach/addr-map.h>
@@ -29,8 +36,11 @@
 #include <mach/irqs.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/dma.h>
 #include <mach/mfp.h>
 #include <mach/devices.h>
@@ -93,6 +103,11 @@ void __init pxa910_init_irq(void)
 {
 	icu_init_irq();
 =======
+<<<<<<< HEAD
+void __init pxa910_init_irq(void)
+{
+	icu_init_irq();
+=======
 #define APMASK(i)	(GPIO_REGS_VIRT + BANK_OFF(i) + 0x09c)
 
 static void __init pxa910_init_gpio(void)
@@ -114,6 +129,7 @@ void __init pxa910_init_irq(void)
 	icu_init_irq();
 	pxa910_init_gpio();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* APB peripheral clocks */
@@ -129,7 +145,12 @@ static APBC_CLK(pwm4, PXA910_PWM4, 1, 13000000);
 static APBC_CLK(gpio, PXA910_GPIO, 0, 13000000);
 static APBC_CLK(rtc, PXA910_RTC, 8, 32768);
 =======
+<<<<<<< HEAD
+static APBC_CLK(gpio, PXA910_GPIO, 0, 13000000);
+static APBC_CLK(rtc, PXA910_RTC, 8, 32768);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static APMU_CLK(nand, NAND, 0x19b, 156000000);
 static APMU_CLK(u2o, USB, 0x1b, 480000000);
@@ -150,8 +171,14 @@ static struct clk_lookup pxa910_clkregs[] = {
 	INIT_CLKREG(&clk_u2o, "pxa-u2o", "U2OCLK"),
 	INIT_CLKREG(&clk_rtc, "sa1100-rtc", NULL),
 =======
+<<<<<<< HEAD
+	INIT_CLKREG(&clk_gpio, "pxa-gpio", NULL),
+	INIT_CLKREG(&clk_u2o, "pxa-u2o", "U2OCLK"),
+	INIT_CLKREG(&clk_rtc, "sa1100-rtc", NULL),
+=======
 	INIT_CLKREG(&clk_u2o, "pxa-u2o", "U2OCLK"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init pxa910_init(void)
@@ -208,6 +235,9 @@ PXA910_DEVICE(pwm3, "pxa910-pwm", 2, NONE, 0xd401a800, 0x10);
 PXA910_DEVICE(pwm4, "pxa910-pwm", 3, NONE, 0xd401ac00, 0x10);
 PXA910_DEVICE(nand, "pxa3xx-nand", -1, NAND, 0xd4283000, 0x80, 97, 99);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct resource pxa910_resource_gpio[] = {
 	{
@@ -253,5 +283,8 @@ struct platform_device pxa910_device_rtc = {
 	.num_resources	= ARRAY_SIZE(pxa910_resource_rtc),
 	.resource	= pxa910_resource_rtc,
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -16,7 +16,15 @@
 #include <linux/usb/serial.h>
 #include <linux/uaccess.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Version Information */
 #define DRIVER_VERSION "v2.14"
@@ -188,7 +196,15 @@ struct quatech_port {
 
 	struct usb_serial_port *port;	/* owner of this object */
 	struct qt_get_device_data DeviceData;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mutex lock;
+=======
 	spinlock_t lock;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spinlock_t lock;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool read_urb_busy;
 	int RxHolding;
 	int ReadBulkStopped;
@@ -200,7 +216,14 @@ static struct usb_driver serqt_usb_driver = {
 	.probe = usb_serial_probe,
 	.disconnect = usb_serial_disconnect,
 	.id_table = serqt_id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int port_paranoia_check(struct usb_serial_port *port,
@@ -743,7 +766,15 @@ static int qt_startup(struct usb_serial *serial)
 			}
 			return -ENOMEM;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mutex_init(&qt_port->lock);
+=======
 		spin_lock_init(&qt_port->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		spin_lock_init(&qt_port->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		usb_set_serial_port_data(port, qt_port);
 
@@ -1157,7 +1188,14 @@ static int qt_write_room(struct tty_struct *tty)
 	struct usb_serial_port *port = tty->driver_data;
 	struct usb_serial *serial;
 	struct quatech_port *qt_port;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int retval = -EINVAL;
 
@@ -1173,7 +1211,15 @@ static int qt_write_room(struct tty_struct *tty)
 
 	qt_port = qt_get_port_private(port);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&qt_port->lock);
+=======
 	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbg("%s - port %d\n", __func__, port->number);
 
@@ -1182,7 +1228,15 @@ static int qt_write_room(struct tty_struct *tty)
 			retval = port->bulk_out_size;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&qt_port->lock);
+=======
 	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 
 }
@@ -1355,7 +1409,14 @@ static void qt_break(struct tty_struct *tty, int break_state)
 	struct quatech_port *qt_port;
 	u16 index, onoff;
 	unsigned int result;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	index = tty->index - serial->minor;
 
@@ -1366,7 +1427,15 @@ static void qt_break(struct tty_struct *tty, int break_state)
 	else
 		onoff = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&qt_port->lock);
+=======
 	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbg("%s - port %d\n", __func__, port->number);
 
@@ -1374,7 +1443,15 @@ static void qt_break(struct tty_struct *tty, int break_state)
 	    usb_control_msg(serial->dev, usb_sndctrlpipe(serial->dev, 0),
 			    QT_BREAK_CONTROL, 0x40, onoff, index, NULL, 0, 300);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&qt_port->lock);
+=======
 	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int qt_real_tiocmget(struct tty_struct *tty,
@@ -1463,21 +1540,44 @@ static int qt_tiocmget(struct tty_struct *tty)
 	struct usb_serial *serial = get_usb_serial(port, __func__);
 	struct quatech_port *qt_port = qt_get_port_private(port);
 	int retval = -ENODEV;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbg("In %s\n", __func__);
 
 	if (!serial)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&qt_port->lock);
+=======
 	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbg("%s - port %d\n", __func__, port->number);
 	dbg("%s - port->RxHolding = %d\n", __func__, qt_port->RxHolding);
 
 	retval = qt_real_tiocmget(tty, port, serial);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&qt_port->lock);
+=======
 	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -1488,7 +1588,14 @@ static int qt_tiocmset(struct tty_struct *tty,
 	struct usb_serial_port *port = tty->driver_data;
 	struct usb_serial *serial = get_usb_serial(port, __func__);
 	struct quatech_port *qt_port = qt_get_port_private(port);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int retval = -ENODEV;
 
 	dbg("In %s\n", __func__);
@@ -1496,14 +1603,30 @@ static int qt_tiocmset(struct tty_struct *tty,
 	if (!serial)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&qt_port->lock);
+=======
 	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbg("%s - port %d\n", __func__, port->number);
 	dbg("%s - qt_port->RxHolding = %d\n", __func__, qt_port->RxHolding);
 
 	retval = qt_real_tiocmset(tty, port, serial, set);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&qt_port->lock);
+=======
 	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -1512,7 +1635,14 @@ static void qt_throttle(struct tty_struct *tty)
 	struct usb_serial_port *port = tty->driver_data;
 	struct usb_serial *serial = get_usb_serial(port, __func__);
 	struct quatech_port *qt_port;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbg("%s - port %d\n", __func__, port->number);
 
@@ -1521,13 +1651,29 @@ static void qt_throttle(struct tty_struct *tty)
 
 	qt_port = qt_get_port_private(port);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&qt_port->lock);
+=======
 	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* pass on to the driver specific version of this function */
 	qt_port->RxHolding = 1;
 	dbg("%s - port->RxHolding = 1\n", __func__);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&qt_port->lock);
+=======
 	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 }
 
@@ -1536,7 +1682,14 @@ static void qt_unthrottle(struct tty_struct *tty)
 	struct usb_serial_port *port = tty->driver_data;
 	struct usb_serial *serial = get_usb_serial(port, __func__);
 	struct quatech_port *qt_port;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int result;
 
 	if (!serial)
@@ -1544,7 +1697,15 @@ static void qt_unthrottle(struct tty_struct *tty)
 
 	qt_port = qt_get_port_private(port);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&qt_port->lock);
+=======
 	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dbg("%s - port %d\n", __func__, port->number);
 
@@ -1570,7 +1731,15 @@ static void qt_unthrottle(struct tty_struct *tty)
 				    __func__, result);
 		}
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_unlock(&qt_port->lock);
+=======
 	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&qt_port->lock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 
 }
@@ -1596,7 +1765,14 @@ static struct usb_serial_driver quatech_device = {
 		   .name = "serqt",
 		   },
 	.description = DRIVER_DESC,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver = &serqt_usb_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver = &serqt_usb_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = serqt_id_table,
 	.num_ports = 8,
 	.open = qt_open,
@@ -1616,6 +1792,16 @@ static struct usb_serial_driver quatech_device = {
 	.release = qt_release,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&quatech_device, NULL
+};
+
+module_usb_serial_driver(serqt_usb_driver, serial_drivers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init serqt_usb_init(void)
 {
 	int retval;
@@ -1651,6 +1837,10 @@ static void __exit serqt_usb_exit(void)
 
 module_init(serqt_usb_init);
 module_exit(serqt_usb_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

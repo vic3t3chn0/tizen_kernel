@@ -39,8 +39,12 @@ static int sha1_init(struct shash_desc *desc)
 <<<<<<< HEAD
 int crypto_sha1_update(struct shash_desc *desc, const u8 *data,
 =======
+<<<<<<< HEAD
+int crypto_sha1_update(struct shash_desc *desc, const u8 *data,
+=======
 static int sha1_update(struct shash_desc *desc, const u8 *data,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			unsigned int len)
 {
 	struct sha1_state *sctx = shash_desc_ctx(desc);
@@ -50,8 +54,12 @@ static int sha1_update(struct shash_desc *desc, const u8 *data,
 <<<<<<< HEAD
 	partial = sctx->count % SHA1_BLOCK_SIZE;
 =======
+<<<<<<< HEAD
+	partial = sctx->count % SHA1_BLOCK_SIZE;
+=======
 	partial = sctx->count & 0x3f;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sctx->count += len;
 	done = 0;
 	src = data;
@@ -59,8 +67,12 @@ static int sha1_update(struct shash_desc *desc, const u8 *data,
 <<<<<<< HEAD
 	if ((partial + len) >= SHA1_BLOCK_SIZE) {
 =======
+<<<<<<< HEAD
+	if ((partial + len) >= SHA1_BLOCK_SIZE) {
+=======
 	if ((partial + len) > 63) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 temp[SHA_WORKSPACE_WORDS];
 
 		if (partial) {
@@ -69,8 +81,13 @@ static int sha1_update(struct shash_desc *desc, const u8 *data,
 			memcpy(sctx->buffer + partial, data,
 			       done + SHA1_BLOCK_SIZE);
 =======
+<<<<<<< HEAD
+			memcpy(sctx->buffer + partial, data,
+			       done + SHA1_BLOCK_SIZE);
+=======
 			memcpy(sctx->buffer + partial, data, done + 64);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			src = sctx->buffer;
 		}
 
@@ -81,10 +98,16 @@ static int sha1_update(struct shash_desc *desc, const u8 *data,
 			src = data + done;
 		} while (done + SHA1_BLOCK_SIZE <= len);
 =======
+<<<<<<< HEAD
+			done += SHA1_BLOCK_SIZE;
+			src = data + done;
+		} while (done + SHA1_BLOCK_SIZE <= len);
+=======
 			done += 64;
 			src = data + done;
 		} while (done + 63 < len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		memset(temp, 0, sizeof(temp));
 		partial = 0;
@@ -96,7 +119,11 @@ static int sha1_update(struct shash_desc *desc, const u8 *data,
 <<<<<<< HEAD
 EXPORT_SYMBOL(crypto_sha1_update);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(crypto_sha1_update);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* Add padding and return the message digest. */
@@ -114,16 +141,22 @@ static int sha1_final(struct shash_desc *desc, u8 *out)
 	index = sctx->count & 0x3f;
 	padlen = (index < 56) ? (56 - index) : ((64+56) - index);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	crypto_sha1_update(desc, padding, padlen);
 
 	/* Append length */
 	crypto_sha1_update(desc, (const u8 *)&bits, sizeof(bits));
+<<<<<<< HEAD
+=======
 =======
 	sha1_update(desc, padding, padlen);
 
 	/* Append length */
 	sha1_update(desc, (const u8 *)&bits, sizeof(bits));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Store state in digest */
 	for (i = 0; i < 5; i++)
@@ -157,8 +190,12 @@ static struct shash_alg alg = {
 <<<<<<< HEAD
 	.update		=	crypto_sha1_update,
 =======
+<<<<<<< HEAD
+	.update		=	crypto_sha1_update,
+=======
 	.update		=	sha1_update,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.final		=	sha1_final,
 	.export		=	sha1_export,
 	.import		=	sha1_import,

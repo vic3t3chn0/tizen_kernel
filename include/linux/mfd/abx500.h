@@ -9,8 +9,12 @@
 <<<<<<< HEAD
  * ab3100, ab5500, and ab8500.
 =======
+<<<<<<< HEAD
+ * ab3100, ab5500, and ab8500.
+=======
  * ab3100, ab3550, ab5500, and ab8500.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author: Mattias Wallin <mattias.wallin@stericsson.com>
  * Author: Mattias Nilsson <mattias.i.nilsson@stericsson.com>
@@ -19,15 +23,21 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/machine.h>
 
 struct device;
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/device.h>
 #include <linux/regulator/machine.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef MFD_ABX500_H
 #define MFD_ABX500_H
 
@@ -45,6 +55,11 @@ struct device;
 #define AB5500_1_1	0x21
 #define AB5500_2_0	0x24
 =======
+<<<<<<< HEAD
+#define AB5500_1_0	0x20
+#define AB5500_1_1	0x21
+#define AB5500_2_0	0x24
+=======
 #define AB3550_P1A	0x10
 #define AB5500_1_0	0x20
 #define AB5500_2_0	0x21
@@ -57,6 +72,7 @@ struct device;
 #define AB8500_CUT2P0	0x20
 #define AB8500_CUT3P0	0x30
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * AB3100, EVENTA1, A2 and A3 event register flags
@@ -162,6 +178,8 @@ int ab3100_event_unregister(struct ab3100 *ab3100,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* AB3550, STR register flags */
 #define AB3550_STR_ONSWA				(0x01)
 #define AB3550_STR_ONSWB				(0x02)
@@ -196,6 +214,7 @@ enum ab3550_devid {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct abx500_init_setting
  * Initial value of the registers for driver to use during setup.
@@ -207,6 +226,9 @@ struct abx500_init_settings {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Battery driver related data */
 /*
  * ADC for the battery thermistor.
@@ -478,6 +500,8 @@ struct abx500_bm_plat_data {
 	struct abx500_btemp_platform_data *btemp;
 	struct abx500_fg_platform_data *fg;
 	struct abx500_chargalg_platform_data *chargalg;
+<<<<<<< HEAD
+=======
 =======
 /**
  * struct ab3550_platform_data
@@ -490,6 +514,7 @@ struct ab3550_platform_data {
 	struct abx500_init_settings *init_settings;
 	unsigned int init_settings_sz;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int abx500_set_register_interruptible(struct device *dev, u8 bank, u8 reg,

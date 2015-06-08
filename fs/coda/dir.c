@@ -33,8 +33,12 @@
 <<<<<<< HEAD
 static int coda_create(struct inode *dir, struct dentry *new, umode_t mode, struct nameidata *nd);
 =======
+<<<<<<< HEAD
+static int coda_create(struct inode *dir, struct dentry *new, umode_t mode, struct nameidata *nd);
+=======
 static int coda_create(struct inode *dir, struct dentry *new, int mode, struct nameidata *nd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct dentry *coda_lookup(struct inode *dir, struct dentry *target, struct nameidata *nd);
 static int coda_link(struct dentry *old_dentry, struct inode *dir_inode, 
 		     struct dentry *entry);
@@ -44,8 +48,12 @@ static int coda_symlink(struct inode *dir_inode, struct dentry *entry,
 <<<<<<< HEAD
 static int coda_mkdir(struct inode *dir_inode, struct dentry *entry, umode_t mode);
 =======
+<<<<<<< HEAD
+static int coda_mkdir(struct inode *dir_inode, struct dentry *entry, umode_t mode);
+=======
 static int coda_mkdir(struct inode *dir_inode, struct dentry *entry, int mode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int coda_rmdir(struct inode *dir_inode, struct dentry *entry);
 static int coda_rename(struct inode *old_inode, struct dentry *old_dentry, 
                        struct inode *new_inode, struct dentry *new_dentry);
@@ -105,11 +113,16 @@ const struct file_operations coda_dir_operations = {
 static struct dentry *coda_lookup(struct inode *dir, struct dentry *entry, struct nameidata *nd)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct super_block *sb = dir->i_sb;
 	const char *name = entry->d_name.name;
 	size_t length = entry->d_name.len;
 	struct inode *inode;
 	int type = 0;
+<<<<<<< HEAD
+=======
 =======
 	struct inode *inode = NULL;
 	struct CodaFid resfid = { { 0, } };
@@ -118,6 +131,7 @@ static struct dentry *coda_lookup(struct inode *dir, struct dentry *entry, struc
 	const char *name = entry->d_name.name;
 	size_t length = entry->d_name.len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (length > CODA_MAXNAMLEN) {
 		printk(KERN_ERR "name too long: lookup, %s (%*s)\n",
@@ -128,6 +142,9 @@ static struct dentry *coda_lookup(struct inode *dir, struct dentry *entry, struc
 	/* control object, create inode on the fly */
 	if (coda_isroot(dir) && coda_iscontrol(name, length)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode = coda_cnode_makectl(sb);
 		type = CODA_NOCACHE;
 	} else {
@@ -142,6 +159,8 @@ static struct dentry *coda_lookup(struct inode *dir, struct dentry *entry, struc
 
 	if (inode == ERR_PTR(-ENOENT))
 		inode = NULL;
+<<<<<<< HEAD
+=======
 =======
 		error = coda_cnode_makectl(&inode, dir->i_sb);
 		type = CODA_NOCACHE;
@@ -160,17 +179,23 @@ exit:
 	if (inode && (type & CODA_NOCACHE))
 		coda_flag_inode(inode, C_VATTR | C_PURGE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return d_splice_alias(inode, entry);
 }
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int coda_permission(struct inode *inode, int mask)
 {
 	int error;
 
 	if (mask & MAY_NOT_BLOCK)
+<<<<<<< HEAD
+=======
 =======
 int coda_permission(struct inode *inode, int mask, unsigned int flags)
 {
@@ -178,6 +203,7 @@ int coda_permission(struct inode *inode, int mask, unsigned int flags)
 
 	if (flags & IPERM_FLAG_RCU)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ECHILD;
 
 	mask &= MAY_READ | MAY_WRITE | MAY_EXEC;
@@ -235,8 +261,12 @@ static inline void coda_dir_drop_nlink(struct inode *dir)
 <<<<<<< HEAD
 static int coda_create(struct inode *dir, struct dentry *de, umode_t mode, struct nameidata *nd)
 =======
+<<<<<<< HEAD
+static int coda_create(struct inode *dir, struct dentry *de, umode_t mode, struct nameidata *nd)
+=======
 static int coda_create(struct inode *dir, struct dentry *de, int mode, struct nameidata *nd)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int error;
 	const char *name=de->d_name.name;
@@ -271,8 +301,12 @@ err_out:
 <<<<<<< HEAD
 static int coda_mkdir(struct inode *dir, struct dentry *de, umode_t mode)
 =======
+<<<<<<< HEAD
+static int coda_mkdir(struct inode *dir, struct dentry *de, umode_t mode)
+=======
 static int coda_mkdir(struct inode *dir, struct dentry *de, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	struct coda_vattr attrs;
@@ -392,8 +426,12 @@ static int coda_rmdir(struct inode *dir, struct dentry *de)
 <<<<<<< HEAD
 			clear_nlink(de->d_inode);
 =======
+<<<<<<< HEAD
+			clear_nlink(de->d_inode);
+=======
 		    de->d_inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* fix the link count of the parent */
 		coda_dir_drop_nlink(dir);
@@ -505,9 +543,13 @@ static int coda_venus_readdir(struct file *coda_file, void *buf,
 <<<<<<< HEAD
 	unsigned long vdir_size = offsetof(struct venus_dirent, d_name);
 =======
+<<<<<<< HEAD
+	unsigned long vdir_size = offsetof(struct venus_dirent, d_name);
+=======
 	unsigned long vdir_size =
 	    (unsigned long)(&((struct venus_dirent *)0)->d_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int type;
 	struct qstr name;
 	ino_t ino;
@@ -534,8 +576,12 @@ static int coda_venus_readdir(struct file *coda_file, void *buf,
 <<<<<<< HEAD
 		ret = filldir(buf, "..", 2, 1, parent_ino(de), DT_DIR);
 =======
+<<<<<<< HEAD
+		ret = filldir(buf, "..", 2, 1, parent_ino(de), DT_DIR);
+=======
 		ret = filldir(buf, "..", 2, 1, de->d_parent->d_inode->i_ino, DT_DIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret < 0)
 			goto out;
 		result++;

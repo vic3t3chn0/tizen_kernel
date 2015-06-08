@@ -29,14 +29,20 @@
 #include <mach/at91_tc.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define at91_tc_read(field) \
 	__raw_readl(AT91_TC + field)
 
 #define at91_tc_write(field, value) \
 	__raw_writel(value, AT91_TC + field);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	3 counter/timer units present.
  */
@@ -49,8 +55,12 @@ static unsigned long at91x40_gettimeoffset(void)
 <<<<<<< HEAD
 	return (at91_tc_read(AT91_TC_CLK1BASE + AT91_TC_CV) * 1000000 / (AT91X40_MASTER_CLOCK / 128));
 =======
+<<<<<<< HEAD
+	return (at91_tc_read(AT91_TC_CLK1BASE + AT91_TC_CV) * 1000000 / (AT91X40_MASTER_CLOCK / 128));
+=======
 	return (at91_sys_read(AT91_TC + AT91_TC_CLK1BASE + AT91_TC_CV) * 1000000 / (AT91X40_MASTER_CLOCK / 128));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static irqreturn_t at91x40_timer_interrupt(int irq, void *dev_id)
@@ -58,8 +68,12 @@ static irqreturn_t at91x40_timer_interrupt(int irq, void *dev_id)
 <<<<<<< HEAD
 	at91_tc_read(AT91_TC_CLK1BASE + AT91_TC_SR);
 =======
+<<<<<<< HEAD
+	at91_tc_read(AT91_TC_CLK1BASE + AT91_TC_SR);
+=======
 	at91_sys_read(AT91_TC + AT91_TC_CLK1BASE + AT91_TC_SR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	timer_tick();
 	return IRQ_HANDLED;
 }
@@ -75,6 +89,9 @@ void __init at91x40_timer_init(void)
 	unsigned int v;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_tc_write(AT91_TC_BCR, 0);
 	v = at91_tc_read(AT91_TC_BMR);
 	v = (v & ~AT91_TC_TC1XC1S) | AT91_TC_TC1XC1S_NONE;
@@ -89,6 +106,8 @@ void __init at91x40_timer_init(void)
 	setup_irq(AT91X40_ID_TC1, &at91x40_timer_irq);
 
 	at91_tc_write(AT91_TC_CLK1BASE + AT91_TC_CCR, (AT91_TC_SWTRG | AT91_TC_CLKEN));
+<<<<<<< HEAD
+=======
 =======
 	at91_sys_write(AT91_TC + AT91_TC_BCR, 0);
 	v = at91_sys_read(AT91_TC + AT91_TC_BMR);
@@ -105,6 +124,7 @@ void __init at91x40_timer_init(void)
 
 	at91_sys_write(AT91_TC + AT91_TC_CLK1BASE + AT91_TC_CCR, (AT91_TC_SWTRG | AT91_TC_CLKEN));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct sys_timer at91x40_timer = {

@@ -274,8 +274,12 @@ struct q_inval {
 <<<<<<< HEAD
 	raw_spinlock_t  q_lock;
 =======
+<<<<<<< HEAD
+	raw_spinlock_t  q_lock;
+=======
 	spinlock_t      q_lock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct qi_desc  *desc;          /* invalidation queue */
 	int             *desc_status;   /* desc status */
 	int             free_head;      /* first free entry */
@@ -286,8 +290,12 @@ struct q_inval {
 <<<<<<< HEAD
 #ifdef CONFIG_IRQ_REMAP
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_IRQ_REMAP
+=======
 #ifdef CONFIG_INTR_REMAP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 1MB - maximum possible interrupt remapping table size */
 #define INTR_REMAP_PAGE_ORDER	8
 #define INTR_REMAP_TABLE_REG_SIZE	0xf
@@ -322,8 +330,12 @@ struct intel_iommu {
 <<<<<<< HEAD
 	raw_spinlock_t	register_lock; /* protect register handling */
 =======
+<<<<<<< HEAD
+	raw_spinlock_t	register_lock; /* protect register handling */
+=======
 	spinlock_t	register_lock; /* protect register handling */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int		seq_id;	/* sequence id of the iommu */
 	int		agaw; /* agaw of this iommu */
 	int		msagaw; /* max sagaw of this iommu */
@@ -333,8 +345,12 @@ struct intel_iommu {
 <<<<<<< HEAD
 #ifdef CONFIG_INTEL_IOMMU
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_INTEL_IOMMU
+=======
 #ifdef CONFIG_DMAR
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long 	*domain_ids; /* bitmap of domains */
 	struct dmar_domain **domains; /* ptr to domains */
 	spinlock_t	lock; /* protect context, domain ids */
@@ -348,8 +364,12 @@ struct intel_iommu {
 <<<<<<< HEAD
 #ifdef CONFIG_IRQ_REMAP
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_IRQ_REMAP
+=======
 #ifdef CONFIG_INTR_REMAP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ir_table *ir_table;	/* Interrupt remapping info */
 #endif
 	int		node;

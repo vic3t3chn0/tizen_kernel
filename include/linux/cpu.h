@@ -16,13 +16,19 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/node.h>
 #include <linux/compiler.h>
 #include <linux/cpumask.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct device;
 
 struct cpu {
@@ -42,6 +48,8 @@ extern int cpu_add_dev_attr_group(struct attribute_group *attrs);
 extern void cpu_remove_dev_attr_group(struct attribute_group *attrs);
 
 extern int sched_create_sysfs_power_savings_entries(struct device *dev);
+<<<<<<< HEAD
+=======
 =======
 struct cpu {
 	int node_id;		/* The node which contains the CPU */
@@ -60,6 +68,7 @@ extern void cpu_remove_sysdev_attr_group(struct attribute_group *attrs);
 
 extern int sched_create_sysfs_power_savings_entries(struct sysdev_class *cls);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_HOTPLUG_CPU
 extern void unregister_cpu(struct cpu *cpu);
@@ -69,6 +78,9 @@ extern ssize_t arch_cpu_release(const char *, size_t);
 struct notifier_block;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARCH_HAS_CPU_AUTOPROBE
 extern int arch_cpu_uevent(struct device *dev, struct kobj_uevent_env *env);
 extern ssize_t arch_print_cpu_modalias(struct device *dev,
@@ -76,8 +88,11 @@ extern ssize_t arch_print_cpu_modalias(struct device *dev,
 				       char *bufptr);
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * CPU notifier priorities.
  */
@@ -102,6 +117,9 @@ enum {
 	CPU_PRI_PERF		= 20,
 	CPU_PRI_MIGRATION	= 10,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* prepare workqueues for other notifiers */
 	CPU_PRI_WORKQUEUE	= 5,
 };
@@ -139,6 +157,8 @@ enum {
 #define CPU_STARTING_FROZEN	(CPU_STARTING | CPU_TASKS_FROZEN)
 
 
+<<<<<<< HEAD
+=======
 =======
 	/* bring up workqueues before normal notifiers and down after */
 	CPU_PRI_WORKQUEUE_UP	= 5,
@@ -146,6 +166,7 @@ enum {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 /* Need to know about CPUs going up/down? */
 #if defined(CONFIG_HOTPLUG_CPU) || !defined(MODULE)
@@ -206,8 +227,12 @@ static inline void cpu_maps_update_done(void)
 <<<<<<< HEAD
 extern struct bus_type cpu_subsys;
 =======
+<<<<<<< HEAD
+extern struct bus_type cpu_subsys;
+=======
 extern struct sysdev_class cpu_sysdev_class;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_HOTPLUG_CPU
 /* Stop CPUs going up and down. */
@@ -248,6 +273,11 @@ extern int disable_nonboot_cpus(void);
 extern void enable_nonboot_cpus(void);
 #else /* !CONFIG_PM_SLEEP_SMP */
 =======
+<<<<<<< HEAD
+extern int disable_nonboot_cpus(void);
+extern void enable_nonboot_cpus(void);
+#else /* !CONFIG_PM_SLEEP_SMP */
+=======
 extern int suspend_cpu_hotplug;
 
 extern int disable_nonboot_cpus(void);
@@ -256,6 +286,7 @@ extern void enable_nonboot_cpus(void);
 #define suspend_cpu_hotplug	0
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int disable_nonboot_cpus(void) { return 0; }
 static inline void enable_nonboot_cpus(void) {}
 #endif /* !CONFIG_PM_SLEEP_SMP */

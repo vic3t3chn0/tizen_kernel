@@ -43,8 +43,12 @@ struct snd_kcontrol_new {
 <<<<<<< HEAD
 	unsigned char *name;	/* ASCII name of item */
 =======
+<<<<<<< HEAD
+	unsigned char *name;	/* ASCII name of item */
+=======
 	unsigned char *name;		/* ASCII name of item */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int index;		/* index of item */
 	unsigned int access;		/* access rights */
 	unsigned int count;		/* count of same elements */
@@ -232,6 +236,9 @@ snd_ctl_add_slave_uncached(struct snd_kcontrol *master,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_ctl_add_vmaster_hook(struct snd_kcontrol *kctl,
 			     void (*hook)(void *private_data, int),
 			     void *private_data);
@@ -245,6 +252,9 @@ snd_kctl_jack_new(const char *name, int idx, void *private_data);
 void snd_kctl_jack_report(struct snd_card *card,
 			  struct snd_kcontrol *kctl, bool status);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __SOUND_CONTROL_H */

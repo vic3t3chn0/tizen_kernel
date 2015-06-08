@@ -12,6 +12,10 @@
 #include <mach/irqs.h>
 
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+
+=======
 #include <mach/io.h>
 #include <mach/irqs.h>
 
@@ -19,6 +23,7 @@
 		.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.macro  get_irqnr_preamble, base, tmp
 		ldr \base, =davinci_intc_base
 		ldr \base, [\base]
@@ -26,10 +31,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.macro  arch_ret_to_user, tmp1, tmp2
 		.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.macro	get_irqnr_and_base, irqnr, irqstat, base, tmp
 #if defined(CONFIG_AINTC) && defined(CONFIG_CP_INTC)
 		ldr \tmp, =davinci_intc_type
@@ -56,7 +64,10 @@
 		.endm
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 		.macro	irq_prio_table
 		.endm
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

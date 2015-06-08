@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2008, 2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2008, 2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2007-2008 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2007-2011 Nokia Corporation
  *
  * Written by Paul Walmsley
@@ -84,17 +88,24 @@ static int _pwrdm_register(struct powerdomain *pwrdm)
 <<<<<<< HEAD
 	struct voltagedomain *voltdm;
 =======
+<<<<<<< HEAD
+	struct voltagedomain *voltdm;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pwrdm || !pwrdm->name)
 		return -EINVAL;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!omap_chip_is(pwrdm->omap_chip))
 		return -EINVAL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_is_omap44xx() &&
 	    pwrdm->prcm_partition == OMAP4430_INVALID_PRCM_PARTITION) {
 		pr_err("powerdomain: %s: missing OMAP4 PRCM partition ID\n",
@@ -106,6 +117,9 @@ static int _pwrdm_register(struct powerdomain *pwrdm)
 		return -EEXIST;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	voltdm = voltdm_lookup(pwrdm->voltdm.name);
 	if (!voltdm) {
 		pr_err("powerdomain: %s: voltagedomain %s does not exist\n",
@@ -116,8 +130,11 @@ static int _pwrdm_register(struct powerdomain *pwrdm)
 	INIT_LIST_HEAD(&pwrdm->voltdm_node);
 	voltdm_add_pwrdm(voltdm, pwrdm);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_add(&pwrdm->node, &pwrdm_list);
 
 	/* Initialize the powerdomain's state counter */
@@ -219,6 +236,9 @@ static int _pwrdm_post_transition_cb(struct powerdomain *pwrdm, void *unused)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pwrdm_register_platform_funcs - register powerdomain implementation fns
  * @po: func pointers for arch specific implementations
  *
@@ -289,6 +309,8 @@ int pwrdm_complete_init(void)
 		pwrdm_set_next_pwrst(temp_p, PWRDM_POWER_ON);
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
  * pwrdm_init - set up the powerdomain layer
  * @pwrdm_list: array of struct powerdomain pointers to register
@@ -314,6 +336,7 @@ void pwrdm_init(struct powerdomain **pwrdm_list, struct pwrdm_ops *custom_funcs)
 			_pwrdm_register(*p);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -481,6 +504,9 @@ int pwrdm_for_each_clkdm(struct powerdomain *pwrdm,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pwrdm_get_voltdm - return a ptr to the voltdm that this pwrdm resides in
  * @pwrdm: struct powerdomain *
  *
@@ -493,8 +519,11 @@ struct voltagedomain *pwrdm_get_voltdm(struct powerdomain *pwrdm)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pwrdm_get_mem_bank_count - get number of memory banks in this powerdomain
  * @pwrdm: struct powerdomain *
  *
@@ -1018,6 +1047,9 @@ int pwrdm_wait_transition(struct powerdomain *pwrdm)
 int pwrdm_state_switch(struct powerdomain *pwrdm)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	ret = pwrdm_wait_transition(pwrdm);
@@ -1025,9 +1057,12 @@ int pwrdm_state_switch(struct powerdomain *pwrdm)
 		ret = _pwrdm_state_switch(pwrdm, PWRDM_STATE_NOW);
 
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	return _pwrdm_state_switch(pwrdm, PWRDM_STATE_NOW);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int pwrdm_clkdm_state_switch(struct clockdomain *clkdm)
@@ -1058,16 +1093,22 @@ int pwrdm_post_transition(void)
  *
  * Context loss count is the sum of powerdomain off-mode counter, the
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * logic off counter and the per-bank memory off counter.  Returns negative
  * (and WARNs) upon error, otherwise, returns the context loss count.
  */
 int pwrdm_get_context_loss_count(struct powerdomain *pwrdm)
+<<<<<<< HEAD
+=======
 =======
  * logic off counter and the per-bank memory off counter.  Returns 0
  * (and WARNs) upon error, otherwise, returns the context loss count.
  */
 u32 pwrdm_get_context_loss_count(struct powerdomain *pwrdm)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int i, count;
 
@@ -1076,8 +1117,12 @@ u32 pwrdm_get_context_loss_count(struct powerdomain *pwrdm)
 <<<<<<< HEAD
 		return -ENODEV;
 =======
+<<<<<<< HEAD
+		return -ENODEV;
+=======
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	count = pwrdm->state_counter[PWRDM_POWER_OFF];
@@ -1087,6 +1132,9 @@ u32 pwrdm_get_context_loss_count(struct powerdomain *pwrdm)
 		count += pwrdm->ret_mem_off_counter[i];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Context loss count has to be a non-negative value. Clear the sign
 	 * bit to get a value range from 0 to INT_MAX.
@@ -1094,9 +1142,12 @@ u32 pwrdm_get_context_loss_count(struct powerdomain *pwrdm)
 	count &= INT_MAX;
 
 	pr_debug("powerdomain: %s: context loss count = %d\n",
+<<<<<<< HEAD
+=======
 =======
 	pr_debug("powerdomain: %s: context loss count = %u\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 pwrdm->name, count);
 
 	return count;

@@ -24,6 +24,9 @@
 #include <mach/common.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct device mxc_aips_bus = {
 	.init_name	= "mxc_aips",
 	.parent		= &platform_bus,
@@ -48,6 +51,8 @@ done:
 	return ret;
 }
 core_initcall(mxc_device_init);
+<<<<<<< HEAD
+=======
 =======
 int __init mxc_register_device(struct platform_device *pdev, void *data)
 {
@@ -116,3 +121,4 @@ err:
 	return pdev;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

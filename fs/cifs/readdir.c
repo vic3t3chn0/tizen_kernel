@@ -7,7 +7,11 @@
 <<<<<<< HEAD
  *   Copyright (C) Red Hat, Inc., 2011
 =======
+<<<<<<< HEAD
+ *   Copyright (C) Red Hat, Inc., 2011
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *   Author(s): Steve French (sfrench@us.ibm.com)
  *
  *   This library is free software; you can redistribute it and/or modify
@@ -94,6 +98,11 @@ cifs_readdir_lookup(struct dentry *parent, struct qstr *name,
 		if (dentry->d_inode != NULL)
 			return dentry;
 =======
+<<<<<<< HEAD
+		/* FIXME: check for inode number changes? */
+		if (dentry->d_inode != NULL)
+			return dentry;
+=======
 		inode = dentry->d_inode;
 		/* update inode in place if i_ino didn't change */
 		if (inode && CIFS_I(inode)->uniqueid == fattr->cf_uniqueid) {
@@ -101,6 +110,7 @@ cifs_readdir_lookup(struct dentry *parent, struct qstr *name,
 			return dentry;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		d_drop(dentry);
 		dput(dentry);
 	}
@@ -304,16 +314,22 @@ error_exit:
 
 /* return length of unicode string in bytes */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cifs_unicode_bytelen(const char *str)
 {
 	int len;
 	const __le16 *ustr = (const __le16 *)str;
+<<<<<<< HEAD
+=======
 =======
 static int cifs_unicode_bytelen(char *str)
 {
 	int len;
 	__le16 *ustr = (__le16 *)str;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (len = 0; len <= PATH_MAX; len++) {
 		if (ustr[len] == 0)
@@ -355,6 +371,9 @@ static char *nxt_dir_entry(char *old_entry, char *end_of_smb, int level)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct cifs_dirent {
 	const char	*name;
 	size_t		namelen;
@@ -477,6 +496,8 @@ static int cifs_entry_is_dot(struct cifs_dirent *de, bool is_unicode)
 		} else if (de->namelen == 2) {
 			if (de->name[0] == '.' && de->name[1] == '.')
 				rc = 2;
+<<<<<<< HEAD
+=======
 =======
 #define UNICODE_DOT cpu_to_le16(0x2e)
 
@@ -551,6 +572,7 @@ static int cifs_entry_is_dot(char *current_entry, struct cifsFileInfo *cfile)
 					rc = 2;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -573,6 +595,9 @@ static int is_dir_changed(struct file *file)
 
 static int cifs_save_resume_key(const char *current_entry,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cifsFileInfo *file_info)
 {
 	struct cifs_dirent de;
@@ -585,6 +610,8 @@ static int cifs_save_resume_key(const char *current_entry,
 		file_info->srch_inf.resume_name_len = de.namelen;
 		file_info->srch_inf.resume_key = de.resume_key;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct cifsFileInfo *cifsFile)
 {
@@ -647,6 +674,7 @@ static int cifs_save_resume_key(const char *current_entry,
 	cifsFile->srch_inf.resume_name_len = len;
 	cifsFile->srch_inf.presume_name = filename;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -712,13 +740,19 @@ static int find_cifs_entry(const int xid, struct cifs_tcon *pTcon,
 			return rc;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* FindFirst/Next set last_entry to NULL on malformed reply */
 		if (cifsFile->srch_inf.last_entry)
 			cifs_save_resume_key(cifsFile->srch_inf.last_entry,
 						cifsFile);
+<<<<<<< HEAD
+=======
 =======
 		cifs_save_resume_key(cifsFile->srch_inf.last_entry, cifsFile);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	while ((index_to_find >= cifsFile->srch_inf.index_of_last_entry) &&
@@ -727,13 +761,19 @@ static int find_cifs_entry(const int xid, struct cifs_tcon *pTcon,
 		rc = CIFSFindNext(xid, pTcon, cifsFile->netfid,
 				  &cifsFile->srch_inf);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* FindFirst/Next set last_entry to NULL on malformed reply */
 		if (cifsFile->srch_inf.last_entry)
 			cifs_save_resume_key(cifsFile->srch_inf.last_entry,
 						cifsFile);
+<<<<<<< HEAD
+=======
 =======
 		cifs_save_resume_key(cifsFile->srch_inf.last_entry, cifsFile);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rc)
 			return -ENOENT;
 	}
@@ -780,6 +820,9 @@ static int find_cifs_entry(const int xid, struct cifs_tcon *pTcon,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cifs_filldir(char *find_entry, struct file *file, filldir_t filldir,
 		void *dirent, char *scratch_buf, unsigned int max_len)
 {
@@ -845,6 +888,8 @@ static int cifs_filldir(char *find_entry, struct file *file, filldir_t filldir,
 
 	if (de.ino && (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_SERVER_INUM)) {
 		fattr.cf_uniqueid = de.ino;
+<<<<<<< HEAD
+=======
 =======
 /* inode num, inode type and filename returned */
 static int cifs_get_name_from_search_buf(struct qstr *pqst,
@@ -977,6 +1022,7 @@ static int cifs_filldir(char *pfindEntry, struct file *file, filldir_t filldir,
 	if (inum && (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_SERVER_INUM)) {
 		fattr.cf_uniqueid = inum;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		fattr.cf_uniqueid = iunique(sb, ROOT_I);
 		cifs_autodisable_serverino(cifs_sb);
@@ -993,12 +1039,17 @@ static int cifs_filldir(char *pfindEntry, struct file *file, filldir_t filldir,
 
 	ino = cifs_uniqueid_to_ino_t(fattr.cf_uniqueid);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dentry = cifs_readdir_lookup(file->f_dentry, &name, &fattr);
 
 	rc = filldir(dirent, name.name, name.len, file->f_pos, ino,
 		     fattr.cf_dtype);
 
 	dput(dentry);
+<<<<<<< HEAD
+=======
 =======
 	tmp_dentry = cifs_readdir_lookup(file->f_dentry, &qstring, &fattr);
 
@@ -1007,6 +1058,7 @@ static int cifs_filldir(char *pfindEntry, struct file *file, filldir_t filldir,
 
 	dput(tmp_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
@@ -1050,8 +1102,12 @@ int cifs_readdir(struct file *file, void *direntry, filldir_t filldir)
 <<<<<<< HEAD
 		     parent_ino(file->f_path.dentry), DT_DIR) < 0) {
 =======
+<<<<<<< HEAD
+		     parent_ino(file->f_path.dentry), DT_DIR) < 0) {
+=======
 		     file->f_path.dentry->d_parent->d_inode->i_ino, DT_DIR) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cERROR(1, "Filldir for parent dir failed");
 			rc = -ENOMEM;
 			break;

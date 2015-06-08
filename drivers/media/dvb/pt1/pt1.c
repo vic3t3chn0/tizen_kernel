@@ -28,6 +28,13 @@
 #include <linux/pci.h>
 #include <linux/kthread.h>
 #include <linux/freezer.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "dvbdev.h"
 #include "dvb_demux.h"
@@ -77,6 +84,14 @@ struct pt1 {
 	struct pt1_adapter *adaps[PT1_NR_ADAPS];
 	struct pt1_table *tables;
 	struct task_struct *kthread;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int table_index;
+	int buf_index;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct mutex lock;
 	int power;
@@ -90,12 +105,26 @@ struct pt1_adapter {
 	u8 *buf;
 	int upacket_count;
 	int packet_count;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int st_count;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct dvb_adapter adap;
 	struct dvb_demux demux;
 	int users;
 	struct dmxdev dmxdev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct dvb_net net;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct dvb_net net;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dvb_frontend *fe;
 	int (*orig_set_voltage)(struct dvb_frontend *fe,
 				fe_sec_voltage_t voltage);
@@ -119,7 +148,15 @@ static u32 pt1_read_reg(struct pt1 *pt1, int reg)
 	return readl(pt1->regs + reg * 4);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pt1_nr_tables = 8;
+=======
 static int pt1_nr_tables = 64;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int pt1_nr_tables = 64;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param_named(nr_tables, pt1_nr_tables, int, 0);
 
 static void pt1_increment_table_count(struct pt1 *pt1)
@@ -264,6 +301,13 @@ static int pt1_filter(struct pt1 *pt1, struct pt1_buffer_page *page)
 	struct pt1_adapter *adap;
 	int offset;
 	u8 *buf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int sc;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!page->upackets[PT1_NR_UPACKETS - 1])
 		return 0;
@@ -280,6 +324,22 @@ static int pt1_filter(struct pt1 *pt1, struct pt1_buffer_page *page)
 		else if (!adap->upacket_count)
 			continue;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (upacket >> 24 & 1)
+			printk_ratelimited(KERN_INFO "earth-pt1: device "
+				"buffer overflowing. table[%d] buf[%d]\n",
+				pt1->table_index, pt1->buf_index);
+		sc = upacket >> 26 & 0x7;
+		if (adap->st_count != -1 && sc != ((adap->st_count + 1) & 0x7))
+			printk_ratelimited(KERN_INFO "earth-pt1: data loss"
+				" in streamID(adapter)[%d]\n", index);
+		adap->st_count = sc;
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		buf = adap->buf;
 		offset = adap->packet_count * 188 + adap->upacket_count * 3;
 		buf[offset] = upacket >> 16;
@@ -303,13 +363,30 @@ static int pt1_filter(struct pt1 *pt1, struct pt1_buffer_page *page)
 static int pt1_thread(void *data)
 {
 	struct pt1 *pt1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	int table_index;
 	int buf_index;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int table_index;
+	int buf_index;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pt1_buffer_page *page;
 
 	pt1 = data;
 	set_freezable();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	while (!kthread_should_stop()) {
+		try_to_freeze();
+
+		page = pt1->tables[pt1->table_index].bufs[pt1->buf_index].page;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	table_index = 0;
 	buf_index = 0;
 
@@ -317,16 +394,34 @@ static int pt1_thread(void *data)
 		try_to_freeze();
 
 		page = pt1->tables[table_index].bufs[buf_index].page;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!pt1_filter(pt1, page)) {
 			schedule_timeout_interruptible((HZ + 999) / 1000);
 			continue;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (++pt1->buf_index >= PT1_NR_BUFS) {
+			pt1_increment_table_count(pt1);
+			pt1->buf_index = 0;
+			if (++pt1->table_index >= pt1_nr_tables)
+				pt1->table_index = 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (++buf_index >= PT1_NR_BUFS) {
 			pt1_increment_table_count(pt1);
 			buf_index = 0;
 			if (++table_index >= pt1_nr_tables)
 				table_index = 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -477,21 +572,90 @@ err:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int pt1_start_polling(struct pt1 *pt1)
+{
+	int ret = 0;
+
+	mutex_lock(&pt1->lock);
+	if (!pt1->kthread) {
+		pt1->kthread = kthread_run(pt1_thread, pt1, "earth-pt1");
+		if (IS_ERR(pt1->kthread)) {
+			ret = PTR_ERR(pt1->kthread);
+			pt1->kthread = NULL;
+		}
+	}
+	mutex_unlock(&pt1->lock);
+	return ret;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pt1_start_feed(struct dvb_demux_feed *feed)
 {
 	struct pt1_adapter *adap;
 	adap = container_of(feed->demux, struct pt1_adapter, demux);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!adap->users++) {
+		int ret;
+
+		ret = pt1_start_polling(adap->pt1);
+		if (ret)
+			return ret;
+		pt1_set_stream(adap->pt1, adap->index, 1);
+	}
+	return 0;
+}
+
+static void pt1_stop_polling(struct pt1 *pt1)
+{
+	int i, count;
+
+	mutex_lock(&pt1->lock);
+	for (i = 0, count = 0; i < PT1_NR_ADAPS; i++)
+		count += pt1->adaps[i]->users;
+
+	if (count == 0 && pt1->kthread) {
+		kthread_stop(pt1->kthread);
+		pt1->kthread = NULL;
+	}
+	mutex_unlock(&pt1->lock);
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!adap->users++)
 		pt1_set_stream(adap->pt1, adap->index, 1);
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pt1_stop_feed(struct dvb_demux_feed *feed)
 {
 	struct pt1_adapter *adap;
 	adap = container_of(feed->demux, struct pt1_adapter, demux);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!--adap->users) {
+		pt1_set_stream(adap->pt1, adap->index, 0);
+		pt1_stop_polling(adap->pt1);
+	}
+=======
 	if (!--adap->users)
 		pt1_set_stream(adap->pt1, adap->index, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (!--adap->users)
+		pt1_set_stream(adap->pt1, adap->index, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -575,7 +739,14 @@ static int pt1_wakeup(struct dvb_frontend *fe)
 
 static void pt1_free_adapter(struct pt1_adapter *adap)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	dvb_net_release(&adap->net);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dvb_net_release(&adap->net);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	adap->demux.dmx.close(&adap->demux.dmx);
 	dvb_dmxdev_release(&adap->dmxdev);
 	dvb_dmx_release(&adap->demux);
@@ -616,6 +787,13 @@ pt1_alloc_adapter(struct pt1 *pt1)
 	adap->buf = buf;
 	adap->upacket_count = 0;
 	adap->packet_count = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	adap->st_count = -1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dvb_adap = &adap->adap;
 	dvb_adap->priv = adap;
@@ -644,8 +822,16 @@ pt1_alloc_adapter(struct pt1 *pt1)
 	if (ret < 0)
 		goto err_dmx_release;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	dvb_net_init(dvb_adap, &adap->net, &demux->dmx);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dvb_net_init(dvb_adap, &adap->net, &demux->dmx);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return adap;
 
 err_dmx_release:
@@ -1020,7 +1206,16 @@ static void __devexit pt1_remove(struct pci_dev *pdev)
 	pt1 = pci_get_drvdata(pdev);
 	regs = pt1->regs;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (pt1->kthread)
+		kthread_stop(pt1->kthread);
+=======
 	kthread_stop(pt1->kthread);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kthread_stop(pt1->kthread);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pt1_cleanup_tables(pt1);
 	pt1_cleanup_frontends(pt1);
 	pt1_disable_ram(pt1);
@@ -1043,7 +1238,14 @@ pt1_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 	void __iomem *regs;
 	struct pt1 *pt1;
 	struct i2c_adapter *i2c_adap;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct task_struct *kthread;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct task_struct *kthread;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = pci_enable_device(pdev);
 	if (ret < 0)
@@ -1139,6 +1341,13 @@ pt1_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 	if (ret < 0)
 		goto err_pt1_cleanup_frontends;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kthread = kthread_run(pt1_thread, pt1, "pt1");
 	if (IS_ERR(kthread)) {
 		ret = PTR_ERR(kthread);
@@ -1150,6 +1359,10 @@ pt1_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
 
 err_pt1_cleanup_tables:
 	pt1_cleanup_tables(pt1);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_pt1_cleanup_frontends:
 	pt1_cleanup_frontends(pt1);
 err_pt1_disable_ram:

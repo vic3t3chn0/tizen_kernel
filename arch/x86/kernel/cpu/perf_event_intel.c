@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Per core/cpu state
  *
@@ -16,6 +19,8 @@
 #include <asm/apic.h>
 
 #include "perf_event.h"
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CPU_SUP_INTEL
 
@@ -41,6 +46,7 @@ struct intel_percore {
 	unsigned		core_id;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Intel PerfMon, used on Core and later.
@@ -57,7 +63,11 @@ static u64 intel_perfmon_event_map[PERF_COUNT_HW_MAX] __read_mostly =
 <<<<<<< HEAD
   [PERF_COUNT_HW_REF_CPU_CYCLES]	= 0x0300, /* pseudo-encoding */
 =======
+<<<<<<< HEAD
+  [PERF_COUNT_HW_REF_CPU_CYCLES]	= 0x0300, /* pseudo-encoding */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct event_constraint intel_core_event_constraints[] __read_mostly =
@@ -78,6 +88,9 @@ static struct event_constraint intel_core2_event_constraints[] __read_mostly =
 <<<<<<< HEAD
 	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
 =======
+<<<<<<< HEAD
+	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
+=======
 	/*
 	 * Core2 has Fixed Counter 2 listed as CPU_CLK_UNHALTED.REF and event
 	 * 0x013c as CPU_CLK_UNHALTED.BUS and specifies there is a fixed
@@ -85,6 +98,7 @@ static struct event_constraint intel_core2_event_constraints[] __read_mostly =
 	 */
 	/* FIXED_EVENT_CONSTRAINT(0x013c, 2),  CPU_CLK_UNHALTED.REF */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_EVENT_CONSTRAINT(0x10, 0x1), /* FP_COMP_OPS_EXE */
 	INTEL_EVENT_CONSTRAINT(0x11, 0x2), /* FP_ASSIST */
 	INTEL_EVENT_CONSTRAINT(0x12, 0x2), /* MUL */
@@ -105,8 +119,12 @@ static struct event_constraint intel_nehalem_event_constraints[] __read_mostly =
 <<<<<<< HEAD
 	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
 =======
+<<<<<<< HEAD
+	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
+=======
 	/* FIXED_EVENT_CONSTRAINT(0x013c, 2), CPU_CLK_UNHALTED.REF */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_EVENT_CONSTRAINT(0x40, 0x3), /* L1D_CACHE_LD */
 	INTEL_EVENT_CONSTRAINT(0x41, 0x3), /* L1D_CACHE_ST */
 	INTEL_EVENT_CONSTRAINT(0x42, 0x3), /* L1D_CACHE_LOCK */
@@ -121,10 +139,15 @@ static struct event_constraint intel_nehalem_event_constraints[] __read_mostly =
 static struct extra_reg intel_nehalem_extra_regs[] __read_mostly =
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_EVENT_EXTRA_REG(0xb7, MSR_OFFCORE_RSP_0, 0xffff, RSP_0),
 	EVENT_EXTRA_END
 };
 
+<<<<<<< HEAD
+=======
 =======
 	INTEL_EVENT_EXTRA_REG(0xb7, MSR_OFFCORE_RSP_0, 0xffff),
 	EVENT_EXTRA_END
@@ -137,6 +160,7 @@ static struct event_constraint intel_nehalem_percore_constraints[] __read_mostly
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct event_constraint intel_westmere_event_constraints[] __read_mostly =
 {
 	FIXED_EVENT_CONSTRAINT(0x00c0, 0), /* INST_RETIRED.ANY */
@@ -144,8 +168,12 @@ static struct event_constraint intel_westmere_event_constraints[] __read_mostly 
 <<<<<<< HEAD
 	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
 =======
+<<<<<<< HEAD
+	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
+=======
 	/* FIXED_EVENT_CONSTRAINT(0x013c, 2), CPU_CLK_UNHALTED.REF */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_EVENT_CONSTRAINT(0x51, 0x3), /* L1D */
 	INTEL_EVENT_CONSTRAINT(0x60, 0x1), /* OFFCORE_REQUESTS_OUTSTANDING */
 	INTEL_EVENT_CONSTRAINT(0x63, 0x3), /* CACHE_LOCK_CYCLES */
@@ -161,11 +189,16 @@ static struct event_constraint intel_snb_event_constraints[] __read_mostly =
 	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
 	INTEL_EVENT_CONSTRAINT(0x48, 0x4), /* L1D_PEND_MISS.PENDING */
 =======
+<<<<<<< HEAD
+	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
+	INTEL_EVENT_CONSTRAINT(0x48, 0x4), /* L1D_PEND_MISS.PENDING */
+=======
 	/* FIXED_EVENT_CONSTRAINT(0x013c, 2), CPU_CLK_UNHALTED.REF */
 	INTEL_EVENT_CONSTRAINT(0x48, 0x4), /* L1D_PEND_MISS.PENDING */
 	INTEL_EVENT_CONSTRAINT(0xb7, 0x1), /* OFF_CORE_RESPONSE_0 */
 	INTEL_EVENT_CONSTRAINT(0xbb, 0x8), /* OFF_CORE_RESPONSE_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_UEVENT_CONSTRAINT(0x01c0, 0x2), /* INST_RETIRED.PREC_DIST */
 	INTEL_EVENT_CONSTRAINT(0xcd, 0x8), /* MEM_TRANS_RETIRED.LOAD_LATENCY */
 	EVENT_CONSTRAINT_END
@@ -174,6 +207,9 @@ static struct event_constraint intel_snb_event_constraints[] __read_mostly =
 static struct extra_reg intel_westmere_extra_regs[] __read_mostly =
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTEL_EVENT_EXTRA_REG(0xb7, MSR_OFFCORE_RSP_0, 0xffff, RSP_0),
 	INTEL_EVENT_EXTRA_REG(0xbb, MSR_OFFCORE_RSP_1, 0xffff, RSP_1),
 	EVENT_EXTRA_END
@@ -181,6 +217,8 @@ static struct extra_reg intel_westmere_extra_regs[] __read_mostly =
 
 static struct event_constraint intel_v1_event_constraints[] __read_mostly =
 {
+<<<<<<< HEAD
+=======
 =======
 	INTEL_EVENT_EXTRA_REG(0xb7, MSR_OFFCORE_RSP_0, 0xffff),
 	INTEL_EVENT_EXTRA_REG(0xbb, MSR_OFFCORE_RSP_1, 0xffff),
@@ -192,6 +230,7 @@ static struct event_constraint intel_westmere_percore_constraints[] __read_mostl
 	INTEL_EVENT_CONSTRAINT(0xb7, 0),
 	INTEL_EVENT_CONSTRAINT(0xbb, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	EVENT_CONSTRAINT_END
 };
 
@@ -200,6 +239,9 @@ static struct event_constraint intel_gen_event_constraints[] __read_mostly =
 	FIXED_EVENT_CONSTRAINT(0x00c0, 0), /* INST_RETIRED.ANY */
 	FIXED_EVENT_CONSTRAINT(0x003c, 1), /* CPU_CLK_UNHALTED.CORE */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	FIXED_EVENT_CONSTRAINT(0x0300, 2), /* CPU_CLK_UNHALTED.REF */
 	EVENT_CONSTRAINT_END
 };
@@ -210,12 +252,15 @@ static struct extra_reg intel_snb_extra_regs[] __read_mostly = {
 	EVENT_EXTRA_END
 };
 
+<<<<<<< HEAD
+=======
 =======
 	/* FIXED_EVENT_CONSTRAINT(0x013c, 2), CPU_CLK_UNHALTED.REF */
 	EVENT_CONSTRAINT_END
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 intel_pmu_event_map(int hw_event)
 {
 	return intel_perfmon_event_map[hw_event];
@@ -317,6 +362,9 @@ static __initconst const u64 snb_hw_cache_event_ids
 	},
  },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  [ C(NODE) ] = {
 	[ C(OP_READ) ] = {
 		[ C(RESULT_ACCESS) ] = -1,
@@ -332,8 +380,11 @@ static __initconst const u64 snb_hw_cache_event_ids
 	},
  },
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __initconst const u64 westmere_hw_cache_event_ids
@@ -436,6 +487,9 @@ static __initconst const u64 westmere_hw_cache_event_ids
 	},
  },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  [ C(NODE) ] = {
 	[ C(OP_READ) ] = {
 		[ C(RESULT_ACCESS) ] = 0x01b7,
@@ -450,8 +504,11 @@ static __initconst const u64 westmere_hw_cache_event_ids
 		[ C(RESULT_MISS)   ] = 0x01b7,
 	},
  },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -480,8 +537,13 @@ static __initconst const u64 westmere_hw_cache_event_ids
 #define NHM_LOCAL		(NHM_LOCAL_DRAM|NHM_REMOTE_CACHE_FWD)
 #define NHM_REMOTE		(NHM_REMOTE_DRAM)
 =======
+<<<<<<< HEAD
+#define NHM_LOCAL		(NHM_LOCAL_DRAM|NHM_REMOTE_CACHE_FWD)
+#define NHM_REMOTE		(NHM_REMOTE_DRAM)
+=======
 #define NHM_ALL_DRAM		(NHM_REMOTE_DRAM|NHM_LOCAL_DRAM)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define NHM_DMND_READ		(NHM_DMND_DATA_RD)
 #define NHM_DMND_WRITE		(NHM_DMND_RFO|NHM_DMND_WB)
@@ -491,8 +553,12 @@ static __initconst const u64 westmere_hw_cache_event_ids
 <<<<<<< HEAD
 #define NHM_L3_MISS	(NHM_NON_DRAM|NHM_LOCAL_DRAM|NHM_REMOTE_DRAM|NHM_REMOTE_CACHE_FWD)
 =======
+<<<<<<< HEAD
+#define NHM_L3_MISS	(NHM_NON_DRAM|NHM_LOCAL_DRAM|NHM_REMOTE_DRAM|NHM_REMOTE_CACHE_FWD)
+=======
 #define NHM_L3_MISS	(NHM_NON_DRAM|NHM_ALL_DRAM|NHM_REMOTE_CACHE_FWD)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NHM_L3_ACCESS	(NHM_L3_HIT|NHM_L3_MISS)
 
 static __initconst const u64 nehalem_hw_cache_extra_regs
@@ -514,6 +580,9 @@ static __initconst const u64 nehalem_hw_cache_extra_regs
 		[ C(RESULT_MISS)   ] = NHM_DMND_PREFETCH|NHM_L3_MISS,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  },
  [ C(NODE) ] = {
 	[ C(OP_READ) ] = {
@@ -529,9 +598,12 @@ static __initconst const u64 nehalem_hw_cache_extra_regs
 		[ C(RESULT_MISS)   ] = NHM_DMND_PREFETCH|NHM_REMOTE,
 	},
  },
+<<<<<<< HEAD
+=======
 =======
  }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __initconst const u64 nehalem_hw_cache_event_ids
@@ -634,6 +706,9 @@ static __initconst const u64 nehalem_hw_cache_event_ids
 	},
  },
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  [ C(NODE) ] = {
 	[ C(OP_READ) ] = {
 		[ C(RESULT_ACCESS) ] = 0x01b7,
@@ -648,8 +723,11 @@ static __initconst const u64 nehalem_hw_cache_event_ids
 		[ C(RESULT_MISS)   ] = 0x01b7,
 	},
  },
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static __initconst const u64 core2_hw_cache_event_ids
@@ -835,6 +913,9 @@ static __initconst const u64 atom_hw_cache_event_ids
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool intel_pmu_needs_lbr_smpl(struct perf_event *event)
 {
 	/* user explicitly requested branch sampling */
@@ -848,8 +929,11 @@ static inline bool intel_pmu_needs_lbr_smpl(struct perf_event *event)
 	return false;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void intel_pmu_disable_all(void)
 {
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
@@ -873,8 +957,13 @@ static void intel_pmu_enable_all(int added)
 	wrmsrl(MSR_CORE_PERF_GLOBAL_CTRL,
 			x86_pmu.intel_ctrl & ~cpuc->intel_ctrl_guest_mask);
 =======
+<<<<<<< HEAD
+	wrmsrl(MSR_CORE_PERF_GLOBAL_CTRL,
+			x86_pmu.intel_ctrl & ~cpuc->intel_ctrl_guest_mask);
+=======
 	wrmsrl(MSR_CORE_PERF_GLOBAL_CTRL, x86_pmu.intel_ctrl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (test_bit(X86_PMC_IDX_FIXED_BTS, cpuc->active_mask)) {
 		struct perf_event *event =
@@ -1000,7 +1089,11 @@ static void intel_pmu_disable_event(struct perf_event *event)
 <<<<<<< HEAD
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 =======
+<<<<<<< HEAD
+	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(hwc->idx == X86_PMC_IDX_FIXED_BTS)) {
 		intel_pmu_disable_bts();
@@ -1009,6 +1102,9 @@ static void intel_pmu_disable_event(struct perf_event *event)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpuc->intel_ctrl_guest_mask &= ~(1ull << hwc->idx);
 	cpuc->intel_ctrl_host_mask &= ~(1ull << hwc->idx);
 
@@ -1019,8 +1115,11 @@ static void intel_pmu_disable_event(struct perf_event *event)
 	if (intel_pmu_needs_lbr_smpl(event))
 		intel_pmu_lbr_disable(event);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(hwc->config_base == MSR_ARCH_PERFMON_FIXED_CTR_CTRL)) {
 		intel_pmu_disable_fixed(hwc);
 		return;
@@ -1069,7 +1168,11 @@ static void intel_pmu_enable_event(struct perf_event *event)
 <<<<<<< HEAD
 	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
 =======
+<<<<<<< HEAD
+	struct cpu_hw_events *cpuc = &__get_cpu_var(cpu_hw_events);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(hwc->idx == X86_PMC_IDX_FIXED_BTS)) {
 		if (!__this_cpu_read(cpu_hw_events.enabled))
@@ -1079,6 +1182,9 @@ static void intel_pmu_enable_event(struct perf_event *event)
 		return;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * must enabled before any actual event
 	 * because any event may be combined with LBR
@@ -1090,8 +1196,11 @@ static void intel_pmu_enable_event(struct perf_event *event)
 		cpuc->intel_ctrl_guest_mask |= (1ull << hwc->idx);
 	if (event->attr.exclude_guest)
 		cpuc->intel_ctrl_host_mask |= (1ull << hwc->idx);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(hwc->config_base == MSR_ARCH_PERFMON_FIXED_CTR_CTRL)) {
 		intel_pmu_enable_fixed(hwc);
@@ -1111,8 +1220,12 @@ static void intel_pmu_enable_event(struct perf_event *event)
 <<<<<<< HEAD
 int intel_pmu_save_and_restart(struct perf_event *event)
 =======
+<<<<<<< HEAD
+int intel_pmu_save_and_restart(struct perf_event *event)
+=======
 static int intel_pmu_save_and_restart(struct perf_event *event)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	x86_perf_event_update(event);
 	return x86_perf_event_set_period(event);
@@ -1214,13 +1327,19 @@ again:
 		data.period = event->hw.last_period;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (has_branch_stack(event))
 			data.br_stack = &cpuc->lbr_stack;
 
 		if (perf_event_overflow(event, &data, regs))
+<<<<<<< HEAD
+=======
 =======
 		if (perf_event_overflow(event, 1, &data, regs))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			x86_pmu_stop(event, 0);
 	}
 
@@ -1255,6 +1374,9 @@ intel_bts_constraints(struct perf_event *event)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool intel_try_alt_er(struct perf_event *event, int orig_idx)
 {
 	if (!(x86_pmu.er_flags & ERF_HAS_RSP_1))
@@ -1393,6 +1515,8 @@ x86_get_event_constraints(struct cpu_hw_events *cpuc, struct perf_event *event)
 	}
 
 	return &unconstrained;
+<<<<<<< HEAD
+=======
 =======
 static struct event_constraint *
 intel_percore_constraints(struct cpu_hw_events *cpuc, struct perf_event *event)
@@ -1454,6 +1578,7 @@ intel_percore_constraints(struct cpu_hw_events *cpuc, struct perf_event *event)
 
 	return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct event_constraint *
@@ -1472,8 +1597,12 @@ intel_get_event_constraints(struct cpu_hw_events *cpuc, struct perf_event *event
 <<<<<<< HEAD
 	c = intel_shared_regs_constraints(cpuc, event);
 =======
+<<<<<<< HEAD
+	c = intel_shared_regs_constraints(cpuc, event);
+=======
 	c = intel_percore_constraints(cpuc, event);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (c)
 		return c;
 
@@ -1481,6 +1610,9 @@ intel_get_event_constraints(struct cpu_hw_events *cpuc, struct perf_event *event
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void
 intel_put_shared_regs_event_constraints(struct cpu_hw_events *cpuc,
 					struct perf_event *event)
@@ -1500,6 +1632,8 @@ static void intel_put_event_constraints(struct cpu_hw_events *cpuc,
 					struct perf_event *event)
 {
 	intel_put_shared_regs_event_constraints(cpuc, event);
+<<<<<<< HEAD
+=======
 =======
 static void intel_put_event_constraints(struct cpu_hw_events *cpuc,
 					struct perf_event *event)
@@ -1538,6 +1672,7 @@ static void intel_put_event_constraints(struct cpu_hw_events *cpuc,
 		break;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int intel_pmu_hw_config(struct perf_event *event)
@@ -1571,22 +1706,33 @@ static int intel_pmu_hw_config(struct perf_event *event)
 		u64 alt_config = X86_CONFIG(.event=0xc0, .inv=1, .cmask=16);
 
 =======
+<<<<<<< HEAD
+		u64 alt_config = X86_CONFIG(.event=0xc0, .inv=1, .cmask=16);
+
+=======
 		u64 alt_config = 0x108000c0; /* INST_RETIRED.TOTAL_CYCLES */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		alt_config |= (event->hw.config & ~X86_RAW_EVENT_MASK);
 		event->hw.config = alt_config;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (intel_pmu_needs_lbr_smpl(event)) {
 		ret = intel_pmu_setup_lbr_filter(event);
 		if (ret)
 			return ret;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (event->attr.type != PERF_TYPE_RAW)
 		return 0;
 
@@ -1605,6 +1751,9 @@ static int intel_pmu_hw_config(struct perf_event *event)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct perf_guest_switch_msr *perf_guest_get_msrs(int *nr)
 {
 	if (x86_pmu.guest_get_msrs)
@@ -1695,8 +1844,11 @@ static struct attribute *intel_arch_formats_attr[] = {
 	NULL,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __initconst const struct x86_pmu core_pmu = {
 	.name			= "core",
 	.handle_irq		= x86_pmu_handle_irq,
@@ -1705,9 +1857,14 @@ static __initconst const struct x86_pmu core_pmu = {
 	.enable_all		= core_pmu_enable_all,
 	.enable			= core_pmu_enable_event,
 =======
+<<<<<<< HEAD
+	.enable_all		= core_pmu_enable_all,
+	.enable			= core_pmu_enable_event,
+=======
 	.enable_all		= x86_pmu_enable_all,
 	.enable			= x86_pmu_enable_event,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.disable		= x86_pmu_disable_event,
 	.hw_config		= x86_pmu_hw_config,
 	.schedule_events	= x86_schedule_events,
@@ -1726,6 +1883,9 @@ static __initconst const struct x86_pmu core_pmu = {
 	.put_event_constraints	= intel_put_event_constraints,
 	.event_constraints	= intel_core_event_constraints,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.guest_get_msrs		= core_guest_get_msrs,
 	.format_attrs		= intel_arch_formats_attr,
 };
@@ -1749,15 +1909,21 @@ struct intel_shared_regs *allocate_shared_regs(int cpu)
 	return regs;
 }
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int intel_pmu_cpu_prepare(int cpu)
 {
 	struct cpu_hw_events *cpuc = &per_cpu(cpu_hw_events, cpu);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!(x86_pmu.extra_regs || x86_pmu.lbr_sel_map))
 		return NOTIFY_OK;
 
@@ -1765,6 +1931,8 @@ static int intel_pmu_cpu_prepare(int cpu)
 	if (!cpuc->shared_regs)
 		return NOTIFY_BAD;
 
+<<<<<<< HEAD
+=======
 =======
 	if (!cpu_has_ht_siblings())
 		return NOTIFY_OK;
@@ -1777,6 +1945,7 @@ static int intel_pmu_cpu_prepare(int cpu)
 	raw_spin_lock_init(&cpuc->per_core->lock);
 	cpuc->per_core->core_id = -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NOTIFY_OK;
 }
 
@@ -1793,6 +1962,9 @@ static void intel_pmu_cpu_starting(int cpu)
 	intel_pmu_lbr_reset();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpuc->lbr_sel = NULL;
 
 	if (!cpuc->shared_regs)
@@ -1815,6 +1987,8 @@ static void intel_pmu_cpu_starting(int cpu)
 
 	if (x86_pmu.lbr_sel_map)
 		cpuc->lbr_sel = &cpuc->shared_regs->regs[EXTRA_REG_LBR];
+<<<<<<< HEAD
+=======
 =======
 	if (!cpu_has_ht_siblings())
 		return;
@@ -1832,12 +2006,16 @@ static void intel_pmu_cpu_starting(int cpu)
 	cpuc->per_core->core_id = core_id;
 	cpuc->per_core->refcnt++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void intel_pmu_cpu_dying(int cpu)
 {
 	struct cpu_hw_events *cpuc = &per_cpu(cpu_hw_events, cpu);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct intel_shared_regs *pc;
 
 	pc = cpuc->shared_regs;
@@ -1845,6 +2023,8 @@ static void intel_pmu_cpu_dying(int cpu)
 		if (pc->core_id == -1 || --pc->refcnt == 0)
 			kfree(pc);
 		cpuc->shared_regs = NULL;
+<<<<<<< HEAD
+=======
 =======
 	struct intel_percore *pc = cpuc->per_core;
 
@@ -1853,12 +2033,16 @@ static void intel_pmu_cpu_dying(int cpu)
 			kfree(pc);
 		cpuc->per_core = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	fini_debug_store_on_cpu(cpu);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void intel_pmu_flush_branch_stack(void)
 {
 	/*
@@ -1886,8 +2070,11 @@ static struct attribute *intel_arch3_formats_attr[] = {
 	NULL,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __initconst const struct x86_pmu intel_pmu = {
 	.name			= "Intel",
 	.handle_irq		= intel_pmu_handle_irq,
@@ -1912,6 +2099,9 @@ static __initconst const struct x86_pmu intel_pmu = {
 	.put_event_constraints	= intel_put_event_constraints,
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.format_attrs		= intel_arch3_formats_attr,
 
 	.cpu_prepare		= intel_pmu_cpu_prepare,
@@ -1922,6 +2112,8 @@ static __initconst const struct x86_pmu intel_pmu = {
 };
 
 static __init void intel_clovertown_quirk(void)
+<<<<<<< HEAD
+=======
 =======
 	.cpu_prepare		= intel_pmu_cpu_prepare,
 	.cpu_starting		= intel_pmu_cpu_starting,
@@ -1930,6 +2122,7 @@ static __init void intel_clovertown_quirk(void)
 
 static void intel_clovertown_quirks(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * PEBS is unreliable due to:
@@ -1956,6 +2149,9 @@ static void intel_clovertown_quirks(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init void intel_sandybridge_quirk(void)
 {
 	printk(KERN_WARNING "PEBS disabled due to CPU errata.\n");
@@ -2010,6 +2206,8 @@ __init int intel_pmu_init(void)
 	union cpuid10_eax eax;
 	union cpuid10_ebx ebx;
 	unsigned int unused;
+<<<<<<< HEAD
+=======
 =======
 static __init int intel_pmu_init(void)
 {
@@ -2018,6 +2216,7 @@ static __init int intel_pmu_init(void)
 	unsigned int unused;
 	unsigned int ebx;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int version;
 
 	if (!cpu_has(&boot_cpu_data, X86_FEATURE_ARCH_PERFMON)) {
@@ -2038,9 +2237,14 @@ static __init int intel_pmu_init(void)
 	cpuid(10, &eax.full, &ebx.full, &unused, &edx.full);
 	if (eax.split.mask_length < ARCH_PERFMON_EVENTS_COUNT)
 =======
+<<<<<<< HEAD
+	cpuid(10, &eax.full, &ebx.full, &unused, &edx.full);
+	if (eax.split.mask_length < ARCH_PERFMON_EVENTS_COUNT)
+=======
 	cpuid(10, &eax.full, &ebx, &unused, &edx.full);
 	if (eax.split.mask_length <= ARCH_PERFMON_BRANCH_MISSES_RETIRED)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	version = eax.split.version_id;
@@ -2059,7 +2263,13 @@ static __init int intel_pmu_init(void)
 	x86_pmu.events_mask_len		= eax.split.mask_length;
 
 =======
+<<<<<<< HEAD
+	x86_pmu.events_maskl		= ebx.full;
+	x86_pmu.events_mask_len		= eax.split.mask_length;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Quirk: v2 perfmon does not report fixed-purpose events, so
 	 * assume at least 3 events:
@@ -2083,7 +2293,12 @@ static __init int intel_pmu_init(void)
 	x86_add_quirk(intel_arch_events_quirk); /* Install first, so it runs last */
 
 =======
+<<<<<<< HEAD
+	x86_add_quirk(intel_arch_events_quirk); /* Install first, so it runs last */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Install the hw-cache-events table:
 	 */
@@ -2096,8 +2311,12 @@ static __init int intel_pmu_init(void)
 <<<<<<< HEAD
 		x86_add_quirk(intel_clovertown_quirk);
 =======
+<<<<<<< HEAD
+		x86_add_quirk(intel_clovertown_quirk);
+=======
 		x86_pmu.quirks = intel_clovertown_quirks;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 22: /* single-core 65 nm celeron/core2solo "Merom-L"/"Conroe-L" */
 	case 23: /* current 45 nm celeron/core2/xeon "Penryn"/"Wolfdale" */
 	case 29: /* six-core 45 nm xeon "Dunnington" */
@@ -2125,13 +2344,19 @@ static __init int intel_pmu_init(void)
 		x86_pmu.pebs_constraints = intel_nehalem_pebs_event_constraints;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		x86_pmu.percore_constraints = intel_nehalem_percore_constraints;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		x86_pmu.enable_all = intel_pmu_nhm_enable_all;
 		x86_pmu.extra_regs = intel_nehalem_extra_regs;
 
 		/* UOPS_ISSUED.STALLED_CYCLES */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		intel_perfmon_event_map[PERF_COUNT_HW_STALLED_CYCLES_FRONTEND] =
 			X86_CONFIG(.event=0x0e, .umask=0x01, .inv=1, .cmask=1);
 		/* UOPS_EXECUTED.CORE_ACTIVE_CYCLES,c=1,i=1 */
@@ -2140,6 +2365,8 @@ static __init int intel_pmu_init(void)
 
 		x86_add_quirk(intel_nehalem_quirk);
 
+<<<<<<< HEAD
+=======
 =======
 		intel_perfmon_event_map[PERF_COUNT_HW_STALLED_CYCLES_FRONTEND] = 0x180010e;
 		/* UOPS_EXECUTED.CORE_ACTIVE_CYCLES,c=1,i=1 */
@@ -2157,6 +2384,7 @@ static __init int intel_pmu_init(void)
 			pr_cont("erratum AAJ80 worked around, ");
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_cont("Nehalem events, ");
 		break;
 
@@ -2183,6 +2411,9 @@ static __init int intel_pmu_init(void)
 
 		x86_pmu.event_constraints = intel_westmere_event_constraints;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		x86_pmu.enable_all = intel_pmu_nhm_enable_all;
 		x86_pmu.pebs_constraints = intel_westmere_pebs_event_constraints;
 		x86_pmu.extra_regs = intel_westmere_extra_regs;
@@ -2194,6 +2425,8 @@ static __init int intel_pmu_init(void)
 		/* UOPS_EXECUTED.CORE_ACTIVE_CYCLES,c=1,i=1 */
 		intel_perfmon_event_map[PERF_COUNT_HW_STALLED_CYCLES_BACKEND] =
 			X86_CONFIG(.event=0xb1, .umask=0x3f, .inv=1, .cmask=1);
+<<<<<<< HEAD
+=======
 =======
 		x86_pmu.percore_constraints = intel_westmere_percore_constraints;
 		x86_pmu.enable_all = intel_pmu_nhm_enable_all;
@@ -2205,6 +2438,7 @@ static __init int intel_pmu_init(void)
 		/* UOPS_EXECUTED.CORE_ACTIVE_CYCLES,c=1,i=1 */
 		intel_perfmon_event_map[PERF_COUNT_HW_STALLED_CYCLES_BACKEND] = 0x1803fb1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		pr_cont("Westmere events, ");
 		break;
@@ -2213,12 +2447,19 @@ static __init int intel_pmu_init(void)
 <<<<<<< HEAD
 		x86_add_quirk(intel_sandybridge_quirk);
 =======
+<<<<<<< HEAD
+		x86_add_quirk(intel_sandybridge_quirk);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 45: /* SandyBridge, "Romely-EP" */
 		memcpy(hw_cache_event_ids, snb_hw_cache_event_ids,
 		       sizeof(hw_cache_event_ids));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		intel_pmu_lbr_init_snb();
 
 		x86_pmu.event_constraints = intel_snb_event_constraints;
@@ -2234,6 +2475,8 @@ static __init int intel_pmu_init(void)
 		/* UOPS_DISPATCHED.THREAD,c=1,i=1 to count stall cycles*/
 		intel_perfmon_event_map[PERF_COUNT_HW_STALLED_CYCLES_BACKEND] =
 			X86_CONFIG(.event=0xb1, .umask=0x01, .inv=1, .cmask=1);
+<<<<<<< HEAD
+=======
 =======
 		intel_pmu_lbr_init_nhm();
 
@@ -2245,12 +2488,16 @@ static __init int intel_pmu_init(void)
 		/* UOPS_DISPATCHED.THREAD,c=1,i=1 to count stall cycles*/
 		intel_perfmon_event_map[PERF_COUNT_HW_STALLED_CYCLES_BACKEND] = 0x18001b1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		pr_cont("SandyBridge events, ");
 		break;
 
 	default:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (x86_pmu.version) {
 		case 1:
 			x86_pmu.event_constraints = intel_v1_event_constraints;
@@ -2268,6 +2515,8 @@ static __init int intel_pmu_init(void)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 		/*
 		 * default constraints for v2 and up
@@ -2287,3 +2536,4 @@ static int intel_pmu_init(void)
 
 #endif /* CONFIG_CPU_SUP_INTEL */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

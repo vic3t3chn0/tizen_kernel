@@ -44,8 +44,11 @@
 #include <asm/pci-direct.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/dma.h>
 #include <asm/rio.h>
 #include <asm/bios_ebda.h>
@@ -437,8 +440,12 @@ static void* calgary_alloc_coherent(struct device *dev, size_t size,
 <<<<<<< HEAD
 	dma_addr_t *dma_handle, gfp_t flag, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+	dma_addr_t *dma_handle, gfp_t flag, struct dma_attrs *attrs)
+=======
 	dma_addr_t *dma_handle, gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void *ret = NULL;
 	dma_addr_t mapping;
@@ -475,8 +482,13 @@ static void calgary_free_coherent(struct device *dev, size_t size,
 				  void *vaddr, dma_addr_t dma_handle,
 				  struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+				  void *vaddr, dma_addr_t dma_handle,
+				  struct dma_attrs *attrs)
+=======
 				  void *vaddr, dma_addr_t dma_handle)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int npages;
 	struct iommu_table *tbl = find_iommu_table(dev);
@@ -493,9 +505,14 @@ static struct dma_map_ops calgary_dma_ops = {
 	.alloc = calgary_alloc_coherent,
 	.free = calgary_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc = calgary_alloc_coherent,
+	.free = calgary_free_coherent,
+=======
 	.alloc_coherent = calgary_alloc_coherent,
 	.free_coherent = calgary_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_sg = calgary_map_sg,
 	.unmap_sg = calgary_unmap_sg,
 	.map_page = calgary_map_page,
@@ -1573,8 +1590,12 @@ static void __init calgary_fixup_one_tce_space(struct pci_dev *dev)
 <<<<<<< HEAD
 		npages = resource_size(r) >> PAGE_SHIFT;
 =======
+<<<<<<< HEAD
+		npages = resource_size(r) >> PAGE_SHIFT;
+=======
 		npages = (r->end - r->start) >> PAGE_SHIFT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		npages++;
 
 		iommu_range_reserve(tbl, r->start, npages);

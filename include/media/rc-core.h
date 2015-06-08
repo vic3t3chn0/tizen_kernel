@@ -24,15 +24,21 @@
 
 extern int rc_core_debug;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IR_dprintk(level, fmt, ...)				\
 do {								\
 	if (rc_core_debug >= level)				\
 		pr_debug("%s: " fmt, __func__, ##__VA_ARGS__);	\
 } while (0)
+<<<<<<< HEAD
+=======
 =======
 #define IR_dprintk(level, fmt, arg...)	if (rc_core_debug >= level) \
 	printk(KERN_DEBUG "%s: " fmt , __func__, ## arg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum rc_driver_type {
 	RC_DRIVER_SCANCODE = 0,	/* Driver or hardware generates a scancode */
@@ -128,8 +134,12 @@ struct rc_dev {
 <<<<<<< HEAD
 	int				(*tx_ir)(struct rc_dev *dev, unsigned *txbuf, unsigned n);
 =======
+<<<<<<< HEAD
+	int				(*tx_ir)(struct rc_dev *dev, unsigned *txbuf, unsigned n);
+=======
 	int				(*tx_ir)(struct rc_dev *dev, int *txbuf, u32 n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void				(*s_idle)(struct rc_dev *dev, bool enable);
 	int				(*s_learning_mode)(struct rc_dev *dev, int enable);
 	int				(*s_carrier_report) (struct rc_dev *dev, int enable);

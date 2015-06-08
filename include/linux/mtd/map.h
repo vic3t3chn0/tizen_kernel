@@ -27,11 +27,16 @@
 #include <linux/string.h>
 #include <linux/bug.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 
 #include <asm/unaligned.h>
 #include <asm/io.h>
 #include <asm/barrier.h>
+<<<<<<< HEAD
+=======
 =======
 
 
@@ -39,6 +44,7 @@
 #include <asm/system.h>
 #include <asm/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MTD_MAP_BANK_WIDTH_1
 #define map_bankwidth(map) 1
@@ -225,7 +231,11 @@ struct map_info {
 <<<<<<< HEAD
 	int swap; /* this mapping's byte-swapping requirement */
 =======
+<<<<<<< HEAD
+	int swap; /* this mapping's byte-swapping requirement */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int bankwidth; /* in octets. This isn't necessarily the width
 		       of actual bus cycles -- it's the repeat interval
 		      in bytes, before you are talking to the first chip again.

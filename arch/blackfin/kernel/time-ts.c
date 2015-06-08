@@ -191,9 +191,13 @@ static struct irqaction gptmr0_irq = {
 <<<<<<< HEAD
 	.flags		= IRQF_TIMER | IRQF_IRQPOLL | IRQF_PERCPU,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_TIMER | IRQF_IRQPOLL | IRQF_PERCPU,
+=======
 	.flags		= IRQF_DISABLED | IRQF_TIMER | \
 			  IRQF_IRQPOLL | IRQF_PERCPU,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handler	= bfin_gptmr0_interrupt,
 };
 
@@ -227,8 +231,12 @@ static void __init bfin_gptmr0_clockevent_init(struct clock_event_device *evt)
 <<<<<<< HEAD
 DEFINE_PER_CPU(struct clock_event_device, coretmr_events);
 =======
+<<<<<<< HEAD
+DEFINE_PER_CPU(struct clock_event_device, coretmr_events);
+=======
 static DEFINE_PER_CPU(struct clock_event_device, coretmr_events);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int bfin_coretmr_set_next_event(unsigned long cycles,
 				struct clock_event_device *evt)
@@ -293,7 +301,11 @@ __attribute__((l1_text))
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 irqreturn_t bfin_coretmr_interrupt(int irq, void *dev_id)
 {
 	int cpu = smp_processor_id();
@@ -312,9 +324,13 @@ static struct irqaction coretmr_irq = {
 <<<<<<< HEAD
 	.flags		= IRQF_TIMER | IRQF_IRQPOLL | IRQF_PERCPU,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_TIMER | IRQF_IRQPOLL | IRQF_PERCPU,
+=======
 	.flags		= IRQF_DISABLED | IRQF_TIMER | \
 			  IRQF_IRQPOLL | IRQF_PERCPU,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handler	= bfin_coretmr_interrupt,
 };
 
@@ -325,13 +341,19 @@ void bfin_coretmr_clockevent_init(void)
 	struct clock_event_device *evt = &per_cpu(coretmr_events, cpu);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SMP
 	evt->broadcast = smp_timer_broadcast;
 #endif
 
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	evt->name = "bfin_core_timer";
 	evt->rating = 350;
 	evt->irq = -1;

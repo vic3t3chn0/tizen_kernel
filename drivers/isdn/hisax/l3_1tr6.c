@@ -4,7 +4,15 @@
  *
  * Author       Karsten Keil
  * Copyright    by Karsten Keil      <keil@isdn4linux.de>
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+=======
  * 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This software may be used and distributed according to the terms
  * of the GNU General Public License, incorporated herein by reference.
  *
@@ -21,10 +29,23 @@
 extern char *HiSax_getrev(const char *revision);
 static const char *l3_1tr6_revision = "$Revision: 2.15.2.3 $";
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MsgHead(ptr, cref, mty, dis)		\
+	*ptr++ = dis;				\
+	*ptr++ = 0x1;				\
+	*ptr++ = cref ^ 0x80;			\
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MsgHead(ptr, cref, mty, dis) \
 	*ptr++ = dis; \
 	*ptr++ = 0x1; \
 	*ptr++ = cref ^ 0x80; \
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = mty
 
 static void
@@ -83,6 +104,28 @@ l3_1tr6_setup_req(struct l3_process *pc, u_char pr, void *arg)
 	pc->para.spv = 0;
 	if (!isdigit(*teln)) {
 		switch (0x5f & *teln) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		case 'S':
+			pc->para.spv = 1;
+			break;
+		case 'C':
+			channel = 0x08;
+		case 'P':
+			channel |= 0x80;
+			teln++;
+			if (*teln == '1')
+				channel |= 0x01;
+			else
+				channel |= 0x02;
+			break;
+		default:
+			if (pc->st->l3.debug & L3_DEB_WARN)
+				l3_debug(pc->st, "Wrong MSN Code");
+			break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			case 'S':
 				pc->para.spv = 1;
 				break;
@@ -100,6 +143,10 @@ l3_1tr6_setup_req(struct l3_process *pc, u_char pr, void *arg)
 				if (pc->st->l3.debug & L3_DEB_WARN)
 					l3_debug(pc->st, "Wrong MSN Code");
 				break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		teln++;
 	}
@@ -176,7 +223,15 @@ l3_1tr6_setup(struct l3_process *pc, u_char pr, void *arg)
 			return;
 		}
 		if ((pc->para.bchannel = p[2] & 0x3))
+<<<<<<< HEAD
+<<<<<<< HEAD
+			bcfound++;
+=======
 				bcfound++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				bcfound++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		l3_1tr6_error(pc, "missing setup chanID", skb);
 		return;
@@ -525,6 +580,20 @@ l3_1tr6_disconnect_req(struct l3_process *pc, u_char pr, void *arg)
 		cause = pc->para.cause;
 	/* Map DSS1 causes */
 	switch (cause & 0x7f) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 0x10:
+		clen = 0;
+		break;
+	case 0x11:
+		cause = CAUSE_UserBusy;
+		break;
+	case 0x15:
+		cause = CAUSE_CallRejected;
+		break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case 0x10:
 			clen = 0;
 			break;
@@ -534,6 +603,10 @@ l3_1tr6_disconnect_req(struct l3_process *pc, u_char pr, void *arg)
 		case 0x15:
 			cause = CAUSE_CallRejected;
 			break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	StopAllL3Timer(pc);
 	MsgHead(p, pc->callref, MT_N1_DISC, PROTO_DIS_N1);
@@ -588,12 +661,27 @@ l3_1tr6_t305(struct l3_process *pc, u_char pr, void *arg)
 		cause = pc->para.cause;
 	/* Map DSS1 causes */
 	switch (cause & 0x7f) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case 0x10:
+		clen = 0;
+		break;
+	case 0x15:
+		cause = CAUSE_CallRejected;
+		break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case 0x10:
 			clen = 0;
 			break;
 		case 0x15:
 			cause = CAUSE_CallRejected;
 			break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	MsgHead(p, pc->callref, MT_N1_REL, PROTO_DIS_N1);
 	*p++ = WE0_cause;
@@ -647,19 +735,45 @@ l3_1tr6_t308_2(struct l3_process *pc, u_char pr, void *arg)
 static void
 l3_1tr6_dl_reset(struct l3_process *pc, u_char pr, void *arg)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pc->para.cause = CAUSE_LocalProcErr;
+	l3_1tr6_disconnect_req(pc, pr, NULL);
+	pc->st->l3.l3l4(pc->st, CC_SETUP_ERR, pc);
+=======
         pc->para.cause = CAUSE_LocalProcErr;
         l3_1tr6_disconnect_req(pc, pr, NULL);
         pc->st->l3.l3l4(pc->st, CC_SETUP_ERR, pc);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        pc->para.cause = CAUSE_LocalProcErr;
+        l3_1tr6_disconnect_req(pc, pr, NULL);
+        pc->st->l3.l3l4(pc->st, CC_SETUP_ERR, pc);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void
 l3_1tr6_dl_release(struct l3_process *pc, u_char pr, void *arg)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	newl3state(pc, 0);
+	pc->para.cause = 0x1b;          /* Destination out of order */
+	pc->para.loc = 0;
+	pc->st->l3.l3l4(pc->st, CC_RELEASE | INDICATION, pc);
+	release_l3_process(pc);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         newl3state(pc, 0);
         pc->para.cause = 0x1b;          /* Destination out of order */
         pc->para.loc = 0;
         pc->st->l3.l3l4(pc->st, CC_RELEASE | INDICATION, pc);
         release_l3_process(pc);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* *INDENT-OFF* */
@@ -667,9 +781,21 @@ static struct stateentry downstl[] =
 {
 	{SBIT(0),
 	 CC_SETUP | REQUEST, l3_1tr6_setup_req},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{SBIT(1) | SBIT(2) | SBIT(3) | SBIT(4) | SBIT(6) | SBIT(7) | SBIT(8) |
+	 SBIT(10),
+	 CC_DISCONNECT | REQUEST, l3_1tr6_disconnect_req},
+=======
    	{SBIT(1) | SBIT(2) | SBIT(3) | SBIT(4) | SBIT(6) | SBIT(7) | SBIT(8) |
     	 SBIT(10),
     	 CC_DISCONNECT | REQUEST, l3_1tr6_disconnect_req},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+   	{SBIT(1) | SBIT(2) | SBIT(3) | SBIT(4) | SBIT(6) | SBIT(7) | SBIT(8) |
+    	 SBIT(10),
+    	 CC_DISCONNECT | REQUEST, l3_1tr6_disconnect_req},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{SBIT(12),
 	 CC_RELEASE | REQUEST, l3_1tr6_release_req},
 	{SBIT(6),
@@ -732,12 +858,27 @@ static struct stateentry datastln1[] =
 
 static struct stateentry manstatelist[] =
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{SBIT(2),
+	 DL_ESTABLISH | INDICATION, l3_1tr6_dl_reset},
+	{ALL_STATES,
+	 DL_RELEASE | INDICATION, l3_1tr6_dl_release},
+};
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         {SBIT(2),
          DL_ESTABLISH | INDICATION, l3_1tr6_dl_reset},
         {ALL_STATES,
          DL_RELEASE | INDICATION, l3_1tr6_dl_release},
 };
  
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* *INDENT-ON* */
 
 static void
@@ -749,6 +890,21 @@ up1tr6(struct PStack *st, int pr, void *arg)
 	char tmp[80];
 
 	switch (pr) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case (DL_DATA | INDICATION):
+	case (DL_UNIT_DATA | INDICATION):
+		break;
+	case (DL_ESTABLISH | CONFIRM):
+	case (DL_ESTABLISH | INDICATION):
+	case (DL_RELEASE | INDICATION):
+	case (DL_RELEASE | CONFIRM):
+		l3_msg(st, pr, arg);
+		return;
+		break;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case (DL_DATA | INDICATION):
 		case (DL_UNIT_DATA | INDICATION):
 			break;
@@ -759,6 +915,10 @@ up1tr6(struct PStack *st, int pr, void *arg)
 			l3_msg(st, pr, arg);
 			return;
 			break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (skb->len < 4) {
 		if (st->l3.debug & L3_DEB_PROTERR) {
@@ -792,12 +952,28 @@ up1tr6(struct PStack *st, int pr, void *arg)
 		dev_kfree_skb(skb);
 		if (st->l3.debug & L3_DEB_STATE) {
 			sprintf(tmp, "up1tr6%s N0 mt %x unhandled",
+<<<<<<< HEAD
+<<<<<<< HEAD
+				(pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ", mt);
+=======
 			     (pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ", mt);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			     (pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ", mt);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			l3_debug(st, tmp);
 		}
 	} else if (skb->data[0] == PROTO_DIS_N1) {
 		if (!(proc = getl3proc(st, cr))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (mt == MT_N1_SETUP) {
+=======
 			if (mt == MT_N1_SETUP) { 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (mt == MT_N1_SETUP) { 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (cr < 128) {
 					if (!(proc = new_l3_process(st, cr))) {
 						if (st->l3.debug & L3_DEB_PROTERR) {
@@ -812,10 +988,23 @@ up1tr6(struct PStack *st, int pr, void *arg)
 					return;
 				}
 			} else if ((mt == MT_N1_REL) || (mt == MT_N1_REL_ACK) ||
+<<<<<<< HEAD
+<<<<<<< HEAD
+				   (mt == MT_N1_CANC_ACK) || (mt == MT_N1_CANC_REJ) ||
+				   (mt == MT_N1_REG_ACK) || (mt == MT_N1_REG_REJ) ||
+				   (mt == MT_N1_SUSP_ACK) || (mt == MT_N1_RES_REJ) ||
+				   (mt == MT_N1_INFO)) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				(mt == MT_N1_CANC_ACK) || (mt == MT_N1_CANC_REJ) ||
 				(mt == MT_N1_REG_ACK) || (mt == MT_N1_REG_REJ) ||
 				(mt == MT_N1_SUSP_ACK) || (mt == MT_N1_RES_REJ) ||
 				(mt == MT_N1_INFO)) {
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				dev_kfree_skb(skb);
 				return;
 			} else {
@@ -838,7 +1027,15 @@ up1tr6(struct PStack *st, int pr, void *arg)
 			dev_kfree_skb(skb);
 			if (st->l3.debug & L3_DEB_STATE) {
 				sprintf(tmp, "up1tr6%sstate %d mt %x unhandled",
+<<<<<<< HEAD
+<<<<<<< HEAD
+					(pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ",
+=======
 				  (pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				  (pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					proc->state, mt);
 				l3_debug(st, tmp);
 			}
@@ -846,7 +1043,15 @@ up1tr6(struct PStack *st, int pr, void *arg)
 		} else {
 			if (st->l3.debug & L3_DEB_STATE) {
 				sprintf(tmp, "up1tr6%sstate %d mt %x",
+<<<<<<< HEAD
+<<<<<<< HEAD
+					(pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ",
+=======
 				  (pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				  (pr == (DL_DATA | INDICATION)) ? " " : "(broadcast) ",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					proc->state, mt);
 				l3_debug(st, tmp);
 			}
@@ -863,7 +1068,15 @@ down1tr6(struct PStack *st, int pr, void *arg)
 	struct Channel *chan;
 	char tmp[80];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if ((DL_ESTABLISH | REQUEST) == pr) {
+=======
 	if ((DL_ESTABLISH | REQUEST)== pr) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((DL_ESTABLISH | REQUEST)== pr) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		l3_msg(st, pr, NULL);
 		return;
 	} else if ((CC_SETUP | REQUEST) == pr) {
@@ -905,6 +1118,36 @@ down1tr6(struct PStack *st, int pr, void *arg)
 static void
 man1tr6(struct PStack *st, int pr, void *arg)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int i;
+	struct l3_process *proc = arg;
+
+	if (!proc) {
+		printk(KERN_ERR "HiSax man1tr6 without proc pr=%04x\n", pr);
+		return;
+	}
+	for (i = 0; i < ARRAY_SIZE(manstatelist); i++)
+		if ((pr == manstatelist[i].primitive) &&
+		    ((1 << proc->state) & manstatelist[i].state))
+			break;
+	if (i == ARRAY_SIZE(manstatelist)) {
+		if (st->l3.debug & L3_DEB_STATE) {
+			l3_debug(st, "cr %d man1tr6 state %d prim %d unhandled",
+				 proc->callref & 0x7f, proc->state, pr);
+		}
+	} else {
+		if (st->l3.debug & L3_DEB_STATE) {
+			l3_debug(st, "cr %d man1tr6 state %d prim %d",
+				 proc->callref & 0x7f, proc->state, pr);
+		}
+		manstatelist[i].rout(proc, pr, arg);
+	}
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         int i;
         struct l3_process *proc = arg;
  
@@ -930,6 +1173,10 @@ man1tr6(struct PStack *st, int pr, void *arg)
         }
 }
  
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void
 setstack_1tr6(struct PStack *st)
 {

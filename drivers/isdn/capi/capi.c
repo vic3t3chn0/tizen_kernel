@@ -25,7 +25,15 @@
 #include <linux/tty.h>
 #include <linux/netdevice.h>
 #include <linux/ppp_defs.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/ppp-ioctl.h>
+=======
 #include <linux/if_ppp.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/if_ppp.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/skbuff.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
@@ -164,7 +172,15 @@ static int capiminor_del_ack(struct capiminor *mp, u16 datahandle)
 
 	spin_lock_bh(&mp->ackqlock);
 	list_for_each_entry_safe(p, tmp, &mp->ackqueue, list) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (p->datahandle == datahandle) {
+=======
  		if (p->datahandle == datahandle) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ 		if (p->datahandle == datahandle) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_del(&p->list);
 			mp->nack--;
 			spin_unlock_bh(&mp->ackqlock);
@@ -199,8 +215,18 @@ static struct capiminor *capiminor_alloc(struct capi20_appl *ap, u32 ncci)
 	unsigned int minor;
 
 	mp = kzalloc(sizeof(*mp), GFP_KERNEL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!mp) {
+		printk(KERN_ERR "capi: can't alloc capiminor\n");
+=======
   	if (!mp) {
   		printk(KERN_ERR "capi: can't alloc capiminor\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+  	if (!mp) {
+  		printk(KERN_ERR "capi: can't alloc capiminor\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 
@@ -391,7 +417,15 @@ gen_data_b3_resp_for(struct capiminor *mp, struct sk_buff *skb)
 	struct sk_buff *nskb;
 	nskb = alloc_skb(CAPI_DATA_B3_RESP_LEN, GFP_KERNEL);
 	if (nskb) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		u16 datahandle = CAPIMSG_U16(skb->data, CAPIMSG_BASELEN + 4 + 4 + 2);
+=======
 		u16 datahandle = CAPIMSG_U16(skb->data,CAPIMSG_BASELEN+4+4+2);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		u16 datahandle = CAPIMSG_U16(skb->data,CAPIMSG_BASELEN+4+4+2);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned char *s = skb_put(nskb, CAPI_DATA_B3_RESP_LEN);
 		capimsg_setu16(s, 0, CAPI_DATA_B3_RESP_LEN);
 		capimsg_setu16(s, 2, mp->ap->applid);
@@ -418,7 +452,15 @@ static int handle_recv_skb(struct capiminor *mp, struct sk_buff *skb)
 		pr_debug("capi: currently no receiver\n");
 		return -1;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld = tty_ldisc_ref(tty);
 	if (!ld) {
 		/* fatal error, do not requeue */
@@ -459,7 +501,15 @@ static int handle_recv_skb(struct capiminor *mp, struct sk_buff *skb)
 		ld->ops->receive_buf(tty, skb->data, NULL, skb->len);
 	} else {
 		printk(KERN_ERR "capi: send DATA_B3_RESP failed=%x\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+		       errcode);
+=======
 				errcode);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				errcode);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree_skb(nskb);
 
 		if (errcode == CAPI_SENDQUEUEFULL)
@@ -618,7 +668,15 @@ static void capi_recv_message(struct capi20_appl *ap, struct sk_buff *skb)
 		goto unlock_out;
 	}
 	if (CAPIMSG_SUBCOMMAND(skb->data) == CAPI_IND) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		datahandle = CAPIMSG_U16(skb->data, CAPIMSG_BASELEN + 4 + 4 + 2);
+=======
 		datahandle = CAPIMSG_U16(skb->data, CAPIMSG_BASELEN+4+4+2);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		datahandle = CAPIMSG_U16(skb->data, CAPIMSG_BASELEN+4+4+2);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("capi_signal: DATA_B3_IND %u len=%d\n",
 			 datahandle, skb->len-CAPIMSG_LEN(skb->data));
 		skb_queue_tail(&mp->inqueue, skb);
@@ -627,10 +685,23 @@ static void capi_recv_message(struct capi20_appl *ap, struct sk_buff *skb)
 
 	} else if (CAPIMSG_SUBCOMMAND(skb->data) == CAPI_CONF) {
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		datahandle = CAPIMSG_U16(skb->data, CAPIMSG_BASELEN + 4);
+		pr_debug("capi_signal: DATA_B3_CONF %u 0x%x\n",
+			 datahandle,
+			 CAPIMSG_U16(skb->data, CAPIMSG_BASELEN + 4 + 2));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		datahandle = CAPIMSG_U16(skb->data, CAPIMSG_BASELEN+4);
 		pr_debug("capi_signal: DATA_B3_CONF %u 0x%x\n",
 			 datahandle,
 			 CAPIMSG_U16(skb->data, CAPIMSG_BASELEN+4+2));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree_skb(skb);
 		capiminor_del_ack(mp, datahandle);
 		tty = tty_port_tty_get(&mp->port);
@@ -669,7 +740,15 @@ capi_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
 		if (file->f_flags & O_NONBLOCK)
 			return -EAGAIN;
 		err = wait_event_interruptible(cdev->recvwait,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					       (skb = skb_dequeue(&cdev->recvqueue)));
+=======
 				(skb = skb_dequeue(&cdev->recvqueue)));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				(skb = skb_dequeue(&cdev->recvqueue)));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 	}
@@ -736,7 +815,15 @@ capi_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos
 }
 
 static unsigned int
+<<<<<<< HEAD
+<<<<<<< HEAD
+capi_poll(struct file *file, poll_table *wait)
+=======
 capi_poll(struct file *file, poll_table * wait)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+capi_poll(struct file *file, poll_table * wait)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct capidev *cdev = file->private_data;
 	unsigned int mask = 0;
@@ -786,6 +873,80 @@ register_out:
 		return retval;
 
 	case CAPI_GET_VERSION:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		if (copy_from_user(&data.contr, argp,
+				   sizeof(data.contr)))
+			return -EFAULT;
+		cdev->errcode = capi20_get_version(data.contr, &data.version);
+		if (cdev->errcode)
+			return -EIO;
+		if (copy_to_user(argp, &data.version,
+				 sizeof(data.version)))
+			return -EFAULT;
+	}
+	return 0;
+
+	case CAPI_GET_SERIAL:
+	{
+		if (copy_from_user(&data.contr, argp,
+				   sizeof(data.contr)))
+			return -EFAULT;
+		cdev->errcode = capi20_get_serial(data.contr, data.serial);
+		if (cdev->errcode)
+			return -EIO;
+		if (copy_to_user(argp, data.serial,
+				 sizeof(data.serial)))
+			return -EFAULT;
+	}
+	return 0;
+	case CAPI_GET_PROFILE:
+	{
+		if (copy_from_user(&data.contr, argp,
+				   sizeof(data.contr)))
+			return -EFAULT;
+
+		if (data.contr == 0) {
+			cdev->errcode = capi20_get_profile(data.contr, &data.profile);
+			if (cdev->errcode)
+				return -EIO;
+
+			retval = copy_to_user(argp,
+					      &data.profile.ncontroller,
+					      sizeof(data.profile.ncontroller));
+
+		} else {
+			cdev->errcode = capi20_get_profile(data.contr, &data.profile);
+			if (cdev->errcode)
+				return -EIO;
+
+			retval = copy_to_user(argp, &data.profile,
+					      sizeof(data.profile));
+		}
+		if (retval)
+			return -EFAULT;
+	}
+	return 0;
+
+	case CAPI_GET_MANUFACTURER:
+	{
+		if (copy_from_user(&data.contr, argp,
+				   sizeof(data.contr)))
+			return -EFAULT;
+		cdev->errcode = capi20_get_manufacturer(data.contr, data.manufacturer);
+		if (cdev->errcode)
+			return -EIO;
+
+		if (copy_to_user(argp, data.manufacturer,
+				 sizeof(data.manufacturer)))
+			return -EFAULT;
+
+	}
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{
 			if (copy_from_user(&data.contr, argp,
 						sizeof(data.contr)))
@@ -855,6 +1016,10 @@ register_out:
 
 		}
 		return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case CAPI_GET_ERRCODE:
 		data.errcode = cdev->errcode;
 		cdev->errcode = CAPI_NOERROR;
@@ -871,6 +1036,20 @@ register_out:
 		return -ENXIO;
 
 	case CAPI_MANUFACTURER_CMD:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		struct capi_manufacturer_cmd mcmd;
+		if (!capable(CAP_SYS_ADMIN))
+			return -EPERM;
+		if (copy_from_user(&mcmd, argp, sizeof(mcmd)))
+			return -EFAULT;
+		return capi20_manufacturer(mcmd.cmd, mcmd.data);
+	}
+	return 0;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{
 			struct capi_manufacturer_cmd mcmd;
 			if (!capable(CAP_SYS_ADMIN))
@@ -880,6 +1059,10 @@ register_out:
 			return capi20_manufacturer(mcmd.cmd, mcmd.data);
 		}
 		return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	case CAPI_SET_FLAGS:
 	case CAPI_CLR_FLAGS: {
@@ -1013,6 +1196,17 @@ static const struct file_operations capi_fops =
 static int
 capinc_tty_install(struct tty_driver *driver, struct tty_struct *tty)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct capiminor *mp = capiminor_get(tty->index);
+	int ret = tty_standard_install(driver, tty);
+
+	if (ret == 0)
+		tty->driver_data = mp;
+	else
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int idx = tty->index;
 	struct capiminor *mp = capiminor_get(idx);
 	int ret = tty_init_termios(tty);
@@ -1023,6 +1217,10 @@ capinc_tty_install(struct tty_driver *driver, struct tty_struct *tty)
 		tty->driver_data = mp;
 		driver->ttys[idx] = tty;
 	} else
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		capiminor_put(mp);
 	return ret;
 }
@@ -1070,7 +1268,15 @@ static int capinc_tty_write(struct tty_struct *tty,
 		mp->outbytes += skb->len;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	skb = alloc_skb(CAPI_DATA_B3_REQ_LEN + count, GFP_ATOMIC);
+=======
 	skb = alloc_skb(CAPI_DATA_B3_REQ_LEN+count, GFP_ATOMIC);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	skb = alloc_skb(CAPI_DATA_B3_REQ_LEN+count, GFP_ATOMIC);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!skb) {
 		printk(KERN_ERR "capinc_tty_write: alloc_skb failed\n");
 		spin_unlock_bh(&mp->outlock);
@@ -1111,7 +1317,15 @@ static int capinc_tty_put_char(struct tty_struct *tty, unsigned char ch)
 		invoke_send = true;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	skb = alloc_skb(CAPI_DATA_B3_REQ_LEN + CAPI_MAX_BLKSIZE, GFP_ATOMIC);
+=======
 	skb = alloc_skb(CAPI_DATA_B3_REQ_LEN+CAPI_MAX_BLKSIZE, GFP_ATOMIC);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	skb = alloc_skb(CAPI_DATA_B3_REQ_LEN+CAPI_MAX_BLKSIZE, GFP_ATOMIC);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (skb) {
 		skb_reserve(skb, CAPI_DATA_B3_REQ_LEN);
 		*(skb_put(skb, 1)) = ch;
@@ -1175,12 +1389,28 @@ static int capinc_tty_chars_in_buffer(struct tty_struct *tty)
 }
 
 static int capinc_tty_ioctl(struct tty_struct *tty,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			    unsigned int cmd, unsigned long arg)
+=======
 		    unsigned int cmd, unsigned long arg)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		    unsigned int cmd, unsigned long arg)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return -ENOIOCTLCMD;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void capinc_tty_set_termios(struct tty_struct *tty, struct ktermios *old)
+=======
 static void capinc_tty_set_termios(struct tty_struct *tty, struct ktermios * old)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void capinc_tty_set_termios(struct tty_struct *tty, struct ktermios * old)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	pr_debug("capinc_tty_set_termios\n");
 }
@@ -1290,7 +1520,14 @@ static int __init capinc_tty_init(void)
 		kfree(capiminors);
 		return -ENOMEM;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	drv->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	drv->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	drv->driver_name = "capi_nc";
 	drv->name = "capi";
 	drv->major = 0;
@@ -1344,18 +1581,40 @@ static inline void capinc_tty_exit(void) { }
  */
 static int capi20_proc_show(struct seq_file *m, void *v)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct capidev *cdev;
+=======
         struct capidev *cdev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        struct capidev *cdev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head *l;
 
 	mutex_lock(&capidev_list_lock);
 	list_for_each(l, &capidev_list) {
 		cdev = list_entry(l, struct capidev, list);
 		seq_printf(m, "0 %d %lu %lu %lu %lu\n",
+<<<<<<< HEAD
+<<<<<<< HEAD
+			   cdev->ap.applid,
+			   cdev->ap.nrecvctlpkt,
+			   cdev->ap.nrecvdatapkt,
+			   cdev->ap.nsentctlpkt,
+			   cdev->ap.nsentdatapkt);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cdev->ap.applid,
 			cdev->ap.nrecvctlpkt,
 			cdev->ap.nrecvdatapkt,
 			cdev->ap.nsentctlpkt,
 			cdev->ap.nsentdatapkt);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	mutex_unlock(&capidev_list_lock);
 	return 0;
@@ -1450,9 +1709,21 @@ static int __init capi_init(void)
 	proc_init();
 
 #ifdef CONFIG_ISDN_CAPI_MIDDLEWARE
+<<<<<<< HEAD
+<<<<<<< HEAD
+	compileinfo = " (middleware)";
+#else
+	compileinfo = " (no middleware)";
+=======
         compileinfo = " (middleware)";
 #else
         compileinfo = " (no middleware)";
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        compileinfo = " (middleware)";
+#else
+        compileinfo = " (no middleware)";
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	printk(KERN_NOTICE "CAPI 2.0 started up with major %d%s\n",
 	       capi_major, compileinfo);

@@ -29,8 +29,12 @@ static int autofs4_dir_rmdir(struct inode *,struct dentry *);
 <<<<<<< HEAD
 static int autofs4_dir_mkdir(struct inode *,struct dentry *,umode_t);
 =======
+<<<<<<< HEAD
+static int autofs4_dir_mkdir(struct inode *,struct dentry *,umode_t);
+=======
 static int autofs4_dir_mkdir(struct inode *,struct dentry *,int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static long autofs4_root_ioctl(struct file *,unsigned int,unsigned long);
 #ifdef CONFIG_COMPAT
 static long autofs4_root_compat_ioctl(struct file *,unsigned int,unsigned long);
@@ -397,10 +401,15 @@ static struct vfsmount *autofs4_d_automount(struct path *path)
 		spin_unlock(&sbi->fs_lock);
 		status = autofs4_mount_wait(dentry);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (status)
 			return ERR_PTR(status);
 		spin_lock(&sbi->fs_lock);
 		ino->flags &= ~AUTOFS_INF_PENDING;
+<<<<<<< HEAD
+=======
 =======
 		spin_lock(&sbi->fs_lock);
 		ino->flags &= ~AUTOFS_INF_PENDING;
@@ -409,6 +418,7 @@ static struct vfsmount *autofs4_d_automount(struct path *path)
 			return ERR_PTR(status);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 done:
 	if (!(ino->flags & AUTOFS_INF_EXPIRING)) {
@@ -715,8 +725,12 @@ static int autofs4_dir_rmdir(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 static int autofs4_dir_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int autofs4_dir_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int autofs4_dir_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct autofs_sb_info *sbi = autofs4_sbi(dir->i_sb);
 	struct autofs_info *ino = autofs4_dentry_ino(dentry);

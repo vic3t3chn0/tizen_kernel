@@ -26,6 +26,9 @@ struct dmar_domain;
 struct root_entry;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_INTEL_IOMMU
 extern void free_dmar_iommu(struct intel_iommu *iommu);
@@ -33,6 +36,8 @@ extern int iommu_calculate_agaw(struct intel_iommu *iommu);
 extern int iommu_calculate_max_sagaw(struct intel_iommu *iommu);
 extern int dmar_disabled;
 extern int intel_iommu_enabled;
+<<<<<<< HEAD
+=======
 =======
 extern void free_dmar_iommu(struct intel_iommu *iommu);
 
@@ -40,6 +45,7 @@ extern void free_dmar_iommu(struct intel_iommu *iommu);
 extern int iommu_calculate_agaw(struct intel_iommu *iommu);
 extern int iommu_calculate_max_sagaw(struct intel_iommu *iommu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 static inline int iommu_calculate_agaw(struct intel_iommu *iommu)
 {
@@ -50,6 +56,9 @@ static inline int iommu_calculate_max_sagaw(struct intel_iommu *iommu)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void free_dmar_iommu(struct intel_iommu *iommu)
 {
 }
@@ -57,10 +66,13 @@ static inline void free_dmar_iommu(struct intel_iommu *iommu)
 #define intel_iommu_enabled (0)
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #endif
 
 extern int dmar_disabled;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

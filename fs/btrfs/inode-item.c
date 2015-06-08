@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include "print-tree.h"
 =======
+<<<<<<< HEAD
+#include "print-tree.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int find_name_in_backref(struct btrfs_path *path, const char *name,
 			 int name_len, struct btrfs_inode_ref **ref_ret)
@@ -135,8 +139,12 @@ int btrfs_del_inode_ref(struct btrfs_trans_handle *trans,
 <<<<<<< HEAD
 	btrfs_truncate_item(trans, root, path,
 =======
+<<<<<<< HEAD
+	btrfs_truncate_item(trans, root, path,
+=======
 	ret = btrfs_truncate_item(trans, root, path,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  item_size - sub_item_len, 1);
 out:
 	btrfs_free_path(path);
@@ -146,7 +154,11 @@ out:
 <<<<<<< HEAD
 /* Will return 0, -ENOMEM, -EMLINK, or -EEXIST or anything from the CoW path */
 =======
+<<<<<<< HEAD
+/* Will return 0, -ENOMEM, -EMLINK, or -EEXIST or anything from the CoW path */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int btrfs_insert_inode_ref(struct btrfs_trans_handle *trans,
 			   struct btrfs_root *root,
 			   const char *name, int name_len,
@@ -180,8 +192,12 @@ int btrfs_insert_inode_ref(struct btrfs_trans_handle *trans,
 <<<<<<< HEAD
 		btrfs_extend_item(trans, root, path, ins_len);
 =======
+<<<<<<< HEAD
+		btrfs_extend_item(trans, root, path, ins_len);
+=======
 		ret = btrfs_extend_item(trans, root, path, ins_len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ref = btrfs_item_ptr(path->nodes[0], path->slots[0],
 				     struct btrfs_inode_ref);
 		ref = (struct btrfs_inode_ref *)((unsigned long)ref + old_size);

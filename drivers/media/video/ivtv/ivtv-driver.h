@@ -36,7 +36,14 @@
  *                using information provided by Jiun-Kuei Jung @ AVerMedia.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/delay.h>
@@ -55,7 +62,14 @@
 #include <linux/mutex.h>
 #include <linux/slab.h>
 #include <asm/uaccess.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/byteorder.h>
 
 #include <linux/dvb/video.h>
@@ -332,8 +346,19 @@ struct ivtv_stream {
 	struct ivtv *itv; 		/* for ease of use */
 	const char *name;		/* name of the stream */
 	int type;			/* stream type */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 caps;			/* V4L2 capabilities */
+
+	struct v4l2_fh *fh;		/* pointer to the streaming filehandle */
+=======
 
 	u32 id;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	u32 id;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spinlock_t qlock; 		/* locks access to the queues */
 	unsigned long s_flags;		/* status flags, see above */
 	int dma;			/* can be PCI_DMA_TODEVICE, PCI_DMA_FROMDEVICE or PCI_DMA_NONE */
@@ -380,7 +405,14 @@ struct ivtv_stream {
 
 struct ivtv_open_id {
 	struct v4l2_fh fh;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u32 open_id;                    /* unique ID for this file descriptor */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 open_id;                    /* unique ID for this file descriptor */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int type;                       /* stream type */
 	int yuv_frames;                 /* 1: started OUT_UDMA_YUV output mode */
 	struct ivtv *itv;
@@ -632,6 +664,22 @@ struct ivtv {
 
 	struct v4l2_device v4l2_dev;
 	struct cx2341x_handler cxhdl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct {
+		/* PTS/Frame count control cluster */
+		struct v4l2_ctrl *ctrl_pts;
+		struct v4l2_ctrl *ctrl_frame;
+	};
+	struct {
+		/* Audio Playback control cluster */
+		struct v4l2_ctrl *ctrl_audio_playback;
+		struct v4l2_ctrl *ctrl_audio_multilingual_playback;
+	};
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct v4l2_ctrl_handler hdl_gpio;
 	struct v4l2_subdev sd_gpio;	/* GPIO sub-device */
 	u16 instance;
@@ -651,7 +699,14 @@ struct ivtv {
 	u8 audio_stereo_mode;           /* decoder setting how to handle stereo MPEG audio */
 	u8 audio_bilingual_mode;        /* decoder setting how to handle bilingual MPEG audio */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Locking */
 	spinlock_t lock;                /* lock access to this struct */
 	struct mutex serialize_lock;    /* mutex used to serialize open/close/start/stop/ioctl operations */

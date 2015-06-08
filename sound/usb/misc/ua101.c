@@ -55,8 +55,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int queue_length = 21;
 
 module_param_array(index, int, NULL, 0444);
@@ -656,8 +660,12 @@ static int set_stream_hw(struct ua101 *ua, struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 					   UINT_MAX);
 =======
+<<<<<<< HEAD
+					   UINT_MAX);
+=======
 					   8192000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 	err = snd_pcm_hw_constraint_msbits(substream->runtime, 0, 32, 24);
@@ -1398,6 +1406,9 @@ static struct usb_driver ua101_driver = {
 <<<<<<< HEAD
 module_usb_driver(ua101_driver);
 =======
+<<<<<<< HEAD
+module_usb_driver(ua101_driver);
+=======
 static int __init alsa_card_ua101_init(void)
 {
 	return usb_register(&ua101_driver);
@@ -1412,3 +1423,4 @@ static void __exit alsa_card_ua101_exit(void)
 module_init(alsa_card_ua101_init);
 module_exit(alsa_card_ua101_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

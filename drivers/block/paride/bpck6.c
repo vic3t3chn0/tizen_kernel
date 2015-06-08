@@ -20,9 +20,18 @@
 */
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /* PARAMETERS */
 static int verbose; /* set this to 1 to see debugging messages and whatnot */
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* PARAMETERS */
+static int verbose; /* set this to 1 to see debugging messages and whatnot */
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BACKPACK_VERSION "2.0.2"
 
 #include <linux/module.h>
@@ -36,6 +45,14 @@ static int verbose; /* set this to 1 to see debugging messages and whatnot */
 #include "ppc6lnx.c"
 #include "paride.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* PARAMETERS */
+static bool verbose; /* set this to 1 to see debugging messages and whatnot */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  
 
 #define PPCSTRUCT(pi) ((Interface *)(pi->private))

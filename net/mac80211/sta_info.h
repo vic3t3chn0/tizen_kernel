@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/etherdevice.h>
 =======
+<<<<<<< HEAD
+#include <linux/etherdevice.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "key.h"
 
 /**
@@ -27,8 +31,13 @@
  * These flags are used with &struct sta_info's @flags member, but
  * only indirectly with set_sta_flag() and friends.
 =======
+<<<<<<< HEAD
+ * These flags are used with &struct sta_info's @flags member, but
+ * only indirectly with set_sta_flag() and friends.
+=======
  * These flags are used with &struct sta_info's @flags member.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * @WLAN_STA_AUTH: Station is authenticated.
  * @WLAN_STA_ASSOC: Station is associated.
@@ -40,8 +49,11 @@
  *	frames.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * @WLAN_STA_ASSOC_AP: We're associated to that station, it is an AP.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @WLAN_STA_WME: Station is a QoS-STA.
  * @WLAN_STA_WDS: Station is one of our WDS peers.
  * @WLAN_STA_CLEAR_PS_FILT: Clear PS filter in hardware (using the
@@ -56,6 +68,9 @@
  * @WLAN_STA_PSPOLL: Station sent PS-poll while driver was keeping
  *	station in power-save mode, reply when the driver unblocks.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @WLAN_STA_TDLS_PEER: Station is a TDLS peer.
  * @WLAN_STA_TDLS_PEER_AUTH: This TDLS peer is authorized to send direct
  *	packets. This means the link is enabled.
@@ -88,6 +103,8 @@ enum ieee80211_sta_info_flags {
 	WLAN_STA_4ADDR_EVENT,
 	WLAN_STA_INSERTED,
 	WLAN_STA_RATE_CONTROL,
+<<<<<<< HEAD
+=======
 =======
  * @WLAN_STA_PS_DRIVER_BUF: Station has frames pending in driver internal
  *	buffers. Automatically cleared on station wake-up.
@@ -108,6 +125,7 @@ enum ieee80211_sta_info_flags {
 	WLAN_STA_PSPOLL		= 1<<13,
 	WLAN_STA_PS_DRIVER_BUF	= 1<<14,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define STA_TID_NUM 16
@@ -117,8 +135,14 @@ enum ieee80211_sta_info_flags {
 #define HT_AGG_BURST_RETRIES		3
 #define HT_AGG_RETRIES_PERIOD		(15 * HZ)
 =======
+<<<<<<< HEAD
+#define HT_AGG_MAX_RETRIES		15
+#define HT_AGG_BURST_RETRIES		3
+#define HT_AGG_RETRIES_PERIOD		(15 * HZ)
+=======
 #define HT_AGG_MAX_RETRIES		0x3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define HT_AGG_STATE_DRV_READY		0
 #define HT_AGG_STATE_RESPONSE_RECEIVED	1
@@ -134,7 +158,11 @@ enum ieee80211_sta_info_flags {
 <<<<<<< HEAD
  * @session_timer: check if we keep Tx-ing on the TID (by timeout value)
 =======
+<<<<<<< HEAD
+ * @session_timer: check if we keep Tx-ing on the TID (by timeout value)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @addba_resp_timer: timer for peer's response to addba request
  * @pending: pending frames queue -- use sta's spinlock to protect
  * @dialog_token: dialog token for aggregation session
@@ -147,7 +175,12 @@ enum ieee80211_sta_info_flags {
  * @failed_bar_ssn: ssn of the last failed BAR tx attempt
  * @bar_pending: BAR needs to be re-sent
 =======
+<<<<<<< HEAD
+ * @failed_bar_ssn: ssn of the last failed BAR tx attempt
+ * @bar_pending: BAR needs to be re-sent
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This structure's lifetime is managed by RCU, assignments to
  * the array holding it must hold the aggregation mutex.
@@ -163,7 +196,11 @@ struct tid_ampdu_tx {
 <<<<<<< HEAD
 	struct timer_list session_timer;
 =======
+<<<<<<< HEAD
+	struct timer_list session_timer;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timer_list addba_resp_timer;
 	struct sk_buff_head pending;
 	unsigned long state;
@@ -177,7 +214,13 @@ struct tid_ampdu_tx {
 	u16 failed_bar_ssn;
 	bool bar_pending;
 =======
+<<<<<<< HEAD
+
+	u16 failed_bar_ssn;
+	bool bar_pending;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -229,7 +272,11 @@ struct tid_ampdu_rx {
 <<<<<<< HEAD
  * @last_addba_req_time: timestamp of the last addBA request.
 =======
+<<<<<<< HEAD
+ * @last_addba_req_time: timestamp of the last addBA request.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dialog_token_allocator: dialog token enumerator for each new session;
  * @work: work struct for starting/stopping aggregation
  * @tid_rx_timer_expired: bitmap indicating on which TIDs the
@@ -238,7 +285,12 @@ struct tid_ampdu_rx {
  * @tid_rx_stop_requested:  bitmap indicating which BA sessions per TID the
  *	driver requested to close until the work for it runs
 =======
+<<<<<<< HEAD
+ * @tid_rx_stop_requested:  bitmap indicating which BA sessions per TID the
+ *	driver requested to close until the work for it runs
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @mtx: mutex to protect all TX data (except non-NULL assignments
  *	to tid_tx[idx], which are protected by the sta spinlock)
  */
@@ -250,7 +302,11 @@ struct sta_ampdu_mlme {
 <<<<<<< HEAD
 	unsigned long tid_rx_stop_requested[BITS_TO_LONGS(STA_TID_NUM)];
 =======
+<<<<<<< HEAD
+	unsigned long tid_rx_stop_requested[BITS_TO_LONGS(STA_TID_NUM)];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* tx */
 	struct work_struct work;
 	struct tid_ampdu_tx __rcu *tid_tx[STA_TID_NUM];
@@ -258,7 +314,11 @@ struct sta_ampdu_mlme {
 <<<<<<< HEAD
 	unsigned long last_addba_req_time[STA_TID_NUM];
 =======
+<<<<<<< HEAD
+	unsigned long last_addba_req_time[STA_TID_NUM];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 addba_req_num[STA_TID_NUM];
 	u8 dialog_token_allocator;
 };
@@ -285,6 +345,9 @@ struct sta_ampdu_mlme {
  * @lock: used for locking all fields that require locking, see comments
  *	in the header file.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @drv_unblock_wk: used for driver PS unblocking
  * @listen_interval: listen interval of this station, when we're acting as AP
  * @_flags: STA flags, see &enum ieee80211_sta_info_flags, do not use directly
@@ -295,6 +358,8 @@ struct sta_ampdu_mlme {
  *	entered power saving state, these are also delivered to
  *	the station when it leaves powersave or polls for frames
  * @driver_buffered_tids: bitmap of TIDs the driver has data buffered on
+<<<<<<< HEAD
+=======
 =======
  * @flaglock: spinlock for flags accesses
  * @drv_unblock_wk: used for driver PS unblocking
@@ -306,6 +371,7 @@ struct sta_ampdu_mlme {
  *	but were filtered by hardware due to STA having entered
  *	power saving state
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @rx_packets: Number of MSDUs received from this STA
  * @rx_bytes: Number of bytes received from this STA
  * @wep_weak_iv_count: number of weak WEP IVs received from this station
@@ -338,18 +404,24 @@ struct sta_ampdu_mlme {
  * @plink_timer_was_running: used by suspend/resume to restore timers
  * @debugfs: debug filesystem info
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @dead: set to true when sta is unlinked
  * @uploaded: set to true when sta is uploaded to the driver
  * @lost_packets: number of consecutive lost packets
  * @sta: station information we share with the driver
  * @sta_state: duplicates information about station state (for debug)
  * @beacon_loss_count: number of times beacon loss has triggered
+<<<<<<< HEAD
+=======
 =======
  * @sta: station information we share with the driver
  * @dead: set to true when sta is unlinked
  * @uploaded: set to true when sta is uploaded to the driver
  * @lost_packets: number of consecutive lost packets
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct sta_info {
 	/* General information, mostly static */
@@ -364,8 +436,11 @@ struct sta_info {
 	spinlock_t lock;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	spinlock_t flaglock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct work_struct drv_unblock_wk;
 
@@ -376,10 +451,15 @@ struct sta_info {
 	bool uploaded;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum ieee80211_sta_state sta_state;
 
 	/* use the accessors defined below */
 	unsigned long _flags;
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * frequently updated, locked with own spinlock (flaglock),
@@ -387,6 +467,7 @@ struct sta_info {
 	 */
 	u32 flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * STA powersave frame queues, no more than the internal
@@ -397,9 +478,15 @@ struct sta_info {
 	struct sk_buff_head tx_filtered[IEEE80211_NUM_ACS];
 	unsigned long driver_buffered_tids;
 =======
+<<<<<<< HEAD
+	struct sk_buff_head ps_tx_buf[IEEE80211_NUM_ACS];
+	struct sk_buff_head tx_filtered[IEEE80211_NUM_ACS];
+	unsigned long driver_buffered_tids;
+=======
 	struct sk_buff_head ps_tx_buf;
 	struct sk_buff_head tx_filtered;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Updated from RX path only, no locking requirements */
 	unsigned long rx_packets, rx_bytes;
@@ -415,8 +502,13 @@ struct sta_info {
 	/* Plus 1 for non-QoS frames */
 	__le16 last_seq_ctrl[NUM_RX_DATA_QUEUES + 1];
 =======
+<<<<<<< HEAD
+	/* Plus 1 for non-QoS frames */
+	__le16 last_seq_ctrl[NUM_RX_DATA_QUEUES + 1];
+=======
 	__le16 last_seq_ctrl[NUM_RX_DATA_QUEUES];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Updated from TX status path only, no locking requirements */
 	unsigned long tx_filtered_count;
@@ -466,7 +558,11 @@ struct sta_info {
 <<<<<<< HEAD
 	unsigned int beacon_loss_count;
 =======
+<<<<<<< HEAD
+	unsigned int beacon_loss_count;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* keep last! */
 	struct ieee80211_sta sta;
@@ -481,6 +577,9 @@ static inline enum nl80211_plink_state sta_plink_state(struct sta_info *sta)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void set_sta_flag(struct sta_info *sta,
 				enum ieee80211_sta_info_flags flag)
 {
@@ -538,6 +637,8 @@ static inline void sta_info_pre_move_state(struct sta_info *sta,
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 static inline void set_sta_flags(struct sta_info *sta, const u32 flags)
 {
@@ -596,6 +697,7 @@ static inline u32 get_sta_flags(struct sta_info *sta)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ieee80211_assign_tid_tx(struct sta_info *sta, int tid,
 			     struct tid_ampdu_tx *tid_tx);
 
@@ -615,9 +717,14 @@ rcu_dereference_protected_tid_tx(struct sta_info *sta, int tid)
 /* Maximum number of frames to buffer per power saving station per AC */
 #define STA_MAX_TX_BUFFER	64
 =======
+<<<<<<< HEAD
+/* Maximum number of frames to buffer per power saving station per AC */
+#define STA_MAX_TX_BUFFER	64
+=======
 /* Maximum number of frames to buffer per power saving station */
 #define STA_MAX_TX_BUFFER 128
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Minimum buffered frame expiry time. If STA uses listen interval that is
  * smaller than this value, the minimum value here is used instead. */
@@ -647,8 +754,12 @@ void for_each_sta_info_type_check(struct ieee80211_local *local,
 <<<<<<< HEAD
 #define for_each_sta_info(local, _addr, _sta, nxt)			\
 =======
+<<<<<<< HEAD
+#define for_each_sta_info(local, _addr, _sta, nxt)			\
+=======
 #define for_each_sta_info(local, _addr, _sta, nxt) 			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (	/* initialise loop */					\
 		_sta = rcu_dereference(local->sta_hash[STA_HASH(_addr)]),\
 		nxt = _sta ? rcu_dereference(_sta->hnext) : NULL;	\
@@ -664,8 +775,12 @@ void for_each_sta_info_type_check(struct ieee80211_local *local,
 <<<<<<< HEAD
 	if (compare_ether_addr(_sta->sta.addr, (_addr)) == 0)
 =======
+<<<<<<< HEAD
+	if (compare_ether_addr(_sta->sta.addr, (_addr)) == 0)
+=======
 	if (memcmp(_sta->sta.addr, (_addr), ETH_ALEN) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Get STA info by index, BROKEN!
@@ -678,13 +793,19 @@ struct sta_info *sta_info_get_by_idx(struct ieee80211_sub_if_data *sdata,
  */
 struct sta_info *sta_info_alloc(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const u8 *addr, gfp_t gfp);
 
 void sta_info_free(struct ieee80211_local *local, struct sta_info *sta);
 
+<<<<<<< HEAD
+=======
 =======
 				u8 *addr, gfp_t gfp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Insert STA info into hash table/list, returns zero or a
  * -EEXIST if (if the same MAC address is already present).
@@ -699,9 +820,14 @@ int sta_info_insert_rcu(struct sta_info *sta) __acquires(RCU);
 
 int __must_check __sta_info_destroy(struct sta_info *sta);
 =======
+<<<<<<< HEAD
+
+int __must_check __sta_info_destroy(struct sta_info *sta);
+=======
 int sta_info_insert_atomic(struct sta_info *sta);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int sta_info_destroy_addr(struct ieee80211_sub_if_data *sdata,
 			  const u8 *addr);
 int sta_info_destroy_addr_bss(struct ieee80211_sub_if_data *sdata,
@@ -710,9 +836,13 @@ int sta_info_destroy_addr_bss(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
 void sta_info_recalc_tim(struct sta_info *sta);
 =======
+<<<<<<< HEAD
+void sta_info_recalc_tim(struct sta_info *sta);
+=======
 void sta_info_set_tim_bit(struct sta_info *sta);
 void sta_info_clear_tim_bit(struct sta_info *sta);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void sta_info_init(struct ieee80211_local *local);
 void sta_info_stop(struct ieee80211_local *local);
@@ -723,7 +853,13 @@ void sta_set_rate_info_tx(struct sta_info *sta,
 			  const struct ieee80211_tx_rate *rate,
 			  struct rate_info *rinfo);
 =======
+<<<<<<< HEAD
+void sta_set_rate_info_tx(struct sta_info *sta,
+			  const struct ieee80211_tx_rate *rate,
+			  struct rate_info *rinfo);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ieee80211_sta_expire(struct ieee80211_sub_if_data *sdata,
 			  unsigned long exp_time);
 
@@ -732,6 +868,10 @@ void ieee80211_sta_ps_deliver_poll_response(struct sta_info *sta);
 <<<<<<< HEAD
 void ieee80211_sta_ps_deliver_uapsd(struct sta_info *sta);
 =======
+<<<<<<< HEAD
+void ieee80211_sta_ps_deliver_uapsd(struct sta_info *sta);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* STA_INFO_H */

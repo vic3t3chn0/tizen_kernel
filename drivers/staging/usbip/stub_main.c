@@ -18,6 +18,13 @@
  */
 
 #include <linux/string.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "usbip_common.h"
 #include "stub.h"
@@ -25,9 +32,19 @@
 #define DRIVER_AUTHOR "Takahiro Hirofuchi"
 #define DRIVER_DESC "USB/IP Host Driver"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct kmem_cache *stub_priv_cache;
+=======
 /* stub_priv is allocated from stub_priv_cache */
 struct kmem_cache *stub_priv_cache;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* stub_priv is allocated from stub_priv_cache */
+struct kmem_cache *stub_priv_cache;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * busid_tables defines matching busids that usbip can grab. A user can change
  * dynamically what device is locally used and what device is exported to a
@@ -37,6 +54,30 @@ struct kmem_cache *stub_priv_cache;
 static struct bus_id_priv busid_table[MAX_BUSID];
 static spinlock_t busid_table_lock;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void init_busid_table(void)
+{
+	int i;
+
+	memset(busid_table, 0, sizeof(busid_table));
+	for (i = 0; i < MAX_BUSID; i++)
+		busid_table[i].status = STUB_BUSID_OTHER;
+
+	spin_lock_init(&busid_table_lock);
+}
+
+/*
+ * Find the index of the busid by name.
+ * Must be called with busid_table_lock held.
+ */
+static int get_busid_idx(const char *busid)
+{
+	int i;
+	int idx = -1;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int match_busid(const char *busid)
 {
 	int i;
@@ -61,10 +102,37 @@ struct bus_id_priv *get_busid_priv(const char *busid)
 	int i;
 
 	spin_lock(&busid_table_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < MAX_BUSID; i++)
 		if (busid_table[i].name[0])
 			if (!strncmp(busid_table[i].name, busid, BUSID_SIZE)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				idx = i;
+				break;
+			}
+	return idx;
+}
+
+struct bus_id_priv *get_busid_priv(const char *busid)
+{
+	int idx;
+	struct bus_id_priv *bid = NULL;
+
+	spin_lock(&busid_table_lock);
+	idx = get_busid_idx(busid);
+	if (idx >= 0)
+		bid = &(busid_table[idx]);
+	spin_unlock(&busid_table_lock);
+
+	return bid;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* already registerd */
 				spin_unlock(&busid_table_lock);
 				return &(busid_table[i]);
@@ -91,16 +159,37 @@ static ssize_t show_match_busid(struct device_driver *drv, char *buf)
 	out += sprintf(out, "\n");
 
 	return out - buf;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int add_match_busid(char *busid)
 {
 	int i;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret = -1;
+
+	spin_lock(&busid_table_lock);
+	/* already registered? */
+	if (get_busid_idx(busid) >= 0) {
+		ret = 0;
+		goto out;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!match_busid(busid))
 		return 0;
 
 	spin_lock(&busid_table_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < MAX_BUSID; i++)
 		if (!busid_table[i].name[0]) {
@@ -108,6 +197,19 @@ static int add_match_busid(char *busid)
 			if ((busid_table[i].status != STUB_BUSID_ALLOC) &&
 			    (busid_table[i].status != STUB_BUSID_REMOV))
 				busid_table[i].status = STUB_BUSID_ADDED;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ret = 0;
+			break;
+		}
+
+out:
+	spin_unlock(&busid_table_lock);
+
+	return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&busid_table_lock);
 			return 0;
 		}
@@ -115,10 +217,56 @@ static int add_match_busid(char *busid)
 	spin_unlock(&busid_table_lock);
 
 	return -1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int del_match_busid(char *busid)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int idx;
+	int ret = -1;
+
+	spin_lock(&busid_table_lock);
+	idx = get_busid_idx(busid);
+	if (idx < 0)
+		goto out;
+
+	/* found */
+	ret = 0;
+
+	if (busid_table[idx].status == STUB_BUSID_OTHER)
+		memset(busid_table[idx].name, 0, BUSID_SIZE);
+
+	if ((busid_table[idx].status != STUB_BUSID_OTHER) &&
+	    (busid_table[idx].status != STUB_BUSID_ADDED))
+		busid_table[idx].status = STUB_BUSID_REMOV;
+
+out:
+	spin_unlock(&busid_table_lock);
+
+	return ret;
+}
+
+static ssize_t show_match_busid(struct device_driver *drv, char *buf)
+{
+	int i;
+	char *out = buf;
+
+	spin_lock(&busid_table_lock);
+	for (i = 0; i < MAX_BUSID; i++)
+		if (busid_table[i].name[0])
+			out += sprintf(out, "%s ", busid_table[i].name);
+	spin_unlock(&busid_table_lock);
+	out += sprintf(out, "\n");
+
+	return out - buf;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	spin_lock(&busid_table_lock);
@@ -154,6 +302,10 @@ static void init_busid_table(void)
 	}
 
 	spin_lock_init(&busid_table_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static ssize_t store_match_busid(struct device_driver *dev, const char *buf,
@@ -175,13 +327,41 @@ static ssize_t store_match_busid(struct device_driver *dev, const char *buf,
 	strncpy(busid, buf + 4, BUSID_SIZE);
 
 	if (!strncmp(buf, "add ", 4)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (add_match_busid(busid) < 0) {
+			return -ENOMEM;
+		} else {
+=======
 		if (add_match_busid(busid) < 0)
 			return -ENOMEM;
 		else {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (add_match_busid(busid) < 0)
+			return -ENOMEM;
+		else {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_debug("add busid %s\n", busid);
 			return count;
 		}
 	} else if (!strncmp(buf, "del ", 4)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (del_match_busid(busid) < 0) {
+			return -ENODEV;
+		} else {
+			pr_debug("del busid %s\n", busid);
+			return count;
+		}
+	} else {
+		return -EINVAL;
+	}
+}
+static DRIVER_ATTR(match_busid, S_IRUSR | S_IWUSR, show_match_busid,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (del_match_busid(busid) < 0)
 			return -ENODEV;
 		else {
@@ -192,6 +372,10 @@ static ssize_t store_match_busid(struct device_driver *dev, const char *buf,
 		return -EINVAL;
 }
 static DRIVER_ATTR(match_busid, S_IRUSR|S_IWUSR, show_match_busid,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		   store_match_busid);
 
 static struct stub_priv *stub_priv_pop_from_listhead(struct list_head *listhead)
@@ -214,6 +398,24 @@ static struct stub_priv *stub_priv_pop(struct stub_device *sdev)
 	spin_lock_irqsave(&sdev->priv_lock, flags);
 
 	priv = stub_priv_pop_from_listhead(&sdev->priv_init);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (priv)
+		goto done;
+
+	priv = stub_priv_pop_from_listhead(&sdev->priv_tx);
+	if (priv)
+		goto done;
+
+	priv = stub_priv_pop_from_listhead(&sdev->priv_free);
+
+done:
+	spin_unlock_irqrestore(&sdev->priv_lock, flags);
+
+	return priv;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (priv) {
 		spin_unlock_irqrestore(&sdev->priv_lock, flags);
 		return priv;
@@ -233,17 +435,37 @@ static struct stub_priv *stub_priv_pop(struct stub_device *sdev)
 
 	spin_unlock_irqrestore(&sdev->priv_lock, flags);
 	return NULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void stub_device_cleanup_urbs(struct stub_device *sdev)
 {
 	struct stub_priv *priv;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct urb *urb;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_dbg(&sdev->udev->dev, "free sdev %p\n", sdev);
 
 	while ((priv = stub_priv_pop(sdev))) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		urb = priv->urb;
+=======
 		struct urb *urb = priv->urb;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		struct urb *urb = priv->urb;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_dbg(&sdev->udev->dev, "free urb %p\n", urb);
 		usb_kill_urb(urb);
 
@@ -251,11 +473,32 @@ void stub_device_cleanup_urbs(struct stub_device *sdev)
 
 		kfree(urb->transfer_buffer);
 		kfree(urb->setup_packet);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		usb_free_urb(urb);
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __init usbip_host_init(void)
+{
+	int ret;
+
+	init_busid_table();
+
+	stub_priv_cache = KMEM_CACHE(stub_priv, SLAB_HWCACHE_ALIGN);
+	if (!stub_priv_cache) {
+		pr_err("kmem_cache_create failed\n");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init usb_stub_init(void)
 {
 	int ret;
@@ -266,10 +509,37 @@ static int __init usb_stub_init(void)
 
 	if (!stub_priv_cache) {
 		pr_err("create stub_priv_cache error\n");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENOMEM;
 	}
 
 	ret = usb_register(&stub_driver);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ret < 0) {
+		pr_err("usb_register failed %d\n", ret);
+		goto err_usb_register;
+	}
+
+	ret = driver_create_file(&stub_driver.drvwrap.driver,
+				 &driver_attr_match_busid);
+	if (ret < 0) {
+		pr_err("driver_create_file failed\n");
+		goto err_create_file;
+	}
+
+	pr_info(DRIVER_DESC " v" USBIP_VERSION "\n");
+	return ret;
+
+err_create_file:
+	usb_deregister(&stub_driver);
+err_usb_register:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		pr_err("usb_register failed %d\n", ret);
 		goto error_usb_register;
@@ -291,11 +561,23 @@ static int __init usb_stub_init(void)
 error_create_file:
 	usb_deregister(&stub_driver);
 error_usb_register:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_destroy(stub_priv_cache);
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __exit usbip_host_exit(void)
+=======
 static void __exit usb_stub_exit(void)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void __exit usb_stub_exit(void)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	driver_remove_file(&stub_driver.drvwrap.driver,
 			   &driver_attr_match_busid);
@@ -309,8 +591,18 @@ static void __exit usb_stub_exit(void)
 	kmem_cache_destroy(stub_priv_cache);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_init(usbip_host_init);
+module_exit(usbip_host_exit);
+=======
 module_init(usb_stub_init);
 module_exit(usb_stub_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+module_init(usb_stub_init);
+module_exit(usb_stub_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

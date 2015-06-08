@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mutex.h>
 #include <linux/poison.h>
 #include <linux/sched.h>
@@ -39,7 +43,11 @@
 <<<<<<< HEAD
 #include <linux/stat.h>
 =======
+<<<<<<< HEAD
+#include <linux/stat.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/spinlock.h>
 #include <linux/string.h>
 #include <linux/types.h>
@@ -495,8 +503,13 @@ void dmam_pool_destroy(struct dma_pool *pool)
 	WARN_ON(devres_destroy(dev, dmam_pool_release, dmam_pool_match, pool));
 	dma_pool_destroy(pool);
 =======
+<<<<<<< HEAD
+	WARN_ON(devres_destroy(dev, dmam_pool_release, dmam_pool_match, pool));
+	dma_pool_destroy(pool);
+=======
 	dma_pool_destroy(pool);
 	WARN_ON(devres_destroy(dev, dmam_pool_release, dmam_pool_match, pool));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(dmam_pool_destroy);

@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 static void wait_for_partner(struct inode* inode, unsigned int *cnt)
 =======
+<<<<<<< HEAD
+static void wait_for_partner(struct inode* inode, unsigned int *cnt)
+=======
 static int wait_for_partner(struct inode* inode, unsigned int *cnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int cur = *cnt;	
 
@@ -29,8 +33,11 @@ static int wait_for_partner(struct inode* inode, unsigned int *cnt)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return cur == *cnt ? -ERESTARTSYS : 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void wake_up_partner(struct inode* inode)
@@ -79,8 +86,13 @@ static int fifo_open(struct inode *inode, struct file *filp)
 				wait_for_partner(inode, &pipe->w_counter);
 				if(signal_pending(current))
 =======
+<<<<<<< HEAD
+				wait_for_partner(inode, &pipe->w_counter);
+				if(signal_pending(current))
+=======
 				if (wait_for_partner(inode, &pipe->w_counter))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					goto err_rd;
 			}
 		}
@@ -106,8 +118,13 @@ static int fifo_open(struct inode *inode, struct file *filp)
 			wait_for_partner(inode, &pipe->r_counter);
 			if (signal_pending(current))
 =======
+<<<<<<< HEAD
+			wait_for_partner(inode, &pipe->r_counter);
+			if (signal_pending(current))
+=======
 			if (wait_for_partner(inode, &pipe->r_counter))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto err_wr;
 		}
 		break;

@@ -92,9 +92,21 @@ static int mt2131_writeregs(struct mt2131_priv *priv,u8 *buf, u8 len)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int mt2131_set_params(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
+=======
 static int mt2131_set_params(struct dvb_frontend *fe,
 			     struct dvb_frontend_parameters *params)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int mt2131_set_params(struct dvb_frontend *fe,
+			     struct dvb_frontend_parameters *params)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mt2131_priv *priv;
 	int ret=0, i;
 	u32 freq;
@@ -105,12 +117,23 @@ static int mt2131_set_params(struct dvb_frontend *fe,
 	u8 lockval = 0;
 
 	priv = fe->tuner_priv;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	freq = c->frequency / 1000;  /* Hz -> kHz */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fe->ops.info.type == FE_OFDM)
 		priv->bandwidth = params->u.ofdm.bandwidth;
 	else
 		priv->bandwidth = 0;
 
 	freq = params->frequency / 1000;  // Hz -> kHz
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk(1, "%s() freq=%d\n", __func__, freq);
 
 	f_lo1 = freq + MT2131_IF1 * 1000;
@@ -193,6 +216,11 @@ static int mt2131_get_frequency(struct dvb_frontend *fe, u32 *frequency)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mt2131_get_bandwidth(struct dvb_frontend *fe, u32 *bandwidth)
 {
 	struct mt2131_priv *priv = fe->tuner_priv;
@@ -201,6 +229,10 @@ static int mt2131_get_bandwidth(struct dvb_frontend *fe, u32 *bandwidth)
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mt2131_get_status(struct dvb_frontend *fe, u32 *status)
 {
 	struct mt2131_priv *priv = fe->tuner_priv;
@@ -263,7 +295,14 @@ static const struct dvb_tuner_ops mt2131_tuner_ops = {
 
 	.set_params    = mt2131_set_params,
 	.get_frequency = mt2131_get_frequency,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.get_bandwidth = mt2131_get_bandwidth,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.get_bandwidth = mt2131_get_bandwidth,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_status    = mt2131_get_status
 };
 
@@ -281,7 +320,14 @@ struct dvb_frontend * mt2131_attach(struct dvb_frontend *fe,
 		return NULL;
 
 	priv->cfg = cfg;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	priv->bandwidth = 6000000; /* 6MHz */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	priv->bandwidth = 6000000; /* 6MHz */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	priv->i2c = i2c;
 
 	if (mt2131_readreg(priv, 0, &id) != 0) {

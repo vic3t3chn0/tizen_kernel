@@ -4,10 +4,16 @@
  *
  *  Copyright (C) 1996-2005 Markus F.X.J. Oberhumer <markus@oberhumer.com>
 =======
+<<<<<<< HEAD
+ *  LZO1X Compressor from MiniLZO
+ *
+ *  Copyright (C) 1996-2005 Markus F.X.J. Oberhumer <markus@oberhumer.com>
+=======
  *  LZO1X Compressor from LZO
  *
  *  Copyright (C) 1996-2012 Markus F.X.J. Oberhumer <markus@oberhumer.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  The full LZO package can be found at:
  *  http://www.oberhumer.com/opensource/lzo/
@@ -15,8 +21,12 @@
 <<<<<<< HEAD
  *  Changed for kernel use by:
 =======
+<<<<<<< HEAD
+ *  Changed for kernel use by:
+=======
  *  Changed for Linux kernel use by:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Nitin Gupta <nitingupta910@gmail.com>
  *  Richard Purdie <rpurdie@openedhand.com>
  */
@@ -24,6 +34,9 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/lzo.h>
 #include <asm/unaligned.h>
 #include "lzodefs.h"
@@ -200,6 +213,8 @@ int lzo1x_1_compress(const unsigned char *in, size_t in_len, unsigned char *out,
 
 	if (t > 0) {
 		ii = in + in_len - t;
+<<<<<<< HEAD
+=======
 =======
 #include <asm/unaligned.h>
 #include <linux/lzo.h>
@@ -401,6 +416,7 @@ int lzo1x_1_compress(const unsigned char *in, size_t in_len,
 	if (t > 0) {
 		const unsigned char *ii = in + in_len - t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (op == out && t <= 238) {
 			*op++ = (17 + t);
@@ -413,17 +429,26 @@ int lzo1x_1_compress(const unsigned char *in, size_t in_len,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*op++ = 0;
 			while (tt > 255) {
 				tt -= 255;
 				*op++ = 0;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			*op++ = tt;
 		}
 		do {
+<<<<<<< HEAD
+=======
 =======
 			*op++ = tt;
 		}
@@ -436,6 +461,7 @@ int lzo1x_1_compress(const unsigned char *in, size_t in_len,
 		} while (t >= 16);
 		if (t > 0) do {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*op++ = *ii++;
 		} while (--t > 0);
 	}
@@ -454,4 +480,8 @@ MODULE_DESCRIPTION("LZO1X-1 Compressor");
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

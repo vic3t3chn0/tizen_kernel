@@ -150,12 +150,15 @@ struct rtc_class_ops {
 	int (*set_alarm)(struct device *, struct rtc_wkalrm *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_RTC_ALARM_BOOT)
 	int (*set_alarm_boot)(struct device *, struct rtc_wkalrm *);
 #elif defined(CONFIG_RTC_POWER_OFF)
 	int (*set_alarm_poweroff)(struct device *, struct rtc_wkalrm *);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*proc)(struct device *, struct seq_file *);
 	int (*set_mmss)(struct device *, unsigned long secs);
 	int (*read_callback)(struct device *, int data);
@@ -214,8 +217,13 @@ struct rtc_device
 	/* Some hardware can't support UIE mode */
 	int uie_unsupported;
 =======
+<<<<<<< HEAD
+	/* Some hardware can't support UIE mode */
+	int uie_unsupported;
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_RTC_INTF_DEV_UIE_EMUL
 	struct work_struct uie_task;
@@ -248,6 +256,10 @@ extern int rtc_set_alarm(struct rtc_device *rtc,
 extern int rtc_initialize_alarm(struct rtc_device *rtc,
 				struct rtc_wkalrm *alrm);
 =======
+<<<<<<< HEAD
+extern int rtc_initialize_alarm(struct rtc_device *rtc,
+				struct rtc_wkalrm *alrm);
+=======
 #if defined(CONFIG_RTC_ALARM_BOOT)
 extern int rtc_set_alarm_boot(struct rtc_device *rtc,
 				struct rtc_wkalrm *alarm);
@@ -258,6 +270,7 @@ extern int rtc_set_alarm_poweroff(struct rtc_device *rtc,
 extern int rtc_initialize_alarm(struct rtc_device *rtc,
 					struct rtc_wkalrm *alrm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void rtc_update_irq(struct rtc_device *rtc,
 			unsigned long num, unsigned long events);
 
@@ -305,11 +318,14 @@ extern int rtc_hctosys_ret;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_RTC_ALARM_BOOT)
 extern unsigned int lpcharge;
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __KERNEL__ */
 
 #endif /* _LINUX_RTC_H_ */

@@ -5,7 +5,12 @@
 #include <trace/events/xen.h>
 
 =======
+<<<<<<< HEAD
+#include <trace/events/xen.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xen-ops.h"
 
 /* Multicalls */
@@ -26,14 +31,20 @@ static inline void xen_mc_batch(void)
 {
 	unsigned long flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* need to disable interrupts until this entry is complete */
 	local_irq_save(flags);
 	trace_xen_mc_batch(paravirt_get_lazy_mode());
+<<<<<<< HEAD
+=======
 =======
 	/* need to disable interrupts until this entry is complete */
 	local_irq_save(flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__this_cpu_write(xen_mc_irq_flags, flags);
 }
 
@@ -53,7 +64,12 @@ static inline void xen_mc_issue(unsigned mode)
 	trace_xen_mc_issue(mode);
 
 =======
+<<<<<<< HEAD
+	trace_xen_mc_issue(mode);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((paravirt_get_lazy_mode() & mode) == 0)
 		xen_mc_flush();
 
@@ -61,8 +77,12 @@ static inline void xen_mc_issue(unsigned mode)
 <<<<<<< HEAD
 	local_irq_restore(this_cpu_read(xen_mc_irq_flags));
 =======
+<<<<<<< HEAD
+	local_irq_restore(this_cpu_read(xen_mc_irq_flags));
+=======
 	local_irq_restore(percpu_read(xen_mc_irq_flags));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Set up a callback to be called when the current batch is flushed */

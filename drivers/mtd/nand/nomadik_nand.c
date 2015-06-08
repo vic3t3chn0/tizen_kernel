@@ -187,6 +187,13 @@ static int nomadik_nand_remove(struct platform_device *pdev)
 		pdata->exit();
 
 	if (host) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		nand_release(&host->mtd);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iounmap(host->cmd_va);
 		iounmap(host->data_va);
 		iounmap(host->addr_va);
@@ -200,7 +207,15 @@ static int nomadik_nand_suspend(struct device *dev)
 	struct nomadik_nand_host *host = dev_get_drvdata(dev);
 	int ret = 0;
 	if (host)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ret = mtd_suspend(&host->mtd);
+=======
 		ret = host->mtd.suspend(&host->mtd);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ret = host->mtd.suspend(&host->mtd);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -208,7 +223,15 @@ static int nomadik_nand_resume(struct device *dev)
 {
 	struct nomadik_nand_host *host = dev_get_drvdata(dev);
 	if (host)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mtd_resume(&host->mtd);
+=======
 		host->mtd.resume(&host->mtd);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		host->mtd.resume(&host->mtd);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -227,6 +250,12 @@ static struct platform_driver nomadik_nand_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(nomadik_nand_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init nand_nomadik_init(void)
 {
 	pr_info("Nomadik NAND driver\n");
@@ -240,6 +269,10 @@ static void __exit nand_nomadik_exit(void)
 
 module_init(nand_nomadik_init);
 module_exit(nand_nomadik_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("ST Microelectronics (sachin.verma@st.com)");

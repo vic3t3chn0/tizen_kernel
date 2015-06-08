@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2009-2010, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2009-2010, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2009, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -31,8 +35,12 @@
 <<<<<<< HEAD
 #define INT_ARMQC_PERFMON	9
 =======
+<<<<<<< HEAD
+#define INT_ARMQC_PERFMON	9
+=======
 #define INT_ARM11_PM		9
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INT_AVS_REQ_DOWN	10
 #define INT_AVS_REQ_UP		11
 #define INT_SC_ACG		12
@@ -143,9 +151,14 @@
 #define INT_ADSP_A9_A11 	INT_AD5A_MPROC_APPS_0
 #define INT_ADSP_A11		INT_AD5A_MPROC_APPS_1
 =======
+<<<<<<< HEAD
+#define INT_ADSP_A9_A11 	INT_AD5A_MPROC_APPS_0
+#define INT_ADSP_A11		INT_AD5A_MPROC_APPS_1
+=======
 #define INT_ADSP_A11 		INT_AD5A_MPROC_APPS_0
 #define INT_ADSP_A9_A11 	INT_AD5A_MPROC_APPS_1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define INT_MDDI_EXT		INT_EMDH
 #define INT_MDDI_PRI		INT_PMDH
 #define INT_MDDI_CLIENT		INT_MDC
@@ -156,11 +169,16 @@
 #define NR_GPIO_IRQS		182
 #define PMIC8058_IRQ_BASE	(NR_MSM_IRQS + NR_GPIO_IRQS)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NR_PMIC8058_IRQS	256
 #define NR_BOARD_IRQS		NR_PMIC8058_IRQS
 
 #define INT_ADSP_A11_SMSM	INT_ADSP_A11
 
+<<<<<<< HEAD
+=======
 =======
 #define NR_PMIC8058_GPIO_IRQS	40
 #define NR_PMIC8058_MPP_IRQS	12
@@ -171,4 +189,5 @@
 #define NR_BOARD_IRQS		NR_PMIC8058_IRQS
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_ARCH_MSM_IRQS_7X30_H */

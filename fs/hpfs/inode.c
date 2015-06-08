@@ -56,8 +56,12 @@ void hpfs_read_inode(struct inode *i)
 <<<<<<< HEAD
 		clear_nlink(i);*/
 =======
+<<<<<<< HEAD
+		clear_nlink(i);*/
+=======
 		i->i_nlink = 0;*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		make_bad_inode(i);
 		return;
 	}
@@ -84,8 +88,12 @@ void hpfs_read_inode(struct inode *i)
 <<<<<<< HEAD
 			set_nlink(i, 1);
 =======
+<<<<<<< HEAD
+			set_nlink(i, 1);
+=======
 			i->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			i->i_size = ea_size;
 			i->i_blocks = 1;
 			brelse(bh);
@@ -112,8 +120,12 @@ void hpfs_read_inode(struct inode *i)
 <<<<<<< HEAD
 				set_nlink(i, 1);
 =======
+<<<<<<< HEAD
+				set_nlink(i, 1);
+=======
 				i->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				i->i_size = 0;
 				i->i_blocks = 1;
 				init_special_inode(i, mode,
@@ -140,8 +152,12 @@ void hpfs_read_inode(struct inode *i)
 <<<<<<< HEAD
 		set_nlink(i, 2 + n_subdirs);
 =======
+<<<<<<< HEAD
+		set_nlink(i, 2 + n_subdirs);
+=======
 		i->i_nlink = 2 + n_subdirs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		i->i_mode |= S_IFREG;
 		if (!hpfs_inode->i_ea_mode) i->i_mode &= ~0111;
@@ -150,8 +166,12 @@ void hpfs_read_inode(struct inode *i)
 <<<<<<< HEAD
 		set_nlink(i, 1);
 =======
+<<<<<<< HEAD
+		set_nlink(i, 1);
+=======
 		i->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		i->i_size = le32_to_cpu(fnode->file_size);
 		i->i_blocks = ((i->i_size + 511) >> 9) + 1;
 		i->i_data.a_ops = &hpfs_aops;

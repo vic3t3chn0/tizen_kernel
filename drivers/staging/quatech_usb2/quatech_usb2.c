@@ -16,7 +16,15 @@
 #include <linux/usb/serial.h>
 #include <linux/uaccess.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Version Information */
 #define DRIVER_VERSION "v2.00"
@@ -135,7 +143,14 @@ static struct usb_driver quausb2_usb_driver = {
 	.probe = usb_serial_probe,
 	.disconnect = usb_serial_disconnect,
 	.id_table = quausb2_id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id = 1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id = 1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -1942,7 +1957,14 @@ static struct usb_serial_driver quatech2_device = {
 		.name = "quatech_usb2",
 	},
 	.description = DRIVER_DESC,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver = &quausb2_usb_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver = &quausb2_usb_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = quausb2_id_table,
 	.num_ports = 8,
 	.open = qt2_open,
@@ -1964,6 +1986,16 @@ static struct usb_serial_driver quatech2_device = {
 	.write_bulk_callback = qt2_write_bulk_callback,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&quatech2_device, NULL
+};
+
+module_usb_serial_driver(quausb2_usb_driver, serial_drivers);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init quausb2_usb_init(void)
 {
 	int retval;
@@ -1999,6 +2031,10 @@ static void __exit quausb2_usb_exit(void)
 
 module_init(quausb2_usb_init);
 module_exit(quausb2_usb_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

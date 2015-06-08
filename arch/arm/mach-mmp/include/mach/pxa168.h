@@ -8,7 +8,11 @@ extern void __init pxa168_init_irq(void);
 <<<<<<< HEAD
 extern void pxa168_restart(char, const char *);
 =======
+<<<<<<< HEAD
+extern void pxa168_restart(char, const char *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void pxa168_clear_keypad_wakeup(void);
 
 #include <linux/i2c.h>
@@ -19,16 +23,22 @@ extern void pxa168_clear_keypad_wakeup(void);
 #include <plat/pxa27x_keypad.h>
 #include <mach/cputype.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pxa168_eth.h>
 
 extern struct pxa_device_desc pxa168_device_uart1;
 extern struct pxa_device_desc pxa168_device_uart2;
 extern struct pxa_device_desc pxa168_device_uart3;
+<<<<<<< HEAD
+=======
 =======
 
 extern struct pxa_device_desc pxa168_device_uart1;
 extern struct pxa_device_desc pxa168_device_uart2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct pxa_device_desc pxa168_device_twsi0;
 extern struct pxa_device_desc pxa168_device_twsi1;
 extern struct pxa_device_desc pxa168_device_pwm1;
@@ -44,6 +54,9 @@ extern struct pxa_device_desc pxa168_device_nand;
 extern struct pxa_device_desc pxa168_device_fb;
 extern struct pxa_device_desc pxa168_device_keypad;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct pxa_device_desc pxa168_device_eth;
 
 struct pxa168_usb_pdata {
@@ -54,8 +67,11 @@ struct pxa168_usb_pdata {
 int __init pxa168_add_usb_host(struct pxa168_usb_pdata *pdata);
 
 extern struct platform_device pxa168_device_gpio;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int pxa168_add_uart(int id)
 {
@@ -67,7 +83,11 @@ static inline int pxa168_add_uart(int id)
 <<<<<<< HEAD
 	case 3: d = &pxa168_device_uart3; break;
 =======
+<<<<<<< HEAD
+	case 3: d = &pxa168_device_uart3; break;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (d == NULL)
@@ -147,10 +167,16 @@ static inline int pxa168_add_keypad(struct pxa27x_keypad_platform_data *data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int pxa168_add_eth(struct pxa168_eth_platform_data *data)
 {
 	return pxa_register_device(&pxa168_device_eth, data, sizeof(*data));
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_MACH_PXA168_H */

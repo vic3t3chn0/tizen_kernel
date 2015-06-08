@@ -735,11 +735,20 @@ static void rt2500pci_start_queue(struct data_queue *queue)
 		rt2x00pci_register_write(rt2x00dev, RXCSR0, reg);
 		break;
 	case QID_BEACON:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Allow the tbtt tasklet to be scheduled.
 		 */
 		tasklet_enable(&rt2x00dev->tbtt_tasklet);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rt2x00pci_register_read(rt2x00dev, CSR14, &reg);
 		rt2x00_set_field32(&reg, CSR14_TSF_COUNT, 1);
 		rt2x00_set_field32(&reg, CSR14_TBCN, 1);
@@ -805,7 +814,15 @@ static void rt2500pci_stop_queue(struct data_queue *queue)
 		/*
 		 * Wait for possibly running tbtt tasklets.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tasklet_kill(&rt2x00dev->tbtt_tasklet);
+=======
 		tasklet_disable(&rt2x00dev->tbtt_tasklet);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		tasklet_disable(&rt2x00dev->tbtt_tasklet);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		break;
@@ -1137,12 +1154,21 @@ static void rt2500pci_toggle_irq(struct rt2x00_dev *rt2x00dev,
 	if (state == STATE_RADIO_IRQ_ON) {
 		rt2x00pci_register_read(rt2x00dev, CSR7, &reg);
 		rt2x00pci_register_write(rt2x00dev, CSR7, reg);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Enable tasklets.
 		 */
 		tasklet_enable(&rt2x00dev->txstatus_tasklet);
 		tasklet_enable(&rt2x00dev->rxdone_tasklet);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1165,8 +1191,19 @@ static void rt2500pci_toggle_irq(struct rt2x00_dev *rt2x00dev,
 		/*
 		 * Ensure that all tasklets are finished.
 		 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		tasklet_kill(&rt2x00dev->txstatus_tasklet);
+		tasklet_kill(&rt2x00dev->rxdone_tasklet);
+		tasklet_kill(&rt2x00dev->tbtt_tasklet);
+=======
 		tasklet_disable(&rt2x00dev->txstatus_tasklet);
 		tasklet_disable(&rt2x00dev->rxdone_tasklet);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		tasklet_disable(&rt2x00dev->txstatus_tasklet);
+		tasklet_disable(&rt2x00dev->rxdone_tasklet);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -1479,6 +1516,22 @@ static void rt2500pci_txstatus_tasklet(unsigned long data)
 	/*
 	 * Enable all TXDONE interrupts again.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags)) {
+		spin_lock_irq(&rt2x00dev->irqmask_lock);
+
+		rt2x00pci_register_read(rt2x00dev, CSR8, &reg);
+		rt2x00_set_field32(&reg, CSR8_TXDONE_TXRING, 0);
+		rt2x00_set_field32(&reg, CSR8_TXDONE_ATIMRING, 0);
+		rt2x00_set_field32(&reg, CSR8_TXDONE_PRIORING, 0);
+		rt2x00pci_register_write(rt2x00dev, CSR8, reg);
+
+		spin_unlock_irq(&rt2x00dev->irqmask_lock);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irq(&rt2x00dev->irqmask_lock);
 
 	rt2x00pci_register_read(rt2x00dev, CSR8, &reg);
@@ -1488,13 +1541,26 @@ static void rt2500pci_txstatus_tasklet(unsigned long data)
 	rt2x00pci_register_write(rt2x00dev, CSR8, reg);
 
 	spin_unlock_irq(&rt2x00dev->irqmask_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void rt2500pci_tbtt_tasklet(unsigned long data)
 {
 	struct rt2x00_dev *rt2x00dev = (struct rt2x00_dev *)data;
 	rt2x00lib_beacondone(rt2x00dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
+		rt2500pci_enable_interrupt(rt2x00dev, CSR8_TBCN_EXPIRE);
+=======
 	rt2500pci_enable_interrupt(rt2x00dev, CSR8_TBCN_EXPIRE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	rt2500pci_enable_interrupt(rt2x00dev, CSR8_TBCN_EXPIRE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void rt2500pci_rxdone_tasklet(unsigned long data)
@@ -1502,7 +1568,15 @@ static void rt2500pci_rxdone_tasklet(unsigned long data)
 	struct rt2x00_dev *rt2x00dev = (struct rt2x00_dev *)data;
 	if (rt2x00pci_rxdone(rt2x00dev))
 		tasklet_schedule(&rt2x00dev->rxdone_tasklet);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	else if (test_bit(DEVICE_STATE_ENABLED_RADIO, &rt2x00dev->flags))
+=======
 	else
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	else
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rt2500pci_enable_interrupt(rt2x00dev, CSR8_RXDONE);
 }
 
@@ -1936,7 +2010,14 @@ static int rt2500pci_probe_hw_mode(struct rt2x00_dev *rt2x00dev)
 static int rt2500pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 {
 	int retval;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	u32 reg;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 reg;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Allocate eeprom data.
@@ -1950,6 +2031,11 @@ static int rt2500pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 		return retval;
 
 	/*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Enable rfkill polling by setting GPIO direction of the
 	 * rfkill switch GPIO pin correctly.
 	 */
@@ -1958,6 +2044,10 @@ static int rt2500pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 	rt2x00pci_register_write(rt2x00dev, GPIOCSR, reg);
 
 	/*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Initialize hw specifications.
 	 */
 	retval = rt2500pci_probe_hw_mode(rt2x00dev);
@@ -1982,7 +2072,16 @@ static int rt2500pci_probe_hw(struct rt2x00_dev *rt2x00dev)
 /*
  * IEEE80211 stack callback functions.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u64 rt2500pci_get_tsf(struct ieee80211_hw *hw,
+			     struct ieee80211_vif *vif)
+=======
 static u64 rt2500pci_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static u64 rt2500pci_get_tsf(struct ieee80211_hw *hw)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rt2x00_dev *rt2x00dev = hw->priv;
 	u64 tsf;
@@ -2025,6 +2124,13 @@ static const struct ieee80211_ops rt2500pci_mac80211_ops = {
 	.set_antenna		= rt2x00mac_set_antenna,
 	.get_antenna		= rt2x00mac_get_antenna,
 	.get_ringparam		= rt2x00mac_get_ringparam,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.tx_frames_pending	= rt2x00mac_tx_frames_pending,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct rt2x00lib_ops rt2500pci_rt2x00_ops = {

@@ -61,9 +61,12 @@ static struct dentry *ufs_lookup(struct inode * dir, struct dentry *dentry, stru
 	unlock_ufs(dir->i_sb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (IS_ERR(inode))
 		return ERR_CAST(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return d_splice_alias(inode, dentry);
 }
 
@@ -78,8 +81,12 @@ static struct dentry *ufs_lookup(struct inode * dir, struct dentry *dentry, stru
 <<<<<<< HEAD
 static int ufs_create (struct inode * dir, struct dentry * dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int ufs_create (struct inode * dir, struct dentry * dentry, umode_t mode,
+=======
 static int ufs_create (struct inode * dir, struct dentry * dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct nameidata *nd)
 {
 	struct inode *inode;
@@ -106,8 +113,12 @@ static int ufs_create (struct inode * dir, struct dentry * dentry, int mode,
 <<<<<<< HEAD
 static int ufs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode, dev_t rdev)
 =======
+<<<<<<< HEAD
+static int ufs_mknod(struct inode *dir, struct dentry *dentry, umode_t mode, dev_t rdev)
+=======
 static int ufs_mknod (struct inode * dir, struct dentry *dentry, int mode, dev_t rdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	int err;
@@ -181,11 +192,14 @@ static int ufs_link (struct dentry * old_dentry, struct inode * dir,
 	lock_ufs(dir->i_sb);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (inode->i_nlink >= UFS_LINK_MAX) {
 		unlock_ufs(dir->i_sb);
 		return -EMLINK;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inode->i_ctime = CURRENT_TIME_SEC;
 	inode_inc_link_count(inode);
@@ -197,10 +211,15 @@ static int ufs_link (struct dentry * old_dentry, struct inode * dir,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ufs_mkdir(struct inode * dir, struct dentry * dentry, umode_t mode)
 {
 	struct inode * inode;
 	int err;
+<<<<<<< HEAD
+=======
 =======
 static int ufs_mkdir(struct inode * dir, struct dentry * dentry, int mode)
 {
@@ -210,6 +229,7 @@ static int ufs_mkdir(struct inode * dir, struct dentry * dentry, int mode)
 	if (dir->i_nlink >= UFS_LINK_MAX)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lock_ufs(dir->i_sb);
 	inode_inc_link_count(dir);
@@ -330,12 +350,15 @@ static int ufs_rename(struct inode *old_dir, struct dentry *old_dentry,
 	} else {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		if (dir_de) {
 			err = -EMLINK;
 			if (new_dir->i_nlink >= UFS_LINK_MAX)
 				goto out_dir;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ufs_add_link(new_dentry, old_inode);
 		if (err)
 			goto out_dir;

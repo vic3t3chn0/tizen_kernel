@@ -34,11 +34,16 @@
 #include <plat/board.h>
 #include <plat/usb.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 #include <plat/dma.h>
 #include <plat/gpmc.h>
 #include <video/omapdss.h>
 #include <video/omap-panel-dvi.h>
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/dma.h>
@@ -46,6 +51,7 @@
 #include <video/omapdss.h>
 #include <video/omap-panel-generic-dpi.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <plat/gpmc-smc91x.h>
 
@@ -197,9 +203,13 @@ static struct omap_dss_device sdp3430_lcd_device = {
 <<<<<<< HEAD
 static struct panel_dvi_platform_data dvi_panel = {
 =======
+<<<<<<< HEAD
+static struct panel_dvi_platform_data dvi_panel = {
+=======
 static struct panel_generic_dpi_data dvi_panel = {
 	.name			= "generic",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.platform_enable	= sdp3430_panel_enable_dvi,
 	.platform_disable	= sdp3430_panel_disable_dvi,
 };
@@ -210,8 +220,12 @@ static struct omap_dss_device sdp3430_dvi_device = {
 <<<<<<< HEAD
 	.driver_name		= "dvi",
 =======
+<<<<<<< HEAD
+	.driver_name		= "dvi",
+=======
 	.driver_name		= "generic_dpi_panel",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.data			= &dvi_panel,
 	.phy.dpi.data_lines	= 24,
 };
@@ -243,6 +257,8 @@ static struct omap_board_config_kernel sdp3430_config[] __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void __init omap_3430sdp_init_early(void)
 {
 	omap2_init_common_infrastructure();
@@ -266,6 +282,7 @@ static struct twl4030_bci_platform_data sdp3430_bci_data = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap2_hsmmc_info mmc[] = {
 	{
 		.mmc		= 1,
@@ -277,7 +294,11 @@ static struct omap2_hsmmc_info mmc[] = {
 <<<<<<< HEAD
 		.deferred	= true,
 =======
+<<<<<<< HEAD
+		.deferred	= true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.mmc		= 2,
@@ -286,7 +307,11 @@ static struct omap2_hsmmc_info mmc[] = {
 <<<<<<< HEAD
 		.deferred	= true,
 =======
+<<<<<<< HEAD
+		.deferred	= true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{}	/* Terminator */
 };
@@ -302,8 +327,12 @@ static int sdp3430_twl_gpio_setup(struct device *dev,
 <<<<<<< HEAD
 	omap_hsmmc_late_init(mmc);
 =======
+<<<<<<< HEAD
+	omap_hsmmc_late_init(mmc);
+=======
 	omap2_hsmmc_init(mmc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* gpio + 7 is "sub_lcd_en_bkl" (output/PWM1) */
 	gpio_request_one(gpio + 7, GPIOF_OUT_INIT_LOW, "sub_lcd_en_bkl");
@@ -325,6 +354,8 @@ static struct twl4030_gpio_platform_data sdp3430_gpio_data = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct twl4030_usb_data sdp3430_usb_data = {
 	.usb_mode	= T2_USB_MODE_ULPI,
 };
@@ -334,6 +365,7 @@ static struct twl4030_madc_platform_data sdp3430_madc_data = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* regulator consumer mappings */
 
 /* ads7846 on SPI */
@@ -341,6 +373,8 @@ static struct regulator_consumer_supply sdp3430_vaux3_supplies[] = {
 	REGULATOR_SUPPLY("vcc", "spi1.0"),
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static struct regulator_consumer_supply sdp3430_vdda_dac_supplies[] = {
@@ -354,6 +388,7 @@ static struct regulator_consumer_supply sdp3430_vpll2_supplies[] = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply sdp3430_vmmc1_supplies[] = {
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.0"),
 };
@@ -476,6 +511,12 @@ static struct twl4030_platform_data sdp3430_twldata = {
 	.gpio		= &sdp3430_gpio_data,
 	.keypad		= &sdp3430_kp_data,
 =======
+<<<<<<< HEAD
+static struct twl4030_platform_data sdp3430_twldata = {
+	/* platform_data for children goes here */
+	.gpio		= &sdp3430_gpio_data,
+	.keypad		= &sdp3430_kp_data,
+=======
 /* VDAC for DSS driving S-Video */
 static struct regulator_init_data sdp3430_vdac = {
 	.constraints = {
@@ -525,6 +566,7 @@ static struct twl4030_platform_data sdp3430_twldata = {
 	.usb		= &sdp3430_usb_data,
 	.codec		= &sdp3430_codec,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.vaux1		= &sdp3430_vaux1,
 	.vaux2		= &sdp3430_vaux2,
@@ -535,15 +577,21 @@ static struct twl4030_platform_data sdp3430_twldata = {
 	.vsim		= &sdp3430_vsim,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.vdac		= &sdp3430_vdac,
 	.vpll2		= &sdp3430_vpll2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init omap3430_i2c_init(void)
 {
 	/* i2c1 for PMIC only */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_get_config(&sdp3430_twldata,
 			TWL_COMMON_PDATA_USB | TWL_COMMON_PDATA_BCI |
 			TWL_COMMON_PDATA_MADC | TWL_COMMON_PDATA_AUDIO,
@@ -554,9 +602,12 @@ static int __init omap3430_i2c_init(void)
 
 	omap3_pmic_init("twl4030", &sdp3430_twldata);
 
+<<<<<<< HEAD
+=======
 =======
 	omap3_pmic_init("twl4030", &sdp3430_twldata);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* i2c2 on camera connector (for sensor control) and optional isp1301 */
 	omap_register_i2c_bus(2, 400, NULL, 0);
 	/* i2c3 on display connector (for DVI, tfp410) */
@@ -613,6 +664,10 @@ static const struct usbhs_omap_board_data usbhs_bdata __initconst = {
 static struct omap_board_mux board_mux[] __initdata = {
 	{ .reg_offset = OMAP_MUX_TERMINATOR },
 };
+<<<<<<< HEAD
+#else
+#define board_mux	NULL
+=======
 <<<<<<< HEAD
 #else
 #define board_mux	NULL
@@ -718,6 +773,7 @@ static inline void board_serial_init(void)
 	omap_serial_init();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -850,7 +906,11 @@ static void __init omap_3430sdp_init(void)
 <<<<<<< HEAD
 	omap_hsmmc_init(mmc);
 =======
+<<<<<<< HEAD
+	omap_hsmmc_init(mmc);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3430_i2c_init();
 	omap_display_init(&sdp3430_dss_data);
 	if (omap_rev() > OMAP3430_REV_ES1_0)
@@ -862,8 +922,13 @@ static void __init omap_3430sdp_init(void)
 	omap_serial_init();
 	omap_sdrc_init(hyb18m512160af6_sdrc_params, NULL);
 =======
+<<<<<<< HEAD
+	omap_serial_init();
+	omap_sdrc_init(hyb18m512160af6_sdrc_params, NULL);
+=======
 	board_serial_init();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	usb_musb_init(NULL);
 	board_smc91x_init();
 	board_flash_init(sdp_flash_partitions, chip_sel_3430, 0);
@@ -875,6 +940,9 @@ static void __init omap_3430sdp_init(void)
 MACHINE_START(OMAP_3430SDP, "OMAP3430 3430SDP board")
 	/* Maintainer: Syed Khasim - Texas Instruments Inc */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= omap_reserve,
 	.map_io		= omap3_map_io,
@@ -884,6 +952,8 @@ MACHINE_START(OMAP_3430SDP, "OMAP3430 3430SDP board")
 	.init_machine	= omap_3430sdp_init,
 	.timer		= &omap3_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= omap_reserve,
@@ -893,4 +963,5 @@ MACHINE_START(OMAP_3430SDP, "OMAP3430 3430SDP board")
 	.init_machine	= omap_3430sdp_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

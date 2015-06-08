@@ -137,6 +137,12 @@ static struct usb_driver tv_driver = {
 	.id_table =	id_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(tv_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init tv_init(void)
 {
 	int retval = usb_register(&tv_driver);
@@ -157,6 +163,10 @@ static void __exit tv_exit(void)
 
 module_init (tv_init);
 module_exit (tv_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR(DRIVER_AUTHOR);
 MODULE_DESCRIPTION(DRIVER_DESC);

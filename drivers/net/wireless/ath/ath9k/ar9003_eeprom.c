@@ -14,6 +14,13 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <asm/unaligned.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "hw.h"
 #include "ar9003_phy.h"
 #include "ar9003_eeprom.h"
@@ -21,6 +28,11 @@
 #define COMP_HDR_LEN 4
 #define COMP_CKSUM_LEN 2
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AR_CH0_TOP (0x00016288)
 #define AR_CH0_TOP_XPABIASLVL (0x300)
 #define AR_CH0_TOP_XPABIASLVL_S (8)
@@ -40,6 +52,10 @@
 #define AR_SWITCH_TABLE_ALL (0xfff)
 #define AR_SWITCH_TABLE_ALL_S (0)
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define LE16(x) __constant_cpu_to_le16(x)
 #define LE32(x) __constant_cpu_to_le32(x)
 
@@ -139,10 +155,21 @@ static const struct ar9300_eeprom ar9300_default = {
 		 * if the register is per chain
 		 */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {1, 1, 1},/* 3 chain */
 		.db_stage2 = {1, 1, 1}, /* 3 chain  */
 		.db_stage3 = {0, 0, 0},
 		.db_stage4 = {0, 0, 0},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -157,12 +184,28 @@ static const struct ar9300_eeprom ar9300_default = {
 		.papdRateMaskHt20 = LE32(0x0cf0e0e0),
 		.papdRateMaskHt40 = LE32(0x6cf0e0e0),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	 },
 	.base_ext1 = {
 		.ant_div_control = 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+=======
 		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.calFreqPier2G = {
 		FREQ2FBIN(2412, 1),
@@ -341,10 +384,21 @@ static const struct ar9300_eeprom ar9300_default = {
 		.spurChans = {0, 0, 0, 0, 0},
 		/* noiseFloorThreshCh Check if the register is per chain */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {3, 3, 3}, /* 3 chain */
 		.db_stage2 = {3, 3, 3}, /* 3 chain */
 		.db_stage3 = {3, 3, 3}, /* doesn't exist for 2G */
 		.db_stage4 = {3, 3, 3},	 /* don't exist for 2G */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -359,7 +413,15 @@ static const struct ar9300_eeprom ar9300_default = {
 		.papdRateMaskHt20 = LE32(0x0c80c080),
 		.papdRateMaskHt40 = LE32(0x0080c080),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	 },
 	.base_ext2 = {
@@ -716,10 +778,21 @@ static const struct ar9300_eeprom ar9300_x113 = {
 		 * if the register is per chain
 		 */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {1, 1, 1},/* 3 chain */
 		.db_stage2 = {1, 1, 1}, /* 3 chain  */
 		.db_stage3 = {0, 0, 0},
 		.db_stage4 = {0, 0, 0},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -734,12 +807,28 @@ static const struct ar9300_eeprom ar9300_x113 = {
 		.papdRateMaskHt20 = LE32(0x0c80c080),
 		.papdRateMaskHt40 = LE32(0x0080c080),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	 },
 	 .base_ext1 = {
 		.ant_div_control = 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+=======
 		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 },
 	.calFreqPier2G = {
 		FREQ2FBIN(2412, 1),
@@ -918,10 +1007,21 @@ static const struct ar9300_eeprom ar9300_x113 = {
 		.spurChans = {FREQ2FBIN(5500, 0), 0, 0, 0, 0},
 		/* noiseFloorThreshCh Check if the register is per chain */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {3, 3, 3}, /* 3 chain */
 		.db_stage2 = {3, 3, 3}, /* 3 chain */
 		.db_stage3 = {3, 3, 3}, /* doesn't exist for 2G */
 		.db_stage4 = {3, 3, 3},	 /* don't exist for 2G */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0xf,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -936,7 +1036,15 @@ static const struct ar9300_eeprom ar9300_x113 = {
 		.papdRateMaskHt20 = LE32(0x0cf0e0e0),
 		.papdRateMaskHt40 = LE32(0x6cf0e0e0),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	 },
 	.base_ext2 = {
@@ -1294,10 +1402,21 @@ static const struct ar9300_eeprom ar9300_h112 = {
 		 * if the register is per chain
 		 */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {1, 1, 1},/* 3 chain */
 		.db_stage2 = {1, 1, 1}, /* 3 chain  */
 		.db_stage3 = {0, 0, 0},
 		.db_stage4 = {0, 0, 0},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -1309,20 +1428,49 @@ static const struct ar9300_eeprom ar9300_h112 = {
 		.txEndToRxOn = 0x2,
 		.txFrameToXpaOn = 0xe,
 		.thresh62 = 28,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.papdRateMaskHt20 = LE32(0x0c80c080),
+		.papdRateMaskHt40 = LE32(0x0080c080),
+		.futureModal = {
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.papdRateMaskHt20 = LE32(0x80c080),
 		.papdRateMaskHt40 = LE32(0x80c080),
 		.futureModal = {
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	},
 	.base_ext1 = {
 		.ant_div_control = 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+=======
 		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.calFreqPier2G = {
 		FREQ2FBIN(2412, 1),
 		FREQ2FBIN(2437, 1),
+<<<<<<< HEAD
+<<<<<<< HEAD
+		FREQ2FBIN(2462, 1),
+=======
 		FREQ2FBIN(2472, 1),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		FREQ2FBIN(2472, 1),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	/* ar9300_cal_data_per_freq_op_loop 2g */
 	.calPierData2G = {
@@ -1332,7 +1480,15 @@ static const struct ar9300_eeprom ar9300_h112 = {
 	},
 	.calTarget_freqbin_Cck = {
 		FREQ2FBIN(2412, 1),
+<<<<<<< HEAD
+<<<<<<< HEAD
+		FREQ2FBIN(2472, 1),
+=======
 		FREQ2FBIN(2484, 1),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		FREQ2FBIN(2484, 1),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.calTarget_freqbin_2G = {
 		FREQ2FBIN(2412, 1),
@@ -1461,7 +1617,15 @@ static const struct ar9300_eeprom ar9300_h112 = {
 		{ { CTL(60, 0), CTL(60, 1), CTL(60, 0), CTL(60, 0) } },
 		{ { CTL(60, 1), CTL(60, 0), CTL(60, 0), CTL(60, 1) } },
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		{ { CTL(60, 1), CTL(60, 0), CTL(60, 0), CTL(60, 0) } },
+=======
 		{ { CTL(60, 1), CTL(60, 0), CTL(0, 0), CTL(0, 0) } },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		{ { CTL(60, 1), CTL(60, 0), CTL(0, 0), CTL(0, 0) } },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		{ { CTL(60, 0), CTL(60, 1), CTL(60, 0), CTL(60, 0) } },
 		{ { CTL(60, 0), CTL(60, 1), CTL(60, 0), CTL(60, 0) } },
 
@@ -1496,10 +1660,21 @@ static const struct ar9300_eeprom ar9300_h112 = {
 		.spurChans = {0, 0, 0, 0, 0},
 		/* noiseFloorThreshCh Check if the register is per chain */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {3, 3, 3}, /* 3 chain */
 		.db_stage2 = {3, 3, 3}, /* 3 chain */
 		.db_stage3 = {3, 3, 3}, /* doesn't exist for 2G */
 		.db_stage4 = {3, 3, 3},	 /* don't exist for 2G */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -1514,7 +1689,15 @@ static const struct ar9300_eeprom ar9300_h112 = {
 		.papdRateMaskHt20 = LE32(0x0cf0e0e0),
 		.papdRateMaskHt40 = LE32(0x6cf0e0e0),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	},
 	.base_ext2 = {
@@ -1533,7 +1716,15 @@ static const struct ar9300_eeprom ar9300_h112 = {
 		FREQ2FBIN(5500, 0),
 		FREQ2FBIN(5600, 0),
 		FREQ2FBIN(5700, 0),
+<<<<<<< HEAD
+<<<<<<< HEAD
+		FREQ2FBIN(5785, 0)
+=======
 		FREQ2FBIN(5825, 0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		FREQ2FBIN(5825, 0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.calPierData5G = {
 		{
@@ -1872,10 +2063,21 @@ static const struct ar9300_eeprom ar9300_x112 = {
 		 * if the register is per chain
 		 */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {1, 1, 1},/* 3 chain */
 		.db_stage2 = {1, 1, 1}, /* 3 chain  */
 		.db_stage3 = {0, 0, 0},
 		.db_stage4 = {0, 0, 0},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -1890,12 +2092,28 @@ static const struct ar9300_eeprom ar9300_x112 = {
 		.papdRateMaskHt20 = LE32(0x0c80c080),
 		.papdRateMaskHt40 = LE32(0x0080c080),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	},
 	.base_ext1 = {
 		.ant_div_control = 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+=======
 		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.calFreqPier2G = {
 		FREQ2FBIN(2412, 1),
@@ -2074,10 +2292,21 @@ static const struct ar9300_eeprom ar9300_x112 = {
 		.spurChans = {0, 0, 0, 0, 0},
 		/* noiseFloorThreshch check if the register is per chain */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {3, 3, 3}, /* 3 chain */
 		.db_stage2 = {3, 3, 3}, /* 3 chain */
 		.db_stage3 = {3, 3, 3}, /* doesn't exist for 2G */
 		.db_stage4 = {3, 3, 3},	 /* don't exist for 2G */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -2092,7 +2321,15 @@ static const struct ar9300_eeprom ar9300_x112 = {
 		.papdRateMaskHt20 = LE32(0x0cf0e0e0),
 		.papdRateMaskHt40 = LE32(0x6cf0e0e0),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	},
 	.base_ext2 = {
@@ -2449,10 +2686,21 @@ static const struct ar9300_eeprom ar9300_h116 = {
 		 * if the register is per chain
 		 */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {1, 1, 1},/* 3 chain */
 		.db_stage2 = {1, 1, 1}, /* 3 chain  */
 		.db_stage3 = {0, 0, 0},
 		.db_stage4 = {0, 0, 0},
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -2467,17 +2715,41 @@ static const struct ar9300_eeprom ar9300_h116 = {
 		.papdRateMaskHt20 = LE32(0x0c80C080),
 		.papdRateMaskHt40 = LE32(0x0080C080),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	 },
 	 .base_ext1 = {
 		.ant_div_control = 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+=======
 		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		.future = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 },
 	.calFreqPier2G = {
 		FREQ2FBIN(2412, 1),
 		FREQ2FBIN(2437, 1),
+<<<<<<< HEAD
+<<<<<<< HEAD
+		FREQ2FBIN(2462, 1),
+=======
 		FREQ2FBIN(2472, 1),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		FREQ2FBIN(2472, 1),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 },
 	/* ar9300_cal_data_per_freq_op_loop 2g */
 	.calPierData2G = {
@@ -2616,7 +2888,15 @@ static const struct ar9300_eeprom ar9300_h116 = {
 		 { { CTL(60, 0), CTL(60, 1), CTL(60, 0), CTL(60, 0) } },
 		 { { CTL(60, 1), CTL(60, 0), CTL(60, 0), CTL(60, 1) } },
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		 { { CTL(60, 1), CTL(60, 0), CTL(60, 0), CTL(60, 0) } },
+=======
 		 { { CTL(60, 1), CTL(60, 0), CTL(0, 0), CTL(0, 0) } },
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		 { { CTL(60, 1), CTL(60, 0), CTL(0, 0), CTL(0, 0) } },
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 { { CTL(60, 0), CTL(60, 1), CTL(60, 0), CTL(60, 0) } },
 		 { { CTL(60, 0), CTL(60, 1), CTL(60, 0), CTL(60, 0) } },
 
@@ -2651,10 +2931,21 @@ static const struct ar9300_eeprom ar9300_h116 = {
 		.spurChans = {0, 0, 0, 0, 0},
 		/* noiseFloorThreshCh Check if the register is per chain */
 		.noiseFloorThreshCh = {-1, 0, 0},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.reserved = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		.quick_drop = 0,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ob = {3, 3, 3}, /* 3 chain */
 		.db_stage2 = {3, 3, 3}, /* 3 chain */
 		.db_stage3 = {3, 3, 3}, /* doesn't exist for 2G */
 		.db_stage4 = {3, 3, 3},	 /* don't exist for 2G */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.xpaBiasLvl = 0,
 		.txFrameToDataStart = 0x0e,
 		.txFrameToPaOn = 0x0e,
@@ -2669,7 +2960,15 @@ static const struct ar9300_eeprom ar9300_h116 = {
 		.papdRateMaskHt20 = LE32(0x0cf0e0e0),
 		.papdRateMaskHt40 = LE32(0x6cf0e0e0),
 		.futureModal = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			0, 0, 0, 0, 0, 0, 0, 0,
+=======
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		},
 	 },
 	.base_ext2 = {
@@ -2681,7 +2980,15 @@ static const struct ar9300_eeprom ar9300_h116 = {
 		.xatten1MarginHigh = {0, 0, 0}
 	 },
 	.calFreqPier5G = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		FREQ2FBIN(5160, 0),
+=======
 		FREQ2FBIN(5180, 0),
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		FREQ2FBIN(5180, 0),
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		FREQ2FBIN(5220, 0),
 		FREQ2FBIN(5320, 0),
 		FREQ2FBIN(5400, 0),
@@ -3006,6 +3313,18 @@ static u32 ath9k_hw_ar9300_get_eeprom(struct ath_hw *ah,
 
 	switch (param) {
 	case EEP_MAC_LSW:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return get_unaligned_be16(eep->macAddr);
+	case EEP_MAC_MID:
+		return get_unaligned_be16(eep->macAddr + 2);
+	case EEP_MAC_MSW:
+		return get_unaligned_be16(eep->macAddr + 4);
+	case EEP_REG_0:
+		return le16_to_cpu(pBase->regDmn[0]);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return eep->macAddr[0] << 8 | eep->macAddr[1];
 	case EEP_MAC_MID:
 		return eep->macAddr[2] << 8 | eep->macAddr[3];
@@ -3015,6 +3334,10 @@ static u32 ath9k_hw_ar9300_get_eeprom(struct ath_hw *ah,
 		return le16_to_cpu(pBase->regDmn[0]);
 	case EEP_REG_1:
 		return le16_to_cpu(pBase->regDmn[1]);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case EEP_OP_CAP:
 		return pBase->deviceCap;
 	case EEP_OP_MODE:
@@ -3038,7 +3361,21 @@ static u32 ath9k_hw_ar9300_get_eeprom(struct ath_hw *ah,
 	case EEP_CHAIN_MASK_REDUCE:
 		return (pBase->miscConfiguration >> 0x3) & 0x1;
 	case EEP_ANT_DIV_CTL1:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return eep->base_ext1.ant_div_control;
+	case EEP_ANTENNA_GAIN_5G:
+		return eep->modalHeader5G.antennaGain;
+	case EEP_ANTENNA_GAIN_2G:
+		return eep->modalHeader2G.antennaGain;
+	case EEP_QUICK_DROP:
+		return pBase->miscConfiguration & BIT(1);
+=======
 		return le32_to_cpu(eep->base_ext1.ant_div_control);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return le32_to_cpu(eep->base_ext1.ant_div_control);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return 0;
 	}
@@ -3077,8 +3414,17 @@ static bool ar9300_read_eeprom(struct ath_hw *ah, int address, u8 *buffer,
 	int i;
 
 	if ((address < 0) || ((address + count) / 2 > AR9300_EEPROM_SIZE - 1)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM, "eeprom address not in range\n");
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
 			"eeprom address not in range\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+			"eeprom address not in range\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return false;
 	}
 
@@ -3109,8 +3455,18 @@ static bool ar9300_read_eeprom(struct ath_hw *ah, int address, u8 *buffer,
 	return true;
 
 error:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, EEPROM, "unable to read eeprom region at offset %d\n",
+		address);
+=======
 	ath_dbg(common, ATH_DBG_EEPROM,
 		"unable to read eeprom region at offset %d\n", address);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_EEPROM,
+		"unable to read eeprom region at offset %d\n", address);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return false;
 }
 
@@ -3194,13 +3550,29 @@ static bool ar9300_uncompress_block(struct ath_hw *ah,
 		length &= 0xff;
 
 		if (length > 0 && spot >= 0 && spot+length <= mdataSize) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, EEPROM,
+=======
 			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"Restore at %d: spot=%d offset=%d length=%d\n",
 				it, spot, offset, length);
 			memcpy(&mptr[spot], &block[it+2], length);
 			spot += length;
 		} else if (length > 0) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, EEPROM,
+=======
 			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"Bad restore at %d: spot=%d offset=%d length=%d\n",
 				it, spot, offset, length);
 			return false;
@@ -3222,13 +3594,29 @@ static int ar9300_compress_decision(struct ath_hw *ah,
 	switch (code) {
 	case _CompressNone:
 		if (length != mdata_size) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, EEPROM,
+=======
 			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"EEPROM structure size mismatch memory=%d eeprom=%d\n",
 				mdata_size, length);
 			return -1;
 		}
 		memcpy(mptr, (u8 *) (word + COMP_HDR_LEN), length);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM,
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"restored eeprom %d: uncompressed, length %d\n",
 			it, length);
 		break;
@@ -3237,22 +3625,47 @@ static int ar9300_compress_decision(struct ath_hw *ah,
 		} else {
 			eep = ar9003_eeprom_struct_find_by_id(reference);
 			if (eep == NULL) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				ath_dbg(common, EEPROM,
+=======
 				ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					"can't find reference eeprom struct %d\n",
 					reference);
 				return -1;
 			}
 			memcpy(mptr, eep, mdata_size);
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM,
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"restore eeprom %d: block, reference %d, length %d\n",
 			it, reference, length);
 		ar9300_uncompress_block(ah, mptr, mdata_size,
 					(u8 *) (word + COMP_HDR_LEN), length);
 		break;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM, "unknown compression code %d\n", code);
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
 			"unknown compression code %d\n", code);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+			"unknown compression code %d\n", code);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -1;
 	}
 	return 0;
@@ -3317,43 +3730,102 @@ static int ar9300_eeprom_restore_internal(struct ath_hw *ah,
 
 	word = kzalloc(2048, GFP_KERNEL);
 	if (!word)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -ENOMEM;
+=======
 		return -1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return -1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memcpy(mptr, &ar9300_default, mdata_size);
 
 	read = ar9300_read_eeprom;
 	if (AR_SREV_9485(ah))
 		cptr = AR9300_BASE_ADDR_4K;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	else if (AR_SREV_9330(ah))
+		cptr = AR9300_BASE_ADDR_512;
+	else
+		cptr = AR9300_BASE_ADDR;
+	ath_dbg(common, EEPROM, "Trying EEPROM access at Address 0x%04x\n",
+		cptr);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		cptr = AR9300_BASE_ADDR;
 	ath_dbg(common, ATH_DBG_EEPROM,
 		"Trying EEPROM access at Address 0x%04x\n", cptr);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ar9300_check_eeprom_header(ah, read, cptr))
 		goto found;
 
 	cptr = AR9300_BASE_ADDR_512;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, EEPROM, "Trying EEPROM access at Address 0x%04x\n",
+		cptr);
+=======
 	ath_dbg(common, ATH_DBG_EEPROM,
 		"Trying EEPROM access at Address 0x%04x\n", cptr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_EEPROM,
+		"Trying EEPROM access at Address 0x%04x\n", cptr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ar9300_check_eeprom_header(ah, read, cptr))
 		goto found;
 
 	read = ar9300_read_otp;
 	cptr = AR9300_BASE_ADDR;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, EEPROM, "Trying OTP access at Address 0x%04x\n", cptr);
+=======
 	ath_dbg(common, ATH_DBG_EEPROM,
 		"Trying OTP access at Address 0x%04x\n", cptr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_EEPROM,
+		"Trying OTP access at Address 0x%04x\n", cptr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ar9300_check_eeprom_header(ah, read, cptr))
 		goto found;
 
 	cptr = AR9300_BASE_ADDR_512;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, EEPROM, "Trying OTP access at Address 0x%04x\n", cptr);
+=======
 	ath_dbg(common, ATH_DBG_EEPROM,
 		"Trying OTP access at Address 0x%04x\n", cptr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_EEPROM,
+		"Trying OTP access at Address 0x%04x\n", cptr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ar9300_check_eeprom_header(ah, read, cptr))
 		goto found;
 
 	goto fail;
 
 found:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, EEPROM, "Found valid EEPROM data\n");
+=======
 	ath_dbg(common, ATH_DBG_EEPROM, "Found valid EEPROM data\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_EEPROM, "Found valid EEPROM data\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (it = 0; it < MSTATE; it++) {
 		if (!read(ah, cptr, word, COMP_HDR_LEN))
@@ -3364,13 +3836,30 @@ found:
 
 		ar9300_comp_hdr_unpack(word, &code, &reference,
 				       &length, &major, &minor);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM,
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Found block at %x: code=%d ref=%d length=%d major=%d minor=%d\n",
 			cptr, code, reference, length, major, minor);
 		if ((!AR_SREV_9485(ah) && length >= 1024) ||
 		    (AR_SREV_9485(ah) && length > EEPROM_DATA_LEN_9485)) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, EEPROM, "Skipping bad header\n");
+=======
 			ath_dbg(common, ATH_DBG_EEPROM,
 				"Skipping bad header\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_EEPROM,
+				"Skipping bad header\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cptr -= COMP_HDR_LEN;
 			continue;
 		}
@@ -3378,15 +3867,35 @@ found:
 		osize = length;
 		read(ah, cptr, word, COMP_HDR_LEN + osize + COMP_CKSUM_LEN);
 		checksum = ar9300_comp_cksum(&word[COMP_HDR_LEN], length);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mchecksum = get_unaligned_le16(&word[COMP_HDR_LEN + osize]);
+		ath_dbg(common, EEPROM, "checksum %x %x\n",
+			checksum, mchecksum);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mchecksum = word[COMP_HDR_LEN + osize] |
 		    (word[COMP_HDR_LEN + osize + 1] << 8);
 		ath_dbg(common, ATH_DBG_EEPROM,
 			"checksum %x %x\n", checksum, mchecksum);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (checksum == mchecksum) {
 			ar9300_compress_decision(ah, it, code, reference, mptr,
 						 word, length, mdata_size);
 		} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, EEPROM,
+=======
 			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"skipping block with bad checksum\n");
 		}
 		cptr -= (COMP_HDR_LEN + osize + COMP_CKSUM_LEN);
@@ -3416,6 +3925,129 @@ static bool ath9k_hw_ar9300_fill_eeprom(struct ath_hw *ah)
 	return true;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_ATH9K_DEBUGFS) || defined(CONFIG_ATH9K_HTC_DEBUGFS)
+static u32 ar9003_dump_modal_eeprom(char *buf, u32 len, u32 size,
+				    struct ar9300_modal_eep_header *modal_hdr)
+{
+	PR_EEP("Chain0 Ant. Control", le16_to_cpu(modal_hdr->antCtrlChain[0]));
+	PR_EEP("Chain1 Ant. Control", le16_to_cpu(modal_hdr->antCtrlChain[1]));
+	PR_EEP("Chain2 Ant. Control", le16_to_cpu(modal_hdr->antCtrlChain[2]));
+	PR_EEP("Ant. Common Control", le32_to_cpu(modal_hdr->antCtrlCommon));
+	PR_EEP("Ant. Common Control2", le32_to_cpu(modal_hdr->antCtrlCommon2));
+	PR_EEP("Ant. Gain", modal_hdr->antennaGain);
+	PR_EEP("Switch Settle", modal_hdr->switchSettling);
+	PR_EEP("Chain0 xatten1DB", modal_hdr->xatten1DB[0]);
+	PR_EEP("Chain1 xatten1DB", modal_hdr->xatten1DB[1]);
+	PR_EEP("Chain2 xatten1DB", modal_hdr->xatten1DB[2]);
+	PR_EEP("Chain0 xatten1Margin", modal_hdr->xatten1Margin[0]);
+	PR_EEP("Chain1 xatten1Margin", modal_hdr->xatten1Margin[1]);
+	PR_EEP("Chain2 xatten1Margin", modal_hdr->xatten1Margin[2]);
+	PR_EEP("Temp Slope", modal_hdr->tempSlope);
+	PR_EEP("Volt Slope", modal_hdr->voltSlope);
+	PR_EEP("spur Channels0", modal_hdr->spurChans[0]);
+	PR_EEP("spur Channels1", modal_hdr->spurChans[1]);
+	PR_EEP("spur Channels2", modal_hdr->spurChans[2]);
+	PR_EEP("spur Channels3", modal_hdr->spurChans[3]);
+	PR_EEP("spur Channels4", modal_hdr->spurChans[4]);
+	PR_EEP("Chain0 NF Threshold", modal_hdr->noiseFloorThreshCh[0]);
+	PR_EEP("Chain1 NF Threshold", modal_hdr->noiseFloorThreshCh[1]);
+	PR_EEP("Chain2 NF Threshold", modal_hdr->noiseFloorThreshCh[2]);
+	PR_EEP("Quick Drop", modal_hdr->quick_drop);
+	PR_EEP("txEndToXpaOff", modal_hdr->txEndToXpaOff);
+	PR_EEP("xPA Bias Level", modal_hdr->xpaBiasLvl);
+	PR_EEP("txFrameToDataStart", modal_hdr->txFrameToDataStart);
+	PR_EEP("txFrameToPaOn", modal_hdr->txFrameToPaOn);
+	PR_EEP("txFrameToXpaOn", modal_hdr->txFrameToXpaOn);
+	PR_EEP("txClip", modal_hdr->txClip);
+	PR_EEP("ADC Desired size", modal_hdr->adcDesiredSize);
+
+	return len;
+}
+
+static u32 ath9k_hw_ar9003_dump_eeprom(struct ath_hw *ah, bool dump_base_hdr,
+				       u8 *buf, u32 len, u32 size)
+{
+	struct ar9300_eeprom *eep = &ah->eeprom.ar9300_eep;
+	struct ar9300_base_eep_hdr *pBase;
+
+	if (!dump_base_hdr) {
+		len += snprintf(buf + len, size - len,
+				"%20s :\n", "2GHz modal Header");
+		len += ar9003_dump_modal_eeprom(buf, len, size,
+						&eep->modalHeader2G);
+		len += snprintf(buf + len, size - len,
+				"%20s :\n", "5GHz modal Header");
+		len += ar9003_dump_modal_eeprom(buf, len, size,
+						&eep->modalHeader5G);
+		goto out;
+	}
+
+	pBase = &eep->baseEepHeader;
+
+	PR_EEP("EEPROM Version", ah->eeprom.ar9300_eep.eepromVersion);
+	PR_EEP("RegDomain1", le16_to_cpu(pBase->regDmn[0]));
+	PR_EEP("RegDomain2", le16_to_cpu(pBase->regDmn[1]));
+	PR_EEP("TX Mask", (pBase->txrxMask >> 4));
+	PR_EEP("RX Mask", (pBase->txrxMask & 0x0f));
+	PR_EEP("Allow 5GHz", !!(pBase->opCapFlags.opFlags &
+				AR5416_OPFLAGS_11A));
+	PR_EEP("Allow 2GHz", !!(pBase->opCapFlags.opFlags &
+				AR5416_OPFLAGS_11G));
+	PR_EEP("Disable 2GHz HT20", !!(pBase->opCapFlags.opFlags &
+					AR5416_OPFLAGS_N_2G_HT20));
+	PR_EEP("Disable 2GHz HT40", !!(pBase->opCapFlags.opFlags &
+					AR5416_OPFLAGS_N_2G_HT40));
+	PR_EEP("Disable 5Ghz HT20", !!(pBase->opCapFlags.opFlags &
+					AR5416_OPFLAGS_N_5G_HT20));
+	PR_EEP("Disable 5Ghz HT40", !!(pBase->opCapFlags.opFlags &
+					AR5416_OPFLAGS_N_5G_HT40));
+	PR_EEP("Big Endian", !!(pBase->opCapFlags.eepMisc & 0x01));
+	PR_EEP("RF Silent", pBase->rfSilent);
+	PR_EEP("BT option", pBase->blueToothOptions);
+	PR_EEP("Device Cap", pBase->deviceCap);
+	PR_EEP("Device Type", pBase->deviceType);
+	PR_EEP("Power Table Offset", pBase->pwrTableOffset);
+	PR_EEP("Tuning Caps1", pBase->params_for_tuning_caps[0]);
+	PR_EEP("Tuning Caps2", pBase->params_for_tuning_caps[1]);
+	PR_EEP("Enable Tx Temp Comp", !!(pBase->featureEnable & BIT(0)));
+	PR_EEP("Enable Tx Volt Comp", !!(pBase->featureEnable & BIT(1)));
+	PR_EEP("Enable fast clock", !!(pBase->featureEnable & BIT(2)));
+	PR_EEP("Enable doubling", !!(pBase->featureEnable & BIT(3)));
+	PR_EEP("Internal regulator", !!(pBase->featureEnable & BIT(4)));
+	PR_EEP("Enable Paprd", !!(pBase->featureEnable & BIT(5)));
+	PR_EEP("Driver Strength", !!(pBase->miscConfiguration & BIT(0)));
+	PR_EEP("Quick Drop", !!(pBase->miscConfiguration & BIT(1)));
+	PR_EEP("Chain mask Reduce", (pBase->miscConfiguration >> 0x3) & 0x1);
+	PR_EEP("Write enable Gpio", pBase->eepromWriteEnableGpio);
+	PR_EEP("WLAN Disable Gpio", pBase->wlanDisableGpio);
+	PR_EEP("WLAN LED Gpio", pBase->wlanLedGpio);
+	PR_EEP("Rx Band Select Gpio", pBase->rxBandSelectGpio);
+	PR_EEP("Tx Gain", pBase->txrxgain >> 4);
+	PR_EEP("Rx Gain", pBase->txrxgain & 0xf);
+	PR_EEP("SW Reg", le32_to_cpu(pBase->swreg));
+
+	len += snprintf(buf + len, size - len, "%20s : %pM\n", "MacAddress",
+			ah->eeprom.ar9300_eep.macAddr);
+out:
+	if (len > size)
+		len = size;
+
+	return len;
+}
+#else
+static u32 ath9k_hw_ar9003_dump_eeprom(struct ath_hw *ah, bool dump_base_hdr,
+				       u8 *buf, u32 len, u32 size)
+{
+	return 0;
+}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* XXX: review hardware docs */
 static int ath9k_hw_ar9300_get_eeprom_ver(struct ath_hw *ah)
 {
@@ -3442,8 +4074,20 @@ static void ar9003_hw_xpa_bias_level_apply(struct ath_hw *ah, bool is2ghz)
 {
 	int bias = ar9003_hw_xpa_bias_level_get(ah, is2ghz);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (AR_SREV_9485(ah) || AR_SREV_9330(ah) || AR_SREV_9340(ah))
+		REG_RMW_FIELD(ah, AR_CH0_TOP2, AR_CH0_TOP2_XPABIASLVL, bias);
+	else if (AR_SREV_9462(ah))
+		REG_RMW_FIELD(ah, AR_CH0_TOP, AR_CH0_TOP_XPABIASLVL, bias);
+=======
 	if (AR_SREV_9485(ah) || AR_SREV_9340(ah))
 		REG_RMW_FIELD(ah, AR_CH0_TOP2, AR_CH0_TOP2_XPABIASLVL, bias);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (AR_SREV_9485(ah) || AR_SREV_9340(ah))
+		REG_RMW_FIELD(ah, AR_CH0_TOP2, AR_CH0_TOP2_XPABIASLVL, bias);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else {
 		REG_RMW_FIELD(ah, AR_CH0_TOP, AR_CH0_TOP_XPABIASLVL, bias);
 		REG_RMW_FIELD(ah, AR_CH0_THERM,
@@ -3454,6 +4098,25 @@ static void ar9003_hw_xpa_bias_level_apply(struct ath_hw *ah, bool is2ghz)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static u16 ar9003_switch_com_spdt_get(struct ath_hw *ah, bool is_2ghz)
+{
+	struct ar9300_eeprom *eep = &ah->eeprom.ar9300_eep;
+	__le16 val;
+
+	if (is_2ghz)
+		val = eep->modalHeader2G.switchcomspdt;
+	else
+		val = eep->modalHeader5G.switchcomspdt;
+	return le16_to_cpu(val);
+}
+
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u32 ar9003_hw_ant_ctrl_common_get(struct ath_hw *ah, bool is2ghz)
 {
 	struct ar9300_eeprom *eep = &ah->eeprom.ar9300_eep;
@@ -3508,7 +4171,40 @@ static void ar9003_hw_ant_ctrl_apply(struct ath_hw *ah, bool is2ghz)
 
 	u32 value = ar9003_hw_ant_ctrl_common_get(ah, is2ghz);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (AR_SREV_9462(ah)) {
+		REG_RMW_FIELD(ah, AR_PHY_SWITCH_COM,
+				AR_SWITCH_TABLE_COM_AR9462_ALL, value);
+	} else
+		REG_RMW_FIELD(ah, AR_PHY_SWITCH_COM,
+			      AR_SWITCH_TABLE_COM_ALL, value);
+
+
+	/*
+	 *   AR9462 defines new switch table for BT/WLAN,
+	 *       here's new field name in XXX.ref for both 2G and 5G.
+	 *   Register: [GLB_CONTROL] GLB_CONTROL (@0x20044)
+	 *   15:12   R/W     SWITCH_TABLE_COM_SPDT_WLAN_RX
+	 * SWITCH_TABLE_COM_SPDT_WLAN_RX
+	 *
+	 *   11:8     R/W     SWITCH_TABLE_COM_SPDT_WLAN_TX
+	 * SWITCH_TABLE_COM_SPDT_WLAN_TX
+	 *
+	 *   7:4 R/W  SWITCH_TABLE_COM_SPDT_WLAN_IDLE
+	 * SWITCH_TABLE_COM_SPDT_WLAN_IDLE
+	 */
+	if (AR_SREV_9462_20_OR_LATER(ah)) {
+		value = ar9003_switch_com_spdt_get(ah, is2ghz);
+		REG_RMW_FIELD(ah, AR_PHY_GLB_CONTROL,
+				AR_SWITCH_TABLE_COM_SPDT_ALL, value);
+	}
+=======
 	REG_RMW_FIELD(ah, AR_PHY_SWITCH_COM, AR_SWITCH_TABLE_COM_ALL, value);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	REG_RMW_FIELD(ah, AR_PHY_SWITCH_COM, AR_SWITCH_TABLE_COM_ALL, value);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	value = ar9003_hw_ant_ctrl_common_2_get(ah, is2ghz);
 	REG_RMW_FIELD(ah, AR_PHY_SWITCH_COM_2, AR_SWITCH_TABLE_COM2_ALL, value);
@@ -3523,7 +4219,15 @@ static void ar9003_hw_ant_ctrl_apply(struct ath_hw *ah, bool is2ghz)
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (AR_SREV_9330(ah) || AR_SREV_9485(ah)) {
+=======
 	if (AR_SREV_9485(ah)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (AR_SREV_9485(ah)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		value = ath9k_hw_ar9300_get_eeprom(ah, EEP_ANT_DIV_CTL1);
 		/*
 		 * main_lnaconf, alt_lnaconf, main_tb, alt_tb
@@ -3708,9 +4412,22 @@ static void ar9003_hw_internal_regulator_apply(struct ath_hw *ah)
 {
 	int internal_regulator =
 		ath9k_hw_ar9300_get_eeprom(ah, EEP_INTERNAL_REGULATOR);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u32 reg_val;
+
+	if (internal_regulator) {
+		if (AR_SREV_9330(ah) || AR_SREV_9485(ah)) {
+=======
 
 	if (internal_regulator) {
 		if (AR_SREV_9485(ah)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	if (internal_regulator) {
+		if (AR_SREV_9485(ah)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			int reg_pmu_set;
 
 			reg_pmu_set = REG_READ(ah, AR_PHY_PMU2) & ~AR_PHY_PMU2_PGM;
@@ -3718,9 +4435,36 @@ static void ar9003_hw_internal_regulator_apply(struct ath_hw *ah)
 			if (!is_pmu_set(ah, AR_PHY_PMU2, reg_pmu_set))
 				return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (AR_SREV_9330(ah)) {
+				if (ah->is_clk_25mhz) {
+					reg_pmu_set = (3 << 1) | (8 << 4) |
+						      (3 << 8) | (1 << 14) |
+						      (6 << 17) | (1 << 20) |
+						      (3 << 24);
+				} else {
+					reg_pmu_set = (4 << 1)  | (7 << 4) |
+						      (3 << 8)  | (1 << 14) |
+						      (6 << 17) | (1 << 20) |
+						      (3 << 24);
+				}
+			} else {
+				reg_pmu_set = (5 << 1) | (7 << 4) |
+					      (2 << 8) | (2 << 14) |
+					      (6 << 17) | (1 << 20) |
+					      (3 << 24) | (1 << 28);
+			}
+=======
 			reg_pmu_set = (5 << 1) | (7 << 4) | (1 << 8) |
 				      (2 << 14) | (6 << 17) | (1 << 20) |
 				      (3 << 24) | (1 << 28);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			reg_pmu_set = (5 << 1) | (7 << 4) | (1 << 8) |
+				      (2 << 14) | (6 << 17) | (1 << 20) |
+				      (3 << 24) | (1 << 28);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			REG_WRITE(ah, AR_PHY_PMU1, reg_pmu_set);
 			if (!is_pmu_set(ah, AR_PHY_PMU1, reg_pmu_set))
@@ -3737,6 +4481,21 @@ static void ar9003_hw_internal_regulator_apply(struct ath_hw *ah)
 			REG_WRITE(ah, AR_PHY_PMU2, reg_pmu_set);
 			if (!is_pmu_set(ah, AR_PHY_PMU2, reg_pmu_set))
 				return;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		} else if (AR_SREV_9462(ah)) {
+			reg_val = ath9k_hw_ar9300_get_eeprom(ah, EEP_SWREG);
+			REG_WRITE(ah, AR_PHY_PMU1, reg_val);
+		} else {
+			/* Internal regulator is ON. Write swreg register. */
+			reg_val = ath9k_hw_ar9300_get_eeprom(ah, EEP_SWREG);
+			REG_WRITE(ah, AR_RTC_REG_CONTROL1,
+				  REG_READ(ah, AR_RTC_REG_CONTROL1) &
+				  (~AR_RTC_REG_CONTROL1_SWREG_PROGRAM));
+			REG_WRITE(ah, AR_RTC_REG_CONTROL0, reg_val);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			/* Internal regulator is ON. Write swreg register. */
 			int swreg = ath9k_hw_ar9300_get_eeprom(ah, EEP_SWREG);
@@ -3744,6 +4503,10 @@ static void ar9003_hw_internal_regulator_apply(struct ath_hw *ah)
 				  REG_READ(ah, AR_RTC_REG_CONTROL1) &
 				  (~AR_RTC_REG_CONTROL1_SWREG_PROGRAM));
 			REG_WRITE(ah, AR_RTC_REG_CONTROL0, swreg);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Set REG_CONTROL1.SWREG_PROGRAM */
 			REG_WRITE(ah, AR_RTC_REG_CONTROL1,
 				  REG_READ(ah,
@@ -3751,14 +4514,45 @@ static void ar9003_hw_internal_regulator_apply(struct ath_hw *ah)
 					   AR_RTC_REG_CONTROL1_SWREG_PROGRAM);
 		}
 	} else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (AR_SREV_9330(ah) || AR_SREV_9485(ah)) {
+			REG_RMW_FIELD(ah, AR_PHY_PMU2, AR_PHY_PMU2_PGM, 0);
+			while (REG_READ_FIELD(ah, AR_PHY_PMU2,
+						AR_PHY_PMU2_PGM))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (AR_SREV_9485(ah)) {
 			REG_RMW_FIELD(ah, AR_PHY_PMU2, AR_PHY_PMU2_PGM, 0);
 			while (REG_READ_FIELD(ah, AR_PHY_PMU2,
 					      AR_PHY_PMU2_PGM))
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				udelay(10);
 
 			REG_RMW_FIELD(ah, AR_PHY_PMU1, AR_PHY_PMU1_PWD, 0x1);
 			while (!REG_READ_FIELD(ah, AR_PHY_PMU1,
+<<<<<<< HEAD
+<<<<<<< HEAD
+						AR_PHY_PMU1_PWD))
+				udelay(10);
+			REG_RMW_FIELD(ah, AR_PHY_PMU2, AR_PHY_PMU2_PGM, 0x1);
+			while (!REG_READ_FIELD(ah, AR_PHY_PMU2,
+						AR_PHY_PMU2_PGM))
+				udelay(10);
+		} else if (AR_SREV_9462(ah))
+			REG_RMW_FIELD(ah, AR_PHY_PMU1, AR_PHY_PMU1_PWD, 0x1);
+		else {
+			reg_val = REG_READ(ah, AR_RTC_SLEEP_CLK) |
+				AR_RTC_FORCE_SWREG_PRD;
+			REG_WRITE(ah, AR_RTC_SLEEP_CLK, reg_val);
+		}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       AR_PHY_PMU1_PWD))
 				udelay(10);
 			REG_RMW_FIELD(ah, AR_PHY_PMU2, AR_PHY_PMU2_PGM, 0x1);
@@ -3770,6 +4564,10 @@ static void ar9003_hw_internal_regulator_apply(struct ath_hw *ah)
 				  (REG_READ(ah,
 				   AR_RTC_SLEEP_CLK) |
 				   AR_RTC_FORCE_SWREG_PRD));
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 }
@@ -3788,6 +4586,46 @@ static void ar9003_hw_apply_tuning_caps(struct ath_hw *ah)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void ar9003_hw_quick_drop_apply(struct ath_hw *ah, u16 freq)
+{
+	struct ar9300_eeprom *eep = &ah->eeprom.ar9300_eep;
+	int quick_drop = ath9k_hw_ar9300_get_eeprom(ah, EEP_QUICK_DROP);
+	s32 t[3], f[3] = {5180, 5500, 5785};
+
+	if (!quick_drop)
+		return;
+
+	if (freq < 4000)
+		quick_drop = eep->modalHeader2G.quick_drop;
+	else {
+		t[0] = eep->base_ext1.quick_drop_low;
+		t[1] = eep->modalHeader5G.quick_drop;
+		t[2] = eep->base_ext1.quick_drop_high;
+		quick_drop = ar9003_hw_power_interpolate(freq, f, t, 3);
+	}
+	REG_RMW_FIELD(ah, AR_PHY_AGC, AR_PHY_AGC_QUICK_DROP, quick_drop);
+}
+
+static void ar9003_hw_txend_to_xpa_off_apply(struct ath_hw *ah, u16 freq)
+{
+	struct ar9300_eeprom *eep = &ah->eeprom.ar9300_eep;
+	u32 value;
+
+	value = (freq < 4000) ? eep->modalHeader2G.txEndToXpaOff :
+				eep->modalHeader5G.txEndToXpaOff;
+
+	REG_RMW_FIELD(ah, AR_PHY_XPA_TIMING_CTL,
+		      AR_PHY_XPA_TIMING_CTL_TX_END_XPAB_OFF, value);
+	REG_RMW_FIELD(ah, AR_PHY_XPA_TIMING_CTL,
+		      AR_PHY_XPA_TIMING_CTL_TX_END_XPAA_OFF, value);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ath9k_hw_ar9300_set_board_values(struct ath_hw *ah,
 					     struct ath9k_channel *chan)
 {
@@ -3795,10 +4633,25 @@ static void ath9k_hw_ar9300_set_board_values(struct ath_hw *ah,
 	ar9003_hw_ant_ctrl_apply(ah, IS_CHAN_2GHZ(chan));
 	ar9003_hw_drive_strength_apply(ah);
 	ar9003_hw_atten_apply(ah, chan);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ar9003_hw_quick_drop_apply(ah, chan->channel);
+	if (!AR_SREV_9330(ah) && !AR_SREV_9340(ah))
+		ar9003_hw_internal_regulator_apply(ah);
+	if (AR_SREV_9485(ah) || AR_SREV_9330(ah) || AR_SREV_9340(ah))
+		ar9003_hw_apply_tuning_caps(ah);
+	ar9003_hw_txend_to_xpa_off_apply(ah, chan->channel);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!AR_SREV_9340(ah))
 		ar9003_hw_internal_regulator_apply(ah);
 	if (AR_SREV_9485(ah) || AR_SREV_9340(ah))
 		ar9003_hw_apply_tuning_caps(ah);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void ath9k_hw_ar9300_set_addac(struct ath_hw *ah,
@@ -4044,7 +4897,15 @@ static int ar9003_hw_tx_power_regwrite(struct ath_hw *ah, u8 * pPwrArray)
         /* Write the power for duplicated frames - HT40 */
 
         /* dup40_cck (LSB), dup40_ofdm, ext20_cck, ext20_ofdm (MSB) */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	REG_WRITE(ah, AR_PHY_POWER_TX_RATE(8),
+=======
 	REG_WRITE(ah, 0xa3e0,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	REG_WRITE(ah, 0xa3e0,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  POW_SM(pPwrArray[ALL_TARGET_LEGACY_6_24], 24) |
 		  POW_SM(pPwrArray[ALL_TARGET_LEGACY_1L_5L], 16) |
 		  POW_SM(pPwrArray[ALL_TARGET_LEGACY_6_24],  8) |
@@ -4239,8 +5100,18 @@ static void ar9003_hw_set_target_power_eeprom(struct ath_hw *ah, u16 freq,
 					      is2GHz) + ht40PowerIncForPdadc;
 
 	for (i = 0; i < ar9300RateSize; i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM, "TPC[%02d] 0x%08x\n",
+			i, targetPowerValT2[i]);
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
 			"TPC[%02d] 0x%08x\n", i, targetPowerValT2[i]);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+			"TPC[%02d] 0x%08x\n", i, targetPowerValT2[i]);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -4259,7 +5130,15 @@ static int ar9003_hw_cal_pier_get(struct ath_hw *ah,
 	struct ath_common *common = ath9k_hw_common(ah);
 
 	if (ichain >= AR9300_MAX_CHAINS) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM,
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Invalid chain index, must be less than %d\n",
 			AR9300_MAX_CHAINS);
 		return -1;
@@ -4267,7 +5146,15 @@ static int ar9003_hw_cal_pier_get(struct ath_hw *ah,
 
 	if (mode) {		/* 5GHz */
 		if (ipier >= AR9300_NUM_5G_CAL_PIERS) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, EEPROM,
+=======
 			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"Invalid 5GHz cal pier index, must be less than %d\n",
 				AR9300_NUM_5G_CAL_PIERS);
 			return -1;
@@ -4277,7 +5164,15 @@ static int ar9003_hw_cal_pier_get(struct ath_hw *ah,
 		is2GHz = 0;
 	} else {
 		if (ipier >= AR9300_NUM_2G_CAL_PIERS) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, EEPROM,
+=======
 			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"Invalid 2GHz cal pier index, must be less than %d\n",
 				AR9300_NUM_2G_CAL_PIERS);
 			return -1;
@@ -4349,6 +5244,18 @@ static int ar9003_hw_power_control_override(struct ath_hw *ah,
 		tempSlope = eep->modalHeader5G.tempSlope;
 
 	REG_RMW_FIELD(ah, AR_PHY_TPC_19, AR_PHY_TPC_19_ALPHA_THERM, tempSlope);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (AR_SREV_9462_20(ah))
+		REG_RMW_FIELD(ah, AR_PHY_TPC_19_B1,
+			      AR_PHY_TPC_19_B1_ALPHA_THERM, tempSlope);
+
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	REG_RMW_FIELD(ah, AR_PHY_TPC_18, AR_PHY_TPC_18_THERM_CAL_VALUE,
 		      temperature[0]);
 
@@ -4433,8 +5340,17 @@ static int ar9003_hw_calibration_apply(struct ath_hw *ah, int frequency)
 
 	/* interpolate  */
 	for (ichain = 0; ichain < AR9300_MAX_CHAINS; ichain++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM, "ch=%d f=%d low=%d %d h=%d %d\n",
+=======
 		ath_dbg(common, ATH_DBG_EEPROM,
 			"ch=%d f=%d low=%d %d h=%d %d\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_EEPROM,
+			"ch=%d f=%d low=%d %d h=%d %d\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ichain, frequency, lfrequency[ichain],
 			lcorrection[ichain], hfrequency[ichain],
 			hcorrection[ichain]);
@@ -4489,7 +5405,15 @@ static int ar9003_hw_calibration_apply(struct ath_hw *ah, int frequency)
 	ar9003_hw_power_control_override(ah, frequency, correction, voltage,
 					 temperature);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath_dbg(common, EEPROM,
+=======
 	ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"for frequency=%d, calibration correction = %d %d %d\n",
 		frequency, correction[0], correction[1], correction[2]);
 
@@ -4583,6 +5507,19 @@ static u16 ar9003_hw_get_max_edge_power(struct ar9300_eeprom *eep,
 static void ar9003_hw_set_power_per_rate_table(struct ath_hw *ah,
 					       struct ath9k_channel *chan,
 					       u8 *pPwrArray, u16 cfgCtl,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					       u8 antenna_reduction,
+					       u16 powerLimit)
+{
+	struct ath_common *common = ath9k_hw_common(ah);
+	struct ar9300_eeprom *pEepData = &ah->eeprom.ar9300_eep;
+	u16 twiceMaxEdgePower;
+	int i;
+	u16 scaledPower = 0, minCtlPower;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					       u8 twiceAntennaReduction,
 					       u8 twiceMaxRegulatoryPower,
 					       u16 powerLimit)
@@ -4597,6 +5534,10 @@ static void ar9003_hw_set_power_per_rate_table(struct ath_hw *ah,
 	int i;
 	int16_t  twiceLargestAntenna;
 	u16 scaledPower = 0, minCtlPower, maxRegAllowedPower;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static const u16 ctlModesFor11a[] = {
 		CTL_11A, CTL_5GHT20, CTL_11A_EXT, CTL_5GHT40
 	};
@@ -4614,6 +5555,12 @@ static void ar9003_hw_set_power_per_rate_table(struct ath_hw *ah,
 	bool is2ghz = IS_CHAN_2GHZ(chan);
 
 	ath9k_hw_get_channel_centers(ah, chan, &centers);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	scaledPower = powerLimit - antenna_reduction;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Compute TxPower reduction due to Antenna Gain */
 	if (is2ghz)
@@ -4636,6 +5583,10 @@ static void ar9003_hw_set_power_per_rate_table(struct ath_hw *ah,
 	}
 
 	scaledPower = min(powerLimit, maxRegAllowedPower);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Reduce scaled Power by number of chains active to get
@@ -4702,7 +5653,15 @@ static void ar9003_hw_set_power_per_rate_table(struct ath_hw *ah,
 		else
 			freq = centers.ctl_center;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, REGULATORY,
+=======
 		ath_dbg(common, ATH_DBG_REGULATORY,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ath_dbg(common, ATH_DBG_REGULATORY,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"LOOP-Mode ctlMode %d < %d, isHt40CtlMode %d, EXT_ADDITIVE %d\n",
 			ctlMode, numCtlModes, isHt40CtlMode,
 			(pCtlMode[ctlMode] & EXT_ADDITIVE));
@@ -4716,8 +5675,19 @@ static void ar9003_hw_set_power_per_rate_table(struct ath_hw *ah,
 			ctlNum = AR9300_NUM_CTLS_5G;
 		}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		twiceMaxEdgePower = MAX_RATE_POWER;
+		for (i = 0; (i < ctlNum) && ctlIndex[i]; i++) {
+			ath_dbg(common, REGULATORY,
+=======
 		for (i = 0; (i < ctlNum) && ctlIndex[i]; i++) {
 			ath_dbg(common, ATH_DBG_REGULATORY,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		for (i = 0; (i < ctlNum) && ctlIndex[i]; i++) {
+			ath_dbg(common, ATH_DBG_REGULATORY,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"LOOP-Ctlidx %d: cfgCtl 0x%2.2x pCtlMode 0x%2.2x ctlIndex 0x%2.2x chan %d\n",
 				i, cfgCtl, pCtlMode[ctlMode], ctlIndex[i],
 				chan->channel);
@@ -4759,7 +5729,15 @@ static void ar9003_hw_set_power_per_rate_table(struct ath_hw *ah,
 
 			minCtlPower = (u8)min(twiceMaxEdgePower, scaledPower);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ath_dbg(common, REGULATORY,
+=======
 			ath_dbg(common, ATH_DBG_REGULATORY,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ath_dbg(common, ATH_DBG_REGULATORY,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				"SEL-Min ctlMode %d pCtlMode %d 2xMaxEdge %d sP %d minCtlPwr %d\n",
 				ctlMode, pCtlMode[ctlMode], twiceMaxEdgePower,
 				scaledPower, minCtlPower);
@@ -4822,7 +5800,14 @@ static inline u8 mcsidx_to_tgtpwridx(unsigned int mcs_idx, u8 base_pwridx)
 static void ath9k_hw_ar9300_set_txpower(struct ath_hw *ah,
 					struct ath9k_channel *chan, u16 cfgCtl,
 					u8 twiceAntennaReduction,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 					u8 twiceMaxRegulatoryPower,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					u8 twiceMaxRegulatoryPower,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					u8 powerLimit, bool test)
 {
 	struct ath_regulatory *regulatory = ath9k_hw_regulatory(ah);
@@ -4875,7 +5860,14 @@ static void ath9k_hw_ar9300_set_txpower(struct ath_hw *ah,
 	ar9003_hw_set_power_per_rate_table(ah, chan,
 					   targetPowerValT2, cfgCtl,
 					   twiceAntennaReduction,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 					   twiceMaxRegulatoryPower,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					   twiceMaxRegulatoryPower,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					   powerLimit);
 
 	if (ah->eep_ops->get_eeprom(ah, EEP_PAPRD)) {
@@ -4885,7 +5877,15 @@ static void ath9k_hw_ar9300_set_txpower(struct ath_hw *ah,
 				target_power_val_t2_eep[i]) >
 			    paprd_scale_factor)) {
 				ah->paprd_ratemask &= ~(1 << i);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				ath_dbg(common, EEPROM,
+=======
 				ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				ath_dbg(common, ATH_DBG_EEPROM,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					"paprd disabled for mcs %d\n", i);
 			}
 		}
@@ -4897,10 +5897,28 @@ static void ath9k_hw_ar9300_set_txpower(struct ath_hw *ah,
 			regulatory->max_power_level = targetPowerValT2[i];
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ath9k_hw_update_regulatory_maxpower(ah);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (test)
 		return;
 
 	for (i = 0; i < ar9300RateSize; i++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ath_dbg(common, EEPROM, "TPC[%02d] 0x%08x\n",
+			i, targetPowerValT2[i]);
+	}
+
+	ah->txpower_limit = regulatory->max_power_level;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath_dbg(common, ATH_DBG_EEPROM,
 			"TPC[%02d] 0x%08x\n", i, targetPowerValT2[i]);
 	}
@@ -4924,6 +5942,10 @@ static void ath9k_hw_ar9300_set_txpower(struct ath_hw *ah,
 
 	ah->txpower_limit = targetPowerValT2[i];
 	regulatory->max_power_level = targetPowerValT2[i];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Write target power array to registers */
 	ar9003_hw_tx_power_regwrite(ah, targetPowerValT2);
@@ -4998,6 +6020,13 @@ const struct eeprom_ops eep_ar9300_ops = {
 	.check_eeprom = ath9k_hw_ar9300_check_eeprom,
 	.get_eeprom = ath9k_hw_ar9300_get_eeprom,
 	.fill_eeprom = ath9k_hw_ar9300_fill_eeprom,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.dump_eeprom = ath9k_hw_ar9003_dump_eeprom,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_eeprom_ver = ath9k_hw_ar9300_get_eeprom_ver,
 	.get_eeprom_rev = ath9k_hw_ar9300_get_eeprom_rev,
 	.set_board_values = ath9k_hw_ar9300_set_board_values,

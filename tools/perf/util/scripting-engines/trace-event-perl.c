@@ -28,13 +28,19 @@
 #include "../../perf.h"
 #include "../util.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "../thread.h"
 #include "../event.h"
 #include "../trace-event.h"
 #include "../evsel.h"
+<<<<<<< HEAD
+=======
 =======
 #include "../trace-event.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <EXTERN.h>
 #include <perl.h>
@@ -253,11 +259,16 @@ static inline struct event *find_cache_event(int type)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perl_process_tracepoint(union perf_event *pevent __unused,
 				    struct perf_sample *sample,
 				    struct perf_evsel *evsel,
 				    struct machine *machine __unused,
 				    struct thread *thread)
+<<<<<<< HEAD
+=======
 =======
 static void perl_process_event(union perf_event *pevent __unused,
 			       struct perf_sample *sample,
@@ -265,6 +276,7 @@ static void perl_process_event(union perf_event *pevent __unused,
 			       struct perf_session *session __unused,
 			       struct thread *thread)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct format_field *field;
 	static char handler[256];
@@ -285,7 +297,13 @@ static void perl_process_event(union perf_event *pevent __unused,
 		return;
 
 =======
+<<<<<<< HEAD
+	if (evsel->attr.type != PERF_TYPE_TRACEPOINT)
+		return;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	type = trace_parse_common_type(data);
 
 	event = find_cache_event(type);
@@ -354,6 +372,9 @@ static void perl_process_event(union perf_event *pevent __unused,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perl_process_event_generic(union perf_event *pevent __unused,
 				       struct perf_sample *sample,
 				       struct perf_evsel *evsel __unused,
@@ -390,8 +411,11 @@ static void perl_process_event(union perf_event *pevent,
 	perl_process_event_generic(pevent, sample, evsel, machine, thread);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void run_start_sub(void)
 {
 	dSP; /* access to Perl stack */
@@ -614,6 +638,9 @@ static int perl_generate_script(const char *outfile)
 		"\tmy ($event_name, $cpu, $secs, $nsecs, $pid, $comm) = @_;\n\n"
 		"\tprintf(\"%%-20s %%5u %%05u.%%09u %%8u %%-20s \",\n\t       "
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"$event_name, $cpu, $secs, $nsecs, $pid, $comm);\n}\n");
 
 	fprintf(ofp,
@@ -636,9 +663,12 @@ static int perl_generate_script(const char *outfile)
 		"\tuse Data::Dumper;\n"
 		"\tprint Dumper \\@event, \\@attr, \\@sample, \\@raw_data;\n"
 		"}\n");
+<<<<<<< HEAD
+=======
 =======
 		"$event_name, $cpu, $secs, $nsecs, $pid, $comm);\n}");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	fclose(ofp);
 

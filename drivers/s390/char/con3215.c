@@ -9,7 +9,14 @@
  *	      Dan Morrison, IBM Corporation <dmorriso@cse.buffalo.edu>
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/kernel_stat.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/kernel_stat.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/types.h>
 #include <linux/kdev_t.h>
@@ -88,6 +95,13 @@ struct raw3215_info {
 	struct tty_struct *tty;	      /* pointer to tty structure if present */
 	struct raw3215_req *queued_read; /* pointer to queued read requests */
 	struct raw3215_req *queued_write;/* pointer to queued write requests */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct tasklet_struct tlet;   /* tasklet to invoke tty_wakeup */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wait_queue_head_t empty_wait; /* wait queue for flushing */
 	struct timer_list timer;      /* timer for delayed output */
 	int line_pos;		      /* position on the line (for tabs) */
@@ -335,10 +349,34 @@ static inline void raw3215_try_io(struct raw3215_info *raw)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Call tty_wakeup from tasklet context
+ */
+static void raw3215_wakeup(unsigned long data)
+{
+	struct raw3215_info *raw = (struct raw3215_info *) data;
+	tty_wakeup(raw->tty);
+}
+
+/*
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Try to start the next IO and wake up processes waiting on the tty.
  */
 static void raw3215_next_io(struct raw3215_info *raw)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	raw3215_mk_write_req(raw);
+	raw3215_try_io(raw);
+	if (raw->tty && RAW3215_BUFFER_SIZE - raw->count >= RAW3215_MIN_SPACE)
+		tasklet_schedule(&raw->tlet);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tty_struct *tty;
 
 	raw3215_mk_write_req(raw);
@@ -348,6 +386,10 @@ static void raw3215_next_io(struct raw3215_info *raw)
 	    RAW3215_BUFFER_SIZE - raw->count >= RAW3215_MIN_SPACE) {
 	    	tty_wakeup(tty);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -362,7 +404,14 @@ static void raw3215_irq(struct ccw_device *cdev, unsigned long intparm,
 	int cstat, dstat;
 	int count;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kstat_cpu(smp_processor_id()).irqs[IOINT_C15]++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kstat_cpu(smp_processor_id()).irqs[IOINT_C15]++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw = dev_get_drvdata(&cdev->dev);
 	req = (struct raw3215_req *) intparm;
 	cstat = irb->scsw.cmd.cstat;
@@ -684,6 +733,13 @@ static int raw3215_probe (struct ccw_device *cdev)
 		return -ENOMEM;
 	}
 	init_waitqueue_head(&raw->empty_wait);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tasklet_init(&raw->tlet, raw3215_wakeup, (unsigned long) raw);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_set_drvdata(&cdev->dev, raw);
 	cdev->handler = raw3215_irq;
@@ -776,6 +832,13 @@ static struct ccw_driver raw3215_ccw_driver = {
 	.freeze		= &raw3215_pm_stop,
 	.thaw		= &raw3215_pm_start,
 	.restore	= &raw3215_pm_start,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.int_class	= IOINT_C15,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef CONFIG_TN3215_CONSOLE
@@ -902,6 +965,13 @@ static int __init con3215_init(void)
 
 	raw->flags |= RAW3215_FIXED;
 	init_waitqueue_head(&raw->empty_wait);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tasklet_init(&raw->tlet, raw3215_wakeup, (unsigned long) raw);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Request the console irq */
 	if (raw3215_startup(raw) != 0) {
@@ -927,6 +997,14 @@ console_initcall(con3215_init);
 static int tty3215_open(struct tty_struct *tty, struct file * filp)
 {
 	struct raw3215_info *raw;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int retval;
+
+	raw = raw3215[tty->index];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int retval, line;
 
 	line = tty->index;
@@ -934,6 +1012,10 @@ static int tty3215_open(struct tty_struct *tty, struct file * filp)
 		return -ENODEV;
 
 	raw = raw3215[line];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (raw == NULL)
 		return -ENODEV;
 
@@ -967,6 +1049,13 @@ static void tty3215_close(struct tty_struct *tty, struct file * filp)
 	tty->closing = 1;
 	/* Shutdown the terminal */
 	raw3215_shutdown(raw);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tasklet_kill(&raw->tlet);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tty->closing = 0;
 	raw->tty = NULL;
 }
@@ -1138,7 +1227,14 @@ static int __init tty3215_init(void)
 	 * proc_entry, set_termios, flush_buffer, set_ldisc, write_proc
 	 */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	driver->driver_name = "tty3215";
 	driver->name = "ttyS";
 	driver->major = TTY_MAJOR;

@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/llc.h>
 #include <net/llc_pdu.h>
 #include <net/garp.h>
@@ -174,8 +178,13 @@ static struct garp_attr *garp_attr_lookup(const struct garp_applicant *app,
 static struct garp_attr *garp_attr_create(struct garp_applicant *app,
 					  const void *data, u8 len, u8 type)
 =======
+<<<<<<< HEAD
+static struct garp_attr *garp_attr_create(struct garp_applicant *app,
+					  const void *data, u8 len, u8 type)
+=======
 static void garp_attr_insert(struct garp_applicant *app, struct garp_attr *new)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rb_node *parent = NULL, **p = &app->gid.rb_node;
 	struct garp_attr *attr;
@@ -187,18 +196,27 @@ static void garp_attr_insert(struct garp_applicant *app, struct garp_attr *new)
 <<<<<<< HEAD
 		d = garp_attr_cmp(attr, data, len, type);
 =======
+<<<<<<< HEAD
+		d = garp_attr_cmp(attr, data, len, type);
+=======
 		d = garp_attr_cmp(attr, new->data, new->dlen, new->type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (d < 0)
 			p = &parent->rb_left;
 		else if (d > 0)
 			p = &parent->rb_right;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else {
 			/* The attribute already exists; re-use it. */
 			return attr;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	}
 	rb_link_node(&new->node, parent, p);
@@ -211,6 +229,7 @@ static struct garp_attr *garp_attr_create(struct garp_applicant *app,
 	struct garp_attr *attr;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	attr = kmalloc(sizeof(*attr) + len, GFP_ATOMIC);
 	if (!attr)
 		return attr;
@@ -223,8 +242,14 @@ static struct garp_attr *garp_attr_create(struct garp_applicant *app,
 	rb_link_node(&attr->node, parent, p);
 	rb_insert_color(&attr->node, &app->gid);
 =======
+<<<<<<< HEAD
+
+	rb_link_node(&attr->node, parent, p);
+	rb_insert_color(&attr->node, &app->gid);
+=======
 	garp_attr_insert(app, attr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return attr;
 }
 
@@ -583,8 +608,12 @@ static void garp_release_port(struct net_device *dev)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(dev->garp_port, NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(dev->garp_port, NULL);
+=======
 	rcu_assign_pointer(dev->garp_port, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree_rcu(port, rcu);
 }
 
@@ -639,8 +668,12 @@ void garp_uninit_applicant(struct net_device *dev, struct garp_application *appl
 <<<<<<< HEAD
 	RCU_INIT_POINTER(port->applicants[appl->type], NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(port->applicants[appl->type], NULL);
+=======
 	rcu_assign_pointer(port->applicants[appl->type], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Delete timer and generate a final TRANSMIT_PDU event to flush out
 	 * all pending messages before the applicant is gone. */

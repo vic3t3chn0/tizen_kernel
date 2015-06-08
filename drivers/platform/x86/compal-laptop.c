@@ -189,7 +189,15 @@ struct compal_data{
 /* =============== */
 /* General globals */
 /* =============== */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool force;
+=======
 static int force;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int force;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(force, bool, 0);
 MODULE_PARM_DESC(force, "Force driver load, ignore DMI data");
 
@@ -882,6 +890,13 @@ static struct dmi_system_id __initdata compal_dmi_table[] = {
 	},
 	{ }
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_DEVICE_TABLE(dmi, compal_dmi_table);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void initialize_power_supply_data(struct compal_data *data)
 {
@@ -1097,6 +1112,11 @@ MODULE_AUTHOR("Roald Frederickx (roald.frederickx@gmail.com)");
 MODULE_DESCRIPTION("Compal Laptop Support");
 MODULE_VERSION(DRIVER_VERSION);
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_ALIAS("dmi:*:rnIFL90:rvrIFT00:*");
 MODULE_ALIAS("dmi:*:rnIFL90:rvrREFERENCE:*");
@@ -1110,3 +1130,7 @@ MODULE_ALIAS("dmi:*:svnDellInc.:pnInspiron1011:*");
 MODULE_ALIAS("dmi:*:svnDellInc.:pnInspiron1012:*");
 MODULE_ALIAS("dmi:*:svnDellInc.:pnInspiron1110:*");
 MODULE_ALIAS("dmi:*:svnDellInc.:pnInspiron1210:*");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

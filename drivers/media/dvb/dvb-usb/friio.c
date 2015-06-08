@@ -403,8 +403,18 @@ static int friio_frontend_attach(struct dvb_usb_adapter *adap)
 	if (friio_initialize(adap->dev) < 0)
 		return -EIO;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	adap->fe_adap[0].fe = jdvbt90502_attach(adap->dev);
+	if (adap->fe_adap[0].fe == NULL)
+=======
 	adap->fe = jdvbt90502_attach(adap->dev);
 	if (adap->fe == NULL)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	adap->fe = jdvbt90502_attach(adap->dev);
+	if (adap->fe == NULL)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EIO;
 
 	return 0;
@@ -473,6 +483,14 @@ static struct dvb_usb_device_properties friio_properties = {
 		/* caps:0 =>  no pid filter, 188B TS packet */
 		/* GL861 has a HW pid filter, but no info available. */
 		{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.num_frontends = 1,
+		.fe = {{
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.caps  = 0,
 
 			.frontend_attach  = friio_frontend_attach,
@@ -490,6 +508,13 @@ static struct dvb_usb_device_properties friio_properties = {
 					}
 				}
 			},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	},
 	.i2c_algo = &gl861_i2c_algo,
@@ -511,6 +536,12 @@ static struct usb_driver friio_driver = {
 	.id_table	= friio_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(friio_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* module stuff */
 static int __init friio_module_init(void)
@@ -533,6 +564,10 @@ static void __exit friio_module_exit(void)
 
 module_init(friio_module_init);
 module_exit(friio_module_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Akihiro Tsukada <tskd2@yahoo.co.jp>");
 MODULE_DESCRIPTION("Driver for Friio ISDB-T USB2.0 Receiver");

@@ -2,6 +2,9 @@
 #define _LINUX_DMA_MAPPING_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 #include <linux/device.h>
 #include <linux/err.h>
@@ -19,6 +22,8 @@ struct dma_map_ops {
 	int (*mmap)(struct device *, struct vm_area_struct *,
 			  void *, dma_addr_t, size_t, struct dma_attrs *attrs);
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/device.h>
 #include <linux/err.h>
@@ -40,6 +45,7 @@ struct dma_map_ops {
 	void (*free_coherent)(struct device *dev, size_t size,
 			      void *vaddr, dma_addr_t dma_handle);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_addr_t (*map_page)(struct device *dev, struct page *page,
 			       unsigned long offset, size_t size,
 			       enum dma_data_direction dir,
@@ -74,12 +80,20 @@ struct dma_map_ops {
 	u64 (*get_required_mask)(struct device *dev);
 #endif
 =======
+<<<<<<< HEAD
+#ifdef ARCH_HAS_DMA_GET_REQUIRED_MASK
+	u64 (*get_required_mask)(struct device *dev);
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int is_phys;
 };
 
 #define DMA_BIT_MASK(n)	(((n) == 64) ? ~0ULL : ((1ULL<<(n))-1))
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 typedef u64 DMA_nnBIT_MASK __deprecated;
@@ -104,6 +118,7 @@ typedef u64 DMA_nnBIT_MASK __deprecated;
 #define DMA_24BIT_MASK	(DMA_nnBIT_MASK)DMA_BIT_MASK(24)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DMA_MASK_NONE	0x0ULL
 
 static inline int valid_dma_direction(int dma_direction)
@@ -134,8 +149,12 @@ static inline u64 dma_get_mask(struct device *dev)
 <<<<<<< HEAD
 #ifdef CONFIG_ARCH_HAS_DMA_SET_COHERENT_MASK
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_ARCH_HAS_DMA_SET_COHERENT_MASK
+=======
 #ifdef ARCH_HAS_DMA_SET_COHERENT_MASK
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int dma_set_coherent_mask(struct device *dev, u64 mask);
 #else
 static inline int dma_set_coherent_mask(struct device *dev, u64 mask)
@@ -180,6 +199,9 @@ static inline int dma_set_seg_boundary(struct device *dev, unsigned long mask)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void *dma_zalloc_coherent(struct device *dev, size_t size,
 					dma_addr_t *dma_handle, gfp_t flag)
 {
@@ -189,8 +211,11 @@ static inline void *dma_zalloc_coherent(struct device *dev, size_t size,
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAS_DMA
 static inline int dma_get_cache_alignment(void)
 {

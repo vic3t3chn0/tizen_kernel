@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2012, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2008-2009, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -21,23 +25,34 @@
 #include <linux/kernel.h>
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/kernel.h>
+#include <linux/gpio.h>
+=======
 
 #include <linux/kernel.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/platform_device.h>
 #include <linux/input.h>
 #include <linux/io.h>
 #include <linux/delay.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bootmem.h>
 #include <linux/power_supply.h>
 
 #include <mach/msm_memtypes.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/power_supply.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
@@ -49,6 +64,9 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/mmc.h>
 #include <mach/vreg.h>
 #include <mach/mpp.h>
@@ -105,6 +123,8 @@
 #define PMEM_KERNEL_EBI1_SIZE	0x1C000
 #endif
 #define ADSP_RPC_PROG           0x3000000a
+<<<<<<< HEAD
+=======
 =======
 #include <mach/vreg.h>
 #include <mach/mpp.h>
@@ -119,6 +139,7 @@
 #include "socinfo.h"
 #include "clock.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource smc91x_resources[] = {
 	[0] = {
@@ -141,6 +162,9 @@ static struct platform_device smc91x_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_USB_G_ANDROID
 static struct android_usb_platform_data android_usb_pdata = {
 	.update_pid_and_serial_num = usb_diag_update_pid_and_serial_num,
@@ -1994,6 +2018,8 @@ static void __init msm7x2x_map_io(void)
 
 	if (socinfo_init() < 0)
 		BUG();
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *devices[] __initdata = {
 	&msm_device_uart3,
@@ -2048,12 +2074,16 @@ static void __init msm7x2x_map_io(void)
 	if (machine_is_msm7x25_surf() || machine_is_msm7x25_ffa())
 		msm_clock_init(msm_clocks_7x25, msm_num_clocks_7x25);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_CACHE_L2X0
 	if (machine_is_msm7x27_surf() || machine_is_msm7x27_ffa()) {
 		/* 7x27 has 256KB L2 cache:
 			64Kb/Way and 4-Way Associativity;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			evmon/parity/share disabled. */
 		if ((SOCINFO_VERSION_MAJOR(socinfo_get_version()) > 1)
 			|| ((SOCINFO_VERSION_MAJOR(socinfo_get_version()) == 1)
@@ -2063,17 +2093,23 @@ static void __init msm7x2x_map_io(void)
 		else
 			/* R/W latency: 3 cycles; */
 			l2x0_init(MSM_L2CC_BASE, 0x00068012, 0xfe000000);
+<<<<<<< HEAD
+=======
 =======
 			R/W latency: 3 cycles;
 			evmon/parity/share disabled. */
 		l2x0_init(MSM_L2CC_BASE, 0x00068012, 0xfe000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #endif
 }
 
 MACHINE_START(MSM7X27_SURF, "QCT MSM7x27 SURF")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= msm7x2x_map_io,
 	.reserve	= msm7x27_reserve,
@@ -2115,6 +2151,8 @@ MACHINE_START(MSM7X25_FFA, "QCT MSM7x25 FFA")
 	.timer		= &msm_timer,
         .init_early     = msm7x27_init_early,
 	.handle_irq     = vic_handle_irq,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= PLAT_PHYS_OFFSET + 0x100,
 	.map_io		= msm7x2x_map_io,
@@ -2146,4 +2184,5 @@ MACHINE_START(MSM7X25_FFA, "QCT MSM7x25 FFA")
 	.init_machine	= msm7x2x_init,
 	.timer		= &msm_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

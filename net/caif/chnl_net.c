@@ -11,9 +11,14 @@
 #include <linux/fs.h>
 #include <linux/hardirq.h>
 =======
+<<<<<<< HEAD
+#include <linux/fs.h>
+#include <linux/hardirq.h>
+=======
 #include <linux/version.h>
 #include <linux/fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/netdevice.h>
@@ -36,7 +41,11 @@
 <<<<<<< HEAD
 #define UNDEF_CONNID 0xffffffff
 =======
+<<<<<<< HEAD
+#define UNDEF_CONNID 0xffffffff
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*This list is protected by the rtnl lock. */
 static LIST_HEAD(chnl_net_list);
@@ -85,18 +94,26 @@ static int chnl_recv_cb(struct cflayer *layr, struct cfpkt *pkt)
 	struct chnl_net *priv;
 	int pktlen;
 =======
+<<<<<<< HEAD
+	struct chnl_net *priv;
+	int pktlen;
+=======
 	struct chnl_net *priv  = container_of(layr, struct chnl_net, chnl);
 	int pktlen;
 	int err = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const u8 *ip_version;
 	u8 buf;
 
 	priv = container_of(layr, struct chnl_net, chnl);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!priv)
 		return -EINVAL;
 
@@ -115,9 +132,13 @@ static int chnl_recv_cb(struct cflayer *layr, struct cfpkt *pkt)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	if (!ip_version)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (*ip_version >> 4) {
 	case 4:
 		skb->protocol = htons(ETH_P_IP);
@@ -130,7 +151,12 @@ static int chnl_recv_cb(struct cflayer *layr, struct cfpkt *pkt)
 		kfree_skb(skb);
 		priv->netdev->stats.rx_errors++;
 =======
+<<<<<<< HEAD
+		kfree_skb(skb);
+		priv->netdev->stats.rx_errors++;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 	}
 
@@ -152,8 +178,12 @@ static int chnl_recv_cb(struct cflayer *layr, struct cfpkt *pkt)
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int delete_device(struct chnl_net *dev)
@@ -256,8 +286,14 @@ static int chnl_net_start_xmit(struct sk_buff *skb, struct net_device *dev)
 		dev->stats.tx_errors++;
 		return NETDEV_TX_OK;
 =======
+<<<<<<< HEAD
+		kfree_skb(skb);
+		dev->stats.tx_errors++;
+		return NETDEV_TX_OK;
+=======
 		return -ENOSPC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!priv->flowenabled) {
@@ -267,8 +303,14 @@ static int chnl_net_start_xmit(struct sk_buff *skb, struct net_device *dev)
 		dev->stats.tx_dropped++;
 		return NETDEV_TX_OK;
 =======
+<<<<<<< HEAD
+		kfree_skb(skb);
+		dev->stats.tx_dropped++;
+		return NETDEV_TX_OK;
+=======
 		return NETDEV_TX_BUSY;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (priv->conn_req.protocol == CAIFPROTO_DATAGRAM_LOOP)
@@ -286,10 +328,15 @@ static int chnl_net_start_xmit(struct sk_buff *skb, struct net_device *dev)
 		dev->stats.tx_dropped++;
 		return NETDEV_TX_OK;
 =======
+<<<<<<< HEAD
+		dev->stats.tx_dropped++;
+		return NETDEV_TX_OK;
+=======
 		if (result == -EAGAIN)
 			result = NETDEV_TX_BUSY;
 		return result;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Update statistics. */
@@ -459,8 +506,12 @@ static void ipcaif_net_setup(struct net_device *dev)
 <<<<<<< HEAD
 	priv->conn_req.sockaddr.u.dgm.connection_id = UNDEF_CONNID;
 =======
+<<<<<<< HEAD
+	priv->conn_req.sockaddr.u.dgm.connection_id = UNDEF_CONNID;
+=======
 	priv->conn_req.sockaddr.u.dgm.connection_id = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	priv->flowenabled = false;
 
 	init_waitqueue_head(&priv->netmgmt_wq);
@@ -524,16 +575,22 @@ static int ipcaif_newlink(struct net *src_net, struct net_device *dev,
 		list_add(&caifdev->list_field, &chnl_net_list);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Use ifindex as connection id, and use loopback channel default. */
 	if (caifdev->conn_req.sockaddr.u.dgm.connection_id == UNDEF_CONNID) {
 		caifdev->conn_req.sockaddr.u.dgm.connection_id = dev->ifindex;
 		caifdev->conn_req.protocol = CAIFPROTO_DATAGRAM_LOOP;
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* Take ifindex as connection-id if null */
 	if (caifdev->conn_req.sockaddr.u.dgm.connection_id == 0)
 		caifdev->conn_req.sockaddr.u.dgm.connection_id = dev->ifindex;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

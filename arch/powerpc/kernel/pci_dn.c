@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/gfp.h>
 
@@ -58,7 +62,13 @@ void * __devinit update_dn_pci_info(struct device_node *dn, void *data)
 	pdn->pe_number = IODA_INVALID_PE;
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PPC_POWERNV
+	pdn->pe_number = IODA_INVALID_PE;
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs = of_get_property(dn, "reg", NULL);
 	if (regs) {
 		/* First register entry is addr (00BBSS00)  */
@@ -154,6 +164,8 @@ void __devinit pci_devs_phb_init_dynamic(struct pci_controller *phb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Traversal func that looks for a <busno,devfcn> value.
  * If found, the pci_dn is returned (thus terminating the traversal).
@@ -202,6 +214,7 @@ struct device_node *fetch_dev_dn(struct pci_dev *dev)
 EXPORT_SYMBOL(fetch_dev_dn);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /** 
  * pci_devs_phb_init - Initialize phbs and pci devs under them.
  * 

@@ -46,6 +46,9 @@ struct mtd_oob_buf64 {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * MTD operation modes
  *
@@ -91,8 +94,11 @@ struct mtd_write_req {
 	__u8 padding[7];
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MTD_ABSENT		0
 #define MTD_RAM			1
 #define MTD_ROM			2
@@ -110,8 +116,12 @@ struct mtd_write_req {
 <<<<<<< HEAD
 /* Some common devices / combinations of capabilities */
 =======
+<<<<<<< HEAD
+/* Some common devices / combinations of capabilities */
+=======
 // Some common devices / combinations of capabilities
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MTD_CAP_ROM		0
 #define MTD_CAP_RAM		(MTD_WRITEABLE | MTD_BIT_WRITEABLE | MTD_NO_ERASE)
 #define MTD_CAP_NORFLASH	(MTD_WRITEABLE | MTD_BIT_WRITEABLE)
@@ -120,8 +130,12 @@ struct mtd_write_req {
 <<<<<<< HEAD
 /* Obsolete ECC byte placement modes (used with obsolete MEMGETOOBSEL) */
 =======
+<<<<<<< HEAD
+/* Obsolete ECC byte placement modes (used with obsolete MEMGETOOBSEL) */
+=======
 /* ECC byte placement */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MTD_NANDECC_OFF		0	// Switch off ECC (Not recommended)
 #define MTD_NANDECC_PLACE	1	// Use the given placement in the structure (YAFFS1 legacy mode)
 #define MTD_NANDECC_AUTOPLACE	2	// Use the default placement scheme
@@ -137,11 +151,16 @@ struct mtd_info_user {
 	__u8 type;
 	__u32 flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32 size;	/* Total size of the MTD */
 	__u32 erasesize;
 	__u32 writesize;
 	__u32 oobsize;	/* Amount of OOB data per block (e.g. 16) */
 	__u64 padding;	/* Old obsolete field; do not use */
+<<<<<<< HEAD
+=======
 =======
 	__u32 size;	 // Total size of the MTD
 	__u32 erasesize;
@@ -152,6 +171,7 @@ struct mtd_info_user {
 	__u32 ecctype;
 	__u32 eccsize;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct region_info_user {
@@ -161,10 +181,16 @@ struct region_info_user {
 	__u32 erasesize;	/* For this region */
 	__u32 numblocks;	/* Number of blocks in this region */
 =======
+<<<<<<< HEAD
+				 * from the beginning of the MTD */
+	__u32 erasesize;	/* For this region */
+	__u32 numblocks;	/* Number of blocks in this region */
+=======
 					 * from the beginning of the MTD */
 	__u32 erasesize;		/* For this region */
 	__u32 numblocks;		/* Number of blocks in this region */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32 regionindex;
 };
 
@@ -175,6 +201,9 @@ struct otp_info {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Note, the following ioctl existed in the past and was removed:
  * #define MEMSETOOBSEL           _IOW('M', 9, struct nand_oobinfo)
@@ -231,6 +260,8 @@ struct otp_info {
  * without OOB, e.g., NOR flash.
  */
 #define MEMWRITE		_IOWR('M', 24, struct mtd_write_req)
+<<<<<<< HEAD
+=======
 =======
 #define MEMGETINFO		_IOR('M', 1, struct mtd_info_user)
 #define MEMERASE		_IOW('M', 2, struct erase_info_user)
@@ -256,6 +287,7 @@ struct otp_info {
 #define MEMREADOOB64		_IOWR('M', 22, struct mtd_oob_buf64)
 #define MEMISLOCKED		_IOR('M', 23, struct erase_info_user)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Obsolete legacy interface. Keep it in order not to break userspace
@@ -288,8 +320,12 @@ struct nand_ecclayout_user {
 <<<<<<< HEAD
 	__u32 eccpos[256];
 =======
+<<<<<<< HEAD
+	__u32 eccpos[256];
+=======
 	__u32 eccpos[MTD_MAX_ECCPOS_ENTRIES];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32 oobavail;
 	struct nand_oobfree oobfree[MTD_MAX_OOBFREE_ENTRIES];
 };
@@ -311,6 +347,9 @@ struct mtd_ecc_stats {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * MTD file modes - for read/write access to MTD
  *
  * @MTD_FILE_MODE_NORMAL:	OTP disabled, ECC enabled
@@ -332,6 +371,8 @@ enum mtd_file_modes {
 	MTD_FILE_MODE_OTP_FACTORY = MTD_OTP_FACTORY,
 	MTD_FILE_MODE_OTP_USER = MTD_OTP_USER,
 	MTD_FILE_MODE_RAW,
+<<<<<<< HEAD
+=======
 =======
  * Read/write file modes for access to MTD
  */
@@ -341,6 +382,7 @@ enum mtd_file_modes {
 	MTD_MODE_OTP_USER = MTD_OTP_USER,
 	MTD_MODE_RAW,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __MTD_ABI_H__ */

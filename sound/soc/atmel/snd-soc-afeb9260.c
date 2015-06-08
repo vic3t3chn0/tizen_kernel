@@ -50,6 +50,10 @@ static int afeb9260_hw_params(struct snd_pcm_substream *substream,
 	int err;
 
 =======
+<<<<<<< HEAD
+	int err;
+
+=======
 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
 	int err;
 
@@ -74,6 +78,7 @@ static int afeb9260_hw_params(struct snd_pcm_substream *substream,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set the codec system clock for DAC and ADC */
 	err =
 	    snd_soc_dai_set_sysclk(codec_dai, 0, CODEC_CLOCK, SND_SOC_CLOCK_IN);
@@ -99,8 +104,12 @@ static const struct snd_soc_dapm_widget tlv320aic23_dapm_widgets[] = {
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route afeb9260_audio_map[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route afeb9260_audio_map[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{"Headphone Jack", NULL, "LHPOUT"},
 	{"Headphone Jack", NULL, "RHPOUT"},
 
@@ -117,6 +126,8 @@ static int afeb9260_tlv320aic23_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* Add afeb9260 specific widgets */
 	snd_soc_dapm_new_controls(dapm, tlv320aic23_dapm_widgets,
 				  ARRAY_SIZE(tlv320aic23_dapm_widgets));
@@ -125,15 +136,19 @@ static int afeb9260_tlv320aic23_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_add_routes(dapm, audio_map, ARRAY_SIZE(audio_map));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_dapm_enable_pin(dapm, "Headphone Jack");
 	snd_soc_dapm_enable_pin(dapm, "Line In");
 	snd_soc_dapm_enable_pin(dapm, "Mic Jack");
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -150,7 +165,12 @@ static struct snd_soc_dai_link afeb9260_dai = {
 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_IF |
 		   SND_SOC_DAIFMT_CBM_CFM,
 =======
+<<<<<<< HEAD
+	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_IF |
+		   SND_SOC_DAIFMT_CBM_CFM,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &afeb9260_ops,
 };
 
@@ -158,6 +178,9 @@ static struct snd_soc_dai_link afeb9260_dai = {
 static struct snd_soc_card snd_soc_machine_afeb9260 = {
 	.name = "AFEB9260",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner = THIS_MODULE,
 	.dai_link = &afeb9260_dai,
 	.num_links = 1,
@@ -166,10 +189,13 @@ static struct snd_soc_card snd_soc_machine_afeb9260 = {
 	.num_dapm_widgets = ARRAY_SIZE(tlv320aic23_dapm_widgets),
 	.dapm_routes = afeb9260_audio_map,
 	.num_dapm_routes = ARRAY_SIZE(afeb9260_audio_map),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link = &afeb9260_dai,
 	.num_links = 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *afeb9260_snd_device;

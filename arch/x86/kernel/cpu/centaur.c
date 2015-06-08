@@ -281,8 +281,12 @@ static void __cpuinit init_c3(struct cpuinfo_x86 *c)
 <<<<<<< HEAD
 	if (c->x86_model >= 6 && c->x86_model <= 13) {
 =======
+<<<<<<< HEAD
+	if (c->x86_model >= 6 && c->x86_model <= 13) {
+=======
 	if (c->x86_model >= 6 && c->x86_model <= 9) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rdmsr(MSR_VIA_FCR, lo, hi);
 		lo |= (1<<1 | 1<<7);
 		wrmsr(MSR_VIA_FCR, lo, hi);

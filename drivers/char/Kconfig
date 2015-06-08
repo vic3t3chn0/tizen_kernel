@@ -81,6 +81,11 @@ config TTY_PRINTK
 
 	  If unsure, say N.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config BRIQ_PANEL
 	tristate 'Total Impact briQ front panel driver'
 	depends on PPC_CHRP
@@ -96,6 +101,10 @@ config BRIQ_PANEL
 
 	  It's safe to say N here.
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config BFIN_OTP
 	tristate "Blackfin On-Chip OTP Memory Support"
 	depends on BLACKFIN && (BF51x || BF52x || BF54x)
@@ -313,7 +322,15 @@ if RTC_LIB=n
 config RTC
 	tristate "Enhanced Real Time Clock Support (legacy PC RTC driver)"
 	depends on !PPC && !PARISC && !IA64 && !M68K && !SPARC && !FRV \
+<<<<<<< HEAD
+<<<<<<< HEAD
+			&& !ARM && !SUPERH && !S390 && !AVR32 && !BLACKFIN && !UML
+=======
 			&& !ARM && !SUPERH && !S390 && !AVR32 && !BLACKFIN
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			&& !ARM && !SUPERH && !S390 && !AVR32 && !BLACKFIN
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  If you say Y here and create a character special file /dev/rtc with
 	  major number 10 and minor number 135 using mknod ("man mknod"), you
@@ -361,7 +378,15 @@ config JS_RTC
 
 config GEN_RTC
 	tristate "Generic /dev/rtc emulation"
+<<<<<<< HEAD
+<<<<<<< HEAD
+	depends on RTC!=y && !IA64 && !ARM && !M32R && !MIPS && !SPARC && !FRV && !S390 && !SUPERH && !AVR32 && !BLACKFIN && !UML
+=======
 	depends on RTC!=y && !IA64 && !ARM && !M32R && !MIPS && !SPARC && !FRV && !S390 && !SUPERH && !AVR32 && !BLACKFIN
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	depends on RTC!=y && !IA64 && !ARM && !M32R && !MIPS && !SPARC && !FRV && !S390 && !SUPERH && !AVR32 && !BLACKFIN
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  If you say Y here and create a character special file /dev/rtc with
 	  major number 10 and minor number 135 using mknod ("man mknod"), you
@@ -505,7 +530,15 @@ config SCx200_GPIO
 
 config PC8736x_GPIO
 	tristate "NatSemi PC8736x GPIO Support"
+<<<<<<< HEAD
+<<<<<<< HEAD
+	depends on X86_32 && !UML
+=======
 	depends on X86_32
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	depends on X86_32
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default SCx200_GPIO	# mostly N
 	select NSC_GPIO		# needed for support routines
 	help
@@ -627,6 +660,11 @@ config RAMOOPS
 	  This enables panic and oops messages to be logged to a circular
 	  buffer in RAM where it can be read back at some later point.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config S3C_MEM
 	bool "Support for /dev/s3c-mem"
 	default y
@@ -644,6 +682,10 @@ config EXYNOS_MEM
 	  If you do say Y here, you can mmap using physically linear memories.
 	  And you can flush it using ioctl.
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MSM_SMD_PKT
 	bool "Enable device interface for some SMD packet ports"
 	default n
@@ -652,5 +694,72 @@ config MSM_SMD_PKT
 	  Enables userspace clients to read and write to some packet SMD
 	  ports via device interface for MSM chipset.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config TILE_SROM
+	bool "Character-device access via hypervisor to the Tilera SPI ROM"
+	depends on TILE
+	default y
+	---help---
+	  This device provides character-level read-write access
+	  to the SROM, typically via the "0", "1", and "2" devices
+	  in /dev/srom/.  The Tilera hypervisor makes the flash
+	  device appear much like a simple EEPROM, and knows
+	  how to partition a single ROM for multiple purposes.
+
+config MSM_ROTATOR
+        tristate "MSM Offline Image Rotator Driver"
+        depends on (ARCH_MSM7X30 || ARCH_MSM8X60 || ARCH_MSM8960)
+        default y
+        help
+          This driver provides support for the image rotator HW block in the
+          MSM 7x30 SoC.
+
+config MSM_ROTATOR_USE_IMEM
+        bool "Enable rotator driver to use iMem"
+        depends on ARCH_MSM7X30 && MSM_ROTATOR
+        default y
+        help
+          This option enables the msm_rotator driver to use the move efficient
+          iMem.  Some MSM platforms may not have iMem available for the rotator
+          block.  Or some systems may want the iMem to be dedicated to a
+          different function.
+
+config MSM_ADSPRPC
+	tristate "Qualcomm ADSP RPC driver"
+	depends on MSM_AUDIO_QDSP6 || MSM_AUDIO_QDSP6V2
+	help
+	  Provides a communication mechanism that allows for clients to
+	  make remote method invocations across processor boundary to
+	  applications DSP processor. Say M if you want to enable this
+	  module.
+
+config CSDIO_VENDOR_ID
+	hex "Card VendorId"
+	depends on MMC_GENERIC_CSDIO
+	default "0"
+	help
+	  Enter vendor id for targeted sdio device, this may be overwritten by
+	  module parameters.
+
+config CSDIO_DEVICE_ID
+	hex "CardDeviceId"
+	depends on MMC_GENERIC_CSDIO
+	default "0"
+	help
+	  Enter device id for targeted sdio device, this may be overwritten by
+	  module parameters.
+
+config MSM_RDBG
+        tristate "Qualcomm Remote debug driver"
+        depends on MSM_AUDIO_QDSP6 || MSM_AUDIO_QDSP6V2
+        help
+          Implements a shared memory based transport mechanism that allows
+          for a debugger running on a host PC to communicate with a remote
+	  stub running on peripheral subsystems such as the ADSP, MODEM etc.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endmenu
 

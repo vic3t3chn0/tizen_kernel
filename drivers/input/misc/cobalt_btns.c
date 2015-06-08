@@ -163,6 +163,12 @@ static struct platform_driver cobalt_buttons_driver = {
 		.owner	= THIS_MODULE,
 	},
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(cobalt_buttons_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init cobalt_buttons_init(void)
 {
@@ -176,3 +182,7 @@ static void __exit cobalt_buttons_exit(void)
 
 module_init(cobalt_buttons_init);
 module_exit(cobalt_buttons_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

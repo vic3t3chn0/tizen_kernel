@@ -31,10 +31,15 @@
 	movq %rdx, %rcx
 	shrq $3, %rcx
 =======
+<<<<<<< HEAD
+	movq %rdx, %rcx
+	shrq $3, %rcx
+=======
 
 	movl %edx, %ecx
 	shrl $3, %ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	andl $7, %edx
 	rep movsq
 	movl %edx, %ecx
@@ -56,9 +61,13 @@
 <<<<<<< HEAD
 	movq %rdx, %rcx
 =======
+<<<<<<< HEAD
+	movq %rdx, %rcx
+=======
 
 	movl %edx, %ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rep movsb
 	ret
 .Lmemcpy_e_e:
@@ -72,11 +81,15 @@ ENTRY(memcpy)
 <<<<<<< HEAD
 	cmpq $0x20, %rdx
 =======
+<<<<<<< HEAD
+	cmpq $0x20, %rdx
+=======
 	/*
 	 * Use 32bit CMP here to avoid long NOP padding.
 	 */
 	cmp  $0x20, %edx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jb .Lhandle_tail
 
 	/*
@@ -88,8 +101,12 @@ ENTRY(memcpy)
 <<<<<<< HEAD
 	subq $0x20, %rdx
 =======
+<<<<<<< HEAD
+	subq $0x20, %rdx
+=======
 	subl $0x20, %edx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 .Lcopy_forward_loop:
 	subq $0x20,	%rdx
 
@@ -111,8 +128,12 @@ ENTRY(memcpy)
 <<<<<<< HEAD
 	addl $0x20,	%edx
 =======
+<<<<<<< HEAD
+	addl $0x20,	%edx
+=======
 	addq $0x20,	%rdx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jmp  .Lhandle_tail
 
 .Lcopy_backward:
@@ -145,11 +166,16 @@ ENTRY(memcpy)
 	 * Calculate copy position to head.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addl $0x20,	%edx
 	subq %rdx,	%rsi
 	subq %rdx,	%rdi
 .Lhandle_tail:
 	cmpl $16,	%edx
+<<<<<<< HEAD
+=======
 =======
 	addq $0x20,	%rdx
 	subq %rdx,	%rsi
@@ -157,6 +183,7 @@ ENTRY(memcpy)
 .Lhandle_tail:
 	cmpq $16,	%rdx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jb   .Lless_16bytes
 
 	/*
@@ -176,8 +203,12 @@ ENTRY(memcpy)
 <<<<<<< HEAD
 	cmpl $8,	%edx
 =======
+<<<<<<< HEAD
+	cmpl $8,	%edx
+=======
 	cmpq $8,	%rdx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jb   .Lless_8bytes
 	/*
 	 * Move data from 8 bytes to 15 bytes.
@@ -192,8 +223,12 @@ ENTRY(memcpy)
 <<<<<<< HEAD
 	cmpl $4,	%edx
 =======
+<<<<<<< HEAD
+	cmpl $4,	%edx
+=======
 	cmpq $4,	%rdx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jb   .Lless_3bytes
 
 	/*
@@ -207,6 +242,9 @@ ENTRY(memcpy)
 	.p2align 4
 .Lless_3bytes:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	subl $1, %edx
 	jb .Lend
 	/*
@@ -220,6 +258,8 @@ ENTRY(memcpy)
 	movb %r9b, (%rdi, %rdx)
 .Lstore_1byte:
 	movb %cl, (%rdi)
+<<<<<<< HEAD
+=======
 =======
 	cmpl $0, %edx
 	je .Lend
@@ -234,6 +274,7 @@ ENTRY(memcpy)
 	decl %edx
 	jnz .Lloop_1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 .Lend:
 	retq

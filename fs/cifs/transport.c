@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <linux/freezer.h>
 =======
+<<<<<<< HEAD
+#include <linux/freezer.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/processor.h>
 #include <linux/mempool.h>
@@ -67,9 +71,14 @@ AllocMidQEntry(const struct smb_hdr *smb_buffer, struct TCP_Server_Info *server)
 		temp->command = cpu_to_le16(smb_buffer->Command);
 		cFYI(1, "For smb_command %d", smb_buffer->Command);
 =======
+<<<<<<< HEAD
+		temp->command = cpu_to_le16(smb_buffer->Command);
+		cFYI(1, "For smb_command %d", smb_buffer->Command);
+=======
 		temp->command = smb_buffer->Command;
 		cFYI(1, "For smb_command %d", temp->command);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*	do_gettimeofday(&temp->when_sent);*/ /* easier to use jiffies */
 		/* when mid allocated can be before when sent */
 		temp->when_alloc = jiffies;
@@ -86,8 +95,12 @@ AllocMidQEntry(const struct smb_hdr *smb_buffer, struct TCP_Server_Info *server)
 <<<<<<< HEAD
 	temp->mid_state = MID_REQUEST_ALLOCATED;
 =======
+<<<<<<< HEAD
+	temp->mid_state = MID_REQUEST_ALLOCATED;
+=======
 	temp->midState = MID_REQUEST_ALLOCATED;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return temp;
 }
 
@@ -102,10 +115,16 @@ DeleteMidQEntry(struct mid_q_entry *midEntry)
 	atomic_dec(&midCount);
 	if (midEntry->large_buf)
 =======
+<<<<<<< HEAD
+	midEntry->mid_state = MID_FREE;
+	atomic_dec(&midCount);
+	if (midEntry->large_buf)
+=======
 	midEntry->midState = MID_FREE;
 	atomic_dec(&midCount);
 	if (midEntry->largeBuf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cifs_buf_release(midEntry->resp_buf);
 	else
 		cifs_small_buf_release(midEntry->resp_buf);
@@ -119,9 +138,14 @@ DeleteMidQEntry(struct mid_q_entry *midEntry)
 		    (midEntry->command != cpu_to_le16(SMB_COM_LOCKING_ANDX))) {
 			printk(KERN_DEBUG " CIFS slow rsp: cmd %d mid %llu",
 =======
+<<<<<<< HEAD
+		    (midEntry->command != cpu_to_le16(SMB_COM_LOCKING_ANDX))) {
+			printk(KERN_DEBUG " CIFS slow rsp: cmd %d mid %llu",
+=======
 		   (midEntry->command != SMB_COM_LOCKING_ANDX)) {
 			printk(KERN_DEBUG " CIFS slow rsp: cmd %d mid %d",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       midEntry->command, midEntry->mid);
 			printk(" A: 0x%lx S: 0x%lx R: 0x%lx\n",
 			       now - midEntry->when_alloc,
@@ -150,11 +174,16 @@ smb_sendv(struct TCP_Server_Info *server, struct kvec *iov, int n_vec)
 	int i = 0;
 	struct msghdr smb_msg;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be32 *buf_len = (__be32 *)(iov[0].iov_base);
 	unsigned int len = iov[0].iov_len;
 	unsigned int total_len;
 	int first_vec = 0;
 	unsigned int smb_buf_length = get_rfc1002_length(iov[0].iov_base);
+<<<<<<< HEAD
+=======
 =======
 	struct smb_hdr *smb_buffer = iov[0].iov_base;
 	unsigned int len = iov[0].iov_len;
@@ -162,6 +191,7 @@ smb_sendv(struct TCP_Server_Info *server, struct kvec *iov, int n_vec)
 	int first_vec = 0;
 	unsigned int smb_buf_length = be32_to_cpu(smb_buffer->smb_buf_length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct socket *ssocket = server->ssocket;
 
 	if (ssocket == NULL)
@@ -184,8 +214,12 @@ smb_sendv(struct TCP_Server_Info *server, struct kvec *iov, int n_vec)
 <<<<<<< HEAD
 	dump_smb(iov[0].iov_base, len);
 =======
+<<<<<<< HEAD
+	dump_smb(iov[0].iov_base, len);
+=======
 	dump_smb(smb_buffer, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	i = 0;
 	while (total_len) {
@@ -194,6 +228,9 @@ smb_sendv(struct TCP_Server_Info *server, struct kvec *iov, int n_vec)
 		if ((rc == -ENOSPC) || (rc == -EAGAIN)) {
 			i++;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * If blocking send we try 3 times, since each can block
 			 * for 5 seconds. For nonblocking  we have to try more
@@ -212,6 +249,8 @@ smb_sendv(struct TCP_Server_Info *server, struct kvec *iov, int n_vec)
 			 * after the retries we will kill the socket and
 			 * reconnect which may clear the network problem.
 			 */
+<<<<<<< HEAD
+=======
 =======
 			/* if blocking send we try 3 times, since each can block
 			   for 5 seconds. For nonblocking  we have to try more
@@ -232,6 +271,7 @@ smb_sendv(struct TCP_Server_Info *server, struct kvec *iov, int n_vec)
 			   reconnect which may clear the network problem.
 			*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((i >= 14) || (!server->noblocksnd && (i > 2))) {
 				cERROR(1, "sends on sock %p stuck for 15 seconds",
 				    ssocket);
@@ -295,10 +335,15 @@ smb_sendv(struct TCP_Server_Info *server, struct kvec *iov, int n_vec)
 	/* Don't want to modify the buffer as a side effect of this call. */
 	*buf_len = cpu_to_be32(smb_buf_length);
 =======
+<<<<<<< HEAD
+	/* Don't want to modify the buffer as a side effect of this call. */
+	*buf_len = cpu_to_be32(smb_buf_length);
+=======
 	/* Don't want to modify the buffer as a
 	   side effect of this call. */
 	smb_buffer->smb_buf_length = cpu_to_be32(smb_buf_length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return rc;
 }
@@ -316,6 +361,9 @@ smb_send(struct TCP_Server_Info *server, struct smb_hdr *smb_buffer,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 wait_for_free_credits(struct TCP_Server_Info *server, const int optype,
 		      int *credits)
@@ -358,6 +406,8 @@ wait_for_free_credits(struct TCP_Server_Info *server, const int optype,
 				server->in_flight++;
 			}
 			spin_unlock(&server->req_lock);
+<<<<<<< HEAD
+=======
 =======
 static int wait_for_free_request(struct TCP_Server_Info *server,
 				 const int long_op)
@@ -396,6 +446,7 @@ static int wait_for_free_request(struct TCP_Server_Info *server,
 				atomic_inc(&server->inFlight);
 			spin_unlock(&GlobalMid_Lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -403,14 +454,20 @@ static int wait_for_free_request(struct TCP_Server_Info *server,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 wait_for_free_request(struct TCP_Server_Info *server, const int optype)
 {
 	return wait_for_free_credits(server, optype, get_credits_field(server));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int allocate_mid(struct cifs_ses *ses, struct smb_hdr *in_buf,
 			struct mid_q_entry **ppmidQ)
 {
@@ -448,9 +505,14 @@ wait_for_response(struct TCP_Server_Info *server, struct mid_q_entry *midQ)
 	error = wait_event_freezekillable_unsafe(server->response_q,
 				    midQ->mid_state != MID_REQUEST_SUBMITTED);
 =======
+<<<<<<< HEAD
+	error = wait_event_freezekillable_unsafe(server->response_q,
+				    midQ->mid_state != MID_REQUEST_SUBMITTED);
+=======
 	error = wait_event_killable(server->response_q,
 				    midQ->midState != MID_REQUEST_SUBMITTED);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error < 0)
 		return -ERESTARTSYS;
 
@@ -458,6 +520,9 @@ wait_for_response(struct TCP_Server_Info *server, struct mid_q_entry *midQ)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 cifs_setup_async_request(struct TCP_Server_Info *server, struct kvec *iov,
 			 unsigned int nvec, struct mid_q_entry **ret_mid)
@@ -465,6 +530,8 @@ cifs_setup_async_request(struct TCP_Server_Info *server, struct kvec *iov,
 	int rc;
 	struct smb_hdr *hdr = (struct smb_hdr *)iov[0].iov_base;
 	struct mid_q_entry *mid;
+<<<<<<< HEAD
+=======
 =======
 
 /*
@@ -484,11 +551,17 @@ cifs_call_async(struct TCP_Server_Info *server, struct kvec *iov,
 	if (rc)
 		return rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* enable signing if server requires it */
 	if (server->sec_mode & (SECMODE_SIGN_REQUIRED | SECMODE_SIGN_ENABLED))
 		hdr->Flags2 |= SMBFLG2_SECURITY_SIGNATURE;
 
+<<<<<<< HEAD
+	mid = AllocMidQEntry(hdr, server);
+	if (mid == NULL)
+		return -ENOMEM;
+=======
 <<<<<<< HEAD
 	mid = AllocMidQEntry(hdr, server);
 	if (mid == NULL)
@@ -503,6 +576,7 @@ cifs_call_async(struct TCP_Server_Info *server, struct kvec *iov,
 		return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* put it on the pending_mid_q */
 	spin_lock(&GlobalMid_Lock);
@@ -511,6 +585,9 @@ cifs_call_async(struct TCP_Server_Info *server, struct kvec *iov,
 
 	rc = cifs_sign_smb2(iov, nvec, server, &mid->sequence_number);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc)
 		delete_mid(mid);
 	*ret_mid = mid;
@@ -553,6 +630,8 @@ cifs_call_async(struct TCP_Server_Info *server, struct kvec *iov,
 	cifs_save_when_sent(mid);
 	mutex_unlock(&server->srv_mutex);
 
+<<<<<<< HEAD
+=======
 =======
 	if (rc) {
 		mutex_unlock(&server->srv_mutex);
@@ -572,6 +651,7 @@ cifs_call_async(struct TCP_Server_Info *server, struct kvec *iov,
 #endif
 	mutex_unlock(&server->srv_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rc)
 		goto out_err;
 
@@ -581,8 +661,12 @@ out_err:
 <<<<<<< HEAD
 	cifs_add_credits(server, 1);
 =======
+<<<<<<< HEAD
+	cifs_add_credits(server, 1);
+=======
 	atomic_dec(&server->inFlight);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wake_up(&server->request_q);
 	return rc;
 }
@@ -601,8 +685,12 @@ SendReceiveNoRsp(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		 char *in_buf, int flags)
 =======
+<<<<<<< HEAD
+		 char *in_buf, int flags)
+=======
 		struct smb_hdr *in_buf, int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc;
 	struct kvec iov[1];
@@ -612,9 +700,14 @@ SendReceiveNoRsp(const unsigned int xid, struct cifs_ses *ses,
 	iov[0].iov_base = in_buf;
 	iov[0].iov_len = get_rfc1002_length(in_buf) + 4;
 =======
+<<<<<<< HEAD
+	iov[0].iov_base = in_buf;
+	iov[0].iov_len = get_rfc1002_length(in_buf) + 4;
+=======
 	iov[0].iov_base = (char *)in_buf;
 	iov[0].iov_len = be32_to_cpu(in_buf->smb_buf_length) + 4;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flags |= CIFS_NO_RESP;
 	rc = SendReceive2(xid, ses, iov, 1, &resp_buf_type, flags);
 	cFYI(DBG2, "SendRcvNoRsp flags %d rc %d", flags, rc);
@@ -628,11 +721,16 @@ cifs_sync_mid_result(struct mid_q_entry *mid, struct TCP_Server_Info *server)
 	int rc = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cFYI(1, "%s: cmd=%d mid=%llu state=%d", __func__,
 	     le16_to_cpu(mid->command), mid->mid, mid->mid_state);
 
 	spin_lock(&GlobalMid_Lock);
 	switch (mid->mid_state) {
+<<<<<<< HEAD
+=======
 =======
 	cFYI(1, "%s: cmd=%d mid=%d state=%d", __func__, mid->command,
 		mid->mid, mid->midState);
@@ -640,6 +738,7 @@ cifs_sync_mid_result(struct mid_q_entry *mid, struct TCP_Server_Info *server)
 	spin_lock(&GlobalMid_Lock);
 	switch (mid->midState) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case MID_RESPONSE_RECEIVED:
 		spin_unlock(&GlobalMid_Lock);
 		return rc;
@@ -658,9 +757,14 @@ cifs_sync_mid_result(struct mid_q_entry *mid, struct TCP_Server_Info *server)
 		cERROR(1, "%s: invalid mid state mid=%llu state=%d", __func__,
 		       mid->mid, mid->mid_state);
 =======
+<<<<<<< HEAD
+		cERROR(1, "%s: invalid mid state mid=%llu state=%d", __func__,
+		       mid->mid, mid->mid_state);
+=======
 		cERROR(1, "%s: invalid mid state mid=%d state=%d", __func__,
 			mid->mid, mid->midState);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EIO;
 	}
 	spin_unlock(&GlobalMid_Lock);
@@ -711,6 +815,9 @@ cifs_check_receive(struct mid_q_entry *mid, struct TCP_Server_Info *server,
 		   bool log_error)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int len = get_rfc1002_length(mid->resp_buf) + 4;
 
 	dump_smb(mid->resp_buf, min_t(u32, 92, len));
@@ -723,6 +830,8 @@ cifs_check_receive(struct mid_q_entry *mid, struct TCP_Server_Info *server,
 		iov.iov_len = len;
 		/* FIXME: add code to kill session */
 		if (cifs_verify_signature(&iov, 1, server,
+<<<<<<< HEAD
+=======
 =======
 	dump_smb(mid->resp_buf,
 		 min_t(u32, 92, be32_to_cpu(mid->resp_buf->smb_buf_length)));
@@ -732,6 +841,7 @@ cifs_check_receive(struct mid_q_entry *mid, struct TCP_Server_Info *server,
 		/* FIXME: add code to kill session */
 		if (cifs_verify_signature(mid->resp_buf, server,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  mid->sequence_number + 1) != 0)
 			cERROR(1, "Unexpected SMB signature");
 	}
@@ -741,6 +851,9 @@ cifs_check_receive(struct mid_q_entry *mid, struct TCP_Server_Info *server,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int
 cifs_setup_request(struct cifs_ses *ses, struct kvec *iov,
 		   unsigned int nvec, struct mid_q_entry **ret_mid)
@@ -759,8 +872,11 @@ cifs_setup_request(struct cifs_ses *ses, struct kvec *iov,
 	return rc;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 	     struct kvec *iov, int n_vec, int *pRespBufType /* ret */,
@@ -772,8 +888,12 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 	char *buf = iov[0].iov_base;
 =======
+<<<<<<< HEAD
+	char *buf = iov[0].iov_base;
+=======
 	struct smb_hdr *in_buf = iov[0].iov_base;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	long_op = flags & CIFS_TIMEOUT_MASK;
 
@@ -783,14 +903,21 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		cifs_small_buf_release(buf);
 =======
+<<<<<<< HEAD
+		cifs_small_buf_release(buf);
+=======
 		cifs_small_buf_release(in_buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cERROR(1, "Null session");
 		return -EIO;
 	}
 
 	if (ses->server->tcpStatus == CifsExiting) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cifs_small_buf_release(buf);
 		return -ENOENT;
 	}
@@ -829,6 +956,8 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 	rc = smb_sendv(ses->server, iov, n_vec);
 	cifs_in_send_dec(ses->server);
 	cifs_save_when_sent(midQ);
+<<<<<<< HEAD
+=======
 =======
 		cifs_small_buf_release(in_buf);
 		return -ENOENT;
@@ -876,6 +1005,7 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 	midQ->when_sent = jiffies;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_unlock(&ses->server->srv_mutex);
 
@@ -883,8 +1013,12 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		cifs_small_buf_release(buf);
 =======
+<<<<<<< HEAD
+		cifs_small_buf_release(buf);
+=======
 		cifs_small_buf_release(in_buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
@@ -892,14 +1026,21 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		cifs_small_buf_release(buf);
 =======
+<<<<<<< HEAD
+		cifs_small_buf_release(buf);
+=======
 		cifs_small_buf_release(in_buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 
 	rc = wait_for_response(ses->server, midQ);
 	if (rc != 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		send_nt_cancel(ses->server, (struct smb_hdr *)buf, midQ);
 		spin_lock(&GlobalMid_Lock);
 		if (midQ->mid_state == MID_REQUEST_SUBMITTED) {
@@ -907,6 +1048,8 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 			spin_unlock(&GlobalMid_Lock);
 			cifs_small_buf_release(buf);
 			cifs_add_credits(ses->server, 1);
+<<<<<<< HEAD
+=======
 =======
 		send_nt_cancel(ses->server, in_buf, midQ);
 		spin_lock(&GlobalMid_Lock);
@@ -917,12 +1060,16 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 			atomic_dec(&ses->server->inFlight);
 			wake_up(&ses->server->request_q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return rc;
 		}
 		spin_unlock(&GlobalMid_Lock);
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cifs_small_buf_release(buf);
 
 	rc = cifs_sync_mid_result(midQ, ses->server);
@@ -932,6 +1079,8 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 	}
 
 	if (!midQ->resp_buf || midQ->mid_state != MID_RESPONSE_RECEIVED) {
+<<<<<<< HEAD
+=======
 =======
 	cifs_small_buf_release(in_buf);
 
@@ -944,21 +1093,28 @@ SendReceive2(const unsigned int xid, struct cifs_ses *ses,
 
 	if (!midQ->resp_buf || midQ->midState != MID_RESPONSE_RECEIVED) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EIO;
 		cFYI(1, "Bad MID state?");
 		goto out;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	buf = (char *)midQ->resp_buf;
 	iov[0].iov_base = buf;
 	iov[0].iov_len = get_rfc1002_length(buf) + 4;
 	if (midQ->large_buf)
+<<<<<<< HEAD
+=======
 =======
 	iov[0].iov_base = (char *)midQ->resp_buf;
 	iov[0].iov_len = be32_to_cpu(midQ->resp_buf->smb_buf_length) + 4;
 	if (midQ->largeBuf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*pRespBufType = CIFS_LARGE_BUFFER;
 	else
 		*pRespBufType = CIFS_SMALL_BUFFER;
@@ -973,9 +1129,13 @@ out:
 <<<<<<< HEAD
 	cifs_add_credits(ses->server, 1);
 =======
+<<<<<<< HEAD
+	cifs_add_credits(ses->server, 1);
+=======
 	atomic_dec(&ses->server->inFlight);
 	wake_up(&ses->server->request_q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return rc;
 }
@@ -1028,9 +1188,13 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		cifs_add_credits(ses->server, 1);
 =======
+<<<<<<< HEAD
+		cifs_add_credits(ses->server, 1);
+=======
 		atomic_dec(&ses->server->inFlight);
 		wake_up(&ses->server->request_q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return rc;
 	}
 
@@ -1041,12 +1205,17 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	midQ->mid_state = MID_REQUEST_SUBMITTED;
 
 	cifs_in_send_inc(ses->server);
 	rc = smb_send(ses->server, in_buf, be32_to_cpu(in_buf->smb_buf_length));
 	cifs_in_send_dec(ses->server);
 	cifs_save_when_sent(midQ);
+<<<<<<< HEAD
+=======
 =======
 	midQ->midState = MID_REQUEST_SUBMITTED;
 #ifdef CONFIG_CIFS_STATS2
@@ -1058,6 +1227,7 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 	midQ->when_sent = jiffies;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&ses->server->srv_mutex);
 
 	if (rc < 0)
@@ -1071,11 +1241,16 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 		send_nt_cancel(ses->server, in_buf, midQ);
 		spin_lock(&GlobalMid_Lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (midQ->mid_state == MID_REQUEST_SUBMITTED) {
 			/* no longer considered to be "in-flight" */
 			midQ->callback = DeleteMidQEntry;
 			spin_unlock(&GlobalMid_Lock);
 			cifs_add_credits(ses->server, 1);
+<<<<<<< HEAD
+=======
 =======
 		if (midQ->midState == MID_REQUEST_SUBMITTED) {
 			/* no longer considered to be "in-flight" */
@@ -1084,6 +1259,7 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 			atomic_dec(&ses->server->inFlight);
 			wake_up(&ses->server->request_q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return rc;
 		}
 		spin_unlock(&GlobalMid_Lock);
@@ -1094,9 +1270,13 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 		cifs_add_credits(ses->server, 1);
 =======
+<<<<<<< HEAD
+		cifs_add_credits(ses->server, 1);
+=======
 		atomic_dec(&ses->server->inFlight);
 		wake_up(&ses->server->request_q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return rc;
 	}
 
@@ -1104,8 +1284,12 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 	    midQ->mid_state != MID_RESPONSE_RECEIVED) {
 =======
+<<<<<<< HEAD
+	    midQ->mid_state != MID_RESPONSE_RECEIVED) {
+=======
 	    midQ->midState != MID_RESPONSE_RECEIVED) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EIO;
 		cERROR(1, "Bad MID state?");
 		goto out;
@@ -1114,8 +1298,12 @@ SendReceive(const unsigned int xid, struct cifs_ses *ses,
 <<<<<<< HEAD
 	*pbytes_returned = get_rfc1002_length(midQ->resp_buf);
 =======
+<<<<<<< HEAD
+	*pbytes_returned = get_rfc1002_length(midQ->resp_buf);
+=======
 	*pbytes_returned = be32_to_cpu(midQ->resp_buf->smb_buf_length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(out_buf, midQ->resp_buf, *pbytes_returned + 4);
 	rc = cifs_check_receive(midQ, ses->server, 0);
 out:
@@ -1123,9 +1311,13 @@ out:
 <<<<<<< HEAD
 	cifs_add_credits(ses->server, 1);
 =======
+<<<<<<< HEAD
+	cifs_add_credits(ses->server, 1);
+=======
 	atomic_dec(&ses->server->inFlight);
 	wake_up(&ses->server->request_q);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return rc;
 }
@@ -1214,11 +1406,16 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	midQ->mid_state = MID_REQUEST_SUBMITTED;
 	cifs_in_send_inc(ses->server);
 	rc = smb_send(ses->server, in_buf, be32_to_cpu(in_buf->smb_buf_length));
 	cifs_in_send_dec(ses->server);
 	cifs_save_when_sent(midQ);
+<<<<<<< HEAD
+=======
 =======
 	midQ->midState = MID_REQUEST_SUBMITTED;
 #ifdef CONFIG_CIFS_STATS2
@@ -1230,6 +1427,7 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 	midQ->when_sent = jiffies;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&ses->server->srv_mutex);
 
 	if (rc < 0) {
@@ -1242,8 +1440,12 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 <<<<<<< HEAD
 		(!(midQ->mid_state == MID_REQUEST_SUBMITTED)) ||
 =======
+<<<<<<< HEAD
+		(!(midQ->mid_state == MID_REQUEST_SUBMITTED)) ||
+=======
 		(!(midQ->midState == MID_REQUEST_SUBMITTED)) ||
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		((ses->server->tcpStatus != CifsGood) &&
 		 (ses->server->tcpStatus != CifsNew)));
 
@@ -1252,8 +1454,12 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 <<<<<<< HEAD
 		(midQ->mid_state == MID_REQUEST_SUBMITTED) &&
 =======
+<<<<<<< HEAD
+		(midQ->mid_state == MID_REQUEST_SUBMITTED) &&
+=======
 		(midQ->midState == MID_REQUEST_SUBMITTED) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		((ses->server->tcpStatus == CifsGood) ||
 		 (ses->server->tcpStatus == CifsNew))) {
 
@@ -1286,8 +1492,12 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 <<<<<<< HEAD
 			if (midQ->mid_state == MID_REQUEST_SUBMITTED) {
 =======
+<<<<<<< HEAD
+			if (midQ->mid_state == MID_REQUEST_SUBMITTED) {
+=======
 			if (midQ->midState == MID_REQUEST_SUBMITTED) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* no longer considered to be "in-flight" */
 				midQ->callback = DeleteMidQEntry;
 				spin_unlock(&GlobalMid_Lock);
@@ -1308,8 +1518,12 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 <<<<<<< HEAD
 	if (out_buf == NULL || midQ->mid_state != MID_RESPONSE_RECEIVED) {
 =======
+<<<<<<< HEAD
+	if (out_buf == NULL || midQ->mid_state != MID_RESPONSE_RECEIVED) {
+=======
 	if (out_buf == NULL || midQ->midState != MID_RESPONSE_RECEIVED) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = -EIO;
 		cERROR(1, "Bad MID state?");
 		goto out;
@@ -1318,8 +1532,12 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 <<<<<<< HEAD
 	*pbytes_returned = get_rfc1002_length(midQ->resp_buf);
 =======
+<<<<<<< HEAD
+	*pbytes_returned = get_rfc1002_length(midQ->resp_buf);
+=======
 	*pbytes_returned = be32_to_cpu(midQ->resp_buf->smb_buf_length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(out_buf, midQ->resp_buf, *pbytes_returned + 4);
 	rc = cifs_check_receive(midQ, ses->server, 0);
 out:

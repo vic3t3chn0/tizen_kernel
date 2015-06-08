@@ -37,8 +37,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/pgalloc.h>
 #include <asm/sections.h>
 #include <asm/traps.h>
@@ -60,8 +63,12 @@ static noinline void force_sig_info_fault(const char *type, int si_signo,
 <<<<<<< HEAD
 		      is_idle_task(tsk) ? "the idle task" : "init");
 =======
+<<<<<<< HEAD
+		      is_idle_task(tsk) ? "the idle task" : "init");
+=======
 		      tsk->pid ? "init" : "the idle task");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	info.si_signo = si_signo;
@@ -141,8 +148,12 @@ static inline pmd_t *vmalloc_sync_one(pgd_t *pgd, unsigned long address)
 <<<<<<< HEAD
  * Handle a fault on the vmalloc area.
 =======
+<<<<<<< HEAD
+ * Handle a fault on the vmalloc area.
+=======
  * Handle a fault on the vmalloc or module mapping area
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline int vmalloc_fault(pgd_t *pgd, unsigned long address)
 {
@@ -216,6 +227,9 @@ static pgd_t *get_current_pgd(void)
  * Similarly, we can't use atomic ops here, since we may be handling a
  * fault caused by an atomic op access.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * If we find a migrating PTE while we're in an NMI context, and we're
  * at a PC that has a registered exception handler, we don't wait,
@@ -224,11 +238,14 @@ static pgd_t *get_current_pgd(void)
  */
 static int handle_migrating_pte(pgd_t *pgd, int fault_num,
 				unsigned long address, unsigned long pc,
+<<<<<<< HEAD
+=======
 =======
  */
 static int handle_migrating_pte(pgd_t *pgd, int fault_num,
 				unsigned long address,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				int is_kernel_mode, int write)
 {
 	pud_t *pud;
@@ -254,7 +271,12 @@ static int handle_migrating_pte(pgd_t *pgd, int fault_num,
 		if (in_nmi() && search_exception_tables(pc))
 			return 0;
 =======
+<<<<<<< HEAD
+		if (in_nmi() && search_exception_tables(pc))
+			return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wait_for_migration(pte);
 		return 1;
 	}
@@ -331,8 +353,12 @@ static int handle_page_fault(struct pt_regs *regs,
 <<<<<<< HEAD
 	if (handle_migrating_pte(pgd, fault_num, address, regs->pc,
 =======
+<<<<<<< HEAD
+	if (handle_migrating_pte(pgd, fault_num, address, regs->pc,
+=======
 	if (handle_migrating_pte(pgd, fault_num, address,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 is_kernel_mode, write))
 		return 1;
 
@@ -368,17 +394,23 @@ static int handle_page_fault(struct pt_regs *regs,
 	 * If we're trying to touch user-space addresses, we must
 	 * be either at PL0, or else with interrupts enabled in the
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * kernel, so either way we can re-enable interrupts here
 	 * unless we are doing atomic access to user space with
 	 * interrupts disabled.
 	 */
 	if (!(regs->flags & PT_FLAGS_DISABLE_IRQ))
 		local_irq_enable();
+<<<<<<< HEAD
+=======
 =======
 	 * kernel, so either way we can re-enable interrupts here.
 	 */
 	local_irq_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mm = tsk->mm;
 
@@ -558,8 +590,12 @@ no_context:
 <<<<<<< HEAD
 		      is_idle_task(tsk) ? "the idle task" : "init");
 =======
+<<<<<<< HEAD
+		      is_idle_task(tsk) ? "the idle task" : "init");
+=======
 		      tsk->pid ? "init" : "the idle task");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -713,8 +749,12 @@ struct intvec_state do_page_fault_ics(struct pt_regs *regs, int fault_num,
 <<<<<<< HEAD
 	if (handle_migrating_pte(pgd, fault_num, address, pc, 1, write))
 =======
+<<<<<<< HEAD
+	if (handle_migrating_pte(pgd, fault_num, address, pc, 1, write))
+=======
 	if (handle_migrating_pte(pgd, fault_num, address, 1, write))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return state;
 
 	/* Return zero so that we continue on with normal fault handling. */

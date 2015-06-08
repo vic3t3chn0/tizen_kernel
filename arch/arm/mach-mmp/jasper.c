@@ -16,8 +16,11 @@
 #include <linux/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/machine.h>
 #include <linux/regulator/max8649.h>
 #include <linux/mfd/max8925.h>
@@ -26,7 +29,11 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <mach/addr-map.h>
@@ -38,8 +45,12 @@
 <<<<<<< HEAD
 #define JASPER_NR_IRQS		(MMP_NR_IRQS + 48)
 =======
+<<<<<<< HEAD
+#define JASPER_NR_IRQS		(MMP_NR_IRQS + 48)
+=======
 #define JASPER_NR_IRQS		(IRQ_BOARD_START + 48)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static unsigned long jasper_pin_config[] __initdata = {
 	/* UART1 */
@@ -150,8 +161,12 @@ static struct max8925_platform_data jasper_max8925_info = {
 <<<<<<< HEAD
 	.irq_base		= MMP_NR_IRQS,
 =======
+<<<<<<< HEAD
+	.irq_base		= MMP_NR_IRQS,
+=======
 	.irq_base		= IRQ_BOARD_START,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info jasper_twsi1_info[] = {
@@ -172,8 +187,12 @@ static struct sdhci_pxa_platdata mmp2_sdh_platdata_mmc0 = {
 <<<<<<< HEAD
 	.clk_delay_cycles = 0x1f,
 =======
+<<<<<<< HEAD
+	.clk_delay_cycles = 0x1f,
+=======
 	.max_speed	= 25000000,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init jasper_init(void)
@@ -198,5 +217,9 @@ MACHINE_START(MARVELL_JASPER, "Jasper Development Platform")
 <<<<<<< HEAD
 	.restart	= mmp_restart,
 =======
+<<<<<<< HEAD
+	.restart	= mmp_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/etherdevice.h>
 =======
+<<<<<<< HEAD
+#include <linux/etherdevice.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/netpoll.h>
 #include <linux/ethtool.h>
 #include <linux/if_arp.h>
@@ -38,6 +42,9 @@
 static int port_cost(struct net_device *dev)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ethtool_cmd ecmd;
 
 	if (!__ethtool_get_settings(dev, &ecmd)) {
@@ -50,6 +57,8 @@ static int port_cost(struct net_device *dev)
 			return 19;
 		case SPEED_10:
 			return 100;
+<<<<<<< HEAD
+=======
 =======
 	if (dev->ethtool_ops && dev->ethtool_ops->get_settings) {
 		struct ethtool_cmd ecmd = { .cmd = ETHTOOL_GSET, };
@@ -66,6 +75,7 @@ static int port_cost(struct net_device *dev)
 				return 100;
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -262,8 +272,11 @@ int br_add_bridge(struct net *net, const char *name)
 	dev_net_set(dev, net);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dev->rtnl_link_ops = &br_link_ops;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	res = register_netdev(dev);
 	if (res)
@@ -321,17 +334,23 @@ int br_min_mtu(const struct net_bridge *br)
  * Recomputes features using slave's features
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 netdev_features_t br_features_recompute(struct net_bridge *br,
 	netdev_features_t features)
 {
 	struct net_bridge_port *p;
 	netdev_features_t mask;
+<<<<<<< HEAD
+=======
 =======
 u32 br_features_recompute(struct net_bridge *br, u32 features)
 {
 	struct net_bridge_port *p;
 	u32 mask;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (list_empty(&br->port_list))
 		return features;
@@ -360,8 +379,13 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 	    dev->type != ARPHRD_ETHER || dev->addr_len != ETH_ALEN ||
 	    !is_valid_ether_addr(dev->dev_addr))
 =======
+<<<<<<< HEAD
+	    dev->type != ARPHRD_ETHER || dev->addr_len != ETH_ALEN ||
+	    !is_valid_ether_addr(dev->dev_addr))
+=======
 	    dev->type != ARPHRD_ETHER || dev->addr_len != ETH_ALEN)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	/* No bridging of bridges */
@@ -391,11 +415,14 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 	if (err)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		goto err0;
 
 	err = br_fdb_insert(br, p, dev->dev_addr);
 	if (err)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err1;
 
 	err = br_sysfs_addif(p);
@@ -433,6 +460,9 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 
 	if (changed_addr)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		call_netdevice_notifiers(NETDEV_CHANGEADDR, br->dev);
 
 	dev_set_mtu(br->dev, br_min_mtu(br));
@@ -440,12 +470,15 @@ int br_add_if(struct net_bridge *br, struct net_device *dev)
 	if (br_fdb_insert(br, p, dev->dev_addr))
 		netdev_err(dev, "failed insert local address bridge forwarding table\n");
 
+<<<<<<< HEAD
+=======
 =======
 		call_netdevice_notifiers(NETDEV_CHANGEADDR, dev);
 
 	dev_set_mtu(br->dev, br_min_mtu(br));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kobject_uevent(&p->kobj, KOBJ_ADD);
 
 	return 0;
@@ -460,12 +493,18 @@ err2:
 	p = NULL; /* kobject_put frees */
 err1:
 =======
+<<<<<<< HEAD
+	kobject_put(&p->kobj);
+	p = NULL; /* kobject_put frees */
+err1:
+=======
 	br_fdb_delete_by_port(br, p, 1);
 err1:
 	kobject_put(&p->kobj);
 	p = NULL; /* kobject_put frees */
 err0:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev_set_promiscuity(dev, -1);
 put_back:
 	dev_put(dev);
@@ -480,7 +519,11 @@ int br_del_if(struct net_bridge *br, struct net_device *dev)
 <<<<<<< HEAD
 	bool changed_addr;
 =======
+<<<<<<< HEAD
+	bool changed_addr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	p = br_port_get_rtnl(dev);
 	if (!p || p->br != br)
@@ -490,17 +533,23 @@ int br_del_if(struct net_bridge *br, struct net_device *dev)
 
 	spin_lock_bh(&br->lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	changed_addr = br_stp_recalculate_bridge_id(br);
 	spin_unlock_bh(&br->lock);
 
 	if (changed_addr)
 		call_netdevice_notifiers(NETDEV_CHANGEADDR, br->dev);
 
+<<<<<<< HEAD
+=======
 =======
 	br_stp_recalculate_bridge_id(br);
 	spin_unlock_bh(&br->lock);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netdev_update_features(br->dev);
 
 	return 0;

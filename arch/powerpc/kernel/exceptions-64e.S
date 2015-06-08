@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 #include <asm/hw_irq.h>
 =======
+<<<<<<< HEAD
+#include <asm/hw_irq.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* XXX This will ultimately add space for a special exception save
  *     structure used to save things like SRR0/SRR1, SPRGs, MAS, etc...
@@ -82,6 +86,9 @@
 
 #define NORMAL_EXCEPTION_PROLOG(n, addition)				    \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	EXCEPTION_PROLOG(n, GEN, addition##_GEN(n))
 
 #define CRIT_EXCEPTION_PROLOG(n, addition)				    \
@@ -92,6 +99,8 @@
 
 #define MC_EXCEPTION_PROLOG(n, addition)				    \
 	EXCEPTION_PROLOG(n, MC, addition##_MC(n))
+<<<<<<< HEAD
+=======
 =======
 	EXCEPTION_PROLOG(n, GEN, addition##_GEN)
 
@@ -104,11 +113,15 @@
 #define MC_EXCEPTION_PROLOG(n, addition)				    \
 	EXCEPTION_PROLOG(n, MC, addition##_MC)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* Variants of the "addition" argument for the prolog
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PROLOG_ADDITION_NONE_GEN(n)
 #define PROLOG_ADDITION_NONE_CRIT(n)
 #define PROLOG_ADDITION_NONE_DBG(n)
@@ -139,6 +152,8 @@
 	std	r15,PACA_EXMC+EX_R15(r13)
 
 
+<<<<<<< HEAD
+=======
 =======
 #define PROLOG_ADDITION_NONE_GEN
 #define PROLOG_ADDITION_NONE_CRIT
@@ -170,6 +185,7 @@
 	std	r15,PACA_EXMC+EX_R15(r13)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Core exception code for all exceptions except TLB misses.
  * XXX: Needs to make SPRN_SPRG_GEN depend on exception type
  */
@@ -177,7 +193,11 @@
 <<<<<<< HEAD
 exc_##n##_common:							    \
 =======
+<<<<<<< HEAD
+exc_##n##_common:							    \
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	std	r0,GPR0(r1);		/* save r0 in stackframe */	    \
 	std	r2,GPR2(r1);		/* save r2 in stackframe */	    \
 	SAVE_4GPRS(3, r1);		/* save r3 - r6 in stackframe */    \
@@ -216,6 +236,9 @@ exc_##n##_common:							    \
 	ints;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Variants for the "ints" argument. This one does nothing when we want
  * to keep interrupts in their original state
  */
@@ -231,6 +254,8 @@ exc_##n##_common:							    \
 /* This is called by exceptions that used INTS_KEEP (that did not touch
  * irq indicators in the PACA). This will restore MSR:EE to it's previous
  * value
+<<<<<<< HEAD
+=======
 =======
 /* Variants for the "ints" argument */
 #define INTS_KEEP
@@ -247,6 +272,7 @@ exc_##n##_common:							    \
  * neither soft nor hard IRQ indicators in the PACA. This will restore MSR:EE
  * to it's previous value
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * XXX In the long run, we may want to open-code it in order to separate the
  *     load from the wrtee, thus limiting the latency caused by the dependency
@@ -307,8 +333,12 @@ exc_##n##_bad_stack:							    \
 <<<<<<< HEAD
 	EXCEPTION_COMMON(trapnum, PACA_EXGEN, INTS_DISABLE)		\
 =======
+<<<<<<< HEAD
+	EXCEPTION_COMMON(trapnum, PACA_EXGEN, INTS_DISABLE)		\
+=======
 	EXCEPTION_COMMON(trapnum, PACA_EXGEN, INTS_DISABLE_ALL)		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ack(r8);							\
 	CHECK_NAPPING();						\
 	addi	r3,r1,STACK_FRAME_OVERHEAD;				\
@@ -362,8 +392,12 @@ interrupt_end_book3e:
 <<<<<<< HEAD
 //	EXCEPTION_COMMON(0x100, PACA_EXCRIT, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+//	EXCEPTION_COMMON(0x100, PACA_EXCRIT, INTS_DISABLE)
+=======
 //	EXCEPTION_COMMON(0x100, PACA_EXCRIT, INTS_DISABLE_ALL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 //	bl	special_reg_save_crit
 //	CHECK_NAPPING();
 //	addi	r3,r1,STACK_FRAME_OVERHEAD
@@ -377,8 +411,12 @@ interrupt_end_book3e:
 <<<<<<< HEAD
 //	EXCEPTION_COMMON(0x200, PACA_EXMC, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+//	EXCEPTION_COMMON(0x200, PACA_EXMC, INTS_DISABLE)
+=======
 //	EXCEPTION_COMMON(0x200, PACA_EXMC, INTS_DISABLE_ALL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 //	bl	special_reg_save_mc
 //	addi	r3,r1,STACK_FRAME_OVERHEAD
 //	CHECK_NAPPING();
@@ -394,8 +432,12 @@ interrupt_end_book3e:
 <<<<<<< HEAD
 	EXCEPTION_COMMON(0x300, PACA_EXGEN, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+	EXCEPTION_COMMON(0x300, PACA_EXGEN, INTS_DISABLE)
+=======
 	EXCEPTION_COMMON(0x300, PACA_EXGEN, INTS_KEEP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	storage_fault_common
 
 /* Instruction Storage Interrupt */
@@ -406,8 +448,12 @@ interrupt_end_book3e:
 <<<<<<< HEAD
 	EXCEPTION_COMMON(0x400, PACA_EXGEN, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+	EXCEPTION_COMMON(0x400, PACA_EXGEN, INTS_DISABLE)
+=======
 	EXCEPTION_COMMON(0x400, PACA_EXGEN, INTS_KEEP)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	b	storage_fault_common
 
 /* External Input Interrupt */
@@ -428,16 +474,23 @@ interrupt_end_book3e:
 <<<<<<< HEAD
 	EXCEPTION_COMMON(0x700, PACA_EXGEN, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+	EXCEPTION_COMMON(0x700, PACA_EXGEN, INTS_DISABLE)
+=======
 	EXCEPTION_COMMON(0x700, PACA_EXGEN, INTS_DISABLE_SOFT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	std	r14,_DSISR(r1)
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	ld	r14,PACA_EXGEN+EX_R14(r13)
 	bl	.save_nvgprs
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INTS_RESTORE_HARD
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.program_check_exception
 	b	.ret_from_except
 
@@ -447,6 +500,9 @@ interrupt_end_book3e:
 	/* we can probably do a shorter exception entry for that one... */
 	EXCEPTION_COMMON(0x800, PACA_EXGEN, INTS_KEEP)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r12,_MSR(r1)
 	andi.	r0,r12,MSR_PR;
 	beq-	1f
@@ -457,6 +513,8 @@ interrupt_end_book3e:
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	bl	.kernel_fp_unavailable_exception
 	b	.ret_from_except
+<<<<<<< HEAD
+=======
 =======
 	bne	1f			/* if from user, just load it up */
 	bl	.save_nvgprs
@@ -468,6 +526,7 @@ interrupt_end_book3e:
 	bl	.load_up_fpu
 	b	fast_exception_return
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Decrementer Interrupt */
 	MASKABLE_EXCEPTION(0x900, decrementer, .timer_interrupt, ACK_DEC)
@@ -481,8 +540,12 @@ interrupt_end_book3e:
 <<<<<<< HEAD
 //	EXCEPTION_COMMON(0x9f0, PACA_EXCRIT, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+//	EXCEPTION_COMMON(0x9f0, PACA_EXCRIT, INTS_DISABLE)
+=======
 //	EXCEPTION_COMMON(0x9f0, PACA_EXCRIT, INTS_DISABLE_ALL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 //	bl	special_reg_save_crit
 //	CHECK_NAPPING();
 //	addi	r3,r1,STACK_FRAME_OVERHEAD
@@ -506,11 +569,17 @@ interrupt_end_book3e:
 	bl	.save_nvgprs
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 =======
+<<<<<<< HEAD
+	EXCEPTION_COMMON(0xf20, PACA_EXGEN, INTS_DISABLE)
+	bl	.save_nvgprs
+	addi	r3,r1,STACK_FRAME_OVERHEAD
+=======
 	EXCEPTION_COMMON(0xf20, PACA_EXGEN, INTS_KEEP)
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	bl	.save_nvgprs
 	INTS_RESTORE_HARD
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.unknown_exception
 	b	.ret_from_except
 
@@ -569,8 +638,12 @@ interrupt_end_book3e:
 <<<<<<< HEAD
 	EXCEPTION_COMMON(0xd00, PACA_EXCRIT, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+	EXCEPTION_COMMON(0xd00, PACA_EXCRIT, INTS_DISABLE)
+=======
 	EXCEPTION_COMMON(0xd00, PACA_EXCRIT, INTS_DISABLE_ALL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	std	r14,_DSISR(r1)
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	mr	r4,r14
@@ -588,8 +661,12 @@ kernel_dbg_exc:
 <<<<<<< HEAD
 	DBG_EXCEPTION_PROLOG(0xd08, PROLOG_ADDITION_2REGS)
 =======
+<<<<<<< HEAD
+	DBG_EXCEPTION_PROLOG(0xd08, PROLOG_ADDITION_2REGS)
+=======
 	DBG_EXCEPTION_PROLOG(0xd00, PROLOG_ADDITION_2REGS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If there is a single step or branch-taken exception in an
@@ -642,8 +719,12 @@ kernel_dbg_exc:
 <<<<<<< HEAD
 	EXCEPTION_COMMON(0xd08, PACA_EXDBG, INTS_DISABLE)
 =======
+<<<<<<< HEAD
+	EXCEPTION_COMMON(0xd08, PACA_EXDBG, INTS_DISABLE)
+=======
 	EXCEPTION_COMMON(0xd00, PACA_EXDBG, INTS_DISABLE_ALL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	std	r14,_DSISR(r1)
 	addi	r3,r1,STACK_FRAME_OVERHEAD
 	mr	r4,r14
@@ -654,6 +735,9 @@ kernel_dbg_exc:
 	b	.ret_from_except
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	START_EXCEPTION(perfmon);
 	NORMAL_EXCEPTION_PROLOG(0x260, PROLOG_ADDITION_NONE)
 	EXCEPTION_COMMON(0x260, PACA_EXGEN, INTS_DISABLE)
@@ -668,6 +752,8 @@ kernel_dbg_exc:
 	START_EXCEPTION(doorbell_crit);
 	CRIT_EXCEPTION_PROLOG(0x2a0, PROLOG_ADDITION_NONE)
 //	EXCEPTION_COMMON(0x2a0, PACA_EXCRIT, INTS_DISABLE)
+<<<<<<< HEAD
+=======
 =======
 	MASKABLE_EXCEPTION(0x260, perfmon, .performance_monitor_exception, ACK_NONE)
 
@@ -679,6 +765,7 @@ kernel_dbg_exc:
 	CRIT_EXCEPTION_PROLOG(0x2080, PROLOG_ADDITION_NONE)
 //	EXCEPTION_COMMON(0x2080, PACA_EXCRIT, INTS_DISABLE_ALL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 //	bl	special_reg_save_crit
 //	CHECK_NAPPING();
 //	addi	r3,r1,STACK_FRAME_OVERHEAD
@@ -687,6 +774,9 @@ kernel_dbg_exc:
 	b	.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Guest Doorbell */
 	MASKABLE_EXCEPTION(0x2c0, guest_doorbell, .unknown_exception, ACK_NONE)
 
@@ -755,6 +845,8 @@ masked_interrupt_book3e_full_mask:
 	lbz	r10,PACAIRQHAPPENED(r13)
 	or	r10,r10,r11
 	stb	r10,PACAIRQHAPPENED(r13)
+<<<<<<< HEAD
+=======
 =======
 	MASKABLE_EXCEPTION(0x2c0, guest_doorbell, .unknown_exception, ACK_NONE)
 	MASKABLE_EXCEPTION(0x2e0, guest_doorbell_crit, .unknown_exception, ACK_NONE)
@@ -770,6 +862,7 @@ masked_interrupt_book3e:
 	mtcr	r10
 	stb	r11,PACAHARDIRQEN(r13)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mfspr	r10,SPRN_SRR1
 	rldicl	r11,r10,48,1		/* clear MSR_EE */
 	rotldi	r10,r11,16
@@ -777,13 +870,20 @@ masked_interrupt_book3e:
 <<<<<<< HEAD
 1:	ld	r10,PACA_EXGEN+EX_R10(r13);
 =======
+<<<<<<< HEAD
+1:	ld	r10,PACA_EXGEN+EX_R10(r13);
+=======
 	ld	r10,PACA_EXGEN+EX_R10(r13);	/* restore registers */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ld	r11,PACA_EXGEN+EX_R11(r13);
 	mfspr	r13,SPRN_SPRG_GEN_SCRATCH;
 	rfi
 	b	.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Called from arch_local_irq_enable when an interrupt needs
  * to be resent. r3 contains either 0x500,0x900,0x260 or 0x280
@@ -815,8 +915,11 @@ _GLOBAL(__replay_interrupt)
 	beq	exc_0x280_common
 	blr
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * This is called from 0x300 and 0x400 handlers after the prologs with
@@ -833,8 +936,11 @@ storage_fault_common:
 	ld	r15,PACA_EXGEN+EX_R15(r13)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INTS_RESTORE_HARD
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bl	.do_page_fault
 	cmpdi	r3,0
 	bne-	1f
@@ -927,7 +1033,12 @@ BAD_STACK_TRAMPOLINE(0x260)
 BAD_STACK_TRAMPOLINE(0x280)
 BAD_STACK_TRAMPOLINE(0x2a0)
 =======
+<<<<<<< HEAD
+BAD_STACK_TRAMPOLINE(0x280)
+BAD_STACK_TRAMPOLINE(0x2a0)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 BAD_STACK_TRAMPOLINE(0x2c0)
 BAD_STACK_TRAMPOLINE(0x2e0)
 BAD_STACK_TRAMPOLINE(0x300)
@@ -946,10 +1057,15 @@ BAD_STACK_TRAMPOLINE(0xb00)
 BAD_STACK_TRAMPOLINE(0xc00)
 BAD_STACK_TRAMPOLINE(0xd00)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 BAD_STACK_TRAMPOLINE(0xd08)
 BAD_STACK_TRAMPOLINE(0xe00)
 BAD_STACK_TRAMPOLINE(0xf00)
 BAD_STACK_TRAMPOLINE(0xf20)
+<<<<<<< HEAD
+=======
 =======
 BAD_STACK_TRAMPOLINE(0xe00)
 BAD_STACK_TRAMPOLINE(0xf00)
@@ -957,6 +1073,7 @@ BAD_STACK_TRAMPOLINE(0xf20)
 BAD_STACK_TRAMPOLINE(0x2070)
 BAD_STACK_TRAMPOLINE(0x2080)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.globl	bad_stack_book3e
 bad_stack_book3e:

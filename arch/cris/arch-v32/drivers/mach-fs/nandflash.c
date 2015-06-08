@@ -157,8 +157,12 @@ struct mtd_info *__init crisv32_nand_flash_probe(void)
 <<<<<<< HEAD
 	/* this->bbt_options = NAND_BBT_USE_FLASH; */
 =======
+<<<<<<< HEAD
+	/* this->bbt_options = NAND_BBT_USE_FLASH; */
+=======
 	/* this->options = NAND_USE_FLASH_BBT; */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Scan to find existence of the device */
 	if (nand_scan(crisv32_mtd, 1)) {

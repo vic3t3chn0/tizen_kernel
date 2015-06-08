@@ -20,12 +20,17 @@
 #include <linux/kernel.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct voltagedomain;
 
 /**
  * struct omap_vc_common - per-VC register/bitfield data
  * @cmd_on_mask: ON bitmask in PRM_VC_CMD_VAL* register
  * @valid: VALID bitmask in PRM_VC_BYPASS_VAL register
+<<<<<<< HEAD
+=======
 =======
 /**
  * struct omap_vc_common_data - per-VC register/bitfield data
@@ -34,6 +39,7 @@ struct voltagedomain;
  * @smps_sa_reg: Offset of PRM_VC_SMPS_SA reg from PRM start
  * @smps_volra_reg: Offset of PRM_VC_SMPS_VOL_RA reg from PRM start
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @bypass_val_reg: Offset of PRM_VC_BYPASS_VAL reg from PRM start
  * @data_shift: DATA field shift in PRM_VC_BYPASS_VAL register
  * @slaveaddr_shift: SLAVEADDR field shift in PRM_VC_BYPASS_VAL register
@@ -47,11 +53,22 @@ struct voltagedomain;
  * @i2c_cfg_hsen_mask: high-speed mode bit field mask in I2C config register
  * @i2c_mcode_mask: MCODE field mask for I2C config register
 =======
+<<<<<<< HEAD
+ * @i2c_cfg_reg: I2C configuration register offset
+ * @i2c_cfg_hsen_mask: high-speed mode bit field mask in I2C config register
+ * @i2c_mcode_mask: MCODE field mask for I2C config register
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * XXX One of cmd_on_mask and cmd_on_shift are not needed
  * XXX VALID should probably be a shift, not a mask
  */
+<<<<<<< HEAD
+struct omap_vc_common {
+	u32 cmd_on_mask;
+	u32 valid;
+=======
 <<<<<<< HEAD
 struct omap_vc_common {
 	u32 cmd_on_mask;
@@ -63,6 +80,7 @@ struct omap_vc_common_data {
 	u8 smps_sa_reg;
 	u8 smps_volra_reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 bypass_val_reg;
 	u8 data_shift;
 	u8 slaveaddr_shift;
@@ -72,6 +90,9 @@ struct omap_vc_common_data {
 	u8 cmd_ret_shift;
 	u8 cmd_off_shift;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 i2c_cfg_reg;
 	u8 i2c_cfg_hsen_mask;
 	u8 i2c_mcode_mask;
@@ -141,6 +162,8 @@ void omap_vc_post_scale(struct voltagedomain *voltdm,
 			u8 target_vsel, u8 current_vsel);
 int omap_vc_bypass_scale(struct voltagedomain *voltdm,
 			 unsigned long target_volt);
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -171,6 +194,7 @@ extern struct omap_vc_instance_data omap4_vc_mpu_data;
 extern struct omap_vc_instance_data omap4_vc_iva_data;
 extern struct omap_vc_instance_data omap4_vc_core_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

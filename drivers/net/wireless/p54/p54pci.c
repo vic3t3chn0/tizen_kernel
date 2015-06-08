@@ -20,6 +20,13 @@
 #include <linux/etherdevice.h>
 #include <linux/delay.h>
 #include <linux/completion.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/mac80211.h>
 
 #include "p54.h"
@@ -623,6 +630,44 @@ static void __devexit p54p_remove(struct pci_dev *pdev)
 }
 
 #ifdef CONFIG_PM
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int p54p_suspend(struct device *device)
+{
+	struct pci_dev *pdev = to_pci_dev(device);
+
+	pci_save_state(pdev);
+	pci_set_power_state(pdev, PCI_D3hot);
+	pci_disable_device(pdev);
+	return 0;
+}
+
+static int p54p_resume(struct device *device)
+{
+	struct pci_dev *pdev = to_pci_dev(device);
+	int err;
+
+	err = pci_reenable_device(pdev);
+	if (err)
+		return err;
+	return pci_set_power_state(pdev, PCI_D0);
+}
+
+static const struct dev_pm_ops p54pci_pm_ops = {
+	.suspend = p54p_suspend,
+	.resume = p54p_resume,
+	.freeze = p54p_suspend,
+	.thaw = p54p_resume,
+	.poweroff = p54p_suspend,
+	.restore = p54p_resume,
+};
+
+#define P54P_PM_OPS (&p54pci_pm_ops)
+#else
+#define P54P_PM_OPS (NULL)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int p54p_suspend(struct pci_dev *pdev, pm_message_t state)
 {
 	struct ieee80211_hw *dev = pci_get_drvdata(pdev);
@@ -653,6 +698,10 @@ static int p54p_resume(struct pci_dev *pdev)
 
 	return 0;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_PM */
 
 static struct pci_driver p54p_driver = {
@@ -660,10 +709,20 @@ static struct pci_driver p54p_driver = {
 	.id_table	= p54p_table,
 	.probe		= p54p_probe,
 	.remove		= __devexit_p(p54p_remove),
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.driver.pm	= P54P_PM_OPS,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 	.suspend	= p54p_suspend,
 	.resume		= p54p_resume,
 #endif /* CONFIG_PM */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init p54p_init(void)

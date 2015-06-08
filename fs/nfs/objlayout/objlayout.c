@@ -42,7 +42,13 @@
 #include <linux/moduleparam.h>
 #include <linux/ratelimit.h>
 =======
+<<<<<<< HEAD
+#include <linux/kmod.h>
+#include <linux/moduleparam.h>
+#include <linux/ratelimit.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <scsi/osd_initiator.h>
 #include "objlayout.h"
 
@@ -163,12 +169,17 @@ last_byte_offset(u64 start, u64 len)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void _fix_verify_io_params(struct pnfs_layout_segment *lseg,
 			   struct page ***p_pages, unsigned *p_pgbase,
 			   u64 offset, unsigned long count)
 {
 	u64 lseg_end_offset;
 
+<<<<<<< HEAD
+=======
 =======
 static struct objlayout_io_state *
 objlayout_alloc_io_state(struct pnfs_layout_hdr *pnfs_layout_type,
@@ -188,11 +199,15 @@ objlayout_alloc_io_state(struct pnfs_layout_hdr *pnfs_layout_type,
 		return NULL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(offset < lseg->pls_range.offset);
 	lseg_end_offset = end_offset(lseg->pls_range.offset,
 				     lseg->pls_range.length);
 	BUG_ON(offset >= lseg_end_offset);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(offset + count > lseg_end_offset);
 
 	if (*p_pgbase > PAGE_SIZE) {
@@ -200,6 +215,8 @@ objlayout_alloc_io_state(struct pnfs_layout_hdr *pnfs_layout_type,
 		*p_pages += *p_pgbase >> PAGE_SHIFT;
 		*p_pgbase &= ~PAGE_MASK;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (offset + count > lseg_end_offset) {
 		count = lseg->pls_range.length -
@@ -234,6 +251,7 @@ objlayout_free_io_state(struct objlayout_io_state *state)
 
 	objio_free_io_state(state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -241,6 +259,9 @@ objlayout_free_io_state(struct objlayout_io_state *state)
  */
 static void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 objlayout_iodone(struct objlayout_io_res *oir)
 {
 	if (likely(oir->status >= 0)) {
@@ -251,6 +272,8 @@ objlayout_iodone(struct objlayout_io_res *oir)
 		spin_lock(&objlay->lock);
 		objlay->delta_space_valid = OBJ_DSU_INVALID;
 		list_add(&objlay->err_list, &oir->err_list);
+<<<<<<< HEAD
+=======
 =======
 objlayout_iodone(struct objlayout_io_state *state)
 {
@@ -265,6 +288,7 @@ objlayout_iodone(struct objlayout_io_state *state)
 		objlay->delta_space_valid = OBJ_DSU_INVALID;
 		list_add(&objlay->err_list, &state->err_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&objlay->lock);
 	}
 }
@@ -277,6 +301,9 @@ objlayout_iodone(struct objlayout_io_state *state)
  */
 void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 objlayout_io_set_result(struct objlayout_io_res *oir, unsigned index,
 			struct pnfs_osd_objid *pooid, int osd_error,
 			u64 offset, u64 length, bool is_write)
@@ -284,6 +311,8 @@ objlayout_io_set_result(struct objlayout_io_res *oir, unsigned index,
 	struct pnfs_osd_ioerr *ioerr = &oir->ioerrs[index];
 
 	BUG_ON(index >= oir->num_comps);
+<<<<<<< HEAD
+=======
 =======
 objlayout_io_set_result(struct objlayout_io_state *state, unsigned index,
 			struct pnfs_osd_objid *pooid, int osd_error,
@@ -293,6 +322,7 @@ objlayout_io_set_result(struct objlayout_io_state *state, unsigned index,
 
 	BUG_ON(index >= state->num_comps);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (osd_error) {
 		ioerr->oer_component = *pooid;
 		ioerr->oer_comp_offset = offset;
@@ -334,6 +364,9 @@ static void _rpc_read_complete(struct work_struct *work)
 
 void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 objlayout_read_done(struct objlayout_io_res *oir, ssize_t status, bool sync)
 {
 	struct nfs_read_data *rdata = oir->rpcdata;
@@ -348,6 +381,8 @@ objlayout_read_done(struct objlayout_io_res *oir, ssize_t status, bool sync)
 
 	dprintk("%s: Return status=%zd eof=%d sync=%d\n", __func__,
 		status, rdata->res.eof, sync);
+<<<<<<< HEAD
+=======
 =======
 objlayout_read_done(struct objlayout_io_state *state, ssize_t status, bool sync)
 {
@@ -367,6 +402,7 @@ objlayout_read_done(struct objlayout_io_state *state, ssize_t status, bool sync)
 	objlayout_iodone(state);
 	/* must not use state after this point */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sync)
 		pnfs_ld_read_done(rdata);
@@ -385,6 +421,9 @@ objlayout_read_pagelist(struct nfs_read_data *rdata)
 	loff_t offset = rdata->args.offset;
 	size_t count = rdata->args.count;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	loff_t eof;
 
@@ -395,6 +434,8 @@ objlayout_read_pagelist(struct nfs_read_data *rdata)
 			rdata->res.count = 0;
 			rdata->res.eof = 1;
 			/*FIXME: do we need to call pnfs_ld_read_done() */
+<<<<<<< HEAD
+=======
 =======
 	struct objlayout_io_state *state;
 	ssize_t status = 0;
@@ -410,12 +451,16 @@ objlayout_read_pagelist(struct nfs_read_data *rdata)
 			rdata->res.count = 0;
 			rdata->res.eof = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto out;
 		}
 		count = eof - offset;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rdata->res.eof = (offset + count) >= eof;
 	_fix_verify_io_params(rdata->lseg, &rdata->args.pages,
 			      &rdata->args.pgbase,
@@ -431,6 +476,8 @@ objlayout_read_pagelist(struct nfs_read_data *rdata)
 		dprintk("%s: Returned Error %d\n", __func__, err);
 		return PNFS_NOT_ATTEMPTED;
 	}
+<<<<<<< HEAD
+=======
 =======
 	state = objlayout_alloc_io_state(NFS_I(rdata->inode)->layout,
 					 rdata->args.pages, rdata->args.pgbase,
@@ -449,6 +496,7 @@ objlayout_read_pagelist(struct nfs_read_data *rdata)
 	dprintk("%s: Return status %Zd\n", __func__, status);
 	rdata->pnfs_error = status;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return PNFS_ATTEMPTED;
 }
 
@@ -470,6 +518,9 @@ static void _rpc_write_complete(struct work_struct *work)
 
 void
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 objlayout_write_done(struct objlayout_io_res *oir, ssize_t status, bool sync)
 {
 	struct nfs_write_data *wdata = oir->rpcdata;
@@ -486,6 +537,8 @@ objlayout_write_done(struct objlayout_io_res *oir, ssize_t status, bool sync)
 
 	dprintk("%s: Return status %zd committed %d sync=%d\n", __func__,
 		status, wdata->verf.committed, sync);
+<<<<<<< HEAD
+=======
 =======
 objlayout_write_done(struct objlayout_io_state *state, ssize_t status,
 		     bool sync)
@@ -510,6 +563,7 @@ objlayout_write_done(struct objlayout_io_state *state, ssize_t status,
 	objlayout_iodone(state);
 	/* must not use state after this point */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (sync)
 		pnfs_ld_write_done(wdata);
@@ -527,6 +581,9 @@ objlayout_write_pagelist(struct nfs_write_data *wdata,
 			 int how)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	_fix_verify_io_params(wdata->lseg, &wdata->args.pages,
@@ -539,6 +596,8 @@ objlayout_write_pagelist(struct nfs_write_data *wdata,
 		dprintk("%s: Returned Error %d\n", __func__, err);
 		return PNFS_NOT_ATTEMPTED;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct objlayout_io_state *state;
 	ssize_t status;
@@ -565,6 +624,7 @@ objlayout_write_pagelist(struct nfs_write_data *wdata,
 	dprintk("%s: Return status %Zd\n", __func__, status);
 	wdata->pnfs_error = status;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return PNFS_ATTEMPTED;
 }
 
@@ -672,6 +732,9 @@ static void
 encode_accumulated_error(struct objlayout *objlay, __be32 *p)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct objlayout_io_res *oir, *tmp;
 	struct pnfs_osd_ioerr accumulated_err = {.oer_errno = 0};
 
@@ -680,6 +743,8 @@ encode_accumulated_error(struct objlayout *objlay, __be32 *p)
 
 		for (i = 0; i < oir->num_comps; i++) {
 			struct pnfs_osd_ioerr *ioerr = &oir->ioerrs[i];
+<<<<<<< HEAD
+=======
 =======
 	struct objlayout_io_state *state, *tmp;
 	struct pnfs_osd_ioerr accumulated_err = {.oer_errno = 0};
@@ -690,6 +755,7 @@ encode_accumulated_error(struct objlayout *objlay, __be32 *p)
 		for (i = 0; i < state->num_comps; i++) {
 			struct pnfs_osd_ioerr *ioerr = &state->ioerrs[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (!ioerr->oer_errno)
 				continue;
@@ -699,10 +765,16 @@ encode_accumulated_error(struct objlayout *objlay, __be32 *p)
 				"is_write=%d dev(%llx:%llx) par=0x%llx "
 				"obj=0x%llx offset=0x%llx length=0x%llx\n",
 =======
+<<<<<<< HEAD
+			printk(KERN_ERR "NFS: %s: err[%d]: errno=%d "
+				"is_write=%d dev(%llx:%llx) par=0x%llx "
+				"obj=0x%llx offset=0x%llx length=0x%llx\n",
+=======
 			printk(KERN_ERR "%s: err[%d]: errno=%d is_write=%d "
 				"dev(%llx:%llx) par=0x%llx obj=0x%llx "
 				"offset=0x%llx length=0x%llx\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				__func__, i, ioerr->oer_errno,
 				ioerr->oer_iswrite,
 				_DEVID_LO(&ioerr->oer_component.oid_device_id),
@@ -718,9 +790,14 @@ encode_accumulated_error(struct objlayout *objlay, __be32 *p)
 		list_del(&oir->err_list);
 		objio_free_result(oir);
 =======
+<<<<<<< HEAD
+		list_del(&oir->err_list);
+		objio_free_result(oir);
+=======
 		list_del(&state->err_list);
 		objlayout_free_io_state(state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	pnfs_osd_xdr_encode_ioerr(p, &accumulated_err);
@@ -735,8 +812,12 @@ objlayout_encode_layoutreturn(struct pnfs_layout_hdr *pnfslay,
 <<<<<<< HEAD
 	struct objlayout_io_res *oir, *tmp;
 =======
+<<<<<<< HEAD
+	struct objlayout_io_res *oir, *tmp;
+=======
 	struct objlayout_io_state *state, *tmp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be32 *start;
 
 	dprintk("%s: Begin\n", __func__);
@@ -748,8 +829,12 @@ objlayout_encode_layoutreturn(struct pnfs_layout_hdr *pnfslay,
 <<<<<<< HEAD
 	list_for_each_entry_safe(oir, tmp, &objlay->err_list, err_list) {
 =======
+<<<<<<< HEAD
+	list_for_each_entry_safe(oir, tmp, &objlay->err_list, err_list) {
+=======
 	list_for_each_entry_safe(state, tmp, &objlay->err_list, err_list) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__be32 *last_xdr = NULL, *p;
 		unsigned i;
 		int res = 0;
@@ -758,9 +843,14 @@ objlayout_encode_layoutreturn(struct pnfs_layout_hdr *pnfslay,
 		for (i = 0; i < oir->num_comps; i++) {
 			struct pnfs_osd_ioerr *ioerr = &oir->ioerrs[i];
 =======
+<<<<<<< HEAD
+		for (i = 0; i < oir->num_comps; i++) {
+			struct pnfs_osd_ioerr *ioerr = &oir->ioerrs[i];
+=======
 		for (i = 0; i < state->num_comps; i++) {
 			struct pnfs_osd_ioerr *ioerr = &state->ioerrs[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (!ioerr->oer_errno)
 				continue;
@@ -787,8 +877,12 @@ objlayout_encode_layoutreturn(struct pnfs_layout_hdr *pnfslay,
 <<<<<<< HEAD
 			pnfs_osd_xdr_encode_ioerr(p, &oir->ioerrs[i]);
 =======
+<<<<<<< HEAD
+			pnfs_osd_xdr_encode_ioerr(p, &oir->ioerrs[i]);
+=======
 			pnfs_osd_xdr_encode_ioerr(p, &state->ioerrs[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		/* TODO: use xdr_write_pages */
@@ -808,9 +902,14 @@ objlayout_encode_layoutreturn(struct pnfs_layout_hdr *pnfslay,
 		list_del(&oir->err_list);
 		objio_free_result(oir);
 =======
+<<<<<<< HEAD
+		list_del(&oir->err_list);
+		objio_free_result(oir);
+=======
 		list_del(&state->err_list);
 		objlayout_free_io_state(state);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 loop_done:
 	spin_unlock(&objlay->lock);
@@ -840,8 +939,11 @@ int objlayout_get_deviceinfo(struct pnfs_layout_hdr *pnfslay,
 	struct pnfs_device pd;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct super_block *sb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page *page, **pages;
 	u32 *p;
 	int err;
@@ -862,8 +964,11 @@ int objlayout_get_deviceinfo(struct pnfs_layout_hdr *pnfslay,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	sb = pnfslay->plh_inode->i_sb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = nfs4_proc_getdeviceinfo(NFS_SERVER(pnfslay->plh_inode), &pd);
 	dprintk("%s nfs_getdeviceinfo returned %d\n", __func__, err);
 	if (err)
@@ -895,6 +1000,9 @@ void objlayout_put_deviceinfo(struct pnfs_osd_deviceaddr *deviceaddr)
 	kfree(odi);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	OBJLAYOUT_MAX_URI_LEN = 256, OBJLAYOUT_MAX_OSDNAME_LEN = 64,
@@ -1026,5 +1134,8 @@ int objlayout_autologin(struct pnfs_osd_deviceaddr *deviceaddr)
 
 	return rc;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

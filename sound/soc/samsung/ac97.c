@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  *	Author: Jaswinder Singh <jassisinghbrar@gmail.com>
 =======
+<<<<<<< HEAD
+ *	Author: Jaswinder Singh <jassisinghbrar@gmail.com>
+=======
  * 	Author: Jaswinder Singh <jassi.brar@samsung.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * 	Credits: Graeme Gregory, Sean Choi
  *
  * This program is free software; you can redistribute it and/or modify
@@ -22,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <sound/soc.h>
 
@@ -280,13 +288,19 @@ static int s3c_ac97_trigger(struct snd_pcm_substream *substream, int cmd,
 	writel(ac_glbctrl, s3c_ac97.regs + S3C_AC97_GLBCTRL);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dma_data->ops)
 		dma_data->ops = samsung_dma_get_ops();
 
 	dma_data->ops->started(dma_data->channel);
+<<<<<<< HEAD
+=======
 =======
 	s3c2410_dma_ctrl(dma_data->channel, S3C2410_DMAOP_STARTED);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -333,13 +347,19 @@ static int s3c_ac97_mic_trigger(struct snd_pcm_substream *substream,
 	writel(ac_glbctrl, s3c_ac97.regs + S3C_AC97_GLBCTRL);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!dma_data->ops)
 		dma_data->ops = samsung_dma_get_ops();
 
 	dma_data->ops->started(dma_data->channel);
+<<<<<<< HEAD
+=======
 =======
 	s3c2410_dma_ctrl(dma_data->channel, S3C2410_DMAOP_STARTED);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -347,8 +367,12 @@ static int s3c_ac97_mic_trigger(struct snd_pcm_substream *substream,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops s3c_ac97_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops s3c_ac97_dai_ops = {
+=======
 static struct snd_soc_dai_ops s3c_ac97_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= s3c_ac97_hw_params,
 	.trigger	= s3c_ac97_trigger,
 };
@@ -356,8 +380,12 @@ static struct snd_soc_dai_ops s3c_ac97_dai_ops = {
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops s3c_ac97_mic_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops s3c_ac97_mic_dai_ops = {
+=======
 static struct snd_soc_dai_ops s3c_ac97_mic_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= s3c_ac97_hw_mic_params,
 	.trigger	= s3c_ac97_mic_trigger,
 };
@@ -465,8 +493,12 @@ static __devinit int s3c_ac97_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 		ret = -ENODEV;
 =======
+<<<<<<< HEAD
+		ret = -ENODEV;
+=======
 		ret = PTR_ERR(s3c_ac97.ac97_clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto err2;
 	}
 	clk_enable(s3c_ac97.ac97_clk);
@@ -481,8 +513,12 @@ static __devinit int s3c_ac97_probe(struct platform_device *pdev)
 <<<<<<< HEAD
 					0, "AC97", NULL);
 =======
+<<<<<<< HEAD
+					0, "AC97", NULL);
+=======
 					IRQF_DISABLED, "AC97", NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		dev_err(&pdev->dev, "ac97: interrupt request failed.\n");
 		goto err4;
@@ -536,14 +572,23 @@ static struct platform_driver s3c_ac97_driver = {
 <<<<<<< HEAD
 	.remove = __devexit_p(s3c_ac97_remove),
 =======
+<<<<<<< HEAD
+	.remove = __devexit_p(s3c_ac97_remove),
+=======
 	.remove = s3c_ac97_remove,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver = {
 		.name = "samsung-ac97",
 		.owner = THIS_MODULE,
 	},
 };
 
+<<<<<<< HEAD
+module_platform_driver(s3c_ac97_driver);
+
+MODULE_AUTHOR("Jaswinder Singh, <jassisinghbrar@gmail.com>");
+=======
 <<<<<<< HEAD
 module_platform_driver(s3c_ac97_driver);
 
@@ -563,6 +608,7 @@ module_exit(s3c_ac97_exit);
 
 MODULE_AUTHOR("Jaswinder Singh, <jassi.brar@samsung.com>");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_DESCRIPTION("AC97 driver for the Samsung SoC");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:samsung-ac97");

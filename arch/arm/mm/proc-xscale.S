@@ -145,7 +145,11 @@ ENTRY(cpu_xscale_proc_fin)
 <<<<<<< HEAD
 	.pushsection	.idmap.text, "ax"
 =======
+<<<<<<< HEAD
+	.pushsection	.idmap.text, "ax"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(cpu_xscale_reset)
 	mov	r1, #PSR_F_BIT|PSR_I_BIT|SVC_MODE
 	msr	cpsr_c, r1			@ reset CPSR
@@ -168,7 +172,12 @@ ENTRY(cpu_xscale_reset)
 ENDPROC(cpu_xscale_reset)
 	.popsection
 =======
+<<<<<<< HEAD
+ENDPROC(cpu_xscale_reset)
+	.popsection
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * cpu_xscale_do_idle()
@@ -421,7 +430,13 @@ ENDPROC(xscale_dma_unmap_area)
 	.equ	xscale_flush_kern_cache_louis, xscale_flush_kern_cache_all
 
 =======
+<<<<<<< HEAD
+	.globl	xscale_flush_kern_cache_louis
+	.equ	xscale_flush_kern_cache_louis, xscale_flush_kern_cache_all
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	@ define struct cpu_cache_fns (see <asm/cacheflush.h> and proc-macros.S)
 	define_cache_functions xscale
 
@@ -536,21 +551,30 @@ ENTRY(cpu_xscale_set_pte_ext)
 
 .globl	cpu_xscale_suspend_size
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 .equ	cpu_xscale_suspend_size, 4 * 6
 #ifdef CONFIG_PM_SLEEP
 ENTRY(cpu_xscale_do_suspend)
 	stmfd	sp!, {r4 - r9, lr}
+<<<<<<< HEAD
+=======
 =======
 .equ	cpu_xscale_suspend_size, 4 * 7
 #ifdef CONFIG_PM_SLEEP
 ENTRY(cpu_xscale_do_suspend)
 	stmfd	sp!, {r4 - r10, lr}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mrc	p14, 0, r4, c6, c0, 0	@ clock configuration, for turbo mode
 	mrc	p15, 0, r5, c15, c1, 0	@ CP access reg
 	mrc	p15, 0, r6, c13, c0, 0	@ PID
 	mrc	p15, 0, r7, c3, c0, 0	@ domain ID
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mrc	p15, 0, r8, c1, c1, 0	@ auxiliary control reg
 	mrc	p15, 0, r9, c1, c0, 0	@ control reg
 	bic	r4, r4, #2		@ clear frequency change bit
@@ -560,6 +584,8 @@ ENDPROC(cpu_xscale_do_suspend)
 
 ENTRY(cpu_xscale_do_resume)
 	ldmia	r0, {r4 - r9}		@ load cp regs
+<<<<<<< HEAD
+=======
 =======
 	mrc	p15, 0, r8, c2, c0, 0	@ translation table base addr
 	mrc	p15, 0, r9, c1, c1, 0	@ auxiliary control reg
@@ -572,6 +598,7 @@ ENDPROC(cpu_xscale_do_suspend)
 ENTRY(cpu_xscale_do_resume)
 	ldmia	r0, {r4 - r10}		@ load cp regs
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	ip, #0
 	mcr	p15, 0, ip, c8, c7, 0	@ invalidate I & D TLBs
 	mcr	p15, 0, ip, c7, c7, 0	@ invalidate I & D caches, BTB
@@ -580,11 +607,16 @@ ENTRY(cpu_xscale_do_resume)
 	mcr	p15, 0, r6, c13, c0, 0	@ PID
 	mcr	p15, 0, r7, c3, c0, 0	@ domain ID
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mcr	p15, 0, r1, c2, c0, 0	@ translation table base addr
 	mcr	p15, 0, r8, c1, c1, 0	@ auxiliary control reg
 	mov	r0, r9			@ control register
 	b	cpu_resume_mmu
 ENDPROC(cpu_xscale_do_resume)
+<<<<<<< HEAD
+=======
 =======
 	mcr	p15, 0, r8, c2, c0, 0	@ translation table base addr
 	mcr	p15, 0, r9, c1, c1, 0	@ auxiliary control reg
@@ -599,6 +631,7 @@ ENDPROC(cpu_xscale_do_resume)
 #define cpu_xscale_do_suspend	0
 #define cpu_xscale_do_resume	0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	__CPUINIT

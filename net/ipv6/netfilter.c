@@ -6,7 +6,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/dst.h>
 #include <net/ipv6.h>
 #include <net/ip6_route.h>
@@ -105,6 +109,9 @@ static int nf_ip6_route(struct net *net, struct dst_entry **dst,
 	};
 	const void *sk = strict ? &fake_sk : NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dst_entry *result;
 	int err;
 
@@ -115,11 +122,14 @@ static int nf_ip6_route(struct net *net, struct dst_entry **dst,
 	else
 		*dst = result;
 	return err;
+<<<<<<< HEAD
+=======
 =======
 
 	*dst = ip6_route_output(net, sk, &fl->u.ip6);
 	return (*dst)->error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 __sum16 nf_ip6_checksum(struct sk_buff *skb, unsigned int hook,

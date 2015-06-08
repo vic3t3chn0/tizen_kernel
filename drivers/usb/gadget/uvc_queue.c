@@ -8,7 +8,14 @@
  *	it under the terms of the GNU General Public License as published by
  *	the Free Software Foundation; either version 2 of the License, or
  *	(at your option) any later version.
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
@@ -19,7 +26,15 @@
 #include <linux/videodev2.h>
 #include <linux/vmalloc.h>
 #include <linux/wait.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/atomic.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "uvc.h"
 
@@ -544,11 +559,25 @@ done:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* called with queue->irqlock held.. */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct uvc_buffer *
 uvc_queue_next_buffer(struct uvc_video_queue *queue, struct uvc_buffer *buf)
 {
 	struct uvc_buffer *nextbuf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned long flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned long flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((queue->flags & UVC_QUEUE_DROP_INCOMPLETE) &&
 	    buf->buf.length != buf->buf.bytesused) {
@@ -557,14 +586,28 @@ uvc_queue_next_buffer(struct uvc_video_queue *queue, struct uvc_buffer *buf)
 		return buf;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	spin_lock_irqsave(&queue->irqlock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irqsave(&queue->irqlock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_del(&buf->queue);
 	if (!list_empty(&queue->irqqueue))
 		nextbuf = list_first_entry(&queue->irqqueue, struct uvc_buffer,
 					   queue);
 	else
 		nextbuf = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	spin_unlock_irqrestore(&queue->irqlock, flags);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_unlock_irqrestore(&queue->irqlock, flags);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	buf->buf.sequence = queue->sequence++;
 	do_gettimeofday(&buf->buf.timestamp);

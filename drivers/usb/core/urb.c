@@ -350,7 +350,15 @@ int usb_submit_urb(struct urb *urb, gfp_t mem_flags)
 			dev->state < USB_STATE_CONFIGURED)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	max = usb_endpoint_maxp(&ep->desc);
+=======
 	max = le16_to_cpu(ep->desc.wMaxPacketSize);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	max = le16_to_cpu(ep->desc.wMaxPacketSize);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (max <= 0) {
 		dev_dbg(&dev->dev,
 			"bogus endpoint ep%d%s in %s (bad maxpacket %d)\n",
@@ -403,13 +411,30 @@ int usb_submit_urb(struct urb *urb, gfp_t mem_flags)
 	 * cause problems in HCDs if they get it wrong.
 	 */
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	unsigned int	orig_flags = urb->transfer_flags;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned int	orig_flags = urb->transfer_flags;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int	allowed;
 	static int pipetypes[4] = {
 		PIPE_CONTROL, PIPE_ISOCHRONOUS, PIPE_BULK, PIPE_INTERRUPT
 	};
 
 	/* Check that the pipe's type matches the endpoint's type */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (usb_pipetype(urb->pipe) != pipetypes[xfertype])
+		dev_WARN(&dev->dev, "BOGUS urb xfer, pipe %x != type %x\n",
+			usb_pipetype(urb->pipe), pipetypes[xfertype]);
+
+	/* Check against a simple/standard policy */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (usb_pipetype(urb->pipe) != pipetypes[xfertype]) {
 		dev_err(&dev->dev, "BOGUS urb xfer, pipe %x != type %x\n",
 			usb_pipetype(urb->pipe), pipetypes[xfertype]);
@@ -417,6 +442,10 @@ int usb_submit_urb(struct urb *urb, gfp_t mem_flags)
 	}
 
 	/* enforce simple/standard policy */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	allowed = (URB_NO_TRANSFER_DMA_MAP | URB_NO_INTERRUPT | URB_DIR_MASK |
 			URB_FREE_BUFFER);
 	switch (xfertype) {
@@ -435,6 +464,17 @@ int usb_submit_urb(struct urb *urb, gfp_t mem_flags)
 		allowed |= URB_ISO_ASAP;
 		break;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	allowed &= urb->transfer_flags;
+
+	/* warn if submitter gave bogus flags */
+	if (allowed != urb->transfer_flags)
+		dev_WARN(&dev->dev, "BOGUS urb flags, %x --> %x\n",
+			urb->transfer_flags, allowed);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	urb->transfer_flags &= allowed;
 
 	/* fail if submitter gave bogus flags */
@@ -443,6 +483,10 @@ int usb_submit_urb(struct urb *urb, gfp_t mem_flags)
 			orig_flags, urb->transfer_flags);
 		return -EINVAL;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #endif
 	/*
@@ -532,15 +576,41 @@ EXPORT_SYMBOL_GPL(usb_submit_urb);
  * a driver's I/O routines to insure that all URB-related activity has
  * completed before it returns.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This request is asynchronous, however the HCD might call the ->complete()
+ * callback during unlink. Therefore when drivers call usb_unlink_urb(), they
+ * must not hold any locks that may be taken by the completion function.
+ * Success is indicated by returning -EINPROGRESS, at which time the URB will
+ * probably not yet have been given back to the device driver. When it is
+ * eventually called, the completion function will see @urb->status ==
+ * -ECONNRESET.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This request is always asynchronous.  Success is indicated by
  * returning -EINPROGRESS, at which time the URB will probably not yet
  * have been given back to the device driver.  When it is eventually
  * called, the completion function will see @urb->status == -ECONNRESET.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Failure is indicated by usb_unlink_urb() returning any other value.
  * Unlinking will fail when @urb is not currently "linked" (i.e., it was
  * never submitted, or it was unlinked before, or the hardware is already
  * finished with it), even if the completion handler has not yet run.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * The URB must not be deallocated while this routine is running.  In
+ * particular, when a driver calls this routine, it must insure that the
+ * completion handler cannot deallocate the URB.
+ *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Unlinking and Endpoint Queues:
  *
  * [The behaviors and guarantees described below do not apply to virtual
@@ -605,6 +675,16 @@ EXPORT_SYMBOL_GPL(usb_unlink_urb);
  * with error -EPERM.  Thus even if the URB's completion handler always
  * tries to resubmit, it will not succeed and the URB will become idle.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * The URB must not be deallocated while this routine is running.  In
+ * particular, when a driver calls this routine, it must insure that the
+ * completion handler cannot deallocate the URB.
+ *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This routine may not be used in an interrupt context (such as a bottom
  * half or a completion handler), or when holding a spinlock, or in other
  * situations where the caller can't schedule().
@@ -642,6 +722,16 @@ EXPORT_SYMBOL_GPL(usb_kill_urb);
  * with error -EPERM.  Thus even if the URB's completion handler always
  * tries to resubmit, it will not succeed and the URB will become idle.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * The URB must not be deallocated while this routine is running.  In
+ * particular, when a driver calls this routine, it must insure that the
+ * completion handler cannot deallocate the URB.
+ *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * This routine may not be used in an interrupt context (such as a bottom
  * half or a completion handler), or when holding a spinlock, or in other
  * situations where the caller can't schedule().

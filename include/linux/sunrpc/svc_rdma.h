@@ -193,8 +193,12 @@ extern void svc_rdma_xdr_encode_array_chunk(struct rpcrdma_write_array *, int,
 <<<<<<< HEAD
 					    __be32, __be64, u32);
 =======
+<<<<<<< HEAD
+					    __be32, __be64, u32);
+=======
 					    u32, u64, u32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void svc_rdma_xdr_encode_reply_header(struct svcxprt_rdma *,
 					     struct rpcrdma_msg *,
 					     struct rpcrdma_msg *,
@@ -299,8 +303,12 @@ svc_rdma_get_reply_array(struct rpcrdma_msg *rmsgp)
 <<<<<<< HEAD
 			wc_array[ntohl(wr_ary->wc_nchunks)].wc_target.rs_length;
 =======
+<<<<<<< HEAD
+			wc_array[ntohl(wr_ary->wc_nchunks)].wc_target.rs_length;
+=======
 			wc_array[wr_ary->wc_nchunks].wc_target.rs_length;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		goto found_it;
 	}

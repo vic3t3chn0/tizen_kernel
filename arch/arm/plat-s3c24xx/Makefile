@@ -17,10 +17,14 @@ obj-y				+= irq.o
 <<<<<<< HEAD
 obj-y				+= dev-uart.o
 =======
+<<<<<<< HEAD
+obj-y				+= dev-uart.o
+=======
 obj-y				+= devs.o
 obj-y				+= gpio.o
 obj-y				+= gpiolib.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-y				+= clock.o
 obj-$(CONFIG_S3C24XX_DCLK)	+= clock-dclk.o
 
@@ -31,17 +35,25 @@ obj-$(CONFIG_CPU_FREQ_S3C24XX_DEBUGFS) += cpu-freq-debugfs.o
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 obj-$(CONFIG_PM_SIMTEC)		+= pm-simtec.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_PM)		+= pm.o
 obj-$(CONFIG_PM)		+= irq-pm.o
 obj-$(CONFIG_PM)		+= sleep.o
 obj-$(CONFIG_S3C2410_CLOCK)	+= s3c2410-clock.o
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_S3C24XX_DMA)	+= dma.o
 obj-$(CONFIG_S3C2410_IOTIMING)	+= s3c2410-iotiming.o
 obj-$(CONFIG_S3C2412_IOTIMING)	+= s3c2412-iotiming.o
 obj-$(CONFIG_S3C2410_CPUFREQ_UTILS) += s3c2410-cpufreq-utils.o
+<<<<<<< HEAD
+=======
 =======
 obj-$(CONFIG_S3C2443_CLOCK)	+= s3c2443-clock.o
 obj-$(CONFIG_S3C2410_DMA)	+= dma.o
@@ -64,3 +76,4 @@ obj-$(CONFIG_S3C24XX_SPI_BUS1_GPD8_GPD9_GPD10)	 += spi-bus1-gpd8_9_10.o
 obj-$(CONFIG_MACH_SMDK)		+= common-smdk.o
 obj-$(CONFIG_S3C24XX_SIMTEC_AUDIO)	+= simtec-audio.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

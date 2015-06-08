@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The Capture code for Fujitsu M-5MOLS ISP
  *
@@ -18,19 +25,43 @@
 #include <linux/irq.h>
 #include <linux/interrupt.h>
 #include <linux/delay.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/gpio.h>
+#include <linux/regulator/consumer.h>
+#include <linux/videodev2.h>
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/version.h>
 #include <linux/gpio.h>
 #include <linux/regulator/consumer.h>
 #include <linux/videodev2.h>
 #include <linux/version.h>
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/v4l2-ctrls.h>
 #include <media/v4l2-device.h>
 #include <media/v4l2-subdev.h>
 #include <media/m5mols.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <media/s5p_fimc.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "m5mols.h"
 #include "m5mols_reg.h"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int m5mols_capture_error_handler(struct m5mols_info *info,
 					int timeout)
 {
@@ -47,6 +78,10 @@ static int m5mols_capture_error_handler(struct m5mols_info *info,
 
 	return 0;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * m5mols_read_rational - I2C read of a rational number
  *
@@ -123,6 +158,32 @@ int m5mols_start_capture(struct m5mols_info *info)
 {
 	struct v4l2_subdev *sd = &info->sd;
 	u8 resolution = info->resolution;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+
+	/*
+	 * Synchronize the controls, set the capture frame resolution and color
+	 * format. The frame capture is initiated during switching from Monitor
+	 * to Capture mode.
+	 */
+	ret = m5mols_mode(info, REG_MONITOR);
+	if (!ret)
+		ret = m5mols_restore_controls(info);
+	if (!ret)
+		ret = m5mols_write(sd, CAPP_YUVOUT_MAIN, REG_JPEG);
+	if (!ret)
+		ret = m5mols_write(sd, CAPP_MAIN_IMAGE_SIZE, resolution);
+	if (!ret)
+		ret = m5mols_lock_3a(info, true);
+	if (!ret)
+		ret = m5mols_mode(info, REG_CAPTURE);
+	if (!ret)
+		/* Wait until a frame is captured to ISP internal memory */
+		ret = m5mols_wait_interrupt(sd, REG_INT_CAPTURE, 2000);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int timeout;
 	int ret;
 
@@ -152,10 +213,44 @@ int m5mols_start_capture(struct m5mols_info *info)
 		if (test_and_clear_bit(ST_CAPT_IRQ, &info->flags))
 			ret = m5mols_capture_error_handler(info, timeout);
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ret)
 		ret = m5mols_lock_3a(info, false);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/*
+	 * Initiate the captured data transfer to a MIPI-CSI receiver.
+	 */
+	ret = m5mols_write(sd, CAPC_SEL_FRAME, 1);
+	if (!ret)
+		ret = m5mols_write(sd, CAPC_START, REG_CAP_START_MAIN);
+	if (!ret) {
+		bool captured = false;
+		unsigned int size;
+
+		/* Wait for the capture completion interrupt */
+		ret = m5mols_wait_interrupt(sd, REG_INT_CAPTURE, 2000);
+		if (!ret) {
+			captured = true;
+			ret = m5mols_capture_info(info);
+		}
+		size = captured ? info->cap.main : 0;
+		v4l2_dbg(1, m5mols_debug, sd, "%s: size: %d, thumb.: %d B\n",
+			 __func__, size, info->cap.thumb);
+
+		v4l2_subdev_notify(sd, S5P_FIMC_TX_END_NOTIFY, &size);
+	}
+
+	return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Starting capture. Setting capture frame count and resolution and
 	 * the format(available format: JPEG, Bayer RAW, YUV).
@@ -188,4 +283,8 @@ int m5mols_start_capture(struct m5mols_info *info)
 	}
 
 	return m5mols_capture_error_handler(info, timeout);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

@@ -138,6 +138,9 @@ extern int ptrace_set_watch_regs(struct task_struct *child,
 #define user_mode(regs) (((regs)->cp0_status & KU_MASK) == KU_USER)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int is_syscall_success(struct pt_regs *regs)
 {
 	return !regs->regs[7];
@@ -151,9 +154,12 @@ static inline long regs_return_value(struct pt_regs *regs)
 		return -regs->regs[2];
 }
 
+<<<<<<< HEAD
+=======
 =======
 #define regs_return_value(_regs) ((_regs)->regs[2])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define instruction_pointer(regs) ((regs)->cp0_epc)
 #define profile_pc(regs) instruction_pointer(regs)
 
@@ -163,8 +169,12 @@ extern asmlinkage void syscall_trace_leave(struct pt_regs *regs);
 <<<<<<< HEAD
 extern void die(const char *, struct pt_regs *) __noreturn;
 =======
+<<<<<<< HEAD
+extern void die(const char *, struct pt_regs *) __noreturn;
+=======
 extern NORET_TYPE void die(const char *, struct pt_regs *) ATTRIB_NORET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void die_if_kernel(const char *str, struct pt_regs *regs)
 {

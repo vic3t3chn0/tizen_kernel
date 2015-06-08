@@ -200,9 +200,21 @@ static struct ec100_config ec168_ec100_config = {
 static int ec168_ec100_frontend_attach(struct dvb_usb_adapter *adap)
 {
 	deb_info("%s:\n", __func__);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	adap->fe_adap[0].fe = dvb_attach(ec100_attach, &ec168_ec100_config,
+		&adap->dev->i2c_adap);
+	if (adap->fe_adap[0].fe == NULL)
+=======
 	adap->fe = dvb_attach(ec100_attach, &ec168_ec100_config,
 		&adap->dev->i2c_adap);
 	if (adap->fe == NULL)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	adap->fe = dvb_attach(ec100_attach, &ec168_ec100_config,
+		&adap->dev->i2c_adap);
+	if (adap->fe == NULL)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	return 0;
@@ -228,7 +240,15 @@ static struct mxl5005s_config ec168_mxl5003s_config = {
 static int ec168_mxl5003s_tuner_attach(struct dvb_usb_adapter *adap)
 {
 	deb_info("%s:\n", __func__);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return dvb_attach(mxl5005s_attach, adap->fe_adap[0].fe, &adap->dev->i2c_adap,
+=======
 	return dvb_attach(mxl5005s_attach, adap->fe, &adap->dev->i2c_adap,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return dvb_attach(mxl5005s_attach, adap->fe, &adap->dev->i2c_adap,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		&ec168_mxl5003s_config) == NULL ? -ENODEV : 0;
 }
 
@@ -382,6 +402,14 @@ static struct dvb_usb_device_properties ec168_properties = {
 	.num_adapters = 1,
 	.adapter = {
 		{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.num_frontends = 1,
+		.fe = {{
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.streaming_ctrl   = ec168_streaming_ctrl,
 			.frontend_attach  = ec168_ec100_frontend_attach,
 			.tuner_attach     = ec168_mxl5003s_tuner_attach,
@@ -395,6 +423,13 @@ static struct dvb_usb_device_properties ec168_properties = {
 					}
 				}
 			},
+<<<<<<< HEAD
+<<<<<<< HEAD
+		}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	},
 
@@ -425,6 +460,12 @@ static struct usb_driver ec168_driver = {
 	.id_table   = ec168_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(ec168_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* module stuff */
 static int __init ec168_module_init(void)
 {
@@ -446,6 +487,10 @@ static void __exit ec168_module_exit(void)
 
 module_init(ec168_module_init);
 module_exit(ec168_module_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Antti Palosaari <crope@iki.fi>");
 MODULE_DESCRIPTION("E3C EC168 DVB-T USB2.0 driver");

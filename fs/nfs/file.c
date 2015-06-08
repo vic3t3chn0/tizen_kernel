@@ -32,8 +32,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "delegation.h"
 #include "internal.h"
@@ -43,6 +46,10 @@
 
 #define NFSDBG_FACILITY		NFSDBG_FILE
 
+<<<<<<< HEAD
+static const struct vm_operations_struct nfs_file_vm_ops;
+
+=======
 <<<<<<< HEAD
 static const struct vm_operations_struct nfs_file_vm_ops;
 
@@ -90,6 +97,7 @@ const struct file_operations nfs_file_operations = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const struct inode_operations nfs_file_inode_operations = {
 	.permission	= nfs_permission,
 	.getattr	= nfs_getattr,
@@ -150,12 +158,18 @@ nfs_file_release(struct inode *inode, struct file *filp)
 			filp->f_path.dentry->d_parent->d_name.name,
 			filp->f_path.dentry->d_name.name);
 =======
+<<<<<<< HEAD
+	dprintk("NFS: release(%s/%s)\n",
+			filp->f_path.dentry->d_parent->d_name.name,
+			filp->f_path.dentry->d_name.name);
+=======
 	struct dentry *dentry = filp->f_path.dentry;
 
 	dprintk("NFS: release(%s/%s)\n",
 			dentry->d_parent->d_name.name,
 			dentry->d_name.name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nfs_inc_stats(inode, NFSIOS_VFSRELEASE);
 	return nfs_release(inode, filp);
@@ -196,29 +210,43 @@ static loff_t nfs_file_llseek(struct file *filp, loff_t offset, int origin)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	loff_t loff;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk("NFS: llseek file(%s/%s, %lld, %d)\n",
 			filp->f_path.dentry->d_parent->d_name.name,
 			filp->f_path.dentry->d_name.name,
 			offset, origin);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * origin == SEEK_END || SEEK_DATA || SEEK_HOLE => we must revalidate
 	 * the cached file length
 	 */
 	if (origin != SEEK_SET && origin != SEEK_CUR) {
+<<<<<<< HEAD
+=======
 =======
 	/* origin == SEEK_END => we must revalidate the cached file length */
 	if (origin == SEEK_END) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct inode *inode = filp->f_mapping->host;
 
 		int retval = nfs_revalidate_file_size(inode, filp);
 		if (retval < 0)
 			return (loff_t)retval;
+<<<<<<< HEAD
+	}
+
+	return generic_file_llseek(filp, offset, origin);
+=======
 <<<<<<< HEAD
 	}
 
@@ -232,6 +260,7 @@ static loff_t nfs_file_llseek(struct file *filp, loff_t offset, int origin)
 		loff = generic_file_llseek_unlocked(filp, offset, origin);
 	return loff;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -264,8 +293,11 @@ nfs_file_read(struct kiocb *iocb, const struct iovec *iov,
 	ssize_t result;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	size_t count = iov_length(iov, nr_segs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (iocb->ki_filp->f_flags & O_DIRECT)
 		return nfs_file_direct_read(iocb, iov, nr_segs, pos);
@@ -275,8 +307,12 @@ nfs_file_read(struct kiocb *iocb, const struct iovec *iov,
 <<<<<<< HEAD
 		(unsigned long) iov_length(iov, nr_segs), (unsigned long) pos);
 =======
+<<<<<<< HEAD
+		(unsigned long) iov_length(iov, nr_segs), (unsigned long) pos);
+=======
 		(unsigned long) count, (unsigned long) pos);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	result = nfs_revalidate_mapping(inode, iocb->ki_filp->f_mapping);
 	if (!result) {
@@ -346,8 +382,12 @@ static int
 <<<<<<< HEAD
 nfs_file_fsync(struct file *file, loff_t start, loff_t end, int datasync)
 =======
+<<<<<<< HEAD
+nfs_file_fsync(struct file *file, loff_t start, loff_t end, int datasync)
+=======
 nfs_file_fsync(struct file *file, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dentry *dentry = file->f_path.dentry;
 	struct nfs_open_context *ctx = nfs_file_open_context(file);
@@ -357,13 +397,19 @@ nfs_file_fsync(struct file *file, int datasync)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk("NFS: fsync file(%s/%s) datasync %d\n",
 			dentry->d_parent->d_name.name, dentry->d_name.name,
 			datasync);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = filemap_write_and_wait_range(inode->i_mapping, start, end);
 	mutex_lock(&inode->i_mutex);
 
@@ -372,11 +418,14 @@ nfs_file_fsync(struct file *file, int datasync)
 	status = nfs_commit_inode(inode, FLUSH_SYNC);
 	if (status >= 0 && ret < 0)
 		status = ret;
+<<<<<<< HEAD
+=======
 =======
 	nfs_inc_stats(inode, NFSIOS_VFSFSYNC);
 	have_error = test_and_clear_bit(NFS_CONTEXT_ERROR_WRITE, &ctx->flags);
 	status = nfs_commit_inode(inode, FLUSH_SYNC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	have_error |= test_bit(NFS_CONTEXT_ERROR_WRITE, &ctx->flags);
 	if (have_error)
 		ret = xchg(&ctx->error, 0);
@@ -388,7 +437,11 @@ nfs_file_fsync(struct file *file, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&inode->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -557,12 +610,17 @@ static int nfs_release_page(struct page *page, gfp_t gfp)
 	/* Only do I/O if gfp is a superset of GFP_KERNEL */
 	if (mapping && (gfp & GFP_KERNEL) == GFP_KERNEL) {
 =======
+<<<<<<< HEAD
+	/* Only do I/O if gfp is a superset of GFP_KERNEL */
+	if (mapping && (gfp & GFP_KERNEL) == GFP_KERNEL) {
+=======
 	/* Only do I/O if gfp is a superset of GFP_KERNEL, and we're not
 	 * doing this memory reclaim for a fs-related allocation.
 	 */
 	if (mapping && (gfp & GFP_KERNEL) == GFP_KERNEL &&
 	    !(current->flags & PF_FSTRANS)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int how = FLUSH_SYNC;
 
 		/* Don't let kswapd deadlock waiting for OOM RPC calls */
@@ -643,7 +701,12 @@ static int nfs_vm_page_mkwrite(struct vm_area_struct *vma, struct vm_fault *vmf)
 	wait_on_page_writeback(page);
 
 =======
+<<<<<<< HEAD
+	wait_on_page_writeback(page);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pagelen = nfs_page_length(page);
 	if (pagelen == 0)
 		goto out_unlock;
@@ -962,6 +1025,9 @@ static int nfs_setlease(struct file *file, long arg, struct file_lock **fl)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 const struct file_operations nfs_file_operations = {
 	.llseek		= nfs_file_llseek,
 	.read		= do_sync_read,
@@ -981,8 +1047,11 @@ const struct file_operations nfs_file_operations = {
 	.setlease	= nfs_setlease,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NFS_V4
 static int
 nfs4_file_open(struct inode *inode, struct file *filp)

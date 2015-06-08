@@ -18,8 +18,12 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ATOMIC_INIT(i)  { (i) }
 
@@ -100,8 +104,12 @@ static inline int atomic_cmpxchg(atomic_t *v, int old, int new)
 <<<<<<< HEAD
 static inline int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+static inline int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
 static inline int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int c, old;
 	c = atomic_read(v);
@@ -118,11 +126,17 @@ static inline int atomic_add_unless(atomic_t *v, int a, int u)
 }
 
 =======
+<<<<<<< HEAD
+	return c;
+}
+
+=======
 	return c != u;
 }
 
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef __CS_LOOP
 
@@ -348,7 +362,10 @@ static inline long long atomic64_dec_if_positive(atomic64_t *v)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/atomic-long.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ARCH_S390_ATOMIC__  */

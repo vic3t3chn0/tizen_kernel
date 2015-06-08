@@ -4,6 +4,9 @@ snd-soc-au1xpsc-i2s-objs := psc-i2s.o
 snd-soc-au1xpsc-ac97-objs := psc-ac97.o
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # Au1000/1500/1100 Audio units
 snd-soc-au1x-dma-objs := dma.o
 snd-soc-au1x-ac97c-objs := ac97c.o
@@ -21,6 +24,8 @@ snd-soc-db1000-objs := db1000.o
 snd-soc-db1200-objs := db1200.o
 
 obj-$(CONFIG_SND_SOC_DB1000) += snd-soc-db1000.o
+<<<<<<< HEAD
+=======
 =======
 obj-$(CONFIG_SND_SOC_AU1XPSC) += snd-soc-au1xpsc-dbdma.o
 obj-$(CONFIG_SND_SOC_AU1XPSC_I2S) += snd-soc-au1xpsc-i2s.o
@@ -30,4 +35,5 @@ obj-$(CONFIG_SND_SOC_AU1XPSC_AC97) += snd-soc-au1xpsc-ac97.o
 snd-soc-db1200-objs := db1200.o
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_SND_SOC_DB1200) += snd-soc-db1200.o

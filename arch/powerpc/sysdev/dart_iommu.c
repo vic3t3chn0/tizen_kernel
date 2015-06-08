@@ -242,8 +242,12 @@ static int __init dart_init(struct device_node *dart_node)
 <<<<<<< HEAD
 	dart = ioremap(r.start, resource_size(&r));
 =======
+<<<<<<< HEAD
+	dart = ioremap(r.start, resource_size(&r));
+=======
 	dart = ioremap(r.start, r.end - r.start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dart == NULL)
 		panic("DART: Cannot map registers!");
 

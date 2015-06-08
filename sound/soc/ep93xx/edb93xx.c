@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/pcm.h>
 #include <sound/soc.h>
@@ -34,6 +38,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define edb93xx_has_audio() (machine_is_edb9301() ||	\
 			     machine_is_edb9302() ||	\
 			     machine_is_edb9302a() ||	\
@@ -41,6 +47,7 @@
 			     machine_is_edb9315a())
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int edb93xx_hw_params(struct snd_pcm_substream *substream,
 			     struct snd_pcm_hw_params *params)
 {
@@ -62,6 +69,8 @@ static int edb93xx_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	err = snd_soc_dai_set_fmt(codec_dai, SND_SOC_DAIFMT_I2S |
 				  SND_SOC_DAIFMT_NB_IF |
 				  SND_SOC_DAIFMT_CBS_CFS);
@@ -75,6 +84,7 @@ static int edb93xx_hw_params(struct snd_pcm_substream *substream,
 		return err;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = snd_soc_dai_set_sysclk(codec_dai, 0, mclk_rate,
 				     SND_SOC_CLOCK_IN);
 	if (err)
@@ -99,7 +109,12 @@ static struct snd_soc_dai_link edb93xx_dai = {
 	.dai_fmt	= SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_IF |
 			  SND_SOC_DAIFMT_CBS_CFS,
 =======
+<<<<<<< HEAD
+	.dai_fmt	= SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_IF |
+			  SND_SOC_DAIFMT_CBS_CFS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops		= &edb93xx_ops,
 };
 
@@ -108,12 +123,19 @@ static struct snd_soc_card snd_soc_edb93xx = {
 <<<<<<< HEAD
 	.owner		= THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner		= THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link	= &edb93xx_dai,
 	.num_links	= 1,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit edb93xx_probe(struct platform_device *pdev)
 {
 	struct snd_soc_card *card = &snd_soc_edb93xx;
@@ -155,6 +177,8 @@ static struct platform_driver edb93xx_driver = {
 };
 
 module_platform_driver(edb93xx_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *edb93xx_snd_device;
 
@@ -199,6 +223,7 @@ static void __exit edb93xx_exit(void)
 }
 module_exit(edb93xx_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Alexander Sverdlin <subaparts@yandex.ru>");
 MODULE_DESCRIPTION("ALSA SoC EDB93xx");
@@ -206,4 +231,8 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:edb93xx-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:edb93xx-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

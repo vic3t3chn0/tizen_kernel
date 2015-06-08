@@ -35,11 +35,15 @@
 <<<<<<< HEAD
  * Perform initial CIL structure initialisation.
 =======
+<<<<<<< HEAD
+ * Perform initial CIL structure initialisation.
+=======
  * Perform initial CIL structure initialisation. If the CIL is not
  * enabled in this filesystem, ensure the log->l_cilp is null so
  * we can check this conditional to determine if we are doing delayed
  * logging or not.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int
 xlog_cil_init(
@@ -50,11 +54,14 @@ xlog_cil_init(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	log->l_cilp = NULL;
 	if (!(log->l_mp->m_flags & XFS_MOUNT_DELAYLOG))
 		return 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cil = kmem_zalloc(sizeof(*cil), KM_SLEEP|KM_MAYFAIL);
 	if (!cil)
 		return ENOMEM;
@@ -89,10 +96,13 @@ xlog_cil_destroy(
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!log->l_cilp)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (log->l_cilp->xc_ctx) {
 		if (log->l_cilp->xc_ctx->ticket)
 			xfs_log_ticket_put(log->l_cilp->xc_ctx->ticket);
@@ -149,10 +159,13 @@ xlog_cil_init_post_recovery(
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!log->l_cilp)
 		return;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	log->l_cilp->xc_ctx->ticket = xlog_cil_ticket_alloc(log);
 	log->l_cilp->xc_ctx->sequence = 1;
 	log->l_cilp->xc_ctx->commit_lsn = xlog_assign_lsn(log->l_curr_cycle,
@@ -186,6 +199,9 @@ xlog_cil_init_post_recovery(
  * directly out of the objects themselves.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct xfs_log_vec *
 xlog_cil_prepare_log_vecs(
 	struct xfs_trans	*tp)
@@ -238,6 +254,8 @@ xlog_cil_prepare_log_vecs(
 
 		for (index = 0; index < new_lv->lv_niovecs; index++) {
 			struct xfs_log_iovec *vec = &new_lv->lv_iovecp[index];
+<<<<<<< HEAD
+=======
 =======
 static void
 xlog_cil_format_items(
@@ -264,12 +282,16 @@ xlog_cil_format_items(
 		for (index = 0; index < lv->lv_niovecs; index++) {
 			struct xfs_log_iovec *vec = &lv->lv_iovecp[index];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			memcpy(ptr, vec->i_addr, vec->i_len);
 			vec->i_addr = ptr;
 			ptr += vec->i_len;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(ptr == new_lv->lv_buf + new_lv->lv_buf_len);
 
 		if (!ret_lv)
@@ -280,10 +302,13 @@ xlog_cil_format_items(
 	}
 
 	return ret_lv;
+<<<<<<< HEAD
+=======
 =======
 		ASSERT(ptr == lv->lv_buf + lv->lv_buf_len);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -340,8 +365,12 @@ xfs_cil_prepare_item(
 <<<<<<< HEAD
  * as well. Remove the amount of space we added to the checkpoint ticket from
 =======
+<<<<<<< HEAD
+ * as well. Remove the amount of space we added to the checkpoint ticket from
+=======
  * as well. Remove the amount of space we addded to the checkpoint ticket from
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * the current transaction ticket so that the accounting works out correctly.
  */
 static void
@@ -721,10 +750,15 @@ out_abort:
  * allowed again.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 xfs_log_commit_cil(
 	struct xfs_mount	*mp,
 	struct xfs_trans	*tp,
+<<<<<<< HEAD
+=======
 =======
 void
 xfs_log_commit_cil(
@@ -732,6 +766,7 @@ xfs_log_commit_cil(
 	struct xfs_trans	*tp,
 	struct xfs_log_vec	*log_vector,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_lsn_t		*commit_lsn,
 	int			flags)
 {
@@ -741,7 +776,11 @@ xfs_log_commit_cil(
 <<<<<<< HEAD
 	struct xfs_log_vec	*log_vector;
 =======
+<<<<<<< HEAD
+	struct xfs_log_vec	*log_vector;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (flags & XFS_TRANS_RELEASE_LOG_RES)
 		log_flags = XFS_LOG_REL_PERM_RESERV;
@@ -750,8 +789,12 @@ xfs_log_commit_cil(
 <<<<<<< HEAD
 	 * Do all the hard work of formatting items (including memory
 =======
+<<<<<<< HEAD
+	 * Do all the hard work of formatting items (including memory
+=======
 	 * do all the hard work of formatting items (including memory
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * allocation) outside the CIL context lock. This prevents stalling CIL
 	 * pushes when we are low on memory and a transaction commit spends a
 	 * lot of time in memory reclaim.
@@ -761,8 +804,14 @@ xfs_log_commit_cil(
 	if (!log_vector)
 		return ENOMEM;
 =======
+<<<<<<< HEAD
+	log_vector = xlog_cil_prepare_log_vecs(tp);
+	if (!log_vector)
+		return ENOMEM;
+=======
 	xlog_cil_format_items(log, log_vector);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* lock out background commit */
 	down_read(&log->l_cilp->xc_ctx_lock);
@@ -818,7 +867,11 @@ xfs_log_commit_cil(
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -898,9 +951,12 @@ xfs_log_item_in_current_chkpt(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!(lip->li_mountp->m_flags & XFS_MOUNT_DELAYLOG))
 		return false;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (list_empty(&lip->li_cil))
 		return false;
 

@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_SMP
 #error not SMP safe
@@ -187,6 +191,8 @@ static inline void atomic64_dec(atomic64_t *v)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*****************************************************************************/
 /*
  * exchange value with memory
@@ -243,6 +249,7 @@ extern uint32_t __xchg_32(uint32_t i, volatile void *v);
 #define tas(ptr) (xchg((ptr), 1))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define atomic_cmpxchg(v, old, new)	(cmpxchg(&(v)->counter, old, new))
 #define atomic_xchg(v, new)		(xchg(&(v)->counter, new))
 #define atomic64_cmpxchg(v, old, new)	(__cmpxchg_64(old, new, &(v)->counter))
@@ -251,8 +258,12 @@ extern uint32_t __xchg_32(uint32_t i, volatile void *v);
 <<<<<<< HEAD
 static __inline__ int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+static __inline__ int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
 static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int c, old;
 	c = atomic_read(v);
@@ -265,10 +276,15 @@ static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 		c = old;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return c;
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 	return c != (u);
 }
@@ -277,4 +293,5 @@ static __inline__ int atomic_add_unless(atomic_t *v, int a, int u)
 
 #include <asm-generic/atomic-long.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_ATOMIC_H */

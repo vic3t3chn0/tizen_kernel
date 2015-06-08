@@ -88,8 +88,12 @@ void nilfs_dat_commit_alloc(struct inode *dat, struct nilfs_palloc_req *req)
 <<<<<<< HEAD
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, req->pr_entry_nr,
 					     req->pr_entry_bh, kaddr);
 	entry->de_start = cpu_to_le64(NILFS_CNO_MIN);
@@ -98,8 +102,12 @@ void nilfs_dat_commit_alloc(struct inode *dat, struct nilfs_palloc_req *req)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nilfs_palloc_commit_alloc_entry(dat, req);
 	nilfs_dat_commit_entry(dat, req);
@@ -120,8 +128,12 @@ static void nilfs_dat_commit_free(struct inode *dat,
 <<<<<<< HEAD
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, req->pr_entry_nr,
 					     req->pr_entry_bh, kaddr);
 	entry->de_start = cpu_to_le64(NILFS_CNO_MIN);
@@ -130,8 +142,12 @@ static void nilfs_dat_commit_free(struct inode *dat,
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nilfs_dat_commit_entry(dat, req);
 	nilfs_palloc_commit_free_entry(dat, req);
@@ -155,8 +171,12 @@ void nilfs_dat_commit_start(struct inode *dat, struct nilfs_palloc_req *req,
 <<<<<<< HEAD
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, req->pr_entry_nr,
 					     req->pr_entry_bh, kaddr);
 	entry->de_start = cpu_to_le64(nilfs_mdt_cno(dat));
@@ -164,8 +184,12 @@ void nilfs_dat_commit_start(struct inode *dat, struct nilfs_palloc_req *req,
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nilfs_dat_commit_entry(dat, req);
 }
@@ -187,8 +211,12 @@ int nilfs_dat_prepare_end(struct inode *dat, struct nilfs_palloc_req *req)
 <<<<<<< HEAD
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, req->pr_entry_nr,
 					     req->pr_entry_bh, kaddr);
 	start = le64_to_cpu(entry->de_start);
@@ -196,8 +224,12 @@ int nilfs_dat_prepare_end(struct inode *dat, struct nilfs_palloc_req *req)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (blocknr == 0) {
 		ret = nilfs_palloc_prepare_free_entry(dat, req);
@@ -221,8 +253,12 @@ void nilfs_dat_commit_end(struct inode *dat, struct nilfs_palloc_req *req,
 <<<<<<< HEAD
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, req->pr_entry_nr,
 					     req->pr_entry_bh, kaddr);
 	end = start = le64_to_cpu(entry->de_start);
@@ -235,8 +271,12 @@ void nilfs_dat_commit_end(struct inode *dat, struct nilfs_palloc_req *req,
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (blocknr == 0)
 		nilfs_dat_commit_free(dat, req);
@@ -254,8 +294,12 @@ void nilfs_dat_abort_end(struct inode *dat, struct nilfs_palloc_req *req)
 <<<<<<< HEAD
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(req->pr_entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(req->pr_entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, req->pr_entry_nr,
 					     req->pr_entry_bh, kaddr);
 	start = le64_to_cpu(entry->de_start);
@@ -263,8 +307,12 @@ void nilfs_dat_abort_end(struct inode *dat, struct nilfs_palloc_req *req)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (start == nilfs_mdt_cno(dat) && blocknr == 0)
 		nilfs_palloc_abort_free_entry(dat, req);
@@ -397,8 +445,12 @@ int nilfs_dat_move(struct inode *dat, __u64 vblocknr, sector_t blocknr)
 <<<<<<< HEAD
 	kaddr = kmap_atomic(entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, vblocknr, entry_bh, kaddr);
 	if (unlikely(entry->de_blocknr == cpu_to_le64(0))) {
 		printk(KERN_CRIT "%s: vbn = %llu, [%llu, %llu)\n", __func__,
@@ -408,8 +460,12 @@ int nilfs_dat_move(struct inode *dat, __u64 vblocknr, sector_t blocknr)
 <<<<<<< HEAD
 		kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(kaddr);
+=======
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		brelse(entry_bh);
 		return -EINVAL;
 	}
@@ -418,8 +474,12 @@ int nilfs_dat_move(struct inode *dat, __u64 vblocknr, sector_t blocknr)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mark_buffer_dirty(entry_bh);
 	nilfs_mdt_mark_dirty(dat);
@@ -472,8 +532,12 @@ int nilfs_dat_translate(struct inode *dat, __u64 vblocknr, sector_t *blocknrp)
 <<<<<<< HEAD
 	kaddr = kmap_atomic(entry_bh->b_page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(entry_bh->b_page);
+=======
 	kaddr = kmap_atomic(entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	entry = nilfs_palloc_block_get_entry(dat, vblocknr, entry_bh, kaddr);
 	blocknr = le64_to_cpu(entry->de_blocknr);
 	if (blocknr == 0) {
@@ -486,8 +550,12 @@ int nilfs_dat_translate(struct inode *dat, __u64 vblocknr, sector_t *blocknrp)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	brelse(entry_bh);
 	return ret;
 }
@@ -511,8 +579,12 @@ ssize_t nilfs_dat_get_vinfo(struct inode *dat, void *buf, unsigned visz,
 <<<<<<< HEAD
 		kaddr = kmap_atomic(entry_bh->b_page);
 =======
+<<<<<<< HEAD
+		kaddr = kmap_atomic(entry_bh->b_page);
+=======
 		kaddr = kmap_atomic(entry_bh->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* last virtual block number in this block */
 		first = vinfo->vi_vblocknr;
 		do_div(first, entries_per_block);
@@ -531,8 +603,12 @@ ssize_t nilfs_dat_get_vinfo(struct inode *dat, void *buf, unsigned visz,
 <<<<<<< HEAD
 		kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(kaddr);
+=======
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		brelse(entry_bh);
 	}
 

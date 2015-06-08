@@ -106,10 +106,15 @@ static struct sk_buff *ulog_alloc_skb(unsigned int size)
 	skb = alloc_skb(n, GFP_ATOMIC | __GFP_NOWARN);
 	if (!skb) {
 =======
+<<<<<<< HEAD
+	skb = alloc_skb(n, GFP_ATOMIC | __GFP_NOWARN);
+	if (!skb) {
+=======
 	skb = alloc_skb(n, GFP_ATOMIC);
 	if (!skb) {
 		pr_debug("cannot alloc whole buffer of size %ub!\n", n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (n > size) {
 			/* try to allocate only as much as we need for
 			 * current packet */
@@ -119,9 +124,14 @@ static struct sk_buff *ulog_alloc_skb(unsigned int size)
 				pr_debug("cannot even allocate buffer of size %ub\n",
 					 size);
 =======
+<<<<<<< HEAD
+				pr_debug("cannot even allocate buffer of size %ub\n",
+					 size);
+=======
 				pr_debug("cannot even allocate "
 					 "buffer of size %ub\n", size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -228,8 +238,11 @@ nlmsg_failure:
 		 "not happen, please report to author.\n");
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	goto unlock;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 alloc_failure:
 	goto unlock;
 }

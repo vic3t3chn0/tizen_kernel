@@ -23,24 +23,34 @@ config X86
 <<<<<<< HEAD
 	select HAVE_PCSPKR_PLATFORM
 =======
+<<<<<<< HEAD
+	select HAVE_PCSPKR_PLATFORM
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_PERF_EVENTS
 	select HAVE_IRQ_WORK
 	select HAVE_IOREMAP_PROT
 	select HAVE_KPROBES
 	select HAVE_MEMBLOCK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_MEMBLOCK_NODE_MAP
 	select ARCH_DISCARD_MEMBLOCK
 	select ARCH_WANT_OPTIONAL_GPIOLIB
 	select ARCH_WANT_FRAME_POINTERS
 	select HAVE_DMA_ATTRS
 	select HAVE_DMA_CONTIGUOUS if !SWIOTLB
+<<<<<<< HEAD
+=======
 =======
 	select ARCH_WANT_OPTIONAL_GPIOLIB
 	select ARCH_WANT_FRAME_POINTERS
 	select HAVE_DMA_ATTRS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_KRETPROBES
 	select HAVE_OPTPROBES
 	select HAVE_FTRACE_MCOUNT_RECORD
@@ -71,6 +81,9 @@ config X86
 	select HAVE_PERF_EVENTS_NMI
 	select ANON_INODES
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select HAVE_ALIGNED_STRUCT_PAGE if SLUB && !M386
 	select HAVE_CMPXCHG_LOCAL if !M386
 	select HAVE_CMPXCHG_DOUBLE
@@ -81,6 +94,8 @@ config X86
 	select HAVE_TEXT_POKE_SMP
 	select HAVE_GENERIC_HARDIRQS
 	select SPARSE_IRQ
+<<<<<<< HEAD
+=======
 =======
 	select HAVE_ARCH_KMEMCHECK
 	select HAVE_USER_RETURN_NOTIFIER
@@ -89,11 +104,15 @@ config X86
 	select HAVE_GENERIC_HARDIRQS
 	select HAVE_SPARSE_IRQ
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select GENERIC_FIND_FIRST_BIT
 	select GENERIC_IRQ_PROBE
 	select GENERIC_PENDING_IRQ if SMP
 	select GENERIC_IRQ_SHOW
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select GENERIC_CLOCKEVENTS_MIN_ADJUST
 	select IRQ_FORCED_THREADING
 	select USE_GENERIC_SMP_HELPERS if SMP
@@ -102,11 +121,14 @@ config X86
 	select ARCH_HAVE_NMI_SAFE_CMPXCHG
 	select GENERIC_IOMAP
 	select DCACHE_WORD_ACCESS
+<<<<<<< HEAD
+=======
 =======
 	select IRQ_FORCED_THREADING
 	select USE_GENERIC_SMP_HELPERS if SMP
 	select HAVE_BPF_JIT if (X86_64 && NET)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config INSTRUCTION_DECODER
 	def_bool (KPROBES || PERF_EVENTS)
@@ -131,12 +153,18 @@ config GENERIC_CLOCKEVENTS
 	def_bool y
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARCH_CLOCKSOURCE_DATA
 	def_bool y
 	depends on X86_64
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config GENERIC_CLOCKEVENTS_BROADCAST
 	def_bool y
 	depends on X86_64 || (X86_32 && X86_LOCAL_APIC)
@@ -155,6 +183,8 @@ config MMU
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config ZONE_DMA
 	bool "DMA memory allocation support" if EXPERT
 	default y
@@ -166,6 +196,7 @@ config ZONE_DMA
 	  If unsure, say Y.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SBUS
 	bool
 
@@ -173,8 +204,12 @@ config NEED_DMA_MAP_STATE
 <<<<<<< HEAD
        def_bool (X86_64 || INTEL_IOMMU || DMA_API_DEBUG)
 =======
+<<<<<<< HEAD
+       def_bool (X86_64 || INTEL_IOMMU || DMA_API_DEBUG)
+=======
        def_bool (X86_64 || DMAR || DMA_API_DEBUG)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config NEED_SG_DMA_LENGTH
 	def_bool y
@@ -184,10 +219,13 @@ config GENERIC_ISA_DMA
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config GENERIC_IOMAP
 	def_bool y
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config GENERIC_BUG
 	def_bool y
 	depends on BUG
@@ -235,7 +273,13 @@ config ARCH_HAS_CPU_AUTOPROBE
 	def_bool y
 
 =======
+<<<<<<< HEAD
+config ARCH_HAS_CPU_AUTOPROBE
+	def_bool y
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HAVE_SETUP_PER_CPU_AREA
 	def_bool y
 
@@ -247,10 +291,13 @@ config NEED_PER_CPU_PAGE_FIRST_CHUNK
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config HAVE_CPUMASK_OF_CPU_MAP
 	def_bool X86_64_SMP
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARCH_HIBERNATION_POSSIBLE
 	def_bool y
 
@@ -263,10 +310,13 @@ config ZONE_DMA32
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config ARCH_POPULATES_NODE_MAP
 	def_bool y
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config AUDIT_ARCH
 	bool
 	default X86_64
@@ -282,8 +332,12 @@ config HAVE_INTEL_TXT
 <<<<<<< HEAD
 	depends on EXPERIMENTAL && INTEL_IOMMU && ACPI
 =======
+<<<<<<< HEAD
+	depends on EXPERIMENTAL && INTEL_IOMMU && ACPI
+=======
 	depends on EXPERIMENTAL && DMAR && ACPI
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config X86_32_SMP
 	def_bool y
@@ -319,6 +373,9 @@ source "kernel/Kconfig.freezer"
 menu "Processor type and features"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ZONE_DMA
 	bool "DMA memory allocation support" if EXPERT
 	default y
@@ -329,8 +386,11 @@ config ZONE_DMA
 
 	  If unsure, say Y.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 source "kernel/time/Kconfig"
 
 config SMP
@@ -358,8 +418,12 @@ config SMP
 <<<<<<< HEAD
 	  See also <file:Documentation/x86/i386/IO-APIC.txt>,
 =======
+<<<<<<< HEAD
+	  See also <file:Documentation/x86/i386/IO-APIC.txt>,
+=======
 	  See also <file:Documentation/i386/IO-APIC.txt>,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  <file:Documentation/nmi_watchdog.txt> and the SMP-HOWTO available at
 	  <http://www.tldp.org/docs.html#howto>.
 
@@ -370,8 +434,12 @@ config X86_X2APIC
 <<<<<<< HEAD
 	depends on X86_LOCAL_APIC && X86_64 && IRQ_REMAP
 =======
+<<<<<<< HEAD
+	depends on X86_LOCAL_APIC && X86_64 && IRQ_REMAP
+=======
 	depends on X86_LOCAL_APIC && X86_64 && INTR_REMAP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  This enables x2apic support on CPUs that have this feature.
 
@@ -431,7 +499,11 @@ config X86_EXTENDED_PLATFORM
 <<<<<<< HEAD
 		Numascale NumaChip
 =======
+<<<<<<< HEAD
+		Numascale NumaChip
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ScaleMP vSMP
 		SGI Ultraviolet
 
@@ -441,6 +513,9 @@ endif
 # This is an alphabetically sorted list of 64 bit extended platforms
 # Please maintain the alphabetic order if and when there are additions
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config X86_NUMACHIP
 	bool "Numascale NumaChip"
 	depends on X86_64
@@ -452,8 +527,11 @@ config X86_NUMACHIP
 	  Adds support for Numascale NumaChip large-SMP systems. Needed to
 	  enable more than ~168 cores.
 	  If you don't have one of these, you should say N here.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config X86_VSMP
 	bool "ScaleMP vSMP"
@@ -491,13 +569,20 @@ config X86_INTEL_CE
 <<<<<<< HEAD
 	select IRQ_DOMAIN
 =======
+<<<<<<< HEAD
+	select IRQ_DOMAIN
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Select for the Intel CE media processor (CE4100) SOC.
 	  This option compiles in support for the CE4100 SOC for settop
 	  boxes and media devices.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config X86_WANT_INTEL_MID
 	bool "Intel MID platform support"
 	depends on X86_32
@@ -520,6 +605,8 @@ config X86_MDFLD
 	select X86_INTEL_MID
 	select SFI
 	select DW_APB_TIMER
+<<<<<<< HEAD
+=======
 =======
 config X86_MRST
        bool "Moorestown MID platform"
@@ -529,12 +616,16 @@ config X86_MRST
 	depends on X86_EXTENDED_PLATFORM
 	depends on X86_IO_APIC
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select APB_TIMER
 	select I2C
 	select SPI
 	select INTEL_SCU_IPC
 	select X86_PLATFORM_DEVICES
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select MFD_INTEL_MSIC
 	---help---
 	  Medfield is Intel's Low Power Intel Architecture (LPIA) based Moblin
@@ -545,6 +636,8 @@ config X86_MRST
 
 endif
 
+<<<<<<< HEAD
+=======
 =======
 	---help---
 	  Moorestown is Intel's Low Power Intel Architecture (LPIA) based Moblin
@@ -555,6 +648,7 @@ endif
 	  not contain i8259, i8254, HPET, legacy BIOS, most of the io ports.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config X86_RDC321X
 	bool "RDC R-321x SoC"
 	depends on X86_32
@@ -664,6 +758,9 @@ menuconfig PARAVIRT_GUEST
 if PARAVIRT_GUEST
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config PARAVIRT_TIME_ACCOUNTING
 	bool "Paravirtual steal time accounting"
 	select PARAVIRT
@@ -676,8 +773,11 @@ config PARAVIRT_TIME_ACCOUNTING
 
 	  If in doubt, say N here.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 source "arch/x86/xen/Kconfig"
 
 config KVM_CLOCK
@@ -756,8 +856,12 @@ config X86_CYCLONE_TIMER
 <<<<<<< HEAD
 	depends on X86_SUMMIT
 =======
+<<<<<<< HEAD
+	depends on X86_SUMMIT
+=======
 	depends on X86_32_NON_STANDARD
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 source "arch/x86/Kconfig.cpu"
 
@@ -786,14 +890,20 @@ config HPET_EMULATE_RTC
 
 config APB_TIMER
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        def_bool y if X86_INTEL_MID
        prompt "Intel MID APB Timer Support" if X86_INTEL_MID
        select DW_APB_TIMER
        depends on X86_INTEL_MID && SFI
+<<<<<<< HEAD
+=======
 =======
        def_bool y if MRST
        prompt "Langwell APB Timer Support" if X86_MRST
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
        help
          APB timer is the replacement for 8254, HPET on X86 MID platforms.
          The APBT provides a stable time base on SMP
@@ -859,6 +969,8 @@ config CALGARY_IOMMU_ENABLED_BY_DEFAULT
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config AMD_IOMMU
 	bool "AMD IOMMU support"
 	select SWIOTLB
@@ -887,6 +999,7 @@ config AMD_IOMMU_STATS
 	  If unsure, say N.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # need this always selected by IOMMU for the VIA workaround
 config SWIOTLB
 	def_bool y if X86_64
@@ -902,10 +1015,13 @@ config IOMMU_HELPER
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config IOMMU_API
 	def_bool (AMD_IOMMU || DMAR)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MAXSMP
 	bool "Enable Maximum number of SMP Processors and NUMA Nodes"
 	depends on X86_64 && SMP && DEBUG_KERNEL && EXPERIMENTAL
@@ -1403,12 +1519,18 @@ config HAVE_ARCH_BOOTMEM
 	depends on X86_32 && NUMA
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config HAVE_ARCH_ALLOC_REMAP
 	def_bool y
 	depends on X86_32 && NUMA
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARCH_HAVE_MEMORY_PRESENT
 	def_bool y
 	depends on X86_32 && DISCONTIGMEM
@@ -1661,6 +1783,9 @@ config EFI
 	  platforms.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config EFI_STUB
        bool "EFI stub support"
        depends on EFI
@@ -1668,8 +1793,11 @@ config EFI_STUB
           This kernel feature allows a bzImage to be loaded directly
 	  by EFI firmware without the use of a bootloader.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SECCOMP
 	def_bool y
 	prompt "Enable seccomp to safely compute untrusted bytecode"
@@ -1925,8 +2053,12 @@ config X86_APM_BOOT
 <<<<<<< HEAD
 	depends on APM
 =======
+<<<<<<< HEAD
+	depends on APM
+=======
 	depends on APM || APM_MODULE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 menuconfig APM
 	tristate "APM (Advanced Power Management) BIOS support"
@@ -1950,9 +2082,14 @@ menuconfig APM
 	  and more information, read <file:Documentation/power/apm-acpi.txt>
 	  and the Battery Powered Linux mini-HOWTO, available from
 =======
+<<<<<<< HEAD
+	  and more information, read <file:Documentation/power/apm-acpi.txt>
+	  and the Battery Powered Linux mini-HOWTO, available from
+=======
 	  and more information, read <file:Documentation/power/pm.txt> and the
 	  Battery Powered Linux mini-HOWTO, available from
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  <http://www.tldp.org/docs.html#howto>.
 
 	  This driver does not spin down disk drives (see the hdparm(8)
@@ -2122,8 +2259,12 @@ config PCI_DIRECT
 <<<<<<< HEAD
 	depends on PCI && (X86_64 || (PCI_GODIRECT || PCI_GOANY || PCI_GOOLPC || PCI_GOMMCONFIG))
 =======
+<<<<<<< HEAD
+	depends on PCI && (X86_64 || (PCI_GODIRECT || PCI_GOANY || PCI_GOOLPC || PCI_GOMMCONFIG))
+=======
 	depends on PCI && (X86_64 || (PCI_GODIRECT || PCI_GOANY || PCI_GOOLPC))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config PCI_MMCONFIG
 	def_bool y
@@ -2160,6 +2301,8 @@ config PCI_CNB20LE_QUIRK
 
 	  You should say N unless you know you need this.
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 config DMAR
@@ -2212,6 +2355,7 @@ config INTR_REMAP
 	  to support platforms with CPU's having > 8 bit APIC ID, say Y.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 source "drivers/pci/pcie/Kconfig"
 
 source "drivers/pci/Kconfig"
@@ -2293,12 +2437,19 @@ config OLPC
 <<<<<<< HEAD
 	select IRQ_DOMAIN
 =======
+<<<<<<< HEAD
+	select IRQ_DOMAIN
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	---help---
 	  Add support for detecting the unique features of the OLPC
 	  XO hardware.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config OLPC_XO1_PM
 	bool "OLPC XO-1 Power Management"
 	depends on OLPC && MFD_CS5535 && PM_SLEEP
@@ -2364,6 +2515,8 @@ config GEOS
 	depends on DMI
 	---help---
 	  This option enables system support for the Traverse Technologies GEOS.
+<<<<<<< HEAD
+=======
 =======
 config OLPC_XO1
 	tristate "OLPC XO-1 support"
@@ -2371,6 +2524,7 @@ config OLPC_XO1
 	---help---
 	  Add support for non-essential features of the OLPC XO-1 laptop.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 endif # X86_32
 
@@ -2409,10 +2563,16 @@ config IA32_EMULATION
 	  64-bit kernel. You should likely turn this on, unless you're
 	  100% sure that you don't have any 32-bit programs left.
 =======
+<<<<<<< HEAD
+	  Include code to run legacy 32-bit programs under a
+	  64-bit kernel. You should likely turn this on, unless you're
+	  100% sure that you don't have any 32-bit programs left.
+=======
 	  Include code to run 32-bit programs under a 64-bit kernel. You should
 	  likely turn this on, unless you're 100% sure that you don't have any
 	  32-bit programs left.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config IA32_AOUT
 	tristate "IA32 a.out support"
@@ -2421,6 +2581,9 @@ config IA32_AOUT
 	  Support old a.out binaries in the 32bit emulation.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config X86_X32
 	bool "x32 ABI for 64-bit mode (EXPERIMENTAL)"
 	depends on X86_64 && IA32_EMULATION && EXPERIMENTAL
@@ -2438,11 +2601,14 @@ config COMPAT
 	def_bool y
 	depends on IA32_EMULATION || X86_X32
 	select ARCH_WANT_OLD_COMPAT_IPC
+<<<<<<< HEAD
+=======
 =======
 config COMPAT
 	def_bool y
 	depends on IA32_EMULATION
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config COMPAT_FOR_U64_ALIGNMENT
 	def_bool COMPAT

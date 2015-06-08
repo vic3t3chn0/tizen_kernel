@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/kthread.h>
 =======
+<<<<<<< HEAD
+#include <linux/kthread.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * INTERFACES between SPI master-side drivers and SPI infrastructure.
@@ -205,6 +209,9 @@ static inline void spi_unregister_driver(struct spi_driver *sdrv)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * module_spi_driver() - Helper macro for registering a SPI driver
  * @__spi_driver: spi_driver struct
@@ -216,8 +223,11 @@ static inline void spi_unregister_driver(struct spi_driver *sdrv)
 #define module_spi_driver(__spi_driver) \
 	module_driver(__spi_driver, spi_register_driver, \
 			spi_unregister_driver)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct spi_master - interface to SPI master controller
@@ -243,6 +253,9 @@ static inline void spi_unregister_driver(struct spi_driver *sdrv)
  * @transfer: adds a message to the controller's transfer queue.
  * @cleanup: frees controller-specific state
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @queued: whether this master is providing an internal message queue
  * @kworker: thread struct for message pump
  * @kworker_task: pointer to task for message pump kworker thread
@@ -264,8 +277,11 @@ static inline void spi_unregister_driver(struct spi_driver *sdrv)
  * @unprepare_transfer_hardware: there are currently no more messages on the
  *	queue so the subsystem notifies the driver that it may relax the
  *	hardware by issuing this call
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Each SPI master controller can communicate with one or more @spi_device
  * children.  These make a small bus, sharing MOSI, MISO and SCK signals
@@ -350,6 +366,9 @@ struct spi_master {
 	/* called on release() to free memory provided by spi_master */
 	void			(*cleanup)(struct spi_device *spi);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * These hooks are for drivers that want to use the generic
@@ -372,8 +391,11 @@ struct spi_master {
 	int (*transfer_one_message)(struct spi_master *master,
 				    struct spi_message *mesg);
 	int (*unprepare_transfer_hardware)(struct spi_master *master);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void *spi_master_get_devdata(struct spi_master *master)
@@ -400,6 +422,9 @@ static inline void spi_master_put(struct spi_master *master)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PM calls that need to be issued by the driver */
 extern int spi_master_suspend(struct spi_master *master);
 extern int spi_master_resume(struct spi_master *master);
@@ -407,8 +432,11 @@ extern int spi_master_resume(struct spi_master *master);
 /* Calls the driver make to interact with the message queue */
 extern struct spi_message *spi_get_next_queued_message(struct spi_master *master);
 extern void spi_finalize_current_message(struct spi_master *master);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* the spi driver core manages memory for the spi_master classdev */
 extern struct spi_master *
@@ -618,8 +646,12 @@ static inline struct spi_message *spi_message_alloc(unsigned ntrans, gfp_t flags
 <<<<<<< HEAD
 		unsigned i;
 =======
+<<<<<<< HEAD
+		unsigned i;
+=======
 		int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct spi_transfer *t = (struct spi_transfer *)(m + 1);
 
 		INIT_LIST_HEAD(&m->transfers);

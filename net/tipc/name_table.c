@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2004-2008, 2010-2011, Wind River Systems
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2004-2008, 2010-2011, Wind River Systems
+=======
  * Copyright (c) 2004-2008, Wind River Systems
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,10 +55,14 @@ static int tipc_nametbl_size = 1024;		/* must be a power of 2 */
 <<<<<<< HEAD
  * struct name_info - name sequence publication info
 =======
+<<<<<<< HEAD
+ * struct name_info - name sequence publication info
+=======
  * struct sub_seq - container for all published instances of a name sequence
  * @lower: name sequence lower bound
  * @upper: name sequence upper bound
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @node_list: circular list of publications made by own node
  * @cluster_list: circular list of publications made by own cluster
  * @zone_list: circular list of publications made by own zone
@@ -68,6 +76,9 @@ static int tipc_nametbl_size = 1024;		/* must be a power of 2 */
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct name_info {
 	struct list_head node_list;
 	struct list_head cluster_list;
@@ -88,6 +99,8 @@ struct sub_seq {
 	u32 lower;
 	u32 upper;
 	struct name_info *info;
+<<<<<<< HEAD
+=======
 =======
 struct sub_seq {
 	u32 lower;
@@ -99,6 +112,7 @@ struct sub_seq {
 	u32 cluster_list_size;
 	u32 zone_list_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -140,11 +154,16 @@ static struct name_table table;
 DEFINE_RWLOCK(tipc_nametbl_lock);
 
 =======
+<<<<<<< HEAD
+DEFINE_RWLOCK(tipc_nametbl_lock);
+
+=======
 static atomic_t rsv_publ_ok = ATOMIC_INIT(0);
 DEFINE_RWLOCK(tipc_nametbl_lock);
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hash(int x)
 {
 	return x & (tipc_nametbl_size - 1);
@@ -279,17 +298,23 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 						    u32 scope, u32 node, u32 port, u32 key)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tipc_subscription *s;
 	struct tipc_subscription *st;
 	struct publication *publ;
 	struct sub_seq *sseq;
 	struct name_info *info;
+<<<<<<< HEAD
+=======
 =======
 	struct subscription *s;
 	struct subscription *st;
 	struct publication *publ;
 	struct sub_seq *sseq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int created_subseq = 0;
 
 	sseq = nameseq_find_subseq(nseq, lower);
@@ -303,6 +328,9 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 			return NULL;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		info = sseq->info;
 
@@ -312,8 +340,11 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 			    (!publ->node || (publ->node == node)))
 				return NULL;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		u32 inspos;
 		struct sub_seq *freesseq;
@@ -349,6 +380,9 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info = kzalloc(sizeof(*info), GFP_ATOMIC);
 		if (!info) {
 			warn("Cannot publish {%u,%u,%u}, no memory\n",
@@ -360,8 +394,11 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 		INIT_LIST_HEAD(&info->cluster_list);
 		INIT_LIST_HEAD(&info->zone_list);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Insert new sub-sequence */
 
 		sseq = &nseq->sseqs[inspos];
@@ -374,7 +411,11 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 <<<<<<< HEAD
 		sseq->info = info;
 =======
+<<<<<<< HEAD
+		sseq->info = info;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		created_subseq = 1;
 	}
 
@@ -385,6 +426,9 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 		return NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	list_add(&publ->zone_list, &info->zone_list);
 	info->zone_list_size++;
 
@@ -396,6 +440,8 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 	if (node == tipc_own_addr) {
 		list_add(&publ->node_list, &info->node_list);
 		info->node_list_size++;
+<<<<<<< HEAD
+=======
 =======
 	sseq->zone_list_size++;
 	if (!sseq->zone_list)
@@ -425,6 +471,7 @@ static struct publication *tipc_nameseq_insert_publ(struct name_seq *nseq,
 			sseq->node_list->node_list_next = publ;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -459,10 +506,15 @@ static struct publication *tipc_nameseq_remove_publ(struct name_seq *nseq, u32 i
 {
 	struct publication *publ;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sub_seq *sseq = nameseq_find_subseq(nseq, inst);
 	struct name_info *info;
 	struct sub_seq *free;
 	struct tipc_subscription *s, *st;
+<<<<<<< HEAD
+=======
 =======
 	struct publication *curr;
 	struct publication *prev;
@@ -470,12 +522,16 @@ static struct publication *tipc_nameseq_remove_publ(struct name_seq *nseq, u32 i
 	struct sub_seq *free;
 	struct subscription *s, *st;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int removed_subseq = 0;
 
 	if (!sseq)
 		return NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info = sseq->info;
 
 	/* Locate publication, if it exists */
@@ -492,6 +548,8 @@ found:
 
 	list_del(&publ->zone_list);
 	info->zone_list_size--;
+<<<<<<< HEAD
+=======
 =======
 	/* Remove publication from zone scope list */
 
@@ -518,10 +576,16 @@ found:
 	}
 	sseq->zone_list_size--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Remove publication from cluster scope list, if present */
 
 	if (in_own_cluster(node)) {
+<<<<<<< HEAD
+		list_del(&publ->cluster_list);
+		info->cluster_list_size--;
+	}
+=======
 <<<<<<< HEAD
 		list_del(&publ->cluster_list);
 		info->cluster_list_size--;
@@ -555,11 +619,15 @@ found:
 	}
 end_cluster:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Remove publication from node scope list, if present */
 
 	if (node == tipc_own_addr) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list_del(&publ->node_list);
 		info->node_list_size--;
 	}
@@ -568,6 +636,8 @@ end_cluster:
 
 	if (list_empty(&info->zone_list)) {
 		kfree(info);
+<<<<<<< HEAD
+=======
 =======
 		prev = sseq->node_list;
 		curr = sseq->node_list->node_list_next;
@@ -601,6 +671,7 @@ end_node:
 
 	if (!sseq->zone_list) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		free = &nseq->sseqs[nseq->first_free--];
 		memmove(sseq, sseq + 1, (free - (sseq + 1)) * sizeof(*sseq));
 		removed_subseq = 1;
@@ -631,8 +702,13 @@ end_node:
 static void tipc_nameseq_subscribe(struct name_seq *nseq,
 					struct tipc_subscription *s)
 =======
+<<<<<<< HEAD
+static void tipc_nameseq_subscribe(struct name_seq *nseq,
+					struct tipc_subscription *s)
+=======
 static void tipc_nameseq_subscribe(struct name_seq *nseq, struct subscription *s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sub_seq *sseq = nseq->sseqs;
 
@@ -643,12 +719,17 @@ static void tipc_nameseq_subscribe(struct name_seq *nseq, struct subscription *s
 
 	while (sseq != &nseq->sseqs[nseq->first_free]) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (tipc_subscr_overlap(s, sseq->lower, sseq->upper)) {
 			struct publication *crs;
 			struct name_info *info = sseq->info;
 			int must_report = 1;
 
 			list_for_each_entry(crs, &info->zone_list, zone_list) {
+<<<<<<< HEAD
+=======
 =======
 		struct publication *zl = sseq->zone_list;
 		if (zl && tipc_subscr_overlap(s, sseq->lower, sseq->upper)) {
@@ -657,6 +738,7 @@ static void tipc_nameseq_subscribe(struct name_seq *nseq, struct subscription *s
 
 			do {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				tipc_subscr_report_overlap(s,
 							   sseq->lower,
 							   sseq->upper,
@@ -668,9 +750,13 @@ static void tipc_nameseq_subscribe(struct name_seq *nseq, struct subscription *s
 <<<<<<< HEAD
 			}
 =======
+<<<<<<< HEAD
+			}
+=======
 				crs = crs->zone_list_next;
 			} while (crs != zl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		sseq++;
 	}
@@ -732,6 +818,9 @@ struct publication *tipc_nametbl_remove_publ(u32 type, u32 lower,
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tipc_nametbl_translate - perform name translation
  *
  * On entry, 'destnode' is the search domain used during translation.
@@ -743,28 +832,37 @@ struct publication *tipc_nametbl_remove_publ(u32 type, u32 lower,
  *   to publishing node and returns port reference (will be non-zero)
  * - if name translation is attempted and fails, sets 'destnode' to 0
  *   and returns 0
+<<<<<<< HEAD
+=======
 =======
  * tipc_nametbl_translate - translate name to port id
  *
  * Note: on entry 'destnode' is the search domain used during translation;
  *       on exit it passes back the node address of the matching port (if any)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 u32 tipc_nametbl_translate(u32 type, u32 instance, u32 *destnode)
 {
 	struct sub_seq *sseq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct name_info *info;
 	struct publication *publ;
 	struct name_seq *seq;
 	u32 ref = 0;
 	u32 node = 0;
+<<<<<<< HEAD
+=======
 =======
 	struct publication *publ = NULL;
 	struct name_seq *seq;
 	u32 ref;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!tipc_in_scope(*destnode, tipc_own_addr))
 		return 0;
@@ -778,6 +876,9 @@ u32 tipc_nametbl_translate(u32 type, u32 instance, u32 *destnode)
 		goto not_found;
 	spin_lock_bh(&seq->lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info = sseq->info;
 
 	/* Closest-First Algorithm: */
@@ -800,6 +901,8 @@ u32 tipc_nametbl_translate(u32 type, u32 instance, u32 *destnode)
 						zone_list);
 			list_move_tail(&publ->zone_list,
 				       &info->zone_list);
+<<<<<<< HEAD
+=======
 =======
 
 	/* Closest-First Algorithm: */
@@ -824,12 +927,16 @@ found:
 			sseq->zone_list = publ->zone_list_next;
 			goto found;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
 	/* Round-Robin Algorithm: */
 	else if (*destnode == tipc_own_addr) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (list_empty(&info->node_list))
 			goto no_match;
 		publ = list_first_entry(&info->node_list, struct publication,
@@ -855,6 +962,8 @@ not_found:
 	read_unlock_bh(&tipc_nametbl_lock);
 	*destnode = node;
 	return ref;
+<<<<<<< HEAD
+=======
 =======
 		publ = sseq->node_list;
 		if (publ) {
@@ -879,6 +988,7 @@ not_found:
 	read_unlock_bh(&tipc_nametbl_lock);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -898,8 +1008,12 @@ int tipc_nametbl_mc_translate(u32 type, u32 lower, u32 upper, u32 limit,
 <<<<<<< HEAD
 			      struct tipc_port_list *dports)
 =======
+<<<<<<< HEAD
+			      struct tipc_port_list *dports)
+=======
 			      struct port_list *dports)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct name_seq *seq;
 	struct sub_seq *sseq;
@@ -907,7 +1021,11 @@ int tipc_nametbl_mc_translate(u32 type, u32 lower, u32 upper, u32 limit,
 <<<<<<< HEAD
 	struct name_info *info;
 =======
+<<<<<<< HEAD
+	struct name_info *info;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int res = 0;
 
 	read_lock_bh(&tipc_nametbl_lock);
@@ -926,6 +1044,9 @@ int tipc_nametbl_mc_translate(u32 type, u32 lower, u32 upper, u32 limit,
 			break;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info = sseq->info;
 		list_for_each_entry(publ, &info->node_list, node_list) {
 			if (publ->scope <= limit)
@@ -933,6 +1054,8 @@ int tipc_nametbl_mc_translate(u32 type, u32 lower, u32 upper, u32 limit,
 		}
 
 		if (info->cluster_list_size != info->node_list_size)
+<<<<<<< HEAD
+=======
 =======
 		publ = sseq->node_list;
 		if (publ) {
@@ -945,6 +1068,7 @@ int tipc_nametbl_mc_translate(u32 type, u32 lower, u32 upper, u32 limit,
 
 		if (sseq->cluster_list_size != sseq->node_list_size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			res = 1;
 	}
 
@@ -954,6 +1078,9 @@ exit:
 	return res;
 }
 
+<<<<<<< HEAD
+/*
+=======
 <<<<<<< HEAD
 /*
 =======
@@ -974,6 +1101,7 @@ int tipc_nametbl_publish_rsv(u32 ref, unsigned int scope,
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * tipc_nametbl_publish - add name publication to network name tables
  */
 
@@ -989,12 +1117,15 @@ struct publication *tipc_nametbl_publish(u32 type, u32 lower, u32 upper,
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if ((type < TIPC_RESERVED_TYPES) && !atomic_read(&rsv_publ_ok)) {
 		warn("Publication failed, reserved name {%u,%u,%u}\n",
 		     type, lower, upper);
 		return NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	write_lock_bh(&tipc_nametbl_lock);
 	table.local_publ_count++;
@@ -1039,8 +1170,12 @@ int tipc_nametbl_withdraw(u32 type, u32 lower, u32 ref, u32 key)
 <<<<<<< HEAD
 void tipc_nametbl_subscribe(struct tipc_subscription *s)
 =======
+<<<<<<< HEAD
+void tipc_nametbl_subscribe(struct tipc_subscription *s)
+=======
 void tipc_nametbl_subscribe(struct subscription *s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 type = s->seq.type;
 	struct name_seq *seq;
@@ -1067,8 +1202,12 @@ void tipc_nametbl_subscribe(struct subscription *s)
 <<<<<<< HEAD
 void tipc_nametbl_unsubscribe(struct tipc_subscription *s)
 =======
+<<<<<<< HEAD
+void tipc_nametbl_unsubscribe(struct tipc_subscription *s)
+=======
 void tipc_nametbl_unsubscribe(struct subscription *s)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct name_seq *seq;
 
@@ -1098,12 +1237,17 @@ static void subseq_list(struct sub_seq *sseq, struct print_buf *buf, u32 depth,
 	char portIdStr[27];
 	const char *scope_str[] = {"", " zone", " cluster", " node"};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct publication *publ;
 	struct name_info *info;
 
 	tipc_printf(buf, "%-10u %-10u ", sseq->lower, sseq->upper);
 
 	if (depth == 2) {
+<<<<<<< HEAD
+=======
 =======
 	struct publication *publ = sseq->zone_list;
 
@@ -1111,6 +1255,7 @@ static void subseq_list(struct sub_seq *sseq, struct print_buf *buf, u32 depth,
 
 	if (depth == 2 || !publ) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tipc_printf(buf, "\n");
 		return;
 	}
@@ -1120,8 +1265,14 @@ static void subseq_list(struct sub_seq *sseq, struct print_buf *buf, u32 depth,
 
 	list_for_each_entry(publ, &info->zone_list, zone_list) {
 =======
+<<<<<<< HEAD
+	info = sseq->info;
+
+	list_for_each_entry(publ, &info->zone_list, zone_list) {
+=======
 	do {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sprintf(portIdStr, "<%u.%u.%u:%u>",
 			 tipc_zone(publ->node), tipc_cluster(publ->node),
 			 tipc_node(publ->node), publ->ref);
@@ -1135,6 +1286,11 @@ static void subseq_list(struct sub_seq *sseq, struct print_buf *buf, u32 depth,
 			tipc_printf(buf, "\n%33s", " ");
 	};
 =======
+<<<<<<< HEAD
+		if (!list_is_last(&publ->zone_list, &info->zone_list))
+			tipc_printf(buf, "\n%33s", " ");
+	};
+=======
 
 		publ = publ->zone_list_next;
 		if (publ == sseq->zone_list)
@@ -1143,6 +1299,7 @@ static void subseq_list(struct sub_seq *sseq, struct print_buf *buf, u32 depth,
 		tipc_printf(buf, "\n%33s", " ");
 	} while (1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tipc_printf(buf, "\n");
 }

@@ -31,8 +31,11 @@
 #include <asm/page.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 
@@ -85,8 +88,13 @@ int ixdp2400_pci_setup(int nr, struct pci_sys_data *sys)
 static int __init ixdp2400_pci_map_irq(const struct pci_dev *dev, u8 slot,
 	u8 pin)
 =======
+<<<<<<< HEAD
+static int __init ixdp2400_pci_map_irq(const struct pci_dev *dev, u8 slot,
+	u8 pin)
+=======
 static int __init ixdp2400_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (ixdp2x00_master_npu()) {
 
@@ -142,11 +150,16 @@ static void ixdp2400_pci_postinit(void)
 	if (ixdp2x00_master_npu()) {
 		dev = pci_get_bus_and_slot(1, IXDP2400_SLAVE_ENET_DEVFN);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_stop_and_remove_bus_device(dev);
 		pci_dev_put(dev);
 	} else {
 		dev = pci_get_bus_and_slot(1, IXDP2400_MASTER_ENET_DEVFN);
 		pci_stop_and_remove_bus_device(dev);
+<<<<<<< HEAD
+=======
 =======
 		pci_remove_bus_device(dev);
 		pci_dev_put(dev);
@@ -154,6 +167,7 @@ static void ixdp2400_pci_postinit(void)
 		dev = pci_get_bus_and_slot(1, IXDP2400_MASTER_ENET_DEVFN);
 		pci_remove_bus_device(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_dev_put(dev);
 
 		ixdp2x00_slave_pci_postinit();
@@ -189,8 +203,12 @@ MACHINE_START(IXDP2400, "Intel IXDP2400 Development Platform")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= ixdp2x00_map_io,
 	.init_irq	= ixdp2400_init_irq,
 	.timer		= &ixdp2400_timer,
@@ -198,6 +216,10 @@ MACHINE_START(IXDP2400, "Intel IXDP2400 Development Platform")
 <<<<<<< HEAD
 	.restart	= ixp2000_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ixp2000_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 

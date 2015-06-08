@@ -47,6 +47,9 @@ static void ath79_misc_irq_handler(unsigned int irq, struct irq_desc *desc)
 		generic_handle_irq(ATH79_MISC_IRQ_TIMER);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (pending & MISC_INT_TIMER2)
 		generic_handle_irq(ATH79_MISC_IRQ_TIMER2);
 
@@ -56,8 +59,11 @@ static void ath79_misc_irq_handler(unsigned int irq, struct irq_desc *desc)
 	else if (pending & MISC_INT_TIMER4)
 		generic_handle_irq(ATH79_MISC_IRQ_TIMER4);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else if (pending & MISC_INT_OHCI)
 		generic_handle_irq(ATH79_MISC_IRQ_OHCI);
 
@@ -75,7 +81,13 @@ static void ath79_misc_irq_handler(unsigned int irq, struct irq_desc *desc)
 		generic_handle_irq(ATH79_MISC_IRQ_ETHSW);
 
 =======
+<<<<<<< HEAD
+	else if (pending & MISC_INT_ETHSW)
+		generic_handle_irq(ATH79_MISC_IRQ_ETHSW);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		spurious_interrupt();
 }
@@ -138,8 +150,12 @@ static void __init ath79_misc_irq_init(void)
 <<<<<<< HEAD
 	else if (soc_is_ar724x() || soc_is_ar933x())
 =======
+<<<<<<< HEAD
+	else if (soc_is_ar724x() || soc_is_ar933x())
+=======
 	else if (soc_is_ar724x())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath79_misc_irq_chip.irq_ack = ar724x_misc_irq_ack;
 	else
 		BUG();
@@ -201,7 +217,13 @@ void __init arch_init_irq(void)
 		ath79_ip2_flush_reg = AR933X_DDR_REG_FLUSH_WMAC;
 		ath79_ip3_flush_reg = AR933X_DDR_REG_FLUSH_USB;
 =======
+<<<<<<< HEAD
+	} else if (soc_is_ar933x()) {
+		ath79_ip2_flush_reg = AR933X_DDR_REG_FLUSH_WMAC;
+		ath79_ip3_flush_reg = AR933X_DDR_REG_FLUSH_USB;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		BUG();
 

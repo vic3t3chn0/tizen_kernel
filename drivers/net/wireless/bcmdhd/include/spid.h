@@ -1,6 +1,20 @@
 /*
  * SPI device spec header file
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2012, Broadcom Corporation
+ * All Rights Reserved.
+ * 
+ * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Broadcom Corporation;
+ * the contents of this file may not be disclosed to third parties, copied
+ * or duplicated in any form, in whole or in part, without the prior
+ * written permission of Broadcom Corporation.
+ *
+ * $Id: spid.h 241182 2011-02-17 21:50:03Z $
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 1999-2012, Broadcom Corporation
  * 
  *      Unless you and Broadcom execute a separate written software license
@@ -22,6 +36,10 @@
  * other than the GPL, without Broadcom's express prior written consent.
  *
  * $Id: spid.h 358377 2012-09-23 11:30:22Z $
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef	_SPI_H

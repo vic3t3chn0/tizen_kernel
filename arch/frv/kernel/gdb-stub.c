@@ -128,8 +128,11 @@
 #include <asm/pgtable.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/gdb-stub.h>
 
 #define LEDS(x) do { /* *(u32*)0xe1200004 = ~(x); mb(); */ } while(0)
@@ -678,8 +681,12 @@ static unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fa
 <<<<<<< HEAD
 		buf = hex_byte_pack(buf, ch[0]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem++;
 		count--;
 	}
@@ -691,9 +698,14 @@ static unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fa
 		buf = hex_byte_pack(buf, ch[0]);
 		buf = hex_byte_pack(buf, ch[1]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+		buf = hex_byte_pack(buf, ch[1]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 		buf = pack_hex_byte(buf, ch[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem += 2;
 		count -= 2;
 	}
@@ -702,16 +714,22 @@ static unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fa
 		if (!gdbstub_read_dword(mem,(uint32_t *)ch))
 			return NULL;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		buf = hex_byte_pack(buf, ch[0]);
 		buf = hex_byte_pack(buf, ch[1]);
 		buf = hex_byte_pack(buf, ch[2]);
 		buf = hex_byte_pack(buf, ch[3]);
+<<<<<<< HEAD
+=======
 =======
 		buf = pack_hex_byte(buf, ch[0]);
 		buf = pack_hex_byte(buf, ch[1]);
 		buf = pack_hex_byte(buf, ch[2]);
 		buf = pack_hex_byte(buf, ch[3]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem += 4;
 		count -= 4;
 	}
@@ -723,9 +741,14 @@ static unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fa
 		buf = hex_byte_pack(buf, ch[0]);
 		buf = hex_byte_pack(buf, ch[1]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+		buf = hex_byte_pack(buf, ch[1]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 		buf = pack_hex_byte(buf, ch[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem += 2;
 		count -= 2;
 	}
@@ -736,8 +759,12 @@ static unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fa
 <<<<<<< HEAD
 		buf = hex_byte_pack(buf, ch[0]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	*buf = 0;
@@ -1527,6 +1554,9 @@ void gdbstub(int sigval)
 
 		hx = hex_asc_hi(brr >> 24);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ptr = hex_byte_pack(ptr, hx);
 		hx = hex_asc_lo(brr >> 24);
 		ptr = hex_byte_pack(ptr, hx);
@@ -1542,6 +1572,8 @@ void gdbstub(int sigval)
 		ptr = hex_byte_pack(ptr, hx);
 		hx = hex_asc_lo(brr);
 		ptr = hex_byte_pack(ptr, hx);
+<<<<<<< HEAD
+=======
 =======
 		ptr = pack_hex_byte(ptr, hx);
 		hx = hex_asc_lo(brr >> 24);
@@ -1559,6 +1591,7 @@ void gdbstub(int sigval)
 		hx = hex_asc_lo(brr);
 		ptr = pack_hex_byte(ptr, hx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ptr = mem2hex(crlf, ptr, sizeof(crlf) - 1, 0);
 		*ptr = 0;
@@ -1573,16 +1606,22 @@ void gdbstub(int sigval)
 	/* Send trap type (converted to signal) */
 	*ptr++ = 'T';
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ptr = hex_byte_pack(ptr, sigval);
 
 	/* Send Error PC */
 	ptr = hex_byte_pack(ptr, GDB_REG_PC);
+<<<<<<< HEAD
+=======
 =======
 	ptr = pack_hex_byte(ptr, sigval);
 
 	/* Send Error PC */
 	ptr = pack_hex_byte(ptr, GDB_REG_PC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(&__debug_frame->pc, ptr, 4, 0);
 	*ptr++ = ';';
@@ -1593,8 +1632,12 @@ void gdbstub(int sigval)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, GDB_REG_FP);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, GDB_REG_FP);
+=======
 	ptr = pack_hex_byte(ptr, GDB_REG_FP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(&__debug_frame->fp, ptr, 4, 0);
 	*ptr++ = ';';
@@ -1605,8 +1648,12 @@ void gdbstub(int sigval)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, GDB_REG_SP);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, GDB_REG_SP);
+=======
 	ptr = pack_hex_byte(ptr, GDB_REG_SP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(&__debug_frame->sp, ptr, 4, 0);
 	*ptr++ = ';';

@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2010-2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -14,26 +18,35 @@
  * GNU General Public License for more details.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301, USA.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
 #include <linux/bootmem.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <mach/irqs.h>
 #include <mach/iommu.h>
 #include <mach/socinfo.h>
+<<<<<<< HEAD
+=======
 =======
 #include <mach/irqs.h>
 #include <mach/iommu.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource msm_iommu_jpegd_resources[] = {
 	{
@@ -48,9 +61,14 @@ static struct resource msm_iommu_jpegd_resources[] = {
 		.start = 98,
 		.end   = 98,
 =======
+<<<<<<< HEAD
+		.start = 98,
+		.end   = 98,
+=======
 		.start = SMMU_JPEGD_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_JPEGD_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -59,9 +77,14 @@ static struct resource msm_iommu_jpegd_resources[] = {
 		.start = 97,
 		.end   = 97,
 =======
+<<<<<<< HEAD
+		.start = 97,
+		.end   = 97,
+=======
 		.start = SMMU_JPEGD_CB_SC_SECURE_IRQ,
 		.end   = SMMU_JPEGD_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -79,9 +102,14 @@ static struct resource msm_iommu_vpe_resources[] = {
 		.start = 84,
 		.end   = 84,
 =======
+<<<<<<< HEAD
+		.start = 84,
+		.end   = 84,
+=======
 		.start = SMMU_VPE_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_VPE_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -90,9 +118,14 @@ static struct resource msm_iommu_vpe_resources[] = {
 		.start = 83,
 		.end   = 83,
 =======
+<<<<<<< HEAD
+		.start = 83,
+		.end   = 83,
+=======
 		.start = SMMU_VPE_CB_SC_SECURE_IRQ,
 		.end   = SMMU_VPE_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -110,9 +143,14 @@ static struct resource msm_iommu_mdp0_resources[] = {
 		.start = 96,
 		.end   = 96,
 =======
+<<<<<<< HEAD
+		.start = 96,
+		.end   = 96,
+=======
 		.start = SMMU_MDP0_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_MDP0_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -121,9 +159,14 @@ static struct resource msm_iommu_mdp0_resources[] = {
 		.start = 95,
 		.end   = 95,
 =======
+<<<<<<< HEAD
+		.start = 95,
+		.end   = 95,
+=======
 		.start = SMMU_MDP0_CB_SC_SECURE_IRQ,
 		.end   = SMMU_MDP0_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -141,9 +184,14 @@ static struct resource msm_iommu_mdp1_resources[] = {
 		.start = 94,
 		.end   = 94,
 =======
+<<<<<<< HEAD
+		.start = 94,
+		.end   = 94,
+=======
 		.start = SMMU_MDP1_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_MDP1_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -152,9 +200,14 @@ static struct resource msm_iommu_mdp1_resources[] = {
 		.start = 93,
 		.end   = 93,
 =======
+<<<<<<< HEAD
+		.start = 93,
+		.end   = 93,
+=======
 		.start = SMMU_MDP1_CB_SC_SECURE_IRQ,
 		.end   = SMMU_MDP1_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -172,9 +225,14 @@ static struct resource msm_iommu_rot_resources[] = {
 		.start = 92,
 		.end   = 92,
 =======
+<<<<<<< HEAD
+		.start = 92,
+		.end   = 92,
+=======
 		.start = SMMU_ROT_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_ROT_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -183,9 +241,14 @@ static struct resource msm_iommu_rot_resources[] = {
 		.start = 91,
 		.end   = 91,
 =======
+<<<<<<< HEAD
+		.start = 91,
+		.end   = 91,
+=======
 		.start = SMMU_ROT_CB_SC_SECURE_IRQ,
 		.end   = SMMU_ROT_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -203,9 +266,14 @@ static struct resource msm_iommu_ijpeg_resources[] = {
 		.start = 100,
 		.end   = 100,
 =======
+<<<<<<< HEAD
+		.start = 100,
+		.end   = 100,
+=======
 		.start = SMMU_IJPEG_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_IJPEG_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -214,9 +282,14 @@ static struct resource msm_iommu_ijpeg_resources[] = {
 		.start = 99,
 		.end   = 99,
 =======
+<<<<<<< HEAD
+		.start = 99,
+		.end   = 99,
+=======
 		.start = SMMU_IJPEG_CB_SC_SECURE_IRQ,
 		.end   = SMMU_IJPEG_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -234,9 +307,14 @@ static struct resource msm_iommu_vfe_resources[] = {
 		.start = 86,
 		.end   = 86,
 =======
+<<<<<<< HEAD
+		.start = 86,
+		.end   = 86,
+=======
 		.start = SMMU_VFE_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_VFE_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -245,9 +323,14 @@ static struct resource msm_iommu_vfe_resources[] = {
 		.start = 85,
 		.end   = 85,
 =======
+<<<<<<< HEAD
+		.start = 85,
+		.end   = 85,
+=======
 		.start = SMMU_VFE_CB_SC_SECURE_IRQ,
 		.end   = SMMU_VFE_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -265,9 +348,14 @@ static struct resource msm_iommu_vcodec_a_resources[] = {
 		.start = 90,
 		.end   = 90,
 =======
+<<<<<<< HEAD
+		.start = 90,
+		.end   = 90,
+=======
 		.start = SMMU_VCODEC_A_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_VCODEC_A_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -276,9 +364,14 @@ static struct resource msm_iommu_vcodec_a_resources[] = {
 		.start = 89,
 		.end   = 89,
 =======
+<<<<<<< HEAD
+		.start = 89,
+		.end   = 89,
+=======
 		.start = SMMU_VCODEC_A_CB_SC_SECURE_IRQ,
 		.end   = SMMU_VCODEC_A_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -296,9 +389,14 @@ static struct resource msm_iommu_vcodec_b_resources[] = {
 		.start = 88,
 		.end   = 88,
 =======
+<<<<<<< HEAD
+		.start = 88,
+		.end   = 88,
+=======
 		.start = SMMU_VCODEC_B_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_VCODEC_B_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -307,9 +405,14 @@ static struct resource msm_iommu_vcodec_b_resources[] = {
 		.start = 87,
 		.end   = 87,
 =======
+<<<<<<< HEAD
+		.start = 87,
+		.end   = 87,
+=======
 		.start = SMMU_VCODEC_B_CB_SC_SECURE_IRQ,
 		.end   = SMMU_VCODEC_B_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -327,14 +430,22 @@ static struct resource msm_iommu_gfx3d_resources[] = {
 		.start = 102,
 		.end   = 102,
 =======
+<<<<<<< HEAD
+		.start = 102,
+		.end   = 102,
+=======
 		.start = SMMU_GFX3D_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_GFX3D_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
 		.name = "secure_irq",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start = 101,
 		.end   = 101,
 		.flags = IORESOURCE_IRQ,
@@ -358,10 +469,13 @@ static struct resource msm_iommu_gfx3d1_resources[] = {
 		.name = "secure_irq",
 		.start = 242,
 		.end   = 242,
+<<<<<<< HEAD
+=======
 =======
 		.start = SMMU_GFX3D_CB_SC_SECURE_IRQ,
 		.end   = SMMU_GFX3D_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -379,9 +493,14 @@ static struct resource msm_iommu_gfx2d0_resources[] = {
 		.start = 104,
 		.end   = 104,
 =======
+<<<<<<< HEAD
+		.start = 104,
+		.end   = 104,
+=======
 		.start = SMMU_GFX2D0_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_GFX2D0_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -390,9 +509,14 @@ static struct resource msm_iommu_gfx2d0_resources[] = {
 		.start = 103,
 		.end   = 103,
 =======
+<<<<<<< HEAD
+		.start = 103,
+		.end   = 103,
+=======
 		.start = SMMU_GFX2D0_CB_SC_SECURE_IRQ,
 		.end   = SMMU_GFX2D0_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
@@ -410,9 +534,14 @@ static struct resource msm_iommu_gfx2d1_resources[] = {
 		.start = 243,
 		.end   = 243,
 =======
+<<<<<<< HEAD
+		.start = 243,
+		.end   = 243,
+=======
 		.start = SMMU_GFX2D1_CB_SC_NON_SECURE_IRQ,
 		.end   = SMMU_GFX2D1_CB_SC_NON_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 	{
@@ -421,14 +550,22 @@ static struct resource msm_iommu_gfx2d1_resources[] = {
 		.start = 242,
 		.end   = 242,
 =======
+<<<<<<< HEAD
+		.start = 242,
+		.end   = 242,
+=======
 		.start = SMMU_GFX2D1_CB_SC_SECURE_IRQ,
 		.end   = SMMU_GFX2D1_CB_SC_SECURE_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags = IORESOURCE_IRQ,
 	},
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource msm_iommu_vcap_resources[] = {
 	{
 		.start = 0x07200000,
@@ -448,11 +585,14 @@ static struct resource msm_iommu_vcap_resources[] = {
 		.end   = 268,
 		.flags = IORESOURCE_IRQ,
 	},
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device msm_root_iommu_dev = {
 	.name = "msm_iommu",
 	.id = -1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct msm_iommu_dev jpegd_iommu = {
@@ -504,6 +644,9 @@ static struct msm_iommu_dev gfx3d_iommu = {
 	.name = "gfx3d",
 	.ncb = 3,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ttbr_split = 0,
 };
 
@@ -511,8 +654,11 @@ static struct msm_iommu_dev gfx3d1_iommu = {
 	.name = "gfx3d1",
 	.ncb = 3,
 	.ttbr_split = 0,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct msm_iommu_dev gfx2d0_iommu = {
@@ -521,13 +667,20 @@ static struct msm_iommu_dev gfx2d0_iommu = {
 <<<<<<< HEAD
 	.ttbr_split = 0,
 =======
+<<<<<<< HEAD
+	.ttbr_split = 0,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct msm_iommu_dev gfx2d1_iommu = {
 	.name = "gfx2d1",
 	.ncb = 2,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ttbr_split = 0,
 };
 
@@ -541,6 +694,8 @@ static struct platform_device msm_device_iommu_jpegd = {
 	.id = 0,
 	.dev = {
 		.platform_data = &jpegd_iommu,
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -550,6 +705,7 @@ static struct platform_device msm_device_iommu_jpegd = {
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_jpegd_resources),
 	.resource = msm_iommu_jpegd_resources,
@@ -557,16 +713,22 @@ static struct platform_device msm_device_iommu_jpegd = {
 
 static struct platform_device msm_device_iommu_vpe = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 1,
 	.dev = {
 		.platform_data = &vpe_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 1,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_vpe_resources),
 	.resource = msm_iommu_vpe_resources,
@@ -574,16 +736,22 @@ static struct platform_device msm_device_iommu_vpe = {
 
 static struct platform_device msm_device_iommu_mdp0 = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 2,
 	.dev = {
 		.platform_data = &mdp0_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 2,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_mdp0_resources),
 	.resource = msm_iommu_mdp0_resources,
@@ -591,16 +759,22 @@ static struct platform_device msm_device_iommu_mdp0 = {
 
 static struct platform_device msm_device_iommu_mdp1 = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 3,
 	.dev = {
 		.platform_data = &mdp1_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 3,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_mdp1_resources),
 	.resource = msm_iommu_mdp1_resources,
@@ -608,16 +782,22 @@ static struct platform_device msm_device_iommu_mdp1 = {
 
 static struct platform_device msm_device_iommu_rot = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 4,
 	.dev = {
 		.platform_data = &rot_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 4,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_rot_resources),
 	.resource = msm_iommu_rot_resources,
@@ -625,16 +805,22 @@ static struct platform_device msm_device_iommu_rot = {
 
 static struct platform_device msm_device_iommu_ijpeg = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 5,
 	.dev = {
 		.platform_data = &ijpeg_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 5,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_ijpeg_resources),
 	.resource = msm_iommu_ijpeg_resources,
@@ -642,16 +828,22 @@ static struct platform_device msm_device_iommu_ijpeg = {
 
 static struct platform_device msm_device_iommu_vfe = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 6,
 	.dev = {
 		.platform_data = &vfe_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 6,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_vfe_resources),
 	.resource = msm_iommu_vfe_resources,
@@ -659,16 +851,22 @@ static struct platform_device msm_device_iommu_vfe = {
 
 static struct platform_device msm_device_iommu_vcodec_a = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 7,
 	.dev = {
 		.platform_data = &vcodec_a_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 7,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_vcodec_a_resources),
 	.resource = msm_iommu_vcodec_a_resources,
@@ -676,16 +874,22 @@ static struct platform_device msm_device_iommu_vcodec_a = {
 
 static struct platform_device msm_device_iommu_vcodec_b = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 8,
 	.dev = {
 		.platform_data = &vcodec_b_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 8,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_vcodec_b_resources),
 	.resource = msm_iommu_vcodec_b_resources,
@@ -693,22 +897,31 @@ static struct platform_device msm_device_iommu_vcodec_b = {
 
 static struct platform_device msm_device_iommu_gfx3d = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu-v0",
 	.id = 9,
 	.dev = {
 		.platform_data = &gfx3d_iommu,
+<<<<<<< HEAD
+=======
 =======
 	.name = "msm_iommu",
 	.id = 9,
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_gfx3d_resources),
 	.resource = msm_iommu_gfx3d_resources,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device msm_device_iommu_gfx3d1 = {
 	.name = "msm_iommu-v0",
 	.id = 10,
@@ -724,6 +937,8 @@ static struct platform_device msm_device_iommu_gfx2d0 = {
 	.id = 10,
 	.dev = {
 		.platform_data = &gfx2d0_iommu,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device msm_device_iommu_gfx2d0 = {
 	.name = "msm_iommu",
@@ -731,17 +946,23 @@ static struct platform_device msm_device_iommu_gfx2d0 = {
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_gfx2d0_resources),
 	.resource = msm_iommu_gfx2d0_resources,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device msm_device_iommu_gfx2d1 = {
 	.name = "msm_iommu-v0",
 	.id = 11,
 	.dev = {
 		.platform_data = &gfx2d1_iommu,
+<<<<<<< HEAD
+=======
 =======
 struct platform_device msm_device_iommu_gfx2d1 = {
 	.name = "msm_iommu",
@@ -749,12 +970,16 @@ struct platform_device msm_device_iommu_gfx2d1 = {
 	.dev = {
 		.parent = &msm_root_iommu_dev.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_resources = ARRAY_SIZE(msm_iommu_gfx2d1_resources),
 	.resource = msm_iommu_gfx2d1_resources,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device msm_device_iommu_vcap = {
 	.name = "msm_iommu-v0",
 	.id = 11,
@@ -765,8 +990,11 @@ static struct platform_device msm_device_iommu_vcap = {
 	.resource = msm_iommu_vcap_resources,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct msm_iommu_ctx_dev jpegd_src_ctx = {
 	.name = "jpegd_src",
 	.num = 0,
@@ -795,9 +1023,14 @@ static struct msm_iommu_ctx_dev vpe_dst_ctx = {
 static struct msm_iommu_ctx_dev mdp_port0_cb0_ctx = {
 	.name = "mdp_port0_cb0",
 =======
+<<<<<<< HEAD
+static struct msm_iommu_ctx_dev mdp_port0_cb0_ctx = {
+	.name = "mdp_port0_cb0",
+=======
 static struct msm_iommu_ctx_dev mdp_vg1_ctx = {
 	.name = "mdp_vg1",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num = 0,
 	.mids = {0, 2, -1}
 };
@@ -806,9 +1039,14 @@ static struct msm_iommu_ctx_dev mdp_vg1_ctx = {
 static struct msm_iommu_ctx_dev mdp_port0_cb1_ctx = {
 	.name = "mdp_port0_cb1",
 =======
+<<<<<<< HEAD
+static struct msm_iommu_ctx_dev mdp_port0_cb1_ctx = {
+	.name = "mdp_port0_cb1",
+=======
 static struct msm_iommu_ctx_dev mdp_rgb1_ctx = {
 	.name = "mdp_rgb1",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num = 1,
 	.mids = {1, 3, 4, 5, 6, 7, 8, 9, 10, -1}
 };
@@ -817,9 +1055,14 @@ static struct msm_iommu_ctx_dev mdp_rgb1_ctx = {
 static struct msm_iommu_ctx_dev mdp_port1_cb0_ctx = {
 	.name = "mdp_port1_cb0",
 =======
+<<<<<<< HEAD
+static struct msm_iommu_ctx_dev mdp_port1_cb0_ctx = {
+	.name = "mdp_port1_cb0",
+=======
 static struct msm_iommu_ctx_dev mdp_vg2_ctx = {
 	.name = "mdp_vg2",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num = 0,
 	.mids = {0, 2, -1}
 };
@@ -828,9 +1071,14 @@ static struct msm_iommu_ctx_dev mdp_vg2_ctx = {
 static struct msm_iommu_ctx_dev mdp_port1_cb1_ctx = {
 	.name = "mdp_port1_cb1",
 =======
+<<<<<<< HEAD
+static struct msm_iommu_ctx_dev mdp_port1_cb1_ctx = {
+	.name = "mdp_port1_cb1",
+=======
 static struct msm_iommu_ctx_dev mdp_rgb2_ctx = {
 	.name = "mdp_rgb2",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num = 1,
 	.mids = {1, 3, 4, 5, 6, 7, 8, 9, 10, -1}
 };
@@ -903,6 +1151,9 @@ static struct msm_iommu_ctx_dev gfx3d_priv_ctx = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct msm_iommu_ctx_dev gfx3d1_user_ctx = {
 	.name = "gfx3d1_user",
 	.num = 0,
@@ -916,8 +1167,11 @@ static struct msm_iommu_ctx_dev gfx3d1_priv_ctx = {
 		 31, -1}
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct msm_iommu_ctx_dev gfx2d0_2d0_ctx = {
 	.name = "gfx2d0_2d0",
 	.num = 0,
@@ -931,6 +1185,9 @@ static struct msm_iommu_ctx_dev gfx2d1_2d1_ctx = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct msm_iommu_ctx_dev vcap_vc_ctx = {
 	.name = "vcap_vc",
 	.num = 0,
@@ -943,8 +1200,11 @@ static struct msm_iommu_ctx_dev vcap_vp_ctx = {
 	.mids = {1, -1}
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device msm_device_jpegd_src_ctx = {
 	.name = "msm_iommu_ctx",
 	.id = 0,
@@ -953,7 +1213,11 @@ static struct platform_device msm_device_jpegd_src_ctx = {
 <<<<<<< HEAD
 		.platform_data = &jpegd_src_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &jpegd_src_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -965,7 +1229,11 @@ static struct platform_device msm_device_jpegd_dst_ctx = {
 <<<<<<< HEAD
 		.platform_data = &jpegd_dst_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &jpegd_dst_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -977,7 +1245,11 @@ static struct platform_device msm_device_vpe_src_ctx = {
 <<<<<<< HEAD
 		.platform_data = &vpe_src_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &vpe_src_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -987,65 +1259,89 @@ static struct platform_device msm_device_vpe_dst_ctx = {
 	.dev = {
 		.parent = &msm_device_iommu_vpe.dev,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &vpe_dst_ctx,
 	},
 };
 
 static struct platform_device msm_device_mdp_port0_cb0_ctx = {
+<<<<<<< HEAD
+=======
 =======
 	},
 };
 
 static struct platform_device msm_device_mdp_vg1_ctx = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu_ctx",
 	.id = 4,
 	.dev = {
 		.parent = &msm_device_iommu_mdp0.dev,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &mdp_port0_cb0_ctx,
 	},
 };
 
 static struct platform_device msm_device_mdp_port0_cb1_ctx = {
+<<<<<<< HEAD
+=======
 =======
 	},
 };
 
 static struct platform_device msm_device_mdp_rgb1_ctx = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu_ctx",
 	.id = 5,
 	.dev = {
 		.parent = &msm_device_iommu_mdp0.dev,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &mdp_port0_cb1_ctx,
 	},
 };
 
 static struct platform_device msm_device_mdp_port1_cb0_ctx = {
+<<<<<<< HEAD
+=======
 =======
 	},
 };
 
 static struct platform_device msm_device_mdp_vg2_ctx = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu_ctx",
 	.id = 6,
 	.dev = {
 		.parent = &msm_device_iommu_mdp1.dev,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &mdp_port1_cb0_ctx,
 	},
 };
 
 static struct platform_device msm_device_mdp_port1_cb1_ctx = {
+<<<<<<< HEAD
+=======
 =======
 	},
 };
 
 static struct platform_device msm_device_mdp_rgb2_ctx = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name = "msm_iommu_ctx",
 	.id = 7,
 	.dev = {
@@ -1053,7 +1349,11 @@ static struct platform_device msm_device_mdp_rgb2_ctx = {
 <<<<<<< HEAD
 		.platform_data = &mdp_port1_cb1_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &mdp_port1_cb1_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1065,7 +1365,11 @@ static struct platform_device msm_device_rot_src_ctx = {
 <<<<<<< HEAD
 		.platform_data = &rot_src_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &rot_src_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1077,7 +1381,11 @@ static struct platform_device msm_device_rot_dst_ctx = {
 <<<<<<< HEAD
 		.platform_data = &rot_dst_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &rot_dst_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1089,7 +1397,11 @@ static struct platform_device msm_device_ijpeg_src_ctx = {
 <<<<<<< HEAD
 		.platform_data = &ijpeg_src_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &ijpeg_src_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1101,7 +1413,11 @@ static struct platform_device msm_device_ijpeg_dst_ctx = {
 <<<<<<< HEAD
 		.platform_data = &ijpeg_dst_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &ijpeg_dst_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1113,7 +1429,11 @@ static struct platform_device msm_device_vfe_imgwr_ctx = {
 <<<<<<< HEAD
 		.platform_data = &vfe_imgwr_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &vfe_imgwr_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1125,7 +1445,11 @@ static struct platform_device msm_device_vfe_misc_ctx = {
 <<<<<<< HEAD
 		.platform_data = &vfe_misc_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &vfe_misc_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1137,7 +1461,11 @@ static struct platform_device msm_device_vcodec_a_stream_ctx = {
 <<<<<<< HEAD
 		.platform_data = &vcodec_a_stream_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &vcodec_a_stream_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1149,7 +1477,11 @@ static struct platform_device msm_device_vcodec_a_mm1_ctx = {
 <<<<<<< HEAD
 		.platform_data = &vcodec_a_mm1_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &vcodec_a_mm1_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1161,7 +1493,11 @@ static struct platform_device msm_device_vcodec_b_mm2_ctx = {
 <<<<<<< HEAD
 		.platform_data = &vcodec_b_mm2_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &vcodec_b_mm2_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1173,7 +1509,11 @@ static struct platform_device msm_device_gfx3d_user_ctx = {
 <<<<<<< HEAD
 		.platform_data = &gfx3d_user_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &gfx3d_user_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1183,6 +1523,9 @@ static struct platform_device msm_device_gfx3d_priv_ctx = {
 	.dev = {
 		.parent = &msm_device_iommu_gfx3d.dev,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &gfx3d_priv_ctx,
 	},
 };
@@ -1202,8 +1545,11 @@ static struct platform_device msm_device_gfx3d1_priv_ctx = {
 	.dev = {
 		.parent = &msm_device_iommu_gfx3d1.dev,
 		.platform_data = &gfx3d1_priv_ctx,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1215,7 +1561,11 @@ static struct platform_device msm_device_gfx2d0_2d0_ctx = {
 <<<<<<< HEAD
 		.platform_data = &gfx2d0_2d0_ctx,
 =======
+<<<<<<< HEAD
+		.platform_data = &gfx2d0_2d0_ctx,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -1225,6 +1575,9 @@ static struct platform_device msm_device_gfx2d1_2d1_ctx = {
 	.dev = {
 		.parent = &msm_device_iommu_gfx2d1.dev,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.platform_data = &gfx2d1_2d1_ctx,
 	},
 };
@@ -1248,6 +1601,8 @@ static struct platform_device msm_device_vcap_vp_ctx = {
 };
 
 static struct platform_device *msm_iommu_common_devs[] = {
+<<<<<<< HEAD
+=======
 =======
 	},
 };
@@ -1255,6 +1610,7 @@ static struct platform_device *msm_iommu_common_devs[] = {
 static struct platform_device *msm_iommu_devs[] = {
 	&msm_device_iommu_jpegd,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&msm_device_iommu_vpe,
 	&msm_device_iommu_mdp0,
 	&msm_device_iommu_mdp1,
@@ -1269,12 +1625,21 @@ static struct platform_device *msm_iommu_devs[] = {
 
 static struct platform_device *msm_iommu_gfx2d_devs[] = {
 =======
+<<<<<<< HEAD
+};
+
+static struct platform_device *msm_iommu_gfx2d_devs[] = {
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&msm_device_iommu_gfx2d0,
 	&msm_device_iommu_gfx2d1,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *msm_iommu_adreno3xx_gfx_devs[] = {
 	&msm_device_iommu_gfx3d1,
 };
@@ -1294,6 +1659,8 @@ static struct platform_device *msm_iommu_common_ctx_devs[] = {
 	&msm_device_mdp_port0_cb1_ctx,
 	&msm_device_mdp_port1_cb0_ctx,
 	&msm_device_mdp_port1_cb1_ctx,
+<<<<<<< HEAD
+=======
 =======
 static struct msm_iommu_dev *msm_iommu_data[] = {
 	&jpegd_iommu,
@@ -1320,6 +1687,7 @@ static struct platform_device *msm_iommu_ctx_devs[] = {
 	&msm_device_mdp_vg2_ctx,
 	&msm_device_mdp_rgb2_ctx,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&msm_device_rot_src_ctx,
 	&msm_device_rot_dst_ctx,
 	&msm_device_ijpeg_src_ctx,
@@ -1336,12 +1704,21 @@ static struct platform_device *msm_iommu_ctx_devs[] = {
 
 static struct platform_device *msm_iommu_gfx2d_ctx_devs[] = {
 =======
+<<<<<<< HEAD
+};
+
+static struct platform_device *msm_iommu_gfx2d_ctx_devs[] = {
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&msm_device_gfx2d0_2d0_ctx,
 	&msm_device_gfx2d1_2d1_ctx,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *msm_iommu_adreno3xx_ctx_devs[] = {
 	&msm_device_gfx3d1_user_ctx,
 	&msm_device_gfx3d1_priv_ctx,
@@ -1473,6 +1850,8 @@ static void __exit iommu_exit(void)
 
 subsys_initcall(iommu_init);
 module_exit(iommu_exit);
+<<<<<<< HEAD
+=======
 =======
 static struct msm_iommu_ctx_dev *msm_iommu_ctx_data[] = {
 	&jpegd_src_ctx,
@@ -1574,6 +1953,7 @@ static void __exit msm8x60_iommu_exit(void)
 subsys_initcall(msm8x60_iommu_init);
 module_exit(msm8x60_iommu_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("Stepan Moskovchenko <stepanm@codeaurora.org>");

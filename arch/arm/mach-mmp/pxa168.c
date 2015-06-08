@@ -9,8 +9,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -18,31 +21,43 @@
 #include <linux/io.h>
 #include <linux/clk.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 
 #include <asm/mach/time.h>
 #include <asm/system_misc.h>
+<<<<<<< HEAD
+=======
 =======
 
 #include <asm/mach/time.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/addr-map.h>
 #include <mach/cputype.h>
 #include <mach/regs-apbc.h>
 #include <mach/regs-apmu.h>
 #include <mach/irqs.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/dma.h>
 #include <mach/devices.h>
 #include <mach/mfp.h>
 #include <linux/dma-mapping.h>
 #include <mach/pxa168.h>
+<<<<<<< HEAD
+=======
 =======
 #include <mach/gpio.h>
 #include <mach/dma.h>
 #include <mach/devices.h>
 #include <mach/mfp.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "common.h"
 #include "clock.h"
@@ -59,6 +74,11 @@ static struct mfp_addr_map pxa168_mfp_addr_map[] __initdata =
 	MFP_ADDR_END,
 };
 
+<<<<<<< HEAD
+void __init pxa168_init_irq(void)
+{
+	icu_init_irq();
+=======
 <<<<<<< HEAD
 void __init pxa168_init_irq(void)
 {
@@ -85,6 +105,7 @@ void __init pxa168_init_irq(void)
 	icu_init_irq();
 	pxa168_init_gpio();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* APB peripheral clocks */
@@ -93,7 +114,11 @@ static APBC_CLK(uart2, PXA168_UART2, 1, 14745600);
 <<<<<<< HEAD
 static APBC_CLK(uart3, PXA168_UART3, 1, 14745600);
 =======
+<<<<<<< HEAD
+static APBC_CLK(uart3, PXA168_UART3, 1, 14745600);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static APBC_CLK(twsi0, PXA168_TWSI0, 1, 33000000);
 static APBC_CLK(twsi1, PXA168_TWSI1, 1, 33000000);
 static APBC_CLK(pwm1, PXA168_PWM1, 1, 13000000);
@@ -106,6 +131,9 @@ static APBC_CLK(ssp3, PXA168_SSP3, 4, 0);
 static APBC_CLK(ssp4, PXA168_SSP4, 4, 0);
 static APBC_CLK(ssp5, PXA168_SSP5, 4, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static APBC_CLK(gpio, PXA168_GPIO, 0, 13000000);
 static APBC_CLK(keypad, PXA168_KPC, 0, 32000);
 static APBC_CLK(rtc, PXA168_RTC, 8, 32768);
@@ -114,12 +142,15 @@ static APMU_CLK(nand, NAND, 0x19b, 156000000);
 static APMU_CLK(lcd, LCD, 0x7f, 312000000);
 static APMU_CLK(eth, ETH, 0x09, 0);
 static APMU_CLK(usb, USB, 0x12, 0);
+<<<<<<< HEAD
+=======
 =======
 static APBC_CLK(keypad, PXA168_KPC, 0, 32000);
 
 static APMU_CLK(nand, NAND, 0x19b, 156000000);
 static APMU_CLK(lcd, LCD, 0x7f, 312000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* device and clock bindings */
 static struct clk_lookup pxa168_clkregs[] = {
@@ -128,7 +159,11 @@ static struct clk_lookup pxa168_clkregs[] = {
 <<<<<<< HEAD
 	INIT_CLKREG(&clk_uart3, "pxa2xx-uart.2", NULL),
 =======
+<<<<<<< HEAD
+	INIT_CLKREG(&clk_uart3, "pxa2xx-uart.2", NULL),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_CLKREG(&clk_twsi0, "pxa2xx-i2c.0", NULL),
 	INIT_CLKREG(&clk_twsi1, "pxa2xx-i2c.1", NULL),
 	INIT_CLKREG(&clk_pwm1, "pxa168-pwm.0", NULL),
@@ -143,14 +178,20 @@ static struct clk_lookup pxa168_clkregs[] = {
 	INIT_CLKREG(&clk_nand, "pxa3xx-nand", NULL),
 	INIT_CLKREG(&clk_lcd, "pxa168-fb", NULL),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_CLKREG(&clk_gpio, "pxa-gpio", NULL),
 	INIT_CLKREG(&clk_keypad, "pxa27x-keypad", NULL),
 	INIT_CLKREG(&clk_eth, "pxa168-eth", "MFUCLK"),
 	INIT_CLKREG(&clk_usb, "pxa168-ehci", "PXA168-USBCLK"),
 	INIT_CLKREG(&clk_rtc, "sa1100-rtc", NULL),
+<<<<<<< HEAD
+=======
 =======
 	INIT_CLKREG(&clk_keypad, "pxa27x-keypad", NULL),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init pxa168_init(void)
@@ -203,7 +244,11 @@ PXA168_DEVICE(uart2, "pxa2xx-uart", 1, UART2, 0xd4018000, 0x30, 23, 24);
 <<<<<<< HEAD
 PXA168_DEVICE(uart3, "pxa2xx-uart", 2, UART3, 0xd4026000, 0x30, 23, 24);
 =======
+<<<<<<< HEAD
+PXA168_DEVICE(uart3, "pxa2xx-uart", 2, UART3, 0xd4026000, 0x30, 23, 24);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 PXA168_DEVICE(twsi0, "pxa2xx-i2c", 0, TWSI0, 0xd4011000, 0x28);
 PXA168_DEVICE(twsi1, "pxa2xx-i2c", 1, TWSI1, 0xd4025000, 0x28);
 PXA168_DEVICE(pwm1, "pxa168-pwm", 0, NONE, 0xd401a000, 0x10);
@@ -219,6 +264,9 @@ PXA168_DEVICE(ssp5, "pxa168-ssp", 4, SSP5, 0xd4021000, 0x40, 60, 61);
 PXA168_DEVICE(fb, "pxa168-fb", -1, LCD, 0xd420b000, 0x1c8);
 PXA168_DEVICE(keypad, "pxa27x-keypad", -1, KEYPAD, 0xd4012000, 0x4c);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 PXA168_DEVICE(eth, "pxa168-eth", -1, MFU, 0xc0800000, 0x0fff);
 
 struct resource pxa168_resource_gpio[] = {
@@ -286,5 +334,8 @@ void pxa168_restart(char mode, const char *cmd)
 {
 	soft_restart(0xffff0000);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

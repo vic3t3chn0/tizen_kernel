@@ -75,8 +75,12 @@ int symbol__inc_addr_samples(struct symbol *sym, struct map *map,
 <<<<<<< HEAD
 int symbol__alloc_hist(struct symbol *sym);
 =======
+<<<<<<< HEAD
+int symbol__alloc_hist(struct symbol *sym);
+=======
 int symbol__alloc_hist(struct symbol *sym, int nevents);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void symbol__annotate_zero_histograms(struct symbol *sym);
 
 int symbol__annotate(struct symbol *sym, struct map *map, size_t privsize);
@@ -100,22 +104,34 @@ static inline int symbol__tui_annotate(struct symbol *sym __used,
 				       void(*timer)(void *arg) __used,
 				       void *arg __used, int delay_secs __used)
 =======
+<<<<<<< HEAD
+				       int evidx __used,
+				       void(*timer)(void *arg) __used,
+				       void *arg __used, int delay_secs __used)
+=======
 				       int evidx __used, int refresh __used)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return 0;
 }
 #else
 int symbol__tui_annotate(struct symbol *sym, struct map *map, int evidx,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 void(*timer)(void *arg), void *arg, int delay_secs);
 #endif
 
 extern const char	*disassembler_style;
 
+<<<<<<< HEAD
+=======
 =======
 			 int refresh);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* __PERF_ANNOTATE_H */

@@ -8,8 +8,12 @@
 <<<<<<< HEAD
  * See Documentation/DMA-API-HOWTO.txt for the interface specification.
 =======
+<<<<<<< HEAD
+ * See Documentation/DMA-API-HOWTO.txt for the interface specification.
+=======
  * See Documentation/PCI/PCI-DMA-mapping.txt for the interface specification.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright 2002 Andi Kleen, SuSE Labs.
  * Subject to the GNU General Public License v2 only.
@@ -37,8 +41,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mtrr.h>
 #include <asm/pgtable.h>
 #include <asm/proto.h>
@@ -488,8 +496,12 @@ gart_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_addr,
 <<<<<<< HEAD
 		    gfp_t flag, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+		    gfp_t flag, struct dma_attrs *attrs)
+=======
 		    gfp_t flag)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	dma_addr_t paddr;
 	unsigned long align_mask;
@@ -516,8 +528,13 @@ gart_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_addr,
 		return dma_generic_alloc_coherent(dev, size, dma_addr, flag,
 						  attrs);
 =======
+<<<<<<< HEAD
+		return dma_generic_alloc_coherent(dev, size, dma_addr, flag,
+						  attrs);
+=======
 		return dma_generic_alloc_coherent(dev, size, dma_addr, flag);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return NULL;
 }
@@ -528,8 +545,12 @@ gart_free_coherent(struct device *dev, size_t size, void *vaddr,
 <<<<<<< HEAD
 		   dma_addr_t dma_addr, struct dma_attrs *attrs)
 =======
+<<<<<<< HEAD
+		   dma_addr_t dma_addr, struct dma_attrs *attrs)
+=======
 		   dma_addr_t dma_addr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	gart_unmap_page(dev, dma_addr, size, DMA_BIDIRECTIONAL, NULL);
 	free_pages((unsigned long)vaddr, get_order(size));
@@ -725,9 +746,14 @@ static struct dma_map_ops gart_dma_ops = {
 	.alloc				= gart_alloc_coherent,
 	.free				= gart_free_coherent,
 =======
+<<<<<<< HEAD
+	.alloc				= gart_alloc_coherent,
+	.free				= gart_free_coherent,
+=======
 	.alloc_coherent			= gart_alloc_coherent,
 	.free_coherent			= gart_free_coherent,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.mapping_error			= gart_mapping_error,
 };
 

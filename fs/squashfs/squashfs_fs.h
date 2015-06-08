@@ -31,6 +31,9 @@
 /* size of metadata (inode and directory) blocks */
 #define SQUASHFS_METADATA_SIZE		8192
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* default size of block device I/O */
 #ifdef CONFIG_SQUASHFS_4K_DEVBLK_SIZE
@@ -38,6 +41,8 @@
 #else
 #define SQUASHFS_DEVBLK_SIZE 1024
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define SQUASHFS_METADATA_LOG		13
 
@@ -45,17 +50,23 @@
 #define SQUASHFS_FILE_SIZE		131072
 #define SQUASHFS_FILE_LOG		17
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SQUASHFS_FILE_MAX_SIZE		1048576
 #define SQUASHFS_FILE_MAX_LOG		20
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Max length of filename (not 255) */
 #define SQUASHFS_NAME_LEN		256
 
 /* Max value for directory header count*/
 #define SQUASHFS_DIR_COUNT		256
 
+<<<<<<< HEAD
+=======
 =======
 /* Max number of uids and gids */
 #define SQUASHFS_IDS			65536
@@ -64,6 +75,7 @@
 #define SQUASHFS_NAME_LEN		256
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SQUASHFS_INVALID_FRAG		(0xffffffffU)
 #define SQUASHFS_INVALID_XATTR		(0xffffffffU)
 #define SQUASHFS_INVALID_BLK		(-1LL)
@@ -156,10 +168,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Translate between VFS mode and squashfs mode */
 #define SQUASHFS_MODE(A)		((A) & 0xfff)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* fragment and fragment table defines */
 #define SQUASHFS_FRAGMENT_BYTES(A)	\
 				((A) * sizeof(struct squashfs_fragment_entry))
@@ -232,12 +247,15 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define SQUASHFS_MAX_FILE_SIZE_LOG	64
 
 #define SQUASHFS_MAX_FILE_SIZE		(1LL << \
 					(SQUASHFS_MAX_FILE_SIZE_LOG - 2))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* meta index cache */
 #define SQUASHFS_META_INDEXES	(SQUASHFS_METADATA_SIZE / sizeof(unsigned int))
 #define SQUASHFS_META_ENTRIES	127

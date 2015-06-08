@@ -11,13 +11,19 @@
 #include <linux/linkage.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KEXEC_HARDBOOT
   #include <asm/kexec.h>
   #include <asm/memory.h>
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Debugging stuff
  *
@@ -69,8 +75,12 @@
 <<<<<<< HEAD
 #elif defined(CONFIG_ARCH_S3C24XX)
 =======
+<<<<<<< HEAD
+#elif defined(CONFIG_ARCH_S3C24XX)
+=======
 #elif defined(CONFIG_ARCH_S3C2410)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.macro loadsp, rb, tmp
 		mov	\rb, #0x50000000
 		add	\rb, \rb, #0x4000 * CONFIG_S3C_LOWLEVEL_UART_PORT
@@ -148,6 +158,9 @@ start:
 		mov	r8, r2			@ save atags pointer
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KEXEC_HARDBOOT
 		/* Check hardboot page for a kexec kernel. */
 		ldr	r3, =KEXEC_HB_PAGE_ADDR
@@ -206,8 +219,11 @@ kernel_cpy:
 not_booting_other:
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ARM_ARCH_2__
 		/*
 		 * Booting from Angel - need to enter SVC mode and disable
@@ -262,8 +278,12 @@ restart:	adr	r0, LC0
 <<<<<<< HEAD
 		sub	r0, r0, r1		@ calculate the delta offset
 =======
+<<<<<<< HEAD
+		sub	r0, r0, r1		@ calculate the delta offset
+=======
 		sub  r0, r0, r1		@ calculate the delta offset
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		add	r6, r6, r0		@ _edata
 		add	r10, r10, r0		@ inflated kernel size location
 
@@ -294,6 +314,9 @@ restart:	adr	r0, LC0
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	r5, #0			@ init dtb size to 0
 #ifdef CONFIG_ARM_APPENDED_DTB
 /*
@@ -392,8 +415,11 @@ restart:	adr	r0, LC0
 dtb_check_done:
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Check to see if we will overwrite ourselves.
  *   r4  = final kernel address
@@ -404,8 +430,12 @@ dtb_check_done:
 <<<<<<< HEAD
  *   r4 + image length <= address of wont_overwrite -> OK
 =======
+<<<<<<< HEAD
+ *   r4 + image length <= address of wont_overwrite -> OK
+=======
  *   r4 + image length <= current position (pc) -> OK
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 		add	r10, r10, #16384
 		cmp	r4, r10
@@ -415,10 +445,15 @@ dtb_check_done:
 		adr	r9, wont_overwrite
 		cmp	r10, r9
 =======
+<<<<<<< HEAD
+		adr	r9, wont_overwrite
+		cmp	r10, r9
+=======
    ARM(		cmp	r10, pc		)
  THUMB(		mov	lr, pc		)
  THUMB(		cmp	r10, lr		)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bls	wont_overwrite
 
 /*
@@ -475,13 +510,22 @@ wont_overwrite:
 <<<<<<< HEAD
  *   r5  = appended dtb size (0 if not present)
 =======
+<<<<<<< HEAD
+ *   r5  = appended dtb size (0 if not present)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *   r7  = architecture ID
  *   r8  = atags pointer
  *   r11 = GOT start
  *   r12 = GOT end
  *   sp  = stack pointer
  */
+<<<<<<< HEAD
+		orrs	r1, r0, r5
+		beq	not_relocated
+
+=======
 <<<<<<< HEAD
 		orrs	r1, r0, r5
 		beq	not_relocated
@@ -496,6 +540,7 @@ wont_overwrite:
         beq not_relocated_copy
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		add	r11, r11, r0
 		add	r12, r12, r0
 
@@ -509,6 +554,9 @@ wont_overwrite:
 		add	r3, r3, r0
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Relocate all entries in the GOT table.
 		 * Bump bss entries to _edata + dtb size
@@ -526,6 +574,8 @@ wont_overwrite:
 		add	r2, r2, r5
 		add	r3, r3, r5
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_CRYPTO_FIPS
         movw r5, #:lower16:zimage_ram_base_addr
@@ -541,6 +591,7 @@ wont_overwrite:
 		cmp	r11, r12
 		blo	1b
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 
 		/*
@@ -585,8 +636,13 @@ not_relocated:	mov	r0, #0
  ARM(		mov	pc, r4	)		@ call kernel
  THUMB(		bx	r4	)		@ entry point is always ARM
 =======
+<<<<<<< HEAD
+ ARM(		mov	pc, r4	)		@ call kernel
+ THUMB(		bx	r4	)		@ entry point is always ARM
+=======
 		mov	pc, r4			@ call kernel
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		.align	2
 		.type	LC0, #object
@@ -602,11 +658,14 @@ LC0:		.word	LC0			@ r1
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CRYPTO_FIPS
         .equ   zimage_ram_base_addr, FIPS_KERNEL_RAM_BASE
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARCH_RPC
 		.globl	params
 params:		ldr	r0, =0x10000100		@ params_phys for RPC
@@ -615,6 +674,8 @@ params:		ldr	r0, =0x10000100		@ params_phys for RPC
 		.align
 #endif
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -641,6 +702,7 @@ copy_compressed:
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Turn on the cache.  We need to setup some page tables so that we
  * can have both the I and D caches on.
@@ -669,8 +731,11 @@ cache_on:	mov	r3, #8			@ cache_on function
 __armv4_mpu_cache_on:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	r0, #0x3f		@ 4G, the whole
 		mcr	p15, 0, r0, c6, c7, 0	@ PR7 Area Setting
 		mcr 	p15, 0, r0, c6, c7, 1
@@ -729,14 +794,20 @@ __armv3_mpu_cache_on:
 		mov	pc, lr
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_CPU_DCACHE_WRITETHROUGH
 #define CB_BITS 0x08
 #else
 #define CB_BITS 0x0c
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __setup_mmu:	sub	r3, r4, #16384		@ Page directory size
 		bic	r3, r3, #0xff		@ Align the pointer
 		bic	r3, r3, #0x3f00
@@ -749,6 +820,9 @@ __setup_mmu:	sub	r3, r4, #16384		@ Page directory size
 		mov	r9, r9, lsl #18		@ start of RAM
 		add	r10, r9, #0x10000000	@ a reasonable RAM size
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	r1, #0x12		@ XN|U + section mapping
 		orr	r1, r1, #3 << 10	@ AP=11
 		add	r2, r3, #16384
@@ -757,6 +831,8 @@ __setup_mmu:	sub	r3, r4, #16384		@ Page directory size
 		bic	r1, r1, #0x1c		@ clear XN|U + C + B
 		orrlo	r1, r1, #0x10		@ Set XN|U for non-RAM
 		orrhs	r1, r1, r6		@ set RAM section settings
+<<<<<<< HEAD
+=======
 =======
 		mov	r1, #0x12
 		orr	r1, r1, #3 << 10
@@ -770,6 +846,7 @@ __setup_mmu:	sub	r3, r4, #16384		@ Page directory size
 		cmp	r1, r10			@ if virt > end of RAM
 		bichs	r1, r1, #0x0c		@ clear cacheable, bufferable
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		str	r1, [r0], #4		@ 1:1 mapping
 		add	r1, r1, #1048576
 		teq	r0, r2
@@ -783,8 +860,12 @@ __setup_mmu:	sub	r3, r4, #16384		@ Page directory size
 <<<<<<< HEAD
 		orr	r1, r6, #0x04		@ ensure B is set for this
 =======
+<<<<<<< HEAD
+		orr	r1, r6, #0x04		@ ensure B is set for this
+=======
 		mov	r1, #0x1e
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		orr	r1, r1, #3 << 10
 		mov	r2, pc
 		mov	r2, r2, lsr #20
@@ -796,6 +877,10 @@ __setup_mmu:	sub	r3, r4, #16384		@ Page directory size
 		mov	pc, lr
 ENDPROC(__setup_mmu)
 
+<<<<<<< HEAD
+__arm926ejs_mmu_cache_on:
+#ifdef CONFIG_CPU_DCACHE_WRITETHROUGH
+=======
 <<<<<<< HEAD
 __arm926ejs_mmu_cache_on:
 #ifdef CONFIG_CPU_DCACHE_WRITETHROUGH
@@ -814,6 +899,7 @@ __arm926ejs_mmu_cache_on:
 #ifdef CONFIG_CPU_DCACHE_WRITETHROUGH
 		.arch armv5
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	r0, #4			@ put dcache in WT mode
 		mcr	p15, 7, r0, c15, c0, 0
 #endif
@@ -824,10 +910,16 @@ __armv4_mmu_cache_on:
 #ifdef CONFIG_MMU
 		mov	r6, #CB_BITS | 0x12	@ U
 =======
+<<<<<<< HEAD
+		mov	r12, lr
+#ifdef CONFIG_MMU
+		mov	r6, #CB_BITS | 0x12	@ U
+=======
 		.arch armv4
 		mov	r12, lr
 #ifdef CONFIG_MMU
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bl	__setup_mmu
 		mov	r0, #0
 		mcr	p15, 0, r0, c7, c10, 4	@ drain write buffer
@@ -847,8 +939,11 @@ __armv4_mmu_cache_on:
 __armv7_mmu_cache_on:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv7-a
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	r12, lr
 #ifdef CONFIG_MMU
 		mrc	p15, 0, r11, c0, c1, 4	@ read ID_MMFR0
@@ -856,7 +951,11 @@ __armv7_mmu_cache_on:
 <<<<<<< HEAD
 		movne	r6, #CB_BITS | 0x02	@ !XN
 =======
+<<<<<<< HEAD
+		movne	r6, #CB_BITS | 0x02	@ !XN
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		blne	__setup_mmu
 		mov	r0, #0
 		mcr	p15, 0, r0, c7, c10, 4	@ drain write buffer
@@ -868,6 +967,10 @@ __armv7_mmu_cache_on:
 		orr	r0, r0, #0x5000		@ I-cache enable, RR cache replacement
 		orr	r0, r0, #0x003c		@ write buffer
 =======
+<<<<<<< HEAD
+		orr	r0, r0, #0x5000		@ I-cache enable, RR cache replacement
+		orr	r0, r0, #0x003c		@ write buffer
+=======
 		bic	r0, r0, #1 << 28	@ clear SCTLR.TRE
 		orr	r0, r0, #0x5000		@ I-cache enable, RR cache replacement
 		orr	r0, r0, #0x003c		@ write buffer
@@ -875,23 +978,30 @@ __armv7_mmu_cache_on:
 		orr	r0, r0, #1 << 22	@ U (v6 unaligned access model)
 						@ (needed for ARM1176)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMU
 #ifdef CONFIG_CPU_ENDIAN_BE8
 		orr	r0, r0, #1 << 25	@ big-endian page tables
 #endif
 		orrne	r0, r0, #1		@ MMU enabled
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		movne	r1, #0xfffffffd		@ domain 0 = client
 		mcrne	p15, 0, r3, c2, c0, 0	@ load page table pointer
 		mcrne	p15, 0, r1, c3, c0, 0	@ load domain access control
 #endif
 		mcr	p15, 0, r0, c7, c5, 4	@ ISB
+<<<<<<< HEAD
+=======
 =======
 		movne	r1, #-1
 		mcrne	p15, 0, r3, c2, c0, 0	@ load page table pointer
 		mcrne	p15, 0, r1, c3, c0, 0	@ load domain access control
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mcr	p15, 0, r0, c1, c0, 0	@ load control register
 		mrc	p15, 0, r0, c1, c0, 0	@ and read it back
 		mov	r0, #0
@@ -903,7 +1013,11 @@ __fa526_cache_on:
 <<<<<<< HEAD
 		mov	r6, #CB_BITS | 0x12	@ U
 =======
+<<<<<<< HEAD
+		mov	r6, #CB_BITS | 0x12	@ U
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bl	__setup_mmu
 		mov	r0, #0
 		mcr	p15, 0, r0, c7, c7, 0	@ Invalidate whole cache
@@ -921,7 +1035,11 @@ __arm6_mmu_cache_on:
 <<<<<<< HEAD
 		mov	r6, #CB_BITS | 0x12	@ U
 =======
+<<<<<<< HEAD
+		mov	r6, #CB_BITS | 0x12	@ U
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bl	__setup_mmu
 		mov	r0, #0
 		mcr	p15, 0, r0, c7, c0, 0	@ invalidate whole cache v3
@@ -1131,8 +1249,12 @@ proc_types:
 <<<<<<< HEAD
 		W(b)	__armv4_mmu_cache_on
 =======
+<<<<<<< HEAD
+		W(b)	__armv4_mmu_cache_on
+=======
 		W(b)	__armv6_mmu_cache_on
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		W(b)	__armv4_mmu_cache_off
 		W(b)	__armv6_mmu_cache_flush
 
@@ -1254,8 +1376,11 @@ cache_clean_flush:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __armv4_mpu_cache_flush:
 		mov	r2, #1
 		mov	r3, #0
@@ -1276,8 +1401,11 @@ __armv4_mpu_cache_flush:
 __fa526_cache_flush:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv6
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mov	r1, #0
 		mcr	p15, 0, r1, c7, c14, 0	@ clean and invalidate D cache
 		mcr	p15, 0, r1, c7, c5, 0	@ flush I cache
@@ -1294,8 +1422,11 @@ __armv6_mmu_cache_flush:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv7-a
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __armv7_mmu_cache_flush:
 		mrc	p15, 0, r10, c0, c1, 5	@ read ID_MMFR1
 		tst	r10, #0xf << 16		@ hierarchical cache (ARMv7)
@@ -1358,8 +1489,11 @@ iflush:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv5
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __armv5tej_mmu_cache_flush:
 1:		mrc	p15, 0, r15, c7, c14, 3	@ test,clean,invalidate D cache
 		bne	1b
@@ -1369,8 +1503,11 @@ __armv5tej_mmu_cache_flush:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __armv4_mmu_cache_flush:
 		mov	r2, #64*1024		@ default: 32K dcache size (*2)
 		mov	r11, #32		@ default: 32 byte line size
@@ -1411,9 +1548,12 @@ __armv3_mpu_cache_flush:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.arch armv4
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Various debugging routines for printing hex characters and
  * memory, which again must be relocatable.

@@ -43,9 +43,15 @@ struct posix_acl *gfs2_get_acl(struct inode *inode, int type)
 {
 	struct gfs2_inode *ip = GFS2_I(inode);
 =======
+<<<<<<< HEAD
+struct posix_acl *gfs2_get_acl(struct inode *inode, int type)
+{
+	struct gfs2_inode *ip = GFS2_I(inode);
+=======
 static struct posix_acl *gfs2_acl_get(struct gfs2_inode *ip, int type)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct posix_acl *acl;
 	const char *name;
 	char *data;
@@ -73,6 +79,9 @@ static struct posix_acl *gfs2_acl_get(struct gfs2_inode *ip, int type)
 	return acl;
 }
 
+<<<<<<< HEAD
+static int gfs2_set_mode(struct inode *inode, umode_t mode)
+=======
 <<<<<<< HEAD
 static int gfs2_set_mode(struct inode *inode, umode_t mode)
 =======
@@ -110,6 +119,7 @@ int gfs2_check_acl(struct inode *inode, int mask, unsigned int flags)
 
 static int gfs2_set_mode(struct inode *inode, mode_t mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int error = 0;
 
@@ -122,8 +132,12 @@ static int gfs2_set_mode(struct inode *inode, mode_t mode)
 <<<<<<< HEAD
 		error = gfs2_setattr_simple(inode, &iattr);
 =======
+<<<<<<< HEAD
+		error = gfs2_setattr_simple(inode, &iattr);
+=======
 		error = gfs2_setattr_simple(GFS2_I(inode), &iattr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return error;
@@ -161,9 +175,14 @@ int gfs2_acl_create(struct gfs2_inode *dip, struct inode *inode)
 	struct posix_acl *acl;
 	umode_t mode = inode->i_mode;
 =======
+<<<<<<< HEAD
+	struct posix_acl *acl;
+	umode_t mode = inode->i_mode;
+=======
 	struct posix_acl *acl, *clone;
 	mode_t mode = inode->i_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = 0;
 
 	if (!sdp->sd_args.ar_posix_acl)
@@ -174,8 +193,12 @@ int gfs2_acl_create(struct gfs2_inode *dip, struct inode *inode)
 <<<<<<< HEAD
 	acl = gfs2_get_acl(&dip->i_inode, ACL_TYPE_DEFAULT);
 =======
+<<<<<<< HEAD
+	acl = gfs2_get_acl(&dip->i_inode, ACL_TYPE_DEFAULT);
+=======
 	acl = gfs2_acl_get(dip, ACL_TYPE_DEFAULT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(acl))
 		return PTR_ERR(acl);
 	if (!acl) {
@@ -192,10 +215,15 @@ int gfs2_acl_create(struct gfs2_inode *dip, struct inode *inode)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	error = posix_acl_create(&acl, GFP_NOFS, &mode);
 	if (error < 0)
 		return error;
 
+<<<<<<< HEAD
+=======
 =======
 	clone = posix_acl_clone(acl, GFP_NOFS);
 	error = -ENOMEM;
@@ -208,6 +236,7 @@ int gfs2_acl_create(struct gfs2_inode *dip, struct inode *inode)
 	if (error < 0)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error == 0)
 		goto munge;
 
@@ -227,13 +256,21 @@ int gfs2_acl_chmod(struct gfs2_inode *ip, struct iattr *attr)
 	struct inode *inode = &ip->i_inode;
 	struct posix_acl *acl;
 =======
+<<<<<<< HEAD
+	struct inode *inode = &ip->i_inode;
+	struct posix_acl *acl;
+=======
 	struct posix_acl *acl, *clone;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *data;
 	unsigned int len;
 	int error;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	acl = gfs2_get_acl(&ip->i_inode, ACL_TYPE_ACCESS);
 	if (IS_ERR(acl))
 		return PTR_ERR(acl);
@@ -253,6 +290,8 @@ int gfs2_acl_chmod(struct gfs2_inode *ip, struct iattr *attr)
 	error = gfs2_xattr_acl_chmod(ip, attr, data);
 	kfree(data);
 	set_cached_acl(&ip->i_inode, ACL_TYPE_ACCESS, acl);
+<<<<<<< HEAD
+=======
 =======
 	acl = gfs2_acl_get(ip, ACL_TYPE_ACCESS);
 	if (IS_ERR(acl))
@@ -280,6 +319,7 @@ int gfs2_acl_chmod(struct gfs2_inode *ip, struct iattr *attr)
 		set_cached_acl(&ip->i_inode, ACL_TYPE_ACCESS, acl);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	posix_acl_release(acl);
@@ -314,8 +354,12 @@ static int gfs2_xattr_system_get(struct dentry *dentry, const char *name,
 <<<<<<< HEAD
 	acl = gfs2_get_acl(inode, type);
 =======
+<<<<<<< HEAD
+	acl = gfs2_get_acl(inode, type);
+=======
 	acl = gfs2_acl_get(GFS2_I(inode), type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(acl))
 		return PTR_ERR(acl);
 	if (acl == NULL)
@@ -379,8 +423,12 @@ static int gfs2_xattr_system_set(struct dentry *dentry, const char *name,
 <<<<<<< HEAD
 		umode_t mode = inode->i_mode;
 =======
+<<<<<<< HEAD
+		umode_t mode = inode->i_mode;
+=======
 		mode_t mode = inode->i_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = posix_acl_equiv_mode(acl, &mode);
 
 		if (error <= 0) {

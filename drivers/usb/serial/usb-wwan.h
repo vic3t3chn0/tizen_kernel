@@ -24,6 +24,14 @@ extern int usb_wwan_send_setup(struct usb_serial_port *port);
 extern int usb_wwan_write(struct tty_struct *tty, struct usb_serial_port *port,
 			  const unsigned char *buf, int count);
 extern int usb_wwan_chars_in_buffer(struct tty_struct *tty);
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern void usb_wwan_throttle(struct tty_struct *tty);
+extern void usb_wwan_unthrottle(struct tty_struct *tty);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 extern int usb_wwan_suspend(struct usb_serial *serial, pm_message_t message);
 extern int usb_wwan_resume(struct usb_serial *serial);
@@ -31,6 +39,14 @@ extern int usb_wwan_resume(struct usb_serial *serial);
 
 /* per port private data */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define N_IN_URB 5
+#define N_OUT_URB 5
+#define IN_BUFLEN 16384
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MDM_HSIC_PM
 #define N_IN_URB 1
 #else
@@ -38,6 +54,10 @@ extern int usb_wwan_resume(struct usb_serial *serial);
 #endif
 #define N_OUT_URB 5
 #define IN_BUFLEN 65536
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OUT_BUFLEN 65536
 
 struct usb_wwan_intf_private {
@@ -57,7 +77,20 @@ struct usb_wwan_port_private {
 	u8 *out_buffer[N_OUT_URB];
 	unsigned long out_busy;	/* Bit vector of URBs in use */
 	int opened;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct usb_anchor submitted;
 	struct usb_anchor delayed;
+	struct list_head in_urb_list;
+	spinlock_t in_lock;
+	ssize_t n_read;
+	struct work_struct in_work;
+=======
+	struct usb_anchor delayed;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct usb_anchor delayed;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Settings for the port */
 	int rts_state;		/* Handshaking pins (outputs) */

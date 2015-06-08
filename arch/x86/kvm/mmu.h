@@ -53,7 +53,12 @@ int kvm_mmu_get_spte_hierarchy(struct kvm_vcpu *vcpu, u64 addr, u64 sptes[4]);
 void kvm_mmu_set_mmio_spte_mask(u64 mmio_mask);
 int handle_mmio_page_fault_common(struct kvm_vcpu *vcpu, u64 addr, bool direct);
 =======
+<<<<<<< HEAD
+void kvm_mmu_set_mmio_spte_mask(u64 mmio_mask);
+int handle_mmio_page_fault_common(struct kvm_vcpu *vcpu, u64 addr, bool direct);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int kvm_init_shadow_mmu(struct kvm_vcpu *vcpu, struct kvm_mmu *context);
 
 static inline unsigned int kvm_mmu_available_pages(struct kvm *kvm)
@@ -82,6 +87,9 @@ static inline int is_present_gpte(unsigned long pte)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int is_writable_pte(unsigned long pte)
 {
 	return pte & PT_WRITABLE_MASK;
@@ -105,6 +113,9 @@ static inline bool check_write_user_access(struct kvm_vcpu *vcpu,
 
 	return true;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

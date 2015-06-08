@@ -16,9 +16,13 @@
 <<<<<<< HEAD
 #include "reiserfs.h"
 =======
+<<<<<<< HEAD
+#include "reiserfs.h"
+=======
 #include <linux/reiserfs_fs.h>
 #include <linux/reiserfs_fs_sb.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/buffer_head.h>
 
 int reiserfs_resize(struct super_block *s, unsigned long block_count_new)
@@ -118,8 +122,12 @@ int reiserfs_resize(struct super_block *s, unsigned long block_count_new)
 <<<<<<< HEAD
 		    vzalloc(sizeof(struct reiserfs_bitmap_info) * bmap_nr_new);
 =======
+<<<<<<< HEAD
+		    vzalloc(sizeof(struct reiserfs_bitmap_info) * bmap_nr_new);
+=======
 		    vmalloc(sizeof(struct reiserfs_bitmap_info) * bmap_nr_new);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!bitmap) {
 			/* Journal bitmaps are still supersized, but the memory isn't
 			 * leaked, so I guess it's ok */
@@ -128,9 +136,12 @@ int reiserfs_resize(struct super_block *s, unsigned long block_count_new)
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(bitmap, 0,
 		       sizeof(struct reiserfs_bitmap_info) * bmap_nr_new);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (i = 0; i < bmap_nr; i++)
 			bitmap[i] = old_bitmap[i];
 
@@ -150,8 +161,12 @@ int reiserfs_resize(struct super_block *s, unsigned long block_count_new)
 <<<<<<< HEAD
 			reiserfs_set_le_bit(0, bh->b_data);
 =======
+<<<<<<< HEAD
+			reiserfs_set_le_bit(0, bh->b_data);
+=======
 			reiserfs_test_and_set_le_bit(0, bh->b_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			reiserfs_cache_bitmap_metadata(s, bh, bitmap + i);
 
 			set_buffer_uptodate(bh);
@@ -190,8 +205,12 @@ int reiserfs_resize(struct super_block *s, unsigned long block_count_new)
 <<<<<<< HEAD
 		reiserfs_clear_le_bit(i, bh->b_data);
 =======
+<<<<<<< HEAD
+		reiserfs_clear_le_bit(i, bh->b_data);
+=======
 		reiserfs_test_and_clear_le_bit(i, bh->b_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	info->free_count += s->s_blocksize * 8 - block_r;
 
 	journal_mark_dirty(&th, s, bh);
@@ -212,8 +231,12 @@ int reiserfs_resize(struct super_block *s, unsigned long block_count_new)
 <<<<<<< HEAD
 		reiserfs_set_le_bit(i, bh->b_data);
 =======
+<<<<<<< HEAD
+		reiserfs_set_le_bit(i, bh->b_data);
+=======
 		reiserfs_test_and_set_le_bit(i, bh->b_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	journal_mark_dirty(&th, s, bh);
 	brelse(bh);
 

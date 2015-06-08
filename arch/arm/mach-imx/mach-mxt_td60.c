@@ -237,7 +237,12 @@ static void __init mxt_td60_board_init(void)
 	imx27_soc_init();
 
 =======
+<<<<<<< HEAD
+	imx27_soc_init();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mxc_gpio_setup_multiple_pins(mxt_td60_pins, ARRAY_SIZE(mxt_td60_pins),
 			"MXT_TD60");
 
@@ -271,6 +276,9 @@ static struct sys_timer mxt_td60_timer = {
 MACHINE_START(MXT_TD60, "Maxtrack i-MXT TD60")
 	/* maintainer: Maxtrack Industrial */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset = 0x100,
 	.map_io = mx27_map_io,
 	.init_early = imx27_init_early,
@@ -279,6 +287,8 @@ MACHINE_START(MXT_TD60, "Maxtrack i-MXT TD60")
 	.timer = &mxt_td60_timer,
 	.init_machine = mxt_td60_board_init,
 	.restart	= mxc_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params = MX27_PHYS_OFFSET + 0x100,
 	.map_io = mx27_map_io,
@@ -287,4 +297,5 @@ MACHINE_START(MXT_TD60, "Maxtrack i-MXT TD60")
 	.timer = &mxt_td60_timer,
 	.init_machine = mxt_td60_board_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

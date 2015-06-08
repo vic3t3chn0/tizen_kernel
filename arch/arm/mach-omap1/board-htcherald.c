@@ -25,8 +25,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
@@ -34,8 +37,12 @@
 <<<<<<< HEAD
 #include <linux/delay.h>
 =======
+<<<<<<< HEAD
+#include <linux/delay.h>
+=======
 #include <linux/io.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/gpio.h>
 #include <linux/gpio_keys.h>
 #include <linux/i2c.h>
@@ -47,7 +54,11 @@
 <<<<<<< HEAD
 #include <linux/omapfb.h>
 =======
+<<<<<<< HEAD
+#include <linux/omapfb.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
@@ -55,8 +66,11 @@
 #include <plat/omap7xx.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/board.h>
 #include <plat/keypad.h>
 #include <plat/usb.h>
@@ -67,8 +81,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <linux/delay.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* LCD register definition */
 #define       OMAP_LCDC_CONTROL               (0xfffec000 + 0x00)
@@ -345,9 +363,12 @@ static struct resource htcpld_resources[] = {
 	[0] = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.start  = OMAP_GPIO_IRQ(HTCHERALD_GIRQ_BTNS),
 		.end    = OMAP_GPIO_IRQ(HTCHERALD_GIRQ_BTNS),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags  = IORESOURCE_IRQ,
 	},
 };
@@ -422,11 +443,14 @@ static struct omap_lcd_config htcherald_lcd_config __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct omap_board_config_kernel htcherald_config[] __initdata = {
 	{ OMAP_TAG_LCD, &htcherald_lcd_config },
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device lcd_device = {
 	.name           = "lcd_htcherald",
 	.id             = -1,
@@ -481,8 +505,11 @@ static struct spi_board_info __initdata htcherald_spi_board_info[] = {
 		.platform_data		= &htcherald_ts_platform_data,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq			= OMAP_GPIO_IRQ(HTCHERALD_GPIO_TS),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.max_speed_hz		= 2500000,
 		.bus_num		= 2,
 		.chip_select		= 1,
@@ -530,8 +557,12 @@ static void __init htcherald_map_io(void)
 <<<<<<< HEAD
 	omap7xx_map_io();
 =======
+<<<<<<< HEAD
+	omap7xx_map_io();
+=======
 	omap1_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * The LCD panel must be disabled and DMA turned off here, as doing
@@ -616,9 +647,14 @@ static void __init htcherald_init(void)
 	htcpld_resources[0].start = gpio_to_irq(HTCHERALD_GIRQ_BTNS);
 	htcpld_resources[0].end = gpio_to_irq(HTCHERALD_GIRQ_BTNS);
 =======
+<<<<<<< HEAD
+	htcpld_resources[0].start = gpio_to_irq(HTCHERALD_GIRQ_BTNS);
+	htcpld_resources[0].end = gpio_to_irq(HTCHERALD_GIRQ_BTNS);
+=======
 	omap_board_config = htcherald_config;
 	omap_board_config_size = ARRAY_SIZE(htcherald_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_add_devices(devices, ARRAY_SIZE(devices));
 
 	htcherald_disable_watchdog();
@@ -629,7 +665,11 @@ static void __init htcherald_init(void)
 <<<<<<< HEAD
 	htcherald_spi_board_info[0].irq = gpio_to_irq(HTCHERALD_GPIO_TS);
 =======
+<<<<<<< HEAD
+	htcherald_spi_board_info[0].irq = gpio_to_irq(HTCHERALD_GPIO_TS);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_register_board_info(htcherald_spi_board_info,
 		ARRAY_SIZE(htcherald_spi_board_info));
 
@@ -643,6 +683,10 @@ static void __init htcherald_init(void)
 
 	omapfb_set_lcd_config(&htcherald_lcd_config);
 =======
+<<<<<<< HEAD
+
+	omapfb_set_lcd_config(&htcherald_lcd_config);
+=======
 }
 
 static void __init htcherald_init_irq(void)
@@ -651,12 +695,16 @@ static void __init htcherald_init_irq(void)
 	omap1_init_common_hw();
 	omap_init_irq();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(HERALD, "HTC Herald")
 	/* Maintainer: Cory Maccarrone <darkstar6262@gmail.com> */
 	/* Maintainer: wing-linux.sourceforge.net */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset    = 0x100,
 	.map_io         = htcherald_map_io,
 	.init_early     = omap1_init_early,
@@ -665,6 +713,8 @@ MACHINE_START(HERALD, "HTC Herald")
 	.init_machine   = htcherald_init,
 	.timer          = &omap1_timer,
 	.restart	= omap1_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params    = 0x10000100,
 	.map_io         = htcherald_map_io,
@@ -673,4 +723,5 @@ MACHINE_START(HERALD, "HTC Herald")
 	.init_machine   = htcherald_init,
 	.timer          = &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

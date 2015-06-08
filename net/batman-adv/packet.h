@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2007-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner, Simon Wunderlich
  *
@@ -29,6 +33,9 @@
 #define ETH_P_BATMAN  0x4305	/* unofficial/not registered Ethertype */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum bat_packettype {
 	BAT_OGM		 = 0x01,
 	BAT_ICMP	 = 0x02,
@@ -119,6 +126,8 @@ struct batman_ogm_packet {
 struct icmp_packet {
 	struct batman_header header;
 	uint8_t  msg_type; /* see ICMP message types above */
+<<<<<<< HEAD
+=======
 =======
 #define BAT_PACKET       0x01
 #define BAT_ICMP         0x02
@@ -170,6 +179,7 @@ struct icmp_packet {
 	uint8_t  msg_type; /* see ICMP message types above */
 	uint8_t  ttl;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8_t  dst[6];
 	uint8_t  orig[6];
 	uint16_t seqno;
@@ -177,7 +187,11 @@ struct icmp_packet {
 <<<<<<< HEAD
 	uint8_t  reserved;
 =======
+<<<<<<< HEAD
+	uint8_t  reserved;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __packed;
 
 #define BAT_RR_LEN 16
@@ -189,11 +203,16 @@ struct icmp_packet_rr {
 	struct batman_header header;
 	uint8_t  msg_type; /* see ICMP message types above */
 =======
+<<<<<<< HEAD
+	struct batman_header header;
+	uint8_t  msg_type; /* see ICMP message types above */
+=======
 	uint8_t  packet_type;
 	uint8_t  version;  /* batman version field */
 	uint8_t  msg_type; /* see ICMP message types above */
 	uint8_t  ttl;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8_t  dst[6];
 	uint8_t  orig[6];
 	uint16_t seqno;
@@ -204,6 +223,9 @@ struct icmp_packet_rr {
 
 struct unicast_packet {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct batman_header header;
 	uint8_t  ttvn; /* destination translation table version number */
 	uint8_t  dest[6];
@@ -215,6 +237,8 @@ struct unicast_frag_packet {
 	uint8_t  dest[6];
 	uint8_t  flags;
 	uint8_t  align;
+<<<<<<< HEAD
+=======
 =======
 	uint8_t  packet_type;
 	uint8_t  version;  /* batman version field */
@@ -229,12 +253,16 @@ struct unicast_frag_packet {
 	uint8_t  ttl;
 	uint8_t  flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8_t  orig[6];
 	uint16_t seqno;
 } __packed;
 
 struct bcast_packet {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct batman_header header;
 	uint8_t  reserved;
 	uint32_t seqno;
@@ -247,6 +275,8 @@ struct vis_packet {
 	uint32_t seqno;		 /* sequence number */
 	uint8_t  entries;	 /* number of entries behind this struct */
 	uint8_t  reserved;
+<<<<<<< HEAD
+=======
 =======
 	uint8_t  packet_type;
 	uint8_t  version;  /* batman version field */
@@ -263,12 +293,16 @@ struct vis_packet {
 	uint32_t seqno;		 /* sequence number */
 	uint8_t  ttl;		 /* TTL */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8_t  vis_orig[6];	 /* originator that announces its neighbors */
 	uint8_t  target_orig[6]; /* who should receive this packet */
 	uint8_t  sender_orig[6]; /* who sent or rebroadcasted this packet */
 } __packed;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct tt_query_packet {
 	struct batman_header header;
 	/* the flag field is a combination of:
@@ -303,6 +337,9 @@ struct tt_change {
 	uint8_t addr[ETH_ALEN];
 } __packed;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _NET_BATMAN_ADV_PACKET_H_ */

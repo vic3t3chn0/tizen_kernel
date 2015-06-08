@@ -53,8 +53,12 @@ static const struct net_device_ops irlan_eth_netdev_ops = {
 <<<<<<< HEAD
 	.ndo_set_rx_mode	= irlan_eth_set_multicast_list,
 =======
+<<<<<<< HEAD
+	.ndo_set_rx_mode	= irlan_eth_set_multicast_list,
+=======
 	.ndo_set_multicast_list = irlan_eth_set_multicast_list,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ndo_change_mtu		= eth_change_mtu,
 	.ndo_validate_addr	= eth_validate_addr,
 };
@@ -279,8 +283,12 @@ void irlan_eth_flow_indication(void *instance, void *sap, LOCAL_FLOW flow)
 <<<<<<< HEAD
 	self = instance;
 =======
+<<<<<<< HEAD
+	self = instance;
+=======
 	self = (struct irlan_cb *) instance;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IRDA_ASSERT(self != NULL, return;);
 	IRDA_ASSERT(self->magic == IRLAN_MAGIC, return;);

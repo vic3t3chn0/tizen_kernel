@@ -20,6 +20,9 @@
 .Lmemset_c:
 	movq %rdi,%r9
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movq %rdx,%rcx
 	andl $7,%edx
 	shrq $3,%rcx
@@ -29,6 +32,8 @@
 	imulq %rsi,%rax
 	rep stosq
 	movl %edx,%ecx
+<<<<<<< HEAD
+=======
 =======
 	movl %edx,%r8d
 	andl $7,%r8d
@@ -41,6 +46,7 @@
 	rep stosq
 	movl %r8d,%ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rep stosb
 	movq %r9,%rax
 	ret
@@ -65,8 +71,12 @@
 <<<<<<< HEAD
 	movq %rdx,%rcx
 =======
+<<<<<<< HEAD
+	movq %rdx,%rcx
+=======
 	movl %edx,%ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rep stosb
 	movq %r9,%rax
 	ret
@@ -79,8 +89,11 @@ ENTRY(__memset)
 	movq %rdi,%r10
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	movq %rdx,%r11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* expand byte value  */
 	movzbl %sil,%ecx
@@ -88,8 +101,12 @@ ENTRY(__memset)
 <<<<<<< HEAD
 	imulq  %rcx,%rax
 =======
+<<<<<<< HEAD
+	imulq  %rcx,%rax
+=======
 	mul    %rcx		/* with rax, clobbers rdx */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* align dst */
 	movl  %edi,%r9d
@@ -102,9 +119,14 @@ ENTRY(__memset)
 	movq  %rdx,%rcx
 	shrq  $6,%rcx
 =======
+<<<<<<< HEAD
+	movq  %rdx,%rcx
+	shrq  $6,%rcx
+=======
 	movl %r11d,%ecx
 	shrl $6,%ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jz	 .Lhandle_tail
 
 	.p2align 4
@@ -112,8 +134,12 @@ ENTRY(__memset)
 <<<<<<< HEAD
 	decq  %rcx
 =======
+<<<<<<< HEAD
+	decq  %rcx
+=======
 	decl   %ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movq  %rax,(%rdi)
 	movq  %rax,8(%rdi)
 	movq  %rax,16(%rdi)
@@ -132,8 +158,12 @@ ENTRY(__memset)
 <<<<<<< HEAD
 	movl	%edx,%ecx
 =======
+<<<<<<< HEAD
+	movl	%edx,%ecx
+=======
 	movl	%r11d,%ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	andl    $63&(~7),%ecx
 	jz 		.Lhandle_7
 	shrl	$3,%ecx
@@ -146,11 +176,16 @@ ENTRY(__memset)
 
 .Lhandle_7:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	andl	$7,%edx
 	jz      .Lende
 	.p2align 4
 .Lloop_1:
 	decl    %edx
+<<<<<<< HEAD
+=======
 =======
 	movl	%r11d,%ecx
 	andl	$7,%ecx
@@ -159,6 +194,7 @@ ENTRY(__memset)
 .Lloop_1:
 	decl    %ecx
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	movb 	%al,(%rdi)
 	leaq	1(%rdi),%rdi
 	jnz     .Lloop_1
@@ -172,8 +208,12 @@ ENTRY(__memset)
 <<<<<<< HEAD
 	cmpq $7,%rdx
 =======
+<<<<<<< HEAD
+	cmpq $7,%rdx
+=======
 	cmpq $7,%r11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jbe	.Lhandle_7
 	movq %rax,(%rdi)	/* unaligned store */
 	movq $8,%r8
@@ -182,8 +222,12 @@ ENTRY(__memset)
 <<<<<<< HEAD
 	subq %r8,%rdx
 =======
+<<<<<<< HEAD
+	subq %r8,%rdx
+=======
 	subq %r8,%r11
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jmp .Lafter_bad_alignment
 .Lfinal:
 	CFI_ENDPROC

@@ -104,7 +104,15 @@ static void zfcp_unit_release(struct device *dev)
 {
 	struct zfcp_unit *unit = container_of(dev, struct zfcp_unit, dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	put_device(&unit->port->dev);
+=======
 	atomic_dec(&unit->port->units);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	atomic_dec(&unit->port->units);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(unit);
 }
 
@@ -119,6 +127,11 @@ static void zfcp_unit_release(struct device *dev)
 int zfcp_unit_add(struct zfcp_port *port, u64 fcp_lun)
 {
 	struct zfcp_unit *unit;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int retval = 0;
 
 	mutex_lock(&zfcp_sysfs_port_units_mutex);
@@ -127,10 +140,25 @@ int zfcp_unit_add(struct zfcp_port *port, u64 fcp_lun)
 		retval = -ENODEV;
 		goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unit = zfcp_unit_find(port, fcp_lun);
 	if (unit) {
 		put_device(&unit->dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EEXIST;
+	}
+
+	unit = kzalloc(sizeof(struct zfcp_unit), GFP_KERNEL);
+	if (!unit)
+		return -ENOMEM;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retval = -EEXIST;
 		goto out;
 	}
@@ -140,6 +168,10 @@ int zfcp_unit_add(struct zfcp_port *port, u64 fcp_lun)
 		retval = -ENOMEM;
 		goto out;
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unit->port = port;
 	unit->fcp_lun = fcp_lun;
@@ -150,6 +182,19 @@ int zfcp_unit_add(struct zfcp_port *port, u64 fcp_lun)
 	if (dev_set_name(&unit->dev, "0x%016llx",
 			 (unsigned long long) fcp_lun)) {
 		kfree(unit);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -ENOMEM;
+	}
+
+	get_device(&port->dev);
+
+	if (device_register(&unit->dev)) {
+		put_device(&unit->dev);
+		return -ENOMEM;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retval = -ENOMEM;
 		goto out;
 	}
@@ -158,25 +203,51 @@ int zfcp_unit_add(struct zfcp_port *port, u64 fcp_lun)
 		put_device(&unit->dev);
 		retval = -ENOMEM;
 		goto out;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (sysfs_create_group(&unit->dev.kobj, &zfcp_sysfs_unit_attrs)) {
 		device_unregister(&unit->dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EINVAL;
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		retval = -EINVAL;
 		goto out;
 	}
 
 	atomic_inc(&port->units); /* under zfcp_sysfs_port_units_mutex ! */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	write_lock_irq(&port->unit_list_lock);
 	list_add_tail(&unit->list, &port->unit_list);
 	write_unlock_irq(&port->unit_list_lock);
 
 	zfcp_unit_scsi_scan(unit);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
 out:
 	mutex_unlock(&zfcp_sysfs_port_units_mutex);
 	return retval;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+out:
+	mutex_unlock(&zfcp_sysfs_port_units_mutex);
+	return retval;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**

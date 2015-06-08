@@ -16,15 +16,21 @@
 #include <linux/platform_device.h>
 #include <linux/gpio.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/leds.h>
 #include <linux/clk.h>
 #include <linux/i2c.h>
 #include <linux/regulator/machine.h>
 #include <linux/regulator/fixed.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/irq.h>
 #include <linux/clk.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
@@ -33,6 +39,9 @@
 #include <mach/common.h>
 #include <mach/iomux-mx28.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/digctl.h>
 
 #include "devices-mx28.h"
@@ -40,6 +49,8 @@
 #define MX28EVK_FLEXCAN_SWITCH	MXS_GPIO_NR(2, 13)
 #define MX28EVK_FEC_PHY_POWER	MXS_GPIO_NR(2, 15)
 #define MX28EVK_GPIO_LED	MXS_GPIO_NR(3, 5)
+<<<<<<< HEAD
+=======
 =======
 
 #include "devices-mx28.h"
@@ -48,6 +59,7 @@
 #define MX28EVK_FLEXCAN_SWITCH	MXS_GPIO_NR(2, 13)
 #define MX28EVK_FEC_PHY_POWER	MXS_GPIO_NR(2, 15)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MX28EVK_BL_ENABLE	MXS_GPIO_NR(3, 18)
 #define MX28EVK_LCD_ENABLE	MXS_GPIO_NR(3, 30)
 #define MX28EVK_FEC_PHY_RESET	MXS_GPIO_NR(4, 13)
@@ -198,6 +210,9 @@ static const iomux_cfg_t mx28evk_pads[] __initconst = {
 	MX28_PAD_PWM4__GPIO_3_29 |
 		(MXS_PAD_4MA | MXS_PAD_3V3 | MXS_PAD_NOPULL),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* led */
 	MX28_PAD_AUART1_TX__GPIO_3_5 | MXS_PAD_CTRL,
@@ -233,8 +248,11 @@ static const struct gpio_led mx28evk_leds[] __initconst = {
 static const struct gpio_led_platform_data mx28evk_led_data __initconst = {
 	.leds = mx28evk_leds,
 	.num_leds = ARRAY_SIZE(mx28evk_leds),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* fec */
@@ -242,13 +260,21 @@ static void __init mx28evk_fec_reset(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct clk *clk;
 
 	/* Enable fec phy clock */
 	clk = clk_get_sys("pll2", NULL);
 	if (!IS_ERR(clk))
+<<<<<<< HEAD
+		clk_prepare_enable(clk);
+
+	gpio_set_value(MX28EVK_FEC_PHY_RESET, 0);
+=======
 <<<<<<< HEAD
 		clk_prepare_enable(clk);
 
@@ -283,6 +309,7 @@ static void __init mx28evk_fec_reset(void)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mdelay(1);
 	gpio_set_value(MX28EVK_FEC_PHY_RESET, 1);
 }
@@ -307,8 +334,12 @@ static int __init mx28evk_fec_get_mac(void)
 <<<<<<< HEAD
 		return -ETIMEDOUT;
 =======
+<<<<<<< HEAD
+		return -ETIMEDOUT;
+=======
 		goto error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * OCOTP only stores the last 4 octets for each mac address,
@@ -318,8 +349,12 @@ static int __init mx28evk_fec_get_mac(void)
 <<<<<<< HEAD
 		val = ocotp[i];
 =======
+<<<<<<< HEAD
+		val = ocotp[i];
+=======
 		val = ocotp[i * 4];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mx28_fec_pdata[i].mac[0] = 0x00;
 		mx28_fec_pdata[i].mac[1] = 0x04;
 		mx28_fec_pdata[i].mac[2] = 0x9f;
@@ -331,11 +366,14 @@ static int __init mx28evk_fec_get_mac(void)
 	return 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 error:
 	pr_err("%s: timeout when reading fec mac from OCOTP\n", __func__);
 	return -ETIMEDOUT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -411,6 +449,9 @@ static struct mxs_mmc_platform_data mx28evk_mmc_pdata[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct i2c_board_info mxs_i2c0_board_info[] __initdata = {
 	{
 		I2C_BOARD_INFO("sgtl5000", 0x0a),
@@ -477,8 +518,11 @@ static const struct mxs_saif_platform_data
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init mx28evk_init(void)
 {
 	int ret;
@@ -493,17 +537,26 @@ static void __init mx28evk_init(void)
 		pr_warn("%s: failed on fec mac setup\n", __func__);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = gpio_request_array(mx28evk_gpios, ARRAY_SIZE(mx28evk_gpios));
 	if (ret)
 		pr_err("One or more GPIOs failed to be requested: %d\n", ret);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mx28evk_fec_reset();
 	mx28_add_fec(0, &mx28_fec_pdata[0]);
 	mx28_add_fec(1, &mx28_fec_pdata[1]);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mx28_add_flexcan(0, &mx28evk_flexcan_pdata[0]);
 	mx28_add_flexcan(1, &mx28evk_flexcan_pdata[1]);
 
@@ -528,6 +581,8 @@ static void __init mx28evk_init(void)
 	mx28_add_rtc_stmp3xxx();
 
 	gpio_led_register_device(0, &mx28evk_led_data);
+<<<<<<< HEAD
+=======
 =======
 	ret = gpio_request_one(MX28EVK_FLEXCAN_SWITCH, GPIOF_DIR_OUT,
 				"flexcan-switch");
@@ -565,6 +620,7 @@ static void __init mx28evk_init(void)
 		pr_warn("failed to request gpio mmc1-slot-power: %d\n", ret);
 	mx28_add_mxs_mmc(1, &mx28evk_mmc_pdata[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init mx28evk_timer_init(void)
@@ -585,7 +641,13 @@ MACHINE_START(MX28EVK, "Freescale MX28 EVK")
 	.init_machine	= mx28evk_init,
 	.restart	= mxs_restart,
 =======
+<<<<<<< HEAD
+	.timer		= &mx28evk_timer,
+	.init_machine	= mx28evk_init,
+	.restart	= mxs_restart,
+=======
 	.init_machine	= mx28evk_init,
 	.timer		= &mx28evk_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

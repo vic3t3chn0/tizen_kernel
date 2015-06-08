@@ -31,8 +31,11 @@
 #include <asm/page.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 
@@ -168,8 +171,13 @@ static int __init ixdp2800_pci_setup(int nr, struct pci_sys_data *sys)
 static int __init ixdp2800_pci_map_irq(const struct pci_dev *dev, u8 slot,
 	u8 pin)
 =======
+<<<<<<< HEAD
+static int __init ixdp2800_pci_map_irq(const struct pci_dev *dev, u8 slot,
+	u8 pin)
+=======
 static int __init ixdp2800_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (ixdp2x00_master_npu()) {
 
@@ -272,8 +280,12 @@ int __init ixdp2800_pci_init(void)
 <<<<<<< HEAD
 			pci_stop_and_remove_bus_device(dev);
 =======
+<<<<<<< HEAD
+			pci_stop_and_remove_bus_device(dev);
+=======
 			pci_remove_bus_device(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pci_dev_put(dev);
 
 			ixdp2800_master_enable_slave();
@@ -283,8 +295,12 @@ int __init ixdp2800_pci_init(void)
 <<<<<<< HEAD
 			pci_stop_and_remove_bus_device(dev);
 =======
+<<<<<<< HEAD
+			pci_stop_and_remove_bus_device(dev);
+=======
 			pci_remove_bus_device(dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pci_dev_put(dev);
 		}
 	}
@@ -304,8 +320,12 @@ MACHINE_START(IXDP2800, "Intel IXDP2800 Development Platform")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= ixdp2x00_map_io,
 	.init_irq	= ixdp2800_init_irq,
 	.timer		= &ixdp2800_timer,
@@ -313,6 +333,10 @@ MACHINE_START(IXDP2800, "Intel IXDP2800 Development Platform")
 <<<<<<< HEAD
 	.restart	= ixp2000_restart,
 =======
+<<<<<<< HEAD
+	.restart	= ixp2000_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 

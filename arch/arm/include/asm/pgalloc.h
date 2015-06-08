@@ -26,6 +26,9 @@
 #define _PAGE_KERNEL_TABLE	(PMD_TYPE_TABLE | PMD_BIT4 | PMD_DOMAIN(DOMAIN_KERNEL))
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_LPAE
 
 static inline pmd_t *pmd_alloc_one(struct mm_struct *mm, unsigned long addr)
@@ -46,8 +49,11 @@ static inline void pud_populate(struct mm_struct *mm, pud_t *pud, pmd_t *pmd)
 
 #else	/* !CONFIG_ARM_LPAE */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Since we have only two-level page tables, these are trivial
  */
@@ -58,8 +64,14 @@ static inline void pud_populate(struct mm_struct *mm, pud_t *pud, pmd_t *pmd)
 
 #endif	/* CONFIG_ARM_LPAE */
 =======
+<<<<<<< HEAD
+#define pud_populate(mm,pmd,pte)	BUG()
+
+#endif	/* CONFIG_ARM_LPAE */
+=======
 #define pgd_populate(mm,pmd,pte)	BUG()
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern pgd_t *pgd_alloc(struct mm_struct *mm);
 extern void pgd_free(struct mm_struct *mm, pgd_t *pgd);
@@ -135,6 +147,9 @@ static inline void pte_free(struct mm_struct *mm, pgtable_t pte)
 
 static inline void __pmd_populate(pmd_t *pmdp, phys_addr_t pte,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				  pmdval_t prot)
 {
 	pmdval_t pmdval = (pte + PTE_HWTABLE_OFF) | prot;
@@ -142,6 +157,8 @@ static inline void __pmd_populate(pmd_t *pmdp, phys_addr_t pte,
 #ifndef CONFIG_ARM_LPAE
 	pmdp[1] = __pmd(pmdval + 256 * sizeof(pte_t));
 #endif
+<<<<<<< HEAD
+=======
 =======
 	unsigned long prot)
 {
@@ -149,6 +166,7 @@ static inline void __pmd_populate(pmd_t *pmdp, phys_addr_t pte,
 	pmdp[0] = __pmd(pmdval);
 	pmdp[1] = __pmd(pmdval + 256 * sizeof(pte_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	flush_pmd_entry(pmdp);
 }
 

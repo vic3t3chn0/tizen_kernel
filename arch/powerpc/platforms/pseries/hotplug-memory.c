@@ -206,6 +206,9 @@ static int pseries_memory_notifier(struct notifier_block *nb,
 				unsigned long action, void *node)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err = 0;
 
 	switch (action) {
@@ -221,6 +224,8 @@ static int pseries_memory_notifier(struct notifier_block *nb,
 		break;
 	}
 	return notifier_from_errno(err);
+<<<<<<< HEAD
+=======
 =======
 	int err = NOTIFY_OK;
 
@@ -244,6 +249,7 @@ static int pseries_memory_notifier(struct notifier_block *nb,
 	}
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct notifier_block pseries_mem_nb = {

@@ -59,7 +59,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/apic.h>
 #include <asm/lguest.h>
 #include <asm/paravirt.h>
@@ -75,14 +79,20 @@
 #include <asm/stackprotector.h>
 #include <asm/reboot.h>		/* for struct machine_ops */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/kvm_para.h>
 
 /*G:010
  * Welcome to the Guest!
+<<<<<<< HEAD
+=======
 =======
 
 /*G:010 Welcome to the Guest!
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The Guest in our tale is a simple creature: identical to the Host but
  * behaving in simplified but equivalent ways.  In particular, the Guest is the
@@ -202,15 +212,21 @@ static void lazy_hcall4(unsigned long call,
 
 /*G:036
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * When lazy mode is turned off, we issue the do-nothing hypercall to
  * flush any stored calls, and call the generic helper to reset the
  * per-cpu lazy mode variable.
  */
+<<<<<<< HEAD
+=======
 =======
  * When lazy mode is turned off reset the per-cpu lazy mode variable and then
  * issue the do-nothing hypercall to flush any stored calls.
 :*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void lguest_leave_lazy_mmu_mode(void)
 {
 	hcall(LHCALL_FLUSH_ASYNC, 0, 0, 0, 0);
@@ -218,6 +234,9 @@ static void lguest_leave_lazy_mmu_mode(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * We also catch the end of context switch; we enter lazy mode for much of
  * that too, so again we need to flush here.
@@ -225,8 +244,11 @@ static void lguest_leave_lazy_mmu_mode(void)
  * (Technically, this is lazy CPU mode, and normally we're in lazy MMU
  * mode, but unlike Xen, lguest doesn't care about the difference).
  */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void lguest_end_context_switch(struct task_struct *next)
 {
 	hcall(LHCALL_FLUSH_ASYNC, 0, 0, 0, 0);
@@ -422,8 +444,12 @@ static void lguest_load_tr_desc(void)
 <<<<<<< HEAD
  * has been translated into 6 languages.  I am not making this up!
 =======
+<<<<<<< HEAD
+ * has been translated into 6 languages.  I am not making this up!
+=======
  * has been translated into 5 languages.  I am not making this up!
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * We could get funky here and identify ourselves as "GenuineLguest", but
  * instead we just use the real "cpuid" instruction.  Then I pretty much turned
@@ -479,6 +505,9 @@ static void lguest_cpuid(unsigned int *ax, unsigned int *bx,
 		*ax |= 0x00000500;
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * This is used to detect if we're running under KVM.  We might be,
@@ -488,8 +517,11 @@ static void lguest_cpuid(unsigned int *ax, unsigned int *bx,
 		*bx = *cx = *dx = 0;
 		break;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * 0x80000000 returns the highest Extended Function, so we futureproof
 	 * like we do above by limiting it to known fields.
@@ -505,8 +537,12 @@ static void lguest_cpuid(unsigned int *ax, unsigned int *bx,
 <<<<<<< HEAD
 	 * Virus Protection).  We just switch it off here, since we don't
 =======
+<<<<<<< HEAD
+	 * Virus Protection).  We just switch it off here, since we don't
+=======
 	 * Virus Protection).  We just switch turn if off here, since we don't
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * support it.
 	 */
 	case 0x80000001:
@@ -569,6 +605,9 @@ static unsigned long lguest_read_cr2(void)
 /* See lguest_set_pte() below. */
 static bool cr3_changed = false;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long current_cr3;
 
 /*
@@ -579,6 +618,8 @@ static void lguest_write_cr3(unsigned long cr3)
 {
 	lazy_hcall1(LHCALL_NEW_PGTABLE, cr3);
 	current_cr3 = cr3;
+<<<<<<< HEAD
+=======
 =======
 
 /*
@@ -592,6 +633,7 @@ static void lguest_write_cr3(unsigned long cr3)
 	lguest_data.pgdir = cr3;
 	lazy_hcall1(LHCALL_NEW_PGTABLE, cr3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* These two page tables are simple, linear, and used during boot */
 	if (cr3 != __pa(swapper_pg_dir) && cr3 != __pa(initial_page_table))
@@ -603,8 +645,12 @@ static unsigned long lguest_read_cr3(void)
 <<<<<<< HEAD
 	return current_cr3;
 =======
+<<<<<<< HEAD
+	return current_cr3;
+=======
 	return lguest_data.pgdir;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* cr4 is used to enable and disable PGE, but we don't care. */
@@ -709,8 +755,12 @@ static void lguest_write_cr4(unsigned long val)
 <<<<<<< HEAD
  * a page into a process' address space.  We tell the Host the toplevel and
 =======
+<<<<<<< HEAD
+ * a page into a process' address space.  We tell the Host the toplevel and
+=======
  * a page into a process' address space.  Wetell the Host the toplevel and
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * address this corresponds to.  The Guest uses one pagetable per process, so
  * we need to tell the Host which one we're changing (mm->pgd).
  */
@@ -830,8 +880,12 @@ static void lguest_flush_tlb_single(unsigned long addr)
 <<<<<<< HEAD
 	lazy_hcall3(LHCALL_SET_PTE, current_cr3, addr, 0);
 =======
+<<<<<<< HEAD
+	lazy_hcall3(LHCALL_SET_PTE, current_cr3, addr, 0);
+=======
 	lazy_hcall3(LHCALL_SET_PTE, lguest_data.pgdir, addr, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -911,6 +965,9 @@ static void __init lguest_init_IRQ(void)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Interrupt descriptors are allocated as-needed, but low-numbered ones are
  * reserved by the generic x86 code.  So we ignore irq_alloc_desc_at if it
  * tells us the irq is already used: other errors (ie. ENOMEM) we take
@@ -928,6 +985,8 @@ int lguest_setup_irq(unsigned int irq)
 	irq_set_chip_and_handler_name(irq, &lguest_irq_controller,
 				      handle_level_irq, "level");
 	return 0;
+<<<<<<< HEAD
+=======
 =======
  * With CONFIG_SPARSE_IRQ, interrupt descriptors are allocated as-needed, so
  * rather than set them in lguest_init_IRQ we are called here every time an
@@ -942,6 +1001,7 @@ void lguest_setup_irq(unsigned int irq)
 	irq_set_chip_and_handler_name(irq, &lguest_irq_controller,
 				      handle_level_irq, "level");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1236,8 +1296,12 @@ static __init char *lguest_memory_setup(void)
 <<<<<<< HEAD
 	 * The Linux bootloader header contains an "e820" memory map: the
 =======
+<<<<<<< HEAD
+	 * The Linux bootloader header contains an "e820" memory map: the
+=======
 	 *The Linux bootloader header contains an "e820" memory map: the
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Launcher populated the first entry with our memory limit.
 	 */
 	e820_add_region(boot_params.e820_map[0].addr,
@@ -1408,8 +1472,11 @@ __init void lguest_init(void)
 	pv_mmu_ops.lazy_mode.leave = lguest_leave_lazy_mmu_mode;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	pv_mmu_ops.lazy_mode.flush = paravirt_flush_lazy_mmu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pv_mmu_ops.pte_update = lguest_pte_update;
 	pv_mmu_ops.pte_update_defer = lguest_pte_update;
 

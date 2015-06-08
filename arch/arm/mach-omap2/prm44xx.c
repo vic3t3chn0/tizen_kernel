@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2010 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2010 Nokia Corporation
  * Benoît Cousson
  * Paul Walmsley
@@ -22,6 +26,9 @@
 #include <linux/io.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/cpu.h>
 #include <plat/irqs.h>
 #include <plat/prcm.h>
@@ -51,6 +58,8 @@ static struct omap_prcm_irq_setup omap4_prcm_irq_setup = {
 	.save_and_clear_irqen	= &omap44xx_prm_save_and_clear_irqen,
 	.restore_irqen		= &omap44xx_prm_restore_irqen,
 };
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/cpu.h>
@@ -65,6 +74,7 @@ static struct omap_prcm_irq_setup omap4_prcm_irq_setup = {
  */
 #define OMAP4_RST_CTRL_ST_OFFSET		4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* PRM low-level functions */
 
@@ -94,6 +104,9 @@ u32 omap4_prm_rmw_inst_reg_bits(u32 mask, u32 bits, s16 inst, s16 reg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PRM VP */
 
 /*
@@ -260,6 +273,8 @@ static int __init omap4xxx_prcm_init(void)
 	return 0;
 }
 subsys_initcall(omap4xxx_prcm_init);
+<<<<<<< HEAD
+=======
 =======
 /* Read a PRM register, AND it, and shift the result down to bit 0 */
 /* XXX deprecated */
@@ -398,3 +413,4 @@ void omap4_prm_global_warm_sw_reset(void)
 				    OMAP4_RM_RSTCTRL);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

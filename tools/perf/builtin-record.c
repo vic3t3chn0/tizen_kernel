@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include "util/tool.h"
 =======
+<<<<<<< HEAD
+#include "util/tool.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "util/symbol.h"
 #include "util/cpumap.h"
 #include "util/thread_map.h"
@@ -36,15 +40,21 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define FD(e, x, y) (*(int *)xyarray__entry(e->fd, x, y))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum write_mode_t {
 	WRITE_FORCE,
 	WRITE_APPEND
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct perf_record {
 	struct perf_tool	tool;
 	struct perf_record_opts	opts;
@@ -76,6 +86,8 @@ static void write_output(struct perf_record *rec, void *buf, size_t size)
 {
 	while (size) {
 		int ret = write(rec->output, buf, size);
+<<<<<<< HEAD
+=======
 =======
 static u64			user_interval			= ULLONG_MAX;
 static u64			default_interval		=      0;
@@ -126,6 +138,7 @@ static void write_output(void *buf, size_t size)
 	while (size) {
 		int ret = write(output, buf, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (ret < 0)
 			die("failed to write");
@@ -134,6 +147,9 @@ static void write_output(void *buf, size_t size)
 		buf += ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rec->bytes_written += ret;
 	}
 }
@@ -154,6 +170,8 @@ static void perf_record__mmap_read(struct perf_record *rec,
 	unsigned int head = perf_mmap__read_head(md);
 	unsigned int old = md->prev;
 	unsigned char *data = md->base + rec->page_size;
+<<<<<<< HEAD
+=======
 =======
 		bytes_written += ret;
 	}
@@ -173,6 +191,7 @@ static void mmap_read(struct perf_mmap *md)
 	unsigned int old = md->prev;
 	unsigned char *data = md->base + page_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long size;
 	void *buf;
 
@@ -182,8 +201,12 @@ static void mmap_read(struct perf_mmap *md)
 <<<<<<< HEAD
 	rec->samples++;
 =======
+<<<<<<< HEAD
+	rec->samples++;
+=======
 	samples++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	size = head - old;
 
@@ -195,8 +218,12 @@ static void mmap_read(struct perf_mmap *md)
 <<<<<<< HEAD
 		write_output(rec, buf, size);
 =======
+<<<<<<< HEAD
+		write_output(rec, buf, size);
+=======
 		write_output(buf, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	buf = &data[old & md->mask];
@@ -206,8 +233,12 @@ static void mmap_read(struct perf_mmap *md)
 <<<<<<< HEAD
 	write_output(rec, buf, size);
 =======
+<<<<<<< HEAD
+	write_output(rec, buf, size);
+=======
 	write_output(buf, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	md->prev = old;
 	perf_mmap__write_tail(md, old);
@@ -216,6 +247,9 @@ static void mmap_read(struct perf_mmap *md)
 static volatile int done = 0;
 static volatile int signr = -1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static volatile int child_finished = 0;
 
 static void sig_handler(int sig)
@@ -223,16 +257,22 @@ static void sig_handler(int sig)
 	if (sig == SIGCHLD)
 		child_finished = 1;
 
+<<<<<<< HEAD
+=======
 =======
 
 static void sig_handler(int sig)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	done = 1;
 	signr = sig;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_record__sig_exit(int exit_status __used, void *arg)
 {
 	struct perf_record *rec = arg;
@@ -246,12 +286,15 @@ static void perf_record__sig_exit(int exit_status __used, void *arg)
 		if (WIFSIGNALED(status))
 			psignal(WTERMSIG(status), rec->progname);
 	}
+<<<<<<< HEAD
+=======
 =======
 static void sig_atexit(void)
 {
 	if (child_pid > 0)
 		kill(child_pid, SIGTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (signr == -1 || signr == SIGUSR1)
 		return;
@@ -260,6 +303,8 @@ static void sig_atexit(void)
 	kill(getpid(), signr);
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void config_attr(struct perf_evsel *evsel, struct perf_evlist *evlist)
@@ -334,6 +379,7 @@ static void config_attr(struct perf_evsel *evsel, struct perf_evlist *evlist)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool perf_evlist__equal(struct perf_evlist *evlist,
 			       struct perf_evlist *other)
 {
@@ -354,6 +400,9 @@ static bool perf_evlist__equal(struct perf_evlist *evlist,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_record__open(struct perf_record *rec)
 {
 	struct perf_evsel *pos, *first;
@@ -368,6 +417,8 @@ static void perf_record__open(struct perf_record *rec)
 	list_for_each_entry(pos, &evlist->entries, node) {
 		struct perf_event_attr *attr = &pos->attr;
 		struct xyarray *group_fd = NULL;
+<<<<<<< HEAD
+=======
 =======
 static void open_counters(struct perf_evlist *evlist)
 {
@@ -379,6 +430,7 @@ static void open_counters(struct perf_evlist *evlist)
 	list_for_each_entry(pos, &evlist->entries, node) {
 		struct perf_event_attr *attr = &pos->attr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Check if parse_single_tracepoint_event has already asked for
 		 * PERF_SAMPLE_TIME.
@@ -394,6 +446,9 @@ static void open_counters(struct perf_evlist *evlist)
 		bool time_needed = attr->sample_type & PERF_SAMPLE_TIME;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (opts->group && pos != first)
 			group_fd = first->fd;
 fallback_missing_features:
@@ -429,6 +484,8 @@ try_again:
 
 					goto retry_sample_id;
 				}
+<<<<<<< HEAD
+=======
 =======
 		config_attr(pos, evlist);
 retry_sample_id:
@@ -453,6 +510,7 @@ try_again:
 
 				goto retry_sample_id;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 
 			/*
@@ -500,6 +558,9 @@ try_again:
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (perf_evlist__mmap(evlist, opts->mmap_pages, false) < 0) {
 		if (errno == EPERM)
 			die("Permission error mapping pages.\n"
@@ -514,12 +575,15 @@ try_again:
 	}
 
 	if (rec->file_new)
+<<<<<<< HEAD
+=======
 =======
 	if (perf_evlist__mmap(evlist, mmap_pages, false) < 0)
 		die("failed to mmap with %d (%s)\n", errno, strerror(errno));
 
 	if (file_new)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		session->evlist = evlist;
 	else {
 		if (!perf_evlist__equal(session->evlist, evlist)) {
@@ -536,15 +600,24 @@ static int process_buildids(struct perf_record *rec)
 {
 	u64 size = lseek(rec->output, 0, SEEK_CUR);
 =======
+<<<<<<< HEAD
+static int process_buildids(struct perf_record *rec)
+{
+	u64 size = lseek(rec->output, 0, SEEK_CUR);
+=======
 static int process_buildids(void)
 {
 	u64 size = lseek(output, 0, SEEK_CUR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (size == 0)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rec->session->fd = rec->output;
 	return __perf_session__process_events(rec->session, rec->post_processing_offset,
 					      size - rec->post_processing_offset,
@@ -564,6 +637,8 @@ static void perf_record__exit(int status __used, void *arg)
 					   rec->output, true);
 		perf_session__delete(rec->session);
 		perf_evlist__delete(rec->evlist);
+<<<<<<< HEAD
+=======
 =======
 	session->fd = output;
 	return __perf_session__process_events(session, post_processing_offset,
@@ -582,6 +657,7 @@ static void atexit_header(void)
 		perf_session__delete(session);
 		perf_evlist__delete(evsel_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		symbol__exit();
 	}
 }
@@ -592,8 +668,12 @@ static void perf_event__synthesize_guest_os(struct machine *machine, void *data)
 <<<<<<< HEAD
 	struct perf_tool *tool = data;
 =======
+<<<<<<< HEAD
+	struct perf_tool *tool = data;
+=======
 	struct perf_session *psession = data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (machine__is_host(machine))
 		return;
@@ -610,9 +690,14 @@ static void perf_event__synthesize_guest_os(struct machine *machine, void *data)
 	err = perf_event__synthesize_modules(tool, process_synthesized_event,
 					     machine);
 =======
+<<<<<<< HEAD
+	err = perf_event__synthesize_modules(tool, process_synthesized_event,
+					     machine);
+=======
 	err = perf_event__synthesize_modules(process_synthesized_event,
 					     psession, machine);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		pr_err("Couldn't record guest kernel [%d]'s reference"
 		       " relocation symbol.\n", machine->pid);
@@ -622,11 +707,16 @@ static void perf_event__synthesize_guest_os(struct machine *machine, void *data)
 	 * have no _text sometimes.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = perf_event__synthesize_kernel_mmap(tool, process_synthesized_event,
 						 machine, "_text");
 	if (err < 0)
 		err = perf_event__synthesize_kernel_mmap(tool, process_synthesized_event,
 							 machine, "_stext");
+<<<<<<< HEAD
+=======
 =======
 	err = perf_event__synthesize_kernel_mmap(process_synthesized_event,
 						 psession, machine, "_text");
@@ -635,6 +725,7 @@ static void perf_event__synthesize_guest_os(struct machine *machine, void *data)
 							 psession, machine,
 							 "_stext");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		pr_err("Couldn't record guest kernel [%d]'s reference"
 		       " relocation symbol.\n", machine->pid);
@@ -646,6 +737,9 @@ static struct perf_event_header finished_round_event = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void perf_record__mmap_read_all(struct perf_record *rec)
 {
 	int i;
@@ -678,6 +772,8 @@ static int __cmd_record(struct perf_record *rec, int argc, const char **argv)
 	rec->page_size = sysconf(_SC_PAGE_SIZE);
 
 	on_exit(perf_record__sig_exit, rec);
+<<<<<<< HEAD
+=======
 =======
 static void mmap_read_all(void)
 {
@@ -708,11 +804,15 @@ static int __cmd_record(int argc, const char **argv)
 
 	atexit(sig_atexit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	signal(SIGCHLD, sig_handler);
 	signal(SIGINT, sig_handler);
 	signal(SIGUSR1, sig_handler);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!output_name) {
 		if (!fstat(STDOUT_FILENO, &st) && S_ISFIFO(st.st_mode))
 			opts->pipe_output = true;
@@ -724,6 +824,8 @@ static int __cmd_record(int argc, const char **argv)
 			opts->pipe_output = true;
 		else if (!stat(output_name, &st) && st.st_size) {
 			if (rec->write_mode == WRITE_FORCE) {
+<<<<<<< HEAD
+=======
 =======
 	if (forks && (pipe(child_ready_pipe) < 0 || pipe(go_pipe) < 0)) {
 		perror("failed to create pipes");
@@ -742,6 +844,7 @@ static int __cmd_record(int argc, const char **argv)
 		else if (!stat(output_name, &st) && st.st_size) {
 			if (write_mode == WRITE_FORCE) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				char oldname[PATH_MAX];
 				snprintf(oldname, sizeof(oldname), "%s.old",
 					 output_name);
@@ -752,20 +855,30 @@ static int __cmd_record(int argc, const char **argv)
 		} else if (rec->write_mode == WRITE_APPEND) {
 			rec->write_mode = WRITE_FORCE;
 =======
+<<<<<<< HEAD
+		} else if (rec->write_mode == WRITE_APPEND) {
+			rec->write_mode = WRITE_FORCE;
+=======
 		} else if (write_mode == WRITE_APPEND) {
 			write_mode = WRITE_FORCE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
 	flags = O_CREAT|O_RDWR;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rec->write_mode == WRITE_APPEND)
 		rec->file_new = 0;
 	else
 		flags |= O_TRUNC;
 
 	if (opts->pipe_output)
+<<<<<<< HEAD
+=======
 =======
 	if (write_mode == WRITE_APPEND)
 		file_new = 0;
@@ -774,6 +887,7 @@ static int __cmd_record(int argc, const char **argv)
 
 	if (pipe_output)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		output = STDOUT_FILENO;
 	else
 		output = open(output_name, flags, S_IRUSR | S_IWUSR);
@@ -783,20 +897,29 @@ static int __cmd_record(int argc, const char **argv)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rec->output = output;
 
 	session = perf_session__new(output_name, O_WRONLY,
 				    rec->write_mode == WRITE_FORCE, false, NULL);
+<<<<<<< HEAD
+=======
 =======
 	session = perf_session__new(output_name, O_WRONLY,
 				    write_mode == WRITE_FORCE, false, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (session == NULL) {
 		pr_err("Not enough memory for reading perf file header\n");
 		return -1;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rec->session = session;
 
 	for (feat = HEADER_FIRST_FEATURE; feat < HEADER_LAST_FEATURE; feat++)
@@ -812,18 +935,24 @@ static int __cmd_record(int argc, const char **argv)
 		perf_header__clear_feat(&session->header, HEADER_BRANCH_STACK);
 
 	if (!rec->file_new) {
+<<<<<<< HEAD
+=======
 =======
 	if (!no_buildid)
 		perf_header__set_feat(&session->header, HEADER_BUILD_ID);
 
 	if (!file_new) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = perf_session__read_header(session, output);
 		if (err < 0)
 			goto out_delete_session;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (forks) {
 		err = perf_evlist__prepare_workload(evsel_list, opts, argv);
 		if (err < 0) {
@@ -844,6 +973,8 @@ static int __cmd_record(int argc, const char **argv)
 		if (err < 0)
 			return err;
 	} else if (rec->file_new) {
+<<<<<<< HEAD
+=======
 =======
 	if (have_tracepoints(&evsel_list->entries))
 		perf_header__set_feat(&session->header, HEADER_TRACE_INFO);
@@ -919,6 +1050,7 @@ static int __cmd_record(int argc, const char **argv)
 			return err;
 	} else if (file_new) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = perf_session__write_header(session, evsel_list,
 						 output, false);
 		if (err < 0)
@@ -926,6 +1058,9 @@ static int __cmd_record(int argc, const char **argv)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rec->no_buildid
 	    && !perf_header__has_feat(&session->header, HEADER_BUILD_ID)) {
 		pr_err("Couldn't generate buildids. "
@@ -944,6 +1079,8 @@ static int __cmd_record(int argc, const char **argv)
 	if (opts->pipe_output) {
 		err = perf_event__synthesize_attrs(tool, session,
 						   process_synthesized_event);
+<<<<<<< HEAD
+=======
 =======
 	post_processing_offset = lseek(output, 0, SEEK_CUR);
 
@@ -951,6 +1088,7 @@ static int __cmd_record(int argc, const char **argv)
 		err = perf_session__synthesize_attrs(session,
 						     process_synthesized_event);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0) {
 			pr_err("Couldn't synthesize attrs.\n");
 			return err;
@@ -960,9 +1098,14 @@ static int __cmd_record(int argc, const char **argv)
 		err = perf_event__synthesize_event_types(tool, process_synthesized_event,
 							 machine);
 =======
+<<<<<<< HEAD
+		err = perf_event__synthesize_event_types(tool, process_synthesized_event,
+							 machine);
+=======
 		err = perf_event__synthesize_event_types(process_synthesized_event,
 							 session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0) {
 			pr_err("Couldn't synthesize event_types.\n");
 			return err;
@@ -981,15 +1124,23 @@ static int __cmd_record(int argc, const char **argv)
 			err = perf_event__synthesize_tracing_data(tool, output, evsel_list,
 								  process_synthesized_event);
 =======
+<<<<<<< HEAD
+			err = perf_event__synthesize_tracing_data(tool, output, evsel_list,
+								  process_synthesized_event);
+=======
 			err = perf_event__synthesize_tracing_data(output, evsel_list,
 								  process_synthesized_event,
 								  session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (err <= 0) {
 				pr_err("Couldn't record tracing data.\n");
 				return err;
 			}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			advance_output(rec, err);
 		}
 	}
@@ -999,6 +1150,8 @@ static int __cmd_record(int argc, const char **argv)
 	if (err < 0)
 		err = perf_event__synthesize_kernel_mmap(tool, process_synthesized_event,
 							 machine, "_stext");
+<<<<<<< HEAD
+=======
 =======
 			advance_output(err);
 		}
@@ -1016,6 +1169,7 @@ static int __cmd_record(int argc, const char **argv)
 		err = perf_event__synthesize_kernel_mmap(process_synthesized_event,
 							 session, machine, "_stext");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		pr_err("Couldn't record kernel reference relocation symbol\n"
 		       "Symbol resolution may be skewed if relocation was used (e.g. kexec).\n"
@@ -1025,9 +1179,14 @@ static int __cmd_record(int argc, const char **argv)
 	err = perf_event__synthesize_modules(tool, process_synthesized_event,
 					     machine);
 =======
+<<<<<<< HEAD
+	err = perf_event__synthesize_modules(tool, process_synthesized_event,
+					     machine);
+=======
 	err = perf_event__synthesize_modules(process_synthesized_event,
 					     session, machine);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		pr_err("Couldn't record kernel module information.\n"
 		       "Symbol resolution may be skewed if relocation was used (e.g. kexec).\n"
@@ -1035,6 +1194,9 @@ static int __cmd_record(int argc, const char **argv)
 
 	if (perf_guest)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		perf_session__process_machines(session, tool,
 					       perf_event__synthesize_guest_os);
 
@@ -1050,6 +1212,8 @@ static int __cmd_record(int argc, const char **argv)
 		struct sched_param param;
 
 		param.sched_priority = rec->realtime_prio;
+<<<<<<< HEAD
+=======
 =======
 		perf_session__process_machines(session,
 					       perf_event__synthesize_guest_os);
@@ -1067,6 +1231,7 @@ static int __cmd_record(int argc, const char **argv)
 
 		param.sched_priority = realtime_prio;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sched_setscheduler(0, SCHED_FIFO, &param)) {
 			pr_err("Could not set realtime priority.\n");
 			exit(-1);
@@ -1077,12 +1242,20 @@ static int __cmd_record(int argc, const char **argv)
 	perf_evlist__enable(evsel_list);
 
 =======
+<<<<<<< HEAD
+	perf_evlist__enable(evsel_list);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Let the child rip
 	 */
 	if (forks)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		perf_evlist__start_workload(evsel_list);
 
 	for (;;) {
@@ -1091,6 +1264,8 @@ static int __cmd_record(int argc, const char **argv)
 		perf_record__mmap_read_all(rec);
 
 		if (hits == rec->samples) {
+<<<<<<< HEAD
+=======
 =======
 		close(go_pipe[1]);
 
@@ -1102,12 +1277,17 @@ static int __cmd_record(int argc, const char **argv)
 
 		if (hits == samples) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (done)
 				break;
 			err = poll(evsel_list->pollfd, evsel_list->nr_fds, -1);
 			waking++;
 		}
 
+<<<<<<< HEAD
+		if (done)
+			perf_evlist__disable(evsel_list);
+=======
 <<<<<<< HEAD
 		if (done)
 			perf_evlist__disable(evsel_list);
@@ -1126,6 +1306,7 @@ static int __cmd_record(int argc, const char **argv)
 			}
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (quiet || signr == SIGUSR1)
@@ -1143,10 +1324,16 @@ static int __cmd_record(int argc, const char **argv)
 		output_name,
 		rec->bytes_written / 24);
 =======
+<<<<<<< HEAD
+		(double)rec->bytes_written / 1024.0 / 1024.0,
+		output_name,
+		rec->bytes_written / 24);
+=======
 		(double)bytes_written / 1024.0 / 1024.0,
 		output_name,
 		bytes_written / 24);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -1156,6 +1343,9 @@ out_delete_session:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BRANCH_OPT(n, m) \
 	{ .name = n, .mode = (m) }
 
@@ -1240,8 +1430,11 @@ error:
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char * const record_usage[] = {
 	"perf record [<options>] [<command>]",
 	"perf record [<options>] -- <command> [<options>]",
@@ -1249,6 +1442,9 @@ static const char * const record_usage[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * XXX Ideally would be local to cmd_record() and passed to a perf_record__new
  * because we need to have access to it in perf_record__exit, that is called
@@ -1312,6 +1508,8 @@ const struct option record_options[] = {
 	OPT_BOOLEAN(0, "group", &record.opts.group,
 		    "put the counters into a counter group"),
 	OPT_BOOLEAN('g', "call-graph", &record.opts.call_graph,
+<<<<<<< HEAD
+=======
 =======
 static bool force, append_file;
 
@@ -1348,11 +1546,15 @@ const struct option record_options[] = {
 	OPT_UINTEGER('m', "mmap-pages", &mmap_pages, "number of mmap data pages"),
 	OPT_BOOLEAN('g', "call-graph", &call_graph,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    "do call-graph (stack chain/backtrace) recording"),
 	OPT_INCR('v', "verbose", &verbose,
 		    "be more verbose (show counter open errors, etc)"),
 	OPT_BOOLEAN('q', "quiet", &quiet, "don't print any message"),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_BOOLEAN('s', "stat", &record.opts.inherit_stat,
 		    "per thread counts"),
 	OPT_BOOLEAN('d', "data", &record.opts.sample_address,
@@ -1377,6 +1579,8 @@ const struct option record_options[] = {
 	OPT_CALLBACK('j', "branch-filter", &record.opts.branch_stack,
 		     "branch filter mask", "branch stack filter modes",
 		     parse_branch_stack),
+<<<<<<< HEAD
+=======
 =======
 	OPT_BOOLEAN('s', "stat", &inherit_stat,
 		    "per thread counts"),
@@ -1393,6 +1597,7 @@ const struct option record_options[] = {
 		     "monitor event in cgroup name only",
 		     parse_cgroups),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_END()
 };
 
@@ -1401,18 +1606,27 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 	int err = -ENOMEM;
 	struct perf_evsel *pos;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct perf_evlist *evsel_list;
 	struct perf_record *rec = &record;
 
 	perf_header__set_cmdline(argc, argv);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	evsel_list = perf_evlist__new(NULL, NULL);
 	if (evsel_list == NULL)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rec->evlist = evsel_list;
 
 	argc = parse_options(argc, argv, record_options, record_usage,
@@ -1432,6 +1646,8 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 	}
 
 	if (nr_cgroups && !rec->opts.system_wide) {
+<<<<<<< HEAD
+=======
 =======
 	argc = parse_options(argc, argv, record_options, record_usage,
 			    PARSE_OPT_STOP_AT_NON_OPTION);
@@ -1451,6 +1667,7 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 
 	if (nr_cgroups && !system_wide) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fprintf(stderr, "cgroup monitoring only available in"
 			" system-wide mode\n");
 		usage_with_options(record_usage, record_options);
@@ -1471,8 +1688,12 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 	if (rec->no_buildid_cache || rec->no_buildid)
 =======
+<<<<<<< HEAD
+	if (rec->no_buildid_cache || rec->no_buildid)
+=======
 	if (no_buildid_cache || no_buildid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		disable_buildid_cache();
 
 	if (evsel_list->nr_entries == 0 &&
@@ -1482,6 +1703,9 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rec->opts.uid = parse_target_uid(rec->uid_str, rec->opts.target_tid,
 					 rec->opts.target_pid);
 	if (rec->uid_str != NULL && rec->opts.uid == UINT_MAX - 1)
@@ -1496,6 +1720,8 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 		usage_with_options(record_usage, record_options);
 
 	list_for_each_entry(pos, &evsel_list->entries, node) {
+<<<<<<< HEAD
+=======
 =======
 	if (target_pid != -1)
 		target_tid = target_pid;
@@ -1509,15 +1735,21 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 					 evsel_list->threads->nr) < 0)
 			goto out_free_fd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (perf_header__push_event(pos->attr.config, event_name(pos)))
 			goto out_free_fd;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rec->opts.user_interval != ULLONG_MAX)
 		rec->opts.default_interval = rec->opts.user_interval;
 	if (rec->opts.user_freq != UINT_MAX)
 		rec->opts.freq = rec->opts.user_freq;
+<<<<<<< HEAD
+=======
 =======
 	if (perf_evlist__alloc_pollfd(evsel_list) < 0)
 		goto out_free_fd;
@@ -1527,21 +1759,28 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 	if (user_freq != UINT_MAX)
 		freq = user_freq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * User specified count overrides default frequency.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rec->opts.default_interval)
 		rec->opts.freq = 0;
 	else if (rec->opts.freq) {
 		rec->opts.default_interval = rec->opts.freq;
+<<<<<<< HEAD
+=======
 =======
 	if (default_interval)
 		freq = 0;
 	else if (freq) {
 		default_interval = freq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		fprintf(stderr, "frequency and count are zero, aborting\n");
 		err = -EINVAL;
@@ -1551,8 +1790,12 @@ int cmd_record(int argc, const char **argv, const char *prefix __used)
 <<<<<<< HEAD
 	err = __cmd_record(&record, argc, argv);
 =======
+<<<<<<< HEAD
+	err = __cmd_record(&record, argc, argv);
+=======
 	err = __cmd_record(argc, argv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_free_fd:
 	perf_evlist__delete_maps(evsel_list);
 out_symbol_exit:

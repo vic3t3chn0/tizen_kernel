@@ -19,6 +19,13 @@
 #include <linux/blkdev.h>
 #include <linux/raid/md_u.h>
 #include <linux/seq_file.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include "md.h"
 #include "linear.h"
@@ -26,10 +33,23 @@
 /*
  * find which device holds a particular offset 
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline struct dev_info *which_dev(struct mddev *mddev, sector_t sector)
+{
+	int lo, mid, hi;
+	struct linear_conf *conf;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline dev_info_t *which_dev(mddev_t *mddev, sector_t sector)
 {
 	int lo, mid, hi;
 	linear_conf_t *conf;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lo = 0;
 	hi = mddev->raid_disks - 1;
@@ -63,14 +83,42 @@ static int linear_mergeable_bvec(struct request_queue *q,
 				 struct bvec_merge_data *bvm,
 				 struct bio_vec *biovec)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mddev *mddev = q->queuedata;
+	struct dev_info *dev0;
+	unsigned long maxsectors, bio_sectors = bvm->bi_size >> 9;
+	sector_t sector = bvm->bi_sector + get_start_sect(bvm->bi_bdev);
+	int maxbytes = biovec->bv_len;
+	struct request_queue *subq;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mddev_t *mddev = q->queuedata;
 	dev_info_t *dev0;
 	unsigned long maxsectors, bio_sectors = bvm->bi_size >> 9;
 	sector_t sector = bvm->bi_sector + get_start_sect(bvm->bi_bdev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_read_lock();
 	dev0 = which_dev(mddev, sector);
 	maxsectors = dev0->end_sector - sector;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	subq = bdev_get_queue(dev0->rdev->bdev);
+	if (subq->merge_bvec_fn) {
+		bvm->bi_bdev = dev0->rdev->bdev;
+		bvm->bi_sector -= dev0->end_sector - dev0->rdev->sectors;
+		maxbytes = min(maxbytes, subq->merge_bvec_fn(subq, bvm,
+							     biovec));
+	}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 
 	if (maxsectors < bio_sectors)
@@ -79,18 +127,43 @@ static int linear_mergeable_bvec(struct request_queue *q,
 		maxsectors -= bio_sectors;
 
 	if (maxsectors <= (PAGE_SIZE >> 9 ) && bio_sectors == 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return maxbytes;
+
+	if (maxsectors > (maxbytes >> 9))
+		return maxbytes;
+	else
+		return maxsectors << 9;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return biovec->bv_len;
 	/* The bytes available at this offset could be really big,
 	 * so we cap at 2^31 to avoid overflow */
 	if (maxsectors > (1 << (31-9)))
 		return 1<<31;
 	return maxsectors << 9;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int linear_congested(void *data, int bits)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mddev *mddev = data;
+	struct linear_conf *conf;
+=======
 	mddev_t *mddev = data;
 	linear_conf_t *conf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mddev_t *mddev = data;
+	linear_conf_t *conf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, ret = 0;
 
 	if (mddev_congested(mddev, bits))
@@ -108,9 +181,21 @@ static int linear_congested(void *data, int bits)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static sector_t linear_size(struct mddev *mddev, sector_t sectors, int raid_disks)
+{
+	struct linear_conf *conf;
+=======
 static sector_t linear_size(mddev_t *mddev, sector_t sectors, int raid_disks)
 {
 	linear_conf_t *conf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static sector_t linear_size(mddev_t *mddev, sector_t sectors, int raid_disks)
+{
+	linear_conf_t *conf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sector_t array_sectors;
 
 	rcu_read_lock();
@@ -123,6 +208,18 @@ static sector_t linear_size(mddev_t *mddev, sector_t sectors, int raid_disks)
 	return array_sectors;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct linear_conf *linear_conf(struct mddev *mddev, int raid_disks)
+{
+	struct linear_conf *conf;
+	struct md_rdev *rdev;
+	int i, cnt;
+
+	conf = kzalloc (sizeof (*conf) + raid_disks*sizeof(struct dev_info),
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static linear_conf_t *linear_conf(mddev_t *mddev, int raid_disks)
 {
 	linear_conf_t *conf;
@@ -130,6 +227,10 @@ static linear_conf_t *linear_conf(mddev_t *mddev, int raid_disks)
 	int i, cnt;
 
 	conf = kzalloc (sizeof (*conf) + raid_disks*sizeof(dev_info_t),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			GFP_KERNEL);
 	if (!conf)
 		return NULL;
@@ -137,9 +238,21 @@ static linear_conf_t *linear_conf(mddev_t *mddev, int raid_disks)
 	cnt = 0;
 	conf->array_sectors = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rdev_for_each(rdev, mddev) {
+		int j = rdev->raid_disk;
+		struct dev_info *disk = conf->disks + j;
+=======
 	list_for_each_entry(rdev, &mddev->disks, same_set) {
 		int j = rdev->raid_disk;
 		dev_info_t *disk = conf->disks + j;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	list_for_each_entry(rdev, &mddev->disks, same_set) {
+		int j = rdev->raid_disk;
+		dev_info_t *disk = conf->disks + j;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sector_t sectors;
 
 		if (j < 0 || j >= raid_disks || disk->rdev) {
@@ -157,6 +270,11 @@ static linear_conf_t *linear_conf(mddev_t *mddev, int raid_disks)
 
 		disk_stack_limits(mddev->gendisk, rdev->bdev,
 				  rdev->data_offset << 9);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* as we don't honour merge_bvec_fn, we must never risk
 		 * violating it, so limit max_segments to 1 lying within
 		 * a single page.
@@ -166,6 +284,10 @@ static linear_conf_t *linear_conf(mddev_t *mddev, int raid_disks)
 			blk_queue_segment_boundary(mddev->queue,
 						   PAGE_CACHE_SIZE - 1);
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		conf->array_sectors += rdev->sectors;
 		cnt++;
@@ -194,9 +316,22 @@ out:
 	return NULL;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int linear_run (struct mddev *mddev)
+{
+	struct linear_conf *conf;
+	int ret;
+=======
 static int linear_run (mddev_t *mddev)
 {
 	linear_conf_t *conf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int linear_run (mddev_t *mddev)
+{
+	linear_conf_t *conf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (md_check_no_bitmap(mddev))
 		return -EINVAL;
@@ -210,6 +345,21 @@ static int linear_run (mddev_t *mddev)
 	blk_queue_merge_bvec(mddev->queue, linear_mergeable_bvec);
 	mddev->queue->backing_dev_info.congested_fn = linear_congested;
 	mddev->queue->backing_dev_info.congested_data = mddev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	ret =  md_integrity_register(mddev);
+	if (ret) {
+		kfree(conf);
+		mddev->private = NULL;
+	}
+	return ret;
+}
+
+static int linear_add(struct mddev *mddev, struct md_rdev *rdev)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return md_integrity_register(mddev);
 }
 
@@ -220,6 +370,10 @@ static void free_conf(struct rcu_head *head)
 }
 
 static int linear_add(mddev_t *mddev, mdk_rdev_t *rdev)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Adding a drive to a linear array allows the array to grow.
 	 * It is permitted if the new drive has a matching superblock
@@ -229,12 +383,27 @@ static int linear_add(mddev_t *mddev, mdk_rdev_t *rdev)
 	 * The current one is never freed until the array is stopped.
 	 * This avoids races.
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct linear_conf *newconf, *oldconf;
+=======
 	linear_conf_t *newconf, *oldconf;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	linear_conf_t *newconf, *oldconf;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (rdev->saved_raid_disk != mddev->raid_disks)
 		return -EINVAL;
 
 	rdev->raid_disk = rdev->saved_raid_disk;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	rdev->saved_raid_disk = -1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	newconf = linear_conf(mddev,mddev->raid_disks+1);
 
@@ -247,6 +416,18 @@ static int linear_add(mddev_t *mddev, mdk_rdev_t *rdev)
 	md_set_array_sectors(mddev, linear_size(mddev, 0, 0));
 	set_capacity(mddev->gendisk, mddev->array_sectors);
 	revalidate_disk(mddev->gendisk);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree_rcu(oldconf, rcu);
+	return 0;
+}
+
+static int linear_stop (struct mddev *mddev)
+{
+	struct linear_conf *conf = mddev->private;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	call_rcu(&oldconf->rcu, free_conf);
 	return 0;
 }
@@ -254,6 +435,10 @@ static int linear_add(mddev_t *mddev, mdk_rdev_t *rdev)
 static int linear_stop (mddev_t *mddev)
 {
 	linear_conf_t *conf = mddev->private;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We do not require rcu protection here since
@@ -270,14 +455,34 @@ static int linear_stop (mddev_t *mddev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void linear_make_request(struct mddev *mddev, struct bio *bio)
+{
+	struct dev_info *tmp_dev;
+=======
 static int linear_make_request (mddev_t *mddev, struct bio *bio)
 {
 	dev_info_t *tmp_dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int linear_make_request (mddev_t *mddev, struct bio *bio)
+{
+	dev_info_t *tmp_dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sector_t start_sector;
 
 	if (unlikely(bio->bi_rw & REQ_FLUSH)) {
 		md_flush_request(mddev, bio);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return;
+=======
 		return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rcu_read_lock();
@@ -299,7 +504,15 @@ static int linear_make_request (mddev_t *mddev, struct bio *bio)
 		       (unsigned long long)start_sector);
 		rcu_read_unlock();
 		bio_io_error(bio);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return;
+=======
 		return 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		return 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (unlikely(bio->bi_sector + (bio->bi_size >> 9) >
 		     tmp_dev->end_sector)) {
@@ -313,30 +526,64 @@ static int linear_make_request (mddev_t *mddev, struct bio *bio)
 
 		bp = bio_split(bio, end_sector - bio->bi_sector);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		linear_make_request(mddev, &bp->bio1);
+		linear_make_request(mddev, &bp->bio2);
+		bio_pair_release(bp);
+		return;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (linear_make_request(mddev, &bp->bio1))
 			generic_make_request(&bp->bio1);
 		if (linear_make_request(mddev, &bp->bio2))
 			generic_make_request(&bp->bio2);
 		bio_pair_release(bp);
 		return 0;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 		    
 	bio->bi_bdev = tmp_dev->rdev->bdev;
 	bio->bi_sector = bio->bi_sector - start_sector
 		+ tmp_dev->rdev->data_offset;
 	rcu_read_unlock();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	generic_make_request(bio);
+}
+
+static void linear_status (struct seq_file *seq, struct mddev *mddev)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 1;
 }
 
 static void linear_status (struct seq_file *seq, mddev_t *mddev)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 
 	seq_printf(seq, " %dk rounding", mddev->chunk_sectors / 2);
 }
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct md_personality linear_personality =
+=======
 static struct mdk_personality linear_personality =
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct mdk_personality linear_personality =
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	.name		= "linear",
 	.level		= LEVEL_LINEAR,

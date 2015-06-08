@@ -208,6 +208,12 @@ static struct i2c_driver max6875_driver = {
 	.id_table	= max6875_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(max6875_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init max6875_init(void)
 {
 	return i2c_add_driver(&max6875_driver);
@@ -218,10 +224,23 @@ static void __exit max6875_exit(void)
 	i2c_del_driver(&max6875_driver);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Ben Gardner <bgardner@wabtec.com>");
 MODULE_DESCRIPTION("MAX6875 driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(max6875_init);
 module_exit(max6875_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(max6875_init);
+module_exit(max6875_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

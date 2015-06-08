@@ -21,8 +21,11 @@
 #include <linux/err.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/sched.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/time.h>
 #include <linux/interrupt.h>
 #include <linux/irq.h>
@@ -35,8 +38,12 @@
 <<<<<<< HEAD
 #include <asm/smp_twd.h>
 =======
+<<<<<<< HEAD
+#include <asm/smp_twd.h>
+=======
 #include <asm/localtimer.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/sched_clock.h>
 
 #include <mach/iomap.h>
@@ -74,10 +81,16 @@ static u64 persistent_ms, last_persistent_ms;
 #define timer_readl(reg) \
 	__raw_readl(timer_reg_base + (reg))
 =======
+<<<<<<< HEAD
+	__raw_writel(value, timer_reg_base + (reg))
+#define timer_readl(reg) \
+	__raw_readl(timer_reg_base + (reg))
+=======
 	__raw_writel(value, (u32)timer_reg_base + (reg))
 #define timer_readl(reg) \
 	__raw_readl((u32)timer_reg_base + (reg))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int tegra_timer_set_next_event(unsigned long cycles,
 					 struct clock_event_device *evt)
@@ -124,6 +137,11 @@ static u32 notrace tegra_read_sched_clock(void)
 {
 	return timer_readl(TIMERUS_CNTR_1US);
 =======
+<<<<<<< HEAD
+static u32 notrace tegra_read_sched_clock(void)
+{
+	return timer_readl(TIMERUS_CNTR_1US);
+=======
 static DEFINE_CLOCK_DATA(cd);
 
 /*
@@ -144,6 +162,7 @@ static void notrace tegra_update_sched_clock(void)
 	u32 cyc = timer_readl(TIMERUS_CNTR_1US);
 	update_sched_clock(&cd, cyc, (u32)~0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -155,8 +174,12 @@ static void notrace tegra_update_sched_clock(void)
 <<<<<<< HEAD
 static u64 tegra_rtc_read_ms(void)
 =======
+<<<<<<< HEAD
+static u64 tegra_rtc_read_ms(void)
+=======
 u64 tegra_rtc_read_ms(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 ms = readl(rtc_base + RTC_MILLISECONDS);
 	u32 s = readl(rtc_base + RTC_SHADOW_SECONDS);
@@ -203,6 +226,9 @@ static struct irqaction tegra_timer_irq = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_HAVE_ARM_TWD
 static DEFINE_TWD_LOCAL_TIMER(twd_local_timer,
 			      TEGRA_ARM_PERIF_BASE + 0x600,
@@ -233,6 +259,8 @@ static void __init tegra_init_timer(void)
 		clk_enable(clk);
 		rate = clk_get_rate(clk);
 	}
+<<<<<<< HEAD
+=======
 =======
 static void __init tegra_init_timer(void)
 {
@@ -244,6 +272,7 @@ static void __init tegra_init_timer(void)
 	BUG_ON(IS_ERR(clk));
 	clk_enable(clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * rtc registers are used by read_persistent_clock, keep the rtc clock
@@ -251,10 +280,15 @@ static void __init tegra_init_timer(void)
 	 */
 	clk = clk_get_sys("rtc-tegra", NULL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(clk))
 		pr_warn("Unable to get rtc-tegra clock\n");
 	else
 		clk_enable(clk);
+<<<<<<< HEAD
+=======
 =======
 	BUG_ON(IS_ERR(clk));
 	clk_enable(clk);
@@ -263,6 +297,7 @@ static void __init tegra_init_timer(void)
 	twd_base = IO_ADDRESS(TEGRA_ARM_PERIF_BASE + 0x600);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (rate) {
 	case 12000000:
@@ -284,9 +319,13 @@ static void __init tegra_init_timer(void)
 <<<<<<< HEAD
 	setup_sched_clock(tegra_read_sched_clock, 32, 1000000);
 =======
+<<<<<<< HEAD
+	setup_sched_clock(tegra_read_sched_clock, 32, 1000000);
+=======
 	init_fixed_sched_clock(&cd, tegra_update_sched_clock, 32,
 			       1000000, SC_MULT, SC_SHIFT);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (clocksource_mmio_init(timer_reg_base + TIMERUS_CNTR_1US,
 		"timer_us", 1000000, 300, 32, clocksource_mmio_readl_up)) {
@@ -311,7 +350,11 @@ static void __init tegra_init_timer(void)
 <<<<<<< HEAD
 	tegra_twd_init();
 =======
+<<<<<<< HEAD
+	tegra_twd_init();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct sys_timer tegra_timer = {

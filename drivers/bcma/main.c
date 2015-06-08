@@ -6,14 +6,43 @@
  */
 
 #include "bcma_private.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
 #include <linux/bcma/bcma.h>
+#include <linux/slab.h>
+=======
+#include <linux/bcma/bcma.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/bcma/bcma.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_DESCRIPTION("Broadcom's specific AMBA driver");
 MODULE_LICENSE("GPL");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/* contains the number the next bus should get. */
+static unsigned int bcma_bus_next_num = 0;
+
+/* bcma_buses_mutex locks the bcma_bus_next_num */
+static DEFINE_MUTEX(bcma_buses_mutex);
+
 static int bcma_bus_match(struct device *dev, struct device_driver *drv);
 static int bcma_device_probe(struct device *dev);
 static int bcma_device_remove(struct device *dev);
+static int bcma_device_uevent(struct device *dev, struct kobj_uevent_env *env);
+=======
+static int bcma_bus_match(struct device *dev, struct device_driver *drv);
+static int bcma_device_probe(struct device *dev);
+static int bcma_device_remove(struct device *dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int bcma_bus_match(struct device *dev, struct device_driver *drv);
+static int bcma_device_probe(struct device *dev);
+static int bcma_device_remove(struct device *dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static ssize_t manuf_show(struct device *dev, struct device_attribute *attr, char *buf)
 {
@@ -48,10 +77,24 @@ static struct bus_type bcma_bus_type = {
 	.match		= bcma_bus_match,
 	.probe		= bcma_device_probe,
 	.remove		= bcma_device_remove,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.uevent		= bcma_device_uevent,
+	.dev_attrs	= bcma_device_attrs,
+};
+
+struct bcma_device *bcma_find_core(struct bcma_bus *bus, u16 coreid)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dev_attrs	= bcma_device_attrs,
 };
 
 static struct bcma_device *bcma_find_core(struct bcma_bus *bus, u16 coreid)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct bcma_device *core;
 
@@ -61,10 +104,27 @@ static struct bcma_device *bcma_find_core(struct bcma_bus *bus, u16 coreid)
 	}
 	return NULL;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(bcma_find_core);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void bcma_release_core_dev(struct device *dev)
 {
 	struct bcma_device *core = container_of(dev, struct bcma_device, dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (core->io_addr)
+		iounmap(core->io_addr);
+	if (core->io_wrap)
+		iounmap(core->io_wrap);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(core);
 }
 
@@ -79,18 +139,48 @@ static int bcma_register_cores(struct bcma_bus *bus)
 		case BCMA_CORE_CHIPCOMMON:
 		case BCMA_CORE_PCI:
 		case BCMA_CORE_PCIE:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		case BCMA_CORE_MIPS_74K:
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		}
 
 		core->dev.release = bcma_release_core_dev;
 		core->dev.bus = &bcma_bus_type;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dev_set_name(&core->dev, "bcma%d:%d", bus->num, dev_id);
+=======
 		dev_set_name(&core->dev, "bcma%d:%d", 0/*bus->num*/, dev_id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev_set_name(&core->dev, "bcma%d:%d", 0/*bus->num*/, dev_id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		switch (bus->hosttype) {
 		case BCMA_HOSTTYPE_PCI:
 			core->dev.parent = &bus->host_pci->dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			core->dma_dev = &bus->host_pci->dev;
+			core->irq = bus->host_pci->irq;
+			break;
+		case BCMA_HOSTTYPE_SOC:
+			core->dev.dma_mask = &core->dev.coherent_dma_mask;
+			core->dma_dev = &core->dev;
+			break;
+=======
 			break;
 		case BCMA_HOSTTYPE_NONE:
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			break;
+		case BCMA_HOSTTYPE_NONE:
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case BCMA_HOSTTYPE_SDIO:
 			break;
 		}
@@ -110,20 +200,50 @@ static int bcma_register_cores(struct bcma_bus *bus)
 
 static void bcma_unregister_cores(struct bcma_bus *bus)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct bcma_device *core;
+
+	list_for_each_entry(core, &bus->cores, list) {
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bcma_device *core, *tmp;
 
 	list_for_each_entry_safe(core, tmp, &bus->cores, list) {
 		list_del(&core->list);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (core->dev_registered)
 			device_unregister(&core->dev);
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int __devinit bcma_bus_register(struct bcma_bus *bus)
+=======
 int bcma_bus_register(struct bcma_bus *bus)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int bcma_bus_register(struct bcma_bus *bus)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 	struct bcma_device *core;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mutex_lock(&bcma_buses_mutex);
+	bus->num = bcma_bus_next_num++;
+	mutex_unlock(&bcma_buses_mutex);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Scan for devices (cores) */
 	err = bcma_bus_scan(bus);
 	if (err) {
@@ -138,6 +258,19 @@ int bcma_bus_register(struct bcma_bus *bus)
 		bcma_core_chipcommon_init(&bus->drv_cc);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Init MIPS core */
+	core = bcma_find_core(bus, BCMA_CORE_MIPS_74K);
+	if (core) {
+		bus->drv_mips.core = core;
+		bcma_core_mips_init(&bus->drv_mips);
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Init PCIE core */
 	core = bcma_find_core(bus, BCMA_CORE_PCIE);
 	if (core) {
@@ -145,6 +278,19 @@ int bcma_bus_register(struct bcma_bus *bus)
 		bcma_core_pci_init(&bus->drv_pci);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Try to get SPROM */
+	err = bcma_sprom_get(bus);
+	if (err == -ENOENT) {
+		pr_err("No SPROM available\n");
+	} else if (err)
+		pr_err("Failed to get SPROM: %d\n", err);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Register found cores */
 	bcma_register_cores(bus);
 
@@ -152,13 +298,120 @@ int bcma_bus_register(struct bcma_bus *bus)
 
 	return 0;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL_GPL(bcma_bus_register);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+EXPORT_SYMBOL_GPL(bcma_bus_register);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void bcma_bus_unregister(struct bcma_bus *bus)
 {
 	bcma_unregister_cores(bus);
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+int __init bcma_bus_early_register(struct bcma_bus *bus,
+				   struct bcma_device *core_cc,
+				   struct bcma_device *core_mips)
+{
+	int err;
+	struct bcma_device *core;
+	struct bcma_device_id match;
+
+	bcma_init_bus(bus);
+
+	match.manuf = BCMA_MANUF_BCM;
+	match.id = BCMA_CORE_CHIPCOMMON;
+	match.class = BCMA_CL_SIM;
+	match.rev = BCMA_ANY_REV;
+
+	/* Scan for chip common core */
+	err = bcma_bus_scan_early(bus, &match, core_cc);
+	if (err) {
+		pr_err("Failed to scan for common core: %d\n", err);
+		return -1;
+	}
+
+	match.manuf = BCMA_MANUF_MIPS;
+	match.id = BCMA_CORE_MIPS_74K;
+	match.class = BCMA_CL_SIM;
+	match.rev = BCMA_ANY_REV;
+
+	/* Scan for mips core */
+	err = bcma_bus_scan_early(bus, &match, core_mips);
+	if (err) {
+		pr_err("Failed to scan for mips core: %d\n", err);
+		return -1;
+	}
+
+	/* Init CC core */
+	core = bcma_find_core(bus, BCMA_CORE_CHIPCOMMON);
+	if (core) {
+		bus->drv_cc.core = core;
+		bcma_core_chipcommon_init(&bus->drv_cc);
+	}
+
+	/* Init MIPS core */
+	core = bcma_find_core(bus, BCMA_CORE_MIPS_74K);
+	if (core) {
+		bus->drv_mips.core = core;
+		bcma_core_mips_init(&bus->drv_mips);
+	}
+
+	pr_info("Early bus registered\n");
+
+	return 0;
+}
+
+#ifdef CONFIG_PM
+int bcma_bus_suspend(struct bcma_bus *bus)
+{
+	struct bcma_device *core;
+
+	list_for_each_entry(core, &bus->cores, list) {
+		struct device_driver *drv = core->dev.driver;
+		if (drv) {
+			struct bcma_driver *adrv = container_of(drv, struct bcma_driver, drv);
+			if (adrv->suspend)
+				adrv->suspend(core);
+		}
+	}
+	return 0;
+}
+
+int bcma_bus_resume(struct bcma_bus *bus)
+{
+	struct bcma_device *core;
+
+	/* Init CC core */
+	core = bcma_find_core(bus, BCMA_CORE_CHIPCOMMON);
+	if (core) {
+		bus->drv_cc.setup_done = false;
+		bcma_core_chipcommon_init(&bus->drv_cc);
+	}
+
+	list_for_each_entry(core, &bus->cores, list) {
+		struct device_driver *drv = core->dev.driver;
+		if (drv) {
+			struct bcma_driver *adrv = container_of(drv, struct bcma_driver, drv);
+			if (adrv->resume)
+				adrv->resume(core);
+		}
+	}
+
+	return 0;
+}
+#endif
+=======
 EXPORT_SYMBOL_GPL(bcma_bus_unregister);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+EXPORT_SYMBOL_GPL(bcma_bus_unregister);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int __bcma_driver_register(struct bcma_driver *drv, struct module *owner)
 {
@@ -218,6 +471,22 @@ static int bcma_device_remove(struct device *dev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int bcma_device_uevent(struct device *dev, struct kobj_uevent_env *env)
+{
+	struct bcma_device *core = container_of(dev, struct bcma_device, dev);
+
+	return add_uevent_var(env,
+			      "MODALIAS=bcma:m%04Xid%04Xrev%02Xcl%02X",
+			      core->id.manuf, core->id.id,
+			      core->id.rev, core->id.class);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init bcma_modinit(void)
 {
 	int err;

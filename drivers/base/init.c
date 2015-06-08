@@ -31,7 +31,14 @@ void __init driver_init(void)
 	 * core core pieces.
 	 */
 	platform_bus_init();
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	system_bus_init();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	system_bus_init();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpu_dev_init();
 	memory_dev_init();
 }

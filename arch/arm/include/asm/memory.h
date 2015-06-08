@@ -17,15 +17,21 @@
 #include <linux/const.h>
 #include <linux/types.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/sizes.h>
 
 #ifdef CONFIG_NEED_MACH_MEMORY_H
 #include <mach/memory.h>
 #endif
+<<<<<<< HEAD
+=======
 =======
 #include <mach/memory.h>
 #include <asm/sizes.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Allow for constants defined here to be used from assembly code
@@ -88,6 +94,9 @@
 <<<<<<< HEAD
 #define CONSISTENT_END		(0xffe00000UL)
 =======
+<<<<<<< HEAD
+#define CONSISTENT_END		(0xffe00000UL)
+=======
 /*
  * Size of DMA-consistent memory region.  Must be multiple of 2M,
  * between 2MB and 14MB inclusive.
@@ -99,6 +108,7 @@
 #define CONSISTENT_END		(0xffe00000UL)
 #define CONSISTENT_BASE		(CONSISTENT_END - CONSISTENT_DMA_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else /* CONFIG_MMU */
 
@@ -138,7 +148,12 @@
 #define XIP_VIRT_ADDR(physaddr)  (physaddr)
 
 =======
+<<<<<<< HEAD
+#define XIP_VIRT_ADDR(physaddr)  (physaddr)
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !CONFIG_MMU */
 
 /*
@@ -179,8 +194,11 @@
 #define __PV_BITS_31_24	0x81000000
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define __PV_BITS_23_16	0x00810000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern unsigned long __pv_phys_offset;
 #define PHYS_OFFSET __pv_phys_offset
@@ -200,10 +218,13 @@ static inline unsigned long __virt_to_phys(unsigned long x)
 	__pv_stub(x, t, "add", __PV_BITS_31_24);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ARM_PATCH_PHYS_VIRT_16BIT
 	__pv_stub(t, t, "add", __PV_BITS_23_16);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return t;
 }
 
@@ -213,10 +234,13 @@ static inline unsigned long __phys_to_virt(unsigned long x)
 	__pv_stub(x, t, "sub", __PV_BITS_31_24);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ARM_PATCH_PHYS_VIRT_16BIT
 	__pv_stub(t, t, "sub", __PV_BITS_23_16);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return t;
 }
 #else
@@ -227,11 +251,16 @@ static inline unsigned long __phys_to_virt(unsigned long x)
 
 #ifndef PHYS_OFFSET
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef PLAT_PHYS_OFFSET
 #define PHYS_OFFSET	PLAT_PHYS_OFFSET
 #else
 #define PHYS_OFFSET	UL(CONFIG_PHYS_OFFSET)
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define PHYS_OFFSET	PLAT_PHYS_OFFSET
 #endif
@@ -247,6 +276,7 @@ static inline unsigned long __phys_to_virt(unsigned long x)
 #else
 #define ISA_DMA_THRESHOLD	(PHYS_OFFSET + ARM_DMA_ZONE_SIZE - 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -282,8 +312,11 @@ static inline void *phys_to_virt(phys_addr_t x)
 #define __va(x)			((void *)__phys_to_virt((unsigned long)(x)))
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define __pa_symbol(x)		__pa(RELOC_HIDE((unsigned long)(x), 0))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define pfn_to_kaddr(pfn)	__va((pfn) << PAGE_SHIFT)
 
 /*
@@ -338,6 +371,9 @@ static inline __deprecated void *bus_to_virt(unsigned long x)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Set if the architecture speculatively fetches data into cache.
  */
@@ -345,8 +381,11 @@ static inline __deprecated void *bus_to_virt(unsigned long x)
 #define arch_has_speculative_dfetch()	0
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #include <asm-generic/memory_model.h>

@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/net_namespace.h>
 #include <net/ip.h>
 #include <net/sock.h>
@@ -148,12 +152,16 @@ static const struct snmp_mib snmp6_udplite6_list[] = {
 <<<<<<< HEAD
 static void snmp6_seq_show_icmpv6msg(struct seq_file *seq, atomic_long_t *smib)
 =======
+<<<<<<< HEAD
+static void snmp6_seq_show_icmpv6msg(struct seq_file *seq, atomic_long_t *smib)
+=======
 /* can be called either with percpu mib (pcpumib != NULL),
  * or shared one (smib != NULL)
  */
 static void snmp6_seq_show_icmpv6msg(struct seq_file *seq, void __percpu **pcpumib,
 				     atomic_long_t *smib)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char name[32];
 	int i;
@@ -173,8 +181,12 @@ static void snmp6_seq_show_icmpv6msg(struct seq_file *seq, void __percpu **pcpum
 <<<<<<< HEAD
 			   atomic_long_read(smib + i));
 =======
+<<<<<<< HEAD
+			   atomic_long_read(smib + i));
+=======
 			pcpumib ? snmp_fold_field(pcpumib, i) : atomic_long_read(smib + i));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* print by number (nonzero only) - ICMPMsgStat format */
@@ -184,8 +196,12 @@ static void snmp6_seq_show_icmpv6msg(struct seq_file *seq, void __percpu **pcpum
 <<<<<<< HEAD
 		val = atomic_long_read(smib + i);
 =======
+<<<<<<< HEAD
+		val = atomic_long_read(smib + i);
+=======
 		val = pcpumib ? snmp_fold_field(pcpumib, i) : atomic_long_read(smib + i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!val)
 			continue;
 		snprintf(name, sizeof(name), "Icmp6%sType%u",
@@ -233,9 +249,13 @@ static int snmp6_seq_show(struct seq_file *seq, void *v)
 <<<<<<< HEAD
 	snmp6_seq_show_icmpv6msg(seq, net->mib.icmpv6msg_statistics->mibs);
 =======
+<<<<<<< HEAD
+	snmp6_seq_show_icmpv6msg(seq, net->mib.icmpv6msg_statistics->mibs);
+=======
 	snmp6_seq_show_icmpv6msg(seq,
 			    (void __percpu **)net->mib.icmpv6msg_statistics, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snmp6_seq_show_item(seq, (void __percpu **)net->mib.udp_stats_in6,
 			    NULL, snmp6_udp6_list);
 	snmp6_seq_show_item(seq, (void __percpu **)net->mib.udplite_stats_in6,
@@ -262,11 +282,16 @@ static int snmp6_dev_seq_show(struct seq_file *seq, void *v)
 
 	seq_printf(seq, "%-32s\t%u\n", "ifIndex", idev->dev->ifindex);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snmp6_seq_show_item64(seq, (void __percpu **)idev->stats.ipv6,
 			    snmp6_ipstats_list, offsetof(struct ipstats_mib, syncp));
 	snmp6_seq_show_item(seq, NULL, idev->stats.icmpv6dev->mibs,
 			    snmp6_icmp6_list);
 	snmp6_seq_show_icmpv6msg(seq, idev->stats.icmpv6msgdev->mibs);
+<<<<<<< HEAD
+=======
 =======
 	snmp6_seq_show_item(seq, (void __percpu **)idev->stats.ipv6, NULL,
 			    snmp6_ipstats_list);
@@ -274,6 +299,7 @@ static int snmp6_dev_seq_show(struct seq_file *seq, void *v)
 			    snmp6_icmp6_list);
 	snmp6_seq_show_icmpv6msg(seq, NULL, idev->stats.icmpv6msgdev->mibs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

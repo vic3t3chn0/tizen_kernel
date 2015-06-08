@@ -15,7 +15,12 @@
 #include <linux/gpio.h>
 #include <linux/gpio-pxa.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+#include <linux/gpio-pxa.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -33,9 +38,14 @@
 #include <asm/suspend.h>
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <asm/suspend.h>
+#include <mach/irqs.h>
+=======
 #include <mach/irqs.h>
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/pxa27x.h>
 #include <mach/reset.h>
 #include <mach/ohci.h>
@@ -240,7 +250,11 @@ static struct clk_lookup pxa27x_clkregs[] = {
 <<<<<<< HEAD
 	INIT_CLKREG(&clk_dummy, "pxa-gpio", NULL),
 =======
+<<<<<<< HEAD
+	INIT_CLKREG(&clk_dummy, "pxa-gpio", NULL),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef CONFIG_PM
@@ -299,13 +313,19 @@ void pxa27x_cpu_pm_enter(suspend_state_t state)
 {
 	extern void pxa_cpu_standby(void);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_IWMMXT
 	u64 acc0;
 
 	asm volatile("mra %Q0, %R0, acc0" : "=r" (acc0));
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* ensure voltage-change sequencer not initiated, which hangs */
 	PCFR &= ~PCFR_FVC;
@@ -322,13 +342,19 @@ void pxa27x_cpu_pm_enter(suspend_state_t state)
 		break;
 	case PM_SUSPEND_MEM:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cpu_suspend(pwrmode, pxa27x_finish_suspend);
 #ifndef CONFIG_IWMMXT
 		asm volatile("mar acc0, %Q0, %R0" : "=r" (acc0));
 #endif
+<<<<<<< HEAD
+=======
 =======
 		pxa27x_cpu_suspend(pwrmode, PLAT_PHYS_OFFSET - PAGE_OFFSET);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 }
@@ -377,8 +403,12 @@ static int pxa27x_set_wake(struct irq_data *d, unsigned int on)
 <<<<<<< HEAD
 	int gpio = pxa_irq_to_gpio(d->irq);
 =======
+<<<<<<< HEAD
+	int gpio = pxa_irq_to_gpio(d->irq);
+=======
 	int gpio = irq_to_gpio(d->irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint32_t mask;
 
 	if (gpio >= 0 && gpio < 128)
@@ -411,8 +441,11 @@ void __init pxa27x_init_irq(void)
 	pxa_init_irq(34, pxa27x_set_wake);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	pxa_init_gpio(IRQ_GPIO_2_x, 2, 120, pxa27x_set_wake);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct map_desc pxa27x_io_desc[] __initdata = {
@@ -420,8 +453,12 @@ static struct map_desc pxa27x_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual	= (unsigned long)SMEMC_VIRT,
 =======
+<<<<<<< HEAD
+		.virtual	= (unsigned long)SMEMC_VIRT,
+=======
 		.virtual	= SMEMC_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn		= __phys_to_pfn(PXA2XX_SMEMC_BASE),
 		.length		= 0x00200000,
 		.type		= MT_DEVICE
@@ -452,12 +489,18 @@ void __init pxa27x_set_i2c_power_info(struct i2c_pxa_platform_data *info)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct pxa_gpio_platform_data pxa27x_gpio_info __initdata = {
 	.gpio_set_wake = gpio_set_wake,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *devices[] __initdata = {
 	&pxa27x_device_udc,
 	&pxa_device_pmu,
@@ -497,10 +540,16 @@ static int __init pxa27x_init(void)
 
 		pxa_register_device(&pxa_device_gpio, &pxa27x_gpio_info);
 =======
+<<<<<<< HEAD
+		register_syscore_ops(&pxa2xx_clock_syscore_ops);
+
+		pxa_register_device(&pxa_device_gpio, &pxa27x_gpio_info);
+=======
 		register_syscore_ops(&pxa_gpio_syscore_ops);
 		register_syscore_ops(&pxa2xx_clock_syscore_ops);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = platform_add_devices(devices, ARRAY_SIZE(devices));
 	}
 

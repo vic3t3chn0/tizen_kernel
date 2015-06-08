@@ -29,6 +29,13 @@ struct mc13xxx_regulator_priv {
 	struct mc13xxx *mc13xxx;
 	u32 powermisc_pwgt_state;
 	struct mc13xxx_regulator *mc13xxx_regulators;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int num_regulators;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct regulator_dev *regulators[];
 };
 
@@ -42,13 +49,46 @@ extern int mc13xxx_fixed_regulator_set_voltage(struct regulator_dev *rdev,
 		int min_uV, int max_uV, unsigned *selector);
 extern int mc13xxx_fixed_regulator_get_voltage(struct regulator_dev *rdev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_OF
+extern int mc13xxx_get_num_regulators_dt(struct platform_device *pdev);
+extern struct mc13xxx_regulator_init_data *mc13xxx_parse_regulators_dt(
+	struct platform_device *pdev, struct mc13xxx_regulator *regulators,
+	int num_regulators);
+#else
+static inline int mc13xxx_get_num_regulators_dt(struct platform_device *pdev)
+{
+	return -ENODEV;
+}
+
+static inline struct mc13xxx_regulator_init_data *mc13xxx_parse_regulators_dt(
+	struct platform_device *pdev, struct mc13xxx_regulator *regulators,
+	int num_regulators)
+{
+	return NULL;
+}
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct regulator_ops mc13xxx_regulator_ops;
 extern struct regulator_ops mc13xxx_fixed_regulator_ops;
 
 #define MC13xxx_DEFINE(prefix, _name, _reg, _vsel_reg, _voltages, _ops)	\
 	[prefix ## _name] = {				\
 		.desc = {						\
+<<<<<<< HEAD
+<<<<<<< HEAD
+			.name = #_name,					\
+=======
 			.name = #prefix "_" #_name,			\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			.name = #prefix "_" #_name,			\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.n_voltages = ARRAY_SIZE(_voltages),		\
 			.ops = &_ops,			\
 			.type = REGULATOR_VOLTAGE,			\
@@ -66,7 +106,15 @@ extern struct regulator_ops mc13xxx_fixed_regulator_ops;
 #define MC13xxx_FIXED_DEFINE(prefix, _name, _reg, _voltages, _ops)	\
 	[prefix ## _name] = {				\
 		.desc = {						\
+<<<<<<< HEAD
+<<<<<<< HEAD
+			.name = #_name,					\
+=======
 			.name = #prefix "_" #_name,			\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			.name = #prefix "_" #_name,			\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.n_voltages = ARRAY_SIZE(_voltages),		\
 			.ops = &_ops,		\
 			.type = REGULATOR_VOLTAGE,			\
@@ -81,7 +129,15 @@ extern struct regulator_ops mc13xxx_fixed_regulator_ops;
 #define MC13xxx_GPO_DEFINE(prefix, _name, _reg,  _voltages, _ops)	\
 	[prefix ## _name] = {				\
 		.desc = {						\
+<<<<<<< HEAD
+<<<<<<< HEAD
+			.name = #_name,					\
+=======
 			.name = #prefix "_" #_name,			\
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			.name = #prefix "_" #_name,			\
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			.n_voltages = ARRAY_SIZE(_voltages),		\
 			.ops = &_ops,		\
 			.type = REGULATOR_VOLTAGE,			\

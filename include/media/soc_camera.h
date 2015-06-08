@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/bitops.h>
 =======
+<<<<<<< HEAD
+#include <linux/bitops.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/device.h>
 #include <linux/mutex.h>
 #include <linux/pm.h>
@@ -23,6 +27,9 @@
 #include <media/videobuf-core.h>
 #include <media/videobuf2-core.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/v4l2-ctrls.h>
 #include <media/v4l2-device.h>
 
@@ -35,6 +42,8 @@ struct soc_camera_device {
 	struct device *pdev;		/* Platform device */
 	struct device *parent;		/* Camera host device */
 	struct device *control;		/* E.g., the i2c client */
+<<<<<<< HEAD
+=======
 =======
 #include <media/v4l2-device.h>
 
@@ -47,6 +56,7 @@ struct soc_camera_device {
 	struct device dev;
 	struct device *pdev;		/* Platform device */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s32 user_width;
 	s32 user_height;
 	u32 bytesperline;		/* for padding, zero if unused */
@@ -59,9 +69,14 @@ struct soc_camera_device {
 	struct video_device *vdev;
 	struct v4l2_ctrl_handler ctrl_handler;
 =======
+<<<<<<< HEAD
+	struct video_device *vdev;
+	struct v4l2_ctrl_handler ctrl_handler;
+=======
 	struct soc_camera_ops *ops;
 	struct video_device *vdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct soc_camera_format_xlate *current_fmt;
 	struct soc_camera_format_xlate *user_formats;
 	int num_user_formats;
@@ -84,8 +99,13 @@ struct soc_camera_host {
 	struct mutex host_lock;		/* Protect during probing */
 	unsigned char nr;		/* Host number */
 =======
+<<<<<<< HEAD
+	struct mutex host_lock;		/* Protect during probing */
+	unsigned char nr;		/* Host number */
+=======
 	unsigned char nr;				/* Host number */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *priv;
 	const char *drv_name;
 	struct soc_camera_host_ops *ops;
@@ -97,9 +117,12 @@ struct soc_camera_host_ops {
 	void (*remove)(struct soc_camera_device *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int (*suspend)(struct soc_camera_device *, pm_message_t);
 	int (*resume)(struct soc_camera_device *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * .get_formats() is called for each client device format, but
 	 * .put_formats() is only called once. Further, if any of the calls to
@@ -128,19 +151,26 @@ struct soc_camera_host_ops {
 <<<<<<< HEAD
 	int (*set_bus_param)(struct soc_camera_device *);
 =======
+<<<<<<< HEAD
+	int (*set_bus_param)(struct soc_camera_device *);
+=======
 	int (*set_bus_param)(struct soc_camera_device *, __u32);
 	int (*get_ctrl)(struct soc_camera_device *, struct v4l2_control *);
 	int (*set_ctrl)(struct soc_camera_device *, struct v4l2_control *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*get_parm)(struct soc_camera_device *, struct v4l2_streamparm *);
 	int (*set_parm)(struct soc_camera_device *, struct v4l2_streamparm *);
 	int (*enum_fsizes)(struct soc_camera_device *, struct v4l2_frmsizeenum *);
 	unsigned int (*poll)(struct file *, poll_table *);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	const struct v4l2_queryctrl *controls;
 	int num_controls;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define SOCAM_SENSOR_INVERT_PCLK	(1 << 0)
@@ -150,6 +180,8 @@ struct soc_camera_host_ops {
 #define SOCAM_SENSOR_INVERT_DATA	(1 << 4)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define SOCAM_MIPI_1LANE		(1 << 5)
 #define SOCAM_MIPI_2LANE		(1 << 6)
 #define SOCAM_MIPI_3LANE		(1 << 7)
@@ -157,6 +189,7 @@ struct soc_camera_host_ops {
 #define SOCAM_MIPI	(SOCAM_MIPI_1LANE | SOCAM_MIPI_2LANE | \
 			SOCAM_MIPI_3LANE | SOCAM_MIPI_4LANE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct i2c_board_info;
 struct regulator_bulk_data;
@@ -177,11 +210,16 @@ struct soc_camera_link {
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * For non-I2C devices platform has to provide methods to add a device
 	 * to the system and to remove it
 	 */
 	int (*add_device)(struct soc_camera_device *);
 	void (*del_device)(struct soc_camera_device *);
+<<<<<<< HEAD
+=======
 =======
 	 * For non-I2C devices platform platform has to provide methods to
 	 * add a device to the system and to remove
@@ -189,6 +227,7 @@ struct soc_camera_link {
 	int (*add_device)(struct soc_camera_link *, struct device *);
 	void (*del_device)(struct soc_camera_link *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Optional callbacks to power on or off and reset the sensor */
 	int (*power)(struct device *, int);
 	int (*reset)(struct device *);
@@ -204,6 +243,8 @@ struct soc_camera_link {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline struct soc_camera_device *to_soc_camera_dev(
 	const struct device *dev)
 {
@@ -211,6 +252,7 @@ static inline struct soc_camera_device *to_soc_camera_dev(
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct soc_camera_host *to_soc_camera_host(
 	const struct device *dev)
 {
@@ -225,8 +267,12 @@ static inline struct soc_camera_link *to_soc_camera_link(
 <<<<<<< HEAD
 	return icd->link;
 =======
+<<<<<<< HEAD
+	return icd->link;
+=======
 	return icd->dev.platform_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline struct device *to_soc_camera_control(
@@ -235,8 +281,12 @@ static inline struct device *to_soc_camera_control(
 <<<<<<< HEAD
 	return icd->control;
 =======
+<<<<<<< HEAD
+	return icd->control;
+=======
 	return dev_get_drvdata(&icd->dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline struct v4l2_subdev *soc_camera_to_subdev(
@@ -269,6 +319,8 @@ struct soc_camera_format_xlate {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct soc_camera_ops {
 	int (*suspend)(struct soc_camera_device *, pm_message_t state);
 	int (*resume)(struct soc_camera_device *);
@@ -280,6 +332,7 @@ struct soc_camera_ops {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SOCAM_SENSE_PCLK_CHANGED	(1 << 0)
 
 /**
@@ -307,6 +360,9 @@ struct soc_camera_sense {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SOCAM_DATAWIDTH(x)	BIT((x) - 1)
 #define SOCAM_DATAWIDTH_4	SOCAM_DATAWIDTH(4)
 #define SOCAM_DATAWIDTH_8	SOCAM_DATAWIDTH(8)
@@ -314,6 +370,8 @@ struct soc_camera_sense {
 #define SOCAM_DATAWIDTH_10	SOCAM_DATAWIDTH(10)
 #define SOCAM_DATAWIDTH_15	SOCAM_DATAWIDTH(15)
 #define SOCAM_DATAWIDTH_16	SOCAM_DATAWIDTH(16)
+<<<<<<< HEAD
+=======
 =======
 static inline struct v4l2_queryctrl const *soc_camera_find_qctrl(
 	struct soc_camera_ops *ops, int id)
@@ -344,11 +402,14 @@ static inline struct v4l2_queryctrl const *soc_camera_find_qctrl(
 #define SOCAM_DATA_ACTIVE_HIGH		(1 << 14)
 #define SOCAM_DATA_ACTIVE_LOW		(1 << 15)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SOCAM_DATAWIDTH_MASK (SOCAM_DATAWIDTH_4 | SOCAM_DATAWIDTH_8 | \
 			      SOCAM_DATAWIDTH_9 | SOCAM_DATAWIDTH_10 | \
 			      SOCAM_DATAWIDTH_15 | SOCAM_DATAWIDTH_16)
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static inline unsigned long soc_camera_bus_param_compatible(
@@ -372,6 +433,7 @@ static inline unsigned long soc_camera_bus_param_compatible(
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void soc_camera_limit_side(int *start, int *length,
 		unsigned int start_min,
 		unsigned int length_min, unsigned int length_max)
@@ -388,6 +450,9 @@ static inline void soc_camera_limit_side(int *start, int *length,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long soc_camera_apply_sensor_flags(struct soc_camera_link *icl,
 					    unsigned long flags);
 unsigned long soc_camera_apply_board_flags(struct soc_camera_link *icl,
@@ -414,6 +479,8 @@ static inline struct v4l2_subdev *soc_camera_vdev_to_subdev(const struct video_d
 }
 
 static inline struct soc_camera_device *soc_camera_from_vb2q(const struct vb2_queue *vq)
+<<<<<<< HEAD
+=======
 =======
 extern unsigned long soc_camera_apply_sensor_flags(struct soc_camera_link *icl,
 						   unsigned long flags);
@@ -428,6 +495,7 @@ static inline struct video_device *soc_camera_i2c_to_vdev(struct i2c_client *cli
 
 static inline struct soc_camera_device *soc_camera_from_vb2q(struct vb2_queue *vq)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return container_of(vq, struct soc_camera_device, vb2_vidq);
 }
@@ -435,20 +503,30 @@ static inline struct soc_camera_device *soc_camera_from_vb2q(struct vb2_queue *v
 <<<<<<< HEAD
 static inline struct soc_camera_device *soc_camera_from_vbq(const struct videobuf_queue *vq)
 =======
+<<<<<<< HEAD
+static inline struct soc_camera_device *soc_camera_from_vbq(const struct videobuf_queue *vq)
+=======
 static inline struct soc_camera_device *soc_camera_from_vbq(struct videobuf_queue *vq)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return container_of(vq, struct soc_camera_device, vb_vidq);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline u32 soc_camera_grp_id(const struct soc_camera_device *icd)
 {
 	return (icd->iface << 8) | (icd->devnum + 1);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void soc_camera_lock(struct vb2_queue *vq);
 void soc_camera_unlock(struct vb2_queue *vq);
 

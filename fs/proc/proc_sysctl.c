@@ -4,6 +4,9 @@
 #include <linux/init.h>
 #include <linux/sysctl.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/poll.h>
 #include <linux/proc_fs.h>
 #include <linux/security.h>
@@ -12,11 +15,14 @@
 #include <linux/mm.h>
 #include <linux/module.h>
 #include <linux/kmemleak.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/proc_fs.h>
 #include <linux/security.h>
 #include <linux/namei.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "internal.h"
 
 static const struct dentry_operations proc_sys_dentry_operations;
@@ -26,6 +32,9 @@ static const struct file_operations proc_sys_dir_file_operations;
 static const struct inode_operations proc_sys_dir_operations;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void proc_sys_poll_notify(struct ctl_table_poll *poll)
 {
 	if (!poll)
@@ -400,8 +409,11 @@ static int sysctl_perm(struct ctl_table_root *root, struct ctl_table *table, int
 	return test_perm(mode, op);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct inode *proc_sys_make_inode(struct super_block *sb,
 		struct ctl_table_header *head, struct ctl_table *table)
 {
@@ -424,8 +436,12 @@ static struct inode *proc_sys_make_inode(struct super_block *sb,
 <<<<<<< HEAD
 	if (!S_ISDIR(table->mode)) {
 =======
+<<<<<<< HEAD
+	if (!S_ISDIR(table->mode)) {
+=======
 	if (!table->child) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_mode |= S_IFREG;
 		inode->i_op = &proc_sys_inode_operations;
 		inode->i_fop = &proc_sys_file_operations;
@@ -433,8 +449,11 @@ static struct inode *proc_sys_make_inode(struct super_block *sb,
 		inode->i_mode |= S_IFDIR;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_op = &proc_sys_dir_operations;
 		inode->i_fop = &proc_sys_dir_file_operations;
 	}
@@ -443,12 +462,17 @@ out:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct ctl_table_header *grab_header(struct inode *inode)
 {
 	struct ctl_table_header *head = PROC_I(inode)->sysctl;
 	if (!head)
 		head = &sysctl_table_root.default_set.dir.header;
 	return sysctl_head_grab(head);
+<<<<<<< HEAD
+=======
 =======
 static struct ctl_table *find_in_table(struct ctl_table *p, struct qstr *name)
 {
@@ -478,6 +502,7 @@ static struct ctl_table_header *grab_header(struct inode *inode)
 	else
 		return sysctl_head_next(NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct dentry *proc_sys_lookup(struct inode *dir, struct dentry *dentry,
@@ -486,8 +511,11 @@ static struct dentry *proc_sys_lookup(struct inode *dir, struct dentry *dentry,
 	struct ctl_table_header *head = grab_header(dir);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct ctl_table *table = PROC_I(dir)->sysctl_entry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ctl_table_header *h = NULL;
 	struct qstr *name = &dentry->d_name;
 	struct ctl_table *p;
@@ -497,12 +525,20 @@ static struct dentry *proc_sys_lookup(struct inode *dir, struct dentry *dentry,
 	struct ctl_dir *ctl_dir;
 	int ret;
 =======
+<<<<<<< HEAD
+	struct ctl_dir *ctl_dir;
+	int ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (IS_ERR(head))
 		return ERR_CAST(head);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ctl_dir = container_of(head, struct ctl_dir, header);
 
 	p = lookup_entry(&h, ctl_dir, name->name, name->len);
@@ -516,6 +552,8 @@ static struct dentry *proc_sys_lookup(struct inode *dir, struct dentry *dentry,
 			goto out;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	if (table && !table->child) {
 		WARN_ON(1);
@@ -539,6 +577,7 @@ static struct dentry *proc_sys_lookup(struct inode *dir, struct dentry *dentry,
 		goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ERR_PTR(-ENOMEM);
 	inode = proc_sys_make_inode(dir->i_sb, h ? h : head, p);
 	if (h)
@@ -605,6 +644,9 @@ static ssize_t proc_sys_write(struct file *filp, const char __user *buf,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int proc_sys_open(struct inode *inode, struct file *filp)
 {
 	struct ctl_table_header *head = grab_header(inode);
@@ -653,8 +695,11 @@ out:
 
 	return ret;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int proc_sys_fill_cache(struct file *filp, void *dirent,
 				filldir_t filldir,
@@ -695,6 +740,9 @@ static int proc_sys_fill_cache(struct file *filp, void *dirent,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int proc_sys_link_fill_cache(struct file *filp, void *dirent,
 				    filldir_t filldir,
 				    struct ctl_table_header *head,
@@ -716,13 +764,19 @@ out:
 	return ret;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int scan(struct ctl_table_header *head, ctl_table *table,
 		unsigned long *pos, struct file *file,
 		void *dirent, filldir_t filldir)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int res;
 
 	if ((*pos)++ < file->f_pos)
@@ -737,6 +791,8 @@ static int scan(struct ctl_table_header *head, ctl_table *table,
 		file->f_pos = *pos;
 
 	return res;
+<<<<<<< HEAD
+=======
 =======
 
 	for (; table->procname; table++, (*pos)++) {
@@ -757,6 +813,7 @@ static int scan(struct ctl_table_header *head, ctl_table *table,
 	}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int proc_sys_readdir(struct file *filp, void *dirent, filldir_t filldir)
@@ -769,15 +826,24 @@ static int proc_sys_readdir(struct file *filp, void *dirent, filldir_t filldir)
 	struct ctl_table *entry;
 	struct ctl_dir *ctl_dir;
 =======
+<<<<<<< HEAD
+	struct ctl_table_header *h = NULL;
+	struct ctl_table *entry;
+	struct ctl_dir *ctl_dir;
+=======
 	struct ctl_table *table = PROC_I(inode)->sysctl_entry;
 	struct ctl_table_header *h = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long pos;
 	int ret = -EINVAL;
 
 	if (IS_ERR(head))
 		return PTR_ERR(head);
 
+<<<<<<< HEAD
+	ctl_dir = container_of(head, struct ctl_dir, header);
+=======
 <<<<<<< HEAD
 	ctl_dir = container_of(head, struct ctl_dir, header);
 =======
@@ -788,6 +854,7 @@ static int proc_sys_readdir(struct file *filp, void *dirent, filldir_t filldir)
 
 	table = table ? table->child : head->ctl_table;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = 0;
 	/* Avoid a switch here: arm builds fail with missing __cmpdi2 */
@@ -809,6 +876,10 @@ static int proc_sys_readdir(struct file *filp, void *dirent, filldir_t filldir)
 	for (first_entry(ctl_dir, &h, &entry); h; next_entry(&h, &entry)) {
 		ret = scan(h, entry, &pos, filp, dirent, filldir);
 =======
+<<<<<<< HEAD
+	for (first_entry(ctl_dir, &h, &entry); h; next_entry(&h, &entry)) {
+		ret = scan(h, entry, &pos, filp, dirent, filldir);
+=======
 	ret = scan(head, table, &pos, filp, dirent, filldir);
 	if (ret)
 		goto out;
@@ -818,6 +889,7 @@ static int proc_sys_readdir(struct file *filp, void *dirent, filldir_t filldir)
 			continue;
 		ret = scan(h, h->attached_by, &pos, filp, dirent, filldir);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ret) {
 			sysctl_head_finish(h);
 			break;
@@ -832,8 +904,12 @@ out:
 <<<<<<< HEAD
 static int proc_sys_permission(struct inode *inode, int mask)
 =======
+<<<<<<< HEAD
+static int proc_sys_permission(struct inode *inode, int mask)
+=======
 static int proc_sys_permission(struct inode *inode, int mask,unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * sysctl entries that are not writeable,
@@ -858,8 +934,12 @@ static int proc_sys_permission(struct inode *inode, int mask,unsigned int flags)
 <<<<<<< HEAD
 		error = sysctl_perm(head->root, table, mask & ~MAY_NOT_BLOCK);
 =======
+<<<<<<< HEAD
+		error = sysctl_perm(head->root, table, mask & ~MAY_NOT_BLOCK);
+=======
 		error = sysctl_perm(head->root, table, mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sysctl_head_finish(head);
 	return error;
@@ -911,7 +991,12 @@ static const struct file_operations proc_sys_file_operations = {
 	.open		= proc_sys_open,
 	.poll		= proc_sys_poll,
 =======
+<<<<<<< HEAD
+	.open		= proc_sys_open,
+	.poll		= proc_sys_poll,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read		= proc_sys_read,
 	.write		= proc_sys_write,
 	.llseek		= default_llseek,
@@ -921,7 +1006,11 @@ static const struct file_operations proc_sys_dir_file_operations = {
 <<<<<<< HEAD
 	.read		= generic_read_dir,
 =======
+<<<<<<< HEAD
+	.read		= generic_read_dir,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.readdir	= proc_sys_readdir,
 	.llseek		= generic_file_llseek,
 };
@@ -952,6 +1041,9 @@ static int proc_sys_delete(const struct dentry *dentry)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sysctl_is_seen(struct ctl_table_header *p)
 {
 	struct ctl_table_set *set = p->set;
@@ -967,8 +1059,11 @@ static int sysctl_is_seen(struct ctl_table_header *p)
 	return res;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int proc_sys_compare(const struct dentry *parent,
 		const struct inode *pinode,
 		const struct dentry *dentry, const struct inode *inode,
@@ -995,6 +1090,9 @@ static const struct dentry_operations proc_sys_dentry_operations = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct ctl_dir *find_subdir(struct ctl_dir *dir,
 				   const char *name, int namelen)
 {
@@ -1744,8 +1842,11 @@ void retire_sysctl_set(struct ctl_table_set *set)
 	WARN_ON(!RB_EMPTY_ROOT(&set->dir.root));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init proc_sys_init(void)
 {
 	struct proc_dir_entry *proc_sys_root;
@@ -1758,6 +1859,11 @@ int __init proc_sys_init(void)
 
 	return sysctl_init();
 =======
+<<<<<<< HEAD
+
+	return sysctl_init();
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

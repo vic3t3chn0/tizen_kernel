@@ -11,7 +11,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mtd/mtd.h>
 #include <linux/mtd/map.h>
 #include <linux/mtd/partitions.h>
@@ -22,9 +26,12 @@ static struct map_info flash_map;
 static struct mtd_info *mymtd;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static int nr_parts;
 static struct mtd_partition *parts;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *part_probe_types[] = {
 	"cmdlinepart",
 #ifdef CONFIG_MTD_REDBOOT_PARTS
@@ -71,12 +78,17 @@ static int __init flash_init(void)
 			mtd_device_parse_register(mymtd, part_probe_types,
 						  NULL, NULL, 0);
 =======
+<<<<<<< HEAD
+			mtd_device_parse_register(mymtd, part_probe_types,
+						  NULL, NULL, 0);
+=======
 
 			nr_parts = parse_mtd_partitions(mymtd,
 							part_probe_types,
 							&parts, 0);
 			mtd_device_register(mymtd, parts, nr_parts);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			pr_err("Failed to register MTD device for flash\n");
 		}

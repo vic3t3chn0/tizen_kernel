@@ -5,8 +5,13 @@
  * Builtin buildid-list command: list buildids in perf.data, in the running
  * kernel and in ELF files.
 =======
+<<<<<<< HEAD
+ * Builtin buildid-list command: list buildids in perf.data, in the running
+ * kernel and in ELF files.
+=======
  * Builtin buildid-list command: list buildids in perf.data
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (C) 2009, Red Hat Inc.
  * Copyright (C) 2009, Arnaldo Carvalho de Melo <acme@redhat.com>
@@ -21,15 +26,21 @@
 #include "util/symbol.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <libelf.h>
 
 static const char *input_name;
 static bool force;
 static bool show_kernel;
+<<<<<<< HEAD
+=======
 =======
 static char const *input_name = "perf.data";
 static bool force;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool with_hits;
 
 static const char * const buildid_list_usage[] = {
@@ -45,13 +56,20 @@ static const struct option options[] = {
 <<<<<<< HEAD
 	OPT_BOOLEAN('k', "kernel", &show_kernel, "Show current kernel build id"),
 =======
+<<<<<<< HEAD
+	OPT_BOOLEAN('k', "kernel", &show_kernel, "Show current kernel build id"),
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_INCR('v', "verbose", &verbose,
 		    "be more verbose"),
 	OPT_END()
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sysfs__fprintf_build_id(FILE *fp)
 {
 	u8 kallsyms_build_id[BUILD_ID_SIZE];
@@ -86,26 +104,35 @@ static int perf_session__list_build_ids(void)
 
 	elf_version(EV_CURRENT);
 
+<<<<<<< HEAD
+=======
 =======
 static int __cmd_buildid_list(void)
 {
 	struct perf_session *session;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	session = perf_session__new(input_name, O_RDONLY, force, false,
 				    &build_id__mark_dso_hit_ops);
 	if (session == NULL)
 		return -1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * See if this is an ELF file first:
 	 */
 	if (filename__fprintf_build_id(session->filename, stdout))
 		goto out;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (with_hits)
 		perf_session__process_events(session, &build_id__mark_dso_hit_ops);
 
@@ -113,13 +140,20 @@ static int __cmd_buildid_list(void)
 <<<<<<< HEAD
 out:
 =======
+<<<<<<< HEAD
+out:
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	perf_session__delete(session);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __cmd_buildid_list(void)
 {
 	if (show_kernel)
@@ -128,8 +162,11 @@ static int __cmd_buildid_list(void)
 	return perf_session__list_build_ids();
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int cmd_buildid_list(int argc, const char **argv, const char *prefix __used)
 {
 	argc = parse_options(argc, argv, options, buildid_list_usage, 0);

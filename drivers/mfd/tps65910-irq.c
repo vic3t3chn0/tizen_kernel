@@ -145,12 +145,35 @@ static void tps65910_irq_disable(struct irq_data *data)
 	tps65910->irq_mask |= ( 1 << irq_to_tps65910_irq(tps65910, data->irq));
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_PM_SLEEP
+static int tps65910_irq_set_wake(struct irq_data *data, unsigned int enable)
+{
+	struct tps65910 *tps65910 = irq_data_get_irq_chip_data(data);
+	return irq_set_irq_wake(tps65910->chip_irq, enable);
+}
+#else
+#define tps65910_irq_set_wake NULL
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct irq_chip tps65910_irq_chip = {
 	.name = "tps65910",
 	.irq_bus_lock = tps65910_irq_lock,
 	.irq_bus_sync_unlock = tps65910_irq_sync_unlock,
 	.irq_disable = tps65910_irq_disable,
 	.irq_enable = tps65910_irq_enable,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.irq_set_wake = tps65910_irq_set_wake,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int tps65910_irq_init(struct tps65910 *tps65910, int irq,
@@ -215,6 +238,15 @@ int tps65910_irq_init(struct tps65910 *tps65910, int irq,
 
 int tps65910_irq_exit(struct tps65910 *tps65910)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (tps65910->chip_irq)
+		free_irq(tps65910->chip_irq, tps65910);
+=======
 	free_irq(tps65910->chip_irq, tps65910);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	free_irq(tps65910->chip_irq, tps65910);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }

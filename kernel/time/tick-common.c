@@ -94,7 +94,15 @@ void tick_handle_periodic(struct clock_event_device *dev)
 	 */
 	next = ktime_add(dev->next_event, tick_period);
 	for (;;) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (!clockevents_program_event(dev, next, false))
+=======
 		if (!clockevents_program_event(dev, next, ktime_get()))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (!clockevents_program_event(dev, next, ktime_get()))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return;
 		/*
 		 * Have to be careful here. If we're in oneshot mode,
@@ -137,7 +145,15 @@ void tick_setup_periodic(struct clock_event_device *dev, int broadcast)
 		clockevents_set_mode(dev, CLOCK_EVT_MODE_ONESHOT);
 
 		for (;;) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (!clockevents_program_event(dev, next, false))
+=======
 			if (!clockevents_program_event(dev, next, ktime_get()))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (!clockevents_program_event(dev, next, ktime_get()))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return;
 			next = ktime_add(next, tick_period);
 		}
@@ -323,7 +339,14 @@ static void tick_shutdown(unsigned int *cpup)
 		 */
 		dev->mode = CLOCK_EVT_MODE_UNUSED;
 		clockevents_exchange_device(dev, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		dev->event_handler = clockevents_handle_noop;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		dev->event_handler = clockevents_handle_noop;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		td->evtdev = NULL;
 	}
 	raw_spin_unlock_irqrestore(&tick_device_lock, flags);

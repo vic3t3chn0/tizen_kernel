@@ -57,7 +57,12 @@
 #define USB_CDC_MBB_TYPE		0x1b	/* mbb_desc */
 #define USB_CDC_EXT_MBB_TYPE		0x1c
 =======
+<<<<<<< HEAD
+#define USB_CDC_MBB_TYPE		0x1b	/* mbb_desc */
+#define USB_CDC_EXT_MBB_TYPE		0x1c
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* "Header Functional Descriptor" from CDC spec  5.2.3.1 */
 struct usb_cdc_header_desc {
@@ -193,6 +198,9 @@ struct usb_cdc_ncm_desc {
 	__u8	bmNetworkCapabilities;
 } __attribute__ ((packed));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* "MBIM Functional Descriptor" */
 struct usb_cdc_mbb_desc {
@@ -219,8 +227,11 @@ struct usb_cdc_ext_mbb_desc {
 	__le16	wMTU;
 } __packed;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-------------------------------------------------------------------------*/
 
 /*
@@ -238,7 +249,11 @@ struct usb_cdc_ext_mbb_desc {
 <<<<<<< HEAD
 #define USB_CDC_RESET_FUNCTION			0x05
 =======
+<<<<<<< HEAD
+#define USB_CDC_RESET_FUNCTION			0x05
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define USB_CDC_REQ_SET_LINE_CODING		0x20
 #define USB_CDC_REQ_GET_LINE_CODING		0x21
 #define USB_CDC_REQ_SET_CONTROL_LINE_STATE	0x22

@@ -127,6 +127,17 @@ static int stv0288_set_symbolrate(struct dvb_frontend *fe, u32 srate)
 	if ((srate < 1000000) || (srate > 45000000))
 		return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	stv0288_writeregI(state, 0x22, 0);
+	stv0288_writeregI(state, 0x23, 0);
+	stv0288_writeregI(state, 0x2b, 0xff);
+	stv0288_writeregI(state, 0x2c, 0xf7);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	temp = (unsigned int)srate / 1000;
 
 		temp = temp * 32768;
@@ -447,6 +458,12 @@ static int stv0288_set_property(struct dvb_frontend *fe, struct dtv_property *p)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int stv0288_set_frontend(struct dvb_frontend *fe)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int stv0288_get_property(struct dvb_frontend *fe, struct dtv_property *p)
 {
 	dprintk("%s(..)\n", __func__);
@@ -455,12 +472,23 @@ static int stv0288_get_property(struct dvb_frontend *fe, struct dtv_property *p)
 
 static int stv0288_set_frontend(struct dvb_frontend *fe,
 					struct dvb_frontend_parameters *dfp)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct stv0288_state *state = fe->demodulator_priv;
 	struct dtv_frontend_properties *c = &fe->dtv_property_cache;
 
 	char tm;
 	unsigned char tda[3];
+<<<<<<< HEAD
+<<<<<<< HEAD
+	u8 reg, time_out = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprintk("%s : FE_SET_FRONTEND\n", __func__);
 
@@ -475,10 +503,21 @@ static int stv0288_set_frontend(struct dvb_frontend *fe,
 		state->config->set_ts_params(fe, 0);
 
 	/* only frequency & symbol_rate are used for tuner*/
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (fe->ops.tuner_ops.set_params) {
+		fe->ops.tuner_ops.set_params(fe);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dfp->frequency = c->frequency;
 	dfp->u.qpsk.symbol_rate = c->symbol_rate;
 	if (fe->ops.tuner_ops.set_params) {
 		fe->ops.tuner_ops.set_params(fe, dfp);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fe->ops.i2c_gate_ctrl)
 			fe->ops.i2c_gate_ctrl(fe, 0);
 	}
@@ -488,6 +527,34 @@ static int stv0288_set_frontend(struct dvb_frontend *fe,
 	/* Carrier lock control register */
 	stv0288_writeregI(state, 0x15, 0xc5);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tda[2] = 0x0; /* CFRL */
+	for (tm = -9; tm < 7;) {
+		/* Viterbi status */
+		reg = stv0288_readreg(state, 0x24);
+		if (reg & 0x8)
+				break;
+		if (reg & 0x80) {
+			time_out++;
+			if (time_out > 10)
+				break;
+			tda[2] += 40;
+			if (tda[2] < 40)
+				tm++;
+		} else {
+			tm++;
+			tda[2] = 0;
+			time_out = 0;
+		}
+		tda[1] = (unsigned char)tm;
+		stv0288_writeregI(state, 0x2b, tda[1]);
+		stv0288_writeregI(state, 0x2c, tda[2]);
+		msleep(30);
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tda[0] = 0x2b; /* CFRM */
 	tda[2] = 0x0; /* CFRL */
 	for (tm = -6; tm < 7;) {
@@ -504,6 +571,10 @@ static int stv0288_set_frontend(struct dvb_frontend *fe,
 		udelay(30);
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	state->tuner_frequency = c->frequency;
 	state->fec_inner = FEC_AUTO;
 	state->symbol_rate = c->symbol_rate;
@@ -532,10 +603,22 @@ static void stv0288_release(struct dvb_frontend *fe)
 }
 
 static struct dvb_frontend_ops stv0288_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBS },
+	.info = {
+		.name			= "ST STV0288 DVB-S",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.info = {
 		.name			= "ST STV0288 DVB-S",
 		.type			= FE_QPSK,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min		= 950000,
 		.frequency_max		= 2150000,
 		.frequency_stepsize	= 1000,	 /* kHz for QPSK frontends */
@@ -565,7 +648,14 @@ static struct dvb_frontend_ops stv0288_ops = {
 	.set_voltage = stv0288_set_voltage,
 
 	.set_property = stv0288_set_property,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.get_property = stv0288_get_property,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.get_property = stv0288_get_property,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.set_frontend = stv0288_set_frontend,
 };
 

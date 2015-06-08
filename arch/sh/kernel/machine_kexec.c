@@ -159,10 +159,13 @@ void __init reserve_crashkernel(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* this is necessary because of memblock_phys_mem_size() */
 	memblock_analyze();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = parse_crashkernel(boot_command_line, memblock_phys_mem_size(),
 			&crash_size, &crash_base);
 	if (ret == 0 && crash_size > 0) {
@@ -176,8 +179,12 @@ void __init reserve_crashkernel(void)
 <<<<<<< HEAD
 	crash_size = PAGE_ALIGN(resource_size(&crashk_res));
 =======
+<<<<<<< HEAD
+	crash_size = PAGE_ALIGN(resource_size(&crashk_res));
+=======
 	crash_size = PAGE_ALIGN(crashk_res.end - crashk_res.start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!crashk_res.start) {
 		unsigned long max = memblock_end_of_DRAM() - memory_limit;
 		crashk_res.start = __memblock_alloc_base(crash_size, PAGE_SIZE, max);

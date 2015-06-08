@@ -15,6 +15,9 @@
 #include <linux/string.h>
 #include <net/mac80211.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "wme.h"
 #include "ieee80211_i.h"
 #include "mesh.h"
@@ -25,11 +28,14 @@
 #define mpath_dbg(fmt, args...)	do { (void)(0); } while (0)
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #include "ieee80211_i.h"
 #include "mesh.h"
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* There will be initially 2^INIT_PATHS_SIZE_ORDER buckets */
 #define INIT_PATHS_SIZE_ORDER	2
 
@@ -56,14 +62,20 @@ int mesh_paths_generation;
 
 /* This lock will have the grow table function as writer and add / delete nodes
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * as readers. RCU provides sufficient protection only when reading the table
  * (i.e. doing lookups).  Adding or adding or removing nodes requires we take
  * the read lock or we risk operating on an old table.  The write lock is only
  * needed when modifying the number of buckets a table.
+<<<<<<< HEAD
+=======
 =======
  * as readers. When reading the table (i.e. doing lookups) we are well protected
  * by RCU
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static DEFINE_RWLOCK(pathtbl_resize_lock);
 
@@ -126,7 +138,11 @@ static struct mesh_table *mesh_table_alloc(int size_order)
 <<<<<<< HEAD
 	spin_lock_init(&newtbl->gates_lock);
 =======
+<<<<<<< HEAD
+	spin_lock_init(&newtbl->gates_lock);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return newtbl;
 }
@@ -145,7 +161,11 @@ static void mesh_table_free(struct mesh_table *tbl, bool free_leafs)
 <<<<<<< HEAD
 	struct mpath_node *gate;
 =======
+<<<<<<< HEAD
+	struct mpath_node *gate;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	mesh_hash = tbl->hash_buckets;
@@ -158,6 +178,9 @@ static void mesh_table_free(struct mesh_table *tbl, bool free_leafs)
 		spin_unlock_bh(&tbl->hashwlock[i]);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (free_leafs) {
 		spin_lock_bh(&tbl->gates_lock);
 		hlist_for_each_entry_safe(gate, p, q,
@@ -169,8 +192,11 @@ static void mesh_table_free(struct mesh_table *tbl, bool free_leafs)
 		spin_unlock_bh(&tbl->gates_lock);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__mesh_table_free(tbl);
 }
 
@@ -191,7 +217,11 @@ static int mesh_table_grow(struct mesh_table *oldtbl,
 <<<<<<< HEAD
 	newtbl->known_gates = oldtbl->known_gates;
 =======
+<<<<<<< HEAD
+	newtbl->known_gates = oldtbl->known_gates;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_set(&newtbl->entries, atomic_read(&oldtbl->entries));
 
 	oldhash = oldtbl->hash_buckets;
@@ -247,7 +277,11 @@ void mesh_path_assign_nexthop(struct mesh_path *mpath, struct sta_info *sta)
 <<<<<<< HEAD
 		memcpy(hdr->addr2, mpath->sdata->vif.addr, ETH_ALEN);
 =======
+<<<<<<< HEAD
+		memcpy(hdr->addr2, mpath->sdata->vif.addr, ETH_ALEN);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__skb_queue_tail(&tmpq, skb);
 	}
 
@@ -256,6 +290,9 @@ void mesh_path_assign_nexthop(struct mesh_path *mpath, struct sta_info *sta)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void prepare_for_gate(struct sk_buff *skb, char *dst_addr,
 			     struct mesh_path *gate_mpath)
 {
@@ -365,6 +402,8 @@ static void mesh_path_move_to_queue(struct mesh_path *gate_mpath,
 
 static struct mesh_path *mpath_lookup(struct mesh_table *tbl, u8 *dst,
 					  struct ieee80211_sub_if_data *sdata)
+<<<<<<< HEAD
+=======
 =======
 
 /**
@@ -377,19 +416,27 @@ static struct mesh_path *mpath_lookup(struct mesh_table *tbl, u8 *dst,
  * Locking: must be called within a read rcu section.
  */
 struct mesh_path *mesh_path_lookup(u8 *dst, struct ieee80211_sub_if_data *sdata)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mesh_path *mpath;
 	struct hlist_node *n;
 	struct hlist_head *bucket;
+<<<<<<< HEAD
+	struct mpath_node *node;
+
+=======
 	struct mesh_table *tbl;
 	struct mpath_node *node;
 
 	tbl = rcu_dereference(mesh_paths);
 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bucket = &tbl->hash_buckets[mesh_table_hash(dst, sdata, tbl)];
 	hlist_for_each_entry_rcu(node, n, bucket, list) {
 		mpath = node->mpath;
 		if (mpath->sdata == sdata &&
+<<<<<<< HEAD
+=======
 				memcmp(dst, mpath->dst, ETH_ALEN) == 0) {
 			if (MPATH_EXPIRED(mpath)) {
 				spin_lock_bh(&mpath->state_lock);
@@ -424,10 +471,13 @@ struct mesh_path *mpp_path_lookup(u8 *dst, struct ieee80211_sub_if_data *sdata)
 		mpath = node->mpath;
 		if (mpath->sdata == sdata &&
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				compare_ether_addr(dst, mpath->dst) == 0) {
 			if (MPATH_EXPIRED(mpath)) {
 				spin_lock_bh(&mpath->state_lock);
 				mpath->flags &= ~MESH_PATH_ACTIVE;
+<<<<<<< HEAD
+=======
 =======
 		    memcmp(dst, mpath->dst, ETH_ALEN) == 0) {
 			if (MPATH_EXPIRED(mpath)) {
@@ -435,6 +485,7 @@ struct mesh_path *mpp_path_lookup(u8 *dst, struct ieee80211_sub_if_data *sdata)
 				if (MPATH_EXPIRED(mpath))
 					mpath->flags &= ~MESH_PATH_ACTIVE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				spin_unlock_bh(&mpath->state_lock);
 			}
 			return mpath;
@@ -444,6 +495,9 @@ struct mesh_path *mpp_path_lookup(u8 *dst, struct ieee80211_sub_if_data *sdata)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mesh_path_lookup - look up a path in the mesh path table
  * @dst: hardware address (ETH_ALEN length) of destination
@@ -463,8 +517,11 @@ struct mesh_path *mpp_path_lookup(u8 *dst, struct ieee80211_sub_if_data *sdata)
 	return mpath_lookup(rcu_dereference(mpp_paths), dst, sdata);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * mesh_path_lookup_by_idx - look up a path in the mesh path table by its index
@@ -492,9 +549,13 @@ struct mesh_path *mesh_path_lookup_by_idx(int idx, struct ieee80211_sub_if_data 
 <<<<<<< HEAD
 				node->mpath->flags &= ~MESH_PATH_ACTIVE;
 =======
+<<<<<<< HEAD
+				node->mpath->flags &= ~MESH_PATH_ACTIVE;
+=======
 				if (MPATH_EXPIRED(node->mpath))
 					node->mpath->flags &= ~MESH_PATH_ACTIVE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				spin_unlock_bh(&node->mpath->state_lock);
 			}
 			return node->mpath;
@@ -506,6 +567,9 @@ struct mesh_path *mesh_path_lookup_by_idx(int idx, struct ieee80211_sub_if_data 
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * mesh_path_add_gate - add the given mpath to a mesh gate to our path table
  * @mpath: gate path to add to table
  */
@@ -588,8 +652,11 @@ int mesh_gate_num(struct ieee80211_sub_if_data *sdata)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * mesh_path_add - allocate and add a new path to the mesh path table
  * @addr: destination address of the path (ETH_ALEN length)
  * @sdata: local subif
@@ -614,8 +681,12 @@ int mesh_path_add(u8 *dst, struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	if (compare_ether_addr(dst, sdata->vif.addr) == 0)
 =======
+<<<<<<< HEAD
+	if (compare_ether_addr(dst, sdata->vif.addr) == 0)
+=======
 	if (memcmp(dst, sdata->vif.addr, ETH_ALEN) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* never add ourselves as neighbours */
 		return -ENOTSUPP;
 
@@ -654,8 +725,12 @@ int mesh_path_add(u8 *dst, struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	spin_lock(&tbl->hashwlock[hash_idx]);
 =======
+<<<<<<< HEAD
+	spin_lock(&tbl->hashwlock[hash_idx]);
+=======
 	spin_lock_bh(&tbl->hashwlock[hash_idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -EEXIST;
 	hlist_for_each_entry(node, n, bucket, list) {
@@ -664,8 +739,13 @@ int mesh_path_add(u8 *dst, struct ieee80211_sub_if_data *sdata)
 		if (mpath->sdata == sdata &&
 		    compare_ether_addr(dst, mpath->dst) == 0)
 =======
+<<<<<<< HEAD
+		if (mpath->sdata == sdata &&
+		    compare_ether_addr(dst, mpath->dst) == 0)
+=======
 		if (mpath->sdata == sdata && memcmp(dst, mpath->dst, ETH_ALEN) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto err_exists;
 	}
 
@@ -679,8 +759,12 @@ int mesh_path_add(u8 *dst, struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	spin_unlock(&tbl->hashwlock[hash_idx]);
 =======
+<<<<<<< HEAD
+	spin_unlock(&tbl->hashwlock[hash_idx]);
+=======
 	spin_unlock_bh(&tbl->hashwlock[hash_idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_unlock_bh(&pathtbl_resize_lock);
 	if (grow) {
 		set_bit(MESH_WORK_GROW_MPATH_TABLE,  &ifmsh->wrkq_flags);
@@ -692,8 +776,12 @@ err_exists:
 <<<<<<< HEAD
 	spin_unlock(&tbl->hashwlock[hash_idx]);
 =======
+<<<<<<< HEAD
+	spin_unlock(&tbl->hashwlock[hash_idx]);
+=======
 	spin_unlock_bh(&tbl->hashwlock[hash_idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_unlock_bh(&pathtbl_resize_lock);
 	kfree(new_node);
 err_node_alloc:
@@ -767,8 +855,12 @@ int mpp_path_add(u8 *dst, u8 *mpp, struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	if (compare_ether_addr(dst, sdata->vif.addr) == 0)
 =======
+<<<<<<< HEAD
+	if (compare_ether_addr(dst, sdata->vif.addr) == 0)
+=======
 	if (memcmp(dst, sdata->vif.addr, ETH_ALEN) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* never add ourselves as neighbours */
 		return -ENOTSUPP;
 
@@ -794,7 +886,11 @@ int mpp_path_add(u8 *dst, u8 *mpp, struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	init_timer(&new_mpath->timer);
 =======
+<<<<<<< HEAD
+	init_timer(&new_mpath->timer);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	new_mpath->exp_time = jiffies;
 	spin_lock_init(&new_mpath->state_lock);
 
@@ -806,8 +902,12 @@ int mpp_path_add(u8 *dst, u8 *mpp, struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	spin_lock(&tbl->hashwlock[hash_idx]);
 =======
+<<<<<<< HEAD
+	spin_lock(&tbl->hashwlock[hash_idx]);
+=======
 	spin_lock_bh(&tbl->hashwlock[hash_idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = -EEXIST;
 	hlist_for_each_entry(node, n, bucket, list) {
@@ -816,8 +916,13 @@ int mpp_path_add(u8 *dst, u8 *mpp, struct ieee80211_sub_if_data *sdata)
 		if (mpath->sdata == sdata &&
 		    compare_ether_addr(dst, mpath->dst) == 0)
 =======
+<<<<<<< HEAD
+		if (mpath->sdata == sdata &&
+		    compare_ether_addr(dst, mpath->dst) == 0)
+=======
 		if (mpath->sdata == sdata && memcmp(dst, mpath->dst, ETH_ALEN) == 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto err_exists;
 	}
 
@@ -829,8 +934,12 @@ int mpp_path_add(u8 *dst, u8 *mpp, struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	spin_unlock(&tbl->hashwlock[hash_idx]);
 =======
+<<<<<<< HEAD
+	spin_unlock(&tbl->hashwlock[hash_idx]);
+=======
 	spin_unlock_bh(&tbl->hashwlock[hash_idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_unlock_bh(&pathtbl_resize_lock);
 	if (grow) {
 		set_bit(MESH_WORK_GROW_MPP_TABLE,  &ifmsh->wrkq_flags);
@@ -842,8 +951,12 @@ err_exists:
 <<<<<<< HEAD
 	spin_unlock(&tbl->hashwlock[hash_idx]);
 =======
+<<<<<<< HEAD
+	spin_unlock(&tbl->hashwlock[hash_idx]);
+=======
 	spin_unlock_bh(&tbl->hashwlock[hash_idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_unlock_bh(&pathtbl_resize_lock);
 	kfree(new_node);
 err_node_alloc:
@@ -873,23 +986,33 @@ void mesh_plink_broken(struct sta_info *sta)
 <<<<<<< HEAD
 	__le16 reason = cpu_to_le16(WLAN_REASON_MESH_PATH_DEST_UNREACHABLE);
 =======
+<<<<<<< HEAD
+	__le16 reason = cpu_to_le16(WLAN_REASON_MESH_PATH_DEST_UNREACHABLE);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rcu_read_lock();
 	tbl = rcu_dereference(mesh_paths);
 	for_each_mesh_entry(tbl, p, node, i) {
 		mpath = node->mpath;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rcu_dereference(mpath->next_hop) == sta &&
 		    mpath->flags & MESH_PATH_ACTIVE &&
 		    !(mpath->flags & MESH_PATH_FIXED)) {
 			spin_lock_bh(&mpath->state_lock);
+<<<<<<< HEAD
+=======
 =======
 		spin_lock_bh(&mpath->state_lock);
 		if (rcu_dereference(mpath->next_hop) == sta &&
 		    mpath->flags & MESH_PATH_ACTIVE &&
 		    !(mpath->flags & MESH_PATH_FIXED)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mpath->flags &= ~MESH_PATH_ACTIVE;
 			++mpath->sn;
 			spin_unlock_bh(&mpath->state_lock);
@@ -899,16 +1022,24 @@ void mesh_plink_broken(struct sta_info *sta)
 					reason, bcast, sdata);
 		}
 =======
+<<<<<<< HEAD
+					reason, bcast, sdata);
+		}
+=======
 					cpu_to_le16(PERR_RCODE_DEST_UNREACH),
 					bcast, sdata);
 		} else
 		spin_unlock_bh(&mpath->state_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	rcu_read_unlock();
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mesh_path_node_reclaim(struct rcu_head *rp)
 {
 	struct mpath_node *node = container_of(rp, struct mpath_node, rcu);
@@ -935,8 +1066,11 @@ static void __mesh_path_del(struct mesh_table *tbl, struct mpath_node *node)
 	atomic_dec(&tbl->entries);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * mesh_path_flush_by_nexthop - Deletes mesh paths if their next hop matches
  *
@@ -958,6 +1092,9 @@ void mesh_path_flush_by_nexthop(struct sta_info *sta)
 
 	rcu_read_lock();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_lock_bh(&pathtbl_resize_lock);
 	tbl = resize_dereference_mesh_paths();
 	for_each_mesh_entry(tbl, p, node, i) {
@@ -975,6 +1112,8 @@ void mesh_path_flush_by_nexthop(struct sta_info *sta)
 static void table_flush_by_iface(struct mesh_table *tbl,
 				 struct ieee80211_sub_if_data *sdata)
 {
+<<<<<<< HEAD
+=======
 =======
 	tbl = rcu_dereference(mesh_paths);
 	for_each_mesh_entry(tbl, p, node, i) {
@@ -989,12 +1128,16 @@ void mesh_path_flush(struct ieee80211_sub_if_data *sdata)
 {
 	struct mesh_table *tbl;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mesh_path *mpath;
 	struct mpath_node *node;
 	struct hlist_node *p;
 	int i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(!rcu_read_lock_held());
 	for_each_mesh_entry(tbl, p, node, i) {
 		mpath = node->mpath;
@@ -1026,6 +1169,8 @@ void mesh_path_flush_by_iface(struct ieee80211_sub_if_data *sdata)
 	table_flush_by_iface(tbl, sdata);
 	read_unlock_bh(&pathtbl_resize_lock);
 	rcu_read_unlock();
+<<<<<<< HEAD
+=======
 =======
 	rcu_read_lock();
 	tbl = rcu_dereference(mesh_paths);
@@ -1047,6 +1192,7 @@ static void mesh_path_node_reclaim(struct rcu_head *rp)
 	kfree(node->mpath);
 	kfree(node);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1073,12 +1219,17 @@ int mesh_path_del(u8 *addr, struct ieee80211_sub_if_data *sdata)
 	bucket = &tbl->hash_buckets[hash_idx];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&tbl->hashwlock[hash_idx]);
 	hlist_for_each_entry(node, n, bucket, list) {
 		mpath = node->mpath;
 		if (mpath->sdata == sdata &&
 		    compare_ether_addr(addr, mpath->dst) == 0) {
 			__mesh_path_del(tbl, node);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock_bh(&tbl->hashwlock[hash_idx]);
 	hlist_for_each_entry(node, n, bucket, list) {
@@ -1092,6 +1243,7 @@ int mesh_path_del(u8 *addr, struct ieee80211_sub_if_data *sdata)
 			atomic_dec(&tbl->entries);
 			spin_unlock_bh(&mpath->state_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto enddel;
 		}
 	}
@@ -1102,8 +1254,12 @@ enddel:
 <<<<<<< HEAD
 	spin_unlock(&tbl->hashwlock[hash_idx]);
 =======
+<<<<<<< HEAD
+	spin_unlock(&tbl->hashwlock[hash_idx]);
+=======
 	spin_unlock_bh(&tbl->hashwlock[hash_idx]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_unlock_bh(&pathtbl_resize_lock);
 	return err;
 }
@@ -1125,6 +1281,9 @@ void mesh_path_tx_pending(struct mesh_path *mpath)
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * mesh_path_send_to_gates - sends pending frames to all known mesh gates
  *
  * @mpath: mesh path whose queue will be emptied
@@ -1177,13 +1336,18 @@ int mesh_path_send_to_gates(struct mesh_path *mpath)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * mesh_path_discard_frame - discard a frame whose path could not be resolved
  *
  * @skb: frame to discard
  * @sdata: network subif the frame was to be sent through
  *
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * If the frame was being forwarded from another MP, a PERR frame will be sent
@@ -1192,11 +1356,14 @@ int mesh_path_send_to_gates(struct mesh_path *mpath)
  * the destination is successfully resolved.
  *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Locking: the function must me called within a rcu_read_lock region
  */
 void mesh_path_discard_frame(struct sk_buff *skb,
 			     struct ieee80211_sub_if_data *sdata)
 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
@@ -1217,6 +1384,7 @@ void mesh_path_discard_frame(struct sk_buff *skb,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree_skb(skb);
 	sdata->u.mesh.mshstats.dropped_frames_no_route++;
 }
@@ -1235,9 +1403,13 @@ void mesh_path_flush_pending(struct mesh_path *mpath)
 <<<<<<< HEAD
 	while ((skb = skb_dequeue(&mpath->frame_queue)) != NULL)
 =======
+<<<<<<< HEAD
+	while ((skb = skb_dequeue(&mpath->frame_queue)) != NULL)
+=======
 	while ((skb = skb_dequeue(&mpath->frame_queue)) &&
 			(mpath->flags & MESH_PATH_ACTIVE))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mesh_path_discard_frame(skb, mpath->sdata);
 }
 
@@ -1301,7 +1473,11 @@ int mesh_pathtbl_init(void)
 <<<<<<< HEAD
 	int ret;
 =======
+<<<<<<< HEAD
+	int ret;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tbl_path = mesh_table_alloc(INIT_PATHS_SIZE_ORDER);
 	if (!tbl_path)
@@ -1310,6 +1486,9 @@ int mesh_pathtbl_init(void)
 	tbl_path->copy_node = &mesh_path_node_copy;
 	tbl_path->mean_chain_len = MEAN_CHAIN_LEN;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tbl_path->known_gates = kzalloc(sizeof(struct hlist_head), GFP_ATOMIC);
 	if (!tbl_path->known_gates) {
 		ret = -ENOMEM;
@@ -1322,6 +1501,8 @@ int mesh_pathtbl_init(void)
 	if (!tbl_mpp) {
 		ret = -ENOMEM;
 		goto free_path;
+<<<<<<< HEAD
+=======
 =======
 
 	tbl_mpp = mesh_table_alloc(INIT_PATHS_SIZE_ORDER);
@@ -1329,19 +1510,26 @@ int mesh_pathtbl_init(void)
 		mesh_table_free(tbl_path, true);
 		return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	tbl_mpp->free_node = &mesh_path_node_free;
 	tbl_mpp->copy_node = &mesh_path_node_copy;
 	tbl_mpp->mean_chain_len = MEAN_CHAIN_LEN;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tbl_mpp->known_gates = kzalloc(sizeof(struct hlist_head), GFP_ATOMIC);
 	if (!tbl_mpp->known_gates) {
 		ret = -ENOMEM;
 		goto free_mpp;
 	}
 	INIT_HLIST_HEAD(tbl_mpp->known_gates);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Need no locking since this is during init */
 	RCU_INIT_POINTER(mesh_paths, tbl_path);
@@ -1349,14 +1537,20 @@ int mesh_pathtbl_init(void)
 
 	return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 free_mpp:
 	mesh_table_free(tbl_mpp, true);
 free_path:
 	mesh_table_free(tbl_path, true);
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void mesh_path_expire(struct ieee80211_sub_if_data *sdata)
@@ -1374,10 +1568,15 @@ void mesh_path_expire(struct ieee80211_sub_if_data *sdata)
 			continue;
 		mpath = node->mpath;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((!(mpath->flags & MESH_PATH_RESOLVING)) &&
 		    (!(mpath->flags & MESH_PATH_FIXED)) &&
 		     time_after(jiffies, mpath->exp_time + MESH_PATH_EXPIRE))
 			mesh_path_del(mpath->dst, mpath->sdata);
+<<<<<<< HEAD
+=======
 =======
 		spin_lock_bh(&mpath->state_lock);
 		if ((!(mpath->flags & MESH_PATH_RESOLVING)) &&
@@ -1388,6 +1587,7 @@ void mesh_path_expire(struct ieee80211_sub_if_data *sdata)
 		} else
 			spin_unlock_bh(&mpath->state_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	rcu_read_unlock();
 }
@@ -1399,7 +1599,12 @@ void mesh_pathtbl_unregister(void)
 	mesh_table_free(rcu_dereference_protected(mesh_paths, 1), true);
 	mesh_table_free(rcu_dereference_protected(mpp_paths, 1), true);
 =======
+<<<<<<< HEAD
+	mesh_table_free(rcu_dereference_protected(mesh_paths, 1), true);
+	mesh_table_free(rcu_dereference_protected(mpp_paths, 1), true);
+=======
 	mesh_table_free(rcu_dereference_raw(mesh_paths), true);
 	mesh_table_free(rcu_dereference_raw(mpp_paths), true);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

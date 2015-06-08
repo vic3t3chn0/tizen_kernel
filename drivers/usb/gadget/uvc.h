@@ -8,7 +8,14 @@
  *	it under the terms of the GNU General Public License as published by
  *	the Free Software Foundation; either version 2 of the License, or
  *	(at your option) any later version.
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _UVC_GADGET_H_
@@ -56,6 +63,13 @@ struct uvc_event
 #include <linux/usb.h>	/* For usb_endpoint_* */
 #include <linux/usb/gadget.h>
 #include <linux/videodev2.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/version.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <media/v4l2-fh.h>
 
 #include "uvc_queue.h"

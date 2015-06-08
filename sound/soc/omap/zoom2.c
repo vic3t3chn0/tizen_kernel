@@ -36,8 +36,13 @@
 #include <linux/mfd/twl4030-audio.h>
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/mfd/twl4030-audio.h>
+#include <linux/module.h>
+=======
 #include <linux/mfd/twl4030-codec.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "omap-mcbsp.h"
 #include "omap-pcm.h"
@@ -49,6 +54,10 @@ static int zoom2_hw_params(struct snd_pcm_substream *substream,
 {
 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
 	struct snd_soc_dai *codec_dai = rtd->codec_dai;
+<<<<<<< HEAD
+	int ret;
+
+=======
 <<<<<<< HEAD
 	int ret;
 
@@ -77,6 +86,7 @@ static int zoom2_hw_params(struct snd_pcm_substream *substream,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set the codec system clock for DAC and ADC */
 	ret = snd_soc_dai_set_sysclk(codec_dai, 0, 26000000,
 					SND_SOC_CLOCK_IN);
@@ -92,6 +102,8 @@ static struct snd_soc_ops zoom2_ops = {
 	.hw_params = zoom2_hw_params,
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int zoom2_hw_voice_params(struct snd_pcm_substream *substream,
@@ -138,6 +150,7 @@ static struct snd_soc_ops zoom2_voice_ops = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Zoom2 machine DAPM */
 static const struct snd_soc_dapm_widget zoom2_twl4030_dapm_widgets[] = {
 	SND_SOC_DAPM_MIC("Ext Mic", NULL),
@@ -177,6 +190,8 @@ static int zoom2_twl4030_init(struct snd_soc_pcm_runtime *rtd)
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret;
 
 	/* Add Zoom2 specific widgets */
@@ -195,6 +210,7 @@ static int zoom2_twl4030_init(struct snd_soc_pcm_runtime *rtd)
 	snd_soc_dapm_enable_pin(dapm, "Headset Stereophone");
 	snd_soc_dapm_enable_pin(dapm, "Aux In");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* TWL4030 not connected pins */
 	snd_soc_dapm_nc_pin(dapm, "CARKITMIC");
@@ -209,10 +225,14 @@ static int zoom2_twl4030_init(struct snd_soc_pcm_runtime *rtd)
 <<<<<<< HEAD
 	return 0;
 =======
+<<<<<<< HEAD
+	return 0;
+=======
 	ret = snd_soc_dapm_sync(dapm);
 
 	return ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int zoom2_twl4030_voice_init(struct snd_soc_pcm_runtime *rtd)
@@ -234,18 +254,24 @@ static struct snd_soc_dai_link zoom2_dai[] = {
 		.name = "TWL4030 I2S",
 		.stream_name = "TWL4030 Audio",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.cpu_dai_name = "omap-mcbsp.2",
 		.codec_dai_name = "twl4030-hifi",
 		.platform_name = "omap-pcm-audio",
 		.codec_name = "twl4030-codec",
 		.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
 			   SND_SOC_DAIFMT_CBM_CFM,
+<<<<<<< HEAD
+=======
 =======
 		.cpu_dai_name = "omap-mcbsp-dai.1",
 		.codec_dai_name = "twl4030-hifi",
 		.platform_name = "omap-pcm-audio",
 		.codec_name = "twl4030-codec",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.init = zoom2_twl4030_init,
 		.ops = &zoom2_ops,
 	},
@@ -253,6 +279,9 @@ static struct snd_soc_dai_link zoom2_dai[] = {
 		.name = "TWL4030 PCM",
 		.stream_name = "TWL4030 Voice",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.cpu_dai_name = "omap-mcbsp.3",
 		.codec_dai_name = "twl4030-voice",
 		.platform_name = "omap-pcm-audio",
@@ -261,6 +290,8 @@ static struct snd_soc_dai_link zoom2_dai[] = {
 			   SND_SOC_DAIFMT_CBM_CFM,
 		.init = zoom2_twl4030_voice_init,
 		.ops = &zoom2_ops,
+<<<<<<< HEAD
+=======
 =======
 		.cpu_dai_name = "omap-mcbsp-dai.2",
 		.codec_dai_name = "twl4030-voice",
@@ -269,6 +300,7 @@ static struct snd_soc_dai_link zoom2_dai[] = {
 		.init = zoom2_twl4030_voice_init,
 		.ops = &zoom2_voice_ops,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -276,6 +308,9 @@ static struct snd_soc_dai_link zoom2_dai[] = {
 static struct snd_soc_card snd_soc_zoom2 = {
 	.name = "Zoom2",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner = THIS_MODULE,
 	.dai_link = zoom2_dai,
 	.num_links = ARRAY_SIZE(zoom2_dai),
@@ -284,10 +319,13 @@ static struct snd_soc_card snd_soc_zoom2 = {
 	.num_dapm_widgets = ARRAY_SIZE(zoom2_twl4030_dapm_widgets),
 	.dapm_routes = audio_map,
 	.num_dapm_routes = ARRAY_SIZE(audio_map),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link = zoom2_dai,
 	.num_links = ARRAY_SIZE(zoom2_dai),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *zoom2_snd_device;

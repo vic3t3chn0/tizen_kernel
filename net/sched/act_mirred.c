@@ -157,8 +157,12 @@ static int tcf_mirred_cleanup(struct tc_action *a, int bind)
 <<<<<<< HEAD
 static int tcf_mirred(struct sk_buff *skb, const struct tc_action *a,
 =======
+<<<<<<< HEAD
+static int tcf_mirred(struct sk_buff *skb, const struct tc_action *a,
+=======
 static int tcf_mirred(struct sk_buff *skb, struct tc_action *a,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		      struct tcf_result *res)
 {
 	struct tcf_mirred *m = a->priv;
@@ -203,9 +207,13 @@ static int tcf_mirred(struct sk_buff *skb, struct tc_action *a,
 <<<<<<< HEAD
 	err = dev_queue_xmit(skb2);
 =======
+<<<<<<< HEAD
+	err = dev_queue_xmit(skb2);
+=======
 	dev_queue_xmit(skb2);
 	err = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 out:
 	if (err) {

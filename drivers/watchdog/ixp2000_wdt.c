@@ -16,6 +16,14 @@
  * warranty of any kind, whether express or implied.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/types.h>
@@ -29,10 +37,23 @@
 #include <linux/uaccess.h>
 #include <mach/hardware.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool nowayout = WATCHDOG_NOWAYOUT;
+static unsigned int heartbeat = 60;	/* (secs) Default is 1 minute */
+static unsigned long wdt_status;
+static DEFINE_SPINLOCK(wdt_lock);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int nowayout = WATCHDOG_NOWAYOUT;
 static unsigned int heartbeat = 60;	/* (secs) Default is 1 minute */
 static unsigned long wdt_status;
 static spinlock_t wdt_lock;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define	WDT_IN_USE		0
 #define	WDT_OK_TO_CLOSE		1
@@ -158,8 +179,17 @@ static int ixp2000_wdt_release(struct inode *inode, struct file *file)
 	if (test_bit(WDT_OK_TO_CLOSE, &wdt_status))
 		wdt_disable();
 	else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_crit("Device closed unexpectedly - timer will not stop\n");
+=======
 		printk(KERN_CRIT "WATCHDOG: Device closed unexpectedly - "
 					"timer will not stop\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_CRIT "WATCHDOG: Device closed unexpectedly - "
+					"timer will not stop\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_bit(WDT_IN_USE, &wdt_status);
 	clear_bit(WDT_OK_TO_CLOSE, &wdt_status);
 
@@ -185,11 +215,24 @@ static struct miscdevice ixp2000_wdt_miscdev = {
 static int __init ixp2000_wdt_init(void)
 {
 	if ((*IXP2000_PRODUCT_ID & 0x001ffef0) == 0x00000000) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Unable to use IXP2000 watchdog due to IXP2800 erratum #25\n");
+		return -EIO;
+	}
+	wdt_tick_rate = (*IXP2000_T1_CLD * HZ) / 256;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO "Unable to use IXP2000 watchdog due to IXP2800 erratum #25.\n");
 		return -EIO;
 	}
 	wdt_tick_rate = (*IXP2000_T1_CLD * HZ) / 256;
 	spin_lock_init(&wdt_lock);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return misc_register(&ixp2000_wdt_miscdev);
 }
 
@@ -207,7 +250,15 @@ MODULE_DESCRIPTION("IXP2000 Network Processor Watchdog");
 module_param(heartbeat, int, 0);
 MODULE_PARM_DESC(heartbeat, "Watchdog heartbeat in seconds (default 60s)");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_param(nowayout, bool, 0);
+=======
 module_param(nowayout, int, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+module_param(nowayout, int, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started");
 
 MODULE_LICENSE("GPL");

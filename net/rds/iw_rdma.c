@@ -35,7 +35,11 @@
 <<<<<<< HEAD
 #include <linux/ratelimit.h>
 =======
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "rds.h"
 #include "iw.h"
@@ -91,8 +95,13 @@ static unsigned int rds_iw_unmap_fastreg_list(struct rds_iw_mr_pool *pool,
 			struct list_head *kill_list,
 			int *unpinned);
 =======
+<<<<<<< HEAD
+			struct list_head *kill_list,
+			int *unpinned);
+=======
 			struct list_head *kill_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void rds_iw_destroy_fastreg(struct rds_iw_mr_pool *pool, struct rds_iw_mr *ibmr);
 
 static int rds_iw_get_device(struct rds_sock *rs, struct rds_iw_device **rds_iwdev, struct rdma_cm_id **cm_id)
@@ -486,6 +495,8 @@ void rds_iw_sync_mr(void *trans_private, int direction)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline unsigned int rds_iw_flush_goal(struct rds_iw_mr_pool *pool, int free_all)
 {
 	unsigned int item_count;
@@ -498,6 +509,7 @@ static inline unsigned int rds_iw_flush_goal(struct rds_iw_mr_pool *pool, int fr
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Flush our pool of MRs.
  * At a minimum, all currently unused MRs are unmapped.
@@ -513,8 +525,12 @@ static int rds_iw_flush_mr_pool(struct rds_iw_mr_pool *pool, int free_all)
 <<<<<<< HEAD
 	unsigned int nfreed = 0, ncleaned = 0, unpinned = 0;
 =======
+<<<<<<< HEAD
+	unsigned int nfreed = 0, ncleaned = 0, unpinned = 0;
+=======
 	unsigned int nfreed = 0, ncleaned = 0, free_goal;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	rds_iw_stats_inc(s_iw_rdma_mr_pool_flush);
@@ -530,9 +546,12 @@ static int rds_iw_flush_mr_pool(struct rds_iw_mr_pool *pool, int free_all)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	free_goal = rds_iw_flush_goal(pool, free_all);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Batched invalidate of dirty MRs.
 	 * For FMR based MRs, the mappings on the unmap list are
 	 * actually members of an ibmr (ibmr->mapping). They either
@@ -546,8 +565,13 @@ static int rds_iw_flush_mr_pool(struct rds_iw_mr_pool *pool, int free_all)
 		ncleaned = rds_iw_unmap_fastreg_list(pool, &unmap_list,
 						     &kill_list, &unpinned);
 =======
+<<<<<<< HEAD
+		ncleaned = rds_iw_unmap_fastreg_list(pool, &unmap_list,
+						     &kill_list, &unpinned);
+=======
 		ncleaned = rds_iw_unmap_fastreg_list(pool, &unmap_list, &kill_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* If we've been asked to destroy all MRs, move those
 		 * that were simply cleaned to the kill list */
 		if (free_all)
@@ -574,7 +598,11 @@ static int rds_iw_flush_mr_pool(struct rds_iw_mr_pool *pool, int free_all)
 <<<<<<< HEAD
 	atomic_sub(unpinned, &pool->free_pinned);
 =======
+<<<<<<< HEAD
+	atomic_sub(unpinned, &pool->free_pinned);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_sub(ncleaned, &pool->dirty_count);
 	atomic_sub(nfreed, &pool->item_count);
 
@@ -761,9 +789,14 @@ static int rds_iw_rdma_build_fastreg(struct rds_iw_mapping *mapping)
 	if (ret)
 		printk_ratelimited(KERN_WARNING "RDS/IW: %s:%d ib_post_send returned %d\n",
 =======
+<<<<<<< HEAD
+	if (ret)
+		printk_ratelimited(KERN_WARNING "RDS/IW: %s:%d ib_post_send returned %d\n",
+=======
 	if (ret && printk_ratelimit())
 		printk(KERN_WARNING "RDS/IW: %s:%d ib_post_send returned %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ret);
 	return ret;
 }
@@ -788,9 +821,14 @@ static int rds_iw_rdma_fastreg_inv(struct rds_iw_mr *ibmr)
 	if (ret) {
 		printk_ratelimited(KERN_WARNING "RDS/IW: %s:%d ib_post_send returned %d\n",
 =======
+<<<<<<< HEAD
+	if (ret) {
+		printk_ratelimited(KERN_WARNING "RDS/IW: %s:%d ib_post_send returned %d\n",
+=======
 	if (ret && printk_ratelimit()) {
 		printk(KERN_WARNING "RDS/IW: %s:%d ib_post_send returned %d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			__func__, __LINE__, ret);
 		goto out;
 	}
@@ -869,8 +907,13 @@ static unsigned int rds_iw_unmap_fastreg_list(struct rds_iw_mr_pool *pool,
 				struct list_head *kill_list,
 				int *unpinned)
 =======
+<<<<<<< HEAD
+				struct list_head *kill_list,
+				int *unpinned)
+=======
 				struct list_head *kill_list)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct rds_iw_mapping *mapping, *next;
 	unsigned int ncleaned = 0;
@@ -900,7 +943,11 @@ static unsigned int rds_iw_unmap_fastreg_list(struct rds_iw_mr_pool *pool,
 <<<<<<< HEAD
 			*unpinned += mapping->m_sg.len;
 =======
+<<<<<<< HEAD
+			*unpinned += mapping->m_sg.len;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			list_move(&mapping->m_list, &laundered);
 			ncleaned++;
 		}

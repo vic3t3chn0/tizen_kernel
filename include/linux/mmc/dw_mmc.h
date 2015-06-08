@@ -15,9 +15,14 @@
 #ifndef LINUX_MMC_DW_MMC_H
 #define LINUX_MMC_DW_MMC_H
 =======
+<<<<<<< HEAD
+#ifndef LINUX_MMC_DW_MMC_H
+#define LINUX_MMC_DW_MMC_H
+=======
 #ifndef _LINUX_MMC_DW_MMC_H_
 #define _LINUX_MMC_DW_MMC_H_
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/scatterlist.h>
 
@@ -44,12 +49,15 @@ struct mmc_data;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct dw_mci_next {
 	unsigned int	sg_len;
 	s32		cookie;
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct dw_mci - MMC controller state shared between all slots
  * @lock: Spinlock protecting the queue and associated data.
@@ -58,8 +66,12 @@ struct dw_mci_next {
 <<<<<<< HEAD
  * @sg_miter: PIO mapping scatterlist iterator.
 =======
+<<<<<<< HEAD
+ * @sg_miter: PIO mapping scatterlist iterator.
+=======
  * @pio_offset: Offset into the current scatterlist entry.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @cur_slot: The slot which is currently using the controller.
  * @mrq: The request currently being processed on @cur_slot,
  *	or NULL if the controller is idle.
@@ -70,7 +82,11 @@ struct dw_mci_next {
 <<<<<<< HEAD
  * @using_dma: Whether DMA is in use for the current transfer.
 =======
+<<<<<<< HEAD
+ * @using_dma: Whether DMA is in use for the current transfer.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @sg_dma: Bus address of DMA buffer.
  * @sg_cpu: Virtual address of DMA buffer.
  * @dma_ops: Pointer to platform-specific DMA callbacks.
@@ -99,13 +115,22 @@ struct dw_mci_next {
  * @data_offset: Set the offset of DATA register according to VERID.
  * @dev: Device associated with the MMC controller.
 =======
+<<<<<<< HEAD
+ * @verid: Denote Version ID.
+ * @data_offset: Set the offset of DATA register according to VERID.
+ * @dev: Device associated with the MMC controller.
+=======
  * @pdev: Platform device associated with the MMC controller.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @pdata: Platform data associated with the MMC controller.
  * @slot: Slots sharing this MMC controller.
  * @fifo_depth: depth of FIFO.
  * @data_shift: log2 of FIFO item size.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @part_buf_start: Start index in part_buf.
  * @part_buf_count: Bytes of partial data in part_buf.
  * @part_buf: Simple buffer for partial fifo reads/writes.
@@ -114,11 +139,14 @@ struct dw_mci_next {
  * @quirks: Set of quirks that apply to specific versions of the IP.
  * @irq_flags: The flags to be passed to request_irq.
  * @irq: The irq value to be passed to request_irq.
+<<<<<<< HEAD
+=======
 =======
  * @push_data: Pointer to FIFO push function.
  * @pull_data: Pointer to FIFO pull function.
  * @quirks: Set of quirks that apply to specific versions of the IP.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Locking
  * =======
@@ -157,10 +185,13 @@ struct dw_mci {
 	struct mmc_data		*data;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct clk          *hclk;
 	struct clk          *cclk;
 	bool			prv_err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* DMA interface members*/
 	int			use_dma;
@@ -171,8 +202,11 @@ struct dw_mci {
 	struct dw_mci_dma_ops	*dma_ops;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned int		buf_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MMC_DW_IDMAC
 	unsigned int		ring_size;
 #else
@@ -186,8 +220,12 @@ struct dw_mci {
 <<<<<<< HEAD
 	struct work_struct	card_work;
 =======
+<<<<<<< HEAD
+	struct work_struct	card_work;
+=======
 	struct tasklet_struct	card_tasklet;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long		pending_events;
 	unsigned long		completed_events;
 	enum dw_mci_state	state;
@@ -202,8 +240,12 @@ struct dw_mci {
 <<<<<<< HEAD
 	struct device		dev;
 =======
+<<<<<<< HEAD
+	struct device		dev;
+=======
 	struct platform_device	*pdev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dw_mci_board	*pdata;
 	struct dw_mci_slot	*slot[MAX_MCI_SLOTS];
 
@@ -211,6 +253,9 @@ struct dw_mci {
 	int			fifo_depth;
 	int			data_shift;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8			part_buf_start;
 	u8			part_buf_count;
 	union {
@@ -218,8 +263,11 @@ struct dw_mci {
 		u32		part_buf32;
 		u64		part_buf;
 	};
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void (*push_data)(struct dw_mci *host, void *buf, int cnt);
 	void (*pull_data)(struct dw_mci *host, void *buf, int cnt);
 
@@ -231,8 +279,13 @@ struct dw_mci {
 	unsigned long		irq_flags; /* IRQ flags */
 	unsigned int		irq;
 =======
+<<<<<<< HEAD
+	unsigned long		irq_flags; /* IRQ flags */
+	unsigned int		irq;
+=======
 	struct dw_mci_next	next_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* DMA ops for Internal/External DMAC interface */
@@ -258,6 +311,8 @@ struct dw_mci_dma_ops {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 enum dw_mci_cd_types {
 	DW_MCI_CD_INTERNAL,  /* use mmc internal CD line */
 	DW_MCI_CD_EXTERNAL,  /* use external callback */
@@ -266,6 +321,7 @@ enum dw_mci_cd_types {
 	DW_MCI_CD_PERMANENT, /* no CD line, card permanently wired to host */
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct dma_pdata;
 
@@ -298,6 +354,11 @@ struct dw_mci_board {
 	u32 detect_delay_ms;
 
 =======
+<<<<<<< HEAD
+	/* delay in mS before detecting cards after interrupt */
+	u32 detect_delay_ms;
+
+=======
 	unsigned int buf_size;	/* Buffer size */
 
 	/* delay in mS before detecting cards after interrupt */
@@ -307,11 +368,14 @@ struct dw_mci_board {
 	char *cclk_name;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*init)(u32 slot_id, irq_handler_t , void *);
 	int (*get_ro)(u32 slot_id);
 	int (*get_cd)(u32 slot_id);
 	int (*get_ocr)(u32 slot_id);
 	int (*get_bus_wd)(u32 slot_id);
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	void (*cfg_gpio)(int width);
@@ -337,6 +401,7 @@ struct dw_mci_board {
 	int (*ext_cd_cleanup)(void (*notify_func)(struct platform_device *,int state));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Enable power to selected slot and set voltage to desired level.
 	 * Voltage levels are specified using MMC_VDD_xxx defines defined
@@ -354,5 +419,9 @@ struct dw_mci_board {
 <<<<<<< HEAD
 #endif /* LINUX_MMC_DW_MMC_H */
 =======
+<<<<<<< HEAD
+#endif /* LINUX_MMC_DW_MMC_H */
+=======
 #endif /* _LINUX_MMC_DW_MMC_H_ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

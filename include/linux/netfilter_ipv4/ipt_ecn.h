@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef _IPT_ECN_H
 #define _IPT_ECN_H
 
@@ -14,6 +17,8 @@ enum {
 };
 
 #endif /* IPT_ECN_H */
+<<<<<<< HEAD
+=======
 =======
 /* iptables module for matching the ECN header in IPv4 and TCP header
  *
@@ -51,3 +56,4 @@ struct ipt_ecn_info {
 
 #endif /* _IPT_ECN_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

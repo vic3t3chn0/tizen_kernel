@@ -37,8 +37,12 @@ static void __init reserve_bad_mem(u64 pattern, u64 start_bad, u64 end_bad)
 <<<<<<< HEAD
 	memblock_reserve(start_bad, end_bad - start_bad);
 =======
+<<<<<<< HEAD
+	memblock_reserve(start_bad, end_bad - start_bad);
+=======
 	memblock_x86_reserve_range(start_bad, end_bad, "BAD RAM");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init memtest(u64 pattern, u64 start_phys, u64 size)
@@ -75,6 +79,9 @@ static void __init memtest(u64 pattern, u64 start_phys, u64 size)
 static void __init do_one_pass(u64 pattern, u64 start, u64 end)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 i;
 	phys_addr_t this_start, this_end;
 
@@ -88,6 +95,8 @@ static void __init do_one_pass(u64 pattern, u64 start, u64 end)
 			       (unsigned long long)cpu_to_be64(pattern));
 			memtest(pattern, this_start, this_end - this_start);
 		}
+<<<<<<< HEAD
+=======
 =======
 	u64 size = 0;
 
@@ -108,6 +117,7 @@ static void __init do_one_pass(u64 pattern, u64 start, u64 end)
 
 		start += size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

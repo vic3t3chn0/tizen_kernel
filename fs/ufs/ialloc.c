@@ -173,8 +173,12 @@ static void ufs2_init_inodes_chunk(struct super_block *sb,
 <<<<<<< HEAD
 struct inode *ufs_new_inode(struct inode *dir, umode_t mode)
 =======
+<<<<<<< HEAD
+struct inode *ufs_new_inode(struct inode *dir, umode_t mode)
+=======
 struct inode * ufs_new_inode(struct inode * dir, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block * sb;
 	struct ufs_sb_info * sbi;
@@ -348,8 +352,12 @@ fail_remove_inode:
 <<<<<<< HEAD
 	clear_nlink(inode);
 =======
+<<<<<<< HEAD
+	clear_nlink(inode);
+=======
 	inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	iput(inode);
 	UFSD("EXIT (FAILED): err %d\n", err);
 	return ERR_PTR(err);

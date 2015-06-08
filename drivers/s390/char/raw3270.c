@@ -7,7 +7,14 @@
  *     Copyright IBM Corp. 2003, 2009
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/kernel_stat.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/kernel_stat.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/err.h>
 #include <linux/init.h>
@@ -76,7 +83,15 @@ static LIST_HEAD(raw3270_devices);
 static int raw3270_registered;
 
 /* Module parameters */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool tubxcorrect = 0;
+=======
 static int tubxcorrect = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int tubxcorrect = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(tubxcorrect, bool, 0);
 
 /*
@@ -330,7 +345,14 @@ raw3270_irq (struct ccw_device *cdev, unsigned long intparm, struct irb *irb)
 	struct raw3270_request *rq;
 	int rc;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kstat_cpu(smp_processor_id()).irqs[IOINT_C70]++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kstat_cpu(smp_processor_id()).irqs[IOINT_C70]++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rp = dev_get_drvdata(&cdev->dev);
 	if (!rp)
 		return;
@@ -1398,6 +1420,13 @@ static struct ccw_driver raw3270_ccw_driver = {
 	.freeze		= &raw3270_pm_stop,
 	.thaw		= &raw3270_pm_start,
 	.restore	= &raw3270_pm_start,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.int_class	= IOINT_C70,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int

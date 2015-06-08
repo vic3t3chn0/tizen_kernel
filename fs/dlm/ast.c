@@ -19,6 +19,11 @@
 static uint64_t			dlm_cb_seq;
 static spinlock_t		dlm_cb_seq_spin;
 =======
+<<<<<<< HEAD
+
+static uint64_t			dlm_cb_seq;
+static spinlock_t		dlm_cb_seq_spin;
+=======
 #include "ast.h"
 
 #define WAKE_ASTS  0
@@ -31,6 +36,7 @@ static unsigned long		astd_wakeflags;
 static struct mutex		astd_running;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void dlm_dump_lkb_callbacks(struct dlm_lkb *lkb)
 {
@@ -65,6 +71,8 @@ static void dlm_dump_lkb_callbacks(struct dlm_lkb *lkb)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void dlm_del_ast(struct dlm_lkb *lkb)
 {
 	spin_lock(&ast_queue_lock);
@@ -74,6 +82,7 @@ void dlm_del_ast(struct dlm_lkb *lkb)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int dlm_add_lkb_callback(struct dlm_lkb *lkb, uint32_t flags, int mode,
 			 int status, uint32_t sbflags, uint64_t seq)
 {
@@ -83,8 +92,12 @@ int dlm_add_lkb_callback(struct dlm_lkb *lkb, uint32_t flags, int mode,
 <<<<<<< HEAD
 	int i, rv;
 =======
+<<<<<<< HEAD
+	int i, rv;
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < DLM_CALLBACKS_SIZE; i++) {
 		if (lkb->lkb_callbacks[i].seq)
@@ -117,8 +130,13 @@ int dlm_add_lkb_callback(struct dlm_lkb *lkb, uint32_t flags, int mode,
 				rv = 0;
 				goto out;
 =======
+<<<<<<< HEAD
+				rv = 0;
+				goto out;
+=======
 				return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 
@@ -130,7 +148,11 @@ int dlm_add_lkb_callback(struct dlm_lkb *lkb, uint32_t flags, int mode,
 <<<<<<< HEAD
 		rv = 0;
 =======
+<<<<<<< HEAD
+		rv = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -140,23 +162,32 @@ int dlm_add_lkb_callback(struct dlm_lkb *lkb, uint32_t flags, int mode,
 			  flags, mode, status, sbflags);
 		dlm_dump_lkb_callbacks(lkb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rv = -1;
 		goto out;
 	}
  out:
 	return rv;
+<<<<<<< HEAD
+=======
 =======
 		return -1;
 	}
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int dlm_rem_lkb_callback(struct dlm_ls *ls, struct dlm_lkb *lkb,
 			 struct dlm_callback *cb, int *resid)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i, rv;
 
 	*resid = 0;
@@ -165,6 +196,8 @@ int dlm_rem_lkb_callback(struct dlm_ls *ls, struct dlm_lkb *lkb,
 		rv = -ENOENT;
 		goto out;
 	}
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -173,6 +206,7 @@ int dlm_rem_lkb_callback(struct dlm_ls *ls, struct dlm_lkb *lkb,
 	if (!lkb->lkb_callbacks[0].seq)
 		return -ENOENT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* oldest undelivered cb is callbacks[0] */
 
@@ -208,8 +242,13 @@ int dlm_rem_lkb_callback(struct dlm_ls *ls, struct dlm_lkb *lkb,
 			rv = 0;
 			goto out;
 =======
+<<<<<<< HEAD
+			rv = 0;
+			goto out;
+=======
 			return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -223,6 +262,9 @@ int dlm_rem_lkb_callback(struct dlm_ls *ls, struct dlm_lkb *lkb,
 		lkb->lkb_last_bast_time = ktime_get();
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rv = 0;
  out:
 	return rv;
@@ -270,6 +312,8 @@ void dlm_callback_work(struct work_struct *work)
 {
 	struct dlm_lkb *lkb = container_of(work, struct dlm_lkb, lkb_cb_work);
 	struct dlm_ls *ls = lkb->lkb_resource->res_ls;
+<<<<<<< HEAD
+=======
 =======
 
 	return 0;
@@ -313,12 +357,16 @@ static void process_asts(void)
 	struct dlm_rsb *r = NULL;
 	struct dlm_lkb *lkb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void (*castfn) (void *astparam);
 	void (*bastfn) (void *astparam, int mode);
 	struct dlm_callback callbacks[DLM_CALLBACKS_SIZE];
 	int i, rv, resid;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&callbacks, 0, sizeof(callbacks));
 
 	mutex_lock(&lkb->lkb_cb_mutex);
@@ -375,6 +423,8 @@ int dlm_callback_start(struct dlm_ls *ls)
 	if (!ls->ls_callback_wq) {
 		log_print("can't start dlm_callback workqueue");
 		return -ENOMEM;
+<<<<<<< HEAD
+=======
 =======
 repeat:
 	spin_lock(&ast_queue_lock);
@@ -455,11 +505,15 @@ static int dlm_astd(void *data)
 			process_asts();
 		mutex_unlock(&astd_running);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dlm_callback_stop(struct dlm_ls *ls)
 {
 	if (ls->ls_callback_wq)
@@ -493,6 +547,8 @@ void dlm_callback_resume(struct dlm_ls *ls)
 	mutex_unlock(&ls->ls_cb_mutex);
 
 	log_debug(ls, "dlm_callback_resume %d", count);
+<<<<<<< HEAD
+=======
 =======
 void dlm_astd_wake(void)
 {
@@ -533,5 +589,6 @@ void dlm_astd_resume(void)
 {
 	mutex_unlock(&astd_running);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

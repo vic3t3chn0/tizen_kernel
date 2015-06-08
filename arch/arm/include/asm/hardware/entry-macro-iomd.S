@@ -13,6 +13,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.macro	disable_fiq
 		mov	r12, #ioc_base_high
 		.if	ioc_base_low
@@ -22,6 +24,7 @@
 		.endm
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.macro	get_irqnr_and_base, irqnr, irqstat, base, tmp
 		ldrb	\irqstat, [\base, #IOMD_IRQREQB]	@ get high priority first
 		ldr	\tmp, =irq_prio_h

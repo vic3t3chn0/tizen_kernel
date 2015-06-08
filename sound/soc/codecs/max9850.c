@@ -89,8 +89,12 @@ SND_SOC_DAPM_INPUT("INR"),
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route max9850_dapm_routes[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route max9850_dapm_routes[] = {
+=======
 static const struct snd_soc_dapm_route intercon[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* output mixer */
 	{"Output Mixer", NULL, "DAC"},
 	{"Output Mixer", "Line In Switch", "Line Input"},
@@ -261,8 +265,12 @@ static int max9850_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops max9850_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops max9850_dai_ops = {
+=======
 static struct snd_soc_dai_ops max9850_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params	= max9850_hw_params,
 	.set_sysclk	= max9850_set_dai_sysclk,
 	.set_fmt	= max9850_set_dai_fmt,
@@ -284,8 +292,12 @@ static struct snd_soc_dai_driver max9850_dai = {
 <<<<<<< HEAD
 static int max9850_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int max9850_suspend(struct snd_soc_codec *codec)
+=======
 static int max9850_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	max9850_set_bias_level(codec, SND_SOC_BIAS_OFF);
 
@@ -307,8 +319,11 @@ static int max9850_probe(struct snd_soc_codec *codec)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 8, SND_SOC_I2C);
@@ -326,6 +341,8 @@ static int max9850_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_new_controls(dapm, max9850_dapm_widgets,
 				  ARRAY_SIZE(max9850_dapm_widgets));
 	snd_soc_dapm_add_routes(dapm, intercon, ARRAY_SIZE(intercon));
@@ -334,6 +351,7 @@ static int max9850_probe(struct snd_soc_codec *codec)
 			ARRAY_SIZE(max9850_controls));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -347,6 +365,9 @@ static struct snd_soc_codec_driver soc_codec_dev_max9850 = {
 	.reg_cache_default = max9850_reg,
 	.volatile_register = max9850_volatile_register,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.controls = max9850_controls,
 	.num_controls = ARRAY_SIZE(max9850_controls),
@@ -354,8 +375,11 @@ static struct snd_soc_codec_driver soc_codec_dev_max9850 = {
 	.num_dapm_widgets = ARRAY_SIZE(max9850_dapm_widgets),
 	.dapm_routes = max9850_dapm_routes,
 	.num_dapm_routes = ARRAY_SIZE(max9850_dapm_routes),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __devinit max9850_i2c_probe(struct i2c_client *i2c,
@@ -368,8 +392,13 @@ static int __devinit max9850_i2c_probe(struct i2c_client *i2c,
 	max9850 = devm_kzalloc(&i2c->dev, sizeof(struct max9850_priv),
 			       GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	max9850 = devm_kzalloc(&i2c->dev, sizeof(struct max9850_priv),
+			       GFP_KERNEL);
+=======
 	max9850 = kzalloc(sizeof(struct max9850_priv), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (max9850 == NULL)
 		return -ENOMEM;
 
@@ -379,9 +408,12 @@ static int __devinit max9850_i2c_probe(struct i2c_client *i2c,
 			&soc_codec_dev_max9850, &max9850_dai, 1);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ret < 0)
 		kfree(max9850);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -390,8 +422,11 @@ static __devexit int max9850_i2c_remove(struct i2c_client *client)
 	snd_soc_unregister_codec(&client->dev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

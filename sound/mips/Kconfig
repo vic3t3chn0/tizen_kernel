@@ -27,9 +27,14 @@ config SND_AU1X00
 	tristate "Au1x00 AC97 Port Driver (DEPRECATED)"
 	depends on MIPS_ALCHEMY
 =======
+<<<<<<< HEAD
+	tristate "Au1x00 AC97 Port Driver (DEPRECATED)"
+	depends on MIPS_ALCHEMY
+=======
 	tristate "Au1x00 AC97 Port Driver"
 	depends on SOC_AU1000 || SOC_AU1100 || SOC_AU1500
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select SND_PCM
 	select SND_AC97_CODEC
 	help
@@ -40,6 +45,12 @@ config SND_AU1X00
 	  this driver as it will be removed in the future.
 
 =======
+<<<<<<< HEAD
+	  Newer drivers for ASoC are available, please do not use
+	  this driver as it will be removed in the future.
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif	# SND_MIPS
 

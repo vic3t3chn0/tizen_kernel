@@ -12,7 +12,15 @@
  *----------------------------------------------------------------------------*/
 
 #ifndef AAC_DRIVER_BUILD
+<<<<<<< HEAD
+<<<<<<< HEAD
+# define AAC_DRIVER_BUILD 28900
+=======
 # define AAC_DRIVER_BUILD 28000
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+# define AAC_DRIVER_BUILD 28000
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # define AAC_DRIVER_BRANCH "-ms"
 #endif
 #define MAXIMUM_NUM_CONTAINERS	32
@@ -756,8 +764,26 @@ struct src_mu_registers {
 
 struct src_registers {
 	struct src_mu_registers MUnit;	/* 00h - c7h */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	union {
+		struct {
+			__le32 reserved1[130790];	/* c8h - 7fc5fh */
+			struct src_inbound IndexRegs;	/* 7fc60h */
+		} tupelo;
+		struct {
+			__le32 reserved1[974];		/* c8h - fffh */
+			struct src_inbound IndexRegs;	/* 1000h */
+		} denali;
+	} u;
+=======
 	__le32 reserved1[130790];	/* c8h - 7fc5fh */
 	struct src_inbound IndexRegs;	/* 7fc60h */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	__le32 reserved1[130790];	/* c8h - 7fc5fh */
+	struct src_inbound IndexRegs;	/* 7fc60h */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define src_readb(AEP, CSR)		readb(&((AEP)->regs.src.bar0->CSR))
@@ -999,6 +1025,16 @@ struct aac_bus_info_response {
 #define AAC_OPT_NEW_COMM		cpu_to_le32(1<<17)
 #define AAC_OPT_NEW_COMM_64		cpu_to_le32(1<<18)
 #define AAC_OPT_NEW_COMM_TYPE1		cpu_to_le32(1<<28)
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define AAC_OPT_NEW_COMM_TYPE2		cpu_to_le32(1<<29)
+#define AAC_OPT_NEW_COMM_TYPE3		cpu_to_le32(1<<30)
+#define AAC_OPT_NEW_COMM_TYPE4		cpu_to_le32(1<<31)
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct aac_dev
 {
@@ -1076,6 +1112,14 @@ struct aac_dev
 #	define AAC_MIN_FOOTPRINT_SIZE 8192
 #	define AAC_MIN_SRC_BAR0_SIZE 0x400000
 #	define AAC_MIN_SRC_BAR1_SIZE 0x800
+<<<<<<< HEAD
+<<<<<<< HEAD
+#	define AAC_MIN_SRCV_BAR0_SIZE 0x100000
+#	define AAC_MIN_SRCV_BAR1_SIZE 0x400
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	union
 	{
@@ -1116,7 +1160,18 @@ struct aac_dev
 	u8			msi;
 	int			management_fib_count;
 	spinlock_t		manage_lock;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spinlock_t		sync_lock;
+	int			sync_mode;
+	struct fib		*sync_fib;
+	struct list_head	sync_fib_list;
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define aac_adapter_interrupt(dev) \
@@ -1163,6 +1218,13 @@ struct aac_dev
 
 #define FIB_CONTEXT_FLAG_TIMED_OUT		(0x00000001)
 #define FIB_CONTEXT_FLAG			(0x00000002)
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define FIB_CONTEXT_FLAG_WAIT			(0x00000004)
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	Define the command values
@@ -1970,6 +2032,13 @@ int aac_rkt_init(struct aac_dev *dev);
 int aac_nark_init(struct aac_dev *dev);
 int aac_sa_init(struct aac_dev *dev);
 int aac_src_init(struct aac_dev *dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+int aac_srcv_init(struct aac_dev *dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int aac_queue_get(struct aac_dev * dev, u32 * index, u32 qid, struct hw_fib * hw_fib, int wait, struct fib * fibptr, unsigned long *nonotify);
 unsigned int aac_response_normal(struct aac_queue * q);
 unsigned int aac_command_normal(struct aac_queue * q);

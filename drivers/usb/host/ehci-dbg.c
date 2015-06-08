@@ -39,7 +39,15 @@
  * (host controller _Structural_ parameters)
  * see EHCI spec, Table 2-4 for each value
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __maybe_unused dbg_hcs_params (struct ehci_hcd *ehci, char *label)
+=======
 static void dbg_hcs_params (struct ehci_hcd *ehci, char *label)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void dbg_hcs_params (struct ehci_hcd *ehci, char *label)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32	params = ehci_readl(ehci, &ehci->caps->hcs_params);
 
@@ -83,7 +91,15 @@ static inline void dbg_hcs_params (struct ehci_hcd *ehci, char *label) {}
  * (host controller _Capability_ parameters)
  * see EHCI Spec, Table 2-5 for each value
  * */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void __maybe_unused dbg_hcc_params (struct ehci_hcd *ehci, char *label)
+=======
 static void dbg_hcc_params (struct ehci_hcd *ehci, char *label)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void dbg_hcc_params (struct ehci_hcd *ehci, char *label)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32	params = ehci_readl(ehci, &ehci->caps->hcc_params);
 
@@ -107,7 +123,15 @@ static void dbg_hcc_params (struct ehci_hcd *ehci, char *label)
 			HCC_PER_PORT_CHANGE_EVENT(params) ? " ppce" : "",
 			HCC_HW_PREFETCH(params) ? " hw prefetch" : "",
 			HCC_32FRAME_PERIODIC_LIST(params) ?
+<<<<<<< HEAD
+<<<<<<< HEAD
+				" 32 periodic list" : "");
+=======
 				" 32 peridic list" : "");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				" 32 peridic list" : "");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 #else
@@ -352,7 +376,14 @@ static int debug_async_open(struct inode *, struct file *);
 static int debug_periodic_open(struct inode *, struct file *);
 static int debug_registers_open(struct inode *, struct file *);
 static int debug_async_open(struct inode *, struct file *);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 static int debug_lpm_open(struct inode *, struct file *);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug_lpm_open(struct inode *, struct file *);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t debug_lpm_read(struct file *file, char __user *user_buf,
 				   size_t count, loff_t *ppos);
 static ssize_t debug_lpm_write(struct file *file, const char __user *buffer,
@@ -385,7 +416,15 @@ static const struct file_operations debug_registers_fops = {
 };
 static const struct file_operations debug_lpm_fops = {
 	.owner		= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.open		= simple_open,
+=======
 	.open		= debug_lpm_open,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.open		= debug_lpm_open,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read		= debug_lpm_read,
 	.write		= debug_lpm_write,
 	.release	= debug_lpm_close,
@@ -697,6 +736,25 @@ static ssize_t fill_periodic_buffer(struct debug_buffer *buf)
 }
 #undef DBG_SCHED_LIMIT
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char *rh_state_string(struct ehci_hcd *ehci)
+{
+	switch (ehci->rh_state) {
+	case EHCI_RH_HALTED:
+		return "halted";
+	case EHCI_RH_SUSPENDED:
+		return "suspended";
+	case EHCI_RH_RUNNING:
+		return "running";
+	}
+	return "?";
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t fill_registers_buffer(struct debug_buffer *buf)
 {
 	struct usb_hcd		*hcd;
@@ -730,11 +788,25 @@ static ssize_t fill_registers_buffer(struct debug_buffer *buf)
 	temp = scnprintf (next, size,
 		"bus %s, device %s\n"
 		"%s\n"
+<<<<<<< HEAD
+<<<<<<< HEAD
+		"EHCI %x.%02x, rh state %s\n",
+		hcd->self.controller->bus->name,
+		dev_name(hcd->self.controller),
+		hcd->product_desc,
+		i >> 8, i & 0x0ff, rh_state_string(ehci));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		"EHCI %x.%02x, hcd state %d\n",
 		hcd->self.controller->bus->name,
 		dev_name(hcd->self.controller),
 		hcd->product_desc,
 		i >> 8, i & 0x0ff, hcd->state);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	size -= temp;
 	next += temp;
 
@@ -957,12 +1029,21 @@ static int debug_registers_open(struct inode *inode, struct file *file)
 	return file->private_data ? 0 : -ENOMEM;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int debug_lpm_open(struct inode *inode, struct file *file)
 {
 	file->private_data = inode->i_private;
 	return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int debug_lpm_close(struct inode *inode, struct file *file)
 {
 	return 0;

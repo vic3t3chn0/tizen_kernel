@@ -22,6 +22,11 @@ Boston, MA 02111-1307, USA.  */
 	.align 4
 	.global .udiv
 =======
+<<<<<<< HEAD
+	.text
+	.align 4
+	.global .udiv
+=======
 	.data
 	.align 8
 	.globl	__clz_tab
@@ -40,6 +45,7 @@ __clz_tab:
 	.text
 	.align 4
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl __divdi3
 __divdi3:
 	save %sp,-104,%sp

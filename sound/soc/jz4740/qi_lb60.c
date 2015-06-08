@@ -84,7 +84,11 @@ static struct snd_soc_card qi_lb60 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = &qi_lb60_dai,
 	.num_links = 1,
 
@@ -96,15 +100,21 @@ static struct snd_soc_card qi_lb60 = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct platform_device *qi_lb60_snd_device;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct gpio qi_lb60_gpios[] = {
 	{ QI_LB60_SND_GPIO, GPIOF_OUT_INIT_LOW, "SND" },
 	{ QI_LB60_AMP_GPIO, GPIOF_OUT_INIT_LOW, "AMP" },
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit qi_lb60_probe(struct platform_device *pdev)
 {
 	struct snd_soc_card *card = &qi_lb60;
@@ -144,6 +154,8 @@ static struct platform_driver qi_lb60_driver = {
 };
 
 module_platform_driver(qi_lb60_driver);
+<<<<<<< HEAD
+=======
 =======
 static int __init qi_lb60_init(void)
 {
@@ -188,6 +200,7 @@ static void __exit qi_lb60_exit(void)
 }
 module_exit(qi_lb60_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Lars-Peter Clausen <lars@metafoo.de>");
 MODULE_DESCRIPTION("ALSA SoC QI LB60 Audio support");
@@ -195,4 +208,8 @@ MODULE_LICENSE("GPL v2");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:qi-lb60-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:qi-lb60-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

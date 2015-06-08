@@ -72,8 +72,12 @@ struct psbl_rec {
 <<<<<<< HEAD
 static const char psp_env_version[] __initconst = "TIENV0.8";
 =======
+<<<<<<< HEAD
+static const char psp_env_version[] __initconst = "TIENV0.8";
+=======
 static __initdata char psp_env_version[] = "TIENV0.8";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct psp_env_chunk {
 	u8	num;
@@ -84,8 +88,12 @@ struct psp_env_chunk {
 <<<<<<< HEAD
 } __packed;
 =======
+<<<<<<< HEAD
+} __packed;
+=======
 } __attribute__ ((packed));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct psp_var_map_entry {
 	u8	num;
@@ -95,8 +103,12 @@ struct psp_var_map_entry {
 <<<<<<< HEAD
 static const struct psp_var_map_entry psp_var_map[] = {
 =======
+<<<<<<< HEAD
+static const struct psp_var_map_entry psp_var_map[] = {
+=======
 static struct psp_var_map_entry psp_var_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{  1,	"cpufrequency" },
 	{  2,	"memsize" },
 	{  3,	"flashsize" },

@@ -20,7 +20,11 @@
 <<<<<<< HEAD
 #include <linux/workqueue.h>
 =======
+<<<<<<< HEAD
+#include <linux/workqueue.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/ip.h>
 #include <net/inetpeer.h>
 #include <net/secure_seq.h>
@@ -39,9 +43,14 @@
  *  PMTU in size uses a constant ID and do not use this code (see
  *  ip_select_ident() in include/net/ip.h).
 =======
+<<<<<<< HEAD
+ *  PMTU in size uses a constant ID and do not use this code (see
+ *  ip_select_ident() in include/net/ip.h).
+=======
  *  PMTU in size when local fragmentation is disabled use a constant ID and do
  *  not use this code (see ip_select_ident() in include/net/ip.h).
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  Route cache entries hold references to our nodes.
  *  New cache entries get references via lookup by destination IP address in
@@ -65,11 +74,16 @@
  *  2.  Nodes may disappear from the tree only with the pool lock held
  *      AND reference count being 0.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  3.  Global variable peer_total is modified under the pool lock.
  *  4.  struct inet_peer fields modification:
  *		avl_left, avl_right, avl_parent, avl_height: pool lock
  *		refcnt: atomically against modifications on other CPU;
  *		   usually under some other lock to prevent node disappearing
+<<<<<<< HEAD
+=======
 =======
  *  3.  Nodes appears and disappears from unused node list only under
  *      "inet_peer_unused_lock".
@@ -81,6 +95,7 @@
  *		   usually under some other lock to prevent node disappearing
  *		dtime: unused node list lock
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *		daddr: unchangeable
  *		ip_id_count: atomic value (no lock needed)
  */
@@ -88,13 +103,19 @@
 static struct kmem_cache *peer_cachep __read_mostly;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static LIST_HEAD(gc_list);
 static const int gc_delay = 60 * HZ;
 static struct delayed_work gc_work;
 static DEFINE_SPINLOCK(gc_lock);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define node_height(x) x->avl_height
 
 #define peer_avl_empty ((struct inet_peer *)&peer_fake_node)
@@ -131,6 +152,9 @@ int inet_peer_threshold __read_mostly = 65536 + 128;	/* start to throw entries m
 int inet_peer_minttl __read_mostly = 120 * HZ;	/* TTL under high load: 120 sec */
 int inet_peer_maxttl __read_mostly = 10 * 60 * HZ;	/* usual time to live: 10 min */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void inetpeer_gc_worker(struct work_struct *work)
 {
@@ -176,6 +200,8 @@ static void inetpeer_gc_worker(struct work_struct *work)
 
 	schedule_delayed_work(&gc_work, gc_delay);
 }
+<<<<<<< HEAD
+=======
 =======
 int inet_peer_gc_mintime __read_mostly = 10 * HZ;
 int inet_peer_gc_maxtime __read_mostly = 120 * HZ;
@@ -192,6 +218,7 @@ static void peer_check_expire(unsigned long dummy);
 static DEFINE_TIMER(peer_periodic_timer, peer_check_expire, 0, 0);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Called from ip_output.c:ip_init  */
 void __init inet_initpeers(void)
@@ -219,6 +246,9 @@ void __init inet_initpeers(void)
 <<<<<<< HEAD
 	INIT_DELAYED_WORK_DEFERRABLE(&gc_work, inetpeer_gc_worker);
 =======
+<<<<<<< HEAD
+	INIT_DELAYED_WORK_DEFERRABLE(&gc_work, inetpeer_gc_worker);
+=======
 	/* All the timers, started at system startup tend
 	   to synchronize. Perturb it a bit.
 	 */
@@ -235,6 +265,7 @@ static void unlink_from_unused(struct inet_peer *p)
 	list_del_init(&p->unused);
 	spin_unlock_bh(&unused_peers.lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int addr_compare(const struct inetpeer_addr *a,
@@ -248,8 +279,12 @@ static int addr_compare(const struct inetpeer_addr *a,
 <<<<<<< HEAD
 		if ((__force u32)a->addr.a6[i] < (__force u32)b->addr.a6[i])
 =======
+<<<<<<< HEAD
+		if ((__force u32)a->addr.a6[i] < (__force u32)b->addr.a6[i])
+=======
 		if (a->addr.a6[i] < b->addr.a6[i])
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 		return 1;
 	}
@@ -287,6 +322,8 @@ static int addr_compare(const struct inetpeer_addr *a,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static bool atomic_add_unless_return(atomic_t *ptr, int a, int u, int *newv)
 {
 	int cur, old = atomic_read(ptr);
@@ -302,6 +339,7 @@ static bool atomic_add_unless_return(atomic_t *ptr, int a, int u, int *newv)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Called with rcu_read_lock()
  * Because we hold no lock against a writer, its quite possible we fall
@@ -313,9 +351,13 @@ static struct inet_peer *lookup_rcu(const struct inetpeer_addr *daddr,
 <<<<<<< HEAD
 				    struct inet_peer_base *base)
 =======
+<<<<<<< HEAD
+				    struct inet_peer_base *base)
+=======
 				    struct inet_peer_base *base,
 				    int *newrefcnt)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inet_peer *u = rcu_dereference(base->root);
 	int count = 0;
@@ -329,12 +371,18 @@ static struct inet_peer *lookup_rcu(const struct inetpeer_addr *daddr,
 			 */
 			if (!atomic_add_unless(&u->refcnt, 1, -1))
 =======
+<<<<<<< HEAD
+			 * deleted (refcnt=-1)
+			 */
+			if (!atomic_add_unless(&u->refcnt, 1, -1))
+=======
 			 * deleted, unlink_from_pool() sets refcnt=-1 to make
 			 * distinction between an unused entry (refcnt=0) and
 			 * a freed one.
 			 */
 			if (!atomic_add_unless_return(&u->refcnt, 1, -1, newrefcnt))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				u = NULL;
 			return u;
 		}
@@ -462,6 +510,9 @@ static void inetpeer_free_rcu(struct rcu_head *head)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void unlink_from_pool(struct inet_peer *p, struct inet_peer_base *base,
 			     struct inet_peer __rcu **stack[PEER_MAXDEPTH])
 {
@@ -492,6 +543,8 @@ static void unlink_from_pool(struct inet_peer *p, struct inet_peer_base *base,
 	peer_avl_rebalance(stack, stackptr, base);
 	base->total--;
 	call_rcu(&p->rcu, inetpeer_free_rcu);
+<<<<<<< HEAD
+=======
 =======
 /* May be called with local BH enabled. */
 static void unlink_from_pool(struct inet_peer *p, struct inet_peer_base *base,
@@ -550,11 +603,15 @@ static void unlink_from_pool(struct inet_peer *p, struct inet_peer_base *base,
 		 */
 		inet_putpeer(p);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct inet_peer_base *family_to_base(int family)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return family == AF_INET ? &v4_peers : &v6_peers;
 }
 
@@ -596,6 +653,8 @@ static int inet_peer_gc(struct inet_peer_base *base,
 }
 
 struct inet_peer *inet_getpeer(const struct inetpeer_addr *daddr, int create)
+<<<<<<< HEAD
+=======
 =======
 	return (family == AF_INET ? &v4_peers : &v6_peers);
 }
@@ -645,6 +704,7 @@ static int cleanup_once(unsigned long ttl, struct inet_peer __rcu **stack[PEER_M
 /* Called with or without local BH being disabled. */
 struct inet_peer *inet_getpeer(struct inetpeer_addr *daddr, int create)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inet_peer __rcu **stack[PEER_MAXDEPTH], ***stackptr;
 	struct inet_peer_base *base = family_to_base(daddr->family);
@@ -655,21 +715,32 @@ struct inet_peer *inet_getpeer(struct inetpeer_addr *daddr, int create)
 
 	/* Attempt a lockless lookup first.
 =======
+<<<<<<< HEAD
+	int invalidated, gccnt = 0;
+
+	/* Attempt a lockless lookup first.
+=======
 	int invalidated, newrefcnt = 0;
 
 	/* Look up for the address quickly, lockless.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Because of a concurrent writer, we might not find an existing entry.
 	 */
 	rcu_read_lock();
 	sequence = read_seqbegin(&base->lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p = lookup_rcu(daddr, base);
 	invalidated = read_seqretry(&base->lock, sequence);
 	rcu_read_unlock();
 
 	if (p)
 		return p;
+<<<<<<< HEAD
+=======
 =======
 	p = lookup_rcu(daddr, base, &newrefcnt);
 	invalidated = read_seqretry(&base->lock, sequence);
@@ -684,6 +755,7 @@ found:		/* The existing node has been found.
 		return p;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If no writer did a change during our lookup, we can return early. */
 	if (!create && !invalidated)
@@ -694,6 +766,9 @@ found:		/* The existing node has been found.
 	 */
 	write_seqlock_bh(&base->lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 relookup:
 	p = lookup(daddr, stack, base);
 	if (p != peer_avl_empty) {
@@ -705,6 +780,8 @@ relookup:
 		gccnt = inet_peer_gc(base, stack, stackptr);
 		if (gccnt && create)
 			goto relookup;
+<<<<<<< HEAD
+=======
 =======
 	p = lookup(daddr, stack, base);
 	if (p != peer_avl_empty) {
@@ -712,6 +789,7 @@ relookup:
 		write_sequnlock_bh(&base->lock);
 		goto found;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	p = create ? kmem_cache_alloc(peer_cachep, GFP_ATOMIC) : NULL;
 	if (p) {
@@ -719,13 +797,19 @@ relookup:
 		atomic_set(&p->refcnt, 1);
 		atomic_set(&p->rid, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		atomic_set(&p->ip_id_count,
 				(daddr->family == AF_INET) ?
 					secure_ip_id(daddr->addr.a4) :
 					secure_ipv6_id(daddr->addr.a6));
+<<<<<<< HEAD
+=======
 =======
 		atomic_set(&p->ip_id_count, secure_ip_id(daddr->addr.a4));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p->tcp_ts_stamp = 0;
 		p->metrics[RTAX_LOCK-1] = INETPEER_METRICS_NEW;
 		p->rate_tokens = 0;
@@ -736,9 +820,13 @@ relookup:
 <<<<<<< HEAD
 		INIT_LIST_HEAD(&p->gc_list);
 =======
+<<<<<<< HEAD
+		INIT_LIST_HEAD(&p->gc_list);
+=======
 		INIT_LIST_HEAD(&p->unused);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Link the node. */
 		link_to_pool(p, base);
@@ -747,6 +835,9 @@ relookup:
 	write_sequnlock_bh(&base->lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return p;
 }
 EXPORT_SYMBOL_GPL(inet_getpeer);
@@ -756,6 +847,8 @@ void inet_putpeer(struct inet_peer *p)
 	p->dtime = (__u32)jiffies;
 	smp_mb__before_atomic_dec();
 	atomic_dec(&p->refcnt);
+<<<<<<< HEAD
+=======
 =======
 	if (base->total >= inet_peer_threshold)
 		/* Remove one less-recently-used entry. */
@@ -815,6 +908,7 @@ void inet_putpeer(struct inet_peer *p)
 
 	local_bh_enable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(inet_putpeer);
 
@@ -859,6 +953,9 @@ bool inet_peer_xrlim_allow(struct inet_peer *peer, int timeout)
 }
 EXPORT_SYMBOL(inet_peer_xrlim_allow);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void inetpeer_invalidate_tree(int family)
 {
@@ -886,5 +983,8 @@ out:
 	write_sequnlock_bh(&base->lock);
 }
 EXPORT_SYMBOL(inetpeer_invalidate_tree);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

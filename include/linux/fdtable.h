@@ -16,8 +16,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The default fd array needs to be at least BITS_PER_LONG,
@@ -26,11 +30,16 @@
 #define NR_OPEN_DEFAULT BITS_PER_LONG
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct fdtable {
 	unsigned int max_fds;
 	struct file __rcu **fd;      /* current fd array */
 	unsigned long *close_on_exec;
 	unsigned long *open_fds;
+<<<<<<< HEAD
+=======
 =======
 /*
  * The embedded_fd_set is a small fd_set,
@@ -46,6 +55,7 @@ struct fdtable {
 	fd_set *close_on_exec;
 	fd_set *open_fds;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rcu_head rcu;
 	struct fdtable *next;
 };
@@ -55,8 +65,12 @@ static inline void __set_close_on_exec(int fd, struct fdtable *fdt)
 <<<<<<< HEAD
 	__set_bit(fd, fdt->close_on_exec);
 =======
+<<<<<<< HEAD
+	__set_bit(fd, fdt->close_on_exec);
+=======
 	FD_SET(fd, fdt->close_on_exec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void __clear_close_on_exec(int fd, struct fdtable *fdt)
@@ -64,8 +78,12 @@ static inline void __clear_close_on_exec(int fd, struct fdtable *fdt)
 <<<<<<< HEAD
 	__clear_bit(fd, fdt->close_on_exec);
 =======
+<<<<<<< HEAD
+	__clear_bit(fd, fdt->close_on_exec);
+=======
 	FD_CLR(fd, fdt->close_on_exec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline bool close_on_exec(int fd, const struct fdtable *fdt)
@@ -73,8 +91,12 @@ static inline bool close_on_exec(int fd, const struct fdtable *fdt)
 <<<<<<< HEAD
 	return test_bit(fd, fdt->close_on_exec);
 =======
+<<<<<<< HEAD
+	return test_bit(fd, fdt->close_on_exec);
+=======
 	return FD_ISSET(fd, fdt->close_on_exec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void __set_open_fd(int fd, struct fdtable *fdt)
@@ -82,8 +104,12 @@ static inline void __set_open_fd(int fd, struct fdtable *fdt)
 <<<<<<< HEAD
 	__set_bit(fd, fdt->open_fds);
 =======
+<<<<<<< HEAD
+	__set_bit(fd, fdt->open_fds);
+=======
 	FD_SET(fd, fdt->open_fds);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void __clear_open_fd(int fd, struct fdtable *fdt)
@@ -91,8 +117,12 @@ static inline void __clear_open_fd(int fd, struct fdtable *fdt)
 <<<<<<< HEAD
 	__clear_bit(fd, fdt->open_fds);
 =======
+<<<<<<< HEAD
+	__clear_bit(fd, fdt->open_fds);
+=======
 	FD_CLR(fd, fdt->open_fds);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline bool fd_is_open(int fd, const struct fdtable *fdt)
@@ -100,8 +130,12 @@ static inline bool fd_is_open(int fd, const struct fdtable *fdt)
 <<<<<<< HEAD
 	return test_bit(fd, fdt->open_fds);
 =======
+<<<<<<< HEAD
+	return test_bit(fd, fdt->open_fds);
+=======
 	return FD_ISSET(fd, fdt->open_fds);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -123,9 +157,14 @@ struct files_struct {
 	unsigned long close_on_exec_init[1];
 	unsigned long open_fds_init[1];
 =======
+<<<<<<< HEAD
+	unsigned long close_on_exec_init[1];
+	unsigned long open_fds_init[1];
+=======
 	struct embedded_fd_set close_on_exec_init;
 	struct embedded_fd_set open_fds_init;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct file __rcu * fd_array[NR_OPEN_DEFAULT];
 };
 
@@ -133,8 +172,11 @@ struct files_struct {
 	(rcu_dereference_check((fdtfd), \
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 			       rcu_read_lock_held() || \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       lockdep_is_held(&(files)->file_lock) || \
 			       atomic_read(&(files)->count) == 1 || \
 			       rcu_my_thread_group_empty()))

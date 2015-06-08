@@ -37,16 +37,24 @@
 #include <linux/dma-mapping.h>
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/sh7377.h>
 #include <mach/common.h>
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/mach/map.h>
 #include <asm/mach/time.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * SDHI
@@ -269,6 +277,8 @@ static struct platform_device *g4evm_devices[] __initdata = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct map_desc g4evm_io_desc[] __initdata = {
 	/* create a 1:1 entity map for 0xe6xxxxxx
 	 * used by CPGA, INTC and PFC.
@@ -291,6 +301,7 @@ static void __init g4evm_map_io(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GPIO_SDHID0_D0	0xe60520fc
 #define GPIO_SDHID0_D1	0xe60520fd
 #define GPIO_SDHID0_D2	0xe60520fe
@@ -408,6 +419,9 @@ static void __init g4evm_init(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_START(G4EVM, "g4evm")
 	.map_io		= sh7377_map_io,
 	.init_early	= sh7377_add_early_devices,
@@ -415,6 +429,8 @@ MACHINE_START(G4EVM, "g4evm")
 	.handle_irq	= shmobile_handle_irq_intc,
 	.init_machine	= g4evm_init,
 	.timer		= &shmobile_timer,
+<<<<<<< HEAD
+=======
 =======
 static void __init g4evm_timer_init(void)
 {
@@ -433,4 +449,5 @@ MACHINE_START(G4EVM, "g4evm")
 	.init_machine	= g4evm_init,
 	.timer		= &g4evm_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

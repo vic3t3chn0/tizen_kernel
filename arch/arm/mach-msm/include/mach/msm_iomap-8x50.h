@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2008-2010, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2008-2010, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2008-2011 Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -40,6 +44,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_VIC_BASE          IOMEM(0xFA000000)
 #define MSM_VIC_PHYS          0xAC000000
 #define MSM_VIC_SIZE          SZ_4K
@@ -77,6 +84,8 @@
 #define MSM_TCSR_SIZE         SZ_4K
 
 #define MSM_SHARED_RAM_BASE   IOMEM(0xFA100000)
+<<<<<<< HEAD
+=======
 =======
 #define MSM_VIC_BASE          IOMEM(0xE0000000)
 #define MSM_VIC_PHYS          0xAC000000
@@ -118,6 +127,7 @@
 #define MSM_SHARED_RAM_BASE   IOMEM(0xE0100000)
 #define MSM_SHARED_RAM_PHYS (MSM_SMI_BASE + 0x00100000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_SHARED_RAM_SIZE   SZ_1M
 
 #define MSM_UART1_PHYS        0xA9A00000
@@ -130,6 +140,9 @@
 #define MSM_UART3_SIZE        SZ_4K
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSM_MDC_BASE	      IOMEM(0xFA200000)
 #define MSM_MDC_PHYS	      0xAA500000
 #define MSM_MDC_SIZE	      SZ_1M
@@ -138,6 +151,8 @@
 #define MSM_AD5_PHYS          0xAC000000
 #define MSM_AD5_SIZE          (SZ_1M*13)
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_MSM_DEBUG_UART
 #define MSM_DEBUG_UART_BASE   0xE1000000
@@ -191,4 +206,5 @@
 #define MSM_SDC4_SIZE          SZ_4K
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

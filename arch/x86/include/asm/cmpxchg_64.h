@@ -3,14 +3,21 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/alternative.h> /* Provides LOCK_PREFIX */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void set_64bit(volatile u64 *ptr, u64 val)
 {
 	*ptr = val;
 }
 
+<<<<<<< HEAD
+#define __HAVE_ARCH_CMPXCHG 1
+
+=======
 <<<<<<< HEAD
 #define __HAVE_ARCH_CMPXCHG 1
 
@@ -147,6 +154,7 @@ extern void __cmpxchg_wrong_size(void);
 	__cmpxchg_local((ptr), (old), (new), sizeof(*ptr))
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define cmpxchg64(ptr, o, n)						\
 ({									\
 	BUILD_BUG_ON(sizeof(*(ptr)) != 8);				\
@@ -163,5 +171,10 @@ extern void __cmpxchg_wrong_size(void);
 #define system_has_cmpxchg_double() cpu_has_cx16
 
 =======
+<<<<<<< HEAD
+#define system_has_cmpxchg_double() cpu_has_cx16
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* _ASM_X86_CMPXCHG_64_H */

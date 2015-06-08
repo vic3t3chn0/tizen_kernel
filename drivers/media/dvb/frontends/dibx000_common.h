@@ -146,6 +146,13 @@ enum dibx000_adc_states {
 	DIBX000_VBG_DISABLE,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define BANDWIDTH_TO_KHZ(v)	((v) / 1000)
+#define BANDWIDTH_TO_HZ(v)	((v) * 1000)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define BANDWIDTH_TO_KHZ(v) ((v) == BANDWIDTH_8_MHZ  ? 8000 : \
 				(v) == BANDWIDTH_7_MHZ  ? 7000 : \
 				(v) == BANDWIDTH_6_MHZ  ? 6000 : 8000)
@@ -154,6 +161,10 @@ enum dibx000_adc_states {
 	(v) == 8000 ? BANDWIDTH_8_MHZ : \
 		(v) == 7000 ? BANDWIDTH_7_MHZ : \
 		(v) == 6000 ? BANDWIDTH_6_MHZ : BANDWIDTH_8_MHZ )
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Chip output mode. */
 #define OUTMODE_HIGH_Z              0
@@ -276,4 +287,17 @@ struct dibSubbandSelection {
 #define DEMOD_TIMF_GET    0x01
 #define DEMOD_TIMF_UPDATE 0x02
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define MPEG_ON_DIBTX		1
+#define DIV_ON_DIBTX		2
+#define ADC_ON_DIBTX		3
+#define DEMOUT_ON_HOSTBUS	4
+#define DIBTX_ON_HOSTBUS	5
+#define MPEG_ON_HOSTBUS		6
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

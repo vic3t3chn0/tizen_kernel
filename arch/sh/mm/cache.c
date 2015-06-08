@@ -98,8 +98,12 @@ void copy_user_highpage(struct page *to, struct page *from,
 <<<<<<< HEAD
 	vto = kmap_atomic(to);
 =======
+<<<<<<< HEAD
+	vto = kmap_atomic(to);
+=======
 	vto = kmap_atomic(to, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (boot_cpu_data.dcache.n_aliases && page_mapped(from) &&
 	    test_bit(PG_dcache_clean, &from->flags)) {
@@ -112,10 +116,16 @@ void copy_user_highpage(struct page *to, struct page *from,
 		copy_page(vto, vfrom);
 		kunmap_atomic(vfrom);
 =======
+<<<<<<< HEAD
+		vfrom = kmap_atomic(from);
+		copy_page(vto, vfrom);
+		kunmap_atomic(vfrom);
+=======
 		vfrom = kmap_atomic(from, KM_USER0);
 		copy_page(vto, vfrom);
 		kunmap_atomic(vfrom, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (pages_do_alias((unsigned long)vto, vaddr & PAGE_MASK) ||
@@ -125,8 +135,12 @@ void copy_user_highpage(struct page *to, struct page *from,
 <<<<<<< HEAD
 	kunmap_atomic(vto);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(vto);
+=======
 	kunmap_atomic(vto, KM_USER1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Make sure this page is cleared on other CPU's too before using it */
 	smp_wmb();
 }
@@ -137,8 +151,12 @@ void clear_user_highpage(struct page *page, unsigned long vaddr)
 <<<<<<< HEAD
 	void *kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	void *kaddr = kmap_atomic(page);
+=======
 	void *kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clear_page(kaddr);
 
@@ -148,8 +166,12 @@ void clear_user_highpage(struct page *page, unsigned long vaddr)
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(clear_user_highpage);
 

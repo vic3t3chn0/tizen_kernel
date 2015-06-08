@@ -8,8 +8,12 @@
 <<<<<<< HEAD
  *   Copyright (c) 2008 Ryan Mallon
 =======
+<<<<<<< HEAD
+ *   Copyright (c) 2008 Ryan Mallon
+=======
  *   Copyright (c) 2008 Ryan Mallon <ryan@bluewatersys.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -23,7 +27,11 @@
 <<<<<<< HEAD
 #include <linux/dmaengine.h>
 =======
+<<<<<<< HEAD
+#include <linux/dmaengine.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/dma-mapping.h>
 
 #include <sound/core.h>
@@ -33,7 +41,11 @@
 <<<<<<< HEAD
 #include <sound/dmaengine_pcm.h>
 =======
+<<<<<<< HEAD
+#include <sound/dmaengine_pcm.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/dma.h>
 #include <mach/hardware.h>
@@ -64,6 +76,9 @@ static const struct snd_pcm_hardware ep93xx_pcm_hardware = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool ep93xx_pcm_dma_filter(struct dma_chan *chan, void *filter_param)
 {
 	struct ep93xx_dma_data *data = filter_param;
@@ -74,6 +89,8 @@ static bool ep93xx_pcm_dma_filter(struct dma_chan *chan, void *filter_param)
 	}
 
 	return false;
+<<<<<<< HEAD
+=======
 =======
 struct ep93xx_runtime_data
 {
@@ -115,11 +132,15 @@ static void ep93xx_pcm_buffer_finished(void *cookie,
 		snd_pcm_stop(substream, SNDRV_PCM_STATE_XRUN);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ep93xx_pcm_open(struct snd_pcm_substream *substream)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
 	struct snd_soc_dai *cpu_dai = rtd->cpu_dai;
 	struct ep93xx_pcm_dma_params *dma_params;
@@ -145,6 +166,8 @@ static int ep93xx_pcm_open(struct snd_pcm_substream *substream)
 
 	snd_dmaengine_pcm_set_data(substream, dma_data);
 
+<<<<<<< HEAD
+=======
 =======
 	struct snd_soc_pcm_runtime *soc_rtd = substream->private_data;
 	struct snd_soc_dai *cpu_dai = soc_rtd->cpu_dai;
@@ -178,28 +201,38 @@ static int ep93xx_pcm_open(struct snd_pcm_substream *substream)
 	
 	substream->runtime->private_data = rtd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int ep93xx_pcm_close(struct snd_pcm_substream *substream)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dma_data *dma_data = snd_dmaengine_pcm_get_data(substream);
 
 	snd_dmaengine_pcm_close(substream);
 	kfree(dma_data);
+<<<<<<< HEAD
+=======
 =======
 	struct ep93xx_runtime_data *rtd = substream->runtime->private_data;
 
 	ep93xx_dma_m2p_client_unregister(&rtd->cl);
 	kfree(rtd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int ep93xx_pcm_hw_params(struct snd_pcm_substream *substream,
 				struct snd_pcm_hw_params *params)
 {
+<<<<<<< HEAD
+	snd_pcm_set_runtime_buffer(substream, &substream->dma_buffer);
+=======
 <<<<<<< HEAD
 	snd_pcm_set_runtime_buffer(substream, &substream->dma_buffer);
 =======
@@ -220,6 +253,7 @@ static int ep93xx_pcm_hw_params(struct snd_pcm_substream *substream,
 			rtd->buf[i].size = totsize - (i * period);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -230,6 +264,8 @@ static int ep93xx_pcm_hw_free(struct snd_pcm_substream *substream)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int ep93xx_pcm_trigger(struct snd_pcm_substream *substream, int cmd)
@@ -272,6 +308,7 @@ static snd_pcm_uframes_t ep93xx_pcm_pointer(struct snd_pcm_substream *substream)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int ep93xx_pcm_mmap(struct snd_pcm_substream *substream,
 			   struct vm_area_struct *vma)
 {
@@ -293,9 +330,14 @@ static struct snd_pcm_ops ep93xx_pcm_ops = {
 	.trigger	= snd_dmaengine_pcm_trigger,
 	.pointer	= snd_dmaengine_pcm_pointer,
 =======
+<<<<<<< HEAD
+	.trigger	= snd_dmaengine_pcm_trigger,
+	.pointer	= snd_dmaengine_pcm_pointer,
+=======
 	.trigger	= ep93xx_pcm_trigger,
 	.pointer	= ep93xx_pcm_pointer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.mmap		= ep93xx_pcm_mmap,
 };
 
@@ -337,12 +379,17 @@ static void ep93xx_pcm_free_dma_buffers(struct snd_pcm *pcm)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static u64 ep93xx_pcm_dmamask = DMA_BIT_MASK(32);
 
 static int ep93xx_pcm_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static u64 ep93xx_pcm_dmamask = 0xffffffff;
 
@@ -350,6 +397,7 @@ static int ep93xx_pcm_new(struct snd_card *card, struct snd_soc_dai *dai,
 			  struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	if (!card->dev->dma_mask)
@@ -360,10 +408,16 @@ static int ep93xx_pcm_new(struct snd_card *card, struct snd_soc_dai *dai,
 
 	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
 =======
+<<<<<<< HEAD
+		card->dev->coherent_dma_mask = DMA_BIT_MASK(32);
+
+	if (pcm->streams[SNDRV_PCM_STREAM_PLAYBACK].substream) {
+=======
 		card->dev->coherent_dma_mask = 0xffffffff;
 
 	if (dai->driver->playback.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = ep93xx_pcm_preallocate_dma_buffer(pcm,
 					SNDRV_PCM_STREAM_PLAYBACK);
 		if (ret)
@@ -373,8 +427,12 @@ static int ep93xx_pcm_new(struct snd_card *card, struct snd_soc_dai *dai,
 <<<<<<< HEAD
 	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
 =======
+<<<<<<< HEAD
+	if (pcm->streams[SNDRV_PCM_STREAM_CAPTURE].substream) {
+=======
 	if (dai->driver->capture.channels_min) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = ep93xx_pcm_preallocate_dma_buffer(pcm,
 					SNDRV_PCM_STREAM_CAPTURE);
 		if (ret)
@@ -412,12 +470,17 @@ static struct platform_driver ep93xx_pcm_driver = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_platform_driver(ep93xx_pcm_driver);
 
 MODULE_AUTHOR("Ryan Mallon");
 MODULE_DESCRIPTION("EP93xx ALSA PCM interface");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:ep93xx-pcm-audio");
+<<<<<<< HEAD
+=======
 =======
 static int __init ep93xx_soc_platform_init(void)
 {
@@ -436,3 +499,4 @@ MODULE_AUTHOR("Ryan Mallon <ryan@bluewatersys.com>");
 MODULE_DESCRIPTION("EP93xx ALSA PCM interface");
 MODULE_LICENSE("GPL");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -11,8 +11,12 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ATOMIC_INIT(i)		{ (i) }
 #define ATOMIC64_INIT(i)	{ (i) }
@@ -77,8 +81,12 @@ extern long atomic64_sub_ret(long, atomic64_t *);
 <<<<<<< HEAD
 static inline int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+static inline int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
 static inline int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int c, old;
 	c = atomic_read(v);
@@ -95,12 +103,18 @@ static inline int atomic_add_unless(atomic_t *v, int a, int u)
 }
 
 =======
+<<<<<<< HEAD
+	return c;
+}
+
+=======
 	return c != (u);
 }
 
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define atomic64_cmpxchg(v, o, n) \
 	((__typeof__((v)->counter))cmpxchg(&((v)->counter), (o), (n)))
 #define atomic64_xchg(v, new) (xchg(&((v)->counter), new))
@@ -130,6 +144,9 @@ static inline long atomic64_add_unless(atomic64_t *v, long a, long u)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/atomic-long.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* !(__ARCH_SPARC64_ATOMIC__) */

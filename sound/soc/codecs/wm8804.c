@@ -21,8 +21,14 @@
 #include <linux/spi/spi.h>
 #include <linux/regmap.h>
 =======
+<<<<<<< HEAD
+#include <linux/of_device.h>
+#include <linux/spi/spi.h>
+#include <linux/regmap.h>
+=======
 #include <linux/spi/spi.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/consumer.h>
 #include <linux/slab.h>
 #include <sound/core.h>
@@ -41,6 +47,9 @@ static const char *wm8804_supply_names[WM8804_NUM_SUPPLIES] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct reg_default wm8804_reg_defaults[] = {
 	{ 3,  0x21 },     /* R3  - PLL1 */
 	{ 4,  0xFD },     /* R4  - PLL2 */
@@ -68,6 +77,8 @@ struct wm8804_priv {
 	struct regmap *regmap;
 	struct regulator_bulk_data supplies[WM8804_NUM_SUPPLIES];
 	struct notifier_block disable_nb[WM8804_NUM_SUPPLIES];
+<<<<<<< HEAD
+=======
 =======
 static const u8 wm8804_reg_defs[] = {
 	0x05,     /* R0  - RST/DEVID1 */
@@ -109,6 +120,7 @@ struct wm8804_priv {
 	struct notifier_block disable_nb[WM8804_NUM_SUPPLIES];
 	struct snd_soc_codec *codec;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int txsrc_get(struct snd_kcontrol *kcontrol,
@@ -132,8 +144,12 @@ static int wm8804_regulator_event_##n(struct notifier_block *nb, \
 <<<<<<< HEAD
 		regcache_mark_dirty(wm8804->regmap);	\
 =======
+<<<<<<< HEAD
+		regcache_mark_dirty(wm8804->regmap);	\
+=======
 		wm8804->codec->cache_sync = 1; \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} \
 	return 0; \
 }
@@ -218,8 +234,12 @@ static int txsrc_put(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 static bool wm8804_volatile(struct device *dev, unsigned int reg)
 =======
+<<<<<<< HEAD
+static bool wm8804_volatile(struct device *dev, unsigned int reg)
+=======
 static int wm8804_volatile(struct snd_soc_codec *codec, unsigned int reg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (reg) {
 	case WM8804_RST_DEVID1:
@@ -233,10 +253,15 @@ static int wm8804_volatile(struct snd_soc_codec *codec, unsigned int reg)
 	case WM8804_RXCHAN4:
 	case WM8804_RXCHAN5:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return true;
 	default:
 		return false;
 	}
+<<<<<<< HEAD
+=======
 =======
 		return 1;
 	default:
@@ -245,6 +270,7 @@ static int wm8804_volatile(struct snd_soc_codec *codec, unsigned int reg)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int wm8804_reset(struct snd_soc_codec *codec)
@@ -534,6 +560,8 @@ static int wm8804_set_clkdiv(struct snd_soc_dai *dai,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void wm8804_sync_cache(struct snd_soc_codec *codec)
 {
 	short i;
@@ -553,6 +581,7 @@ static void wm8804_sync_cache(struct snd_soc_codec *codec)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int wm8804_set_bias_level(struct snd_soc_codec *codec,
 				 enum snd_soc_bias_level level)
 {
@@ -580,8 +609,12 @@ static int wm8804_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 			regcache_sync(wm8804->regmap);
 =======
+<<<<<<< HEAD
+			regcache_sync(wm8804->regmap);
+=======
 			wm8804_sync_cache(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		/* power down the OSC and the PLL */
 		snd_soc_update_bits(codec, WM8804_PWRDN, 0x9, 0x9);
@@ -602,8 +635,12 @@ static int wm8804_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 static int wm8804_suspend(struct snd_soc_codec *codec)
 =======
+<<<<<<< HEAD
+static int wm8804_suspend(struct snd_soc_codec *codec)
+=======
 static int wm8804_suspend(struct snd_soc_codec *codec, pm_message_t state)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	wm8804_set_bias_level(codec, SND_SOC_BIAS_OFF);
 	return 0;
@@ -641,10 +678,15 @@ static int wm8804_probe(struct snd_soc_codec *codec)
 
 	wm8804 = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	codec->control_data = wm8804->regmap;
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 8, SND_SOC_REGMAP);
+<<<<<<< HEAD
+=======
 =======
 	wm8804->codec = codec;
 
@@ -652,6 +694,7 @@ static int wm8804_probe(struct snd_soc_codec *codec)
 
 	ret = snd_soc_codec_set_cache_io(codec, 8, 8, wm8804->control_type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret < 0) {
 		dev_err(codec->dev, "Failed to set cache i/o: %d\n", ret);
 		return ret;
@@ -707,9 +750,13 @@ static int wm8804_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	if (id2 != 0x8805) {
 =======
+<<<<<<< HEAD
+	if (id2 != 0x8805) {
+=======
 	if (id2 != ((wm8804_reg_defs[WM8804_DEVID2] << 8)
 			| wm8804_reg_defs[WM8804_RST_DEVID1])) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(codec->dev, "Invalid device ID: %#x\n", id2);
 		ret = -EINVAL;
 		goto err_reg_enable;
@@ -733,9 +780,12 @@ static int wm8804_probe(struct snd_soc_codec *codec)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_add_controls(codec, wm8804_snd_controls,
 			     ARRAY_SIZE(wm8804_snd_controls));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 err_reg_enable:
@@ -748,8 +798,12 @@ err_reg_get:
 <<<<<<< HEAD
 static const struct snd_soc_dai_ops wm8804_dai_ops = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dai_ops wm8804_dai_ops = {
+=======
 static struct snd_soc_dai_ops wm8804_dai_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.hw_params = wm8804_hw_params,
 	.set_fmt = wm8804_set_fmt,
 	.set_sysclk = wm8804_set_sysclk,
@@ -792,6 +846,9 @@ static struct snd_soc_codec_driver soc_codec_dev_wm8804 = {
 	.resume = wm8804_resume,
 	.set_bias_level = wm8804_set_bias_level,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.idle_bias_off = true,
 
 	.controls = wm8804_snd_controls,
@@ -814,12 +871,15 @@ static struct regmap_config wm8804_regmap_config = {
 	.cache_type = REGCACHE_RBTREE,
 	.reg_defaults = wm8804_reg_defaults,
 	.num_reg_defaults = ARRAY_SIZE(wm8804_reg_defaults),
+<<<<<<< HEAD
+=======
 =======
 	.reg_cache_size = ARRAY_SIZE(wm8804_reg_defs),
 	.reg_word_size = sizeof(u8),
 	.reg_cache_default = wm8804_reg_defs,
 	.volatile_register = wm8804_volatile
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #if defined(CONFIG_SPI_MASTER)
@@ -829,6 +889,9 @@ static int __devinit wm8804_spi_probe(struct spi_device *spi)
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8804 = devm_kzalloc(&spi->dev, sizeof *wm8804, GFP_KERNEL);
 	if (!wm8804)
 		return -ENOMEM;
@@ -839,6 +902,8 @@ static int __devinit wm8804_spi_probe(struct spi_device *spi)
 		return ret;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	wm8804 = kzalloc(sizeof *wm8804, GFP_KERNEL);
 	if (!wm8804)
@@ -846,6 +911,7 @@ static int __devinit wm8804_spi_probe(struct spi_device *spi)
 
 	wm8804->control_type = SND_SOC_SPI;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spi_set_drvdata(spi, wm8804);
 
 	ret = snd_soc_register_codec(&spi->dev,
@@ -853,9 +919,13 @@ static int __devinit wm8804_spi_probe(struct spi_device *spi)
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 	if (ret < 0)
 		kfree(wm8804);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -866,9 +936,15 @@ static int __devexit wm8804_spi_remove(struct spi_device *spi)
 	snd_soc_unregister_codec(&spi->dev);
 	regmap_exit(wm8804->regmap);
 =======
+<<<<<<< HEAD
+	struct wm8804_priv *wm8804 = spi_get_drvdata(spi);
+	snd_soc_unregister_codec(&spi->dev);
+	regmap_exit(wm8804->regmap);
+=======
 	snd_soc_unregister_codec(&spi->dev);
 	kfree(spi_get_drvdata(spi));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -879,7 +955,11 @@ static struct spi_driver wm8804_spi_driver = {
 <<<<<<< HEAD
 		.of_match_table = wm8804_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = wm8804_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe = wm8804_spi_probe,
 	.remove = __devexit_p(wm8804_spi_remove)
@@ -894,6 +974,9 @@ static __devinit int wm8804_i2c_probe(struct i2c_client *i2c,
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wm8804 = devm_kzalloc(&i2c->dev, sizeof *wm8804, GFP_KERNEL);
 	if (!wm8804)
 		return -ENOMEM;
@@ -904,6 +987,8 @@ static __devinit int wm8804_i2c_probe(struct i2c_client *i2c,
 		return ret;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	wm8804 = kzalloc(sizeof *wm8804, GFP_KERNEL);
 	if (!wm8804)
@@ -911,11 +996,15 @@ static __devinit int wm8804_i2c_probe(struct i2c_client *i2c,
 
 	wm8804->control_type = SND_SOC_I2C;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	i2c_set_clientdata(i2c, wm8804);
 
 	ret = snd_soc_register_codec(&i2c->dev,
 				     &soc_codec_dev_wm8804, &wm8804_dai, 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret != 0)
 		goto err;
 
@@ -933,6 +1022,8 @@ static __devexit int wm8804_i2c_remove(struct i2c_client *i2c)
 	snd_soc_unregister_codec(&i2c->dev);
 	regmap_exit(wm8804->regmap);
 
+<<<<<<< HEAD
+=======
 =======
 	if (ret < 0)
 		kfree(wm8804);
@@ -944,6 +1035,7 @@ static __devexit int wm8804_i2c_remove(struct i2c_client *client)
 	snd_soc_unregister_codec(&client->dev);
 	kfree(i2c_get_clientdata(client));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -960,7 +1052,11 @@ static struct i2c_driver wm8804_i2c_driver = {
 <<<<<<< HEAD
 		.of_match_table = wm8804_of_match,
 =======
+<<<<<<< HEAD
+		.of_match_table = wm8804_of_match,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.probe = wm8804_i2c_probe,
 	.remove = __devexit_p(wm8804_i2c_remove),

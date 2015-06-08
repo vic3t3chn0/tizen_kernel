@@ -30,8 +30,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kexec.h>
 #include <linux/debugfs.h>
 #include <linux/irq.h>
@@ -47,8 +51,11 @@
 #include <asm/smp.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mmu.h>
 #include <asm/paca.h>
 #include <asm/pgtable.h>
@@ -60,14 +67,20 @@
 #include <asm/pSeries_reconfig.h>
 #include <asm/pci-bridge.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/kexec.h>
 #include <asm/opal.h>
 #include <asm/fadump.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/phyp_dump.h>
 #include <asm/kexec.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mm/mmu_decl.h>
 
 #ifdef DEBUG
@@ -86,7 +99,11 @@ static phys_addr_t first_memblock_size;
 <<<<<<< HEAD
 static int __initdata boot_cpu_count;
 =======
+<<<<<<< HEAD
+static int __initdata boot_cpu_count;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init early_parse_mem(char *p)
 {
@@ -632,6 +649,8 @@ static void __init early_reserve_mem(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_PHYP_DUMP
 /**
  * phyp_dump_calculate_reserve_size() - reserve variable boot area 5% or arg
@@ -713,6 +732,7 @@ static inline void __init phyp_dump_reserve_mem(void) {}
 #endif /* CONFIG_PHYP_DUMP  && CONFIG_PPC_RTAS */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init early_init_devtree(void *params)
 {
 	phys_addr_t limit;
@@ -728,6 +748,9 @@ void __init early_init_devtree(void *params)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_POWERNV
 	/* Some machines might need OPAL info for debugging, grab it now. */
 	of_scan_flat_dt(early_init_dt_scan_opal, NULL);
@@ -745,6 +768,8 @@ void __init early_init_devtree(void *params)
 	 */
 	strlcpy(cmd_line, boot_command_line, COMMAND_LINE_SIZE);
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_PHYP_DUMP
 	/* scan tree to see if dump occurred during last boot */
@@ -752,6 +777,7 @@ void __init early_init_devtree(void *params)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Retrieve various informations from the /chosen node of the
 	 * device-tree, including the platform type, initrd location and
 	 * size, TCE reserve, and more ...
@@ -763,24 +789,35 @@ void __init early_init_devtree(void *params)
 	of_scan_flat_dt(early_init_dt_scan_root, NULL);
 	of_scan_flat_dt(early_init_dt_scan_memory_ppc, NULL);
 =======
+<<<<<<< HEAD
+	of_scan_flat_dt(early_init_dt_scan_root, NULL);
+	of_scan_flat_dt(early_init_dt_scan_memory_ppc, NULL);
+=======
 	memblock_init();
 
 	of_scan_flat_dt(early_init_dt_scan_root, NULL);
 	of_scan_flat_dt(early_init_dt_scan_memory_ppc, NULL);
 	setup_initial_memory_limit(memstart_addr, first_memblock_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Save command line for /proc/cmdline and then parse parameters */
 	strlcpy(boot_command_line, cmd_line, COMMAND_LINE_SIZE);
 	parse_early_param();
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* make sure we've parsed cmdline for mem= before this */
 	if (memory_limit)
 		first_memblock_size = min(first_memblock_size, memory_limit);
 	setup_initial_memory_limit(memstart_addr, first_memblock_size);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Reserve MEMBLOCK regions used by kernel, initrd, dt, etc... */
 	memblock_reserve(PHYSICAL_START, __pa(klimit) - PHYSICAL_START);
 	/* If relocatable, reserve first 32k for interrupt vectors etc. */
@@ -788,6 +825,9 @@ void __init early_init_devtree(void *params)
 		memblock_reserve(MEMORY_START, 0x8000);
 	reserve_kdump_trampoline();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_FA_DUMP
 	/*
 	 * If we fail to reserve memory for firmware-assisted dump then
@@ -806,6 +846,8 @@ void __init early_init_devtree(void *params)
 	memblock_enforce_memory_limit(limit);
 
 	memblock_allow_resize();
+<<<<<<< HEAD
+=======
 =======
 	reserve_crashkernel();
 	early_reserve_mem();
@@ -826,6 +868,7 @@ void __init early_init_devtree(void *params)
 
 	memblock_analyze();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memblock_dump_all();
 
 	DBG("Phys. mem: %llx\n", memblock_phys_mem_size());
@@ -844,6 +887,9 @@ void __init early_init_devtree(void *params)
 	of_scan_flat_dt(early_init_dt_scan_cpus, NULL);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_SMP) && defined(CONFIG_PPC64)
 	/* We'll later wait for secondaries to check in; there are
 	 * NCPUS-1 non-boot CPUs  :-)
@@ -851,8 +897,11 @@ void __init early_init_devtree(void *params)
 	spinning_secondaries = boot_cpu_count - 1;
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBG(" <- early_init_devtree()\n");
 }
 
@@ -947,6 +996,9 @@ static int prom_reconfig_notifier(struct notifier_block *nb,
 	case PSERIES_RECONFIG_ADD:
 		err = of_finish_dynamic_node(node);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			printk(KERN_ERR "finish_node returned %d\n", err);
 		break;
@@ -955,6 +1007,8 @@ static int prom_reconfig_notifier(struct notifier_block *nb,
 		break;
 	}
 	return notifier_from_errno(err);
+<<<<<<< HEAD
+=======
 =======
 		if (err < 0) {
 			printk(KERN_ERR "finish_node returned %d\n", err);
@@ -967,6 +1021,7 @@ static int prom_reconfig_notifier(struct notifier_block *nb,
 	}
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct notifier_block prom_reconfig_nb = {

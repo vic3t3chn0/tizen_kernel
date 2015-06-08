@@ -102,8 +102,12 @@ static int __init bcm63xx_pci_init(void)
 <<<<<<< HEAD
 	if (!BCMCPU_IS_6348() && !BCMCPU_IS_6358() && !BCMCPU_IS_6368())
 =======
+<<<<<<< HEAD
+	if (!BCMCPU_IS_6348() && !BCMCPU_IS_6358() && !BCMCPU_IS_6368())
+=======
 	if (!BCMCPU_IS_6348() && !BCMCPU_IS_6358())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -ENODEV;
 
 	if (!bcm63xx_pci_enabled)
@@ -166,8 +170,12 @@ static int __init bcm63xx_pci_init(void)
 <<<<<<< HEAD
 	if (BCMCPU_IS_6358() || BCMCPU_IS_6368())
 =======
+<<<<<<< HEAD
+	if (BCMCPU_IS_6358() || BCMCPU_IS_6368())
+=======
 	if (BCMCPU_IS_6358())
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val = MPI_SP0_REMAP_ENABLE_MASK;
 	else
 		val = 0;

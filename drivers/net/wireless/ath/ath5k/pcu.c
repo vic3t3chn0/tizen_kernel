@@ -29,6 +29,53 @@
 #include "ath5k.h"
 #include "reg.h"
 #include "debug.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+/**
+ * DOC: Protocol Control Unit (PCU) functions
+ *
+ * Protocol control unit is responsible to maintain various protocol
+ * properties before a frame is send and after a frame is received to/from
+ * baseband. To be more specific, PCU handles:
+ *
+ * - Buffering of RX and TX frames (after QCU/DCUs)
+ *
+ * - Encrypting and decrypting (using the built-in engine)
+ *
+ * - Generating ACKs, RTS/CTS frames
+ *
+ * - Maintaining TSF
+ *
+ * - FCS
+ *
+ * - Updating beacon data (with TSF etc)
+ *
+ * - Generating virtual CCA
+ *
+ * - RX/Multicast filtering
+ *
+ * - BSSID filtering
+ *
+ * - Various statistics
+ *
+ * -Different operating modes: AP, STA, IBSS
+ *
+ * Note: Most of these functions can be tweaked/bypassed so you can do
+ * them on sw above for debugging or research. For more infos check out PCU
+ * registers on reg.h.
+ */
+
+/**
+ * DOC: ACK rates
+ *
+ * AR5212+ can use higher rates for ack transmission
+ * based on current tx rate instead of the base rate.
+ * It does this to better utilize channel usage.
+ * There is a mapping between G rates (that cover both
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "base.h"
 
 /*
@@ -36,6 +83,10 @@
  * based on current tx rate instead of the base rate.
  * It does this to better utilize channel usage.
  * This is a mapping between G rates (that cover both
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * CCK and OFDM) and ack rates that we use when setting
  * rate -> duration table. This mapping is hw-based so
  * don't change anything.
@@ -64,27 +115,62 @@ static const unsigned int ack_rates_high[] =
 \*******************/
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_get_frame_duration() - Get tx time of a frame
+ * @ah: The &struct ath5k_hw
+ * @len: Frame's length in bytes
+ * @rate: The @struct ieee80211_rate
+ * @shortpre: Indicate short preample
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_get_frame_duration - Get tx time of a frame
  *
  * @ah: The &struct ath5k_hw
  * @len: Frame's length in bytes
  * @rate: The @struct ieee80211_rate
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Calculate tx duration of a frame given it's rate and length
  * It extends ieee80211_generic_frame_duration for non standard
  * bwmodes.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int
+ath5k_hw_get_frame_duration(struct ath5k_hw *ah,
+		int len, struct ieee80211_rate *rate, bool shortpre)
+{
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ath5k_hw_get_frame_duration(struct ath5k_hw *ah,
 		int len, struct ieee80211_rate *rate, bool shortpre)
 {
 	struct ath5k_softc *sc = ah->ah_sc;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int sifs, preamble, plcp_bits, sym_time;
 	int bitrate, bits, symbols, symbol_bits;
 	int dur;
 
 	/* Fallback */
 	if (!ah->ah_bwmode) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		__le16 raw_dur = ieee80211_generic_frame_duration(ah->hw,
+=======
 		__le16 raw_dur = ieee80211_generic_frame_duration(sc->hw,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		__le16 raw_dur = ieee80211_generic_frame_duration(sc->hw,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					NULL, len, rate);
 
 		/* subtract difference between long and short preamble */
@@ -131,11 +217,25 @@ int ath5k_hw_get_frame_duration(struct ath5k_hw *ah,
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_get_default_slottime() - Get the default slot time for current mode
+ * @ah: The &struct ath5k_hw
+ */
+unsigned int
+ath5k_hw_get_default_slottime(struct ath5k_hw *ah)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_get_default_slottime - Get the default slot time for current mode
  *
  * @ah: The &struct ath5k_hw
  */
 unsigned int ath5k_hw_get_default_slottime(struct ath5k_hw *ah)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_channel *channel = ah->ah_current_channel;
 	unsigned int slot_time;
@@ -153,7 +253,15 @@ unsigned int ath5k_hw_get_default_slottime(struct ath5k_hw *ah)
 	case AR5K_BWMODE_DEFAULT:
 	default:
 		slot_time = AR5K_INIT_SLOT_TIME_DEFAULT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if ((channel->hw_value == AR5K_MODE_11B) && !ah->ah_short_slot)
+=======
 		if ((channel->hw_value & CHANNEL_CCK) && !ah->ah_short_slot)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if ((channel->hw_value & CHANNEL_CCK) && !ah->ah_short_slot)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			slot_time = AR5K_INIT_SLOT_TIME_B;
 		break;
 	}
@@ -162,11 +270,25 @@ unsigned int ath5k_hw_get_default_slottime(struct ath5k_hw *ah)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_get_default_sifs() - Get the default SIFS for current mode
+ * @ah: The &struct ath5k_hw
+ */
+unsigned int
+ath5k_hw_get_default_sifs(struct ath5k_hw *ah)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_get_default_sifs - Get the default SIFS for current mode
  *
  * @ah: The &struct ath5k_hw
  */
 unsigned int ath5k_hw_get_default_sifs(struct ath5k_hw *ah)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_channel *channel = ah->ah_current_channel;
 	unsigned int sifs;
@@ -184,7 +306,15 @@ unsigned int ath5k_hw_get_default_sifs(struct ath5k_hw *ah)
 	case AR5K_BWMODE_DEFAULT:
 		sifs = AR5K_INIT_SIFS_DEFAULT_BG;
 	default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (channel->band == IEEE80211_BAND_5GHZ)
+=======
 		if (channel->hw_value & CHANNEL_5GHZ)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (channel->hw_value & CHANNEL_5GHZ)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			sifs = AR5K_INIT_SIFS_DEFAULT_A;
 		break;
 	}
@@ -193,19 +323,43 @@ unsigned int ath5k_hw_get_default_sifs(struct ath5k_hw *ah)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_update_mib_counters() - Update MIB counters (mac layer statistics)
+=======
  * ath5k_hw_update_mib_counters - Update MIB counters (mac layer statistics)
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_update_mib_counters - Update MIB counters (mac layer statistics)
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  *
  * Reads MIB counters from PCU and updates sw statistics. Is called after a
  * MIB interrupt, because one of these counters might have reached their maximum
  * and triggered the MIB interrupt, to let us read and clear the counter.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * NOTE: Is called in interrupt context!
+ */
+void
+ath5k_hw_update_mib_counters(struct ath5k_hw *ah)
+{
+	struct ath5k_statistics *stats = &ah->stats;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Is called in interrupt context!
  */
 void ath5k_hw_update_mib_counters(struct ath5k_hw *ah)
 {
 	struct ath5k_statistics *stats = &ah->ah_sc->stats;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Read-And-Clear */
 	stats->ack_fail += ath5k_hw_reg_read(ah, AR5K_ACK_FAIL);
@@ -221,10 +375,21 @@ void ath5k_hw_update_mib_counters(struct ath5k_hw *ah)
 \******************/
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_write_rate_duration() - Fill rate code to duration table
+ * @ah: The &struct ath5k_hw
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_write_rate_duration - fill rate code to duration table
  *
  * @ah: the &struct ath5k_hw
  * @mode: one of enum ath5k_driver_mode
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Write the rate code to duration table upon hw reset. This is a helper for
  * ath5k_hw_pcu_init(). It seems all this is doing is setting an ACK timeout on
@@ -238,20 +403,52 @@ void ath5k_hw_update_mib_counters(struct ath5k_hw *ah)
  * that include all OFDM and CCK rates.
  *
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static inline void
+ath5k_hw_write_rate_duration(struct ath5k_hw *ah)
+{
+=======
 static inline void ath5k_hw_write_rate_duration(struct ath5k_hw *ah)
 {
 	struct ath5k_softc *sc = ah->ah_sc;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static inline void ath5k_hw_write_rate_duration(struct ath5k_hw *ah)
+{
+	struct ath5k_softc *sc = ah->ah_sc;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct ieee80211_rate *rate;
 	unsigned int i;
 	/* 802.11g covers both OFDM and CCK */
 	u8 band = IEEE80211_BAND_2GHZ;
 
 	/* Write rate duration table */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	for (i = 0; i < ah->sbands[band].n_bitrates; i++) {
+=======
 	for (i = 0; i < sc->sbands[band].n_bitrates; i++) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = 0; i < sc->sbands[band].n_bitrates; i++) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		u32 reg;
 		u16 tx_time;
 
 		if (ah->ah_ack_bitrate_high)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			rate = &ah->sbands[band].bitrates[ack_rates_high[i]];
+		/* CCK -> 1Mb */
+		else if (i < 4)
+			rate = &ah->sbands[band].bitrates[0];
+		/* OFDM -> 6Mb */
+		else
+			rate = &ah->sbands[band].bitrates[4];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rate = &sc->sbands[band].bitrates[ack_rates_high[i]];
 		/* CCK -> 1Mb */
 		else if (i < 4)
@@ -259,6 +456,10 @@ static inline void ath5k_hw_write_rate_duration(struct ath5k_hw *ah)
 		/* OFDM -> 6Mb */
 		else
 			rate = &sc->sbands[band].bitrates[4];
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Set ACK timeout */
 		reg = AR5K_RATE_DUR(rate->hw_value);
@@ -283,12 +484,27 @@ static inline void ath5k_hw_write_rate_duration(struct ath5k_hw *ah)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_set_ack_timeout() - Set ACK timeout on PCU
+ * @ah: The &struct ath5k_hw
+ * @timeout: Timeout in usec
+ */
+static int
+ath5k_hw_set_ack_timeout(struct ath5k_hw *ah, unsigned int timeout)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_set_ack_timeout - Set ACK timeout on PCU
  *
  * @ah: The &struct ath5k_hw
  * @timeout: Timeout in usec
  */
 static int ath5k_hw_set_ack_timeout(struct ath5k_hw *ah, unsigned int timeout)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (ath5k_hw_clocktoh(ah, AR5K_REG_MS(0xffffffff, AR5K_TIME_OUT_ACK))
 			<= timeout)
@@ -301,12 +517,27 @@ static int ath5k_hw_set_ack_timeout(struct ath5k_hw *ah, unsigned int timeout)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_set_cts_timeout() - Set CTS timeout on PCU
+ * @ah: The &struct ath5k_hw
+ * @timeout: Timeout in usec
+ */
+static int
+ath5k_hw_set_cts_timeout(struct ath5k_hw *ah, unsigned int timeout)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_set_cts_timeout - Set CTS timeout on PCU
  *
  * @ah: The &struct ath5k_hw
  * @timeout: Timeout in usec
  */
 static int ath5k_hw_set_cts_timeout(struct ath5k_hw *ah, unsigned int timeout)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (ath5k_hw_clocktoh(ah, AR5K_REG_MS(0xffffffff, AR5K_TIME_OUT_CTS))
 			<= timeout)
@@ -324,6 +555,19 @@ static int ath5k_hw_set_cts_timeout(struct ath5k_hw *ah, unsigned int timeout)
 \*******************/
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_set_lladdr() - Set station id
+ * @ah: The &struct ath5k_hw
+ * @mac: The card's mac address (array of octets)
+ *
+ * Set station id on hw using the provided mac address
+ */
+int
+ath5k_hw_set_lladdr(struct ath5k_hw *ah, const u8 *mac)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_set_lladdr - Set station id
  *
  * @ah: The &struct ath5k_hw
@@ -332,6 +576,10 @@ static int ath5k_hw_set_cts_timeout(struct ath5k_hw *ah, unsigned int timeout)
  * Set station id on hw using the provided mac address
  */
 int ath5k_hw_set_lladdr(struct ath5k_hw *ah, const u8 *mac)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ath_common *common = ath5k_hw_common(ah);
 	u32 low_id, high_id;
@@ -352,14 +600,32 @@ int ath5k_hw_set_lladdr(struct ath5k_hw *ah, const u8 *mac)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_set_bssid() - Set current BSSID on hw
+=======
  * ath5k_hw_set_bssid - Set current BSSID on hw
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_set_bssid - Set current BSSID on hw
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  *
  * Sets the current BSSID and BSSID mask we have from the
  * common struct into the hardware
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void
+ath5k_hw_set_bssid(struct ath5k_hw *ah)
+=======
 void ath5k_hw_set_bssid(struct ath5k_hw *ah)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_set_bssid(struct ath5k_hw *ah)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ath_common *common = ath5k_hw_common(ah);
 	u16 tim_offset = 0;
@@ -392,7 +658,31 @@ void ath5k_hw_set_bssid(struct ath5k_hw *ah)
 	ath5k_hw_enable_pspoll(ah, NULL, 0);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * ath5k_hw_set_bssid_mask() - Filter out bssids we listen
+ * @ah: The &struct ath5k_hw
+ * @mask: The BSSID mask to set (array of octets)
+ *
+ * BSSID masking is a method used by AR5212 and newer hardware to inform PCU
+ * which bits of the interface's MAC address should be looked at when trying
+ * to decide which packets to ACK. In station mode and AP mode with a single
+ * BSS every bit matters since we lock to only one BSS. In AP mode with
+ * multiple BSSes (virtual interfaces) not every bit matters because hw must
+ * accept frames for all BSSes and so we tweak some bits of our mac address
+ * in order to have multiple BSSes.
+ *
+ * For more information check out ../hw.c of the common ath module.
+ */
+void
+ath5k_hw_set_bssid_mask(struct ath5k_hw *ah, const u8 *mask)
+=======
 void ath5k_hw_set_bssid_mask(struct ath5k_hw *ah, const u8 *mask)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_set_bssid_mask(struct ath5k_hw *ah, const u8 *mask)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ath_common *common = ath5k_hw_common(ah);
 
@@ -403,18 +693,44 @@ void ath5k_hw_set_bssid_mask(struct ath5k_hw *ah, const u8 *mask)
 		ath_hw_setbssidmask(common);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * ath5k_hw_set_mcast_filter() - Set multicast filter
+ * @ah: The &struct ath5k_hw
+ * @filter0: Lower 32bits of muticast filter
+ * @filter1: Higher 16bits of multicast filter
+ */
+void
+ath5k_hw_set_mcast_filter(struct ath5k_hw *ah, u32 filter0, u32 filter1)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Set multicast filter
  */
 void ath5k_hw_set_mcast_filter(struct ath5k_hw *ah, u32 filter0, u32 filter1)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ath5k_hw_reg_write(ah, filter0, AR5K_MCAST_FILTER0);
 	ath5k_hw_reg_write(ah, filter1, AR5K_MCAST_FILTER1);
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_get_rx_filter() - Get current rx filter
+=======
  * ath5k_hw_get_rx_filter - Get current rx filter
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_get_rx_filter - Get current rx filter
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  *
  * Returns the RX filter by reading rx filter and
@@ -423,7 +739,16 @@ void ath5k_hw_set_mcast_filter(struct ath5k_hw *ah, u32 filter0, u32 filter1)
  * and pass to the driver. For a list of frame types
  * check out reg.h.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+u32
+ath5k_hw_get_rx_filter(struct ath5k_hw *ah)
+=======
 u32 ath5k_hw_get_rx_filter(struct ath5k_hw *ah)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u32 ath5k_hw_get_rx_filter(struct ath5k_hw *ah)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 data, filter = 0;
 
@@ -443,8 +768,17 @@ u32 ath5k_hw_get_rx_filter(struct ath5k_hw *ah)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_set_rx_filter() - Set rx filter
+=======
  * ath5k_hw_set_rx_filter - Set rx filter
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_set_rx_filter - Set rx filter
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  * @filter: RX filter mask (see reg.h)
  *
@@ -452,7 +786,16 @@ u32 ath5k_hw_get_rx_filter(struct ath5k_hw *ah)
  * register on 5212 and newer chips so that we have proper PHY
  * error reporting.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void
+ath5k_hw_set_rx_filter(struct ath5k_hw *ah, u32 filter)
+=======
 void ath5k_hw_set_rx_filter(struct ath5k_hw *ah, u32 filter)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_set_rx_filter(struct ath5k_hw *ah, u32 filter)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 data = 0;
 
@@ -496,13 +839,31 @@ void ath5k_hw_set_rx_filter(struct ath5k_hw *ah, u32 filter)
 #define ATH5K_MAX_TSF_READ 10
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_get_tsf64() - Get the full 64bit TSF
+=======
  * ath5k_hw_get_tsf64 - Get the full 64bit TSF
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_get_tsf64 - Get the full 64bit TSF
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  *
  * Returns the current TSF
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+u64
+ath5k_hw_get_tsf64(struct ath5k_hw *ah)
+=======
 u64 ath5k_hw_get_tsf64(struct ath5k_hw *ah)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+u64 ath5k_hw_get_tsf64(struct ath5k_hw *ah)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 tsf_lower, tsf_upper1, tsf_upper2;
 	int i;
@@ -534,6 +895,20 @@ u64 ath5k_hw_get_tsf64(struct ath5k_hw *ah)
 
 	local_irq_restore(flags);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	WARN_ON(i == ATH5K_MAX_TSF_READ);
+
+	return ((u64)tsf_upper1 << 32) | tsf_lower;
+}
+
+#undef ATH5K_MAX_TSF_READ
+
+/**
+ * ath5k_hw_set_tsf64() - Set a new 64bit TSF
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON( i == ATH5K_MAX_TSF_READ );
 
 	return (((u64)tsf_upper1 << 32) | tsf_lower);
@@ -542,25 +917,56 @@ u64 ath5k_hw_get_tsf64(struct ath5k_hw *ah)
 /**
  * ath5k_hw_set_tsf64 - Set a new 64bit TSF
  *
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  * @tsf64: The new 64bit TSF
  *
  * Sets the new TSF
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void
+ath5k_hw_set_tsf64(struct ath5k_hw *ah, u64 tsf64)
+=======
 void ath5k_hw_set_tsf64(struct ath5k_hw *ah, u64 tsf64)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_set_tsf64(struct ath5k_hw *ah, u64 tsf64)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ath5k_hw_reg_write(ah, tsf64 & 0xffffffff, AR5K_TSF_L32);
 	ath5k_hw_reg_write(ah, (tsf64 >> 32) & 0xffffffff, AR5K_TSF_U32);
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_reset_tsf() - Force a TSF reset
+=======
  * ath5k_hw_reset_tsf - Force a TSF reset
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_reset_tsf - Force a TSF reset
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  *
  * Forces a TSF reset on PCU
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void
+ath5k_hw_reset_tsf(struct ath5k_hw *ah)
+=======
 void ath5k_hw_reset_tsf(struct ath5k_hw *ah)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_reset_tsf(struct ath5k_hw *ah)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 val;
 
@@ -576,17 +982,45 @@ void ath5k_hw_reset_tsf(struct ath5k_hw *ah)
 	ath5k_hw_reg_write(ah, val, AR5K_BEACON);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * ath5k_hw_init_beacon_timers() - Initialize beacon timers
+ * @ah: The &struct ath5k_hw
+ * @next_beacon: Next TBTT
+ * @interval: Current beacon interval
+ *
+ * This function is used to initialize beacon timers based on current
+ * operation mode and settings.
+ */
+void
+ath5k_hw_init_beacon_timers(struct ath5k_hw *ah, u32 next_beacon, u32 interval)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Initialize beacon timers
  */
 void ath5k_hw_init_beacon(struct ath5k_hw *ah, u32 next_beacon, u32 interval)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u32 timer1, timer2, timer3;
 
 	/*
 	 * Set the additional timers by mode
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	switch (ah->opmode) {
+=======
 	switch (ah->ah_sc->opmode) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	switch (ah->ah_sc->opmode) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case NL80211_IFTYPE_MONITOR:
 	case NL80211_IFTYPE_STATION:
 		/* In STA mode timer1 is used as next wakeup
@@ -623,8 +1057,18 @@ void ath5k_hw_init_beacon(struct ath5k_hw *ah, u32 next_beacon, u32 interval)
 	 * Set the beacon register and enable all timers.
 	 */
 	/* When in AP or Mesh Point mode zero timer0 to start TSF */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ah->opmode == NL80211_IFTYPE_AP ||
+	    ah->opmode == NL80211_IFTYPE_MESH_POINT)
+=======
 	if (ah->ah_sc->opmode == NL80211_IFTYPE_AP ||
 	    ah->ah_sc->opmode == NL80211_IFTYPE_MESH_POINT)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ah->ah_sc->opmode == NL80211_IFTYPE_AP ||
+	    ah->ah_sc->opmode == NL80211_IFTYPE_MESH_POINT)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath5k_hw_reg_write(ah, 0, AR5K_TIMER0);
 
 	ath5k_hw_reg_write(ah, next_beacon, AR5K_TIMER0);
@@ -643,14 +1087,32 @@ void ath5k_hw_init_beacon(struct ath5k_hw *ah, u32 next_beacon, u32 interval)
 	/* Flush any pending BMISS interrupts on ISR by
 	 * performing a clear-on-write operation on PISR
 	 * register for the BMISS bit (writing a bit on
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * ISR toggles a reset for that bit and leaves
+	 * the remaining bits intact) */
+=======
 	 * ISR togles a reset for that bit and leaves
 	 * the rest bits intact) */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	 * ISR togles a reset for that bit and leaves
+	 * the rest bits intact) */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ah->ah_version == AR5K_AR5210)
 		ath5k_hw_reg_write(ah, AR5K_ISR_BMISS, AR5K_ISR);
 	else
 		ath5k_hw_reg_write(ah, AR5K_ISR_BMISS, AR5K_PISR);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* TODO: Set enhanced sleep registers on AR5212
+=======
 	/* TODO: Set enchanced sleep registers on AR5212
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* TODO: Set enchanced sleep registers on AR5212
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * based on vif->bss_conf params, until then
 	 * disable power save reporting.*/
 	AR5K_REG_DISABLE_BITS(ah, AR5K_STA_ID1, AR5K_STA_ID1_PWR_SV);
@@ -658,8 +1120,17 @@ void ath5k_hw_init_beacon(struct ath5k_hw *ah, u32 next_beacon, u32 interval)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_check_timer_win() - Check if timer B is timer A + window
+=======
  * ath5k_check_timer_win - Check if timer B is timer A + window
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_check_timer_win - Check if timer B is timer A + window
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @a: timer a (before b)
  * @b: timer b (after a)
  * @window: difference between a and b
@@ -689,12 +1160,26 @@ ath5k_check_timer_win(int a, int b, int window, int intval)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_check_beacon_timers() - Check if the beacon timers are correct
+ * @ah: The &struct ath5k_hw
+ * @intval: beacon interval
+ *
+ * This is a workaround for IBSS mode
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_check_beacon_timers - Check if the beacon timers are correct
  *
  * @ah: The &struct ath5k_hw
  * @intval: beacon interval
  *
  * This is a workaround for IBSS mode:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * The need for this function arises from the fact that we have 4 separate
  * HW timer registers (TIMER0 - TIMER3), which are closely related to the
@@ -738,7 +1223,15 @@ ath5k_hw_check_beacon_timers(struct ath5k_hw *ah, int intval)
 	dma = ath5k_hw_reg_read(ah, AR5K_TIMER1) >> 3;
 
 	/* NOTE: SWBA is different. Having a wrong window there does not
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * stop us from sending data and this condition is caught by
+=======
 	 * stop us from sending data and this condition is catched thru
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	 * stop us from sending data and this condition is catched thru
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * other means (SWBA interrupt) */
 
 	if (ath5k_check_timer_win(nbtt, atim, 1, intval) &&
@@ -749,14 +1242,32 @@ ath5k_hw_check_beacon_timers(struct ath5k_hw *ah, int intval)
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_set_coverage_class() - Set IEEE 802.11 coverage class
+=======
  * ath5k_hw_set_coverage_class - Set IEEE 802.11 coverage class
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_set_coverage_class - Set IEEE 802.11 coverage class
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  * @coverage_class: IEEE 802.11 coverage class number
  *
  * Sets IFS intervals and ACK/CTS timeouts for given coverage class.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void
+ath5k_hw_set_coverage_class(struct ath5k_hw *ah, u8 coverage_class)
+=======
 void ath5k_hw_set_coverage_class(struct ath5k_hw *ah, u8 coverage_class)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_set_coverage_class(struct ath5k_hw *ah, u8 coverage_class)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* As defined by IEEE 802.11-2007 17.3.8.6 */
 	int slot_time = ath5k_hw_get_default_slottime(ah) + 3 * coverage_class;
@@ -775,8 +1286,17 @@ void ath5k_hw_set_coverage_class(struct ath5k_hw *ah, u8 coverage_class)
 \***************************/
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_start_rx_pcu() - Start RX engine
+=======
  * ath5k_hw_start_rx_pcu - Start RX engine
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * ath5k_hw_start_rx_pcu - Start RX engine
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  *
  * Starts RX engine on PCU so that hw can process RXed frames
@@ -784,24 +1304,64 @@ void ath5k_hw_set_coverage_class(struct ath5k_hw *ah, u8 coverage_class)
  *
  * NOTE: RX DMA should be already enabled using ath5k_hw_start_rx_dma
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void
+ath5k_hw_start_rx_pcu(struct ath5k_hw *ah)
+=======
 void ath5k_hw_start_rx_pcu(struct ath5k_hw *ah)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_start_rx_pcu(struct ath5k_hw *ah)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	AR5K_REG_DISABLE_BITS(ah, AR5K_DIAG_SW, AR5K_DIAG_SW_DIS_RX);
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * at5k_hw_stop_rx_pcu() - Stop RX engine
+=======
  * at5k_hw_stop_rx_pcu - Stop RX engine
  *
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * at5k_hw_stop_rx_pcu - Stop RX engine
+ *
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ah: The &struct ath5k_hw
  *
  * Stops RX engine on PCU
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void
+ath5k_hw_stop_rx_pcu(struct ath5k_hw *ah)
+=======
 void ath5k_hw_stop_rx_pcu(struct ath5k_hw *ah)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_stop_rx_pcu(struct ath5k_hw *ah)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	AR5K_REG_ENABLE_BITS(ah, AR5K_DIAG_SW, AR5K_DIAG_SW_DIS_RX);
 }
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ath5k_hw_set_opmode() - Set PCU operating mode
+ * @ah: The &struct ath5k_hw
+ * @op_mode: One of enum nl80211_iftype
+ *
+ * Configure PCU for the various operating modes (AP/STA etc)
+ */
+int
+ath5k_hw_set_opmode(struct ath5k_hw *ah, enum nl80211_iftype op_mode)
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ath5k_hw_set_opmode - Set PCU operating mode
  *
  * @ah: The &struct ath5k_hw
@@ -810,11 +1370,23 @@ void ath5k_hw_stop_rx_pcu(struct ath5k_hw *ah)
  * Configure PCU for the various operating modes (AP/STA etc)
  */
 int ath5k_hw_set_opmode(struct ath5k_hw *ah, enum nl80211_iftype op_mode)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ath_common *common = ath5k_hw_common(ah);
 	u32 pcu_reg, beacon_reg, low_id, high_id;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ATH5K_DBG(ah, ATH5K_DEBUG_MODE, "mode %d\n", op_mode);
+=======
 	ATH5K_DBG(ah->ah_sc, ATH5K_DEBUG_MODE, "mode %d\n", op_mode);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ATH5K_DBG(ah->ah_sc, ATH5K_DEBUG_MODE, "mode %d\n", op_mode);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Preserve rest settings */
 	pcu_reg = ath5k_hw_reg_read(ah, AR5K_STA_ID1) & 0xffff0000;
@@ -876,8 +1448,27 @@ int ath5k_hw_set_opmode(struct ath5k_hw *ah, enum nl80211_iftype op_mode)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * ath5k_hw_pcu_init() - Initialize PCU
+ * @ah: The &struct ath5k_hw
+ * @op_mode: One of enum nl80211_iftype
+ * @mode: One of enum ath5k_driver_mode
+ *
+ * This function is used to initialize PCU by setting current
+ * operation mode and various other settings.
+ */
+void
+ath5k_hw_pcu_init(struct ath5k_hw *ah, enum nl80211_iftype op_mode)
+=======
 void ath5k_hw_pcu_init(struct ath5k_hw *ah, enum nl80211_iftype op_mode,
 								u8 mode)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void ath5k_hw_pcu_init(struct ath5k_hw *ah, enum nl80211_iftype op_mode,
+								u8 mode)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Set bssid and bssid mask */
 	ath5k_hw_set_bssid(ah);
@@ -890,13 +1481,29 @@ void ath5k_hw_pcu_init(struct ath5k_hw *ah, enum nl80211_iftype op_mode,
 	 * XXX: rethink this after new mode changes to
 	 * mac80211 are integrated */
 	if (ah->ah_version == AR5K_AR5212 &&
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ah->nvifs)
+=======
 		ah->ah_sc->nvifs)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ah->ah_sc->nvifs)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ath5k_hw_write_rate_duration(ah);
 
 	/* Set RSSI/BRSSI thresholds
 	 *
 	 * Note: If we decide to set this value
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 * dynamically, have in mind that when AR5K_RSSI_THR
+=======
 	 * dynamicaly, have in mind that when AR5K_RSSI_THR
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	 * dynamicaly, have in mind that when AR5K_RSSI_THR
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * register is read it might return 0x40 if we haven't
 	 * wrote anything to it plus BMISS RSSI threshold is zeroed.
 	 * So doing a save/restore procedure here isn't the right

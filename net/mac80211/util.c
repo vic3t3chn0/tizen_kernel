@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include <linux/slab.h>
 #include <linux/skbuff.h>
@@ -101,6 +105,9 @@ u8 *ieee80211_get_bssid(struct ieee80211_hdr *hdr, size_t len,
 void ieee80211_tx_set_protected(struct ieee80211_tx_data *tx)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *skb;
 	struct ieee80211_hdr *hdr;
 
@@ -108,6 +115,8 @@ void ieee80211_tx_set_protected(struct ieee80211_tx_data *tx)
 		hdr = (struct ieee80211_hdr *) skb->data;
 		hdr->frame_control |= cpu_to_le16(IEEE80211_FCTL_PROTECTED);
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct sk_buff *skb = tx->skb;
 	struct ieee80211_hdr *hdr;
@@ -117,6 +126,7 @@ void ieee80211_tx_set_protected(struct ieee80211_tx_data *tx)
 		hdr->frame_control |= cpu_to_le16(IEEE80211_FCTL_PROTECTED);
 	} while ((skb = skb->next));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int ieee80211_frame_duration(struct ieee80211_local *local, size_t len,
@@ -387,10 +397,16 @@ void ieee80211_add_pending_skbs_fn(struct ieee80211_local *local,
 				   struct sk_buff_head *skbs,
 				   void (*fn)(void *data), void *data)
 =======
+<<<<<<< HEAD
+void ieee80211_add_pending_skbs_fn(struct ieee80211_local *local,
+				   struct sk_buff_head *skbs,
+				   void (*fn)(void *data), void *data)
+=======
 int ieee80211_add_pending_skbs_fn(struct ieee80211_local *local,
 				  struct sk_buff_head *skbs,
 				  void (*fn)(void *data), void *data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_hw *hw = &local->hw;
 	struct sk_buff *skb;
@@ -398,8 +414,12 @@ int ieee80211_add_pending_skbs_fn(struct ieee80211_local *local,
 <<<<<<< HEAD
 	int queue, i;
 =======
+<<<<<<< HEAD
+	int queue, i;
+=======
 	int queue, ret = 0, i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&local->queue_stop_reason_lock, flags);
 	for (i = 0; i < hw->queues; i++)
@@ -416,8 +436,11 @@ int ieee80211_add_pending_skbs_fn(struct ieee80211_local *local,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		ret++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		queue = skb_get_queue_mapping(skb);
 		__skb_queue_tail(&local->pending[queue], skb);
 	}
@@ -430,12 +453,17 @@ int ieee80211_add_pending_skbs_fn(struct ieee80211_local *local,
 			IEEE80211_QUEUE_STOP_REASON_SKB_ADD);
 	spin_unlock_irqrestore(&local->queue_stop_reason_lock, flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ieee80211_add_pending_skbs(struct ieee80211_local *local,
 				struct sk_buff_head *skbs)
 {
 	ieee80211_add_pending_skbs_fn(local, skbs, NULL, NULL);
+<<<<<<< HEAD
+=======
 =======
 
 	return ret;
@@ -446,6 +474,7 @@ int ieee80211_add_pending_skbs(struct ieee80211_local *local,
 {
 	return ieee80211_add_pending_skbs_fn(local, skbs, NULL, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void ieee80211_stop_queues_by_reason(struct ieee80211_hw *hw,
@@ -605,6 +634,8 @@ EXPORT_SYMBOL(ieee80211_queue_delayed_work);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void ieee802_11_parse_elems(u8 *start, size_t len,
 			    struct ieee802_11_elems *elems)
 {
@@ -612,6 +643,7 @@ void ieee802_11_parse_elems(u8 *start, size_t len,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 			       struct ieee802_11_elems *elems,
 			       u64 filter, u32 crc)
@@ -624,8 +656,14 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 
 	bitmap_zero(seen_elems, 256);
 =======
+<<<<<<< HEAD
+	DECLARE_BITMAP(seen_elems, 256);
+
+	bitmap_zero(seen_elems, 256);
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(elems, 0, sizeof(*elems));
 	elems->ie_start = start;
 	elems->total_len = len;
@@ -635,13 +673,20 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 <<<<<<< HEAD
 		bool elem_parse_failed;
 =======
+<<<<<<< HEAD
+		bool elem_parse_failed;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		id = *pos++;
 		elen = *pos++;
 		left -= 2;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (elen > left) {
 			elems->parse_error = true;
 			break;
@@ -655,10 +700,13 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 			pos += elen;
 			continue;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (elen > left)
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (calc_crc && id < 64 && (filter & (1ULL << id)))
 			crc = crc32_be(crc, pos - 2, elen + 2);
@@ -667,7 +715,12 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 		elem_parse_failed = false;
 
 =======
+<<<<<<< HEAD
+		elem_parse_failed = false;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		switch (id) {
 		case WLAN_EID_SSID:
 			elems->ssid = pos;
@@ -697,8 +750,13 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 			} else
 				elem_parse_failed = true;
 =======
+<<<<<<< HEAD
+			} else
+				elem_parse_failed = true;
+=======
 			}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case WLAN_EID_IBSS_PARAMS:
 			elems->ibss_params = pos;
@@ -751,7 +809,12 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 			else
 				elem_parse_failed = true;
 =======
+<<<<<<< HEAD
+			else
+				elem_parse_failed = true;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case WLAN_EID_HT_INFORMATION:
 			if (elen >= sizeof(struct ieee80211_ht_info))
@@ -760,7 +823,12 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 			else
 				elem_parse_failed = true;
 =======
+<<<<<<< HEAD
+			else
+				elem_parse_failed = true;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case WLAN_EID_MESH_ID:
 			elems->mesh_id = pos;
@@ -770,18 +838,24 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 			if (elen >= sizeof(struct ieee80211_meshconf_ie))
 				elems->mesh_config = (void *)pos;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			else
 				elem_parse_failed = true;
 			break;
 		case WLAN_EID_PEER_MGMT:
 			elems->peering = pos;
 			elems->peering_len = elen;
+<<<<<<< HEAD
+=======
 =======
 			break;
 		case WLAN_EID_PEER_LINK:
 			elems->peer_link = pos;
 			elems->peer_link_len = elen;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case WLAN_EID_PREQ:
 			elems->preq = pos;
@@ -802,7 +876,12 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 			else
 				elem_parse_failed = true;
 =======
+<<<<<<< HEAD
+			else
+				elem_parse_failed = true;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		case WLAN_EID_CHANNEL_SWITCH:
 			elems->ch_switch_elem = pos;
@@ -832,18 +911,27 @@ u32 ieee802_11_parse_elems_crc(u8 *start, size_t len,
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (elem_parse_failed)
 			elems->parse_error = true;
 		else
 			set_bit(id, seen_elems);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		left -= elen;
 		pos += elen;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (left != 0)
 		elems->parse_error = true;
 
@@ -858,12 +946,15 @@ void ieee802_11_parse_elems(u8 *start, size_t len,
 
 void ieee80211_set_wmm_default(struct ieee80211_sub_if_data *sdata,
 			       bool bss_notify)
+<<<<<<< HEAD
+=======
 =======
 	return crc;
 }
 
 void ieee80211_set_wmm_default(struct ieee80211_sub_if_data *sdata)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_local *local = sdata->local;
 	struct ieee80211_tx_queue_params qparam;
@@ -882,8 +973,12 @@ void ieee80211_set_wmm_default(struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	for (queue = 0; queue < local->hw.queues; queue++) {
 =======
+<<<<<<< HEAD
+	for (queue = 0; queue < local->hw.queues; queue++) {
+=======
 	for (queue = 0; queue < local_to_hw(local)->queues; queue++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Set defaults according to 802.11-2007 Table 7-37 */
 		aCWmax = 1023;
 		if (use_11b)
@@ -931,8 +1026,13 @@ void ieee80211_set_wmm_default(struct ieee80211_sub_if_data *sdata)
 		sdata->tx_conf[queue] = qparam;
 		drv_conf_tx(local, sdata, queue, &qparam);
 =======
+<<<<<<< HEAD
+		sdata->tx_conf[queue] = qparam;
+		drv_conf_tx(local, sdata, queue, &qparam);
+=======
 		drv_conf_tx(local, queue, &qparam);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* after reinitialize QoS TX queues setting to default,
@@ -946,8 +1046,14 @@ void ieee80211_set_wmm_default(struct ieee80211_sub_if_data *sdata)
 			ieee80211_bss_info_change_notify(sdata,
 							 BSS_CHANGED_QOS);
 =======
+<<<<<<< HEAD
+		if (bss_notify)
+			ieee80211_bss_info_change_notify(sdata,
+							 BSS_CHANGED_QOS);
+=======
 		ieee80211_bss_info_change_notify(sdata, BSS_CHANGED_QOS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -972,8 +1078,12 @@ void ieee80211_sta_def_wmm_params(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
 	ieee80211_set_wmm_default(sdata, true);
 =======
+<<<<<<< HEAD
+	ieee80211_set_wmm_default(sdata, true);
+=======
 	ieee80211_set_wmm_default(sdata);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 u32 ieee80211_mandatory_rates(struct ieee80211_local *local,
@@ -1010,9 +1120,14 @@ void ieee80211_send_auth(struct ieee80211_sub_if_data *sdata,
 			 u8 *extra, size_t extra_len, const u8 *da,
 			 const u8 *bssid, const u8 *key, u8 key_len, u8 key_idx)
 =======
+<<<<<<< HEAD
+			 u8 *extra, size_t extra_len, const u8 *da,
+			 const u8 *bssid, const u8 *key, u8 key_len, u8 key_idx)
+=======
 			 u8 *extra, size_t extra_len, const u8 *bssid,
 			 const u8 *key, u8 key_len, u8 key_idx)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_local *local = sdata->local;
 	struct sk_buff *skb;
@@ -1026,12 +1141,18 @@ void ieee80211_send_auth(struct ieee80211_sub_if_data *sdata,
 		return;
 
 =======
+<<<<<<< HEAD
+	if (!skb)
+		return;
+
+=======
 	if (!skb) {
 		printk(KERN_DEBUG "%s: failed to allocate buffer for auth "
 		       "frame\n", sdata->name);
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	skb_reserve(skb, local->hw.extra_tx_headroom);
 
 	mgmt = (struct ieee80211_mgmt *) skb_put(skb, 24 + 6);
@@ -1041,8 +1162,12 @@ void ieee80211_send_auth(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
 	memcpy(mgmt->da, da, ETH_ALEN);
 =======
+<<<<<<< HEAD
+	memcpy(mgmt->da, da, ETH_ALEN);
+=======
 	memcpy(mgmt->da, bssid, ETH_ALEN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
 	memcpy(mgmt->bssid, bssid, ETH_ALEN);
 	mgmt->u.auth.auth_alg = cpu_to_le16(auth_alg);
@@ -1145,6 +1270,11 @@ int ieee80211_build_preq_ies(struct ieee80211_local *local, u8 *buffer,
 		pos = ieee80211_ie_build_ht_cap(pos, &sband->ht_cap,
 						sband->ht_cap.cap);
 =======
+<<<<<<< HEAD
+	if (sband->ht_cap.ht_supported)
+		pos = ieee80211_ie_build_ht_cap(pos, &sband->ht_cap,
+						sband->ht_cap.cap);
+=======
 	if (sband->ht_cap.ht_supported) {
 		u16 cap = sband->ht_cap.cap;
 		__le16 tmp;
@@ -1163,6 +1293,7 @@ int ieee80211_build_preq_ies(struct ieee80211_local *local, u8 *buffer,
 		pos += 2 + 4 + 1; /* ext info, BF cap, antsel */
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If adding more here, adjust code in main.c
@@ -1177,26 +1308,38 @@ int ieee80211_build_preq_ies(struct ieee80211_local *local, u8 *buffer,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sband->vht_cap.vht_supported)
 		pos = ieee80211_ie_build_vht_cap(pos, &sband->vht_cap,
 						 sband->vht_cap.cap);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return pos - buffer;
 }
 
 struct sk_buff *ieee80211_build_probe_req(struct ieee80211_sub_if_data *sdata,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					  u8 *dst, u32 ratemask,
 					  const u8 *ssid, size_t ssid_len,
 					  const u8 *ie, size_t ie_len,
 					  bool directed)
+<<<<<<< HEAD
+=======
 =======
 					  u8 *dst,
 					  const u8 *ssid, size_t ssid_len,
 					  const u8 *ie, size_t ie_len)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ieee80211_local *local = sdata->local;
 	struct sk_buff *skb;
@@ -1208,6 +1351,9 @@ struct sk_buff *ieee80211_build_probe_req(struct ieee80211_sub_if_data *sdata,
 	/* FIXME: come up with a proper value */
 	buf = kmalloc(200 + ie_len, GFP_KERNEL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!buf)
 		return NULL;
 
@@ -1225,6 +1371,8 @@ struct sk_buff *ieee80211_build_probe_req(struct ieee80211_sub_if_data *sdata,
 	buf_len = ieee80211_build_preq_ies(local, buf, ie, ie_len,
 					   local->hw.conf.channel->band,
 					   ratemask, chan);
+<<<<<<< HEAD
+=======
 =======
 	if (!buf) {
 		printk(KERN_DEBUG "%s: failed to allocate temporary IE "
@@ -1241,6 +1389,7 @@ struct sk_buff *ieee80211_build_probe_req(struct ieee80211_sub_if_data *sdata,
 					   [local->hw.conf.channel->band],
 					   chan);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb = ieee80211_probereq_get(&local->hw, &sdata->vif,
 				     ssid, ssid_len,
@@ -1265,6 +1414,9 @@ struct sk_buff *ieee80211_build_probe_req(struct ieee80211_sub_if_data *sdata,
 void ieee80211_send_probe_req(struct ieee80211_sub_if_data *sdata, u8 *dst,
 			      const u8 *ssid, size_t ssid_len,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			      const u8 *ie, size_t ie_len,
 			      u32 ratemask, bool directed, bool no_cck)
 {
@@ -1278,6 +1430,8 @@ void ieee80211_send_probe_req(struct ieee80211_sub_if_data *sdata, u8 *dst,
 				IEEE80211_TX_CTL_NO_CCK_RATE;
 		ieee80211_tx_skb(sdata, skb);
 	}
+<<<<<<< HEAD
+=======
 =======
 			      const u8 *ie, size_t ie_len)
 {
@@ -1287,6 +1441,7 @@ void ieee80211_send_probe_req(struct ieee80211_sub_if_data *sdata, u8 *dst,
 	if (skb)
 		ieee80211_tx_skb(sdata, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 u32 ieee80211_sta_get_rates(struct ieee80211_local *local,
@@ -1344,8 +1499,12 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 <<<<<<< HEAD
 	int res, i;
 =======
+<<<<<<< HEAD
+	int res, i;
+=======
 	int res;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PM
 	if (local->suspended)
@@ -1368,6 +1527,9 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 	}
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* everything else happens only if HW was up & running */
 	if (!local->open_count)
 		goto wake_up;
@@ -1398,6 +1560,8 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 	ieee80211_led_radio(local, true);
 	ieee80211_mod_tpt_led_trig(local,
 				   IEEE80211_TPT_LEDTRIG_FL_RADIO, 0);
+<<<<<<< HEAD
+=======
 =======
 
 	/* restart hardware */
@@ -1421,6 +1585,7 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 					   IEEE80211_TPT_LEDTRIG_FL_RADIO, 0);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* add interfaces */
 	list_for_each_entry(sdata, &local->interfaces, list) {
@@ -1430,8 +1595,12 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 <<<<<<< HEAD
 			res = drv_add_interface(local, sdata);
 =======
+<<<<<<< HEAD
+			res = drv_add_interface(local, sdata);
+=======
 			res = drv_add_interface(local, &sdata->vif);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* add STAs back */
@@ -1439,12 +1608,17 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 	list_for_each_entry(sta, &local->sta_list, list) {
 		if (sta->uploaded) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			enum ieee80211_sta_state state;
 
 			for (state = IEEE80211_STA_NOTEXIST;
 			     state < sta->sta_state - 1; state++)
 				WARN_ON(drv_sta_state(local, sta->sdata, sta,
 						      state, state + 1));
+<<<<<<< HEAD
+=======
 =======
 			sdata = sta->sdata;
 			if (sdata->vif.type == NL80211_IFTYPE_AP_VLAN)
@@ -1454,11 +1628,15 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 
 			WARN_ON(drv_sta_add(local, sdata, &sta->sta));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	mutex_unlock(&local->sta_mtx);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* reconfigure tx conf */
 	list_for_each_entry(sdata, &local->interfaces, list) {
 		if (sdata->vif.type == NL80211_IFTYPE_AP_VLAN ||
@@ -1469,6 +1647,8 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 		for (i = 0; i < hw->queues; i++)
 			drv_conf_tx(local, sdata, i, &sdata->tx_conf[i]);
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* setup fragmentation threshold */
 	drv_set_frag_threshold(local, hw->wiphy->frag_threshold);
@@ -1476,6 +1656,7 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 	/* setup RTS threshold */
 	drv_set_rts_threshold(local, hw->wiphy->rts_threshold);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* reconfigure hardware */
 	ieee80211_hw_config(local, ~0);
@@ -1499,6 +1680,9 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 			  BSS_CHANGED_BSSID |
 			  BSS_CHANGED_CQM |
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  BSS_CHANGED_QOS |
 			  BSS_CHANGED_IDLE;
 
@@ -1506,6 +1690,8 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 		case NL80211_IFTYPE_STATION:
 			changed |= BSS_CHANGED_ASSOC |
 				   BSS_CHANGED_ARP_FILTER;
+<<<<<<< HEAD
+=======
 =======
 			  BSS_CHANGED_QOS;
 
@@ -1513,6 +1699,7 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 		case NL80211_IFTYPE_STATION:
 			changed |= BSS_CHANGED_ASSOC;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mutex_lock(&sdata->u.mgd.mtx);
 			ieee80211_bss_info_change_notify(sdata, changed);
 			mutex_unlock(&sdata->u.mgd.mtx);
@@ -1522,14 +1709,20 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 			/* fall through */
 		case NL80211_IFTYPE_AP:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			changed |= BSS_CHANGED_SSID;
 
 			if (sdata->vif.type == NL80211_IFTYPE_AP)
 				changed |= BSS_CHANGED_AP_PROBE_RESP;
 
 			/* fall through */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case NL80211_IFTYPE_MESH_POINT:
 			changed |= BSS_CHANGED_BEACON |
 				   BSS_CHANGED_BEACON_ENABLED;
@@ -1551,6 +1744,9 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ieee80211_recalc_ps(local, -1);
 
 	/*
@@ -1568,6 +1764,8 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	/* add back keys */
 	list_for_each_entry(sdata, &local->interfaces, list)
@@ -1576,6 +1774,7 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 
  wake_up:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Clear the WLAN_STA_BLOCK_BA flag so new aggregation
 	 * sessions can be established after a resume.
@@ -1594,22 +1793,32 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 <<<<<<< HEAD
 			clear_sta_flag(sta, WLAN_STA_BLOCK_BA);
 =======
+<<<<<<< HEAD
+			clear_sta_flag(sta, WLAN_STA_BLOCK_BA);
+=======
 			clear_sta_flags(sta, WLAN_STA_BLOCK_BA);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		mutex_unlock(&local->sta_mtx);
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* add back keys */
 	list_for_each_entry(sdata, &local->interfaces, list)
 		if (ieee80211_sdata_running(sdata))
 			ieee80211_enable_keys(sdata);
 
  wake_up:
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ieee80211_wake_queues_by_reason(hw,
 			IEEE80211_QUEUE_STOP_REASON_SUSPEND);
 
@@ -1655,6 +1864,9 @@ int ieee80211_reconfig(struct ieee80211_local *local)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ieee80211_resume_disconnect(struct ieee80211_vif *vif)
 {
 	struct ieee80211_sub_if_data *sdata;
@@ -1682,8 +1894,11 @@ void ieee80211_resume_disconnect(struct ieee80211_vif *vif)
 }
 EXPORT_SYMBOL_GPL(ieee80211_resume_disconnect);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int check_mgd_smps(struct ieee80211_if_managed *ifmgd,
 			  enum ieee80211_smps_mode *smps_mode)
 {
@@ -1801,6 +2016,9 @@ size_t ieee80211_ie_split_vendor(const u8 *ies, size_t ielen, size_t offset)
 	return pos;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void _ieee80211_enable_rssi_reports(struct ieee80211_sub_if_data *sdata,
 					    int rssi_min_thold,
@@ -2021,5 +2239,8 @@ int ieee80211_add_ext_srates_ie(struct ieee80211_vif *vif, struct sk_buff *skb)
 	}
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

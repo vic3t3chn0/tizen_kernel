@@ -19,6 +19,11 @@
 #include <asm/byteorder.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+#include <asm/byteorder.h>
+
+=======
 #include <asm/atomic.h>
 #include <asm/byteorder.h>
 
@@ -26,6 +31,7 @@
 #define fw_error(s, args...) printk(KERN_ERR KBUILD_MODNAME ": " s, ## args)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CSR_REGISTER_BASE		0xfffff0000000ULL
 
 /* register offsets are relative to CSR_REGISTER_BASE */
@@ -211,6 +217,8 @@ static inline int fw_device_is_shutdown(struct fw_device *device)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline struct fw_device *fw_device_get(struct fw_device *device)
 {
 	get_device(&device->device);
@@ -224,6 +232,7 @@ static inline void fw_device_put(struct fw_device *device)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int fw_device_enable_phys_dma(struct fw_device *device);
 
 /*
@@ -453,7 +462,11 @@ void fw_iso_context_queue_flush(struct fw_iso_context *ctx);
 <<<<<<< HEAD
 int fw_iso_context_flush_completions(struct fw_iso_context *ctx);
 =======
+<<<<<<< HEAD
+int fw_iso_context_flush_completions(struct fw_iso_context *ctx);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int fw_iso_context_start(struct fw_iso_context *ctx,
 			 int cycle, int sync, int tags);
 int fw_iso_context_stop(struct fw_iso_context *ctx);

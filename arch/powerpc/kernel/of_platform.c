@@ -18,8 +18,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mod_devicetable.h>
 #include <linux/pci.h>
 #include <linux/of.h>
@@ -28,7 +32,11 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/errno.h>
 #include <asm/topology.h>
@@ -37,8 +45,12 @@
 <<<<<<< HEAD
 #include <asm/eeh.h>
 =======
+<<<<<<< HEAD
+#include <asm/eeh.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_PPC_OF_PLATFORM_PCI
 
@@ -83,7 +95,13 @@ static int __devinit of_pci_phb_probe(struct platform_device *dev)
 	eeh_dev_phb_init_dynamic(phb);
 
 =======
+<<<<<<< HEAD
+	/* Create EEH devices for the PHB */
+	eeh_dev_phb_init_dynamic(phb);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Register devices with EEH */
 #ifdef CONFIG_EEH
 	if (dev->dev.of_node->child)

@@ -81,7 +81,11 @@ enum ocfs2_iocb_lock_bits {
 <<<<<<< HEAD
 	OCFS2_IOCB_UNALIGNED_IO,
 =======
+<<<<<<< HEAD
+	OCFS2_IOCB_UNALIGNED_IO,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OCFS2_IOCB_NUM_LOCKS
 };
 
@@ -96,6 +100,9 @@ enum ocfs2_iocb_lock_bits {
 #define ocfs2_iocb_is_sem_locked(iocb) \
 	test_bit(OCFS2_IOCB_SEM, (unsigned long *)&iocb->private)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ocfs2_iocb_set_unaligned_aio(iocb) \
 	set_bit(OCFS2_IOCB_UNALIGNED_IO, (unsigned long *)&iocb->private)
@@ -109,6 +116,9 @@ enum ocfs2_iocb_lock_bits {
 					    OCFS2_IOEND_WQ_HASH_SZ])
 extern wait_queue_head_t ocfs2__ioend_wq[OCFS2_IOEND_WQ_HASH_SZ];
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* OCFS2_FILE_H */

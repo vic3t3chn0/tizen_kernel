@@ -17,10 +17,15 @@
  */
 #ifndef __XFS_DIR2_H__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __XFS_DIR2_H__
 
 struct xfs_bmap_free;
 struct xfs_da_args;
+<<<<<<< HEAD
+=======
 =======
 #define	__XFS_DIR2_H__
 
@@ -30,10 +35,13 @@ struct xfs_da_args;
 struct xfs_dir2_put_args;
 struct xfs_bmap_free;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct xfs_inode;
 struct xfs_mount;
 struct xfs_trans;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -69,6 +77,7 @@ typedef	__uint32_t	xfs_dir2_db_t;
 typedef	xfs_off_t	xfs_dir2_off_t;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct xfs_name	xfs_name_dotdot;
 
 /*
@@ -97,11 +106,16 @@ extern int xfs_dir_replace(struct xfs_trans *tp, struct xfs_inode *dp,
 extern int xfs_dir_canenter(struct xfs_trans *tp, struct xfs_inode *dp,
 				struct xfs_name *name, uint resblks);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Direct call from the bmap code, bypassing the generic directory layer.
  */
 extern int xfs_dir2_sf_to_block(struct xfs_da_args *args);
+<<<<<<< HEAD
+=======
 =======
 extern int xfs_dir_ino_validate(struct xfs_mount *mp, xfs_ino_t ino);
 
@@ -120,5 +134,6 @@ extern int xfs_dir2_shrink_inode(struct xfs_da_args *args, xfs_dir2_db_t db,
 extern int xfs_dir_cilookup_result(struct xfs_da_args *args,
 				const unsigned char *name, int len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif	/* __XFS_DIR2_H__ */

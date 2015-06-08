@@ -9,8 +9,12 @@
 <<<<<<< HEAD
  *  ALSA PCM interface for the Samsung SoC
 =======
+<<<<<<< HEAD
+ *  ALSA PCM interface for the Samsung SoC
+=======
  *  ALSA PCM interface for the Samsung S3C24xx CPU
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _S3C_AUDIO_H
@@ -22,10 +26,15 @@ struct s3c_dma_params {
 	dma_addr_t dma_addr;
 	int dma_size;			/* Size of the DMA transfer */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned ch;
 	struct samsung_dma_ops *ops;
 };
 
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -33,4 +42,5 @@ struct s3c_dma_params {
 extern struct snd_soc_platform_driver samsung_asoc_platform;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

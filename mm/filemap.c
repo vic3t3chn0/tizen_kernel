@@ -12,8 +12,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/compiler.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
@@ -39,8 +43,11 @@
 #include <linux/memcontrol.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/mm_inline.h> /* for page_is_file_cache() */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/cleancache.h>
 #include "internal.h"
 
@@ -88,11 +95,15 @@
 <<<<<<< HEAD
  *  bdi->wb.list_lock
 =======
+<<<<<<< HEAD
+ *  bdi->wb.list_lock
+=======
  *  ->i_mutex
  *    ->i_alloc_sem             (various)
  *
  *  inode_wb_list_lock
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    sb_lock			(fs/fs-writeback.c)
  *    ->mapping->tree_lock	(__sync_single_inode)
  *
@@ -111,6 +122,9 @@
  *    ->private_lock		(page_remove_rmap->set_page_dirty)
  *    ->tree_lock		(page_remove_rmap->set_page_dirty)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *    bdi.wb->list_lock		(page_remove_rmap->set_page_dirty)
  *    ->inode->i_lock		(page_remove_rmap->set_page_dirty)
  *    bdi.wb->list_lock		(zap_pte_range->set_page_dirty)
@@ -119,6 +133,8 @@
  *
  * ->i_mmap_mutex
  *   ->tasklist_lock            (memory_failure, collect_procs_ao)
+<<<<<<< HEAD
+=======
 =======
  *    inode_wb_list_lock	(page_remove_rmap->set_page_dirty)
  *    ->inode->i_lock		(page_remove_rmap->set_page_dirty)
@@ -130,6 +146,7 @@
  *  ->tasklist_lock             (memory_failure, collect_procs_ao)
  *    ->i_mmap_mutex
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /*
@@ -150,17 +167,23 @@ void __delete_from_page_cache(struct page *page)
 		cleancache_put_page(page);
 	else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cleancache_invalidate_page(mapping, page);
 
 	radix_tree_delete(&mapping->page_tree, page->index);
 	page->mapping = NULL;
 	/* Leave page->index set: truncation lookup relies upon it */
+<<<<<<< HEAD
+=======
 =======
 		cleancache_flush_page(mapping, page);
 
 	radix_tree_delete(&mapping->page_tree, page->index);
 	page->mapping = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mapping->nrpages--;
 	__dec_zone_page_state(page, NR_FILE_PAGES);
 	if (PageSwapBacked(page))
@@ -483,7 +506,11 @@ int add_to_page_cache_locked(struct page *page, struct address_space *mapping,
 <<<<<<< HEAD
 	VM_BUG_ON(PageSwapBacked(page));
 =======
+<<<<<<< HEAD
+	VM_BUG_ON(PageSwapBacked(page));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = mem_cgroup_cache_charge(page, current->mm,
 					gfp_mask & GFP_RECLAIM_MASK);
@@ -502,10 +529,15 @@ int add_to_page_cache_locked(struct page *page, struct address_space *mapping,
 			mapping->nrpages++;
 			__inc_zone_page_state(page, NR_FILE_PAGES);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock_irq(&mapping->tree_lock);
 		} else {
 			page->mapping = NULL;
 			/* Leave page->index set: truncation relies upon it */
+<<<<<<< HEAD
+=======
 =======
 			if (PageSwapBacked(page))
 				__inc_zone_page_state(page, NR_SHMEM);
@@ -513,6 +545,7 @@ int add_to_page_cache_locked(struct page *page, struct address_space *mapping,
 		} else {
 			page->mapping = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock_irq(&mapping->tree_lock);
 			mem_cgroup_uncharge_cache_page(page);
 			page_cache_release(page);
@@ -535,6 +568,11 @@ int add_to_page_cache_lru(struct page *page, struct address_space *mapping,
 	if (ret == 0)
 		lru_cache_add_file(page);
 =======
+<<<<<<< HEAD
+	ret = add_to_page_cache(page, mapping, offset, gfp_mask);
+	if (ret == 0)
+		lru_cache_add_file(page);
+=======
 	/*
 	 * Splice_read and readahead add shmem/tmpfs pages into the page cache
 	 * before shmem_readpage has a chance to mark them as SwapBacked: they
@@ -552,6 +590,7 @@ int add_to_page_cache_lru(struct page *page, struct address_space *mapping,
 			lru_cache_add_anon(page);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 EXPORT_SYMBOL_GPL(add_to_page_cache_lru);
@@ -752,6 +791,9 @@ repeat:
 		if (unlikely(!page))
 			goto out;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (radix_tree_exception(page)) {
 			if (radix_tree_deref_retry(page))
 				goto repeat;
@@ -762,11 +804,14 @@ repeat:
 			 */
 			goto out;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (radix_tree_deref_retry(page))
 			goto repeat;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!page_cache_get_speculative(page))
 			goto repeat;
 
@@ -806,8 +851,12 @@ repeat:
 <<<<<<< HEAD
 	if (page && !radix_tree_exception(page)) {
 =======
+<<<<<<< HEAD
+	if (page && !radix_tree_exception(page)) {
+=======
 	if (page) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		lock_page(page);
 		/* Has the page been truncated? */
 		if (unlikely(page->mapping != mapping)) {
@@ -888,6 +937,9 @@ unsigned find_get_pages(struct address_space *mapping, pgoff_t start,
 			    unsigned int nr_pages, struct page **pages)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct radix_tree_iter iter;
 	void **slot;
 	unsigned ret = 0;
@@ -920,6 +972,8 @@ repeat:
 			 * we only reach this from invalidate_mapping_pages().
 			 */
 			continue;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int i;
 	unsigned int ret;
@@ -945,6 +999,7 @@ repeat:
 			WARN_ON(start | i);
 			goto restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		if (!page_cache_get_speculative(page))
@@ -954,18 +1009,27 @@ repeat:
 <<<<<<< HEAD
 		if (unlikely(page != *slot)) {
 =======
+<<<<<<< HEAD
+		if (unlikely(page != *slot)) {
+=======
 		if (unlikely(page != *((void **)pages[i]))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			page_cache_release(page);
 			goto repeat;
 		}
 
 		pages[ret] = page;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (++ret == nr_pages)
 			break;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		ret++;
 	}
@@ -977,6 +1041,7 @@ repeat:
 	if (unlikely(!ret && nr_found))
 		goto restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 	return ret;
 }
@@ -997,6 +1062,9 @@ unsigned find_get_pages_contig(struct address_space *mapping, pgoff_t index,
 			       unsigned int nr_pages, struct page **pages)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct radix_tree_iter iter;
 	void **slot;
 	unsigned int ret = 0;
@@ -1030,6 +1098,8 @@ repeat:
 			 */
 			break;
 		}
+<<<<<<< HEAD
+=======
 =======
 	unsigned int i;
 	unsigned int ret;
@@ -1054,6 +1124,7 @@ repeat:
 		if (radix_tree_deref_retry(page))
 			goto restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!page_cache_get_speculative(page))
 			goto repeat;
@@ -1062,8 +1133,12 @@ repeat:
 <<<<<<< HEAD
 		if (unlikely(page != *slot)) {
 =======
+<<<<<<< HEAD
+		if (unlikely(page != *slot)) {
+=======
 		if (unlikely(page != *((void **)pages[i]))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			page_cache_release(page);
 			goto repeat;
 		}
@@ -1076,8 +1151,12 @@ repeat:
 <<<<<<< HEAD
 		if (page->mapping == NULL || page->index != iter.index) {
 =======
+<<<<<<< HEAD
+		if (page->mapping == NULL || page->index != iter.index) {
+=======
 		if (page->mapping == NULL || page->index != index) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			page_cache_release(page);
 			break;
 		}
@@ -1087,9 +1166,14 @@ repeat:
 		if (++ret == nr_pages)
 			break;
 =======
+<<<<<<< HEAD
+		if (++ret == nr_pages)
+			break;
+=======
 		ret++;
 		index++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	rcu_read_unlock();
 	return ret;
@@ -1111,6 +1195,9 @@ unsigned find_get_pages_tag(struct address_space *mapping, pgoff_t *index,
 			int tag, unsigned int nr_pages, struct page **pages)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct radix_tree_iter iter;
 	void **slot;
 	unsigned ret = 0;
@@ -1143,6 +1230,8 @@ repeat:
 			 */
 			BUG();
 		}
+<<<<<<< HEAD
+=======
 =======
 	unsigned int i;
 	unsigned int ret;
@@ -1167,6 +1256,7 @@ repeat:
 		if (radix_tree_deref_retry(page))
 			goto restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!page_cache_get_speculative(page))
 			goto repeat;
@@ -1175,18 +1265,27 @@ repeat:
 <<<<<<< HEAD
 		if (unlikely(page != *slot)) {
 =======
+<<<<<<< HEAD
+		if (unlikely(page != *slot)) {
+=======
 		if (unlikely(page != *((void **)pages[i]))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			page_cache_release(page);
 			goto repeat;
 		}
 
 		pages[ret] = page;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (++ret == nr_pages)
 			break;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		ret++;
 	}
@@ -1198,6 +1297,7 @@ repeat:
 	if (unlikely(!ret && nr_found))
 		goto restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_unlock();
 
 	if (ret)
@@ -1506,16 +1606,22 @@ int file_read_actor(read_descriptor_t *desc, struct page *page,
 	 */
 	if (!fault_in_pages_writeable(desc->arg.buf, size)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kaddr = kmap_atomic(page);
 		left = __copy_to_user_inatomic(desc->arg.buf,
 						kaddr + offset, size);
 		kunmap_atomic(kaddr);
+<<<<<<< HEAD
+=======
 =======
 		kaddr = kmap_atomic(page, KM_USER0);
 		left = __copy_to_user_inatomic(desc->arg.buf,
 						kaddr + offset, size);
 		kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (left == 0)
 			goto success;
 	}
@@ -1999,8 +2105,12 @@ static struct page *__read_cache_page(struct address_space *mapping,
 <<<<<<< HEAD
 				int (*filler)(void *, struct page *),
 =======
+<<<<<<< HEAD
+				int (*filler)(void *, struct page *),
+=======
 				int (*filler)(void *,struct page*),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				void *data,
 				gfp_t gfp)
 {
@@ -2034,8 +2144,12 @@ static struct page *do_read_cache_page(struct address_space *mapping,
 <<<<<<< HEAD
 				int (*filler)(void *, struct page *),
 =======
+<<<<<<< HEAD
+				int (*filler)(void *, struct page *),
+=======
 				int (*filler)(void *,struct page*),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				void *data,
 				gfp_t gfp)
 
@@ -2078,8 +2192,12 @@ out:
 <<<<<<< HEAD
  * @data:	first arg to filler(data, page) function, often left as NULL
 =======
+<<<<<<< HEAD
+ * @data:	first arg to filler(data, page) function, often left as NULL
+=======
  * @data:	destination for read data
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Same as read_cache_page, but don't wait for page to become unlocked
  * after submitting it to the filler.
@@ -2094,8 +2212,12 @@ struct page *read_cache_page_async(struct address_space *mapping,
 <<<<<<< HEAD
 				int (*filler)(void *, struct page *),
 =======
+<<<<<<< HEAD
+				int (*filler)(void *, struct page *),
+=======
 				int (*filler)(void *,struct page*),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				void *data)
 {
 	return do_read_cache_page(mapping, index, filler, data, mapping_gfp_mask(mapping));
@@ -2143,8 +2265,12 @@ EXPORT_SYMBOL(read_cache_page_gfp);
 <<<<<<< HEAD
  * @data:	first arg to filler(data, page) function, often left as NULL
 =======
+<<<<<<< HEAD
+ * @data:	first arg to filler(data, page) function, often left as NULL
+=======
  * @data:	destination for read data
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Read into the page cache. If a page already exists, and PageUptodate() is
  * not set, try to fill the page then wait for it to become unlocked.
@@ -2156,8 +2282,12 @@ struct page *read_cache_page(struct address_space *mapping,
 <<<<<<< HEAD
 				int (*filler)(void *, struct page *),
 =======
+<<<<<<< HEAD
+				int (*filler)(void *, struct page *),
+=======
 				int (*filler)(void *,struct page*),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				void *data)
 {
 	return wait_on_page_read(read_cache_page_async(mapping, index, filler, data));
@@ -2175,8 +2305,12 @@ int should_remove_suid(struct dentry *dentry)
 <<<<<<< HEAD
 	umode_t mode = dentry->d_inode->i_mode;
 =======
+<<<<<<< HEAD
+	umode_t mode = dentry->d_inode->i_mode;
+=======
 	mode_t mode = dentry->d_inode->i_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int kill = 0;
 
 	/* suid always must be killed */
@@ -2270,8 +2404,12 @@ size_t iov_iter_copy_from_user_atomic(struct page *page,
 <<<<<<< HEAD
 	kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(page);
+=======
 	kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (likely(i->nr_segs == 1)) {
 		int left;
 		char __user *buf = i->iov->iov_base + i->iov_offset;
@@ -2284,8 +2422,12 @@ size_t iov_iter_copy_from_user_atomic(struct page *page,
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return copied;
 }
@@ -2331,7 +2473,11 @@ void iov_iter_advance(struct iov_iter *i, size_t bytes)
 <<<<<<< HEAD
 		unsigned long nr_segs = i->nr_segs;
 =======
+<<<<<<< HEAD
+		unsigned long nr_segs = i->nr_segs;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * The !iov->iov_len check ensures we skip over unlikely
@@ -2350,7 +2496,11 @@ void iov_iter_advance(struct iov_iter *i, size_t bytes)
 <<<<<<< HEAD
 				nr_segs--;
 =======
+<<<<<<< HEAD
+				nr_segs--;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				base = 0;
 			}
 		}
@@ -2359,7 +2509,11 @@ void iov_iter_advance(struct iov_iter *i, size_t bytes)
 <<<<<<< HEAD
 		i->nr_segs = nr_segs;
 =======
+<<<<<<< HEAD
+		i->nr_segs = nr_segs;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 EXPORT_SYMBOL(iov_iter_advance);
@@ -2577,6 +2731,9 @@ struct page *grab_cache_page_write_begin(struct address_space *mapping,
 {
 	int status;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfp_t gfp_mask;
 	struct page *page;
 	gfp_t gfp_notmask = 0;
@@ -2584,10 +2741,13 @@ struct page *grab_cache_page_write_begin(struct address_space *mapping,
 	gfp_mask = mapping_gfp_mask(mapping);
 	if (mapping_cap_account_dirty(mapping))
 		gfp_mask |= __GFP_WRITE;
+<<<<<<< HEAD
+=======
 =======
 	struct page *page;
 	gfp_t gfp_notmask = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (flags & AOP_FLAG_NOFS)
 		gfp_notmask = __GFP_FS;
 repeat:
@@ -2596,6 +2756,9 @@ repeat:
 		goto found;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 retry:
 	page = __page_cache_alloc(gfp_mask & ~gfp_notmask);
 	if (!page)
@@ -2607,11 +2770,14 @@ retry:
 		goto retry;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	page = __page_cache_alloc(mapping_gfp_mask(mapping) & ~gfp_notmask);
 	if (!page)
 		return NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = add_to_page_cache_lru(page, mapping, index,
 						GFP_KERNEL & ~gfp_notmask);
 	if (unlikely(status)) {
@@ -2655,8 +2821,11 @@ static ssize_t generic_perform_write(struct file *file,
 again:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Bring in the user page that we will copy from _first_.
 		 * Otherwise there's a nasty deadlock on copying from the
@@ -2713,13 +2882,19 @@ again:
 
 		balance_dirty_pages_ratelimited(mapping);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fatal_signal_pending(current)) {
 			status = -EINTR;
 			break;
 		}
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (iov_iter_count(i));
 
 	return written ? written : status;

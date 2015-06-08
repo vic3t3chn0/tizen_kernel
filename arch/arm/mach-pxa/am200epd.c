@@ -141,8 +141,12 @@ static void am200_cleanup(struct metronomefb_par *par)
 <<<<<<< HEAD
 	free_irq(PXA_GPIO_TO_IRQ(RDY_GPIO_PIN), par);
 =======
+<<<<<<< HEAD
+	free_irq(PXA_GPIO_TO_IRQ(RDY_GPIO_PIN), par);
+=======
 	free_irq(IRQ_GPIO(RDY_GPIO_PIN), par);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < ARRAY_SIZE(gpios); i++)
 		gpio_free(gpios[i]);
@@ -299,8 +303,12 @@ static int am200_setup_irq(struct fb_info *info)
 <<<<<<< HEAD
 	ret = request_irq(PXA_GPIO_TO_IRQ(RDY_GPIO_PIN), am200_handle_irq,
 =======
+<<<<<<< HEAD
+	ret = request_irq(PXA_GPIO_TO_IRQ(RDY_GPIO_PIN), am200_handle_irq,
+=======
 	ret = request_irq(IRQ_GPIO(RDY_GPIO_PIN), am200_handle_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				IRQF_DISABLED|IRQF_TRIGGER_FALLING,
 				"AM200", info->par);
 	if (ret)

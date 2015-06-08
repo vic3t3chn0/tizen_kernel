@@ -5,8 +5,12 @@
 <<<<<<< HEAD
  *  Updated: Hewlett-Packard <paul@paul-moore.com>
 =======
+<<<<<<< HEAD
+ *  Updated: Hewlett-Packard <paul@paul-moore.com>
+=======
  *  Updated: Hewlett-Packard <paul.moore@hp.com>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *	Added support for the policy capability bitmap
  *
@@ -81,9 +85,12 @@ static struct dentry *policycap_dir;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern void selnl_notify_setenforce(int val);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Check whether a task is allowed to use a security operation. */
 static int task_has_security(struct task_struct *tsk,
 			     u32 perms)
@@ -287,8 +294,11 @@ static ssize_t sel_write_disable(struct file *file, const char __user *buf,
 	int new_value;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	extern int selinux_disable(void);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	length = -ENOMEM;
 	if (count >= PAGE_SIZE)
@@ -360,8 +370,12 @@ static int sel_make_policycap(void);
 <<<<<<< HEAD
 static struct dentry *sel_make_dir(struct dentry *dir, const char *name,
 =======
+<<<<<<< HEAD
+static struct dentry *sel_make_dir(struct dentry *dir, const char *name,
+=======
 static int sel_make_dir(struct inode *dir, struct dentry *dentry,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			unsigned long *ino);
 
 static ssize_t sel_read_mls(struct file *filp, char __user *buf,
@@ -495,8 +509,12 @@ static struct vm_operations_struct sel_mmap_policy_ops = {
 <<<<<<< HEAD
 static int sel_mmap_policy(struct file *filp, struct vm_area_struct *vma)
 =======
+<<<<<<< HEAD
+static int sel_mmap_policy(struct file *filp, struct vm_area_struct *vma)
+=======
 int sel_mmap_policy(struct file *filp, struct vm_area_struct *vma)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (vma->vm_flags & VM_SHARED) {
 		/* do not allow mprotect to make mapping writable */
@@ -772,6 +790,8 @@ out:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int hexcode_to_int(int code) {
 	if (code == '\0' || !isxdigit(code))
 		return -1;
@@ -781,6 +801,7 @@ static inline int hexcode_to_int(int code) {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t sel_write_create(struct file *file, char *buf, size_t size)
 {
 	char *scon = NULL, *tcon = NULL;
@@ -833,16 +854,22 @@ static ssize_t sel_write_create(struct file *file, char *buf, size_t size)
 				c1 = ' ';
 			else if (c1 == '%') {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				c1 = hex_to_bin(*r++);
 				if (c1 < 0)
 					goto out;
 				c2 = hex_to_bin(*r++);
 				if (c2 < 0)
+<<<<<<< HEAD
+=======
 =======
 				if ((c1 = hexcode_to_int(*r++)) < 0)
 					goto out;
 				if ((c2 = hexcode_to_int(*r++)) < 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					goto out;
 				c1 = (c1 << 4) | c2;
 			}
@@ -1272,8 +1299,11 @@ static int sel_make_bools(void)
 	kfree(bool_pending_values);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	bool_num = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool_pending_names = NULL;
 	bool_pending_values = NULL;
 
@@ -1725,6 +1755,11 @@ static int sel_make_class_dir_entries(char *classname, int index,
 	if (IS_ERR(dentry))
 		return PTR_ERR(dentry);
 =======
+<<<<<<< HEAD
+	dentry = sel_make_dir(dir, "perms", &last_class_ino);
+	if (IS_ERR(dentry))
+		return PTR_ERR(dentry);
+=======
 	dentry = d_alloc_name(dir, "perms");
 	if (!dentry)
 		return -ENOMEM;
@@ -1733,6 +1768,7 @@ static int sel_make_class_dir_entries(char *classname, int index,
 	if (rc)
 		return rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	rc = sel_make_perm_files(classname, index, dentry);
 
@@ -1782,12 +1818,17 @@ static int sel_make_classes(void)
 		struct dentry *class_name_dir;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		class_name_dir = sel_make_dir(class_dir, classes[i],
 				&last_class_ino);
 		if (IS_ERR(class_name_dir)) {
 			rc = PTR_ERR(class_name_dir);
 			goto out;
 		}
+<<<<<<< HEAD
+=======
 =======
 		rc = -ENOMEM;
 		class_name_dir = d_alloc_name(class_dir, classes[i]);
@@ -1799,6 +1840,7 @@ static int sel_make_classes(void)
 		if (rc)
 			goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* i+1 since class values are 1-indexed */
 		rc = sel_make_class_dir_entries(classes[i], i + 1,
@@ -1845,6 +1887,9 @@ static int sel_make_policycap(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct dentry *sel_make_dir(struct dentry *dir, const char *name,
 			unsigned long *ino)
 {
@@ -1859,6 +1904,8 @@ static struct dentry *sel_make_dir(struct dentry *dir, const char *name,
 		dput(dentry);
 		return ERR_PTR(-ENOMEM);
 	}
+<<<<<<< HEAD
+=======
 =======
 static int sel_make_dir(struct inode *dir, struct dentry *dentry,
 			unsigned long *ino)
@@ -1869,6 +1916,7 @@ static int sel_make_dir(struct inode *dir, struct dentry *dentry,
 	if (!inode)
 		return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inode->i_op = &simple_dir_inode_operations;
 	inode->i_fop = &simple_dir_operations;
@@ -1882,10 +1930,16 @@ static int sel_make_dir(struct inode *dir, struct dentry *dentry,
 
 	return dentry;
 =======
+<<<<<<< HEAD
+	inc_nlink(dir->d_inode);
+
+	return dentry;
+=======
 	inc_nlink(dir);
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int sel_fill_super(struct super_block *sb, void *data, int silent)
@@ -1895,8 +1949,12 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 <<<<<<< HEAD
 	struct inode *inode;
 =======
+<<<<<<< HEAD
+	struct inode *inode;
+=======
 	struct inode *inode, *root_inode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inode_security_struct *isec;
 
 	static struct tree_descr selinux_files[] = {
@@ -1924,12 +1982,17 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 		goto err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool_dir = sel_make_dir(sb->s_root, BOOL_DIR_NAME, &sel_last_ino);
 	if (IS_ERR(bool_dir)) {
 		ret = PTR_ERR(bool_dir);
 		bool_dir = NULL;
 		goto err;
 	}
+<<<<<<< HEAD
+=======
 =======
 	root_inode = sb->s_root->d_inode;
 
@@ -1944,6 +2007,7 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 
 	bool_dir = dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = -ENOMEM;
 	dentry = d_alloc_name(sb->s_root, NULL_FILE_NAME);
@@ -1966,11 +2030,16 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 	selinux_null = dentry;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dentry = sel_make_dir(sb->s_root, "avc", &sel_last_ino);
 	if (IS_ERR(dentry)) {
 		ret = PTR_ERR(dentry);
 		goto err;
 	}
+<<<<<<< HEAD
+=======
 =======
 	ret = -ENOMEM;
 	dentry = d_alloc_name(sb->s_root, "avc");
@@ -1981,17 +2050,23 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 	if (ret)
 		goto err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = sel_make_avc_files(dentry);
 	if (ret)
 		goto err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dentry = sel_make_dir(sb->s_root, "initial_contexts", &sel_last_ino);
 	if (IS_ERR(dentry)) {
 		ret = PTR_ERR(dentry);
 		goto err;
 	}
+<<<<<<< HEAD
+=======
 =======
 	ret = -ENOMEM;
 	dentry = d_alloc_name(sb->s_root, "initial_contexts");
@@ -2002,12 +2077,16 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 	if (ret)
 		goto err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = sel_make_initcon_files(dentry);
 	if (ret)
 		goto err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	class_dir = sel_make_dir(sb->s_root, "class", &sel_last_ino);
 	if (IS_ERR(class_dir)) {
 		ret = PTR_ERR(class_dir);
@@ -2021,6 +2100,8 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 		policycap_dir = NULL;
 		goto err;
 	}
+<<<<<<< HEAD
+=======
 =======
 	ret = -ENOMEM;
 	dentry = d_alloc_name(sb->s_root, "class");
@@ -2045,6 +2126,7 @@ static int sel_fill_super(struct super_block *sb, void *data, int silent)
 	policycap_dir = dentry;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 err:
 	printk(KERN_ERR "SELinux: %s:  failed while creating inodes\n",
@@ -2103,7 +2185,11 @@ void exit_sel_fs(void)
 <<<<<<< HEAD
 	kern_unmount(selinuxfs_mount);
 =======
+<<<<<<< HEAD
+	kern_unmount(selinuxfs_mount);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unregister_filesystem(&sel_fs_type);
 }
 #endif

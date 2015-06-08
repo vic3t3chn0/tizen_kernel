@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/nsproxy.h>
 =======
+<<<<<<< HEAD
+#include <linux/nsproxy.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/sunrpc/types.h>
 #include <linux/sunrpc/xdr.h>
@@ -37,8 +41,12 @@
 <<<<<<< HEAD
 static void svc_unregister(const struct svc_serv *serv, struct net *net);
 =======
+<<<<<<< HEAD
+static void svc_unregister(const struct svc_serv *serv, struct net *net);
+=======
 static void svc_unregister(const struct svc_serv *serv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define svc_serv_is_pooled(serv)    ((serv)->sv_function)
 
@@ -296,8 +304,11 @@ svc_pool_map_put(void)
 	if (!--m->count) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		m->mode = SVC_POOL_DEFAULT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree(m->to_pool);
 		m->to_pool = NULL;
 		kfree(m->pool_to);
@@ -310,6 +321,9 @@ svc_pool_map_put(void)
 
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int svc_pool_map_get_node(unsigned int pidx)
 {
 	const struct svc_pool_map *m = &svc_pool_map;
@@ -322,8 +336,11 @@ static int svc_pool_map_get_node(unsigned int pidx)
 	}
 	return NUMA_NO_NODE;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Set the given thread's cpus_allowed mask so that it
  * will only run on cpus in the given pool.
@@ -384,6 +401,9 @@ svc_pool_for_cpu(struct svc_serv *serv, int cpu)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int svc_rpcb_setup(struct svc_serv *serv, struct net *net)
 {
 	int err;
@@ -421,8 +441,11 @@ static int svc_uses_rpcbind(struct svc_serv *serv)
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Create an RPC service
@@ -432,8 +455,12 @@ __svc_create(struct svc_program *prog, unsigned int bufsize, int npools,
 <<<<<<< HEAD
 	     void (*shutdown)(struct svc_serv *serv, struct net *net))
 =======
+<<<<<<< HEAD
+	     void (*shutdown)(struct svc_serv *serv, struct net *net))
+=======
 	     void (*shutdown)(struct svc_serv *serv))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct svc_serv	*serv;
 	unsigned int vers;
@@ -493,6 +520,9 @@ __svc_create(struct svc_program *prog, unsigned int bufsize, int npools,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (svc_uses_rpcbind(serv)) {
 		if (svc_rpcb_setup(serv, current->nsproxy->net_ns) < 0) {
 			kfree(serv->sv_pools);
@@ -502,10 +532,13 @@ __svc_create(struct svc_program *prog, unsigned int bufsize, int npools,
 		if (!serv->sv_shutdown)
 			serv->sv_shutdown = svc_rpcb_cleanup;
 	}
+<<<<<<< HEAD
+=======
 =======
 	/* Remove any stale portmap registrations */
 	svc_unregister(serv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return serv;
 }
@@ -515,8 +548,12 @@ svc_create(struct svc_program *prog, unsigned int bufsize,
 <<<<<<< HEAD
 	   void (*shutdown)(struct svc_serv *serv, struct net *net))
 =======
+<<<<<<< HEAD
+	   void (*shutdown)(struct svc_serv *serv, struct net *net))
+=======
 	   void (*shutdown)(struct svc_serv *serv))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return __svc_create(prog, bufsize, /*npools*/1, shutdown);
 }
@@ -527,8 +564,12 @@ svc_create_pooled(struct svc_program *prog, unsigned int bufsize,
 <<<<<<< HEAD
 		  void (*shutdown)(struct svc_serv *serv, struct net *net),
 =======
+<<<<<<< HEAD
+		  void (*shutdown)(struct svc_serv *serv, struct net *net),
+=======
 		  void (*shutdown)(struct svc_serv *serv),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  svc_thread_fn func, struct module *mod)
 {
 	struct svc_serv *serv;
@@ -546,6 +587,9 @@ svc_create_pooled(struct svc_program *prog, unsigned int bufsize,
 EXPORT_SYMBOL_GPL(svc_create_pooled);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void svc_shutdown_net(struct svc_serv *serv, struct net *net)
 {
 	/*
@@ -564,8 +608,11 @@ void svc_shutdown_net(struct svc_serv *serv, struct net *net)
 }
 EXPORT_SYMBOL_GPL(svc_shutdown_net);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Destroy an RPC service. Should be called with appropriate locking to
  * protect the sv_nrthreads, sv_permsocks and sv_tempsocks.
@@ -577,7 +624,12 @@ svc_destroy(struct svc_serv *serv)
 	struct net *net = current->nsproxy->net_ns;
 
 =======
+<<<<<<< HEAD
+	struct net *net = current->nsproxy->net_ns;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk("svc: svc_destroy(%s, %d)\n",
 				serv->sv_program->pg_name,
 				serv->sv_nrthreads);
@@ -592,6 +644,9 @@ svc_destroy(struct svc_serv *serv)
 
 	del_timer_sync(&serv->sv_temptimer);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	svc_shutdown_net(serv, net);
 
@@ -601,6 +656,8 @@ svc_destroy(struct svc_serv *serv)
 	 */
 	BUG_ON(!list_empty(&serv->sv_permsocks));
 	BUG_ON(!list_empty(&serv->sv_tempsocks));
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * The set of xprts (contained in the sv_tempsocks and
@@ -616,6 +673,7 @@ svc_destroy(struct svc_serv *serv)
 	if (serv->sv_shutdown)
 		serv->sv_shutdown(serv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cache_clean_deferred(serv);
 
@@ -624,8 +682,11 @@ svc_destroy(struct svc_serv *serv)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	svc_unregister(serv);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(serv->sv_pools);
 	kfree(serv);
 }
@@ -639,8 +700,12 @@ static int
 <<<<<<< HEAD
 svc_init_buffer(struct svc_rqst *rqstp, unsigned int size, int node)
 =======
+<<<<<<< HEAD
+svc_init_buffer(struct svc_rqst *rqstp, unsigned int size, int node)
+=======
 svc_init_buffer(struct svc_rqst *rqstp, unsigned int size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int pages, arghi;
 
@@ -657,8 +722,12 @@ svc_init_buffer(struct svc_rqst *rqstp, unsigned int size)
 <<<<<<< HEAD
 		struct page *p = alloc_pages_node(node, GFP_KERNEL, 0);
 =======
+<<<<<<< HEAD
+		struct page *p = alloc_pages_node(node, GFP_KERNEL, 0);
+=======
 		struct page *p = alloc_page(GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!p)
 			break;
 		rqstp->rq_pages[arghi++] = p;
@@ -682,11 +751,16 @@ svc_release_buffer(struct svc_rqst *rqstp)
 
 struct svc_rqst *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 svc_prepare_thread(struct svc_serv *serv, struct svc_pool *pool, int node)
 {
 	struct svc_rqst	*rqstp;
 
 	rqstp = kzalloc_node(sizeof(*rqstp), GFP_KERNEL, node);
+<<<<<<< HEAD
+=======
 =======
 svc_prepare_thread(struct svc_serv *serv, struct svc_pool *pool)
 {
@@ -694,6 +768,7 @@ svc_prepare_thread(struct svc_serv *serv, struct svc_pool *pool)
 
 	rqstp = kzalloc(sizeof(*rqstp), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!rqstp)
 		goto out_enomem;
 
@@ -708,6 +783,9 @@ svc_prepare_thread(struct svc_serv *serv, struct svc_pool *pool)
 	rqstp->rq_pool = pool;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rqstp->rq_argp = kmalloc_node(serv->sv_xdrsize, GFP_KERNEL, node);
 	if (!rqstp->rq_argp)
 		goto out_thread;
@@ -717,6 +795,8 @@ svc_prepare_thread(struct svc_serv *serv, struct svc_pool *pool)
 		goto out_thread;
 
 	if (!svc_init_buffer(rqstp, serv->sv_max_mesg, node))
+<<<<<<< HEAD
+=======
 =======
 	rqstp->rq_argp = kmalloc(serv->sv_xdrsize, GFP_KERNEL);
 	if (!rqstp->rq_argp)
@@ -728,6 +808,7 @@ svc_prepare_thread(struct svc_serv *serv, struct svc_pool *pool)
 
 	if (!svc_init_buffer(rqstp, serv->sv_max_mesg))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_thread;
 
 	return rqstp;
@@ -798,9 +879,14 @@ found_pool:
  * all pools.  Caller must ensure that mutual exclusion between this and
  * server startup or shutdown.
 =======
+<<<<<<< HEAD
+ * all pools.  Caller must ensure that mutual exclusion between this and
+ * server startup or shutdown.
+=======
  * all pools.  Must be called with a svc_get() reference and
  * the BKL or another lock to protect access to svc_serv fields.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Destroying threads relies on the service threads filling in
  * rqstp->rq_task, which only the nfs ones do.  Assumes the serv
@@ -820,7 +906,11 @@ svc_set_num_threads(struct svc_serv *serv, struct svc_pool *pool, int nrservs)
 <<<<<<< HEAD
 	int node;
 =======
+<<<<<<< HEAD
+	int node;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (pool == NULL) {
 		/* The -1 assumes caller has done a svc_get() */
@@ -840,8 +930,13 @@ svc_set_num_threads(struct svc_serv *serv, struct svc_pool *pool, int nrservs)
 		node = svc_pool_map_get_node(chosen_pool->sp_id);
 		rqstp = svc_prepare_thread(serv, chosen_pool, node);
 =======
+<<<<<<< HEAD
+		node = svc_pool_map_get_node(chosen_pool->sp_id);
+		rqstp = svc_prepare_thread(serv, chosen_pool, node);
+=======
 		rqstp = svc_prepare_thread(serv, chosen_pool);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_ERR(rqstp)) {
 			error = PTR_ERR(rqstp);
 			break;
@@ -852,8 +947,13 @@ svc_set_num_threads(struct svc_serv *serv, struct svc_pool *pool, int nrservs)
 		task = kthread_create_on_node(serv->sv_function, rqstp,
 					      node, serv->sv_name);
 =======
+<<<<<<< HEAD
+		task = kthread_create_on_node(serv->sv_function, rqstp,
+					      node, serv->sv_name);
+=======
 		task = kthread_create(serv->sv_function, rqstp, serv->sv_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (IS_ERR(task)) {
 			error = PTR_ERR(task);
 			module_put(serv->sv_module);
@@ -921,8 +1021,13 @@ EXPORT_SYMBOL_GPL(svc_exit_thread);
 static int __svc_rpcb_register4(struct net *net, const u32 program,
 				const u32 version,
 =======
+<<<<<<< HEAD
+static int __svc_rpcb_register4(struct net *net, const u32 program,
+				const u32 version,
+=======
 static int __svc_rpcb_register4(const u32 program, const u32 version,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const unsigned short protocol,
 				const unsigned short port)
 {
@@ -948,8 +1053,12 @@ static int __svc_rpcb_register4(const u32 program, const u32 version,
 <<<<<<< HEAD
 	error = rpcb_v4_register(net, program, version,
 =======
+<<<<<<< HEAD
+	error = rpcb_v4_register(net, program, version,
+=======
 	error = rpcb_v4_register(program, version,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					(const struct sockaddr *)&sin, netid);
 
 	/*
@@ -960,8 +1069,12 @@ static int __svc_rpcb_register4(const u32 program, const u32 version,
 <<<<<<< HEAD
 		error = rpcb_register(net, program, version, protocol, port);
 =======
+<<<<<<< HEAD
+		error = rpcb_register(net, program, version, protocol, port);
+=======
 		error = rpcb_register(program, version, protocol, port);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return error;
 }
@@ -969,8 +1082,12 @@ static int __svc_rpcb_register4(const u32 program, const u32 version,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Register an "inet6" protocol family netid with the local
  * rpcbind daemon via an rpcbind v4 SET request.
@@ -985,8 +1102,13 @@ static int __svc_rpcb_register4(const u32 program, const u32 version,
 static int __svc_rpcb_register6(struct net *net, const u32 program,
 				const u32 version,
 =======
+<<<<<<< HEAD
+static int __svc_rpcb_register6(struct net *net, const u32 program,
+				const u32 version,
+=======
 static int __svc_rpcb_register6(const u32 program, const u32 version,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const unsigned short protocol,
 				const unsigned short port)
 {
@@ -1012,8 +1134,12 @@ static int __svc_rpcb_register6(const u32 program, const u32 version,
 <<<<<<< HEAD
 	error = rpcb_v4_register(net, program, version,
 =======
+<<<<<<< HEAD
+	error = rpcb_v4_register(net, program, version,
+=======
 	error = rpcb_v4_register(program, version,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					(const struct sockaddr *)&sin6, netid);
 
 	/*
@@ -1028,8 +1154,12 @@ static int __svc_rpcb_register6(const u32 program, const u32 version,
 <<<<<<< HEAD
 #endif	/* IS_ENABLED(CONFIG_IPV6) */
 =======
+<<<<<<< HEAD
+#endif	/* IS_ENABLED(CONFIG_IPV6) */
+=======
 #endif	/* defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Register a kernel RPC service via rpcbind version 4.
@@ -1040,8 +1170,12 @@ static int __svc_rpcb_register6(const u32 program, const u32 version,
 <<<<<<< HEAD
 static int __svc_register(struct net *net, const char *progname,
 =======
+<<<<<<< HEAD
+static int __svc_register(struct net *net, const char *progname,
+=======
 static int __svc_register(const char *progname,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  const u32 program, const u32 version,
 			  const int family,
 			  const unsigned short protocol,
@@ -1052,6 +1186,9 @@ static int __svc_register(const char *progname,
 	switch (family) {
 	case PF_INET:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = __svc_rpcb_register4(net, program, version,
 						protocol, port);
 		break;
@@ -1060,6 +1197,8 @@ static int __svc_register(const char *progname,
 		error = __svc_rpcb_register6(net, program, version,
 						protocol, port);
 #endif
+<<<<<<< HEAD
+=======
 =======
 		error = __svc_rpcb_register4(program, version,
 						protocol, port);
@@ -1070,6 +1209,7 @@ static int __svc_register(const char *progname,
 						protocol, port);
 #endif	/* defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (error < 0)
@@ -1084,7 +1224,11 @@ static int __svc_register(const char *progname,
 <<<<<<< HEAD
  * @net: net namespace for the service to register
 =======
+<<<<<<< HEAD
+ * @net: net namespace for the service to register
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @family: protocol family of service's listener socket
  * @proto: transport protocol number to advertise
  * @port: port to advertise
@@ -1096,9 +1240,15 @@ int svc_register(const struct svc_serv *serv, struct net *net,
 		 const int family, const unsigned short proto,
 		 const unsigned short port)
 =======
+<<<<<<< HEAD
+int svc_register(const struct svc_serv *serv, struct net *net,
+		 const int family, const unsigned short proto,
+		 const unsigned short port)
+=======
 int svc_register(const struct svc_serv *serv, const int family,
 		 const unsigned short proto, const unsigned short port)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct svc_program	*progp;
 	unsigned int		i;
@@ -1126,8 +1276,12 @@ int svc_register(const struct svc_serv *serv, const int family,
 <<<<<<< HEAD
 			error = __svc_register(net, progp->pg_name, progp->pg_prog,
 =======
+<<<<<<< HEAD
+			error = __svc_register(net, progp->pg_name, progp->pg_prog,
+=======
 			error = __svc_register(progp->pg_name, progp->pg_prog,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						i, family, proto, port);
 			if (error < 0)
 				break;
@@ -1147,8 +1301,12 @@ int svc_register(const struct svc_serv *serv, const int family,
 <<<<<<< HEAD
 static void __svc_unregister(struct net *net, const u32 program, const u32 version,
 =======
+<<<<<<< HEAD
+static void __svc_unregister(struct net *net, const u32 program, const u32 version,
+=======
 static void __svc_unregister(const u32 program, const u32 version,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     const char *progname)
 {
 	int error;
@@ -1156,8 +1314,12 @@ static void __svc_unregister(const u32 program, const u32 version,
 <<<<<<< HEAD
 	error = rpcb_v4_register(net, program, version, NULL, "");
 =======
+<<<<<<< HEAD
+	error = rpcb_v4_register(net, program, version, NULL, "");
+=======
 	error = rpcb_v4_register(program, version, NULL, "");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * User space didn't support rpcbind v4, so retry this
@@ -1167,8 +1329,12 @@ static void __svc_unregister(const u32 program, const u32 version,
 <<<<<<< HEAD
 		error = rpcb_register(net, program, version, 0, 0);
 =======
+<<<<<<< HEAD
+		error = rpcb_register(net, program, version, 0, 0);
+=======
 		error = rpcb_register(program, version, 0, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dprintk("svc: %s(%sv%u), error %d\n",
 			__func__, progname, version, error);
@@ -1185,8 +1351,12 @@ static void __svc_unregister(const u32 program, const u32 version,
 <<<<<<< HEAD
 static void svc_unregister(const struct svc_serv *serv, struct net *net)
 =======
+<<<<<<< HEAD
+static void svc_unregister(const struct svc_serv *serv, struct net *net)
+=======
 static void svc_unregister(const struct svc_serv *serv)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct svc_program *progp;
 	unsigned long flags;
@@ -1206,8 +1376,12 @@ static void svc_unregister(const struct svc_serv *serv)
 <<<<<<< HEAD
 			__svc_unregister(net, progp->pg_prog, i, progp->pg_name);
 =======
+<<<<<<< HEAD
+			__svc_unregister(net, progp->pg_prog, i, progp->pg_name);
+=======
 			__svc_unregister(progp->pg_prog, i, progp->pg_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -1223,10 +1397,15 @@ static void svc_unregister(const struct svc_serv *serv)
 static __printf(2, 3)
 int svc_printk(struct svc_rqst *rqstp, const char *fmt, ...)
 =======
+<<<<<<< HEAD
+static __printf(2, 3)
+int svc_printk(struct svc_rqst *rqstp, const char *fmt, ...)
+=======
 static int
 __attribute__ ((format (printf, 2, 3)))
 svc_printk(struct svc_rqst *rqstp, const char *fmt, ...)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	va_list args;
 	int 	r;
@@ -1523,8 +1702,12 @@ svc_process(struct svc_rqst *rqstp)
 <<<<<<< HEAD
 #if defined(CONFIG_SUNRPC_BACKCHANNEL)
 =======
+<<<<<<< HEAD
+#if defined(CONFIG_SUNRPC_BACKCHANNEL)
+=======
 #if defined(CONFIG_NFS_V4_1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Process a backchannel RPC request that arrived over an existing
  * outbound connection
@@ -1569,12 +1752,17 @@ bc_svc_process(struct svc_serv *serv, struct rpc_rqst *req,
 		return bc_send(req);
 	} else {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Nothing to do to drop request */
 		return 0;
 	}
 }
 EXPORT_SYMBOL_GPL(bc_svc_process);
 #endif /* CONFIG_SUNRPC_BACKCHANNEL */
+<<<<<<< HEAD
+=======
 =======
 		/* drop request */
 		xprt_free_bc_request(req);
@@ -1584,6 +1772,7 @@ EXPORT_SYMBOL_GPL(bc_svc_process);
 EXPORT_SYMBOL(bc_svc_process);
 #endif /* CONFIG_NFS_V4_1 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Return (transport-specific) limit on the rpc payload.

@@ -15,8 +15,13 @@
 #include <linux/basic_mmio_gpio.h>
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/basic_mmio_gpio.h>
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/input.h>
@@ -24,6 +29,9 @@
 #include <linux/leds.h>
 #include <linux/platform_device.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/consumer.h>
 #include <linux/regulator/fixed.h>
 #include <linux/regulator/machine.h>
@@ -31,17 +39,23 @@
 #include <linux/export.h>
 #include <linux/omapfb.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/serial_8250.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <media/soc_camera.h>
 
 #include <asm/serial.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <mach/hardware.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
@@ -49,15 +63,22 @@
 <<<<<<< HEAD
 #include <plat/board-ams-delta.h>
 =======
+<<<<<<< HEAD
+#include <plat/board-ams-delta.h>
+=======
 #include <plat/io.h>
 #include <plat/board-ams-delta.h>
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/keypad.h>
 #include <plat/mux.h>
 #include <plat/usb.h>
 #include <plat/board.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/ams-delta-fiq.h>
@@ -65,6 +86,8 @@
 
 #include "iomap.h"
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <mach/camera.h>
@@ -74,6 +97,7 @@
 static u8 ams_delta_latch1_reg;
 static u16 ams_delta_latch2_reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const unsigned int ams_delta_keymap[] = {
 	KEY(0, 0, KEY_F1),		/* Advert    */
@@ -154,12 +178,17 @@ static const unsigned int ams_delta_keymap[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define LATCH1_PHYS	0x01000000
 #define LATCH1_VIRT	0xEA000000
 #define MODEM_PHYS	0x04000000
 #define MODEM_VIRT	0xEB000000
 #define LATCH2_PHYS	0x08000000
 #define LATCH2_VIRT	0xEC000000
+<<<<<<< HEAD
+=======
 =======
 void ams_delta_latch1_write(u8 mask, u8 value)
 {
@@ -181,6 +210,7 @@ static void __init ams_delta_init_irq(void)
 	omap_init_irq();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct map_desc ams_delta_io_desc[] __initdata = {
 	/* AMS_DELTA_LATCH1 */
@@ -189,9 +219,14 @@ static struct map_desc ams_delta_io_desc[] __initdata = {
 		.virtual	= LATCH1_VIRT,
 		.pfn		= __phys_to_pfn(LATCH1_PHYS),
 =======
+<<<<<<< HEAD
+		.virtual	= LATCH1_VIRT,
+		.pfn		= __phys_to_pfn(LATCH1_PHYS),
+=======
 		.virtual	= AMS_DELTA_LATCH1_VIRT,
 		.pfn		= __phys_to_pfn(AMS_DELTA_LATCH1_PHYS),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.length		= 0x01000000,
 		.type		= MT_DEVICE
 	},
@@ -201,9 +236,14 @@ static struct map_desc ams_delta_io_desc[] __initdata = {
 		.virtual	= LATCH2_VIRT,
 		.pfn		= __phys_to_pfn(LATCH2_PHYS),
 =======
+<<<<<<< HEAD
+		.virtual	= LATCH2_VIRT,
+		.pfn		= __phys_to_pfn(LATCH2_PHYS),
+=======
 		.virtual	= AMS_DELTA_LATCH2_VIRT,
 		.pfn		= __phys_to_pfn(AMS_DELTA_LATCH2_PHYS),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.length		= 0x01000000,
 		.type		= MT_DEVICE
 	},
@@ -213,20 +253,30 @@ static struct map_desc ams_delta_io_desc[] __initdata = {
 		.virtual	= MODEM_VIRT,
 		.pfn		= __phys_to_pfn(MODEM_PHYS),
 =======
+<<<<<<< HEAD
+		.virtual	= MODEM_VIRT,
+		.pfn		= __phys_to_pfn(MODEM_PHYS),
+=======
 		.virtual	= AMS_DELTA_MODEM_VIRT,
 		.pfn		= __phys_to_pfn(AMS_DELTA_MODEM_PHYS),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.length		= 0x01000000,
 		.type		= MT_DEVICE
 	}
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_lcd_config ams_delta_lcd_config __initdata = {
 	.ctrl_name	= "internal",
 };
 
 static struct omap_usb_config ams_delta_usb_config = {
+<<<<<<< HEAD
+=======
 =======
 static struct omap_lcd_config ams_delta_lcd_config = {
 	.ctrl_name	= "internal",
@@ -234,12 +284,16 @@ static struct omap_lcd_config ams_delta_lcd_config = {
 
 static struct omap_usb_config ams_delta_usb_config __initdata = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.register_host	= 1,
 	.hmc_mode	= 16,
 	.pins[0]	= 2,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define LATCH1_GPIO_BASE	232
 #define LATCH1_NGPIO		8
 
@@ -381,12 +435,15 @@ void ams_delta_latch_write(int base, int ngpio, u16 mask, u16 value)
 }
 EXPORT_SYMBOL(ams_delta_latch_write);
 
+<<<<<<< HEAD
+=======
 =======
 static struct omap_board_config_kernel ams_delta_config[] __initdata = {
 	{ OMAP_TAG_LCD,		&ams_delta_lcd_config },
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource ams_delta_nand_resources[] = {
 	[0] = {
 		.start	= OMAP1_MPUIO_BASE,
@@ -419,8 +476,12 @@ static const struct matrix_keymap_data ams_delta_keymap_data = {
 <<<<<<< HEAD
 static struct omap_kp_platform_data ams_delta_kp_data = {
 =======
+<<<<<<< HEAD
+static struct omap_kp_platform_data ams_delta_kp_data = {
+=======
 static struct omap_kp_platform_data ams_delta_kp_data __initdata = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.rows		= 8,
 	.cols		= 8,
 	.keymap_data	= &ams_delta_keymap_data,
@@ -443,6 +504,9 @@ static struct platform_device ams_delta_lcd_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct gpio_led gpio_leds[] __initconst = {
 	{
 		.name		 = "camera",
@@ -482,11 +546,14 @@ static const struct gpio_led gpio_leds[] __initconst = {
 static const struct gpio_led_platform_data leds_pdata __initconst = {
 	.leds		= gpio_leds,
 	.num_leds	= ARRAY_SIZE(gpio_leds),
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device ams_delta_led_device = {
 	.name	= "ams-delta-led",
 	.id	= -1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info ams_delta_camera_board_info[] = {
@@ -536,6 +603,9 @@ static struct omap1_cam_platform_data ams_delta_camera_platform_data = {
 
 static struct platform_device *ams_delta_devices[] __initdata = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&latch1_gpio_device,
 	&latch2_gpio_device,
 	&ams_delta_kp_device,
@@ -545,6 +615,8 @@ static struct platform_device *ams_delta_devices[] __initdata = {
 static struct platform_device *late_devices[] __initdata = {
 	&ams_delta_nand_device,
 	&ams_delta_lcd_device,
+<<<<<<< HEAD
+=======
 =======
 	&ams_delta_nand_device,
 	&ams_delta_kp_device,
@@ -552,6 +624,7 @@ static struct platform_device *late_devices[] __initdata = {
 	&ams_delta_led_device,
 	&ams_delta_camera_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init ams_delta_init(void)
@@ -579,6 +652,11 @@ static void __init ams_delta_init(void)
 	omap_register_i2c_bus(1, 100, NULL, 0);
 
 =======
+<<<<<<< HEAD
+	omap_serial_init();
+	omap_register_i2c_bus(1, 100, NULL, 0);
+
+=======
 	iotable_init(ams_delta_io_desc, ARRAY_SIZE(ams_delta_io_desc));
 
 	omap_board_config = ams_delta_config;
@@ -590,6 +668,7 @@ static void __init ams_delta_init(void)
 	ams_delta_latch2_write(~0, 0);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap1_usb_init(&ams_delta_usb_config);
 	omap1_set_camera_info(&ams_delta_camera_platform_data);
 #ifdef CONFIG_LEDS_TRIGGERS
@@ -599,13 +678,20 @@ static void __init ams_delta_init(void)
 <<<<<<< HEAD
 	gpio_led_register_device(-1, &leds_pdata);
 =======
+<<<<<<< HEAD
+	gpio_led_register_device(-1, &leds_pdata);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_add_devices(ams_delta_devices, ARRAY_SIZE(ams_delta_devices));
 
 	ams_delta_init_fiq();
 
 	omap_writew(omap_readw(ARM_RSTCT1) | 0x0004, ARM_RSTCT1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	omapfb_set_lcd_config(&ams_delta_lcd_config);
 }
@@ -624,8 +710,11 @@ static void modem_pm(struct uart_port *port, unsigned int state, unsigned old)
 		regulator_enable(priv->regulator);
 	else if (old == 0)
 		regulator_disable(priv->regulator);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct plat_serial8250_port ams_delta_modem_ports[] = {
@@ -634,9 +723,14 @@ static struct plat_serial8250_port ams_delta_modem_ports[] = {
 		.membase	= IOMEM(MODEM_VIRT),
 		.mapbase	= MODEM_PHYS,
 =======
+<<<<<<< HEAD
+		.membase	= IOMEM(MODEM_VIRT),
+		.mapbase	= MODEM_PHYS,
+=======
 		.membase	= IOMEM(AMS_DELTA_MODEM_VIRT),
 		.mapbase	= AMS_DELTA_MODEM_PHYS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.irq		= -EINVAL, /* changed later */
 		.flags		= UPF_BOOT_AUTOCONF,
 		.irqflags	= IRQF_TRIGGER_RISING,
@@ -647,7 +741,12 @@ static struct plat_serial8250_port ams_delta_modem_ports[] = {
 		.pm		= modem_pm,
 		.private_data	= &modem_priv,
 =======
+<<<<<<< HEAD
+		.pm		= modem_pm,
+		.private_data	= &modem_priv,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{ },
 };
@@ -663,8 +762,12 @@ static struct platform_device ams_delta_modem_device = {
 <<<<<<< HEAD
 static int __init late_init(void)
 =======
+<<<<<<< HEAD
+static int __init late_init(void)
+=======
 static int __init ams_delta_modem_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 
@@ -672,6 +775,9 @@ static int __init ams_delta_modem_init(void)
 		return -ENODEV;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = gpio_request_array(latch_gpios, ARRAY_SIZE(latch_gpios));
 	if (err) {
 		pr_err("Couldn't take over latch1/latch2 GPIO pins\n");
@@ -686,8 +792,11 @@ static int __init ams_delta_modem_init(void)
 		return err;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_cfg_reg(M14_1510_GPIO2);
 	ams_delta_modem_ports[0].irq =
 			gpio_to_irq(AMS_DELTA_GPIO_PIN_MODEM_IRQ);
@@ -700,6 +809,9 @@ static int __init ams_delta_modem_init(void)
 	gpio_direction_input(AMS_DELTA_GPIO_PIN_MODEM_IRQ);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Initialize the modem_nreset regulator consumer before use */
 	modem_priv.regulator = ERR_PTR(-ENODEV);
 
@@ -734,6 +846,8 @@ static void __init ams_delta_map_io(void)
 {
 	omap15xx_map_io();
 	iotable_init(ams_delta_io_desc, ARRAY_SIZE(ams_delta_io_desc));
+<<<<<<< HEAD
+=======
 =======
 	ams_delta_latch2_write(
 		AMS_DELTA_LATCH2_MODEM_NRESET | AMS_DELTA_LATCH2_MODEM_CODEC,
@@ -747,11 +861,15 @@ static void __init ams_delta_map_io(void)
 {
 	omap1_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(AMS_DELTA, "Amstrad E3 (Delta)")
 	/* Maintainer: Jonathan McDowell <noodles@earth.li> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= ams_delta_map_io,
 	.init_early	= omap1_init_early,
@@ -761,6 +879,8 @@ MACHINE_START(AMS_DELTA, "Amstrad E3 (Delta)")
 	.timer		= &omap1_timer,
 	.restart	= omap1_restart,
 MACHINE_END
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x10000100,
 	.map_io		= ams_delta_map_io,
@@ -773,3 +893,4 @@ MACHINE_END
 EXPORT_SYMBOL(ams_delta_latch1_write);
 EXPORT_SYMBOL(ams_delta_latch2_write);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

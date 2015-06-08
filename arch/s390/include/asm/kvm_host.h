@@ -50,8 +50,12 @@ struct sca_block {
 <<<<<<< HEAD
 #define CPUSTAT_STOPPED    0x80000000
 =======
+<<<<<<< HEAD
+#define CPUSTAT_STOPPED    0x80000000
+=======
 #define CPUSTAT_HOST       0x80000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CPUSTAT_WAIT       0x10000000
 #define CPUSTAT_ECALL_PEND 0x08000000
 #define CPUSTAT_STOP_INT   0x04000000
@@ -100,10 +104,14 @@ struct kvm_s390_sie_block {
 <<<<<<< HEAD
 	__u8	reserved70[32];		/* 0x0070 */
 =======
+<<<<<<< HEAD
+	__u8	reserved70[32];		/* 0x0070 */
+=======
 	__u8	reserved70[16];		/* 0x0070 */
 	__u64	gmsor;			/* 0x0080 */
 	__u64	gmslm;			/* 0x0088 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	psw_t	gpsw;			/* 0x0090 */
 	__u64	gg14;			/* 0x00a0 */
 	__u64	gg15;			/* 0x00a8 */
@@ -132,7 +140,11 @@ struct kvm_vcpu_stat {
 <<<<<<< HEAD
 	u32 deliver_external_call;
 =======
+<<<<<<< HEAD
+	u32 deliver_external_call;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 deliver_emergency_signal;
 	u32 deliver_service_signal;
 	u32 deliver_virtio_interrupt;
@@ -151,13 +163,19 @@ struct kvm_vcpu_stat {
 	u32 instruction_stsi;
 	u32 instruction_stfl;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 instruction_tprot;
 	u32 instruction_sigp_sense;
 	u32 instruction_sigp_sense_running;
 	u32 instruction_sigp_external_call;
+<<<<<<< HEAD
+=======
 =======
 	u32 instruction_sigp_sense;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 instruction_sigp_emergency;
 	u32 instruction_sigp_stop;
 	u32 instruction_sigp_arch;
@@ -166,7 +184,11 @@ struct kvm_vcpu_stat {
 <<<<<<< HEAD
 	u32 diagnose_10;
 =======
+<<<<<<< HEAD
+	u32 diagnose_10;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 diagnose_44;
 };
 
@@ -199,6 +221,9 @@ struct kvm_s390_prefix_info {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvm_s390_extcall_info {
 	__u16 code;
 };
@@ -207,8 +232,11 @@ struct kvm_s390_emerg_info {
 	__u16 code;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvm_s390_interrupt_info {
 	struct list_head list;
 	u64	type;
@@ -220,7 +248,12 @@ struct kvm_s390_interrupt_info {
 		struct kvm_s390_emerg_info emerg;
 		struct kvm_s390_extcall_info extcall;
 =======
+<<<<<<< HEAD
+		struct kvm_s390_emerg_info emerg;
+		struct kvm_s390_extcall_info extcall;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct kvm_s390_prefix_info prefix;
 	};
 };
@@ -251,14 +284,25 @@ struct kvm_s390_float_interrupt {
 				/ sizeof(long)];
 	struct kvm_s390_local_interrupt *local_int[KVM_MAX_VCPUS];
 =======
+<<<<<<< HEAD
+	unsigned long idle_mask[(KVM_MAX_VCPUS + sizeof(long) - 1)
+				/ sizeof(long)];
+	struct kvm_s390_local_interrupt *local_int[KVM_MAX_VCPUS];
+=======
 	unsigned long idle_mask [(64 + sizeof(long) - 1) / sizeof(long)];
 	struct kvm_s390_local_interrupt *local_int[64];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
 struct kvm_vcpu_arch {
 	struct kvm_s390_sie_block *sie_block;
+<<<<<<< HEAD
+	s390_fp_regs      host_fpregs;
+	unsigned int      host_acrs[NUM_ACRS];
+	s390_fp_regs      guest_fpregs;
+=======
 <<<<<<< HEAD
 	s390_fp_regs      host_fpregs;
 	unsigned int      host_acrs[NUM_ACRS];
@@ -270,6 +314,7 @@ struct kvm_vcpu_arch {
 	s390_fp_regs      guest_fpregs;
 	unsigned int      guest_acrs[NUM_ACRS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvm_s390_local_interrupt local_int;
 	struct hrtimer    ckc_timer;
 	struct tasklet_struct tasklet;
@@ -280,7 +325,11 @@ struct kvm_vcpu_arch {
 <<<<<<< HEAD
 	struct gmap *gmap;
 =======
+<<<<<<< HEAD
+	struct gmap *gmap;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct kvm_vm_stat {
@@ -292,19 +341,31 @@ struct kvm_arch_memory_slot {
 };
 
 =======
+<<<<<<< HEAD
+struct kvm_arch_memory_slot {
+};
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct kvm_arch{
 	struct sca_block *sca;
 	debug_info_t *dbf;
 	struct kvm_s390_float_interrupt float_int;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct gmap *gmap;
 };
 
 extern int sie64a(struct kvm_s390_sie_block *, u64 *);
+<<<<<<< HEAD
+=======
 =======
 };
 
 extern int sie64a(struct kvm_s390_sie_block *, unsigned long *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

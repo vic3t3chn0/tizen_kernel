@@ -19,6 +19,11 @@
 
 #include <asm/stacktrace.h>
 =======
+<<<<<<< HEAD
+#include <linux/perf_event.h>
+
+#include <asm/stacktrace.h>
+=======
 #include <linux/cpumask.h>
 #include <linux/interrupt.h>
 #include <linux/smp.h>
@@ -538,11 +543,16 @@ handle_associated_event(struct cpu_hw_events *cpuc,
 
 #include "perf_event_mipsxx.c"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Callchain handling code. */
 
 /*
  * Leave userspace callchain empty for now. When we find a way to trace
+<<<<<<< HEAD
+ * the user stack callchains, we will add it here.
+ */
+=======
 <<<<<<< HEAD
  * the user stack callchains, we will add it here.
  */
@@ -554,6 +564,7 @@ void perf_callchain_user(struct perf_callchain_entry *entry,
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void save_raw_perf_callchain(struct perf_callchain_entry *entry,
 	unsigned long reg29)

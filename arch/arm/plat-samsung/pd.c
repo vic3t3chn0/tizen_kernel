@@ -14,8 +14,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/err.h>
 #include <linux/pm_runtime.h>
@@ -28,14 +32,19 @@ static int samsung_pd_probe(struct platform_device *pdev)
 	struct device *dev = &pdev->dev;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!pdata) {
 		dev_err(dev, "no device data specified\n");
 		return -ENOENT;
 	}
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	pdata->id = pdev->id;
@@ -48,6 +57,7 @@ static int samsung_pd_probe(struct platform_device *pdev)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_runtime_set_active(dev);
 	pm_runtime_enable(dev);
 
@@ -63,6 +73,8 @@ static int __devexit samsung_pd_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int samsung_pd_suspend(struct device *dev)
@@ -92,6 +104,7 @@ static int samsung_pd_resume(struct device *dev)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int samsung_pd_runtime_suspend(struct device *dev)
 {
 	struct samsung_pd_info *pdata = dev->platform_data;
@@ -103,8 +116,12 @@ static int samsung_pd_runtime_suspend(struct device *dev)
 <<<<<<< HEAD
 	dev_dbg(dev, "suspended\n");
 =======
+<<<<<<< HEAD
+	dev_dbg(dev, "suspended\n");
+=======
 	dev_dbg(dev, "runtime suspended\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -119,17 +136,24 @@ static int samsung_pd_runtime_resume(struct device *dev)
 <<<<<<< HEAD
 	dev_dbg(dev, "resumed\n");
 =======
+<<<<<<< HEAD
+	dev_dbg(dev, "resumed\n");
+=======
 	dev_dbg(dev, "runtime resumed\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static const struct dev_pm_ops samsung_pd_pm_ops = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.suspend		= samsung_pd_suspend,
 	.resume			= samsung_pd_resume,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.runtime_suspend	= samsung_pd_runtime_suspend,
 	.runtime_resume		= samsung_pd_runtime_resume,
 };

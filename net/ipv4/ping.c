@@ -22,8 +22,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/uaccess.h>
 #include <linux/types.h>
 #include <linux/fcntl.h>
@@ -39,8 +42,11 @@
 #include <net/ip.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <net/ipv6.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/icmp.h>
 #include <net/protocol.h>
 #include <linux/skbuff.h>
@@ -48,7 +54,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/sock.h>
 #include <net/ping.h>
 #include <net/udp.h>
@@ -57,6 +67,9 @@
 #include <net/checksum.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_IPV6)
 #include <linux/in6.h>
 #include <linux/icmpv6.h>
@@ -69,10 +82,13 @@
 struct ping_table ping_table;
 struct pingv6_ops pingv6_ops;
 EXPORT_SYMBOL_GPL(pingv6_ops);
+<<<<<<< HEAD
+=======
 =======
 
 static struct ping_table ping_table;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static u16 ping_port_rover;
 
@@ -85,7 +101,11 @@ static inline int ping_hashfn(struct net *net, unsigned num, unsigned mask)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(ping_hash);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(ping_hash);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline struct hlist_nulls_head *ping_hashslot(struct ping_table *table,
 					     struct net *net, unsigned num)
@@ -96,8 +116,12 @@ static inline struct hlist_nulls_head *ping_hashslot(struct ping_table *table,
 <<<<<<< HEAD
 int ping_get_port(struct sock *sk, unsigned short ident)
 =======
+<<<<<<< HEAD
+int ping_get_port(struct sock *sk, unsigned short ident)
+=======
 static int ping_v4_get_port(struct sock *sk, unsigned short ident)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hlist_nulls_node *node;
 	struct hlist_nulls_head *hlist;
@@ -136,12 +160,18 @@ next_port:
 			isk2 = inet_sk(sk2);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* BUG? Why is this reuse and not reuseaddr? ping.c
 			 * doesn't turn off SO_REUSEADDR, and it doesn't expect
 			 * that other ping processes can steal its packets.
 			 */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if ((isk2->inet_num == ident) &&
 			    (sk2 != sk) &&
 			    (!sk2->sk_reuse || !sk->sk_reuse))
@@ -165,6 +195,9 @@ fail:
 	return 1;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(ping_get_port);
 
 void ping_hash(struct sock *sk)
@@ -177,6 +210,8 @@ void ping_unhash(struct sock *sk)
 {
 	struct inet_sock *isk = inet_sk(sk);
 	pr_debug("ping_unhash(isk=%p,isk->num=%u)\n", isk, isk->inet_num);
+<<<<<<< HEAD
+=======
 =======
 
 static void ping_v4_hash(struct sock *sk)
@@ -190,6 +225,7 @@ static void ping_v4_unhash(struct sock *sk)
 	struct inet_sock *isk = inet_sk(sk);
 	pr_debug("ping_v4_unhash(isk=%p,isk->num=%u)\n", isk, isk->inet_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sk_hashed(sk)) {
 		write_lock_bh(&ping_table.lock);
 		hlist_nulls_del(&sk->sk_nulls_node);
@@ -198,8 +234,13 @@ static void ping_v4_unhash(struct sock *sk)
 		isk->inet_num = 0;
 		isk->inet_sport = 0;
 =======
+<<<<<<< HEAD
+		isk->inet_num = 0;
+		isk->inet_sport = 0;
+=======
 		isk->inet_num = isk->inet_sport = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		sock_prot_inuse_add(sock_net(sk), sk->sk_prot, -1);
 		write_unlock_bh(&ping_table.lock);
 	}
@@ -209,16 +250,25 @@ EXPORT_SYMBOL_GPL(ping_unhash);
 
 static struct sock *ping_lookup(struct net *net, struct sk_buff *skb, u16 ident)
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(ping_unhash);
+
+static struct sock *ping_lookup(struct net *net, struct sk_buff *skb, u16 ident)
+=======
 
 static struct sock *ping_v4_lookup(struct net *net, u32 saddr, u32 daddr,
 				   u16 ident, int dif)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct hlist_nulls_head *hslot = ping_hashslot(&ping_table, net, ident);
 	struct sock *sk = NULL;
 	struct inet_sock *isk;
 	struct hlist_nulls_node *hnode;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int dif = skb->dev->ifindex;
 
 	if (skb->protocol == htons(ETH_P_IP)) {
@@ -231,17 +281,23 @@ static struct sock *ping_v4_lookup(struct net *net, u32 saddr, u32 daddr,
 #endif
 	}
 
+<<<<<<< HEAD
+=======
 =======
 
 	pr_debug("try to find: num = %d, daddr = %ld, dif = %d\n",
 			 (int)ident, (unsigned long)daddr, dif);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	read_lock_bh(&ping_table.lock);
 
 	ping_portaddr_for_each_entry(sk, hnode, hslot) {
 		isk = inet_sk(sk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("iterate\n");
 		if (isk->inet_num != ident)
 			continue;
@@ -272,6 +328,8 @@ static struct sock *ping_v4_lookup(struct net *net, u32 saddr, u32 daddr,
 #endif
 		}
 
+<<<<<<< HEAD
+=======
 =======
 		pr_debug("found: %p: num = %d, daddr = %ld, dif = %d\n", sk,
 			 (int)isk->inet_num, (unsigned long)isk->inet_rcv_saddr,
@@ -283,6 +341,7 @@ static struct sock *ping_v4_lookup(struct net *net, u32 saddr, u32 daddr,
 		if (isk->inet_rcv_saddr && isk->inet_rcv_saddr != daddr)
 			continue;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sk->sk_bound_dev_if && sk->sk_bound_dev_if != dif)
 			continue;
 
@@ -314,8 +373,12 @@ static void inet_get_ping_group_range_net(struct net *net, gid_t *low,
 <<<<<<< HEAD
 int ping_init_sock(struct sock *sk)
 =======
+<<<<<<< HEAD
+int ping_init_sock(struct sock *sk)
+=======
 static int ping_init_sock(struct sock *sk)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct net *net = sock_net(sk);
 	gid_t group = current_egid();
@@ -325,9 +388,15 @@ static int ping_init_sock(struct sock *sk)
 	int i, j, count;
 	int ret = 0;
 =======
+<<<<<<< HEAD
+	struct group_info *group_info;
+	int i, j, count;
+	int ret = 0;
+=======
 	struct group_info *group_info = get_current_groups();
 	int i, j, count = group_info->ngroups;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inet_get_ping_group_range_net(net, range, range+1);
 	if (range[0] <= group && group <= range[1])
@@ -337,7 +406,12 @@ static int ping_init_sock(struct sock *sk)
 	group_info = get_current_groups();
 	count = group_info->ngroups;
 =======
+<<<<<<< HEAD
+	group_info = get_current_groups();
+	count = group_info->ngroups;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < group_info->nblocks; i++) {
 		int cp_count = min_t(int, NGROUPS_PER_BLOCK, count);
 
@@ -347,14 +421,21 @@ static int ping_init_sock(struct sock *sk)
 <<<<<<< HEAD
 				goto out_release_group;
 =======
+<<<<<<< HEAD
+				goto out_release_group;
+=======
 				return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		count -= cp_count;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = -EACCES;
 
 out_release_group:
@@ -367,6 +448,8 @@ void ping_close(struct sock *sk, long timeout)
 {
 	pr_debug("ping_close(sk=%p,sk->num=%u)\n",
 		 inet_sk(sk), inet_sk(sk)->inet_num);
+<<<<<<< HEAD
+=======
 =======
 	return -EACCES;
 }
@@ -376,11 +459,15 @@ static void ping_close(struct sock *sk, long timeout)
 	pr_debug("ping_close(sk=%p,sk->num=%u)\n",
 		inet_sk(sk), inet_sk(sk)->inet_num);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pr_debug("isk->refcnt = %d\n", sk->sk_refcnt.counter);
 
 	sk_common_release(sk);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(ping_close);
 
 /* Checks the bind address and possibly modifies sk->sk_bound_dev_if. */
@@ -482,15 +569,21 @@ void ping_clear_saddr(struct sock *sk, int dif)
 #endif
 	}
 }
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * We need our own bind because there are no privileged id's == local ports.
  * Moreover, we don't allow binding to multi- and broadcast addresses.
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ping_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 {
 	struct inet_sock *isk = inet_sk(sk);
@@ -501,6 +594,8 @@ int ping_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 	err = ping_check_bind_addr(sk, isk, uaddr, addr_len);
 	if (err)
 		return err;
+<<<<<<< HEAD
+=======
 =======
 static int ping_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 {
@@ -527,6 +622,7 @@ static int ping_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 	    chk_addr_ret == RTN_BROADCAST)
 		return -EADDRNOTAVAIL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	lock_sock(sk);
 
@@ -536,6 +632,9 @@ static int ping_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 
 	err = -EADDRINUSE;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ping_set_saddr(sk, uaddr);
 	snum = ntohs(((struct sockaddr_in *)uaddr)->sin_port);
 	if (ping_get_port(sk, snum) != 0) {
@@ -553,6 +652,8 @@ static int ping_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 	     !ipv6_addr_any(&inet6_sk(sk)->rcv_saddr)))
 		sk->sk_userlocks |= SOCK_BINDADDR_LOCK;
 
+<<<<<<< HEAD
+=======
 =======
 	isk->inet_rcv_saddr = isk->inet_saddr = addr->sin_addr.s_addr;
 	snum = ntohs(addr->sin_port);
@@ -570,20 +671,27 @@ static int ping_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 	if (isk->inet_rcv_saddr)
 		sk->sk_userlocks |= SOCK_BINDADDR_LOCK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (snum)
 		sk->sk_userlocks |= SOCK_BINDPORT_LOCK;
 	isk->inet_sport = htons(isk->inet_num);
 	isk->inet_daddr = 0;
 	isk->inet_dport = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if IS_ENABLED(CONFIG_IPV6)
 	if (sk->sk_family == AF_INET6)
 		memset(&inet6_sk(sk)->daddr, 0, sizeof(inet6_sk(sk)->daddr));
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sk_dst_reset(sk);
 out:
 	release_sock(sk);
@@ -593,17 +701,26 @@ out:
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(ping_bind);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(ping_bind);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Is this a supported type of ICMP message?
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int ping_supported(int family, int type, int code)
 {
 	return (family == AF_INET && type == ICMP_ECHO && code == 0) ||
 	       (family == AF_INET6 && type == ICMPV6_ECHO_REQUEST && code == 0);
+<<<<<<< HEAD
+=======
 =======
 static inline int ping_supported(int type, int code)
 {
@@ -611,6 +728,7 @@ static inline int ping_supported(int type, int code)
 		return 1;
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -619,6 +737,9 @@ static inline int ping_supported(int type, int code)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ping_err(struct sk_buff *skb, int offset, u32 info)
 {
 	int family;
@@ -626,6 +747,8 @@ void ping_err(struct sk_buff *skb, int offset, u32 info)
 	struct inet_sock *inet_sock;
 	int type;
 	int code;
+<<<<<<< HEAD
+=======
 =======
 static int ping_queue_rcv_skb(struct sock *sk, struct sk_buff *skb);
 
@@ -637,12 +760,16 @@ void ping_err(struct sk_buff *skb, u32 info)
 	int type = icmp_hdr(skb)->type;
 	int code = icmp_hdr(skb)->code;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net *net = dev_net(skb->dev);
 	struct sock *sk;
 	int harderr;
 	int err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (skb->protocol == htons(ETH_P_IP)) {
 		struct iphdr *iph = (struct iphdr *)skb->data;
 		offset = iph->ihl << 2;
@@ -670,6 +797,8 @@ void ping_err(struct sk_buff *skb, u32 info)
 
 	sk = ping_lookup(net, skb, ntohs(icmph->un.echo.id));
 	if (sk == NULL) {
+<<<<<<< HEAD
+=======
 =======
 	/* We assume the packet has already been checked by icmp_unreach */
 
@@ -684,6 +813,7 @@ void ping_err(struct sk_buff *skb, u32 info)
 	if (sk == NULL) {
 		ICMP_INC_STATS_BH(net, ICMP_MIB_INERRORS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("no socket, dropping\n");
 		return;	/* No socket for error */
 	}
@@ -694,6 +824,9 @@ void ping_err(struct sk_buff *skb, u32 info)
 	inet_sock = inet_sk(sk);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (skb->protocol == htons(ETH_P_IP)) {
 		switch (type) {
 		default:
@@ -733,6 +866,8 @@ void ping_err(struct sk_buff *skb, u32 info)
 	} else if (skb->protocol == htons(ETH_P_IPV6)) {
 		harderr = pingv6_ops.icmpv6_err_convert(type, code, &err);
 #endif
+<<<<<<< HEAD
+=======
 =======
 	switch (type) {
 	default:
@@ -768,6 +903,7 @@ void ping_err(struct sk_buff *skb, u32 info)
 		err = EREMOTEIO;
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -775,6 +911,9 @@ void ping_err(struct sk_buff *skb, u32 info)
 	 *	4.1.3.3.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((family == AF_INET && !inet_sock->recverr) ||
 	    (family == AF_INET6 && !inet6_sk(sk)->recverr)) {
 		if (!harderr || sk->sk_state != TCP_ESTABLISHED)
@@ -789,6 +928,8 @@ void ping_err(struct sk_buff *skb, u32 info)
 						   info, (u8 *)icmph);
 #endif
 		}
+<<<<<<< HEAD
+=======
 =======
 	if (!inet_sock->recverr) {
 		if (!harderr || sk->sk_state != TCP_ESTABLISHED)
@@ -797,6 +938,7 @@ void ping_err(struct sk_buff *skb, u32 info)
 		ip_icmp_error(sk, skb, err, 0 /* no remote port */,
 			 info, (u8 *)icmph);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	sk->sk_err = err;
 	sk->sk_error_report(sk);
@@ -804,6 +946,9 @@ out:
 	sock_put(sk);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(ping_err);
 
 void ping_v4_err(struct sk_buff *skb, u32 info)
@@ -818,6 +963,8 @@ void ping_v4_err(struct sk_buff *skb, u32 info)
 
 int ping_getfrag(void *from, char *to,
 		 int offset, int fraglen, int odd, struct sk_buff *skb)
+<<<<<<< HEAD
+=======
 =======
 
 /*
@@ -833,6 +980,7 @@ struct pingfakehdr {
 static int ping_getfrag(void *from, char * to,
 			int offset, int fraglen, int odd, struct sk_buff *skb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct pingfakehdr *pfh = (struct pingfakehdr *)from;
 
@@ -844,6 +992,9 @@ static int ping_getfrag(void *from, char * to,
 			    &pfh->wcheck))
 			return -EFAULT;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (offset < sizeof(struct icmphdr)) {
 			BUG();
 	} else {
@@ -871,6 +1022,8 @@ EXPORT_SYMBOL_GPL(ping_getfrag);
 
 static int ping_v4_push_pending_frames(struct sock *sk, struct pingfakehdr *pfh,
 				       struct flowi4 *fl4)
+<<<<<<< HEAD
+=======
 =======
 
 		return 0;
@@ -887,6 +1040,7 @@ static int ping_v4_push_pending_frames(struct sock *sk, struct pingfakehdr *pfh,
 static int ping_push_pending_frames(struct sock *sk, struct pingfakehdr *pfh,
 				    struct flowi4 *fl4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *skb = skb_peek(&sk->sk_write_queue);
 
@@ -898,6 +1052,11 @@ static int ping_push_pending_frames(struct sock *sk, struct pingfakehdr *pfh,
 	return ip_push_pending_frames(sk, fl4);
 }
 
+<<<<<<< HEAD
+int ping_common_sendmsg(int family, struct msghdr *msg, size_t len,
+			void *user_icmph, size_t icmph_len) {
+	u8 type, code;
+=======
 <<<<<<< HEAD
 int ping_common_sendmsg(int family, struct msghdr *msg, size_t len,
 			void *user_icmph, size_t icmph_len) {
@@ -922,6 +1081,7 @@ static int ping_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	pr_debug("ping_sendmsg(sk=%p,sk->num=%u)\n", inet, inet->inet_num);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (len > 0xFFFF)
 		return -EMSGSIZE;
@@ -937,6 +1097,9 @@ static int ping_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	/*
 	 *	Fetch the ICMP header provided by the userland.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 *	iovec is modified! The ICMP header is consumed.
 	 */
 	if (memcpy_fromiovec(user_icmph, msg->msg_iov, icmph_len))
@@ -984,6 +1147,8 @@ int ping_v4_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	if (err)
 		return err;
 
+<<<<<<< HEAD
+=======
 =======
 	 *	iovec is modified!
 	 */
@@ -995,6 +1160,7 @@ int ping_v4_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 		return -EINVAL;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 *	Get and verify the address.
 	 */
@@ -1066,8 +1232,13 @@ int ping_v4_sendmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	} else if (!ipc.oif)
 		ipc.oif = inet->uc_index;
 =======
+<<<<<<< HEAD
+	} else if (!ipc.oif)
+		ipc.oif = inet->uc_index;
+=======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	flowi4_init_output(&fl4, ipc.oif, sk->sk_mark, tos,
 			   RT_SCOPE_UNIVERSE, sk->sk_protocol,
@@ -1107,7 +1278,11 @@ back_from_confirm:
 <<<<<<< HEAD
 	pfh.family = AF_INET;
 =======
+<<<<<<< HEAD
+	pfh.family = AF_INET;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = ip_append_data(sk, &fl4, ping_getfrag, &pfh, len,
 			0, &ipc, &rt, msg->msg_flags);
@@ -1117,8 +1292,12 @@ back_from_confirm:
 <<<<<<< HEAD
 		err = ping_v4_push_pending_frames(sk, &pfh, &fl4);
 =======
+<<<<<<< HEAD
+		err = ping_v4_push_pending_frames(sk, &pfh, &fl4);
+=======
 		err = ping_push_pending_frames(sk, &pfh, &fl4);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	release_sock(sk);
 
 out:
@@ -1140,6 +1319,9 @@ do_confirm:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 		 size_t len, int noblock, int flags, int *addr_len)
 {
@@ -1147,6 +1329,8 @@ int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	int family = sk->sk_family;
 	struct sockaddr_in *sin;
 	struct sockaddr_in6 *sin6;
+<<<<<<< HEAD
+=======
 =======
 static int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 			size_t len, int noblock, int flags, int *addr_len)
@@ -1154,12 +1338,16 @@ static int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	struct inet_sock *isk = inet_sk(sk);
 	struct sockaddr_in *sin = (struct sockaddr_in *)msg->msg_name;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *skb;
 	int copied, err;
 
 	pr_debug("ping_recvmsg(sk=%p,sk->num=%u)\n", isk, isk->inet_num);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = -EOPNOTSUPP;
 	if (flags & MSG_OOB)
 		goto out;
@@ -1180,6 +1368,8 @@ static int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 #endif
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (flags & MSG_OOB)
 		goto out;
@@ -1190,6 +1380,7 @@ static int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	if (flags & MSG_ERRQUEUE)
 		return ip_recv_error(sk, msg, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	skb = skb_recv_datagram(sk, flags, noblock, &err);
 	if (!skb)
@@ -1209,6 +1400,9 @@ static int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	sock_recv_timestamp(msg, sk, skb);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Copy the address and add cmsg data. */
 	if (family == AF_INET) {
 		sin = (struct sockaddr_in *) msg->msg_name;
@@ -1248,6 +1442,8 @@ static int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 		BUG();
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	/* Copy the address. */
 	if (sin) {
@@ -1259,6 +1455,7 @@ static int ping_recvmsg(struct kiocb *iocb, struct sock *sk, struct msghdr *msg,
 	if (isk->cmsg_flags)
 		ip_cmsg_recv(msg, skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = copied;
 
 done:
@@ -1268,6 +1465,9 @@ out:
 	return err;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 EXPORT_SYMBOL_GPL(ping_recvmsg);
 
 int ping_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
@@ -1275,6 +1475,8 @@ int ping_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 	pr_debug("ping_queue_rcv_skb(sk=%p,sk->num=%d,skb=%p)\n",
 		 inet_sk(sk), inet_sk(sk)->inet_num, skb);
 	if (sock_queue_rcv_skb(sk, skb) < 0) {
+<<<<<<< HEAD
+=======
 =======
 
 static int ping_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
@@ -1284,6 +1486,7 @@ static int ping_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 	if (sock_queue_rcv_skb(sk, skb) < 0) {
 		ICMP_INC_STATS_BH(sock_net(sk), ICMP_MIB_INERRORS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kfree_skb(skb);
 		pr_debug("ping_queue_rcv_skb -> failed\n");
 		return -1;
@@ -1293,7 +1496,11 @@ static int ping_queue_rcv_skb(struct sock *sk, struct sk_buff *skb)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(ping_queue_rcv_skb);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(ping_queue_rcv_skb);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -1307,11 +1514,15 @@ void ping_rcv(struct sk_buff *skb)
 <<<<<<< HEAD
 	struct icmphdr *icmph = icmp_hdr(skb);
 =======
+<<<<<<< HEAD
+	struct icmphdr *icmph = icmp_hdr(skb);
+=======
 	struct iphdr *iph = ip_hdr(skb);
 	struct icmphdr *icmph = icmp_hdr(skb);
 	u32 saddr = iph->saddr;
 	u32 daddr = iph->daddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We assume the packet has already been checked by icmp_rcv */
 
@@ -1319,8 +1530,12 @@ void ping_rcv(struct sk_buff *skb)
 <<<<<<< HEAD
 		 skb, ntohs(icmph->un.echo.id), ntohs(icmph->un.echo.sequence));
 =======
+<<<<<<< HEAD
+		 skb, ntohs(icmph->un.echo.id), ntohs(icmph->un.echo.sequence));
+=======
 		skb, ntohs(icmph->un.echo.id), ntohs(icmph->un.echo.sequence));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Push ICMP header back */
 	skb_push(skb, skb->data - (u8 *)icmph);
@@ -1328,9 +1543,13 @@ void ping_rcv(struct sk_buff *skb)
 <<<<<<< HEAD
 	sk = ping_lookup(net, skb, ntohs(icmph->un.echo.id));
 =======
+<<<<<<< HEAD
+	sk = ping_lookup(net, skb, ntohs(icmph->un.echo.id));
+=======
 	sk = ping_v4_lookup(net, saddr, daddr, ntohs(icmph->un.echo.id),
 			    skb->dev->ifindex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sk != NULL) {
 		pr_debug("rcv on socket %p\n", sk);
 		ping_queue_rcv_skb(sk, skb_get(skb));
@@ -1344,7 +1563,11 @@ void ping_rcv(struct sk_buff *skb)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(ping_rcv);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(ping_rcv);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct proto ping_prot = {
 	.name =		"PING",
@@ -1356,6 +1579,9 @@ struct proto ping_prot = {
 	.setsockopt =	ip_setsockopt,
 	.getsockopt =	ip_getsockopt,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.sendmsg =	ping_v4_sendmsg,
 	.recvmsg =	ping_recvmsg,
 	.bind =		ping_bind,
@@ -1363,6 +1589,8 @@ struct proto ping_prot = {
 	.hash =		ping_hash,
 	.unhash =	ping_unhash,
 	.get_port =	ping_get_port,
+<<<<<<< HEAD
+=======
 =======
 	.sendmsg =	ping_sendmsg,
 	.recvmsg =	ping_recvmsg,
@@ -1372,6 +1600,7 @@ struct proto ping_prot = {
 	.unhash =	ping_v4_unhash,
 	.get_port =	ping_v4_get_port,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.obj_size =	sizeof(struct inet_sock),
 };
 EXPORT_SYMBOL(ping_prot);

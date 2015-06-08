@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -44,10 +48,16 @@
 #include <mach/at91rm9200_mc.h>
 #include <mach/at91_ramc.h>
 =======
+<<<<<<< HEAD
+#include <mach/cpu.h>
+#include <mach/at91rm9200_mc.h>
+#include <mach/at91_ramc.h>
+=======
 #include <mach/gpio.h>
 #include <mach/cpu.h>
 #include <mach/at91rm9200_mc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -61,8 +71,12 @@ static void __init kb9202_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(10000000);
 =======
+<<<<<<< HEAD
+	at91_initialize(10000000);
+=======
 	at91rm9200_initialize(10000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Set up the LEDs */
 	at91_init_leds(AT91_PIN_PC19, AT91_PIN_PC18);
@@ -86,6 +100,9 @@ static void __init kb9202_init_early(void)
 <<<<<<< HEAD
 static struct macb_platform_data __initdata kb9202_eth_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata kb9202_eth_data = {
+=======
 static void __init kb9202_init_irq(void)
 {
 	at91rm9200_init_interrupts(NULL);
@@ -93,6 +110,7 @@ static void __init kb9202_init_irq(void)
 
 static struct at91_eth_data __initdata kb9202_eth_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PB29,
 	.is_rmii	= 0,
 };
@@ -103,7 +121,12 @@ static struct at91_usbh_data __initdata kb9202_usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_udc_data __initdata kb9202_udc_data = {
@@ -119,7 +142,12 @@ static struct at91_mmc_data __initdata kb9202_mmc_data = {
 	.wp_pin		= -EINVAL,
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.wp_pin		= -EINVAL,
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct mtd_partition __initdata kb9202_nand_partition[] = {
@@ -131,6 +159,9 @@ static struct mtd_partition __initdata kb9202_nand_partition[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct atmel_nand_data __initdata kb9202_nand_data = {
 	.ale		= 22,
 	.cle		= 21,
@@ -140,6 +171,8 @@ static struct atmel_nand_data __initdata kb9202_nand_data = {
 	.ecc_mode	= NAND_ECC_SOFT,
 	.parts		= kb9202_nand_partition,
 	.num_parts	= ARRAY_SIZE(kb9202_nand_partition),
+<<<<<<< HEAD
+=======
 =======
 static struct mtd_partition * __init nand_partitions(int size, int *num_partitions)
 {
@@ -155,6 +188,7 @@ static struct atmel_nand_data __initdata kb9202_nand_data = {
 	.enable_pin	= AT91_PIN_PC28,
 	.partition_info	= nand_partitions,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init kb9202_board_init(void)
@@ -185,9 +219,15 @@ MACHINE_START(KB9200, "KB920x")
 	.init_early	= kb9202_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= kb9202_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91rm9200_map_io,
 	.init_early	= kb9202_init_early,
 	.init_irq	= kb9202_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= kb9202_board_init,
 MACHINE_END

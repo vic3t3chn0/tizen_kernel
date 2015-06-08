@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include "reiserfs.h"
 =======
+<<<<<<< HEAD
+#include "reiserfs.h"
+=======
 #include <linux/reiserfs_fs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/time.h>
 #include <asm/uaccess.h>
 #include <linux/pagemap.h>
@@ -62,8 +66,12 @@ long reiserfs_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 <<<<<<< HEAD
 			err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+			err = mnt_want_write_file(filp);
+=======
 			err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (err)
 				break;
 
@@ -107,8 +115,12 @@ setflags_out:
 <<<<<<< HEAD
 			mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+			mnt_drop_write_file(filp);
+=======
 			mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	case REISERFS_IOC_GETVERSION:
@@ -122,8 +134,12 @@ setflags_out:
 <<<<<<< HEAD
 		err = mnt_want_write_file(filp);
 =======
+<<<<<<< HEAD
+		err = mnt_want_write_file(filp);
+=======
 		err = mnt_want_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			break;
 		if (get_user(inode->i_generation, (int __user *)arg)) {
@@ -136,8 +152,12 @@ setversion_out:
 <<<<<<< HEAD
 		mnt_drop_write_file(filp);
 =======
+<<<<<<< HEAD
+		mnt_drop_write_file(filp);
+=======
 		mnt_drop_write(filp->f_path.mnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		err = -ENOTTY;

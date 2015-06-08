@@ -632,6 +632,9 @@ error:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dlm_lockres_set_refmap_bit(struct dlm_ctxt *dlm,
 				struct dlm_lock_resource *res, int bit)
 {
@@ -669,6 +672,8 @@ void dlm_lockres_grab_inflight_ref(struct dlm_ctxt *dlm,
 
 void dlm_lockres_drop_inflight_ref(struct dlm_ctxt *dlm,
 				   struct dlm_lock_resource *res)
+<<<<<<< HEAD
+=======
 =======
 void __dlm_lockres_grab_inflight_ref(struct dlm_ctxt *dlm,
 				   struct dlm_lock_resource *res,
@@ -694,11 +699,15 @@ void __dlm_lockres_drop_inflight_ref(struct dlm_ctxt *dlm,
 				   const char *file,
 				   int line)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	assert_spin_locked(&res->spinlock);
 
 	BUG_ON(res->inflight_locks == 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	res->inflight_locks--;
 
@@ -706,6 +715,8 @@ void __dlm_lockres_drop_inflight_ref(struct dlm_ctxt *dlm,
 	     res->lockname.len, res->lockname.name, res->inflight_locks,
 	     __builtin_return_address(0));
 
+<<<<<<< HEAD
+=======
 =======
 	res->inflight_locks--;
 	mlog(0, "%s:%.*s: inflight--: now %u\n",
@@ -714,6 +725,7 @@ void __dlm_lockres_drop_inflight_ref(struct dlm_ctxt *dlm,
 	if (res->inflight_locks == 0)
 		dlm_lockres_clear_refmap_bit(dlm->node_num, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wake_up(&res->wq);
 }
 
@@ -749,8 +761,11 @@ struct dlm_lock_resource * dlm_get_lock_resource(struct dlm_ctxt *dlm,
 	int bit, wait_on_recovery = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int drop_inflight_if_nonlocal = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	BUG_ON(!lockid);
 
@@ -763,6 +778,9 @@ lookup:
 	tmpres = __dlm_lookup_lockres_full(dlm, lockid, namelen, hash);
 	if (tmpres) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&dlm->spinlock);
 		spin_lock(&tmpres->spinlock);
 		/* Wait on the thread that is mastering the resource */
@@ -780,6 +798,8 @@ lookup:
 			BUG_ON(tmpres->owner == dlm->node_num);
 			__dlm_wait_on_lockres_flags(tmpres,
 						    DLM_LOCK_RES_DROPPING_REF);
+<<<<<<< HEAD
+=======
 =======
 		int dropping_ref = 0;
 
@@ -805,6 +825,7 @@ lookup:
 			spin_lock(&tmpres->spinlock);
 			__dlm_wait_on_lockres_flags(tmpres, DLM_LOCK_RES_DROPPING_REF);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&tmpres->spinlock);
 			dlm_lockres_put(tmpres);
 			tmpres = NULL;
@@ -812,13 +833,19 @@ lookup:
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* Grab inflight ref to pin the resource */
 		dlm_lockres_grab_inflight_ref(dlm, tmpres);
 
 		spin_unlock(&tmpres->spinlock);
+<<<<<<< HEAD
+=======
 =======
 		mlog(0, "found in hash!\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (res)
 			dlm_lockres_put(res);
 		res = tmpres;
@@ -913,9 +940,14 @@ lookup:
 			mlog(0, "%s: res %.*s, At least one node (%d) "
 			     "to recover before lock mastery can begin\n",
 =======
+<<<<<<< HEAD
+			mlog(0, "%s: res %.*s, At least one node (%d) "
+			     "to recover before lock mastery can begin\n",
+=======
 			mlog(ML_NOTICE, "%s:%.*s: at least one node (%d) to "
 			     "recover before lock mastery can begin\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     dlm->name, namelen, (char *)lockid, bit);
 			wait_on_recovery = 1;
 		}
@@ -929,11 +961,16 @@ lookup:
 	/* finally add the lockres to its hash bucket */
 	__dlm_insert_lockres(dlm, res);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Grab inflight ref to pin the resource */
 	spin_lock(&res->spinlock);
 	dlm_lockres_grab_inflight_ref(dlm, res);
 	spin_unlock(&res->spinlock);
+<<<<<<< HEAD
+=======
 =======
 	/* since this lockres is new it doesn't not require the spinlock */
 	dlm_lockres_grab_inflight_ref_new(dlm, res);
@@ -942,6 +979,7 @@ lookup:
 	 * this inflight reference below */
 	drop_inflight_if_nonlocal = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* get an extra ref on the mle in case this is a BLOCK
 	 * if so, the creator of the BLOCK may try to put the last
@@ -961,9 +999,14 @@ redo_request:
 			mlog(0, "%s: Recovery map is not empty, but must "
 			     "master $RECOVERY lock now\n", dlm->name);
 =======
+<<<<<<< HEAD
+			mlog(0, "%s: Recovery map is not empty, but must "
+			     "master $RECOVERY lock now\n", dlm->name);
+=======
 			mlog(ML_NOTICE, "%s: recovery map is not empty, but "
 			     "must master $RECOVERY lock now\n", dlm->name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!dlm_pre_master_reco_lockres(dlm, res))
 				wait_on_recovery = 0;
 			else {
@@ -985,9 +1028,14 @@ redo_request:
 			mlog(0, "%s: res %.*s, At least one node (%d) "
 			     "to recover before lock mastery can begin\n",
 =======
+<<<<<<< HEAD
+			mlog(0, "%s: res %.*s, At least one node (%d) "
+			     "to recover before lock mastery can begin\n",
+=======
 			mlog(ML_NOTICE, "%s:%.*s: at least one node (%d) to "
 			     "recover before lock mastery can begin\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     dlm->name, namelen, (char *)lockid, bit);
 			wait_on_recovery = 1;
 		} else
@@ -1020,9 +1068,14 @@ redo_request:
 			mlog(0, "%s: res %.*s, Requests only up to %u but "
 			     "master is %u, keep going\n", dlm->name, namelen,
 =======
+<<<<<<< HEAD
+			mlog(0, "%s: res %.*s, Requests only up to %u but "
+			     "master is %u, keep going\n", dlm->name, namelen,
+=======
 			mlog(0, "%s:%.*s: requests only up to %u but master "
 			     "is %u, keep going\n", dlm->name, namelen,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     lockid, nodenum, mle->master);
 		}
 	}
@@ -1033,12 +1086,17 @@ wait:
 	if (ret < 0) {
 		wait_on_recovery = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mlog(0, "%s: res %.*s, Node map changed, redo the master "
 		     "request now, blocked=%d\n", dlm->name, res->lockname.len,
 		     res->lockname.name, blocked);
 		if (++tries > 20) {
 			mlog(ML_ERROR, "%s: res %.*s, Spinning on "
 			     "dlm_wait_for_lock_mastery, blocked = %d\n",
+<<<<<<< HEAD
+=======
 =======
 		mlog(0, "%s:%.*s: node map changed, redo the "
 		     "master request now, blocked=%d\n",
@@ -1048,6 +1106,7 @@ wait:
 			mlog(ML_ERROR, "%s:%.*s: spinning on "
 			     "dlm_wait_for_lock_mastery, blocked=%d\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     dlm->name, res->lockname.len,
 			     res->lockname.name, blocked);
 			dlm_print_one_lock_resource(res);
@@ -1061,8 +1120,13 @@ wait:
 	mlog(0, "%s: res %.*s, Mastered by %u\n", dlm->name, res->lockname.len,
 	     res->lockname.name, res->owner);
 =======
+<<<<<<< HEAD
+	mlog(0, "%s: res %.*s, Mastered by %u\n", dlm->name, res->lockname.len,
+	     res->lockname.name, res->owner);
+=======
 	mlog(0, "lockres mastered by %u\n", res->owner);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* make sure we never continue without this */
 	BUG_ON(res->owner == O2NM_MAX_NODES);
 
@@ -1076,9 +1140,12 @@ wake_waiters:
 	spin_lock(&res->spinlock);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (res->owner != dlm->node_num && drop_inflight_if_nonlocal)
 		dlm_lockres_drop_inflight_ref(dlm, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	res->state &= ~DLM_LOCK_RES_IN_PROGRESS;
 	spin_unlock(&res->spinlock);
 	wake_up(&res->wq);
@@ -1554,10 +1621,14 @@ way_up_top:
 <<<<<<< HEAD
 			dlm_lockres_set_refmap_bit(dlm, res, request->node_idx);
 =======
+<<<<<<< HEAD
+			dlm_lockres_set_refmap_bit(dlm, res, request->node_idx);
+=======
 			mlog(0, "%s:%.*s: setting bit %u in refmap\n",
 			     dlm->name, namelen, name, request->node_idx);
 			dlm_lockres_set_refmap_bit(request->node_idx, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&res->spinlock);
 			response = DLM_MASTER_RESP_YES;
 			if (mle)
@@ -1626,11 +1697,16 @@ way_up_top:
 				dlm_lockres_set_refmap_bit(dlm, res,
 							   request->node_idx);
 =======
+<<<<<<< HEAD
+				dlm_lockres_set_refmap_bit(dlm, res,
+							   request->node_idx);
+=======
 				dlm_lockres_set_refmap_bit(request->node_idx, res);
 				mlog(0, "%s:%.*s: setting bit %u in refmap\n",
 				     dlm->name, namelen, name,
 				     request->node_idx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			} else
 				response = DLM_MASTER_RESP_NO;
 		} else {
@@ -1839,8 +1915,12 @@ again:
 <<<<<<< HEAD
 			dlm_lockres_set_refmap_bit(dlm, res, to);
 =======
+<<<<<<< HEAD
+			dlm_lockres_set_refmap_bit(dlm, res, to);
+=======
 			dlm_lockres_set_refmap_bit(to, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&res->spinlock);
 		}
 	}
@@ -2327,9 +2407,12 @@ int dlm_drop_lockres_ref(struct dlm_ctxt *dlm, struct dlm_lock_resource *res)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mlog(0, "%s:%.*s: sending deref to %d\n",
 	     dlm->name, namelen, lockname, res->owner);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(&deref, 0, sizeof(deref));
 	deref.node_idx = dlm->node_num;
 	deref.namelen = namelen;
@@ -2339,12 +2422,17 @@ int dlm_drop_lockres_ref(struct dlm_ctxt *dlm, struct dlm_lock_resource *res)
 				 &deref, sizeof(deref), res->owner, &r);
 	if (ret < 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mlog(ML_ERROR, "%s: res %.*s, error %d send DEREF to node %u\n",
 		     dlm->name, namelen, lockname, ret, res->owner);
 	else if (r < 0) {
 		/* BAD.  other node says I did not have a ref. */
 		mlog(ML_ERROR, "%s: res %.*s, DEREF to node %u got %d\n",
 		     dlm->name, namelen, lockname, res->owner, r);
+<<<<<<< HEAD
+=======
 =======
 		mlog(ML_ERROR, "Error %d when sending message %u (key 0x%x) to "
 		     "node %u\n", ret, DLM_DEREF_LOCKRES_MSG, dlm->key,
@@ -2355,6 +2443,7 @@ int dlm_drop_lockres_ref(struct dlm_ctxt *dlm, struct dlm_lock_resource *res)
 		    "(master=%u) got %d.\n", dlm->name, namelen,
 		    lockname, res->owner, r);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dlm_print_one_lock_resource(res);
 		BUG();
 	}
@@ -2413,8 +2502,12 @@ int dlm_deref_lockres_handler(struct o2net_msg *msg, u32 len, void *data,
 <<<<<<< HEAD
 			dlm_lockres_clear_refmap_bit(dlm, res, node);
 =======
+<<<<<<< HEAD
+			dlm_lockres_clear_refmap_bit(dlm, res, node);
+=======
 			dlm_lockres_clear_refmap_bit(node, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cleared = 1;
 		}
 	}
@@ -2477,8 +2570,12 @@ static void dlm_deref_lockres_worker(struct dlm_work_item *item, void *data)
 <<<<<<< HEAD
 		dlm_lockres_clear_refmap_bit(dlm, res, node);
 =======
+<<<<<<< HEAD
+		dlm_lockres_clear_refmap_bit(dlm, res, node);
+=======
 		dlm_lockres_clear_refmap_bit(node, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cleared = 1;
 	}
 	spin_unlock(&res->spinlock);
@@ -2964,8 +3061,13 @@ static void dlm_remove_nonlocal_locks(struct dlm_ctxt *dlm,
 				dlm_lockres_clear_refmap_bit(dlm, res,
 							     lock->ml.node);
 =======
+<<<<<<< HEAD
+				dlm_lockres_clear_refmap_bit(dlm, res,
+							     lock->ml.node);
+=======
 				dlm_lockres_clear_refmap_bit(lock->ml.node, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				list_del_init(&lock->list);
 				dlm_lock_put(lock);
 				/* In a normal unlock, we would have added a
@@ -2989,8 +3091,12 @@ static void dlm_remove_nonlocal_locks(struct dlm_ctxt *dlm,
 <<<<<<< HEAD
 			dlm_lockres_clear_refmap_bit(dlm, res, bit);
 =======
+<<<<<<< HEAD
+			dlm_lockres_clear_refmap_bit(dlm, res, bit);
+=======
 			dlm_lockres_clear_refmap_bit(bit, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		bit++;
 	}
@@ -3088,10 +3194,16 @@ static int dlm_do_migrate_request(struct dlm_ctxt *dlm,
 			     "MIGRATE_REQUEST to node %u\n", dlm->name,
 			     migrate.namelen, migrate.name, ret, nodenum);
 =======
+<<<<<<< HEAD
+			mlog(ML_ERROR, "%s: res %.*s, Error %d send "
+			     "MIGRATE_REQUEST to node %u\n", dlm->name,
+			     migrate.namelen, migrate.name, ret, nodenum);
+=======
 			mlog(ML_ERROR, "Error %d when sending message %u (key "
 			     "0x%x) to node %u\n", ret, DLM_MIGRATE_REQUEST_MSG,
 			     dlm->key, nodenum);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!dlm_is_host_down(ret)) {
 				mlog(ML_ERROR, "unhandled error=%d!\n", ret);
 				BUG();
@@ -3113,8 +3225,12 @@ static int dlm_do_migrate_request(struct dlm_ctxt *dlm,
 <<<<<<< HEAD
 			dlm_lockres_set_refmap_bit(dlm, res, nodenum);
 =======
+<<<<<<< HEAD
+			dlm_lockres_set_refmap_bit(dlm, res, nodenum);
+=======
 			dlm_lockres_set_refmap_bit(nodenum, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			spin_unlock(&res->spinlock);
 		}
 	}
@@ -3451,8 +3567,12 @@ int dlm_finish_migration(struct dlm_ctxt *dlm, struct dlm_lock_resource *res,
 <<<<<<< HEAD
 	dlm_lockres_set_refmap_bit(dlm, res, old_master);
 =======
+<<<<<<< HEAD
+	dlm_lockres_set_refmap_bit(dlm, res, old_master);
+=======
 	dlm_lockres_set_refmap_bit(old_master, res);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&res->spinlock);
 
 	mlog(0, "now time to do a migrate request to other nodes\n");

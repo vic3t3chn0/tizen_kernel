@@ -6,8 +6,13 @@
 #include <linux/netfilter.h>
 #include <net/tcp.h>
 =======
+<<<<<<< HEAD
+#include <linux/netfilter.h>
+#include <net/tcp.h>
+=======
 #include <linux/netfilter.h> 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Prefixlen maps, by Jan Engelhardt  */
 extern const union nf_inet_addr ip_set_netmask_map[];
@@ -38,6 +43,9 @@ ip_set_hostmask6(u8 pfxlen)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern u32 ip_set_range_to_cidr(u32 from, u32 to, u8 *cidr);
 
 #define ip_set_mask_from_to(from, to, cidr)	\
@@ -46,6 +54,9 @@ do {						\
 	to = from | ~ip_set_hostmask(cidr);	\
 } while (0)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /*_PFXLEN_H */

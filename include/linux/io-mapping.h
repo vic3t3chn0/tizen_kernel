@@ -23,7 +23,11 @@
 <<<<<<< HEAD
 #include <linux/bug.h>
 =======
+<<<<<<< HEAD
+#include <linux/bug.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/page.h>
 
@@ -34,8 +38,12 @@
 <<<<<<< HEAD
  * See Documentation/io-mapping.txt
 =======
+<<<<<<< HEAD
+ * See Documentation/io-mapping.txt
+=======
  * See Documentation/io_mapping.txt
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifdef CONFIG_HAVE_ATOMIC_IOMAP

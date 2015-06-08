@@ -12,7 +12,12 @@
 #include <linux/linkage.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/linkage.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * moves the new kernel to its destination...
  * %r2 = pointer to first kimage_entry_t
@@ -30,9 +35,13 @@
 <<<<<<< HEAD
 ENTRY(relocate_kernel)
 =======
+<<<<<<< HEAD
+ENTRY(relocate_kernel)
+=======
 	.globl		relocate_kernel
 	relocate_kernel:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		basr	%r13,0		# base address
 	.base:
 		stnsm	sys_msk-.base(%r13),0xfb	# disable DAT
@@ -124,7 +133,11 @@ ENTRY(relocate_kernel)
 <<<<<<< HEAD
 	.align 8
 =======
+<<<<<<< HEAD
+	.align 8
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.globl	relocate_kernel_len
 	relocate_kernel_len:
 		.quad	relocate_kernel_end - relocate_kernel

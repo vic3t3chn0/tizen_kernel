@@ -8,8 +8,12 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <arch/atomic.h>
 
 /*
@@ -145,8 +149,12 @@ static inline int atomic_cmpxchg(atomic_t *v, int old, int new)
 <<<<<<< HEAD
 static inline int __atomic_add_unless(atomic_t *v, int a, int u)
 =======
+<<<<<<< HEAD
+static inline int __atomic_add_unless(atomic_t *v, int a, int u)
+=======
 static inline int atomic_add_unless(atomic_t *v, int a, int u)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int ret;
 	unsigned long flags;
@@ -160,10 +168,15 @@ static inline int atomic_add_unless(atomic_t *v, int a, int u)
 	return ret;
 }
 =======
+<<<<<<< HEAD
+	return ret;
+}
+=======
 	return ret != u;
 }
 #define atomic_inc_not_zero(v) atomic_add_unless((v), 1, 0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Atomic operations are already serializing */
 #define smp_mb__before_atomic_dec()    barrier()
@@ -173,6 +186,9 @@ static inline int atomic_add_unless(atomic_t *v, int a, int u)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm-generic/atomic-long.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

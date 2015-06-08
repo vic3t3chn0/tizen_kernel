@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/net_namespace.h>
 #include <net/sock.h>
 #include <net/fib_rules.h>
@@ -480,15 +484,21 @@ static int fib_nl_delrule(struct sk_buff *skb, struct nlmsghdr* nlh, void *arg)
 		list_del_rcu(&rule->list);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rule->action == FR_ACT_GOTO) {
 			ops->nr_goto_rules--;
 			if (rtnl_dereference(rule->ctarget) == NULL)
 				ops->unresolved_rules--;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (rule->action == FR_ACT_GOTO)
 			ops->nr_goto_rules--;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Check if this rule is a target to any of them. If so,
@@ -502,8 +512,12 @@ static int fib_nl_delrule(struct sk_buff *skb, struct nlmsghdr* nlh, void *arg)
 <<<<<<< HEAD
 					RCU_INIT_POINTER(tmp->ctarget, NULL);
 =======
+<<<<<<< HEAD
+					RCU_INIT_POINTER(tmp->ctarget, NULL);
+=======
 					rcu_assign_pointer(tmp->ctarget, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					ops->unresolved_rules++;
 				}
 			}
@@ -564,8 +578,12 @@ static int fib_nl_fill_rule(struct sk_buff *skb, struct fib_rule *rule,
 <<<<<<< HEAD
 	    rcu_access_pointer(rule->ctarget) == NULL)
 =======
+<<<<<<< HEAD
+	    rcu_access_pointer(rule->ctarget) == NULL)
+=======
 	    rcu_dereference_raw(rule->ctarget) == NULL)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		frh->flags |= FIB_RULE_UNRESOLVED;
 
 	if (rule->iifname[0]) {

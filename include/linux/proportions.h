@@ -61,8 +61,12 @@ struct prop_local_percpu {
 <<<<<<< HEAD
 	raw_spinlock_t lock;		/* protect the snapshot state */
 =======
+<<<<<<< HEAD
+	raw_spinlock_t lock;		/* protect the snapshot state */
+=======
 	spinlock_t lock;		/* protect the snapshot state */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int prop_local_init_percpu(struct prop_local_percpu *pl);
@@ -115,11 +119,16 @@ struct prop_local_single {
 	unsigned long period;
 	int shift;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	raw_spinlock_t lock;		/* protect the snapshot state */
 };
 
 #define INIT_PROP_LOCAL_SINGLE(name)			\
 {	.lock = __RAW_SPIN_LOCK_UNLOCKED(name.lock),	\
+<<<<<<< HEAD
+=======
 =======
 	spinlock_t lock;		/* protect the snapshot state */
 };
@@ -127,6 +136,7 @@ struct prop_local_single {
 #define INIT_PROP_LOCAL_SINGLE(name)			\
 {	.lock = __SPIN_LOCK_UNLOCKED(name.lock),	\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int prop_local_init_single(struct prop_local_single *pl);

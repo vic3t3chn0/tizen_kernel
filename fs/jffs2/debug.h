@@ -54,7 +54,11 @@
 <<<<<<< HEAD
 #define DEBUG
 =======
+<<<<<<< HEAD
+#define DEBUG
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define D1(x) x
 #else
 #define D1(x)
@@ -67,6 +71,9 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define jffs2_dbg(level, fmt, ...)		\
 do {						\
 	if (CONFIG_JFFS2_FS_DEBUG >= level)	\
@@ -94,6 +101,8 @@ do {						\
 #define JFFS2_DEBUG(fmt, ...)						\
 	printk(KERN_DEBUG "[JFFS2 DBG] (%d) %s: " fmt,			\
 	       task_pid_nr(current), __func__, ##__VA_ARGS__)
+<<<<<<< HEAD
+=======
 =======
 /* The prefixes of JFFS2 messages */
 #define JFFS2_DBG_PREFIX	"[JFFS2 DBG]"
@@ -140,6 +149,7 @@ do {						\
 			__func__ , ##__VA_ARGS__);			\
 	} while(0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * We split our debugging messages on several parts, depending on the JFFS2

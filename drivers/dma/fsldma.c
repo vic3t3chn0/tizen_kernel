@@ -35,6 +35,13 @@
 #include <linux/dmapool.h>
 #include <linux/of_platform.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include "dmaengine.h"
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "fsldma.h"
 
 #define chan_dbg(chan, fmt, arg...)					\
@@ -413,6 +420,15 @@ static dma_cookie_t fsl_dma_tx_submit(struct dma_async_tx_descriptor *tx)
 	 * assign cookies to all of the software descriptors
 	 * that make up this transaction
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	list_for_each_entry(child, &desc->tx_list, node) {
+		cookie = dma_cookie_assign(&child->async_tx);
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cookie = chan->common.cookie;
 	list_for_each_entry(child, &desc->tx_list, node) {
 		cookie++;
@@ -424,6 +440,10 @@ static dma_cookie_t fsl_dma_tx_submit(struct dma_async_tx_descriptor *tx)
 
 	chan->common.cookie = cookie;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* put this transaction onto the tail of the pending queue */
 	append_ld_queue(chan, desc);
 
@@ -765,6 +785,13 @@ fail:
  * @sg_len: number of entries in @scatterlist
  * @direction: DMA direction
  * @flags: DMAEngine flags
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @context: transaction context (ignored)
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Prepare a set of descriptors for a DMA_SLAVE transaction. Following the
  * DMA_SLAVE API, this gets the device-specific information from the
@@ -772,7 +799,16 @@ fail:
  */
 static struct dma_async_tx_descriptor *fsl_dma_prep_slave_sg(
 	struct dma_chan *dchan, struct scatterlist *sgl, unsigned int sg_len,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum dma_transfer_direction direction, unsigned long flags,
+	void *context)
+=======
 	enum dma_data_direction direction, unsigned long flags)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	enum dma_data_direction direction, unsigned long flags)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * This operation is not supported on the Freescale DMA controller
@@ -819,7 +855,15 @@ static int fsl_dma_device_control(struct dma_chan *dchan,
 			return -ENXIO;
 
 		/* we set the controller burst size depending on direction */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (config->direction == DMA_MEM_TO_DEV)
+=======
 		if (config->direction == DMA_TO_DEVICE)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (config->direction == DMA_TO_DEVICE)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			size = config->dst_addr_width * config->dst_maxburst;
 		else
 			size = config->src_addr_width * config->src_maxburst;
@@ -984,6 +1028,19 @@ static enum dma_status fsl_tx_status(struct dma_chan *dchan,
 					struct dma_tx_state *txstate)
 {
 	struct fsldma_chan *chan = to_fsl_chan(dchan);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	enum dma_status ret;
+	unsigned long flags;
+
+	spin_lock_irqsave(&chan->desc_lock, flags);
+	ret = dma_cookie_status(dchan, cookie, txstate);
+	spin_unlock_irqrestore(&chan->desc_lock, flags);
+
+	return ret;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_cookie_t last_complete;
 	dma_cookie_t last_used;
 	unsigned long flags;
@@ -997,6 +1054,10 @@ static enum dma_status fsl_tx_status(struct dma_chan *dchan,
 
 	dma_set_tx_state(txstate, last_complete, last_used, 0);
 	return dma_async_is_complete(cookie, last_complete, last_used);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*----------------------------------------------------------------------------*/
@@ -1087,8 +1148,18 @@ static void dma_do_tasklet(unsigned long data)
 
 		desc = to_fsl_desc(chan->ld_running.prev);
 		cookie = desc->async_tx.cookie;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		dma_cookie_complete(&desc->async_tx);
+
+=======
 
 		chan->completed_cookie = cookie;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+		chan->completed_cookie = cookie;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chan_dbg(chan, "completed_cookie=%d\n", cookie);
 	}
 
@@ -1303,6 +1374,13 @@ static int __devinit fsl_dma_chan_probe(struct fsldma_device *fdev,
 	chan->idle = true;
 
 	chan->common.device = &fdev->common;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dma_cookie_init(&chan->common);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* find the IRQ line, if it exists in the device tree */
 	chan->irq = irq_of_parse_and_map(node, 0);

@@ -84,13 +84,19 @@ static struct i2c_board_info i2c_board_info[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device openrd_client_audio_device = {
 	.name		= "openrd-client-audio",
 	.id		= -1,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __initdata uart1;
 
 static int __init sd_uart_selection(char *str)
@@ -183,7 +189,11 @@ static void __init openrd_init(void)
 <<<<<<< HEAD
 		platform_device_register(&openrd_client_audio_device);
 =======
+<<<<<<< HEAD
+		platform_device_register(&openrd_client_audio_device);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		i2c_register_board_info(0, i2c_board_info,
 			ARRAY_SIZE(i2c_board_info));
 		kirkwood_audio_init();
@@ -229,8 +239,12 @@ MACHINE_START(OPENRD_BASE, "Marvell OpenRD Base Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= openrd_init,
 	.map_io		= kirkwood_map_io,
 	.init_early	= kirkwood_init_early,
@@ -239,7 +253,11 @@ MACHINE_START(OPENRD_BASE, "Marvell OpenRD Base Board")
 <<<<<<< HEAD
 	.restart	= kirkwood_restart,
 =======
+<<<<<<< HEAD
+	.restart	= kirkwood_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -249,8 +267,12 @@ MACHINE_START(OPENRD_CLIENT, "Marvell OpenRD Client Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= openrd_init,
 	.map_io		= kirkwood_map_io,
 	.init_early	= kirkwood_init_early,
@@ -259,7 +281,11 @@ MACHINE_START(OPENRD_CLIENT, "Marvell OpenRD Client Board")
 <<<<<<< HEAD
 	.restart	= kirkwood_restart,
 =======
+<<<<<<< HEAD
+	.restart	= kirkwood_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif
 
@@ -269,8 +295,12 @@ MACHINE_START(OPENRD_ULTIMATE, "Marvell OpenRD Ultimate Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= openrd_init,
 	.map_io		= kirkwood_map_io,
 	.init_early	= kirkwood_init_early,
@@ -279,6 +309,10 @@ MACHINE_START(OPENRD_ULTIMATE, "Marvell OpenRD Ultimate Board")
 <<<<<<< HEAD
 	.restart	= kirkwood_restart,
 =======
+<<<<<<< HEAD
+	.restart	= kirkwood_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 #endif

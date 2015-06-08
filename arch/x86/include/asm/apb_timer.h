@@ -20,6 +20,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Langwell DW APB timer registers */
 #define APBTMR_N_LOAD_COUNT    0x00
 #define APBTMR_N_CURRENT_VALUE 0x04
@@ -39,6 +41,7 @@
 #define APBTMR_CONTROL_INT     (1<<2)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* default memory mapped register base */
 #define LNW_SCU_ADDR           0xFF100000
 #define LNW_EXT_TIMER_OFFSET   0x1B800
@@ -50,9 +53,14 @@
 #define APBT_MAX_FREQ          50000000
 #define APBT_MIN_FREQ          1000000
 =======
+<<<<<<< HEAD
+#define APBT_MAX_FREQ          50000000
+#define APBT_MIN_FREQ          1000000
+=======
 #define APBT_MAX_FREQ          50
 #define APBT_MIN_FREQ          1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define APBT_MMAP_SIZE         1024
 
 #define APBT_DEV_USED  1
@@ -60,8 +68,11 @@
 extern void apbt_time_init(void);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern struct clock_event_device *global_clock_event;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern unsigned long apbt_quick_calibrate(void);
 extern int arch_setup_apbt_irqs(int irq, int trigger, int mask, int cpu);
 extern void apbt_setup_secondary_clock(void);

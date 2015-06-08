@@ -137,10 +137,16 @@ txx9aclc_dma_submit(struct txx9aclc_dmadata *dmadata, dma_addr_t buf_dma_addr)
 		dmadata->substream->stream == SNDRV_PCM_STREAM_PLAYBACK ?
 		DMA_MEM_TO_DEV : DMA_DEV_TO_MEM,
 =======
+<<<<<<< HEAD
+	desc = dmaengine_prep_slave_sg(chan, &sg, 1,
+		dmadata->substream->stream == SNDRV_PCM_STREAM_PLAYBACK ?
+		DMA_MEM_TO_DEV : DMA_DEV_TO_MEM,
+=======
 	desc = chan->device->device_prep_slave_sg(chan, &sg, 1,
 		dmadata->substream->stream == SNDRV_PCM_STREAM_PLAYBACK ?
 		DMA_TO_DEVICE : DMA_FROM_DEVICE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		DMA_PREP_INTERRUPT | DMA_CTRL_ACK);
 	if (!desc) {
 		dev_err(&chan->dev->device, "cannot prepare slave dma\n");
@@ -295,16 +301,22 @@ static void txx9aclc_pcm_free_dma_buffers(struct snd_pcm *pcm)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int txx9aclc_pcm_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_card *card = rtd->card->snd_card;
 	struct snd_soc_dai *dai = rtd->cpu_dai;
 	struct snd_pcm *pcm = rtd->pcm;
+<<<<<<< HEAD
+=======
 =======
 static int txx9aclc_pcm_new(struct snd_card *card, struct snd_soc_dai *dai,
 			    struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct platform_device *pdev = to_platform_device(dai->platform->dev);
 	struct txx9aclc_soc_device *dev;
 	struct resource *r;
@@ -453,6 +465,9 @@ static struct platform_driver txx9aclc_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(txx9aclc_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(txx9aclc_pcm_driver);
+=======
 static int __init snd_txx9aclc_pcm_init(void)
 {
 	return platform_driver_register(&txx9aclc_pcm_driver);
@@ -465,6 +480,7 @@ static void __exit snd_txx9aclc_pcm_exit(void)
 }
 module_exit(snd_txx9aclc_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Atsushi Nemoto <anemo@mba.ocn.ne.jp>");
 MODULE_DESCRIPTION("TXx9 ACLC Audio DMA driver");

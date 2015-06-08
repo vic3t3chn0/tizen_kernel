@@ -63,8 +63,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>		/* This gets us atomic counters.  */
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>		/* This gets us atomic counters.  */
+=======
 #include <asm/atomic.h>		/* This gets us atomic counters.  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/skbuff.h>	/* We need sk_buff_head. */
 #include <linux/workqueue.h>	/* We need tq_struct.	 */
 #include <linux/sctp.h>		/* We need sctp* header structs.  */
@@ -210,13 +214,19 @@ extern struct sctp_globals {
 	 */
 	struct list_head local_addr_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int default_auto_asconf;
 	struct list_head addr_waitq;
 	struct timer_list addr_wq_timer;
 	struct list_head auto_asconf_splist;
 	spinlock_t addr_wq_lock;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Lock that protects the local_addr_list writers */
 	spinlock_t addr_list_lock;
@@ -245,8 +255,12 @@ extern struct sctp_globals {
 <<<<<<< HEAD
         bool checksum_disable;
 =======
+<<<<<<< HEAD
+        bool checksum_disable;
+=======
         int checksum_disable;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Threshold for rwnd update SACKS.  Receive buffer shifted this many
 	 * bits is an indicator of when to send and window update SACK.
@@ -284,13 +298,19 @@ extern struct sctp_globals {
 #define sctp_local_addr_list		(sctp_globals.local_addr_list)
 #define sctp_local_addr_lock		(sctp_globals.addr_list_lock)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define sctp_auto_asconf_splist		(sctp_globals.auto_asconf_splist)
 #define sctp_addr_waitq			(sctp_globals.addr_waitq)
 #define sctp_addr_wq_timer		(sctp_globals.addr_wq_timer)
 #define sctp_addr_wq_lock		(sctp_globals.addr_wq_lock)
 #define sctp_default_auto_asconf	(sctp_globals.default_auto_asconf)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define sctp_scope_policy		(sctp_globals.ipv4_scope_policy)
 #define sctp_addip_enable		(sctp_globals.addip_enable)
 #define sctp_addip_noauth		(sctp_globals.addip_noauth_enable)
@@ -373,7 +393,12 @@ struct sctp_sock {
 	struct list_head auto_asconf_list;
 	int do_auto_asconf;
 =======
+<<<<<<< HEAD
+	struct list_head auto_asconf_list;
+	int do_auto_asconf;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct sctp_sock *sctp_sk(const struct sock *sk)
@@ -389,8 +414,12 @@ static inline struct sock *sctp_opt2sk(const struct sctp_sock *sp)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct sctp6_sock {
        struct sctp_sock  sctp;
        struct ipv6_pinfo inet6;
@@ -833,7 +862,12 @@ struct sctp_sockaddr_entry {
 #define SCTP_ADDRESS_TICK_DELAY	500
 
 =======
+<<<<<<< HEAD
+#define SCTP_ADDRESS_TICK_DELAY	500
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef struct sctp_chunk *(sctp_packet_phandler_t)(struct sctp_association *);
 
 /* This structure holds lists of chunks as we are assembling for
@@ -1116,7 +1150,11 @@ void sctp_transport_update_pmtu(struct sctp_transport *, u32);
 <<<<<<< HEAD
 void sctp_transport_immediate_rtx(struct sctp_transport *);
 =======
+<<<<<<< HEAD
+void sctp_transport_immediate_rtx(struct sctp_transport *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* This is the structure we use to queue packets as they come into
@@ -1285,7 +1323,11 @@ int sctp_addr_is_valid(const union sctp_addr *addr);
 <<<<<<< HEAD
 int sctp_is_ep_boundall(struct sock *sk);
 =======
+<<<<<<< HEAD
+int sctp_is_ep_boundall(struct sock *sk);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* What type of endpoint?  */
@@ -1953,7 +1995,13 @@ struct sctp_association {
 	int src_out_of_asoc_ok;
 	struct sctp_transport *new_transport;
 =======
+<<<<<<< HEAD
+	union sctp_addr *asconf_addr_del_pending;
+	int src_out_of_asoc_ok;
+	struct sctp_transport *new_transport;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* SCTP AUTH: list of the endpoint shared keys.  These
 	 * keys are provided out of band by the user applicaton

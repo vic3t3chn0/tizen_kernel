@@ -3,6 +3,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* dynamic_printk_enabled, and dynamic_printk_enabled2 are bitmasks in which
  * bit n is set to 1 if any modname hashes into the bucket n, 0 otherwise. They
  * use independent hash functions, to reduce the chance of false positives.
@@ -11,6 +13,7 @@ extern long long dynamic_debug_enabled;
 extern long long dynamic_debug_enabled2;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * An instance of this structure is created in a special
  * ELF section at every dynamic debug callsite.  At runtime,
@@ -28,8 +31,12 @@ struct _ddebug {
 <<<<<<< HEAD
 	unsigned int lineno:18;
 =======
+<<<<<<< HEAD
+	unsigned int lineno:18;
+=======
 	unsigned int lineno:24;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
  	 * The flags field controls the behaviour at the callsite.
  	 * The bits here are changed dynamically when the user
@@ -39,24 +46,35 @@ struct _ddebug {
 #define _DPRINTK_FLAGS_NONE	0
 #define _DPRINTK_FLAGS_PRINT	(1<<0) /* printk() a message using the format */
 =======
+<<<<<<< HEAD
+#define _DPRINTK_FLAGS_NONE	0
+#define _DPRINTK_FLAGS_PRINT	(1<<0) /* printk() a message using the format */
+=======
 #define _DPRINTK_FLAGS_PRINT   (1<<0)  /* printk() a message using the format */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define _DPRINTK_FLAGS_INCL_MODNAME	(1<<1)
 #define _DPRINTK_FLAGS_INCL_FUNCNAME	(1<<2)
 #define _DPRINTK_FLAGS_INCL_LINENO	(1<<3)
 #define _DPRINTK_FLAGS_INCL_TID		(1<<4)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined DEBUG
 #define _DPRINTK_FLAGS_DEFAULT _DPRINTK_FLAGS_PRINT
 #else
 #define _DPRINTK_FLAGS_DEFAULT 0
 #endif
 	unsigned int flags:8;
+<<<<<<< HEAD
+=======
 =======
 #define _DPRINTK_FLAGS_DEFAULT 0
 	unsigned int flags:8;
 	char enabled;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } __attribute__((aligned(8)));
 
 
@@ -66,6 +84,9 @@ int ddebug_add_module(struct _ddebug *tab, unsigned int n,
 #if defined(CONFIG_DYNAMIC_DEBUG)
 extern int ddebug_remove_module(const char *mod_name);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern __printf(2, 3)
 int __dynamic_pr_debug(struct _ddebug *descriptor, const char *fmt, ...);
 
@@ -116,6 +137,8 @@ do {								\
 		__dynamic_netdev_dbg(&descriptor, dev, fmt,	\
 				     ##__VA_ARGS__);		\
 } while (0)
+<<<<<<< HEAD
+=======
 =======
 extern int __dynamic_pr_debug(struct _ddebug *descriptor, const char *fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
@@ -141,6 +164,7 @@ extern int __dynamic_pr_debug(struct _ddebug *descriptor, const char *fmt, ...)
 		dev_printk(KERN_DEBUG, dev, fmt, ##__VA_ARGS__);	\
 	} while (0)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else
 

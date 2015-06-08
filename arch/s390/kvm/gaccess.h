@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * access.h -  access guest memory
 =======
+<<<<<<< HEAD
+ * access.h -  access guest memory
+=======
  * gaccess.h -  access guest memory
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright IBM Corp. 2008,2009
  *
@@ -28,15 +32,21 @@ static inline void __user *__guestaddr_to_user(struct kvm_vcpu *vcpu,
 	unsigned long prefix  = vcpu->arch.sie_block->prefix;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long origin  = vcpu->arch.sie_block->gmsor;
 	unsigned long memsize = kvm_s390_vcpu_get_memsize(vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (guestaddr < 2 * PAGE_SIZE)
 		guestaddr += prefix;
 	else if ((guestaddr >= prefix) && (guestaddr < prefix + 2 * PAGE_SIZE))
 		guestaddr -= prefix;
 
+<<<<<<< HEAD
+	return (void __user *) gmap_fault(guestaddr, vcpu->arch.gmap);
+=======
 <<<<<<< HEAD
 	return (void __user *) gmap_fault(guestaddr, vcpu->arch.gmap);
 =======
@@ -47,6 +57,7 @@ static inline void __user *__guestaddr_to_user(struct kvm_vcpu *vcpu,
 
 	return (void __user *) guestaddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int get_guest_u64(struct kvm_vcpu *vcpu, unsigned long guestaddr,
@@ -153,11 +164,16 @@ static inline int put_guest_u8(struct kvm_vcpu *vcpu, unsigned long guestaddr,
 static inline int __copy_to_guest_slow(struct kvm_vcpu *vcpu,
 				       unsigned long guestdest,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       void *from, unsigned long n)
 {
 	int rc;
 	unsigned long i;
 	u8 *data = from;
+<<<<<<< HEAD
+=======
 =======
 				       const void *from, unsigned long n)
 {
@@ -165,6 +181,7 @@ static inline int __copy_to_guest_slow(struct kvm_vcpu *vcpu,
 	unsigned long i;
 	const u8 *data = from;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < n; i++) {
 		rc = put_guest_u8(vcpu, guestdest++, *(data++));
@@ -175,6 +192,9 @@ static inline int __copy_to_guest_slow(struct kvm_vcpu *vcpu,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __copy_to_guest_fast(struct kvm_vcpu *vcpu,
 				       unsigned long guestdest,
 				       void *from, unsigned long n)
@@ -264,6 +284,8 @@ static inline int copy_to_guest(struct kvm_vcpu *vcpu, unsigned long guestdest,
 				void *from, unsigned long n)
 {
 	unsigned long prefix  = vcpu->arch.sie_block->prefix;
+<<<<<<< HEAD
+=======
 =======
 static inline int copy_to_guest(struct kvm_vcpu *vcpu, unsigned long guestdest,
 				const void *from, unsigned long n)
@@ -272,6 +294,7 @@ static inline int copy_to_guest(struct kvm_vcpu *vcpu, unsigned long guestdest,
 	unsigned long origin  = vcpu->arch.sie_block->gmsor;
 	unsigned long memsize = kvm_s390_vcpu_get_memsize(vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((guestdest < 2 * PAGE_SIZE) && (guestdest + n > 2 * PAGE_SIZE))
 		goto slowpath;
@@ -291,6 +314,9 @@ static inline int copy_to_guest(struct kvm_vcpu *vcpu, unsigned long guestdest,
 <<<<<<< HEAD
 	return __copy_to_guest_fast(vcpu, guestdest, from, n);
 =======
+<<<<<<< HEAD
+	return __copy_to_guest_fast(vcpu, guestdest, from, n);
+=======
 	if (guestdest + n > memsize)
 		return -EFAULT;
 
@@ -301,6 +327,7 @@ static inline int copy_to_guest(struct kvm_vcpu *vcpu, unsigned long guestdest,
 
 	return copy_to_user((void __user *) guestdest, from, n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 slowpath:
 	return __copy_to_guest_slow(vcpu, guestdest, from, n);
 }
@@ -322,6 +349,9 @@ static inline int __copy_from_guest_slow(struct kvm_vcpu *vcpu, void *to,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __copy_from_guest_fast(struct kvm_vcpu *vcpu, void *to,
 					 unsigned long guestsrc,
 					 unsigned long n)
@@ -398,6 +428,8 @@ static inline int __copy_from_guest_fast(struct kvm_vcpu *vcpu, void *to,
 	}
 out:
 	return r;
+<<<<<<< HEAD
+=======
 =======
 static inline int copy_from_guest(struct kvm_vcpu *vcpu, void *to,
 				  unsigned long guestsrc, unsigned long n)
@@ -451,6 +483,7 @@ static inline int copy_to_guest_absolute(struct kvm_vcpu *vcpu,
 
 	return copy_to_user((void __user *) guestdest, from, n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int copy_from_guest_absolute(struct kvm_vcpu *vcpu, void *to,
@@ -458,6 +491,9 @@ static inline int copy_from_guest_absolute(struct kvm_vcpu *vcpu, void *to,
 					   unsigned long n)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return __copy_from_guest_fast(vcpu, to, guestsrc, n);
 }
 
@@ -484,6 +520,8 @@ static inline int copy_from_guest(struct kvm_vcpu *vcpu, void *to,
 	return __copy_from_guest_fast(vcpu, to, guestsrc, n);
 slowpath:
 	return __copy_from_guest_slow(vcpu, to, guestsrc, n);
+<<<<<<< HEAD
+=======
 =======
 	unsigned long origin  = vcpu->arch.sie_block->gmsor;
 	unsigned long memsize = kvm_s390_vcpu_get_memsize(vcpu);
@@ -498,5 +536,6 @@ slowpath:
 
 	return copy_from_user(to, (void __user *) guestsrc, n);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif

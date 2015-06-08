@@ -24,8 +24,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ptrace.h>
 #include <linux/wait.h>
 #include <linux/mm.h>
@@ -229,8 +233,12 @@ static int spu_map_resource(struct spu *spu, int nr,
 <<<<<<< HEAD
 	len = resource_size(&resource);
 =======
+<<<<<<< HEAD
+	len = resource_size(&resource);
+=======
 	len = resource.end - resource.start + 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*virt = ioremap(resource.start, len);
 	if (!*virt)
 		return -EINVAL;

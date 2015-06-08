@@ -202,4 +202,9 @@ static int __init jornada_ssp_init(void)
 
 module_init(jornada_ssp_init);
 =======
+<<<<<<< HEAD
+
+module_init(jornada_ssp_init);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

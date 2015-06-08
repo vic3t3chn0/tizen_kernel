@@ -34,8 +34,12 @@
 <<<<<<< HEAD
 #define MSR_USER32	MSR_ | MSR_PR | MSR_EE
 =======
+<<<<<<< HEAD
+#define MSR_USER32	MSR_ | MSR_PR | MSR_EE
+=======
 #define MSR_USER32	MSR_ | MSR_PR | MSR_EE | MSR_DE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MSR_USER64	MSR_USER32 | MSR_64BIT
 #elif defined (CONFIG_40x)
 #define MSR_KERNEL	(MSR_ME|MSR_RI|MSR_IR|MSR_DR|MSR_CE)
@@ -69,7 +73,11 @@
 <<<<<<< HEAD
 #define SPRN_TLB1PS	0x159	/* TLB 1 Page Size Register */
 =======
+<<<<<<< HEAD
+#define SPRN_TLB1PS	0x159	/* TLB 1 Page Size Register */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SPRN_MAS5_MAS6	0x15c	/* MMU Assist Register 5 || 6 */
 #define SPRN_MAS8_MAS1	0x15d	/* MMU Assist Register 8 || 1 */
 #define SPRN_EPTCFG	0x15e	/* Embedded Page Table Config */
@@ -196,12 +204,18 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_ICSWX
 #define SPRN_HACOP	0x15F	/* Hypervisor Available Coprocessor Register */
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Bit definitions for CCR1. */
 #define	CCR1_DPC	0x00000100 /* Disable L1 I-Cache/D-Cache parity checking */
 #define	CCR1_TCS	0x00000080 /* Timer Clock Select */
@@ -336,7 +350,11 @@
 <<<<<<< HEAD
 #define ESR_SPV		0x00000080	/* Signal Processing operation */
 =======
+<<<<<<< HEAD
+#define ESR_SPV		0x00000080	/* Signal Processing operation */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Bit definitions related to the DBCR0. */
 #if defined(CONFIG_40x)
@@ -571,7 +589,13 @@
 #define L1CSR2_DCWS	0x40000000	/* Data Cache write shadow */
 
 =======
+<<<<<<< HEAD
+/* Bit definitions for L1CSR2. */
+#define L1CSR2_DCWS	0x40000000	/* Data Cache write shadow */
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Bit definitions for L2CSR0. */
 #define L2CSR0_L2E	0x80000000	/* L2 Cache Enable */
 #define L2CSR0_L2PE	0x40000000	/* L2 Cache Parity/ECC Enable */

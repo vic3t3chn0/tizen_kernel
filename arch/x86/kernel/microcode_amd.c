@@ -3,8 +3,12 @@
 <<<<<<< HEAD
  *  Copyright (C) 2008-2011 Advanced Micro Devices Inc.
 =======
+<<<<<<< HEAD
+ *  Copyright (C) 2008-2011 Advanced Micro Devices Inc.
+=======
  *  Copyright (C) 2008 Advanced Micro Devices Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  Author: Peter Oruba <peter.oruba@amd.com>
  *
@@ -12,16 +16,22 @@
  *  Tigran Aivazian <tigran@aivazian.fsnet.co.uk>
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  Maintainers:
  *  Andreas Herrmann <andreas.herrmann3@amd.com>
  *  Borislav Petkov <borislav.petkov@amd.com>
  *
  *  This driver allows to upgrade microcode on F10h AMD
  *  CPUs and later.
+<<<<<<< HEAD
+=======
 =======
  *  This driver allows to upgrade microcode on AMD
  *  family 0x10 and 0x11 processors.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  *  Licensed under the terms of the GNU General Public
  *  License version 2. See file COPYING for details.
@@ -80,6 +90,9 @@ struct microcode_amd {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SECTION_HDR_SIZE	8
 #define CONTAINER_HDR_SZ	12
 
@@ -168,6 +181,8 @@ static int get_matching_microcode(int cpu, const u8 *ucode_ptr,
 	 */
 	mc_hdr = (struct microcode_header_amd *)(ucode_ptr + SECTION_HDR_SIZE);
 
+<<<<<<< HEAD
+=======
 =======
 #define UCODE_CONTAINER_SECTION_HDR	8
 #define UCODE_CONTAINER_HEADER_SIZE	12
@@ -212,6 +227,7 @@ static int get_matching_microcode(int cpu, struct microcode_header_amd *mc_hdr,
 		return 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (mc_hdr->processor_rev_id != equiv_cpu_id)
 		return 0;
 
@@ -226,6 +242,9 @@ static int get_matching_microcode(int cpu, struct microcode_header_amd *mc_hdr,
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * now that the header looks sane, verify its size
 	 */
@@ -240,9 +259,12 @@ static int get_matching_microcode(int cpu, struct microcode_header_amd *mc_hdr,
 	get_ucode_data(patch, ucode_ptr + SECTION_HDR_SIZE, actual_size);
 
 	return actual_size;
+<<<<<<< HEAD
+=======
 =======
 	return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int apply_microcode_amd(int cpu)
@@ -254,7 +276,11 @@ static int apply_microcode_amd(int cpu)
 <<<<<<< HEAD
 	struct cpuinfo_x86 *c = &cpu_data(cpu);
 =======
+<<<<<<< HEAD
+	struct cpuinfo_x86 *c = &cpu_data(cpu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We should bind the task to the CPU */
 	BUG_ON(cpu_num != cpu);
@@ -278,11 +304,17 @@ static int apply_microcode_amd(int cpu)
 <<<<<<< HEAD
 	c->microcode = rev;
 =======
+<<<<<<< HEAD
+	c->microcode = rev;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static unsigned int verify_ucode_size(int cpu, const u8 *buf, unsigned int size)
@@ -347,6 +379,7 @@ out:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int install_equiv_cpu_table(const u8 *buf)
 {
 	unsigned int *ibuf = (unsigned int *)buf;
@@ -366,15 +399,21 @@ static int install_equiv_cpu_table(const u8 *buf)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	get_ucode_data(equiv_cpu_table, buf + CONTAINER_HDR_SZ, size);
 
 	/* add header length */
 	return size + CONTAINER_HDR_SZ;
+<<<<<<< HEAD
+=======
 =======
 	get_ucode_data(equiv_cpu_table, buf + UCODE_CONTAINER_HEADER_SIZE, size);
 
 	return size + UCODE_CONTAINER_HEADER_SIZE; /* add header length */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void free_equiv_cpu_table(void)
@@ -391,8 +430,12 @@ generic_load_microcode(int cpu, const u8 *data, size_t size)
 <<<<<<< HEAD
 	unsigned int mc_size, leftover, current_size = 0;
 =======
+<<<<<<< HEAD
+	unsigned int mc_size, leftover, current_size = 0;
+=======
 	unsigned int mc_size, leftover;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int offset;
 	const u8 *ucode_ptr = data;
 	void *new_mc = NULL;
@@ -400,13 +443,20 @@ generic_load_microcode(int cpu, const u8 *data, size_t size)
 <<<<<<< HEAD
 	enum ucode_state state = UCODE_ERROR;
 =======
+<<<<<<< HEAD
+	enum ucode_state state = UCODE_ERROR;
+=======
 	enum ucode_state state = UCODE_OK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	offset = install_equiv_cpu_table(ucode_ptr);
 	if (offset < 0) {
 		pr_err("failed to create equivalent cpu table\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	}
 	ucode_ptr += offset;
@@ -429,6 +479,8 @@ generic_load_microcode(int cpu, const u8 *data, size_t size)
 
 		ucode_ptr += current_size;
 		leftover  -= current_size;
+<<<<<<< HEAD
+=======
 =======
 		return UCODE_ERROR;
 	}
@@ -451,6 +503,7 @@ generic_load_microcode(int cpu, const u8 *data, size_t size)
 		ucode_ptr += mc_size;
 		leftover  -= mc_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!new_mc) {
@@ -459,11 +512,16 @@ generic_load_microcode(int cpu, const u8 *data, size_t size)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_ok:
 	uci->mc = new_mc;
 	state = UCODE_OK;
 	pr_debug("CPU%d update ucode (0x%08x -> 0x%08x)\n",
 		 cpu, uci->cpu_sig.rev, new_rev);
+<<<<<<< HEAD
+=======
 =======
 	if (!leftover) {
 		vfree(uci->mc);
@@ -475,6 +533,7 @@ out_ok:
 		state = UCODE_ERROR;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 free_table:
 	free_equiv_cpu_table();
@@ -482,7 +541,11 @@ free_table:
 <<<<<<< HEAD
 out:
 =======
+<<<<<<< HEAD
+out:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return state;
 }
 
@@ -537,8 +600,11 @@ request_microcode_user(int cpu, const void __user *buf, size_t size)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	pr_info("AMD microcode update via /dev/cpu/microcode not supported\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return UCODE_ERROR;
 }
 
@@ -548,8 +614,11 @@ static void microcode_fini_cpu_amd(int cpu)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	vfree(uci->mc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uci->mc = NULL;
 }
 
@@ -564,6 +633,9 @@ static struct microcode_ops microcode_amd_ops = {
 struct microcode_ops * __init init_amd_microcode(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cpuinfo_x86 *c = &cpu_data(0);
 
 	if (c->x86_vendor != X86_VENDOR_AMD || c->x86 < 0x10) {
@@ -582,7 +654,10 @@ void __exit exit_amd_microcode(void)
 {
 	free_page((unsigned long)patch);
 }
+<<<<<<< HEAD
+=======
 =======
 	return &microcode_amd_ops;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

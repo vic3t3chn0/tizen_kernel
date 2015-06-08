@@ -127,8 +127,12 @@ static int __init ts219_pci_init(void)
 <<<<<<< HEAD
 		kirkwood_pcie_init(KW_PCIE0);
 =======
+<<<<<<< HEAD
+		kirkwood_pcie_init(KW_PCIE0);
+=======
 		kirkwood_pcie_init(KW_PCIE1 | KW_PCIE0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -139,8 +143,12 @@ MACHINE_START(TS219, "QNAP TS-119/TS-219")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= qnap_ts219_init,
 	.map_io		= kirkwood_map_io,
 	.init_early	= kirkwood_init_early,
@@ -149,5 +157,9 @@ MACHINE_START(TS219, "QNAP TS-119/TS-219")
 <<<<<<< HEAD
 	.restart	= kirkwood_restart,
 =======
+<<<<<<< HEAD
+	.restart	= kirkwood_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

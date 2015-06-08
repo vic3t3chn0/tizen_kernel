@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2008-2009 ST-Ericsson SA
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2008-2009 ST-Ericsson SA
+=======
  * Copyright (C) 2008-2009 ST-Ericsson
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author: Srinidhi KASAGAR <srinidhi.kasagar@stericsson.com>
  *
@@ -20,8 +24,11 @@
 #include <linux/irq.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/io.h>
 
@@ -30,7 +37,11 @@
 <<<<<<< HEAD
 #include <plat/gpio-nomadik.h>
 =======
+<<<<<<< HEAD
+#include <plat/gpio-nomadik.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <mach/setup.h>
 #include <mach/devices.h>
@@ -38,7 +49,11 @@
 <<<<<<< HEAD
 #include <mach/db8500-regs.h>
 =======
+<<<<<<< HEAD
+#include <mach/db8500-regs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "devices-db8500.h"
 #include "ste-dma40-db8500.h"
@@ -51,11 +66,16 @@ static struct map_desc u8500_uart_io_desc[] __initdata = {
 
 static struct map_desc u8500_io_desc[] __initdata = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* SCU base also covers GIC CPU BASE and TWD with its 4K page */
 	__IO_DEV_DESC(U8500_SCU_BASE, SZ_4K),
 	__IO_DEV_DESC(U8500_GIC_DIST_BASE, SZ_4K),
 	__IO_DEV_DESC(U8500_L2CC_BASE, SZ_4K),
 	__IO_DEV_DESC(U8500_MTU0_BASE, SZ_4K),
+<<<<<<< HEAD
+=======
 =======
 	__IO_DEV_DESC(U8500_GIC_CPU_BASE, SZ_4K),
 	__IO_DEV_DESC(U8500_GIC_DIST_BASE, SZ_4K),
@@ -64,6 +84,7 @@ static struct map_desc u8500_io_desc[] __initdata = {
 	__IO_DEV_DESC(U8500_MTU0_BASE, SZ_4K),
 	__IO_DEV_DESC(U8500_SCU_BASE, SZ_4K),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__IO_DEV_DESC(U8500_BACKUPRAM0_BASE, SZ_8K),
 
 	__IO_DEV_DESC(U8500_CLKRST1_BASE, SZ_4K),
@@ -77,6 +98,8 @@ static struct map_desc u8500_io_desc[] __initdata = {
 	__IO_DEV_DESC(U8500_GPIO1_BASE, SZ_4K),
 	__IO_DEV_DESC(U8500_GPIO2_BASE, SZ_4K),
 	__IO_DEV_DESC(U8500_GPIO3_BASE, SZ_4K),
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 };
@@ -93,6 +116,7 @@ static struct map_desc u8500_v1_io_desc[] __initdata = {
 
 static struct map_desc u8500_v2_io_desc[] __initdata = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__IO_DEV_DESC(U8500_PRCMU_TCDM_BASE, SZ_4K),
 };
 
@@ -109,6 +133,8 @@ void __init u8500_map_io(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (cpu_is_u8500ed())
 		iotable_init(u8500_ed_io_desc, ARRAY_SIZE(u8500_ed_io_desc));
 	else if (cpu_is_u8500v1())
@@ -117,6 +143,7 @@ void __init u8500_map_io(void)
 		iotable_init(u8500_v2_io_desc, ARRAY_SIZE(u8500_v2_io_desc));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_PRCMU_BASE = __io_address(U8500_PRCMU_BASE);
 }
 
@@ -183,6 +210,9 @@ static resource_size_t __initdata db8500_gpio_base[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init db8500_add_gpios(struct device *parent)
 {
 	struct nmk_gpio_platform_data pdata = {
@@ -190,6 +220,8 @@ static void __init db8500_add_gpios(struct device *parent)
 	};
 
 	dbx500_add_gpios(parent, ARRAY_AND_SIZE(db8500_gpio_base),
+<<<<<<< HEAD
+=======
 =======
 static void __init db8500_add_gpios(void)
 {
@@ -202,6 +234,7 @@ static void __init db8500_add_gpios(void)
 
 	dbx500_add_gpios(ARRAY_AND_SIZE(db8500_gpio_base),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 IRQ_DB8500_GPIO0, &pdata);
 }
 
@@ -228,6 +261,9 @@ static int usb_db8500_tx_dma_cfg[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char *db8500_read_soc_id(void)
 {
 	void __iomem *uid = __io_address(U8500_BB_UID_BASE);
@@ -268,6 +304,8 @@ struct device * __init u8500_init_devices(void)
 	platform_add_devices(platform_devs, ARRAY_SIZE(platform_devs));
 
 	return parent;
+<<<<<<< HEAD
+=======
 =======
 /*
  * This function is called from the board init
@@ -286,4 +324,5 @@ void __init u8500_init_devices(void)
 
 	return ;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

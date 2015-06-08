@@ -37,7 +37,11 @@
 <<<<<<< HEAD
 #include <linux/moduleparam.h>
 =======
+<<<<<<< HEAD
+#include <linux/moduleparam.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/info.h>
 #include <sound/pcm.h>
@@ -86,8 +90,12 @@ static int usX2Y_urb_capt_retire(struct snd_usX2Y_substream *subs)
 <<<<<<< HEAD
 				   "Most probably some hardware problem.\n",
 =======
+<<<<<<< HEAD
+				   "Most probably some hardware problem.\n",
+=======
 				   "Most propably some hardware problem.\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   urb->iso_frame_desc[i].status);
 			return urb->iso_frame_desc[i].status;
 		}
@@ -310,8 +318,12 @@ static void usX2Y_error_sequence(struct usX2Ydev *usX2Y,
 <<<<<<< HEAD
 "Most probably some urb of usb-frame %i is still missing.\n"
 =======
+<<<<<<< HEAD
+"Most probably some urb of usb-frame %i is still missing.\n"
+=======
 "Most propably some urb of usb-frame %i is still missing.\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 "Cause could be too long delays in usb-hcd interrupt handling.\n",
 		   usb_get_current_frame_number(usX2Y->dev),
 		   subs->endpoint, usb_pipein(urb->pipe) ? "in" : "out",

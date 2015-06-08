@@ -18,6 +18,9 @@
 #include <asm/pgtable.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "proc-macros.S"
 
 #ifdef CONFIG_ARM_LPAE
@@ -25,6 +28,8 @@
 #else
 #include "proc-v7-2level.S"
 #endif
+<<<<<<< HEAD
+=======
 =======
 #include <mach/smc.h>
 
@@ -49,6 +54,7 @@
 #define TTB_FLAGS_SMP	TTB_IRGN_WBWA|TTB_S|TTB_NOS|TTB_RGN_OC_WBWA
 #define PMD_FLAGS_SMP	PMD_SECT_WBWA|PMD_SECT_S
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ENTRY(cpu_v7_proc_init)
 	mov	pc, lr
@@ -76,6 +82,9 @@ ENDPROC(cpu_v7_proc_fin)
  */
 	.align	5
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pushsection	.idmap.text, "ax"
 ENTRY(cpu_v7_reset)
 	mrc	p15, 0, r1, c1, c0, 0		@ ctrl register
@@ -89,6 +98,8 @@ ENTRY(cpu_v7_reset)
 	mov	pc, r0
 ENDPROC(cpu_v7_reset)
 	.popsection
+<<<<<<< HEAD
+=======
 =======
 ENTRY(cpu_v7_reset)
 	mrc	p15, 0, r1, c1, c0, 0		@ ctrl register
@@ -98,6 +109,7 @@ ENTRY(cpu_v7_reset)
 	mov	pc, r0
 ENDPROC(cpu_v7_reset)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	cpu_v7_do_idle()
@@ -125,6 +137,9 @@ ENTRY(cpu_v7_dcache_clean_area)
 ENDPROC(cpu_v7_dcache_clean_area)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	string	cpu_v7_name, "ARMv7 Processor"
 	.align
 
@@ -145,6 +160,8 @@ ENTRY(cpu_v7_do_suspend)
 	mrc	p15, 0, r10, c1, c0, 2	@ Co-processor access control
 	stmia	r0, {r6 - r11}
 	ldmfd	sp!, {r4 - r10, pc}
+<<<<<<< HEAD
+=======
 =======
 /*
  *	cpu_v7_switch_mm(pgd_phys, tsk)
@@ -283,6 +300,7 @@ ENTRY(cpu_v7_do_suspend)
 	stmia	r0, {r6 - r11}
 	ldmfd	sp!, {r4 - r11, pc}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENDPROC(cpu_v7_do_suspend)
 
 ENTRY(cpu_v7_do_resume)
@@ -290,6 +308,9 @@ ENTRY(cpu_v7_do_resume)
 	mcr	p15, 0, ip, c8, c7, 0	@ invalidate TLBs
 	mcr	p15, 0, ip, c7, c5, 0	@ invalidate I cache
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mcr	p15, 0, ip, c13, c0, 1	@ set reserved context ID
 	ldmia	r0!, {r4 - r5}
 	mcr	p15, 0, r4, c13, c0, 0	@ FCSE/PID
@@ -307,6 +328,8 @@ ENTRY(cpu_v7_do_resume)
 	teq	r4, r9			@ Is it already set?
 	mcrne	p15, 0, r9, c1, c0, 1	@ No, so write it
 	mcr	p15, 0, r10, c1, c0, 2	@ Co-processor access control
+<<<<<<< HEAD
+=======
 =======
 	ldmia	r0!, {r4 - r6}
 	mcr	p15, 0, r4, c13, c0, 0	@ FCSE/PID
@@ -320,16 +343,22 @@ ENTRY(cpu_v7_do_resume)
 	mcr	p15, 0, r10, c1, c0, 1	@ Auxiliary control register
 	mcr	p15, 0, r11, c1, c0, 2	@ Co-processor access control
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	r4, =PRRR		@ PRRR
 	ldr	r5, =NMRR		@ NMRR
 	mcr	p15, 0, r4, c10, c2, 0	@ write PRRR
 	mcr	p15, 0, r5, c10, c2, 1	@ write NMRR
 	isb
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dsb
 	mov	r0, r8			@ control register
 	b	cpu_resume_mmu
 ENDPROC(cpu_v7_do_resume)
+<<<<<<< HEAD
+=======
 =======
 	mov	r0, r9			@ control register
 	mov	r2, r7, lsr #14		@ get TTB0 base
@@ -344,6 +373,7 @@ cpu_resume_l1_flags:
 #define cpu_v7_do_suspend	0
 #define cpu_v7_do_resume	0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	__CPUINIT
@@ -366,7 +396,11 @@ __v7_ca9mp_setup:
 <<<<<<< HEAD
 __v7_ca7mp_setup:
 =======
+<<<<<<< HEAD
+__v7_ca7mp_setup:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __v7_ca15mp_setup:
 	mov	r10, #0
 1:
@@ -420,13 +454,19 @@ __v7_setup:
 <<<<<<< HEAD
 	b	3f
 =======
+<<<<<<< HEAD
+	b	3f
+=======
 	b	4f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Cortex-A9 Errata */
 2:	ldr	r10, =0x00000c09		@ Cortex-A9 primary part number
 	teq	r0, r10
 	bne	3f
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifndef CONFIG_ARM_TRUSTZONE
@@ -441,6 +481,7 @@ __v7_setup:
 	mcreq	p15, 0, r10, c15, c0, 2		@ instr-side waits
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_ERRATA_742230
 	cmp	r6, #0x22			@ only present up to r2p2
 	mrcle	p15, 0, r10, c15, c0, 1		@ read diagnostic register
@@ -458,12 +499,15 @@ __v7_setup:
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ARM_ERRATA_761320
 	mrc	p15, 0, r10, c15, c0, 1		@ read diagnostic register
 	orr	r10, r10, #1 << 21		@ set bit #21
 	mcr	p15, 0, r10, c15, c0, 1		@ write diagnostic register
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_ARM_ERRATA_743622
 	teq	r5, #0x00200000			@ only present in r2p*
 	mrceq	p15, 0, r10, c15, c0, 1		@ read diagnostic register
@@ -471,6 +515,9 @@ __v7_setup:
 	mcreq	p15, 0, r10, c15, c0, 1		@ write diagnostic register
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_ARM_ERRATA_751472) && defined(CONFIG_SMP)
 	ALT_SMP(cmp r6, #0x30)			@ present prior to r3p0
 	ALT_UP_B(1f)
@@ -516,6 +563,8 @@ __v7_setup:
 	mcr     p15, 3, r0, c15, c0, 2
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_ARM_ERRATA_751472
 	cmp	r6, #0x30			@ present prior to r3p0
@@ -601,6 +650,7 @@ __v7_setup:
 	mcr	p15, 0, r6, c10, c2, 1		@ write NMRR
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_ARM_THUMBEE
 	mrc	p15, 0, r0, c0, c1, 0		@ read ID_PFR0 for ThumbEE
 	and	r0, r0, #(0xf << 12)		@ ThumbEE enabled field
@@ -632,6 +682,9 @@ ENDPROC(__v7_setup)
 <<<<<<< HEAD
 	.align	2
 =======
+<<<<<<< HEAD
+	.align	2
+=======
 	/*   AT
 	 *  TFR   EV X F   I D LR    S
 	 * .EEE ..EE PUI. .T.T 4RVI ZWRS BLDP WCAM
@@ -643,6 +696,7 @@ v7_crval:
 	crval	clear=0x0120c302, mmuset=0x10c03c7d, ucset=0x00c01c7c
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 __v7_setup_stack:
 	.space	4 * 11				@ 11 registers
 
@@ -652,12 +706,16 @@ __v7_setup_stack:
 <<<<<<< HEAD
 	define_processor_functions v7, dabort=v7_early_abort, pabort=v7_pabort, suspend=1
 =======
+<<<<<<< HEAD
+	define_processor_functions v7, dabort=v7_early_abort, pabort=v7_pabort, suspend=1
+=======
 #ifdef CONFIG_PM_SLEEP
 	define_processor_functions v7, dabort=v7_early_abort, pabort=v7_pabort, suspend=1
 #else
 	define_processor_functions v7, dabort=v7_early_abort, pabort=v7_pabort, suspend=0
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.section ".rodata"
 
@@ -673,11 +731,16 @@ __v7_setup_stack:
 .macro __v7_proc initfunc, mm_mmuflags = 0, io_mmuflags = 0, hwcaps = 0
 	ALT_SMP(.long	PMD_TYPE_SECT | PMD_SECT_AP_WRITE | PMD_SECT_AP_READ | \
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			PMD_SECT_AF | PMD_FLAGS_SMP | \mm_mmuflags)
 	ALT_UP(.long	PMD_TYPE_SECT | PMD_SECT_AP_WRITE | PMD_SECT_AP_READ | \
 			PMD_SECT_AF | PMD_FLAGS_UP | \mm_mmuflags)
 	.long	PMD_TYPE_SECT | PMD_SECT_AP_WRITE | \
 		PMD_SECT_AP_READ | PMD_SECT_AF | \io_mmuflags
+<<<<<<< HEAD
+=======
 =======
 			PMD_FLAGS_SMP | \mm_mmuflags)
 	ALT_UP(.long	PMD_TYPE_SECT | PMD_SECT_AP_WRITE | PMD_SECT_AP_READ | \
@@ -685,6 +748,7 @@ __v7_setup_stack:
 	.long	PMD_TYPE_SECT | PMD_SECT_XN | PMD_SECT_AP_WRITE | \
 		PMD_SECT_AP_READ | \io_mmuflags
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	W(b)	\initfunc
 	.long	cpu_arch_name
 	.long	cpu_elf_name
@@ -700,7 +764,11 @@ __v7_setup_stack:
 <<<<<<< HEAD
 #ifndef CONFIG_ARM_LPAE
 =======
+<<<<<<< HEAD
+#ifndef CONFIG_ARM_LPAE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * ARM Ltd. Cortex A5 processor.
 	 */
@@ -721,6 +789,9 @@ __v7_ca9mp_proc_info:
 	__v7_proc __v7_ca9mp_setup
 	.size	__v7_ca9mp_proc_info, . - __v7_ca9mp_proc_info
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* CONFIG_ARM_LPAE */
 
 	/*
@@ -732,8 +803,11 @@ __v7_ca7mp_proc_info:
 	.long	0xff0ffff0
 	__v7_proc __v7_ca7mp_setup, hwcaps = HWCAP_IDIV
 	.size	__v7_ca7mp_proc_info, . - __v7_ca7mp_proc_info
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * ARM Ltd. Cortex A15 processor.
@@ -747,6 +821,9 @@ __v7_ca15mp_proc_info:
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Qualcomm Inc. Krait processors.
 	 */
 	.type	__krait_proc_info, #object
@@ -757,8 +834,11 @@ __krait_proc_info:
 	.size	__krait_proc_info, . - __krait_proc_info
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * Match any ARMv7 processor core.
 	 */
 	.type	__v7_proc_info, #object

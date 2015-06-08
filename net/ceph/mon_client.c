@@ -12,9 +12,14 @@
 #include <linux/ceph/debugfs.h>
 #include <linux/ceph/decode.h>
 =======
+<<<<<<< HEAD
+#include <linux/ceph/debugfs.h>
+#include <linux/ceph/decode.h>
+=======
 #include <linux/ceph/decode.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ceph/auth.h>
 
 /*
@@ -122,12 +127,17 @@ static void __send_prepared_auth_request(struct ceph_mon_client *monc, int len)
 static void __close_session(struct ceph_mon_client *monc)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dout("__close_session closing mon%d\n", monc->cur_mon);
 	ceph_con_revoke(monc->con, monc->m_auth);
 	ceph_con_close(monc->con);
 	monc->cur_mon = -1;
 	monc->pending_auth = 0;
 	ceph_auth_reset(monc->auth);
+<<<<<<< HEAD
+=======
 =======
 	if (monc->con) {
 		dout("__close_session closing mon%d\n", monc->cur_mon);
@@ -138,6 +148,7 @@ static void __close_session(struct ceph_mon_client *monc)
 		ceph_auth_reset(monc->auth);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -318,6 +329,8 @@ int ceph_monc_open_session(struct ceph_mon_client *monc)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!monc->con) {
 		monc->con = kmalloc(sizeof(*monc->con), GFP_KERNEL);
 		if (!monc->con)
@@ -328,6 +341,7 @@ int ceph_monc_open_session(struct ceph_mon_client *monc)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_lock(&monc->mutex);
 	__open_session(monc);
 	__schedule_delayed(monc);
@@ -369,6 +383,9 @@ static void ceph_monc_handle_map(struct ceph_mon_client *monc,
 	kfree(old);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!client->have_fsid) {
 		client->have_fsid = true;
 		mutex_unlock(&monc->mutex);
@@ -382,10 +399,13 @@ static void ceph_monc_handle_map(struct ceph_mon_client *monc,
 out:
 	mutex_unlock(&monc->mutex);
 out_unlocked:
+<<<<<<< HEAD
+=======
 =======
 out:
 	mutex_unlock(&monc->mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	wake_up_all(&client->auth_wq);
 }
 
@@ -562,18 +582,24 @@ int ceph_monc_do_statfs(struct ceph_mon_client *monc, struct ceph_statfs *buf)
 
 	err = -ENOMEM;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	req->request = ceph_msg_new(CEPH_MSG_STATFS, sizeof(*h), GFP_NOFS,
 				    true);
 	if (!req->request)
 		goto out;
 	req->reply = ceph_msg_new(CEPH_MSG_STATFS_REPLY, 1024, GFP_NOFS,
 				  true);
+<<<<<<< HEAD
+=======
 =======
 	req->request = ceph_msg_new(CEPH_MSG_STATFS, sizeof(*h), GFP_NOFS);
 	if (!req->request)
 		goto out;
 	req->reply = ceph_msg_new(CEPH_MSG_STATFS_REPLY, 1024, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!req->reply)
 		goto out;
 
@@ -669,18 +695,24 @@ int ceph_monc_do_poolop(struct ceph_mon_client *monc, u32 op,
 
 	err = -ENOMEM;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	req->request = ceph_msg_new(CEPH_MSG_POOLOP, sizeof(*h), GFP_NOFS,
 				    true);
 	if (!req->request)
 		goto out;
 	req->reply = ceph_msg_new(CEPH_MSG_POOLOP_REPLY, 1024, GFP_NOFS,
 				  true);
+<<<<<<< HEAD
+=======
 =======
 	req->request = ceph_msg_new(CEPH_MSG_POOLOP, sizeof(*h), GFP_NOFS);
 	if (!req->request)
 		goto out;
 	req->reply = ceph_msg_new(CEPH_MSG_POOLOP_REPLY, 1024, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!req->reply)
 		goto out;
 
@@ -807,6 +839,9 @@ int ceph_monc_init(struct ceph_mon_client *monc, struct ceph_client *cl)
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* connection */
 	monc->con = kmalloc(sizeof(*monc->con), GFP_KERNEL);
 	if (!monc->con)
@@ -814,22 +849,31 @@ int ceph_monc_init(struct ceph_mon_client *monc, struct ceph_client *cl)
 	ceph_con_init(monc->client->msgr, monc->con);
 	monc->con->private = monc;
 	monc->con->ops = &mon_con_ops;
+<<<<<<< HEAD
+=======
 =======
 	monc->con = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* authentication */
 	monc->auth = ceph_auth_init(cl->options->name,
 				    cl->options->key);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(monc->auth)) {
 		err = PTR_ERR(monc->auth);
 		goto out_con;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (IS_ERR(monc->auth))
 		return PTR_ERR(monc->auth);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	monc->auth->want_keys =
 		CEPH_ENTITY_TYPE_AUTH | CEPH_ENTITY_TYPE_MON |
 		CEPH_ENTITY_TYPE_OSD | CEPH_ENTITY_TYPE_MDS;
@@ -839,6 +883,9 @@ int ceph_monc_init(struct ceph_mon_client *monc, struct ceph_client *cl)
 	monc->m_subscribe_ack = ceph_msg_new(CEPH_MSG_MON_SUBSCRIBE_ACK,
 				     sizeof(struct ceph_mon_subscribe_ack),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     GFP_NOFS, true);
 	if (!monc->m_subscribe_ack)
 		goto out_auth;
@@ -854,6 +901,8 @@ int ceph_monc_init(struct ceph_mon_client *monc, struct ceph_client *cl)
 		goto out_subscribe;
 
 	monc->m_auth = ceph_msg_new(CEPH_MSG_AUTH, 4096, GFP_NOFS, true);
+<<<<<<< HEAD
+=======
 =======
 				     GFP_NOFS);
 	if (!monc->m_subscribe_ack)
@@ -869,6 +918,7 @@ int ceph_monc_init(struct ceph_mon_client *monc, struct ceph_client *cl)
 
 	monc->m_auth = ceph_msg_new(CEPH_MSG_AUTH, 4096, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	monc->pending_auth = 0;
 	if (!monc->m_auth)
 		goto out_auth_reply;
@@ -895,12 +945,18 @@ out_subscribe:
 out_subscribe_ack:
 	ceph_msg_put(monc->m_subscribe_ack);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_auth:
 	ceph_auth_destroy(monc->auth);
 out_con:
 	monc->con->ops->put(monc->con);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_monmap:
 	kfree(monc->monmap);
 out:
@@ -916,11 +972,16 @@ void ceph_monc_stop(struct ceph_mon_client *monc)
 	mutex_lock(&monc->mutex);
 	__close_session(monc);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	monc->con->private = NULL;
 	monc->con->ops->put(monc->con);
 	monc->con = NULL;
 
+<<<<<<< HEAD
+=======
 =======
 	if (monc->con) {
 		monc->con->private = NULL;
@@ -928,6 +989,7 @@ void ceph_monc_stop(struct ceph_mon_client *monc)
 		monc->con = NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&monc->mutex);
 
 	ceph_auth_destroy(monc->auth);
@@ -1077,8 +1139,12 @@ static struct ceph_msg *mon_alloc_msg(struct ceph_connection *con,
 <<<<<<< HEAD
 		m = ceph_msg_new(type, front_len, GFP_NOFS, false);
 =======
+<<<<<<< HEAD
+		m = ceph_msg_new(type, front_len, GFP_NOFS, false);
+=======
 		m = ceph_msg_new(type, front_len, GFP_NOFS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 
@@ -1108,8 +1174,12 @@ static void mon_fault(struct ceph_connection *con)
 <<<<<<< HEAD
 	if (!monc->hunting)
 =======
+<<<<<<< HEAD
+	if (!monc->hunting)
+=======
 	if (monc->con && !monc->hunting)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_info("mon%d %s session lost, "
 			"hunting for new mon\n", monc->cur_mon,
 			ceph_pr_addr(&monc->con->peer_addr.in_addr));

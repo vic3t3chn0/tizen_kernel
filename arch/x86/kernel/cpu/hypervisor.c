@@ -33,11 +33,16 @@
 static const __initconst struct hypervisor_x86 * const hypervisors[] =
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_XEN_PVHVM
 	&x86_hyper_xen_hvm,
 #endif
 	&x86_hyper_vmware,
 	&x86_hyper_ms_hyperv,
+<<<<<<< HEAD
+=======
 =======
 	&x86_hyper_vmware,
 	&x86_hyper_ms_hyperv,
@@ -45,6 +50,7 @@ static const __initconst struct hypervisor_x86 * const hypervisors[] =
 	&x86_hyper_xen_hvm,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const struct hypervisor_x86 *x86_hyper;

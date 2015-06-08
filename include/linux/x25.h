@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/socket.h>
 =======
+<<<<<<< HEAD
+#include <linux/socket.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define	SIOCX25GSUBSCRIP	(SIOCPROTOPRIVATE + 0)
 #define	SIOCX25SSUBSCRIP	(SIOCPROTOPRIVATE + 1)
@@ -64,8 +68,12 @@ struct sockaddr_x25 {
 <<<<<<< HEAD
 	__kernel_sa_family_t sx25_family;	/* Must be AF_X25 */
 =======
+<<<<<<< HEAD
+	__kernel_sa_family_t sx25_family;	/* Must be AF_X25 */
+=======
 	sa_family_t	   sx25_family;		/* Must be AF_X25 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct x25_address sx25_addr;		/* X.121 Address */
 };
 

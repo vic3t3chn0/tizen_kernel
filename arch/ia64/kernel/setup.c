@@ -61,8 +61,11 @@
 #include <asm/smp.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/tlbflush.h>
 #include <asm/unistd.h>
 #include <asm/hpsim.h>
@@ -224,6 +227,9 @@ sort_regions (struct rsvd_region *rsvd_region, int max)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* merge overlaps */
 static int __init
 merge_regions (struct rsvd_region *rsvd_region, int max)
@@ -241,8 +247,11 @@ merge_regions (struct rsvd_region *rsvd_region, int max)
 	return max;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Request address space for all standard resources
  */
@@ -296,7 +305,11 @@ static void __init setup_crashkernel(unsigned long total, int *n)
 <<<<<<< HEAD
 			*n = merge_regions(rsvd_region, *n);
 =======
+<<<<<<< HEAD
+			*n = merge_regions(rsvd_region, *n);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			base = kdump_find_rsvd_region(size,
 					rsvd_region, *n);
 		}
@@ -403,7 +416,11 @@ reserve_memory (void)
 <<<<<<< HEAD
 	num_rsvd_regions = merge_regions(rsvd_region, num_rsvd_regions);
 =======
+<<<<<<< HEAD
+	num_rsvd_regions = merge_regions(rsvd_region, num_rsvd_regions);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -501,8 +518,12 @@ mark_bsp_online (void)
 <<<<<<< HEAD
 	set_cpu_online(smp_processor_id(), true);
 =======
+<<<<<<< HEAD
+	set_cpu_online(smp_processor_id(), true);
+=======
 	cpu_set(smp_processor_id(), cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 }
 

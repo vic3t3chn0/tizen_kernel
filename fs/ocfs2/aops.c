@@ -105,8 +105,12 @@ static int ocfs2_symlink_get_block(struct inode *inode, sector_t iblock,
 <<<<<<< HEAD
 			kaddr = kmap_atomic(bh_result->b_page);
 =======
+<<<<<<< HEAD
+			kaddr = kmap_atomic(bh_result->b_page);
+=======
 			kaddr = kmap_atomic(bh_result->b_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!kaddr) {
 				mlog(ML_ERROR, "couldn't kmap!\n");
 				goto bail;
@@ -117,8 +121,12 @@ static int ocfs2_symlink_get_block(struct inode *inode, sector_t iblock,
 <<<<<<< HEAD
 			kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+			kunmap_atomic(kaddr);
+=======
 			kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			set_buffer_uptodate(bh_result);
 		}
 		brelse(buffer_cache_bh);
@@ -247,8 +255,12 @@ int ocfs2_read_inline_data(struct inode *inode, struct page *page,
 <<<<<<< HEAD
 	kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(page);
+=======
 	kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (size)
 		memcpy(kaddr, di->id2.i_data.id_data, size);
 	/* Clear the remaining part of the page */
@@ -257,8 +269,12 @@ int ocfs2_read_inline_data(struct inode *inode, struct page *page,
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	SetPageUptodate(page);
 
@@ -307,6 +323,9 @@ static int ocfs2_readpage(struct file *file, struct page *page)
 
 	if (down_read_trylock(&oi->ip_alloc_sem) == 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Unlock the page and cycle ip_alloc_sem so that we don't
 		 * busyloop waiting for ip_alloc_sem to unlock
@@ -316,9 +335,12 @@ static int ocfs2_readpage(struct file *file, struct page *page)
 		unlock = 0;
 		down_read(&oi->ip_alloc_sem);
 		up_read(&oi->ip_alloc_sem);
+<<<<<<< HEAD
+=======
 =======
 		ret = AOP_TRUNCATED_PAGE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_inode_unlock;
 	}
 
@@ -583,10 +605,15 @@ bail:
  * particularly interested in the aio/dio case.  We use the rw_lock DLM lock
  * to protect io on one node from truncation on another.
 =======
+<<<<<<< HEAD
+ * particularly interested in the aio/dio case.  We use the rw_lock DLM lock
+ * to protect io on one node from truncation on another.
+=======
  * particularly interested in the aio/dio case.  Like the core uses
  * i_alloc_sem, we use the rw_lock DLM lock to protect io on one node from
  * truncation on another.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void ocfs2_dio_end_io(struct kiocb *iocb,
 			     loff_t offset,
@@ -600,12 +627,19 @@ static void ocfs2_dio_end_io(struct kiocb *iocb,
 <<<<<<< HEAD
 	wait_queue_head_t *wq = ocfs2_ioend_wq(inode);
 =======
+<<<<<<< HEAD
+	wait_queue_head_t *wq = ocfs2_ioend_wq(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* this io's submitter should not have unlocked this before we could */
 	BUG_ON(!ocfs2_iocb_is_rw_locked(iocb));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ocfs2_iocb_is_sem_locked(iocb))
 		ocfs2_iocb_clear_sem_locked(iocb);
 
@@ -616,11 +650,14 @@ static void ocfs2_dio_end_io(struct kiocb *iocb,
 		    waitqueue_active(wq)) {
 			wake_up_all(wq);
 		}
+<<<<<<< HEAD
+=======
 =======
 	if (ocfs2_iocb_is_sem_locked(iocb)) {
 		up_read(&inode->i_alloc_sem);
 		ocfs2_iocb_clear_sem_locked(iocb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ocfs2_iocb_clear_rw_locked(iocb);
@@ -633,7 +670,11 @@ static void ocfs2_dio_end_io(struct kiocb *iocb,
 <<<<<<< HEAD
 	inode_dio_done(inode);
 =======
+<<<<<<< HEAD
+	inode_dio_done(inode);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -730,8 +771,12 @@ static void ocfs2_clear_page_regions(struct page *page,
 <<<<<<< HEAD
 	kaddr = kmap_atomic(page);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(page);
+=======
 	kaddr = kmap_atomic(page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (from || to) {
 		if (from > cluster_start)
@@ -745,8 +790,12 @@ static void ocfs2_clear_page_regions(struct page *page,
 <<<<<<< HEAD
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(kaddr);
+=======
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -928,14 +977,20 @@ struct ocfs2_write_ctxt {
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * w_target_locked is used for page_mkwrite path indicating no unlocking
 	 * against w_target_page in ocfs2_write_end_nolock.
 	 */
 	unsigned int			w_target_locked:1;
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * ocfs2_write_end() uses this to know what the real range to
 	 * write in the target should be.
 	 */
@@ -969,6 +1024,9 @@ void ocfs2_unlock_and_free_pages(struct page **pages, int num_pages)
 static void ocfs2_free_write_ctxt(struct ocfs2_write_ctxt *wc)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	/*
@@ -987,8 +1045,11 @@ static void ocfs2_free_write_ctxt(struct ocfs2_write_ctxt *wc)
 		mark_page_accessed(wc->w_target_page);
 		page_cache_release(wc->w_target_page);
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ocfs2_unlock_and_free_pages(wc->w_pages, wc->w_num_pages);
 
 	brelse(wc->w_di_bh);
@@ -1227,11 +1288,16 @@ static int ocfs2_grab_pages_for_write(struct address_space *mapping,
 			lock_page(mmap_page);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/* Exit and let the caller retry */
 			if (mmap_page->mapping != mapping) {
 				WARN_ON(mmap_page->mapping);
 				unlock_page(mmap_page);
 				ret = -EAGAIN;
+<<<<<<< HEAD
+=======
 =======
 			if (mmap_page->mapping != mapping) {
 				unlock_page(mmap_page);
@@ -1243,6 +1309,7 @@ static int ocfs2_grab_pages_for_write(struct address_space *mapping,
 				ret = -EINVAL;
 				mlog_errno(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				goto out;
 			}
 
@@ -1251,7 +1318,11 @@ static int ocfs2_grab_pages_for_write(struct address_space *mapping,
 <<<<<<< HEAD
 			wc->w_target_locked = true;
 =======
+<<<<<<< HEAD
+			wc->w_target_locked = true;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			wc->w_pages[i] = find_or_create_page(mapping, index,
 							     GFP_NOFS);
@@ -1270,7 +1341,12 @@ out:
 	if (ret)
 		wc->w_target_locked = false;
 =======
+<<<<<<< HEAD
+	if (ret)
+		wc->w_target_locked = false;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -1931,13 +2007,20 @@ try_again:
 <<<<<<< HEAD
 	if (ret && ret != -EAGAIN) {
 =======
+<<<<<<< HEAD
+	if (ret && ret != -EAGAIN) {
+=======
 	if (ret) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mlog_errno(ret);
 		goto out_quota;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * ocfs2_grab_pages_for_write() returns -EAGAIN if it could not lock
 	 * the target page. In this case, we exit with no error and no target
@@ -1950,8 +2033,11 @@ try_again:
 		goto out_quota;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = ocfs2_write_cluster_by_desc(mapping, data_ac, meta_ac, wc, pos,
 					  len);
 	if (ret) {
@@ -2063,10 +2149,16 @@ static void ocfs2_write_end_inline(struct inode *inode, loff_t pos,
 	memcpy(di->id2.i_data.id_data + pos, kaddr + pos, *copied);
 	kunmap_atomic(kaddr);
 =======
+<<<<<<< HEAD
+	kaddr = kmap_atomic(wc->w_target_page);
+	memcpy(di->id2.i_data.id_data + pos, kaddr + pos, *copied);
+	kunmap_atomic(kaddr);
+=======
 	kaddr = kmap_atomic(wc->w_target_page, KM_USER0);
 	memcpy(di->id2.i_data.id_data + pos, kaddr + pos, *copied);
 	kunmap_atomic(kaddr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	trace_ocfs2_write_end_inline(
 	     (unsigned long long)OCFS2_I(inode)->ip_blkno,

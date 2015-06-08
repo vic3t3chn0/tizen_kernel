@@ -127,6 +127,9 @@ void x25_write_internal(struct sock *sk, int frametype)
 	 */
 	switch (frametype) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case X25_CALL_REQUEST:
 		len += 1 + X25_ADDR_LEN + X25_MAX_FAC_LEN + X25_MAX_CUD_LEN;
 		break;
@@ -151,6 +154,8 @@ void x25_write_internal(struct sock *sk, int frametype)
 	default:
 		printk(KERN_ERR "X.25: invalid frame type %02X\n", frametype);
 		return;
+<<<<<<< HEAD
+=======
 =======
 		case X25_CALL_REQUEST:
 			len += 1 + X25_ADDR_LEN + X25_MAX_FAC_LEN +
@@ -179,6 +184,7 @@ void x25_write_internal(struct sock *sk, int frametype)
 			       frametype);
 			return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if ((skb = alloc_skb(len, GFP_ATOMIC)) == NULL)
@@ -308,6 +314,9 @@ int x25_decode(struct sock *sk, struct sk_buff *skb, int *ns, int *nr, int *q,
 
 	switch (frame[2]) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case X25_CALL_REQUEST:
 	case X25_CALL_ACCEPTED:
 	case X25_CLEAR_REQUEST:
@@ -322,6 +331,8 @@ int x25_decode(struct sock *sk, struct sk_buff *skb, int *ns, int *nr, int *q,
 	case X25_REGISTRATION_CONFIRMATION:
 	case X25_DIAGNOSTIC:
 		return frame[2];
+<<<<<<< HEAD
+=======
 =======
 		case X25_CALL_REQUEST:
 		case X25_CALL_ACCEPTED:
@@ -338,6 +349,7 @@ int x25_decode(struct sock *sk, struct sk_buff *skb, int *ns, int *nr, int *q,
 		case X25_DIAGNOSTIC:
 			return frame[2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (x25->neighbour->extended) {

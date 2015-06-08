@@ -250,8 +250,12 @@ static int ocfs2_set_acl(handle_t *handle,
 <<<<<<< HEAD
 			umode_t mode = inode->i_mode;
 =======
+<<<<<<< HEAD
+			umode_t mode = inode->i_mode;
+=======
 			mode_t mode = inode->i_mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = posix_acl_equiv_mode(acl, &mode);
 			if (ret < 0)
 				return ret;
@@ -297,8 +301,12 @@ static int ocfs2_set_acl(handle_t *handle,
 <<<<<<< HEAD
 struct posix_acl *ocfs2_iop_get_acl(struct inode *inode, int type)
 =======
+<<<<<<< HEAD
+struct posix_acl *ocfs2_iop_get_acl(struct inode *inode, int type)
+=======
 int ocfs2_check_acl(struct inode *inode, int mask, unsigned int flags)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct ocfs2_super *osb;
 	struct buffer_head *di_bh = NULL;
@@ -306,6 +314,9 @@ int ocfs2_check_acl(struct inode *inode, int mask, unsigned int flags)
 	int ret = -EAGAIN;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	osb = OCFS2_SB(inode->i_sb);
 	if (!(osb->s_mount_opt & OCFS2_MOUNT_POSIX_ACL))
 		return NULL;
@@ -319,6 +330,8 @@ int ocfs2_check_acl(struct inode *inode, int mask, unsigned int flags)
 	brelse(di_bh);
 
 	return acl;
+<<<<<<< HEAD
+=======
 =======
 	if (flags & IPERM_FLAG_RCU)
 		return -ECHILD;
@@ -349,6 +362,7 @@ int ocfs2_check_acl(struct inode *inode, int mask, unsigned int flags)
 
 	return -EAGAIN;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int ocfs2_acl_chmod(struct inode *inode)
@@ -357,8 +371,12 @@ int ocfs2_acl_chmod(struct inode *inode)
 <<<<<<< HEAD
 	struct posix_acl *acl;
 =======
+<<<<<<< HEAD
+	struct posix_acl *acl;
+=======
 	struct posix_acl *acl, *clone;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	if (S_ISLNK(inode->i_mode))
@@ -371,12 +389,17 @@ int ocfs2_acl_chmod(struct inode *inode)
 	if (IS_ERR(acl) || !acl)
 		return PTR_ERR(acl);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = posix_acl_chmod(&acl, GFP_KERNEL, inode->i_mode);
 	if (ret)
 		return ret;
 	ret = ocfs2_set_acl(NULL, inode, NULL, ACL_TYPE_ACCESS,
 			    acl, NULL, NULL);
 	posix_acl_release(acl);
+<<<<<<< HEAD
+=======
 =======
 	clone = posix_acl_clone(acl, GFP_KERNEL);
 	posix_acl_release(acl);
@@ -388,6 +411,7 @@ int ocfs2_acl_chmod(struct inode *inode)
 				    clone, NULL, NULL);
 	posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -409,8 +433,12 @@ int ocfs2_init_acl(handle_t *handle,
 <<<<<<< HEAD
 	umode_t mode;
 =======
+<<<<<<< HEAD
+	umode_t mode;
+=======
 	mode_t mode;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!S_ISLNK(inode->i_mode)) {
 		if (osb->s_mount_opt & OCFS2_MOUNT_POSIX_ACL) {
@@ -431,9 +459,12 @@ int ocfs2_init_acl(handle_t *handle,
 	if ((osb->s_mount_opt & OCFS2_MOUNT_POSIX_ACL) && acl) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		struct posix_acl *clone;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (S_ISDIR(inode->i_mode)) {
 			ret = ocfs2_set_acl(handle, inode, di_bh,
 					    ACL_TYPE_DEFAULT, acl,
@@ -442,6 +473,9 @@ int ocfs2_init_acl(handle_t *handle,
 				goto cleanup;
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mode = inode->i_mode;
 		ret = posix_acl_create(&acl, GFP_NOFS, &mode);
 		if (ret < 0)
@@ -458,6 +492,8 @@ int ocfs2_init_acl(handle_t *handle,
 					    di_bh, ACL_TYPE_ACCESS,
 					    acl, meta_ac, data_ac);
 		}
+<<<<<<< HEAD
+=======
 =======
 		clone = posix_acl_clone(acl, GFP_NOFS);
 		ret = -ENOMEM;
@@ -481,6 +517,7 @@ int ocfs2_init_acl(handle_t *handle,
 		}
 		posix_acl_release(clone);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 cleanup:
 	posix_acl_release(acl);

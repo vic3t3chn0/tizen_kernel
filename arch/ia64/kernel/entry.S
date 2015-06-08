@@ -1617,8 +1617,12 @@ sys_call_table:
 <<<<<<< HEAD
 	data8 sys_ni_syscall			// old nfsservctl
 =======
+<<<<<<< HEAD
+	data8 sys_ni_syscall			// old nfsservctl
+=======
 	data8 sys_nfsservctl
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data8 sys_prctl				// 1170
 	data8 sys_getpagesize
 	data8 sys_mmap2
@@ -1785,9 +1789,14 @@ sys_call_table:
 	data8 sys_process_vm_readv
 	data8 sys_process_vm_writev
 =======
+<<<<<<< HEAD
+	data8 sys_process_vm_readv
+	data8 sys_process_vm_writev
+=======
 	data8 sys_ni_syscall	/* process_vm_readv */
 	data8 sys_ni_syscall	/* process_vm_writev */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	data8 sys_accept4
 
 	.org sys_call_table + 8*NR_syscalls	// guard against failures to increase NR_syscalls

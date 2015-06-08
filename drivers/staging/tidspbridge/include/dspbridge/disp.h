@@ -53,7 +53,14 @@ struct disp_attr {
  *      -ENOMEM:            Insufficient memory for requested resources.
  *      -EPERM:              Unable to create dispatcher.
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      disp_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      disp_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      disp_attrs != NULL.
  *      hdev_obj != NULL.
  *      dispatch_obj != NULL.
@@ -73,7 +80,14 @@ extern int disp_create(struct disp_object **dispatch_obj,
  *      disp_obj:  Node Dispatcher object.
  *  Returns:
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      disp_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      disp_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      Valid disp_obj.
  *  Ensures:
  *      disp_obj is invalid.
@@ -81,6 +95,11 @@ extern int disp_create(struct disp_object **dispatch_obj,
 extern void disp_delete(struct disp_object *disp_obj);
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== disp_exit ========
  *  Discontinue usage of DISP module.
  *
@@ -106,6 +125,10 @@ extern void disp_exit(void);
 extern bool disp_init(void);
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  ======== disp_node_change_priority ========
  *  Change the priority of a node currently running on the target.
  *
@@ -120,7 +143,14 @@ extern bool disp_init(void);
  *      0:                Success.
  *      -ETIME:           A timeout occurred before the DSP responded.
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      disp_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      disp_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      Valid disp_obj.
  *      hnode != NULL.
  *  Ensures:
@@ -148,7 +178,14 @@ extern int disp_node_change_priority(struct disp_object
  *      -ETIME:   A timeout occurred before the DSP responded.
  *      -EPERM:      A failure occurred, unable to create node.
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      disp_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      disp_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      Valid disp_obj.
  *      pargs != NULL.
  *      hnode != NULL.
@@ -178,7 +215,14 @@ extern int disp_node_create(struct disp_object *disp_obj,
  *      0:        Success.
  *      -ETIME:   A timeout occurred before the DSP responded.
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      disp_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      disp_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      Valid disp_obj.
  *      hnode != NULL.
  *  Ensures:
@@ -204,7 +248,14 @@ extern int disp_node_delete(struct disp_object *disp_obj,
  *      0:        Success.
  *      -ETIME:   A timeout occurred before the DSP responded.
  *  Requires:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  *      disp_init(void) called.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ *      disp_init(void) called.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      Valid disp_obj.
  *      hnode != NULL.
  *  Ensures:

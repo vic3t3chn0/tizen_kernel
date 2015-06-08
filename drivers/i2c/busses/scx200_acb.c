@@ -550,7 +550,15 @@ static int __devexit scx200_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct platform_driver scx200_pci_driver = {
+=======
 static struct platform_driver scx200_pci_drv = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct platform_driver scx200_pci_drv = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver = {
 		.name = "cs5535-smb",
 		.owner = THIS_MODULE,
@@ -559,7 +567,15 @@ static struct platform_driver scx200_pci_drv = {
 	.remove = __devexit_p(scx200_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DEFINE_PCI_DEVICE_TABLE(scx200_isa) = {
+=======
 static const struct pci_device_id scx200_isa[] __initconst = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const struct pci_device_id scx200_isa[] __initconst = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ PCI_DEVICE(PCI_VENDOR_ID_NS, PCI_DEVICE_ID_NS_SCx200_BRIDGE) },
 	{ PCI_DEVICE(PCI_VENDOR_ID_NS, PCI_DEVICE_ID_NS_SC1100_BRIDGE) },
 	{ 0, }
@@ -593,14 +609,30 @@ static int __init scx200_acb_init(void)
 		return 0;
 
 	/* No ISA devices; register the platform driver for PCI-based devices */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return platform_driver_register(&scx200_pci_driver);
+=======
 	return platform_driver_register(&scx200_pci_drv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return platform_driver_register(&scx200_pci_drv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __exit scx200_acb_cleanup(void)
 {
 	struct scx200_acb_iface *iface;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	platform_driver_unregister(&scx200_pci_driver);
+=======
 	platform_driver_unregister(&scx200_pci_drv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	platform_driver_unregister(&scx200_pci_drv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&scx200_acb_list_mutex);
 	while ((iface = scx200_acb_list) != NULL) {

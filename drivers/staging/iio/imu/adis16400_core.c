@@ -16,7 +16,14 @@
 
 #include <linux/interrupt.h>
 #include <linux/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/gpio.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/gpio.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/mutex.h>
 #include <linux/device.h>
@@ -25,6 +32,21 @@
 #include <linux/slab.h>
 #include <linux/sysfs.h>
 #include <linux/list.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+
+#include "../iio.h"
+#include "../sysfs.h"
+#include "../buffer.h"
+#include "adis16400.h"
+
+enum adis16400_chip_variant {
+	ADIS16300,
+	ADIS16334,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "../iio.h"
 #include "../sysfs.h"
@@ -40,6 +62,10 @@
 
 enum adis16400_chip_variant {
 	ADIS16300,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ADIS16350,
 	ADIS16360,
 	ADIS16362,
@@ -48,6 +74,11 @@ enum adis16400_chip_variant {
 	ADIS16400,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int adis16400_check_status(struct iio_dev *indio_dev);
 
 /* At the moment the spi framework doesn't allow global setting of cs_change.
@@ -55,12 +86,24 @@ static int adis16400_check_status(struct iio_dev *indio_dev);
  * This means that use cannot be made of spi_write etc.
  */
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * adis16400_spi_write_reg_8() - write single byte to a register
  * @dev: device associated with child of actual device (iio_dev or iio_trig)
  * @reg_address: the address of the register to be written
  * @val: the value to write
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+=======
  **/
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ **/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int adis16400_spi_write_reg_8(struct iio_dev *indio_dev,
 				     u8 reg_address,
 				     u8 val)
@@ -84,7 +127,18 @@ static int adis16400_spi_write_reg_8(struct iio_dev *indio_dev,
  * @reg_address: the address of the lower of the two registers. Second register
  *               is assumed to have address one greater.
  * @val: value to be written
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ * At the moment the spi framework doesn't allow global setting of cs_change.
+ * This means that use cannot be made of spi_write.
+ */
+=======
  **/
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ **/
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int adis16400_spi_write_reg_16(struct iio_dev *indio_dev,
 		u8 lower_reg_address,
 		u16 value)
@@ -126,6 +180,15 @@ static int adis16400_spi_write_reg_16(struct iio_dev *indio_dev,
  * @reg_address: the address of the lower of the two registers. Second register
  *               is assumed to have address one greater.
  * @val: somewhere to pass back the value read
+<<<<<<< HEAD
+<<<<<<< HEAD
+ *
+ * At the moment the spi framework doesn't allow global setting of cs_change.
+ * This means that use cannot be made of spi_read.
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  **/
 static int adis16400_spi_read_reg_16(struct iio_dev *indio_dev,
 		u8 lower_reg_address,
@@ -150,8 +213,16 @@ static int adis16400_spi_read_reg_16(struct iio_dev *indio_dev,
 	mutex_lock(&st->buf_lock);
 	st->tx[0] = ADIS16400_READ_REG(lower_reg_address);
 	st->tx[1] = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	st->tx[2] = 0;
 	st->tx[3] = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	st->tx[2] = 0;
+	st->tx[3] = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spi_message_init(&msg);
 	spi_message_add_tail(&xfers[0], &msg);
@@ -170,12 +241,76 @@ error_ret:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int adis16400_get_freq(struct iio_dev *indio_dev)
+{
+	u16 t;
+	int sps, ret;
+
+	ret = adis16400_spi_read_reg_16(indio_dev, ADIS16400_SMPL_PRD, &t);
+	if (ret < 0)
+		return ret;
+	sps =  (t & ADIS16400_SMPL_PRD_TIME_BASE) ? 53 : 1638;
+	sps /= (t & ADIS16400_SMPL_PRD_DIV_MASK) + 1;
+
+	return sps;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t adis16400_read_frequency(struct device *dev,
 		struct device_attribute *attr,
 		char *buf)
 {
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
 	int ret, len = 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = adis16400_get_freq(indio_dev);
+	if (ret < 0)
+		return ret;
+	len = sprintf(buf, "%d SPS\n", ret);
+	return len;
+}
+
+static const unsigned adis16400_3db_divisors[] = {
+	[0] = 2, /* Special case */
+	[1] = 5,
+	[2] = 10,
+	[3] = 50,
+	[4] = 200,
+};
+
+static int adis16400_set_filter(struct iio_dev *indio_dev, int sps, int val)
+{
+	int i, ret;
+	u16 val16;
+	for (i = ARRAY_SIZE(adis16400_3db_divisors) - 1; i >= 0; i--)
+		if (sps/adis16400_3db_divisors[i] > val)
+			break;
+	if (i == -1)
+		ret = -EINVAL;
+	else {
+		ret = adis16400_spi_read_reg_16(indio_dev,
+						ADIS16400_SENS_AVG,
+						&val16);
+		if (ret < 0)
+			goto error_ret;
+
+		ret = adis16400_spi_write_reg_16(indio_dev,
+						 ADIS16400_SENS_AVG,
+						 (val16 & ~0x03) | i);
+	}
+error_ret:
+	return ret;
+}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 t;
 	int sps;
 	ret = adis16400_spi_read_reg_16(indio_dev,
@@ -189,6 +324,10 @@ static ssize_t adis16400_read_frequency(struct device *dev,
 	return len;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t adis16400_write_frequency(struct device *dev,
 		struct device_attribute *attr,
 		const char *buf,
@@ -219,6 +358,13 @@ static ssize_t adis16400_write_frequency(struct device *dev,
 			ADIS16400_SMPL_PRD,
 			t);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Also update the filter */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&indio_dev->mlock);
 
 	return ret ? ret : len;
@@ -240,6 +386,24 @@ static ssize_t adis16400_write_reset(struct device *dev,
 		struct device_attribute *attr,
 		const char *buf, size_t len)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool val;
+	int ret;
+
+	ret = strtobool(buf, &val);
+	if (ret < 0)
+		return ret;
+	if (val) {
+		ret = adis16400_reset(dev_get_drvdata(dev));
+		if (ret < 0)
+			return ret;
+	}
+
+	return len;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iio_dev *indio_dev = dev_get_drvdata(dev);
 
 	if (len < 1)
@@ -251,12 +415,23 @@ static ssize_t adis16400_write_reset(struct device *dev,
 		return adis16400_reset(indio_dev);
 	}
 	return -1;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int adis16400_set_irq(struct iio_dev *indio_dev, bool enable)
 {
 	int ret;
 	u16 msc;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = adis16400_spi_read_reg_16(indio_dev, ADIS16400_MSC_CTRL, &msc);
 	if (ret)
 		goto error_ret;
@@ -289,6 +464,11 @@ static int adis16400_stop_device(struct iio_dev *indio_dev)
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int adis16400_self_test(struct iio_dev *indio_dev)
 {
 	int ret;
@@ -307,6 +487,10 @@ err_ret:
 	return ret;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int adis16400_check_status(struct iio_dev *indio_dev)
 {
 	u16 status;
@@ -356,11 +540,42 @@ error_ret:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int adis16400_self_test(struct iio_dev *indio_dev)
+{
+	int ret;
+	ret = adis16400_spi_write_reg_16(indio_dev,
+			ADIS16400_MSC_CTRL,
+			ADIS16400_MSC_CTRL_MEM_TEST);
+	if (ret) {
+		dev_err(&indio_dev->dev, "problem starting self test");
+		goto err_ret;
+	}
+
+	msleep(ADIS16400_MTEST_DELAY);
+	adis16400_check_status(indio_dev);
+
+err_ret:
+	return ret;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int adis16400_initial_setup(struct iio_dev *indio_dev)
 {
 	int ret;
 	u16 prod_id, smp_prd;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct device *dev = &indio_dev->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct device *dev = &indio_dev->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct adis16400_state *st = iio_priv(indio_dev);
 
 	/* use low spi speed for init */
@@ -368,6 +583,31 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
 	st->us->mode = SPI_MODE_3;
 	spi_setup(st->us);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = adis16400_set_irq(indio_dev, false);
+	if (ret) {
+		dev_err(&indio_dev->dev, "disable irq failed");
+		goto err_ret;
+	}
+
+	ret = adis16400_self_test(indio_dev);
+	if (ret) {
+		dev_err(&indio_dev->dev, "self test failure");
+		goto err_ret;
+	}
+
+	ret = adis16400_check_status(indio_dev);
+	if (ret) {
+		adis16400_reset(indio_dev);
+		dev_err(&indio_dev->dev, "device not playing ball -> reset");
+		msleep(ADIS16400_STARTUP_DELAY);
+		ret = adis16400_check_status(indio_dev);
+		if (ret) {
+			dev_err(&indio_dev->dev, "giving up");
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Disable IRQ */
 	ret = adis16400_set_irq(indio_dev, false);
 	if (ret) {
@@ -391,6 +631,10 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
 		ret = adis16400_check_status(indio_dev);
 		if (ret) {
 			dev_err(dev, "giving up");
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto err_ret;
 		}
 	}
@@ -401,10 +645,24 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
 			goto err_ret;
 
 		if ((prod_id & 0xF000) != st->variant->product_id)
+<<<<<<< HEAD
+<<<<<<< HEAD
+			dev_warn(&indio_dev->dev, "incorrect id");
+
+		dev_info(&indio_dev->dev, "%s: prod_id 0x%04x at CS%d (irq %d)\n",
+		       indio_dev->name, prod_id,
+		       st->us->chip_select, st->us->irq);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dev_warn(dev, "incorrect id");
 
 		printk(KERN_INFO DRIVER_NAME ": prod_id 0x%04x at CS%d (irq %d)\n",
 		       prod_id, st->us->chip_select, st->us->irq);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	/* use high spi speed if possible */
 	ret = adis16400_spi_read_reg_16(indio_dev,
@@ -414,15 +672,35 @@ static int adis16400_initial_setup(struct iio_dev *indio_dev)
 		spi_setup(st->us);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+err_ret:
+=======
 
 err_ret:
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+err_ret:
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
 static IIO_DEV_ATTR_SAMP_FREQ(S_IWUSR | S_IRUGO,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			      adis16400_read_frequency,
+			      adis16400_write_frequency);
+=======
 		adis16400_read_frequency,
 		adis16400_write_frequency);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		adis16400_read_frequency,
+		adis16400_write_frequency);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static IIO_DEVICE_ATTR(reset, S_IWUSR, NULL, adis16400_write_reset, 0);
 
@@ -441,17 +719,51 @@ enum adis16400_chan {
 	magn_z,
 	temp,
 	temp0, temp1, temp2,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	in1,
+	incli_x,
+	incli_y,
+};
+
+static u8 adis16400_addresses[17][2] = {
+	[in_supply] = { ADIS16400_SUPPLY_OUT },
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	in1
 };
 
 static u8 adis16400_addresses[16][2] = {
 	[in_supply] = { ADIS16400_SUPPLY_OUT, 0 },
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[gyro_x] = { ADIS16400_XGYRO_OUT, ADIS16400_XGYRO_OFF },
 	[gyro_y] = { ADIS16400_YGYRO_OUT, ADIS16400_YGYRO_OFF },
 	[gyro_z] = { ADIS16400_ZGYRO_OUT, ADIS16400_ZGYRO_OFF },
 	[accel_x] = { ADIS16400_XACCL_OUT, ADIS16400_XACCL_OFF },
 	[accel_y] = { ADIS16400_YACCL_OUT, ADIS16400_YACCL_OFF },
 	[accel_z] = { ADIS16400_ZACCL_OUT, ADIS16400_ZACCL_OFF },
+<<<<<<< HEAD
+<<<<<<< HEAD
+	[magn_x] = { ADIS16400_XMAGN_OUT },
+	[magn_y] = { ADIS16400_YMAGN_OUT },
+	[magn_z] = { ADIS16400_ZMAGN_OUT },
+	[temp] = { ADIS16400_TEMP_OUT },
+	[temp0] = { ADIS16350_XTEMP_OUT },
+	[temp1] = { ADIS16350_YTEMP_OUT },
+	[temp2] = { ADIS16350_ZTEMP_OUT },
+	[in1] = { ADIS16400_AUX_ADC },
+	[incli_x] = { ADIS16300_PITCH_OUT },
+	[incli_y] = { ADIS16300_ROLL_OUT }
+};
+
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[magn_x] = { ADIS16400_XMAGN_OUT, 0 },
 	[magn_y] = { ADIS16400_YMAGN_OUT, 0 },
 	[magn_z] = { ADIS16400_ZMAGN_OUT, 0 },
@@ -462,21 +774,60 @@ static u8 adis16400_addresses[16][2] = {
 	[in1] = { ADIS16400_AUX_ADC , 0 },
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int adis16400_write_raw(struct iio_dev *indio_dev,
 			       struct iio_chan_spec const *chan,
 			       int val,
 			       int val2,
 			       long mask)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct adis16400_state *st = iio_priv(indio_dev);
+	int ret, sps;
+
+	switch (mask) {
+	case IIO_CHAN_INFO_CALIBBIAS:
+=======
 	int ret;
 	switch (mask) {
 	case (1 << IIO_CHAN_INFO_CALIBBIAS_SEPARATE):
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret;
+	switch (mask) {
+	case (1 << IIO_CHAN_INFO_CALIBBIAS_SEPARATE):
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_lock(&indio_dev->mlock);
 		ret = adis16400_spi_write_reg_16(indio_dev,
 				adis16400_addresses[chan->address][1],
 				val);
 		mutex_unlock(&indio_dev->mlock);
 		return ret;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY:
+		/* Need to cache values so we can update if the frequency
+		   changes */
+		mutex_lock(&indio_dev->mlock);
+		st->filt_int = val;
+		/* Work out update to current value */
+		sps = adis16400_get_freq(indio_dev);
+		if (sps < 0) {
+			mutex_unlock(&indio_dev->mlock);
+			return sps;
+		}
+
+		ret = adis16400_set_filter(indio_dev, sps, val);
+		mutex_unlock(&indio_dev->mlock);
+		return ret;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return -EINVAL;
 	}
@@ -489,9 +840,20 @@ static int adis16400_read_raw(struct iio_dev *indio_dev,
 			      long mask)
 {
 	struct adis16400_state *st = iio_priv(indio_dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret, shift;
+	s16 val16;
+=======
 	int ret;
 	s16 val16;
 	int shift;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret;
+	s16 val16;
+	int shift;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (mask) {
 	case 0:
@@ -511,6 +873,18 @@ static int adis16400_read_raw(struct iio_dev *indio_dev,
 		*val = val16;
 		mutex_unlock(&indio_dev->mlock);
 		return IIO_VAL_INT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case IIO_CHAN_INFO_SCALE:
+		switch (chan->type) {
+		case IIO_ANGL_VEL:
+			*val = 0;
+			*val2 = st->variant->gyro_scale_micro;
+			return IIO_VAL_INT_PLUS_MICRO;
+		case IIO_VOLTAGE:
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case (1 << IIO_CHAN_INFO_SCALE_SHARED):
 	case (1 << IIO_CHAN_INFO_SCALE_SEPARATE):
 		switch (chan->type) {
@@ -519,6 +893,10 @@ static int adis16400_read_raw(struct iio_dev *indio_dev,
 			*val2 = st->variant->gyro_scale_micro;
 			return IIO_VAL_INT_PLUS_MICRO;
 		case IIO_IN:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*val = 0;
 			if (chan->channel == 0)
 				*val2 = 2418;
@@ -540,7 +918,15 @@ static int adis16400_read_raw(struct iio_dev *indio_dev,
 		default:
 			return -EINVAL;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case IIO_CHAN_INFO_CALIBBIAS:
+=======
 	case (1 << IIO_CHAN_INFO_CALIBBIAS_SEPARATE):
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case (1 << IIO_CHAN_INFO_CALIBBIAS_SEPARATE):
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mutex_lock(&indio_dev->mlock);
 		ret = adis16400_spi_read_reg_16(indio_dev,
 				adis16400_addresses[chan->address][1],
@@ -551,17 +937,168 @@ static int adis16400_read_raw(struct iio_dev *indio_dev,
 		val16 = ((val16 & 0xFFF) << 4) >> 4;
 		*val = val16;
 		return IIO_VAL_INT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case IIO_CHAN_INFO_OFFSET:
+=======
 	case (1 << IIO_CHAN_INFO_OFFSET_SEPARATE):
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	case (1 << IIO_CHAN_INFO_OFFSET_SEPARATE):
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* currently only temperature */
 		*val = 198;
 		*val2 = 160000;
 		return IIO_VAL_INT_PLUS_MICRO;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY:
+		mutex_lock(&indio_dev->mlock);
+		/* Need both the number of taps and the sampling frequency */
+		ret = adis16400_spi_read_reg_16(indio_dev,
+						ADIS16400_SENS_AVG,
+						&val16);
+		if (ret < 0) {
+			mutex_unlock(&indio_dev->mlock);
+			return ret;
+		}
+		ret = adis16400_get_freq(indio_dev);
+		if (ret > 0)
+			*val = ret/adis16400_3db_divisors[val16 & 0x03];
+		*val2 = 0;
+		mutex_unlock(&indio_dev->mlock);
+		if (ret < 0)
+			return ret;
+		return IIO_VAL_INT_PLUS_MICRO;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return -EINVAL;
 	}
 }
 
 static struct iio_chan_spec adis16400_channels[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.type = IIO_VOLTAGE,
+		.indexed = 1,
+		.channel = 0,
+		.extend_name = "supply",
+		.info_mask = IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = in_supply,
+		.scan_index = ADIS16400_SCAN_SUPPLY,
+		.scan_type = IIO_ST('u', 14, 16, 0)
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_x,
+		.scan_index = ADIS16400_SCAN_GYRO_X,
+		.scan_type = IIO_ST('s', 14, 16, 0)
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_y,
+		.scan_index = ADIS16400_SCAN_GYRO_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_z,
+		.scan_index = ADIS16400_SCAN_GYRO_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_x,
+		.scan_index = ADIS16400_SCAN_ACC_X,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_y,
+		.scan_index = ADIS16400_SCAN_ACC_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_z,
+		.scan_index = ADIS16400_SCAN_ACC_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_MAGN,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = magn_x,
+		.scan_index = ADIS16400_SCAN_MAGN_X,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_MAGN,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = magn_y,
+		.scan_index = ADIS16400_SCAN_MAGN_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_MAGN,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = magn_z,
+		.scan_index = ADIS16400_SCAN_MAGN_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_TEMP,
+		.indexed = 1,
+		.channel = 0,
+		.info_mask = IIO_CHAN_INFO_OFFSET_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = temp,
+		.scan_index = ADIS16400_SCAN_TEMP,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	}, {
+		.type = IIO_VOLTAGE,
+		.indexed = 1,
+		.channel = 1,
+		.info_mask = IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = in1,
+		.scan_index = ADIS16400_SCAN_ADC_0,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	},
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IIO_CHAN(IIO_IN, 0, 1, 0, "supply", 0, 0,
 		 (1 << IIO_CHAN_INFO_SCALE_SEPARATE),
 		 in_supply, ADIS16400_SCAN_SUPPLY,
@@ -606,10 +1143,129 @@ static struct iio_chan_spec adis16400_channels[] = {
 	IIO_CHAN(IIO_IN, 0, 1, 0, NULL, 1, 0,
 		 (1 << IIO_CHAN_INFO_SCALE_SEPARATE),
 		 in1, ADIS16400_SCAN_ADC_0, IIO_ST('s', 12, 16, 0), 0),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IIO_CHAN_SOFT_TIMESTAMP(12)
 };
 
 static struct iio_chan_spec adis16350_channels[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.type = IIO_VOLTAGE,
+		.indexed = 1,
+		.channel = 0,
+		.extend_name = "supply",
+		.info_mask = IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = in_supply,
+		.scan_index = ADIS16400_SCAN_SUPPLY,
+		.scan_type = IIO_ST('u', 12, 16, 0)
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_x,
+		.scan_index = ADIS16400_SCAN_GYRO_X,
+		.scan_type = IIO_ST('s', 14, 16, 0)
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_y,
+		.scan_index = ADIS16400_SCAN_GYRO_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_z,
+		.scan_index = ADIS16400_SCAN_GYRO_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+	.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_x,
+		.scan_index = ADIS16400_SCAN_ACC_X,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_y,
+		.scan_index = ADIS16400_SCAN_ACC_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_z,
+		.scan_index = ADIS16400_SCAN_ACC_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_TEMP,
+		.indexed = 1,
+		.channel = 0,
+		.extend_name = "x",
+		.info_mask = IIO_CHAN_INFO_OFFSET_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SEPARATE_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = temp0,
+		.scan_index = ADIS16350_SCAN_TEMP_X,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	}, {
+		.type = IIO_TEMP,
+		.indexed = 1,
+		.channel = 1,
+		.extend_name = "y",
+		.info_mask = IIO_CHAN_INFO_OFFSET_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SEPARATE_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = temp1,
+		.scan_index = ADIS16350_SCAN_TEMP_Y,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	}, {
+		.type = IIO_TEMP,
+		.indexed = 1,
+		.channel = 2,
+		.extend_name = "z",
+		.info_mask = IIO_CHAN_INFO_OFFSET_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = temp2,
+		.scan_index = ADIS16350_SCAN_TEMP_Z,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	}, {
+		.type = IIO_VOLTAGE,
+		.indexed = 1,
+		.channel = 1,
+		.info_mask = IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = in1,
+		.scan_index = ADIS16350_SCAN_ADC_0,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	},
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IIO_CHAN(IIO_IN, 0, 1, 0, "supply", 0, 0,
 		 (1 << IIO_CHAN_INFO_SCALE_SEPARATE),
 		 0, ADIS16400_SCAN_SUPPLY, IIO_ST('u', 12, 16, 0), 0),
@@ -652,10 +1308,179 @@ static struct iio_chan_spec adis16350_channels[] = {
 	IIO_CHAN(IIO_IN, 0, 1, 0, NULL, 1, 0,
 		 (1 << IIO_CHAN_INFO_SCALE_SEPARATE),
 		 0, ADIS16350_SCAN_ADC_0, IIO_ST('s', 12, 16, 0), 0),
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IIO_CHAN_SOFT_TIMESTAMP(11)
 };
 
 static struct iio_chan_spec adis16300_channels[] = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{
+		.type = IIO_VOLTAGE,
+		.indexed = 1,
+		.channel = 0,
+		.extend_name = "supply",
+		.info_mask = IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = in_supply,
+		.scan_index = ADIS16400_SCAN_SUPPLY,
+		.scan_type = IIO_ST('u', 12, 16, 0)
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_x,
+		.scan_index = ADIS16400_SCAN_GYRO_X,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_x,
+		.scan_index = ADIS16400_SCAN_ACC_X,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_y,
+		.scan_index = ADIS16400_SCAN_ACC_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_z,
+		.scan_index = ADIS16400_SCAN_ACC_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_TEMP,
+		.indexed = 1,
+		.channel = 0,
+		.info_mask = IIO_CHAN_INFO_OFFSET_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = temp,
+		.scan_index = ADIS16400_SCAN_TEMP,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	}, {
+		.type = IIO_VOLTAGE,
+		.indexed = 1,
+		.channel = 1,
+		.info_mask = IIO_CHAN_INFO_SCALE_SEPARATE_BIT,
+		.address = in1,
+		.scan_index = ADIS16350_SCAN_ADC_0,
+		.scan_type = IIO_ST('s', 12, 16, 0),
+	}, {
+		.type = IIO_INCLI,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		.address = incli_x,
+		.scan_index = ADIS16300_SCAN_INCLI_X,
+		.scan_type = IIO_ST('s', 13, 16, 0),
+	}, {
+		.type = IIO_INCLI,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		.address = incli_y,
+		.scan_index = ADIS16300_SCAN_INCLI_Y,
+		.scan_type = IIO_ST('s', 13, 16, 0),
+	},
+	IIO_CHAN_SOFT_TIMESTAMP(14)
+};
+
+static const struct iio_chan_spec adis16334_channels[] = {
+	{
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_x,
+		.scan_index = ADIS16400_SCAN_GYRO_X,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_y,
+		.scan_index = ADIS16400_SCAN_GYRO_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ANGL_VEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = gyro_z,
+		.scan_index = ADIS16400_SCAN_GYRO_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_X,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_x,
+		.scan_index = ADIS16400_SCAN_ACC_X,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Y,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_y,
+		.scan_index = ADIS16400_SCAN_ACC_Y,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_ACCEL,
+		.modified = 1,
+		.channel2 = IIO_MOD_Z,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT |
+		IIO_CHAN_INFO_LOW_PASS_FILTER_3DB_FREQUENCY_SHARED_BIT,
+		.address = accel_z,
+		.scan_index = ADIS16400_SCAN_ACC_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	}, {
+		.type = IIO_TEMP,
+		.indexed = 1,
+		.channel = 0,
+		.info_mask = IIO_CHAN_INFO_CALIBBIAS_SEPARATE_BIT |
+		IIO_CHAN_INFO_SCALE_SHARED_BIT,
+		.address = accel_z,
+		.scan_index = ADIS16400_SCAN_ACC_Z,
+		.scan_type = IIO_ST('s', 14, 16, 0),
+	},
+	IIO_CHAN_SOFT_TIMESTAMP(12)
+};
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	IIO_CHAN(IIO_IN, 0, 1, 0, "supply", 0, 0,
 		 (1 << IIO_CHAN_INFO_SCALE_SEPARATE),
 		 0, ADIS16400_SCAN_SUPPLY, IIO_ST('u', 12, 16, 0), 0),
@@ -691,6 +1516,10 @@ static struct iio_chan_spec adis16300_channels[] = {
 	IIO_CHAN_SOFT_TIMESTAMP(14)
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct attribute *adis16400_attributes[] = {
 	&iio_dev_attr_sampling_frequency.dev_attr.attr,
 	&iio_const_attr_sampling_frequency_available.dev_attr.attr,
@@ -715,6 +1544,22 @@ static struct adis16400_chip_info adis16400_chips[] = {
 		(1 << ADIS16300_SCAN_INCLI_X) | (1 << ADIS16300_SCAN_INCLI_Y) |
 		(1 << 14),
 	},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	[ADIS16334] = {
+		.channels = adis16334_channels,
+		.num_channels = ARRAY_SIZE(adis16334_channels),
+		.gyro_scale_micro = 873,
+		.accel_scale_micro = 981,
+		.default_scan_mask = (1 << ADIS16400_SCAN_GYRO_X) |
+		(1 << ADIS16400_SCAN_GYRO_Y) | (1 << ADIS16400_SCAN_GYRO_Z) |
+		(1 << ADIS16400_SCAN_ACC_X) | (1 << ADIS16400_SCAN_ACC_Y) |
+		(1 << ADIS16400_SCAN_ACC_Z),
+	},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[ADIS16350] = {
 		.channels = adis16350_channels,
 		.num_channels = ARRAY_SIZE(adis16350_channels),
@@ -779,7 +1624,15 @@ static const struct iio_info adis16400_info = {
 
 static int __devinit adis16400_probe(struct spi_device *spi)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+=======
 	int ret, regdone = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int ret, regdone = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct adis16400_state *st;
 	struct iio_dev *indio_dev = iio_allocate_device(sizeof(*st));
 	if (indio_dev == NULL) {
@@ -806,6 +1659,14 @@ static int __devinit adis16400_probe(struct spi_device *spi)
 	if (ret)
 		goto error_free_dev;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = iio_buffer_register(indio_dev,
+				  st->variant->channels,
+				  st->variant->num_channels);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = iio_device_register(indio_dev);
 	if (ret)
 		goto error_unreg_ring_funcs;
@@ -814,12 +1675,24 @@ static int __devinit adis16400_probe(struct spi_device *spi)
 	ret = iio_ring_buffer_register_ex(indio_dev->ring, 0,
 					  st->variant->channels,
 					  st->variant->num_channels);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		dev_err(&spi->dev, "failed to initialize the ring\n");
 		goto error_unreg_ring_funcs;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (spi->irq) {
+=======
 	if (spi->irq && gpio_is_valid(irq_to_gpio(spi->irq)) > 0) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (spi->irq && gpio_is_valid(irq_to_gpio(spi->irq)) > 0) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = adis16400_probe_trigger(indio_dev);
 		if (ret)
 			goto error_uninitialize_ring;
@@ -829,6 +1702,26 @@ static int __devinit adis16400_probe(struct spi_device *spi)
 	ret = adis16400_initial_setup(indio_dev);
 	if (ret)
 		goto error_remove_trigger;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = iio_device_register(indio_dev);
+	if (ret)
+		goto error_remove_trigger;
+
+	return 0;
+
+error_remove_trigger:
+	if (indio_dev->modes & INDIO_BUFFER_TRIGGERED)
+		adis16400_remove_trigger(indio_dev);
+error_uninitialize_ring:
+	iio_buffer_unregister(indio_dev);
+error_unreg_ring_funcs:
+	adis16400_unconfigure_ring(indio_dev);
+error_free_dev:
+	iio_free_device(indio_dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 error_remove_trigger:
@@ -843,6 +1736,10 @@ error_free_dev:
 		iio_device_unregister(indio_dev);
 	else
 		iio_free_device(indio_dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 error_ret:
 	return ret;
 }
@@ -853,14 +1750,33 @@ static int adis16400_remove(struct spi_device *spi)
 	int ret;
 	struct iio_dev *indio_dev =  spi_get_drvdata(spi);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_device_unregister(indio_dev);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = adis16400_stop_device(indio_dev);
 	if (ret)
 		goto err_ret;
 
 	adis16400_remove_trigger(indio_dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	iio_buffer_unregister(indio_dev);
+	adis16400_unconfigure_ring(indio_dev);
+	iio_free_device(indio_dev);
+=======
 	iio_ring_buffer_unregister(indio_dev->ring);
 	adis16400_unconfigure_ring(indio_dev);
 	iio_device_unregister(indio_dev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	iio_ring_buffer_unregister(indio_dev->ring);
+	adis16400_unconfigure_ring(indio_dev);
+	iio_device_unregister(indio_dev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -870,6 +1786,13 @@ err_ret:
 
 static const struct spi_device_id adis16400_id[] = {
 	{"adis16300", ADIS16300},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{"adis16334", ADIS16334},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{"adis16350", ADIS16350},
 	{"adis16354", ADIS16350},
 	{"adis16355", ADIS16350},
@@ -881,6 +1804,13 @@ static const struct spi_device_id adis16400_id[] = {
 	{"adis16405", ADIS16400},
 	{}
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_DEVICE_TABLE(spi, adis16400_id);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct spi_driver adis16400_driver = {
 	.driver = {
@@ -891,6 +1821,12 @@ static struct spi_driver adis16400_driver = {
 	.probe = adis16400_probe,
 	.remove = __devexit_p(adis16400_remove),
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_spi_driver(adis16400_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __init int adis16400_init(void)
 {
@@ -903,6 +1839,10 @@ static __exit void adis16400_exit(void)
 	spi_unregister_driver(&adis16400_driver);
 }
 module_exit(adis16400_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Manuel Stahl <manuel.stahl@iis.fraunhofer.de>");
 MODULE_DESCRIPTION("Analog Devices ADIS16400/5 IMU SPI driver");

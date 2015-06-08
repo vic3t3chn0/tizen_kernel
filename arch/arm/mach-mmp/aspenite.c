@@ -11,8 +11,12 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/platform_device.h>
@@ -30,8 +34,12 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 #include <mach/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <video/pxa168fb.h>
 #include <linux/input.h>
 #include <plat/pxa27x_keypad.h>
@@ -132,9 +140,14 @@ static struct resource smc91x_resources[] = {
 		.start	= MMP_GPIO_TO_IRQ(27),
 		.end	= MMP_GPIO_TO_IRQ(27),
 =======
+<<<<<<< HEAD
+		.start	= MMP_GPIO_TO_IRQ(27),
+		.end	= MMP_GPIO_TO_IRQ(27),
+=======
 		.start	= gpio_to_irq(27),
 		.end	= gpio_to_irq(27),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	}
 };
@@ -176,8 +189,12 @@ static struct mtd_partition aspenite_nand_partitions[] = {
 <<<<<<< HEAD
 		.size		= SZ_32M + SZ_16M,
 =======
+<<<<<<< HEAD
+		.size		= SZ_32M + SZ_16M,
+=======
 		.size		= SZ_48M,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.mask_flags	= 0,
 	}
 };
@@ -189,9 +206,15 @@ static struct pxa3xx_nand_platform_data aspenite_nand_info = {
 	.parts[0]	= aspenite_nand_partitions,
 	.nr_parts[0]	= ARRAY_SIZE(aspenite_nand_partitions),
 =======
+<<<<<<< HEAD
+	.num_cs = 1,
+	.parts[0]	= aspenite_nand_partitions,
+	.nr_parts[0]	= ARRAY_SIZE(aspenite_nand_partitions),
+=======
 	.parts		= aspenite_nand_partitions,
 	.nr_parts	= ARRAY_SIZE(aspenite_nand_partitions),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info aspenite_i2c_info[] __initdata = {
@@ -257,7 +280,11 @@ static void __init common_init(void)
 <<<<<<< HEAD
 	platform_device_register(&pxa168_device_gpio);
 =======
+<<<<<<< HEAD
+	platform_device_register(&pxa168_device_gpio);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* off-chip devices */
 	platform_device_register(&smc91x_device);
@@ -266,31 +293,43 @@ static void __init common_init(void)
 MACHINE_START(ASPENITE, "PXA168-based Aspenite Development Platform")
 	.map_io		= mmp_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.nr_irqs	= MMP_NR_IRQS,
 	.init_irq       = pxa168_init_irq,
 	.timer          = &pxa168_timer,
 	.init_machine   = common_init,
 	.restart	= pxa168_restart,
+<<<<<<< HEAD
+=======
 =======
 	.nr_irqs	= IRQ_BOARD_START,
 	.init_irq       = pxa168_init_irq,
 	.timer          = &pxa168_timer,
 	.init_machine   = common_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 
 MACHINE_START(ZYLONITE2, "PXA168-based Zylonite2 Development Platform")
 	.map_io		= mmp_map_io,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.nr_irqs	= MMP_NR_IRQS,
 	.init_irq       = pxa168_init_irq,
 	.timer          = &pxa168_timer,
 	.init_machine   = common_init,
 	.restart	= pxa168_restart,
+<<<<<<< HEAD
+=======
 =======
 	.nr_irqs	= IRQ_BOARD_START,
 	.init_irq       = pxa168_init_irq,
 	.timer          = &pxa168_timer,
 	.init_machine   = common_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

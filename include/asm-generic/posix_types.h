@@ -11,6 +11,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __kernel_long_t
 typedef long		__kernel_long_t;
 typedef unsigned long	__kernel_ulong_t;
@@ -18,10 +21,13 @@ typedef unsigned long	__kernel_ulong_t;
 
 #ifndef __kernel_ino_t
 typedef __kernel_ulong_t __kernel_ino_t;
+<<<<<<< HEAD
+=======
 =======
 #ifndef __kernel_ino_t
 typedef unsigned long	__kernel_ino_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef __kernel_mode_t
@@ -32,8 +38,12 @@ typedef unsigned int	__kernel_mode_t;
 <<<<<<< HEAD
 typedef __kernel_ulong_t __kernel_nlink_t;
 =======
+<<<<<<< HEAD
+typedef __kernel_ulong_t __kernel_nlink_t;
+=======
 typedef unsigned long	__kernel_nlink_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef __kernel_pid_t
@@ -53,8 +63,12 @@ typedef unsigned int	__kernel_gid_t;
 <<<<<<< HEAD
 typedef __kernel_long_t		__kernel_suseconds_t;
 =======
+<<<<<<< HEAD
+typedef __kernel_long_t		__kernel_suseconds_t;
+=======
 typedef long		__kernel_suseconds_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef __kernel_daddr_t
@@ -66,9 +80,14 @@ typedef int		__kernel_daddr_t;
 typedef unsigned int	__kernel_uid32_t;
 typedef unsigned int	__kernel_gid32_t;
 =======
+<<<<<<< HEAD
+typedef unsigned int	__kernel_uid32_t;
+typedef unsigned int	__kernel_gid32_t;
+=======
 typedef __kernel_uid_t	__kernel_uid32_t;
 typedef __kernel_gid_t	__kernel_gid32_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef __kernel_old_uid_t
@@ -91,6 +110,9 @@ typedef int		__kernel_ssize_t;
 typedef int		__kernel_ptrdiff_t;
 #else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef __kernel_ulong_t __kernel_size_t;
 typedef __kernel_long_t	__kernel_ssize_t;
 typedef __kernel_long_t	__kernel_ptrdiff_t;
@@ -110,6 +132,8 @@ typedef __kernel_long_t	__kernel_off_t;
 typedef long long	__kernel_loff_t;
 typedef __kernel_long_t	__kernel_time_t;
 typedef __kernel_long_t	__kernel_clock_t;
+<<<<<<< HEAD
+=======
 =======
 typedef unsigned long	__kernel_size_t;
 typedef long		__kernel_ssize_t;
@@ -125,12 +149,15 @@ typedef long long	__kernel_loff_t;
 typedef long		__kernel_time_t;
 typedef long		__kernel_clock_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef int		__kernel_timer_t;
 typedef int		__kernel_clockid_t;
 typedef char *		__kernel_caddr_t;
 typedef unsigned short	__kernel_uid16_t;
 typedef unsigned short	__kernel_gid16_t;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 typedef struct {
@@ -210,4 +237,5 @@ static inline void __FD_ZERO(__kernel_fd_set *__p)
 #endif /* __KERNEL__ */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_GENERIC_POSIX_TYPES_H */

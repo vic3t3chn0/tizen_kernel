@@ -22,8 +22,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/memory_hotplug.h>
 #include <linux/memblock.h>
 #include <linux/slab.h>
@@ -36,7 +40,11 @@
 <<<<<<< HEAD
 #include <asm/setup.h>
 =======
+<<<<<<< HEAD
+#include <asm/setup.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "platform.h"
 
@@ -329,8 +337,11 @@ static int __init ps3_mm_add_memory(void)
 	memblock_add(start_addr, map.r1.size);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memblock_analyze();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	result = online_pages(start_pfn, nr_pages);
 

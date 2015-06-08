@@ -56,8 +56,12 @@ void dccp_time_wait(struct sock *sk, int state, int timeo)
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (tw->tw_family == PF_INET6) {
 			const struct ipv6_pinfo *np = inet6_sk(sk);
 			struct inet6_timewait_sock *tw6;
@@ -68,9 +72,14 @@ void dccp_time_wait(struct sock *sk, int state, int timeo)
 			tw6->tw_v6_daddr = np->daddr;
 			tw6->tw_v6_rcv_saddr = np->rcv_saddr;
 =======
+<<<<<<< HEAD
+			tw6->tw_v6_daddr = np->daddr;
+			tw6->tw_v6_rcv_saddr = np->rcv_saddr;
+=======
 			ipv6_addr_copy(&tw6->tw_v6_daddr, &np->daddr);
 			ipv6_addr_copy(&tw6->tw_v6_rcv_saddr, &np->rcv_saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			tw->tw_ipv6only = np->ipv6only;
 		}
 #endif
@@ -112,8 +121,12 @@ struct sock *dccp_create_openreq_child(struct sock *sk,
 <<<<<<< HEAD
 	struct sock *newsk = inet_csk_clone_lock(sk, req, GFP_ATOMIC);
 =======
+<<<<<<< HEAD
+	struct sock *newsk = inet_csk_clone_lock(sk, req, GFP_ATOMIC);
+=======
 	struct sock *newsk = inet_csk_clone(sk, req, GFP_ATOMIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (newsk != NULL) {
 		struct dccp_request_sock *dreq = dccp_rsk(req);
@@ -141,16 +154,22 @@ struct sock *dccp_create_openreq_child(struct sock *sk,
 		 *    and remote Sequence Window feature values (7.5.2).
 		 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		newdp->dccps_iss = dreq->dreq_iss;
 		newdp->dccps_gss = dreq->dreq_gss;
 		newdp->dccps_gar = newdp->dccps_iss;
 		newdp->dccps_isr = dreq->dreq_isr;
 		newdp->dccps_gsr = dreq->dreq_gsr;
+<<<<<<< HEAD
+=======
 =======
 		newdp->dccps_gss = newdp->dccps_iss = dreq->dreq_iss;
 		newdp->dccps_gar = newdp->dccps_iss;
 		newdp->dccps_gsr = newdp->dccps_isr = dreq->dreq_isr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Activate features: initialise CCIDs, sequence windows etc.
@@ -190,10 +209,16 @@ struct sock *dccp_check_req(struct sock *sk, struct sk_buff *skb,
 			dccp_pr_debug("Retransmitted REQUEST\n");
 			dreq->dreq_gsr = DCCP_SKB_CB(skb)->dccpd_seq;
 =======
+<<<<<<< HEAD
+		if (after48(DCCP_SKB_CB(skb)->dccpd_seq, dreq->dreq_gsr)) {
+			dccp_pr_debug("Retransmitted REQUEST\n");
+			dreq->dreq_gsr = DCCP_SKB_CB(skb)->dccpd_seq;
+=======
 		if (after48(DCCP_SKB_CB(skb)->dccpd_seq, dreq->dreq_isr)) {
 			dccp_pr_debug("Retransmitted REQUEST\n");
 			dreq->dreq_isr = DCCP_SKB_CB(skb)->dccpd_seq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Send another RESPONSE packet
 			 * To protect against Request floods, increment retrans
@@ -214,6 +239,9 @@ struct sock *dccp_check_req(struct sock *sk, struct sk_buff *skb,
 
 	/* Invalid ACK */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!between48(DCCP_SKB_CB(skb)->dccpd_ack_seq,
 				dreq->dreq_iss, dreq->dreq_gss)) {
 		dccp_pr_debug("Invalid ACK number: ack_seq=%llu, "
@@ -222,6 +250,8 @@ struct sock *dccp_check_req(struct sock *sk, struct sk_buff *skb,
 			      DCCP_SKB_CB(skb)->dccpd_ack_seq,
 			      (unsigned long long) dreq->dreq_iss,
 			      (unsigned long long) dreq->dreq_gss);
+<<<<<<< HEAD
+=======
 =======
 	if (DCCP_SKB_CB(skb)->dccpd_ack_seq != dreq->dreq_iss) {
 		dccp_pr_debug("Invalid ACK number: ack_seq=%llu, "
@@ -230,6 +260,7 @@ struct sock *dccp_check_req(struct sock *sk, struct sk_buff *skb,
 			      DCCP_SKB_CB(skb)->dccpd_ack_seq,
 			      (unsigned long long) dreq->dreq_iss);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto drop;
 	}
 

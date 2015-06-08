@@ -8,7 +8,11 @@ config MN10300
 <<<<<<< HEAD
 	select HAVE_NMI_WATCHDOG if MN10300_WD_TIMER
 =======
+<<<<<<< HEAD
+	select HAVE_NMI_WATCHDOG if MN10300_WD_TIMER
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config AM33_2
 	def_bool n
@@ -53,10 +57,13 @@ config GENERIC_HWEIGHT
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config GENERIC_TIME
 	def_bool y
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config GENERIC_CLOCKEVENTS
 	def_bool y
 
@@ -205,8 +212,12 @@ config SMP
 <<<<<<< HEAD
 	  See also <file:Documentation/x86/i386/IO-APIC.txt>,
 =======
+<<<<<<< HEAD
+	  See also <file:Documentation/x86/i386/IO-APIC.txt>,
+=======
 	  See also <file:Documentation/i386/IO-APIC.txt>,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  <file:Documentation/nmi_watchdog.txt> and the SMP-HOWTO available at
 	  <http://www.tldp.org/docs.html#howto>.
 
@@ -269,7 +280,11 @@ config PCI
 <<<<<<< HEAD
 	select GENERIC_PCI_IOMAP
 =======
+<<<<<<< HEAD
+	select GENERIC_PCI_IOMAP
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Some systems (such as the ASB2305) have PCI onboard. If you have one
 	  of these boards and you wish to use the PCI facilities, say Y here.

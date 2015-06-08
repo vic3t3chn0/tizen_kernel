@@ -22,7 +22,11 @@
 <<<<<<< HEAD
 #include "clock44xx.h"
 =======
+<<<<<<< HEAD
+#include "clock44xx.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "cm-regbits-44xx.h"
 
 /* Supported only on OMAP4 */
@@ -87,6 +91,9 @@ const struct clkops clkops_omap4_dpllmx_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * omap4_dpll_regm4xen_recalc - compute DPLL rate, considering REGM4XEN bit
  * @clk: struct clk * of the DPLL to compute the rate for
@@ -155,5 +162,8 @@ long omap4_dpll_regm4xen_round_rate(struct clk *clk, unsigned long target_rate)
 
 	return clk->dpll_data->last_rounded_rate;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

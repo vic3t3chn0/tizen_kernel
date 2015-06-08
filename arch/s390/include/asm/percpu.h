@@ -22,8 +22,12 @@
 <<<<<<< HEAD
 #define arch_this_cpu_to_op(pcp, val, op)				\
 =======
+<<<<<<< HEAD
+#define arch_this_cpu_to_op(pcp, val, op)				\
+=======
 #define arch_irqsafe_cpu_to_op(pcp, val, op)				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 do {									\
 	typedef typeof(pcp) pcp_op_T__;					\
 	pcp_op_T__ old__, new__, prev__;				\
@@ -46,6 +50,9 @@ do {									\
 } while (0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define this_cpu_add_1(pcp, val) arch_this_cpu_to_op(pcp, val, +)
 #define this_cpu_add_2(pcp, val) arch_this_cpu_to_op(pcp, val, +)
 #define this_cpu_add_4(pcp, val) arch_this_cpu_to_op(pcp, val, +)
@@ -67,6 +74,8 @@ do {									\
 #define this_cpu_xor_8(pcp, val) arch_this_cpu_to_op(pcp, val, ^)
 
 #define arch_this_cpu_cmpxchg(pcp, oval, nval)			\
+<<<<<<< HEAD
+=======
 =======
 #define irqsafe_cpu_add_1(pcp, val) arch_irqsafe_cpu_to_op(pcp, val, +)
 #define irqsafe_cpu_add_2(pcp, val) arch_irqsafe_cpu_to_op(pcp, val, +)
@@ -90,6 +99,7 @@ do {									\
 
 #define arch_irqsafe_cpu_cmpxchg(pcp, oval, nval)			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ({									\
 	typedef typeof(pcp) pcp_op_T__;					\
 	pcp_op_T__ ret__;						\
@@ -108,16 +118,22 @@ do {									\
 })
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define this_cpu_cmpxchg_1(pcp, oval, nval) arch_this_cpu_cmpxchg(pcp, oval, nval)
 #define this_cpu_cmpxchg_2(pcp, oval, nval) arch_this_cpu_cmpxchg(pcp, oval, nval)
 #define this_cpu_cmpxchg_4(pcp, oval, nval) arch_this_cpu_cmpxchg(pcp, oval, nval)
 #define this_cpu_cmpxchg_8(pcp, oval, nval) arch_this_cpu_cmpxchg(pcp, oval, nval)
+<<<<<<< HEAD
+=======
 =======
 #define irqsafe_cpu_cmpxchg_1(pcp, oval, nval) arch_irqsafe_cpu_cmpxchg(pcp, oval, nval)
 #define irqsafe_cpu_cmpxchg_2(pcp, oval, nval) arch_irqsafe_cpu_cmpxchg(pcp, oval, nval)
 #define irqsafe_cpu_cmpxchg_4(pcp, oval, nval) arch_irqsafe_cpu_cmpxchg(pcp, oval, nval)
 #define irqsafe_cpu_cmpxchg_8(pcp, oval, nval) arch_irqsafe_cpu_cmpxchg(pcp, oval, nval)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm-generic/percpu.h>
 

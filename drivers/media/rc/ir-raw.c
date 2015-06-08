@@ -12,8 +12,20 @@
  *  GNU General Public License for more details.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
 #include <linux/kthread.h>
 #include <linux/mutex.h>
+#include <linux/kmod.h>
+=======
+#include <linux/kthread.h>
+#include <linux/mutex.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/kthread.h>
+#include <linux/mutex.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <linux/freezer.h>
 #include "rc-core-priv.h"
@@ -355,6 +367,14 @@ static void init_decoders(struct work_struct *work)
 	load_rc6_decode();
 	load_jvc_decode();
 	load_sony_decode();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	load_sanyo_decode();
+	load_mce_kbd_decode();
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	load_lirc_codec();
 
 	/* If needed, we may later add some init code. In this case,

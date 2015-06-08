@@ -26,7 +26,12 @@
 #include <mach/intc.h>
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/intc.h>
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-types.h>
 #include <asm/mach/arch.h>
 
@@ -36,11 +41,14 @@ enum {
 	/* interrupt sources INTCA */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	IRQ0A, IRQ1A, IRQ2A, IRQ3A, IRQ4A, IRQ5A, IRQ6A, IRQ7A,
 	IRQ8A, IRQ9A, IRQ10A, IRQ11A, IRQ12A, IRQ13A, IRQ14A, IRQ15A,
 	IRQ16A, IRQ17A, IRQ18A, IRQ19A, IRQ20A, IRQ21A, IRQ22A, IRQ23A,
 	IRQ24A, IRQ25A, IRQ26A, IRQ27A, IRQ28A, IRQ29A, IRQ30A, IRQ31A,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DIRC,
 	CRYPT_STD,
 	IIC1_ALI1, IIC1_TACKI1, IIC1_WAITI1, IIC1_DTEI1,
@@ -96,6 +104,8 @@ enum {
 static struct intc_vect intca_vectors[] __initdata = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INTC_VECT(IRQ0A, 0x0200), INTC_VECT(IRQ1A, 0x0220),
 	INTC_VECT(IRQ2A, 0x0240), INTC_VECT(IRQ3A, 0x0260),
 	INTC_VECT(IRQ4A, 0x0280), INTC_VECT(IRQ5A, 0x02a0),
@@ -113,6 +123,7 @@ static struct intc_vect intca_vectors[] __initdata = {
 	INTC_VECT(IRQ28A, 0x3380), INTC_VECT(IRQ29A, 0x33a0),
 	INTC_VECT(IRQ30A, 0x33c0), INTC_VECT(IRQ31A, 0x33e0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTC_VECT(DIRC, 0x0560),
 	INTC_VECT(CRYPT_STD, 0x0700),
 	INTC_VECT(IIC1_ALI1, 0x0780), INTC_VECT(IIC1_TACKI1, 0x07a0),
@@ -216,6 +227,8 @@ static struct intc_group intca_groups[] __initdata = {
 static struct intc_mask_reg intca_mask_registers[] __initdata = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{ 0xe6900040, 0xe6900060, 8, /* INTMSK00A / INTMSKCLR00A */
 	  { IRQ0A, IRQ1A, IRQ2A, IRQ3A, IRQ4A, IRQ5A, IRQ6A, IRQ7A } },
 	{ 0xe6900044, 0xe6900064, 8, /* INTMSK10A / INTMSKCLR10A */
@@ -226,6 +239,7 @@ static struct intc_mask_reg intca_mask_registers[] __initdata = {
 	  { IRQ24A, IRQ25A, IRQ26A, IRQ27A, IRQ28A, IRQ29A, IRQ30A, IRQ31A } },
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0xe6940080, 0xe69400c0, 8, /* IMR0A / IMCR0A */
 	  { DMAC2_1_DEI3, DMAC2_1_DEI2, DMAC2_1_DEI1, DMAC2_1_DEI0,
 	    AP_ARM_IRQPMU, 0, AP_ARM_COMMTX, AP_ARM_COMMRX } },
@@ -298,6 +312,8 @@ static struct intc_mask_reg intca_mask_registers[] __initdata = {
 static struct intc_prio_reg intca_prio_registers[] __initdata = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{ 0xe6900010, 0, 32, 4, /* INTPRI00A */
 	  { IRQ0A, IRQ1A, IRQ2A, IRQ3A, IRQ4A, IRQ5A, IRQ6A, IRQ7A } },
 	{ 0xe6900014, 0, 32, 4, /* INTPRI10A */
@@ -308,6 +324,7 @@ static struct intc_prio_reg intca_prio_registers[] __initdata = {
 	  { IRQ24A, IRQ25A, IRQ26A, IRQ27A, IRQ28A, IRQ29A, IRQ30A, IRQ31A } },
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0xe6940000, 0, 16, 4, /* IPRAA */ { DMAC3_1, DMAC3_2, CMT2, 0 } },
 	{ 0xe6940004, 0, 16, 4, /* IPRBA */ { IRDA, 0, BBIF1, BBIF2 } },
 	{ 0xe6940008, 0, 16, 4, /* IPRCA */ { 0, CRYPT_STD,
@@ -354,6 +371,9 @@ static struct intc_prio_reg intca_prio_registers[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DECLARE_INTC_DESC(intca_desc, "sh7372-intca",
 			 intca_vectors, intca_groups,
 			 intca_mask_registers, intca_prio_registers,
@@ -361,6 +381,8 @@ static DECLARE_INTC_DESC(intca_desc, "sh7372-intca",
 
 INTC_IRQ_PINS_32(intca_irq_pins, 0xe6900000,
 		 INTC_VECT, "sh7372-intca-irq-pins");
+<<<<<<< HEAD
+=======
 =======
 static struct intc_sense_reg intca_sense_registers[] __initdata = {
 	{ 0xe6900000, 32, 4, /* ICR1A */
@@ -390,6 +412,7 @@ static DECLARE_INTC_DESC_ACK(intca_desc, "sh7372-intca",
 			     intca_sense_registers, intca_ack_registers);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum {
 	UNUSED_INTCS = 0,
 	ENABLED_INTCS,
@@ -409,8 +432,12 @@ enum {
 <<<<<<< HEAD
 	/* 3DG */
 =======
+<<<<<<< HEAD
+	/* 3DG */
+=======
 	_3DG_SGX530,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	_2DDMAC,
 	IIC2_ALI2, IIC2_TACKI2, IIC2_WAITI2, IIC2_DTEI2,
 	IPMMU_IPMMUR, IPMMU_IPMMUR2,
@@ -470,8 +497,12 @@ static struct intc_vect intcs_vectors[] = {
 <<<<<<< HEAD
 	/* 3DG */
 =======
+<<<<<<< HEAD
+	/* 3DG */
+=======
 	INTCS_VECT(_3DG_SGX530, 0x9e0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INTCS_VECT(_2DDMAC, 0xa00),
 	INTCS_VECT(IIC2_ALI2, 0xa80), INTCS_VECT(IIC2_TACKI2, 0xaa0),
 	INTCS_VECT(IIC2_WAITI2, 0xac0), INTCS_VECT(IIC2_DTEI2, 0xae0),
@@ -559,8 +590,12 @@ static struct intc_mask_reg intcs_mask_registers[] = {
 <<<<<<< HEAD
 	    0, 0, 0, 0 } },
 =======
+<<<<<<< HEAD
+	    0, 0, 0, 0 } },
+=======
 	    _3DG_SGX530, 0, 0, 0 } },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0xffd2019c, 0xffd201dc, 8, /* IMR7SA / IMCR7SA */
 	  { 0, TMU_TUNI2, TMU_TUNI1, TMU_TUNI0,
 	    0, 0, 0, 0 } },
@@ -602,8 +637,11 @@ static struct intc_prio_reg intcs_prio_registers[] = {
 	{ 0xffd20020, 0, 16, 4, /* IPRIS */ { 0, MSIOF, TSIF0, IIC0 } },
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	{ 0xffd20024, 0, 16, 4, /* IPRJS */ { 0, _3DG_SGX530, 0, 0 } },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ 0xffd20028, 0, 16, 4, /* IPRKS */ { 0, 0, LMB, 0 } },
 	{ 0xffd2002c, 0, 16, 4, /* IPRLS */ { IPMMU, 0, 0, 0 } },
 	{ 0xffd20030, 0, 16, 4, /* IPRMS */ { IIC2, 0, 0, 0 } },
@@ -638,7 +676,11 @@ static struct intc_desc intcs_desc __initdata = {
 <<<<<<< HEAD
 	.skip_syscore_suspend = true,
 =======
+<<<<<<< HEAD
+	.skip_syscore_suspend = true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.resource = intcs_resources,
 	.num_resources = ARRAY_SIZE(intcs_resources),
 	.hw = INTC_HW_DESC(intcs_vectors, intcs_groups, intcs_mask_registers,
@@ -654,6 +696,9 @@ static void intcs_demux(unsigned int irq, struct irq_desc *desc)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *intcs_ffd2;
 static void __iomem *intcs_ffd5;
 
@@ -667,6 +712,8 @@ void __init sh7372_init_irq(void)
 
 	register_intc_controller(&intca_desc);
 	register_intc_controller(&intca_irq_pins_desc);
+<<<<<<< HEAD
+=======
 =======
 void __init sh7372_init_irq(void)
 {
@@ -674,6 +721,7 @@ void __init sh7372_init_irq(void)
 
 	register_intc_controller(&intca_desc);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	register_intc_controller(&intcs_desc);
 
 	/* demux using INTEVTSA */
@@ -681,6 +729,9 @@ void __init sh7372_init_irq(void)
 	irq_set_chained_handler(evt2irq(0xf80), intcs_demux);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static unsigned short ffd2[0x200];
 static unsigned short ffd5[0x100];
@@ -773,5 +824,8 @@ void sh7372_intca_resume(void)
 	for (k = 0x180; k <= 0x1a8; k += 4)
 		__raw_writeb(e695[k], 0xe6950000 + k);
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

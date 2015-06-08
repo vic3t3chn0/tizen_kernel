@@ -86,28 +86,40 @@
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Reference to a grant entry in a specified domain's grant table.
  */
 typedef uint32_t grant_ref_t;
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * A grant table comprises a packed array of grant entries in one or more
  * page frames shared between Xen and a guest.
  * [XEN]: This field is written by Xen and read by the sharing guest.
  * [GST]: This field is written by the guest and read by Xen.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Version 1 of the grant table entry structure is maintained purely
  * for backwards compatibility.  New guests should use version 2.
  */
 struct grant_entry_v1 {
+<<<<<<< HEAD
+=======
 =======
 struct grant_entry {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     /* GTF_xxx: various type and flag information.  [XEN,GST] */
     uint16_t flags;
     /* The domain being granted foreign privileges. [GST] */
@@ -129,7 +141,12 @@ struct grant_entry {
  *  GTF_transitive: Allow @domid to transitively access a subrange of
  *                  @trans_grant in @trans_domid.  No mappings are allowed.
 =======
+<<<<<<< HEAD
+ *  GTF_transitive: Allow @domid to transitively access a subrange of
+ *                  @trans_grant in @trans_domid.  No mappings are allowed.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #define GTF_invalid         (0U<<0)
 #define GTF_permit_access   (1U<<0)
@@ -137,7 +154,11 @@ struct grant_entry {
 <<<<<<< HEAD
 #define GTF_transitive      (3U<<0)
 =======
+<<<<<<< HEAD
+#define GTF_transitive      (3U<<0)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define GTF_type_mask       (3U<<0)
 
 /*
@@ -150,7 +171,13 @@ struct grant_entry {
  *                will only be allowed to copy from the grant, and not
  *                map it. [GST]
 =======
+<<<<<<< HEAD
+ *  GTF_sub_page: Grant access to only a subrange of the page.  @domid
+ *                will only be allowed to copy from the grant, and not
+ *                map it. [GST]
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 #define _GTF_readonly       (2)
 #define GTF_readonly        (1U<<_GTF_readonly)
@@ -162,7 +189,12 @@ struct grant_entry {
 #define _GTF_sub_page       (8)
 #define GTF_sub_page        (1U<<_GTF_sub_page)
 =======
+<<<<<<< HEAD
+#define _GTF_sub_page       (8)
+#define GTF_sub_page        (1U<<_GTF_sub_page)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Subflags for GTF_accept_transfer:
@@ -180,6 +212,9 @@ struct grant_entry {
 #define GTF_transfer_completed  (1U<<_GTF_transfer_completed)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Version 2 grant table entries.  These fulfil the same role as
  * version 1 entries, but can represent more complicated operations.
@@ -255,6 +290,8 @@ typedef uint16_t grant_status_t;
 /***********************************
  * GRANT TABLE QUERIES AND USES
  */
+<<<<<<< HEAD
+=======
 =======
 
 /***********************************
@@ -266,6 +303,7 @@ typedef uint16_t grant_status_t;
  */
 typedef uint32_t grant_ref_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Handle to track a mapping created via a grant reference.
@@ -438,6 +476,9 @@ DEFINE_GUEST_HANDLE_STRUCT(gnttab_query_size);
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * GNTTABOP_unmap_and_replace: Destroy one or more grant-reference mappings
  * tracked by <handle> but atomically replace the page table entry with one
  * pointing to the machine address under <new_addr>.  <new_addr> will be
@@ -511,8 +552,11 @@ struct gnttab_get_version {
 DEFINE_GUEST_HANDLE_STRUCT(gnttab_get_version);
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Bitfield values for update_pin_status.flags.
  */
  /* Map the grant entry for access by I/O devices. */

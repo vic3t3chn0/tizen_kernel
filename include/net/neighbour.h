@@ -19,8 +19,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/netdevice.h>
 #include <linux/skbuff.h>
 #include <linux/rcupdate.h>
@@ -66,8 +70,12 @@ struct neigh_parms {
 <<<<<<< HEAD
 	int	queue_len_bytes;
 =======
+<<<<<<< HEAD
+	int	queue_len_bytes;
+=======
 	int	queue_len;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int	ucast_probes;
 	int	app_probes;
 	int	mcast_probes;
@@ -110,7 +118,11 @@ struct neighbour {
 <<<<<<< HEAD
 	unsigned int		arp_queue_len_bytes;
 =======
+<<<<<<< HEAD
+	unsigned int		arp_queue_len_bytes;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct timer_list	timer;
 	unsigned long		used;
 	atomic_t		probes;
@@ -124,9 +136,14 @@ struct neighbour {
 	struct hh_cache		hh;
 	int			(*output)(struct neighbour *, struct sk_buff *);
 =======
+<<<<<<< HEAD
+	struct hh_cache		hh;
+	int			(*output)(struct neighbour *, struct sk_buff *);
+=======
 	struct hh_cache		*hh;
 	int			(*output)(struct sk_buff *skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct neigh_ops	*ops;
 	struct rcu_head		rcu;
 	struct net_device	*dev;
@@ -136,10 +153,15 @@ struct neighbour {
 struct neigh_ops {
 	int			family;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void			(*solicit)(struct neighbour *, struct sk_buff *);
 	void			(*error_report)(struct neighbour *, struct sk_buff *);
 	int			(*output)(struct neighbour *, struct sk_buff *);
 	int			(*connected_output)(struct neighbour *, struct sk_buff *);
+<<<<<<< HEAD
+=======
 =======
 	void			(*solicit)(struct neighbour *, struct sk_buff*);
 	void			(*error_report)(struct neighbour *, struct sk_buff*);
@@ -148,6 +170,7 @@ struct neigh_ops {
 	int			(*hh_output)(struct sk_buff*);
 	int			(*queue_xmit)(struct sk_buff*);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct pneigh_entry {
@@ -165,18 +188,24 @@ struct pneigh_entry {
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NEIGH_NUM_HASH_RND	4
 
 struct neigh_hash_table {
 	struct neighbour __rcu	**hash_buckets;
 	unsigned int		hash_shift;
 	__u32			hash_rnd[NEIGH_NUM_HASH_RND];
+<<<<<<< HEAD
+=======
 =======
 struct neigh_hash_table {
 	struct neighbour __rcu	**hash_buckets;
 	unsigned int		hash_mask;
 	__u32			hash_rnd;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rcu_head		rcu;
 };
 
@@ -191,8 +220,12 @@ struct neigh_table {
 <<<<<<< HEAD
 					__u32 *hash_rnd);
 =======
+<<<<<<< HEAD
+					__u32 *hash_rnd);
+=======
 					__u32 hash_rnd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			(*constructor)(struct neighbour *);
 	int			(*pconstructor)(struct pneigh_entry *);
 	void			(*pdestructor)(struct pneigh_entry *);
@@ -213,14 +246,20 @@ struct neigh_table {
 	unsigned long		last_rand;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct kmem_cache	*kmem_cachep;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct neigh_statistics	__percpu *stats;
 	struct neigh_hash_table __rcu *nht;
 	struct pneigh_entry	**phash_buckets;
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NEIGH_PRIV_ALIGN	sizeof(long long)
 
 static inline void *neighbour_priv(const struct neighbour *n)
@@ -228,8 +267,11 @@ static inline void *neighbour_priv(const struct neighbour *n)
 	return (char *)n + ALIGN(sizeof(*n) + n->tbl->key_len, NEIGH_PRIV_ALIGN);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* flags for neigh_update() */
 #define NEIGH_UPDATE_F_OVERRIDE			0x00000001
 #define NEIGH_UPDATE_F_WEAK_OVERRIDE		0x00000002
@@ -256,15 +298,21 @@ extern int			neigh_update(struct neighbour *neigh, const u8 *lladdr, u8 new,
 extern void			neigh_changeaddr(struct neigh_table *tbl, struct net_device *dev);
 extern int			neigh_ifdown(struct neigh_table *tbl, struct net_device *dev);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int			neigh_resolve_output(struct neighbour *neigh, struct sk_buff *skb);
 extern int			neigh_connected_output(struct neighbour *neigh, struct sk_buff *skb);
 extern int			neigh_compat_output(struct neighbour *neigh, struct sk_buff *skb);
 extern int			neigh_direct_output(struct neighbour *neigh, struct sk_buff *skb);
+<<<<<<< HEAD
+=======
 =======
 extern int			neigh_resolve_output(struct sk_buff *skb);
 extern int			neigh_connected_output(struct sk_buff *skb);
 extern int			neigh_compat_output(struct sk_buff *skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct neighbour 	*neigh_event_ns(struct neigh_table *tbl,
 						u8 *lladdr, void *saddr,
 						struct net_device *dev);
@@ -399,6 +447,9 @@ static inline int neigh_hh_output(struct hh_cache *hh, struct sk_buff *skb)
 
 	skb_push(skb, hh_len);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return dev_queue_xmit(skb);
 }
 
@@ -409,9 +460,12 @@ static inline int neigh_output(struct neighbour *n, struct sk_buff *skb)
 		return neigh_hh_output(hh, skb);
 	else
 		return n->output(n, skb);
+<<<<<<< HEAD
+=======
 =======
 	return hh->hh_output(skb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline struct neighbour *

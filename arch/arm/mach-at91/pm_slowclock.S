@@ -18,6 +18,9 @@
 <<<<<<< HEAD
 #include <mach/at91_ramc.h>
 =======
+<<<<<<< HEAD
+#include <mach/at91_ramc.h>
+=======
 
 #if defined(CONFIG_ARCH_AT91RM9200)
 #include <mach/at91rm9200_mc.h>
@@ -29,6 +32,7 @@
 #include <mach/at91sam9_sdramc.h>
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 #ifdef CONFIG_ARCH_AT91SAM9263
@@ -53,26 +57,37 @@
 #define PLLBLOCK_TIMEOUT	1000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 pmc	.req	r0
 sdramc	.req	r1
 ramc1	.req	r2
 memctrl	.req	r3
 tmp1	.req	r4
 tmp2	.req	r5
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Wait until master clock is ready (after switching master clock source)
  */
 	.macro wait_mckrdy
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	tmp2, #MCKRDY_TIMEOUT
 1:	sub	tmp2, tmp2, #1
 	cmp	tmp2, #0
 	beq	2f
 	ldr	tmp1, [pmc, #AT91_PMC_SR]
 	tst	tmp1, #AT91_PMC_MCKRDY
+<<<<<<< HEAD
+=======
 =======
 	mov	r4, #MCKRDY_TIMEOUT
 1:	sub	r4, r4, #1
@@ -81,6 +96,7 @@ tmp2	.req	r5
 	ldr	r3, [r1, #(AT91_PMC_SR - AT91_PMC)]
 	tst	r3, #AT91_PMC_MCKRDY
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	1b
 2:
 	.endm
@@ -90,12 +106,17 @@ tmp2	.req	r5
  */
 	.macro wait_moscrdy
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	tmp2, #MOSCRDY_TIMEOUT
 1:	sub	tmp2, tmp2, #1
 	cmp	tmp2, #0
 	beq	2f
 	ldr	tmp1, [pmc, #AT91_PMC_SR]
 	tst	tmp1, #AT91_PMC_MOSCS
+<<<<<<< HEAD
+=======
 =======
 	mov	r4, #MOSCRDY_TIMEOUT
 1:	sub	r4, r4, #1
@@ -104,6 +125,7 @@ tmp2	.req	r5
 	ldr	r3, [r1, #(AT91_PMC_SR - AT91_PMC)]
 	tst	r3, #AT91_PMC_MOSCS
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	1b
 2:
 	.endm
@@ -113,12 +135,17 @@ tmp2	.req	r5
  */
 	.macro wait_pllalock
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	tmp2, #PLLALOCK_TIMEOUT
 1:	sub	tmp2, tmp2, #1
 	cmp	tmp2, #0
 	beq	2f
 	ldr	tmp1, [pmc, #AT91_PMC_SR]
 	tst	tmp1, #AT91_PMC_LOCKA
+<<<<<<< HEAD
+=======
 =======
 	mov	r4, #PLLALOCK_TIMEOUT
 1:	sub	r4, r4, #1
@@ -127,6 +154,7 @@ tmp2	.req	r5
 	ldr	r3, [r1, #(AT91_PMC_SR - AT91_PMC)]
 	tst	r3, #AT91_PMC_LOCKA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	1b
 2:
 	.endm
@@ -136,12 +164,17 @@ tmp2	.req	r5
  */
 	.macro wait_pllblock
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	tmp2, #PLLBLOCK_TIMEOUT
 1:	sub	tmp2, tmp2, #1
 	cmp	tmp2, #0
 	beq	2f
 	ldr	tmp1, [pmc, #AT91_PMC_SR]
 	tst	tmp1, #AT91_PMC_LOCKB
+<<<<<<< HEAD
+=======
 =======
 	mov	r4, #PLLBLOCK_TIMEOUT
 1:	sub	r4, r4, #1
@@ -150,6 +183,7 @@ tmp2	.req	r5
 	ldr	r3, [r1, #(AT91_PMC_SR - AT91_PMC)]
 	tst	r3, #AT91_PMC_LOCKB
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	1b
 2:
 	.endm
@@ -157,6 +191,9 @@ tmp2	.req	r5
 	.text
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* void at91_slow_clock(void __iomem *pmc, void __iomem *sdramc,
  *			void __iomem *ramc1, int memctrl)
  */
@@ -231,6 +268,8 @@ sdr_sr_done:
 	/* Save Master clock setting */
 	ldr	tmp1, [pmc, #AT91_PMC_MCKR]
 	str	tmp1, .saved_mckr
+<<<<<<< HEAD
+=======
 =======
 ENTRY(at91_slow_clock)
 	/* Save registers on stack */
@@ -289,6 +328,7 @@ ENTRY(at91_slow_clock)
 	ldr	r3, [r1, #(AT91_PMC_MCKR - AT91_PMC)]
 	str	r3, .saved_mckr
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Set the Master clock source to slow clock
@@ -297,9 +337,14 @@ ENTRY(at91_slow_clock)
 	bic	tmp1, tmp1, #AT91_PMC_CSS
 	str	tmp1, [pmc, #AT91_PMC_MCKR]
 =======
+<<<<<<< HEAD
+	bic	tmp1, tmp1, #AT91_PMC_CSS
+	str	tmp1, [pmc, #AT91_PMC_MCKR]
+=======
 	bic	r3, r3, #AT91_PMC_CSS
 	str	r3, [r1, #(AT91_PMC_MCKR - AT91_PMC)]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wait_mckrdy
 
@@ -313,15 +358,23 @@ ENTRY(at91_slow_clock)
 	mov	tmp1, #0
 	str	tmp1, [pmc, #AT91_PMC_MCKR]
 =======
+<<<<<<< HEAD
+	mov	tmp1, #0
+	str	tmp1, [pmc, #AT91_PMC_MCKR]
+=======
 	mov	r3, #0
 	str	r3, [r1, #(AT91_PMC_MCKR - AT91_PMC)]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wait_mckrdy
 #endif
 
 	/* Save PLLA setting and disable it */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	tmp1, [pmc, #AT91_CKGR_PLLAR]
 	str	tmp1, .saved_pllar
 
@@ -348,6 +401,8 @@ ENTRY(at91_slow_clock)
 	ldr	tmp1, [pmc, #AT91_CKGR_MOR]
 	orr	tmp1, tmp1, #AT91_PMC_MOSCEN
 	str	tmp1, [pmc, #AT91_CKGR_MOR]
+<<<<<<< HEAD
+=======
 =======
 	ldr	r3, [r1, #(AT91_CKGR_PLLAR - AT91_PMC)]
 	str	r3, .saved_pllar
@@ -376,17 +431,23 @@ ENTRY(at91_slow_clock)
 	orr	r3, r3, #AT91_PMC_MOSCEN
 	str	r3, [r1, #(AT91_CKGR_MOR - AT91_PMC)]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wait_moscrdy
 
 	/* Restore PLLB setting */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	tmp1, .saved_pllbr
 	str	tmp1, [pmc, #AT91_CKGR_PLLBR]
 
 	tst	tmp1, #(AT91_PMC_MUL &  0xff0000)
 	bne	1f
 	tst	tmp1, #(AT91_PMC_MUL & ~0xff0000)
+<<<<<<< HEAD
+=======
 =======
 	ldr	r3, .saved_pllbr
 	str	r3, [r1, #(AT91_CKGR_PLLBR - AT91_PMC)]
@@ -395,6 +456,7 @@ ENTRY(at91_slow_clock)
 	bne	1f
 	tst	r3, #(AT91_PMC_MUL & ~0xff0000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	2f
 1:
 	wait_pllblock
@@ -402,12 +464,17 @@ ENTRY(at91_slow_clock)
 
 	/* Restore PLLA setting */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	tmp1, .saved_pllar
 	str	tmp1, [pmc, #AT91_CKGR_PLLAR]
 
 	tst	tmp1, #(AT91_PMC_MUL &  0xff0000)
 	bne	3f
 	tst	tmp1, #(AT91_PMC_MUL & ~0xff0000)
+<<<<<<< HEAD
+=======
 =======
 	ldr	r3, .saved_pllar
 	str	r3, [r1, #(AT91_CKGR_PLLAR - AT91_PMC)]
@@ -416,6 +483,7 @@ ENTRY(at91_slow_clock)
 	bne	3f
 	tst	r3, #(AT91_PMC_MUL & ~0xff0000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beq	4f
 3:
 	wait_pllalock
@@ -429,11 +497,16 @@ ENTRY(at91_slow_clock)
 	 * See AT91RM9200 errata #27 and #28 for details.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ldr	tmp1, .saved_mckr
 	tst	tmp1, #AT91_PMC_PRES
 	beq	2f
 	and	tmp1, tmp1, #AT91_PMC_PRES
 	str	tmp1, [pmc, #AT91_PMC_MCKR]
+<<<<<<< HEAD
+=======
 =======
 	ldr	r3, .saved_mckr
 	tst	r3, #AT91_PMC_PRES
@@ -441,6 +514,7 @@ ENTRY(at91_slow_clock)
 	and	r3, r3, #AT91_PMC_PRES
 	str	r3, [r1, #(AT91_PMC_MCKR - AT91_PMC)]
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wait_mckrdy
 #endif
@@ -449,6 +523,9 @@ ENTRY(at91_slow_clock)
 	 * Restore master clock setting
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 2:	ldr	tmp1, .saved_mckr
 	str	tmp1, [pmc, #AT91_PMC_MCKR]
 
@@ -488,6 +565,8 @@ sdr_en_restore:
 ram_restored:
 	/* Restore registers, and return */
 	ldmfd	sp!, {r4 - r12, pc}
+<<<<<<< HEAD
+=======
 =======
 2:	ldr	r3, .saved_mckr
 	str	r3, [r1, #(AT91_PMC_MCKR - AT91_PMC)]
@@ -516,6 +595,7 @@ ram_restored:
 	/* Restore registers, and return */
 	ldmfd	sp!, {r0 - r12, pc}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 .saved_mckr:
@@ -533,6 +613,8 @@ ram_restored:
 .saved_sam9_lpr1:
 	.word 0
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 .at91_va_base_pmc:
@@ -558,5 +640,6 @@ ram_restored:
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 ENTRY(at91_slow_clock_sz)
 	.word .-at91_slow_clock

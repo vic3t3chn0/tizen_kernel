@@ -25,8 +25,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/ymfpci.h>
 #include <sound/mpu401.h>
@@ -48,8 +52,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;	/* Enable this card */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static long fm_port[SNDRV_CARDS];
 static long mpu_port[SNDRV_CARDS];
 #ifdef SUPPORT_JOYSTICK
@@ -58,8 +66,12 @@ static long joystick_port[SNDRV_CARDS];
 <<<<<<< HEAD
 static bool rear_switch[SNDRV_CARDS];
 =======
+<<<<<<< HEAD
+static bool rear_switch[SNDRV_CARDS];
+=======
 static int rear_switch[SNDRV_CARDS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 module_param_array(index, int, NULL, 0444);
 MODULE_PARM_DESC(index, "Index value for the Yamaha DS-1 PCI soundcard.");
@@ -299,6 +311,9 @@ static int __devinit snd_card_ymfpci_probe(struct pci_dev *pci,
 		return err;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = snd_ymfpci_mixer(chip, rear_switch[dev]);
 	if (err < 0) {
 		snd_card_free(card);
@@ -315,6 +330,8 @@ static int __devinit snd_card_ymfpci_probe(struct pci_dev *pci,
 			snd_card_free(card);
 			return err;
 		}
+<<<<<<< HEAD
+=======
 =======
 	if ((err = snd_ymfpci_pcm_4ch(chip, 2, NULL)) < 0) {
 		snd_card_free(card);
@@ -328,6 +345,7 @@ static int __devinit snd_card_ymfpci_probe(struct pci_dev *pci,
 		snd_card_free(card);
 		return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if ((err = snd_ymfpci_timer(chip, 0)) < 0) {
 		snd_card_free(card);
@@ -341,9 +359,15 @@ static int __devinit snd_card_ymfpci_probe(struct pci_dev *pci,
 					       MPU401_INFO_IRQ_HOOK,
 					       -1, &chip->rawmidi)) < 0) {
 =======
+<<<<<<< HEAD
+					       MPU401_INFO_INTEGRATED |
+					       MPU401_INFO_IRQ_HOOK,
+					       -1, &chip->rawmidi)) < 0) {
+=======
 					       MPU401_INFO_INTEGRATED,
 					       pci->irq, 0, &chip->rawmidi)) < 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_WARNING "ymfpci: cannot initialize MPU401 at 0x%lx, skipping...\n", mpu_port[dev]);
 			legacy_ctrl &= ~YMFPCI_LEGACY_MIEN; /* disable MPU401 irq */
 			pci_write_config_word(pci, PCIR_DSXG_LEGACY, legacy_ctrl);
@@ -385,8 +409,12 @@ static struct pci_driver driver = {
 <<<<<<< HEAD
 	.name = KBUILD_MODNAME,
 =======
+<<<<<<< HEAD
+	.name = KBUILD_MODNAME,
+=======
 	.name = "Yamaha DS-1 PCI",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.id_table = snd_ymfpci_ids,
 	.probe = snd_card_ymfpci_probe,
 	.remove = __devexit_p(snd_card_ymfpci_remove),

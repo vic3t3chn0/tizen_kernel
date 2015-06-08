@@ -38,8 +38,12 @@ struct xt_set_info_target_v0 {
 <<<<<<< HEAD
 /* Revision 1  match and target */
 =======
+<<<<<<< HEAD
+/* Revision 1  match and target */
+=======
 /* Revision 1: current interface to netfilter/iptables */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct xt_set_info {
 	ip_set_id_t index;
@@ -49,11 +53,16 @@ struct xt_set_info {
 
 /* match and target infos */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct xt_set_info_match_v1 {
 	struct xt_set_info match_set;
 };
 
 struct xt_set_info_target_v1 {
+<<<<<<< HEAD
+=======
 =======
 struct xt_set_info_match {
 	struct xt_set_info match_set;
@@ -61,11 +70,15 @@ struct xt_set_info_match {
 
 struct xt_set_info_target {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct xt_set_info add_set;
 	struct xt_set_info del_set;
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Revision 2 target */
 
 struct xt_set_info_target_v2 {
@@ -75,6 +88,9 @@ struct xt_set_info_target_v2 {
 	__u32 timeout;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /*_XT_SET_H*/

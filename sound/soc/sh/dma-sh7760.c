@@ -328,16 +328,22 @@ static void camelot_pcm_free(struct snd_pcm *pcm)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int camelot_pcm_new(struct snd_soc_pcm_runtime *rtd)
 {
 	struct snd_pcm *pcm = rtd->pcm;
 
+<<<<<<< HEAD
+=======
 =======
 static int camelot_pcm_new(struct snd_card *card,
 			   struct snd_soc_dai *dai,
 			   struct snd_pcm *pcm)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* dont use SNDRV_DMA_TYPE_DEV, since it will oops the SH kernel
 	 * in MMAP mode (i.e. aplay -M)
 	 */
@@ -353,9 +359,14 @@ static int camelot_pcm_new(struct snd_card *card,
 static struct snd_soc_platform sh7760_soc_platform = {
 	.pcm_ops 	= &camelot_pcm_ops,
 =======
+<<<<<<< HEAD
+static struct snd_soc_platform sh7760_soc_platform = {
+	.pcm_ops 	= &camelot_pcm_ops,
+=======
 static struct snd_soc_platform_driver sh7760_soc_platform = {
 	.ops		= &camelot_pcm_ops,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.pcm_new	= camelot_pcm_new,
 	.pcm_free	= camelot_pcm_free,
 };
@@ -384,6 +395,9 @@ static struct platform_driver sh7760_pcm_driver = {
 <<<<<<< HEAD
 module_platform_driver(sh7760_pcm_driver);
 =======
+<<<<<<< HEAD
+module_platform_driver(sh7760_pcm_driver);
+=======
 static int __init snd_sh7760_pcm_init(void)
 {
 	return platform_driver_register(&sh7760_pcm_driver);
@@ -396,6 +410,7 @@ static void __exit snd_sh7760_pcm_exit(void)
 }
 module_exit(snd_sh7760_pcm_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("SH7760 Audio DMA (DMABRG) driver");

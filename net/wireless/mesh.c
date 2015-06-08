@@ -2,7 +2,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/cfg80211.h>
 #include "nl80211.h"
 #include "core.h"
@@ -19,7 +23,11 @@
 <<<<<<< HEAD
 #define MESH_RANN_INTERVAL      5000
 =======
+<<<<<<< HEAD
+#define MESH_RANN_INTERVAL      5000
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Minimum interval between two consecutive PREQs originated by the same
@@ -27,15 +35,21 @@
  */
 #define MESH_PREQ_MIN_INT	10
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MESH_PERR_MIN_INT	100
 #define MESH_DIAM_TRAVERSAL_TIME 50
 
 #define MESH_RSSI_THRESHOLD	0
 
+<<<<<<< HEAD
+=======
 =======
 #define MESH_DIAM_TRAVERSAL_TIME 50
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * A path will be refreshed if it is used PATH_REFRESH_TIME milliseconds
  * before timing out.  This way it will remain ACTIVE and no data frames
@@ -64,18 +78,28 @@ const struct mesh_config default_mesh_config = {
 <<<<<<< HEAD
 	.dot11MeshHWMPperrMinInterval = MESH_PERR_MIN_INT,
 =======
+<<<<<<< HEAD
+	.dot11MeshHWMPperrMinInterval = MESH_PERR_MIN_INT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dot11MeshHWMPnetDiameterTraversalTime = MESH_DIAM_TRAVERSAL_TIME,
 	.dot11MeshHWMPmaxPREQretries = MESH_MAX_PREQ_RETRIES,
 	.path_refresh_time = MESH_PATH_REFRESH_TIME,
 	.min_discovery_timeout = MESH_MIN_DISCOVERY_TIMEOUT,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dot11MeshHWMPRannInterval = MESH_RANN_INTERVAL,
 	.dot11MeshGateAnnouncementProtocol = false,
 	.dot11MeshForwarding = true,
 	.rssi_threshold = MESH_RSSI_THRESHOLD,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 const struct mesh_setup default_mesh_setup = {

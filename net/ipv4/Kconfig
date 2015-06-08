@@ -165,9 +165,12 @@ config IP_PNP_RARP
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 # not yet ready..
 #   bool '    IP: ARP support' CONFIG_IP_PNP_ARP
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NET_IPIP
 	tristate "IP: tunneling"
 	select INET_TUNNEL
@@ -413,6 +416,9 @@ config INET_TCP_DIAG
 	def_tristate INET_DIAG
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config INET_UDP_DIAG
 	tristate "UDP: socket monitoring interface"
 	depends on INET_DIAG && (IPV6 || IPV6=n)
@@ -421,8 +427,11 @@ config INET_UDP_DIAG
 	  Support for UDP socket monitoring interface used by the ss tool.
 	  If unsure, say Y.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 menuconfig TCP_CONG_ADVANCED
 	bool "TCP: advanced congestion control"
 	---help---

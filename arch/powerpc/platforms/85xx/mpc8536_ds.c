@@ -21,8 +21,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -36,6 +39,9 @@
 #include <sysdev/fsl_pci.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "mpc85xx.h"
 
 void __init mpc8536_ds_pic_init(void)
@@ -43,6 +49,8 @@ void __init mpc8536_ds_pic_init(void)
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN,
 			0, 256, " OpenPIC  ");
 	BUG_ON(mpic == NULL);
+<<<<<<< HEAD
+=======
 =======
 void __init mpc8536_ds_pic_init(void)
 {
@@ -70,6 +78,7 @@ void __init mpc8536_ds_pic_init(void)
 	of_node_put(np);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpic_init(mpic);
 }
 
@@ -120,6 +129,9 @@ static void __init mpc8536_ds_setup_arch(void)
 <<<<<<< HEAD
 machine_device_initcall(mpc8536_ds, mpc85xx_common_publish_devices);
 =======
+<<<<<<< HEAD
+machine_device_initcall(mpc8536_ds, mpc85xx_common_publish_devices);
+=======
 static struct of_device_id __initdata mpc8536_ds_ids[] = {
 	{ .type = "soc", },
 	{ .compatible = "soc", },
@@ -134,6 +146,7 @@ static int __init mpc8536_ds_publish_devices(void)
 }
 machine_device_initcall(mpc8536_ds, mpc8536_ds_publish_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 machine_arch_initcall(mpc8536_ds, swiotlb_setup_bus_notifier);
 

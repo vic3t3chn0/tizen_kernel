@@ -59,8 +59,12 @@
 <<<<<<< HEAD
 static int inherit_flags(const struct inode *dir, umode_t mode)
 =======
+<<<<<<< HEAD
+static int inherit_flags(const struct inode *dir, umode_t mode)
+=======
 static int inherit_flags(const struct inode *dir, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int flags;
 	const struct ubifs_inode *ui = ubifs_inode(dir);
@@ -93,8 +97,12 @@ struct inode *ubifs_new_inode(struct ubifs_info *c, const struct inode *dir,
 <<<<<<< HEAD
 			      umode_t mode)
 =======
+<<<<<<< HEAD
+			      umode_t mode)
+=======
 			      int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	struct ubifs_inode *ui;
@@ -113,8 +121,12 @@ struct inode *ubifs_new_inode(struct ubifs_info *c, const struct inode *dir,
 <<<<<<< HEAD
 	inode->i_flags |= S_NOCMTIME;
 =======
+<<<<<<< HEAD
+	inode->i_flags |= S_NOCMTIME;
+=======
 	inode->i_flags |= (S_NOCMTIME);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	inode_init_owner(inode, dir, mode);
 	inode->i_mtime = inode->i_atime = inode->i_ctime =
@@ -185,16 +197,22 @@ struct inode *ubifs_new_inode(struct ubifs_info *c, const struct inode *dir,
 #ifdef CONFIG_UBIFS_FS_DEBUG
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dbg_check_name(const struct ubifs_info *c,
 			  const struct ubifs_dent_node *dent,
 			  const struct qstr *nm)
 {
 	if (!dbg_is_chk_gen(c))
+<<<<<<< HEAD
+=======
 =======
 static int dbg_check_name(struct ubifs_dent_node *dent, struct qstr *nm)
 {
 	if (!(ubifs_chk_flags & UBIFS_CHK_GEN))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	if (le16_to_cpu(dent->nlen) != nm->len)
 		return -EINVAL;
@@ -208,8 +226,12 @@ static int dbg_check_name(struct ubifs_dent_node *dent, struct qstr *nm)
 <<<<<<< HEAD
 #define dbg_check_name(c, dent, nm) 0
 =======
+<<<<<<< HEAD
+#define dbg_check_name(c, dent, nm) 0
+=======
 #define dbg_check_name(dent, nm) 0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 
@@ -246,8 +268,12 @@ static struct dentry *ubifs_lookup(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 	if (dbg_check_name(c, dent, &dentry->d_name)) {
 =======
+<<<<<<< HEAD
+	if (dbg_check_name(c, dent, &dentry->d_name)) {
+=======
 	if (dbg_check_name(dent, &dentry->d_name)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -EINVAL;
 		goto out;
 	}
@@ -282,8 +308,12 @@ out:
 <<<<<<< HEAD
 static int ubifs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int ubifs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+=======
 static int ubifs_create(struct inode *dir, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct nameidata *nd)
 {
 	struct inode *inode;
@@ -301,8 +331,12 @@ static int ubifs_create(struct inode *dir, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 	dbg_gen("dent '%.*s', mode %#hx in dir ino %lu",
 =======
+<<<<<<< HEAD
+	dbg_gen("dent '%.*s', mode %#hx in dir ino %lu",
+=======
 	dbg_gen("dent '%.*s', mode %#x in dir ino %lu",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dentry->d_name.len, dentry->d_name.name, mode, dir->i_ino);
 
 	err = ubifs_budget_space(c, &req);
@@ -393,8 +427,11 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 	int err, over = 0;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	loff_t pos = file->f_pos;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct qstr nm;
 	union ubifs_key key;
 	struct ubifs_dent_node *dent;
@@ -406,16 +443,26 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 
 	if (file->f_pos > UBIFS_S_KEY_HASH_MASK || file->f_pos == 2)
 =======
+<<<<<<< HEAD
+	dbg_gen("dir ino %lu, f_pos %#llx", dir->i_ino, file->f_pos);
+
+	if (file->f_pos > UBIFS_S_KEY_HASH_MASK || file->f_pos == 2)
+=======
 	dbg_gen("dir ino %lu, f_pos %#llx", dir->i_ino, pos);
 
 	if (pos > UBIFS_S_KEY_HASH_MASK || pos == 2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * The directory was seek'ed to a senseless position or there
 		 * are no more entries.
 		 */
 		return 0;
 
+<<<<<<< HEAD
+	/* File positions 0 and 1 correspond to "." and ".." */
+	if (file->f_pos == 0) {
+=======
 <<<<<<< HEAD
 	/* File positions 0 and 1 correspond to "." and ".." */
 	if (file->f_pos == 0) {
@@ -441,21 +488,28 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 	/* File positions 0 and 1 correspond to "." and ".." */
 	if (pos == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ubifs_assert(!file->private_data);
 		over = filldir(dirent, ".", 1, 0, dir->i_ino, DT_DIR);
 		if (over)
 			return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		file->f_pos = 1;
 	}
 
 	if (file->f_pos == 1) {
+<<<<<<< HEAD
+=======
 =======
 		file->f_pos = pos = 1;
 	}
 
 	if (pos == 1) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ubifs_assert(!file->private_data);
 		over = filldir(dirent, "..", 2, 1,
 			       parent_ino(file->f_path.dentry), DT_DIR);
@@ -474,8 +528,12 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 <<<<<<< HEAD
 		file->f_pos = key_hash_flash(c, &dent->key);
 =======
+<<<<<<< HEAD
+		file->f_pos = key_hash_flash(c, &dent->key);
+=======
 		file->f_pos = pos = key_hash_flash(c, &dent->key);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		file->private_data = dent;
 	}
 
@@ -484,15 +542,21 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 		/*
 		 * The directory was seek'ed to and is now readdir'ed.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * Find the entry corresponding to @file->f_pos or the
 		 * closest one.
 		 */
 		dent_key_init_hash(c, &key, dir->i_ino, file->f_pos);
+<<<<<<< HEAD
+=======
 =======
 		 * Find the entry corresponding to @pos or the closest one.
 		 */
 		dent_key_init_hash(c, &key, dir->i_ino, pos);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nm.name = NULL;
 		dent = ubifs_tnc_next_ent(c, &key, &nm);
 		if (IS_ERR(dent)) {
@@ -502,8 +566,12 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 <<<<<<< HEAD
 		file->f_pos = key_hash_flash(c, &dent->key);
 =======
+<<<<<<< HEAD
+		file->f_pos = key_hash_flash(c, &dent->key);
+=======
 		file->f_pos = pos = key_hash_flash(c, &dent->key);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		file->private_data = dent;
 	}
 
@@ -518,8 +586,12 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 <<<<<<< HEAD
 		over = filldir(dirent, dent->name, nm.len, file->f_pos,
 =======
+<<<<<<< HEAD
+		over = filldir(dirent, dent->name, nm.len, file->f_pos,
+=======
 		over = filldir(dirent, dent->name, nm.len, pos,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       le64_to_cpu(dent->inum),
 			       vfs_dent_type(dent->type));
 		if (over)
@@ -540,6 +612,11 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 		file->private_data = dent;
 		cond_resched();
 =======
+<<<<<<< HEAD
+		file->f_pos = key_hash_flash(c, &dent->key);
+		file->private_data = dent;
+		cond_resched();
+=======
 		file->f_pos = pos = key_hash_flash(c, &dent->key);
 		file->private_data = dent;
 		cond_resched();
@@ -552,6 +629,7 @@ static int ubifs_readdir(struct file *file, void *dirent, filldir_t filldir)
 			 */
 			return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 out:
@@ -564,22 +642,31 @@ out:
 	file->private_data = NULL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* 2 is a special value indicating that there are no more direntries */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	file->f_pos = 2;
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* If a directory is seeked, we have to free saved readdir() state */
 static loff_t ubifs_dir_llseek(struct file *file, loff_t offset, int origin)
 {
 	kfree(file->private_data);
 	file->private_data = NULL;
+<<<<<<< HEAD
+=======
 =======
 static loff_t ubifs_dir_llseek(struct file *file, loff_t offset, int origin)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return generic_file_llseek(file, offset, origin);
 }
 
@@ -642,8 +729,12 @@ static int ubifs_link(struct dentry *old_dentry, struct inode *dir,
 <<<<<<< HEAD
 	err = dbg_check_synced_i_size(c, inode);
 =======
+<<<<<<< HEAD
+	err = dbg_check_synced_i_size(c, inode);
+=======
 	err = dbg_check_synced_i_size(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 
@@ -688,7 +779,11 @@ static int ubifs_unlink(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 	unsigned int saved_nlink = inode->i_nlink;
 =======
+<<<<<<< HEAD
+	unsigned int saved_nlink = inode->i_nlink;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Budget request settings: deletion direntry, deletion inode (+1 for
@@ -705,8 +800,12 @@ static int ubifs_unlink(struct inode *dir, struct dentry *dentry)
 <<<<<<< HEAD
 	err = dbg_check_synced_i_size(c, inode);
 =======
+<<<<<<< HEAD
+	err = dbg_check_synced_i_size(c, inode);
+=======
 	err = dbg_check_synced_i_size(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 
@@ -743,8 +842,12 @@ out_cancel:
 <<<<<<< HEAD
 	set_nlink(inode, saved_nlink);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, saved_nlink);
+=======
 	inc_nlink(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_2_inodes(dir, inode);
 	if (budgeted)
 		ubifs_release_budget(c, &req);
@@ -838,9 +941,13 @@ out_cancel:
 <<<<<<< HEAD
 	set_nlink(inode, 2);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 2);
+=======
 	inc_nlink(inode);
 	inc_nlink(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_2_inodes(dir, inode);
 	if (budgeted)
 		ubifs_release_budget(c, &req);
@@ -850,8 +957,12 @@ out_cancel:
 <<<<<<< HEAD
 static int ubifs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int ubifs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
+=======
 static int ubifs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	struct ubifs_inode *dir_ui = ubifs_inode(dir);
@@ -867,8 +978,12 @@ static int ubifs_mkdir(struct inode *dir, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 	dbg_gen("dent '%.*s', mode %#hx in dir ino %lu",
 =======
+<<<<<<< HEAD
+	dbg_gen("dent '%.*s', mode %#hx in dir ino %lu",
+=======
 	dbg_gen("dent '%.*s', mode %#x in dir ino %lu",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dentry->d_name.len, dentry->d_name.name, mode, dir->i_ino);
 
 	err = ubifs_budget_space(c, &req);
@@ -915,8 +1030,12 @@ static int ubifs_mknod(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 		       umode_t mode, dev_t rdev)
 =======
+<<<<<<< HEAD
+		       umode_t mode, dev_t rdev)
+=======
 		       int mode, dev_t rdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode;
 	struct ubifs_inode *ui;
@@ -1127,7 +1246,11 @@ static int ubifs_rename(struct inode *old_dir, struct dentry *old_dentry,
 <<<<<<< HEAD
 	unsigned int saved_nlink = 0;
 =======
+<<<<<<< HEAD
+	unsigned int saved_nlink = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Budget request settings: deletion direntry, new direntry, removing
@@ -1211,6 +1334,9 @@ static int ubifs_rename(struct inode *old_dir, struct dentry *old_dentry,
 		/*
 		 * Directories cannot have hard-links, so if this is a
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 * directory, just clear @i_nlink.
 		 */
 		saved_nlink = new_inode->i_nlink;
@@ -1219,6 +1345,8 @@ static int ubifs_rename(struct inode *old_dir, struct dentry *old_dentry,
 		else
 			drop_nlink(new_inode);
 		new_inode->i_ctime = time;
+<<<<<<< HEAD
+=======
 =======
 		 * directory, decrement its @i_nlink twice because an empty
 		 * directory has @i_nlink 2.
@@ -1228,6 +1356,7 @@ static int ubifs_rename(struct inode *old_dir, struct dentry *old_dentry,
 		new_inode->i_ctime = time;
 		drop_nlink(new_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		new_dir->i_size += new_sz;
 		ubifs_inode(new_dir)->ui_size = new_dir->i_size;
@@ -1267,10 +1396,14 @@ out_cancel:
 <<<<<<< HEAD
 		set_nlink(new_inode, saved_nlink);
 =======
+<<<<<<< HEAD
+		set_nlink(new_inode, saved_nlink);
+=======
 		if (is_dir)
 			inc_nlink(new_inode);
 		inc_nlink(new_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		new_dir->i_size -= new_sz;
 		ubifs_inode(new_dir)->ui_size = new_dir->i_size;

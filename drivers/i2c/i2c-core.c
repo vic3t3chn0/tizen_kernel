@@ -14,7 +14,16 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
+<<<<<<< HEAD
+<<<<<<< HEAD
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+    MA 02110-1301 USA.							     */
+=======
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.		     */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.		     */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ------------------------------------------------------------------------- */
 
 /* With some changes from Kyösti Mälkki <kmalkki@cc.hut.fi>.
@@ -539,8 +548,20 @@ i2c_new_device(struct i2c_adapter *adap, struct i2c_board_info const *info)
 	client->dev.type = &i2c_client_type;
 	client->dev.of_node = info->of_node;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* For 10-bit clients, add an arbitrary offset to avoid collisions */
+	dev_set_name(&client->dev, "%d-%04x", i2c_adapter_id(adap),
+		     client->addr | ((client->flags & I2C_CLIENT_TEN)
+				     ? 0xa000 : 0));
+=======
 	dev_set_name(&client->dev, "%d-%04x", i2c_adapter_id(adap),
 		     client->addr);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	dev_set_name(&client->dev, "%d-%04x", i2c_adapter_id(adap),
+		     client->addr);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	status = device_register(&client->dev);
 	if (status)
 		goto out_err;
@@ -925,6 +946,15 @@ EXPORT_SYMBOL(i2c_add_adapter);
  * or otherwise built in to the system's mainboard, and where i2c_board_info
  * is used to properly configure I2C devices.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * If the requested bus number is set to -1, then this function will behave
+ * identically to i2c_add_adapter, and will dynamically assign a bus number.
+ *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * If no devices have pre-been declared for this bus, then be sure to
  * register the adapter before any dynamically allocated ones.  Otherwise
  * the required bus ID may not be available.
@@ -940,6 +970,14 @@ int i2c_add_numbered_adapter(struct i2c_adapter *adap)
 	int	id;
 	int	status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (adap->nr == -1) /* -1 means dynamically assign bus id */
+		return i2c_add_adapter(adap);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (adap->nr & ~MAX_ID_MASK)
 		return -EINVAL;
 
@@ -1379,8 +1417,20 @@ int i2c_master_send(const struct i2c_client *client, const char *buf, int count)
 
 	ret = i2c_transfer(adap, &msg, 1);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * If everything went ok (i.e. 1 msg transmitted), return #bytes
+	 * transmitted, else error code.
+	 */
+=======
 	/* If everything went ok (i.e. 1 msg transmitted), return #bytes
 	   transmitted, else error code. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* If everything went ok (i.e. 1 msg transmitted), return #bytes
+	   transmitted, else error code. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (ret == 1) ? count : ret;
 }
 EXPORT_SYMBOL(i2c_master_send);
@@ -1407,8 +1457,20 @@ int i2c_master_recv(const struct i2c_client *client, char *buf, int count)
 
 	ret = i2c_transfer(adap, &msg, 1);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * If everything went ok (i.e. 1 msg received), return #bytes received,
+	 * else error code.
+	 */
+=======
 	/* If everything went ok (i.e. 1 msg transmitted), return #bytes
 	   transmitted, else error code. */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* If everything went ok (i.e. 1 msg transmitted), return #bytes
+	   transmitted, else error code. */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return (ret == 1) ? count : ret;
 }
 EXPORT_SYMBOL(i2c_master_recv);

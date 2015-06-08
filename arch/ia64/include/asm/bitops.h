@@ -461,9 +461,13 @@ static __inline__ unsigned long __arch_hweight64(unsigned long x)
 <<<<<<< HEAD
 #include <asm-generic/bitops/ext2-atomic-setbit.h>
 =======
+<<<<<<< HEAD
+#include <asm-generic/bitops/ext2-atomic-setbit.h>
+=======
 #define ext2_set_bit_atomic(l,n,a)	test_and_set_bit(n,a)
 #define ext2_clear_bit_atomic(l,n,a)	test_and_clear_bit(n,a)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm-generic/bitops/sched.h>
 

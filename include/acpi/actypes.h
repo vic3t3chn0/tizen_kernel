@@ -472,8 +472,11 @@ typedef u64 acpi_integer;
 #define ACPI_NO_ADDRESS_SPACE_INIT      0x01
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define ACPI_NO_HARDWARE_INIT           0x02
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ACPI_NO_EVENT_INIT              0x04
 #define ACPI_NO_HANDLER_INIT            0x08
 #define ACPI_NO_ACPI_ENABLE             0x10
@@ -504,15 +507,21 @@ typedef u64 acpi_integer;
 #define ACPI_STATE_D1                   (u8) 1
 #define ACPI_STATE_D2                   (u8) 2
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ACPI_STATE_D3_HOT               (u8) 3
 #define ACPI_STATE_D3                   (u8) 4
 #define ACPI_STATE_D3_COLD              ACPI_STATE_D3
 #define ACPI_D_STATES_MAX               ACPI_STATE_D3
+<<<<<<< HEAD
+=======
 =======
 #define ACPI_STATE_D3                   (u8) 3
 #define ACPI_STATE_D3_COLD              (u8) 4
 #define ACPI_D_STATES_MAX               ACPI_STATE_D3_COLD
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ACPI_D_STATE_COUNT              5
 
 #define ACPI_STATE_C0                   (u8) 0
@@ -530,6 +539,9 @@ typedef u64 acpi_integer;
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Sleep/Wake flags
  */
 #define ACPI_NO_OPTIONAL_METHODS        0x00	/* Do not execute any optional methods */
@@ -537,8 +549,11 @@ typedef u64 acpi_integer;
 #define ACPI_EXECUTE_BFS                0x02	/* For leave sleep prep interface */
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Standard notify values
  */
 #define ACPI_NOTIFY_BUS_CHECK           (u8) 0x00
@@ -558,9 +573,15 @@ typedef u64 acpi_integer;
 
 #define ACPI_NOTIFY_MAX                 0x0C
 =======
+<<<<<<< HEAD
+#define ACPI_NOTIFY_SHUTDOWN_REQUEST    (u8) 0x0C
+
+#define ACPI_NOTIFY_MAX                 0x0C
+=======
 
 #define ACPI_NOTIFY_MAX                 0x0B
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Types associated with ACPI names and objects. The first group of
@@ -729,8 +750,13 @@ typedef u32 acpi_event_status;
 #define ACPI_MAX_SYS_NOTIFY             0x7F
 #define ACPI_MAX_DEVICE_SPECIFIC_NOTIFY 0xBF
 =======
+<<<<<<< HEAD
+#define ACPI_MAX_SYS_NOTIFY             0x7F
+#define ACPI_MAX_DEVICE_SPECIFIC_NOTIFY 0xBF
+=======
 #define ACPI_MAX_SYS_NOTIFY             0x7f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Address Space (Operation Region) Types */
 
@@ -745,14 +771,20 @@ typedef u8 acpi_adr_space_type;
 #define ACPI_ADR_SPACE_PCI_BAR_TARGET   (acpi_adr_space_type) 6
 #define ACPI_ADR_SPACE_IPMI             (acpi_adr_space_type) 7
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ACPI_ADR_SPACE_GPIO             (acpi_adr_space_type) 8
 #define ACPI_ADR_SPACE_GSBUS            (acpi_adr_space_type) 9
 
 #define ACPI_NUM_PREDEFINED_REGIONS     10
+<<<<<<< HEAD
+=======
 =======
 
 #define ACPI_NUM_PREDEFINED_REGIONS     8
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Special Address Spaces
@@ -824,6 +856,9 @@ typedef u8 acpi_adr_space_type;
 #define ACPI_DISABLE_EVENT                      0
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Sleep function dispatch */
 
 typedef acpi_status(*ACPI_SLEEP_FUNCTION) (u8 sleep_state, u8 flags);
@@ -833,8 +868,11 @@ struct acpi_sleep_functions {
 	ACPI_SLEEP_FUNCTION extended_function;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * External ACPI object definition
  */
@@ -1009,6 +1047,9 @@ acpi_status(*acpi_adr_space_handler) (u32 function,
 #define ACPI_DEFAULT_HANDLER            NULL
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Special Context data for generic_serial_bus/general_purpose_io (ACPI 5.0) */
 
 struct acpi_connection_info {
@@ -1017,8 +1058,11 @@ struct acpi_connection_info {
 	u8 access_length;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef
 acpi_status(*acpi_adr_space_setup) (acpi_handle region_handle,
 				    u32 function,

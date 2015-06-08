@@ -6,7 +6,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute  it and/or modify it
  * under  the terms of  the GNU General  Public License as published by the
@@ -30,6 +34,9 @@
 #define MXT_DIAGONAL_COUNTER	0x7
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* MXT_TOUCH_KEYARRAY_T15 */
 #define MXT_KEYARRAY_MAX_KEYS	32
 
@@ -87,6 +94,8 @@ struct mxt_platform_data {
 	u8(*read_chg) (void);
 	int (*init_hw) (bool);
 	int (*power_on) (bool);
+<<<<<<< HEAD
+=======
 =======
 /* The platform data for the Atmel maXTouch touchscreen driver */
 struct mxt_platform_data {
@@ -103,6 +112,7 @@ struct mxt_platform_data {
 	unsigned char orient;
 	unsigned long irqflags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __LINUX_ATMEL_MXT_TS_H */

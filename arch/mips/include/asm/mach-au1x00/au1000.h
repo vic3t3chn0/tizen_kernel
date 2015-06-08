@@ -139,7 +139,11 @@ static inline int au1xxx_cpu_needs_config_od(void)
 <<<<<<< HEAD
 #define ALCHEMY_CPU_AU1300	5
 =======
+<<<<<<< HEAD
+#define ALCHEMY_CPU_AU1300	5
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline int alchemy_get_cputype(void)
 {
@@ -165,7 +169,13 @@ static inline int alchemy_get_cputype(void)
 		return ALCHEMY_CPU_AU1300;
 		break;
 =======
+<<<<<<< HEAD
+	case 0x800c0000:
+		return ALCHEMY_CPU_AU1300;
+		break;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return ALCHEMY_CPU_UNKNOWN;
@@ -179,7 +189,11 @@ static inline int alchemy_get_uarts(int type)
 <<<<<<< HEAD
 	case ALCHEMY_CPU_AU1300:
 =======
+<<<<<<< HEAD
+	case ALCHEMY_CPU_AU1300:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 4;
 	case ALCHEMY_CPU_AU1500:
 	case ALCHEMY_CPU_AU1200:
@@ -258,6 +272,9 @@ extern unsigned long au1xxx_calc_clock(void);
 void alchemy_sleep_au1000(void);
 void alchemy_sleep_au1550(void);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void alchemy_sleep_au1300(void);
 void au_sleep(void);
 
@@ -355,6 +372,8 @@ extern void au1300_vss_block_control(int block, int enable);
 
 /* SOC Interrupt numbers */
 /* Au1000-style (IC0/1): 2 controllers with 32 sources each */
+<<<<<<< HEAD
+=======
 =======
 void au_sleep(void);
 
@@ -362,6 +381,7 @@ void au_sleep(void);
 /* SOC Interrupt numbers */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define AU1000_INTC0_INT_BASE	(MIPS_CPU_IRQ_BASE + 8)
 #define AU1000_INTC0_INT_LAST	(AU1000_INTC0_INT_BASE + 31)
 #define AU1000_INTC1_INT_BASE	(AU1000_INTC0_INT_LAST + 1)
@@ -369,13 +389,19 @@ void au_sleep(void);
 #define AU1000_MAX_INTR 	AU1000_INTC1_INT_LAST
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Au1300-style (GPIC): 1 controller with up to 128 sources */
 #define ALCHEMY_GPIC_INT_BASE	(MIPS_CPU_IRQ_BASE + 8)
 #define ALCHEMY_GPIC_INT_NUM	128
 #define ALCHEMY_GPIC_INT_LAST	(ALCHEMY_GPIC_INT_BASE + ALCHEMY_GPIC_INT_NUM - 1)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum soc_au1000_ints {
 	AU1000_FIRST_INT	= AU1000_INTC0_INT_BASE,
 	AU1000_UART0_INT	= AU1000_FIRST_INT,
@@ -697,6 +723,9 @@ enum soc_au1200_ints {
 #endif /* !defined (_LANGUAGE_ASSEMBLY) */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Au1300 peripheral interrupt numbers */
 #define AU1300_FIRST_INT	(ALCHEMY_GPIC_INT_BASE)
 #define AU1300_UART1_INT	(AU1300_FIRST_INT + 17)
@@ -889,6 +918,8 @@ enum soc_au1200_ints {
 #define AU1000_MEM_SDSMCKE		0x0034
 
 /* MEM_SDMODE register content definitions */
+<<<<<<< HEAD
+=======
 =======
 /*
  * SDRAM register offsets
@@ -914,17 +945,23 @@ enum soc_au1200_ints {
  * MEM_SDMODE register content definitions
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MEM_SDMODE_F		(1 << 22)
 #define MEM_SDMODE_SR		(1 << 21)
 #define MEM_SDMODE_BS		(1 << 20)
 #define MEM_SDMODE_RS		(3 << 18)
 #define MEM_SDMODE_CS		(7 << 15)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MEM_SDMODE_TRAS		(15 << 11)
 #define MEM_SDMODE_TMRD		(3 << 9)
 #define MEM_SDMODE_TWR		(3 << 7)
 #define MEM_SDMODE_TRP		(3 << 5)
 #define MEM_SDMODE_TRCD		(3 << 3)
+<<<<<<< HEAD
+=======
 =======
 #define MEM_SDMODE_TRAS 	(15 << 11)
 #define MEM_SDMODE_TMRD 	(3 << 9)
@@ -932,6 +969,7 @@ enum soc_au1200_ints {
 #define MEM_SDMODE_TRP		(3 << 5)
 #define MEM_SDMODE_TRCD 	(3 << 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MEM_SDMODE_TCL		(7 << 0)
 
 #define MEM_SDMODE_BS_2Bank	(0 << 20)
@@ -958,17 +996,26 @@ enum soc_au1200_ints {
 #define MEM_SDADDR_E		(1 << 20)
 #define MEM_SDADDR_CSBA		(0x03FF << 10)
 =======
+<<<<<<< HEAD
+/* MEM_SDADDR register contents definitions */
+#define MEM_SDADDR_E		(1 << 20)
+#define MEM_SDADDR_CSBA		(0x03FF << 10)
+=======
 /*
  * MEM_SDADDR register contents definitions
  */
 #define MEM_SDADDR_E		(1 << 20)
 #define MEM_SDADDR_CSBA 	(0x03FF << 10)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MEM_SDADDR_CSMASK	(0x03FF << 0)
 #define MEM_SDADDR_CSBA_N(N)	((N) & (0x03FF << 22) >> 12)
 #define MEM_SDADDR_CSMASK_N(N)	((N)&(0x03FF << 22) >> 22)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* MEM_SDREFCFG register content definitions */
 #define MEM_SDREFCFG_TRC	(15 << 28)
 #define MEM_SDREFCFG_TRPM	(3 << 26)
@@ -999,6 +1046,8 @@ enum soc_au1200_ints {
 #define AU1550_MEM_SDAUTOREF		0x08C8
 #define AU1550_MEM_SDSREF		0x08D0
 #define AU1550_MEM_SDSLEEP		MEM_SDSREF
+<<<<<<< HEAD
+=======
 =======
 /*
  * MEM_SDREFCFG register content definitions
@@ -1159,6 +1208,7 @@ enum soc_au1200_ints {
 #define PCMCIA_MEM_PHYS_ADDR	0xF80000000ULL
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Static Bus Controller */
 #define MEM_STCFG0		0xB4001000
@@ -1179,14 +1229,21 @@ enum soc_au1200_ints {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_SOC_AU1550) || defined(CONFIG_SOC_AU1200)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MEM_STNDCTL		0xB4001100
 #define MEM_STSTAT		0xB4001104
 
 #define MEM_STNAND_CMD		0x0
 #define MEM_STNAND_ADDR 	0x4
 #define MEM_STNAND_DATA 	0x20
+<<<<<<< HEAD
+
+
+=======
 <<<<<<< HEAD
 
 =======
@@ -1259,6 +1316,7 @@ enum soc_au1200_ints {
 #endif /* CONFIG_SOC_AU1200 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Programmable Counters 0 and 1 */
 #define SYS_BASE		0xB1900000
 #define SYS_COUNTER_CNTRL	(SYS_BASE + 0x14)
@@ -1331,6 +1389,8 @@ enum soc_au1200_ints {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* USB Host Controller */
 #ifndef USB_OHCI_LEN
 #define USB_OHCI_LEN		0x00100000
@@ -1382,6 +1442,7 @@ enum soc_au1200_ints {
 
 #endif /* !CONFIG_SOC_AU1200 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Ethernet Controllers  */
 
@@ -1616,6 +1677,9 @@ enum soc_au1200_ints {
 #define SSI_ENABLE_E		(1 << 0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * The IrDA peripheral has an IRFIRSEL pin, but on the DB/PB boards it's not
@@ -1630,6 +1694,8 @@ struct au1k_irda_platform_data {
 	void(*set_phy_mode)(int mode);
 };
 
+<<<<<<< HEAD
+=======
 =======
 /* IrDA Controller */
 #define IRDA_BASE		0xB0300000
@@ -1670,6 +1736,7 @@ struct au1k_irda_platform_data {
 #  define IR_ONE_PIN		(1 << 1)
 #define IR_INTERFACE_CONFIG	(IRDA_BASE + 0x40)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* GPIO */
 #define SYS_PINFUNC		0xB190002C
@@ -1715,8 +1782,11 @@ struct au1k_irda_platform_data {
 /* Au1200 only */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SOC_AU1200
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SYS_PINFUNC_DMA 	(1 << 31)
 #define SYS_PINFUNC_S0A 	(1 << 30)
 #define SYS_PINFUNC_S1A 	(1 << 29)
@@ -1746,8 +1816,11 @@ struct au1k_irda_platform_data {
 #define SYS_PINFUNC_S1B 	(1 << 2)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Power Management */
 #define SYS_SCRATCH0		0xB1900018
@@ -1806,8 +1879,12 @@ struct au1k_irda_platform_data {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 #ifdef CONFIG_SOC_AU1100
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #  define SYS_CS_ML_BIT 	7
 #  define SYS_CS_ML_MASK	(0x7 << SYS_CS_ML_BIT)
 #  define SYS_CS_DL		(1 << 6)
@@ -1815,8 +1892,12 @@ struct au1k_irda_platform_data {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 #else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #  define SYS_CS_MUH_BIT	12
 #  define SYS_CS_MUH_MASK	(0x7 << SYS_CS_MUH_BIT)
 #  define SYS_CS_DUH		(1 << 11)
@@ -1828,8 +1909,12 @@ struct au1k_irda_platform_data {
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #  define SYS_CS_MIR_BIT	2
 #  define SYS_CS_MIR_MASK	(0x7 << SYS_CS_MIR_BIT)
 #  define SYS_CS_DIR		(1 << 1)
@@ -1877,6 +1962,9 @@ struct au1k_irda_platform_data {
 #  define AC97C_CE		(1 << 0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The PCI chip selects are outside the 32bit space, and since we can't
  * just program the 36bit addresses into BARs, we have to take a chunk
@@ -1894,6 +1982,8 @@ struct au1k_irda_platform_data {
 #define ALCHEMY_PCI_IOWIN_END		0x0000FFFF
 
 #ifdef CONFIG_PCI
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_SOC_AU1500) || defined(CONFIG_SOC_AU1550)
 /* Au1500 PCI Controller */
@@ -1941,6 +2031,7 @@ struct au1k_irda_platform_data {
 #define PCI_FIRST_DEVFN (0 << 3)
 #define PCI_LAST_DEVFN	(19 << 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define IOPORT_RESOURCE_START	0x00001000	/* skip legacy probing */
 #define IOPORT_RESOURCE_END	0xffffffff
@@ -1950,8 +2041,12 @@ struct au1k_irda_platform_data {
 <<<<<<< HEAD
 #else
 =======
+<<<<<<< HEAD
+#else
+=======
 #else /* Au1000 and Au1100 and Au1200 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Don't allow any legacy ports probing */
 #define IOPORT_RESOURCE_START	0x10000000
@@ -1960,6 +2055,9 @@ struct au1k_irda_platform_data {
 #define IOMEM_RESOURCE_END	0xfffffffffULL
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /* PCI controller block register offsets */
@@ -2032,6 +2130,8 @@ struct au1k_irda_platform_data {
 #define PCI_PARAM_CLS(x)	((x) & 0xff)
 #define PCI_TIMEOUT_RETRIES(x)	(((x) & 0xff) << 8)	/* max retries */
 #define PCI_TIMEOUT_TO(x)	((x) & 0xff)	/* target ready timeout */
+<<<<<<< HEAD
+=======
 =======
 #define PCI_IO_START	0
 #define PCI_IO_END	0
@@ -2042,5 +2142,6 @@ struct au1k_irda_platform_data {
 
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

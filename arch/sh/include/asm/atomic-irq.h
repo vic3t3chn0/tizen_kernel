@@ -5,7 +5,12 @@
 #include <linux/irqflags.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/irqflags.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * To get proper branch prediction for the main line, we must branch
  * forward to code at the end of this object's .text section, then

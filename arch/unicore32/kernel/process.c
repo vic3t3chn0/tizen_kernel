@@ -36,8 +36,11 @@
 #include <asm/processor.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/stacktrace.h>
 
 #include "setup.h"
@@ -62,8 +65,13 @@ void cpu_idle(void)
 		tick_nohz_idle_enter();
 		rcu_idle_enter();
 =======
+<<<<<<< HEAD
+		tick_nohz_idle_enter();
+		rcu_idle_enter();
+=======
 		tick_nohz_stop_sched_tick(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		while (!need_resched()) {
 			local_irq_disable();
 			stop_critical_timings();
@@ -75,8 +83,13 @@ void cpu_idle(void)
 		rcu_idle_exit();
 		tick_nohz_idle_exit();
 =======
+<<<<<<< HEAD
+		rcu_idle_exit();
+		tick_nohz_idle_exit();
+=======
 		tick_nohz_restart_sched_tick();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		preempt_enable_no_resched();
 		schedule();
 		preempt_disable();
@@ -395,8 +408,12 @@ int vectors_user_mapping(void)
 <<<<<<< HEAD
 				       VM_RESERVED,
 =======
+<<<<<<< HEAD
+				       VM_RESERVED,
+=======
 				       VM_ALWAYSDUMP | VM_RESERVED,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				       NULL);
 }
 

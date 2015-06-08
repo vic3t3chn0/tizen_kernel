@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -32,8 +36,12 @@
 <<<<<<< HEAD
 #include <linux/hrtimer.h>
 =======
+<<<<<<< HEAD
+#include <linux/hrtimer.h>
+=======
 #include <linux/jiffies.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * enum row_queue_prio - Priorities of the ROW queues
@@ -44,9 +52,15 @@
  * the bigger is the "bus time" (or the dispatch quantum) given
  * to that queue.
 =======
+<<<<<<< HEAD
+ * the requests will be distributed to. The higher priority -
+ * the bigger is the "bus time" (or the dispatch quantum) given
+ * to that queue.
+=======
  * the requests will be disptributed to. The higher priority -
  * the bigger is the dispatch quantum given to that queue.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ROWQ_PRIO_HIGH_READ - is the higher priority queue.
  *
  */
@@ -56,9 +70,14 @@ enum row_queue_prio {
 	ROWQ_PRIO_HIGH_SWRITE,
 	ROWQ_PRIO_REG_READ,
 =======
+<<<<<<< HEAD
+	ROWQ_PRIO_HIGH_SWRITE,
+	ROWQ_PRIO_REG_READ,
+=======
 	ROWQ_PRIO_REG_READ,
 	ROWQ_PRIO_HIGH_SWRITE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ROWQ_PRIO_REG_SWRITE,
 	ROWQ_PRIO_REG_WRITE,
 	ROWQ_PRIO_LOW_READ,
@@ -67,6 +86,9 @@ enum row_queue_prio {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The following indexes define the distribution of ROW queues according to
  * priorities. Each index defines the first queue in that priority group.
@@ -117,6 +139,8 @@ static const struct row_queue_params row_queues_def[] = {
 /* Default values for idling on read queues (in msec) */
 #define ROW_IDLE_TIME_MSEC 5
 #define ROW_READ_FREQ_MSEC 5
+<<<<<<< HEAD
+=======
 =======
 /* Flags indicating whether idling is enabled on the queue */
 static const bool queue_idling_enabled[] = {
@@ -144,6 +168,7 @@ static const int queue_quantum[] = {
 #define ROW_IDLE_TIME_MSEC 5	/* msec */
 #define ROW_READ_FREQ_MSEC 20	/* msec */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct rowq_idling_data -  parameters for idling on the queue
@@ -169,8 +194,14 @@ struct rowq_idling_data {
  * @dispatch quantum:	number of requests this queue may
  *			dispatch in a dispatch cycle
 =======
+<<<<<<< HEAD
+ * @nr_req:		number of requests in queue
+ * @dispatch quantum:	number of requests this queue may
+ *			dispatch in a dispatch cycle
+=======
  * @slice:		number of requests to dispatch in a cycle
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @idle_data:		data for idling on queues
  *
  */
@@ -185,8 +216,14 @@ struct row_queue {
 	unsigned int		nr_req;
 	int			disp_quantum;
 =======
+<<<<<<< HEAD
+
+	unsigned int		nr_req;
+	int			disp_quantum;
+=======
 	unsigned int		slice;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* used only for READ queues */
 	struct rowq_idling_data	idle_data;
@@ -195,6 +232,9 @@ struct row_queue {
 /**
  * struct idling_data - data for idling on empty rqueue
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @idle_time_ms:		idling duration (msec)
  * @freq_ms:		min time between two requests that
  *			triger idling (msec)
@@ -224,6 +264,8 @@ struct idling_data {
 struct starvation_data {
 	int				starvation_limit;
 	int				starvation_counter;
+<<<<<<< HEAD
+=======
 =======
  * @idle_time:		idling duration (jiffies)
  * @freq:		min time between two requests that
@@ -238,12 +280,16 @@ struct idling_data {
 	struct workqueue_struct	*idle_workqueue;
 	struct delayed_work		idle_work;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
  * struct row_queue - Per block device rqueue structure
  * @dispatch_queue:	dispatch rqueue
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @row_queues:		array of priority request queues
  * @rd_idle_data:		data for idling after READ request
  * @nr_reqs: nr_reqs[0] holds the number of all READ requests in
@@ -256,6 +302,8 @@ struct idling_data {
  * @last_served_ioprio_class: I/O priority class that was last dispatched from
  * @reg_prio_starvation: starvation data for REGULAR priority queues
  * @low_prio_starvation: starvation data for LOW priority queues
+<<<<<<< HEAD
+=======
 =======
  * @row_queues:		array of priority request queues with
  *			dispatch quantum per rqueue
@@ -266,6 +314,7 @@ struct idling_data {
  *			scheduler, nr_reqs[1] holds the number of all WRITE
  *			requests in scheduler
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @cycle_flags:	used for marking unserved queueus
  *
  */
@@ -273,6 +322,9 @@ struct row_data {
 	struct request_queue		*dispatch_queue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct row_queue row_queues[ROWQ_MAX_PRIO];
 
 	struct idling_data		rd_idle_data;
@@ -285,6 +337,8 @@ struct row_data {
 	struct starvation_data		reg_prio_starvation;
 #define	ROW_LOW_STARVATION_TOLLERANCE	10000
 	struct starvation_data		low_prio_starvation;
+<<<<<<< HEAD
+=======
 =======
 	struct {
 		struct row_queue	rqueue;
@@ -296,6 +350,7 @@ struct row_data {
 	struct idling_data		read_idle;
 	unsigned int			nr_reqs[2];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int			cycle_flags;
 };
@@ -303,8 +358,12 @@ struct row_data {
 <<<<<<< HEAD
 #define RQ_ROWQ(rq) ((struct row_queue *) ((rq)->elv.priv[0]))
 =======
+<<<<<<< HEAD
+#define RQ_ROWQ(rq) ((struct row_queue *) ((rq)->elv.priv[0]))
+=======
 #define RQ_ROWQ(rq) ((struct row_queue *) ((rq)->elevator_private[0]))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define row_log(q, fmt, args...)   \
 	blk_add_trace_msg(q, "%s():" fmt , __func__, ##args)
@@ -331,6 +390,9 @@ static inline int row_rowq_unserved(struct row_data *rd,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void __maybe_unused row_dump_queues_stat(struct row_data *rd)
 {
 	int i;
@@ -411,6 +473,8 @@ static inline bool row_low_req_pending(struct row_data *rd)
 		if (!list_empty(&rd->row_queues[i].fifo))
 			return true;
 	return false;
+<<<<<<< HEAD
+=======
 =======
 /******************** Static helper functions ***********************/
 /*
@@ -468,6 +532,7 @@ static inline void row_get_next_queue(struct row_data *rd)
 	if (rd->curr_queue == ROWQ_MAX_PRIO)
 		row_restart_disp_cycle(rd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /******************* Elevator callback functions *********************/
@@ -484,6 +549,9 @@ static void row_add_request(struct request_queue *q,
 	struct row_data *rd = (struct row_data *)q->elevator->elevator_data;
 	struct row_queue *rqueue = RQ_ROWQ(rq);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s64 diff_ms;
 	bool queue_was_empty = list_empty(&rqueue->fifo);
 	unsigned long bv_page_flags = 0;
@@ -525,6 +593,8 @@ static void row_add_request(struct request_queue *q,
 
 		if ((bv_page_flags & (1L << PG_readahead)) ||
 		    (diff_ms < rd->rd_idle_data.freq_ms)) {
+<<<<<<< HEAD
+=======
 =======
 
 	list_add_tail(&rq->queuelist, &rqueue->fifo);
@@ -539,6 +609,7 @@ static void row_add_request(struct request_queue *q,
 				rqueue->idle_data.last_insert_time)) <
 				rd->read_idle.freq) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			rqueue->idle_data.begin_idling = true;
 			row_log_rowq(rd, rqueue->prio, "Enable idling");
 		} else {
@@ -547,13 +618,21 @@ static void row_add_request(struct request_queue *q,
 			row_log_rowq(rd, rqueue->prio, "Disable idling (%ldms)",
 				(long)diff_ms);
 =======
+<<<<<<< HEAD
+			row_log_rowq(rd, rqueue->prio, "Disable idling (%ldms)",
+				(long)diff_ms);
+=======
 			row_log_rowq(rd, rqueue->prio, "Disable idling");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		rqueue->idle_data.last_insert_time = ktime_get();
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (row_queues_def[rqueue->prio].is_urgent &&
 	    !rd->pending_urgent_rq && !rd->urgent_in_flight) {
 		/* Handle High Priority queues */
@@ -672,18 +751,24 @@ static bool row_urgent_pending(struct request_queue *q)
 }
 
 /**
+<<<<<<< HEAD
+=======
 =======
 	row_log_rowq(rd, rqueue->prio, "added request");
 }
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * row_remove_request() -  Remove given request from scheduler
  * @q:	requests queue
  * @rq:	request to remove
  *
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void row_remove_request(struct row_data *rd,
 			       struct request *rq)
 {
@@ -695,6 +780,8 @@ static void row_remove_request(struct row_data *rd,
 	else
 		BUG_ON(rq->cmd_flags & REQ_URGENT);
 	rqueue->nr_req--;
+<<<<<<< HEAD
+=======
 =======
 static void row_remove_request(struct request_queue *q,
 			       struct request *rq)
@@ -703,12 +790,16 @@ static void row_remove_request(struct request_queue *q,
 
 	rq_fifo_clear(rq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rd->nr_reqs[rq_data_dir(rq)]--;
 }
 
 /*
  * row_dispatch_insert() - move request to dispatch queue
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @rd:		pointer to struct row_data
  * @rq:		the request to dispatch
  *
@@ -901,6 +992,8 @@ static int row_get_next_queue(struct request_queue *q, struct row_data *rd,
 	} while (i < end_idx);
 
 	return ret;
+<<<<<<< HEAD
+=======
 =======
  * @rd:	pointer to struct row_data
  *
@@ -953,6 +1046,7 @@ static int row_choose_queue(struct row_data *rd)
 
 	return 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -961,8 +1055,12 @@ static int row_choose_queue(struct row_data *rd)
 <<<<<<< HEAD
  * @force:		flag indicating if forced dispatch
 =======
+<<<<<<< HEAD
+ * @force:		flag indicating if forced dispatch
+=======
  * @force:	ignored
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Return 0 if no requests were moved to the dispatch queue.
  *	  1 otherwise
@@ -972,6 +1070,9 @@ static int row_dispatch_requests(struct request_queue *q, int force)
 {
 	struct row_data *rd = (struct row_data *)q->elevator->elevator_data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0, currq, ioprio_class_to_serve, start_idx, end_idx;
 
 	if (force && hrtimer_active(&rd->rd_idle_data.hr_timer)) {
@@ -1023,6 +1124,8 @@ static int row_dispatch_requests(struct request_queue *q, int force)
 			rq_entry_fifo(rd->row_queues[currq].fifo.next));
 		ret = 1;
 	}
+<<<<<<< HEAD
+=======
 =======
 	int ret = 0, currq, i;
 
@@ -1095,6 +1198,7 @@ static int row_dispatch_requests(struct request_queue *q, int force)
 	row_dispatch_insert(rd);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 done:
 	return ret;
 }
@@ -1119,6 +1223,9 @@ static void *row_init_queue(struct request_queue *q)
 		return NULL;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(rdata, 0, sizeof(*rdata));
 	for (i = 0; i < ROWQ_MAX_PRIO; i++) {
 		INIT_LIST_HEAD(&rdata->row_queues[i].fifo);
@@ -1134,6 +1241,8 @@ static void *row_init_queue(struct request_queue *q)
 			ROW_REG_STARVATION_TOLLERANCE;
 	rdata->low_prio_starvation.starvation_limit =
 			ROW_LOW_STARVATION_TOLLERANCE;
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < ROWQ_MAX_PRIO; i++) {
 		INIT_LIST_HEAD(&rdata->row_queues[i].rqueue.fifo);
@@ -1146,12 +1255,16 @@ static void *row_init_queue(struct request_queue *q)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Currently idling is enabled only for READ queues. If we want to
 	 * enable it for write queues also, note that idling frequency will
 	 * be the same in both cases
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rdata->rd_idle_data.idle_time_ms = ROW_IDLE_TIME_MSEC;
 	rdata->rd_idle_data.freq_ms = ROW_READ_FREQ_MSEC;
 	hrtimer_init(&rdata->rd_idle_data.hr_timer,
@@ -1163,6 +1276,8 @@ static void *row_init_queue(struct request_queue *q)
 	rdata->rd_idle_data.idling_queue_idx = ROWQ_MAX_PRIO;
 	rdata->dispatch_queue = q;
 
+<<<<<<< HEAD
+=======
 =======
 	rdata->read_idle.idle_time = msecs_to_jiffies(ROW_IDLE_TIME_MSEC);
 	/* Maybe 0 on some platforms */
@@ -1181,6 +1296,7 @@ static void *row_init_queue(struct request_queue *q)
 	rdata->nr_reqs[READ] = rdata->nr_reqs[WRITE] = 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rdata;
 }
 
@@ -1196,16 +1312,22 @@ static void row_exit_queue(struct elevator_queue *e)
 
 	for (i = 0; i < ROWQ_MAX_PRIO; i++)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG_ON(!list_empty(&rd->row_queues[i].fifo));
 	if (hrtimer_cancel(&rd->rd_idle_data.hr_timer))
 		pr_err("%s(): idle timer was active!", __func__);
 	rd->rd_idle_data.idling_queue_idx = ROWQ_MAX_PRIO;
+<<<<<<< HEAD
+=======
 =======
 		BUG_ON(!list_empty(&rd->row_queues[i].rqueue.fifo));
 	(void)cancel_delayed_work_sync(&rd->read_idle.idle_work);
 	BUG_ON(delayed_work_pending(&rd->read_idle.idle_work));
 	destroy_workqueue(rd->read_idle.idle_workqueue);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(rd);
 }
 
@@ -1222,6 +1344,9 @@ static void row_merged_requests(struct request_queue *q, struct request *rq,
 
 	list_del_init(&next->queuelist);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rqueue->nr_req--;
 	if (rqueue->rdata->pending_urgent_rq == next) {
 		pr_err("\n\nROW_WARNING: merging pending urgent!");
@@ -1230,14 +1355,20 @@ static void row_merged_requests(struct request_queue *q, struct request *rq,
 		WARN_ON(!(next->cmd_flags & REQ_URGENT));
 		next->cmd_flags &= ~REQ_URGENT;
 	}
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rqueue->rdata->nr_reqs[rq_data_dir(rq)]--;
 }
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * row_get_queue_prio() - Get queue priority for a given request
  *
  * This is a helping function which purpose is to determine what
@@ -1289,6 +1420,8 @@ static enum row_queue_prio row_get_queue_prio(struct request *rq,
 	}
 
 	return q_type;
+<<<<<<< HEAD
+=======
 =======
  * get_queue_type() - Get queue type for a given request
  *
@@ -1311,6 +1444,7 @@ static enum row_queue_prio get_queue_type(struct request *rq)
 	else
 		return ROWQ_PRIO_REG_WRITE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1331,9 +1465,14 @@ row_set_request(struct request_queue *q, struct request *rq, gfp_t gfp_mask)
 	rq->elv.priv[0] =
 		(void *)(&rd->row_queues[row_get_queue_prio(rq, rd)]);
 =======
+<<<<<<< HEAD
+	rq->elv.priv[0] =
+		(void *)(&rd->row_queues[row_get_queue_prio(rq, rd)]);
+=======
 	rq->elevator_private[0] =
 		(void *)(&rd->row_queues[get_queue_type(rq)]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock_irqrestore(q->queue_lock, flags);
 
 	return 0;
@@ -1356,13 +1495,20 @@ static ssize_t row_var_store(int *var, const char *page, size_t count)
 <<<<<<< HEAD
 #define SHOW_FUNCTION(__FUNC, __VAR)				\
 =======
+<<<<<<< HEAD
+#define SHOW_FUNCTION(__FUNC, __VAR)				\
+=======
 #define SHOW_FUNCTION(__FUNC, __VAR, __CONV)				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t __FUNC(struct elevator_queue *e, char *page)		\
 {									\
 	struct row_data *rowd = e->elevator_data;			\
 	int __data = __VAR;						\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return row_var_show(__data, (page));			\
 }
 SHOW_FUNCTION(row_hp_read_quantum_show,
@@ -1388,6 +1534,8 @@ SHOW_FUNCTION(row_low_starv_limit_show,
 #undef SHOW_FUNCTION
 
 #define STORE_FUNCTION(__FUNC, __PTR, MIN, MAX)			\
+<<<<<<< HEAD
+=======
 =======
 	if (__CONV)							\
 		__data = jiffies_to_msecs(__data);			\
@@ -1413,6 +1561,7 @@ SHOW_FUNCTION(row_read_idle_freq_show, rowd->read_idle.freq, 0);
 
 #define STORE_FUNCTION(__FUNC, __PTR, MIN, MAX, __CONV)			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t __FUNC(struct elevator_queue *e,				\
 		const char *page, size_t count)				\
 {									\
@@ -1421,9 +1570,12 @@ static ssize_t __FUNC(struct elevator_queue *e,				\
 	int ret = row_var_store(&__data, (page), count);		\
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (__CONV)							\
 		__data = (int)msecs_to_jiffies(__data);			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (__data < (MIN))						\
 		__data = (MIN);						\
 	else if (__data > (MAX))					\
@@ -1433,6 +1585,9 @@ static ssize_t __FUNC(struct elevator_queue *e,				\
 }
 STORE_FUNCTION(row_hp_read_quantum_store,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 &rowd->row_queues[ROWQ_PRIO_HIGH_READ].disp_quantum, 1, INT_MAX);
 STORE_FUNCTION(row_rp_read_quantum_store,
 			&rowd->row_queues[ROWQ_PRIO_REG_READ].disp_quantum,
@@ -1462,6 +1617,8 @@ STORE_FUNCTION(row_reg_starv_limit_store,
 STORE_FUNCTION(row_low_starv_limit_store,
 			&rowd->low_prio_starvation.starvation_limit,
 			1, INT_MAX);
+<<<<<<< HEAD
+=======
 =======
 &rowd->row_queues[ROWQ_PRIO_HIGH_READ].disp_quantum, 1, INT_MAX, 0);
 STORE_FUNCTION(row_rp_read_quantum_store,
@@ -1485,6 +1642,7 @@ STORE_FUNCTION(row_lp_swrite_quantum_store,
 STORE_FUNCTION(row_read_idle_store, &rowd->read_idle.idle_time, 1, INT_MAX, 1);
 STORE_FUNCTION(row_read_idle_freq_store, &rowd->read_idle.freq, 1, INT_MAX, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #undef STORE_FUNCTION
 
@@ -1501,14 +1659,20 @@ static struct elv_fs_entry row_attrs[] = {
 	ROW_ATTR(lp_read_quantum),
 	ROW_ATTR(lp_swrite_quantum),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ROW_ATTR(rd_idle_data),
 	ROW_ATTR(rd_idle_data_freq),
 	ROW_ATTR(reg_starv_limit),
 	ROW_ATTR(low_starv_limit),
+<<<<<<< HEAD
+=======
 =======
 	ROW_ATTR(read_idle),
 	ROW_ATTR(read_idle_freq),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__ATTR_NULL
 };
 
@@ -1522,7 +1686,13 @@ static struct elevator_type iosched_row = {
 		.elevator_is_urgent_fn		= row_urgent_pending,
 		.elevator_completed_req_fn	= row_completed_req,
 =======
+<<<<<<< HEAD
+		.elevator_reinsert_req_fn	= row_reinsert_req,
+		.elevator_is_urgent_fn		= row_urgent_pending,
+		.elevator_completed_req_fn	= row_completed_req,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.elevator_former_req_fn		= elv_rb_former_request,
 		.elevator_latter_req_fn		= elv_rb_latter_request,
 		.elevator_set_req_fn		= row_set_request,
@@ -1533,8 +1703,13 @@ static struct elevator_type iosched_row = {
 	.icq_size = sizeof(struct io_cq),
 	.icq_align = __alignof__(struct io_cq),
 =======
+<<<<<<< HEAD
+	.icq_size = sizeof(struct io_cq),
+	.icq_align = __alignof__(struct io_cq),
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.elevator_attrs = row_attrs,
 	.elevator_name = "row",
 	.elevator_owner = THIS_MODULE,

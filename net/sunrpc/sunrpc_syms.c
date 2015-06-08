@@ -28,7 +28,11 @@ int sunrpc_net_id;
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(sunrpc_net_id);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(sunrpc_net_id);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static __net_init int sunrpc_init_net(struct net *net)
 {
@@ -36,7 +40,11 @@ static __net_init int sunrpc_init_net(struct net *net)
 <<<<<<< HEAD
 	struct sunrpc_net *sn = net_generic(net, sunrpc_net_id);
 =======
+<<<<<<< HEAD
+	struct sunrpc_net *sn = net_generic(net, sunrpc_net_id);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = rpc_proc_init(net);
 	if (err)
@@ -47,6 +55,9 @@ static __net_init int sunrpc_init_net(struct net *net)
 		goto err_ipmap;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = unix_gid_cache_create(net);
 	if (err)
 		goto err_unixgid;
@@ -59,10 +70,13 @@ static __net_init int sunrpc_init_net(struct net *net)
 
 err_unixgid:
 	ip_map_cache_destroy(net);
+<<<<<<< HEAD
+=======
 =======
 	return 0;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_ipmap:
 	rpc_proc_exit(net);
 err_proc:
@@ -74,7 +88,11 @@ static __net_exit void sunrpc_exit_net(struct net *net)
 <<<<<<< HEAD
 	unix_gid_cache_destroy(net);
 =======
+<<<<<<< HEAD
+	unix_gid_cache_destroy(net);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip_map_cache_destroy(net);
 	rpc_proc_exit(net);
 }
@@ -87,6 +105,9 @@ static struct pernet_operations sunrpc_net_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init
 init_sunrpc(void)
 {
@@ -96,6 +117,8 @@ init_sunrpc(void)
 	err = rpcauth_init_module();
 	if (err)
 		goto out2;
+<<<<<<< HEAD
+=======
 =======
 extern struct cache_detail unix_gid_cache;
 
@@ -114,37 +137,52 @@ init_sunrpc(void)
 	if (err)
 		goto out3;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cache_initialize();
 
 	err = register_pernet_subsys(&sunrpc_net_ops);
 	if (err)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out3;
 
 	err = register_rpc_pipefs();
 	if (err)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out4;
 #ifdef RPC_DEBUG
 	rpc_register_sysctl();
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cache_register(&unix_gid_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	svc_init_xprt_sock();	/* svc sock transport */
 	init_socket_xprt();	/* clnt sock transport */
 	return 0;
 
 out4:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unregister_pernet_subsys(&sunrpc_net_ops);
 out3:
 	rpcauth_remove_module();
 out2:
 	rpc_destroy_mempool();
+<<<<<<< HEAD
+=======
 =======
 	rpcauth_remove_module();
 out3:
@@ -152,6 +190,7 @@ out3:
 out2:
 	unregister_rpc_pipefs();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return err;
 }
@@ -161,8 +200,11 @@ cleanup_sunrpc(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cleanup_rpcb_clnt();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rpcauth_remove_module();
 	cleanup_socket_xprt();
 	svc_cleanup_xprt_sock();
@@ -170,8 +212,11 @@ cleanup_sunrpc(void)
 	rpc_destroy_mempool();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	cache_unregister(&unix_gid_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unregister_pernet_subsys(&sunrpc_net_ops);
 #ifdef RPC_DEBUG
 	rpc_unregister_sysctl();

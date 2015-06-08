@@ -166,8 +166,14 @@
 
 #include "multicalls.h"
 =======
+<<<<<<< HEAD
+#include <xen/grant_table.h>
+
+#include "multicalls.h"
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xen-ops.h"
 
 static void __init m2p_override_init(void);
@@ -686,8 +692,13 @@ static unsigned long mfn_hash(unsigned long mfn)
 int m2p_add_override(unsigned long mfn, struct page *page,
 		struct gnttab_map_grant_ref *kmap_op)
 =======
+<<<<<<< HEAD
+int m2p_add_override(unsigned long mfn, struct page *page,
+		struct gnttab_map_grant_ref *kmap_op)
+=======
 int m2p_add_override(unsigned long mfn, struct page *page, bool clear_pte)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long flags;
 	unsigned long pfn;
@@ -696,8 +707,11 @@ int m2p_add_override(unsigned long mfn, struct page *page, bool clear_pte)
 	pte_t *ptep = NULL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pfn = page_to_pfn(page);
 	if (!PageHighMem(page)) {
@@ -712,15 +726,24 @@ int m2p_add_override(unsigned long mfn, struct page *page, bool clear_pte)
 	SetPagePrivate(page);
 	set_page_private(page, mfn);
 =======
+<<<<<<< HEAD
+	WARN_ON(PagePrivate(page));
+	SetPagePrivate(page);
+	set_page_private(page, mfn);
+=======
 
 	page->private = mfn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	page->index = pfn_to_mfn(pfn);
 
 	if (unlikely(!set_phys_to_machine(pfn, FOREIGN_FRAME(mfn))))
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (kmap_op != NULL) {
 		if (!PageHighMem(page)) {
 			struct multicall_space mcs =
@@ -735,15 +758,20 @@ int m2p_add_override(unsigned long mfn, struct page *page, bool clear_pte)
 		kmap_op->dev_bus_addr = page->index;
 		page->index = (unsigned long) kmap_op;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (clear_pte && !PageHighMem(page))
 		/* Just zap old mapping for now */
 		pte_clear(&init_mm, address, ptep);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&m2p_override_lock, flags);
 	list_add(&page->lru,  &m2p_overrides[mfn_hash(mfn)]);
 	spin_unlock_irqrestore(&m2p_override_lock, flags);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* p2m(m2p(mfn)) == mfn: the mfn is already present somewhere in
@@ -765,6 +793,7 @@ int m2p_add_override(unsigned long mfn, struct page *page, bool clear_pte)
 		set_phys_to_machine(pfn, FOREIGN_FRAME(mfn));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 EXPORT_SYMBOL_GPL(m2p_add_override);
@@ -778,8 +807,11 @@ int m2p_remove_override(struct page *page, bool clear_pte)
 	pte_t *ptep = NULL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pfn = page_to_pfn(page);
 	mfn = get_phys_to_machine(pfn);
@@ -799,6 +831,9 @@ int m2p_remove_override(struct page *page, bool clear_pte)
 	list_del(&page->lru);
 	spin_unlock_irqrestore(&m2p_override_lock, flags);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON(!PagePrivate(page));
 	ClearPagePrivate(page);
 
@@ -849,6 +884,8 @@ int m2p_remove_override(struct page *page, bool clear_pte)
 		}
 	} else
 		set_phys_to_machine(pfn, page->index);
+<<<<<<< HEAD
+=======
 =======
 	set_phys_to_machine(pfn, page->index);
 
@@ -874,6 +911,7 @@ int m2p_remove_override(struct page *page, bool clear_pte)
 			m2p_find_override(mfn) == NULL)
 		set_phys_to_machine(pfn, mfn);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -893,8 +931,12 @@ struct page *m2p_find_override(unsigned long mfn)
 <<<<<<< HEAD
 		if (page_private(p) == mfn) {
 =======
+<<<<<<< HEAD
+		if (page_private(p) == mfn) {
+=======
 		if (p->private == mfn) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = p;
 			break;
 		}
@@ -919,12 +961,17 @@ EXPORT_SYMBOL_GPL(m2p_find_override_pfn);
 
 #ifdef CONFIG_XEN_DEBUG_FS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/debugfs.h>
 #include "debugfs.h"
 static int p2m_dump_show(struct seq_file *m, void *v)
 {
 	static const char * const level_name[] = { "top", "middle",
 						"entry", "abnormal", "error"};
+<<<<<<< HEAD
+=======
 =======
 
 int p2m_dump_show(struct seq_file *m, void *v)
@@ -934,18 +981,25 @@ int p2m_dump_show(struct seq_file *m, void *v)
 	static const char * const type_name[] = { "identity", "missing",
 						"pfn", "abnormal"};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TYPE_IDENTITY 0
 #define TYPE_MISSING 1
 #define TYPE_PFN 2
 #define TYPE_UNKNOWN 3
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static const char * const type_name[] = {
 				[TYPE_IDENTITY] = "identity",
 				[TYPE_MISSING] = "missing",
 				[TYPE_PFN] = "pfn",
 				[TYPE_UNKNOWN] = "abnormal"};
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long pfn, prev_pfn_type = 0, prev_pfn_level = 0;
 	unsigned int uninitialized_var(prev_level);
 	unsigned int uninitialized_var(prev_type);
@@ -1010,6 +1064,9 @@ int p2m_dump_show(struct seq_file *m, void *v)
 #undef TYPE_UNKNOWN
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int p2m_dump_open(struct inode *inode, struct file *filp)
 {
@@ -1039,6 +1096,9 @@ static int __init xen_p2m_debugfs(void)
 }
 fs_initcall(xen_p2m_debugfs);
 #endif /* CONFIG_XEN_DEBUG_FS */
+<<<<<<< HEAD
+=======
 =======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

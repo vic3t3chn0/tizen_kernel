@@ -14,7 +14,12 @@
 #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 
 =======
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/jffs2.h>
 #include <linux/mtd/mtd.h>
@@ -51,8 +56,13 @@ int jffs2_start_garbage_collect_thread(struct jffs2_sb_info *c)
 		pr_warn("fork failed for JFFS2 garbage collect thread: %ld\n",
 			-PTR_ERR(tsk));
 =======
+<<<<<<< HEAD
+		pr_warn("fork failed for JFFS2 garbage collect thread: %ld\n",
+			-PTR_ERR(tsk));
+=======
 		printk(KERN_WARNING "fork failed for JFFS2 garbage collect thread: %ld\n", -PTR_ERR(tsk));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		complete(&c->gc_thread_exit);
 		ret = PTR_ERR(tsk);
 	} else {
@@ -60,8 +70,12 @@ int jffs2_start_garbage_collect_thread(struct jffs2_sb_info *c)
 <<<<<<< HEAD
 		jffs2_dbg(1, "Garbage collect thread is pid %d\n", tsk->pid);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Garbage collect thread is pid %d\n", tsk->pid);
+=======
 		D1(printk(KERN_DEBUG "JFFS2: Garbage collect thread is pid %d\n", tsk->pid));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wait_for_completion(&c->gc_thread_start);
 		ret = tsk->pid;
 	}
@@ -77,8 +91,12 @@ void jffs2_stop_garbage_collect_thread(struct jffs2_sb_info *c)
 <<<<<<< HEAD
 		jffs2_dbg(1, "Killing GC task %d\n", c->gc_task->pid);
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "Killing GC task %d\n", c->gc_task->pid);
+=======
 		D1(printk(KERN_DEBUG "jffs2: Killing GC task %d\n", c->gc_task->pid));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		send_sig(SIGKILL, c->gc_task, 1);
 		wait = 1;
 	}
@@ -111,8 +129,12 @@ static int jffs2_garbage_collect_thread(void *_c)
 <<<<<<< HEAD
 			jffs2_dbg(1, "%s(): sleeping...\n", __func__);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "%s(): sleeping...\n", __func__);
+=======
 			D1(printk(KERN_DEBUG "jffs2_garbage_collect_thread sleeping...\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			schedule();
 		} else
 			spin_unlock(&c->erase_completion_lock);
@@ -134,8 +156,12 @@ static int jffs2_garbage_collect_thread(void *_c)
 <<<<<<< HEAD
 			jffs2_dbg(1, "%s(): kthread_stop() called\n", __func__);
 =======
+<<<<<<< HEAD
+			jffs2_dbg(1, "%s(): kthread_stop() called\n", __func__);
+=======
 			D1(printk(KERN_DEBUG "jffs2_garbage_collect_thread():  kthread_stop() called.\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto die;
 		}
 
@@ -156,14 +182,22 @@ static int jffs2_garbage_collect_thread(void *_c)
 				jffs2_dbg(1, "%s(): SIGSTOP received\n",
 					  __func__);
 =======
+<<<<<<< HEAD
+				jffs2_dbg(1, "%s(): SIGSTOP received\n",
+					  __func__);
+=======
 				D1(printk(KERN_DEBUG "jffs2_garbage_collect_thread(): SIGSTOP received.\n"));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				set_current_state(TASK_STOPPED);
 				schedule();
 				break;
 
 			case SIGKILL:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				jffs2_dbg(1, "%s(): SIGKILL received\n",
 					  __func__);
 				goto die;
@@ -175,6 +209,8 @@ static int jffs2_garbage_collect_thread(void *_c)
 			default:
 				jffs2_dbg(1, "%s(): signal %ld received\n",
 					  __func__, signr);
+<<<<<<< HEAD
+=======
 =======
 				D1(printk(KERN_DEBUG "jffs2_garbage_collect_thread(): SIGKILL received.\n"));
 				goto die;
@@ -185,6 +221,7 @@ static int jffs2_garbage_collect_thread(void *_c)
 			default:
 				D1(printk(KERN_DEBUG "jffs2_garbage_collect_thread(): signal %ld received\n", signr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 		/* We don't want SIGHUP to interrupt us. STOP and KILL are OK though. */
@@ -195,10 +232,16 @@ static int jffs2_garbage_collect_thread(void *_c)
 		if (jffs2_garbage_collect_pass(c) == -ENOSPC) {
 			pr_notice("No space for garbage collection. Aborting GC thread\n");
 =======
+<<<<<<< HEAD
+		jffs2_dbg(1, "%s(): pass\n", __func__);
+		if (jffs2_garbage_collect_pass(c) == -ENOSPC) {
+			pr_notice("No space for garbage collection. Aborting GC thread\n");
+=======
 		D1(printk(KERN_DEBUG "jffs2_garbage_collect_thread(): pass\n"));
 		if (jffs2_garbage_collect_pass(c) == -ENOSPC) {
 			printk(KERN_NOTICE "No space for garbage collection. Aborting GC thread\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto die;
 		}
 	}

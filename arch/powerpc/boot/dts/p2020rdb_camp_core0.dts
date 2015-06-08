@@ -17,18 +17,27 @@
 <<<<<<< HEAD
 /include/ "p2020rdb.dts"
 =======
+<<<<<<< HEAD
+/include/ "p2020rdb.dts"
+=======
 /include/ "p2020si.dtsi"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 / {
 	model = "fsl,P2020RDB";
 	compatible = "fsl,P2020RDB", "fsl,MPC85XXRDB-CAMP";
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpus {
 		PowerPC,P2020@1 {
 			status = "disabled";
 		};
+<<<<<<< HEAD
+=======
 =======
 	aliases {
 		ethernet1 = &enet1;
@@ -47,6 +56,7 @@
 	memory {
 		device_type = "memory";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	localbus@ffe05000 {
@@ -54,6 +64,8 @@
 	};
 
 	soc@ffe00000 {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		i2c@3000 {
@@ -64,10 +76,13 @@
 		};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		serial1: serial@4600 {
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		spi@7000 {
@@ -119,10 +134,13 @@
 		};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dma@c300 {
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		usb@22000 {
@@ -155,10 +173,13 @@
 		};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		enet0: ethernet@24000 {
 			status = "disabled";
 		};
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		enet1: ethernet@25000 {
@@ -175,6 +196,7 @@
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mpic: pic@40000 {
 			protected-sources = <
 			42 76 77 78 79 /* serial1 , dma2 */
@@ -189,15 +211,20 @@
 		};
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	};
 
 	pci0: pcie@ffe08000 {
 		status = "disabled";
 	};
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	pci1: pcie@ffe09000 {
@@ -227,6 +254,7 @@
 	};
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pci2: pcie@ffe0a000 {
 		status = "disabled";
 	};

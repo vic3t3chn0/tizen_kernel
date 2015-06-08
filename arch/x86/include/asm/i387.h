@@ -14,6 +14,9 @@
 
 #include <linux/sched.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/hardirq.h>
 
 struct pt_regs;
@@ -26,6 +29,8 @@ extern void math_state_restore(void);
 extern bool irq_fpu_usable(void);
 extern void kernel_fpu_begin(void);
 extern void kernel_fpu_end(void);
+<<<<<<< HEAD
+=======
 =======
 #include <linux/kernel_stat.h>
 #include <linux/regset.h>
@@ -475,6 +480,7 @@ static inline void kernel_fpu_end(void)
 	preempt_enable();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Some instructions like VIA's padlock instructions generate a spurious
@@ -517,6 +523,9 @@ static inline void irq_ts_restore(int TS_state)
  * to save the FP state - we'll just take a #NM
  * fault and get the FPU access back.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static inline int user_has_fpu(void)
 {
@@ -524,6 +533,8 @@ static inline int user_has_fpu(void)
 }
 
 extern void unlazy_fpu(struct task_struct *tsk);
+<<<<<<< HEAD
+=======
 =======
  *
  * The actual user_fpu_begin/end() functions
@@ -646,6 +657,7 @@ static inline void fpu_copy(struct fpu *dst, struct fpu *src)
 
 extern void fpu_finit(struct fpu *fpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASSEMBLY__ */
 

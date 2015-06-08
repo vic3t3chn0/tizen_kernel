@@ -18,6 +18,9 @@
 #include <linux/io.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/hardware.h>
 #include <plat/board.h>
 #include <plat/mux.h>
@@ -25,6 +28,8 @@
 
 #include "iomap.h"
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/board.h>
@@ -33,6 +38,7 @@
 #include <plat/clock.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "sdrc.h"
 #include "control.h"
 
@@ -56,11 +62,16 @@ static struct omap_globals omap242x_globals = {
 	.class	= OMAP242X_CLASS,
 	.tap	= OMAP2_L4_IO_ADDRESS(0x48014000),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.sdrc	= OMAP2_L3_IO_ADDRESS(OMAP2420_SDRC_BASE),
 	.sms	= OMAP2_L3_IO_ADDRESS(OMAP2420_SMS_BASE),
 	.ctrl	= OMAP2_L4_IO_ADDRESS(OMAP242X_CTRL_BASE),
 	.prm	= OMAP2_L4_IO_ADDRESS(OMAP2420_PRM_BASE),
 	.cm	= OMAP2_L4_IO_ADDRESS(OMAP2420_CM_BASE),
+<<<<<<< HEAD
+=======
 =======
 	.sdrc	= OMAP2420_SDRC_BASE,
 	.sms	= OMAP2420_SMS_BASE,
@@ -68,6 +79,7 @@ static struct omap_globals omap242x_globals = {
 	.prm	= OMAP2420_PRM_BASE,
 	.cm	= OMAP2420_CM_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init omap2_set_globals_242x(void)
@@ -75,13 +87,19 @@ void __init omap2_set_globals_242x(void)
 	__omap2_set_globals(&omap242x_globals);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init omap242x_map_io(void)
 {
 	omap242x_map_common_io();
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #if defined(CONFIG_SOC_OMAP2430)
@@ -90,11 +108,16 @@ static struct omap_globals omap243x_globals = {
 	.class	= OMAP243X_CLASS,
 	.tap	= OMAP2_L4_IO_ADDRESS(0x4900a000),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.sdrc	= OMAP2_L3_IO_ADDRESS(OMAP243X_SDRC_BASE),
 	.sms	= OMAP2_L3_IO_ADDRESS(OMAP243X_SMS_BASE),
 	.ctrl	= OMAP2_L4_IO_ADDRESS(OMAP243X_CTRL_BASE),
 	.prm	= OMAP2_L4_IO_ADDRESS(OMAP2430_PRM_BASE),
 	.cm	= OMAP2_L4_IO_ADDRESS(OMAP2430_CM_BASE),
+<<<<<<< HEAD
+=======
 =======
 	.sdrc	= OMAP243X_SDRC_BASE,
 	.sms	= OMAP243X_SMS_BASE,
@@ -102,6 +125,7 @@ static struct omap_globals omap243x_globals = {
 	.prm	= OMAP2430_PRM_BASE,
 	.cm	= OMAP2430_CM_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init omap2_set_globals_243x(void)
@@ -109,13 +133,19 @@ void __init omap2_set_globals_243x(void)
 	__omap2_set_globals(&omap243x_globals);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init omap243x_map_io(void)
 {
 	omap243x_map_common_io();
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #if defined(CONFIG_ARCH_OMAP3)
@@ -124,11 +154,16 @@ static struct omap_globals omap3_globals = {
 	.class	= OMAP343X_CLASS,
 	.tap	= OMAP2_L4_IO_ADDRESS(0x4830A000),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.sdrc	= OMAP2_L3_IO_ADDRESS(OMAP343X_SDRC_BASE),
 	.sms	= OMAP2_L3_IO_ADDRESS(OMAP343X_SMS_BASE),
 	.ctrl	= OMAP2_L4_IO_ADDRESS(OMAP343X_CTRL_BASE),
 	.prm	= OMAP2_L4_IO_ADDRESS(OMAP3430_PRM_BASE),
 	.cm	= OMAP2_L4_IO_ADDRESS(OMAP3430_CM_BASE),
+<<<<<<< HEAD
+=======
 =======
 	.sdrc	= OMAP343X_SDRC_BASE,
 	.sms	= OMAP343X_SMS_BASE,
@@ -136,6 +171,7 @@ static struct omap_globals omap3_globals = {
 	.prm	= OMAP3430_PRM_BASE,
 	.cm	= OMAP3430_CM_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init omap2_set_globals_3xxx(void)
@@ -147,14 +183,20 @@ void __init omap3_map_io(void)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	omap2_set_globals_3xxx();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap34xx_map_common_io();
 }
 
 /*
  * Adjust TAP register base such that omap3_check_revision accesses the correct
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * TI81XX register for checking device ID (it adds 0x204 to tap base while
  * TI81XX DEVICE ID register is at offset 0x600 from control base).
  */
@@ -198,6 +240,8 @@ void __init omap2_set_globals_am33xx(void)
 void __init am33xx_map_io(void)
 {
 	omapam33xx_map_common_io();
+<<<<<<< HEAD
+=======
 =======
  * TI816X register for checking device ID (it adds 0x204 to tap base while
  * TI816X DEVICE ID register is at offset 0x600 from control base).
@@ -217,6 +261,7 @@ void __init omap2_set_globals_ti816x(void)
 {
 	__omap2_set_globals(&ti816x_globals);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 #endif
 
@@ -225,11 +270,16 @@ static struct omap_globals omap4_globals = {
 	.class	= OMAP443X_CLASS,
 	.tap	= OMAP2_L4_IO_ADDRESS(OMAP443X_SCM_BASE),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ctrl	= OMAP2_L4_IO_ADDRESS(OMAP443X_SCM_BASE),
 	.ctrl_pad	= OMAP2_L4_IO_ADDRESS(OMAP443X_CTRL_BASE),
 	.prm	= OMAP2_L4_IO_ADDRESS(OMAP4430_PRM_BASE),
 	.cm	= OMAP2_L4_IO_ADDRESS(OMAP4430_CM_BASE),
 	.cm2	= OMAP2_L4_IO_ADDRESS(OMAP4430_CM2_BASE),
+<<<<<<< HEAD
+=======
 =======
 	.ctrl	= OMAP443X_SCM_BASE,
 	.ctrl_pad	= OMAP443X_CTRL_BASE,
@@ -237,6 +287,7 @@ static struct omap_globals omap4_globals = {
 	.cm	= OMAP4430_CM_BASE,
 	.cm2	= OMAP4430_CM2_BASE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init omap2_set_globals_443x(void)
@@ -246,12 +297,18 @@ void __init omap2_set_globals_443x(void)
 	omap2_set_globals_prcm(&omap4_globals);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init omap4_map_io(void)
 {
 	omap44xx_map_common_io();
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 

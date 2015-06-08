@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/sock.h>
 
 /**
@@ -341,8 +345,11 @@ static int dcbnl_getperm_hwaddr(struct net_device *netdev, struct nlattr **tb,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(perm_addr, 0, sizeof(perm_addr));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	netdev->dcbnl_ops->getpermhwaddr(netdev, perm_addr);
 
 	ret = nla_put(dcbnl_skb, DCB_ATTR_PERM_HWADDR, sizeof(perm_addr),
@@ -1176,6 +1183,8 @@ err:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Handle IEEE 802.1Qaz SET commands. If any requested operation can not
  * be completed the entire msg is aborted and error value is returned.
  * No attempt is made to reconcile the case where only part of the
@@ -1235,6 +1244,7 @@ err:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dcbnl_build_peer_app(struct net_device *netdev, struct sk_buff* skb,
 				int app_nested_type, int app_info_type,
 				int app_entry_type)
@@ -1291,6 +1301,9 @@ nla_put_failure:
 
 /* Handle IEEE 802.1Qaz GET commands. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dcbnl_ieee_fill(struct sk_buff *skb, struct net_device *netdev)
 {
 	struct nlattr *ieee, *app;
@@ -1298,6 +1311,8 @@ static int dcbnl_ieee_fill(struct sk_buff *skb, struct net_device *netdev)
 	const struct dcbnl_rtnl_ops *ops = netdev->dcbnl_ops;
 	int dcbx;
 	int err = -EMSGSIZE;
+<<<<<<< HEAD
+=======
 =======
 static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 			  u32 pid, u32 seq, u16 flags)
@@ -1323,6 +1338,7 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 	dcb->dcb_family = AF_UNSPEC;
 	dcb->cmd = DCB_CMD_IEEE_GET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	NLA_PUT_STRING(skb, DCB_ATTR_IFNAME, netdev->name);
 
@@ -1334,8 +1350,11 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 		struct ieee_ets ets;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(&ets, 0, sizeof(ets));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ops->ieee_getets(netdev, &ets);
 		if (!err)
 			NLA_PUT(skb, DCB_ATTR_IEEE_ETS, sizeof(ets), &ets);
@@ -1345,8 +1364,11 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 		struct ieee_pfc pfc;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(&pfc, 0, sizeof(pfc));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ops->ieee_getpfc(netdev, &pfc);
 		if (!err)
 			NLA_PUT(skb, DCB_ATTR_IEEE_PFC, sizeof(pfc), &pfc);
@@ -1361,8 +1383,12 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 <<<<<<< HEAD
 		if (itr->ifindex == netdev->ifindex) {
 =======
+<<<<<<< HEAD
+		if (itr->ifindex == netdev->ifindex) {
+=======
 		if (strncmp(itr->name, netdev->name, IFNAMSIZ) == 0) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			err = nla_put(skb, DCB_ATTR_IEEE_APP, sizeof(itr->app),
 					 &itr->app);
 			if (err) {
@@ -1372,14 +1398,20 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 		}
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (netdev->dcbnl_ops->getdcbx)
 		dcbx = netdev->dcbnl_ops->getdcbx(netdev);
 	else
 		dcbx = -EOPNOTSUPP;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&dcb_lock);
 	nla_nest_end(skb, app);
 
@@ -1388,8 +1420,11 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 		struct ieee_ets ets;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(&ets, 0, sizeof(ets));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ops->ieee_peer_getets(netdev, &ets);
 		if (!err)
 			NLA_PUT(skb, DCB_ATTR_IEEE_PEER_ETS, sizeof(ets), &ets);
@@ -1399,8 +1434,11 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 		struct ieee_pfc pfc;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		memset(&pfc, 0, sizeof(pfc));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ops->ieee_peer_getpfc(netdev, &pfc);
 		if (!err)
 			NLA_PUT(skb, DCB_ATTR_IEEE_PEER_PFC, sizeof(pfc), &pfc);
@@ -1417,6 +1455,9 @@ static int dcbnl_ieee_get(struct net_device *netdev, struct nlattr **tb,
 
 	nla_nest_end(skb, ieee);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dcbx >= 0) {
 		err = nla_put_u8(skb, DCB_ATTR_DCBX, dcbx);
 		if (err)
@@ -1824,6 +1865,8 @@ err:
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 	nlmsg_end(skb, nlh);
 
@@ -1836,6 +1879,7 @@ nlmsg_failure:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* DCBX configuration */
 static int dcbnl_getdcbx(struct net_device *netdev, struct nlattr **tb,
 			 u32 pid, u32 seq, u16 flags)
@@ -1983,16 +2027,22 @@ static int dcbnl_cee_get(struct net_device *netdev, struct nlattr **tb,
 			 u32 pid, u32 seq, u16 flags)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net *net = dev_net(netdev);
 	struct sk_buff *skb;
 	struct nlmsghdr *nlh;
 	struct dcbmsg *dcb;
+<<<<<<< HEAD
+=======
 =======
 	struct sk_buff *skb;
 	struct nlmsghdr *nlh;
 	struct dcbmsg *dcb;
 	struct nlattr *cee;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct dcbnl_rtnl_ops *ops = netdev->dcbnl_ops;
 	int err;
 
@@ -2004,20 +2054,29 @@ static int dcbnl_cee_get(struct net_device *netdev, struct nlattr **tb,
 		return -ENOBUFS;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	nlh = nlmsg_put(skb, pid, seq, RTM_GETDCB, sizeof(*dcb), flags);
 	if (nlh == NULL) {
 		nlmsg_free(skb);
 		return -EMSGSIZE;
 	}
+<<<<<<< HEAD
+=======
 =======
 	nlh = NLMSG_NEW(skb, pid, seq, RTM_GETDCB, sizeof(*dcb), flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dcb = NLMSG_DATA(nlh);
 	dcb->dcb_family = AF_UNSPEC;
 	dcb->cmd = DCB_CMD_CEE_GET;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = dcbnl_cee_fill(skb, netdev);
 
 	if (err < 0) {
@@ -2028,6 +2087,8 @@ static int dcbnl_cee_get(struct net_device *netdev, struct nlattr **tb,
 		err = rtnl_unicast(skb, net, pid);
 	}
 	return err;
+<<<<<<< HEAD
+=======
 =======
 	NLA_PUT_STRING(skb, DCB_ATTR_IFNAME, netdev->name);
 
@@ -2071,6 +2132,7 @@ nlmsg_failure:
 	kfree_skb(skb);
 	return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int dcb_doit(struct sk_buff *skb, struct nlmsghdr *nlh, void *arg)
@@ -2181,6 +2243,9 @@ static int dcb_doit(struct sk_buff *skb, struct nlmsghdr *nlh, void *arg)
 	case DCB_CMD_IEEE_SET:
 		ret = dcbnl_ieee_set(netdev, tb, pid, nlh->nlmsg_seq,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     nlh->nlmsg_flags);
 		goto out;
 	case DCB_CMD_IEEE_GET:
@@ -2190,6 +2255,8 @@ static int dcb_doit(struct sk_buff *skb, struct nlmsghdr *nlh, void *arg)
 	case DCB_CMD_IEEE_DEL:
 		ret = dcbnl_ieee_del(netdev, tb, pid, nlh->nlmsg_seq,
 				     nlh->nlmsg_flags);
+<<<<<<< HEAD
+=======
 =======
 				 nlh->nlmsg_flags);
 		goto out;
@@ -2197,6 +2264,7 @@ static int dcb_doit(struct sk_buff *skb, struct nlmsghdr *nlh, void *arg)
 		ret = dcbnl_ieee_get(netdev, tb, pid, nlh->nlmsg_seq,
 				 nlh->nlmsg_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out;
 	case DCB_CMD_GDCBX:
 		ret = dcbnl_getdcbx(netdev, tb, pid, nlh->nlmsg_seq,
@@ -2247,8 +2315,12 @@ u8 dcb_getapp(struct net_device *dev, struct dcb_app *app)
 <<<<<<< HEAD
 		    itr->ifindex == dev->ifindex) {
 =======
+<<<<<<< HEAD
+		    itr->ifindex == dev->ifindex) {
+=======
 		    (strncmp(itr->name, dev->name, IFNAMSIZ) == 0)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			prio = itr->app.priority;
 			break;
 		}
@@ -2261,6 +2333,9 @@ EXPORT_SYMBOL(dcb_getapp);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * dcb_setapp - add CEE dcb application data to app list
  *
  * Priority 0 is an invalid priority in CEE spec. This routine
@@ -2268,6 +2343,8 @@ EXPORT_SYMBOL(dcb_getapp);
  * set to zero.
  */
 int dcb_setapp(struct net_device *dev, struct dcb_app *new)
+<<<<<<< HEAD
+=======
 =======
  * ixgbe_dcbnl_setapp - add dcb application data to app list
  *
@@ -2276,19 +2353,26 @@ int dcb_setapp(struct net_device *dev, struct dcb_app *new)
  */
 u8 dcb_setapp(struct net_device *dev, struct dcb_app *new)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct dcb_app_type *itr;
 	struct dcb_app_type event;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	event.ifindex = dev->ifindex;
 	memcpy(&event.app, new, sizeof(event.app));
 	if (dev->dcbnl_ops->getdcbx)
 		event.dcbx = dev->dcbnl_ops->getdcbx(dev);
+<<<<<<< HEAD
+=======
 =======
 	memcpy(&event.name, dev->name, sizeof(event.name));
 	memcpy(&event.app, new, sizeof(event.app));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock(&dcb_lock);
 	/* Search for existing match and replace */
@@ -2298,8 +2382,12 @@ u8 dcb_setapp(struct net_device *dev, struct dcb_app *new)
 <<<<<<< HEAD
 		    itr->ifindex == dev->ifindex) {
 =======
+<<<<<<< HEAD
+		    itr->ifindex == dev->ifindex) {
+=======
 		    (strncmp(itr->name, dev->name, IFNAMSIZ) == 0)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (new->priority)
 				itr->app.priority = new->priority;
 			else {
@@ -2322,8 +2410,12 @@ u8 dcb_setapp(struct net_device *dev, struct dcb_app *new)
 <<<<<<< HEAD
 		entry->ifindex = dev->ifindex;
 =======
+<<<<<<< HEAD
+		entry->ifindex = dev->ifindex;
+=======
 		strncpy(entry->name, dev->name, IFNAMSIZ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		list_add(&entry->list, &dcb_app_list);
 	}
 out:
@@ -2334,6 +2426,9 @@ out:
 EXPORT_SYMBOL(dcb_setapp);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * dcb_ieee_getapp_mask - retrieve the IEEE DCB application priority
  *
@@ -2446,8 +2541,11 @@ out:
 }
 EXPORT_SYMBOL(dcb_ieee_delapp);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void dcb_flushapp(void)
 {
 	struct dcb_app_type *app;

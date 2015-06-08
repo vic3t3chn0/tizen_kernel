@@ -7,13 +7,22 @@
 #include <asm/mcfsim.h>
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_COLDFIRE
+#include <asm/mcfsim.h>
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* cache code */
 #define FLUSH_I_AND_D	(0x00000808)
 #define FLUSH_I		(0x00000008)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef ICACHE_MAX_ADDR
 #define ICACHE_MAX_ADDR	0
 #define ICACHE_SET_MASK	0
@@ -75,8 +84,11 @@ static inline void flush_cf_bcache(unsigned long start, unsigned long end)
 	}
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Cache handling functions
  */
@@ -88,8 +100,14 @@ static inline void flush_icache(void)
 		flush_cf_icache(0, ICACHE_MAX_ADDR);
 	} else if (CPU_IS_040_OR_060) {
 =======
+<<<<<<< HEAD
+	if (CPU_IS_COLDFIRE) {
+		flush_cf_icache(0, ICACHE_MAX_ADDR);
+	} else if (CPU_IS_040_OR_060) {
+=======
 	if (CPU_IS_040_OR_060)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		asm volatile (	"nop\n"
 			"	.chip	68040\n"
 			"	cpusha	%bc\n"
@@ -97,8 +115,12 @@ static inline void flush_icache(void)
 <<<<<<< HEAD
 	} else {
 =======
+<<<<<<< HEAD
+	} else {
+=======
 	else {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long tmp;
 		asm volatile (	"movec	%%cacr,%0\n"
 			"	or.w	%1,%0\n"
@@ -136,8 +158,14 @@ extern void cache_push_v(unsigned long vaddr, int len);
 		flush_cf_dcache(0, DCACHE_MAX_ADDR);		\
 	} else if (CPU_IS_040_OR_060) {				\
 =======
+<<<<<<< HEAD
+	if (CPU_IS_COLDFIRE) {					\
+		flush_cf_dcache(0, DCACHE_MAX_ADDR);		\
+	} else if (CPU_IS_040_OR_060) {				\
+=======
 	if (CPU_IS_040_OR_060)					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__asm__ __volatile__("nop\n\t"			\
 				     ".chip 68040\n\t"		\
 				     "cpusha %dc\n\t"		\
@@ -145,8 +173,12 @@ extern void cache_push_v(unsigned long vaddr, int len);
 <<<<<<< HEAD
 	} else {						\
 =======
+<<<<<<< HEAD
+	} else {						\
+=======
 	else {							\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long _tmp;				\
 		__asm__ __volatile__("movec %%cacr,%0\n\t"	\
 				     "orw %1,%0\n\t"		\
@@ -203,6 +235,9 @@ static inline void flush_cache_page(struct vm_area_struct *vma, unsigned long vm
 static inline void __flush_page_to_ram(void *vaddr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (CPU_IS_COLDFIRE) {
 		unsigned long addr, start, end;
 		addr = ((unsigned long) vaddr) & ~(PAGE_SIZE - 1);
@@ -214,9 +249,12 @@ static inline void __flush_page_to_ram(void *vaddr)
 		}
 		flush_cf_bcache(start, end);
 	} else if (CPU_IS_040_OR_060) {
+<<<<<<< HEAD
+=======
 =======
 	if (CPU_IS_040_OR_060) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__asm__ __volatile__("nop\n\t"
 				     ".chip 68040\n\t"
 				     "cpushp %%bc,(%0)\n\t"

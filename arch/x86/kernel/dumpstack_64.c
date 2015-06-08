@@ -107,6 +107,8 @@ in_irq_stack(unsigned long *stack, unsigned long *irq_stack,
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * We are returning from the irq stack and go to the previous one.
  * If the previous stack is also in the irq stack, then bp in the first
  * frame of the irq stack points to the previous, interrupted one.
@@ -136,6 +138,7 @@ fixup_bp_irq_link(unsigned long bp, unsigned long *stack,
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * x86-64 can have up to three kernel stacks:
  * process stack
  * interrupt stack
@@ -159,17 +162,23 @@ void dump_trace(struct task_struct *task, struct pt_regs *regs,
 
 	if (!stack) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (regs)
 			stack = (unsigned long *)regs->sp;
 		else if (task != current)
 			stack = (unsigned long *)task->thread.sp;
 		else
 			stack = &dummy;
+<<<<<<< HEAD
+=======
 =======
 		stack = &dummy;
 		if (task && task != current)
 			stack = (unsigned long *)task->thread.sp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!bp)
@@ -219,9 +228,12 @@ void dump_trace(struct task_struct *task, struct pt_regs *regs,
 				stack = (unsigned long *) (irq_stack_end[-1]);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				bp = fixup_bp_irq_link(bp, stack, irq_stack,
 						       irq_stack_end);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				irq_stack_end = NULL;
 				ops->stack(data, "EOI");
 				continue;
@@ -312,11 +324,16 @@ void show_registers(struct pt_regs *regs)
 		u8 *ip;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_DEFAULT "Stack:\n");
 		show_stack_log_lvl(NULL, regs, (unsigned long *)sp,
 				   0, KERN_DEFAULT);
 
 		printk(KERN_DEFAULT "Code: ");
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_EMERG "Stack:\n");
 		show_stack_log_lvl(NULL, regs, (unsigned long *)sp,
@@ -324,6 +341,7 @@ void show_registers(struct pt_regs *regs)
 
 		printk(KERN_EMERG "Code: ");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ip = (u8 *)regs->ip - code_prologue;
 		if (ip < (u8 *)PAGE_OFFSET || probe_kernel_address(ip, c)) {
@@ -335,6 +353,9 @@ void show_registers(struct pt_regs *regs)
 			if (ip < (u8 *)PAGE_OFFSET ||
 					probe_kernel_address(ip, c)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk(KERN_CONT " Bad RIP value.");
 				break;
 			}
@@ -345,6 +366,8 @@ void show_registers(struct pt_regs *regs)
 		}
 	}
 	printk(KERN_CONT "\n");
+<<<<<<< HEAD
+=======
 =======
 				printk(" Bad RIP value.");
 				break;
@@ -357,6 +380,7 @@ void show_registers(struct pt_regs *regs)
 	}
 	printk("\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int is_valid_bugaddr(unsigned long ip)

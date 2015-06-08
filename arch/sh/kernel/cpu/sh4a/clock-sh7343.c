@@ -64,8 +64,12 @@ static unsigned long dll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops dll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops dll_clk_ops = {
+=======
 static struct clk_ops dll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= dll_recalc,
 };
 
@@ -88,8 +92,12 @@ static unsigned long pll_recalc(struct clk *clk)
 <<<<<<< HEAD
 static struct sh_clk_ops pll_clk_ops = {
 =======
+<<<<<<< HEAD
+static struct sh_clk_ops pll_clk_ops = {
+=======
 static struct clk_ops pll_clk_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.recalc		= pll_recalc,
 };
 
@@ -204,9 +212,12 @@ static struct clk mstp_clks[MSTP_NR] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define CLKDEV_CON_ID(_id, _clk) { .con_id = _id, .clk = _clk }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk_lookup lookups[] = {
 	/* main clocks */
 	CLKDEV_CON_ID("rclk", &r_clk),
@@ -245,6 +256,9 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("mfi0", &mstp_clks[MSTP011]),
 	CLKDEV_CON_ID("flctl0", &mstp_clks[MSTP010]),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	CLKDEV_ICK_ID("sci_fck", "sh-sci.0", &mstp_clks[MSTP007]),
 	CLKDEV_ICK_ID("sci_fck", "sh-sci.1", &mstp_clks[MSTP006]),
@@ -256,6 +270,8 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("siof1", &mstp_clks[MSTP001]),
 	CLKDEV_DEV_ID("i2c-sh_mobile.0", &mstp_clks[MSTP109]),
 	CLKDEV_DEV_ID("i2c-sh_mobile.1", &mstp_clks[MSTP108]),
+<<<<<<< HEAD
+=======
 =======
 	{
 		/* SCIF0 */
@@ -284,6 +300,7 @@ static struct clk_lookup lookups[] = {
 	CLKDEV_CON_ID("i2c0", &mstp_clks[MSTP109]),
 	CLKDEV_CON_ID("i2c1", &mstp_clks[MSTP108]),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLKDEV_CON_ID("tpu0", &mstp_clks[MSTP225]),
 	CLKDEV_CON_ID("irda0", &mstp_clks[MSTP224]),
 	CLKDEV_CON_ID("sdhi0", &mstp_clks[MSTP218]),

@@ -28,7 +28,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* lv1 call declaration macros */
 
@@ -237,8 +241,12 @@ LV1_CALL(invalidate_htab_entries,                       5, 0,   3 )
 <<<<<<< HEAD
 LV1_CALL(get_virtual_address_space_id_of_ppe,           0, 1,   4 )
 =======
+<<<<<<< HEAD
+LV1_CALL(get_virtual_address_space_id_of_ppe,           0, 1,   4 )
+=======
 LV1_CALL(get_virtual_address_space_id_of_ppe,           1, 1,   4 )
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 LV1_CALL(query_logical_partition_address_region_info,   1, 5,   6 )
 LV1_CALL(select_virtual_address_space,                  1, 0,   7 )
 LV1_CALL(pause,                                         1, 0,   9 )
@@ -274,8 +282,12 @@ LV1_CALL(create_repository_node,                        6, 0,  90 )
 <<<<<<< HEAD
 LV1_CALL(read_repository_node,                          5, 2,  91 )
 =======
+<<<<<<< HEAD
+LV1_CALL(read_repository_node,                          5, 2,  91 )
+=======
 LV1_CALL(get_repository_node_value,                     5, 2,  91 )
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 LV1_CALL(modify_repository_node_value,                  6, 0,  92 )
 LV1_CALL(remove_repository_node,                        4, 0,  93 )
 LV1_CALL(read_htab_entries,                             2, 5,  95 )
@@ -290,8 +302,12 @@ LV1_CALL(unmap_htab,                                    1, 0, 123 )
 <<<<<<< HEAD
 LV1_CALL(get_version_info,                              0, 2, 127 )
 =======
+<<<<<<< HEAD
+LV1_CALL(get_version_info,                              0, 2, 127 )
+=======
 LV1_CALL(get_version_info,                              0, 1, 127 )
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 LV1_CALL(insert_htab_entry,                             6, 3, 158 )
 LV1_CALL(read_virtual_uart,                             3, 1, 162 )
 LV1_CALL(write_virtual_uart,                            3, 1, 163 )
@@ -314,10 +330,16 @@ LV1_CALL(net_stop_tx_dma,                               2, 0, 188 )
 LV1_CALL(net_start_rx_dma,                              4, 0, 189 )
 LV1_CALL(net_stop_rx_dma,                               2, 0, 190 )
 =======
+<<<<<<< HEAD
+LV1_CALL(net_stop_tx_dma,                               2, 0, 188 )
+LV1_CALL(net_start_rx_dma,                              4, 0, 189 )
+LV1_CALL(net_stop_rx_dma,                               2, 0, 190 )
+=======
 LV1_CALL(net_stop_tx_dma,                               3, 0, 188 )
 LV1_CALL(net_start_rx_dma,                              4, 0, 189 )
 LV1_CALL(net_stop_rx_dma,                               3, 0, 190 )
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 LV1_CALL(net_set_interrupt_status_indicator,            4, 0, 191 )
 LV1_CALL(net_set_interrupt_mask,                        4, 0, 193 )
 LV1_CALL(net_control,                                   6, 2, 194 )
@@ -340,8 +362,12 @@ LV1_CALL(gpu_context_intr,                              1, 1, 227 )
 <<<<<<< HEAD
 LV1_CALL(gpu_attribute,                                 3, 0, 228 )
 =======
+<<<<<<< HEAD
+LV1_CALL(gpu_attribute,                                 3, 0, 228 )
+=======
 LV1_CALL(gpu_attribute,                                 5, 0, 228 )
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 LV1_CALL(get_rtc,                                       0, 2, 232 )
 LV1_CALL(set_ppe_periodic_tracer_frequency,             1, 0, 240 )
 LV1_CALL(start_ppe_periodic_tracer,                     5, 0, 241 )

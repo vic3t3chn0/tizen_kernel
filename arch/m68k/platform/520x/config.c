@@ -17,18 +17,26 @@
 #include <linux/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/spi/spi.h>
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/machdep.h>
 #include <asm/coldfire.h>
 #include <asm/mcfsim.h>
 #include <asm/mcfuart.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /***************************************************************************/
 
 #if IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI)
+<<<<<<< HEAD
+=======
 =======
 #include <asm/mcfqspi.h>
 
@@ -213,6 +221,7 @@ static struct platform_device m520x_qspi = {
 	.dev.platform_data	= &m520x_qspi_data,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __init m520x_qspi_init(void)
 {
@@ -225,12 +234,17 @@ static void __init m520x_qspi_init(void)
 	writew(par, MCF_GPIO_PAR_UART);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI) */
 
 /***************************************************************************/
 
 static void __init m520x_uarts_init(void)
+<<<<<<< HEAD
+=======
 =======
 #endif /* defined(CONFIG_SPI_COLDFIRE_QSPI) || defined(CONFIG_SPI_COLDFIRE_QSPI_MODULE) */
 
@@ -247,11 +261,15 @@ static struct platform_device *m520x_devices[] __initdata = {
 
 static void __init m520x_uart_init_line(int line, int irq)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	u16 par;
 	u8 par2;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* UART0 and UART1 GPIO pin setup */
 	par = readw(MCF_GPIO_PAR_UART);
 	par |= MCF_GPIO_PAR_UART_PAR_UTXD0 | MCF_GPIO_PAR_UART_PAR_URXD0;
@@ -264,6 +282,8 @@ static void __init m520x_uart_init_line(int line, int irq)
 	par2 |= MCF_GPIO_PAR_FECI2C_PAR_SCL_UTXD2 |
 		MCF_GPIO_PAR_FECI2C_PAR_SDA_URXD2;
 	writeb(par2, MCF_GPIO_PAR_FECI2C);
+<<<<<<< HEAD
+=======
 =======
 	switch (line) {
 	case 0:
@@ -296,6 +316,7 @@ static void __init m520x_uarts_init(void)
 	for (line = 0; (line < nrlines); line++)
 		m520x_uart_init_line(line, m520x_uart_platform[line].irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/
@@ -315,12 +336,17 @@ static void __init m520x_fec_init(void)
 /***************************************************************************/
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init config_BSP(char *commandp, int size)
 {
 	mach_sched_init = hw_timer_init;
 	m520x_uarts_init();
 	m520x_fec_init();
 #if IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI)
+<<<<<<< HEAD
+=======
 =======
 static void m520x_cpu_reset(void)
 {
@@ -337,11 +363,14 @@ void __init config_BSP(char *commandp, int size)
 	m520x_fec_init();
 #if defined(CONFIG_SPI_COLDFIRE_QSPI) || defined(CONFIG_SPI_COLDFIRE_QSPI_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	m520x_qspi_init();
 #endif
 }
 
 /***************************************************************************/
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -355,3 +384,4 @@ arch_initcall(init_BSP);
 
 /***************************************************************************/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

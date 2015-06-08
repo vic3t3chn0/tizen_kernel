@@ -43,7 +43,11 @@
 <<<<<<< HEAD
 #define IRQ_DC1176_GPIO0	(IRQ_DC1176_GIC_START + 16)
 =======
+<<<<<<< HEAD
+#define IRQ_DC1176_GPIO0	(IRQ_DC1176_GIC_START + 16)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_DC1176_SSP		(IRQ_DC1176_GIC_START + 17)	/* SSP port */
 #define IRQ_DC1176_UART0	(IRQ_DC1176_GIC_START + 18)	/* UART 0 on development chip */
 #define IRQ_DC1176_UART1	(IRQ_DC1176_GIC_START + 19)	/* UART 1 on development chip */
@@ -79,8 +83,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IRQ_PB1176_GPIO0	-1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define IRQ_PB1176_SCTL		-1
 
 #define NR_GIC_PB1176		2

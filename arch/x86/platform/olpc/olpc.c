@@ -24,7 +24,13 @@
 #include <linux/debugfs.h>
 #include <linux/mutex.h>
 =======
+<<<<<<< HEAD
+#include <linux/syscore_ops.h>
+#include <linux/debugfs.h>
+#include <linux/mutex.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/geode.h>
 #include <asm/setup.h>
@@ -37,6 +43,9 @@ EXPORT_SYMBOL_GPL(olpc_platform_info);
 static DEFINE_SPINLOCK(ec_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* debugfs interface to EC commands */
 #define EC_MAX_CMD_ARGS (5 + 1)	/* cmd byte + 5 args */
 #define EC_MAX_CMD_REPLY (8)
@@ -49,8 +58,11 @@ static unsigned int ec_debugfs_resp_bytes;
 /* EC event mask to be applied during suspend (defining wakeup sources). */
 static u16 ec_wakeup_mask;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* what the timeout *should* be (in ms) */
 #define EC_BASE_TIMEOUT 20
 
@@ -210,6 +222,9 @@ err:
 EXPORT_SYMBOL_GPL(olpc_ec_cmd);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void olpc_ec_wakeup_set(u16 value)
 {
 	ec_wakeup_mask |= value;
@@ -377,8 +392,11 @@ static int olpc_ec_suspend(void)
 	return olpc_ec_mask_write(ec_wakeup_mask);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool __init check_ofw_architecture(struct device_node *root)
 {
 	const char *olpc_arch;
@@ -434,12 +452,18 @@ static int __init add_xo1_platform_devices(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct syscore_ops olpc_syscore_ops = {
 	.suspend = olpc_ec_suspend,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init olpc_init(void)
 {
 	int r = 0;
@@ -469,7 +493,13 @@ static int __init olpc_init(void)
 	if (olpc_platform_info.ecver >= 0x5f)
 		olpc_platform_info.flags |= OLPC_F_EC_WIDE_SCI;
 =======
+<<<<<<< HEAD
+	/* EC version 0x5f adds support for wide SCI mask */
+	if (olpc_platform_info.ecver >= 0x5f)
+		olpc_platform_info.flags |= OLPC_F_EC_WIDE_SCI;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk(KERN_INFO "OLPC board revision %s%X (EC=%x)\n",
 			((olpc_platform_info.boardrev & 0xf) < 8) ? "pre" : "",
@@ -487,7 +517,13 @@ static int __init olpc_init(void)
 	setup_debugfs();
 
 =======
+<<<<<<< HEAD
+	register_syscore_ops(&olpc_syscore_ops);
+	setup_debugfs();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

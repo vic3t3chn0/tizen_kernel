@@ -25,6 +25,9 @@ static int coalesced_mmio_in_range(struct kvm_coalesced_mmio_dev *dev,
 				   gpa_t addr, int len)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* is it in a batchable area ?
 	 * (addr,len) is fully included in
 	 * (zone->addr, zone->size)
@@ -44,12 +47,15 @@ static int coalesced_mmio_has_room(struct kvm_coalesced_mmio_dev *dev)
 {
 	struct kvm_coalesced_mmio_ring *ring;
 	unsigned avail;
+<<<<<<< HEAD
+=======
 =======
 	struct kvm_coalesced_mmio_zone *zone;
 	struct kvm_coalesced_mmio_ring *ring;
 	unsigned avail;
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Are we able to batch it ? */
 
@@ -62,12 +68,19 @@ static int coalesced_mmio_has_room(struct kvm_coalesced_mmio_dev *dev)
 <<<<<<< HEAD
 	if (avail == 0) {
 =======
+<<<<<<< HEAD
+	if (avail == 0) {
+=======
 	if (avail < KVM_MAX_VCPUS) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* full */
 		return 0;
 	}
 
+<<<<<<< HEAD
+	return 1;
+=======
 <<<<<<< HEAD
 	return 1;
 =======
@@ -86,6 +99,7 @@ static int coalesced_mmio_has_room(struct kvm_coalesced_mmio_dev *dev)
 	}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int coalesced_mmio_write(struct kvm_io_device *this,
@@ -94,6 +108,9 @@ static int coalesced_mmio_write(struct kvm_io_device *this,
 	struct kvm_coalesced_mmio_dev *dev = to_mmio(this);
 	struct kvm_coalesced_mmio_ring *ring = dev->kvm->coalesced_mmio_ring;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!coalesced_mmio_in_range(dev, addr, len))
 		return -EOPNOTSUPP;
@@ -104,12 +121,15 @@ static int coalesced_mmio_write(struct kvm_io_device *this,
 		spin_unlock(&dev->kvm->ring_lock);
 		return -EOPNOTSUPP;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!coalesced_mmio_in_range(dev, addr, len))
 		return -EOPNOTSUPP;
 
 	spin_lock(&dev->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* copy data in first free entry of the ring */
 
@@ -121,8 +141,12 @@ static int coalesced_mmio_write(struct kvm_io_device *this,
 <<<<<<< HEAD
 	spin_unlock(&dev->kvm->ring_lock);
 =======
+<<<<<<< HEAD
+	spin_unlock(&dev->kvm->ring_lock);
+=======
 	spin_unlock(&dev->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -134,7 +158,12 @@ static void coalesced_mmio_destructor(struct kvm_io_device *this)
 	list_del(&dev->list);
 
 =======
+<<<<<<< HEAD
+	list_del(&dev->list);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(dev);
 }
 
@@ -147,8 +176,11 @@ int kvm_coalesced_mmio_init(struct kvm *kvm)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct kvm_coalesced_mmio_dev *dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct page *page;
 	int ret;
 
@@ -157,6 +189,9 @@ int kvm_coalesced_mmio_init(struct kvm *kvm)
 	if (!page)
 		goto out_err;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = 0;
 	kvm->coalesced_mmio_ring = page_address(page);
@@ -169,6 +204,8 @@ int kvm_coalesced_mmio_init(struct kvm *kvm)
 	spin_lock_init(&kvm->ring_lock);
 	INIT_LIST_HEAD(&kvm->coalesced_zones);
 
+<<<<<<< HEAD
+=======
 =======
 	kvm->coalesced_mmio_ring = page_address(page);
 
@@ -196,6 +233,7 @@ out_free_page:
 	kvm->coalesced_mmio_ring = NULL;
 	__free_page(page);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out_err:
 	return ret;
 }
@@ -210,6 +248,9 @@ int kvm_vm_ioctl_register_coalesced_mmio(struct kvm *kvm,
 					 struct kvm_coalesced_mmio_zone *zone)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 	struct kvm_coalesced_mmio_dev *dev;
 
@@ -239,6 +280,8 @@ out_free_dev:
 	if (dev == NULL)
 		return -ENXIO;
 
+<<<<<<< HEAD
+=======
 =======
 	struct kvm_coalesced_mmio_dev *dev = kvm->coalesced_mmio_dev;
 
@@ -256,6 +299,7 @@ out_free_dev:
 
 	mutex_unlock(&kvm->slots_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -263,6 +307,9 @@ int kvm_vm_ioctl_unregister_coalesced_mmio(struct kvm *kvm,
 					   struct kvm_coalesced_mmio_zone *zone)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvm_coalesced_mmio_dev *dev, *tmp;
 
 	mutex_lock(&kvm->slots_lock);
@@ -272,6 +319,8 @@ int kvm_vm_ioctl_unregister_coalesced_mmio(struct kvm *kvm,
 			kvm_io_bus_unregister_dev(kvm, KVM_MMIO_BUS, &dev->dev);
 			kvm_iodevice_destructor(&dev->dev);
 		}
+<<<<<<< HEAD
+=======
 =======
 	int i;
 	struct kvm_coalesced_mmio_dev *dev = kvm->coalesced_mmio_dev;
@@ -298,6 +347,7 @@ int kvm_vm_ioctl_unregister_coalesced_mmio(struct kvm *kvm,
 		i--;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_unlock(&kvm->slots_lock);
 

@@ -17,6 +17,9 @@
 #include <mach/gpio.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PERIPHERAL_USAGE 1
 #define GPIO_USAGE 0
 
@@ -24,6 +27,8 @@
 # define BFIN_GPIO_PINT 0
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 #define GPIO_0	0
 #define GPIO_1	1
@@ -78,6 +83,7 @@
 #define GPIO_USAGE 0
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASSEMBLY__
 
 #include <linux/compiler.h>
@@ -102,8 +108,12 @@
 <<<<<<< HEAD
 #if !BFIN_GPIO_PINT
 =======
+<<<<<<< HEAD
+#if !BFIN_GPIO_PINT
+=======
 #ifndef CONFIG_BF54x
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void set_gpio_dir(unsigned, unsigned short);
 void set_gpio_inen(unsigned, unsigned short);
 void set_gpio_polar(unsigned, unsigned short);
@@ -179,12 +189,18 @@ struct gpio_port_t {
 void bfin_special_gpio_free(unsigned gpio);
 int bfin_special_gpio_request(unsigned gpio, const char *label);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # ifdef CONFIG_PM
 void bfin_special_gpio_pm_hibernate_restore(void);
 void bfin_special_gpio_pm_hibernate_suspend(void);
 # endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_PM
@@ -206,8 +222,12 @@ void bfin_gpio_pm_hibernate_suspend(void);
 <<<<<<< HEAD
 # if !BFIN_GPIO_PINT
 =======
+<<<<<<< HEAD
+# if !BFIN_GPIO_PINT
+=======
 #ifndef CONFIG_BF54x
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int gpio_pm_wakeup_ctrl(unsigned gpio, unsigned ctrl);
 
 struct gpio_port_s {
@@ -229,9 +249,15 @@ struct gpio_port_s {
 #endif /*CONFIG_PM*/
 
 =======
+<<<<<<< HEAD
+# endif
+#endif /*CONFIG_PM*/
+
+=======
 #endif /*CONFIG_BF54x*/
 #endif /*CONFIG_PM*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /***********************************************************
 *
 * FUNCTIONS: Blackfin GPIO Driver
@@ -316,6 +342,9 @@ static inline int gpio_set_debounce(unsigned gpio, unsigned debounce)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int __gpio_get_value(unsigned gpio)
 {
 	return bfin_gpio_get_value(gpio);
@@ -329,11 +358,14 @@ static inline void __gpio_set_value(unsigned gpio, int value)
 static inline int gpio_get_value(unsigned gpio)
 {
 	return __gpio_get_value(gpio);
+<<<<<<< HEAD
+=======
 =======
 static inline int gpio_get_value(unsigned gpio)
 {
 	return bfin_gpio_get_value(gpio);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void gpio_set_value(unsigned gpio, int value)
@@ -341,8 +373,12 @@ static inline void gpio_set_value(unsigned gpio, int value)
 <<<<<<< HEAD
 	return __gpio_set_value(gpio, value);
 =======
+<<<<<<< HEAD
+	return __gpio_set_value(gpio, value);
+=======
 	return bfin_gpio_set_value(gpio, value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int gpio_to_irq(unsigned gpio)

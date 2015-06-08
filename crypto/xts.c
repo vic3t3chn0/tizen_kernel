@@ -24,7 +24,11 @@
 <<<<<<< HEAD
 #include <crypto/xts.h>
 =======
+<<<<<<< HEAD
+#include <crypto/xts.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <crypto/b128ops.h>
 #include <crypto/gf128mul.h>
 
@@ -103,8 +107,12 @@ static int crypt(struct blkcipher_desc *d,
 <<<<<<< HEAD
 	const int bs = XTS_BLOCK_SIZE;
 =======
+<<<<<<< HEAD
+	const int bs = XTS_BLOCK_SIZE;
+=======
 	const int bs = crypto_cipher_blocksize(ctx->child);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sinfo s = {
 		.tfm = crypto_cipher_tfm(ctx->child),
 		.fn = fn
@@ -174,6 +182,9 @@ static int decrypt(struct blkcipher_desc *desc, struct scatterlist *dst,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int xts_crypt(struct blkcipher_desc *desc, struct scatterlist *sdst,
 	      struct scatterlist *ssrc, unsigned int nbytes,
 	      struct xts_crypt_req *req)
@@ -246,8 +257,11 @@ first:
 }
 EXPORT_SYMBOL_GPL(xts_crypt);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int init_tfm(struct crypto_tfm *tfm)
 {
 	struct crypto_cipher *cipher;
@@ -263,8 +277,12 @@ static int init_tfm(struct crypto_tfm *tfm)
 <<<<<<< HEAD
 	if (crypto_cipher_blocksize(cipher) != XTS_BLOCK_SIZE) {
 =======
+<<<<<<< HEAD
+	if (crypto_cipher_blocksize(cipher) != XTS_BLOCK_SIZE) {
+=======
 	if (crypto_cipher_blocksize(cipher) != 16) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		*flags |= CRYPTO_TFM_RES_BAD_BLOCK_LEN;
 		crypto_free_cipher(cipher);
 		return -EINVAL;
@@ -282,8 +300,12 @@ static int init_tfm(struct crypto_tfm *tfm)
 <<<<<<< HEAD
 	if (crypto_cipher_blocksize(cipher) != XTS_BLOCK_SIZE) {
 =======
+<<<<<<< HEAD
+	if (crypto_cipher_blocksize(cipher) != XTS_BLOCK_SIZE) {
+=======
 	if (crypto_cipher_blocksize(cipher) != 16) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		crypto_free_cipher(cipher);
 		crypto_free_cipher(ctx->child);
 		*flags |= CRYPTO_TFM_RES_BAD_BLOCK_LEN;

@@ -135,6 +135,9 @@ struct pci_controller * __init pcibios_alloc_controller(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init pci_controller_apertures(struct pci_controller *pci_ctrl,
 					    struct list_head *resources)
 {
@@ -175,11 +178,14 @@ static int __init pcibios_init(void)
 {
 	struct pci_controller *pci_ctrl;
 	struct list_head resources;
+<<<<<<< HEAD
+=======
 =======
 static int __init pcibios_init(void)
 {
 	struct pci_controller *pci_ctrl;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct pci_bus *bus;
 	int next_busno = 0, i;
 
@@ -189,10 +195,15 @@ static int __init pcibios_init(void)
 	for (pci_ctrl = pci_ctrl_head; pci_ctrl; pci_ctrl = pci_ctrl->next) {
 		pci_ctrl->last_busno = 0xff;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		INIT_LIST_HEAD(&resources);
 		pci_controller_apertures(pci_ctrl, &resources);
 		bus = pci_scan_root_bus(NULL, pci_ctrl->first_busno,
 					pci_ctrl->ops, pci_ctrl, &resources);
+<<<<<<< HEAD
+=======
 =======
 		bus = pci_scan_bus(pci_ctrl->first_busno, pci_ctrl->ops,
 				   pci_ctrl);
@@ -208,6 +219,7 @@ static int __init pcibios_init(void)
 			if (pci_ctrl->mem_resources[i].flags)
 				bus->resource[i+1] =&pci_ctrl->mem_resources[i];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_ctrl->bus = bus;
 		pci_ctrl->last_busno = bus->subordinate;
 		if (next_busno <= pci_ctrl->last_busno)
@@ -222,6 +234,11 @@ subsys_initcall(pcibios_init);
 
 void __init pcibios_fixup_bus(struct pci_bus *bus)
 {
+<<<<<<< HEAD
+	if (bus->parent) {
+		/* This is a subordinate bridge */
+		pci_read_bridge_bases(bus);
+=======
 <<<<<<< HEAD
 	if (bus->parent) {
 		/* This is a subordinate bridge */
@@ -275,6 +292,7 @@ void __init pcibios_fixup_bus(struct pci_bus *bus)
 			}
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -284,13 +302,19 @@ char __init *pcibios_setup(char *str)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pcibios_set_master(struct pci_dev *dev)
 {
 	/* No special bus mastering setup handling */
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* the next one is stolen from the alpha port... */
 
 void __init

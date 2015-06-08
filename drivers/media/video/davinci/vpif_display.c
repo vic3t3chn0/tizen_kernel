@@ -29,7 +29,14 @@
 #include <linux/i2c.h>
 #include <linux/platform_device.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/version.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/version.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 
 #include <asm/irq.h>
@@ -40,13 +47,28 @@
 #include <media/v4l2-ioctl.h>
 #include <media/v4l2-chip-ident.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <mach/dm646x.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <mach/dm646x.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "vpif_display.h"
 #include "vpif.h"
 
 MODULE_DESCRIPTION("TI DaVinci VPIF Display driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+MODULE_VERSION(VPIF_DISPLAY_VERSION);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DM646X_V4L2_STD (V4L2_STD_525_60 | V4L2_STD_625_50)
 
@@ -701,7 +723,14 @@ static int vpif_querycap(struct file *file, void  *priv,
 {
 	struct vpif_display_config *config = vpif_dev->platform_data;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	cap->version = VPIF_DISPLAY_VERSION_CODE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	cap->version = VPIF_DISPLAY_VERSION_CODE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cap->capabilities = V4L2_CAP_VIDEO_OUTPUT | V4L2_CAP_STREAMING;
 	strlcpy(cap->driver, "vpif display", sizeof(cap->driver));
 	strlcpy(cap->bus_info, "Platform", sizeof(cap->bus_info));
@@ -1740,10 +1769,21 @@ static __init int vpif_probe(struct platform_device *pdev)
 		vfd->v4l2_dev = &vpif_obj.v4l2_dev;
 		vfd->release = video_device_release;
 		snprintf(vfd->name, sizeof(vfd->name),
+<<<<<<< HEAD
+<<<<<<< HEAD
+			 "DM646x_VPIFDisplay_DRIVER_V%s",
+			 VPIF_DISPLAY_VERSION);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 "DM646x_VPIFDisplay_DRIVER_V%d.%d.%d",
 			 (VPIF_DISPLAY_VERSION_CODE >> 16) & 0xff,
 			 (VPIF_DISPLAY_VERSION_CODE >> 8) & 0xff,
 			 (VPIF_DISPLAY_VERSION_CODE) & 0xff);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Set video_dev to the video device */
 		ch->video_dev = vfd;

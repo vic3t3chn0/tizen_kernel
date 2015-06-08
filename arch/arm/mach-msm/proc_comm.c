@@ -4,7 +4,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2009-2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2009-2012, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -23,6 +27,9 @@
 #include <linux/io.h>
 #include <linux/spinlock.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <mach/msm_iomap.h>
 #include <mach/system.h>
@@ -43,6 +50,8 @@ static inline void notify_other_proc_comm(void)
 #endif
 }
 
+<<<<<<< HEAD
+=======
 =======
 #include <mach/msm_iomap.h>
 #include <mach/system.h>
@@ -64,6 +73,7 @@ static inline void notify_other_proc_comm(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define APP_COMMAND 0x00
 #define APP_STATUS  0x04
 #define APP_DATA1   0x08
@@ -76,11 +86,16 @@ static inline void notify_other_proc_comm(void)
 
 static DEFINE_SPINLOCK(proc_comm_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int msm_proc_comm_disable;
 
 /* Poll for a state change, checking for possible
  * modem crashes along the way (so we don't wait
  * forever while the ARM9 is blowing up.
+<<<<<<< HEAD
+=======
 =======
 
 /* The higher level SMD support will install this to
@@ -92,12 +107,16 @@ int (*msm_check_for_modem_crash)(void);
  * modem crashes along the way (so we don't wait
  * forever while the ARM9 is blowing up).
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Return an error in the event of a modem crash and
  * restart so the msm_proc_comm() routine can restart
  * the operation from the beginning.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int proc_comm_wait_for(unsigned addr, unsigned value)
 {
 	while (1) {
@@ -141,6 +160,8 @@ EXPORT_SYMBOL(msm_proc_comm_reset_modem_now);
 int msm_proc_comm(unsigned cmd, unsigned *data1, unsigned *data2)
 {
 	unsigned base = (unsigned)MSM_SHARED_RAM_BASE;
+<<<<<<< HEAD
+=======
 =======
 static int proc_comm_wait_for(void __iomem *addr, unsigned value)
 {
@@ -158,12 +179,16 @@ int msm_proc_comm(unsigned cmd, unsigned *data1, unsigned *data2)
 {
 	void __iomem *base = MSM_SHARED_RAM_BASE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long flags;
 	int ret;
 
 	spin_lock_irqsave(&proc_comm_lock, flags);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (msm_proc_comm_disable) {
 		ret = -EIO;
 		goto end;
@@ -212,6 +237,8 @@ end:
 	return ret;
 }
 EXPORT_SYMBOL(msm_proc_comm);
+<<<<<<< HEAD
+=======
 =======
 	for (;;) {
 		if (proc_comm_wait_for(base + MDM_STATUS, PCOM_READY))
@@ -260,3 +287,4 @@ void __init proc_comm_boot_wait(void)
  
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

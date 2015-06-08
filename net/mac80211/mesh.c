@@ -15,11 +15,14 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define IEEE80211_MESH_PEER_INACTIVITY_LIMIT (1800 * HZ)
 #define IEEE80211_MESH_HOUSEKEEPING_INTERVAL (60 * HZ)
 #define IEEE80211_MESH_RANN_INTERVAL	     (1 * HZ)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MESHCONF_CAPAB_ACCEPT_PLINKS 0x01
 #define MESHCONF_CAPAB_FORWARDING    0x08
 
@@ -31,6 +34,9 @@ int mesh_allocated;
 static struct kmem_cache *rm_cache;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MAC80211_MESH
 bool mesh_action_is_path_sel(struct ieee80211_mgmt *mgmt)
 {
@@ -42,8 +48,11 @@ bool mesh_action_is_path_sel(struct ieee80211_mgmt *mgmt)
 { return false; }
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ieee80211s_init(void)
 {
 	mesh_pathtbl_init();
@@ -89,7 +98,11 @@ bool mesh_matches_local(struct ieee802_11_elems *ie, struct ieee80211_sub_if_dat
 <<<<<<< HEAD
 	struct ieee80211_local *local = sdata->local;
 =======
+<<<<<<< HEAD
+	struct ieee80211_local *local = sdata->local;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * As support for each feature is added, check for matching
@@ -102,6 +115,9 @@ bool mesh_matches_local(struct ieee802_11_elems *ie, struct ieee80211_sub_if_dat
 	 * - Power management control on fc
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!(ifmsh->mesh_id_len == ie->mesh_id_len &&
 	     memcmp(ifmsh->mesh_id, ie->mesh_id, ie->mesh_id_len) == 0 &&
 	     (ifmsh->mesh_pp_id == ie->mesh_config->meshconf_psel) &&
@@ -119,6 +135,8 @@ bool mesh_matches_local(struct ieee802_11_elems *ie, struct ieee80211_sub_if_dat
 
 	return true;
 mismatch:
+<<<<<<< HEAD
+=======
 =======
 	if (ifmsh->mesh_id_len == ie->mesh_id_len &&
 		memcmp(ifmsh->mesh_id, ie->mesh_id, ie->mesh_id_len) == 0 &&
@@ -130,6 +148,7 @@ mismatch:
 		return true;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return false;
 }
 
@@ -232,12 +251,21 @@ int mesh_rmc_check(u8 *sa, struct ieee80211s_hdr *mesh_hdr,
 <<<<<<< HEAD
 			   (compare_ether_addr(sa, p->sa) == 0))
 =======
+<<<<<<< HEAD
+			   (compare_ether_addr(sa, p->sa) == 0))
+=======
 			   (memcmp(sa, p->sa, ETH_ALEN) == 0))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -1;
 	}
 
 	p = kmem_cache_alloc(rm_cache, GFP_ATOMIC);
+<<<<<<< HEAD
+	if (!p)
+		return 0;
+
+=======
 <<<<<<< HEAD
 	if (!p)
 		return 0;
@@ -248,6 +276,7 @@ int mesh_rmc_check(u8 *sa, struct ieee80211s_hdr *mesh_hdr,
 		return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p->seqnum = seqnum;
 	p->exp_time = jiffies + RMC_TIMEOUT;
 	memcpy(p->sa, sa, ETH_ALEN);
@@ -256,6 +285,9 @@ int mesh_rmc_check(u8 *sa, struct ieee80211s_hdr *mesh_hdr,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int
 mesh_add_meshconf_ie(struct sk_buff *skb, struct ieee80211_sub_if_data *sdata)
 {
@@ -377,6 +409,8 @@ int mesh_add_ds_params_ie(struct sk_buff *skb,
 		return -ENOMEM;
 
 	sband = local->hw.wiphy->bands[local->hw.conf.channel->band];
+<<<<<<< HEAD
+=======
 =======
 void mesh_mgmt_ies_add(struct sk_buff *skb, struct ieee80211_sub_if_data *sdata)
 {
@@ -409,6 +443,7 @@ void mesh_mgmt_ies_add(struct sk_buff *skb, struct ieee80211_sub_if_data *sdata)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (sband->band == IEEE80211_BAND_2GHZ) {
 		pos = skb_put(skb, 2 + 1);
 		*pos++ = WLAN_EID_DS_PARAMS;
@@ -417,6 +452,9 @@ void mesh_mgmt_ies_add(struct sk_buff *skb, struct ieee80211_sub_if_data *sdata)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -463,6 +501,8 @@ int mesh_add_ht_info_ie(struct sk_buff *skb,
 
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 	pos = skb_put(skb, 2 + sdata->u.mesh.mesh_id_len);
 	*pos++ = WLAN_EID_MESH_ID;
@@ -512,6 +552,7 @@ int mesh_add_ht_info_ie(struct sk_buff *skb,
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ieee80211_mesh_path_timer(unsigned long data)
 {
 	struct ieee80211_sub_if_data *sdata =
@@ -579,9 +620,13 @@ int ieee80211_fill_mesh_addresses(struct ieee80211_hdr *hdr, __le16 *fc,
 <<<<<<< HEAD
 		*fc |= cpu_to_le16(IEEE80211_FCTL_FROMDS | IEEE80211_FCTL_TODS);
 =======
+<<<<<<< HEAD
+		*fc |= cpu_to_le16(IEEE80211_FCTL_FROMDS | IEEE80211_FCTL_TODS);
+=======
 		*fc |= cpu_to_le16(IEEE80211_FCTL_FROMDS |
 				IEEE80211_FCTL_TODS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* RA TA DA SA */
 		memset(hdr->addr1, 0, ETH_ALEN);   /* RA is resolved later */
 		memcpy(hdr->addr2, meshsa, ETH_ALEN);
@@ -657,8 +702,13 @@ static void ieee80211_mesh_rootpath(struct ieee80211_sub_if_data *sdata)
 		  round_jiffies(TU_TO_EXP_TIME(
 				  ifmsh->mshcfg.dot11MeshHWMPRannInterval)));
 =======
+<<<<<<< HEAD
+		  round_jiffies(TU_TO_EXP_TIME(
+				  ifmsh->mshcfg.dot11MeshHWMPRannInterval)));
+=======
 		  round_jiffies(jiffies + IEEE80211_MESH_RANN_INTERVAL));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_PM
@@ -669,8 +719,12 @@ void ieee80211_mesh_quiesce(struct ieee80211_sub_if_data *sdata)
 <<<<<<< HEAD
 	/* use atomic bitops in case all timers fire at the same time */
 =======
+<<<<<<< HEAD
+	/* use atomic bitops in case all timers fire at the same time */
+=======
 	/* use atomic bitops in case both timers fire at the same time */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (del_timer_sync(&ifmsh->housekeeping_timer))
 		set_bit(TMR_RUNNING_HK, &ifmsh->timers_running);
@@ -729,8 +783,11 @@ void ieee80211_stop_mesh(struct ieee80211_sub_if_data *sdata)
 	del_timer_sync(&sdata->u.mesh.mesh_path_root_timer);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	del_timer_sync(&sdata->u.mesh.mesh_path_timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * If the timer fired while we waited for it, it will have
 	 * requeued the work. Now the work will be running again
@@ -799,6 +856,9 @@ static void ieee80211_mesh_rx_mgmt_action(struct ieee80211_sub_if_data *sdata,
 {
 	switch (mgmt->u.action.category) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case WLAN_CATEGORY_SELF_PROTECTED:
 		switch (mgmt->u.action.u.self_prot.action_code) {
 		case WLAN_SP_MESH_PEERING_OPEN:
@@ -811,6 +871,8 @@ static void ieee80211_mesh_rx_mgmt_action(struct ieee80211_sub_if_data *sdata,
 	case WLAN_CATEGORY_MESH_ACTION:
 		if (mesh_action_is_path_sel(mgmt))
 			mesh_rx_path_sel_frame(sdata, mgmt, len);
+<<<<<<< HEAD
+=======
 =======
 	case WLAN_CATEGORY_MESH_ACTION:
 		mesh_rx_plink_frame(sdata, mgmt, len, rx_status);
@@ -818,6 +880,7 @@ static void ieee80211_mesh_rx_mgmt_action(struct ieee80211_sub_if_data *sdata,
 	case WLAN_CATEGORY_MESH_PATH_SEL:
 		mesh_rx_path_sel_frame(sdata, mgmt, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 }
@@ -890,16 +953,22 @@ void ieee80211_mesh_init_sdata(struct ieee80211_sub_if_data *sdata)
 	ifmsh->preq_id = 0;
 	ifmsh->sn = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ifmsh->num_gates = 0;
 	atomic_set(&ifmsh->mpaths, 0);
 	mesh_rmc_init(sdata);
 	ifmsh->last_preq = jiffies;
 	ifmsh->next_perr = jiffies;
+<<<<<<< HEAD
+=======
 =======
 	atomic_set(&ifmsh->mpaths, 0);
 	mesh_rmc_init(sdata);
 	ifmsh->last_preq = jiffies;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Allocate all mesh structures when creating the first mesh interface. */
 	if (!mesh_allocated)
 		ieee80211s_init();

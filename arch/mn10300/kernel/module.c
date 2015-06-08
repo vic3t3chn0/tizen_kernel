@@ -34,6 +34,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * allocate storage for a module
  */
@@ -65,6 +67,7 @@ int module_frob_arch_sections(Elf_Ehdr *hdr,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void reloc_put16(uint8_t *p, uint32_t val)
 {
 	p[0] = val & 0xff;
@@ -86,6 +89,8 @@ static void reloc_put32(uint8_t *p, uint32_t val)
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * apply a REL relocation
  */
 int apply_relocate(Elf32_Shdr *sechdrs,
@@ -101,6 +106,7 @@ int apply_relocate(Elf32_Shdr *sechdrs,
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * apply a RELA relocation
  */
 int apply_relocate_add(Elf32_Shdr *sechdrs,
@@ -206,6 +212,8 @@ int apply_relocate_add(Elf32_Shdr *sechdrs,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 /*
  * finish loading the module
@@ -224,3 +232,4 @@ void module_arch_cleanup(struct module *mod)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

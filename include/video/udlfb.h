@@ -44,7 +44,11 @@ struct dlfb_data {
 <<<<<<< HEAD
 	struct delayed_work init_framebuffer_work;
 =======
+<<<<<<< HEAD
+	struct delayed_work init_framebuffer_work;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct delayed_work free_framebuffer_work;
 	atomic_t usb_active; /* 0 = update virtual buffer, but no usb traffic */
 	atomic_t lost_pixels; /* 1 = a render op failed. Need screen refresh */
@@ -57,7 +61,11 @@ struct dlfb_data {
 <<<<<<< HEAD
 	int blank_mode; /*one of FB_BLANK_ */
 =======
+<<<<<<< HEAD
+	int blank_mode; /*one of FB_BLANK_ */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* blit-only rendering path metrics, exposed through sysfs */
 	atomic_t bytes_rendered; /* raw pixel-bytes driver asked to render */
 	atomic_t bytes_identical; /* saved effort with backbuffer comparison */

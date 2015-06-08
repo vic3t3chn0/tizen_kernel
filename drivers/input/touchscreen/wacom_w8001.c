@@ -367,6 +367,26 @@ static int w8001_command(struct w8001 *w8001, unsigned char command,
 	return rc;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int w8001_open(struct input_dev *dev)
+{
+	struct w8001 *w8001 = input_get_drvdata(dev);
+
+	return w8001_command(w8001, W8001_CMD_START, false);
+}
+
+static void w8001_close(struct input_dev *dev)
+{
+	struct w8001 *w8001 = input_get_drvdata(dev);
+
+	w8001_command(w8001, W8001_CMD_STOP, false);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int w8001_setup(struct w8001 *w8001)
 {
 	struct input_dev *dev = w8001->dev;
@@ -383,6 +403,14 @@ static int w8001_setup(struct w8001 *w8001)
 	dev->evbit[0] = BIT_MASK(EV_KEY) | BIT_MASK(EV_ABS);
 	strlcat(w8001->name, "Wacom Serial", sizeof(w8001->name));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	__set_bit(INPUT_PROP_DIRECT, dev->propbit);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* penabled? */
 	error = w8001_command(w8001, W8001_CMD_QUERY, true);
 	if (!error) {
@@ -474,7 +502,15 @@ static int w8001_setup(struct w8001 *w8001)
 
 	strlcat(w8001->name, " Touchscreen", sizeof(w8001->name));
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return 0;
+=======
 	return w8001_command(w8001, W8001_CMD_START, false);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return w8001_command(w8001, W8001_CMD_START, false);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -485,12 +521,27 @@ static void w8001_disconnect(struct serio *serio)
 {
 	struct w8001 *w8001 = serio_get_drvdata(serio);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	serio_close(serio);
+
+	input_unregister_device(w8001->dev);
+	kfree(w8001);
+
+	serio_set_drvdata(serio, NULL);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	input_get_device(w8001->dev);
 	input_unregister_device(w8001->dev);
 	serio_close(serio);
 	serio_set_drvdata(serio, NULL);
 	input_put_device(w8001->dev);
 	kfree(w8001);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -534,6 +585,17 @@ static int w8001_connect(struct serio *serio, struct serio_driver *drv)
 	input_dev->id.version = 0x0100;
 	input_dev->dev.parent = &serio->dev;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	input_dev->open = w8001_open;
+	input_dev->close = w8001_close;
+
+	input_set_drvdata(input_dev, w8001);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = input_register_device(w8001->dev);
 	if (err)
 		goto fail3;

@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 #include <asm-generic/ipcbuf.h>
 =======
+<<<<<<< HEAD
+#include <asm-generic/ipcbuf.h>
+=======
 #ifndef _ASM_IA64_IPCBUF_H
 #define _ASM_IA64_IPCBUF_H
 
@@ -30,3 +33,4 @@ struct ipc64_perm
 
 #endif /* _ASM_IA64_IPCBUF_H */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

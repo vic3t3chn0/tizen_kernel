@@ -18,7 +18,12 @@
 #define __NA_	0x000
 
 =======
+<<<<<<< HEAD
+#define __NA_	0x000
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Pad control groupings */
 #define MX51_UART_PAD_CTRL	(PAD_CTL_PKE | PAD_CTL_PUE | PAD_CTL_DSE_HIGH | \
@@ -53,6 +58,9 @@
 /* Raw pin modes without pad control */
 /*							  PAD    MUX ALT INPSE PATH PADCTRL */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The same pins as above but with the default pad control values applied */
 #define MX51_PAD_EIM_D16__AUD4_RXFS		IOMUX_PAD(0x3f0, 0x05c, 5, __NA_, 0, NO_PAD_CTRL)
@@ -813,6 +821,8 @@
 #define MX51_PAD_GPIO1_9__GPIO1_9		IOMUX_PAD(0x818, 0x3ec, 0, __NA_, 0, NO_PAD_CTRL)
 #define MX51_PAD_GPIO1_9__SD2_LCTL		IOMUX_PAD(0x818, 0x3ec, 6, __NA_, 0, NO_PAD_CTRL)
 #define MX51_PAD_GPIO1_9__USBH3_OC		IOMUX_PAD(0x818, 0x3ec, 1, __NA_, 0, NO_PAD_CTRL)
+<<<<<<< HEAD
+=======
 =======
 #define _MX51_PAD_EIM_D16__AUD4_RXFS		IOMUX_PAD(0x3f0, 0x5c, 5, 0x0000, 0, 0)
 #define _MX51_PAD_EIM_D16__AUD5_TXD		IOMUX_PAD(0x3f0, 0x5c, 7, 0x08d8, 0, 0)
@@ -2331,5 +2341,6 @@
 #define MX51_PAD_GPIO1_9__SD2_LCTL		(_MX51_PAD_GPIO1_9__SD2_LCTL | MUX_PAD_CTRL(NO_PAD_CTRL))
 #define MX51_PAD_GPIO1_9__USBH3_OC		(_MX51_PAD_GPIO1_9__USBH3_OC | MUX_PAD_CTRL(NO_PAD_CTRL))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __MACH_IOMUX_MX51_H__ */

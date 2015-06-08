@@ -89,8 +89,12 @@ static struct spi_board_info mcp251x_board_info[] = {
 <<<<<<< HEAD
 		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ1)
 =======
+<<<<<<< HEAD
+		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ1)
+=======
 		.irq             = gpio_to_irq(ICONTROL_MCP251x_nIRQ1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.modalias        = "mcp2515",
@@ -102,8 +106,12 @@ static struct spi_board_info mcp251x_board_info[] = {
 <<<<<<< HEAD
 		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ2)
 =======
+<<<<<<< HEAD
+		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ2)
+=======
 		.irq             = gpio_to_irq(ICONTROL_MCP251x_nIRQ2)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.modalias        = "mcp2515",
@@ -115,8 +123,12 @@ static struct spi_board_info mcp251x_board_info[] = {
 <<<<<<< HEAD
 		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ3)
 =======
+<<<<<<< HEAD
+		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ3)
+=======
 		.irq             = gpio_to_irq(ICONTROL_MCP251x_nIRQ3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{
 		.modalias        = "mcp2515",
@@ -128,8 +140,12 @@ static struct spi_board_info mcp251x_board_info[] = {
 <<<<<<< HEAD
 		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ4)
 =======
+<<<<<<< HEAD
+		.irq             = PXA_GPIO_TO_IRQ(ICONTROL_MCP251x_nIRQ4)
+=======
 		.irq             = gpio_to_irq(ICONTROL_MCP251x_nIRQ4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 };
 
@@ -208,6 +224,9 @@ static void __init icontrol_init(void)
 
 MACHINE_START(ICONTROL, "iControl/SafeTcam boards using Embedian MXM-8x10 CoM")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= pxa3xx_map_io,
 	.nr_irqs	= PXA_NR_IRQS,
@@ -216,6 +235,8 @@ MACHINE_START(ICONTROL, "iControl/SafeTcam boards using Embedian MXM-8x10 CoM")
 	.timer		= &pxa_timer,
 	.init_machine	= icontrol_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= pxa3xx_map_io,
@@ -223,4 +244,5 @@ MACHINE_START(ICONTROL, "iControl/SafeTcam boards using Embedian MXM-8x10 CoM")
 	.timer		= &pxa_timer,
 	.init_machine	= icontrol_init
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

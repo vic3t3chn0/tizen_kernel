@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * OMAP3XXX L3 Interconnect Driver
  *
@@ -22,6 +25,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
+<<<<<<< HEAD
+=======
 =======
  /*
   * OMAP3XXX L3 Interconnect Driver
@@ -47,6 +52,7 @@
   * USA
   */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/kernel.h>
 #include <linux/slab.h>
@@ -164,8 +170,12 @@ static char *omap3_l3_initiator_string(u8 initid)
 <<<<<<< HEAD
 /*
 =======
+<<<<<<< HEAD
+/*
+=======
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * omap3_l3_block_irq - handles a register block's irq
  * @l3: struct omap3_l3 *
  * @base: register block base address
@@ -181,6 +191,9 @@ static irqreturn_t omap3_l3_block_irq(struct omap3_l3 *l3,
 					u64 error, int error_addr)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 code = omap3_l3_decode_error_code(error);
 	u8 initid = omap3_l3_decode_initid(error);
 	u8 multi = error & L3_ERROR_LOG_MULTI;
@@ -190,6 +203,8 @@ static irqreturn_t omap3_l3_block_irq(struct omap3_l3 *l3,
 			omap3_l3_code_string(code),
 			omap3_l3_initiator_string(initid),
 			multi ? "Multiple Errors" : "", address);
+<<<<<<< HEAD
+=======
 =======
 	u8                      code = omap3_l3_decode_error_code(error);
 	u8                      initid = omap3_l3_decode_initid(error);
@@ -202,6 +217,7 @@ static irqreturn_t omap3_l3_block_irq(struct omap3_l3 *l3,
 			     multi ? "Multiple Errors" : "",
 						   address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return IRQ_HANDLED;
 }
@@ -209,6 +225,9 @@ static irqreturn_t omap3_l3_block_irq(struct omap3_l3 *l3,
 static irqreturn_t omap3_l3_app_irq(int irq, void *_l3)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap3_l3 *l3 = _l3;
 	u64 status, clear;
 	u64 error;
@@ -217,6 +236,8 @@ static irqreturn_t omap3_l3_app_irq(int irq, void *_l3)
 	void __iomem *base;
 	int int_type;
 	irqreturn_t ret = IRQ_NONE;
+<<<<<<< HEAD
+=======
 =======
 	struct omap3_l3         *l3 = _l3;
 	u64                     status, clear;
@@ -227,6 +248,7 @@ static irqreturn_t omap3_l3_app_irq(int irq, void *_l3)
 	int			int_type;
 	irqreturn_t             ret = IRQ_NONE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int_type = irq == l3->app_irq ? L3_APPLICATION_ERROR : L3_DEBUG_ERROR;
 	if (!int_type) {
@@ -245,12 +267,17 @@ static irqreturn_t omap3_l3_app_irq(int irq, void *_l3)
 
 	/* identify the error source */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err_source = __ffs(status);
 
 	base = l3->rt + omap3_l3_bases[int_type][err_source];
 	error = omap3_l3_readll(base, L3_ERROR_LOG);
 	if (error) {
 		error_addr = omap3_l3_readll(base, L3_ERROR_LOG_ADDR);
+<<<<<<< HEAD
+=======
 =======
 	for (err_source = 0; !(status & (1 << err_source)); err_source++)
 									;
@@ -261,6 +288,7 @@ static irqreturn_t omap3_l3_app_irq(int irq, void *_l3)
 		error_addr = omap3_l3_readll(base, L3_ERROR_LOG_ADDR);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret |= omap3_l3_block_irq(l3, error, error_addr);
 	}
 
@@ -282,10 +310,16 @@ static int __init omap3_l3_probe(struct platform_device *pdev)
 	struct resource *res;
 	int ret;
 =======
+<<<<<<< HEAD
+	struct omap3_l3 *l3;
+	struct resource *res;
+	int ret;
+=======
 	struct omap3_l3         *l3;
 	struct resource         *res;
 	int                     ret;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	l3 = kzalloc(sizeof(*l3), GFP_KERNEL);
 	if (!l3)

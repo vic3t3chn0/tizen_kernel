@@ -27,6 +27,9 @@ enum ab8500_regulator_id {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* AB9450 regulators */
 enum ab9540_regulator_id {
 	AB9540_LDO_AUX1,
@@ -47,9 +50,12 @@ enum ab9540_regulator_id {
 };
 
 /* AB8500 and AB9540 register initialization */
+<<<<<<< HEAD
+=======
 =======
 /* AB8500 register initialization */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct ab8500_regulator_reg_init {
 	int id;
 	u8 value;
@@ -95,6 +101,9 @@ enum ab8500_regulator_reg {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* AB9540 registers */
 enum ab9540_regulator_reg {
@@ -144,6 +153,9 @@ enum ab9540_regulator_reg {
 	AB9540_NUM_REGULATOR_REGISTERS,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

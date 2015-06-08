@@ -91,8 +91,12 @@ nf_nat_fn(unsigned int hooknum,
 <<<<<<< HEAD
 	NF_CT_ASSERT(!ip_is_fragment(ip_hdr(skb)));
 =======
+<<<<<<< HEAD
+	NF_CT_ASSERT(!ip_is_fragment(ip_hdr(skb)));
+=======
 	NF_CT_ASSERT(!(ip_hdr(skb)->frag_off & htons(IP_MF | IP_OFFSET)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ct = nf_ct_get(skb, &ctinfo);
 	/* Can't track?  It's not due to stress, or conntrack would
@@ -144,8 +148,12 @@ nf_nat_fn(unsigned int hooknum,
 <<<<<<< HEAD
 				 maniptype == NF_NAT_MANIP_SRC ? "SRC" : "DST",
 =======
+<<<<<<< HEAD
+				 maniptype == NF_NAT_MANIP_SRC ? "SRC" : "DST",
+=======
 				 maniptype == IP_NAT_MANIP_SRC ? "SRC" : "DST",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 ct);
 		break;
 
@@ -205,9 +213,13 @@ nf_nat_out(unsigned int hooknum,
 <<<<<<< HEAD
 		    (ct->tuplehash[dir].tuple.src.u.all !=
 =======
+<<<<<<< HEAD
+		    (ct->tuplehash[dir].tuple.src.u.all !=
+=======
 		    (ct->tuplehash[dir].tuple.dst.protonum != IPPROTO_ICMP &&
 		     ct->tuplehash[dir].tuple.src.u.all !=
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     ct->tuplehash[!dir].tuple.dst.u.all)
 		   )
 			return ip_xfrm_me_harder(skb) == 0 ? ret : NF_DROP;
@@ -246,9 +258,13 @@ nf_nat_local_fn(unsigned int hooknum,
 <<<<<<< HEAD
 		else if (ct->tuplehash[dir].tuple.dst.u.all !=
 =======
+<<<<<<< HEAD
+		else if (ct->tuplehash[dir].tuple.dst.u.all !=
+=======
 		else if (ct->tuplehash[dir].tuple.dst.protonum != IPPROTO_ICMP &&
 			 ct->tuplehash[dir].tuple.dst.u.all !=
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 ct->tuplehash[!dir].tuple.src.u.all)
 			if (ip_xfrm_me_harder(skb))
 				ret = NF_DROP;
@@ -305,8 +321,12 @@ static int __init nf_nat_standalone_init(void)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(ip_nat_decode_session, nat_decode_session);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(ip_nat_decode_session, nat_decode_session);
+=======
 	rcu_assign_pointer(ip_nat_decode_session, nat_decode_session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	ret = nf_nat_rule_init();
 	if (ret < 0) {
@@ -327,8 +347,12 @@ static int __init nf_nat_standalone_init(void)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(ip_nat_decode_session, NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(ip_nat_decode_session, NULL);
+=======
 	rcu_assign_pointer(ip_nat_decode_session, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	synchronize_net();
 #endif
 	return ret;
@@ -342,8 +366,12 @@ static void __exit nf_nat_standalone_fini(void)
 <<<<<<< HEAD
 	RCU_INIT_POINTER(ip_nat_decode_session, NULL);
 =======
+<<<<<<< HEAD
+	RCU_INIT_POINTER(ip_nat_decode_session, NULL);
+=======
 	rcu_assign_pointer(ip_nat_decode_session, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	synchronize_net();
 #endif
 	/* Conntrack caches are unregistered in nf_conntrack_cleanup */

@@ -36,6 +36,9 @@ struct input_dev;
  */
 enum snd_jack_types {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	SND_JACK_HEADPHONE	= 0x0000001,
 	SND_JACK_MICROPHONE	= 0x0000002,
 	SND_JACK_HEADSET	= SND_JACK_HEADPHONE | SND_JACK_MICROPHONE,
@@ -57,6 +60,8 @@ enum snd_jack_types {
 	SND_JACK_BTN_5		= 0x0200000,
 	SND_JACK_BTN_6		= 0x0100000,
 	SND_JACK_BTN_7		= 0x0080000,
+<<<<<<< HEAD
+=======
 =======
 	SND_JACK_HEADPHONE	= 0x0001,
 	SND_JACK_MICROPHONE	= 0x0002,
@@ -74,6 +79,7 @@ enum snd_jack_types {
 	SND_JACK_BTN_4		= 0x0400,
 	SND_JACK_BTN_5		= 0x0200,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct snd_jack {
@@ -85,8 +91,12 @@ struct snd_jack {
 <<<<<<< HEAD
 	unsigned int key[8];   /* Keep in sync with definitions above */
 =======
+<<<<<<< HEAD
+	unsigned int key[8];   /* Keep in sync with definitions above */
+=======
 	unsigned int key[6];   /* Keep in sync with definitions above */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *private_data;
 	void (*private_free)(struct snd_jack *);
 };

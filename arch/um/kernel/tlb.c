@@ -7,7 +7,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sched.h>
 #include <asm/pgtable.h>
 #include <asm/tlbflush.h>
@@ -17,8 +21,11 @@
 #include "skas.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "tlb.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct host_vm_change {
 	struct host_vm_op {
@@ -297,8 +304,12 @@ void fix_range_common(struct mm_struct *mm, unsigned long start_addr,
 <<<<<<< HEAD
 static int flush_tlb_kernel_range_common(unsigned long start, unsigned long end)
 =======
+<<<<<<< HEAD
+static int flush_tlb_kernel_range_common(unsigned long start, unsigned long end)
+=======
 int flush_tlb_kernel_range_common(unsigned long start, unsigned long end)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct mm_struct *mm;
 	pgd_t *pgd;
@@ -513,7 +524,11 @@ void flush_tlb_range(struct vm_area_struct *vma, unsigned long start,
 <<<<<<< HEAD
 EXPORT_SYMBOL(flush_tlb_range);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(flush_tlb_range);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void flush_tlb_mm_range(struct mm_struct *mm, unsigned long start,
 			unsigned long end)

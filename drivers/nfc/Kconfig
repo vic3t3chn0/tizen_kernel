@@ -2,6 +2,13 @@
 # Near Field Communication (NFC) devices
 #
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+menu "Near Field Communication (NFC) devices"
+	depends on NFC
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 menuconfig NFC_DEVICES
 	bool "Near Field Communication (NFC) devices"
 	default n
@@ -13,6 +20,10 @@ menuconfig NFC_DEVICES
 	  devices connected to your computer.
 
 if NFC_DEVICES
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config PN544_NFC
 	tristate "PN544 NFC driver"
@@ -26,6 +37,42 @@ config PN544_NFC
 	  To compile this driver as a module, choose m here. The module will
 	  be called pn544.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config NFC_PN533
+	tristate "NXP PN533 USB driver"
+	depends on USB
+	help
+	  NXP PN533 USB driver.
+	  This driver provides support for NFC NXP PN533 devices.
+
+	  Say Y here to compile support for PN533 devices into the
+	  kernel or say M to compile it as module (pn533).
+
+config NFC_WILINK
+	tristate "Texas Instruments NFC WiLink driver"
+	depends on TI_ST && NFC_NCI
+	help
+	  This enables the NFC driver for Texas Instrument's BT/FM/GPS/NFC
+	  combo devices. This makes use of shared transport line discipline
+	  core driver to communicate with the NFC core of the combo chip.
+
+	  Say Y here to compile support for Texas Instrument's NFC WiLink driver
+	  into the kernel or say M to compile it as module.
+
+endmenu
+
+config NFC_QNCI
+	bool "Qualcomm NCI based NFC Controller Driver for qca199x"
+	depends on I2C
+	select CRC_CCITT
+	help
+	  This enables the NFC driver for QCA199x based devices.
+	  This is for i2c connected version. NCI protocol logic
+	  resides in the usermode and it has no other NFC dependencies.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config PN65N_NFC
     tristate "PN65N NFC driver"
 	depends on I2C
@@ -39,3 +86,7 @@ config PN65N_NFC
 	  be called pn65n.
 
 endif # NFC_DEVICES
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

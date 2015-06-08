@@ -24,6 +24,13 @@
  */
 
 #include <linux/pci.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/pci_hotplug.h>
 
 static struct hpp_type0 pci_default_type0 = {
@@ -158,6 +165,11 @@ static void program_hpp_type2(struct pci_dev *dev, struct hpp_type2 *hpp)
 	 */
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Program PCIE MaxPayload setting on device: ensure parent maxpayload <= device */
 static int pci_set_payload(struct pci_dev *dev)
 {
@@ -199,6 +211,10 @@ static int pci_set_payload(struct pci_dev *dev)
        return 0;
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void pci_configure_slot(struct pci_dev *dev)
 {
 	struct pci_dev *cdev;
@@ -210,9 +226,21 @@ void pci_configure_slot(struct pci_dev *dev)
 			(dev->class >> 8) == PCI_CLASS_BRIDGE_PCI)))
 		return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (dev->bus && dev->bus->self)
+		pcie_bus_configure_settings(dev->bus,
+					    dev->bus->self->pcie_mpss);
+=======
        ret = pci_set_payload(dev);
        if (ret)
                dev_warn(&dev->dev, "could not set device max payload\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+       ret = pci_set_payload(dev);
+       if (ret)
+               dev_warn(&dev->dev, "could not set device max payload\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(&hpp, 0, sizeof(hpp));
 	ret = pci_get_hp_params(dev, &hpp);

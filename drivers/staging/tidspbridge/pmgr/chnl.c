@@ -24,9 +24,18 @@
 /*  ----------------------------------- DSP/BIOS Bridge */
 #include <dspbridge/dbdefs.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Trace & Debug */
 #include <dspbridge/dbc.h>
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Trace & Debug */
+#include <dspbridge/dbc.h>
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*  ----------------------------------- OS Adaptation Layer */
 #include <dspbridge/sync.h>
 
@@ -41,9 +50,18 @@
 /*  ----------------------------------- This */
 #include <dspbridge/chnl.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 /*  ----------------------------------- Globals */
 static u32 refs;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/*  ----------------------------------- Globals */
+static u32 refs;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  ======== chnl_create ========
  *  Purpose:
@@ -58,10 +76,19 @@ int chnl_create(struct chnl_mgr **channel_mgr,
 	struct chnl_mgr *hchnl_mgr;
 	struct chnl_mgr_ *chnl_mgr_obj = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DBC_REQUIRE(refs > 0);
 	DBC_REQUIRE(channel_mgr != NULL);
 	DBC_REQUIRE(mgr_attrts != NULL);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*channel_mgr = NULL;
 
 	/* Validate args: */
@@ -99,8 +126,16 @@ int chnl_create(struct chnl_mgr **channel_mgr,
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_ENSURE(status || chnl_mgr_obj);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_ENSURE(status || chnl_mgr_obj);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return status;
 }
 
@@ -115,8 +150,16 @@ int chnl_destroy(struct chnl_mgr *hchnl_mgr)
 	struct bridge_drv_interface *intf_fxns;
 	int status;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	DBC_REQUIRE(refs > 0);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	DBC_REQUIRE(refs > 0);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (chnl_mgr_obj) {
 		intf_fxns = chnl_mgr_obj->intf_fxns;
 		/* Let Bridge channel module destroy the chnl_mgr: */
@@ -127,6 +170,11 @@ int chnl_destroy(struct chnl_mgr *hchnl_mgr)
 
 	return status;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *  ======== chnl_exit ========
@@ -160,3 +208,7 @@ bool chnl_init(void)
 
 	return ret;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -39,12 +39,17 @@ kvm-e500-objs := \
 kvm-objs-$(CONFIG_KVM_E500) := $(kvm-e500-objs)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kvm-book3s_64-objs-$(CONFIG_KVM_BOOK3S_64_PR) := \
 	../../../virt/kvm/coalesced_mmio.o \
 	fpu.o \
 	book3s_paired_singles.o \
 	book3s_pr.o \
 	book3s_pr_papr.o \
+<<<<<<< HEAD
+=======
 =======
 kvm-book3s_64-objs := \
 	$(common-objs-y) \
@@ -52,6 +57,7 @@ kvm-book3s_64-objs := \
 	book3s_paired_singles.o \
 	book3s.o \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	book3s_emulate.o \
 	book3s_interrupts.o \
 	book3s_mmu_hpte.o \
@@ -59,6 +65,9 @@ kvm-book3s_64-objs := \
 	book3s_64_mmu.o \
 	book3s_32_mmu.o
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 kvm-book3s_64-builtin-objs-$(CONFIG_KVM_BOOK3S_64_PR) := \
 	book3s_rmhandlers.o
 
@@ -80,9 +89,12 @@ kvm-book3s_64-module-objs := \
 	$(kvm-book3s_64-objs-y)
 
 kvm-objs-$(CONFIG_KVM_BOOK3S_64) := $(kvm-book3s_64-module-objs)
+<<<<<<< HEAD
+=======
 =======
 kvm-objs-$(CONFIG_KVM_BOOK3S_64) := $(kvm-book3s_64-objs)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 kvm-book3s_32-objs := \
 	$(common-objs-y) \
@@ -92,7 +104,11 @@ kvm-book3s_32-objs := \
 <<<<<<< HEAD
 	book3s_pr.o \
 =======
+<<<<<<< HEAD
+	book3s_pr.o \
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	book3s_emulate.o \
 	book3s_interrupts.o \
 	book3s_mmu_hpte.o \
@@ -110,4 +126,8 @@ obj-$(CONFIG_KVM_BOOK3S_32) += kvm.o
 <<<<<<< HEAD
 obj-y += $(kvm-book3s_64-builtin-objs-y)
 =======
+<<<<<<< HEAD
+obj-y += $(kvm-book3s_64-builtin-objs-y)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

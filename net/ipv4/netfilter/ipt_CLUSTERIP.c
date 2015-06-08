@@ -318,6 +318,9 @@ clusterip_tg(struct sk_buff *skb, const struct xt_action_param *par)
 
 	switch (ctinfo) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case IP_CT_NEW:
 		ct->mark = hash;
 		break;
@@ -331,6 +334,8 @@ clusterip_tg(struct sk_buff *skb, const struct xt_action_param *par)
 		break;
 	default:			/* Prevent gcc warnings */
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case IP_CT_NEW:
 			ct->mark = hash;
@@ -346,6 +351,7 @@ clusterip_tg(struct sk_buff *skb, const struct xt_action_param *par)
 		default:
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 #ifdef DEBUG
@@ -413,8 +419,11 @@ static int clusterip_tg_check(const struct xt_tgchk_param *par)
 			if (!config) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 				pr_info("cannot allocate config\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				dev_put(dev);
 				return -ENOMEM;
 			}

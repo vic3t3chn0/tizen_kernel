@@ -33,8 +33,12 @@ struct unwind_idx {
 <<<<<<< HEAD
 	unsigned long addr_offset;
 =======
+<<<<<<< HEAD
+	unsigned long addr_offset;
+=======
 	unsigned long addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long insn;
 };
 
@@ -45,9 +49,15 @@ struct unwind_table {
 	const struct unwind_idx *origin;
 	const struct unwind_idx *stop;
 =======
+<<<<<<< HEAD
+	const struct unwind_idx *start;
+	const struct unwind_idx *origin;
+	const struct unwind_idx *stop;
+=======
 	struct unwind_idx *start;
 	struct unwind_idx *stop;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long begin_addr;
 	unsigned long end_addr;
 };
@@ -61,6 +71,8 @@ extern void unwind_backtrace(struct pt_regs *regs, struct task_struct *tsk);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ARM_UNWIND
 extern int __init unwind_init(void);
 #else
@@ -71,6 +83,7 @@ static inline int __init unwind_init(void)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* !__ASSEMBLY__ */
 
 #ifdef CONFIG_ARM_UNWIND

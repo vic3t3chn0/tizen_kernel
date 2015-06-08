@@ -1,8 +1,17 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * $Id: pmcc4_drv.c,v 3.1 2007/08/15 23:32:17 rickd PMCC4_3_1B $
  */
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*-----------------------------------------------------------------------------
  * pmcc4_drv.c -
  *
@@ -22,6 +31,15 @@
  * For further information, contact via email: support@onestopsystems.com
  * One Stop Systems, Inc.  Escondido, California  U.S.A.
  *-----------------------------------------------------------------------------
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * RCS info:
  * RCS revision: $Revision: 3.1 $
  * Last changed on $Date: 2007/08/15 23:32:17 $
@@ -90,6 +108,10 @@ char        OSSIid_pmcc4_drvc[] =
 #include <sys/systm.h>
 #include <sys/errno.h>
 #else
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/types.h>
 #include "pmcc4_sysdep.h"
 #include <linux/errno.h>
@@ -98,7 +120,14 @@ char        OSSIid_pmcc4_drvc[] =
 #include <linux/timer.h>        /* include for timer */
 #include <linux/hdlc.h>
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #endif
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "sbecom_inline_linux.h"
 #include "libsbew.h"

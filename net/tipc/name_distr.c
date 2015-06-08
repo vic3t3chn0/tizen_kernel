@@ -97,8 +97,12 @@ static struct sk_buff *named_prepare_buf(u32 type, u32 size, u32 dest)
 <<<<<<< HEAD
 	struct sk_buff *buf = tipc_buf_acquire(INT_H_SIZE + size);
 =======
+<<<<<<< HEAD
+	struct sk_buff *buf = tipc_buf_acquire(INT_H_SIZE + size);
+=======
 	struct sk_buff *buf = tipc_buf_acquire(LONG_H_SIZE + size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tipc_msg *msg;
 
 	if (buf != NULL) {
@@ -107,9 +111,14 @@ static struct sk_buff *named_prepare_buf(u32 type, u32 size, u32 dest)
 		tipc_msg_init(msg, NAME_DISTRIBUTOR, type, INT_H_SIZE, dest);
 		msg_set_size(msg, INT_H_SIZE + size);
 =======
+<<<<<<< HEAD
+		tipc_msg_init(msg, NAME_DISTRIBUTOR, type, INT_H_SIZE, dest);
+		msg_set_size(msg, INT_H_SIZE + size);
+=======
 		tipc_msg_init(msg, NAME_DISTRIBUTOR, type, LONG_H_SIZE, dest);
 		msg_set_size(msg, LONG_H_SIZE + size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return buf;
 }
@@ -132,8 +141,12 @@ static void named_cluster_distribute(struct sk_buff *buf)
 <<<<<<< HEAD
 	kfree_skb(buf);
 =======
+<<<<<<< HEAD
+	kfree_skb(buf);
+=======
 	buf_discard(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -187,6 +200,9 @@ void tipc_named_withdraw(struct publication *publ)
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void tipc_named_node_up(unsigned long nodearg)
 {
 	struct tipc_node *n_ptr;
@@ -221,6 +237,8 @@ void tipc_named_node_up(unsigned long nodearg)
 	INIT_LIST_HEAD(&message_list);
 
 	read_lock_bh(&tipc_nametbl_lock);
+<<<<<<< HEAD
+=======
 =======
 void tipc_named_node_up(unsigned long node)
 {
@@ -235,6 +253,7 @@ void tipc_named_node_up(unsigned long node)
 	max_item_buf = TIPC_MAX_USER_MSG_SIZE / ITEM_SIZE;
 	max_item_buf *= ITEM_SIZE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rest = publ_cnt * ITEM_SIZE;
 
 	list_for_each_entry(publ, &publ_root, local_list) {
@@ -255,9 +274,13 @@ void tipc_named_node_up(unsigned long node)
 <<<<<<< HEAD
 			list_add_tail((struct list_head *)buf, &message_list);
 =======
+<<<<<<< HEAD
+			list_add_tail((struct list_head *)buf, &message_list);
+=======
 			msg_set_link_selector(buf_msg(buf), node);
 			tipc_link_send(buf, node, node);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			buf = NULL;
 		}
 	}
@@ -267,7 +290,12 @@ exit:
 
 	tipc_link_send_names(&message_list, (u32)node);
 =======
+<<<<<<< HEAD
+
+	tipc_link_send_names(&message_list, (u32)node);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -277,10 +305,13 @@ exit:
  * Removes publication structure from name table & deletes it.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * In rare cases the link may have come back up again when this
  * function is called, and we have two items representing the same
  * publication. Nudge this item's key to distinguish it from the other.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 static void named_purge_publ(struct publication *publ)
@@ -290,8 +321,11 @@ static void named_purge_publ(struct publication *publ)
 	write_lock_bh(&tipc_nametbl_lock);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	publ->key += 1222345;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	p = tipc_nametbl_remove_publ(publ->type, publ->lower,
 				     publ->node, publ->ref, publ->key);
 	if (p)
@@ -361,8 +395,12 @@ void tipc_named_recv(struct sk_buff *buf)
 <<<<<<< HEAD
 	kfree_skb(buf);
 =======
+<<<<<<< HEAD
+	kfree_skb(buf);
+=======
 	buf_discard(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -373,11 +411,17 @@ void tipc_named_recv(struct sk_buff *buf)
  * All existing publications by this node that have "cluster" or "zone" scope
  * are updated to reflect the node's new network address.
 =======
+<<<<<<< HEAD
+ * This routine is called whenever TIPC networking is enabled.
+ * All existing publications by this node that have "cluster" or "zone" scope
+ * are updated to reflect the node's new network address.
+=======
  * This routine is called whenever TIPC networking is (re)enabled.
  * All existing publications by this node that have "cluster" or "zone" scope
  * are updated to reflect the node's current network address.
  * (If the node's address is unchanged, the update loop terminates immediately.)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 void tipc_named_reinit(void)
@@ -386,10 +430,15 @@ void tipc_named_reinit(void)
 
 	write_lock_bh(&tipc_nametbl_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list_for_each_entry(publ, &publ_root, local_list)
 		publ->node = tipc_own_addr;
 
+<<<<<<< HEAD
+=======
 =======
 	list_for_each_entry(publ, &publ_root, local_list) {
 		if (publ->node == tipc_own_addr)
@@ -397,5 +446,6 @@ void tipc_named_reinit(void)
 		publ->node = tipc_own_addr;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	write_unlock_bh(&tipc_nametbl_lock);
 }

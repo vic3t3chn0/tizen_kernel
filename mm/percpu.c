@@ -70,7 +70,11 @@
 <<<<<<< HEAD
 #include <linux/kmemleak.h>
 =======
+<<<<<<< HEAD
+#include <linux/kmemleak.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/cacheflush.h>
 #include <asm/sections.h>
@@ -278,11 +282,16 @@ static void __maybe_unused pcpu_next_pop(struct pcpu_chunk *chunk,
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * pcpu_mem_zalloc - allocate memory
  * @size: bytes to allocate
  *
  * Allocate @size bytes.  If @size is smaller than PAGE_SIZE,
  * kzalloc() is used; otherwise, vzalloc() is used.  The returned
+<<<<<<< HEAD
+=======
 =======
  * pcpu_mem_alloc - allocate memory
  * @size: bytes to allocate
@@ -290,6 +299,7 @@ static void __maybe_unused pcpu_next_pop(struct pcpu_chunk *chunk,
  * Allocate @size bytes.  If @size is smaller than PAGE_SIZE,
  * kzalloc() is used; otherwise, vmalloc() is used.  The returned
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * memory is always zeroed.
  *
  * CONTEXT:
@@ -301,8 +311,12 @@ static void __maybe_unused pcpu_next_pop(struct pcpu_chunk *chunk,
 <<<<<<< HEAD
 static void *pcpu_mem_zalloc(size_t size)
 =======
+<<<<<<< HEAD
+static void *pcpu_mem_zalloc(size_t size)
+=======
 static void *pcpu_mem_alloc(size_t size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (WARN_ON_ONCE(!slab_is_available()))
 		return NULL;
@@ -321,8 +335,12 @@ static void *pcpu_mem_alloc(size_t size)
 <<<<<<< HEAD
  * Free @ptr.  @ptr should have been allocated using pcpu_mem_zalloc().
 =======
+<<<<<<< HEAD
+ * Free @ptr.  @ptr should have been allocated using pcpu_mem_zalloc().
+=======
  * Free @ptr.  @ptr should have been allocated using pcpu_mem_alloc().
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void pcpu_mem_free(void *ptr, size_t size)
 {
@@ -407,8 +425,12 @@ static int pcpu_extend_area_map(struct pcpu_chunk *chunk, int new_alloc)
 <<<<<<< HEAD
 	new = pcpu_mem_zalloc(new_size);
 =======
+<<<<<<< HEAD
+	new = pcpu_mem_zalloc(new_size);
+=======
 	new = pcpu_mem_alloc(new_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!new)
 		return -ENOMEM;
 
@@ -629,12 +651,17 @@ static struct pcpu_chunk *pcpu_alloc_chunk(void)
 	struct pcpu_chunk *chunk;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chunk = pcpu_mem_zalloc(pcpu_chunk_struct_size);
 	if (!chunk)
 		return NULL;
 
 	chunk->map = pcpu_mem_zalloc(PCPU_DFL_MAP_ALLOC *
 						sizeof(chunk->map[0]));
+<<<<<<< HEAD
+=======
 =======
 	chunk = pcpu_mem_alloc(pcpu_chunk_struct_size);
 	if (!chunk)
@@ -642,6 +669,7 @@ static struct pcpu_chunk *pcpu_alloc_chunk(void)
 
 	chunk->map = pcpu_mem_alloc(PCPU_DFL_MAP_ALLOC * sizeof(chunk->map[0]));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!chunk->map) {
 		kfree(chunk);
 		return NULL;
@@ -745,7 +773,11 @@ static void __percpu *pcpu_alloc(size_t size, size_t align, bool reserved)
 <<<<<<< HEAD
 	void __percpu *ptr;
 =======
+<<<<<<< HEAD
+	void __percpu *ptr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (unlikely(!size || size > PCPU_MIN_UNIT_SIZE || align > PAGE_SIZE)) {
 		WARN(true, "illegal size (%zu) or align (%zu) for "
@@ -843,8 +875,14 @@ area_found:
 	kmemleak_alloc_percpu(ptr, size);
 	return ptr;
 =======
+<<<<<<< HEAD
+	ptr = __addr_to_pcpu_ptr(chunk->base_addr + off);
+	kmemleak_alloc_percpu(ptr, size);
+	return ptr;
+=======
 	return __addr_to_pcpu_ptr(chunk->base_addr + off);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 fail_unlock:
 	spin_unlock_irqrestore(&pcpu_lock, flags);
@@ -962,7 +1000,12 @@ void free_percpu(void __percpu *ptr)
 	kmemleak_free_percpu(ptr);
 
 =======
+<<<<<<< HEAD
+	kmemleak_free_percpu(ptr);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addr = __pcpu_ptr_to_addr(ptr);
 
 	spin_lock_irqsave(&pcpu_lock, flags);
@@ -1026,6 +1069,9 @@ bool is_kernel_percpu_address(unsigned long addr)
  * until this function finishes.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * percpu allocator has special setup for the first chunk, which currently
  * supports either embedding in linear address space or vmalloc mapping,
  * and, from the second one, the backing allocator (currently either vm or
@@ -1037,8 +1083,11 @@ bool is_kernel_percpu_address(unsigned long addr)
  * allocator itself and per_cpu_ptr_to_phys() callers. So we keep current
  * code.
  *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * RETURNS:
  * The physical address for @addr.
  */
@@ -1177,6 +1226,9 @@ static void pcpu_dump_alloc_info(const char *lvl,
 		     alloc < alloc_end; alloc++) {
 			if (!(alloc % apl)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				printk(KERN_CONT "\n");
 				printk("%spcpu-alloc: ", lvl);
 			}
@@ -1191,6 +1243,8 @@ static void pcpu_dump_alloc_info(const char *lvl,
 		}
 	}
 	printk(KERN_CONT "\n");
+<<<<<<< HEAD
+=======
 =======
 				printk("\n");
 				printk("%spcpu-alloc: ", lvl);
@@ -1207,6 +1261,7 @@ static void pcpu_dump_alloc_info(const char *lvl,
 	}
 	printk("\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -1710,7 +1765,12 @@ int __init pcpu_embed_first_chunk(size_t reserved_size, size_t dyn_size,
 		/* kmemleak tracks the percpu allocations separately */
 		kmemleak_free(ptr);
 =======
+<<<<<<< HEAD
+		/* kmemleak tracks the percpu allocations separately */
+		kmemleak_free(ptr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		areas[group] = ptr;
 
 		base = min(ptr, base);
@@ -1839,7 +1899,12 @@ int __init pcpu_page_first_chunk(size_t reserved_size,
 			/* kmemleak tracks the percpu allocations separately */
 			kmemleak_free(ptr);
 =======
+<<<<<<< HEAD
+			/* kmemleak tracks the percpu allocations separately */
+			kmemleak_free(ptr);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pages[j++] = virt_to_page(ptr);
 		}
 
@@ -1966,7 +2031,12 @@ void __init setup_per_cpu_areas(void)
 	/* kmemleak tracks the percpu allocations separately */
 	kmemleak_free(fc);
 =======
+<<<<<<< HEAD
+	/* kmemleak tracks the percpu allocations separately */
+	kmemleak_free(fc);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ai->dyn_size = unit_size;
 	ai->unit_size = unit_size;
@@ -2004,8 +2074,12 @@ void __init percpu_init_late(void)
 <<<<<<< HEAD
 		map = pcpu_mem_zalloc(size);
 =======
+<<<<<<< HEAD
+		map = pcpu_mem_zalloc(size);
+=======
 		map = pcpu_mem_alloc(size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUG_ON(!map);
 
 		spin_lock_irqsave(&pcpu_lock, flags);

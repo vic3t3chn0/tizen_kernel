@@ -7,6 +7,9 @@
 #
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 targets := vmImage vmImage.bin vmImage.bz2 vmImage.gz vmImage.lzma vmImage.lzo vmImage.xip
 extra-y += vmlinux.bin vmlinux.bin.gz vmlinux.bin.bz2 vmlinux.bin.lzma vmlinux.bin.lzo vmlinux.bin.xip
 
@@ -18,6 +21,8 @@ endif
 UIMAGE_ENTRYADDR = $(shell $(NM) vmlinux | awk '$$NF == "__start" {print $$1}')
 UIMAGE_NAME = '$(CPU_REV)-$(KERNELRELEASE)'
 UIMAGE_OPTS-$(CONFIG_ROMKERNEL) += -x
+<<<<<<< HEAD
+=======
 =======
 MKIMAGE := $(srctree)/scripts/mkuboot.sh
 
@@ -34,6 +39,7 @@ quiet_cmd_uimage = UIMAGE  $@
                    -e $(shell $(NM) vmlinux | awk '$$NF == "__start" {print $$1}') \
                    $(UIMAGE_OPTS-y) -d $< $@
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 $(obj)/vmlinux.bin: vmlinux FORCE
 	$(call if_changed,objcopy)

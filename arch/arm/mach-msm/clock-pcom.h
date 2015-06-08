@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2009-2011, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2009-2011, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2009, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -21,7 +25,12 @@
 #include <mach/clk-provider.h>
 
 =======
+<<<<<<< HEAD
+#include <mach/clk-provider.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* clock IDs used by the modem processor */
 
 #define P_ACPU_CLK	0   /* Applications processor clock */
@@ -127,6 +136,9 @@
 #define P_CE_CLK		100 /* Crypto engine */
 #define P_CODEC_SSBI_CLK	101
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define P_TCXO_DIV4_CLK		102
 #define P_GSBI1_QUP_CLK		103
 #define P_GSBI2_QUP_CLK		104
@@ -175,6 +187,8 @@ static inline struct pcom_clk *to_pcom_clk(struct clk *clk)
 			.dbg_name = #clk_id, \
 			CLK_INIT(clk_name.c), \
 		}, \
+<<<<<<< HEAD
+=======
 =======
 
 #define P_NR_CLKS		102
@@ -195,6 +209,7 @@ int pc_clk_reset(unsigned id, enum clk_reset_action action);
 		.dbg_name = #clk_id, \
 	}, \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 #endif

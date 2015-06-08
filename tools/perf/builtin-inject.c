@@ -12,7 +12,11 @@
 <<<<<<< HEAD
 #include "util/tool.h"
 =======
+<<<<<<< HEAD
+#include "util/tool.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "util/debug.h"
 
 #include "util/parse-options.h"
@@ -25,9 +29,15 @@ static int perf_event__repipe_synth(struct perf_tool *tool __used,
 				    union perf_event *event,
 				    struct machine *machine __used)
 =======
+<<<<<<< HEAD
+static int perf_event__repipe_synth(struct perf_tool *tool __used,
+				    union perf_event *event,
+				    struct machine *machine __used)
+=======
 static int perf_event__repipe_synth(union perf_event *event,
 				    struct perf_session *session __used)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	uint32_t size;
 	void *buf = event;
@@ -47,6 +57,9 @@ static int perf_event__repipe_synth(union perf_event *event,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int perf_event__repipe_op2_synth(struct perf_tool *tool,
 					union perf_event *event,
 					struct perf_session *session __used)
@@ -98,6 +111,8 @@ static int perf_event__repipe_mmap(struct perf_tool *tool,
 
 	err = perf_event__process_mmap(tool, event, sample, machine);
 	perf_event__repipe(tool, event, sample, machine);
+<<<<<<< HEAD
+=======
 =======
 static int perf_event__repipe(union perf_event *event,
 			      struct perf_sample *sample __used,
@@ -123,11 +138,15 @@ static int perf_event__repipe_mmap(union perf_event *event,
 	err = perf_event__process_mmap(event, sample, session);
 	perf_event__repipe(event, sample, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int perf_event__repipe_task(struct perf_tool *tool,
 				   union perf_event *event,
 				   struct perf_sample *sample,
@@ -137,6 +156,8 @@ static int perf_event__repipe_task(struct perf_tool *tool,
 
 	err = perf_event__process_task(tool, event, sample, machine);
 	perf_event__repipe(tool, event, sample, machine);
+<<<<<<< HEAD
+=======
 =======
 static int perf_event__repipe_task(union perf_event *event,
 				   struct perf_sample *sample,
@@ -147,6 +168,7 @@ static int perf_event__repipe_task(union perf_event *event,
 	err = perf_event__process_task(event, sample, session);
 	perf_event__repipe(event, sample, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
@@ -159,8 +181,12 @@ static int perf_event__repipe_tracing_data(union perf_event *event,
 <<<<<<< HEAD
 	perf_event__repipe_synth(NULL, event, NULL);
 =======
+<<<<<<< HEAD
+	perf_event__repipe_synth(NULL, event, NULL);
+=======
 	perf_event__repipe_synth(event, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = perf_event__process_tracing_data(event, session);
 
 	return err;
@@ -181,16 +207,22 @@ static int dso__read_build_id(struct dso *self)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int dso__inject_build_id(struct dso *self, struct perf_tool *tool,
 				struct machine *machine)
 {
 	u16 misc = PERF_RECORD_MISC_USER;
+<<<<<<< HEAD
+=======
 =======
 static int dso__inject_build_id(struct dso *self, struct perf_session *session)
 {
 	u16 misc = PERF_RECORD_MISC_USER;
 	struct machine *machine;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 
 	if (dso__read_build_id(self) < 0) {
@@ -199,11 +231,16 @@ static int dso__inject_build_id(struct dso *self, struct perf_session *session)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (self->kernel)
 		misc = PERF_RECORD_MISC_KERNEL;
 
 	err = perf_event__synthesize_build_id(tool, self, misc, perf_event__repipe,
 					      machine);
+<<<<<<< HEAD
+=======
 =======
 	machine = perf_session__find_host_machine(session);
 	if (machine == NULL) {
@@ -217,6 +254,7 @@ static int dso__inject_build_id(struct dso *self, struct perf_session *session)
 	err = perf_event__synthesize_build_id(self, misc, perf_event__repipe,
 					      machine, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		pr_err("Can't synthesize build_id event for %s\n", self->long_name);
 		return -1;
@@ -226,17 +264,23 @@ static int dso__inject_build_id(struct dso *self, struct perf_session *session)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int perf_event__inject_buildid(struct perf_tool *tool,
 				      union perf_event *event,
 				      struct perf_sample *sample,
 				      struct perf_evsel *evsel __used,
 				      struct machine *machine)
+<<<<<<< HEAD
+=======
 =======
 static int perf_event__inject_buildid(union perf_event *event,
 				      struct perf_sample *sample,
 				      struct perf_evsel *evsel __used,
 				      struct perf_session *session)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct addr_location al;
 	struct thread *thread;
@@ -247,8 +291,12 @@ static int perf_event__inject_buildid(union perf_event *event,
 <<<<<<< HEAD
 	thread = machine__findnew_thread(machine, event->ip.pid);
 =======
+<<<<<<< HEAD
+	thread = machine__findnew_thread(machine, event->ip.pid);
+=======
 	thread = perf_session__findnew(session, event->ip.pid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (thread == NULL) {
 		pr_err("problem processing %d event, skipping it.\n",
 		       event->header.type);
@@ -259,9 +307,14 @@ static int perf_event__inject_buildid(union perf_event *event,
 	thread__find_addr_map(thread, machine, cpumode, MAP__FUNCTION,
 			      event->ip.ip, &al);
 =======
+<<<<<<< HEAD
+	thread__find_addr_map(thread, machine, cpumode, MAP__FUNCTION,
+			      event->ip.ip, &al);
+=======
 	thread__find_addr_map(thread, session, cpumode, MAP__FUNCTION,
 			      event->ip.pid, event->ip.ip, &al);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (al.map != NULL) {
 		if (!al.map->dso->hit) {
@@ -270,8 +323,12 @@ static int perf_event__inject_buildid(union perf_event *event,
 <<<<<<< HEAD
 				dso__inject_build_id(al.map->dso, tool, machine);
 =======
+<<<<<<< HEAD
+				dso__inject_build_id(al.map->dso, tool, machine);
+=======
 				dso__inject_build_id(al.map->dso, session);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/*
 				 * If this fails, too bad, let the other side
 				 * account this as unresolved.
@@ -285,11 +342,16 @@ static int perf_event__inject_buildid(union perf_event *event,
 
 repipe:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	perf_event__repipe(tool, event, sample, machine);
 	return 0;
 }
 
 struct perf_tool perf_inject = {
+<<<<<<< HEAD
+=======
 =======
 	perf_event__repipe(event, sample, session);
 	return 0;
@@ -297,6 +359,7 @@ struct perf_tool perf_inject = {
 
 struct perf_event_ops inject_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.sample		= perf_event__repipe_sample,
 	.mmap		= perf_event__repipe,
 	.comm		= perf_event__repipe,
@@ -304,6 +367,9 @@ struct perf_event_ops inject_ops = {
 	.exit		= perf_event__repipe,
 	.lost		= perf_event__repipe,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read		= perf_event__repipe_sample,
 	.throttle	= perf_event__repipe,
 	.unthrottle	= perf_event__repipe,
@@ -311,6 +377,8 @@ struct perf_event_ops inject_ops = {
 	.event_type	= perf_event__repipe_event_type_synth,
 	.tracing_data	= perf_event__repipe_tracing_data_synth,
 	.build_id	= perf_event__repipe_op2_synth,
+<<<<<<< HEAD
+=======
 =======
 	.read		= perf_event__repipe,
 	.throttle	= perf_event__repipe,
@@ -320,6 +388,7 @@ struct perf_event_ops inject_ops = {
 	.tracing_data 	= perf_event__repipe_synth,
 	.build_id 	= perf_event__repipe_synth,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern volatile int session_done;
@@ -338,6 +407,9 @@ static int __cmd_inject(void)
 
 	if (inject_build_ids) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		perf_inject.sample	 = perf_event__inject_buildid;
 		perf_inject.mmap	 = perf_event__repipe_mmap;
 		perf_inject.fork	 = perf_event__repipe_task;
@@ -349,6 +421,8 @@ static int __cmd_inject(void)
 		return -ENOMEM;
 
 	ret = perf_session__process_events(session, &perf_inject);
+<<<<<<< HEAD
+=======
 =======
 		inject_ops.sample	= perf_event__inject_buildid;
 		inject_ops.mmap		= perf_event__repipe_mmap;
@@ -362,6 +436,7 @@ static int __cmd_inject(void)
 
 	ret = perf_session__process_events(session, &inject_ops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	perf_session__delete(session);
 

@@ -1298,7 +1298,12 @@ static int upload_dsp_code(void)
 	int ret = 0;
 
 =======
+<<<<<<< HEAD
+	int ret = 0;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msnd_outb(HPBLKSEL_0, dev.io + HP_BLKS);
 #ifndef HAVE_DSPCODEH
 	INITCODESIZE = mod_firmware_load(INITCODEFILE, &INITCODE);
@@ -1321,8 +1326,13 @@ static int upload_dsp_code(void)
 		ret = -ENODEV;
 		goto out;
 =======
+<<<<<<< HEAD
+		ret = -ENODEV;
+		goto out;
+=======
 		return -ENODEV;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 #ifdef HAVE_DSPCODEH
 	printk(KERN_INFO LOGNAME ": DSP firmware uploaded (resident)\n");
@@ -1333,7 +1343,11 @@ static int upload_dsp_code(void)
 <<<<<<< HEAD
 out:
 =======
+<<<<<<< HEAD
+out:
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef HAVE_DSPCODEH
 	vfree(INITCODE);
 	vfree(PERMCODE);
@@ -1342,8 +1356,12 @@ out:
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef MSND_CLASSIC
@@ -1652,8 +1670,12 @@ static int joystick_io __initdata = 0;
 <<<<<<< HEAD
 static bool digital __initdata = false;
 =======
+<<<<<<< HEAD
+static bool digital __initdata = false;
+=======
 static int digital __initdata = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 static int fifosize __initdata =	DEFFIFOSIZE;
@@ -1726,8 +1748,12 @@ static int joystick_io __initdata =	CONFIG_MSNDPIN_JOYSTICK_IO;
 <<<<<<< HEAD
 static bool digital __initdata =	CONFIG_MSNDPIN_DIGITAL;
 =======
+<<<<<<< HEAD
+static bool digital __initdata =	CONFIG_MSNDPIN_DIGITAL;
+=======
 static int digital __initdata =		CONFIG_MSNDPIN_DIGITAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* MSND_CLASSIC */
 

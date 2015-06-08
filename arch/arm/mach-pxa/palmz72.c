@@ -36,7 +36,11 @@
 <<<<<<< HEAD
 #include <asm/suspend.h>
 =======
+<<<<<<< HEAD
+#include <asm/suspend.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 
@@ -403,6 +407,9 @@ static void __init palmz72_init(void)
 
 MACHINE_START(PALMZ72, "Palm Zire72")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= pxa27x_map_io,
 	.nr_irqs	= PXA_NR_IRQS,
@@ -411,6 +418,8 @@ MACHINE_START(PALMZ72, "Palm Zire72")
 	.timer		= &pxa_timer,
 	.init_machine	= palmz72_init,
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= pxa27x_map_io,
@@ -418,4 +427,5 @@ MACHINE_START(PALMZ72, "Palm Zire72")
 	.timer		= &pxa_timer,
 	.init_machine	= palmz72_init
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

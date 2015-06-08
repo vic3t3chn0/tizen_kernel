@@ -1,4 +1,26 @@
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * emc2103.c - Support for SMSC EMC2103
+ * Copyright (c) 2010 SMSC
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     emc2103.c - Support for SMSC EMC2103
     Copyright (c) 2010 SMSC
 
@@ -16,6 +38,10 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/module.h>
 #include <linux/init.h>
@@ -48,14 +74,36 @@ static const u8 REG_TEMP_MAX[4] = { 0x34, 0x30, 0x31, 0x32 };
 /* equation 4 from datasheet: rpm = (3932160 * multipler) / count */
 #define FAN_RPM_FACTOR		3932160
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * 2103-2 and 2103-4's 3rd temperature sensor can be connected to two diodes
+=======
 /* 2103-2 and 2103-4's 3rd temperature sensor can be connected to two diodes
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* 2103-2 and 2103-4's 3rd temperature sensor can be connected to two diodes
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * in anti-parallel mode, and in this configuration both can be read
  * independently (so we have 4 temperature inputs).  The device can't
  * detect if it's connected in this mode, so we have to manually enable
  * it.  Default is to leave the device in the state it's already in (-1).
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * This parameter allows APD mode to be optionally forced on or off
+ */
+static int apd = -1;
+module_param(apd, bint, 0);
+=======
  * This parameter allows APD mode to be optionally forced on or off */
 static int apd = -1;
 module_param(apd, bool, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * This parameter allows APD mode to be optionally forced on or off */
+static int apd = -1;
+module_param(apd, bool, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_PARM_DESC(init, "Set to zero to disable anti-parallel diode mode");
 
 struct temperature {
@@ -244,7 +292,15 @@ static ssize_t set_temp_min(struct device *dev, struct device_attribute *da,
 	struct emc2103_data *data = i2c_get_clientdata(client);
 	long val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int result = kstrtol(buf, 10, &val);
+=======
 	int result = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int result = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result < 0)
 		return -EINVAL;
 
@@ -268,7 +324,15 @@ static ssize_t set_temp_max(struct device *dev, struct device_attribute *da,
 	struct emc2103_data *data = i2c_get_clientdata(client);
 	long val;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int result = kstrtol(buf, 10, &val);
+=======
 	int result = strict_strtol(buf, 10, &val);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int result = strict_strtol(buf, 10, &val);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result < 0)
 		return -EINVAL;
 
@@ -302,10 +366,25 @@ show_fan_div(struct device *dev, struct device_attribute *da, char *buf)
 	return sprintf(buf, "%d\n", fan_div);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * Note: we also update the fan target here, because its value is
+ * determined in part by the fan clock divider.  This follows the principle
+ * of least surprise; the user doesn't expect the fan target to change just
+ * because the divider changed.
+ */
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Note: we also update the fan target here, because its value is
    determined in part by the fan clock divider.  This follows the principle
    of least surprise; the user doesn't expect the fan target to change just
    because the divider changed. */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t set_fan_div(struct device *dev, struct device_attribute *da,
 			   const char *buf, size_t count)
 {
@@ -314,7 +393,15 @@ static ssize_t set_fan_div(struct device *dev, struct device_attribute *da,
 	int new_range_bits, old_div = 8 / data->fan_multiplier;
 	long new_div;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int status = kstrtol(buf, 10, &new_div);
+=======
 	int status = strict_strtol(buf, 10, &new_div);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int status = strict_strtol(buf, 10, &new_div);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status < 0)
 		return -EINVAL;
 
@@ -388,7 +475,15 @@ static ssize_t set_fan_target(struct device *dev, struct device_attribute *da,
 	struct i2c_client *client = to_i2c_client(dev);
 	long rpm_target;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int result = kstrtol(buf, 10, &rpm_target);
+=======
 	int result = strict_strtol(buf, 10, &rpm_target);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int result = strict_strtol(buf, 10, &rpm_target);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result < 0)
 		return -EINVAL;
 
@@ -434,7 +529,15 @@ static ssize_t set_pwm_enable(struct device *dev, struct device_attribute *da,
 	long new_value;
 	u8 conf_reg;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int result = kstrtol(buf, 10, &new_value);
+=======
 	int result = strict_strtol(buf, 10, &new_value);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int result = strict_strtol(buf, 10, &new_value);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (result < 0)
 		return -EINVAL;
 
@@ -722,6 +825,12 @@ static struct i2c_driver emc2103_driver = {
 	.address_list	= normal_i2c,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(emc2103_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init sensors_emc2103_init(void)
 {
 	return i2c_add_driver(&emc2103_driver);
@@ -731,10 +840,23 @@ static void __exit sensors_emc2103_exit(void)
 {
 	i2c_del_driver(&emc2103_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Steve Glendinning <steve.glendinning@smsc.com>");
 MODULE_DESCRIPTION("SMSC EMC2103 hwmon driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(sensors_emc2103_init);
 module_exit(sensors_emc2103_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(sensors_emc2103_init);
+module_exit(sensors_emc2103_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -1375,6 +1375,12 @@ static struct i2c_driver saa717x_driver = {
 	.id_table	= saa717x_id,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(saa717x_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __init int init_saa717x(void)
 {
 	return i2c_add_driver(&saa717x_driver);
@@ -1387,3 +1393,7 @@ static __exit void exit_saa717x(void)
 
 module_init(init_saa717x);
 module_exit(exit_saa717x);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

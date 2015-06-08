@@ -124,8 +124,12 @@ MACHINE_START(GURUPLUG, "Marvell GuruPlug Reference Board")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= guruplug_init,
 	.map_io		= kirkwood_map_io,
 	.init_early	= kirkwood_init_early,
@@ -134,5 +138,9 @@ MACHINE_START(GURUPLUG, "Marvell GuruPlug Reference Board")
 <<<<<<< HEAD
 	.restart	= kirkwood_restart,
 =======
+<<<<<<< HEAD
+	.restart	= kirkwood_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

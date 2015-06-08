@@ -32,16 +32,22 @@
 #include <mach/hardware.h>
 #include <mach/system.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/proc_comm.h>
 
 #include "board-mahimahi.h"
 #include "devices.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "board-mahimahi.h"
 #include "devices.h"
 #include "proc_comm.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static uint debug_uart;
 
@@ -64,9 +70,14 @@ static void __init mahimahi_init(void)
 static void __init mahimahi_fixup(struct tag *tags, char **cmdline,
 				  struct meminfo *mi)
 =======
+<<<<<<< HEAD
+static void __init mahimahi_fixup(struct tag *tags, char **cmdline,
+				  struct meminfo *mi)
+=======
 static void __init mahimahi_fixup(struct machine_desc *desc, struct tag *tags,
 				 char **cmdline, struct meminfo *mi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mi->nr_banks = 2;
 	mi->bank[0].start = PHYS_OFFSET;
@@ -89,8 +100,12 @@ MACHINE_START(MAHIMAHI, "mahimahi")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0x20000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fixup		= mahimahi_fixup,
 	.map_io		= mahimahi_map_io,
 	.init_irq	= msm_init_irq,

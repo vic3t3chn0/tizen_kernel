@@ -97,6 +97,9 @@
 #define IRQ_EB11MP_L220_DECODE	(IRQ_EB_GIC_START + 31)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The 11MPcore tile leaves the following unconnected.
  */
@@ -110,6 +113,8 @@
 #define IRQ_EB11MP_GPIO2	0
 #define IRQ_EB11MP_SCI		0
 #define IRQ_EB11MP_SSP		0
+<<<<<<< HEAD
+=======
 =======
 #define IRQ_EB11MP_UART2	-1
 #define IRQ_EB11MP_UART3	-1
@@ -122,6 +127,7 @@
 #define IRQ_EB11MP_SCI		-1
 #define IRQ_EB11MP_SSP		-1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define NR_GIC_EB11MP		2
 

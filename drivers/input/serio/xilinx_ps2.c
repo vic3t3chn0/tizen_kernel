@@ -23,7 +23,15 @@
 #include <linux/init.h>
 #include <linux/list.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/of_address.h>
+=======
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/of_device.h>
 #include <linux/of_platform.h>
 
@@ -253,7 +261,15 @@ static int __devinit xps2_of_probe(struct platform_device *ofdev)
 	}
 
 	/* Get IRQ for the device */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!of_irq_to_resource(ofdev->dev.of_node, 0, &r_irq)) {
+=======
 	if (of_irq_to_resource(ofdev->dev.of_node, 0, &r_irq) == NO_IRQ) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (of_irq_to_resource(ofdev->dev.of_node, 0, &r_irq) == NO_IRQ) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		dev_err(dev, "no IRQ found\n");
 		return -ENODEV;
 	}
@@ -369,6 +385,12 @@ static struct platform_driver xps2_of_driver = {
 	.probe		= xps2_of_probe,
 	.remove		= __devexit_p(xps2_of_remove),
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(xps2_of_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init xps2_init(void)
 {
@@ -382,6 +404,10 @@ static void __exit xps2_cleanup(void)
 
 module_init(xps2_init);
 module_exit(xps2_cleanup);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Xilinx, Inc.");
 MODULE_DESCRIPTION("Xilinx XPS PS/2 driver");

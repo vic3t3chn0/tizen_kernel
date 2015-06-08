@@ -17,6 +17,9 @@
 #include <linux/sched.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEFINE_SPINLOCK(bitmap_lock);
 
 /*
@@ -37,6 +40,8 @@ static __u32 count_free(struct buffer_head *map[], unsigned blocksize, __u32 num
 	}
 
 	return sum;
+<<<<<<< HEAD
+=======
 =======
 static const int nibblemap[] = { 4,3,3,2,3,2,2,1,3,2,2,1,2,1,1,0 };
 
@@ -71,6 +76,7 @@ static unsigned long count_free(struct buffer_head *map[], unsigned numblocks, _
 	}
 	return(sum);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void minix_free_block(struct inode *inode, unsigned long block)
@@ -129,18 +135,24 @@ int minix_new_block(struct inode * inode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long minix_count_free_blocks(struct super_block *sb)
 {
 	struct minix_sb_info *sbi = minix_sb(sb);
 	u32 bits = sbi->s_nzones - (sbi->s_firstdatazone + 1);
 
 	return (count_free(sbi->s_zmap, sb->s_blocksize, bits)
+<<<<<<< HEAD
+=======
 =======
 unsigned long minix_count_free_blocks(struct minix_sb_info *sbi)
 {
 	return (count_free(sbi->s_zmap, sbi->s_zmap_blocks,
 		sbi->s_nzones - sbi->s_firstdatazone + 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		<< sbi->s_log_zone_size);
 }
 
@@ -254,8 +266,12 @@ void minix_free_inode(struct inode * inode)
 <<<<<<< HEAD
 struct inode *minix_new_inode(const struct inode *dir, umode_t mode, int *error)
 =======
+<<<<<<< HEAD
+struct inode *minix_new_inode(const struct inode *dir, umode_t mode, int *error)
+=======
 struct inode *minix_new_inode(const struct inode *dir, int mode, int *error)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = dir->i_sb;
 	struct minix_sb_info *sbi = minix_sb(sb);
@@ -310,15 +326,21 @@ struct inode *minix_new_inode(const struct inode *dir, int mode, int *error)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 unsigned long minix_count_free_inodes(struct super_block *sb)
 {
 	struct minix_sb_info *sbi = minix_sb(sb);
 	u32 bits = sbi->s_ninodes + 1;
 
 	return count_free(sbi->s_imap, sb->s_blocksize, bits);
+<<<<<<< HEAD
+=======
 =======
 unsigned long minix_count_free_inodes(struct minix_sb_info *sbi)
 {
 	return count_free(sbi->s_imap, sbi->s_imap_blocks, sbi->s_ninodes + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

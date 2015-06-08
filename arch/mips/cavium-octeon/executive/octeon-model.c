@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2003-2010 Cavium Networks
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2003-2010 Cavium Networks
+=======
  * Copyright (c) 2003-2008 Cavium Networks
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This file is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, Version 2, as
@@ -31,11 +35,14 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * File defining functions for working with different Octeon
  * models.
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/octeon/octeon.h>
 
 /**
@@ -77,12 +84,17 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 	uint32_t fuse_data = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fus3.u64 = 0;
 	if (!OCTEON_IS_MODEL(OCTEON_CN6XXX))
 		fus3.u64 = cvmx_read_csr(CVMX_L2D_FUS3);
 	fus_dat2.u64 = cvmx_read_csr(CVMX_MIO_FUS_DAT2);
 	fus_dat3.u64 = cvmx_read_csr(CVMX_MIO_FUS_DAT3);
 	num_cores = cvmx_pop(cvmx_read_csr(CVMX_CIU_FUSE));
+<<<<<<< HEAD
+=======
 =======
 	fus3.u64 = cvmx_read_csr(CVMX_L2D_FUS3);
 	fus_dat2.u64 = cvmx_read_csr(CVMX_MIO_FUS_DAT2);
@@ -90,6 +102,7 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 
 	num_cores = cvmx_octeon_num_cores();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Make sure the non existent devices look disabled */
 	switch ((chip_id >> 8) & 0xff) {
@@ -127,8 +140,12 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 <<<<<<< HEAD
 	sprintf(pass, "%d.%d", (int)((chip_id >> 3) & 7) + 1, (int)chip_id & 7);
 =======
+<<<<<<< HEAD
+	sprintf(pass, "%d.%d", (int)((chip_id >> 3) & 7) + 1, (int)chip_id & 7);
+=======
 	sprintf(pass, "%u.%u", ((chip_id >> 3) & 7) + 1, chip_id & 7);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Use the number of cores to determine the last 2 digits of
@@ -137,14 +154,20 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 	 */
 	switch (num_cores) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 32:
 		core_model = "80";
 		break;
 	case 24:
 		core_model = "70";
 		break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 16:
 		core_model = "60";
 		break;
@@ -279,9 +302,14 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 		/* Special case. 4 core, half cache (CP with half cache) */
 		if ((num_cores == 4) && fus3.cn58xx.crip_1024k && !strncmp(suffix, "CP", 2))
 =======
+<<<<<<< HEAD
+		/* Special case. 4 core, half cache (CP with half cache) */
+		if ((num_cores == 4) && fus3.cn58xx.crip_1024k && !strncmp(suffix, "CP", 2))
+=======
 		/* Special case. 4 core, no crypto */
 		if ((num_cores == 4) && fus_dat2.cn38xx.nocrypto)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			core_model = "29";
 
 		/* Pass 1 uses different encodings for pass numbers */
@@ -324,7 +352,13 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 				if (fus_dat3.s.bar2_en)
 					suffix = "NSPB2";
 =======
+<<<<<<< HEAD
+
+				if (fus_dat3.s.bar2_en)
+					suffix = "NSPB2";
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 			if (fus3.cn56xx.crip_1024k)
 				family = "54";
@@ -342,6 +376,9 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 			family = "52";
 		break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case 0x93:		/* CN61XX */
 		family = "61";
 		if (fus_dat2.cn61xx.nocrypto && fus_dat2.cn61xx.dorm_crypto)
@@ -396,8 +433,11 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 		else
 			suffix = "AAP";
 		break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		family = "XX";
 		core_model = "XX";
@@ -408,6 +448,9 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 
 	clock_mhz = octeon_get_clock_rate() / 1000000;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (family[0] != '3') {
 		int fuse_base = 384 / 8;
 		if (family[0] == '6')
@@ -422,6 +465,8 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 		fuse_data |= cvmx_fuse_read_byte(fuse_base + 1);
 		fuse_data = fuse_data << 8;
 		fuse_data |= cvmx_fuse_read_byte(fuse_base);
+<<<<<<< HEAD
+=======
 =======
 
 	if (family[0] != '3') {
@@ -435,11 +480,15 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 		fuse_data = fuse_data << 8;
 		fuse_data |= cvmx_fuse_read_byte(48);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (fuse_data & 0x7ffff) {
 			int model = fuse_data & 0x3fff;
 			int suffix = (fuse_data >> 14) & 0x1f;
 			if (suffix && model) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* Have both number and suffix in fuses, so both */
 				sprintf(fuse_model, "%d%c", model, 'A' + suffix - 1);
 				core_model = "";
@@ -450,6 +499,8 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 				core_model = fuse_model;
 			} else {
 				/* Don't have suffix, so just use model from fuses */
+<<<<<<< HEAD
+=======
 =======
 				/*
 				 * Have both number and suffix in
@@ -473,6 +524,7 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 				 * model from fuses.
 				 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				sprintf(fuse_model, "%d", model);
 				core_model = "";
 				family = fuse_model;
@@ -482,8 +534,12 @@ const char *octeon_model_get_string_buffer(uint32_t chip_id, char *buffer)
 <<<<<<< HEAD
 	sprintf(buffer, "CN%s%sp%s-%d-%s", family, core_model, pass, clock_mhz, suffix);
 =======
+<<<<<<< HEAD
+	sprintf(buffer, "CN%s%sp%s-%d-%s", family, core_model, pass, clock_mhz, suffix);
+=======
 	sprintf(buffer, "CN%s%sp%s-%d-%s",
 		family, core_model, pass, clock_mhz, suffix);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return buffer;
 }

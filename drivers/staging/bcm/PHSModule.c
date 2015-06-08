@@ -209,7 +209,15 @@ int PHSTransmit(PMINI_ADAPTER Adapter,
 	return STATUS_SUCCESS;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int PHSReceive(PMINI_ADAPTER Adapter,
+=======
 int PHSRecieve(PMINI_ADAPTER Adapter,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int PHSRecieve(PMINI_ADAPTER Adapter,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					USHORT usVcid,
 					struct sk_buff *packet,
 					UINT *punPacketLen,
@@ -223,7 +231,15 @@ int PHSRecieve(PMINI_ADAPTER Adapter,
 	UINT TotalBytesAdded = 0;
 	if(!bHeaderSuppressionEnabled)
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"\nPhs Disabled for incoming packet");
+=======
 		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nPhs Disabled for incoming packet");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nPhs Disabled for incoming packet");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ulPhsStatus;
 	}
 
@@ -238,7 +254,15 @@ int PHSRecieve(PMINI_ADAPTER Adapter,
 		&nTotalsupressedPktHdrBytes,
 		&nStandardPktHdrLen);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"\nSupressed PktHdrLen : 0x%x Restored PktHdrLen : 0x%x",
+=======
 	BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nSupressed PktHdrLen : 0x%x Restored PktHdrLen : 0x%x",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nSupressed PktHdrLen : 0x%x Restored PktHdrLen : 0x%x",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					nTotalsupressedPktHdrBytes,nStandardPktHdrLen);
 
 	if(ulPhsStatus != STATUS_PHS_COMPRESSED)
@@ -786,6 +810,19 @@ ULONG PhsDeCompress(IN void* pvContext,
 
 	if(pDeviceExtension == NULL)
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"Invalid Device Extension\n");
+		return ERR_PHS_INVALID_DEVICE_EXETENSION;
+	}
+
+	BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"Restoring header\n");
+
+	phsi = *((unsigned char *)(pvInputBuffer));
+    BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"PHSI To Be Used For restore : %x\n",phsi);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"Invalid Device Extension\n");
 		return ERR_PHS_INVALID_DEVICE_EXETENSION;
 	}
@@ -794,6 +831,10 @@ ULONG PhsDeCompress(IN void* pvContext,
 
 	phsi = *((unsigned char *)(pvInputBuffer));
     BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"PHSI To Be Used For restore : %x \n",phsi);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     if(phsi == UNCOMPRESSED_PACKET )
 	{
 		return STATUS_PHS_NOCOMPRESSION;
@@ -804,7 +845,15 @@ ULONG PhsDeCompress(IN void* pvContext,
 	      uiVcid,&pstServiceFlowEntry);
 	if(nSFIndex == PHS_INVALID_TABLE_INDEX)
 	{
+<<<<<<< HEAD
+<<<<<<< HEAD
+		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"SFID Match Failed During Lookup\n");
+=======
 		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"SFID Match Failed During Lookup\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"SFID Match Failed During Lookup\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ERR_SF_MATCH_FAIL;
 	}
 
@@ -1417,7 +1466,15 @@ int phs_decompress(unsigned char *in_buf,unsigned char *out_buf,
 	int in_buf_len = *header_size-1;
     PMINI_ADAPTER Adapter = GET_BCM_ADAPTER(gblpnetdev);
 	in_buf++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+    BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"====>\n");
+=======
     BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"====>\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"====>\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*header_size = 0;
 
 	if((decomp_phs_rules == NULL ))
@@ -1425,7 +1482,15 @@ int phs_decompress(unsigned char *in_buf,unsigned char *out_buf,
 
 
 	tmp_memb = decomp_phs_rules;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	//BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"\nDECOMP:In phs_decompress PHSI 1  %d",phsi));
+=======
 	//BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phs_decompress PHSI 1  %d",phsi));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	//BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phs_decompress PHSI 1  %d",phsi));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	//*header_size = tmp_memb->u8PHSFLength;
 	phss         = tmp_memb->u8PHSS;
 	phsf         = tmp_memb->u8PHSF;
@@ -1433,7 +1498,15 @@ int phs_decompress(unsigned char *in_buf,unsigned char *out_buf,
 
 	if(phss > MAX_PHS_LENGTHS)
 		phss = MAX_PHS_LENGTHS;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	//BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"\nDECOMP:In phs_decompress PHSI  %d phss %d index %d",phsi,phss,index));
+=======
 	//BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phs_decompress PHSI  %d phss %d index %d",phsi,phss,index));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	//BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phs_decompress PHSI  %d phss %d index %d",phsi,phss,index));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while((phss > 0) && (size < in_buf_len))
 	{
 		bit =  ((*phsm << i)& SUPPRESS);
@@ -1441,13 +1514,29 @@ int phs_decompress(unsigned char *in_buf,unsigned char *out_buf,
 		if(bit == SUPPRESS)
 		{
 			*out_buf = *phsf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"\nDECOMP:In phss  %d phsf %d ouput %d",
+=======
 			BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phss  %d phsf %d ouput %d",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phss  %d phsf %d ouput %d",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
               phss,*phsf,*out_buf);
 		}
 		else
 		{
 			*out_buf = *in_buf;
+<<<<<<< HEAD
+<<<<<<< HEAD
+			BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECEIVE,DBG_LVL_ALL,"\nDECOMP:In phss  %d input %d ouput %d",
+=======
 			BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phss  %d input %d ouput %d",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			BCM_DEBUG_PRINT(Adapter,DBG_TYPE_OTHERS, PHS_RECIEVE,DBG_LVL_ALL,"\nDECOMP:In phss  %d input %d ouput %d",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
             phss,*in_buf,*out_buf);
 			in_buf++;
 			size++;

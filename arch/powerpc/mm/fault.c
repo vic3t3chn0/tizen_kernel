@@ -39,6 +39,9 @@
 #include <asm/mmu.h>
 #include <asm/mmu_context.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/tlbflush.h>
 #include <asm/siginfo.h>
@@ -47,6 +50,8 @@
 
 #include "icswx.h"
 
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 #include <asm/uaccess.h>
@@ -55,6 +60,7 @@
 #include <mm/mmu_decl.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_KPROBES
 static inline int notify_page_fault(struct pt_regs *regs)
 {
@@ -115,6 +121,9 @@ static int store_updates_sp(struct pt_regs *regs)
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * do_page_fault error handling helpers
  */
@@ -191,8 +200,11 @@ static int mm_fault_error(struct pt_regs *regs, unsigned long addr, int fault)
 	BUG();
 	return MM_FAULT_CONTINUE;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * For 600- and 800-family processors, the error_code parameter is DSISR
@@ -213,12 +225,17 @@ int __kprobes do_page_fault(struct pt_regs *regs, unsigned long address,
 	struct vm_area_struct * vma;
 	struct mm_struct *mm = current->mm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int flags = FAULT_FLAG_ALLOW_RETRY | FAULT_FLAG_KILLABLE;
 	int code = SEGV_MAPERR;
 	int is_write = 0;
 	int trap = TRAP(regs);
  	int is_exec = trap == 0x400;
 	int fault;
+<<<<<<< HEAD
+=======
 =======
 	siginfo_t info;
 	int code = SEGV_MAPERR;
@@ -226,6 +243,7 @@ int __kprobes do_page_fault(struct pt_regs *regs, unsigned long address,
 	int trap = TRAP(regs);
  	int is_exec = trap == 0x400;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if !(defined(CONFIG_4xx) || defined(CONFIG_BOOKE))
 	/*
@@ -243,6 +261,9 @@ int __kprobes do_page_fault(struct pt_regs *regs, unsigned long address,
 #endif /* CONFIG_4xx || CONFIG_BOOKE */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (is_write)
 		flags |= FAULT_FLAG_WRITE;
 
@@ -259,8 +280,11 @@ int __kprobes do_page_fault(struct pt_regs *regs, unsigned long address,
 	}
 #endif /* CONFIG_PPC_ICSWX */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (notify_page_fault(regs))
 		return 0;
 
@@ -281,12 +305,18 @@ int __kprobes do_page_fault(struct pt_regs *regs, unsigned long address,
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We restore the interrupt state now */
 	if (!arch_irq_disabled_regs(regs))
 		local_irq_enable();
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (in_atomic() || mm == NULL) {
 		if (!user_mode(regs))
 			return SIGSEGV;
@@ -302,8 +332,12 @@ int __kprobes do_page_fault(struct pt_regs *regs, unsigned long address,
 <<<<<<< HEAD
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
 =======
+<<<<<<< HEAD
+	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, regs, address);
+=======
 	perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS, 1, 0, regs, address);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* When running in the kernel we expect faults to occur only to
 	 * addresses in user space.  All other faults represent errors in the
@@ -325,6 +359,9 @@ int __kprobes do_page_fault(struct pt_regs *regs, unsigned long address,
 			goto bad_area_nosemaphore;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 retry:
 		down_read(&mm->mmap_sem);
 	} else {
@@ -334,9 +371,12 @@ retry:
 		 * down_read():
 		 */
 		might_sleep();
+<<<<<<< HEAD
+=======
 =======
 		down_read(&mm->mmap_sem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	vma = find_vma(mm, address);
@@ -452,6 +492,9 @@ good_area:
 	 * the fault.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fault = handle_mm_fault(mm, vma, address, flags);
 	if (unlikely(fault & (VM_FAULT_RETRY|VM_FAULT_ERROR))) {
 		int rc = mm_fault_error(regs, address, fault);
@@ -489,6 +532,8 @@ good_area:
 		}
 	}
 
+<<<<<<< HEAD
+=======
 =======
 	ret = handle_mm_fault(mm, vma, address, is_write ? FAULT_FLAG_WRITE : 0);
 	if (unlikely(ret & VM_FAULT_ERROR)) {
@@ -515,6 +560,7 @@ good_area:
 				     regs, address);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	up_read(&mm->mmap_sem);
 	return 0;
 
@@ -535,6 +581,8 @@ bad_area_nosemaphore:
 
 	return SIGSEGV;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -560,6 +608,7 @@ do_sigbus:
 	}
 	return SIGBUS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

@@ -132,8 +132,11 @@
 #include <asm/pgtable.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/gdb-stub.h>
 #include <asm/exceptions.h>
 #include <asm/debugger.h>
@@ -804,8 +807,12 @@ unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fault)
 <<<<<<< HEAD
 		buf = hex_byte_pack(buf, ch[0]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem++;
 		count--;
 	}
@@ -817,9 +824,14 @@ unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fault)
 		buf = hex_byte_pack(buf, ch[0]);
 		buf = hex_byte_pack(buf, ch[1]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+		buf = hex_byte_pack(buf, ch[1]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 		buf = pack_hex_byte(buf, ch[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem += 2;
 		count -= 2;
 	}
@@ -828,16 +840,22 @@ unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fault)
 		if (gdbstub_read_dword(mem, ch) != 0)
 			return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		buf = hex_byte_pack(buf, ch[0]);
 		buf = hex_byte_pack(buf, ch[1]);
 		buf = hex_byte_pack(buf, ch[2]);
 		buf = hex_byte_pack(buf, ch[3]);
+<<<<<<< HEAD
+=======
 =======
 		buf = pack_hex_byte(buf, ch[0]);
 		buf = pack_hex_byte(buf, ch[1]);
 		buf = pack_hex_byte(buf, ch[2]);
 		buf = pack_hex_byte(buf, ch[3]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem += 4;
 		count -= 4;
 	}
@@ -849,9 +867,14 @@ unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fault)
 		buf = hex_byte_pack(buf, ch[0]);
 		buf = hex_byte_pack(buf, ch[1]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+		buf = hex_byte_pack(buf, ch[1]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 		buf = pack_hex_byte(buf, ch[1]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mem += 2;
 		count -= 2;
 	}
@@ -862,8 +885,12 @@ unsigned char *mem2hex(const void *_mem, char *buf, int count, int may_fault)
 <<<<<<< HEAD
 		buf = hex_byte_pack(buf, ch[0]);
 =======
+<<<<<<< HEAD
+		buf = hex_byte_pack(buf, ch[0]);
+=======
 		buf = pack_hex_byte(buf, ch[0]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	*buf = 0;
@@ -1302,6 +1329,9 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 
 		hx = hex_asc_hi(excep >> 8);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ptr = hex_byte_pack(ptr, hx);
 		hx = hex_asc_lo(excep >> 8);
 		ptr = hex_byte_pack(ptr, hx);
@@ -1309,6 +1339,8 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 		ptr = hex_byte_pack(ptr, hx);
 		hx = hex_asc_lo(excep);
 		ptr = hex_byte_pack(ptr, hx);
+<<<<<<< HEAD
+=======
 =======
 		ptr = pack_hex_byte(ptr, hx);
 		hx = hex_asc_lo(excep >> 8);
@@ -1318,6 +1350,7 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 		hx = hex_asc_lo(excep);
 		ptr = pack_hex_byte(ptr, hx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ptr = mem2hex(crlf, ptr, sizeof(crlf) - 1, 0);
 		*ptr = 0;
@@ -1330,6 +1363,9 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 
 		hx = hex_asc_hi(bcberr >> 24);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ptr = hex_byte_pack(ptr, hx);
 		hx = hex_asc_lo(bcberr >> 24);
 		ptr = hex_byte_pack(ptr, hx);
@@ -1345,6 +1381,8 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 		ptr = hex_byte_pack(ptr, hx);
 		hx = hex_asc_lo(bcberr);
 		ptr = hex_byte_pack(ptr, hx);
+<<<<<<< HEAD
+=======
 =======
 		ptr = pack_hex_byte(ptr, hx);
 		hx = hex_asc_lo(bcberr >> 24);
@@ -1362,6 +1400,7 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 		hx = hex_asc_lo(bcberr);
 		ptr = pack_hex_byte(ptr, hx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ptr = mem2hex(crlf, ptr, sizeof(crlf) - 1, 0);
 		*ptr = 0;
@@ -1380,8 +1419,12 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, sigval);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, sigval);
+=======
 	ptr = pack_hex_byte(ptr, sigval);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Send Error PC
@@ -1389,8 +1432,12 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, GDB_REGID_PC);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, GDB_REGID_PC);
+=======
 	ptr = pack_hex_byte(ptr, GDB_REGID_PC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(&regs->pc, ptr, 4, 0);
 	*ptr++ = ';';
@@ -1401,8 +1448,12 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, GDB_REGID_FP);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, GDB_REGID_FP);
+=======
 	ptr = pack_hex_byte(ptr, GDB_REGID_FP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(&regs->a3, ptr, 4, 0);
 	*ptr++ = ';';
@@ -1414,8 +1465,12 @@ static int gdbstub(struct pt_regs *regs, enum exception_code excep)
 <<<<<<< HEAD
 	ptr = hex_byte_pack(ptr, GDB_REGID_SP);
 =======
+<<<<<<< HEAD
+	ptr = hex_byte_pack(ptr, GDB_REGID_SP);
+=======
 	ptr = pack_hex_byte(ptr, GDB_REGID_SP);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*ptr++ = ':';
 	ptr = mem2hex(&ssp, ptr, 4, 0);
 	*ptr++ = ';';

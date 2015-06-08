@@ -135,8 +135,18 @@ static struct pci_driver i810fb_driver = {
 static char *mode_option __devinitdata = NULL;
 static int vram       __devinitdata = 4;
 static int bpp        __devinitdata = 8;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool mtrr      __devinitdata;
+static bool accel     __devinitdata;
+=======
 static int mtrr       __devinitdata;
 static int accel      __devinitdata;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int mtrr       __devinitdata;
+static int accel      __devinitdata;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int hsync1     __devinitdata;
 static int hsync2     __devinitdata;
 static int vsync1     __devinitdata;
@@ -144,10 +154,23 @@ static int vsync2     __devinitdata;
 static int xres       __devinitdata;
 static int yres;
 static int vyres      __devinitdata;
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool sync      __devinitdata;
+static bool extvga    __devinitdata;
+static bool dcolor    __devinitdata;
+static bool ddc3      __devinitdata;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sync       __devinitdata;
 static int extvga     __devinitdata;
 static int dcolor     __devinitdata;
 static int ddc3       __devinitdata = 2;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*------------------------------------------------------------*/
 
@@ -1776,7 +1799,15 @@ static void __devinit i810_init_defaults(struct i810fb_par *par,
 	if (sync) 
 		par->dev_flags |= ALWAYS_SYNC;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	par->ddc_num = (ddc3 ? 3 : 2);
+=======
 	par->ddc_num = ddc3;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	par->ddc_num = ddc3;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (bpp < 8)
 		bpp = 8;
@@ -1999,7 +2030,15 @@ static int __devinit i810fb_setup(char *options)
 		else if (!strncmp(this_opt, "dcolor", 6))
 			dcolor = 1;
 		else if (!strncmp(this_opt, "ddc3", 4))
+<<<<<<< HEAD
+<<<<<<< HEAD
+			ddc3 = true;
+=======
 			ddc3 = 3;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			ddc3 = 3;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		else
 			mode_option = this_opt;
 	}

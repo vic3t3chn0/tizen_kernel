@@ -36,8 +36,17 @@
 
 #define XEN_BUS_ID_SIZE			20
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct xen_bus_type {
+=======
 struct xen_bus_type
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct xen_bus_type
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *root;
 	unsigned int levels;
 	int (*get_bus_id)(char bus_id[XEN_BUS_ID_SIZE], const char *nodename);
@@ -48,13 +57,31 @@ struct xen_bus_type
 	struct bus_type bus;
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+extern struct device_attribute xenbus_dev_attrs[];
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int xenbus_match(struct device *_dev, struct device_driver *_drv);
 extern int xenbus_dev_probe(struct device *_dev);
 extern int xenbus_dev_remove(struct device *_dev);
 extern int xenbus_register_driver_common(struct xenbus_driver *drv,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					 struct xen_bus_type *bus);
+=======
 					 struct xen_bus_type *bus,
 					 struct module *owner,
 					 const char *mod_name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					 struct xen_bus_type *bus,
+					 struct module *owner,
+					 const char *mod_name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int xenbus_probe_node(struct xen_bus_type *bus,
 			     const char *type,
 			     const char *nodename);
@@ -75,4 +102,12 @@ extern void xenbus_otherend_changed(struct xenbus_watch *watch,
 extern int xenbus_read_otherend_details(struct xenbus_device *xendev,
 					char *id_node, char *path_node);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void xenbus_ring_ops_init(void);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

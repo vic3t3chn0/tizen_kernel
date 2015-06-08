@@ -20,8 +20,12 @@
 <<<<<<< HEAD
 ENTRY(find_first_zero_bit)
 =======
+<<<<<<< HEAD
+ENTRY(find_first_zero_bit)
+=======
 __uc32_find_first_zero_bit:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cxor.a	r1, #0
 		beq	3f
 		mov	r2, #0
@@ -36,7 +40,11 @@ __uc32_find_first_zero_bit:
 <<<<<<< HEAD
 ENDPROC(find_first_zero_bit)
 =======
+<<<<<<< HEAD
+ENDPROC(find_first_zero_bit)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Purpose  : Find next 'zero' bit
@@ -46,8 +54,12 @@ ENDPROC(find_first_zero_bit)
 <<<<<<< HEAD
 ENTRY(find_next_zero_bit)
 =======
+<<<<<<< HEAD
+ENTRY(find_next_zero_bit)
+=======
 ENTRY(__uc32_find_next_zero_bit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cxor.a	r1, #0
 		beq	3b
 		and.a	ip, r2, #7
@@ -62,8 +74,12 @@ ENTRY(__uc32_find_next_zero_bit)
 <<<<<<< HEAD
 ENDPROC(find_next_zero_bit)
 =======
+<<<<<<< HEAD
+ENDPROC(find_next_zero_bit)
+=======
 ENDPROC(__uc32_find_next_zero_bit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Purpose  : Find a 'one' bit
@@ -73,8 +89,12 @@ ENDPROC(__uc32_find_next_zero_bit)
 <<<<<<< HEAD
 ENTRY(find_first_bit)
 =======
+<<<<<<< HEAD
+ENTRY(find_first_bit)
+=======
 __uc32_find_first_bit:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cxor.a	r1, #0
 		beq	3f
 		mov	r2, #0
@@ -89,7 +109,11 @@ __uc32_find_first_bit:
 <<<<<<< HEAD
 ENDPROC(find_first_bit)
 =======
+<<<<<<< HEAD
+ENDPROC(find_first_bit)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Purpose  : Find next 'one' bit
@@ -99,8 +123,12 @@ ENDPROC(find_first_bit)
 <<<<<<< HEAD
 ENTRY(find_next_bit)
 =======
+<<<<<<< HEAD
+ENTRY(find_next_bit)
+=======
 ENTRY(__uc32_find_next_bit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cxor.a	r1, #0
 		beq	3b
 		and.a	ip, r2, #7
@@ -114,8 +142,12 @@ ENTRY(__uc32_find_next_bit)
 <<<<<<< HEAD
 ENDPROC(find_next_bit)
 =======
+<<<<<<< HEAD
+ENDPROC(find_next_bit)
+=======
 ENDPROC(__uc32_find_next_bit)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * One or more bits in the LSB of r3 are assumed to be set.

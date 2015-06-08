@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/setup.h>
 
@@ -94,9 +98,15 @@ struct machdep_calls {
 	int		(*dma_set_mask)(struct device *dev, u64 dma_mask);
 	u64		(*dma_get_required_mask)(struct device *dev);
 =======
+<<<<<<< HEAD
+	/* Platform set_dma_mask and dma_get_required_mask overrides */
+	int		(*dma_set_mask)(struct device *dev, u64 dma_mask);
+	u64		(*dma_get_required_mask)(struct device *dev);
+=======
 	/* Platform set_dma_mask override */
 	int		(*dma_set_mask)(struct device *dev, u64 dma_mask);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int		(*probe)(void);
 	void		(*setup_arch)(void); /* Optional, may be NULL */
@@ -110,10 +120,14 @@ struct machdep_calls {
 <<<<<<< HEAD
 	/* Return an irq, or NO_IRQ to indicate there are none pending. */
 =======
+<<<<<<< HEAD
+	/* Return an irq, or NO_IRQ to indicate there are none pending. */
+=======
 	/* Return an irq, or NO_IRQ to indicate there are none pending.
 	 * If for some reason there is no irq, but the interrupt
 	 * shouldn't be counted as spurious, return NO_IRQ_IGNORE. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int	(*get_irq)(void);
 
 	/* PCI stuff */
@@ -230,7 +244,13 @@ struct machdep_calls {
 	void (*pcibios_fixup_phb)(struct pci_controller *hose);
 
 =======
+<<<<<<< HEAD
+	/* Called after scan and before resource survey */
+	void (*pcibios_fixup_phb)(struct pci_controller *hose);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Called to shutdown machine specific hardware not already controlled
 	 * by other drivers.
 	 */

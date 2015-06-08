@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2003-2011 Cavium Networks
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2003-2011 Cavium Networks
+=======
  * Copyright (c) 2003-2010 Cavium Networks
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This file is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, Version 2, as
@@ -72,8 +76,12 @@
 <<<<<<< HEAD
 #define CVMX_NPEI_MEM_ACCESS_SUBIDX(offset) (0x0000000000000280ull + ((offset) & 31) * 16 - 16*12)
 =======
+<<<<<<< HEAD
+#define CVMX_NPEI_MEM_ACCESS_SUBIDX(offset) (0x0000000000000280ull + ((offset) & 31) * 16 - 16*12)
+=======
 #define CVMX_NPEI_MEM_ACCESS_SUBIDX(offset) (0x0000000000000340ull + ((offset) & 31) * 16 - 16*12)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CVMX_NPEI_MSI_ENB0 (0x0000000000003C50ull)
 #define CVMX_NPEI_MSI_ENB1 (0x0000000000003C60ull)
 #define CVMX_NPEI_MSI_ENB2 (0x0000000000003C70ull)

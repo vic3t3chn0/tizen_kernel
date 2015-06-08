@@ -33,10 +33,16 @@ struct cleancache_ops {
 	void (*invalidate_inode)(int, struct cleancache_filekey);
 	void (*invalidate_fs)(int);
 =======
+<<<<<<< HEAD
+	void (*invalidate_page)(int, struct cleancache_filekey, pgoff_t);
+	void (*invalidate_inode)(int, struct cleancache_filekey);
+	void (*invalidate_fs)(int);
+=======
 	void (*flush_page)(int, struct cleancache_filekey, pgoff_t);
 	void (*flush_inode)(int, struct cleancache_filekey);
 	void (*flush_fs)(int);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern struct cleancache_ops
@@ -50,10 +56,16 @@ extern void __cleancache_invalidate_page(struct address_space *, struct page *);
 extern void __cleancache_invalidate_inode(struct address_space *);
 extern void __cleancache_invalidate_fs(struct super_block *);
 =======
+<<<<<<< HEAD
+extern void __cleancache_invalidate_page(struct address_space *, struct page *);
+extern void __cleancache_invalidate_inode(struct address_space *);
+extern void __cleancache_invalidate_fs(struct super_block *);
+=======
 extern void __cleancache_flush_page(struct address_space *, struct page *);
 extern void __cleancache_flush_inode(struct address_space *);
 extern void __cleancache_flush_fs(struct super_block *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int cleancache_enabled;
 
 #ifdef CONFIG_CLEANCACHE
@@ -114,13 +126,20 @@ static inline void cleancache_put_page(struct page *page)
 <<<<<<< HEAD
 static inline void cleancache_invalidate_page(struct address_space *mapping,
 =======
+<<<<<<< HEAD
+static inline void cleancache_invalidate_page(struct address_space *mapping,
+=======
 static inline void cleancache_flush_page(struct address_space *mapping,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					struct page *page)
 {
 	/* careful... page->mapping is NULL sometimes when this is called */
 	if (cleancache_enabled && cleancache_fs_enabled_mapping(mapping))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__cleancache_invalidate_page(mapping, page);
 }
 
@@ -134,6 +153,8 @@ static inline void cleancache_invalidate_fs(struct super_block *sb)
 {
 	if (cleancache_enabled)
 		__cleancache_invalidate_fs(sb);
+<<<<<<< HEAD
+=======
 =======
 		__cleancache_flush_page(mapping, page);
 }
@@ -149,6 +170,7 @@ static inline void cleancache_flush_fs(struct super_block *sb)
 	if (cleancache_enabled)
 		__cleancache_flush_fs(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #endif /* _LINUX_CLEANCACHE_H */

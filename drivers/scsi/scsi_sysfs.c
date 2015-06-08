@@ -246,6 +246,49 @@ show_shost_active_mode(struct device *dev,
 
 static DEVICE_ATTR(active_mode, S_IRUGO | S_IWUSR, show_shost_active_mode, NULL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int check_reset_type(char *str)
+{
+	if (strncmp(str, "adapter", 10) == 0)
+		return SCSI_ADAPTER_RESET;
+	else if (strncmp(str, "firmware", 10) == 0)
+		return SCSI_FIRMWARE_RESET;
+	else
+		return 0;
+}
+
+static ssize_t
+store_host_reset(struct device *dev, struct device_attribute *attr,
+		const char *buf, size_t count)
+{
+	struct Scsi_Host *shost = class_to_shost(dev);
+	struct scsi_host_template *sht = shost->hostt;
+	int ret = -EINVAL;
+	char str[10];
+	int type;
+
+	sscanf(buf, "%s", str);
+	type = check_reset_type(str);
+
+	if (!type)
+		goto exit_store_host_reset;
+
+	if (sht->host_reset)
+		ret = sht->host_reset(shost, type);
+
+exit_store_host_reset:
+	if (ret == 0)
+		ret = count;
+	return ret;
+}
+
+static DEVICE_ATTR(host_reset, S_IWUSR, NULL, store_host_reset);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 shost_rd_attr(unique_id, "%u\n");
 shost_rd_attr(host_busy, "%hu\n");
 shost_rd_attr(cmd_per_lun, "%hd\n");
@@ -272,6 +315,13 @@ static struct attribute *scsi_sysfs_shost_attrs[] = {
 	&dev_attr_active_mode.attr,
 	&dev_attr_prot_capabilities.attr,
 	&dev_attr_prot_guard_type.attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	&dev_attr_host_reset.attr,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL
 };
 
@@ -847,7 +897,16 @@ int scsi_sysfs_add_sdev(struct scsi_device *sdev)
 	device_enable_async_suspend(&sdev->sdev_gendev);
 	scsi_autopm_get_target(starget);
 	pm_runtime_set_active(&sdev->sdev_gendev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!sdev->use_rpm_auto)
+		pm_runtime_forbid(&sdev->sdev_gendev);
+=======
 	pm_runtime_forbid(&sdev->sdev_gendev);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pm_runtime_forbid(&sdev->sdev_gendev);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pm_runtime_enable(&sdev->sdev_gendev);
 	scsi_autopm_put_target(starget);
 
@@ -962,6 +1021,13 @@ static void __scsi_remove_target(struct scsi_target *starget)
 	struct scsi_device *sdev;
 
 	spin_lock_irqsave(shost->host_lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	starget->reap_ref++;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  restart:
 	list_for_each_entry(sdev, &shost->__devices, siblings) {
 		if (sdev->channel != starget->channel ||
@@ -975,6 +1041,20 @@ static void __scsi_remove_target(struct scsi_target *starget)
 		goto restart;
 	}
 	spin_unlock_irqrestore(shost->host_lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	scsi_target_reap(starget);
+}
+
+static int __remove_child (struct device * dev, void * data)
+{
+	if (scsi_is_target_device(dev))
+		__scsi_remove_target(to_scsi_target(dev));
+	return 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -987,6 +1067,19 @@ static void __scsi_remove_target(struct scsi_target *starget)
  */
 void scsi_remove_target(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (scsi_is_target_device(dev)) {
+		__scsi_remove_target(to_scsi_target(dev));
+		return;
+	}
+
+	get_device(dev);
+	device_for_each_child(dev, NULL, __remove_child);
+	put_device(dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct Scsi_Host *shost = dev_to_shost(dev->parent);
 	struct scsi_target *starget, *last = NULL;
 	unsigned long flags;
@@ -1013,6 +1106,10 @@ void scsi_remove_target(struct device *dev)
 
 	if (last)
 		scsi_target_reap(last);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(scsi_remove_target);
 

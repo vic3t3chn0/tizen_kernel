@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2009-2012 B.A.T.M.A.N. contributors:
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2009-2012 B.A.T.M.A.N. contributors:
+=======
  * Copyright (C) 2009-2011 B.A.T.M.A.N. contributors:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Marek Lindner
  *
@@ -70,10 +74,16 @@ void gw_bandwidth_to_kbit(uint8_t gw_srv_class, int *down, int *up)
 	int dpart = (gw_srv_class & 0x78) >> 3;
 	int upart = (gw_srv_class & 0x07);
 =======
+<<<<<<< HEAD
+	int sbit = (gw_srv_class & 0x80) >> 7;
+	int dpart = (gw_srv_class & 0x78) >> 3;
+	int upart = (gw_srv_class & 0x07);
+=======
 	char sbit = (gw_srv_class & 0x80) >> 7;
 	char dpart = (gw_srv_class & 0x78) >> 3;
 	char upart = (gw_srv_class & 0x07);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!gw_srv_class) {
 		*down = 0;
@@ -87,17 +97,23 @@ void gw_bandwidth_to_kbit(uint8_t gw_srv_class, int *down, int *up)
 
 static bool parse_gw_bandwidth(struct net_device *net_dev, char *buff,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			       int *up, int *down)
 {
 	int ret, multi = 1;
 	char *slash_ptr, *tmp_ptr;
 	long ldown, lup;
+<<<<<<< HEAD
+=======
 =======
 			       long *up, long *down)
 {
 	int ret, multi = 1;
 	char *slash_ptr, *tmp_ptr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	slash_ptr = strchr(buff, '/');
 	if (slash_ptr)
@@ -111,11 +127,16 @@ static bool parse_gw_bandwidth(struct net_device *net_dev, char *buff,
 
 		if ((strnicmp(tmp_ptr, "kbit", 4) == 0) ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    (multi > 1))
 			*tmp_ptr = '\0';
 	}
 
 	ret = kstrtol(buff, 10, &ldown);
+<<<<<<< HEAD
+=======
 =======
 			(multi > 1))
 			*tmp_ptr = '\0';
@@ -123,6 +144,7 @@ static bool parse_gw_bandwidth(struct net_device *net_dev, char *buff,
 
 	ret = strict_strtoul(buff, 10, down);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret) {
 		bat_err(net_dev,
 			"Download speed of gateway mode invalid: %s\n",
@@ -133,8 +155,12 @@ static bool parse_gw_bandwidth(struct net_device *net_dev, char *buff,
 <<<<<<< HEAD
 	*down = ldown * multi;
 =======
+<<<<<<< HEAD
+	*down = ldown * multi;
+=======
 	*down *= multi;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* we also got some upload info */
 	if (slash_ptr) {
@@ -148,6 +174,9 @@ static bool parse_gw_bandwidth(struct net_device *net_dev, char *buff,
 
 			if ((strnicmp(tmp_ptr, "kbit", 4) == 0) ||
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    (multi > 1))
 				*tmp_ptr = '\0';
 		}
@@ -161,6 +190,8 @@ static bool parse_gw_bandwidth(struct net_device *net_dev, char *buff,
 		}
 
 		*up = lup * multi;
+<<<<<<< HEAD
+=======
 =======
 				(multi > 1))
 				*tmp_ptr = '\0';
@@ -176,6 +207,7 @@ static bool parse_gw_bandwidth(struct net_device *net_dev, char *buff,
 
 		*up *= multi;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return true;
@@ -188,8 +220,13 @@ ssize_t gw_bandwidth_set(struct net_device *net_dev, char *buff, size_t count)
 	long gw_bandwidth_tmp = 0;
 	int up = 0, down = 0;
 =======
+<<<<<<< HEAD
+	long gw_bandwidth_tmp = 0;
+	int up = 0, down = 0;
+=======
 	long gw_bandwidth_tmp = 0, up = 0, down = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool ret;
 
 	ret = parse_gw_bandwidth(net_dev, buff, &up, &down);
@@ -210,11 +247,16 @@ ssize_t gw_bandwidth_set(struct net_device *net_dev, char *buff, size_t count)
 	 * that is going to be propagated
 	 **/
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gw_bandwidth_to_kbit((uint8_t)gw_bandwidth_tmp, &down, &up);
 
 	gw_deselect(bat_priv);
 	bat_info(net_dev,
 		 "Changing gateway bandwidth from: '%i' to: '%ld' (propagating: %d%s/%d%s)\n",
+<<<<<<< HEAD
+=======
 =======
 	gw_bandwidth_to_kbit((uint8_t)gw_bandwidth_tmp,
 			     (int *)&down, (int *)&up);
@@ -223,6 +265,7 @@ ssize_t gw_bandwidth_set(struct net_device *net_dev, char *buff, size_t count)
 	bat_info(net_dev, "Changing gateway bandwidth from: '%i' to: '%ld' "
 		 "(propagating: %ld%s/%ld%s)\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		 atomic_read(&bat_priv->gw_bandwidth), gw_bandwidth_tmp,
 		 (down > 2048 ? down / 1024 : down),
 		 (down > 2048 ? "MBit" : "KBit"),

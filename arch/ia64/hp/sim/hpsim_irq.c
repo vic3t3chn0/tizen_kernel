@@ -14,7 +14,12 @@
 #include "hpsim_ssc.h"
 
 =======
+<<<<<<< HEAD
+#include "hpsim_ssc.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int
 hpsim_irq_startup(struct irq_data *data)
 {
@@ -43,6 +48,9 @@ static struct irq_chip irq_type_hp_sim = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void hpsim_irq_set_chip(int irq)
 {
 	struct irq_chip *chip = irq_get_chip(irq);
@@ -69,13 +77,20 @@ int hpsim_get_irq(int intr)
 	return irq;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init
 hpsim_irq_init (void)
 {
 	int i;
 
+<<<<<<< HEAD
+	for_each_active_irq(i)
+		hpsim_irq_set_chip(i);
+=======
 <<<<<<< HEAD
 	for_each_active_irq(i)
 		hpsim_irq_set_chip(i);
@@ -87,4 +102,5 @@ hpsim_irq_init (void)
 			irq_set_chip(i, &irq_type_hp_sim);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

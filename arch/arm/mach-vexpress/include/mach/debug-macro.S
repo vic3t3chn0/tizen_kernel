@@ -11,6 +11,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define DEBUG_LL_PHYS_BASE		0x10000000
 #define DEBUG_LL_UART_OFFSET		0x00009000
 
@@ -39,6 +42,8 @@
 		orrne	\rv, \rp, #DEBUG_LL_VIRT_BASE
 		orrne	\rp, \rp, #DEBUG_LL_PHYS_BASE_RS1
 
+<<<<<<< HEAD
+=======
 =======
 #define DEBUG_LL_UART_OFFSET	0x00009000
 
@@ -47,6 +52,7 @@
 		orr	\rv, \rp, #0xf8000000	@ virtual base
 		orr	\rp, \rp, #0x10000000	@ physical base
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.endm
 
 #include <asm/hardware/debug-pl01x.S>

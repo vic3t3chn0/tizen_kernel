@@ -25,6 +25,9 @@ extern void (*board_nmi_handler_setup)(void);
 extern void (*board_ejtag_handler_setup)(void);
 extern void (*board_bind_eic_interrupt)(int irq, int regset);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void (*board_ebase_setup)(void);
 
 extern int register_nmi_notifier(struct notifier_block *nb);
@@ -38,7 +41,10 @@ extern int register_nmi_notifier(struct notifier_block *nb);
 									\
 	register_nmi_notifier(&fn##_nb);				\
 })
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _ASM_TRAPS_H */

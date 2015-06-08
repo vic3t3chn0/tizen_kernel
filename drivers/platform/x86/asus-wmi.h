@@ -29,12 +29,38 @@
 
 #include <linux/platform_device.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ASUS_WMI_KEY_IGNORE (-1)
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct module;
 struct key_entry;
 struct asus_wmi;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+struct quirk_entry {
+	bool hotplug_wireless;
+	bool scalar_panel_brightness;
+	bool store_backlight_power;
+	int wapf;
+};
+
+struct asus_wmi_driver {
+	int			brightness;
+	int			panel_power;
+=======
 struct asus_wmi_driver {
 	bool			hotplug_wireless;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+struct asus_wmi_driver {
+	bool			hotplug_wireless;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	const char		*name;
 	struct module		*owner;
@@ -44,9 +70,26 @@ struct asus_wmi_driver {
 	const struct key_entry	*keymap;
 	const char		*input_name;
 	const char		*input_phys;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct quirk_entry	*quirks;
+	/* Returns new code, value, and autorelease values in arguments.
+	 * Return ASUS_WMI_KEY_IGNORE in code if event should be ignored. */
+	void (*key_filter) (struct asus_wmi_driver *driver, int *code,
+			    unsigned int *value, bool *autorelease);
+
+	int (*probe) (struct platform_device *device);
+	void (*detect_quirks) (struct asus_wmi_driver *driver);
+=======
 
 	int (*probe) (struct platform_device *device);
 	void (*quirks) (struct asus_wmi_driver *driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	int (*probe) (struct platform_device *device);
+	void (*quirks) (struct asus_wmi_driver *driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct platform_driver	platform_driver;
 	struct platform_device *platform_device;

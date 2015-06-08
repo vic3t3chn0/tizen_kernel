@@ -42,8 +42,12 @@
 <<<<<<< HEAD
 #define CVMX_BOOTINFO_MIN_VER 3
 =======
+<<<<<<< HEAD
+#define CVMX_BOOTINFO_MIN_VER 3
+=======
 #define CVMX_BOOTINFO_MIN_VER 2
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if (CVMX_BOOTINFO_MAJ_VER == 1)
 #define CVMX_BOOTINFO_OCTEON_SERIAL_LEN 20
@@ -121,6 +125,9 @@ struct cvmx_bootinfo {
 	uint32_t config_flags;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if (CVMX_BOOTINFO_MIN_VER >= 3)
 	/*
 	 * Address of the OF Flattened Device Tree structure
@@ -128,9 +135,12 @@ struct cvmx_bootinfo {
 	 */
 	uint64_t fdt_addr;
 #endif
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define CVMX_BOOTINFO_CFG_FLAG_PCI_HOST			(1ull << 0)
@@ -179,6 +189,9 @@ enum cvmx_board_types_enum {
 	CVMX_BOARD_TYPE_GENERIC = 28,
 	CVMX_BOARD_TYPE_EBH5610 = 29,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CVMX_BOARD_TYPE_LANAI2_A = 30,
 	CVMX_BOARD_TYPE_LANAI2_U = 31,
 	CVMX_BOARD_TYPE_EBB5600 = 32,
@@ -195,8 +208,11 @@ enum cvmx_board_types_enum {
 	CVMX_BOARD_TYPE_REDWING = 43,
 	CVMX_BOARD_TYPE_NIC68_4 = 44,
 	CVMX_BOARD_TYPE_NIC10E_66 = 45,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CVMX_BOARD_TYPE_MAX,
 
 	/*
@@ -215,6 +231,9 @@ enum cvmx_board_types_enum {
 	CVMX_BOARD_TYPE_CUST_NB5 = 10003,
 	CVMX_BOARD_TYPE_CUST_WMR500 = 10004,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CVMX_BOARD_TYPE_CUST_ITB101 = 10005,
 	CVMX_BOARD_TYPE_CUST_NTE102 = 10006,
 	CVMX_BOARD_TYPE_CUST_AGS103 = 10007,
@@ -232,8 +251,11 @@ enum cvmx_board_types_enum {
 	CVMX_BOARD_TYPE_CUST_L2_WSTRNSNIC_TX = 10019,
 	CVMX_BOARD_TYPE_CUST_L2_WSTRNSNIC_RX = 10020,
 	CVMX_BOARD_TYPE_CUST_L2_ZINWELL = 10021,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CVMX_BOARD_TYPE_CUST_DEFINED_MAX = 20000,
 
 	/*
@@ -295,6 +317,9 @@ static inline const char *cvmx_board_type_to_string(enum
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_GENERIC)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_EBH5610)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_LANAI2_A)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_LANAI2_U)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_EBB5600)
@@ -311,8 +336,11 @@ static inline const char *cvmx_board_type_to_string(enum
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_REDWING)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_NIC68_4)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_NIC10E_66)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_MAX)
 
 			/* Customer boards listed here */
@@ -322,6 +350,9 @@ static inline const char *cvmx_board_type_to_string(enum
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_NB5)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_WMR500)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_ITB101)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_NTE102)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_AGS103)
@@ -339,8 +370,11 @@ static inline const char *cvmx_board_type_to_string(enum
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_L2_WSTRNSNIC_TX)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_L2_WSTRNSNIC_RX)
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_L2_ZINWELL)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ENUM_BRD_TYPE_CASE(CVMX_BOARD_TYPE_CUST_DEFINED_MAX)
 
 		    /* Customer private range */
@@ -362,10 +396,16 @@ static inline const char *cvmx_chip_type_to_string(enum
 		ENUM_CHIP_TYPE_CASE(CVMX_CHIP_TYPE_OCTEON_SAMPLE)
 		ENUM_CHIP_TYPE_CASE(CVMX_CHIP_TYPE_MAX)
 =======
+<<<<<<< HEAD
+		ENUM_CHIP_TYPE_CASE(CVMX_CHIP_SIM_TYPE_DEPRECATED)
+		ENUM_CHIP_TYPE_CASE(CVMX_CHIP_TYPE_OCTEON_SAMPLE)
+		ENUM_CHIP_TYPE_CASE(CVMX_CHIP_TYPE_MAX)
+=======
 		    ENUM_CHIP_TYPE_CASE(CVMX_CHIP_SIM_TYPE_DEPRECATED)
 		    ENUM_CHIP_TYPE_CASE(CVMX_CHIP_TYPE_OCTEON_SAMPLE)
 		    ENUM_CHIP_TYPE_CASE(CVMX_CHIP_TYPE_MAX)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return "Unsupported Chip";
 }

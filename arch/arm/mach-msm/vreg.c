@@ -4,8 +4,12 @@
 <<<<<<< HEAD
  * Copyright (c) 2009-2012 The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2009-2012 The Linux Foundation. All rights reserved.
+=======
  * Copyright (c) 2009, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Author: Brian Swetland <swetland@google.com>
  *
  * This software is licensed under the terms of the GNU General Public
@@ -21,6 +25,9 @@
 
 #include <linux/kernel.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/device.h>
 #include <linux/init.h>
@@ -230,6 +237,8 @@ static int vreg_debug_enabled_get(void *data, u64 *val)
 	struct vreg *vreg = data;
 
 	*val = vreg->refcnt;
+<<<<<<< HEAD
+=======
 =======
 #include <linux/device.h>
 #include <linux/init.h>
@@ -381,11 +390,15 @@ static int vreg_debug_get(void *data, u64 *val)
 	else
 		*val = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int vreg_debug_voltage_set(void *data, u64 val)
 {
 	struct vreg *vreg = data;
@@ -444,6 +457,8 @@ static int __devinit vreg_debug_init(void)
 				"disabling debugfs\n",
 				__func__, root ? PTR_ERR(root) : 0);
 		root = NULL;
+<<<<<<< HEAD
+=======
 =======
 static int vreg_debug_count_set(void *data, u64 val)
 {
@@ -487,11 +502,15 @@ static int __init vreg_debug_init(void)
 		(void) debugfs_create_file(name, 0644,
 					   dent, vregs + n, &vreg_count_fops);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __devexit vreg_debug_exit(void)
 {
 	if (root)
@@ -524,8 +543,11 @@ module_exit(vreg_exit);
 MODULE_LICENSE("GPL v2");
 MODULE_DESCRIPTION("vreg.c regulator shim");
 MODULE_VERSION("1.0");
+<<<<<<< HEAD
+=======
 =======
 
 device_initcall(vreg_debug_init);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

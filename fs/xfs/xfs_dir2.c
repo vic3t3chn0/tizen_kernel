@@ -26,20 +26,31 @@
 #include "xfs_ag.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_dir2.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_mount.h"
 #include "xfs_da_btree.h"
 #include "xfs_bmap_btree.h"
 #include "xfs_alloc_btree.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_dir2_sf.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_dinode.h"
 #include "xfs_inode.h"
 #include "xfs_inode_item.h"
 #include "xfs_bmap.h"
+<<<<<<< HEAD
+#include "xfs_dir2.h"
+#include "xfs_dir2_format.h"
+#include "xfs_dir2_priv.h"
+=======
 <<<<<<< HEAD
 #include "xfs_dir2.h"
 #include "xfs_dir2_format.h"
@@ -50,6 +61,7 @@
 #include "xfs_dir2_block.h"
 #include "xfs_dir2_node.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_error.h"
 #include "xfs_vnodeops.h"
 #include "xfs_trace.h"
@@ -139,10 +151,16 @@ xfs_dir_isempty(
 
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	xfs_dir2_sf_hdr_t	*sfp;
+
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	xfs_dir2_sf_t	*sfp;
 
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (dp->i_d.di_size == 0)	/* might happen during shutdown. */
 		return 1;
 	if (dp->i_d.di_size > XFS_IFORK_DSIZE(dp))
@@ -151,9 +169,14 @@ xfs_dir_isempty(
 	sfp = (xfs_dir2_sf_hdr_t *)dp->i_df.if_u1.if_data;
 	return !sfp->count;
 =======
+<<<<<<< HEAD
+	sfp = (xfs_dir2_sf_hdr_t *)dp->i_df.if_u1.if_data;
+	return !sfp->count;
+=======
 	sfp = (xfs_dir2_sf_t *)dp->i_df.if_u1.if_data;
 	return !sfp->hdr.count;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -208,8 +231,12 @@ xfs_dir_init(
 <<<<<<< HEAD
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((error = xfs_dir_ino_validate(tp->t_mountp, pdp->i_ino)))
 		return error;
 	return xfs_dir2_sf_create(&args, pdp->i_ino);
@@ -235,8 +262,12 @@ xfs_dir_createname(
 <<<<<<< HEAD
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((rval = xfs_dir_ino_validate(tp->t_mountp, inum)))
 		return rval;
 	XFS_STATS_INC(xs_dir_create);
@@ -315,8 +346,12 @@ xfs_dir_lookup(
 <<<<<<< HEAD
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	XFS_STATS_INC(xs_dir_lookup);
 
 	memset(&args, 0, sizeof(xfs_da_args_t));
@@ -374,8 +409,12 @@ xfs_dir_removename(
 <<<<<<< HEAD
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	XFS_STATS_INC(xs_dir_remove);
 
 	memset(&args, 0, sizeof(xfs_da_args_t));
@@ -427,8 +466,12 @@ xfs_readdir(
 <<<<<<< HEAD
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	XFS_STATS_INC(xs_dir_getdents);
 
 	if (dp->i_d.di_format == XFS_DINODE_FMT_LOCAL)
@@ -463,8 +506,12 @@ xfs_dir_replace(
 <<<<<<< HEAD
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((rval = xfs_dir_ino_validate(tp->t_mountp, inum)))
 		return rval;
@@ -517,8 +564,12 @@ xfs_dir_canenter(
 <<<<<<< HEAD
 	ASSERT(S_ISDIR(dp->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	ASSERT(S_ISDIR(dp->i_d.di_mode));
+=======
 	ASSERT((dp->i_d.di_mode & S_IFMT) == S_IFDIR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	memset(&args, 0, sizeof(xfs_da_args_t));
 	args.name = name->name;
@@ -552,6 +603,9 @@ xfs_dir_canenter(
 /*
  * Add a block to the directory.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This routine is for data and free blocks, not leaf/node blocks which are
  * handled by xfs_da_grow_inode.
@@ -570,6 +624,8 @@ xfs_dir2_grow_inode(
 
 	trace_xfs_dir2_grow_inode(args, space);
 
+<<<<<<< HEAD
+=======
 =======
  * This routine is for data and free blocks, not leaf/node blocks
  * which are handled by xfs_da_grow_inode.
@@ -601,17 +657,23 @@ xfs_dir2_grow_inode(
 	mp = dp->i_mount;
 	nblks = dp->i_d.di_nblocks;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set lowest possible block in the space requested.
 	 */
 	bno = XFS_B_TO_FSBT(mp, space * XFS_DIR2_SPACE_SIZE);
 	count = mp->m_dirblkfsbs;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = xfs_da_grow_inode_int(args, &bno, count);
 	if (error)
 		return error;
 
+<<<<<<< HEAD
+=======
 =======
 	/*
 	 * Find the first hole for our block.
@@ -703,6 +765,7 @@ xfs_dir2_grow_inode(
 	/* account for newly allocated blocks in reserved blocks total */
 	args->total -= dp->i_d.di_nblocks - nblks;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	*dbp = xfs_dir2_da_to_db(mp, (xfs_dablk_t)bno);
 
 	/*
@@ -717,8 +780,12 @@ xfs_dir2_grow_inode(
 <<<<<<< HEAD
 			xfs_trans_log_inode(args->trans, dp, XFS_ILOG_CORE);
 =======
+<<<<<<< HEAD
+			xfs_trans_log_inode(args->trans, dp, XFS_ILOG_CORE);
+=======
 			xfs_trans_log_inode(tp, dp, XFS_ILOG_CORE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 	return 0;

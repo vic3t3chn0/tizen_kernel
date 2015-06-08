@@ -629,8 +629,12 @@ rpcauth_refreshcred(struct rpc_task *task)
 <<<<<<< HEAD
 	}
 =======
+<<<<<<< HEAD
+	}
+=======
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dprintk("RPC: %5u refreshing %s cred %p\n",
 		task->tk_pid, cred->cr_auth->au_ops->au_name, cred);
 

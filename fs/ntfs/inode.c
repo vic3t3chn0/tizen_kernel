@@ -337,8 +337,11 @@ static void ntfs_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(ntfs_big_inode_cache, NTFS_I(inode));
 }
 
@@ -618,8 +621,12 @@ static int ntfs_read_locked_inode(struct inode *vi)
 <<<<<<< HEAD
 	set_nlink(vi, le16_to_cpu(m->link_count));
 =======
+<<<<<<< HEAD
+	set_nlink(vi, le16_to_cpu(m->link_count));
+=======
 	vi->i_nlink = le16_to_cpu(m->link_count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * FIXME: Reparse points can have the directory bit set even though
 	 * they would be S_IFLNK. Need to deal with this further below when we
@@ -644,8 +651,12 @@ static int ntfs_read_locked_inode(struct inode *vi)
 <<<<<<< HEAD
 			set_nlink(vi, 1);
 =======
+<<<<<<< HEAD
+			set_nlink(vi, 1);
+=======
 			vi->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		vi->i_mode |= S_IFREG;
 		/* Apply the file permissions mask set in the mount options. */
@@ -1256,8 +1267,12 @@ static int ntfs_read_locked_attr_inode(struct inode *base_vi, struct inode *vi)
 <<<<<<< HEAD
 	set_nlink(vi, base_vi->i_nlink);
 =======
+<<<<<<< HEAD
+	set_nlink(vi, base_vi->i_nlink);
+=======
 	vi->i_nlink	= base_vi->i_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vi->i_mtime	= base_vi->i_mtime;
 	vi->i_ctime	= base_vi->i_ctime;
 	vi->i_atime	= base_vi->i_atime;
@@ -1526,8 +1541,12 @@ static int ntfs_read_locked_index_inode(struct inode *base_vi, struct inode *vi)
 <<<<<<< HEAD
 	set_nlink(vi, base_vi->i_nlink);
 =======
+<<<<<<< HEAD
+	set_nlink(vi, base_vi->i_nlink);
+=======
 	vi->i_nlink	= base_vi->i_nlink;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vi->i_mtime	= base_vi->i_mtime;
 	vi->i_ctime	= base_vi->i_ctime;
 	vi->i_atime	= base_vi->i_atime;
@@ -2321,6 +2340,9 @@ void ntfs_evict_big_inode(struct inode *vi)
  * ntfs_show_options - show mount options in /proc/mounts
  * @sf:		seq_file in which to write our mount options
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @root:	root of the mounted tree whose mount options to display
  *
  * Called by the VFS once for each mounted ntfs volume when someone reads
@@ -2331,6 +2353,8 @@ void ntfs_evict_big_inode(struct inode *vi)
 int ntfs_show_options(struct seq_file *sf, struct dentry *root)
 {
 	ntfs_volume *vol = NTFS_SB(root->d_sb);
+<<<<<<< HEAD
+=======
 =======
  * @mnt:	vfs mount whose mount options to display
  *
@@ -2343,6 +2367,7 @@ int ntfs_show_options(struct seq_file *sf, struct vfsmount *mnt)
 {
 	ntfs_volume *vol = NTFS_SB(mnt->mnt_sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	seq_printf(sf, ",uid=%i", vol->uid);
@@ -2392,6 +2417,9 @@ static const char *es = "  Leaving inconsistent metadata.  Unmount and run "
 <<<<<<< HEAD
  * Called with ->i_mutex held.
 =======
+<<<<<<< HEAD
+ * Called with ->i_mutex held.
+=======
  * Called with ->i_mutex held.  In all but one case ->i_alloc_sem is held for
  * writing.  The only case in the kernel where ->i_alloc_sem is not held is
  * mm/filemap.c::generic_file_buffered_write() where vmtruncate() is called
@@ -2399,6 +2427,7 @@ static const char *es = "  Leaving inconsistent metadata.  Unmount and run "
  * fs/ntfs/file.c::ntfs_file_buffered_write() where we call vmtruncate() again
  * without holding ->i_alloc_sem.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int ntfs_truncate(struct inode *vi)
 {
@@ -2926,9 +2955,13 @@ void ntfs_truncate_vfs(struct inode *vi) {
 <<<<<<< HEAD
  * Called with ->i_mutex held.
 =======
+<<<<<<< HEAD
+ * Called with ->i_mutex held.
+=======
  * Called with ->i_mutex held.  For the ATTR_SIZE (i.e. ->truncate) case, also
  * called with ->i_alloc_sem held for writing.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int ntfs_setattr(struct dentry *dentry, struct iattr *attr)
 {

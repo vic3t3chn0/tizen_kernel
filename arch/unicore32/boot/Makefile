@@ -13,9 +13,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 MKIMAGE := $(srctree)/scripts/mkuboot.sh
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 targets := Image zImage uImage
 
 $(obj)/Image: vmlinux FORCE
@@ -33,6 +36,10 @@ $(obj)/zImage: $(obj)/compressed/vmlinux FORCE
 UIMAGE_ARCH = unicore
 UIMAGE_LOADADDR = 0x0
 =======
+<<<<<<< HEAD
+UIMAGE_ARCH = unicore
+UIMAGE_LOADADDR = 0x0
+=======
 quiet_cmd_uimage = UIMAGE  $@
       cmd_uimage = $(CONFIG_SHELL) $(MKIMAGE) -A unicore -O linux -T kernel \
 		   -C none -a $(LOADADDR) -e $(STARTADDR) \
@@ -42,6 +49,7 @@ $(obj)/uImage: LOADADDR=0x0
 
 $(obj)/uImage: STARTADDR=$(LOADADDR)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 $(obj)/uImage: $(obj)/zImage FORCE
 	$(call if_changed,uimage)

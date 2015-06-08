@@ -28,12 +28,20 @@
 #include <linux/initrd.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/fsl_devices.h>
 #include <linux/of_platform.h>
 
+<<<<<<< HEAD
+#include <asm/pgtable.h>
+#include <asm/page.h>
+#include <linux/atomic.h>
+=======
 <<<<<<< HEAD
 #include <asm/pgtable.h>
 #include <asm/page.h>
@@ -44,6 +52,7 @@
 #include <asm/page.h>
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/io.h>
 #include <asm/machdep.h>
@@ -62,11 +71,21 @@
 #include "mpc85xx.h"
 
 =======
+<<<<<<< HEAD
+#include "mpc85xx.h"
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sbc_rev;
 
 static void __init sbc8548_pic_init(void)
 {
+<<<<<<< HEAD
+	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN,
+			0, 256, " OpenPIC  ");
+	BUG_ON(mpic == NULL);
+=======
 <<<<<<< HEAD
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN,
 			0, 256, " OpenPIC  ");
@@ -98,6 +117,7 @@ static void __init sbc8548_pic_init(void)
 	of_node_put(np);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpic_init(mpic);
 }
 
@@ -173,6 +193,9 @@ static void sbc8548_show_cpuinfo(struct seq_file *m)
 <<<<<<< HEAD
 machine_device_initcall(sbc8548, mpc85xx_common_publish_devices);
 =======
+<<<<<<< HEAD
+machine_device_initcall(sbc8548, mpc85xx_common_publish_devices);
+=======
 static struct of_device_id __initdata of_bus_ids[] = {
 	{ .name = "soc", },
 	{ .type = "soc", },
@@ -189,6 +212,7 @@ static int __init declare_of_platform_devices(void)
 }
 machine_device_initcall(sbc8548, declare_of_platform_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called very early, device-tree isn't unflattened

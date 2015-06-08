@@ -4,9 +4,13 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 #include <asm/rwlock.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/page.h>
 #include <asm/processor.h>
 #include <linux/compiler.h>
@@ -55,6 +59,9 @@
  * in the high part, because a wide xadd increment of the low part would carry
  * up and contaminate the high part.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static __always_inline void __ticket_spin_lock(arch_spinlock_t *lock)
 {
@@ -69,6 +76,8 @@ static __always_inline void __ticket_spin_lock(arch_spinlock_t *lock)
 		inc.head = ACCESS_ONCE(lock->tickets.head);
 	}
 	barrier();		/* make sure nothing creeps before the lock is taken */
+<<<<<<< HEAD
+=======
 =======
  *
  * With fewer than 2^8 possible CPUs, we can use x86's partial registers to
@@ -96,11 +105,15 @@ static __always_inline void __ticket_spin_lock(arch_spinlock_t *lock)
 		:
 		: "memory", "cc");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static __always_inline int __ticket_spin_trylock(arch_spinlock_t *lock)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	arch_spinlock_t old, new;
 
 	old.tickets = ACCESS_ONCE(lock->tickets);
@@ -111,6 +124,8 @@ static __always_inline int __ticket_spin_trylock(arch_spinlock_t *lock)
 
 	/* cmpxchg is a full barrier, so nothing can move before it */
 	return cmpxchg(&lock->head_tail, old.head_tail, new.head_tail) == old.head_tail;
+<<<<<<< HEAD
+=======
 =======
 	int tmp, new;
 
@@ -181,11 +196,15 @@ static __always_inline int __ticket_spin_trylock(arch_spinlock_t *lock)
 
 	return tmp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static __always_inline void __ticket_spin_unlock(arch_spinlock_t *lock)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__add(&lock->tickets.head, 1, UNLOCK_LOCK_PREFIX);
 }
 
@@ -194,6 +213,8 @@ static inline int __ticket_spin_is_locked(arch_spinlock_t *lock)
 	struct __raw_tickets tmp = ACCESS_ONCE(lock->tickets);
 
 	return tmp.tail != tmp.head;
+<<<<<<< HEAD
+=======
 =======
 	asm volatile(UNLOCK_LOCK_PREFIX "incw %0"
 		     : "+m" (lock->slock)
@@ -208,6 +229,7 @@ static inline int __ticket_spin_is_locked(arch_spinlock_t *lock)
 
 	return !!(((tmp >> TICKET_SHIFT) ^ tmp) & ((1 << TICKET_SHIFT) - 1));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int __ticket_spin_is_contended(arch_spinlock_t *lock)
@@ -217,10 +239,16 @@ static inline int __ticket_spin_is_contended(arch_spinlock_t *lock)
 
 	return (__ticket_t)(tmp.tail - tmp.head) > 1;
 =======
+<<<<<<< HEAD
+	struct __raw_tickets tmp = ACCESS_ONCE(lock->tickets);
+
+	return (__ticket_t)(tmp.tail - tmp.head) > 1;
+=======
 	int tmp = ACCESS_ONCE(lock->slock);
 
 	return (((tmp >> TICKET_SHIFT) - tmp) & ((1 << TICKET_SHIFT) - 1)) > 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifndef CONFIG_PARAVIRT_SPINLOCKS
@@ -288,8 +316,12 @@ static inline int arch_read_can_lock(arch_rwlock_t *lock)
 <<<<<<< HEAD
 	return lock->lock > 0;
 =======
+<<<<<<< HEAD
+	return lock->lock > 0;
+=======
 	return (int)(lock)->lock > 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -301,8 +333,12 @@ static inline int arch_write_can_lock(arch_rwlock_t *lock)
 <<<<<<< HEAD
 	return lock->write == WRITE_LOCK_CMP;
 =======
+<<<<<<< HEAD
+	return lock->write == WRITE_LOCK_CMP;
+=======
 	return (lock)->lock == RW_LOCK_BIAS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void arch_read_lock(arch_rwlock_t *rw)
@@ -310,8 +346,12 @@ static inline void arch_read_lock(arch_rwlock_t *rw)
 <<<<<<< HEAD
 	asm volatile(LOCK_PREFIX READ_LOCK_SIZE(dec) " (%0)\n\t"
 =======
+<<<<<<< HEAD
+	asm volatile(LOCK_PREFIX READ_LOCK_SIZE(dec) " (%0)\n\t"
+=======
 	asm volatile(LOCK_PREFIX " subl $1,(%0)\n\t"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		     "jns 1f\n"
 		     "call __read_lock_failed\n\t"
 		     "1:\n"
@@ -321,12 +361,17 @@ static inline void arch_read_lock(arch_rwlock_t *rw)
 static inline void arch_write_lock(arch_rwlock_t *rw)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asm volatile(LOCK_PREFIX WRITE_LOCK_SUB(%1) "(%0)\n\t"
 		     "jz 1f\n"
 		     "call __write_lock_failed\n\t"
 		     "1:\n"
 		     ::LOCK_PTR_REG (&rw->write), "i" (RW_LOCK_BIAS)
 		     : "memory");
+<<<<<<< HEAD
+=======
 =======
 	asm volatile(LOCK_PREFIX " subl %1,(%0)\n\t"
 		     "jz 1f\n"
@@ -334,16 +379,22 @@ static inline void arch_write_lock(arch_rwlock_t *rw)
 		     "1:\n"
 		     ::LOCK_PTR_REG (rw), "i" (RW_LOCK_BIAS) : "memory");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int arch_read_trylock(arch_rwlock_t *lock)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	READ_LOCK_ATOMIC(t) *count = (READ_LOCK_ATOMIC(t) *)lock;
 
 	if (READ_LOCK_ATOMIC(dec_return)(count) >= 0)
 		return 1;
 	READ_LOCK_ATOMIC(inc)(count);
+<<<<<<< HEAD
+=======
 =======
 	atomic_t *count = (atomic_t *)lock;
 
@@ -351,17 +402,23 @@ static inline int arch_read_trylock(arch_rwlock_t *lock)
 		return 1;
 	atomic_inc(count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static inline int arch_write_trylock(arch_rwlock_t *lock)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	atomic_t *count = (atomic_t *)&lock->write;
 
 	if (atomic_sub_and_test(WRITE_LOCK_CMP, count))
 		return 1;
 	atomic_add(WRITE_LOCK_CMP, count);
+<<<<<<< HEAD
+=======
 =======
 	atomic_t *count = (atomic_t *)lock;
 
@@ -369,6 +426,7 @@ static inline int arch_write_trylock(arch_rwlock_t *lock)
 		return 1;
 	atomic_add(RW_LOCK_BIAS, count);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -378,8 +436,13 @@ static inline void arch_read_unlock(arch_rwlock_t *rw)
 	asm volatile(LOCK_PREFIX READ_LOCK_SIZE(inc) " %0"
 		     :"+m" (rw->lock) : : "memory");
 =======
+<<<<<<< HEAD
+	asm volatile(LOCK_PREFIX READ_LOCK_SIZE(inc) " %0"
+		     :"+m" (rw->lock) : : "memory");
+=======
 	asm volatile(LOCK_PREFIX "incl %0" :"+m" (rw->lock) : : "memory");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void arch_write_unlock(arch_rwlock_t *rw)
@@ -388,23 +451,34 @@ static inline void arch_write_unlock(arch_rwlock_t *rw)
 	asm volatile(LOCK_PREFIX WRITE_LOCK_ADD(%1) "%0"
 		     : "+m" (rw->write) : "i" (RW_LOCK_BIAS) : "memory");
 =======
+<<<<<<< HEAD
+	asm volatile(LOCK_PREFIX WRITE_LOCK_ADD(%1) "%0"
+		     : "+m" (rw->write) : "i" (RW_LOCK_BIAS) : "memory");
+=======
 	asm volatile(LOCK_PREFIX "addl %1, %0"
 		     : "+m" (rw->lock) : "i" (RW_LOCK_BIAS) : "memory");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define arch_read_lock_flags(lock, flags) arch_read_lock(lock)
 #define arch_write_lock_flags(lock, flags) arch_write_lock(lock)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #undef READ_LOCK_SIZE
 #undef READ_LOCK_ATOMIC
 #undef WRITE_LOCK_ADD
 #undef WRITE_LOCK_SUB
 #undef WRITE_LOCK_CMP
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define arch_spin_relax(lock)	cpu_relax()
 #define arch_read_relax(lock)	cpu_relax()
 #define arch_write_relax(lock)	cpu_relax()

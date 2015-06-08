@@ -1,9 +1,13 @@
 <<<<<<< HEAD
 menu "UML Character Devices"
 =======
+<<<<<<< HEAD
+menu "UML Character Devices"
+=======
 
 menu "Character Devices"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config STDERR_CONSOLE
 	bool "stderr console"
@@ -111,6 +115,8 @@ config SSL_CHAN
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config UNIX98_PTYS
 	bool "Unix98 PTY support"
 	help
@@ -198,6 +204,7 @@ config UML_WATCHDOG
 	depends on WATCHDOG
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config UML_SOUND
 	tristate "Sound support"
 	help
@@ -218,6 +225,8 @@ config HOSTAUDIO
 	tristate
 	default UML_SOUND
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #It is selected elsewhere, so kconfig would warn without this.
@@ -246,4 +255,5 @@ config MMAPPER
 	  UML.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endmenu

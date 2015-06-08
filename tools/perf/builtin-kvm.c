@@ -24,10 +24,13 @@ static char			name_buffer[256];
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 bool				perf_host = 1;
 bool				perf_guest;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const char * const kvm_usage[] = {
 	"perf kvm [<options>] {top|record|report|diff|buildid-list}",
 	NULL
@@ -44,8 +47,12 @@ static const struct option kvm_options[] = {
 <<<<<<< HEAD
 		    "Collect host os data"),
 =======
+<<<<<<< HEAD
+		    "Collect host os data"),
+=======
 		    "Collect guest os data"),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	OPT_STRING(0, "guestmount", &symbol_conf.guestmount, "directory",
 		   "guest mount directory under which every guest os"
 		   " instance has a subdir"),
@@ -118,8 +125,13 @@ int cmd_kvm(int argc, const char **argv, const char *prefix __used)
 	perf_host  = 0;
 	perf_guest = 1;
 =======
+<<<<<<< HEAD
+	perf_host  = 0;
+	perf_guest = 1;
+=======
 	perf_host = perf_guest = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	argc = parse_options(argc, argv, kvm_options, kvm_usage,
 			PARSE_OPT_STOP_AT_NON_OPTION);

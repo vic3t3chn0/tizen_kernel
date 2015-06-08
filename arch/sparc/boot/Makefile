@@ -7,8 +7,11 @@ ROOT_IMG	:= /usr/src/root.img
 ELFTOAOUT	:= elftoaout
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 MKIMAGE 	:= $(srctree)/scripts/mkuboot.sh
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 hostprogs-y	:= piggyback btfixupprep
 targets		:= tftpboot.img btfix.o btfix.S image zImage vmlinux.aout
@@ -100,12 +103,18 @@ UIMAGE_LOADADDR = $(CONFIG_UBOOT_LOAD_ADDR)
 UIMAGE_ENTRYADDR = $(CONFIG_UBOOT_ENTRY_ADDR)
 UIMAGE_COMPRESSION = gzip
 =======
+<<<<<<< HEAD
+UIMAGE_LOADADDR = $(CONFIG_UBOOT_LOAD_ADDR)
+UIMAGE_ENTRYADDR = $(CONFIG_UBOOT_ENTRY_ADDR)
+UIMAGE_COMPRESSION = gzip
+=======
 quiet_cmd_uimage = UIMAGE  $@
       cmd_uimage = $(CONFIG_SHELL) $(MKIMAGE) -A sparc -O linux -T kernel \
                -C gzip -a $(CONFIG_UBOOT_LOAD_ADDR) \
 	       -e $(CONFIG_UBOOT_ENTRY_ADDR) -n 'Linux-$(KERNELRELEASE)' \
                -d $< $@
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 quiet_cmd_uimage.o = UIMAGE.O $@
       cmd_uimage.o = $(LD) -Tdata $(CONFIG_UBOOT_FLASH_ADDR) \

@@ -5,8 +5,12 @@
 <<<<<<< HEAD
 **  Copyright (C) 2004-2011 Red Hat, Inc.  All rights reserved.
 =======
+<<<<<<< HEAD
+**  Copyright (C) 2004-2011 Red Hat, Inc.  All rights reserved.
+=======
 **  Copyright (C) 2004-2008 Red Hat, Inc.  All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 **
 **  This copyrighted material is made available to anyone wishing to use,
 **  modify, copy, or redistribute it subject to the terms and conditions
@@ -79,6 +83,9 @@ struct dlm_lksb {
 #ifdef __KERNEL__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct dlm_slot {
 	int nodeid; /* 1 to MAX_INT */
 	int slot;   /* 1 to MAX_INT */
@@ -149,6 +156,8 @@ int dlm_new_lockspace(const char *name, const char *cluster,
 		      uint32_t flags, int lvblen,
 		      const struct dlm_lockspace_ops *ops, void *ops_arg,
 		      int *ops_result, dlm_lockspace_t **lockspace);
+<<<<<<< HEAD
+=======
 =======
 /*
  * dlm_new_lockspace
@@ -160,6 +169,7 @@ int dlm_new_lockspace(const char *name, const char *cluster,
 int dlm_new_lockspace(const char *name, int namelen,
 		      dlm_lockspace_t **lockspace, uint32_t flags, int lvblen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * dlm_release_lockspace

@@ -5,7 +5,11 @@
 <<<<<<< HEAD
  * Copyright (c) 2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (c) 2012, The Linux Foundation. All rights reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -25,7 +29,12 @@ struct snd_pcm_substream;
 struct snd_soc_dapm_widget;
 struct snd_compr_stream;
 =======
+<<<<<<< HEAD
+struct snd_soc_dapm_widget;
+struct snd_compr_stream;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * DAI hardware audio formats.
@@ -34,6 +43,9 @@ struct snd_compr_stream;
  * to the end.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SND_SOC_DAIFMT_I2S		1 /* I2S mode */
 #define SND_SOC_DAIFMT_RIGHT_J		2 /* Right Justified mode */
 #define SND_SOC_DAIFMT_LEFT_J		3 /* Left Justified mode */
@@ -41,6 +53,8 @@ struct snd_compr_stream;
 #define SND_SOC_DAIFMT_DSP_B		5 /* L data MSB during FRM LRC */
 #define SND_SOC_DAIFMT_AC97		6 /* AC97 */
 #define SND_SOC_DAIFMT_PDM		7 /* Pulse density modulation */
+<<<<<<< HEAD
+=======
 =======
 #define SND_SOC_DAIFMT_I2S		0 /* I2S mode */
 #define SND_SOC_DAIFMT_RIGHT_J		1 /* Right Justified mode */
@@ -50,6 +64,7 @@ struct snd_compr_stream;
 #define SND_SOC_DAIFMT_AC97		5 /* AC97 */
 #define SND_SOC_DAIFMT_PDM		6 /* Pulse density modulation */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* left and right justified also known as MSB and LSB respectively */
 #define SND_SOC_DAIFMT_MSB		SND_SOC_DAIFMT_LEFT_J
@@ -65,9 +80,14 @@ struct snd_compr_stream;
 #define SND_SOC_DAIFMT_CONT		(1 << 4) /* continuous clock */
 #define SND_SOC_DAIFMT_GATED		(2 << 4) /* clock is gated */
 =======
+<<<<<<< HEAD
+#define SND_SOC_DAIFMT_CONT		(1 << 4) /* continuous clock */
+#define SND_SOC_DAIFMT_GATED		(2 << 4) /* clock is gated */
+=======
 #define SND_SOC_DAIFMT_CONT		(0 << 4) /* continuous clock */
 #define SND_SOC_DAIFMT_GATED		(1 << 4) /* clock is gated */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * DAI hardware signal inversions.
@@ -76,16 +96,22 @@ struct snd_compr_stream;
  * format.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SND_SOC_DAIFMT_NB_NF		(1 << 8) /* normal bit clock + frame */
 #define SND_SOC_DAIFMT_NB_IF		(2 << 8) /* normal BCLK + inv FRM */
 #define SND_SOC_DAIFMT_IB_NF		(3 << 8) /* invert BCLK + nor FRM */
 #define SND_SOC_DAIFMT_IB_IF		(4 << 8) /* invert BCLK + FRM */
+<<<<<<< HEAD
+=======
 =======
 #define SND_SOC_DAIFMT_NB_NF		(0 << 8) /* normal bit clock + frame */
 #define SND_SOC_DAIFMT_NB_IF		(1 << 8) /* normal BCLK + inv FRM */
 #define SND_SOC_DAIFMT_IB_NF		(2 << 8) /* invert BCLK + nor FRM */
 #define SND_SOC_DAIFMT_IB_IF		(3 << 8) /* invert BCLK + FRM */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * DAI hardware clock masters.
@@ -95,16 +121,22 @@ struct snd_compr_stream;
  * clk and frame slave.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SND_SOC_DAIFMT_CBM_CFM		(1 << 12) /* codec clk & FRM master */
 #define SND_SOC_DAIFMT_CBS_CFM		(2 << 12) /* codec clk slave & FRM master */
 #define SND_SOC_DAIFMT_CBM_CFS		(3 << 12) /* codec clk master & frame slave */
 #define SND_SOC_DAIFMT_CBS_CFS		(4 << 12) /* codec clk & FRM slave */
+<<<<<<< HEAD
+=======
 =======
 #define SND_SOC_DAIFMT_CBM_CFM		(0 << 12) /* codec clk & FRM master */
 #define SND_SOC_DAIFMT_CBS_CFM		(1 << 12) /* codec clk slave & FRM master */
 #define SND_SOC_DAIFMT_CBM_CFS		(2 << 12) /* codec clk master & frame slave */
 #define SND_SOC_DAIFMT_CBS_CFS		(3 << 12) /* codec clk & FRM slave */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define SND_SOC_DAIFMT_FORMAT_MASK	0x000f
 #define SND_SOC_DAIFMT_CLOCK_MASK	0x00f0
@@ -160,12 +192,18 @@ int snd_soc_dai_set_channel_map(struct snd_soc_dai *dai,
 	unsigned int rx_num, unsigned int *rx_slot);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_soc_dai_get_channel_map(struct snd_soc_dai *dai,
 	unsigned int *tx_num, unsigned int *tx_slot,
 	unsigned int *rx_num, unsigned int *rx_slot);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int snd_soc_dai_set_tristate(struct snd_soc_dai *dai, int tristate);
 
 /* Digital Audio Interface mute */
@@ -200,7 +238,13 @@ struct snd_soc_dai_ops {
 		unsigned int *tx_num, unsigned int *tx_slot,
 		unsigned int *rx_num, unsigned int *rx_slot);
 =======
+<<<<<<< HEAD
+	int (*get_channel_map)(struct snd_soc_dai *dai,
+		unsigned int *tx_num, unsigned int *tx_slot,
+		unsigned int *rx_num, unsigned int *rx_slot);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * DAI digital mute - optional.
 	 * Called by soc-core to minimise any pops.
@@ -227,7 +271,12 @@ struct snd_soc_dai_ops {
 	int (*bespoke_trigger)(struct snd_pcm_substream *, int,
 		struct snd_soc_dai *);
 =======
+<<<<<<< HEAD
+	int (*bespoke_trigger)(struct snd_pcm_substream *, int,
+		struct snd_soc_dai *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * For hardware based FIFO caused delay reporting.
 	 * Optional.
@@ -261,7 +310,12 @@ struct snd_soc_dai_driver {
 	/* compress dai */
 	bool compress_dai;
 =======
+<<<<<<< HEAD
+	/* compress dai */
+	bool compress_dai;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* ops */
 	const struct snd_soc_dai_ops *ops;
@@ -271,12 +325,18 @@ struct snd_soc_dai_driver {
 	struct snd_soc_pcm_stream playback;
 	unsigned int symmetric_rates:1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* probe ordering - for components with runtime dependencies */
 	int probe_order;
 	int remove_order;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -297,8 +357,12 @@ struct snd_soc_dai {
 <<<<<<< HEAD
 	unsigned int capture_active;		/* stream is in use */
 =======
+<<<<<<< HEAD
+	unsigned int capture_active;		/* stream is in use */
+=======
 	unsigned int capture_active:1;		/* stream is in use */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int playback_active:1;		/* stream is in use */
 	unsigned int symmetric_rates:1;
 	struct snd_pcm_runtime *runtime;
@@ -311,12 +375,21 @@ struct snd_soc_dai {
 	struct snd_soc_dapm_widget *capture_widget;
 
 =======
+<<<<<<< HEAD
+	struct snd_soc_dapm_widget *playback_widget;
+	struct snd_soc_dapm_widget *capture_widget;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* DAI DMA data */
 	void *playback_dma_data;
 	void *capture_dma_data;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Symmetry data - only valid if symmetry is being enforced */
 	unsigned int rate;
 
@@ -324,6 +397,8 @@ struct snd_soc_dai {
 	struct snd_soc_platform *platform;
 	struct snd_soc_codec *codec;
 
+<<<<<<< HEAD
+=======
 =======
 	/* parent platform/codec */
 	union {
@@ -331,11 +406,15 @@ struct snd_soc_dai {
 		struct snd_soc_codec *codec;
 	};
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct snd_soc_card *card;
 
 	struct list_head list;
 	struct list_head card_list;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* runtime AIF widget and channel mmap updates */
 	u64 playback_channel_map;
@@ -343,8 +422,11 @@ struct snd_soc_dai {
 	struct snd_soc_dapm_widget *playback_aif;
 	struct snd_soc_dapm_widget *capture_aif;
 	bool channel_map_instanciated;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline void *snd_soc_dai_get_dma_data(const struct snd_soc_dai *dai,
@@ -376,6 +458,9 @@ static inline void *snd_soc_dai_get_drvdata(struct snd_soc_dai *dai)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Backend DAI PCM ops */
 static inline int snd_soc_dai_startup(struct snd_pcm_substream *substream,
 	struct snd_soc_dai *dai)
@@ -470,6 +555,9 @@ static inline int snd_soc_dai_trigger(struct snd_pcm_substream *substream,
 		return dai->driver->ops->trigger(substream, cmd, dai);
 	return 0;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

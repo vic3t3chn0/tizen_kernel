@@ -4,14 +4,20 @@
  * OMAP Dual-Mode Timers
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2010 Texas Instruments Incorporated - http://www.ti.com/
  * Tarun Kanti DebBarma <tarun.kanti@ti.com>
  * Thara Gopinath <thara@ti.com>
  *
  * dmtimer adaptation to platform_driver.
  *
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2005 Nokia Corporation
  * OMAP2 support by Juha Yrjola
  * API improvements and OMAP2 clock framework support by Timo Teras
@@ -39,6 +45,9 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/io.h>
 #include <linux/slab.h>
@@ -76,6 +85,8 @@ static inline u32 omap_dm_timer_read_reg(struct omap_dm_timer *timer, u32 reg)
  * The posted mode bit is encoded in reg. Note that in posted mode the write
  * pending bit must be checked. Otherwise a write on a register which has a
  * pending write will be lost.
+<<<<<<< HEAD
+=======
 =======
 #include <linux/init.h>
 #include <linux/spinlock.h>
@@ -352,11 +363,15 @@ static inline u32 omap_dm_timer_read_reg(struct omap_dm_timer *timer, u32 reg)
  * checked. Otherwise a write on a register which has a pending write will be
  * lost.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void omap_dm_timer_write_reg(struct omap_dm_timer *timer, u32 reg,
 						u32 value)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	WARN_ON((reg & 0xff) < _OMAP_TIMER_WAKEUP_EN_OFFSET);
 	__omap_dm_timer_write(timer, reg, value, timer->posted);
 }
@@ -382,6 +397,8 @@ static void omap_timer_restore_context(struct omap_dm_timer *timer)
 	__raw_writel(timer->context.tier, timer->irq_ena);
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_CTRL_REG,
 				timer->context.tclr);
+<<<<<<< HEAD
+=======
 =======
 	if (timer->posted)
 		while (readl(timer->io_base + (OMAP_TIMER_WRITE_PEND_REG & 0xff))
@@ -389,6 +406,7 @@ static void omap_timer_restore_context(struct omap_dm_timer *timer)
 			cpu_relax();
 	writel(value, timer->io_base + (reg & 0xff));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void omap_dm_timer_wait_for_reset(struct omap_dm_timer *timer)
@@ -396,15 +414,21 @@ static void omap_dm_timer_wait_for_reset(struct omap_dm_timer *timer)
 	int c;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!timer->sys_stat)
 		return;
 
 	c = 0;
 	while (!(__raw_readl(timer->sys_stat) & 1)) {
+<<<<<<< HEAD
+=======
 =======
 	c = 0;
 	while (!(omap_dm_timer_read_reg(timer, OMAP_TIMER_SYS_STAT_REG) & 1)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		c++;
 		if (c > 100000) {
 			printk(KERN_ERR "Timer failed to reset\n");
@@ -416,6 +440,9 @@ static void omap_dm_timer_wait_for_reset(struct omap_dm_timer *timer)
 static void omap_dm_timer_reset(struct omap_dm_timer *timer)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap_dm_timer_enable(timer);
 	if (timer->pdev->id != 1) {
 		omap_dm_timer_write_reg(timer, OMAP_TIMER_IF_CTRL_REG, 0x06);
@@ -446,6 +473,8 @@ int omap_dm_timer_prepare(struct omap_dm_timer *timer)
 
 	timer->posted = 1;
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	u32 l;
 
@@ -481,11 +510,15 @@ static void omap_dm_timer_prepare(struct omap_dm_timer *timer)
 	omap_dm_timer_enable(timer);
 	omap_dm_timer_reset(timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct omap_dm_timer *omap_dm_timer_request(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_dm_timer *timer = NULL, *t;
 	unsigned long flags;
 	int ret = 0;
@@ -511,6 +544,8 @@ struct omap_dm_timer *omap_dm_timer_request(void)
 
 	if (!timer)
 		pr_debug("%s: timer request failed!\n", __func__);
+<<<<<<< HEAD
+=======
 =======
 	struct omap_dm_timer *timer = NULL;
 	unsigned long flags;
@@ -530,6 +565,7 @@ struct omap_dm_timer *omap_dm_timer_request(void)
 	if (timer != NULL)
 		omap_dm_timer_prepare(timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return timer;
 }
@@ -538,6 +574,9 @@ EXPORT_SYMBOL_GPL(omap_dm_timer_request);
 struct omap_dm_timer *omap_dm_timer_request_specific(int id)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_dm_timer *timer = NULL, *t;
 	unsigned long flags;
 	int ret = 0;
@@ -562,6 +601,8 @@ struct omap_dm_timer *omap_dm_timer_request_specific(int id)
 
 	if (!timer)
 		pr_debug("%s: timer%d request failed!\n", __func__, id);
+<<<<<<< HEAD
+=======
 =======
 	struct omap_dm_timer *timer;
 	unsigned long flags;
@@ -581,12 +622,16 @@ struct omap_dm_timer *omap_dm_timer_request_specific(int id)
 
 	omap_dm_timer_prepare(timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return timer;
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_request_specific);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap_dm_timer_free(struct omap_dm_timer *timer)
 {
 	if (unlikely(!timer))
@@ -597,6 +642,8 @@ int omap_dm_timer_free(struct omap_dm_timer *timer)
 	WARN_ON(!timer->reserved);
 	timer->reserved = 0;
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 void omap_dm_timer_free(struct omap_dm_timer *timer)
 {
@@ -607,11 +654,15 @@ void omap_dm_timer_free(struct omap_dm_timer *timer)
 	WARN_ON(!timer->reserved);
 	timer->reserved = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_free);
 
 void omap_dm_timer_enable(struct omap_dm_timer *timer)
 {
+<<<<<<< HEAD
+	pm_runtime_get_sync(&timer->pdev->dev);
+=======
 <<<<<<< HEAD
 	pm_runtime_get_sync(&timer->pdev->dev);
 =======
@@ -627,11 +678,15 @@ void omap_dm_timer_enable(struct omap_dm_timer *timer)
 
 	timer->enabled = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_enable);
 
 void omap_dm_timer_disable(struct omap_dm_timer *timer)
 {
+<<<<<<< HEAD
+	pm_runtime_put(&timer->pdev->dev);
+=======
 <<<<<<< HEAD
 	pm_runtime_put(&timer->pdev->dev);
 =======
@@ -647,6 +702,7 @@ void omap_dm_timer_disable(struct omap_dm_timer *timer)
 
 	timer->enabled = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_disable);
 
@@ -657,8 +713,14 @@ int omap_dm_timer_get_irq(struct omap_dm_timer *timer)
 		return timer->irq;
 	return -EINVAL;
 =======
+<<<<<<< HEAD
+	if (timer)
+		return timer->irq;
+	return -EINVAL;
+=======
 	return timer->irq;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_get_irq);
 
@@ -675,8 +737,14 @@ __u32 omap_dm_timer_modify_idlect_mask(__u32 inputmask)
 	struct omap_dm_timer *timer = NULL;
 	unsigned long flags;
 =======
+<<<<<<< HEAD
+	int i = 0;
+	struct omap_dm_timer *timer = NULL;
+	unsigned long flags;
+=======
 	int i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If ARMXOR cannot be idled this function call is unnecessary */
 	if (!(inputmask & (1 << 1)))
@@ -684,17 +752,23 @@ __u32 omap_dm_timer_modify_idlect_mask(__u32 inputmask)
 
 	/* If any active timer is using ARMXOR return modified mask */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_irqsave(&dm_timer_lock, flags);
 	list_for_each_entry(timer, &omap_timer_list, node) {
 		u32 l;
 
 		l = omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG);
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < dm_timer_count; i++) {
 		u32 l;
 
 		l = omap_dm_timer_read_reg(&dm_timers[i], OMAP_TIMER_CTRL_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (l & OMAP_TIMER_CTRL_ST) {
 			if (((omap_readl(MOD_CONF_CTRL_1) >> (i * 2)) & 0x03) == 0)
 				inputmask &= ~(1 << 1);
@@ -706,8 +780,14 @@ __u32 omap_dm_timer_modify_idlect_mask(__u32 inputmask)
 	}
 	spin_unlock_irqrestore(&dm_timer_lock, flags);
 =======
+<<<<<<< HEAD
+		i++;
+	}
+	spin_unlock_irqrestore(&dm_timer_lock, flags);
+=======
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return inputmask;
 }
@@ -722,8 +802,14 @@ struct clk *omap_dm_timer_get_fclk(struct omap_dm_timer *timer)
 		return timer->fclk;
 	return NULL;
 =======
+<<<<<<< HEAD
+	if (timer)
+		return timer->fclk;
+	return NULL;
+=======
 	return timer->fclk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_get_fclk);
 
@@ -738,6 +824,9 @@ EXPORT_SYMBOL_GPL(omap_dm_timer_modify_idlect_mask);
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap_dm_timer_trigger(struct omap_dm_timer *timer)
 {
 	if (unlikely(!timer || pm_runtime_suspended(&timer->pdev->dev))) {
@@ -766,6 +855,8 @@ int omap_dm_timer_start(struct omap_dm_timer *timer)
 			omap_timer_restore_context(timer);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 void omap_dm_timer_trigger(struct omap_dm_timer *timer)
 {
@@ -778,12 +869,16 @@ void omap_dm_timer_start(struct omap_dm_timer *timer)
 	u32 l;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l = omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG);
 	if (!(l & OMAP_TIMER_CTRL_ST)) {
 		l |= OMAP_TIMER_CTRL_ST;
 		omap_dm_timer_write_reg(timer, OMAP_TIMER_CTRL_REG, l);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Save the context */
 	timer->context.tclr = l;
@@ -830,6 +925,8 @@ int omap_dm_timer_set_source(struct omap_dm_timer *timer, int source)
 		return -EINVAL;
 
 	pdata = timer->pdev->dev.platform_data;
+<<<<<<< HEAD
+=======
 =======
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_start);
@@ -879,10 +976,14 @@ int omap_dm_timer_set_source(struct omap_dm_timer *timer, int source)
 {
 	int ret = -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (source < 0 || source >= 3)
 		return -EINVAL;
 
+<<<<<<< HEAD
+	ret = pdata->set_timer_src(timer->pdev, source);
+=======
 <<<<<<< HEAD
 	ret = pdata->set_timer_src(timer->pdev, source);
 =======
@@ -896,6 +997,7 @@ int omap_dm_timer_set_source(struct omap_dm_timer *timer, int source)
 	 */
 	__delay(300000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -904,21 +1006,31 @@ EXPORT_SYMBOL_GPL(omap_dm_timer_set_source);
 <<<<<<< HEAD
 int omap_dm_timer_set_load(struct omap_dm_timer *timer, int autoreload,
 =======
+<<<<<<< HEAD
+int omap_dm_timer_set_load(struct omap_dm_timer *timer, int autoreload,
+=======
 #endif
 
 void omap_dm_timer_set_load(struct omap_dm_timer *timer, int autoreload,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    unsigned int load)
 {
 	u32 l;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!timer))
 		return -EINVAL;
 
 	omap_dm_timer_enable(timer);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l = omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG);
 	if (autoreload)
 		l |= OMAP_TIMER_CTRL_AR;
@@ -929,13 +1041,19 @@ void omap_dm_timer_set_load(struct omap_dm_timer *timer, int autoreload,
 
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_TRIGGER_REG, 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Save the context */
 	timer->context.tclr = l;
 	timer->context.tldr = load;
 	omap_dm_timer_disable(timer);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_set_load);
 
@@ -943,13 +1061,20 @@ EXPORT_SYMBOL_GPL(omap_dm_timer_set_load);
 <<<<<<< HEAD
 int omap_dm_timer_set_load_start(struct omap_dm_timer *timer, int autoreload,
 =======
+<<<<<<< HEAD
+int omap_dm_timer_set_load_start(struct omap_dm_timer *timer, int autoreload,
+=======
 void omap_dm_timer_set_load_start(struct omap_dm_timer *timer, int autoreload,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
                             unsigned int load)
 {
 	u32 l;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!timer))
 		return -EINVAL;
 
@@ -962,8 +1087,11 @@ void omap_dm_timer_set_load_start(struct omap_dm_timer *timer, int autoreload,
 			omap_timer_restore_context(timer);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l = omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG);
 	if (autoreload) {
 		l |= OMAP_TIMER_CTRL_AR;
@@ -974,6 +1102,9 @@ void omap_dm_timer_set_load_start(struct omap_dm_timer *timer, int autoreload,
 	l |= OMAP_TIMER_CTRL_ST;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__omap_dm_timer_load_start(timer, l, load, timer->posted);
 
 	/* Save the context */
@@ -985,6 +1116,8 @@ void omap_dm_timer_set_load_start(struct omap_dm_timer *timer, int autoreload,
 EXPORT_SYMBOL_GPL(omap_dm_timer_set_load_start);
 
 int omap_dm_timer_set_match(struct omap_dm_timer *timer, int enable,
+<<<<<<< HEAD
+=======
 =======
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_COUNTER_REG, load);
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_CTRL_REG, l);
@@ -993,17 +1126,24 @@ EXPORT_SYMBOL_GPL(omap_dm_timer_set_load_start);
 
 void omap_dm_timer_set_match(struct omap_dm_timer *timer, int enable,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     unsigned int match)
 {
 	u32 l;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!timer))
 		return -EINVAL;
 
 	omap_dm_timer_enable(timer);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l = omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG);
 	if (enable)
 		l |= OMAP_TIMER_CTRL_CE;
@@ -1012,6 +1152,9 @@ void omap_dm_timer_set_match(struct omap_dm_timer *timer, int enable,
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_CTRL_REG, l);
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_MATCH_REG, match);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Save the context */
 	timer->context.tclr = l;
@@ -1022,23 +1165,32 @@ void omap_dm_timer_set_match(struct omap_dm_timer *timer, int enable,
 EXPORT_SYMBOL_GPL(omap_dm_timer_set_match);
 
 int omap_dm_timer_set_pwm(struct omap_dm_timer *timer, int def_on,
+<<<<<<< HEAD
+=======
 =======
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_set_match);
 
 void omap_dm_timer_set_pwm(struct omap_dm_timer *timer, int def_on,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			   int toggle, int trigger)
 {
 	u32 l;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!timer))
 		return -EINVAL;
 
 	omap_dm_timer_enable(timer);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l = omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG);
 	l &= ~(OMAP_TIMER_CTRL_GPOCFG | OMAP_TIMER_CTRL_SCPWM |
 	       OMAP_TIMER_CTRL_PT | (0x03 << 10));
@@ -1049,6 +1201,9 @@ void omap_dm_timer_set_pwm(struct omap_dm_timer *timer, int def_on,
 	l |= trigger << 10;
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_CTRL_REG, l);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Save the context */
 	timer->context.tclr = l;
@@ -1065,6 +1220,8 @@ int omap_dm_timer_set_prescaler(struct omap_dm_timer *timer, int prescaler)
 		return -EINVAL;
 
 	omap_dm_timer_enable(timer);
+<<<<<<< HEAD
+=======
 =======
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_set_pwm);
@@ -1074,6 +1231,7 @@ void omap_dm_timer_set_prescaler(struct omap_dm_timer *timer, int prescaler)
 	u32 l;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	l = omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG);
 	l &= ~(OMAP_TIMER_CTRL_PRE | (0x07 << 2));
 	if (prescaler >= 0x00 && prescaler <= 0x07) {
@@ -1082,6 +1240,9 @@ void omap_dm_timer_set_prescaler(struct omap_dm_timer *timer, int prescaler)
 	}
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_CTRL_REG, l);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Save the context */
 	timer->context.tclr = l;
@@ -1104,6 +1265,8 @@ int omap_dm_timer_set_int_enable(struct omap_dm_timer *timer,
 	timer->context.twer = value;
 	omap_dm_timer_disable(timer);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_set_prescaler);
@@ -1114,6 +1277,7 @@ void omap_dm_timer_set_int_enable(struct omap_dm_timer *timer,
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_INT_EN_REG, value);
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_WAKEUP_EN_REG, value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_set_int_enable);
 
@@ -1122,21 +1286,30 @@ unsigned int omap_dm_timer_read_status(struct omap_dm_timer *timer)
 	unsigned int l;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!timer || pm_runtime_suspended(&timer->pdev->dev))) {
 		pr_err("%s: timer not available or enabled.\n", __func__);
 		return 0;
 	}
 
 	l = __raw_readl(timer->irq_stat);
+<<<<<<< HEAD
+=======
 =======
 	l = omap_dm_timer_read_reg(timer, OMAP_TIMER_STAT_REG);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return l;
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_read_status);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap_dm_timer_write_status(struct omap_dm_timer *timer, unsigned int value)
 {
 	if (unlikely(!timer || pm_runtime_suspended(&timer->pdev->dev)))
@@ -1146,17 +1319,23 @@ int omap_dm_timer_write_status(struct omap_dm_timer *timer, unsigned int value)
 	/* Save the context */
 	timer->context.tisr = value;
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 void omap_dm_timer_write_status(struct omap_dm_timer *timer, unsigned int value)
 {
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_STAT_REG, value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_write_status);
 
 unsigned int omap_dm_timer_read_counter(struct omap_dm_timer *timer)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (unlikely(!timer || pm_runtime_suspended(&timer->pdev->dev))) {
 		pr_err("%s: timer not iavailable or enabled.\n", __func__);
 		return 0;
@@ -1178,6 +1357,8 @@ int omap_dm_timer_write_counter(struct omap_dm_timer *timer, unsigned int value)
 	/* Save the context */
 	timer->context.tcrr = value;
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int l;
 
@@ -1191,16 +1372,22 @@ void omap_dm_timer_write_counter(struct omap_dm_timer *timer, unsigned int value
 {
 	omap_dm_timer_write_reg(timer, OMAP_TIMER_COUNTER_REG, value);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL_GPL(omap_dm_timer_write_counter);
 
 int omap_dm_timers_active(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_dm_timer *timer;
 
 	list_for_each_entry(timer, &omap_timer_list, node) {
 		if (!timer->reserved)
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -1211,6 +1398,7 @@ int omap_dm_timers_active(void)
 
 		if (!timer->enabled)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		if (omap_dm_timer_read_reg(timer, OMAP_TIMER_CTRL_REG) &
@@ -1223,6 +1411,9 @@ int omap_dm_timers_active(void)
 EXPORT_SYMBOL_GPL(omap_dm_timers_active);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * omap_dm_timer_probe - probe function called for every registered device
  * @pdev:	pointer to current timer platform device
@@ -1367,6 +1558,8 @@ MODULE_DESCRIPTION("OMAP Dual-Mode Timer Driver");
 MODULE_LICENSE("GPL");
 MODULE_ALIAS("platform:" DRIVER_NAME);
 MODULE_AUTHOR("Texas Instruments Inc");
+<<<<<<< HEAD
+=======
 =======
 int __init omap_dm_timer_init(void)
 {
@@ -1427,3 +1620,4 @@ int __init omap_dm_timer_init(void)
 	return 0;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

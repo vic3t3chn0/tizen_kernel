@@ -69,10 +69,13 @@ static int tcf_gact_init(struct nlattr *nla, struct nlattr *est,
 	int err;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_GACT_PROB
 	struct tc_gact_p *p_parm = NULL;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (nla == NULL)
 		return -EINVAL;
@@ -90,6 +93,8 @@ static int tcf_gact_init(struct nlattr *nla, struct nlattr *est,
 		return -EOPNOTSUPP;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #else
 	if (tb[TCA_GACT_PROB]) {
 		p_parm = nla_data(tb[TCA_GACT_PROB]);
@@ -97,6 +102,7 @@ static int tcf_gact_init(struct nlattr *nla, struct nlattr *est,
 			return -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 	pc = tcf_hash_check(parm->index, a, bind, &gact_hash_info);
@@ -122,8 +128,13 @@ static int tcf_gact_init(struct nlattr *nla, struct nlattr *est,
 	if (tb[TCA_GACT_PROB] != NULL) {
 		struct tc_gact_p *p_parm = nla_data(tb[TCA_GACT_PROB]);
 =======
+<<<<<<< HEAD
+	if (tb[TCA_GACT_PROB] != NULL) {
+		struct tc_gact_p *p_parm = nla_data(tb[TCA_GACT_PROB]);
+=======
 	if (p_parm) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		gact->tcfg_paction = p_parm->paction;
 		gact->tcfg_pval    = p_parm->pval;
 		gact->tcfg_ptype   = p_parm->ptype;
@@ -148,8 +159,13 @@ static int tcf_gact_cleanup(struct tc_action *a, int bind)
 static int tcf_gact(struct sk_buff *skb, const struct tc_action *a,
 		    struct tcf_result *res)
 =======
+<<<<<<< HEAD
+static int tcf_gact(struct sk_buff *skb, const struct tc_action *a,
+		    struct tcf_result *res)
+=======
 static int tcf_gact(struct sk_buff *skb, struct tc_action *a, struct tcf_result *res)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tcf_gact *gact = a->priv;
 	int action = TC_ACT_SHOT;
@@ -159,8 +175,12 @@ static int tcf_gact(struct sk_buff *skb, struct tc_action *a, struct tcf_result 
 <<<<<<< HEAD
 	if (gact->tcfg_ptype && gact_rand[gact->tcfg_ptype] != NULL)
 =======
+<<<<<<< HEAD
+	if (gact->tcfg_ptype && gact_rand[gact->tcfg_ptype] != NULL)
+=======
 	if (gact->tcfg_ptype)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		action = gact_rand[gact->tcfg_ptype](gact);
 	else
 		action = gact->tcf_action;

@@ -133,16 +133,22 @@
 #define __NR_mprotect		125
 #define __NR_sigprocmask	126
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_create_module	127
 #define __NR_init_module	128
 #define __NR_delete_module	129
 #define __NR_get_kernel_syms	130
+<<<<<<< HEAD
+=======
 =======
 /*#define __NR_create_module	127*/
 #define __NR_init_module	128
 #define __NR_delete_module	129
 /*#define __NR_get_kernel_syms	130*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_quotactl		131
 #define __NR_getpgid		132
 #define __NR_fchdir		133
@@ -182,8 +188,12 @@
 <<<<<<< HEAD
 #define __NR_query_module	167
 =======
+<<<<<<< HEAD
+#define __NR_query_module	167
+=======
 /*#define __NR_query_module	167*/
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_poll		168
 #define __NR_nfsservctl		169
 #define __NR_setresgid		170
@@ -208,9 +218,14 @@
 #define __NR_getpmsg		188	/* some people actually want streams */
 #define __NR_putpmsg		189	/* some people actually want streams */
 =======
+<<<<<<< HEAD
+#define __NR_getpmsg		188	/* some people actually want streams */
+#define __NR_putpmsg		189	/* some people actually want streams */
+=======
 /*#define __NR_getpmsg		188*/	/* some people actually want streams */
 /*#define __NR_putpmsg		189*/	/* some people actually want streams */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_vfork		190
 #define __NR_ugetrlimit		191
 #define __NR_mmap2		192
@@ -367,18 +382,24 @@
 #define __NR_syncfs		343
 #define __NR_setns		344
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define __NR_process_vm_readv	345
 #define __NR_process_vm_writev	346
 
 #ifdef __KERNEL__
 
 #define NR_syscalls		347
+<<<<<<< HEAD
+=======
 =======
 
 #ifdef __KERNEL__
 
 #define NR_syscalls		345
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define __ARCH_WANT_IPC_PARSE_VERSION
 #define __ARCH_WANT_OLD_READDIR

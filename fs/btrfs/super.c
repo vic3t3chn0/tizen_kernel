@@ -43,7 +43,11 @@
 <<<<<<< HEAD
 #include <linux/ratelimit.h>
 =======
+<<<<<<< HEAD
+#include <linux/ratelimit.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "compat.h"
 #include "delayed-inode.h"
 #include "ctree.h"
@@ -65,7 +69,11 @@ static const struct super_operations btrfs_super_ops;
 <<<<<<< HEAD
 static struct file_system_type btrfs_fs_type;
 =======
+<<<<<<< HEAD
+static struct file_system_type btrfs_fs_type;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const char *btrfs_decode_error(struct btrfs_fs_info *fs_info, int errno,
 				      char nbuf[16])
@@ -87,7 +95,13 @@ static const char *btrfs_decode_error(struct btrfs_fs_info *fs_info, int errno,
 		errstr = "Object already exists";
 		break;
 =======
+<<<<<<< HEAD
+	case -EEXIST:
+		errstr = "Object already exists";
+		break;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		if (nbuf) {
 			if (snprintf(nbuf, 16, "error %d", -errno) >= 0)
@@ -132,7 +146,12 @@ static void btrfs_handle_error(struct btrfs_fs_info *fs_info)
 		__btrfs_scrub_cancel(fs_info);
 //		WARN_ON(1);
 =======
+<<<<<<< HEAD
+		__btrfs_scrub_cancel(fs_info);
+//		WARN_ON(1);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -144,8 +163,12 @@ void __btrfs_std_error(struct btrfs_fs_info *fs_info, const char *function,
 <<<<<<< HEAD
 		       unsigned int line, int errno, const char *fmt, ...)
 =======
+<<<<<<< HEAD
+		       unsigned int line, int errno, const char *fmt, ...)
+=======
 		     unsigned int line, int errno)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = fs_info->sb;
 	char nbuf[16];
@@ -154,7 +177,12 @@ void __btrfs_std_error(struct btrfs_fs_info *fs_info, const char *function,
 	va_list args;
 	va_start(args, fmt);
 =======
+<<<<<<< HEAD
+	va_list args;
+	va_start(args, fmt);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Special case: if the error is EROFS, and we're already
@@ -162,6 +190,9 @@ void __btrfs_std_error(struct btrfs_fs_info *fs_info, const char *function,
 	 */
 	if (errno == -EROFS && (sb->s_flags & MS_RDONLY))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   		return;
 
   	errstr = btrfs_decode_error(fs_info, errno, nbuf);
@@ -275,6 +306,8 @@ void __btrfs_panic(struct btrfs_fs_info *fs_info, const char *function,
 	       s_id, function, line, &vaf, errstr);
 	va_end(args);
 	/* Caller calls BUG() */
+<<<<<<< HEAD
+=======
 =======
 		return;
 
@@ -285,11 +318,15 @@ void __btrfs_panic(struct btrfs_fs_info *fs_info, const char *function,
 
 	btrfs_handle_error(fs_info);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void btrfs_put_super(struct super_block *sb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	(void)close_ctree(btrfs_sb(sb)->tree_root);
 	/* FIXME: need to fix VFS to return error? */
 	/* AV: return it _where_?  ->put_super() can be triggered by any number
@@ -297,6 +334,8 @@ static void btrfs_put_super(struct super_block *sb)
 	 * last process that kept it busy.  Or segfault in the aforementioned
 	 * process...  Whom would you report that to?
 	 */
+<<<<<<< HEAD
+=======
 =======
 	struct btrfs_root *root = btrfs_sb(sb);
 	int ret;
@@ -306,6 +345,7 @@ static void btrfs_put_super(struct super_block *sb)
 
 	(void)ret; /* FIXME: need to fix VFS to return error? */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 enum {
@@ -316,15 +356,21 @@ enum {
 	Opt_notreelog, Opt_ratio, Opt_flushoncommit, Opt_discard,
 	Opt_space_cache, Opt_clear_cache, Opt_user_subvol_rm_allowed,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	Opt_enospc_debug, Opt_subvolrootid, Opt_defrag, Opt_inode_cache,
 	Opt_no_space_cache, Opt_recovery, Opt_skip_balance,
 	Opt_check_integrity, Opt_check_integrity_including_extent_data,
 	Opt_check_integrity_print_mask, Opt_fatal_errors,
 	Opt_err,
+<<<<<<< HEAD
+=======
 =======
 	Opt_enospc_debug, Opt_subvolrootid, Opt_defrag,
 	Opt_inode_cache, Opt_err,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static match_table_t tokens = {
@@ -358,6 +404,9 @@ static match_table_t tokens = {
 	{Opt_defrag, "autodefrag"},
 	{Opt_inode_cache, "inode_cache"},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{Opt_no_space_cache, "nospace_cache"},
 	{Opt_recovery, "recovery"},
 	{Opt_skip_balance, "skip_balance"},
@@ -365,8 +414,11 @@ static match_table_t tokens = {
 	{Opt_check_integrity_including_extent_data, "check_int_data"},
 	{Opt_check_integrity_print_mask, "check_int_print_mask=%d"},
 	{Opt_fatal_errors, "fatal_errors=%s"},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{Opt_err, NULL},
 };
 
@@ -376,7 +428,11 @@ static match_table_t tokens = {
 <<<<<<< HEAD
  * XXX JDM: This needs to be cleaned up for remount.
 =======
+<<<<<<< HEAD
+ * XXX JDM: This needs to be cleaned up for remount.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int btrfs_parse_options(struct btrfs_root *root, char *options)
 {
@@ -386,24 +442,35 @@ int btrfs_parse_options(struct btrfs_root *root, char *options)
 	char *p, *num, *orig = NULL;
 	u64 cache_gen;
 =======
+<<<<<<< HEAD
+	char *p, *num, *orig = NULL;
+	u64 cache_gen;
+=======
 	char *p, *num, *orig;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int intarg;
 	int ret = 0;
 	char *compress_type;
 	bool compress_force = false;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cache_gen = btrfs_super_cache_generation(root->fs_info->super_copy);
 	if (cache_gen)
 		btrfs_set_opt(info->mount_opt, SPACE_CACHE);
 
 	if (!options)
 		goto out;
+<<<<<<< HEAD
+=======
 =======
 	if (!options)
 		return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * strsep changes the string, duplicate it because parse_options
@@ -551,17 +618,23 @@ int btrfs_parse_options(struct btrfs_root *root, char *options)
 			break;
 		case Opt_space_cache:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			btrfs_set_opt(info->mount_opt, SPACE_CACHE);
 			break;
 		case Opt_no_space_cache:
 			printk(KERN_INFO "btrfs: disabling disk space caching\n");
 			btrfs_clear_opt(info->mount_opt, SPACE_CACHE);
 			break;
+<<<<<<< HEAD
+=======
 =======
 			printk(KERN_INFO "btrfs: enabling disk space caching\n");
 			btrfs_set_opt(info->mount_opt, SPACE_CACHE);
 			break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case Opt_inode_cache:
 			printk(KERN_INFO "btrfs: enabling inode map caching\n");
 			btrfs_set_opt(info->mount_opt, INODE_MAP_CACHE);
@@ -581,6 +654,9 @@ int btrfs_parse_options(struct btrfs_root *root, char *options)
 			btrfs_set_opt(info->mount_opt, AUTO_DEFRAG);
 			break;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case Opt_recovery:
 			printk(KERN_INFO "btrfs: enabling auto recovery");
 			btrfs_set_opt(info->mount_opt, RECOVERY);
@@ -631,8 +707,11 @@ int btrfs_parse_options(struct btrfs_root *root, char *options)
 				goto out;
 			}
 			break;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		case Opt_err:
 			printk(KERN_INFO "btrfs: unrecognized mount option "
 			       "'%s'\n", p);
@@ -647,7 +726,12 @@ out:
 	if (!ret && btrfs_test_opt(root, SPACE_CACHE))
 		printk(KERN_INFO "btrfs: disk space caching is enabled\n");
 =======
+<<<<<<< HEAD
+	if (!ret && btrfs_test_opt(root, SPACE_CACHE))
+		printk(KERN_INFO "btrfs: disk space caching is enabled\n");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(orig);
 	return ret;
 }
@@ -666,8 +750,12 @@ static int btrfs_parse_early_options(const char *options, fmode_t flags,
 <<<<<<< HEAD
 	char *device_name, *opts, *orig, *p;
 =======
+<<<<<<< HEAD
+	char *device_name, *opts, *orig, *p;
+=======
 	char *opts, *orig, *p;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int error = 0;
 	int intarg;
 
@@ -675,8 +763,12 @@ static int btrfs_parse_early_options(const char *options, fmode_t flags,
 <<<<<<< HEAD
 		return 0;
 =======
+<<<<<<< HEAD
+		return 0;
+=======
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * strsep changes the string, duplicate it because parse_options
@@ -698,7 +790,11 @@ static int btrfs_parse_early_options(const char *options, fmode_t flags,
 <<<<<<< HEAD
 			kfree(*subvol_name);
 =======
+<<<<<<< HEAD
+			kfree(*subvol_name);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*subvol_name = match_strdup(&args[0]);
 			break;
 		case Opt_subvolid:
@@ -727,6 +823,9 @@ static int btrfs_parse_early_options(const char *options, fmode_t flags,
 			break;
 		case Opt_device:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			device_name = match_strdup(&args[0]);
 			if (!device_name) {
 				error = -ENOMEM;
@@ -737,18 +836,25 @@ static int btrfs_parse_early_options(const char *options, fmode_t flags,
 			kfree(device_name);
 			if (error)
 				goto out;
+<<<<<<< HEAD
+=======
 =======
 			error = btrfs_scan_one_device(match_strdup(&args[0]),
 					flags, holder, fs_devices);
 			if (error)
 				goto out_free_opts;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		default:
 			break;
 		}
 	}
 
+<<<<<<< HEAD
+out:
+	kfree(orig);
+=======
 <<<<<<< HEAD
 out:
 	kfree(orig);
@@ -767,6 +873,7 @@ out:
 			return -ENOMEM;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return error;
 }
 
@@ -777,8 +884,13 @@ static struct dentry *get_default_root(struct super_block *sb,
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
 	struct btrfs_root *root = fs_info->tree_root;
 =======
+<<<<<<< HEAD
+	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
+	struct btrfs_root *root = fs_info->tree_root;
+=======
 	struct btrfs_root *root = sb->s_fs_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_root *new_root;
 	struct btrfs_dir_item *di;
 	struct btrfs_path *path;
@@ -786,8 +898,11 @@ static struct dentry *get_default_root(struct super_block *sb,
 	struct inode *inode;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct dentry *dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 dir_id;
 	int new = 0;
 
@@ -815,8 +930,12 @@ static struct dentry *get_default_root(struct super_block *sb,
 <<<<<<< HEAD
 	dir_id = btrfs_super_root_dir(fs_info->super_copy);
 =======
+<<<<<<< HEAD
+	dir_id = btrfs_super_root_dir(fs_info->super_copy);
+=======
 	dir_id = btrfs_super_root_dir(&root->fs_info->super_copy);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	di = btrfs_lookup_dir_item(NULL, root, path, dir_id, "default", 7, 0);
 	if (IS_ERR(di)) {
 		btrfs_free_path(path);
@@ -833,8 +952,12 @@ static struct dentry *get_default_root(struct super_block *sb,
 <<<<<<< HEAD
 		new_root = fs_info->fs_root;
 =======
+<<<<<<< HEAD
+		new_root = fs_info->fs_root;
+=======
 		new_root = root->fs_info->fs_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto setup_root;
 	}
 
@@ -845,8 +968,12 @@ find_root:
 <<<<<<< HEAD
 	new_root = btrfs_read_fs_root_no_name(fs_info, &location);
 =======
+<<<<<<< HEAD
+	new_root = btrfs_read_fs_root_no_name(fs_info, &location);
+=======
 	new_root = btrfs_read_fs_root_no_name(root->fs_info, &location);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(new_root))
 		return ERR_CAST(new_root);
 
@@ -876,6 +1003,9 @@ setup_root:
 <<<<<<< HEAD
 	return d_obtain_alias(inode);
 =======
+<<<<<<< HEAD
+	return d_obtain_alias(inode);
+=======
 	if (new) {
 		const struct qstr name = { .name = "/", .len = 1 };
 
@@ -900,6 +1030,7 @@ setup_root:
 
 	return dentry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int btrfs_fill_super(struct super_block *sb,
@@ -910,9 +1041,13 @@ static int btrfs_fill_super(struct super_block *sb,
 <<<<<<< HEAD
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
 =======
+<<<<<<< HEAD
+	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
+=======
 	struct dentry *root_dentry;
 	struct btrfs_root *tree_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_key key;
 	int err;
 
@@ -928,11 +1063,16 @@ static int btrfs_fill_super(struct super_block *sb,
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = open_ctree(sb, fs_devices, (char *)data);
 	if (err) {
 		printk("btrfs: open_ctree failed\n");
 		return err;
 	}
+<<<<<<< HEAD
+=======
 =======
 	tree_root = open_ctree(sb, fs_devices, (char *)data);
 
@@ -942,6 +1082,7 @@ static int btrfs_fill_super(struct super_block *sb,
 	}
 	sb->s_fs_info = tree_root;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	key.objectid = BTRFS_FIRST_FREE_OBJECTID;
 	key.type = BTRFS_INODE_ITEM_KEY;
@@ -949,8 +1090,12 @@ static int btrfs_fill_super(struct super_block *sb,
 <<<<<<< HEAD
 	inode = btrfs_iget(sb, &key, fs_info->fs_root, NULL);
 =======
+<<<<<<< HEAD
+	inode = btrfs_iget(sb, &key, fs_info->fs_root, NULL);
+=======
 	inode = btrfs_iget(sb, &key, tree_root->fs_info->fs_root, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(inode)) {
 		err = PTR_ERR(inode);
 		goto fail_close;
@@ -960,15 +1105,23 @@ static int btrfs_fill_super(struct super_block *sb,
 	sb->s_root = d_make_root(inode);
 	if (!sb->s_root) {
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(inode);
+	if (!sb->s_root) {
+=======
 	root_dentry = d_alloc_root(inode);
 	if (!root_dentry) {
 		iput(inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = -ENOMEM;
 		goto fail_close;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	save_mount_options(sb, data);
 	cleancache_init_fs(sb);
 	sb->s_flags |= MS_ACTIVE;
@@ -976,6 +1129,8 @@ static int btrfs_fill_super(struct super_block *sb,
 
 fail_close:
 	close_ctree(fs_info->tree_root);
+<<<<<<< HEAD
+=======
 =======
 	sb->s_root = root_dentry;
 
@@ -986,6 +1141,7 @@ fail_close:
 fail_close:
 	close_ctree(tree_root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return err;
 }
 
@@ -996,18 +1152,28 @@ int btrfs_sync_fs(struct super_block *sb, int wait)
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
 	struct btrfs_root *root = fs_info->tree_root;
 =======
+<<<<<<< HEAD
+	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
+	struct btrfs_root *root = fs_info->tree_root;
+=======
 	struct btrfs_root *root = btrfs_sb(sb);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	trace_btrfs_sync_fs(wait);
 
 	if (!wait) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		filemap_flush(fs_info->btree_inode->i_mapping);
 		return 0;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		filemap_flush(root->fs_info->btree_inode->i_mapping);
 		return 0;
@@ -1015,6 +1181,7 @@ int btrfs_sync_fs(struct super_block *sb, int wait)
 
 	btrfs_start_delalloc_inodes(root, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btrfs_wait_ordered_extents(root, 0, 0);
 
 	trans = btrfs_start_transaction(root, 0);
@@ -1025,16 +1192,22 @@ int btrfs_sync_fs(struct super_block *sb, int wait)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int btrfs_show_options(struct seq_file *seq, struct dentry *dentry)
 {
 	struct btrfs_fs_info *info = btrfs_sb(dentry->d_sb);
 	struct btrfs_root *root = info->tree_root;
+<<<<<<< HEAD
+=======
 =======
 static int btrfs_show_options(struct seq_file *seq, struct vfsmount *vfs)
 {
 	struct btrfs_root *root = btrfs_sb(vfs->mnt_sb);
 	struct btrfs_fs_info *info = root->fs_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *compress_type;
 
 	if (btrfs_test_opt(root, DEGRADED))
@@ -1084,7 +1257,12 @@ static int btrfs_show_options(struct seq_file *seq, struct vfsmount *vfs)
 	else
 		seq_puts(seq, ",nospace_cache");
 =======
+<<<<<<< HEAD
+	else
+		seq_puts(seq, ",nospace_cache");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (btrfs_test_opt(root, CLEAR_CACHE))
 		seq_puts(seq, ",clear_cache");
 	if (btrfs_test_opt(root, USER_SUBVOL_RM_ALLOWED))
@@ -1096,18 +1274,27 @@ static int btrfs_show_options(struct seq_file *seq, struct vfsmount *vfs)
 	if (btrfs_test_opt(root, INODE_MAP_CACHE))
 		seq_puts(seq, ",inode_cache");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (btrfs_test_opt(root, SKIP_BALANCE))
 		seq_puts(seq, ",skip_balance");
 	if (btrfs_test_opt(root, PANIC_ON_FATAL_ERROR))
 		seq_puts(seq, ",fatal_errors=panic");
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int btrfs_test_super(struct super_block *s, void *data)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_fs_info *p = data;
 	struct btrfs_fs_info *fs_info = btrfs_sb(s);
 
@@ -1228,6 +1415,8 @@ static struct dentry *mount_subvol(const char *subvol_name, int flags,
 	return root;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	struct btrfs_root *test_root = data;
 	struct btrfs_root *root = btrfs_sb(s);
@@ -1250,6 +1439,7 @@ static int btrfs_set_super(struct super_block *s, void *data)
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Find a superblock for the given device / mount point.
  *
@@ -1265,8 +1455,11 @@ static struct dentry *btrfs_mount(struct file_system_type *fs_type, int flags,
 	struct btrfs_fs_devices *fs_devices = NULL;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct btrfs_root *tree_root = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_fs_info *fs_info = NULL;
 	fmode_t mode = FMODE_READ;
 	char *subvol_name = NULL;
@@ -1281,6 +1474,9 @@ static struct dentry *btrfs_mount(struct file_system_type *fs_type, int flags,
 					  &subvol_name, &subvol_objectid,
 					  &subvol_rootid, &fs_devices);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error) {
 		kfree(subvol_name);
 		return ERR_PTR(error);
@@ -1295,6 +1491,8 @@ static struct dentry *btrfs_mount(struct file_system_type *fs_type, int flags,
 	error = btrfs_scan_one_device(device_name, mode, fs_type, &fs_devices);
 	if (error)
 		return ERR_PTR(error);
+<<<<<<< HEAD
+=======
 =======
 	if (error)
 		return ERR_PTR(error);
@@ -1312,6 +1510,7 @@ static struct dentry *btrfs_mount(struct file_system_type *fs_type, int flags,
 		goto error_close_devices;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Setup a dummy root and fs_info for test/set super.  This is because
@@ -1321,6 +1520,9 @@ static struct dentry *btrfs_mount(struct file_system_type *fs_type, int flags,
 	 */
 	fs_info = kzalloc(sizeof(struct btrfs_fs_info), GFP_NOFS);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!fs_info)
 		return ERR_PTR(-ENOMEM);
 
@@ -1354,6 +1556,8 @@ static struct dentry *btrfs_mount(struct file_system_type *fs_type, int flags,
 		free_fs_info(fs_info);
 		if ((flags ^ s->s_flags) & MS_RDONLY)
 			error = -EBUSY;
+<<<<<<< HEAD
+=======
 =======
 	tree_root = kzalloc(sizeof(struct btrfs_root), GFP_NOFS);
 	if (!fs_info || !tree_root) {
@@ -1380,12 +1584,16 @@ static struct dentry *btrfs_mount(struct file_system_type *fs_type, int flags,
 		kfree(fs_info);
 		kfree(tree_root);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		char b[BDEVNAME_SIZE];
 
 		s->s_flags = flags | MS_NOSEC;
 		strlcpy(s->s_id, bdevname(bdev, b), sizeof(s->s_id));
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		btrfs_sb(s)->bdev_holder = fs_type;
 		error = btrfs_fill_super(s, fs_devices, data,
 					 flags & MS_SILENT ? 1 : 0);
@@ -1401,6 +1609,8 @@ error_close_devices:
 	btrfs_close_devices(fs_devices);
 error_fs_info:
 	free_fs_info(fs_info);
+<<<<<<< HEAD
+=======
 =======
 		error = btrfs_fill_super(s, fs_devices, data,
 					 flags & MS_SILENT ? 1 : 0);
@@ -1465,12 +1675,16 @@ error_close_devices:
 error_free_subvol_name:
 	kfree(subvol_name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ERR_PTR(error);
 }
 
 static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
 	struct btrfs_root *root = fs_info->tree_root;
 	unsigned old_flags = sb->s_flags;
@@ -1487,6 +1701,8 @@ static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 		ret = -EINVAL;
 		goto restore;
 	}
+<<<<<<< HEAD
+=======
 =======
 	struct btrfs_root *root = btrfs_sb(sb);
 	int ret;
@@ -1495,6 +1711,7 @@ static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 	if (ret)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((*flags & MS_RDONLY) == (sb->s_flags & MS_RDONLY))
 		return 0;
@@ -1503,6 +1720,9 @@ static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 		sb->s_flags |= MS_RDONLY;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = btrfs_commit_super(root);
 		if (ret)
 			goto restore;
@@ -1525,6 +1745,8 @@ static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 		ret = btrfs_recover_relocation(root);
 		if (ret)
 			goto restore;
+<<<<<<< HEAD
+=======
 =======
 		ret =  btrfs_commit_super(root);
 		WARN_ON(ret);
@@ -1542,12 +1764,16 @@ static int btrfs_remount(struct super_block *sb, int *flags, char *data)
 		ret = btrfs_recover_relocation(root);
 		WARN_ON(ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		sb->s_flags &= ~MS_RDONLY;
 	}
 
 	return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 restore:
 	/* We've hit an error - don't reset MS_RDONLY */
@@ -1561,8 +1787,11 @@ restore:
 	fs_info->thread_pool_size = old_thread_pool_size;
 	fs_info->metadata_ratio = old_metadata_ratio;
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Used to sort the devices by max_avail(descending sort) */
@@ -1607,11 +1836,16 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 	u64 used_space;
 	u64 min_stripe_size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int min_stripes = 1, num_stripes = 1;
 	int i = 0, nr_devices;
 	int ret;
 
 	nr_devices = fs_info->fs_devices->open_devices;
+<<<<<<< HEAD
+=======
 =======
 	int min_stripes = 1;
 	int i = 0, nr_devices;
@@ -1619,6 +1853,7 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 
 	nr_devices = fs_info->fs_devices->rw_devices;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!nr_devices);
 
 	devices_info = kmalloc(sizeof(*devices_info) * nr_devices,
@@ -1629,6 +1864,9 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 	/* calc min stripe number for data space alloction */
 	type = btrfs_get_alloc_profile(root, 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (type & BTRFS_BLOCK_GROUP_RAID0) {
 		min_stripes = 2;
 		num_stripes = nr_devices;
@@ -1639,6 +1877,8 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 		min_stripes = 4;
 		num_stripes = 4;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (type & BTRFS_BLOCK_GROUP_RAID0)
 		min_stripes = 2;
@@ -1647,6 +1887,7 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 	else if (type & BTRFS_BLOCK_GROUP_RAID10)
 		min_stripes = 4;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (type & BTRFS_BLOCK_GROUP_DUP)
 		min_stripe_size = 2 * BTRFS_STRIPE_LEN;
@@ -1657,9 +1898,14 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 	list_for_each_entry(device, &fs_devices->devices, dev_list) {
 		if (!device->in_fs_metadata || !device->bdev)
 =======
+<<<<<<< HEAD
+	list_for_each_entry(device, &fs_devices->devices, dev_list) {
+		if (!device->in_fs_metadata || !device->bdev)
+=======
 	list_for_each_entry(device, &fs_devices->alloc_list, dev_alloc_list) {
 		if (!device->in_fs_metadata)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 
 		avail_space = device->total_bytes - device->bytes_used;
@@ -1725,7 +1971,13 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 			num_stripes = nr_devices;
 
 =======
+<<<<<<< HEAD
+		if (num_stripes > nr_devices)
+			num_stripes = nr_devices;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (devices_info[i].max_avail >= min_stripe_size) {
 			int j;
 			u64 alloc_size;
@@ -1735,10 +1987,16 @@ static int btrfs_calc_avail_data_space(struct btrfs_root *root, u64 *free_bytes)
 			alloc_size = devices_info[i].max_avail;
 			for (j = i + 1 - num_stripes; j <= i; j++)
 =======
+<<<<<<< HEAD
+			avail_space += devices_info[i].max_avail * num_stripes;
+			alloc_size = devices_info[i].max_avail;
+			for (j = i + 1 - num_stripes; j <= i; j++)
+=======
 			avail_space += devices_info[i].max_avail * min_stripes;
 			alloc_size = devices_info[i].max_avail;
 			for (j = i + 1 - min_stripes; j <= i; j++)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				devices_info[j].max_avail -= alloc_size;
 		}
 		i--;
@@ -1757,20 +2015,31 @@ static int btrfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 	struct btrfs_super_block *disk_super = fs_info->super_copy;
 	struct list_head *head = &fs_info->space_info;
 =======
+<<<<<<< HEAD
+	struct btrfs_fs_info *fs_info = btrfs_sb(dentry->d_sb);
+	struct btrfs_super_block *disk_super = fs_info->super_copy;
+	struct list_head *head = &fs_info->space_info;
+=======
 	struct btrfs_root *root = btrfs_sb(dentry->d_sb);
 	struct btrfs_super_block *disk_super = &root->fs_info->super_copy;
 	struct list_head *head = &root->fs_info->space_info;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_space_info *found;
 	u64 total_used = 0;
 	u64 total_free_data = 0;
 	int bits = dentry->d_sb->s_blocksize_bits;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be32 *fsid = (__be32 *)fs_info->fsid;
 	int ret;
 
 	/* holding chunk_muext to avoid allocating new chunks */
 	mutex_lock(&fs_info->chunk_mutex);
+<<<<<<< HEAD
+=======
 =======
 	__be32 *fsid = (__be32 *)root->fs_info->fsid;
 	int ret;
@@ -1778,6 +2047,7 @@ static int btrfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 	/* holding chunk_muext to avoid allocating new chunks */
 	mutex_lock(&root->fs_info->chunk_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	rcu_read_lock();
 	list_for_each_entry_rcu(found, head, list) {
 		if (found->flags & BTRFS_BLOCK_GROUP_DATA) {
@@ -1801,10 +2071,16 @@ static int btrfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 	if (ret) {
 		mutex_unlock(&fs_info->chunk_mutex);
 =======
+<<<<<<< HEAD
+	ret = btrfs_calc_avail_data_space(fs_info->tree_root, &total_free_data);
+	if (ret) {
+		mutex_unlock(&fs_info->chunk_mutex);
+=======
 	ret = btrfs_calc_avail_data_space(root, &total_free_data);
 	if (ret) {
 		mutex_unlock(&root->fs_info->chunk_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return ret;
 	}
 	buf->f_bavail += total_free_data;
@@ -1812,8 +2088,12 @@ static int btrfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 <<<<<<< HEAD
 	mutex_unlock(&fs_info->chunk_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&fs_info->chunk_mutex);
+=======
 	mutex_unlock(&root->fs_info->chunk_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We treat it as constant endianness (it doesn't matter _which_)
 	   because we want the fsid to come out the same whether mounted
@@ -1828,6 +2108,9 @@ static int btrfs_statfs(struct dentry *dentry, struct kstatfs *buf)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void btrfs_kill_super(struct super_block *sb)
 {
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
@@ -1835,8 +2118,11 @@ static void btrfs_kill_super(struct super_block *sb)
 	free_fs_info(fs_info);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct file_system_type btrfs_fs_type = {
 	.owner		= THIS_MODULE,
 	.name		= "btrfs",
@@ -1844,8 +2130,12 @@ static struct file_system_type btrfs_fs_type = {
 <<<<<<< HEAD
 	.kill_sb	= btrfs_kill_super,
 =======
+<<<<<<< HEAD
+	.kill_sb	= btrfs_kill_super,
+=======
 	.kill_sb	= kill_anon_super,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fs_flags	= FS_REQUIRES_DEV,
 };
 
@@ -1884,16 +2174,25 @@ static int btrfs_freeze(struct super_block *sb)
 	mutex_lock(&fs_info->transaction_kthread_mutex);
 	mutex_lock(&fs_info->cleaner_mutex);
 =======
+<<<<<<< HEAD
+	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
+	mutex_lock(&fs_info->transaction_kthread_mutex);
+	mutex_lock(&fs_info->cleaner_mutex);
+=======
 	struct btrfs_root *root = btrfs_sb(sb);
 	mutex_lock(&root->fs_info->transaction_kthread_mutex);
 	mutex_lock(&root->fs_info->cleaner_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
 static int btrfs_unfreeze(struct super_block *sb)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct btrfs_fs_info *fs_info = btrfs_sb(sb);
 	mutex_unlock(&fs_info->cleaner_mutex);
 	mutex_unlock(&fs_info->transaction_kthread_mutex);
@@ -1910,6 +2209,8 @@ static void btrfs_fs_dirty_inode(struct inode *inode, int flags)
 				   "error %d\n", btrfs_ino(inode), ret);
 }
 
+<<<<<<< HEAD
+=======
 =======
 	struct btrfs_root *root = btrfs_sb(sb);
 	mutex_unlock(&root->fs_info->cleaner_mutex);
@@ -1918,6 +2219,7 @@ static void btrfs_fs_dirty_inode(struct inode *inode, int flags)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct super_operations btrfs_super_ops = {
 	.drop_inode	= btrfs_drop_inode,
 	.evict_inode	= btrfs_evict_inode,
@@ -1928,8 +2230,12 @@ static const struct super_operations btrfs_super_ops = {
 <<<<<<< HEAD
 	.dirty_inode	= btrfs_fs_dirty_inode,
 =======
+<<<<<<< HEAD
+	.dirty_inode	= btrfs_fs_dirty_inode,
+=======
 	.dirty_inode	= btrfs_dirty_inode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.alloc_inode	= btrfs_alloc_inode,
 	.destroy_inode	= btrfs_destroy_inode,
 	.statfs		= btrfs_statfs,
@@ -1976,10 +2282,14 @@ static int __init init_btrfs_fs(void)
 <<<<<<< HEAD
 	btrfs_init_compress();
 =======
+<<<<<<< HEAD
+	btrfs_init_compress();
+=======
 	err = btrfs_init_compress();
 	if (err)
 		goto free_sysfs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	err = btrfs_init_cachep();
 	if (err)
@@ -2009,7 +2319,12 @@ static int __init init_btrfs_fs(void)
 	btrfs_init_lockdep();
 
 =======
+<<<<<<< HEAD
+	btrfs_init_lockdep();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "%s loaded\n", BTRFS_BUILD_VERSION);
 	return 0;
 
@@ -2027,8 +2342,11 @@ free_compress:
 	btrfs_exit_compress();
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 free_sysfs:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	btrfs_exit_sysfs();
 	return err;
 }

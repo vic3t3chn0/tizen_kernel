@@ -17,10 +17,14 @@
 <<<<<<< HEAD
 #include "os.h"
 =======
+<<<<<<< HEAD
+#include "os.h"
+=======
 #include "kern_constants.h"
 #include "os.h"
 #include "user.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Modified by which_tmpdir, which is called during early boot */
 static char *default_tmpdir = "/tmp";
@@ -183,8 +187,12 @@ static int __init make_tempfile(const char *template, char **out_tempname,
 <<<<<<< HEAD
 		goto out;
 =======
+<<<<<<< HEAD
+		goto out;
+=======
 		return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (template[0] != '/')
 		strcpy(tempname, tempdir);
@@ -202,8 +210,12 @@ static int __init make_tempfile(const char *template, char **out_tempname,
 <<<<<<< HEAD
 		goto close;
 =======
+<<<<<<< HEAD
+		goto close;
+=======
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	if (out_tempname) {
 		*out_tempname = tempname;
@@ -214,7 +226,12 @@ static int __init make_tempfile(const char *template, char **out_tempname,
 close:
 	close(fd);
 =======
+<<<<<<< HEAD
+close:
+	close(fd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	free(tempname);
 	return -1;

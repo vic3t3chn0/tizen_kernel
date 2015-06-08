@@ -27,6 +27,13 @@
 #include <linux/mm.h>
 #include <linux/omapfb.h>
 #include <linux/vmalloc.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <video/omapdss.h>
 #include <plat/vrfb.h>
@@ -110,13 +117,34 @@ static int omapfb_setup_plane(struct fb_info *fbi, struct omapfb_plane_info *pi)
 		set_fb_fix(fbi);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!pi->enabled) {
+		r = ovl->disable(ovl);
+		if (r)
+			goto undo;
+	}
+
+	if (pi->enabled) {
+=======
 	if (pi->enabled) {
 		struct omap_overlay_info info;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (pi->enabled) {
+		struct omap_overlay_info info;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		r = omapfb_setup_overlay(fbi, ovl, pi->pos_x, pi->pos_y,
 			pi->out_width, pi->out_height);
 		if (r)
 			goto undo;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		ovl->get_overlay_info(ovl, &info);
 
@@ -126,12 +154,23 @@ static int omapfb_setup_plane(struct fb_info *fbi, struct omapfb_plane_info *pi)
 			if (r)
 				goto undo;
 		}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		struct omap_overlay_info info;
 
 		ovl->get_overlay_info(ovl, &info);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		info.enabled = pi->enabled;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		info.enabled = pi->enabled;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info.pos_x = pi->pos_x;
 		info.pos_y = pi->pos_y;
 		info.out_width = pi->out_width;
@@ -145,6 +184,18 @@ static int omapfb_setup_plane(struct fb_info *fbi, struct omapfb_plane_info *pi)
 	if (ovl->manager)
 		ovl->manager->apply(ovl->manager);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (pi->enabled) {
+		r = ovl->enable(ovl);
+		if (r)
+			goto undo;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Release the locks in a specific order to keep lockdep happy */
 	if (old_rg->id > new_rg->id) {
 		omapfb_put_mem_region(old_rg);
@@ -188,6 +239,24 @@ static int omapfb_query_plane(struct fb_info *fbi, struct omapfb_plane_info *pi)
 		memset(pi, 0, sizeof(*pi));
 	} else {
 		struct omap_overlay *ovl;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		struct omap_overlay_info ovli;
+
+		ovl = ofbi->overlays[0];
+		ovl->get_overlay_info(ovl, &ovli);
+
+		pi->pos_x = ovli.pos_x;
+		pi->pos_y = ovli.pos_y;
+		pi->enabled = ovl->is_enabled(ovl);
+		pi->channel_out = 0; /* xxx */
+		pi->mirror = 0;
+		pi->mem_idx = get_mem_idx(ofbi);
+		pi->out_width = ovli.out_width;
+		pi->out_height = ovli.out_height;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct omap_overlay_info *ovli;
 
 		ovl = ofbi->overlays[0];
@@ -201,6 +270,10 @@ static int omapfb_query_plane(struct fb_info *fbi, struct omapfb_plane_info *pi)
 		pi->mem_idx = get_mem_idx(ofbi);
 		pi->out_width = ovli->out_width;
 		pi->out_height = ovli->out_height;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -214,7 +287,15 @@ static int omapfb_setup_mem(struct fb_info *fbi, struct omapfb_mem_info *mi)
 	int r = 0, i;
 	size_t size;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (mi->type != OMAPFB_MEMTYPE_SDRAM)
+=======
 	if (mi->type > OMAPFB_MEMTYPE_MAX)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (mi->type > OMAPFB_MEMTYPE_MAX)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	size = PAGE_ALIGN(mi->size);
@@ -237,7 +318,17 @@ static int omapfb_setup_mem(struct fb_info *fbi, struct omapfb_mem_info *mi)
 			continue;
 
 		for (j = 0; j < ofbi2->num_overlays; j++) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			struct omap_overlay *ovl;
+			ovl = ofbi2->overlays[j];
+			if (ovl->is_enabled(ovl)) {
+=======
 			if (ofbi2->overlays[j]->info.enabled) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			if (ofbi2->overlays[j]->info.enabled) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				r = -EBUSY;
 				goto out;
 			}
@@ -316,6 +407,50 @@ int omapfb_update_window(struct fb_info *fbi,
 }
 EXPORT_SYMBOL(omapfb_update_window);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int omapfb_set_update_mode(struct fb_info *fbi,
+				   enum omapfb_update_mode mode)
+{
+	struct omap_dss_device *display = fb2display(fbi);
+	struct omapfb_info *ofbi = FB2OFB(fbi);
+	struct omapfb2_device *fbdev = ofbi->fbdev;
+	struct omapfb_display_data *d;
+	int r;
+
+	if (!display)
+		return -EINVAL;
+
+	if (mode != OMAPFB_AUTO_UPDATE && mode != OMAPFB_MANUAL_UPDATE)
+		return -EINVAL;
+
+	omapfb_lock(fbdev);
+
+	d = get_display_data(fbdev, display);
+
+	if (d->update_mode == mode) {
+		omapfb_unlock(fbdev);
+		return 0;
+	}
+
+	r = 0;
+
+	if (display->caps & OMAP_DSS_DISPLAY_CAP_MANUAL_UPDATE) {
+		if (mode == OMAPFB_AUTO_UPDATE)
+			omapfb_start_auto_update(fbdev, display);
+		else /* MANUAL_UPDATE */
+			omapfb_stop_auto_update(fbdev, display);
+
+		d->update_mode = mode;
+	} else { /* AUTO_UPDATE */
+		if (mode == OMAPFB_MANUAL_UPDATE)
+			r = -EINVAL;
+	}
+
+	omapfb_unlock(fbdev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int omapfb_set_update_mode(struct fb_info *fbi,
 				   enum omapfb_update_mode mode)
 {
@@ -344,19 +479,51 @@ static int omapfb_set_update_mode(struct fb_info *fbi,
 	}
 
 	r = display->driver->set_update_mode(display, um);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return r;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int omapfb_get_update_mode(struct fb_info *fbi,
+		enum omapfb_update_mode *mode)
+{
+	struct omap_dss_device *display = fb2display(fbi);
+	struct omapfb_info *ofbi = FB2OFB(fbi);
+	struct omapfb2_device *fbdev = ofbi->fbdev;
+	struct omapfb_display_data *d;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int omapfb_get_update_mode(struct fb_info *fbi,
 		enum omapfb_update_mode *mode)
 {
 	struct omap_dss_device *display = fb2display(fbi);
 	enum omap_dss_update_mode m;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!display)
 		return -EINVAL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	omapfb_lock(fbdev);
+
+	d = get_display_data(fbdev, display);
+
+	*mode = d->update_mode;
+
+	omapfb_unlock(fbdev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!display->driver->get_update_mode) {
 		*mode = OMAPFB_AUTO_UPDATE;
 		return 0;
@@ -377,6 +544,10 @@ static int omapfb_get_update_mode(struct fb_info *fbi,
 	default:
 		BUG();
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

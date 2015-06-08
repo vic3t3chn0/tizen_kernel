@@ -87,7 +87,15 @@ struct bmp085_data {
 	u32 raw_temperature;
 	u32 raw_pressure;
 	unsigned char oversampling_setting;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long last_temp_measurement;
+=======
 	u32 last_temp_measurement;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	u32 last_temp_measurement;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s32 b6; /* calculated temperature correction coefficient */
 };
 
@@ -216,7 +224,15 @@ static s32 bmp085_get_temperature(struct bmp085_data *data, int *temperature)
 		*temperature = (x1+x2+8) >> 4;
 
 exit:
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return status;
+=======
 	return status;;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return status;;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -234,7 +250,16 @@ static s32 bmp085_get_pressure(struct bmp085_data *data, int *pressure)
 	int status;
 
 	/* alt least every second force an update of the ambient temperature */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (data->last_temp_measurement == 0 ||
+			time_is_before_jiffies(data->last_temp_measurement + 1*HZ)) {
+=======
 	if (data->last_temp_measurement + 1*HZ < jiffies) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (data->last_temp_measurement + 1*HZ < jiffies) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		status = bmp085_get_temperature(data, NULL);
 		if (status != 0)
 			goto exit;
@@ -464,6 +489,12 @@ static struct i2c_driver bmp085_driver = {
 	.address_list	= normal_i2c
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_i2c_driver(bmp085_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init bmp085_init(void)
 {
 	return i2c_add_driver(&bmp085_driver);
@@ -474,10 +505,23 @@ static void __exit bmp085_exit(void)
 	i2c_del_driver(&bmp085_driver);
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Christoph Mair <christoph.mair@gmail.com");
 MODULE_DESCRIPTION("BMP085 driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(bmp085_init);
 module_exit(bmp085_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(bmp085_init);
+module_exit(bmp085_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

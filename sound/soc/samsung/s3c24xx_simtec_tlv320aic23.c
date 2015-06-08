@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/soc.h>
 
 #include "s3c24xx_simtec.h"
@@ -60,12 +64,15 @@ static int simtec_tlv320aic23_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_new_controls(dapm, dapm_widgets,
 				  ARRAY_SIZE(dapm_widgets));
 
 	snd_soc_dapm_add_routes(dapm, base_map, ARRAY_SIZE(base_map));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	snd_soc_dapm_enable_pin(dapm, "Headphone Jack");
 	snd_soc_dapm_enable_pin(dapm, "Line In");
 	snd_soc_dapm_enable_pin(dapm, "Line Out");
@@ -74,8 +81,11 @@ static int simtec_tlv320aic23_init(struct snd_soc_pcm_runtime *rtd)
 	simtec_audio_init(rtd);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -94,6 +104,9 @@ static struct snd_soc_dai_link simtec_dai_aic23 = {
 static struct snd_soc_card snd_soc_machine_simtec_aic23 = {
 	.name		= "Simtec",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.owner		= THIS_MODULE,
 	.dai_link	= &simtec_dai_aic23,
 	.num_links	= 1,
@@ -102,10 +115,13 @@ static struct snd_soc_card snd_soc_machine_simtec_aic23 = {
 	.num_dapm_widgets = ARRAY_SIZE(dapm_widgets),
 	.dapm_routes	= base_map,
 	.num_dapm_routes = ARRAY_SIZE(base_map),
+<<<<<<< HEAD
+=======
 =======
 	.dai_link	= &simtec_dai_aic23,
 	.num_links	= 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __devinit simtec_audio_tlv320aic23_probe(struct platform_device *pd)
@@ -116,8 +132,12 @@ static int __devinit simtec_audio_tlv320aic23_probe(struct platform_device *pd)
 <<<<<<< HEAD
 static struct platform_driver simtec_audio_tlv320aic23_driver = {
 =======
+<<<<<<< HEAD
+static struct platform_driver simtec_audio_tlv320aic23_driver = {
+=======
 static struct platform_driver simtec_audio_tlv320aic23_platdrv = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver	= {
 		.owner	= THIS_MODULE,
 		.name	= "s3c24xx-simtec-tlv320aic23",
@@ -127,6 +147,11 @@ static struct platform_driver simtec_audio_tlv320aic23_platdrv = {
 	.remove	= __devexit_p(simtec_audio_remove),
 };
 
+<<<<<<< HEAD
+module_platform_driver(simtec_audio_tlv320aic23_driver);
+
+MODULE_ALIAS("platform:s3c24xx-simtec-tlv320aic23");
+=======
 <<<<<<< HEAD
 module_platform_driver(simtec_audio_tlv320aic23_driver);
 
@@ -148,6 +173,7 @@ module_init(simtec_tlv320aic23_modinit);
 module_exit(simtec_tlv320aic23_modexit);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_AUTHOR("Ben Dooks <ben@simtec.co.uk>");
 MODULE_DESCRIPTION("ALSA SoC Simtec Audio support");
 MODULE_LICENSE("GPL");

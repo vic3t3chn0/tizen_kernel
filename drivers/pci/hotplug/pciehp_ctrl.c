@@ -344,7 +344,15 @@ void pciehp_queue_pushbutton_work(struct work_struct *work)
 		kfree(info);
 		goto out;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	queue_work(pciehp_wq, &info->work);
+=======
 	queue_work(pciehp_ordered_wq, &info->work);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	queue_work(pciehp_ordered_wq, &info->work);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  out:
 	mutex_unlock(&p_slot->lock);
 }
@@ -439,7 +447,15 @@ static void handle_surprise_event(struct slot *p_slot)
 	else
 		p_slot->state = POWERON_STATE;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	queue_work(pciehp_wq, &info->work);
+=======
 	queue_work(pciehp_ordered_wq, &info->work);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	queue_work(pciehp_ordered_wq, &info->work);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void interrupt_event_handler(struct work_struct *work)

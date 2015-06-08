@@ -150,7 +150,15 @@ static ssize_t show_status(struct qib_pportdata *ppd, char *buf)
  * For userland compatibility, these offsets must remain fixed.
  * They are strings for QIB_STATUS_*
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const char * const qib_status_str[] = {
+=======
 static const char *qib_status_str[] = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static const char *qib_status_str[] = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	"Initted",
 	"",
 	"",
@@ -507,6 +515,23 @@ static ssize_t show_nctxts(struct device *device,
 		dd->first_user_ctxt);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t show_nfreectxts(struct device *device,
+			   struct device_attribute *attr, char *buf)
+{
+	struct qib_ibdev *dev =
+		container_of(device, struct qib_ibdev, ibdev.dev);
+	struct qib_devdata *dd = dd_from_dev(dev);
+
+	/* Return the number of free user ports (contexts) available. */
+	return scnprintf(buf, PAGE_SIZE, "%u\n", dd->freectxts);
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t show_serial(struct device *device,
 			   struct device_attribute *attr, char *buf)
 {
@@ -604,6 +629,13 @@ static DEVICE_ATTR(hca_type, S_IRUGO, show_hca, NULL);
 static DEVICE_ATTR(board_id, S_IRUGO, show_hca, NULL);
 static DEVICE_ATTR(version, S_IRUGO, show_version, NULL);
 static DEVICE_ATTR(nctxts, S_IRUGO, show_nctxts, NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DEVICE_ATTR(nfreectxts, S_IRUGO, show_nfreectxts, NULL);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(serial, S_IRUGO, show_serial, NULL);
 static DEVICE_ATTR(boardversion, S_IRUGO, show_boardversion, NULL);
 static DEVICE_ATTR(logged_errors, S_IRUGO, show_logged_errs, NULL);
@@ -617,6 +649,13 @@ static struct device_attribute *qib_attributes[] = {
 	&dev_attr_board_id,
 	&dev_attr_version,
 	&dev_attr_nctxts,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	&dev_attr_nfreectxts,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&dev_attr_serial,
 	&dev_attr_boardversion,
 	&dev_attr_logged_errors,

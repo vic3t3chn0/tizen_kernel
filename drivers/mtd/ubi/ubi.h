@@ -44,7 +44,14 @@
 
 #include "ubi-media.h"
 #include "scan.h"
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include "debug.h"
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include "debug.h"
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Maximum number of supported UBI devices */
 #define UBI_MAX_DEVICES 32
@@ -119,7 +126,15 @@ enum {
  *                     PEB
  * MOVE_TARGET_WR_ERR: canceled because there was a write error to the target
  *                     PEB
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * MOVE_TARGET_BITFLIPS: canceled because a bit-flip was detected in the
+=======
  * MOVE_CANCEL_BITFLIPS: canceled because a bit-flip was detected in the
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * MOVE_CANCEL_BITFLIPS: canceled because a bit-flip was detected in the
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *                       target PEB
  * MOVE_RETRY: retry scrubbing the PEB
  */
@@ -128,7 +143,15 @@ enum {
 	MOVE_SOURCE_RD_ERR,
 	MOVE_TARGET_RD_ERR,
 	MOVE_TARGET_WR_ERR,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	MOVE_TARGET_BITFLIPS,
+=======
 	MOVE_CANCEL_BITFLIPS,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	MOVE_CANCEL_BITFLIPS,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MOVE_RETRY,
 };
 
@@ -388,10 +411,24 @@ struct ubi_wl_entry;
  *                  time (MTD write buffer size)
  * @mtd: MTD device descriptor
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * @peb_buf: a buffer of PEB size used for different purposes
+ * @buf_mutex: protects @peb_buf
+ * @ckvol_mutex: serializes static volume checking when opening
+ *
+ * @dbg: debugging information for this UBI device
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @peb_buf1: a buffer of PEB size used for different purposes
  * @peb_buf2: another buffer of PEB size used for different purposes
  * @buf_mutex: protects @peb_buf1 and @peb_buf2
  * @ckvol_mutex: serializes static volume checking when opening
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct ubi_device {
 	struct cdev cdev;
@@ -470,12 +507,30 @@ struct ubi_device {
 	int max_write_size;
 	struct mtd_info *mtd;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	void *peb_buf;
+	struct mutex buf_mutex;
+	struct mutex ckvol_mutex;
+
+	struct ubi_debug_info *dbg;
+};
+
+#include "debug.h"
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void *peb_buf1;
 	void *peb_buf2;
 	struct mutex buf_mutex;
 	struct mutex ckvol_mutex;
 };
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct kmem_cache *ubi_wl_entry_slab;
 extern const struct file_operations ubi_ctrl_cdev_operations;
 extern const struct file_operations ubi_cdev_operations;
@@ -664,6 +719,13 @@ static inline void ubi_ro_mode(struct ubi_device *ubi)
 	if (!ubi->ro_mode) {
 		ubi->ro_mode = 1;
 		ubi_warn("switch to read-only mode");
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ubi_dbg_dump_stack();
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 

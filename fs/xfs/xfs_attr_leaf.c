@@ -239,7 +239,12 @@ xfs_attr_shortform_create(xfs_da_args_t *args)
 	trace_xfs_attr_sf_create(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_sf_create(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dp = args->dp;
 	ASSERT(dp != NULL);
 	ifp = dp->i_afp;
@@ -274,11 +279,16 @@ xfs_attr_shortform_add(xfs_da_args_t *args, int forkoff)
 	xfs_ifork_t *ifp;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_xfs_attr_sf_add(args);
 
 	dp = args->dp;
 	mp = dp->i_mount;
 	dp->i_d.di_forkoff = forkoff;
+<<<<<<< HEAD
+=======
 =======
 	dp = args->dp;
 	mp = dp->i_mount;
@@ -288,6 +298,7 @@ xfs_attr_shortform_add(xfs_da_args_t *args, int forkoff)
 	dp->i_afp->if_ext_max =
 		XFS_IFORK_ASIZE(dp) / (uint)sizeof(xfs_bmbt_rec_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ifp = dp->i_afp;
 	ASSERT(ifp->if_flags & XFS_IFINLINE);
@@ -341,8 +352,11 @@ xfs_attr_fork_reset(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ip->i_df.if_ext_max = XFS_IFORK_DSIZE(ip) / sizeof(xfs_bmbt_rec_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_trans_log_inode(tp, ip, XFS_ILOG_CORE);
 }
 
@@ -362,7 +376,12 @@ xfs_attr_shortform_remove(xfs_da_args_t *args)
 	trace_xfs_attr_sf_remove(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_sf_remove(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dp = args->dp;
 	mp = dp->i_mount;
 	base = sizeof(xfs_attr_sf_hdr_t);
@@ -412,11 +431,14 @@ xfs_attr_shortform_remove(xfs_da_args_t *args)
 				dp->i_d.di_format == XFS_DINODE_FMT_BTREE);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		dp->i_afp->if_ext_max =
 			XFS_IFORK_ASIZE(dp) / (uint)sizeof(xfs_bmbt_rec_t);
 		dp->i_df.if_ext_max =
 			XFS_IFORK_DSIZE(dp) / (uint)sizeof(xfs_bmbt_rec_t);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_trans_log_inode(args->trans, dp,
 					XFS_ILOG_CORE | XFS_ILOG_ADATA);
 	}
@@ -442,7 +464,12 @@ xfs_attr_shortform_lookup(xfs_da_args_t *args)
 	trace_xfs_attr_sf_lookup(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_sf_lookup(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ifp = args->dp->i_afp;
 	ASSERT(ifp->if_flags & XFS_IFINLINE);
 	sf = (xfs_attr_shortform_t *)ifp->if_u1.if_data;
@@ -518,7 +545,12 @@ xfs_attr_shortform_to_leaf(xfs_da_args_t *args)
 	trace_xfs_attr_sf_to_leaf(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_sf_to_leaf(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dp = args->dp;
 	ifp = dp->i_afp;
 	sf = (xfs_attr_shortform_t *)ifp->if_u1.if_data;
@@ -782,8 +814,12 @@ xfs_attr_shortform_allfit(xfs_dabuf_t *bp, xfs_inode_t *dp)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	entry = &leaf->entries[0];
 	bytes = sizeof(struct xfs_attr_sf_hdr);
@@ -826,7 +862,12 @@ xfs_attr_leaf_to_shortform(xfs_dabuf_t *bp, xfs_da_args_t *args, int forkoff)
 	trace_xfs_attr_leaf_to_sf(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_to_sf(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dp = args->dp;
 	tmpbuffer = kmem_alloc(XFS_LBSIZE(dp->i_mount), KM_SLEEP);
 	ASSERT(tmpbuffer != NULL);
@@ -837,8 +878,12 @@ xfs_attr_leaf_to_shortform(xfs_dabuf_t *bp, xfs_da_args_t *args, int forkoff)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	memset(bp->data, 0, XFS_LBSIZE(dp->i_mount));
 
 	/*
@@ -908,7 +953,12 @@ xfs_attr_leaf_to_node(xfs_da_args_t *args)
 	trace_xfs_attr_leaf_to_node(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_to_node(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dp = args->dp;
 	bp1 = bp2 = NULL;
 	error = xfs_da_grow_inode(args, &blkno);
@@ -941,8 +991,12 @@ xfs_attr_leaf_to_node(xfs_da_args_t *args)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* both on-disk, don't endian-flip twice */
 	node->btree[0].hashval =
 		leaf->entries[be16_to_cpu(leaf->hdr.count)-1 ].hashval;
@@ -980,7 +1034,12 @@ xfs_attr_leaf_create(xfs_da_args_t *args, xfs_dablk_t blkno, xfs_dabuf_t **bpp)
 	trace_xfs_attr_leaf_create(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_create(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dp = args->dp;
 	ASSERT(dp != NULL);
 	error = xfs_da_get_buf(args->trans, args->dp, blkno, -1, &bp,
@@ -1022,7 +1081,12 @@ xfs_attr_leaf_split(xfs_da_state_t *state, xfs_da_state_blk_t *oldblk,
 	trace_xfs_attr_leaf_split(state->args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_split(state->args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Allocate space for a new leaf node.
 	 */
@@ -1053,6 +1117,9 @@ xfs_attr_leaf_split(xfs_da_state_t *state, xfs_da_state_blk_t *oldblk,
 	 * Insert the "new" entry in the correct block.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (state->inleaf) {
 		trace_xfs_attr_leaf_add_old(state->args);
 		error = xfs_attr_leaf_add(oldblk->bp, state->args);
@@ -1060,12 +1127,15 @@ xfs_attr_leaf_split(xfs_da_state_t *state, xfs_da_state_blk_t *oldblk,
 		trace_xfs_attr_leaf_add_new(state->args);
 		error = xfs_attr_leaf_add(newblk->bp, state->args);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (state->inleaf)
 		error = xfs_attr_leaf_add(oldblk->bp, state->args);
 	else
 		error = xfs_attr_leaf_add(newblk->bp, state->args);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Update last hashval in each block since we added the name.
@@ -1087,14 +1157,20 @@ xfs_attr_leaf_add(xfs_dabuf_t *bp, xfs_da_args_t *args)
 	int tablesize, entsize, sum, tmp, i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_xfs_attr_leaf_add(args);
 
 	leaf = bp->data;
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+<<<<<<< HEAD
+=======
 =======
 	leaf = bp->data;
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT((args->index >= 0)
 		&& (args->index <= be16_to_cpu(leaf->hdr.count)));
 	hdr = &leaf->hdr;
@@ -1170,8 +1246,12 @@ xfs_attr_leaf_add_work(xfs_dabuf_t *bp, xfs_da_args_t *args, int mapindex)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr = &leaf->hdr;
 	ASSERT((mapindex >= 0) && (mapindex < XFS_ATTR_LEAF_MAPSIZE));
 	ASSERT((args->index >= 0) && (args->index <= be16_to_cpu(hdr->count)));
@@ -1226,9 +1306,12 @@ xfs_attr_leaf_add_work(xfs_dabuf_t *bp, xfs_da_args_t *args, int mapindex)
 	/*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	 * Copy the attribute name and value into the new space.
 	 *
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * For "remote" attribute values, simply note that we need to
 	 * allocate space for the "remote" value.  We can't actually
 	 * allocate the extents in this transaction, and we can't decide
@@ -1361,18 +1444,24 @@ xfs_attr_leaf_rebalance(xfs_da_state_t *state, xfs_da_state_blk_t *blk1,
 	leaf1 = blk1->bp->data;
 	leaf2 = blk2->bp->data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(leaf1->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 	ASSERT(leaf2->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 	args = state->args;
 
 	trace_xfs_attr_leaf_rebalance(args);
 
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(be16_to_cpu(leaf1->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 	ASSERT(be16_to_cpu(leaf2->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 	args = state->args;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Check ordering of blocks, reverse if it makes things simpler.
 	 *
@@ -1649,8 +1738,12 @@ xfs_attr_leaf_toosmall(xfs_da_state_t *state, int *action)
 <<<<<<< HEAD
 	ASSERT(info->magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(info->magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(info->magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	leaf = (xfs_attr_leafblock_t *)info;
 	count = be16_to_cpu(leaf->hdr.count);
 	bytes = sizeof(xfs_attr_leaf_hdr_t) +
@@ -1716,8 +1809,12 @@ xfs_attr_leaf_toosmall(xfs_da_state_t *state, int *action)
 <<<<<<< HEAD
 		ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+		ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 		ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		count += be16_to_cpu(leaf->hdr.count);
 		bytes -= be16_to_cpu(leaf->hdr.usedbytes);
 		bytes -= count * sizeof(xfs_attr_leaf_entry_t);
@@ -1774,8 +1871,12 @@ xfs_attr_leaf_remove(xfs_dabuf_t *bp, xfs_da_args_t *args)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr = &leaf->hdr;
 	mp = args->trans->t_mountp;
 	ASSERT((be16_to_cpu(hdr->count) > 0)
@@ -1934,7 +2035,12 @@ xfs_attr_leaf_unbalance(xfs_da_state_t *state, xfs_da_state_blk_t *drop_blk,
 	trace_xfs_attr_leaf_unbalance(state->args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_unbalance(state->args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set up environment.
 	 */
@@ -1947,9 +2053,14 @@ xfs_attr_leaf_unbalance(xfs_da_state_t *state, xfs_da_state_blk_t *drop_blk,
 	ASSERT(drop_leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 	ASSERT(save_leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(drop_leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+	ASSERT(save_leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(drop_leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 	ASSERT(be16_to_cpu(save_leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	drop_hdr = &drop_leaf->hdr;
 	save_hdr = &save_leaf->hdr;
 
@@ -2050,14 +2161,20 @@ xfs_attr_leaf_lookup_int(xfs_dabuf_t *bp, xfs_da_args_t *args)
 	xfs_dahash_t hashval;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	trace_xfs_attr_leaf_lookup(args);
 
 	leaf = bp->data;
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+<<<<<<< HEAD
+=======
 =======
 	leaf = bp->data;
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(be16_to_cpu(leaf->hdr.count)
 					< (XFS_LBSIZE(args->dp->i_mount)/8));
 
@@ -2164,8 +2281,12 @@ xfs_attr_leaf_getvalue(xfs_dabuf_t *bp, xfs_da_args_t *args)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(be16_to_cpu(leaf->hdr.count)
 					< (XFS_LBSIZE(args->dp->i_mount)/8));
 	ASSERT(args->index < be16_to_cpu(leaf->hdr.count));
@@ -2237,9 +2358,14 @@ xfs_attr_leaf_moveents(xfs_attr_leafblock_t *leaf_s, int start_s,
 	ASSERT(leaf_s->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 	ASSERT(leaf_d->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf_s->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+	ASSERT(leaf_d->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf_s->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 	ASSERT(be16_to_cpu(leaf_d->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hdr_s = &leaf_s->hdr;
 	hdr_d = &leaf_d->hdr;
 	ASSERT((be16_to_cpu(hdr_s->count) > 0) &&
@@ -2377,9 +2503,14 @@ xfs_attr_leaf_order(xfs_dabuf_t *leaf1_bp, xfs_dabuf_t *leaf2_bp)
 	ASSERT((leaf1->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC)) &&
 	       (leaf2->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC)));
 =======
+<<<<<<< HEAD
+	ASSERT((leaf1->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC)) &&
+	       (leaf2->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC)));
+=======
 	ASSERT((be16_to_cpu(leaf1->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC) &&
 	       (be16_to_cpu(leaf2->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((be16_to_cpu(leaf1->hdr.count) > 0) &&
 	    (be16_to_cpu(leaf2->hdr.count) > 0) &&
 	    ((be32_to_cpu(leaf2->entries[0].hashval) <
@@ -2405,8 +2536,12 @@ xfs_attr_leaf_lasthash(xfs_dabuf_t *bp, int *count)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (count)
 		*count = be16_to_cpu(leaf->hdr.count);
 	if (!leaf->hdr.count)
@@ -2428,8 +2563,12 @@ xfs_attr_leaf_entsize(xfs_attr_leafblock_t *leaf, int index)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (leaf->entries[index].flags & XFS_ATTR_LOCAL) {
 		name_loc = xfs_attr_leaf_name_local(leaf, index);
 		size = xfs_attr_leaf_entsize_local(name_loc->namelen,
@@ -2607,7 +2746,11 @@ xfs_attr_leaf_clearflag(xfs_da_args_t *args)
 <<<<<<< HEAD
 	trace_xfs_attr_leaf_clearflag(args);
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_clearflag(args);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set up the operation.
 	 */
@@ -2622,8 +2765,12 @@ xfs_attr_leaf_clearflag(xfs_da_args_t *args)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(args->index < be16_to_cpu(leaf->hdr.count));
 	ASSERT(args->index >= 0);
 	entry = &leaf->entries[ args->index ];
@@ -2680,7 +2827,12 @@ xfs_attr_leaf_setflag(xfs_da_args_t *args)
 	trace_xfs_attr_leaf_setflag(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_setflag(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set up the operation.
 	 */
@@ -2695,8 +2847,12 @@ xfs_attr_leaf_setflag(xfs_da_args_t *args)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(args->index < be16_to_cpu(leaf->hdr.count));
 	ASSERT(args->index >= 0);
 	entry = &leaf->entries[ args->index ];
@@ -2745,7 +2901,12 @@ xfs_attr_leaf_flipflags(xfs_da_args_t *args)
 	trace_xfs_attr_leaf_flipflags(args);
 
 =======
+<<<<<<< HEAD
+	trace_xfs_attr_leaf_flipflags(args);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Read the block containing the "old" attr
 	 */
@@ -2774,8 +2935,12 @@ xfs_attr_leaf_flipflags(xfs_da_args_t *args)
 <<<<<<< HEAD
 	ASSERT(leaf1->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf1->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf1->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(args->index < be16_to_cpu(leaf1->hdr.count));
 	ASSERT(args->index >= 0);
 	entry1 = &leaf1->entries[ args->index ];
@@ -2784,8 +2949,12 @@ xfs_attr_leaf_flipflags(xfs_da_args_t *args)
 <<<<<<< HEAD
 	ASSERT(leaf2->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf2->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf2->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(args->index2 < be16_to_cpu(leaf2->hdr.count));
 	ASSERT(args->index2 >= 0);
 	entry2 = &leaf2->entries[ args->index2 ];
@@ -2888,10 +3057,16 @@ xfs_attr_root_inactive(xfs_trans_t **trans, xfs_inode_t *dp)
 		error = xfs_attr_node_inactive(trans, dp, bp, 1);
 	} else if (info->magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC)) {
 =======
+<<<<<<< HEAD
+	if (info->magic == cpu_to_be16(XFS_DA_NODE_MAGIC)) {
+		error = xfs_attr_node_inactive(trans, dp, bp, 1);
+	} else if (info->magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC)) {
+=======
 	if (be16_to_cpu(info->magic) == XFS_DA_NODE_MAGIC) {
 		error = xfs_attr_node_inactive(trans, dp, bp, 1);
 	} else if (be16_to_cpu(info->magic) == XFS_ATTR_LEAF_MAGIC) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = xfs_attr_leaf_inactive(trans, dp, bp);
 	} else {
 		error = XFS_ERROR(EIO);
@@ -2942,8 +3117,12 @@ xfs_attr_node_inactive(xfs_trans_t **trans, xfs_inode_t *dp, xfs_dabuf_t *bp,
 <<<<<<< HEAD
 	ASSERT(node->hdr.info.magic == cpu_to_be16(XFS_DA_NODE_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(node->hdr.info.magic == cpu_to_be16(XFS_DA_NODE_MAGIC));
+=======
 	ASSERT(be16_to_cpu(node->hdr.info.magic) == XFS_DA_NODE_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	parent_blkno = xfs_da_blkno(bp);	/* save for re-read later */
 	count = be16_to_cpu(node->hdr.count);
 	if (!count) {
@@ -2978,16 +3157,22 @@ xfs_attr_node_inactive(xfs_trans_t **trans, xfs_inode_t *dp, xfs_dabuf_t *bp,
 			 */
 			info = child_bp->data;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (info->magic == cpu_to_be16(XFS_DA_NODE_MAGIC)) {
 				error = xfs_attr_node_inactive(trans, dp,
 						child_bp, level+1);
 			} else if (info->magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC)) {
+<<<<<<< HEAD
+=======
 =======
 			if (be16_to_cpu(info->magic) == XFS_DA_NODE_MAGIC) {
 				error = xfs_attr_node_inactive(trans, dp,
 						child_bp, level+1);
 			} else if (be16_to_cpu(info->magic) == XFS_ATTR_LEAF_MAGIC) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				error = xfs_attr_leaf_inactive(trans, dp,
 						child_bp);
 			} else {
@@ -3050,8 +3235,12 @@ xfs_attr_leaf_inactive(xfs_trans_t **trans, xfs_inode_t *dp, xfs_dabuf_t *bp)
 <<<<<<< HEAD
 	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
 =======
+<<<<<<< HEAD
+	ASSERT(leaf->hdr.info.magic == cpu_to_be16(XFS_ATTR_LEAF_MAGIC));
+=======
 	ASSERT(be16_to_cpu(leaf->hdr.info.magic) == XFS_ATTR_LEAF_MAGIC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Count the number of "remote" value extents.
@@ -3145,10 +3334,15 @@ xfs_attr_leaf_freextent(xfs_trans_t **trans, xfs_inode_t *dp,
 		error = xfs_bmapi_read(dp, (xfs_fileoff_t)tblkno, tblkcnt,
 				       &map, &nmap, XFS_BMAPI_ATTRFORK);
 =======
+<<<<<<< HEAD
+		error = xfs_bmapi_read(dp, (xfs_fileoff_t)tblkno, tblkcnt,
+				       &map, &nmap, XFS_BMAPI_ATTRFORK);
+=======
 		error = xfs_bmapi(*trans, dp, (xfs_fileoff_t)tblkno, tblkcnt,
 					XFS_BMAPI_ATTRFORK | XFS_BMAPI_METADATA,
 					NULL, 0, &map, &nmap, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error) {
 			return(error);
 		}
@@ -3172,7 +3366,12 @@ xfs_attr_leaf_freextent(xfs_trans_t **trans, xfs_inode_t *dp,
 			if (!bp)
 				return ENOMEM;
 =======
+<<<<<<< HEAD
+			if (!bp)
+				return ENOMEM;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_trans_binval(*trans, bp);
 			/*
 			 * Roll to next transaction.

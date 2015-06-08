@@ -17,8 +17,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clk.h>
 #include <linux/err.h>
 
@@ -87,8 +91,13 @@ static struct cpufreq_frequency_table s3c2440_plls_169344[] __initdata = {
 static int s3c2440_plls169344_add(struct device *dev,
 				  struct subsys_interface *sif)
 =======
+<<<<<<< HEAD
+static int s3c2440_plls169344_add(struct device *dev,
+				  struct subsys_interface *sif)
+=======
 static int s3c2440_plls169344_add(struct sys_device *dev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct clk *xtal_clk;
 	unsigned long xtal;
@@ -110,14 +119,20 @@ static int s3c2440_plls169344_add(struct sys_device *dev)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct subsys_interface s3c2440_plls169344_interface = {
 	.name		= "s3c2440_plls169344",
 	.subsys		= &s3c2440_subsys,
 	.add_dev	= s3c2440_plls169344_add,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_driver s3c2440_plls169344_drv = {
 	.add	= s3c2440_plls169344_add,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init s3c2440_pll_16934400(void)
@@ -125,23 +140,33 @@ static int __init s3c2440_pll_16934400(void)
 <<<<<<< HEAD
 	return subsys_interface_register(&s3c2440_plls169344_interface);
 =======
+<<<<<<< HEAD
+	return subsys_interface_register(&s3c2440_plls169344_interface);
+=======
 	return sysdev_driver_register(&s3c2440_sysclass,
 				      &s3c2440_plls169344_drv);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 arch_initcall(s3c2440_pll_16934400);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct subsys_interface s3c2442_plls169344_interface = {
 	.name		= "s3c2442_plls169344",
 	.subsys		= &s3c2442_subsys,
 	.add_dev	= s3c2440_plls169344_add,
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_driver s3c2442_plls169344_drv = {
 	.add	= s3c2440_plls169344_add,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init s3c2442_pll_16934400(void)
@@ -149,10 +174,14 @@ static int __init s3c2442_pll_16934400(void)
 <<<<<<< HEAD
 	return subsys_interface_register(&s3c2442_plls169344_interface);
 =======
+<<<<<<< HEAD
+	return subsys_interface_register(&s3c2442_plls169344_interface);
+=======
 	return sysdev_driver_register(&s3c2442_sysclass,
 				      &s3c2442_plls169344_drv);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 arch_initcall(s3c2442_pll_16934400);

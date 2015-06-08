@@ -29,10 +29,16 @@ static int netmap_tg_check(const struct xt_tgchk_param *par)
 
 	if (!(mr->range[0].flags & NF_NAT_RANGE_MAP_IPS)) {
 =======
+<<<<<<< HEAD
+	const struct nf_nat_ipv4_multi_range_compat *mr = par->targinfo;
+
+	if (!(mr->range[0].flags & NF_NAT_RANGE_MAP_IPS)) {
+=======
 	const struct nf_nat_multi_range_compat *mr = par->targinfo;
 
 	if (!(mr->range[0].flags & IP_NAT_RANGE_MAP_IPS)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("bad MAP_IPS.\n");
 		return -EINVAL;
 	}
@@ -53,9 +59,14 @@ netmap_tg(struct sk_buff *skb, const struct xt_action_param *par)
 	const struct nf_nat_ipv4_multi_range_compat *mr = par->targinfo;
 	struct nf_nat_ipv4_range newrange;
 =======
+<<<<<<< HEAD
+	const struct nf_nat_ipv4_multi_range_compat *mr = par->targinfo;
+	struct nf_nat_ipv4_range newrange;
+=======
 	const struct nf_nat_multi_range_compat *mr = par->targinfo;
 	struct nf_nat_range newrange;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	NF_CT_ASSERT(par->hooknum == NF_INET_PRE_ROUTING ||
 		     par->hooknum == NF_INET_POST_ROUTING ||
@@ -76,9 +87,14 @@ netmap_tg(struct sk_buff *skb, const struct xt_action_param *par)
 	newrange = ((struct nf_nat_ipv4_range)
 		{ mr->range[0].flags | NF_NAT_RANGE_MAP_IPS,
 =======
+<<<<<<< HEAD
+	newrange = ((struct nf_nat_ipv4_range)
+		{ mr->range[0].flags | NF_NAT_RANGE_MAP_IPS,
+=======
 	newrange = ((struct nf_nat_range)
 		{ mr->range[0].flags | IP_NAT_RANGE_MAP_IPS,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		  new_ip, new_ip,
 		  mr->range[0].min, mr->range[0].max });
 
@@ -93,8 +109,12 @@ static struct xt_target netmap_tg_reg __read_mostly = {
 <<<<<<< HEAD
 	.targetsize	= sizeof(struct nf_nat_ipv4_multi_range_compat),
 =======
+<<<<<<< HEAD
+	.targetsize	= sizeof(struct nf_nat_ipv4_multi_range_compat),
+=======
 	.targetsize	= sizeof(struct nf_nat_multi_range_compat),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.table		= "nat",
 	.hooks		= (1 << NF_INET_PRE_ROUTING) |
 			  (1 << NF_INET_POST_ROUTING) |

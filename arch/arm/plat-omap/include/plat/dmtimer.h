@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * arch/arm/plat-omap/include/plat/dmtimer.h
 =======
+<<<<<<< HEAD
+ * arch/arm/plat-omap/include/plat/dmtimer.h
+=======
  * arch/arm/plat-omap/include/mach/dmtimer.h
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * OMAP Dual-Mode Timers
  *
@@ -37,13 +41,19 @@
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/clk.h>
 #include <linux/delay.h>
 #include <linux/io.h>
 #include <linux/platform_device.h>
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef __ASM_ARCH_DMTIMER_H
 #define __ASM_ARCH_DMTIMER_H
 
@@ -68,6 +78,9 @@
  */
 #define OMAP_TIMER_IP_VERSION_1                        0x1
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* timer capabilities used in hwmod database */
 #define OMAP_TIMER_SECURE				0x80000000
@@ -118,6 +131,8 @@ struct dmtimer_platform_data {
 struct omap_dm_timer *omap_dm_timer_request(void);
 struct omap_dm_timer *omap_dm_timer_request_specific(int timer_id);
 int omap_dm_timer_free(struct omap_dm_timer *timer);
+<<<<<<< HEAD
+=======
 =======
 struct omap_dm_timer;
 extern struct omap_dm_timer *gptimer_wakeup;
@@ -130,6 +145,7 @@ struct omap_dm_timer *omap_dm_timer_request(void);
 struct omap_dm_timer *omap_dm_timer_request_specific(int timer_id);
 void omap_dm_timer_free(struct omap_dm_timer *timer);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void omap_dm_timer_enable(struct omap_dm_timer *timer);
 void omap_dm_timer_disable(struct omap_dm_timer *timer);
 
@@ -139,6 +155,9 @@ u32 omap_dm_timer_modify_idlect_mask(u32 inputmask);
 struct clk *omap_dm_timer_get_fclk(struct omap_dm_timer *timer);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap_dm_timer_trigger(struct omap_dm_timer *timer);
 int omap_dm_timer_start(struct omap_dm_timer *timer);
 int omap_dm_timer_stop(struct omap_dm_timer *timer);
@@ -444,6 +463,8 @@ static inline void __omap_dm_timer_write_status(struct omap_dm_timer *timer,
 {
 	__raw_writel(value, timer->irq_stat);
 }
+<<<<<<< HEAD
+=======
 =======
 void omap_dm_timer_trigger(struct omap_dm_timer *timer);
 void omap_dm_timer_start(struct omap_dm_timer *timer);
@@ -466,5 +487,6 @@ void omap_dm_timer_write_counter(struct omap_dm_timer *timer, unsigned int value
 int omap_dm_timers_active(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __ASM_ARCH_DMTIMER_H */

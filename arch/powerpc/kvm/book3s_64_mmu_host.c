@@ -91,7 +91,11 @@ int kvmppc_mmu_map_page(struct kvm_vcpu *vcpu, struct kvmppc_pte *orig_pte)
 <<<<<<< HEAD
 	int r = 0;
 =======
+<<<<<<< HEAD
+	int r = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Get host physical address for gpa */
 	hpaddr = kvmppc_gfn_to_pfn(vcpu, orig_pte->raddr >> PAGE_SHIFT);
@@ -101,8 +105,13 @@ int kvmppc_mmu_map_page(struct kvm_vcpu *vcpu, struct kvmppc_pte *orig_pte)
 		r = -EINVAL;
 		goto out;
 =======
+<<<<<<< HEAD
+		r = -EINVAL;
+		goto out;
+=======
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	hpaddr <<= PAGE_SHIFT;
 	hpaddr |= orig_pte->raddr & (~0xfffULL & ~PAGE_MASK);
@@ -123,8 +132,13 @@ int kvmppc_mmu_map_page(struct kvm_vcpu *vcpu, struct kvmppc_pte *orig_pte)
 		r = -EINVAL;
 		goto out;
 =======
+<<<<<<< HEAD
+		r = -EINVAL;
+		goto out;
+=======
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	vsid = map->host_vsid;
@@ -146,14 +160,20 @@ map_again:
 	/* In case we tried normal mapping already, let's nuke old entries */
 	if (attempt > 1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ppc_md.hpte_remove(hpteg) < 0) {
 			r = -1;
 			goto out;
 		}
+<<<<<<< HEAD
+=======
 =======
 		if (ppc_md.hpte_remove(hpteg) < 0)
 			return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = ppc_md.hpte_insert(hpteg, va, hpaddr, rflags, vflags, MMU_PAGE_4K, MMU_SEGSIZE_256M);
 
@@ -187,8 +207,13 @@ map_again:
 out:
 	return r;
 =======
+<<<<<<< HEAD
+out:
+	return r;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct kvmppc_sid_map *create_sid_map(struct kvm_vcpu *vcpu, u64 gvsid)
@@ -218,9 +243,14 @@ static struct kvmppc_sid_map *create_sid_map(struct kvm_vcpu *vcpu, u64 gvsid)
 	if (vcpu_book3s->proto_vsid_next == vcpu_book3s->proto_vsid_max) {
 		vcpu_book3s->proto_vsid_next = vcpu_book3s->proto_vsid_first;
 =======
+<<<<<<< HEAD
+	if (vcpu_book3s->proto_vsid_next == vcpu_book3s->proto_vsid_max) {
+		vcpu_book3s->proto_vsid_next = vcpu_book3s->proto_vsid_first;
+=======
 	if (vcpu_book3s->vsid_next == vcpu_book3s->vsid_max) {
 		vcpu_book3s->vsid_next = vcpu_book3s->vsid_first;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		memset(vcpu_book3s->sid_map, 0,
 		       sizeof(struct kvmppc_sid_map) * SID_MAP_NUM);
 		kvmppc_mmu_pte_flush(vcpu, 0, 0);
@@ -229,8 +259,12 @@ static struct kvmppc_sid_map *create_sid_map(struct kvm_vcpu *vcpu, u64 gvsid)
 <<<<<<< HEAD
 	map->host_vsid = vsid_scramble(vcpu_book3s->proto_vsid_next++, 256M);
 =======
+<<<<<<< HEAD
+	map->host_vsid = vsid_scramble(vcpu_book3s->proto_vsid_next++, 256M);
+=======
 	map->host_vsid = vcpu_book3s->vsid_next++;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	map->guest_vsid = gvsid;
 	map->valid = true;
@@ -245,13 +279,20 @@ static int kvmppc_mmu_next_segment(struct kvm_vcpu *vcpu, ulong esid)
 <<<<<<< HEAD
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 	int max_slb_size = 64;
 	int found_inval = -1;
 	int r;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!svcpu->slb_max)
 		svcpu->slb_max = 1;
 
@@ -270,6 +311,8 @@ static int kvmppc_mmu_next_segment(struct kvm_vcpu *vcpu, ulong esid)
 		r = found_inval;
 		goto out;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (!to_svcpu(vcpu)->slb_max)
 		to_svcpu(vcpu)->slb_max = 1;
@@ -286,6 +329,7 @@ static int kvmppc_mmu_next_segment(struct kvm_vcpu *vcpu, ulong esid)
 	if (found_inval > 0)
 		return found_inval;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* No spare invalid entry, so create one */
 
@@ -294,6 +338,9 @@ static int kvmppc_mmu_next_segment(struct kvm_vcpu *vcpu, ulong esid)
 
 	/* Overflowing -> purge */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((svcpu->slb_max) == max_slb_size)
 		kvmppc_mmu_flush_segments(vcpu);
 
@@ -302,6 +349,8 @@ static int kvmppc_mmu_next_segment(struct kvm_vcpu *vcpu, ulong esid)
 
 out:
 	svcpu_put(svcpu);
+<<<<<<< HEAD
+=======
 =======
 	if ((to_svcpu(vcpu)->slb_max) == max_slb_size)
 		kvmppc_mmu_flush_segments(vcpu);
@@ -310,6 +359,7 @@ out:
 	to_svcpu(vcpu)->slb_max++;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return r;
 }
 
@@ -318,7 +368,11 @@ int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr)
 <<<<<<< HEAD
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 =======
+<<<<<<< HEAD
+	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u64 esid = eaddr >> SID_SHIFT;
 	u64 slb_esid = (eaddr & ESID_MASK) | SLB_ESID_V;
 	u64 slb_vsid = SLB_VSID_USER;
@@ -328,7 +382,11 @@ int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr)
 <<<<<<< HEAD
 	int r = 0;
 =======
+<<<<<<< HEAD
+	int r = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	slb_index = kvmppc_mmu_next_segment(vcpu, eaddr & ESID_MASK);
 
@@ -339,9 +397,15 @@ int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr)
 		r = -ENOENT;
 		goto out;
 =======
+<<<<<<< HEAD
+		svcpu->slb[slb_index].esid = 0;
+		r = -ENOENT;
+		goto out;
+=======
 		to_svcpu(vcpu)->slb[slb_index].esid = 0;
 		return -ENOENT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	map = find_sid_vsid(vcpu, gvsid);
@@ -355,6 +419,9 @@ int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr)
 	slb_esid |= slb_index;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	svcpu->slb[slb_index].esid = slb_esid;
 	svcpu->slb[slb_index].vsid = slb_vsid;
 
@@ -363,6 +430,8 @@ int kvmppc_mmu_map_segment(struct kvm_vcpu *vcpu, ulong eaddr)
 out:
 	svcpu_put(svcpu);
 	return r;
+<<<<<<< HEAD
+=======
 =======
 	to_svcpu(vcpu)->slb[slb_index].esid = slb_esid;
 	to_svcpu(vcpu)->slb[slb_index].vsid = slb_vsid;
@@ -371,19 +440,26 @@ out:
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void kvmppc_mmu_flush_segments(struct kvm_vcpu *vcpu)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct kvmppc_book3s_shadow_vcpu *svcpu = svcpu_get(vcpu);
 	svcpu->slb_max = 1;
 	svcpu->slb[0].esid = 0;
 	svcpu_put(svcpu);
+<<<<<<< HEAD
+=======
 =======
 	to_svcpu(vcpu)->slb_max = 1;
 	to_svcpu(vcpu)->slb[0].esid = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void kvmppc_mmu_destroy(struct kvm_vcpu *vcpu)
@@ -403,15 +479,21 @@ int kvmppc_mmu_init(struct kvm_vcpu *vcpu)
 	vcpu3s->context_id[0] = err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	vcpu3s->proto_vsid_max = ((vcpu3s->context_id[0] + 1)
 				  << USER_ESID_BITS) - 1;
 	vcpu3s->proto_vsid_first = vcpu3s->context_id[0] << USER_ESID_BITS;
 	vcpu3s->proto_vsid_next = vcpu3s->proto_vsid_first;
+<<<<<<< HEAD
+=======
 =======
 	vcpu3s->vsid_max = ((vcpu3s->context_id[0] + 1) << USER_ESID_BITS) - 1;
 	vcpu3s->vsid_first = vcpu3s->context_id[0] << USER_ESID_BITS;
 	vcpu3s->vsid_next = vcpu3s->vsid_first;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	kvmppc_mmu_hpte_init(vcpu);
 

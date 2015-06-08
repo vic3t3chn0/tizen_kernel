@@ -439,7 +439,11 @@ static void gfs2_recovery_done(struct gfs2_sbd *sdp, unsigned int jid,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
         ls->ls_recover_jid_done = jid;
         ls->ls_recover_jid_status = message;
 	sprintf(env_jid, "JID=%d", jid);
@@ -451,7 +455,13 @@ static void gfs2_recovery_done(struct gfs2_sbd *sdp, unsigned int jid,
 	if (sdp->sd_lockstruct.ls_ops->lm_recovery_result)
 		sdp->sd_lockstruct.ls_ops->lm_recovery_result(sdp, jid, message);
 =======
+<<<<<<< HEAD
+
+	if (sdp->sd_lockstruct.ls_ops->lm_recovery_result)
+		sdp->sd_lockstruct.ls_ops->lm_recovery_result(sdp, jid, message);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void gfs2_recover_func(struct work_struct *work)
@@ -527,8 +537,14 @@ void gfs2_recover_func(struct work_struct *work)
 			ro = 1;
 		} else if (test_bit(SDF_JOURNAL_CHECKED, &sdp->sd_flags)) {
 =======
+<<<<<<< HEAD
+		if (test_bit(SDF_RORECOVERY, &sdp->sd_flags)) {
+			ro = 1;
+		} else if (test_bit(SDF_JOURNAL_CHECKED, &sdp->sd_flags)) {
+=======
 		if (test_bit(SDF_JOURNAL_CHECKED, &sdp->sd_flags)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!test_bit(SDF_JOURNAL_LIVE, &sdp->sd_flags))
 				ro = 1;
 		} else {
@@ -596,7 +612,11 @@ fail:
 <<<<<<< HEAD
 	jd->jd_recover_error = error;
 =======
+<<<<<<< HEAD
+	jd->jd_recover_error = error;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gfs2_recovery_done(sdp, jd->jd_jid, LM_RD_GAVEUP);
 done:
 	clear_bit(JDF_RECOVERY, &jd->jd_flags);
@@ -628,7 +648,11 @@ int gfs2_recover_journal(struct gfs2_jdesc *jd, bool wait)
 <<<<<<< HEAD
 	return wait ? jd->jd_recover_error : 0;
 =======
+<<<<<<< HEAD
+	return wait ? jd->jd_recover_error : 0;
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

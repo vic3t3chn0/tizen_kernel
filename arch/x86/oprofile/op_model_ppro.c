@@ -31,8 +31,12 @@ static int counter_width = 32;
 <<<<<<< HEAD
 static u64 reset_value[OP_MAX_COUNTER];
 =======
+<<<<<<< HEAD
+static u64 reset_value[OP_MAX_COUNTER];
+=======
 static u64 *reset_value;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void ppro_shutdown(struct op_msrs const * const msrs)
 {
@@ -46,11 +50,14 @@ static void ppro_shutdown(struct op_msrs const * const msrs)
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (reset_value) {
 		kfree(reset_value);
 		reset_value = NULL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ppro_fill_in_addresses(struct op_msrs * const msrs)
@@ -88,6 +95,8 @@ static void ppro_setup_ctrs(struct op_x86_model_spec const *model,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!reset_value) {
 		reset_value = kzalloc(sizeof(reset_value[0]) * num_counters,
 					GFP_ATOMIC);
@@ -96,6 +105,7 @@ static void ppro_setup_ctrs(struct op_x86_model_spec const *model,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (cpu_has_arch_perfmon) {
 		union cpuid10_eax eax;
 		eax.full = cpuid_eax(0xa);
@@ -153,6 +163,8 @@ static int ppro_check_ctrs(struct pt_regs * const regs,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * This can happen if perf counters are in use when
 	 * we steal the die notifier NMI.
@@ -161,6 +173,7 @@ static int ppro_check_ctrs(struct pt_regs * const regs,
 		goto out;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < num_counters; ++i) {
 		if (!reset_value[i])
 			continue;
@@ -173,8 +186,11 @@ static int ppro_check_ctrs(struct pt_regs * const regs,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Only P6 based Pentium M need to re-unmask the apic vector but it
 	 * doesn't hurt other P6 variant */
 	apic_write(APIC_LVTPC, apic_read(APIC_LVTPC) & ~APIC_LVT_MASKED);
@@ -197,9 +213,12 @@ static void ppro_start(struct op_msrs const * const msrs)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!reset_value)
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < num_counters; ++i) {
 		if (reset_value[i]) {
 			rdmsrl(msrs->controls[i].addr, val);
@@ -217,9 +236,12 @@ static void ppro_stop(struct op_msrs const * const msrs)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!reset_value)
 		return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < num_counters; ++i) {
 		if (!reset_value[i])
 			continue;
@@ -267,8 +289,12 @@ static void arch_perfmon_setup_counters(void)
 <<<<<<< HEAD
 	num_counters = min((int)eax.split.num_counters, OP_MAX_COUNTER);
 =======
+<<<<<<< HEAD
+	num_counters = min((int)eax.split.num_counters, OP_MAX_COUNTER);
+=======
 	num_counters = eax.split.num_counters;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	op_arch_perfmon_spec.num_counters = num_counters;
 	op_arch_perfmon_spec.num_controls = num_counters;

@@ -27,8 +27,13 @@
 #if defined(__KERNEL__)
 #if !defined(__ASSEMBLY__)
 =======
+<<<<<<< HEAD
+#if defined(__KERNEL__)
+#if !defined(__ASSEMBLY__)
+=======
 #if defined(__KERNEL__) && !defined(__ASSEMBLY__)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pt_regs;
 int restore_sigcontext(struct pt_regs *, struct sigcontext __user *);
 int setup_sigcontext(struct sigcontext __user *, struct pt_regs *);
@@ -41,6 +46,10 @@ void trace_unhandled_signal(const char *type, struct pt_regs *regs,
 <<<<<<< HEAD
 #endif
 =======
+<<<<<<< HEAD
+#endif
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* _ASM_TILE_SIGNAL_H */

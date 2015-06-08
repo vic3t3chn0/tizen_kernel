@@ -36,8 +36,11 @@ struct minix_sb_info {
 	int s_namelen;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int s_link_max;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct buffer_head ** s_imap;
 	struct buffer_head ** s_zmap;
 	struct buffer_head * s_sbh;
@@ -50,12 +53,17 @@ extern struct inode *minix_iget(struct super_block *, unsigned long);
 extern struct minix_inode * minix_V1_raw_inode(struct super_block *, ino_t, struct buffer_head **);
 extern struct minix2_inode * minix_V2_raw_inode(struct super_block *, ino_t, struct buffer_head **);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct inode * minix_new_inode(const struct inode *, umode_t, int *);
 extern void minix_free_inode(struct inode * inode);
 extern unsigned long minix_count_free_inodes(struct super_block *sb);
 extern int minix_new_block(struct inode * inode);
 extern void minix_free_block(struct inode *inode, unsigned long block);
 extern unsigned long minix_count_free_blocks(struct super_block *sb);
+<<<<<<< HEAD
+=======
 =======
 extern struct inode * minix_new_inode(const struct inode *, int, int *);
 extern void minix_free_inode(struct inode * inode);
@@ -64,6 +72,7 @@ extern int minix_new_block(struct inode * inode);
 extern void minix_free_block(struct inode *inode, unsigned long block);
 extern unsigned long minix_count_free_blocks(struct minix_sb_info *sbi);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int minix_getattr(struct vfsmount *, struct dentry *, struct kstat *);
 extern int minix_prepare_chunk(struct page *page, loff_t pos, unsigned len);
 
@@ -101,13 +110,19 @@ static inline struct minix_inode_info *minix_i(struct inode *inode)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline unsigned minix_blocks_needed(unsigned bits, unsigned blocksize)
 {
 	return DIV_ROUND_UP(bits, blocksize * 8);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if defined(CONFIG_MINIX_FS_NATIVE_ENDIAN) && \
 	defined(CONFIG_MINIX_FS_BIG_ENDIAN_16BIT_INDEXED)
 
@@ -148,8 +163,12 @@ static inline int minix_find_first_zero_bit(const void *vaddr, unsigned size)
 <<<<<<< HEAD
 	size >>= 4;
 =======
+<<<<<<< HEAD
+	size >>= 4;
+=======
 	size = (size >> 4) + ((size & 15) > 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (*p++ == 0xffff) {
 		if (--size == 0)
 			return (p - addr) << 4;

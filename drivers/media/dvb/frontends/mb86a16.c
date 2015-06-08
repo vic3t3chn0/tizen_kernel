@@ -1621,6 +1621,18 @@ err:
 	return -EREMOTEIO;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static enum dvbfe_search mb86a16_search(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+	struct mb86a16_state *state = fe->demodulator_priv;
+
+	state->frequency = p->frequency / 1000;
+	state->srate = p->symbol_rate / 1000;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static enum dvbfe_search mb86a16_search(struct dvb_frontend *fe,
 					struct dvb_frontend_parameters *p)
 {
@@ -1628,6 +1640,10 @@ static enum dvbfe_search mb86a16_search(struct dvb_frontend *fe,
 
 	state->frequency = p->frequency / 1000;
 	state->srate = p->u.qpsk.symbol_rate / 1000;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!mb86a16_set_fe(state)) {
 		dprintk(verbose, MB86A16_ERROR, 1, "Successfully acquired LOCK");
@@ -1814,9 +1830,21 @@ static enum dvbfe_algo mb86a16_frontend_algo(struct dvb_frontend *fe)
 }
 
 static struct dvb_frontend_ops mb86a16_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBS },
+	.info = {
+		.name			= "Fujitsu MB86A16 DVB-S",
+=======
 	.info = {
 		.name			= "Fujitsu MB86A16 DVB-S",
 		.type			= FE_QPSK,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.info = {
+		.name			= "Fujitsu MB86A16 DVB-S",
+		.type			= FE_QPSK,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min		= 950000,
 		.frequency_max		= 2150000,
 		.frequency_stepsize	= 3000,

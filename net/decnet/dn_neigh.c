@@ -41,8 +41,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/net_namespace.h>
 #include <net/neighbour.h>
 #include <net/dst.h>
@@ -60,10 +64,16 @@ static int dn_long_output(struct neighbour *, struct sk_buff *);
 static int dn_short_output(struct neighbour *, struct sk_buff *);
 static int dn_phase3_output(struct neighbour *, struct sk_buff *);
 =======
+<<<<<<< HEAD
+static int dn_long_output(struct neighbour *, struct sk_buff *);
+static int dn_short_output(struct neighbour *, struct sk_buff *);
+static int dn_phase3_output(struct neighbour *, struct sk_buff *);
+=======
 static int dn_long_output(struct sk_buff *);
 static int dn_short_output(struct sk_buff *);
 static int dn_phase3_output(struct sk_buff *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -76,9 +86,12 @@ static const struct neigh_ops dn_long_ops = {
 	.connected_output =	dn_long_output,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.hh_output =		dev_queue_xmit,
 	.queue_xmit =		dev_queue_xmit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -91,9 +104,12 @@ static const struct neigh_ops dn_short_ops = {
 	.connected_output =	dn_short_output,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.hh_output =		dev_queue_xmit,
 	.queue_xmit =		dev_queue_xmit,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -106,9 +122,12 @@ static const struct neigh_ops dn_phase3_ops = {
 	.connected_output =	dn_phase3_output,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.hh_output =		dev_queue_xmit,
 	.queue_xmit =		dev_queue_xmit
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static u32 dn_neigh_hash(const void *pkey,
@@ -118,10 +137,16 @@ static u32 dn_neigh_hash(const void *pkey,
 {
 	return jhash_2words(*(__u16 *)pkey, 0, hash_rnd[0]);
 =======
+<<<<<<< HEAD
+			 __u32 *hash_rnd)
+{
+	return jhash_2words(*(__u16 *)pkey, 0, hash_rnd[0]);
+=======
 			 __u32 hash_rnd)
 {
 	return jhash_2words(*(__u16 *)pkey, 0, hash_rnd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 struct neigh_table dn_neigh_table = {
@@ -141,8 +166,12 @@ struct neigh_table dn_neigh_table = {
 <<<<<<< HEAD
 		.queue_len_bytes =	64*1024,
 =======
+<<<<<<< HEAD
+		.queue_len_bytes =	64*1024,
+=======
 		.queue_len =		3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ucast_probes =	0,
 		.app_probes =		0,
 		.mcast_probes =	0,
@@ -238,6 +267,9 @@ static int dn_neigh_output_packet(struct sk_buff *skb)
 	struct dst_entry *dst = skb_dst(skb);
 	struct dn_route *rt = (struct dn_route *)dst;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct neighbour *neigh = dst_get_neighbour_noref(dst);
 	struct net_device *dev = neigh->dev;
 	char mac_addr[ETH_ALEN];
@@ -262,6 +294,8 @@ static int dn_neigh_output_packet(struct sk_buff *skb)
 
 static int dn_long_output(struct neighbour *neigh, struct sk_buff *skb)
 {
+<<<<<<< HEAD
+=======
 =======
 	struct neighbour *neigh = dst_get_neighbour(dst);
 	struct net_device *dev = neigh->dev;
@@ -284,6 +318,7 @@ static int dn_long_output(struct sk_buff *skb)
 	struct dst_entry *dst = skb_dst(skb);
 	struct neighbour *neigh = dst_get_neighbour(dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net_device *dev = neigh->dev;
 	int headroom = dev->hard_header_len + sizeof(struct dn_long_packet) + 3;
 	unsigned char *data;
@@ -331,11 +366,16 @@ static int dn_long_output(struct sk_buff *skb)
 static int dn_short_output(struct neighbour *neigh, struct sk_buff *skb)
 {
 =======
+<<<<<<< HEAD
+static int dn_short_output(struct neighbour *neigh, struct sk_buff *skb)
+{
+=======
 static int dn_short_output(struct sk_buff *skb)
 {
 	struct dst_entry *dst = skb_dst(skb);
 	struct neighbour *neigh = dst_get_neighbour(dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net_device *dev = neigh->dev;
 	int headroom = dev->hard_header_len + sizeof(struct dn_short_packet) + 2;
 	struct dn_short_packet *sp;
@@ -380,11 +420,16 @@ static int dn_short_output(struct sk_buff *skb)
 static int dn_phase3_output(struct neighbour *neigh, struct sk_buff *skb)
 {
 =======
+<<<<<<< HEAD
+static int dn_phase3_output(struct neighbour *neigh, struct sk_buff *skb)
+{
+=======
 static int dn_phase3_output(struct sk_buff *skb)
 {
 	struct dst_entry *dst = skb_dst(skb);
 	struct neighbour *neigh = dst_get_neighbour(dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct net_device *dev = neigh->dev;
 	int headroom = dev->hard_header_len + sizeof(struct dn_short_packet) + 2;
 	struct dn_short_packet *sp;
@@ -471,6 +516,9 @@ int dn_neigh_router_hello(struct sk_buff *skb)
 			dn->flags &= ~DN_NDFLAG_P3;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			switch (msg->iinfo & DN_RT_INFO_TYPE) {
 			case DN_RT_INFO_L1RT:
 				dn->flags &=~DN_NDFLAG_R2;
@@ -478,6 +526,8 @@ int dn_neigh_router_hello(struct sk_buff *skb)
 				break;
 			case DN_RT_INFO_L2RT:
 				dn->flags |= DN_NDFLAG_R2;
+<<<<<<< HEAD
+=======
 =======
 			switch(msg->iinfo & DN_RT_INFO_TYPE) {
 				case DN_RT_INFO_L1RT:
@@ -487,6 +537,7 @@ int dn_neigh_router_hello(struct sk_buff *skb)
 				case DN_RT_INFO_L2RT:
 					dn->flags |= DN_NDFLAG_R2;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 

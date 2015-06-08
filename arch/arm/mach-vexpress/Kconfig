@@ -2,6 +2,9 @@ menu "Versatile Express platform type"
 	depends on ARCH_VEXPRESS
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARCH_VEXPRESS_CORTEX_A5_A9_ERRATA
 	bool
 	select ARM_ERRATA_720789
@@ -52,6 +55,8 @@ config ARCH_VEXPRESS_DT
 
 	  If your bootloader supports Flattened Device Tree based booting,
 	  say Y here.
+<<<<<<< HEAD
+=======
 =======
 config ARCH_VEXPRESS_CA9X4
 	bool "Versatile Express Cortex-A9x4 tile"
@@ -61,5 +66,6 @@ config ARCH_VEXPRESS_CA9X4
 	select ARM_ERRATA_751472
 	select ARM_ERRATA_753970
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 endmenu

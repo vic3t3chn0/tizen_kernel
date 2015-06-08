@@ -53,8 +53,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/bug.h>
 #include <asm/unaligned.h>
 
@@ -483,8 +487,12 @@ int cipso_v4_doi_add(struct cipso_v4_doi *doi_def,
 <<<<<<< HEAD
 	if (doi_def->doi == CIPSO_V4_DOI_UNKNOWN)
 =======
+<<<<<<< HEAD
+	if (doi_def->doi == CIPSO_V4_DOI_UNKNOWN)
+=======
 	if (doi_def == NULL || doi_def->doi == CIPSO_V4_DOI_UNKNOWN)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto doi_add_return;
 	for (iter = 0; iter < CIPSO_V4_TAG_MAXCNT; iter++) {
 		switch (doi_def->tags[iter]) {
@@ -1737,11 +1745,16 @@ int cipso_v4_validate(const struct sk_buff *skb, unsigned char **option)
 			 * not the loopback device drop the packet. */
 			if (!(skb->dev->flags & IFF_LOOPBACK)) {
 =======
+<<<<<<< HEAD
+			 * not the loopback device drop the packet. */
+			if (!(skb->dev->flags & IFF_LOOPBACK)) {
+=======
 			 * not the loopback device drop the packet. Further,
 			 * there is no legitimate reason for setting this from
 			 * userspace so reject it if skb is NULL. */
 			if (skb == NULL || !(skb->dev->flags & IFF_LOOPBACK)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				err_offset = opt_iter;
 				goto validate_return_locked;
 			}
@@ -1874,12 +1887,15 @@ static int cipso_v4_genopt(unsigned char *buf, u32 buf_len,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void opt_kfree_rcu(struct rcu_head *head)
 {
 	kfree(container_of(head, struct ip_options_rcu, rcu));
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * cipso_v4_sock_setattr - Add a CIPSO option to a socket
  * @sk: the socket
@@ -1959,8 +1975,12 @@ int cipso_v4_sock_setattr(struct sock *sk,
 <<<<<<< HEAD
 		kfree_rcu(old, rcu);
 =======
+<<<<<<< HEAD
+		kfree_rcu(old, rcu);
+=======
 		call_rcu(&old->rcu, opt_kfree_rcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -2030,8 +2050,12 @@ int cipso_v4_req_setattr(struct request_sock *req,
 <<<<<<< HEAD
 		kfree_rcu(opt, rcu);
 =======
+<<<<<<< HEAD
+		kfree_rcu(opt, rcu);
+=======
 		call_rcu(&opt->rcu, opt_kfree_rcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 
@@ -2104,8 +2128,12 @@ static int cipso_v4_delopt(struct ip_options_rcu **opt_ptr)
 <<<<<<< HEAD
 		kfree_rcu(opt, rcu);
 =======
+<<<<<<< HEAD
+		kfree_rcu(opt, rcu);
+=======
 		call_rcu(&opt->rcu, opt_kfree_rcu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return hdr_delta;

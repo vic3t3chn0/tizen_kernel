@@ -560,6 +560,15 @@ static void data_enable_interrupts(struct fpga_device *priv)
 
 	/* flush the writes */
 	fpga_read_reg(priv, 0, MMAP_REG_STATUS);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	fpga_read_reg(priv, 1, MMAP_REG_STATUS);
+	fpga_read_reg(priv, 2, MMAP_REG_STATUS);
+	fpga_read_reg(priv, 3, MMAP_REG_STATUS);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* switch back to the external interrupt source */
 	iowrite32be(0x3F, priv->regs + SYS_IRQ_SOURCE_CTL);
@@ -591,8 +600,22 @@ static void data_dma_cb(void *data)
 	list_move_tail(&priv->inflight->entry, &priv->used);
 	priv->inflight = NULL;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * If data dumping is still enabled, then clear the FPGA
+	 * status registers and re-enable FPGA interrupts
+	 */
+	if (priv->enabled)
+		data_enable_interrupts(priv);
+=======
 	/* clear the FPGA status and re-enable interrupts */
 	data_enable_interrupts(priv);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* clear the FPGA status and re-enable interrupts */
+	data_enable_interrupts(priv);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_unlock_irqrestore(&priv->lock, flags);
 
@@ -708,6 +731,21 @@ static irqreturn_t data_irq(int irq, void *dev_id)
 
 	spin_lock(&priv->lock);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * This is an error case that should never happen.
+	 *
+	 * If this driver has a bug and manages to re-enable interrupts while
+	 * a DMA is in progress, then we will hit this statement and should
+	 * start paying attention immediately.
+	 */
+	BUG_ON(priv->inflight != NULL);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* hide the interrupt by switching the IRQ driver to GPIO */
 	data_disable_interrupts(priv);
 
@@ -762,11 +800,29 @@ out:
  */
 static int data_device_enable(struct fpga_device *priv)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool enabled;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 val;
 	int ret;
 
 	/* multiple enables are safe: they do nothing */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spin_lock_irq(&priv->lock);
+	enabled = priv->enabled;
+	spin_unlock_irq(&priv->lock);
+	if (enabled)
+=======
 	if (priv->enabled)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (priv->enabled)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	/* check that the FPGAs are programmed */
@@ -797,6 +853,15 @@ static int data_device_enable(struct fpga_device *priv)
 		goto out_error;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* prevent the FPGAs from generating interrupts */
+	data_disable_interrupts(priv);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* hookup the irq handler */
 	ret = request_irq(priv->irq, data_irq, IRQF_SHARED, drv_name, priv);
 	if (ret) {
@@ -804,11 +869,27 @@ static int data_device_enable(struct fpga_device *priv)
 		goto out_error;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* allow the DMA callback to re-enable FPGA interrupts */
+	spin_lock_irq(&priv->lock);
+	priv->enabled = true;
+	spin_unlock_irq(&priv->lock);
+
+	/* allow the FPGAs to generate interrupts */
+	data_enable_interrupts(priv);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* switch to the external FPGA IRQ line */
 	data_enable_interrupts(priv);
 
 	/* success, we're enabled */
 	priv->enabled = true;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 
 out_error:
@@ -834,6 +915,41 @@ out_error:
  */
 static int data_device_disable(struct fpga_device *priv)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	spin_lock_irq(&priv->lock);
+
+	/* allow multiple disable */
+	if (!priv->enabled) {
+		spin_unlock_irq(&priv->lock);
+		return 0;
+	}
+
+	/*
+	 * Mark the device disabled
+	 *
+	 * This stops DMA callbacks from re-enabling interrupts
+	 */
+	priv->enabled = false;
+
+	/* prevent the FPGAs from generating interrupts */
+	data_disable_interrupts(priv);
+
+	/* wait until all ongoing DMA has finished */
+	while (priv->inflight != NULL) {
+		spin_unlock_irq(&priv->lock);
+		wait_event(priv->wait, priv->inflight == NULL);
+		spin_lock_irq(&priv->lock);
+	}
+
+	spin_unlock_irq(&priv->lock);
+
+	/* unhook the irq handler */
+	free_irq(priv->irq, priv);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	/* allow multiple disable */
@@ -856,10 +972,19 @@ static int data_device_disable(struct fpga_device *priv)
 	if (ret)
 		return ret;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* free the correlation table */
 	sg_free_table(&priv->corl_table);
 	priv->corl_nents = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * We are taking the spinlock not to protect priv->enabled, but instead
 	 * to make sure that there are no readers in the process of altering
@@ -869,6 +994,10 @@ static int data_device_disable(struct fpga_device *priv)
 	priv->enabled = false;
 	spin_unlock_irq(&priv->lock);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* free all buffers: the free and used lists are not being changed */
 	data_free_buffers(priv);
 	return 0;
@@ -896,6 +1025,11 @@ static unsigned int list_num_entries(struct list_head *list)
 static int data_debug_show(struct seq_file *f, void *offset)
 {
 	struct fpga_device *priv = f->private;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	/*
@@ -905,6 +1039,10 @@ static int data_debug_show(struct seq_file *f, void *offset)
 	ret = mutex_lock_interruptible(&priv->mutex);
 	if (ret)
 		return ret;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irq(&priv->lock);
 
@@ -917,7 +1055,14 @@ static int data_debug_show(struct seq_file *f, void *offset)
 	seq_printf(f, "num_dropped: %d\n", priv->num_dropped);
 
 	spin_unlock_irq(&priv->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	mutex_unlock(&priv->mutex);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	mutex_unlock(&priv->mutex);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -970,7 +1115,21 @@ static ssize_t data_en_show(struct device *dev, struct device_attribute *attr,
 			    char *buf)
 {
 	struct fpga_device *priv = dev_get_drvdata(dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int ret;
+
+	spin_lock_irq(&priv->lock);
+	ret = snprintf(buf, PAGE_SIZE, "%u\n", priv->enabled);
+	spin_unlock_irq(&priv->lock);
+
+	return ret;
+=======
 	return snprintf(buf, PAGE_SIZE, "%u\n", priv->enabled);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return snprintf(buf, PAGE_SIZE, "%u\n", priv->enabled);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static ssize_t data_en_set(struct device *dev, struct device_attribute *attr,
@@ -986,6 +1145,13 @@ static ssize_t data_en_set(struct device *dev, struct device_attribute *attr,
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* protect against concurrent enable/disable */
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = mutex_lock_interruptible(&priv->mutex);
 	if (ret)
 		return ret;
@@ -1079,6 +1245,13 @@ static ssize_t data_read(struct file *filp, char __user *ubuf, size_t count,
 	struct fpga_reader *reader = filp->private_data;
 	struct fpga_device *priv = reader->priv;
 	struct list_head *used = &priv->used;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool drop_buffer = false;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct data_buf *dbuf;
 	size_t avail;
 	void *data;
@@ -1166,10 +1339,25 @@ have_buffer:
 	 * One of two things has happened, the device is disabled, or the
 	 * device has been reconfigured underneath us. In either case, we
 	 * should just throw away the buffer.
+<<<<<<< HEAD
+<<<<<<< HEAD
+	 *
+	 * Lockdep complains if this is done under the spinlock, so we
+	 * handle it during the unlock path.
+	 */
+	if (!priv->enabled || dbuf->size != priv->bufsize) {
+		drop_buffer = true;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	if (!priv->enabled || dbuf->size != priv->bufsize) {
 		videobuf_dma_unmap(priv->dev, &dbuf->vb);
 		data_free_buffer(dbuf);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_unlock;
 	}
 
@@ -1178,6 +1366,18 @@ have_buffer:
 
 out_unlock:
 	spin_unlock_irq(&priv->lock);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	if (drop_buffer) {
+		videobuf_dma_unmap(priv->dev, &dbuf->vb);
+		data_free_buffer(dbuf);
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return count;
 }
 
@@ -1249,8 +1449,17 @@ static bool dma_filter(struct dma_chan *chan, void *data)
 	return true;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int data_of_probe(struct platform_device *op)
+=======
 static int data_of_probe(struct platform_device *op,
 			 const struct of_device_id *match)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int data_of_probe(struct platform_device *op,
+			 const struct of_device_id *match)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct device_node *of_node = op->dev.of_node;
 	struct device *this_device;
@@ -1401,7 +1610,15 @@ static struct of_device_id data_of_match[] = {
 	{},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct platform_driver data_of_driver = {
+=======
 static struct of_platform_driver data_of_driver = {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct of_platform_driver data_of_driver = {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.probe		= data_of_probe,
 	.remove		= data_of_remove,
 	.driver		= {
@@ -1411,6 +1628,12 @@ static struct of_platform_driver data_of_driver = {
 	},
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(data_of_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Module Init / Exit
  */
@@ -1424,10 +1647,23 @@ static void __exit data_exit(void)
 {
 	of_unregister_platform_driver(&data_of_driver);
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Ira W. Snyder <iws@ovro.caltech.edu>");
 MODULE_DESCRIPTION("CARMA DATA-FPGA Access Driver");
 MODULE_LICENSE("GPL");
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 module_init(data_init);
 module_exit(data_exit);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+module_init(data_init);
+module_exit(data_exit);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

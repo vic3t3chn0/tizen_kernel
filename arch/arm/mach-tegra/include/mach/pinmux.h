@@ -5,7 +5,11 @@
 <<<<<<< HEAD
  * Copyright (C) 2010,2011 Nvidia, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2010,2011 Nvidia, Inc.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -23,6 +27,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #if defined(CONFIG_ARCH_TEGRA_2x_SOC)
 #include "pinmux-t2.h"
 #else
@@ -30,6 +36,7 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum tegra_mux_func {
 	TEGRA_MUX_RSVD = 0x8000,
 	TEGRA_MUX_RSVD1 = 0x8000,
@@ -39,7 +46,11 @@ enum tegra_mux_func {
 <<<<<<< HEAD
 	TEGRA_MUX_INVALID = 0x4000,
 =======
+<<<<<<< HEAD
+	TEGRA_MUX_INVALID = 0x4000,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TEGRA_MUX_NONE = -1,
 	TEGRA_MUX_AHB_CLK,
 	TEGRA_MUX_APB_CLK,
@@ -102,6 +113,9 @@ enum tegra_mux_func {
 	TEGRA_MUX_VI_SENSOR_CLK,
 	TEGRA_MUX_XIO,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TEGRA_MUX_BLINK,
 	TEGRA_MUX_CEC,
 	TEGRA_MUX_CLK12,
@@ -145,8 +159,11 @@ enum tegra_mux_func {
 	TEGRA_MUX_VGP4,
 	TEGRA_MUX_VGP5,
 	TEGRA_MUX_VGP6,
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TEGRA_MUX_SAFE,
 	TEGRA_MAX_MUX,
 };
@@ -163,13 +180,19 @@ enum tegra_tristate {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum tegra_pin_io {
 	TEGRA_PIN_OUTPUT = 0,
 	TEGRA_PIN_INPUT = 1,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum tegra_vddio {
 	TEGRA_VDDIO_BB = 0,
 	TEGRA_VDDIO_LCD,
@@ -181,6 +204,9 @@ enum tegra_vddio {
 	TEGRA_VDDIO_AUDIO,
 	TEGRA_VDDIO_SD,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	TEGRA_VDDIO_CAM,
 	TEGRA_VDDIO_GMI,
 	TEGRA_VDDIO_PEXCTL,
@@ -191,12 +217,15 @@ enum tegra_vddio {
 
 struct tegra_pingroup_config {
 	int pingroup;
+<<<<<<< HEAD
+=======
 =======
 };
 
 struct tegra_pingroup_config {
 	enum tegra_pingroup	pingroup;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_mux_func	func;
 	enum tegra_pullupdown	pupd;
 	enum tegra_tristate	tristate;
@@ -268,8 +297,12 @@ struct tegra_drive_pingroup_config {
 <<<<<<< HEAD
 	int pingroup;
 =======
+<<<<<<< HEAD
+	int pingroup;
+=======
 	enum tegra_drive_pingroup pingroup;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_hsm hsm;
 	enum tegra_schmitt schmitt;
 	enum tegra_drive drive;
@@ -284,7 +317,11 @@ struct tegra_drive_pingroup_desc {
 <<<<<<< HEAD
 	s16 reg_bank;
 =======
+<<<<<<< HEAD
+	s16 reg_bank;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s16 reg;
 };
 
@@ -294,12 +331,18 @@ struct tegra_pingroup_desc {
 	int func_safe;
 	int vddio;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum tegra_pin_io io_default;
 	s16 tri_bank;	/* Register bank the tri_reg exists within */
 	s16 mux_bank;	/* Register bank the mux_reg exists within */
 	s16 pupd_bank;	/* Register bank the pupd_reg exists within */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s16 tri_reg; 	/* offset into the TRISTATE_REG_* register bank */
 	s16 mux_reg;	/* offset into the PIN_MUX_CTL_* register bank */
 	s16 pupd_reg;	/* offset into the PULL_UPDOWN_REG_* register bank */
@@ -307,6 +350,9 @@ struct tegra_pingroup_desc {
 	s8 mux_bit;	/* offset into the PIN_MUX_CTL_* register bit */
 	s8 pupd_bit;	/* offset into the PULL_UPDOWN_REG_* register bit */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s8 lock_bit;	/* offset of the LOCK bit into mux register bit */
 	s8 od_bit;	/* offset of the OD bit into mux register bit */
 	s8 ioreset_bit;	/* offset of the IO_RESET bit into mux register bit */
@@ -324,6 +370,8 @@ void tegra30_pinmux_init(const struct tegra_pingroup_desc **pg, int *pg_max,
 
 int tegra_pinmux_set_tristate(int pg, enum tegra_tristate tristate);
 int tegra_pinmux_set_pullupdown(int pg, enum tegra_pullupdown pupd);
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -335,6 +383,7 @@ int tegra_pinmux_set_tristate(enum tegra_pingroup pg,
 int tegra_pinmux_set_pullupdown(enum tegra_pingroup pg,
 	enum tegra_pullupdown pupd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void tegra_pinmux_config_table(const struct tegra_pingroup_config *config,
 	int len);
@@ -352,5 +401,8 @@ void tegra_pinmux_config_pullupdown_table(const struct tegra_pingroup_config *co
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

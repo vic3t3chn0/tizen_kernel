@@ -439,7 +439,11 @@ config CPU_32v3
 <<<<<<< HEAD
 	select NEED_KUSER_HELPERS
 =======
+<<<<<<< HEAD
+	select NEED_KUSER_HELPERS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config CPU_32v4
 	bool
@@ -449,7 +453,11 @@ config CPU_32v4
 <<<<<<< HEAD
 	select NEED_KUSER_HELPERS
 =======
+<<<<<<< HEAD
+	select NEED_KUSER_HELPERS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config CPU_32v4T
 	bool
@@ -459,7 +467,11 @@ config CPU_32v4T
 <<<<<<< HEAD
 	select NEED_KUSER_HELPERS
 =======
+<<<<<<< HEAD
+	select NEED_KUSER_HELPERS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config CPU_32v5
 	bool
@@ -469,7 +481,11 @@ config CPU_32v5
 <<<<<<< HEAD
 	select NEED_KUSER_HELPERS
 =======
+<<<<<<< HEAD
+	select NEED_KUSER_HELPERS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config CPU_32v6
 	bool
@@ -646,6 +662,9 @@ config IO_36
 comment "Processor Features"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ARM_LPAE
 	bool "Support for the Large Physical Address Extension"
 	depends on MMU && CPU_32v7 && !CPU_32v6 && !CPU_32v5 && \
@@ -663,6 +682,8 @@ config ARCH_PHYS_ADDR_T_64BIT
 
 config ARCH_DMA_ADDR_T_64BIT
 	bool
+<<<<<<< HEAD
+=======
 =======
 config ARM_TRUSTZONE
 	bool "Support TrustZone-enabled Trusted Execution Environment"
@@ -674,6 +695,7 @@ config ARM_TRUSTZONE
 
 	  If you don't know about TrustZone, say 'N'.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config ARM_THUMB
 	bool "Support Thumb user binaries"
@@ -754,8 +776,12 @@ config CPU_HIGH_VECTOR
 <<<<<<< HEAD
 	  The exception vector can vary depending on the platform
 =======
+<<<<<<< HEAD
+	  The exception vector can vary depending on the platform
+=======
 	  The exception vector can be vary depending on the platform
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  design in nommu mode. If your platform needs to select
 	  high exception vector, say Y.
 	  Otherwise or if you are unsure, say N, and the low exception
@@ -789,6 +815,9 @@ config CPU_DCACHE_SIZE
 	  here with proper conditions.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CPU_CACHE_ERR_REPORT
 	bool "Report errors in the L1 and L2 caches"
 	depends on ARCH_MSM_SCORPION
@@ -802,8 +831,11 @@ config CPU_CACHE_ERR_REPORT
 	  Say Y here to have errors in the L1 and L2 caches reported as
 	  imprecise data aborts.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CPU_DCACHE_WRITETHROUGH
 	bool "Force write through D-cache"
 	depends on (CPU_ARM740T || CPU_ARM920T || CPU_ARM922T || CPU_ARM925T || CPU_ARM926T || CPU_ARM940T || CPU_ARM946E || CPU_ARM1020 || CPU_FA526) && !CPU_DCACHE_DISABLE
@@ -830,7 +862,11 @@ config TLS_REG_EMUL
 <<<<<<< HEAD
 	select NEED_KUSER_HELPERS
 =======
+<<<<<<< HEAD
+	select NEED_KUSER_HELPERS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  An SMP system using a pre-ARMv6 processor (there are apparently
 	  a few prototypes like that in existence) and therefore access to
@@ -841,13 +877,20 @@ config NEEDS_SYSCALL_FOR_CMPXCHG
 <<<<<<< HEAD
 	select NEED_KUSER_HELPERS
 =======
+<<<<<<< HEAD
+	select NEED_KUSER_HELPERS
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  SMP on a pre-ARMv6 processor?  Well OK then.
 	  Forget about fast user space cmpxchg support.
 	  It is just not possible.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config NEED_KUSER_HELPERS
 	bool
 
@@ -879,8 +922,11 @@ config KUSER_HELPERS
 	  Say N here only if you are absolutely certain that you do not
 	  need these helpers; otherwise, the safe option is to say Y.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config DMA_CACHE_RWFO
 	bool "Enable read/write for ownership DMA cache maintenance"
 	depends on CPU_V6K && SMP
@@ -925,6 +971,9 @@ config CACHE_FEROCEON_L2_WRITETHROUGH
 	  Unless you specifically require this, say N for writeback mode.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config MIGHT_HAVE_CACHE_L2X0
 	bool
 	help
@@ -942,6 +991,8 @@ config MIGHT_HAVE_CACHE_L2X0
 config CACHE_L2X0
 	bool "Enable the L2x0 outer cache controller" if MIGHT_HAVE_CACHE_L2X0
 	default MIGHT_HAVE_CACHE_L2X0
+<<<<<<< HEAD
+=======
 =======
 config CACHE_L2X0
 	bool "Enable the L2x0 outer cache controller"
@@ -951,6 +1002,7 @@ config CACHE_L2X0
 		   ARCH_U8500 || ARCH_VEXPRESS_CA9X4 || ARCH_SHMOBILE
 	default y
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	select OUTER_CACHE
 	select OUTER_CACHE_SYNC
 	help
@@ -965,6 +1017,9 @@ config CACHE_PL310
 	  controller.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CACHE_PL310_ERP
 	tristate "PL310 CACHE Error Reporting"
 	depends on CACHE_PL310
@@ -975,8 +1030,11 @@ config CACHE_PL310_ERP
 	  Cache error statistics will also be reported in sysfs
 	  /sys/devices/platform/pl310_erp/cache_erp
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config CACHE_TAUROS2
 	bool "Enable the Tauros2 L2 cache controller"
 	depends on (ARCH_DOVE || ARCH_MMP || CPU_PJ4)
@@ -999,7 +1057,11 @@ config ARM_L1_CACHE_SHIFT_6
 <<<<<<< HEAD
 	default y if CPU_V7
 =======
+<<<<<<< HEAD
+	default y if CPU_V7
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Setting ARM L1 cache line size to 64 Bytes.
 
@@ -1035,6 +1097,9 @@ config ARCH_HAS_BARRIERS
 	  This option allows the use of custom mandatory barriers
 	  included via the mach/barriers.h file.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config STRICT_MEMORY_RWX
 	bool "restrict kernel memory permissions as much as possible"
@@ -1047,5 +1112,8 @@ config STRICT_MEMORY_RWX
 	  1M boundaries (because their permissions are different and
 	  splitting the 1M pages into 4K ones causes TLB performance
 	  problems), wasting memory.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

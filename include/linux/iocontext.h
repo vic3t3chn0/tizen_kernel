@@ -4,6 +4,9 @@
 #include <linux/radix-tree.h>
 #include <linux/rcupdate.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/workqueue.h>
 
 enum {
@@ -93,6 +96,8 @@ struct io_cq {
 	};
 
 	unsigned int		flags;
+<<<<<<< HEAD
+=======
 =======
 
 struct cfq_queue;
@@ -117,6 +122,7 @@ struct cfq_io_context {
 
 	struct rcu_head rcu_head;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -133,12 +139,15 @@ struct io_context {
 	unsigned short ioprio;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned short ioprio_changed;
 
 #if defined(CONFIG_BLK_CGROUP) || defined(CONFIG_BLK_CGROUP_MODULE)
 	unsigned short cgroup_changed;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * For request batching
@@ -147,16 +156,22 @@ struct io_context {
 	unsigned long last_waited; /* Time last woken after wait for request */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct radix_tree_root	icq_tree;
 	struct io_cq __rcu	*icq_hint;
 	struct hlist_head	icq_list;
 
 	struct work_struct release_work;
+<<<<<<< HEAD
+=======
 =======
 	struct radix_tree_root radix_root;
 	struct hlist_head cic_list;
 	void __rcu *ioc_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline struct io_context *ioc_task_link(struct io_context *ioc)
@@ -176,6 +191,9 @@ static inline struct io_context *ioc_task_link(struct io_context *ioc)
 struct task_struct;
 #ifdef CONFIG_BLOCK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void put_io_context(struct io_context *ioc);
 void exit_io_context(struct task_struct *task);
 struct io_context *get_task_io_context(struct task_struct *task,
@@ -187,6 +205,8 @@ unsigned int icq_get_changed(struct io_cq *icq);
 struct io_context;
 static inline void put_io_context(struct io_context *ioc) { }
 static inline void exit_io_context(struct task_struct *task) { }
+<<<<<<< HEAD
+=======
 =======
 int put_io_context(struct io_context *ioc);
 void exit_io_context(struct task_struct *task);
@@ -203,6 +223,7 @@ static inline int put_io_context(struct io_context *ioc)
 	return 1;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif

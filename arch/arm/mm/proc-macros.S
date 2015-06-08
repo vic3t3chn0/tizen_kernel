@@ -96,9 +96,15 @@
 	(L_PTE_XN+L_PTE_USER+L_PTE_RDONLY+L_PTE_DIRTY+L_PTE_YOUNG+\
 	 L_PTE_FILE+L_PTE_PRESENT) > L_PTE_SHARED
 =======
+<<<<<<< HEAD
+#if !defined (CONFIG_ARM_LPAE) && \
+	(L_PTE_XN+L_PTE_USER+L_PTE_RDONLY+L_PTE_DIRTY+L_PTE_YOUNG+\
+	 L_PTE_FILE+L_PTE_PRESENT) > L_PTE_SHARED
+=======
 #if (L_PTE_XN+L_PTE_USER+L_PTE_RDONLY+L_PTE_DIRTY+L_PTE_YOUNG+\
      L_PTE_FILE+L_PTE_PRESENT) > L_PTE_SHARED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #error Invalid Linux PTE bit settings
 #endif
 #endif	/* CONFIG_MMU */
@@ -283,6 +289,9 @@ ENTRY(\name\()_processor_functions)
 	.if \suspend
 	.word	cpu_\name\()_suspend_size
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM_SLEEP
 	.word	cpu_\name\()_do_suspend
 	.word	cpu_\name\()_do_resume
@@ -290,10 +299,13 @@ ENTRY(\name\()_processor_functions)
 	.word	0
 	.word	0
 #endif
+<<<<<<< HEAD
+=======
 =======
 	.word	cpu_\name\()_do_suspend
 	.word	cpu_\name\()_do_resume
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.else
 	.word	0
 	.word	0
@@ -312,7 +324,11 @@ ENTRY(\name\()_cache_fns)
 <<<<<<< HEAD
 	.long   \name\()_flush_kern_cache_louis
 =======
+<<<<<<< HEAD
+	.long   \name\()_flush_kern_cache_louis
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.long	\name\()_flush_user_cache_all
 	.long	\name\()_flush_user_cache_range
 	.long	\name\()_coherent_kern_range
@@ -324,7 +340,12 @@ ENTRY(\name\()_cache_fns)
 	.long	\name\()_dma_inv_range
 	.long	\name\()_dma_clean_range
 =======
+<<<<<<< HEAD
+	.long	\name\()_dma_inv_range
+	.long	\name\()_dma_clean_range
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.long	\name\()_dma_flush_range
 	.size	\name\()_cache_fns, . - \name\()_cache_fns
 .endm

@@ -117,7 +117,11 @@ extern void * memchr(const void *,int,__kernel_size_t);
 <<<<<<< HEAD
 void *memchr_inv(const void *s, int c, size_t n);
 =======
+<<<<<<< HEAD
+void *memchr_inv(const void *s, int c, size_t n);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern char *kstrdup(const char *s, gfp_t gfp);
 extern char *kstrndup(const char *s, size_t len, gfp_t gfp);

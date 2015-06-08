@@ -230,6 +230,34 @@ show_urbnum(struct device *dev, struct device_attribute *attr, char *buf)
 }
 static DEVICE_ATTR(urbnum, S_IRUGO, show_urbnum, NULL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t
+show_removable(struct device *dev, struct device_attribute *attr, char *buf)
+{
+	struct usb_device *udev;
+	char *state;
+
+	udev = to_usb_device(dev);
+
+	switch (udev->removable) {
+	case USB_DEVICE_REMOVABLE:
+		state = "removable";
+		break;
+	case USB_DEVICE_FIXED:
+		state = "fixed";
+		break;
+	default:
+		state = "unknown";
+	}
+
+	return sprintf(buf, "%s\n", state);
+}
+static DEVICE_ATTR(removable, S_IRUGO, show_removable, NULL);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef	CONFIG_PM
 
@@ -412,6 +440,62 @@ set_level(struct device *dev, struct device_attribute *attr,
 
 static DEVICE_ATTR(level, S_IRUGO | S_IWUSR, show_level, set_level);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t
+show_usb2_hardware_lpm(struct device *dev, struct device_attribute *attr,
+				char *buf)
+{
+	struct usb_device *udev = to_usb_device(dev);
+	const char *p;
+
+	if (udev->usb2_hw_lpm_enabled == 1)
+		p = "enabled";
+	else
+		p = "disabled";
+
+	return sprintf(buf, "%s\n", p);
+}
+
+static ssize_t
+set_usb2_hardware_lpm(struct device *dev, struct device_attribute *attr,
+		const char *buf, size_t count)
+{
+	struct usb_device *udev = to_usb_device(dev);
+	bool value;
+	int ret;
+
+	usb_lock_device(udev);
+
+	ret = strtobool(buf, &value);
+
+	if (!ret)
+		ret = usb_set_usb2_hardware_lpm(udev, value);
+
+	usb_unlock_device(udev);
+
+	if (!ret)
+		return count;
+
+	return ret;
+}
+
+static DEVICE_ATTR(usb2_hardware_lpm, S_IRUGO | S_IWUSR, show_usb2_hardware_lpm,
+			set_usb2_hardware_lpm);
+
+static struct attribute *usb2_hardware_lpm_attr[] = {
+	&dev_attr_usb2_hardware_lpm.attr,
+	NULL,
+};
+static struct attribute_group usb2_hardware_lpm_attr_group = {
+	.name	= power_group_name,
+	.attrs	= usb2_hardware_lpm_attr,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct attribute *power_attrs[] = {
 	&dev_attr_autosuspend.attr,
 	&dev_attr_level.attr,
@@ -428,13 +512,36 @@ static int add_power_attributes(struct device *dev)
 {
 	int rc = 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (is_usb_device(dev)) {
+		struct usb_device *udev = to_usb_device(dev);
+		rc = sysfs_merge_group(&dev->kobj, &power_attr_group);
+		if (udev->usb2_hw_lpm_capable == 1)
+			rc = sysfs_merge_group(&dev->kobj,
+					&usb2_hardware_lpm_attr_group);
+	}
+
+=======
 	if (is_usb_device(dev))
 		rc = sysfs_merge_group(&dev->kobj, &power_attr_group);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (is_usb_device(dev))
+		rc = sysfs_merge_group(&dev->kobj, &power_attr_group);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return rc;
 }
 
 static void remove_power_attributes(struct device *dev)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	sysfs_unmerge_group(&dev->kobj, &usb2_hardware_lpm_attr_group);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sysfs_unmerge_group(&dev->kobj, &power_attr_group);
 }
 
@@ -569,6 +676,13 @@ static struct attribute *dev_attrs[] = {
 	&dev_attr_avoid_reset_quirk.attr,
 	&dev_attr_authorized.attr,
 	&dev_attr_remove.attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	&dev_attr_removable.attr,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL,
 };
 static struct attribute_group dev_attr_grp = {
@@ -585,7 +699,15 @@ static struct attribute *dev_string_attrs[] = {
 	NULL
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t dev_string_attrs_are_visible(struct kobject *kobj,
+=======
 static mode_t dev_string_attrs_are_visible(struct kobject *kobj,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t dev_string_attrs_are_visible(struct kobject *kobj,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct attribute *a, int n)
 {
 	struct device *dev = container_of(kobj, struct device, kobj);
@@ -760,7 +882,15 @@ static ssize_t show_modalias(struct device *dev,
 	alt = intf->cur_altsetting;
 
 	return sprintf(buf, "usb:v%04Xp%04Xd%04Xdc%02Xdsc%02Xdp%02X"
+<<<<<<< HEAD
+<<<<<<< HEAD
+			"ic%02Xisc%02Xip%02Xin%02X\n",
+=======
 			"ic%02Xisc%02Xip%02X\n",
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			"ic%02Xisc%02Xip%02X\n",
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			le16_to_cpu(udev->descriptor.idVendor),
 			le16_to_cpu(udev->descriptor.idProduct),
 			le16_to_cpu(udev->descriptor.bcdDevice),
@@ -769,7 +899,16 @@ static ssize_t show_modalias(struct device *dev,
 			udev->descriptor.bDeviceProtocol,
 			alt->desc.bInterfaceClass,
 			alt->desc.bInterfaceSubClass,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			alt->desc.bInterfaceProtocol,
+			alt->desc.bInterfaceNumber);
+=======
 			alt->desc.bInterfaceProtocol);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			alt->desc.bInterfaceProtocol);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 static DEVICE_ATTR(modalias, S_IRUGO, show_modalias, NULL);
 
@@ -820,7 +959,15 @@ static struct attribute *intf_assoc_attrs[] = {
 	NULL,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static umode_t intf_assoc_attrs_are_visible(struct kobject *kobj,
+=======
 static mode_t intf_assoc_attrs_are_visible(struct kobject *kobj,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static mode_t intf_assoc_attrs_are_visible(struct kobject *kobj,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct attribute *a, int n)
 {
 	struct device *dev = container_of(kobj, struct device, kobj);

@@ -2,14 +2,29 @@
 # Misc strange devices
 #
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+menu "Misc devices"
+
+=======
 # This one has to live outside of the MISC_DEVICES conditional,
 # because it may be selected by drivers/platform/x86/hp_accel.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+# This one has to live outside of the MISC_DEVICES conditional,
+# because it may be selected by drivers/platform/x86/hp_accel.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config SENSORS_LIS3LV02D
 	tristate
 	depends on INPUT
 	select INPUT_POLLDEV
 	default n
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 menuconfig MISC_DEVICES
 	bool "Misc devices"
 	---help---
@@ -20,6 +35,10 @@ menuconfig MISC_DEVICES
 
 if MISC_DEVICES
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config AD525X_DPOT
 	tristate "Analog Devices Digital Potentiometers"
 	depends on (I2C || SPI) && SYSFS
@@ -61,6 +80,17 @@ config AD525X_DPOT_SPI
 	  To compile this driver as a module, choose M here: the
 	  module will be called ad525x_dpot-spi.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config ATMEL_PWM
+	tristate "Atmel AT32/AT91 PWM support"
+	depends on HAVE_CLK
+	help
+	  This option enables device driver support for the PWM channels
+	  on certain Atmel processors.  Pulse Width Modulation is used for
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config ANDROID_PMEM
 	bool "Android pmem allocator"
 	depends on MACH_U1 || MACH_PX || MACH_TRATS
@@ -88,6 +118,10 @@ config ATMEL_PWM
 	help
 	  This option enables device driver support for the PWM channels
 	  on certain Atmel processors.	Pulse Width Modulation is used for
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  purposes including software controlled power-efficient backlights
 	  on LCD displays, motor control, and waveform generation.
 
@@ -167,6 +201,13 @@ config PHANTOM
 
 config INTEL_MID_PTI
 	tristate "Parallel Trace Interface for MIPI P1149.7 cJTAG standard"
+<<<<<<< HEAD
+<<<<<<< HEAD
+	depends on PCI
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default n
 	help
 	  The PTI (Parallel Trace Interface) driver directs
@@ -385,6 +426,19 @@ config SENSORS_BH1780
 	  will be called bh1780gli.
 
 config SENSORS_BH1770
+<<<<<<< HEAD
+<<<<<<< HEAD
+         tristate "BH1770GLC / SFH7770 combined ALS - Proximity sensor"
+         depends on I2C
+         ---help---
+           Say Y here if you want to build a driver for BH1770GLC (ROHM) or
+	   SFH7770 (Osram) combined ambient light and proximity sensor chip.
+
+           To compile this driver as a module, choose M here: the
+           module will be called bh1770glc. If unsure, say N here.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 tristate "BH1770GLC / SFH7770 combined ALS - Proximity sensor"
 	 depends on I2C
 	 ---help---
@@ -393,6 +447,10 @@ config SENSORS_BH1770
 
 	   To compile this driver as a module, choose M here: the
 	   module will be called bh1770glc. If unsure, say N here.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 config SENSORS_APDS990X
 	 tristate "APDS990X combined als and proximity sensors"
@@ -523,6 +581,29 @@ config PCH_PHUB
 	  To compile this driver as a module, choose M here: the module will
 	  be called pch_phub.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config USB_SWITCH_FSA9480
+	tristate "FSA9480 USB Switch"
+	depends on I2C
+	help
+	  The FSA9480 is a USB port accessory detector and switch.
+	  The FSA9480 is fully controlled using I2C and enables USB data,
+	  stereo and mono audio, video, microphone and UART data to use
+	  a common connector port.
+
+config MAX8997_MUIC
+	tristate "MAX8997 MUIC Support"
+	depends on MFD_MAX8997
+	help
+	  If you say yes here you get support for the MUIC device of
+	  Maxim MAX8997 PMIC.
+	  The MAX8997 MUIC is a USB port accessory detector and switch.
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config WL127X_RFKILL
 	tristate "Bluetooth power control driver for TI wl127x"
 	depends on RFKILL
@@ -531,6 +612,229 @@ config WL127X_RFKILL
 	 Creates an rfkill entry in sysfs for power control of Bluetooth
 	 TI wl127x chips.
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+config TSIF
+	depends on ARCH_MSM8X60 || ARCH_MSM8960 || ARCH_APQ8064
+	tristate "TSIF (Transport Stream InterFace) support"
+	default n
+	---help---
+	  This driver supports low level TSIF interface. It provides API
+	  for upper layer drivers. If you have a TSIF hardware, say
+	  Y here and read <file:Documentation/arm/msm/tsif.txt>.
+
+	  To compile this driver as module, choose M here: the
+	  module will be called msm_tsif.
+
+config TSIF_CHRDEV
+	tristate "TSIF character device"
+	depends on TSIF
+	default n
+	---help---
+	  This driver uses low level TSIF interface. It provides character
+	  device useable from user space programs: one can read TSIF stream
+	  from this device.
+
+	  This driver may be used as example for TSIF API usage.
+
+	  To compile this driver as module, choose M here: the
+	  module will be called tsif_chrdev.
+
+config TSIF_DEBUG
+	bool "Turn on debugging information for tsif driver"
+	depends on TSIF
+	default n
+	---help---
+	  This turns on debugging information for the tsif driver
+
+config TSPP
+	depends on ARCH_MSM
+	tristate "TSPP (Transport Stream Packet Processor) Support"
+	---help---
+	Transport Stream Packet Processor is used to offload the
+	processing of MPEG transport streams from the main processor.
+	This can also be compiled as a loadable module.
+
+config CI_BRIDGE_SPI
+	depends on SPI_QUP
+	tristate "CI Bridge SPI Driver Support"
+	---help---
+	This driver provides a simple SPI read/write interface to
+	an external CI bridge. It implements a character device
+	driver interface which allows making SPI transactions
+	using the Linux SPI framework.
+
+	To compile this driver as module, choose M here.
+
+config HAPTIC_ISA1200
+	tristate "ISA1200 haptic support"
+	depends on I2C
+	default n
+	help
+	  The ISA1200 is a high performance enhanced haptic driver.
+
+config PMIC8058_PWM
+	tristate "Qualcomm PM8058 PWM support"
+	depends on PMIC8058
+	default y
+	help
+	  This option enables device driver support for the PWM channels
+	  on Qualcomm PM8058 chip. Pulse Width Modulation is used for
+	  purposes including software controlled brightness of backlight,
+	  motor control, and waveform generation.
+
+config PMIC8XXX_VIBRATOR
+	tristate "Qualcomm Vibrator support for PMIC8XXX"
+	depends on MFD_PM8XXX && ANDROID_TIMED_OUTPUT
+	help
+	  This option enables device driver support for the vibrator
+	  on the PM8XXX chips. The vibrator is controlled using the
+	  timed output class.
+
+config PMIC8XXX_NFC
+	tristate "Qualcomm PM8XXX support for Near Field Communication"
+	depends on MFD_PM8XXX
+	help
+	  Qualcomm PM8XXX chips have a module to support NFC (Near Field
+	  Communication). This option enables the driver to support it.
+
+config PMIC8XXX_UPL
+	tristate "Qualcomm PM8XXX support for User Programmable Logic"
+	depends on MFD_PM8XXX
+	help
+	  This option enables device driver support for User Programmable Logic
+	  on Qualcomm PM8XXX chips. The UPL module provides a means to implement
+	  simple truth table based logic via a set of control registers. I/O may
+	  be routed in and out of the UPL module via GPIO or DTEST pins.
+
+config PMIC8058_XOADC
+	tristate "Qualcomm PM8058 XOADC driver"
+	depends on PMIC8058
+	default n
+	help
+	  Enables User processor ADC reads over the XOADC module of Qualcomm's
+	  PMIC8058. Driver interface to program registers of the ADC over
+	  AMUX channels, devices on programmable MPP's and xotherm.
+
+config PM8941_FLASH
+	tristate "Flash support for PM8941"
+	depends on SPMI && OF_SPMI
+	help
+	  This option enables device driver support for the flash
+	  on PM8941.
+
+config QPNP_VIBRATOR
+	tristate "Vibrator support for QPNP PMIC"
+	depends on OF_SPMI
+	help
+	  This option enables device driver support for the vibrator
+	  on the Qualcomm's QPNP PMICs. The vibrator is connected on the
+	  VIB_DRV_N line and can be controlled manually or by the DEST lines.
+	  It uses the android timed-output framework.
+
+config QSEECOM
+	tristate "Qualcomm Secure Execution Communicator driver"
+	help
+	  Provides a communication interface between userspace and
+	  Qualcomm Secure Execution Environment (QSEE) using Secure Channel
+	  Manager (SCM) interface.
+
+config QFP_FUSE
+	tristate "QFPROM Fuse Read/Write support"
+	help
+	  This option enables device driver to read/write QFPROM
+	  fuses. The ioctls provides the necessary interface
+	  to the fuse block. Currently this is supported only
+	  on FSM targets.
+
+config QPNP_MISC
+	tristate "QPNP Misc Peripheral"
+	depends on SPMI
+	help
+	  Say 'y' here to include support for the Qualcomm QPNP MISC
+	  peripheral. The MISC peripheral holds the USB ID interrupt
+	  and the driver provides an API to check if this interrupt
+	  is available on the current PMIC chip.
+
+config USB_HSIC_SMSC_HUB
+	tristate "Support for HSIC based MSM on-chip SMSC3503 HUB"
+	depends on USB_EHCI_MSM_HSIC
+	help
+	  Enables support for the HSIC (High Speed Inter-Chip) based
+	  SMSC3503 hub controller present on the Qualcomm chipsets.
+
+	  This adds support for connecting devices like mouse in HSIC
+	  Host mode.
+
+config TI_DRV2667
+	tristate "TI's DRV2667 haptic controller support"
+	depends on I2C
+	help
+	  The DRV2667 is a piezo haptic controller chip. It can drive
+	  piezo haptics either in digital mode or analog mode. This chip
+	  can be used in variety of devices to provide haptic support.
+
+	  To compile this driver as a module, choose M here: the
+	  module will be called ti_drv2667.
+
+config CRASH_LAST_LOGS
+	bool "export kernel and amss logs in proc"
+	default n
+	depends on RAMDUMP_TAGS && ARCH_MSM && MSM_SMD
+	help
+	  This driver will export kernel and amss log in proc fs.
+	  they can be found in files /proc/last_kmsg
+	  and /proc/last_amsslog.This driver is mainly used in
+	  Ramdump kernel.
+
+config RAMDUMP_TAGS
+	bool "Ramdump tags to communicate between kernel and ramdump"
+	default n
+	depends on !RAMDUMP_CRASH_LOGS
+	help
+	  This option enables a driver which can be interacted with to
+	  supply the ramdumper with more information about the current
+	  state of the crashing kernel such as build info, HWWD registers,
+	  additional CPU registers not stored in crash_notes, crashing
+	  application info etc. A small amount of memory will be set
+	  aside to hold the information which will later be used by
+	  the ramdump application.
+
+config NFC_PN544
+	tristate "NFC driver for PN544"
+	default n
+	depends on I2C
+	help
+	  This option enables support for PN544.
+
+config ISDBT_TUNER_SMTEJ11X
+	tristate "ISDBT/Tmm tuner driver for SMT-EJ11x"
+	default n
+	depends on I2C
+	help
+	  Select this module to enable ISDBT/Tmm Tuner Driver which
+	  supports ISDBT/Tmm contents viewing(1seg, Fullseg, Nottv).
+	  This module controls power and reset of SMT-EJ11x and controls
+	  reception ANT switching.
+
+config RPM975H16E4A_IRDA
+	bool "IrDA power control driver for Rohm RPM975-H16E4A"
+	default n
+	help
+	  This option enables support for Rohm RPM975-H16E4A.
+
+config ONESEG_TUNER_SMTVJ18X
+	tristate "ONESEG tuner driver for SMT-VJ18x"
+	default n
+	depends on I2C
+	help
+	  Select this module to enable 1seg Tuner Driver which supports
+	  1seg contents viewing.
+	  This module controls power and reset of SMT-VEJ18x and supports
+	  the ANT which is equiped as default.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config APANIC
 	bool "Android kernel panic diagnostics driver"
 	default n
@@ -701,11 +1005,26 @@ config MPU_SENSORS_MPU3050
 config MPU_SENSORS_MPU6050
     tristate "MPU6050"
     depends on I2C
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"
 source "drivers/misc/iwmc3200top/Kconfig"
+<<<<<<< HEAD
+<<<<<<< HEAD
+source "drivers/misc/ti-st/Kconfig"
+source "drivers/misc/lis3lv02d/Kconfig"
+source "drivers/misc/carma/Kconfig"
+source "drivers/misc/altera-stapl/Kconfig"
+source "drivers/misc/felica_snfc/Kconfig"
+endmenu
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 if MPU_SENSORS_MPU3050
 source "drivers/misc/mpu3050/Kconfig"
 endif
@@ -752,3 +1071,7 @@ config TOUCH_WAKE
     Say Y here to enable Touch Wake
 
 endif # MISC_DEVICES
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

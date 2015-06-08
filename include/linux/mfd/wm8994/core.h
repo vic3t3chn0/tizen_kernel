@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/mutex.h>
 =======
+<<<<<<< HEAD
+#include <linux/mutex.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 
 enum wm8994_type {
@@ -32,7 +36,11 @@ struct regulator_bulk_data;
 <<<<<<< HEAD
 struct regmap;
 =======
+<<<<<<< HEAD
+struct regmap;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define WM8994_NUM_GPIO_REGS 11
 #define WM8994_NUM_LDO_REGS   2
@@ -60,6 +68,9 @@ struct regmap;
 
 struct wm8994 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mutex irq_lock;
 
 	enum wm8994_type type;
@@ -67,6 +78,8 @@ struct wm8994 {
 
 	struct device *dev;
 	struct regmap *regmap;
+<<<<<<< HEAD
+=======
 =======
 	struct mutex io_lock;
 	struct mutex irq_lock;
@@ -84,6 +97,7 @@ struct wm8994 {
 
 	void *control_data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bool ldo_ena_always_driven;
 
@@ -92,10 +106,15 @@ struct wm8994 {
 
 	int irq;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct regmap_irq_chip_data *irq_data;
 
 	/* Used over suspend/resume */
 	bool suspended;
+<<<<<<< HEAD
+=======
 =======
 	u16 irq_masks_cur[WM8994_NUM_IRQ_REGS];
 	u16 irq_masks_cache[WM8994_NUM_IRQ_REGS];
@@ -105,6 +124,7 @@ struct wm8994 {
 	u16 ldo_regs[WM8994_NUM_LDO_REGS];
 	u16 gpio_regs[WM8994_NUM_GPIO_REGS];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	struct regulator_dev *dbvdd;
 	int num_supplies;
@@ -130,9 +150,12 @@ static inline int wm8994_request_irq(struct wm8994 *wm8994, int irq,
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (!wm8994)
 		return -EINVAL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!wm8994->irq_base)
 		return -EINVAL;
 	return request_threaded_irq(wm8994->irq_base + irq, NULL, handler,

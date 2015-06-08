@@ -6,25 +6,37 @@
 // Copyright: (C) 2010-2012 Julia Lawall, INRIA/LIP6.  GPLv2.
 // Copyright: (C) 2010-2012 Gilles Muller, INRIA/LiP6.  GPLv2.
 =======
+<<<<<<< HEAD
+// Copyright: (C) 2010-2012 Nicolas Palix.  GPLv2.
+// Copyright: (C) 2010-2012 Julia Lawall, INRIA/LIP6.  GPLv2.
+// Copyright: (C) 2010-2012 Gilles Muller, INRIA/LiP6.  GPLv2.
+=======
 // Copyright: (C) 2010 Nicolas Palix, DIKU.  GPLv2.
 // Copyright: (C) 2010 Julia Lawall, DIKU.  GPLv2.
 // Copyright: (C) 2010 Gilles Muller, INRIA/LiP6.  GPLv2.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 // URL: http://coccinelle.lip6.fr/
 // Comments:
 // Options: -no_includes -include_headers
 
 virtual patch
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 virtual context
 virtual org
 virtual report
 
 @depends on patch@
+<<<<<<< HEAD
+=======
 =======
 
 @@
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 expression from,to;
 expression flag,E1,E2;
 statement S;
@@ -40,8 +52,12 @@ statement S;
 <<<<<<< HEAD
 @depends on patch@
 =======
+<<<<<<< HEAD
+@depends on patch@
+=======
 @@
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 expression x,from,to;
 expression flag,E1,E2,E3;
 statement S;
@@ -56,6 +72,9 @@ statement S;
     ... when != \(x = E3 \| from = E3 \| to = E3 \)
 -   memcpy(to, from, x);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 // ---------------------------------------------------------------------
 
@@ -118,5 +137,8 @@ p2 << r2.p2;
 
 msg = "WARNING opportunity for kstrdep (memcpy on line %s)" % (p2[0].line)
 coccilib.report.print_report(p1[0], msg)
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

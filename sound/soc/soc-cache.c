@@ -15,12 +15,17 @@
 #include <linux/spi/spi.h>
 #include <sound/soc.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bitmap.h>
 #include <linux/rbtree.h>
 #include <linux/export.h>
 
 #include <trace/events/asoc.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <linux/lzo.h>
 #include <linux/bitmap.h>
@@ -445,6 +450,7 @@ int snd_soc_codec_set_cache_io(struct snd_soc_codec *codec,
 EXPORT_SYMBOL_GPL(snd_soc_codec_set_cache_io);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool snd_soc_set_cache_val(void *base, unsigned int idx,
 				  unsigned int val, unsigned int word_size)
 {
@@ -491,6 +497,8 @@ static unsigned int snd_soc_get_cache_val(const void *base, unsigned int idx,
 	return -1;
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 struct snd_soc_rbtree_node {
@@ -1078,6 +1086,7 @@ err_tofree:
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int snd_soc_flat_cache_sync(struct snd_soc_codec *codec)
 {
 	int i;
@@ -1089,9 +1098,12 @@ static int snd_soc_flat_cache_sync(struct snd_soc_codec *codec)
 	for (i = 0; i < codec_drv->reg_cache_size; ++i) {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		WARN_ON(codec->writable_register &&
 			codec->writable_register(codec, i));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = snd_soc_cache_read(codec, i, &val);
 		if (ret)
 			return ret;
@@ -1104,7 +1116,13 @@ static int snd_soc_flat_cache_sync(struct snd_soc_codec *codec)
 		WARN_ON(!snd_soc_codec_writable_register(codec, i));
 
 =======
+<<<<<<< HEAD
+
+		WARN_ON(!snd_soc_codec_writable_register(codec, i));
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret = snd_soc_write(codec, i, val);
 		if (ret)
 			return ret;
@@ -1143,11 +1161,14 @@ static int snd_soc_flat_cache_init(struct snd_soc_codec *codec)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	const struct snd_soc_codec_driver *codec_drv;
 
 	codec_drv = codec->driver;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (codec->reg_def_copy)
 		codec->reg_cache = kmemdup(codec->reg_def_copy,
 					   codec->reg_size, GFP_KERNEL);
@@ -1173,6 +1194,8 @@ static const struct snd_soc_cache_ops cache_types[] = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_SND_SOC_CACHE_LZO
 	{
 		.id = SND_SOC_LZO_COMPRESSION,
@@ -1194,6 +1217,7 @@ static const struct snd_soc_cache_ops cache_types[] = {
 		.sync = snd_soc_rbtree_cache_sync
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int snd_soc_cache_init(struct snd_soc_codec *codec)

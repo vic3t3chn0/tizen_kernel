@@ -10,7 +10,11 @@
 <<<<<<< HEAD
 #include <stdarg.h>
 =======
+<<<<<<< HEAD
+#include <stdarg.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,8 +23,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define LKC_DIRECT_LINK
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "lkc.h"
 
 static void conf_warning(const char *fmt, ...)
@@ -138,7 +145,11 @@ static int conf_set_sym_val(struct symbol *sym, int def, int def_flags, char *p)
 <<<<<<< HEAD
 		/* fall through */
 =======
+<<<<<<< HEAD
+		/* fall through */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case S_BOOLEAN:
 		if (p[0] == 'y') {
 			sym->def[def].tri = yes;
@@ -154,8 +165,12 @@ static int conf_set_sym_val(struct symbol *sym, int def, int def_flags, char *p)
 <<<<<<< HEAD
 		return 1;
 =======
+<<<<<<< HEAD
+		return 1;
+=======
 		break;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case S_OTHER:
 		if (*p != '"') {
 			for (p2 = p; *p2 && !isspace(*p2); p2++)
@@ -166,7 +181,11 @@ static int conf_set_sym_val(struct symbol *sym, int def, int def_flags, char *p)
 <<<<<<< HEAD
 		/* fall through */
 =======
+<<<<<<< HEAD
+		/* fall through */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case S_STRING:
 		if (*p++ != '"')
 			break;
@@ -184,7 +203,11 @@ static int conf_set_sym_val(struct symbol *sym, int def, int def_flags, char *p)
 <<<<<<< HEAD
 		/* fall through */
 =======
+<<<<<<< HEAD
+		/* fall through */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case S_INT:
 	case S_HEX:
 	done:
@@ -263,7 +286,11 @@ load:
 <<<<<<< HEAD
 			/* fall through */
 =======
+<<<<<<< HEAD
+			/* fall through */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		default:
 			sym->def[def].val = NULL;
 			sym->def[def].tri = no;
@@ -371,11 +398,16 @@ int conf_read(const char *name)
 	struct symbol *sym;
 	int i;
 =======
+<<<<<<< HEAD
+	struct symbol *sym;
+	int i;
+=======
 	struct symbol *sym, *choice_sym;
 	struct property *prop;
 	struct expr *e;
 	int i, flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	sym_set_change_count(0);
 
@@ -388,8 +420,12 @@ int conf_read(const char *name)
 <<<<<<< HEAD
 			continue;
 =======
+<<<<<<< HEAD
+			continue;
+=======
 			goto sym_ok;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (sym_has_value(sym) && (sym->flags & SYMBOL_WRITE)) {
 			/* check that calculated value agrees with saved value */
 			switch (sym->type) {
@@ -399,21 +435,32 @@ int conf_read(const char *name)
 					break;
 				if (!sym_is_choice(sym))
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					continue;
 				/* fall through */
 			default:
 				if (!strcmp(sym->curr.val, sym->def[S_DEF_USER].val))
 					continue;
+<<<<<<< HEAD
+=======
 =======
 					goto sym_ok;
 			default:
 				if (!strcmp(sym->curr.val, sym->def[S_DEF_USER].val))
 					goto sym_ok;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				break;
 			}
 		} else if (!sym_has_value(sym) && !(sym->flags & SYMBOL_WRITE))
 			/* no previous value and not saved */
+<<<<<<< HEAD
+			continue;
+		conf_unsaved++;
+		/* maybe print value in verbose mode... */
+=======
 <<<<<<< HEAD
 			continue;
 		conf_unsaved++;
@@ -435,6 +482,7 @@ int conf_read(const char *name)
 				flags &= choice_sym->flags;
 		sym->flags &= flags | ~SYMBOL_DEF_USER;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for_all_symbols(i, sym) {
@@ -468,6 +516,9 @@ int conf_read(const char *name)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Kconfig configuration printer
  *
@@ -653,6 +704,8 @@ conf_write_heading(FILE *fp, struct conf_printer *printer, void *printer_arg)
 	printer->print_comment(fp, buf, printer_arg);
 }
 
+<<<<<<< HEAD
+=======
 =======
 /* Write a S_STRING */
 static void conf_write_string(bool headerfile, const char *name,
@@ -713,6 +766,7 @@ static void conf_write_symbol(struct symbol *sym, FILE *out, bool write_no)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Write out a minimal config.
  * All values that has default values are skipped as this is redundant.
@@ -772,8 +826,12 @@ int conf_write_defconfig(const char *filename)
 <<<<<<< HEAD
 			conf_write_symbol(out, sym, &kconfig_printer_cb, NULL);
 =======
+<<<<<<< HEAD
+			conf_write_symbol(out, sym, &kconfig_printer_cb, NULL);
+=======
 			conf_write_symbol(sym, out, true);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 next_menu:
 		if (menu->list != NULL) {
@@ -841,12 +899,16 @@ int conf_write(const char *name)
 <<<<<<< HEAD
 	conf_write_heading(out, &kconfig_printer_cb, NULL);
 =======
+<<<<<<< HEAD
+	conf_write_heading(out, &kconfig_printer_cb, NULL);
+=======
 	fprintf(out, _("#\n"
 		       "# Automatically generated make config: don't edit\n"
 		       "# %s\n"
 		       "#\n"),
 		     rootmenu.prompt->text);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!conf_get_changed())
 		sym_clear_all_valid();
@@ -871,9 +933,14 @@ int conf_write(const char *name)
 
 			conf_write_symbol(out, sym, &kconfig_printer_cb, NULL);
 =======
+<<<<<<< HEAD
+
+			conf_write_symbol(out, sym, &kconfig_printer_cb, NULL);
+=======
 			/* Write config symbol to file */
 			conf_write_symbol(sym, out, true);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 next:
@@ -1024,8 +1091,11 @@ int conf_write_autoconf(void)
 	struct symbol *sym;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	const char *str;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *name;
 	FILE *out, *tristate, *out_h;
 	int i;
@@ -1055,11 +1125,16 @@ int conf_write_autoconf(void)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	conf_write_heading(out, &kconfig_printer_cb, NULL);
 
 	conf_write_heading(tristate, &tristate_printer_cb, NULL);
 
 	conf_write_heading(out_h, &header_printer_cb, NULL);
+<<<<<<< HEAD
+=======
 =======
 	fprintf(out, "#\n"
 		     "# Automatically generated make config: don't edit\n"
@@ -1075,6 +1150,7 @@ int conf_write_autoconf(void)
 		       " */\n",
 		       rootmenu.prompt->text);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for_all_symbols(i, sym) {
 		sym_calc_value(sym);
@@ -1082,12 +1158,17 @@ int conf_write_autoconf(void)
 			continue;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* write symbol to auto.conf, tristate and header files */
 		conf_write_symbol(out, sym, &kconfig_printer_cb, (void *)1);
 
 		conf_write_symbol(tristate, sym, &tristate_printer_cb, (void *)1);
 
 		conf_write_symbol(out_h, sym, &header_printer_cb, NULL);
+<<<<<<< HEAD
+=======
 =======
 		/* write symbol to config file */
 		conf_write_symbol(sym, out, false);
@@ -1133,6 +1214,7 @@ int conf_write_autoconf(void)
 			break;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	fclose(out);
 	fclose(tristate);

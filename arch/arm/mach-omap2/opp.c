@@ -56,8 +56,12 @@ int __init omap_init_opp_table(struct omap_opp_def *opp_def,
 <<<<<<< HEAD
 	for (i = 0; i < opp_def_size; i++) {
 =======
+<<<<<<< HEAD
+	for (i = 0; i < opp_def_size; i++) {
+=======
 	for (i = 0; i < opp_def_size; i++, opp_def++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct omap_hwmod *oh;
 		struct device *dev;
 
@@ -69,12 +73,17 @@ int __init omap_init_opp_table(struct omap_opp_def *opp_def,
 		oh = omap_hwmod_lookup(opp_def->hwmod_name);
 		if (!oh || !oh->od) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			pr_debug("%s: no hwmod or odev for %s, [%d] "
 				"cannot add OPPs.\n", __func__,
 				opp_def->hwmod_name, i);
 			continue;
 		}
 		dev = &oh->od->pdev->dev;
+<<<<<<< HEAD
+=======
 =======
 			pr_warn("%s: no hwmod or odev for %s, [%d] "
 				"cannot add OPPs.\n", __func__,
@@ -83,6 +92,7 @@ int __init omap_init_opp_table(struct omap_opp_def *opp_def,
 		}
 		dev = &oh->od->pdev.dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		r = opp_add(dev, opp_def->freq, opp_def->u_volt);
 		if (r) {
@@ -102,7 +112,11 @@ int __init omap_init_opp_table(struct omap_opp_def *opp_def,
 <<<<<<< HEAD
 		opp_def++;
 =======
+<<<<<<< HEAD
+		opp_def++;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;

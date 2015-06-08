@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/types.h>
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mii.h>
 
 /* MDIO Manageable Devices (MMDs). */
@@ -281,7 +285,12 @@ static inline __u16 mdio_phy_id_c45(int prtad, int devad)
 #ifdef __KERNEL__
 
 =======
+<<<<<<< HEAD
+#ifdef __KERNEL__
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool mdio_phy_id_is_c45(int phy_id)
 {
 	return (phy_id & MDIO_PHY_ID_C45) && !(phy_id & ~MDIO_PHY_ID_C45_MASK);
@@ -299,12 +308,15 @@ static inline __u16 mdio_phy_id_devad(int phy_id)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define MDIO_SUPPORTS_C22		1
 #define MDIO_SUPPORTS_C45		2
 
 #ifdef __KERNEL__ 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct mdio_if_info - Ethernet controller MDIO interface
  * @prtad: PRTAD of the PHY (%MDIO_PRTAD_NONE if not present/unknown)
@@ -337,7 +349,12 @@ struct mdio_if_info {
 #define MDIO_SUPPORTS_C22		1
 #define MDIO_SUPPORTS_C45		2
 =======
+<<<<<<< HEAD
+#define MDIO_SUPPORTS_C22		1
+#define MDIO_SUPPORTS_C45		2
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MDIO_EMULATE_C22		4
 
 struct ethtool_cmd;

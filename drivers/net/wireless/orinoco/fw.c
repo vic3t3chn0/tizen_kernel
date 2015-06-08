@@ -6,6 +6,13 @@
 #include <linux/slab.h>
 #include <linux/firmware.h>
 #include <linux/device.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "hermes.h"
 #include "hermes_dld.h"
@@ -100,7 +107,15 @@ orinoco_dl_firmware(struct orinoco_private *priv,
 	/* Plug Data Area (PDA) */
 	__le16 *pda;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct hermes *hw = &priv->hw;
+=======
 	hermes_t *hw = &priv->hw;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hermes_t *hw = &priv->hw;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct firmware *fw_entry;
 	const struct orinoco_fw_header *hdr;
 	const unsigned char *first_block;
@@ -205,7 +220,15 @@ symbol_dl_image(struct orinoco_private *priv, const struct fw_info *fw,
 		const unsigned char *image, const void *end,
 		int secondary)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct hermes *hw = &priv->hw;
+=======
 	hermes_t *hw = &priv->hw;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	hermes_t *hw = &priv->hw;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 	const unsigned char *ptr;
 	const unsigned char *first_block;
@@ -322,9 +345,20 @@ symbol_dl_firmware(struct orinoco_private *priv,
 			      fw_entry->data + fw_entry->size, 1);
 	if (!orinoco_cached_fw_get(priv, false))
 		release_firmware(fw_entry);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ret)
+		dev_err(dev, "Secondary firmware download failed\n");
+=======
 	if (ret) {
 		dev_err(dev, "Secondary firmware download failed\n");
 	}
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ret) {
+		dev_err(dev, "Secondary firmware download failed\n");
+	}
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }

@@ -121,8 +121,12 @@ int arch_update_cpu_topology(void);
 <<<<<<< HEAD
 	.busy_factor		= 1,					\
 =======
+<<<<<<< HEAD
+	.busy_factor		= 1,					\
+=======
 	.busy_factor		= 64,					\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.imbalance_pct		= 125,					\
 	.cache_nice_tries	= 1,					\
 	.busy_idx		= 2,					\
@@ -173,8 +177,12 @@ int arch_update_cpu_topology(void);
 <<<<<<< HEAD
 				| 1*SD_SHARE_PKG_RESOURCES		\
 =======
+<<<<<<< HEAD
+				| 1*SD_SHARE_PKG_RESOURCES		\
+=======
 				| 0*SD_SHARE_PKG_RESOURCES		\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				| 0*SD_SERIALIZE			\
 				| sd_balance_for_package_power()	\
 				| sd_power_saving_flags()		\
@@ -210,12 +218,18 @@ int arch_update_cpu_topology(void);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef SD_NODES_PER_DOMAIN
 #define SD_NODES_PER_DOMAIN 16
 #endif
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SCHED_BOOK
 #ifndef SD_BOOK_INIT
 #error Please define an appropriate SD_BOOK_INIT in include/asm/topology.h!!!

@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Code for TI8168/TI8148 EVM.
 =======
+<<<<<<< HEAD
+ * Code for TI8168/TI8148 EVM.
+=======
  * Code for TI8168 EVM.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright (C) 2010 Texas Instruments, Inc. - http://www.ti.com/
  *
@@ -27,6 +31,9 @@
 #include <plat/irqs.h>
 #include <plat/board.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 #include <plat/usb.h>
 
@@ -69,6 +76,8 @@ MACHINE_START(TI8148EVM, "ti8148evm")
 	.timer		= &omap3_timer,
 	.init_machine	= ti81xx_evm_init,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 
@@ -108,4 +117,5 @@ MACHINE_START(TI8168EVM, "ti8168evm")
 	.timer		= &omap_timer,
 	.init_machine	= ti8168_evm_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

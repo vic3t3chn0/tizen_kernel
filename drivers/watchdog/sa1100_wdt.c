@@ -17,6 +17,15 @@
  *
  *	27/11/2000 Initial release
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/types.h>
@@ -25,6 +34,13 @@
 #include <linux/miscdevice.h>
 #include <linux/watchdog.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/io.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/bitops.h>
 #include <linux/uaccess.h>
 #include <linux/timex.h>
@@ -66,7 +82,15 @@ static int sa1100dog_open(struct inode *inode, struct file *file)
  */
 static int sa1100dog_release(struct inode *inode, struct file *file)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_crit("Device closed - timer will not stop\n");
+=======
 	printk(KERN_CRIT "WATCHDOG: Device closed - timer will not stop\n");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	printk(KERN_CRIT "WATCHDOG: Device closed - timer will not stop\n");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clear_bit(1, &sa1100wdt_users);
 	return 0;
 }
@@ -169,9 +193,20 @@ static int __init sa1100dog_init(void)
 
 	ret = misc_register(&sa1100dog_miscdev);
 	if (ret == 0)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("SA1100/PXA2xx Watchdog Timer: timer margin %d sec\n",
+			margin);
+=======
 		printk(KERN_INFO
 			"SA1100/PXA2xx Watchdog Timer: timer margin %d sec\n",
 						margin);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		printk(KERN_INFO
+			"SA1100/PXA2xx Watchdog Timer: timer margin %d sec\n",
+						margin);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

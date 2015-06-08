@@ -263,6 +263,12 @@ static struct usb_driver ft1000_usb_driver = {
 	.id_table = id_table,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_usb_driver(ft1000_usb_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init usb_ft1000_init(void)
 {
 	int ret = 0;
@@ -284,3 +290,7 @@ static void __exit usb_ft1000_exit(void)
 
 module_init(usb_ft1000_init);
 module_exit(usb_ft1000_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

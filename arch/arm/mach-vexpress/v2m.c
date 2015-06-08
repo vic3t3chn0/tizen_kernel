@@ -7,12 +7,18 @@
 #include <linux/io.h>
 #include <linux/init.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/of_address.h>
 #include <linux/of_fdt.h>
 #include <linux/of_irq.h>
 #include <linux/of_platform.h>
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/platform_device.h>
 #include <linux/ata_platform.h>
 #include <linux/smsc911x.h>
@@ -20,8 +26,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/usb/isp1760.h>
 #include <linux/clkdev.h>
 #include <linux/mtd/physmap.h>
@@ -33,15 +43,21 @@
 #include <asm/mach/time.h>
 #include <asm/hardware/arm_timer.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/hardware/cache-l2x0.h>
 #include <asm/hardware/gic.h>
 #include <asm/hardware/timer-sp.h>
 #include <asm/hardware/sp810.h>
 #include <asm/hardware/gic.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/hardware/timer-sp.h>
 #include <asm/hardware/sp810.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/ct-ca9x4.h>
 #include <mach/motherboard.h>
@@ -61,8 +77,12 @@ static struct map_desc v2m_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual	= V2M_PERIPH,
 =======
+<<<<<<< HEAD
+		.virtual	= V2M_PERIPH,
+=======
 		.virtual	= __MMIO_P2V(V2M_PA_CS7),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn		= __phys_to_pfn(V2M_PA_CS7),
 		.length		= SZ_128K,
 		.type		= MT_DEVICE,
@@ -70,6 +90,9 @@ static struct map_desc v2m_io_desc[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __iomem *v2m_sysreg_base;
 
 static void __init v2m_sysctl_init(void __iomem *base)
@@ -102,6 +125,8 @@ static void __init v2m_timer_init(void)
 {
 	v2m_sysctl_init(ioremap(V2M_SYSCTL, SZ_4K));
 	v2m_sp804_init(ioremap(V2M_TIMER01, SZ_4K), IRQ_V2M_TIMER0);
+<<<<<<< HEAD
+=======
 =======
 static void __init v2m_timer_init(void)
 {
@@ -120,6 +145,7 @@ static void __init v2m_timer_init(void)
 	sp804_clockevents_init(MMIO_P2V(V2M_TIMER0), IRQ_V2M_TIMER0,
 		"v2m-timer0");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct sys_timer v2m_timer = {
@@ -140,6 +166,9 @@ int v2m_cfg_write(u32 devfn, u32 data)
 
 	spin_lock(&v2m_cfg_lock);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	val = readl(v2m_sysreg_base + V2M_SYS_CFGSTAT);
 	writel(val & ~SYS_CFG_COMPLETE, v2m_sysreg_base + V2M_SYS_CFGSTAT);
 
@@ -148,6 +177,8 @@ int v2m_cfg_write(u32 devfn, u32 data)
 
 	do {
 		val = readl(v2m_sysreg_base + V2M_SYS_CFGSTAT);
+<<<<<<< HEAD
+=======
 =======
 	val = readl(MMIO_P2V(V2M_SYS_CFGSTAT));
 	writel(val & ~SYS_CFG_COMPLETE, MMIO_P2V(V2M_SYS_CFGSTAT));
@@ -158,6 +189,7 @@ int v2m_cfg_write(u32 devfn, u32 data)
 	do {
 		val = readl(MMIO_P2V(V2M_SYS_CFGSTAT));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} while (val == 0);
 	spin_unlock(&v2m_cfg_lock);
 
@@ -175,39 +207,56 @@ int v2m_cfg_read(u32 devfn, u32 *data)
 	writel(0, v2m_sysreg_base + V2M_SYS_CFGSTAT);
 	writel(devfn, v2m_sysreg_base + V2M_SYS_CFGCTRL);
 =======
+<<<<<<< HEAD
+	writel(0, v2m_sysreg_base + V2M_SYS_CFGSTAT);
+	writel(devfn, v2m_sysreg_base + V2M_SYS_CFGCTRL);
+=======
 	writel(0, MMIO_P2V(V2M_SYS_CFGSTAT));
 	writel(devfn, MMIO_P2V(V2M_SYS_CFGCTRL));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mb();
 
 	do {
 		cpu_relax();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val = readl(v2m_sysreg_base + V2M_SYS_CFGSTAT);
 	} while (val == 0);
 
 	*data = readl(v2m_sysreg_base + V2M_SYS_CFGDATA);
+<<<<<<< HEAD
+=======
 =======
 		val = readl(MMIO_P2V(V2M_SYS_CFGSTAT));
 	} while (val == 0);
 
 	*data = readl(MMIO_P2V(V2M_SYS_CFGDATA));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_unlock(&v2m_cfg_lock);
 
 	return !!(val & SYS_CFG_ERR);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __init v2m_flags_set(u32 data)
 {
 	writel(~0, v2m_sysreg_base + V2M_SYS_FLAGSCLR);
 	writel(data, v2m_sysreg_base + V2M_SYS_FLAGSSET);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct resource v2m_pcie_i2c_resource = {
 	.start	= V2M_SERIAL_BUS_PCI,
@@ -296,8 +345,12 @@ static void v2m_flash_set_vpp(struct platform_device *pdev, int on)
 <<<<<<< HEAD
 	writel(on != 0, v2m_sysreg_base + V2M_SYS_FLASH);
 =======
+<<<<<<< HEAD
+	writel(on != 0, v2m_sysreg_base + V2M_SYS_FLASH);
+=======
 	writel(on != 0, MMIO_P2V(V2M_SYS_FLASH));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct physmap_flash_data v2m_flash_data = {
@@ -354,8 +407,12 @@ static unsigned int v2m_mmci_status(struct device *dev)
 <<<<<<< HEAD
 	return readl(v2m_sysreg_base + V2M_SYS_MCI) & (1 << 0);
 =======
+<<<<<<< HEAD
+	return readl(v2m_sysreg_base + V2M_SYS_MCI) & (1 << 0);
+=======
 	return readl(MMIO_P2V(V2M_SYS_MCI)) & (1 << 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static struct mmci_platform_data v2m_mmci_data = {
@@ -364,6 +421,9 @@ static struct mmci_platform_data v2m_mmci_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static AMBA_APB_DEVICE(aaci,  "mb:aaci",  0, V2M_AACI, IRQ_V2M_AACI, NULL);
 static AMBA_APB_DEVICE(mmci,  "mb:mmci",  0, V2M_MMCI, IRQ_V2M_MMCI, &v2m_mmci_data);
 static AMBA_APB_DEVICE(kmi0,  "mb:kmi0",  0, V2M_KMI0, IRQ_V2M_KMI0, NULL);
@@ -374,6 +434,8 @@ static AMBA_APB_DEVICE(uart2, "mb:uart2", 0, V2M_UART2, IRQ_V2M_UART2, NULL);
 static AMBA_APB_DEVICE(uart3, "mb:uart3", 0, V2M_UART3, IRQ_V2M_UART3, NULL);
 static AMBA_APB_DEVICE(wdt,   "mb:wdt",   0, V2M_WDT, IRQ_V2M_WDT, NULL);
 static AMBA_APB_DEVICE(rtc,   "mb:rtc",   0, V2M_RTC, IRQ_V2M_RTC, NULL);
+<<<<<<< HEAD
+=======
 =======
 static AMBA_DEVICE(aaci,  "mb:aaci",  V2M_AACI, NULL);
 static AMBA_DEVICE(mmci,  "mb:mmci",  V2M_MMCI, &v2m_mmci_data);
@@ -386,6 +448,7 @@ static AMBA_DEVICE(uart3, "mb:uart3", V2M_UART3, NULL);
 static AMBA_DEVICE(wdt,   "mb:wdt",   V2M_WDT, NULL);
 static AMBA_DEVICE(rtc,   "mb:rtc",   V2M_RTC, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct amba_device *v2m_amba_devs[] __initdata = {
 	&aaci_device,
@@ -430,12 +493,18 @@ static struct clk v2m_sp804_clk = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk v2m_ref_clk = {
 	.rate   = 32768,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct clk dummy_apb_pclk;
 
 static struct clk_lookup v2m_lookups[] = {
@@ -471,7 +540,13 @@ static struct clk_lookup v2m_lookups[] = {
 		.dev_id		= "mb:wdt",
 		.clk		= &v2m_ref_clk,
 =======
+<<<<<<< HEAD
+	}, {	/* SP805 WDT */
+		.dev_id		= "mb:wdt",
+		.clk		= &v2m_ref_clk,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}, {	/* SP804 timers */
 		.dev_id		= "sp804",
 		.con_id		= "v2m-timer0",
@@ -490,8 +565,12 @@ static void __init v2m_init_early(void)
 <<<<<<< HEAD
 	versatile_sched_clock_init(v2m_sysreg_base + V2M_SYS_24MHZ, 24000000);
 =======
+<<<<<<< HEAD
+	versatile_sched_clock_init(v2m_sysreg_base + V2M_SYS_24MHZ, 24000000);
+=======
 	versatile_sched_clock_init(MMIO_P2V(V2M_SYS_24MHZ), 24000000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void v2m_power_off(void)
@@ -524,8 +603,13 @@ static void __init v2m_populate_ct_desc(void)
 	current_tile_id = readl(v2m_sysreg_base + V2M_SYS_PROCID0)
 				& V2M_CT_ID_MASK;
 =======
+<<<<<<< HEAD
+	current_tile_id = readl(v2m_sysreg_base + V2M_SYS_PROCID0)
+				& V2M_CT_ID_MASK;
+=======
 	current_tile_id = readl(MMIO_P2V(V2M_SYS_PROCID0)) & V2M_CT_ID_MASK;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < ARRAY_SIZE(ct_descs) && !ct_desc; ++i)
 		if (ct_descs[i]->id == current_tile_id)
@@ -537,9 +621,15 @@ static void __init v2m_populate_ct_desc(void)
 		      "You may need a device tree blob or a different kernel to boot on this board.\n",
 		      current_tile_id);
 =======
+<<<<<<< HEAD
+		panic("vexpress: this kernel does not support core tile ID 0x%08x when booting via ATAGs.\n"
+		      "You may need a device tree blob or a different kernel to boot on this board.\n",
+		      current_tile_id);
+=======
 		panic("vexpress: failed to populate core tile description "
 		      "for tile ID 0x%8x\n", current_tile_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init v2m_map_io(void)
@@ -548,7 +638,11 @@ static void __init v2m_map_io(void)
 <<<<<<< HEAD
 	v2m_sysreg_base = ioremap(V2M_SYSREGS, SZ_4K);
 =======
+<<<<<<< HEAD
+	v2m_sysreg_base = ioremap(V2M_SYSREGS, SZ_4K);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	v2m_populate_ct_desc();
 	ct_desc->map_io();
 }
@@ -575,8 +669,11 @@ static void __init v2m_init(void)
 	pm_power_off = v2m_power_off;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	arm_pm_restart = v2m_restart;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ct_desc->init_tile();
 }
@@ -585,13 +682,20 @@ MACHINE_START(VEXPRESS, "ARM-Versatile Express")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= PLAT_PHYS_OFFSET + 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= v2m_map_io,
 	.init_early	= v2m_init_early,
 	.init_irq	= v2m_init_irq,
 	.timer		= &v2m_timer,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.handle_irq	= gic_handle_irq,
 	.init_machine	= v2m_init,
 	.restart	= v2m_restart,
@@ -798,7 +902,10 @@ DT_MACHINE_START(VEXPRESS_DT, "ARM-Versatile Express")
 MACHINE_END
 
 #endif
+<<<<<<< HEAD
+=======
 =======
 	.init_machine	= v2m_init,
 MACHINE_END
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -277,9 +277,12 @@ extern int cfg80211_dev_rename(struct cfg80211_registered_device *rdev,
 void ieee80211_set_bitrate_flags(struct wiphy *wiphy);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void wiphy_update_regulatory(struct wiphy *wiphy,
 			     enum nl80211_reg_initiator setby);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void cfg80211_bss_expire(struct cfg80211_registered_device *dev);
 void cfg80211_bss_age(struct cfg80211_registered_device *dev,
@@ -433,8 +436,11 @@ int cfg80211_change_iface(struct cfg80211_registered_device *rdev,
 void cfg80211_process_rdev_events(struct cfg80211_registered_device *rdev);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void cfg80211_process_wdev_events(struct wireless_dev *wdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int cfg80211_can_change_interface(struct cfg80211_registered_device *rdev,
 				  struct wireless_dev *wdev,

@@ -33,8 +33,12 @@ static int __init
 <<<<<<< HEAD
 iq81340mc_pcix_map_irq(const struct pci_dev *dev, u8 idsel, u8 pin)
 =======
+<<<<<<< HEAD
+iq81340mc_pcix_map_irq(const struct pci_dev *dev, u8 idsel, u8 pin)
+=======
 iq81340mc_pcix_map_irq(struct pci_dev *dev, u8 idsel, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (idsel) {
 	case 1:
@@ -99,8 +103,13 @@ MACHINE_START(IQ81340MC, "Intel IQ81340MC")
 	.atag_offset    = 0x100,
 	.init_early     = iop13xx_init_early,
 =======
+<<<<<<< HEAD
+	.atag_offset    = 0x100,
+	.init_early     = iop13xx_init_early,
+=======
 	.boot_params    = 0x00000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io         = iop13xx_map_io,
 	.init_irq       = iop13xx_init_irq,
 	.timer          = &iq81340mc_timer,
@@ -108,5 +117,9 @@ MACHINE_START(IQ81340MC, "Intel IQ81340MC")
 <<<<<<< HEAD
 	.restart	= iop13xx_restart,
 =======
+<<<<<<< HEAD
+	.restart	= iop13xx_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

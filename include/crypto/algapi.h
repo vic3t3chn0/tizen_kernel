@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/skbuff.h>
 =======
+<<<<<<< HEAD
+#include <linux/skbuff.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct module;
 struct rtattr;
@@ -33,7 +37,11 @@ struct crypto_type {
 <<<<<<< HEAD
 	int (*report)(struct sk_buff *skb, struct crypto_alg *alg);
 =======
+<<<<<<< HEAD
+	int (*report)(struct sk_buff *skb, struct crypto_alg *alg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct crypto_alg *(*lookup)(const char *name, u32 type, u32 mask);
 
 	unsigned int type;
@@ -143,7 +151,11 @@ int crypto_register_instance(struct crypto_template *tmpl,
 <<<<<<< HEAD
 int crypto_unregister_instance(struct crypto_alg *alg);
 =======
+<<<<<<< HEAD
+int crypto_unregister_instance(struct crypto_alg *alg);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int crypto_init_spawn(struct crypto_spawn *spawn, struct crypto_alg *alg,
 		      struct crypto_instance *inst, u32 mask);
@@ -318,8 +330,11 @@ static inline void blkcipher_walk_init(struct blkcipher_walk *walk,
 	walk->total = nbytes;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	walk->flags = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void ablkcipher_walk_init(struct ablkcipher_walk *walk,

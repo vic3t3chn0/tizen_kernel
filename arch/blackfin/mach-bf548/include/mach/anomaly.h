@@ -14,8 +14,12 @@
 <<<<<<< HEAD
  *  - Revision K, 05/23/2011; ADSP-BF542/BF544/BF547/BF548/BF549 Blackfin Processor Anomaly List
 =======
+<<<<<<< HEAD
+ *  - Revision K, 05/23/2011; ADSP-BF542/BF544/BF547/BF548/BF549 Blackfin Processor Anomaly List
+=======
  *  - Revision J, 06/03/2010; ADSP-BF542/BF544/BF547/BF548/BF549 Blackfin Processor Anomaly List
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _MACH_ANOMALY_H_
@@ -36,8 +40,12 @@
 <<<<<<< HEAD
 #define ANOMALY_05000220 (__SILICON_REVISION__ < 4)
 =======
+<<<<<<< HEAD
+#define ANOMALY_05000220 (__SILICON_REVISION__ < 4)
+=======
 #define ANOMALY_05000220 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* False Hardware Error from an Access in the Shadow of a Conditional Branch */
 #define ANOMALY_05000245 (1)
 /* Sensitivity To Noise with Slow Input Edge Rates on External SPORT TX and RX Clocks */
@@ -45,10 +53,15 @@
 /* Certain Data Cache Writethrough Modes Fail for Vddint <= 0.9V */
 #define ANOMALY_05000272 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* False Hardware Errors Caused by Fetches at the Boundary of Reserved Memory */
 #define ANOMALY_05000310 (1)
 /* FIFO Boot Mode Not Functional */
 #define ANOMALY_05000325 (__SILICON_REVISION__ < 2)
+<<<<<<< HEAD
+=======
 =======
 /* False Hardware Error Exception when ISR Context Is Not Restored */
 #define ANOMALY_05000281 (__SILICON_REVISION__ < 1)
@@ -95,6 +108,7 @@
 /* PLL Status Register Is Inaccurate */
 #define ANOMALY_05000351 (__SILICON_REVISION__ < 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* bfrom_SysControl() Firmware Function Performs Improper System Reset */
 /*
  * Note: anomaly sheet says this is fixed with bf54x-0.2+, but testing
@@ -103,11 +117,14 @@
 #define ANOMALY_05000353 (1)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Regulator Programming Blocked when Hibernate Wakeup Source Remains Active */
 #define ANOMALY_05000355 (__SILICON_REVISION__ < 1)
 /* System Stalled During A Core Access To AMC While A Core Access To NFC FIFO Is Required */
 #define ANOMALY_05000356 (__SILICON_REVISION__ < 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Serial Port (SPORT) Multichannel Transmit Failure when Channel 0 Is Disabled */
 #define ANOMALY_05000357 (1)
 /* External Memory Read Access Hangs Core With PLL Bypass */
@@ -115,10 +132,15 @@
 /* DMAs that Go Urgent during Tight Core Writes to External Memory Are Blocked */
 #define ANOMALY_05000365 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Addressing Conflict between Boot ROM and Asynchronous Memory */
 #define ANOMALY_05000369 (1)
 /* Possible RETS Register Corruption when Subroutine Is under 5 Cycles in Duration */
 #define ANOMALY_05000371 (__SILICON_REVISION__ < 2)
+<<<<<<< HEAD
+=======
 =======
 /* WURESET Bit In SYSCR Register Does Not Properly Indicate Hibernate Wake-Up */
 #define ANOMALY_05000367 (__SILICON_REVISION__ < 1)
@@ -131,10 +153,13 @@
 /* USB DP/DM Data Pins May Lose State When Entering Hibernate */
 #define ANOMALY_05000372 (__SILICON_REVISION__ < 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Security/Authentication Speedpath Causes Authentication To Fail To Initiate */
 #define ANOMALY_05000378 (__SILICON_REVISION__ < 2)
 /* 16-Bit NAND FLASH Boot Mode Is Not Functional */
 #define ANOMALY_05000379 (1)
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /* 8-Bit NAND Flash Boot Mode Not Functional */
@@ -168,6 +193,7 @@
 /* BK_ONES, BK_ZEROS, and BK_DATECODE Constants Not Functional */
 #define ANOMALY_05000397 (__SILICON_REVISION__ < 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Lockbox SESR Disallows Certain User Interrupts */
 #define ANOMALY_05000404 (__SILICON_REVISION__ < 2)
 /* Lockbox SESR Firmware Does Not Save/Restore Full Context */
@@ -192,8 +218,12 @@
 <<<<<<< HEAD
 #define ANOMALY_05000425 (__SILICON_REVISION__ < 4)
 =======
+<<<<<<< HEAD
+#define ANOMALY_05000425 (__SILICON_REVISION__ < 4)
+=======
 #define ANOMALY_05000425 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Speculative Fetches of Indirect-Pointer Instructions Can Cause False Hardware Errors */
 #define ANOMALY_05000426 (1)
 /* CORE_EPPI_PRIO bit and SYS_EPPI_PRIO bit in the HMDMA1_CONTROL register are not functional */
@@ -208,9 +238,12 @@
 #define ANOMALY_05000434 (1)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* OTP Write Accesses Not Supported */
 #define ANOMALY_05000442 (__SILICON_REVISION__ < 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* IFLUSH Instruction at End of Hardware Loop Causes Infinite Stall */
 #define ANOMALY_05000443 (1)
 /* CDMAPRIO and L2DMAPRIO Bits in the SYSCR Register Are Not Functional */
@@ -225,17 +258,25 @@
 /* USB DMA Short Packet Data Corruption */
 #define ANOMALY_05000450 (1)
 =======
+<<<<<<< HEAD
+/* USB DMA Short Packet Data Corruption */
+#define ANOMALY_05000450 (1)
+=======
 /* USB DMA Mode 1 Short Packet Data Corruption */
 #define ANOMALY_05000450 (1)
 /* Incorrect Default Hysteresis Setting for RESET, NMI, and BMODE Signals */
 #define ANOMALY_05000452 (__SILICON_REVISION__ < 1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* USB Receive Interrupt Is Not Generated in DMA Mode 1 */
 #define ANOMALY_05000456 (1)
 /* Host DMA Port Responds to Certain Bus Activity Without HOST_CE Assertion */
 #define ANOMALY_05000457 (1)
 /* USB DMA Mode 1 Failure When Multiple USB DMA Channels Are Concurrently Enabled */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000460 (__SILICON_REVISION__ < 4)
 /* False Hardware Error when RETI Points to Invalid Memory */
 #define ANOMALY_05000461 (1)
@@ -255,6 +296,8 @@
 #define ANOMALY_05000473 (1)
 /* Access to DDR SDRAM Causes System Hang with Certain PLL Settings */
 #define ANOMALY_05000474 (__SILICON_REVISION__ < 4)
+<<<<<<< HEAD
+=======
 =======
 #define ANOMALY_05000460 (1)
 /* False Hardware Error when RETI Points to Invalid Memory */
@@ -276,6 +319,7 @@
 /* Access to DDR-SDRAM causes system hang under certain PLL/VR settings */
 #define ANOMALY_05000474 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* TESTSET Instruction Cannot Be Interrupted */
 #define ANOMALY_05000477 (1)
 /* Reads of ITEST_COMMAND and ITEST_DATA Registers Cause Cache Corruption */
@@ -286,6 +330,9 @@
 #define ANOMALY_05000484 (__SILICON_REVISION__ < 3)
 /* PLL_CTL Change Using bfrom_SysControl() Can Result in Processor Overclocking */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000485 (__SILICON_REVISION__ > 1 && __SILICON_REVISION__ < 4)
 /* PLL May Latch Incorrect Values Coming Out of Reset */
 #define ANOMALY_05000489 (1)
@@ -391,11 +438,14 @@
 #define ANOMALY_05000442 (__SILICON_REVISION__ < 1)
 /* Incorrect Default Hysteresis Setting for RESET, NMI, and BMODE Signals */
 #define ANOMALY_05000452 (__SILICON_REVISION__ < 1)
+<<<<<<< HEAD
+=======
 =======
 #define ANOMALY_05000485 (__SILICON_REVISION__ >= 2)
 /* IFLUSH sucks at life */
 #define ANOMALY_05000491 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Anomalies that don't exist on this proc */
 #define ANOMALY_05000099 (0)

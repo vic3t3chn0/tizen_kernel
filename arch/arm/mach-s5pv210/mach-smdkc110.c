@@ -11,12 +11,17 @@
 #include <linux/kernel.h>
 #include <linux/types.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/serial_core.h>
 #include <linux/i2c.h>
 #include <linux/device.h>
 
 #include <asm/hardware/vic.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/i2c.h>
 #include <linux/regulator/consumer.h>
@@ -34,12 +39,16 @@
 #include <linux/pwm_backlight.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach/arch.h>
 #include <asm/mach/map.h>
 #include <asm/setup.h>
 #include <asm/mach-types.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/map.h>
 #include <mach/regs-clock.h>
 
@@ -53,6 +62,8 @@
 #include <plat/mfc.h>
 
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 #include <video/platform_lcd.h>
 
@@ -80,6 +91,7 @@
 #include <plat/backlight.h>
 #include <plat/regs-fb-v4.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Following are default values for UCON, ULCON and UFCON UART registers */
 #define SMDKC110_UCON_DEFAULT	(S3C2410_UCON_TXILEVEL |	\
@@ -126,6 +138,8 @@ static struct s3c2410_uartcfg smdkv210_uartcfgs[] __initdata = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_CPU_FREQ
@@ -377,17 +391,23 @@ static struct max8698_platform_data smdkc110_max8698_pdata = {
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct s3c_ide_platdata smdkc110_ide_pdata __initdata = {
 	.setup_gpio	= s5pv210_ide_setup_gpio,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_device *smdkc110_devices[] __initdata = {
 	&samsung_asoc_dma,
 	&s5pv210_device_iis0,
 	&s5pv210_device_ac97,
 	&s5pv210_device_spdif,
 	&s3c_device_cfcon,
+<<<<<<< HEAD
+=======
 =======
 static uint32_t smdkc110_keymap[] __initdata = {
 	/* KEY(row, col, keycode) */
@@ -589,11 +609,15 @@ static struct platform_device *smdkc110_devices[] __initdata = {
 	&s3c_device_hsmmc2,
 	&s3c_device_hsmmc3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&s3c_device_i2c0,
 	&s3c_device_i2c1,
 	&s3c_device_i2c2,
 	&s3c_device_rtc,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&s3c_device_wdt,
 	&s5p_device_fimc0,
 	&s5p_device_fimc1,
@@ -604,6 +628,8 @@ static struct platform_device *smdkc110_devices[] __initdata = {
 	&s5p_device_mfc_r,
 };
 
+<<<<<<< HEAD
+=======
 =======
 	&s3c_device_ts,
 	&s3c_device_wdt,
@@ -656,6 +682,7 @@ static void __init smdkc110_dm9000_init(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct i2c_board_info smdkc110_i2c_devs0[] __initdata = {
 	{ I2C_BOARD_INFO("24c08", 0x50), },     /* Samsung S524AD0XD1 */
 	{ I2C_BOARD_INFO("wm8580", 0x1b), },
@@ -666,6 +693,9 @@ static struct i2c_board_info smdkc110_i2c_devs1[] __initdata = {
 };
 
 static struct i2c_board_info smdkc110_i2c_devs2[] __initdata = {
+<<<<<<< HEAD
+	/* To Be Updated */
+=======
 <<<<<<< HEAD
 	/* To Be Updated */
 =======
@@ -715,11 +745,15 @@ static struct platform_pwm_backlight_data smdkc110_bl_data = {
 	.pwm_id = 3,
 	.pwm_period_ns  = 1000,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void __init smdkc110_map_io(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s5pv210_init_io(NULL, 0);
 	s3c24xx_init_clocks(24000000);
 	s3c24xx_init_uarts(smdkv210_uartcfgs, ARRAY_SIZE(smdkv210_uartcfgs));
@@ -729,6 +763,8 @@ static void __init smdkc110_map_io(void)
 static void __init smdkc110_reserve(void)
 {
 	s5p_mfc_reserve_mem(0x43000000, 8 << 20, 0x51000000, 8 << 20);
+<<<<<<< HEAD
+=======
 =======
 	s5p_init_io(NULL, 0, S5P_VA_CHIPID);
 	s3c24xx_init_clocks(24000000);
@@ -737,12 +773,15 @@ static void __init smdkc110_reserve(void)
 
 	s5p_reserve_mem(S5P_RANGE_MFC);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __init smdkc110_machine_init(void)
 {
 	s3c_pm_init();
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	smdkc110_button_init();
@@ -752,6 +791,7 @@ static void __init smdkc110_machine_init(void)
 	s3c24xx_ts_set_platdata(&s3c_ts_platform);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s3c_i2c0_set_platdata(NULL);
 	s3c_i2c1_set_platdata(NULL);
 	s3c_i2c2_set_platdata(NULL);
@@ -766,6 +806,8 @@ static void __init smdkc110_machine_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	s3c_fb_set_platdata(&smdkc110_lcd0_pdata);
 
 #ifdef CONFIG_CPU_FREQ
@@ -778,12 +820,16 @@ static void __init smdkc110_machine_init(void)
 	samsung_bl_set(&smdkc110_bl_gpio_info, &smdkc110_bl_data);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	platform_add_devices(smdkc110_devices, ARRAY_SIZE(smdkc110_devices));
 }
 
 MACHINE_START(SMDKC110, "SMDKC110")
 	/* Maintainer: Kukjin Kim <kgene.kim@samsung.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.init_irq	= s5pv210_init_irq,
 	.handle_irq	= vic_handle_irq,
@@ -792,6 +838,8 @@ MACHINE_START(SMDKC110, "SMDKC110")
 	.timer		= &s5p_timer,
 	.restart	= s5pv210_restart,
 	.reserve	= &smdkc110_reserve,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= S5P_PA_SDRAM + 0x100,
 	.init_irq	= s5pv210_init_irq,
@@ -799,4 +847,5 @@ MACHINE_START(SMDKC110, "SMDKC110")
 	.init_machine	= smdkc110_machine_init,
 	.timer		= &s5p_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

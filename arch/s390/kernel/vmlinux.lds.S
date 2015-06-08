@@ -12,8 +12,12 @@ OUTPUT_ARCH(s390)
 <<<<<<< HEAD
 ENTRY(startup)
 =======
+<<<<<<< HEAD
+ENTRY(startup)
+=======
 ENTRY(_start)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 jiffies = jiffies_64 + 4;
 #else
 OUTPUT_FORMAT("elf64-s390", "elf64-s390", "elf64-s390")
@@ -21,8 +25,12 @@ OUTPUT_ARCH(s390:64-bit)
 <<<<<<< HEAD
 ENTRY(startup)
 =======
+<<<<<<< HEAD
+ENTRY(startup)
+=======
 ENTRY(_start)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 jiffies = jiffies_64;
 #endif
 
@@ -55,7 +63,12 @@ SECTIONS
 	.dummy : { *(.dummy) } :data
 
 =======
+<<<<<<< HEAD
+	.dummy : { *(.dummy) } :data
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	RODATA
 
 #ifdef CONFIG_SHARED_KERNEL

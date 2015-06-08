@@ -101,8 +101,11 @@ struct usb_hcd {
 #define HCD_FLAG_HW_ACCESSIBLE		0	/* at full power */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define HCD_FLAG_SAW_IRQ		1
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HCD_FLAG_POLL_RH		2	/* poll for rh status? */
 #define HCD_FLAG_POLL_PENDING		3	/* status has changed? */
 #define HCD_FLAG_WAKEUP_PENDING		4	/* root hub is resuming? */
@@ -115,8 +118,11 @@ struct usb_hcd {
 #define HCD_HW_ACCESSIBLE(hcd)	((hcd)->flags & (1U << HCD_FLAG_HW_ACCESSIBLE))
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define HCD_SAW_IRQ(hcd)	((hcd)->flags & (1U << HCD_FLAG_SAW_IRQ))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define HCD_POLL_RH(hcd)	((hcd)->flags & (1U << HCD_FLAG_POLL_RH))
 #define HCD_POLL_PENDING(hcd)	((hcd)->flags & (1U << HCD_FLAG_POLL_PENDING))
 #define HCD_WAKEUP_PENDING(hcd)	((hcd)->flags & (1U << HCD_FLAG_WAKEUP_PENDING))
@@ -135,14 +141,20 @@ struct usb_hcd {
 	unsigned		authorized_default:1;
 	unsigned		has_tt:1;	/* Integrated TT in root hub */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned		broken_pci_sleep:1;	/* Don't put the
 			controller in PCI-D3 for system sleep */
 
 	unsigned int		irq;		/* irq allocated */
+<<<<<<< HEAD
+=======
 =======
 
 	int			irq;		/* irq allocated */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem		*regs;		/* device memory/io */
 	u64			rsrc_start;	/* memory/io resource start */
 	u64			rsrc_len;	/* memory/io resource length */
@@ -229,7 +241,12 @@ struct hc_driver {
 #define	HCD_RT_OLD_ENUM	0x0008		/* HC supports short enumeration
 					   on root port */
 =======
+<<<<<<< HEAD
+#define	HCD_RT_OLD_ENUM	0x0008		/* HC supports short enumeration
+					   on root port */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	HCD_USB11	0x0010		/* USB 1.1 */
 #define	HCD_USB2	0x0020		/* USB 2.0 */
 #define	HCD_USB3	0x0040		/* USB 3.0 */
@@ -362,6 +379,9 @@ struct hc_driver {
 		 */
 	int	(*update_device)(struct usb_hcd *, struct usb_device *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int	(*set_usb2_hw_lpm)(struct usb_hcd *, struct usb_device *, int);
 
 	/* to log submission/completion events*/
@@ -369,8 +389,11 @@ struct hc_driver {
 	void	(*dump_regs)(struct usb_hcd *);
 	void	(*set_autosuspend_delay)(struct usb_device *);
 	void	(*reset_sof_bug_handler)(struct usb_hcd *hcd, u32 val);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern int usb_hcd_link_urb_to_ep(struct usb_hcd *hcd, struct urb *urb);
@@ -408,6 +431,9 @@ extern struct usb_hcd *usb_get_hcd(struct usb_hcd *hcd);
 extern void usb_put_hcd(struct usb_hcd *hcd);
 extern int usb_hcd_is_primary_hcd(struct usb_hcd *hcd);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_USB
 extern int usb_add_hcd(struct usb_hcd *hcd,
 		unsigned int irqnum, unsigned long irqflags);
@@ -420,11 +446,14 @@ usb_add_hcd(struct usb_hcd *hcd, unsigned int irqnum, unsigned long irqflags)
 }
 static inline void usb_remove_hcd(struct usb_hcd *hcd) {}
 #endif
+<<<<<<< HEAD
+=======
 =======
 extern int usb_add_hcd(struct usb_hcd *hcd,
 		unsigned int irqnum, unsigned long irqflags);
 extern void usb_remove_hcd(struct usb_hcd *hcd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct platform_device;
 extern void usb_hcd_platform_shutdown(struct platform_device *dev);
@@ -460,7 +489,12 @@ extern void usb_hcd_poll_rh_status(struct usb_hcd *hcd);
 extern void usb_wakeup_notification(struct usb_device *hdev,
 		unsigned int portnum);
 =======
+<<<<<<< HEAD
+extern void usb_wakeup_notification(struct usb_device *hdev,
+		unsigned int portnum);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The D0/D1 toggle bits ... USE WITH CAUTION (they're almost hcd-internal) */
 #define usb_gettoggle(dev, ep, out) (((dev)->toggle[out] >> (ep)) & 1)

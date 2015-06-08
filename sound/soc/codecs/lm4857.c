@@ -6,8 +6,12 @@
 <<<<<<< HEAD
  *         graeme.gregory@wolfsonmicro.com
 =======
+<<<<<<< HEAD
+ *         graeme.gregory@wolfsonmicro.com
+=======
  *         graeme.gregory@wolfsonmicro.com or linux@wolfsonmicro.com
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright 2011 Lars-Peter Clausen <lars@metafoo.de>
  *
  *  This program is free software; you can redistribute  it and/or modify it
@@ -186,8 +190,12 @@ static int lm4857_probe(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	ret = snd_soc_add_codec_controls(codec, lm4857_controls,
 =======
+<<<<<<< HEAD
+	ret = snd_soc_add_codec_controls(codec, lm4857_controls,
+=======
 	ret = snd_soc_add_controls(codec, lm4857_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ARRAY_SIZE(lm4857_controls));
 	if (ret)
 		return ret;
@@ -226,8 +234,12 @@ static int __devinit lm4857_i2c_probe(struct i2c_client *i2c,
 <<<<<<< HEAD
 	lm4857 = devm_kzalloc(&i2c->dev, sizeof(*lm4857), GFP_KERNEL);
 =======
+<<<<<<< HEAD
+	lm4857 = devm_kzalloc(&i2c->dev, sizeof(*lm4857), GFP_KERNEL);
+=======
 	lm4857 = kzalloc(sizeof(*lm4857), GFP_KERNEL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!lm4857)
 		return -ENOMEM;
 
@@ -240,6 +252,9 @@ static int __devinit lm4857_i2c_probe(struct i2c_client *i2c,
 <<<<<<< HEAD
 	return ret;
 =======
+<<<<<<< HEAD
+	return ret;
+=======
 	if (ret) {
 		kfree(lm4857);
 		return ret;
@@ -247,10 +262,14 @@ static int __devinit lm4857_i2c_probe(struct i2c_client *i2c,
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __devexit lm4857_i2c_remove(struct i2c_client *i2c)
 {
+<<<<<<< HEAD
+	snd_soc_unregister_codec(&i2c->dev);
+=======
 <<<<<<< HEAD
 	snd_soc_unregister_codec(&i2c->dev);
 =======
@@ -260,6 +279,7 @@ static int __devexit lm4857_i2c_remove(struct i2c_client *i2c)
 	kfree(lm4857);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 

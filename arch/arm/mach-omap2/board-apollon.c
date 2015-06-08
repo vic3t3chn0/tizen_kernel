@@ -38,17 +38,23 @@
 #include <plat/usb.h>
 #include <plat/board.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 #include <plat/gpmc.h>
 
 #include <video/omapdss.h>
 #include <video/omap-panel-generic-dpi.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <plat/common.h>
 #include <plat/gpmc.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "mux.h"
 #include "control.h"
 
@@ -144,9 +150,12 @@ static struct resource apollon_smc91x_resources[] = {
 	[1] = {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.start	= OMAP_GPIO_IRQ(APOLLON_ETHR_GPIO_IRQ),
 		.end	= OMAP_GPIO_IRQ(APOLLON_ETHR_GPIO_IRQ),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_IRQ | IORESOURCE_IRQ_HIGHEDGE,
 	},
 };
@@ -163,12 +172,15 @@ static struct platform_device apollon_smc91x_device = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct platform_device apollon_lcd_device = {
 	.name		= "apollon_lcd",
 	.id		= -1,
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_led_config apollon_led_config[] = {
 	{
 		.cdev	= {
@@ -208,8 +220,11 @@ static struct platform_device *apollon_devices[] __initdata = {
 	&apollon_smc91x_device,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	&apollon_lcd_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&apollon_led_device,
 };
 
@@ -284,6 +299,9 @@ static struct omap_usb_config apollon_usb_config __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct panel_generic_dpi_data apollon_panel_data = {
 	.name			= "apollon",
 };
@@ -305,6 +323,8 @@ static struct omap_dss_board_info apollon_dss_data = {
 	.devices	= apollon_dss_devices,
 	.default_device	= &apollon_lcd_device,
 };
+<<<<<<< HEAD
+=======
 =======
 static struct omap_lcd_config apollon_lcd_config __initdata = {
 	.ctrl_name	= "internal",
@@ -320,6 +340,7 @@ static void __init omap_apollon_init_early(void)
 	omap2_init_common_devices(NULL, NULL);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct gpio apollon_gpio_leds[] __initdata = {
 	{ LED0_GPIO13, GPIOF_OUT_INIT_LOW, "LED0" }, /* LED0 - AA10 */
@@ -358,9 +379,12 @@ static void __init omap_apollon_init(void)
 	omap2420_mux_init(board_mux, OMAP_PACKAGE_ZAC);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	omap_board_config = apollon_config;
 	omap_board_config_size = ARRAY_SIZE(apollon_config);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	apollon_init_smc91x();
 	apollon_led_init();
@@ -384,12 +408,17 @@ static void __init omap_apollon_init(void)
 	 * if not needed.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	apollon_smc91x_resources[1].start = gpio_to_irq(APOLLON_ETHR_GPIO_IRQ);
 	apollon_smc91x_resources[1].end = gpio_to_irq(APOLLON_ETHR_GPIO_IRQ);
 	platform_add_devices(apollon_devices, ARRAY_SIZE(apollon_devices));
 	omap_serial_init();
 	omap_sdrc_init(NULL, NULL);
 	omap_display_init(&apollon_dss_data);
+<<<<<<< HEAD
+=======
 =======
 	platform_add_devices(apollon_devices, ARRAY_SIZE(apollon_devices));
 	omap_serial_init();
@@ -400,11 +429,15 @@ static void __init omap_apollon_map_io(void)
 	omap2_set_globals_242x();
 	omap242x_map_common_io();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 MACHINE_START(OMAP_APOLLON, "OMAP24xx Apollon")
 	/* Maintainer: Kyungmin Park <kyungmin.park@samsung.com> */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= omap_reserve,
 	.map_io		= omap242x_map_io,
@@ -414,6 +447,8 @@ MACHINE_START(OMAP_APOLLON, "OMAP24xx Apollon")
 	.init_machine	= omap_apollon_init,
 	.timer		= &omap2_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= omap_reserve,
@@ -423,4 +458,5 @@ MACHINE_START(OMAP_APOLLON, "OMAP24xx Apollon")
 	.init_machine	= omap_apollon_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

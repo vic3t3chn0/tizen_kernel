@@ -37,7 +37,15 @@
 #include <linux/mutex.h>
 #include <linux/spinlock.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool debug;
+=======
 static int debug;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int debug;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Version information
  */
@@ -49,7 +57,15 @@ static int debug;
 #define DRIVER_NAME "ark3116"
 
 /* usb timeout of 1 second */
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define ARK_TIMEOUT (1*HZ)
+=======
 #define ARK_TIMEOUT 1000
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define ARK_TIMEOUT 1000
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct usb_device_id id_table[] = {
 	{ USB_DEVICE(0x6547, 0x0232) },
@@ -719,7 +735,14 @@ static struct usb_driver ark3116_driver = {
 	.probe =	usb_serial_probe,
 	.disconnect =	usb_serial_disconnect,
 	.id_table =	id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.no_dynamic_id =	1,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.no_dynamic_id =	1,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct usb_serial_driver ark3116_device = {
@@ -728,7 +751,14 @@ static struct usb_serial_driver ark3116_device = {
 		.name =		"ark3116",
 	},
 	.id_table =		id_table,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	.usb_driver =		&ark3116_driver,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.usb_driver =		&ark3116_driver,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_ports =		1,
 	.attach =		ark3116_attach,
 	.release =		ark3116_release,
@@ -745,6 +775,17 @@ static struct usb_serial_driver ark3116_device = {
 	.process_read_urb =	ark3116_process_read_urb,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct usb_serial_driver * const serial_drivers[] = {
+	&ark3116_device, NULL
+};
+
+module_usb_serial_driver(ark3116_driver, serial_drivers);
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init ark3116_init(void)
 {
 	int retval;
@@ -771,6 +812,10 @@ static void __exit ark3116_exit(void)
 
 module_init(ark3116_init);
 module_exit(ark3116_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");
 
 MODULE_AUTHOR(DRIVER_AUTHOR);

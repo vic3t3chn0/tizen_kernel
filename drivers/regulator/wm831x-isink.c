@@ -101,7 +101,15 @@ static int wm831x_isink_set_current(struct regulator_dev *rdev,
 
 	for (i = 0; i < ARRAY_SIZE(wm831x_isinkv_values); i++) {
 		int val = wm831x_isinkv_values[i];
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (min_uA <= val && val <= max_uA) {
+=======
 		if (min_uA >= val && val <= max_uA) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (min_uA >= val && val <= max_uA) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ret = wm831x_set_bits(wm831x, isink->reg,
 					      WM831X_CS1_ISEL_MASK, i);
 			return ret;
@@ -162,7 +170,16 @@ static __devinit int wm831x_isink_probe(struct platform_device *pdev)
 	if (pdata == NULL || pdata->isink[id] == NULL)
 		return -ENODEV;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	isink = devm_kzalloc(&pdev->dev, sizeof(struct wm831x_isink),
+			     GFP_KERNEL);
+=======
 	isink = kzalloc(sizeof(struct wm831x_isink), GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	isink = kzalloc(sizeof(struct wm831x_isink), GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (isink == NULL) {
 		dev_err(&pdev->dev, "Unable to allocate private data\n");
 		return -ENOMEM;
@@ -189,7 +206,15 @@ static __devinit int wm831x_isink_probe(struct platform_device *pdev)
 	isink->desc.owner = THIS_MODULE;
 
 	isink->regulator = regulator_register(&isink->desc, &pdev->dev,
+<<<<<<< HEAD
+<<<<<<< HEAD
+					     pdata->isink[id], isink, NULL);
+=======
 					     pdata->isink[id], isink);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+					     pdata->isink[id], isink);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (IS_ERR(isink->regulator)) {
 		ret = PTR_ERR(isink->regulator);
 		dev_err(wm831x->dev, "Failed to register ISINK%d: %d\n",
@@ -213,7 +238,14 @@ static __devinit int wm831x_isink_probe(struct platform_device *pdev)
 err_regulator:
 	regulator_unregister(isink->regulator);
 err:
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(isink);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(isink);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -226,7 +258,14 @@ static __devexit int wm831x_isink_remove(struct platform_device *pdev)
 	free_irq(platform_get_irq(pdev, 0), isink);
 
 	regulator_unregister(isink->regulator);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	kfree(isink);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	kfree(isink);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

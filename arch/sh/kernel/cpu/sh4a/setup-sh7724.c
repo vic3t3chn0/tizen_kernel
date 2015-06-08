@@ -217,8 +217,12 @@ static struct resource sh7724_dmae0_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 		/* DMA error IRQ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= 78,
 		.end	= 78,
 		.flags	= IORESOURCE_IRQ,
@@ -255,8 +259,12 @@ static struct resource sh7724_dmae1_resources[] = {
 <<<<<<< HEAD
 		.name	= "error_irq",
 =======
+<<<<<<< HEAD
+		.name	= "error_irq",
+=======
 		/* DMA error IRQ */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.start	= 74,
 		.end	= 74,
 		.flags	= IORESOURCE_IRQ,
@@ -285,10 +293,13 @@ static struct platform_device dma0_device = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_DMAC0,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device dma1_device = {
@@ -301,10 +312,13 @@ static struct platform_device dma1_device = {
 	},
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_DMAC1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Serial */
@@ -313,7 +327,11 @@ static struct plat_sci_port scif0_platform_data = {
 <<<<<<< HEAD
 	.port_reg	= SCIx_NOT_SUPPORTED,
 =======
+<<<<<<< HEAD
+	.port_reg	= SCIx_NOT_SUPPORTED,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags          = UPF_BOOT_AUTOCONF,
 	.scscr		= SCSCR_RE | SCSCR_TE | SCSCR_REIE,
 	.scbrr_algo_id	= SCBRR_ALGO_2,
@@ -322,7 +340,11 @@ static struct plat_sci_port scif0_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_NO_SCSPTR_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_NO_SCSPTR_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif0_device = {
@@ -338,7 +360,11 @@ static struct plat_sci_port scif1_platform_data = {
 <<<<<<< HEAD
 	.port_reg	= SCIx_NOT_SUPPORTED,
 =======
+<<<<<<< HEAD
+	.port_reg	= SCIx_NOT_SUPPORTED,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags          = UPF_BOOT_AUTOCONF,
 	.scscr		= SCSCR_RE | SCSCR_TE | SCSCR_REIE,
 	.scbrr_algo_id	= SCBRR_ALGO_2,
@@ -347,7 +373,11 @@ static struct plat_sci_port scif1_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_NO_SCSPTR_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_NO_SCSPTR_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif1_device = {
@@ -363,7 +393,11 @@ static struct plat_sci_port scif2_platform_data = {
 <<<<<<< HEAD
 	.port_reg	= SCIx_NOT_SUPPORTED,
 =======
+<<<<<<< HEAD
+	.port_reg	= SCIx_NOT_SUPPORTED,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags          = UPF_BOOT_AUTOCONF,
 	.scscr		= SCSCR_RE | SCSCR_TE | SCSCR_REIE,
 	.scbrr_algo_id	= SCBRR_ALGO_2,
@@ -372,7 +406,11 @@ static struct plat_sci_port scif2_platform_data = {
 <<<<<<< HEAD
 	.regtype	= SCIx_SH4_SCIF_NO_SCSPTR_REGTYPE,
 =======
+<<<<<<< HEAD
+	.regtype	= SCIx_SH4_SCIF_NO_SCSPTR_REGTYPE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device scif2_device = {
@@ -388,7 +426,11 @@ static struct plat_sci_port scif3_platform_data = {
 <<<<<<< HEAD
 	.port_reg	= SCIx_NOT_SUPPORTED,
 =======
+<<<<<<< HEAD
+	.port_reg	= SCIx_NOT_SUPPORTED,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags          = UPF_BOOT_AUTOCONF,
 	.scscr		= SCSCR_RE | SCSCR_TE,
 	.scbrr_algo_id	= SCBRR_ALGO_3,
@@ -409,7 +451,11 @@ static struct plat_sci_port scif4_platform_data = {
 <<<<<<< HEAD
 	.port_reg	= SCIx_NOT_SUPPORTED,
 =======
+<<<<<<< HEAD
+	.port_reg	= SCIx_NOT_SUPPORTED,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags          = UPF_BOOT_AUTOCONF,
 	.scscr		= SCSCR_RE | SCSCR_TE,
 	.scbrr_algo_id	= SCBRR_ALGO_3,
@@ -430,7 +476,11 @@ static struct plat_sci_port scif5_platform_data = {
 <<<<<<< HEAD
 	.port_reg	= SCIx_NOT_SUPPORTED,
 =======
+<<<<<<< HEAD
+	.port_reg	= SCIx_NOT_SUPPORTED,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags          = UPF_BOOT_AUTOCONF,
 	.scscr		= SCSCR_RE | SCSCR_TE,
 	.scbrr_algo_id	= SCBRR_ALGO_3,
@@ -477,10 +527,13 @@ static struct platform_device rtc_device = {
 	.resource	= rtc_resources,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_RTC,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* I2C0 */
@@ -505,10 +558,13 @@ static struct platform_device iic0_device = {
 	.resource       = iic0_resources,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_IIC0,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* I2C1 */
@@ -533,10 +589,13 @@ static struct platform_device iic1_device = {
 	.resource       = iic1_resources,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_IIC1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VPU */
@@ -568,10 +627,13 @@ static struct platform_device vpu_device = {
 	.num_resources	= ARRAY_SIZE(vpu_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_VPU,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VEU0 */
@@ -603,10 +665,13 @@ static struct platform_device veu0_device = {
 	.num_resources	= ARRAY_SIZE(veu0_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_VEU0,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VEU1 */
@@ -638,10 +703,13 @@ static struct platform_device veu1_device = {
 	.num_resources	= ARRAY_SIZE(veu1_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_VEU1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* BEU0 */
@@ -673,10 +741,13 @@ static struct platform_device beu0_device = {
 	.num_resources	= ARRAY_SIZE(beu0_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_BEU0,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* BEU1 */
@@ -708,10 +779,13 @@ static struct platform_device beu1_device = {
 	.num_resources	= ARRAY_SIZE(beu1_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_BEU1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sh_timer_config cmt_platform_data = {
@@ -743,10 +817,13 @@ static struct platform_device cmt_device = {
 	.num_resources	= ARRAY_SIZE(cmt_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_CMT,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sh_timer_config tmu0_platform_data = {
@@ -777,10 +854,13 @@ static struct platform_device tmu0_device = {
 	.num_resources	= ARRAY_SIZE(tmu0_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_TMU0,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sh_timer_config tmu1_platform_data = {
@@ -811,10 +891,13 @@ static struct platform_device tmu1_device = {
 	.num_resources	= ARRAY_SIZE(tmu1_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_TMU0,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sh_timer_config tmu2_platform_data = {
@@ -844,10 +927,13 @@ static struct platform_device tmu2_device = {
 	.num_resources	= ARRAY_SIZE(tmu2_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_TMU0,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -878,10 +964,13 @@ static struct platform_device tmu3_device = {
 	.num_resources	= ARRAY_SIZE(tmu3_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_TMU1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sh_timer_config tmu4_platform_data = {
@@ -911,10 +1000,13 @@ static struct platform_device tmu4_device = {
 	.num_resources	= ARRAY_SIZE(tmu4_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_TMU1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sh_timer_config tmu5_platform_data = {
@@ -944,10 +1036,13 @@ static struct platform_device tmu5_device = {
 	.num_resources	= ARRAY_SIZE(tmu5_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_TMU1,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* JPU */
@@ -979,10 +1074,13 @@ static struct platform_device jpu_device = {
 	.num_resources	= ARRAY_SIZE(jpu_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_JPU,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* SPU2DSP0 */
@@ -1014,10 +1112,13 @@ static struct platform_device spu0_device = {
 	.num_resources	= ARRAY_SIZE(spu0_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_SPU,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* SPU2DSP1 */
@@ -1049,10 +1150,13 @@ static struct platform_device spu1_device = {
 	.num_resources	= ARRAY_SIZE(spu1_resources),
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.archdata = {
 		.hwblk_id = HWBLK_SPU,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device *sh7724_devices[] __initdata = {

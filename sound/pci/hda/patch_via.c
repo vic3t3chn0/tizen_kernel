@@ -52,18 +52,27 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include <sound/asoundef.h>
 #include "hda_codec.h"
 #include "hda_local.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "hda_jack.h"
 
 /* Pin Widget NID */
 #define VT1708_HP_PIN_NID	0x20
 #define VT1708_CD_PIN_NID	0x24
 
+<<<<<<< HEAD
+=======
 =======
 
 #define NID_MAPPING		(-1)
@@ -97,6 +106,7 @@
 #define VT1702_DIGOUT_NID	0x11
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum VIA_HDA_CODEC {
 	UNKNOWN = -1,
 	VT1708,
@@ -121,6 +131,9 @@ enum VIA_HDA_CODEC {
 	 (spec)->codec_type == VT1802)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MAX_NID_PATH_DEPTH	5
 
 /* output-path: DAC -> ... -> pin
@@ -154,8 +167,11 @@ enum {
 	STREAM_INDEP_HP = (1 << 1),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct via_spec {
 	/* codec parameterization */
 	const struct snd_kcontrol_new *mixers[6];
@@ -165,12 +181,17 @@ struct via_spec {
 	unsigned int num_iverbs;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char stream_name_analog[32];
 	char stream_name_hp[32];
 	const struct hda_pcm_stream *stream_analog_playback;
 	const struct hda_pcm_stream *stream_analog_capture;
 
 	char stream_name_digital[32];
+<<<<<<< HEAD
+=======
 =======
 	char *stream_name_analog;
 	const struct hda_pcm_stream *stream_analog_playback;
@@ -178,6 +199,7 @@ struct via_spec {
 
 	char *stream_name_digital;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct hda_pcm_stream *stream_digital_playback;
 	const struct hda_pcm_stream *stream_digital_capture;
 
@@ -185,6 +207,9 @@ struct via_spec {
 	struct hda_multi_out multiout;
 	hda_nid_t slave_dig_outs[2];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hda_nid_t hp_dac_nid;
 	hda_nid_t speaker_dac_nid;
 	int hp_indep_shared;	/* indep HP-DAC is shared with side ch */
@@ -233,6 +258,8 @@ struct via_spec {
 	hda_nid_t cur_adc;
 	unsigned int cur_adc_stream_tag;
 	unsigned int cur_adc_format;
+<<<<<<< HEAD
+=======
 =======
 
 	/* capture */
@@ -246,6 +273,7 @@ struct via_spec {
 	const struct hda_input_mux *input_mux;
 	unsigned int cur_mux[3];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* PCM information */
 	struct hda_pcm pcm_rec[3];
@@ -254,6 +282,9 @@ struct via_spec {
 	struct auto_pin_cfg autocfg;
 	struct snd_array kctls;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hda_nid_t private_dac_nids[AUTO_CFG_MAX_OUTS];
 
 	/* HP mode source */
@@ -277,6 +308,8 @@ struct via_spec {
 	struct delayed_work vt1708_hp_work;
 	int hp_work_active;
 	int vt1708_jack_detect;
+<<<<<<< HEAD
+=======
 =======
 	struct hda_input_mux private_imux[2];
 	hda_nid_t private_dac_nids[AUTO_CFG_MAX_OUTS];
@@ -294,11 +327,15 @@ struct via_spec {
 	struct delayed_work vt1708_hp_work;
 	int vt1708_jack_detectect;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int vt1708_hp_present;
 
 	void (*set_widgets_power_state)(struct hda_codec *codec);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hda_loopback_check loopback;
 	int num_loopbacks;
 	struct hda_amp_list loopback_list[8];
@@ -308,11 +345,14 @@ struct via_spec {
 	struct hda_bind_ctls *bind_cap_sw;
 
 	struct mutex config_mutex;
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SND_HDA_POWER_SAVE
 	struct hda_loopback_check loopback;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static enum VIA_HDA_CODEC get_codec_type(struct hda_codec *codec);
@@ -327,7 +367,11 @@ static struct via_spec * via_new_spec(struct hda_codec *codec)
 <<<<<<< HEAD
 	mutex_init(&spec->config_mutex);
 =======
+<<<<<<< HEAD
+	mutex_init(&spec->config_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	codec->spec = spec;
 	spec->codec = codec;
 	spec->codec_type = get_codec_type(codec);
@@ -391,16 +435,23 @@ static enum VIA_HDA_CODEC get_codec_type(struct hda_codec *codec)
 <<<<<<< HEAD
 #define VIA_LINE_EVENT		0x03
 =======
+<<<<<<< HEAD
+#define VIA_LINE_EVENT		0x03
+=======
 #define VIA_MONO_EVENT		0x03
 #define VIA_SPEAKER_EVENT	0x04
 #define VIA_BIND_HP_EVENT	0x05
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 enum {
 	VIA_CTL_WIDGET_VOL,
 	VIA_CTL_WIDGET_MUTE,
 	VIA_CTL_WIDGET_ANALOG_MUTE,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static void analog_low_current_mode(struct hda_codec *codec);
@@ -435,6 +486,8 @@ static void vt1708_update_hp_work(struct via_spec *spec)
 		}
 	} else if (!hp_detect_with_aa(spec->codec))
 		vt1708_stop_hp_work(spec);
+<<<<<<< HEAD
+=======
 =======
 	VIA_CTL_WIDGET_BIND_PIN_MUTE,
 };
@@ -471,6 +524,7 @@ static void vt1708_stop_hp_work(struct via_spec *spec)
 			    !spec->vt1708_jack_detectect);
 	cancel_delayed_work_sync(&spec->vt1708_hp_work);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void set_widgets_power_state(struct hda_codec *codec)
@@ -491,6 +545,10 @@ static int analog_input_switch_put(struct snd_kcontrol *kcontrol,
 	analog_low_current_mode(snd_kcontrol_chip(kcontrol));
 	vt1708_update_hp_work(codec->spec);
 =======
+<<<<<<< HEAD
+	analog_low_current_mode(snd_kcontrol_chip(kcontrol));
+	vt1708_update_hp_work(codec->spec);
+=======
 	analog_low_current_mode(snd_kcontrol_chip(kcontrol), -1);
 	if (snd_hda_get_bool_hint(codec, "analog_loopback_hp_detect") == 1) {
 		if (is_aa_path_mute(codec))
@@ -499,6 +557,7 @@ static int analog_input_switch_put(struct snd_kcontrol *kcontrol,
 			vt1708_stop_hp_work(codec->spec);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return change;
 }
 
@@ -512,6 +571,8 @@ static int analog_input_switch_put(struct snd_kcontrol *kcontrol,
 			.put = analog_input_switch_put,			\
 			.private_value = HDA_COMPOSE_AMP_VAL(0, 3, 0, 0) }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static void via_hp_bind_automute(struct hda_codec *codec);
@@ -610,11 +671,15 @@ static int bind_pin_switch_put(struct snd_kcontrol *kcontrol,
 			.private_value = HDA_COMPOSE_AMP_VAL(0, 3, 0, 0) }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_kcontrol_new via_control_templates[] = {
 	HDA_CODEC_VOLUME(NULL, 0, 0, 0),
 	HDA_CODEC_MUTE(NULL, 0, 0, 0),
 	ANALOG_INPUT_MUTE,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 
@@ -640,6 +705,8 @@ static struct snd_kcontrol_new *__via_clone_ctl(struct via_spec *spec,
 	return knew;
 }
 
+<<<<<<< HEAD
+=======
 =======
 	BIND_PIN_MUTE,
 };
@@ -692,16 +759,22 @@ static const hda_nid_t vt1812_adc_nids[2] = {
 
 /* add dynamic controls */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __via_add_control(struct via_spec *spec, int type, const char *name,
 			     int idx, unsigned long val)
 {
 	struct snd_kcontrol_new *knew;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	knew = __via_clone_ctl(spec, &via_control_templates[type], name);
 	if (!knew)
 		return -ENOMEM;
 	knew->index = idx;
+<<<<<<< HEAD
+=======
 =======
 	snd_array_init(&spec->kctls, sizeof(*knew), 32);
 	knew = snd_array_new(&spec->kctls);
@@ -712,6 +785,7 @@ static int __via_add_control(struct via_spec *spec, int type, const char *name,
 	if (!knew->name)
 		return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (get_amp_nid_(val))
 		knew->subdevice = HDA_SUBDEV_AMP_FLAG;
 	knew->private_value = val;
@@ -721,6 +795,9 @@ static int __via_add_control(struct via_spec *spec, int type, const char *name,
 #define via_add_control(spec, type, name, val) \
 	__via_add_control(spec, type, name, 0, val)
 
+<<<<<<< HEAD
+#define via_clone_control(spec, tmpl) __via_clone_ctl(spec, tmpl, NULL)
+=======
 <<<<<<< HEAD
 #define via_clone_control(spec, tmpl) __via_clone_ctl(spec, tmpl, NULL)
 =======
@@ -740,6 +817,7 @@ static struct snd_kcontrol_new *via_clone_control(struct via_spec *spec,
 	return knew;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void via_free_kctls(struct hda_codec *codec)
 {
@@ -775,6 +853,9 @@ static int via_new_analog_input(struct via_spec *spec, const char *ctlname,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define get_connection_index(codec, mux, nid) \
 	snd_hda_get_conn_index(codec, mux, nid, 0)
 
@@ -885,6 +966,8 @@ static void via_auto_init_output(struct hda_codec *codec,
 	}
 	activate_output_path(codec, path, true, true); /* force on */
 }
+<<<<<<< HEAD
+=======
 =======
 static void via_auto_set_output_and_unmute(struct hda_codec *codec,
 					   hda_nid_t nid, int pin_type,
@@ -901,11 +984,15 @@ static void via_auto_set_output_and_unmute(struct hda_codec *codec,
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void via_auto_init_multi_out(struct hda_codec *codec)
 {
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct nid_path *path;
 	int i;
 
@@ -935,6 +1022,8 @@ static void deactivate_hp_paths(struct hda_codec *codec)
 	} else {
 		activate_output_path(codec, &spec->hp_indep_path, false, false);
 		activate_output_path(codec, &spec->hp_mix_path, false, false);
+<<<<<<< HEAD
+=======
 =======
 	int i;
 
@@ -943,6 +1032,7 @@ static void deactivate_hp_paths(struct hda_codec *codec)
 		if (nid)
 			via_auto_set_output_and_unmute(codec, nid, PIN_OUT, i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -950,6 +1040,9 @@ static void via_auto_init_hp_out(struct hda_codec *codec)
 {
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!spec->hp_path.depth) {
 		via_auto_init_output(codec, &spec->hp_mix_path, PIN_HP);
@@ -986,6 +1079,8 @@ static void via_auto_init_speaker_out(struct hda_codec *codec)
 
 static bool is_smart51_pins(struct hda_codec *codec, hda_nid_t pin);
 static void via_hp_automute(struct hda_codec *codec);
+<<<<<<< HEAD
+=======
 =======
 	hda_nid_t pin;
 	int i;
@@ -999,12 +1094,16 @@ static void via_hp_automute(struct hda_codec *codec);
 
 static int is_smart51_pins(struct via_spec *spec, hda_nid_t pin);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void via_auto_init_analog_input(struct hda_codec *codec)
 {
 	struct via_spec *spec = codec->spec;
 	const struct auto_pin_cfg *cfg = &spec->autocfg;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	hda_nid_t conn[HDA_MAX_CONNECTIONS];
 	unsigned int ctl;
 	int i, num_conns;
@@ -1024,6 +1123,8 @@ static void via_auto_init_analog_input(struct hda_codec *codec)
 	for (i = 0; i < cfg->num_inputs; i++) {
 		hda_nid_t nid = cfg->inputs[i].pin;
 		if (spec->smart51_enabled && is_smart51_pins(codec, nid))
+<<<<<<< HEAD
+=======
 =======
 	unsigned int ctl;
 	int i;
@@ -1032,6 +1133,7 @@ static void via_auto_init_analog_input(struct hda_codec *codec)
 		hda_nid_t nid = cfg->inputs[i].pin;
 		if (spec->smart51_enabled && is_smart51_pins(spec, nid))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ctl = PIN_OUT;
 		else if (cfg->inputs[i].type == AUTO_PIN_MIC)
 			ctl = PIN_VREF50;
@@ -1041,6 +1143,9 @@ static void via_auto_init_analog_input(struct hda_codec *codec)
 				    AC_VERB_SET_PIN_WIDGET_CONTROL, ctl);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* init input-src */
 	for (i = 0; i < spec->num_adc_nids; i++) {
@@ -1079,8 +1184,11 @@ static void update_power_state(struct hda_codec *codec, hda_nid_t nid,
 			       AC_VERB_GET_POWER_STATE, 0) == parm)
 		return;
 	snd_hda_codec_write(codec, nid, 0, AC_VERB_SET_POWER_STATE, parm);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void set_pin_power_state(struct hda_codec *codec, hda_nid_t nid,
@@ -1092,6 +1200,9 @@ static void set_pin_power_state(struct hda_codec *codec, hda_nid_t nid,
 		>> AC_DEFCFG_MISC_SHIFT
 		& AC_DEFCFG_MISC_NO_PRESENCE; /* do not support pin sense */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct via_spec *spec = codec->spec;
 	unsigned present = 0;
 
@@ -1099,11 +1210,14 @@ static void set_pin_power_state(struct hda_codec *codec, hda_nid_t nid,
 	if (!no_presence)
 		present = snd_hda_jack_detect(codec, nid);
 	if ((spec->smart51_enabled && is_smart51_pins(codec, nid))
+<<<<<<< HEAD
+=======
 =======
 	unsigned present = snd_hda_jack_detect(codec, nid);
 	struct via_spec *spec = codec->spec;
 	if ((spec->smart51_enabled && is_smart51_pins(spec, nid))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    || ((no_presence || present)
 		&& get_defcfg_connect(def_conf) != AC_JACK_PORT_NONE)) {
 		*affected_parm = AC_PWRST_D0; /* if it's connected */
@@ -1112,6 +1226,9 @@ static void set_pin_power_state(struct hda_codec *codec, hda_nid_t nid,
 		parm = AC_PWRST_D3;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	update_power_state(codec, nid, parm);
 }
 
@@ -1164,6 +1281,8 @@ static const struct snd_kcontrol_new via_pin_power_ctl_enum = {
 	.put = via_pin_power_ctl_put,
 };
 
+<<<<<<< HEAD
+=======
 =======
 	snd_hda_codec_write(codec, nid, 0, AC_VERB_SET_POWER_STATE, parm);
 }
@@ -1215,11 +1334,15 @@ static int via_mux_enum_put(struct snd_kcontrol *kcontrol,
 	return ret;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int via_independent_hp_info(struct snd_kcontrol *kcontrol,
 				   struct snd_ctl_elem_info *uinfo)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static const char * const texts[] = { "OFF", "ON" };
 
 	uinfo->type = SNDRV_CTL_ELEM_TYPE_ENUMERATED;
@@ -1230,11 +1353,14 @@ static int via_independent_hp_info(struct snd_kcontrol *kcontrol,
 	strcpy(uinfo->value.enumerated.name,
 	       texts[uinfo->value.enumerated.item]);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct via_spec *spec = codec->spec;
 	return snd_hda_input_mux_info(spec->hp_mux, uinfo);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int via_independent_hp_get(struct snd_kcontrol *kcontrol,
@@ -1242,6 +1368,9 @@ static int via_independent_hp_get(struct snd_kcontrol *kcontrol,
 {
 	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct via_spec *spec = codec->spec;
 
 	ucontrol->value.enumerated.item[0] = spec->hp_independent_mode;
@@ -1307,6 +1436,8 @@ static void switch_indep_hp_dacs(struct hda_codec *codec)
 		}
 	}
 	setup_playback_multi_pcm(spec);
+<<<<<<< HEAD
+=======
 =======
 	hda_nid_t nid = kcontrol->private_value;
 	unsigned int pinsel;
@@ -1368,6 +1499,7 @@ static int update_side_mute_status(struct hda_codec *codec)
 	}
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int via_independent_hp_put(struct snd_kcontrol *kcontrol,
@@ -1376,6 +1508,9 @@ static int via_independent_hp_put(struct snd_kcontrol *kcontrol,
 	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int cur, shared;
 
 	mutex_lock(&spec->config_mutex);
@@ -1416,6 +1551,8 @@ static const struct snd_kcontrol_new via_hp_mixer = {
 	.info = via_independent_hp_info,
 	.get = via_independent_hp_get,
 	.put = via_independent_hp_put,
+<<<<<<< HEAD
+=======
 =======
 	hda_nid_t nid = kcontrol->private_value;
 	unsigned int pinsel = ucontrol->value.enumerated.item[0];
@@ -1478,6 +1615,7 @@ static const struct snd_kcontrol_new via_hp_mixer[2] = {
 		.name = "Independent HP",
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int via_hp_build(struct hda_codec *codec)
@@ -1486,6 +1624,9 @@ static int via_hp_build(struct hda_codec *codec)
 	struct snd_kcontrol_new *knew;
 	hda_nid_t nid;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nid = spec->autocfg.hp_pins[0];
 	knew = via_clone_control(spec, &via_hp_mixer);
@@ -1508,6 +1649,8 @@ static void notify_aa_path_ctls(struct hda_codec *codec)
 		memset(&id, 0, sizeof(id));
 		id.iface = SNDRV_CTL_ELEM_IFACE_MIXER;
 		sprintf(id.name, "%s Playback Volume", spec->smart51_labels[i]);
+<<<<<<< HEAD
+=======
 =======
 	int nums;
 	hda_nid_t conn[HDA_MAX_CONNECTIONS];
@@ -1565,6 +1708,7 @@ static void notify_aa_path_ctls(struct hda_codec *codec)
 	for (i = 0; i < ARRAY_SIZE(labels); i++) {
 		sprintf(id.name, "%s Playback Volume", labels[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ctl = snd_hda_find_mixer_ctl(codec, id.name);
 		if (ctl)
 			snd_ctl_notify(codec->bus->card,
@@ -1577,6 +1721,9 @@ static void mute_aa_path(struct hda_codec *codec, int mute)
 {
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int val = mute ? HDA_AMP_MUTE : HDA_AMP_UNMUTE;
 	int i;
 
@@ -1599,6 +1746,25 @@ static bool is_smart51_pins(struct hda_codec *codec, hda_nid_t pin)
 		if (spec->smart51_pins[i] == pin)
 			return true;
 	return false;
+<<<<<<< HEAD
+}
+
+static int via_smart51_get(struct snd_kcontrol *kcontrol,
+			   struct snd_ctl_elem_value *ucontrol)
+{
+	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
+	struct via_spec *spec = codec->spec;
+
+	*ucontrol->value.integer.value = spec->smart51_enabled;
+	return 0;
+}
+
+static int via_smart51_put(struct snd_kcontrol *kcontrol,
+			   struct snd_ctl_elem_value *ucontrol)
+{
+	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
+	struct via_spec *spec = codec->spec;
+=======
 =======
 	hda_nid_t  nid_mixer;
 	int start_idx;
@@ -1702,15 +1868,21 @@ static int via_smart51_put(struct snd_kcontrol *kcontrol,
 =======
 	const struct auto_pin_cfg *cfg = &spec->autocfg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int out_in = *ucontrol->value.integer.value
 		? AC_PINCTL_OUT_EN : AC_PINCTL_IN_EN;
 	int i;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < spec->smart51_nums; i++) {
 		hda_nid_t nid = spec->smart51_pins[i];
 		unsigned int parm;
 
+<<<<<<< HEAD
+=======
 =======
 	for (i = 0; i < cfg->num_inputs; i++) {
 		hda_nid_t nid = cfg->inputs[i].pin;
@@ -1723,6 +1895,7 @@ static int via_smart51_put(struct snd_kcontrol *kcontrol,
 			continue; /* don't retask FMic for independent HP */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		parm = snd_hda_codec_read(codec, nid, 0,
 					  AC_VERB_GET_PIN_WIDGET_CONTROL, 0);
 		parm &= ~(AC_PINCTL_IN_EN | AC_PINCTL_OUT_EN);
@@ -1734,6 +1907,8 @@ static int via_smart51_put(struct snd_kcontrol *kcontrol,
 			mute_aa_path(codec, 1);
 			notify_aa_path_ctls(codec);
 		}
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 		if (spec->codec_type == VT1718S) {
@@ -1754,6 +1929,7 @@ static int via_smart51_put(struct snd_kcontrol *kcontrol,
 			}
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	spec->smart51_enabled = *ucontrol->value.integer.value;
 	set_widgets_power_state(codec);
@@ -1761,6 +1937,9 @@ static int via_smart51_put(struct snd_kcontrol *kcontrol,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_kcontrol_new via_smart51_mixer = {
 	.iface = SNDRV_CTL_ELEM_IFACE_MIXER,
 	.name = "Smart 5.1",
@@ -1814,6 +1993,8 @@ static void __analog_low_current_mode(struct hda_codec *codec, bool force)
 	if (enable == spec->alc_mode && !force)
 		return;
 	spec->alc_mode = enable;
+<<<<<<< HEAD
+=======
 =======
 static const struct snd_kcontrol_new via_smart51_mixer[2] = {
 	{
@@ -1958,6 +2139,7 @@ static void analog_low_current_mode(struct hda_codec *codec, int stream_idle)
 		saved_stream_idle = stream_idle;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* decide low current mode's verb & parameter */
 	switch (spec->codec_type) {
@@ -1990,6 +2172,9 @@ static void analog_low_current_mode(struct hda_codec *codec, int stream_idle)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void analog_low_current_mode(struct hda_codec *codec)
 {
 	return __analog_low_current_mode(codec, false);
@@ -1999,6 +2184,8 @@ static void analog_low_current_mode(struct hda_codec *codec)
  * generic initialization of ADC, input mixers and output mixers
  */
 static const struct hda_verb vt1708_init_verbs[] = {
+<<<<<<< HEAD
+=======
 =======
 /*
  * generic initialization of ADC, input mixers and output mixers
@@ -2034,12 +2221,16 @@ static const struct hda_verb vt1708_volume_init_verbs[] = {
 	/* PW9 Output enable */
 	{0x25, AC_VERB_SET_PIN_WIDGET_CONTROL, 0x40},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* power down jack detect function */
 	{0x1, 0xf81, 0x1},
 	{ }
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void set_stream_open(struct hda_codec *codec, int bit, bool active)
 {
 	struct via_spec *spec = codec->spec;
@@ -2052,14 +2243,20 @@ static void set_stream_open(struct hda_codec *codec, int bit, bool active)
 }
 
 static int via_playback_multi_pcm_open(struct hda_pcm_stream *hinfo,
+<<<<<<< HEAD
+=======
 =======
 static int via_playback_pcm_open(struct hda_pcm_stream *hinfo,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 struct hda_codec *codec,
 				 struct snd_pcm_substream *substream)
 {
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const struct auto_pin_cfg *cfg = &spec->autocfg;
 	int err;
 
@@ -2101,6 +2298,8 @@ static int via_playback_hp_pcm_close(struct hda_pcm_stream *hinfo,
 {
 	set_stream_open(codec, STREAM_INDEP_HP, false);
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	int idle = substream->pstr->substream_opened == 1
 		&& substream->ref_count == 0;
@@ -2176,6 +2375,7 @@ static void playback_multi_pcm_prep_0(struct hda_codec *codec,
 						   0, format);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int via_playback_multi_pcm_prepare(struct hda_pcm_stream *hinfo,
@@ -2186,6 +2386,9 @@ static int via_playback_multi_pcm_prepare(struct hda_pcm_stream *hinfo,
 {
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&spec->config_mutex);
 	setup_playback_multi_pcm(spec);
@@ -2217,6 +2420,8 @@ static int via_playback_hp_pcm_prepare(struct hda_pcm_stream *hinfo,
 	spec->cur_hp_format = format;
 	mutex_unlock(&spec->config_mutex);
 	vt1708_update_hp_work(spec);
+<<<<<<< HEAD
+=======
 =======
 	struct hda_multi_out *mout = &spec->multiout;
 	const hda_nid_t *nids = mout->dac_nids;
@@ -2232,6 +2437,7 @@ static int via_playback_hp_pcm_prepare(struct hda_pcm_stream *hinfo,
 	}
 	vt1708_start_hp_work(spec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2241,6 +2447,9 @@ static int via_playback_multi_pcm_cleanup(struct hda_pcm_stream *hinfo,
 {
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_lock(&spec->config_mutex);
 	snd_hda_multi_out_analog_cleanup(codec, &spec->multiout);
@@ -2262,6 +2471,8 @@ static int via_playback_hp_pcm_cleanup(struct hda_pcm_stream *hinfo,
 	spec->active_streams &= ~STREAM_INDEP_HP;
 	mutex_unlock(&spec->config_mutex);
 	vt1708_update_hp_work(spec);
+<<<<<<< HEAD
+=======
 =======
 	struct hda_multi_out *mout = &spec->multiout;
 	const hda_nid_t *nids = mout->dac_nids;
@@ -2296,6 +2507,7 @@ static int via_playback_hp_pcm_cleanup(struct hda_pcm_stream *hinfo,
 	}
 	vt1708_stop_hp_work(spec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2364,6 +2576,9 @@ static int via_capture_pcm_cleanup(struct hda_pcm_stream *hinfo,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* analog capture with dynamic ADC switching */
 static int via_dyn_adc_capture_pcm_prepare(struct hda_pcm_stream *hinfo,
 					   struct hda_codec *codec,
@@ -2426,6 +2641,8 @@ static const struct hda_pcm_stream via_pcm_analog_playback = {
 	.ops = {
 		.open = via_playback_multi_pcm_open,
 		.close = via_playback_multi_pcm_close,
+<<<<<<< HEAD
+=======
 =======
 static const struct hda_pcm_stream vt1708_pcm_analog_playback = {
 	.substreams = 2,
@@ -2435,12 +2652,16 @@ static const struct hda_pcm_stream vt1708_pcm_analog_playback = {
 	.ops = {
 		.open = via_playback_pcm_open,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.prepare = via_playback_multi_pcm_prepare,
 		.cleanup = via_playback_multi_pcm_cleanup
 	},
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hda_pcm_stream via_pcm_hp_playback = {
 	.substreams = 1,
 	.channels_min = 2,
@@ -2459,6 +2680,8 @@ static const struct hda_pcm_stream vt1708_pcm_analog_s16_playback = {
 	.channels_min = 2,
 	.channels_max = 8,
 	/* NID is set in via_build_pcms */
+<<<<<<< HEAD
+=======
 =======
 static const struct hda_pcm_stream vt1708_pcm_analog_s16_playback = {
 	.substreams = 2,
@@ -2466,6 +2689,7 @@ static const struct hda_pcm_stream vt1708_pcm_analog_s16_playback = {
 	.channels_max = 8,
 	.nid = 0x10, /* NID to query formats and rates */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* We got noisy outputs on the right channel on VT1708 when
 	 * 24bit samples are used.  Until any workaround is found,
 	 * disable the 24bit format, so far.
@@ -2476,19 +2700,29 @@ static const struct hda_pcm_stream vt1708_pcm_analog_s16_playback = {
 		.open = via_playback_multi_pcm_open,
 		.close = via_playback_multi_pcm_close,
 =======
+<<<<<<< HEAD
+		.open = via_playback_multi_pcm_open,
+		.close = via_playback_multi_pcm_close,
+=======
 		.open = via_playback_pcm_open,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.prepare = via_playback_multi_pcm_prepare,
 		.cleanup = via_playback_multi_pcm_cleanup
 	},
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hda_pcm_stream via_pcm_analog_capture = {
 	.substreams = 1, /* will be changed in via_build_pcms() */
 	.channels_min = 2,
 	.channels_max = 2,
 	/* NID is set in via_build_pcms */
+<<<<<<< HEAD
+=======
 =======
 static const struct hda_pcm_stream vt1708_pcm_analog_capture = {
 	.substreams = 2,
@@ -2496,6 +2730,7 @@ static const struct hda_pcm_stream vt1708_pcm_analog_capture = {
 	.channels_max = 2,
 	.nid = 0x15, /* NID to query formats and rates */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = {
 		.prepare = via_capture_pcm_prepare,
 		.cleanup = via_capture_pcm_cleanup
@@ -2503,6 +2738,9 @@ static const struct hda_pcm_stream vt1708_pcm_analog_capture = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hda_pcm_stream via_pcm_dyn_adc_analog_capture = {
 	.substreams = 1,
 	.channels_min = 2,
@@ -2515,9 +2753,12 @@ static const struct hda_pcm_stream via_pcm_dyn_adc_analog_capture = {
 };
 
 static const struct hda_pcm_stream via_pcm_digital_playback = {
+<<<<<<< HEAD
+=======
 =======
 static const struct hda_pcm_stream vt1708_pcm_digital_playback = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.substreams = 1,
 	.channels_min = 2,
 	.channels_max = 2,
@@ -2533,14 +2774,21 @@ static const struct hda_pcm_stream vt1708_pcm_digital_playback = {
 <<<<<<< HEAD
 static const struct hda_pcm_stream via_pcm_digital_capture = {
 =======
+<<<<<<< HEAD
+static const struct hda_pcm_stream via_pcm_digital_capture = {
+=======
 static const struct hda_pcm_stream vt1708_pcm_digital_capture = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.substreams = 1,
 	.channels_min = 2,
 	.channels_max = 2,
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * slave controls for virtual master
  */
@@ -2550,13 +2798,19 @@ static const char * const via_slave_pfxs[] = {
 	NULL,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int via_build_controls(struct hda_codec *codec)
 {
 	struct via_spec *spec = codec->spec;
 	struct snd_kcontrol *kctl;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err, i;
 
 	spec->no_pin_power_ctl = 1;
@@ -2564,11 +2818,14 @@ static int via_build_controls(struct hda_codec *codec)
 		if (!via_clone_control(spec, &via_pin_power_ctl_enum))
 			return -ENOMEM;
 
+<<<<<<< HEAD
+=======
 =======
 	const struct snd_kcontrol_new *knew;
 	int err, i;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < spec->num_mixers; i++) {
 		err = snd_hda_add_new_ctls(codec, spec->mixers[i]);
 		if (err < 0)
@@ -2580,7 +2837,11 @@ static int via_build_controls(struct hda_codec *codec)
 <<<<<<< HEAD
 						    spec->multiout.dig_out_nid,
 =======
+<<<<<<< HEAD
+						    spec->multiout.dig_out_nid,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						    spec->multiout.dig_out_nid);
 		if (err < 0)
 			return err;
@@ -2597,6 +2858,9 @@ static int via_build_controls(struct hda_codec *codec)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* if we have no master control, let's create it */
 	if (!snd_hda_find_mixer_ctl(codec, "Master Playback Volume")) {
 		unsigned int vmaster_tlv[4];
@@ -2621,23 +2885,31 @@ static int via_build_controls(struct hda_codec *codec)
 	for (i = 0; kctl && i < kctl->count; i++) {
 		if (!spec->mux_nids[i])
 			continue;
+<<<<<<< HEAD
+=======
 =======
 	/* assign Capture Source enums to NID */
 	kctl = snd_hda_find_mixer_ctl(codec, "Input Source");
 	for (i = 0; kctl && i < kctl->count; i++) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = snd_hda_add_nid(codec, kctl, i, spec->mux_nids[i]);
 		if (err < 0)
 			return err;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	via_free_kctls(codec); /* no longer needed */
 
 	err = snd_hda_jack_add_kctls(codec, &spec->autocfg);
 	if (err < 0)
 		return err;
 
+<<<<<<< HEAD
+=======
 =======
 	/* other nid->control mapping */
 	for (i = 0; i < spec->num_mixers; i++) {
@@ -2658,6 +2930,7 @@ static int via_build_controls(struct hda_codec *codec)
 
 	via_free_kctls(codec); /* no longer needed */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2667,6 +2940,9 @@ static int via_build_pcms(struct hda_codec *codec)
 	struct hda_pcm *info = spec->pcm_rec;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	codec->num_pcms = 0;
 	codec->pcm_info = info;
 
@@ -2721,6 +2997,8 @@ static int via_build_pcms(struct hda_codec *codec)
 					&via_pcm_digital_playback;
 			info->stream[SNDRV_PCM_STREAM_PLAYBACK] =
 				*spec->stream_digital_playback;
+<<<<<<< HEAD
+=======
 =======
 	codec->num_pcms = 1;
 	codec->pcm_info = info;
@@ -2745,11 +3023,15 @@ static int via_build_pcms(struct hda_codec *codec)
 			info->stream[SNDRV_PCM_STREAM_PLAYBACK] =
 				*(spec->stream_digital_playback);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			info->stream[SNDRV_PCM_STREAM_PLAYBACK].nid =
 				spec->multiout.dig_out_nid;
 		}
 		if (spec->dig_in_nid) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!spec->stream_digital_capture)
 				spec->stream_digital_capture =
 					&via_pcm_digital_capture;
@@ -2772,6 +3054,8 @@ static int via_build_pcms(struct hda_codec *codec)
 		codec->num_pcms++;
 		info++;
 	}
+<<<<<<< HEAD
+=======
 =======
 			info->stream[SNDRV_PCM_STREAM_CAPTURE] =
 				*(spec->stream_digital_capture);
@@ -2781,6 +3065,7 @@ static int via_build_pcms(struct hda_codec *codec)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -2794,6 +3079,9 @@ static void via_free(struct hda_codec *codec)
 	via_free_kctls(codec);
 	vt1708_stop_hp_work(spec);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(spec->bind_cap_vol);
 	kfree(spec->bind_cap_sw);
 	kfree(spec);
@@ -2851,6 +3139,8 @@ static void via_hp_automute(struct hda_codec *codec)
 	toggle_output_mutes(codec, nums, spec->autocfg.line_out_pins, present);
 
 	via_line_automute(codec, present);
+<<<<<<< HEAD
+=======
 =======
 	kfree(codec->spec);
 }
@@ -2904,6 +3194,7 @@ static void via_mono_automute(struct hda_codec *codec)
 			codec, 0x2A, HDA_OUTPUT, 0, HDA_AMP_MUTE,
 			hp_present ? HDA_AMP_MUTE : 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void via_gpio_control(struct hda_codec *codec)
@@ -2933,10 +3224,16 @@ static void via_gpio_control(struct hda_codec *codec)
 				    AC_VERB_SET_PIN_WIDGET_CONTROL,
 				    PIN_OUT);
 =======
+<<<<<<< HEAD
+		snd_hda_codec_write(codec, spec->autocfg.line_out_pins[0], 0,
+				    AC_VERB_SET_PIN_WIDGET_CONTROL,
+				    PIN_OUT);
+=======
 		snd_hda_codec_amp_stereo(codec, spec->autocfg.line_out_pins[0],
 					 HDA_OUTPUT, 0, HDA_AMP_MUTE, 0);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (vol_counter & 0x20) {
 			/* decrease volume */
 			if (vol > master_vol)
@@ -2954,12 +3251,43 @@ static void via_gpio_control(struct hda_codec *codec)
 	} else if (!(gpio_data & 0x02)) {
 		/* mute line out */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		snd_hda_codec_write(codec, spec->autocfg.line_out_pins[0], 0,
 				    AC_VERB_SET_PIN_WIDGET_CONTROL,
 				    0);
 	}
 }
 
+<<<<<<< HEAD
+/* unsolicited event for jack sensing */
+static void via_unsol_event(struct hda_codec *codec,
+				  unsigned int res)
+{
+	res >>= 26;
+	res = snd_hda_jack_get_action(codec, res);
+
+	if (res & VIA_JACK_EVENT)
+		set_widgets_power_state(codec);
+
+	res &= ~VIA_JACK_EVENT;
+
+	if (res == VIA_HP_EVENT || res == VIA_LINE_EVENT)
+		via_hp_automute(codec);
+	else if (res == VIA_GPIO_EVENT)
+		via_gpio_control(codec);
+	snd_hda_jack_report_sync(codec);
+}
+
+#ifdef CONFIG_PM
+static int via_suspend(struct hda_codec *codec, pm_message_t state)
+{
+	struct via_spec *spec = codec->spec;
+	vt1708_stop_hp_work(spec);
+	return 0;
+}
+=======
 =======
 		snd_hda_codec_amp_stereo(codec,
 					 spec->autocfg.line_out_pins[0],
@@ -3101,6 +3429,7 @@ static int via_suspend(struct hda_codec *codec, pm_message_t state)
 	vt1708_stop_hp_work(spec);
 	return 0;
 }
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef CONFIG_SND_HDA_POWER_SAVE
@@ -3118,7 +3447,13 @@ static int via_check_power_status(struct hda_codec *codec, hda_nid_t nid)
 static int via_init(struct hda_codec *codec);
 
 =======
+<<<<<<< HEAD
+
+static int via_init(struct hda_codec *codec);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct hda_codec_ops via_patch_ops = {
 	.build_controls = via_build_controls,
 	.build_pcms = via_build_pcms,
@@ -3128,8 +3463,13 @@ static const struct hda_codec_ops via_patch_ops = {
 	.unsol_event = via_unsol_event,
 #ifdef CONFIG_PM
 =======
+<<<<<<< HEAD
+	.unsol_event = via_unsol_event,
+#ifdef CONFIG_PM
+=======
 #ifdef SND_HDA_NEEDS_RESUME
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.suspend = via_suspend,
 #endif
 #ifdef CONFIG_SND_HDA_POWER_SAVE
@@ -3138,6 +3478,9 @@ static const struct hda_codec_ops via_patch_ops = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static bool is_empty_dac(struct hda_codec *codec, hda_nid_t dac)
 {
 	struct via_spec *spec = codec->spec;
@@ -3976,6 +4319,8 @@ static int via_auto_create_analog_input_ctls(struct hda_codec *codec)
 }
 
 static void vt1708_set_pinconfig_connect(struct hda_codec *codec, hda_nid_t nid)
+<<<<<<< HEAD
+=======
 =======
 /* fill in the dac_nids table from the parsed pin configuration */
 static int vt1708_auto_fill_dac_nids(struct via_spec *spec,
@@ -4211,6 +4556,7 @@ static const struct hda_amp_list vt1708_loopbacks[] = {
 
 static void vt1708_set_pinconfig_connect(struct hda_codec *codec, hda_nid_t nid)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned int def_conf;
 	unsigned char seqassoc;
@@ -4230,8 +4576,12 @@ static void vt1708_set_pinconfig_connect(struct hda_codec *codec, hda_nid_t nid)
 <<<<<<< HEAD
 static int vt1708_jack_detect_get(struct snd_kcontrol *kcontrol,
 =======
+<<<<<<< HEAD
+static int vt1708_jack_detect_get(struct snd_kcontrol *kcontrol,
+=======
 static int vt1708_jack_detectect_get(struct snd_kcontrol *kcontrol,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     struct snd_ctl_elem_value *ucontrol)
 {
 	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
@@ -4240,11 +4590,16 @@ static int vt1708_jack_detectect_get(struct snd_kcontrol *kcontrol,
 	if (spec->codec_type != VT1708)
 		return 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ucontrol->value.integer.value[0] = spec->vt1708_jack_detect;
 	return 0;
 }
 
 static int vt1708_jack_detect_put(struct snd_kcontrol *kcontrol,
+<<<<<<< HEAD
+=======
 =======
 	spec->vt1708_jack_detectect =
 		!((snd_hda_codec_read(codec, 0x1, 0, 0xf84, 0) >> 8) & 0x1);
@@ -4254,11 +4609,15 @@ static int vt1708_jack_detect_put(struct snd_kcontrol *kcontrol,
 
 static int vt1708_jack_detectect_put(struct snd_kcontrol *kcontrol,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				     struct snd_ctl_elem_value *ucontrol)
 {
 	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
 	struct via_spec *spec = codec->spec;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int val;
 
 	if (spec->codec_type != VT1708)
@@ -4290,6 +4649,8 @@ static void fill_dig_outs(struct hda_codec *codec);
 static void fill_dig_in(struct hda_codec *codec);
 
 static int via_parse_auto_config(struct hda_codec *codec)
+<<<<<<< HEAD
+=======
 =======
 	int change;
 
@@ -4319,11 +4680,15 @@ static const struct snd_kcontrol_new vt1708_jack_detectect[] = {
 
 static int vt1708_parse_auto_config(struct hda_codec *codec)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct via_spec *spec = codec->spec;
 	int err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = snd_hda_parse_pin_def_config(codec, &spec->autocfg, NULL);
 	if (err < 0)
 		return err;
@@ -4343,6 +4708,8 @@ static int vt1708_parse_auto_config(struct hda_codec *codec)
 	if (err < 0)
 		return err;
 	err = via_auto_create_analog_input_ctls(codec);
+<<<<<<< HEAD
+=======
 =======
 	/* Add HP and CD pin config connect bit re-config action */
 	vt1708_set_pinconfig_connect(codec, VT1708_HP_PIN_NID);
@@ -4369,11 +4736,16 @@ static int vt1708_parse_auto_config(struct hda_codec *codec)
 	/* add jack detect on/off control */
 	err = snd_hda_add_new_ctls(codec, vt1708_jack_detectect);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err < 0)
 		return err;
 
 	spec->multiout.max_channels = spec->multiout.num_dacs * 2;
 
+<<<<<<< HEAD
+	fill_dig_outs(codec);
+	fill_dig_in(codec);
+=======
 <<<<<<< HEAD
 	fill_dig_outs(codec);
 	fill_dig_in(codec);
@@ -4384,11 +4756,15 @@ static int vt1708_parse_auto_config(struct hda_codec *codec)
 	if (spec->autocfg.dig_in_pin)
 		spec->dig_in_nid = VT1708_DIGIN_NID;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (spec->kctls.list)
 		spec->mixers[spec->num_mixers++] = spec->kctls.list;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (spec->hp_dac_nid && spec->hp_mix_path.depth) {
 		err = via_hp_build(codec);
@@ -4480,6 +4856,8 @@ static int via_init(struct hda_codec *codec)
 	vt1708_update_hp_work(spec);
 	snd_hda_jack_report_sync(codec);
 
+<<<<<<< HEAD
+=======
 =======
 	spec->init_verbs[spec->num_iverbs++] = vt1708_volume_init_verbs;
 
@@ -4510,6 +4888,7 @@ static int via_auto_init(struct hda_codec *codec)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -4522,7 +4901,11 @@ static void vt1708_update_hp_jack_state(struct work_struct *work)
 <<<<<<< HEAD
 	snd_hda_jack_set_dirty_all(spec->codec);
 =======
+<<<<<<< HEAD
+	snd_hda_jack_set_dirty_all(spec->codec);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* if jack state toggled */
 	if (spec->vt1708_hp_present
 	    != snd_hda_jack_detect(spec->codec, spec->autocfg.hp_pins[0])) {
@@ -4534,8 +4917,14 @@ static void vt1708_update_hp_jack_state(struct work_struct *work)
 		schedule_delayed_work(&spec->vt1708_hp_work,
 				      msecs_to_jiffies(100));
 =======
+<<<<<<< HEAD
+	if (spec->vt1708_jack_detect)
+		schedule_delayed_work(&spec->vt1708_hp_work,
+				      msecs_to_jiffies(100));
+=======
 	vt1708_start_hp_work(spec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int get_mux_nids(struct hda_codec *codec)
@@ -4576,6 +4965,9 @@ static int patch_vt1708(struct hda_codec *codec)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->aa_mix_nid = 0x17;
 
 	/* Add HP and CD pin config connect bit re-config action */
@@ -4601,6 +4993,8 @@ static int patch_vt1708(struct hda_codec *codec)
 
 	codec->patch_ops = via_patch_ops;
 
+<<<<<<< HEAD
+=======
 =======
 	/* automatic parse from the BIOS config */
 	err = vt1708_parse_auto_config(codec);
@@ -4640,11 +5034,15 @@ static int patch_vt1708(struct hda_codec *codec)
 	spec->loopback.amplist = vt1708_loopbacks;
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	INIT_DELAYED_WORK(&spec->vt1708_hp_work, vt1708_update_hp_jack_state);
 	return 0;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int patch_vt1709(struct hda_codec *codec)
 {
 	struct via_spec *spec;
@@ -4927,6 +5325,17 @@ static void set_widgets_power_state_vt1702(struct hda_codec *codec)
 }
 
 static int patch_vt1702(struct hda_codec *codec)
+<<<<<<< HEAD
+{
+	struct via_spec *spec;
+	int err;
+
+	/* create a codec specific record */
+	spec = via_new_spec(codec);
+	if (spec == NULL)
+		return -ENOMEM;
+
+=======
 =======
 /* capture mixer elements */
 static const struct snd_kcontrol_new vt1709_capture_mixer[] = {
@@ -5329,6 +5738,7 @@ static int patch_vt1709_10ch(struct hda_codec *codec)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->aa_mix_nid = 0x1a;
 
 	/* limit AA path volume to 0 dB */
@@ -5462,6 +5872,8 @@ static int add_secret_dac_path(struct hda_codec *codec)
 
 
 static int patch_vt1718S(struct hda_codec *codec)
+<<<<<<< HEAD
+=======
 =======
 	err = vt1709_parse_auto_config(codec);
 	if (err < 0) {
@@ -5547,6 +5959,7 @@ static const struct hda_verb vt1709_6ch_volume_init_verbs[] = {
 
 static int patch_vt1709_6ch(struct hda_codec *codec)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct via_spec *spec;
 	int err;
@@ -5557,6 +5970,9 @@ static int patch_vt1709_6ch(struct hda_codec *codec)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->aa_mix_nid = 0x21;
 	override_mic_boost(codec, 0x2b, 0, 3, 40);
 	override_mic_boost(codec, 0x29, 0, 3, 40);
@@ -5621,6 +6037,29 @@ static int vt1716s_dmic_put(struct snd_kcontrol *kcontrol,
 static const struct snd_kcontrol_new vt1716s_dmic_mixer[] = {
 	HDA_CODEC_VOLUME("Digital Mic Capture Volume", 0x22, 0x0, HDA_INPUT),
 	{
+<<<<<<< HEAD
+	 .iface = SNDRV_CTL_ELEM_IFACE_MIXER,
+	 .name = "Digital Mic Capture Switch",
+	 .subdevice = HDA_SUBDEV_NID_FLAG | 0x26,
+	 .count = 1,
+	 .info = vt1716s_dmic_info,
+	 .get = vt1716s_dmic_get,
+	 .put = vt1716s_dmic_put,
+	 },
+	{}			/* end */
+};
+
+
+/* mono-out mixer elements */
+static const struct snd_kcontrol_new vt1716S_mono_out_mixer[] = {
+	HDA_CODEC_MUTE("Mono Playback Switch", 0x2a, 0x0, HDA_OUTPUT),
+	{ } /* end */
+};
+
+static const struct hda_verb vt1716S_init_verbs[] = {
+	/* Enable Boost Volume backdoor */
+	{0x1, 0xf8a, 0x80},
+=======
 =======
 	err = vt1709_parse_auto_config(codec);
 	if (err < 0) {
@@ -7694,6 +8133,7 @@ static const struct hda_verb vt1716S_volume_init_verbs[] = {
 	{0x2a, AC_VERB_SET_PIN_WIDGET_CONTROL, 0x40},
 	/* Enable Boost Volume backdoor */
 	{0x1, 0xf8a, 0x80},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* don't bybass mixer */
 	{0x1, 0xf88, 0xc0},
 	/* Enable mono output */
@@ -7701,6 +8141,8 @@ static const struct hda_verb vt1716S_volume_init_verbs[] = {
 	{ }
 };
 
+<<<<<<< HEAD
+=======
 
 static const struct hda_verb vt1716S_uniwill_init_verbs[] = {
 	{0x1d, AC_VERB_SET_UNSOLICITED_ENABLE,
@@ -7968,6 +8410,7 @@ static const struct hda_amp_list vt1716S_loopbacks[] = {
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
 
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void set_widgets_power_state_vt1716S(struct hda_codec *codec)
 {
 	struct via_spec *spec = codec->spec;
@@ -7991,9 +8434,14 @@ static void set_widgets_power_state_vt1716S(struct hda_codec *codec)
 	update_power_state(codec, 0x17, parm);
 	update_power_state(codec, 0x13, parm);
 =======
+<<<<<<< HEAD
+	update_power_state(codec, 0x17, parm);
+	update_power_state(codec, 0x13, parm);
+=======
 	snd_hda_codec_write(codec, 0x17, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x13, 0, AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	parm = AC_PWRST_D3;
 	set_pin_power_state(codec, 0x1e, &parm);
@@ -8002,11 +8450,16 @@ static void set_widgets_power_state_vt1716S(struct hda_codec *codec)
 		set_pin_power_state(codec, 0x22, &parm);
 	else
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		update_power_state(codec, 0x22, AC_PWRST_D3);
 
 	/* SW2(26h), AIW1(14h) */
 	update_power_state(codec, 0x26, parm);
 	update_power_state(codec, 0x14, parm);
+<<<<<<< HEAD
+=======
 =======
 		snd_hda_codec_write(codec, 0x22, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D3);
@@ -8015,6 +8468,7 @@ static void set_widgets_power_state_vt1716S(struct hda_codec *codec)
 	snd_hda_codec_write(codec, 0x26, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x14, 0, AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* outputs */
 	/* PW0 (19h), SW1 (18h), AOW1 (11h) */
@@ -8027,9 +8481,14 @@ static void set_widgets_power_state_vt1716S(struct hda_codec *codec)
 	update_power_state(codec, 0x18, parm);
 	update_power_state(codec, 0x11, parm);
 =======
+<<<<<<< HEAD
+	update_power_state(codec, 0x18, parm);
+	update_power_state(codec, 0x11, parm);
+=======
 	snd_hda_codec_write(codec, 0x18, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x11, 0, AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* PW7 (23h), SW3 (27h), AOW3 (25h) */
 	parm = AC_PWRST_D3;
@@ -8038,6 +8497,9 @@ static void set_widgets_power_state_vt1716S(struct hda_codec *codec)
 	if (spec->smart51_enabled)
 		set_pin_power_state(codec, 0x1a, &parm);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	update_power_state(codec, 0x27, parm);
 
 	/* Smart 5.1 PW5(1eh) */
@@ -8096,6 +8558,44 @@ static int patch_vt1716S(struct hda_codec *codec)
 	if (err < 0) {
 		via_free(codec);
 		return err;
+<<<<<<< HEAD
+	}
+
+	spec->init_verbs[spec->num_iverbs++]  = vt1716S_init_verbs;
+
+	spec->mixers[spec->num_mixers] = vt1716s_dmic_mixer;
+	spec->num_mixers++;
+
+	spec->mixers[spec->num_mixers++] = vt1716S_mono_out_mixer;
+
+	codec->patch_ops = via_patch_ops;
+
+	spec->set_widgets_power_state = set_widgets_power_state_vt1716S;
+	return 0;
+}
+
+/* for vt2002P */
+
+static const struct hda_verb vt2002P_init_verbs[] = {
+	/* Class-D speaker related verbs */
+	{0x1, 0xfe0, 0x4},
+	{0x1, 0xfe9, 0x80},
+	{0x1, 0xfe2, 0x22},
+	/* Enable Boost Volume backdoor */
+	{0x1, 0xfb9, 0x24},
+	/* Enable AOW0 to MW9 */
+	{0x1, 0xfb8, 0x88},
+	{ }
+};
+
+static const struct hda_verb vt1802_init_verbs[] = {
+	/* Enable Boost Volume backdoor */
+	{0x1, 0xfb9, 0x24},
+	/* Enable AOW0 to MW9 */
+	{0x1, 0xfb8, 0x88},
+	{ }
+};
+=======
 	}
 
 	spec->init_verbs[spec->num_iverbs++]  = vt1716S_init_verbs;
@@ -8570,6 +9070,7 @@ static const struct hda_amp_list vt2002P_loopbacks[] = {
 };
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 {
@@ -8589,6 +9090,9 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 	parm = AC_PWRST_D0;
 	/* MUX9/10 (1eh/1fh), AIW 0/1 (10h/11h) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	update_power_state(codec, 0x1e, parm);
 	update_power_state(codec, 0x1f, parm);
 	update_power_state(codec, 0x10, parm);
@@ -8597,6 +9101,8 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 	/* outputs */
 	/* AOW0 (8h)*/
 	update_power_state(codec, 0x8, parm);
+<<<<<<< HEAD
+=======
 =======
 	snd_hda_codec_write(codec, 0x1e, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x1f, 0, AC_VERB_SET_POWER_STATE, parm);
@@ -8607,6 +9113,7 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 	/* AOW0 (8h)*/
 	snd_hda_codec_write(codec, 0x8, 0, AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (spec->codec_type == VT1802) {
 		/* PW4 (28h), MW4 (18h), MUX4(38h) */
@@ -8616,15 +9123,24 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 		update_power_state(codec, 0x18, parm);
 		update_power_state(codec, 0x38, parm);
 =======
+<<<<<<< HEAD
+		update_power_state(codec, 0x18, parm);
+		update_power_state(codec, 0x38, parm);
+=======
 		snd_hda_codec_write(codec, 0x18, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
 		snd_hda_codec_write(codec, 0x38, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* PW4 (26h), MW4 (1ch), MUX4(37h) */
 		parm = AC_PWRST_D3;
 		set_pin_power_state(codec, 0x26, &parm);
+<<<<<<< HEAD
+		update_power_state(codec, 0x1c, parm);
+		update_power_state(codec, 0x37, parm);
+=======
 <<<<<<< HEAD
 		update_power_state(codec, 0x1c, parm);
 		update_power_state(codec, 0x37, parm);
@@ -8634,6 +9150,7 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 		snd_hda_codec_write(codec, 0x37, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (spec->codec_type == VT1802) {
@@ -8644,22 +9161,32 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 		update_power_state(codec, 0x15, parm);
 		update_power_state(codec, 0x35, parm);
 =======
+<<<<<<< HEAD
+		update_power_state(codec, 0x15, parm);
+		update_power_state(codec, 0x35, parm);
+=======
 		snd_hda_codec_write(codec, 0x15, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
 		snd_hda_codec_write(codec, 0x35, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		/* PW1 (25h), MW1 (19h), MUX1(35h), AOW1 (9h) */
 		parm = AC_PWRST_D3;
 		set_pin_power_state(codec, 0x25, &parm);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		update_power_state(codec, 0x19, parm);
 		update_power_state(codec, 0x35, parm);
 	}
 
 	if (spec->hp_independent_mode)
 		update_power_state(codec, 0x9, AC_PWRST_D0);
+<<<<<<< HEAD
+=======
 =======
 		snd_hda_codec_write(codec, 0x19, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
@@ -8671,6 +9198,7 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 		snd_hda_codec_write(codec, 0x9, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Class-D */
 	/* PW0 (24h), MW0(18h/14h), MUX0(34h) */
@@ -8681,10 +9209,15 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 	parm = present ? AC_PWRST_D3 : AC_PWRST_D0;
 	if (spec->codec_type == VT1802)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		update_power_state(codec, 0x14, parm);
 	else
 		update_power_state(codec, 0x18, parm);
 	update_power_state(codec, 0x34, parm);
+<<<<<<< HEAD
+=======
 =======
 		snd_hda_codec_write(codec, 0x14, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
@@ -8693,6 +9226,7 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 				    AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x34, 0, AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Mono Out */
 	present = snd_hda_jack_detect(codec, 0x26);
@@ -8701,6 +9235,9 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 	if (spec->codec_type == VT1802) {
 		/* PW15 (33h), MW8(1ch), MUX8(3ch) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		update_power_state(codec, 0x33, parm);
 		update_power_state(codec, 0x1c, parm);
 		update_power_state(codec, 0x3c, parm);
@@ -8715,6 +9252,8 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 		update_power_state(codec, 0x21, AC_PWRST_D0);
 	else
 		update_power_state(codec, 0x21, AC_PWRST_D3);
+<<<<<<< HEAD
+=======
 =======
 		snd_hda_codec_write(codec, 0x33, 0,
 				    AC_VERB_SET_POWER_STATE, parm);
@@ -8739,6 +9278,7 @@ static void set_widgets_power_state_vt2002P(struct hda_codec *codec)
 		snd_hda_codec_write(codec, 0x21, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D3);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* patch for vt2002P */
@@ -8753,6 +9293,9 @@ static int patch_vt2002P(struct hda_codec *codec)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->aa_mix_nid = 0x21;
 	override_mic_boost(codec, 0x2b, 0, 3, 40);
 	override_mic_boost(codec, 0x29, 0, 3, 40);
@@ -8772,6 +9315,8 @@ static int patch_vt2002P(struct hda_codec *codec)
 
 	codec->patch_ops = via_patch_ops;
 
+<<<<<<< HEAD
+=======
 =======
 	/* automatic parse from the BIOS config */
 	err = vt2002P_parse_auto_config(codec);
@@ -8830,12 +9375,18 @@ static int patch_vt2002P(struct hda_codec *codec)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->set_widgets_power_state =  set_widgets_power_state_vt2002P;
 	return 0;
 }
 
 /* for vt1812 */
 
+<<<<<<< HEAD
+static const struct hda_verb vt1812_init_verbs[] = {
+	/* Enable Boost Volume backdoor */
+	{0x1, 0xfb9, 0x24},
+=======
 <<<<<<< HEAD
 static const struct hda_verb vt1812_init_verbs[] = {
 	/* Enable Boost Volume backdoor */
@@ -8912,11 +9463,19 @@ static const struct hda_verb vt1812_volume_init_verbs[] = {
 	{0x3d, AC_VERB_SET_CONNECT_SEL, 0},
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Enable AOW0 to MW9 */
 	{0x1, 0xfb8, 0xa8},
 	{ }
 };
 
+<<<<<<< HEAD
+static void set_widgets_power_state_vt1812(struct hda_codec *codec)
+{
+	struct via_spec *spec = codec->spec;
+	unsigned int parm;
+	unsigned int present;
+=======
 <<<<<<< HEAD
 static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 {
@@ -9126,6 +9685,7 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	imux_is_smixer =
 	snd_hda_codec_read(codec, 0x1e, 0, AC_VERB_GET_CONNECT_SEL, 0x00) == 5;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* inputs */
 	/* PW 5/6/7 (29h/2ah/2bh) */
 	parm = AC_PWRST_D3;
@@ -9135,6 +9695,9 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	parm = AC_PWRST_D0;
 	/* MUX10/11 (1eh/1fh), AIW 0/1 (10h/11h) */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	update_power_state(codec, 0x1e, parm);
 	update_power_state(codec, 0x1f, parm);
 	update_power_state(codec, 0x10, parm);
@@ -9143,6 +9706,8 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	/* outputs */
 	/* AOW0 (8h)*/
 	update_power_state(codec, 0x8, AC_PWRST_D0);
+<<<<<<< HEAD
+=======
 =======
 	snd_hda_codec_write(codec, 0x1e, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x1f, 0, AC_VERB_SET_POWER_STATE, parm);
@@ -9154,6 +9719,7 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	snd_hda_codec_write(codec, 0x8, 0,
 			    AC_VERB_SET_POWER_STATE, AC_PWRST_D0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* PW4 (28h), MW4 (18h), MUX4(38h) */
 	parm = AC_PWRST_D3;
@@ -9162,18 +9728,28 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	update_power_state(codec, 0x18, parm);
 	update_power_state(codec, 0x38, parm);
 =======
+<<<<<<< HEAD
+	update_power_state(codec, 0x18, parm);
+	update_power_state(codec, 0x38, parm);
+=======
 	snd_hda_codec_write(codec, 0x18, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x38, 0, AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* PW1 (25h), MW1 (15h), MUX1(35h), AOW1 (9h) */
 	parm = AC_PWRST_D3;
 	set_pin_power_state(codec, 0x25, &parm);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	update_power_state(codec, 0x15, parm);
 	update_power_state(codec, 0x35, parm);
 	if (spec->hp_independent_mode)
 		update_power_state(codec, 0x9, AC_PWRST_D0);
+<<<<<<< HEAD
+=======
 =======
 	snd_hda_codec_write(codec, 0x15, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x35, 0, AC_VERB_SET_POWER_STATE, parm);
@@ -9181,6 +9757,7 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 		snd_hda_codec_write(codec, 0x9, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Internal Speaker */
 	/* PW0 (24h), MW0(14h), MUX0(34h) */
@@ -9190,11 +9767,16 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	set_pin_power_state(codec, 0x24, &parm);
 	if (present) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		update_power_state(codec, 0x14, AC_PWRST_D3);
 		update_power_state(codec, 0x34, AC_PWRST_D3);
 	} else {
 		update_power_state(codec, 0x14, AC_PWRST_D0);
 		update_power_state(codec, 0x34, AC_PWRST_D0);
+<<<<<<< HEAD
+=======
 =======
 		snd_hda_codec_write(codec, 0x14, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D3);
@@ -9206,6 +9788,7 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 		snd_hda_codec_write(codec, 0x34, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 
@@ -9217,6 +9800,9 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	set_pin_power_state(codec, 0x31, &parm);
 	if (present) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		update_power_state(codec, 0x1c, AC_PWRST_D3);
 		update_power_state(codec, 0x3c, AC_PWRST_D3);
 		update_power_state(codec, 0x3e, AC_PWRST_D3);
@@ -9224,6 +9810,8 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 		update_power_state(codec, 0x1c, AC_PWRST_D0);
 		update_power_state(codec, 0x3c, AC_PWRST_D0);
 		update_power_state(codec, 0x3e, AC_PWRST_D0);
+<<<<<<< HEAD
+=======
 =======
 		snd_hda_codec_write(codec, 0x1c, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D3);
@@ -9239,6 +9827,7 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 		snd_hda_codec_write(codec, 0x3e, 0,
 				    AC_VERB_SET_POWER_STATE, AC_PWRST_D0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* PW15 (33h), MW15 (1dh), MUX15(3dh) */
@@ -9248,9 +9837,14 @@ static void set_widgets_power_state_vt1812(struct hda_codec *codec)
 	update_power_state(codec, 0x1d, parm);
 	update_power_state(codec, 0x3d, parm);
 =======
+<<<<<<< HEAD
+	update_power_state(codec, 0x1d, parm);
+	update_power_state(codec, 0x3d, parm);
+=======
 	snd_hda_codec_write(codec, 0x1d, 0, AC_VERB_SET_POWER_STATE, parm);
 	snd_hda_codec_write(codec, 0x3d, 0, AC_VERB_SET_POWER_STATE, parm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 }
 
@@ -9266,6 +9860,9 @@ static int patch_vt1812(struct hda_codec *codec)
 		return -ENOMEM;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->aa_mix_nid = 0x21;
 	override_mic_boost(codec, 0x2b, 0, 3, 40);
 	override_mic_boost(codec, 0x29, 0, 3, 40);
@@ -9282,6 +9879,8 @@ static int patch_vt1812(struct hda_codec *codec)
 
 	codec->patch_ops = via_patch_ops;
 
+<<<<<<< HEAD
+=======
 =======
 	/* automatic parse from the BIOS config */
 	err = vt1812_parse_auto_config(codec);
@@ -9325,6 +9924,7 @@ static int patch_vt1812(struct hda_codec *codec)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spec->set_widgets_power_state =  set_widgets_power_state_vt1812;
 	return 0;
 }
@@ -9339,6 +9939,9 @@ static const struct hda_codec_preset snd_hda_preset_via[] = {
 	{ .id = 0x1106170b, .name = "VT1708", .patch = patch_vt1708},
 	{ .id = 0x1106e710, .name = "VT1709 10-Ch",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	  .patch = patch_vt1709},
 	{ .id = 0x1106e711, .name = "VT1709 10-Ch",
 	  .patch = patch_vt1709},
@@ -9370,6 +9973,8 @@ static const struct hda_codec_preset snd_hda_preset_via[] = {
 	  .patch = patch_vt1708B},
 	{ .id = 0x1106e727, .name = "VT1708B 4-Ch",
 	  .patch = patch_vt1708B},
+<<<<<<< HEAD
+=======
 =======
 	  .patch = patch_vt1709_10ch},
 	{ .id = 0x1106e711, .name = "VT1709 10-Ch",
@@ -9403,6 +10008,7 @@ static const struct hda_codec_preset snd_hda_preset_via[] = {
 	{ .id = 0x1106e727, .name = "VT1708B 4-Ch",
 	  .patch = patch_vt1708B_4ch},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ .id = 0x11060397, .name = "VT1708S",
 	  .patch = patch_vt1708S},
 	{ .id = 0x11061397, .name = "VT1708S",

@@ -91,11 +91,16 @@ xfs_buf_item_flush_log_debug(
 	uint		last)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_buf_log_item_t	*bip = bp->b_fspriv;
 	uint			nbytes;
 
 	if (bip == NULL || (bip->bli_item.li_type != XFS_LI_BUF))
 		return;
+<<<<<<< HEAD
+=======
 =======
 	xfs_buf_log_item_t	*bip;
 	uint			nbytes;
@@ -105,6 +110,7 @@ xfs_buf_item_flush_log_debug(
 		return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT(bip->bli_logged != NULL);
 	nbytes = last - first + 1;
@@ -139,10 +145,16 @@ xfs_buf_item_log_check(
 	orig = bip->bli_orig;
 	buffer = bp->b_addr;
 =======
+<<<<<<< HEAD
+	ASSERT(bp->b_addr != NULL);
+	orig = bip->bli_orig;
+	buffer = bp->b_addr;
+=======
 	ASSERT(XFS_BUF_PTR(bp) != NULL);
 	orig = bip->bli_orig;
 	buffer = XFS_BUF_PTR(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (x = 0; x < XFS_BUF_COUNT(bp); x++) {
 		if (orig[x] != buffer[x] && !btst(bip->bli_logged, x)) {
 			xfs_emerg(bp->b_mount,
@@ -389,8 +401,11 @@ xfs_buf_item_pin(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	ASSERT(XFS_BUF_ISBUSY(bip->bli_buf));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(atomic_read(&bip->bli_refcount) > 0);
 	ASSERT((bip->bli_flags & XFS_BLI_LOGGED) ||
 	       (bip->bli_flags & XFS_BLI_STALE));
@@ -428,8 +443,12 @@ xfs_buf_item_unpin(
 <<<<<<< HEAD
 	ASSERT(bp->b_fspriv == bip);
 =======
+<<<<<<< HEAD
+	ASSERT(bp->b_fspriv == bip);
+=======
 	ASSERT(XFS_BUF_FSPRIVATE(bp, xfs_buf_log_item_t *) == bip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(atomic_read(&bip->bli_refcount) > 0);
 
 	trace_xfs_buf_item_unpin(bip);
@@ -444,8 +463,12 @@ xfs_buf_item_unpin(
 <<<<<<< HEAD
 		ASSERT(xfs_buf_islocked(bp));
 =======
+<<<<<<< HEAD
+		ASSERT(xfs_buf_islocked(bp));
+=======
 		ASSERT(XFS_BUF_VALUSEMA(bp) <= 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(!(XFS_BUF_ISDELAYWRITE(bp)));
 		ASSERT(XFS_BUF_ISSTALE(bp));
 		ASSERT(bip->bli_format.blf_flags & XFS_BLF_CANCEL);
@@ -471,8 +494,12 @@ xfs_buf_item_unpin(
 <<<<<<< HEAD
 			bp->b_transp = NULL;
 =======
+<<<<<<< HEAD
+			bp->b_transp = NULL;
+=======
 			XFS_BUF_SET_FSPRIVATE2(bp, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 
 		/*
@@ -487,9 +514,14 @@ xfs_buf_item_unpin(
 			bp->b_fspriv = NULL;
 			bp->b_iodone = NULL;
 =======
+<<<<<<< HEAD
+			bp->b_fspriv = NULL;
+			bp->b_iodone = NULL;
+=======
 			XFS_BUF_SET_FSPRIVATE(bp, NULL);
 			XFS_BUF_CLR_IODONE_FUNC(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		} else {
 			spin_lock(&ailp->xa_lock);
 			xfs_trans_ail_delete(ailp, (xfs_log_item_t *)bip);
@@ -497,8 +529,12 @@ xfs_buf_item_unpin(
 <<<<<<< HEAD
 			ASSERT(bp->b_fspriv == NULL);
 =======
+<<<<<<< HEAD
+			ASSERT(bp->b_fspriv == NULL);
+=======
 			ASSERT(XFS_BUF_FSPRIVATE(bp, void *) == NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		xfs_buf_relse(bp);
 	}
@@ -520,6 +556,9 @@ xfs_buf_item_trylock(
 	struct xfs_buf		*bp = bip->bli_buf;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (xfs_buf_ispinned(bp))
 		return XFS_ITEM_PINNED;
 	if (!xfs_buf_trylock(bp))
@@ -527,6 +566,8 @@ xfs_buf_item_trylock(
 
 	/* take a reference to the buffer.  */
 	xfs_buf_hold(bp);
+<<<<<<< HEAD
+=======
 =======
 	if (XFS_BUF_ISPINNED(bp))
 		return XFS_ITEM_PINNED;
@@ -536,6 +577,7 @@ xfs_buf_item_trylock(
 	/* take a reference to the buffer.  */
 	XFS_BUF_HOLD(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ASSERT(!(bip->bli_flags & XFS_BLI_STALE));
 	trace_xfs_buf_item_trylock(bip);
@@ -576,8 +618,12 @@ xfs_buf_item_unlock(
 <<<<<<< HEAD
 	bp->b_transp = NULL;
 =======
+<<<<<<< HEAD
+	bp->b_transp = NULL;
+=======
 	XFS_BUF_SET_FSPRIVATE2(bp, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If this is a transaction abort, don't return early.  Instead, allow
@@ -714,8 +760,12 @@ xfs_buf_item_committing(
 <<<<<<< HEAD
 static const struct xfs_item_ops xfs_buf_item_ops = {
 =======
+<<<<<<< HEAD
+static const struct xfs_item_ops xfs_buf_item_ops = {
+=======
 static struct xfs_item_ops xfs_buf_item_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.iop_size	= xfs_buf_item_size,
 	.iop_format	= xfs_buf_item_format,
 	.iop_pin	= xfs_buf_item_pin,
@@ -744,8 +794,12 @@ xfs_buf_item_init(
 <<<<<<< HEAD
 	xfs_log_item_t		*lip = bp->b_fspriv;
 =======
+<<<<<<< HEAD
+	xfs_log_item_t		*lip = bp->b_fspriv;
+=======
 	xfs_log_item_t		*lip;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_buf_log_item_t	*bip;
 	int			chunks;
 	int			map_size;
@@ -761,6 +815,10 @@ xfs_buf_item_init(
 	if (lip != NULL && lip->li_type == XFS_LI_BUF)
 		return;
 =======
+<<<<<<< HEAD
+	if (lip != NULL && lip->li_type == XFS_LI_BUF)
+		return;
+=======
 	if (XFS_BUF_FSPRIVATE(bp, void *) != NULL) {
 		lip = XFS_BUF_FSPRIVATE(bp, xfs_log_item_t *);
 		if (lip->li_type == XFS_LI_BUF) {
@@ -768,6 +826,7 @@ xfs_buf_item_init(
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * chunks is the number of XFS_BLF_CHUNK size pieces
@@ -801,8 +860,12 @@ xfs_buf_item_init(
 <<<<<<< HEAD
 	memcpy(bip->bli_orig, bp->b_addr, XFS_BUF_COUNT(bp));
 =======
+<<<<<<< HEAD
+	memcpy(bip->bli_orig, bp->b_addr, XFS_BUF_COUNT(bp));
+=======
 	memcpy(bip->bli_orig, XFS_BUF_PTR(bp), XFS_BUF_COUNT(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bip->bli_logged = (char *)kmem_zalloc(XFS_BUF_COUNT(bp) / NBBY, KM_SLEEP);
 #endif
 
@@ -815,12 +878,18 @@ xfs_buf_item_init(
 		bip->bli_item.li_bio_list = bp->b_fspriv;
 	bp->b_fspriv = bip;
 =======
+<<<<<<< HEAD
+	if (bp->b_fspriv)
+		bip->bli_item.li_bio_list = bp->b_fspriv;
+	bp->b_fspriv = bip;
+=======
 	if (XFS_BUF_FSPRIVATE(bp, void *) != NULL) {
 		bip->bli_item.li_bio_list =
 				XFS_BUF_FSPRIVATE(bp, xfs_log_item_t *);
 	}
 	XFS_BUF_SET_FSPRIVATE(bp, bip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -953,11 +1022,16 @@ xfs_buf_item_relse(
 	trace_xfs_buf_item_relse(bp, _RET_IP_);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bip = bp->b_fspriv;
 	bp->b_fspriv = bip->bli_item.li_bio_list;
 	if (bp->b_fspriv == NULL)
 		bp->b_iodone = NULL;
 
+<<<<<<< HEAD
+=======
 =======
 	bip = XFS_BUF_FSPRIVATE(bp, xfs_buf_log_item_t*);
 	XFS_BUF_SET_FSPRIVATE(bp, bip->bli_item.li_bio_list);
@@ -966,6 +1040,7 @@ xfs_buf_item_relse(
 		XFS_BUF_CLR_IODONE_FUNC(bp);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_buf_rele(bp);
 	xfs_buf_item_free(bip);
 }
@@ -989,6 +1064,9 @@ xfs_buf_attach_iodone(
 	xfs_log_item_t	*head_lip;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ASSERT(xfs_buf_islocked(bp));
 
 	lip->li_cb = cb;
@@ -1003,6 +1081,8 @@ xfs_buf_attach_iodone(
 	ASSERT(bp->b_iodone == NULL ||
 	       bp->b_iodone == xfs_buf_iodone_callbacks);
 	bp->b_iodone = xfs_buf_iodone_callbacks;
+<<<<<<< HEAD
+=======
 =======
 	ASSERT(XFS_BUF_ISBUSY(bp));
 	ASSERT(XFS_BUF_VALUSEMA(bp) <= 0);
@@ -1020,6 +1100,7 @@ xfs_buf_attach_iodone(
 	       (XFS_BUF_IODONE_FUNC(bp) == NULL));
 	XFS_BUF_SET_IODONE_FUNC(bp, xfs_buf_iodone_callbacks);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -1044,9 +1125,14 @@ xfs_buf_do_callbacks(
 	while ((lip = bp->b_fspriv) != NULL) {
 		bp->b_fspriv = lip->li_bio_list;
 =======
+<<<<<<< HEAD
+	while ((lip = bp->b_fspriv) != NULL) {
+		bp->b_fspriv = lip->li_bio_list;
+=======
 	while ((lip = XFS_BUF_FSPRIVATE(bp, xfs_log_item_t *)) != NULL) {
 		XFS_BUF_SET_FSPRIVATE(bp, lip->li_bio_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ASSERT(lip->li_cb != NULL);
 		/*
 		 * Clear the next pointer so we don't have any
@@ -1078,8 +1164,12 @@ xfs_buf_iodone_callbacks(
 <<<<<<< HEAD
 	if (likely(!xfs_buf_geterror(bp)))
 =======
+<<<<<<< HEAD
+	if (likely(!xfs_buf_geterror(bp)))
+=======
 	if (likely(!XFS_BUF_GETERROR(bp)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto do_callbacks;
 
 	/*
@@ -1091,19 +1181,29 @@ xfs_buf_iodone_callbacks(
 		xfs_buf_stale(bp);
 		XFS_BUF_DONE(bp);
 =======
+<<<<<<< HEAD
+		xfs_buf_stale(bp);
+		XFS_BUF_DONE(bp);
+=======
 		XFS_BUF_SUPER_STALE(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_buf_item_iodone(bp, _RET_IP_);
 		goto do_callbacks;
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (bp->b_target != lasttarg ||
 	    time_after(jiffies, (lasttime + 5*HZ))) {
 		lasttime = jiffies;
 		xfs_buf_ioerror_alert(bp, __func__);
 	}
 	lasttarg = bp->b_target;
+<<<<<<< HEAD
+=======
 =======
 	if (XFS_BUF_TARGET(bp) != lasttarg ||
 	    time_after(jiffies, (lasttime + 5*HZ))) {
@@ -1114,6 +1214,7 @@ xfs_buf_iodone_callbacks(
 	}
 	lasttarg = XFS_BUF_TARGET(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If the write was asynchronous then no one will be looking for the
@@ -1125,6 +1226,9 @@ xfs_buf_iodone_callbacks(
 	 */
 	if (XFS_BUF_ISASYNC(bp)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_buf_ioerror(bp, 0); /* errno of 0 unsets the flag */
 
 		if (!XFS_BUF_ISSTALE(bp)) {
@@ -1132,6 +1236,8 @@ xfs_buf_iodone_callbacks(
 			XFS_BUF_DONE(bp);
 		}
 		ASSERT(bp->b_iodone != NULL);
+<<<<<<< HEAD
+=======
 =======
 		XFS_BUF_ERROR(bp, 0); /* errno of 0 unsets the flag */
 
@@ -1142,6 +1248,7 @@ xfs_buf_iodone_callbacks(
 		}
 		ASSERT(XFS_BUF_IODONE_FUNC(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		trace_xfs_buf_item_iodone_async(bp, _RET_IP_);
 		xfs_buf_relse(bp);
 		return;
@@ -1155,10 +1262,15 @@ xfs_buf_iodone_callbacks(
 	xfs_buf_stale(bp);
 	XFS_BUF_DONE(bp);
 =======
+<<<<<<< HEAD
+	xfs_buf_stale(bp);
+	XFS_BUF_DONE(bp);
+=======
 	XFS_BUF_STALE(bp);
 	XFS_BUF_DONE(bp);
 	XFS_BUF_UNDELAYWRITE(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	trace_xfs_buf_error_relse(bp, _RET_IP_);
 
@@ -1168,9 +1280,14 @@ do_callbacks:
 	bp->b_fspriv = NULL;
 	bp->b_iodone = NULL;
 =======
+<<<<<<< HEAD
+	bp->b_fspriv = NULL;
+	bp->b_iodone = NULL;
+=======
 	XFS_BUF_SET_FSPRIVATE(bp, NULL);
 	XFS_BUF_CLR_IODONE_FUNC(bp);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_buf_ioend(bp, 0);
 }
 

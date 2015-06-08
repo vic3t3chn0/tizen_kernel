@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <net/dsfield.h>
 #include <net/ipv6.h>
 #include <net/addrconf.h>
@@ -34,9 +38,14 @@ __xfrm6_init_tempsel(struct xfrm_selector *sel, const struct flowi *fl)
 	*(struct in6_addr *)&sel->daddr = fl6->daddr;
 	*(struct in6_addr *)&sel->saddr = fl6->saddr;
 =======
+<<<<<<< HEAD
+	*(struct in6_addr *)&sel->daddr = fl6->daddr;
+	*(struct in6_addr *)&sel->saddr = fl6->saddr;
+=======
 	ipv6_addr_copy((struct in6_addr *)&sel->daddr, &fl6->daddr);
 	ipv6_addr_copy((struct in6_addr *)&sel->saddr, &fl6->saddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sel->dport = xfrm_flowi_dport(fl, &fl6->uli);
 	sel->dport_mask = htons(0xffff);
 	sel->sport = xfrm_flowi_sport(fl, &fl6->uli);

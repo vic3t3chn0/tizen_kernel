@@ -11,12 +11,18 @@
  *		2 of the License, or (at your option) any later version.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define pr_fmt(fmt) "UDPLite: " fmt
 
 #include <linux/export.h>
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "udp_impl.h"
 
 struct udp_table 	udplite_table __read_mostly;
@@ -79,6 +85,9 @@ static struct inet_protosw udplite4_protosw = {
 
 #ifdef CONFIG_PROC_FS
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const struct file_operations udplite_afinfo_seq_fops = {
 	.owner    = THIS_MODULE,
@@ -88,8 +97,11 @@ static const struct file_operations udplite_afinfo_seq_fops = {
 	.release  = seq_release_net
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct udp_seq_afinfo udplite4_seq_afinfo = {
 	.name		= "udplite",
 	.family		= AF_INET,
@@ -97,10 +109,14 @@ static struct udp_seq_afinfo udplite4_seq_afinfo = {
 <<<<<<< HEAD
 	.seq_fops	= &udplite_afinfo_seq_fops,
 =======
+<<<<<<< HEAD
+	.seq_fops	= &udplite_afinfo_seq_fops,
+=======
 	.seq_fops	= {
 		.owner	=	THIS_MODULE,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.seq_ops	= {
 		.show		= udp4_seq_show,
 	},
@@ -147,8 +163,12 @@ void __init udplite4_register(void)
 <<<<<<< HEAD
 		pr_err("%s: Cannot register /proc!\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_err("%s: Cannot register /proc!\n", __func__);
+=======
 		printk(KERN_ERR "%s: Cannot register /proc!\n", __func__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return;
 
 out_unregister_proto:
@@ -157,6 +177,10 @@ out_register_err:
 <<<<<<< HEAD
 	pr_crit("%s: Cannot add UDP-Lite protocol\n", __func__);
 =======
+<<<<<<< HEAD
+	pr_crit("%s: Cannot add UDP-Lite protocol\n", __func__);
+=======
 	printk(KERN_CRIT "%s: Cannot add UDP-Lite protocol.\n", __func__);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

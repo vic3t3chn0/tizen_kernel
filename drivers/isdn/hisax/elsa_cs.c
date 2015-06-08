@@ -1,5 +1,44 @@
 /*======================================================================
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  An elsa_cs PCMCIA client driver
+
+  This driver is for the Elsa PCM ISDN Cards, i.e. the MicroLink
+
+
+  The contents of this file are subject to the Mozilla Public
+  License Version 1.1 (the "License"); you may not use this file
+  except in compliance with the License. You may obtain a copy of
+  the License at http://www.mozilla.org/MPL/
+
+  Software distributed under the License is distributed on an "AS
+  IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+  implied. See the License for the specific language governing
+  rights and limitations under the License.
+
+  The initial developer of the original code is David A. Hinds
+  <dahinds@users.sourceforge.net>.  Portions created by David A. Hinds
+  are Copyright (C) 1999 David A. Hinds.  All Rights Reserved.
+
+  Modifications from dummy_cs.c are Copyright (C) 1999-2001 Klaus
+  Lichtenwalder <Lichtenwalder@ACM.org>. All Rights Reserved.
+
+  Alternatively, the contents of this file may be used under the
+  terms of the GNU General Public License version 2 (the "GPL"), in
+  which case the provisions of the GPL are applicable instead of the
+  above.  If you wish to allow the use of your version of this file
+  only under the terms of the GPL and not to allow others to use
+  your version of this file under the MPL, indicate your decision
+  by deleting the provisions above and replace them with the notice
+  and other provisions required by the GPL.  If you do not delete
+  the provisions above, a recipient may use your version of this
+  file under either the MPL or the GPL.
+
+  ======================================================================*/
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     An elsa_cs PCMCIA client driver
 
     This driver is for the Elsa PCM ISDN Cards, i.e. the MicroLink
@@ -34,6 +73,10 @@
     file under either the MPL or the GPL.
 
 ======================================================================*/
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -44,7 +87,14 @@
 #include <linux/timer.h>
 #include <linux/ioport.h>
 #include <asm/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <pcmcia/cistpl.h>
 #include <pcmcia/cisreg.h>
@@ -63,18 +113,55 @@ MODULE_LICENSE("Dual MPL/GPL");
 static int protocol = 2;        /* EURO-ISDN Default */
 module_param(protocol, int, 0);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int elsa_cs_config(struct pcmcia_device *link) __devinit;
+=======
 static int elsa_cs_config(struct pcmcia_device *link) __devinit ;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int elsa_cs_config(struct pcmcia_device *link) __devinit ;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void elsa_cs_release(struct pcmcia_device *link);
 static void elsa_cs_detach(struct pcmcia_device *p_dev) __devexit;
 
 typedef struct local_info_t {
 	struct pcmcia_device	*p_dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int                 busy;
+	int			cardnr;
+=======
     int                 busy;
     int			cardnr;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    int                 busy;
+    int			cardnr;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } local_info_t;
 
 static int __devinit elsa_cs_probe(struct pcmcia_device *link)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	local_info_t *local;
+
+	dev_dbg(&link->dev, "elsa_cs_attach()\n");
+
+	/* Allocate space for private device-specific data */
+	local = kzalloc(sizeof(local_info_t), GFP_KERNEL);
+	if (!local) return -ENOMEM;
+
+	local->p_dev = link;
+	link->priv = local;
+
+	local->cardnr = -1;
+
+	return elsa_cs_config(link);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     local_info_t *local;
 
     dev_dbg(&link->dev, "elsa_cs_attach()\n");
@@ -89,6 +176,10 @@ static int __devinit elsa_cs_probe(struct pcmcia_device *link)
     local->cardnr = -1;
 
     return elsa_cs_config(link);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } /* elsa_cs_attach */
 
 static void __devexit elsa_cs_detach(struct pcmcia_device *link)
@@ -129,6 +220,46 @@ static int elsa_cs_configcheck(struct pcmcia_device *p_dev, void *priv_data)
 
 static int __devinit elsa_cs_config(struct pcmcia_device *link)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int i;
+	IsdnCard_t icard;
+
+	dev_dbg(&link->dev, "elsa_config(0x%p)\n", link);
+
+	link->config_flags |= CONF_ENABLE_IRQ | CONF_AUTO_SET_IO;
+
+	i = pcmcia_loop_config(link, elsa_cs_configcheck, NULL);
+	if (i != 0)
+		goto failed;
+
+	if (!link->irq)
+		goto failed;
+
+	i = pcmcia_enable_device(link);
+	if (i != 0)
+		goto failed;
+
+	icard.para[0] = link->irq;
+	icard.para[1] = link->resource[0]->start;
+	icard.protocol = protocol;
+	icard.typ = ISDN_CTYPE_ELSA_PCMCIA;
+
+	i = hisax_init_pcmcia(link, &(((local_info_t *)link->priv)->busy), &icard);
+	if (i < 0) {
+		printk(KERN_ERR "elsa_cs: failed to initialize Elsa "
+		       "PCMCIA %d with %pR\n", i, link->resource[0]);
+		elsa_cs_release(link);
+	} else
+		((local_info_t *)link->priv)->cardnr = i;
+
+	return 0;
+failed:
+	elsa_cs_release(link);
+	return -ENODEV;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     int i;
     IsdnCard_t icard;
 
@@ -164,10 +295,31 @@ static int __devinit elsa_cs_config(struct pcmcia_device *link)
 failed:
     elsa_cs_release(link);
     return -ENODEV;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } /* elsa_cs_config */
 
 static void elsa_cs_release(struct pcmcia_device *link)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	local_info_t *local = link->priv;
+
+	dev_dbg(&link->dev, "elsa_cs_release(0x%p)\n", link);
+
+	if (local) {
+		if (local->cardnr >= 0) {
+			/* no unregister function with hisax */
+			HiSax_closecard(local->cardnr);
+		}
+	}
+
+	pcmcia_disable_device(link);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
     local_info_t *local = link->priv;
 
     dev_dbg(&link->dev, "elsa_cs_release(0x%p)\n", link);
@@ -180,13 +332,25 @@ static void elsa_cs_release(struct pcmcia_device *link)
     }
 
     pcmcia_disable_device(link);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 } /* elsa_cs_release */
 
 static int elsa_suspend(struct pcmcia_device *link)
 {
 	local_info_t *dev = link->priv;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->busy = 1;
+=======
         dev->busy = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        dev->busy = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -195,7 +359,15 @@ static int elsa_resume(struct pcmcia_device *link)
 {
 	local_info_t *dev = link->priv;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	dev->busy = 0;
+=======
         dev->busy = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        dev->busy = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }

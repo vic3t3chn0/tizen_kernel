@@ -97,9 +97,13 @@ static inline pte_t pte_mkspecial(pte_t pte)	{ return pte; }
 <<<<<<< HEAD
 #define VMALLOC_START	(CONFIG_KERNEL_START + CONFIG_LOWMEM_SIZE)
 =======
+<<<<<<< HEAD
+#define VMALLOC_START	(CONFIG_KERNEL_START + CONFIG_LOWMEM_SIZE)
+=======
 #define VMALLOC_START	(CONFIG_KERNEL_START + \
 				max(32 * 1024 * 1024UL, memory_size))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define VMALLOC_END	ioremap_bot
 
 #endif /* __ASSEMBLY__ */
@@ -549,9 +553,12 @@ extern unsigned long iopa(unsigned long addr);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define io_remap_page_range remap_page_range
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * No page table caches to initialise
  */

@@ -232,8 +232,13 @@ enum acpi_einj_actions {
 	ACPI_EINJ_SET_ERROR_TYPE_WITH_ADDRESS = 8,
 	ACPI_EINJ_ACTION_RESERVED = 9,	/* 9 and greater are reserved */
 =======
+<<<<<<< HEAD
+	ACPI_EINJ_SET_ERROR_TYPE_WITH_ADDRESS = 8,
+	ACPI_EINJ_ACTION_RESERVED = 9,	/* 9 and greater are reserved */
+=======
 	ACPI_EINJ_ACTION_RESERVED = 8,	/* 8 and greater are reserved */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ACPI_EINJ_TRIGGER_ERROR = 0xFF	/* Except for this value */
 };
 
@@ -246,6 +251,9 @@ enum acpi_einj_instructions {
 	ACPI_EINJ_WRITE_REGISTER_VALUE = 3,
 	ACPI_EINJ_NOOP = 4,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ACPI_EINJ_FLUSH_CACHELINE = 5,
 	ACPI_EINJ_INSTRUCTION_RESERVED = 6	/* 6 and greater are reserved */
 };
@@ -267,9 +275,12 @@ struct acpi_einj_vendor {
 	u16 device_id;
 	u8 revision_id;
 	u8 reserved[3];
+<<<<<<< HEAD
+=======
 =======
 	ACPI_EINJ_INSTRUCTION_RESERVED = 5	/* 5 and greater are reserved */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* EINJ Trigger Error Action Table */
@@ -307,7 +318,11 @@ enum acpi_einj_command_status {
 <<<<<<< HEAD
 #define ACPI_EINJ_VENDOR_DEFINED            (1<<31)
 =======
+<<<<<<< HEAD
+#define ACPI_EINJ_VENDOR_DEFINED            (1<<31)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*******************************************************************************
  *
@@ -669,8 +684,14 @@ enum acpi_madt_type {
 	ACPI_MADT_TYPE_GENERIC_DISTRIBUTOR = 12,
 	ACPI_MADT_TYPE_RESERVED = 13	/* 13 and greater are reserved */
 =======
+<<<<<<< HEAD
+	ACPI_MADT_TYPE_GENERIC_INTERRUPT = 11,
+	ACPI_MADT_TYPE_GENERIC_DISTRIBUTOR = 12,
+	ACPI_MADT_TYPE_RESERVED = 13	/* 13 and greater are reserved */
+=======
 	ACPI_MADT_TYPE_RESERVED = 11	/* 11 and greater are reserved */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -792,6 +813,9 @@ struct acpi_madt_local_x2apic_nmi {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* 11: Generic Interrupt (ACPI 5.0) */
 
 struct acpi_madt_generic_interrupt {
@@ -817,8 +841,11 @@ struct acpi_madt_generic_distributor {
 	u32 reserved2;		/* Reserved - must be zero */
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Common flags fields for MADT subtables
  */
@@ -826,8 +853,12 @@ struct acpi_madt_generic_distributor {
 <<<<<<< HEAD
 /* MADT Local APIC flags (lapic_flags) and GIC flags */
 =======
+<<<<<<< HEAD
+/* MADT Local APIC flags (lapic_flags) and GIC flags */
+=======
 /* MADT Local APIC flags (lapic_flags) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ACPI_MADT_ENABLED           (1)	/* 00: Processor is usable if set */
 

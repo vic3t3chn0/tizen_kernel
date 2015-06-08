@@ -113,3 +113,21 @@ u64 notrace trace_clock_global(void)
 
 	return now;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+static atomic64_t trace_counter;
+
+/*
+ * trace_clock_counter(): simply an atomic counter.
+ * Use the trace_counter "counter" for cases where you do not care
+ * about timings, but are interested in strict ordering.
+ */
+u64 notrace trace_clock_counter(void)
+{
+	return atomic64_add_return(1, &trace_counter);
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

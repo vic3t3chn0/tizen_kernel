@@ -6,7 +6,12 @@
  * Copyright (C) 2011 Google, Inc.
  * Copyright (C) 2011-2012 NVIDIA CORPORATION. All Rights Reserved.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2011 Google, Inc.
+ * Copyright (C) 2011-2012 NVIDIA CORPORATION. All Rights Reserved.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Author:
  *	Colin Cross <ccross@google.com>
@@ -15,7 +20,12 @@
  *	Doug Anderson <dianders@chromium.org>
  *	Stephen Warren <swarren@nvidia.com>
 =======
+<<<<<<< HEAD
+ *	Doug Anderson <dianders@chromium.org>
+ *	Stephen Warren <swarren@nvidia.com>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This software is licensed under the terms of the GNU General Public
  * License version 2, as published by the Free Software Foundation, and
@@ -36,6 +46,9 @@
 
 #include <mach/iomap.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/irammap.h>
 
 #define BIT(x) (1 << (x))
@@ -53,6 +66,8 @@ static void putc(int c)
 	while (!(uart[UART_LSR << DEBUG_UART_SHIFT] & UART_LSR_THRE))
 		barrier();
 	uart[UART_TX << DEBUG_UART_SHIFT] = c;
+<<<<<<< HEAD
+=======
 =======
 
 static void putc(int c)
@@ -67,6 +82,7 @@ static void putc(int c)
 		barrier();
 	uart[UART_TX << shift] = c;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void flush(void)
@@ -74,6 +90,9 @@ static inline void flush(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void save_uart_address(void)
 {
 	u32 *buf = (u32 *)(TEGRA_IRAM_BASE + TEGRA_IRAM_DEBUG_UART_OFFSET);
@@ -175,6 +194,8 @@ static inline void arch_decomp_setup(void)
 	uart[UART_DLL << DEBUG_UART_SHIFT] = div & 0xff;
 	uart[UART_DLM << DEBUG_UART_SHIFT] = div >> 8;
 	uart[UART_LCR << DEBUG_UART_SHIFT] = 3;
+<<<<<<< HEAD
+=======
 =======
 static inline void arch_decomp_setup(void)
 {
@@ -189,6 +210,7 @@ static inline void arch_decomp_setup(void)
 	uart[UART_DLM << shift] = 0x0;
 	uart[UART_LCR << shift] = 3;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline void arch_decomp_wdog(void)

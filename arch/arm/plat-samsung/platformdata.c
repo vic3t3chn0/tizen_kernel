@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/slab.h>
 =======
+<<<<<<< HEAD
+#include <linux/slab.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/string.h>
 #include <linux/platform_device.h>
 
@@ -21,7 +25,11 @@
 <<<<<<< HEAD
 #include <plat/sdhci.h>
 =======
+<<<<<<< HEAD
+#include <plat/sdhci.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init *s3c_set_platdata(void *pd, size_t pdsize,
 			      struct platform_device *pdev)
@@ -44,6 +52,9 @@ void __init *s3c_set_platdata(void *pd, size_t pdsize,
 	return npd;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void s3c_sdhci_set_platdata(struct s3c_sdhci_platdata *pd,
 			     struct s3c_sdhci_platdata *set)
@@ -67,5 +78,8 @@ void s3c_sdhci_set_platdata(struct s3c_sdhci_platdata *pd,
 	if (pd->clk_type)
 		set->clk_type = pd->clk_type;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

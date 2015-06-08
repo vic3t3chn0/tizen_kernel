@@ -33,8 +33,11 @@
 #include "xfs_btree.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "xfs_btree_trace.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "xfs_alloc.h"
 #include "xfs_error.h"
 #include "xfs_trace.h"
@@ -316,6 +319,8 @@ xfs_allocbt_recs_inorder(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef XFS_BTREE_TRACE
 ktrace_t	*xfs_allocbt_trace_buf;
 
@@ -383,6 +388,7 @@ xfs_allocbt_trace_record(
 #endif /* XFS_BTREE_TRACE */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct xfs_btree_ops xfs_allocbt_ops = {
 	.rec_len		= sizeof(xfs_alloc_rec_t),
 	.key_len		= sizeof(xfs_alloc_key_t),
@@ -401,12 +407,17 @@ static const struct xfs_btree_ops xfs_allocbt_ops = {
 	.key_diff		= xfs_allocbt_key_diff,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef DEBUG
 	.keys_inorder		= xfs_allocbt_keys_inorder,
 	.recs_inorder		= xfs_allocbt_recs_inorder,
 #endif
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -417,6 +428,7 @@ static const struct xfs_btree_ops xfs_allocbt_ops = {
 	.trace_record		= xfs_allocbt_trace_record,
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -440,6 +452,9 @@ xfs_allocbt_init_cursor(
 	cur->bc_tp = tp;
 	cur->bc_mp = mp;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cur->bc_btnum = btnum;
 	cur->bc_blocklog = mp->m_sb.sb_blocklog;
 	cur->bc_ops = &xfs_allocbt_ops;
@@ -450,6 +465,8 @@ xfs_allocbt_init_cursor(
 	} else {
 		cur->bc_nlevels = be32_to_cpu(agf->agf_levels[XFS_BTNUM_BNO]);
 	}
+<<<<<<< HEAD
+=======
 =======
 	cur->bc_nlevels = be32_to_cpu(agf->agf_levels[btnum]);
 	cur->bc_btnum = btnum;
@@ -459,6 +476,7 @@ xfs_allocbt_init_cursor(
 	if (btnum == XFS_BTNUM_CNT)
 		cur->bc_flags = XFS_BTREE_LASTREC_UPDATE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	cur->bc_private.a.agbp = agbp;
 	cur->bc_private.a.agno = agno;

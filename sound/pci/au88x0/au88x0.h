@@ -29,8 +29,12 @@
 <<<<<<< HEAD
 #include <sound/tlv.h>
 =======
+<<<<<<< HEAD
+#include <sound/tlv.h>
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifndef CHIP_AU8820
@@ -110,6 +114,9 @@
 
 #define NR_WTPB 0x20		/* WT channels per each bank. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NR_PCM	0x10
 
 struct pcm_vol {
@@ -119,8 +126,11 @@ struct pcm_vol {
 	int mixin[4];
 	int vol[4];
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Structs */
 typedef struct {
@@ -186,7 +196,11 @@ struct snd_vortex {
 <<<<<<< HEAD
 	struct pcm_vol pcm_vol[NR_PCM];
 =======
+<<<<<<< HEAD
+	struct pcm_vol pcm_vol[NR_PCM];
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int isquad;		/* cache of extended ID codec flag. */
 
@@ -261,8 +275,12 @@ static int vortex_adb_allocroute(vortex_t * vortex, int dma, int nr_ch,
 <<<<<<< HEAD
 				 int dir, int type, int subdev);
 =======
+<<<<<<< HEAD
+				 int dir, int type, int subdev);
+=======
 				 int dir, int type);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static char vortex_adb_checkinout(vortex_t * vortex, int resmap[], int out,
 				  int restype);
 #ifndef CHIP_AU8810

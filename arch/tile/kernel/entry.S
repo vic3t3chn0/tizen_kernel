@@ -88,7 +88,11 @@ STD_ENTRY(smp_nap)
 <<<<<<< HEAD
 	nop       /* avoid provoking the icache prefetch with a jump */
 =======
+<<<<<<< HEAD
+	nop       /* avoid provoking the icache prefetch with a jump */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	j smp_nap /* we are not architecturally guaranteed not to exit nap */
 	jrp lr    /* clue in the backtracer */
 	STD_ENDPROC(smp_nap)
@@ -112,6 +116,10 @@ _cpu_idle_nap:
 <<<<<<< HEAD
 	nop       /* avoid provoking the icache prefetch with a jump */
 =======
+<<<<<<< HEAD
+	nop       /* avoid provoking the icache prefetch with a jump */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	jrp lr
 	STD_ENDPROC(_cpu_idle)

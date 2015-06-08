@@ -31,9 +31,12 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define NUM_COUNTERS		4
 #define NUM_COUNTERS_F15H	6
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OPROFILE_EVENT_MULTIPLEX
 #define NUM_VIRT_COUNTERS	32
 #else
@@ -75,6 +78,8 @@ static struct ibs_state ibs_state;
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * IBS cpuid feature detection
  */
 
@@ -105,12 +110,15 @@ static struct ibs_state ibs_state;
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * IBS randomization macros
  */
 #define IBS_RANDOM_BITS			12
 #define IBS_RANDOM_MASK			((1ULL << IBS_RANDOM_BITS) - 1)
 #define IBS_RANDOM_MAXCNT_OFFSET	(1ULL << (IBS_RANDOM_BITS - 5))
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static u32 get_ibs_caps(void)
@@ -135,6 +143,7 @@ static u32 get_ibs_caps(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * 16-bit Linear Feedback Shift Register (LFSR)
  *
@@ -327,6 +336,8 @@ static void op_amd_stop_ibs(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static inline int get_eilvt(int offset)
 {
 	return !setup_APIC_eilvt(offset, 0, APIC_EILVT_MSG_NMI, 1);
@@ -403,6 +414,7 @@ static void clear_APIC_ibs(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OPROFILE_EVENT_MULTIPLEX
 
 static void op_mux_switch_ctrl(struct op_x86_model_spec const *model,
@@ -454,8 +466,12 @@ static int op_amd_fill_in_addresses(struct op_msrs * const msrs)
 <<<<<<< HEAD
 		if (num_counters == AMD64_NUM_COUNTERS_F15H) {
 =======
+<<<<<<< HEAD
+		if (num_counters == AMD64_NUM_COUNTERS_F15H) {
+=======
 		if (num_counters == NUM_COUNTERS_F15H) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			msrs->counters[i].addr = MSR_F15H_PERF_CTR + (i << 1);
 			msrs->controls[i].addr = MSR_F15H_PERF_CTL + (i << 1);
 		} else {
@@ -522,6 +538,8 @@ static void op_amd_setup_ctrs(struct op_x86_model_spec const *model,
 	}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 	if (ibs_caps)
 		setup_APIC_ibs();
@@ -532,6 +550,7 @@ static void op_amd_cpu_shutdown(void)
 	if (ibs_caps)
 		clear_APIC_ibs();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int op_amd_check_ctrs(struct pt_regs * const regs,
@@ -594,6 +613,8 @@ static void op_amd_stop(struct op_msrs const * const msrs)
 	op_amd_stop_ibs();
 }
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static int setup_ibs_ctl(int ibs_eilvt_off)
@@ -677,6 +698,7 @@ out:
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * check and reserve APIC extended interrupt LVT offset for IBS if
  * available
@@ -691,6 +713,8 @@ static void init_ibs(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ibs_eilvt_valid())
 		goto out;
 
@@ -703,6 +727,7 @@ static void init_ibs(void)
 
 out:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	printk(KERN_INFO "oprofile: AMD IBS detected (0x%08x)\n", ibs_caps);
 }
 
@@ -771,10 +796,16 @@ static int op_amd_init(struct oprofile_operations *ops)
 	} else {
 		num_counters = AMD64_NUM_COUNTERS;
 =======
+<<<<<<< HEAD
+		num_counters = AMD64_NUM_COUNTERS_F15H;
+	} else {
+		num_counters = AMD64_NUM_COUNTERS;
+=======
 		num_counters = NUM_COUNTERS_F15H;
 	} else {
 		num_counters = NUM_COUNTERS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	op_amd_spec.num_counters = num_counters;
@@ -793,8 +824,11 @@ struct op_x86_model_spec op_amd_spec = {
 	.setup_ctrs		= &op_amd_setup_ctrs,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	.cpu_down		= &op_amd_cpu_shutdown,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.check_ctrs		= &op_amd_check_ctrs,
 	.start			= &op_amd_start,
 	.stop			= &op_amd_stop,

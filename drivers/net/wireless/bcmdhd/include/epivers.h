@@ -19,7 +19,15 @@
  * software in any way with any other Broadcom software provided under a license
  * other than the GPL, without Broadcom's express prior written consent.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * $Id: epivers.h.in,v 13.33 2010-09-08 22:08:53 $
+=======
  * $Id: epivers.h.in,v 13.33 2010-09-08 22:08:53 csm Exp $
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * $Id: epivers.h.in,v 13.33 2010-09-08 22:08:53 csm Exp $
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
 */
 
@@ -28,14 +36,41 @@
 
 #define	EPI_MAJOR_VERSION	1
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define	EPI_MINOR_VERSION	27
+
+#define	EPI_RC_NUMBER		0
+=======
 #define	EPI_MINOR_VERSION	61
 
 #define	EPI_RC_NUMBER		47
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#define	EPI_MINOR_VERSION	61
+
+#define	EPI_RC_NUMBER		47
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define	EPI_INCREMENTAL_NUMBER	0
 
 #define	EPI_BUILD_NUMBER	0
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define	EPI_VERSION		1, 27, 0, 0
+
+#define	EPI_VERSION_NUM		0x011b0000
+
+#define EPI_VERSION_DEV		1.27.0
+
+
+#define	EPI_VERSION_STR		"1.27 (r329705)"
+
+#endif 
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define	EPI_VERSION		1, 61, 47, 0
 
 #define	EPI_VERSION_NUM		0x013d2f00
@@ -54,3 +89,7 @@
 #endif /* BCMINTERNAL */
 
 #endif /* _epivers_h_ */
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

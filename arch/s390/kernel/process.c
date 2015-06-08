@@ -15,7 +15,11 @@
 <<<<<<< HEAD
 #include <linux/elfcore.h>
 =======
+<<<<<<< HEAD
+#include <linux/elfcore.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/smp.h>
 #include <linux/slab.h>
 #include <linux/interrupt.h>
@@ -28,8 +32,11 @@
 #include <linux/module.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/processor.h>
 #include <asm/irq.h>
@@ -39,7 +46,11 @@
 <<<<<<< HEAD
 #include <asm/switch_to.h>
 =======
+<<<<<<< HEAD
+#include <asm/switch_to.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "entry.h"
 
 asmlinkage void ret_from_fork(void) asm ("ret_from_fork");
@@ -86,10 +97,15 @@ static void default_idle(void)
 		local_mcck_enable();
 		local_irq_enable();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	/* Halt the cpu and keep track of cpu time accounting. */
 	vtime_stop_cpu();
+<<<<<<< HEAD
+=======
 =======
 		s390_handle_mcck();
 		return;
@@ -102,12 +118,16 @@ static void default_idle(void)
 	/* Reenable preemption tracer. */
 	start_critical_timings();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void cpu_idle(void)
 {
 	for (;;) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		tick_nohz_idle_enter();
 		rcu_idle_enter();
 		while (!need_resched() && !test_thread_flag(TIF_MCCK_PENDING))
@@ -117,6 +137,8 @@ void cpu_idle(void)
 		if (test_thread_flag(TIF_MCCK_PENDING))
 			s390_handle_mcck();
 		schedule_preempt_disabled();
+<<<<<<< HEAD
+=======
 =======
 		tick_nohz_stop_sched_tick(1);
 		while (!need_resched())
@@ -126,6 +148,7 @@ void cpu_idle(void)
 		schedule();
 		preempt_disable();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -150,8 +173,13 @@ int kernel_thread(int (*fn)(void *), void * arg, unsigned long flags)
 	regs.psw.mask = psw_kernel_bits |
 		PSW_MASK_DAT | PSW_MASK_IO | PSW_MASK_EXT | PSW_MASK_MCHECK;
 =======
+<<<<<<< HEAD
+	regs.psw.mask = psw_kernel_bits |
+		PSW_MASK_DAT | PSW_MASK_IO | PSW_MASK_EXT | PSW_MASK_MCHECK;
+=======
 	regs.psw.mask = psw_kernel_bits | PSW_MASK_IO | PSW_MASK_EXT;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	regs.psw.addr = (unsigned long) kernel_thread_starter | PSW_ADDR_AMODE;
 	regs.gprs[9] = (unsigned long) fn;
 	regs.gprs[10] = (unsigned long) arg;

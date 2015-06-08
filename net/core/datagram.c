@@ -39,8 +39,11 @@
 #include <asm/uaccess.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mm.h>
 #include <linux/interrupt.h>
 #include <linux/errno.h>
@@ -139,7 +142,12 @@ out_noerr:
  *	@off: an offset in bytes to peek skb from. Returns an offset
  *	      within an skb where data actually starts
 =======
+<<<<<<< HEAD
+ *	@off: an offset in bytes to peek skb from. Returns an offset
+ *	      within an skb where data actually starts
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *	@peeked: returns non-zero if this packet has been seen before
  *	@err: error code returned
  *
@@ -169,8 +177,12 @@ struct sk_buff *__skb_recv_datagram(struct sock *sk, unsigned flags,
 <<<<<<< HEAD
 				    int *peeked, int *off, int *err)
 =======
+<<<<<<< HEAD
+				    int *peeked, int *off, int *err)
+=======
 				    int *peeked, int *err)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *skb;
 	long timeo;
@@ -193,6 +205,9 @@ struct sk_buff *__skb_recv_datagram(struct sock *sk, unsigned flags,
 		 */
 		unsigned long cpu_flags;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct sk_buff_head *queue = &sk->sk_receive_queue;
 
 		spin_lock_irqsave(&queue->lock, cpu_flags);
@@ -212,6 +227,8 @@ struct sk_buff *__skb_recv_datagram(struct sock *sk, unsigned flags,
 			return skb;
 		}
 		spin_unlock_irqrestore(&queue->lock, cpu_flags);
+<<<<<<< HEAD
+=======
 =======
 
 		spin_lock_irqsave(&sk->sk_receive_queue.lock, cpu_flags);
@@ -229,6 +246,7 @@ struct sk_buff *__skb_recv_datagram(struct sock *sk, unsigned flags,
 		if (skb)
 			return skb;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* User doesn't want to wait */
 		error = -EAGAIN;
@@ -249,16 +267,22 @@ struct sk_buff *skb_recv_datagram(struct sock *sk, unsigned flags,
 				  int noblock, int *err)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int peeked, off = 0;
 
 	return __skb_recv_datagram(sk, flags | (noblock ? MSG_DONTWAIT : 0),
 				   &peeked, &off, err);
+<<<<<<< HEAD
+=======
 =======
 	int peeked;
 
 	return __skb_recv_datagram(sk, flags | (noblock ? MSG_DONTWAIT : 0),
 				   &peeked, err);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(skb_recv_datagram);
 
@@ -366,6 +390,9 @@ int skb_copy_datagram_iovec(const struct sk_buff *skb, int offset,
 	for (i = 0; i < skb_shinfo(skb)->nr_frags; i++) {
 		int end;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 
 		WARN_ON(start > offset + len);
@@ -375,6 +402,8 @@ int skb_copy_datagram_iovec(const struct sk_buff *skb, int offset,
 			int err;
 			u8  *vaddr;
 			struct page *page = skb_frag_page(frag);
+<<<<<<< HEAD
+=======
 =======
 
 		WARN_ON(start > offset + len);
@@ -386,6 +415,7 @@ int skb_copy_datagram_iovec(const struct sk_buff *skb, int offset,
 			skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 			struct page *page = frag->page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (copy > len)
 				copy = len;
@@ -464,6 +494,9 @@ int skb_copy_datagram_const_iovec(const struct sk_buff *skb, int offset,
 	for (i = 0; i < skb_shinfo(skb)->nr_frags; i++) {
 		int end;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 
 		WARN_ON(start > offset + len);
@@ -473,6 +506,8 @@ int skb_copy_datagram_const_iovec(const struct sk_buff *skb, int offset,
 			int err;
 			u8  *vaddr;
 			struct page *page = skb_frag_page(frag);
+<<<<<<< HEAD
+=======
 =======
 
 		WARN_ON(start > offset + len);
@@ -484,6 +519,7 @@ int skb_copy_datagram_const_iovec(const struct sk_buff *skb, int offset,
 			skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 			struct page *page = frag->page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (copy > len)
 				copy = len;
@@ -566,6 +602,9 @@ int skb_copy_datagram_from_iovec(struct sk_buff *skb, int offset,
 	for (i = 0; i < skb_shinfo(skb)->nr_frags; i++) {
 		int end;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 
 		WARN_ON(start > offset + len);
@@ -575,6 +614,8 @@ int skb_copy_datagram_from_iovec(struct sk_buff *skb, int offset,
 			int err;
 			u8  *vaddr;
 			struct page *page = skb_frag_page(frag);
+<<<<<<< HEAD
+=======
 =======
 
 		WARN_ON(start > offset + len);
@@ -586,6 +627,7 @@ int skb_copy_datagram_from_iovec(struct sk_buff *skb, int offset,
 			skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 			struct page *page = frag->page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (copy > len)
 				copy = len;
@@ -663,17 +705,23 @@ static int skb_copy_and_csum_datagram(const struct sk_buff *skb, int offset,
 	for (i = 0; i < skb_shinfo(skb)->nr_frags; i++) {
 		int end;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		const skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 
 		WARN_ON(start > offset + len);
 
 		end = start + skb_frag_size(frag);
+<<<<<<< HEAD
+=======
 =======
 
 		WARN_ON(start > offset + len);
 
 		end = start + skb_shinfo(skb)->frags[i].size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((copy = end - offset) > 0) {
 			__wsum csum2;
 			int err = 0;
@@ -681,9 +729,13 @@ static int skb_copy_and_csum_datagram(const struct sk_buff *skb, int offset,
 <<<<<<< HEAD
 			struct page *page = skb_frag_page(frag);
 =======
+<<<<<<< HEAD
+			struct page *page = skb_frag_page(frag);
+=======
 			skb_frag_t *frag = &skb_shinfo(skb)->frags[i];
 			struct page *page = frag->page;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			if (copy > len)
 				copy = len;

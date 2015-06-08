@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2010-2013, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2010-2011, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -14,12 +18,15 @@
  * GNU General Public License for more details.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
  * 02110-1301, USA.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef MSM_IOMMU_H
@@ -28,6 +35,9 @@
 #include <linux/interrupt.h>
 #include <linux/clk.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/list.h>
 #include <linux/regulator/consumer.h>
 #include <mach/socinfo.h>
@@ -40,6 +50,8 @@ extern struct iommu_access_ops iommu_access_ops_v1;
 /* Domain attributes */
 #define MSM_IOMMU_DOMAIN_PT_CACHEABLE	0x1
 #define MSM_IOMMU_DOMAIN_PT_SECURE	0x2
+<<<<<<< HEAD
+=======
 =======
 
 /* Sharability attributes of MSM IOMMU mappings */
@@ -52,6 +64,7 @@ extern struct iommu_access_ops iommu_access_ops_v1;
 #define MSM_IOMMU_ATTR_CACHED_WB_NWA	0x2
 #define MSM_IOMMU_ATTR_CACHED_WT	0x3
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Mask for the cache policy attribute */
 #define MSM_IOMMU_CP_MASK		0x03
@@ -65,13 +78,19 @@ extern struct iommu_access_ops iommu_access_ops_v1;
 #define MAX_NUM_MIDS	32
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Maximum number of SMT entries allowed by the system */
 #define MAX_NUM_SMR	128
 
 #define MAX_NUM_BFB_REGS	32
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct msm_iommu_dev - a single IOMMU hardware instance
  * name		Human-readable name given to this IOMMU HW instance
@@ -83,7 +102,11 @@ struct msm_iommu_dev {
 <<<<<<< HEAD
 	int ttbr_split;
 =======
+<<<<<<< HEAD
+	int ttbr_split;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -102,6 +125,9 @@ struct msm_iommu_ctx_dev {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * struct msm_iommu_bfb_settings - a set of IOMMU BFB tuning parameters
  * regs		An array of register offsets to configure
@@ -113,8 +139,11 @@ struct msm_iommu_bfb_settings {
 	unsigned int data[MAX_NUM_BFB_REGS];
 	int length;
 };
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct msm_iommu_drvdata - A single IOMMU hardware instance
@@ -122,12 +151,19 @@ struct msm_iommu_bfb_settings {
 <<<<<<< HEAD
  * @glb_base:	IOMMU config port base address for global register space (VA)
 =======
+<<<<<<< HEAD
+ * @glb_base:	IOMMU config port base address for global register space (VA)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @ncb		The number of contexts on this IOMMU
  * @irq:	Interrupt number
  * @clk:	The bus clock for this IOMMU hardware instance
  * @pclk:	The clock for the IOMMU bus interconnect
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @aclk:	Alternate clock for this IOMMU core, if any
  * @name:	Human-readable name of this IOMMU device
  * @gdsc:	Regulator needed to power this HW block (v2 only)
@@ -140,8 +176,11 @@ struct msm_iommu_bfb_settings {
  * @ctx_attach_count: Count of how many context are attached.
  * @bus_client  : Bus client needed to vote for bus bandwidth.
  * @needs_rem_spinlock  : 1 if remote spinlock is needed, 0 otherwise
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * A msm_iommu_drvdata holds the global driver data about a single piece
  * of an IOMMU hardware instance.
@@ -149,6 +188,9 @@ struct msm_iommu_bfb_settings {
 struct msm_iommu_drvdata {
 	void __iomem *base;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	void __iomem *glb_base;
 	int ncb;
 	int ttbr_split;
@@ -201,6 +243,8 @@ void iommu_halt(const struct msm_iommu_drvdata *iommu_drvdata);
 void iommu_resume(const struct msm_iommu_drvdata *iommu_drvdata);
 
 /**
+<<<<<<< HEAD
+=======
 =======
 	int irq;
 	int ncb;
@@ -210,12 +254,16 @@ void iommu_resume(const struct msm_iommu_drvdata *iommu_drvdata);
 
 /**
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct msm_iommu_ctx_drvdata - an IOMMU context bank instance
  * @num:		Hardware context number of this context
  * @pdev:		Platform device associated wit this HW instance
  * @attached_elm:	List element for domains to track which devices are
  *			attached to them
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @attached_domain	Domain currently attached to this context (if any)
  * @name		Human-readable name of this context device
  * @sids		List of Stream IDs mapped to this context
@@ -224,8 +272,11 @@ void iommu_resume(const struct msm_iommu_drvdata *iommu_drvdata);
 			the secure environment, false otherwise
  * @asid		ASID used with this context.
  * @attach_count	Number of time this context has been attached.
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * A msm_iommu_ctx_drvdata holds the driver data for a single context bank
  * within each IOMMU hardware instance
@@ -235,6 +286,9 @@ struct msm_iommu_ctx_drvdata {
 	struct platform_device *pdev;
 	struct list_head attached_elm;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct iommu_domain *attached_domain;
 	const char *name;
 	u32 sids[MAX_NUM_SMR];
@@ -349,10 +403,13 @@ void msm_iommu_remote_p0_spin_unlock(unsigned int need_lock);
 #endif
 
 #ifdef CONFIG_MSM_IOMMU
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Look up an IOMMU context device by its context name. NULL if none found.
  * Useful for testing and drivers that do not yet fully have IOMMU stuff in
@@ -360,6 +417,9 @@ void msm_iommu_remote_p0_spin_unlock(unsigned int need_lock);
  */
 struct device *msm_iommu_get_ctx(const char *ctx_name);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 static inline struct device *msm_iommu_get_ctx(const char *ctx_name)
 {
@@ -416,6 +476,8 @@ static inline int msm_soc_version_supports_iommu_v0(void)
 	soc_supports_v0 = 1;
 	return 1;
 }
+<<<<<<< HEAD
+=======
 =======
 
 /*
@@ -426,4 +488,5 @@ static inline int msm_soc_version_supports_iommu_v0(void)
 irqreturn_t msm_iommu_fault_handler(int irq, void *dev_id);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

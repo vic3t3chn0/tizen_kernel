@@ -24,8 +24,11 @@
 #include <linux/blkdev.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/math64.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/byteorder.h>
 
 #include "ext4.h"
@@ -85,8 +88,12 @@ static unsigned ext4_init_inode_bitmap(struct super_block *sb,
 <<<<<<< HEAD
 		ext4_free_group_clusters_set(sb, gdp, 0);
 =======
+<<<<<<< HEAD
+		ext4_free_group_clusters_set(sb, gdp, 0);
+=======
 		ext4_free_blks_set(sb, gdp, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ext4_free_inodes_set(sb, gdp, 0);
 		ext4_itable_unused_set(sb, gdp, 0);
 		memset(bh->b_data, 0xff, sb->s_blocksize);
@@ -101,6 +108,9 @@ static unsigned ext4_init_inode_bitmap(struct super_block *sb,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void ext4_end_bitmap_read(struct buffer_head *bh, int uptodate)
 {
 	if (uptodate) {
@@ -111,8 +121,11 @@ void ext4_end_bitmap_read(struct buffer_head *bh, int uptodate)
 	put_bh(bh);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Read the inode allocation bitmap for a given block_group, reading
  * into the specified slot in the superblock's bitmap cache.
@@ -169,6 +182,9 @@ ext4_read_inode_bitmap(struct super_block *sb, ext4_group_t block_group)
 	}
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * submit the buffer_head for reading
 	 */
 	trace_ext4_load_inode_bitmap(sb, block_group);
@@ -181,6 +197,8 @@ ext4_read_inode_bitmap(struct super_block *sb, ext4_group_t block_group)
 		ext4_error(sb, "Cannot read inode bitmap - "
 			   "block_group = %u, inode_bitmap = %llu",
 			   block_group, bitmap_blk);
+<<<<<<< HEAD
+=======
 =======
 	 * submit the buffer_head for read. We can
 	 * safely mark the bitmap as uptodate now.
@@ -195,6 +213,7 @@ ext4_read_inode_bitmap(struct super_block *sb, ext4_group_t block_group)
 			    "block_group = %u, inode_bitmap = %llu",
 			    block_group, bitmap_blk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return NULL;
 	}
 	return bh;
@@ -231,6 +250,9 @@ void ext4_free_inode(handle_t *handle, struct inode *inode)
 	int fatal = 0, err, count, cleared;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!sb) {
 		printk(KERN_ERR "EXT4-fs: %s:%d: inode on "
 		       "nonexistent device\n", __func__, __LINE__);
@@ -245,6 +267,8 @@ void ext4_free_inode(handle_t *handle, struct inode *inode)
 	if (inode->i_nlink) {
 		ext4_msg(sb, KERN_ERR, "%s:%d: inode #%lu: nlink=%d\n",
 			 __func__, __LINE__, inode->i_ino, inode->i_nlink);
+<<<<<<< HEAD
+=======
 =======
 	if (atomic_read(&inode->i_count) > 1) {
 		printk(KERN_ERR "ext4_free_inode: inode has count=%d\n",
@@ -260,6 +284,7 @@ void ext4_free_inode(handle_t *handle, struct inode *inode)
 		printk(KERN_ERR "ext4_free_inode: inode on "
 		       "nonexistent device\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 	sbi = EXT4_SB(sb);
@@ -308,8 +333,12 @@ void ext4_free_inode(handle_t *handle, struct inode *inode)
 <<<<<<< HEAD
 	cleared = ext4_test_and_clear_bit(bit, bitmap_bh->b_data);
 =======
+<<<<<<< HEAD
+	cleared = ext4_test_and_clear_bit(bit, bitmap_bh->b_data);
+=======
 	cleared = ext4_clear_bit(bit, bitmap_bh->b_data);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (fatal || !cleared) {
 		ext4_unlock_group(sb, block_group);
 		goto out;
@@ -346,6 +375,10 @@ out:
 	} else
 		ext4_error(sb, "bit already cleared for inode %lu", ino);
 =======
+<<<<<<< HEAD
+	} else
+		ext4_error(sb, "bit already cleared for inode %lu", ino);
+=======
 	} else {
 		/* for debugging, sangwoo2.lee */
 		print_bh(sb, bitmap_bh, 0, EXT4_BLOCK_SIZE(sb));
@@ -353,12 +386,18 @@ out:
 		ext4_error(sb, "bit already cleared for inode %lu", ino);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 error_return:
 	brelse(bitmap_bh);
 	ext4_std_error(sb, fatal);
 }
 
+<<<<<<< HEAD
+struct orlov_stats {
+	__u32 free_inodes;
+	__u32 free_clusters;
+=======
 <<<<<<< HEAD
 struct orlov_stats {
 	__u32 free_inodes;
@@ -480,6 +519,7 @@ struct orlov_stats {
 	__u32 free_inodes;
         __u32 free_blocks;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__u32 used_dirs;
 };
 
@@ -499,8 +539,12 @@ static void get_orlov_stats(struct super_block *sb, ext4_group_t g,
 <<<<<<< HEAD
 		stats->free_clusters = atomic_read(&flex_group[g].free_clusters);
 =======
+<<<<<<< HEAD
+		stats->free_clusters = atomic_read(&flex_group[g].free_clusters);
+=======
 		stats->free_blocks = atomic_read(&flex_group[g].free_blocks);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		stats->used_dirs = atomic_read(&flex_group[g].used_dirs);
 		return;
 	}
@@ -509,11 +553,16 @@ static void get_orlov_stats(struct super_block *sb, ext4_group_t g,
 	if (desc) {
 		stats->free_inodes = ext4_free_inodes_count(sb, desc);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		stats->free_clusters = ext4_free_group_clusters(sb, desc);
 		stats->used_dirs = ext4_used_dirs_count(sb, desc);
 	} else {
 		stats->free_inodes = 0;
 		stats->free_clusters = 0;
+<<<<<<< HEAD
+=======
 =======
 		stats->free_blocks = ext4_free_blks_count(sb, desc);
 		stats->used_dirs = ext4_used_dirs_count(sb, desc);
@@ -521,6 +570,7 @@ static void get_orlov_stats(struct super_block *sb, ext4_group_t g,
 		stats->free_inodes = 0;
 		stats->free_blocks = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		stats->used_dirs = 0;
 	}
 }
@@ -550,8 +600,12 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 <<<<<<< HEAD
 			    ext4_group_t *group, umode_t mode,
 =======
+<<<<<<< HEAD
+			    ext4_group_t *group, umode_t mode,
+=======
 			    ext4_group_t *group, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			    const struct qstr *qstr)
 {
 	ext4_group_t parent_group = EXT4_I(parent)->i_block_group;
@@ -559,11 +613,16 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 	ext4_group_t real_ngroups = ext4_get_groups_count(sb);
 	int inodes_per_group = EXT4_INODES_PER_GROUP(sb);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int freei, avefreei, grp_free;
 	ext4_fsblk_t freeb, avefreec;
 	unsigned int ndirs;
 	int max_dirs, min_inodes;
 	ext4_grpblk_t min_clusters;
+<<<<<<< HEAD
+=======
 =======
 	unsigned int freei, avefreei;
 	ext4_fsblk_t freeb, avefreeb;
@@ -571,6 +630,7 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 	int max_dirs, min_inodes;
 	ext4_grpblk_t min_blocks;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext4_group_t i, grp, g, ngroups;
 	struct ext4_group_desc *desc;
 	struct orlov_stats stats;
@@ -587,15 +647,21 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 	freei = percpu_counter_read_positive(&sbi->s_freeinodes_counter);
 	avefreei = freei / ngroups;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	freeb = EXT4_C2B(sbi,
 		percpu_counter_read_positive(&sbi->s_freeclusters_counter));
 	avefreec = freeb;
 	do_div(avefreec, ngroups);
+<<<<<<< HEAD
+=======
 =======
 	freeb = percpu_counter_read_positive(&sbi->s_freeblocks_counter);
 	avefreeb = freeb;
 	do_div(avefreeb, ngroups);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ndirs = percpu_counter_read_positive(&sbi->s_dirs_counter);
 
 	if (S_ISDIR(mode) &&
@@ -624,8 +690,12 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 <<<<<<< HEAD
 			if (stats.free_clusters < avefreec)
 =======
+<<<<<<< HEAD
+			if (stats.free_clusters < avefreec)
+=======
 			if (stats.free_blocks < avefreeb)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				continue;
 			grp = g;
 			ret = 0;
@@ -666,8 +736,12 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 <<<<<<< HEAD
 	min_clusters = avefreec - EXT4_CLUSTERS_PER_GROUP(sb)*flex_size / 4;
 =======
+<<<<<<< HEAD
+	min_clusters = avefreec - EXT4_CLUSTERS_PER_GROUP(sb)*flex_size / 4;
+=======
 	min_blocks = avefreeb - EXT4_BLOCKS_PER_GROUP(sb)*flex_size / 4;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Start looking in the flex group where we last allocated an
@@ -689,8 +763,12 @@ static int find_group_orlov(struct super_block *sb, struct inode *parent,
 <<<<<<< HEAD
 		if (stats.free_clusters < min_clusters)
 =======
+<<<<<<< HEAD
+		if (stats.free_clusters < min_clusters)
+=======
 		if (stats.free_blocks < min_blocks)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			continue;
 		goto found_flex_bg;
 	}
@@ -707,9 +785,14 @@ fallback_retry:
 		grp_free = ext4_free_inodes_count(sb, desc);
 		if (desc && grp_free && grp_free >= avefreei) {
 =======
+<<<<<<< HEAD
+		grp_free = ext4_free_inodes_count(sb, desc);
+		if (desc && grp_free && grp_free >= avefreei) {
+=======
 		if (desc && ext4_free_inodes_count(sb, desc) &&
 		    ext4_free_inodes_count(sb, desc) >= avefreei) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*group = grp;
 			return 0;
 		}
@@ -731,8 +814,12 @@ static int find_group_other(struct super_block *sb, struct inode *parent,
 <<<<<<< HEAD
 			    ext4_group_t *group, umode_t mode)
 =======
+<<<<<<< HEAD
+			    ext4_group_t *group, umode_t mode)
+=======
 			    ext4_group_t *group, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	ext4_group_t parent_group = EXT4_I(parent)->i_block_group;
 	ext4_group_t i, last, ngroups = ext4_get_groups_count(sb);
@@ -786,8 +873,12 @@ static int find_group_other(struct super_block *sb, struct inode *parent,
 <<<<<<< HEAD
 	    ext4_free_group_clusters(sb, desc))
 =======
+<<<<<<< HEAD
+	    ext4_free_group_clusters(sb, desc))
+=======
 			ext4_free_blks_count(sb, desc))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	/*
@@ -814,8 +905,12 @@ static int find_group_other(struct super_block *sb, struct inode *parent,
 <<<<<<< HEAD
 		    ext4_free_group_clusters(sb, desc))
 =======
+<<<<<<< HEAD
+		    ext4_free_group_clusters(sb, desc))
+=======
 				ext4_free_blks_count(sb, desc))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return 0;
 	}
 
@@ -836,6 +931,8 @@ static int find_group_other(struct super_block *sb, struct inode *parent,
 }
 
 /*
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
  * claim the inode from the inode bitmap. If the group
@@ -927,6 +1024,7 @@ err_ret:
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * There are two policies for allocating an inode.  If the new inode is
  * a directory, then a forward search is made for a block group with both
  * free space and a low directory-to-inode ratio; if that fails, then of
@@ -940,9 +1038,14 @@ err_ret:
 struct inode *ext4_new_inode(handle_t *handle, struct inode *dir, umode_t mode,
 			     const struct qstr *qstr, __u32 goal, uid_t *owner)
 =======
+<<<<<<< HEAD
+struct inode *ext4_new_inode(handle_t *handle, struct inode *dir, umode_t mode,
+			     const struct qstr *qstr, __u32 goal, uid_t *owner)
+=======
 struct inode *ext4_new_inode(handle_t *handle, struct inode *dir, int mode,
 			     const struct qstr *qstr, __u32 goal)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb;
 	struct buffer_head *inode_bitmap_bh = NULL;
@@ -958,9 +1061,12 @@ struct inode *ext4_new_inode(handle_t *handle, struct inode *dir, int mode,
 	ext4_group_t i;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int free = 0;
 	static int once = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ext4_group_t flex_group;
 
 	/* Cannot create files in a deleted directory */
@@ -991,6 +1097,11 @@ struct inode *ext4_new_inode(handle_t *handle, struct inode *dir, int mode,
 		ret2 = find_group_orlov(sb, dir, &group, mode, qstr);
 	else
 =======
+<<<<<<< HEAD
+	if (S_ISDIR(mode))
+		ret2 = find_group_orlov(sb, dir, &group, mode, qstr);
+	else
+=======
 	if (sbi->s_log_groups_per_flex && test_opt(sb, OLDALLOC)) {
 		ret2 = find_group_flex(sb, dir, &group);
 		if (ret2 == -1) {
@@ -1012,6 +1123,7 @@ struct inode *ext4_new_inode(handle_t *handle, struct inode *dir, int mode,
 			ret2 = find_group_orlov(sb, dir, &group, mode, qstr);
 	} else
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ret2 = find_group_other(sb, dir, &group, mode);
 
 got_group:
@@ -1021,13 +1133,19 @@ got_group:
 		goto out;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Normally we will only go through one pass of this loop,
 	 * unless we get unlucky and it turns out the group we selected
 	 * had its last inode grabbed by someone else.
 	 */
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < ngroups; i++, ino = 0) {
 		err = -EIO;
 
@@ -1045,6 +1163,9 @@ repeat_in_this_group:
 					      inode_bitmap_bh->b_data,
 					      EXT4_INODES_PER_GROUP(sb), ino);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (ino >= EXT4_INODES_PER_GROUP(sb)) {
 			if (++group == ngroups)
 				group = 0;
@@ -1063,6 +1184,8 @@ repeat_in_this_group:
 			goto got; /* we grabbed the inode! */
 		if (ino < EXT4_INODES_PER_GROUP(sb))
 			goto repeat_in_this_group;
+<<<<<<< HEAD
+=======
 =======
 
 		if (ino < EXT4_INODES_PER_GROUP(sb)) {
@@ -1110,6 +1233,7 @@ repeat_in_this_group:
 		if (++group == ngroups)
 			group = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	err = -ENOSPC;
 	goto out;
@@ -1129,6 +1253,9 @@ got:
 		}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		BUFFER_TRACE(block_bitmap_bh, "dirty block bitmap");
 		err = ext4_handle_dirty_metadata(handle, NULL, block_bitmap_bh);
 		brelse(block_bitmap_bh);
@@ -1139,6 +1266,8 @@ got:
 			gdp->bg_flags &= cpu_to_le16(~EXT4_BG_BLOCK_UNINIT);
 			ext4_free_group_clusters_set(sb, gdp,
 				ext4_free_clusters_after_init(sb, group, gdp));
+<<<<<<< HEAD
+=======
 =======
 		free = 0;
 		ext4_lock_group(sb, group);
@@ -1148,12 +1277,16 @@ got:
 			gdp->bg_flags &= cpu_to_le16(~EXT4_BG_BLOCK_UNINIT);
 			ext4_free_blks_set(sb, gdp, free);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			gdp->bg_checksum = ext4_group_desc_csum(sbi, group,
 								gdp);
 		}
 		ext4_unlock_group(sb, group);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			goto fail;
 	}
@@ -1213,6 +1346,8 @@ got:
 	if (err)
 		goto fail;
 
+<<<<<<< HEAD
+=======
 =======
 		/* Don't need to dirty bitmap block if we didn't change it */
 		if (free) {
@@ -1226,6 +1361,7 @@ got:
 			goto fail;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUFFER_TRACE(group_desc_bh, "call ext4_handle_dirty_metadata");
 	err = ext4_handle_dirty_metadata(handle, NULL, group_desc_bh);
 	if (err)
@@ -1241,15 +1377,21 @@ got:
 		atomic_dec(&sbi->s_flex_groups[flex_group].free_inodes);
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (owner) {
 		inode->i_mode = mode;
 		inode->i_uid = owner[0];
 		inode->i_gid = owner[1];
 	} else if (test_opt(sb, GRPID)) {
+<<<<<<< HEAD
+=======
 =======
 
 	if (test_opt(sb, GRPID)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		inode->i_mode = mode;
 		inode->i_uid = current_fsuid();
 		inode->i_gid = dir->i_gid;
@@ -1269,12 +1411,16 @@ got:
 <<<<<<< HEAD
 	/* Don't inherit extent flag from directory, amongst others. */
 =======
+<<<<<<< HEAD
+	/* Don't inherit extent flag from directory, amongst others. */
+=======
 	/*
 	 * Don't inherit extent flag from directory, amongst others. We set
 	 * extent flag on newly created directory and file only if -o extent
 	 * mount option is specified
 	 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ei->i_flags =
 		ext4_mask_flags(mode, EXT4_I(dir)->i_flags & EXT4_FL_INHERITED);
 	ei->i_file_acl = 0;
@@ -1356,8 +1502,12 @@ fail_drop:
 <<<<<<< HEAD
 	clear_nlink(inode);
 =======
+<<<<<<< HEAD
+	clear_nlink(inode);
+=======
 	inode->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_new_inode(inode);
 	iput(inode);
 	brelse(inode_bitmap_bh);
@@ -1465,9 +1615,13 @@ unsigned long ext4_count_free_inodes(struct super_block *sb)
 <<<<<<< HEAD
 		x = ext4_count_free(bitmap_bh, EXT4_INODES_PER_GROUP(sb) / 8);
 =======
+<<<<<<< HEAD
+		x = ext4_count_free(bitmap_bh, EXT4_INODES_PER_GROUP(sb) / 8);
+=======
 		x = ext4_count_free(bitmap_bh->b_data,
 				    EXT4_INODES_PER_GROUP(sb) / 8);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_DEBUG "group %lu: stored = %d, counted = %lu\n",
 			(unsigned long) i, ext4_free_inodes_count(sb, gdp), x);
 		bitmap_count += x;
@@ -1516,10 +1670,16 @@ unsigned long ext4_count_dirs(struct super_block * sb)
  */
 int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 =======
+<<<<<<< HEAD
+ * block ext4_new_inode() until we are finished.
+ */
+int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
+=======
  * block ext4_claim_inode until we are finished.
  */
 extern int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 int barrier)
 {
 	struct ext4_group_info *grp = ext4_get_group_info(sb, group);
@@ -1566,6 +1726,9 @@ extern int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 
 	if ((used_blks < 0) || (used_blks > sbi->s_itb_per_group)) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ext4_error(sb, "Something is wrong with group %u: "
 			   "used itable blocks: %d; "
 			   "itable unused count: %u",
@@ -1573,6 +1736,8 @@ extern int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 			   ext4_itable_unused_count(sb, gdp));
 		ret = 1;
 		goto err_out;
+<<<<<<< HEAD
+=======
 =======
 		ext4_error(sb, "Something is wrong with group %u\n"
 			   "Used itable blocks: %d"
@@ -1582,6 +1747,7 @@ extern int ext4_init_inode_table(struct super_block *sb, ext4_group_t group,
 		ret = 1;
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	blk = ext4_inode_table(sb, gdp) + used_blks;

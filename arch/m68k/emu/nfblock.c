@@ -62,8 +62,12 @@ struct nfhd_device {
 <<<<<<< HEAD
 static void nfhd_make_request(struct request_queue *queue, struct bio *bio)
 =======
+<<<<<<< HEAD
+static void nfhd_make_request(struct request_queue *queue, struct bio *bio)
+=======
 static int nfhd_make_request(struct request_queue *queue, struct bio *bio)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct nfhd_device *dev = queue->queuedata;
 	struct bio_vec *bvec;
@@ -82,8 +86,11 @@ static int nfhd_make_request(struct request_queue *queue, struct bio *bio)
 	bio_endio(bio, 0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int nfhd_getgeo(struct block_device *bdev, struct hd_geometry *geo)

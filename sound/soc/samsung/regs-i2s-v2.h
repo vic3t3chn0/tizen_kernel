@@ -28,8 +28,12 @@
 <<<<<<< HEAD
 #define S5PC1XX_IISCON_FRXORINTEN	(1 << 25)
 =======
+<<<<<<< HEAD
+#define S5PC1XX_IISCON_FRXORINTEN	(1 << 25)
+=======
 #define S5PC1XX_IISCON_FRXOFINTEN	(1 << 25)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5PC1XX_IISCON_FTXSURSTAT	(1 << 24)
 #define S5PC1XX_IISCON_FTXSURINTEN	(1 << 23)
 #define S5PC1XX_IISCON_TXSDMAPAUSE	(1 << 20)
@@ -96,8 +100,12 @@
 <<<<<<< HEAD
 #define S3C2412_IISMOD_RCLK_MASK 	(3 << 3)
 =======
+<<<<<<< HEAD
+#define S3C2412_IISMOD_RCLK_MASK 	(3 << 3)
+=======
 #define S3C2412_IISMOD_RCLK_MASK	(3 << 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C2412_IISMOD_BCLK_32FS	(0 << 1)
 #define S3C2412_IISMOD_BCLK_48FS	(1 << 1)
 #define S3C2412_IISMOD_BCLK_16FS	(2 << 1)
@@ -110,6 +118,9 @@
 #define S3C2412_IISPSR_PSREN		(1 << 15)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C64XX_IISFIC_TX2COUNT(x)	(((x) >>  24) & 0xf)
 #define S3C64XX_IISFIC_TX1COUNT(x)	(((x) >>  16) & 0xf)
 
@@ -117,12 +128,15 @@
 #define S3C2412_IISFIC_RXFLUSH		(1 << 7)
 #define S3C2412_IISFIC_TXCOUNT(x)	(((x) >>  8) & 0xf)
 #define S3C2412_IISFIC_RXCOUNT(x)	(((x) >>  0) & 0xf)
+<<<<<<< HEAD
+=======
 =======
 #define S3C2412_IISFIC_TXFLUSH		(1 << 15)
 #define S3C2412_IISFIC_RXFLUSH		(1 << 7)
 #define S3C2412_IISFIC_TXCOUNT(x)	(((x) >>  8) & 0x7f)
 #define S3C2412_IISFIC_RXCOUNT(x)	(((x) >>  0) & 0x7f)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define S5PC1XX_IISFICS_TXFLUSH		(1 << 15)
 #define S5PC1XX_IISFICS_TXCOUNT(x)	(((x) >>  8) & 0x7f)

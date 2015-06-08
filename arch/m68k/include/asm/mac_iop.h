@@ -163,5 +163,10 @@ extern __u8 *iop_compare_code(uint, __u8 *, uint, __u16);
 extern void iop_register_interrupts(void);
 
 =======
+<<<<<<< HEAD
+extern void iop_register_interrupts(void);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASSEMBLY__ */

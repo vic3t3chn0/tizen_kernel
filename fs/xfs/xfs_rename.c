@@ -119,6 +119,9 @@ xfs_rename(
 <<<<<<< HEAD
 	src_is_directory = S_ISDIR(src_ip->i_d.di_mode);
 =======
+<<<<<<< HEAD
+	src_is_directory = S_ISDIR(src_ip->i_d.di_mode);
+=======
 	src_is_directory = ((src_ip->i_d.di_mode & S_IFMT) == S_IFDIR);
 
 	if (src_is_directory) {
@@ -132,6 +135,7 @@ xfs_rename(
 		}
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	xfs_sort_for_rename(src_dp, target_dp, src_ip, target_ip,
 				inodes, &num_inodes);
@@ -175,12 +179,17 @@ xfs_rename(
 	 * them.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_trans_ijoin(tp, src_dp, XFS_ILOCK_EXCL);
 	if (new_parent)
 		xfs_trans_ijoin(tp, target_dp, XFS_ILOCK_EXCL);
 	xfs_trans_ijoin(tp, src_ip, XFS_ILOCK_EXCL);
 	if (target_ip)
 		xfs_trans_ijoin(tp, target_ip, XFS_ILOCK_EXCL);
+<<<<<<< HEAD
+=======
 =======
 	xfs_trans_ijoin_ref(tp, src_dp, XFS_ILOCK_EXCL);
 	if (new_parent)
@@ -189,6 +198,7 @@ xfs_rename(
 	if (target_ip)
 		xfs_trans_ijoin_ref(tp, target_ip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we are using project inheritance, we only allow renames
@@ -242,8 +252,12 @@ xfs_rename(
 <<<<<<< HEAD
 		if (S_ISDIR(target_ip->i_d.di_mode)) {
 =======
+<<<<<<< HEAD
+		if (S_ISDIR(target_ip->i_d.di_mode)) {
+=======
 		if ((target_ip->i_d.di_mode & S_IFMT) == S_IFDIR) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			/*
 			 * Make sure target dir is empty.
 			 */

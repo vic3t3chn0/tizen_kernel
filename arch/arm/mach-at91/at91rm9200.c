@@ -18,13 +18,20 @@
 <<<<<<< HEAD
 #include <asm/system_misc.h>
 =======
+<<<<<<< HEAD
+#include <asm/system_misc.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/at91rm9200.h>
 #include <mach/at91_pmc.h>
 #include <mach/at91_st.h>
 #include <mach/cpu.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "soc.h"
 #include "generic.h"
 #include "clock.h"
@@ -32,6 +39,8 @@
 
 static struct map_desc at91rm9200_io_desc[] __initdata = {
 	{
+<<<<<<< HEAD
+=======
 =======
 #include "generic.h"
 #include "clock.h"
@@ -44,10 +53,13 @@ static struct map_desc at91rm9200_io_desc[] __initdata = {
 		.type		= MT_DEVICE,
 	}, {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.virtual	= AT91_VA_BASE_EMAC,
 		.pfn		= __phys_to_pfn(AT91RM9200_BASE_EMAC),
 		.length		= SZ_16K,
 		.type		= MT_DEVICE,
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	}, {
@@ -56,6 +68,7 @@ static struct map_desc at91rm9200_io_desc[] __initdata = {
 		.length		= AT91RM9200_SRAM_SIZE,
 		.type		= MT_DEVICE,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -220,14 +233,20 @@ static struct clk_lookup periph_clocks_lookups[] = {
 	CLKDEV_CON_DEV_ID("pclk", "ssc.1", &ssc1_clk),
 	CLKDEV_CON_DEV_ID("pclk", "ssc.2", &ssc2_clk),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* fake hclk clock */
 	CLKDEV_CON_DEV_ID("hclk", "at91_ohci", &ohci_clk),
 	CLKDEV_CON_ID("pioA", &pioA_clk),
 	CLKDEV_CON_ID("pioB", &pioB_clk),
 	CLKDEV_CON_ID("pioC", &pioC_clk),
 	CLKDEV_CON_ID("pioD", &pioD_clk),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct clk_lookup usart_clocks_lookups[] = {
@@ -302,6 +321,9 @@ void __init at91rm9200_set_console_clock(int id)
  * -------------------------------------------------------------------- */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct at91_gpio_bank at91rm9200_gpio[] __initdata = {
 	{
 		.id		= AT91RM9200_ID_PIOA,
@@ -334,6 +356,8 @@ static void at91rm9200_restart(char mode, const char *cmd)
 	 */
 	at91_st_write(AT91_ST_WDMR, AT91_ST_RSTEN | AT91_ST_EXTEN | 1);
 	at91_st_write(AT91_ST_CR, AT91_ST_WDRST);
+<<<<<<< HEAD
+=======
 =======
 static struct at91_gpio_bank at91rm9200_gpio[] = {
 	{
@@ -371,12 +395,16 @@ void __init at91rm9200_set_type(int type)
 {
 	rm9200_type = type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* --------------------------------------------------------------------
  *  AT91RM9200 processor initialization
  * -------------------------------------------------------------------- */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init at91rm9200_map_io(void)
 {
 	/* Map peripherals */
@@ -394,6 +422,8 @@ static void __init at91rm9200_initialize(void)
 {
 	arm_pm_idle = at91rm9200_idle;
 	arm_pm_restart = at91rm9200_restart;
+<<<<<<< HEAD
+=======
 =======
 void __init at91rm9200_map_io(void)
 {
@@ -405,11 +435,14 @@ void __init at91rm9200_initialize(unsigned long main_clock)
 {
 	at91_arch_reset = at91rm9200_reset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	at91_extern_irq = (1 << AT91RM9200_ID_IRQ0) | (1 << AT91RM9200_ID_IRQ1)
 			| (1 << AT91RM9200_ID_IRQ2) | (1 << AT91RM9200_ID_IRQ3)
 			| (1 << AT91RM9200_ID_IRQ4) | (1 << AT91RM9200_ID_IRQ5)
 			| (1 << AT91RM9200_ID_IRQ6);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Init clock subsystem */
@@ -419,6 +452,7 @@ void __init at91rm9200_initialize(unsigned long main_clock)
 	at91rm9200_register_clocks();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Initialize GPIO subsystem */
 	at91_gpio_init(at91rm9200_gpio,
 		cpu_is_at91rm9200_bga() ? AT91RM9200_BGA : AT91RM9200_PQFP);
@@ -468,6 +502,9 @@ static unsigned int at91rm9200_default_irq_priority[NR_AIC_IRQS] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct at91_init_soc __initdata at91rm9200_soc = {
 	.map_io = at91rm9200_map_io,
 	.default_irq_priority = at91rm9200_default_irq_priority,
@@ -475,6 +512,8 @@ struct at91_init_soc __initdata at91rm9200_soc = {
 	.register_clocks = at91rm9200_register_clocks,
 	.init = at91rm9200_initialize,
 };
+<<<<<<< HEAD
+=======
 =======
 void __init at91rm9200_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 {
@@ -488,3 +527,4 @@ void __init at91rm9200_init_interrupts(unsigned int priority[NR_AIC_IRQS])
 	at91_gpio_irq_setup();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

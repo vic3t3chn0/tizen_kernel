@@ -11,8 +11,12 @@ SYNOPSIS
 <<<<<<< HEAD
 'perf sched' {record|latency|map|replay|script}
 =======
+<<<<<<< HEAD
+'perf sched' {record|latency|map|replay|script}
+=======
 'perf sched' {record|latency|map|replay|trace}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 DESCRIPTION
 -----------
@@ -28,9 +32,14 @@ There are five variants of perf sched:
   'perf sched script' to see a detailed trace of the workload that
    was recorded (aliased to 'perf script' for now).
 =======
+<<<<<<< HEAD
+  'perf sched script' to see a detailed trace of the workload that
+   was recorded (aliased to 'perf script' for now).
+=======
   'perf sched trace' to see a detailed trace of the workload that
   was recorded.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
   'perf sched replay' to simulate the workload that was recorded
   via perf sched record. (this is done by starting up mockup threads
@@ -52,8 +61,12 @@ OPTIONS
 <<<<<<< HEAD
         Input file name. (default: perf.data unless stdin is a fifo)
 =======
+<<<<<<< HEAD
+        Input file name. (default: perf.data unless stdin is a fifo)
+=======
         Input file name. (default: perf.data)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 -v::
 --verbose::

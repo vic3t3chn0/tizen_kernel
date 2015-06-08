@@ -47,8 +47,12 @@ enum {
 <<<<<<< HEAD
 static void detected_xenix(struct sysv_sb_info *sbi, unsigned *max_links)
 =======
+<<<<<<< HEAD
+static void detected_xenix(struct sysv_sb_info *sbi, unsigned *max_links)
+=======
 static void detected_xenix(struct sysv_sb_info *sbi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct buffer_head *bh1 = sbi->s_bh1;
 	struct buffer_head *bh2 = sbi->s_bh2;
@@ -66,8 +70,12 @@ static void detected_xenix(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 	*max_links = XENIX_LINK_MAX;
 =======
+<<<<<<< HEAD
+	*max_links = XENIX_LINK_MAX;
+=======
 	sbi->s_link_max = XENIX_LINK_MAX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sbi->s_fic_size = XENIX_NICINOD;
 	sbi->s_flc_size = XENIX_NICFREE;
 	sbi->s_sbd1 = (char *)sbd1;
@@ -86,8 +94,12 @@ static void detected_xenix(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 static void detected_sysv4(struct sysv_sb_info *sbi, unsigned *max_links)
 =======
+<<<<<<< HEAD
+static void detected_sysv4(struct sysv_sb_info *sbi, unsigned *max_links)
+=======
 static void detected_sysv4(struct sysv_sb_info *sbi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sysv4_super_block * sbd;
 	struct buffer_head *bh1 = sbi->s_bh1;
@@ -101,8 +113,12 @@ static void detected_sysv4(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 	*max_links = SYSV_LINK_MAX;
 =======
+<<<<<<< HEAD
+	*max_links = SYSV_LINK_MAX;
+=======
 	sbi->s_link_max = SYSV_LINK_MAX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sbi->s_fic_size = SYSV_NICINOD;
 	sbi->s_flc_size = SYSV_NICFREE;
 	sbi->s_sbd1 = (char *)sbd;
@@ -122,8 +138,12 @@ static void detected_sysv4(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 static void detected_sysv2(struct sysv_sb_info *sbi, unsigned *max_links)
 =======
+<<<<<<< HEAD
+static void detected_sysv2(struct sysv_sb_info *sbi, unsigned *max_links)
+=======
 static void detected_sysv2(struct sysv_sb_info *sbi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sysv2_super_block *sbd;
 	struct buffer_head *bh1 = sbi->s_bh1;
@@ -137,8 +157,12 @@ static void detected_sysv2(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 	*max_links = SYSV_LINK_MAX;
 =======
+<<<<<<< HEAD
+	*max_links = SYSV_LINK_MAX;
+=======
 	sbi->s_link_max = SYSV_LINK_MAX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sbi->s_fic_size = SYSV_NICINOD;
 	sbi->s_flc_size = SYSV_NICFREE;
 	sbi->s_sbd1 = (char *)sbd;
@@ -158,8 +182,12 @@ static void detected_sysv2(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 static void detected_coherent(struct sysv_sb_info *sbi, unsigned *max_links)
 =======
+<<<<<<< HEAD
+static void detected_coherent(struct sysv_sb_info *sbi, unsigned *max_links)
+=======
 static void detected_coherent(struct sysv_sb_info *sbi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct coh_super_block * sbd;
 	struct buffer_head *bh1 = sbi->s_bh1;
@@ -169,8 +197,12 @@ static void detected_coherent(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 	*max_links = COH_LINK_MAX;
 =======
+<<<<<<< HEAD
+	*max_links = COH_LINK_MAX;
+=======
 	sbi->s_link_max = COH_LINK_MAX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sbi->s_fic_size = COH_NICINOD;
 	sbi->s_flc_size = COH_NICFREE;
 	sbi->s_sbd1 = (char *)sbd;
@@ -189,8 +221,12 @@ static void detected_coherent(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 static void detected_v7(struct sysv_sb_info *sbi, unsigned *max_links)
 =======
+<<<<<<< HEAD
+static void detected_v7(struct sysv_sb_info *sbi, unsigned *max_links)
+=======
 static void detected_v7(struct sysv_sb_info *sbi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct buffer_head *bh2 = sbi->s_bh2;
 	struct v7_super_block *sbd = (struct v7_super_block *)bh2->b_data;
@@ -198,8 +234,12 @@ static void detected_v7(struct sysv_sb_info *sbi)
 <<<<<<< HEAD
 	*max_links = V7_LINK_MAX;
 =======
+<<<<<<< HEAD
+	*max_links = V7_LINK_MAX;
+=======
 	sbi->s_link_max = V7_LINK_MAX;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sbi->s_fic_size = V7_NICINOD;
 	sbi->s_flc_size = V7_NICFREE;
 	sbi->s_sbd1 = (char *)sbd;
@@ -333,8 +373,12 @@ static char *flavour_names[] = {
 <<<<<<< HEAD
 static void (*flavour_setup[])(struct sysv_sb_info *, unsigned *) = {
 =======
+<<<<<<< HEAD
+static void (*flavour_setup[])(struct sysv_sb_info *, unsigned *) = {
+=======
 static void (*flavour_setup[])(struct sysv_sb_info *) = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[FSTYPE_XENIX]	= detected_xenix,
 	[FSTYPE_SYSV4]	= detected_sysv4,
 	[FSTYPE_SYSV2]	= detected_sysv2,
@@ -357,8 +401,12 @@ static int complete_read_super(struct super_block *sb, int silent, int size)
 <<<<<<< HEAD
 	flavour_setup[sbi->s_type](sbi, &sb->s_max_links);
 =======
+<<<<<<< HEAD
+	flavour_setup[sbi->s_type](sbi, &sb->s_max_links);
+=======
 	flavour_setup[sbi->s_type](sbi);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	
 	sbi->s_truncate = 1;
 	sbi->s_ndatazones = sbi->s_nzones - sbi->s_firstdatazone;
@@ -393,10 +441,15 @@ static int complete_read_super(struct super_block *sb, int silent, int size)
 	sb->s_root = d_make_root(root_inode);
 	if (!sb->s_root) {
 =======
+<<<<<<< HEAD
+	sb->s_root = d_make_root(root_inode);
+	if (!sb->s_root) {
+=======
 	sb->s_root = d_alloc_root(root_inode);
 	if (!sb->s_root) {
 		iput(root_inode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk("SysV FS: get root dentry failed\n");
 		return 0;
 	}

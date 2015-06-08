@@ -379,6 +379,12 @@ static struct platform_driver stmpe_ts_driver = {
 	.probe = stmpe_input_probe,
 	.remove = __devexit_p(stmpe_ts_remove),
 };
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(stmpe_ts_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int __init stmpe_ts_init(void)
 {
@@ -393,6 +399,10 @@ static void __exit stmpe_ts_exit(void)
 }
 
 module_exit(stmpe_ts_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Luotao Fu <l.fu@pengutronix.de>");
 MODULE_DESCRIPTION("STMPEXXX touchscreen driver");

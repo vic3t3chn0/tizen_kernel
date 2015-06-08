@@ -36,8 +36,12 @@ struct pxa3xx_u2d_ulpi {
 <<<<<<< HEAD
 	struct usb_phy		*otg;
 =======
+<<<<<<< HEAD
+	struct usb_phy		*otg;
+=======
 	struct otg_transceiver	*otg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int		ulpi_mode;
 };
 
@@ -86,8 +90,12 @@ static int pxa310_ulpi_poll(void)
 <<<<<<< HEAD
 static int pxa310_ulpi_read(struct usb_phy *otg, u32 reg)
 =======
+<<<<<<< HEAD
+static int pxa310_ulpi_read(struct usb_phy *otg, u32 reg)
+=======
 static int pxa310_ulpi_read(struct otg_transceiver *otg, u32 reg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 
@@ -109,8 +117,12 @@ static int pxa310_ulpi_read(struct otg_transceiver *otg, u32 reg)
 <<<<<<< HEAD
 static int pxa310_ulpi_write(struct usb_phy *otg, u32 val, u32 reg)
 =======
+<<<<<<< HEAD
+static int pxa310_ulpi_write(struct usb_phy *otg, u32 val, u32 reg)
+=======
 static int pxa310_ulpi_write(struct otg_transceiver *otg, u32 val, u32 reg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	if (pxa310_ulpi_get_phymode() != SYNCH) {
 		pr_warning("%s: PHY is not in SYNCH mode!\n", __func__);
@@ -126,8 +138,12 @@ static int pxa310_ulpi_write(struct otg_transceiver *otg, u32 val, u32 reg)
 <<<<<<< HEAD
 struct usb_phy_io_ops pxa310_ulpi_access_ops = {
 =======
+<<<<<<< HEAD
+struct usb_phy_io_ops pxa310_ulpi_access_ops = {
+=======
 struct otg_io_access_ops pxa310_ulpi_access_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.read	= pxa310_ulpi_read,
 	.write	= pxa310_ulpi_write,
 };
@@ -158,8 +174,12 @@ static int pxa310_start_otg_host_transcvr(struct usb_bus *host)
 <<<<<<< HEAD
 	err = usb_phy_init(u2d->otg);
 =======
+<<<<<<< HEAD
+	err = usb_phy_init(u2d->otg);
+=======
 	err = otg_init(u2d->otg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		pr_err("OTG transceiver init failed");
 		return err;
@@ -168,8 +188,12 @@ static int pxa310_start_otg_host_transcvr(struct usb_bus *host)
 <<<<<<< HEAD
 	err = otg_set_vbus(u2d->otg->otg, 1);
 =======
+<<<<<<< HEAD
+	err = otg_set_vbus(u2d->otg->otg, 1);
+=======
 	err = otg_set_vbus(u2d->otg, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err) {
 		pr_err("OTG transceiver VBUS set failed");
 		return err;
@@ -178,8 +202,12 @@ static int pxa310_start_otg_host_transcvr(struct usb_bus *host)
 <<<<<<< HEAD
 	err = otg_set_host(u2d->otg->otg, host);
 =======
+<<<<<<< HEAD
+	err = otg_set_host(u2d->otg->otg, host);
+=======
 	err = otg_set_host(u2d->otg, host);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		pr_err("OTG transceiver Host mode set failed");
 
@@ -222,10 +250,16 @@ static void pxa310_stop_otg_hc(void)
 	otg_set_vbus(u2d->otg->otg, 0);
 	usb_phy_shutdown(u2d->otg);
 =======
+<<<<<<< HEAD
+	otg_set_host(u2d->otg->otg, NULL);
+	otg_set_vbus(u2d->otg->otg, 0);
+	usb_phy_shutdown(u2d->otg);
+=======
 	otg_set_host(u2d->otg, NULL);
 	otg_set_vbus(u2d->otg, 0);
 	otg_shutdown(u2d->otg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void pxa310_u2d_setup_otg_hc(void)
@@ -302,7 +336,11 @@ int pxa3xx_u2d_start_hc(struct usb_bus *host)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(pxa3xx_u2d_start_hc);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(pxa3xx_u2d_start_hc);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void pxa3xx_u2d_stop_hc(struct usb_bus *host)
 {
@@ -318,7 +356,11 @@ void pxa3xx_u2d_stop_hc(struct usb_bus *host)
 <<<<<<< HEAD
 EXPORT_SYMBOL_GPL(pxa3xx_u2d_stop_hc);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL_GPL(pxa3xx_u2d_stop_hc);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static int pxa3xx_u2d_probe(struct platform_device *pdev)
 {

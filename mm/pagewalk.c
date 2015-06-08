@@ -127,6 +127,9 @@ static int walk_hugetlb_range(struct vm_area_struct *vma,
 	return 0;
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct vm_area_struct* hugetlb_vma(unsigned long addr, struct mm_walk *walk)
 {
@@ -160,9 +163,12 @@ static int walk_hugetlb_range(struct vm_area_struct *vma,
 #endif /* CONFIG_HUGETLB_PAGE */
 
 
+<<<<<<< HEAD
+=======
 =======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * walk_page_range - walk a memory map's page tables with a callback
@@ -184,8 +190,13 @@ static int walk_hugetlb_range(struct vm_area_struct *vma,
  * Usually no locks are taken, but splitting transparent huge page may
  * take page table lock. And the bottom level iterator will map PTE
 =======
+<<<<<<< HEAD
+ * Usually no locks are taken, but splitting transparent huge page may
+ * take page table lock. And the bottom level iterator will map PTE
+=======
  * No locks are taken, but the bottom level iterator will map PTE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * directories from highmem if necessary.
  *
  * If any callback returns a non-zero value, the walk is aborted and
@@ -195,7 +206,13 @@ static int walk_hugetlb_range(struct vm_area_struct *vma,
  * walk->mm->mmap_sem must be held for at least read if walk->hugetlb_entry
  * is !NULL.
 =======
+<<<<<<< HEAD
+ *
+ * walk->mm->mmap_sem must be held for at least read if walk->hugetlb_entry
+ * is !NULL.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 int walk_page_range(unsigned long addr, unsigned long end,
 		    struct mm_walk *walk)
@@ -213,10 +230,15 @@ int walk_page_range(unsigned long addr, unsigned long end,
 	pgd = pgd_offset(walk->mm, addr);
 	do {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct vm_area_struct *vma;
 
 		next = pgd_addr_end(addr, end);
 
+<<<<<<< HEAD
+=======
 =======
 		struct vm_area_struct *uninitialized_var(vma);
 
@@ -224,6 +246,7 @@ int walk_page_range(unsigned long addr, unsigned long end,
 
 #ifdef CONFIG_HUGETLB_PAGE
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * handle hugetlb vma individually because pagetable walk for
 		 * the hugetlb page is dependent on the architecture and
@@ -233,9 +256,14 @@ int walk_page_range(unsigned long addr, unsigned long end,
 		vma = hugetlb_vma(addr, walk);
 		if (vma) {
 =======
+<<<<<<< HEAD
+		vma = hugetlb_vma(addr, walk);
+		if (vma) {
+=======
 		vma = find_vma(walk->mm, addr);
 		if (vma && is_vm_hugetlb_page(vma)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (vma->vm_end < next)
 				next = vma->vm_end;
 			/*
@@ -251,8 +279,12 @@ int walk_page_range(unsigned long addr, unsigned long end,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (pgd_none_or_clear_bad(pgd)) {
 			if (walk->pte_hole)
 				err = walk->pte_hole(addr, next, walk);

@@ -26,6 +26,14 @@
 #include <linux/delay.h>
 #include <linux/slab.h>
 #include <linux/i2c-tegra.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/of_i2c.h>
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/unaligned.h>
 
@@ -269,6 +277,35 @@ static int tegra_i2c_fill_tx_fifo(struct tegra_i2c_dev *i2c_dev)
 
 	/* Rounds down to not include partial word at the end of buf */
 	words_to_transfer = buf_remaining / BYTES_PER_FIFO_WORD;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/* It's very common to have < 4 bytes, so optimize that case. */
+	if (words_to_transfer) {
+		if (words_to_transfer > tx_fifo_avail)
+			words_to_transfer = tx_fifo_avail;
+
+		/*
+		 * Update state before writing to FIFO.  If this casues us
+		 * to finish writing all bytes (AKA buf_remaining goes to 0) we
+		 * have a potential for an interrupt (PACKET_XFER_COMPLETE is
+		 * not maskable).  We need to make sure that the isr sees
+		 * buf_remaining as 0 and doesn't call us back re-entrantly.
+		 */
+		buf_remaining -= words_to_transfer * BYTES_PER_FIFO_WORD;
+		tx_fifo_avail -= words_to_transfer;
+		i2c_dev->msg_buf_remaining = buf_remaining;
+		i2c_dev->msg_buf = buf +
+			words_to_transfer * BYTES_PER_FIFO_WORD;
+		barrier();
+
+		i2c_writesl(i2c_dev, buf, I2C_TX_FIFO, words_to_transfer);
+
+		buf += words_to_transfer * BYTES_PER_FIFO_WORD;
+	}
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (words_to_transfer > tx_fifo_avail)
 		words_to_transfer = tx_fifo_avail;
 
@@ -277,6 +314,10 @@ static int tegra_i2c_fill_tx_fifo(struct tegra_i2c_dev *i2c_dev)
 	buf += words_to_transfer * BYTES_PER_FIFO_WORD;
 	buf_remaining -= words_to_transfer * BYTES_PER_FIFO_WORD;
 	tx_fifo_avail -= words_to_transfer;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If there is a partial word at the end of buf, handle it manually to
@@ -286,6 +327,20 @@ static int tegra_i2c_fill_tx_fifo(struct tegra_i2c_dev *i2c_dev)
 	if (tx_fifo_avail > 0 && buf_remaining > 0) {
 		BUG_ON(buf_remaining > 3);
 		memcpy(&val, buf, buf_remaining);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+		/* Again update before writing to FIFO to make sure isr sees. */
+		i2c_dev->msg_buf_remaining = 0;
+		i2c_dev->msg_buf = NULL;
+		barrier();
+
+		i2c_writel(i2c_dev, val, I2C_TX_FIFO);
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		i2c_writel(i2c_dev, val, I2C_TX_FIFO);
 		buf_remaining = 0;
 		tx_fifo_avail--;
@@ -294,6 +349,10 @@ static int tegra_i2c_fill_tx_fifo(struct tegra_i2c_dev *i2c_dev)
 	BUG_ON(tx_fifo_avail > 0 && buf_remaining > 0);
 	i2c_dev->msg_buf_remaining = buf_remaining;
 	i2c_dev->msg_buf = buf;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -410,9 +469,22 @@ static irqreturn_t tegra_i2c_isr(int irq, void *dev_id)
 			tegra_i2c_mask_irq(i2c_dev, I2C_INT_TX_FIFO_DATA_REQ);
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (status & I2C_INT_PACKET_XFER_COMPLETE) {
+		BUG_ON(i2c_dev->msg_buf_remaining);
+		complete(&i2c_dev->msg_complete);
+	}
+=======
 	if ((status & I2C_INT_PACKET_XFER_COMPLETE) &&
 			!i2c_dev->msg_buf_remaining)
 		complete(&i2c_dev->msg_complete);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if ((status & I2C_INT_PACKET_XFER_COMPLETE) &&
+			!i2c_dev->msg_buf_remaining)
+		complete(&i2c_dev->msg_complete);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	i2c_writel(i2c_dev, status, I2C_INT_STATUS);
 	if (i2c_dev->is_dvc)
@@ -437,7 +509,14 @@ static int tegra_i2c_xfer_msg(struct tegra_i2c_dev *i2c_dev,
 	int ret;
 
 	tegra_i2c_flush_fifos(i2c_dev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	i2c_writel(i2c_dev, 0xFF, I2C_INT_STATUS);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_writel(i2c_dev, 0xFF, I2C_INT_STATUS);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (msg->len == 0)
 		return -EINVAL;
@@ -497,6 +576,20 @@ static int tegra_i2c_xfer_msg(struct tegra_i2c_dev *i2c_dev,
 	if (likely(i2c_dev->msg_err == I2C_ERR_NONE))
 		return 0;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * NACK interrupt is generated before the I2C controller generates the
+	 * STOP condition on the bus. So wait for 2 clock periods before resetting
+	 * the controller so that STOP condition has been delivered properly.
+	 */
+	if (i2c_dev->msg_err == I2C_ERR_NO_ACK)
+		udelay(DIV_ROUND_UP(2 * 1000000, i2c_dev->bus_clk_rate));
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tegra_i2c_init(i2c_dev);
 	if (i2c_dev->msg_err == I2C_ERR_NO_ACK) {
 		if (msg->flags & I2C_M_IGNORE_NAK)
@@ -530,7 +623,15 @@ static int tegra_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg msgs[],
 
 static u32 tegra_i2c_func(struct i2c_adapter *adap)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return I2C_FUNC_I2C | I2C_FUNC_SMBUS_EMUL;
+=======
 	return I2C_FUNC_I2C;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return I2C_FUNC_I2C;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const struct i2c_algorithm tegra_i2c_algo = {
@@ -538,7 +639,15 @@ static const struct i2c_algorithm tegra_i2c_algo = {
 	.functionality	= tegra_i2c_func,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devinit tegra_i2c_probe(struct platform_device *pdev)
+=======
 static int tegra_i2c_probe(struct platform_device *pdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int tegra_i2c_probe(struct platform_device *pdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tegra_i2c_dev *i2c_dev;
 	struct tegra_i2c_platform_data *pdata = pdev->dev.platform_data;
@@ -546,7 +655,16 @@ static int tegra_i2c_probe(struct platform_device *pdev)
 	struct resource *iomem;
 	struct clk *clk;
 	struct clk *i2c_clk;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	const unsigned int *prop;
+	void __iomem *base;
+=======
 	void *base;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	void *base;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int irq;
 	int ret = 0;
 
@@ -603,9 +721,34 @@ static int tegra_i2c_probe(struct platform_device *pdev)
 	i2c_dev->irq = irq;
 	i2c_dev->cont_id = pdev->id;
 	i2c_dev->dev = &pdev->dev;
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	i2c_dev->bus_clk_rate = 100000; /* default clock rate */
+	if (pdata) {
+		i2c_dev->bus_clk_rate = pdata->bus_clk_rate;
+
+	} else if (i2c_dev->dev->of_node) {    /* if there is a device tree node ... */
+		prop = of_get_property(i2c_dev->dev->of_node,
+				"clock-frequency", NULL);
+		if (prop)
+			i2c_dev->bus_clk_rate = be32_to_cpup(prop);
+	}
+
+	if (pdev->dev.of_node)
+		i2c_dev->is_dvc = of_device_is_compatible(pdev->dev.of_node,
+						"nvidia,tegra20-i2c-dvc");
+	else if (pdev->id == 3)
+=======
 	i2c_dev->bus_clk_rate = pdata ? pdata->bus_clk_rate : 100000;
 
 	if (pdev->id == 3)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	i2c_dev->bus_clk_rate = pdata ? pdata->bus_clk_rate : 100000;
+
+	if (pdev->id == 3)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		i2c_dev->is_dvc = 1;
 	init_completion(&i2c_dev->msg_complete);
 
@@ -633,6 +776,13 @@ static int tegra_i2c_probe(struct platform_device *pdev)
 	i2c_dev->adapter.algo = &tegra_i2c_algo;
 	i2c_dev->adapter.dev.parent = &pdev->dev;
 	i2c_dev->adapter.nr = pdev->id;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	i2c_dev->adapter.dev.of_node = pdev->dev.of_node;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = i2c_add_numbered_adapter(&i2c_dev->adapter);
 	if (ret) {
@@ -640,6 +790,14 @@ static int tegra_i2c_probe(struct platform_device *pdev)
 		goto err_free_irq;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	of_i2c_register_devices(&i2c_dev->adapter);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 err_free_irq:
 	free_irq(i2c_dev->irq, i2c_dev);
@@ -656,7 +814,15 @@ err_iounmap:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int __devexit tegra_i2c_remove(struct platform_device *pdev)
+=======
 static int tegra_i2c_remove(struct platform_device *pdev)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int tegra_i2c_remove(struct platform_device *pdev)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct tegra_i2c_dev *i2c_dev = platform_get_drvdata(pdev);
 	i2c_del_adapter(&i2c_dev->adapter);
@@ -704,9 +870,33 @@ static int tegra_i2c_resume(struct platform_device *pdev)
 }
 #endif
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_OF)
+/* Match table for of_platform binding */
+static const struct of_device_id tegra_i2c_of_match[] __devinitconst = {
+	{ .compatible = "nvidia,tegra20-i2c", },
+	{ .compatible = "nvidia,tegra20-i2c-dvc", },
+	{},
+};
+MODULE_DEVICE_TABLE(of, tegra_i2c_of_match);
+#else
+#define tegra_i2c_of_match NULL
+#endif
+
+static struct platform_driver tegra_i2c_driver = {
+	.probe   = tegra_i2c_probe,
+	.remove  = __devexit_p(tegra_i2c_remove),
+=======
 static struct platform_driver tegra_i2c_driver = {
 	.probe   = tegra_i2c_probe,
 	.remove  = tegra_i2c_remove,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct platform_driver tegra_i2c_driver = {
+	.probe   = tegra_i2c_probe,
+	.remove  = tegra_i2c_remove,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PM
 	.suspend = tegra_i2c_suspend,
 	.resume  = tegra_i2c_resume,
@@ -714,6 +904,13 @@ static struct platform_driver tegra_i2c_driver = {
 	.driver  = {
 		.name  = "tegra-i2c",
 		.owner = THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.of_match_table = tegra_i2c_of_match,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 

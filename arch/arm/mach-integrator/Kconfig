@@ -10,7 +10,12 @@ config ARCH_INTEGRATOR_AP
 	select SERIAL_AMBA_PL010
 	select SERIAL_AMBA_PL010_CONSOLE
 =======
+<<<<<<< HEAD
+	select SERIAL_AMBA_PL010
+	select SERIAL_AMBA_PL010_CONSOLE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Include support for the ARM(R) Integrator/AP and
 	  Integrator/PP2 platforms.
@@ -24,7 +29,12 @@ config ARCH_INTEGRATOR_CP
 	select SERIAL_AMBA_PL011
 	select SERIAL_AMBA_PL011_CONSOLE
 =======
+<<<<<<< HEAD
+	select SERIAL_AMBA_PL011
+	select SERIAL_AMBA_PL011_CONSOLE
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  Include support for the ARM(R) Integrator CP platform.
 

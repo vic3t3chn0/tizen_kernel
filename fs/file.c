@@ -9,8 +9,12 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/mm.h>
 #include <linux/mmzone.h>
@@ -47,8 +51,12 @@ static DEFINE_PER_CPU(struct fdtable_defer, fdtable_defer_list);
 <<<<<<< HEAD
 static void *alloc_fdmem(size_t size)
 =======
+<<<<<<< HEAD
+static void *alloc_fdmem(size_t size)
+=======
 static void *alloc_fdmem(unsigned int size)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * Very large allocations can stress page reclaim, so fall back to
@@ -153,8 +161,12 @@ static struct fdtable * alloc_fdtable(unsigned int nr)
 <<<<<<< HEAD
 	void *data;
 =======
+<<<<<<< HEAD
+	void *data;
+=======
 	char *data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Figure out how many fds we actually want to support in this fdtable.
@@ -185,6 +197,9 @@ static struct fdtable * alloc_fdtable(unsigned int nr)
 	if (!data)
 		goto out_fdt;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fdt->fd = data;
 
 	data = alloc_fdmem(max_t(size_t,
@@ -194,6 +209,8 @@ static struct fdtable * alloc_fdtable(unsigned int nr)
 	fdt->open_fds = data;
 	data += nr / BITS_PER_BYTE;
 	fdt->close_on_exec = data;
+<<<<<<< HEAD
+=======
 =======
 	fdt->fd = (struct file **)data;
 	data = alloc_fdmem(max_t(unsigned int,
@@ -204,6 +221,7 @@ static struct fdtable * alloc_fdtable(unsigned int nr)
 	data += nr / BITS_PER_BYTE;
 	fdt->close_on_exec = (fd_set *)data;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	fdt->next = NULL;
 
 	return fdt;
@@ -300,11 +318,16 @@ static int count_open_files(struct fdtable *fdt)
 
 	/* Find the last open fd */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = size / BITS_PER_LONG; i > 0; ) {
 		if (fdt->open_fds[--i])
 			break;
 	}
 	i = (i + 1) * BITS_PER_LONG;
+<<<<<<< HEAD
+=======
 =======
 	for (i = size/(8*sizeof(long)); i > 0; ) {
 		if (fdt->open_fds->fds_bits[--i])
@@ -312,6 +335,7 @@ static int count_open_files(struct fdtable *fdt)
 	}
 	i = (i+1) * 8 * sizeof(long);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return i;
 }
 
@@ -342,9 +366,14 @@ struct files_struct *dup_fd(struct files_struct *oldf, int *errorp)
 	new_fdt->close_on_exec = newf->close_on_exec_init;
 	new_fdt->open_fds = newf->open_fds_init;
 =======
+<<<<<<< HEAD
+	new_fdt->close_on_exec = newf->close_on_exec_init;
+	new_fdt->open_fds = newf->open_fds_init;
+=======
 	new_fdt->close_on_exec = (fd_set *)&newf->close_on_exec_init;
 	new_fdt->open_fds = (fd_set *)&newf->open_fds_init;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	new_fdt->fd = &newf->fd_array[0];
 	new_fdt->next = NULL;
 
@@ -391,11 +420,16 @@ struct files_struct *dup_fd(struct files_struct *oldf, int *errorp)
 	memcpy(new_fdt->open_fds, old_fdt->open_fds, open_files / 8);
 	memcpy(new_fdt->close_on_exec, old_fdt->close_on_exec, open_files / 8);
 =======
+<<<<<<< HEAD
+	memcpy(new_fdt->open_fds, old_fdt->open_fds, open_files / 8);
+	memcpy(new_fdt->close_on_exec, old_fdt->close_on_exec, open_files / 8);
+=======
 	memcpy(new_fdt->open_fds->fds_bits,
 		old_fdt->open_fds->fds_bits, open_files/8);
 	memcpy(new_fdt->close_on_exec->fds_bits,
 		old_fdt->close_on_exec->fds_bits, open_files/8);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = open_files; i != 0; i--) {
 		struct file *f = *old_fds++;
@@ -422,11 +456,16 @@ struct files_struct *dup_fd(struct files_struct *oldf, int *errorp)
 
 	if (new_fdt->max_fds > open_files) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int left = (new_fdt->max_fds - open_files) / 8;
 		int start = open_files / BITS_PER_LONG;
 
 		memset(&new_fdt->open_fds[start], 0, left);
 		memset(&new_fdt->close_on_exec[start], 0, left);
+<<<<<<< HEAD
+=======
 =======
 		int left = (new_fdt->max_fds-open_files)/8;
 		int start = open_files / (8 * sizeof(unsigned long));
@@ -434,6 +473,7 @@ struct files_struct *dup_fd(struct files_struct *oldf, int *errorp)
 		memset(&new_fdt->open_fds->fds_bits[start], 0, left);
 		memset(&new_fdt->close_on_exec->fds_bits[start], 0, left);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rcu_assign_pointer(newf->fdt, new_fdt);
@@ -473,9 +513,14 @@ struct files_struct init_files = {
 		.close_on_exec	= init_files.close_on_exec_init,
 		.open_fds	= init_files.open_fds_init,
 =======
+<<<<<<< HEAD
+		.close_on_exec	= init_files.close_on_exec_init,
+		.open_fds	= init_files.open_fds_init,
+=======
 		.close_on_exec	= (fd_set *)&init_files.close_on_exec_init,
 		.open_fds	= (fd_set *)&init_files.open_fds_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.file_lock	= __SPIN_LOCK_UNLOCKED(init_task.file_lock),
 };
@@ -501,9 +546,13 @@ repeat:
 <<<<<<< HEAD
 		fd = find_next_zero_bit(fdt->open_fds, fdt->max_fds, fd);
 =======
+<<<<<<< HEAD
+		fd = find_next_zero_bit(fdt->open_fds, fdt->max_fds, fd);
+=======
 		fd = find_next_zero_bit(fdt->open_fds->fds_bits,
 					   fdt->max_fds, fd);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	error = expand_files(files, fd);
 	if (error < 0)
@@ -540,7 +589,11 @@ out:
 <<<<<<< HEAD
 EXPORT_SYMBOL(alloc_fd);
 =======
+<<<<<<< HEAD
+EXPORT_SYMBOL(alloc_fd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int get_unused_fd(void)
 {

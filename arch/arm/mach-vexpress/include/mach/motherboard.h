@@ -40,6 +40,9 @@
 #define V2M_CLCD		(V2M_PA_CS7 + 0x0001f000)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Offsets from SYSREGS base
  */
@@ -64,6 +67,8 @@
 #define V2M_SYS_CFGDATA		0x0a0
 #define V2M_SYS_CFGCTRL		0x0a4
 #define V2M_SYS_CFGSTAT		0x0a8
+<<<<<<< HEAD
+=======
 =======
 #define V2M_SYS_ID		(V2M_SYSREGS + 0x000)
 #define V2M_SYS_SW		(V2M_SYSREGS + 0x004)
@@ -93,6 +98,7 @@
 #define V2M_TIMER2		(V2M_TIMER23 + 0x000)
 #define V2M_TIMER3		(V2M_TIMER23 + 0x020)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /*
@@ -145,6 +151,9 @@
 int v2m_cfg_write(u32 devfn, u32 data);
 int v2m_cfg_read(u32 devfn, u32 *data);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void v2m_flags_set(u32 data);
 
 /*
@@ -152,8 +161,11 @@ void v2m_flags_set(u32 data);
  */
 #define SYS_MISC_MASTERSITE	(1 << 14)
 #define SYS_PROCIDx_HBI_MASK	0xfff
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Core tile IDs

@@ -24,6 +24,13 @@
 
 #include <net/mac80211.h>
 #include <linux/crc-ccitt.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "p54.h"
 #include "eeprom.h"
@@ -145,6 +152,13 @@ static int p54_fill_band_bitrates(struct ieee80211_hw *dev,
 
 static int p54_generate_band(struct ieee80211_hw *dev,
 			     struct p54_channel_list *list,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			     unsigned int *chan_num,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     enum ieee80211_band band)
 {
 	struct p54_common *priv = dev->priv;
@@ -190,7 +204,22 @@ static int p54_generate_band(struct ieee80211_hw *dev,
 
 		tmp->channels[j].band = chan->band;
 		tmp->channels[j].center_freq = chan->freq;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		priv->survey[*chan_num].channel = &tmp->channels[j];
+		priv->survey[*chan_num].filled = SURVEY_INFO_NOISE_DBM |
+			SURVEY_INFO_CHANNEL_TIME |
+			SURVEY_INFO_CHANNEL_TIME_BUSY |
+			SURVEY_INFO_CHANNEL_TIME_TX;
+		tmp->channels[j].hw_value = (*chan_num);
 		j++;
+		(*chan_num)++;
+=======
+		j++;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		j++;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (j == 0) {
@@ -263,7 +292,15 @@ static int p54_generate_channel_lists(struct ieee80211_hw *dev)
 {
 	struct p54_common *priv = dev->priv;
 	struct p54_channel_list *list;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned int i, j, k, max_channel_num;
+=======
 	unsigned int i, j, max_channel_num;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	unsigned int i, j, max_channel_num;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 	u16 freq;
 
@@ -283,6 +320,19 @@ static int p54_generate_channel_lists(struct ieee80211_hw *dev)
 		ret = -ENOMEM;
 		goto free;
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	priv->chan_num = max_channel_num;
+	priv->survey = kzalloc(sizeof(struct survey_info) * max_channel_num,
+			       GFP_KERNEL);
+	if (!priv->survey) {
+		ret = -ENOMEM;
+		goto free;
+	}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	list->max_entries = max_channel_num;
 	list->channels = kzalloc(sizeof(struct p54_channel_entry) *
@@ -321,8 +371,19 @@ static int p54_generate_channel_lists(struct ieee80211_hw *dev)
 	sort(list->channels, list->entries, sizeof(struct p54_channel_entry),
 	     p54_compare_channels, NULL);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	k = 0;
+	for (i = 0, j = 0; i < IEEE80211_NUM_BANDS; i++) {
+		if (p54_generate_band(dev, list, &k, i) == 0)
+=======
 	for (i = 0, j = 0; i < IEEE80211_NUM_BANDS; i++) {
 		if (p54_generate_band(dev, list, i) == 0)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	for (i = 0, j = 0; i < IEEE80211_NUM_BANDS; i++) {
+		if (p54_generate_band(dev, list, i) == 0)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			j++;
 	}
 	if (j == 0) {
@@ -335,6 +396,16 @@ free:
 		kfree(list->channels);
 		kfree(list);
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (ret) {
+		kfree(priv->survey);
+		priv->survey = NULL;
+	}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }
@@ -853,10 +924,24 @@ err:
 	kfree(priv->output_limit);
 	kfree(priv->curve_data);
 	kfree(priv->rssi_db);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	kfree(priv->survey);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	priv->iq_autocal = NULL;
 	priv->output_limit = NULL;
 	priv->curve_data = NULL;
 	priv->rssi_db = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	priv->survey = NULL;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	wiphy_err(dev->wiphy, "eeprom parse failed!\n");
 	return err;

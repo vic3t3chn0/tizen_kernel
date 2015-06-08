@@ -64,19 +64,40 @@
 /**
  * struct adis16201_state - device instance specific data
  * @us:			actual spi_device
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
  * @indio_dev:		industrial I/O device structure
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * @indio_dev:		industrial I/O device structure
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @trig:		data ready trigger registered with iio
  * @tx:			transmit buffer
  * @rx:			receive buffer
  * @buf_lock:		mutex to protect tx and rx
  **/
 struct adis16201_state {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct spi_device	*us;
+	struct iio_trigger	*trig;
+	struct mutex		buf_lock;
+	u8			tx[14] ____cacheline_aligned;
+	u8			rx[14];
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct spi_device		*us;
 	struct iio_dev			*indio_dev;
 	struct iio_trigger		*trig;
 	u8				*tx;
 	u8				*rx;
 	struct mutex			buf_lock;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 int adis16201_set_irq(struct iio_dev *indio_dev, bool enable);
@@ -91,7 +112,15 @@ enum adis16201_scan {
 	ADIS16201_SCAN_INCLI_Y,
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_IIO_BUFFER
+=======
 #ifdef CONFIG_IIO_RING_BUFFER
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_IIO_RING_BUFFER
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void adis16201_remove_trigger(struct iio_dev *indio_dev);
 int adis16201_probe_trigger(struct iio_dev *indio_dev);
 
@@ -102,7 +131,15 @@ ssize_t adis16201_read_data_from_ring(struct device *dev,
 int adis16201_configure_ring(struct iio_dev *indio_dev);
 void adis16201_unconfigure_ring(struct iio_dev *indio_dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#else /* CONFIG_IIO_BUFFER */
+=======
 #else /* CONFIG_IIO_RING_BUFFER */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#else /* CONFIG_IIO_RING_BUFFER */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void adis16201_remove_trigger(struct iio_dev *indio_dev)
 {
@@ -139,5 +176,13 @@ static inline void adis16201_uninitialize_ring(struct iio_ring_buffer *ring)
 {
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#endif /* CONFIG_IIO_BUFFER */
+=======
 #endif /* CONFIG_IIO_RING_BUFFER */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#endif /* CONFIG_IIO_RING_BUFFER */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* SPI_ADIS16201_H_ */

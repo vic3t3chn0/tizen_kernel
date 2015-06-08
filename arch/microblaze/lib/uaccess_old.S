@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <asm/page.h>
 =======
+<<<<<<< HEAD
+#include <asm/page.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * int __strncpy_user(char *to, char *from, int len);
@@ -41,9 +45,14 @@ __strncpy_user:
 	beqid	r7,3f
 	addik	r3,r7,0		/* temp_count = len */
 =======
+<<<<<<< HEAD
+	beqid	r7,3f
+	addik	r3,r7,0		/* temp_count = len */
+=======
 	addik	r3,r7,0		/* temp_count = len */
 	beqi	r3,3f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:
 	lbu	r4,r6,r0
 	sb	r4,r5,r0
@@ -89,9 +98,14 @@ __strnlen_user:
 	beqid	r6,3f
 	addik	r3,r6,0
 =======
+<<<<<<< HEAD
+	beqid	r6,3f
+	addik	r3,r6,0
+=======
 	addik	r3,r6,0
 	beqi	r3,3f
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 1:
 	lbu	r4,r5,r0
 	beqid	r4,2f		/* break on NUL */
@@ -117,6 +131,9 @@ __strnlen_user:
 	.word	1b,4b
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Loop unrolling for __copy_tofrom_user */
 #define COPY(offset)	\
 1:	lwi	r4 , r6, 0x0000 + offset;	\
@@ -160,8 +177,11 @@ __strnlen_user:
 	COPY(0x40 + offset);\
 	COPY(0x60 + offset);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * int __copy_tofrom_user(char *to, char *from, int len)
  * Return:
@@ -180,6 +200,9 @@ __copy_tofrom_user:
 	 * r4 - tempval
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	beqid	r7, 0f /* zero size is not likely */
 	or	r3, r5, r6 /* find if is any to/from unaligned */
 	or	r3, r3, r7 /* find if count is unaligned */
@@ -195,6 +218,8 @@ w1:	lw	r4, r6, r3 /* at least one 4 byte copy */
 w2:	sw	r4, r5, r3
 	addik	r7, r7, -4
 	bneid	r7, w1
+<<<<<<< HEAD
+=======
 =======
 	beqid	r7, 3f /* zero size is not likely */
 	andi	r3, r7, 0x3 /* filter add count */
@@ -210,11 +235,15 @@ w2:	sw	r4, r5, r3
 	addik	r7, r7, -4
 	bneid	r7, 5b
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addik	r3, r3, 4
 	addik	r3, r7, 0
 	rtsd	r15, 8
 	nop
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.section	__ex_table,"a"
 	.word	w1, 0f;
@@ -289,6 +318,8 @@ bu2:	sb	r4,r5,r3
 	bneid	r7,bu1
 	addik	r3,r3,1		/* delay slot */
 0:
+<<<<<<< HEAD
+=======
 =======
 4:	or	r3, r0, r0
 1:	lbu	r4,r6,r3
@@ -298,6 +329,7 @@ bu2:	sb	r4,r5,r3
 	addik	r3,r3,1		/* delay slot */
 3:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	addik	r3,r7,0
 	rtsd	r15,8
 	nop
@@ -309,5 +341,11 @@ bu2:	sb	r4,r5,r3
 	.word	bu2, 0b;
 	.text
 =======
+<<<<<<< HEAD
+	.word	bu1, 0b;
+	.word	bu2, 0b;
+	.text
+=======
 	.word	1b,3b,2b,3b,5b,3b,6b,3b
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

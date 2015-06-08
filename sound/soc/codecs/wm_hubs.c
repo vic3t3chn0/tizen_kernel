@@ -19,8 +19,11 @@
 #include <linux/i2c.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/platform_device.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mfd/wm8994/registers.h>
 #include <sound/core.h>
 #include <sound/pcm.h>
@@ -46,8 +49,12 @@ static const unsigned int spkboost_tlv[] = {
 <<<<<<< HEAD
 	TLV_DB_RANGE_HEAD(2),
 =======
+<<<<<<< HEAD
+	TLV_DB_RANGE_HEAD(2),
+=======
 	TLV_DB_RANGE_HEAD(7),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	0, 6, TLV_DB_SCALE_ITEM(0, 150, 0),
 	7, 7, TLV_DB_SCALE_ITEM(1200, 0, 0),
 };
@@ -117,6 +124,8 @@ irqreturn_t wm_hubs_dcs_done(int irq, void *data)
 }
 EXPORT_SYMBOL_GPL(wm_hubs_dcs_done);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 static bool wm_hubs_dac_hp_direct(struct snd_soc_codec *codec)
@@ -210,6 +219,7 @@ static void wm_hubs_dcs_cache_set(struct snd_soc_codec *codec, u16 dcs_cfg)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Startup calibration of the DC servo
  */
@@ -218,8 +228,11 @@ static void calibrate_dc_servo(struct snd_soc_codec *codec)
 	struct wm_hubs_data *hubs = snd_soc_codec_get_drvdata(codec);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct wm_hubs_dcs_cache *cache;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	s8 offset;
 	u16 reg, reg_l, reg_r, dcs_cfg, dcs_reg;
 
@@ -235,10 +248,15 @@ static void calibrate_dc_servo(struct snd_soc_codec *codec)
 	/* If we're using a digital only path and have a previously
 	 * callibrated DC servo offset stored then use that. */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (hubs->class_w && hubs->class_w_dcs) {
 		dev_dbg(codec->dev, "Using cached DC servo offset %x\n",
 			hubs->class_w_dcs);
 		snd_soc_write(codec, dcs_reg, hubs->class_w_dcs);
+<<<<<<< HEAD
+=======
 =======
 	if (wm_hubs_dac_hp_direct(codec) &&
 	    wm_hubs_dcs_cache_get(codec, &cache)) {
@@ -246,6 +264,7 @@ static void calibrate_dc_servo(struct snd_soc_codec *codec)
 			cache->dcs_cfg, cache->left, cache->right);
 		snd_soc_write(codec, dcs_reg, cache->dcs_cfg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		wait_for_dc_servo(codec,
 				  WM8993_DCS_TRIG_DAC_WR_0 |
 				  WM8993_DCS_TRIG_DAC_WR_1);
@@ -324,9 +343,14 @@ static void calibrate_dc_servo(struct snd_soc_codec *codec)
 	if (hubs->class_w && !hubs->no_cache_class_w)
 		hubs->class_w_dcs = dcs_cfg;
 =======
+<<<<<<< HEAD
+	if (hubs->class_w && !hubs->no_cache_class_w)
+		hubs->class_w_dcs = dcs_cfg;
+=======
 	if (wm_hubs_dac_hp_direct(codec))
 		wm_hubs_dcs_cache_set(codec, dcs_cfg);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -340,13 +364,19 @@ static int wm8993_put_dc_servo(struct snd_kcontrol *kcontrol,
 	int ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_put_volsw(kcontrol, ucontrol);
 
 	/* Updating the analogue gains invalidates the DC servo cache */
 	hubs->class_w_dcs = 0;
+<<<<<<< HEAD
+=======
 =======
 	ret = snd_soc_put_volsw_2r(kcontrol, ucontrol);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* If we're applying an offset correction then updating the
 	 * callibration would be likely to introduce further offsets. */
@@ -484,11 +514,16 @@ SOC_ENUM("Speaker Reference", speaker_ref),
 SOC_ENUM("Speaker Mode", speaker_mode),
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SOC_DOUBLE_R_EXT_TLV("Headphone Volume",
 		     WM8993_LEFT_OUTPUT_VOLUME, WM8993_RIGHT_OUTPUT_VOLUME,
 		     0, 63, 0, snd_soc_get_volsw, wm8993_put_dc_servo,
 		     outpga_tlv),
 
+<<<<<<< HEAD
+=======
 =======
 {
 	.iface = SNDRV_CTL_ELEM_IFACE_MIXER, .name = "Headphone Volume",
@@ -504,6 +539,7 @@ SOC_DOUBLE_R_EXT_TLV("Headphone Volume",
 	},
 },
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SOC_DOUBLE_R("Headphone Switch", WM8993_LEFT_OUTPUT_VOLUME,
 	     WM8993_RIGHT_OUTPUT_VOLUME, 6, 1, 0),
 SOC_DOUBLE_R("Headphone ZC Switch", WM8993_LEFT_OUTPUT_VOLUME,
@@ -670,6 +706,8 @@ static int lineout_event(struct snd_soc_dapm_widget *w,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void wm_hubs_update_class_w(struct snd_soc_codec *codec)
 {
 	struct wm_hubs_data *hubs = snd_soc_codec_get_drvdata(codec);
@@ -751,6 +789,7 @@ const struct snd_kcontrol_new wm_hubs_hpr_mux =
 EXPORT_SYMBOL_GPL(wm_hubs_hpr_mux);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct snd_kcontrol_new in1l_pga[] = {
 SOC_DAPM_SINGLE("IN1LP Switch", WM8993_INPUT_MIXER2, 5, 1, 0),
 SOC_DAPM_SINGLE("IN1LN Switch", WM8993_INPUT_MIXER2, 4, 1, 0),
@@ -783,6 +822,9 @@ SOC_DAPM_SINGLE("IN1R Switch", WM8993_INPUT_MIXER4, 5, 1, 0),
 
 static const struct snd_kcontrol_new left_output_mixer[] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SOC_DAPM_SINGLE("Right Input Switch", WM8993_OUTPUT_MIXER1, 7, 1, 0),
 SOC_DAPM_SINGLE("Left Input Switch", WM8993_OUTPUT_MIXER1, 6, 1, 0),
 SOC_DAPM_SINGLE("IN2RN Switch", WM8993_OUTPUT_MIXER1, 5, 1, 0),
@@ -802,6 +844,8 @@ SOC_DAPM_SINGLE("IN1L Switch", WM8993_OUTPUT_MIXER2, 3, 1, 0),
 SOC_DAPM_SINGLE("IN1R Switch", WM8993_OUTPUT_MIXER2, 2, 1, 0),
 SOC_DAPM_SINGLE("IN2RP Switch", WM8993_OUTPUT_MIXER2, 1, 1, 0),
 SOC_DAPM_SINGLE("DAC Switch", WM8993_OUTPUT_MIXER2, 0, 1, 0),
+<<<<<<< HEAD
+=======
 =======
 WM_HUBS_SINGLE_W("Right Input Switch", WM8993_OUTPUT_MIXER1, 7, 1, 0),
 WM_HUBS_SINGLE_W("Left Input Switch", WM8993_OUTPUT_MIXER1, 6, 1, 0),
@@ -823,6 +867,7 @@ WM_HUBS_SINGLE_W("IN1R Switch", WM8993_OUTPUT_MIXER2, 2, 1, 0),
 WM_HUBS_SINGLE_W("IN2RP Switch", WM8993_OUTPUT_MIXER2, 1, 1, 0),
 WM_HUBS_SINGLE_W("DAC Switch", WM8993_OUTPUT_MIXER2, 0, 1, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static const struct snd_kcontrol_new earpiece_mixer[] = {
@@ -887,9 +932,14 @@ SND_SOC_DAPM_INPUT("IN2RP:VXRP"),
 SND_SOC_DAPM_SUPPLY("MICBIAS2", WM8993_POWER_MANAGEMENT_1, 5, 0, NULL, 0),
 SND_SOC_DAPM_SUPPLY("MICBIAS1", WM8993_POWER_MANAGEMENT_1, 4, 0, NULL, 0),
 =======
+<<<<<<< HEAD
+SND_SOC_DAPM_SUPPLY("MICBIAS2", WM8993_POWER_MANAGEMENT_1, 5, 0, NULL, 0),
+SND_SOC_DAPM_SUPPLY("MICBIAS1", WM8993_POWER_MANAGEMENT_1, 4, 0, NULL, 0),
+=======
 SND_SOC_DAPM_MICBIAS("MICBIAS2", WM8993_POWER_MANAGEMENT_1, 5, 0),
 SND_SOC_DAPM_MICBIAS("MICBIAS1", WM8993_POWER_MANAGEMENT_1, 4, 0),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 SND_SOC_DAPM_SUPPLY("LINEOUT_VMID_BUF", WM8993_ANTIPOP1, 7, 0, NULL, 0),
 
@@ -1185,8 +1235,12 @@ int wm_hubs_add_analogue_controls(struct snd_soc_codec *codec)
 <<<<<<< HEAD
 	snd_soc_add_codec_controls(codec, analogue_snd_controls,
 =======
+<<<<<<< HEAD
+	snd_soc_add_codec_controls(codec, analogue_snd_controls,
+=======
 	snd_soc_add_controls(codec, analogue_snd_controls,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     ARRAY_SIZE(analogue_snd_controls));
 
 	snd_soc_dapm_new_controls(dapm, analogue_dapm_widgets,
@@ -1203,8 +1257,11 @@ int wm_hubs_add_analogue_routes(struct snd_soc_codec *codec,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&hubs->dcs_cache);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_completion(&hubs->dcs_done);
 
 	snd_soc_dapm_add_routes(dapm, analogue_routes,
@@ -1300,8 +1357,12 @@ void wm_hubs_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 	int mask, val;
 =======
+<<<<<<< HEAD
+	int mask, val;
+=======
 	int val;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (level) {
 	case SND_SOC_BIAS_STANDBY:
@@ -1314,6 +1375,9 @@ void wm_hubs_set_bias_level(struct snd_soc_codec *codec,
 		/* Turn off any unneded single ended outputs */
 		val = 0;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask = 0;
 
 		if (hubs->lineout1_se)
@@ -1321,8 +1385,11 @@ void wm_hubs_set_bias_level(struct snd_soc_codec *codec,
 
 		if (hubs->lineout2_se)
 			mask |= WM8993_LINEOUT2N_ENA | WM8993_LINEOUT2P_ENA;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (hubs->lineout1_se && hubs->lineout1n_ena)
 			val |= WM8993_LINEOUT1N_ENA;
@@ -1340,12 +1407,16 @@ void wm_hubs_set_bias_level(struct snd_soc_codec *codec,
 <<<<<<< HEAD
 				    mask, val);
 =======
+<<<<<<< HEAD
+				    mask, val);
+=======
 				    WM8993_LINEOUT1N_ENA |
 				    WM8993_LINEOUT1P_ENA |
 				    WM8993_LINEOUT2N_ENA |
 				    WM8993_LINEOUT2P_ENA,
 				    val);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Remove the input clamps */
 		snd_soc_update_bits(codec, WM8993_INPUTS_CLAMP_REG,

@@ -13,7 +13,12 @@
 #include <video/sa1100fb.h>
 
 =======
+<<<<<<< HEAD
+#include <video/sa1100fb.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/hardware.h>
 #include <asm/mach-types.h>
 #include <asm/setup.h>
@@ -27,7 +32,11 @@
 <<<<<<< HEAD
 #include <mach/irqs.h>
 =======
+<<<<<<< HEAD
+#include <mach/irqs.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -59,12 +68,17 @@ static struct flash_platform_data shannon_flash_data = {
 static struct resource shannon_flash_resource =
 	DEFINE_RES_MEM(SA1100_CS0_PHYS, SZ_4M);
 =======
+<<<<<<< HEAD
+static struct resource shannon_flash_resource =
+	DEFINE_RES_MEM(SA1100_CS0_PHYS, SZ_4M);
+=======
 static struct resource shannon_flash_resource = {
 	.start		= SA1100_CS0_PHYS,
 	.end		= SA1100_CS0_PHYS + SZ_4M - 1,
 	.flags		= IORESOURCE_MEM,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct mcp_plat_data shannon_mcp_data = {
 	.mccr0		= MCCR0_ADM,
@@ -72,6 +86,9 @@ static struct mcp_plat_data shannon_mcp_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sa1100fb_mach_info shannon_lcd_info = {
 	.pixclock	= 152500,	.bpp		= 8,
 	.xres		= 640,		.yres		= 480,
@@ -90,10 +107,13 @@ static void __init shannon_init(void)
 {
 	sa11x0_ppc_configure_mcp();
 	sa11x0_register_lcd(&shannon_lcd_info);
+<<<<<<< HEAD
+=======
 =======
 static void __init shannon_init(void)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sa11x0_register_mtd(&shannon_flash_data, &shannon_flash_resource, 1);
 	sa11x0_register_mcp(&shannon_mcp_data);
 }
@@ -118,6 +138,9 @@ static void __init shannon_map_io(void)
 
 MACHINE_START(SHANNON, "Shannon (AKA: Tuxscreen)")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= shannon_map_io,
 	.nr_irqs	= SA1100_NR_IRQS,
@@ -125,6 +148,8 @@ MACHINE_START(SHANNON, "Shannon (AKA: Tuxscreen)")
 	.timer		= &sa1100_timer,
 	.init_machine	= shannon_init,
 	.restart	= sa11x0_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xc0000100,
 	.map_io		= shannon_map_io,
@@ -132,4 +157,5 @@ MACHINE_START(SHANNON, "Shannon (AKA: Tuxscreen)")
 	.timer		= &sa1100_timer,
 	.init_machine	= shannon_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

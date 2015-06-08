@@ -31,9 +31,19 @@ int ENE_InitMedia(struct us_data *us)
 		if (!us->SM_Status.Ready && !us->MS_Status.Ready) {
 			result = ENE_SMInit(us);
 			if (result != USB_STOR_XFER_GOOD) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+				return USB_STOR_TRANSPORT_ERROR;
+=======
 				result = ENE_MSInit(us);
 				if (result != USB_STOR_XFER_GOOD)
 					return USB_STOR_TRANSPORT_ERROR;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				result = ENE_MSInit(us);
+				if (result != USB_STOR_XFER_GOOD)
+					return USB_STOR_TRANSPORT_ERROR;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			}
 		}
 
@@ -62,6 +72,11 @@ int ENE_Read_BYTE(struct us_data *us, WORD index, void *buf)
 }
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * ENE_MSInit():
  */
 int ENE_MSInit(struct us_data *us)
@@ -116,6 +131,10 @@ int ENE_MSInit(struct us_data *us)
 }
 
 /*
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *ENE_SMInit()
  */
 int ENE_SMInit(struct us_data *us)
@@ -185,6 +204,11 @@ int ENE_LoadBinCode(struct us_data *us, BYTE flag)
 	if (buf == NULL)
 		return USB_STOR_TRANSPORT_ERROR;
 	switch (flag) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* For MS */
 	case MS_INIT_PATTERN:
 		printk(KERN_INFO "MS_INIT_PATTERN\n");
@@ -198,6 +222,10 @@ int ENE_LoadBinCode(struct us_data *us, BYTE flag)
 		printk(KERN_INFO "MS_RW_PATTERN\n");
 		memcpy(buf, MS_Rdwr, 0x800);
 		break;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* For SS */
 	case SM_INIT_PATTERN:
 		printk(KERN_INFO "SM_INIT_PATTERN\n");

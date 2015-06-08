@@ -15,6 +15,9 @@ struct pl022_ssp_controller;
 
 static inline struct platform_device *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 db8500_add_ske_keypad(struct device *parent,
 		      struct ske_keypad_platform_data *pdata,
 		      size_t size)
@@ -124,6 +127,8 @@ db8500_add_ssp(struct device *parent, const char *name, resource_size_t base,
 #define db8500_add_uart2(parent, pdata) \
 	dbx500_add_uart(parent, "uart2", U8500_UART2_BASE, \
 			IRQ_DB8500_UART2, pdata)
+<<<<<<< HEAD
+=======
 =======
 db8500_add_ske_keypad(struct ske_keypad_platform_data *pdata)
 {
@@ -209,5 +214,6 @@ db8500_add_ssp(const char *name, resource_size_t base, int irq,
 #define db8500_add_uart2(pdata) \
 	dbx500_add_uart("uart2", U8500_UART2_BASE, IRQ_DB8500_UART2, pdata)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

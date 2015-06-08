@@ -178,8 +178,12 @@ int cond_init_bool_indexes(struct policydb *p)
 <<<<<<< HEAD
 	p->bool_val_to_struct =
 =======
+<<<<<<< HEAD
+	p->bool_val_to_struct =
+=======
 	p->bool_val_to_struct = (struct cond_bool_datum **)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		kmalloc(p->p_bools.nprim * sizeof(struct cond_bool_datum *), GFP_KERNEL);
 	if (!p->bool_val_to_struct)
 		return -ENOMEM;
@@ -562,8 +566,12 @@ static int cond_write_av_list(struct policydb *p,
 <<<<<<< HEAD
 static int cond_write_node(struct policydb *p, struct cond_node *node,
 =======
+<<<<<<< HEAD
+static int cond_write_node(struct policydb *p, struct cond_node *node,
+=======
 int cond_write_node(struct policydb *p, struct cond_node *node,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		    struct policy_file *fp)
 {
 	struct cond_expr *cur_expr;

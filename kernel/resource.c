@@ -7,7 +7,15 @@
  * Arbitrary resource management.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 #include <linux/module.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/module.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/errno.h>
 #include <linux/ioport.h>
 #include <linux/init.h>
@@ -262,6 +270,30 @@ int request_resource(struct resource *root, struct resource *new)
 EXPORT_SYMBOL(request_resource);
 
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * locate_resource - locate an already reserved I/O or memory resource
+ * @root: root resource descriptor
+ * @search: resource descriptor to be located
+ *
+ * Returns pointer to desired resource or NULL if not found.
+ */
+struct resource *locate_resource(struct resource *root, struct resource *search)
+{
+	struct resource *found;
+
+	write_lock(&resource_lock);
+	found = __request_resource(root, search);
+	write_unlock(&resource_lock);
+	return found;
+}
+EXPORT_SYMBOL(locate_resource);
+
+/**
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * release_resource - release a previously reserved resource
  * @old: resource pointer
  */
@@ -339,12 +371,34 @@ int walk_system_ram_range(unsigned long start_pfn, unsigned long nr_pages,
 	while ((res.start < res.end) &&
 		(find_next_system_ram(&res, "System RAM") >= 0)) {
 		pfn = (res.start + PAGE_SIZE - 1) >> PAGE_SHIFT;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (res.end + 1 <= 0)
+			end_pfn = res.end >> PAGE_SHIFT;
+		else
+			end_pfn = (res.end + 1) >> PAGE_SHIFT;
+=======
 		end_pfn = (res.end + 1) >> PAGE_SHIFT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		end_pfn = (res.end + 1) >> PAGE_SHIFT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (end_pfn > pfn)
 			ret = (*func)(pfn, end_pfn - pfn, arg);
 		if (ret)
 			break;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (res.end + 1 > res.start)
+			res.start = res.end + 1;
+		else
+			res.start = res.end;
+=======
 		res.start = res.end + 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		res.start = res.end + 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		res.end = orig_end;
 	}
 	return ret;
@@ -558,6 +612,33 @@ int allocate_resource(struct resource *root, struct resource *new,
 
 EXPORT_SYMBOL(allocate_resource);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/**
+ * lookup_resource - find an existing resource by a resource start address
+ * @root: root resource descriptor
+ * @start: resource start address
+ *
+ * Returns a pointer to the resource if found, NULL otherwise
+ */
+struct resource *lookup_resource(struct resource *root, resource_size_t start)
+{
+	struct resource *res;
+
+	read_lock(&resource_lock);
+	for (res = root->child; res; res = res->sibling) {
+		if (res->start == start)
+			break;
+	}
+	read_unlock(&resource_lock);
+
+	return res;
+}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Insert a resource into the resource tree. If successful, return NULL,
  * otherwise return the conflicting resource (compare to __request_resource())
@@ -728,6 +809,13 @@ int adjust_resource(struct resource *res, resource_size_t start, resource_size_t
 	write_unlock(&resource_lock);
 	return result;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+EXPORT_SYMBOL(adjust_resource);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __init __reserve_region_with_split(struct resource *root,
 		resource_size_t start, resource_size_t end,
@@ -736,7 +824,14 @@ static void __init __reserve_region_with_split(struct resource *root,
 	struct resource *parent = root;
 	struct resource *conflict;
 	struct resource *res = kzalloc(sizeof(*res), GFP_ATOMIC);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	struct resource *next_res = NULL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct resource *next_res = NULL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!res)
 		return;
@@ -746,6 +841,26 @@ static void __init __reserve_region_with_split(struct resource *root,
 	res->end = end;
 	res->flags = IORESOURCE_BUSY;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	conflict = __request_resource(parent, res);
+	if (!conflict)
+		return;
+
+	/* failed, split and try again */
+	kfree(res);
+
+	/* conflict covered whole area */
+	if (conflict->start <= start && conflict->end >= end)
+		return;
+
+	if (conflict->start > start)
+		__reserve_region_with_split(root, start, conflict->start-1, name);
+	if (conflict->end < end)
+		__reserve_region_with_split(root, conflict->end+1, end, name);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (1) {
 
 		conflict = __request_resource(parent, res);
@@ -786,6 +901,10 @@ static void __init __reserve_region_with_split(struct resource *root,
 		}
 	}
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init reserve_region_with_split(struct resource *root,
@@ -797,8 +916,16 @@ void __init reserve_region_with_split(struct resource *root,
 	write_unlock(&resource_lock);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 EXPORT_SYMBOL(adjust_resource);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+EXPORT_SYMBOL(adjust_resource);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * resource_alignment - calculate resource's alignment
  * @res: resource pointer

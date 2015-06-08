@@ -117,8 +117,12 @@ int udf_CS0toUTF8(struct ustr *utf_o, const struct ustr *ocu_i)
 <<<<<<< HEAD
 		pr_err("unknown compression code (%d) stri=%s\n",
 =======
+<<<<<<< HEAD
+		pr_err("unknown compression code (%d) stri=%s\n",
+=======
 		printk(KERN_ERR "udf: unknown compression code (%d) stri=%s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       cmp_id, ocu_i->u_name);
 		return 0;
 	}
@@ -249,8 +253,12 @@ error_out:
 <<<<<<< HEAD
 		printk(KERN_DEBUG pr_fmt("bad UTF-8 character\n"));
 =======
+<<<<<<< HEAD
+		printk(KERN_DEBUG pr_fmt("bad UTF-8 character\n"));
+=======
 		printk(KERN_DEBUG "udf: bad UTF-8 character\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	ocu[length - 1] = (uint8_t)u_len + 1;
@@ -278,8 +286,12 @@ static int udf_CS0toNLS(struct nls_table *nls, struct ustr *utf_o,
 <<<<<<< HEAD
 		pr_err("unknown compression code (%d) stri=%s\n",
 =======
+<<<<<<< HEAD
+		pr_err("unknown compression code (%d) stri=%s\n",
+=======
 		printk(KERN_ERR "udf: unknown compression code (%d) stri=%s\n",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		       cmp_id, ocu_i->u_name);
 		return 0;
 	}

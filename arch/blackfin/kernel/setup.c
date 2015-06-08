@@ -33,7 +33,11 @@
 <<<<<<< HEAD
 #include <asm/pda.h>
 =======
+<<<<<<< HEAD
+#include <asm/pda.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 u16 _bfin_swrst;
 EXPORT_SYMBOL(_bfin_swrst);
@@ -61,9 +65,13 @@ char __initdata command_line[COMMAND_LINE_SIZE];
 <<<<<<< HEAD
 struct blackfin_initial_pda __initdata initial_pda;
 =======
+<<<<<<< HEAD
+struct blackfin_initial_pda __initdata initial_pda;
+=======
 void __initdata *init_retx, *init_saved_retx, *init_saved_seqstat,
 	*init_saved_icplb_fault_addr, *init_saved_dcplb_fault_addr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* boot memmap, for parsing "memmap=" */
 #define BFIN_MEMMAP_MAX		128 /* number of entries in bfin_memmap */
@@ -561,7 +569,11 @@ static __init void memory_setup(void)
 <<<<<<< HEAD
 	unsigned long n;
 =======
+<<<<<<< HEAD
+	unsigned long n;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 	unsigned long max_mem;
 
@@ -610,10 +622,16 @@ static __init void memory_setup(void)
 	if (n)
 		mtd_size = PAGE_ALIGN(n * 1024);
 =======
+<<<<<<< HEAD
+	n = ext2_image_size((void *)(mtd_phys + 0x400));
+	if (n)
+		mtd_size = PAGE_ALIGN(n * 1024);
+=======
 	if (*((unsigned short *)(mtd_phys + 0x438)) == EXT2_SUPER_MAGIC)
 		mtd_size =
 		    PAGE_ALIGN(*((unsigned long *)(mtd_phys + 0x404)) << 10);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # endif
 
 # if defined(CONFIG_CRAMFS)
@@ -848,6 +866,9 @@ static inline int __init get_mem_size(void)
 	int ret = 0;
 	switch (ddrctl & 0xc0000) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case DEVSZ_64:
 		ret = 64 / 8;
 		break;
@@ -860,12 +881,15 @@ static inline int __init get_mem_size(void)
 	case DEVSZ_512:
 		ret = 512 / 8;
 		break;
+<<<<<<< HEAD
+=======
 =======
 		case DEVSZ_64:  ret = 64 / 8;
 		case DEVSZ_128: ret = 128 / 8;
 		case DEVSZ_256: ret = 256 / 8;
 		case DEVSZ_512: ret = 512 / 8;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	switch (ddrctl & 0x30000) {
 		case DEVWD_4:  ret *= 2;
@@ -991,6 +1015,9 @@ void __init setup_arch(char **cmdline_p)
 #ifdef CONFIG_DEBUG_DOUBLEFAULT
 		/* We assume the crashing kernel, and the current symbol table match */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_EMERG " While handling exception (EXCAUSE = %#x) at %pF\n",
 			initial_pda.seqstat_doublefault & SEQSTAT_EXCAUSE,
 			initial_pda.retx_doublefault);
@@ -1001,6 +1028,8 @@ void __init setup_arch(char **cmdline_p)
 #endif
 		printk(KERN_NOTICE " The instruction at %pF caused a double exception\n",
 			initial_pda.retx);
+<<<<<<< HEAD
+=======
 =======
 		printk(KERN_EMERG " While handling exception (EXCAUSE = 0x%x) at %pF\n",
 			(int)init_saved_seqstat & SEQSTAT_EXCAUSE, init_saved_retx);
@@ -1010,6 +1039,7 @@ void __init setup_arch(char **cmdline_p)
 		printk(KERN_NOTICE " The instruction at %pF caused a double exception\n",
 			init_retx);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (_bfin_swrst & RESET_WDOG)
 		printk(KERN_INFO "Recovering from Watchdog event\n");
 	else if (_bfin_swrst & RESET_SOFTWARE)

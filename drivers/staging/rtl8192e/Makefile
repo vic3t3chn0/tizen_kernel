@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+rtllib-objs :=			\
+	dot11d.o		\
+	rtllib_module.o		\
+	rtllib_rx.o		\
+	rtllib_tx.o		\
+	rtllib_wx.o		\
+	rtllib_softmac.o	\
+	rtllib_softmac_wx.o	\
+	rtl819x_BAProc.o	\
+	rtl819x_HTProc.o	\
+	rtl819x_TSProc.o
+
+obj-$(CONFIG_RTLLIB) += rtllib.o
+
+obj-$(CONFIG_RTLLIB_CRYPTO_CCMP) += rtllib_crypt_ccmp.o
+obj-$(CONFIG_RTLLIB_CRYPTO_TKIP) += rtllib_crypt_tkip.o
+obj-$(CONFIG_RTLLIB_CRYPTO_WEP) += rtllib_crypt_wep.o
+
+obj-$(CONFIG_RTL8192E) += rtl8192e/
+
+ccflags-y += -D__CHECK_ENDIAN__
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 NIC_SELECT = RTL8192E
 
 ccflags-y := -DRTL8192E
@@ -36,3 +62,7 @@ r8192e_pci-objs :=		\
 
 obj-$(CONFIG_RTL8192E) += r8192e_pci.o
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  * Copyright 2004,2007,2012 Freescale Semiconductor, Inc
 =======
+<<<<<<< HEAD
+ * Copyright 2004,2007,2012 Freescale Semiconductor, Inc
+=======
  * Copyright 2004,2007 Freescale Semiconductor, Inc
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute  it and/or modify it
  * under  the terms of  the GNU General  Public License as published by the
@@ -22,6 +26,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * These #ifdefs are safe because it's not possible to build a kernel that
  * runs on e500 and e600 cores.
@@ -32,6 +38,7 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * Global Utility Registers.
  *
@@ -46,12 +53,16 @@
 <<<<<<< HEAD
 struct ccsr_guts {
 =======
+<<<<<<< HEAD
+struct ccsr_guts {
+=======
 #ifdef CONFIG_PPC_85xx
 struct ccsr_guts_85xx {
 #else
 struct ccsr_guts_86xx {
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	__be32	porpllsr;	/* 0x.0000 - POR PLL Ratio Status Register */
 	__be32	porbmsr;	/* 0x.0004 - POR Boot Mode Status Register */
 	__be32	porimpscr;	/* 0x.0008 - POR I/O Impedance Status and Control Register */
@@ -92,12 +103,17 @@ struct ccsr_guts_86xx {
 	__be32  iovselsr;	/* 0x.00c0 - I/O voltage select status register
 					     Called 'elbcvselcr' on 86xx SOCs */
 =======
+<<<<<<< HEAD
+	__be32  iovselsr;	/* 0x.00c0 - I/O voltage select status register
+					     Called 'elbcvselcr' on 86xx SOCs */
+=======
 #ifdef CONFIG_PPC_85xx
 	__be32  iovselsr;	/* 0x.00c0 - I/O voltage select status register */
 #else
 	__be32	elbcvselcr;	/* 0x.00c0 - eLBC Voltage Select Ctrl Reg */
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8	res0c4[0x224 - 0xc4];
 	__be32  iodelay1;	/* 0x.0224 - IO delay control register 1 */
 	__be32  iodelay2;	/* 0x.0228 - IO delay control register 2 */
@@ -131,12 +147,18 @@ struct ccsr_guts_86xx {
 } __attribute__ ((packed));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Alternate function signal multiplex control */
 #define MPC85xx_PMUXCR_QE(x) (0x8000 >> (x))
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PPC_86xx
 
 #define CCSR_GUTS_DMACR_DEV_SSI	0	/* DMA controller/channel set to SSI */
@@ -158,8 +180,12 @@ struct ccsr_guts_86xx {
 <<<<<<< HEAD
 static inline void guts_set_dmacr(struct ccsr_guts __iomem *guts,
 =======
+<<<<<<< HEAD
+static inline void guts_set_dmacr(struct ccsr_guts __iomem *guts,
+=======
 static inline void guts_set_dmacr(struct ccsr_guts_86xx __iomem *guts,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int co, unsigned int ch, unsigned int device)
 {
 	unsigned int shift = 16 + (8 * (1 - co) + 2 * (3 - ch));
@@ -198,8 +224,12 @@ static inline void guts_set_dmacr(struct ccsr_guts_86xx __iomem *guts,
 <<<<<<< HEAD
 static inline void guts_set_pmuxcr_dma(struct ccsr_guts __iomem *guts,
 =======
+<<<<<<< HEAD
+static inline void guts_set_pmuxcr_dma(struct ccsr_guts __iomem *guts,
+=======
 static inline void guts_set_pmuxcr_dma(struct ccsr_guts_86xx __iomem *guts,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int co, unsigned int ch, unsigned int value)
 {
 	if ((ch == 0) || (ch == 3)) {

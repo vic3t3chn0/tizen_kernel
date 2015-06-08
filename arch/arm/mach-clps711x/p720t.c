@@ -59,9 +59,13 @@ static void __init
 <<<<<<< HEAD
 fixup_p720t(struct tag *tag, char **cmdline, struct meminfo *mi)
 =======
+<<<<<<< HEAD
+fixup_p720t(struct tag *tag, char **cmdline, struct meminfo *mi)
+=======
 fixup_p720t(struct machine_desc *desc, struct tag *tag,
 	    char **cmdline, struct meminfo *mi)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/*
 	 * Our bootloader doesn't setup any tags (yet).
@@ -96,8 +100,12 @@ MACHINE_START(P720T, "ARM-Prospector720T")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0xc0000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.fixup		= fixup_p720t,
 	.map_io		= p720t_map_io,
 	.init_irq	= clps711x_init_irq,
@@ -105,7 +113,11 @@ MACHINE_START(P720T, "ARM-Prospector720T")
 <<<<<<< HEAD
 	.restart	= clps711x_restart,
 =======
+<<<<<<< HEAD
+	.restart	= clps711x_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END
 
 static int p720t_hw_init(void)

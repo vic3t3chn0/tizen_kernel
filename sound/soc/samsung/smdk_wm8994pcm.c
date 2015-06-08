@@ -1,20 +1,30 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  sound/soc/samsung/smdk_wm8994pcm.c
  *
  *  Copyright (c) 2011 Samsung Electronics Co., Ltd
  *		http://www.samsung.com
  *
  *  This program is free software; you can redistribute  it and/or  modify it
+<<<<<<< HEAD
+=======
 =======
  *  smdk_wm8994.c
  *
  *  This program is free software; you can redistribute  it and/or modify it
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *  under  the terms of  the GNU General  Public License as published by the
  *  Free Software Foundation;  either version 2 of the  License, or (at your
  *  option) any later version.
  */
+<<<<<<< HEAD
+#include <linux/module.h>
+#include <sound/soc.h>
+=======
 <<<<<<< HEAD
 #include <linux/module.h>
 #include <sound/soc.h>
@@ -25,11 +35,15 @@
 #include <sound/soc.h>
 #include <sound/soc-dapm.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/pcm.h>
 #include <sound/pcm_params.h>
 
 #include "../codecs/wm8994.h"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "dma.h"
 #include "pcm.h"
 
@@ -82,6 +96,8 @@ static int smdk_wm8994_pcm_hw_params(struct snd_pcm_substream *substream,
 	}
 
 	mclk_freq = params_rate(params) * rfs;
+<<<<<<< HEAD
+=======
 =======
 #include "pcm.h"
 
@@ -200,6 +216,7 @@ static int smdk_hw_params(struct snd_pcm_substream *substream,
 		return -EINVAL;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Set the codec DAI configuration */
 	ret = snd_soc_dai_set_fmt(codec_dai, SND_SOC_DAIFMT_DSP_B
@@ -216,6 +233,9 @@ static int smdk_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = snd_soc_dai_set_sysclk(codec_dai, WM8994_SYSCLK_FLL1,
 					mclk_freq, SND_SOC_CLOCK_IN);
 	if (ret < 0)
@@ -232,6 +252,8 @@ static int smdk_hw_params(struct snd_pcm_substream *substream,
 	if (ret < 0)
 		return ret;
 
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_SND_SAMSUNG_PCM_USE_EPLL
 	/*
@@ -267,6 +289,7 @@ static int smdk_hw_params(struct snd_pcm_substream *substream,
 #endif /* CONFIG_SND_SAMSUNG_PCM_USE_EPLL */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set SCLK_DIV for making bclk */
 	ret = snd_soc_dai_set_clkdiv(cpu_dai, S3C_PCM_SCLK_PER_FS, rfs);
 	if (ret < 0)
@@ -276,6 +299,9 @@ static int smdk_hw_params(struct snd_pcm_substream *substream,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_ops smdk_wm8994_pcm_ops = {
 	.hw_params = smdk_wm8994_pcm_hw_params,
 };
@@ -284,6 +310,8 @@ static struct snd_soc_dai_link smdk_dai[] = {
 	{
 		.name = "WM8994 PAIF PCM",
 		.stream_name = "Primary PCM",
+<<<<<<< HEAD
+=======
 =======
 /*
  * SMDK WM8994 DAI operations.
@@ -297,11 +325,15 @@ static struct snd_soc_dai_link smdk_dai[] = {
 		.name = "WM8994 AIF1",
 		.stream_name = "PCM Tx/Rx",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.cpu_dai_name = "samsung-pcm.0",
 		.codec_dai_name = "wm8994-aif1",
 		.platform_name = "samsung-audio",
 		.codec_name = "wm8994-codec",
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.ops = &smdk_wm8994_pcm_ops,
 	},
 };
@@ -347,6 +379,8 @@ module_platform_driver(snd_smdk_driver);
 
 MODULE_AUTHOR("Sangbeom Kim, <sbkim73@samsung.com>");
 MODULE_DESCRIPTION("ALSA SoC SMDK WM8994 for PCM");
+<<<<<<< HEAD
+=======
 =======
 		.ops = &smdk_ops,
 	},
@@ -386,4 +420,5 @@ module_exit(smdk_audio_exit);
 
 MODULE_DESCRIPTION("ALSA SoC SMDK WM8994");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MODULE_LICENSE("GPL");

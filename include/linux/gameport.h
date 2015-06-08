@@ -72,6 +72,9 @@ void gameport_close(struct gameport *gameport);
 
 void __gameport_register_port(struct gameport *gameport, struct module *owner);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* use a define to avoid include chaining to get THIS_MODULE */
 #define gameport_register_port(gameport) \
 	__gameport_register_port(gameport, THIS_MODULE)
@@ -80,6 +83,8 @@ void gameport_unregister_port(struct gameport *gameport);
 
 __printf(2, 3)
 void gameport_set_phys(struct gameport *gameport, const char *fmt, ...);
+<<<<<<< HEAD
+=======
 =======
 static inline void gameport_register_port(struct gameport *gameport)
 {
@@ -91,6 +96,7 @@ void gameport_unregister_port(struct gameport *gameport);
 void gameport_set_phys(struct gameport *gameport, const char *fmt, ...)
 	__attribute__ ((format (printf, 2, 3)));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #else
 
@@ -108,9 +114,14 @@ static inline void gameport_unregister_port(struct gameport *gameport)
 static inline __printf(2, 3)
 void gameport_set_phys(struct gameport *gameport, const char *fmt, ...)
 =======
+<<<<<<< HEAD
+static inline __printf(2, 3)
+void gameport_set_phys(struct gameport *gameport, const char *fmt, ...)
+=======
 static inline void gameport_set_phys(struct gameport *gameport,
 				     const char *fmt, ...)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return;
 }
@@ -162,12 +173,17 @@ static inline void gameport_unpin_driver(struct gameport *gameport)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __must_check __gameport_register_driver(struct gameport_driver *drv,
 				struct module *owner, const char *mod_name);
 
 /* use a define to avoid include chaining to get THIS_MODULE & friends */
 #define gameport_register_driver(drv) \
 	__gameport_register_driver(drv, THIS_MODULE, KBUILD_MODNAME)
+<<<<<<< HEAD
+=======
 =======
 int __gameport_register_driver(struct gameport_driver *drv,
 				struct module *owner, const char *mod_name);
@@ -176,6 +192,7 @@ static inline int __must_check gameport_register_driver(struct gameport_driver *
 	return __gameport_register_driver(drv, THIS_MODULE, KBUILD_MODNAME);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void gameport_unregister_driver(struct gameport_driver *drv);
 

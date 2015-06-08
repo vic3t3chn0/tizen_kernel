@@ -21,7 +21,11 @@
 <<<<<<< HEAD
 #include <asm/cmpxchg.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ia64_native_get_psr_i()	(ia64_native_getreg(_IA64_REG_PSR) & IA64_PSR_I)
 
@@ -85,6 +89,8 @@ extern unsigned long __bad_increment_for_ia64_fetch_and_add (void);
 
 #define ia64_fetch_and_add(i,v)	(ia64_fetchadd(i, v, rel) + (i)) /* return new value */
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /*
@@ -201,6 +207,7 @@ extern long ia64_cmpxchg_called_with_bad_pointer (void);
 #endif /* !CONFIG_IA64_DEBUG_CMPXCHG */
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #ifdef __KERNEL__
@@ -209,6 +216,9 @@ extern long ia64_cmpxchg_called_with_bad_pointer (void);
 
 #ifndef __ASSEMBLY__
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define IA64_INTRINSIC_API(name)	ia64_native_ ## name
 #define IA64_INTRINSIC_MACRO(name)	ia64_native_ ## name
@@ -224,6 +234,8 @@ extern long ia64_cmpxchg_called_with_bad_pointer (void);
 # endif
 #define IA64_INTRINSIC_MACRO(name)	paravirt_ ## name
 #endif
+<<<<<<< HEAD
+=======
 =======
 #if defined(CONFIG_PARAVIRT) && defined(__KERNEL__)
 #ifdef ASM_SUPPORTED
@@ -236,6 +248,7 @@ extern long ia64_cmpxchg_called_with_bad_pointer (void);
 #define IA64_INTRINSIC_API(name)	ia64_native_ ## name
 #define IA64_INTRINSIC_MACRO(name)	ia64_native_ ## name
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /************************************************/

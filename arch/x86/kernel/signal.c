@@ -14,11 +14,16 @@
 #include <linux/errno.h>
 #include <linux/wait.h>
 =======
+<<<<<<< HEAD
+#include <linux/errno.h>
+#include <linux/wait.h>
+=======
 #include <linux/signal.h>
 #include <linux/errno.h>
 #include <linux/wait.h>
 #include <linux/ptrace.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/tracehook.h>
 #include <linux/unistd.h>
 #include <linux/stddef.h>
@@ -30,14 +35,20 @@
 #include <asm/ucontext.h>
 #include <asm/i387.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/fpu-internal.h>
 #include <asm/vdso.h>
 #include <asm/mce.h>
 #include <asm/sighandling.h>
+<<<<<<< HEAD
+=======
 =======
 #include <asm/vdso.h>
 #include <asm/mce.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_X86_64
 #include <asm/proto.h>
@@ -45,7 +56,11 @@
 <<<<<<< HEAD
 #include <asm/sys_ia32.h>
 =======
+<<<<<<< HEAD
+#include <asm/sys_ia32.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_X86_64 */
 
 #include <asm/syscall.h>
@@ -53,6 +68,8 @@
 
 #include <asm/sigframe.h>
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #define _BLOCKABLE (~(sigmask(SIGKILL) | sigmask(SIGSTOP)))
@@ -63,6 +80,7 @@
 			 X86_EFLAGS_CF)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_32
 # define FIX_EFLAGS	(__FIX_EFLAGS | X86_EFLAGS_RF)
 #else
@@ -91,10 +109,15 @@
 int restore_sigcontext(struct pt_regs *regs, struct sigcontext __user *sc,
 		       unsigned long *pax)
 =======
+<<<<<<< HEAD
+int restore_sigcontext(struct pt_regs *regs, struct sigcontext __user *sc,
+		       unsigned long *pax)
+=======
 static int
 restore_sigcontext(struct pt_regs *regs, struct sigcontext __user *sc,
 		   unsigned long *pax)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	void __user *buf;
 	unsigned int tmpflags;
@@ -153,10 +176,15 @@ restore_sigcontext(struct pt_regs *regs, struct sigcontext __user *sc,
 int setup_sigcontext(struct sigcontext __user *sc, void __user *fpstate,
 		     struct pt_regs *regs, unsigned long mask)
 =======
+<<<<<<< HEAD
+int setup_sigcontext(struct sigcontext __user *sc, void __user *fpstate,
+		     struct pt_regs *regs, unsigned long mask)
+=======
 static int
 setup_sigcontext(struct sigcontext __user *sc, void __user *fpstate,
 		 struct pt_regs *regs, unsigned long mask)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err = 0;
 
@@ -191,8 +219,12 @@ setup_sigcontext(struct sigcontext __user *sc, void __user *fpstate,
 <<<<<<< HEAD
 		put_user_ex(current->thread.trap_nr, &sc->trapno);
 =======
+<<<<<<< HEAD
+		put_user_ex(current->thread.trap_nr, &sc->trapno);
+=======
 		put_user_ex(current->thread.trap_no, &sc->trapno);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		put_user_ex(current->thread.error_code, &sc->err);
 		put_user_ex(regs->ip, &sc->ip);
 #ifdef CONFIG_X86_32
@@ -519,6 +551,9 @@ asmlinkage int
 sys_sigsuspend(int history0, int history1, old_sigset_t mask)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sigset_t blocked;
 
 	current->saved_sigmask = current->blocked;
@@ -531,6 +566,8 @@ sys_sigsuspend(int history0, int history1, old_sigset_t mask)
 	schedule();
 
 	set_restore_sigmask();
+<<<<<<< HEAD
+=======
 =======
 	mask &= _BLOCKABLE;
 	spin_lock_irq(&current->sighand->siglock);
@@ -544,6 +581,7 @@ sys_sigsuspend(int history0, int history1, old_sigset_t mask)
 	set_restore_sigmask();
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return -ERESTARTNOHAND;
 }
 
@@ -623,11 +661,15 @@ unsigned long sys_sigreturn(struct pt_regs *regs)
 <<<<<<< HEAD
 	set_current_blocked(&set);
 =======
+<<<<<<< HEAD
+	set_current_blocked(&set);
+=======
 	spin_lock_irq(&current->sighand->siglock);
 	current->blocked = set;
 	recalc_sigpending();
 	spin_unlock_irq(&current->sighand->siglock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (restore_sigcontext(regs, &frame->sc, &ax))
 		goto badframe;
@@ -697,6 +739,9 @@ static int signr_convert(int sig)
 #endif /* CONFIG_IA32_EMULATION */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_X32_ABI
 #define is_x32	test_thread_flag(TIF_X32)
 
@@ -707,8 +752,11 @@ static int x32_setup_rt_frame(int sig, struct k_sigaction *ka,
 #define is_x32	0
 #endif /* CONFIG_X86_X32_ABI */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int ia32_setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 		sigset_t *set, struct pt_regs *regs);
 int ia32_setup_frame(int sig, struct k_sigaction *ka,
@@ -719,6 +767,9 @@ int ia32_setup_frame(int sig, struct k_sigaction *ka,
 static int
 setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct pt_regs *regs)
 {
 	int usig = signr_convert(sig);
@@ -728,6 +779,8 @@ setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 	if (current_thread_info()->status & TS_RESTORE_SIGMASK)
 		set = &current->saved_sigmask;
 
+<<<<<<< HEAD
+=======
 =======
 	       sigset_t *set, struct pt_regs *regs)
 {
@@ -735,6 +788,7 @@ setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 	int ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set up the stack frame */
 	if (is_ia32) {
 		if (ka->sa.sa_flags & SA_SIGINFO)
@@ -742,6 +796,9 @@ setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 		else
 			ret = ia32_setup_frame(usig, ka, set, regs);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_X86_X32_ABI
 	} else if (is_x32) {
 		ret = x32_setup_rt_frame(usig, ka, info,
@@ -750,10 +807,13 @@ setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 	} else {
 		ret = __setup_rt_frame(sig, ka, info, set, regs);
 	}
+<<<<<<< HEAD
+=======
 =======
 	} else
 		ret = __setup_rt_frame(sig, ka, info, set, regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret) {
 		force_sigsegv(sig, current);
@@ -763,7 +823,11 @@ setup_rt_frame(int sig, struct k_sigaction *ka, siginfo_t *info,
 <<<<<<< HEAD
 	current_thread_info()->status &= ~TS_RESTORE_SIGMASK;
 =======
+<<<<<<< HEAD
+	current_thread_info()->status &= ~TS_RESTORE_SIGMASK;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 
@@ -773,10 +837,15 @@ handle_signal(unsigned long sig, siginfo_t *info, struct k_sigaction *ka,
 		struct pt_regs *regs)
 {
 =======
+<<<<<<< HEAD
+		struct pt_regs *regs)
+{
+=======
 	      sigset_t *oldset, struct pt_regs *regs)
 {
 	sigset_t blocked;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret;
 
 	/* Are we from a system call? */
@@ -812,12 +881,18 @@ handle_signal(unsigned long sig, siginfo_t *info, struct k_sigaction *ka,
 <<<<<<< HEAD
 	ret = setup_rt_frame(sig, ka, info, regs);
 =======
+<<<<<<< HEAD
+	ret = setup_rt_frame(sig, ka, info, regs);
+=======
 	ret = setup_rt_frame(sig, ka, info, oldset, regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ret)
 		return ret;
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 #ifdef CONFIG_X86_64
@@ -830,6 +905,7 @@ handle_signal(unsigned long sig, siginfo_t *info, struct k_sigaction *ka,
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Clear the direction flag as per the ABI for function entry.
 	 */
@@ -846,11 +922,15 @@ handle_signal(unsigned long sig, siginfo_t *info, struct k_sigaction *ka,
 <<<<<<< HEAD
 	block_sigmask(ka, sig);
 =======
+<<<<<<< HEAD
+	block_sigmask(ka, sig);
+=======
 	sigorsets(&blocked, &current->blocked, &ka->sa.sa_mask);
 	if (!(ka->sa.sa_flags & SA_NODEFER))
 		sigaddset(&blocked, sig);
 	set_current_blocked(&blocked);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	tracehook_signal_handler(sig, info, ka, regs,
 				 test_thread_flag(TIF_SINGLESTEP));
@@ -877,8 +957,11 @@ static void do_signal(struct pt_regs *regs)
 	int signr;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	sigset_t *oldset;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * We want the common case to go fast, which is why we may in certain
@@ -891,10 +974,15 @@ static void do_signal(struct pt_regs *regs)
 		return;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	signr = get_signal_to_deliver(&info, &ka, regs, NULL);
 	if (signr > 0) {
 		/* Whee! Actually deliver the signal.  */
 		handle_signal(signr, &info, &ka, regs);
+<<<<<<< HEAD
+=======
 =======
 	if (current_thread_info()->status & TS_RESTORE_SIGMASK)
 		oldset = &current->saved_sigmask;
@@ -914,6 +1002,7 @@ static void do_signal(struct pt_regs *regs)
 			current_thread_info()->status &= ~TS_RESTORE_SIGMASK;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return;
 	}
 
@@ -944,8 +1033,12 @@ static void do_signal(struct pt_regs *regs)
 <<<<<<< HEAD
 		set_current_blocked(&current->saved_sigmask);
 =======
+<<<<<<< HEAD
+		set_current_blocked(&current->saved_sigmask);
+=======
 		sigprocmask(SIG_SETMASK, &current->saved_sigmask, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -997,6 +1090,9 @@ void signal_fault(struct pt_regs *regs, void __user *frame, char *where)
 	force_sig(SIGSEGV, me);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_X86_X32_ABI
 static int x32_setup_rt_frame(int sig, struct k_sigaction *ka,
@@ -1096,5 +1192,8 @@ badframe:
 	return 0;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -37,7 +37,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "rds.h"
 
@@ -110,8 +114,12 @@ void rds_info_iter_unmap(struct rds_info_iterator *iter)
 <<<<<<< HEAD
 		kunmap_atomic(iter->addr);
 =======
+<<<<<<< HEAD
+		kunmap_atomic(iter->addr);
+=======
 		kunmap_atomic(iter->addr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iter->addr = NULL;
 	}
 }
@@ -129,8 +137,12 @@ void rds_info_copy(struct rds_info_iterator *iter, void *data,
 <<<<<<< HEAD
 			iter->addr = kmap_atomic(*iter->pages);
 =======
+<<<<<<< HEAD
+			iter->addr = kmap_atomic(*iter->pages);
+=======
 			iter->addr = kmap_atomic(*iter->pages, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		this = min(bytes, PAGE_SIZE - iter->offset);
 
@@ -148,8 +160,12 @@ void rds_info_copy(struct rds_info_iterator *iter, void *data,
 <<<<<<< HEAD
 			kunmap_atomic(iter->addr);
 =======
+<<<<<<< HEAD
+			kunmap_atomic(iter->addr);
+=======
 			kunmap_atomic(iter->addr, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			iter->addr = NULL;
 			iter->offset = 0;
 			iter->pages++;

@@ -200,9 +200,13 @@ cifs_convert_address(struct sockaddr *dst, const char *src, int len)
 <<<<<<< HEAD
 		rc = kstrtouint(scope_id, 0, &s6->sin6_scope_id);
 =======
+<<<<<<< HEAD
+		rc = kstrtouint(scope_id, 0, &s6->sin6_scope_id);
+=======
 		rc = strict_strtoul(scope_id, 0,
 					(unsigned long *)&s6->sin6_scope_id);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = (rc == 0) ? 1 : 0;
 	}
 
@@ -845,9 +849,15 @@ map_smb_to_linux_error(char *buf, bool logErr)
 {
 	struct smb_hdr *smb = (struct smb_hdr *)buf;
 =======
+<<<<<<< HEAD
+map_smb_to_linux_error(char *buf, bool logErr)
+{
+	struct smb_hdr *smb = (struct smb_hdr *)buf;
+=======
 map_smb_to_linux_error(struct smb_hdr *smb, bool logErr)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned int i;
 	int rc = -EIO;	/* if transport error smb error may not be set */
 	__u8 smberrclass;

@@ -89,7 +89,12 @@ crisv32_pinmux_alloc_fixed(enum fixed_function function)
 	reg_pinmux_rw_hwprot hwprot;
 	reg_clkgen_rw_clk_ctrl clk_ctrl;
 =======
+<<<<<<< HEAD
+	reg_pinmux_rw_hwprot hwprot;
+	reg_clkgen_rw_clk_ctrl clk_ctrl;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&pinmux_lock, flags);
 
@@ -102,10 +107,15 @@ crisv32_pinmux_alloc_fixed(enum fixed_function function)
 	hwprot = REG_RD(pinmux, regi_pinmux, rw_hwprot);
 	clk_ctrl = REG_RD(clkgen, regi_clkgen, rw_clk_ctrl);
 =======
+<<<<<<< HEAD
+	hwprot = REG_RD(pinmux, regi_pinmux, rw_hwprot);
+	clk_ctrl = REG_RD(clkgen, regi_clkgen, rw_clk_ctrl);
+=======
 	reg_pinmux_rw_hwprot hwprot = REG_RD(pinmux, regi_pinmux, rw_hwprot);
 	reg_clkgen_rw_clk_ctrl clk_ctrl = REG_RD(clkgen, regi_clkgen,
 		rw_clk_ctrl);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (function) {
 	case pinmux_eth:
@@ -275,7 +285,11 @@ crisv32_pinmux_dealloc_fixed(enum fixed_function function)
 <<<<<<< HEAD
 	reg_pinmux_rw_hwprot hwprot;
 =======
+<<<<<<< HEAD
+	reg_pinmux_rw_hwprot hwprot;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&pinmux_lock, flags);
 
@@ -287,8 +301,12 @@ crisv32_pinmux_dealloc_fixed(enum fixed_function function)
 <<<<<<< HEAD
 	hwprot = REG_RD(pinmux, regi_pinmux, rw_hwprot);
 =======
+<<<<<<< HEAD
+	hwprot = REG_RD(pinmux, regi_pinmux, rw_hwprot);
+=======
 	reg_pinmux_rw_hwprot hwprot = REG_RD(pinmux, regi_pinmux, rw_hwprot);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (function) {
 	case pinmux_eth:

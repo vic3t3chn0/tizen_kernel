@@ -30,6 +30,9 @@ static unsigned int bcm63xx_cpu_freq;
 static unsigned int bcm63xx_memory_size;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const unsigned long bcm6338_regs_base[] = {
 	__GEN_CPU_REGS_TABLE(6338)
 };
@@ -71,6 +74,8 @@ static const unsigned long bcm6368_regs_base[] = {
 static const int bcm6368_irqs[] = {
 	__GEN_CPU_IRQ_TABLE(6368)
 
+<<<<<<< HEAD
+=======
 =======
 /*
  * 6338 register sets and irqs
@@ -233,6 +238,7 @@ static const int bcm96358_irqs[] = {
 	[IRQ_ENET1_TXDMA]	= BCM_6358_ENET1_TXDMA_IRQ,
 	[IRQ_PCI]		= BCM_6358_PCI_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 u16 __bcm63xx_get_cpu_id(void)
@@ -262,6 +268,9 @@ unsigned int bcm63xx_get_memory_size(void)
 static unsigned int detect_cpu_clock(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bcm63xx_get_cpu_id()) {
 	case BCM6338_CPU_ID:
 		/* BCM6338 has a fixed 240 Mhz frequency */
@@ -275,6 +284,8 @@ static unsigned int detect_cpu_clock(void)
 	{
 		unsigned int tmp, n1, n2, m1;
 
+<<<<<<< HEAD
+=======
 =======
 	unsigned int tmp, n1 = 0, n2 = 0, m1 = 0;
 
@@ -291,6 +302,7 @@ static unsigned int detect_cpu_clock(void)
 	 */
 	if (BCMCPU_IS_6348()) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* 16MHz * (N1 + 1) * (N2 + 2) / (M1_CPU + 1) */
 		tmp = bcm_perf_readl(PERF_MIPSPLLCTL_REG);
 		n1 = (tmp & MIPSPLLCTL_N1_MASK) >> MIPSPLLCTL_N1_SHIFT;
@@ -300,6 +312,9 @@ static unsigned int detect_cpu_clock(void)
 		n2 += 2;
 		m1 += 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return (16 * 1000000 * n1 * n2) / m1;
 	}
 
@@ -307,17 +322,23 @@ static unsigned int detect_cpu_clock(void)
 	{
 		unsigned int tmp, n1, n2, m1;
 
+<<<<<<< HEAD
+=======
 =======
 	}
 
 	if (BCMCPU_IS_6358()) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/* 16MHz * N1 * N2 / M1_CPU */
 		tmp = bcm_ddr_readl(DDR_DMIPSPLLCFG_REG);
 		n1 = (tmp & DMIPSPLLCFG_N1_MASK) >> DMIPSPLLCFG_N1_SHIFT;
 		n2 = (tmp & DMIPSPLLCFG_N2_MASK) >> DMIPSPLLCFG_N2_SHIFT;
 		m1 = (tmp & DMIPSPLLCFG_M1_MASK) >> DMIPSPLLCFG_M1_SHIFT;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return (16 * 1000000 * n1 * n2) / m1;
 	}
 
@@ -347,11 +368,14 @@ static unsigned int detect_cpu_clock(void)
 	default:
 		BUG();
 	}
+<<<<<<< HEAD
+=======
 =======
 	}
 
 	return (16 * 1000000 * n1 * n2) / m1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -363,14 +387,20 @@ static unsigned int detect_memory_size(void)
 	u32 val;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (BCMCPU_IS_6345()) {
 		val = bcm_sdram_readl(SDRAM_MBASE_REG);
 		return (val * 8 * 1024 * 1024);
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (BCMCPU_IS_6345())
 		return (8 * 1024 * 1024);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (BCMCPU_IS_6338() || BCMCPU_IS_6348()) {
 		val = bcm_sdram_readl(SDRAM_CFG_REG);
@@ -383,8 +413,12 @@ static unsigned int detect_memory_size(void)
 <<<<<<< HEAD
 	if (BCMCPU_IS_6358() || BCMCPU_IS_6368()) {
 =======
+<<<<<<< HEAD
+	if (BCMCPU_IS_6358() || BCMCPU_IS_6368()) {
+=======
 	if (BCMCPU_IS_6358()) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		val = bcm_memc_readl(MEMC_CFG_REG);
 		rows = (val & MEMC_CFG_ROW_MASK) >> MEMC_CFG_ROW_SHIFT;
 		cols = (val & MEMC_CFG_COL_MASK) >> MEMC_CFG_COL_SHIFT;
@@ -415,6 +449,9 @@ void __init bcm63xx_cpu_init(void)
 		if ((read_c0_prid() & 0xff00) == PRID_IMP_BMIPS3300_ALT) {
 			expected_cpu_id = BCM6348_CPU_ID;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			bcm63xx_regs_base = bcm6348_regs_base;
 			bcm63xx_irqs = bcm6348_irqs;
 		} else {
@@ -422,6 +459,8 @@ void __init bcm63xx_cpu_init(void)
 			expected_cpu_id = BCM6338_CPU_ID;
 			bcm63xx_regs_base = bcm6338_regs_base;
 			bcm63xx_irqs = bcm6338_irqs;
+<<<<<<< HEAD
+=======
 =======
 			bcm63xx_regs_base = bcm96348_regs_base;
 			bcm63xx_irqs = bcm96348_irqs;
@@ -431,11 +470,15 @@ void __init bcm63xx_cpu_init(void)
 			bcm63xx_regs_base = bcm96338_regs_base;
 			bcm63xx_irqs = bcm96338_irqs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		break;
 	case CPU_BMIPS32:
 		expected_cpu_id = BCM6345_CPU_ID;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		bcm63xx_regs_base = bcm6345_regs_base;
 		bcm63xx_irqs = bcm6345_irqs;
 		break;
@@ -452,6 +495,8 @@ void __init bcm63xx_cpu_init(void)
 			bcm63xx_irqs = bcm6368_irqs;
 			break;
 		}
+<<<<<<< HEAD
+=======
 =======
 		bcm63xx_regs_base = bcm96345_regs_base;
 		bcm63xx_irqs = bcm96345_irqs;
@@ -461,6 +506,7 @@ void __init bcm63xx_cpu_init(void)
 		bcm63xx_regs_base = bcm96358_regs_base;
 		bcm63xx_irqs = bcm96358_irqs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	}
 

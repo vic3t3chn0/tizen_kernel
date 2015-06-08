@@ -120,8 +120,12 @@ static int get_master_node(const struct ubifs_info *c, int lnum, void **pbuf,
 <<<<<<< HEAD
 	err = ubifs_leb_read(c, lnum, sbuf, 0, c->leb_size, 0);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_read(c, lnum, sbuf, 0, c->leb_size, 0);
+=======
 	err = ubi_read(c->ubi, lnum, sbuf, 0, c->leb_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err && err != -EBADMSG)
 		goto out_free;
 
@@ -218,16 +222,22 @@ static int write_rcvrd_mst_node(struct ubifs_info *c,
 
 	ubifs_prepare_node(c, mst, UBIFS_MST_NODE_SZ, 1);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	err = ubifs_leb_change(c, lnum, mst, sz, UBI_SHORTTERM);
 	if (err)
 		goto out;
 	err = ubifs_leb_change(c, lnum + 1, mst, sz, UBI_SHORTTERM);
+<<<<<<< HEAD
+=======
 =======
 	err = ubi_leb_change(c->ubi, lnum, mst, sz, UBI_SHORTTERM);
 	if (err)
 		goto out;
 	err = ubi_leb_change(c->ubi, lnum + 1, mst, sz, UBI_SHORTTERM);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 out:
@@ -289,8 +299,13 @@ int ubifs_recover_master_node(struct ubifs_info *c)
 			} else if (offs1 == 0 &&
 				   c->leb_size - offs2 - sz < sz) {
 =======
+<<<<<<< HEAD
+			} else if (offs1 == 0 &&
+				   c->leb_size - offs2 - sz < sz) {
+=======
 			} else if (offs1 == 0 && offs2 + sz >= c->leb_size) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				/* 1st LEB was unmapped and written, 2nd not */
 				if (cor1)
 					goto out_err;
@@ -559,9 +574,14 @@ static int fix_unclean_leb(struct ubifs_info *c, struct ubifs_scan_leb *sleb,
 				err = ubifs_leb_read(c, lnum, sleb->buf, 0,
 						     start, 1);
 =======
+<<<<<<< HEAD
+				err = ubifs_leb_read(c, lnum, sleb->buf, 0,
+						     start, 1);
+=======
 				err = ubi_read(c->ubi, lnum, sleb->buf, 0,
 					       start);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				if (err)
 					return err;
 			}
@@ -579,9 +599,14 @@ static int fix_unclean_leb(struct ubifs_info *c, struct ubifs_scan_leb *sleb,
 			err = ubifs_leb_change(c, lnum, sleb->buf, len,
 					       UBI_UNKNOWN);
 =======
+<<<<<<< HEAD
+			err = ubifs_leb_change(c, lnum, sleb->buf, len,
+					       UBI_UNKNOWN);
+=======
 			err = ubi_leb_change(c->ubi, lnum, sleb->buf, len,
 					     UBI_UNKNOWN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (err)
 				return err;
 		}
@@ -708,8 +733,13 @@ struct ubifs_scan_leb *ubifs_recover_leb(struct ubifs_info *c, int lnum,
 			dbg_rcvry("found corruption (%d) at %d:%d",
 				  ret, lnum, offs);
 =======
+<<<<<<< HEAD
+			dbg_rcvry("found corruption (%d) at %d:%d",
+				  ret, lnum, offs);
+=======
 			dbg_rcvry("found corruption - %d", ret);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		} else {
 			dbg_err("unexpected return value %d", ret);
@@ -854,8 +884,13 @@ static int get_cs_sqnum(struct ubifs_info *c, int lnum, int offs,
 	err = ubifs_leb_read(c, lnum, (void *)cs_node, offs,
 			     UBIFS_CS_NODE_SZ, 0);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_read(c, lnum, (void *)cs_node, offs,
+			     UBIFS_CS_NODE_SZ, 0);
+=======
 	err = ubi_read(c->ubi, lnum, (void *)cs_node, offs, UBIFS_CS_NODE_SZ);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err && err != -EBADMSG)
 		goto out_free;
 	ret = ubifs_scan_a_node(c, cs_node, UBIFS_CS_NODE_SZ, lnum, offs, 0);
@@ -958,9 +993,13 @@ struct ubifs_scan_leb *ubifs_recover_log_leb(struct ubifs_info *c, int lnum,
 <<<<<<< HEAD
 static int recover_head(struct ubifs_info *c, int lnum, int offs, void *sbuf)
 =======
+<<<<<<< HEAD
+static int recover_head(struct ubifs_info *c, int lnum, int offs, void *sbuf)
+=======
 static int recover_head(const struct ubifs_info *c, int lnum, int offs,
 			void *sbuf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int len = c->max_write_size, err;
 
@@ -974,23 +1013,33 @@ static int recover_head(const struct ubifs_info *c, int lnum, int offs,
 <<<<<<< HEAD
 	err = ubifs_leb_read(c, lnum, sbuf, offs, len, 1);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_read(c, lnum, sbuf, offs, len, 1);
+=======
 	err = ubi_read(c->ubi, lnum, sbuf, offs, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err || !is_empty(sbuf, len)) {
 		dbg_rcvry("cleaning head at %d:%d", lnum, offs);
 		if (offs == 0)
 			return ubifs_leb_unmap(c, lnum);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = ubifs_leb_read(c, lnum, sbuf, 0, offs, 1);
 		if (err)
 			return err;
 		return ubifs_leb_change(c, lnum, sbuf, offs, UBI_UNKNOWN);
+<<<<<<< HEAD
+=======
 =======
 		err = ubi_read(c->ubi, lnum, sbuf, 0, offs);
 		if (err)
 			return err;
 		return ubi_leb_change(c->ubi, lnum, sbuf, offs, UBI_UNKNOWN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return 0;
@@ -1016,8 +1065,12 @@ static int recover_head(const struct ubifs_info *c, int lnum, int offs,
 <<<<<<< HEAD
 int ubifs_recover_inl_heads(struct ubifs_info *c, void *sbuf)
 =======
+<<<<<<< HEAD
+int ubifs_recover_inl_heads(struct ubifs_info *c, void *sbuf)
+=======
 int ubifs_recover_inl_heads(const struct ubifs_info *c, void *sbuf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int err;
 
@@ -1040,8 +1093,12 @@ int ubifs_recover_inl_heads(const struct ubifs_info *c, void *sbuf)
 <<<<<<< HEAD
  * clean_an_unclean_leb - read and write a LEB to remove corruption.
 =======
+<<<<<<< HEAD
+ * clean_an_unclean_leb - read and write a LEB to remove corruption.
+=======
  *  clean_an_unclean_leb - read and write a LEB to remove corruption.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @c: UBIFS file-system description object
  * @ucleb: unclean LEB information
  * @sbuf: LEB-sized buffer to use
@@ -1055,8 +1112,12 @@ int ubifs_recover_inl_heads(const struct ubifs_info *c, void *sbuf)
 <<<<<<< HEAD
 static int clean_an_unclean_leb(struct ubifs_info *c,
 =======
+<<<<<<< HEAD
+static int clean_an_unclean_leb(struct ubifs_info *c,
+=======
 static int clean_an_unclean_leb(const struct ubifs_info *c,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				struct ubifs_unclean_leb *ucleb, void *sbuf)
 {
 	int err, lnum = ucleb->lnum, offs = 0, len = ucleb->endpt, quiet = 1;
@@ -1075,8 +1136,12 @@ static int clean_an_unclean_leb(const struct ubifs_info *c,
 <<<<<<< HEAD
 	err = ubifs_leb_read(c, lnum, buf, offs, len, 0);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_read(c, lnum, buf, offs, len, 0);
+=======
 	err = ubi_read(c->ubi, lnum, buf, offs, len);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err && err != -EBADMSG)
 		return err;
 
@@ -1139,8 +1204,12 @@ static int clean_an_unclean_leb(const struct ubifs_info *c,
 <<<<<<< HEAD
 	err = ubifs_leb_change(c, lnum, sbuf, len, UBI_UNKNOWN);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_change(c, lnum, sbuf, len, UBI_UNKNOWN);
+=======
 	err = ubi_leb_change(c->ubi, lnum, sbuf, len, UBI_UNKNOWN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 
@@ -1163,8 +1232,12 @@ static int clean_an_unclean_leb(const struct ubifs_info *c,
 <<<<<<< HEAD
 int ubifs_clean_lebs(struct ubifs_info *c, void *sbuf)
 =======
+<<<<<<< HEAD
+int ubifs_clean_lebs(struct ubifs_info *c, void *sbuf)
+=======
 int ubifs_clean_lebs(const struct ubifs_info *c, void *sbuf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	dbg_rcvry("recovery");
 	while (!list_empty(&c->unclean_leb_list)) {
@@ -1532,8 +1605,12 @@ static int fix_size_in_place(struct ubifs_info *c, struct size_entry *e)
 <<<<<<< HEAD
 	err = ubifs_leb_read(c, lnum, c->sbuf, 0, c->leb_size, 1);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_read(c, lnum, c->sbuf, 0, c->leb_size, 1);
+=======
 	err = ubi_read(c->ubi, lnum, c->sbuf, 0, c->leb_size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 	/* Change the size field and recalculate the CRC */
@@ -1552,8 +1629,12 @@ static int fix_size_in_place(struct ubifs_info *c, struct size_entry *e)
 <<<<<<< HEAD
 	err = ubifs_leb_change(c, lnum, c->sbuf, len, UBI_UNKNOWN);
 =======
+<<<<<<< HEAD
+	err = ubifs_leb_change(c, lnum, c->sbuf, len, UBI_UNKNOWN);
+=======
 	err = ubi_leb_change(c->ubi, lnum, c->sbuf, len, UBI_UNKNOWN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		goto out;
 	dbg_rcvry("inode %lu at %d:%d size %lld -> %lld",

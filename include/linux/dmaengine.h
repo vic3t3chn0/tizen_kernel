@@ -19,6 +19,9 @@
  * file called COPYING.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef LINUX_DMAENGINE_H
 #define LINUX_DMAENGINE_H
 
@@ -29,6 +32,8 @@
 #include <linux/bitmap.h>
 #include <linux/types.h>
 #include <asm/page.h>
+<<<<<<< HEAD
+=======
 =======
 #ifndef DMAENGINE_H
 #define DMAENGINE_H
@@ -37,6 +42,7 @@
 #include <linux/uio.h>
 #include <linux/dma-mapping.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * typedef dma_cookie_t - an opaque DMA cookie
@@ -83,6 +89,9 @@ enum dma_transaction_type {
 	DMA_SLAVE,
 	DMA_CYCLIC,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	DMA_INTERLEAVE,
 /* last transaction type for creation of the capabilities mask */
 	DMA_TX_TYPE_END,
@@ -170,6 +179,8 @@ struct dma_interleaved_template {
 	size_t frame_size;
 	struct data_chunk sgl[0];
 };
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -177,6 +188,7 @@ struct dma_interleaved_template {
 #define DMA_TX_TYPE_END (DMA_CYCLIC + 1)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * enum dma_ctrl_flags - DMA flags to augment operation preparation,
@@ -279,7 +291,11 @@ struct dma_chan_percpu {
 <<<<<<< HEAD
  * @completed_cookie: last completed cookie for this channel
 =======
+<<<<<<< HEAD
+ * @completed_cookie: last completed cookie for this channel
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @chan_id: channel ID for sysfs
  * @dev: class device for sysfs
  * @device_node: used to add this to the device chan list
@@ -294,7 +310,11 @@ struct dma_chan {
 <<<<<<< HEAD
 	dma_cookie_t completed_cookie;
 =======
+<<<<<<< HEAD
+	dma_cookie_t completed_cookie;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* sysfs */
 	int chan_id;
@@ -363,7 +383,13 @@ enum dma_slave_buswidth {
  * with 'true' if peripheral should be flow controller. Direction will be
  * selected at Runtime.
 =======
+<<<<<<< HEAD
+ * @device_fc: Flow Controller Settings. Only valid for slave channels. Fill
+ * with 'true' if peripheral should be flow controller. Direction will be
+ * selected at Runtime.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This struct is passed in as configuration data to a DMA engine
  * in order to set up a certain channel for DMA transport at runtime.
@@ -386,8 +412,12 @@ struct dma_slave_config {
 <<<<<<< HEAD
 	enum dma_transfer_direction direction;
 =======
+<<<<<<< HEAD
+	enum dma_transfer_direction direction;
+=======
 	enum dma_data_direction direction;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dma_addr_t src_addr;
 	dma_addr_t dst_addr;
 	enum dma_slave_buswidth src_addr_width;
@@ -397,7 +427,11 @@ struct dma_slave_config {
 <<<<<<< HEAD
 	bool device_fc;
 =======
+<<<<<<< HEAD
+	bool device_fc;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static inline const char *dma_chan_name(struct dma_chan *chan)
@@ -558,7 +592,11 @@ struct dma_tx_state {
 <<<<<<< HEAD
  * @device_prep_interleaved_dma: Transfer expression in a generic way.
 =======
+<<<<<<< HEAD
+ * @device_prep_interleaved_dma: Transfer expression in a generic way.
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @device_control: manipulate all pending operations on a channel, returns
  *	zero or error code
  * @device_tx_status: poll for transaction completion, the optional
@@ -619,6 +657,9 @@ struct dma_device {
 	struct dma_async_tx_descriptor *(*device_prep_slave_sg)(
 		struct dma_chan *chan, struct scatterlist *sgl,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned int sg_len, enum dma_transfer_direction direction,
 		unsigned long flags, void *context);
 	struct dma_async_tx_descriptor *(*device_prep_dma_cyclic)(
@@ -628,6 +669,8 @@ struct dma_device {
 	struct dma_async_tx_descriptor *(*device_prep_interleaved_dma)(
 		struct dma_chan *chan, struct dma_interleaved_template *xt,
 		unsigned long flags);
+<<<<<<< HEAD
+=======
 =======
 		unsigned int sg_len, enum dma_data_direction direction,
 		unsigned long flags);
@@ -635,6 +678,7 @@ struct dma_device {
 		struct dma_chan *chan, dma_addr_t buf_addr, size_t buf_len,
 		size_t period_len, enum dma_data_direction direction);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*device_control)(struct dma_chan *chan, enum dma_ctrl_cmd cmd,
 		unsigned long arg);
 
@@ -659,6 +703,9 @@ static inline int dmaengine_slave_config(struct dma_chan *chan,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct dma_async_tx_descriptor *dmaengine_prep_slave_single(
 	struct dma_chan *chan, void *buf, size_t len,
 	enum dma_transfer_direction dir, unsigned long flags)
@@ -686,8 +733,11 @@ static inline struct dma_async_tx_descriptor *dmaengine_prep_dma_cyclic(
 						period_len, dir, NULL);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int dmaengine_terminate_all(struct dma_chan *chan)
 {
 	return dmaengine_device_control(chan, DMA_TERMINATE_ALL, 0);
@@ -1024,7 +1074,11 @@ struct dma_chan *dma_find_channel(enum dma_transaction_type tx_type);
 <<<<<<< HEAD
 struct dma_chan *net_dma_find_channel(void);
 =======
+<<<<<<< HEAD
+struct dma_chan *net_dma_find_channel(void);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define dma_request_channel(mask, x, y) __dma_request_channel(&(mask), x, y)
 
 /* --- Helper iov-locking functions --- */

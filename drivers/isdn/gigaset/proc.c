@@ -35,7 +35,15 @@ static ssize_t set_cidmode(struct device *dev, struct device_attribute *attr,
 		if (!isspace(*end++))
 			return -EINVAL;
 	if (value < 0 || value > 1)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		return -EINVAL;
+=======
 			return -EINVAL;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			return -EINVAL;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (mutex_lock_interruptible(&cs->mutex))
 		return -ERESTARTSYS;
@@ -56,7 +64,15 @@ static ssize_t set_cidmode(struct device *dev, struct device_attribute *attr,
 	return count;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static DEVICE_ATTR(cidmode, S_IRUGO | S_IWUSR, show_cidmode, set_cidmode);
+=======
 static DEVICE_ATTR(cidmode, S_IRUGO|S_IWUSR, show_cidmode, set_cidmode);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static DEVICE_ATTR(cidmode, S_IRUGO|S_IWUSR, show_cidmode, set_cidmode);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* free sysfs for device */
 void gigaset_free_dev_sysfs(struct cardstate *cs)

@@ -41,6 +41,9 @@ static int generic_print_tuple(struct seq_file *s,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned int *generic_get_timeouts(struct net *net)
 {
 	return &nf_ct_generic_timeout;
@@ -56,6 +59,8 @@ static int generic_packet(struct nf_conn *ct,
 			  unsigned int *timeout)
 {
 	nf_ct_refresh_acct(ct, ctinfo, skb, *timeout);
+<<<<<<< HEAD
+=======
 =======
 /* Returns verdict for packet, or -1 for invalid. */
 static int packet(struct nf_conn *ct,
@@ -67,6 +72,7 @@ static int packet(struct nf_conn *ct,
 {
 	nf_ct_refresh_acct(ct, ctinfo, skb, nf_ct_generic_timeout);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return NF_ACCEPT;
 }
 
@@ -75,14 +81,22 @@ static int packet(struct nf_conn *ct,
 static bool generic_new(struct nf_conn *ct, const struct sk_buff *skb,
 			unsigned int dataoff, unsigned int *timeouts)
 =======
+<<<<<<< HEAD
+static bool generic_new(struct nf_conn *ct, const struct sk_buff *skb,
+			unsigned int dataoff, unsigned int *timeouts)
+=======
 static bool new(struct nf_conn *ct, const struct sk_buff *skb,
 		unsigned int dataoff)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return true;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #if IS_ENABLED(CONFIG_NF_CT_NETLINK_TIMEOUT)
 
 #include <linux/netfilter/nfnetlink.h>
@@ -122,8 +136,11 @@ generic_timeout_nla_policy[CTA_TIMEOUT_GENERIC_MAX+1] = {
 };
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 static struct ctl_table_header *generic_sysctl_header;
 static struct ctl_table generic_sysctl_table[] = {
@@ -159,6 +176,9 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_generic __read_mostly =
 	.invert_tuple		= generic_invert_tuple,
 	.print_tuple		= generic_print_tuple,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.packet			= generic_packet,
 	.get_timeouts		= generic_get_timeouts,
 	.new			= generic_new,
@@ -171,10 +191,13 @@ struct nf_conntrack_l4proto nf_conntrack_l4proto_generic __read_mostly =
 		.nla_policy	= generic_timeout_nla_policy,
 	},
 #endif /* CONFIG_NF_CT_NETLINK_TIMEOUT */
+<<<<<<< HEAD
+=======
 =======
 	.packet			= packet,
 	.new			= new,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_SYSCTL
 	.ctl_table_header	= &generic_sysctl_header,
 	.ctl_table		= generic_sysctl_table,

@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/io.h>
 
@@ -114,8 +118,12 @@ void __init init_IRQ(void)
 <<<<<<< HEAD
 	intc0.regs = ioremap(regs->start, resource_size(regs));
 =======
+<<<<<<< HEAD
+	intc0.regs = ioremap(regs->start, resource_size(regs));
+=======
 	intc0.regs = ioremap(regs->start, regs->end - regs->start + 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!intc0.regs) {
 		printk(KERN_EMERG "intc: failed to map registers (0x%08lx)\n",
 		       (unsigned long)regs->start);

@@ -118,8 +118,12 @@ static __u32 check_tcp_syn_cookie(__u32 cookie, const struct in6_addr *saddr,
 <<<<<<< HEAD
 __u32 cookie_v6_init_sequence(struct sock *sk, const struct sk_buff *skb, __u16 *mssp)
 =======
+<<<<<<< HEAD
+__u32 cookie_v6_init_sequence(struct sock *sk, const struct sk_buff *skb, __u16 *mssp)
+=======
 __u32 cookie_v6_init_sequence(struct sock *sk, struct sk_buff *skb, __u16 *mssp)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct ipv6hdr *iph = ipv6_hdr(skb);
 	const struct tcphdr *th = tcp_hdr(skb);
@@ -144,8 +148,12 @@ __u32 cookie_v6_init_sequence(struct sock *sk, struct sk_buff *skb, __u16 *mssp)
 <<<<<<< HEAD
 static inline int cookie_check(const struct sk_buff *skb, __u32 cookie)
 =======
+<<<<<<< HEAD
+static inline int cookie_check(const struct sk_buff *skb, __u32 cookie)
+=======
 static inline int cookie_check(struct sk_buff *skb, __u32 cookie)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	const struct ipv6hdr *iph = ipv6_hdr(skb);
 	const struct tcphdr *th = tcp_hdr(skb);
@@ -163,8 +171,12 @@ struct sock *cookie_v6_check(struct sock *sk, struct sk_buff *skb)
 <<<<<<< HEAD
 	const u8 *hash_location;
 =======
+<<<<<<< HEAD
+	const u8 *hash_location;
+=======
 	u8 *hash_location;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct inet_request_sock *ireq;
 	struct inet6_request_sock *ireq6;
 	struct tcp_request_sock *treq;
@@ -216,9 +228,14 @@ struct sock *cookie_v6_check(struct sock *sk, struct sk_buff *skb)
 	ireq6->rmt_addr = ipv6_hdr(skb)->saddr;
 	ireq6->loc_addr = ipv6_hdr(skb)->daddr;
 =======
+<<<<<<< HEAD
+	ireq6->rmt_addr = ipv6_hdr(skb)->saddr;
+	ireq6->loc_addr = ipv6_hdr(skb)->daddr;
+=======
 	ipv6_addr_copy(&ireq6->rmt_addr, &ipv6_hdr(skb)->saddr);
 	ipv6_addr_copy(&ireq6->loc_addr, &ipv6_hdr(skb)->daddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ipv6_opt_accepted(sk, skb) ||
 	    np->rxopt.bits.rxinfo || np->rxopt.bits.rxoinfo ||
 	    np->rxopt.bits.rxhlim || np->rxopt.bits.rxohlim) {
@@ -243,7 +260,11 @@ struct sock *cookie_v6_check(struct sock *sk, struct sk_buff *skb)
 <<<<<<< HEAD
 	treq->snt_synack	= tcp_opt.saw_tstamp ? tcp_opt.rcv_tsecr : 0;
 =======
+<<<<<<< HEAD
+	treq->snt_synack	= tcp_opt.saw_tstamp ? tcp_opt.rcv_tsecr : 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	treq->rcv_isn = ntohl(th->seq) - 1;
 	treq->snt_isn = cookie;
 
@@ -262,10 +283,16 @@ struct sock *cookie_v6_check(struct sock *sk, struct sk_buff *skb)
 		final_p = fl6_update_dst(&fl6, np->opt, &final);
 		fl6.saddr = ireq6->loc_addr;
 =======
+<<<<<<< HEAD
+		fl6.daddr = ireq6->rmt_addr;
+		final_p = fl6_update_dst(&fl6, np->opt, &final);
+		fl6.saddr = ireq6->loc_addr;
+=======
 		ipv6_addr_copy(&fl6.daddr, &ireq6->rmt_addr);
 		final_p = fl6_update_dst(&fl6, np->opt, &final);
 		ipv6_addr_copy(&fl6.saddr, &ireq6->loc_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		fl6.flowi6_oif = sk->sk_bound_dev_if;
 		fl6.flowi6_mark = sk->sk_mark;
 		fl6.fl6_dport = inet_rsk(req)->rmt_port;

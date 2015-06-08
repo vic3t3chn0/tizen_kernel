@@ -91,9 +91,13 @@ int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
 <<<<<<< HEAD
 				      VM_MAYREAD|VM_MAYWRITE|VM_MAYEXEC,
 =======
+<<<<<<< HEAD
+				      VM_MAYREAD|VM_MAYWRITE|VM_MAYEXEC,
+=======
 				      VM_MAYREAD|VM_MAYWRITE|VM_MAYEXEC|
 				      VM_ALWAYSDUMP,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      &vdso_page);
 
 	if (ret)

@@ -24,6 +24,10 @@
 #include <linux/types.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+
+=======
 /* Arbitrary threshold to determine the allocation method
  * See mpc8610fb_set_par(), map_video_memory(), and unmap_video_memory()
  */
@@ -37,6 +41,7 @@ struct mfb_alpha {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct mfb_chroma_key {
 	int enable;
 	__u8  red_max;
@@ -52,14 +57,22 @@ struct aoi_display_offset {
 	__s32 x_aoi_d;
 	__s32 y_aoi_d;
 =======
+<<<<<<< HEAD
+	__s32 x_aoi_d;
+	__s32 y_aoi_d;
+=======
 	int x_aoi_d;
 	int y_aoi_d;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define MFB_SET_CHROMA_KEY	_IOW('M', 1, struct mfb_chroma_key)
 #define MFB_SET_BRIGHTNESS	_IOW('M', 3, __u8)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define MFB_SET_ALPHA		_IOW('M', 0, __u8)
 #define MFB_GET_ALPHA		_IOR('M', 0, __u8)
 #define MFB_SET_AOID		_IOW('M', 4, struct aoi_display_offset)
@@ -77,6 +90,8 @@ struct aoi_display_offset {
 #define MFB_GET_PIXFMT_OLD	0x40014d08
 
 #ifdef __KERNEL__
+<<<<<<< HEAD
+=======
 =======
 
 #define MFB_SET_ALPHA		0x80014d00
@@ -92,6 +107,7 @@ struct aoi_display_offset {
 #ifdef __KERNEL__
 #include <linux/spinlock.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * These are the fields of area descriptor(in DDR memory) for every plane
@@ -190,12 +206,17 @@ struct diu {
 } __attribute__ ((packed));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Modes of operation of DIU.  The DIU supports five different modes, but
  * the driver only supports modes 0 and 1.
  */
 #define MFB_MODE0	0	/* DIU off */
 #define MFB_MODE1	1	/* All three planes output to display */
+<<<<<<< HEAD
+=======
 =======
 struct diu_hw {
 	struct diu *diu_reg;
@@ -250,6 +271,7 @@ struct diu_pool {
 #define MFB_TYPE_WB	2	/* Panel written back to memory */
 #define MFB_TYPE_TEST	3	/* Panel generate color bar */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __KERNEL__ */
 #endif /* __FSL_DIU_FB_H__ */

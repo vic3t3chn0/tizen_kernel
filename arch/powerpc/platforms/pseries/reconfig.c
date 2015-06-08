@@ -100,8 +100,12 @@ static struct device_node *derive_parent(const char *path)
 <<<<<<< HEAD
 static BLOCKING_NOTIFIER_HEAD(pSeries_reconfig_chain);
 =======
+<<<<<<< HEAD
+static BLOCKING_NOTIFIER_HEAD(pSeries_reconfig_chain);
+=======
 BLOCKING_NOTIFIER_HEAD(pSeries_reconfig_chain);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int pSeries_reconfig_notifier_register(struct notifier_block *nb)
 {
@@ -114,6 +118,9 @@ void pSeries_reconfig_notifier_unregister(struct notifier_block *nb)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int pSeries_reconfig_notify(unsigned long action, void *p)
 {
 	int err = blocking_notifier_call_chain(&pSeries_reconfig_chain,
@@ -122,8 +129,11 @@ int pSeries_reconfig_notify(unsigned long action, void *p)
 	return notifier_to_errno(err);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pSeries_reconfig_add_node(const char *path, struct property *proplist)
 {
 	struct device_node *np;
@@ -152,12 +162,18 @@ static int pSeries_reconfig_add_node(const char *path, struct property *proplist
 	if (err) {
 		printk(KERN_ERR "Failed to add device node %s\n", path);
 =======
+<<<<<<< HEAD
+	err = pSeries_reconfig_notify(PSERIES_RECONFIG_ADD, np);
+	if (err) {
+		printk(KERN_ERR "Failed to add device node %s\n", path);
+=======
 	err = blocking_notifier_call_chain(&pSeries_reconfig_chain,
 				  PSERIES_RECONFIG_ADD, np);
 	if (err == NOTIFY_BAD) {
 		printk(KERN_ERR "Failed to add device node %s\n", path);
 		err = -ENOMEM; /* For now, safe to assume kmalloc failure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto out_err;
 	}
 
@@ -197,9 +213,13 @@ static int pSeries_reconfig_remove_node(struct device_node *np)
 <<<<<<< HEAD
 	pSeries_reconfig_notify(PSERIES_RECONFIG_REMOVE, np);
 =======
+<<<<<<< HEAD
+	pSeries_reconfig_notify(PSERIES_RECONFIG_REMOVE, np);
+=======
 	blocking_notifier_call_chain(&pSeries_reconfig_chain,
 			    PSERIES_RECONFIG_REMOVE, np);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	of_detach_node(np);
 
 	of_node_put(parent);
@@ -498,10 +518,15 @@ static int do_update_property(char *buf, size_t bufsize)
 			action = PSERIES_DRCONF_MEM_REMOVE;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		rc = pSeries_reconfig_notify(action, value);
 		if (rc) {
 			prom_update_property(np, oldprop, newprop);
 			return rc;
+<<<<<<< HEAD
+=======
 =======
 		rc = blocking_notifier_call_chain(&pSeries_reconfig_chain,
 						  action, value);
@@ -509,6 +534,7 @@ static int do_update_property(char *buf, size_t bufsize)
 			rc = prom_update_property(np, oldprop, newprop);
 			return -ENOMEM;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 

@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/serial_core.h>
 #include <linux/platform_device.h>
 
@@ -49,9 +53,14 @@
 
 #include "common.h"
 =======
+<<<<<<< HEAD
+
+#include "common.h"
+=======
 #include <mach/s3c6400.h>
 #include <mach/s3c6410.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void __init s3c6410_map_io(void)
 {
@@ -78,8 +87,12 @@ void __init s3c6410_init_clocks(int xtal)
 <<<<<<< HEAD
 	s3c64xx_setup_clocks();
 =======
+<<<<<<< HEAD
+	s3c64xx_setup_clocks();
+=======
 	s3c6400_setup_clocks();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void __init s3c6410_init_irq(void)
@@ -89,6 +102,9 @@ void __init s3c6410_init_irq(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct bus_type s3c6410_subsys = {
 	.name		= "s3c6410-core",
 	.dev_name	= "s3c6410-core",
@@ -96,6 +112,8 @@ struct bus_type s3c6410_subsys = {
 
 static struct device s3c6410_dev = {
 	.bus	= &s3c6410_subsys,
+<<<<<<< HEAD
+=======
 =======
 struct sysdev_class s3c6410_sysclass = {
 	.name	= "s3c6410-core",
@@ -104,6 +122,7 @@ struct sysdev_class s3c6410_sysclass = {
 static struct sys_device s3c6410_sysdev = {
 	.cls	= &s3c6410_sysclass,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static int __init s3c6410_core_init(void)
@@ -111,8 +130,12 @@ static int __init s3c6410_core_init(void)
 <<<<<<< HEAD
 	return subsys_system_register(&s3c6410_subsys, NULL);
 =======
+<<<<<<< HEAD
+	return subsys_system_register(&s3c6410_subsys, NULL);
+=======
 	return sysdev_class_register(&s3c6410_sysclass);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 core_initcall(s3c6410_core_init);
@@ -124,6 +147,10 @@ int __init s3c6410_init(void)
 <<<<<<< HEAD
 	return device_register(&s3c6410_dev);
 =======
+<<<<<<< HEAD
+	return device_register(&s3c6410_dev);
+=======
 	return sysdev_register(&s3c6410_sysdev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

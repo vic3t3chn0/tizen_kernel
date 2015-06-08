@@ -22,6 +22,9 @@
 <<<<<<< HEAD
 #define EXT2_NAME_LEN 255
 =======
+<<<<<<< HEAD
+#define EXT2_NAME_LEN 255
+=======
 /*
  * The second extended filesystem constants/structures
  */
@@ -81,6 +84,7 @@ static inline struct ext2_sb_info *EXT2_SB(struct super_block *sb)
 #define EXT2_SB(sb)	(sb)
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Maximal count of links to a file
@@ -88,6 +92,9 @@ static inline struct ext2_sb_info *EXT2_SB(struct super_block *sb)
 #define EXT2_LINK_MAX		32000
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define EXT2_SB_MAGIC_OFFSET	0x38
 #define EXT2_SB_BLOCKS_OFFSET	0x04
 #define EXT2_SB_BSIZE_OFFSET	0x18
@@ -101,6 +108,8 @@ static inline u64 ext2_image_size(void *ext2_sb)
 		le32_to_cpup((__le32 *)(p + EXT2_SB_BSIZE_OFFSET));
 }
 
+<<<<<<< HEAD
+=======
 =======
 /*
  * Macro-instructions used to manage several block sizes
@@ -607,4 +616,5 @@ enum {
 #define EXT2_MAX_REC_LEN		((1<<16)-1)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif	/* _LINUX_EXT2_FS_H */

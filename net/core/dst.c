@@ -174,8 +174,11 @@ void *dst_alloc(struct dst_ops *ops, struct net_device *dev,
 	RCU_INIT_POINTER(dst->_neighbour, NULL);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	dst->hh = NULL;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_XFRM
 	dst->xfrm = NULL;
 #endif
@@ -231,13 +234,20 @@ struct dst_entry *dst_destroy(struct dst_entry * dst)
 	struct neighbour *neigh;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct hh_cache *hh;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	smp_rmb();
 
 again:
 	neigh = rcu_dereference_protected(dst->_neighbour, 1);
+<<<<<<< HEAD
+	child = dst->child;
+
+=======
 <<<<<<< HEAD
 	child = dst->child;
 
@@ -250,6 +260,7 @@ again:
 		hh_cache_put(hh);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (neigh) {
 		RCU_INIT_POINTER(dst->_neighbour, NULL);
 		neigh_release(neigh);
@@ -387,8 +398,12 @@ static void dst_ifdown(struct dst_entry *dst, struct net_device *dev,
 <<<<<<< HEAD
 		neigh = dst_get_neighbour_noref(dst);
 =======
+<<<<<<< HEAD
+		neigh = dst_get_neighbour_noref(dst);
+=======
 		neigh = dst_get_neighbour(dst);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (neigh && neigh->dev == dev) {
 			neigh->dev = dst->dev;
 			dev_hold(dst->dev);

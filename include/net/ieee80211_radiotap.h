@@ -254,7 +254,11 @@ enum ieee80211_radiotap_type {
 <<<<<<< HEAD
 #define IEEE80211_RADIOTAP_F_TX_NOACK	0x0008	/* don't expect an ack */
 =======
+<<<<<<< HEAD
+#define IEEE80211_RADIOTAP_F_TX_NOACK	0x0008	/* don't expect an ack */
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 
 /* For IEEE80211_RADIOTAP_MCS */
@@ -276,6 +280,8 @@ enum ieee80211_radiotap_type {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Ugly macro to convert literal channel numbers into their mhz equivalents
  * There are certianly some conditions that will break this (like feeding it '30')
  * but they shouldn't arise since nothing talks on channel 30. */
@@ -285,6 +291,7 @@ enum ieee80211_radiotap_type {
 	((x) + 1000) * 5)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* helpers */
 static inline int ieee80211_get_radiotap_len(unsigned char *data)
 {

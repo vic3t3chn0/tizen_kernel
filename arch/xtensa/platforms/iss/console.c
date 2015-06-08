@@ -21,8 +21,11 @@
 #include <linux/serial.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/serialP.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/uaccess.h>
 #include <asm/irq.h>
@@ -43,7 +46,11 @@ static struct tty_driver *serial_driver;
 <<<<<<< HEAD
 static struct tty_port serial_port;
 =======
+<<<<<<< HEAD
+static struct tty_port serial_port;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct timer_list serial_timer;
 
 static DEFINE_SPINLOCK(timer_lock);
@@ -76,10 +83,15 @@ static void rs_poll(unsigned long);
 static int rs_open(struct tty_struct *tty, struct file * filp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tty->port = &serial_port;
 	spin_lock(&timer_lock);
 	if (tty->count == 1) {
 		setup_timer(&serial_timer, rs_poll, (unsigned long)tty);
+<<<<<<< HEAD
+=======
 =======
 	int line = tty->index;
 
@@ -93,6 +105,7 @@ static int rs_open(struct tty_struct *tty, struct file * filp)
 		serial_timer.data = (unsigned long) tty;
 		serial_timer.function = rs_poll;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mod_timer(&serial_timer, jiffies + SERIAL_TIMER_VALUE);
 	}
 	spin_unlock(&timer_lock);
@@ -114,16 +127,22 @@ static int rs_open(struct tty_struct *tty, struct file * filp)
 static void rs_close(struct tty_struct *tty, struct file * filp)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock_bh(&timer_lock);
 	if (tty->count == 1)
 		del_timer_sync(&serial_timer);
 	spin_unlock_bh(&timer_lock);
+<<<<<<< HEAD
+=======
 =======
 	spin_lock(&timer_lock);
 	if (tty->count == 1)
 		del_timer_sync(&serial_timer);
 	spin_unlock(&timer_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
@@ -236,8 +255,14 @@ int __init rs_init(void)
 
 	serial_driver = alloc_tty_driver(SERIAL_MAX_NUM_LINES);
 =======
+<<<<<<< HEAD
+	tty_port_init(&serial_port);
+
+	serial_driver = alloc_tty_driver(SERIAL_MAX_NUM_LINES);
+=======
 	serial_driver = alloc_tty_driver(1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	printk ("%s %s\n", serial_name, serial_version);
 
@@ -245,8 +270,11 @@ int __init rs_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	serial_driver->owner = THIS_MODULE;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	serial_driver->driver_name = "iss_serial";
 	serial_driver->name = "ttyS";
 	serial_driver->major = TTY_MAJOR;

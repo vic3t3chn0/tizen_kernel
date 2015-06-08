@@ -98,8 +98,12 @@ BTFIXUPDEF_CALL(void, free_thread_info, struct thread_info *)
 <<<<<<< HEAD
 #define THREAD_SIZE		(2 * PAGE_SIZE)
 =======
+<<<<<<< HEAD
+#define THREAD_SIZE		(2 * PAGE_SIZE)
+=======
 #define THREAD_SIZE		8192
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Offsets in thread_info structure, used in assembly code
@@ -139,8 +143,11 @@ BTFIXUPDEF_CALL(void, free_thread_info, struct thread_info *)
 #define TIF_MEMDIE		10	/* is terminating due to OOM killer */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TIF_FREEZE		11	/* is freezing for suspend */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* as above, but as bit values */
 #define _TIF_SYSCALL_TRACE	(1<<TIF_SYSCALL_TRACE)
@@ -156,8 +163,11 @@ BTFIXUPDEF_CALL(void, free_thread_info, struct thread_info *)
 					 _TIF_RESTORE_SIGMASK)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define _TIF_FREEZE		(1<<TIF_FREEZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* __KERNEL__ */
 

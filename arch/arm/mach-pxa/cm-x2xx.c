@@ -25,8 +25,13 @@
 #include <mach/pxa25x.h>
 #include <mach/pxa27x.h>
 =======
+<<<<<<< HEAD
+#include <mach/pxa25x.h>
+#include <mach/pxa27x.h>
+=======
 #include <mach/pxa2xx-regs.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <mach/audio.h>
 #include <mach/pxafb.h>
 #include <mach/smemc.h>
@@ -46,8 +51,12 @@ extern void cmx270_init(void);
 <<<<<<< HEAD
 #define CMX2XX_VIRT_BASE	(void __iomem *)(0xe8000000)
 =======
+<<<<<<< HEAD
+#define CMX2XX_VIRT_BASE	(void __iomem *)(0xe8000000)
+=======
 #define CMX2XX_VIRT_BASE	(0xe8000000)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define CMX2XX_IT8152_VIRT	(CMX2XX_VIRT_BASE)
 
 /* physical address if local-bus attached devices */
@@ -70,9 +79,14 @@ extern void cmx270_init(void);
 #define CMX255_ETHIRQ		PXA_GPIO_TO_IRQ(GPIO22_ETHIRQ)
 #define CMX270_ETHIRQ		PXA_GPIO_TO_IRQ(GPIO10_ETHIRQ)
 =======
+<<<<<<< HEAD
+#define CMX255_ETHIRQ		PXA_GPIO_TO_IRQ(GPIO22_ETHIRQ)
+#define CMX270_ETHIRQ		PXA_GPIO_TO_IRQ(GPIO10_ETHIRQ)
+=======
 #define CMX255_ETHIRQ		IRQ_GPIO(GPIO22_ETHIRQ)
 #define CMX270_ETHIRQ		IRQ_GPIO(GPIO10_ETHIRQ)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #if defined(CONFIG_DM9000) || defined(CONFIG_DM9000_MODULE)
 static struct resource cmx255_dm9000_resource[] = {
@@ -498,8 +512,12 @@ static struct map_desc cmx2xx_io_desc[] __initdata = {
 <<<<<<< HEAD
 		.virtual	= (unsigned long)CMX2XX_IT8152_VIRT,
 =======
+<<<<<<< HEAD
+		.virtual	= (unsigned long)CMX2XX_IT8152_VIRT,
+=======
 		.virtual	= CMX2XX_IT8152_VIRT,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.pfn		= __phys_to_pfn(PXA_CS4_PHYS),
 		.length		= SZ_64M,
 		.type		= MT_DEVICE
@@ -531,6 +549,9 @@ static void __init cmx2xx_map_io(void)
 
 MACHINE_START(ARMCORE, "Compulab CM-X2XX")
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.map_io		= cmx2xx_map_io,
 	.nr_irqs	= CMX2XX_NR_IRQS,
@@ -543,6 +564,8 @@ MACHINE_START(ARMCORE, "Compulab CM-X2XX")
 	.dma_zone_size	= SZ_64M,
 #endif
 	.restart	= pxa_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0xa0000100,
 	.map_io		= cmx2xx_map_io,
@@ -551,4 +574,5 @@ MACHINE_START(ARMCORE, "Compulab CM-X2XX")
 	.timer		= &pxa_timer,
 	.init_machine	= cmx2xx_init,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

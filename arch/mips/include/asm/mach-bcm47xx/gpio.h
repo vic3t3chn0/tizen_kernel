@@ -13,7 +13,11 @@
 <<<<<<< HEAD
 #include <linux/bcma/bcma.h>
 =======
+<<<<<<< HEAD
+#include <linux/bcma/bcma.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-bcm47xx/bcm47xx.h>
 
 #define BCM47XX_EXTIF_GPIO_LINES	5
@@ -26,6 +30,9 @@ extern int gpio_to_irq(unsigned gpio);
 static inline int gpio_get_value(unsigned gpio)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bcm47xx_bus_type) {
 #ifdef CONFIG_BCM47XX_SSB
 	case BCM47XX_BUS_TYPE_SSB:
@@ -89,6 +96,8 @@ static inline int gpio_direction_input(unsigned gpio)
 #endif
 	}
 	return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	return ssb_gpio_in(&ssb_bcm47xx, 1 << gpio);
 }
@@ -103,11 +112,15 @@ static inline int gpio_direction_input(unsigned gpio)
 	ssb_gpio_outen(&ssb_bcm47xx, 1 << gpio, 0);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int gpio_direction_output(unsigned gpio, int value)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bcm47xx_bus_type) {
 #ifdef CONFIG_BCM47XX_SSB
 	case BCM47XX_BUS_TYPE_SSB:
@@ -130,6 +143,8 @@ static inline int gpio_direction_output(unsigned gpio, int value)
 #endif
 	}
 	return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	/* first set the gpio out value */
 	ssb_gpio_out(&ssb_bcm47xx, 1 << gpio, value ? 1 << gpio : 0);
@@ -137,11 +152,15 @@ static inline int gpio_direction_output(unsigned gpio, int value)
 	ssb_gpio_outen(&ssb_bcm47xx, 1 << gpio, 1 << gpio);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int gpio_intmask(unsigned gpio, int value)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bcm47xx_bus_type) {
 #ifdef CONFIG_BCM47XX_SSB
 	case BCM47XX_BUS_TYPE_SSB:
@@ -157,16 +176,22 @@ static inline int gpio_intmask(unsigned gpio, int value)
 #endif
 	}
 	return -EINVAL;
+<<<<<<< HEAD
+=======
 =======
 	ssb_gpio_intmask(&ssb_bcm47xx, 1 << gpio,
 			 value ? 1 << gpio : 0);
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int gpio_polarity(unsigned gpio, int value)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (bcm47xx_bus_type) {
 #ifdef CONFIG_BCM47XX_SSB
 	case BCM47XX_BUS_TYPE_SSB:
@@ -185,6 +210,8 @@ static inline int gpio_polarity(unsigned gpio, int value)
 }
 
 
+<<<<<<< HEAD
+=======
 =======
 	ssb_gpio_polarity(&ssb_bcm47xx, 1 << gpio,
 			  value ? 1 << gpio : 0);
@@ -196,4 +223,5 @@ static inline int gpio_polarity(unsigned gpio, int value)
 #include <asm-generic/gpio.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __BCM47XX_GPIO_H */

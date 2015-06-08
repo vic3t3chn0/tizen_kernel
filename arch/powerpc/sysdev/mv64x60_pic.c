@@ -73,8 +73,12 @@ static u32 mv64x60_cached_gpp_mask;
 <<<<<<< HEAD
 static struct irq_domain *mv64x60_irq_host;
 =======
+<<<<<<< HEAD
+static struct irq_domain *mv64x60_irq_host;
+=======
 static struct irq_host *mv64x60_irq_host;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * mv64x60_chip_low functions
@@ -215,8 +219,12 @@ static struct irq_chip *mv64x60_chips[] = {
 <<<<<<< HEAD
 static int mv64x60_host_map(struct irq_domain *h, unsigned int virq,
 =======
+<<<<<<< HEAD
+static int mv64x60_host_map(struct irq_domain *h, unsigned int virq,
+=======
 static int mv64x60_host_map(struct irq_host *h, unsigned int virq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			  irq_hw_number_t hwirq)
 {
 	int level1;
@@ -234,8 +242,12 @@ static int mv64x60_host_map(struct irq_host *h, unsigned int virq,
 <<<<<<< HEAD
 static struct irq_domain_ops mv64x60_host_ops = {
 =======
+<<<<<<< HEAD
+static struct irq_domain_ops mv64x60_host_ops = {
+=======
 static struct irq_host_ops mv64x60_host_ops = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map   = mv64x60_host_map,
 };
 
@@ -266,10 +278,15 @@ void __init mv64x60_init_irq(void)
 	mv64x60_irq_host = irq_domain_add_linear(np, MV64x60_NUM_IRQS,
 					  &mv64x60_host_ops, NULL);
 =======
+<<<<<<< HEAD
+	mv64x60_irq_host = irq_domain_add_linear(np, MV64x60_NUM_IRQS,
+					  &mv64x60_host_ops, NULL);
+=======
 	mv64x60_irq_host = irq_alloc_host(np, IRQ_HOST_MAP_LINEAR,
 					  MV64x60_NUM_IRQS,
 					  &mv64x60_host_ops, MV64x60_NUM_IRQS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&mv64x60_lock, flags);
 	out_le32(mv64x60_gpp_reg_base + MV64x60_GPP_INTR_MASK,

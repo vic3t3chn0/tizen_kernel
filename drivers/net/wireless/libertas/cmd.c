@@ -3,10 +3,24 @@
  * It prepares command and sends it to firmware when it is ready.
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/hardirq.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kfifo.h>
 #include <linux/sched.h>
 #include <linux/slab.h>
 #include <linux/if_arp.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "decl.h"
 #include "cfg.h"
@@ -873,6 +887,13 @@ int lbs_get_reg(struct lbs_private *priv, u16 reg, u16 offset, u32 *value)
 	memset(&cmd, 0, sizeof(cmd));
 	cmd.hdr.size = cpu_to_le16(sizeof(cmd));
 	cmd.action = cpu_to_le16(CMD_ACT_GET);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cmd.offset = cpu_to_le16(offset);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (reg != CMD_MAC_REG_ACCESS &&
 	    reg != CMD_BBP_REG_ACCESS &&
@@ -882,7 +903,15 @@ int lbs_get_reg(struct lbs_private *priv, u16 reg, u16 offset, u32 *value)
 	}
 
 	ret = lbs_cmd_with_response(priv, reg, &cmd);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (!ret) {
+=======
 	if (ret) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (ret) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (reg == CMD_BBP_REG_ACCESS || reg == CMD_RF_REG_ACCESS)
 			*value = cmd.value.bbp_rf;
 		else if (reg == CMD_MAC_REG_ACCESS)
@@ -915,6 +944,13 @@ int lbs_set_reg(struct lbs_private *priv, u16 reg, u16 offset, u32 value)
 	memset(&cmd, 0, sizeof(cmd));
 	cmd.hdr.size = cpu_to_le16(sizeof(cmd));
 	cmd.action = cpu_to_le16(CMD_ACT_SET);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	cmd.offset = cpu_to_le16(offset);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (reg == CMD_BBP_REG_ACCESS || reg == CMD_RF_REG_ACCESS)
 		cmd.value.bbp_rf = (u8) (value & 0xFF);
@@ -1067,16 +1103,55 @@ static void lbs_cleanup_and_insert_cmd(struct lbs_private *priv,
 	spin_unlock_irqrestore(&priv->driver_lock, flags);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+void __lbs_complete_command(struct lbs_private *priv, struct cmd_ctrl_node *cmd,
+			    int result)
+{
+	/*
+	 * Normally, commands are removed from cmdpendingq before being
+	 * submitted. However, we can arrive here on alternative codepaths
+	 * where the command is still pending. Make sure the command really
+	 * isn't part of a list at this point.
+	 */
+	list_del_init(&cmd->list);
+
+	cmd->result = result;
+	cmd->cmdwaitqwoken = 1;
+	wake_up(&cmd->cmdwait_q);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void lbs_complete_command(struct lbs_private *priv, struct cmd_ctrl_node *cmd,
 			  int result)
 {
 	cmd->result = result;
 	cmd->cmdwaitqwoken = 1;
 	wake_up_interruptible(&cmd->cmdwait_q);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!cmd->callback || cmd->callback == lbs_cmd_async_callback)
 		__lbs_cleanup_and_insert_cmd(priv, cmd);
 	priv->cur_cmd = NULL;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	wake_up(&priv->waitq);
+}
+
+void lbs_complete_command(struct lbs_private *priv, struct cmd_ctrl_node *cmd,
+			  int result)
+{
+	unsigned long flags;
+	spin_lock_irqsave(&priv->driver_lock, flags);
+	__lbs_complete_command(priv, cmd, result);
+	spin_unlock_irqrestore(&priv->driver_lock, flags);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 int lbs_set_radio(struct lbs_private *priv, u8 preamble, u8 radio_on)
@@ -1248,7 +1323,15 @@ static struct cmd_ctrl_node *lbs_get_free_cmd_node(struct lbs_private *priv)
 	if (!list_empty(&priv->cmdfreeq)) {
 		tempnode = list_first_entry(&priv->cmdfreeq,
 					    struct cmd_ctrl_node, list);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		list_del_init(&tempnode->list);
+=======
 		list_del(&tempnode->list);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		list_del(&tempnode->list);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		lbs_deb_host("GET_CMD_NODE: cmd_ctrl_node is not available\n");
 		tempnode = NULL;
@@ -1356,10 +1439,20 @@ int lbs_execute_next_command(struct lbs_private *priv)
 				    cpu_to_le16(PS_MODE_ACTION_EXIT_PS)) {
 					lbs_deb_host(
 					       "EXEC_NEXT_CMD: ignore ENTER_PS cmd\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+					lbs_complete_command(priv, cmdnode, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					spin_lock_irqsave(&priv->driver_lock, flags);
 					list_del(&cmdnode->list);
 					lbs_complete_command(priv, cmdnode, 0);
 					spin_unlock_irqrestore(&priv->driver_lock, flags);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 					ret = 0;
 					goto done;
@@ -1369,10 +1462,20 @@ int lbs_execute_next_command(struct lbs_private *priv)
 				    (priv->psstate == PS_STATE_PRE_SLEEP)) {
 					lbs_deb_host(
 					       "EXEC_NEXT_CMD: ignore EXIT_PS cmd in sleep\n");
+<<<<<<< HEAD
+<<<<<<< HEAD
+					lbs_complete_command(priv, cmdnode, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					spin_lock_irqsave(&priv->driver_lock, flags);
 					list_del(&cmdnode->list);
 					lbs_complete_command(priv, cmdnode, 0);
 					spin_unlock_irqrestore(&priv->driver_lock, flags);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					priv->needtowakeup = 1;
 
 					ret = 0;
@@ -1384,7 +1487,15 @@ int lbs_execute_next_command(struct lbs_private *priv)
 			}
 		}
 		spin_lock_irqsave(&priv->driver_lock, flags);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		list_del_init(&cmdnode->list);
+=======
 		list_del(&cmdnode->list);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		list_del(&cmdnode->list);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock_irqrestore(&priv->driver_lock, flags);
 		lbs_deb_host("EXEC_NEXT_CMD: sending command 0x%04x\n",
 			    le16_to_cpu(cmd->command));
@@ -1612,7 +1723,15 @@ struct cmd_ctrl_node *__lbs_cmd_async(struct lbs_private *priv,
 		lbs_deb_host("PREP_CMD: cmdnode is NULL\n");
 
 		/* Wake up main thread to execute next command */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		wake_up(&priv->waitq);
+=======
 		wake_up_interruptible(&priv->waitq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		wake_up_interruptible(&priv->waitq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		cmdnode = ERR_PTR(-ENOBUFS);
 		goto done;
 	}
@@ -1632,7 +1751,15 @@ struct cmd_ctrl_node *__lbs_cmd_async(struct lbs_private *priv,
 
 	cmdnode->cmdwaitqwoken = 0;
 	lbs_queue_cmd(priv, cmdnode);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	wake_up(&priv->waitq);
+=======
 	wake_up_interruptible(&priv->waitq);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	wake_up_interruptible(&priv->waitq);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
  done:
 	lbs_deb_leave_args(LBS_DEB_HOST, "ret %p", cmdnode);
@@ -1667,7 +1794,21 @@ int __lbs_cmd(struct lbs_private *priv, uint16_t command,
 	}
 
 	might_sleep();
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	/*
+	 * Be careful with signals here. A signal may be received as the system
+	 * goes into suspend or resume. We do not want this to interrupt the
+	 * command, so we perform an uninterruptible sleep.
+	 */
+	wait_event(cmdnode->cmdwait_q, cmdnode->cmdwaitqwoken);
+=======
 	wait_event_interruptible(cmdnode->cmdwait_q, cmdnode->cmdwaitqwoken);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	wait_event_interruptible(cmdnode->cmdwait_q, cmdnode->cmdwaitqwoken);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_irqsave(&priv->driver_lock, flags);
 	ret = cmdnode->result;

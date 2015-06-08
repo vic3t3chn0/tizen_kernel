@@ -1,6 +1,14 @@
 /******************************************************************************
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright(c) 2009-2012  Realtek Corporation.
+=======
  * Copyright(c) 2009-2010  Realtek Corporation.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright(c) 2009-2010  Realtek Corporation.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Tmis program is free software; you can redistribute it and/or modify it
  * under the terms of version 2 of the GNU General Public License as
@@ -156,6 +164,83 @@ enum dbgp_flag_e {
 	DBGP_TYPE_MAX
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifdef CONFIG_RTLWIFI_DEBUG
+
+#define RT_ASSERT(_exp, fmt, ...)					\
+do {									\
+	if (!(_exp)) {							\
+		printk(KERN_DEBUG KBUILD_MODNAME ":%s(): " fmt,		\
+		       __func__, ##__VA_ARGS__);			\
+	}								\
+} while (0)
+
+#define RT_TRACE(rtlpriv, comp, level, fmt, ...)			\
+do {									\
+	if (unlikely(((comp) & rtlpriv->dbg.global_debugcomponents) &&	\
+		     ((level) <= rtlpriv->dbg.global_debuglevel))) {	\
+		printk(KERN_DEBUG KBUILD_MODNAME ":%s():<%lx-%x> " fmt,	\
+		       __func__, in_interrupt(), in_atomic(),		\
+		       ##__VA_ARGS__);					\
+	}								\
+} while (0)
+
+#define RTPRINT(rtlpriv, dbgtype, dbgflag, fmt, ...)			\
+do {									\
+	if (unlikely(rtlpriv->dbg.dbgp_type[dbgtype] & dbgflag)) {	\
+		printk(KERN_DEBUG KBUILD_MODNAME ": " fmt,		\
+		       ##__VA_ARGS__);					\
+	}								\
+} while (0)
+
+#define RT_PRINT_DATA(rtlpriv, _comp, _level, _titlestring, _hexdata,	\
+		      _hexdatalen)					\
+do {									\
+	if (unlikely(((_comp) & rtlpriv->dbg.global_debugcomponents) &&	\
+		     (_level <= rtlpriv->dbg.global_debuglevel))) {	\
+		printk(KERN_DEBUG "%s: In process \"%s\" (pid %i): %s\n", \
+		       KBUILD_MODNAME, current->comm, current->pid,	\
+		       _titlestring);					\
+		print_hex_dump_bytes("", DUMP_PREFIX_NONE,		\
+				     _hexdata, _hexdatalen);		\
+	}								\
+} while (0)
+
+#else
+
+struct rtl_priv;
+
+__printf(2, 3)
+static inline void RT_ASSERT(int exp, const char *fmt, ...)
+{
+}
+
+__printf(4, 5)
+static inline void RT_TRACE(struct rtl_priv *rtlpriv,
+			    int comp, int level,
+			    const char *fmt, ...)
+{
+}
+
+__printf(4, 5)
+static inline void RTPRINT(struct rtl_priv *rtlpriv,
+			   int dbgtype, int dbgflag,
+			   const char *fmt, ...)
+{
+}
+
+static inline void RT_PRINT_DATA(struct rtl_priv *rtlpriv,
+				 int comp, int level,
+				 const char *titlestring,
+				 const void *hexdata, size_t hexdatalen)
+{
+}
+
+#endif
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define RT_ASSERT(_exp, fmt)				\
 	do {						\
 		if (!(_exp)) {			\
@@ -208,6 +293,10 @@ enum dbgp_flag_e {
 #define MAC_ARG(x) \
 	((u8 *)(x))[0], ((u8 *)(x))[1], ((u8 *)(x))[2],\
 	((u8 *)(x))[3], ((u8 *)(x))[4], ((u8 *)(x))[5]
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void rtl_dbgp_flag_init(struct ieee80211_hw *hw);
 #endif

@@ -26,8 +26,12 @@ void machine_real_restart(unsigned int type);
 <<<<<<< HEAD
 typedef void (*nmi_shootdown_cb)(int, struct pt_regs*);
 =======
+<<<<<<< HEAD
+typedef void (*nmi_shootdown_cb)(int, struct pt_regs*);
+=======
 typedef void (*nmi_shootdown_cb)(int, struct die_args*);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void nmi_shootdown_cpus(nmi_shootdown_cb callback);
 
 #endif /* _ASM_X86_REBOOT_H */

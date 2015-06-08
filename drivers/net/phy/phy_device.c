@@ -213,7 +213,15 @@ int get_phy_id(struct mii_bus *bus, int addr, u32 *phy_id)
 
 	/* Grab the bits from PHYIR1, and put them
 	 * in the upper half */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	phy_reg = mdiobus_read(bus, addr, MII_PHYSID1);
+=======
 	phy_reg = bus->read(bus, addr, MII_PHYSID1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	phy_reg = bus->read(bus, addr, MII_PHYSID1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (phy_reg < 0)
 		return -EIO;
@@ -221,7 +229,15 @@ int get_phy_id(struct mii_bus *bus, int addr, u32 *phy_id)
 	*phy_id = (phy_reg & 0xffff) << 16;
 
 	/* Grab the bits from PHYIR2, and put them in the lower half */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	phy_reg = mdiobus_read(bus, addr, MII_PHYSID2);
+=======
 	phy_reg = bus->read(bus, addr, MII_PHYSID2);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	phy_reg = bus->read(bus, addr, MII_PHYSID2);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (phy_reg < 0)
 		return -EIO;
@@ -563,6 +579,14 @@ static int genphy_config_advert(struct phy_device *phydev)
 	if (adv < 0)
 		return adv;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	adv &= ~(ADVERTISE_ALL | ADVERTISE_100BASE4 | ADVERTISE_PAUSE_CAP |
+		 ADVERTISE_PAUSE_ASYM);
+	adv |= ethtool_adv_to_mii_adv_t(advertise);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	adv &= ~(ADVERTISE_ALL | ADVERTISE_100BASE4 | ADVERTISE_PAUSE_CAP | 
 		 ADVERTISE_PAUSE_ASYM);
 	if (advertise & ADVERTISED_10baseT_Half)
@@ -577,6 +601,10 @@ static int genphy_config_advert(struct phy_device *phydev)
 		adv |= ADVERTISE_PAUSE_CAP;
 	if (advertise & ADVERTISED_Asym_Pause)
 		adv |= ADVERTISE_PAUSE_ASYM;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (adv != oldadv) {
 		err = phy_write(phydev, MII_ADVERTISE, adv);
@@ -595,10 +623,20 @@ static int genphy_config_advert(struct phy_device *phydev)
 			return adv;
 
 		adv &= ~(ADVERTISE_1000FULL | ADVERTISE_1000HALF);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		adv |= ethtool_adv_to_mii_ctrl1000_t(advertise);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (advertise & SUPPORTED_1000baseT_Half)
 			adv |= ADVERTISE_1000HALF;
 		if (advertise & SUPPORTED_1000baseT_Full)
 			adv |= ADVERTISE_1000FULL;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (adv != oldadv) {
 			err = phy_write(phydev, MII_CTRL1000, adv);
@@ -929,9 +967,19 @@ static int phy_probe(struct device *dev)
 
 	phydev = to_phy_device(dev);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	drv = phydev->dev.driver;
+=======
 	/* Make sure the driver is held.
 	 * XXX -- Is this correct? */
 	drv = get_driver(phydev->dev.driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* Make sure the driver is held.
+	 * XXX -- Is this correct? */
+	drv = get_driver(phydev->dev.driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phydrv = to_phy_driver(drv);
 	phydev->drv = phydrv;
 
@@ -971,8 +1019,16 @@ static int phy_remove(struct device *dev)
 
 	if (phydev->drv->remove)
 		phydev->drv->remove(phydev);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 	put_driver(dev->driver);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+	put_driver(dev->driver);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	phydev->drv = NULL;
 
 	return 0;

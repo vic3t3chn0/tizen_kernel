@@ -55,12 +55,26 @@ struct cxd2820r_config {
 	 * Default: 0
 	 * Values: 0, 1
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool if_agc_polarity;
+=======
 	int if_agc_polarity:1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int if_agc_polarity:1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Spectrum inversion.
 	 * Default: 0
 	 * Values: 0, 1
 	 */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	bool spec_inv;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int spec_inv:1;
 
 	/* IFs for all used modes.
@@ -75,6 +89,10 @@ struct cxd2820r_config {
 	u16 if_dvbt2_7;
 	u16 if_dvbt2_8;
 	u16 if_dvbc;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* GPIOs for all used modes.
 	 * Default: none, disabled
@@ -90,28 +108,56 @@ struct cxd2820r_config {
 	(defined(CONFIG_DVB_CXD2820R_MODULE) && defined(MODULE))
 extern struct dvb_frontend *cxd2820r_attach(
 	const struct cxd2820r_config *config,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct i2c_adapter *i2c
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct i2c_adapter *i2c,
 	struct dvb_frontend *fe
 );
 extern struct i2c_adapter *cxd2820r_get_tuner_i2c_adapter(
 	struct dvb_frontend *fe
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 );
 #else
 static inline struct dvb_frontend *cxd2820r_attach(
 	const struct cxd2820r_config *config,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct i2c_adapter *i2c
+=======
 	struct i2c_adapter *i2c,
 	struct dvb_frontend *fe
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct i2c_adapter *i2c,
+	struct dvb_frontend *fe
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 )
 {
 	printk(KERN_WARNING "%s: driver disabled by Kconfig\n", __func__);
 	return NULL;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline struct i2c_adapter *cxd2820r_get_tuner_i2c_adapter(
 	struct dvb_frontend *fe
 )
 {
 	return NULL;
 }
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif
 

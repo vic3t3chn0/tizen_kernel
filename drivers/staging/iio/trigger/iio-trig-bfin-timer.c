@@ -143,6 +143,16 @@ static int iio_bfin_tmr_get_number(int irq)
 	return -ENODEV;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const struct iio_trigger_ops iio_bfin_tmr_trigger_ops = {
+	.owner = THIS_MODULE,
+};
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __devinit iio_bfin_tmr_trigger_probe(struct platform_device *pdev)
 {
 	struct bfin_tmr_state *st;
@@ -175,7 +185,15 @@ static int __devinit iio_bfin_tmr_trigger_probe(struct platform_device *pdev)
 	}
 
 	st->trig->private_data = st;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	st->trig->ops = &iio_bfin_tmr_trigger_ops;
+=======
 	st->trig->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	st->trig->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	st->trig->dev.groups = iio_bfin_tmr_trigger_attr_groups;
 	ret = iio_trigger_register(st->trig);
 	if (ret)
@@ -228,6 +246,12 @@ static struct platform_driver iio_bfin_tmr_trigger_driver = {
 	.remove = __devexit_p(iio_bfin_tmr_trigger_remove),
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+module_platform_driver(iio_bfin_tmr_trigger_driver);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init iio_bfin_tmr_trig_init(void)
 {
 	return platform_driver_register(&iio_bfin_tmr_trigger_driver);
@@ -239,6 +263,10 @@ static void __exit iio_bfin_tmr_trig_exit(void)
 	platform_driver_unregister(&iio_bfin_tmr_trigger_driver);
 }
 module_exit(iio_bfin_tmr_trig_exit);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 MODULE_AUTHOR("Michael Hennerich <hennerich@blackfin.uclinux.org>");
 MODULE_DESCRIPTION("Blackfin system timer based trigger for the iio subsystem");

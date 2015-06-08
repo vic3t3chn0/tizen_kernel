@@ -23,7 +23,12 @@
 #include <asm-generic/pci_iomap.h>
 
 =======
+<<<<<<< HEAD
+#include <asm-generic/pci_iomap.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef mmiowb
 #define mmiowb() do {} while (0)
 #endif
@@ -291,10 +296,14 @@ static inline void writesb(const void __iomem *addr, const void *buf, int len)
 <<<<<<< HEAD
 struct pci_dev;
 =======
+<<<<<<< HEAD
+struct pci_dev;
+=======
 /* Create a virtual mapping cookie for a PCI BAR (memory or IO) */
 struct pci_dev;
 extern void __iomem *pci_iomap(struct pci_dev *dev, int bar, unsigned long max);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void pci_iounmap(struct pci_dev *dev, void __iomem *p)
 {
 }
@@ -317,14 +326,20 @@ static inline void *phys_to_virt(unsigned long address)
 /*
  * Change "struct page" to physical address.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This implementation is for the no-MMU case only... if you have an MMU
  * you'll need to provide your own definitions.
  */
 #ifndef CONFIG_MMU
+<<<<<<< HEAD
+=======
 =======
  */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void __iomem *ioremap(phys_addr_t offset, unsigned long size)
 {
 	return (void __iomem*) (unsigned long)offset;
@@ -341,18 +356,24 @@ static inline void __iomem *ioremap(phys_addr_t offset, unsigned long size)
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void iounmap(void __iomem *addr)
 {
 }
 #endif /* CONFIG_MMU */
 
 #ifdef CONFIG_HAS_IOPORT
+<<<<<<< HEAD
+=======
 =======
 static inline void iounmap(void *addr)
 {
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_GENERIC_IOMAP
 static inline void __iomem *ioport_map(unsigned long port, unsigned int nr)
 {
@@ -367,15 +388,21 @@ extern void __iomem *ioport_map(unsigned long port, unsigned int nr);
 extern void ioport_unmap(void __iomem *p);
 #endif /* CONFIG_GENERIC_IOMAP */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* CONFIG_HAS_IOPORT */
 
 #define xlate_dev_kmem_ptr(p)	p
 #define xlate_dev_mem_ptr(p)	__va(p)
+<<<<<<< HEAD
+=======
 =======
 
 #define xlate_dev_kmem_ptr(p)	p
 #define xlate_dev_mem_ptr(p)	((void *) (p))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifndef virt_to_bus
 static inline unsigned long virt_to_bus(volatile void *address)

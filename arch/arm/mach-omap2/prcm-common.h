@@ -7,8 +7,12 @@
 <<<<<<< HEAD
  * Copyright (C) 2007-2009, 2011 Texas Instruments, Inc.
 =======
+<<<<<<< HEAD
+ * Copyright (C) 2007-2009, 2011 Texas Instruments, Inc.
+=======
  * Copyright (C) 2007-2009 Texas Instruments, Inc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Copyright (C) 2007-2009 Nokia Corporation
  *
  * Written by Paul Walmsley
@@ -209,7 +213,12 @@
 #define OMAP3430_EN_UART4_MASK				(1 << 23)
 #define OMAP3430_EN_UART4_SHIFT				23
 =======
+<<<<<<< HEAD
+#define OMAP3430_EN_UART4_MASK				(1 << 23)
+#define OMAP3430_EN_UART4_SHIFT				23
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP3430_EN_MCSPI4_MASK				(1 << 21)
 #define OMAP3430_EN_MCSPI4_SHIFT			21
 #define OMAP3430_EN_MCSPI3_MASK				(1 << 20)
@@ -418,6 +427,9 @@ extern void __iomem *prm_base;
 extern void __iomem *cm_base;
 extern void __iomem *cm2_base;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct omap_prcm_irq - describes a PRCM interrupt bit
@@ -491,8 +503,11 @@ extern int omap_prcm_event_to_irq(const char *event);
 extern void omap_prcm_irq_prepare(void);
 extern void omap_prcm_irq_complete(void);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 # endif
 
 #endif

@@ -43,16 +43,22 @@ extern void nand_release(struct mtd_info *mtd);
 extern void nand_wait_ready(struct mtd_info *mtd);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* locks all blocks present in the device */
 extern int nand_lock(struct mtd_info *mtd, loff_t ofs, uint64_t len);
 
 /* unlocks specified locked blocks */
+<<<<<<< HEAD
+=======
 =======
 /* locks all blockes present in the device */
 extern int nand_lock(struct mtd_info *mtd, loff_t ofs, uint64_t len);
 
 /* unlocks specified locked blockes */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int nand_unlock(struct mtd_info *mtd, loff_t ofs, uint64_t len);
 
 /* The maximum number of NAND chips in an array */
@@ -160,8 +166,12 @@ typedef enum {
 <<<<<<< HEAD
 /* Enable Hardware ECC before syndrome is read back from flash */
 =======
+<<<<<<< HEAD
+/* Enable Hardware ECC before syndrome is read back from flash */
+=======
 /* Enable Hardware ECC before syndrom is read back from flash */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NAND_ECC_READSYN	2
 
 /* Bit mask for flags passed to do_nand_read_ecc */
@@ -177,8 +187,12 @@ typedef enum {
 <<<<<<< HEAD
 /* Buswidth is 16 bit */
 =======
+<<<<<<< HEAD
+/* Buswidth is 16 bit */
+=======
 /* Buswitdh is 16 bit */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NAND_BUSWIDTH_16	0x00000002
 /* Device supports partial programming without padding */
 #define NAND_NO_PADDING		0x00000004
@@ -238,6 +252,10 @@ typedef enum {
 /* This option skips the bbt scan during initialization. */
 #define NAND_SKIP_BBTSCAN	0x00010000
 =======
+<<<<<<< HEAD
+/* This option skips the bbt scan during initialization. */
+#define NAND_SKIP_BBTSCAN	0x00010000
+=======
 /*
  * Use a flash based bad block table. OOB identifier is saved in OOB area.
  * This option is passed to the default bad block table function.
@@ -246,10 +264,16 @@ typedef enum {
 /* This option skips the bbt scan during initialization. */
 #define NAND_SKIP_BBTSCAN	0x00020000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * This option is defined if the board driver allocates its own buffers
  * (e.g. because it needs them DMA-coherent).
  */
+<<<<<<< HEAD
+#define NAND_OWN_BUFFERS	0x00020000
+/* Chip may not exist, so silence any errors in scan */
+#define NAND_SCAN_SILENT_NODEV	0x00040000
+=======
 <<<<<<< HEAD
 #define NAND_OWN_BUFFERS	0x00020000
 /* Chip may not exist, so silence any errors in scan */
@@ -266,6 +290,7 @@ typedef enum {
 /* Create an empty BBT with no vendor information if the BBT is available */
 #define NAND_CREATE_EMPTY_BBT		0x01000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Options set by nand scan */
 /* Nand scan has allocated controller struct */
@@ -358,6 +383,9 @@ struct nand_hw_control {
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct nand_ecc_ctrl - Control structure for ECC
  * @mode:	ECC mode
  * @steps:	number of ECC steps per page
@@ -382,6 +410,8 @@ struct nand_hw_control {
  *		requirements.
  * @write_oob_raw:	function to write chip OOB data without ECC
  * @read_oob_raw:	function to read chip OOB data without ECC
+<<<<<<< HEAD
+=======
 =======
  * struct nand_ecc_ctrl - Control structure for ecc
  * @mode:	ecc mode
@@ -405,6 +435,7 @@ struct nand_hw_control {
  * @write_page:	function to write a page according to the ecc generator
  *		requirements.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @read_oob:	function to read chip OOB data
  * @write_oob:	function to write chip OOB data
  */
@@ -417,7 +448,11 @@ struct nand_ecc_ctrl {
 <<<<<<< HEAD
 	int strength;
 =======
+<<<<<<< HEAD
+	int strength;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int prepad;
 	int postpad;
 	struct nand_ecclayout	*layout;
@@ -438,12 +473,18 @@ struct nand_ecc_ctrl {
 	void (*write_page)(struct mtd_info *mtd, struct nand_chip *chip,
 			const uint8_t *buf);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*write_oob_raw)(struct mtd_info *mtd, struct nand_chip *chip,
 			int page);
 	int (*read_oob_raw)(struct mtd_info *mtd, struct nand_chip *chip,
 			int page, int sndcmd);
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int (*read_oob)(struct mtd_info *mtd, struct nand_chip *chip, int page,
 			int sndcmd);
 	int (*write_oob)(struct mtd_info *mtd, struct nand_chip *chip,
@@ -456,9 +497,14 @@ struct nand_ecc_ctrl {
  * @ecccalc:	buffer for calculated ECC
  * @ecccode:	buffer for ECC read from flash
 =======
+<<<<<<< HEAD
+ * @ecccalc:	buffer for calculated ECC
+ * @ecccode:	buffer for ECC read from flash
+=======
  * @ecccalc:	buffer for calculated ecc
  * @ecccode:	buffer for ecc read from flash
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @databuf:	buffer for data - dynamically sized
  *
  * Do not change the order of buffers. databuf and oobrbuf must be in
@@ -494,8 +540,12 @@ struct nand_buffers {
 <<<<<<< HEAD
  * @dev_ready:		[BOARDSPECIFIC] hardwarespecific function for accessing
 =======
+<<<<<<< HEAD
+ * @dev_ready:		[BOARDSPECIFIC] hardwarespecific function for accessing
+=======
  * @dev_ready:		[BOARDSPECIFIC] hardwarespecific function for accesing
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *			device ready/busy line. If set to NULL no access to
  *			ready/busy is available and the ready/busy information
  *			is read from the chip status register.
@@ -508,11 +558,17 @@ struct nand_buffers {
  * @buffers:		buffer structure for read/write
  * @hwcontrol:		platform-specific hardware control structure
 =======
+<<<<<<< HEAD
+ * @ecc:		[BOARDSPECIFIC] ECC control structure
+ * @buffers:		buffer structure for read/write
+ * @hwcontrol:		platform-specific hardware control structure
+=======
  * @ecc:		[BOARDSPECIFIC] ecc control ctructure
  * @buffers:		buffer structure for read/write
  * @hwcontrol:		platform-specific hardware control structure
  * @ops:		oob operation operands
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @erase_cmd:		[INTERN] erase command write function, selectable due
  *			to AND support.
  * @scan_bbt:		[REPLACEABLE] function to scan bad block table
@@ -523,8 +579,13 @@ struct nand_buffers {
  * @oob_poi:		"poison value buffer," used for laying out OOB data
  *			before writing
 =======
+<<<<<<< HEAD
+ * @oob_poi:		"poison value buffer," used for laying out OOB data
+ *			before writing
+=======
  * @oob_poi:		poison value buffer
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @page_shift:		[INTERN] number of address bits in a page (column
  *			address bits).
  * @phys_erase_shift:	[INTERN] number of address bits in a physical eraseblock
@@ -534,6 +595,9 @@ struct nand_buffers {
  *			be set to inform nand_scan about special functionality.
  *			See the defines for further explanation.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @bbt_options:	[INTERN] bad block specific options. All options used
  *			here must come from bbm.h. By default, these options
  *			will be copied to the appropriate nand_bbt_descr's.
@@ -542,12 +606,15 @@ struct nand_buffers {
  * @badblockbits:	[INTERN] minimum number of set bits in a good block's
  *			bad block marker position; i.e., BBM == 11110111b is
  *			not bad when badblockbits == 7
+<<<<<<< HEAD
+=======
 =======
  * @badblockpos:	[INTERN] position of the bad block marker in the oob
  *			area.
  * @badblockbits:	[INTERN] number of bits to left-shift the bad block
  *			number
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @cellinfo:		[INTERN] MLC/multichip data from chip ident
  * @numchips:		[INTERN] number of physical chips
  * @chipsize:		[INTERN] the size of one chip for multichip arrays
@@ -562,8 +629,12 @@ struct nand_buffers {
 <<<<<<< HEAD
  * @ecclayout:		[REPLACEABLE] the default ECC placement scheme
 =======
+<<<<<<< HEAD
+ * @ecclayout:		[REPLACEABLE] the default ECC placement scheme
+=======
  * @ecclayout:		[REPLACEABLE] the default ecc placement scheme
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @bbt:		[INTERN] bad block table pointer
  * @bbt_td:		[REPLACEABLE] bad block table descriptor for flash
  *			lookup.
@@ -576,10 +647,16 @@ struct nand_buffers {
  *			devices.
  * @priv:		[OPTIONAL] pointer to private chip data
 =======
+<<<<<<< HEAD
+ *			structure which is shared among multiple independent
+ *			devices.
+ * @priv:		[OPTIONAL] pointer to private chip data
+=======
  *			structure which is shared among multiple independend
  *			devices.
  * @priv:		[OPTIONAL] pointer to private chip date
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @errstat:		[OPTIONAL] hardware specific function to perform
  *			additional error status checks (determine if errors are
  *			correctable).
@@ -617,7 +694,11 @@ struct nand_chip {
 <<<<<<< HEAD
 	unsigned int bbt_options;
 =======
+<<<<<<< HEAD
+	unsigned int bbt_options;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	int page_shift;
 	int phys_erase_shift;
@@ -647,9 +728,12 @@ struct nand_chip {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	struct mtd_oob_ops ops;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uint8_t *bbt;
 	struct nand_bbt_descr *bbt_td;
 	struct nand_bbt_descr *bbt_md;
@@ -674,7 +758,11 @@ struct nand_chip {
 <<<<<<< HEAD
 #define NAND_MFR_MACRONIX	0xc2
 =======
+<<<<<<< HEAD
+#define NAND_MFR_MACRONIX	0xc2
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * struct nand_flash_dev - NAND Flash Device ID Structure
@@ -732,11 +820,17 @@ extern int nand_do_read(struct mtd_info *mtd, loff_t from, size_t len,
  * @ecclayout:		ECC layout info structure
  * @part_probe_types:	NULL-terminated array of probe types
 =======
+<<<<<<< HEAD
+ * @bbt_options:	BBT option flags, e.g. NAND_BBT_USE_FLASH
+ * @ecclayout:		ECC layout info structure
+ * @part_probe_types:	NULL-terminated array of probe types
+=======
  * @ecclayout:		ecc layout info structure
  * @part_probe_types:	NULL-terminated array of probe types
  * @set_parts:		platform specific function to set partitions
  * @priv:		hardware controller specific settings
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct platform_nand_chip {
 	int nr_chips;
@@ -750,10 +844,15 @@ struct platform_nand_chip {
 	unsigned int bbt_options;
 	const char **part_probe_types;
 =======
+<<<<<<< HEAD
+	unsigned int bbt_options;
+	const char **part_probe_types;
+=======
 	const char **part_probe_types;
 	void (*set_parts)(uint64_t size, struct platform_nand_chip *chip);
 	void *priv;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* Keep gcc happy */

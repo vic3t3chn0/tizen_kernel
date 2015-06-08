@@ -33,8 +33,12 @@ static const struct file_operations key_ ##name## _ops = {		\
 <<<<<<< HEAD
 	.open = simple_open,						\
 =======
+<<<<<<< HEAD
+	.open = simple_open,						\
+=======
 	.open = mac80211_open_file_generic,				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = generic_file_llseek,					\
 }
 
@@ -52,8 +56,12 @@ static const struct file_operations key_ ##name## _ops = {		\
 <<<<<<< HEAD
 	.open = simple_open,						\
 =======
+<<<<<<< HEAD
+	.open = simple_open,						\
+=======
 	.open = mac80211_open_file_generic,				\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.llseek = generic_file_llseek,					\
 }
 
@@ -89,8 +97,12 @@ static ssize_t key_tx_spec_read(struct file *file, char __user *userbuf,
 <<<<<<< HEAD
 	u64 pn;
 =======
+<<<<<<< HEAD
+	u64 pn;
+=======
 	const u8 *tpn;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char buf[20];
 	int len;
 	struct ieee80211_key *key = file->private_data;
@@ -107,6 +119,9 @@ static ssize_t key_tx_spec_read(struct file *file, char __user *userbuf,
 		break;
 	case WLAN_CIPHER_SUITE_CCMP:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pn = atomic64_read(&key->u.ccmp.tx_pn);
 		len = scnprintf(buf, sizeof(buf), "%02x%02x%02x%02x%02x%02x\n",
 				(u8)(pn >> 40), (u8)(pn >> 32), (u8)(pn >> 24),
@@ -117,6 +132,8 @@ static ssize_t key_tx_spec_read(struct file *file, char __user *userbuf,
 		len = scnprintf(buf, sizeof(buf), "%02x%02x%02x%02x%02x%02x\n",
 				(u8)(pn >> 40), (u8)(pn >> 32), (u8)(pn >> 24),
 				(u8)(pn >> 16), (u8)(pn >> 8), (u8)pn);
+<<<<<<< HEAD
+=======
 =======
 		tpn = key->u.ccmp.tx_pn;
 		len = scnprintf(buf, sizeof(buf), "%02x%02x%02x%02x%02x%02x\n",
@@ -128,6 +145,7 @@ static ssize_t key_tx_spec_read(struct file *file, char __user *userbuf,
 				tpn[0], tpn[1], tpn[2], tpn[3], tpn[4],
 				tpn[5]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		return 0;
@@ -254,10 +272,16 @@ void ieee80211_debugfs_key_add(struct ieee80211_key *key)
 	static int keycount;
 	char buf[100];
 =======
+<<<<<<< HEAD
+{
+	static int keycount;
+	char buf[100];
+=======
   {
 	static int keycount;
 	char buf[50];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sta_info *sta;
 
 	if (!key->local->debugfs.keys)
@@ -278,8 +302,13 @@ void ieee80211_debugfs_key_add(struct ieee80211_key *key)
 		sprintf(buf, "../../netdev:%s/stations/%pM",
 			sta->sdata->name, sta->sta.addr);
 =======
+<<<<<<< HEAD
+		sprintf(buf, "../../netdev:%s/stations/%pM",
+			sta->sdata->name, sta->sta.addr);
+=======
 		sprintf(buf, "../../stations/%pM", sta->sta.addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		key->debugfs.stalink =
 			debugfs_create_symlink("station", key->debugfs.dir, buf);
 	}

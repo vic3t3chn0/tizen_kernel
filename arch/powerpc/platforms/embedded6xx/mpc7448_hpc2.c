@@ -26,7 +26,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/delay.h>
 #include <linux/irq.h>
 #include <linux/seq_file.h>
@@ -37,8 +41,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/prom.h>
@@ -110,15 +117,23 @@ static void __init mpc7448_hpc2_init_IRQ(void)
 	struct mpic *mpic;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	phys_addr_t mpic_paddr = 0;
 	struct device_node *tsi_pic;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_PCI
 	unsigned int cascade_pci_irq;
 	struct device_node *tsi_pci;
 	struct device_node *cascade_node = NULL;
 #endif
 
+<<<<<<< HEAD
+	mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN |
+			MPIC_SPV_EOI | MPIC_NO_PTHROU_DIS | MPIC_REGSET_TSI108,
+			24, 0,
+=======
 <<<<<<< HEAD
 	mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN |
 			MPIC_SPV_EOI | MPIC_NO_PTHROU_DIS | MPIC_REGSET_TSI108,
@@ -145,6 +160,7 @@ static void __init mpc7448_hpc2_init_IRQ(void)
 			24,
 			NR_IRQS-4, /* num_sources used */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			"Tsi108_PIC");
 
 	BUG_ON(mpic == NULL);
@@ -152,8 +168,12 @@ static void __init mpc7448_hpc2_init_IRQ(void)
 <<<<<<< HEAD
 	mpic_assign_isu(mpic, 0, mpic->paddr + 0x100);
 =======
+<<<<<<< HEAD
+	mpic_assign_isu(mpic, 0, mpic->paddr + 0x100);
+=======
 	mpic_assign_isu(mpic, 0, mpic_paddr + 0x100);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mpic_init(mpic);
 
@@ -180,8 +200,11 @@ static void __init mpc7448_hpc2_init_IRQ(void)
 	tsi108_write_reg(TSI108_MPIC_OFFSET + 0x30c, 0);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	of_node_put(tsi_pic);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void mpc7448_hpc2_show_cpuinfo(struct seq_file *m)

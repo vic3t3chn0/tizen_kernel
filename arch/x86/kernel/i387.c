@@ -19,7 +19,11 @@
 <<<<<<< HEAD
 #include <asm/fpu-internal.h>
 =======
+<<<<<<< HEAD
+#include <asm/fpu-internal.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/user.h>
 
 #ifdef CONFIG_X86_64
@@ -37,6 +41,9 @@
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Were we in an interrupt that interrupted kernel mode?
  *
@@ -117,8 +124,11 @@ void unlazy_fpu(struct task_struct *tsk)
 }
 EXPORT_SYMBOL(unlazy_fpu);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MATH_EMULATION
 # define HAVE_HWFP		(boot_cpu_data.hard_math)
 #else
@@ -134,8 +144,12 @@ static struct i387_fxsave_struct fx_scratch __cpuinitdata;
 <<<<<<< HEAD
 static void __cpuinit mxcsr_feature_mask_init(void)
 =======
+<<<<<<< HEAD
+static void __cpuinit mxcsr_feature_mask_init(void)
+=======
 void __cpuinit mxcsr_feature_mask_init(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	unsigned long mask = 0;
 
@@ -145,8 +159,12 @@ void __cpuinit mxcsr_feature_mask_init(void)
 <<<<<<< HEAD
 		asm volatile("fxsave %0" : : "m" (fx_scratch));
 =======
+<<<<<<< HEAD
+		asm volatile("fxsave %0" : : "m" (fx_scratch));
+=======
 		asm volatile("fxsave %0" : "+m" (fx_scratch));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mask = fx_scratch.mxcsr_mask;
 		if (mask == 0)
 			mask = 0x0000ffbf;
@@ -252,7 +270,11 @@ int init_fpu(struct task_struct *tsk)
 <<<<<<< HEAD
 		tsk->thread.fpu.last_cpu = ~0;
 =======
+<<<<<<< HEAD
+		tsk->thread.fpu.last_cpu = ~0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	}
 
@@ -423,8 +445,12 @@ static inline unsigned short twd_i387_to_fxsr(unsigned short twd)
 <<<<<<< HEAD
 #define FPREG_ADDR(f, n)	((void *)&(f)->st_space + (n) * 16)
 =======
+<<<<<<< HEAD
+#define FPREG_ADDR(f, n)	((void *)&(f)->st_space + (n) * 16)
+=======
 #define FPREG_ADDR(f, n)	((void *)&(f)->st_space + (n) * 16);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define FP_EXP_TAG_VALID	0
 #define FP_EXP_TAG_ZERO		1
 #define FP_EXP_TAG_SPECIAL	2

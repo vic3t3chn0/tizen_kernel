@@ -31,8 +31,12 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 #include <linux/moduleparam.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/io.h>
 #include <asm/dma.h>
 #include <sound/core.h>
@@ -68,8 +72,12 @@ static int ide;
 <<<<<<< HEAD
 static bool isapnp = 1;				/* Enable ISA PnP detection */
 =======
+<<<<<<< HEAD
+static bool isapnp = 1;				/* Enable ISA PnP detection */
+=======
 static int isapnp = 1;				/* Enable ISA PnP detection */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 module_param(index, int, 0444);
@@ -1388,9 +1396,13 @@ static int __devinit snd_miro_probe(struct snd_card *card)
 <<<<<<< HEAD
 				mpu_port, 0, miro->mpu_irq, &rmidi);
 =======
+<<<<<<< HEAD
+				mpu_port, 0, miro->mpu_irq, &rmidi);
+=======
 				mpu_port, 0, miro->mpu_irq, IRQF_DISABLED,
 				&rmidi);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error < 0)
 			snd_printk(KERN_WARNING "no MPU-401 device at 0x%lx?\n",
 				   mpu_port);

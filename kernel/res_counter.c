@@ -66,6 +66,37 @@ done:
 	return ret;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+int res_counter_charge_nofail(struct res_counter *counter, unsigned long val,
+			      struct res_counter **limit_fail_at)
+{
+	int ret, r;
+	unsigned long flags;
+	struct res_counter *c;
+
+	r = ret = 0;
+	*limit_fail_at = NULL;
+	local_irq_save(flags);
+	for (c = counter; c != NULL; c = c->parent) {
+		spin_lock(&c->lock);
+		r = res_counter_charge_locked(c, val);
+		if (r)
+			c->usage += val;
+		spin_unlock(&c->lock);
+		if (r < 0 && ret == 0) {
+			*limit_fail_at = c;
+			ret = r;
+		}
+	}
+	local_irq_restore(flags);
+
+	return ret;
+}
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void res_counter_uncharge_locked(struct res_counter *counter, unsigned long val)
 {
 	if (WARN_ON(counter->usage < val))
@@ -159,8 +190,17 @@ int res_counter_memparse_write_strategy(const char *buf,
 		return 0;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	*res = memparse(buf, &end);
+=======
 	/* FIXME - make memparse() take const char* args */
 	*res = memparse((char *)buf, &end);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* FIXME - make memparse() take const char* args */
+	*res = memparse((char *)buf, &end);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (*end != '\0')
 		return -EINVAL;
 

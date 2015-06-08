@@ -51,10 +51,15 @@ static void mpc837x_rdb_sd_cfg(void)
 static void __init mpc837x_rdb_setup_arch(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ppc_md.progress)
 		ppc_md.progress("mpc837x_rdb_setup_arch()", 0);
 
 	mpc83xx_setup_pci();
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_PCI
 	struct device_node *np;
@@ -70,10 +75,14 @@ static void __init mpc837x_rdb_setup_arch(void)
 		mpc83xx_add_bridge(np);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mpc837x_usb_cfg();
 	mpc837x_rdb_sd_cfg();
 }
 
+<<<<<<< HEAD
+machine_device_initcall(mpc837x_rdb, mpc83xx_declare_of_platform_devices);
+=======
 <<<<<<< HEAD
 machine_device_initcall(mpc837x_rdb, mpc83xx_declare_of_platform_devices);
 =======
@@ -111,6 +120,7 @@ static void __init mpc837x_rdb_init_IRQ(void)
 	ipic_set_default_priority();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static const char *board[] __initdata = {
 	"fsl,mpc8377rdb",
@@ -135,8 +145,12 @@ define_machine(mpc837x_rdb) {
 <<<<<<< HEAD
 	.init_IRQ		= mpc83xx_ipic_init_IRQ,
 =======
+<<<<<<< HEAD
+	.init_IRQ		= mpc83xx_ipic_init_IRQ,
+=======
 	.init_IRQ		= mpc837x_rdb_init_IRQ,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.get_irq		= ipic_get_irq,
 	.restart		= mpc83xx_restart,
 	.time_init		= mpc83xx_time_init,

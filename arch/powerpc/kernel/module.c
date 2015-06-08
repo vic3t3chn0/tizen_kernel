@@ -18,8 +18,11 @@
 */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/module.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/elf.h>
 #include <linux/moduleloader.h>
 #include <linux/err.h>
@@ -34,6 +37,8 @@
 
 LIST_HEAD(module_bug_list);
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 void *module_alloc(unsigned long size)
@@ -51,6 +56,7 @@ void module_free(struct module *mod, void *module_region)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const Elf_Shdr *find_section(const Elf_Ehdr *hdr,
 				    const Elf_Shdr *sechdrs,
 				    const char *name)
@@ -101,8 +107,11 @@ int module_finalize(const Elf_Ehdr *hdr,
 }
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 void module_arch_cleanup(struct module *mod)
 {
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

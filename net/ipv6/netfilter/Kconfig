@@ -126,6 +126,9 @@ config IP6_NF_MATCH_MH
 	  To compile it as a module, choose M here.  If unsure, say N.
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config IP6_NF_MATCH_RPFILTER
 	tristate '"rpfilter" reverse path filter match support'
 	depends on NETFILTER_ADVANCED
@@ -136,8 +139,11 @@ config IP6_NF_MATCH_RPFILTER
 	  To compile it as a module, choose M here.  If unsure, say N.
 	  The module will be called ip6t_rpfilter.
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config IP6_NF_MATCH_RT
 	tristate '"rt" Routing header match support'
 	depends on NETFILTER_ADVANCED
@@ -159,6 +165,8 @@ config IP6_NF_TARGET_HL
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 config IP6_NF_TARGET_LOG
 	tristate "LOG target support"
 	default m if NETFILTER_ADVANCED=n
@@ -169,6 +177,7 @@ config IP6_NF_TARGET_LOG
 	  To compile it as a module, choose M here.  If unsure, say N.
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 config IP6_NF_FILTER
 	tristate "Packet filtering"
 	default m if NETFILTER_ADVANCED=n
@@ -216,8 +225,11 @@ config IP6_NF_RAW
 	tristate  'raw table support (required for TRACE)'
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	depends on NETFILTER_ADVANCED
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	help
 	  This option adds a `raw' table to ip6tables. This table is the very
 	  first in the netfilter framework and hooks in at the PREROUTING

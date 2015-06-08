@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include "common.h"
 =======
+<<<<<<< HEAD
+#include "common.h"
+=======
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "prm-regbits-34xx.h"
 #include "voltage.h"
@@ -36,10 +40,14 @@
 <<<<<<< HEAD
 static struct omap_vc_common omap3_vc_common = {
 =======
+<<<<<<< HEAD
+static struct omap_vc_common omap3_vc_common = {
+=======
 static struct omap_vc_common_data omap3_vc_common = {
 	.smps_sa_reg	 = OMAP3_PRM_VC_SMPS_SA_OFFSET,
 	.smps_volra_reg	 = OMAP3_PRM_VC_SMPS_VOL_RA_OFFSET,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.bypass_val_reg	 = OMAP3_PRM_VC_BYPASS_VAL_OFFSET,
 	.data_shift	 = OMAP3430_DATA_SHIFT,
 	.slaveaddr_shift = OMAP3430_SLAVEADDR_SHIFT,
@@ -51,6 +59,9 @@ static struct omap_vc_common_data omap3_vc_common = {
 	.cmd_ret_shift	 = OMAP3430_VC_CMD_RET_SHIFT,
 	.cmd_off_shift	 = OMAP3430_VC_CMD_OFF_SHIFT,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.i2c_cfg_hsen_mask = OMAP3430_HSEN_MASK,
 	.i2c_cfg_reg	 = OMAP3_PRM_VC_I2C_CFG_OFFSET,
 	.i2c_mcode_mask	 = OMAP3430_MCODE_MASK,
@@ -80,6 +91,8 @@ struct omap_vc_channel omap3_vc_core = {
 	.smps_volra_mask = OMAP3430_VOLRA1_MASK,
 	.smps_cmdra_mask = OMAP3430_CMDRA1_MASK,
 	.cfg_channel_sa_shift = OMAP3430_PRM_VC_SMPS_SA_SA1_SHIFT,
+<<<<<<< HEAD
+=======
 =======
 };
 
@@ -100,4 +113,5 @@ struct omap_vc_instance_data omap3_vc2_data = {
 	.smps_volra_shift = OMAP3430_VOLRA1_SHIFT,
 	.smps_volra_mask = OMAP3430_VOLRA1_MASK,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };

@@ -16,16 +16,22 @@
 #include <stdlib.h>
 #include <string.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <signal.h>
 #include <unistd.h>
 #include <locale.h>
 
+<<<<<<< HEAD
+=======
 =======
 #include <unistd.h>
 #include <locale.h>
 
 #define LKC_DIRECT_LINK
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "lkc.h"
 #include "lxdialog/dialog.h"
 
@@ -283,7 +289,11 @@ static int show_all_options;
 <<<<<<< HEAD
 static int saved_x, saved_y;
 =======
+<<<<<<< HEAD
+static int saved_x, saved_y;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void conf(struct menu *menu);
 static void conf_choice(struct menu *menu);
@@ -805,6 +815,9 @@ static void conf_save(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int handle_exit(void)
 {
 	int res;
@@ -855,11 +868,14 @@ static void sig_handler(int signo)
 
 int main(int ac, char **av)
 {
+<<<<<<< HEAD
+=======
 =======
 int main(int ac, char **av)
 {
 	int saved_x, saved_y;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char *mode;
 	int res;
 
@@ -871,7 +887,12 @@ int main(int ac, char **av)
 	signal(SIGINT, sig_handler);
 
 =======
+<<<<<<< HEAD
+	signal(SIGINT, sig_handler);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	conf_parse(av[1]);
 	conf_read(NULL);
 
@@ -894,10 +915,15 @@ int main(int ac, char **av)
 	do {
 		conf(&rootmenu);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		res = handle_exit();
 	} while (res == KEY_ESC);
 
 	return res;
+<<<<<<< HEAD
+=======
 =======
 		dialog_clear();
 		if (conf_get_changed())
@@ -934,5 +960,6 @@ int main(int ac, char **av)
 
 	return 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 

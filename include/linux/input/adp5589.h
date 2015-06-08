@@ -2,8 +2,12 @@
 <<<<<<< HEAD
  * Analog Devices ADP5589/ADP5585 I/O Expander and QWERTY Keypad Controller
 =======
+<<<<<<< HEAD
+ * Analog Devices ADP5589/ADP5585 I/O Expander and QWERTY Keypad Controller
+=======
  * Analog Devices ADP5589 I/O Expander and QWERTY Keypad Controller
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright 2010-2011 Analog Devices Inc.
  *
@@ -13,6 +17,11 @@
 #ifndef _ADP5589_H
 #define _ADP5589_H
 
+<<<<<<< HEAD
+/*
+ * ADP5589 specific GPI and Keymap defines
+ */
+=======
 <<<<<<< HEAD
 /*
  * ADP5589 specific GPI and Keymap defines
@@ -102,6 +111,7 @@
 
 /* Put one of these structures in i2c_board_info platform_data */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define ADP5589_KEYMAPSIZE	88
 
@@ -138,6 +148,9 @@
 #define ADP5589_GPIMAPSIZE_MAX (ADP5589_GPI_PIN_END - ADP5589_GPI_PIN_BASE + 1)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * ADP5585 specific GPI and Keymap defines
  */
@@ -167,8 +180,11 @@
 
 #define ADP5585_GPIMAPSIZE_MAX (ADP5585_GPI_PIN_END - ADP5585_GPI_PIN_BASE + 1)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct adp5589_gpi_map {
 	unsigned short pin;
 	unsigned short sw_evt;
@@ -204,8 +220,12 @@ struct adp5589_gpi_map {
 <<<<<<< HEAD
 /* ADP5589 Mask Bits:
 =======
+<<<<<<< HEAD
+/* ADP5589 Mask Bits:
+=======
 /* Mask Bits:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * C C C C C C C C C C C | R R R R R R R R
  * 1 9 8 7 6 5 4 3 2 1 0 | 7 6 5 4 3 2 1 0
  * 0
@@ -215,6 +235,9 @@ struct adp5589_gpi_map {
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ADP_ROW(x)	(1 << (x))
 #define ADP_COL(x)	(1 << (x + 8))
 #define ADP5589_ROW_MASK		0xFF
@@ -243,10 +266,13 @@ struct adp5589_gpi_map {
 #define ADP5585_COL(x)	(1 << (((x) & ADP5585_COL_MASK) + ADP5585_COL_SHIFT))
 
 /* Put one of these structures in i2c_board_info platform_data */
+<<<<<<< HEAD
+=======
 =======
 #define ADP_ROW(x)			(1 << (x))
 #define ADP_COL(x)			(1 << (x + 8))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct adp5589_kpad_platform_data {
 	unsigned keypad_en_mask;	/* Keypad (Rows/Columns) enable mask */
@@ -254,16 +280,22 @@ struct adp5589_kpad_platform_data {
 	unsigned short keymapsize;	/* Keymap size */
 	bool repeat;			/* Enable key repeat */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bool en_keylock;		/* Enable key lock feature (ADP5589 only)*/
 	unsigned char unlock_key1;	/* Unlock Key 1 (ADP5589 only) */
 	unsigned char unlock_key2;	/* Unlock Key 2 (ADP5589 only) */
 	unsigned char unlock_timer;	/* Time in seconds [0..7] between the two unlock keys 0=disable (ADP5589 only) */
+<<<<<<< HEAD
+=======
 =======
 	bool en_keylock;		/* Enable key lock feature */
 	unsigned char unlock_key1;	/* Unlock Key 1 */
 	unsigned char unlock_key2;	/* Unlock Key 2 */
 	unsigned char unlock_timer;	/* Time in seconds [0..7] between the two unlock keys 0=disable */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned char scan_cycle_time;	/* Time between consecutive scan cycles */
 	unsigned char reset_cfg;	/* Reset config */
 	unsigned short reset1_key_1;	/* Reset Key 1 */

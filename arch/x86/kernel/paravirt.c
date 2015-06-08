@@ -29,7 +29,11 @@
 <<<<<<< HEAD
 #include <asm/debugreg.h>
 =======
+<<<<<<< HEAD
+#include <asm/debugreg.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/desc.h>
 #include <asm/setup.h>
 #include <asm/pgtable.h>
@@ -44,7 +48,11 @@
 <<<<<<< HEAD
 #include <asm/special_insns.h>
 =======
+<<<<<<< HEAD
+#include <asm/special_insns.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* nop stub */
 void _paravirt_nop(void)
@@ -211,6 +219,9 @@ static void native_flush_tlb_single(unsigned long addr)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct static_key paravirt_steal_enabled;
 struct static_key paravirt_steal_rq_enabled;
 
@@ -219,8 +230,11 @@ static u64 native_steal_clock(int cpu)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* These are in entry.S */
 extern void native_iret(void);
 extern void native_irq_enable_sysexit(void);
@@ -274,6 +288,8 @@ void paravirt_leave_lazy_mmu(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void paravirt_flush_lazy_mmu(void)
 {
 	preempt_disable();
@@ -287,6 +303,7 @@ void paravirt_flush_lazy_mmu(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void paravirt_start_context_switch(struct task_struct *prev)
 {
 	BUG_ON(preemptible());
@@ -317,6 +334,9 @@ enum paravirt_lazy_mode paravirt_get_lazy_mode(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void arch_flush_lazy_mmu_mode(void)
 {
 	preempt_disable();
@@ -329,20 +349,29 @@ void arch_flush_lazy_mmu_mode(void)
 	preempt_enable();
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct pv_info pv_info = {
 	.name = "bare hardware",
 	.paravirt_enabled = 0,
 	.kernel_rpl = 0,
 	.shared_kernel_pmd = 1,	/* Only used when CONFIG_X86_PAE is set */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_X86_64
 	.extra_user_64bit_cs = __USER_CS,
 #endif
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct pv_init_ops pv_init_ops = {
@@ -354,7 +383,11 @@ struct pv_time_ops pv_time_ops = {
 <<<<<<< HEAD
 	.steal_clock = native_steal_clock,
 =======
+<<<<<<< HEAD
+	.steal_clock = native_steal_clock,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct pv_irq_ops pv_irq_ops = {
@@ -512,8 +545,11 @@ struct pv_mmu_ops pv_mmu_ops = {
 		.leave = paravirt_nop,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.flush = paravirt_nop,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 
 	.set_fixmap = native_set_fixmap,

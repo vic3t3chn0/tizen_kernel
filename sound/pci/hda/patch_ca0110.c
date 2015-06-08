@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/module.h>
 =======
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <sound/core.h>
 #include "hda_codec.h"
 #include "hda_local.h"
@@ -47,8 +51,12 @@ struct ca0110_spec {
 <<<<<<< HEAD
 	char input_labels[AUTO_PIN_LAST][32];
 =======
+<<<<<<< HEAD
+	char input_labels[AUTO_PIN_LAST][32];
+=======
 	const char *input_labels[AUTO_PIN_LAST];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct hda_pcm pcm_rec[2];	/* PCM information */
 };
 
@@ -252,8 +260,13 @@ static int ca0110_build_controls(struct hda_codec *codec)
 		err = snd_hda_create_spdif_out_ctls(codec, spec->dig_out,
 						    spec->dig_out);
 =======
+<<<<<<< HEAD
+		err = snd_hda_create_spdif_out_ctls(codec, spec->dig_out,
+						    spec->dig_out);
+=======
 		err = snd_hda_create_spdif_out_ctls(codec, spec->dig_out);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err < 0)
 			return err;
 		err = snd_hda_create_spdif_share_sw(codec, &spec->multiout);
@@ -492,8 +505,14 @@ static void parse_input(struct hda_codec *codec)
 				      spec->input_labels[n],
 				      sizeof(spec->input_labels[n]), NULL);
 =======
+<<<<<<< HEAD
+		snd_hda_get_pin_label(codec, pin, cfg,
+				      spec->input_labels[n],
+				      sizeof(spec->input_labels[n]), NULL);
+=======
 		spec->input_labels[n] = hda_get_input_pin_label(codec, pin, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spec->adcs[n] = nid;
 		n++;
 	}

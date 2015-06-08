@@ -20,8 +20,11 @@
 #include <linux/gpio.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/regulator/machine.h>
 #include <linux/mfd/tps6586x.h>
 
@@ -31,10 +34,13 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define PMC_CTRL		0x0
 #define PMC_CTRL_INTR_LOW	(1 << 17)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply tps658621_ldo0_supply[] = {
 	REGULATOR_SUPPLY("pex_clk", NULL),
 };
@@ -44,8 +50,12 @@ static struct regulator_init_data ldo0_data = {
 <<<<<<< HEAD
 		.min_uV = 3300 * 1000,
 =======
+<<<<<<< HEAD
+		.min_uV = 3300 * 1000,
+=======
 		.min_uV = 1250 * 1000,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.max_uV = 3300 * 1000,
 		.valid_modes_mask = (REGULATOR_MODE_NORMAL |
 				     REGULATOR_MODE_STANDBY),
@@ -55,7 +65,11 @@ static struct regulator_init_data ldo0_data = {
 <<<<<<< HEAD
 		.apply_uV = 1,
 =======
+<<<<<<< HEAD
+		.apply_uV = 1,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	.num_consumer_supplies = ARRAY_SIZE(tps658621_ldo0_supply),
 	.consumer_supplies = tps658621_ldo0_supply,

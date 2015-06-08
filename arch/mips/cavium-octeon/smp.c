@@ -19,9 +19,14 @@
 #include <asm/time.h>
 #include <asm/setup.h>
 =======
+<<<<<<< HEAD
+#include <asm/time.h>
+#include <asm/setup.h>
+=======
 #include <asm/system.h>
 #include <asm/time.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/octeon/octeon.h>
 
@@ -86,8 +91,12 @@ static inline void octeon_send_ipi_mask(const struct cpumask *mask,
 <<<<<<< HEAD
  * Detect available CPUs, populate cpu_possible_mask
 =======
+<<<<<<< HEAD
+ * Detect available CPUs, populate cpu_possible_mask
+=======
  * Detect available CPUs, populate cpu_possible_map
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 static void octeon_smp_hotplug_setup(void)
 {
@@ -217,15 +226,21 @@ void octeon_prepare_cpus(unsigned int max_cpus)
 	 */
 	cvmx_write_csr(CVMX_CIU_MBOX_CLRX(cvmx_get_core_num()), 0xffff);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (request_irq(OCTEON_IRQ_MBOX0, mailbox_interrupt,
 			IRQF_PERCPU | IRQF_NO_THREAD, "SMP-IPI",
 			mailbox_interrupt)) {
 		panic("Cannot request_irq(OCTEON_IRQ_MBOX0)");
+<<<<<<< HEAD
+=======
 =======
 	if (request_irq(OCTEON_IRQ_MBOX0, mailbox_interrupt, IRQF_DISABLED,
 			"SMP-IPI", mailbox_interrupt)) {
 		panic("Cannot request_irq(OCTEON_IRQ_MBOX0)\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -286,8 +301,12 @@ static int octeon_cpu_disable(void)
 <<<<<<< HEAD
 	set_cpu_online(cpu, false);
 =======
+<<<<<<< HEAD
+	set_cpu_online(cpu, false);
+=======
 	cpu_clear(cpu, cpu_online_map);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cpu_clear(cpu, cpu_callin_map);
 	local_irq_disable();
 	fixup_irqs();

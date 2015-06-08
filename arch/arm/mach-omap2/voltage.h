@@ -23,7 +23,12 @@
 struct powerdomain;
 
 =======
+<<<<<<< HEAD
+struct powerdomain;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* XXX document */
 #define VOLTSCALE_VPFORCEUPDATE		1
 #define VOLTSCALE_VCBYPASS		2
@@ -38,6 +43,9 @@ struct powerdomain;
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct omap_vfsm_instance - per-voltage manager FSM register/bitfield
  * data
  * @voltsetup_mask: SETUP_TIME* bitmask in the PRM_VOLTSETUP* register
@@ -48,6 +56,8 @@ struct powerdomain;
 struct omap_vfsm_instance {
 	u32 voltsetup_mask;
 	u8 voltsetup_reg;
+<<<<<<< HEAD
+=======
 =======
  * struct omap_vfsm_instance_data - per-voltage manager FSM register/bitfield
  * data
@@ -64,11 +74,15 @@ struct omap_vfsm_instance_data {
 	u8 voltsetup_reg;
 	u8 voltsetup_shift;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
  * struct voltagedomain - omap voltage domain global structure.
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * @name: Name of the voltage domain which can be used as a unique identifier.
  * @scalable: Whether or not this voltage domain is scalable
  * @node: list_head linking all voltage domains
@@ -109,6 +123,8 @@ struct voltagedomain {
 
 	u32 nominal_volt;
 	struct omap_volt_data *volt_data;
+<<<<<<< HEAD
+=======
 =======
  * @name:	Name of the voltage domain which can be used as a unique
  *		identifier.
@@ -116,6 +132,7 @@ struct voltagedomain {
 struct voltagedomain {
 	char *name;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -139,6 +156,9 @@ struct omap_volt_data {
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * struct omap_voltdm_pmic - PMIC specific data required by voltage driver.
  * @slew_rate:	PMIC slew rate (in uv/us)
  * @step_size:	PMIC voltage step size (in uv)
@@ -151,6 +171,8 @@ struct omap_volt_data {
  * @uv_to_vsel:	PMIC API to convert voltage in uV to vsel value.
  */
 struct omap_voltdm_pmic {
+<<<<<<< HEAD
+=======
 =======
  * struct omap_volt_pmic_info - PMIC specific data required by voltage driver.
  * @slew_rate:	PMIC slew rate (in uv/us)
@@ -160,6 +182,7 @@ struct omap_voltdm_pmic {
  */
 struct omap_volt_pmic_info {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int slew_rate;
 	int step_size;
 	u32 on_volt;
@@ -172,7 +195,13 @@ struct omap_volt_pmic_info {
 	u16 volt_reg_addr;
 	u16 cmd_reg_addr;
 =======
+<<<<<<< HEAD
+	u16 i2c_slave_addr;
+	u16 volt_reg_addr;
+	u16 cmd_reg_addr;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8 vp_erroroffset;
 	u8 vp_vstepmin;
 	u8 vp_vstepmax;
@@ -183,13 +212,20 @@ struct omap_volt_pmic_info {
 	bool i2c_high_speed;
 	u8 i2c_mcode;
 =======
+<<<<<<< HEAD
+	bool i2c_high_speed;
+	u8 i2c_mcode;
+=======
 	u8 i2c_slave_addr;
 	u8 pmic_reg;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long (*vsel_to_uv) (const u8 vsel);
 	u8 (*uv_to_vsel) (unsigned long uV);
 };
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 /**
@@ -235,11 +271,15 @@ int omap_voltage_scale_vdd(struct voltagedomain *voltdm,
 		unsigned long target_volt);
 void omap_voltage_reset(struct voltagedomain *voltdm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void omap_voltage_get_volttable(struct voltagedomain *voltdm,
 		struct omap_volt_data **volt_data);
 struct omap_volt_data *omap_voltage_get_voltdata(struct voltagedomain *voltdm,
 		unsigned long volt);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int omap_voltage_register_pmic(struct voltagedomain *voltdm,
 			       struct omap_voltdm_pmic *pmic);
 void omap_change_voltscale_method(struct voltagedomain *voltdm,
@@ -261,6 +301,8 @@ int voltdm_for_each_pwrdm(struct voltagedomain *voltdm,
 int voltdm_scale(struct voltagedomain *voltdm, unsigned long target_volt);
 void voltdm_reset(struct voltagedomain *voltdm);
 unsigned long voltdm_get_voltage(struct voltagedomain *voltdm);
+<<<<<<< HEAD
+=======
 =======
 unsigned long omap_voltage_get_nom_volt(struct voltagedomain *voltdm);
 struct dentry *omap_voltage_get_dbgdir(struct voltagedomain *voltdm);
@@ -295,4 +337,5 @@ static inline struct voltagedomain *omap_voltage_domain_lookup(char *name)
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

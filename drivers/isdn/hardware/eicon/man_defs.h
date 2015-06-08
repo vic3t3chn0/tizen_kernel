@@ -1,5 +1,30 @@
 /*
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ Copyright (c) Eicon Networks, 2002.
+ *
+ This source file is supplied for the use with
+ Eicon Networks range of DIVA Server Adapters.
+ *
+ Eicon File Revision :    1.9
+ *
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2, or (at your option)
+ any later version.
+ *
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY OF ANY KIND WHATSOEVER INCLUDING ANY
+ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU General Public License for more details.
+ *
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
   Copyright (c) Eicon Networks, 2002.
  *
   This source file is supplied for the use with
@@ -20,6 +45,10 @@
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  */
 /* Definitions for use with the Management Information Element      */
@@ -104,9 +133,21 @@
 typedef struct mi_xlog_hdr_s MI_XLOG_HDR;
 struct mi_xlog_hdr_s
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	unsigned long  time;   /* Timestamp in msec units                 */
+	unsigned short size;   /* Size of data that follows               */
+	unsigned short code;   /* code of trace event                     */
+=======
   unsigned long  time;   /* Timestamp in msec units                 */
   unsigned short size;   /* Size of data that follows               */
   unsigned short code;   /* code of trace event                     */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+  unsigned long  time;   /* Timestamp in msec units                 */
+  unsigned short size;   /* Size of data that follows               */
+  unsigned short code;   /* code of trace event                     */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };                       /* unspecified data follows this header    */
 
 /*------------------------------------------------------------------*/

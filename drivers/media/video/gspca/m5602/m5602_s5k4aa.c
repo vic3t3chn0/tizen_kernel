@@ -16,6 +16,14 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "m5602_s5k4aa.h"
 
 static int s5k4aa_get_exposure(struct gspca_dev *gspca_dev, __s32 *val);
@@ -240,7 +248,15 @@ int s5k4aa_probe(struct sd *sd)
 
 	if (force_sensor) {
 		if (force_sensor == S5K4AA_SENSOR) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("Forcing a %s sensor\n", s5k4aa.name);
+=======
 			info("Forcing a %s sensor", s5k4aa.name);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			info("Forcing a %s sensor", s5k4aa.name);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			goto sensor_found;
 		}
 		/* If we want to force another sensor, don't try to probe this
@@ -276,7 +292,15 @@ int s5k4aa_probe(struct sd *sd)
 						  data, 2);
 			break;
 		default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("Invalid stream command, exiting init\n");
+=======
 			info("Invalid stream command, exiting init");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			info("Invalid stream command, exiting init");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EINVAL;
 		}
 	}
@@ -292,7 +316,15 @@ int s5k4aa_probe(struct sd *sd)
 	if (memcmp(prod_id, expected_prod_id, sizeof(prod_id)))
 		return -ENODEV;
 	else
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Detected a s5k4aa sensor\n");
+=======
 		info("Detected a s5k4aa sensor");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		info("Detected a s5k4aa sensor");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 sensor_found:
 	sensor_settings = kmalloc(
@@ -347,7 +379,15 @@ int s5k4aa_start(struct sd *sd)
 			break;
 
 			default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+				pr_err("Invalid stream command, exiting init\n");
+=======
 				err("Invalid stream command, exiting init");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				err("Invalid stream command, exiting init");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return -EINVAL;
 			}
 		}
@@ -383,7 +423,15 @@ int s5k4aa_start(struct sd *sd)
 			break;
 
 			default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+				pr_err("Invalid stream command, exiting init\n");
+=======
 				err("Invalid stream command, exiting init");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				err("Invalid stream command, exiting init");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return -EINVAL;
 			}
 		}
@@ -447,7 +495,15 @@ int s5k4aa_init(struct sd *sd)
 				init_s5k4aa[i][1], data, 2);
 			break;
 		default:
+<<<<<<< HEAD
+<<<<<<< HEAD
+			pr_info("Invalid stream command, exiting init\n");
+=======
 			info("Invalid stream command, exiting init");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			info("Invalid stream command, exiting init");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return -EINVAL;
 		}
 	}
@@ -686,6 +742,26 @@ static void s5k4aa_dump_registers(struct sd *sd)
 	m5602_read_sensor(sd, S5K4AA_PAGE_MAP, &old_page, 1);
 	for (page = 0; page < 16; page++) {
 		m5602_write_sensor(sd, S5K4AA_PAGE_MAP, &page, 1);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		pr_info("Dumping the s5k4aa register state for page 0x%x\n",
+			page);
+		for (address = 0; address <= 0xff; address++) {
+			u8 value = 0;
+			m5602_read_sensor(sd, address, &value, 1);
+			pr_info("register 0x%x contains 0x%x\n",
+				address, value);
+		}
+	}
+	pr_info("s5k4aa register state dump complete\n");
+
+	for (page = 0; page < 16; page++) {
+		m5602_write_sensor(sd, S5K4AA_PAGE_MAP, &page, 1);
+		pr_info("Probing for which registers that are read/write for page 0x%x\n",
+			page);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		info("Dumping the s5k4aa register state for page 0x%x", page);
 		for (address = 0; address <= 0xff; address++) {
 			u8 value = 0;
@@ -700,6 +776,10 @@ static void s5k4aa_dump_registers(struct sd *sd)
 		m5602_write_sensor(sd, S5K4AA_PAGE_MAP, &page, 1);
 		info("Probing for which registers that are "
 		     "read/write for page 0x%x", page);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		for (address = 0; address <= 0xff; address++) {
 			u8 old_value, ctrl_value, test_value = 0xff;
 
@@ -708,14 +788,36 @@ static void s5k4aa_dump_registers(struct sd *sd)
 			m5602_read_sensor(sd, address, &ctrl_value, 1);
 
 			if (ctrl_value == test_value)
+<<<<<<< HEAD
+<<<<<<< HEAD
+				pr_info("register 0x%x is writeable\n",
+					address);
+			else
+				pr_info("register 0x%x is read only\n",
+					address);
+=======
 				info("register 0x%x is writeable", address);
 			else
 				info("register 0x%x is read only", address);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+				info("register 0x%x is writeable", address);
+			else
+				info("register 0x%x is read only", address);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/* Restore original value */
 			m5602_write_sensor(sd, address, &old_value, 1);
 		}
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+	pr_info("Read/write register probing complete\n");
+=======
 	info("Read/write register probing complete");
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	info("Read/write register probing complete");
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	m5602_write_sensor(sd, S5K4AA_PAGE_MAP, &old_page, 1);
 }

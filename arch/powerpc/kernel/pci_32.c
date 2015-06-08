@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/export.h>
 =======
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/processor.h>
 #include <asm/io.h>
@@ -57,6 +61,8 @@ EXPORT_SYMBOL_GPL(isa_bridge_pcidev);
 static void
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 fixup_hide_host_resource_fsl(struct pci_dev *dev)
 {
 	int i, class = dev->class >> 8;
@@ -77,6 +83,7 @@ DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_FREESCALE, PCI_ANY_ID, fixup_hide_host_re
 
 static void
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fixup_cpc710_pci64(struct pci_dev* dev)
 {
 	/* Hide the PCI64 BARs from the kernel as their content doesn't
@@ -175,6 +182,9 @@ pcibios_make_OF_bus_map(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Returns the PCI device matching a given OF node
@@ -195,6 +205,8 @@ int pci_device_from_OF_node(struct device_node *node, u8 *bus, u8 *devfn)
 
 	*bus = (be32_to_cpup(&reg[0]) >> 16) & 0xff;
 	*devfn = (be32_to_cpup(&reg[0]) >> 8) & 0xff;
+<<<<<<< HEAD
+=======
 =======
 typedef int (*pci_OF_scan_iterator)(struct device_node* node, void* data);
 
@@ -341,6 +353,7 @@ pci_device_from_OF_node(struct device_node* node, u8* bus, u8* devfn)
 	*bus = (reg[0] >> 16) & 0xff;
 	*devfn = ((reg[0] >> 8) & 0xff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Ok, here we need some tweak. If we have already renumbered
 	 * all busses, we can't rely on the OF bus number any more.
@@ -396,10 +409,16 @@ void __devinit pcibios_setup_phb_io_space(struct pci_controller *hose)
 	res->start += io_offset;
 	res->end += io_offset;
 =======
+<<<<<<< HEAD
+	io_offset = pcibios_io_space_offset(hose);
+	res->start += io_offset;
+	res->end += io_offset;
+=======
 	io_offset = (unsigned long)hose->io_base_virt - isa_io_base;
 	res->start = (res->start + io_offset) & 0xffffffffu;
 	res->end = (res->end + io_offset) & 0xffffffffu;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int __init pcibios_init(void)
@@ -412,8 +431,12 @@ static int __init pcibios_init(void)
 <<<<<<< HEAD
 	if (pci_has_flag(PCI_REASSIGN_ALL_BUS))
 =======
+<<<<<<< HEAD
+	if (pci_has_flag(PCI_REASSIGN_ALL_BUS))
+=======
 	if (ppc_pci_flags & PPC_PCI_REASSIGN_ALL_BUS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pci_assign_all_buses = 1;
 
 	/* Scan all of the recorded PCI controllers.  */

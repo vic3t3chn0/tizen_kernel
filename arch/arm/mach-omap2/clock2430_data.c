@@ -18,14 +18,20 @@
 #include <linux/list.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/hardware.h>
 #include <plat/clkdev_omap.h>
 
 #include "iomap.h"
+<<<<<<< HEAD
+=======
 =======
 #include <plat/clkdev_omap.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "clock.h"
 #include "clock2xxx.h"
 #include "opp2xxx.h"
@@ -1907,10 +1913,16 @@ static struct omap_clk omap2430_clks[] = {
 	CLK(NULL,	"dss2_fck",	&dss2_fck,	CK_243X),
 	CLK(NULL,	"dss_54m_fck",	&dss_54m_fck,	CK_243X),
 =======
+<<<<<<< HEAD
+	CLK(NULL,	"dss1_fck",		&dss1_fck,	CK_243X),
+	CLK(NULL,	"dss2_fck",	&dss2_fck,	CK_243X),
+	CLK(NULL,	"dss_54m_fck",	&dss_54m_fck,	CK_243X),
+=======
 	CLK("omapdss_dss",	"fck",		&dss1_fck,	CK_243X),
 	CLK("omapdss_dss",	"sys_clk",	&dss2_fck,	CK_243X),
 	CLK("omapdss_dss",	"tv_clk",	&dss_54m_fck,	CK_243X),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* L3 domain clocks */
 	CLK(NULL,	"core_l3_ck",	&core_l3_ck,	CK_243X),
 	CLK(NULL,	"ssi_fck",	&ssi_ssr_sst_fck, CK_243X),
@@ -1948,6 +1960,9 @@ static struct omap_clk omap2430_clks[] = {
 	CLK(NULL,	"gpt12_fck",	&gpt12_fck,	CK_243X),
 	CLK("omap-mcbsp.1", "ick",	&mcbsp1_ick,	CK_243X),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK(NULL,	"mcbsp1_fck",	&mcbsp1_fck,	CK_243X),
 	CLK("omap-mcbsp.2", "ick",	&mcbsp2_ick,	CK_243X),
 	CLK(NULL,	"mcbsp2_fck",	&mcbsp2_fck,	CK_243X),
@@ -1963,6 +1978,8 @@ static struct omap_clk omap2430_clks[] = {
 	CLK(NULL,	"mcspi2_fck",	&mcspi2_fck,	CK_243X),
 	CLK("omap2_mcspi.3", "ick",	&mcspi3_ick,	CK_243X),
 	CLK(NULL,	"mcspi3_fck",	&mcspi3_fck,	CK_243X),
+<<<<<<< HEAD
+=======
 =======
 	CLK("omap-mcbsp.1", "fck",	&mcbsp1_fck,	CK_243X),
 	CLK("omap-mcbsp.2", "ick",	&mcbsp2_ick,	CK_243X),
@@ -1980,6 +1997,7 @@ static struct omap_clk omap2430_clks[] = {
 	CLK("omap2_mcspi.3", "ick",	&mcspi3_ick,	CK_243X),
 	CLK("omap2_mcspi.3", "fck",	&mcspi3_fck,	CK_243X),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK(NULL,	"uart1_ick",	&uart1_ick,	CK_243X),
 	CLK(NULL,	"uart1_fck",	&uart1_fck,	CK_243X),
 	CLK(NULL,	"uart2_ick",	&uart2_ick,	CK_243X),
@@ -1992,8 +2010,12 @@ static struct omap_clk omap2430_clks[] = {
 <<<<<<< HEAD
 	CLK(NULL,	"mpu_wdt_fck",	&mpu_wdt_fck,	CK_243X),
 =======
+<<<<<<< HEAD
+	CLK(NULL,	"mpu_wdt_fck",	&mpu_wdt_fck,	CK_243X),
+=======
 	CLK("omap_wdt",	"fck",		&mpu_wdt_fck,	CK_243X),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK(NULL,	"sync_32k_ick",	&sync_32k_ick,	CK_243X),
 	CLK(NULL,	"wdt1_ick",	&wdt1_ick,	CK_243X),
 	CLK(NULL,	"omapctrl_ick",	&omapctrl_ick,	CK_243X),
@@ -2015,10 +2037,16 @@ static struct omap_clk omap2430_clks[] = {
 	CLK("omap_i2c.2", "ick",	&i2c2_ick,	CK_243X),
 	CLK(NULL,	"i2chs2_fck",	&i2chs2_fck,	CK_243X),
 =======
+<<<<<<< HEAD
+	CLK(NULL,	"i2chs1_fck",	&i2chs1_fck,	CK_243X),
+	CLK("omap_i2c.2", "ick",	&i2c2_ick,	CK_243X),
+	CLK(NULL,	"i2chs2_fck",	&i2chs2_fck,	CK_243X),
+=======
 	CLK("omap_i2c.1", "fck",	&i2chs1_fck,	CK_243X),
 	CLK("omap_i2c.2", "ick",	&i2c2_ick,	CK_243X),
 	CLK("omap_i2c.2", "fck",	&i2chs2_fck,	CK_243X),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK(NULL,	"gpmc_fck",	&gpmc_fck,	CK_243X),
 	CLK(NULL,	"sdma_fck",	&sdma_fck,	CK_243X),
 	CLK(NULL,	"sdma_ick",	&sdma_ick,	CK_243X),
@@ -2036,16 +2064,25 @@ static struct omap_clk omap2430_clks[] = {
 	CLK("omap_hsmmc.1", "ick",	&mmchs2_ick,	CK_243X),
 	CLK(NULL,	"mmchs2_fck",	&mmchs2_fck,	CK_243X),
 =======
+<<<<<<< HEAD
+	CLK(NULL,	"mmchs1_fck",	&mmchs1_fck,	CK_243X),
+	CLK("omap_hsmmc.1", "ick",	&mmchs2_ick,	CK_243X),
+	CLK(NULL,	"mmchs2_fck",	&mmchs2_fck,	CK_243X),
+=======
 	CLK("omap_hsmmc.0", "fck",	&mmchs1_fck,	CK_243X),
 	CLK("omap_hsmmc.1", "ick",	&mmchs2_ick,	CK_243X),
 	CLK("omap_hsmmc.1", "fck",	&mmchs2_fck,	CK_243X),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK(NULL,	"gpio5_ick",	&gpio5_ick,	CK_243X),
 	CLK(NULL,	"gpio5_fck",	&gpio5_fck,	CK_243X),
 	CLK(NULL,	"mdm_intc_ick",	&mdm_intc_ick,	CK_243X),
 	CLK("omap_hsmmc.0", "mmchsdb_fck",	&mmchsdb1_fck,	CK_243X),
 	CLK("omap_hsmmc.1", "mmchsdb_fck",	&mmchsdb2_fck,	CK_243X),
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	CLK("omap_timer.1",	"32k_ck",  &func_32k_ck,   CK_243X),
 	CLK("omap_timer.2",	"32k_ck",  &func_32k_ck,   CK_243X),
 	CLK("omap_timer.3",	"32k_ck",  &func_32k_ck,   CK_243X),
@@ -2082,8 +2119,11 @@ static struct omap_clk omap2430_clks[] = {
 	CLK("omap_timer.10",	"alt_ck",	&alt_ck,	CK_243X),
 	CLK("omap_timer.11",	"alt_ck",	&alt_ck,	CK_243X),
 	CLK("omap_timer.12",	"alt_ck",	&alt_ck,	CK_243X),
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*

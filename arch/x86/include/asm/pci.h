@@ -113,6 +113,9 @@ static inline void x86_teardown_msi_irq(unsigned int irq)
 	x86_msi.teardown_msi_irq(irq);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void x86_restore_msi_irqs(struct pci_dev *dev, int irq)
 {
 	x86_msi.restore_msi_irqs(dev, irq);
@@ -130,6 +133,8 @@ void native_restore_msi_irqs(struct pci_dev *dev, int irq);
 #define HAVE_DEFAULT_MSI_RESTORE_IRQS
 void default_teardown_msi_irqs(struct pci_dev *dev);
 void default_restore_msi_irqs(struct pci_dev *dev, int irq);
+<<<<<<< HEAD
+=======
 =======
 #define arch_setup_msi_irqs x86_setup_msi_irqs
 #define arch_teardown_msi_irqs x86_teardown_msi_irqs
@@ -141,6 +146,7 @@ void native_teardown_msi_irq(unsigned int irq);
 #define HAVE_DEFAULT_MSI_TEARDOWN_IRQS
 void default_teardown_msi_irqs(struct pci_dev *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #else
 #define native_setup_msi_irqs		NULL
 #define native_teardown_msi_irq		NULL
@@ -148,7 +154,11 @@ void default_teardown_msi_irqs(struct pci_dev *dev);
 <<<<<<< HEAD
 #define default_restore_msi_irqs	NULL
 =======
+<<<<<<< HEAD
+#define default_restore_msi_irqs	NULL
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #define PCI_DMA_BUS_IS_PHYS (dma_ops->is_phys)

@@ -15,9 +15,15 @@
 
 ssize_t nfs_dns_resolve_name(struct net *net, char *name, size_t namelen,
 =======
+<<<<<<< HEAD
+#include "dns_resolve.h"
+
+ssize_t nfs_dns_resolve_name(struct net *net, char *name, size_t namelen,
+=======
 
 ssize_t nfs_dns_resolve_name(char *name, size_t namelen,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct sockaddr *sa, size_t salen)
 {
 	ssize_t ret;
@@ -29,8 +35,12 @@ ssize_t nfs_dns_resolve_name(char *name, size_t namelen,
 <<<<<<< HEAD
 		ret = rpc_pton(net, ip_addr, ip_len, sa, salen);
 =======
+<<<<<<< HEAD
+		ret = rpc_pton(net, ip_addr, ip_len, sa, salen);
+=======
 		ret = rpc_pton(ip_addr, ip_len, sa, salen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		ret = -ESRCH;
 	kfree(ip_addr);
@@ -51,25 +61,34 @@ ssize_t nfs_dns_resolve_name(char *name, size_t namelen,
 #include <linux/sunrpc/cache.h>
 #include <linux/sunrpc/svcauth.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/sunrpc/rpc_pipe_fs.h>
 
 #include "dns_resolve.h"
 #include "cache_lib.h"
 #include "netns.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include "dns_resolve.h"
 #include "cache_lib.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define NFS_DNS_HASHBITS 4
 #define NFS_DNS_HASHTBL_SIZE (1 << NFS_DNS_HASHBITS)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct cache_head *nfs_dns_table[NFS_DNS_HASHTBL_SIZE];
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct nfs_dns_ent {
 	struct cache_head h;
 
@@ -237,8 +256,12 @@ static int nfs_dns_parse(struct cache_detail *cd, char *buf, int buflen)
 <<<<<<< HEAD
 	unsigned long ttl;
 =======
+<<<<<<< HEAD
+	unsigned long ttl;
+=======
 	unsigned int ttl;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ssize_t len;
 	int ret = -EINVAL;
 
@@ -252,8 +275,12 @@ static int nfs_dns_parse(struct cache_detail *cd, char *buf, int buflen)
 <<<<<<< HEAD
 	key.addrlen = rpc_pton(cd->net, buf1, len,
 =======
+<<<<<<< HEAD
+	key.addrlen = rpc_pton(cd->net, buf1, len,
+=======
 	key.addrlen = rpc_pton(buf1, len,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(struct sockaddr *)&key.addr,
 			sizeof(key.addr));
 
@@ -268,9 +295,13 @@ static int nfs_dns_parse(struct cache_detail *cd, char *buf, int buflen)
 <<<<<<< HEAD
 	ttl = get_expiry(&buf);
 =======
+<<<<<<< HEAD
+	ttl = get_expiry(&buf);
+=======
 	if (get_uint(&buf, &ttl) < 0)
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ttl == 0)
 		goto out;
 	key.h.expiry_time = ttl + seconds_since_boot();
@@ -295,6 +326,8 @@ out:
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct cache_detail nfs_dns_resolve = {
 	.owner = THIS_MODULE,
 	.hash_size = NFS_DNS_HASHTBL_SIZE,
@@ -311,6 +344,7 @@ static struct cache_detail nfs_dns_resolve = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int do_cache_lookup(struct cache_detail *cd,
 		struct nfs_dns_ent *key,
 		struct nfs_dns_ent **item,
@@ -377,9 +411,14 @@ out:
 ssize_t nfs_dns_resolve_name(struct net *net, char *name,
 		size_t namelen, struct sockaddr *sa, size_t salen)
 =======
+<<<<<<< HEAD
+ssize_t nfs_dns_resolve_name(struct net *net, char *name,
+		size_t namelen, struct sockaddr *sa, size_t salen)
+=======
 ssize_t nfs_dns_resolve_name(char *name, size_t namelen,
 		struct sockaddr *sa, size_t salen)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct nfs_dns_ent key = {
 		.hostname = name,
@@ -392,9 +431,15 @@ ssize_t nfs_dns_resolve_name(char *name, size_t namelen,
 
 	ret = do_cache_lookup_wait(nn->nfs_dns_resolve, &key, &item);
 =======
+<<<<<<< HEAD
+	struct nfs_net *nn = net_generic(net, nfs_net_id);
+
+	ret = do_cache_lookup_wait(nn->nfs_dns_resolve, &key, &item);
+=======
 
 	ret = do_cache_lookup_wait(&nfs_dns_resolve, &key, &item);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret == 0) {
 		if (salen >= item->addrlen) {
 			memcpy(sa, &item->addr, item->addrlen);
@@ -404,14 +449,21 @@ ssize_t nfs_dns_resolve_name(char *name, size_t namelen,
 <<<<<<< HEAD
 		cache_put(&item->h, nn->nfs_dns_resolve);
 =======
+<<<<<<< HEAD
+		cache_put(&item->h, nn->nfs_dns_resolve);
+=======
 		cache_put(&item->h, &nfs_dns_resolve);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (ret == -ENOENT)
 		ret = -ESRCH;
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int nfs_dns_resolver_cache_init(struct net *net)
 {
 	int err = -ENOMEM;
@@ -505,11 +557,14 @@ static struct notifier_block nfs_dns_resolver_block = {
 int nfs_dns_resolver_init(void)
 {
 	return rpc_pipefs_notifier_register(&nfs_dns_resolver_block);
+<<<<<<< HEAD
+=======
 =======
 int nfs_dns_resolver_init(void)
 {
 	return nfs_cache_register(&nfs_dns_resolve);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void nfs_dns_resolver_destroy(void)
@@ -518,8 +573,13 @@ void nfs_dns_resolver_destroy(void)
 	rpc_pipefs_notifier_unregister(&nfs_dns_resolver_block);
 }
 =======
+<<<<<<< HEAD
+	rpc_pipefs_notifier_unregister(&nfs_dns_resolver_block);
+}
+=======
 	nfs_cache_unregister(&nfs_dns_resolve);
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

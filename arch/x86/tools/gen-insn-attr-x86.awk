@@ -50,8 +50,12 @@ BEGIN {
 <<<<<<< HEAD
 	imm_expr = "^[IJAOL][a-z]"
 =======
+<<<<<<< HEAD
+	imm_expr = "^[IJAOL][a-z]"
+=======
 	imm_expr = "^[IJAO][a-z]"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	imm_flag["Ib"] = "INAT_MAKE_IMM(INAT_IMM_BYTE)"
 	imm_flag["Jb"] = "INAT_MAKE_IMM(INAT_IMM_BYTE)"
 	imm_flag["Iw"] = "INAT_MAKE_IMM(INAT_IMM_WORD)"
@@ -66,7 +70,11 @@ BEGIN {
 <<<<<<< HEAD
 	imm_flag["Lx"] = "INAT_MAKE_IMM(INAT_IMM_BYTE)"
 =======
+<<<<<<< HEAD
+	imm_flag["Lx"] = "INAT_MAKE_IMM(INAT_IMM_BYTE)"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	modrm_expr = "^([CDEGMNPQRSUVW/][a-z]+|NTA|T[012])"
 	force64_expr = "\\([df]64\\)"
@@ -79,16 +87,22 @@ BEGIN {
 	max_lprefix = 4
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	# All opcodes starting with lower-case 'v' or with (v1) superscript
 	# accepts VEX prefix
 	vexok_opcode_expr = "^v.*"
 	vexok_expr = "\\(v1\\)"
 	# All opcodes with (v) superscript supports *only* VEX prefix
 	vexonly_expr = "\\(v\\)"
+<<<<<<< HEAD
+=======
 =======
 	vexok_expr = "\\(VEX\\)"
 	vexonly_expr = "\\(oVEX\\)"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	prefix_expr = "\\(Prefix\\)"
 	prefix_num["Operand-Size"] = "INAT_PFX_OPNDSZ"
@@ -106,9 +120,14 @@ BEGIN {
 	prefix_num["VEX+1byte"] = "INAT_PFX_VEX2"
 	prefix_num["VEX+2byte"] = "INAT_PFX_VEX3"
 =======
+<<<<<<< HEAD
+	prefix_num["VEX+1byte"] = "INAT_PFX_VEX2"
+	prefix_num["VEX+2byte"] = "INAT_PFX_VEX3"
+=======
 	prefix_num["2bytes-VEX"] = "INAT_PFX_VEX2"
 	prefix_num["3bytes-VEX"] = "INAT_PFX_VEX3"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	clear_vars()
 }
@@ -333,10 +352,15 @@ function convert_operands(count,opnd,       i,j,imm,mod)
 			flags = add_flags(flags, "INAT_MODRM")
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		# check VEX codes
 		if (match(ext, vexonly_expr))
 			flags = add_flags(flags, "INAT_VEXOK | INAT_VEXONLY")
 		else if (match(ext, vexok_expr) || match(opcode, vexok_opcode_expr))
+<<<<<<< HEAD
+=======
 =======
 		# check VEX only code
 		if (match(ext, vexonly_expr))
@@ -345,6 +369,7 @@ function convert_operands(count,opnd,       i,j,imm,mod)
 		# check VEX only code
 		if (match(ext, vexok_expr))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			flags = add_flags(flags, "INAT_VEXOK")
 
 		# check prefixes

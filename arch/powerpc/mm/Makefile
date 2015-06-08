@@ -25,7 +25,12 @@ obj-$(CONFIG_PPC_STD_MMU)	+= hash_low_$(CONFIG_WORD_SIZE).o \
 obj-$(CONFIG_PPC_ICSWX)		+= icswx.o
 obj-$(CONFIG_PPC_ICSWX_PID)	+= icswx_pid.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_PPC_ICSWX)		+= icswx.o
+obj-$(CONFIG_PPC_ICSWX_PID)	+= icswx_pid.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_40x)		+= 40x_mmu.o
 obj-$(CONFIG_44x)		+= 44x_mmu.o
 obj-$(CONFIG_PPC_FSL_BOOK3E)	+= fsl_booke_mmu.o
@@ -37,7 +42,11 @@ obj-$(CONFIG_PPC_STD_MMU_64)	+= hugetlbpage-hash64.o
 <<<<<<< HEAD
 obj-$(CONFIG_PPC_BOOK3E_MMU)	+= hugetlbpage-book3e.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_PPC_BOOK3E_MMU)	+= hugetlbpage-book3e.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 endif
 obj-$(CONFIG_PPC_SUBPAGE_PROT)	+= subpage-prot.o
 obj-$(CONFIG_NOT_COHERENT_CACHE) += dma-noncoherent.o

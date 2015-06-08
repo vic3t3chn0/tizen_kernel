@@ -83,8 +83,12 @@ int tipc_multicast(u32 ref, struct tipc_name_seq const *seq,
 <<<<<<< HEAD
 	struct tipc_port_list dports = {0, NULL, };
 =======
+<<<<<<< HEAD
+	struct tipc_port_list dports = {0, NULL, };
+=======
 	struct port_list dports = {0, NULL, };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tipc_port *oport = tipc_port_deref(ref);
 	int ext_targets;
 	int res;
@@ -123,8 +127,12 @@ int tipc_multicast(u32 ref, struct tipc_name_seq const *seq,
 <<<<<<< HEAD
 				kfree_skb(buf);
 =======
+<<<<<<< HEAD
+				kfree_skb(buf);
+=======
 				buf_discard(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				return -ENOMEM;
 			}
 		}
@@ -133,8 +141,12 @@ int tipc_multicast(u32 ref, struct tipc_name_seq const *seq,
 <<<<<<< HEAD
 			kfree_skb(ibuf);
 =======
+<<<<<<< HEAD
+			kfree_skb(ibuf);
+=======
 			buf_discard(ibuf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		ibuf = buf;
 	}
@@ -155,11 +167,16 @@ int tipc_multicast(u32 ref, struct tipc_name_seq const *seq,
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void tipc_port_recv_mcast(struct sk_buff *buf, struct tipc_port_list *dp)
 {
 	struct tipc_msg *msg;
 	struct tipc_port_list dports = {0, NULL, };
 	struct tipc_port_list *item = dp;
+<<<<<<< HEAD
+=======
 =======
 void tipc_port_recv_mcast(struct sk_buff *buf, struct port_list *dp)
 {
@@ -167,6 +184,7 @@ void tipc_port_recv_mcast(struct sk_buff *buf, struct port_list *dp)
 	struct port_list dports = {0, NULL, };
 	struct port_list *item = dp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int cnt = 0;
 
 	msg = buf_msg(buf);
@@ -210,8 +228,12 @@ exit:
 <<<<<<< HEAD
 	kfree_skb(buf);
 =======
+<<<<<<< HEAD
+	kfree_skb(buf);
+=======
 	buf_discard(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tipc_port_list_free(dp);
 }
 
@@ -249,8 +271,12 @@ struct tipc_port *tipc_createport_raw(void *usr_handle,
 <<<<<<< HEAD
 	tipc_msg_init(msg, importance, TIPC_NAMED_MSG, NAMED_H_SIZE, 0);
 =======
+<<<<<<< HEAD
+	tipc_msg_init(msg, importance, TIPC_NAMED_MSG, NAMED_H_SIZE, 0);
+=======
 	tipc_msg_init(msg, importance, TIPC_NAMED_MSG, LONG_H_SIZE, 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msg_set_origport(msg, ref);
 	INIT_LIST_HEAD(&p_ptr->wait_list);
 	INIT_LIST_HEAD(&p_ptr->subscription.nodesub_list);
@@ -356,12 +382,17 @@ int tipc_set_portunreturnable(u32 ref, unsigned int isunrejectable)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * port_build_proto_msg(): create connection protocol message for port
  *
  * On entry the port must be locked and connected.
  */
 static struct sk_buff *port_build_proto_msg(struct tipc_port *p_ptr,
 					    u32 type, u32 ack)
+<<<<<<< HEAD
+=======
 =======
  * port_build_proto_msg(): build a port level protocol
  * or a connection abortion message. Called with
@@ -372,11 +403,15 @@ static struct sk_buff *port_build_proto_msg(u32 destport, u32 destnode,
 					    u32 usr, u32 type, u32 err,
 					    u32 ack)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct sk_buff *buf;
 	struct tipc_msg *msg;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	buf = tipc_buf_acquire(INT_H_SIZE);
 	if (buf) {
 		msg = buf_msg(buf);
@@ -384,6 +419,8 @@ static struct sk_buff *port_build_proto_msg(u32 destport, u32 destnode,
 			      port_peernode(p_ptr));
 		msg_set_destport(msg, port_peerport(p_ptr));
 		msg_set_origport(msg, p_ptr->ref);
+<<<<<<< HEAD
+=======
 =======
 	buf = tipc_buf_acquire(LONG_H_SIZE);
 	if (buf) {
@@ -394,6 +431,7 @@ static struct sk_buff *port_build_proto_msg(u32 destport, u32 destnode,
 		msg_set_origport(msg, origport);
 		msg_set_orignode(msg, orignode);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		msg_set_msgcnt(msg, ack);
 	}
 	return buf;
@@ -406,6 +444,9 @@ int tipc_reject_msg(struct sk_buff *buf, u32 err)
 	struct tipc_msg *rmsg;
 	int hdr_sz;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32 imp;
 	u32 data_sz = msg_data_sz(msg);
 	u32 src_node;
@@ -472,6 +513,8 @@ int tipc_reject_msg(struct sk_buff *buf, u32 err)
 		tipc_link_send(rbuf, src_node, msg_link_selector(rmsg));
 exit:
 	kfree_skb(buf);
+<<<<<<< HEAD
+=======
 =======
 	u32 imp = msg_importance(msg);
 	u32 data_sz = msg_data_sz(msg);
@@ -530,6 +573,7 @@ exit:
 	buf_discard(buf);
 	tipc_net_route_msg(rbuf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return data_sz;
 }
 
@@ -568,6 +612,9 @@ static void port_timeout(unsigned long ref)
 <<<<<<< HEAD
 		buf = port_build_proto_msg(p_ptr, CONN_PROBE, 0);
 =======
+<<<<<<< HEAD
+		buf = port_build_proto_msg(p_ptr, CONN_PROBE, 0);
+=======
 		buf = port_build_proto_msg(port_peerport(p_ptr),
 					   port_peernode(p_ptr),
 					   p_ptr->ref,
@@ -577,6 +624,7 @@ static void port_timeout(unsigned long ref)
 					   TIPC_OK,
 					   0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		p_ptr->probing_state = PROBING;
 		k_start_timer(&p_ptr->timer, p_ptr->probing_interval);
 	}
@@ -601,6 +649,9 @@ static void port_handle_node_down(unsigned long ref)
 static struct sk_buff *port_build_self_abort_msg(struct tipc_port *p_ptr, u32 err)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *buf = port_build_peer_abort_msg(p_ptr, err);
 
 	if (buf) {
@@ -609,6 +660,8 @@ static struct sk_buff *port_build_self_abort_msg(struct tipc_port *p_ptr, u32 er
 		msg_swap_words(msg, 6, 7);
 	}
 	return buf;
+<<<<<<< HEAD
+=======
 =======
 	u32 imp = msg_importance(&p_ptr->phdr);
 
@@ -625,12 +678,16 @@ static struct sk_buff *port_build_self_abort_msg(struct tipc_port *p_ptr, u32 er
 				    err,
 				    0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 
 static struct sk_buff *port_build_peer_abort_msg(struct tipc_port *p_ptr, u32 err)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct sk_buff *buf;
 	struct tipc_msg *msg;
 	u32 imp;
@@ -650,6 +707,8 @@ static struct sk_buff *port_build_peer_abort_msg(struct tipc_port *p_ptr, u32 er
 		msg_set_errcode(msg, err);
 	}
 	return buf;
+<<<<<<< HEAD
+=======
 =======
 	u32 imp = msg_importance(&p_ptr->phdr);
 
@@ -666,12 +725,16 @@ static struct sk_buff *port_build_peer_abort_msg(struct tipc_port *p_ptr, u32 er
 				    err,
 				    0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 void tipc_port_recv_proto_msg(struct sk_buff *buf)
 {
 	struct tipc_msg *msg = buf_msg(buf);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tipc_port *p_ptr;
 	struct sk_buff *r_buf = NULL;
 	u32 orignode = msg_orignode(msg);
@@ -724,6 +787,8 @@ void tipc_port_recv_proto_msg(struct sk_buff *buf)
 exit:
 	tipc_net_route_msg(r_buf);
 	kfree_skb(buf);
+<<<<<<< HEAD
+=======
 =======
 	struct tipc_port *p_ptr = tipc_port_lock(msg_destport(msg));
 	u32 err = TIPC_OK;
@@ -783,6 +848,7 @@ exit:
 	tipc_net_route_msg(abort_buf);
 	buf_discard(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void port_print(struct tipc_port *p_ptr, struct print_buf *buf, int full_id)
@@ -976,8 +1042,12 @@ static void port_dispatcher_sigh(void *dummy)
 <<<<<<< HEAD
 			kfree_skb(buf);
 =======
+<<<<<<< HEAD
+			kfree_skb(buf);
+=======
 			buf_discard(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		buf = next;
 		continue;
 err:
@@ -1034,8 +1104,12 @@ err:
 <<<<<<< HEAD
 			kfree_skb(buf);
 =======
+<<<<<<< HEAD
+			kfree_skb(buf);
+=======
 			buf_discard(buf);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		buf = next;
 		continue;
 reject:
@@ -1108,6 +1182,9 @@ void tipc_acknowledge(u32 ref, u32 ack)
 <<<<<<< HEAD
 		buf = port_build_proto_msg(p_ptr, CONN_ACK, ack);
 =======
+<<<<<<< HEAD
+		buf = port_build_proto_msg(p_ptr, CONN_ACK, ack);
+=======
 		buf = port_build_proto_msg(port_peerport(p_ptr),
 					   port_peernode(p_ptr),
 					   ref,
@@ -1117,6 +1194,7 @@ void tipc_acknowledge(u32 ref, u32 ack)
 					   TIPC_OK,
 					   ack);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	tipc_port_unlock(p_ptr);
 	tipc_net_route_msg(buf);
@@ -1289,9 +1367,12 @@ int tipc_connect2port(u32 ref, struct tipc_portid const *peer)
 	msg_set_destport(msg, peer->ref);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	msg_set_orignode(msg, tipc_own_addr);
 	msg_set_origport(msg, p_ptr->ref);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msg_set_type(msg, TIPC_CONN_MSG);
 	msg_set_lookup_scope(msg, 0);
 	msg_set_hdr_sz(msg, SHORT_H_SIZE);
@@ -1366,6 +1447,9 @@ int tipc_shutdown(u32 ref)
 <<<<<<< HEAD
 	buf = port_build_peer_abort_msg(p_ptr, TIPC_CONN_SHUTDOWN);
 =======
+<<<<<<< HEAD
+	buf = port_build_peer_abort_msg(p_ptr, TIPC_CONN_SHUTDOWN);
+=======
 	if (p_ptr->connected) {
 		u32 imp = msg_importance(&p_ptr->phdr);
 		if (imp < TIPC_CRITICAL_IMPORTANCE)
@@ -1380,12 +1464,16 @@ int tipc_shutdown(u32 ref)
 					   0);
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	tipc_port_unlock(p_ptr);
 	tipc_net_route_msg(buf);
 	return tipc_disconnect(ref);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /**
  * tipc_port_recv_msg - receive message from lower layer and deliver to port user
  */
@@ -1429,8 +1517,11 @@ reject:
 	return tipc_reject_msg(buf, err);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *  tipc_port_recv_sections(): Concatenate and deliver sectioned
  *                        message for this node.
@@ -1512,10 +1603,14 @@ int tipc_send2name(u32 ref, struct tipc_name const *name, unsigned int domain,
 <<<<<<< HEAD
 	msg_set_hdr_sz(msg, NAMED_H_SIZE);
 =======
+<<<<<<< HEAD
+	msg_set_hdr_sz(msg, NAMED_H_SIZE);
+=======
 	msg_set_orignode(msg, tipc_own_addr);
 	msg_set_origport(msg, ref);
 	msg_set_hdr_sz(msg, LONG_H_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msg_set_nametype(msg, name->type);
 	msg_set_nameinst(msg, name->instance);
 	msg_set_lookup_scope(msg, tipc_addr_scope(domain));
@@ -1526,8 +1621,12 @@ int tipc_send2name(u32 ref, struct tipc_name const *name, unsigned int domain,
 <<<<<<< HEAD
 	if (likely(destport || destnode)) {
 =======
+<<<<<<< HEAD
+	if (likely(destport || destnode)) {
+=======
 	if (likely(destport)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (likely(destnode == tipc_own_addr))
 			res = tipc_port_recv_sections(p_ptr, num_sect,
 						      msg_sect, total_len);
@@ -1573,12 +1672,18 @@ int tipc_send2port(u32 ref, struct tipc_portid const *dest,
 	msg_set_destport(msg, dest->ref);
 	msg_set_hdr_sz(msg, BASIC_H_SIZE);
 =======
+<<<<<<< HEAD
+	msg_set_destnode(msg, dest->node);
+	msg_set_destport(msg, dest->ref);
+	msg_set_hdr_sz(msg, BASIC_H_SIZE);
+=======
 	msg_set_orignode(msg, tipc_own_addr);
 	msg_set_origport(msg, ref);
 	msg_set_destnode(msg, dest->node);
 	msg_set_destport(msg, dest->ref);
 	msg_set_hdr_sz(msg, DIR_MSG_H_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dest->node == tipc_own_addr)
 		res =  tipc_port_recv_sections(p_ptr, num_sect, msg_sect,
@@ -1615,6 +1720,9 @@ int tipc_send_buf2port(u32 ref, struct tipc_portid const *dest,
 	msg = &p_ptr->phdr;
 	msg_set_type(msg, TIPC_DIRECT_MSG);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	msg_set_destnode(msg, dest->node);
 	msg_set_destport(msg, dest->ref);
 	msg_set_hdr_sz(msg, BASIC_H_SIZE);
@@ -1624,6 +1732,8 @@ int tipc_send_buf2port(u32 ref, struct tipc_portid const *dest,
 
 	skb_push(buf, BASIC_H_SIZE);
 	skb_copy_to_linear_data(buf, msg, BASIC_H_SIZE);
+<<<<<<< HEAD
+=======
 =======
 	msg_set_orignode(msg, tipc_own_addr);
 	msg_set_origport(msg, ref);
@@ -1637,6 +1747,7 @@ int tipc_send_buf2port(u32 ref, struct tipc_portid const *dest,
 	skb_push(buf, DIR_MSG_H_SIZE);
 	skb_copy_to_linear_data(buf, msg, DIR_MSG_H_SIZE);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (dest->node == tipc_own_addr)
 		res = tipc_port_recv_msg(buf);

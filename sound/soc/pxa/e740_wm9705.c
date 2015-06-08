@@ -110,9 +110,12 @@ static int e740_ac97_init(struct snd_soc_pcm_runtime *rtd)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	snd_soc_dapm_sync(dapm);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -141,12 +144,19 @@ static struct snd_soc_card e740 = {
 <<<<<<< HEAD
 	.owner = THIS_MODULE,
 =======
+<<<<<<< HEAD
+	.owner = THIS_MODULE,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dai_link = e740_dai,
 	.num_links = ARRAY_SIZE(e740_dai),
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct gpio e740_audio_gpios[] = {
 	{ GPIO_E740_MIC_ON, GPIOF_OUT_INIT_LOW, "Mic amp" },
 	{ GPIO_E740_AMP_ON, GPIOF_OUT_INIT_LOW, "Output amp" },
@@ -193,6 +203,8 @@ static struct platform_driver e740_driver = {
 };
 
 module_platform_driver(e740_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *e740_snd_device;
 
@@ -261,6 +273,7 @@ static void __exit e740_exit(void)
 module_init(e740_init);
 module_exit(e740_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR("Ian Molton <spyro@f2s.com>");
@@ -269,4 +282,8 @@ MODULE_LICENSE("GPL v2");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:e740-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:e740-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -222,8 +222,12 @@ struct inode *sysv_iget(struct super_block *sb, unsigned int ino)
 <<<<<<< HEAD
 	set_nlink(inode, fs16_to_cpu(sbi, raw_inode->i_nlink));
 =======
+<<<<<<< HEAD
+	set_nlink(inode, fs16_to_cpu(sbi, raw_inode->i_nlink));
+=======
 	inode->i_nlink = fs16_to_cpu(sbi, raw_inode->i_nlink);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_size = fs32_to_cpu(sbi, raw_inode->i_size);
 	inode->i_atime.tv_sec = fs32_to_cpu(sbi, raw_inode->i_atime);
 	inode->i_mtime.tv_sec = fs32_to_cpu(sbi, raw_inode->i_mtime);
@@ -342,8 +346,11 @@ static void sysv_i_callback(struct rcu_head *head)
 	struct inode *inode = container_of(head, struct inode, i_rcu);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	INIT_LIST_HEAD(&inode->i_dentry);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kmem_cache_free(sysv_inode_cachep, SYSV_I(inode));
 }
 

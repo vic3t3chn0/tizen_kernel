@@ -251,10 +251,15 @@ cbq_classify(struct sk_buff *skb, struct Qdisc *sch, int *qerr)
 				cl = defmap[TC_PRIO_BESTEFFORT];
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (cl == NULL || cl->level >= head->level)
 				goto fallback;
 		}
 
+<<<<<<< HEAD
+=======
 =======
 			if (cl == NULL)
 				goto fallback;
@@ -262,6 +267,7 @@ cbq_classify(struct sk_buff *skb, struct Qdisc *sch, int *qerr)
 		if (cl->level >= head->level)
 			goto fallback;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_NET_CLS_ACT
 		switch (result) {
 		case TC_ACT_QUEUED:
@@ -1473,8 +1479,11 @@ static int cbq_dump_wrr(struct sk_buff *skb, struct cbq_class *cl)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	memset(&opt, 0, sizeof(opt));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	opt.flags = 0;
 	opt.allot = cl->allot;
 	opt.priority = cl->priority + 1;

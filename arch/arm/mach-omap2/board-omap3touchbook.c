@@ -43,15 +43,21 @@
 #include <asm/mach/map.h>
 #include <asm/mach/flash.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/system_info.h>
 
 #include <plat/board.h>
 #include "common.h"
+<<<<<<< HEAD
+=======
 =======
 
 #include <plat/board.h>
 #include <plat/common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/gpmc.h>
 #include <plat/nand.h>
 #include <plat/usb.h>
@@ -60,8 +66,11 @@
 #include "hsmmc.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "timer-gp.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common-board-devices.h"
 
 #include <asm/setup.h>
@@ -114,18 +123,27 @@ static struct omap2_hsmmc_info mmc[] = {
 <<<<<<< HEAD
 		.deferred	= true,
 =======
+<<<<<<< HEAD
+		.deferred	= true,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	{}	/* Terminator */
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply touchbook_vmmc1_supply[] = {
 	REGULATOR_SUPPLY("vmmc", "omap_hsmmc.0"),
 };
 
 static struct regulator_consumer_supply touchbook_vsim_supply[] = {
 	REGULATOR_SUPPLY("vmmc_aux", "omap_hsmmc.0"),
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device omap3_touchbook_lcd_device = {
 	.name		= "omap3touchbook_lcd",
@@ -143,6 +161,7 @@ static struct regulator_consumer_supply touchbook_vmmc1_supply = {
 static struct regulator_consumer_supply touchbook_vsim_supply = {
 	.supply			= "vmmc_aux",
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct gpio_led gpio_leds[];
@@ -150,6 +169,11 @@ static struct gpio_led gpio_leds[];
 static int touchbook_twl_gpio_setup(struct device *dev,
 		unsigned gpio, unsigned ngpio)
 {
+<<<<<<< HEAD
+	/* gpio + 0 is "mmc0_cd" (input/IRQ) */
+	mmc[0].gpio_cd = gpio + 0;
+	omap_hsmmc_late_init(mmc);
+=======
 <<<<<<< HEAD
 	/* gpio + 0 is "mmc0_cd" (input/IRQ) */
 	mmc[0].gpio_cd = gpio + 0;
@@ -169,6 +193,7 @@ static int touchbook_twl_gpio_setup(struct device *dev,
 	touchbook_vmmc1_supply.dev = mmc[0].dev;
 	touchbook_vsim_supply.dev = mmc[0].dev;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* REVISIT: need ehci-omap hooks for external VBUS
 	 * power switch and overcurrent detect
@@ -197,6 +222,9 @@ static struct twl4030_gpio_platform_data touchbook_gpio_data = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply touchbook_vdac_supply[] = {
 {
 	.supply		= "vdac",
@@ -207,6 +235,8 @@ static struct regulator_consumer_supply touchbook_vdvi_supply[] = {
 {
 	.supply		= "vdvi",
 },
+<<<<<<< HEAD
+=======
 =======
 static struct regulator_consumer_supply touchbook_vdac_supply = {
 	.supply		= "vdac",
@@ -217,6 +247,7 @@ static struct regulator_consumer_supply touchbook_vdvi_supply = {
 	.supply		= "vdvi",
 	.dev		= &omap3_touchbook_lcd_device.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VMMC1 for MMC1 pins CMD, CLK, DAT0..DAT3 (20 mA, plus card == max 220 mA) */
@@ -234,9 +265,14 @@ static struct regulator_init_data touchbook_vmmc1 = {
 	.num_consumer_supplies	= ARRAY_SIZE(touchbook_vmmc1_supply),
 	.consumer_supplies	= touchbook_vmmc1_supply,
 =======
+<<<<<<< HEAD
+	.num_consumer_supplies	= ARRAY_SIZE(touchbook_vmmc1_supply),
+	.consumer_supplies	= touchbook_vmmc1_supply,
+=======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &touchbook_vmmc1_supply,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* VSIM for MMC1 pins DAT4..DAT7 (2 mA, plus card == max 50 mA) */
@@ -251,6 +287,9 @@ static struct regulator_init_data touchbook_vsim = {
 					| REGULATOR_CHANGE_STATUS,
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.num_consumer_supplies	= ARRAY_SIZE(touchbook_vsim_supply),
 	.consumer_supplies	= touchbook_vsim_supply,
 };
@@ -260,6 +299,8 @@ static struct twl4030_platform_data touchbook_twldata = {
 	.gpio		= &touchbook_gpio_data,
 	.vmmc1		= &touchbook_vmmc1,
 	.vsim		= &touchbook_vsim,
+<<<<<<< HEAD
+=======
 =======
 	.num_consumer_supplies	= 1,
 	.consumer_supplies	= &touchbook_vsim_supply,
@@ -318,6 +359,7 @@ static struct twl4030_platform_data touchbook_twldata = {
 	.vdac		= &touchbook_vdac,
 	.vpll2		= &touchbook_vpll2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct i2c_board_info __initdata touchBook_i2c_boardinfo[] = {
@@ -330,6 +372,9 @@ static int __init omap3_touchbook_i2c_init(void)
 {
 	/* Standard TouchBook bus */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_pmic_get_config(&touchbook_twldata,
 			TWL_COMMON_PDATA_USB | TWL_COMMON_PDATA_AUDIO,
 			TWL_COMMON_REGULATOR_VDAC | TWL_COMMON_REGULATOR_VPLL2);
@@ -344,10 +389,13 @@ static int __init omap3_touchbook_i2c_init(void)
 	touchbook_twldata.vpll2->consumer_supplies = touchbook_vdvi_supply;
 
 	omap3_pmic_init("twl4030", &touchbook_twldata);
+<<<<<<< HEAD
+=======
 =======
 	omap3_pmic_init("twl4030", &touchbook_twldata);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Additional TouchBook bus */
 	omap_register_i2c_bus(3, 100, touchBook_i2c_boardinfo,
 			ARRAY_SIZE(touchBook_i2c_boardinfo));
@@ -430,17 +478,23 @@ static struct platform_device keys_gpio = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct omap_board_config_kernel omap3_touchbook_config[] __initdata = {
 	{ OMAP_TAG_LCD,		&omap3_touchbook_lcd_config },
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_OMAP_MUX
 static struct omap_board_mux board_mux[] __initdata = {
 	{ .reg_offset = OMAP_MUX_TERMINATOR },
 };
 #endif
 
+<<<<<<< HEAD
+static struct platform_device *omap3_touchbook_devices[] __initdata = {
+=======
 <<<<<<< HEAD
 static struct platform_device *omap3_touchbook_devices[] __initdata = {
 =======
@@ -462,6 +516,7 @@ static void __init omap3_touchbook_init_irq(void)
 static struct platform_device *omap3_touchbook_devices[] __initdata = {
 	&omap3_touchbook_lcd_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&leds_gpio,
 	&keys_gpio,
 };
@@ -499,6 +554,9 @@ static void __init omap3_touchbook_init(void)
 {
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CBB);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pm_power_off = omap3_touchbook_poweroff;
 
@@ -510,6 +568,8 @@ static void __init omap3_touchbook_init(void)
 	}
 	omap_hsmmc_init(mmc);
 
+<<<<<<< HEAD
+=======
 =======
 	omap_board_config = omap3_touchbook_config;
 	omap_board_config_size = ARRAY_SIZE(omap3_touchbook_config);
@@ -517,6 +577,7 @@ static void __init omap3_touchbook_init(void)
 	pm_power_off = omap3_touchbook_poweroff;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	omap3_touchbook_i2c_init();
 	platform_add_devices(omap3_touchbook_devices,
 			ARRAY_SIZE(omap3_touchbook_devices));
@@ -525,7 +586,12 @@ static void __init omap3_touchbook_init(void)
 	omap_sdrc_init(mt46h32m32lf6_sdrc_params,
 				  mt46h32m32lf6_sdrc_params);
 =======
+<<<<<<< HEAD
+	omap_sdrc_init(mt46h32m32lf6_sdrc_params,
+				  mt46h32m32lf6_sdrc_params);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	omap_mux_init_gpio(170, OMAP_PIN_INPUT);
 	/* REVISIT leave DVI powered down until it's needed ... */
@@ -546,6 +612,9 @@ static void __init omap3_touchbook_init(void)
 MACHINE_START(TOUCHBOOK, "OMAP3 touchbook Board")
 	/* Maintainer: Gregoire Gentil - http://www.alwaysinnovating.com */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.atag_offset	= 0x100,
 	.reserve	= omap_reserve,
 	.map_io		= omap3_map_io,
@@ -555,6 +624,8 @@ MACHINE_START(TOUCHBOOK, "OMAP3 touchbook Board")
 	.init_machine	= omap3_touchbook_init,
 	.timer		= &omap3_secure_timer,
 	.restart	= omap_prcm_restart,
+<<<<<<< HEAD
+=======
 =======
 	.boot_params	= 0x80000100,
 	.reserve	= omap_reserve,
@@ -564,4 +635,5 @@ MACHINE_START(TOUCHBOOK, "OMAP3 touchbook Board")
 	.init_machine	= omap3_touchbook_init,
 	.timer		= &omap_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

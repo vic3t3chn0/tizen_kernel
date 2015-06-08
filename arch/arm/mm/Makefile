@@ -3,11 +3,16 @@
 #
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-y				:= dma-mapping.o extable.o fault.o init.o \
 				   iomap.o
 
 obj-$(CONFIG_MMU)		+= fault-armv.o flush.o idmap.o ioremap.o \
 				   mmap.o pgd.o mmu.o vmregion.o
+<<<<<<< HEAD
+=======
 =======
 obj-y				:= extable.o fault.o \
 				   iomap.o
@@ -37,6 +42,7 @@ endif
 endif
 endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 ifneq ($(CONFIG_MMU),y)
 obj-y				+= nommu.o
@@ -133,7 +139,13 @@ obj-$(CONFIG_CACHE_PL310_ERP)   += cache-pl310-erp.o
 obj-$(CONFIG_CACHE_XSC3L2)	+= cache-xsc3l2.o
 obj-$(CONFIG_CACHE_TAUROS2)	+= cache-tauros2.o
 =======
+<<<<<<< HEAD
+obj-$(CONFIG_CACHE_PL310_ERP)   += cache-pl310-erp.o
+obj-$(CONFIG_CACHE_XSC3L2)	+= cache-xsc3l2.o
+obj-$(CONFIG_CACHE_TAUROS2)	+= cache-tauros2.o
+=======
 obj-$(CONFIG_CACHE_XSC3L2)	+= cache-xsc3l2.o
 obj-$(CONFIG_CACHE_TAUROS2)	+= cache-tauros2.o
 obj-$(CONFIG_CACHE_PERF)	+= cache_perf.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

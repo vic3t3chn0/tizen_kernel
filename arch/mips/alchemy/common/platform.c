@@ -21,8 +21,12 @@
 <<<<<<< HEAD
 #include <asm/mach-au1x00/au1000.h>
 =======
+<<<<<<< HEAD
+#include <asm/mach-au1x00/au1000.h>
+=======
 #include <asm/mach-au1x00/au1xxx.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mach-au1x00/au1xxx_dbdma.h>
 #include <asm/mach-au1x00/au1100_mmc.h>
 #include <asm/mach-au1x00/au1xxx_eth.h>
@@ -87,14 +91,20 @@ static struct plat_serial8250_port au1x00_uart_data[][4] __initdata = {
 		PORT(AU1000_UART1_PHYS_ADDR, AU1200_UART1_INT),
 	},
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	[ALCHEMY_CPU_AU1300] = {
 		PORT(AU1300_UART0_PHYS_ADDR, AU1300_UART0_INT),
 		PORT(AU1300_UART1_PHYS_ADDR, AU1300_UART1_INT),
 		PORT(AU1300_UART2_PHYS_ADDR, AU1300_UART2_INT),
 		PORT(AU1300_UART3_PHYS_ADDR, AU1300_UART3_INT),
 	},
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device au1xx0_uart_device = {
@@ -125,6 +135,9 @@ static void __init alchemy_setup_uarts(int ctype)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* The dmamask must be set for OHCI/EHCI to work */
 static u64 alchemy_ohci_dmamask = DMA_BIT_MASK(32);
@@ -227,6 +240,8 @@ static void __init alchemy_setup_usb(int ctype)
 /* Macro to help defining the Ethernet MAC resources */
 #define MAC_RES_COUNT	4	/* MAC regs, MAC en, MAC INT, MACDMA regs */
 #define MAC_RES(_base, _enable, _irq, _macdma)		\
+<<<<<<< HEAD
+=======
 =======
 /* OHCI (USB full speed host controller) */
 static struct resource au1xxx_usb_ohci_resources[] = {
@@ -493,6 +508,7 @@ static struct platform_device pbdb_smbus_device = {
 #define MAC_RES_COUNT	3	/* MAC regs base, MAC enable reg, MAC INT */
 #define MAC_RES(_base, _enable, _irq)			\
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{						\
 		.start	= _base,			\
 		.end	= _base + 0xffff,		\
@@ -508,13 +524,19 @@ static struct platform_device pbdb_smbus_device = {
 		.end	= _irq,				\
 		.flags	= IORESOURCE_IRQ		\
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},						\
 	{						\
 		.start	= _macdma,			\
 		.end	= _macdma + 0x1ff,		\
 		.flags	= IORESOURCE_MEM,		\
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 static struct resource au1xxx_eth0_resources[][MAC_RES_COUNT] __initdata = {
@@ -525,8 +547,13 @@ static struct resource au1xxx_eth0_resources[][MAC_RES_COUNT] __initdata = {
 			AU1000_MAC0_DMA_INT,
 			AU1000_MACDMA0_PHYS_ADDR)
 =======
+<<<<<<< HEAD
+			AU1000_MAC0_DMA_INT,
+			AU1000_MACDMA0_PHYS_ADDR)
+=======
 			AU1000_MAC0_DMA_INT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	[ALCHEMY_CPU_AU1500] = {
 		MAC_RES(AU1500_MAC0_PHYS_ADDR,
@@ -535,8 +562,13 @@ static struct resource au1xxx_eth0_resources[][MAC_RES_COUNT] __initdata = {
 			AU1500_MAC0_DMA_INT,
 			AU1000_MACDMA0_PHYS_ADDR)
 =======
+<<<<<<< HEAD
+			AU1500_MAC0_DMA_INT,
+			AU1000_MACDMA0_PHYS_ADDR)
+=======
 			AU1500_MAC0_DMA_INT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	[ALCHEMY_CPU_AU1100] = {
 		MAC_RES(AU1000_MAC0_PHYS_ADDR,
@@ -545,8 +577,13 @@ static struct resource au1xxx_eth0_resources[][MAC_RES_COUNT] __initdata = {
 			AU1100_MAC0_DMA_INT,
 			AU1000_MACDMA0_PHYS_ADDR)
 =======
+<<<<<<< HEAD
+			AU1100_MAC0_DMA_INT,
+			AU1000_MACDMA0_PHYS_ADDR)
+=======
 			AU1100_MAC0_DMA_INT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	[ALCHEMY_CPU_AU1550] = {
 		MAC_RES(AU1000_MAC0_PHYS_ADDR,
@@ -555,8 +592,13 @@ static struct resource au1xxx_eth0_resources[][MAC_RES_COUNT] __initdata = {
 			AU1550_MAC0_DMA_INT,
 			AU1000_MACDMA0_PHYS_ADDR)
 =======
+<<<<<<< HEAD
+			AU1550_MAC0_DMA_INT,
+			AU1000_MACDMA0_PHYS_ADDR)
+=======
 			AU1550_MAC0_DMA_INT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -579,8 +621,13 @@ static struct resource au1xxx_eth1_resources[][MAC_RES_COUNT] __initdata = {
 			AU1000_MAC1_DMA_INT,
 			AU1000_MACDMA1_PHYS_ADDR)
 =======
+<<<<<<< HEAD
+			AU1000_MAC1_DMA_INT,
+			AU1000_MACDMA1_PHYS_ADDR)
+=======
 			AU1000_MAC1_DMA_INT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	[ALCHEMY_CPU_AU1500] = {
 		MAC_RES(AU1500_MAC1_PHYS_ADDR,
@@ -589,8 +636,13 @@ static struct resource au1xxx_eth1_resources[][MAC_RES_COUNT] __initdata = {
 			AU1500_MAC1_DMA_INT,
 			AU1000_MACDMA1_PHYS_ADDR)
 =======
+<<<<<<< HEAD
+			AU1500_MAC1_DMA_INT,
+			AU1000_MACDMA1_PHYS_ADDR)
+=======
 			AU1500_MAC1_DMA_INT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 	[ALCHEMY_CPU_AU1550] = {
 		MAC_RES(AU1000_MAC1_PHYS_ADDR,
@@ -599,8 +651,13 @@ static struct resource au1xxx_eth1_resources[][MAC_RES_COUNT] __initdata = {
 			AU1550_MAC1_DMA_INT,
 			AU1000_MACDMA1_PHYS_ADDR)
 =======
+<<<<<<< HEAD
+			AU1550_MAC1_DMA_INT,
+			AU1000_MACDMA1_PHYS_ADDR)
+=======
 			AU1550_MAC1_DMA_INT)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -656,8 +713,12 @@ static void __init alchemy_setup_macs(int ctype)
 <<<<<<< HEAD
 	if (ret)
 =======
+<<<<<<< HEAD
+	if (ret)
+=======
 	if (!ret)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		printk(KERN_INFO "Alchemy: failed to register MAC0\n");
 
 
@@ -687,6 +748,9 @@ static void __init alchemy_setup_macs(int ctype)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __init au1xxx_platform_init(void)
 {
 	int ctype = alchemy_get_cputype();
@@ -696,6 +760,8 @@ static int __init au1xxx_platform_init(void)
 	alchemy_setup_usb(ctype);
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device *au1xxx_platform_devices[] __initdata = {
 	&au1xxx_usb_ohci_device,
@@ -728,6 +794,7 @@ static int __init au1xxx_platform_init(void)
 				   ARRAY_SIZE(au1xxx_platform_devices));
 	return err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 arch_initcall(au1xxx_platform_init);

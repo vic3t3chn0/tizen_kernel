@@ -41,6 +41,13 @@
 #include <linux/miscdevice.h>
 #include <linux/slab.h>
 #include <linux/sysctl.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/module.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <rdma/rdma_user_cm.h>
 #include <rdma/ib_marshall.h>
@@ -276,7 +283,15 @@ static int ucma_event_handler(struct rdma_cm_id *cm_id,
 	ucma_set_event_context(ctx, event, uevent);
 	uevent->resp.event = event->event;
 	uevent->resp.status = event->status;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (cm_id->qp_type == IB_QPT_UD)
+=======
 	if (cm_id->ps == RDMA_PS_UDP || cm_id->ps == RDMA_PS_IPOIB)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (cm_id->ps == RDMA_PS_UDP || cm_id->ps == RDMA_PS_IPOIB)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ucma_copy_ud_event(&uevent->resp.param.ud, &event->param.ud);
 	else
 		ucma_copy_conn_event(&uevent->resp.param.conn,
@@ -377,6 +392,15 @@ static int ucma_get_qp_type(struct rdma_ucm_create_id *cmd, enum ib_qp_type *qp_
 	case RDMA_PS_IPOIB:
 		*qp_type = IB_QPT_UD;
 		return 0;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	case RDMA_PS_IB:
+		*qp_type = cmd->qp_type;
+		return 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	default:
 		return -EINVAL;
 	}
@@ -445,6 +469,11 @@ static void ucma_cleanup_multicast(struct ucma_context *ctx)
 	mutex_unlock(&mut);
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ucma_cleanup_events(struct ucma_context *ctx)
 {
 	struct ucma_event *uevent, *tmp;
@@ -463,6 +492,10 @@ static void ucma_cleanup_events(struct ucma_context *ctx)
 	}
 }
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void ucma_cleanup_mc_events(struct ucma_multicast *mc)
 {
 	struct ucma_event *uevent, *tmp;
@@ -476,9 +509,28 @@ static void ucma_cleanup_mc_events(struct ucma_multicast *mc)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*
+ * We cannot hold file->mut when calling rdma_destroy_id() or we can
+ * deadlock.  We also acquire file->mut in ucma_event_handler(), and
+ * rdma_destroy_id() will wait until all callbacks have completed.
+ */
 static int ucma_free_ctx(struct ucma_context *ctx)
 {
 	int events_reported;
+	struct ucma_event *uevent, *tmp;
+	LIST_HEAD(list);
+=======
+static int ucma_free_ctx(struct ucma_context *ctx)
+{
+	int events_reported;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ucma_free_ctx(struct ucma_context *ctx)
+{
+	int events_reported;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* No new events will be generated after destroying the id. */
 	rdma_destroy_id(ctx->cm_id);
@@ -487,10 +539,33 @@ static int ucma_free_ctx(struct ucma_context *ctx)
 
 	/* Cleanup events not yet reported to the user. */
 	mutex_lock(&ctx->file->mut);
+<<<<<<< HEAD
+<<<<<<< HEAD
+	list_for_each_entry_safe(uevent, tmp, &ctx->file->event_list, list) {
+		if (uevent->ctx == ctx)
+			list_move_tail(&uevent->list, &list);
+	}
+	list_del(&ctx->list);
+	mutex_unlock(&ctx->file->mut);
+
+	list_for_each_entry_safe(uevent, tmp, &list, list) {
+		list_del(&uevent->list);
+		if (uevent->resp.event == RDMA_CM_EVENT_CONNECT_REQUEST)
+			rdma_destroy_id(uevent->cm_id);
+		kfree(uevent);
+	}
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ucma_cleanup_events(ctx);
 	list_del(&ctx->list);
 	mutex_unlock(&ctx->file->mut);
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	events_reported = ctx->events_reported;
 	kfree(ctx);
 	return events_reported;
@@ -804,9 +879,24 @@ static ssize_t ucma_accept(struct ucma_file *file, const char __user *inbuf,
 		return PTR_ERR(ctx);
 
 	if (cmd.conn_param.valid) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ucma_copy_conn_param(&conn_param, &cmd.conn_param);
+		mutex_lock(&file->mut);
+		ret = rdma_accept(ctx->cm_id, &conn_param);
+		if (!ret)
+			ctx->uid = cmd.uid;
+		mutex_unlock(&file->mut);
+=======
 		ctx->uid = cmd.uid;
 		ucma_copy_conn_param(&conn_param, &cmd.conn_param);
 		ret = rdma_accept(ctx->cm_id, &conn_param);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ctx->uid = cmd.uid;
+		ucma_copy_conn_param(&conn_param, &cmd.conn_param);
+		ret = rdma_accept(ctx->cm_id, &conn_param);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else
 		ret = rdma_accept(ctx->cm_id, NULL);
 
@@ -1270,7 +1360,15 @@ static ssize_t ucma_write(struct file *filp, const char __user *buf,
 	if (copy_from_user(&hdr, buf, sizeof(hdr)))
 		return -EFAULT;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (hdr.cmd >= ARRAY_SIZE(ucma_cmd_table))
+=======
 	if (hdr.cmd < 0 || hdr.cmd >= ARRAY_SIZE(ucma_cmd_table))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (hdr.cmd < 0 || hdr.cmd >= ARRAY_SIZE(ucma_cmd_table))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return -EINVAL;
 
 	if (hdr.in + sizeof(hdr) > len)

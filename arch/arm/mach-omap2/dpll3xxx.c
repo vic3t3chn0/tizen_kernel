@@ -394,8 +394,13 @@ int omap3_noncore_dpll_enable(struct clk *clk)
 		clk->rate = (clk->recalc) ? clk->recalc(clk) :
 			omap2_get_dpll_rate(clk);
 =======
+<<<<<<< HEAD
+		clk->rate = (clk->recalc) ? clk->recalc(clk) :
+			omap2_get_dpll_rate(clk);
+=======
 		clk->rate = omap2_get_dpll_rate(clk);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return r;
 }
@@ -432,7 +437,11 @@ int omap3_noncore_dpll_set_rate(struct clk *clk, unsigned long rate)
 <<<<<<< HEAD
 	unsigned long hw_rate;
 =======
+<<<<<<< HEAD
+	unsigned long hw_rate;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u16 freqsel = 0;
 	struct dpll_data *dd;
 	int ret;
@@ -448,8 +457,13 @@ int omap3_noncore_dpll_set_rate(struct clk *clk, unsigned long rate)
 	hw_rate = (clk->recalc) ? clk->recalc(clk) : omap2_get_dpll_rate(clk);
 	if (rate == hw_rate)
 =======
+<<<<<<< HEAD
+	hw_rate = (clk->recalc) ? clk->recalc(clk) : omap2_get_dpll_rate(clk);
+	if (rate == hw_rate)
+=======
 	if (rate == omap2_get_dpll_rate(clk))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 
 	/*
@@ -472,8 +486,12 @@ int omap3_noncore_dpll_set_rate(struct clk *clk, unsigned long rate)
 <<<<<<< HEAD
 			rate = clk->round_rate(clk, rate);
 =======
+<<<<<<< HEAD
+			rate = clk->round_rate(clk, rate);
+=======
 			omap2_dpll_round_rate(clk, rate);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (dd->last_rounded_rate == 0)
 			return -EINVAL;

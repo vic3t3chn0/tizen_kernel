@@ -12,7 +12,11 @@
 <<<<<<< HEAD
 #include <linux/types.h>
 =======
+<<<<<<< HEAD
+#include <linux/types.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/socket.h>
 #include <linux/in.h>
 #include <linux/in6.h>
@@ -41,8 +45,12 @@ struct rpc_clnt {
 <<<<<<< HEAD
 	struct rpc_xprt __rcu *	cl_xprt;	/* transport */
 =======
+<<<<<<< HEAD
+	struct rpc_xprt __rcu *	cl_xprt;	/* transport */
+=======
 	struct rpc_xprt *	cl_xprt;	/* transport */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rpc_procinfo *	cl_procinfo;	/* procedure info */
 	u32			cl_prog,	/* RPC program number */
 				cl_vers,	/* RPC version number */
@@ -51,9 +59,13 @@ struct rpc_clnt {
 <<<<<<< HEAD
 	const char *		cl_protname;	/* protocol name */
 =======
+<<<<<<< HEAD
+	const char *		cl_protname;	/* protocol name */
+=======
 	char *			cl_server;	/* server machine name */
 	char *			cl_protname;	/* protocol name */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct rpc_auth *	cl_auth;	/* authenticator */
 	struct rpc_stat *	cl_stats;	/* per-program statistics */
 	struct rpc_iostats *	cl_metrics;	/* per-client statistics */
@@ -69,11 +81,16 @@ struct rpc_clnt {
 	int			cl_nodelen;	/* nodename length */
 	char 			cl_nodename[UNX_MAXNODENAME];
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct dentry *		cl_dentry;
 	struct rpc_clnt *	cl_parent;	/* Points to parent of clones */
 	struct rpc_rtt		cl_rtt_default;
 	struct rpc_timeout	cl_timeout_default;
 	const struct rpc_program *cl_program;
+<<<<<<< HEAD
+=======
 =======
 	struct path		cl_path;
 	struct rpc_clnt *	cl_parent;	/* Points to parent of clones */
@@ -82,6 +99,7 @@ struct rpc_clnt {
 	struct rpc_program *	cl_program;
 	char			cl_inline_name[32];
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char			*cl_principal;	/* target to authenticate to */
 };
 
@@ -91,12 +109,17 @@ struct rpc_clnt {
 #define RPC_MAXVERSION		4
 struct rpc_program {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char *		name;		/* protocol name */
 	u32			number;		/* program number */
 	unsigned int		nrvers;		/* number of versions */
 	const struct rpc_version **	version;	/* version array */
 	struct rpc_stat *	stats;		/* statistics */
 	const char *		pipe_dir_name;	/* path to rpc_pipefs dir */
+<<<<<<< HEAD
+=======
 =======
 	char *			name;		/* protocol name */
 	u32			number;		/* program number */
@@ -105,6 +128,7 @@ struct rpc_program {
 	struct rpc_stat *	stats;		/* statistics */
 	char *			pipe_dir_name;	/* path to rpc_pipefs dir */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 struct rpc_version {
@@ -128,8 +152,12 @@ struct rpc_procinfo {
 <<<<<<< HEAD
 	const char *		p_name;		/* name of procedure */
 =======
+<<<<<<< HEAD
+	const char *		p_name;		/* name of procedure */
+=======
 	char *			p_name;		/* name of procedure */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef __KERNEL__
@@ -145,9 +173,14 @@ struct rpc_create_args {
 	const char		*servername;
 	const struct rpc_program *program;
 =======
+<<<<<<< HEAD
+	const char		*servername;
+	const struct rpc_program *program;
+=======
 	char			*servername;
 	struct rpc_program	*program;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u32			prognumber;	/* overrides program->number */
 	u32			version;
 	rpc_authflavor_t	authflavor;
@@ -169,8 +202,12 @@ struct rpc_clnt	*rpc_bind_new_program(struct rpc_clnt *,
 <<<<<<< HEAD
 				const struct rpc_program *, u32);
 =======
+<<<<<<< HEAD
+				const struct rpc_program *, u32);
+=======
 				struct rpc_program *, u32);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void rpc_task_reset_client(struct rpc_task *task, struct rpc_clnt *clnt);
 struct rpc_clnt *rpc_clone_client(struct rpc_clnt *);
 void		rpc_shutdown_client(struct rpc_clnt *);
@@ -178,15 +215,21 @@ void		rpc_release_client(struct rpc_clnt *);
 void		rpc_task_release_client(struct rpc_task *);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int		rpcb_create_local(struct net *);
 void		rpcb_put_local(struct net *);
 int		rpcb_register(struct net *, u32, u32, int, unsigned short);
 int		rpcb_v4_register(struct net *net, const u32 program,
 				 const u32 version,
+<<<<<<< HEAD
+=======
 =======
 int		rpcb_register(u32, u32, int, unsigned short);
 int		rpcb_v4_register(const u32 program, const u32 version,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 const struct sockaddr *address,
 				 const char *netid);
 void		rpcb_getport_async(struct rpc_task *);
@@ -207,12 +250,20 @@ void		rpc_setbufsize(struct rpc_clnt *, unsigned int, unsigned int);
 int		rpc_protocol(struct rpc_clnt *);
 struct net *	rpc_net_ns(struct rpc_clnt *);
 =======
+<<<<<<< HEAD
+int		rpc_protocol(struct rpc_clnt *);
+struct net *	rpc_net_ns(struct rpc_clnt *);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 size_t		rpc_max_payload(struct rpc_clnt *);
 void		rpc_force_rebind(struct rpc_clnt *);
 size_t		rpc_peeraddr(struct rpc_clnt *, struct sockaddr *, size_t);
 const char	*rpc_peeraddr2str(struct rpc_clnt *, enum rpc_display_format_t);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int		rpc_localaddr(struct rpc_clnt *, struct sockaddr *, size_t);
 
 size_t		rpc_ntop(const struct sockaddr *, char *, const size_t);
@@ -220,6 +271,8 @@ size_t		rpc_pton(struct net *, const char *, const size_t,
 			 struct sockaddr *, const size_t);
 char *		rpc_sockaddr2uaddr(const struct sockaddr *, gfp_t);
 size_t		rpc_uaddr2sockaddr(struct net *, const char *, const size_t,
+<<<<<<< HEAD
+=======
 =======
 
 size_t		rpc_ntop(const struct sockaddr *, char *, const size_t);
@@ -228,6 +281,7 @@ size_t		rpc_pton(const char *, const size_t,
 char *		rpc_sockaddr2uaddr(const struct sockaddr *);
 size_t		rpc_uaddr2sockaddr(const char *, const size_t,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				   struct sockaddr *, const size_t);
 
 static inline unsigned short rpc_get_port(const struct sockaddr *sap)
@@ -280,14 +334,21 @@ static inline bool __rpc_copy_addr4(struct sockaddr *dst,
 <<<<<<< HEAD
 #if IS_ENABLED(CONFIG_IPV6)
 =======
+<<<<<<< HEAD
+#if IS_ENABLED(CONFIG_IPV6)
+=======
 #if defined(CONFIG_IPV6) || defined(CONFIG_IPV6_MODULE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool __rpc_cmp_addr6(const struct sockaddr *sap1,
 				   const struct sockaddr *sap2)
 {
 	const struct sockaddr_in6 *sin1 = (const struct sockaddr_in6 *)sap1;
 	const struct sockaddr_in6 *sin2 = (const struct sockaddr_in6 *)sap2;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!ipv6_addr_equal(&sin1->sin6_addr, &sin2->sin6_addr))
 		return false;
@@ -295,9 +356,12 @@ static inline bool __rpc_cmp_addr6(const struct sockaddr *sap1,
 		return sin1->sin6_scope_id == sin2->sin6_scope_id;
 
 	return true;
+<<<<<<< HEAD
+=======
 =======
 	return ipv6_addr_equal(&sin1->sin6_addr, &sin2->sin6_addr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline bool __rpc_copy_addr6(struct sockaddr *dst,
@@ -308,16 +372,22 @@ static inline bool __rpc_copy_addr6(struct sockaddr *dst,
 
 	dsin6->sin6_family = ssin6->sin6_family;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dsin6->sin6_addr = ssin6->sin6_addr;
 	return true;
 }
 #else	/* !(IS_ENABLED(CONFIG_IPV6) */
+<<<<<<< HEAD
+=======
 =======
 	ipv6_addr_copy(&dsin6->sin6_addr, &ssin6->sin6_addr);
 	return true;
 }
 #else	/* !(CONFIG_IPV6 || CONFIG_IPV6_MODULE) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline bool __rpc_cmp_addr6(const struct sockaddr *sap1,
 				   const struct sockaddr *sap2)
 {
@@ -332,8 +402,12 @@ static inline bool __rpc_copy_addr6(struct sockaddr *dst,
 <<<<<<< HEAD
 #endif	/* !(IS_ENABLED(CONFIG_IPV6) */
 =======
+<<<<<<< HEAD
+#endif	/* !(IS_ENABLED(CONFIG_IPV6) */
+=======
 #endif	/* !(CONFIG_IPV6 || CONFIG_IPV6_MODULE) */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /**
  * rpc_cmp_addr - compare the address portion of two sockaddrs.

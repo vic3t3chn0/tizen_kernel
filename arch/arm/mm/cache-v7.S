@@ -33,6 +33,9 @@ ENTRY(v7_flush_icache_all)
 ENDPROC(v7_flush_icache_all)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  /*
  *     v7_flush_dcache_louis()
  *
@@ -51,8 +54,11 @@ ENTRY(v7_flush_dcache_louis)
 	b	loop1				@ start flushing cache levels
 ENDPROC(v7_flush_dcache_louis)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	v7_flush_dcache_all()
  *
@@ -141,6 +147,9 @@ ENTRY(v7_flush_kern_cache_all)
 ENDPROC(v7_flush_kern_cache_all)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  /*
  *     v7_flush_kern_cache_louis(void)
  *
@@ -159,8 +168,11 @@ ENTRY(v7_flush_kern_cache_louis)
 	mov	pc, lr
 ENDPROC(v7_flush_kern_cache_louis)
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  *	v7_flush_cache_all()
  *
@@ -255,10 +267,13 @@ ENTRY(v7_coherent_user_range)
 9001:
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_ARM_ERRATA_775420
 	dsb
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mov	r12, r12, lsr #12
 	mov	r12, r12, lsl #12
 	add	r12, r12, #4096

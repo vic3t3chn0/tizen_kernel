@@ -21,14 +21,28 @@
 #include <linux/major.h>
 #include <linux/mm.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/sysctl.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/sysctl.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/device.h>
 #include <linux/uaccess.h>
 #include <linux/bitops.h>
 #include <linux/devpts_fs.h>
 #include <linux/slab.h>
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_UNIX98_PTYS
 static struct tty_driver *ptm_driver;
@@ -49,6 +63,13 @@ static void pty_close(struct tty_struct *tty, struct file *filp)
 	tty->packet = 0;
 	if (!tty->link)
 		return;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tty->link->packet = 0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	set_bit(TTY_OTHER_CLOSED, &tty->link->flags);
 	wake_up_interruptible(&tty->link->read_wait);
 	wake_up_interruptible(&tty->link->write_wait);
@@ -393,7 +414,14 @@ static void __init legacy_pty_init(void)
 	if (!pty_slave_driver)
 		panic("Couldn't allocate pty slave driver");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	pty_driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pty_driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pty_driver->driver_name = "pty_master";
 	pty_driver->name = "pty";
 	pty_driver->major = PTY_MASTER_MAJOR;
@@ -411,7 +439,14 @@ static void __init legacy_pty_init(void)
 	pty_driver->other = pty_slave_driver;
 	tty_set_operations(pty_driver, &master_pty_ops_bsd);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	pty_slave_driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pty_slave_driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pty_slave_driver->driver_name = "pty_slave";
 	pty_slave_driver->name = "ttyp";
 	pty_slave_driver->major = PTY_SLAVE_MAJOR;
@@ -438,6 +473,14 @@ static inline void legacy_pty_init(void) { }
 
 /* Unix98 devices */
 #ifdef CONFIG_UNIX98_PTYS
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+static struct cdev ptmx_cdev;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * sysctl support for setting limits on the number of Unix98 ptys allocated.
  * Otherwise one can eat up all kernel memory by opening /dev/ptmx repeatedly.
@@ -498,6 +541,10 @@ static struct ctl_table pty_root_table[] = {
 };
 
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int pty_unix98_ioctl(struct tty_struct *tty,
 			    unsigned int cmd, unsigned long arg)
 {
@@ -525,10 +572,21 @@ static int pty_unix98_ioctl(struct tty_struct *tty,
 static struct tty_struct *ptm_unix98_lookup(struct tty_driver *driver,
 		struct inode *ptm_inode, int idx)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Master must be open via /dev/ptmx */
+	return ERR_PTR(-EIO);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct tty_struct *tty = devpts_get_tty(ptm_inode, idx);
 	if (tty)
 		tty = tty->link;
 	return tty;
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /**
@@ -599,8 +657,16 @@ static int pty_unix98_install(struct tty_driver *driver, struct tty_struct *tty)
 	 */
 	tty_driver_kref_get(driver);
 	tty->count++;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	pty_inc_count(); /* tty */
 	pty_inc_count(); /* tty->link */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pty_inc_count(); /* tty */
+	pty_inc_count(); /* tty->link */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 err_free_mem:
 	deinitialize_tty_struct(o_tty);
@@ -612,15 +678,38 @@ err_free_tty:
 	return -ENOMEM;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static void ptm_unix98_remove(struct tty_driver *driver, struct tty_struct *tty)
+{
+}
+
+static void pts_unix98_remove(struct tty_driver *driver, struct tty_struct *tty)
+{
+=======
 static void pty_unix98_remove(struct tty_driver *driver, struct tty_struct *tty)
 {
 	pty_dec_count();
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static void pty_unix98_remove(struct tty_driver *driver, struct tty_struct *tty)
+{
+	pty_dec_count();
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static const struct tty_operations ptm_unix98_ops = {
 	.lookup = ptm_unix98_lookup,
 	.install = pty_unix98_install,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.remove = ptm_unix98_remove,
+=======
 	.remove = pty_unix98_remove,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.remove = pty_unix98_remove,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.open = pty_open,
 	.close = pty_close,
 	.write = pty_write,
@@ -637,7 +726,15 @@ static const struct tty_operations ptm_unix98_ops = {
 static const struct tty_operations pty_unix98_ops = {
 	.lookup = pts_unix98_lookup,
 	.install = pty_unix98_install,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.remove = pts_unix98_remove,
+=======
 	.remove = pty_unix98_remove,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	.remove = pty_unix98_remove,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.open = pty_open,
 	.close = pty_close,
 	.write = pty_write,
@@ -669,9 +766,18 @@ static int ptmx_open(struct inode *inode, struct file *filp)
 
 	nonseekable_open(inode, filp);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* We refuse fsnotify events on ptmx, since it's a shared resource */
 	filp->f_mode |= FMODE_NONOTIFY;
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* We refuse fsnotify events on ptmx, since it's a shared resource */
+	filp->f_mode |= FMODE_NONOTIFY;
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	retval = tty_alloc_file(filp);
 	if (retval)
 		return retval;
@@ -687,7 +793,15 @@ static int ptmx_open(struct inode *inode, struct file *filp)
 
 	mutex_lock(&tty_mutex);
 	tty_lock();
+<<<<<<< HEAD
+<<<<<<< HEAD
+	tty = tty_init_dev(ptm_driver, index);
+=======
 	tty = tty_init_dev(ptm_driver, index, 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	tty = tty_init_dev(ptm_driver, index, 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_unlock(&tty_mutex);
 
 	if (IS_ERR(tty)) {
@@ -732,7 +846,14 @@ static void __init unix98_pty_init(void)
 	if (!pts_driver)
 		panic("Couldn't allocate Unix98 pts driver");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	ptm_driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ptm_driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ptm_driver->driver_name = "pty_master";
 	ptm_driver->name = "ptm";
 	ptm_driver->major = UNIX98_PTY_MASTER_MAJOR;
@@ -751,7 +872,14 @@ static void __init unix98_pty_init(void)
 	ptm_driver->other = pts_driver;
 	tty_set_operations(ptm_driver, &ptm_unix98_ops);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	pts_driver->owner = THIS_MODULE;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	pts_driver->owner = THIS_MODULE;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	pts_driver->driver_name = "pty_slave";
 	pts_driver->name = "pts";
 	pts_driver->major = UNIX98_PTY_SLAVE_MAJOR;
@@ -772,8 +900,16 @@ static void __init unix98_pty_init(void)
 	if (tty_register_driver(pts_driver))
 		panic("Couldn't register Unix98 pts driver");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	register_sysctl_table(pty_root_table);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	register_sysctl_table(pty_root_table);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Now create the /dev/ptmx special device */
 	tty_default_fops(&ptmx_fops);
 	ptmx_fops.open = ptmx_open;

@@ -46,7 +46,12 @@
 #include <linux/pm_clock.h>
 #include <linux/dma-mapping.h>
 =======
+<<<<<<< HEAD
+#include <linux/pm_clock.h>
+#include <linux/dma-mapping.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <media/sh_mobile_ceu.h>
 #include <media/sh_mobile_csi2.h>
@@ -66,9 +71,12 @@
 #include <asm/mach/arch.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/mach/map.h>
 #include <asm/mach/time.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/setup.h>
 
 /*
@@ -210,9 +218,14 @@ static struct resource nor_flash_resources[] = {
 		.start	= 0x20000000, /* CS0 shadow instead of regular CS0 */
 		.end	= 0x28000000 - 1, /* needed by USB MASK ROM boot */
 =======
+<<<<<<< HEAD
+		.start	= 0x20000000, /* CS0 shadow instead of regular CS0 */
+		.end	= 0x28000000 - 1, /* needed by USB MASK ROM boot */
+=======
 		.start	= 0x00000000,
 		.end	= 0x08000000 - 1,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags	= IORESOURCE_MEM,
 	}
 };
@@ -270,6 +283,9 @@ static struct sh_mobile_meram_info meram_info = {
 static struct resource meram_resources[] = {
 	[0] = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.name	= "regs",
 		.start	= 0xe8000000,
 		.end	= 0xe807ffff,
@@ -280,12 +296,15 @@ static struct resource meram_resources[] = {
 		.start	= 0xe8080000,
 		.end	= 0xe81fffff,
 		.flags	= IORESOURCE_MEM,
+<<<<<<< HEAD
+=======
 =======
 		.name   = "MERAM",
 		.start  = 0xe8000000,
 		.end    = 0xe81fffff,
 		.flags  = IORESOURCE_MEM,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 
@@ -321,6 +340,8 @@ static struct resource sh_mmcif_resources[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct sh_mmcif_dma sh_mmcif_dma = {
 	.chan_priv_rx	= {
 		.slave_id	= SHDMA_SLAVE_MMCIF_RX,
@@ -331,6 +352,7 @@ static struct sh_mmcif_dma sh_mmcif_dma = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_mmcif_plat_data sh_mmcif_plat = {
 	.sup_pclk	= 0,
 	.ocr		= MMC_VDD_165_195 | MMC_VDD_32_33 | MMC_VDD_33_34,
@@ -342,8 +364,13 @@ static struct sh_mmcif_plat_data sh_mmcif_plat = {
 	.slave_id_tx	= SHDMA_SLAVE_MMCIF_TX,
 	.slave_id_rx	= SHDMA_SLAVE_MMCIF_RX,
 =======
+<<<<<<< HEAD
+	.slave_id_tx	= SHDMA_SLAVE_MMCIF_TX,
+	.slave_id_rx	= SHDMA_SLAVE_MMCIF_RX,
+=======
 	.dma		= &sh_mmcif_dma,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device sh_mmcif_device = {
@@ -479,6 +506,8 @@ static struct platform_device usb1_host_device = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 const static struct fb_videomode ap4evb_lcdc_modes[] = {
 	{
 #ifdef CONFIG_AP4EVB_QHD
@@ -556,6 +585,7 @@ static struct platform_device lcdc_device = {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * QHD display
  */
@@ -600,6 +630,9 @@ static struct platform_device keysc_device = {
 
 /* MIPI-DSI */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int sh_mipi_set_dot_clock(struct platform_device *pdev,
 				 void __iomem *base,
 				 int enable)
@@ -629,8 +662,11 @@ static int sh_mipi_set_dot_clock(struct platform_device *pdev,
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct resource mipidsi0_resources[] = {
 	[0] = {
 		.start  = 0xffc60000,
@@ -645,6 +681,9 @@ static struct resource mipidsi0_resources[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_mobile_lcdc_info lcdc_info;
 
 static struct sh_mipi_dsi_info mipidsi0_info = {
@@ -656,12 +695,15 @@ static struct sh_mipi_dsi_info mipidsi0_info = {
 	.flags		= SH_MIPI_DSI_SYNC_PULSES_MODE |
 			  SH_MIPI_DSI_HSbyteCLK,
 	.set_dot_clock	= sh_mipi_set_dot_clock,
+<<<<<<< HEAD
+=======
 =======
 static struct sh_mipi_dsi_info mipidsi0_info = {
 	.data_format	= MIPI_RGB888,
 	.lcd_chan	= &lcdc_info.ch[0],
 	.vsynw_offset	= 17,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct platform_device mipidsi0_device = {
@@ -681,6 +723,9 @@ static struct platform_device *qhd_devices[] __initdata = {
 #endif /* CONFIG_AP4EVB_QHD */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* LCDC0 */
 static const struct fb_videomode ap4evb_lcdc_modes[] = {
 	{
@@ -756,8 +801,11 @@ static struct platform_device lcdc_device = {
 	},
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* FSI */
 #define IRQ_FSI		evt2irq(0x1840)
 static int __fsi_set_rate(struct clk *clk, long rate, int enable)
@@ -877,6 +925,9 @@ fsi_set_rate_end:
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_fsi_platform_info fsi_info = {
 	.port_a = {
 		.flags		= SH_FSI_BRS_INV,
@@ -889,6 +940,8 @@ static struct sh_fsi_platform_info fsi_info = {
 				  SH_FSI_FMT_SPDIF,
 		.set_rate	= fsi_hdmi_set_rate,
 	},
+<<<<<<< HEAD
+=======
 =======
 static int fsi_set_rate(struct device *dev, int is_porta, int rate, int enable)
 {
@@ -911,6 +964,7 @@ static struct sh_fsi_platform_info fsi_info = {
 		       SH_FSI_FMT_SPDIF,
 	.set_rate = fsi_set_rate,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource fsi_resources[] = {
@@ -937,6 +991,9 @@ static struct platform_device fsi_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct fsi_ak4642_info fsi2_ak4643_info = {
 	.name		= "AK4643",
 	.card		= "FSI2A-AK4643",
@@ -958,6 +1015,8 @@ static long ap4evb_clk_optimize(unsigned long target, unsigned long *best_freq,
 				unsigned long *parent_freq);
 
 static struct sh_mobile_hdmi_info hdmi_info = {
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device fsi_ak4643_device = {
 	.name		= "sh_fsi2_a_ak4643",
@@ -1022,6 +1081,7 @@ static struct sh_mobile_hdmi_info hdmi_info = {
 	.lcd_chan = &sh_mobile_lcdc1_info.ch[0],
 	.lcd_dev = &lcdc1_device.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.flags = HDMI_SND_SRC_SPDIF,
 	.clk_optimize_parent = ap4evb_clk_optimize,
 };
@@ -1052,11 +1112,14 @@ static struct platform_device hdmi_device = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct platform_device fsi_hdmi_device = {
 	.name		= "sh_fsi2_b_hdmi",
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static long ap4evb_clk_optimize(unsigned long target, unsigned long *best_freq,
 				unsigned long *parent_freq)
 {
@@ -1077,6 +1140,9 @@ static long ap4evb_clk_optimize(unsigned long target, unsigned long *best_freq,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static const struct sh_mobile_meram_cfg hdmi_meram_cfg = {
 	.icb[0] = {
 		.meram_size     = 0x100,
@@ -1128,8 +1194,11 @@ static struct platform_device fsi_hdmi_device = {
 	.name		= "sh_fsi2_b_hdmi",
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct gpio_led ap4evb_leds[] = {
 	{
 		.name			= "led4",
@@ -1191,8 +1260,12 @@ static struct sh_csi2_client_config csi2_clients[] = {
 <<<<<<< HEAD
 		.lanes		= 0,		/* default: 2 lanes */
 =======
+<<<<<<< HEAD
+		.lanes		= 0,		/* default: 2 lanes */
+=======
 		.lanes		= 3,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.channel	= 0,
 		.pdev		= &ap4evb_camera,
 	},
@@ -1219,11 +1292,16 @@ static struct resource csi2_resources[] = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct sh_mobile_ceu_companion csi2 = {
 	.id		= 0,
 	.num_resources	= ARRAY_SIZE(csi2_resources),
 	.resource	= csi2_resources,
 	.platform_data	= &csi2_info,
+<<<<<<< HEAD
+=======
 =======
 static struct platform_device csi2_device = {
 	.name   = "sh-mobile-csi2",
@@ -1234,6 +1312,7 @@ static struct platform_device csi2_device = {
 		.platform_data = &csi2_info,
 	},
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct sh_mobile_ceu_info sh_mobile_ceu_info = {
@@ -1241,8 +1320,12 @@ static struct sh_mobile_ceu_info sh_mobile_ceu_info = {
 <<<<<<< HEAD
 	.csi2 = &csi2,
 =======
+<<<<<<< HEAD
+	.csi2 = &csi2,
+=======
 	.csi2_dev = &csi2_device.dev,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct resource ceu_resources[] = {
@@ -1288,11 +1371,17 @@ static struct platform_device *ap4evb_devices[] __initdata = {
 	&lcdc_device,
 	&lcdc1_device,
 =======
+<<<<<<< HEAD
+	&hdmi_device,
+	&lcdc_device,
+	&lcdc1_device,
+=======
 	&lcdc1_device,
 	&lcdc_device,
 	&hdmi_device,
 	&csi2_device,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	&ceu_device,
 	&ap4evb_camera,
 	&meram_device,
@@ -1440,6 +1529,8 @@ static struct i2c_board_info i2c1_devices[] = {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static struct map_desc ap4evb_io_desc[] __initdata = {
 	/* create a 1:1 entity map for 0xe6xxxxxx
 	 * used by CPGA, INTC and PFC.
@@ -1461,6 +1552,7 @@ static void __init ap4evb_map_io(void)
 	shmobile_setup_console();
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define GPIO_PORT9CR	0xE6051009
 #define GPIO_PORT10CR	0xE605100A
@@ -1475,7 +1567,13 @@ static void __init ap4evb_init(void)
 	clk_set_rate(&sh7372_dv_clki_clk, 27000000);
 
 =======
+<<<<<<< HEAD
+	/* External clock source */
+	clk_set_rate(&sh7372_dv_clki_clk, 27000000);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sh7372_pinmux_init();
 
 	/* enable SCIFA0 */
@@ -1616,9 +1714,14 @@ static void __init ap4evb_init(void)
 	lcdc_info.ch[0].panel_cfg.width		= 44;
 	lcdc_info.ch[0].panel_cfg.height	= 79;
 =======
+<<<<<<< HEAD
+	lcdc_info.ch[0].panel_cfg.width		= 44;
+	lcdc_info.ch[0].panel_cfg.height	= 79;
+=======
 	lcdc_info.ch[0].lcd_size_cfg.width	= 44;
 	lcdc_info.ch[0].lcd_size_cfg.height	= 79;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	platform_add_devices(qhd_devices, ARRAY_SIZE(qhd_devices));
 
@@ -1663,9 +1766,14 @@ static void __init ap4evb_init(void)
 	lcdc_info.ch[0].panel_cfg.width		= 152;
 	lcdc_info.ch[0].panel_cfg.height	= 91;
 =======
+<<<<<<< HEAD
+	lcdc_info.ch[0].panel_cfg.width		= 152;
+	lcdc_info.ch[0].panel_cfg.height	= 91;
+=======
 	lcdc_info.ch[0].lcd_size_cfg.width	= 152;
 	lcdc_info.ch[0].lcd_size_cfg.height	= 91;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* enable TouchScreen */
 	irq_set_irq_type(IRQ7, IRQ_TYPE_LEVEL_LOW);
@@ -1707,6 +1815,9 @@ static void __init ap4evb_init(void)
 	platform_add_devices(ap4evb_devices, ARRAY_SIZE(ap4evb_devices));
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	sh7372_add_device_to_domain(&sh7372_a4lc, &lcdc1_device);
 	sh7372_add_device_to_domain(&sh7372_a4lc, &lcdc_device);
 	sh7372_add_device_to_domain(&sh7372_a4mp, &fsi_device);
@@ -1730,6 +1841,8 @@ MACHINE_START(AP4EVB, "ap4evb")
 	.handle_irq	= shmobile_handle_irq_intc,
 	.init_machine	= ap4evb_init,
 	.timer		= &shmobile_timer,
+<<<<<<< HEAD
+=======
 =======
 	hdmi_init_pm_clock();
 	fsi_init_pm_clock();
@@ -1756,4 +1869,5 @@ MACHINE_START(AP4EVB, "ap4evb")
 	.init_machine	= ap4evb_init,
 	.timer		= &ap4evb_timer,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

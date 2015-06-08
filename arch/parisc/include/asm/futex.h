@@ -9,6 +9,9 @@
 #include <asm/errno.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* The following has to match the LWS code in syscall.S.  We have
    sixteen four-word locks. */
 
@@ -32,8 +35,11 @@ _futex_spin_unlock_irqrestore(u32 __user *uaddr, unsigned long int *flags)
 	local_irq_restore(*flags);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int
 futex_atomic_op_inuser (int encoded_op, u32 __user *uaddr)
 {
@@ -55,8 +61,12 @@ futex_atomic_op_inuser (int encoded_op, u32 __user *uaddr)
 <<<<<<< HEAD
 	_futex_spin_lock_irqsave(uaddr, &flags);
 =======
+<<<<<<< HEAD
+	_futex_spin_lock_irqsave(uaddr, &flags);
+=======
 	_atomic_spin_lock_irqsave(uaddr, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	switch (op) {
 	case FUTEX_OP_SET:
@@ -104,8 +114,12 @@ futex_atomic_op_inuser (int encoded_op, u32 __user *uaddr)
 <<<<<<< HEAD
 	_futex_spin_unlock_irqrestore(uaddr, &flags);
 =======
+<<<<<<< HEAD
+	_futex_spin_unlock_irqrestore(uaddr, &flags);
+=======
 	_atomic_spin_unlock_irqrestore(uaddr, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	pagefault_enable();
 
@@ -150,8 +164,12 @@ futex_atomic_cmpxchg_inatomic(u32 *uval, u32 __user *uaddr,
 <<<<<<< HEAD
 	_futex_spin_lock_irqsave(uaddr, &flags);
 =======
+<<<<<<< HEAD
+	_futex_spin_lock_irqsave(uaddr, &flags);
+=======
 	_atomic_spin_lock_irqsave(uaddr, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ret = get_user(val, uaddr);
 
@@ -163,8 +181,12 @@ futex_atomic_cmpxchg_inatomic(u32 *uval, u32 __user *uaddr,
 <<<<<<< HEAD
 	_futex_spin_unlock_irqrestore(uaddr, &flags);
 =======
+<<<<<<< HEAD
+	_futex_spin_unlock_irqrestore(uaddr, &flags);
+=======
 	_atomic_spin_unlock_irqrestore(uaddr, flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return ret;
 }

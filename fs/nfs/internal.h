@@ -126,7 +126,11 @@ struct nfs_parsed_mount_data {
 <<<<<<< HEAD
 	struct net		*net;
 =======
+<<<<<<< HEAD
+	struct net		*net;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* mount_clnt.c */
@@ -144,7 +148,11 @@ struct nfs_mount_request {
 <<<<<<< HEAD
 	struct net		*net;
 =======
+<<<<<<< HEAD
+	struct net		*net;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern int nfs_mount(struct nfs_mount_request *info);
@@ -152,6 +160,9 @@ extern void nfs_umount(const struct nfs_mount_request *info);
 
 /* client.c */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern const struct rpc_program nfs_program;
 extern void nfs_clients_init(struct net *net);
 
@@ -161,6 +172,8 @@ extern struct nfs_client *nfs4_find_client_ident(struct net *, int);
 extern struct nfs_client *
 nfs4_find_client_sessionid(struct net *, const struct sockaddr *,
 				struct nfs4_sessionid *);
+<<<<<<< HEAD
+=======
 =======
 extern struct rpc_program nfs_program;
 
@@ -171,6 +184,7 @@ extern struct nfs_client *nfs4_find_client_ident(int);
 extern struct nfs_client *
 nfs4_find_client_sessionid(const struct sockaddr *, struct nfs4_sessionid *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct nfs_server *nfs_create_server(
 					const struct nfs_parsed_mount_data *,
 					struct nfs_fh *);
@@ -186,8 +200,13 @@ extern struct nfs_server *nfs_clone_server(struct nfs_server *,
 					   struct nfs_fattr *,
 					   rpc_authflavor_t);
 =======
+<<<<<<< HEAD
+					   struct nfs_fattr *,
+					   rpc_authflavor_t);
+=======
 					   struct nfs_fattr *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void nfs_mark_client_ready(struct nfs_client *clp, int state);
 extern int nfs4_check_client_ready(struct nfs_client *clp);
 extern struct nfs_client *nfs4_set_ds_client(struct nfs_client* mds_clp,
@@ -209,16 +228,22 @@ static inline void nfs_fs_proc_exit(void)
 /* nfs4namespace.c */
 #ifdef CONFIG_NFS_V4
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct vfsmount *nfs_do_refmount(struct rpc_clnt *client, struct dentry *dentry);
 #else
 static inline
 struct vfsmount *nfs_do_refmount(struct rpc_clnt *client, struct dentry *dentry)
+<<<<<<< HEAD
+=======
 =======
 extern struct vfsmount *nfs_do_refmount(struct dentry *dentry);
 #else
 static inline
 struct vfsmount *nfs_do_refmount(struct dentry *dentry)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return ERR_PTR(-ENOENT);
 }
@@ -265,8 +290,11 @@ extern const u32 nfs41_maxwrite_overhead;
 extern struct rpc_procinfo nfs4_procedures[];
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void nfs_fixup_secinfo_attributes(struct nfs_fattr *, struct nfs_fh *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 extern int nfs4_init_ds_session(struct nfs_client *clp);
@@ -310,18 +338,24 @@ extern void nfs_sb_deactive(struct super_block *sb);
 
 /* namespace.c */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern char *nfs_path(char **p, struct dentry *dentry,
 		      char *buffer, ssize_t buflen);
 extern struct vfsmount *nfs_d_automount(struct path *path);
 #ifdef CONFIG_NFS_V4
 rpc_authflavor_t nfs_find_best_sec(struct nfs4_secinfo_flavors *);
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define NFS_PATH_CANONICAL 1
 extern char *nfs_path(char **p, struct dentry *dentry,
 		      char *buffer, ssize_t buflen, unsigned flags);
 extern struct vfsmount *nfs_d_automount(struct path *path);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* getroot.c */
 extern struct dentry *nfs_get_root(struct super_block *, struct nfs_fh *,
@@ -336,12 +370,19 @@ extern int nfs4_get_rootfh(struct nfs_server *server, struct nfs_fh *mntfh);
 <<<<<<< HEAD
 struct nfs_pageio_descriptor;
 =======
+<<<<<<< HEAD
+struct nfs_pageio_descriptor;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* read.c */
 extern int nfs_initiate_read(struct nfs_read_data *data, struct rpc_clnt *clnt,
 			     const struct rpc_call_ops *call_ops);
 extern void nfs_read_prepare(struct rpc_task *task, void *calldata);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int nfs_generic_pagein(struct nfs_pageio_descriptor *desc,
 		struct list_head *head);
 
@@ -357,10 +398,13 @@ extern void nfs_pageio_init_write_mds(struct nfs_pageio_descriptor *pgio,
 				  struct inode *inode, int ioflags);
 extern void nfs_pageio_reset_write_mds(struct nfs_pageio_descriptor *pgio);
 extern void nfs_writedata_release(struct nfs_write_data *wdata);
+<<<<<<< HEAD
+=======
 =======
 
 /* write.c */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern void nfs_commit_free(struct nfs_write_data *p);
 extern int nfs_initiate_write(struct nfs_write_data *data,
 			      struct rpc_clnt *clnt,
@@ -383,7 +427,12 @@ void nfs_commit_release_pages(struct nfs_write_data *data);
 void nfs_request_add_commit_list(struct nfs_page *req, struct list_head *head);
 void nfs_request_remove_commit_list(struct nfs_page *req);
 =======
+<<<<<<< HEAD
+void nfs_request_add_commit_list(struct nfs_page *req, struct list_head *head);
+void nfs_request_remove_commit_list(struct nfs_page *req);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_MIGRATION
 extern int nfs_migrate_page(struct address_space *,
@@ -424,8 +473,12 @@ static inline char *nfs_devname(struct dentry *dentry,
 <<<<<<< HEAD
 	return nfs_path(&dummy, dentry, buffer, buflen);
 =======
+<<<<<<< HEAD
+	return nfs_path(&dummy, dentry, buffer, buflen);
+=======
 	return nfs_path(&dummy, dentry, buffer, buflen, NFS_PATH_CANONICAL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -522,6 +575,8 @@ unsigned int nfs_page_array_len(unsigned int base, size_t len)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /*
  * Helper for restarting RPC calls in the possible presence of NFSv4.1
  * sessions.
@@ -533,3 +588,4 @@ static inline int nfs_restart_rpc(struct rpc_task *task, const struct nfs_client
 	return rpc_restart_call(task);
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

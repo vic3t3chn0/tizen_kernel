@@ -22,8 +22,11 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/time.h>
 #include <asm/machdep.h>
 #include <asm/pci-bridge.h>
@@ -41,7 +44,11 @@
 <<<<<<< HEAD
 #include "mpc85xx.h"
 =======
+<<<<<<< HEAD
+#include "mpc85xx.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define KSI8560_CPLD_HVR		0x04 /* Hardware Version Register */
 #define KSI8560_CPLD_PVR		0x08 /* PLD Version Register */
@@ -62,6 +69,9 @@ static void machine_restart(char *cmd)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void __init ksi8560_pic_init(void)
 {
 	struct mpic *mpic = mpic_alloc(NULL, 0, MPIC_BIG_ENDIAN,
@@ -70,6 +80,8 @@ static void __init ksi8560_pic_init(void)
 	mpic_init(mpic);
 
 	mpc85xx_cpm2_pic_init();
+<<<<<<< HEAD
+=======
 =======
 static void cpm2_cascade(unsigned int irq, struct irq_desc *desc)
 {
@@ -126,6 +138,7 @@ static void __init ksi8560_pic_init(void)
 	irq_set_chained_handler(irq, cpm2_cascade);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_CPM2
@@ -236,6 +249,9 @@ static void ksi8560_show_cpuinfo(struct seq_file *m)
 <<<<<<< HEAD
 machine_device_initcall(ksi8560, mpc85xx_common_publish_devices);
 =======
+<<<<<<< HEAD
+machine_device_initcall(ksi8560, mpc85xx_common_publish_devices);
+=======
 static struct of_device_id __initdata of_bus_ids[] = {
 	{ .type = "soc", },
 	{ .type = "simple-bus", },
@@ -253,6 +269,7 @@ static int __init declare_of_platform_devices(void)
 }
 machine_device_initcall(ksi8560, declare_of_platform_devices);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Called very early, device-tree isn't unflattened

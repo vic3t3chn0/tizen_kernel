@@ -21,8 +21,11 @@
 #include <asm/rtc.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/segment.h>
 #include <asm/setup.h>
 #include <asm/macintosh.h>
@@ -308,6 +311,9 @@ static long via_read_time(void)
 {
 	union {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		__u8 cdata[4];
 		long idata;
 	} result, last_result;
@@ -317,12 +323,15 @@ static long via_read_time(void)
 	via_pram_command(0x85, &last_result.cdata[2]);
 	via_pram_command(0x89, &last_result.cdata[1]);
 	via_pram_command(0x8D, &last_result.cdata[0]);
+<<<<<<< HEAD
+=======
 =======
 		__u8  cdata[4];
 		long  idata;
 	} result, last_result;
 	int	ct;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * The NetBSD guys say to loop until you get the same reading
@@ -330,6 +339,9 @@ static long via_read_time(void)
 	 */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	while (1) {
 		via_pram_command(0x81, &result.cdata[3]);
 		via_pram_command(0x85, &result.cdata[2]);
@@ -350,6 +362,8 @@ static long via_read_time(void)
 	       last_result.idata, result.idata);
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 	ct = 0;
 	do {
@@ -371,6 +385,7 @@ static long via_read_time(void)
 
 	return result.idata - RTC_OFFSET;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

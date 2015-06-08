@@ -17,12 +17,19 @@
 <<<<<<< HEAD
 #include <linux/elf.h>
 =======
+<<<<<<< HEAD
+#include <linux/elf.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <asm/ia32.h>
 #include <asm/syscalls.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Align a virtual address to avoid aliasing in the I$ on AMD F15h.
  *
@@ -85,8 +92,11 @@ static int __init control_va_addr_alignment(char *str)
 }
 __setup("align_va_addr", control_va_addr_alignment);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 SYSCALL_DEFINE6(mmap, unsigned long, addr, unsigned long, len,
 		unsigned long, prot, unsigned long, flags,
 		unsigned long, fd, unsigned long, off)
@@ -107,8 +117,12 @@ static void find_start_end(unsigned long flags, unsigned long *begin,
 <<<<<<< HEAD
 	if (!test_thread_flag(TIF_ADDR32) && (flags & MAP_32BIT)) {
 =======
+<<<<<<< HEAD
+	if (!test_thread_flag(TIF_ADDR32) && (flags & MAP_32BIT)) {
+=======
 	if (!test_thread_flag(TIF_IA32) && (flags & MAP_32BIT)) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unsigned long new_begin;
 		/* This is usually used needed to map code in small
 		   model, so it needs to be in the first 31bit. Limit
@@ -157,8 +171,12 @@ arch_get_unmapped_area(struct file *filp, unsigned long addr,
 <<<<<<< HEAD
 	if (((flags & MAP_32BIT) || test_thread_flag(TIF_ADDR32))
 =======
+<<<<<<< HEAD
+	if (((flags & MAP_32BIT) || test_thread_flag(TIF_ADDR32))
+=======
 	if (((flags & MAP_32BIT) || test_thread_flag(TIF_IA32))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	    && len <= mm->cached_hole_size) {
 		mm->cached_hole_size = 0;
 		mm->free_area_cache = begin;
@@ -174,7 +192,13 @@ full_search:
 	addr = align_addr(addr, filp, 0);
 
 =======
+<<<<<<< HEAD
+
+	addr = align_addr(addr, filp, 0);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (vma = find_vma(mm, addr); ; vma = vma->vm_next) {
 		/* At this point:  (!vma || addr < vma->vm_end). */
 		if (end - len < addr) {
@@ -203,7 +227,11 @@ full_search:
 <<<<<<< HEAD
 		addr = align_addr(addr, filp, 0);
 =======
+<<<<<<< HEAD
+		addr = align_addr(addr, filp, 0);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 }
 
@@ -218,8 +246,12 @@ arch_get_unmapped_area_topdown(struct file *filp, const unsigned long addr0,
 <<<<<<< HEAD
 	unsigned long addr = addr0, start_addr;
 =======
+<<<<<<< HEAD
+	unsigned long addr = addr0, start_addr;
+=======
 	unsigned long addr = addr0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* requested length too big for entire address space */
 	if (len > TASK_SIZE)
@@ -232,8 +264,12 @@ arch_get_unmapped_area_topdown(struct file *filp, const unsigned long addr0,
 <<<<<<< HEAD
 	if (!test_thread_flag(TIF_ADDR32) && (flags & MAP_32BIT))
 =======
+<<<<<<< HEAD
+	if (!test_thread_flag(TIF_ADDR32) && (flags & MAP_32BIT))
+=======
 	if (!test_thread_flag(TIF_IA32) && (flags & MAP_32BIT))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto bottomup;
 
 	/* requesting a specific address */
@@ -252,6 +288,9 @@ arch_get_unmapped_area_topdown(struct file *filp, const unsigned long addr0,
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 try_again:
 	/* either no address requested or can't fit in requested address hole */
 	start_addr = addr = mm->free_area_cache;
@@ -263,6 +302,8 @@ try_again:
 	do {
 		addr = align_addr(addr, filp, ALIGN_TOPDOWN);
 
+<<<<<<< HEAD
+=======
 =======
 	/* either no address requested or can't fit in requested address hole */
 	addr = mm->free_area_cache;
@@ -282,6 +323,7 @@ try_again:
 
 	do {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * Lookup failure means no vma is above this address,
 		 * else if new region fits below vma->vm_start,
@@ -301,6 +343,9 @@ try_again:
 	} while (len < vma->vm_start);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 fail:
 	/*
 	 * if hint left us with no space for the requested
@@ -312,8 +357,11 @@ fail:
 		goto try_again;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bottomup:
 	/*
 	 * A failed mmap() very likely causes application failure,

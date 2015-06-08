@@ -12,6 +12,9 @@
 #define __ASM_PLAT_SAMSUNG_PD_H __FILE__
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct samsung_pd_info {
 	int (*enable)(struct device *dev);
 	int (*disable)(struct device *dev);
@@ -19,15 +22,23 @@ struct samsung_pd_info {
 };
 
 enum exynos4_pd_block {
+<<<<<<< HEAD
+=======
 =======
 enum exynos_pd_block {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	PD_MFC,
 	PD_G3D,
 	PD_LCD0,
 	PD_LCD1,
 	PD_TV,
 	PD_CAM,
+<<<<<<< HEAD
+	PD_GPS
+};
+
+=======
 <<<<<<< HEAD
 	PD_GPS
 };
@@ -64,4 +75,5 @@ int exynos_pd_init(struct device *dev);
 int exynos_pd_enable(struct device *dev);
 int exynos_pd_disable(struct device *dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_PLAT_SAMSUNG_PD_H */

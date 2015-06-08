@@ -63,7 +63,13 @@ struct clkops {
 #define RATE_IN_AM33XX		(1 << 8)
 #define RATE_IN_TI814X		(1 << 9)
 =======
+<<<<<<< HEAD
+#define RATE_IN_4460		(1 << 7)
+#define RATE_IN_AM33XX		(1 << 8)
+#define RATE_IN_TI814X		(1 << 9)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define RATE_IN_24XX		(RATE_IN_242X | RATE_IN_243X)
 #define RATE_IN_34XX		(RATE_IN_3430ES1 | RATE_IN_3430ES2PLUS)
@@ -71,7 +77,11 @@ struct clkops {
 <<<<<<< HEAD
 #define RATE_IN_44XX		(RATE_IN_4430 | RATE_IN_4460)
 =======
+<<<<<<< HEAD
+#define RATE_IN_44XX		(RATE_IN_4430 | RATE_IN_4460)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* RATE_IN_3430ES2PLUS_36XX includes 34xx/35xx with ES >=2, and all 36xx/37xx */
 #define RATE_IN_3430ES2PLUS_36XX	(RATE_IN_3430ES2PLUS | RATE_IN_36XX)
@@ -90,9 +100,12 @@ struct clkops {
  * to produce the current clock's rate.
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  *
  * XXX @flags probably should be replaced with an struct omap_chip.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 struct clksel_rate {
 	u32			val;
@@ -100,8 +113,12 @@ struct clksel_rate {
 <<<<<<< HEAD
 	u16			flags;
 =======
+<<<<<<< HEAD
+	u16			flags;
+=======
 	u8			flags;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /**
@@ -172,8 +189,12 @@ struct dpll_data {
 <<<<<<< HEAD
 	u16			max_divider;
 =======
+<<<<<<< HEAD
+	u16			max_divider;
+=======
 	u8			max_divider;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	u8			modes;
 #if defined(CONFIG_ARCH_OMAP3) || defined(CONFIG_ARCH_OMAP4)
 	void __iomem		*autoidle_reg;
@@ -190,9 +211,14 @@ struct dpll_data {
 #  endif
 	u8			flags;
 =======
+<<<<<<< HEAD
+#  endif
+	u8			flags;
+=======
 	u8			flags;
 #  endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif
@@ -298,9 +324,12 @@ struct clk {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct cpufreq_frequency_table;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct clk_functions {
 	int		(*clk_enable)(struct clk *clk);
 	void		(*clk_disable)(struct clk *clk);
@@ -312,11 +341,14 @@ struct clk_functions {
 	void		(*clk_disable_unused)(struct clk *clk);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CPU_FREQ
 	void		(*clk_init_cpufreq_table)(struct cpufreq_frequency_table **);
 	void		(*clk_exit_cpufreq_table)(struct cpufreq_frequency_table **);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 extern int mpurate;
@@ -333,11 +365,14 @@ extern void clk_enable_init_clocks(void);
 unsigned long omap_fixed_divisor_recalc(struct clk *clk);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef CONFIG_CPU_FREQ
 extern void clk_init_cpufreq_table(struct cpufreq_frequency_table **table);
 extern void clk_exit_cpufreq_table(struct cpufreq_frequency_table **table);
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern struct clk *omap_clk_get_by_name(const char *name);
 extern int omap_clk_enable_autoidle_all(void);
 extern int omap_clk_disable_autoidle_all(void);

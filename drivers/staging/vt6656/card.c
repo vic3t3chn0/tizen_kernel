@@ -91,6 +91,15 @@ const WORD cwRXBCNTSFOff[MAX_RATE] =
  *      uConnectionChannel  - Channel to be set
  *  Out:
  *      none
+<<<<<<< HEAD
+<<<<<<< HEAD
+ */
+void CARDbSetMediaChannel(void *pDeviceHandler, unsigned int uConnectionChannel)
+{
+PSDevice            pDevice = (PSDevice) pDeviceHandler;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Return Value: TRUE if succeeded; FALSE if failed.
  *
@@ -100,6 +109,10 @@ BOOL CARDbSetMediaChannel(void *pDeviceHandler, unsigned int uConnectionChannel)
 PSDevice            pDevice = (PSDevice) pDeviceHandler;
 BOOL                bResult = TRUE;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
     if (pDevice->byBBType == BB_TYPE_11A) { // 15 ~ 38
         if ((uConnectionChannel < (CB_MAX_CHANNEL_24G+1)) || (uConnectionChannel > CB_MAX_CHANNEL))
@@ -140,7 +153,14 @@ BOOL                bResult = TRUE;
         RFbRawSetPower(pDevice, pDevice->abyCCKPwrTbl[uConnectionChannel-1], RATE_1M);
     }
     ControlvWriteByte(pDevice,MESSAGE_REQUEST_MACREG,MAC_REG_CHANNEL,(BYTE)(uConnectionChannel|0x80));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     return(bResult);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+    return(bResult);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -607,7 +627,15 @@ BYTE ii;
  * Return Value: TRUE if succeeded; FALSE if failed.
  *
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void CARDbAddBasicRate(void *pDeviceHandler, WORD wRateIdx)
+=======
 BOOL CARDbAddBasicRate(void *pDeviceHandler, WORD wRateIdx)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+BOOL CARDbAddBasicRate(void *pDeviceHandler, WORD wRateIdx)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 PSDevice    pDevice = (PSDevice) pDeviceHandler;
 WORD wRate = (WORD)(1<<wRateIdx);
@@ -616,8 +644,16 @@ WORD wRate = (WORD)(1<<wRateIdx);
 
     //Determines the highest basic rate.
     CARDvUpdateBasicTopRate(pDevice);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
     return(TRUE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+
+    return(TRUE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 BOOL CARDbIsOFDMinBasicRate(void *pDeviceHandler)
@@ -1090,7 +1126,15 @@ CARDbChannelSwitch (
 
     if (byCount == 0) {
         pDevice->sMgmtObj.uCurrChannel = byNewChannel;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	CARDbSetMediaChannel(pDevice, byNewChannel);
+=======
         bResult = CARDbSetMediaChannel(pDevice, byNewChannel);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+        bResult = CARDbSetMediaChannel(pDevice, byNewChannel);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return bResult;
     }

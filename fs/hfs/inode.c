@@ -127,9 +127,14 @@ static ssize_t hfs_direct_IO(int rw, struct kiocb *iocb,
 	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
 				 hfs_get_block);
 =======
+<<<<<<< HEAD
+	ret = blockdev_direct_IO(rw, iocb, inode, iov, offset, nr_segs,
+				 hfs_get_block);
+=======
 	ret = blockdev_direct_IO(rw, iocb, inode, inode->i_sb->s_bdev, iov,
 				  offset, nr_segs, hfs_get_block, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * In case of error extending write may have instantiated a few
@@ -177,8 +182,12 @@ const struct address_space_operations hfs_aops = {
 <<<<<<< HEAD
 struct inode *hfs_new_inode(struct inode *dir, struct qstr *name, umode_t mode)
 =======
+<<<<<<< HEAD
+struct inode *hfs_new_inode(struct inode *dir, struct qstr *name, umode_t mode)
+=======
 struct inode *hfs_new_inode(struct inode *dir, struct qstr *name, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct super_block *sb = dir->i_sb;
 	struct inode *inode = new_inode(sb);
@@ -195,8 +204,12 @@ struct inode *hfs_new_inode(struct inode *dir, struct qstr *name, int mode)
 <<<<<<< HEAD
 	set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 1);
+=======
 	inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	inode->i_mtime = inode->i_atime = inode->i_ctime = CURRENT_TIME_SEC;
 	HFS_I(inode)->flags = 0;
 	HFS_I(inode)->rsrc_inode = NULL;
@@ -329,8 +342,12 @@ static int hfs_read_inode(struct inode *inode, void *data)
 <<<<<<< HEAD
 	set_nlink(inode, 1);
 =======
+<<<<<<< HEAD
+	set_nlink(inode, 1);
+=======
 	inode->i_nlink = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (idata->key)
 		HFS_I(inode)->cat_key = *idata->key;
@@ -636,7 +653,12 @@ int hfs_inode_setattr(struct dentry *dentry, struct iattr * attr)
 		inode_dio_wait(inode);
 
 =======
+<<<<<<< HEAD
+		inode_dio_wait(inode);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = vmtruncate(inode, attr->ia_size);
 		if (error)
 			return error;
@@ -651,21 +673,32 @@ int hfs_inode_setattr(struct dentry *dentry, struct iattr * attr)
 static int hfs_file_fsync(struct file *filp, loff_t start, loff_t end,
 			  int datasync)
 =======
+<<<<<<< HEAD
+static int hfs_file_fsync(struct file *filp, loff_t start, loff_t end,
+			  int datasync)
+=======
 static int hfs_file_fsync(struct file *filp, int datasync)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct inode *inode = filp->f_mapping->host;
 	struct super_block * sb;
 	int ret, err;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = filemap_write_and_wait_range(inode->i_mapping, start, end);
 	if (ret)
 		return ret;
 	mutex_lock(&inode->i_mutex);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* sync the inode to buffers */
 	ret = write_inode_now(inode, 0);
 
@@ -685,7 +718,11 @@ static int hfs_file_fsync(struct file *filp, int datasync)
 <<<<<<< HEAD
 	mutex_unlock(&inode->i_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&inode->i_mutex);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return ret;
 }
 

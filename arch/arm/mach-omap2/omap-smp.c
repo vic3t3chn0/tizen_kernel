@@ -24,6 +24,9 @@
 #include <asm/hardware/gic.h>
 #include <asm/smp_scu.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/hardware.h>
 #include <mach/omap-secure.h>
@@ -31,10 +34,13 @@
 #include "iomap.h"
 #include "common.h"
 #include "clockdomain.h"
+<<<<<<< HEAD
+=======
 =======
 #include <mach/hardware.h>
 #include <mach/omap4-common.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* SCU base address */
 static void __iomem *scu_base;
@@ -42,6 +48,9 @@ static void __iomem *scu_base;
 static DEFINE_SPINLOCK(boot_lock);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __iomem *omap4_get_scu_base(void)
 {
 	return scu_base;
@@ -62,11 +71,14 @@ void __cpuinit platform_secondary_init(unsigned int cpu)
 							4, 0, 0, 0, 0, 0);
 
 	/*
+<<<<<<< HEAD
+=======
 =======
 void __cpuinit platform_secondary_init(unsigned int cpu)
 {
 	/*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * If any interrupts are already enabled for the primary
 	 * core (e.g. timer irq), then they will not have been enabled
 	 * for us: do so
@@ -86,7 +98,12 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	static struct clockdomain *cpu1_clkdm;
 	static bool booted;
 =======
+<<<<<<< HEAD
+	static struct clockdomain *cpu1_clkdm;
+	static bool booted;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Set synchronisation state between this boot processor
 	 * and the secondary one
@@ -103,6 +120,9 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 	flush_cache_all();
 	smp_wmb();
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!cpu1_clkdm)
 		cpu1_clkdm = clkdm_lookup("mpu1_clkdm");
@@ -126,8 +146,11 @@ int __cpuinit boot_secondary(unsigned int cpu, struct task_struct *idle)
 		booted = true;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	gic_raise_softirq(cpumask_of(cpu), 1);
 
 	/*
@@ -167,25 +190,36 @@ void __init smp_init_cpus(void)
 	unsigned int i, ncores;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Currently we can't call ioremap here because
 	 * SoC detection won't work until after init_early.
 	 */
 	scu_base =  OMAP2_L4_IO_ADDRESS(OMAP44XX_SCU_BASE);
+<<<<<<< HEAD
+=======
 =======
 	/* Never released */
 	scu_base = ioremap(OMAP44XX_SCU_BASE, SZ_256);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	BUG_ON(!scu_base);
 
 	ncores = scu_get_core_count(scu_base);
 
 	/* sanity check */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ncores > nr_cpu_ids) {
 		pr_warn("SMP: %u cores greater than maximum (%u), clipping\n",
 			ncores, nr_cpu_ids);
 		ncores = nr_cpu_ids;
+<<<<<<< HEAD
+=======
 =======
 	if (ncores > NR_CPUS) {
 		printk(KERN_WARNING
@@ -194,6 +228,7 @@ void __init smp_init_cpus(void)
 		       ncores, NR_CPUS);
 		ncores = NR_CPUS;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	for (i = 0; i < ncores; i++)
@@ -206,6 +241,8 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int i;
 
 	/*
@@ -215,6 +252,7 @@ void __init platform_smp_prepare_cpus(unsigned int max_cpus)
 	for (i = 0; i < max_cpus; i++)
 		set_cpu_present(i, true);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Initialise the SCU and wake up the secondary core using

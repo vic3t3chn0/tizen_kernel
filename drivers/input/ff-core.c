@@ -309,9 +309,22 @@ EXPORT_SYMBOL_GPL(input_ff_event);
  * Once ff device is created you need to setup its upload, erase,
  * playback and other handlers before registering input device
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int input_ff_create(struct input_dev *dev, unsigned int max_effects)
+{
+	struct ff_device *ff;
+	size_t ff_dev_size;
+=======
 int input_ff_create(struct input_dev *dev, int max_effects)
 {
 	struct ff_device *ff;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+int input_ff_create(struct input_dev *dev, int max_effects)
+{
+	struct ff_device *ff;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int i;
 
 	if (!max_effects) {
@@ -319,8 +332,22 @@ int input_ff_create(struct input_dev *dev, int max_effects)
 		return -EINVAL;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ff_dev_size = sizeof(struct ff_device) +
+				max_effects * sizeof(struct file *);
+	if (ff_dev_size < max_effects) /* overflow */
+		return -EINVAL;
+
+	ff = kzalloc(ff_dev_size, GFP_KERNEL);
+=======
 	ff = kzalloc(sizeof(struct ff_device) +
 		     max_effects * sizeof(struct file *), GFP_KERNEL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ff = kzalloc(sizeof(struct ff_device) +
+		     max_effects * sizeof(struct file *), GFP_KERNEL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!ff)
 		return -ENOMEM;
 

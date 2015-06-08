@@ -52,6 +52,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 int
 xfs_setattr(
 	struct xfs_inode	*ip,
@@ -477,6 +479,7 @@ xfs_setattr(
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * The maximum pathlen is 1024 bytes. Since the minimum file system
  * blocksize is 512 bytes, we can get a max of 2 extents back from
@@ -503,9 +506,14 @@ xfs_readlink_bmap(
 	error = xfs_bmapi_read(ip, 0, XFS_B_TO_FSB(mp, pathlen), mval, &nmaps,
 			       0);
 =======
+<<<<<<< HEAD
+	error = xfs_bmapi_read(ip, 0, XFS_B_TO_FSB(mp, pathlen), mval, &nmaps,
+			       0);
+=======
 	error = xfs_bmapi(NULL, ip, 0, XFS_B_TO_FSB(mp, pathlen), 0, NULL, 0,
 			mval, &nmaps, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (error)
 		goto out;
 
@@ -516,17 +524,23 @@ xfs_readlink_bmap(
 		bp = xfs_buf_read(mp->m_ddev_targp, d, BTOBB(byte_cnt),
 				  XBF_LOCK | XBF_MAPPED | XBF_DONT_BLOCK);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!bp)
 			return XFS_ERROR(ENOMEM);
 		error = bp->b_error;
 		if (error) {
 			xfs_buf_ioerror_alert(bp, __func__);
+<<<<<<< HEAD
+=======
 =======
 		error = XFS_BUF_GETERROR(bp);
 		if (error) {
 			xfs_ioerror_alert("xfs_readlink",
 				  ip->i_mount, bp, XFS_BUF_ADDR(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_buf_relse(bp);
 			goto out;
 		}
@@ -537,8 +551,12 @@ xfs_readlink_bmap(
 <<<<<<< HEAD
 		memcpy(link, bp->b_addr, byte_cnt);
 =======
+<<<<<<< HEAD
+		memcpy(link, bp->b_addr, byte_cnt);
+=======
 		memcpy(link, XFS_BUF_PTR(bp), byte_cnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_buf_relse(bp);
 	}
 
@@ -622,8 +640,12 @@ xfs_free_eofblocks(
 <<<<<<< HEAD
 	end_fsb = XFS_B_TO_FSB(mp, (xfs_ufsize_t)XFS_ISIZE(ip));
 =======
+<<<<<<< HEAD
+	end_fsb = XFS_B_TO_FSB(mp, (xfs_ufsize_t)XFS_ISIZE(ip));
+=======
 	end_fsb = XFS_B_TO_FSB(mp, ((xfs_ufsize_t)ip->i_size));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	last_fsb = XFS_B_TO_FSB(mp, (xfs_ufsize_t)XFS_MAXIOFFSET(mp));
 	if (last_fsb <= end_fsb)
 		return 0;
@@ -634,9 +656,13 @@ xfs_free_eofblocks(
 <<<<<<< HEAD
 	error = xfs_bmapi_read(ip, end_fsb, map_len, &imap, &nimaps, 0);
 =======
+<<<<<<< HEAD
+	error = xfs_bmapi_read(ip, end_fsb, map_len, &imap, &nimaps, 0);
+=======
 	error = xfs_bmapi(NULL, ip, end_fsb, map_len, 0,
 			  NULL, 0, &imap, &nimaps, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_iunlock(ip, XFS_ILOCK_SHARED);
 
 	if (!error && (nimaps != 0) &&
@@ -658,6 +684,8 @@ xfs_free_eofblocks(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		/*
 		 * Do the xfs_itruncate_start() call before
 		 * reserving any log space because
@@ -666,6 +694,7 @@ xfs_free_eofblocks(
 		 * do that within a transaction.
 		 */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (flags & XFS_FREE_EOF_TRYLOCK) {
 			if (!xfs_ilock_nowait(ip, XFS_IOLOCK_EXCL)) {
 				xfs_trans_cancel(tp, 0);
@@ -676,6 +705,8 @@ xfs_free_eofblocks(
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		error = xfs_itruncate_start(ip, XFS_ITRUNC_DEFINITE,
 				    ip->i_size);
 		if (error) {
@@ -684,6 +715,7 @@ xfs_free_eofblocks(
 			return error;
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		error = xfs_trans_reserve(tp, 0,
 					  XFS_ITRUNCATE_LOG_RES(mp),
@@ -698,6 +730,9 @@ xfs_free_eofblocks(
 
 		xfs_ilock(ip, XFS_ILOCK_EXCL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_trans_ijoin(tp, ip, 0);
 
 		/*
@@ -713,6 +748,8 @@ xfs_free_eofblocks(
 			 * If we get an error at this point we simply don't
 			 * bother truncating the file.
 			 */
+<<<<<<< HEAD
+=======
 =======
 		xfs_trans_ijoin(tp, ip);
 
@@ -726,6 +763,7 @@ xfs_free_eofblocks(
 		 */
 		if (error) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_trans_cancel(tp,
 					 (XFS_TRANS_RELEASE_LOG_RES |
 					  XFS_TRANS_ABORT));
@@ -790,8 +828,12 @@ xfs_inactive_symlink_rmt(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, ip, 0);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, ip, 0);
+=======
 	xfs_trans_ijoin(tp, ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_trans_log_inode(tp, ip, XFS_ILOG_CORE);
 	/*
 	 * Find the block(s) so we can inval and unmap them.
@@ -804,10 +846,16 @@ xfs_inactive_symlink_rmt(
 				mval, &nmaps, 0);
 	if (error)
 =======
+<<<<<<< HEAD
+	error = xfs_bmapi_read(ip, 0, XFS_B_TO_FSB(mp, size),
+				mval, &nmaps, 0);
+	if (error)
+=======
 	if ((error = xfs_bmapi(tp, ip, 0, XFS_B_TO_FSB(mp, size),
 			XFS_BMAPI_METADATA, &first_block, 0, mval, &nmaps,
 			&free_list)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		goto error0;
 	/*
 	 * Invalidate the block(s).
@@ -817,12 +865,18 @@ xfs_inactive_symlink_rmt(
 			XFS_FSB_TO_DADDR(mp, mval[i].br_startblock),
 			XFS_FSB_TO_BB(mp, mval[i].br_blockcount), 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!bp) {
 			error = ENOMEM;
 			goto error1;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_trans_binval(tp, bp);
 	}
 	/*
@@ -851,8 +905,12 @@ xfs_inactive_symlink_rmt(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, ip, 0);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, ip, 0);
+=======
 	xfs_trans_ijoin(tp, ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_trans_log_inode(tp, ip, XFS_ILOG_CORE);
 	/*
 	 * Get a new, empty transaction to return to our caller.
@@ -988,8 +1046,12 @@ xfs_inactive_attrs(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, ip, 0);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, ip, 0);
+=======
 	xfs_trans_ijoin(tp, ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_idestroy_fork(ip, XFS_ATTR_FORK);
 
 	ASSERT(ip->i_d.di_anextents == 0);
@@ -1059,10 +1121,16 @@ xfs_release(
 	     (VFS_I(ip)->i_size > 0 ||
 	      (VN_CACHED(VFS_I(ip)) > 0 || ip->i_delayed_blks > 0)) &&
 =======
+<<<<<<< HEAD
+	if ((S_ISREG(ip->i_d.di_mode) &&
+	     (VFS_I(ip)->i_size > 0 ||
+	      (VN_CACHED(VFS_I(ip)) > 0 || ip->i_delayed_blks > 0)) &&
+=======
 	if ((((ip->i_d.di_mode & S_IFMT) == S_IFREG) &&
 	     ((ip->i_size > 0) || (VN_CACHED(VFS_I(ip)) > 0 ||
 	       ip->i_delayed_blks > 0)) &&
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	     (ip->i_df.if_flags & XFS_IFEXTENTS))  &&
 	    (!(ip->i_d.di_flags & (XFS_DIFLAG_PREALLOC | XFS_DIFLAG_APPEND)))) {
 
@@ -1144,10 +1212,16 @@ xfs_inactive(
 	     (ip->i_d.di_nextents > 0) || (ip->i_delayed_blks > 0)) &&
 	    S_ISREG(ip->i_d.di_mode));
 =======
+<<<<<<< HEAD
+	    ((ip->i_d.di_size != 0) || XFS_ISIZE(ip) != 0 ||
+	     (ip->i_d.di_nextents > 0) || (ip->i_delayed_blks > 0)) &&
+	    S_ISREG(ip->i_d.di_mode));
+=======
 	    ((ip->i_d.di_size != 0) || (ip->i_size != 0) ||
 	     (ip->i_d.di_nextents > 0) || (ip->i_delayed_blks > 0)) &&
 	    ((ip->i_d.di_mode & S_IFMT) == S_IFREG));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mp = ip->i_mount;
 
@@ -1159,6 +1233,9 @@ xfs_inactive(
 
 	if (ip->i_d.di_nlink != 0) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if ((S_ISREG(ip->i_d.di_mode) &&
 		    (VFS_I(ip)->i_size > 0 ||
 		     (VN_CACHED(VFS_I(ip)) > 0 || ip->i_delayed_blks > 0)) &&
@@ -1166,6 +1243,8 @@ xfs_inactive(
 		    (!(ip->i_d.di_flags &
 				(XFS_DIFLAG_PREALLOC | XFS_DIFLAG_APPEND)) ||
 		     ip->i_delayed_blks != 0))) {
+<<<<<<< HEAD
+=======
 =======
 		if ((((ip->i_d.di_mode & S_IFMT) == S_IFREG) &&
                      ((ip->i_size > 0) || (VN_CACHED(VFS_I(ip)) > 0 ||
@@ -1175,6 +1254,7 @@ xfs_inactive(
 				(XFS_DIFLAG_PREALLOC | XFS_DIFLAG_APPEND)) ||
 		      (ip->i_delayed_blks != 0)))) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = xfs_free_eofblocks(mp, ip, 0);
 			if (error)
 				return VN_INACTIVE_CACHE;
@@ -1190,6 +1270,10 @@ xfs_inactive(
 
 	tp = xfs_trans_alloc(mp, XFS_TRANS_INACTIVE);
 	if (truncate) {
+<<<<<<< HEAD
+		xfs_ilock(ip, XFS_IOLOCK_EXCL);
+
+=======
 <<<<<<< HEAD
 		xfs_ilock(ip, XFS_IOLOCK_EXCL);
 
@@ -1210,6 +1294,7 @@ xfs_inactive(
 		}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = xfs_trans_reserve(tp, 0,
 					  XFS_ITRUNCATE_LOG_RES(mp),
 					  0, XFS_TRANS_PERM_LOG_RES,
@@ -1224,12 +1309,17 @@ xfs_inactive(
 
 		xfs_ilock(ip, XFS_ILOCK_EXCL);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_trans_ijoin(tp, ip, 0);
 
 		ip->i_d.di_size = 0;
 		xfs_trans_log_inode(tp, ip, XFS_ILOG_CORE);
 
 		error = xfs_itruncate_extents(&tp, ip, XFS_DATA_FORK, 0);
+<<<<<<< HEAD
+=======
 =======
 		xfs_trans_ijoin(tp, ip);
 
@@ -1244,6 +1334,7 @@ xfs_inactive(
 				(!(mp->m_flags & XFS_MOUNT_WSYNC) ? 1 : 0));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error) {
 			xfs_trans_cancel(tp,
 				XFS_TRANS_RELEASE_LOG_RES | XFS_TRANS_ABORT);
@@ -1255,8 +1346,14 @@ xfs_inactive(
 		ASSERT(ip->i_d.di_nextents == 0);
 	} else if (S_ISLNK(ip->i_d.di_mode)) {
 =======
+<<<<<<< HEAD
+
+		ASSERT(ip->i_d.di_nextents == 0);
+	} else if (S_ISLNK(ip->i_d.di_mode)) {
+=======
 	} else if ((ip->i_d.di_mode & S_IFMT) == S_IFLNK) {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * If we get an error while cleaning up a
@@ -1274,8 +1371,12 @@ xfs_inactive(
 <<<<<<< HEAD
 		xfs_trans_ijoin(tp, ip, 0);
 =======
+<<<<<<< HEAD
+		xfs_trans_ijoin(tp, ip, 0);
+=======
 		xfs_trans_ijoin(tp, ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else {
 		error = xfs_trans_reserve(tp, 0,
 					  XFS_IFREE_LOG_RES(mp),
@@ -1291,8 +1392,12 @@ xfs_inactive(
 <<<<<<< HEAD
 		xfs_trans_ijoin(tp, ip, 0);
 =======
+<<<<<<< HEAD
+		xfs_trans_ijoin(tp, ip, 0);
+=======
 		xfs_trans_ijoin(tp, ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/*
@@ -1412,8 +1517,12 @@ xfs_create(
 <<<<<<< HEAD
 	umode_t			mode,
 =======
+<<<<<<< HEAD
+	umode_t			mode,
+=======
 	mode_t			mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_dev_t		rdev,
 	xfs_inode_t		**ipp)
 {
@@ -1497,6 +1606,8 @@ xfs_create(
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/*
 	 * Check for directory link count overflow.
 	 */
@@ -1506,6 +1617,7 @@ xfs_create(
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_bmap_init(&free_list, &first_block);
 
 	/*
@@ -1542,8 +1654,12 @@ xfs_create(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, dp, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, dp, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(tp, dp, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_dp_on_error = B_FALSE;
 
 	error = xfs_dir_createname(tp, dp, name, ip->i_ino,
@@ -1868,9 +1984,14 @@ xfs_remove(
 	xfs_trans_ijoin(tp, dp, XFS_ILOCK_EXCL);
 	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, dp, XFS_ILOCK_EXCL);
+	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(tp, dp, XFS_ILOCK_EXCL);
 	xfs_trans_ijoin_ref(tp, ip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we're removing a directory perform some additional validation.
@@ -2019,6 +2140,10 @@ xfs_link(
 	xfs_trans_ijoin(tp, sip, XFS_ILOCK_EXCL);
 	xfs_trans_ijoin(tp, tdp, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, sip, XFS_ILOCK_EXCL);
+	xfs_trans_ijoin(tp, tdp, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(tp, sip, XFS_ILOCK_EXCL);
 	xfs_trans_ijoin_ref(tp, tdp, XFS_ILOCK_EXCL);
 
@@ -2030,6 +2155,7 @@ xfs_link(
 		goto error_return;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * If we are using project inheritance, we only allow hard link
@@ -2092,8 +2218,12 @@ xfs_symlink(
 <<<<<<< HEAD
 	umode_t			mode,
 =======
+<<<<<<< HEAD
+	umode_t			mode,
+=======
 	mode_t			mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_inode_t		**ipp)
 {
 	xfs_mount_t		*mp = dp->i_mount;
@@ -2222,8 +2352,12 @@ xfs_symlink(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, dp, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, dp, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(tp, dp, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unlock_dp_on_error = B_FALSE;
 
 	/*
@@ -2259,11 +2393,17 @@ xfs_symlink(
 				  XFS_BMAPI_METADATA, &first_block, resblks,
 				  mval, &nmaps, &free_list);
 =======
+<<<<<<< HEAD
+		error = xfs_bmapi_write(tp, ip, first_fsb, fs_blocks,
+				  XFS_BMAPI_METADATA, &first_block, resblks,
+				  mval, &nmaps, &free_list);
+=======
 		error = xfs_bmapi(tp, ip, first_fsb, fs_blocks,
 				  XFS_BMAPI_WRITE | XFS_BMAPI_METADATA,
 				  &first_block, resblks, mval, &nmaps,
 				  &free_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto error2;
 
@@ -2279,13 +2419,19 @@ xfs_symlink(
 			bp = xfs_trans_get_buf(tp, mp->m_ddev_targp, d,
 					       BTOBB(byte_cnt), 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (!bp) {
 				error = ENOMEM;
 				goto error2;
 			}
+<<<<<<< HEAD
+=======
 =======
 			ASSERT(bp && !XFS_BUF_GETERROR(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (pathlen < byte_cnt) {
 				byte_cnt = pathlen;
 			}
@@ -2294,8 +2440,12 @@ xfs_symlink(
 <<<<<<< HEAD
 			memcpy(bp->b_addr, cur_chunk, byte_cnt);
 =======
+<<<<<<< HEAD
+			memcpy(bp->b_addr, cur_chunk, byte_cnt);
+=======
 			memcpy(XFS_BUF_PTR(bp), cur_chunk, byte_cnt);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			cur_chunk += byte_cnt;
 
 			xfs_trans_log_buf(tp, bp, 0, byte_cnt - 1);
@@ -2374,8 +2524,12 @@ xfs_set_dmattrs(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
+=======
 	xfs_trans_ijoin_ref(tp, ip, XFS_ILOCK_EXCL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	ip->i_d.di_dmevmask = evmask;
 	ip->i_d.di_dmstate  = state;
@@ -2423,8 +2577,11 @@ xfs_alloc_file_space(
 	int			nimaps;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int			bmapi_flag;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int			quota_flag;
 	int			rt;
 	xfs_trans_t		*tp;
@@ -2454,8 +2611,11 @@ xfs_alloc_file_space(
 	nimaps = 1;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	bmapi_flag = XFS_BMAPI_WRITE | alloc_type;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	startoffset_fsb	= XFS_B_TO_FSBT(mp, offset);
 	allocatesize_fsb = XFS_B_TO_FSB(mp, count);
 
@@ -2527,12 +2687,17 @@ xfs_alloc_file_space(
 			goto error1;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		xfs_trans_ijoin(tp, ip, 0);
 
 		xfs_bmap_init(&free_list, &firstfsb);
 		error = xfs_bmapi_write(tp, ip, startoffset_fsb,
 					allocatesize_fsb, alloc_type, &firstfsb,
 					0, imapp, &nimaps, &free_list);
+<<<<<<< HEAD
+=======
 =======
 		xfs_trans_ijoin(tp, ip);
 
@@ -2545,6 +2710,7 @@ xfs_alloc_file_space(
 				  &firstfsb, 0, imapp, &nimaps,
 				  &free_list);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error) {
 			goto error0;
 		}
@@ -2618,11 +2784,16 @@ xfs_zero_remaining_bytes(
 	 * be zeroed when the file is extended anyway.
 	 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (startoff >= XFS_ISIZE(ip))
 		return 0;
 
 	if (endoff > XFS_ISIZE(ip))
 		endoff = XFS_ISIZE(ip);
+<<<<<<< HEAD
+=======
 =======
 	if (startoff >= ip->i_size)
 		return 0;
@@ -2630,6 +2801,7 @@ xfs_zero_remaining_bytes(
 	if (endoff > ip->i_size)
 		endoff = ip->i_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	bp = xfs_buf_get_uncached(XFS_IS_REALTIME_INODE(ip) ?
 					mp->m_rtdev_targp : mp->m_ddev_targp,
@@ -2638,12 +2810,17 @@ xfs_zero_remaining_bytes(
 		return XFS_ERROR(ENOMEM);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	xfs_buf_unlock(bp);
 
 	for (offset = startoff; offset <= endoff; offset = lastoffset + 1) {
 		offset_fsb = XFS_B_TO_FSBT(mp, offset);
 		nimap = 1;
 		error = xfs_bmapi_read(ip, offset_fsb, 1, &imap, &nimap, 0);
+<<<<<<< HEAD
+=======
 =======
 	for (offset = startoff; offset <= endoff; offset = lastoffset + 1) {
 		offset_fsb = XFS_B_TO_FSBT(mp, offset);
@@ -2651,6 +2828,7 @@ xfs_zero_remaining_bytes(
 		error = xfs_bmapi(NULL, ip, offset_fsb, 1, 0,
 			NULL, 0, &imap, &nimap, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error || nimap < 1)
 			break;
 		ASSERT(imap.br_blockcount >= 1);
@@ -2671,11 +2849,16 @@ xfs_zero_remaining_bytes(
 		error = xfs_buf_iowait(bp);
 		if (error) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			xfs_buf_ioerror_alert(bp,
 					"xfs_zero_remaining_bytes(read)");
 			break;
 		}
 		memset(bp->b_addr +
+<<<<<<< HEAD
+=======
 =======
 			xfs_ioerror_alert("xfs_zero_remaining_bytes(read)",
 					  mp, bp, XFS_BUF_ADDR(bp));
@@ -2683,6 +2866,7 @@ xfs_zero_remaining_bytes(
 		}
 		memset(XFS_BUF_PTR(bp) +
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			(offset - XFS_FSB_TO_B(mp, imap.br_startoff)),
 		      0, lastoffset - offset + 1);
 		XFS_BUF_UNDONE(bp);
@@ -2695,9 +2879,14 @@ xfs_zero_remaining_bytes(
 			xfs_buf_ioerror_alert(bp,
 					"xfs_zero_remaining_bytes(write)");
 =======
+<<<<<<< HEAD
+			xfs_buf_ioerror_alert(bp,
+					"xfs_zero_remaining_bytes(write)");
+=======
 			xfs_ioerror_alert("xfs_zero_remaining_bytes(write)",
 					  mp, bp, XFS_BUF_ADDR(bp));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 		}
 	}
@@ -2765,8 +2954,12 @@ xfs_free_file_space(
 <<<<<<< HEAD
 		inode_dio_wait(VFS_I(ip));
 =======
+<<<<<<< HEAD
+		inode_dio_wait(VFS_I(ip));
+=======
 		xfs_ioend_wait(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rounding = max_t(uint, 1 << mp->m_sb.sb_blocklog, PAGE_CACHE_SIZE);
@@ -2790,9 +2983,14 @@ xfs_free_file_space(
 		error = xfs_bmapi_read(ip, startoffset_fsb, 1,
 					&imap, &nimap, 0);
 =======
+<<<<<<< HEAD
+		error = xfs_bmapi_read(ip, startoffset_fsb, 1,
+					&imap, &nimap, 0);
+=======
 		error = xfs_bmapi(NULL, ip, startoffset_fsb,
 			1, 0, NULL, 0, &imap, &nimap, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_unlock_iolock;
 		ASSERT(nimap == 0 || nimap == 1);
@@ -2810,9 +3008,14 @@ xfs_free_file_space(
 		error = xfs_bmapi_read(ip, endoffset_fsb - 1, 1,
 					&imap, &nimap, 0);
 =======
+<<<<<<< HEAD
+		error = xfs_bmapi_read(ip, endoffset_fsb - 1, 1,
+					&imap, &nimap, 0);
+=======
 		error = xfs_bmapi(NULL, ip, endoffset_fsb - 1,
 			1, 0, NULL, 0, &imap, &nimap, NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (error)
 			goto out_unlock_iolock;
 		ASSERT(nimap == 0 || nimap == 1);
@@ -2883,8 +3086,12 @@ xfs_free_file_space(
 <<<<<<< HEAD
 		xfs_trans_ijoin(tp, ip, 0);
 =======
+<<<<<<< HEAD
+		xfs_trans_ijoin(tp, ip, 0);
+=======
 		xfs_trans_ijoin(tp, ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * issue the bunmapi() call to free the blocks
@@ -2966,8 +3173,12 @@ xfs_change_file_space(
 <<<<<<< HEAD
 		bf->l_start += XFS_ISIZE(ip);
 =======
+<<<<<<< HEAD
+		bf->l_start += XFS_ISIZE(ip);
+=======
 		bf->l_start += ip->i_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	default:
 		return XFS_ERROR(EINVAL);
@@ -2987,8 +3198,12 @@ xfs_change_file_space(
 <<<<<<< HEAD
 	fsize = XFS_ISIZE(ip);
 =======
+<<<<<<< HEAD
+	fsize = XFS_ISIZE(ip);
+=======
 	fsize = ip->i_size;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * XFS_IOC_RESVSP and XFS_IOC_UNRESVSP will reserve or unreserve
@@ -3042,8 +3257,12 @@ xfs_change_file_space(
 <<<<<<< HEAD
 		error = xfs_setattr_size(ip, &iattr, attr_flags);
 =======
+<<<<<<< HEAD
+		error = xfs_setattr_size(ip, &iattr, attr_flags);
+=======
 		error = xfs_setattr(ip, &iattr, attr_flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (error)
 			return error;
@@ -3072,9 +3291,13 @@ xfs_change_file_space(
 <<<<<<< HEAD
 	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
 =======
+<<<<<<< HEAD
+	xfs_trans_ijoin(tp, ip, XFS_ILOCK_EXCL);
+=======
 
 	xfs_trans_ijoin(tp, ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if ((attr_flags & XFS_ATTR_DMI) == 0) {
 		ip->i_d.di_mode &= ~S_ISUID;
@@ -3102,6 +3325,9 @@ xfs_change_file_space(
 <<<<<<< HEAD
 	return xfs_trans_commit(tp, 0);
 =======
+<<<<<<< HEAD
+	return xfs_trans_commit(tp, 0);
+=======
 
 	error = xfs_trans_commit(tp, 0);
 
@@ -3109,4 +3335,5 @@ xfs_change_file_space(
 
 	return error;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

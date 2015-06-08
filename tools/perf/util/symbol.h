@@ -8,7 +8,11 @@
 <<<<<<< HEAD
 #include "../perf.h"
 =======
+<<<<<<< HEAD
+#include "../perf.h"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/list.h>
 #include <linux/rbtree.h>
 #include <stdio.h>
@@ -73,6 +77,9 @@ struct strlist;
 struct symbol_conf {
 	unsigned short	priv_size;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned short	nr_events;
 	bool		try_vmlinux_path,
 			show_kernel_path,
@@ -80,12 +87,15 @@ struct symbol_conf {
 			sort_by_name,
 			show_nr_samples,
 			show_total_period,
+<<<<<<< HEAD
+=======
 =======
 	bool		try_vmlinux_path,
 			use_modules,
 			sort_by_name,
 			show_nr_samples,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			use_callchain,
 			exclude_other,
 			show_cpu_utilization,
@@ -95,8 +105,14 @@ struct symbol_conf {
 			annotate_asm_raw,
 			annotate_src;
 =======
+<<<<<<< HEAD
+			kptr_restrict,
+			annotate_asm_raw,
+			annotate_src;
+=======
 			kptr_restrict;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char	*vmlinux_name,
 			*kallsyms_name,
 			*source_prefix,
@@ -112,14 +128,20 @@ struct symbol_conf {
        struct strlist	*dso_list,
 			*comm_list,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			*sym_list,
 			*dso_from_list,
 			*dso_to_list,
 			*sym_from_list,
 			*sym_to_list;
+<<<<<<< HEAD
+=======
 =======
 			*sym_list;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	const char	*symfs;
 };
 
@@ -144,6 +166,9 @@ struct map_symbol {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct addr_map_symbol {
 	struct map    *map;
 	struct symbol *sym;
@@ -157,8 +182,11 @@ struct branch_info {
 	struct branch_flags flags;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct addr_location {
 	struct thread *thread;
 	struct map    *map;
@@ -201,8 +229,11 @@ struct dso {
 struct dso *dso__new(const char *name);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct dso *dso__new_kernel(const char *name);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void dso__delete(struct dso *dso);
 
 int dso__name_len(const struct dso *dso);
@@ -290,7 +321,13 @@ size_t symbol__fprintf_symname_offs(const struct symbol *sym,
 				    const struct addr_location *al, FILE *fp);
 size_t symbol__fprintf_symname(const struct symbol *sym, FILE *fp);
 =======
+<<<<<<< HEAD
+size_t symbol__fprintf_symname_offs(const struct symbol *sym,
+				    const struct addr_location *al, FILE *fp);
+size_t symbol__fprintf_symname(const struct symbol *sym, FILE *fp);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 bool symbol_type__is_a(char symbol_type, enum map_type map_type);
 
 size_t machine__fprintf_vmlinux_path(struct machine *machine, FILE *fp);

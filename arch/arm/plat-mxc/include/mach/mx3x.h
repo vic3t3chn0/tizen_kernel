@@ -191,6 +191,10 @@
 extern int mx35_revision(void);
 extern int mx31_revision(void);
 =======
+<<<<<<< HEAD
+extern int mx35_revision(void);
+extern int mx31_revision(void);
+=======
 
 extern unsigned int mx31_cpu_rev;
 extern void mx31_read_cpu_rev(void);
@@ -208,6 +212,7 @@ static inline int mx35_revision(void)
 	return mx35_cpu_rev;
 }
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 #endif /* ifndef __MACH_MX3x_H__ */

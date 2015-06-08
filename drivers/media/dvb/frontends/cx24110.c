@@ -531,6 +531,24 @@ static int cx24110_read_ucblocks(struct dvb_frontend* fe, u32* ucblocks)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int cx24110_set_frontend(struct dvb_frontend *fe)
+{
+	struct cx24110_state *state = fe->demodulator_priv;
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+
+	if (fe->ops.tuner_ops.set_params) {
+		fe->ops.tuner_ops.set_params(fe);
+		if (fe->ops.i2c_gate_ctrl) fe->ops.i2c_gate_ctrl(fe, 0);
+	}
+
+	cx24110_set_inversion(state, p->inversion);
+	cx24110_set_fec(state, p->fec_inner);
+	cx24110_set_symbolrate(state, p->symbol_rate);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int cx24110_set_frontend(struct dvb_frontend* fe, struct dvb_frontend_parameters *p)
 {
 	struct cx24110_state *state = fe->demodulator_priv;
@@ -544,13 +562,28 @@ static int cx24110_set_frontend(struct dvb_frontend* fe, struct dvb_frontend_par
 	cx24110_set_inversion (state, p->inversion);
 	cx24110_set_fec (state, p->u.qpsk.fec_inner);
 	cx24110_set_symbolrate (state, p->u.qpsk.symbol_rate);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cx24110_writereg(state,0x04,0x05); /* start acquisition */
 
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static int cx24110_get_frontend(struct dvb_frontend *fe)
+{
+	struct dtv_frontend_properties *p = &fe->dtv_property_cache;
+=======
 static int cx24110_get_frontend(struct dvb_frontend* fe, struct dvb_frontend_parameters *p)
 {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int cx24110_get_frontend(struct dvb_frontend* fe, struct dvb_frontend_parameters *p)
+{
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct cx24110_state *state = fe->demodulator_priv;
 	s32 afc; unsigned sclk;
 
@@ -571,7 +604,15 @@ static int cx24110_get_frontend(struct dvb_frontend* fe, struct dvb_frontend_par
 	p->frequency += afc;
 	p->inversion = (cx24110_readreg (state, 0x22) & 0x10) ?
 				INVERSION_ON : INVERSION_OFF;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	p->fec_inner = cx24110_get_fec(state);
+=======
 	p->u.qpsk.fec_inner = cx24110_get_fec (state);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	p->u.qpsk.fec_inner = cx24110_get_fec (state);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -623,10 +664,22 @@ error:
 }
 
 static struct dvb_frontend_ops cx24110_ops = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.delsys = { SYS_DVBS },
+	.info = {
+		.name = "Conexant CX24110 DVB-S",
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	.info = {
 		.name = "Conexant CX24110 DVB-S",
 		.type = FE_QPSK,
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.frequency_min = 950000,
 		.frequency_max = 2150000,
 		.frequency_stepsize = 1011,  /* kHz for QPSK frontends */

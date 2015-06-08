@@ -9,14 +9,20 @@
 				/* Implementation specific desired alignment */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 typedef unsigned short __kernel_sa_family_t;
 
 struct __kernel_sockaddr_storage {
 	__kernel_sa_family_t	ss_family;		/* address family */
+<<<<<<< HEAD
+=======
 =======
 struct __kernel_sockaddr_storage {
 	unsigned short	ss_family;		/* address family */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Following field(s) are implementation specific */
 	char		__data[_K_SS_MAXSIZE - sizeof(unsigned short)];
 				/* space to achieve desired size, */
@@ -45,8 +51,12 @@ extern void socket_seq_show(struct seq_file *seq);
 <<<<<<< HEAD
 typedef __kernel_sa_family_t	sa_family_t;
 =======
+<<<<<<< HEAD
+typedef __kernel_sa_family_t	sa_family_t;
+=======
 typedef unsigned short	sa_family_t;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  *	1003.1g requires sa_family_t and that sa_data is char.
@@ -207,8 +217,13 @@ struct ucred {
 #define AF_NFC		39	/* NFC sockets			*/
 #define AF_MAX		40	/* For now.. */
 =======
+<<<<<<< HEAD
+#define AF_NFC		39	/* NFC sockets			*/
+#define AF_MAX		40	/* For now.. */
+=======
 #define AF_MAX		39	/* For now.. */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Protocol families, same as address families. */
 #define PF_UNSPEC	AF_UNSPEC
@@ -253,7 +268,11 @@ struct ucred {
 <<<<<<< HEAD
 #define PF_NFC		AF_NFC
 =======
+<<<<<<< HEAD
+#define PF_NFC		AF_NFC
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define PF_MAX		AF_MAX
 
 /* Maximum queue length specifiable by listen.  */
@@ -343,11 +362,16 @@ extern int csum_partial_copy_fromiovecend(unsigned char *kdata,
 					  unsigned int len, __wsum *csump);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int verify_iovec(struct msghdr *m, struct iovec *iov, struct sockaddr_storage *address, int mode);
 extern int memcpy_toiovec(struct iovec *v, unsigned char *kdata, int len);
 extern int memcpy_toiovecend(const struct iovec *v, unsigned char *kdata,
 			     int offset, int len);
 extern int move_addr_to_kernel(void __user *uaddr, int ulen, struct sockaddr_storage *kaddr);
+<<<<<<< HEAD
+=======
 =======
 extern int verify_iovec(struct msghdr *m, struct iovec *iov, struct sockaddr *address, int mode);
 extern int memcpy_toiovec(struct iovec *v, unsigned char *kdata, int len);
@@ -355,6 +379,7 @@ extern int memcpy_toiovecend(const struct iovec *v, unsigned char *kdata,
 			     int offset, int len);
 extern int move_addr_to_kernel(void __user *uaddr, int ulen, struct sockaddr *kaddr);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int put_cmsg(struct msghdr*, int level, int type, int len, void *data);
 
 struct timespec;

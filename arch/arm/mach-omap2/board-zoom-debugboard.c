@@ -19,7 +19,13 @@
 #include <linux/regulator/machine.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/regulator/fixed.h>
+#include <linux/regulator/machine.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <plat/gpmc.h>
 #include <plat/gpmc-smsc911x.h>
 
@@ -32,7 +38,11 @@
 <<<<<<< HEAD
 #define ZOOM_QUADUART_RST_GPIO	152
 =======
+<<<<<<< HEAD
+#define ZOOM_QUADUART_RST_GPIO	152
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define QUART_CLK		1843200
 #define DEBUG_BASE		0x08000000
 #define ZOOM_ETHR_START	DEBUG_BASE
@@ -54,8 +64,11 @@ static struct plat_serial8250_port serial_platform_data[] = {
 		.mapbase	= ZOOM_UART_BASE,
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		.irq		= OMAP_GPIO_IRQ(102),
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.flags		= UPF_BOOT_AUTOCONF|UPF_IOREMAP|UPF_SHARE_IRQ,
 		.irqflags	= IRQF_SHARED | IRQF_TRIGGER_RISING,
 		.iotype		= UPIO_MEM,
@@ -81,6 +94,9 @@ static inline void __init zoom_init_quaduart(void)
 	int quart_gpio = 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (gpio_request_one(ZOOM_QUADUART_RST_GPIO,
 				GPIOF_OUT_INIT_LOW,
 				"TL16CP754C GPIO") < 0) {
@@ -89,8 +105,11 @@ static inline void __init zoom_init_quaduart(void)
 		return;
 	}
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	quart_cs = ZOOM_QUADUART_CS;
 
 	if (gpmc_cs_request(quart_cs, SZ_1M, &cs_mem_base) < 0) {
@@ -108,7 +127,12 @@ static inline void __init zoom_init_quaduart(void)
 
 	serial_platform_data[0].irq = gpio_to_irq(102);
 =======
+<<<<<<< HEAD
+
+	serial_platform_data[0].irq = gpio_to_irq(102);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static inline int omap_zoom_debugboard_detect(void)
@@ -137,13 +161,19 @@ static struct platform_device *zoom_devices[] __initdata = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct regulator_consumer_supply dummy_supplies[] = {
 	REGULATOR_SUPPLY("vddvario", "smsc911x.0"),
 	REGULATOR_SUPPLY("vdd33a", "smsc911x.0"),
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int __init zoom_debugboard_init(void)
 {
 	if (!omap_zoom_debugboard_detect())
@@ -152,7 +182,11 @@ int __init zoom_debugboard_init(void)
 <<<<<<< HEAD
 	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
 =======
+<<<<<<< HEAD
+	regulator_register_fixed(0, dummy_supplies, ARRAY_SIZE(dummy_supplies));
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	zoom_init_smsc911x();
 	zoom_init_quaduart();
 	return platform_add_devices(zoom_devices, ARRAY_SIZE(zoom_devices));

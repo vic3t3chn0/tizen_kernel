@@ -37,6 +37,13 @@
 #include <linux/delay.h>
 #include <linux/slab.h>
 #include <linux/vmalloc.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/moduleparam.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "ipoib.h"
 
@@ -84,7 +91,15 @@ static void ipoib_cm_dma_unmap_rx(struct ipoib_dev_priv *priv, int frags,
 	ib_dma_unmap_single(priv->ca, mapping[0], IPOIB_CM_HEAD_SIZE, DMA_FROM_DEVICE);
 
 	for (i = 0; i < frags; ++i)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ib_dma_unmap_page(priv->ca, mapping[i + 1], PAGE_SIZE, DMA_FROM_DEVICE);
+=======
 		ib_dma_unmap_single(priv->ca, mapping[i + 1], PAGE_SIZE, DMA_FROM_DEVICE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ib_dma_unmap_single(priv->ca, mapping[i + 1], PAGE_SIZE, DMA_FROM_DEVICE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static int ipoib_cm_post_receive_srq(struct net_device *dev, int id)
@@ -169,7 +184,15 @@ static struct sk_buff *ipoib_cm_alloc_rx_skb(struct net_device *dev,
 			goto partial_error;
 		skb_fill_page_desc(skb, i, page, 0, PAGE_SIZE);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		mapping[i + 1] = ib_dma_map_page(priv->ca, page,
+=======
 		mapping[i + 1] = ib_dma_map_page(priv->ca, skb_shinfo(skb)->frags[i].page,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		mapping[i + 1] = ib_dma_map_page(priv->ca, skb_shinfo(skb)->frags[i].page,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 						 0, PAGE_SIZE, DMA_FROM_DEVICE);
 		if (unlikely(ib_dma_mapping_error(priv->ca, mapping[i + 1])))
 			goto partial_error;
@@ -183,7 +206,15 @@ partial_error:
 	ib_dma_unmap_single(priv->ca, mapping[0], IPOIB_CM_HEAD_SIZE, DMA_FROM_DEVICE);
 
 	for (; i > 0; --i)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		ib_dma_unmap_page(priv->ca, mapping[i], PAGE_SIZE, DMA_FROM_DEVICE);
+=======
 		ib_dma_unmap_single(priv->ca, mapping[i], PAGE_SIZE, DMA_FROM_DEVICE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		ib_dma_unmap_single(priv->ca, mapping[i], PAGE_SIZE, DMA_FROM_DEVICE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	dev_kfree_skb_any(skb);
 	return NULL;
@@ -537,12 +568,29 @@ static void skb_put_frags(struct sk_buff *skb, unsigned int hdr_space,
 
 		if (length == 0) {
 			/* don't need this page */
+<<<<<<< HEAD
+<<<<<<< HEAD
+			skb_fill_page_desc(toskb, i, skb_frag_page(frag),
+					   0, PAGE_SIZE);
+=======
 			skb_fill_page_desc(toskb, i, frag->page, 0, PAGE_SIZE);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			skb_fill_page_desc(toskb, i, frag->page, 0, PAGE_SIZE);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			--skb_shinfo(skb)->nr_frags;
 		} else {
 			size = min(length, (unsigned) PAGE_SIZE);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+			skb_frag_size_set(frag, size);
+=======
 			frag->size = size;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+			frag->size = size;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			skb->data_len += size;
 			skb->truesize += size;
 			skb->len += size;
@@ -753,6 +801,14 @@ void ipoib_cm_send(struct net_device *dev, struct sk_buff *skb, struct ipoib_cm_
 		if (++priv->tx_outstanding == ipoib_sendq_size) {
 			ipoib_dbg(priv, "TX ring 0x%x full, stopping kernel net queue\n",
 				  tx->qp->qp_num);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			if (ib_req_notify_cq(priv->send_cq, IB_CQ_NEXT_COMP))
+				ipoib_warn(priv, "request notify on send CQ failed\n");
+			netif_stop_queue(dev);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			netif_stop_queue(dev);
 			rc = ib_req_notify_cq(priv->send_cq,
 				IB_CQ_NEXT_COMP | IB_CQ_REPORT_MISSED_EVENTS);
@@ -760,6 +816,10 @@ void ipoib_cm_send(struct net_device *dev, struct sk_buff *skb, struct ipoib_cm_
 				ipoib_warn(priv, "request notify on send CQ failed\n");
 			else if (rc)
 				ipoib_send_comp_handler(priv->send_cq, dev);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 }
@@ -1500,6 +1560,13 @@ static void ipoib_cm_create_srq(struct net_device *dev, int max_sge)
 {
 	struct ipoib_dev_priv *priv = netdev_priv(dev);
 	struct ib_srq_init_attr srq_init_attr = {
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.srq_type = IB_SRQT_BASIC,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.attr = {
 			.max_wr  = ipoib_recvq_size,
 			.max_sge = max_sge

@@ -36,6 +36,13 @@
 #include <linux/vmalloc.h>
 #include <linux/slab.h>
 #include <linux/log2.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/export.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/shmparam.h>
 #include "drmP.h"
 
@@ -1509,8 +1516,18 @@ int drm_freebufs(struct drm_device *dev, void *data,
  * \param arg pointer to a drm_buf_map structure.
  * \return zero on success or a negative number on failure.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Maps the AGP, SG or PCI buffer region with vm_mmap(), and copies information
+ * about each buffer into user space. For PCI buffers, it calls vm_mmap() with
+=======
  * Maps the AGP, SG or PCI buffer region with do_mmap(), and copies information
  * about each buffer into user space. For PCI buffers, it calls do_mmap() with
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Maps the AGP, SG or PCI buffer region with do_mmap(), and copies information
+ * about each buffer into user space. For PCI buffers, it calls do_mmap() with
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * offset equal to 0, which drm_mmap() interpretes as PCI buffers and calls
  * drm_mmap_dma().
  */
@@ -1552,6 +1569,19 @@ int drm_mapbufs(struct drm_device *dev, void *data,
 				retcode = -EINVAL;
 				goto done;
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+			virtual = vm_mmap(file_priv->filp, 0, map->size,
+					  PROT_READ | PROT_WRITE,
+					  MAP_SHARED,
+					  token);
+		} else {
+			virtual = vm_mmap(file_priv->filp, 0, dma->byte_count,
+					  PROT_READ | PROT_WRITE,
+					  MAP_SHARED, 0);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			down_write(&current->mm->mmap_sem);
 			virtual = do_mmap(file_priv->filp, 0, map->size,
 					  PROT_READ | PROT_WRITE,
@@ -1564,6 +1594,10 @@ int drm_mapbufs(struct drm_device *dev, void *data,
 					  PROT_READ | PROT_WRITE,
 					  MAP_SHARED, 0);
 			up_write(&current->mm->mmap_sem);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 		if (virtual > -1024UL) {
 			/* Real error */

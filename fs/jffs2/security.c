@@ -23,6 +23,9 @@
 #include "nodelist.h"
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* ---- Initial Security Label(s) Attachment callback --- */
 static int jffs2_initxattrs(struct inode *inode,
 			    const struct xattr *xattr_array, void *fs_info)
@@ -46,6 +49,8 @@ int jffs2_init_security(struct inode *inode, struct inode *dir,
 {
 	return security_inode_init_security(inode, dir, qstr,
 					    &jffs2_initxattrs, NULL);
+<<<<<<< HEAD
+=======
 =======
 /* ---- Initial Security Label Attachment -------------- */
 int jffs2_init_security(struct inode *inode, struct inode *dir,
@@ -68,6 +73,7 @@ int jffs2_init_security(struct inode *inode, struct inode *dir,
 	kfree(value);
 	return rc;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* ---- XATTR Handler for "security.*" ----------------- */

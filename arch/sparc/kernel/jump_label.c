@@ -10,7 +10,12 @@
 #include <asm/cacheflush.h>
 
 =======
+<<<<<<< HEAD
+#include <asm/cacheflush.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef HAVE_JUMP_LABEL
 
 void arch_jump_label_transform(struct jump_entry *entry,
@@ -43,6 +48,8 @@ void arch_jump_label_transform(struct jump_entry *entry,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 void arch_jump_label_text_poke_early(jump_label_t addr)
 {
 	u32 *insn_p = (u32 *) (unsigned long) addr;
@@ -52,4 +59,5 @@ void arch_jump_label_text_poke_early(jump_label_t addr)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

@@ -11,6 +11,8 @@
 /*
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Copy a null terminated string from userspace.
  */
 
@@ -61,6 +63,7 @@ EXPORT_SYMBOL(strncpy_from_user);
 
 /*
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Zero Userspace
  */
 
@@ -173,16 +176,22 @@ copy_user_handle_tail(char *to, char *from, unsigned len, unsigned zerorest)
 	unsigned zero_len;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (; len; --len) {
 		if (__get_user_nocheck(c, from++, sizeof(char)))
 			break;
 		if (__put_user_nocheck(c, to++, sizeof(char)))
+<<<<<<< HEAD
+=======
 =======
 	for (; len; --len, to++) {
 		if (__get_user_nocheck(c, from++, sizeof(char)))
 			break;
 		if (__put_user_nocheck(c, to, sizeof(char)))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			break;
 	}
 

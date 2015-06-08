@@ -31,12 +31,21 @@
 <<<<<<< HEAD
 #include <plat/omap_device.h>
 =======
+<<<<<<< HEAD
+#include <plat/omap_device.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "mux.h"
 
 #ifdef CONFIG_MFD_OMAP_USB_HOST
 
+<<<<<<< HEAD
+#define OMAP_USBHS_DEVICE	"usbhs_omap"
+#define	USBHS_UHH_HWMODNAME	"usb_host_hs"
+#define USBHS_TLL_HWMODNAME	"usb_tll_hs"
+=======
 <<<<<<< HEAD
 #define OMAP_USBHS_DEVICE	"usbhs_omap"
 #define	USBHS_UHH_HWMODNAME	"usb_host_hs"
@@ -78,12 +87,16 @@ static struct platform_device usbhs_device = {
 	.resource	= usbhs_resources,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct usbhs_omap_platform_data		usbhs_data;
 static struct ehci_hcd_omap_platform_data	ehci_data;
 static struct ohci_hcd_omap_platform_data	ohci_data;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct omap_device_pm_latency omap_uhhtll_latency[] = {
 	  {
 		.deactivate_func = omap_device_idle_hwmods,
@@ -92,8 +105,11 @@ static struct omap_device_pm_latency omap_uhhtll_latency[] = {
 	  },
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* MUX settings for EHCI pins */
 /*
  * setup_ehci_io_mux - initialize IO pad mux for USBHOST
@@ -101,8 +117,12 @@ static struct omap_device_pm_latency omap_uhhtll_latency[] = {
 <<<<<<< HEAD
 static void __init setup_ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 =======
+<<<<<<< HEAD
+static void __init setup_ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
+=======
 static void setup_ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (port_mode[0]) {
 	case OMAP_EHCI_PORT_MODE_PHY:
@@ -249,8 +269,13 @@ static void setup_ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 static
 void __init setup_4430ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 =======
+<<<<<<< HEAD
+static
+void __init setup_4430ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
+=======
 static void setup_4430ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (port_mode[0]) {
 	case OMAP_EHCI_PORT_MODE_PHY:
@@ -371,8 +396,12 @@ static void setup_4430ehci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 <<<<<<< HEAD
 static void __init setup_ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 =======
+<<<<<<< HEAD
+static void __init setup_ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
+=======
 static void setup_ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (port_mode[0]) {
 	case OMAP_OHCI_PORT_MODE_PHY_6PIN_DATSE0:
@@ -473,8 +502,13 @@ static void setup_ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 static
 void __init setup_4430ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 =======
+<<<<<<< HEAD
+static
+void __init setup_4430ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
+=======
 static void setup_4430ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	switch (port_mode[0]) {
 	case OMAP_OHCI_PORT_MODE_PHY_6PIN_DATSE0:
@@ -548,13 +582,19 @@ static void setup_4430ohci_io_mux(const enum usbhs_omap_port_mode *port_mode)
 void __init usbhs_init(const struct usbhs_omap_board_data *pdata)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct omap_hwmod	*oh[2];
 	struct platform_device	*pdev;
 	int			bus_id = -1;
 	int			i;
+<<<<<<< HEAD
+=======
 =======
 	int	i;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	for (i = 0; i < OMAP3_HS_USB_PORTS; i++) {
 		usbhs_data.port_mode[i] = pdata->port_mode[i];
@@ -569,6 +609,11 @@ void __init usbhs_init(const struct usbhs_omap_board_data *pdata)
 	usbhs_data.ohci_data = &ohci_data;
 
 	if (cpu_is_omap34xx()) {
+<<<<<<< HEAD
+		setup_ehci_io_mux(pdata->port_mode);
+		setup_ohci_io_mux(pdata->port_mode);
+	} else if (cpu_is_omap44xx()) {
+=======
 <<<<<<< HEAD
 		setup_ehci_io_mux(pdata->port_mode);
 		setup_ohci_io_mux(pdata->port_mode);
@@ -598,11 +643,15 @@ void __init usbhs_init(const struct usbhs_omap_board_data *pdata)
 		usbhs_resources[4].end = OMAP44XX_HSUSB_OHCI_BASE + SZ_1K - 1;
 		usbhs_resources[5].start = OMAP44XX_IRQ_OHCI;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		setup_4430ehci_io_mux(pdata->port_mode);
 		setup_4430ohci_io_mux(pdata->port_mode);
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	oh[0] = omap_hwmod_lookup(USBHS_UHH_HWMODNAME);
 	if (!oh[0]) {
 		pr_err("Could not look up %s\n", USBHS_UHH_HWMODNAME);
@@ -624,6 +673,8 @@ void __init usbhs_init(const struct usbhs_omap_board_data *pdata)
 			USBHS_UHH_HWMODNAME, USBHS_TLL_HWMODNAME);
 		return;
 	}
+<<<<<<< HEAD
+=======
 =======
 	if (platform_device_add_data(&usbhs_device,
 				&usbhs_data, sizeof(usbhs_data)) < 0) {
@@ -637,6 +688,7 @@ void __init usbhs_init(const struct usbhs_omap_board_data *pdata)
 init_end:
 	return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #else
@@ -648,6 +700,9 @@ void __init usbhs_init(const struct usbhs_omap_board_data *pdata)
 #endif
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

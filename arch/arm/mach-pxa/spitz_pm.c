@@ -18,7 +18,11 @@
 <<<<<<< HEAD
 #include <linux/gpio-pxa.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio-pxa.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/interrupt.h>
 #include <linux/platform_device.h>
 #include <linux/apm-emulation.h>
@@ -48,7 +52,11 @@ static struct gpio spitz_charger_gpios[] = {
 <<<<<<< HEAD
 	{ SPITZ_GPIO_AC_IN,     GPIOF_IN, "Charger Detection" },
 =======
+<<<<<<< HEAD
+	{ SPITZ_GPIO_AC_IN,     GPIOF_IN, "Charger Detection" },
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{ SPITZ_GPIO_ADC_TEMP_ON, GPIOF_OUT_INIT_LOW, "ADC Temp On" },
 	{ SPITZ_GPIO_JK_B,	  GPIOF_OUT_INIT_LOW, "JK B" },
 	{ SPITZ_GPIO_CHRG_ON,	  GPIOF_OUT_INIT_LOW, "Charger On" },
@@ -178,14 +186,20 @@ static int spitz_should_wakeup(unsigned int resume_on_alarm)
 static unsigned long spitz_charger_wakeup(void)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned long ret;
 	ret = ((!gpio_get_value(SPITZ_GPIO_KEY_INT)
 		<< GPIO_bit(SPITZ_GPIO_KEY_INT))
 		| gpio_get_value(SPITZ_GPIO_SYNC));
 	return ret;
+<<<<<<< HEAD
+=======
 =======
 	return (~GPLR0 & GPIO_bit(SPITZ_GPIO_KEY_INT)) | (GPLR0 & GPIO_bit(SPITZ_GPIO_SYNC));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 unsigned long spitzpm_read_devdata(int type)
@@ -195,8 +209,12 @@ unsigned long spitzpm_read_devdata(int type)
 <<<<<<< HEAD
 		return !gpio_get_value(SPITZ_GPIO_AC_IN);
 =======
+<<<<<<< HEAD
+		return !gpio_get_value(SPITZ_GPIO_AC_IN);
+=======
 		return (((~GPLR(SPITZ_GPIO_AC_IN)) & GPIO_bit(SPITZ_GPIO_AC_IN)) != 0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	case SHARPSL_STATUS_LOCK:
 		return gpio_get_value(sharpsl_pm.machinfo->gpio_batlock);
 	case SHARPSL_STATUS_CHRGFULL:

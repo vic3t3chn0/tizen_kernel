@@ -4,6 +4,9 @@
  * Copyright 2009-2011 Freescale Semiconductor Inc.
  *
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -34,6 +37,8 @@
  */
 
 /include/ "fsl/p4080si-pre.dtsi"
+<<<<<<< HEAD
+=======
 =======
  * This program is free software; you can redistribute	it and/or modify it
  * under  the terms of	the GNU General	 Public License as published by the
@@ -43,6 +48,7 @@
 
 /dts-v1/;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 / {
 	model = "fsl,P4080DS";
@@ -50,6 +56,9 @@
 	#address-cells = <2>;
 	#size-cells = <2>;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	interrupt-parent = <&mpic>;
 
 	memory {
@@ -65,6 +74,8 @@
 		reg = <0xf 0xfe000000 0 0x00001000>;
 
 		spi@110000 {
+<<<<<<< HEAD
+=======
 =======
 
 	aliases {
@@ -306,6 +317,7 @@
 			fsl,espi-num-chipselects = <4>;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			flash@0 {
 				#address-cells = <1>;
 				#size-cells = <1>;
@@ -334,6 +346,9 @@
 			};
 		};
 
+<<<<<<< HEAD
+		i2c@118100 {
+=======
 <<<<<<< HEAD
 		i2c@118100 {
 =======
@@ -367,6 +382,7 @@
 			interrupt-parent = <&mpic>;
 			dfsrr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			eeprom@51 {
 				compatible = "at24,24c256";
 				reg = <0x51>;
@@ -379,11 +395,16 @@
 				compatible = "dallas,ds3232";
 				reg = <0x68>;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				interrupts = <0x1 0x1 0 0>;
 			};
 		};
 
 		usb0: usb@210000 {
+<<<<<<< HEAD
+=======
 =======
 				interrupts = <0 0x1>;
 				interrupt-parent = <&mpic>;
@@ -470,11 +491,15 @@
 			interrupt-parent = <&mpic>;
 			interrupts = <44 0x2>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			phy_type = "ulpi";
 		};
 
 		usb1: usb@211000 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			dr_mode = "host";
 			phy_type = "ulpi";
 		};
@@ -495,6 +520,8 @@
 		reg = <0xf 0xfe124000 0 0x1000>;
 		ranges = <0 0 0xf 0xe8000000 0x08000000
 			  3 0 0xf 0xffdf0000 0x00008000>;
+<<<<<<< HEAD
+=======
 =======
 			compatible = "fsl,p4080-usb2-dr",
 					"fsl,mpc85xx-usb2-dr", "fsl-usb2-dr";
@@ -602,6 +629,7 @@
 
 		ranges = <0 0 0xf 0xe8000000 0x08000000>;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		flash@0,0 {
 			compatible = "cfi-flash";
@@ -610,6 +638,9 @@
 			device-width = <2>;
 		};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		board-control@3,0 {
 			compatible = "fsl,p4080ds-fpga", "fsl,fpga-ngpixis";
@@ -622,6 +653,8 @@
 		ranges = <0x02000000 0 0xe0000000 0xc 0x00000000 0x0 0x20000000
 			  0x01000000 0 0x00000000 0xf 0xf8000000 0x0 0x00010000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 	};
 
@@ -653,6 +686,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x02000000 0 0xe0000000
 				  0x02000000 0 0xe0000000
 				  0 0x20000000
@@ -665,10 +699,15 @@
 
 	pci1: pcie@ffe201000 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		reg = <0xf 0xfe201000 0 0x1000>;
 		ranges = <0x02000000 0x0 0xe0000000 0xc 0x20000000 0x0 0x20000000
 			  0x01000000 0x0 0x00000000 0xf 0xf8010000 0x0 0x00010000>;
 		pcie@0 {
+<<<<<<< HEAD
+=======
 =======
 		compatible = "fsl,p4080-pcie";
 		device_type = "pci";
@@ -696,6 +735,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x02000000 0 0xe0000000
 				  0x02000000 0 0xe0000000
 				  0 0x20000000
@@ -707,6 +747,12 @@
 	};
 
 	pci2: pcie@ffe202000 {
+<<<<<<< HEAD
+		reg = <0xf 0xfe202000 0 0x1000>;
+		ranges = <0x02000000 0 0xe0000000 0xc 0x40000000 0 0x20000000
+			  0x01000000 0 0x00000000 0xf 0xf8020000 0 0x00010000>;
+		pcie@0 {
+=======
 <<<<<<< HEAD
 		reg = <0xf 0xfe202000 0 0x1000>;
 		ranges = <0x02000000 0 0xe0000000 0xc 0x40000000 0 0x20000000
@@ -739,6 +785,7 @@
 			#address-cells = <3>;
 			device_type = "pci";
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			ranges = <0x02000000 0 0xe0000000
 				  0x02000000 0 0xe0000000
 				  0 0x20000000
@@ -754,4 +801,9 @@
 
 /include/ "fsl/p4080si-post.dtsi"
 =======
+<<<<<<< HEAD
+
+/include/ "fsl/p4080si-post.dtsi"
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

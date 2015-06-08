@@ -77,9 +77,14 @@ phys_t __fixup_bigphys_addr(phys_t phys_addr, phys_t size)
 	unsigned long start = ALCHEMY_PCI_MEMWIN_START;
 	unsigned long end = ALCHEMY_PCI_MEMWIN_END;
 =======
+<<<<<<< HEAD
+	unsigned long start = ALCHEMY_PCI_MEMWIN_START;
+	unsigned long end = ALCHEMY_PCI_MEMWIN_END;
+=======
 	u32 start = (u32)Au1500_PCI_MEM_START;
 	u32 end   = (u32)Au1500_PCI_MEM_END;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Don't fixup 36-bit addresses */
 	if ((phys_addr >> 32) != 0)
@@ -90,8 +95,12 @@ phys_t __fixup_bigphys_addr(phys_t phys_addr, phys_t size)
 <<<<<<< HEAD
 		return (phys_t)(AU1500_PCI_MEM_PHYS_ADDR + phys_addr);
 =======
+<<<<<<< HEAD
+		return (phys_t)(AU1500_PCI_MEM_PHYS_ADDR + phys_addr);
+=======
 		return (phys_t)((phys_addr - start) + Au1500_PCI_MEM_START);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* default nop */
 	return phys_addr;

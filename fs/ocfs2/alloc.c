@@ -5702,8 +5702,12 @@ int ocfs2_remove_btree_range(struct inode *inode,
 <<<<<<< HEAD
 		goto out_commit;
 =======
+<<<<<<< HEAD
+		goto out_commit;
+=======
 		goto out;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	dquot_free_space_nodirty(inode,

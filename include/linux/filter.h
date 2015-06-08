@@ -12,8 +12,12 @@
 <<<<<<< HEAD
 #include <linux/atomic.h>
 =======
+<<<<<<< HEAD
+#include <linux/atomic.h>
+=======
 #include <asm/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -162,8 +166,12 @@ extern int sk_detach_filter(struct sock *sk);
 <<<<<<< HEAD
 extern int sk_chk_filter(struct sock_filter *filter, unsigned int flen);
 =======
+<<<<<<< HEAD
+extern int sk_chk_filter(struct sock_filter *filter, unsigned int flen);
+=======
 extern int sk_chk_filter(struct sock_filter *filter, int flen);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef CONFIG_BPF_JIT
 extern void bpf_jit_compile(struct sk_filter *fp);

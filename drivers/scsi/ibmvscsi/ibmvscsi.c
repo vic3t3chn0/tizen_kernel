@@ -55,6 +55,12 @@
  * and sends a CRQ message back to inform the client that the request has
  * completed.
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * TODO: This is currently pretty tied to the IBM pSeries hypervisor
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Note that some of the underlying infrastructure is different between
  * machines conforming to the "RS/6000 Platform Architecture" (RPA) and
  * the older iSeries hypervisor models.  To support both, some low level
@@ -62,6 +68,10 @@
  * The Makefile should pick one, not two, not zero, of these.
  *
  * TODO: This is currently pretty tied to the IBM i/pSeries hypervisor
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * interfaces.  It would be really nice to abstract this above an RDMA
  * layer.
  */
@@ -1547,9 +1557,18 @@ static int ibmvscsi_do_host_config(struct ibmvscsi_host_data *hostdata,
 
 	host_config = &evt_struct->iu.mad.host_config;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	/* The transport length field is only 16-bit */
 	length = min(0xffff, length);
 
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	/* The transport length field is only 16-bit */
+	length = min(0xffff, length);
+
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Set up a lun reset SRP command */
 	memset(host_config, 0x00, sizeof(*host_config));
 	host_config->common.type = VIOSRP_HOST_CONFIG_TYPE;
@@ -2070,11 +2089,22 @@ static struct vio_driver ibmvscsi_driver = {
 	.probe = ibmvscsi_probe,
 	.remove = ibmvscsi_remove,
 	.get_desired_dma = ibmvscsi_get_desired_dma,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	.name = "ibmvscsi",
+	.pm = &ibmvscsi_pm_ops,
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.driver = {
 		.name = "ibmvscsi",
 		.owner = THIS_MODULE,
 		.pm = &ibmvscsi_pm_ops,
 	}
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct srp_function_template ibmvscsi_transport_functions = {
@@ -2088,9 +2118,19 @@ int __init ibmvscsi_module_init(void)
 	driver_template.can_queue = max_requests;
 	max_events = max_requests + 2;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (firmware_has_feature(FW_FEATURE_VIO))
+=======
 	if (firmware_has_feature(FW_FEATURE_ISERIES))
 		ibmvscsi_ops = &iseriesvscsi_ops;
 	else if (firmware_has_feature(FW_FEATURE_VIO))
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (firmware_has_feature(FW_FEATURE_ISERIES))
+		ibmvscsi_ops = &iseriesvscsi_ops;
+	else if (firmware_has_feature(FW_FEATURE_VIO))
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ibmvscsi_ops = &rpavscsi_ops;
 	else
 		return -ENODEV;

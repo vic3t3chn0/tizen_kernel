@@ -75,8 +75,12 @@ static inline void free_ea_wmap(struct inode *inode)
 <<<<<<< HEAD
 static int jfs_create(struct inode *dip, struct dentry *dentry, umode_t mode,
 =======
+<<<<<<< HEAD
+static int jfs_create(struct inode *dip, struct dentry *dentry, umode_t mode,
+=======
 static int jfs_create(struct inode *dip, struct dentry *dentry, int mode,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct nameidata *nd)
 {
 	int rc = 0;
@@ -179,8 +183,12 @@ static int jfs_create(struct inode *dip, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 		clear_nlink(ip);
 =======
+<<<<<<< HEAD
+		clear_nlink(ip);
+=======
 		ip->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unlock_new_inode(ip);
 		iput(ip);
 	} else {
@@ -216,8 +224,12 @@ static int jfs_create(struct inode *dip, struct dentry *dentry, int mode,
 <<<<<<< HEAD
 static int jfs_mkdir(struct inode *dip, struct dentry *dentry, umode_t mode)
 =======
+<<<<<<< HEAD
+static int jfs_mkdir(struct inode *dip, struct dentry *dentry, umode_t mode)
+=======
 static int jfs_mkdir(struct inode *dip, struct dentry *dentry, int mode)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int rc = 0;
 	tid_t tid;		/* transaction id */
@@ -234,6 +246,8 @@ static int jfs_mkdir(struct inode *dip, struct dentry *dentry, int mode)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* link count overflow on parent directory ? */
 	if (dip->i_nlink == JFS_LINK_MAX) {
 		rc = -EMLINK;
@@ -241,6 +255,7 @@ static int jfs_mkdir(struct inode *dip, struct dentry *dentry, int mode)
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * search parent directory for entry/freespace
 	 * (dtSearch() returns parent directory page pinned)
@@ -310,8 +325,12 @@ static int jfs_mkdir(struct inode *dip, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 	set_nlink(ip, 2);	/* for '.' */
 =======
+<<<<<<< HEAD
+	set_nlink(ip, 2);	/* for '.' */
+=======
 	ip->i_nlink = 2;	/* for '.' */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ip->i_op = &jfs_dir_inode_operations;
 	ip->i_fop = &jfs_dir_operations;
 
@@ -333,8 +352,12 @@ static int jfs_mkdir(struct inode *dip, struct dentry *dentry, int mode)
 <<<<<<< HEAD
 		clear_nlink(ip);
 =======
+<<<<<<< HEAD
+		clear_nlink(ip);
+=======
 		ip->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unlock_new_inode(ip);
 		iput(ip);
 	} else {
@@ -831,10 +854,13 @@ static int jfs_link(struct dentry *old_dentry,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (ip->i_nlink == JFS_LINK_MAX)
 		return -EMLINK;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dquot_initialize(dir);
 
 	tid = txBegin(ip->i_sb, 0);
@@ -873,8 +899,12 @@ static int jfs_link(struct dentry *old_dentry,
 <<<<<<< HEAD
 		drop_nlink(ip); /* never instantiated */
 =======
+<<<<<<< HEAD
+		drop_nlink(ip); /* never instantiated */
+=======
 		ip->i_nlink--; /* never instantiated */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		iput(ip);
 	} else
 		d_instantiate(dentry, ip);
@@ -926,8 +956,12 @@ static int jfs_symlink(struct inode *dip, struct dentry *dentry,
 <<<<<<< HEAD
 	s64 xaddr;
 =======
+<<<<<<< HEAD
+	s64 xaddr;
+=======
 	s64 extent = 0, xaddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct metapage *mp;
 	struct super_block *sb;
 	struct tblock *tblk;
@@ -1029,8 +1063,11 @@ static int jfs_symlink(struct inode *dip, struct dentry *dentry,
 		}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		extent = xaddr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ip->i_size = ssize - 1;
 		while (ssize) {
 			/* This is kind of silly since PATH_MAX == 4K */
@@ -1089,8 +1126,12 @@ static int jfs_symlink(struct inode *dip, struct dentry *dentry,
 <<<<<<< HEAD
 		clear_nlink(ip);
 =======
+<<<<<<< HEAD
+		clear_nlink(ip);
+=======
 		ip->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unlock_new_inode(ip);
 		iput(ip);
 	} else {
@@ -1182,11 +1223,14 @@ static int jfs_rename(struct inode *old_dir, struct dentry *old_dentry,
 			}
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		} else if ((new_dir != old_dir) &&
 			   (new_dir->i_nlink == JFS_LINK_MAX)) {
 			rc = -EMLINK;
 			goto out3;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	} else if (new_ip) {
 		IWRITE_LOCK(new_ip, RDWRLOCK_NORMAL);
@@ -1401,8 +1445,12 @@ static int jfs_mknod(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 		umode_t mode, dev_t rdev)
 =======
+<<<<<<< HEAD
+		umode_t mode, dev_t rdev)
+=======
 		int mode, dev_t rdev)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	struct jfs_inode_info *jfs_ip;
 	struct btstack btstack;
@@ -1485,8 +1533,12 @@ static int jfs_mknod(struct inode *dir, struct dentry *dentry,
 <<<<<<< HEAD
 		clear_nlink(ip);
 =======
+<<<<<<< HEAD
+		clear_nlink(ip);
+=======
 		ip->i_nlink = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		unlock_new_inode(ip);
 		iput(ip);
 	} else {
@@ -1509,6 +1561,9 @@ static struct dentry *jfs_lookup(struct inode *dip, struct dentry *dentry, struc
 	struct inode *ip;
 	struct component_name key;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int rc;
 
 	jfs_info("jfs_lookup: name = %s", dentry->d_name.name);
@@ -1526,6 +1581,8 @@ static struct dentry *jfs_lookup(struct inode *dip, struct dentry *dentry, struc
 		ip = jfs_iget(dip->i_sb, inum);
 		if (IS_ERR(ip))
 			jfs_err("jfs_lookup: iget failed on inum %d", (uint)inum);
+<<<<<<< HEAD
+=======
 =======
 	const char *name = dentry->d_name.name;
 	int len = dentry->d_name.len;
@@ -1556,6 +1613,7 @@ static struct dentry *jfs_lookup(struct inode *dip, struct dentry *dentry, struc
 		jfs_err("jfs_lookup: iget failed on inum %d", (uint) inum);
 		return ERR_CAST(ip);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return d_splice_alias(ip, dentry);
@@ -1623,8 +1681,12 @@ const struct inode_operations jfs_dir_inode_operations = {
 <<<<<<< HEAD
 	.get_acl	= jfs_get_acl,
 =======
+<<<<<<< HEAD
+	.get_acl	= jfs_get_acl,
+=======
 	.check_acl	= jfs_check_acl,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 };
 
@@ -1675,9 +1737,12 @@ static int jfs_ci_revalidate(struct dentry *dentry, struct nameidata *nd)
 {
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	if (nd && nd->flags & LOOKUP_RCU)
 		return -ECHILD;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * This is not negative dentry. Always valid.
 	 *
@@ -1707,11 +1772,16 @@ static int jfs_ci_revalidate(struct dentry *dentry, struct nameidata *nd)
 	if (nd->flags & (LOOKUP_CREATE | LOOKUP_RENAME_TARGET))
 		return 0;
 =======
+<<<<<<< HEAD
+	if (nd->flags & (LOOKUP_CREATE | LOOKUP_RENAME_TARGET))
+		return 0;
+=======
 	if (!(nd->flags & (LOOKUP_CONTINUE | LOOKUP_PARENT))) {
 		if (nd->flags & (LOOKUP_CREATE | LOOKUP_RENAME_TARGET))
 			return 0;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 

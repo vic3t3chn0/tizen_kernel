@@ -12,8 +12,11 @@
 #include "mm_id.h"
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include "sysdep/tls.h"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CATCH_EINTR(expr) while ((errno = 0, ((expr) < 0)) && (errno == EINTR))
 
@@ -208,6 +211,8 @@ extern void os_flush_stdout(void);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* uaccess.c */
 extern unsigned long __do_user_copy(void *to, const void *from, int n,
 				    void **fault_addr, jmp_buf **fault_catcher,
@@ -215,6 +220,7 @@ extern unsigned long __do_user_copy(void *to, const void *from, int n,
 					       int n), int *faulted_out);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* execvp.c */
 extern int execvp_noalloc(char *buf, const char *file, char *const argv[]);
 /* helper.c */
@@ -226,11 +232,14 @@ extern int helper_wait(int pid);
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* tls.c */
 extern int os_set_thread_area(user_desc_t *info, int pid);
 extern int os_get_thread_area(user_desc_t *info, int pid);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* umid.c */
 extern int umid_file_name(char *name, char *buf, int len);
 extern int set_umid(char *name);
@@ -243,8 +252,12 @@ extern void remove_sigstack(void);
 <<<<<<< HEAD
 extern void set_handler(int sig);
 =======
+<<<<<<< HEAD
+extern void set_handler(int sig);
+=======
 extern void set_handler(int sig, void (*handler)(int), int flags, ...);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int change_sig(int signal, int on);
 extern void block_signals(void);
 extern void unblock_signals(void);

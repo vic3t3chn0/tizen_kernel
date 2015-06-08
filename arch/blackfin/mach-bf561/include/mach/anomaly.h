@@ -14,8 +14,12 @@
 <<<<<<< HEAD
  *  - Revision S, 05/23/2011; ADSP-BF561 Blackfin Processor Anomaly List
 =======
+<<<<<<< HEAD
+ *  - Revision S, 05/23/2011; ADSP-BF561 Blackfin Processor Anomaly List
+=======
  *  - Revision R, 05/25/2010; ADSP-BF561 Blackfin Processor Anomaly List
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 #ifndef _MACH_ANOMALY_H_
@@ -32,13 +36,24 @@
 #define ANOMALY_05000099 (__SILICON_REVISION__ < 5)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Trace Buffers May Contain Errors in Emulation Mode and/or Exception, NMI, Reset Handlers */
 #define ANOMALY_05000116 (__SILICON_REVISION__ < 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* TESTSET Instructions Restricted to 32-Bit Aligned Memory Locations */
 #define ANOMALY_05000120 (1)
 /* Rx.H Cannot Be Used to Access 16-bit System MMR Registers */
 #define ANOMALY_05000122 (1)
+<<<<<<< HEAD
+/* SIGNBITS Instruction Not Functional under Certain Conditions */
+#define ANOMALY_05000127 (1)
+/* IMDMA S1/D1 Channel May Stall */
+#define ANOMALY_05000149 (1)
+/* Timers in PWM-Out Mode with PPI GP Receive (Input) Mode with 0 Frame Syncs */
+#define ANOMALY_05000156 (__SILICON_REVISION__ < 4)
+=======
 <<<<<<< HEAD
 /* SIGNBITS Instruction Not Functional under Certain Conditions */
 #define ANOMALY_05000127 (1)
@@ -98,6 +113,7 @@
 /* SPORT Transmit Data Is Not Gated by External Frame Sync in Certain Conditions */
 #define ANOMALY_05000163 (__SILICON_REVISION__ < 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PPI Data Lengths between 8 and 16 Do Not Zero Out Upper Bits */
 #define ANOMALY_05000166 (1)
 /* Turning SPORTs on while External Frame Sync Is Active May Corrupt Data */
@@ -110,11 +126,14 @@
 #define ANOMALY_05000171 (__SILICON_REVISION__ < 5)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* DSPID register values incorrect */
 #define ANOMALY_05000172 (__SILICON_REVISION__ < 3)
 /* DMA vs Core accesses to external memory */
 #define ANOMALY_05000173 (__SILICON_REVISION__ < 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Cache Fill Buffer Data lost */
 #define ANOMALY_05000174 (__SILICON_REVISION__ < 5)
 /* Overlapping Sequencer and Memory Stalls */
@@ -145,9 +164,12 @@
 #define ANOMALY_05000190 (1)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* PPI does not invert the Driving PPICLK edge in Transmit Modes */
 #define ANOMALY_05000191 (__SILICON_REVISION__ < 3)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* False I/O Pin Interrupts on Edge-Sensitive Inputs When Polarity Setting Is Changed */
 #define ANOMALY_05000193 (__SILICON_REVISION__ < 5)
 /* Restarting SPORT in Specific Modes May Cause Data Corruption */
@@ -240,16 +262,22 @@
 #define ANOMALY_05000276 (__SILICON_REVISION__ < 5)
 /* Writes to an I/O Data Register One SCLK Cycle after an Edge Is Detected May Clear Interrupt */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000277 (__SILICON_REVISION__ < 5)
 /* Disabling Peripherals with DMA Running May Cause DMA System Instability */
 #define ANOMALY_05000278 (__SILICON_REVISION__ < 5)
 /* False Hardware Error when ISR Context Is Not Restored */
+<<<<<<< HEAD
+=======
 =======
 #define ANOMALY_05000277 (__SILICON_REVISION__ < 3)
 /* Disabling Peripherals with DMA Running May Cause DMA System Instability */
 #define ANOMALY_05000278 (__SILICON_REVISION__ < 5)
 /* False Hardware Error Exception when ISR Context Is Not Restored */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Temporarily walk around for bug 5423 till this issue is confirmed by
  * official anomaly document. It looks 05000281 still exists on bf561
  * v0.5.
@@ -305,9 +333,12 @@
 #define ANOMALY_05000371 (1)
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* SSYNC Stalls Processor when Executed from Non-Cacheable Memory */
 #define ANOMALY_05000402 (__SILICON_REVISION__ == 4)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Level-Sensitive External GPIO Wakeups May Cause Indefinite Stall */
 #define ANOMALY_05000403 (1)
 /* TESTSET Instruction Causes Data Corruption with Writeback Data Cache Enabled */
@@ -335,16 +366,25 @@
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition when Modifying PLL from External Memory */
 =======
+<<<<<<< HEAD
+/* Interrupted SPORT Receive Data Register Read Results In Underflow when SLEN > 15 */
+#define ANOMALY_05000473 (1)
+/* Possible Lockup Condition when Modifying PLL from External Memory */
+=======
 /* Interrupted 32-Bit SPORT Data Register Access Results In Underflow */
 #define ANOMALY_05000473 (1)
 /* Possible Lockup Condition whem Modifying PLL from External Memory */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define ANOMALY_05000475 (1)
 /* TESTSET Instruction Cannot Be Interrupted */
 #define ANOMALY_05000477 (1)
 /* Reads of ITEST_COMMAND and ITEST_DATA Registers Cause Cache Corruption */
 #define ANOMALY_05000481 (1)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* PLL May Latch Incorrect Values Coming Out of Reset */
 #define ANOMALY_05000489 (1)
 /* Instruction Memory Stalls Can Cause IFLUSH to Fail */
@@ -413,10 +453,13 @@
 #define ANOMALY_05000191 (__SILICON_REVISION__ < 3)
 /* SSYNC Stalls Processor when Executed from Non-Cacheable Memory */
 #define ANOMALY_05000402 (__SILICON_REVISION__ == 4)
+<<<<<<< HEAD
+=======
 =======
 /* IFLUSH sucks at life */
 #define ANOMALY_05000491 (1)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Anomalies that don't exist on this proc */
 #define ANOMALY_05000119 (0)

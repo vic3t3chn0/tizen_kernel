@@ -29,7 +29,11 @@ typedef int (*intercept_handler_t)(struct kvm_vcpu *vcpu);
 <<<<<<< HEAD
 #define SIE_INTERCEPT_UCONTROL		(1<<1)
 =======
+<<<<<<< HEAD
+#define SIE_INTERCEPT_UCONTROL		(1<<1)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int kvm_handle_sie_intercept(struct kvm_vcpu *vcpu);
 
 #define VM_EVENT(d_kvm, d_loglevel, d_string, d_args...)\
@@ -52,6 +56,9 @@ static inline int __cpu_is_stopped(struct kvm_vcpu *vcpu)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int kvm_is_ucontrol(struct kvm *kvm)
 {
 #ifdef CONFIG_KVM_S390_UCONTROL
@@ -69,8 +76,11 @@ static inline void kvm_s390_set_prefix(struct kvm_vcpu *vcpu, u32 prefix)
 	vcpu->arch.sie_block->ihcpu  = 0xffff;
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int kvm_s390_handle_wait(struct kvm_vcpu *vcpu);
 enum hrtimer_restart kvm_s390_idle_wakeup(struct hrtimer *timer);
 void kvm_s390_tasklet(unsigned long parm);
@@ -82,6 +92,11 @@ int kvm_s390_inject_vcpu(struct kvm_vcpu *vcpu,
 int kvm_s390_inject_program_int(struct kvm_vcpu *vcpu, u16 code);
 int kvm_s390_inject_sigp_stop(struct kvm_vcpu *vcpu, int action);
 
+<<<<<<< HEAD
+/* implemented in priv.c */
+int kvm_s390_handle_b2(struct kvm_vcpu *vcpu);
+int kvm_s390_handle_e5(struct kvm_vcpu *vcpu);
+=======
 <<<<<<< HEAD
 /* implemented in priv.c */
 int kvm_s390_handle_b2(struct kvm_vcpu *vcpu);
@@ -117,6 +132,7 @@ static inline void kvm_s390_vcpu_set_mem(struct kvm_vcpu *vcpu)
 /* implemented in priv.c */
 int kvm_s390_handle_b2(struct kvm_vcpu *vcpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* implemented in sigp.c */
 int kvm_s390_handle_sigp(struct kvm_vcpu *vcpu);

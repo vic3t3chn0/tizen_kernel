@@ -49,11 +49,16 @@ static int corgi_spk_func;
 static void corgi_ext_control(struct snd_soc_dapm_context *dapm)
 {
 =======
+<<<<<<< HEAD
+static void corgi_ext_control(struct snd_soc_dapm_context *dapm)
+{
+=======
 static void corgi_ext_control(struct snd_soc_codec *codec)
 {
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set up jack connection */
 	switch (corgi_jack_func) {
 	case CORGI_HP:
@@ -112,8 +117,12 @@ static int corgi_startup(struct snd_pcm_substream *substream)
 <<<<<<< HEAD
 	corgi_ext_control(&codec->dapm);
 =======
+<<<<<<< HEAD
+	corgi_ext_control(&codec->dapm);
+=======
 	corgi_ext_control(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mutex_unlock(&codec->mutex);
 
@@ -153,6 +162,8 @@ static int corgi_hw_params(struct snd_pcm_substream *substream,
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	/* set codec DAI configuration */
 	ret = snd_soc_dai_set_fmt(codec_dai, SND_SOC_DAIFMT_I2S |
 		SND_SOC_DAIFMT_NB_NF | SND_SOC_DAIFMT_CBS_CFS);
@@ -166,6 +177,7 @@ static int corgi_hw_params(struct snd_pcm_substream *substream,
 		return ret;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* set the codec system clock for DAC and ADC */
 	ret = snd_soc_dai_set_sysclk(codec_dai, WM8731_SYSCLK_XTAL, clk,
 		SND_SOC_CLOCK_IN);
@@ -200,8 +212,12 @@ static int corgi_set_jack(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
 =======
+<<<<<<< HEAD
+	struct snd_soc_card *card = snd_kcontrol_chip(kcontrol);
+=======
 	struct snd_soc_codec *codec = snd_kcontrol_chip(kcontrol);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (corgi_jack_func == ucontrol->value.integer.value[0])
 		return 0;
@@ -210,8 +226,12 @@ static int corgi_set_jack(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	corgi_ext_control(&card->dapm);
 =======
+<<<<<<< HEAD
+	corgi_ext_control(&card->dapm);
+=======
 	corgi_ext_control(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -228,8 +248,12 @@ static int corgi_set_spk(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	struct snd_soc_card *card =  snd_kcontrol_chip(kcontrol);
 =======
+<<<<<<< HEAD
+	struct snd_soc_card *card =  snd_kcontrol_chip(kcontrol);
+=======
 	struct snd_soc_codec *codec =  snd_kcontrol_chip(kcontrol);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (corgi_spk_func == ucontrol->value.integer.value[0])
 		return 0;
@@ -238,8 +262,12 @@ static int corgi_set_spk(struct snd_kcontrol *kcontrol,
 <<<<<<< HEAD
 	corgi_ext_control(&card->dapm);
 =======
+<<<<<<< HEAD
+	corgi_ext_control(&card->dapm);
+=======
 	corgi_ext_control(codec);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 1;
 }
 
@@ -270,8 +298,12 @@ SND_SOC_DAPM_HP("Headset Jack", NULL),
 <<<<<<< HEAD
 static const struct snd_soc_dapm_route corgi_audio_map[] = {
 =======
+<<<<<<< HEAD
+static const struct snd_soc_dapm_route corgi_audio_map[] = {
+=======
 static const struct snd_soc_dapm_route audio_map[] = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* headset Jack  - in = micin, out = LHPOUT*/
 	{"Headset Jack", NULL, "LHPOUT"},
@@ -315,12 +347,17 @@ static int corgi_wm8731_init(struct snd_soc_pcm_runtime *rtd)
 	struct snd_soc_dapm_context *dapm = &codec->dapm;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	int err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	snd_soc_dapm_nc_pin(dapm, "LLINEIN");
 	snd_soc_dapm_nc_pin(dapm, "RLINEIN");
 
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 	/* Add corgi specific controls */
@@ -338,6 +375,7 @@ static int corgi_wm8731_init(struct snd_soc_pcm_runtime *rtd)
 
 	snd_soc_dapm_sync(dapm);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return 0;
 }
 
@@ -354,12 +392,20 @@ static struct snd_soc_dai_link corgi_dai = {
 	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
 		   SND_SOC_DAIFMT_CBS_CFS,
 =======
+<<<<<<< HEAD
+	.dai_fmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF |
+		   SND_SOC_DAIFMT_CBS_CFS,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.ops = &corgi_ops,
 };
 
 /* corgi audio machine driver */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct snd_soc_card corgi = {
 	.name = "Corgi",
 	.owner = THIS_MODULE,
@@ -406,6 +452,8 @@ static struct platform_driver corgi_driver = {
 };
 
 module_platform_driver(corgi_driver);
+<<<<<<< HEAD
+=======
 =======
 static struct snd_soc_card snd_soc_corgi = {
 	.name = "Corgi",
@@ -444,6 +492,7 @@ static void __exit corgi_exit(void)
 module_init(corgi_init);
 module_exit(corgi_exit);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Module information */
 MODULE_AUTHOR("Richard Purdie");
@@ -452,4 +501,8 @@ MODULE_LICENSE("GPL");
 <<<<<<< HEAD
 MODULE_ALIAS("platform:corgi-audio");
 =======
+<<<<<<< HEAD
+MODULE_ALIAS("platform:corgi-audio");
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

@@ -850,9 +850,22 @@ acornfb_pan_display(struct fb_var_screeninfo *var, struct fb_info *info)
 	u_int y_bottom = var->yoffset;
 
 	if (!(var->vmode & FB_VMODE_YWRAP))
+<<<<<<< HEAD
+<<<<<<< HEAD
+		y_bottom += info->var.yres;
+
+	if (y_bottom > info->var.yres_virtual)
+		return -EINVAL;
+=======
 		y_bottom += var->yres;
 
 	BUG_ON(y_bottom > var->yres_virtual);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		y_bottom += var->yres;
+
+	BUG_ON(y_bottom > var->yres_virtual);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	acornfb_update_dma(info, var);
 

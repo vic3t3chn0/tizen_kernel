@@ -111,8 +111,12 @@ static bool ip_vs_sip_ct_match(const struct ip_vs_conn_param *p,
 <<<<<<< HEAD
 	bool ret = false;
 =======
+<<<<<<< HEAD
+	bool ret = false;
+=======
 	bool ret = 0;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (ct->af == p->af &&
 	    ip_vs_addr_equal(p->af, p->caddr, &ct->caddr) &&
@@ -128,8 +132,12 @@ static bool ip_vs_sip_ct_match(const struct ip_vs_conn_param *p,
 <<<<<<< HEAD
 		ret = true;
 =======
+<<<<<<< HEAD
+		ret = true;
+=======
 		ret = 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	IP_VS_DBG_BUF(9, "SIP template match %s %s->%s:%d %s\n",
 		      ip_vs_proto_name(p->protocol),

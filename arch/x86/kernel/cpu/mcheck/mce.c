@@ -12,8 +12,11 @@
 #include <linux/miscdevice.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/interrupt.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/ratelimit.h>
 #include <linux/kallsyms.h>
 #include <linux/rcupdate.h>
@@ -26,8 +29,12 @@
 <<<<<<< HEAD
 #include <linux/device.h>
 =======
+<<<<<<< HEAD
+#include <linux/device.h>
+=======
 #include <linux/sysdev.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/syscore_ops.h>
 #include <linux/delay.h>
 #include <linux/ctype.h>
@@ -45,10 +52,15 @@
 #include <linux/mm.h>
 #include <linux/debugfs.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/irq_work.h>
 #include <linux/export.h>
 
 #include <asm/processor.h>
+<<<<<<< HEAD
+=======
 =======
 #include <linux/edac_mce.h>
 
@@ -58,6 +70,7 @@
 #include <asm/idle.h>
 #include <asm/ipi.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/mce.h>
 #include <asm/msr.h>
 
@@ -66,8 +79,12 @@
 <<<<<<< HEAD
 static DEFINE_MUTEX(mce_chrdev_read_mutex);
 =======
+<<<<<<< HEAD
+static DEFINE_MUTEX(mce_chrdev_read_mutex);
+=======
 static DEFINE_MUTEX(mce_read_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define rcu_dereference_check_mce(p) \
 	rcu_dereference_index_check((p), \
@@ -75,8 +92,12 @@ static DEFINE_MUTEX(mce_read_mutex);
 <<<<<<< HEAD
 			      lockdep_is_held(&mce_chrdev_read_mutex))
 =======
+<<<<<<< HEAD
+			      lockdep_is_held(&mce_chrdev_read_mutex))
+=======
 			      lockdep_is_held(&mce_read_mutex))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define CREATE_TRACE_POINTS
 #include <trace/events/mce.h>
@@ -117,11 +138,16 @@ static char			mce_helper[128];
 static char			*mce_helper_argv[2] = { mce_helper, NULL };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DECLARE_WAIT_QUEUE_HEAD(mce_chrdev_wait);
 
 static DEFINE_PER_CPU(struct mce, mces_seen);
 static int			cpu_missing;
 
+<<<<<<< HEAD
+=======
 =======
 static DECLARE_WAIT_QUEUE_HEAD(mce_wait);
 static DEFINE_PER_CPU(struct mce, mces_seen);
@@ -135,6 +161,7 @@ ATOMIC_NOTIFIER_HEAD(x86_mce_decoder_chain);
 EXPORT_SYMBOL_GPL(x86_mce_decoder_chain);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* MCA banks polled by the period polling timer for corrected events */
 DEFINE_PER_CPU(mce_banks_t, mce_poll_banks) = {
 	[0 ... BITS_TO_LONGS(MAX_NR_BANKS)-1] = ~0UL
@@ -143,14 +170,20 @@ DEFINE_PER_CPU(mce_banks_t, mce_poll_banks) = {
 static DEFINE_PER_CPU(struct work_struct, mce_work);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * CPU/chipset specific EDAC code can register a notifier call here to print
  * MCE errors in a human-readable form.
  */
 ATOMIC_NOTIFIER_HEAD(x86_mce_decoder_chain);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Do initial initialization of a struct mce */
 void mce_setup(struct mce *m)
 {
@@ -187,23 +220,35 @@ void mce_log(struct mce *mce)
 <<<<<<< HEAD
 	int ret = 0;
 =======
+<<<<<<< HEAD
+	int ret = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Emit the trace record: */
 	trace_mce_record(mce);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = atomic_notifier_call_chain(&x86_mce_decoder_chain, 0, mce);
 	if (ret == NOTIFY_STOP)
 		return;
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mce->finished = 0;
 	wmb();
 	for (;;) {
 		entry = rcu_dereference_check_mce(mcelog.next);
 		for (;;) {
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 			/*
@@ -215,6 +260,7 @@ void mce_log(struct mce *mce)
 			if (edac_mce_parse(mce))
 				return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 			/*
 			 * When the buffer fills up discard new entries.
@@ -248,6 +294,9 @@ void mce_log(struct mce *mce)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void drain_mcelog_buffer(void)
 {
 	unsigned int next, i, prev = 0;
@@ -299,8 +348,11 @@ void mce_unregister_decode_chain(struct notifier_block *nb)
 }
 EXPORT_SYMBOL_GPL(mce_unregister_decode_chain);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void print_mce(struct mce *m)
 {
 	int ret = 0;
@@ -326,6 +378,9 @@ static void print_mce(struct mce *m)
 
 	pr_cont("\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Note this output is parsed by external tools and old fields
 	 * should not be changed.
@@ -333,10 +388,13 @@ static void print_mce(struct mce *m)
 	pr_emerg(HW_ERR "PROCESSOR %u:%x TIME %llu SOCKET %u APIC %x microcode %x\n",
 		m->cpuvendor, m->cpuid, m->time, m->socketid, m->apicid,
 		cpu_data(m->extcpu).microcode);
+<<<<<<< HEAD
+=======
 =======
 	pr_emerg(HW_ERR "PROCESSOR %u:%x TIME %llu SOCKET %u APIC %x\n",
 		m->cpuvendor, m->cpuid, m->time, m->socketid, m->apicid);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Print out human-readable details about the MCE error,
@@ -489,6 +547,9 @@ static void mce_wrmsrl(u32 msr, u64 v)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Collect all global (w.r.t. this processor) status about this machine
  * check into our "mce" struct so that we can use it later to assess
  * the severity of the problem as we read per-bank specific details.
@@ -514,8 +575,11 @@ static inline void mce_gather_info(struct mce *m, struct pt_regs *regs)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Simple lockless ring to communicate PFNs from the exception handler with the
  * process context work function. This is vastly simplified because there's
  * only a single reader and a single writer.
@@ -587,6 +651,9 @@ static void mce_schedule_work(void)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DEFINE_PER_CPU(struct irq_work, mce_irq_work);
 
 static void mce_irq_work_cb(struct irq_work *entry)
@@ -594,6 +661,8 @@ static void mce_irq_work_cb(struct irq_work *entry)
 	mce_notify_irq();
 	mce_schedule_work();
 }
+<<<<<<< HEAD
+=======
 =======
 /*
  * Get the address of the instruction at the time of the machine check
@@ -637,6 +706,7 @@ asmlinkage void smp_mce_self_interrupt(struct pt_regs *regs)
 }
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void mce_report_event(struct pt_regs *regs)
 {
@@ -653,6 +723,9 @@ static void mce_report_event(struct pt_regs *regs)
 	}
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	irq_work_queue(&__get_cpu_var(mce_irq_work));
 }
 
@@ -675,6 +748,8 @@ static void mce_read_aux(struct mce *m, int i)
 			m->addr <<= shift;
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 #ifdef CONFIG_X86_LOCAL_APIC
 	/*
@@ -700,6 +775,7 @@ static void mce_read_aux(struct mce *m, int i)
 	apic_wait_icr_idle();
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 DEFINE_PER_CPU(unsigned, mce_poll_count);
@@ -730,10 +806,15 @@ void machine_check_poll(enum mcp_flags flags, mce_banks_t *b)
 	mce_gather_info(&m, NULL);
 
 =======
+<<<<<<< HEAD
+	mce_gather_info(&m, NULL);
+
+=======
 	mce_setup(&m);
 
 	m.mcgstatus = mce_rdmsrl(MSR_IA32_MCG_STATUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for (i = 0; i < banks; i++) {
 		if (!mce_banks[i].ctl || !test_bit(i, *b))
 			continue;
@@ -761,11 +842,15 @@ void machine_check_poll(enum mcp_flags flags, mce_banks_t *b)
 <<<<<<< HEAD
 		mce_read_aux(&m, i);
 =======
+<<<<<<< HEAD
+		mce_read_aux(&m, i);
+=======
 		if (m.status & MCI_STATUS_MISCV)
 			m.misc = mce_rdmsrl(MSR_IA32_MCx_MISC(i));
 		if (m.status & MCI_STATUS_ADDRV)
 			m.addr = mce_rdmsrl(MSR_IA32_MCx_ADDR(i));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (!(flags & MCP_TIMESTAMP))
 			m.tsc = 0;
@@ -777,11 +862,16 @@ void machine_check_poll(enum mcp_flags flags, mce_banks_t *b)
 		if (!(flags & MCP_DONTLOG) && !mce_dont_log_ce)
 			mce_log(&m);
 =======
+<<<<<<< HEAD
+		if (!(flags & MCP_DONTLOG) && !mce_dont_log_ce)
+			mce_log(&m);
+=======
 		if (!(flags & MCP_DONTLOG) && !mce_dont_log_ce) {
 			mce_log(&m);
 			atomic_notifier_call_chain(&x86_mce_decoder_chain, 0, &m);
 		}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Clear state for this bank.
@@ -1083,10 +1173,16 @@ static int mce_usable_address(struct mce *m)
 		return 0;
 	if (MCI_MISC_ADDR_MODE(m->misc) != MCI_MISC_ADDR_PHYS)
 =======
+<<<<<<< HEAD
+	if (MCI_MISC_ADDR_LSB(m->misc) > PAGE_SHIFT)
+		return 0;
+	if (MCI_MISC_ADDR_MODE(m->misc) != MCI_MISC_ADDR_PHYS)
+=======
 	if ((m->misc & 0x3f) > PAGE_SHIFT)
 		return 0;
 	if (((m->misc >> 6) & 7) != MCM_ADDR_PHYS)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return 0;
 	return 1;
 }
@@ -1103,6 +1199,9 @@ static void mce_clear_state(unsigned long *toclear)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Need to save faulting physical address associated with a process
  * in the machine check handler some place where we can grab it back
  * later in mce_notify_process()
@@ -1148,8 +1247,11 @@ static void mce_clear_info(struct mce_info *mi)
 }
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * The actual machine check handler. This only handles real
  * exceptions when something got corrupted coming in through int 18.
  *
@@ -1190,11 +1292,16 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 	percpu_inc(mce_exception_count);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!banks)
 		goto out;
 
 	mce_gather_info(&m, regs);
 
+<<<<<<< HEAD
+=======
 =======
 	if (notify_die(DIE_NMI, "machine check", regs, error_code,
 			   18, SIGKILL) == NOTIFY_STOP)
@@ -1206,6 +1313,7 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 
 	m.mcgstatus = mce_rdmsrl(MSR_IA32_MCG_STATUS);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	final = &__get_cpu_var(mces_seen);
 	*final = m;
 
@@ -1219,8 +1327,14 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 	 * Assume the worst for now, but if we find the
 	 * severity is MCE_AR_SEVERITY we have other options.
 =======
+<<<<<<< HEAD
+	 * When no restart IP might need to kill or panic.
+	 * Assume the worst for now, but if we find the
+	 * severity is MCE_AR_SEVERITY we have other options.
+=======
 	 * When no restart IP must always kill or panic.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 */
 	if (!(m.mcgstatus & MCG_STATUS_RIPV))
 		kill_it = 1;
@@ -1259,8 +1373,11 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 		mce_get_rip(&m, regs);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		severity = mce_severity(&m, tolerant, NULL);
 
 		/*
@@ -1281,6 +1398,9 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 <<<<<<< HEAD
 		mce_read_aux(&m, i);
 =======
+<<<<<<< HEAD
+		mce_read_aux(&m, i);
+=======
 		/*
 		 * Kill on action required.
 		 */
@@ -1292,6 +1412,7 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 		if (m.status & MCI_STATUS_ADDRV)
 			m.addr = mce_rdmsrl(MSR_IA32_MCx_ADDR(i));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * Action optional error. Queue address for later processing.
@@ -1316,7 +1437,13 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 	m = *final;
 
 =======
+<<<<<<< HEAD
+	/* mce_clear_state will clear *final, save locally for use later */
+	m = *final;
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!no_way_out)
 		mce_clear_state(toclear);
 
@@ -1329,6 +1456,9 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 
 	/*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * At insane "tolerant" levels we take no action. Otherwise
 	 * we only die if we have no other choice. For less serious
 	 * issues we try to recover, or limit damage to the current
@@ -1345,6 +1475,8 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 			force_sig(SIGBUS, current);
 		}
 	}
+<<<<<<< HEAD
+=======
 =======
 	 * If we have decided that we just CAN'T continue, and the user
 	 * has not set tolerant to an insane level, give up and die.
@@ -1368,6 +1500,7 @@ void do_machine_check(struct pt_regs *regs, long error_code)
 	/* notify userspace ASAP */
 	set_thread_flag(TIF_MCE_NOTIFY);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (worst > 0)
 		mce_report_event(regs);
@@ -1379,6 +1512,9 @@ out:
 EXPORT_SYMBOL_GPL(do_machine_check);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifndef CONFIG_MEMORY_FAILURE
 int memory_failure(unsigned long pfn, int vector, int flags)
 {
@@ -1398,6 +1534,8 @@ int memory_failure(unsigned long pfn, int vector, int flags)
  * Attempt possible recovery such as calling the high level VM handler to
  * process any corrupted pages, and kill/signal current process if required.
  * Action required errors are handled here.
+<<<<<<< HEAD
+=======
 =======
 /* dummy to break dependency. actual code is in mm/memory-failure.c */
 void __attribute__((weak)) memory_failure(unsigned long pfn, int vector)
@@ -1416,11 +1554,15 @@ void __attribute__((weak)) memory_failure(unsigned long pfn, int vector)
  * This is merely a fast path to expedite processing in some common
  * cases.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 void mce_notify_process(void)
 {
 	unsigned long pfn;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct mce_info *mi = mce_find_info();
 
 	if (!mi)
@@ -1455,6 +1597,8 @@ static void mce_process_work(struct work_struct *dummy)
 
 	while (mce_ring_get(&pfn))
 		memory_failure(pfn, MCE_VECTOR, 0);
+<<<<<<< HEAD
+=======
 =======
 	mce_notify_irq();
 	while (mce_ring_get(&pfn))
@@ -1465,6 +1609,7 @@ static void mce_process_work(struct work_struct *dummy)
 {
 	mce_notify_process();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #ifdef CONFIG_X86_MCE_INTEL
@@ -1529,6 +1674,9 @@ static void mce_start_timer(unsigned long data)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* Must not be called in IRQ context where del_timer_sync() can deadlock */
 static void mce_timer_delete_all(void)
 {
@@ -1538,8 +1686,11 @@ static void mce_timer_delete_all(void)
 		del_timer_sync(&per_cpu(mce_timer, cpu));
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mce_do_trigger(struct work_struct *work)
 {
 	call_usermodehelper(mce_helper, mce_helper_argv, NULL, UMH_NO_WAIT);
@@ -1562,11 +1713,17 @@ int mce_notify_irq(void)
 		/* wake processes polling /dev/mcelog */
 		wake_up_interruptible(&mce_chrdev_wait);
 =======
+<<<<<<< HEAD
+	if (test_and_clear_bit(0, &mce_need_notify)) {
+		/* wake processes polling /dev/mcelog */
+		wake_up_interruptible(&mce_chrdev_wait);
+=======
 	clear_thread_flag(TIF_MCE_NOTIFY);
 
 	if (test_and_clear_bit(0, &mce_need_notify)) {
 		wake_up_interruptible(&mce_wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/*
 		 * There is no risk of missing notifications because
@@ -1740,6 +1897,9 @@ static int __cpuinit __mcheck_cpu_apply_quirks(struct cpuinfo_x86 *c)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int __cpuinit __mcheck_cpu_ancient_init(struct cpuinfo_x86 *c)
 {
 	if (c->x86 != 5)
@@ -1757,6 +1917,8 @@ static int __cpuinit __mcheck_cpu_ancient_init(struct cpuinfo_x86 *c)
 	}
 
 	return 0;
+<<<<<<< HEAD
+=======
 =======
 static void __cpuinit __mcheck_cpu_ancient_init(struct cpuinfo_x86 *c)
 {
@@ -1771,6 +1933,7 @@ static void __cpuinit __mcheck_cpu_ancient_init(struct cpuinfo_x86 *c)
 		break;
 	}
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 static void __mcheck_cpu_init_vendor(struct cpuinfo_x86 *c)
@@ -1828,8 +1991,13 @@ void __cpuinit mcheck_cpu_init(struct cpuinfo_x86 *c)
 	if (__mcheck_cpu_ancient_init(c))
 		return;
 =======
+<<<<<<< HEAD
+	if (__mcheck_cpu_ancient_init(c))
+		return;
+=======
 	__mcheck_cpu_ancient_init(c);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!mce_available(c))
 		return;
@@ -1846,6 +2014,9 @@ void __cpuinit mcheck_cpu_init(struct cpuinfo_x86 *c)
 	__mcheck_cpu_init_timer();
 	INIT_WORK(&__get_cpu_var(mce_work), mce_process_work);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	init_irq_work(&__get_cpu_var(mce_irq_work), &mce_irq_work_cb);
 }
 
@@ -1864,6 +2035,8 @@ static int mce_chrdev_open(struct inode *inode, struct file *file)
 	if (mce_chrdev_open_exclu ||
 	    (mce_chrdev_open_count && (file->f_flags & O_EXCL))) {
 		spin_unlock(&mce_chrdev_state_lock);
+<<<<<<< HEAD
+=======
 =======
 
 }
@@ -1883,27 +2056,37 @@ static int mce_open(struct inode *inode, struct file *file)
 	if (open_exclu || (open_count && (file->f_flags & O_EXCL))) {
 		spin_unlock(&mce_state_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		return -EBUSY;
 	}
 
 	if (file->f_flags & O_EXCL)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		mce_chrdev_open_exclu = 1;
 	mce_chrdev_open_count++;
 
 	spin_unlock(&mce_chrdev_state_lock);
+<<<<<<< HEAD
+=======
 =======
 		open_exclu = 1;
 	open_count++;
 
 	spin_unlock(&mce_state_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return nonseekable_open(inode, file);
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int mce_chrdev_release(struct inode *inode, struct file *file)
 {
 	spin_lock(&mce_chrdev_state_lock);
@@ -1912,6 +2095,8 @@ static int mce_chrdev_release(struct inode *inode, struct file *file)
 	mce_chrdev_open_exclu = 0;
 
 	spin_unlock(&mce_chrdev_state_lock);
+<<<<<<< HEAD
+=======
 =======
 static int mce_release(struct inode *inode, struct file *file)
 {
@@ -1922,6 +2107,7 @@ static int mce_release(struct inode *inode, struct file *file)
 
 	spin_unlock(&mce_state_lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -1950,14 +2136,20 @@ static int __mce_read_apei(char __user **ubuf, size_t usize)
 	if (rc <= 0) {
 		mce_apei_read_done = 1;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		/*
 		 * When ERST is disabled, mce_chrdev_read() should return
 		 * "no record" instead of "no device."
 		 */
 		if (rc == -ENODEV)
 			return 0;
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		return rc;
 	}
 	rc = -EFAULT;
@@ -1983,9 +2175,14 @@ static int __mce_read_apei(char __user **ubuf, size_t usize)
 static ssize_t mce_chrdev_read(struct file *filp, char __user *ubuf,
 				size_t usize, loff_t *off)
 =======
+<<<<<<< HEAD
+static ssize_t mce_chrdev_read(struct file *filp, char __user *ubuf,
+				size_t usize, loff_t *off)
+=======
 static ssize_t mce_read(struct file *filp, char __user *ubuf, size_t usize,
 			loff_t *off)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	char __user *buf = ubuf;
 	unsigned long *cpu_tsc;
@@ -1999,8 +2196,12 @@ static ssize_t mce_read(struct file *filp, char __user *ubuf, size_t usize,
 <<<<<<< HEAD
 	mutex_lock(&mce_chrdev_read_mutex);
 =======
+<<<<<<< HEAD
+	mutex_lock(&mce_chrdev_read_mutex);
+=======
 	mutex_lock(&mce_read_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (!mce_apei_read_done) {
 		err = __mce_read_apei(&buf, usize);
@@ -2021,11 +2222,16 @@ static ssize_t mce_read(struct file *filp, char __user *ubuf, size_t usize,
 		for (i = prev; i < next; i++) {
 			unsigned long start = jiffies;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			struct mce *m = &mcelog.entry[i];
 
 			while (!m->finished) {
 				if (time_after_eq(jiffies, start + 2)) {
 					memset(m, 0, sizeof(*m));
+<<<<<<< HEAD
+=======
 =======
 
 			while (!mcelog.entry[i].finished) {
@@ -2033,6 +2239,7 @@ static ssize_t mce_read(struct file *filp, char __user *ubuf, size_t usize,
 					memset(mcelog.entry + i, 0,
 					       sizeof(struct mce));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					goto timeout;
 				}
 				cpu_relax();
@@ -2042,10 +2249,15 @@ static ssize_t mce_read(struct file *filp, char __user *ubuf, size_t usize,
 			err |= copy_to_user(buf, m, sizeof(*m));
 			buf += sizeof(*m);
 =======
+<<<<<<< HEAD
+			err |= copy_to_user(buf, m, sizeof(*m));
+			buf += sizeof(*m);
+=======
 			err |= copy_to_user(buf, mcelog.entry + i,
 					    sizeof(struct mce));
 			buf += sizeof(struct mce);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 timeout:
 			;
 		}
@@ -2066,6 +2278,9 @@ timeout:
 
 	for (i = next; i < MCE_LOG_LEN; i++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct mce *m = &mcelog.entry[i];
 
 		if (m->finished && m->tsc < cpu_tsc[m->cpu]) {
@@ -2073,6 +2288,8 @@ timeout:
 			smp_rmb();
 			buf += sizeof(*m);
 			memset(m, 0, sizeof(*m));
+<<<<<<< HEAD
+=======
 =======
 		if (mcelog.entry[i].finished &&
 		    mcelog.entry[i].tsc < cpu_tsc[mcelog.entry[i].cpu]) {
@@ -2082,6 +2299,7 @@ timeout:
 			buf += sizeof(struct mce);
 			memset(&mcelog.entry[i], 0, sizeof(struct mce));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -2092,8 +2310,12 @@ out:
 <<<<<<< HEAD
 	mutex_unlock(&mce_chrdev_read_mutex);
 =======
+<<<<<<< HEAD
+	mutex_unlock(&mce_chrdev_read_mutex);
+=======
 	mutex_unlock(&mce_read_mutex);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	kfree(cpu_tsc);
 
 	return err ? err : buf - ubuf;
@@ -2104,10 +2326,16 @@ static unsigned int mce_chrdev_poll(struct file *file, poll_table *wait)
 {
 	poll_wait(file, &mce_chrdev_wait, wait);
 =======
+<<<<<<< HEAD
+static unsigned int mce_chrdev_poll(struct file *file, poll_table *wait)
+{
+	poll_wait(file, &mce_chrdev_wait, wait);
+=======
 static unsigned int mce_poll(struct file *file, poll_table *wait)
 {
 	poll_wait(file, &mce_wait, wait);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (rcu_access_index(mcelog.next))
 		return POLLIN | POLLRDNORM;
 	if (!mce_apei_read_done && apei_check_mce())
@@ -2119,8 +2347,13 @@ static unsigned int mce_poll(struct file *file, poll_table *wait)
 static long mce_chrdev_ioctl(struct file *f, unsigned int cmd,
 				unsigned long arg)
 =======
+<<<<<<< HEAD
+static long mce_chrdev_ioctl(struct file *f, unsigned int cmd,
+				unsigned long arg)
+=======
 static long mce_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int __user *p = (int __user *)arg;
 
@@ -2147,6 +2380,9 @@ static long mce_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t (*mce_write)(struct file *filp, const char __user *ubuf,
 			    size_t usize, loff_t *off);
 
@@ -2178,6 +2414,8 @@ static const struct file_operations mce_chrdev_ops = {
 };
 
 static struct miscdevice mce_chrdev_device = {
+<<<<<<< HEAD
+=======
 =======
 /* Modified in mce-inject.c, so not static or const */
 struct file_operations mce_chrdev_ops = {
@@ -2192,6 +2430,7 @@ EXPORT_SYMBOL_GPL(mce_chrdev_ops);
 
 static struct miscdevice mce_log_device = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	MISC_MCELOG_MINOR,
 	"mcelog",
 	&mce_chrdev_ops,
@@ -2252,8 +2491,12 @@ int __init mcheck_init(void)
 <<<<<<< HEAD
  * mce_syscore: PM support
 =======
+<<<<<<< HEAD
+ * mce_syscore: PM support
+=======
  * Sysfs support
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /*
@@ -2276,8 +2519,12 @@ static int mce_disable_error_reporting(void)
 <<<<<<< HEAD
 static int mce_syscore_suspend(void)
 =======
+<<<<<<< HEAD
+static int mce_syscore_suspend(void)
+=======
 static int mce_suspend(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return mce_disable_error_reporting();
 }
@@ -2285,8 +2532,12 @@ static int mce_suspend(void)
 <<<<<<< HEAD
 static void mce_syscore_shutdown(void)
 =======
+<<<<<<< HEAD
+static void mce_syscore_shutdown(void)
+=======
 static void mce_shutdown(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	mce_disable_error_reporting();
 }
@@ -2299,8 +2550,12 @@ static void mce_shutdown(void)
 <<<<<<< HEAD
 static void mce_syscore_resume(void)
 =======
+<<<<<<< HEAD
+static void mce_syscore_resume(void)
+=======
 static void mce_resume(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	__mcheck_cpu_init_generic();
 	__mcheck_cpu_init_vendor(__this_cpu_ptr(&cpu_info));
@@ -2308,6 +2563,9 @@ static void mce_resume(void)
 
 static struct syscore_ops mce_syscore_ops = {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.suspend	= mce_syscore_suspend,
 	.shutdown	= mce_syscore_shutdown,
 	.resume		= mce_syscore_resume,
@@ -2319,6 +2577,8 @@ static struct syscore_ops mce_syscore_ops = {
 
 static void mce_cpu_restart(void *data)
 {
+<<<<<<< HEAD
+=======
 =======
 	.suspend	= mce_suspend,
 	.shutdown	= mce_shutdown,
@@ -2329,6 +2589,7 @@ static void mce_cpu_restart(void *data)
 {
 	del_timer_sync(&__get_cpu_var(mce_timer));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!mce_available(__this_cpu_ptr(&cpu_info)))
 		return;
 	__mcheck_cpu_init_generic();
@@ -2341,16 +2602,25 @@ static void mce_restart(void)
 <<<<<<< HEAD
 	mce_timer_delete_all();
 =======
+<<<<<<< HEAD
+	mce_timer_delete_all();
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	on_each_cpu(mce_cpu_restart, NULL, 1);
 }
 
 /* Toggle features for corrected errors */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void mce_disable_cmci(void *data)
 {
 	if (!mce_available(__this_cpu_ptr(&cpu_info)))
 		return;
+<<<<<<< HEAD
+=======
 =======
 static void mce_disable_ce(void *all)
 {
@@ -2359,6 +2629,7 @@ static void mce_disable_ce(void *all)
 	if (all)
 		del_timer_sync(&__get_cpu_var(mce_timer));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	cmci_clear();
 }
 
@@ -2373,12 +2644,17 @@ static void mce_enable_ce(void *all)
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct bus_type mce_subsys = {
 	.name		= "machinecheck",
 	.dev_name	= "machinecheck",
 };
 
 DEFINE_PER_CPU(struct device *, mce_device);
+<<<<<<< HEAD
+=======
 =======
 static struct sysdev_class mce_sysclass = {
 	.name		= "machinecheck",
@@ -2386,6 +2662,7 @@ static struct sysdev_class mce_sysclass = {
 
 DEFINE_PER_CPU(struct sys_device, mce_dev);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 __cpuinitdata
 void (*threshold_cpu_callback)(unsigned long action, unsigned int cpu);
@@ -2393,8 +2670,12 @@ void (*threshold_cpu_callback)(unsigned long action, unsigned int cpu);
 <<<<<<< HEAD
 static inline struct mce_bank *attr_to_bank(struct device_attribute *attr)
 =======
+<<<<<<< HEAD
+static inline struct mce_bank *attr_to_bank(struct device_attribute *attr)
+=======
 static inline struct mce_bank *attr_to_bank(struct sysdev_attribute *attr)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	return container_of(attr, struct mce_bank, attr);
 }
@@ -2402,8 +2683,12 @@ static inline struct mce_bank *attr_to_bank(struct sysdev_attribute *attr)
 <<<<<<< HEAD
 static ssize_t show_bank(struct device *s, struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t show_bank(struct device *s, struct device_attribute *attr,
+=======
 static ssize_t show_bank(struct sys_device *s, struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			 char *buf)
 {
 	return sprintf(buf, "%llx\n", attr_to_bank(attr)->ctl);
@@ -2412,8 +2697,12 @@ static ssize_t show_bank(struct sys_device *s, struct sysdev_attribute *attr,
 <<<<<<< HEAD
 static ssize_t set_bank(struct device *s, struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t set_bank(struct device *s, struct device_attribute *attr,
+=======
 static ssize_t set_bank(struct sys_device *s, struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			const char *buf, size_t size)
 {
 	u64 new;
@@ -2431,8 +2720,12 @@ static ssize_t
 <<<<<<< HEAD
 show_trigger(struct device *s, struct device_attribute *attr, char *buf)
 =======
+<<<<<<< HEAD
+show_trigger(struct device *s, struct device_attribute *attr, char *buf)
+=======
 show_trigger(struct sys_device *s, struct sysdev_attribute *attr, char *buf)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	strcpy(buf, mce_helper);
 	strcat(buf, "\n");
@@ -2442,8 +2735,12 @@ show_trigger(struct sys_device *s, struct sysdev_attribute *attr, char *buf)
 <<<<<<< HEAD
 static ssize_t set_trigger(struct device *s, struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t set_trigger(struct device *s, struct device_attribute *attr,
+=======
 static ssize_t set_trigger(struct sys_device *s, struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				const char *buf, size_t siz)
 {
 	char *p;
@@ -2462,9 +2759,14 @@ static ssize_t set_trigger(struct sys_device *s, struct sysdev_attribute *attr,
 static ssize_t set_ignore_ce(struct device *s,
 			     struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t set_ignore_ce(struct device *s,
+			     struct device_attribute *attr,
+=======
 static ssize_t set_ignore_ce(struct sys_device *s,
 			     struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			     const char *buf, size_t size)
 {
 	u64 new;
@@ -2479,8 +2781,13 @@ static ssize_t set_ignore_ce(struct sys_device *s,
 			mce_timer_delete_all();
 			on_each_cpu(mce_disable_cmci, NULL, 1);
 =======
+<<<<<<< HEAD
+			mce_timer_delete_all();
+			on_each_cpu(mce_disable_cmci, NULL, 1);
+=======
 			on_each_cpu(mce_disable_ce, (void *)1, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mce_ignore_ce = 1;
 		} else {
 			/* enable ce features */
@@ -2495,9 +2802,14 @@ static ssize_t set_ignore_ce(struct sys_device *s,
 static ssize_t set_cmci_disabled(struct device *s,
 				 struct device_attribute *attr,
 =======
+<<<<<<< HEAD
+static ssize_t set_cmci_disabled(struct device *s,
+				 struct device_attribute *attr,
+=======
 static ssize_t set_cmci_disabled(struct sys_device *s,
 				 struct sysdev_attribute *attr,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				 const char *buf, size_t size)
 {
 	u64 new;
@@ -2511,8 +2823,12 @@ static ssize_t set_cmci_disabled(struct sys_device *s,
 <<<<<<< HEAD
 			on_each_cpu(mce_disable_cmci, NULL, 1);
 =======
+<<<<<<< HEAD
+			on_each_cpu(mce_disable_cmci, NULL, 1);
+=======
 			on_each_cpu(mce_disable_ce, NULL, 1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			mce_cmci_disabled = 1;
 		} else {
 			/* enable cmci */
@@ -2524,11 +2840,16 @@ static ssize_t set_cmci_disabled(struct sys_device *s,
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t store_int_with_restart(struct device *s,
 				      struct device_attribute *attr,
 				      const char *buf, size_t size)
 {
 	ssize_t ret = device_store_int(s, attr, buf, size);
+<<<<<<< HEAD
+=======
 =======
 static ssize_t store_int_with_restart(struct sys_device *s,
 				      struct sysdev_attribute *attr,
@@ -2536,11 +2857,15 @@ static ssize_t store_int_with_restart(struct sys_device *s,
 {
 	ssize_t ret = sysdev_store_int(s, attr, buf, size);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mce_restart();
 	return ret;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static DEVICE_ATTR(trigger, 0644, show_trigger, set_trigger);
 static DEVICE_INT_ATTR(tolerant, 0644, tolerant);
 static DEVICE_INT_ATTR(monarch_timeout, 0644, monarch_timeout);
@@ -2583,6 +2908,8 @@ static void mce_device_release(struct device *dev)
 static __cpuinit int mce_device_create(unsigned int cpu)
 {
 	struct device *dev;
+<<<<<<< HEAD
+=======
 =======
 static SYSDEV_ATTR(trigger, 0644, show_trigger, set_trigger);
 static SYSDEV_INT_ATTR(tolerant, 0644, tolerant);
@@ -2622,6 +2949,7 @@ static cpumask_var_t mce_dev_initialized;
 static __cpuinit int mce_create_device(unsigned int cpu)
 {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int err;
 	int i, j;
 
@@ -2629,6 +2957,9 @@ static __cpuinit int mce_create_device(unsigned int cpu)
 		return -EIO;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dev = kzalloc(sizeof *dev, GFP_KERNEL);
 	if (!dev)
 		return -ENOMEM;
@@ -2642,6 +2973,8 @@ static __cpuinit int mce_create_device(unsigned int cpu)
 
 	for (i = 0; mce_device_attrs[i]; i++) {
 		err = device_create_file(dev, mce_device_attrs[i]);
+<<<<<<< HEAD
+=======
 =======
 	memset(&per_cpu(mce_dev, cpu).kobj, 0, sizeof(struct kobject));
 	per_cpu(mce_dev, cpu).id	= cpu;
@@ -2654,17 +2987,23 @@ static __cpuinit int mce_create_device(unsigned int cpu)
 	for (i = 0; mce_attrs[i]; i++) {
 		err = sysdev_create_file(&per_cpu(mce_dev, cpu), mce_attrs[i]);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			goto error;
 	}
 	for (j = 0; j < banks; j++) {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		err = device_create_file(dev, &mce_banks[j].attr);
 		if (err)
 			goto error2;
 	}
 	cpumask_set_cpu(cpu, mce_device_initialized);
 	per_cpu(mce_device, cpu) = dev;
+<<<<<<< HEAD
+=======
 =======
 		err = sysdev_create_file(&per_cpu(mce_dev, cpu),
 					&mce_banks[j].attr);
@@ -2673,17 +3012,23 @@ static __cpuinit int mce_create_device(unsigned int cpu)
 	}
 	cpumask_set_cpu(cpu, mce_dev_initialized);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 error2:
 	while (--j >= 0)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		device_remove_file(dev, &mce_banks[j].attr);
 error:
 	while (--i >= 0)
 		device_remove_file(dev, mce_device_attrs[i]);
 
 	device_unregister(dev);
+<<<<<<< HEAD
+=======
 =======
 		sysdev_remove_file(&per_cpu(mce_dev, cpu), &mce_banks[j].attr);
 error:
@@ -2692,11 +3037,15 @@ error:
 
 	sysdev_unregister(&per_cpu(mce_dev, cpu));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return err;
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static __cpuinit void mce_device_remove(unsigned int cpu)
 {
 	struct device *dev = per_cpu(mce_device, cpu);
@@ -2714,6 +3063,8 @@ static __cpuinit void mce_device_remove(unsigned int cpu)
 	device_unregister(dev);
 	cpumask_clear_cpu(cpu, mce_device_initialized);
 	per_cpu(mce_device, cpu) = NULL;
+<<<<<<< HEAD
+=======
 =======
 static __cpuinit void mce_remove_device(unsigned int cpu)
 {
@@ -2731,6 +3082,7 @@ static __cpuinit void mce_remove_device(unsigned int cpu)
 	sysdev_unregister(&per_cpu(mce_dev, cpu));
 	cpumask_clear_cpu(cpu, mce_dev_initialized);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /* Make sure there are no machine checks on offlined CPUs. */
@@ -2783,8 +3135,12 @@ mce_cpu_callback(struct notifier_block *nfb, unsigned long action, void *hcpu)
 <<<<<<< HEAD
 		mce_device_create(cpu);
 =======
+<<<<<<< HEAD
+		mce_device_create(cpu);
+=======
 		mce_create_device(cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (threshold_cpu_callback)
 			threshold_cpu_callback(action, cpu);
 		break;
@@ -2795,8 +3151,12 @@ mce_cpu_callback(struct notifier_block *nfb, unsigned long action, void *hcpu)
 <<<<<<< HEAD
 		mce_device_remove(cpu);
 =======
+<<<<<<< HEAD
+		mce_device_remove(cpu);
+=======
 		mce_remove_device(cpu);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case CPU_DOWN_PREPARE:
 	case CPU_DOWN_PREPARE_FROZEN:
@@ -2833,8 +3193,12 @@ static __init void mce_init_banks(void)
 <<<<<<< HEAD
 		struct device_attribute *a = &b->attr;
 =======
+<<<<<<< HEAD
+		struct device_attribute *a = &b->attr;
+=======
 		struct sysdev_attribute *a = &b->attr;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		sysfs_attr_init(&a->attr);
 		a->attr.name	= b->attrname;
@@ -2855,11 +3219,16 @@ static __init int mcheck_init_device(void)
 		return -EIO;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	zalloc_cpumask_var(&mce_device_initialized, GFP_KERNEL);
 
 	mce_init_banks();
 
 	err = subsys_system_register(&mce_subsys, NULL);
+<<<<<<< HEAD
+=======
 =======
 	zalloc_cpumask_var(&mce_dev_initialized, GFP_KERNEL);
 
@@ -2867,6 +3236,7 @@ static __init int mcheck_init_device(void)
 
 	err = sysdev_class_register(&mce_sysclass);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (err)
 		return err;
 
@@ -2874,8 +3244,12 @@ static __init int mcheck_init_device(void)
 <<<<<<< HEAD
 		err = mce_device_create(i);
 =======
+<<<<<<< HEAD
+		err = mce_device_create(i);
+=======
 		err = mce_create_device(i);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (err)
 			return err;
 	}
@@ -2883,12 +3257,17 @@ static __init int mcheck_init_device(void)
 	register_syscore_ops(&mce_syscore_ops);
 	register_hotcpu_notifier(&mce_cpu_notifier);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* register character device /dev/mcelog */
 	misc_register(&mce_chrdev_device);
 
 	return err;
 }
+<<<<<<< HEAD
+=======
 =======
 	misc_register(&mce_log_device);
 
@@ -2896,6 +3275,7 @@ static __init int mcheck_init_device(void)
 }
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 device_initcall(mcheck_init_device);
 
 /*

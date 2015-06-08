@@ -22,10 +22,27 @@
  *
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/dma-mapping.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/slab.h>
 #include <linux/module.h>
 #include <linux/moduleparam.h>
 #include <linux/platform_device.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/of.h>
+#include <linux/of_device.h>
+#include <linux/of_gpio.h>
+#include <linux/of_mtd.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/mtd/mtd.h>
 #include <linux/mtd/nand.h>
 #include <linux/mtd/partitions.h>
@@ -33,6 +50,15 @@
 #include <linux/dmaengine.h>
 #include <linux/gpio.h>
 #include <linux/io.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/platform_data/atmel.h>
+
+#include <mach/cpu.h>
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include <mach/board.h>
 #include <mach/cpu.h>
@@ -49,6 +75,10 @@
 #define no_ecc		0
 #endif
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static int use_dma = 1;
 module_param(use_dma, int, 0);
 
@@ -94,7 +124,15 @@ struct atmel_nand_host {
 	struct mtd_info		mtd;
 	void __iomem		*io_base;
 	dma_addr_t		io_phys;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct atmel_nand_data	board;
+=======
 	struct atmel_nand_data	*board;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct atmel_nand_data	*board;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct device		*dev;
 	void __iomem		*ecc;
 
@@ -112,8 +150,18 @@ static int cpu_has_dma(void)
  */
 static void atmel_nand_enable(struct atmel_nand_host *host)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(host->board.enable_pin))
+		gpio_set_value(host->board.enable_pin, 0);
+=======
 	if (host->board->enable_pin)
 		gpio_set_value(host->board->enable_pin, 0);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (host->board->enable_pin)
+		gpio_set_value(host->board->enable_pin, 0);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -121,8 +169,18 @@ static void atmel_nand_enable(struct atmel_nand_host *host)
  */
 static void atmel_nand_disable(struct atmel_nand_host *host)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(host->board.enable_pin))
+		gpio_set_value(host->board.enable_pin, 1);
+=======
 	if (host->board->enable_pin)
 		gpio_set_value(host->board->enable_pin, 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (host->board->enable_pin)
+		gpio_set_value(host->board->enable_pin, 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -143,9 +201,21 @@ static void atmel_nand_cmd_ctrl(struct mtd_info *mtd, int cmd, unsigned int ctrl
 		return;
 
 	if (ctrl & NAND_CLE)
+<<<<<<< HEAD
+<<<<<<< HEAD
+		writeb(cmd, host->io_base + (1 << host->board.cle));
+	else
+		writeb(cmd, host->io_base + (1 << host->board.ale));
+=======
 		writeb(cmd, host->io_base + (1 << host->board->cle));
 	else
 		writeb(cmd, host->io_base + (1 << host->board->ale));
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		writeb(cmd, host->io_base + (1 << host->board->cle));
+	else
+		writeb(cmd, host->io_base + (1 << host->board->ale));
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -156,8 +226,18 @@ static int atmel_nand_device_ready(struct mtd_info *mtd)
 	struct nand_chip *nand_chip = mtd->priv;
 	struct atmel_nand_host *host = nand_chip->priv;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	return gpio_get_value(host->board.rdy_pin) ^
+                !!host->board.rdy_pin_active_low;
+=======
 	return gpio_get_value(host->board->rdy_pin) ^
                 !!host->board->rdy_pin_active_low;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	return gpio_get_value(host->board->rdy_pin) ^
+                !!host->board->rdy_pin_active_low;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*
@@ -272,7 +352,15 @@ static void atmel_read_buf(struct mtd_info *mtd, u8 *buf, int len)
 		if (atmel_nand_dma_op(mtd, buf, len, 1) == 0)
 			return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (host->board.bus_width_16)
+=======
 	if (host->board->bus_width_16)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (host->board->bus_width_16)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		atmel_read_buf16(mtd, buf, len);
 	else
 		atmel_read_buf8(mtd, buf, len);
@@ -288,7 +376,15 @@ static void atmel_write_buf(struct mtd_info *mtd, const u8 *buf, int len)
 		if (atmel_nand_dma_op(mtd, (void *)buf, len, 0) == 0)
 			return;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (host->board.bus_width_16)
+=======
 	if (host->board->bus_width_16)
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (host->board->bus_width_16)
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		atmel_write_buf16(mtd, buf, len);
 	else
 		atmel_write_buf8(mtd, buf, len);
@@ -480,8 +576,64 @@ static void atmel_nand_hwctl(struct mtd_info *mtd, int mode)
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_OF)
+static int __devinit atmel_of_init_port(struct atmel_nand_host *host,
+					 struct device_node *np)
+{
+	u32 val;
+	int ecc_mode;
+	struct atmel_nand_data *board = &host->board;
+	enum of_gpio_flags flags;
+
+	if (of_property_read_u32(np, "atmel,nand-addr-offset", &val) == 0) {
+		if (val >= 32) {
+			dev_err(host->dev, "invalid addr-offset %u\n", val);
+			return -EINVAL;
+		}
+		board->ale = val;
+	}
+
+	if (of_property_read_u32(np, "atmel,nand-cmd-offset", &val) == 0) {
+		if (val >= 32) {
+			dev_err(host->dev, "invalid cmd-offset %u\n", val);
+			return -EINVAL;
+		}
+		board->cle = val;
+	}
+
+	ecc_mode = of_get_nand_ecc_mode(np);
+
+	board->ecc_mode = ecc_mode < 0 ? NAND_ECC_SOFT : ecc_mode;
+
+	board->on_flash_bbt = of_get_nand_on_flash_bbt(np);
+
+	if (of_get_nand_bus_width(np) == 16)
+		board->bus_width_16 = 1;
+
+	board->rdy_pin = of_get_gpio_flags(np, 0, &flags);
+	board->rdy_pin_active_low = (flags == OF_GPIO_ACTIVE_LOW);
+
+	board->enable_pin = of_get_gpio(np, 1);
+	board->det_pin = of_get_gpio(np, 2);
+
+	return 0;
+}
+#else
+static int __devinit atmel_of_init_port(struct atmel_nand_host *host,
+					 struct device_node *np)
+{
+	return -EINVAL;
+}
+=======
 #ifdef CONFIG_MTD_CMDLINE_PARTS
 static const char *part_probes[] = { "cmdlinepart", NULL };
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#ifdef CONFIG_MTD_CMDLINE_PARTS
+static const char *part_probes[] = { "cmdlinepart", NULL };
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif
 
 /*
@@ -494,9 +646,20 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 	struct nand_chip *nand_chip;
 	struct resource *regs;
 	struct resource *mem;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct mtd_part_parser_data ppdata = {};
+	int res;
+=======
 	int res;
 	struct mtd_partition *partitions = NULL;
 	int num_partitions = 0;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	int res;
+	struct mtd_partition *partitions = NULL;
+	int num_partitions = 0;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
 	if (!mem) {
@@ -513,7 +676,15 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 
 	host->io_phys = (dma_addr_t)mem->start;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	host->io_base = ioremap(mem->start, resource_size(mem));
+=======
 	host->io_base = ioremap(mem->start, mem->end - mem->start + 1);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	host->io_base = ioremap(mem->start, mem->end - mem->start + 1);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (host->io_base == NULL) {
 		printk(KERN_ERR "atmel_nand: ioremap failed\n");
 		res = -EIO;
@@ -522,8 +693,25 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 
 	mtd = &host->mtd;
 	nand_chip = &host->nand_chip;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	host->dev = &pdev->dev;
+	if (pdev->dev.of_node) {
+		res = atmel_of_init_port(host, pdev->dev.of_node);
+		if (res)
+			goto err_nand_ioremap;
+	} else {
+		memcpy(&host->board, pdev->dev.platform_data,
+		       sizeof(struct atmel_nand_data));
+	}
+=======
 	host->board = pdev->dev.platform_data;
 	host->dev = &pdev->dev;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	host->board = pdev->dev.platform_data;
+	host->dev = &pdev->dev;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	nand_chip->priv = host;		/* link the private data structures */
 	mtd->priv = nand_chip;
@@ -534,6 +722,25 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 	nand_chip->IO_ADDR_W = host->io_base;
 	nand_chip->cmd_ctrl = atmel_nand_cmd_ctrl;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(host->board.rdy_pin))
+		nand_chip->dev_ready = atmel_nand_device_ready;
+
+	nand_chip->ecc.mode = host->board.ecc_mode;
+
+	regs = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+	if (!regs && nand_chip->ecc.mode == NAND_ECC_HW) {
+		printk(KERN_ERR "atmel_nand: can't get I/O resource "
+				"regs\nFalling back on software ECC\n");
+		nand_chip->ecc.mode = NAND_ECC_SOFT;
+	}
+
+	if (nand_chip->ecc.mode == NAND_ECC_HW) {
+		host->ecc = ioremap(regs->start, resource_size(regs));
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (host->board->rdy_pin)
 		nand_chip->dev_ready = atmel_nand_device_ready;
 
@@ -548,22 +755,48 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 		nand_chip->ecc.mode = NAND_ECC_NONE;
 	if (hard_ecc && regs) {
 		host->ecc = ioremap(regs->start, regs->end - regs->start + 1);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (host->ecc == NULL) {
 			printk(KERN_ERR "atmel_nand: ioremap failed\n");
 			res = -EIO;
 			goto err_ecc_ioremap;
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 		nand_chip->ecc.mode = NAND_ECC_HW;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		nand_chip->ecc.mode = NAND_ECC_HW;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nand_chip->ecc.calculate = atmel_nand_calculate;
 		nand_chip->ecc.correct = atmel_nand_correct;
 		nand_chip->ecc.hwctl = atmel_nand_hwctl;
 		nand_chip->ecc.read_page = atmel_nand_read_page;
 		nand_chip->ecc.bytes = 4;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		nand_chip->ecc.strength = 1;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	nand_chip->chip_delay = 20;		/* 20us command delay time */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (host->board.bus_width_16)	/* 16-bit bus width */
+=======
 	if (host->board->bus_width_16)	/* 16-bit bus width */
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (host->board->bus_width_16)	/* 16-bit bus width */
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		nand_chip->options |= NAND_BUSWIDTH_16;
 
 	nand_chip->read_buf = atmel_read_buf;
@@ -572,17 +805,39 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 	platform_set_drvdata(pdev, host);
 	atmel_nand_enable(host);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (gpio_is_valid(host->board.det_pin)) {
+		if (gpio_get_value(host->board.det_pin)) {
+=======
 	if (host->board->det_pin) {
 		if (gpio_get_value(host->board->det_pin)) {
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (host->board->det_pin) {
+		if (gpio_get_value(host->board->det_pin)) {
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			printk(KERN_INFO "No SmartMedia card inserted.\n");
 			res = -ENXIO;
 			goto err_no_card;
 		}
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (host->board.on_flash_bbt || on_flash_bbt) {
+		printk(KERN_INFO "atmel_nand: Use On Flash BBT\n");
+		nand_chip->bbt_options |= NAND_BBT_USE_FLASH;
+=======
 	if (on_flash_bbt) {
 		printk(KERN_INFO "atmel_nand: Use On Flash BBT\n");
 		nand_chip->options |= NAND_USE_FLASH_BBT;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	if (on_flash_bbt) {
+		printk(KERN_INFO "atmel_nand: Use On Flash BBT\n");
+		nand_chip->options |= NAND_USE_FLASH_BBT;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	if (!cpu_has_dma())
@@ -593,7 +848,15 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 
 		dma_cap_zero(mask);
 		dma_cap_set(DMA_MEMCPY, mask);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		host->dma_chan = dma_request_channel(mask, NULL, NULL);
+=======
 		host->dma_chan = dma_request_channel(mask, 0, NULL);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		host->dma_chan = dma_request_channel(mask, 0, NULL);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (!host->dma_chan) {
 			dev_err(host->dev, "Failed to request DMA channel\n");
 			use_dma = 0;
@@ -654,6 +917,18 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 		goto err_scan_tail;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	mtd->name = "atmel_nand";
+	ppdata.of_node = pdev->dev.of_node;
+	res = mtd_device_parse_register(mtd, NULL, &ppdata,
+			host->board.parts, host->board.num_parts);
+	if (!res)
+		return res;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_MTD_CMDLINE_PARTS
 	mtd->name = "atmel_nand";
 	num_partitions = parse_mtd_partitions(mtd, part_probes,
@@ -675,6 +950,10 @@ static int __init atmel_nand_probe(struct platform_device *pdev)
 
 err_no_partitions:
 	nand_release(mtd);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 err_scan_tail:
 err_scan_ident:
 err_no_card:
@@ -715,11 +994,33 @@ static int __exit atmel_nand_remove(struct platform_device *pdev)
 	return 0;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+#if defined(CONFIG_OF)
+static const struct of_device_id atmel_nand_dt_ids[] = {
+	{ .compatible = "atmel,at91rm9200-nand" },
+	{ /* sentinel */ }
+};
+
+MODULE_DEVICE_TABLE(of, atmel_nand_dt_ids);
+#endif
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static struct platform_driver atmel_nand_driver = {
 	.remove		= __exit_p(atmel_nand_remove),
 	.driver		= {
 		.name	= "atmel_nand",
 		.owner	= THIS_MODULE,
+<<<<<<< HEAD
+<<<<<<< HEAD
+		.of_match_table	= of_match_ptr(atmel_nand_dt_ids),
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	},
 };
 

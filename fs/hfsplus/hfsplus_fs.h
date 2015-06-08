@@ -318,13 +318,19 @@ static inline unsigned short hfsplus_min_io_size(struct super_block *sb)
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * hfs+-specific ioctl for making the filesystem bootable
  */
 #define HFSPLUS_IOC_BLESS _IO('h', 0x80)
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Functions in any *.c used in other files
  */
 
@@ -397,8 +403,12 @@ int hfsplus_ext_cmp_key(const hfsplus_btree_key *, const hfsplus_btree_key *);
 <<<<<<< HEAD
 int hfsplus_ext_write_extent(struct inode *);
 =======
+<<<<<<< HEAD
+int hfsplus_ext_write_extent(struct inode *);
+=======
 void hfsplus_ext_write_extent(struct inode *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int hfsplus_get_block(struct inode *, sector_t, struct buffer_head *, int);
 int hfsplus_free_fork(struct super_block *, u32,
 		struct hfsplus_fork_raw *, int);
@@ -415,15 +425,21 @@ void hfsplus_inode_write_fork(struct inode *, struct hfsplus_fork_raw *);
 int hfsplus_cat_read_inode(struct inode *, struct hfs_find_data *);
 int hfsplus_cat_write_inode(struct inode *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct inode *hfsplus_new_inode(struct super_block *, umode_t);
 void hfsplus_delete_inode(struct inode *);
 int hfsplus_file_fsync(struct file *file, loff_t start, loff_t end,
 		       int datasync);
+<<<<<<< HEAD
+=======
 =======
 struct inode *hfsplus_new_inode(struct super_block *, int);
 void hfsplus_delete_inode(struct inode *);
 int hfsplus_file_fsync(struct file *file, int datasync);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* ioctl.c */
 long hfsplus_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
@@ -440,8 +456,12 @@ void hfsplus_fill_defaults(struct hfsplus_sb_info *);
 <<<<<<< HEAD
 int hfsplus_show_options(struct seq_file *, struct dentry *);
 =======
+<<<<<<< HEAD
+int hfsplus_show_options(struct seq_file *, struct dentry *);
+=======
 int hfsplus_show_options(struct seq_file *, struct vfsmount *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* super.c */
 struct inode *hfsplus_iget(struct super_block *, unsigned long);

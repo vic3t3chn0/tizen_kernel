@@ -8,6 +8,9 @@
 #include <linux/fs.h>
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 DECLARE_PER_CPU(int, dirty_throttle_leaks);
 
 /*
@@ -28,12 +31,15 @@ DECLARE_PER_CPU(int, dirty_throttle_leaks);
 
 struct backing_dev_info;
 
+<<<<<<< HEAD
+=======
 =======
 struct backing_dev_info;
 
 extern spinlock_t inode_wb_list_lock;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * fs/fs-writeback.c
  */
@@ -44,6 +50,9 @@ enum writeback_sync_modes {
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * why some writeback work was initiated
  */
 enum wb_reason {
@@ -61,8 +70,11 @@ enum wb_reason {
 extern const char *wb_reason_name[];
 
 /*
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * A control structure which tells the writeback code what to do.  These are
  * always on the stack, and hence need no locking.  They are always initialised
  * in a manner such that unspecified fields are set to zero.
@@ -71,12 +83,15 @@ struct writeback_control {
 	enum writeback_sync_modes sync_mode;
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned long *older_than_this;	/* If !NULL, only write back inodes
 					   older than this */
 	unsigned long wb_start;         /* Time writeback_inodes_wb was
 					   called. This is needed to avoid
 					   extra jobs and livelock */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	long nr_to_write;		/* Write this many pages, and decrement
 					   this for each page written */
 	long pages_skipped;		/* Pages which were not written */
@@ -85,8 +100,12 @@ struct writeback_control {
 <<<<<<< HEAD
 	 * For a_ops->writepages(): if start or end are non-zero then this is
 =======
+<<<<<<< HEAD
+	 * For a_ops->writepages(): if start or end are non-zero then this is
+=======
 	 * For a_ops->writepages(): is start or end are non-zero then this is
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	 * a hint that the filesystem need only write out the pages inside that
 	 * byterange.  The byte at `end' is included in the writeout request.
 	 */
@@ -95,9 +114,12 @@ struct writeback_control {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned nonblocking:1;		/* Don't get stuck on request queues */
 	unsigned encountered_congestion:1; /* An output: a queue is full */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	unsigned for_kupdate:1;		/* A kupdate writeback */
 	unsigned for_background:1;	/* A background writeback */
 	unsigned tagged_writepages:1;	/* tag-and-write to avoid livelock */
@@ -105,8 +127,11 @@ struct writeback_control {
 	unsigned range_cyclic:1;	/* range_start is cyclic */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	unsigned more_io:1;		/* more io to be dispatched */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /*
@@ -115,6 +140,9 @@ struct writeback_control {
 struct bdi_writeback;
 int inode_wait(void *);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void writeback_inodes_sb(struct super_block *, enum wb_reason reason);
 void writeback_inodes_sb_nr(struct super_block *, unsigned long nr,
 							enum wb_reason reason);
@@ -126,6 +154,8 @@ long writeback_inodes_wb(struct bdi_writeback *wb, long nr_pages,
 				enum wb_reason reason);
 long wb_do_writeback(struct bdi_writeback *wb, int force_wait);
 void wakeup_flusher_threads(long nr_pages, enum wb_reason reason);
+<<<<<<< HEAD
+=======
 =======
 void writeback_inodes_sb(struct super_block *);
 void writeback_inodes_sb_nr(struct super_block *, unsigned long nr);
@@ -137,6 +167,7 @@ void writeback_inodes_wb(struct bdi_writeback *wb,
 long wb_do_writeback(struct bdi_writeback *wb, int force_wait);
 void wakeup_flusher_threads(long nr_pages);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* writeback.h requires fs.h; it, too, is not included from here. */
 static inline void wait_on_inode(struct inode *inode)
@@ -169,7 +200,13 @@ bool zone_dirty_ok(struct zone *zone);
 
 extern unsigned long global_dirty_limit;
 =======
+<<<<<<< HEAD
+bool zone_dirty_ok(struct zone *zone);
+
+extern unsigned long global_dirty_limit;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* These are exported to sysctl. */
 extern int dirty_background_ratio;
@@ -184,9 +221,12 @@ extern int laptop_mode;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 extern unsigned long determine_dirtyable_memory(void);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 extern int dirty_background_ratio_handler(struct ctl_table *table, int write,
 		void __user *buffer, size_t *lenp,
 		loff_t *ppos);
@@ -209,6 +249,9 @@ unsigned long bdi_dirty_limit(struct backing_dev_info *bdi,
 			       unsigned long dirty);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void __bdi_update_bandwidth(struct backing_dev_info *bdi,
 			    unsigned long thresh,
 			    unsigned long bg_thresh,
@@ -217,8 +260,11 @@ void __bdi_update_bandwidth(struct backing_dev_info *bdi,
 			    unsigned long bdi_dirty,
 			    unsigned long start_time);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void page_writeback_init(void);
 void balance_dirty_pages_ratelimited_nr(struct address_space *mapping,
 					unsigned long nr_pages_dirtied);
@@ -249,7 +295,12 @@ void tag_pages_for_writeback(struct address_space *mapping,
 void account_page_redirty(struct page *page);
 
 =======
+<<<<<<< HEAD
+void account_page_redirty(struct page *page);
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* pdflush.c */
 extern int nr_pdflush_threads;	/* Global so it can be exported to sysctl
 				   read-only. */

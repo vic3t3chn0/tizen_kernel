@@ -60,7 +60,11 @@ extern unsigned int da850_max_speed;
 <<<<<<< HEAD
 #define DA8XX_PWRDN_REG		0x18
 =======
+<<<<<<< HEAD
+#define DA8XX_PWRDN_REG		0x18
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DA8XX_PSC0_BASE		0x01c10000
 #define DA8XX_PLL0_BASE		0x01c11000
@@ -97,7 +101,12 @@ int da850_register_pm(struct platform_device *pdev);
 int __init da850_register_sata(unsigned long refclkpn);
 void da8xx_restart(char mode, const char *cmd);
 =======
+<<<<<<< HEAD
+int __init da850_register_sata(unsigned long refclkpn);
+void da8xx_restart(char mode, const char *cmd);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 extern struct platform_device da8xx_serial_device;
 extern struct emac_platform_data da8xx_emac_pdata;

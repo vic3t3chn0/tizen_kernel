@@ -86,9 +86,14 @@ struct gss_cred {
 	const char		*gc_principal;
 	unsigned long		gc_upcall_timestamp;
 =======
+<<<<<<< HEAD
+	const char		*gc_principal;
+	unsigned long		gc_upcall_timestamp;
+=======
 	unsigned long		gc_upcall_timestamp;
 	unsigned char		gc_machine_cred : 1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #endif /* __KERNEL__ */

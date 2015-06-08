@@ -194,6 +194,9 @@ uint32_t get_gptimer_status(unsigned int group);
 void     set_gptimer_status(unsigned int group, uint32_t value);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline void enable_gptimer(unsigned int timer_id)
 {
 	enable_gptimers(1 << timer_id);
@@ -204,8 +207,11 @@ static inline void disable_gptimer(unsigned int timer_id)
 	disable_gptimers(1 << timer_id);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * All Blackfin system MMRs are padded to 32bits even if the register
  * itself is only 16bits.  So use a helper macro to streamline this.
@@ -223,6 +229,9 @@ struct bfin_gptimer_regs {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * bfin group timer registers layout
  */
@@ -232,8 +241,11 @@ struct bfin_gptimer_group_regs {
 	u32 status;
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #undef __BFP
 
 #endif

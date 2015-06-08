@@ -16,7 +16,11 @@
 <<<<<<< HEAD
 #include <plat/addr-map.h>
 =======
+<<<<<<< HEAD
+#include <plat/addr-map.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include "common.h"
 
 /*
@@ -24,8 +28,11 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define TARGET_DDR		0
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define TARGET_DEV_BUS		1
 #define TARGET_SRAM		3
 #define TARGET_PCIE		4
@@ -44,6 +51,9 @@
 
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Description of the windows needed by the platform code
  */
 static struct __initdata orion_addr_map_cfg addr_map_cfg = {
@@ -90,6 +100,8 @@ void __init kirkwood_setup_cpu_mbus(void)
 	 * Disable, clear and configure windows.
 	 */
 	orion_config_wins(&addr_map_cfg, addr_map_info);
+<<<<<<< HEAD
+=======
 =======
  * Helpers to get DDR bank info
  */
@@ -180,10 +192,14 @@ void __init kirkwood_setup_cpu_mbus(void)
 	setup_cpu_win(5, KIRKWOOD_SRAM_PHYS_BASE, KIRKWOOD_SRAM_SIZE,
 		      TARGET_SRAM, ATTR_SRAM, -1);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Setup MBUS dram target info.
 	 */
+<<<<<<< HEAD
+	orion_setup_cpu_mbus_target(&addr_map_cfg, DDR_WINDOW_CPU_BASE);
+=======
 <<<<<<< HEAD
 	orion_setup_cpu_mbus_target(&addr_map_cfg, DDR_WINDOW_CPU_BASE);
 =======
@@ -210,4 +226,5 @@ void __init kirkwood_setup_cpu_mbus(void)
 	}
 	kirkwood_mbus_dram_info.num_cs = cs;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }

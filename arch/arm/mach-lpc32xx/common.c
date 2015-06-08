@@ -96,6 +96,9 @@ struct platform_device lpc32xx_i2c2_device = {
 };
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* TSC (Touch Screen Controller) */
 
 static struct resource lpc32xx_tsc_resources[] = {
@@ -207,8 +210,11 @@ struct platform_device lpc32xx_net_device = {
 	.resource = net_resources,
 };
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * Returns the unique ID for the device
  */
@@ -239,8 +245,12 @@ int clk_is_sysclk_mainosc(void)
 <<<<<<< HEAD
 static void lpc32xx_watchdog_reset(void)
 =======
+<<<<<<< HEAD
+static void lpc32xx_watchdog_reset(void)
+=======
 void lpc32xx_watchdog_reset(void)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	/* Make sure WDT clocks are enabled */
 	__raw_writel(LPC32XX_CLKPWR_PWMCLK_WDOG_EN,
@@ -388,6 +398,9 @@ void __init lpc32xx_map_io(void)
 	iotable_init(lpc32xx_io_desc, ARRAY_SIZE(lpc32xx_io_desc));
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 void lpc23xx_restart(char mode, const char *cmd)
 {
@@ -406,5 +419,8 @@ void lpc23xx_restart(char mode, const char *cmd)
 	while (1)
 		;
 }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

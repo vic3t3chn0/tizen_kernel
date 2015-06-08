@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <plat/cpu.h>
 =======
+<<<<<<< HEAD
+#include <plat/cpu.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "clock.h"
 #include "cm-regbits-24xx.h"
@@ -51,6 +55,9 @@
 
 /* DPLL valid Fint frequency band limits - from 34xx TRM Section 4.7.6.2 */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define OMAP3430_DPLL_FINT_BAND1_MIN	750000
 #define OMAP3430_DPLL_FINT_BAND1_MAX	2100000
 #define OMAP3430_DPLL_FINT_BAND2_MIN	7500000
@@ -64,12 +71,15 @@
 #define OMAP3PLUS_DPLL_FINT_JTYPE_MAX	2500000
 #define OMAP3PLUS_DPLL_FINT_MIN		32000
 #define OMAP3PLUS_DPLL_FINT_MAX		52000000
+<<<<<<< HEAD
+=======
 =======
 #define DPLL_FINT_BAND1_MIN		750000
 #define DPLL_FINT_BAND1_MAX		2100000
 #define DPLL_FINT_BAND2_MIN		7500000
 #define DPLL_FINT_BAND2_MAX		21000000
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* _dpll_test_fint() return codes */
 #define DPLL_FINT_UNDERFLOW		-1
@@ -94,8 +104,12 @@ static int _dpll_test_fint(struct clk *clk, u8 n)
 <<<<<<< HEAD
 	long fint, fint_min, fint_max;
 =======
+<<<<<<< HEAD
+	long fint, fint_min, fint_max;
+=======
 	long fint;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int ret = 0;
 
 	dd = clk->dpll_data;
@@ -103,6 +117,9 @@ static int _dpll_test_fint(struct clk *clk, u8 n)
 	/* DPLL divider must result in a valid jitter correction val */
 	fint = clk->parent->rate / n;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (cpu_is_omap24xx()) {
 		/* Should not be called for OMAP2, so warn if it is called */
@@ -120,14 +137,20 @@ static int _dpll_test_fint(struct clk *clk, u8 n)
 	}
 
 	if (fint < fint_min) {
+<<<<<<< HEAD
+=======
 =======
 	if (fint < DPLL_FINT_BAND1_MIN) {
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("rejecting n=%d due to Fint failure, "
 			 "lowering max_divider\n", n);
 		dd->max_divider = n;
 		ret = DPLL_FINT_UNDERFLOW;
+<<<<<<< HEAD
+	} else if (fint > fint_max) {
+=======
 <<<<<<< HEAD
 	} else if (fint > fint_max) {
 =======
@@ -141,18 +164,25 @@ static int _dpll_test_fint(struct clk *clk, u8 n)
 	} else if (fint > DPLL_FINT_BAND2_MAX) {
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_debug("rejecting n=%d due to Fint failure, "
 			 "boosting min_divider\n", n);
 		dd->min_divider = n;
 		ret = DPLL_FINT_INVALID;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	} else if (cpu_is_omap3430() && fint > OMAP3430_DPLL_FINT_BAND1_MAX &&
 		   fint < OMAP3430_DPLL_FINT_BAND2_MIN) {
 		pr_debug("rejecting n=%d due to Fint failure\n", n);
 		ret = DPLL_FINT_INVALID;
+<<<<<<< HEAD
+=======
 =======
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	return ret;

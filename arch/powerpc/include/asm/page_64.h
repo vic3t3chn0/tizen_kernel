@@ -66,6 +66,8 @@ extern u64 ppc64_pft_size;
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* Large pages size */
 #ifdef CONFIG_HUGETLB_PAGE
 extern unsigned int HPAGE_SHIFT;
@@ -78,6 +80,7 @@ extern unsigned int HPAGE_SHIFT;
 #define HUGE_MAX_HSTATE		(MMU_PAGE_COUNT-1)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASSEMBLY__ */
 
 #ifdef CONFIG_PPC_MM_SLICES
@@ -149,8 +152,14 @@ do {						\
 #define HAVE_ARCH_HUGETLB_UNMAPPED_AREA
 #endif
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_PPC_MM_SLICES
+#define HAVE_ARCH_HUGETLB_UNMAPPED_AREA
+#endif
+=======
 #define HAVE_ARCH_HUGETLB_UNMAPPED_AREA
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* !CONFIG_HUGETLB_PAGE */
 

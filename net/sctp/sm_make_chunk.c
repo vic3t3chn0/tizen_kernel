@@ -2771,7 +2771,11 @@ struct sctp_chunk *sctp_make_asconf_update_ip(struct sctp_association *asoc,
 <<<<<<< HEAD
 	int			del_pickup = 0;
 =======
+<<<<<<< HEAD
+	int			del_pickup = 0;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Get total length of all the address parameters. */
 	addr_buf = addrs;
@@ -2779,8 +2783,12 @@ struct sctp_chunk *sctp_make_asconf_update_ip(struct sctp_association *asoc,
 <<<<<<< HEAD
 		addr = addr_buf;
 =======
+<<<<<<< HEAD
+		addr = addr_buf;
+=======
 		addr = (union sctp_addr *)addr_buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		af = sctp_get_af_specific(addr->v4.sin_family);
 		addr_param_len = af->to_addr_param(addr, &addr_param);
 
@@ -2789,6 +2797,9 @@ struct sctp_chunk *sctp_make_asconf_update_ip(struct sctp_association *asoc,
 
 		addr_buf += af->sockaddr_len;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (asoc->asconf_addr_del_pending && !del_pickup) {
 			/* reuse the parameter length from the same scope one */
 			totallen += paramlen;
@@ -2796,8 +2807,11 @@ struct sctp_chunk *sctp_make_asconf_update_ip(struct sctp_association *asoc,
 			del_pickup = 1;
 			SCTP_DEBUG_PRINTK("mkasconf_update_ip: picked same-scope del_pending addr, totallen for all addresses is %d\n", totallen);
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	/* Create an asconf chunk with the required length. */
@@ -2811,8 +2825,12 @@ struct sctp_chunk *sctp_make_asconf_update_ip(struct sctp_association *asoc,
 <<<<<<< HEAD
 		addr = addr_buf;
 =======
+<<<<<<< HEAD
+		addr = addr_buf;
+=======
 		addr = (union sctp_addr *)addr_buf;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		af = sctp_get_af_specific(addr->v4.sin_family);
 		addr_param_len = af->to_addr_param(addr, &addr_param);
 		param.param_hdr.type = flags;
@@ -2825,6 +2843,9 @@ struct sctp_chunk *sctp_make_asconf_update_ip(struct sctp_association *asoc,
 		addr_buf += af->sockaddr_len;
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (flags == SCTP_PARAM_ADD_IP && del_pickup) {
 		addr = asoc->asconf_addr_del_pending;
 		af = sctp_get_af_specific(addr->v4.sin_family);
@@ -2836,8 +2857,11 @@ struct sctp_chunk *sctp_make_asconf_update_ip(struct sctp_association *asoc,
 		sctp_addto_chunk(retval, paramlen, &param);
 		sctp_addto_chunk(retval, addr_param_len, &addr_param);
 	}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return retval;
 }
 
@@ -2978,9 +3002,13 @@ static __be16 sctp_process_asconf_param(struct sctp_association *asoc,
 <<<<<<< HEAD
 	addr_param = (void *)asconf_param + sizeof(sctp_addip_param_t);
 =======
+<<<<<<< HEAD
+	addr_param = (void *)asconf_param + sizeof(sctp_addip_param_t);
+=======
 	addr_param = (union sctp_addr_param *)
 			((void *)asconf_param + sizeof(sctp_addip_param_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (asconf_param->param_hdr.type != SCTP_PARAM_ADD_IP &&
 	    asconf_param->param_hdr.type != SCTP_PARAM_DEL_IP &&
@@ -3040,7 +3068,11 @@ static __be16 sctp_process_asconf_param(struct sctp_association *asoc,
 <<<<<<< HEAD
 		asoc->new_transport = peer;
 =======
+<<<<<<< HEAD
+		asoc->new_transport = peer;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		break;
 	case SCTP_PARAM_DEL_IP:
 		/* ADDIP 4.3 D7) If a request is received to delete the
@@ -3061,8 +3093,12 @@ static __be16 sctp_process_asconf_param(struct sctp_association *asoc,
 <<<<<<< HEAD
 		if (sctp_cmp_addr_exact(&asconf->source, &addr))
 =======
+<<<<<<< HEAD
+		if (sctp_cmp_addr_exact(&asconf->source, &addr))
+=======
 		if (sctp_cmp_addr_exact(sctp_source(asconf), &addr))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			return SCTP_ERROR_DEL_SRC_IP;
 
 		/* Section 4.2.2
@@ -3176,8 +3212,12 @@ struct sctp_chunk *sctp_process_asconf(struct sctp_association *asoc,
 <<<<<<< HEAD
 	asconf_param = (void *)addr_param + length;
 =======
+<<<<<<< HEAD
+	asconf_param = (void *)addr_param + length;
+=======
 	asconf_param = (sctp_addip_param_t *)((void *)addr_param + length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	chunk_len -= length;
 
 	/* create an ASCONF_ACK chunk.
@@ -3221,9 +3261,13 @@ struct sctp_chunk *sctp_process_asconf(struct sctp_association *asoc,
 <<<<<<< HEAD
 		asconf_param = (void *)asconf_param + length;
 =======
+<<<<<<< HEAD
+		asconf_param = (void *)asconf_param + length;
+=======
 		asconf_param = (sctp_addip_param_t *)((void *)asconf_param +
 						      length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		chunk_len -= length;
 	}
 
@@ -3256,9 +3300,13 @@ static void sctp_asconf_param_success(struct sctp_association *asoc,
 <<<<<<< HEAD
 	addr_param = (void *)asconf_param + sizeof(sctp_addip_param_t);
 =======
+<<<<<<< HEAD
+	addr_param = (void *)asconf_param + sizeof(sctp_addip_param_t);
+=======
 	addr_param = (union sctp_addr_param *)
 			((void *)asconf_param + sizeof(sctp_addip_param_t));
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* We have checked the packet before, so we do not check again.	*/
 	af = sctp_get_af_specific(param_type2af(addr_param->p.type));
@@ -3285,13 +3333,19 @@ static void sctp_asconf_param_success(struct sctp_association *asoc,
 		local_bh_disable();
 		sctp_del_bind_addr(bp, &addr);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (asoc->asconf_addr_del_pending != NULL &&
 		    sctp_cmp_addr_exact(asoc->asconf_addr_del_pending, &addr)) {
 			kfree(asoc->asconf_addr_del_pending);
 			asoc->asconf_addr_del_pending = NULL;
 		}
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		local_bh_enable();
 		list_for_each_entry(transport, &asoc->peer.transport_addr_list,
 				transports) {
@@ -3349,9 +3403,13 @@ static __be16 sctp_get_asconf_response(struct sctp_chunk *asconf_ack,
 <<<<<<< HEAD
 				err_param = (void *)asconf_ack_param + length;
 =======
+<<<<<<< HEAD
+				err_param = (void *)asconf_ack_param + length;
+=======
 				err_param = (sctp_errhdr_t *)
 					   ((void *)asconf_ack_param + length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				asconf_ack_len -= length;
 				if (asconf_ack_len > 0)
 					return err_param->cause;
@@ -3367,9 +3425,13 @@ static __be16 sctp_get_asconf_response(struct sctp_chunk *asconf_ack,
 <<<<<<< HEAD
 		asconf_ack_param = (void *)asconf_ack_param + length;
 =======
+<<<<<<< HEAD
+		asconf_ack_param = (void *)asconf_ack_param + length;
+=======
 		asconf_ack_param = (sctp_addip_param_t *)
 					((void *)asconf_ack_param + length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		asconf_ack_len -= length;
 	}
 
@@ -3404,8 +3466,12 @@ int sctp_process_asconf_ack(struct sctp_association *asoc,
 <<<<<<< HEAD
 	asconf_param = (void *)addr_param + length;
 =======
+<<<<<<< HEAD
+	asconf_param = (void *)addr_param + length;
+=======
 	asconf_param = (sctp_addip_param_t *)((void *)addr_param + length);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	asconf_len -= length;
 
 	/* ADDIP 4.1
@@ -3457,6 +3523,9 @@ int sctp_process_asconf_ack(struct sctp_association *asoc,
 		 */
 		length = ntohs(asconf_param->param_hdr.length);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		asconf_param = (void *)asconf_param + length;
 		asconf_len -= length;
 	}
@@ -3466,6 +3535,8 @@ int sctp_process_asconf_ack(struct sctp_association *asoc,
 		sctp_transport_immediate_rtx(asoc->peer.primary_path);
 	}
 
+<<<<<<< HEAD
+=======
 =======
 		asconf_param = (sctp_addip_param_t *)((void *)asconf_param +
 						      length);
@@ -3473,6 +3544,7 @@ int sctp_process_asconf_ack(struct sctp_association *asoc,
 	}
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Free the cached last sent asconf chunk. */
 	list_del_init(&asconf->transmitted_list);
 	sctp_chunk_free(asconf);

@@ -70,6 +70,9 @@ static void dnrmg_send_peer(struct sk_buff *skb)
 	unsigned char flags = *skb->data;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	switch (flags & DN_RT_CNTL_MSK) {
 	case DN_RT_PKT_L1RT:
 		group = DNRNG_NLGRP_L1;
@@ -79,6 +82,8 @@ static void dnrmg_send_peer(struct sk_buff *skb)
 		break;
 	default:
 		return;
+<<<<<<< HEAD
+=======
 =======
 	switch(flags & DN_RT_CNTL_MSK) {
 		case DN_RT_PKT_L1RT:
@@ -90,6 +95,7 @@ static void dnrmg_send_peer(struct sk_buff *skb)
 		default:
 			return;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	skb2 = dnrmg_build_message(skb, &status);
@@ -123,8 +129,12 @@ static inline void dnrmg_receive_user_skb(struct sk_buff *skb)
 <<<<<<< HEAD
 	if (!capable(CAP_NET_ADMIN))
 =======
+<<<<<<< HEAD
+	if (!capable(CAP_NET_ADMIN))
+=======
 	if (security_netlink_recv(skb, CAP_NET_ADMIN))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		RCV_SKB_FAIL(-EPERM);
 
 	/* Eventually we might send routing messages too */

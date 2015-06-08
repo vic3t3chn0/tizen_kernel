@@ -19,6 +19,11 @@
 #define UART_PADDR	MX23_DUART_BASE_ADDR
 #elif defined (CONFIG_DEBUG_IMX28_UART)
 =======
+<<<<<<< HEAD
+#ifdef CONFIG_DEBUG_IMX23_UART
+#define UART_PADDR	MX23_DUART_BASE_ADDR
+#elif defined (CONFIG_DEBUG_IMX28_UART)
+=======
 #ifdef CONFIG_SOC_IMX23
 #ifdef UART_PADDR
 #error "CONFIG_DEBUG_LL is incompatible with multiple archs"
@@ -31,6 +36,7 @@
 #error "CONFIG_DEBUG_LL is incompatible with multiple archs"
 #endif
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define UART_PADDR	MX28_DUART_BASE_ADDR
 #endif
 
@@ -39,8 +45,12 @@
 <<<<<<< HEAD
 		.macro	addruart, rp, rv, tmp
 =======
+<<<<<<< HEAD
+		.macro	addruart, rp, rv, tmp
+=======
 		.macro	addruart, rp, rv
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		ldr	\rp, =UART_PADDR	@ physical
 		ldr	\rv, =UART_VADDR	@ virtual
 		.endm

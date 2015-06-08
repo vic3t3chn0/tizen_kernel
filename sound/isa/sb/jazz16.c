@@ -39,8 +39,12 @@ static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;	/* ID for this card */
 <<<<<<< HEAD
 static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	/* Enable this card */
 =======
+<<<<<<< HEAD
+static bool enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	/* Enable this card */
+=======
 static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE;	/* Enable this card */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static unsigned long port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;
 static unsigned long mpu_port[SNDRV_CARDS] = SNDRV_DEFAULT_PORT;
 static int irq[SNDRV_CARDS] = SNDRV_DEFAULT_IRQ;
@@ -328,8 +332,11 @@ static int __devinit snd_jazz16_probe(struct device *devptr, unsigned int dev)
 					mpu_irq[dev],
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 					mpu_irq[dev] >= 0 ? IRQF_DISABLED : 0,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 					NULL) < 0)
 			snd_printk(KERN_ERR "no MPU-401 device at 0x%lx\n",
 					mpu_port[dev]);

@@ -601,8 +601,13 @@ struct oxygen_model model_xonar_dg = {
 			 CAPTURE_0_FROM_I2S_2 |
 			 CAPTURE_1_FROM_SPDIF,
 =======
+<<<<<<< HEAD
+			 CAPTURE_0_FROM_I2S_2 |
+			 CAPTURE_1_FROM_SPDIF,
+=======
 			 CAPTURE_0_FROM_I2S_2,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.dac_channels_pcm = 6,
 	.dac_channels_mixer = 0,
 	.function_flags = OXYGEN_FUNCTION_SPI,

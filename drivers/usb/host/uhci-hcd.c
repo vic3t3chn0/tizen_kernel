@@ -45,7 +45,14 @@
 #include <asm/uaccess.h>
 #include <asm/io.h>
 #include <asm/irq.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <asm/system.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <asm/system.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "uhci-hcd.h"
 
@@ -59,7 +66,15 @@
 #define DRIVER_DESC "USB Universal Host Controller Interface driver"
 
 /* for flakey hardware, ignore overcurrent indicators */
+<<<<<<< HEAD
+<<<<<<< HEAD
+static bool ignore_oc;
+=======
 static int ignore_oc;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static int ignore_oc;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 module_param(ignore_oc, bool, S_IRUGO);
 MODULE_PARM_DESC(ignore_oc, "ignore hardware overcurrent indications");
 
@@ -294,6 +309,55 @@ __acquires(uhci->lock)
 	 * and that remote wakeups should be enabled.
 	 */
 	egsm_enable = USBCMD_EGSM;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	int_enable = USBINTR_RESUME;
+	wakeup_enable = 1;
+
+	/*
+	 * In auto-stop mode, we must be able to detect new connections.
+	 * The user can force us to poll by disabling remote wakeup;
+	 * otherwise we will use the EGSM/RD mechanism.
+	 */
+	if (auto_stop) {
+		if (!device_may_wakeup(&rhdev->dev))
+			egsm_enable = int_enable = 0;
+	}
+
+#ifdef CONFIG_PM
+	/*
+	 * In bus-suspend mode, we use the wakeup setting specified
+	 * for the root hub.
+	 */
+	else {
+		if (!rhdev->do_remote_wakeup)
+			wakeup_enable = 0;
+	}
+#endif
+
+	/*
+	 * UHCI doesn't distinguish between wakeup requests from downstream
+	 * devices and local connect/disconnect events.  There's no way to
+	 * enable one without the other; both are controlled by EGSM.  Thus
+	 * if wakeups are disallowed then EGSM must be turned off -- in which
+	 * case remote wakeup requests from downstream during system sleep
+	 * will be lost.
+	 *
+	 * In addition, if EGSM is broken then we can't use it.  Likewise,
+	 * if Resume-Detect interrupts are broken then we can't use them.
+	 *
+	 * Finally, neither EGSM nor RD is useful by itself.  Without EGSM,
+	 * the RD status bit will never get set.  Without RD, the controller
+	 * won't generate interrupts to tell the system about wakeup events.
+	 */
+	if (!wakeup_enable || global_suspend_mode_is_broken(uhci) ||
+			resume_detect_interrupts_are_broken(uhci))
+		egsm_enable = int_enable = 0;
+
+	uhci->RD_enable = !!int_enable;
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uhci->RD_enable = 1;
 	int_enable = USBINTR_RESUME;
 	wakeup_enable = 1;
@@ -338,6 +402,10 @@ __acquires(uhci->lock)
 			!int_enable)
 		uhci->RD_enable = int_enable = 0;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	uhci_writew(uhci, int_enable, USBINTR);
 	uhci_writew(uhci, egsm_enable | USBCMD_CF, USBCMD);
 	mb();
@@ -364,10 +432,25 @@ __acquires(uhci->lock)
 	uhci->rh_state = new_state;
 	uhci->is_stopped = UHCI_IS_STOPPED;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/*
+	 * If remote wakeup is enabled but either EGSM or RD interrupts
+	 * doesn't work, then we won't get an interrupt when a wakeup event
+	 * occurs.  Thus the suspended root hub needs to be polled.
+	 */
+	if (wakeup_enable && (!int_enable || !egsm_enable))
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* If interrupts don't work and remote wakeup is enabled then
 	 * the suspended root hub needs to be polled.
 	 */
 	if (!int_enable && wakeup_enable)
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		set_bit(HCD_FLAG_POLL_RH, &uhci_to_hcd(uhci)->flags);
 	else
 		clear_bit(HCD_FLAG_POLL_RH, &uhci_to_hcd(uhci)->flags);
@@ -446,10 +529,19 @@ static irqreturn_t uhci_irq(struct usb_hcd *hcd)
 		return IRQ_NONE;
 	uhci_writew(uhci, status, USBSTS);		/* Clear it */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	spin_lock(&uhci->lock);
 	if (unlikely(!uhci->is_initialized))	/* not yet configured */
 		goto done;
 
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (status & ~(USBSTS_USBINT | USBSTS_ERROR | USBSTS_RD)) {
 		if (status & USBSTS_HSE)
 			dev_err(uhci_dev(uhci), "host system error, "
@@ -458,6 +550,13 @@ static irqreturn_t uhci_irq(struct usb_hcd *hcd)
 			dev_err(uhci_dev(uhci), "host controller process "
 					"error, something bad happened!\n");
 		if (status & USBSTS_HCH) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spin_lock(&uhci->lock);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			if (uhci->rh_state >= UHCI_RH_RUNNING) {
 				dev_err(uhci_dev(uhci),
 					"host controller halted, "
@@ -475,6 +574,20 @@ static irqreturn_t uhci_irq(struct usb_hcd *hcd)
 				 * pending unlinks */
 				mod_timer(&hcd->rh_timer, jiffies);
 			}
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spin_unlock(&uhci->lock);
+		}
+	}
+
+	if (status & USBSTS_RD)
+		usb_hcd_poll_rh_status(hcd);
+	else {
+		spin_lock(&uhci->lock);
+		uhci_scan_schedule(uhci);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		}
 	}
 
@@ -484,6 +597,10 @@ static irqreturn_t uhci_irq(struct usb_hcd *hcd)
 	} else {
 		uhci_scan_schedule(uhci);
  done:
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_unlock(&uhci->lock);
 	}
 
@@ -566,6 +683,15 @@ static int uhci_start(struct usb_hcd *hcd)
 	struct dentry __maybe_unused *dentry;
 
 	hcd->uses_new_polling = 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	/* Accept arbitrarily long scatter-gather lists */
+	if (!(hcd->driver->flags & HCD_LOCAL_MEM))
+		hcd->self.sg_tablesize = ~0;
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	spin_lock_init(&uhci->lock);
 	setup_timer(&uhci->fsbr_timer, uhci_fsbr_timeout,
@@ -661,9 +787,21 @@ static int uhci_start(struct usb_hcd *hcd)
 	 */
 	mb();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	configure_hc(uhci);
+	uhci->is_initialized = 1;
+	spin_lock_irq(&uhci->lock);
+=======
 	spin_lock_irq(&uhci->lock);
 	configure_hc(uhci);
 	uhci->is_initialized = 1;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	spin_lock_irq(&uhci->lock);
+	configure_hc(uhci);
+	uhci->is_initialized = 1;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	start_rh(uhci);
 	spin_unlock_irq(&uhci->lock);
 	return 0;

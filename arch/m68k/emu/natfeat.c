@@ -23,12 +23,18 @@ asm("\n"
 "	.global nf_get_id,nf_call\n"
 "nf_get_id:\n"
 =======
+<<<<<<< HEAD
+asm("\n"
+"	.global nf_get_id,nf_call\n"
+"nf_get_id:\n"
+=======
 extern long nf_get_id2(const char *feature_name);
 
 asm("\n"
 "	.global nf_get_id2,nf_call\n"
 "nf_get_id2:\n"
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 "	.short	0x7300\n"
 "	rts\n"
 "nf_call:\n"
@@ -38,12 +44,17 @@ asm("\n"
 "	rts\n"
 "	.section __ex_table,\"a\"\n"
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 "	.long	nf_get_id,1b\n"
 "	.long	nf_call,1b\n"
 "	.previous");
 EXPORT_SYMBOL_GPL(nf_get_id);
 EXPORT_SYMBOL_GPL(nf_call);
 
+<<<<<<< HEAD
+=======
 =======
 "	.long	nf_get_id2,1b\n"
 "	.long	nf_call,1b\n"
@@ -65,6 +76,7 @@ long nf_get_id(const char *feature_name)
 EXPORT_SYMBOL_GPL(nf_get_id);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void nfprint(const char *fmt, ...)
 {
 	static char buf[256];

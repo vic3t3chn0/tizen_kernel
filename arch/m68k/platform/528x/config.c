@@ -19,18 +19,26 @@
 #include <linux/io.h>
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #include <linux/spi/spi.h>
 #include <linux/gpio.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/machdep.h>
 #include <asm/coldfire.h>
 #include <asm/mcfsim.h>
 #include <asm/mcfuart.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /***************************************************************************/
 
 #if IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI)
+<<<<<<< HEAD
+=======
 =======
 #include <asm/mcfqspi.h>
 
@@ -210,6 +218,7 @@ static struct platform_device m528x_qspi = {
 	.dev.platform_data	= &m528x_qspi_data,
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void __init m528x_qspi_init(void)
 {
@@ -217,6 +226,9 @@ static void __init m528x_qspi_init(void)
 	__raw_writeb(0x07, MCFGPIO_PQSPAR);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif /* IS_ENABLED(CONFIG_SPI_COLDFIRE_QSPI) */
 
@@ -230,6 +242,8 @@ static void __init m528x_uarts_init(void)
 	port = readb(MCF5282_GPIO_PUAPAR);
 	port |= 0x03 | (0x03 << 2);
 	writeb(port, MCF5282_GPIO_PUAPAR);
+<<<<<<< HEAD
+=======
 =======
 #endif /* defined(CONFIG_SPI_COLDFIRE_QSPI) || defined(CONFIG_SPI_COLDFIRE_QSPI_MODULE) */
 
@@ -266,6 +280,7 @@ static void __init m528x_uarts_init(void)
 	for (line = 0; (line < nrlines); line++)
 		m528x_uart_init_line(line, m528x_uart_platform[line].irq);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /***************************************************************************/
@@ -284,6 +299,8 @@ static void __init m528x_fec_init(void)
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 static void m528x_cpu_reset(void)
 {
 	local_irq_disable();
@@ -293,6 +310,7 @@ static void m528x_cpu_reset(void)
 /***************************************************************************/
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #ifdef CONFIG_WILDFIRE
 void wildfire_halt(void)
 {
@@ -329,6 +347,9 @@ void __init config_BSP(char *commandp, int size)
 	mach_halt = wildfiremod_halt;
 #endif
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mach_sched_init = hw_timer_init;
 	m528x_uarts_init();
 	m528x_fec_init();
@@ -337,6 +358,8 @@ void __init config_BSP(char *commandp, int size)
 #endif
 }
 
+<<<<<<< HEAD
+=======
 =======
 }
 
@@ -357,4 +380,5 @@ static int __init init_BSP(void)
 arch_initcall(init_BSP);
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /***************************************************************************/

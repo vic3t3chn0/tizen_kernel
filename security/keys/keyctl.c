@@ -17,7 +17,11 @@
 <<<<<<< HEAD
 #include <linux/key.h>
 =======
+<<<<<<< HEAD
+#include <linux/key.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/keyctl.h>
 #include <linux/fs.h>
 #include <linux/capability.h>
@@ -393,6 +397,9 @@ long keyctl_keyring_clear(key_serial_t ringid)
 	if (IS_ERR(keyring_ref)) {
 		ret = PTR_ERR(keyring_ref);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		/* Root is permitted to invalidate certain special keyrings */
 		if (capable(CAP_SYS_ADMIN)) {
@@ -411,6 +418,8 @@ long keyctl_keyring_clear(key_serial_t ringid)
 clear:
 	ret = keyring_clear(key_ref_to_ptr(keyring_ref));
 error_put:
+<<<<<<< HEAD
+=======
 =======
 		goto error;
 	}
@@ -418,6 +427,7 @@ error_put:
 	ret = keyring_clear(key_ref_to_ptr(keyring_ref));
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	key_ref_put(keyring_ref);
 error:
 	return ret;
@@ -1095,10 +1105,16 @@ long keyctl_instantiate_key_iov(key_serial_t id,
 	if (ret < 0)
 		return ret;
 =======
+<<<<<<< HEAD
+				    ARRAY_SIZE(iovstack), iovstack, &iov, 1);
+	if (ret < 0)
+		return ret;
+=======
 				    ARRAY_SIZE(iovstack), iovstack, &iov);
 	if (ret < 0)
 		goto err;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (ret == 0)
 		goto no_payload_free;
 
@@ -1106,8 +1122,12 @@ long keyctl_instantiate_key_iov(key_serial_t id,
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 err:
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (iov != iovstack)
 		kfree(iov);
 	return ret;
@@ -1283,11 +1303,16 @@ long keyctl_set_timeout(key_serial_t id, unsigned timeout)
 	struct key *key, *instkey;
 	key_ref_t key_ref;
 =======
+<<<<<<< HEAD
+	struct key *key, *instkey;
+	key_ref_t key_ref;
+=======
 	struct timespec now;
 	struct key *key, *instkey;
 	key_ref_t key_ref;
 	time_t expiry;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	long ret;
 
 	key_ref = lookup_user_key(id, KEY_LOOKUP_CREATE | KEY_LOOKUP_PARTIAL,
@@ -1316,6 +1341,9 @@ okay:
 <<<<<<< HEAD
 	key_set_timeout(key, timeout);
 =======
+<<<<<<< HEAD
+	key_set_timeout(key, timeout);
+=======
 
 	/* make the changes with the locks held to prevent races */
 	down_write(&key->sem);
@@ -1331,6 +1359,7 @@ okay:
 
 	up_write(&key->sem);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	key_put(key);
 
 	ret = 0;

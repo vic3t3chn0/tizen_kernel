@@ -6,8 +6,14 @@
 #include <asm-generic/atomic.h>
 #include <asm-generic/atomic64.h>
 =======
+<<<<<<< HEAD
+#include <asm/cmpxchg.h>
+#include <asm-generic/atomic.h>
+#include <asm-generic/atomic64.h>
+=======
 #include <asm-generic/atomic.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Atomically test *v and decrement if it is greater than 0.

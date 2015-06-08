@@ -33,6 +33,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 enum checklevel {
 	IGNORE = 0,
 	WARN = 1,
@@ -40,6 +42,7 @@ enum checklevel {
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 enum checkstatus {
 	UNCHECKED = 0,
 	PREREQ,
@@ -63,8 +66,12 @@ struct check {
 <<<<<<< HEAD
 	bool warn, error;
 =======
+<<<<<<< HEAD
+	bool warn, error;
+=======
 	enum checklevel level;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	enum checkstatus status;
 	int inprogress;
 	int num_prereqs;
@@ -74,8 +81,12 @@ struct check {
 <<<<<<< HEAD
 #define CHECK_ENTRY(nm, tfn, nfn, pfn, d, w, e, ...)	       \
 =======
+<<<<<<< HEAD
+#define CHECK_ENTRY(nm, tfn, nfn, pfn, d, w, e, ...)	       \
+=======
 #define CHECK(nm, tfn, nfn, pfn, d, lvl, ...) \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	static struct check *nm##_prereqs[] = { __VA_ARGS__ }; \
 	static struct check nm = { \
 		.name = #nm, \
@@ -87,13 +98,21 @@ struct check {
 		.warn = (w), \
 		.error = (e), \
 =======
+<<<<<<< HEAD
+		.warn = (w), \
+		.error = (e), \
+=======
 		.level = (lvl), \
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		.status = UNCHECKED, \
 		.num_prereqs = ARRAY_SIZE(nm##_prereqs), \
 		.prereq = nm##_prereqs, \
 	};
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WARNING(nm, tfn, nfn, pfn, d, ...) \
 	CHECK_ENTRY(nm, tfn, nfn, pfn, d, true, false, __VA_ARGS__)
 #define ERROR(nm, tfn, nfn, pfn, d, ...) \
@@ -119,6 +138,8 @@ struct check {
 	ERROR(nm, NULL, NULL, check_##nm, d, __VA_ARGS__)
 #define PROP_CHECK(nm, d, ...) \
 	CHECK(nm, NULL, NULL, check_##nm, d, __VA_ARGS__)
+<<<<<<< HEAD
+=======
 =======
 
 #define TREE_CHECK(nm, d, lvl, ...) \
@@ -130,6 +151,7 @@ struct check {
 #define BATCH_CHECK(nm, lvl, ...) \
 	CHECK(nm, NULL, NULL, NULL, NULL, lvl, __VA_ARGS__)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #ifdef __GNUC__
 static inline void check_msg(struct check *c, const char *fmt, ...) __attribute__((format (printf, 2, 3)));
@@ -140,6 +162,9 @@ static inline void check_msg(struct check *c, const char *fmt, ...)
 	va_start(ap, fmt);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if ((c->warn && (quiet < 1))
 	    || (c->error && (quiet < 2))) {
 		fprintf(stderr, "%s (%s): ",
@@ -147,6 +172,8 @@ static inline void check_msg(struct check *c, const char *fmt, ...)
 		vfprintf(stderr, fmt, ap);
 		fprintf(stderr, "\n");
 	}
+<<<<<<< HEAD
+=======
 =======
 	if ((c->level < WARN) || (c->level <= quiet))
 		return; /* Suppress message */
@@ -156,6 +183,7 @@ static inline void check_msg(struct check *c, const char *fmt, ...)
 	vfprintf(stderr, fmt, ap);
 	fprintf(stderr, "\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 #define FAIL(c, ...) \
@@ -224,8 +252,12 @@ out:
 <<<<<<< HEAD
 	if ((c->status != PASSED) && (c->error))
 =======
+<<<<<<< HEAD
+	if ((c->status != PASSED) && (c->error))
+=======
 	if ((c->status != PASSED) && (c->level == ERROR))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		error = 1;
 	return error;
 }
@@ -235,6 +267,9 @@ out:
  */
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* A check which always fails, for testing purposes only */
 static inline void check_always_fail(struct check *c, struct node *dt)
 {
@@ -242,8 +277,11 @@ static inline void check_always_fail(struct check *c, struct node *dt)
 }
 TREE_CHECK(always_fail, NULL);
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static void check_is_string(struct check *c, struct node *root,
 			    struct node *node)
 {
@@ -259,14 +297,20 @@ static void check_is_string(struct check *c, struct node *root,
 		     propname, node->fullpath);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WARNING_IF_NOT_STRING(nm, propname) \
 	WARNING(nm, NULL, check_is_string, NULL, (propname))
 #define ERROR_IF_NOT_STRING(nm, propname) \
 	ERROR(nm, NULL, check_is_string, NULL, (propname))
+<<<<<<< HEAD
+=======
 =======
 #define CHECK_IS_STRING(nm, propname, lvl) \
 	CHECK(nm, NULL, check_is_string, NULL, (propname), (lvl))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_is_cell(struct check *c, struct node *root,
 			  struct node *node)
@@ -283,14 +327,20 @@ static void check_is_cell(struct check *c, struct node *root,
 		     propname, node->fullpath);
 }
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define WARNING_IF_NOT_CELL(nm, propname) \
 	WARNING(nm, NULL, check_is_cell, NULL, (propname))
 #define ERROR_IF_NOT_CELL(nm, propname) \
 	ERROR(nm, NULL, check_is_cell, NULL, (propname))
+<<<<<<< HEAD
+=======
 =======
 #define CHECK_IS_CELL(nm, propname, lvl) \
 	CHECK(nm, NULL, check_is_cell, NULL, (propname), (lvl))
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Structural check functions
@@ -312,8 +362,12 @@ static void check_duplicate_node_names(struct check *c, struct node *dt,
 <<<<<<< HEAD
 NODE_ERROR(duplicate_node_names, NULL);
 =======
+<<<<<<< HEAD
+NODE_ERROR(duplicate_node_names, NULL);
+=======
 NODE_CHECK(duplicate_node_names, NULL, ERROR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_duplicate_property_names(struct check *c, struct node *dt,
 					   struct node *node)
@@ -321,6 +375,9 @@ static void check_duplicate_property_names(struct check *c, struct node *dt,
 	struct property *prop, *prop2;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	for_each_property(node, prop) {
 		for (prop2 = prop->next; prop2; prop2 = prop2->next) {
 			if (prop2->deleted)
@@ -332,6 +389,8 @@ static void check_duplicate_property_names(struct check *c, struct node *dt,
 	}
 }
 NODE_ERROR(duplicate_property_names, NULL);
+<<<<<<< HEAD
+=======
 =======
 	for_each_property(node, prop)
 		for (prop2 = prop->next; prop2; prop2 = prop2->next)
@@ -341,6 +400,7 @@ NODE_ERROR(duplicate_property_names, NULL);
 }
 NODE_CHECK(duplicate_property_names, NULL, ERROR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define LOWERCASE	"abcdefghijklmnopqrstuvwxyz"
 #define UPPERCASE	"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -359,8 +419,12 @@ static void check_node_name_chars(struct check *c, struct node *dt,
 <<<<<<< HEAD
 NODE_ERROR(node_name_chars, PROPNODECHARS "@");
 =======
+<<<<<<< HEAD
+NODE_ERROR(node_name_chars, PROPNODECHARS "@");
+=======
 NODE_CHECK(node_name_chars, PROPNODECHARS "@", ERROR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_node_name_format(struct check *c, struct node *dt,
 				   struct node *node)
@@ -372,8 +436,12 @@ static void check_node_name_format(struct check *c, struct node *dt,
 <<<<<<< HEAD
 NODE_ERROR(node_name_format, NULL, &node_name_chars);
 =======
+<<<<<<< HEAD
+NODE_ERROR(node_name_format, NULL, &node_name_chars);
+=======
 NODE_CHECK(node_name_format, NULL, ERROR, &node_name_chars);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_property_name_chars(struct check *c, struct node *dt,
 				      struct node *node, struct property *prop)
@@ -387,8 +455,12 @@ static void check_property_name_chars(struct check *c, struct node *dt,
 <<<<<<< HEAD
 PROP_ERROR(property_name_chars, PROPNODECHARS);
 =======
+<<<<<<< HEAD
+PROP_ERROR(property_name_chars, PROPNODECHARS);
+=======
 PROP_CHECK(property_name_chars, PROPNODECHARS, ERROR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define DESCLABEL_FMT	"%s%s%s%s%s"
 #define DESCLABEL_ARGS(node,prop,mark)		\
@@ -447,9 +519,14 @@ static void check_duplicate_label_prop(struct check *c, struct node *dt,
 ERROR(duplicate_label, NULL, check_duplicate_label_node,
       check_duplicate_label_prop, NULL);
 =======
+<<<<<<< HEAD
+ERROR(duplicate_label, NULL, check_duplicate_label_node,
+      check_duplicate_label_prop, NULL);
+=======
 CHECK(duplicate_label, NULL, check_duplicate_label_node,
       check_duplicate_label_prop, NULL, ERROR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_explicit_phandles(struct check *c, struct node *root,
 				    struct node *node, struct property *prop)
@@ -511,8 +588,12 @@ static void check_explicit_phandles(struct check *c, struct node *root,
 <<<<<<< HEAD
 PROP_ERROR(explicit_phandles, NULL);
 =======
+<<<<<<< HEAD
+PROP_ERROR(explicit_phandles, NULL);
+=======
 PROP_CHECK(explicit_phandles, NULL, ERROR);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_name_properties(struct check *c, struct node *root,
 				  struct node *node)
@@ -545,9 +626,14 @@ static void check_name_properties(struct check *c, struct node *root,
 ERROR_IF_NOT_STRING(name_is_string, "name");
 NODE_ERROR(name_properties, NULL, &name_is_string);
 =======
+<<<<<<< HEAD
+ERROR_IF_NOT_STRING(name_is_string, "name");
+NODE_ERROR(name_properties, NULL, &name_is_string);
+=======
 CHECK_IS_STRING(name_is_string, "name", ERROR);
 NODE_CHECK(name_properties, NULL, ERROR, &name_is_string);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Reference fixup functions
@@ -577,8 +663,12 @@ static void fixup_phandle_references(struct check *c, struct node *dt,
 <<<<<<< HEAD
 ERROR(phandle_references, NULL, NULL, fixup_phandle_references, NULL,
 =======
+<<<<<<< HEAD
+ERROR(phandle_references, NULL, NULL, fixup_phandle_references, NULL,
+=======
 CHECK(phandle_references, NULL, NULL, fixup_phandle_references, NULL, ERROR,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
       &duplicate_node_names, &explicit_phandles);
 
 static void fixup_path_references(struct check *c, struct node *dt,
@@ -606,14 +696,21 @@ static void fixup_path_references(struct check *c, struct node *dt,
 <<<<<<< HEAD
 ERROR(path_references, NULL, NULL, fixup_path_references, NULL,
 =======
+<<<<<<< HEAD
+ERROR(path_references, NULL, NULL, fixup_path_references, NULL,
+=======
 CHECK(path_references, NULL, NULL, fixup_path_references, NULL, ERROR,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
       &duplicate_node_names);
 
 /*
  * Semantic checks
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 WARNING_IF_NOT_CELL(address_cells_is_cell, "#address-cells");
 WARNING_IF_NOT_CELL(size_cells_is_cell, "#size-cells");
 WARNING_IF_NOT_CELL(interrupt_cells_is_cell, "#interrupt-cells");
@@ -621,6 +718,8 @@ WARNING_IF_NOT_CELL(interrupt_cells_is_cell, "#interrupt-cells");
 WARNING_IF_NOT_STRING(device_type_is_string, "device_type");
 WARNING_IF_NOT_STRING(model_is_string, "model");
 WARNING_IF_NOT_STRING(status_is_string, "status");
+<<<<<<< HEAD
+=======
 =======
 CHECK_IS_CELL(address_cells_is_cell, "#address-cells", WARN);
 CHECK_IS_CELL(size_cells_is_cell, "#size-cells", WARN);
@@ -630,6 +729,7 @@ CHECK_IS_STRING(device_type_is_string, "device_type", WARN);
 CHECK_IS_STRING(model_is_string, "model", WARN);
 CHECK_IS_STRING(status_is_string, "status", WARN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void fixup_addr_size_cells(struct check *c, struct node *dt,
 				  struct node *node)
@@ -651,9 +751,14 @@ static void fixup_addr_size_cells(struct check *c, struct node *dt,
 WARNING(addr_size_cells, NULL, fixup_addr_size_cells, NULL, NULL,
 	&address_cells_is_cell, &size_cells_is_cell);
 =======
+<<<<<<< HEAD
+WARNING(addr_size_cells, NULL, fixup_addr_size_cells, NULL, NULL,
+	&address_cells_is_cell, &size_cells_is_cell);
+=======
 CHECK(addr_size_cells, NULL, fixup_addr_size_cells, NULL, NULL, WARN,
       &address_cells_is_cell, &size_cells_is_cell);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define node_addr_cells(n) \
 	(((n)->addr_cells == -1) ? 2 : (n)->addr_cells)
@@ -690,8 +795,12 @@ static void check_reg_format(struct check *c, struct node *dt,
 <<<<<<< HEAD
 NODE_WARNING(reg_format, NULL, &addr_size_cells);
 =======
+<<<<<<< HEAD
+NODE_WARNING(reg_format, NULL, &addr_size_cells);
+=======
 NODE_CHECK(reg_format, NULL, WARN, &addr_size_cells);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_ranges_format(struct check *c, struct node *dt,
 				struct node *node)
@@ -735,8 +844,12 @@ static void check_ranges_format(struct check *c, struct node *dt,
 <<<<<<< HEAD
 NODE_WARNING(ranges_format, NULL, &addr_size_cells);
 =======
+<<<<<<< HEAD
+NODE_WARNING(ranges_format, NULL, &addr_size_cells);
+=======
 NODE_CHECK(ranges_format, NULL, WARN, &addr_size_cells);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /*
  * Style checks
@@ -766,8 +879,12 @@ static void check_avoid_default_addr_size(struct check *c, struct node *dt,
 <<<<<<< HEAD
 NODE_WARNING(avoid_default_addr_size, NULL, &addr_size_cells);
 =======
+<<<<<<< HEAD
+NODE_WARNING(avoid_default_addr_size, NULL, &addr_size_cells);
+=======
 NODE_CHECK(avoid_default_addr_size, NULL, WARN, &addr_size_cells);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static void check_obsolete_chosen_interrupt_controller(struct check *c,
 						       struct node *dt)
@@ -787,8 +904,12 @@ static void check_obsolete_chosen_interrupt_controller(struct check *c,
 <<<<<<< HEAD
 TREE_WARNING(obsolete_chosen_interrupt_controller, NULL);
 =======
+<<<<<<< HEAD
+TREE_WARNING(obsolete_chosen_interrupt_controller, NULL);
+=======
 TREE_CHECK(obsolete_chosen_interrupt_controller, NULL, WARN);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct check *check_table[] = {
 	&duplicate_node_names, &duplicate_property_names,
@@ -808,6 +929,9 @@ static struct check *check_table[] = {
 	&avoid_default_addr_size,
 	&obsolete_chosen_interrupt_controller,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	&always_fail,
 };
@@ -873,10 +997,13 @@ void parse_checks_option(bool warn, bool error, const char *optarg)
 	die("Unrecognized check name \"%s\"\n", name);
 }
 
+<<<<<<< HEAD
+=======
 =======
 };
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 void process_checks(int force, struct boot_info *bi)
 {
 	struct node *dt = bi->dt;
@@ -889,8 +1016,12 @@ void process_checks(int force, struct boot_info *bi)
 <<<<<<< HEAD
 		if (c->warn || c->error)
 =======
+<<<<<<< HEAD
+		if (c->warn || c->error)
+=======
 		if (c->level != IGNORE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 			error = error || run_check(c, dt);
 	}
 

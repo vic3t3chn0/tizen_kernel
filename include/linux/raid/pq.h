@@ -135,8 +135,12 @@ void raid6_dual_recov(int disks, size_t bytes, int faila, int failb,
 <<<<<<< HEAD
 # define free_pages(x, y)	munmap((void *)(x), PAGE_SIZE << (y))
 =======
+<<<<<<< HEAD
+# define free_pages(x, y)	munmap((void *)(x), PAGE_SIZE << (y))
+=======
 # define free_pages(x, y)	munmap((void *)(x), (y)*PAGE_SIZE)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static inline void cpu_relax(void)
 {

@@ -95,8 +95,12 @@ static struct irqaction au1x_rtcmatch2_irqaction = {
 <<<<<<< HEAD
 	.flags		= IRQF_TIMER,
 =======
+<<<<<<< HEAD
+	.flags		= IRQF_TIMER,
+=======
 	.flags		= IRQF_DISABLED | IRQF_TIMER,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.name		= "timer",
 	.dev_id		= &au1x_rtcmatch2_clockdev,
 };
@@ -153,8 +157,12 @@ static int __init alchemy_time_init(unsigned int m2int)
 <<<<<<< HEAD
 	cd->min_delta_ns = clockevent_delta2ns(9, cd);	/* ~0.28ms */
 =======
+<<<<<<< HEAD
+	cd->min_delta_ns = clockevent_delta2ns(9, cd);	/* ~0.28ms */
+=======
 	cd->min_delta_ns = clockevent_delta2ns(8, cd);	/* ~0.25ms */
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	clockevents_register_device(cd);
 	setup_irq(m2int, &au1x_rtcmatch2_irqaction);
 
@@ -189,7 +197,11 @@ static int alchemy_m2inttab[] __initdata = {
 <<<<<<< HEAD
 	AU1300_RTC_MATCH2_INT,
 =======
+<<<<<<< HEAD
+	AU1300_RTC_MATCH2_INT,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 void __init plat_time_init(void)

@@ -11,6 +11,9 @@
  * Flags for nfsd_permission
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define NFSD_MAY_NOP			0
 #define NFSD_MAY_EXEC			0x001 /* == MAY_EXEC */
 #define NFSD_MAY_WRITE			0x002 /* == MAY_WRITE */
@@ -29,6 +32,8 @@
 #define NFSD_MAY_READ_IF_EXEC		0x800
 
 #define NFSD_MAY_64BIT_COOKIE		0x1000 /* 64 bit readdir cookies for >= NFSv3 */
+<<<<<<< HEAD
+=======
 =======
 #define NFSD_MAY_NOP		0
 #define NFSD_MAY_EXEC		1 /* == MAY_EXEC */
@@ -47,6 +52,7 @@
 #define NFSD_MAY_BYPASS_GSS	1024
 #define NFSD_MAY_READ_IF_EXEC	2048
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #define NFSD_MAY_CREATE		(NFSD_MAY_EXEC|NFSD_MAY_WRITE)
 #define NFSD_MAY_REMOVE		(NFSD_MAY_EXEC|NFSD_MAY_WRITE|NFSD_MAY_TRUNC)
@@ -84,11 +90,16 @@ __be32		do_nfsd_create(struct svc_rqst *, struct svc_fh *,
 				char *name, int len, struct iattr *attrs,
 				struct svc_fh *res, int createmode,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				u32 *verifier, bool *truncp, bool *created);
 __be32		nfsd_commit(struct svc_rqst *, struct svc_fh *,
 				loff_t, unsigned long);
 #endif /* CONFIG_NFSD_V3 */
 __be32		nfsd_open(struct svc_rqst *, struct svc_fh *, umode_t,
+<<<<<<< HEAD
+=======
 =======
 				u32 *verifier, int *truncp, int *created);
 __be32		nfsd_commit(struct svc_rqst *, struct svc_fh *,
@@ -96,6 +107,7 @@ __be32		nfsd_commit(struct svc_rqst *, struct svc_fh *,
 #endif /* CONFIG_NFSD_V3 */
 __be32		nfsd_open(struct svc_rqst *, struct svc_fh *, int,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				int, struct file **);
 void		nfsd_close(struct file *);
 __be32 		nfsd_read(struct svc_rqst *, struct svc_fh *,
@@ -136,6 +148,9 @@ int nfsd_set_posix_acl(struct svc_fh *, int, struct posix_acl *);
 #endif
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static inline int fh_want_write(struct svc_fh *fh)
 {
 	return mnt_want_write(fh->fh_export->ex_path.mnt);
@@ -146,6 +161,9 @@ static inline void fh_drop_write(struct svc_fh *fh)
 	mnt_drop_write(fh->fh_export->ex_path.mnt);
 }
 
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* LINUX_NFSD_VFS_H */

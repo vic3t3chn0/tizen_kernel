@@ -24,7 +24,12 @@
 #include <linux/errno.h>
 
 =======
+<<<<<<< HEAD
+#include <linux/errno.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L2X0_CACHE_ID			0x000
 #define L2X0_CACHE_TYPE			0x004
 #define L2X0_CTRL			0x100
@@ -61,7 +66,12 @@
 #define L2X0_ADDR_FILTER_START		0xC00
 #define L2X0_ADDR_FILTER_END		0xC04
 =======
+<<<<<<< HEAD
+#define L2X0_ADDR_FILTER_START		0xC00
+#define L2X0_ADDR_FILTER_END		0xC04
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L2X0_TEST_OPERATION		0xF00
 #define L2X0_LINE_DATA			0xF10
 #define L2X0_LINE_TAG			0xF30
@@ -77,6 +87,9 @@
 #define L2X0_CACHE_ID_PART_L210		(1 << 6)
 #define L2X0_CACHE_ID_PART_L310		(3 << 6)
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L2X0_CACHE_ID_RTL_MASK          0x3f
 #define L2X0_CACHE_ID_RTL_R0P0          0x0
 #define L2X0_CACHE_ID_RTL_R1P0          0x2
@@ -100,6 +113,8 @@
 #define L2X0_AUX_CTRL_EVNT_MON_BUS_EN_SHIFT	20
 #define L2X0_AUX_CTRL_SHARE_OVERRIDE_SHIFT	22
 #define L2X0_AUX_CTRL_L2_FORCE_NWA_SHIFT	23
+<<<<<<< HEAD
+=======
 =======
 
 #define L2X0_AUX_CTRL_MASK			0xc0000fff
@@ -108,6 +123,7 @@
 #define L2X0_AUX_CTRL_WAY_SIZE_MASK		(0x7 << 17)
 #define L2X0_AUX_CTRL_SHARE_OVERRIDE_SHIFT	22
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L2X0_AUX_CTRL_NS_LOCKDOWN_SHIFT		26
 #define L2X0_AUX_CTRL_NS_INT_CTRL_SHIFT		27
 #define L2X0_AUX_CTRL_DATA_PREFETCH_SHIFT	28
@@ -115,6 +131,9 @@
 #define L2X0_AUX_CTRL_EARLY_BRESP_SHIFT		30
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define L2X0_LATENCY_CTRL_SETUP_SHIFT	0
 #define L2X0_LATENCY_CTRL_RD_SHIFT	4
 #define L2X0_LATENCY_CTRL_WR_SHIFT	8
@@ -161,6 +180,8 @@ extern struct l2x0_regs l2x0_saved_regs;
 
 #endif /* __ASSEMBLY__ */
 
+<<<<<<< HEAD
+=======
 =======
 #define REV_PL310_R2P0				4
 
@@ -169,4 +190,5 @@ extern void __init l2x0_init(void __iomem *base, __u32 aux_val, __u32 aux_mask);
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif

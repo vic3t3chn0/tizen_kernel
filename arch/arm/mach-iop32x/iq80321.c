@@ -74,8 +74,12 @@ static int __init
 <<<<<<< HEAD
 iq80321_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
 =======
+<<<<<<< HEAD
+iq80321_pci_map_irq(const struct pci_dev *dev, u8 slot, u8 pin)
+=======
 iq80321_pci_map_irq(struct pci_dev *dev, u8 slot, u8 pin)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 {
 	int irq;
 
@@ -193,8 +197,12 @@ MACHINE_START(IQ80321, "Intel IQ80321")
 <<<<<<< HEAD
 	.atag_offset	= 0x100,
 =======
+<<<<<<< HEAD
+	.atag_offset	= 0x100,
+=======
 	.boot_params	= 0xa0000100,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.map_io		= iq80321_map_io,
 	.init_irq	= iop32x_init_irq,
 	.timer		= &iq80321_timer,
@@ -202,5 +210,9 @@ MACHINE_START(IQ80321, "Intel IQ80321")
 <<<<<<< HEAD
 	.restart	= iop3xx_restart,
 =======
+<<<<<<< HEAD
+	.restart	= iop3xx_restart,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 MACHINE_END

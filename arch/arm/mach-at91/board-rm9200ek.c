@@ -25,7 +25,11 @@
 <<<<<<< HEAD
 #include <linux/gpio.h>
 =======
+<<<<<<< HEAD
+#include <linux/gpio.h>
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/init.h>
 #include <linux/mm.h>
 #include <linux/module.h>
@@ -47,9 +51,14 @@
 #include <mach/at91rm9200_mc.h>
 #include <mach/at91_ramc.h>
 =======
+<<<<<<< HEAD
+#include <mach/at91rm9200_mc.h>
+#include <mach/at91_ramc.h>
+=======
 #include <mach/gpio.h>
 #include <mach/at91rm9200_mc.h>
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #include "generic.h"
 
@@ -60,8 +69,12 @@ static void __init ek_init_early(void)
 <<<<<<< HEAD
 	at91_initialize(18432000);
 =======
+<<<<<<< HEAD
+	at91_initialize(18432000);
+=======
 	at91rm9200_initialize(18432000);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/* Setup the LEDs */
 	at91_init_leds(AT91_PIN_PB1, AT91_PIN_PB2);
@@ -81,6 +94,9 @@ static void __init ek_init_early(void)
 <<<<<<< HEAD
 static struct macb_platform_data __initdata ek_eth_data = {
 =======
+<<<<<<< HEAD
+static struct macb_platform_data __initdata ek_eth_data = {
+=======
 static void __init ek_init_irq(void)
 {
 	at91rm9200_init_interrupts(NULL);
@@ -88,6 +104,7 @@ static void __init ek_init_irq(void)
 
 static struct at91_eth_data __initdata ek_eth_data = {
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.phy_irq_pin	= AT91_PIN_PC4,
 	.is_rmii	= 1,
 };
@@ -98,7 +115,12 @@ static struct at91_usbh_data __initdata ek_usbh_data = {
 	.vbus_pin	= {-EINVAL, -EINVAL},
 	.overcurrent_pin= {-EINVAL, -EINVAL},
 =======
+<<<<<<< HEAD
+	.vbus_pin	= {-EINVAL, -EINVAL},
+	.overcurrent_pin= {-EINVAL, -EINVAL},
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 static struct at91_udc_data __initdata ek_udc_data = {
@@ -115,7 +137,11 @@ static struct at91_mmc_data __initdata ek_mmc_data = {
 <<<<<<< HEAD
 	.vcc_pin	= -EINVAL,
 =======
+<<<<<<< HEAD
+	.vcc_pin	= -EINVAL,
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 #endif
 
@@ -147,8 +173,12 @@ static struct i2c_board_info __initdata ek_i2c_devices[] = {
 <<<<<<< HEAD
 #define EK_FLASH_SIZE	SZ_8M
 =======
+<<<<<<< HEAD
+#define EK_FLASH_SIZE	SZ_8M
+=======
 #define EK_FLASH_SIZE	SZ_2M
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct physmap_flash_data ek_flash_data = {
 	.width		= 2,
@@ -229,9 +259,15 @@ MACHINE_START(AT91RM9200EK, "Atmel AT91RM9200-EK")
 	.init_early	= ek_init_early,
 	.init_irq	= at91_init_irq_default,
 =======
+<<<<<<< HEAD
+	.map_io		= at91_map_io,
+	.init_early	= ek_init_early,
+	.init_irq	= at91_init_irq_default,
+=======
 	.map_io		= at91rm9200_map_io,
 	.init_early	= ek_init_early,
 	.init_irq	= ek_init_irq,
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	.init_machine	= ek_board_init,
 MACHINE_END

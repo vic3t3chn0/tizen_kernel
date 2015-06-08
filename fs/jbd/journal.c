@@ -43,7 +43,13 @@
 #include <trace/events/jbd.h>
 
 =======
+<<<<<<< HEAD
+#define CREATE_TRACE_POINTS
+#include <trace/events/jbd.h>
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <asm/uaccess.h>
 #include <asm/page.h>
 
@@ -136,7 +142,12 @@ static int kjournald(void *arg)
 	set_freezable();
 
 =======
+<<<<<<< HEAD
+	set_freezable();
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/* Record that the journal thread is running */
 	journal->j_task = current;
 	wake_up(&journal->j_wait_done_commit);
@@ -177,8 +188,12 @@ loop:
 <<<<<<< HEAD
 		try_to_freeze();
 =======
+<<<<<<< HEAD
+		try_to_freeze();
+=======
 		refrigerator();
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		spin_lock(&journal->j_state_lock);
 	} else {
 		/*
@@ -343,8 +358,12 @@ repeat:
 <<<<<<< HEAD
 	mapped_data = kmap_atomic(new_page);
 =======
+<<<<<<< HEAD
+	mapped_data = kmap_atomic(new_page);
+=======
 	mapped_data = kmap_atomic(new_page, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Check for escaping
 	 */
@@ -356,8 +375,12 @@ repeat:
 <<<<<<< HEAD
 	kunmap_atomic(mapped_data);
 =======
+<<<<<<< HEAD
+	kunmap_atomic(mapped_data);
+=======
 	kunmap_atomic(mapped_data, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	/*
 	 * Do we need to do a data copy?
@@ -379,10 +402,16 @@ repeat:
 		memcpy(tmp, mapped_data + new_offset, jh2bh(jh_in)->b_size);
 		kunmap_atomic(mapped_data);
 =======
+<<<<<<< HEAD
+		mapped_data = kmap_atomic(new_page);
+		memcpy(tmp, mapped_data + new_offset, jh2bh(jh_in)->b_size);
+		kunmap_atomic(mapped_data);
+=======
 		mapped_data = kmap_atomic(new_page, KM_USER0);
 		memcpy(tmp, mapped_data + new_offset, jh2bh(jh_in)->b_size);
 		kunmap_atomic(mapped_data, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		new_page = virt_to_page(tmp);
 		new_offset = offset_in_page(tmp);
@@ -399,10 +428,16 @@ repeat:
 		*((unsigned int *)(mapped_data + new_offset)) = 0;
 		kunmap_atomic(mapped_data);
 =======
+<<<<<<< HEAD
+		mapped_data = kmap_atomic(new_page);
+		*((unsigned int *)(mapped_data + new_offset)) = 0;
+		kunmap_atomic(mapped_data);
+=======
 		mapped_data = kmap_atomic(new_page, KM_USER0);
 		*((unsigned int *)(mapped_data + new_offset)) = 0;
 		kunmap_atomic(mapped_data, KM_USER0);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	set_bh_page(new_bh, new_page, new_offset);
@@ -755,8 +790,11 @@ static journal_t * journal_init_common (void)
 	init_waitqueue_head(&journal->j_wait_updates);
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 	mutex_init(&journal->j_barrier);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	mutex_init(&journal->j_checkpoint_mutex);
 	spin_lock_init(&journal->j_revoke_lock);
 	spin_lock_init(&journal->j_list_lock);
@@ -1106,7 +1144,11 @@ void journal_update_superblock(journal_t *journal, int wait)
 <<<<<<< HEAD
 	trace_jbd_update_superblock_end(journal, wait);
 =======
+<<<<<<< HEAD
+	trace_jbd_update_superblock_end(journal, wait);
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	/* If we have just flushed the log (by marking s_start==0), then
 	 * any future commit will have to be careful to update the
@@ -1854,11 +1896,17 @@ static void journal_free_journal_head(struct journal_head *jh)
  * b_jcount reaches zero. Running transaction (b_transaction) and checkpoint
  * transaction (b_cp_transaction) hold their references to b_jcount.
 =======
+<<<<<<< HEAD
+ * A journal_head is detached from its buffer_head when the journal_head's
+ * b_jcount reaches zero. Running transaction (b_transaction) and checkpoint
+ * transaction (b_cp_transaction) hold their references to b_jcount.
+=======
  * A journal_head may be detached from its buffer_head when the journal_head's
  * b_transaction, b_cp_transaction and b_next_transaction pointers are NULL.
  * Various places in JBD call journal_remove_journal_head() to indicate that the
  * journal_head can be dropped if needed.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Various places in the kernel want to attach a journal_head to a buffer_head
  * _before_ attaching the journal_head to a transaction.  To protect the
@@ -1872,11 +1920,16 @@ static void journal_free_journal_head(struct journal_head *jh)
  *	struct journal_head *jh = journal_add_journal_head(bh);
  *	...
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *      (Get another reference for transaction)
  *      journal_grab_journal_head(bh);
  *      jh->b_transaction = xxx;
  *      (Put original reference)
  *      journal_put_journal_head(jh);
+<<<<<<< HEAD
+=======
 =======
  *	jh->b_transaction = xxx;
  *	journal_put_journal_head(jh);
@@ -1884,6 +1937,7 @@ static void journal_free_journal_head(struct journal_head *jh)
  * Now, the journal_head's b_jcount is zero, but it is safe from being released
  * because it has a non-zero b_transaction.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  */
 
 /*
@@ -1891,8 +1945,11 @@ static void journal_free_journal_head(struct journal_head *jh)
  *
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
  * Doesn't need the journal lock.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * May sleep.
  */
 struct journal_head *journal_add_journal_head(struct buffer_head *bh)
@@ -1957,6 +2014,9 @@ static void __journal_remove_journal_head(struct buffer_head *bh)
 
 	J_ASSERT_JH(jh, jh->b_jcount >= 0);
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	J_ASSERT_JH(jh, jh->b_transaction == NULL);
 	J_ASSERT_JH(jh, jh->b_next_transaction == NULL);
 	J_ASSERT_JH(jh, jh->b_cp_transaction == NULL);
@@ -1980,6 +2040,8 @@ static void __journal_remove_journal_head(struct buffer_head *bh)
 
 /*
  * Drop a reference on the passed journal_head.  If it fell to zero then
+<<<<<<< HEAD
+=======
 =======
 
 	get_bh(bh);
@@ -2037,6 +2099,7 @@ void journal_remove_journal_head(struct buffer_head *bh)
 /*
  * Drop a reference on the passed journal_head.  If it fell to zero then try to
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * release the journal_head from the buffer_head.
  */
 void journal_put_journal_head(struct journal_head *jh)
@@ -2047,12 +2110,17 @@ void journal_put_journal_head(struct journal_head *jh)
 	J_ASSERT_JH(jh, jh->b_jcount > 0);
 	--jh->b_jcount;
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (!jh->b_jcount) {
 		__journal_remove_journal_head(bh);
 		jbd_unlock_bh_journal_head(bh);
 		__brelse(bh);
 	} else
 		jbd_unlock_bh_journal_head(bh);
+<<<<<<< HEAD
+=======
 =======
 	if (!jh->b_jcount && !jh->b_transaction) {
 		__journal_remove_journal_head(bh);
@@ -2060,6 +2128,7 @@ void journal_put_journal_head(struct journal_head *jh)
 	}
 	jbd_unlock_bh_journal_head(bh);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

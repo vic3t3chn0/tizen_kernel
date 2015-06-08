@@ -26,7 +26,14 @@
 #include <linux/module.h>
 #include <linux/device.h>
 #include <linux/sched.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 #include <linux/sysdev.h>
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+#include <linux/sysdev.h>
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/fs.h>
 #include <linux/types.h>
 #include <linux/string.h>
@@ -55,8 +62,18 @@ static ssize_t bonding_show_bonds(struct class *cls,
 				  struct class_attribute *attr,
 				  char *buf)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct bond_net *bn =
+		container_of(attr, struct bond_net, class_attr_bonding_masters);
+=======
 	struct net *net = current->nsproxy->net_ns;
 	struct bond_net *bn = net_generic(net, bond_net_id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct net *net = current->nsproxy->net_ns;
+	struct bond_net *bn = net_generic(net, bond_net_id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	int res = 0;
 	struct bonding *bond;
 
@@ -79,9 +96,20 @@ static ssize_t bonding_show_bonds(struct class *cls,
 	return res;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static struct net_device *bond_get_by_name(struct bond_net *bn, const char *ifname)
+{
+=======
 static struct net_device *bond_get_by_name(struct net *net, const char *ifname)
 {
 	struct bond_net *bn = net_generic(net, bond_net_id);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+static struct net_device *bond_get_by_name(struct net *net, const char *ifname)
+{
+	struct bond_net *bn = net_generic(net, bond_net_id);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct bonding *bond;
 
 	list_for_each_entry(bond, &bn->dev_list, bond_list) {
@@ -103,7 +131,16 @@ static ssize_t bonding_store_bonds(struct class *cls,
 				   struct class_attribute *attr,
 				   const char *buffer, size_t count)
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	struct bond_net *bn =
+		container_of(attr, struct bond_net, class_attr_bonding_masters);
+=======
 	struct net *net = current->nsproxy->net_ns;
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	struct net *net = current->nsproxy->net_ns;
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	char command[IFNAMSIZ + 1] = {0, };
 	char *ifname;
 	int rv, res = count;
@@ -116,7 +153,15 @@ static ssize_t bonding_store_bonds(struct class *cls,
 
 	if (command[0] == '+') {
 		pr_info("%s is being created...\n", ifname);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		rv = bond_create(bn->net, ifname);
+=======
 		rv = bond_create(net, ifname);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		rv = bond_create(net, ifname);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (rv) {
 			if (rv == -EEXIST)
 				pr_info("%s already exists.\n", ifname);
@@ -128,7 +173,15 @@ static ssize_t bonding_store_bonds(struct class *cls,
 		struct net_device *bond_dev;
 
 		rtnl_lock();
+<<<<<<< HEAD
+<<<<<<< HEAD
+		bond_dev = bond_get_by_name(bn, ifname);
+=======
 		bond_dev = bond_get_by_name(net, ifname);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		bond_dev = bond_get_by_name(net, ifname);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		if (bond_dev) {
 			pr_info("%s is being deleted...\n", ifname);
 			unregister_netdevice(bond_dev);
@@ -150,9 +203,36 @@ err_no_cmd:
 	return -EPERM;
 }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static const void *bonding_namespace(struct class *cls,
+				     const struct class_attribute *attr)
+{
+	const struct bond_net *bn =
+		container_of(attr, struct bond_net, class_attr_bonding_masters);
+	return bn->net;
+}
+
+/* class attribute for bond_masters file.  This ends up in /sys/class/net */
+static const struct class_attribute class_attr_bonding_masters = {
+	.attr = {
+		.name = "bonding_masters",
+		.mode = S_IWUSR | S_IRUGO,
+	},
+	.show = bonding_show_bonds,
+	.store = bonding_store_bonds,
+	.namespace = bonding_namespace,
+};
+=======
 /* class attribute for bond_masters file.  This ends up in /sys/class/net */
 static CLASS_ATTR(bonding_masters,  S_IWUSR | S_IRUGO,
 		  bonding_show_bonds, bonding_store_bonds);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+/* class attribute for bond_masters file.  This ends up in /sys/class/net */
+static CLASS_ATTR(bonding_masters,  S_IWUSR | S_IRUGO,
+		  bonding_show_bonds, bonding_store_bonds);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 int bond_create_slave_symlinks(struct net_device *master,
 			       struct net_device *slave)
@@ -304,6 +384,19 @@ static ssize_t bonding_store_mode(struct device *d,
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	if (bond->slave_cnt > 0) {
+		pr_err("unable to update mode of %s because it has slaves.\n",
+			bond->dev->name);
+		ret = -EPERM;
+		goto out;
+	}
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	new_value = bond_parse_parm(buf, bond_mode_tbl);
 	if (new_value < 0)  {
 		pr_err("%s: Ignoring invalid mode value %.*s.\n",
@@ -804,6 +897,13 @@ static ssize_t bonding_store_lacp(struct device *d,
 
 	if ((new_value == 1) || (new_value == 0)) {
 		bond->params.lacp_fast = new_value;
+<<<<<<< HEAD
+<<<<<<< HEAD
+		bond_3ad_update_lacp_rate(bond);
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		pr_info("%s: Setting LACP rate to %s (%d).\n",
 			bond->dev->name, bond_lacp_tbl[new_value].modename,
 			new_value);
@@ -818,6 +918,44 @@ out:
 static DEVICE_ATTR(lacp_rate, S_IRUGO | S_IWUSR,
 		   bonding_show_lacp, bonding_store_lacp);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+static ssize_t bonding_show_min_links(struct device *d,
+				      struct device_attribute *attr,
+				      char *buf)
+{
+	struct bonding *bond = to_bond(d);
+
+	return sprintf(buf, "%d\n", bond->params.min_links);
+}
+
+static ssize_t bonding_store_min_links(struct device *d,
+				       struct device_attribute *attr,
+				       const char *buf, size_t count)
+{
+	struct bonding *bond = to_bond(d);
+	int ret;
+	unsigned int new_value;
+
+	ret = kstrtouint(buf, 0, &new_value);
+	if (ret < 0) {
+		pr_err("%s: Ignoring invalid min links value %s.\n",
+		       bond->dev->name, buf);
+		return ret;
+	}
+
+	pr_info("%s: Setting min links value to %u\n",
+		bond->dev->name, new_value);
+	bond->params.min_links = new_value;
+	return count;
+}
+static DEVICE_ATTR(min_links, S_IRUGO | S_IWUSR,
+		   bonding_show_min_links, bonding_store_min_links);
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 static ssize_t bonding_show_ad_select(struct device *d,
 				      struct device_attribute *attr,
 				      char *buf)
@@ -1524,7 +1662,14 @@ static ssize_t bonding_store_slaves_active(struct device *d,
 		goto out;
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	read_lock(&bond->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	read_lock(&bond->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	bond_for_each_slave(bond, slave, i) {
 		if (!bond_is_active_slave(slave)) {
 			if (new_value)
@@ -1533,7 +1678,14 @@ static ssize_t bonding_store_slaves_active(struct device *d,
 				slave->inactive = 1;
 		}
 	}
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 	read_unlock(&bond->lock);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	read_unlock(&bond->lock);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 out:
 	return ret;
 }
@@ -1611,6 +1763,13 @@ static struct attribute *per_bond_attrs[] = {
 	&dev_attr_queue_id.attr,
 	&dev_attr_all_slaves_active.attr,
 	&dev_attr_resend_igmp.attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	&dev_attr_min_links.attr,
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	NULL,
 };
 
@@ -1623,11 +1782,28 @@ static struct attribute_group bonding_group = {
  * Initialize sysfs.  This sets up the bonding_masters file in
  * /sys/class/net.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+int bond_create_sysfs(struct bond_net *bn)
+{
+	int ret;
+
+	bn->class_attr_bonding_masters = class_attr_bonding_masters;
+	sysfs_attr_init(&bn->class_attr_bonding_masters.attr);
+
+	ret = netdev_class_create_file(&bn->class_attr_bonding_masters);
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int bond_create_sysfs(void)
 {
 	int ret;
 
 	ret = netdev_class_create_file(&class_attr_bonding_masters);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	/*
 	 * Permit multiple loads of the module by ignoring failures to
 	 * create the bonding_masters sysfs file.  Bonding devices
@@ -1641,7 +1817,15 @@ int bond_create_sysfs(void)
 	 */
 	if (ret == -EEXIST) {
 		/* Is someone being kinky and naming a device bonding_master? */
+<<<<<<< HEAD
+<<<<<<< HEAD
+		if (__dev_get_by_name(bn->net,
+=======
 		if (__dev_get_by_name(&init_net,
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+		if (__dev_get_by_name(&init_net,
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 				      class_attr_bonding_masters.attr.name))
 			pr_err("network device named %s already exists in sysfs",
 			       class_attr_bonding_masters.attr.name);
@@ -1655,9 +1839,21 @@ int bond_create_sysfs(void)
 /*
  * Remove /sys/class/net/bonding_masters.
  */
+<<<<<<< HEAD
+<<<<<<< HEAD
+void bond_destroy_sysfs(struct bond_net *bn)
+{
+	netdev_class_remove_file(&bn->class_attr_bonding_masters);
+=======
 void bond_destroy_sysfs(void)
 {
 	netdev_class_remove_file(&class_attr_bonding_masters);
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+void bond_destroy_sysfs(void)
+{
+	netdev_class_remove_file(&class_attr_bonding_masters);
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 
 /*

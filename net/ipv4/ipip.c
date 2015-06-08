@@ -151,8 +151,12 @@ struct pcpu_tstats {
 <<<<<<< HEAD
 } __attribute__((aligned(4*sizeof(unsigned long))));
 =======
+<<<<<<< HEAD
+} __attribute__((aligned(4*sizeof(unsigned long))));
+=======
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 static struct net_device_stats *ipip_get_stats(struct net_device *dev)
 {
@@ -310,8 +314,12 @@ static void ipip_tunnel_uninit(struct net_device *dev)
 <<<<<<< HEAD
 		RCU_INIT_POINTER(ipn->tunnels_wc[0], NULL);
 =======
+<<<<<<< HEAD
+		RCU_INIT_POINTER(ipn->tunnels_wc[0], NULL);
+=======
 		rcu_assign_pointer(ipn->tunnels_wc[0], NULL);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	else
 		ipip_tunnel_unlink(ipn, netdev_priv(dev));
 	dev_put(dev);
@@ -465,9 +473,13 @@ static netdev_tx_t ipip_tunnel_xmit(struct sk_buff *skb, struct net_device *dev)
 <<<<<<< HEAD
 		dst = rt->rt_gateway;
 =======
+<<<<<<< HEAD
+		dst = rt->rt_gateway;
+=======
 		if ((dst = rt->rt_gateway) == 0)
 			goto tx_error_icmp;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 
 	rt = ip_route_output_ports(dev_net(dev), &fl4, NULL,
@@ -908,8 +920,12 @@ static int __init ipip_init(void)
 <<<<<<< HEAD
 		pr_info("%s: can't register tunnel\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_info("%s: can't register tunnel\n", __func__);
+=======
 		printk(KERN_INFO "ipip init: can't register tunnel\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return err;
 }
@@ -920,8 +936,12 @@ static void __exit ipip_fini(void)
 <<<<<<< HEAD
 		pr_info("%s: can't deregister tunnel\n", __func__);
 =======
+<<<<<<< HEAD
+		pr_info("%s: can't deregister tunnel\n", __func__);
+=======
 		printk(KERN_INFO "ipip close: can't deregister tunnel\n");
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unregister_pernet_device(&ipip_net_ops);
 }

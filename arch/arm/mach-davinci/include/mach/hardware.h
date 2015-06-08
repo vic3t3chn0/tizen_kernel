@@ -21,9 +21,12 @@
  */
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #define DAVINCI_SYSTEM_MODULE_BASE        0x01C40000
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /*
  * I/O mapping
  */
@@ -37,6 +40,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 #ifdef __ASSEMBLER__
 #define IOMEM(x)                	x
 #else
@@ -44,4 +49,5 @@
 #endif
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #endif /* __ASM_ARCH_HARDWARE_H */

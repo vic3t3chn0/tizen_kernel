@@ -1,5 +1,8 @@
 /*
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * Basic general purpose allocator for managing special purpose
  * memory, for example, memory that is not managed by the regular
  * kmalloc/kfree interface.  Uses for this includes on-device special
@@ -22,12 +25,15 @@
  * the allocator can NOT be used in NMI handler.  So code uses the
  * allocator in NMI handler should depend on
  * CONFIG_ARCH_HAVE_NMI_SAFE_CMPXCHG.
+<<<<<<< HEAD
+=======
 =======
  * Basic general purpose allocator for managing special purpose memory
  * not managed by the regular kmalloc/kfree interface.
  * Uses for this includes on-device special memory, uncached memory
  * etc.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Copyright 2005 (C) Jes Sorensen <jes@trained-monkey.org>
  *
@@ -37,6 +43,9 @@
 
 #include <linux/slab.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/export.h>
 #include <linux/bitmap.h>
 #include <linux/rculist.h>
@@ -148,6 +157,8 @@ static int bitmap_clear_ll(unsigned long *map, int start, int nr)
  * gen_pool_create - create a new special memory pool
  * @min_alloc_order: log base 2 of number of bytes each bitmap bit represents
  * @nid: node id of the node the pool structure should be allocated on, or -1
+<<<<<<< HEAD
+=======
 =======
 #include <linux/module.h>
 #include <linux/bitmap.h>
@@ -178,11 +189,15 @@ struct gen_pool_chunk {
  * @nid:	Node id of the node the pool structure should be allocated
  *		on, or -1.  This will be also used for other allocations.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Create a new special memory pool that can be used to manage special purpose
  * memory not managed by the regular kmalloc/kfree interface.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct gen_pool *gen_pool_create(int min_alloc_order, int nid)
 {
 	struct gen_pool *pool;
@@ -192,6 +207,8 @@ struct gen_pool *gen_pool_create(int min_alloc_order, int nid)
 		spin_lock_init(&pool->lock);
 		INIT_LIST_HEAD(&pool->chunks);
 		pool->min_alloc_order = min_alloc_order;
+<<<<<<< HEAD
+=======
 =======
 struct gen_pool *__must_check gen_pool_create(unsigned order, int nid)
 {
@@ -206,6 +223,7 @@ struct gen_pool *__must_check gen_pool_create(unsigned order, int nid)
 		INIT_LIST_HEAD(&pool->chunks);
 		pool->order = order;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	}
 	return pool;
 }
@@ -225,6 +243,9 @@ EXPORT_SYMBOL(gen_pool_create);
  * Returns 0 on success or a -ve errno on failure.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 int gen_pool_add_virt(struct gen_pool *pool, u64 virt, phys_addr_t phys,
 		 size_t size, int nid)
 {
@@ -250,6 +271,8 @@ int gen_pool_add_virt(struct gen_pool *pool, u64 virt, phys_addr_t phys,
 	spin_lock(&pool->lock);
 	list_add_rcu(&chunk->next_chunk, &pool->chunks);
 	spin_unlock(&pool->lock);
+<<<<<<< HEAD
+=======
 =======
 int __must_check gen_pool_add_virt(struct gen_pool *pool, unsigned long virt, phys_addr_t phys,
 		 size_t size, int nid)
@@ -287,6 +310,7 @@ int __must_check gen_pool_add_virt(struct gen_pool *pool, unsigned long virt, ph
 	list_add(&chunk->next_chunk, &pool->chunks);
 	write_unlock(&pool->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	return 0;
 }
@@ -300,6 +324,9 @@ EXPORT_SYMBOL(gen_pool_add_virt);
  * Returns the physical address on success, or -1 on error.
  */
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 phys_addr_t gen_pool_virt_to_phys(struct gen_pool *pool, u64 addr)
 {
 	struct gen_pool_chunk *chunk;
@@ -315,6 +342,8 @@ phys_addr_t gen_pool_virt_to_phys(struct gen_pool *pool, u64 addr)
 	rcu_read_unlock();
 
 	return paddr;
+<<<<<<< HEAD
+=======
 =======
 phys_addr_t gen_pool_virt_to_phys(struct gen_pool *pool, unsigned long addr)
 {
@@ -333,6 +362,7 @@ phys_addr_t gen_pool_virt_to_phys(struct gen_pool *pool, unsigned long addr)
 
 	return -1;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(gen_pool_virt_to_phys);
 
@@ -341,9 +371,14 @@ EXPORT_SYMBOL(gen_pool_virt_to_phys);
  * gen_pool_destroy - destroy a special memory pool
  * @pool: pool to destroy
 =======
+<<<<<<< HEAD
+ * gen_pool_destroy - destroy a special memory pool
+ * @pool: pool to destroy
+=======
  * gen_pool_destroy() - destroy a special memory pool
  * @pool:	Pool to destroy.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * Destroy the specified special memory pool. Verifies that there are no
  * outstanding allocations.
@@ -351,6 +386,9 @@ EXPORT_SYMBOL(gen_pool_virt_to_phys);
 void gen_pool_destroy(struct gen_pool *pool)
 {
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	struct list_head *_chunk, *_next_chunk;
 	struct gen_pool_chunk *chunk;
 	int order = pool->min_alloc_order;
@@ -366,6 +404,8 @@ void gen_pool_destroy(struct gen_pool *pool)
 				(end_bit + BITS_PER_BYTE - 1) / BITS_PER_BYTE;
 		bit = find_next_bit(chunk->bits, end_bit, 0);
 		BUG_ON(bit < end_bit);
+<<<<<<< HEAD
+=======
 =======
 	struct gen_pool_chunk *chunk;
 	int bit;
@@ -382,6 +422,7 @@ void gen_pool_destroy(struct gen_pool *pool)
 		nbytes = sizeof *chunk + BITS_TO_LONGS(chunk->size) *
 			sizeof *chunk->bits;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 		if (nbytes <= PAGE_SIZE)
 			kfree(chunk);
@@ -392,12 +433,19 @@ void gen_pool_destroy(struct gen_pool *pool)
 <<<<<<< HEAD
 	return;
 =======
+<<<<<<< HEAD
+	return;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 }
 EXPORT_SYMBOL(gen_pool_destroy);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * gen_pool_alloc_aligned - allocate special memory from the pool
  * @pool: pool to allocate from
  * @size: number of bytes to allocate from the pool
@@ -420,6 +468,8 @@ u64 gen_pool_alloc_aligned(struct gen_pool *pool, size_t size,
 #ifndef CONFIG_ARCH_HAVE_NMI_SAFE_CMPXCHG
 	BUG_ON(in_nmi());
 #endif
+<<<<<<< HEAD
+=======
 =======
  * gen_pool_alloc_aligned() - allocate special memory from the pool
  * @pool:	Pool to allocate from.
@@ -438,11 +488,15 @@ gen_pool_alloc_aligned(struct gen_pool *pool, size_t size,
 	unsigned long addr, align_mask = 0, flags, start;
 	struct gen_pool_chunk *chunk;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	if (size == 0)
 		return 0;
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	if (alignment_order > order)
 		align_mask = (1 << (alignment_order - order)) - 1;
 
@@ -475,6 +529,8 @@ retry:
 		break;
 	}
 	rcu_read_unlock();
+<<<<<<< HEAD
+=======
 =======
 	if (alignment_order > pool->order)
 		align_mask = (1 << (alignment_order - pool->order)) - 1;
@@ -505,12 +561,16 @@ retry:
 done:
 	read_unlock(&pool->lock);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	return addr;
 }
 EXPORT_SYMBOL(gen_pool_alloc_aligned);
 
 /**
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * gen_pool_free - free allocated special memory back to the pool
  * @pool: pool to free to
  * @addr: starting address of memory to free back to pool
@@ -608,6 +668,8 @@ size_t gen_pool_size(struct gen_pool *pool)
 	return size;
 }
 EXPORT_SYMBOL_GPL(gen_pool_size);
+<<<<<<< HEAD
+=======
 =======
  * gen_pool_free() - free allocated special memory back to the pool
  * @pool:	Pool to free to.
@@ -644,3 +706,4 @@ done:
 }
 EXPORT_SYMBOL(gen_pool_free);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

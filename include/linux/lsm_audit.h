@@ -22,6 +22,9 @@
 #include <linux/key.h>
 #include <linux/skbuff.h>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 struct lsm_network_audit {
 	int netif;
@@ -40,10 +43,13 @@ struct lsm_network_audit {
 		} v6;
 	} fam;
 };
+<<<<<<< HEAD
+=======
 =======
 #include <asm/system.h>
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* Auxiliary data to use in generating the audit record. */
 struct common_audit_data {
@@ -66,6 +72,9 @@ struct common_audit_data {
 <<<<<<< HEAD
 		struct lsm_network_audit *net;
 =======
+<<<<<<< HEAD
+		struct lsm_network_audit *net;
+=======
 		struct {
 			int netif;
 			struct sock *sk;
@@ -84,6 +93,7 @@ struct common_audit_data {
 			} fam;
 		} net;
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		int cap;
 		int ipc_id;
 		struct task_struct *tsk;
@@ -99,6 +109,9 @@ struct common_audit_data {
 	union {
 #ifdef CONFIG_SECURITY_SMACK
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 		struct smack_audit_data *smack_audit_data;
 #endif
 #ifdef CONFIG_SECURITY_SELINUX
@@ -108,6 +121,8 @@ struct common_audit_data {
 		struct apparmor_audit_data *apparmor_audit_data;
 #endif
 	}; /* per LSM data pointer union */
+<<<<<<< HEAD
+=======
 =======
 		/* SMACK data */
 		struct smack_audit_data {
@@ -168,6 +183,7 @@ struct common_audit_data {
 	void (*lsm_pre_audit)(struct audit_buffer *, void *);
 	void (*lsm_post_audit)(struct audit_buffer *, void *);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #define v4info fam.v4
@@ -189,7 +205,13 @@ void common_lsm_audit(struct common_audit_data *a,
 	void (*pre_audit)(struct audit_buffer *, void *),
 	void (*post_audit)(struct audit_buffer *, void *));
 =======
+<<<<<<< HEAD
+void common_lsm_audit(struct common_audit_data *a,
+	void (*pre_audit)(struct audit_buffer *, void *),
+	void (*post_audit)(struct audit_buffer *, void *));
+=======
 void common_lsm_audit(struct common_audit_data *a);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

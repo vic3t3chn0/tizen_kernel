@@ -1,8 +1,12 @@
 <<<<<<< HEAD
 /* Copyright (c) 2010, 2012, The Linux Foundation. All rights reserved.
 =======
+<<<<<<< HEAD
+/* Copyright (c) 2010, 2012, The Linux Foundation. All rights reserved.
+=======
 /* Copyright (c) 2010, Code Aurora Forum. All rights reserved.
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -17,6 +21,9 @@
 #define __MACH_SCM_BOOT_H
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define SCM_BOOT_ADDR				0x1
 #define SCM_FLAG_COLDBOOT_CPU1		0x01
 #define SCM_FLAG_COLDBOOT_CPU2		0x08
@@ -34,6 +41,8 @@ static inline int scm_set_boot_addr(phys_addr_t addr, unsigned int flags)
 	return 0;
 }
 #endif
+<<<<<<< HEAD
+=======
 =======
 #define SCM_BOOT_ADDR			0x1
 #define SCM_FLAG_COLDBOOT_CPU1		0x1
@@ -42,5 +51,6 @@ static inline int scm_set_boot_addr(phys_addr_t addr, unsigned int flags)
 
 int scm_set_boot_addr(phys_addr_t addr, int flags);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 #endif

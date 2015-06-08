@@ -22,6 +22,13 @@
 #include <linux/i2c.h>
 #include <linux/i2c-algo-bit.h>
 #include <linux/init.h>
+<<<<<<< HEAD
+<<<<<<< HEAD
+#include <linux/interrupt.h>
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/proc_fs.h>
@@ -1114,11 +1121,28 @@ static int __devinit dm1105_probe(struct pci_dev *pdev,
 	if (ret < 0)
 		goto err_remove_mem_frontend;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ret = dvb_net_init(dvb_adapter, &dev->dvbnet, dmx);
+	if (ret < 0)
+		goto err_disconnect_frontend;
+
+	ret = frontend_init(dev);
+	if (ret < 0)
+		goto err_dvb_net;
+
+=======
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	ret = frontend_init(dev);
 	if (ret < 0)
 		goto err_disconnect_frontend;
 
 	dvb_net_init(dvb_adapter, &dev->dvbnet, dmx);
+<<<<<<< HEAD
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	dm1105_ir_init(dev);
 
 	INIT_WORK(&dev->work, dm1105_dmx_buffer);

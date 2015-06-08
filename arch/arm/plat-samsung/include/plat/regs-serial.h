@@ -74,7 +74,11 @@
 <<<<<<< HEAD
 #define S3C2440_UCON_CLKSHIFT	  (10)
 =======
+<<<<<<< HEAD
+#define S3C2440_UCON_CLKSHIFT	  (10)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C2440_UCON_PCLK	  (0<<10)
 #define S3C2440_UCON_UCLK	  (1<<10)
 #define S3C2440_UCON_PCLK2	  (2<<10)
@@ -85,7 +89,11 @@
 <<<<<<< HEAD
 #define S3C6400_UCON_CLKSHIFT	(10)
 =======
+<<<<<<< HEAD
+#define S3C6400_UCON_CLKSHIFT	(10)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C6400_UCON_PCLK	(0<<10)
 #define S3C6400_UCON_PCLK2	(2<<10)
 #define S3C6400_UCON_UCLK0	(1<<10)
@@ -101,7 +109,11 @@
 <<<<<<< HEAD
 #define S3C2412_UCON_CLKSHIFT	(10)
 =======
+<<<<<<< HEAD
+#define S3C2412_UCON_CLKSHIFT	(10)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C2412_UCON_UCLK	(1<<10)
 #define S3C2412_UCON_USYSCLK	(3<<10)
 #define S3C2412_UCON_PCLK	(0<<10)
@@ -111,7 +123,12 @@
 #define S3C2410_UCON_CLKMASK	(1 << 10)
 #define S3C2410_UCON_CLKSHIFT	(10)
 =======
+<<<<<<< HEAD
+#define S3C2410_UCON_CLKMASK	(1 << 10)
+#define S3C2410_UCON_CLKSHIFT	(10)
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C2410_UCON_UCLK	  (1<<10)
 #define S3C2410_UCON_SBREAK	  (1<<4)
 
@@ -174,6 +191,8 @@
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 /* UFSTAT S3C24A0 */
 #define S3C24A0_UFSTAT_TXFULL	  (1 << 14)
 #define S3C24A0_UFSTAT_RXFULL	  (1 << 6)
@@ -183,6 +202,7 @@
 #define S3C24A0_UFSTAT_RXSHIFT	  (0)
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 /* UFSTAT S3C2443 same as S3C2440 */
 #define S3C2440_UFSTAT_TXFULL	  (1<<14)
 #define S3C2440_UFSTAT_RXFULL	  (1<<6)
@@ -215,6 +235,9 @@
 #define S3C64XX_UINTM		0x38
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C64XX_UINTM_RXD	(0)
 #define S3C64XX_UINTM_TXD	(2)
 #define S3C64XX_UINTM_RXD_MSK	(1 << S3C64XX_UINTM_RXD)
@@ -223,10 +246,13 @@
 /* Following are specific to S5PV210 */
 #define S5PV210_UCON_CLKMASK	(1<<10)
 #define S5PV210_UCON_CLKSHIFT	(10)
+<<<<<<< HEAD
+=======
 =======
 /* Following are specific to S5PV210 */
 #define S5PV210_UCON_CLKMASK	(1<<10)
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S5PV210_UCON_PCLK	(0<<10)
 #define S5PV210_UCON_UCLK	(1<<10)
 
@@ -256,6 +282,9 @@
 #define S5PV210_UFSTAT_RXSHIFT	(0)
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 #define S3C2410_UCON_CLKSEL0	(1 << 0)
 #define S3C2410_UCON_CLKSEL1	(1 << 1)
 #define S3C2410_UCON_CLKSEL2	(1 << 2)
@@ -274,6 +303,8 @@
 				 S5PV210_UFCON_RXTRIG4)
 
 #ifndef __ASSEMBLY__
+<<<<<<< HEAD
+=======
 =======
 #define NO_NEED_CHECK_CLKSRC	1
 
@@ -299,6 +330,7 @@ struct s3c24xx_uart_clksrc {
 	unsigned int	 max_baud;
 };
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 /* configuration structure for per-machine configurations for the
  * serial port
@@ -309,9 +341,12 @@ struct s3c24xx_uart_clksrc {
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 struct uart_port;
 
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 struct s3c2410_uartcfg {
 	unsigned char	   hwport;	 /* hardware port number */
 	unsigned char	   unused;
@@ -320,13 +355,19 @@ struct s3c2410_uartcfg {
 <<<<<<< HEAD
 	unsigned int	   clk_sel;
 =======
+<<<<<<< HEAD
+	unsigned int	   clk_sel;
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 
 	unsigned int	   has_fracval;
 
 	unsigned long	   ucon;	 /* value of ucon for port */
 	unsigned long	   ulcon;	 /* value of ulcon for port */
 	unsigned long	   ufcon;	 /* value of ufcon for port */
+<<<<<<< HEAD
+=======
 <<<<<<< HEAD
 =======
 
@@ -336,6 +377,7 @@ struct s3c2410_uartcfg {
 	void	(*wake_peer)(struct uart_port *);
 	void	(*set_runstate)(int onoff);
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 /* s3c24xx_uart_devs
@@ -352,4 +394,8 @@ extern struct platform_device *s3c24xx_uart_devs[4];
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

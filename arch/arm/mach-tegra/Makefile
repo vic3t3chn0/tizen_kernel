@@ -1,7 +1,11 @@
 <<<<<<< HEAD
 obj-y                                   += board-pinmux.o
 =======
+<<<<<<< HEAD
+obj-y                                   += board-pinmux.o
+=======
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-y                                   += common.o
 obj-y                                   += devices.o
 obj-y                                   += io.o
@@ -9,6 +13,9 @@ obj-y                                   += irq.o
 obj-y                                   += clock.o
 obj-y                                   += timer.o
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-y                                   += pinmux.o
 obj-y					+= fuse.o
 obj-y					+= pmc.o
@@ -26,6 +33,8 @@ obj-$(CONFIG_SMP)			+= platsmp.o headsmp.o
 obj-$(CONFIG_SMP)                       += reset.o
 obj-$(CONFIG_HOTPLUG_CPU)               += hotplug.o
 obj-$(CONFIG_TEGRA_SYSTEM_DMA)		+= dma.o apbio.o
+<<<<<<< HEAD
+=======
 =======
 obj-y                                   += gpio.o
 obj-y                                   += pinmux.o
@@ -39,11 +48,15 @@ obj-$(CONFIG_SMP)                       += platsmp.o localtimer.o headsmp.o
 obj-$(CONFIG_HOTPLUG_CPU)               += hotplug.o
 obj-$(CONFIG_TEGRA_SYSTEM_DMA)		+= dma.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_CPU_FREQ)                  += cpu-tegra.o
 obj-$(CONFIG_TEGRA_PCI)			+= pcie.o
 obj-$(CONFIG_USB_SUPPORT)		+= usb_phy.o
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 obj-$(CONFIG_MACH_HARMONY)              += board-harmony.o
 obj-$(CONFIG_MACH_HARMONY)              += board-harmony-pinmux.o
 obj-$(CONFIG_MACH_HARMONY)              += board-harmony-pcie.o
@@ -63,6 +76,8 @@ obj-$(CONFIG_MACH_TEGRA_DT)             += board-trimslice-pinmux.o
 
 obj-$(CONFIG_MACH_TRIMSLICE)            += board-trimslice.o
 obj-$(CONFIG_MACH_TRIMSLICE)            += board-trimslice-pinmux.o
+<<<<<<< HEAD
+=======
 =======
 obj-${CONFIG_MACH_HARMONY}              += board-harmony.o
 obj-${CONFIG_MACH_HARMONY}              += board-harmony-pinmux.o
@@ -78,3 +93,4 @@ obj-${CONFIG_MACH_SEABOARD}             += board-seaboard-pinmux.o
 obj-${CONFIG_MACH_TRIMSLICE}            += board-trimslice.o
 obj-${CONFIG_MACH_TRIMSLICE}            += board-trimslice-pinmux.o
 >>>>>>> 58a75b6a81be54a8b491263ca1af243e9d8617b9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2

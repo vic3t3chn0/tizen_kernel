@@ -6,7 +6,15 @@
  *****************************************************************************/
 
 /*
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * Copyright (C) 2000 - 2012, Intel Corp.
+=======
  * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+ * Copyright (C) 2000 - 2011, Intel Corp.
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -94,6 +102,20 @@
  * ACPI_PTYPE2_REV_FIXED: Revision at start, each subpackage is Fixed-length
  *      (Used for _ART, _FPS)
  *
+<<<<<<< HEAD
+<<<<<<< HEAD
+ * ACPI_PTYPE2_FIX_VAR: Each subpackage consists of some fixed-length elements
+ *      followed by an optional element
+ *      object type
+ *      count
+ *      object type
+ *      count = 0 (optional)
+ *      (Used for _DLM)
+ *
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
  *****************************************************************************/
 
 enum acpi_return_package_types {
@@ -105,7 +127,16 @@ enum acpi_return_package_types {
 	ACPI_PTYPE2_PKG_COUNT = 6,
 	ACPI_PTYPE2_FIXED = 7,
 	ACPI_PTYPE2_MIN = 8,
+<<<<<<< HEAD
+<<<<<<< HEAD
+	ACPI_PTYPE2_REV_FIXED = 9,
+	ACPI_PTYPE2_FIX_VAR = 10
+=======
 	ACPI_PTYPE2_REV_FIXED = 9
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	ACPI_PTYPE2_REV_FIXED = 9
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 };
 
 #ifdef ACPI_CREATE_PREDEFINED_TABLE
@@ -154,6 +185,13 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_AC8", 0, ACPI_RTYPE_INTEGER}},
 	{{"_AC9", 0, ACPI_RTYPE_INTEGER}},
 	{{"_ADR", 0, ACPI_RTYPE_INTEGER}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_AEI", 0, ACPI_RTYPE_BUFFER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_AL0", 0, ACPI_RTYPE_PACKAGE}}, /* Variable-length (Refs) */
 			  {{{ACPI_PTYPE1_VAR, ACPI_RTYPE_REFERENCE, 0,0}, 0,0}},
 
@@ -229,6 +267,19 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_CID", 0, ACPI_RTYPE_INTEGER | ACPI_RTYPE_STRING | ACPI_RTYPE_PACKAGE}}, /* Variable-length (Ints/Strs) */
 			  {{{ACPI_PTYPE1_VAR, ACPI_RTYPE_INTEGER | ACPI_RTYPE_STRING, 0,0}, 0,0}},
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_CLS", 0, ACPI_RTYPE_PACKAGE}},	/* Fixed-length (3 Int) */
+	{{{ACPI_PTYPE1_FIXED, ACPI_RTYPE_INTEGER, 3, 0}, 0, 0}},
+
+	{{"_CPC", 0, ACPI_RTYPE_PACKAGE}},	/* Variable-length (Ints/Bufs) */
+	{{{ACPI_PTYPE1_VAR, ACPI_RTYPE_INTEGER | ACPI_RTYPE_BUFFER, 0, 0}, 0,
+	  0}},
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_CRS", 0, ACPI_RTYPE_BUFFER}},
 	{{"_CRT", 0, ACPI_RTYPE_INTEGER}},
 	{{"_CSD", 0, ACPI_RTYPE_PACKAGE}}, /* Variable-length (1 Int(n), n-1 Int) */
@@ -237,12 +288,37 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_CST", 0, ACPI_RTYPE_PACKAGE}}, /* Variable-length (1 Int(n), n Pkg (1 Buf/3 Int) */
 			  {{{ACPI_PTYPE2_PKG_COUNT,ACPI_RTYPE_BUFFER, 1, ACPI_RTYPE_INTEGER}, 3,0}},
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_CWS", 1, ACPI_RTYPE_INTEGER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_DCK", 1, ACPI_RTYPE_INTEGER}},
 	{{"_DCS", 0, ACPI_RTYPE_INTEGER}},
 	{{"_DDC", 1, ACPI_RTYPE_INTEGER | ACPI_RTYPE_BUFFER}},
 	{{"_DDN", 0, ACPI_RTYPE_STRING}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_DEP", 0, ACPI_RTYPE_PACKAGE}},	/* Variable-length (Refs) */
+	{{{ACPI_PTYPE1_VAR, ACPI_RTYPE_REFERENCE, 0, 0}, 0, 0}},
+
 	{{"_DGS", 0, ACPI_RTYPE_INTEGER}},
 	{{"_DIS", 0, 0}},
+
+	{{"_DLM", 0, ACPI_RTYPE_PACKAGE}},	/* Variable-length (Pkgs) each (1 Ref, 0/1 Optional Buf/Ref) */
+	{{{ACPI_PTYPE2_FIX_VAR, ACPI_RTYPE_REFERENCE, 1,
+	   ACPI_RTYPE_REFERENCE | ACPI_RTYPE_BUFFER}, 0, 0}},
+
+=======
+	{{"_DGS", 0, ACPI_RTYPE_INTEGER}},
+	{{"_DIS", 0, 0}},
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+	{{"_DGS", 0, ACPI_RTYPE_INTEGER}},
+	{{"_DIS", 0, 0}},
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_DMA", 0, ACPI_RTYPE_BUFFER}},
 	{{"_DOD", 0, ACPI_RTYPE_PACKAGE}}, /* Variable-length (Ints) */
 			  {{{ACPI_PTYPE1_VAR, ACPI_RTYPE_INTEGER, 0,0}, 0,0}},
@@ -262,6 +338,13 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_EJ3", 1, 0}},
 	{{"_EJ4", 1, 0}},
 	{{"_EJD", 0, ACPI_RTYPE_STRING}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_EVT", 1, 0}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_FDE", 0, ACPI_RTYPE_BUFFER}},
 	{{"_FDI", 0, ACPI_RTYPE_PACKAGE}}, /* Fixed-length (16 Int) */
 			  {{{ACPI_PTYPE1_FIXED, ACPI_RTYPE_INTEGER, 16,0}, 0,0}},
@@ -281,14 +364,35 @@ static const union acpi_predefined_info predefined_names[] =
 	{{{ACPI_PTYPE1_FIXED, ACPI_RTYPE_INTEGER, 3, 0}, 0, 0}},
 
 	{{"_GAI", 0, ACPI_RTYPE_INTEGER}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_GCP", 0, ACPI_RTYPE_INTEGER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_GHL", 0, ACPI_RTYPE_INTEGER}},
 	{{"_GLK", 0, ACPI_RTYPE_INTEGER}},
 	{{"_GPD", 0, ACPI_RTYPE_INTEGER}},
 	{{"_GPE", 0, ACPI_RTYPE_INTEGER}}, /* _GPE method, not _GPE scope */
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_GRT", 0, ACPI_RTYPE_BUFFER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_GSB", 0, ACPI_RTYPE_INTEGER}},
 	{{"_GTF", 0, ACPI_RTYPE_BUFFER}},
 	{{"_GTM", 0, ACPI_RTYPE_BUFFER}},
 	{{"_GTS", 1, 0}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_GWS", 1, ACPI_RTYPE_INTEGER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_HID", 0, ACPI_RTYPE_INTEGER | ACPI_RTYPE_STRING}},
 	{{"_HOT", 0, ACPI_RTYPE_INTEGER}},
 	{{"_HPP", 0, ACPI_RTYPE_PACKAGE}}, /* Fixed-length (4 Int) */
@@ -303,6 +407,13 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_HPX", 0, ACPI_RTYPE_PACKAGE}}, /* Variable-length (Pkgs) each (var Ints) */
 			  {{{ACPI_PTYPE2_MIN, ACPI_RTYPE_INTEGER, 5,0}, 0,0}},
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_HRV", 0, ACPI_RTYPE_INTEGER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_IFT", 0, ACPI_RTYPE_INTEGER}}, /* See IPMI spec */
 	{{"_INI", 0, 0}},
 	{{"_IRC", 0, 0}},
@@ -361,6 +472,15 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_PR3", 0, ACPI_RTYPE_PACKAGE}},	/* Variable-length (Refs) */
 	{{{ACPI_PTYPE1_VAR, ACPI_RTYPE_REFERENCE, 0, 0}, 0, 0}},
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_PRE", 0, ACPI_RTYPE_PACKAGE}},	/* Variable-length (Refs) */
+	{{{ACPI_PTYPE1_VAR, ACPI_RTYPE_REFERENCE, 0, 0}, 0, 0}},
+
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_PRL", 0, ACPI_RTYPE_PACKAGE}},	/* Variable-length (Refs) */
 	{{{ACPI_PTYPE1_VAR, ACPI_RTYPE_REFERENCE, 0, 0}, 0, 0}},
 
@@ -391,6 +511,13 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_PSD", 0, ACPI_RTYPE_PACKAGE}}, /* Variable-length (Pkgs) each (5 Int) with count */
 			  {{{ACPI_PTYPE2_COUNT, ACPI_RTYPE_INTEGER,0,0}, 0,0}},
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_PSE", 1, 0}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_PSL", 0, ACPI_RTYPE_PACKAGE}}, /* Variable-length (Refs) */
 			  {{{ACPI_PTYPE1_VAR, ACPI_RTYPE_REFERENCE, 0,0}, 0,0}},
 
@@ -457,6 +584,13 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_SLI", 0, ACPI_RTYPE_BUFFER}},
 	{{"_SPD", 1, ACPI_RTYPE_INTEGER}},
 	{{"_SRS", 1, 0}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_SRT", 1, ACPI_RTYPE_INTEGER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_SRV", 0, ACPI_RTYPE_INTEGER}}, /* See IPMI spec */
 	{{"_SST", 1, 0}},
 	{{"_STA", 0, ACPI_RTYPE_INTEGER}},
@@ -464,10 +598,24 @@ static const union acpi_predefined_info predefined_names[] =
 	{{"_STP", 2, ACPI_RTYPE_INTEGER}},
 	{{"_STR", 0, ACPI_RTYPE_BUFFER}},
 	{{"_STV", 2, ACPI_RTYPE_INTEGER}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_SUB", 0, ACPI_RTYPE_STRING}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_SUN", 0, ACPI_RTYPE_INTEGER}},
 	{{"_SWS", 0, ACPI_RTYPE_INTEGER}},
 	{{"_TC1", 0, ACPI_RTYPE_INTEGER}},
 	{{"_TC2", 0, ACPI_RTYPE_INTEGER}},
+<<<<<<< HEAD
+<<<<<<< HEAD
+	{{"_TDL", 0, ACPI_RTYPE_INTEGER}},
+=======
+>>>>>>> 73a10a64c2f389351ff1594d88983f47c8de08f0
+=======
+>>>>>>> ae1773bb70f3d7cf73324ce8fba787e01d8fa9f2
 	{{"_TIP", 1, ACPI_RTYPE_INTEGER}},
 	{{"_TIV", 1, ACPI_RTYPE_INTEGER}},
 	{{"_TMP", 0, ACPI_RTYPE_INTEGER}},
